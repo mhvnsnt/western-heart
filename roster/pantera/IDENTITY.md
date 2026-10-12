@@ -25,6 +25,7 @@
   - Yellow parts (elbow pads, knee pads, boots) → **black**
   - Accents on yellow parts (currently purple/blue) → **red**
 - **Side logo:** Ed Hardy style panther with scratch marks (old school tattoo style) on side of tights
+- **Trunks logo:** "PANTERA" in red Metallica-style metal lettering, replaces "KING" in electric blue (owner confirmed 2026-10-12). Ref: pantera-metal-red.png
 
 ## Fighting Style
 - King's pro wrestling grappling
