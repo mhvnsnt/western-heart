@@ -40,5 +40,6 @@
 - 2026-10-12: Tekken 7 King confirmed as primary base. Tekken 3 King as retro alt costume.
 
 ## Status
-- Base model: Tekken 7 King FBX acquired, 4-view renders in progress
-- Awaiting owner's detailed Pantera design direction
+- Base model: Tekken 7 King FBX acquired, 4-view renders complete (1:1)
+- **RESKIN COMPLETE (owner 2026-10-12):** Owner generated Pantera reskin via Gemini from the front view. All 4 angles saved as pantera-reskin-{front,back,left,right}.jpg. This is the template workflow for remaining fighters.
+- Design locked per reskin images
