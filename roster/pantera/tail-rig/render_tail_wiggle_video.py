@@ -152,9 +152,12 @@ for f in range(1, N_FRAMES + 1):
     scene.frame_set(f)
     for i in range(N_BONES):
         pb = arm_obj.pose.bones[f"tail_{i + 1:02d}"]
-        # amplitude grows toward tip, phase lags down the chain:
-        # a traveling wave, like real spring-physics follow-through
-        amp = 0.12 + 0.08 * i
+        # BASE ANCHORED (owner 2026-10-12): tail_01 (the attachment bone) does
+        # not rotate - the tail extends from the body, so the attach point
+        # stays fixed. Amplitude ramps up smoothly from bone 2 to the tip.
+        # Phase lags down the chain: a traveling wave, like real
+        # spring-physics follow-through.
+        amp = 0.35 * (i / (N_BONES - 1)) ** 1.3 if i > 0 else 0.0
         pb.rotation_euler = (amp * math.sin(2 * math.pi * (f - 1) / N_FRAMES - i * 0.55), 0, 0)
         pb.keyframe_insert(data_path="rotation_euler", frame=f)
 print("FK WAG KEYFRAMED ON RIG BONES")
