@@ -20,7 +20,11 @@
 
 ### Attire Notes
 - Starting from King's Tekken 7 default: blue tights, yellow trunks with KING logo, gold boots, arm bands, jaguar mask
-- To be reskinned to Pantera's look (details TBD by owner)
+- **Colorway changes (owner 2026-10-12):**
+  - Blue tights → **purple**
+  - Yellow parts (elbow pads, knee pads, boots) → **black**
+  - Accents on yellow parts (currently purple/blue) → **red**
+- **Side logo:** Ed Hardy style panther with scratch marks (old school tattoo style) on side of tights
 
 ## Fighting Style
 - King's pro wrestling grappling
