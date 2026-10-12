@@ -22,4 +22,4 @@ we study production STRUCTURE from public sources, never redistribute stolen mat
 - `04-capcom-leak-assessment.md` — honest access report
 - `05-nintendo-gigaleak-assessment.md` — honest access report + structure lessons
 - `06-western-heart-character-pipeline.md` — **the application**: our pipeline, concept → shipped fighter
-- `07-blender-open-movies.md` — added when the pull completes
+- `07-blender-open-movies.md` — BBB production files: rig split, deform proxy, naming conventions; validates the pipeline
