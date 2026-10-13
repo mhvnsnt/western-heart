@@ -253,3 +253,33 @@ No Mercy-side tools for the AKI path: `../wwf-no-mercy/tools/anim_extract.py`, `
 4. Dolphin `.gci` dump → CAW save-record layout
 5. YANM 8-unknown track identities (second performer / camera / prop / referee)
 6. Wrestling Mode arena pass (separate from the Eastern Mind stage transformation — main show arenas kept closer to wrestling origins)
+
+### 5d. Item-6 cycle 2 — ECD via semantic clips, record-type taxonomy, byte-ramps (2026-10-13)
+
+- **ECD28978 — face-driver DOWNGRADED, camera-framing now leads**: the only
+  semantically-named clips (`viewer/motion/FACE.yag` / `HAND.yag` /
+  `FIGHTING.yag` / `SAMPLE.yag`) were probed. FACE.yag is **fully static**
+  (0/36 tracks animated) — the face showcase animates nothing, and its ECD
+  pose (0, 79.9) is identical to HAND.yag's and shared with 11 ringmotion
+  moves. No face-specific ECD behavior exists anywhere. New leading
+  hypothesis: **per-move camera framing preset (yaw/pitch)** — static per
+  move, 87 presets, ±80° as angles, variant-specific cinematics,
+  engine-consumed (0/1464 ymg + 0/175 ycg contain ECD bytes, full-file scan),
+  FIGHTING≈(0,0) = default cam, 85xx showcases reuse 9 framings. Eye-gaze
+  possible; opponent-setup weakened; face-pose has no positive evidence.
+- **Record-type taxonomy (new)**: Type A (`a==0`) = keyframed angle tracks
+  (body, fingers, ECD w28=1 static pose). Type B (`a!=0`,
+  `w28=0x0001xxxx`) = static detail/attachment records — **0C5BF279 was never
+  a track** (it is Type-B, with the ymg ID-block binding); 24 more Type-B
+  hashes exist only in FACE/HAND.yag (viewer-showcase rig extras, identical
+  values in both). CORRECTION: the prior cycle's r(ECD,0C5BF279)=0.072/0.010
+  correlations are VOID (Type-B "channel values" were misread key offsets).
+- **Byte-ramp curves characterized**: record 14 (66 words) = `[selfptr,0]
+  [3,0x32] [3 byte-packed words] [0C5BF279] [12-word ID block] [3 ID-like
+  words] [0xA8=168 length] [168-byte region]`. The 168B region: 18 distinct
+  values, 0x44-dominated (109/168), smooth ramp segments + 8 outlier bytes —
+  most consistent with quantized remap curves / 1D LUT. Identical for
+  000_0/047_0 (correlates with ID block, not wrestler); 045_0/016_0 use a
+  different table format without byte ramps.
+- Base-ID gen fn and anatomical L/R: unchanged (still open / still blocked
+  headless). Full analysis: `./YANM-ITEM6-CYCLE.md` (cycle-2 section).

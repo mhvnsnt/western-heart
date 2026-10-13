@@ -173,3 +173,105 @@ reference.
 3. Anatomical L/R final bit — needs YOBJ full-model assembly or visual.
 4. ID-block semantics + byte-ramp curves (from ITEM3-ITEM4 doc).
 5. CAW `.gci` — blocked headless (needs parent Dolphin task with KNOWN CAW values).
+
+---
+
+# Cycle 2 (2026-10-13 watchdog continuation) — ECD via semantic clips, record-type taxonomy, byte-ramps
+
+Probes: `tools/yanm_item6_ecd3.py`, `tools/yanm_item4_byteramp.py`. All streamed
+from ISO. Worktree: `watchdog/wrestling-teardown-20261013` (separate worktree;
+3 large binaries replaced with symlinks to main checkout — disk was at 89%,
+now 87%).
+
+## ITEM 1 — ECD28978: face-driver DOWNGRADED, camera-framing now leads
+
+### The semantic clips (only named clips in the 215 universe)
+`viewer/motion/FACE.yag`, `HAND.yag`, `FIGHTING.yag`, `SAMPLE.yag`:
+
+| clip | ECD static pose | ECD intra-range | animated tracks |
+|---|---|---|---|
+| FACE.yag | (0.0, 79.9) | (0,0) | **0 of 36** a==0 tracks |
+| HAND.yag | (0.0, 79.9) | (0,0) | 18 (4AAF×9, 579B__50×3, A4955E6x×5, BA955E6E) |
+| FIGHTING.yag | (0.2, 3.6) | (0,0) | – |
+| SAMPLE.yag | (62.0, -25.9) | (0,0) | – (= viewer/a.yag's pose exactly) |
+
+- FACE.yag is **fully static** — the face showcase animates NOTHING. The face is
+  never animated in any clip. FACE/HAND share the identical ECD pose, and 11
+  ringmotion moves share it too (a002/a004/a015/a023/b014/c013/c113/c118/c140/
+  c211/c226) — 13 clips total at ≈(0,79.9). No face-specific ECD behavior
+  exists anywhere. **Face-driver hypothesis: DOWNGRADED (no positive evidence).**
+- ECD ⟺ 0C5BF279 co-presence is near-exact: (T,T)=206, (F,F)=7, (T,F)=**2** —
+  the 2 exceptions are FACE.yag and HAND.yag (showcase clips need no
+  wrestler-detail record). Consistent with ECD being per-move engine metadata,
+  not wrestler detail.
+- viewer/motion/85xx showcases: 30 clips, **9 distinct ECD poses**
+  (top (3.6,75.7)×8) — presets, not per-wrestler identity.
+- Full-file binding scan: ECD bytes in **0/1464 ymg, 0/175 ycg** (confirmed
+  across all files, not just the 8 sampled before). Engine-hardcoded consumer.
+- ECD record is a normal Type-A track: `[hash,0,ks,0,0,0,0,w28=1]` — a genuine
+  static 2-channel pose, same format as static finger/thumb/toe tracks.
+
+### Hypothesis ranking (revised)
+1. **Camera framing preset (yaw/pitch)** — LEADING. Static per move ✓, 87
+   presets ✓, ±80° as angles ✓, variant-specific (different cinematics) ✓,
+   engine-consumed ✓, FIGHTING≈(0,0)=default cam ✓, FACE/HAND share one
+   close-up preset ✓, 85xx reuses 9 showcase framings ✓.
+2. **Eye gaze** — possible (2ch static gaze; engine drives Eeye bones directly).
+3. **Opponent relative setup** — weakened (85xx solo showcases use 9 poses,
+   not a default).
+4. **Face-pose selector** — DOWNGRADED, no positive evidence.
+5. **Gameplay metadata** — open alternative.
+Still OPEN — needs visual/engine confirmation. The prior cycle's
+r(ECD,0C5BF279 ch-values)=0.072/0.010 correlations are **VOID**: 0C5BF279 is a
+Type-B record (below), so its "channel values" were misread key offsets.
+
+## Record-type taxonomy (NEW structural finding)
+- **Type A** (`a==0`): keyframed angle tracks, 5 bytes/key (s16,s16,u8).
+  Includes body, fingers, ECD (w28=1 static pose).
+- **Type B** (`a!=0`, `w28=0x0001xxxx`): static detail/attachment records —
+  `[hash][a][a+4][0][X][Y][Z][0x00010001]`. Members: **0C5BF279** (the
+  "per-wrestler detail track" was never a track) + **24 viewer-only hashes**
+  (5D9B19__/1A__/1B__×7, 6746AF9A/7946AF9A, 0946CF9A/1746CF9A,
+  CD8FA31B/CD8FE319, FDB87F90/FDB87F60, 3928ABB7/39243897,
+  C6F1CFDF/C6F18E57/C6F14E55, 0BFAE78F/7BFA878F, 4B22A3C7, 21242497 —
+  several are 0x1E000000/0xF0 side-pairs). The 24 appear ONLY in FACE.yag and
+  HAND.yag, always static, with IDENTICAL values in both (only file offsets
+  differ) — viewer-showcase rig extras, not face content.
+- Prior probes that read Type-B records as keyframed tracks produced garbage
+  (the ecd3 probe initially crashed on them; fixed by filtering `a==0`).
+
+## ITEM 4 — byte-ramp curves: characterized (000_0-format records)
+Record 14 (66 words) fully mapped for `model/wrestler/000_0.ymg`:
+`[selfptr,0][00000003,00000032][0F0A080F,04070707,0050040C byte-packed]
+[0C5BF279][12-word ID block][DDFD7A6E,4DFBFA6F,504F4630][0xA8=168 length]
+[168-byte region]`.
+- Byte region: 168B, 18 distinct values, 0x44-dominated (109/168); run
+  structure = smooth ramps (41→47, 42×12, 45×14, 57×9→61) + 8 outlier bytes
+  (96,A4,86,BF,9D,98,84,E5). Most consistent with **quantized remap curves /
+  1D LUT segments** (doc's leading hypothesis stands).
+- Identical for 000_0 and 047_0 (which share the ID block) → region correlates
+  with the ID block, not the wrestler. 045_0/016_0/002_0/001_0 use a different
+  (non-self-pointer) table format — no 66-word record; 045_0's detail region
+  continues with more ID-like words instead (no byte ramps).
+- Probe: `tools/yanm_item4_byteramp.py`.
+
+## ITEM 2 — base-ID generation: unchanged (no new battery this cycle)
+Verdict stands: assigned, not derived (all function families rejected);
+exact-XOR side-pairing remains the usable structure. The track↔joint map
+(`docs/yanm-track-joint-map.json`) is too unresolved to anchor a
+hierarchical-assignment test — deferred until anatomy improves.
+
+## ITEM 3 — L/R: still blocked headless (unchanged)
+Ycg bind pose is mirror-symmetric (zero intrinsic L/R); ymg-frame bridge needs
+YOBJ mesh assembly (dequantization still unsolved per YOBJ-SKINNING-NOTES) or
+visual. Provisional mapping stands with the global-mirror caveat.
+
+## STOPPED HERE (next cycle)
+1. ECD identity — camera-framing leads; needs visual/engine confirmation.
+   (Do NOT re-run the void 0C5B-value correlations.)
+2. Type-B record decode — what are X/Y/Z words; what does the `a`-offset table
+   point to (12-byte stride entries)? Needed to fully retire 0C5BF279.
+3. Byte-ramp semantics — remap LUT hypothesis; test against ID-block elements
+   (168B / 12 IDs = 14B per element?).
+4. Base-ID gen fn, L/R final bit, ID-block semantics — as before.
+5. CAW `.gci` — still needs parent browser/Dolphin task with KNOWN CAW values.
