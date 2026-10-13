@@ -60,3 +60,19 @@ The full No Mercy AKI animation library (~1,360 clips) can now be retargeted
 to Tekken 3 models via this pipeline. This is the Western Heart "wrestling
 animations on Tekken models" path for the AKI engine (complements the Yukes
 YANM→Tekken3 path).
+
+## v2 — REGENERATED from corrected bank (2026-10-13)
+
+v1 was built on the misaligned NTSC_U_10 FileTable (0x16C3238).
+**v2 uses the corrected NTSC_U_11 bank** (FileTable 0x16C31D8, 5,787 clips in `animations/clips/`).
+
+Tool: `aki_to_tekken3_v2.py`. Output: `aki_to_tekken3_v2.json`.
+
+Verification (source-vs-retarget correlations, corrected bank):
+- Pelvis → joint0: **+1.000**
+- UpperBody → joint1: +0.901
+- UpperRightArm → joint4: +0.924
+- Head → joint3: +0.796
+
+Correlations match v1, confirming the pipeline transfers correctly on the aligned data.
+**Use v2 going forward. v1 (`aki_to_tekken3_v1.json`) is deprecated.**
