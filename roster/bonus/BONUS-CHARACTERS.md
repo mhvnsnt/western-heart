@@ -113,3 +113,10 @@ Owner-directed 2026-10-12. These are outside the core 7 but approved for reskinn
   - **ZUI:** The only vessel who ever offered Thor a drink and meant it as an equal. Drinking companions — the monk who left the monastery and the god who never needed one.
   - **SUN RĀ:** Thor heard the soul-eating sun say "Immortal Qombat" exactly once — and has been repeating it back as a question ever since, comically, like a man trying out a foreign phrase he doesn't understand. "Immortal Qombat?" Sun Rā, who permits no one else to speak his English words, finds the god of thunder's mangled echo... amusing. Or insulting. The sun has not decided. Thor has not noticed.
 - **Universe fit:** Eastern Mind — the god who wandered into a trial for lost souls and broke its seating chart. The trial purifies souls. Thor doesn't have one to purify. That should be a problem. It isn't, yet.
+
+## YUKIHYŌ (Armor King base, Tekken 8)
+- **Direction:** The snow leopard. Armor King's luchador-wrestler frame reskinned with a leopard head — the white mirror to Pantera's black panther.
+- **Name:** YUKIHYŌ (owner-named 2026-10-13 — ユキヒョウ, "snow leopard" in Japanese, spelled in English as Yukihyō)
+- **Visual:** Leopard head (snow leopard). Black/white colorway — striped/spotted digital camo in white across the attires. The ghost of the mountains to Pantera's shadow of the jungle.
+- **Dynamic:** Pairs with Pantera as the two big-cat wrestlers — Pantera is the black panther (night, melanistic rosettes), Yukihyō is the snow leopard (white, black rosettes on pale fur). Same wrestling soul, opposite coats.
+- **Universe fit:** Eastern Mind — the mountain soul. The snow leopard stalks the high cold places between the five lands.
