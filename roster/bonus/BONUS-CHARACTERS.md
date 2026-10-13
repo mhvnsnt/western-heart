@@ -81,3 +81,8 @@ Owner-directed 2026-10-12. These are outside the core 7 but approved for reskinn
 - **Direction:** Capoeira fighter. Christie's graceful, rhythmic fighting style — dance as combat.
 - **Name:** STAR (owner-named 2026-10-13)
 - **Universe fit:** Eastern Mind — the dancer soul, movement as expression. Pairs with King Tyrant (Eddy/capoeira) as the two capoeira fighters.
+
+## TORCH (Anna Williams base, Tekken 7)
+- **Direction:** The assassin. Anna's ruthless, elegant lethality — Nina's sister, darker edge.
+- **Name:** TORCH (owner-named 2026-10-13)
+- **Universe fit:** Eastern Mind — the flame that burns. Pairs with Awa Pop (Nina) as the sister rivalry.
