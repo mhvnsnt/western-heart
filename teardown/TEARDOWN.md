@@ -13,11 +13,48 @@ Gadge64/WWFNoMercyRecomp (both cloned locally).
   Full name→ID map in `wwf-no-mercy/docs/wrestler-id-table.json`.
 - Move data segment @ `0x13E000`: u32 move-attribute records + float table +
   N64 RAM pointer table (`0x8014CDxx`) + 15KB u16 index run. (Earlier "move slot
-  table" label was wrong — corrected.)
+  table" label was wrong — corrected.) Float table resolved: **7 position
+  records `[0, x, y, z]` (camera/spawn)**; u16 run = **7,565 entries**
+  (`0x13E4D4`–`0x141FEE`, plausibly move-index → data-index remap).
 - Preset/theme table @ `0x168D8B4`, CAW presets @ `0x168D885`, creation-suite
   strings @ `0x168DD89+`.
-- OPEN: isolate wrestler animation data; cross-ref recomp syms for the
-  `0x13E4A0` pointer table; FF control-byte semantics in preset tables.
+
+### Create-a-Wrestler tables (2026-10-13, ROM-verified — directly reusable)
+- **Entrance-music table @ `0x168D790`: 50 entries** `[u8 music_id][coded title]00`;
+  wrestler themes in wrestler-table order + extras. `ORIGINAL 1`–`7` =
+  music_ids `0x33`–`0x39` (51–57): the CAW original-theme slots. A CAW save
+  record's entrance-music field indexes this table. Parser:
+  `game-reverse-engineering/wwf-no-mercy/tools/caw_parse.py` (regenerates
+  `caw-name-table.json`, `caw-categories.json`).
+- **Part-string regions @ `0x168DD89`+ (15 categories)**: body types, elbow
+  pads, masks, entrance attire, gloves, feet, wrists, hair (Bald…Mohawk 1-2),
+  front hair, facial hair, hats, knee pads, accessories, ring attire.
+  Record shape: `[u8 part_id][display name + inline codes][attr bytes][terminator]`
+  (`FD F0` / `FB F0` / `FA F1` item terminators). `part_id`s are the values a
+  CAW save record stores per slot — full id→name maps in the two JSONs.
+- **Inline text codes render ZERO-WIDTH** (font/kerning/dict-compression
+  candidates): deleting bytes outside `0x20`–`0x7E` yields clean English
+  verified word-for-word against community option lists
+  (`BLA<FF>CKMAN`→BLACKMAN, `E<FF>lbow Bra<FD>c`→Elbow Brace, `D<F7>-Von…`→D-Von…).
+  Some bytes look like dictionary refs (`<1C>` in `Buh <1C>`→"Buh Buh",
+  `<AA 01>` in `REAL AM<AA><01>!`→"REAL AMERICAN!"). Per-code semantics OPEN —
+  needs the AKI text renderer (no symbols in recomp/syms yet).
+
+### Animation isolation (2026-10-13 — move index found, keyframe bank OPEN)
+- **0x13E4A0 resolved = 10-pointer move-data index** (not animation data —
+  correction). Pointers `0x8014CD5C…0x8014CD00` occur NOWHERE else in ROM;
+  table sits in a section gap (recomp lists no section there). Targets fall in
+  overlay C's vram window → ROM `0xF4930`+, the tail of a move-attribute bank
+  (`0xF4730`+, records `04 00 03 05 10 0A 06 0E … FF FF 04 16 08 00` with
+  incrementing index bytes). 2nd pointer block @ `0x13E530` (same pattern).
+- **recomp/syms = dead end for animation**: no anim-labeled symbols
+  (`dump.toml` 7 sections, unnamed `func_8013Dxxx` stubs only).
+- Keyframe bank NOT isolated (256KB ROM survey: no uncompressed bank; bulk
+  ROM past `0x1C0000` looks compressed/entropy-dense). Next leads: DMA/loader
+  path materializing `0x8014CD00`; anim indices in the `0xF4730` move records;
+  emulator RAM-diff (idle vs mid-move).
+- OPEN: save-record byte layout (needs real emulator save file to diff
+  against the id tables above).
 
 ## WWE WrestleMania XIX (GameCube, Yukes engine) — ISO verified
 `WWE Wrestlemania XIX (USA).iso`, 1,459,978,240 B, MD5
@@ -117,4 +154,6 @@ Full table: `game-reverse-engineering/wwe-wrestlemania-xix/docs/WRESTLER-SKELETO
 ## Sources (steal-like-an-artist)
 Binaries cataloged with SHA-256 in `teardown/TEARDOWN-SOURCES.md`. Full RE docs:
 `~/workspace/game-reverse-engineering/wwe-wrestlemania-xix/docs/WMXIX-TEARDOWN.md`,
-`~/workspace/game-reverse-engineering/wwf-no-mercy/docs/CHARACTER-DATA.md`.
+`~/workspace/game-reverse-engineering/wwf-no-mercy/docs/CHARACTER-DATA.md`,
+`~/workspace/game-reverse-engineering/wwf-no-mercy/docs/CAW-EDIT-DATA.md`,
+`~/workspace/game-reverse-engineering/wwf-no-mercy/docs/ANIMATION-ISOLATION.md`.
