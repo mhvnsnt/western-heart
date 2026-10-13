@@ -1,8 +1,8 @@
 # WESTERN HEART — Chimera Build
 
-## Five Games, One Game
+## Six Games, One Game
 
-Western Heart is built by reverse-engineering five games and recombining their
+Western Heart is built by reverse-engineering six games and recombining their
 systems. No hand-tooled assets (except owner-designed glue). Every piece traces
 to a reverse-engineered source file.
 
@@ -56,6 +56,17 @@ Tekken 3's legacy content as a retro throwback mode.
 - **Key findings:** ~40 wrestlers, GameCube hardware (higher fidelity than N64)
 - **Status:** ISO NOT YET DOWNLOADED — needs browser task (sources documented)
 - **Western Heart use:** Arena traversal design, additional game modes
+
+### Game 6: Urban Reign (PS2) — Street-Brawl Systems 🌆
+- **Provides:** 4-player free-for-all brawling, 30+ weapons, destructible
+  environments, AI partner double-team combat, special-arts meter
+- **Key findings:** 60+ fighters (boxing/wrestling/karate/capoeira styles),
+  Tekken guests Paul Phoenix + Marshall Law, 100-mission story, Weapon Battle
+  and Destruction Battle multiplayer modes — made by the ex-Tekken team
+- **Status:** ISO DOWNLOADING 2026-10-12 — teardown at `teardown/urban-reign/`
+- **Western Heart use:** TBD by owner — **Option A:** third mode (BRAWL MODE)
+  alongside Tekken/Wrestling; **Option B:** merged into Wrestling Mode as its
+  hardcore street-fight variant
 
 ## The Two Fighting Modes
 
