@@ -32,27 +32,44 @@ Gadge64/WWFNoMercyRecomp (both cloned locally).
   Record shape: `[u8 part_id][display name + inline codes][attr bytes][terminator]`
   (`FD F0` / `FB F0` / `FA F1` item terminators). `part_id`s are the values a
   CAW save record stores per slot — full id→name maps in the two JSONs.
-- **Inline text codes render ZERO-WIDTH** (font/kerning/dict-compression
-  candidates): deleting bytes outside `0x20`–`0x7E` yields clean English
-  verified word-for-word against community option lists
-  (`BLA<FF>CKMAN`→BLACKMAN, `E<FF>lbow Bra<FD>c`→Elbow Brace, `D<F7>-Von…`→D-Von…).
-  Some bytes look like dictionary refs (`<1C>` in `Buh <1C>`→"Buh Buh",
-  `<AA 01>` in `REAL AM<AA><01>!`→"REAL AMERICAN!"). Per-code semantics OPEN —
-  needs the AKI text renderer (no symbols in recomp/syms yet).
+- **Inline text codes: TWO classes** (not all zero-width). Zero-width:
+  `FF` (47×, verified: BLACKMAN/ANGLE/ACOLYTES…), `EF 01 19 7F DF F7 FB
+  BF` — not kerning-pair-specific, not Shift-JIS. Expansion tokens:
+  `AA 01`→`"ERICAN"` (REAL AMERICAN!), `1C`→`"Buh"` (Buh Buh) —
+  dictionary/compression escapes (dictionary not yet located). Trap: bytes
+  like `<1C>` in the music table are usually the `music_id` byte, not text
+  tokens. Full per-code table needs the renderer.
 
-### Animation isolation (2026-10-13 — move index found, keyframe bank OPEN)
-- **0x13E4A0 resolved = 10-pointer move-data index** (not animation data —
-  correction). Pointers `0x8014CD5C…0x8014CD00` occur NOWHERE else in ROM;
-  table sits in a section gap (recomp lists no section there). Targets fall in
-  overlay C's vram window → ROM `0xF4930`+, the tail of a move-attribute bank
-  (`0xF4730`+, records `04 00 03 05 10 0A 06 0E … FF FF 04 16 08 00` with
-  incrementing index bytes). 2nd pointer block @ `0x13E530` (same pattern).
-- **recomp/syms = dead end for animation**: no anim-labeled symbols
-  (`dump.toml` 7 sections, unnamed `func_8013Dxxx` stubs only).
-- Keyframe bank NOT isolated (256KB ROM survey: no uncompressed bank; bulk
-  ROM past `0x1C0000` looks compressed/entropy-dense). Next leads: DMA/loader
-  path materializing `0x8014CD00`; anim indices in the `0xF4730` move records;
-  emulator RAM-diff (idle vs mid-move).
+### Animation: KEYFRAME BANK ISOLATED (2026-10-13)
+- Animations live in the ROM **FileTable @ `0x16C3238`** (19,462 entries;
+  `FirstFile` = `0x1BD1B0`; format/locations confirmed against
+  AKI-Club/VPWStudio). `FirstAnimationFileID` = `0x2DD9`,
+  `FirstMoveAnimationID` = `0x3322`.
+- **AkiAnimation format**: 4-byte `Toki2` + N×**98-byte frames**; each frame
+  = 19× PivotRotation (12-bit pivot X, s8 rotation, 12-bit pivot Z) +
+  OverallMovementXYZ + 6× MovementXYZ, fixed joint order (pelvis → arms).
+  ~1,360 clips, 1–123 frames. Extractor:
+  `game-reverse-engineering/wwf-no-mercy/tools/anim_extract.py`
+  (`info`/`json`/`survey`) — file `0x2DD9` decodes to a smooth lunge,
+  verified numerically.
+- **Move→clip linkage**: move menu entries carry `AnimID` = file ID −
+  `0x3322` (VPWStudio).
+- OPEN: Toki2 semantics; triangle connectivity for YOBJ; retarget AKI
+  19-joint clips onto Tekken skeletons (same pattern as YANM→Tekken3).
+
+### Move tables + overlay map (2026-10-13)
+- **0x13E4A0 = 10-pointer move-CATEGORY string table** (correction: the
+  earlier "move-data index" used the wrong overlay context — B/C/D share
+  vram `0x80106760`). Under ovl_d the pointers hit ROM `0x1437F0`+ exactly
+  on: `Grappling`, `Standing`, `Running`, `Ground`, `Turnbuckle`,
+  `Ringside`, `Apron`, `Irish Whip`, `Taunt`, `Double Team`
+  (+`Favorite:`/`%d`/`best`). The `0x13E530` block is move-slot UI
+  (`"No Data"` + u16 remap).
+- **Move DB index @ `0xF5BF8`: 40 entries** (move-record ptr, count);
+  move bank ~`0xF2390`–`0xF6390` (`04 00` records + `04 4B/4A/5F/…` params).
+- **Overlay DMA table @ `0x539A0`** (36B entries): true ROM ranges —
+  a `0x57310`–`0x81210`, b `0x81210`–`0xAE390`, c `0xAE390`–`0xFD250`, d
+  `0xFD250`–`0x144BE0`, e `0x144BE0`–`0x1BD150` (bigger than dump.toml).
 - OPEN: save-record byte layout (needs real emulator save file to diff
   against the id tables above).
 
@@ -82,6 +99,15 @@ Full table: `game-reverse-engineering/wwe-wrestlemania-xix/docs/WRESTLER-SKELETO
   across all 111 wrestler slots → one YANM decode retargets everywhere.
 
 ### Models
+- **Vertex positions CRACKED (2026-10-13, eye-verified).** `000_0.ymg`:
+  batch-table s16x3 runs ARE the positions — 606 verts, /64 dequant →
+  0–30 units, point cloud renders as coherent character geometry
+  (`tools/yobj_validate.py` streams from ISO, writes OBJs + check renders).
+  CAW elbow part: 148 verts as u16x3 @ file `0x4D8` (curved-shell =
+  elbow-pad shape). Correction: the v3 "150-triangle index list (max idx
+  1224)" was a misread — 1224 was a coordinate; the region is descriptor +
+  positions.
+- OPEN: triangle connectivity; assembling `000_0`+`000_1`; bone transforms.
 - `model/wrestler/`: 111 slots (000–110), each `_0` = base (`.tex`+`.ymg`+`.ycg`),
   `_1`/`_2` = alt attires. More slots than the ~40 roster (CAW parts, staff).
 - YOBJ header map (measured): bone table @0xF3B4 (71 slots), material table
