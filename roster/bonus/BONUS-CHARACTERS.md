@@ -76,3 +76,8 @@ Owner-directed 2026-10-12. These are outside the core 7 but approved for reskinn
 - **Personality:** Michiko Malandro (Michiko & Hatchin) mixed with Tier Harribel (Bleach) — the free-spirited outlaw with regal, composed power underneath. Dangerous but magnetic.
 - **Name:** MICHIKO (owner-named 2026-10-13)
 - **Universe fit:** Eastern Mind — the outlaw soul, fighting on her own terms.
+
+## STAR (Christie Monteiro base, Tekken 7)
+- **Direction:** Capoeira fighter. Christie's graceful, rhythmic fighting style — dance as combat.
+- **Name:** STAR (owner-named 2026-10-13)
+- **Universe fit:** Eastern Mind — the dancer soul, movement as expression. Pairs with King Tyrant (Eddy/capoeira) as the two capoeira fighters.
