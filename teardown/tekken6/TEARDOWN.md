@@ -2,7 +2,40 @@
 
 **Source:** `tekken6-psp.iso` (816MB, PSP, USA)
 **Teardown date:** 2026-10-13
-**Status:** Videos + structure extracted. Models/textures encrypted (documented below).
+**Status:** Videos + structure extracted. Models/textures encrypted (decrypt path documented below).
+
+### Safe Storage (2026-10-13)
+- **ISO re-downloaded 2026-10-13, verified 855,638,016 bytes**, safe on GitHub Release
+  `tekken6-psp-v1`: https://github.com/mhvnsnt/western-heart/releases/tag/tekken6-psp-v1
+  (release notes record it as byte-verified against the Archive.org source item `tekken-6_202309`).
+- **All 46 ending videos (337MB) now on GitHub Release** `tekken6-endings-v1`:
+  https://github.com/mhvnsnt/western-heart/releases/tag/tekken6-endings-v1
+  Verified on upload: all 46 filenames + byte sizes match local, SHA-256 spot-check
+  (ann, arm, lar, opening) matches. Too big for git; Release is the canonical store.
+- Local `extracted/movies/` (46 PMF) deliberately left in place per owner directive —
+  nothing was deleted; deletion is the parent's decision, not this teardown's.
+
+### Decryption Path (2026-10-13) — the way to unlock 3D models/stages
+Tools pulled to `~/workspace/tools/tekken-decrypt/` (full master index there). The key
+finding: **only EBOOT.BIN is encrypted (~PSP, key tag 0xD91612F0); ISO data files are plain.**
+Recommended path, in order:
+1. **PPSSPP "Dump Decrypted EBOOT.BIN on game boot"** (Settings → Tools → Developer tools).
+   PPSSPP software-emulates the PSP KIRK crypto engine, so it decrypts ANY `~PSP` tag —
+   including Tekken 6's — with no keys and no PSP hardware. One boot → decrypted ELF.
+   **Blocked: needs a live emulator run with the Tekken 6 ISO, which cannot be done
+   headless.** Exact recipe for the run: install PPSSPP, enable Settings → Tools →
+   Developer tools → "Dump Decrypted EBOOT.BIN", boot `tekken6-psp.iso`, grab the dumped
+   ELF from PPSSPP's directory. Parent to arrange the live run.
+2. Fallback: `kirk_engine/` (PC-side PSP KIRK crypto library, C) — reference implementation
+   for building a PC-side decrypter if PPSSPP is unavailable.
+3. After decryption: GMO models via `p4gmodelconverter/` (ShrineFox's GMO↔MDS converter —
+   the only open-source GMO implementation found) + `noesis_py/` (open-source Noesis API
+   reimplementation for Linux) + `digipet_psp/` (full PSP ROMhacking DecEboot → QuickBMS
+   → GMO/GIM workflow guide). `p3p3ds_prepare_game.py` is the closest ready-made
+   ISO→decrypted-EBOOT Python pipeline.
+4. Archive reversal: once decrypted, reverse-engineer Namco's encrypted index
+   (DATA401.IDX) using the decrypted binary, extract GMO models, convert to OBJ.
+   UModel is ruled OUT for this lane (Unreal only — Tekken 6 PSP is a Namco proprietary engine).
 
 ---
 
@@ -222,13 +255,16 @@ tekken6/
 ## Integration Checklist for Western Heart
 
 - [x] ISO acquired and verified
+- [x] ISO re-downloaded 2026-10-13 (855,638,016 bytes) → Release `tekken6-psp-v1`
 - [x] File structure mapped
 - [x] All 46 videos extracted
+- [x] All 46 ending videos → Release `tekken6-endings-v1` (byte-verified)
 - [x] 42 character reference frames extracted
-- [x] 40-fighter roster documented
-- [x] Customization system researched and documented
-- [ ] Character models extracted (blocked: encryption)
-- [ ] Textures extracted (blocked: encryption)
-- [ ] Stages extracted (blocked: encryption)
-- [ ] Customization item meshes extracted (blocked: encryption)
-- [ ] EBOOT decryption (future RE task if needed)
+- [x] 40-fighter roster documented (verified complete 2026-10-13)
+- [x] Customization system researched and documented (verified complete 2026-10-13)
+- [ ] Decryption path executed — tools staged at `~/workspace/tools/tekken-decrypt/`,
+      blocked on live PPSSPP run (see Decryption Path section)
+- [ ] Character models extracted (blocked: encryption — path documented)
+- [ ] Textures extracted (blocked: encryption — path documented)
+- [ ] Stages extracted (blocked: encryption — path documented)
+- [ ] Customization item meshes extracted (blocked: encryption — path documented)
