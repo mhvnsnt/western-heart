@@ -49,3 +49,8 @@ Owner-directed 2026-10-12. These are outside the core 7 but approved for reskinn
 - **Personality:** A mix of Scar (Lion King) and Jafar (Aladdin) — scheming, manipulative, regal but sinister. The villain who smiles while plotting.
 - **Name:** SCIMITAR (owner-named 2026-10-13 — named for his weapon)
 - **Universe fit:** Eastern Mind — the blade from the desert lands. Pairs with Phantom (sword) as the two blade fighters.
+
+## PURPLE RAIN (Lee Chaolan base, Tekken 7)
+- **Direction:** Flamboyant, stylish, theatrical. The showman who fights like he's on stage.
+- **Name:** PURPLE RAIN (owner-named 2026-10-13 — Prince reference)
+- **Universe fit:** Eastern Mind — the performer soul, fighting as art.
