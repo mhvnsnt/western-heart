@@ -55,3 +55,33 @@ offsets. Any file can be pulled with one HTTP Range request against the
 release parts. Remaining targets: `mission*.ppk` (~100 files, ~10MB each,
 ~1GB total — fetch selectively), `data/light/stage/bg*.lit`,
 `data/kageTest/vgs/mc_stage*.vgs` test stages, `tec/demo/` cutscene data.
+
+## Char PPK inner structure (2026-10-13 probe)
+
+### Header (char001.ppk, 776,960 bytes)
+| Offset | Field |
+|--------|-------|
+| 0 | Magic `ppk\0` |
+| 4 | Total size (LE32) |
+| 8 | Data offset (LE32; **128** for char PPKs, not 512) |
+| 0x10 | Tag `ccnf` (Namco chunk type) |
+| 0x14 | 0x47 (71) — count? |
+| 0x18 | 0x00080000 |
+| 0x1c | 0x00050005 |
+| 0x20 | 0x80012971 — [u16 type=0x8001][u16 offset=0x2971] |
+| 0x24 | 0xa0000a4f — [u16 type=0xa000][u16 offset=0x0a4f] |
+| 0x28 | 0xae00017d — [u16 type=0xae00][u16 offset=0x017d] |
+
+**Offset encoding**: high u16 = type tag, low u16 = offset. Types seen:
+- `0x8001` → data buffer (s16 quantized? at 0x2971)
+- `0xa000` → zero-filled region (at 0x0a4f)
+- `0xae00` → index/bone data (small integers at 0x017d)
+
+### Data regions
+- **0x017d**: byte/integer sequences (01 03 03 00 patterns) — likely bone indices or strip headers
+- **0x2971**: s16 data in range ±30000 — likely quantized vertex positions (scale unknown)
+- **0x0660**: identity quaternions (1.0, 0, 0, 0) — bone bind poses
+
+### Open
+Vertex scale/stride, index buffer format, UV/normal layout. The s16 quantization
+scale factor is the key unknown. Compare against known Urban Reign model dimensions.
