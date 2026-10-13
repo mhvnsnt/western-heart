@@ -5,10 +5,10 @@
 **Platform:** Nintendo GameCube (Game ID `GW9E78`)
 **Roster:** ~40 WWE wrestlers. **Revenge Mode:** mission-based objectives in settings beyond the ring.
 **Create-a-Wrestler / Shopzone:** upgrade economy (attire, weapons, moves, ability points) informs the chimera customization meta-progression.
-**Last updated:** 2026-10-13 (full rewrite — canonical doc)
+**Last updated:** 2026-10-13 (full asset extraction: 111 wrestler slots, 170 YANM clips, CAW catalog, arena textures)
 
 **Directory layout (this teardown has two homes):**
-- `teardown/wmxix/` — **arena/stage integration lane**: `ARENA-UNIVERSE-MAP.md` (every arena → Western Heart stage), `arenas/` (43 decoded OBJ point clouds + `ARENA-FORMAT.md` + extraction tools), this doc.
+- `teardown/wmxix/` — **arena/stage integration lane**: `ARENA-UNIVERSE-MAP.md` (every arena → Western Heart stage), `arenas/` (40 decoded OBJ point clouds + `ARENA-FORMAT.md` + extraction tools), `wrestlers/` (126 wrestler OBJs, all slots 000–110), `animations/` (170 decoded YANM clips), `caw-parts/` (2,690-file CAW catalog), `textures/` (1,167 arena PNGs), this doc.
 - `teardown/wwe-wrestlemania-xix/` — **format research lane**: `docs/` (measured format specs), `tools/` (26 decoder/analysis tools), `objs/` (eye-verified strip OBJs), `YANM-FORMAT.md`, `YOBJ-SKINNING-NOTES.md`, `WRESTLER-SKELETON.md`.
 - Research log: `docs/WMXIX-TEARDOWN.md` (running notes). Full file listing: `docs/WMXIX-FILE-LISTING.txt`.
 
@@ -65,6 +65,14 @@ Streaming FST parse via `tools/gcn_fst.py` (pure-stdlib GCN disc FST reader; no 
 - **Skinning — per-batch bone bind REJECTED** (`../wwe-wrestlemania-xix/YOBJ-SKINNING-NOTES.md`): hierarchical/inverse-bind/translation-only/local-matrix transforms all scattered; 6 axis permutations all scattered. The elbow (rigid CAW part) renders coherent, so s16/64 is valid — wrestler batches need per-VERTEX weights from an unlocated table, or positions are delta-encoded. OPEN
 - Note: `000_0.ymg` == `000_1.ymg` byte-identical (69,176 B) — the `_1` alt attire is texture-only
 
+**Full roster extraction (2026-10-13):** all 111 slots `model/wrestler/000–110` processed
+(`wrestlers/`, `EXTRACTION-MANIFEST.txt`; tool: `extract_wrestlers.py`):
+- **126 OBJs, 62,034 verts, 44,233 tris** across 78 slots
+- Batch-table locator: longest run (≥3) of 8-byte records `[bone][count][00][count][u16 0][u16 off-rel-0x80]` at 8-alignment, with the **byte1==byte3 (count duplicated) discriminator** — kills all false-positive runs, preserves every validated table 10/10
+- 9 `_2` variants are **DUMY placeholders** (no mesh); 34 slots (021, 060–080, 086–089, 098, 103–109) have **no .ymg at all** (tex+ycg only)
+- 6 files are YOBJ sub-variants (v1: 110_0, v2: 100_0/101_0/102_0, named-bone v4: 096_0/097_0) with a different batch layout — extracted via **smooth-pool scan fallback** (`*_pools.obj`, heuristic, batch boundaries unknown)
+- Byte-identical variants deduped per slot (e.g. 000_1 == 000_0)
+
 ## 5. YANM Animation Format — Decoded (2026-10-13, PR #26)
 
 Measured against 170 `ringmotion/*.yag` files; streaming from ISO. Full spec: `../wwe-wrestlemania-xix/YANM-FORMAT.md`. All fields big-endian.
@@ -81,18 +89,32 @@ Measured against 170 `ringmotion/*.yag` files; streaming from ISO. Full spec: `.
 
 **Mapping evidence:** `docs/yanm-track-joint-map.json` (29-track table × 3 clips), `docs/yanm-task2-finish.json` (dual-A semantics, chain assignment, hinge axes), `docs/yanm-rec3-rule.json` (rec3 = −(rec1+rec2) proof), `docs/ycg-group-mapping.json`. Probe tools: `yanm_census.py`, `yanm_track_probe.py`, `yanm_keyseg.py`, `yanm_semantics.py`, `yanm_unitfit.py`, `yanm_gait.py`, `yanm_hashscan.py`.
 
+**Full clip decode (2026-10-13):** all **170 `ringmotion/*.yag` → `animations/*.json`**
+(tool: `extract_yanm.py`). Each JSON: header (payload size, sec_per_tick, params),
+29 tracks (hash → anatomy via `ycg-group-mapping.json`, single/dual, key counts,
+tick totals, est. seconds), and every key decoded — single keys as
+`[dt, ch1_s16, ch2_s16, asin_deg1, asin_deg2]`, dual-A as `[dt, flags, value_s16, value_deg]`
+(A-stream 8-byte head stored raw hex), dual-B same as single. Leg-group tracks
+(BD5B2A59/BD5B5259) also carry the half-angle series (`2·unwrap(atan2(c2,c1))`).
+`.atr` companions included as raw 16-byte records. 169/170 decode clean;
+`c138_0a.yag` is a **72-byte stub** (wrong magic words, no track directory).
+
 ## 6. Arenas — Decoded + Mapped to Western Heart
 
-- **43 arena OBJ point clouds decoded** (see §4a; `arenas/`), extraction PR #20 merged
+- **40 arena OBJ point clouds decoded** (see §4a; `arenas/`). The 43-file filter matches 43 `.ymg` files, but `c_mat.ymg`, `dummy_x8.ymg`, `mat.ymg` contain **zero vertices** (material/dummy files) — 40/43 is complete.
+- **Arena textures decoded (2026-10-13):** `.tex` container format cracked — `[u32 LE count][u32 0x10000][u32 0][u32 0x10]` + count × `[16B name]["tpl\0"][u32 LE size][u32 LE offset][u32 0]`; each entry is a standard GameCube **TPL** (magic `0x0020AF30`), decoded with new `decode_tpl.py` (I4/I8/IA4/IA8/RGB565/RGB5A3/RGBA8/C4/C8/C14X2/CMPR + palettes). **Validated against ground truth:** the artist's source `.tga` for `tq0_417` (left on disc next to its `.tpl`) — mean abs diff 4.2/255; eye-verified `ring/ar_a3.png` = WWF.com ring-apron banner.
+- **1,167 PNGs** in `textures/` (19 of 43 arenas have same-basename `.tex`; `TEX-MANIFEST.txt`). No `.tex` on disc for: `01`, all `*_ad2` LODs (share base textures), `add_x8/eff_x8/gt_x8/scr_x8/scr_wm/post/c_mat/mat/dummy_x8` (untextured pieces). Doc: `textures/README.md`; extractor: `extract_arena_textures.py`.
 - **`ARENA-UNIVERSE-MAP.md`** (PR #18): ~45 arena configurations inventoried; **all 7 Western Heart stages mapped to WMXIX donors**. Principle: WMXIX gives **geometry** (arena layouts, wall structures, outdoor environments, cage frameworks); Eastern Mind gives **soul** (bitmaps, textures, atmosphere, meaning)
 - Mapping summary: `bg/00` → Helix Palace (Stage 2, walled); `bg/01` → Octagonal Shrine Par-Fang (Stage 6, walled); `bg/02` → Phantom Marketplace (Stage 5); Revenge Mode outdoor slots (A/C/F/H/P/S/T, 35 env packages) → Plains of Chi-U / Tree of Life / Palace of Dreaming (open stages); `bg/bs/` backstage interiors → Helix interior rooms; `bg/cage/hell.pac` (Hell in a Cell) → **The Drill Wound** (Stage 7 secret — the most direct mapping in the set); `cage.pac` → cage-match concept; prop libraries (`object/` 61, `placard/` 51, `weapon/` 61) → stage dressing
 - Decode priority: `hell.pac` → `bg/00` → `bg/01` → one open Revenge Mode environment → `bg/02` → remaining
 - Pipeline: decoded arena → OBJ → Blender cleanup (strip WWE branding, rescale to 16.8-unit combat plane) → Eastern Mind retexture → Godot 4 import
 
-## 7. CAW edit_data — Structure Mapped, Save Blocked (PR #27)
+## 7. CAW edit_data — Structure Mapped, Catalog Complete (PR #27)
 
-- `edit_data/MODEL/{Man,Woman}/{Category}/{style}_{variant}/{l0,r0}.ymg` — 1,213 part meshes (YOBJ v0x00030001, same as wrestler). 10 categories (Elbow, Face, Gears, Gloves, Hair, Knee, Lower_Body, Shoes, Upper_Body, Wrist); Man Face 77 styles / Hair 76 / Gears 140; Woman similar
-- `edit_data/TEX/64gara/` — 1,469 part textures; `edit_data/COL/` — 8 `.ycg` (2× 2,356 B skeleton-size + 6 small palette/override files)
+- `edit_data/MODEL/{Man,Woman}/{Category}/{style}_{variant}/{l0,r0}.ymg` — 1,200 part meshes (YOBJ v0x00030001, same as wrestler). 10 categories (Elbow, Face, Gears, Gloves, Hair, Knee, Lower_Body, Shoes, Upper_Body, Wrist); Man Face 77 styles / Hair 76 / Gears 140; Woman similar
+- `edit_data/TEX/64gara/` — 1,470 part textures; `edit_data/COL/` — 8 `.ycg` (2× 2,356 B skeleton-size + 6 small palette/override files)
+- **Full catalog (2026-10-13):** all **2,690 files** listed with sizes + content signatures in `caw-parts/files.tsv` + `caw-parts/CATALOG.md` (tool: `catalog_caw.py`; files stay on ISO, 54.3 MB total). YOBJ versions present: v00030001 (754), v00040001 (175), v00040002 (32), v00040003 (31), v00030002 (3), v00000000 (3); 202 DUMY placeholders.
+- **Artist working files left on disc:** `MODEL/Woman/Face/tq0_417/` contains the source `.tga` art, a `.tm2` (PS2 TIM2), 2 `.psd` (Japanese filenames), a `.tpg`, and `tq0_417_TPL/` with 2 cooked `.tpl` + `script.txt` revealing the build path `D:\MAX_Wwfgc2\edit\woman1\edit_face_woman\mouth\tex\` — this pair validated the TPL decoder (§6). 3 `.ymm` files under `MODEL/Woman/Hair/` (Yukes material format, unexamined).
 - Doc: `../wwe-wrestlemania-xix/docs/CAW-EDIT-DATA-WMXIX.md`
 - **Blocked:** the created-wrestler SAVE lives on the GameCube memory card, not the ISO. Unblocking needs: Dolphin + ISO → create a CAW with known values → export the `.gci` → diff against the part-id tables. Without a real save, field order/string encoding/stats layout cannot be determined from the ISO alone
 
@@ -127,6 +149,16 @@ Measured against 170 `ringmotion/*.yag` files; streaming from ISO. Full spec: `.
 
 No Mercy-side tools for the AKI path: `../wwf-no-mercy/tools/anim_extract.py`, `../wwf-no-mercy/aki_to_tekken3.py`.
 
+**Full-extraction tools (2026-10-13, this lane):**
+
+| Tool | What it does |
+|---|---|
+| `extract_wrestlers.py` | All 111 wrestler slots → OBJ (batch-table locator + pool-scan fallback + DUMY detection + per-slot dedupe; writes `wrestlers/EXTRACTION-MANIFEST.txt`) |
+| `extract_yanm.py` | All 170 `ringmotion/*.yag` → `animations/*.json` (full key decode, hash→anatomy, `.atr` companions) |
+| `catalog_caw.py` | All 2,690 `edit_data/` files → `caw-parts/files.tsv` + `CATALOG.md` |
+| `decode_tpl.py` | GameCube TPL → PNG (all 11 texture formats + palettes; validated vs artist `.tga`) |
+| `extract_arena_textures.py` | `.tex` container parse → TPL carve → `textures/<arena>/*.png` (`TEX-MANIFEST.txt`) |
+
 ## 10. What's Blocked and Why
 
 1. **Arena face indices** — u16 chunks at material index offsets are mixed data, not clean indices. Parse mesh descriptors at 0x0830+ to link vertex arrays → index arrays, or Poisson-reconstruct the point clouds. (Geometry is usable as point clouds; faces needed for real stage builds.)
@@ -134,7 +166,7 @@ No Mercy-side tools for the AKI path: `../wwf-no-mercy/tools/anim_extract.py`, `
 3. **Wrestler per-vertex skinning** — per-batch bone bind matrices rejected by measurement; need the weight table or the true position-pool semantics. (Rigid CAW parts decode clean; skinned wrestlers need this.)
 4. **CAW save-record layout** — blocked on a real Dolphin `.gci` memory-card dump (see §7).
 5. **Revenge Mode slot→location identities** — which lettered slot (A0–A4, C0–C2, F1–F6, H3–H9, P0–P3, S0–S5, T0–T3) is the construction site vs parking lot vs mall. Decodes will identify visually; doesn't block the type-based universe mapping.
-6. **`.tex` texture decoding** — texture format unexamined (TPL/TXTR check open).
+6. **Wrestler per-vertex skinning for the 6 sub-variant files** — 096_0/097_0 (named-bone v4), 100_0/101_0/102_0 (v2), 110_0 (v1): pool-scan OBJs exist, batch tables unlocated.
 
 ## 11. Chimera Build Value
 
