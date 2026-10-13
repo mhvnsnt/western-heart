@@ -65,3 +65,8 @@ Owner-directed 2026-10-12. These are outside the core 7 but approved for reskinn
 - **Direction:** The demon. Street Fighter's Akuma as he appears in Tekken 7 — the raging demon, master of the Satsui no Hado.
 - **Name:** DIO (owner-named 2026-10-13)
 - **Universe fit:** Eastern Mind — the demon soul, pure destructive force. A natural fit for the trial's darker trials.
+
+## CYBORG X (Alisa Bosconovitch base, Tekken 7)
+- **Direction:** The android. Alisa is already a combat robot in Tekken canon — lean into it fully. Detachable head, chainsaw arms, jetpack.
+- **Name:** CYBORG X (owner-named 2026-10-13)
+- **Universe fit:** Eastern Mind — the built soul (like SAM-UR-A1). What does a machine do in a trial for souls?
