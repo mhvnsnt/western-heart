@@ -63,4 +63,38 @@ Location: `~/workspace/game-reverse-engineering/tekken3/renders/king/textures/re
 ## Motion Banks (divmot) — verified 2026-10-12
 - BNS IDs 280–300 = divmot types 0–20 (ID 279 = divmot99 common bank). ID 283 = type 3 = **King** (confirmed via n0madic ai.md hooks table; header byte 0x01 == 3).
 - BNS table offsets are SECTOR numbers: byte_offset = table_offset × 2048 into TEKKEN3.BNS.
+- NOTE: BNS ID 295 (type 15, Mokujin) has size 0 in this local disc image — divmot15 is absent locally.
 - Extracted: `animations/divmot03_king.bin` (403,732 bytes, 652 move rows).
+
+### divmot type → character map (verified 2026-10-13)
+Derived from n0madic `docs/research/bns-original-index.md`: each divmotNN sits in the
+4th slot of its character's model group (kmd, vh, arc, divmot), cross-checked
+against the AI hooks table (`ai.md`: bank 0=Paul, 3=King, 4=Yoshimitsu, 6=Hwoarang,
+10=Julia, 13=Heihachi, 14=Ogre, 16=Gun Jack, 19=Gon). Header byte 0x01 of each
+extracted bank == its type. Every extracted bank's SHA-256 matches n0madic's
+original-disc index exactly.
+
+| Type | Character | Local BNS ID | Extracted file | Size | SHA-256 (n0madic) |
+|---:|---|---|---:|---|---|
+| 0 | Paul | 280 | divmot00 (not yet extracted) | 313472 | 06f6447a… |
+| 1 | Law | 281 | divmot01 (not yet extracted) | 313308 | 14f83938… |
+| 2 | Lei | 282 | divmot02 (not yet extracted) | 318524 | bd795779… |
+| 3 | King | 283 | divmot03_king.bin | 403732 | 8ae24919… |
+| 4 | Yoshimitsu | 284 | divmot04_yoshimitsu.bin | 327920 | f99859bc… |
+| 5 | Nina | 285 | divmot05 (not yet extracted) | 333384 | 50430e78… |
+| 6 | Hwoarang | 286 | divmot06 (not yet extracted) | 312268 | d0b5b43a… |
+| 7 | Xiaoyu | 287 | divmot07_xiaoyu.bin | 326972 | cd558158… |
+| 8 | Eddy / Tiger | 288 | divmot08 (not yet extracted) | 336652 | 0383ddb2… |
+| 9 | Jin | 289 | divmot09_jin.bin | 328396 | 5ac9fef4… |
+| 10 | Julia | 290 | divmot10 (not yet extracted) | 267924 | d4c8ce91… |
+| 11 | Kuma / Panda | 291 | divmot11 (not yet extracted) | 285432 | 77804b1f… |
+| 12 | Bryan | 292 | divmot12_bryan.bin | 264372 | 07e00019… |
+| 13 | Heihachi | 293 | divmot13_heihachi.bin | 268796 | 9567b139… |
+| 14 | Ogre / True Ogre | 294 | divmot14 (not yet extracted) | 315396 | f0c14b35… |
+| 15 | Mokujin | 295 | — MISSING locally (size 0) | 127368 | 5cead15f… |
+| 16 | Gun Jack | 296 | divmot16_gunjack.bin | 316944 | 7f35c9fb… |
+| 17 | Anna | 297 | divmot17 (not yet extracted) | 314684 | 16886320… |
+| 18 | Dr. Bosconovitch | 298 | divmot18 (not yet extracted) | 332372 | 130ee660… |
+| 19 | Gon | 299 | divmot19 (not yet extracted) | 322196 | d28e5e77… |
+| 20 | Forest Law | 300 | divmot20 (not yet extracted) | 106948 | 0aaf8799… |
+| 99 | Common bank | 279 | divmot99 (not yet extracted) | 240468 | 2a8c754a… |
