@@ -54,20 +54,31 @@ Full table: `game-reverse-engineering/wwe-wrestlemania-xix/docs/WRESTLER-SKELETO
   located, position array not yet). No mesh OBJ exported yet.
 
 ### Animations
-- `ringmotion/`: 340 files — `.yag` (YANM, median 38.6KB) + `.atr` companions.
-  **They are ENTRANCE animations** — disc `ringmotion/cnv.bat` shows Yukes'
+- `ringmotion/`: YANM skeletal anims (`.yag` magic YANM) + `.atr` metadata.
+- YANM track directory decoded (29×32B records): **21 tracks = the 21
+  joint-groups of the .ycg animation rig** (hash-matched, universal across
+  wrestler slots) + 8 unknown static tracks (2nd performer/camera/prop?).
+- Key format: 5B keys = (32767·sin α, dt, 32767·sin β), dt = middle byte
+  (delta); hinge angle = asin(s16/32767); header [0x3C] = seconds/tick.
+- **Anatomical mapping (task-3, 2026-10-12)**: ycg groups → body parts with
+  confidence: **BD5B2A59/5259 = LEGS (HIGH)** — segment ratio 0.991 =
+  thigh:calf 1.004, dominant gait motion; **6198F425/4D5 = ARMS
+  (MED-HIGH)** — ratio 1.179 ≈ upperarm:forearm 1.136; two extra mirrored
+  3-hinge chains (7AD45E02, 6865B2C0) UNRESOLVED; core/singles mostly
+  unresolved. Full table:
+  `~/workspace/game-reverse-engineering/wwe-wrestlemania-xix/docs/ycg-group-mapping.json`.
+- Retargeting path: YANM track → ycg group → anatomical joint → Tekken
+  skeleton joint (task-4 test in progress).
+- They are ENTRANCE animations — disc `ringmotion/cnv.bat` shows Yukes'
   `yma2yag` converting `Nyujo_YMA/*.yma` (Nyujo = 入場 = "entrance") → `*.yag`.
-  Letter groups a/b/c/d = 68/46/208/12.
+  Letter groups a/b/c/d = 68/46/208/12; median `.yag` 38.6KB.
 - YANM: 56-byte header ("YANM", payload size, `0x011F0000`, `0xCD89A39E`);
   **track directory at 0x50–0x3EF: 29 × 32B records** — (u32 joint_hash,
   u32 trackA_off|0, u32 keystream_off, u32 0, f32×3, u32 keycount_word).
   Single tracks: keycount keys × 5B (s16 x, u8 dt, s16 y) at keystream_off.
   Dual tracks: keycount packs (countA<<16)|countB; track A = countA × 4B
-  (s16,s16) keys, track B = countB × 5B keys. 8 static 1-key tracks use
-  hashes in no wrestler's ycg (camera/prop/2nd-performer candidates, open).
-- OPEN: exact channel→quat-component mapping (dual-track semantics, dt time
-  unit); ycg-group → ymg-bone anatomical mapping; then the Tekken 3 retarget
-  test.
+  (s16,s16) keys, track B = countB × 5B keys.
+- OPEN: dual-A value semantics; 2ch→3rec assignment; ycg-Y→L/R; 8 unknown tracks.
 
 ### Create-a-Wrestler (directly reusable)
 - `edit_data/MODEL/{Man,Woman}/{Elbow,Face,Gears,Gloves,Hair,Knee,Lower_Body,Shoes,Upper_Body,Wrist}/…/{l0,r0}.ymg`
@@ -84,8 +95,8 @@ Full table: `game-reverse-engineering/wwe-wrestlemania-xix/docs/WRESTLER-SKELETO
 2. **CAW parts**: YOBJ part files drop straight into a creation suite.
 3. **AKI systems**: No Mercy's move-attribute tables + CAW preset format inform
    the wrestling-systems layer.
-4. Next: crack YOBJ vertex positions → export reference mesh; decode YANM
-   tracks → first retarget test onto a Tekken 3 model.
+4. Next: crack YOBJ vertex positions → export reference mesh; task-4 retarget
+   test (Yukes YANM → Tekken 3 King model) in progress.
 
 ## Sources (steal-like-an-artist)
 Binaries cataloged with SHA-256 in `teardown/TEARDOWN-SOURCES.md`. Full RE docs:
