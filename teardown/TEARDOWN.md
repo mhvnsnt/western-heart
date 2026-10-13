@@ -26,8 +26,10 @@ Gadge64/WWFNoMercyRecomp (both cloned locally).
 
 ### Formats (all magic-verified)
 - `.ymg` = **YOBJ** (mesh). `.yag` = **YANM** (skeletal animation).
-  `.atr` = **DATA** (per-animation 16-byte metadata records). `.ycg` = joint file
-  (no magic, header u32 = 42). `.tex` = textures.
+  `.atr` = **DATA** (per-animation 16-byte metadata records). `.ycg` = **animation
+  rig** (no magic, header u32 = 42; v3-verified 2026-10-12: 21 unique joint
+  hashes matched by YANM tracks — separate from the 70-bone `.ymg` render rig).
+  `.tex` = textures.
 
 ### The skeleton — FULLY DECODED (retargeting gold)
 `model/wrestler/000_0.ymg` bone table: **70 bones**, 64-byte slots —
@@ -37,7 +39,10 @@ UpperArm→{twist helper, Forearm→Hand→{15 finger bones/side}}};
 Pelvis→{L/R Thigh→{twist, Calf→Foot→Toe0}}. L/R symmetric (verified).
 Full table: `game-reverse-engineering/wwe-wrestlemania-xix/docs/WRESTLER-SKELETON.md`
 + `wrestler-skeleton-000.json`.
-- `.ycg`: 42 joints; 30 finger + 12 facial = 42 exactly (hypothesis, unverified).
+- `.ycg` is the **animation rig** (42 records, 21 unique joint hashes —
+  v3 verified 2026-10-12): 21 of 29 YANM track hashes match it exactly.
+  The 70-bone `.ymg` is the separate render rig. ycg hash sets are universal
+  across all 111 wrestler slots → one YANM decode retargets everywhere.
 
 ### Models
 - `model/wrestler/`: 111 slots (000–110), each `_0` = base (`.tex`+`.ymg`+`.ycg`),
@@ -50,10 +55,19 @@ Full table: `game-reverse-engineering/wwe-wrestlemania-xix/docs/WRESTLER-SKELETO
 
 ### Animations
 - `ringmotion/`: 340 files — `.yag` (YANM, median 38.6KB) + `.atr` companions.
-  Letter groups a/b/c/d = 68/46/208/12 (likely move categories).
-- YANM: 56-byte header ("YANM", payload size, `0x011F0000`, `0xCD89A39E`,
-  section offsets); s16 keyframe delta streams; per-frame delta ≈ 0.02797s.
-- OPEN: track→joint mapping, frame counts.
+  **They are ENTRANCE animations** — disc `ringmotion/cnv.bat` shows Yukes'
+  `yma2yag` converting `Nyujo_YMA/*.yma` (Nyujo = 入場 = "entrance") → `*.yag`.
+  Letter groups a/b/c/d = 68/46/208/12.
+- YANM: 56-byte header ("YANM", payload size, `0x011F0000`, `0xCD89A39E`);
+  **track directory at 0x50–0x3EF: 29 × 32B records** — (u32 joint_hash,
+  u32 trackA_off|0, u32 keystream_off, u32 0, f32×3, u32 keycount_word).
+  Single tracks: keycount keys × 5B (s16 x, u8 dt, s16 y) at keystream_off.
+  Dual tracks: keycount packs (countA<<16)|countB; track A = countA × 4B
+  (s16,s16) keys, track B = countB × 5B keys. 8 static 1-key tracks use
+  hashes in no wrestler's ycg (camera/prop/2nd-performer candidates, open).
+- OPEN: exact channel→quat-component mapping (dual-track semantics, dt time
+  unit); ycg-group → ymg-bone anatomical mapping; then the Tekken 3 retarget
+  test.
 
 ### Create-a-Wrestler (directly reusable)
 - `edit_data/MODEL/{Man,Woman}/{Elbow,Face,Gears,Gloves,Hair,Knee,Lower_Body,Shoes,Upper_Body,Wrist}/…/{l0,r0}.ymg`
