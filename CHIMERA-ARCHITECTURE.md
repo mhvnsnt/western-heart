@@ -41,6 +41,25 @@ the Tekken you know, warped through Tong-Nou's dreaming head, carrying DNA from
 every fighting game worth stealing from. Familiar enough to pick up, strange
 enough to never put down.
 
+## WRESTLER MODEL SEPARATION (owner 2026-10-13)
+Wrestling GAMES stay in the federation — their mechanics (moveset slots, CAW parts,
+AKI grappling, arena traversal) are Western Heart DNA. But wrestler CHARACTER MODELS
+move OUT to a separate game.
+
+- **Western Heart keeps:** everything EXCEPT wrestler models. All mechanics, all
+  systems, all non-wrestler characters, all stages, all audio.
+- **Wrestler models go to:** `mhvnsnt/wrestling-game` — the standalone wrestling game.
+  All 2,826 models from WWF No Mercy + WWE WrestleMania XIX, plus future pulls
+  (Def Jam: Fight for NY, WWE 2K-style models from DeviantArt).
+- **Why:** art style mismatch. Wrestler models are realistic; Western Heart fighters
+  are stylized fighting-game characters. They don't belong in the same roster visually.
+- **Exception:** a wrestler model MAY come into Western Heart ONLY with a deep
+  reskin to match the WH art style. Default is separation.
+
+WWE animations CAN work in a Tekken-style engine — Def Jam: Fight for NY proved
+wrestling/grappling animations work inside a 3D fighter. The animation data stays
+federated; the character models live in the wrestling game.
+
 ## TRANSFORMATION LAW (owner 2026-10-13)
 100% of every teardown game gets incorporated into Western Heart somehow, somewhere. But nothing stays proprietary to the source — everything gets transformed into Western Heart's own through editing, owner alterations, AI generation/alteration, and whatever we can pull in.
 
