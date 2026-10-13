@@ -385,7 +385,9 @@ They all climb the same ladder. They all reach the same shrine. They all face th
 
 **Not a fighter. A realm.** Sun Rā (Pac-Man base) rules over his own arena — a ravenous, bloodthirsty sun in cute evil form. Malakor/Malakortok style: a soul eater who makes anyone in his realm fight to the death for their souls.
 
-He is Shao Kahn as a cute evil sun. He puts souls through endless tiers and twenties of **Immortal Qombat** — death tournaments where the prize is keeping your soul and the cost of losing is becoming part of him.
+He is Shao Kahn as a cute evil sun. He puts souls through endless tiers and twenties of **不死クォンバット** (fushi kwonbatto — "Immortal Qombat") — death tournaments where the prize is keeping your soul and the cost of losing is becoming part of him.
+
+**Naming rule (owner 2026-10-13):** It is always spelled and spoken in Japanese — 不死クォンバット — EXCEPT when Sun Rā himself says it. He says "Immortal Qombat" in English. Only he gets the English version.
 
 Sun Rā does not fight in the tournament. He IS the tournament — or one of them. His arena is a pocket realm where the trial's rules don't apply. Souls who wander in don't climb the ladder. They fight until they're eaten or they eat.
 
