@@ -86,3 +86,9 @@ Owner-directed 2026-10-12. These are outside the core 7 but approved for reskinn
 - **Direction:** The assassin. Anna's ruthless, elegant lethality — Nina's sister, darker edge.
 - **Name:** TORCH (owner-named 2026-10-13)
 - **Universe fit:** Eastern Mind — the flame that burns. Pairs with Awa Pop (Nina) as the sister rivalry.
+
+## BRUNO (Miguel Caballero Rojo base, Tekken 7)
+- **Direction:** Spanish brawler with raw street-fighting power. Miguel's aggressive, emotional fighting style.
+- **Personality:** The Weeknd mixed with Bruno Mars, mixed with Boomhauer (King of the Hill), mixed with Johnny Bravo. Moody R&B mystery + smooth showman + mumbling laid-back drawl + vain pretty-boy swagger. A beautiful mess.
+- **Name:** BRUNO (owner-named — Miguel is Bruno)
+- **Universe fit:** Eastern Mind — the heartbreak soul, fighting with emotion.
