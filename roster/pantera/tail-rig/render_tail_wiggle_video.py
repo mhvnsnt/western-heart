@@ -53,7 +53,10 @@ widthx = maxx - minx
 widthy = maxy - miny
 
 # ---- Tail curve -> mesh (same geometry as committed rig) ----
-tail_base = Vector((maxx - widthx * 0.06, cy + 0.0, 0.09))
+# Owner-placed 2026-10-12 via Model 3D Placement Tool (X=-0.04 Y=0.045 Z=0 Scale=1):
+# nudge -0.04 in X, +0.045 up from the auto surface point so the tail
+# sits exactly on the body surface.
+tail_base = Vector((maxx - widthx*0.06 - 0.04, cy + 0.0, 0.09 + 0.045))
 L = height * 0.28
 
 bpy.ops.curve.primitive_bezier_curve_add(location=tail_base)
