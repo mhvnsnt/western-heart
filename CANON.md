@@ -378,3 +378,15 @@ They all climb the same ladder. They all reach the same shrine. They all face th
 
 *Canon document 2026-10-12. Owner concepts are locked and marked. Connective tissue may grow — contradict nothing.*
 *The owner's game. Built from understanding, not imitation.*
+
+---
+
+### PAC-MAN — The Soul-Eating Sun (Boss)
+
+**Not a fighter. A realm.** Pac-Man rules over his own arena — a ravenous, bloodthirsty sun in cute evil form. Malakor/Malakortok style: a soul eater who makes anyone in his realm fight to the death for their souls.
+
+He is Shao Kahn as a cute evil sun. He puts souls through endless tiers and twenties of **Immortal Qombat** — death tournaments where the prize is keeping your soul and the cost of losing is becoming part of him.
+
+Pac-Man does not fight in the tournament. He IS the tournament — or one of them. His arena is a pocket realm where the trial's rules don't apply. Souls who wander in don't climb the ladder. They fight until they're eaten or they eat.
+
+*Owner-directed 2026-10-13. Pac-Man's arena is a boss realm, not a standard stage.*
