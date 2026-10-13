@@ -575,4 +575,68 @@ side A/B → anatomical R/L is PROVISIONAL (unresolved).
   (tools/yanm_to_tekken3.py: a000_0a entrance → King 49-channel pose seq,
   465f @30fps, FK joints pelvis/chest/hips/head/shoulders; verified numeric +
   plot; legs/IK = v2)
-- [ ] Compare Yukes vs AKI animation approach
+- [x] Compare Yukes vs AKI animation approach — DONE 2026-10-13
+  (docs/YUKES-VS-AKI-ANIMATION.md)
+- [x] .atr record semantics — DONE 2026-10-13 (event timeline, not duration;
+  see "Cycle 2026-10-13 (a)–(f)" below)
+
+## Cycle 2026-10-13 (a)–(f) — MEASURED
+
+### (a) YOBJ batch-table per-field semantics → docs/YOBJ-BATCH-SEMANTICS.md
+- 16B records at `[0x5C]` (58 for 000_0.ymg): (u0 off@0x80, u1, u8 b8,
+  u16 marker, u8 variant, u32 count). **count = number of 4-byte payload
+  units** (delta=count×4 on 40/58). Payload = (u16,0) pairs, coord-scale
+  0–4096, strip-like repetition.
+- Records 1–7 share u0=0x61C0; counts sum to 128 = rec0 count → rec0 is a
+  group header. marker_hi = b8−1 (v=2, 51/52). b8 (0x03–0x46) is NOT bone
+  (incoherent within groups) — likely material/part id.
+- Payload NOT indices into any located pool (s16x3 pools at [0x80,0x6240)
+  and [0x240,0x6240) both REJECTED); NOT (x,y) verts (2D plot = scribble).
+  Exact payload semantics, u1, b8, material linkage: OPEN.
+- Working assembly stays the 13 skin batches → 606 verts → 58 strips →
+  383 tris (`tools/yobj_strips.py`).
+
+### (b) .atr DATA decode — MEASURED (negative result)
+- 167 `.atr` files. Structure: `"DATA"` magic, 32B header
+  (record_count@0x0C, record_size=16@0x10, 0x34xxxxxx@0x18), then 16B
+  records `(u32 type, u32 count, u32 tag, u32 flags)`; tag often
+  `0x34000000|time` or `"POF0"`.
+- 0x34xxxxxx = **event times in YANM dt ticks** (within tick range,
+  incrementing; e.g. a000_0a: 157/190/370).
+- The max event time does NOT equal the YANM max tick total (6 clips:
+  370 vs 930, 425 vs 1147, 318 vs 911, 528 vs 1319, 1633 vs 1949,
+  473 vs 1289). Ratios 1.2–2.9, not a clean unit.
+- CONCLUSION: the `.atr` is an **event timeline**, not a duration record.
+  No single authoritative clip-duration field exists in `.atr`; the
+  animation duration is the YANM per-track max dt-sum (hold-last).
+
+### (c) A-stream first-8B + w24 + f32-triple — MEASURED
+- First-8B: two styles. Sparse (a.yag): `C13FC13F 00000000` magic-like,
+  then real keys at +8 (`(0,0,118)`=HOLD, `(32258,251,2)`=ANGLE).
+  Dense (a000_0a): `C24006C2 40C24002` (2 key-like structs). ca=1 duals
+  have a bare 4B key, no header room. Interpretation OPEN (header vs keys).
+- w24: nonzero ONLY on duals; always tiny (0–0.00016 as f32). Not a gain
+  (would be negligible vs s16 B). Semantics OPEN.
+- f32-triple: nonzero ⟺ non-degenerate dual; 0C5BF279 (ca=1) = (0,0,0).
+  Values vary per clip (e.g. 7CC9B660: (0.003,0.002,0.010),
+  (0.002,−0.003,−0.269), (0.006,−0.027,−0.910)). Semantics OPEN.
+
+### (d) 8 unknown track identities — MEASURED (still open, narrowed)
+- 0/175 `.ycg` files (154 wrestler + 21 bg/viewer/COL). Present in ALL
+  `.yag` (ringmotion + viewer/motion, same 29-track layout).
+- 7/8 static (n=1) in most clips; **A4955E6E animates (n=10, 30°/58°)
+  in c000_0a**. L/R-paired values: 579B8E50≡579B89D0=(0°,79.9°);
+  007FD58C≈1E7FD58C=(44.1°,∓44°).
+- Static 80°/44° bends + pairing → finger/facial subset or simplified
+  2nd-performer rig are leading hypotheses. Identity OPEN.
+
+### (e) CAW edit_data layout → docs/CAW-EDIT-DATA-WMXIX.md
+- `edit_data/MODEL/{Man,Woman}/{10 categories}/{style}_{variant}/{l0,r0}.ymg`
+  (1,213 files); style counts per category measured; `edit_data/TEX`
+  (1,469); `edit_data/COL` (8 `.ycg`).
+- Save-record byte layout still **blocked** on a real `.gci` memory-card
+  dump (precise input spec in the doc).
+
+### (f) Yukes-vs-AKI animation comparison → docs/YUKES-VS-AKI-ANIMATION.md
+- Frames (AKI: 25 joints × 98 B, s8 degrees) vs tracks (Yukes: 29 streams,
+  s16 sin-encoding, 1-DOF hinges, dual common-mode factorization).
