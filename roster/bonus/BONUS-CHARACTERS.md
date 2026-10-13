@@ -36,3 +36,10 @@ Owner-directed 2026-10-12. These are outside the core 7 but approved for reskinn
 - **Curse:** His hunger is a curse — a gluttonous transformation. The fat form is the cursed form.
 - **Uncursed attire:** Slim Bob (Tekken Tag 2 — not a separate character in Western Heart) — the uncursed form, freed from hunger. Available as an alternate attire, not a roster slot.
 - **Universe fit:** Eastern Mind — a soul consumed by appetite, one of the hungriest ghosts. The curse/uncurse dynamic mirrors the soul purification theme.
+
+## AWA POP (Nina Williams base)
+- **Direction:** Bubbles (blue Powerpuff Girl) to complete the trio with Saku Ra (Blossom) and Kinpo (Buttercup).
+- **Name origin:** 泡 (awa) = "bubble" in Japanese. Last name "Pop" — Awa Pop.
+- **Dynamic:** Saku Ra is Blossom (leader), Kinpo is Buttercup (tough one), Awa Pop is Bubbles (the sweet one). K-pop idol aesthetic like Saku Ra.
+- **Style fit:** Nina's assassin grace + Aikido translates to Bubbles' deceptive sweetness — cute but deadly.
+- **Universe fit:** Eastern Mind — completes the PPG trio as soul vessels.
