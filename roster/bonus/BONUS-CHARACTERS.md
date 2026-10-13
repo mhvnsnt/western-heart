@@ -29,3 +29,10 @@ Owner-directed 2026-10-12. These are outside the core 7 but approved for reskinn
 - **Direction:** Booker T style wrestler. Keep the capoeira movement, reskin as wrestling showman.
 - **Name:** King Tyrant (owner-named 2026-10-12, from Booker's "King Booker" gimmick)
 - **Notes:** Easy reskin — Eddy already has flashy showman movement. Straightforward.
+
+## BURGER (Bob Richards base, Tekken 6)
+- **Direction:** Gluttonous, fast, insatiable. Always hungry, never full. Impossibly fat yet impossibly quick.
+- **Name:** BURGER (owner-named 2026-10-12)
+- **Curse:** His hunger is a curse — a gluttonous transformation. The fat form is the cursed form.
+- **Uncursed attire:** Slim Bob (Tekken Tag 2 — not a separate character in Western Heart) — the uncursed form, freed from hunger. Available as an alternate attire, not a roster slot.
+- **Universe fit:** Eastern Mind — a soul consumed by appetite, one of the hungriest ghosts. The curse/uncurse dynamic mirrors the soul purification theme.
