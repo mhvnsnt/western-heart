@@ -190,7 +190,7 @@ export class Arena {
     // --- Tōrō stone lanterns at the arena edges ---
     const stoneMat = new THREE.MeshStandardMaterial({ color: 0x6a6a70, roughness: 0.95 });
     const fireMat = new THREE.MeshStandardMaterial({ color: 0xffc27a, emissive: 0xff8a2a, emissiveIntensity: 2.2 });
-    const toroAt = (x, z, ry) => {
+    const toroAt = (x, z, ry, withLight) => {
       const g = new THREE.Group();
       const base = new THREE.Mesh(new THREE.BoxGeometry(0.9, 0.25, 0.9), stoneMat); base.position.y = 0.12; g.add(base);
       const pillar = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.26, 1.1, 8), stoneMat); pillar.position.y = 0.8; g.add(pillar);
@@ -199,14 +199,16 @@ export class Arena {
       const glow = new THREE.Mesh(new THREE.BoxGeometry(0.66, 0.2, 0.66), fireMat); glow.position.y = 1.78; g.add(glow);
       const roof = new THREE.Mesh(new THREE.ConeGeometry(0.72, 0.5, 4), stoneMat); roof.position.y = 2.28; roof.rotation.y = Math.PI / 4; g.add(roof);
       g.traverse(o => { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; } });
-      const light = new THREE.PointLight(0xff8a3a, 6, 9, 2);
-      light.position.y = 1.78; g.add(light);
+      if (withLight) {
+        const light = new THREE.PointLight(0xff8a3a, 6, 9, 2);
+        light.position.y = 1.78; g.add(light);
+        this._lanterns.push({ light, base: 6, phase: Math.random() * 10 });
+      }
       g.position.set(x, 0, z); g.rotation.y = ry;
       this.scene.add(g);
-      this._lanterns.push({ light, base: 6, phase: Math.random() * 10 });
     };
-    toroAt(-9.4, -2.6, 0.4); toroAt(9.4, 2.6, -2.7);
-    toroAt(-9.4, 2.6, -0.4); toroAt(9.4, -2.6, 2.7);
+    toroAt(-9.4, -2.6, 0.4, true); toroAt(9.4, 2.6, -2.7, false);
+    toroAt(-9.4, 2.6, -0.4, false); toroAt(9.4, -2.6, 2.7, true);
 
     // --- Distant mountain silhouettes ---
     const mtnMat = new THREE.MeshBasicMaterial({ color: 0x0d0a20 });
