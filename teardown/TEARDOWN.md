@@ -71,8 +71,20 @@ Full table: `game-reverse-engineering/wwe-wrestlemania-xix/docs/WRESTLER-SKELETO
   skeleton joint. **v1 WORKING 2026-10-12**: `yanm_to_tekken3.py` plays
   entrance `a000_0a.yag` on Tekken 3 King — 465 frames @30fps of 49-channel
   pose vectors (base = King stance, YANM motion overlaid on pelvis/chest/
-  hips/head/shoulders; verified numerically + motion plots). Legs need the
-  Tekken IK path (v2).
+  hips/head/shoulders; verified numerically + motion plots). **v2 DONE
+  2026-10-13**: `yanm_to_tekken3_v2.py` — leg/arm IK (YANM ycg chain FK →
+  ankle/wrist trajectories → Tekken3 normalized-skeleton IK targets;
+  ankles ±150 fwd/back, ±50 up/down), hinge→Euler corrections measured:
+  hinge axis = ycg local X → world lateral Y, leg tracks use half-angle
+  quaternion-style encoding (hinge = 2·atan2 unwrap to ±180°, hips swing
+  −13°..+36°), arms use small-regime asin, YANM sagittal hinge → T3
+  **Z-channel** (v1's X was yaw — wrong), ycg→T3 map `T3=(−ycg_x,−ycg_z,
+  −ycg_y)` det=+1 chirality-preserving, ycg-R→T3-R. 574 frames @30fps
+  (19.13s), pelvis −41°..0°, chest −80°..0° (deep entrance bow),
+  head 0°..+47° — render-verified, no explosions/NaNs.
+- OPEN: YANM knee DOF (undecoded if any); ycg forward sign; absolute ycg L/R
+  proof (needs in-game pose); swivel modulation; root translation
+  (YANM has no root track — entrances stay in place).
 - They are ENTRANCE animations — disc `ringmotion/cnv.bat` shows Yukes'
   `yma2yag` converting `Nyujo_YMA/*.yma` (Nyujo = 入場 = "entrance") → `*.yag`.
   Letter groups a/b/c/d = 68/46/208/12; median `.yag` 38.6KB.
