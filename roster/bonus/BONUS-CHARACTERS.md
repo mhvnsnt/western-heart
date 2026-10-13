@@ -131,7 +131,7 @@ Owner-directed 2026-10-12. These are outside the core 7 but approved for reskinn
 
 ## DOC FRANK (Dr. Bosconovitch base, Tekken Tag Tournament 2)
 - **Direction:** The mad scientist. Dr. Bosconovitch — the Tekken scientist who built Alisa and the Jacks — reimagined as the universe's Dr. Frankenstein and Dr. Gero in one.
-- **Name:** DOC FRANK (owner-named 2026-10-13 — also known as Android 9, or just 9)
+- **Name:** DOC FRANK (owner-named 2026-10-13 — also known as Android 9, or just 9; real name Frank Bozko)
 - **Visual:** Reskinned almost like Android 13 from Dragon Ball Z — the hulking redneck android look. Multiple alternate skins based on every android from DBZ (Android 16, 17, 18, 19, 20/Gero himself).
 - **Lore:** A mad scientist who started making androids until he turned himself into one. He built the bodies, then became the body. The creator who couldn't resist becoming his own creation.
 - **Dynamic:** Pairs with CYBORG X (Alisa, his creation) and SAM-UR-A1 as the three "built souls" — but Boscoe is the one who BUILT the others. The father of the machines who became a machine.
