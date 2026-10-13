@@ -43,3 +43,8 @@ Owner-directed 2026-10-12. These are outside the core 7 but approved for reskinn
 - **Dynamic:** Saku Ra is Blossom (leader), Kinpo is Buttercup (tough one), Awa Pop is Bubbles (the sweet one). K-pop idol aesthetic like Saku Ra.
 - **Style fit:** Nina's assassin grace + Aikido translates to Bubbles' deceptive sweetness — cute but deadly.
 - **Universe fit:** Eastern Mind — completes the PPG trio as soul vessels.
+
+## SCIMITAR (Shaheen base, Tekken 7)
+- **Direction:** Saudi Arabian fighter who wields a scimitar. Military precision meets desert warrior.
+- **Name:** SCIMITAR (owner-named 2026-10-13 — named for his weapon)
+- **Universe fit:** Eastern Mind — the blade from the desert lands. Pairs with Phantom (sword) as the two blade fighters.
