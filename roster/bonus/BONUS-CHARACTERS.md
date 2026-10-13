@@ -70,3 +70,9 @@ Owner-directed 2026-10-12. These are outside the core 7 but approved for reskinn
 - **Direction:** The android. Alisa is already a combat robot in Tekken canon — lean into it fully. Detachable head, chainsaw arms, jetpack.
 - **Name:** CYBORG X (owner-named 2026-10-13)
 - **Universe fit:** Eastern Mind — the built soul (like SAM-UR-A1). What does a machine do in a trial for souls?
+
+## MICHIKO (Katarina Alves base, Tekken 7)
+- **Direction:** Brazilian fighter with savate kickboxing. Katarina's confident, powerful presence.
+- **Personality:** Michiko Malandro (Michiko & Hatchin) mixed with Tier Harribel (Bleach) — the free-spirited outlaw with regal, composed power underneath. Dangerous but magnetic.
+- **Name:** MICHIKO (owner-named 2026-10-13)
+- **Universe fit:** Eastern Mind — the outlaw soul, fighting on her own terms.
