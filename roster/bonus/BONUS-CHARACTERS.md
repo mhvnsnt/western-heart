@@ -52,6 +52,7 @@ Owner-directed 2026-10-12. These are outside the core 7 but approved for reskinn
 
 ## PURPLE RAIN (Lee Chaolan base, Tekken 7)
 - **Direction:** Flamboyant, stylish, theatrical. The showman who fights like he's on stage.
+- **Personality:** Michael Jackson mixed with Prince, mixed with A Pimp Named Slickback (Boondocks). All swagger, all style — but will kick the shit out of you. Don't let the flair fool you.
 - **Name:** PURPLE RAIN (owner-named 2026-10-13 — Prince reference)
 - **Universe fit:** Eastern Mind — the performer soul, fighting as art.
 
