@@ -92,3 +92,9 @@ Owner-directed 2026-10-12. These are outside the core 7 but approved for reskinn
 - **Personality:** The Weeknd mixed with Bruno Mars, mixed with Boomhauer (King of the Hill), mixed with Johnny Bravo. Moody R&B mystery + smooth showman + mumbling laid-back drawl + vain pretty-boy swagger. A beautiful mess.
 - **Name:** BRUNO (owner-named — Miguel is Bruno)
 - **Universe fit:** Eastern Mind — the heartbreak soul, fighting with emotion.
+
+## N3GΔTIV0 (Negan base, Tekken 7)
+- **Direction:** The bounty hunter. Negan's brutal, charismatic menace translated to a galactic scale.
+- **Personality:** A zombie hunter / bounty hunter of zombies across the galaxies. Kills zombies for bounties and for hire — that's the only reason, unless he just wants to kill. Mixed with Sinestro (fear as a weapon) and Black Flash (death itself, unstoppable). He doesn't just kill zombies — he IS the thing zombies fear.
+- **Name:** N3GΔTIV0 (owner-named 2026-10-13 — leetspeak for "Negativo")
+- **Universe fit:** Eastern Mind — the hunter soul. What happens when a zombie killer enters a trial for lost souls?
