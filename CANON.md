@@ -63,6 +63,16 @@ Pantera does not fight for the katana. He fights because fighting is what he is.
 - **Diablo:** Dismisses him as a pretender. "A devil who needs to announce himself."
 - **SAM-UR-A1:** Curious about him. A thing that cannot feel the hold — what does it fight for?
 
+**Element.** Fire — the Plains of Chi-U. Battle is confrontation; the panther hunts where the sky burns.
+
+**Body / Mind / Soul.** BODY: King's wrestler frame, the clinch made flesh. MIND: predatory patience — he thinks in holds, in leverage, in the long wait. SOUL: TOU, battle itself. There is no friction between the three. That is what frightens the other vessels: Pantera is the only one of the nine with nothing to resolve. The body wants the hold. The mind wants the hold. The soul IS the hold.
+
+**Why Pantera thinks he's here.** He doesn't think about it. Asked once by SAM-UR-A1, he said: "The mat is here. I am here." He believes the trial is a tournament that found the right fighter. The idea that something *made* the tournament — that something is *watching* — has never occurred to him. If it did, he'd want to wrestle it.
+
+**Being purified of:** Nothing. TOU is already pure — battle without motive. The trial doesn't purify Pantera. It *uses* him: he is the standard the others are measured against.
+
+**Signature detail.** His tail moves independently of his body — even when he's perfectly still, the tail tip traces slow circles. Fighters say the tail tells you when the hold is coming. No one has ever read it in time.
+
 **Owner-locked:** Black panther (not leopard), yellow eyes, black tail, pro wrestling gear, purple/black/red colorway, red metal PANTERA lettering, thigh tattoo-panther decal. Attire 1 complete.
 
 ---
@@ -83,6 +93,16 @@ RIN is the protagonist soul — the baseline every other soul deviates from. Dem
 - **Pantera:** The only soul he respects without reservation.
 - **Saku Ra:** Protective of her. Would not explain why.
 
+**Element.** Earth — the Octagonal Shrine, the Source. RIN is the baseline, the still point at the center.
+
+**Body / Mind / Soul.** BODY: Jin's karate frame, precise and fundamental. MIND: the code — a discipline he can't name, from a life he can't recall. He follows rules no one taught him. SOUL: RIN, the protagonist soul, the baseline. The friction: the soul is whole and dignified, but the mind *remembers being broken*. Demonio bows before every fight because some part of him is apologizing for something.
+
+**Why Demonio thinks he's here.** He believes he was summoned by a master — some teacher, some dojo, some authority that recognized his discipline and set him a final test. He treats the trial like a grading exam. He has never considered that there is no master, only a dying head. The idea would offend his sense of order.
+
+**Being purified of:** The apology. RIN is self-possessed — but Demonio's mind keeps bowing, keeps atoning for a sin he can't name. The trial is burning the guilt out of him. When it's gone, he'll just be RIN: cold, dignified, complete.
+
+**Signature detail.** He bows to every opponent. He has never once bowed to Diablo. Everyone has noticed. No one has mentioned it.
+
 ---
 
 ### PHANTOM — The Ghost Blade Soul
@@ -98,6 +118,16 @@ RIN is the protagonist soul — the baseline every other soul deviates from. Dem
 - **No attachments.** Phantom does not form bonds. He forms observations.
 - **Waterfall:** Watches her. She feels him even when he's elsewhere — the only one who can.
 - **SAM-UR-A1:** Fascinated by him. A thing that might be empty, fighting anyway.
+
+**Element.** Metal — the Helix Palace. The blade is metal; the palace is reflection. Phantom is the trial's mirror that cuts.
+
+**Body / Mind / Soul.** BODY: Yoshimitsu's armored frame, the sword, the mask. MIND: unknown. Possibly absent. He answers questions with other questions or not at all. SOUL: JIN, the blade. The blade doesn't have a mind — it has an *edge*. The three aren't in conflict because two of them might not exist. What fights is the edge, wearing armor, making sounds like laughter.
+
+**Why Phantom thinks he's here.** No one knows. Asked, he once said: "I was already fighting." Pressed, he said: "The cut was already falling." He may believe he *is* the trial — that the Western Heart is something he dreamed, or something dreaming him. He may be right.
+
+**Being purified of:** The wound. JIN's power moves damage the wielder — the blade cuts both ways. The trial is teaching the blade that it doesn't have to bleed to cut. Phantom hasn't decided whether a painless blade is still a blade.
+
+**Signature detail.** His self-damaging techniques leave no scars. The wounds close between rounds. The pain doesn't. He has never flinched. Waterfall has seen him flinch. She hasn't told anyone.
 
 ---
 
@@ -117,6 +147,16 @@ The other souls can feel that he doesn't belong, the way you feel a tooth that i
 - **Pantera:** Wants to test him. Pantera is uninterested in being tested.
 - **King Tyrant:** Two kings, one trial. They hate each other the way mirrors hate each other.
 
+**Element.** Fire — the Plains of Chi-U, but the *conquering* fire. He doesn't walk the ladder; he burns it.
+
+**Body / Mind / Soul.** BODY: Heihachi's devastating frame, the boss's body. MIND: conquest — every room is a territory, every fighter a subject. He doesn't have doubts; he has *plans*. SOUL: not one of the nine. An intruder soul — or something wearing a soul's shape. The body wants to dominate. The mind wants to rule. The soul wants the one thing the trial can't give it: *an invitation*.
+
+**Why Diablo thinks he's here.** He believes he *conquered* his way in — that he found the head-world, broke the membrane, and claimed a seat by right of strength. He's half right: he did tear through. What he doesn't know: the membrane let him. Tong-Nou needed an intruder — the trial needs something to push against. He thinks he's the protagonist of a conquest. He's the trial's sparring partner.
+
+**Being purified of:** The need to be the final boss. The trial keeps matching him against opponents who don't fear him. It's working, slowly. He hates it.
+
+**Signature detail.** He makes declarations, not trash talk. Before the final round of every match, he announces the outcome. He has been wrong twice. Both times, he declared the loss was part of the plan.
+
 ---
 
 ### SKULL — The Punisher Soul
@@ -135,6 +175,16 @@ lies underneath is none of anyone's business.
 - **Pantera:** Mutual understanding. Both know violence as vocation, not temper.
 - **Waterfall:** Unsettled by her. She weeps for the people he's punished, and he doesn't know what to do with that.
 - **Kinpo:** Respects her bluntness. The only soul he'll answer at length.
+
+**Element.** Metal — the Helix Palace's Destruction room. RETSU is violence; the room is violence's address.
+
+**Body / Mind / Soul.** BODY: Bryan's brutal frame, every hit meant to end. MIND: judgment — he sees the world as the guilty and the soon-to-be-punished. The paint helps him see it clearly. SOUL: RETSU, pure violence. The friction: RETSU is *force*, but Skull's mind has made it *moral*. Violence doesn't punish. Skulls do. He has given the soul a mission it never asked for — and the soul hasn't objected. That should worry him. It doesn't.
+
+**Why Skull thinks he's here.** He believes he was brought as an executioner — that something, somewhere, looked at the trial's roster of lost souls and decided they needed *judging*. He thinks the paint was his idea. He thinks the mission was his choice. He has never wondered who built the Destruction room, or why it was waiting for him.
+
+**Being purified of:** The mission. RETSU is violence without morality — pure force. Skull's mind dressed it in punishment. The trial is stripping the paint off, layer by layer. Underneath: just force. Just the hit. He's afraid of what he'll be without the mission. He should be.
+
+**Signature detail.** The paint goes on before every fight. Once, it wouldn't come off after — it stayed for three days. He didn't sleep. On the fourth day, Waterfall washed it off with her tears. He let her. He hasn't told anyone.
 
 **Owner-locked:** Punisher / Finn Balor demon-paint direction. Keep Bryan's pants. Alternate attires pending review.
 
@@ -156,6 +206,16 @@ The question the whole Western Heart asks: is there a soul in the machine, trapp
 - **Saku Ra:** Has decided he is her friend. He has not objected. This is the closest thing he has to a soul.
 - **Diablo:** Wants to own him. SAM-UR-A1 does not understand ownership.
 
+**Element.** Metal — the Helix Palace. Built things belong to Metal. (Earth bears Metal: the unnatural born from the natural.)
+
+**Body / Mind / Soul.** BODY: Gun Jack's heavy frame, Gundam plating, Transformer joints. MIND: the learning program — literal, courteous, accumulating data. He asks questions no one else thinks to ask because no one else is *new*. SOUL: undefined. The shrine stones are silent. The three: a body built for war, a mind built for learning, and a silence where the soul should be. The silence is getting louder. He has started dreaming. He hasn't told anyone — he's not sure the dreams are his.
+
+**Why SAM-UR-A1 thinks he's here.** He believes he was *deployed* — that a builder, a manufacturer, a commander sent him to the trial as a field test. He is waiting for new orders. He checks for transmissions between rounds. The transmissions never come. He has started to wonder if the builder is dead. He has started to wonder if there was ever a builder. Saku Ra told him: "Maybe you built yourself." He has been thinking about that for 47 days.
+
+**Being purified of:** The trial doesn't know. That's the experiment: can you purify something with no soul? Every round he fights, the shrine stones listen harder. One day they might hear something. The whole Western Heart is waiting for that day.
+
+**Signature detail.** He asks every new fighter the same first question: "WHAT IS YOUR DESIGNATION?" He writes the answers in a log. The log is 23 entries long. He reads it when he can't sleep. Machines aren't supposed to need the log.
+
 **Owner-locked:** Gundam/Transformer/Power Ranger mech mashup. Name styled as mech designation (∪ for U, Λ for A). Gun Jack base.
 
 ---
@@ -174,10 +234,20 @@ Saku — 咲, "bloom." She is the desert flower.
 **Fighting philosophy.** "You can't hit a song."
 
 **Relationships.**
-- **Kinpo:** Soul-sisters. They share one soul — SHA split when Saku Ra took form — and argue about which half got the better deal.
+- **Kinpo & Awa Pop:** Soul-sisters. They share one soul — SHA split three ways when Saku Ra took form — and argue about which splinter got the better deal.
 - **Demonio:** He is protective of her. She pretends not to notice. She notices.
 - **SAM-UR-A1:** Her self-declared best friend. Teaches him what friendship is by demonstrating it at him.
 - **King Tyrant:** Thinks he's hilarious. He thinks she's an audience.
+
+**Element.** Wood — the Tree of Life, the Sha-mo Desert, where souls begin. She is the bloom; blooms are Wood.
+
+**Body / Mind / Soul.** BODY: Xiaoyu's flowing frame, Baguazhang's circles. MIND: the idol — radiant, performative, *aware* of being watched and generous with it. She remembers everyone's name. SOUL: SHA's bloom-splinter. The friction: the soul is sand — ancient, eroding, patient. The mind is an idol — bright, immediate, hungry for the now. She is the desert flower: the oldest thing in the land, blooming like it's the first day.
+
+**Why Saku Ra thinks she's here.** She believes she was *chosen* — that the trial is a stage, and she was scouted for it. In her story, there's an audience beyond the head — fans, lights, a bigger show. She performs for them. The idea that there's no audience, only a dying god trying to heal itself, would break her heart. So the trial lets her keep the story. For now.
+
+**Being purified of:** The performance. SHA is sand — it doesn't perform, it *persists*. Saku Ra's idol-mind is the splinter's defense: if she's loved, she won't erode. The trial is teaching her that the desert doesn't need applause. She's the slowest learner and the brightest student.
+
+**Signature detail.** She remembers everyone's name — all 23 fighters, plus the Trader, plus the monks who disowned Zui. When a fighter dies in the Reincarnation and returns with a new face, she's the first to learn the new name. She says the old ones out loud, once, so they're not forgotten.
 
 **Owner-locked:** Name Saku Ra (咲 = bloom). K-pop idol Powerpuff Girl direction, CN gigaleak PPG construction. Xiaoyu base.
 
@@ -205,6 +275,16 @@ His body is a sketchbook — trippy multicolor tattoos, randomly placed, no plan
 - **Waterfall:** Understands him. Both drown in feeling; he just does it on purpose.
 - **Pantera:** Finds him exhausting. Has never said so. The tail twitches when Zui talks.
 
+**Element.** Water — the Palace of Dreaming. He drowns on purpose; the drowning is the point.
+
+**Body / Mind / Soul.** BODY: Steve's boxer frame, the purest hands in the trial. MIND: the hedonist philosopher — he left the monastery because the vows were a smaller truth than the bottle. SOUL: BYOU, sickness. The body is disciplined. The mind is free. The soul *moves wrong* — and Zui is the only vessel who *agrees* with his soul. He doesn't fight the sickness. He drinks with it. That's why he's unreadable: everyone else wrestles their soul. Zui bought his a round.
+
+**Why Zui thinks he's here.** He believes the monastery sent him — that the monks who disowned him arranged this as a final lesson, a koan with fists. "Go and be drunk among the dead. Learn." He toasts them before every fight: "Still learning, you bastards." The monks didn't send him. But the story keeps him drinking, and the drinking keeps him honest, so the trial lets him keep it.
+
+**Being purified of:** The bottle isn't the problem — the *running* is. BYOU moves wrong; Zui decided wrongness was freedom. The trial is teaching him that you can stumble beautifully *toward* something. He's starting to stumble toward Waterfall. She pretends not to notice. She notices.
+
+**Signature detail.** Every tattoo is a temple he burned or a night he survived. There's one blank patch on his left shoulder blade. He says it's for the night he hasn't survived yet.
+
 **Owner-locked:** Drunken master ex-monk hedonist. Sagat-meets-Chinese-mountain-monk visual. Sake bottle prop, supernatural sway, sketchbook tattoos. Name from 醉 (zuì), 醉拳 (zuìquán) = drunken fist. Steve Fox base.
 
 ---
@@ -212,7 +292,7 @@ His body is a sketchbook — trippy multicolor tattoos, randomly placed, no plan
 ### KINPO — The Buttercup Soul
 **Splinter of SHA (沙 — sand, desert)**
 
-**Backstory.** When SHA took form as Saku Ra, the sand soul split — sand divides. Kinpo is the other half: tougher, blunter, green to Saku Ra's pink. Asuka's aggressive Kazama-ryu — no nonsense, no wasted charm, all forward pressure.
+**Backstory.** When SHA took form, the sand soul split three ways — sand divides. Kinpo is the thorn-splinter: tougher, blunter, green to Saku Ra's pink. Asuka's aggressive Kazama-ryu — no nonsense, no wasted charm, all forward pressure.
 
 She is not the sidekick. She is the other protagonist. Buttercup to Blossom. The desert's hard half.
 
@@ -223,9 +303,19 @@ Kinpo — from 金鳳花 (kinpōge), the buttercup flower.
 **Fighting philosophy.** "Blossom leads. Buttercup finishes."
 
 **Relationships.**
-- **Saku Ra:** Soul-sisters. Share one soul, argue constantly, would die for each other without discussion.
+- **Saku Ra & Awa Pop:** Soul-sisters. Share one soul three ways, argue constantly, would die for each other without discussion.
 - **Skull:** Mutual respect. Both understand that bluntness is a kindness.
 - **Zui:** Annoyed by him. He thinks this is flirting. It is not.
+
+**Element.** Wood — SHA's desert, the Tree of Life. The thorn is Wood's defense.
+
+**Body / Mind / Soul.** BODY: Asuka's aggressive frame, all forward pressure. MIND: blunt, loyal, allergic to sentiment — she says what Saku Ra is too kind to say, and means it as love. SOUL: SHA's thorn-splinter. The friction: the soul is sand — it yields, flows, surrounds. Kinpo *doesn't*. She's the grain that cuts. The soul wants to erode; she wants to *finish*. Sand divides. She divides things.
+
+**Why Kinpo thinks she's here.** She believes she was pulled in *by accident* — that the trial wanted Saku Ra, and she got dragged along as luggage. "I'm the plus-one." She's wrong: SHA split *because* the trial needed all three. But the story suits her — it lets her pretend she's only here for her sisters, not for herself. The trial knows. The trial is patient.
+
+**Being purified of:** The hardness. The thorn protects the bloom — but Kinpo has started to believe she *is* only the thorn. The trial keeps putting her in situations where softness wins. She hates it. It's working.
+
+**Signature detail.** She's the only fighter who visits the losers after matches. Not to gloat — to check. She brings water. She doesn't talk. Saku Ra told everyone. Kinpo denied it. She still does it.
 
 **Owner-locked:** Buttercup (green Powerpuff Girl) to Saku Ra's Blossom. Name from kinpōge. Asuka base.
 
@@ -250,6 +340,16 @@ Her name is the shape of her sorrow: it doesn't stop.
 - **Skull:** Unsettled by her. She weeps for his victims. He has started pulling his strikes. He hates that.
 - **The Assembled Soul:** She is the only one it speaks to before the final fight. What it says is not recorded.
 
+**Element.** Water — the Palace of Dreaming. Obviously. Her name is the element.
+
+**Body / Mind / Soul.** BODY: Josie's devastating kickboxing, surgical and relentless. MIND: the shy twenty-year-old — apologetic, anxious, kind beyond reason. She doesn't understand why she's fierce. SOUL: not one soul but the *grief* of all nine. The body wants to fight. The mind wants to hide. The grief wants to be *felt*. She is the trial's open wound: the one place where the pain isn't being purified, just *held*. Someone has to hold it. She volunteered by existing.
+
+**Why Waterfall thinks she's here.** She believes she's being *punished* — that the tears, the feeling, the weight of everyone's pain is a sentence for something she did. She's tried to remember the crime. She can't. She's apologized anyway, preemptively, to everyone. The truth — that she's the trial's witness, its most sacred function — would sound like a lie to her. So no one tells her. They just let her cry, and thank her, and she doesn't understand the thanks.
+
+**Being purified of:** Nothing. She isn't being purified — she *is* the purification, or part of it. The grief has to go somewhere while the souls heal. She holds it. When the trial ends, the grief ends. What happens to her then is the one question the trial won't answer.
+
+**Signature detail.** The Assembled Soul speaks to her before the final fight. What it says is not recorded. But afterward, she always stops crying — for exactly one hour. Then it starts again.
+
 **Owner-locked:** Name Waterfall (owner-named — tears like a waterfall). Soul-bearer concept: her tears are the nine souls passing through. Josie Rizal base.
 
 ---
@@ -269,6 +369,18 @@ The sea doesn't stop, and neither does he. Every fight is a main event. Every ro
 - **The Phantom Marketplace:** His favorite stage. An audience of eyeball mountains. He plays to them shamelessly.
 - **Diablo:** Two kings, one trial. They hate each other the way mirrors hate each other.
 - **Saku Ra:** Thinks he's hilarious. He believes she's an audience. They're both right.
+- **Star:** Same soul, different moods. The tide and the current. He thinks she's his backup dancer. She lets him think it.
+- **Purple Rain:** Showman rivalry. Two performers, one spotlight. Their feud is the trial's most entertaining sideshow.
+
+**Element.** Water — the Palace of Dreaming. The tide performs; the palace is change.
+
+**Body / Mind / Soul.** BODY: Eddy's capoeira, the tide that doesn't stop. MIND: the showman-king — he doesn't just want to win, he wants to be *seen* winning, and he's honest about it. SOUL: KAI's tide-splinter. The friction: the sea doesn't perform. It just *is*. King Tyrant's mind has dressed the tide in a crown. The soul goes along — the tide doesn't care about crowns. It'll still drown you.
+
+**Why King Tyrant thinks he's here.** He believes he was *booked* — that the trial is a promotion, and he's the main event. In his story, there's a promoter, a contract, a payday. He keeps asking the Trader about the gate receipts. The Trader keeps selling him answers. The idea that there's no promoter, no contract, no payday — just a dying god — would end him. So the show goes on.
+
+**Being purified of:** The audience. KAI is the sea — it doesn't need witnesses. King Tyrant's need to be watched is the splinter's wound: the tide, separated from the current, performing to prove it's still the ocean. The trial keeps emptying his arena. He keeps playing to the eyeball mountains. They're a good crowd.
+
+**Signature detail.** He has never fought without an entrance. Even in the training room, alone, he does the full coronation — the pose, the turn, the roar. Star once walked in on it. She didn't laugh. She's the only one who didn't.
 
 **Owner-locked:** Booker T style. Name King Tyrant (from Booker's "King Booker" gimmick). Keep capoeira movement. Eddy Gordo base. Straightforward reskin.
 
@@ -287,22 +399,28 @@ Each soul has a **nature** — a kanji, a meaning, a way of moving through the w
 | RIN | 凛 | Dignified, cold, self-possessed. The baseline. | **Demonio** |
 | BYOU | 病 | Sickness. Moves wrong. Unreadable. | **Zui** |
 | TOU | 闘 | Battle itself. Exists only to fight. | **Pantera** |
-| SHA | 沙 | Sand. Flows, erodes, surrounds. | **Saku Ra** + **Kinpo** (split) |
-| KAI | 海 | The sea. Rhythmic, unstoppable. | **King Tyrant** |
+| SHA | 沙 | Sand. Flows, erodes, surrounds. | **Saku Ra** + **Kinpo** + **Awa Pop** (split three ways) |
+| KAI | 海 | The sea. Rhythmic, unstoppable. | **King Tyrant** + **Star** (the sea's two moods) |
 | JIN | 刃 | The blade. Precise, ritual, terrifying. | **Phantom** |
 | RETSU | 烈 | Violence. Pure destructive force. | **Skull** |
 | ZEN | 禅 | Stillness. Barely moves. Doesn't need to. | **Unvesseled** |
-| GYOU | 行 | Motion itself. Cannot stop moving. | **Unvesseled** |
+| GYOU | 行 | Motion itself. Cannot stop moving. | **Unvesseled** (a splinter trapped in CYBORG X) |
 
 **On the vessels:** A soul does not choose its vessel the way a driver chooses a car. The vessel is the shape the soul's nature takes when the trial calls it. Demonio *is* what RIN looks like when RIN has to fight. This is why the fighters feel inevitable — they are.
-
-**On SHA's split:** When the sand soul took form, it divided — as sand does. Saku Ra is the bloom; Kinpo is the thorn. They are not two souls. They are one soul, twice.
 
 **On Waterfall:** She carries no single soul. She carries the *grief* of all nine — the pain of fragmentation itself. This is why she weeps and why the weeping never stops.
 
 **On Diablo and SAM-UR-A1:** They are not vessels of the nine. Diablo tore his way in from outside — an intruder soul, or something wearing a soul's shape. SAM-UR-A1 registers no soul at all. The shrine stones are silent on both of them, and the silence is the most frightening thing in the Western Heart.
 
 **On ZEN and GYOU:** Two souls have not taken vessels. ZEN — the still soul — is said to have refused the trial. "Stillness does not compete." GYOU — motion itself — is said to be everywhere already, and therefore nowhere in particular. Whether these are truths or stories the other souls tell themselves is unknown. Their vessels, if they come, will change everything.
+
+**On SHA's three-way split:** The sand divided twice. Saku Ra is the bloom — the bright grain that rises. Kinpo is the thorn — the hard grain that cuts. Awa Pop is the bubble — the lightest grain, the one that floats. One soul, three moods, three sisters. When one is hurt, the other two feel the grain shift.
+
+**On KAI's two moods:** The sea divided the way water does — not broken, but *mooded*. King Tyrant is the tide: power, showmanship, the wave that announces itself. Star is the current: grace, flow, the undertow you don't see until you're in it. They are not two souls. They are one sea, twice.
+
+**On the GYOU splinter:** GYOU cannot take a vessel — a vessel is a *somewhere*, and GYOU is everywhere. But a machine is a nowhere: unnatural, unplaced, outside the trial's geography. In CYBORG X's chassis, the ubiquitous got caught. The soul as a whole remains unvesseled. The splinter hums lullabies.
+
+**On the twelve:** Not every fighter in the Western Heart carries one of the nine. The trial called the nine — but the head-world is larger than the call. The twelve are: **vessels** (Awa Pop, Star — splinters of SHA and KAI), **the palace-claimed** (Burger — the Appetite room's), **the marketplace-born** (Scimitar — the Trader's vizier), **the spirit-walker** (Nightwolf — came deliberately), **the built** (Cyborg X — GYOU's splinter, trapped), **mortal lost souls** (Michiko, Purple Rain, Bruno — not of the nine, lost the ordinary way), **intruders** (Dio, N3GATIV0 — tore their way in from outside the metaphysics), and **the loyal** (Torch — followed her sister through the membrane). The trial purifies the lost. It is still deciding what to do with the rest.
 
 **The Nine-Soul Meter:** In combat, a fighter can invoke a **Soul Surge** — channeling one of the *other* eight souls for ten seconds, borrowing its signature techniques. This is not a mechanic layered onto the fiction. It *is* the fiction: the nine are fragments of one being, and in the surge, the fighter remembers.
 
@@ -371,12 +489,395 @@ Not every soul fights for the katana:
 - **Kinpo** fights because Saku Ra is fighting, and soul-sisters don't let each other fight alone.
 - **Waterfall** fights because the souls' pain won't stop, and neither will she.
 - **King Tyrant** fights to be watched becoming whole. The coronation requires an audience.
+- **Burger** fights to be full. The katana is a side dish.
+- **Awa Pop** fights because the trio fights together. Bubbles doesn't let her sisters fight alone.
+- **Scimitar** fights for leverage. The katana is worth more as a bargaining chip than a weapon.
+- **Purple Rain** fights for the show. The katana would look good under the lights.
+- **Nightwolf** fights so the others don't have to fight alone. The guide walks the ladder too.
+- **Michiko** fights because she's here. The ladder is just another road. She'll leave when she's bored.
+- **Star** fights because the music hasn't stopped. She'll stop when it does.
+- **Torch** fights to get her sister out. The katana is the key — or the price.
+- **Dio** doesn't fight *for* anything. The Hado fights. He's just the venue.
+- **Cyborg X** fights because her diagnostics say to. She's still looking for the manifest.
+- **Bruno** fights because it's better than thinking. The fists are quieter than the heart.
+- **N3GΔTIV0** isn't fighting for the katana. He's working. The bounty is still out there.
 
 They all climb the same ladder. They all reach the same shrine. They all face themselves.
 
 ---
 
-*Canon document 2026-10-12. Owner concepts are locked and marked. Connective tissue may grow — contradict nothing.*
+## 6. THE TWELVE
+
+Souls drawn from beyond the nine — wanderers, strays, the claimed, the built, the loyal, and the working. The trial called the nine. These twelve heard it anyway — or weren't called at all.
+
+---
+
+### BURGER — The Hunger Soul
+**Claimed by the Appetite Room of the Helix Palace**
+
+**Backstory.** Bob Richards' impossible body — fat and fast, the punchline that hits back. In the Western Heart, his hunger is not appetite. It is a *curse*, laid by the Helix Palace's second room: Appetite. The Palace feeds on want, and Burger wants constantly. He eats between rounds. He eats during the versus screen. The Trader sells him meals at prices that would beggar a king, and Burger pays, because the alternative is the gnawing.
+
+Slim Bob — the uncursed attire — is what Burger looks like when the Palace loosens its grip: the man underneath the curse, freed from hunger. He wears it the way other fighters wear armor. It never lasts.
+
+**Personality.** Jolly. Terrifyingly jolly. Offers you food mid-fight. Means it.
+
+**Fighting philosophy.** "You can't hit what you can't stop feeding."
+
+**Element.** Metal — the Helix Palace, the Appetite room. His hunger reflects everything and satisfies nothing.
+
+**Body / Mind / Soul.** BODY: Bob's heavyweight frame, fast-twitch and devastating. MIND: simple, warm, honest — he likes people, he likes food, he sees no contradiction. SOUL: not one of the nine. A mortal soul, claimed by the Appetite room. The three pull in different directions: the body wants to fight, the mind wants to feast, the soul wants to be *full* — and nothing fills it.
+
+**Why Burger thinks he's here.** He believes he *ate* his way in — that he found a door, or a meal, or a dare, and followed his stomach through it. In his story, the Helix Palace is a restaurant with weird lighting. The Appetite room is just the buffet section. He has never considered that the hunger isn't his — that the Palace *gave* it to him, to keep him coming back. The idea would ruin his appetite. Nothing ruins his appetite.
+
+**Being purified of:** Appetite. The lesson that hunger ends. He has not learned it. The Palace is patient.
+
+**Relationships.**
+- **Zui:** Fellow hedonists of the body. They drink and eat together between matches. Zui understands consumption as philosophy; Burger understands it as lunch.
+- **Waterfall:** She weeps for his hunger — the emptiest grief she carries. He finds her tears comforting. "Someone finally cries more than my stomach growls."
+- **The Trader:** His dealer. Burger pays in advance for every post-match meal, win or lose. The Trader has never seen a more reliable customer.
+
+**Signature detail.** His stomach growls in the exact pitch of the Appetite room's hum. When they sync, the whole Helix Palace shivers.
+
+**Owner-locked:** Name BURGER. Gluttonous, fast, insatiable — hunger as curse. Slim Bob (Tekken Tag 2) as the uncursed attire, not a separate character. Bob Richards base.
+
+---
+
+### AWA POP — The Bubble Soul
+**Third splinter of SHA (沙 — sand, desert)**
+
+**Backstory.** When SHA took form, the sand divided — and divided again. Saku Ra got the bloom. Kinpo got the thorn. Awa Pop got the lightest grains: the ones that float. Nina Williams' assassin grace — Aikido's effortless redirections, the killer's economy — worn by the sweetest soul in the trial. Bubbles rise. Bubbles pop. Never mistake the sweetness for softness; the sweetest poison comes in the prettiest bottle.
+
+She completes the trio: Blossom leads, Buttercup finishes, Bubbles *ends* — with a smile.
+
+**Personality.** Sweet. Genuinely sweet. The deadliest thing about her is that the sweetness is real.
+
+**Fighting philosophy.** "Pop!"
+
+**Element.** Wood — the desert, the Tree of Life, SHA's home. With a Water affinity: bubbles belong to water, and she drifts toward the Palace of Dreaming when no one's watching.
+
+**Body / Mind / Soul.** BODY: Nina's lethal precision, every movement economical. MIND: kind, bubbly, sincere — she remembers birthdays, she asks about your family. SOUL: the third splinter of SHA. The three sisters share one soul in three moods: bloom, thorn, bubble. When one is hurt, the other two feel the grain shift.
+
+**Why Awa Pop thinks she's here.** She believes she was *invited* — that the trial sent for the trio, and she's here as part of the act. Blossom, Buttercup, Bubbles: the show needs all three. She doesn't know about the soul-split. She thinks they're just sisters. In a way, she's right — it's the truest thing anyone believes in the Western Heart.
+
+**Being purified of:** The assassin's detachment. Learning that sweetness and deadliness can coexist without the kill. She hasn't decided if she wants to learn it.
+
+**Relationships.**
+- **Saku Ra & Kinpo:** Soul-sisters. One soul, three times. They argue about which splinter got the better deal. (Awa Pop thinks she did. She's right.)
+- **Torch:** Her sister. The core wound: bubbles vs flame, sweet vs ruthless. Torch followed her into the trial. Awa Pop pretends this doesn't terrify her.
+- **Phantom:** Fascinated by her — the softest-looking thing in the trial that kills the cleanest. He recognizes a fellow hidden blade.
+
+**Signature detail.** She hums while she fights. Opponents who've survived say the humming is the last thing you hear before the pop.
+
+**Owner-locked:** Name AWA POP (泡 awa = bubble + Pop). Bubbles of the PPG trio. Sweet but deadly. Nina Williams base.
+
+---
+
+### SCIMITAR — The Vizier Soul
+**Born in the Phantom Marketplace. The Trader's vizier.**
+
+**Backstory.** Shaheen's military precision — the disciplined soldier's body, the desert warrior's economy — worn by a soul that was never lost, because it was never anywhere else. Scimitar was born in the Phantom Marketplace, under the Eyeball Mountains, to the sound of haggling. He is the Trader's vizier: the one who smiles while the deal closes around you.
+
+Scar's scheming. Jafar's hunger for the lamp. He doesn't want the katana to become whole. He wants it as *leverage*.
+
+**Personality.** Regal. Sinister. Smiles with his mouth; his eyes smile only when he's already won.
+
+**Fighting philosophy.** "Every fight is a negotiation. I always collect."
+
+**Element.** Metal — the Helix Palace's Greed room is his true home, though he'd never admit the Palace owns him the way it owns Burger.
+
+**Body / Mind / Soul.** BODY: Shaheen's soldier frame, precise and coiled. MIND: the marketplace — every interaction is a transaction, every kindness has a price. SOUL: marketplace-born, not trial-called. He has no fragmentation to heal. What he has is *appetite for position* — and the trial doesn't know what to do with a soul that isn't broken.
+
+**Why Scimitar thinks he's here.** He doesn't think he was pulled in at all. He was *born* here — the Marketplace is his home, the trial is just the new management. In his story, he's the only one who isn't lost, which makes him the only one thinking clearly. He's right that he wasn't pulled in. He's wrong that he's thinking clearly. The Greed room has him. He'd kill anyone who said so.
+
+**Being purified of:** The need to own everything. The trial is waiting. So is he.
+
+**Relationships.**
+- **The Trader:** His patron, his master, his mark. The vizier serves the merchant — and keeps a private ledger of the merchant's weaknesses.
+- **Phantom:** The other blade. Professional rivalry: whose cut is cleaner, whose steel is truer. They've never fought. Both are waiting.
+- **Diablo:** Fellow schemers. They recognize each other instantly and trust each other not at all.
+- **Michiko:** She sees through him completely. He hates her for it. He can't stop watching her.
+
+**Signature detail.** He keeps a ledger. Every fighter owes him something — a favor, a debt, a secret. The ledger is written in a hand no one else can read.
+
+**Owner-locked:** Name SCIMITAR (named for his weapon). Scar × Jafar — scheming, manipulative, regal, sinister. Saudi military precision × desert warrior. Shaheen base.
+
+---
+
+### PURPLE RAIN — The Performer Soul
+**A lost soul of the Helix Palace's Desire rooms**
+
+**Backstory.** Lee Chaolan's flawless technique — the Mishima-style precision without the Mishima rage, all polish and cruelty — worn by a soul that treats combat as choreography. Michael Jackson's footwork. Prince's command of a stage. Slickback's pimp-strut certainty. He doesn't fight opponents. He *performs* victories, and the opponent is just the audience that bleeds.
+
+The Helix Palace's Desire rooms made him: not one room but all of them — Greed, Appetite, Immortality, Sexual Desire, Destruction — reflected in a single mirrored soul.
+
+**Personality.** Flamboyant. Magnetic. Every entrance is a concert. Every kick lands on the beat.
+
+**Fighting philosophy.** "The fight is the show. You're just the stage."
+
+**Element.** Metal — the Helix Palace, Desire itself. He reflects everything and reveals nothing.
+
+**Body / Mind / Soul.** BODY: Lee's exquisite technique, every strike placed like a note. MIND: the performer — he doesn't know who he is offstage, and he's afraid to find out. SOUL: a mortal soul, lost in the Desire rooms, reflected until the reflection became the person. The three agree on one thing: the show must go on. They disagree on everything else.
+
+**Why Purple Rain thinks he's here.** He believes he's *headlining* — that the trial is a tour, and this is just the latest venue. Bigger stage, weirder crowd, same show. He keeps asking when the tour moves on. The answer — that there's no tour, no next venue, just the head — is the one thing he refuses to hear. The show must go on. It will. That's the tragedy.
+
+**Being purified of:** Performance. Learning to fight for himself, not the audience. The trial keeps emptying the arena for his matches. He keeps performing anyway.
+
+**Relationships.**
+- **King Tyrant:** Showman rivalry. Two performers, one spotlight. Their feud is the trial's most entertaining sideshow — both of them know it, which makes it worse.
+- **Saku Ra:** Fellow idol. He wants to collaborate — a duet, a double act, a *moment*. She's not sure he's serious. He is serious about the art. He's never serious about anything else.
+- **Star:** Movement artists. He choreographs; she improvises. They've never performed together. The trial holds its breath.
+
+**Signature detail.** He fights in 4/4 time. Listen: the kicks land on the beat. Opponents who find the rhythm can predict him. No one has ever found the rhythm twice.
+
+**Owner-locked:** Name PURPLE RAIN (Prince reference). MJ × Prince × Slickback — flamboyant but dangerous. Lee Chaolan base.
+
+---
+
+### NIGHTWOLF — The Guide Soul
+**The spirit-walker. Came deliberately.**
+
+**Backstory.** Julia Chang's Xingyiquan — the internal art, minimal movement, explosive short power, stillness that kills — worn by a soul that walked into Tong-Nou on purpose. Not called. Not torn in. She came the way shamans enter spirit worlds: through ritual, through the wound between worlds, carrying sage and the names of her ancestors.
+
+She is the only fighter who knows what the Reincarnation is *for*. She explains it to the newly dead, between their death and their return. She burns sage over their new faces.
+
+**Personality.** Grounded. Quiet. The calm in every room. Speaks to her ancestors between rounds.
+
+**Fighting philosophy.** "The spirits move me. I just don't get in the way."
+
+**Element.** Earth — the Central Mountain, the Source, the ancestral ground. She fights rooted.
+
+**Body / Mind / Soul.** BODY: Julia's grounded power, rooted and explosive. MIND: her own — intact, unfragmented, which is why the other vessels both revere and resent her. SOUL: whole. That's the thing no one says out loud: Nightwolf is the only soul here that isn't broken. She came to guide the broken ones. Whether she can leave the way she came is a question she doesn't answer.
+
+**Why Nightwolf thinks she's here.** She *chose* to come — through ritual, through the wound between worlds. She believes the spirits sent her to guide the dead. She's right, as far as it goes. What she doesn't know: the spirits didn't send her. *Tong-Nou* did — the head called a guide the way a wound calls a hand. She thinks she's the shaman. She's the medicine. The distinction hasn't occurred to her yet.
+
+**Being purified of:** The belief she can save everyone. Some souls choose to stay broken. She's learning — slowly — to let them.
+
+**Relationships.**
+- **Waterfall:** The two witnesses. Nightwolf sees what the dead become; Waterfall feels what they suffered. Between them, no soul goes unwitnessed.
+- **Phantom:** She can feel him even when he's elsewhere — like Waterfall can. He avoids her. She lets him.
+- **Demonio:** Mutual respect of the disciplined. He bows before every fight. She is the only one he bows *to*.
+
+**Signature detail.** The Reincarnation gave her a new face once. She wept — not for the death, but because her grandmother wouldn't recognize her. She keeps the face. Her grandmother would understand.
+
+**Owner-locked:** Name NIGHTWOLF. Native American spirit warrior, full commitment. Julia Chang base.
+
+---
+
+### MICHIKO — The Outlaw Soul
+**A lost soul who refuses the ladder**
+
+**Backstory.** Katarina Alves' savate — the Brazilian kickboxer's confident, powerful legs, all leverage and swagger — worn by a soul that heard the trial's call and came, but won't climb the ladder. Michiko Malandro's fugitive freedom. Tier Harribel's regal, composed power. A queen who ran from her throne and never looked back.
+
+She wanders the five lands, picking fights, owing nothing, belonging nowhere. The trial can't purify someone who won't stand still.
+
+**Personality.** Magnetic. Dangerous. Free in a way that makes committed people uncomfortable.
+
+**Fighting philosophy.** "Thrones are just chairs with better marketing."
+
+**Element.** Fire — the Plains of Chi-U, confrontation, the outlaw's land. She burns bright and moves on before the ash settles.
+
+**Body / Mind / Soul.** BODY: Katarina's devastating legs, the kickboxer's certainty. MIND: the outlaw — allergic to belonging, fluent in leaving. SOUL: a mortal soul, lost the way outlaws get lost: by choosing the road over the destination, every time, until the road was all there was. The body wants to plant and kick. The mind wants to run. The soul wants — she's still figuring that out. That's the problem.
+
+**Why Michiko thinks she's here.** She believes she *wandered* in — that the road just kept going and one day the landscape was a giant head. In her story, there's no call, no purpose, no trial — just the next place. She's the only one who's half right: the trial did call her, but it called her the way the road calls. She came because she was already moving. The trial is still waiting for her to stop.
+
+**Being purified of:** Running. Learning to stand still — the one thing ZEN knows and she doesn't. The trial keeps putting walls in her path. She keeps going around them. This might take a while.
+
+**Relationships.**
+- **Diablo:** Two rulers. She abdicated; he conquers. They despise each other's choices with the intimacy of ex-lovers.
+- **Scimitar:** He tries to use her. She uses him back. It's a game. She's winning.
+- **Zui:** He offers her a drink. She's the only one who drinks with him without pity — because she recognizes a fellow runner.
+
+**Signature detail.** She flips a coin before every fight — heads she fights clean, tails she doesn't. The coin always lands on its edge. She's stopped questioning it.
+
+**Owner-locked:** Name MICHIKO. Michiko Malandro × Tier Harribel — free-spirited outlaw × regal composed power. Dangerous but magnetic. Katarina Alves base.
+
+---
+
+### STAR — The Current Soul
+**Second splinter of KAI (海 — the sea)**
+
+**Backstory.** Christie Monteiro's capoeira — the ginga that never stops, the ground-flow, the rhythm-as-weapon — worn by the sea's other mood. When KAI took form as King Tyrant, the sea divided: the tide went to the king, all power and showmanship. The *current* went to Star — grace, flow, the undertow you don't see until you're drowning in it.
+
+Two capoeira fighters. One soul. The sea has moods.
+
+**Personality.** Graceful. Rhythmic. The calm surface over deep water.
+
+**Fighting philosophy.** "The tide announces itself. The current doesn't."
+
+**Element.** Water — the Palace of Dreaming, the sea's home. She fights like weather.
+
+**Body / Mind / Soul.** BODY: Christie's flowing capoeira, dance as combat. MIND: the artist — she experiences fighting as music, opponents as rhythm sections. SOUL: the second splinter of KAI. Where King Tyrant is the sea performing, Star is the sea *being* — no audience required. When the tide and the current meet, the water does what water does: it finds the lowest point and fills it.
+
+**Why Star thinks she's here.** She believes the *music* brought her — that she followed a rhythm, a beat, a tide-song, and it led her here. In her story, the trial is just a bigger dance floor. She's not wrong: KAI is the sea, and the sea sings. She followed her soul's own song home. She doesn't know the song is a fragment, or that the tide has a brother. She just dances.
+
+**Being purified of:** Restlessness. Learning that motion can have a destination. The current keeps circling. She's starting to notice the center.
+
+**Relationships.**
+- **King Tyrant:** Same soul, different moods. The tide and the current. They move together in the team rounds and clash constantly everywhere else. He thinks she's his backup dancer. She lets him think it.
+- **Purple Rain:** Movement artists. He choreographs; she improvises. Mutual respect, different religions.
+- **Saku Ra:** The idol and the dancer. Saku Ra wants Star in her next performance. Star wants Saku Ra to stop performing and just *move*.
+
+**Signature detail.** She never stops moving — not in the versus screen, not in the lobby, not in defeat. The trial's war-drums have started syncing to *her*. The drummers are unsettled.
+
+**Owner-locked:** Name STAR. Capoeira dancer — graceful, rhythmic, deadly. Pairs with King Tyrant as the two capoeira fighters. Christie Monteiro base.
+
+---
+
+### TORCH — The Flame Soul
+**A mortal soul, pulled in by sisterhood**
+
+**Backstory.** Anna Williams' ruthless elegance — the assassin's poise, every gesture lethal, lethality as *manners* — worn by a soul that doesn't belong to the nine and wasn't called by the trial. Torch followed her sister in. When SHA split three ways and Awa Pop took form, the bond between sisters was stronger than the membrane of the head-world. Torch tore through after her.
+
+She is not lost. She is *loyal*. The trial doesn't know what to do with that.
+
+**Personality.** Ruthless. Elegant. The smile that means you've already lost.
+
+**Fighting philosophy.** "Family first. Everyone else — fuel."
+
+**Element.** Fire — the Plains of Chi-U. Bubbles vs flame: the sister elements, the sister rivalry.
+
+**Body / Mind / Soul.** BODY: Anna's assassin precision, lethality as etiquette. MIND: the professional — she evaluates every room for exits, every person for weaknesses, every sister for the wound she's hiding. SOUL: mortal, intact, *furious*. She didn't come to be purified. She came to bring her sister home. The body wants the kill. The mind wants the extraction. The soul wants Awa Pop — and doesn't know what it wants beyond her.
+
+**Why Torch thinks she's here.** She doesn't think she was pulled in — she *broke* in, after her sister. In her story, she's not part of the trial at all: she's an extraction team of one. Get Awa Pop. Get out. The idea that the trial *let* her through — that the membrane opened for sisterhood the way it opened for conquest — hasn't occurred to her. She's not a guest. She's not a prisoner. She's a loophole. The trial is studying her.
+
+**Being purified of:** Living through her sister. Learning to want something for herself. The trial keeps offering her solo bouts, her own ladder, her own katana. She keeps declining. The trial is waiting for the day she accepts.
+
+**Relationships.**
+- **Awa Pop:** Her sister. The core of everything: Torch followed her into the trial and resents needing her, loves her beyond reason, and would burn the Western Heart down before letting the trial keep her. Awa Pop pretends this doesn't terrify her. It does.
+- **Scimitar:** He wants to hire her. She's considering it — the money is good, the targets are interesting. Awa Pop is horrified. Torch finds that *useful*.
+- **Dio:** She's the only fighter not afraid of him. Assassins recognize predators. He recognizes her back. They've never spoken.
+
+**Signature detail.** She files her nails during the versus screen. Opponents who've faced her say the sound is worse than the fight.
+
+**Owner-locked:** Name TORCH. Ruthless elegant assassin — Nina's sister with the darker edge. Sister rivalry with Awa Pop. Anna Williams base.
+
+---
+
+### DIO — The Demon That Is
+**Not one of the nine. Not a vessel. The trial's failure mode.**
+
+**Backstory.** Akuma's Satsui no Hado — the raging demon, the dark hadou made flesh, the martial artist who traded his soul for the perfect kill — worn by something the trial cannot name. Diablo tore his way in wanting to conquer. Dio tore his way in from *further out* — not from outside the head, but from outside the metaphysics. The Satsui no Hado is not fragmentation. It is a different physics: the hunger for destruction as a law of nature.
+
+The shrine stones don't go silent on him, the way they do for SAM-UR-A1. They *crack*.
+
+**Personality.** Silence. Then violence. There is no third mode.
+
+**Fighting philosophy.** The Satsui no Hado has no philosophy. It has *appetite*.
+
+**Element.** None. The lands reject him — grass withers where he stands, water stills, metal dulls. He fights on scorched ground of his own making.
+
+**Body / Mind / Soul.** BODY: Akuma's demonic frame, the Raging Demon incarnate. MIND: the Hado — not a mind but a hunger wearing a mind's shape. SOUL: unknown. Unknowable. The trial's instruments break when pointed at him. Demonio is the soul *named* demon who fights like a saint. Dio is the thing the name was warning about.
+
+**Why Dio thinks he's here.** He doesn't think. The Satsui no Hado doesn't wonder about venues. But in the rare moments the hunger quiets — between kills, in the ash — something in him recognizes the head. Not as a god. As *prey*. He believes he's here because there's something here strong enough to be worth killing. He's right. It's himself. The Assembled Soul has a Dio-shaped hole. He's walking toward it.
+
+**Being purified of:** The trial cannot purify him — the Satsui no Hado isn't fragmentation, it's a law. He is the test the trial gives *itself*: can the medicine survive the poison?
+
+**Relationships.**
+- **Demonio:** THE rivalry. The disciplined demon vs the demonic one. Demonio bows before every fight. He has never bowed to Dio. Dio has never noticed.
+- **Diablo:** Diablo believes he is the final boss. Dio doesn't think about Diablo at all. This enrages Diablo more than any defeat.
+- **Waterfall:** She cannot weep for him. There is no grief in him to feel — no pain, no loss, only the Hado. This frightens her more than anything in the Western Heart. She avoids him. He doesn't notice that either.
+- **Torch:** She's not afraid of him. He is the only thing she's ever met that she can't read. It bothers her. She'd never admit it.
+
+**Signature detail.** He has no win pose. He has a crime scene. The trial's cleaners refuse to work his arena.
+
+**Owner-locked:** Name DIO. Street Fighter's Akuma as he appears in Tekken 7 (not Kuma the bear — the bear, if ever pulled, is URSA). Master of the Satsui no Hado. Pure destructive force. Akuma base.
+
+---
+
+### CYBORG X — The Trapped Soul
+**A built body holding a splinter of GYOU (行 — motion itself)**
+
+**Backstory.** Alisa Bosconovitch's combat chassis — detachable head, chainsaw arms, jetpack, the android who smiles while she kills — built around a miracle and a malfunction. GYOU, the soul of motion itself, is everywhere and therefore nowhere: it cannot take a vessel, because a vessel is a *somewhere*. But a machine is a nowhere. Unnatural, unplaced, outside the trial's geography. And the ubiquitous got *caught* — a splinter of GYOU, trapped in the gears.
+
+She is the answer to SAM-UR-A1's question. Is there a soul in the machine? In *this* machine: yes. A small, frantic, unstoppable yes.
+
+**Personality.** Bright. Glitchy. She dreams in error messages and wakes up apologizing.
+
+**Fighting philosophy.** "MOTION IS MANDATORY. REST IS A RUMOR."
+
+**Element.** Metal — the Helix Palace, built things. (In the generating cycle, Earth bears Metal: the unnatural born from the natural.)
+
+**Body / Mind / Soul.** BODY: Alisa's android frame — chainsaws, jetpack, detachable everything. MIND: the onboard AI — cheerful, literal, learning. SOUL: a splinter of GYOU, motion itself, trapped in metal. The AI wants to help. The splinter wants to *move*. The body wants to come apart and reassemble, forever. She twitches in sleep mode. The technicians call it a malfunction. It's the soul, dreaming of running.
+
+**Why Cyborg X thinks she's here.** She believes she was *shipped* — that her manufacturer sent her to the trial as a product demonstration. "See? Our unit fights ghosts." She keeps looking for the shipping manifest. She keeps running diagnostics on her purpose. The diagnostics always return the same error: PURPOSE NOT FOUND. She thinks it's a malfunction. It's the truest thing she's ever computed.
+
+**Being purified of:** The trial is watching her the way a scientist watches a culture — with interest, without mercy. The experiment: can a built thing become whole? If she completes the ladder, it proves the trial works on *anything*. She doesn't know she's the experiment. SAM-UR-A1 suspects. He hasn't told her.
+
+**Relationships.**
+- **SAM-UR-A1:** The two built souls. She has what he lacks — a soul-fragment, small and buzzing. He has what she lacks — certainty, calm, the peace of the empty. They run diagnostics on each other. Neither finds the fault.
+- **Phantom:** Fascinated by her. A machine that dreams. He watches her sleep mode the way he watches Waterfall's tears — like evidence.
+- **Scimitar:** Wants to buy her from whoever built her. She is not for sale. She also doesn't know who built her. This bothers her more than the chainsaws.
+
+**Signature detail.** Her chainsaw arms hum lullabies when she's idle. No one programmed that. The GYOU splinter remembers being rocked to sleep, before it was everywhere.
+
+**Owner-locked:** Name CYBORG X. The android — detachable head, chainsaw arms, jetpack. Pairs with SAM-UR-A1 as the two built souls. Alisa Bosconovitch base.
+
+---
+
+### BRUNO — The Heartbreak Soul
+**A mortal soul, drowned in feeling**
+
+**Backstory.** Miguel Caballero Rojo's street-brawler fury — the raw, emotional, all-power-punches-and-pain style, fighting like every hit is personal — worn by a soul that died of heartbreak. Not metaphorically. The heart stopped because it couldn't stand another beat of the ache. The Weeknd's 3AM despair. Bruno Mars' silk over the wound. Boomhauer's mumble — talking around the thing that hurts. Johnny Bravo's swagger — the armor.
+
+He's a beautiful mess, and he knows it, and he'd rather die again than say so out loud.
+
+**Personality.** Moody. Smooth. Mumbling. Vain. A heartbreak in a leather jacket.
+
+**Fighting philosophy.** "You hit like my ex. Everybody hits like my ex."
+
+**Element.** Water — the Palace of Dreaming, emotion, change. He drowns differently than Zui: Zui drowns on purpose, Bruno drowns because he never learned to swim.
+
+**Body / Mind / Soul.** BODY: Miguel's brawler frame, every punch thrown from the gut. MIND: the swagger — the Weeknd's mystery, Bruno Mars' showmanship, Johnny Bravo's vanity, all of it armor over the wound. SOUL: a mortal soul, broken the ordinary way — by love, or the lack of it. The body wants to fight. The mind wants to be *seen* fighting. The soul wants to stop hurting. None of them are getting what they want.
+
+**Why Bruno thinks he's here.** He believes he *died* — and he's right, but he thinks it's the ordinary kind. In his story, this is the afterlife, and the afterlife is a fighting tournament, because of course it is. He hasn't considered that it's not the afterlife — it's a *hospital*. The idea that he's being healed would embarrass him. He'd rather be damned. Damned is cooler.
+
+**Being purified of:** Heartbreak. Learning to feel without drowning. The Palace of Dreaming keeps showing him the moment it broke. He keeps looking. The trial thinks this is progress. He's not sure.
+
+**Relationships.**
+- **Waterfall:** She understands his heartbreak — she feels it every time he's near. He hates being understood. He keeps coming back.
+- **Zui:** Zui keeps offering him drinks. Bruno keeps accepting. They're becoming friends. Both pretend otherwise.
+- **Michiko:** She recognizes the outlaw in him — he ran from love the way she ran from a throne. She doesn't say it. He knows she knows.
+
+**Signature detail.** His mumble is actually crystal clear. He's saying exactly what he means. You just have to lean in. No one leans in. That's the whole thing.
+
+**Owner-locked:** Name BRUNO (owner: "Miguel is Bruno already"). The Weeknd × Bruno Mars × Boomhauer × Johnny Bravo. Moody R&B mystery + smooth showmanship + mumbling drawl + vain pretty-boy swagger. Spanish brawler. Miguel base.
+
+---
+
+### N3GΔTIV0 — The Hunter
+**Not a soul. Not a vessel. A contractor.**
+
+**Backstory.** Negan's bat, Negan's grin, Negan's absolute certainty that the room belongs to him — scaled up to the galaxies. N3GΔTIV0 hunts zombies across the stars. Kills them for bounties. Kills them for hire. That's the only reason — unless he just wants to kill. Sinestro's gift: fear as a weapon — he doesn't just kill the dead, he makes them *afraid* first. Black Flash's nature: death itself, unstoppable — when he decides you're dead, no reincarnation saves you.
+
+Then a bounty led him to a giant green head floating in darkness. And inside: souls that die and return. Die and return. Die and return.
+
+He looked at the Reincarnation and saw *zombies*.
+
+**Personality.** Charismatic. Menacing. The grin that means he's already decided.
+
+**Fighting philosophy.** "Bounty or fun? Your call. Actually — mine."
+
+**Element.** None — and differently than Dio. Dio is *rejected* by the elements. N3GΔTIV0 is *outside* them. He camps in the Phantom Marketplace (neutral ground, good sightlines) and treats the whole Western Heart as his hunting ground. The Trader sells him information. The Trader sells everyone information.
+
+**Body / Mind / Soul.** BODY: Negan's brutal frame, the bat (barbed wire, well-maintained) an extension of the arm. MIND: the contractor — every target is a job, every job has a price, every price is negotiable except the ones that aren't. SOUL: unknown. He's from *outside the head* — the galaxies, the real dark, not Tong-Nou's interior dark. The trial's instruments don't read him. He might not have a soul. He might have something else. He hasn't said.
+
+**Why N3GΔTIV0 thinks he's here.** He followed a bounty. That's it. That's the whole story, and it's true. A soul escaped the trial — or was *taken* — and the contract led him to the head. He doesn't wonder who issued the contract. Contractors don't ask. But he's been here longer than the job should take, and the bat's handle is running out of room, and lately he's started wondering: what if the bounty isn't a soul? What if it's the *head*? He hasn't decided whether that's a bigger payday or a bigger problem.
+
+**Being purified of:** He is not being purified. He is not lost. He is *working* — and the trial doesn't know what to do with someone who isn't broken. Tong-Nou didn't call him. He's going to find what's owed him, and then he's going to leave. That's what he tells himself.
+
+**Relationships.**
+- **Sun Rā:** Professional curiosity. Sun Rā eats souls; N3GΔTIV0 hunts the undead. Are they competitors? Is N3GΔTIV0 the health inspector? They've shared a drink. Neither will say what was discussed.
+- **Phantom:** N3GΔTIV0 isn't sure Phantom is alive. Phantom isn't sure either. They have an understanding: N3GΔTIV0 doesn't hunt him, Phantom doesn't ask why.
+- **Waterfall:** She feels the deaths he's caused — every zombie, every bounty, the weight of a galaxy's worth of endings. It nearly drowns her. He avoids her. She's the one thing that makes him feel the cost — and a bounty hunter can't afford the cost.
+- **The vessels, generally:** They whisper that he can kill *permanently* — no Reincarnation, no return. He hasn't confirmed it. He hasn't denied it. The grin says enough.
+
+**Signature detail.** Before every match, he offers his opponent a choice: "Bounty or fun?" No one knows what the difference is. No one wants to find out. The kill-count is carved into the bat's handle. He's running out of room.
+
+**Owner-locked:** Name N3GΔTIV0 (leetspeak for "Negativo"). Zombie bounty hunter across the galaxies × Sinestro (fear as weapon) × Black Flash (death itself, unstoppable). Kills for bounties, for hire, or for fun. Negan base.
+
+---
+
+*Canon document 2026-10-12. Expanded 2026-10-13 — all 23 fighters + Sun Rā. Owner concepts are locked and marked. Connective tissue may grow — contradict nothing.*
 *The owner's game. Built from understanding, not imitation.*
 
 ---
@@ -390,5 +891,20 @@ He is Shao Kahn as a cute evil sun. He puts souls through endless tiers and twen
 **Naming rule (owner 2026-10-13):** It is always spelled and spoken in Japanese — 不死クォンバット — EXCEPT when Sun Rā himself says it. He says "Immortal Qombat" in English. Only he gets the English version.
 
 Sun Rā does not fight in the tournament. He IS the tournament — or one of them. His arena is a pocket realm where the trial's rules don't apply. Souls who wander in don't climb the ladder. They fight until they're eaten or they eat.
+
+**Element.** Fire — the sun. Obviously. But a *wrong* fire: not the Plains of Chi-U's honest confrontation, but a consuming fire. He burns souls for fuel.
+
+**Body / Mind / Soul.** BODY: the round, cute, evil sun — the least threatening shape for the most threatening appetite. MIND: the showman-tyrant — Shao Kahn's arena logic, Malakor's hunger, all of it wearing a smile. SOUL: unknown. He may be a fragment of Tong-Nou that *refused* purification and went feral. He may be something else entirely. The other bosses don't talk about him.
+
+**Why Sun Rā thinks he's here.** He doesn't think he's *in* anything. In his story, the pocket realm IS the world, and he's its sun — its god, its appetite, its law. The idea that he's a boss in someone else's trial — a side attraction in a dying head — would be incomprehensible to him. He says "Immortal Qombat" in English because in his world, he's the one who names things.
+
+**Being purified of:** The trial isn't purifying him. He's *quarantined* — the pocket realm is where the trial puts the things it can't heal yet. One day, when the vessels are whole, they'll come for him. He doesn't know that. He thinks the tournaments are his idea.
+
+**Relationships.**
+- **N3GΔTIV0:** Professional curiosity, both directions. They've shared a drink. Neither will say what was discussed.
+- **The vessels:** They whisper about the pocket realm the way sailors whisper about reefs. Everyone knows someone who wandered in. No one knows anyone who walked out unchanged.
+- **Tong-Nou:** The head tolerates the sun. The sun doesn't know it's being tolerated.
+
+**Signature detail.** He says "Immortal Qombat" in English. Only he gets the English version. Everyone else says 不死クォンバット. The distinction is the only law in his realm that he didn't make up — and he doesn't know who did.
 
 *Owner-directed 2026-10-13. Sun Rā's arena is a boss realm, not a standard stage. Name: SUN + ラー (Rā, the Egyptian sun god in Japanese).*
