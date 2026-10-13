@@ -98,3 +98,17 @@ Owner-directed 2026-10-12. These are outside the core 7 but approved for reskinn
 - **Personality:** A zombie hunter / bounty hunter of zombies across the galaxies. Kills zombies for bounties and for hire — that's the only reason, unless he just wants to kill. Mixed with Sinestro (fear as a weapon) and Black Flash (death itself, unstoppable). He doesn't just kill zombies — he IS the thing zombies fear.
 - **Name:** N3GΔTIV0 (owner-named 2026-10-13 — leetspeak for "Negativo")
 - **Universe fit:** Eastern Mind — the hunter soul. What happens when a zombie killer enters a trial for lost souls?
+
+## THOR (Ganryu base, Tekken 7)
+- **Direction:** The literal Norse god of thunder. Not inspired by Thor, not a tribute to Thor — IS Thor. Ganryu's sumo frame is the mountain made flesh, and every sumo slap (harite) lands as a thunder clap. The sky answers him because it has to.
+- **Name:** THOR (owner-named 2026-10-13)
+- **Body / Mind / Soul:** BODY — Ganryu's sumo mass, the heaviest honest frame in the trial; every open-hand slap is a thunder clap, and the arenas of the Western Heart have learned to flinch at the wind-up. MIND — the god's certainty; he doesn't argue, he declares, and arguments end when he speaks. SOUL — not one of the nine. When Thor stepped to the shrine stones, they went silent. Gods don't carry souls; they are what souls wish they were. The only answer came from the two souls that refused vessels — ZEN and GYOU — and they answered with silence too. Something is waiting.
+- **Element:** None of the five lands claim him. The trial tried to seat him in Metal — thunder is the hammer's ring, the forge's voice — but the storm is his land, and it follows him between arenas. Where Thor stands, the weather is Thor.
+- **Why Thor thinks he's here:** He heard the call and read it as a challenge — something in this dying head issued a summons that sounded like war, and gods of thunder don't ignore a summons. He believes he's climbing to fight whatever sits at the top of the Central Mountain. He has no idea the top is a shrine, the fight is purification, and the "opponent" is himself. He thinks the trial is a tournament. It is not.
+- **Relationships:**
+  - **BURGER:** The only fighter who can match Thor's appetite — and the only one Thor has ever lost an eating contest to (or so Burger claims; Thor claims the horn was rigged). Sumo brothers. Two mountains that decided to be friends instead of a landslide.
+  - **DIABLO:** Two uninvited kings. Diablo tore his way in to rule the trial; Thor walked in because he heard fighting and assumed he was invited. Diablo demands Thor kneel. Thor doesn't understand the sentence. Their fights are the trial's earthquakes.
+  - **SKULL:** The violence god and the thunder god. Skull's RETSU is force from below; Thor's thunder is force from above. They understand each other completely and have nothing to say about it.
+  - **KING TYRANT:** The showman of the sea knows the storm always wins — and performs anyway. Thor respects that. It reminds him of mortals.
+  - **ZUI:** The only vessel who ever offered Thor a drink and meant it as an equal. Drinking companions — the monk who left the monastery and the god who never needed one.
+- **Universe fit:** Eastern Mind — the god who wandered into a trial for lost souls and broke its seating chart. The trial purifies souls. Thor doesn't have one to purify. That should be a problem. It isn't, yet.
