@@ -130,6 +130,45 @@ The 8 track hashes absent from every `.ycg` are **per-move hand/foot detail POSE
   literal small IDs; 26-function + linear root batteries = 0 hits). Related
   joints share base-ID deltas (`60F8^6198 = 0x1600102`).
 
+### 5c. Item-6 cycle — ECD probes, base-ID generation fn, anatomical L/R (2026-10-13)
+
+Full analysis: `./YANM-ITEM6-CYCLE.md`. Measured over the full 215-clip
+universe (ringmotion 170 + viewer/motion 37 + viewer 3 + 2d 4 + bg/bs 1).
+
+- **ECD28978 — per-move-variant 2-channel static pose selector, identity
+  still OPEN**: present in 208/215 clips, 0/208 animated within a clip;
+  87 distinct poses at 1° rounding; both channels share one value
+  vocabulary (top: 79.9°, 75.7°, 3.6°); fully independent of body /
+  fingers / thumbs / 0C5BF279 (all |r| ≤ 0.13). Variant-specific:
+  `c200_0a` (63.0,24.5) vs `c200_1a` (0.9,1.1) vs `c200_2a` (1.8,0.2) —
+  poses go to rest across variants, NOT mirror-flipped (mirror-selector
+  rejected 3/3). Second-performer hypothesis weakened: the one clip with
+  all 7 slot-entity tracks (`a033_0a`) has NO ECD. 9×9-grid, thumb-related,
+  and 0C5B-related hypotheses rejected with counts. Leading hypothesis:
+  face-bone driver (20 face bones in ymg; fits static-per-move + ±80°
+  extremes + variant-specificity) — needs mesh/FK or visual to confirm.
+- **Base-ID generation fn — narrowed, still OPEN**: 472-hash universe →
+  24 side pairs → 445 base IDs = 28 entities + 417 joint/system tracks.
+  Entities = `(slot<<8)|0x02`, 25 slots (0–255; all 7 ringmotion slots
+  co-occur in the single `a033_0a` setup clip). Rejected with numbers:
+  fixed-key XOR (best 7/417), nibble-permutation (25/417, all small IDs),
+  verbatim ID table in model files (hits = ycg records' own hash slots),
+  DDF67B-run relation (min popcount 9), index-hash battery 0–4999 (1 hit
+  on a small family ID). Real structure: non-joint systems use
+  `(family<<16)|member` (`4AAF`×9, `F7AB`×5, `5D9B`×7, `579B`×5,
+  `010000`×7…); joint base IDs are tool-assigned opaque. Correction:
+  `613B7507 ^ 637B7003` = **0x02400504** (was miswritten 0x02400544).
+- **Anatomical L/R — bridge unachievable headless**: side-bit→ycg-y is
+  solid (`0x04000000` SET ↔ y<0, 6/6; ycg records mirror-symmetric);
+  ymg anatomical solid (R=+y, L=−y from thigh ±10.40); but ycg↔ymg frame
+  correspondence fails — no euler order aligns (R bones never at y>0),
+  nearest-neighbor 15 agree / 7 disagree / 20 abstain (ycg 42-joint rig is
+  a different scale/proportion rig; bind pose is mirror-symmetric = zero
+  intrinsic L/R info). Provisional mapping stays LOW confidence; for
+  retargeting, map side-bits consistently — result is correct up to a
+  global mirror. Resolving the final bit needs YOBJ mesh assembly or
+  visual reference.
+
 ## 6. Arenas — Decoded + Mapped to Western Heart
 
 - **40 arena OBJ point clouds decoded** (see §4a; `arenas/`). The 43-file filter matches 43 `.ymg` files, but `c_mat.ymg`, `dummy_x8.ymg`, `mat.ymg` contain **zero vertices** (material/dummy files) — 40/43 is complete.
