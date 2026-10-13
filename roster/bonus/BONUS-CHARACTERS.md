@@ -115,9 +115,9 @@ Owner-directed 2026-10-12. These are outside the core 7 but approved for reskinn
 - **Universe fit:** Eastern Mind — the god who wandered into a trial for lost souls and broke its seating chart. The trial purifies souls. Thor doesn't have one to purify. That should be a problem. It isn't, yet.
 
 ## YUKIHYŌ (Armor King base, Tekken 8)
-- **Direction:** The snow leopard masked ninja. A silent snow-leopard-masked ninja — G.I. Joe's Snake Eyes mixed with the black ninja, wearing the snow leopard as his face.
+- **Direction:** The snow leopard masked ninja. A silent snow-leopard-masked ninja — based on G.I. Joe's Snake Eyes (the black ninja) but more based on Storm Shadow (the white ninja, Snake Eyes' rival) — wearing the snow leopard as his face.
 - **Name:** YUKIHYŌ (owner-named 2026-10-13 — ユキヒョウ, "snow leopard" in Japanese, spelled in English as Yukihyō)
-- **Personality:** Snake Eyes (the silent G.I. Joe ninja) mixed with the black ninja — says nothing, strikes from the whiteout. The snow leopard mask is his face; what's underneath is nobody's business.
+- **Personality:** Storm Shadow's white-ninja precision with Snake Eyes' silence — says nothing, strikes from the whiteout. The snow leopard mask is his face; what's underneath is nobody's business.
 - **Visual:** Snow leopard mask/head. Black/white colorway — striped/spotted digital camo in white across the attires. The ghost of the mountains to Pantera's shadow of the jungle.
 - **Dynamic:** Pairs with Pantera as the two big-cat wrestlers — Pantera is the black panther (night, melanistic rosettes), Yukihyō is the snow leopard (white, black rosettes on pale fur). Same wrestling soul, opposite coats.
 - **Universe fit:** Eastern Mind — the mountain soul. The snow leopard stalks the high cold places between the five lands.
