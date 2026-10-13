@@ -1,0 +1,297 @@
+{
+ "_meta": {
+  "template": "WWF No Mercy move-slot layout (re-docs/docs/moves/move-slots.md)",
+  "extension": "Tekken striking slots added for fighting mode; Western Heart uses BOTH modes",
+  "rule": "Every fighter has the same slot set. What differs is which move/animation is assigned to each slot.",
+  "move_assignment": "slot -> move_id -> anim_id (No Mercy: anim_id = file_id - 0x3322) -> animation clip",
+  "total_slots": 176
+ },
+ "grappling": {
+  "front_weak_grapple": {
+   "opponent": "standing facing player",
+   "setup": "tap grapple in front",
+   "slots": {
+    "grapple": "frontWeakGrappleSlot1",
+    "dir+grapple": "frontWeakGrappleSlot2",
+    "up+grapple": "frontWeakGrappleSlot3",
+    "down+grapple": "frontWeakGrappleSlot4",
+    "strike": "frontWeakGrappleSlot5",
+    "dir+strike": "frontWeakGrappleSlot6",
+    "up+strike": "frontWeakGrappleSlot7",
+    "down+strike": "frontWeakGrappleSlot8"
+   }
+  },
+  "front_strong_grapple": {
+   "opponent": "standing facing player",
+   "setup": "hold grapple in front",
+   "slots": {
+    "grapple": "frontStrongGrappleSlot1",
+    "dir+grapple": "frontStrongGrappleSlot2",
+    "up+grapple": "frontStrongGrappleSlot3",
+    "down+grapple": "frontStrongGrappleSlot4",
+    "strike": "frontStrongGrappleSlot5",
+    "dir+strike": "frontStrongGrappleSlot6",
+    "up+strike": "frontStrongGrappleSlot7",
+    "down+strike": "frontStrongGrappleSlot8",
+    "special": "frontFinisherSlot"
+   }
+  },
+  "back_weak_grapple": {
+   "opponent": "standing facing away",
+   "setup": "tap grapple from behind",
+   "slots": {
+    "grapple": "backWeakGrappleSlot1",
+    "dir+grapple": "backWeakGrappleSlot2",
+    "strike": "backWeakGrappleSlot3",
+    "dir+strike": "backWeakGrappleSlot4"
+   }
+  },
+  "back_strong_grapple": {
+   "opponent": "standing facing away",
+   "setup": "hold grapple from behind",
+   "slots": {
+    "grapple": "backStrongGrappleSlot1",
+    "dir+grapple": "backStrongGrappleSlot2",
+    "strike": "backStrongGrappleSlot3",
+    "dir+strike": "backStrongGrappleSlot4",
+    "special": "backFinisherSlot"
+   }
+  },
+  "reversals": [
+   "backWeakGrappleCounterSlot",
+   "backStrongGrappleCounterSlot"
+  ]
+ },
+ "standing": {
+  "weak_arm_strike": {
+   "tap_strike": "weakArmStrikeSlot1",
+   "dir+tap_strike": "weakArmStrikeSlot2"
+  },
+  "weak_leg_strike": {
+   "tap_strike": "weakLegStrikeSlot1",
+   "dir+tap_strike": "weakLegStrikeSlot2"
+  },
+  "strong_strike": {
+   "hold_strike": "strongStrikeSlot1",
+   "dir+hold_strike": "strongStrikeSlot2",
+   "strike+grapple": "strongStrikeSlot3"
+  },
+  "ducking_attack": {
+   "strike": "duckingAttackSlot"
+  },
+  "counter_punch": {
+   "counter": "counterPunchSlot",
+   "counter+special": "specialCounterPunchSlot"
+  },
+  "counter_kick": {
+   "counter_a": "counterKickSlot1",
+   "counter_b": "counterKickSlot2"
+  },
+  "running_attack": {
+   "run+strike": "weakRunningAttackSlot1",
+   "run+strike+grapple": "weakRunningAttackSlot2",
+   "dir+run+strike": "strongRunningAttackSlot1",
+   "dir+run+strike+grapple": "strongRunningAttackSlot2"
+  },
+  "running_grapple": {
+   "run+grapple_front": "runningFrontGrappleSlot",
+   "run+grapple_back": "runningBackGrappleSlot"
+  },
+  "evasion": {
+   "run+block": "evasionSlot"
+  }
+ },
+ "tekken_striking": {
+  "_note": "Tekken-mode extension: open-plane 3D fighting strikes. Tekken moves are DATA not code (production-study). Each slot takes a Tekken move entry: {input, damage, frames, hit_level, properties}.",
+  "jab_strings": {
+   "1": "jabSlot1",
+   "1,1": "jabSlot2",
+   "1,2": "jabSlot3",
+   "2": "crossSlot1",
+   "2,1": "crossSlot2",
+   "3": "kickSlot1",
+   "3,1": "kickSlot2",
+   "4": "kickSlot3",
+   "4,1": "kickSlot4"
+  },
+  "crouch_dash": {
+   "f,n,d,df": "crouchDashSlot",
+   "cd+1": "cdStrikeSlot1",
+   "cd+2": "cdStrikeSlot2",
+   "cd+3": "cdStrikeSlot3",
+   "cd+4": "cdStrikeSlot4"
+  },
+  "while_rising": {
+   "ws+1": "wsSlot1",
+   "ws+2": "wsSlot2",
+   "ws+3": "wsSlot3",
+   "ws+4": "wsSlot4"
+  },
+  "while_running": {
+   "wr+3": "wrSlot1",
+   "wr+4": "wrSlot2"
+  },
+  "throws": {
+   "1+3": "throwSlot1",
+   "2+4": "throwSlot2",
+   "dir+1+3": "throwSlot3",
+   "dir+2+4": "throwSlot4",
+   "back_throw": "throwSlot5"
+  },
+  "rage": {
+   "rage_art": "rageArtSlot",
+   "rage_drive": "rageDriveSlot"
+  },
+  "stance_transitions": {
+   "stance_a": "stanceSlotA",
+   "stance_b": "stanceSlotB",
+   "stance_c": "stanceSlotC"
+  },
+  "homing": {
+   "homing_1": "homingSlot1",
+   "homing_2": "homingSlot2"
+  },
+  "power_crush": {
+   "powerCrushSlot": "powerCrushSlot"
+  },
+  "low_parry": {
+   "d+1+2": "lowParrySlot"
+  }
+ },
+ "ground": {
+  "upper_body_submission": {
+   "facing_up": "facingUpUpperBodySubmissionSlot",
+   "facing_down": "facingDownUpperBodySubmissionSlot",
+   "sitting_up": "sittingUpUpperBodySubmissionSlot",
+   "sitting_down": "sittingDownUpperBodySubmissionSlot",
+   "facing_up_special": "facingUpUpperBodyFinisherSlot",
+   "facing_down_special": "facingDownUpperBodyFinisherSlot"
+  },
+  "lower_body_submission": {
+   "facing_up": "facingUpLowerBodySubmissionSlot",
+   "facing_down": "facingDownLowerBodySubmissionSlot",
+   "facing_up_special": "facingUpLowerBodyFinisherSlot",
+   "facing_down_special": "facingDownLowerBodyFinisherSlot"
+  },
+  "ground_attack": {
+   "facing_up": "facingUpGroundAttackSlot",
+   "facing_down": "facingDownGroundAttackSlot",
+   "sitting_up": "sittingUpGroundAttackSlot",
+   "sitting_down": "sittingDownGroundAttackSlot"
+  },
+  "running_ground_attack": {
+   "facing_up": "facingUpRunningGroundAttackSlot",
+   "facing_down": "facingDownRunningGroundAttackSlot",
+   "sitting_up": "sittingUpRunningGroundAttackSlot",
+   "sitting_down": "sittingDownRunningGroundAttackSlot"
+  }
+ },
+ "turnbuckle": {
+  "turnbuckle_attack": {
+   "strike": "turnbuckleAttackSlot1",
+   "dir+strike": "turnbuckleAttackSlot2",
+   "run+strike": "runningTurnbuckleAttackSlot1",
+   "run+strike+grapple": "runningTurnbuckleAttackSlot2"
+  },
+  "tree_of_woe": {
+   "strike": "treeOfWoeAttackSlot1",
+   "dir+strike": "treeOfWoeAttackSlot2",
+   "run+strike": "runningTreeOfWoeAttackSlot"
+  },
+  "front_turnbuckle_weak": {
+   "grapple": "frontTurnbuckleWeakGrappleSlot1",
+   "strike": "frontTurnbuckleWeakGrappleSlot2"
+  },
+  "front_turnbuckle_strong": {
+   "grapple": "frontTurnbuckleStrongGrappleSlot1",
+   "strike": "frontTurnbuckleStrongGrappleSlot2",
+   "special": "frontTurnbuckleFinisherSlot"
+  },
+  "back_turnbuckle_weak": {
+   "grapple": "backTurnbuckleWeakGrappleSlot1",
+   "strike": "backTurnbuckleWeakGrappleSlot2"
+  },
+  "back_turnbuckle_strong": {
+   "grapple": "backTurnbuckleStrongGrappleSlot1",
+   "strike": "backTurnbuckleStrongGrappleSlot2",
+   "special": "backTurnbuckleFinisherSlot"
+  },
+  "flying_attack": {
+   "standing": "standingOpponentFlyingAttackSlot",
+   "standing_outside": "standingOpponentFlyingAttackToOutsideSlot",
+   "standing_special": "standingOpponentFlyingFinisherSlot",
+   "laying": "layingOpponentFlyingAttackSlot",
+   "laying_outside": "layingOpponentFlyingAttackToOutsideSlot",
+   "laying_special": "layingOpponentFlyingFinisherSlot",
+   "second_rope": "attackFromSecondRopeSlot"
+  }
+ },
+ "ringside_apron": {
+  "grapple_to_apron": {
+   "weak": "weakGrappleToApronSlot",
+   "strong": "strongGrappleToApronSlot",
+   "special": "specialGrappleToApronSlot"
+  },
+  "apron_strike": {
+   "to_inside": "apronStrikeToInsideSlot",
+   "to_outside": "apronStrikeToOutsideSlot"
+  },
+  "apron_grapple": {
+   "weak": "weakGrappleFromApronSlot",
+   "strong": "strongGrappleFromApronSlot",
+   "finisher": "finisherFromApronSlot"
+  },
+  "apron_flying": {
+   "flying": "flyingAttackFromApronSlot",
+   "running_flying": "runningFlyingAttackFromApronSlot",
+   "to_ring_standing": "flyingAttackToRingStandingSlot",
+   "to_ring_laying": "flyingAttackToRingLayingSlot",
+   "to_ring_special": "flyingAttackToRingSpecialSlot"
+  },
+  "flying_to_outside": {
+   "diving_1": "runningDivingAttackSlot1",
+   "diving_2": "runningDivingAttackSlot2",
+   "rebound": "reboundFlyingAttackSlot"
+  }
+ },
+ "irish_whip": {
+  "whip_attack": "irishWhipAttackSlot",
+  "weak_whip_grapple": {
+   "tap": "weakIrishWhipGrappleSlot1",
+   "hold": "weakIrishWhipGrappleSlot2"
+  },
+  "strong_whip_grapple": {
+   "tap": "strongIrishWhipGrappleSlot1",
+   "hold": "strongIrishWhipGrappleSlot2",
+   "special": "irishWhipFinisherSlot"
+  }
+ },
+ "taunt": {
+  "standing": {
+   "up": "standingTauntSlot1",
+   "left": "standingTauntSlot2",
+   "right": "standingTauntSlot3"
+  },
+  "special": "specialTauntSlot",
+  "ducking": "duckingTauntSlot",
+  "corner": "cornerTauntSlot",
+  "top_turnbuckle": "topTurnbuckleTauntSlot",
+  "apron": "apronTauntSlot",
+  "running_diving": "runningDivingTauntSlot",
+  "celebration": "celebrationTauntSlot",
+  "entrance": "entryWayTauntSlot"
+ },
+ "double_team": {
+  "standing": {
+   "front": "frontDoubleTeamGrappleSlot",
+   "back": "backDoubleTeamGrappleSlot",
+   "sandwich": "sandwichDoubleTeamGrappleSlot"
+  },
+  "running": "runningDoubleTeamGrappleSlot",
+  "flying": {
+   "top_rope": "doubleTeamFlyingAttackTopRopeSlot",
+   "top_rope_outside": "doubleTeamFlyingAttackTopRopeToOutsideSlot",
+   "apron": "doubleTeamFlyingAttackApronSlot"
+  }
+ }
+}
