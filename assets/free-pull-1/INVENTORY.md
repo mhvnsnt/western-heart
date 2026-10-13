@@ -63,3 +63,52 @@
 2. Mixamo fighting animations (Adobe ID needed)
 3. Sonniss GDC SFX (needs 10GB+ free space)
 4. Poly Haven HDRI + textures
+
+---
+
+## WESTERN HEART SYSTEM MAPPING
+**Added:** 2026-10-13 (wireup)
+
+### Which files map to which system
+
+| Asset | Western Heart System | Status |
+|---|---|---|
+| `tk-fighting-game/js/fighter.js` | Combat core (Fighter class) | **Reference** — port to Godot |
+| `tk-fighting-game/js/game.js` | Match arbiter, round flow | **Reference** — port to Godot |
+| `tk-fighting-game/js/characters.js` | Roster data format | **Adapted** → `prototype/fighters/FIGHTER-TEMPLATE.md` |
+| `tk-fighting-game/js/ai.js` | CPU opponent AI | **Reference** — tune per fighter |
+| `tk-fighting-game/js/audio.js` | Procedural SFX | **Reference** — replace with real SFX |
+| `quaternius/animations/UAL1_Standard.fbx` | Locomotion base layer | **Ready** — retarget to Tekken skeleton |
+| `quaternius/gltf-animations/` | Locomotion (glTF) | **Ready** — alternative format |
+| `cmu-mocap/fighting/*.bvh` (16 files) | Signature moves | **Needs conversion** — BVH→FBX via Blender |
+| `kenney/particles/` | Hit sparks, Soul Surge FX | **Ready** — drop into Godot particles |
+| `kenney/audio/` | Impact sounds, UI clicks | **Ready** — OGG, use directly |
+| `ambientcg/textures/Wood096/` | Temple/dojo floors | **Ready** — PBR, use directly |
+| `ambientcg/textures/Wood095/` | Temple walls | **Ready** — PBR, use directly |
+| `ambientcg/textures/Fabric085/` | Fighter uniforms, banners | **Ready** — recolor per character |
+| `ambientcg/textures/Fabric084/` | Fighter uniforms (alt) | **Ready** — recolor per character |
+| `ambientcg/textures/Metal063/` | Phantom's sword, SAM-UR-A1 | **Ready** — PBR, use directly |
+| `ambientcg/textures/Metal049A/` | SAM-UR-A1 plating (alt) | **Ready** — PBR, use directly |
+
+### What's ready vs needs work
+
+**Ready to use today:**
+- Kenney particles and audio (drop-in)
+- ambientCG PBR textures (drop-in)
+- Quaternius FBX animations (retarget only, no conversion)
+- tk code as architectural reference
+
+**Needs conversion:**
+- CMU BVH → FBX or Godot .anim (Blender bake required)
+- tk JavaScript → GDScript (manual port)
+
+**Needs signup (not yet pulled):**
+- Mixamo animations (Adobe ID)
+- Sketchfab Lost Shrine stage (free account)
+- Freesound SFX (free account)
+- Quaternius base character models (itch.io — no signup but needs browser)
+
+### Related docs
+- `docs/TK-COMBAT-ANALYSIS.md` — combat system deep-dive
+- `docs/ANIMATION-PIPELINE.md` — retargeting plan
+- `prototype/README.md` — prototype structure
