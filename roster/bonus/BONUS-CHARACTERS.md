@@ -60,3 +60,8 @@ Owner-directed 2026-10-12. These are outside the core 7 but approved for reskinn
 - **Direction:** Native American warrior spirit. Julia's canon already draws from Native American heritage — lean into it fully.
 - **Name:** NIGHTWOLF (owner-named 2026-10-13)
 - **Universe fit:** Eastern Mind — the spirit warrior, connected to the land and ancestors.
+
+## DIO (Akuma base, Tekken 7 / Street Fighter)
+- **Direction:** The demon. Street Fighter's Akuma as he appears in Tekken 7 — the raging demon, master of the Satsui no Hado.
+- **Name:** DIO (owner-named 2026-10-13)
+- **Universe fit:** Eastern Mind — the demon soul, pure destructive force. A natural fit for the trial's darker trials.
