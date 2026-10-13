@@ -107,14 +107,22 @@ Full table: `game-reverse-engineering/wwe-wrestlemania-xix/docs/WRESTLER-SKELETO
   elbow-pad shape). Correction: the v3 "150-triangle index list (max idx
   1224)" was a misread — 1224 was a coordinate; the region is descriptor +
   positions.
-- OPEN: triangle connectivity; assembling `000_0`+`000_1`; bone transforms.
+- **Triangle connectivity CRACKED (2026-10-13, eye-verified).** YOBJ meshes
+  use **no index buffers** — triangles are implicit **triangle strips**:
+  each vertex run is strip-ordered (ladder/zigzag), triangles = consecutive
+  triples (v_i,v_{i+1},v_{i+2}) within jump-delimited strips (split at edge
+  jumps > max(400, 4×median); separators are single near-origin verts).
+  Each strip renders as a smooth surface patch (verified per-strip).
+  Exports: `wwe-wrestlemania-xix/objs/wrestler_000_0.obj` (606v, 58 strips,
+  383 tris), `objs/elbow_me0_000_l0.obj` (148v, 14 strips, 113 tris);
+  tool `tools/yobj_strips.py`.
+- OPEN: assembling `000_0`+`000_1`; strip→world needs skinning (bone
+  matrices) — strips are smooth but scattered without it.
 - `model/wrestler/`: 111 slots (000–110), each `_0` = base (`.tex`+`.ymg`+`.ycg`),
   `_1`/`_2` = alt attires. More slots than the ~40 roster (CAW parts, staff).
 - YOBJ header map (measured): bone table @0xF3B4 (71 slots), material table
   @0x10704 (57 records, RGBA + u16 index-chunk offsets), texture-name table
   @0x10574, per-bone skin batch table @0x7CA0.
-- OPEN: vertex position buffer + dequantization (quantized s8/s16; index buffers
-  located, position array not yet). No mesh OBJ exported yet.
 
 ### Animations
 - `ringmotion/`: YANM skeletal anims (`.yag` magic YANM) + `.atr` metadata.
