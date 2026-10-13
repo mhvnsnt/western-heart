@@ -128,3 +128,11 @@ Owner-directed 2026-10-12. These are outside the core 7 but approved for reskinn
 - **Personality:** Maniacal secret agent who slices up his enemies with his blade — chops and strikes, surgical and savage at once. The mission is the excuse; the cutting is the point.
 - **Visual:** Usually wears a skull mask to hide his identity and his scars. Sometimes the mask comes off and his face is seen — scarred, smiling wrong. The mask is the professional; the face underneath is the maniac.
 - **Universe fit:** Eastern Mind — the blade that cuts souls. Pairs with Phantom and Scimitar as the third blade fighter: Phantom is the supernatural teleporting blade, Scimitar is the scheming desert blade, Slice is the unhinged surgical blade.
+
+## DR. BOSCOE (Dr. Bosconovitch base, Tekken Tag Tournament 2)
+- **Direction:** The mad scientist. Dr. Bosconovitch — the Tekken scientist who built Alisa and the Jacks — reimagined as the universe's Dr. Frankenstein and Dr. Gero in one.
+- **Name:** DR. BOSCOE (owner-named 2026-10-13)
+- **Visual:** Reskinned almost like Android 13 from Dragon Ball Z — the hulking redneck android look. Multiple alternate skins based on every android from DBZ (Android 16, 17, 18, 19, 20/Gero himself).
+- **Lore:** A mad scientist who started making androids until he turned himself into one. He built the bodies, then became the body. The creator who couldn't resist becoming his own creation.
+- **Dynamic:** Pairs with CYBORG X (Alisa, his creation) and SAM-UR-A1 as the three "built souls" — but Boscoe is the one who BUILT the others. The father of the machines who became a machine.
+- **Universe fit:** Eastern Mind — the creator soul. What does the trial do with a man who tried to manufacture souls?
