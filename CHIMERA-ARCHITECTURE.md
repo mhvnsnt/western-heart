@@ -60,6 +60,23 @@ WWE animations CAN work in a Tekken-style engine — Def Jam: Fight for NY prove
 wrestling/grappling animations work inside a 3D fighter. The animation data stays
 federated; the character models live in the wrestling game.
 
+## STREET FIGHTER FEDERATION (owner 2026-10-13)
+Owner prefers Tekken over Street Fighter. Tekken is the game; SF is research.
+
+- **SF-based characters keep their SF movesets, attacks, and animations** — the
+  cool things SF does differently stay in. A Hadoken-type move can keep its
+  quarter-circle / down-forward punch input.
+- **But they PLAY like Tekken.** Tekken + Urban Reign is the input style and the
+  play style (Urban Reign plays kind of like Tekken — same language). An SF
+  character is a Tekken fighter wearing SF moves, not an SF fighter dropped
+  into the game.
+- **Everything from SF games becomes proprietary to Western Heart:** renamed,
+  reskinned, transformed into our universe. Nobody looks at it and says "that's
+  literally Street Fighter" — same as the transformation law for everything else.
+- **The line:** SF is mined for interesting moves and mechanics. It NEVER
+  replaces the Tekken play style. If an SF idea would change how the game plays
+  at its core, it doesn't go in — or it gets rebuilt to speak Tekken first.
+
 ## TRANSFORMATION LAW (owner 2026-10-13)
 100% of every teardown game gets incorporated into Western Heart somehow, somewhere. But nothing stays proprietary to the source — everything gets transformed into Western Heart's own through editing, owner alterations, AI generation/alteration, and whatever we can pull in.
 
