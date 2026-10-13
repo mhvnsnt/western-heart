@@ -68,7 +68,11 @@ Full table: `game-reverse-engineering/wwe-wrestlemania-xix/docs/WRESTLER-SKELETO
   unresolved. Full table:
   `~/workspace/game-reverse-engineering/wwe-wrestlemania-xix/docs/ycg-group-mapping.json`.
 - Retargeting path: YANM track → ycg group → anatomical joint → Tekken
-  skeleton joint (task-4 test in progress).
+  skeleton joint. **v1 WORKING 2026-10-12**: `yanm_to_tekken3.py` plays
+  entrance `a000_0a.yag` on Tekken 3 King — 465 frames @30fps of 49-channel
+  pose vectors (base = King stance, YANM motion overlaid on pelvis/chest/
+  hips/head/shoulders; verified numerically + motion plots). Legs need the
+  Tekken IK path (v2).
 - They are ENTRANCE animations — disc `ringmotion/cnv.bat` shows Yukes'
   `yma2yag` converting `Nyujo_YMA/*.yma` (Nyujo = 入場 = "entrance") → `*.yag`.
   Letter groups a/b/c/d = 68/46/208/12; median `.yag` 38.6KB.
