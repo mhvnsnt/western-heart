@@ -99,6 +99,37 @@ tick totals, est. seconds), and every key decoded — single keys as
 `.atr` companions included as raw 16-byte records. 169/170 decode clean;
 `c138_0a.yag` is a **72-byte stub** (wrong magic words, no track directory).
 
+### 5b. Detail tracks — fingers / thumbs / toes / ECD / 0C5BF279 — Resolved (2026-10-13)
+
+The 8 track hashes absent from every `.ycg` are **per-move hand/foot detail POSES**
+(w28 key count = 1 = static, except when animating). Full analysis:
+`../wwe-wrestlemania-xix/YANM-ITEM5-CYCLE.md`.
+
+- **Fingers** `A4955E6E`/`BA955E6E` (L/R pair, XOR `0x1E000000`): one hand each;
+  ch1 = proximal-curl, ch2 = distal-curl (independent — decoupled clips
+  `c100_0a` ch1-only 58°, `c007_0a`/`c124_0a` ch2-only −72°). `c000_0a` shows
+  asymmetric grapple roles: one hand grip→releases while the other holds.
+  Anatomical L/R provisional (needs visual verification).
+- **Thumbs** `579B89D0`/`579B8E50` (L/R pair, XOR `0x780`) — STRONG: default
+  (0°, 80°) = rest abduction; grapple poses (80°, 0°) = wrapped into grip,
+  (0°, 0°) = flat. Side-paired with finger tracks by 170-clip contingency
+  (same-side: thumb never leaves default unless its finger track animates,
+  0/149 and 0/154; cross-side: no association).
+- **Toes** `007FD58C`/`1E7FD58C` (L/R pair, XOR `0x1E000000`): static per clip,
+  30 distinct poses — posed per move, never keyframed.
+- **0C5BF279** = per-wrestler detail track (degenerate dual, static): embedded
+  once per wrestler `.ymg` in a binary table (`000_0 @0x10d4c`, `002_0 @0x1302c`)
+  + 9 identical param words; `001_0` carries `40911198` in the analogous slot
+  (unused in ringmotion clips). Likely wrestler-specific attire/hair/accessory.
+- **ECD28978** = 8th detail track, identity OPEN: 82 discrete static poses
+  (0/80°-grid pose selector), independent of all core tracks (max |r| = 0.27).
+  Candidates: facial-expression selector, second-performer detail, prop.
+- **Hash construction**: `track_id = joint_base_id XOR side_code` — side codes
+  `0x0F`, `0xF0`, `0x780`, `0x7800`, `0x1E000000`, `0xA0`, `0xA00` per joint
+  type. Base IDs are ASSIGNED, not string-hashed (`00008102…0000D502` are
+  literal small IDs; 26-function + linear root batteries = 0 hits). Related
+  joints share base-ID deltas (`60F8^6198 = 0x1600102`).
+
 ## 6. Arenas — Decoded + Mapped to Western Heart
 
 - **40 arena OBJ point clouds decoded** (see §4a; `arenas/`). The 43-file filter matches 43 `.ymg` files, but `c_mat.ymg`, `dummy_x8.ymg`, `mat.ymg` contain **zero vertices** (material/dummy files) — 40/43 is complete.
