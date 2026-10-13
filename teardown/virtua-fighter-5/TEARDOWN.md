@@ -9,7 +9,7 @@
 | **Title** | Virtua Fighter 5 (PS3, 2007) |
 | **Source** | Archive.org `games_20250220` → `Virtua Fighter V PS3/GAMES.rar` (3.69GB) |
 | **Note** | This is the base VF5, NOT Final Showdown. FS was digital-only (PSN/XBLA) and has no free Archive.org dump. Base VF5 has 17 fighters; FS added Jean Kujo + Taka-Arashi (19 total). |
-| **Status** | Download in progress (2026-10-13) |
+| **Status** | 100% — full 19-fighter roster + all 38 stage archives extracted and on Release `vf5-ps3-v1` (2026-10-13) |
 
 ## Roster (17 fighters — base VF5)
 
@@ -81,14 +81,16 @@ USRDIR/
 
 Per Sega: each VF5 character uses 40,000+ polygons. For comparison, Gears of War (2006) used 10,000–15,000 per character. VF5's count was unsurpassed until Ninja Gaiden II (2008).
 
-## What's Next
+## What's Next — DONE 2026-10-13
 
-1. Complete download → verify RAR integrity
-2. Split → GitHub Release (disk is at 92%, can't hold extracted game locally)
-3. Extract priority characters (Wolf, El Blaze, Shun Di, Kage, Aoi, Goh, Lion, Vanessa)
-4. Extract stages
-5. Extract UI/menus
-6. Push all to this directory
+1. ~~Complete download → verify RAR integrity~~ — RAR verified on disk (3.69GB)
+2. ~~Split → GitHub Release~~ — 8× 500MB chunks on Release `vf5-ps3-v1`
+3. ~~Extract characters~~ — ALL 19 fighters (was 7 priority, now full roster: Akira, Pai, Lau, Wolf, Jeffry, Kage, Sarah, Jacky, Shun, Lion, Aoi, Lei-Fei, Vanessa, Brad, Goh, Eileen, El Blaze + Dural boss)
+4. ~~Extract stages~~ — all 38 stage archives (`stg*.farc`) on the release, cataloged in `stages/README.md`
+5. Extract UI/menus (remaining)
+6. ~~Push all to this directory~~ — models/README.md + stages/README.md updated
+
+**Release `vf5-ps3-v1` contents:** 8 game chunks + 18 `*itm.farc` + 19 body `*.farc` + 38 `stg*.farc` + shared (effcmn, itmcmn, dbg, test, obj_db.bin, tex_db.bin)
 
 ## Sources
 
