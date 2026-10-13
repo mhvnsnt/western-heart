@@ -31,8 +31,11 @@ Character data, stage data, movesets, audio, and textures are all inside the 52 
 ### Stage manifest (documented from public game data — NOT in the archive)
 **29 battle stages** incl. 10 multi-tiered (Condor Canyon, Dusk After The Rain, Fireworks Over Barcelona, Hall Of Judgement, Moai Excavation, Riverside Promenade, Strategic Space, Tempest, Tropical Rainforest, Winter Palace) + Violet Systems Lab (Fight Lab) + system stages. Internal stage IDs (stg00–stg48) documented in [`STAGES.md`](STAGES.md) for the future extractor.
 
-### Selective extraction (IN PROGRESS 2026-10-13)
-The 13 sub-10MB files (12 title-update files + the 45KB STFS descriptor, ~3.1MB total) are being selectively extracted for identification. Character-select portraits, stage thumbnails, and all other game content sit inside the Data chunks and cannot be reached without STFS decryption. Results will be documented here when the extraction lands.
+### Selective extraction (DONE 2026-10-13)
+All 13 sub-10MB files extracted with 7-Zip (selective `7z e`, ~3MB total — disk-safe):
+- **12 files in `00009000/`** (98KB–340KB): identified via `file` as **Xbox 360 LIVE packages, content type "Avatar Item"** — Xbox Live avatar-item DLC bundles (each embeds PNG thumbnail data: IHDR/IDAT chunks visible). 1996-epoch mtimes. These are dashboard avatar cosmetics, **not game metadata**.
+- **`392CFF5C9DB17CCAEBC3`** (45,056 bytes): Xbox 360 LIVE package (media ID 5D762D06) — the STFS container descriptor for the main Data0000–Data0051 content package.
+- **Result: no plaintext game metadata, no character portraits, no roster/stage manifests, no configs at the package level.** All game content (fighters, stages, movesets, audio, textures) is inside the STFS Data chunks and requires Xbox 360 decryption tooling. Extracted copies kept at [`extracted-small/`](extracted-small/) (2.9MB).
 
 ---
 
