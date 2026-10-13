@@ -3,17 +3,17 @@
 **Role in Chimera Build (owner 2026-10-12):** GAME #6 — street-brawl systems. *"It's kind of a hybrid of the wrestling, the WrestleMania XIX and No Mercy modes. And the Tekken modes."*
 **Developer:** Namco (ex-Tekken / Soulcalibur team)
 **Platform:** PlayStation 2 (2005)
-**Last updated:** 2026-10-13 (teardown sweep)
+**Last updated:** 2026-10-13 (full teardown sweep)
 
 ---
 
 ## What's Extracted and Documented
 
-### ISO — Download In Progress (ACTIVE LANE)
-- `Urban Reign (USA).iso` — 4.14 GB, Internet Archive `urban-reign-usa_202608`
-- Destination: `~/workspace/game-reverse-engineering/urban-reign/`
-- **Status 2026-10-13 ~02:30 EDT:** ~260MB of 4.14GB received (~6%), slow connection (~0.3MB/s), ETA ~2–3 hours. **Lane `urban-reign-redownload` is actively running and heartbeating** — do NOT duplicate the download.
-- NOTE: 4.14GB exceeds the browser file-grant upload size limit — TeraBox upload of this ISO will need a non-browser path.
+### ISO — Downloaded, Verified, Safe on GitHub Release (DONE 2026-10-13)
+- `Urban Reign (USA).iso` — 4.14 GB, Internet Archive `urban-reign-usa_202608`, verified.
+- **Safe storage:** GitHub Release `urban-reign-iso-v1` (https://github.com/mhvnsnt/western-heart/releases/tag/urban-reign-iso-v1) — split into 8×500MB parts (GitHub 2GB/file limit). Reassemble: `cat urban-reign-500m.part_* > "Urban Reign (USA).iso"`.
+- **Teardown (PR #23 merged):** AFS structure mapped, **7 stage PPKs identified** (back alleys, bars, rooftops, Chinatown, junkyards + 2 more). See commit `b1cc587`.
+- NOTE: 4.14GB exceeds the browser file-grant upload size limit — TeraBox upload of this ISO needs a non-browser path (owner manual).
 
 ### Research (done, no ISO needed)
 - Documented in `docs/URBAN-REIGN-TEARDOWN.md`:
@@ -30,7 +30,7 @@
 
 ## What's Blocked and Why
 
-- **ISO not landed yet** — file-structure mapping and stage extraction start when the download completes (active lane owns this; the sweep does not duplicate it).
+- **Stage PPK extraction** — 7 stage PPKs identified in the AFS structure but not yet extracted to geometry. PS2 stage format needs RE (next lane).
 - **Design question open (owner decision needed):** Option A — third **BRAWL MODE** vs Option B — merged into Wrestling Mode. Added to CHIMERA-BUILD.md 2026-10-12.
 
 ---
@@ -47,8 +47,6 @@
 
 ## Next Steps
 
-1. Download lands → verify size (4,140,924,928 bytes) and checksum; map file structure
-2. Extract stages (back alleys, bars, rooftops, Chinatown, junkyards) → chimera stage targets
-3. Extract Paul/Law models + motion data; catalog weapon/prop models
-4. Owner decision: Option A (BRAWL MODE) vs Option B (merged into Wrestling Mode)
-5. Push this TEARDOWN.md + redownload-lane results into western-heart main (branch→PR→merge)
+1. Extract the 7 stage PPKs → geometry (PS2 stage format RE)
+2. Extract Paul/Law models + motion data; catalog weapon/prop models
+3. Owner decision: Option A (BRAWL MODE) vs Option B (merged into Wrestling Mode)

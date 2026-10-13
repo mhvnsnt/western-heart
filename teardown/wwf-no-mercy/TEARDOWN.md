@@ -3,7 +3,7 @@
 **Role in Chimera Build:** Wrestling systems + character customization + grappling animations.
 **Engine:** AKI Corporation (same family: WCW/nWo Revenge, WrestleMania 2000, Virtual Pro Wrestling 2)
 **Platform:** Nintendo 64
-**Last updated:** 2026-10-13 (teardown sweep)
+**Last updated:** 2026-10-13 (full teardown sweep)
 
 ---
 
@@ -19,10 +19,20 @@
 - Tool: `tools/analyze_nomercy.py` (re-runnable; regenerates the ID table)
 - Documented: `docs/CHARACTER-DATA.md`, `docs/NOMERCY-TEARDOWN.md`
 
-### Animation Isolation (Chunk 2 — DONE 2026-10-13)
-- `0x13E4A0` = 10-pointer move-data index (targets → ovl_c ROM `0xF4930`; no ROM xrefs; table sits in a section gap) — committed `docs/ANIMATION-ISOLATION.md`
-- Float table `@0x13E2BC` resolved = 7 position records `[0,x,y,z]` (camera/spawn); u16 run = 7,565 entries; 2nd pointer block `@0x13E530`
-- `recomp/syms` has NO animation labels (dead end, documented so nobody repeats it)
+### Animation Keyframe Bank — ISOLATED (DONE 2026-10-13)
+- **VPWStudio AKI animation format decoded.** FileTable @ `0x16C3238`, FirstAnimationFileID `0x2DD9`, **~1,360 clips** isolated.
+- Tool: `tools/anim_extract.py` (re-runnable extraction).
+- `0x13E4A0` = 10-pointer move-data index (targets → ovl_c ROM `0xF4930`); `0x13E4A0` corrected as move-category string table.
+- Float table `@0x13E2BC` = 7 position records `[0,x,y,z]` (camera/spawn); u16 run = 7,565 entries; 2nd pointer block `@0x13E530`.
+- `recomp/syms` has NO animation labels (dead end, documented so nobody repeats it).
+
+### AKI → Tekken 3 Retarget — v1 WORKS (DONE 2026-10-13)
+- `aki_to_tekken3.py` + `aki_to_tekken3_v1.json`: AKI animation data retargeted onto Tekken 3 King's skeleton. Documented in `AKI-TEKKEN3-RETARGET.md`. This is the proof that wrestling grapple animations transfer onto Tekken bodies — the core chimera animation pipeline.
+
+### Text Engine + CAW Docs (DONE 2026-10-13)
+- `TEXT-CODE-DICTIONARY.md` — 2-class text-code model (zero-width FF/EF… and expansion AA01/1C).
+- `TOKI2-SEMANTICS.md` — Toki2 text semantics.
+- `CAW-SAVE-RECORD-STATUS.md` — CAW save-record layout status.
 
 ### Community RE Resources (cloned locally)
 - `re-docs/` — chaotix610/wwfnomercy-docs: game systems, move database, creation suite docs
@@ -36,9 +46,9 @@
 
 ## What's Blocked and Why
 
-- **Animation keyframe bank NOT yet isolated** — the core open problem. Next leads: DMA/loader path for `0x8014CD00`, animation indices in `0xF4730` move records, or emulator RAM diffing. `recomp/syms` labels are a dead end.
-- **Per-code text-engine semantics** — open (does not block motion work).
-- **Best-of push pending** — wrestling-lane chunks 1–2 (CAW + animation isolation) have commits in the lane tree; the western-heart TEARDOWN.md best-of push still needs to land.
+- **Per-code text-engine semantics** — partially documented (dictionary done); deeper Toki2 work open (does not block motion work).
+- **CAW edit_data full mapping** — in progress in the wrestling lane.
+- **YOBJ deeper RE** (per-strip skinning transforms, 000_0+000_1 assembly) — active in the wrestling lane; WMXIX vertex positions cracked (s16x3 /64), triangle strips mapped.
 
 ---
 
@@ -53,7 +63,6 @@
 
 ## Next Steps
 
-1. Isolate the animation keyframe bank (DMA path → `0x8014CD00`, `0xF4730` indices, or emulator RAM diff)
-2. Land the wrestling-lane best-of into western-heart main (chunks 1–2)
-3. Port move-table/move-index findings into the chimera move database schema
-4. Feed decoded grapple/throw animation indices into the retarget pipeline (YANM→Tekken3 v2 pattern)
+1. CAW edit_data full mapping (wrestling lane, active)
+2. Port move-table/move-index findings into the chimera move database schema
+3. Feed decoded grapple/throw animation indices into the retarget pipeline (AKI→Tekken3 v1 proven; v2 next)
