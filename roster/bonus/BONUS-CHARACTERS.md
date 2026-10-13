@@ -54,3 +54,8 @@ Owner-directed 2026-10-12. These are outside the core 7 but approved for reskinn
 - **Direction:** Flamboyant, stylish, theatrical. The showman who fights like he's on stage.
 - **Name:** PURPLE RAIN (owner-named 2026-10-13 — Prince reference)
 - **Universe fit:** Eastern Mind — the performer soul, fighting as art.
+
+## NIGHTWOLF (Julia Chang base, Tekken 7)
+- **Direction:** Native American warrior spirit. Julia's canon already draws from Native American heritage — lean into it fully.
+- **Name:** NIGHTWOLF (owner-named 2026-10-13)
+- **Universe fit:** Eastern Mind — the spirit warrior, connected to the land and ancestors.
