@@ -120,3 +120,10 @@ Owner-directed 2026-10-12. These are outside the core 7 but approved for reskinn
 - **Visual:** Leopard head (snow leopard). Black/white colorway — striped/spotted digital camo in white across the attires. The ghost of the mountains to Pantera's shadow of the jungle.
 - **Dynamic:** Pairs with Pantera as the two big-cat wrestlers — Pantera is the black panther (night, melanistic rosettes), Yukihyō is the snow leopard (white, black rosettes on pale fur). Same wrestling soul, opposite coats.
 - **Universe fit:** Eastern Mind — the mountain soul. The snow leopard stalks the high cold places between the five lands.
+
+## SLICE (Dragunov base, Tekken 7)
+- **Direction:** The maniacal secret agent. Dragunov's cold, methodical sambo-striking frame twisted into something unhinged — a blade that walks like a man.
+- **Name:** SLICE (owner-named 2026-10-13)
+- **Personality:** Maniacal secret agent who slices up his enemies with his blade — chops and strikes, surgical and savage at once. The mission is the excuse; the cutting is the point.
+- **Visual:** Usually wears a skull mask to hide his identity and his scars. Sometimes the mask comes off and his face is seen — scarred, smiling wrong. The mask is the professional; the face underneath is the maniac.
+- **Universe fit:** Eastern Mind — the blade that cuts souls. Pairs with Phantom and Scimitar as the third blade fighter: Phantom is the supernatural teleporting blade, Scimitar is the scheming desert blade, Slice is the unhinged surgical blade.
