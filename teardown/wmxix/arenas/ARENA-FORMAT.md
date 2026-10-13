@@ -46,12 +46,23 @@ to index arrays. Or: use Blender Poisson reconstruction on point clouds.
 - **Renders:** `/tmp/yobj_validate/arena_*.png` show correct geometry
   (bg/00 = full arena, ring.ymg = wrestling ring, kaijo_x8 = arena)
 
-### Wrestler YOBJ: STILL OPEN
-Wrestler `.ymg` files (model/wrestler/) use a DIFFERENT format:
-- Quantized s16 vertices (not f32)
-- Per-bone skinning batch tables
-- The /64 fixed-point hypothesis did NOT validate cleanly
-- See `tools/yobj_validate.py` and `tools/yobj_diag.py` for attempts
+### Wrestler YOBJ: POSITIONS + CONNECTIVITY CRACKED (2026-10-13)
+Wrestler `.ymg` files (model/wrestler/) use a DIFFERENT variant:
+version 0x00040001, **s16x3 vertices dequantized /64** (tool:
+`../../wwe-wrestlemania-xix/tools/yobj_strips.py`).
+- **Connectivity = triangle strips, no index buffers**: vertex runs are
+  strip-ordered (ladder/zigzag); split at jump boundaries (threshold
+  max(400, 4×median step)); near-origin separator verts start new strips.
+  Eye-verified: `000_0.ymg` → 383 tris, elbow CAW part → 113 tris
+  (see `../../wwe-wrestlemania-xix/objs/`).
+- **Batch table**: 58 × 16-byte records at header [0x5C] — payload offset
+  (base file 0x80), material/part id, unit count; semantics measured in
+  `../../wwe-wrestlemania-xix/docs/YOBJ-BATCH-SEMANTICS.md`.
+- **Open**: per-vertex (not per-batch) skinning transforms — per-batch bone
+  bind matrices were REJECTED by measurement (all transforms scattered).
+  The elbow (rigid CAW part) renders coherent, so s16/64 is valid; either a
+  weight table is unlocated or positions are delta-encoded.
+  See `../../wwe-wrestlemania-xix/YOBJ-SKINNING-NOTES.md`.
 
-The arena crack does NOT directly transfer to wrestlers — different
-YOBJ version (0x00030013 vs 0x00040001), different vertex encoding.
+The arena crack (f32) does NOT transfer to wrestlers — different YOBJ
+version (0x00030013 vs 0x00040001), different vertex encoding.
