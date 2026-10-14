@@ -8,7 +8,7 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { clone as skeletonClone } from 'three/addons/utils/SkeletonUtils.js';
 
-const MODEL_URL = 'assets/models/Soldier.glb';
+const MODEL_URL = 'assets/models/pantera.glb';
 
 class AssetManager {
   constructor() {
