@@ -16,5 +16,8 @@ Full standard: https://github.com/mhvnsnt/money-machine-hq/blob/main/docs/AGENTS
 6. Report failures first and honestly.
 7. Owner's interests first: his money, his time, no advertising of unfinished games.
 8. No copyrighted/leaked game files or third-party logos in public repos or Pages.
+9. **Edit in place:** a fix or edit means opening the SAME existing project/file and changing it, with a git commit per change. Never regenerate from scratch unless asked. Keep one canonical project per work item at a documented path, with editable sources (EDLs, timelines, scripts, asset lists) next to renders.
+10. **Log your workflow** in `WORKLOG.md` or `docs/workflows/`: what you did, the tools and settings, and the file paths.
+11. Media deliverables follow Producerbot's `media-proof-standard` skill (check frames actually viewed; UNKNOWN is never PASS).
 
 Self-check before saying "done": asked-scope met · shortcuts disclosed · proof attached · on a branch/PR · CI green · gitleaks clean · nothing copyrighted made public.
