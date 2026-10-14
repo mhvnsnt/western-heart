@@ -17,26 +17,44 @@
 import * as THREE from 'three';
 import { assets } from './assets.js';
 
-// ---- Frame data: seconds (startup / active / recovery) ----
-const MOVES = {
-  punch: {
-    startup: 0.08, active: 0.09, recovery: 0.18, damage: 6,
-    knock: 2.2, soulGain: 8, cost: 0, limb: 'armR', heavy: false,
-  },
-  kick: {
-    startup: 0.14, active: 0.11, recovery: 0.30, damage: 11,
-    knock: 4.2, soulGain: 11, cost: 0, limb: 'legR', heavy: true,
-  },
-  grab: {
-    startup: 0.18, active: 0.14, recovery: 0.40, damage: 14,
-    knock: 8.5, soulGain: 10, cost: 0, limb: 'armR', heavy: true,
-    unblockable: true, isGrab: true,
-  },
-  surge: {
-    startup: 0.24, active: 0.20, recovery: 0.42, damage: 24,
-    knock: 7.8, soulGain: 0, cost: 100, limb: 'armR', heavy: true,
-  },
+// ---- Frame data: REAL Tekken 3 data (teardown/tekken3/movesets/)
+// Pantera = King (298 real moves), Demonio = Jin (253 real moves)
+// Converted from T3 60fps frame data. Loaded per-character at init.
+let MOVES = {
+  punch: { startup: 0.30, active: 0.05, recovery: 0.20, damage: 12, knock: 2.2, soulGain: 8, cost: 0, limb: 'armR', heavy: false },
+  kick: { startup: 0.30, active: 0.05, recovery: 0.30, damage: 12, knock: 4.2, soulGain: 11, cost: 0, limb: 'legR', heavy: true },
+  grab: { startup: 0.30, active: 0.05, recovery: 0.40, damage: 14, knock: 8.5, soulGain: 10, cost: 0, limb: 'armR', heavy: true, unblockable: true, isGrab: true },
+  surge: { startup: 0.24, active: 0.20, recovery: 0.42, damage: 24, knock: 7.8, soulGain: 0, cost: 100, limb: 'armR', heavy: true },
 };
+
+export async function loadRealMovesets() {
+  try {
+    const [king, jin] = await Promise.all([
+      fetch('assets/king_moves.json').then(r => r.json()),
+      fetch('assets/jin_moves.json').then(r => r.json()),
+    ]);
+    // Pantera (King): use real T3 King frame data
+    // Demonio (Jin): use real T3 Jin frame data
+    window.WH_MOVESETS = { pantera: king, demonio: jin };
+    console.log('[WH] Real T3 movesets loaded:', king.total_moves, 'King /', jin.total_moves, 'Jin');
+  } catch (e) {
+    console.warn('[WH] Could not load real movesets, using fallback:', e);
+  }
+}
+
+export function getRealMove(charId, moveType) {
+  const ms = window.WH_MOVESETS?.[charId];
+  if (!ms) return null;
+  const data = ms[moveType === 'punch' ? 'light' : moveType === 'kick' ? 'medium' : 'heavy'];
+  if (!data) return null;
+  return {
+    startup: data.startup, active: data.active, recovery: data.recovery,
+    damage: data.dmg, knock: moveType === 'punch' ? 2.2 : 4.2,
+    soulGain: moveType === 'punch' ? 8 : 11, cost: 0,
+    limb: moveType === 'punch' ? 'armR' : 'legR',
+    heavy: moveType !== 'punch',
+  };
+}
 
 const GROUND_Y = 0;
 const ARENA_LIMIT = 8.4; // shrine.json: arena 16.8 wide
@@ -147,7 +165,15 @@ export class Fighter {
   }
   tryAttack(name) {
     if (!this.canAct()) return false;
-    const move = MOVES[name]; if (!move) return false;
+    // Use REAL T3 moveset data when available, fallback to base MOVES
+    let move = getRealMove(this.char.id, name) || MOVES[name];
+    if (!move) return false;
+    // Preserve WH-specific properties (grab unblockable, surge cost)
+    if (MOVES[name]) {
+      move = { ...move, ...Object.fromEntries(
+        Object.entries(MOVES[name]).filter(([k]) => ['unblockable','isGrab','cost','soulGain'].includes(k))
+      )};
+    }
     if (move.cost > 0 && this.meter < move.cost) return false;
     if (move.cost > 0) this.meter = Math.max(0, this.meter - move.cost);
     this.attack = move; this.attackName = name; this.hasHit = false;
