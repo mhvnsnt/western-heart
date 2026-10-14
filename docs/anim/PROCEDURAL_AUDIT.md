@@ -47,11 +47,29 @@ Tests run (Godot 4.3): `tests/test_move_table.gd` PASS; headless CPU-vs-CPU matc
 | Need | Why missing | Unblock |
 |---|---|---|
 | True **arms-folded** pose/intro for Pantera | Not in T3 King bank (exhaustive scan). King/Armor King intros in TTT2/T6/T7 not decoded. | TTT2: release `ttt2-7z-v1` downloaded+STFS-extracted, then decode TTT2 motion (no decoder yet). T6: `DATA401` encrypted (PPSSPP live dump, `teardown/tekken6/PPSSPP-LIVE-RUN-GUIDE.md`). T7: `teardown/tekken7/king/*` are meshes only, no anim; full game not acquired. WWF No Mercy (5,787 anims, 100% teardown) / WMXIX YANM (170) taunts likely include arms-crossed; need a retarget from their rigs. |
-| t3_light (slot 0xD06/0xD41, row 35), t3_medium (0xD2F, row 63) | anim word points into `divmot99_common.bin`; `pose_assemble.py` raises on common-bank anims | extend `pose_assemble.assemble` to parse the anim from the common bank (`motion.COMMON_FLAG`). |
-| walk_fwd / walk_back / crouch / jump / sidestep slot numbers | global move numbers for locomotion not yet identified in n0madic docs/our CSVs | trace `FUN_8002D570`-family slot use in `docs/research/code/fighter.md`; or match by `step_per_frame` in `movesets/moveset_king.csv`. Until then authored walk clips remain (flagged). |
-| hit / block / ko reactions | reaction slots not identified | same as above (reaction column in moveset rows). |
 | Real clips for the other 22 roster fighters | only 7 T3 banks; other bodies come from TTT2/T6/T7/SC/DOA/VF5 teardowns without motion decoders | per-game motion decoder work (see TEARDOWN-STATUS.md). |
 | Browser build (`game/js`) real clips | Mixamo-49 retarget of the bake not done | run the bake against Mixamo rigs (non-identity rest -> needs rest-orientation conversion). |
+
+## Update 2 (2026-10-14 evening): common bank + King locomotion/reactions — RESOLVED
+- `teardown/tekken3/tools/local/pose_assemble.py` now resolves move-index values and anim words `>= COMMON_FLAG` from `divmot99_common.bin` (n0madic `divmot-banks.md`). `t3_light` (slot 0xD06) and `t3_medium` (0xD2F) bake.
+- Slots identified from King's own branch lists + the EXE common-branch table `0x80017C78` (12-byte rows; low-5 bits `0x10` = direction only) + the reaction records `0x80010CE8` (42 bytes):
+
+| Clip | Slot | Evidence |
+|---|---|---|
+| t3_walk_fwd / _b | 21 / 22 | stance row 0 branch `6 (no button) -> 21`; row 1 stance -> 22 |
+| t3_walk_back / _b | 24 / 26 | `4 -> 24`; row 5 stance -> 26 |
+| t3_dash_fwd, t3_backdash | 27, 30 | `f,f -> 27`, `b,b -> 30` |
+| t3_crouch, t3_crouch_hold | 59, 40 | common row 477 `2 -> 59` (stance 40 = crouching, n0madic) |
+| t3_jump_up / fwd / back | 127 / 129 / 131 | common row 557 `8/9/7 -> 127/129/131` |
+| t3_sidestep_a..d | 283, 285, 287, 289 | common rows 492–495: flag `0x1C` (side step, `moves.md`) neutral-return after a 2/8 tap |
+| t3_hit, t3_hit_launch | 2466, 2556 | reaction records of King's medium (idx 0x16D) and jab (0xCD): front-standing slots |
+| t3_block, t3_block_b | 2693, 2705 | same records `+0x14` standing guard |
+| t3_ko | 0xD66 | KO collapse slot (`combat.md`, `FUN_8002DA80`) |
+
+- Heading normalisation added to the bake: each clip's first frame is yawed to face +Z (T3 stores world heading per move). Pure yaw, no reshaping. xz root travel is measured from the clip start.
+- `fighter.gd` `REAL` map now also covers walk_fwd, walk_back, hit, block, ko (crouch/jump/sidestep clips are baked; the Lab state machine has no such states yet). `--anim=authored` still restores the old files.
+- Proof: `docs/qa/anim/t3_king_moves_on_pantera.jpg` (rendered Godot frames, viewed), `docs/qa/anim/t3_king_moves_decoded_sticks.png` (decoded skeletons, 6 frames per clip). Headless CPU-vs-CPU match: `MATCH RESULT wins=[1, 2] rounds=3 hits=35 blocks=32` (PASS; 3 pre-existing `Parameter "m" is null` lines, same as authored).
+- Note: v4 title (`wallpaper_wh_v4.png`) was rendered before heading normalisation with yaw 180; the file is unchanged and still correct.
 
 ## SHA-256 (new files)
 ```
