@@ -23,6 +23,9 @@ const screens = {
 function show(name) {
   Object.values(screens).forEach(s => s.classList.remove('active'));
   if (screens[name]) screens[name].classList.add('active');
+  // Tekken 99s select timer runs only on the select screen
+  if (name === 'select') startSelectTimer();
+  else stopSelectTimer();
 }
 
 const SOULS = 9; // Nine-Soul Meter segments
@@ -160,14 +163,13 @@ function buildSelect() {
       const card = document.createElement('div');
       card.className = 'char-card';
       card.dataset.id = c.id;
-      const suit = '#' + c.colors.suit.toString(16).padStart(6, '0');
-      const trim = '#' + c.colors.trim.toString(16).padStart(6, '0');
       const surgeName = c.surge ? c.surge.name : 'SOUL SURGE';
+      // REAL portrait render from the 3D fighter model (game/assets/portraits/).
+      // Tekken 2:3 center-crop convention (SELECTOR_CAROUSEL.md).
       card.innerHTML =
-        `<div class="char-avatar" style="background:radial-gradient(circle at 35% 30%, ${suit}, ${trim} 70%, #0b0b14)"></div>
+        `<div class="portrait"><img src="assets/portraits/${c.id}.png" alt="${c.name}" loading="lazy"></div>
          <div class="cname">${c.name}</div>
-         <div class="cstyle">${c.style}</div>
-         <div class="ctitle">${c.title || ''}</div>`;
+         <div class="cstyle">${c.style}</div>`;
       card.addEventListener('click', () => selectCard(card, c));
       grid.appendChild(card);
     });
@@ -217,6 +219,33 @@ document.addEventListener('keydown', (e) => {
     e.preventDefault();
   }
 });
+/* 99-second select timer (Tekken standard selector: starts at 99).
+   At 0, auto-picks a random fighter — Tekken behavior. */
+let selectTimerId = null;
+function startSelectTimer() {
+  stopSelectTimer();
+  let t = 99;
+  const el = document.getElementById('select-timer');
+  el.textContent = t;
+  el.classList.remove('low');
+  selectTimerId = setInterval(() => {
+    t--;
+    el.textContent = Math.max(0, t);
+    if (t <= 10) el.classList.add('low');
+    if (t <= 0) {
+      stopSelectTimer();
+      // auto-pick random (Tekken timeout behavior)
+      const pool = ROSTER.filter(c => c.id !== selectedChar);
+      const pick = pool[Math.floor(Math.random() * pool.length)];
+      const card = document.querySelector(`.char-card[data-id="${pick.id}"]`);
+      if (card) selectCard(card, pick);
+      startFight();
+    }
+  }, 1000);
+}
+function stopSelectTimer() {
+  if (selectTimerId) { clearInterval(selectTimerId); selectTimerId = null; }
+}
 /* Deep link: ?fighter=<id> pre-selects that fighter on the select screen */
 (function () {
   const id = new URLSearchParams(location.search).get('fighter');

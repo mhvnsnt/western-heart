@@ -86,27 +86,51 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
 .howto-grid span { font-size: 12px; opacity: 0.75; }
 .howto-note { font-size: 12px; opacity: 0.75; line-height: 1.6; margin-bottom: 20px; }
 
-/* ----------- Character select ----------- */
-.char-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; margin-bottom: 20px; }
+/* ----------- Character select — TEKKEN setup -----------
+   From teardown/tekken3/tools/tekken3recompiled/tools/SELECTOR_CAROUSEL.md:
+   portraits center-cropped 2:3, selected aperture larger than neighbors,
+   P1/P2 cursors, 99-second timer. Human-sized touch targets (owner UX law). */
+.char-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
 .tier-header {
-  grid-column: 1 / -1; font-weight: 800; font-size: 13px; letter-spacing: 3px;
-  color: var(--accent); border-bottom: 1px solid rgba(139,43,216,0.3);
-  padding-bottom: 6px; margin-top: 8px; text-align: left;
+  grid-column: 1 / -1; font-weight: 800; font-size: 14px; letter-spacing: 4px;
+  color: var(--accent); border-bottom: 2px solid rgba(139,43,216,0.4);
+  padding-bottom: 6px; margin-top: 10px; text-align: left;
 }
 .tier-header:first-child { margin-top: 0; }
 .char-card {
-  background: rgba(255,255,255,0.05); border: 2px solid transparent; border-radius: 14px;
-  padding: 14px 10px; cursor: pointer; transition: transform 0.1s, border-color 0.1s, background 0.1s; pointer-events: auto;
+  background: rgba(255,255,255,0.05); border: 3px solid transparent; border-radius: 10px;
+  padding: 0; cursor: pointer; pointer-events: auto; overflow: hidden;
+  transition: transform 0.12s, border-color 0.12s, box-shadow 0.12s;
+  min-height: 200px;
 }
 .char-card:active { transform: scale(0.96); }
-.char-card.selected { border-color: var(--accent); background: rgba(139,43,216,0.16); transform: translateY(-4px); }
+/* P1 cursor: gold highlight, card lifts + glows (Tekken P1 cursor) */
+.char-card.selected {
+  border-color: var(--gold); background: rgba(255,177,77,0.10);
+  transform: translateY(-6px) scale(1.04);
+  box-shadow: 0 0 24px rgba(255,177,77,0.55), inset 0 0 0 1px rgba(255,177,77,0.6);
+}
 .char-card.kb-focus { outline: 3px solid #ffd34d; outline-offset: 2px; }
-.char-avatar { width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 8px; box-shadow: inset 0 0 0 3px rgba(255,255,255,0.2); }
-.char-card .cname { font-weight: 800; font-size: 15px; letter-spacing: 2px; }
-.char-card .cstyle { font-size: 11px; opacity: 0.65; margin-top: 2px; }
+/* 2:3 portrait (Tekken center-crop convention) */
+.char-card .portrait { width: 100%; aspect-ratio: 2 / 3; overflow: hidden; background: #0b0b14; }
+.char-card .portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.char-card .cname { font-weight: 800; font-size: 16px; letter-spacing: 2px; padding: 8px 4px 0; }
+.char-card .cstyle { font-size: 12px; opacity: 0.7; padding: 2px 4px 8px; }
 .char-card .csoul { font-size: 10px; opacity: 0.45; font-style: italic; margin-top: 3px; }
+.select-timer {
+  font-size: 28px; font-weight: 800; color: var(--gold); text-align: center;
+  letter-spacing: 4px; margin-bottom: 8px; text-shadow: 0 0 12px rgba(255,177,77,0.6);
+}
+.select-timer.low { color: #ff4444; animation: pulse 1s infinite; }
+@keyframes pulse { 50% { opacity: 0.5; } }
 .select-footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 6px; }
-#select-hint { font-size: 13px; opacity: 0.7; }
+#select-hint { font-size: 14px; opacity: 0.75; }
+#confirm-fighter { font-size: 18px; padding: 14px 28px; min-height: 56px; }
+@media (max-width: 480px){
+  .char-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .char-card .cname { font-size: 13px; }
+  .char-card .cstyle { font-size: 10px; }
+}
 @media (max-width: 480px){ .howto-grid{grid-template-columns:1fr;} }
 
 /* ----------- Round banner ----------- */
