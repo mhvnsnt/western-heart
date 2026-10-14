@@ -15,8 +15,8 @@ html,body{margin:0;height:100%;overflow:hidden;background:var(--bg);color:var(--
   background:radial-gradient(120% 90% at 38% 42%, transparent 55%, rgba(0,0,0,.55) 100%);}
 
 /* ---------- top bar ---------- */
-#topbar{position:fixed;top:0;left:0;right:0;height:76px;display:flex;align-items:center;
-  justify-content:space-between;padding:0 16px;z-index:20;
+#topbar{position:fixed;top:0;left:0;right:0;height:118px;display:flex;align-items:center;
+  justify-content:space-between;padding:6px 16px 0;z-index:20;
   background:linear-gradient(180deg,rgba(5,7,10,.92),rgba(5,7,10,.55) 80%,transparent);
   pointer-events:none;}
 #topbar>*{pointer-events:auto;}
@@ -26,9 +26,9 @@ html,body{margin:0;height:100%;overflow:hidden;background:var(--bg);color:var(--
 .tb-mid{text-align:center;}
 .tb-fighter{font-size:22px;font-weight:800;letter-spacing:.08em;text-shadow:0 2px 8px #000;}
 .attire-tabs{display:flex;gap:8px;justify-content:center;margin-top:6px;}
-.attire-tab{min-width:64px;min-height:56px;padding:6px 10px;border-radius:10px;cursor:pointer;
-  background:var(--panel);border:1px solid var(--edge);color:var(--txt);font-size:12px;font-weight:700;}
-.attire-tab .athumb{display:block;width:44px;height:44px;border-radius:8px;margin:0 auto 2px;
+.attire-tab{min-width:60px;min-height:52px;padding:4px 8px;border-radius:10px;cursor:pointer;
+  background:var(--panel);border:1px solid var(--edge);color:var(--txt);font-size:11px;font-weight:700;}
+.attire-tab .athumb{display:block;width:34px;height:34px;border-radius:8px;margin:0 auto 2px;
   background:#1a2030 center/cover;border:1px solid var(--edge);}
 .attire-tab.active{border-color:var(--gold);box-shadow:0 0 0 2px var(--gold) inset;}
 .tb-right{display:flex;gap:10px;align-items:center;}
@@ -59,7 +59,7 @@ html,body{margin:0;height:100%;overflow:hidden;background:var(--bg);color:var(--
   box-shadow:0 0 18px rgba(232,182,76,.35);}
 
 /* ---------- right rail ---------- */
-#right-rail{position:fixed;top:92px;right:14px;bottom:96px;width:var(--right-w);z-index:20;
+#right-rail{position:fixed;top:134px;right:14px;bottom:96px;width:var(--right-w);z-index:20;
   background:var(--panel);border:1px solid var(--edge);border-radius:18px;
   backdrop-filter:blur(10px);display:flex;flex-direction:column;overflow:hidden;
   box-shadow:0 8px 40px rgba(0,0,0,.5);}
