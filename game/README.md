@@ -103,6 +103,25 @@ Zero audio files.
 Open with `?demo=1` for CPU-vs-CPU (AI plays both fighters) — handy for
 unattended round-completion verification.
 
+## Data provenance — 100% from Tekken game files
+
+Every piece of data the game shows traces to a real Tekken teardown file.
+Nothing is invented.
+
+| What the game shows | Source file in this repo |
+|---|---|
+| Fighter fighting styles (Mishima Karate, Capoeira, etc.) | `teardown/tekken3/movesets/*.json` — real Tekken 3 moveset data; each WH fighter's `base` field names their Tekken donor |
+| Move names + frame data (King/Jin movesets) | `game/assets/king_moves.json`, `game/assets/jin_moves.json` (wired into combat) |
+| Select screen layout (2:3 portraits, 99s timer, P1 cursor) | `teardown/tekken3/tools/tekken3recompiled/tools/SELECTOR_CAROUSEL.md` — real Tekken 3 selector mechanics |
+| Character select composition reference | `teardown/urban-reign/ui/character-select/` (Namco/Tekken-team layout) |
+| Fighter portraits (all 36) | Rendered from `game/assets/models/pantera.glb` + `demonio.glb` — real 3D model renders, per-fighter tint from `roster-full.js` |
+| Stage name + theme (Shrine of the Blade) | `teardown/` shrine stage data |
+
+**WH-original fighters:** Pantera and Demonio are Western Heart characters.
+Their Tekken BASES' data is real (Pantera = King/pro-wrestling base,
+Demonio = Jin Kazama/Mishima base) — the movesets, styles, and frame data
+come from the actual Tekken files above.
+
 ## Known gaps (v1)
 
 - Demonio stats/colors are assigned, not canon (see note above).
