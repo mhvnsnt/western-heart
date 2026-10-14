@@ -100,7 +100,7 @@ export class Fighter {
     this.root.scale.setScalar(this.char.bodyScale || 1);
 
     this.lean = new THREE.Group();
-    this.lean.rotation.y = this.facing * Math.PI / 2;
+    this.lean.rotation.y = this.facing === 1 ? 0 : Math.PI;
     this.lean.add(inst.model);
     this.root.add(this.lean);
     this.model = inst.model;
@@ -108,10 +108,10 @@ export class Fighter {
     // Soul aura for Soul Surge (character-coloured)
     const surgeColor = this.char.surge ? this.char.surge.color : this.char.colors.trim;
     this.aura = new THREE.Mesh(
-      new THREE.SphereGeometry(1.25, 16, 16),
+      new THREE.SphereGeometry(0.85, 16, 16),
       new THREE.MeshBasicMaterial({ color: surgeColor, transparent: true, opacity: 0, depthWrite: false })
     );
-    this.aura.position.y = 1.1; this.root.add(this.aura);
+    this.aura.position.y = 1.0; this.aura.visible = false; this.root.add(this.aura);
 
     // Contact shadow blob
     this.blob = new THREE.Mesh(
@@ -287,7 +287,7 @@ export class Fighter {
   /* ---------------- animation ---------------- */
   _animate(dt) {
     // 1) Facing
-    this.lean.rotation.y = this.facing * Math.PI / 2;
+    this.lean.rotation.y = this.facing === 1 ? 0 : Math.PI;
 
     // 2) Locomotion crossfade (real mocap base layer)
     let tIdle = 1, tWalk = 0, tRun = 0;
@@ -335,7 +335,8 @@ export class Fighter {
 
     // 7) Aura + trail visuals
     const auraOn = (this.attackName === 'surge') || this._auraFlash > 0;
-    this.aura.material.opacity += ((auraOn ? 0.32 : 0) - this.aura.material.opacity) * Math.min(1, dt * 10);
+    this.aura.visible = auraOn || this.aura.material.opacity > 0.01;
+    this.aura.material.opacity += ((auraOn ? 0.25 : 0) - this.aura.material.opacity) * Math.min(1, dt * 10);
     const k = performance.now() * 0.001;
     const as = 1 + Math.sin(k * 12) * 0.06; this.aura.scale.set(as, as, as);
   }
