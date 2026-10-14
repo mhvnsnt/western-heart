@@ -6,6 +6,7 @@ from his own GLB) composited as the hero, and Western Heart universe text in
 Japanese styling (purple パンテーラ / 黒豹, owner 2026-10-14).  Output: game/ui-wh/art/wallpaper_wh.png
 Run: python3 game/ui-wh/tools/make_wallpaper.py            (v2 lunge -> art/wallpaper_wh.png, unchanged default)
      python3 game/ui-wh/tools/make_wallpaper.py v3         (v3 folded -> art/wallpaper_wh_v3.png)
+     python3 game/ui-wh/tools/make_wallpaper.py v4         (v4 REAL T3 win pose -> art/wallpaper_wh_v4.png)
 v3 hero is cropped with a frame box offset from v2's, so the same scale factor and
 the same camera-space anchor are used; only the arms differ (see TITLE_VARIANTS.md).
 """
@@ -26,6 +27,10 @@ if VARIANT == "v3":
     HERO = G / "ui-wh/portraits/pantera_hero_folded.png"   # idle@0.0 (the v1 arms-folded pose), title camera
     OUT = G / "ui-wh/art/wallpaper_wh_v3.png"
     HERO_BOX = (213, 131, 844, 1144)
+if VARIANT == "v4":   # REAL decoded T3 King win pose (slot 0xD68 @3.3s) on Pantera P1 -- see docs/anim/PROCEDURAL_AUDIT.md
+    HERO = G / "ui-wh/portraits/pantera_hero_t3real_win_rp.png"   # lab/game/tools/render_title_hero_real.gd t3_win_rp 3.3 180
+    OUT = G / "ui-wh/art/wallpaper_wh_v4.png"
+    HERO_BOX = None     # same camera + scale as v2/v3; re-anchored (real clip has root travel): feet on the bottom edge, centred on v2's hero
 
 src = Image.open(SRC).convert("RGB")
 # fill a 16:9 frame: scale to width, crop the middle (drops the source logo band at the top)
@@ -49,7 +54,10 @@ k = (H * 0.98) / (V2_BOX[3] - V2_BOX[1])   # v2 scale for every variant
 hero = hero.resize((int(hero.width * k), int(hero.height * k)), Image.LANCZOS)
 shadow = Image.new("RGBA", hero.size, (0, 0, 0, 0)); shadow.putalpha(hero.getchannel("A").filter(ImageFilter.GaussianBlur(18)))
 x0, y0 = int(W*0.50), H - int((V2_BOX[3] - V2_BOX[1]) * k)
-x, y = x0 + int((HERO_BOX[0] - V2_BOX[0]) * k), y0 + int((HERO_BOX[1] - V2_BOX[1]) * k)
+x, y = (x0 + int((HERO_BOX[0] - V2_BOX[0]) * k), y0 + int((HERO_BOX[1] - V2_BOX[1]) * k)) if HERO_BOX else (0, 0)
+if HERO_BOX is None:
+    bb = hero.getchannel("A").getbbox(); hero = hero.crop(bb); shadow = shadow.crop(bb)
+    x = x0 + int((V2_BOX[2] - V2_BOX[0]) * k / 2) - hero.width // 2; y = H - hero.height - 6
 bg.paste(shadow, (x + 18, y + 10), shadow); bg.paste(hero, (x, y), hero)
 # universe text, Japanese styling (vertical kanji)
 d = ImageDraw.Draw(bg)
