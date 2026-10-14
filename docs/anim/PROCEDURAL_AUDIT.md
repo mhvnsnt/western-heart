@@ -71,6 +71,12 @@ Tests run (Godot 4.3): `tests/test_move_table.gd` PASS; headless CPU-vs-CPU matc
 - Proof: `docs/qa/anim/t3_king_moves_on_pantera.jpg` (rendered Godot frames, viewed), `docs/qa/anim/t3_king_moves_decoded_sticks.png` (decoded skeletons, 6 frames per clip). Headless CPU-vs-CPU match: `MATCH RESULT wins=[1, 2] rounds=3 hits=35 blocks=32` (PASS; 3 pre-existing `Parameter "m" is null` lines, same as authored).
 - Note: v4 title (`wallpaper_wh_v4.png`) was rendered before heading normalisation with yaw 180; the file is unchanged and still correct.
 
+## Update 3: the other T3 fighters (real clips on their own T3 bodies)
+- New: `lab/game/assets/t3_{jin,xiaoyu,bryan,gunjack,yoshimitsu}.glb` (t3_to_gltf.py from each KMD + decoded stance `teardown/tekken3/renders/pose-check/<f>_stance75.obj` = slot 0 frame 75) and `..._t3real.glb` with 29 real clips each: stances, 4 wins, walk/dash/crouch/jump/sidestep, hit/block/KO, and light/medium/heavy/grab from each fighter's `lab/game/data/moves/<f>.json` t3_row -> slot. Global slot numbering is shared across banks (n0madic divmot-banks.md).
+- WH counterparts (game/js/fighter.js T3_BODY map): demonio/rin/kai/zui/... -> jin; sakura/sha/nightwolf -> xiaoyu; skull/retsu/burger/... -> bryan; samura1/cyborgx/docfrank -> gunjack; phantom/jin_soul -> yoshimitsu. None of them except Demonio has an own WH model in the repo yet, so the clips live on the T3 bodies and in the bake JSON format for later retarget.
+- **Heihachi: MISSING.** `models/heihachi191/heihachi.kmd` has no vertex data for several parts (hips, shoulder chain; stance OBJ only 490 lines), so the Kabsch pivot recovery cannot run. Unblock: find a complete Heihachi KMD record in `TEKKEN3.BNS` (`model-inventory.csv`) and re-run.
+- Proof: `docs/qa/anim/t3_roster_real_clips.jpg` (Godot renders viewed: stance_b, light, crouch, win_lp per fighter; wins travel off-frame because the real root motion is kept).
+
 ## SHA-256 (new files)
 ```
 5a8b9ce65b62244ef8bbd53737e3956732e99afe5653b268b10b0696d62f5a9b  lab/game/assets/pantera_leoman_t3real.glb

@@ -32,6 +32,10 @@ C = np.diag([1.0, -1.0, -1.0])
 DEFAULT_CLIPS = {"t3_stance": 0, "t3_stance_b": 1, "t3_stance_c": 2,
                  "t3_win_lp": 0xD67, "t3_win_rp": 0xD68, "t3_win_lk": 0xD69, "t3_win_rk": 0xD6A}
 BANKS = {"king": ("models/king95/king95.kmd", "animations/divmot03_king.bin", "renders/pose-check/king_stance75.obj")}
+for _n, _k, _b in (("jin", "jin151/jin.kmd", "divmot09_jin.bin"), ("xiaoyu", "xiaoyu127/xiaoyu.kmd", "divmot07_xiaoyu.bin"),
+                   ("bryan", "bryan183/bryan.kmd", "divmot12_bryan.bin"), ("heihachi", "heihachi191/heihachi.kmd", "divmot13_heihachi.bin"),
+                   ("gunjack", "gunjack215/gunjack.kmd", "divmot16_gunjack.bin"), ("yoshimitsu", "yoshimitsu103/yoshimitsu.kmd", "divmot04_yoshimitsu.bin")):
+    BANKS[_n] = ("models/" + _k, "animations/" + _b, f"renders/pose-check/{_n}_stance75.obj")  # stance = slot 0 frame 75 (pose_assemble.py)
 
 def parse_obj_text(txt):
     parts, cur = {}, None
