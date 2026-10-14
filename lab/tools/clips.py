@@ -41,11 +41,25 @@ class Rig:
         self.rear = "Right" if self.lead == "Left" else "Left"
         self.leadleg = "Left" if self.piv[self.i["LeftFoot"]][2] > self.piv[self.i["RightFoot"]][2] else "Right"
         self.rearleg = "Right" if self.leadleg == "Left" else "Left"
+        # T-pose sources (auto-rigged owner models): solve into a fighting guard
+        H = self.piv[self.i["Head"]][1]
+        self.guard = {}
+        self.tpose = abs(self.piv[self.i["LeftHand"]][1] - self.piv[self.i["LeftArm"]][1]) < 0.08 * H
+        if self.tpose:
+            self.lead, self.rear, self.leadleg, self.rearleg = "Left", "Right", "Left", "Right"
+            for s, sx in (("Left", 1), ("Right", -1)):
+                arm = self.piv[self.i[s + "Arm"]]
+                want = np.array([arm[0] * 0.35, arm[1] - 0.17 * H, 0.20 * H + (0.05 * H if s == "Left" else 0)])
+                self.guard[s + "Hand"] = want - self.piv[self.i[s + "Hand"]]
+            self.guard["LeftFoot"] = np.array([0.02 * H, 0, 0.10 * H]); self.guard["RightFoot"] = np.array([-0.02 * H, 0, -0.08 * H])
 
     def solve(self, pose):
         """pose: hips (offset), root_rot, chest (R), head (R), hands {side: offset}, feet {side: offset}."""
         n = len(self.n); G = [None] * n; W = np.zeros((n, 3))
         hands, feet = pose.get("hands", {}), pose.get("feet", {})
+        if self.tpose and pose.get("ik", True):
+            hands = {**{"Left": np.zeros(3), "Right": np.zeros(3)}, **hands}; feet = {**{"Left": np.zeros(3), "Right": np.zeros(3)}, **feet}
+            pose = {**pose, "hips": pose.get("hips", np.zeros(3)) + np.array([0, -0.035 * self.piv[self.i["Head"]][1], 0])}
         for b in range(n):
             nm = self.n[b]; p = self.par[b]
             if p < 0:
@@ -54,14 +68,12 @@ class Rig:
             G[b] = G[p]
             if nm == "Chest": G[b] = pose.get("chest", np.eye(3)) @ G[p]
             if nm == "Head": G[b] = pose.get("head", np.eye(3)) @ G[p]
-            for side, targets, a, m, e in ((s, hands, "Arm", "ForeArm", "Hand") for s in ("Left", "Right")):
-                pass
             for side in ("Left", "Right"):
                 for tgt, a, m, e, pole in ((hands, "Arm", "ForeArm", "Hand", np.array([0, -1, -0.3])), (feet, "UpLeg", "Leg", "Foot", np.array([0, 0, 1.0]))):
                     if nm == side + a and side in tgt and pose.get("ik", True):
                         ia, im, ie = self.i[side + a], self.i[side + m], self.i[side + e]
                         l1 = np.linalg.norm(self.piv[im] - self.piv[ia]); l2 = np.linalg.norm(self.piv[ie] - self.piv[im])
-                        t = self.piv[ie] + np.asarray(tgt[side], float)
+                        t = self.piv[ie] + self.guard.get(side + e, 0) + np.asarray(tgt[side], float)
                         d = t - W[b]; L = np.linalg.norm(d); L = min(max(L, abs(l1 - l2) + 1e-4), l1 + l2 - 1e-4)
                         u = d / np.linalg.norm(d); t = W[b] + u * L
                         pv = pole - np.dot(pole, u) * u; pv /= np.linalg.norm(pv)

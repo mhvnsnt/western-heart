@@ -28,3 +28,20 @@ The Lab track turns the owner's own Tekken 3 teardown into playable Godot 4 cont
   - It also provides the phase and normalized animation seek used by the fighters.
 - Test: `godot --headless --path lab/game -s res://tests/test_move_table.gd` passes for all 7 fighters × 4 slots.
 - Gap: input → T3 command-branch mapping (the `branches` field) isn't interpreted yet. Slots are light/medium/heavy/grab per the existing move files.
+
+## Milestone 3: playable 1v1 slice (Godot 4.3, GL Compatibility, HTML5)
+- **P1 PANTERA, attire Leo-Man.** He is the owner's first original fighter (CANON.md: "King's wrestler frame"), so he uses the King T3 move table. The owner's Tripo GLB is auto-rigged with `tools/autorig.py` (original kept in `source_assets/original/`).
+  - `--p1-attire=t3` swaps to the T3 body.
+- **P2 KING** is the CPU: the Tekken 3 KMD import, wearing the **Bannon mask** (see `docs/attire/BANNON_MASK.md`).
+- **Stage:** King's own T3 stage `l` panorama plus a floor.
+- **Rules:** best of 3, 60 s rounds, T3 170 life bar. Frame data comes from `MoveTable`, with hit freeze, blocking (hold back or block), an unblockable grab, knockback and K.O.
+- **Controls:**
+  - Keyboard: A/D move, J/K/L/U light/medium/kick/grab, Space block, M mask.
+  - Gamepad: D-pad or left stick, X/Y/B/A, RB block, Back mask.
+  - Touch: on-screen buttons, shown automatically on touch devices or with `--touch`.
+- **Run:** `godot --path lab/game`. Web: `godot --headless --path lab/game --export-release Web build/web/index.html`.
+- **Tests:**
+  - `python3 lab/tests/test_rig_check.py`
+  - `godot --headless --path lab/game -s res://tests/test_move_table.gd`
+  - `lab/game/tests/run_match_headless.sh` (a full CPU-vs-CPU match through the real input path)
+- **Capture:** `xvfb-run godot --path lab/game --rendering-driver opengl3 --write-movie out.avi --fixed-fps 60 -- --autoplay --quit-after-match --touch`

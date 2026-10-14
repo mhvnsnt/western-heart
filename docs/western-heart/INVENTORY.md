@@ -67,3 +67,11 @@ GitHub Releases (17): full ISOs/archives (Tekken 3, Tekken 6 PSP, TTT2, Urban Re
 3. There are no stages or extracted animations in the game. The move JSONs exist but there is no move-table interpreter.
 4. Duplicate teardowns across western-heart, game-reverse-engineering and wwe-wrestler-models. Wrestlers are still in western-heart despite the Oct 13 split directive.
 5. Legal: the public repo and its Releases host commercial ISOs. Recommend making them private or BYO-files (see the audit). Nothing should be deleted.
+
+## Update (Oct 14): Lab assets
+- `lab/source_assets/original/pantera_leoman_original.glb` and `bannon_mask_original.glb`: **ORIGINAL (owner-made)**, from Drive and untouched.
+  - Rig state on arrival: both were unrigged Tripo exports (meshopt + quantized, ~1M verts, 3 textures).
+- `lab/game/assets/t3_king.glb` and `t3_stage_l.glb`: third-party (Namco), from the owner's own disc. **Private Lab only.**
+- Rig-check findings in other assets:
+  - `game/assets/models/pantera.glb`: FAIL. The Idle clip is cm-scale on a meter rig (×21 stretch, 8 m sink).
+  - brutalfist `BANNON_rigged.glb`: FAIL. Its bind matrices don't match its skeleton.
