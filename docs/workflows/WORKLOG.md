@@ -15,3 +15,4 @@
 - Clips use 2-bone analytic IK in `tools/clips.py`.
 - Rig check: a numpy glTF evaluator with CPU skinning, checking edge stretch, bone drift and feet-to-floor. It runs as a unittest.
 - Previews were rendered with matplotlib and viewed before committing.
+- M2: wrote MoveTable (GDScript) and a headless SceneTree test; ran `godot --headless --import` then the test (PASS 7×4).
