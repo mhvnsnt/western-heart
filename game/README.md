@@ -53,6 +53,8 @@ wrestler character models.
 
 - **Nine-Soul Meter** (0–100, 9 soul segments): land a light hit +8, heavy +11,
   take damage +6, block +4. All 9 souls lit = Soul Surge ready.
+  Design follows Urban Reign's special-arts meter (teardown/urban-reign/docs/URBAN-REIGN-TEARDOWN.md):
+  builds on damage/dodges/hits; the full-meter super (Soul Surge) is uncounterable.
 - **Soul Surge**: costs the full meter. 0.24s startup (punishable) / 0.20s
   active / 24 damage before defense scaling. Character aura burst + screen flash.
 - **Command grab** (Pantera's bread and butter): unblockable at close range,

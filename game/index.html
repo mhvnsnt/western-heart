@@ -58,18 +58,21 @@
     </div>
   </section>
 
-  <!-- ====================== CHARACTER SELECT ====================== -->
-  <section id="screen-select" class="screen">
-    <div class="panel wide">
+  <!-- ====================== CHARACTER SELECT ======================
+       Tekken setup: sticky header (BACK + title + 99s timer),
+       vertically-scrolling fighter grid, sticky footer (CONFIRM).
+       Nothing ever overflows the viewport horizontally. -->
+  <section id="screen-select" class="screen select-screen">
+    <header class="select-header">
+      <button class="btn-ghost select-back" data-action="back-menu">BACK</button>
       <h2>CHOOSE YOUR SOUL</h2>
       <div id="select-timer" class="select-timer">99</div>
-      <div id="char-grid" class="char-grid"><!-- filled by JS --></div>
-      <div class="select-footer">
-        <span id="select-hint">Pick a fighter</span>
-        <button id="confirm-fighter" class="btn-primary" disabled>CONFIRM</button>
-      </div>
-      <button class="btn-ghost small" data-action="back-menu">BACK</button>
-    </div>
+    </header>
+    <div id="char-grid" class="char-grid"><!-- filled by JS --></div>
+    <footer class="select-footer">
+      <span id="select-hint">Pick a fighter</span>
+      <button id="confirm-fighter" class="btn-primary" disabled>CONFIRM</button>
+    </footer>
   </section>
 
   <!-- ====================== ROUND BANNER ====================== -->

@@ -35,7 +35,7 @@ body { position: fixed; inset: 0; user-select: none; -webkit-user-select: none; 
     radial-gradient(circle at 75% 82%, rgba(255,122,60,0.28), transparent 48%),
     linear-gradient(168deg, #1a0f2e 0%, #241031 45%, #0d060f 100%);
 }
-.menu-content { position: relative; text-align: center; z-index: 1; padding: 24px; max-width: 640px; }
+.menu-content { position: relative; text-align: center; z-index: 1; padding: 24px; max-width: 640px; max-height: 96vh; max-height: 96dvh; overflow-y: auto; touch-action: pan-y; }
 .game-title {
   font-size: clamp(44px, 13vw, 104px); font-weight: 900; letter-spacing: 3px; line-height: 0.88;
   background: linear-gradient(180deg,#ffffff 10%,#e0b3ff 45%,#8b2bd8 90%);
@@ -77,6 +77,8 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
   position: relative; z-index: 1; background: var(--panel); border: 1px solid rgba(139,43,216,0.35);
   border-radius: 20px; padding: 30px 26px; max-width: 460px; width: 92%; text-align: center;
   box-shadow: 0 24px 60px rgba(0,0,0,0.6); backdrop-filter: blur(8px);
+  max-height: 92vh; max-height: 92dvh; overflow-y: auto; overflow-x: hidden;
+  touch-action: pan-y;
 }
 .panel.wide { max-width: 560px; }
 .panel h2 { font-size: clamp(22px,6vw,32px); margin-bottom: 22px; letter-spacing: 2px; color: var(--gold); }
@@ -89,8 +91,65 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
 /* ----------- Character select — TEKKEN setup -----------
    From teardown/tekken3/tools/tekken3recompiled/tools/SELECTOR_CAROUSEL.md:
    portraits center-cropped 2:3, selected aperture larger than neighbors,
-   P1/P2 cursors, 99-second timer. Human-sized touch targets (owner UX law). */
-.char-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
+   P1/P2 cursors, 99-second timer. Human-sized touch targets (owner UX law).
+   LAYOUT: full-viewport flex column. Sticky header (BACK/title/timer),
+   vertically-scrolling grid, sticky footer (hint/CONFIRM). Nothing may
+   ever overflow the viewport horizontally, portrait or landscape. */
+#screen-select.select-screen {
+  display: none;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 0;
+  background: linear-gradient(168deg, #1a0f2e 0%, #241031 45%, #0d060f 100%);
+}
+#screen-select.select-screen.active { display: flex; }
+.select-header {
+  flex: 0 0 auto;
+  display: flex; align-items: center; gap: 12px;
+  padding: calc(10px + env(safe-area-inset-top)) 14px 10px;
+  background: rgba(20,12,32,0.96);
+  border-bottom: 2px solid rgba(139,43,216,0.4);
+  z-index: 5;
+}
+.select-header h2 {
+  flex: 1; text-align: center;
+  font-size: clamp(18px,5vw,28px); letter-spacing: 2px; color: var(--gold);
+  margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.select-back { flex: 0 0 auto; padding: 12px 18px; min-height: 48px; font-size: 14px; }
+.select-header .select-timer { flex: 0 0 auto; margin: 0; font-size: 24px; min-width: 52px; text-align: right; }
+.char-grid {
+  flex: 1 1 auto;
+  min-height: 0; /* allows flex child to scroll */
+  overflow-y: auto; overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y; /* override body touch-action:none so grid scrolls */
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  padding: 14px 14px calc(14px + env(safe-area-inset-bottom));
+  align-content: start;
+  width: 100%; max-width: 100%;
+  box-sizing: border-box;
+}
+/* Orientation + width aware columns — never overflow, never tiny */
+@media (min-width: 481px) and (max-width: 768px) {
+  .char-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (min-width: 769px) {
+  .char-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); max-width: 1100px; margin: 0 auto; }
+}
+@media (orientation: landscape) and (max-height: 500px) {
+  /* landscape phone: more columns, shorter cards */
+  .char-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; padding: 10px; }
+  .char-card { min-height: 0; }
+  .char-card .cname { font-size: 13px; }
+  .char-card .cstyle { font-size: 11px; }
+  .select-header { padding-top: 8px; padding-bottom: 8px; }
+  .select-header h2 { font-size: 18px; }
+  .select-footer { padding: 8px 14px; }
+}
 .tier-header {
   grid-column: 1 / -1; font-weight: 800; font-size: 14px; letter-spacing: 4px;
   color: var(--accent); border-bottom: 2px solid rgba(139,43,216,0.4);
@@ -101,7 +160,8 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
   background: rgba(255,255,255,0.05); border: 3px solid transparent; border-radius: 10px;
   padding: 0; cursor: pointer; pointer-events: auto; overflow: hidden;
   transition: transform 0.12s, border-color 0.12s, box-shadow 0.12s;
-  min-height: 200px;
+  min-height: 200px; min-width: 0; /* min-width:0 stops grid blowout */
+  touch-action: manipulation;
 }
 .char-card:active { transform: scale(0.96); }
 /* P1 cursor: gold highlight, card lifts + glows (Tekken P1 cursor) */
@@ -123,17 +183,16 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
 }
 .select-timer.low { color: #ff4444; animation: pulse 1s infinite; }
 @keyframes pulse { 50% { opacity: 0.5; } }
-.select-footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 6px; }
-#select-hint { font-size: 14px; opacity: 0.75; }
-#confirm-fighter { font-size: 18px; padding: 14px 28px; min-height: 56px; }
-@media (max-width: 480px){
-  /* BIGGER cards on phone (owner: "Digger select screen") — 2 large columns */
-  .char-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
-  .char-card { min-height: 280px; }
-  .char-card .cname { font-size: 17px; letter-spacing: 1px; }
-  .char-card .cstyle { font-size: 13px; }
+.select-footer {
+  flex: 0 0 auto;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 12px 14px calc(12px + env(safe-area-inset-bottom));
+  background: rgba(20,12,32,0.96);
+  border-top: 2px solid rgba(139,43,216,0.4);
+  z-index: 5;
 }
-@media (max-width: 480px){ .howto-grid{grid-template-columns:1fr;} }
+#select-hint { font-size: 14px; opacity: 0.75; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#confirm-fighter { font-size: 18px; padding: 14px 28px; min-height: 56px; flex: 0 0 auto; }
 
 /* ----------- Round banner ----------- */
 .banner {
@@ -159,7 +218,7 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
 @keyframes surgeNameIn { 0%{opacity:0;transform:scale(1.6);} 15%{opacity:1;transform:scale(1);} 75%{opacity:1;} 100%{opacity:0;} }
 
 /* ====================== HUD ====================== */
-.hud-top { position: fixed; top: 0; left: 0; right: 0; padding: 12px 14px; display: flex; gap: 10px; align-items: flex-start; z-index: 11; }
+.hud-top { position: fixed; top: 0; left: 0; right: 0; padding: calc(12px + env(safe-area-inset-top)) 14px 12px; display: flex; gap: 10px; align-items: flex-start; z-index: 11; }
 .fighter-status { flex: 1; }
 .fighter-status.right { direction: rtl; }
 .hp-wrap {
@@ -209,7 +268,7 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
 /* ====================== TOUCH CONTROLS ====================== */
 .touch-controls { position: fixed; inset: 0; z-index: 11; pointer-events: none; }
 .joystick {
-  position: fixed; left: 22px; bottom: 26px; width: 130px; height: 130px; border-radius: 50%;
+  position: fixed; left: 22px; bottom: calc(26px + env(safe-area-inset-bottom)); width: 130px; height: 130px; border-radius: 50%;
   background: radial-gradient(circle, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
   border: 2px solid rgba(255,255,255,0.18); pointer-events: auto; touch-action: none;
 }
@@ -218,7 +277,7 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
   background: radial-gradient(circle at 35% 30%, #ffffff, #9aa0c0); box-shadow: 0 4px 14px rgba(0,0,0,0.5);
 }
 /* Human-sized buttons: 58-68px targets (owner UX law) */
-.action-pad { position: fixed; right: 18px; bottom: 20px; width: 224px; height: 204px; pointer-events: none; }
+.action-pad { position: fixed; right: 18px; bottom: calc(20px + env(safe-area-inset-bottom)); width: 224px; height: 204px; pointer-events: none; }
 .act-btn {
   position: absolute; width: 66px; height: 66px; border-radius: 50%; font-weight: 900; font-size: 22px; color: #fff;
   border: 2px solid rgba(255,255,255,0.3); pointer-events: auto; touch-action: none;
