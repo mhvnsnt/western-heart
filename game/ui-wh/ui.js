@@ -22,10 +22,20 @@ const MODES = [
   ["STREET", "The Western Heart", "西の心", "Brawl-style free movement, environment hits."],
   ["GAUNTLET", "Wrestling Night", "格闘夜", "Ring, ropes, pins and submissions."],
 ];
+// Settings > Dev Sandbox: the physics / model / animation workbench (mhvnsnt/physics-playground-pwa).
+// Its test models (Scarlett, Madelyn) live only in the sandbox and are not roster fighters.
+const SANDBOX_URL = "https://physics-playground-pwa.pages.dev/";
+const OPTIONS = [
+  ["DEV SANDBOX", "開発", "Physics, rigs, jiggle, soft body, face and visemes, movesets, fights and AI tests: the dev workbench."],
+  ["BACK", "戻る", "Return to the main menu."],
+];
 const nav = (el, items, render) => { el.innerHTML = items.map(render).join(""); };
 
 nav($("#menu-list"), MENU, ([en, jp], i) => `<a class="${i === 0 ? "on" : ""}">${en}<i>${jp}</i></a>`);
 $("#menu-blurb").textContent = MENU[0][2];
+nav($("#opt-list"), OPTIONS, ([en, jp], i) => `<a class="${i === 0 ? "on" : ""}">${en}<i>${jp}</i></a>`);
+$("#opt-blurb").textContent = OPTIONS[0][2];
+$("#ds-open").href = SANDBOX_URL;
 nav($("#mode-cards"), MODES, ([en, sub, jp, d], i) =>
   `<div class="card ${i === 0 ? "on" : ""}"><b>${en}</b><em>${sub}</em><i>${jp}</i><p>${d}</p></div>`);
 
@@ -69,6 +79,8 @@ function route() {
   const s = (location.hash || "#title").slice(1);
   document.querySelectorAll("section[data-screen]").forEach((e) => e.classList.toggle("active", e.dataset.screen === s));
   document.body.dataset.screen = s;
+  const fr = $("#ds-frame");   // load the sandbox only while its page is open
+  if (s === "devsandbox" && !fr.src) fr.src = SANDBOX_URL;
 }
 addEventListener("hashchange", route); route();
 // Keyboard flow: Enter advances title→menu→modes→select→vs→hud, Esc pauses/backs.
@@ -76,6 +88,7 @@ const FLOW = ["title", "menu", "modes", "select", "vs", "hud", "results"];
 addEventListener("keydown", (e) => {
   const s = document.body.dataset.screen, i = FLOW.indexOf(s);
   if (e.key === "Enter" && s === "select") return startVs();
+  if (s === "options" || s === "devsandbox") { if (e.key === "Escape") go(s === "devsandbox" ? "options" : "menu"); return; }
   if (EMBED && (s === "vs" || s === "hud" || s === "results")) { if (e.key === "Escape" && s === "hud") post({ type: "pause" }); return; }
   if (e.key === "Enter" && i >= 0 && i < FLOW.length - 1) location.hash = FLOW[i + 1];
   if (e.key === "Escape") location.hash = s === "hud" ? "pause" : s === "pause" ? "hud" : FLOW[Math.max(i - 1, 0)];
@@ -85,7 +98,10 @@ addEventListener("keydown", (e) => {
 function startVs() { go("vs"); if (EMBED) setTimeout(() => post({ type: "fight", p1: P1.id, p2: P2.id }), 1800); }
 const bind = (sel, fn) => document.querySelectorAll(sel).forEach((el, i) => el.addEventListener("click", () => fn(i)));
 document.querySelector('section[data-screen="title"]').addEventListener("click", () => go("menu"));
-bind("#menu-list a", (i) => { if (i === 0 || i === 1) go("modes"); else if (i === 2) { P2 = P1; go("select"); } });
+bind("#menu-list a", (i) => { if (i === 0 || i === 1) go("modes"); else if (i === 2) { P2 = P1; go("select"); } else if (i === 5) go("options"); });
+bind("#opt-list a", (i) => go(i === 0 ? "devsandbox" : "menu"));
+document.querySelectorAll("#opt-list a").forEach((a, i) => a.addEventListener("mouseenter", () => { $("#opt-blurb").textContent = OPTIONS[i][2]; }));
+$("#ds-back").addEventListener("click", () => go("options"));
 bind("#mode-cards .card", () => go("select"));
 bind("#pause-list a", (i) => post({ type: ["resume", "commands", "controls", "restart", "select", "menu"][i] }) || (!EMBED && go(i === 0 ? "hud" : i === 4 ? "select" : i === 5 ? "menu" : "pause")));
 bind("#res-list a", (i) => post({ type: ["rematch", "select", "menu"][i] }) || (!EMBED && go(["vs", "select", "menu"][i])));
