@@ -9,6 +9,7 @@ import { audio } from './audio.js';
 import { assets } from './assets.js';
 import { ROSTER, getCharacter } from './characters.js';
 import { loadRealMovesets } from './fighter.js';
+import { whUiEnabled, mountWhUi } from './ui-wh-bridge.js';
 
 // Load REAL Tekken 3 moveset data (not hand-written frame data)
 loadRealMovesets();
@@ -319,10 +320,11 @@ document.getElementById('confirm-fighter').addEventListener('click', () => {
   startFight();
 });
 
-async function startFight() {
+async function startFight(playerId, enemyId) {
   unlockAudio();
+  if (typeof playerId === 'string') selectedChar = playerId;
   const player = getCharacter(selectedChar || ROSTER[0].id);
-  const enemy = randomEnemy(player.id);
+  const enemy = typeof enemyId === 'string' && enemyId !== player.id ? getCharacter(enemyId) : randomEnemy(player.id);
   // On-demand: load only the 2 fighters for this fight (Tekken 3 pattern).
   // Models may already be prefetched from select-screen highlight.
   const need = [...new Set([player.model || 'pantera', enemy.model || 'pantera'])];
@@ -369,3 +371,6 @@ document.addEventListener('visibilitychange', () => {
 // expose for debugging / verification
 window.__game = game;
 window.__ui = ui;
+
+// New Western Heart menu/UI (game/ui-wh/) behind a toggle; classic menus stay as fallback.
+if (whUiEnabled()) mountWhUi({ game, ui, show, startFight, ROSTER });
