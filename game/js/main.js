@@ -120,6 +120,7 @@ ui._buildMeter('p2');
 
 let selectedChar = null;
 let assetsReady = false;
+let gameMode = 'arcade'; // arcade | versus | story — versus: no reincarnation; story: death = reincarnation
 
 /* Preload the rigged 3D fighter model before play is allowed. */
 (function preload() {
@@ -203,7 +204,21 @@ document.querySelectorAll('[data-action]').forEach((el) => {
     unlockAudio();
     audio.uiClick();
     const a = el.dataset.action;
-    if (a === 'play') { show('select'); }
+    if (a === 'play' || a === 'mode-arcade' || a === 'mode-versus') {
+      gameMode = a === 'mode-versus' ? 'versus' : 'arcade';
+      show('select');
+    }
+    else if (a === 'mode-story') {
+      gameMode = 'story';
+      show('select');
+      // Story mode: pick your soul, death = reincarnation (per owner 2026-10-13)
+      document.getElementById('select-hint').textContent = 'STORY: Choose your soul. Death is not the end — it is reincarnation.';
+    }
+    else if (a === 'mode-create') {
+      // Character creation — wired to western-heart/customization/ when built
+      document.getElementById('select-hint').textContent = 'CREATE FIGHTER coming soon — wired to the CAW suite.';
+      show('select');
+    }
     else if (a === 'howto') { show('howto'); }
     else if (a === 'back-menu') { show('menu'); audio.stopMusic(); game.running = false; game.paused = true; }
     else if (a === 'rematch') { startFight(); }
