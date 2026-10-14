@@ -1,0 +1,47 @@
+# Deletion guard: blocks mass deletions without the owner's explicit OK.
+# Fails if a PR or push to main deletes more than 20 files, or any file under canon/,
+# unless the PR carries the label "owner-approved-deletion" (only the owner should add it).
+# Background: Bannon PR #63 (Oct 12 2026) was described as "archive 83 files" but deleted 9,006.
+name: deletion-guard
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+  push:
+    branches: [main]
+permissions:
+  contents: read
+  pull-requests: read
+jobs:
+  deletion-guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          filter: blob:none
+      - name: Check deletions
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EVENT: ${{ github.event_name }}
+          BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+          HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+          PR_LABELS: ${{ toJson(github.event.pull_request.labels.*.name) }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          LIMIT=20
+          if [ -z "$BASE" ] || [ "$BASE" = "0000000000000000000000000000000000000000" ]; then echo "No base; skipping"; exit 0; fi
+          if [ "$EVENT" = "pull_request" ]; then RANGE="$BASE...$HEAD"; else RANGE="$BASE..$HEAD"; fi
+          git diff --no-renames --diff-filter=D --name-only "$RANGE" > deleted.txt || true
+          N=$(wc -l < deleted.txt); CANON=$(grep -c '^canon/' deleted.txt || true)
+          echo "Deleted files: $N (canon/: $CANON)"
+          if [ "$N" -le "$LIMIT" ] && [ "$CANON" -eq 0 ]; then echo "OK"; exit 0; fi
+          LABELS="$PR_LABELS"
+          if [ "$EVENT" = "push" ]; then
+            LABELS=$(gh api "repos/$REPO/commits/$HEAD/pulls" --jq '[.[].labels[].name]' 2>/dev/null || echo '[]')
+          fi
+          if echo "$LABELS" | grep -q '"owner-approved-deletion"'; then echo "Approved by owner label"; exit 0; fi
+          echo "::error::This change deletes $N files ($CANON under canon/). Mass deletions need the owner's explicit OK: open a separate PR titled 'DELETION: ...' listing every file and have the owner add the 'owner-approved-deletion' label."
+          head -200 deleted.txt
+          exit 1
