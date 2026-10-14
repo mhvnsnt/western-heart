@@ -23,9 +23,10 @@ const screens = {
 function show(name) {
   Object.values(screens).forEach(s => s.classList.remove('active'));
   if (screens[name]) screens[name].classList.add('active');
-  // Tekken 99s select timer runs only on the select screen
-  if (name === 'select') startSelectTimer();
-  else stopSelectTimer();
+  // Tekken 99s select timer: runs only on the select screen, and only once the
+  // ~30MB assets are loaded — slow phones don't lose selection time to loading.
+  if (name === 'select') maybeStartSelectTimer();
+  else { selectTimerArmed = false; stopSelectTimer(); }
 }
 
 const SOULS = 9; // Nine-Soul Meter segments
@@ -134,6 +135,9 @@ let gameMode = 'arcade'; // arcade | versus | story — versus: no reincarnation
     .then(() => {
       fill.style.width = '100%';
       assetsReady = true;
+      // If the user is already on the select screen, the 99s countdown
+      // starts now — it never ticks during the asset load.
+      if (screens.select && screens.select.classList.contains('active')) maybeStartSelectTimer();
       setTimeout(() => overlay.classList.add('hidden'), 250);
     })
     .catch((err) => {
@@ -222,8 +226,14 @@ document.addEventListener('keydown', (e) => {
   }
 });
 /* 99-second select timer (Tekken standard selector: starts at 99).
-   At 0, auto-picks a random fighter — Tekken behavior. */
+   The countdown starts only once assets are loaded (maybeStartSelectTimer),
+   and at 0 it auto-highlights a random fighter — it never starts a fight
+   without the user tapping CONFIRM. */
 let selectTimerId = null;
+let selectTimerArmed = false;
+function maybeStartSelectTimer() {
+  if (assetsReady && !selectTimerArmed) { selectTimerArmed = true; startSelectTimer(); }
+}
 function startSelectTimer() {
   stopSelectTimer();
   let t = 99;
@@ -236,12 +246,17 @@ function startSelectTimer() {
     if (t <= 10) el.classList.add('low');
     if (t <= 0) {
       stopSelectTimer();
-      // auto-pick random (Tekken timeout behavior)
+      // Tekken timeout behavior: cursor jumps to a random fighter, but the
+      // match does NOT start — the user still taps CONFIRM to fight.
       const pool = ROSTER.filter(c => c.id !== selectedChar);
       const pick = pool[Math.floor(Math.random() * pool.length)];
       const card = document.querySelector(`.char-card[data-id="${pick.id}"]`);
-      if (card) selectCard(card, pick);
-      startFight();
+      if (card) {
+        selectCard(card, pick);
+        const idx = Array.from(allCards()).indexOf(card);
+        if (idx >= 0) focusCard(idx);
+      }
+      document.getElementById('select-hint').textContent = 'TIME UP — random fighter picked. Tap CONFIRM to fight.';
     }
   }, 1000);
 }
