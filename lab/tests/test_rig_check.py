@@ -8,13 +8,14 @@ import rig_check
 
 class RigCheck(unittest.TestCase):
     def test_lab_fighters(self):
-        files = sorted(glob.glob(str(LAB / "game/assets/t3_*.glb")))
+        files = sorted(glob.glob(str(LAB / "game/assets/*.glb")))
         files = [f for f in files if "stage" not in f]
         self.assertTrue(files, "no Lab fighter GLBs found")
         for f in files:
             r = rig_check.check(f)
             self.assertTrue(r["pass"], f"{f}: {r['errors'][:5]}")
-            self.assertLessEqual(r["stats"]["max_edge_stretch"], 1.01, "rigid T3 parts must not stretch")
+            if Path(f).name.startswith("t3_"):
+                self.assertLessEqual(r["stats"]["max_edge_stretch"], 1.01, "rigid T3 parts must not stretch")
 
     def test_detects_broken_rig(self):
         """The checker must catch a known-bad rig (Mixamo cm-scale Idle on a metre rig)."""

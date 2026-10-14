@@ -16,6 +16,12 @@
 - Rig check: a numpy glTF evaluator with CPU skinning, checking edge stretch, bone drift and feet-to-floor. It runs as a unittest.
 - Previews were rendered with matplotlib and viewed before committing.
 - M2: wrote MoveTable (GDScript) and a headless SceneTree test; ran `godot --headless --import` then the test (PASS 7×4).
+- M3 (playable slice):
+  - Godot GDScript (fighter/ai/hud/main/attire).
+  - Owner GLBs pulled with the Google Drive connector. Decoded and LOD'd with `@gltf-transform/cli` (dequantize, weld, simplify, resize).
+  - Auto-rig: landmark joints, inverse-distance weights with lateral gating, Laplacian smoothing (scipy) and continuous sparsification to 4 influences. Rig check iterated from FAIL (×77 stretch) to PASS.
+  - Bannon mask: per-rig presets fitted in the head-bone rest frame, plus a follow/clip/pop check over 337 frames.
+  - Capture: Godot Movie Maker under xvfb with Mesa llvmpipe → ffmpeg H.264, ffprobe and a contact sheet (viewed). HTML5 export uses the `web_nothreads` template; a puppeteer-core real-time screenshot is the web proof.
 
 ## 2026-10-14: Shared Creation Suite v0 (Grok Bot executor)
 - Survey: `gh search code --owner mhvnsnt` for creation suite / moveset editor / customizer / morphTargetInfluences; read Bannon DNA_SCHEMA, CREATION_SUITE, moveset_schema.json, customizer manifests via `gh api`. Chose Bannon DNA + moveset schema as base.

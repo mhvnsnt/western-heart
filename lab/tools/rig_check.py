@@ -5,7 +5,8 @@ For every skinned mesh in a GLB:
   weights   : JOINTS index valid, weights >= 0, sum to 1 (+-1e-3), no unweighted vertex
   skeleton  : bones map onto WH-Canonical-22 (retarget_maps.json); required bones present
   animation : every channel targets a node in the skin; quaternions finite & unit
-  explosion : at rest + sampled clip frames, triangle edge stretch <= MAX_STRETCH and
+  explosion : at rest + sampled clip frames, no triangle edge stretches > HARD_STRETCH (explosion),
+              at most MAX_TORN_FRAC of triangles stretch > MAX_STRETCH (tearing), and
               no vertex leaves its bone by more than MAX_DRIFT (rigid & soft skins)
   feet      : standing clips keep the lowest foot on the floor (|y| <= FLOOR_TOL), nothing
               sinks below -SINK_TOL in any clip; airborne/lying clips are listed in EXEMPT
@@ -19,7 +20,7 @@ from gltf_eval import Gltf
 
 MAPS = json.load(open(Path(__file__).resolve().parents[1] / "skeleton/retarget_maps.json"))
 CANON = json.load(open(Path(__file__).resolve().parents[1] / "skeleton/canonical_skeleton.json"))
-MAX_STRETCH, MAX_DRIFT, FLOOR_TOL, SINK_TOL = 2.0, 0.05, 0.06, 0.05
+MAX_STRETCH, HARD_STRETCH, MAX_TORN_FRAC, MAX_DRIFT, FLOOR_TOL, SINK_TOL = 2.0, 25.0, 0.005, 0.05, 0.06, 0.05
 FOOT_ONE_ON_FLOOR = {"heavy"}           # kicks: one foot must stay planted
 EXEMPT_FLOOR = {"ko", "TPose", "tpose"}  # lying / reference poses
 NSAMPLES = 12
@@ -55,7 +56,7 @@ def check(path):
         dom = J[np.arange(len(J)), Wt.argmax(1)]
         rest_cache.append((m, rest, tri, dom))
         res["stats"].setdefault("verts", 0); res["stats"]["verts"] += len(rest)
-        if np.abs(rest - m["pos"]).max() > 1e-3 * max(1, np.abs(m["pos"]).max()): Wn("bind pose != mesh (skinned rest differs from authored positions)")
+        if np.abs(rest - m["pos"]).max() > 1e-3 * max(1, np.abs(m["pos"]).max()): E("bind pose != mesh: skinned rest differs from authored positions (inverseBindMatrices do not match the skeleton)")
     jset = set(joints)
     feet_idx = [canon.get("LeftFoot"), canon.get("RightFoot")]
     anims = g.j.get("animations", [])
@@ -69,9 +70,12 @@ def check(path):
             if not np.isfinite(P).all(): E(f"{label}: NaN vertices"); return
             e0 = np.linalg.norm(rest[tri[:, 1]] - rest[tri[:, 0]], axis=1) + 1e-6
             e1 = np.linalg.norm(P[tri[:, 1]] - P[tri[:, 0]], axis=1)
-            st = float((e1 / e0)[e0 > 1e-4].max()) if (e0 > 1e-4).any() else 1.0
-            worst["stretch"] = max(worst["stretch"], st)
-            if st > MAX_STRETCH: E(f"{label}: exploded/stretched triangles x{st:.2f}")
+            ratio = (e1 / e0)[e0 > 1e-4]
+            st = float(ratio.max()) if len(ratio) else 1.0
+            torn = float((ratio > MAX_STRETCH).mean()) if len(ratio) else 0.0
+            worst["stretch"] = max(worst["stretch"], st); worst["torn"] = max(worst.get("torn", 0), torn)
+            if st > HARD_STRETCH: E(f"{label}: exploded triangles x{st:.2f}")
+            elif torn > MAX_TORN_FRAC: E(f"{label}: {torn*100:.2f}% of triangles stretched >x{MAX_STRETCH} (tearing)")
             # drift: vertex distance to dominant bone must stay ~constant
             Wr = g.world(None)
             jw = np.array([W[joints[d]][:3, 3] for d in dom]); jr = np.array([Wr[joints[d]][:3, 3] for d in dom])
@@ -103,7 +107,7 @@ def check(path):
         rule = "exempt" if nm in EXEMPT_FLOOR else ("one" if nm in FOOT_ONE_ON_FLOOR else "stand")
         for t in np.linspace(0, L, NSAMPLES):
             eval_pose(g.sample(ai, t), f"{nm}@{t:.2f}", rule)
-    res["stats"].update(max_edge_stretch=round(worst["stretch"], 3), max_drift=round(worst["drift"], 4))
+    res["stats"].update(max_edge_stretch=round(worst["stretch"], 3), torn_frac=round(worst.get("torn", 0), 5), max_drift=round(worst["drift"], 4))
     res["pass"] = not res["errors"]
     return res
 

@@ -21,6 +21,7 @@ class Gltf:
         l = struct.unpack("<I", b[12:16])[0]; self.j = json.loads(b[20:20 + l])
         o = 20 + l; self.bin = b[o + 8:o + 8 + struct.unpack("<I", b[o:o + 4])[0]] if o < len(b) else b""
         self.nodes = self.j.get("nodes", [])
+        self.bind_mesh_world = True
 
     def acc(self, i):
         a = self.j["accessors"][i]; v = self.j["bufferViews"][a["bufferView"]]
@@ -87,7 +88,8 @@ class Gltf:
         sk = self.j["skins"][m["skin"]]; W = self.world(over)
         ibm = self.acc(sk["inverseBindMatrices"]).reshape(-1, 4, 4).transpose(0, 2, 1) if "inverseBindMatrices" in sk else np.array([np.eye(4)] * len(sk["joints"]))
         J = np.array([W[j] @ ibm[k] for k, j in enumerate(sk["joints"])])
-        p = np.concatenate([m["pos"], np.ones((len(m["pos"]), 1))], 1)
+        # three.js / Godot convention: the skinned mesh node's world matrix is the bind matrix
+        p = np.concatenate([m["pos"], np.ones((len(m["pos"]), 1))], 1) @ W[m["node"]].T if self.bind_mesh_world else np.concatenate([m["pos"], np.ones((len(m["pos"]), 1))], 1)
         out = np.zeros((len(p), 3))
         for c in range(4):
             out += m["weights"][:, c:c + 1] * np.einsum("nij,nj->ni", J[m["joints"][:, c]], p)[:, :3]
