@@ -81,12 +81,23 @@ def main():
             skin_count += 1
     print(f'No Mercy skin textures: {skin_count} entries')
 
+    # DOA from parts/doa/manifest.json (empty until the DOA6 model pull lands;
+    # see parts/doa/GAP.md). Entries are pre-shaped to the index schema.
+    doa_manifest_path = os.path.join(PARTS, 'doa', 'manifest.json')
+    doa_count = 0
+    if os.path.exists(doa_manifest_path):
+        doa_manifest = json.load(open(doa_manifest_path))
+        for e in doa_manifest.get('parts', []):
+            entries.append(e)
+            doa_count += 1
+    print(f'DOA parts: {doa_count} entries')
+
     # Write master index
     out_path = os.path.join(PARTS, 'PARTS-INDEX.json')
     with open(out_path, 'w') as f:
         json.dump({
             'total_parts': len(entries),
-            'sources': ['wmxix', 'no-mercy'],
+            'sources': ['wmxix', 'no-mercy', 'doa'],
             'parts': entries,
         }, f, indent=1)
     print(f'\nTotal: {len(entries)} parts -> {out_path}')
