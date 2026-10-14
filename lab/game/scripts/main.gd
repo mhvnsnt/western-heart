@@ -51,12 +51,22 @@ func _ready() -> void:
 	else:
 		p1.setup(king, "king", Color(0.7, 0.45, 1.0)); p1.display_name = "PANTERA (T3 body)"
 	p2 = Fighter.new(); add_child(p2); p2.setup(king, "king", Color(1.0, 0.55, 0.5)); p2.display_name = "KING"
+	var p1_char := "pantera"; var p2_char := "king"
+	for a in args:
+		if a.begins_with("--p1-char="): p1_char = a.split("=")[1]
+		if a.begins_with("--p2-char="): p2_char = a.split("=")[1]
+	for pc in [[p1, p1_char], [p2, p2_char]]:
+		var f: Fighter = pc[0]; f.apply_height(pc[1])
+		print("HEIGHT %s id=%s cm=%d measured_m=%.3f" % [f.display_name, pc[1], int(f.height_cm), HeightScale.measure(f.model)])
 	if not ("--no-mask" in args):
 		p2.wear_mask({"tint": Color(1, 1, 1)})   # Bannon mask on the T3 rig from round 1
 	ai2 = FighterAI.new(7, 0.55)
 	ai1 = FighterAI.new(3, 0.65)
 	hud = Hud.new(); add_child(hud)
 	hud.setup("--touch" in args or DisplayServer.is_touchscreen_available())
+	for i in 2:   # in-game height readout (owner rule c)
+		var hf: Fighter = [p1, p2][i]
+		if hf.height_cm > 0.0: hud.names[i].text += "  %d cm" % int(hf.height_cm)
 	cam = Camera3D.new(); add_child(cam); cam.fov = 40
 	spark = MeshInstance3D.new(); var sm := SphereMesh.new(); sm.radius = 0.12; sm.height = 0.24; spark.mesh = sm
 	var smat := StandardMaterial3D.new(); smat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED; smat.albedo_color = Color(1, 0.9, 0.4)
