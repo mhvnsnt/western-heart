@@ -532,6 +532,7 @@ async function boot(){
     return;
   }
   preview=new Preview3D($('#preview3d'));
+  window.__preview=preview;   // debug/testing handle
   preview.onReady=()=>{ renderAll(); };
   renderAll();
   if(!had) toast('New fighter — start with BODY');
