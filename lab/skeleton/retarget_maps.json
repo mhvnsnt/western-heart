@@ -1,0 +1,31 @@
+{
+ "tekken3_rigid27": {
+  "source": "Tekken 3 3DMK (27 rows, 18 body parts used; part index -> canonical). Side resolved at import from the stance pose (+X = left).",
+  "rigid": true,
+  "map": {"part0":"Root","part2":"Hips","part1":"Chest","part17":"Head",
+          "part9":"{A}Shoulder","part10":"{A}Arm","part11":"{A}ForeArm","part12":"{A}Hand",
+          "part13":"{B}Shoulder","part14":"{B}Arm","part15":"{B}ForeArm","part16":"{B}Hand",
+          "part3":"{C}UpLeg","part4":"{C}Leg","part5":"{C}Foot",
+          "part6":"{D}UpLeg","part7":"{D}Leg","part8":"{D}Foot"},
+  "unmapped": {"part18-21":"costume attachments (rows 21-24), not used", "Spine/Neck/ToeBase":"absent in T3; canonical optional"}
+ },
+ "mixamo49": {
+  "source": "Mixamo skeleton as used by game/assets/models/pantera.glb, demonio.glb (49 joints). Prefix 'mixamorig:' stripped before lookup.",
+  "map": {"Hips":"Hips","Spine":"Spine","Spine1":"Spine","Spine2":"Chest","Neck":"Neck","Head":"Head",
+          "LeftShoulder":"LeftShoulder","LeftArm":"LeftArm","LeftForeArm":"LeftForeArm","LeftHand":"LeftHand",
+          "RightShoulder":"RightShoulder","RightArm":"RightArm","RightForeArm":"RightForeArm","RightHand":"RightHand",
+          "LeftUpLeg":"LeftUpLeg","LeftLeg":"LeftLeg","LeftFoot":"LeftFoot","LeftToeBase":"LeftToeBase",
+          "RightUpLeg":"RightUpLeg","RightLeg":"RightLeg","RightFoot":"RightFoot","RightToeBase":"RightToeBase"},
+  "drop": "all finger bones (Left/RightHand{Thumb,Index,Middle,Ring,Pinky}N) follow their Hand",
+  "rest_note": "Mixamo rests in T-pose with non-identity joint orientations; retarget must convert world-space deltas (canonical clips are world-axis)."
+ },
+ "rigify13": {
+  "source": "13-bone rig in roster/pantera/pantera_rigged.glb and teardown/tekken7/king/pantera_rigged.glb",
+  "map": {"hips":"Hips","spine":"Spine","chest":"Chest","neck":"Neck","head":"Head",
+          "shoulder.L":"LeftArm","shoulder.R":"RightArm",
+          "thigh.L":"LeftUpLeg","shin.L":"LeftLeg","foot.L":"LeftFoot",
+          "thigh.R":"RightUpLeg","shin.R":"RightLeg","foot.R":"RightFoot"},
+  "missing": ["LeftForeArm","LeftHand","RightForeArm","RightHand"],
+  "rest_note": "No forearm/hand bones: arm clips collapse to the shoulder; rig_check flags this rig as incomplete."
+ }
+}
