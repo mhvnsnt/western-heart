@@ -88,3 +88,20 @@ bfa17192cf35b502caa21c36d7a0d74f62f8b412f687aafc503adbd9de7bcee7  game/ui-wh/art
 c84a320e323efda740547589608fab6500ed5c367d4486d5c3b89afe2eeb594f  teardown/tekken3/disc/files/TEKKEN3/SLUS_004.02
 3b280fa477eff73cf76f1729e6c34366135e5d5e988a1a713abce49f1bde6a4c  teardown/tekken3/models/king95/king95.kmd
 ```
+
+## Update 4 (2026-10-14) — arms-folded source search, browser build
+
+### Item 3: real arms-folded pose — MISSING (no title v5)
+Nothing was rendered, because no real source exists yet:
+- WWE WrestleMania XIX YANM: the anatomy mapping is still marked UNRESOLVED / LOW confidence in the teardown notes.
+- WWF No Mercy AKI clips: the joints are 1-DOF hinges on provisional axes, so a true FK arms-folded pose can't be trusted.
+- TTT2: not extracted (about 13 GB of chunks on release `ttt2-7z-v1`). Public tools (TekkenMovesetExtractor) read from live memory, and there is no file decoder.
+- T6 DATA401: still encrypted.
+Title v4 stays the current version.
+
+### Item 5: browser build (`game/js`, Mixamo GLBs) — BLOCKED, nothing wired
+`lab/tools/t3_motion_bake.py` now has a generalized `TargetRig`: full node-tree world rest, non-identity rest, a Mixamo-49 canonical map, and -Z facing. The regression on `pantera_leoman` is bit-identical.
+Findings (the GLBs are not committed):
+- `game/assets/models/pantera.glb`: 5,805 of 5,805 side-weighted vertices are skinned to the opposite-side bone (left-side mesh on Right* joints). The asset's skin is mirrored, so ANY clip tears the arms, including its own Idle. The asset needs a re-skin or re-export. Swapping the weights would be a guess, so it was not done.
+- `game/assets/models/demonio.glb`: the weights are correct. Numeric CPU skinning of the baked `t3_stance_b` gives a sane guard pose, but the Godot 4.3 render still shows the arms in T-pose while the legs move. Next step: check how Godot names and imports the 49 Mixamo bones (track paths vs `Skeleton3D` bone names) and test in the three.js runtime directly.
+- `game/js/assets.js` and `fighter.js` are unchanged. The authored, procedural and CCD-IK path is still live there.
