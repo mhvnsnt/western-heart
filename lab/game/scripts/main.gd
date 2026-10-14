@@ -6,17 +6,20 @@ extends Node3D
 const ROUND_FRAMES := 60 * 60
 const WIN_ROUNDS := 2
 const ACTIONS := {
-	"p1_left": [KEY_A, KEY_LEFT], "p1_right": [KEY_D, KEY_RIGHT],
+	"p1_left": [KEY_A, KEY_LEFT], "p1_right": [KEY_D, KEY_RIGHT], "p1_up": [KEY_W, KEY_UP], "p1_down": [KEY_DOWN],
 	"p1_light": [KEY_J], "p1_medium": [KEY_K], "p1_heavy": [KEY_L], "p1_grab": [KEY_U], "p1_block": [KEY_SPACE, KEY_S], "p1_mask": [KEY_M],
 }
 const PAD := {"p1_light": JOY_BUTTON_X, "p1_medium": JOY_BUTTON_Y, "p1_heavy": JOY_BUTTON_B, "p1_grab": JOY_BUTTON_A,
-	"p1_block": JOY_BUTTON_RIGHT_SHOULDER, "p1_mask": JOY_BUTTON_BACK, "p1_left": JOY_BUTTON_DPAD_LEFT, "p1_right": JOY_BUTTON_DPAD_RIGHT}
+	"p1_block": JOY_BUTTON_RIGHT_SHOULDER, "p1_mask": JOY_BUTTON_BACK, "p1_left": JOY_BUTTON_DPAD_LEFT, "p1_right": JOY_BUTTON_DPAD_RIGHT,
+	"p1_up": JOY_BUTTON_DPAD_UP, "p1_down": JOY_BUTTON_DPAD_DOWN}
 
 var p1: Fighter
 var p2: Fighter
 var ai2: FighterAI
 var ai1: FighterAI
 var autoplay := false
+var shots_dir := ""
+var shot_done := {}
 var frame := 0
 var round_frame := 0
 var round_no := 1
@@ -38,6 +41,8 @@ func _ready() -> void:
 	var args := OS.get_cmdline_user_args()
 	autoplay = "--autoplay" in args
 	quit_after_match = "--quit-after-match" in args
+	for a in args:
+		if a.begins_with("--shots="): shots_dir = a.substr(8)
 	_setup_input()
 	_build_stage()
 	var king: PackedScene = _real_glb("res://assets/t3_king")
@@ -113,17 +118,20 @@ func _start_round() -> void:
 func _p1_input() -> Dictionary:
 	if autoplay:
 		var d := ai1.think(p1, p2)
-		for k in ["left", "right", "light", "medium", "heavy", "grab", "block"]:
+		for k in ["left", "right", "up", "down", "light", "medium", "heavy", "grab", "block"]:
 			Input.action_release("p1_" + k)
 		var fwd_act := "p1_right" if p1.facing > 0 else "p1_left"
 		var back_act := "p1_left" if p1.facing > 0 else "p1_right"
 		if d.get("fwd"): Input.action_press(fwd_act)
 		if d.get("back"): Input.action_press(back_act)
 		if d.get("block"): Input.action_press("p1_block")
+		if d.get("up"): Input.action_press("p1_up")
+		if d.get("down"): Input.action_press("p1_down")
 		for s in ["light", "medium", "heavy", "grab"]:
 			if d.get(s + "_pressed"): Input.action_press("p1_" + s)
 	var right := Input.is_action_pressed("p1_right"); var left := Input.is_action_pressed("p1_left")
-	var i := {"fwd": right if p1.facing > 0 else left, "back": left if p1.facing > 0 else right, "block": Input.is_action_pressed("p1_block")}
+	var i := {"fwd": right if p1.facing > 0 else left, "back": left if p1.facing > 0 else right, "block": Input.is_action_pressed("p1_block"),
+		"up": Input.is_action_pressed("p1_up"), "down": Input.is_action_pressed("p1_down")}
 	for s in ["light", "medium", "heavy", "grab"]:
 		var now := Input.is_action_pressed("p1_" + s)
 		i[s + "_pressed"] = now and not prev.get(s, false)
@@ -132,6 +140,12 @@ func _p1_input() -> Dictionary:
 
 func _physics_process(_dt: float) -> void:
 	frame += 1; phase_t += 1
+	if shots_dir != "":   # --shots=<dir>: one proof frame per movement clip (frame 6 of the state)
+		for f in [p1, p2]:
+			var key: String = f.ss_kind if f.state == "sidestep" else (f.jump_kind if f.state == "jump" else f.state)
+			if f.state in ["jump", "crouch", "crouch_hold", "sidestep"] and f.t_state == 6 and not shot_done.has(key):
+				shot_done[key] = true
+				get_viewport().get_texture().get_image().save_png(shots_dir.path_join("lab_%s.png" % key))
 	var i1 := _p1_input()
 	var i2 := ai2.think(p2, p1)
 	if Input.is_action_just_pressed("p1_mask"):
@@ -152,7 +166,7 @@ func _physics_process(_dt: float) -> void:
 		if wins[0] >= WIN_ROUNDS or wins[1] >= WIN_ROUNDS:
 			phase = "matchover"; phase_t = 0
 			hud.message("%s WINS THE MATCH" % ("PLAYER 1" if wins[0] > wins[1] else "CPU"), 9999)
-			print("MATCH RESULT wins=%s rounds=%d hits=%d blocks=%d frames=%d" % [str(wins), round_no, stats_hits, stats_blocks, frame])
+			print("MATCH RESULT wins=%s rounds=%d hits=%d blocks=%d frames=%d moves=%s" % [str(wins), round_no, stats_hits, stats_blocks, frame, str(Fighter.move_counts)])
 		else:
 			round_no += 1; _start_round()
 	elif phase == "matchover" and phase_t > 180 and quit_after_match:

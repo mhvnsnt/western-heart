@@ -18,7 +18,7 @@ func think(me: Fighter, opp: Fighter) -> Dictionary:
 		for k in hold: out[k] = hold[k]
 		return out
 	hold = {}
-	if me.state in ["hitstun", "attack", "ko"]:
+	if me.state in ["hitstun", "attack", "ko", "jump", "crouch", "sidestep"]:
 		return out
 	if opp.is_attacking() and dist < 1.6 and rng.randf() < 0.45:
 		hold = {"block": true, "back": true}; wait = rng.randi_range(10, 24)
@@ -29,6 +29,14 @@ func think(me: Fighter, opp: Fighter) -> Dictionary:
 		var slot := "light" if r < 0.38 else ("medium" if r < 0.68 else ("heavy" if r < 0.9 else "grab"))
 		out[slot + "_pressed"] = true
 		wait = rng.randi_range(4, 14)
+	elif rng.randf() < 0.35:
+		# T3 movement inputs (fighter.gd): tap up/down (released within 8 frames) = sidestep,
+		# hold down = crouch, hold up = jump.
+		var m := rng.randi_range(0, 3)
+		if m == 0: hold = {"down": true}; wait = 3
+		elif m == 1: hold = {"up": true}; wait = 3
+		elif m == 2: hold = {"down": true}; wait = rng.randi_range(12, 30)
+		else: hold = {"up": true}; wait = 10
 	else:
 		hold = {"back": true}; wait = rng.randi_range(8, 20)
 	for k in hold: out[k] = hold[k]

@@ -105,3 +105,19 @@ Findings (the GLBs are not committed):
 - `game/assets/models/pantera.glb`: 5,805 of 5,805 side-weighted vertices are skinned to the opposite-side bone (left-side mesh on Right* joints). The asset's skin is mirrored, so ANY clip tears the arms, including its own Idle. The asset needs a re-skin or re-export. Swapping the weights would be a guess, so it was not done.
 - `game/assets/models/demonio.glb`: the weights are correct. Numeric CPU skinning of the baked `t3_stance_b` gives a sane guard pose, but the Godot 4.3 render still shows the arms in T-pose while the legs move. Next step: check how Godot names and imports the 49 Mixamo bones (track paths vs `Skeleton3D` bone names) and test in the three.js runtime directly.
 - `game/js/assets.js` and `fighter.js` are unchanged. The authored, procedural and CCD-IK path is still live there.
+
+## Update 5 (2026-10-14): Lab crouch, jump and sidestep states
+The inputs and timing come from King's decoded branch lists (`lab/tools/t3_branch_dump.py`, which follows BranchFind's CALL 0xC00C / RETURN 0xC00D rules; dump in `docs/anim/t3_king_branches_slot3_59_127.txt`):
+- From standing (slot 3): 8 → 127 jump_up, 9 → 129 jump_fwd, 7 → 131 jump_back, 2 → 59 crouch.
+- From 127 (air window 9–38, 48-frame clip): returning to neutral in frames 1–8 → sidestep 283 when sideFlag is clear, 285 when it is set.
+- From 59 (8-frame entry): returning to neutral in frames 1–8 → sidestep 285 when sideFlag is clear, 283 when set. Holding down → 40 crouch_hold.
+- sideFlag is set on the right-hand side because it mirrors the stick (`fighter.md +0xC6`).
+
+Wired in `lab/game/scripts/fighter.gd` and played with the baked `t3_*` clips. The headless autoplay match passes: `MATCH RESULT wins=[2, 1] rounds=3 hits=43 blocks=37 frames=7420 moves={jump_up:18, crouch:11, crouch_hold:5, sidestep_a:6, sidestep_b:6}`. Proof frames: `docs/qa/anim/lab_movement_states.jpg`.
+
+Still missing or not decoded:
+- Stand-up slot 60 is not baked, so release after frame 8 goes straight to idle.
+- Jump x-displacement is not applied (move-row `+0x16` step displacement is not read yet).
+- Sidestep and jump evasion are not in hit tests.
+- The touch HUD has no up/down buttons.
+- jump_fwd and jump_back are wired but the CPU did not use them in this match.
