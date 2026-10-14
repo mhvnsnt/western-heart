@@ -32,10 +32,22 @@ Works identically on GitHub Pages (serve the `game/` folder).
 > blue-white palette derived from his "cold blue-white flame soul" Soul Surge.
 > Tune in `game/js/characters.js` when canon lands.
 
-Both fighters share one Mixamo-rigged human model (`game/assets/models/Soldier.glb`,
-self-contained copy) with per-fighter palette tinting. Mocap Idle/Walk/Run base
-layer + CCD inverse-kinematics combat layer — strikes genuinely reach for the
-opponent. Standing separation rule respected: no wrestler character models.
+Both fighters use REAL rigged models (Mixamo skeletons, no placeholders):
+- **Pantera** (`game/assets/models/pantera.glb`, 7MB): the real P1 body —
+  18 textured parts (purple tights, black pads/boots, red trim, jaguar mask)
+  from `roster/pantera/tail-rig/pantera_body.glb`, rigged in Blender with
+  manual region weights. Verified coherent in rest + animated poses.
+- **Demonio** (`game/assets/models/demonio.glb`, 22MB): Tekken 7 Steve Fox
+  FBX base (`teardown/models/tekken7/steve-fox-t7-fbx.zip`), same rig pipeline,
+  reskinned cold blue-white via engine tint (0.6 strength). HONEST GAP: this
+  is a Steve Fox body, not a Jin Kazama model. The T7 Jin MDL (Source engine)
+  could not be converted — Blender Source Tools needs Windows Crowbar,
+  SourceIO needs Python 3.11 (Blender 4.0.2 has 3.10), srctools Model is a stub.
+  The Jin MDL pipeline is a known gap; Demonio plays as the Jin-based fighter
+  on a Steve Fox body until a real Jin converts.
+Mocap Idle/Walk/Run base layer + CCD inverse-kinematics combat layer — strikes
+genuinely reach for the opponent. Standing separation rule respected: no
+wrestler character models.
 
 ## Systems
 
