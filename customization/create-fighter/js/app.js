@@ -421,8 +421,8 @@ function flatSlots(){
   return out;
 }
 function renderMoveset(el){
-  $('#panel-sub').textContent='176 slots · WWE layout, Tekken striking depth';
   const slots=flatSlots();
+  $('#panel-sub').textContent=`${slots.length} slots · WWE layout, Tekken striking depth`;
   const groups={};
   slots.forEach(s=>{ (groups[s.group]=groups[s.group]||[]).push(s); });
   el.innerHTML=`
@@ -532,6 +532,7 @@ async function boot(){
     return;
   }
   preview=new Preview3D($('#preview3d'));
+  window.__preview=preview;   // debug/testing handle
   preview.onReady=()=>{ renderAll(); };
   renderAll();
   if(!had) toast('New fighter — start with BODY');

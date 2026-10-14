@@ -6,6 +6,7 @@
    meshes are not wired yet). */
 import * as THREE from 'three';
 import { GLTFLoader } from '../vendor/addons/loaders/GLTFLoader.js';
+import { clone as skeletonClone } from '../vendor/addons/utils/SkeletonUtils.js';
 
 const SKIN_TONES = ['#f7c2a1','#e8a87c','#c98d5e','#a06a42','#7c4a2d','#5d3320','#3d2114','#2a150c'];
 
@@ -187,9 +188,10 @@ export class Preview3D {
   /* ---- moveset dummy opponent (WWE two-fighter preview) ---- */
   setDummyVisible(show){
     if(show && !this.dummy && this.fighter){
-      this.dummy = this.fighter.clone(true);
-      this.dummy.position.set(1.5, 0, 0.4);
-      this.dummy.rotation.y = -0.6;
+      // SkeletonUtils.clone rebinds the skinned mesh to the CLONED bones —
+      // plain .clone() shares the original skeleton and the dummy collapses
+      // onto the fighter's position instead of rendering at its own.
+      this.dummy = skeletonClone(this.fighter);
       this.dummy.traverse(o=>{ if(o.isMesh){ o.material = o.material.clone(); o.material.color.multiplyScalar(0.55); o.castShadow=true; } });
       this.scene.add(this.dummy);
     } else if(!show && this.dummy){
@@ -223,6 +225,15 @@ export class Preview3D {
     const fy = this.focus.y + Math.sin(this.el)*this.dist;
     this.camera.position.set(fx, fy, fz);
     this.camera.lookAt(this.focus);
+    // dummy opponent holds a fixed screen offset from the fighter (orbits with the camera):
+    // offset along the camera's screen-left axis, same depth as the fighter -> same apparent size
+    if(this.dummy && this.fighter){
+      const lx = -Math.cos(this.az), lz = Math.sin(this.az);
+      this.dummy.position.set(
+        this.fighter.position.x + lx*1.75, 0,
+        this.fighter.position.z + lz*1.75);
+      this.dummy.lookAt(this.fighter.position.x, 1.0, this.fighter.position.z);
+    }
     this.renderer.render(this.scene, this.camera);
   }
 }
