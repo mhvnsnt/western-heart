@@ -128,6 +128,22 @@ export class Fighter {
     this.lean.add(inst.model);
     this.root.add(this.lean);
     this.model = inst.model;
+    // ?debug=1 → on-page fighter diagnostics (no devtools needed)
+    if (new URLSearchParams(location.search).has('debug')) {
+      let sm = 0, bones = 0, vis = true;
+      inst.model.traverse(o => {
+        if (o.isSkinnedMesh) { sm++; bones = Math.max(bones, o.skeleton ? o.skeleton.bones.length : -1); }
+        if (o.visible === false) vis = false;
+      });
+      const d = document.createElement('div');
+      d.id = 'wh-debug';
+      d.style.cssText = 'position:fixed;top:0;left:0;z-index:9999;background:rgba(0,0,0,0.85);color:#0f0;font:12px monospace;padding:10px;white-space:pre;pointer-events:none';
+      const wp = new THREE.Vector3();
+      this.root.updateMatrixWorld(true);
+      this.root.getWorldPosition(wp);
+      d.textContent = `fighter=${this.char.id} model=${this.char.model}\nskinnedMeshes=${sm} maxBones=${bones} allVisible=${vis}\nrootPos=(${wp.x.toFixed(1)},${wp.y.toFixed(1)},${wp.z.toFixed(1)}) rootVisible=${this.root.visible}\nmodelType=${inst.model.type} children=${inst.model.children.length}`;
+      document.body.appendChild(d);
+    }
 
     // Soul aura for Soul Surge — PARTICLE aura clinging to the body
     // (Pantera: purple/red panther flame; Demonio: cold blue-white).

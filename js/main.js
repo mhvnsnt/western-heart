@@ -198,8 +198,8 @@ function focusCard(i) {
 }
 /* Keyboard navigation on the select screen */
 document.addEventListener('keydown', (e) => {
-  const sel = document.getElementById('select');
-  if (!sel || sel.classList.contains('hidden')) return;
+  const sel = document.getElementById('screen-select');
+  if (!sel || !sel.classList.contains('active')) return;
   const cards = allCards();
   if (!cards.length) return;
   const cols = 3; // card grid columns (matches CSS)
