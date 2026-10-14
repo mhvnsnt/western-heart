@@ -82,7 +82,9 @@ export class Fighter {
     this.char = charData;
     this.isPlayer = isPlayer;
     this.facing = facing;
-    this.stats = charData.stats;
+    // Default stats for fighters without explicit stats (from ROSTER.md archetypes)
+    this.stats = charData.stats || { speed: 4.4, jump: 7.2, power: 1.1, defense: 1.05 };
+    this.aiProfile = charData.ai || { aggression: 0.6, grabBias: 0.15, reaction: 0.55 };
 
     // vitals
     this.maxHp = 100; this.hp = 100;
