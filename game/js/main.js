@@ -8,6 +8,10 @@ import { InputManager } from './input.js';
 import { audio } from './audio.js';
 import { assets } from './assets.js';
 import { ROSTER, getCharacter } from './characters.js';
+import { loadRealMovesets } from './fighter.js';
+
+// Load REAL Tekken 3 moveset data (not hand-written frame data)
+loadRealMovesets();
 
 const screens = {
   menu:   document.getElementById('screen-menu'),
