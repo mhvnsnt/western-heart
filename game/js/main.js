@@ -126,29 +126,13 @@ let selectedChar = null;
 let assetsReady = false;
 let gameMode = 'arcade'; // arcade | versus | story — versus: no reincarnation; story: death = reincarnation
 
-/* Preload the rigged 3D fighter model before play is allowed.
-   CLEAN-INIT: menu buttons are disabled until assets are ready — never
-   show interactive-looking buttons that do nothing. */
-document.querySelectorAll('[data-action]').forEach(el => { el.disabled = true; });
-(function preload() {
-  const fill = document.getElementById('loading-fill');
-  const text = document.getElementById('loading-text');
+/* TEKKEN 3 LESSON: don't load fighters at boot. Menu + select use PNG
+   portraits — 3D models load on demand at fight start (see assets.js).
+   Boot is instant; the "loading" overlay is skipped entirely. */
+(function bootClean() {
   const overlay = document.getElementById('loading');
-  assets.load((p) => { fill.style.width = Math.round(p * 100) + '%'; })
-    .then(() => {
-      fill.style.width = '100%';
-      assetsReady = true;
-      // Now the UI is actually usable — enable the buttons.
-      document.querySelectorAll('[data-action]').forEach(el => { el.disabled = false; });
-      // If the user is already on the select screen, the 99s countdown
-      // starts now — it never ticks during the asset load.
-      if (screens.select && screens.select.classList.contains('active')) maybeStartSelectTimer();
-      setTimeout(() => overlay.classList.add('hidden'), 250);
-    })
-    .catch((err) => {
-      console.error(err);
-      text.textContent = 'Failed to load fighters. Please refresh.';
-    });
+  assetsReady = true; // menu needs no 3D — enable immediately
+  if (overlay) overlay.classList.add('hidden');
 })();
 
 /* Build character select cards — Tekken-style tiered grid */
@@ -194,6 +178,9 @@ function selectCard(card, c) {
   document.querySelectorAll('.char-card').forEach(x => x.classList.remove('selected'));
   card.classList.add('selected');
   selectedChar = c.id;
+  // Prefetch this fighter's 3D model while the user decides — Tekken 3
+  // loads the character record when highlighted, not at boot.
+  assets.prefetch(c.model || 'pantera');
   const surgeName = c.surge ? c.surge.name : 'SOUL SURGE';
   document.getElementById('select-hint').textContent = `${c.name} — ${c.style} · ${surgeName}`;
   document.getElementById('confirm-fighter').disabled = false;
@@ -332,11 +319,28 @@ document.getElementById('confirm-fighter').addEventListener('click', () => {
   startFight();
 });
 
-function startFight() {
-  if (!assetsReady) return;
+async function startFight() {
   unlockAudio();
   const player = getCharacter(selectedChar || ROSTER[0].id);
   const enemy = randomEnemy(player.id);
+  // On-demand: load only the 2 fighters for this fight (Tekken 3 pattern).
+  // Models may already be prefetched from select-screen highlight.
+  const need = [...new Set([player.model || 'pantera', enemy.model || 'pantera'])];
+  const hint = document.getElementById('select-hint');
+  const confirmBtn = document.getElementById('confirm-fighter');
+  try {
+    if (hint) hint.textContent = 'Entering the arena…';
+    if (confirmBtn) confirmBtn.disabled = true;
+    await assets.loadModels(need, (p) => {
+      if (hint) hint.textContent = `Entering the arena… ${Math.round(p * 100)}%`;
+    });
+  } catch (err) {
+    console.error('[WH] fight load failed:', err);
+    if (hint) hint.textContent = 'Failed to load fighters. Check connection and try again.';
+    if (confirmBtn) confirmBtn.disabled = false;
+    return;
+  }
+  if (confirmBtn) confirmBtn.disabled = false;
   show('hud');
   game.paused = false;
   audio.startMusic();

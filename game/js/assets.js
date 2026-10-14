@@ -22,12 +22,17 @@ class AssetManager {
     this.ready = false;
   }
 
-  load(onProgress) {
-    const ids = Object.keys(MODEL_URLS);
+  // TEKKEN 3 LESSON (teardown/tekken3/docs/TEKKEN3-ARCHITECTURE.md):
+  // "Tekken 3 doesn't load everything at once. The BNS table is an index —
+  // the game loads specific records on demand." We do the same: load only
+  // the models needed for the current fight, not the whole roster at boot.
+  //
+  // CLEAN-INIT: a hung download must NEVER brick the game. Each model
+  // gets a timeout + one retry; total failure rejects so the UI can
+  // show a real error instead of spinning forever.
+  async loadModels(ids, onProgress) {
+    const need = [...new Set(ids)].filter(id => !this.gltfs[id]);
     let done = 0;
-    // CLEAN-INIT: a hung download must NEVER brick the game. Each model
-    // gets a timeout + one retry; total failure rejects so the UI can
-    // show a real error instead of spinning forever.
     const LOAD_TIMEOUT_MS = 90000;
     const loadOne = (id, attempt) => new Promise((resolve, reject) => {
       const loader = new GLTFLoader();
@@ -59,15 +64,27 @@ class AssetManager {
         await loadOne(id, 2); // throws to caller on second failure
       }
     };
-    return (async () => {
-      for (const id of ids) {
-        await loadWithRetry(id);
-        done++;
-        if (onProgress) onProgress(done / ids.length);
-      }
-      this.ready = true;
-      return this;
-    })();
+    for (const id of need) {
+      await loadWithRetry(id);
+      done++;
+      if (onProgress) onProgress(done / Math.max(need.length, 1));
+    }
+    if (Object.keys(this.gltfs).length > 0) this.ready = true;
+    return this;
+  }
+
+  // Legacy: load all models (kept for compat, but boot no longer uses it).
+  load(onProgress) {
+    return this.loadModels(Object.keys(MODEL_URLS), onProgress);
+  }
+
+  // Fire-and-forget prefetch: warms the cache while the user browses select.
+  prefetch(id) {
+    if (!id || this.gltfs[id] || this._prefetching?.has(id)) return;
+    this._prefetching = this._prefetching || new Set();
+    this._prefetching.add(id);
+    this.loadModels([id]).catch(e => console.warn('[WH] prefetch failed:', id, e.message || e))
+      .finally(() => this._prefetching.delete(id));
   }
 
   /* { model, bones, mixer, actions } for one fighter.
