@@ -85,8 +85,11 @@ class T3Space:
 def sample_clip(space, kmd, bank_path, slot, step=2):
     bank = motion.parse_bank(open(bank_path, "rb").read())
     row = bank.move_index[slot]
-    data = open(bank_path, "rb").read()
-    st = motion.parse_anim(data, bank.anim_offset(bank.move_row(row)[0]))
+    cp = Path(bank_path).with_name("divmot99_common.bin")
+    rb = motion.parse_bank(cp.read_bytes()) if row >= motion.COMMON_FLAG else bank
+    w = rb.move_row(row % motion.COMMON_FLAG)[0]
+    ab = motion.parse_bank(cp.read_bytes()) if w >= motion.COMMON_FLAG else rb
+    st = motion.parse_anim(ab.data, ab.anim_offset(w % motion.COMMON_FLAG))
     frames = []
     for f in range(0, st.frames, step):
         obj, _ = PA.assemble(Path(kmd), Path(bank_path), slot, f, usa_tables.EXE_PATH)
@@ -131,10 +134,17 @@ def retarget(rig, space, clip):
     S["Chest"] = swing(rig, sp, "Chest", "Neck", "Chest", "Head")
     hip0 = sp["Hips"]; scale = rig.p("Hips")[1] / max(hip0[1], 1e-6)
     tracks = {n: ([], []) for n in rig.names}; root_t = []
+    # heading normalisation: each clip starts facing +Z (the bind facing); T3 stores the
+    # fighter's world heading in the pose, which differs per move. Pure yaw, no reshaping.
+    f0 = clip["frames"][0]
+    fw = f0["Hips"][0] @ np.array([0, 0, 1.0]) if "Hips" in f0 else np.array([0, 0, 1.0])
+    yaw0 = math.atan2(fw[0], fw[2]); c0, s0 = math.cos(-yaw0), math.sin(-yaw0)
+    Y = np.array([[c0, 0, s0], [0, 1, 0], [-s0, 0, c0]])
+    hp00 = f0["Hips"][1] if "Hips" in f0 else hip0
     for fr in clip["frames"]:
         G = {}
         for n in rig.names:
-            if n in fr and n not in ("Root",): G[n] = fr[n][0] @ S.get(n, np.eye(3))
+            if n in fr and n not in ("Root",): G[n] = Y @ fr[n][0] @ S.get(n, np.eye(3))
         G["Root"] = np.eye(3)
         if "Hips" in G and "Chest" in G:
             from scipy.spatial.transform import Rotation as Rr, Slerp
@@ -146,7 +156,8 @@ def retarget(rig, space, clip):
             g = G.get(n, np.eye(3)); pg = G.get(rig.names[rig.parent[k]], np.eye(3)) if rig.parent[k] >= 0 else np.eye(3)
             tracks[n][0].append(quat(pg.T @ g))
         hp = fr["Hips"][1] if "Hips" in fr else hip0
-        root_t.append((rig.loc[rig.idx["Root"]] + (hp - hip0) * scale).tolist())
+        d = Y @ (hp - hp00); d[1] = hp[1] - hip0[1]   # travel from the clip start (xz), height vs stance (y)
+        root_t.append((rig.loc[rig.idx["Root"]] + d * scale).tolist())
     return tracks, root_t
 
 def append_anim(rig, name, tracks, root_t, fps, extras):

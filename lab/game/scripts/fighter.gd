@@ -131,7 +131,8 @@ func take_block(m: Dictionary, attacker_facing: float) -> void:
 
 ## REAL teardown clips (lab/tools/t3_motion_bake.py, decoded T3 motion banks) win over the
 ## authored clips.py ones whenever the model carries them. See docs/anim/PROCEDURAL_AUDIT.md.
-const REAL := {"idle": "t3_stance_b", "win": "t3_win_lp", "heavy": "t3_heavy", "grab": "t3_grab", "light": "t3_light", "medium": "t3_medium"}
+const REAL := {"idle": "t3_stance_b", "win": "t3_win_lp", "heavy": "t3_heavy", "grab": "t3_grab", "light": "t3_light", "medium": "t3_medium",
+	"walk_fwd": "t3_walk_fwd", "walk_back": "t3_walk_back", "hit": "t3_hit", "block": "t3_block", "ko": "t3_ko"}
 var use_real := true
 
 func _real(name: String) -> String:
@@ -142,7 +143,9 @@ func _play(name: String, t: float) -> void:
 	var r := _real(name)
 	if r != "":
 		var L := ap.get_animation(r).length
-		if name == "idle": t = fmod(float(t_state) / 60.0, L)
+		if name in ["idle", "walk_fwd", "walk_back"]: t = fmod(float(t_state) / 60.0, L)
+		elif name in ["hit", "block"]: t = minf(float(stun_total - stun) / 60.0, L) if state in ["hitstun", "blockstun"] else minf(0.2, L)
+		elif name == "ko": t = minf(float(t_state) / 60.0, L)
 		elif name == "win": t = minf(float(t_state) / 60.0, L)
 		else: t = minf(float(mframe) / 60.0, L)  # attacks: real T3 frames, 60 fps
 		name = r
