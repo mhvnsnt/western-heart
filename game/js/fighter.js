@@ -109,7 +109,11 @@ export class Fighter {
   }
 
   _build(startX) {
-    const inst = assets.createInstance(this.char.colors.suit, this.char.colors.trim);
+    const inst = assets.createInstance(
+      this.char.model || 'pantera',
+      this.char.colors.suit, this.char.colors.trim,
+      this.char.tintStrength ?? 0.45
+    );
     this.bones = inst.bones;
     this.mixer = inst.mixer;
     this.actions = inst.actions;
@@ -125,13 +129,44 @@ export class Fighter {
     this.root.add(this.lean);
     this.model = inst.model;
 
-    // Soul aura for Soul Surge (character-coloured)
+    // Soul aura for Soul Surge — PARTICLE aura clinging to the body
+    // (Pantera: purple/red panther flame; Demonio: cold blue-white).
+    // No white sphere; the particles sample a body-hugging capsule.
     const surgeColor = this.char.surge ? this.char.surge.color : this.char.colors.trim;
-    this.aura = new THREE.Mesh(
-      new THREE.SphereGeometry(1.25, 16, 16),
-      new THREE.MeshBasicMaterial({ color: surgeColor, transparent: true, opacity: 0, depthWrite: false })
-    );
-    this.aura.position.y = 1.1; this.root.add(this.aura);
+    const surgeAccent = this.char.surge ? (this.char.surge.accent ?? 0xffffff) : 0xffffff;
+    const AURA_N = 140;
+    const pos = new Float32Array(AURA_N * 3);
+    const seed = new Float32Array(AURA_N * 2);
+    for (let i = 0; i < AURA_N; i++) {
+      // capsule: y in [0.1, 1.9], radius shrinks toward head/feet
+      const y = 0.1 + Math.random() * 1.8;
+      const rr = 0.42 * Math.sin(Math.PI * Math.min(1, Math.max(0.05, y / 2.0)));
+      const a = Math.random() * Math.PI * 2;
+      pos[i * 3] = Math.cos(a) * rr;
+      pos[i * 3 + 1] = y;
+      pos[i * 3 + 2] = Math.sin(a) * rr;
+      seed[i * 2] = Math.random() * 100;      // phase
+      seed[i * 2 + 1] = 0.5 + Math.random();  // speed
+    }
+    const auraGeo = new THREE.BufferGeometry();
+    auraGeo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    const c1 = new THREE.Color(surgeColor), c2 = new THREE.Color(surgeAccent);
+    const cols = new Float32Array(AURA_N * 3);
+    for (let i = 0; i < AURA_N; i++) {
+      const c = c1.clone().lerp(c2, Math.random() * 0.45);
+      cols[i * 3] = c.r; cols[i * 3 + 1] = c.g; cols[i * 3 + 2] = c.b;
+    }
+    auraGeo.setAttribute('color', new THREE.BufferAttribute(cols, 3));
+    this.aura = new THREE.Points(auraGeo, new THREE.PointsMaterial({
+      size: 0.09, vertexColors: true, transparent: true, opacity: 0,
+      depthWrite: false, blending: THREE.AdditiveBlending, sizeAttenuation: true,
+    }));
+    this.aura.userData.seed = seed;
+    this.aura.frustumCulled = false;
+    this.root.add(this.aura);
+    // rim light that flares with the surge
+    this.auraLight = new THREE.PointLight(surgeColor, 0, 4.5, 1.8);
+    this.auraLight.position.y = 1.2; this.root.add(this.auraLight);
 
     // Contact shadow blob
     this.blob = new THREE.Mesh(
@@ -361,11 +396,27 @@ export class Fighter {
     this.lean.rotation.x = this._lean.x;
     this.lean.rotation.z = this._lean.z;
 
-    // 7) Aura + trail visuals
+    // 7) Aura + trail visuals — particles rise and flicker around the body
     const auraOn = (this.attackName === 'surge') || this._auraFlash > 0;
-    this.aura.material.opacity += ((auraOn ? 0.32 : 0) - this.aura.material.opacity) * Math.min(1, dt * 10);
-    const k = performance.now() * 0.001;
-    const as = 1 + Math.sin(k * 12) * 0.06; this.aura.scale.set(as, as, as);
+    const am = this.aura.material;
+    am.opacity += ((auraOn ? 0.95 : 0) - am.opacity) * Math.min(1, dt * 10);
+    this.auraLight.intensity += ((auraOn ? 14 : 0) - this.auraLight.intensity) * Math.min(1, dt * 10);
+    if (am.opacity > 0.01) {
+      const p = this.aura.geometry.attributes.position;
+      const seed = this.aura.userData.seed;
+      const k = performance.now() * 0.001;
+      for (let i = 0; i < p.count; i++) {
+        const s0 = seed[i * 2], s1 = seed[i * 2 + 1];
+        // rise, wrap around the capsule
+        let y = p.getY(i) + dt * 1.6 * s1;
+        if (y > 2.0) y = 0.1;
+        const wob = Math.sin(k * 9 * s1 + s0) * 0.07;
+        p.setY(i, y);
+        p.setX(i, p.getX(i) + wob * dt * 8);
+      }
+      p.needsUpdate = true;
+      const as = 1 + Math.sin(k * 12) * 0.08; this.aura.scale.set(as, 1, as);
+    }
   }
 
   _attackProgress() {
