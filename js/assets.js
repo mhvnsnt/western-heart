@@ -1,71 +1,79 @@
 /* ============================================================
    WESTERN HEART — Assets
-   Preloads the rigged 3D fighter (Mixamo-skeleton GLB) once and
+   Preloads the REAL rigged fighters (Mixamo-skeleton GLBs) and
    hands out skeleton-cloned, per-fighter-tinted instances.
-   Self-contained: the model lives at game/assets/models/.
+   Self-contained: models live at game/assets/models/.
+   Pantera = real P1 textured body (roster/pantera). Demonio =
+   Tekken 7 base reskinned cold blue-white (see game/README.md).
    ============================================================ */
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { clone as skeletonClone } from 'three/addons/utils/SkeletonUtils.js';
 
-const MODEL_URL = 'assets/models/Soldier.glb';
+const MODEL_URLS = {
+  pantera: 'assets/models/pantera.glb',
+  demonio: 'assets/models/demonio.glb',
+};
 
 class AssetManager {
   constructor() {
-    this.gltf = null;
-    this.clips = {};
+    this.gltfs = {};   // id -> gltf
+    this.clips = {};   // id -> {name: clip}
     this.ready = false;
   }
 
   load(onProgress) {
+    const ids = Object.keys(MODEL_URLS);
+    let done = 0;
     return new Promise((resolve, reject) => {
       const loader = new GLTFLoader();
-      loader.load(
-        MODEL_URL,
-        (gltf) => {
-          this.gltf = gltf;
-          for (const clip of gltf.animations) this.clips[clip.name] = clip;
-          gltf.scene.traverse((o) => {
-            if (o.isMesh) {
-              o.castShadow = true;
-              o.receiveShadow = true;
-              o.frustumCulled = false; // fighters are always near the camera
-              if (o.material) {
-                o.material = o.material.clone();
-                o.material.roughness = 0.65;
-                o.material.metalness = 0.05;
+      const tick = () => {
+        done++;
+        if (onProgress) onProgress(done / ids.length);
+        if (done === ids.length) { this.ready = true; resolve(this); }
+      };
+      for (const id of ids) {
+        loader.load(
+          MODEL_URLS[id],
+          (gltf) => {
+            this.gltfs[id] = gltf;
+            this.clips[id] = {};
+            for (const clip of gltf.animations) this.clips[id][clip.name] = clip;
+            gltf.scene.traverse((o) => {
+              if (o.isMesh) {
+                o.castShadow = true;
+                o.receiveShadow = true;
+                o.frustumCulled = false;
               }
-            }
-          });
-          this.ready = true;
-          resolve(this);
-        },
-        (e) => { if (onProgress && e.total) onProgress(e.loaded / e.total); },
-        (err) => reject(err)
-      );
+            });
+            tick();
+          },
+          undefined,
+          (err) => reject(err)
+        );
+      }
     });
   }
 
   /* { model, bones, mixer, actions } for one fighter.
      Per-fighter palette: suit color lerp + trim emissive accents. */
-  createInstance(suitColor, trimColor) {
-    const model = skeletonClone(this.gltf.scene);
+  createInstance(fighterId, suitColor, trimColor, tintStrength = 0.45) {
+    const gltf = this.gltfs[fighterId];
+    if (!gltf) throw new Error('unknown fighter model: ' + fighterId);
+    const model = skeletonClone(gltf.scene);
 
     const suit = new THREE.Color(suitColor);
     const trim = new THREE.Color(trimColor);
     model.traverse((o) => {
       if (o.isMesh && o.material) {
         o.material = o.material.clone();
-        // body suit tint
-        o.material.color.lerp(suit, 0.55);
-        // small emissive trim pop so the two fighters read apart
+        // tint toward the fighter's palette (real textures underneath)
+        if (o.material.color) o.material.color.lerp(suit, tintStrength);
         o.material.emissive = o.material.emissive || new THREE.Color(0x000000);
-        o.material.emissive.copy(trim).multiplyScalar(0.06);
+        o.material.emissive.copy(trim).multiplyScalar(0.08);
+        if (o.material.roughness !== undefined) o.material.roughness = 0.7;
       }
     });
-
-    // Model stands ~1.6 units; nudge feet flush to y=0.
-    model.position.y -= 0.12;
 
     const bones = {};
     model.traverse((o) => {
@@ -74,9 +82,10 @@ class AssetManager {
 
     const mixer = new THREE.AnimationMixer(model);
     const actions = {};
+    const clips = this.clips[fighterId] || {};
     for (const name of ['Idle', 'Walk', 'Run']) {
-      if (this.clips[name]) {
-        actions[name] = mixer.clipAction(this.clips[name]);
+      if (clips[name]) {
+        actions[name] = mixer.clipAction(clips[name]);
         actions[name].play();
         actions[name].setEffectiveWeight(name === 'Idle' ? 1 : 0);
       }

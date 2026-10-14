@@ -27,7 +27,7 @@ export class Arena {
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     this.renderer.outputColorSpace = THREE.SRGBColorSpace;
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    this.renderer.toneMappingExposure = 1.15;
+    this.renderer.toneMappingExposure = 1.45;
 
     this.scene = new THREE.Scene();
     this.scene.background = this._makeSky();
@@ -111,11 +111,12 @@ export class Arena {
   }
 
   _buildLights() {
-    // Cool ambient dusk (#2a2a4a) from above — lifted so fighters read
-    this.scene.add(new THREE.HemisphereLight(0x4a4a7a, 0x1a1426, 1.25));
+    // Cool ambient dusk — LIFTED so the stage reads on phone screens
+    // (owner: old build was a black box; brightness wins over mood).
+    this.scene.add(new THREE.HemisphereLight(0x6a6aaa, 0x2a2038, 1.9));
 
     // Setting sun — warm directional #ff9a5c, the only shadow caster
-    const sun = new THREE.DirectionalLight(0xff9a5c, 1.9);
+    const sun = new THREE.DirectionalLight(0xff9a5c, 2.6);
     sun.position.set(-11, 6.5, 5);
     sun.castShadow = true;
     sun.shadow.mapSize.set(this.isMobile ? 1024 : 2048, this.isMobile ? 1024 : 2048);
@@ -131,7 +132,7 @@ export class Arena {
 
     // Soft frontal fill from the camera side — fighters must read clearly
     // at dusk. Warm-neutral, no shadows, cheap.
-    const fill = new THREE.DirectionalLight(0xffe0c0, 0.55);
+    const fill = new THREE.DirectionalLight(0xffe0c0, 1.0);
     fill.position.set(0, 4, 10); this.scene.add(fill);
   }
 

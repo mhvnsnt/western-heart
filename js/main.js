@@ -8,6 +8,10 @@ import { InputManager } from './input.js';
 import { audio } from './audio.js';
 import { assets } from './assets.js';
 import { ROSTER, getCharacter } from './characters.js';
+import { loadRealMovesets } from './fighter.js';
+
+// Load REAL Tekken 3 moveset data (not hand-written frame data)
+loadRealMovesets();
 
 const screens = {
   menu:   document.getElementById('screen-menu'),
@@ -116,6 +120,7 @@ ui._buildMeter('p2');
 
 let selectedChar = null;
 let assetsReady = false;
+let gameMode = 'arcade'; // arcade | versus | story — versus: no reincarnation; story: death = reincarnation
 
 /* Preload the rigged 3D fighter model before play is allowed. */
 (function preload() {
@@ -134,30 +139,45 @@ let assetsReady = false;
     });
 })();
 
-/* Build character select cards */
+/* Build character select cards — Tekken-style tiered grid */
 function buildSelect() {
   const grid = document.getElementById('char-grid');
   grid.innerHTML = '';
-  ROSTER.forEach((c) => {
-    const card = document.createElement('div');
-    card.className = 'char-card';
-    card.dataset.id = c.id;
-    const suit = '#' + c.colors.suit.toString(16).padStart(6, '0');
-    const trim = '#' + c.colors.trim.toString(16).padStart(6, '0');
-    card.innerHTML =
-      `<div class="char-avatar" style="background:radial-gradient(circle at 35% 30%, ${suit}, ${trim} 70%, #0b0b14)"></div>
-       <div class="cname">${c.name}</div>
-       <div class="cstyle">${c.style}</div>
-       <div class="csoul">${c.soul}</div>`;
-    card.addEventListener('click', () => {
-      audio.uiClick();
-      document.querySelectorAll('.char-card').forEach(x => x.classList.remove('selected'));
-      card.classList.add('selected');
-      selectedChar = c.id;
-      document.getElementById('select-hint').textContent = `${c.name} — ${c.style} · Soul Surge: ${c.surge.name}`;
-      document.getElementById('confirm-fighter').disabled = false;
+
+  const tiers = [
+    { label: 'THE NINE SOULS', fighters: ROSTER.slice(0, 9) },
+    { label: 'MAIN ROSTER', fighters: ROSTER.slice(9, 16) },
+    { label: 'BONUS ROSTER', fighters: ROSTER.slice(16) },
+  ];
+
+  tiers.forEach(({ label, fighters }) => {
+    const tierHeader = document.createElement('div');
+    tierHeader.className = 'tier-header';
+    tierHeader.textContent = label;
+    grid.appendChild(tierHeader);
+
+    fighters.forEach((c) => {
+      const card = document.createElement('div');
+      card.className = 'char-card';
+      card.dataset.id = c.id;
+      const suit = '#' + c.colors.suit.toString(16).padStart(6, '0');
+      const trim = '#' + c.colors.trim.toString(16).padStart(6, '0');
+      const surgeName = c.surge ? c.surge.name : 'SOUL SURGE';
+      card.innerHTML =
+        `<div class="char-avatar" style="background:radial-gradient(circle at 35% 30%, ${suit}, ${trim} 70%, #0b0b14)"></div>
+         <div class="cname">${c.name}</div>
+         <div class="cstyle">${c.style}</div>
+         <div class="ctitle">${c.title || ''}</div>`;
+      card.addEventListener('click', () => {
+        audio.uiClick();
+        document.querySelectorAll('.char-card').forEach(x => x.classList.remove('selected'));
+        card.classList.add('selected');
+        selectedChar = c.id;
+        document.getElementById('select-hint').textContent = `${c.name} — ${c.style} · ${surgeName}`;
+        document.getElementById('confirm-fighter').disabled = false;
+      });
+      grid.appendChild(card);
     });
-    grid.appendChild(card);
   });
 }
 buildSelect();
@@ -184,7 +204,21 @@ document.querySelectorAll('[data-action]').forEach((el) => {
     unlockAudio();
     audio.uiClick();
     const a = el.dataset.action;
-    if (a === 'play') { show('select'); }
+    if (a === 'play' || a === 'mode-arcade' || a === 'mode-versus') {
+      gameMode = a === 'mode-versus' ? 'versus' : 'arcade';
+      show('select');
+    }
+    else if (a === 'mode-story') {
+      gameMode = 'story';
+      show('select');
+      // Story mode: pick your soul, death = reincarnation (per owner 2026-10-13)
+      document.getElementById('select-hint').textContent = 'STORY: Choose your soul. Death is not the end — it is reincarnation.';
+    }
+    else if (a === 'mode-create') {
+      // Character creation — wired to western-heart/customization/ when built
+      document.getElementById('select-hint').textContent = 'CREATE FIGHTER coming soon — wired to the CAW suite.';
+      show('select');
+    }
     else if (a === 'howto') { show('howto'); }
     else if (a === 'back-menu') { show('menu'); audio.stopMusic(); game.running = false; game.paused = true; }
     else if (a === 'rematch') { startFight(); }
