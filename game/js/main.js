@@ -168,19 +168,63 @@ function buildSelect() {
          <div class="cname">${c.name}</div>
          <div class="cstyle">${c.style}</div>
          <div class="ctitle">${c.title || ''}</div>`;
-      card.addEventListener('click', () => {
-        audio.uiClick();
-        document.querySelectorAll('.char-card').forEach(x => x.classList.remove('selected'));
-        card.classList.add('selected');
-        selectedChar = c.id;
-        document.getElementById('select-hint').textContent = `${c.name} — ${c.style} · ${surgeName}`;
-        document.getElementById('confirm-fighter').disabled = false;
-      });
+      card.addEventListener('click', () => selectCard(card, c));
       grid.appendChild(card);
     });
   });
 }
 buildSelect();
+
+/* Card selection (shared by mouse + keyboard) */
+let focusedCardIdx = 0;
+function allCards() { return [...document.querySelectorAll('.char-card')]; }
+function selectCard(card, c) {
+  audio.uiClick();
+  document.querySelectorAll('.char-card').forEach(x => x.classList.remove('selected'));
+  card.classList.add('selected');
+  selectedChar = c.id;
+  const surgeName = c.surge ? c.surge.name : 'SOUL SURGE';
+  document.getElementById('select-hint').textContent = `${c.name} — ${c.style} · ${surgeName}`;
+  document.getElementById('confirm-fighter').disabled = false;
+}
+function focusCard(i) {
+  const cards = allCards();
+  if (!cards.length) return;
+  focusedCardIdx = (i + cards.length) % cards.length;
+  cards.forEach(x => x.classList.remove('kb-focus'));
+  const el = cards[focusedCardIdx];
+  el.classList.add('kb-focus');
+  el.scrollIntoView({ block: 'nearest' });
+}
+/* Keyboard navigation on the select screen */
+document.addEventListener('keydown', (e) => {
+  const sel = document.getElementById('select');
+  if (!sel || sel.classList.contains('hidden')) return;
+  const cards = allCards();
+  if (!cards.length) return;
+  const cols = 3; // card grid columns (matches CSS)
+  if (e.key === 'ArrowRight') { focusCard(focusedCardIdx + 1); e.preventDefault(); }
+  else if (e.key === 'ArrowLeft') { focusCard(focusedCardIdx - 1); e.preventDefault(); }
+  else if (e.key === 'ArrowDown') { focusCard(focusedCardIdx + cols); e.preventDefault(); }
+  else if (e.key === 'ArrowUp') { focusCard(focusedCardIdx - cols); e.preventDefault(); }
+  else if (e.key === 'Enter' || e.key === ' ') {
+    const card = cards[focusedCardIdx];
+    const c = ROSTER.find(x => x.id === card.dataset.id);
+    if (c) {
+      if (selectedChar === c.id) { startFight(); } // Enter again = confirm
+      else selectCard(card, c);
+    }
+    e.preventDefault();
+  }
+});
+/* Deep link: ?fighter=<id> pre-selects that fighter on the select screen */
+(function () {
+  const id = new URLSearchParams(location.search).get('fighter');
+  if (!id) return;
+  const card = document.querySelector(`.char-card[data-id="${id}"]`);
+  const c = ROSTER.find(x => x.id === id);
+  if (card && c) selectCard(card, c);
+})();
 
 /* Random opponent different from the player */
 function randomEnemy(excludeId) {
