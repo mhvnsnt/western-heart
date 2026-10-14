@@ -34,9 +34,11 @@ const side = (r, who) => `<img src="${r.full}" class="${r.model ? "" : "sil"}"><
   <small>ORIGIN · ${r.origin}</small>${r.model ? "" : "<small class='pend'>MODEL PENDING</small>"}</div>`;
 function renderSelect() {
 $("#sel-p1").innerHTML = side(P1, "p1"); $("#sel-p2").innerHTML = side(P2, "p2");
-nav($("#sel-grid"), ROSTER, (r) => `<div class="cell ${r.id === P1.id ? "c1" : ""} ${r.id === P2.id ? "c2" : ""}">
-  <img src="${r.bust}" class="${r.model ? "" : "sil"}"><span class="k">${r.kanji}</span><b>${r.name}</b></div>`);
+// Lock state comes from roster.js (isUnlocked): Pantera only by default, ?unlock=all for showcase captures.
+nav($("#sel-grid"), ROSTER, (r) => `<div class="cell ${r.id === P1.id ? "c1" : ""} ${r.id === P2.id ? "c2" : ""} ${r.unlocked ? "" : "locked"}" data-id="${r.id}">
+  <img src="${r.bust}" class="${r.model ? "" : "sil"}"><span class="k">${r.kanji}</span>${r.unlocked ? "" : "<i class='lock'>封</i>"}<b>${r.name}</b></div>`);
 $("#sel-grid").querySelectorAll(".cell").forEach((c, i) => c.addEventListener("click", () => {
+  if (!ROSTER[i].unlocked) return;   // locked fighters can't be picked
   if (ROSTER[i].id === P1.id) return startVs();
   P1 = ROSTER[i]; if (P2.id === P1.id) P2 = ROSTER[(i + 6) % ROSTER.length]; renderSelect(); renderVs();
 }));

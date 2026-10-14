@@ -115,3 +115,6 @@ body.embed[data-screen="hud"] .wall { display:none; }
 body.embed .hud-fx.idle { opacity:0; } body.embed .hud-fx.pop { animation:pop .9s; }
 @keyframes pop { 0% { opacity:1; transform:skewX(-10deg) scale(1.3); } 80% { opacity:1; } 100% { opacity:0; } }
 .cell, .list a, .card, [data-screen="title"] { cursor:pointer; }
+/* roster lock state (data-driven, roster.js isUnlocked) */
+.cell.locked img { filter:grayscale(1) brightness(.35); } .cell.locked img.sil { filter:brightness(0); opacity:.55; }
+.cell .lock { position:absolute; left:50%; top:42%; transform:translate(-50%,-50%); font-style:normal; font-size:1.6vw; color:var(--gold); opacity:.8; text-shadow:0 0 .6vw #000; }

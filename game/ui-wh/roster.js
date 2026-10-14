@@ -2,6 +2,20 @@
 // Origin is not in canon for anyone yet, so it reads "parts unknown" (owner rule).
 // portrait: only fighters with a real owner GLB get a render; the rest show the
 // Pantera-GLB silhouette marked MODEL PENDING (no AI faces).
+// Card art that is a work-in-progress kitbash of an existing model (see docs/roster/<id>/parts.json).
+const ART = {
+  zui: { label: "WIP KITBASH A1", bust: "portraits/zui_a1wip_bust.png", full: "portraits/zui_a1wip_full.png" },
+};
+// Unlock state is data, not art: only Pantera by default. Promo/showcase: ?unlock=all
+// Game progress: localStorage "wh_unlocked" = JSON array of ids.
+export const DEFAULT_UNLOCKED = ["pantera"];
+export function isUnlocked(id) {
+  const q = typeof location !== "undefined" ? new URLSearchParams(location.search) : null;
+  if (q && q.get("unlock") === "all") return true;
+  let saved = [];
+  try { saved = JSON.parse(localStorage.getItem("wh_unlocked") || "[]"); } catch {}
+  return DEFAULT_UNLOCKED.includes(id) || saved.includes(id);
+}
 export const ROSTER = [
   ["pantera", "PANTERA", "The Panther Soul", "豹", "King", true],
   ["demonio", "DEMONIO", "The Demon Soul", "鬼", "Jin"],
@@ -25,8 +39,14 @@ export const ROSTER = [
   ["dio", "DIO", "The Demon That Is", "獄", "Akuma"],
   ["cyborg_x", "CYBORG X", "The Trapped Soul", "鋼", "Alisa"],
   ["bruno", "BRUNO", "The Heartbreak Soul", "恋", "Miguel"],
-].map(([id, name, soul, kanji, body, model]) => ({
-  id, name, soul, kanji, body, origin: "parts unknown", model: !!model,
-  bust: model ? `portraits/${id}_bust.png` : "portraits/unknown_bust.png",
-  full: model ? `portraits/${id}_full.png` : "portraits/unknown_full.png",
-}));
+  ["negativo", "N3GΔTIV0", "The Hunter", "負", "Negan"],
+].map(([id, name, soul, kanji, body, model]) => {
+  const art = ART[id];
+  return {
+    id, name, soul, kanji, body, origin: "parts unknown", model: !!(model || art),
+    art: art ? art.label : model ? "ATTIRE 1" : "MODEL PENDING",
+    bust: art ? art.bust : model ? `portraits/${id}_bust.png` : "portraits/unknown_bust.png",
+    full: art ? art.full : model ? `portraits/${id}_full.png` : "portraits/unknown_full.png",
+    unlocked: isUnlocked(id),
+  };
+});
