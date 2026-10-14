@@ -100,6 +100,31 @@ Zero audio files.
 - Fixed 120Hz combat sim decoupled from rendering
 - Audio + loop auto-pause when the tab hides
 
+### Asset pipeline — how the 31MB became 14.7MB (and boots instantly)
+
+**Teardown sources** (the architecture follows the actual games):
+- **Tekken 3** (`teardown/tekken3/docs/TEKKEN3-ARCHITECTURE.md`): "Tekken 3
+  doesn't load everything at once. The BNS table is an index — the game loads
+  specific records on demand (character select → load character models, stage
+  select → load stage). Our games should do the same." We do: menu + select
+  use PNG portraits (zero 3D at boot); the 2 fighters for a fight load when
+  you hit CONFIRM, with background prefetch while you browse the select
+  screen. Texture discipline from T3 too: 8,556 textures, mostly 32×32/64×64
+  — our 256px caps are generous by that standard.
+- **Urban Reign** (`teardown/urban-reign/PPK-FORMAT.md`): Namco PPK archives
+  chunk assets for streaming; our per-fighter on-demand loads follow the
+  same chunk-by-need pattern.
+
+**Compression** (free tools, pulled in per PULL-IN DIRECTIVE):
+- `gltf-pipeline` (npm, Khronos Group) — Draco mesh compression
+- PIL (Python) — PNG→WebP/JPEG texture recompression, 1024px→256px caps
+- demonio.glb: 23.3MB → 11.0MB | pantera.glb: 7.6MB → 3.7MB
+- Originals preserved in git history; working copies in `game/assets/models/`
+
+**Loading flow**: boot (instant, no 3D) → select (PNG portraits, prefetch on
+highlight) → CONFIRM → "Entering the arena…" (loads 2 fighters, 90s timeout
++ 1 retry each, clean error on failure — never hangs) → fight.
+
 ## Debug
 
 Open with `?demo=1` for CPU-vs-CPU (AI plays both fighters) — handy for
