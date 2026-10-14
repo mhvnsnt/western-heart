@@ -121,11 +121,12 @@ function renderTopbar(){
 }
 
 /* ---------------- left rail ---------------- */
-document.querySelectorAll('.rail-btn').forEach(b=>{
-  b.onclick=()=>{ ui.tab=b.dataset.tab; ui.attireCat=null; ui.selPart=null; ui.gridPage=0;
-    document.querySelectorAll('.rail-btn').forEach(x=>x.classList.toggle('active',x===b));
-    renderAll(); };
-});
+function setTab(tab){
+  ui.tab=tab; ui.attireCat=null; ui.selPart=null; ui.gridPage=0;
+  document.querySelectorAll('.rail-btn').forEach(x=>x.classList.toggle('active',x.dataset.tab===tab));
+  renderAll();
+}
+document.querySelectorAll('.rail-btn').forEach(b=>{ b.onclick=()=>setTab(b.dataset.tab); });
 
 /* ---------------- panel framework ---------------- */
 function renderAll(){ renderTopbar(); renderPanel(); syncPreview(); persistQuiet(); }
@@ -183,8 +184,13 @@ function renderBody(el){
     sl.appendChild(d);
   });
   el.querySelector('#headshape').onchange=e=>{ F.body.head_shape=e.target.value; persistQuiet(); };
-  el.querySelector('#btn-bodyparts').onclick=()=>{ ui.tab='attire'; ui.attireCat=CATEGORIES.find(c=>c.key==='bodies');
-    document.querySelector('[data-tab="attire"]').click(); };
+  el.querySelector('#btn-bodyparts').onclick=()=>{
+    ui.tab='attire';
+    document.querySelectorAll('.rail-btn').forEach(x=>x.classList.toggle('active',x.dataset.tab==='attire'));
+    ui.attireCat=CATEGORIES.find(c=>c.key==='bodies');
+    ui.gridPage=0; ui.gridQuery=''; ui.selPart=null;
+    renderAll();
+  };
 }
 
 /* ================= ATTIRE ================= */
@@ -231,7 +237,11 @@ function renderItemGrid(el, cat){
   el.querySelector('#pg-next').onclick=()=>{ ui.gridPage++; renderPanel(); };
   const qi=el.querySelector('#grid-q');
   qi.oninput=()=>{ ui.gridQuery=qi.value; ui.gridPage=0;
-    clearTimeout(qi._t); qi._t=setTimeout(()=>renderPanel(),350); };
+    clearTimeout(qi._t); qi._t=setTimeout(()=>{
+      const val=ui.gridQuery; renderPanel();
+      const nq=document.querySelector('#grid-q');   // keep focus while typing
+      if(nq){ nq.focus(); try{ nq.setSelectionRange(val.length,val.length); }catch(e){} }
+    },350); };
   const grid=el.querySelector('#grid');
   page.forEach(p=>{
     const owned = attire().owned.includes(p.part_id);
@@ -387,11 +397,25 @@ function renderProfile(el){
 /* ================= MOVESET ================= */
 function flatSlots(){
   // walk MOVE-SLOTS.json -> [{group, key, slot}]
+  // handles both forms: {slots:{input:slot}} and direct {input:slot}, plus bare arrays
   const out=[];
   const walk=(o,path)=>{
     if(!o||typeof o!=='object') return;
-    if(o.slots&&typeof o.slots==='object'){ for(const [k,v] of Object.entries(o.slots)) out.push({group:path.join(' › '),key:k,slot:v}); return; }
-    for(const [k,v] of Object.entries(o)){ if(k.startsWith('_')) continue; walk(v,[...path,k]); }
+    if(Array.isArray(o)){
+      if(o.every(v=>typeof v==='string'))
+        o.forEach(v=>out.push({group:path.join(' › '),key:v,slot:v}));
+      return;
+    }
+    if(o.slots&&typeof o.slots==='object'&&!Array.isArray(o.slots)){
+      for(const [k,v] of Object.entries(o.slots)) out.push({group:path.join(' › '),key:k,slot:v});
+      return;
+    }
+    const entries=Object.entries(o).filter(([k])=>!k.startsWith('_'));
+    if(entries.length&&entries.every(([,v])=>typeof v==='string')){
+      for(const [k,v] of entries) out.push({group:path.join(' › '),key:k,slot:v});
+      return;
+    }
+    for(const [k,v] of entries) walk(v,[...path,k]);
   };
   walk(moveSlots,[]);
   return out;
@@ -488,7 +512,7 @@ $('#file-load').onchange=e=>{
   const f=e.target.files[0]; if(!f) return;
   const r=new FileReader();
   r.onload=()=>{ try{ F=Object.assign(blankFighter(), JSON.parse(r.result)); ui.selPart=null; ui.attireCat=null; renderAll(); toast('Fighter loaded ✓'); }
-    catch(err){ modal('LOAD FAILED',['<p>Not a valid fighter JSON.</p>'],[{label:'OK',cls:'btn-gold'}]); } };
+    catch(err){ modal('LOAD FAILED','<p>Not a valid fighter JSON.</p>',[{label:'OK',cls:'btn-gold'}]); } };
   r.readAsText(f); e.target.value='';
 };
 
