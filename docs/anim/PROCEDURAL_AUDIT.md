@@ -121,3 +121,9 @@ Still missing or not decoded:
 - Sidestep and jump evasion are not in hit tests.
 - The touch HUD has no up/down buttons.
 - jump_fwd and jump_back are wired but the CPU did not use them in this match.
+
+## Update 6 (2026-10-14): pantera.glb L/R skin swap fixed as a new file
+Added `game/assets/models/pantera_fixed.glb`; the original is kept. Tool, proof and remaining authored-weight defects are in `tools/rig_repair/README.md` (case 1). The arms no longer tear across the body.
+Remaining defects:
+- The wrist cuffs float because they are weighted to Spine/Spine1.
+- The logo and pants weighting stretches in wide stances.
