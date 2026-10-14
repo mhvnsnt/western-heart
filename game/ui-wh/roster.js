@@ -30,3 +30,12 @@ export const ROSTER = [
   bust: model ? `portraits/${id}_bust.png` : "portraits/unknown_bust.png",
   full: model ? `portraits/${id}_full.png` : "portraits/unknown_full.png",
 }));
+
+// Reusable Pantera poses (assets/poses/pantera/*.json + transparent PNG), for art cards,
+// attire previews and menus. Rendered from pantera_leoman.glb's own clips; nothing hand-posed.
+export const POSES = {
+  pantera: [
+    { id: "folded", clip: "idle", t: 0.0, json: "../../assets/poses/pantera/folded.json", png: "../../assets/poses/pantera/folded.png", default: true },
+    { id: "lunge", clip: "grab", t: 0.35, json: "../../assets/poses/pantera/lunge.json", png: "../../assets/poses/pantera/lunge.png" },
+  ],
+};
