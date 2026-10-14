@@ -93,8 +93,6 @@ class AssetManager {
     }
 
     const bones = {};
-
-    const bones = {};
     model.traverse((o) => {
       if (o.isBone) bones[o.name.replace(/^mixamorig:?/, '')] = o;
     });
