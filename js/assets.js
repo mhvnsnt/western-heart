@@ -25,34 +25,49 @@ class AssetManager {
   load(onProgress) {
     const ids = Object.keys(MODEL_URLS);
     let done = 0;
-    return new Promise((resolve, reject) => {
+    // CLEAN-INIT: a hung download must NEVER brick the game. Each model
+    // gets a timeout + one retry; total failure rejects so the UI can
+    // show a real error instead of spinning forever.
+    const LOAD_TIMEOUT_MS = 90000;
+    const loadOne = (id, attempt) => new Promise((resolve, reject) => {
       const loader = new GLTFLoader();
-      const tick = () => {
+      const timer = setTimeout(() => reject(new Error(`timeout loading ${id} (attempt ${attempt})`)), LOAD_TIMEOUT_MS);
+      loader.load(
+        MODEL_URLS[id],
+        (gltf) => {
+          clearTimeout(timer);
+          this.gltfs[id] = gltf;
+          this.clips[id] = {};
+          for (const clip of gltf.animations) this.clips[id][clip.name] = clip;
+          gltf.scene.traverse((o) => {
+            if (o.isMesh) {
+              o.castShadow = true;
+              o.receiveShadow = true;
+              o.frustumCulled = false;
+            }
+          });
+          resolve();
+        },
+        undefined,
+        (err) => { clearTimeout(timer); reject(err); }
+      );
+    });
+    const loadWithRetry = async (id) => {
+      try { await loadOne(id, 1); }
+      catch (e1) {
+        console.warn(`[WH] ${id} load failed, retrying:`, e1.message || e1);
+        await loadOne(id, 2); // throws to caller on second failure
+      }
+    };
+    return (async () => {
+      for (const id of ids) {
+        await loadWithRetry(id);
         done++;
         if (onProgress) onProgress(done / ids.length);
-        if (done === ids.length) { this.ready = true; resolve(this); }
-      };
-      for (const id of ids) {
-        loader.load(
-          MODEL_URLS[id],
-          (gltf) => {
-            this.gltfs[id] = gltf;
-            this.clips[id] = {};
-            for (const clip of gltf.animations) this.clips[id][clip.name] = clip;
-            gltf.scene.traverse((o) => {
-              if (o.isMesh) {
-                o.castShadow = true;
-                o.receiveShadow = true;
-                o.frustumCulled = false;
-              }
-            });
-            tick();
-          },
-          undefined,
-          (err) => reject(err)
-        );
       }
-    });
+      this.ready = true;
+      return this;
+    })();
   }
 
   /* { model, bones, mixer, actions } for one fighter.
