@@ -127,9 +127,11 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
 #select-hint { font-size: 14px; opacity: 0.75; }
 #confirm-fighter { font-size: 18px; padding: 14px 28px; min-height: 56px; }
 @media (max-width: 480px){
-  .char-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-  .char-card .cname { font-size: 13px; }
-  .char-card .cstyle { font-size: 10px; }
+  /* BIGGER cards on phone (owner: "Digger select screen") — 2 large columns */
+  .char-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .char-card { min-height: 280px; }
+  .char-card .cname { font-size: 17px; letter-spacing: 1px; }
+  .char-card .cstyle { font-size: 13px; }
 }
 @media (max-width: 480px){ .howto-grid{grid-template-columns:1fr;} }
 
