@@ -111,11 +111,11 @@ export class Arena {
   }
 
   _buildLights() {
-    // Cool ambient dusk (#2a2a4a) from above — lifted so fighters read
-    this.scene.add(new THREE.HemisphereLight(0x4a4a7a, 0x1a1426, 1.25));
+    // Cool ambient dusk (#2a2a4a) from above
+    this.scene.add(new THREE.HemisphereLight(0x4a4a7a, 0x1a1426, 0.85));
 
     // Setting sun — warm directional #ff9a5c, the only shadow caster
-    const sun = new THREE.DirectionalLight(0xff9a5c, 1.9);
+    const sun = new THREE.DirectionalLight(0xff9a5c, 1.35);
     sun.position.set(-11, 6.5, 5);
     sun.castShadow = true;
     sun.shadow.mapSize.set(this.isMobile ? 1024 : 2048, this.isMobile ? 1024 : 2048);
@@ -126,13 +126,8 @@ export class Arena {
     this.scene.add(sun);
 
     // Faint cool rim so fighter backs don't go black
-    const rim = new THREE.DirectionalLight(0x5a6ab0, 0.65);
+    const rim = new THREE.DirectionalLight(0x5a6ab0, 0.4);
     rim.position.set(8, 6, -7); this.scene.add(rim);
-
-    // Soft frontal fill from the camera side — fighters must read clearly
-    // at dusk. Warm-neutral, no shadows, cheap.
-    const fill = new THREE.DirectionalLight(0xffe0c0, 0.55);
-    fill.position.set(0, 4, 10); this.scene.add(fill);
   }
 
   _buildArena() {
