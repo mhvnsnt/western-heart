@@ -188,8 +188,6 @@ export class Preview3D {
   setDummyVisible(show){
     if(show && !this.dummy && this.fighter){
       this.dummy = this.fighter.clone(true);
-      this.dummy.position.set(1.5, 0, 0.4);
-      this.dummy.rotation.y = -0.6;
       this.dummy.traverse(o=>{ if(o.isMesh){ o.material = o.material.clone(); o.material.color.multiplyScalar(0.55); o.castShadow=true; } });
       this.scene.add(this.dummy);
     } else if(!show && this.dummy){
@@ -223,6 +221,14 @@ export class Preview3D {
     const fy = this.focus.y + Math.sin(this.el)*this.dist;
     this.camera.position.set(fx, fy, fz);
     this.camera.lookAt(this.focus);
+    // dummy opponent holds a fixed screen offset from the fighter (orbits with the camera)
+    if(this.dummy && this.fighter){
+      const a = this.az - 0.62;
+      this.dummy.position.set(
+        this.fighter.position.x + Math.sin(a)*2.4, 0,
+        this.fighter.position.z + Math.cos(a)*2.4);
+      this.dummy.lookAt(this.fighter.position.x, 1.0, this.fighter.position.z);
+    }
     this.renderer.render(this.scene, this.camera);
   }
 }

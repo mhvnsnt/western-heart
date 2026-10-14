@@ -421,8 +421,8 @@ function flatSlots(){
   return out;
 }
 function renderMoveset(el){
-  $('#panel-sub').textContent='176 slots · WWE layout, Tekken striking depth';
   const slots=flatSlots();
+  $('#panel-sub').textContent=`${slots.length} slots · WWE layout, Tekken striking depth`;
   const groups={};
   slots.forEach(s=>{ (groups[s.group]=groups[s.group]||[]).push(s); });
   el.innerHTML=`
