@@ -43,9 +43,10 @@ All 72 char PPKs parsed: **242,569 verts** into `models/char001/` …
 `models/char072/` (OBJ + manifest each) and `models/ROSTER.json`
 (per-fighter vert counts + rigid/2-bone/3-bone split).
 
-### 4. Bone bind pose
-Repeating record from ~0x660: 7 zero float4s + 4×4 **identity matrix**
-(row-major). (Earlier "identity quats" note corrected — they are matrices.)
+### 4. Bone bind pose — CORRECTED 2026-10-14
+Record at ~0x660: 28 zero floats + 4×4 **identity matrix** (row-major).
+**Correction:** only 3–4 such records exist in the whole file (char001:
+0x670, 0x780, 0x850, 0xbf0) — it is NOT a repeating per-bone table.
 Bone translations not yet located.
 
 ### 5. Normal runs (type 0x0002 chunk)
@@ -53,14 +54,23 @@ float32 xyz runs with EXACT unit length (char001: 68/70/50/70/56 verts).
 0..1 "color"-like runs and unit-cube OTHER runs in the same chunk —
 semantics open (vertex colors? morph data?).
 
-### 6. Bone-name strings
-ASCII strings with `__L_` / `__R_` left/right pairs (863 in char001).
+### 6. Bone-name strings — CORRECTED 2026-10-14: FALSE POSITIVE
+**No `__L_` / `__R_` strings exist in ANY of the 72 char PPKs
+(count = 0 everywhere).** The "863 strings" in earlier notes were float
+bytes misread as ASCII by the old extractor heuristic. Bone names are
+not stored in the char PPKs — the skeleton likely lives in the `.gyu`
+motion files, stage PPKs, or elsewhere on the ISO.
 
 ## NEGATIVE RESULTS (documented so the next pass doesn't redo them)
 
-- "s16 region" @0x2971 (type 0x8001, 16KB) is **integer records**, not s16
-  positions: no stride/field/scale gives spatial coherence; 96-byte records
-  with `0,67` bone-weight-like signatures — semantics open (skin index data?).
+- "s16 region" @0x2971 (type 0x8001, 16KB): no int32 value 67 anywhere in
+  the chunk and no 96-byte record structure reproduces — the earlier
+  "96-byte records with `0,67` signatures" claim does not hold. Chunk is
+  mostly noise at every tested alignment; not a bone table.
+- Chunk 9 (type 0x865 @0x8001, 2935B): denormal/garbage floats, not a
+  bone table (a few skeleton-plausible triples are false positives).
+- Chunk 8 (type 0x8 @0x6880, 6KB): **another vertex blob** in the same
+  128-separator format (70 verts parsed) — not bone data.
 - Non-normal xyz float runs in the 0x0002 chunk are denormal/zero
   misreads — not positions. Positions live in the 0x8001-type float chunks
   (see §2).
@@ -70,10 +80,31 @@ ASCII strings with `__L_` / `__R_` left/right pairs (863 in char001).
   from re-reading normal arrays at wrong strides.
 - No u16 index buffers found near geometry (likely non-indexed / strip order).
 
+## WATCHDOG ATTEMPT 3 (2026-10-14) — bone-translation hunt
+
+Tool: `tools/ur_bone_hunt.py` (committed; reproduces every check below).
+
+- **Two-bone translation-constraint test REFUTES the pure-translation
+  model.** If influence positions were the same rest point in two bone
+  frames, d = pos_a − pos_b would be constant per bone pair (T_b − T_a).
+  Measured on char001: **615 distinct exact d vectors over 1555 two-bone
+  verts** (top cluster only 6 verts). The two positions are NOT related
+  by a per-pair translation — either bind-pose bone rotations are
+  involved, or the record layout needs re-interpretation.
+- **Cross-fighter chunk census (all 72 PPKs): no constant-size
+  shared-skeleton chunk exists**; tag types vary per fighter (e.g. vertex
+  chunks are 0x8001 in char001 but 0x5c00 in char002). Detect chunks by
+  content (128-separator probe), never by type.
+- Point-cloud render of influence-0 positions (char001): amorphous
+  0.5m blob, no human shape — confirms positions are not model-space.
+- Recommended next: parse `.gyu` motion files for skeleton (bone
+  count/names); check stage PPKs/ISO for a shared rig; topology (index
+  order) is needed before per-bone rigid alignment can be attempted.
+
 ## STILL OPEN
 
-1. Bone translations → world-space positions (bind matrices are identity;
-   translations must be in another chunk/record).
+1. Bone translations → world-space positions (no bone table found in char
+   PPKs; pure-translation two-frame model refuted — see attempt 3 above).
 2. 4-bone verts (~20% non-unit normals) + 12/28-float block edge cases.
 3. Index/topology (triangle order) for the extracted verts.
 4. Integer 0x8001 chunk @0x2971 semantics (96-byte records).
