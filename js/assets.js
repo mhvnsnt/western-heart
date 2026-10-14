@@ -64,7 +64,16 @@ class AssetManager {
 
     const suit = new THREE.Color(suitColor);
     const trim = new THREE.Color(trimColor);
+    let skinnedCount = 0;
     model.traverse((o) => {
+      // Bulletproof: never rely on clone preserving render flags.
+      // Skinned meshes MUST NOT be frustum-culled (their bounds are wrong
+      // after skinning) and MUST be visible.
+      if (o.isMesh || o.isSkinnedMesh) {
+        o.frustumCulled = false;
+        o.visible = true;
+      }
+      if (o.isSkinnedMesh) skinnedCount++;
       if (o.isMesh && o.material) {
         o.material = o.material.clone();
         // tint toward the fighter's palette (real textures underneath)
@@ -72,8 +81,18 @@ class AssetManager {
         o.material.emissive = o.material.emissive || new THREE.Color(0x000000);
         o.material.emissive.copy(trim).multiplyScalar(0.08);
         if (o.material.roughness !== undefined) o.material.roughness = 0.7;
+        // Never ship a transparent fighter: a bad alpha kills visibility.
+        if (o.material.transparent && o.material.opacity < 0.05) {
+          o.material.transparent = false;
+          o.material.opacity = 1;
+        }
       }
     });
+    if (skinnedCount === 0) {
+      console.error(`[WH] createInstance(${fighterId}): ZERO skinned meshes — fighter will be invisible!`);
+    }
+
+    const bones = {};
 
     const bones = {};
     model.traverse((o) => {

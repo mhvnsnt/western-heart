@@ -52,6 +52,22 @@ export class Arena {
 
     this.resize();
     window.addEventListener('resize', () => this.resize());
+
+    // WebGL context loss (mobile GPUs kill contexts under memory pressure).
+    // Without this the canvas goes permanently black mid-fight.
+    canvas.addEventListener('webglcontextlost', (e) => {
+      e.preventDefault();
+      console.error('[WH] WebGL context lost — attempting restore');
+      const el = document.getElementById('round-banner');
+      if (el) { el.textContent = 'GRAPHICS PAUSED — RESTORING…'; el.classList.add('show'); }
+    }, false);
+    canvas.addEventListener('webglcontextrestored', () => {
+      console.log('[WH] WebGL context restored');
+      const el = document.getElementById('round-banner');
+      if (el) el.classList.remove('show');
+      // Force three.js to re-upload all GPU state
+      this.renderer.compile(this.scene, this.camera);
+    }, false);
   }
 
   /* ---------- procedural textures ---------- */

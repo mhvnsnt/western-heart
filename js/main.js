@@ -126,7 +126,10 @@ let selectedChar = null;
 let assetsReady = false;
 let gameMode = 'arcade'; // arcade | versus | story — versus: no reincarnation; story: death = reincarnation
 
-/* Preload the rigged 3D fighter model before play is allowed. */
+/* Preload the rigged 3D fighter model before play is allowed.
+   CLEAN-INIT: menu buttons are disabled until assets are ready — never
+   show interactive-looking buttons that do nothing. */
+document.querySelectorAll('[data-action]').forEach(el => { el.disabled = true; });
 (function preload() {
   const fill = document.getElementById('loading-fill');
   const text = document.getElementById('loading-text');
@@ -135,6 +138,8 @@ let gameMode = 'arcade'; // arcade | versus | story — versus: no reincarnation
     .then(() => {
       fill.style.width = '100%';
       assetsReady = true;
+      // Now the UI is actually usable — enable the buttons.
+      document.querySelectorAll('[data-action]').forEach(el => { el.disabled = false; });
       // If the user is already on the select screen, the 99s countdown
       // starts now — it never ticks during the asset load.
       if (screens.select && screens.select.classList.contains('active')) maybeStartSelectTimer();
@@ -310,7 +315,13 @@ document.querySelectorAll('[data-action]').forEach((el) => {
       show('select');
     }
     else if (a === 'howto') { show('howto'); }
-    else if (a === 'back-menu') { show('menu'); audio.stopMusic(); game.running = false; game.paused = true; }
+    else if (a === 'back-menu') {
+      // CLEAN-INIT: leaving fight → full state reset. No leaked fighters,
+      // timers, or listeners carry into the menu.
+      game.leaveFight();
+      show('menu');
+      audio.stopMusic();
+    }
     else if (a === 'rematch') { startFight(); }
   });
 });
@@ -330,7 +341,21 @@ function startFight() {
   game.paused = false;
   audio.startMusic();
   game.startMatch(player, enemy);
+  // Control hints: show for 6s at fight start, H toggles
+  const hints = document.getElementById('control-hints');
+  if (hints) {
+    hints.classList.remove('fade');
+    clearTimeout(hints._t);
+    hints._t = setTimeout(() => hints.classList.add('fade'), 6000);
+  }
 }
+// H toggles control hints
+document.addEventListener('keydown', (e) => {
+  if (e.code === 'KeyH') {
+    const hints = document.getElementById('control-hints');
+    if (hints) hints.classList.toggle('fade');
+  }
+});
 
 document.addEventListener('visibilitychange', () => {
   if (document.hidden) { game.paused = true; }
