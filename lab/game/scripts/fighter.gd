@@ -24,6 +24,8 @@ var ap: AnimationPlayer
 var cur_anim := ""
 var model: Node3D
 var display_name := "KING"
+var char_id := ""
+var height_cm := 0.0
 
 var skeleton: Skeleton3D
 var rig_id := "wh_canonical_t3"
@@ -57,6 +59,11 @@ func setup(model_scene: PackedScene, fighter_id: String, tint: Color, keep_textu
 		mat.roughness = 0.8
 		for s in (mi as MeshInstance3D).mesh.get_surface_count():
 			(mi as MeshInstance3D).set_surface_override_material(s, mat)
+
+## Height hook (owner rule c): scale the model to data/characters/heights.json.
+func apply_height(id: String) -> void:
+	char_id = id
+	height_cm = HeightScale.apply(model, id)
 
 func reset(x: float, face: float) -> void:
 	hp = MAX_HP; state = "idle"; mframe = 0; stun = 0; hitstop = 0; kb_vel = 0.0
