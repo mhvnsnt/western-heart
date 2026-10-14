@@ -5,7 +5,7 @@
    Equip visuals: labeled socket-proxy rings (honest placeholders — real ymg/obj
    meshes are not wired yet). */
 import * as THREE from 'three';
-import { GLTFLoader } from './vendor/addons/loaders/GLTFLoader.js';
+import { GLTFLoader } from '../vendor/addons/loaders/GLTFLoader.js';
 
 const SKIN_TONES = ['#f7c2a1','#e8a87c','#c98d5e','#a06a42','#7c4a2d','#5d3320','#3d2114','#2a150c'];
 
