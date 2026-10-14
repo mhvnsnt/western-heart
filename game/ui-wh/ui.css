@@ -15,9 +15,9 @@ body[data-screen="pause"] .wall, body[data-screen="results"] .wall { filter:blur
 .logo { position:absolute; left:6vw; top:14vh; }
 .logo-en { font-size:9vw; font-weight:700; line-height:.85; text-shadow:0 .4vw 0 var(--blood); }
 .logo-en b { display:block; color:var(--gold); }
-.logo-jp { font-family:var(--jp); font-size:3vw; margin-top:1vw; letter-spacing:.6em; }
+.logo-jp { font-family:var(--jp); font-size:3vw; margin-top:1vw; letter-spacing:.3em; color:#b469ff; text-shadow:0 .2vw 0 #14041f; }
 .press { position:absolute; left:6vw; bottom:18vh; font-size:2.4vw; animation:blink 1.4s infinite; }
-.press span { font-family:var(--jp); color:var(--gold); }
+.press span { font-family:var(--jp); color:#b469ff; }
 .legal { position:absolute; left:6vw; bottom:5vh; font-size:1vw; opacity:.7; }
 @keyframes blink { 50% { opacity:.25; } }
 
