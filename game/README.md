@@ -130,24 +130,32 @@ highlight) → CONFIRM → "Entering the arena…" (loads 2 fighters, 90s timeou
 Open with `?demo=1` for CPU-vs-CPU (AI plays both fighters) — handy for
 unattended round-completion verification.
 
-## Data provenance — 100% from Tekken game files
+## Data provenance — what's real vs what's hand-built
 
-Every piece of data the game shows traces to a real Tekken teardown file.
-Nothing is invented.
+**CHIMERA REBUILD (2026-10-14):** Every system audited. REAL = sourced from
+teardown files. HAND-BUILT = written by hand (marked honestly, not pretending).
 
-| What the game shows | Source file in this repo |
-|---|---|
-| Fighter fighting styles (Mishima Karate, Capoeira, etc.) | `teardown/tekken3/movesets/*.json` — real Tekken 3 moveset data; each WH fighter's `base` field names their Tekken donor |
-| Move names + frame data (King/Jin movesets) | `game/assets/king_moves.json`, `game/assets/jin_moves.json` (wired into combat) |
-| Select screen layout (2:3 portraits, 99s timer, P1 cursor) | `teardown/tekken3/tools/tekken3recompiled/tools/SELECTOR_CAROUSEL.md` — real Tekken 3 selector mechanics |
-| Character select composition reference | `teardown/urban-reign/ui/character-select/` (Namco/Tekken-team layout) |
-| Fighter portraits (all 36) | Rendered from `game/assets/models/pantera.glb` + `demonio.glb` — real 3D model renders, per-fighter tint from `roster-full.js` |
-| Stage name + theme (Shrine of the Blade) | `teardown/` shrine stage data |
+| System | Status | Source |
+|---|---|---|
+| Frame data (startup/active/recovery) | **REAL** | `teardown/tekken3/movesets/moveset_{king,jin,bryan,heihachi,xiaoyu,yoshimitsu,gunjack}.json` → `game/assets/*_moves.json`. 60fps counts → seconds. Damage scaled T3 170HP → WH 100HP. All 36 fighters mapped. |
+| Fighter bases (King, Jin, etc.) | **REAL** | `teardown/tekken3/` — each WH fighter's Tekken donor per owner roster design |
+| Select screen (2:3 portraits, 99s timer, P1 cursor) | **REAL** | `teardown/tekken3/tools/tekken3recompiled/tools/SELECTOR_CAROUSEL.md` |
+| Select layout reference | **REAL** | `teardown/urban-reign/ui/character-select/` |
+| On-demand loading (2 fighters/fight) | **REAL** | `teardown/tekken3/docs/TEKKEN3-ARCHITECTURE.md` (BNS on-demand) + `teardown/urban-reign/PPK-FORMAT.md` (chunk streaming) |
+| Fighter portraits (36) | **REAL** | Rendered from `game/assets/models/*.glb` via Blender |
+| Fighter 3D models | **REAL** | `game/assets/models/pantera.glb` (P1 body), `demonio.glb` (T7 Steve Fox base) |
+| Nine-Soul Meter | **HAND-BUILT** | WH-original design per owner (`prototype/combat/COMBAT-DESIGN.md`). Not from teardowns. |
+| Soul Surge | **HAND-BUILT** | WH-original super move. Not from teardowns. |
+| Command grab system | **HAND-BUILT** | WH-original mechanics (King has real grabs in T3, but our implementation is hand-written). |
+| Stage (Shrine of the Blade) | **HAND-BUILT** | Procedural Three.js from `prototype/stages/shrine.json` design doc. T3 has real stage geometry (`teardown/tekken3/stages/`) — not yet wired. |
+| Audio (SFX + music) | **HAND-BUILT** | Procedural Web Audio. Teardowns have real VGS audio — not yet wired. |
+| AI controller | **HAND-BUILT** | Hand-written utility AI. No T3 AI extracted. |
+| Input manager | **HAND-BUILT** | Follows Tekken/Urban Reign conventions per design, but hand-written. |
+| Match flow (best-of-3, 60s) | **HAND-BUILT** | Standard fighting game structure, hand-written. |
+| Hitbox/hurtbox combat | **HAND-BUILT** | Hand-written collision. Frame DATA is real; the engine is not. |
 
 **WH-original fighters:** Pantera and Demonio are Western Heart characters.
-Their Tekken BASES' data is real (Pantera = King/pro-wrestling base,
-Demonio = Jin Kazama/Mishima base) — the movesets, styles, and frame data
-come from the actual Tekken files above.
+Their Tekken BASES' frame data is real (see above).
 
 ## Known gaps (v1)
 
