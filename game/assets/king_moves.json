@@ -1,24 +1,37 @@
 {
  "light": {
-  "dmg": 12,
+  "dmg": 7,
   "startup": 0.3,
-  "active": 0.05,
-  "recovery": 0.1,
-  "class": 0
+  "active": 0.017,
+  "recovery": 0.55,
+  "t3_dmg": 12,
+  "t3_row": 35
  },
  "medium": {
-  "dmg": 20,
-  "startup": 0.217,
-  "active": 0.05,
-  "recovery": 0.1,
-  "class": 0
+  "dmg": 15,
+  "startup": 0.25,
+  "active": 0.017,
+  "recovery": 0.8,
+  "t3_dmg": 25,
+  "t3_row": 63
  },
  "heavy": {
-  "dmg": 32,
-  "startup": 0.0,
-  "active": 0.05,
-  "recovery": 3.7,
-  "class": 0
+  "dmg": 24,
+  "startup": 0.467,
+  "active": 0.067,
+  "recovery": 0.633,
+  "t3_dmg": 40,
+  "t3_row": 230
  },
- "total_moves": 298
+ "grab": {
+  "dmg": 24,
+  "startup": 0.467,
+  "active": 0.05,
+  "recovery": 0.633,
+  "t3_dmg": 40,
+  "t3_row": 230
+ },
+ "total_moves": 652,
+ "source": "teardown/tekken3/movesets/moveset_king.json",
+ "note": "Real T3 King frame data. Damage scaled T3 170HP -> WH 100HP."
 }
