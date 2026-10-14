@@ -100,32 +100,77 @@ def sample_clip(space, kmd, bank_path, slot, step=2):
         frames.append(space.frame_globals(parse_obj_text(obj)))
     return {"slot": slot, "move_row": int(row), "stream_frames": int(st.frames), "fps": 60 / step, "frames": frames}
 
+def _qm(q):
+    x, y, z, w = q
+    return np.array([[1 - 2*(y*y + z*z), 2*(x*y - z*w), 2*(x*z + y*w)],
+                     [2*(x*y + z*w), 1 - 2*(x*x + z*z), 2*(y*z - x*w)],
+                     [2*(x*z - y*w), 2*(y*z + x*w), 1 - 2*(x*x + y*y)]])
+
 class TargetRig:
+    """Any glTF skin. WH-Canonical-22 (identity rest) or Mixamo-49 (T-pose rest, rotated
+    'Character' parent): rest world transforms are evaluated from the node tree."""
     def __init__(self, glb):
         b = open(glb, "rb").read(); n = struct.unpack("<I", b[12:16])[0]
         self.j = json.loads(b[20:20 + n]); self.bin = bytearray(b[20 + n + 8:])
-        sk = self.j["skins"][0]; self.joints = sk["joints"]
-        self.names = [self.j["nodes"][i]["name"] for i in self.joints]
+        sk = self.j["skins"][0]; self.joints = sk["joints"]; N = self.j["nodes"]
+        self.names = [N[i]["name"].replace("mixamorig:", "") for i in self.joints]
         self.idx = {nm: k for k, nm in enumerate(self.names)}
-        par = {c: i for i in self.joints for c in self.j["nodes"][i].get("children", [])}
+        par = {c: i for i, nd in enumerate(N) for c in nd.get("children", [])}
         self.parent = [self.joints.index(par[i]) if par.get(i) in self.joints else -1 for i in self.joints]
-        self.loc = [np.array(self.j["nodes"][i].get("translation", [0, 0, 0]), float) for i in self.joints]
-        for i in self.joints: assert self.j["nodes"][i].get("rotation") in (None, [0, 0, 0, 1]), "rest must be identity (WH-Canonical-22)"
-        self.wpos = []
-        for k in range(len(self.joints)):
-            self.wpos.append(self.loc[k] + (self.wpos[self.parent[k]] if self.parent[k] >= 0 else 0))
-    def p(self, n): return self.wpos[self.idx[n]]
+        def local(i):
+            nd = N[i]; M = np.eye(4)
+            R = _qm(nd.get("rotation", [0, 0, 0, 1])); S = np.diag(nd.get("scale", [1, 1, 1]))
+            M[:3, :3] = R @ S; M[:3, 3] = nd.get("translation", [0, 0, 0]); return M
+        def world(i):
+            return (world(par[i]) if i in par else np.eye(4)) @ local(i)
+        W = [world(i) for i in self.joints]
+        self.wpos = [w[:3, 3] for w in W]
+        def rot_only(M):
+            u, _, vt = np.linalg.svd(M[:3, :3]); return u @ vt
+        self.wrest = [rot_only(w) for w in W]
+        # Skinning uses the inverse bind matrices; when the node rest differs from the bind pose
+        # (Mixamo exports: rest != T-pose bind), the bind orientation is the true rest for retargeting.
+        if "inverseBindMatrices" in sk:
+            A = self.j["accessors"][sk["inverseBindMatrices"]]; bv = self.j["bufferViews"][A["bufferView"]]
+            o = bv.get("byteOffset", 0) + A.get("byteOffset", 0)
+            ibm = np.frombuffer(bytes(self.bin[o:o + 64 * len(self.joints)]), np.float32).reshape(-1, 4, 4).transpose(0, 2, 1)
+            bind = [np.linalg.inv(m.astype(float)) for m in ibm]
+            if max(np.abs(bind[k][:3, 3] - self.wpos[k]).max() for k in range(len(self.joints))) < 1e-3:
+                self.wrest = [rot_only(m) for m in bind]
+            self.bind_differs = any(np.abs(self.wrest[k] - rot_only(W[k])).max() > 1e-3 for k in range(len(self.joints)))
+        root_par = par.get(self.joints[0]); self.anc = rot_only(world(root_par)) if root_par is not None else np.eye(3)
+        self.anc_full = world(root_par) if root_par is not None else np.eye(4)
+        self.loc = [np.array(N[i].get("translation", [0, 0, 0]), float) for i in self.joints]
+        self.lrest = [N[i].get("rotation", [0, 0, 0, 1]) for i in self.joints]
+        self.identity_rest = all(N[i].get("rotation") in (None, [0, 0, 0, 1]) for i in self.joints)
+        # canonical name -> target name (Mixamo-49 per lab/skeleton/retarget_maps.json)
+        mm = json.load(open(REPO / "lab/skeleton/retarget_maps.json"))["mixamo49"]["map"]
+        self.canon = {}
+        for k, nm in enumerate(self.names):
+            c = mm.get(nm, nm) if not self.identity_rest else nm
+            if nm == "Spine2": c = "Chest"
+            if nm in ("Spine1",): c = "Spine1"   # between Spine and Chest (blended)
+            self.canon[nm] = c
+        self.by_canon = {}
+        for nm, c in self.canon.items(): self.by_canon.setdefault(c, nm)
+        self.root_name = "Root" if "Root" in self.idx else "Hips"
+    def p(self, c):
+        return self.wpos[self.idx[self.by_canon[c]]]
+    def has(self, c): return c in self.by_canon
 
 def swing(rig, sp, bone, child, t3a, t3b):
-    if bone not in rig.idx or child not in rig.idx or t3a not in sp or t3b not in sp: return np.eye(3)
+    if not rig.has(bone) or not rig.has(child) or t3a not in sp or t3b not in sp: return np.eye(3)
     return rot_between(rig.p(child) - rig.p(bone), sp[t3b] - sp[t3a])
 
 def retarget(rig, space, clip):
+    from scipy.spatial.transform import Rotation as Rr, Slerp
     sp = {space.name[p]: v for p, v in space.P.items()}
-    # stance foot dir from foot verts centroid
     for s in ("Left", "Right"):
         fp = [p for p, nm in space.name.items() if nm == s + "Foot"][0]
         sp[s + "Toe*"] = space.Vst[fp].mean(0)
+    # target facing: canonical rigs face +Z (left side at +X); Mixamo exports here face -Z
+    F = np.diag([-1.0, 1.0, -1.0]) if rig.has("LeftArm") and rig.has("RightArm") and rig.p("LeftArm")[0] < rig.p("RightArm")[0] else np.eye(3)
+    sp = {k: F @ v for k, v in sp.items()}
     S = {}
     for s in ("Left", "Right"):
         S[s + "Shoulder"] = swing(rig, sp, s + "Shoulder", s + "Arm", s + "Shoulder", s + "Arm")
@@ -138,30 +183,38 @@ def retarget(rig, space, clip):
     S["Chest"] = swing(rig, sp, "Chest", "Neck", "Chest", "Head")
     hip0 = sp["Hips"]; scale = rig.p("Hips")[1] / max(hip0[1], 1e-6)
     tracks = {n: ([], []) for n in rig.names}; root_t = []
-    # heading normalisation: each clip starts facing +Z (the bind facing); T3 stores the
-    # fighter's world heading in the pose, which differs per move. Pure yaw, no reshaping.
     f0 = clip["frames"][0]
     fw = f0["Hips"][0] @ np.array([0, 0, 1.0]) if "Hips" in f0 else np.array([0, 0, 1.0])
     yaw0 = math.atan2(fw[0], fw[2]); c0, s0 = math.cos(-yaw0), math.sin(-yaw0)
-    Y = np.array([[c0, 0, s0], [0, 1, 0], [-s0, 0, c0]])
+    Y = F @ np.array([[c0, 0, s0], [0, 1, 0], [-s0, 0, c0]])
     hp00 = f0["Hips"][1] if "Hips" in f0 else hip0
     for fr in clip["frames"]:
-        G = {}
-        for n in rig.names:
-            if n in fr and n not in ("Root",): G[n] = Y @ fr[n][0] @ S.get(n, np.eye(3))
-        G["Root"] = np.eye(3)
-        if "Hips" in G and "Chest" in G:
-            from scipy.spatial.transform import Rotation as Rr, Slerp
-            G["Spine"] = Slerp([0, 1], Rr.from_matrix([G["Hips"], G["Chest"]]))(0.5).as_matrix()
-        if "Chest" in G: G["Neck"] = G["Chest"]
+        D = {}   # canonical name -> world-space delta from the target's rest pose
+        for c in ("Hips", "Chest", "Head") + tuple(s + b for s in ("Left", "Right") for b in ("Shoulder", "Arm", "ForeArm", "Hand", "UpLeg", "Leg", "Foot")):
+            if c in fr: D[c] = Y @ fr[c][0] @ F.T @ S.get(c, np.eye(3))
+        if "Hips" in D and "Chest" in D:
+            sl = Slerp([0, 1], Rr.from_matrix([D["Hips"], D["Chest"]]))
+            D["Spine"] = sl(0.5).as_matrix(); D["Spine1"] = sl(0.75).as_matrix()
+        if "Chest" in D: D["Neck"] = D["Chest"]
         for s in ("Left", "Right"):
-            if s + "Foot" in G: G[s + "ToeBase"] = G[s + "Foot"]
+            if s + "Foot" in D: D[s + "ToeBase"] = D[s + "Foot"]
+        D["Root"] = np.eye(3)
+        W = []
         for k, n in enumerate(rig.names):
-            g = G.get(n, np.eye(3)); pg = G.get(rig.names[rig.parent[k]], np.eye(3)) if rig.parent[k] >= 0 else np.eye(3)
-            tracks[n][0].append(quat(pg.T @ g))
+            c = rig.canon[n]; q = k
+            while c not in D and rig.parent[q] >= 0:   # fingers etc. follow the nearest mapped ancestor
+                q = rig.parent[q]; c = rig.canon[rig.names[q]]
+            W.append(D.get(c, np.eye(3)) @ rig.wrest[k])
+        for k, n in enumerate(rig.names):
+            pw = W[rig.parent[k]] if rig.parent[k] >= 0 else rig.anc
+            tracks[n][0].append(quat(pw.T @ W[k]))
         hp = fr["Hips"][1] if "Hips" in fr else hip0
-        d = Y @ (hp - hp00); d[1] = hp[1] - hip0[1]   # travel from the clip start (xz), height vs stance (y)
-        root_t.append((rig.loc[rig.idx["Root"]] + d * scale).tolist())
+        d = Y @ (hp - hp00); d[1] = hp[1] - hip0[1]
+        ri = rig.idx[rig.root_name]
+        if rig.parent[ri] < 0 and not rig.identity_rest:   # world delta -> root's parent space
+            Ainv = np.linalg.inv(rig.anc_full[:3, :3]); root_t.append((rig.loc[ri] + Ainv @ (d * scale)).tolist())
+        else:
+            root_t.append((rig.loc[ri] + d * scale).tolist())
     return tracks, root_t
 
 def append_anim(rig, name, tracks, root_t, fps, extras):
@@ -180,7 +233,7 @@ def append_anim(rig, name, tracks, root_t, fps, extras):
         smp.append({"input": ta, "output": acc(tracks[bn][0], "VEC4"), "interpolation": "LINEAR"})
         ch.append({"sampler": len(smp) - 1, "target": {"node": rig.joints[k], "path": "rotation"}})
     smp.append({"input": ta, "output": acc(root_t, "VEC3"), "interpolation": "LINEAR"})
-    ch.append({"sampler": len(smp) - 1, "target": {"node": rig.joints[rig.idx["Root"]], "path": "translation"}})
+    ch.append({"sampler": len(smp) - 1, "target": {"node": rig.joints[rig.idx[rig.root_name]], "path": "translation"}})
     j["animations"] = [a for a in j.get("animations", []) if a["name"] != name] + [{"name": name, "channels": ch, "samplers": smp, "extras": extras}]
 
 def save(rig, path):
