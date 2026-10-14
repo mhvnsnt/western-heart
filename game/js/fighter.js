@@ -21,10 +21,12 @@ import { assets } from './assets.js';
 // Pantera = King (298 real moves), Demonio = Jin (253 real moves)
 // Converted from T3 60fps frame data. Loaded per-character at init.
 let MOVES = {
-  punch: { startup: 0.30, active: 0.05, recovery: 0.20, damage: 12, knock: 2.2, soulGain: 8, cost: 0, limb: 'armR', heavy: false },
-  kick: { startup: 0.30, active: 0.05, recovery: 0.30, damage: 12, knock: 4.2, soulGain: 11, cost: 0, limb: 'legR', heavy: true },
-  grab: { startup: 0.30, active: 0.05, recovery: 0.40, damage: 14, knock: 8.5, soulGain: 10, cost: 0, limb: 'armR', heavy: true, unblockable: true, isGrab: true },
-  surge: { startup: 0.24, active: 0.20, recovery: 0.42, damage: 24, knock: 7.8, soulGain: 0, cost: 100, limb: 'armR', heavy: true },
+  // Tekken-paced damage: matches should last 30-45s, not 7s.
+  // (Was 12/12/14/24 — overtuned, 7-second kills.)
+  punch: { startup: 0.30, active: 0.05, recovery: 0.20, damage: 7, knock: 2.2, soulGain: 8, cost: 0, limb: 'armR', heavy: false },
+  kick: { startup: 0.30, active: 0.05, recovery: 0.30, damage: 9, knock: 4.2, soulGain: 11, cost: 0, limb: 'legR', heavy: true },
+  grab: { startup: 0.30, active: 0.05, recovery: 0.40, damage: 10, knock: 8.5, soulGain: 10, cost: 0, limb: 'armR', heavy: true, unblockable: true, isGrab: true },
+  surge: { startup: 0.24, active: 0.20, recovery: 0.42, damage: 18, knock: 7.8, soulGain: 0, cost: 100, limb: 'armR', heavy: true },
 };
 
 export async function loadRealMovesets() {
@@ -83,7 +85,10 @@ export class Fighter {
     this.isPlayer = isPlayer;
     this.facing = facing;
     // Default stats for fighters without explicit stats (from ROSTER.md archetypes)
-    this.stats = charData.stats || { speed: 4.4, jump: 7.2, power: 1.1, defense: 1.05 };
+    // Tekken-style walk speed: deliberate, not twitchy. (Was 4.4 — felt like teleporting.)
+    this.stats = charData.stats || { speed: 2.8, jump: 7.2, power: 1.1, defense: 1.05 };
+    // Clamp explicit stats too — no fighter should move at teleport speed
+    if (this.stats.speed > 3.5) this.stats.speed = 3.5;
     this.aiProfile = charData.ai || { aggression: 0.6, grabBias: 0.15, reaction: 0.55 };
 
     // vitals
@@ -399,8 +404,8 @@ export class Fighter {
     switch (this.state) {
       case 'attack': this._animAttack(); break;
       case 'block': this._animBlock(); break;
-      case 'hitstun': this._leanT.x = 0.34; break;
-      case 'knockdown': case 'ko': this._leanT.x = Math.min(1.45, this.stateT * 4.5); break;
+      case 'hitstun': this._leanT.x = 0.28; break;
+      case 'knockdown': case 'ko': this._leanT.x = Math.min(0.9, this.stateT * 3.0); break;
       case 'dodge': this._leanT.z = this.dodgeDir * this.facing * 0.32; break;
       case 'jump': this._animJump(); break;
     }

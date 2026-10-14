@@ -154,6 +154,8 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
   grid-column: 1 / -1; font-weight: 800; font-size: 14px; letter-spacing: 4px;
   color: var(--accent); border-bottom: 2px solid rgba(139,43,216,0.4);
   padding-bottom: 6px; margin-top: 10px; text-align: left;
+  background: transparent; /* never white — explicit */
+  min-height: 24px; /* never collapse into a strip */
 }
 .tier-header:first-child { margin-top: 0; }
 .char-card {
@@ -264,6 +266,21 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
 .combo-pop b { font-size: clamp(34px,10vw,66px); font-weight: 900; display: block; line-height: 0.9; }
 .combo-pop span { font-size: 14px; letter-spacing: 4px; }
 @keyframes comboHit { 0%{opacity:0;transform:scale(0.4) rotate(-8deg);} 40%{opacity:1;transform:scale(1.15) rotate(-4deg);} 100%{opacity:1;transform:scale(1) rotate(-4deg);} }
+
+/* Control hints — fades after 6s, toggle with H */
+.control-hints {
+  position: fixed; bottom: calc(12px + env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%);
+  z-index: 12; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;
+  background: rgba(0,0,0,0.6); border: 1px solid rgba(255,211,77,0.3); border-radius: 8px;
+  padding: 8px 14px; font-size: 11px; color: #ccc; pointer-events: none;
+  transition: opacity 1s; max-width: 92vw;
+}
+.control-hints b { color: var(--gold); font-weight: 800; }
+.control-hints.fade { opacity: 0; }
+/* Hide keyboard hints on touch devices (touch buttons are self-evident) */
+@media (pointer: coarse) {
+  .control-hints { display: none; }
+}
 
 /* ====================== TOUCH CONTROLS ====================== */
 .touch-controls { position: fixed; inset: 0; z-index: 11; pointer-events: none; }

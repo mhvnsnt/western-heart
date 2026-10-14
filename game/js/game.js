@@ -43,10 +43,12 @@ export class Game {
     requestAnimationFrame(this._loop);
   }
 
-  /* ---------------- Match setup ---------------- */
+  /* ---------------- Match setup ----------------
+     CLEAN-INIT: every match starts from a known-clean state. No leftover
+     fighters, no running timers, no half-loaded assets, no leaked state
+     from the previous match. This is the "starts clean" standard. */
   startMatch(playerChar, enemyChar) {
-    if (this.p1) this.arena.scene.remove(this.p1.root);
-    if (this.p2) this.arena.scene.remove(this.p2.root);
+    this.resetFightState();
 
     this.p1 = new Fighter(playerChar, -3.5, 1, true);
     this.p2 = new Fighter(enemyChar, 3.5, -1, false);
@@ -59,7 +61,38 @@ export class Game {
     this.ui.setNames(playerChar.name, enemyChar.name);
     this.ui.setRounds(this.wins);
     this.running = true;
+    this.paused = false;
     this._startRound();
+  }
+
+  /* Fully reset all fight state. Called at the start of every match AND
+     when leaving the fight screen, so no state leaks between screens. */
+  resetFightState() {
+    // Remove old fighters from the scene
+    if (this.p1) { this.arena.scene.remove(this.p1.root); this.p1 = null; }
+    if (this.p2) { this.arena.scene.remove(this.p2.root); this.p2 = null; }
+    this.ai = null;
+    this.ai1 = null;
+    // Reset all match state
+    this.wins = { p1: 0, p2: 0 };
+    this.round = 1;
+    this.timer = ROUND_TIME;
+    this.roundState = 'idle';
+    this._roundLockT = 0;
+    this._hitStop = 0;
+    this._acc = 0;
+    this.running = false;
+    this.paused = true;
+    // Reset input (no stuck keys/buttons from previous match)
+    if (this.input) this.input.reset();
+    // Reset HUD
+    this.ui.setRounds(this.wins);
+    this.ui.setTimer(ROUND_TIME);
+  }
+
+  /* Called when leaving the fight screen (BACK to menu, etc.) */
+  leaveFight() {
+    this.resetFightState();
   }
 
   _startRound() {
@@ -222,7 +255,9 @@ export class Game {
           this._spawnImpact(hb.x, hb.y, hb.z, col, isGrab ? 1.3 : isHeavy ? 1 : 0.6);
 
           const combo = attacker.registerCombo();
-          if (combo >= 2) this.ui.combo(combo);
+          // HITS counter: show on EVERY landed hit, not just 2+ combos.
+          // Single hits show "1 HITS" briefly; combos accumulate.
+          this.ui.combo(Math.max(1, combo));
         }
         return; // one hit per swing
       }
