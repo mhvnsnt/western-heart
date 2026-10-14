@@ -17,3 +17,14 @@ The Lab track turns the owner's own Tekken 3 teardown into playable Godot 4 cont
 - Only King has a decoded stance pose. The others need `pose_assemble.py`, whose `kmd`/`motion` modules lived at `/home/hatch/...` and are not in the repo.
 - About 43% of KMD faces reference "imported" seam vertices (two import lists per row) that `kmd_parse.py` doesn't decode yet, so parts render with joint gaps and holes.
 - The clips are authored on the canonical rig, not decoded T3 motion banks (same missing decoder). Textures (TIM atlas) aren't applied; the meshes use vertex colours.
+
+## Milestone 2: data-driven move-table interpreter
+- `tools/export_moves.py` copies the 7 existing T3 move files (`game/assets/<name>_moves.json`) into `game/data/moves/`. It attaches the full extracted T3 rows they reference and every attack row (195–298 per fighter).
+- `game/scripts/move_table.gd` (`MoveTable`) computes the frame data at 60 fps:
+  - startup = `active_first`, active = `active_last − active_first + 1`, recovery = `stream_frames − active_last`;
+  - damage is T3 damage on the T3 170 life bar;
+  - hit freeze comes from the row, falling back to the Urban Reign 6/9/12;
+  - hit and block stun follow the Lab advantage rule (light +8 on hit / +1 on block, heavy −8 on block).
+  - It also provides the phase and normalized animation seek used by the fighters.
+- Test: `godot --headless --path lab/game -s res://tests/test_move_table.gd` passes for all 7 fighters × 4 slots.
+- Gap: input → T3 command-branch mapping (the `branches` field) isn't interpreted yet. Slots are light/medium/heavy/grab per the existing move files.
