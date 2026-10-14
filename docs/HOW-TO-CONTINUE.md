@@ -14,3 +14,6 @@ Read first: `lab/README.md` (milestones), `docs/PLAYTEST-METHOD.md` (how to play
 4. Visual: King KMD seams/head (Bug 6), stage pano (Bug 8), separation (Bug 7).
 5. Add harness scenarios for crouch/sidestep when implemented; extend comparison table.
 6. Teardown inspirations: browser builds / chimera emulator hub are a separate track (PS2 titles barely run in browser); use reference footage + wiki frame data until then.
+
+## No-data-loss rules (MANDATORY)
+Read and follow [`docs/NO-DATA-LOSS-RULES.md`](NO-DATA-LOSS-RULES.md) (canonical: mhvnsnt/agent-ops). No force-push, no rebase/amend of pushed work, no history rewrite, no branch/asset deletion without backup + owner approval, PRs only, empty D-filter + gitleaks + green CI before merge, push incrementally, keep WORKLOG, back up and sha256-verify before disk cleanup, never touch other agents' or Muse's work.
