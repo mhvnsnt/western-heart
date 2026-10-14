@@ -17,7 +17,8 @@ export function mountWhUi(api) {
   const { game, ui, show, startFight, ROSTER } = api;
   const f = document.createElement('iframe');
   f.id = 'wh-ui';
-  f.src = 'ui-wh/index.html?embed=1#title';
+  const tq = new URLSearchParams(location.search).get('title');  // title variant pass-through (v1|v2|v3)
+  f.src = 'ui-wh/index.html?embed=1' + (tq ? '&title=' + encodeURIComponent(tq) : '') + '#title';
   f.setAttribute('allowtransparency', 'true');
   Object.assign(f.style, { position: 'fixed', inset: '0', width: '100%', height: '100%', border: '0', zIndex: '50', background: 'transparent' });
   document.body.appendChild(f);
