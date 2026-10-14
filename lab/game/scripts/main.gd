@@ -25,6 +25,7 @@ var phase := "intro"
 var phase_t := 0
 var prev := {}
 var hud: Hud
+const PUSHBOX := 0.85
 var cam: Camera3D
 var shake := 0.0
 var spark: MeshInstance3D
@@ -169,9 +170,10 @@ func _resolve(a: Fighter, d: Fighter) -> void:
 	hud.last_move("%s %s  T3 row %d  s%d a%d r%d  dmg %d  freeze %d" % [a.display_name, m["slot"], m["t3_row"], m["startup"], m["active"], m["recovery"], m["damage"], m["hit_freeze"]])
 
 func _separate() -> void:
+	# Pushbox: T3 bodies never interpenetrate; ~0.85 m keeps chests apart (was 0.6, models overlapped).
 	var dx := p2.position.x - p1.position.x
-	if absf(dx) < 0.6:
-		var push := (0.6 - absf(dx)) * 0.5 * signf(dx if dx != 0 else 1.0)
+	if absf(dx) < PUSHBOX:
+		var push := (PUSHBOX - absf(dx)) * 0.5 * signf(dx if dx != 0 else 1.0)
 		p1.position.x -= push; p2.position.x += push
 	for f in [p1, p2]: f.position.x = clampf(f.position.x, -5.0, 5.0)
 	var face := 1.0 if p2.position.x > p1.position.x else -1.0
@@ -195,8 +197,9 @@ func _camera() -> void:
 		cam.look_at(head); return
 	var mid := (p1.position.x + p2.position.x) * 0.5
 	var sep := absf(p1.position.x - p2.position.x)
-	var target := Vector3(mid, 1.35, 4.4 + sep * 0.55)
+	# Tekken-3-style framing: side-on, chest height, fighters fill ~55-60% of screen height (was far/high, ~35%).
+	var target := Vector3(mid, 1.15, clampf(3.0 + sep * 0.6, 3.4, 6.5))
 	cam.position = cam.position.lerp(target, 0.12) if (frame > 1 and not (phase == "intro" and phase_t < 72)) else target
 	var off := Vector3(randf_range(-shake, shake), randf_range(-shake, shake), 0)
 	shake *= 0.85
-	cam.look_at(Vector3(mid, 1.0, 0) + off)
+	cam.look_at(Vector3(mid, 0.95, 0) + off)
