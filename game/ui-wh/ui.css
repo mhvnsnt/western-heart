@@ -119,5 +119,6 @@ body.embed .hud-fx.idle { opacity:0; } body.embed .hud-fx.pop { animation:pop .9
 /* TITLE VARIANTS (title-config.js; ?title=v1|v2|v3; default v3). v2 keeps the base rules above. */
 html[data-title="v1"] .wall { background-image:url("art/wallpaper_wh_v1.png"); }
 html[data-title="v3"] .wall { background-image:url("art/wallpaper_wh_v3.png"); }
+html[data-title="v4"] .wall { background-image:url("art/wallpaper_wh_v4.png"); }
 html[data-title="v1"] .logo-jp { letter-spacing:.6em; color:inherit; text-shadow:none; }
 html[data-title="v1"] .press span { color:var(--gold); }

@@ -40,14 +40,14 @@ func _ready() -> void:
 	quit_after_match = "--quit-after-match" in args
 	_setup_input()
 	_build_stage()
-	var king: PackedScene = load("res://assets/t3_king.glb")
+	var king: PackedScene = _real_glb("res://assets/t3_king")
 	# P1 = PANTERA (owner's first original fighter; CANON: King's wrestler frame -> King T3 move table)
 	var attire := "leoman"
 	for a in args:
 		if a.begins_with("--p1-attire="): attire = a.split("=")[1]
 	p1 = Fighter.new(); add_child(p1)
 	if attire == "leoman":
-		p1.setup(load("res://assets/pantera_leoman.glb"), "king", Color(1, 1, 1), true); p1.rig_id = "wh_canonical_autorig"
+		p1.setup(_real_glb("res://assets/pantera_leoman"), "king", Color(1, 1, 1), true); p1.rig_id = "wh_canonical_autorig"
 		p1.display_name = "PANTERA (Leo-Man)"
 	else:
 		p1.setup(king, "king", Color(0.7, 0.45, 1.0)); p1.display_name = "PANTERA (T3 body)"
@@ -213,3 +213,9 @@ func _camera() -> void:
 	var off := Vector3(randf_range(-shake, shake), randf_range(-shake, shake), 0)
 	shake *= 0.85
 	cam.look_at(Vector3(mid, 0.95, 0) + off)
+
+## Prefer the *_t3real.glb (same model + REAL decoded T3 clips). --anim=authored forces the old file.
+func _real_glb(base: String) -> PackedScene:
+	if not ("--anim=authored" in OS.get_cmdline_user_args()) and ResourceLoader.exists(base + "_t3real.glb"):
+		return load(base + "_t3real.glb")
+	return load(base + ".glb")

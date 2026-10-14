@@ -129,7 +129,23 @@ func take_block(m: Dictionary, attacker_facing: float) -> void:
 	kb_vel = m["knockback"] / 20.0 * attacker_facing
 	_set_state("blockstun"); stun = m["blockstun"]; stun_total = stun
 
+## REAL teardown clips (lab/tools/t3_motion_bake.py, decoded T3 motion banks) win over the
+## authored clips.py ones whenever the model carries them. See docs/anim/PROCEDURAL_AUDIT.md.
+const REAL := {"idle": "t3_stance_b", "win": "t3_win_lp", "heavy": "t3_heavy", "grab": "t3_grab", "light": "t3_light", "medium": "t3_medium"}
+var use_real := true
+
+func _real(name: String) -> String:
+	if use_real and REAL.has(name) and ap.has_animation(REAL[name]): return REAL[name]
+	return ""
+
 func _play(name: String, t: float) -> void:
+	var r := _real(name)
+	if r != "":
+		var L := ap.get_animation(r).length
+		if name == "idle": t = fmod(float(t_state) / 60.0, L)
+		elif name == "win": t = minf(float(t_state) / 60.0, L)
+		else: t = minf(float(mframe) / 60.0, L)  # attacks: real T3 frames, 60 fps
+		name = r
 	if name != cur_anim:
 		ap.play(name); cur_anim = name
 	ap.seek(t, true)
