@@ -204,7 +204,9 @@ document.addEventListener('keydown', (e) => {
   if (!sel || !sel.classList.contains('active')) return;
   const cards = allCards();
   if (!cards.length) return;
-  const cols = 3; // card grid columns (matches CSS)
+  // match the responsive CSS grid columns (2 phone portrait, 3 tablet, 4 desktop/landscape)
+  const grid = document.getElementById('char-grid');
+  const cols = grid ? getComputedStyle(grid).gridTemplateColumns.split(' ').length : 2;
   if (e.key === 'ArrowRight') { focusCard(focusedCardIdx + 1); e.preventDefault(); }
   else if (e.key === 'ArrowLeft') { focusCard(focusedCardIdx - 1); e.preventDefault(); }
   else if (e.key === 'ArrowDown') { focusCard(focusedCardIdx + cols); e.preventDefault(); }
