@@ -3,42 +3,68 @@
    Rigged 3D human (Mixamo skeleton). Mocap base layer (Idle /
    Walk / Run) + procedural CCD-IK combat layer on the real bones.
 
-   WESTERN HEART systems:
+   WESTERN HEART systems (WH-original, per owner design):
      • NINE-SOUL METER — 0..100. Light hit +8, heavy +11, taking
        damage +6, blocking +4. All 9 souls lit = Soul Surge ready.
      • SOUL SURGE — costs 100. 0.24s startup / 0.20s active /
-       24 damage (before defense scaling), per-character aura.
+       18 damage (before defense scaling), per-character aura.
      • COMMAND GRAB — unblockable at close range (P+K / J+K / U).
        Pantera is built around it (grappler).
-   Combat: frame data (startup/active/recovery), hitboxes vs
-   hurtboxes, blocking w/ 12% chip + blockstun, hitstop, knockback,
-   launchers, camera shake.
+   Combat frame data: REAL Tekken 3 (teardown/tekken3/movesets/).
+     • Pantera = King (652 T3 moves), Demonio = Jin (413 T3 moves).
+     • Startup/active/recovery from 60fps frame counts; damage
+       scaled T3 170HP -> WH 100HP. See game/assets/*_moves.json.
+   Hitboxes vs hurtboxes, blocking w/ 12% chip + blockstun,
+   hitstop, knockback, launchers, camera shake.
    ============================================================ */
 import * as THREE from 'three';
 import { assets } from './assets.js';
 
-// ---- Frame data: REAL Tekken 3 data (teardown/tekken3/movesets/)
-// Pantera = King (298 real moves), Demonio = Jin (253 real moves)
-// Converted from T3 60fps frame data. Loaded per-character at init.
+// ---- Frame data: REAL Tekken 3 data (teardown/tekken3/movesets/moveset_king.json, moveset_jin.json)
+// Extracted 2026-10-14: representative light/medium/heavy from 652 King / 413 Jin moves.
+// 60fps frame counts -> seconds. Damage scaled T3 170HP -> WH 100HP.
+// game/assets/king_moves.json + jin_moves.json hold the full extraction.
+// This fallback uses King averages; the JSONs load per-character at boot.
 let MOVES = {
-  // Tekken-paced damage: matches should last 30-45s, not 7s.
-  // (Was 12/12/14/24 — overtuned, 7-second kills.)
-  punch: { startup: 0.30, active: 0.05, recovery: 0.20, damage: 7, knock: 2.2, soulGain: 8, cost: 0, limb: 'armR', heavy: false },
-  kick: { startup: 0.30, active: 0.05, recovery: 0.30, damage: 9, knock: 4.2, soulGain: 11, cost: 0, limb: 'legR', heavy: true },
-  grab: { startup: 0.30, active: 0.05, recovery: 0.40, damage: 10, knock: 8.5, soulGain: 10, cost: 0, limb: 'armR', heavy: true, unblockable: true, isGrab: true },
+  punch: { startup: 0.30, active: 0.017, recovery: 0.55, damage: 7, knock: 2.2, soulGain: 8, cost: 0, limb: 'armR', heavy: false },
+  kick: { startup: 0.25, active: 0.017, recovery: 0.80, damage: 15, knock: 4.2, soulGain: 11, cost: 0, limb: 'legR', heavy: true },
+  grab: { startup: 0.467, active: 0.05, recovery: 0.633, damage: 24, knock: 6.5, soulGain: 10, cost: 0, limb: 'armR', heavy: true, unblockable: true, isGrab: true },
   surge: { startup: 0.24, active: 0.20, recovery: 0.42, damage: 18, knock: 7.8, soulGain: 0, cost: 100, limb: 'armR', heavy: true },
+};
+
+/* Fighter ID -> real T3 moveset. Every fighter uses frame data from the
+   closest available Tekken 3 teardown moveset (teardown/tekken3/movesets/).
+   T3 only shipped 7 extracted movesets; fighters whose Tekken base wasn't
+   extracted map to the closest archetype. */
+const MOVESET_MAP = {
+  // THE NINE SOULS
+  rin: 'jin', byou: 'jin', tou: 'heihachi', sha: 'xiaoyu', kai: 'jin',
+  jin_soul: 'yoshimitsu', retsu: 'bryan', zen: 'heihachi', gyou: 'jin',
+  // MAIN ROSTER
+  pantera: 'king', demonio: 'jin', phantom: 'yoshimitsu', diablo: 'heihachi',
+  skull: 'bryan', samura1: 'gunjack', sakura: 'xiaoyu',
+  // BONUS ROSTER
+  zui: 'jin', kinpo: 'jin', waterfall: 'jin', kingtyrant: 'jin', burger: 'bryan',
+  awapop: 'jin', scimitar: 'jin', purplerain: 'jin', nightwolf: 'xiaoyu',
+  dio: 'heihachi', cyborgx: 'gunjack', michiko: 'jin', star: 'jin',
+  torch: 'jin', bruno: 'bryan', negativo: 'bryan', thor: 'bryan',
+  yukihyo: 'king', slice: 'bryan', docfrank: 'gunjack',
 };
 
 export async function loadRealMovesets() {
   try {
-    const [king, jin] = await Promise.all([
-      fetch('assets/king_moves.json').then(r => r.json()),
-      fetch('assets/jin_moves.json').then(r => r.json()),
-    ]);
-    // Pantera (King): use real T3 King frame data
-    // Demonio (Jin): use real T3 Jin frame data
-    window.WH_MOVESETS = { pantera: king, demonio: jin };
-    console.log('[WH] Real T3 movesets loaded:', king.total_moves, 'King /', jin.total_moves, 'Jin');
+    const names = ['king', 'jin', 'bryan', 'heihachi', 'xiaoyu', 'yoshimitsu', 'gunjack'];
+    const data = await Promise.all(
+      names.map(n => fetch(`assets/${n}_moves.json`).then(r => r.json()))
+    );
+    const byName = {};
+    names.forEach((n, i) => byName[n] = data[i]);
+    // Map every fighter ID to its T3 moveset
+    window.WH_MOVESETS = {};
+    for (const [fid, msName] of Object.entries(MOVESET_MAP)) {
+      window.WH_MOVESETS[fid] = byName[msName];
+    }
+    console.log('[WH] Real T3 movesets loaded for 36 fighters (7 T3 sources)');
   } catch (e) {
     console.warn('[WH] Could not load real movesets, using fallback:', e);
   }
@@ -47,11 +73,15 @@ export async function loadRealMovesets() {
 export function getRealMove(charId, moveType) {
   const ms = window.WH_MOVESETS?.[charId];
   if (!ms) return null;
-  const data = ms[moveType === 'punch' ? 'light' : moveType === 'kick' ? 'medium' : 'heavy'];
+  // Map game moves to T3 data: punch=light, kick=medium, grab=grab timing
+  // Surge is WH-original (Soul Surge), not from T3 — uses fallback MOVES.
+  const key = moveType === 'punch' ? 'light' : moveType === 'kick' ? 'medium' : moveType === 'grab' ? 'grab' : null;
+  if (!key) return null;
+  const data = ms[key];
   if (!data) return null;
   return {
     startup: data.startup, active: data.active, recovery: data.recovery,
-    damage: data.dmg, knock: moveType === 'punch' ? 2.2 : 4.2,
+    damage: data.dmg, knock: moveType === 'punch' ? 2.2 : moveType === 'kick' ? 4.2 : 6.5,
     soulGain: moveType === 'punch' ? 8 : 11, cost: 0,
     limb: moveType === 'punch' ? 'armR' : 'legR',
     heavy: moveType !== 'punch',
