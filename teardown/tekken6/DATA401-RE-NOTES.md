@@ -111,7 +111,62 @@ keyed stream). Next static target: the functions at 0x8AA1A70 / 0x8AA2098
 (ktRead wrappers) — look for the post-read decrypt call. Live route unchanged:
 PPSSPP memdump per PPSSPP-LIVE-RUN-GUIDE.md (needs a display session).
 
+## 2026-10-14 ~11:00 EDT cipher hunt (subagent) — SECTOR CRYPTO STACK MAPPED
+
+### 11. Raw-sector read path: 0x8AA2100 → 0x8AA1204
+- `0x8AA2100`: formats `disc0:/sce_lbn0x%x_size0x%llx` (fmt string at
+  **0x8BCE744** — note: prior notes said 0x8BCE740, actual is +4) via internal
+  snprintf `0x8B7C444`, opens via stub, calls `0x8AA1204`.
+- `0x8AA1204`: reads 0x800-byte sectors in a loop, calls `0x8AA2E88`
+  (CRC verify + key extract), then `0x8AA3298` (crypto header setup) with
+  constants **0xBCBD1C51** ($a3) and **0xE8BDE039** ($t0).
+
+### 12. Sector integrity: CRC32 in last 4 bytes (0x8AA2E88)
+- Each 0x800-byte sector: first 0x7FC bytes + CRC32 (standard poly
+  0xEDB88320, table built at runtime at **0x8CBBA00** by `0x8AA2F54`).
+- If CRC matches: extracts **2 key words** per sector via offset table at
+  **0x8BCE788** (offsets 0xF1, 0x1AB words) XORed with masks at
+  **0x8BCE780** (`38bfe591`, `d3610818`), sanity-checked `< 0x800`,
+  double-dereferenced from the sector.
+- Returns 1 on success, 0 on CRC failure. Verified via unicorn emulation:
+  returns 0 on encrypted IDX chunks (CRC mismatch, as expected).
+
+### 13. Crypto header setup: 0x8AA3298 (NOT the bulk decrypt)
+- Writes 16-byte header: `C1=0xBCBD1C51` @+0, `C2=0xE8BDE039` @+4,
+  `K1` @+8, `K2` @+12 (keys from sector or generated via PRNG `0x8B7B600`
+  with nonzero-mixing if keys are zero).
+- Contains an 8-byte decrypt loop (0x8AA34AC) for a fixed blob at
+  **0x8CB9F8** using stack key material + permutation table at
+  **0x8BCE790** (20-byte permutation of 0x00–0x13). This decrypts the
+  in-memory key blob, not file data.
+
+### 14. Block cipher: 0x8AA2CA8 (partially reversed)
+- Called twice per sector by `0x8AA305C`. Uses PSP DSP ASE instructions
+  (e.g. `0x7C041D20` at 0x8AA2D64 — SPECIAL3, capstone can't decode).
+- Full reversal blocked on DSP ASE. Emulation via unicorn is possible
+  (shadow-mapping workaround for kseg0: map at 0x1000000, patch
+  `lui 0x8xx` → shadow high bits; see `/tmp/t6_emu2.py`).
+
+### 15. IDX does NOT use the sector scheme
+- DATA401.IDX (26,028 bytes) fails CRC check on all 12 full 0x800 chunks
+  (expected — it's encrypted, CRC is over ciphertext or IDX uses different
+  scheme). 26,028 is not a multiple of 0x800.
+- IDX goes through imported `openPac` (0x8B88EE0, unresolvable statically).
+  The IDX decrypt is inside the imported PRX, not in the EBOOT.
+
+### 16. DINF_400.BIN: 120 bytes, high entropy (93 unique bytes)
+Not plaintext; may be key material or encrypted header. Role unknown.
+
+## What's still blocked (updated)
+1. **Bulk sector decrypt** (0x8AA2CA8): DSP ASE instructions need manual
+   decode or full unicorn emulation with key material from a valid sector.
+2. **IDX decrypt**: inside imported `openPac` — invisible statically.
+3. **Practical path**: PPSSPP live memory dump (see PPSSPP-LIVE-RUN-GUIDE.md).
+   Needs a display/browser session. Dump the IDX buffer (0x8AA2A34) after
+   `openPac` returns, and sector buffers after `0x8AA1204`.
+
 ## Tooling built this run
-`/tmp/mips.py` — minimal MIPS disassembler (SPECIAL/SPECIAL3 incl. seb/seh/wsbh,
-branches, loads/stores); used to decode the 0xA5 loops. Candidate for
-`~/workspace/tools/tekken-decrypt/psp_dis.py` on a later pass.
+- `/tmp/mips_re.py`: capstone MIPS64-LE disassembler (handles `daddu`),
+  `lui`+`addiu` xref scanner, ELF vaddr→file offset.
+- `/tmp/t6_emu2.py`: unicorn MIPS emulator with kseg0 shadow-mapping
+  workaround + CRC32 table builder. Successfully emulates 0x8AA2E88.
