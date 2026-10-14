@@ -61,3 +61,57 @@ MIPS static helpers used ad-hoc (capstone-based): ELF program-header parse,
 `lui`+`ori`/`addiu` xref scanner (raw word-level — capstone operand parsing was
 unreliable), PSP import-directory decoder. Worth promoting to
 `~/workspace/tools/tekken-decrypt/` as `psp_elf_xref.py` on a later pass.
+
+## 2026-10-14 ~10:30 EDT watchdog attempt 2 — NEW findings
+
+### 6. openPac call site CONFIRMED at 0x8AA1090 (exact args)
+`lui $a0,0x8BD; addiu $a0,$a0,-6396` loads `"openPac"` (vaddr 0x8BCE704)
+into $a0; `lui $a1,0x8AA; addiu $a1,$a1,10804` loads 0x8AA2A34 (the IDX
+buffer) into $a1; $a2=0x20, $a3=0x1000, $t0=0x4000, $t1=0; `jal 0x8B88EE0`.
+Followed by a 4-byte read (`jal 0x8B88E70`, $a1=4, $a2=$sp) of the returned
+handle — likely reading the entry count / header.
+
+### 7. Import stubs are `jr $ra` placeholders at load
+All of 0x8B88EA0–0x8B88F3C disassembles as `jr $ra; nop` pairs — the import
+stubs are patched by the PSP loader at runtime, so the true targets of
+`openPac`/`ktRead` call sites (0x8B88EE0, 0x8B88E70, 0x8B88DA0…) cannot be
+resolved statically. The decrypt routine therefore cannot be reached by
+static xref from here — it lives inside the imported function or behind the
+loader-resolved stubs.
+
+### 8. ktRead string consumers: two call sites
+`"ktRead"` (vaddr 0x8BCE73C) is loaded at exactly two sites: 0x8AA1A70 and
+0x8AA2098 — both in the pack-read path near the sce_lbn format string.
+These are the raw-sector read wrappers; the per-read decrypt (if any) is
+called from these functions.
+
+### 9. XOR-0xA5 string-decrypt helpers at 0x8AA1940–0x8AA1A2C (BREAKTHROUGH)
+Three tiny loops in the pack code each XOR bytes with **0xA5** (`addiu $x,$0,-91`)
+and normalize with `seb` (SPECIAL3, opcode 0x1F — decoded properly now):
+- 0x8AA1954 loop: `v0=byte[a0++]; v0^=0xA5; v1=seb(v0); sb v1,(a2++)` until NUL
+- 0x8AA1988 loop: same shape, src = `a0 + a3 - 3752`
+- 0x8AA1A08 loop: pipelined variant (`sb a1,(a2)` stores the PREVIOUS
+  iteration's decrypted byte), `dst[i] = src[i] ^ 0xA5` until decrypted byte is NUL
+These are **NUL-terminated string decryptors** — the pack encrypts its
+filenames/paths with XOR 0xA5. This is the first recovered piece of the cipher.
+
+### 10. XOR-0xA5 does NOT decode the IDX as (lba,size,flags) entries
+Tried: 4-byte repeating XOR keyed on entry0=LBA 230253 (both endians) →
+entry1 LBAs garbage (~3.1e9 / 9.3e8). Tried full-buffer XOR 0xA5 → 12-byte
+LE words still out of range (min LBA 1,029,069; only 9 coincidental ASCII
+runs ≥8 chars). Autocorrelation over key lengths 1–64 ≈ baseline (no
+repeating key). Conclusion: the IDX body uses a different cipher (likely a
+stream cipher with per-buffer key, decrypted inside `openPac` at runtime);
+the 0xA5 helpers cover strings only.
+
+## What's still blocked (updated)
+The IDX body cipher. New lead: since short strings use XOR 0xA5, the IDX
+buffer decrypt may be a slightly stronger variant (XOR 0xA5 + rotation, or
+keyed stream). Next static target: the functions at 0x8AA1A70 / 0x8AA2098
+(ktRead wrappers) — look for the post-read decrypt call. Live route unchanged:
+PPSSPP memdump per PPSSPP-LIVE-RUN-GUIDE.md (needs a display session).
+
+## Tooling built this run
+`/tmp/mips.py` — minimal MIPS disassembler (SPECIAL/SPECIAL3 incl. seb/seh/wsbh,
+branches, loads/stores); used to decode the 0xA5 loops. Candidate for
+`~/workspace/tools/tekken-decrypt/psp_dis.py` on a later pass.
