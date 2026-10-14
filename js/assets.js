@@ -43,7 +43,28 @@ class AssetManager {
           clearTimeout(timer);
           this.gltfs[id] = gltf;
           this.clips[id] = {};
-          for (const clip of gltf.animations) this.clips[id][clip.name] = clip;
+          // Bind-pose Hips position (Z-up skeleton): animations must return
+          // here, not to origin and not to the mis-retargeted offset.
+          let hipsBind = null;
+          gltf.scene.traverse((o) => {
+            if (o.isBone && o.name === 'Hips' && !hipsBind) hipsBind = o.position.clone();
+          });
+          for (const clip of gltf.animations) {
+            // FIX: Mis-retargeted Mixamo clips have a huge absolute root
+            // offset in Hips.position (e.g. Z=-7.13) that buries the fighter
+            // underground. The game drives root.position for locomotion, so
+            // animations must be in-place: pin Hips.position to bind pose.
+            for (const track of clip.tracks) {
+              if (track.name === 'Hips.position' && hipsBind) {
+                for (let i = 0; i < track.values.length; i += 3) {
+                  track.values[i] = hipsBind.x;
+                  track.values[i + 1] = hipsBind.y;
+                  track.values[i + 2] = hipsBind.z;
+                }
+              }
+            }
+            this.clips[id][clip.name] = clip;
+          }
           gltf.scene.traverse((o) => {
             if (o.isMesh) {
               o.castShadow = true;
