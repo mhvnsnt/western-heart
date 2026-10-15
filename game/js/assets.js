@@ -13,6 +13,7 @@ import { clone as skeletonClone } from 'three/addons/utils/SkeletonUtils.js';
 const MODEL_URLS = {
   pantera: 'assets/models/pantera.glb',
   'steve-fox': 'assets/models/steve-fox.glb',
+  jin: 'assets/models/jin.glb',
   // Created fighters use the Soldier.glb base from the CAW suite.
   // Relative path works on GitHub Pages (game/ -> customization/).
   custom: '../customization/create-fighter/assets/Soldier.glb',
