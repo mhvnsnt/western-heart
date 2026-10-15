@@ -6,7 +6,9 @@ Machine-readable: [`catalog.json`](catalog.json).
 
 | Name | Category | Author | License | Poly count | Format | URL | SHA-256 | box-storage release | WH move slots |
 |---|---|---|---|---|---|---|---|---|---|
-| _batch 1 in progress_ | | | | | | | | | |
+| Mixamo fighting animation set (curated) | animation | Adobe Mixamo | Mixamo free license | n/a (anim-only) | fbx → glb | https://www.mixamo.com | _pending manual download_ | _pending_ | idle, walk_fwd/bk, dash, crouch, jump, blocks, hits, knockdown, getup, jab/straight/hooks/uppercut, kicks, sweep, throws, victory/defeat, entrance |
+| CC0 - Free Rigged Character | fighter | reinhpash | CC0 (page: CC-BY, crediting as CC-BY) | 27k tris | glb/fbx | https://sketchfab.com/3d-models/cc0-free-rigged-character-bf75eb2ffcb9444a90b62c3aeee04be2 | _pending_ | _pending_ | — (base mesh) |
+| CMU MoCap martial-arts clips | animation | CMU / RancidMilk | Free / CC0 (verify per-pack) | n/a (mocap) | bvh → fbx/glb | itch.io (RancidMilk); mocap.cs.cmu.edu | _pending_ | _pending_ | idle, walk, punches, kicks, sweep, knockdown, getup, blocks |
 
 ## Fields
 
@@ -31,3 +33,9 @@ Machine-readable: [`catalog.json`](catalog.json).
 `jab`, `straight`, `hook_l`, `hook_r`, `uppercut`, `low_kick`, `mid_kick`,
 `high_kick`, `sweep`, `throw_attempt`, `throw_break`, `special_1`, `special_2`,
 `rage_art`, `victory`, `defeat`, `entrance_idle`
+
+## Binary acquisition note
+
+Binaries require manual download (Mixamo needs Adobe sign-in; Sketchfab needs
+click-through). Binaries go to private `mhvnsnt/box-storage` release assets.
+SHA-256 recorded on upload. Parent agent to delegate browser download tasks.
