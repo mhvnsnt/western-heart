@@ -41,5 +41,5 @@ Sparse clones only (`git clone --filter=blob:none --sparse`, `git sparse-checkou
 ## Progress 2026-10-14 (round 2)
 - Done: T3 common-bank decode, so light and medium attacks are baked (PR #136). King walk, crouch, jump, sidestep, hit, block and KO baked and wired with `--anim=authored` as fallback (PR #136). Jin, Xiaoyu, Bryan, Gun Jack and Yoshimitsu baked (PR #137).
 - MISSING: Heihachi (heihachi191 KMD has no hip or shoulder vertex data) and a real arms-folded pose (see the audit, Update 4), so there is no title v5.
-- BLOCKED: browser build. `pantera.glb`'s skin is mirrored (asset defect). For demonio, the Godot render ignores the arm tracks even though the CPU skin is correct. See `docs/anim/PROCEDURAL_AUDIT.md` Update 4.
+- Browser build: the `pantera.glb` L/R skin swap is fixed as `pantera_fixed.glb` (tools/rig_repair case 1). For demonio, the Godot render ignores the arm tracks even though the CPU skin is correct. See `docs/anim/PROCEDURAL_AUDIT.md` Update 4.
 - Lab crouch, jump and sidestep states: DONE (audit Update 5). Stand-up slot 60, jump displacement and evasion are still missing.
