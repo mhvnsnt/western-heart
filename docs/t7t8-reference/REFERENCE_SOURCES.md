@@ -1,27 +1,17 @@
-# T7/T8 reference sources (links + license notes)
+# T7/T8 Reference Sources
 
-Free PUBLIC frame data, move lists, combo guides, stage layouts.
+Rule: **facts and links only.** No ripped Tekken models, textures, stages, animations or audio are downloaded or committed (copyright; would endanger commercial release). Reference images are linked, never copied.
 
-- **CC0 / public-domain:** copied into this directory.
-- **Non-CC0 / unverified license:** links only below. Do NOT paste copyrighted text or tables wholesale.
-- Combo guides: link + short summary of useful routes; no full copyrighted guide text.
-- Stage layouts: dimensions, hazards, camera notes as structured JSON/MD authored
-  from public facts, with source links.
+| Data | Source | License / status | Used in repo |
+|---|---|---|---|
+| T8 frame data + move lists (16 bodies) | https://wavu.wiki (Cargo `Move` table, fetched by `tools/fetch_wavu_framedata.py`) | CC0-1.0 (site rightsinfo) | `frame-data/*.json` (copied) |
+| T7 frame data | https://rbnorway.org/t7-frame-data/ | All rights reserved | link only |
+| T8 frame data (alt) | https://tekkendocs.com | check per-repo license before copying | link only |
+| Official command lists | In-game Move List; https://tekken.com (Bandai Namco) | Copyright Bandai Namco | link only |
+| T7 heights | https://www.esportstales.com/tekken/characters-ages-heights-and-weights | facts (fan aggregate, not official) | `heights_check.md` |
+| T8 heights/weights | https://tekken8.sorao.site/height-weight | facts (from in-game profiles) | `heights_check.md` |
+| Stage list | https://wavu.wiki/t/Stages , https://tekken.fandom.com/wiki/Category:Tekken_8_Stages | facts / CC BY-SA (Fandom) | `stages.md` (names + traits written by us) |
+| Roster | https://tekken.com/characters (T8 official), https://tekken.fandom.com/wiki/Tekken_7 | facts | `roster.md` |
 
-| Source | URL | License | Covers | In git? |
-|---|---|---|---|---|
-| heights_check.md (existing) | ./heights_check.md | authored from public facts | T7/T8 fighter heights | yes |
-| Wavu Wiki (Tekken) | https://wavu.wiki/ | unverified (community wiki, likely CC-BY-SA) | T7/T8 frame data, movelists, combos, punishers | links only |
-| Wavu King T7 | https://wavu.wiki/t/King_(Tekken_7) | see above | King movelist + frames | summarized in frame-data/king-pantera.json |
-| Wavu Jin T7 | https://wavu.wiki/t/Jin_(Tekken_7) | see above | Jin movelist + frames | summarized in frame-data/jin-demonio.json |
-| Wavu Yoshimitsu T7 | https://wavu.wiki/t/Yoshimitsu_(Tekken_7) | see above | Yoshimitsu movelist + frames | summarized in frame-data/yoshimitsu-phantom.json |
-| Wavu Bryan T7 | https://wavu.wiki/t/Bryan_(Tekken_7) | see above | Bryan movelist + frames | summarized in frame-data/bryan-skull.json |
-
-## Frame data files
-
-`frame-data/*.json` — key moves authored from public frame-data facts (numbers are
-facts, not copied tables). Each file maps Tekken moves to WH move slots.
-
-## Adding fighters
-
-Keep `wh_body_map.json` in sync when you add fighters (see `docs/t7t8-reference/`).
+Facts (heights, frame numbers, stage names) are not copyrightable; Bandai Namco names/trademarks must NOT appear on WH screens (owner rule: original names only).
+Missing from wavu (not in T8): Josie, Julia, Katarina, Christie, Akuma, Miguel. Use RBNorway T7 pages as link-only reference for those.
