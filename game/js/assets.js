@@ -3,7 +3,7 @@
    Preloads the REAL rigged fighters (Mixamo-skeleton GLBs) and
    hands out skeleton-cloned, per-fighter-tinted instances.
    Self-contained: models live at game/assets/models/.
-   Pantera = real P1 textured body (roster/pantera). Demonio =
+   Pantera = real P1 textured body (roster/pantera). Steve Fox =
    Tekken 7 base reskinned cold blue-white (see game/README.md).
    ============================================================ */
 import * as THREE from 'three';
@@ -12,7 +12,7 @@ import { clone as skeletonClone } from 'three/addons/utils/SkeletonUtils.js';
 
 const MODEL_URLS = {
   pantera: 'assets/models/pantera.glb',
-  demonio: 'assets/models/demonio.glb',
+  'steve-fox': 'assets/models/steve-fox.glb',
   // Created fighters use the Soldier.glb base from the CAW suite.
   // Relative path works on GitHub Pages (game/ -> customization/).
   custom: '../customization/create-fighter/assets/Soldier.glb',
