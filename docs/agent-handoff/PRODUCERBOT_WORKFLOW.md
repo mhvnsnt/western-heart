@@ -76,5 +76,13 @@ Build on top, never destroy. Teardown files stay byte-identical; everything new 
 - Never claim to have watched/listened. Never invent canon, faces or data.
 - Prefer a smaller true result over a bigger claimed one.
 
+## 11. Universal rig-repair pipeline (`tools/rig_repair/`, PRs #164–#168)
+Owner order: a PERMANENT automatic pipeline that fixes every character rig defect (skin stretching esp. armpit-to-pec-to-bicep, holes, floating chunks, ghost hands, skeleton misfit) and runs every model in every game through it. Method ported from Bannon PR #77, skeleton-refit step invented here (no free tool refits an EXISTING skeleton in place).
+- One command: `python3 tools/rig_repair/pipeline.py --in MODEL.glb --outdir out --tag <name>`; batch: `ls models/*.glb | xargs -P 4 -I{} python3 tools/rig_repair/pipeline.py --in {} --outdir out --tag $(basename {} .glb)`. Every stage writes a VERSIONED file + JSON report; inputs are NEVER touched.
+- Stages: detect (multi-mesh, meshopt decode, pure Python) → transfer `--limb-separate` (de-hardcoded) → **refit** (volume-mode skeleton refit, headless Blender, clamp 0.10 m, inverse bind matrices recomputed so existing clips play unchanged) → reskin (CONDITIONAL, default none — measured worse than transfer weights) → separate (dominant bone >0.20 m away → reassign to correct body region) → armpit (de-bleed 0.14 m, sharpen p=1.6, torso-side) → weldcap (HARD ASSERT: zero open edges, non-manifold not increased — fails loudly) → gate (`rigcheck/rig_check.py`, 6 standard clips, p99.9 edge stretch ≤ 2.5) → proof (stress-pose renders, open every render yourself).
+- Measured (Stick-Up v1, decimated): 27.7–44.7 → 10.7–15.1 p99.9. The 2.5 threshold is aspirational for LBS without corrective shapes; the pipeline drives it ~3× down. Full table + lessons in `tools/rig_repair/PR{1,2,3,4}_NOTES.md`; full method in `docs/handoffs/RIG_REPAIR_METHOD.md`; per-call decisions in `docs/handoffs/STICKUP_V2_DECISION_LOG.md`.
+- Merge order: #164 → #165 → #166 → #168 (parallel branches; one README.md conflict on #165, resolve for #165's newer README).
+- Run the gate before claiming any model "repaired": exit 0 = PASS, 1 = FAIL. Media proof standard applies to proof renders.
+
 ## Repo notes
 - **western-heart**: menus `game/ui-wh/`, Godot lab `lab/game/`, canon `CANON.md`, cards `docs/roster/`, captures `docs/qa/`. No pr-clean-merge workflow yet: check `gh pr checks` and merge by hand only when green and clean.
