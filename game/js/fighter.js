@@ -19,6 +19,7 @@
    ============================================================ */
 import * as THREE from 'three';
 import { assets } from './assets.js';
+import { getT3Clips, createT3Actions } from './t3anims.js';
 
 // ---- Frame data: REAL Tekken 3 data (teardown/tekken3/movesets/moveset_king.json, moveset_jin.json)
 // Extracted 2026-10-14: representative light/medium/heavy from 652 King / 413 Jin moves.
@@ -153,6 +154,17 @@ export class Fighter {
     this.mixer = inst.mixer;
     this.actions = inst.actions;
 
+    // REAL T3 animation clips (Grok's decoded T3 King motion).
+    // Falls back to procedural if clips aren't loaded.
+    this.t3actions = {};
+    this._t3current = null;
+    this._t3stateKey = null;
+    const t3clips = getT3Clips();
+    if (t3clips && Object.keys(t3clips).length > 0) {
+      this.t3actions = createT3Actions(this.mixer, t3clips, THREE);
+      console.log(`[WH] Fighter ${this.char.id}: ${Object.keys(this.t3actions).length} real T3 actions ready`);
+    }
+
     // root (world position) -> lean (facing + body english) -> model
     this.root = new THREE.Group();
     this.root.position.set(startX, GROUND_Y, 0);
@@ -265,6 +277,7 @@ export class Fighter {
     if (move.cost > 0 && this.meter < move.cost) return false;
     if (move.cost > 0) this.meter = Math.max(0, this.meter - move.cost);
     this.attack = move; this.attackName = name; this.hasHit = false;
+    this._attackId = (this._attackId || 0) + 1;
     this.vx = 0; this._enter('attack'); this._attackPhase = 'startup';
     if (name === 'surge') this._auraFlash = 0.7;
     if (name === 'grab') this.vx = this.facing * 2.5; // lunge into the grab
@@ -398,6 +411,49 @@ export class Fighter {
     this.blob.scale.set(s, s, s); this.blob.material.opacity = 0.34 * s;
   }
 
+  /* ---------------- REAL T3 animation clips ---------------- */
+  // Plays a real decoded T3 clip, fading out the Mixamo base layer.
+  // Returns true if the clip played, false if not available (use procedural fallback).
+  _playT3(name, { loop = false, fade = 0.08 } = {}) {
+    const action = this.t3actions[name];
+    if (!action) return false;
+    // Don't restart if already playing this clip
+    if (this._t3current === action && action.isRunning()) return true;
+    // Fade out current T3 clip
+    if (this._t3current && this._t3current !== action) {
+      this._t3current.fadeOut(0.1);
+    }
+    // Fade out Mixamo locomotion base
+    for (const n of ['Idle', 'Walk', 'Run']) {
+      if (this.actions[n]) this.actions[n].fadeOut(0.1);
+    }
+    action.reset();
+    action.setEffectiveWeight(1);
+    action.fadeIn(fade);
+    action.play();
+    this._t3current = action;
+    return true;
+  }
+
+  _stopT3(fade = 0.15) {
+    if (this._t3current) {
+      this._t3current.fadeOut(fade);
+      this._t3current = null;
+    }
+    this._t3stateKey = null;
+  }
+
+  // Play a T3 one-shot once per state entry (not every frame)
+  _playT3Once(name, stateKey) {
+    if (this._t3stateKey === stateKey) {
+      // Already triggered for this state entry; check if still playing
+      const action = this.t3actions[name];
+      return action && this._t3current === action;
+    }
+    this._t3stateKey = stateKey;
+    return this._playT3(name, { loop: false });
+  }
+
   /* ---------------- animation ---------------- */
   _animate(dt) {
     // 1) Facing
@@ -431,13 +487,40 @@ export class Fighter {
     // 5) Combat override layer (IK) + lean targets
     this._leanT.x = 0; this._leanT.z = 0;
     this.trail.visible = false;
+    // REAL T3 clips for combat states (falls back to procedural if unavailable)
+    const T3_ATTACK_MAP = { punch: 'light', kick: 'medium', grab: 'grab', surge: 'heavy', heavy: 'heavy' };
     switch (this.state) {
-      case 'attack': this._animAttack(); break;
-      case 'block': this._animBlock(); break;
-      case 'hitstun': this._leanT.x = 0.28; break;
-      case 'knockdown': case 'ko': this._leanT.x = Math.min(0.9, this.stateT * 3.0); break;
-      case 'dodge': this._leanT.z = this.dodgeDir * this.facing * 0.32; break;
-      case 'jump': this._animJump(); break;
+      case 'attack': {
+        const t3name = T3_ATTACK_MAP[this.attackName];
+        if (t3name && this._playT3Once(t3name, 'atk:' + this.attackName + ':' + this._attackId)) {
+          // Real T3 clip playing; add slight lean for body english
+          this._leanT.x = -0.1;
+        } else {
+          this._animAttack(); // procedural fallback
+        }
+        break;
+      }
+      case 'block':
+        if (!this._playT3('block', { loop: true })) this._animBlock();
+        break;
+      case 'hitstun':
+        this._leanT.x = 0.28;
+        this._playT3Once('hit', 'hit:' + Math.floor(this.stateT * 10));
+        break;
+      case 'knockdown':
+        this._leanT.x = Math.min(0.9, this.stateT * 3.0);
+        this._playT3Once('launch', 'kd:' + Math.floor(this.stateT * 10));
+        break;
+      case 'ko':
+        this._leanT.x = Math.min(0.9, this.stateT * 3.0);
+        this._playT3Once('ko', 'ko:' + Math.floor(this.stateT * 10));
+        break;
+      case 'victory':
+        this._playT3('win', { loop: true });
+        break;
+      case 'dodge': this._leanT.z = this.dodgeDir * this.facing * 0.32; this._stopT3(); break;
+      case 'jump': this._animJump(); this._stopT3(); break;
+      default: this._stopT3(); break;
     }
 
     // 6) Smooth & apply lean (body english) — composed with facing
