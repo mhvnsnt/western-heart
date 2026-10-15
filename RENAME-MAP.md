@@ -273,3 +273,35 @@ files keep EM-descriptive basenames under WH stage directories pending assignmen
 | CD tracks 2-4 (Tong-Nou Theme, Transmigration, Esoteric Mix) | — | NEEDED (`teardown/eastern-mind/soundtrack/`) |
 
 *Stage directory renames use owner-assigned names from stages.md. Individual asset WH names pending owner.*
+
+## Phase 1 Roster Integration (2026-10-15) — T7-style models → WH names
+
+| Source File | WH Model | WH Fighter | Canon Base |
+|-------------|----------|------------|------------|
+| asuka-kazama (RigModels) | kinpo.glb | Kinpo | Asuka |
+| asuka-alt (RigModels) | kinpo_alt1.glb | Kinpo (alt) | Asuka |
+| bryan (RigModels) | skull.glb | Skull | Bryan Fury |
+| eddy-gordo (RigModels) | king-tyrant.glb | King Tyrant | Eddy Gordo |
+| eddy-gordo-capoeira (RigModels) | king-tyrant_alt1.glb | King Tyrant (alt) | Eddy Gordo |
+| ganryu (RigModels) | thor.glb | Thor | Ganryu |
+| gun-jack (RigModels) | sam-ur-a1.glb | SAM-UR-A1 | Gun Jack |
+| josie (RigModels) | waterfall.glb | Waterfall | Josie Rizal |
+| julia (RigModels) | nightwolf.glb | Nightwolf | Julia Chang |
+| king-variants (RigModels) | pantera_alt1.glb | Pantera (alt) | King |
+| lee (RigModels) | purple-rain.glb | Purple Rain | Lee Chaolan |
+| negan (RigModels) | n3g4tiv0.glb | N3GΔTIV0 | Negan |
+| nina (RigModels) | awa-pop.glb | Awa Pop | Nina Williams |
+| steve-fox (RigModels) | zui_alt1.glb | Zui (alt) | Steve Fox |
+| steve-fox-alt (RigModels) | zui_alt2.glb | Zui (alt) | Steve Fox |
+| xiaoyu (RigModels) | saku-ra.glb | Saku Ra | Xiaoyu |
+| xiaoyu-pink-dress (RigModels) | saku-ra_alt1.glb | Saku Ra (alt) | Xiaoyu |
+| yoshimitsu (RigModels) | phantom.glb | Phantom | Yoshimitsu |
+| lei (RigModels) | lei.glb | UNMAPPED | — |
+| lili (RigModels) | lili.glb | UNMAPPED | — |
+| mokujin (RigModels) | mokujin.glb | UNMAPPED | — |
+| zafina (RigModels) | zafina.glb | UNMAPPED | — |
+| baek (RigModels) | baek.glb | UNMAPPED | — |
+
+**Blocked:** heihachi-mishima → Diablo (RAR, no extractor on VM); dr-bosconovitch → Doc Frank (XPS format); xiaoyu-t8 → Saku Ra alt2 (RAR).
+
+**Attire rule (owner 2026-10-15):** All above are NON-T3 = front-line attires. T3 legacy models go at back of attire list only.
