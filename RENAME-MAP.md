@@ -252,3 +252,24 @@ Dir rename `teardown/tekken8/` → `teardown/iron-apex/` is Phase 4 (separate PR
 |---|---|---|
 | Mishima Dojo stage (open3dlab Blender port, 2024 map) | — | NEEDED (`teardown/tekken7/arenas/mishima-dojo_2024-map.rar`) |
 | Mishima Dojo full bundle 2021 (map+textures, 257MB) | — | NEEDED — TeraBox only (over GitHub 100MB/file; see `teardown/TEARDOWN-SOURCES.md`) |
+
+### eastern-mind (Eastern Mind: The Lost Souls of Tong-Nou) — teardown 2026-10-15 (wh-easternmind-100)
+
+5,321 bitmaps + 229 sounds + 3 CD tracks + 22 videos + 31 texts extracted from Director 4 DXRs.
+Organized by owner-assigned WH stage names (stages.md). Per-file WH names NEEDED (owner to assign);
+files keep EM-descriptive basenames under WH stage directories pending assignment.
+
+| Original (EM) | WH name | Status |
+|---|---|---|
+| F_* areas (Shi-chieng, Fire/Time) | **stage-1-plains-of-chi-u** | DONE (`teardown/eastern-mind/stage-1-plains-of-chi-u/`, 518 files) |
+| G_* areas (Yui-wang, Metal/Desire) | **stage-2-helix-palace** | DONE (`teardown/eastern-mind/stage-2-helix-palace/`, 1,282 files) |
+| W_* areas (Man-chien, Water/Dreaming) | **stage-3-palace-of-dreaming** | DONE (`teardown/eastern-mind/stage-3-palace-of-dreaming/`, 676 files) |
+| L_* areas (Ming-ken, Wood/Life) | **stage-4-tree-of-life** | DONE (`teardown/eastern-mind/stage-4-tree-of-life/`, 505 files) |
+| D_MARKET, D_MERCHA | **stage-5-phantom-marketplace** | DONE (`teardown/eastern-mind/stage-5-phantom-marketplace/`, 100 files) |
+| E_* areas (Tong-nou, Earth/Source) | **stage-6-octagonal-shrine-par-fang** | DONE (`teardown/eastern-mind/stage-6-octagonal-shrine-par-fang/`, 223 files) |
+| D_* prologue/ending areas | — | NEEDED (`teardown/eastern-mind/prologue-ending/`, 661 files) |
+| R_* incarnation system | — | NEEDED (`teardown/eastern-mind/incarnation-system/`, 512 files) |
+| TRANSCRI Sato works/promo | — | NEEDED (`teardown/eastern-mind/transcript-promo/`, 1,128 files) |
+| CD tracks 2-4 (Tong-Nou Theme, Transmigration, Esoteric Mix) | — | NEEDED (`teardown/eastern-mind/soundtrack/`) |
+
+*Stage directory renames use owner-assigned names from stages.md. Individual asset WH names pending owner.*
