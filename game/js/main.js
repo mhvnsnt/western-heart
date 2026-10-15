@@ -9,6 +9,8 @@ import { audio } from './audio.js';
 import { assets } from './assets.js';
 import { ROSTER, getCharacter } from './characters.js';
 import { loadRealMovesets } from './fighter.js';
+import { loadT3Clips } from './t3anims.js';
+import * as THREE from 'three';
 import { whUiEnabled, mountWhUi } from './ui-wh-bridge.js';
 
 // Load REAL Tekken 3 moveset data (not hand-written frame data)
@@ -336,6 +338,14 @@ async function startFight(playerId, enemyId) {
     await assets.loadModels(need, (p) => {
       if (hint) hint.textContent = `Entering the arena… ${Math.round(p * 100)}%`;
     });
+    // Load REAL T3 animation clips (Grok's decoded T3 King motion).
+    // Non-blocking for fight start; fighters use procedural fallback until ready.
+    if (hint) hint.textContent = 'Loading real fight motion…';
+    try {
+      await loadT3Clips(THREE);
+    } catch (e) {
+      console.warn('[WH] T3 clips failed, using procedural fallback:', e.message || e);
+    }
   } catch (err) {
     console.error('[WH] fight load failed:', err);
     if (hint) hint.textContent = 'Failed to load fighters. Check connection and try again.';
