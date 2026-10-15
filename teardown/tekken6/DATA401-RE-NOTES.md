@@ -170,3 +170,71 @@ Not plaintext; may be key material or encrypted header. Role unknown.
   `lui`+`addiu` xref scanner, ELF vaddr→file offset.
 - `/tmp/t6_emu2.py`: unicorn MIPS emulator with kseg0 shadow-mapping
   workaround + CRC32 table builder. Successfully emulates 0x8AA2E88.
+
+## 2026-10-14 ~22:00 EDT bulk-decrypt worker — DINF CRACKED + BULK ARCHITECTURE MAPPED
+
+### 17. DINF_400.BIN FULLY DECRYPTED (verified, see DINF-400-DECRYPTED.md)
+- Fixed keyset at EBOOT **0x88985BC** (`0x8AA3298` with hardcoded constants, then
+  `0x8AA2E58` → `0x8AA2CA8`): **K1=0xebcf9603, K2=0xb3bef6a4**
+  (C1=0xa9a8aaf2, C2=0xaff764ad). `cipher(K1,K2,dst,120,0,0)` → magic `DINF`.
+- Manifest: ver=1, unit=0x800, **2169 entries**, **384051200 bytes**,
+  names `DATA401.BIN` / `DATA401.IDX`, build path
+  `hdd65/psp/DATA401/20091109_092921/`. 2169×12 = 26028 = IDX size ✓.
+  384051200 = 187520 sectors — matches measured nonzero region
+  (sectors 230256–417780; first/last partial sectors are zero).
+- Reproduce: `python3 tools/dinf_decrypt.py` (self-contained cipher model).
+
+### 18. Second fixed keyset at 0x8898404 (target unknown)
+K1=0xe11cf772, K2=0xa0dc9eb4, C1=0x9f7e8f59, C2=0x6c4a824a.
+Same struct shape as the DINF loader (decrypts `*(s0+0x48+0xc)`, len `*(s0+0x48+0x18)`).
+DATA401.IDX decrypt attempt with this keyset: no 12-byte-entry structure found
+(no 2169 count, no plausible LBA runs). IDX likely goes through imported
+`openPac`, not this path.
+
+### 19. Bulk decrypt architecture: 0x8AA305C is VERIFY-decrypt (returns 1/0)
+- Prologue derives d0..d3 = `buf[0xF1/0x1AB] ^ mask` from each of the two
+  0x800-byte input buffers (same tables as the CRC-key extract).
+- `cipher(keystructA, bufA, 0x800, 0, 0)` then `cipher(keystructB, bufB, 0x800, 0, 0)`.
+- Post-loop (`0x8AA3188`): walks both DECRYPTED buffers word-wise; skips indices
+  {0xF1, 0x1AB, d0, d1, d2, d3}; **returns 0 on first mismatch, 1 if all 0x200
+  words match**. The two inputs are two encryptions of the SAME plaintext.
+- Caller `0x8AA2400`-loop: `0x8AA1204` CRC-reads a header unit into stack (keys
+  extracted → header at s2), then a bulk unit is read into s4 with NO CRC check,
+  then `0x8AA305C(s2, sp, s4, s1+0x2c)`. The bulk unit uses the PERSISTENT
+  file keystruct at s1+0x2c.
+
+### 20. Bulk master key: per-file PRNG (NOT statically recoverable) — BLOCKER
+- `0x8A9DB98`: `0x8AA3298(fp, 0,0,0,0)` → K1/K2 from MWC PRNG `0x8B7B600`
+  (a=0x4C957F2D), C1/C2 from decrypted blob at 0x8CB9F8.
+- `0x8A9DCA4`: `cipher(fp, 8(s5), s7, s1, t0=s6, t1=s1)` — per-chunk tweak:
+  t0 = chunk index, t1 = sub-index. Same (K1,K2) per file, keystream varies
+  per chunk via the cipher's block counter + warm-up.
+- PRNG state lives at +0xA8/+0xAC of the kernel thread struct (`$k0`-derived
+  via `0x8B793A4`) — **runtime state, not in the ELF**. Zero-init gives
+  degenerate all-zero keys (infinite retry in `0x8AA3298`), so the real seed
+  is nonzero and unknowable statically. **Static bulk decrypt is blocked here.**
+
+### 21. Full-region CRC scan: 1 / 187,525 units pass (NEGATIVE RESULT)
+Slid 0x800-byte windows over sectors 230256–417780 with the exact EBOOT CRC
+(init 0xFFFFFFFF, no final xor): exactly ONE hit — unit 0 (sector 230256,
+K1=0x24cfa8a4, K2=0x564928df, confirmed by unicorn emulation of `0x8AA2E88`
+returning v0=1). The overnight "bulk does NOT use per-sector CRC-key scheme"
+finding is CONFIRMED. (Decrypting unit 0 with its extracted keys yields
+high-entropy output — no GMO/TIM2; likely a pack header, not file data.)
+
+### 22. PPSSPP live-dump attempt — ENVIRONMENT BLOCKED
+- PPSSPP v1.20.4 SDL AppImage is **static-pie**: LD_PRELOAD shims cannot
+  intercept its internal SDL calls.
+- No PulseAudio daemon on VM; `SDL_AUDIODRIVER=dummy` is ignored (PPSSPP-side);
+  SDL init fails with "Could not setup connection to PulseAudio".
+- X11 works in foreground exec but fails ("x11 not available") in background
+  exec sessions — live run needs a display-holding parent or root session.
+- Recommendation: run PPSSPP from the main agent with a live display, boot the
+  ISO to title (pack mount decrypts IDX/DINF into RAM), attach gdb to dump
+  emulated PSP RAM (64 MB), scan for `GMO\0`/`TIM2`/`DINF`.
+
+## What's still blocked (updated 2026-10-14 22:15 EDT)
+1. **Bulk DATA401.BIN decrypt** — needs the PRNG master key (runtime state) or
+   the IDX file map (→ per-file keys). Static path exhausted.
+2. **IDX decrypt** — `openPac` (imported PRX) or keyset A; unresolved.
+3. Practical path: PPSSPP live RAM dump (see §22).
