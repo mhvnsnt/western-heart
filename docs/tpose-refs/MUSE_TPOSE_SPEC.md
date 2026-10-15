@@ -14,7 +14,7 @@ Western Heart universe (see `docs/pipeline/MODEL_COAUTHOR_PIPELINE.md`).
 |---|---|---|
 | Pantera P1 (in-game `game/assets/models/pantera.glb`) | `pantera/p1_front.png` | `pantera/p1_side.png` |
 | Pantera Leomon attire (`lab/game/assets/pantera_leoman.glb`) | `pantera/leomon_front.png` | `pantera/leomon_side.png` |
-| Demonio attire 1 (`game/assets/models/demonio.glb`) | `demonio/a1_front.png` | `demonio/a1_side.png` |
+| ZUI P1 (Steve Fox donor, `game/assets/models/demonio.glb`) | `zui/p1_front.png` | `zui/p1_side.png` |
 | Create-a-Fighter base (`customization/create-fighter/assets/Soldier.glb`) | `create-fighter-base/soldier_front.png` | `create-fighter-base/soldier_side.png` |
 
 Checksums: `SHA256SUMS` (run `sha256sum -c SHA256SUMS` in this folder).
@@ -73,13 +73,13 @@ Status: `DONE`, `TODO` (model exists, render it), `NEED-MODEL` (no model in repo
 | PANTERA | P2 (recolor) | `roster/pantera/attires/p2/` | TODO |
 | PANTERA | Cyborg-88 | `roster/pantera/attires/cyborg/` (design doc only) | NEED-MODEL |
 | PANTERA | rigged/tail build | `roster/pantera/pantera_rigged.glb` | BLOCKED-glTF importer assertion in Blender 4.2 (re-export) |
-| DEMONIO | A1 | `game/assets/models/demonio.glb` | DONE (sample) |
+| DEMONIO | P1 | (real Jin — T7 Jin MDL won't convert, see `game/README.md`) | NEED-MODEL |
 | PHANTOM | P1 | (Yoshimitsu donor) | NEED-MODEL |
 | DIABLO | P1 | (Heihachi donor) | NEED-MODEL |
 | SKULL | P1 (+ alts pending review) | (Bryan donor) | NEED-MODEL |
 | SAM-∪R-Λ1 | P1 | (Gun Jack donor) | NEED-MODEL |
 | SAKU RA | P1 | (Xiaoyu donor; uses stand-in King in-game) | NEED-MODEL |
-| ZUI | P1 | — | NEED-MODEL |
+| ZUI | P1 | Steve Fox donor (`game/assets/models/demonio.glb`) | DONE (sample) |
 | KINPO | P1 | — | NEED-MODEL |
 | WATERFALL | P1 | — | NEED-MODEL |
 | KING TYRANT | P1 | — | NEED-MODEL |
