@@ -20,7 +20,6 @@
 import * as THREE from 'three';
 import { assets } from './assets.js';
 import { getT3Clips, createT3Actions } from './t3anims.js';
-import { resolveCustomMoveSync, preloadMoveDatabase } from './custom-fighter.js';
 
 // ---- Frame data: REAL Tekken 3 data (teardown/tekken3/movesets/moveset_king.json, moveset_jin.json)
 // Extracted 2026-10-14: representative light/medium/heavy from 652 King / 413 Jin moves.
@@ -277,15 +276,6 @@ export class Fighter {
     // Use REAL T3 moveset data when available, fallback to base MOVES
     let move = getRealMove(this.char.id, name) || MOVES[name];
     if (!move) return false;
-    // Custom fighters: check CAW moveset slots for assigned moves.
-    // Unassigned slots (or surge, which is WH-original) use the fallback.
-    if (this.char.id === 'custom' && this.char._caw && name !== 'surge') {
-      const customMove = resolveCustomMoveSync(this.char._caw, name, move);
-      if (customMove) {
-        move = customMove;
-        console.log(`[WH] Custom move: ${customMove._customName} (${customMove._customId})`);
-      }
-    }
     // Preserve WH-specific properties (grab unblockable, surge cost)
     if (MOVES[name]) {
       move = { ...move, ...Object.fromEntries(
