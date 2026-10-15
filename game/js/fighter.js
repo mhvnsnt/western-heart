@@ -168,7 +168,15 @@ export class Fighter {
     // root (world position) -> lean (facing + body english) -> model
     this.root = new THREE.Group();
     this.root.position.set(startX, GROUND_Y, 0);
-    this.root.scale.setScalar(this.char.bodyScale || 1);
+    // Custom fighters: apply body type proportions (height + width)
+    // from the CAW suite. Standard fighters use uniform bodyScale.
+    if (this.char.bodyWidth && this.char.bodyWidth !== 1) {
+      const h = this.char.bodyScale || 1;
+      const w = this.char.bodyWidth;
+      this.root.scale.set(w, h, w);
+    } else {
+      this.root.scale.setScalar(this.char.bodyScale || 1);
+    }
 
     this.lean = new THREE.Group();
     this.lean.rotation.y = this.facing * Math.PI / 2;
