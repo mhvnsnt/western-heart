@@ -14,6 +14,8 @@ for o in sc.objects: o.animation_data_clear() if o.animation_data else None
 for o in list(sc.objects):
     if o.type=="MESH" and re.match(r'(icosphere|cube|plane|sphere|cylinder)', o.name, re.I): bpy.data.objects.remove(o)
 arms = [o for o in sc.objects if o.type == "ARMATURE"]
+if not arms:
+    raise RuntimeError("BLOCKED-no-rig: model has no armature; refusing to render a non-T-pose as a T-pose")
 import glob
 texdir = os.path.dirname(src)
 for mat in bpy.data.materials:
@@ -63,6 +65,8 @@ for arm in arms:
         pb.matrix = arm.matrix_world.inverted() @ R @ mw
         report["posed"].append(pb.name)
     bpy.ops.object.mode_set(mode="OBJECT")
+if not report["posed"]:
+    raise RuntimeError("BLOCKED-no-matching-arm-bones: armature found, but the known arm-chain names did not match; refusing to label this a T-pose")
 bpy.context.view_layer.update()
 dg = bpy.context.evaluated_depsgraph_get()
 pts = []
