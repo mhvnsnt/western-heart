@@ -252,3 +252,56 @@ Dir rename `teardown/tekken8/` → `teardown/iron-apex/` is Phase 4 (separate PR
 |---|---|---|
 | Mishima Dojo stage (open3dlab Blender port, 2024 map) | — | NEEDED (`teardown/tekken7/arenas/mishima-dojo_2024-map.rar`) |
 | Mishima Dojo full bundle 2021 (map+textures, 257MB) | — | NEEDED — TeraBox only (over GitHub 100MB/file; see `teardown/TEARDOWN-SOURCES.md`) |
+
+### eastern-mind (Eastern Mind: The Lost Souls of Tong-Nou) — teardown 2026-10-15 (wh-easternmind-100)
+
+5,321 bitmaps + 229 sounds + 3 CD tracks + 22 videos + 31 texts extracted from Director 4 DXRs.
+Organized by owner-assigned WH stage names (stages.md). Per-file WH names NEEDED (owner to assign);
+files keep EM-descriptive basenames under WH stage directories pending assignment.
+
+| Original (EM) | WH name | Status |
+|---|---|---|
+| F_* areas (Shi-chieng, Fire/Time) | **stage-1-plains-of-chi-u** | DONE (`teardown/eastern-mind/stage-1-plains-of-chi-u/`, 518 files) |
+| G_* areas (Yui-wang, Metal/Desire) | **stage-2-helix-palace** | DONE (`teardown/eastern-mind/stage-2-helix-palace/`, 1,282 files) |
+| W_* areas (Man-chien, Water/Dreaming) | **stage-3-palace-of-dreaming** | DONE (`teardown/eastern-mind/stage-3-palace-of-dreaming/`, 676 files) |
+| L_* areas (Ming-ken, Wood/Life) | **stage-4-tree-of-life** | DONE (`teardown/eastern-mind/stage-4-tree-of-life/`, 505 files) |
+| D_MARKET, D_MERCHA | **stage-5-phantom-marketplace** | DONE (`teardown/eastern-mind/stage-5-phantom-marketplace/`, 100 files) |
+| E_* areas (Tong-nou, Earth/Source) | **stage-6-octagonal-shrine-par-fang** | DONE (`teardown/eastern-mind/stage-6-octagonal-shrine-par-fang/`, 223 files) |
+| D_* prologue/ending areas | — | NEEDED (`teardown/eastern-mind/prologue-ending/`, 661 files) |
+| R_* incarnation system | — | NEEDED (`teardown/eastern-mind/incarnation-system/`, 512 files) |
+| TRANSCRI Sato works/promo | — | NEEDED (`teardown/eastern-mind/transcript-promo/`, 1,128 files) |
+| CD tracks 2-4 (Tong-Nou Theme, Transmigration, Esoteric Mix) | — | NEEDED (`teardown/eastern-mind/soundtrack/`) |
+
+*Stage directory renames use owner-assigned names from stages.md. Individual asset WH names pending owner.*
+
+## Phase 1 Roster Integration (2026-10-15) — T7-style models → WH names
+
+| Source File | WH Model | WH Fighter | Canon Base |
+|-------------|----------|------------|------------|
+| asuka-kazama (RigModels) | kinpo.glb | Kinpo | Asuka |
+| asuka-alt (RigModels) | kinpo_alt1.glb | Kinpo (alt) | Asuka |
+| bryan (RigModels) | skull.glb | Skull | Bryan Fury |
+| eddy-gordo (RigModels) | king-tyrant.glb | King Tyrant | Eddy Gordo |
+| eddy-gordo-capoeira (RigModels) | king-tyrant_alt1.glb | King Tyrant (alt) | Eddy Gordo |
+| ganryu (RigModels) | thor.glb | Thor | Ganryu |
+| gun-jack (RigModels) | sam-ur-a1.glb | SAM-UR-A1 | Gun Jack |
+| josie (RigModels) | waterfall.glb | Waterfall | Josie Rizal |
+| julia (RigModels) | nightwolf.glb | Nightwolf | Julia Chang |
+| king-variants (RigModels) | pantera_alt1.glb | Pantera (alt) | King |
+| lee (RigModels) | purple-rain.glb | Purple Rain | Lee Chaolan |
+| negan (RigModels) | n3g4tiv0.glb | N3GΔTIV0 | Negan |
+| nina (RigModels) | awa-pop.glb | Awa Pop | Nina Williams |
+| steve-fox (RigModels) | zui_alt1.glb | Zui (alt) | Steve Fox |
+| steve-fox-alt (RigModels) | zui_alt2.glb | Zui (alt) | Steve Fox |
+| xiaoyu (RigModels) | saku-ra.glb | Saku Ra | Xiaoyu |
+| xiaoyu-pink-dress (RigModels) | saku-ra_alt1.glb | Saku Ra (alt) | Xiaoyu |
+| yoshimitsu (RigModels) | phantom.glb | Phantom | Yoshimitsu |
+| lei (RigModels) | lei.glb | UNMAPPED | — |
+| lili (RigModels) | lili.glb | UNMAPPED | — |
+| mokujin (RigModels) | mokujin.glb | UNMAPPED | — |
+| zafina (RigModels) | zafina.glb | UNMAPPED | — |
+| baek (RigModels) | baek.glb | UNMAPPED | — |
+
+**Blocked:** heihachi-mishima → Diablo (RAR, no extractor on VM); dr-bosconovitch → Doc Frank (XPS format); xiaoyu-t8 → Saku Ra alt2 (RAR).
+
+**Attire rule (owner 2026-10-15):** All above are NON-T3 = front-line attires. T3 legacy models go at back of attire list only.

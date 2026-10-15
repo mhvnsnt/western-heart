@@ -500,6 +500,7 @@ $('#btn-photo').onclick=()=>{
 };
 
 $('#btn-save').onclick=()=>{ persist(); };
+$('#btn-back-game').onclick=()=>{ persist(); window.location.href='../../game/index.html'; };
 $('#btn-export').onclick=()=>{
   const blob=new Blob([JSON.stringify(F,null,2)],{type:'application/json'});
   const a=document.createElement('a');

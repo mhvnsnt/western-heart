@@ -3,7 +3,7 @@
    Preloads the REAL rigged fighters (Mixamo-skeleton GLBs) and
    hands out skeleton-cloned, per-fighter-tinted instances.
    Self-contained: models live at game/assets/models/.
-   Pantera = real P1 textured body (roster/pantera). Demonio =
+   Pantera = real P1 textured body (roster/pantera). Steve Fox =
    Tekken 7 base reskinned cold blue-white (see game/README.md).
    ============================================================ */
 import * as THREE from 'three';
@@ -12,7 +12,11 @@ import { clone as skeletonClone } from 'three/addons/utils/SkeletonUtils.js';
 
 const MODEL_URLS = {
   pantera: 'assets/models/pantera.glb',
-  demonio: 'assets/models/demonio.glb',
+  'steve-fox': 'assets/models/steve-fox.glb',
+  jin: 'assets/models/jin.glb',
+  // Created fighters use the Soldier.glb base from the CAW suite.
+  // Relative path works on GitHub Pages (game/ -> customization/).
+  custom: '../customization/create-fighter/assets/Soldier.glb',
 };
 
 class AssetManager {
@@ -74,7 +78,14 @@ class AssetManager {
           });
           resolve();
         },
-        undefined,
+        (xhr) => {
+          // Byte-level download progress: xhr.loaded / xhr.total
+          if (xhr.total > 0 && onProgress) {
+            const frac = done / Math.max(need.length, 1);
+            const thisFrac = xhr.loaded / xhr.total / Math.max(need.length, 1);
+            onProgress(Math.min(frac + thisFrac, 1), xhr.loaded, xhr.total, id);
+          }
+        },
         (err) => { clearTimeout(timer); reject(err); }
       );
     });
@@ -106,6 +117,13 @@ class AssetManager {
     this._prefetching.add(id);
     this.loadModels([id]).catch(e => console.warn('[WH] prefetch failed:', id, e.message || e))
       .finally(() => this._prefetching.delete(id));
+  }
+
+  // Preload both base models the moment the select screen opens.
+  // All 36 fighters use pantera or demonio bases, so warming both here
+  // means CONFIRM rarely waits on a download.
+  preloadAll() {
+    for (const id of Object.keys(MODEL_URLS)) this.prefetch(id);
   }
 
   /* { model, bones, mixer, actions } for one fighter.

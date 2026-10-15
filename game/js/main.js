@@ -12,6 +12,7 @@ import { loadRealMovesets } from './fighter.js';
 import { loadT3Clips } from './t3anims.js';
 import * as THREE from 'three';
 import { whUiEnabled, mountWhUi } from './ui-wh-bridge.js';
+import { getCustomFighter, customFighterToRoster } from './custom-fighter.js';
 
 // Load REAL Tekken 3 moveset data (not hand-written frame data)
 loadRealMovesets();
@@ -28,7 +29,12 @@ function show(name) {
   if (screens[name]) screens[name].classList.add('active');
   // Tekken 99s select timer: runs only on the select screen, and only once the
   // ~30MB assets are loaded — slow phones don't lose selection time to loading.
-  if (name === 'select') maybeStartSelectTimer();
+  if (name === 'select') {
+    maybeStartSelectTimer();
+    // Start downloading both fighter models the moment select opens —
+    // by the time the user picks and hits CONFIRM, they're usually cached.
+    assets.preloadAll();
+  }
   else { selectTimerArmed = false; stopSelectTimer(); }
 }
 
@@ -138,6 +144,20 @@ let gameMode = 'arcade'; // arcade | versus | story — versus: no reincarnation
   if (overlay) overlay.classList.add('hidden');
 })();
 
+/* Get custom fighter as roster entry (for lookups by ID) */
+function getCustomRosterEntry(id) {
+  if (id !== 'custom') return null;
+  const raw = getCustomFighter();
+  return raw ? customFighterToRoster(raw) : null;
+}
+
+/* Override getCharacter to include custom fighter */
+const _origGetCharacter = getCharacter;
+function getCharacterWithCustom(id) {
+  if (id === 'custom') return getCustomRosterEntry('custom');
+  return _origGetCharacter(id);
+}
+
 /* Build character select cards — Tekken-style tiered grid */
 function buildSelect() {
   const grid = document.getElementById('char-grid');
@@ -148,6 +168,15 @@ function buildSelect() {
     { label: 'MAIN ROSTER', fighters: ROSTER.slice(9, 16) },
     { label: 'BONUS ROSTER', fighters: ROSTER.slice(16) },
   ];
+
+  // Custom fighter from the CAW suite (if one is saved)
+  const customRaw = getCustomFighter();
+  if (customRaw) {
+    const custom = customFighterToRoster(customRaw);
+    if (custom) {
+      tiers.push({ label: 'CUSTOM', fighters: [custom] });
+    }
+  }
 
   tiers.forEach(({ label, fighters }) => {
     const tierHeader = document.createElement('div');
@@ -212,7 +241,7 @@ document.addEventListener('keydown', (e) => {
   else if (e.key === 'ArrowUp') { focusCard(focusedCardIdx - cols); e.preventDefault(); }
   else if (e.key === 'Enter' || e.key === ' ') {
     const card = cards[focusedCardIdx];
-    const c = ROSTER.find(x => x.id === card.dataset.id);
+    const c = ROSTER.find(x => x.id === card.dataset.id) || getCustomRosterEntry(card.dataset.id);
     if (c) {
       if (selectedChar === c.id) { startFight(); } // Enter again = confirm
       else selectCard(card, c);
@@ -300,9 +329,10 @@ document.querySelectorAll('[data-action]').forEach((el) => {
       document.getElementById('select-hint').textContent = 'STORY: Choose your soul. Death is not the end — it is reincarnation.';
     }
     else if (a === 'mode-create') {
-      // Character creation — wired to western-heart/customization/ when built
-      document.getElementById('select-hint').textContent = 'CREATE FIGHTER coming soon — wired to the CAW suite.';
-      show('select');
+      // Character creation — launches the Create Fighter CAW suite.
+      // Returns to game menu via the BACK TO GAME button in the creator.
+      audio.uiClick();
+      window.location.href = '../customization/create-fighter/index.html';
     }
     else if (a === 'howto') { show('howto'); }
     else if (a === 'back-menu') {
@@ -325,8 +355,8 @@ document.getElementById('confirm-fighter').addEventListener('click', () => {
 async function startFight(playerId, enemyId) {
   unlockAudio();
   if (typeof playerId === 'string') selectedChar = playerId;
-  const player = getCharacter(selectedChar || ROSTER[0].id);
-  const enemy = typeof enemyId === 'string' && enemyId !== player.id ? getCharacter(enemyId) : randomEnemy(player.id);
+  const player = getCharacterWithCustom(selectedChar || ROSTER[0].id);
+  const enemy = typeof enemyId === 'string' && enemyId !== player.id ? getCharacterWithCustom(enemyId) : randomEnemy(player.id);
   // On-demand: load only the 2 fighters for this fight (Tekken 3 pattern).
   // Models may already be prefetched from select-screen highlight.
   const need = [...new Set([player.model || 'pantera', enemy.model || 'pantera'])];
@@ -335,8 +365,15 @@ async function startFight(playerId, enemyId) {
   try {
     if (hint) hint.textContent = 'Entering the arena…';
     if (confirmBtn) confirmBtn.disabled = true;
-    await assets.loadModels(need, (p) => {
-      if (hint) hint.textContent = `Entering the arena… ${Math.round(p * 100)}%`;
+    await assets.loadModels(need, (p, loaded, total) => {
+      if (!hint) return;
+      if (loaded && total) {
+        const mbL = (loaded / 1048576).toFixed(1);
+        const mbT = (total / 1048576).toFixed(1);
+        hint.textContent = `Entering the arena… ${mbL}/${mbT} MB`;
+      } else {
+        hint.textContent = `Entering the arena… ${Math.round(p * 100)}%`;
+      }
     });
     // Load REAL T3 animation clips (Grok's decoded T3 King motion).
     // Non-blocking for fight start; fighters use procedural fallback until ready.
