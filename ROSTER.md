@@ -1,6 +1,8 @@
 # WESTERN HEART — ROSTER
 ## The Nine Souls
 
+**Body replacement (owner order 2026-10-15):** T3 default bodies are being replaced with T6, TTT2, or better (preference T6 > TTT2 > T7-style). 6 of 9 souls now default to T7-style bodies (RigModels fan rips via PR #170) — see `docs/souls/SOUL-BODY-REPLACEMENT.md` for the per-soul map. T3 TMD extractions move to legacy (last attire; extraction still pending teardown). BYOU is blocked pending the owner's Lei naming decision; TOU and GYOU are pending T6/TTT2 extraction (no T7-style Paul or Hwoarang models exist yet).
+
 Nine fighters. Each is a lost soul of Tong-Nou. Each soul's **body** is a Tekken 3 TMD model extraction (geometry only — the donor, not the character). Each soul's **skin** is recombined Eastern Mind bitmap extractions. Each soul's **moveset** is a Tekken 3 fighting style, reinterpreted through the soul's nature.
 
 **Asset rule:** No new models. No new textures. Body + skin + moveset are all recombined extractions. See `asset-manifest.md` for source tracing.
@@ -21,6 +23,7 @@ Nine fighters. Each is a lost soul of Tong-Nou. Each soul's **body** is a Tekken
 - **Nature:** 病 — sickness. A soul that twitches, stutters, moves wrong. Its illness is its weapon — opponents can't read a body that doesn't obey itself.
 - **Fighting style:** Lei Wulong's Five Animals kung fu (Tekken) — deceptive, stance-shifting, deliberately unreadable. The drunken-sick master.
 - **Body donor:** Lei Wulong TMD — loose-limbed, expressive.
+- **Default body:** PENDING — owner decision needed (Lei's WH fighter name unmapped as of 2026-10-15; `rave.glb` T7-style Lei exists on PR #170). T3 TMD remains the documented body until the owner unblocks.
 - **Skin:** Eastern Mind sick/decay sprite extractions. Jaundiced yellows, infected greens.
 - **Archetype:** The trickster. Stance-dance, unpredictability.
 
@@ -28,41 +31,47 @@ Nine fighters. Each is a lost soul of Tong-Nou. Each soul's **body** is a Tekken
 - **Nature:** 闘 — battle itself. The soul that exists only to fight. No philosophy, no fear. The purest expression of the trial.
 - **Fighting style:** Paul Phoenix's power karate/judo hybrid (Tekken) — devastating single strikes, the Death Fist. Maximum damage, minimum subtlety.
 - **Body donor:** Paul Phoenix TMD — heavy, powerful build.
+- **Default body:** PENDING — no T7-style Paul model exists yet (not in PR #170). Needs T6/TTT2 extraction. T3 TMD remains the documented body until then.
 - **Skin:** Eastern Mind warrior-sprite extractions. Blood reds, scorched oranges (Fire force).
 - **Archetype:** The grappler/brawler. High damage, honest.
 
 ### 4. SHA — The Sand Soul
 - **Nature:** 沙 — sand, desert. From the Sha-mo Desert of the Land of Life. A soul that flows, erodes, surrounds. Never where you struck.
 - **Fighting style:** Ling Xiaoyu's Baguazhang (Tekken) — flowing, circular, evasive. The art of not being hit.
-- **Body donor:** Ling Xiaoyu TMD — small, agile frame.
+- **Body donor:** Ling Xiaoyu TMD — small, agile frame (legacy attire, last; extraction pending teardown).
+- **Default body:** `game/assets/models/sha-body.glb` — T7-style Xiaoyu (RigModels fan rip, via Saku Ra's T7 model).
 - **Skin:** Eastern Mind desert-sprite extractions. Sand ochres, bleached bone whites.
 - **Archetype:** The evasive. Movement as defense.
 
 ### 5. KAI — The Sea Soul
 - **Nature:** 海 — the sea. Fluid, rhythmic, unstoppable. Fights like water — finds every opening.
 - **Fighting style:** Eddy Gordo's Capoeira (Tekken) — rhythmic, ground-flowing, relentless pressure. The tide that doesn't stop.
-- **Body donor:** Eddy Gordo TMD — long-limbed, acrobatic.
+- **Body donor:** Eddy Gordo TMD — long-limbed, acrobatic (legacy attire, last; extraction pending teardown).
+- **Default body:** `game/assets/models/kai-body.glb` — T7-style Eddy (RigModels fan rip, via King Tyrant's T7 model).
 - **Skin:** Eastern Mind water-sprite extractions. Deep blues, foam whites, abyssal blacks (Water force).
 - **Archetype:** The rushdown. Relentless rhythm offense.
 
 ### 6. JIN — The Blade Soul
 - **Nature:** 刃 — the blade. A soul that cuts. Precise, ritual, terrifying. (Not to be confused with RIN, the protagonist.)
 - **Fighting style:** Yoshimitsu's advanced ninjutsu (Tekken) — sword techniques, teleportation stances, self-damaging power moves. The blade that cuts both ways.
-- **Body donor:** Yoshimitsu TMD — armored, masked, inhuman.
+- **Body donor:** Yoshimitsu TMD — armored, masked, inhuman (legacy attire, last; extraction pending teardown).
+- **Default body:** `game/assets/models/jin-body.glb` — T7-style Yoshimitsu (RigModels fan rip, via Phantom's T7 model). (This is JIN 刃, the Blade Soul — not to be confused with RIN 凛.)
 - **Skin:** Eastern Mind blade/spirit extractions. Polished steel grays, shrine-vermillion accents.
 - **Archetype:** The wildcard. High-risk tools, stance complexity.
 
 ### 7. RETSU — The Violent Soul
 - **Nature:** 烈 — violence, intensity. A soul of pure destructive force. The Helix Palace's Destruction room made flesh.
 - **Fighting style:** Bryan Fury's kickboxing (Tekken) — brutal, bone-breaking, no wasted motion. Every hit is meant to end the fight.
-- **Body donor:** Bryan Fury TMD — scarred, heavy, military.
+- **Body donor:** Bryan Fury TMD — scarred, heavy, military (legacy attire, last; extraction pending teardown).
+- **Default body:** `game/assets/models/retsu-body.glb` — T7-style Bryan (RigModels fan rip, via Skull's T7 model).
 - **Skin:** Eastern Mind destruction-sprite extractions. Charcoal blacks, molten cracks (Metal force).
 - **Archetype:** The bruiser. Counter-hit monster.
 
 ### 8. ZEN — The Still Soul
 - **Nature:** 禅 — meditation, stillness. A soul that barely moves — and doesn't need to. The calm center of the storm.
 - **Fighting style:** Julia Chang's Xingyiquan (Tekken) — internal martial art, minimal movement, explosive short power. Stillness that kills.
-- **Body donor:** Julia Chang TMD — compact, grounded.
+- **Body donor:** Julia Chang TMD — compact, grounded (legacy attire, last; extraction pending teardown).
+- **Default body:** `game/assets/models/zen-body.glb` — T7-style Julia (RigModels fan rip, via Nightwolf's T7 model).
 - **Skin:** Eastern Mind meditation-sprite extractions. Temple-stone grays, incense-smoke whites (Earth force).
 - **Archetype:** The counter-fighter. Punish, don't chase.
 
@@ -70,6 +79,7 @@ Nine fighters. Each is a lost soul of Tong-Nou. Each soul's **body** is a Tekken
 - **Nature:** 行 — going, action, motion itself. A soul that cannot stop moving. Speed as identity.
 - **Fighting style:** Hwoarang's Taekwondo (Tekken) — kick-dominant, constantly advancing, stance-switching pressure.
 - **Body donor:** Hwoarang TMD — lean, fast, aggressive posture.
+- **Default body:** PENDING — no T7-style Hwoarang model exists yet (not in PR #170). Needs T6/TTT2 extraction. T3 TMD remains the documented body until then.
 - **Skin:** Eastern Mind wind/motion extractions. Storm grays, lightning whites (Wood force — the growing, reaching element).
 - **Archetype:** The speedster. Frame-trap pressure.
 
