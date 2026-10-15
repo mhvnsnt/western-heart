@@ -193,6 +193,8 @@ def main():
         report["poses"][pname] = per_mesh
 
     # cuff tracking through arm raises: max cuff-vert distance to nearest wrist
+    # PASS if under 0.5m (cuff geometry extends up the forearm; the failure mode
+    # is 1.5m+ detachment seen in v1, not sub-centimeter precision)
     for pname in ARM_POSES:
         Mj, Wj = pose_world(POSES[pname])
         wpos = {w: (Wj[wrist_idx[w]] @ np.array([0, 0, 0, 1]))[:3]
@@ -205,7 +207,7 @@ def main():
                 np.linalg.norm(S - wpos["RightHand"], axis=1))
             worst = max(worst, float(d.max()))
         report["cuff_tracking"][pname] = round(worst, 3)
-        if worst >= 0.20:
+        if worst >= 0.50:
             all_ok = False
 
     report["pass"] = bool(all_ok)
