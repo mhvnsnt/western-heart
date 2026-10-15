@@ -34,7 +34,7 @@ Owner assigns. Fill the WH Name column from the mat-legends worksheet.
 
 | Slot | Has alt | Likely role | WWE Identity | WH Name |
 |---|---|---|---|---|
-| 000 | _0,_1 | roster? | PENDING | PENDING |
+| 000 | _0,_1 | roster | **Triple H** (confirmed 2026-10-15: hhh_ textures) | PENDING |
 | 001 | _0,_1 | roster? | PENDING | PENDING |
 | ... | ... | ... | ... | ... |
 
