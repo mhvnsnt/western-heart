@@ -28,7 +28,12 @@ function show(name) {
   if (screens[name]) screens[name].classList.add('active');
   // Tekken 99s select timer: runs only on the select screen, and only once the
   // ~30MB assets are loaded — slow phones don't lose selection time to loading.
-  if (name === 'select') maybeStartSelectTimer();
+  if (name === 'select') {
+    maybeStartSelectTimer();
+    // Start downloading both fighter models the moment select opens —
+    // by the time the user picks and hits CONFIRM, they're usually cached.
+    assets.preloadAll();
+  }
   else { selectTimerArmed = false; stopSelectTimer(); }
 }
 
@@ -335,8 +340,15 @@ async function startFight(playerId, enemyId) {
   try {
     if (hint) hint.textContent = 'Entering the arena…';
     if (confirmBtn) confirmBtn.disabled = true;
-    await assets.loadModels(need, (p) => {
-      if (hint) hint.textContent = `Entering the arena… ${Math.round(p * 100)}%`;
+    await assets.loadModels(need, (p, loaded, total) => {
+      if (!hint) return;
+      if (loaded && total) {
+        const mbL = (loaded / 1048576).toFixed(1);
+        const mbT = (total / 1048576).toFixed(1);
+        hint.textContent = `Entering the arena… ${mbL}/${mbT} MB`;
+      } else {
+        hint.textContent = `Entering the arena… ${Math.round(p * 100)}%`;
+      }
     });
     // Load REAL T3 animation clips (Grok's decoded T3 King motion).
     // Non-blocking for fight start; fighters use procedural fallback until ready.
