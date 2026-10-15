@@ -86,10 +86,11 @@ renamed files correctly (not just renamed on disk).
 - **Have:** Game safe on release (549MB)
 - **Need:** Full extraction (bitmaps, stage art, 3D, audio)
 
-### iron-tag (TTT2) — ~15%
-- **Have:** 26/26 chunks on release, docs (59 fighters, 29 stages)
-- **Need:** Download + STFS extraction (13.3GB)
-- **Blocker:** Downloading; needs 27GB disk for extraction
+### iron-tag (TTT2) — ~15% → teardown in progress
+- **Have:** 26/26 chunks on release `ttt2-7z-v1`, docs (59 fighters, 29 stages), STFS/GoD tooling (zarmanager pure-Python), custom XDVDFS parser (`tools/xdvdfs_reader.py`), surgical GoD pull tool (`tools/god_surgical.py`), STFS blob tool (`tools/stfs_blobs.py`)
+- **Need:** 13.3GB reassembly (1/26 chunks, PAUSED for disk emergency — resume at <80%), then surgical extraction: GoD header + DataXXXX on demand → XDVDFS walk → per-fighter model/moveset pull. NO 27GB full extraction needed (surgical approach).
+- **Blocker:** Disk emergency 2026-10-15 (was 95%, recovering). TeraBox upload blocked (needs owner sign-in for browser session).
+- **Rename plan:** `teardown/tekken-tag-tournament-2/` → `teardown/iron-tag/`; extracted fighter data → `teardown/iron-tag/fighters/<fighter>/`; 59 fighters keep original names as donor refs (per ROSTER.md convention).
 
 ### ninja-heart (DOA4) — ~15%
 - **Have:** 30/30 chunks on release (7.8GB)
