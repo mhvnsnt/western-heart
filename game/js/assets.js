@@ -74,7 +74,14 @@ class AssetManager {
           });
           resolve();
         },
-        undefined,
+        (xhr) => {
+          // Byte-level download progress: xhr.loaded / xhr.total
+          if (xhr.total > 0 && onProgress) {
+            const frac = done / Math.max(need.length, 1);
+            const thisFrac = xhr.loaded / xhr.total / Math.max(need.length, 1);
+            onProgress(Math.min(frac + thisFrac, 1), xhr.loaded, xhr.total, id);
+          }
+        },
         (err) => { clearTimeout(timer); reject(err); }
       );
     });
@@ -106,6 +113,13 @@ class AssetManager {
     this._prefetching.add(id);
     this.loadModels([id]).catch(e => console.warn('[WH] prefetch failed:', id, e.message || e))
       .finally(() => this._prefetching.delete(id));
+  }
+
+  // Preload both base models the moment the select screen opens.
+  // All 36 fighters use pantera or demonio bases, so warming both here
+  // means CONFIRM rarely waits on a download.
+  preloadAll() {
+    for (const id of Object.keys(MODEL_URLS)) this.prefetch(id);
   }
 
   /* { model, bones, mixer, actions } for one fighter.
