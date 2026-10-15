@@ -286,6 +286,12 @@ def limb_separate(names, ibm, Pw, Dw, Adj=None):
                 break
         print("limb_separate: arm cut height", round(float(ylim), 3), file=sys.stderr)
         body = set(np.argsort(-sz)[:1])  # largest = legs+hips column
+        if not body:
+            # Small/above-hips primitive: no verts below the cut. Skip loudly
+            # instead of crashing with StopIteration. Merge-audit fix 2026-10-15.
+            print("limb_separate: no below-cut verts (small/above-hips primitive); "
+                  "skipping arm-cut loudly", file=sys.stderr)
+            return Dw, int(moved), "no_below_cut_verts"
         armsegs = [(k, sg) for k, sg in enumerate(segs) if sg[3]]
         allseg = [(b_, a_, c_) for _, (b_, a_, c_, _) in armsegs]
         for c in range(ncs):
