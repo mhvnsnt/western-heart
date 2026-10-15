@@ -12,13 +12,10 @@ import { loadRealMovesets } from './fighter.js';
 import { loadT3Clips } from './t3anims.js';
 import * as THREE from 'three';
 import { whUiEnabled, mountWhUi } from './ui-wh-bridge.js';
-import { getCustomFighter, customFighterToRoster, preloadMoveDatabase } from './custom-fighter.js';
+import { getCustomFighter, customFighterToRoster } from './custom-fighter.js';
 
 // Load REAL Tekken 3 moveset data (not hand-written frame data)
 loadRealMovesets();
-
-// Preload custom moveset DB so CAW fighters resolve moves synchronously
-preloadMoveDatabase();
 
 const screens = {
   menu:   document.getElementById('screen-menu'),
