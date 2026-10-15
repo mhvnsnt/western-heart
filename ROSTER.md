@@ -12,7 +12,8 @@ Nine fighters. Each is a lost soul of Tong-Nou. Each soul's **body** is a Tekken
 ### 1. RIN — The Protagonist Soul
 - **Nature:** 凛 — dignified, cold, self-possessed. The soul the player begins as. Remembers nothing but the trial.
 - **Fighting style:** Mishima-style karate (Tekken: Jin Kazama's moveset) — precise, fundamental, the "honest" style. Rin is the baseline every other soul deviates from.
-- **Body donor:** Jin Kazama TMD — young fighter's build, unadorned. **PENDING better model** (no Jin Kazama in T7-style set; awaiting T6/TTT2 extraction).
+- **Body donor:** Jin Kazama TMD — young fighter's build, unadorned (legacy attire, last; extraction pending teardown).
+- **Default body:** `game/assets/models/rin-body.glb` — T7-style Jin (RigModels fan rip, via Demonio's T7 model).
 - **Skin:** Eastern Mind protagonist-sprite extractions. Cold blue-white palette (kimono-dye winter tones).
 - **Archetype:** The shoto. Balanced. The soul learning itself.
 
