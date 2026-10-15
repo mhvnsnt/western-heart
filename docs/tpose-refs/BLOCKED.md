@@ -20,3 +20,10 @@ Per MUSE_TPOSE_SPEC: skip a broken rig and write down why. Don't hand-fix the me
 - zui p3 (steve-fox-alt): entire dir is a byte-identical duplicate of `steve-fox`
   (same FBX md5 60c8842952b012385c9c4a2405dbbf47, `diff -rq` clean). Not a real alt —
   zui ships p2 only.
+- saku-ra p1-alt (xiaoyu/YKV2HEPB9YHUGOB7GDW054BUL.fbx): baked victory pose (peace signs,
+  knee up), zero armatures — cannot T-pose via skeleton; mesh editing forbidden. BLOCKED-baked-pose.
+- saku-ra p2 (xiaoyu-pink-dress): FBX byte-identical to xiaoyu's and renders pixel-identical
+  (both are the pink "bonbon/china" dress). Not a real alt — saku-ra ships the single T-posed
+  attire as p1.
+- saku-ra p3 (xiaoyu-t8): rar contains only PhoenixDress.obj which extracted 0-byte
+  (extraction errors). BLOCKED-no-usable-model.
