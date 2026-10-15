@@ -128,3 +128,126 @@ renamed files correctly (not just renamed on disk).
 - [ ] Game boots, fights load, fighters visible and animating
 - [ ] No duplicate downloads (this map prevented re-pulls)
 - [ ] DELETE THIS FILE
+
+---
+
+## Character Name Mapping (original → WH proprietary)
+
+Owner creates all proprietary character names. Status: `NEEDED` = awaiting owner;
+`PENDING` = assigned, rename not applied; `DONE` = renamed + verified.
+
+### virtual-soul (Virtua Fighter 5) — 18 fighters, release `vf5-ps3-v1`
+
+| Original | File code | WH name | Status |
+|---|---|---|---|
+| Akira Yuki | `aki` | — | NEEDED |
+| Pai Chan | `pai` | — | NEEDED |
+| Lau Chan | `lau` | — | NEEDED |
+| Wolf Hawkfield | `wol` | — | NEEDED |
+| Jeffry McWild | `jef` | — | NEEDED |
+| Kage-Maru | `kag` | — | NEEDED |
+| Sarah Bryant | `sar` | — | NEEDED |
+| Jacky Bryant | `jak` | — | NEEDED |
+| Shun Di | `shu` | — | NEEDED |
+| Lion Rafale | `lio` | — | NEEDED |
+| Aoi Umenokouji | `aoi` | — | NEEDED |
+| Lei-Fei | `lei` | — | NEEDED |
+| Vanessa Lewis | `van` | — | NEEDED |
+| Brad Burns | `bra` | — | NEEDED |
+| Goh Hinogami | `goh` | — | NEEDED |
+| Eileen | `mon` | — | NEEDED |
+| El Blaze | `msk` | — | NEEDED |
+| Dural | `dur` | — | NEEDED |
+
+Stages (38 `stg*.farc`): stage WH names NEEDED —
+`stgare stgaur stgban stgbar stgcas stgcid stgdjo stgdu1 stgdu2 stgdu3 stgdu4 stgdur
+stghai stgjin stgnyc stgriv stgsin stgslk stgtak stgtan stgter stgtr2 stgtr3 stgtr4
+stgtr5 stgtr6 stgtr7 stgtr8 stgtr9 stgtrm stgtrn stgtrs stgts2 stgts3 stgtst stgumi
+stgwht stgyuk`.
+
+### dragon-strike — Street Fighter EX Plus Alpha (PS1, SLUS_005.48) — 23 fighters
+
+| Original | WH name | Status |
+|---|---|---|
+| Ryu | — | NEEDED |
+| Ken Masters | — | NEEDED |
+| Chun-Li | — | NEEDED |
+| Guile | — | NEEDED |
+| Zangief | — | NEEDED |
+| Dhalsim | — | NEEDED |
+| Sakura Kasugano | — | NEEDED |
+| M. Bison | — | NEEDED |
+| Akuma | — | NEEDED |
+| Evil Ryu | — | NEEDED |
+| Allen Snider | — | NEEDED |
+| Blair Dame | — | NEEDED |
+| Cracker Jack | — | NEEDED |
+| Darun Mister | — | NEEDED |
+| Doctrine Dark | — | NEEDED |
+| Garuda | — | NEEDED |
+| Hokuto | — | NEEDED |
+| Kairi | — | NEEDED |
+| Pullum Purna | — | NEEDED |
+| Skullomania | — | NEEDED |
+| Bloody Hokuto | — | NEEDED |
+| Cycloid Beta | — | NEEDED |
+| Cycloid Gamma | — | NEEDED |
+
+### dragon-strike — Street Fighter EX2 Plus (PS1, SLUS_011.05) — 24 fighters, release `sf-ex2-plus-v1`
+
+| Original | WH name | Status |
+|---|---|---|
+| Ryu | — | NEEDED |
+| Ken Masters | — | NEEDED |
+| Chun-Li | — | NEEDED |
+| Guile | — | NEEDED |
+| Zangief | — | NEEDED |
+| Dhalsim | — | NEEDED |
+| Blanka | — | NEEDED |
+| Vega | — | NEEDED |
+| Sagat | — | NEEDED |
+| M. Bison | — | NEEDED |
+| Cracker Jack | — | NEEDED |
+| Darun Mister | — | NEEDED |
+| Doctrine Dark | — | NEEDED |
+| Garuda | — | NEEDED |
+| Hokuto | — | NEEDED |
+| Kairi | — | NEEDED |
+| Nanase | — | NEEDED |
+| Hayate | — | NEEDED |
+| Pullum Purna | — | NEEDED |
+| Sharon | — | NEEDED |
+| Skullomania | — | NEEDED |
+| Shadow Geist | — | NEEDED |
+| Area | — | NEEDED |
+| Vulcano Rosso | — | NEEDED |
+
+### dragon-strike — Street Fighter EX3 (PS2, SLUS_201.30)
+
+Roster inventory pending `PS2.DAT` (604MB) format RE. WH names NEEDED once decoded.
+
+### underground-brawl (Def Jam: Fight for NY) — 78 fighter records
+
+Records live in `mhvnsnt/wrestling-game` (`teardown/def-jam-fight-for-ny/`, PR #2).
+WH names NEEDED (owner to create); roster to be transcribed here once assigned.
+
+*Character tables added 2026-10-14 (wh-sf-dj-vf-100 lane).*
+
+### iron-apex (Tekken 8) — public hunt 2026-10-14 (wh-t7t8-hunt)
+
+First T8 models pulled from public modding sources (SFMLab, DeviantArt).
+Dir rename `teardown/tekken8/` → `teardown/iron-apex/` is Phase 4 (separate PR).
+
+| Original | WH name | Status |
+|---|---|---|
+| Yoshimitsu (T8 S1, WhiteMageSunny Blender 4.x) | **PHANTOM** | DONE (`teardown/tekken8/models/PHANTOM-t8-yoshimitsu-s1.7z`) |
+| Asuka Kazama (T8, SFMLab/Mokujinh SFM port) | — | NEEDED (`teardown/tekken8/models/asuka-kazama-t8_SFM.rar`) |
+| Heihachi Mishima (T8 S1, WhiteMageSunny raw FBX) | **DIABLO** | PENDING (partial download, resumes) |
+| Xiaoyu (T8, Sticklove) | **SAKU RA** | PENDING (not yet pulled) |
+
+### iron-prime (Tekken 7) — public hunt 2026-10-14 (wh-t7t8-hunt)
+
+| Original | WH name | Status |
+|---|---|---|
+| Mishima Dojo stage (open3dlab Blender port, 2024 map) | — | NEEDED (`teardown/tekken7/arenas/mishima-dojo_2024-map.rar`) |
+| Mishima Dojo full bundle 2021 (map+textures, 257MB) | — | NEEDED — TeraBox only (over GitHub 100MB/file; see `teardown/TEARDOWN-SOURCES.md`) |
