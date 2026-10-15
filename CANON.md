@@ -406,6 +406,8 @@ Each soul has a **nature** — a kanji, a meaning, a way of moving through the w
 | ZEN | 禅 | Stillness. Barely moves. Doesn't need to. | **Unvesseled** |
 | GYOU | 行 | Motion itself. Cannot stop moving. | **Unvesseled** (a splinter trapped in CYBORG X) |
 
+**Soul bodies (owner order 2026-10-15):** The souls' default bodies have been moved off Tekken 3 TMD extractions to T6/TTT2-or-better (preference T6 > TTT2 > T7-style). 6 of 9 now default to T7-style bodies (RigModels fan rips): RIN → T7 Jin (`rin-body.glb`), SHA → T7 Xiaoyu (`sha-body.glb`), KAI → T7 Eddy (`kai-body.glb`), JIN → T7 Yoshimitsu (`jin-body.glb`), RETSU → T7 Bryan (`retsu-body.glb`), ZEN → T7 Julia (`zen-body.glb`). The T3 TMDs remain as legacy (last attire; extraction pending). BYOU is blocked pending the owner's Lei naming decision; TOU and GYOU await T6/TTT2 extraction. Full map: `docs/souls/SOUL-BODY-REPLACEMENT.md`.
+
 **On the vessels:** A soul does not choose its vessel the way a driver chooses a car. The vessel is the shape the soul's nature takes when the trial calls it. Demonio *is* what RIN looks like when RIN has to fight. This is why the fighters feel inevitable — they are.
 
 **On Waterfall:** She carries no single soul. She carries the *grief* of all nine — the pain of fragmentation itself. This is why she weeps and why the weeping never stops.
