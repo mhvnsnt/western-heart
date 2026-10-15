@@ -67,16 +67,25 @@ meshes = [o for o in bpy.context.scene.objects if o.type == "MESH"
           and any(m.type == "ARMATURE" for m in o.modifiers)]
 if not meshes:
     meshes = [o for o in bpy.context.scene.objects if o.type == "MESH"]
-main = max(meshes, key=lambda o: len(o.data.polygons))
-print("refit: armature", arm.name, "| main mesh", main.name,
-      len(main.data.vertices), "verts", file=sys.stderr)
+assert meshes, "no meshes found in " + IN
+print("refit: armature", arm.name, "| meshes",
+      [(m.name, len(m.data.polygons)) for m in meshes], file=sys.stderr)
 
-# evaluated mesh (armature at rest = identity, but be correct anyway)
+# evaluated meshes -> ONE combined BVH in world space.
+# (Do NOT fit against the largest mesh only: on multi-mesh models the largest
+# mesh can be an accessory -- e.g. Pantera's gloves -- which corrupts the
+# refit. Merge-audit fix 2026-10-15.)
 deps = bpy.context.evaluated_depsgraph_get()
 ev = arm.evaluated_get(deps)  # noqa: F841 (keeps depsgraph honest)
-me = main.evaluated_get(deps).to_mesh()
-bvh = BVHTree.FromPolygons(
-    [v.co for v in me.vertices], [list(p.vertices) for p in me.polygons])
+all_verts, all_polys = [], []
+for mo in meshes:
+    mev = mo.evaluated_get(deps).to_mesh()
+    mw = mo.matrix_world
+    base = len(all_verts)
+    all_verts.extend([mw @ v.co for v in mev.vertices])
+    all_polys.extend([[vi + base for vi in p.vertices] for p in mev.polygons])
+    mo.evaluated_get(deps).to_mesh_clear()
+bvh = BVHTree.FromPolygons(all_verts, all_polys)
 
 def want(bone_name):
     nn = norm(bone_name)
@@ -147,7 +156,7 @@ def move_joint(eb, new_p_world):
         eb.head = inv @ new_p_world
 
 
-report = {"in": IN, "out": OUT, "armature": arm.name, "mesh": main.name,
+report = {"in": IN, "out": OUT, "armature": arm.name, "meshes": [m.name for m in meshes],
           "max_disp": MAX_DISP, "joints": []}
 moved, outliers = 0, 0
 
@@ -188,7 +197,7 @@ try:
 finally:
     bpy.ops.object.mode_set(mode="OBJECT")
 
-main.evaluated_get(deps).to_mesh_clear()
+# (combined BVH meshes were cleared per-mesh above; nothing left to clear)
 
 report["moved"] = moved
 report["outliers"] = outliers
