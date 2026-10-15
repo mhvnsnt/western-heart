@@ -64,7 +64,10 @@ class Yobj:
             o = base + s*64
             name = d[o:o+16].split(b'\x00')[0].decode('ascii','replace')
             p = u32(d, o+16)
-            parent = -1 if p == 0xFFFFFFFF else p-1
+            # parent field is 0-based slot index (0xFFFFFFFF=none); slot 0 is the
+            # 'null' sentinel, so the root bone ('Bip', slot 1) has parent_raw=0.
+            # (Earlier revs used p-1 "1-based" — wrong: raw data shows 0-based.)
+            parent = -1 if p == 0xFFFFFFFF else p
             pos = [f32(d,o+20+i*4) for i in range(3)]
             eul = [f32(d,o+32+i*4) for i in range(3)]
             length = f32(d,o+44)
@@ -98,8 +101,9 @@ class Yobj:
         idx = 0
         while o + 8 <= len(d):
             c1 = d[o+1]; off = u32(d, o+4)
-            # stop at garbage (offset beyond file)
-            if self.base + off >= len(d) and c1 != 0:
+            # stop at garbage (offset beyond file) — also catches the
+            # terminator/padding record (u8 count=0, garbage offset)
+            if self.base + off >= len(d):
                 break
             if c1 == 0 and off == 0:
                 o += 8; idx += 1; continue
