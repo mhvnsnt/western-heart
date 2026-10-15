@@ -61,6 +61,22 @@ def find_tex_file(mat_name, texdir):
     return None
 
 tex_report = {"recovered": 0, "missing": []}
+
+
+def diffuse_node(nt):
+    """Prefer the TEX_IMAGE feeding Principled Base Color, else the first one."""
+    bsdf = next((n for n in nt.nodes if n.type == "BSDF_PRINCIPLED"), None)
+    if bsdf is not None:
+        for link in nt.links:
+            if link.to_node == bsdf and link.to_socket.name == "Base Color":
+                if link.from_node.type == "TEX_IMAGE":
+                    return link.from_node
+    for n in nt.nodes:
+        if n.type == "TEX_IMAGE":
+            return n
+    return None
+
+
 for mat in bpy.data.materials:
     if not mat.use_nodes:
         mat.use_nodes = True
@@ -68,26 +84,48 @@ for mat in bpy.data.materials:
     out = next((n for n in nt.nodes if n.type == "OUTPUT_MATERIAL"), None)
     if out is None:
         continue
-    img_node = next((n for n in nt.nodes
-                     if n.type == "TEX_IMAGE" and n.image and n.image.has_data), None)
-    if img_node is None:
-        # official-script recovery: T_<base>_C.tga
-        base = re.sub(r'^MI_', '', mat.name)
-        cand = [f for suf in ("_C", "_D", "_BC", "_ALB")
-                for f in glob.glob(os.path.join(texdir, "T_" + base + suf + ".tga"))]
-        if not cand:
-            f1 = find_tex_file(mat.name, texdir)
-            if f1:
-                cand = [f1]
-        if cand:
+    img_node = diffuse_node(nt)
+    if img_node is not None and img_node.image is None:
+        # no image at all: try material-name-derived filename
+        f1 = find_tex_file(mat.name, texdir)
+        if f1 and os.path.isfile(f1):
             try:
-                img = bpy.data.images.load(cand[0])
-                img_node = nt.nodes.new("ShaderNodeTexImage")
-                img_node.image = img
+                img_node.image = bpy.data.images.load(f1)
                 tex_report["recovered"] += 1
             except Exception:
+                pass
+    if img_node is not None and img_node.image is not None:
+        # NOTE: image.has_data is unreliable in background mode (False even for
+        # valid files); Cycles reads the file at render time, so only the
+        # filepath matters. Recover when the referenced file is not loadable.
+        ipath = (img_node.image.filepath or "").strip()
+        needs_recovery = ipath.startswith("http") or not os.path.isfile(ipath)
+        if needs_recovery:
+            # recover: try basename of the referenced path (often a rigmodels.com URL),
+            # then T_<base>_C.tga, then material-name-derived filename
+            cands = []
+            bn = os.path.basename(ipath.rstrip("/"))
+            if bn:
+                cands.append(os.path.join(texdir, bn))
+            base = re.sub(r'^MI_', '', mat.name)
+            cands += [f for suf in ("_C", "_D", "_BC", "_ALB")
+                      for f in glob.glob(os.path.join(texdir, "T_" + base + suf + ".tga"))]
+            f1 = find_tex_file(mat.name, texdir)
+            if f1:
+                cands.append(f1)
+            loaded = False
+            for cpath in cands:
+                if os.path.isfile(cpath):
+                    try:
+                        img_node.image = bpy.data.images.load(cpath)
+                        loaded = True
+                        tex_report["recovered"] += 1
+                        break
+                    except Exception:
+                        continue
+            if not loaded:
                 img_node = None
-    if img_node is None:
+    if img_node is None or img_node.image is None:
         tex_report["missing"].append(mat.name)
         continue
     em = nt.nodes.new("ShaderNodeEmission")
@@ -99,6 +137,8 @@ for mat in bpy.data.materials:
         pass
 report["textures"] = tex_report
 print("TEXTURES recovered=%d missing=%d" % (tex_report["recovered"], len(tex_report["missing"])))
+if tex_report["missing"]:
+    print("  missing:", tex_report["missing"][:10])
 
 # --- force T-pose via skeleton ---
 def side_of(n):
