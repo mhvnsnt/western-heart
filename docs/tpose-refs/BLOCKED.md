@@ -17,3 +17,6 @@ Per MUSE_TPOSE_SPEC: skip a broken rig and write down why. Don't hand-fix the me
   mod formats, not FBX/GLB/blend. 7z reports "Unsupported Method" on both; extracted 0-byte.
 - The dir README promises `heihachi-young-t7.blend` (Open3DLab, 8.6MB) but the file was never
   downloaded into the dir. Needs a fresh pull from Open3DLab before diablo can render.
+- zui p3 (steve-fox-alt): entire dir is a byte-identical duplicate of `steve-fox`
+  (same FBX md5 60c8842952b012385c9c4a2405dbbf47, `diff -rq` clean). Not a real alt —
+  zui ships p2 only.
