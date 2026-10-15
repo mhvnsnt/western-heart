@@ -1,11 +1,22 @@
 """PANTERA entrance kit v1 — Blender scene build + render (v4: clean rebuild).
 Blender 4.0.2 headless. Starts from pantera_rigged_working.blend
 (rig rebuilt from glTF inverse bind matrices; deform verified identity at rest).
+For the repaired v3 model (armpit de-bleed), point PANTERA_BLEND at
+pantera_rigged_working_v3.blend (18/18 mesh weight hashes == v3 GLB).
 Character faces -Y (verified). Cameras on -Y side. Armature animated directly.
 Usage:
   blender -b -P build_v1.py -- --mode probe   # 4 frames/shot @50% -> /tmp/pantera-probe/
   blender -b -P build_v1.py -- --mode full    # 1500 frames 1920x1080 -> build/frames_v1/
 All motion authored procedurally (GLB Walk/Run actions are empty; Idle unused).
+Env overrides (Kaggle GPU lane):
+  PANTERA_WH       kit root (default /home/hatch/workspace/wh-kit)
+  PANTERA_KIT      kit dir (default $PANTERA_WH/wh/promo/pantera-entrance-v1)
+  PANTERA_BLEND    .blend to open (default $PANTERA_WH/pantera_rigged_working.blend)
+  PANTERA_TRON     titantron PNG (default $PANTERA_KIT/assets/titantron_plate_1920.png)
+  PANTERA_FRAMES   frame output dir (default $PANTERA_KIT/build/frames_v1)
+  PANTERA_DEVICE   CPU (default) | CUDA
+  PANTERA_SAMPLES  samples override (default 8 probe / 16 full)
+  PANTERA_F0/PANTERA_F1  render only this inclusive frame range (chunk renders)
 """
 import bpy, sys, os, math
 from mathutils import Vector, Matrix
@@ -16,12 +27,19 @@ for i, a in enumerate(argv):
     if a == "--mode" and i + 1 < len(argv):
         MODE = argv[i + 1]
 
-WH = "/home/hatch/workspace/wh-kit"
-KIT = WH + "/wh/promo/pantera-entrance-v1"
-BLEND = WH + "/pantera_rigged_working.blend"
-TRON_TEX = KIT + "/assets/titantron_plate_1920.png"
-FRAMES = KIT + "/build/frames_v1"
-PROBE_DIR = "/tmp/pantera-probe"
+WH = os.environ.get("PANTERA_WH", "/home/hatch/workspace/wh-kit")
+KIT = os.environ.get("PANTERA_KIT", WH + "/wh/promo/pantera-entrance-v1")
+BLEND = os.environ.get("PANTERA_BLEND", WH + "/pantera_rigged_working.blend")
+TRON_TEX = os.environ.get("PANTERA_TRON", KIT + "/assets/titantron_plate_1920.png")
+FRAMES = os.environ.get("PANTERA_FRAMES", KIT + "/build/frames_v1")
+PROBE_DIR = os.environ.get("PANTERA_PROBE_DIR", "/tmp/pantera-probe")
+# Kaggle chunk overrides: render only [PANTERA_F0, PANTERA_F1] (inclusive).
+# Scene is still built+baked in full (procedural, deterministic).
+CHUNK_F0 = int(os.environ["PANTERA_F0"]) if "PANTERA_F0" in os.environ else None
+CHUNK_F1 = int(os.environ["PANTERA_F1"]) if "PANTERA_F1" in os.environ else None
+# Compute device: "CPU" (default) or "CUDA" (Kaggle T4)
+DEVICE = os.environ.get("PANTERA_DEVICE", "CPU").upper()
+SAMPLES = int(os.environ.get("PANTERA_SAMPLES", "0")) or (8 if MODE == "probe" else 16)
 FPS, F_END = 30, 1499
 
 SHOTS = [
@@ -33,8 +51,26 @@ SHOTS = [
 bpy.ops.wm.open_mainfile(filepath=BLEND)
 sc = bpy.context.scene
 sc.render.engine = 'CYCLES'
-sc.cycles.device = 'CPU'
-sc.cycles.samples = 8 if MODE == "probe" else 16
+if DEVICE == "CUDA":
+    try:
+        cprefs = bpy.context.preferences.addons['cycles'].preferences
+        cprefs.compute_device_type = 'CUDA'
+        cprefs.get_devices()
+        gpus = [d for d in cprefs.devices if d.type == 'CUDA']
+        for d in cprefs.devices:
+            d.use = (d.type == 'CUDA')
+        if gpus:
+            sc.cycles.device = 'GPU'
+            print("CUDA devices:", [d.name for d in gpus], flush=True)
+        else:
+            sc.cycles.device = 'CPU'
+            print("PANTERA_DEVICE=CUDA but no CUDA device found; using CPU", flush=True)
+    except Exception as e:
+        sc.cycles.device = 'CPU'
+        print("CUDA setup failed:", e, "; using CPU", flush=True)
+else:
+    sc.cycles.device = 'CPU'
+sc.cycles.samples = SAMPLES
 sc.cycles.use_denoising = True
 sc.cycles.max_bounces = 3
 sc.cycles.min_bounces = 1
@@ -431,10 +467,13 @@ if MODE == "probe":
             bpy.ops.render.render(write_still=True)
             print("probe", name, f, flush=True)
 else:
-    for f in range(0, F_END + 1):
+    rf0 = CHUNK_F0 if CHUNK_F0 is not None else 0
+    rf1 = CHUNK_F1 if CHUNK_F1 is not None else F_END
+    print(f"rendering frames {rf0}-{rf1} -> {FRAMES}", flush=True)
+    for f in range(rf0, rf1 + 1):
         sc.frame_set(f)
         sc.render.filepath = f"{FRAMES}/f{f:05d}.png"
         bpy.ops.render.render(write_still=True)
-        if f % 100 == 0:
+        if f % 25 == 0:
             print("frame", f, flush=True)
 print("DONE", MODE, flush=True)
