@@ -77,6 +77,10 @@ def main():
                     help="Show splits without queueing")
     ap.add_argument("--max-parallel", type=int, default=None,
                     help="Set queue max_parallel (default: leave unchanged)")
+    ap.add_argument("--save-dataset-base", default="",
+                    help="Base slug for bulletproof per-split save datasets, "
+                         "e.g. marsfmmg/pantera-v4-outputs -> "
+                         "marsfmmg/pantera-v4-outputs-s0, -s1, ...")
     args = ap.parse_args()
 
     if not os.path.exists(NOTEBOOK):
@@ -115,8 +119,25 @@ def main():
             f"# === PARALLEL SPLIT {i} (injected by render_parallel.py) ===\n"
             f"FRAME_START = {s0}\n"
             f"FRAME_END = {s1}\n"
+            f"SAVE_SEGMENTS = 1\n"
             f'print(f\"parallel split {i}: frames {{FRAME_START}}-{{FRAME_END}}\")\n'
         ]
+        datasets = [d for d in args.datasets.split(",") if d]
+        save_dataset = ""
+        if args.save_dataset_base:
+            # One save dataset per split: a dead split never affects others,
+            # and each split's single segment keeps the v4 zip naming stable.
+            save_dataset = f"{args.save_dataset_base}-s{i}"
+            if kq.ensure_save_dataset(save_dataset):
+                datasets.append(save_dataset)
+                pre_cells.append(
+                    "import os\n"
+                    f'os.environ["KAGGLE_SAVE_DATASET"] = "{save_dataset}"\n'
+                    f'print("bulletproof save dataset: {save_dataset}")\n'
+                )
+            else:
+                print(f"WARNING: save dataset {save_dataset} not ensured; "
+                      f"split {i} runs WITHOUT bulletproof saving")
         job = {
             "id": job_id,
             "title": f"{args.title} split {i}/{args.splits} (f{s0:05d}-{s1:05d})",
@@ -124,7 +145,8 @@ def main():
             "status": "pending",
             "gpu": True,
             "internet": True,
-            "datasets": [d for d in args.datasets.split(",") if d],
+            "datasets": datasets,
+            "save_dataset": save_dataset,
             "pre_cells": pre_cells,
             "output_dir": os.path.join(OUTPUT_BASE, job_id),
             "expected_outputs": [f"pantera_v4_f{s0:05d}-{s1:05d}.zip"],
