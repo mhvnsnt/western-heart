@@ -1,0 +1,1 @@
+@/tmp/tekken-docs/teardown/tekken6-customization-research.md
