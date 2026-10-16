@@ -12,9 +12,9 @@
 //       } }
 //   ]
 // }
-// Materials are matched by glTF material name. Variant[0] keeps originals; later
-// variants clone + override. Output keeps ONE mesh set — variants switch at runtime
-// (three.js: scene.getObjectByProperty + KHR_materials_variants selectVariant).
+// Materials are matched by glTF material name. The first variant keeps the original
+// materials; later variants clone + override. Output keeps ONE mesh set — variants
+// switch at runtime (three.js: object.userData.variantNames + selectVariant extension).
 import { readFileSync } from 'node:fs';
 import { NodeIO } from '@gltf-transform/core';
 import { ALL_EXTENSIONS, KHRMaterialsVariants } from '@gltf-transform/extensions';
@@ -31,8 +31,6 @@ const spec = JSON.parse(readFileSync(specPath, 'utf8'));
 const root = doc.getRoot();
 const variantsExt = doc.createExtension(KHRMaterialsVariants);
 
-const matByName = new Map(root.listMaterials().map((m) => [m.getName(), m]));
-
 function applyOverride(mat, ov) {
   if (ov.baseColorFactor) mat.setBaseColorFactor(ov.baseColorFactor);
   if (ov.metallicFactor !== undefined) mat.setMetallicFactor(ov.metallicFactor);
@@ -47,29 +45,30 @@ function applyOverride(mat, ov) {
 }
 
 const variantObjs = spec.variants.map((v) => variantsExt.createVariant(v.name));
+let cloned = 0;
 
 for (const mesh of root.listMeshes()) {
   for (const prim of mesh.listPrimitives()) {
     const baseMat = prim.getMaterial();
     if (!baseMat) continue;
-    const mapping = variantsExt.createMapping();
-    mapping.setVariants(variantObjs);
-    prim.setExtension('KHR_materials_variants', mapping);
-    spec.variants.forEach((v, vi) => {
+    const mappingList = variantsExt.createMappingList();
+    for (let vi = 0; vi < spec.variants.length; vi++) {
+      const v = spec.variants[vi];
       let mat = baseMat;
       const ov = (v.materialOverrides || {})[baseMat.getName()];
       if (ov) {
         mat = baseMat.clone();
         mat.setName(`${baseMat.getName()}__${v.name}`);
         applyOverride(mat, ov);
+        cloned++;
       }
-      mapping.addMaterialVariantMapping
-        ? mapping.addMaterialVariantMapping(mat, variantObjs[vi])
-        : mapping.addMapping(mat, variantObjs[vi]);
-    });
+      const mapping = variantsExt.createMapping().setMaterial(mat).addVariant(variantObjs[vi]);
+      mappingList.addMapping(mapping);
+    }
+    prim.setExtension('KHR_materials_variants', mappingList);
   }
 }
 
 await io.write(outPath, doc);
 console.log(`wrote ${outPath}: ${spec.variants.length} variants, ` +
-  `${root.listMaterials().length} materials, ${root.listMeshes().length} meshes`);
+  `${cloned} cloned materials, ${root.listMeshes().length} meshes`);
