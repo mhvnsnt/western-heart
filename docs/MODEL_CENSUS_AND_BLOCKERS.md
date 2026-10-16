@@ -1,12 +1,36 @@
-# Western Heart — Model Census & Blockers
+# Western Heart — Model Census & Blockers (Updated)
 
 **Status as of 2026-10-16.**  
 Goal: every fighter that exists on disk or in the repo gets a front-facing T-pose render.  
-Standard: [docs/TPOSE_RENDER_STANDARD.md](TPOSE_RENDER_STANDARD.md) (camera on −X, scale ×100, centered, gray bg).
+Standard: [docs/TPOSE_RENDER_STANDARD.md](TPOSE_RENDER_STANDARD.md).
+
+## Confirmed Sets (were under-documented)
+
+### Rashid (Street Fighter V)
+- **Location:** `teardown/street-fighter-5/models/rashid/`
+- **Variants:** Default (XPS, 48k verts), Air Man (XPS, 34k verts), SFM (Source .mdl)
+- **Status:** Models present. XPS needs conversion to GLB/FBX before Blender render. SFM is Source engine (needs Crowbar/Blender Source tools).
+- **Note:** Middle Eastern wind fighter. Owner request 2026-10-13.
+
+### Brad Hawk / Urban Reign
+- **Brad Hawk** is the protagonist of Urban Reign (brawler-for-hire, Green Harbor). Not a separate model — he is one of the 72 `char*.ppk` fighters.
+- **Location:** `teardown/urban-reign/`
+- **Extracted:** 72 fighter PPKs (`ppks/chars/char001–char072`), 7 stage PPKs, motion pools, AFS map.
+- **Blocker:** Inner Namco PPK geometry not decoded. All 72 characters are on disk as PPK but not yet renderable as GLB/FBX.
+- **ISO:** Safe on release `urban-reign-iso-v1` (8×500MB parts).
+- **Roster:** 60+ playable fighters (boxing, wrestling, karate, brawling, capoeira, kung fu). Tekken guests: Paul Phoenix, Marshall Law.
+
+### Virtua Fighter 5
+- **Status:** 19 fighters + 38 stages extracted.
+- **Models:** On release `vf5-model-library-v1` (two tar archives: `vf5-models-a.tar`, `vf5-models-b.tar`).
+- **Blocker:** `.farc` extraction tool is Windows-based. Models exist but need conversion to GLB on a Windows box or Linux path.
+- **Docs:** `teardown/virtua-fighter-5/VF5-MODELS-MANIFEST.md`, `TEARDOWN.md`.
+
+### Dead or Alive
+- **DOA6:** Mechanics documented (`teardown/dead-or-alive-6/`). Models blocked — game is ~50GB+, not acquired. Formats: `.g1m` models, `.g1t` textures (community converters exist).
+- **DOA4:** 30/30 chunks on release `doa4-iso-v1` (7.8GB). Needs reassembly + extraction. Sequenced after TTT2 due to disk.
 
 ## Ready to Render (GLB on disk)
-
-These are already `.glb` and can be rendered with the current Blender pipeline:
 
 ### PR #170 roster (roster-integrate-phase1)
 awa-pop, baek, dxmmii, king-tyrant, king-tyrant_alt1, kinpo, kinpo_alt1, lili, n3g4tiv0, nightwolf, pantera_alt1, phantom, purple-rain, rave, saku-ra, saku-ra_alt1, sam-ur-a1, skull, thor, waterfall, zafina (Mariposa), zui_alt1, zui_alt2
@@ -17,78 +41,62 @@ awa-pop, baek, dxmmii, king-tyrant, king-tyrant_alt1, kinpo, kinpo_alt1, lili, n
 - DXMMII, Kinpo, Nightwolf, Rave may still need orientation checks if blank/side-facing.
 
 ### Tekken 3 donors (local)
-t3_bryan, t3_gunjack, t3_xiaoyu, t3_yoshimitsu, t3_jin (soul-models)
+t3_bryan, t3_gunjack, t3_xiaoyu, t3_yoshimitsu, t3_jin
 
-**Notes:**
-- Several render as exploded/fragmented geometry. Likely armature or scale issues. Need re-export or armature-applied versions before they are usable.
-- Flagged previously as BLOCKED-rig in checklist.
-
-### Other local
-rin.glb, zen.glb, skull.glb (soul-tposes)
+**Notes:** Several render as exploded/fragmented geometry. Armature or scale issues. Need re-export or armature-applied versions.
 
 ## Extracted but Not Renderable Yet
 
-These were unpacked from zip/rar but are **Source engine** (`.mdl` / `.vvd` / `.vtx`) or other non-GLB formats. Need conversion (Crowbar, Blender Source tools, or similar) before Blender can import them.
-
-| Archive | Extracted contents | Next step |
-|---------|--------------------|-----------|
-| shaheen.zip | .mdl / .vvd / .vtx + materials | Source → FBX/GLB |
-| jin-t7.zip | (check nested) | Source or FBX conversion |
-| miguel.zip | (check nested) | Source or FBX conversion |
-| nina-revolution.zip | (check nested) | Source or FBX conversion |
-| beast-king.zip | (check nested) | Source or FBX conversion |
-| ganryu-t7-default.zip | (check nested) | Source or FBX conversion |
+| Set | Format | Next step |
+|-----|--------|-----------|
+| Shaheen, Jin T7, Miguel, Nina Revolution, Beast King, Ganryu (from model-pull zips) | Source .mdl / .vvd / .vtx | Source → FBX/GLB |
+| Rashid (XPS + SFM) | XPS + Source .mdl | XPS → GLB; Source → FBX/GLB |
+| Urban Reign (72 chars) | Namco PPK | Decode inner geometry |
+| VF5 (19 fighters) | .farc (Windows tool) | Convert on Windows or find Linux path |
 
 ## Still Packed (need extraction)
 
-25 archives remain in `/tmp/model-pull/` (and mirrored in `mhvnsnt/game-reverse-engineering`):
+25 archives in `/tmp/model-pull/` (and mirrored in `mhvnsnt/game-reverse-engineering`):
+- T7 FBX zips (some failed unzip)
+- Individual: alisa.rar, anna-williams.7z, christie.7z, lee-chaolan.rar, julia-classic.rar, xiaoyu-t8.rar, yoshimitsu-t7.7z, zafina-t7.zip, etc.
 
-- **T7 FBX zips:** asuka-t7-fbx.zip, eddy-t7-fbx.zip, xiaoyu-t7-fbx.zip, steve-fox-t7-fbx.zip (some failed unzip — may be nested or corrupt)
-- **Individual:** alisa.rar, anna-williams.7z, christie.7z, lee-chaolan.rar, julia-classic.rar, xiaoyu-t8.rar, yoshimitsu-t7.7z, zafina-t7.zip, nina-tekken1.rar, josie-diva.zip, heihachi-mishima.rar, etc.
+**Blocker:** no `unrar` / `7z` on this machine (apt permission denied).
 
-**Blocker:** no `unrar` / `7z` on this machine. Need to install or extract elsewhere.
-
-## Fully Blocked (not on this machine / not decoded)
+## Fully Blocked
 
 | Set | Count | Blocker | Location |
 |-----|-------|---------|----------|
-| **Virtua Fighter 5** | 19 | `.farc` files need Windows extraction tool | Local teardown dir (not in working repo) |
-| **Urban Reign** | 72 | Geometry not decoded; full ISO on GitHub | Release `urban-reign-iso-v1` on western-heart |
-| **Soulcalibur 2** | — | Only movesets extracted; no 3D models | `mhvnsnt/western-heart` teardown |
-| **TTT2** | 26 parts | Release exists, not extracted (disk space) | Release `ttt2-7z-v1` on western-heart |
-| **Tekken 6** | — | File map cracked (PR #162); models still locked | `~/workspace/wh-repo/teardown/tekken6/` |
-| **Rashid (SF5)** | — | Release exists | Release `rashid-models-20261013` |
+| **Urban Reign** | 72 | PPK inner geometry not decoded | `teardown/urban-reign/ppks/chars/` |
+| **VF5** | 19 | .farc needs Windows tool | Release `vf5-model-library-v1` |
+| **DOA6** | — | Game not acquired (~50GB) | Mechanics only |
+| **DOA4** | — | Chunks on release, not reassembled | Release `doa4-iso-v1` |
+| **Soulcalibur 2** | — | Only movesets; PS2 FS not RE'd | Teardown |
+| **TTT2** | 26 parts | Release exists, not extracted (disk) | Release `ttt2-7z-v1` |
+| **Tekken 6** | — | DATA401 encrypted | Teardown |
+| **Rashid (SF5)** | 3 variants | XPS + Source; needs conversion | `teardown/street-fighter-5/models/rashid/` |
 
 ## Missing Entirely (need hunting)
 
 Bass, Zangief, Hugo, Kuma, Lars, Samir, Bryden.
 
-## Render Status
+## Next Actions
 
-| Category | Count | Status |
-|----------|-------|--------|
-| Confirmed front-facing | Mariposa (Zafina), + several PR #170 with camera-on-−X | Done / acceptable |
-| Rendered but exploded | T3 Bryan, T3 Yoshimitsu, others | Need armature/scale fix |
-| Not yet rendered | Remaining PR #170 + soul models | Queued |
-| Cannot render yet | Source .mdl, packed archives, VF5, Urban Reign, SC2, T6, TTT2 | Blocked |
+1. Install `unrar` / `p7zip` (or extract elsewhere) and finish the 25 archives.
+2. Convert Source `.mdl` sets (Shaheen, Rashid SFM, etc.) to FBX/GLB.
+3. Decode Urban Reign PPK geometry (72 characters, including Brad Hawk).
+4. Convert VF5 `.farc` on a Windows box or find Linux path.
+5. Fix or re-export exploding T3 models.
+6. Continue batch-rendering every new GLB with the camera-on-−X standard.
+7. Update this doc as blockers clear.
 
-## Next Actions (priority)
+## Handoff Notes
 
-1. Install `unrar` / `p7zip` and finish extracting the 25 archives.
-2. Convert Source `.mdl` sets (Shaheen, etc.) to FBX/GLB.
-3. Re-export or fix T3 models that explode (apply armature, correct scale).
-4. Pull VF5 extraction onto a Windows box or find a Linux path for `.farc`.
-5. Decode Urban Reign geometry or document the blocker permanently.
-6. Continue batch-rendering every new GLB that becomes available using the camera-on-−X standard.
-7. Update this doc and `docs/TPOSE_RENDER_STANDARD.md` as blockers clear.
-
-## Handoff Notes for Agents
-
-- **Do not guess or procedurally generate** models when teardown data exists (see AGENTS.md / RULES_NO_GUESSING).
+- **Do not guess or procedurally generate** models when teardown data exists.
 - **Do not push WIP to main.** Feature branch + PR only.
-- **Binary renders** cannot be pushed via the text-only `github___push_files` tool. Local PNGs stay local until a binary-capable path is used.
-- **Zafina (Mariposa)** is the exception to the no-rotation rule: −90° Z + vertical center shift.
+- **Binary renders** cannot be pushed via the text-only push tool.
+- **Zafina (Mariposa)** is the exception: −90° Z + vertical center shift.
 - All new T-pose work must follow `docs/TPOSE_RENDER_STANDARD.md`.
+- Full teardown status: `teardown/TEARDOWN-STATUS.md`.
 
 ---
-*Generated for handoff. Update as extraction and rendering progress.*
+*Updated to include Rashid, Brad Hawk / Urban Reign, VF5, and DOA. Previous version under-documented these sets.*
