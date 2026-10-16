@@ -16,3 +16,13 @@ Running log of every third-party asset pulled into `game/assets/accessories/`
 - **Skipped:** Pirate/Castle/Retro-Fantasy kits (no equippable accessories —
   Pirate Kit has NO hats, ships/cannons only)
 - **Research note:** `docs/research/accessory-packs-kenney.md`
+
+## 2026-10-16 — KayKit Adventurers weapons (CC0)
+- **Pack:** KayKit Adventurers Character Pack free tier (https://github.com/KayKit-Game-Assets/KayKit-Character-Pack-Adventures-1.0)
+- **Kept:** 27 GLB — swords x3, axes x2, dagger, crossbows x2, staff, wand,
+  shields x9, quiver/arrow/arrow_bundle, spellbooks x2, smokebomb, mugs x2
+- **License:** CC0 1.0 Universal (pack LICENSE.txt copied as LICENSE-CC0.txt)
+- **Provenance:** official KayKit GitHub account; upstream .gltf+.bin+.png packed
+  to single-file GLB and validated (magic, JSON, meshes, PNG magic)
+- **Landed:** `game/assets/accessories/kaykit-adventurers/`
+- **Research note:** `docs/research/accessory-packs-kaykit.md`
