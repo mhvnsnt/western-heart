@@ -54,3 +54,14 @@ Standing log per CONTINUOUS RESEARCH + PULL-IN LAW. Newest first.
 |------|------|---------|------|
 | zarmanager | https://github.com/dfdevx2/zarmanager | **UNKNOWN — no LICENSE file in local checkout** | Pure-Python GOD/STFS/XISO reader; underpins `tekken-tag-tournament-2/tools/god_surgical.py`. Do not redistribute until license confirmed. |
 | py7zr | pip | LGPL-2.1 | Used by god_surgical.py for 7z access |
+
+## 2026-10-16 — game-hud UI kit (MIT)
+- **Kit:** threejsassets/game-hud (https://github.com/threejsassets/game-hud)
+- **Kept:** dist/ (core.css, game-hud.css, layout.css, 12 skins), index.html
+  (component markup templates), LICENSE-MIT.txt, upstream README.md, WH-README.md
+- **License:** MIT (Aron & Sharon / threejsassets.com)
+- **Why:** pure HTML/CSS/JS, zero deps, 60+ components; Fantasy skin is already
+  dark+gold (#f2b01e/#e89b12 on #211d18) — matches Creation Suite aesthetic
+- **Landed:** `tools/creation-suite/ui-kit/game-hud/`
+- **Skipped:** dev-only references/, docs/, scripts/
+- **Research note:** `docs/research/ui-kits-game-hud.md`
