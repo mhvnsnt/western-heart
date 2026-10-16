@@ -4,13 +4,13 @@
 
 Most models face the camera correctly with **no model rotation** when the camera is placed on the **−X axis** looking toward **+X**.
 
-**Zafina** is the exception: it requires an additional **−90° rotation on the Z axis** before centering.
+**Zafina (Mariposa)** is the exception: it requires an additional **−90° rotation on the Z axis** before centering, plus a slight downward shift (~12% of height) so she sits centered vertically in the frame.
 
 ## Pipeline
 
 1. Import GLB
 2. Scale objects ×100 and apply (models export at 1/100 scale)
-3. For Zafina only: rotate vertices −90° on Z
+3. For Zafina only: rotate vertices −90° on Z, then shift down ~12% of height after centering
 4. Compute bounding box and center model at origin
 5. Orthographic camera on **−X** side, looking toward **+X**
 6. Neutral gray background
@@ -20,7 +20,7 @@ Most models face the camera correctly with **no model rotation** when the camera
 ## Camera
 
 - Position: `(-size * 2.5, 0, size * 0.05)`
-- Ortho scale: `size * 1.15`
+- Ortho scale: `size * 1.15` (tighter ~0.82–0.85 for Mariposa)
 - Rotation: `(90°, 0°, −90°)` so camera looks toward +X
 
 ## Per-Model Notes
@@ -28,14 +28,14 @@ Most models face the camera correctly with **no model rotation** when the camera
 | Model | Extra Rotation | Notes |
 |-------|----------------|-------|
 | Most (Skull, Thor, King Tyrant, Kinpo Alt, Baek, Lili, Phantom, Saku Ra, Zui, Awa Pop, SAM-UR-A1, Waterfall, Pantera Alt, Purple Rain, N3GΔTIV0, etc.) | None | Camera on −X is sufficient |
-| Zafina | −90° Z | Required to face forward |
+| Zafina (Mariposa) | −90° Z + downward shift | Required to face forward and center |
 | Kinpo, DXMMII, Nightwolf, Rave | May vary | Confirm orientation if blank or side-facing |
 
 ## Orientation Reference
 
 | Request | Action |
 |---------|--------|
-| Front (default) | Camera on −X, no model rotation (Zafina: −90 Z) |
+| Front (default) | Camera on −X, no model rotation (Zafina: −90 Z + center shift) |
 | Back | Camera on +X, or +180 Z on model |
 | Left | Camera on −Y |
 | Right | Camera on +Y |
@@ -46,3 +46,4 @@ Most models face the camera correctly with **no model rotation** when the camera
 - If a render is blank or tiny, check bounds and try camera on a different axis before rotating the model.
 - Vertex-level edits work for unrigged meshes; object-level scale + apply is safer for most.
 - All agents and render scripts should use camera-on-−X as the default front view.
+- Full model status and blockers: [docs/MODEL_CENSUS_AND_BLOCKERS.md](MODEL_CENSUS_AND_BLOCKERS.md)
