@@ -40,10 +40,10 @@ awa-pop, baek, dxmmii, king-tyrant, king-tyrant_alt1, kinpo, kinpo_alt1, lili, n
 - **Zafina (Mariposa)** requires −90° Z + slight downward shift to center.
 - DXMMII, Kinpo, Nightwolf, Rave may still need orientation checks if blank/side-facing.
 
-### Tekken 3 donors (local)
+### Tekken 3 donors (EXCLUDED — do not render)
 t3_bryan, t3_gunjack, t3_xiaoyu, t3_yoshimitsu, t3_jin
 
-**Notes:** Several render as exploded/fragmented geometry. Armature or scale issues. Need re-export or armature-applied versions.
+**Owner directive (2026-10-16): Do not render any T3 characters.**
 
 ## Extracted but Not Renderable Yet
 
@@ -85,7 +85,7 @@ Bass, Zangief, Hugo, Kuma, Lars, Samir, Bryden.
 2. Convert Source `.mdl` sets (Shaheen, Rashid SFM, etc.) to FBX/GLB.
 3. Decode Urban Reign PPK geometry (72 characters, including Brad Hawk).
 4. Convert VF5 `.farc` on a Windows box or find Linux path.
-5. Fix or re-export exploding T3 models.
+5. ~~Fix or re-export exploding T3 models.~~ **EXCLUDED — do not render T3.**
 6. Continue batch-rendering every new GLB with the camera-on-−X standard.
 7. Update this doc as blockers clear.
 
@@ -97,6 +97,7 @@ Bass, Zangief, Hugo, Kuma, Lars, Samir, Bryden.
 - **Zafina (Mariposa)** is the exception: −90° Z + vertical center shift.
 - All new T-pose work must follow `docs/TPOSE_RENDER_STANDARD.md`.
 - Full teardown status: `teardown/TEARDOWN-STATUS.md`.
+- **Owner directive (2026-10-16): Do not render any T3 characters.**
 
 ---
-*Updated to include Rashid, Brad Hawk / Urban Reign, VF5, and DOA. Previous version under-documented these sets.*
+*Updated to include Rashid, Brad Hawk / Urban Reign, VF5, and DOA. T3 models excluded from render queue.*
