@@ -1,0 +1,37 @@
+{
+ "light": {
+  "dmg": 7,
+  "startup": 0.3,
+  "active": 0.017,
+  "recovery": 0.55,
+  "t3_dmg": 12,
+  "t3_row": 38
+ },
+ "medium": {
+  "dmg": 15,
+  "startup": 0.25,
+  "active": 0.017,
+  "recovery": 0.8,
+  "t3_dmg": 25,
+  "t3_row": 64
+ },
+ "heavy": {
+  "dmg": 21,
+  "startup": 0.45,
+  "active": 0.017,
+  "recovery": 0.8,
+  "t3_dmg": 35,
+  "t3_row": 182
+ },
+ "grab": {
+  "dmg": 21,
+  "startup": 0.45,
+  "active": 0.05,
+  "recovery": 0.8,
+  "t3_dmg": 35,
+  "t3_row": 182
+ },
+ "total_moves": 383,
+ "source": "teardown/tekken3/movesets/moveset_heihachi.json",
+ "note": "Real T3 Heihachi frame data. Damage scaled T3 170HP -> WH 100HP."
+}

@@ -1,0 +1,53 @@
+# Self-hosted Nakama (matchmaking, accounts, leaderboards)
+# Apache-2.0 server by Heroic Labs — https://github.com/heroiclabs/nakama
+# Usage: docker compose up -d
+#   Console:  http://localhost:7351 (admin / password)
+#   Client:   localhost:7350  (server_key "defaultkey" — CHANGE for anything public)
+# Godot client: tools/netcode/godot/nakama-client (Nakama.gd autoload)
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: nakama
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - nakama-postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  nakama:
+    image: heroiclabs/nakama:latest
+    restart: unless-stopped
+    entrypoint:
+      - "/nakama/nakama"
+      - "migrate"
+      - "up"
+      - "--database.address"
+      - "postgres:postgres@postgres:5432/nakama?sslmode=disable"
+      - "--"
+    command:
+      - "--name"
+      - "western-heart-nakama"
+      - "--database.address"
+      - "postgres:postgres@postgres:5432/nakama?sslmode=disable"
+      - "--logger.level"
+      - "INFO"
+      - "--session.token_expiry_sec"
+      - "7200"
+    ports:
+      - "7350:7350"   # client API + realtime socket
+      - "7351:7351"   # admin console
+    volumes:
+      - ./modules:/nakama/data/modules
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  nakama-postgres:
