@@ -1,0 +1,212 @@
+{
+ "_doc": "WH fighter -> Tekken body mapping for move-set editor + frame-data systems. frame_data files use wavu.wiki Cargo 'Move' schema (CC0). Heights: T7 = esportstales aggregate (fan, not official), T8 = tekken8.sorao.site (from in-game profiles). Baseline approved by owner Oct 14 2026.",
+ "fighters": {
+  "pantera": {
+   "body": "King",
+   "wh_height_cm": 200,
+   "t7_cm": 200,
+   "t8_cm": 200,
+   "status": "match",
+   "frame_data": "docs/t7t8-reference/frame-data/king.json",
+   "frame_data_note": null
+  },
+  "king": {
+   "body": "King",
+   "wh_height_cm": 200,
+   "t7_cm": 200,
+   "t8_cm": 200,
+   "status": "match",
+   "frame_data": "docs/t7t8-reference/frame-data/king.json",
+   "frame_data_note": null
+  },
+  "demonio": {
+   "body": "Jin",
+   "wh_height_cm": 180,
+   "t7_cm": 180,
+   "t8_cm": 183,
+   "status": "T7/T8 differ",
+   "frame_data": "docs/t7t8-reference/frame-data/jin.json",
+   "frame_data_note": null
+  },
+  "phantom": {
+   "body": "Yoshimitsu",
+   "wh_height_cm": 178,
+   "t7_cm": 178,
+   "t8_cm": 178,
+   "status": "match",
+   "frame_data": "docs/t7t8-reference/frame-data/yoshimitsu.json",
+   "frame_data_note": null
+  },
+  "diablo": {
+   "body": "Heihachi",
+   "wh_height_cm": 179,
+   "t7_cm": 179,
+   "t8_cm": 179,
+   "status": "match",
+   "frame_data": "docs/t7t8-reference/frame-data/heihachi.json",
+   "frame_data_note": null
+  },
+  "skull": {
+   "body": "Bryan",
+   "wh_height_cm": 186,
+   "t7_cm": 186,
+   "t8_cm": 186,
+   "status": "match",
+   "frame_data": "docs/t7t8-reference/frame-data/bryan.json",
+   "frame_data_note": null
+  },
+  "sam_ur_a1": {
+   "body": "Gun Jack",
+   "wh_height_cm": null,
+   "t7_cm": null,
+   "t8_cm": null,
+   "status": "match",
+   "frame_data": "docs/t7t8-reference/frame-data/jack-8.json",
+   "frame_data_note": null
+  },
+  "saku_ra": {
+   "body": "Xiaoyu",
+   "wh_height_cm": 157,
+   "t7_cm": 157,
+   "t8_cm": 159,
+   "status": "T7/T8 differ",
+   "frame_data": "docs/t7t8-reference/frame-data/xiaoyu.json",
+   "frame_data_note": null
+  },
+  "zui": {
+   "body": "Steve",
+   "wh_height_cm": 187,
+   "t7_cm": 187,
+   "t8_cm": 184,
+   "status": "T7/T8 differ",
+   "frame_data": "docs/t7t8-reference/frame-data/steve.json",
+   "frame_data_note": null
+  },
+  "kinpo": {
+   "body": "Asuka",
+   "wh_height_cm": 160,
+   "t7_cm": 160,
+   "t8_cm": 167,
+   "status": "T7/T8 differ",
+   "frame_data": "docs/t7t8-reference/frame-data/asuka.json",
+   "frame_data_note": null
+  },
+  "waterfall": {
+   "body": "Josie",
+   "wh_height_cm": 178,
+   "t7_cm": 178,
+   "t8_cm": null,
+   "status": "match",
+   "frame_data": null,
+   "frame_data_note": "body not in T8 / no wavu page; use T7 links in REFERENCE_SOURCES.md"
+  },
+  "king_tyrant": {
+   "body": "Eddy",
+   "wh_height_cm": 188,
+   "t7_cm": 188,
+   "t8_cm": 188,
+   "status": "match",
+   "frame_data": "docs/t7t8-reference/frame-data/eddy.json",
+   "frame_data_note": null
+  },
+  "burger": {
+   "body": "Bob",
+   "wh_height_cm": 196,
+   "t7_cm": 196,
+   "t8_cm": null,
+   "status": "match",
+   "frame_data": "docs/t7t8-reference/frame-data/bob.json",
+   "frame_data_note": null
+  },
+  "awa_pop": {
+   "body": "Nina",
+   "wh_height_cm": 160,
+   "t7_cm": 160,
+   "t8_cm": 168,
+   "status": "T7/T8 differ",
+   "frame_data": "docs/t7t8-reference/frame-data/nina.json",
+   "frame_data_note": null
+  },
+  "scimitar": {
+   "body": "Shaheen",
+   "wh_height_cm": 185,
+   "t7_cm": null,
+   "t8_cm": 185,
+   "status": "match",
+   "frame_data": "docs/t7t8-reference/frame-data/shaheen.json",
+   "frame_data_note": null
+  },
+  "purple_rain": {
+   "body": "Lee",
+   "wh_height_cm": 178,
+   "t7_cm": 178,
+   "t8_cm": 178,
+   "status": "match",
+   "frame_data": "docs/t7t8-reference/frame-data/lee.json",
+   "frame_data_note": null
+  },
+  "nightwolf": {
+   "body": "Julia",
+   "wh_height_cm": 165,
+   "t7_cm": 165,
+   "t8_cm": null,
+   "status": "match",
+   "frame_data": null,
+   "frame_data_note": "body not in T8 / no wavu page; use T7 links in REFERENCE_SOURCES.md"
+  },
+  "michiko": {
+   "body": "Katarina",
+   "wh_height_cm": null,
+   "t7_cm": null,
+   "t8_cm": null,
+   "status": "match",
+   "frame_data": null,
+   "frame_data_note": "body not in T8 / no wavu page; use T7 links in REFERENCE_SOURCES.md"
+  },
+  "star": {
+   "body": "Christie",
+   "wh_height_cm": null,
+   "t7_cm": null,
+   "t8_cm": null,
+   "status": "match",
+   "frame_data": null,
+   "frame_data_note": "body not in T8 / no wavu page; use T7 links in REFERENCE_SOURCES.md"
+  },
+  "torch": {
+   "body": "Anna",
+   "wh_height_cm": 163,
+   "t7_cm": 163,
+   "t8_cm": null,
+   "status": "match",
+   "frame_data": "docs/t7t8-reference/frame-data/anna.json",
+   "frame_data_note": null
+  },
+  "dio": {
+   "body": "Akuma",
+   "wh_height_cm": 178,
+   "t7_cm": 178,
+   "t8_cm": null,
+   "status": "match",
+   "frame_data": null,
+   "frame_data_note": "body not in T8 / no wavu page; use T7 links in REFERENCE_SOURCES.md"
+  },
+  "cyborg_x": {
+   "body": "Alisa",
+   "wh_height_cm": 163,
+   "t7_cm": 163,
+   "t8_cm": 165,
+   "status": "T7/T8 differ",
+   "frame_data": "docs/t7t8-reference/frame-data/alisa.json",
+   "frame_data_note": null
+  },
+  "bruno": {
+   "body": "Miguel",
+   "wh_height_cm": 196,
+   "t7_cm": 196,
+   "t8_cm": null,
+   "status": "match",
+   "frame_data": null,
+   "frame_data_note": "body not in T8 / no wavu page; use T7 links in REFERENCE_SOURCES.md"
+  }
+ }
+}

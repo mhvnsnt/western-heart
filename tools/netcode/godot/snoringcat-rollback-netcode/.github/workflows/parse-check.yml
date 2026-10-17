@@ -1,0 +1,35 @@
+name: Parse check
+
+# Fails if any GDScript file the addon ships has a parse or compile
+# error. .github/parse-check/run.sh builds a minimal project around the
+# addon, imports it, and loads every addon script outside examples/ and
+# test/. Run it locally the same way; its header says how.
+#
+# This used to open examples/simple_game/ and grep the log for parse
+# errors. That project can't find its own autoload or main scene, so
+# Godot never loaded an addon script and the check passed whatever the
+# code said.
+
+on:
+  push:
+    branches: [main]
+    # A ledger-only push (the nightly ledger-upkeep job) has nothing to
+    # parse (claude-config CC71). Only the push trigger skips it: on a
+    # PR, a skipped required check would leave the PR pending.
+    paths-ignore:
+      - "LEDGER.md"
+      - "docs/ledger_*.md"
+  pull_request:
+
+jobs:
+  parse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: chickensoft-games/setup-godot@v2
+        with:
+          version: 4.7.2-stable
+          use-dotnet: false
+      - name: Compile every addon script
+        run: bash .github/parse-check/run.sh
