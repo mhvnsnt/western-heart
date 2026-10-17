@@ -130,3 +130,25 @@ Asuka / Eddy / Steve / Xiaoyu donors already T-posed (kinpo, king-tyrant, zui, s
   (8–10 wrestlers for naming review). No overlap with v1 list — stand clear of it.
 - No Blender/Cycles processes running on this VM at sweep start. merge-law-ci-watch
   cron untouched.
+- **2026-10-17 ~08:55 CDT** — Lane `tpose-sweep-pullrest5` opened (owner order):
+  front T-pose renders for the 5 models restored from cd3bf38 via PR #227
+  (cyborg-x, diablo, kinpo-t8, phantom-t8, thor_alt1 — all in
+  `game/assets/models/` on main). Check-before-start: pull-rest-worker,
+  tekken7-pull, wh-t7t8-hunt all `done`; tpose-all-fighters `needs_owner`
+  (stalled); wh-wmxix-renders `running` on WMXIX wrestlers only — no overlap.
+  No other lane rendering these 5.
+- **2026-10-17 ~09:00 CDT** — Batch 1 (base script): all 5 imported and
+  rendered, BUT own-eyes check showed cyborg-x, diablo, kinpo-t8, phantom-t8
+  facing RIGHT (profile) in p1_front.png — these GLBs face **-Y**, not -X.
+  thor_alt1 was correct front-facing. Proof: diablo p1_side.png (camera on -Y)
+  showed him front-on in T-pose.
+- **2026-10-17 ~09:05 CDT** — Created documented variant
+  `docs/tpose-refs/_tools/tpose_render_cycles_faceY.py`: byte-identical copy of
+  the approved script plus a 3-line, documented Rz(-90°) post-import rotation
+  mapping -Y-facing models to face -X (front camera). Side camera then sees the
+  model's left side, matching the base script's spec. Did NOT guess — verified
+  empirically.
+- **2026-10-17 ~09:10 CDT** — Batch 2 (faceY variant): re-rendered the 4.
+  Own-eyes verified ALL 5 now front-facing T-pose. Honest flags: cyborg-x
+  textures resolve washed-out/gray (geometry + pose correct); kinpo-t8's arms
+  angle slightly downward (authored pose, not a perfect horizontal T).
