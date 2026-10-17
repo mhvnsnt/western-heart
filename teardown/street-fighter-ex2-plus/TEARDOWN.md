@@ -84,20 +84,23 @@ Example (Face 3 at offset 0x1318):
 
 The pad values may be UV coordinates, normal indices, or color data.
 
-### Section 2: Vertex Data (INCOMPLETE)
+### Section 2: Vertex Data (STRUCTURE DECODED 2026-10-17, field semantics open)
 
-86,616 bytes. Format not yet fully decoded.
+86,616 bytes. **Full structural decode in [SECTION2-VERTEX-ANALYSIS.md](SECTION2-VERTEX-ANALYSIS.md).**
 
-Observations:
-- Data shows pattern of (value, 0) pairs suggesting 32-bit values
-- Values increase monotonically in first bytes: 264, 760, 1144, 1776...
-- Does NOT match standard s16 x,y,z triplets
-- May be bone-relative coordinates, compressed, or interleaved with other data
+Summary of verified findings (P00X.PAC):
+- 200-byte offset table: 50 u32 entries, 37 unique chunk offsets (x1/x2/x3 repeats = shared mesh refs)
+- Chunk layout: `u32 count, u32 0, u32 1, u32 unknown, count×8B verts, 8B trailer (0x00000000, 0x08000000)`
+- Vertex = 8 bytes: `u16 marker(=1, constant) + 3× s16`
+- 1,127 total verts in P00X.PAC
+- Field stats (chunk @264): pos2 = 34 unique (−24318..−1); pos4 = 59/59 unique, smooth +47/step (strip-like); pos6 = only 5 unique values (quantized — attribute, not axis?)
+- Render attempt as (x,y,z) produced bands, not a humanoid — chunks likely need bone transforms from section 0, or field assignment is wrong
 
-**BLOCKER:** Vertex format needs further RE. Possible approaches:
+**BLOCKER:** Field semantics + bone transforms not yet cracked. See SECTION2-VERTEX-ANALYSIS.md §5–6 for open questions and next steps:
 1. Ghidra analysis of SLUS_011.05 to find PAC loading code
 2. PCSX-Redux VRAM dump while game runs
 3. Compare multiple character PACs to find common patterns
+4. Decode section 0 (5,440B bone metadata?) and apply transforms
 
 ## Tools Created
 
