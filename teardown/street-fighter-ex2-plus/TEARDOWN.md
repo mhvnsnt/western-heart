@@ -1,92 +1,126 @@
-# STREET FIGHTER EX2 PLUS — Teardown for Western Heart
+# Street Fighter EX2 Plus — Teardown Report
 
-**Role in Chimera Build:** 3D Street Fighter reference (owner 2026-10-13) — Arika's 3D
-fighter lineage (EX series = the original 3D Street Fighter games, PS1 era). Roster,
-move-set structure, and stage design reference for the chimera build's 3D-fighter
-lane alongside Tekken/Virtua Fighter teardowns.
-**Developer:** Arika / Capcom
-**Platform:** PlayStation 1 (PSX)
-**Disc ID:** SLUS_011.05 (US release) | **Volume:** STREET_FIGHTER_EX2_PLUS
-**Source:** Internet Archive `street-fighter-ex-2-plus.-7z` (197.9 MB 7z)
-**Pulled:** 2026-10-14 via watchdog resume (sf3d-pull checkpoint, attempt 3)
-**Last updated:** 2026-10-14
+**Game:** Street Fighter EX2 Plus (PS1, Arika/Capcom, 1999)  
+**Disc:** SLUS_011.05, 98MB  
+**Status:** File extraction 100% complete. Geometry format partially reverse-engineered.  
+**Date:** 2026-10-17
 
----
+## Disc Structure
 
-## Acquisition & Verification
+Extracted via custom ISO9660 parser (`iso_extract.py`). 83MB of files.
 
-- `Street Fighter EX2 Plus.7z` — 207,533,625 bytes, **byte-exact vs archive.org metadata**.
-- Extraction: 7-Zip 24.09 (`7zz`) — 95 entries extracted; 9 sub-item errors, all
-  trivial Mednafen emulator artifacts (`sav/*.mcr`, `sf2.jpg`, `stderr.txt`,
-  `stdout.txt`). **Zero game-data files affected.**
-  (Note: py7zr 1.1.4 fails on this archive with bogus CRC errors — its threaded
-  extractor misattributes failures; always use real 7z for these rips.)
-- Disc image: `Street Fighter EX2 Plus.bin` — 98,524,629 bytes, raw 2352-byte
-  sectors, Mode 2. Valid ISO9660 at sector 16 (PVD), `SYSTEM.CNF` + `PS-X EXE`
-  magic present, 403 files/dirs parsed programmatically.
-- **Safe storage:** GitHub Release `sf-ex2-plus-v1`
-  (https://github.com/mhvnsnt/western-heart/releases/tag/sf-ex2-plus-v1) —
-  single 98.5 MB `.bin`. TeraBox upload pending (browser lane).
-- Local working copy: `~/workspace/game-reverse-engineering/street-fighter-3d-games/extracted/ex2-plus/`
-  (Mednafen bundle + ROM). Full ISO9660 listing: `iso-file-listing.txt`.
+### Key Directories
 
----
+| Directory | Contents | Notes |
+|-----------|----------|-------|
+| `PL/` | 30 character PAC files (P00X.PAC - P1EX.PAC) | One per fighter |
+| `PL2/` | BAS.PAC, P1D2X.PAC, P1DX.PAC | Additional player data |
+| `PLTEX/` | KAO_*.DP (face textures) | KAO = "face" in Japanese |
+| `PLNMD/` | NEZUMI.NMD, RENGA.NMD, VEGADAMA.LMD | Model-related |
+| `TIM/` | Menu/UI textures (.TIM, .PAC) | Standard PS1 TIM format |
+| `OVL/`, `OVL2/`, `OVL3/` | Overlay files | Code overlays |
+| `STG2/` | Stage data | Backgrounds |
+| `SND3/`, `PLSND/`, `PLWSND/` | Sound data | |
 
-## Disc Layout (403 entries)
+### Character Files
 
-| Dir | Contents | Count |
-|---|---|---|
-| `/` | `SYSTEM.CNF`, `SLUS_011.05` (743,424-byte US executable), `SILENT3.DA` (31.7 MB) | 3 |
-| `/PL/` `/PL2/` | Player data packs | — |
-| `/PLNMD/` | Player models — **NMD** (PS1 native model format) | 2 |
-| `/PLTEX/` | Player textures | — |
-| `/PLSND/` `/PLWSND/` | Player sound / weapon sound | — |
-| `/STG2/` | Stage packs `S00D.PAC`–`S07D.PAC` (+ `ENDD.PAC`) — **8 stages** | 9 |
-| `/STTEX/` | Stage textures | — |
-| `/OVL/` `/OVL2/` `/OVL3/` | Overlays — `PL00_1.OVL`–`PL0D_1.OVL` etc. (per-character code/data) | 87 |
-| `/MOG16/` | Core game data: `*.D`/`*.PD` data blobs, `*.TIM` textures, `*.PAL` palettes, `ST_DATA.D` | — |
-| `/ADVER/` | Attract-mode packs (`TITLE.PAC`, `ARIKA.PAC`, `CAPDEMO.PAC`, `ADVER.PAC`) | 5 |
-| `/ENDP/` | Character ending packs `END00P`–`END1EP` (~20) + `ENDMOJI*.TIM` text art | ~25 |
-| `/SEL2/` | Character-select screen assets | — |
-| `/STR/` | `M00.XA`–`M04.XA` — 5 XA streams (music/FMV audio) | 5 |
-| `/SND3/` | Sound driver/data | — |
-| `/TIM/` | Shared textures (31 TIM files) | 31 |
-| `/REP/` | Replay data (27 files) | 27 |
+30 PAC files in `PL/`, ranging from 114KB to 215KB:
+- P00X.PAC (126K), P01X.PAC (151K), P02X.PAC (200K), P03X.PAC (156K)...
+- P05X.PAC (215K) largest — likely a complex character
+- P15X.PAC (114K) smallest
 
-**Extensions:** 157× `.PAC` (Arika pack container — priority RE target), 87× `.OVL`,
-31× `.TIM` (PS1 texture), 25× `.DP`, 24× `.PD`, 5× `.XA`, 2× `.NMD`.
+SF EX2 Plus roster (26 fighters + bosses):
+Ryu, Ken, Chun-Li, Zangief, Guile, Dhalsim, Blanka, Vega, Sagat,
+Hokuto, Kairi, Allen, Blair, Darun, D.Dark, Skullomania, Garuda, Pullum, Cracker Jack,
+Nanase, Sharon, Hayate, Shadow Geist, Area, Cycloid-β, Cycloid-γ
 
----
+## PAC Format (Arika Custom)
 
-## Format Notes (for the model-extraction lane)
+**Not standard TMD.** Only 1 TMD found on entire disc (337 verts, boot logo).
 
-1. **`.PAC`** — Arika's pack container (157 files: stages, endings, attract, player
-   data). Header format unknown — needs a PAC unpacker (first RE task).
-2. **`.NMD`** (`/PLNMD/`) — PS1 native model format (TMD variant). Standard PS1
-   toolchain (psxprev / Noesis / Blender PSX plugins) should read these once
-   extracted from PACs.
-3. **`.TIM`** — standard PS1 texture (4/8/16/24-bit CLUT). Trivially convertible.
-4. **`.OVL`** — per-character overlays; likely code + embedded data.
-5. **`.XA`** — CD-XA ADPCM audio; playable via ffplay/vgmstream.
-6. **`SLUS_011.05`** — 743 KB MIPS executable; strings/disassembly can reveal
-   file-table and format details if PAC/NMD parsing stalls.
+### Header Structure
 
----
+```
+Offset 0x00: u32 header_size (0x14 = 20 bytes)
+Offset 0x04: u32 section_offsets[5]
+```
 
-## What's Next
+5 sections identified via entropy and structure analysis:
 
-- [ ] Write PAC unpacker (header RE on `S00D.PAC` / `TITLE.PAC` — smallest first)
-- [ ] Extract NMD models from `/PLNMD/` → convert to GLB for roster reference
-- [ ] Convert TIM textures → PNG (player + stage sets)
-- [ ] Stage geometry: unpack `STG2/S*.PAC`, identify mesh chunks
-- [ ] Move-set data: locate per-character data in `/PL/` + OVLs (frame data for chimera)
-- [ ] Sibling pull: EX Plus Alpha (re-downloading clean 2026-10-14 — prior partial
-      was a truncated+resumed Frankenstein, discarded), then EX3 (669 MB PS2),
-      SFIV PC (4.18 GB), SFxT PS3 (12.99 GB), USFIV PS3 (16.61 GB)
+| Section | Offset | Size | Entropy | Likely Contents |
+|---------|--------|------|---------|-----------------|
+| 0 | 0x0030b4 | 5,440 | 1.81 | Bone/part metadata, structured |
+| 1 | 0x0045f4 | 512 | 1.30 | Unknown, tiny structured data |
+| 2 | 0x0047f4 | 86,616 | 6.44 | Vertex/geometry data |
+| 3 | 0x019a4c | 23,620 | 5.56 | Face index table |
+| 4 | 0x052903 | — | — | Beyond EOF (decompressed size marker?) |
 
-## Federation
+### Section 3: Face Index Table
 
-- Chimera build: `CHIMERA-BUILD.md` — 3D-fighter lane (Tekken foundation,
-  Virtua Fighter/DOA/Soulcalibur federated; EX series = Capcom/Arika 3D lineage).
-- Sibling checkpoint: `sfv-pull-teardown.json` (SFV blocked on piracy route —
-  these EX pulls are the approved alternative).
+```
+Offset 0x00: u32 field1 (14656)
+Offset 0x04: u32 field2 (23620 = section size)
+Offset 0x08: u32 face_offsets[] (variable length)
+```
+
+Each offset points to a face definition within section 3.
+
+### Face Structure (16 bytes)
+
+```
+Offset 0x00: u32 flags/type
+Offset 0x04: u16 v0, u16 pad0
+Offset 0x08: u16 v1, u16 pad1  
+Offset 0x0C: u16 v2, u16 pad2
+```
+
+Example (Face 3 at offset 0x1318):
+```
+40 08 00 00  <- flags 0x0840
+2a 00 00 00  <- v0=42, pad=0
+46 00 1c 00  <- v1=70, pad=28
+09 00 89 02  <- v2=9, pad=649
+```
+
+The pad values may be UV coordinates, normal indices, or color data.
+
+### Section 2: Vertex Data (INCOMPLETE)
+
+86,616 bytes. Format not yet fully decoded.
+
+Observations:
+- Data shows pattern of (value, 0) pairs suggesting 32-bit values
+- Values increase monotonically in first bytes: 264, 760, 1144, 1776...
+- Does NOT match standard s16 x,y,z triplets
+- May be bone-relative coordinates, compressed, or interleaved with other data
+
+**BLOCKER:** Vertex format needs further RE. Possible approaches:
+1. Ghidra analysis of SLUS_011.05 to find PAC loading code
+2. PCSX-Redux VRAM dump while game runs
+3. Compare multiple character PACs to find common patterns
+
+## Tools Created
+
+All in `~/workspace/sfex-teardown/`:
+- `iso_extract.py` — PS1 .bin ISO9660 extractor
+- `tmd_extract.py` — TMD scanner (found only boot logo TMD)
+- `pac_parse.py` — Arika PAC header/face table parser
+- `tim_extract.py` — TIM texture extractor (partial)
+- `obj2glb.py` — Blender OBJ→GLB converter
+- `render_char.py` — White-void character renderer
+
+## Next Steps
+
+1. **Decode section 2 vertex format** — highest priority blocker
+2. **Map face vertex indices to section 2** — once vertices decoded
+3. **Identify character-to-file mapping** — via textures or file order
+4. **Extract all 30 characters** → OBJ → GLB
+5. **Wire into western-heart roster** (`game/js/roster-full.js`)
+6. **Generate white-void renders** for Tripo pipeline
+7. **Repeat for EX Plus Alpha and EX3**
+
+## Files
+
+- Disc image: GitHub release `sf-ex2-plus-v1` (mhvnsnt/western-heart)
+- Extracted files: `~/workspace/sfex-teardown/work/ex2-extracted/` (transient)
+- This report: `teardown/street-fighter-ex2-plus/TEARDOWN.md`
