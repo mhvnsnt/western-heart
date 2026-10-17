@@ -78,6 +78,17 @@ Asuka / Eddy / Steve / Xiaoyu donors already T-posed (kinpo, king-tyrant, zui, s
   Lane continues with Tekken 7 King only.
 - **2026-10-17 ~08:15 CDT** — King rendered with the approved script
   (front camera -X, ortho, 2048x2048, white bg, ortho_scale 1.12x span).
+- **2026-10-17 ~08:45 CDT** — **PANTERA-T7KING reskin** (owner): original Pantera
+  attire (purple tights, black panther mask) on the T7 King. Reskin textures
+  recovered from game-reverse-engineering release
+  `game-re-terabox-batches-20261016` batch-013 (`tekken7/king/pantera/`:
+  `pantera.glb` + `pantera_light.glb`, 19 meshes / 19 materials / 54 embedded
+  images — the 2026-10-12 reskin, textures baked in). New branch
+  `pantera-t7king`. Rendered `pantera.glb` with the approved script byte-identical;
+  own-eyes verified front T-pose: black panther mask, yellow eyes, purple
+  tights with panther decals, black trunks with red PANTERA, tail.
+  Everything named `pantera-t7king`; model + renders in
+  `docs/tpose-refs/pantera-t7king/`.
   Own-eyes verified: front-facing T-pose, textures on. FBX contains NO
   skeleton (no LimbNode markers) — authored mesh is already in T-pose, so the
   skeleton T-pose step is a no-op; render is a true T-pose front reference.
