@@ -9,7 +9,7 @@ at the same time — ordering is about slot positions, not schedule.
 |------|--------------|----------|
 | 1 | **Pantera (P1 Original)** | `docs/tpose-refs/pantera-t7king/pantera-t7king.glb` — the NEW full-res Tekken 7 King reskin (14.7MB, 19 meshes / 19 materials / 54 embedded images). Black panther mask, yellow eyes, purple tights, black trunks with red PANTERA. This is the real original attire. |
 | 2 | **Leo man** | `attires/leomon/` — the lion-head Leomon attire, RENAMED "Leo man" (proprietary to our universe). NOTE: directory is still `leomon/` on disk (restored by the 54k restore); rename the dir to `leo-man/` once the restore lands. Display name is "Leo man" everywhere the player sees it. |
-| 3 | **Pantera Classic** | `attires/classic/pantera-classic.glb` — the OLDER lower-quality Pantera build (7.6MB, Mixamo-rigged, hand-painted weights). Same T7 King P1 source as Slot 1 (forensics 2026-10-17: NOT T6 PSP), same attire design, optimized build. |
+| 3 | **Pantera — Snow Leopard** | `attires/snow-leopard/pantera-snow-leopard.glb` — reskin of the older classic build per owner 2026-10-17: purple tights → blue, black panther head → white with snow-leopard rosette spots, yellow eyes → blue, nose → pink. Same T7 King P1 source (NOT T6 PSP), Mixamo rig intact, trunk/boot/glove design untouched. Original classic kept at `attires/classic/pantera-classic.glb` (also in git history). |
 
 ## Slot-ordering law (owner 2026-10-17)
 
@@ -28,3 +28,4 @@ at the same time — ordering is about slot positions, not schedule.
 ## History
 
 - 2026-10-17: slots defined by owner; forensics confirmed Slot 3's source is T7 King P1.
+- 2026-10-17: Slot 3 reskinned to Snow Leopard colorway (blue tights / white rosetted head / blue eyes / pink nose); render at `docs/tpose-refs/pantera-snow-leopard/p1_front.png`.
