@@ -1,3 +1,0 @@
-# Projectile
-
-Coming Soon...
