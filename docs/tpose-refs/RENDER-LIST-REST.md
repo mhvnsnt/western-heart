@@ -43,33 +43,45 @@ Also excluded (not working models / no files / other lanes):
 
 ## RENDER LIST v1 — working teardown models, never T-posed
 
-### A. WWF No Mercy — 10 wrestlers (13 files)
-Local: `~/workspace/wmxix-mod-testbed/mods/no-mercy-wrestlers/`
-(all verified: 22 meshes each, humanoid proportions, ~2.3–2.5k verts, INVENTORY.md)
+### A. WWF No Mercy — DROPPED per owner 2026-10-17
+Owner update (2026-10-17 ~08:12 CDT): **stop all No Mercy renders immediately —
+do not render any of the 10 No Mercy wrestlers, drop them from the render list
+entirely.** A separate lane is copying the No Mercy models to the wrestling
+repos and out of Western Heart — this lane does not touch any No Mercy files.
+(The 10 wrestlers / 13 GLBs were: Kevin Nash, Kurt Angle, Rhino, Rob Van Dam,
+Scott Hall, Shawn Michaels x2, Stephanie McMahon, Steve Austin, The Rock x3,
+Triple H. One Kevin Nash test render was made and then deleted from this
+branch; no batch was ever launched.)
 
-| wrestler | file(s) |
-|---|---|
-| Kevin Nash | kevin_nash/kevin_nash_1.glb |
-| Kurt Angle | kurt_angle/kurt_angle_1.glb |
-| Rhino | rhino/rhyno_1.glb |
-| Rob Van Dam | rob_van_dam/rob_van_dam_1.glb |
-| Scott Hall | scot_hall/scott_hall_1.glb |
-| Shawn Michaels | shawn_michaels/shawn_michaels_{1,2}.glb |
-| Stephanie McMahon | stephanie_mcmahon/stephanie_mcmahon_1.glb |
-| Steve Austin | steve_austin/steve_austin_1.glb |
-| The Rock | the_rock/the_rock_{1,2}_glb + the_rock_bald.glb |
-| Triple H | triple_h/triple_h_1.glb |
-
-Note: GLBs contain **no armatures** (skins=0, verified 2026-10-17) — unrigged N64-era
-meshes. The tpose script's skeleton T-pose step will no-op; models render in authored
-pose (expected T/A-pose). Facing direction unverified for GLB sources — first render
-of each confirms front-facing; adjust per-model if a source faces differently.
-
-### B. Tekken 7 — King (rigmodels FBX rip)
+### B. Tekken 7 — King (rigmodels FBX rip) — THE ONLY v1 TARGET
 Repo: `mhvnsnt/game-reverse-engineering`, `tekken7/king/5PMH7G85GYN7P71W3BD1V0249.fbx`
 (+ textures in same dir). 18 meshes, 11,362 verts, loads (INVENTORY.md).
 Asuka / Eddy / Steve / Xiaoyu donors already T-posed (kinpo, king-tyrant, zui, saku-ra)
 — excluded. King has armatures → full skeleton T-pose path applies.
+
+## WORKLOG
+
+- **2026-10-17 ~08:05 CDT** — Lane opened on branch `tpose-sweep-rest`.
+  Inventory complete: `RENDER-LIST-REST.md` v1 (10 No Mercy wrestlers / 13 GLBs +
+  Tekken 7 King). Approved script recovered from `tpose-all-fighters` branch to
+  `docs/tpose-refs/_tools/tpose_render_cycles.py` (byte-identical).
+- **2026-10-17 ~08:08 CDT** — King FBX not on local disk (offloaded 2026-10-16 in
+  game-reverse-engineering commit b54792a "disk-clear"). Restored
+  `tekken7/king/` (63 files: FBX + textures) from git history parent commit to
+  /tmp/king-src for the render; nothing written back to that repo.
+- **2026-10-17 ~08:10 CDT** — Kevin Nash test render: No Mercy GLBs face **-Y**,
+  not -X (approved script's front camera showed the wrestler's left side;
+  -Y side camera showed him facing the camera). Textures are embedded/packed.
+- **2026-10-17 ~08:12 CDT** — **OWNER UPDATE: stop all No Mercy renders.**
+  No Mercy dropped from the render list entirely; separate lane handles those
+  models. Test render outputs + No Mercy tooling removed from this branch.
+  Lane continues with Tekken 7 King only.
+- **2026-10-17 ~08:15 CDT** — King rendered with the approved script
+  (front camera -X, ortho, 2048x2048, white bg, ortho_scale 1.12x span).
+  Own-eyes verified: front-facing T-pose, textures on. FBX contains NO
+  skeleton (no LimbNode markers) — authored mesh is already in T-pose, so the
+  skeleton T-pose step is a no-op; render is a true T-pose front reference.
+  Landed in `docs/tpose-refs/king/` (p1_front.png + p1_side.png).
 
 ## FOLLOW-UPS (not in v1 — flagged, owner call needed)
 
