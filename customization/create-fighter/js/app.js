@@ -48,6 +48,13 @@ function blankFighter(){
     fighting_style:{ archetype:'grappler', aggression:5, high_flyer:5, technical:5 },
     parameters:{ head:{offense:5,defense:5}, body:{offense:5,defense:5}, arms:{offense:5,defense:5},
                  legs:{offense:5,defense:5}, flying:{offense:5,defense:5} },
+    limbs:{   // DXMMII 4-arm limb system — tools/limb-system/dxmmii/
+      enabled:false,
+      preset:'default',
+      presets:{},   // name -> { sockets:{L:[x,y,z],R:[x,y,z]}, state, notes }
+      sockets:{ L:[0.068,0.01,0.28], R:[-0.068,0.01,0.28] },  // from dxrm_manifest.json
+      arm_state:'attached',   // attached | retracting | hidden | growing | gyro-detached
+    },
     wallet: START_MONEY,
   };
 }
@@ -136,7 +143,7 @@ function renderPanel(){
   $('#panel-title').textContent = ui.tab.toUpperCase();
   $('#panel-sub').textContent = '';
   body.innerHTML='';
-  ({ body:renderBody, attire:renderAttire, wardrobe:renderWardrobe, profile:renderProfile, moveset:renderMoveset })[ui.tab](body);
+  ({ body:renderBody, attire:renderAttire, wardrobe:renderWardrobe, profile:renderProfile, moveset:renderMoveset, limbs:renderLimbs })[ui.tab](body);
 }
 
 /* ================= BODY ================= */
@@ -476,6 +483,88 @@ function renderMoveDetail(el, s){
   mk(el.querySelector('#mv-list2'), others, false);
   const c=el.querySelector('#mv-clear');
   if(c) c.onclick=()=>{ delete F.moveset[s.slot]; renderPanel(); };
+}
+
+/* ================= LIMBS — DXMMII 4-arm system ================= */
+function renderLimbs(el){
+  $('#panel-sub').textContent = 'DXMMII 4-arm limb placement — tools/limb-system/dxmmii/';
+  const L = F.limbs;
+  const presets = Object.keys(L.presets||{});
+  el.innerHTML = `
+    <div class="sect">LIMB SYSTEM</div>
+    <div class="field"><label>ENABLE 4-ARM RIG</label>
+      <input type="checkbox" id="limb-enable" ${L.enabled?'checked':''} style="width:24px;height:24px">
+    </div>
+    <div class="note">774-bone Rigify meta-rig, 39-part modular body, 5-state arm machine.
+    Full toolkit: <span class="mono">tools/limb-system/dxmmii/</span> — Blender scripts 01→04, .blend files, QC renders.</div>
+    <div class="sect">ARM STATE</div>
+    <div class="field"><label>STATE</label><select id="limb-state">
+      ${['attached','retracting','hidden','growing','gyro-detached'].map(s=>`<option ${L.arm_state===s?'selected':''}>${s}</option>`).join('')}
+    </select></div>
+    <div class="sect">SOCKET POSITIONS — L / R (meters, from dxrm_manifest.json)</div>
+    <div id="limb-sockets"></div>
+    <div class="sect">PRESETS — save your arm placements</div>
+    <div class="field"><label>PRESET NAME</label><input type="text" id="limb-preset-name" placeholder="e.g. wide-combat" style="width:100%"></div>
+    <div class="btn-row">
+      <button class="btn btn-green" id="limb-save-preset">💾 SAVE PRESET</button>
+    </div>
+    <div class="field"><label>SAVED PRESETS (${presets.length})</label><select id="limb-preset-load">
+      <option value="">— select —</option>
+      ${presets.map(p=>`<option>${p}</option>`).join('')}
+    </select></div>
+    <div class="btn-row">
+      <button class="btn" id="limb-load-preset">⤒ LOAD</button>
+      <button class="btn" id="limb-del-preset">🗑 DELETE</button>
+    </div>
+    <div class="sect">BLENDER WORKFLOW</div>
+    <div class="note">1. Open <span class="mono">tools/limb-system/dxmmii/blend/dxmmii_4arm_rig.blend</span><br>
+    2. Run <span class="mono">scripts/01_metarig.py → 02_generate.py → 03_build_body.py → 04_states_demo.py</span><br>
+    3. Place arms, save preset here — presets store in fighter JSON.</div>`;
+
+  el.querySelector('#limb-enable').onchange=e=>{ F.limbs.enabled=e.target.checked; renderAll(); };
+  el.querySelector('#limb-state').onchange=e=>{ F.limbs.arm_state=e.target.value; persistQuiet(); };
+
+  const sk=el.querySelector('#limb-sockets');
+  ['L','R'].forEach(side=>{
+    ['x','y','z'].forEach((ax,ai)=>{
+      const d=document.createElement('div'); d.className='ctl';
+      const v=F.limbs.sockets[side][ai];
+      d.innerHTML=`<label>${side}.${ax}<span class="val">${v.toFixed(3)}</span></label>
+        <input type="range" min="-0.5" max="0.5" step="0.001" value="${v}" aria-label="${side} ${ax}">`;
+      d.querySelector('input').oninput=e=>{
+        F.limbs.sockets[side][ai]=+e.target.value;
+        d.querySelector('.val').textContent=(+e.target.value).toFixed(3);
+        persistQuiet();
+      };
+      sk.appendChild(d);
+    });
+  });
+
+  el.querySelector('#limb-save-preset').onclick=()=>{
+    const name=(el.querySelector('#limb-preset-name').value||'').trim();
+    if(!name){ toast('Name the preset first'); return; }
+    F.limbs.presets[name]={
+      sockets:JSON.parse(JSON.stringify(F.limbs.sockets)),
+      state:F.limbs.arm_state, enabled:F.limbs.enabled,
+      saved:new Date().toISOString()
+    };
+    F.limbs.preset=name;
+    renderAll(); toast('Preset saved ✓');
+  };
+  el.querySelector('#limb-load-preset').onclick=()=>{
+    const name=el.querySelector('#limb-preset-load').value;
+    if(!name||!F.limbs.presets[name]) return;
+    const p=F.limbs.presets[name];
+    F.limbs.sockets=JSON.parse(JSON.stringify(p.sockets));
+    F.limbs.arm_state=p.state; F.limbs.enabled=p.enabled; F.limbs.preset=name;
+    renderAll(); toast('Preset loaded ✓');
+  };
+  el.querySelector('#limb-del-preset').onclick=()=>{
+    const name=el.querySelector('#limb-preset-load').value;
+    if(!name) return;
+    delete F.limbs.presets[name];
+    renderAll(); toast('Preset deleted');
+  };
 }
 
 /* ================= fighter select / photo / save-load ================= */

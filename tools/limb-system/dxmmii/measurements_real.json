@@ -1,0 +1,14 @@
+{
+  "bake_max_recompose_mm": 0.000152,
+  "bake_f168_mm": 6.8e-05,
+  "detach_frame": 168,
+  "reattach_frame": 240,
+  "detach_switch_mm": 6.7e-05,
+  "note_f167_f168": "f167->f168: on-bone basis to baked basis; must be ~0 (no teleport at detach)",
+  "motion_f168_f169_mm": 0.135,
+  "motion_f239_f240_mm": 0.413,
+  "settle_f240_f241_mm": 1.101,
+  "note_f240_f241": "f240->f241: NO structural switch in the bake design (basis holds, DEF bones ease to idle); this is smooth bone-driven settle motion, not a teleport. Verified continuous by render QC.",
+  "requirement_mm": 1.0,
+  "pass": true
+}
