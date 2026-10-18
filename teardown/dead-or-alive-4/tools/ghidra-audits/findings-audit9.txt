@@ -1,0 +1,61 @@
+# findings-audit9.txt — DOA4 deep-RE Audit 9/9b/9c (Lead 2: resolve the 10 unnamed externals)
+# Run: 2026-10-18 ~08:00-08:30 CDT
+# Scripts: Doa4Audit9.java (imported-symbol dump), Doa4Audit9b.java (PSFD00 thunk disasm + .idata + import-lib string hunt),
+#          Doa4Audit9c.java (external-symbol enumeration + Audit5 call-target verification)
+# Follow-up analysis done in Python against default_pe.bin directly (~/workspace/doa4-bass/default_pe.bin, 23MB).
+
+## Method
+1. Audit9: Ghidra's IMPORTED symbol table holds only 2 symbols (entry, vftable) — the XEX import
+   table was NOT parsed into the PE import directory (import descriptors at file 0xf3a000 are zeroed).
+2. Audit9c: getExternalSymbols() returns exactly 10 externals, EXTERNAL-space addrs 1..10, named
+   EXT_FUN_00f58764/74/94/a4/c4, EXT_FUN_00f588c4/8984/8a34/8c84/9154. The names encode thunk VAs
+   in the original XEX layout. No memory block covers 0x00f58764-0x00f59154 in the decrypted PE
+   (thunk bodies were dropped by the XEX->PE converter), but `bl` call sites in .text target them.
+3. Raw-file analysis: the IAT SURVIVES at file offset 0x400 (RVA 0x400, start of .rdata), 235 non-zero
+   BE32 entries. Values are XEX-style (module<<16|ordinal): module 0 = xboxkrnl.exe (slots 0-68),
+   module 1 = xam.xex (slots 71-233).
+4. Stride hypothesis (VERIFIED): thunk VA = 0x00f58764 + 16*slot. Every observed `bl` call target
+   (0x00f587a4/b4/c4, 0x00f58974/84/e4, 0x00f591c4/d4) is exactly 16-byte-aligned relative to
+   0x00f58764 (remainders all 0x0). Standard 16-byte 360 thunk: lis/lwz/mtctr/bctr.
+
+## Call-site resolution (crypto-flavored functions from Audits 4/5)
+| Caller        | bl target  | slot | ordinal    | Resolved name                              |
+|---------------|------------|------|------------|--------------------------------------------|
+| FUN_00d9df70  | 0x00f587a4 | 4    | xkrnl 0x258| XeKeysVerifyRSASignature                   |
+| FUN_00d9df70  | 0x00f591d4 | 167  | xam 0x15   | NetDll_WSARecvFrom                         |
+| FUN_00d9df70  | 0x00f591c4 | 166  | xam 0x257  | XamContentLaunchImageFromFileInternal      |
+| FUN_00d9e1f0  | 0x00f587c4 | 6    | xkrnl 0x25a| StfsControlDevice                          |
+| FUN_00d9e1f0  | 0x00f587b4 | 5    | xkrnl 0x25b| VdSwap                                     |
+| 00b8xxxx grp  | 0x00f58974 | 33   | xkrnl 0x190| XeCryptShaUpdate                           |
+| 00b8xxxx grp  | 0x00f58984 | 34   | xkrnl 0x191| XeCryptShaFinal                            |
+| 00b8xxxx grp  | 0x00f589e4 | 40   | xkrnl 0x282| XInputdFFGetDeviceInfo                     |
+
+Ordinal sources: Xenia xboxkrnl_table.inc (922 entries) + xam_table.inc (1735 entries),
+fetched 2026-10-18 from xenia-project/xenia master.
+
+## Key file/crypto/content imports present in the 235-entry IAT
+- RSA/SHA: XeKeysVerifyRSASignature(4), XeCryptShaUpdate/Final/Sha(33/34/35), XeKeysGetVersions(7),
+  XeKeysLockSystemUpdate(12), XeKeysSaveBootLoaderEx(65), XexVerifyImageHeaders(30)
+- Encrypted memory: NtAllocateEncryptedMemory(32), NtFreeEncryptedMemory(3)
+- STFS/DVD content: StfsControlDevice(6), StfsDeviceErrorEvent(37), XamContent{GetLicenseMask,
+  Delete, Resolve, OpenFile, Install, CreateEx, Close, LaunchImageFromFileInternal}(78/80/93/99/100/157/159/166)
+- XEX: XexLoadExecutable(36), RtlImageNtHeader(38), XexActivation*
+- NOTE: NO NtReadFile/NtCreateFile/NtOpenFile anywhere in the IAT — the game reads files via
+  XamContent*/STFS APIs, not raw kernel file I/O. CRI ADX file access is statically linked
+  (no imports) or routed through the same XamContent path.
+
+## Unresolved (beyond Xenia's tables; not on the crypto-function call path)
+- xboxkrnl ordinals 0x3cc/0x3cd/0x3d1 (slots 0-2; Xenia table maxes at 0x3a3; web search found no public name)
+- ~40 xam ordinals (partial Xenia xam table): slots 71,73,102-105,107,112,113,116,119,120,122,
+  126,127,132-138,140,141,143,148,151,152,154,168,169,172,175,180,181,184,187,194,198,199,225,227,230-233
+
+## Conclusion for the keystream question (Option B)
+The externals are now identified: the AFS-adjacent code calls RSA-verify, SHA update/final, STFS
+control, and XAM content APIs. There is NO direct "decrypt AFS" syscall — the keystream routine
+is game code (Team Ninja), reached via XamContent*/STFS file reads. Next: data-flow from
+XamContentOpenFile/StfsControlDevice call sites (Lead 3 follow-ups) into the game-side crypto.
+
+## Raw evidence
+- IAT dump + resolution script output: see commit (analysis run inline; IAT bytes at file 0x400)
+- /tmp/xboxkrnl_table.inc, /tmp/xam_table.inc (ephemeral; re-fetch from xenia-project/xenia if needed)
+- Full Audit9b log (725 lines, PSFD00 disasm): /tmp/doa4-audit9b.log (ephemeral)
