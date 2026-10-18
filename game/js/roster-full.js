@@ -75,7 +75,7 @@ export const FULL_ROSTER = [
     colors: { suit: 0x8a1a4a, trim: 0xff6b9d }, style: 'Savate', archetype: 'Rushdown' },
   { id: 'star', name: 'STAR', title: 'KAI Splinter', base: 'Christie', moveset: 'xiaoyu', model: 'star', tintStrength: 0.25,
     colors: { suit: 0xffd700, trim: 0xff6b00 }, style: 'Capoeira', archetype: 'Rushdown' },
-  { id: 'torch', name: 'TORCH', title: 'Fire Assassin', base: 'Anna', moveset: 'jin', model: 'steve-fox', tintStrength: 0.6,
+  { id: 'torch', name: 'TORCH', title: 'Fire Assassin', base: 'Anna', moveset: 'jin', model: 'torch', tintStrength: 0.6,
     colors: { suit: 0x8a1a1a, trim: 0xff8800 }, style: 'Assassin', archetype: 'Tricky' },
   { id: 'bruno', name: 'BRUNO', title: 'Matador', base: 'Miguel', moveset: 'bryan', model: 'pantera', tintStrength: 0.25,
     colors: { suit: 0x5a1a1a, trim: 0xcc3333 }, style: 'Brawler', archetype: 'Power' },

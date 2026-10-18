@@ -99,3 +99,16 @@ convert → scale → render → own-eyes → release → wire.)
 - Wired: assets.js MODEL_URLS += star; roster-full.js star.model pantera→star.
 - NOTE: worktree ~/workspace/wh-fighter-hunt was wiped mid-lane (disk cleanup or
   restart); branch was safe on origin (pushed). Recreated sparse worktree, no loss.
+
+### 2026-10-18 — TORCH (Anna Williams) ✅ WIRED
+- Source: `anna-williams-t7-p1.7z` (tekken-models-batch-3). GTA SA DFF+TXD port of
+  T7 Anna by "4L13NW4R3_2021" (same author as Christie). Feathered/raven outfit
+  (NOT the red qipao — this is her feathered T7 look). License: community game rip.
+  Character verified by own eyes on archive preview photo (01.png) + T-pose render.
+- Pipeline: same reusable DFF script (/tmp/fh_dff_pipeline.py). Exported
+  game/assets/models/torch.glb (1.6MB, untextured gray clay — TXD import too heavy,
+  texture pass follow-up). Gate: PASS (Mixamo bones, skinned, ~1.7m).
+- Render: probe → facing = +Y (front shows face + dress bodice; -Y is back).
+  2048px front T-pose, white void, fingertips clear. Own-eyes: Anna's feathered
+  shoulders/wrists, long skirt, matches preview photo.
+- Wired: assets.js += torch; roster-full.js torch.model steve-fox→torch.
