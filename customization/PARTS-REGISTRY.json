@@ -1,6 +1,6 @@
 {
  "character_mapping_format": {
-  "description": "Same universal format as eye-library (see CUSTOMIZATION-LIBRARY-LAYOUT.md). To make every part work on a NEW character: add one entry here naming that character's eye/decal textures (texture_part) — mesh_parts attach at bone sockets and need no mapping, only optional per-character offsets.",
+  "description": "Same universal format as eye-library (see CUSTOMIZATION-LIBRARY-LAYOUT.md). To make every part work on a NEW character: add one entry here naming that character's eye/decal textures (texture_part) \u2014 mesh_parts attach at bone sockets and need no mapping, only optional per-character offsets.",
   "mesh_part_fields": {
    "bone_aliases": [
     "bone",
@@ -66,18 +66,62 @@
    }
   },
   "lili": {
-   "character": "Lili (Western Heart roster/lili)",
-   "notes": "Noir Gala attire: 9 dress textures + yellow tiger eyes. Originals saved as swap options."
+   "character": "Lili (Western Heart roster/lili, Tekken 7 1P formal outfit)",
+   "eye": {
+    "material": "Modelpart1_eyeball_Material005",
+    "replaces_texture": "T_CH_eye_D",
+    "texture_size": [
+     256,
+     256
+    ]
+   },
+   "dress_jacket": {
+    "replaces_texture": "T_CH_lil_bdu_1p_old_jacket_D",
+    "texture_size": [
+     512,
+     1024
+    ]
+   },
+   "dress_skirt": {
+    "replaces_texture": "T_CH_lil_bdl_1p_old_skirt_D",
+    "texture_size": [
+     1024,
+     512
+    ]
+   },
+   "dress_formal": {
+    "replaces_texture": "T_CH_xia_bdl_formal_B_D",
+    "texture_size": [
+     1024,
+     1024
+    ]
+   },
+   "notes": "Full-texture dress options in customization/decal-library/lili/ (MANIFEST.json, 18 entries: noir + white-original restore). Eye options in customization/parts/lili-eyes/."
   },
   "zafina": {
-   "character": "Zafina (Western Heart roster/zafina)",
-   "notes": "Golden Pharaoh attire: gold butterfly top + yellow tiger eyes. Originals saved as swap options."
+   "character": "Zafina (Western Heart roster/zafina, Tekken 6 outfit)",
+   "eye": {
+    "material": "24_eyes_1_16_16",
+    "replaces_texture": "eyes_d-eyes_d.dds",
+    "texture_size": [
+     128,
+     128
+    ]
+   },
+   "top": {
+    "replaces_texture": "butterfly_d",
+    "texture_size": [
+     256,
+     512
+    ]
+   },
+   "notes": "Butterfly-top options in customization/decal-library/zafina/ (MANIFEST.json: gold-pharaoh + pink-original restore). Eye options in customization/parts/zafina-eyes/."
   }
  },
  "created": "2026-10-18",
  "how_to_use": [
   "1. The suite (packages/creation-suite/src/parts.js) loads this registry.",
-  "2. Texture parts: resolveEntry(entry, charId) merges the character's mapping; swapTexture() replaces the texture live — swap back restores the original (nothing overwritten).",
+  "2. Texture parts: resolveEntry(entry, charId) merges the character's mapping; swapTexture() replaces the texture live \u2014 swap back restores the original (nothing overwritten).",
   "3. Mesh parts: attachPart() routes to attach() at the registry socket (bone aliases shared across rigs) with optional fit=headHeight auto-scale.",
   "4. Web UI (customization/create-fighter/): Catalog gains the eyes / decals / masks categories sourced from the same entries."
  ],
@@ -109,34 +153,6 @@
    "note": "Original-geometry 3D pieces (GLB) for the female Cape Jones reskin; attach at bone sockets on any character.",
    "part_class": "mesh_part",
    "path": "customization/parts/superhero/"
-  },
-  "lili-eyes": {
-   "kind": "eye",
-   "manifest": "customization/parts/lili-eyes/README.md",
-   "note": "Lili eye options: original blue-gray saved; universal yellow tiger applied on Noir Gala.",
-   "part_class": "texture_part",
-   "path": "customization/parts/lili-eyes/"
-  },
-  "zafina-eyes": {
-   "kind": "eye",
-   "manifest": "customization/parts/zafina-eyes/README.md",
-   "note": "Zafina eye options: original dark brown saved; universal yellow tiger applied on Golden Pharaoh.",
-   "part_class": "texture_part",
-   "path": "customization/parts/zafina-eyes/"
-  },
-  "decal-library-lili": {
-   "kind": "dress | boots | gloves",
-   "manifest": "customization/decal-library/lili/MANIFEST.json",
-   "note": "Lili Noir Gala dress texture set (9 full-replace textures) + white-original restore set.",
-   "part_class": "texture_part",
-   "path": "customization/decal-library/lili/"
-  },
-  "decal-library-zafina": {
-   "kind": "top",
-   "manifest": "customization/decal-library/zafina/MANIFEST.json",
-   "note": "Zafina butterfly top: gold pharaoh (applied) + pink original (restore).",
-   "part_class": "texture_part",
-   "path": "customization/decal-library/zafina/"
   }
  },
  "parts": [
@@ -150,8 +166,8 @@
    "id": "eye-yellow-tiger",
    "kind": "eye",
    "library": "eye-library",
-   "name": "Yellow tiger eye (OWNER'S 'I LIKE' VARIANT — universal)",
-   "notes": "Realistic amber iris, radial striations, round pupil, dark limbal ring. Universal — add a character_mappings entry to drop it onto any character.",
+   "name": "Yellow tiger eye (OWNER'S 'I LIKE' VARIANT \u2014 universal)",
+   "notes": "Realistic amber iris, radial striations, round pupil, dark limbal ring. Universal \u2014 add a character_mappings entry to drop it onto any character.",
    "part_class": "texture_part",
    "placement": {
     "default_character": "pantera",
@@ -225,7 +241,7 @@
    "id": "pantera-eye-yellow-tiger",
    "kind": "eye",
    "library": "pantera-eyes",
-   "name": "Pantera eyes — yellow tiger (currently applied)",
+   "name": "Pantera eyes \u2014 yellow tiger (currently applied)",
    "notes": "Pantera-local saved variant; same art family as the universal eye-library entry.",
    "part_class": "texture_part",
    "placement": {
@@ -250,7 +266,7 @@
    "id": "pantera-eye-snow-leopard-blue",
    "kind": "eye",
    "library": "pantera-eyes",
-   "name": "Pantera eyes — snow leopard blue (Attire 3 default)",
+   "name": "Pantera eyes \u2014 snow leopard blue (Attire 3 default)",
    "notes": "Pantera-local saved variant.",
    "part_class": "texture_part",
    "placement": {
@@ -275,7 +291,7 @@
    "id": "pantera-eye-original-classic",
    "kind": "eye",
    "library": "pantera-eyes",
-   "name": "Pantera eyes — original classic yellow",
+   "name": "Pantera eyes \u2014 original classic yellow",
    "notes": "Pantera-local saved variant.",
    "part_class": "texture_part",
    "placement": {
@@ -301,7 +317,7 @@
    "id": "pantera-logo-white-scratches",
    "kind": "decal_logo",
    "library": "decal-library-pantera",
-   "name": "Pantera logo — white scratch marks (original)",
+   "name": "Pantera logo \u2014 white scratch marks (original)",
    "notes": "Original thigh decal, transparent background. Both thighs share the UV region (mirrored).",
    "part_class": "texture_part",
    "placement": {
@@ -333,7 +349,7 @@
    "id": "pantera-logo-red-scratches",
    "kind": "decal_logo",
    "library": "decal-library-pantera",
-   "name": "Pantera logo — red scratch marks",
+   "name": "Pantera logo \u2014 red scratch marks",
    "notes": "Red scratch-marks variant of the original thigh decal.",
    "part_class": "texture_part",
    "placement": {
@@ -365,7 +381,7 @@
    "id": "pantera-logo-snow-leopard",
    "kind": "decal_logo",
    "library": "decal-library-pantera",
-   "name": "Pantera logo — snow leopard",
+   "name": "Pantera logo \u2014 snow leopard",
    "notes": "Owner-supplied snow leopard art; currently applied at +50% size centered on canonical placement.",
    "part_class": "texture_part",
    "placement": {
@@ -397,7 +413,7 @@
    "id": "pantera-logo-snow-leopard-owner",
    "kind": "decal_logo",
    "library": "decal-library-pantera",
-   "name": "Pantera logo — snow leopard (owner transparent)",
+   "name": "Pantera logo \u2014 snow leopard (owner transparent)",
    "notes": "Owner's own background-removed transparent PNG (2048x2048 source).",
    "part_class": "texture_part",
    "placement": {
@@ -424,8 +440,8 @@
    "id": "pantera-tights-blue-snow-leopard",
    "kind": "tights",
    "library": "decal-library-pantera",
-   "name": "Tights — blue (snow leopard attire, decal baked)",
-   "notes": "Full blue tights texture with snow leopard decal baked in — the current Attire 3 state.",
+   "name": "Tights \u2014 blue (snow leopard attire, decal baked)",
+   "notes": "Full blue tights texture with snow leopard decal baked in \u2014 the current Attire 3 state.",
    "part_class": "texture_part",
    "placement": {
     "default_character": "pantera",
@@ -445,7 +461,7 @@
    "id": "pantera-tights-blue-clean",
    "kind": "tights",
    "library": "decal-library-pantera",
-   "name": "Tights — blue, clean (neutral base)",
+   "name": "Tights \u2014 blue, clean (neutral base)",
    "notes": "Neutral base: composite any logo option onto this, then re-embed.",
    "part_class": "texture_part",
    "placement": {
@@ -466,7 +482,7 @@
    "id": "pantera-pants-black-trunks",
    "kind": "pants",
    "library": "decal-library-pantera",
-   "name": "Pants — black trunks",
+   "name": "Pants \u2014 black trunks",
    "notes": "Black trunks texture, PANTERA chest/trunks logo included.",
    "part_class": "texture_part",
    "placement": {
@@ -496,7 +512,7 @@
    "kind": "eye_lenses",
    "library": "superhero",
    "name": "Spider-Girl white eye lenses",
-   "notes": "White angular eye lenses, slight emissive. Modeled in place at cyborg-x coords — drops on as-is there; on other characters use fit=headHeight.",
+   "notes": "White angular eye lenses, slight emissive. Modeled in place at cyborg-x coords \u2014 drops on as-is there; on other characters use fit=headHeight.",
    "part_class": "mesh_part",
    "placement": {
     "bone_aliases": [
@@ -578,7 +594,7 @@
    "kind": "cowl",
    "library": "superhero",
    "name": "Space Ghost cowl (no ears)",
-   "notes": "Skull-cap cowl, purple, no ears/fins — the Cape Jones signature. Modeled in place for cyborg-x.",
+   "notes": "Skull-cap cowl, purple, no ears/fins \u2014 the Cape Jones signature. Modeled in place for cyborg-x.",
    "part_class": "mesh_part",
    "placement": {
     "bone_aliases": [
@@ -641,266 +657,6 @@
     "socket": "hands"
    },
    "suite_slot": "gauntlets"
-  },
-  {
-   "asset": "customization/parts/lili-eyes/lili-eye-original-bluegray.png",
-   "editable": [
-    "position",
-    "size",
-    "opacity"
-   ],
-   "id": "lili-eye-original-bluegray",
-   "kind": "eye",
-   "library": "lili-eyes",
-   "name": "Lili eyes — original blue-gray (saved option)",
-   "notes": "Lili's original blue-gray eyes, extracted from T_CH_eye_D. Re-embed to restore.",
-   "part_class": "texture_part",
-   "placement": {
-    "default_character": "lili",
-    "material": "Modelpart1_eyeball_Material005",
-    "mode": "full_replace",
-    "texture": "T_CH_eye_D"
-   },
-   "size_px": [
-    256,
-    256
-   ],
-   "suite_slot": "eye"
-  },
-  {
-   "asset": "customization/parts/zafina-eyes/zafina-eye-original-brown.png",
-   "editable": [
-    "position",
-    "size",
-    "opacity"
-   ],
-   "id": "zafina-eye-original-brown",
-   "kind": "eye",
-   "library": "zafina-eyes",
-   "name": "Zafina eyes — original dark brown (saved option)",
-   "notes": "Zafina's original dark brown eyes, extracted from eyes_d. Re-embed to restore.",
-   "part_class": "texture_part",
-   "placement": {
-    "default_character": "zafina",
-    "material": "24_eyes_1_16_16",
-    "mode": "full_replace",
-    "texture": "eyes_d"
-   },
-   "size_px": [
-    128,
-    128
-   ],
-   "suite_slot": "eye"
-  },
-  {
-   "asset": "customization/decal-library/lili/dress-noir-jacket.png",
-   "editable": [],
-   "id": "lili-dress-noir-jacket",
-   "kind": "dress",
-   "library": "decal-library-lili",
-   "name": "Lili dress — Noir Gala jacket (black, applied)",
-   "notes": "Noir Gala jacket texture (white->black reskin). White original in same library as restore option.",
-   "part_class": "texture_part",
-   "placement": {
-    "default_character": "lili",
-    "material": "Modelpart1/2 various",
-    "mode": "full_replace",
-    "texture": "T_CH_lil_bdu_1p_old_jacket_D"
-   },
-   "size_px": [
-    512,
-    1024
-   ],
-   "suite_slot": "dress"
-  },
-  {
-   "asset": "customization/decal-library/lili/dress-noir-skirt.png",
-   "editable": [],
-   "id": "lili-dress-noir-skirt",
-   "kind": "dress",
-   "library": "decal-library-lili",
-   "name": "Lili dress — Noir Gala skirt (black, applied)",
-   "notes": "Noir Gala skirt texture (white->black reskin). White original in same library as restore option.",
-   "part_class": "texture_part",
-   "placement": {
-    "default_character": "lili",
-    "material": "Modelpart1/2 various",
-    "mode": "full_replace",
-    "texture": "T_CH_lil_bdl_1p_old_skirt_D"
-   },
-   "size_px": [
-    1024,
-    512
-   ],
-   "suite_slot": "dress"
-  },
-  {
-   "asset": "customization/decal-library/lili/dress-noir-formal-dress.png",
-   "editable": [],
-   "id": "lili-dress-noir-formal-dress",
-   "kind": "dress",
-   "library": "decal-library-lili",
-   "name": "Lili dress — Noir Gala formal dress panels (black, applied)",
-   "notes": "Noir Gala formal dress panels texture (white->black reskin). White original in same library as restore option.",
-   "part_class": "texture_part",
-   "placement": {
-    "default_character": "lili",
-    "material": "Modelpart1/2 various",
-    "mode": "full_replace",
-    "texture": "T_CH_xia_bdl_formal_B_D"
-   },
-   "size_px": [
-    1024,
-    1024
-   ],
-   "suite_slot": "dress"
-  },
-  {
-   "asset": "customization/decal-library/lili/dress-noir-frill.png",
-   "editable": [],
-   "id": "lili-dress-noir-frill",
-   "kind": "dress",
-   "library": "decal-library-lili",
-   "name": "Lili dress — Noir Gala frill (black, applied)",
-   "notes": "Noir Gala frill texture (white->black reskin). White original in same library as restore option.",
-   "part_class": "texture_part",
-   "placement": {
-    "default_character": "lili",
-    "material": "Modelpart1/2 various",
-    "mode": "full_replace",
-    "texture": "T_CH_lil_bdl_1p_old_frill_D"
-   },
-   "size_px": [
-    128,
-    256
-   ],
-   "suite_slot": "dress"
-  },
-  {
-   "asset": "customization/decal-library/lili/dress-noir-lace.png",
-   "editable": [],
-   "id": "lili-dress-noir-lace",
-   "kind": "dress",
-   "library": "decal-library-lili",
-   "name": "Lili dress — Noir Gala lace (black, applied)",
-   "notes": "Noir Gala lace texture (white->black reskin). White original in same library as restore option.",
-   "part_class": "texture_part",
-   "placement": {
-    "default_character": "lili",
-    "material": "Modelpart1/2 various",
-    "mode": "full_replace",
-    "texture": "T_CH_lil_bdu_1p_old_lace_D"
-   },
-   "size_px": [
-    256,
-    256
-   ],
-   "suite_slot": "dress"
-  },
-  {
-   "asset": "customization/decal-library/lili/dress-noir-pants-etc.png",
-   "editable": [],
-   "id": "lili-dress-noir-pants-etc",
-   "kind": "dress",
-   "library": "decal-library-lili",
-   "name": "Lili dress — Noir Gala underskirt (black, applied)",
-   "notes": "Noir Gala underskirt texture (white->black reskin). White original in same library as restore option.",
-   "part_class": "texture_part",
-   "placement": {
-    "default_character": "lili",
-    "material": "Modelpart1/2 various",
-    "mode": "full_replace",
-    "texture": "T_CH_lil_bdl_1p_old_pants_etc_D"
-   },
-   "size_px": [
-    512,
-    256
-   ],
-   "suite_slot": "dress"
-  },
-  {
-   "asset": "customization/decal-library/lili/dress-noir-boots.png",
-   "editable": [],
-   "id": "lili-dress-noir-boots",
-   "kind": "boots",
-   "library": "decal-library-lili",
-   "name": "Lili dress — Noir Gala boots (black, applied)",
-   "notes": "Noir Gala boots texture (white->black reskin). White original in same library as restore option.",
-   "part_class": "texture_part",
-   "placement": {
-    "default_character": "lili",
-    "material": "Modelpart1/2 various",
-    "mode": "full_replace",
-    "texture": "T_CH_lil_bdl_1p_old_boots_D"
-   },
-   "size_px": [
-    256,
-    256
-   ],
-   "suite_slot": "boots"
-  },
-  {
-   "asset": "customization/decal-library/lili/dress-noir-glove.png",
-   "editable": [],
-   "id": "lili-dress-noir-glove",
-   "kind": "gloves",
-   "library": "decal-library-lili",
-   "name": "Lili dress — Noir Gala gloves (black, applied)",
-   "notes": "Noir Gala gloves texture (white->black reskin). White original in same library as restore option.",
-   "part_class": "texture_part",
-   "placement": {
-    "default_character": "lili",
-    "material": "Modelpart1/2 various",
-    "mode": "full_replace",
-    "texture": "T_CH_lil_bdu_1p_old_glove_D"
-   },
-   "size_px": [
-    256,
-    256
-   ],
-   "suite_slot": "gloves"
-  },
-  {
-   "asset": "customization/decal-library/lili/dress-noir-tie-frill.png",
-   "editable": [],
-   "id": "lili-dress-noir-tie-frill",
-   "kind": "dress",
-   "library": "decal-library-lili",
-   "name": "Lili dress — Noir Gala bow frill (black, applied)",
-   "notes": "Noir Gala bow frill texture (white->black reskin). White original in same library as restore option.",
-   "part_class": "texture_part",
-   "placement": {
-    "default_character": "lili",
-    "material": "Modelpart1/2 various",
-    "mode": "full_replace",
-    "texture": "T_CH_lil_bdu_1p_old_tie_frill_D"
-   },
-   "size_px": [
-    512,
-    256
-   ],
-   "suite_slot": "dress"
-  },
-  {
-   "asset": "customization/decal-library/zafina/top-gold-pharaoh.png",
-   "editable": [],
-   "id": "zafina-top-gold-pharaoh",
-   "kind": "top",
-   "library": "decal-library-zafina",
-   "name": "Zafina top — Golden Pharaoh butterfly (gold on black, applied)",
-   "notes": "Golden Pharaoh butterfly top: pink->metallic gold, navy->black. Pink original in same library as restore option.",
-   "part_class": "texture_part",
-   "placement": {
-    "default_character": "zafina",
-    "material": "24_butterfly_1_16_16",
-    "mode": "full_replace",
-    "texture": "butterfly_d"
-   },
-   "size_px": [
-    256,
-    512
-   ],
-   "suite_slot": "top"
   }
  ],
  "registry": "creation-suite-parts-registry",

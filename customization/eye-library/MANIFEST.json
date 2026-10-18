@@ -3,7 +3,7 @@
   "pantera": {
    "character": "Pantera (Western Heart roster/pantera, King-based)",
    "material": "ModelEye_Material (eye material baseColor)",
-   "notes": "Single shared texture — both eyes use it. Drop-in full replace; verified on Attire 1 (pantera-t7king), Attire 3 classic build, and Attire 3 snow-leopard.",
+   "notes": "Single shared texture \u2014 both eyes use it. Drop-in full replace; verified on Attire 1 (pantera-t7king), Attire 3 classic build, and Attire 3 snow-leopard.",
    "replaces_texture": "King_Eye_D",
    "texture_size": [
     128,
@@ -11,9 +11,9 @@
    ]
   },
   "lili": {
-   "character": "Lili (Western Heart roster/lili, Tekken 7)",
+   "character": "Lili (Western Heart roster/lili, Tekken 7 1P formal outfit)",
    "material": "Modelpart1_eyeball_Material005 (eye material baseColor)",
-   "notes": "Single shared texture — both eyes use it. Drop-in full replace; universal 128px entries upscale to 256 (LANCZOS). Yellow tiger applied on the Noir Gala attire; original blue-gray saved in customization/parts/lili-eyes/.",
+   "notes": "Single shared texture \u2014 both eyes use it. Drop-in full replace. Applied: yellow tiger on Attire 1 (Noir Gala); original blue-gray saved in customization/parts/lili-eyes/.",
    "replaces_texture": "T_CH_eye_D",
    "texture_size": [
     256,
@@ -21,10 +21,10 @@
    ]
   },
   "zafina": {
-   "character": "Zafina (Western Heart roster/zafina, Tekken 6)",
+   "character": "Zafina (Western Heart roster/zafina, Tekken 6 outfit)",
    "material": "24_eyes_1_16_16 (eye material baseColor)",
-   "notes": "Single shared texture — both eyes use it. Drop-in full replace; universal entries are native 128. Yellow tiger applied on the Golden Pharaoh attire; original dark brown saved in customization/parts/zafina-eyes/.",
-   "replaces_texture": "eyes_d",
+   "notes": "Single shared texture \u2014 both eyes use it. Drop-in full replace. Applied: yellow tiger on Attire 1 (Golden Pharaoh); original dark brown saved in customization/parts/zafina-eyes/.",
+   "replaces_texture": "eyes_d-eyes_d.dds",
    "texture_size": [
     128,
     128
@@ -38,8 +38,8 @@
     "pantera-attire3-snow-leopard"
    ],
    "id": "eye-yellow-tiger",
-   "name": "Yellow tiger eye (OWNER'S 'I LIKE' VARIANT — universal)",
-   "notes": "The owner's approved favorite: realistic tiger/snow-leopard eye — amber iris with radial striations, vertical slit pupil, dark limbal ring. Designed as a UNIVERSAL option for every character. Currently applied on Pantera Attire 3.",
+   "name": "Yellow tiger eye (OWNER'S 'I LIKE' VARIANT \u2014 universal)",
+   "notes": "The owner's approved favorite: realistic tiger/snow-leopard eye \u2014 amber iris with radial striations, vertical slit pupil, dark limbal ring. Designed as a UNIVERSAL option for every character. Currently applied on Pantera Attire 3.",
    "png": "eye-yellow-tiger.png",
    "size_px": [
     128,
@@ -50,7 +50,7 @@
   {
    "id": "eye-blue-snow-leopard",
    "name": "Snow leopard blue eye (Attire 3 snow-leopard default)",
-   "notes": "The blue eyes from the snow-leopard reskin — saved as the snow-leopard attire's default eye option. Swappable with any other entry.",
+   "notes": "The blue eyes from the snow-leopard reskin \u2014 saved as the snow-leopard attire's default eye option. Swappable with any other entry.",
    "png": "eye-blue-snow-leopard.png",
    "size_px": [
     128,
@@ -72,14 +72,14 @@
  ],
  "how_to_swap": [
   "1. Pick an eye option PNG from entries.",
-  "2. Re-embed it as the eye diffuse texture for the target character (see character_mappings — for Pantera it's King_Eye_D in roster/pantera/attires/<attire>/pantera-*.glb).",
+  "2. Re-embed it as the eye diffuse texture for the target character (see character_mappings \u2014 for Pantera it's King_Eye_D in roster/pantera/attires/<attire>/pantera-*.glb).",
   "3. To add a NEW character to the universal system: extract that character's eye diffuse texture, add a character_mappings entry naming its texture/material, and any entry PNG becomes usable on them.",
   "4. To restore a character's original exactly: re-embed their original eye PNG."
  ],
  "library": "universal-eye-library",
- "source": "Owner directive 2026-10-18: the yellow tiger eye is his 'I like' variant — must be a UNIVERSAL eye option usable on EVERY character, not just King/Pantera. All prior eye variants saved as swappable options, WWE/Tekken-style.",
+ "source": "Owner directive 2026-10-18: the yellow tiger eye is his 'I like' variant \u2014 must be a UNIVERSAL eye option usable on EVERY character, not just King/Pantera. All prior eye variants saved as swappable options, WWE/Tekken-style.",
  "universal_format": {
-  "description": "Every entry is a square RGBA eye-iris diffuse texture. To use on a character, add a character_mappings entry: which texture name (material baseColor) it replaces and at what rect. No geometry changes — texture swap only, so it drops onto any character whose eye UVs you map.",
+  "description": "Every entry is a square RGBA eye-iris diffuse texture. To use on a character, add a character_mappings entry: which texture name (material baseColor) it replaces and at what rect. No geometry changes \u2014 texture swap only, so it drops onto any character whose eye UVs you map.",
   "placement_fields": {
    "character": "character id",
    "material": "material name",
