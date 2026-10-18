@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>WESTERN HEART — 西部の心</title>
 <link rel="stylesheet" href="ui.css" />
+<!-- [LANE-I select-redesign] rebuilt select screen styles -->
+<link rel="stylesheet" href="cards.css" />
+<!-- [LANE-I select-redesign] import map for the select screen's three.js modules
+     (same vendored build the game uses: game/vendor/three.module.js) -->
+<script type="importmap">
+{ "imports": {
+  "three": "../vendor/three.module.js",
+  "three/addons/": "../vendor/addons/"
+} }
+</script>
 <script src="title-config.js"></script>
 <script src="title-variant.js"></script>
 </head>
@@ -44,11 +54,12 @@
   <div class="cards" id="mode-cards"></div>
 </section>
 
+<!-- [LANE-I select-redesign] old vertical-scroll card grid DELETED here (see PR:
+     repeated 2-3 renders, no names, page-level scroll — owner-flagged).
+     The #select section is now a mount point for the rebuilt Tekken 8-style
+     select screen (game/ui-wh/cards.js -> initSelect). -->
 <section data-screen="select" class="screen select">
-  <h2 class="title-bar">CHOOSE YOUR VESSEL <i>魂を選べ</i><span class="timer" id="sel-timer">30</span></h2>
-  <div class="sel-side p1" id="sel-p1"></div>
-  <div class="grid" id="sel-grid"></div>
-  <div class="sel-side p2" id="sel-p2"></div>
+  <div id="select-root"></div>
 </section>
 
 <section data-screen="vs" class="screen vs">
