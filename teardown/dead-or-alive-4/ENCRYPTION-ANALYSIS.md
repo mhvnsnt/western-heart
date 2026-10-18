@@ -153,6 +153,59 @@ The encryption is a per-file keyed XOR stream cipher. The 4-byte keys are recove
 
 **This is a solvable problem** but requires either dynamic analysis (Xenia) or deeper Ghidra work (data flow/emulation) than static xref analysis could provide.
 
+### Deep-RE audit results — 2026-10-18 (all 8 audits rerun headless, findings banked in `tools/ghidra-audits/findings-audit*.txt`)
+
+The 7 audits (+6b) did **not** crack the keystream generator, but they eliminated
+several leads and mapped the code-reference landscape. Per-audit verdicts:
+
+- **Audit1:** AFS filename strings (`cache:\*.afs`, `d:\*.afs`) live in `.rdata`
+  (0x0061e8d0–0x0061e9c0) with **zero code xrefs** — nothing in the analyzed
+  regions references them. CRI ADX strings (`adxf_GetPtStat`,
+  `Illigal format(not AFS)`) confirm the CRI filesystem library is statically
+  linked. The 0x822f06d0 S-box lead is **dead**: not in any memory block
+  (a runtime/rebased address, not a file VA).
+- **Audit2:** Lone `lis r10,0x61` at 0x007725cc; only 8% of `.text` is
+  disassembled (193,898 of ~8.8MB). 10 import externals are **unnamed thunks**
+  (Ghidra did not resolve the Xbox 360 XEX import table).
+- **Audit3:** The lone lis-0x61 site is a **magic-number dispatch**, not the AFS
+  path: it builds 0x00617061 / 0x00767061 / 0x21767061 (`!vpa`-family words) and
+  compares them against a struct field — archive-format sniffing, not crypto.
+  **Zero hits** for the 6 file keys as BE32 in .text/.rdata/.data — the keys are
+  definitively not stored in the binary. No `lis *,0x4146` (AFS magic is never
+  constructed in code). 7 `bl`→thunk sites feed Audit4/5.
+- **Audit4:** Thunk bodies are empty; caller decomp is partial (bad-instruction
+  warnings — auto-disassembly is unreliable in those regions). `FUN_00d9df70`
+  is the most crypto-flavored caller: unnamed externals + constants
+  0xfffe07d1 / 0x82b7e67c / 0x26404 and 0x10000/0x20000 mode flags.
+- **Audit5:** All 7 import-calling functions disassembled; call graph mapped
+  (00d9df70 → externals 0xf591d4/0xf587a4/0xf591c4; 00d9e1f0 → 0xf587c4 ×2,
+  0xf587b4; the 00b8xxxx group → 0xf58984/0xf58974/0xf589e4).
+- **Audit6/6b:** 22 `lis *,0x8261` sites (runtime-addressed `.rdata` refs), but
+  their contexts are **vtable dispatches and struct/string refs** in
+  0x00a0e1d0–0x00a2adcc — not AFS filename construction. No BE32 pointers to
+  the strings stored anywhere.
+- **Audit7 (the money scan):** **0** lis/ori|addi pairs build addresses in
+  [0x8261e800, 0x8261ec00] (the AFS filename strings' runtime range).
+  Combined with zero xrefs (Audit1) and no stored pointers (Audit6): **no
+  analyzed code references the AFS filename strings at all.**
+
+**What this proves about the keystream question:** the string-following strategy
+(AFS filename → open call → decrypt routine) hit a wall — the decrypt path is
+either in the **undisassembled 92% of `.text`** or reached through an idiom the
+audits didn't scan (TOC-relative, register-indirect, or runtime-constructed
+paths via the CRI library taking an index rather than a pointer).
+
+**Next leads, in order:**
+1. Expand disassembly coverage (8% → full `.text`) and re-run the string-xref
+   hunt — the AFS-string-referencing code is most likely in the dark 92%.
+2. Resolve the 10 unnamed externals against Xbox 360 XDK import ordinals /
+   known CRI ADX signatures — unblocks Option B (data-flow from file-read
+   syscalls to the keystream routine).
+3. Follow up `FUN_00d9df70` (crypto-flavored constants + 4 externals) with a
+   targeted disassembly/decompile pass.
+4. Dynamic analysis under Xenia (break on AFS file reads, watch keystream
+   generation) remains the highest-probability path if static work stalls.
+
 ## Deep-RE audit continuation — 2026-10-18 (watchdog-resumed)
 
 **Context:** Prior teardown delivered everything except the 6 encrypted AFS header
