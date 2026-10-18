@@ -1,0 +1,37 @@
+# findings-audit18.txt — DOA4 deep-RE Audit 18 (language check + slots 40/41 naming)
+# Run: 2026-10-18 ~11:30 CDT, headless Ghidra 12.1.4 (Doa4Audit18.java), program default_pe.bin, -noanalysis
+# Raw output in /tmp/audit18full.log (lines ~40-58). IAT re-read from default_pe.bin
+# file offset 0x400; ordinal names from xenia-project/xenia master
+# src/xenia/kernel/xboxkrnl/xboxkrnl_table.inc (fetched 2026-10-18, 922 exports).
+# === findings ===
+1. LANGUAGE: PowerPC:BE:32:default, addrSize=4. CONFIRMED 32-bit.
+   This explains Audit16/17: the bytes at 0x00dfd4a8 decode (by hand) as 64-bit
+   PPC (std r20,-104(r1) ... stw r12,-8(r1); blr; ld r14,-152(r1) ...) and the
+   32-bit disassembler correctly rejects them as invalid encodings.
+2. IMPORTED SYMBOL TABLE: exactly 2 symbols (entry, vftable) — consistent with
+   findings-audit9 (XEX import table not parsed into the PE). All external naming
+   comes from the raw IAT at file 0x400 + Xenia's tables, NOT from Ghidra imports.
+   Slots 40/41 have only DEFAULT labels (SUB_00f589e4 / SUB_00f589f4) in Ghidra.
+3. SLOT 40 (thunk 0x00f589e4): IAT[40] = 0x00000282 -> xboxkrnl ordinal 642 =
+   XInputdFFGetDeviceInfo (already resolved in findings-audit9). Called by
+   FUN_00b8df88 in the XamContentOpenFile error path. NOT crypto — device check.
+4. SLOT 41 (thunk 0x00f589f4): IAT[41] = 0x000001fc -> xboxkrnl ordinal 508 =
+   XAudioSubmitDigitalPacket (Xenia master table, verified line 522).
+   Called by FUN_00b92058 and FUN_00b91fdc inside SHA-chaining loops.
+   *** CAVEAT: usage does not match the name. Call sites pass TWO stack pointers
+   and check a BYTE return value (func_0x00f589f4(&s60,&s50) -> char compared to
+   '\0'); XAudioSubmitDigitalPacket takes one packet pointer and returns void.
+   Treat the slot41 name as UNVERIFIED — possible Xenia-table/kernel-version
+   ordinal skew for this XEX's kernel revision. Do NOT cite slot41=XAudioSubmitDigitalPacket
+   as established fact; it is the table's answer, contradicted by call-site arity.
+# === verdict ===
+- Neither new external is crypto: slot40 = XInput force-feedback info (device
+  path), slot41 = per-table an XAudio function but call-site arity contradicts it.
+- The crypto cluster's wrappers are now FULLY mapped and contain no cipher:
+  SHA helpers (00b8c7b4, 00b8dc94), SHA-chaining loops (00b91fdc, 00b92058),
+  content-open wrapper (00b8df88), SHA-compute wrapper (00b8973c), content manager
+  (00d9df70/00d9e1f0). The cipher itself is NOT in any analyzed function.
+- Remaining unexplored lead: the 00dfxxxx region (branches to 0x00dfd4f8/0x00dfd518,
+  bl to 0x00dfd4a8/0x00dfd4c8) whose bytes are 64-bit PPC encodings in a 32-bit
+  binary — needs a 64-bit-aware disassembly attempt or an encrypted-code analysis.
+  Honest status: the keystream routine's location is STILL UNKNOWN after 18 audits.

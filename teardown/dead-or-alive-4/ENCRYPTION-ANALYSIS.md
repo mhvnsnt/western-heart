@@ -244,3 +244,64 @@ scripts + newly disassembled regions.
 3. Update this file's Conclusion with whatever the audits prove about the
    keystream generator, and chase Option B (data-flow from file-read syscalls
    to the keystream routine) before Option C cryptanalysis.
+
+## Deep-RE audits 11–18 — 2026-10-18 (worker continuation)
+
+**Context:** Audits 1–10 closed with the keystream NOT cracked (see findings-audit1..10).
+This run continued with per-audit commit+push discipline on branch
+`feat/gapfill-decode-all-agents` (commits 6ba6b56, 629952d, 88baa05, 611a1b7, 3f49de8,
+7051821 — all pushed to origin). Headless Ghidra 12.1.4, program `default_pe.bin`,
+project `~/workspace/ghidra-projects/doa4/`.
+
+- **Audit11** (thunk-caller map): all 9 crypto/content thunks' callers mapped.
+  Tight clusters: 00b8xxxx–00b9xxxx (SHA/content) and 00d9xxxx (content manager).
+  6 call sites in "(none)" (no containing function) — the disassembly was
+  incomplete in the crypto neighborhood.
+- **Audit12** (cluster decompile): FUN_00b8ea08 identified as prime lead — SHA-style
+  call whose output feeds TWICE into FUN_00b91ec8 with mode flag 1 (classic
+  derive-key-then-decrypt shape). FUN_00b8dfd8 = plain XamContentOpenFile wrapper
+  (excluded). Slot33/34 "XeCryptShaUpdate/Final" names flagged UNVERIFIED (call
+  arity doesn't match XDK prototypes).
+- **Audit13** (sweep 68.8%→85.6%): +369,141 instructions via 0x10-grid sweep;
+  re-hunt over ALL new code: ZERO AFS-string xrefs, ZERO lis-0x8261 pairs, ZERO
+  lis-0x4146, ZERO lis/ori key constructions (honest negative).
+- **Audit14** (Xenia feasibility): NOT feasible — no GPU on this VM (no VGA, no
+  /dev/dri, 2 vCPUs), Xenia-on-Linux experimental, DOA4 not documented playable,
+  no bootable game image locally. Recommended alternative: Ghidra P-code emulator
+  (CPU-only) once a candidate routine is bounded.
+- **Audit15** (prime-candidate decompile): the Audit12 "lead functions" are 2-insn
+  THUNKS — FUN_00b91ec8→FUN_00dfd4a8, FUN_00b92120→FUN_00dfd4c8. Real neighborhood
+  is 00dfxxxx, never before analyzed. 5 unowned call sites persisted post-sweep.
+- **Audit16** (createFunction): all 5 orphaned sites converted to functions
+  (FUN_00b8c7b4/00b92058/00b91fdc/00b8dc94/00b8df88). Thunk targets 00dfd4a8/00dfd4c8
+  would NOT disassemble (0 instructions; hand-verified the bl encoding is correct).
+- **Audit17** (new functions + byte dump): the 5 are wrappers — SHA helpers
+  (00b8c7b4, 00b8dc94), SHA-chaining loops (00b91fdc, 00b92058), content-open
+  wrapper (00b8df88). Two NEW import slots found: 40 (thunk 0x00f589e4), 41
+  (0x00f589f4). Two DIRECT BRANCHES into 00dfxxxx (b 0x00dfd4f8, b 0x00dfd518).
+  Raw bytes at 0x00dfd4a8 hand-decode as 64-bit PPC (std/ld prologue/epilogue
+  fragments + blr) — the 32-bit disassembler rejects them.
+- **Audit18** (language + slot naming): language = **PowerPC:BE:32:default**
+  (explains the 00dfxxxx refusal). Slot40 = XInputdFFGetDeviceInfo (xboxkrnl 642,
+  already in audit9) — device path, not crypto. Slot41 = XAudioSubmitDigitalPacket
+  per Xenia master (xboxkrnl 508) — BUT call-site arity (2 ptrs, byte return)
+  contradicts the name; flagged UNVERIFIED (possible ordinal skew). Ghidra's
+  IMPORTED table holds only 2 symbols; all naming comes from the raw IAT at file
+  0x400 + Xenia tables.
+
+**Net verdict after 18 audits:** the keystream routine's location is STILL UNKNOWN.
+Every analyzed function in the crypto/content cluster is a wrapper or helper; the
+cipher itself is not in any disassembled function. The only unexplored lead is the
+00dfxxxx region (branch/bl targets 0x00dfd4a8/0x00dfd4c8/0x00dfd4f8/0x00dfd518)
+whose bytes are 64-bit PPC encodings inside a 32-bit binary.
+
+**Next leads, in order:**
+1. 64-bit-aware look at 00dfxxxx (decode the std/ld stream fully by hand or with a
+   64-bit PPC disassembler; determine code vs data vs encrypted code).
+2. Verify slot41's true identity (kernel-version ordinal tables; Xenia Canary's
+   newer xboxkrnl table).
+3. Ghidra P-code emulation of the SHA-chaining loops (FUN_00b91fdc/00b92058) with
+   stubbed imports — CPU-only, no GPU needed — to observe what the SHA outputs feed.
+4. If 00dfxxxx proves to be a dead end, pivot to cryptanalysis of the AFS table
+   cipher (16-byte periodic, per-file keys — characterized 2026-10-17) rather than
+   more static hunting: 18 audits have exhausted the static signature space.
