@@ -1,0 +1,31 @@
+# findings-audit13.txt — DOA4 deep-RE Audit 13 (finer sweep 68.8%->85.6% + re-hunt)
+# Run: 2026-10-18 ~10:00 CDT, headless Ghidra 12.1.4 (Doa4Audit13.java), program default_pe.bin, -noanalysis
+# .text = 006e0000-00f4adff, 8,826,368 bytes. 0x10 grid disassemble() over still-
+# undefined addresses (478s sweep). Raw output in /tmp/audit13full.log lines 47-60.
+# === findings ===
+instructions BEFORE: 1,519,117 (insn-bytes 6,076,468 = 68.8%)
+sweep: 101,886 disassemble() attempts, all accepted (okCalls=101,886)
+instructions AFTER: 1,888,258 (+369,141 NEW), insn-bytes 7,553,032 = 85.6%
+new function entry points in new regions: 0
+HUNT1 (new-region xrefs to .rdata AFS-string range 0x0061e800-0x0061ec00): 0
+HUNT2 (369,141 new insns scanned; lis-0x8261 pairs into [0x8261e700,0x8261ed00]): 0
+HUNT3 (new-region lis *,0x4146 / addis-0x4146): 0
+HUNT4 (new-region lis/ori construction of the 6 file keys from Doa4Audit3.java:70
+        anm=0x80b97b52 chrone=0x7fc2f931 chrtwo=0x7ff843dc chrthree=0xfe793a0f
+        mot=0x7d40a53e stg=0x7d4e3d2e): 0
+# === verdict ===
+- Coverage 68.8% -> 85.6% (+16.8 points). The hunt across the ENTIRE newly
+  disassembled 369k instructions found ZERO AFS-string references, ZERO lis-0x8261
+  pairs into the AFS string range, ZERO AFS-magic constructions, and ZERO key-
+  constant constructions. Combined with audits 1-10: the AFS header/table crypto
+  code path is not identifiable by static string/xref signature in the binary at
+  all. Banked as an honest negative.
+- "new function entry points: 0" is a caution flag, not a result: disassemble()
+  created 369k instructions but zero new Function objects — Ghidra did not
+  auto-create functions in the swept regions, so the Audit11/Audit12 "(none)" call
+  sites (00b8c7b4, 00b92058, 00b91fdc, 00b8dc94, 00b8df88) may STILL be unowned.
+  Audit15 re-checks this explicitly; if still unowned, the fix is explicit
+  createFunction() calls at the call sites, not more sweeping.
+- Remaining 14.4% undefined in .text is consistent with jump tables / literal
+  pools / data-in-code; a 0x4-grid pass could be tried but the cost (another ~8 min
+  + diminishing returns) is parked pending Audit15's outcome.
