@@ -154,3 +154,19 @@ convert → scale → render → own-eyes → release → wire.)
   clear. Own-eyes: Akuma's wild spiky hair, prayer beads, torn gi, rope obi,
   green pants, wrist ropes, sandals. Unmistakable.
 - Wired: assets.js += dio; roster-full.js dio.model steve-fox→dio.
+
+### 2026-10-18 — REALIZZT/KUTZ (Brad Burns) ⚠️ DATA EXTRACTED, FORMAT NEEDS RE
+- Source: `braitm.farc` (47MB) + `bra.farc` (761B) from vf5-ps3-v1 release
+  (Virtua Fighter 5 PS3). "bra" = Brad Burns. The VF5 teardown only had aki/akixx;
+  Brad's data was on the release all along.
+- Cracked the Sega FArC format: 12-byte header (`FArC\0\0\x12L` + count), then
+  file table (filename\0 + 12 bytes meta: big-endian data_section_base, size,
+  absolute_offset), data section at byte 4692. Extracted 156 files:
+  braitm000_obj.bin … braitm155_obj.bin (models) + _tex.bin (textures).
+  Largest tex: braitm000_tex.bin (4.3MB).
+- The obj.bin files are Sega VF5 PS3 model format (binary, no text header) —
+  needs a dedicated parser (RE task, not done). Data is safe on the release;
+  local copy deleted per disk law. Re-extract: download braitm.farc from
+  vf5-ps3-v1, parse per above.
+- NOT WIRED: no GLB yet. Needs VF5 model format RE or a browser-lane pull
+  (rigmodels/DeviantArt may have a Brad Burns in FBX/GLB).
