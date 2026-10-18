@@ -1,0 +1,33 @@
+# findings-audit16.txt — DOA4 deep-RE Audit 16 (createFunction at unowned sites + real thunk targets)
+# Run: 2026-10-18 ~10:45 CDT, headless Ghidra 12.1.4 (Doa4Audit16.java), program default_pe.bin, -noanalysis
+# Raw output in /tmp/a16.txt (extracted from /tmp/audit16full.log).
+# === findings ===
+--- createFunction at the 5 unowned call sites: ALL SUCCEEDED ---
+  0xb8c7b4  -> FUN_00b8c7b4 [[00b8c7b4, 00b8c803]]
+  0xb92058  -> FUN_00b92058 [[00b92030, 00b9208b] [00b92108, 00b92113]]
+  0xb91fdc  -> FUN_00b91fdc [[00b91fdc, 00b9202f] [00b92034, 00b92057]]
+  0xb8dc94  -> FUN_00b8dc94 [[00b8dc94, 00b8dc9f]]   (12 bytes only - truncated)
+  0xb8df88  -> FUN_00b8df88 [[00b8df88, 00b8dfc7] [00b8dfd0, 00b8dfd7]]
+  The unowned-sites backlog is CLEARED. Note: FUN_00b91fdc's body [00b91fdc,00b9202f]
+  and FUN_00b92058's body [00b92030,00b9208b] are ADJACENT in the 00b91fxx-00b920xx
+  range — this whole neighborhood is one crypto cluster with broken boundaries.
+--- real thunk targets 0x00dfd4a8 / 0x00dfd4c8: DISASSEMBLY FAILED ---
+  disassemble() accepted the call (no exception) but produced 0 instructions;
+  bodies are single-point [[00dfd4a8,00dfd4a8]] / [[00dfd4c8,00dfd4c8]].
+  Hand-verified the bl encoding: 0x00b91ecc = 0x4826B5DD -> LI=0x09AD77, AA=0, LK=1
+  -> EA = 0x00B91ECC + (0x09AD77<<2) = 0x00DFD4A8. Target resolution is CORRECT.
+  So the bytes at 0x00dfd4a8 (inside .text 006e0000-00f4adff) do not disassemble
+  as PowerPC. Open hypotheses (UNVERIFIED, not findings):
+  (a) the region is data/filler and the bl is patched at runtime;
+  (b) the region is encrypted/obfuscated code (consistent with Team Ninja's AFS-table
+      cipher work elsewhere);
+  (c) Ghidra's memory map has a gap/overlay there.
+  NEXT: read raw bytes at 0xdfd4a8/0xdfd4c8 (Audit17) before theorizing further.
+# === verdict ===
+- Procedural win: explicit createFunction() fixed what sweeping could not — the 5
+  orphaned call sites are now functions and analyzable (decompile them in Audit17).
+- The thunk-trail into 00dfxxxx hit a wall: the real targets don't disassemble.
+  This CONTRADICTS the "thunk to real routine" theory — do NOT cite FUN_00dfd4a8
+  as a decrypt routine. The thunks may redirect to runtime-patched code.
+- FUN_00b8dc94's 12-byte body suggests more truncated tails in the cluster;
+  Audit17 walks 1 level out from the 5 new functions to find the actual crypto ops.
