@@ -21,7 +21,12 @@
    "limb": "armL",
    "heavy": false,
    "knock": 2.2,
-   "soulGain": 8
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:44",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
   },
   "2": {
    "name": "SUN R\u0100 2 (T3 heihachi r157)",
@@ -37,7 +42,12 @@
    "limb": "armR",
    "heavy": false,
    "knock": 2.2,
-   "soulGain": 8
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:157",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
   },
   "2,1": {
    "name": "SUN R\u0100 2,1 (T3 heihachi r158)",
@@ -54,7 +64,14 @@
    "heavy": false,
    "knock": 2.2,
    "soulGain": 8,
-   "string_hit": "2"
+   "string_hit": "2",
+   "anim_ref": "t3:heihachi:row:158",
+   "input_slots": [
+    "2,1",
+    "2",
+    "1"
+   ],
+   "move_class": "string"
   },
   "2,1,2": {
    "name": "SUN R\u0100 2,1,2 (T3 heihachi r159)",
@@ -71,7 +88,15 @@
    "heavy": false,
    "knock": 2.2,
    "soulGain": 8,
-   "string_hit": "2,1"
+   "string_hit": "2,1",
+   "anim_ref": "t3:heihachi:row:159",
+   "input_slots": [
+    "2,1,2",
+    "2",
+    "1",
+    "2"
+   ],
+   "move_class": "string"
   },
   "3": {
    "name": "SUN R\u0100 3 (T3 heihachi r153)",
@@ -87,7 +112,12 @@
    "limb": "legL",
    "heavy": false,
    "knock": 4.2,
-   "soulGain": 8
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:153",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
   },
   "4": {
    "name": "SUN R\u0100 4 (T3 heihachi r84)",
@@ -103,7 +133,12 @@
    "limb": "legR",
    "heavy": false,
    "knock": 4.2,
-   "soulGain": 8
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:84",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
   },
   "1+3": {
    "name": "SUN R\u0100 1+3 throw (T3 heihachi r243)",
@@ -123,7 +158,12 @@
    "throw": true,
    "unblockable": true,
    "isGrab": true,
-   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+   "anim_ref": "t3:heihachi:row:243",
+   "input_slots": [
+    "1+3"
+   ],
+   "move_class": "throw"
   },
   "2+4": {
    "name": "SUN R\u0100 2+4 throw (T3 heihachi r244)",
@@ -143,7 +183,12 @@
    "throw": true,
    "unblockable": true,
    "isGrab": true,
-   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+   "anim_ref": "t3:heihachi:row:244",
+   "input_slots": [
+    "2+4"
+   ],
+   "move_class": "throw"
   },
   "d/f+2": {
    "name": "SUN R\u0100 d/f+2 (T3 heihachi r179)",
@@ -159,7 +204,12 @@
    "limb": "armR",
    "heavy": true,
    "knock": 4.2,
-   "soulGain": 11
+   "soulGain": 11,
+   "anim_ref": "t3:heihachi:row:179",
+   "input_slots": [
+    "d/f+2"
+   ],
+   "move_class": "special"
   },
   "u/f+4": {
    "name": "SUN R\u0100 u/f+4 (T3 heihachi r86)",
@@ -175,7 +225,12 @@
    "limb": "legR",
    "heavy": true,
    "knock": 4.2,
-   "soulGain": 11
+   "soulGain": 11,
+   "anim_ref": "t3:heihachi:row:86",
+   "input_slots": [
+    "u/f+4"
+   ],
+   "move_class": "special"
   }
  },
  "strings": [
@@ -220,5 +275,6 @@
    "fallback": "directional \u2014 no motion inputs in T3 bank"
   }
  ],
- "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP"
+ "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
+ "schema_version": 2
 }
