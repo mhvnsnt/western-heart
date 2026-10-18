@@ -1,0 +1,30 @@
+# findings-audit8.txt — DOA4 deep-RE Audit 8 (Lead 1: full .text disassembly + string-xref re-hunt)
+# Run: 2026-10-18 ~07:45 CDT, headless Ghidra 12.1.4, project ~/workspace/ghidra-projects/doa4 (default_pe.bin)
+# Method: 0x100-grid disassemble() sweep over undefined .text addrs, then:
+#   (a) code-xref hunt to .rdata AFS filename strings (ghidra 0x0061e800-0x0061ec00 = runtime 0x8261e800-0x8261ec00)
+#   (b) lis 0x8261 + ori/addi/addis pair scan with low-imm in AFS string runtime range
+#   (c) lis/addis *,0x4146 (AFS magic construction) count across all disassembled instructions
+# Full raw log: /tmp/doa4-audit8.log (ephemeral)
+# NOTE: corrects the stale "8% disassembled" figure from earlier audits — actual
+#   instruction-byte coverage BEFORE this audit was 56.3% (prior audits kept disassembling regions).
+# === raw script output ===
+=== DOA4 AUDIT 8: full .text disassembly + string-xref re-hunt ===
+BLOCK Headers 00400000-004003ff size=1024 r=true w=false x=false init=true
+BLOCK .rdata 00400400-006b3ef7 size=2833144 r=true w=false x=false init=true
+BLOCK .pdata 006b4000-006d166f size=120432 r=true w=false x=false init=true
+BLOCK .text 006e0000-00f4adff size=8826368 r=true w=false x=true init=true
+BLOCK PSFD00 00f4ae00-00f50943 size=23364 r=true w=false x=true init=true
+BLOCK .data 00f60000-019a18b7 size=10754232 r=true w=true x=false init=true
+BLOCK .XEXID 019a1a00-019a1a03 size=4 r=true w=true x=false init=true
+BLOCK .idata 019b0000-019b05ff size=1536 r=true w=true x=false init=true
+BLOCK .XBLD 019c0000-019c01ff size=512 r=true w=false x=false init=true
+BLOCK .reloc 019c0200-01a9d0af size=904880 r=true w=false x=false init=true
+.text 006e0000-00f4adff (8826368 bytes)
+disassembled-instruction-bytes BEFORE: 4967384 / 8826368 (56.3%)
+sweep done: attempts=12902 disassemble-calls=12902 elapsed=70s
+disassembled-instruction-bytes AFTER: 6076468 / 8826368 (68.8%)
+code xrefs to AFS-string range: 0
+instructions scanned: 1519258
+lis-0x8261 pairs into AFS string range: 0
+lis-0x4146 total: 0
+=== AUDIT 8 DONE ===
