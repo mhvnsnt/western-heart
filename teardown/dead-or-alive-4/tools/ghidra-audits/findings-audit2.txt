@@ -1,0 +1,75 @@
+openjdk version "21.0.12.1" 2026-08-18 LTS
+OpenJDK Runtime Environment Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS)
+OpenJDK 64-Bit Server VM Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS, mixed mode)
+INFO  Using log config file: jar:file:/home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml (LoggingInitialization)  
+INFO  Using log file: /root/.config/ghidra/ghidra_12.1.4_PUBLIC/application.log (LoggingInitialization)  
+INFO  Loading user preferences: /root/.config/ghidra/ghidra_12.1.4_PUBLIC/preferences (Preferences)  
+INFO  Searching for classes... (ClassSearcher)  
+INFO  Ignoring class 'ghidra.app.plugin.core.analysis.MipsPreAnalyzer' from '/home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Extensions/ghidra_psx_ldr/lib/ghidra_psx_ldr.jar'. Already found at '/home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Processors/MIPS/lib/MIPS.jar'. (ClassSearcher)  
+INFO  Class search complete (2705 ms) (ClassSearcher)  
+INFO  Initializing SSL Context (DefaultSSLContextInitializer)  
+INFO  Initializing Random Number Generator... (SecureRandomFactory)  
+INFO  Random Number Generator initialization complete: NativePRNGNonBlocking (SecureRandomFactory)  
+INFO  Trust manager disabled, cacerts have not been set (DefaultTrustManagerFactory)  
+INFO  Headless startup complete (11389 ms) (AnalyzeHeadless)  
+INFO  Class searcher loaded 60 extension points (20 false positives) (ClassSearcher)  
+INFO  HEADLESS Script Paths:
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/Decompiler/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/FileFormats/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Debug/Debugger-rmi-trace/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/DecompilerDependent/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Extensions/ghidra_psx_ldr/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Processors/8051/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Processors/Atmel/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Processors/PIC/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Debug/Debugger/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/MicrosoftCodeAnalyzer/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Processors/DATA/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/PDB/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/BytePatterns/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/BSim/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/FunctionID/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/PyGhidra/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/WildcardAssembler/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/Base/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/SystemEmulation/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/GnuDemangler/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Processors/JVM/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/VersionTracking/ghidra_scripts
+    /home/hatch/workspace/ghidra-projects/doa4
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/SwiftDemangler/ghidra_scripts (HeadlessAnalyzer)  
+INFO  HEADLESS: execution starts (HeadlessAnalyzer)  
+INFO  Opening existing project: /home/hatch/workspace/ghidra-projects/doa4/DOA4 (HeadlessAnalyzer)  
+INFO  Opening project: /home/hatch/workspace/ghidra-projects/doa4/DOA4 (HeadlessProject)  
+INFO  REPORT: Processing project file: /default_pe.bin (HeadlessAnalyzer)  
+INFO  REPORT: Execute script: Doa4Audit2  (HeadlessAnalyzer)  
+INFO  SCRIPT: /home/hatch/workspace/ghidra-projects/doa4/Doa4Audit2.java (HeadlessAnalyzer)  
+INFO  Doa4Audit2.java> === DOA4 AUDIT 2 === (GhidraScript)  
+INFO  Doa4Audit2.java> --- .idata externals --- (GhidraScript)  
+INFO  Doa4Audit2.java> EXT EXT_FUN_00f58764 @ EXTERNAL:00000001 xrefs=0 lib=<EXTERNAL> (GhidraScript)  
+INFO  Doa4Audit2.java> EXT EXT_FUN_00f58774 @ EXTERNAL:00000002 xrefs=0 lib=<EXTERNAL> (GhidraScript)  
+INFO  Doa4Audit2.java> EXT EXT_FUN_00f58794 @ EXTERNAL:00000003 xrefs=0 lib=<EXTERNAL> (GhidraScript)  
+INFO  Doa4Audit2.java> EXT EXT_FUN_00f587a4 @ EXTERNAL:00000004 xrefs=0 lib=<EXTERNAL> (GhidraScript)  
+INFO  Doa4Audit2.java> EXT EXT_FUN_00f587c4 @ EXTERNAL:00000005 xrefs=0 lib=<EXTERNAL> (GhidraScript)  
+INFO  Doa4Audit2.java> EXT EXT_FUN_00f58984 @ EXTERNAL:00000006 xrefs=0 lib=<EXTERNAL> (GhidraScript)  
+INFO  Doa4Audit2.java> EXT EXT_FUN_00f58a34 @ EXTERNAL:00000007 xrefs=0 lib=<EXTERNAL> (GhidraScript)  
+INFO  Doa4Audit2.java> EXT EXT_FUN_00f58c84 @ EXTERNAL:00000008 xrefs=0 lib=<EXTERNAL> (GhidraScript)  
+INFO  Doa4Audit2.java> EXT EXT_FUN_00f588c4 @ EXTERNAL:00000009 xrefs=0 lib=<EXTERNAL> (GhidraScript)  
+INFO  Doa4Audit2.java> EXT EXT_FUN_00f59154 @ EXTERNAL:0000000a xrefs=0 lib=<EXTERNAL> (GhidraScript)  
+INFO  Doa4Audit2.java> --- lis *,0x61 sites in .text --- (GhidraScript)  
+INFO  Doa4Audit2.java> lis r64,0x61 @ 007725cc (GhidraScript)  
+INFO  Doa4Audit2.java>     disasm: lis r10,0x61 (GhidraScript)  
+INFO  Doa4Audit2.java>     func: FUN_007725cc@007725cc (GhidraScript)  
+INFO  Doa4Audit2.java> total lis-0x61 hits: 1 (GhidraScript)  
+INFO  Doa4Audit2.java> --- wide-string scan --- (GhidraScript)  
+INFO  Doa4Audit2.java> --- S-box lead rebased @ 006f06d0 --- (GhidraScript)  
+INFO  Doa4Audit2.java> block: .text (GhidraScript)  
+INFO  Doa4Audit2.java> first 64B: 7d8802a69181fff8fbc1ffe8fbe1fff09421ff907c7f1b7848020fb97fe3fb784820d9013d6083021d5f009c396b0188547e063e392b00377d6a48ae2b0b0004 (GhidraScript)  
+INFO  Doa4Audit2.java> distinct bytes in 256B window: 101 (GhidraScript)  
+INFO  Doa4Audit2.java>   xref from 006fc668 [(data)] (GhidraScript)  
+INFO  Doa4Audit2.java>   xref from 006fc680 [(data)] (GhidraScript)  
+INFO  Doa4Audit2.java> --- .text coverage --- (GhidraScript)  
+INFO  Doa4Audit2.java> instructions in .text: 193898, bytes: 775592/8826368 = 8% (GhidraScript)  
+INFO  Doa4Audit2.java> === AUDIT 2 DONE === (GhidraScript)  
+INFO  REPORT: Save succeeded for processed file: /default_pe.bin (HeadlessAnalyzer)  
+EXITCODE=0
