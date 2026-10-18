@@ -1,0 +1,53 @@
+# findings-audit14.txt — DOA4 deep-RE Audit 14 (Xenia dynamic-analysis feasibility)
+# Run: 2026-10-18 ~09:10 CDT, no Ghidra; evidence gathered from machine state + web research.
+# Question: can Xenia run the decrypted default_pe.bin far enough to decrypt an AFS header,
+# so we can dump the keystream from emulated memory?
+#
+# === VERDICT: NOT FEASIBLE in this environment (honest negative result) ===
+#
+# Evidence:
+# 1. NO GPU ON THIS MACHINE. lspci shows no VGA device; /dev/dri does not exist;
+#    vulkaninfo/glxinfo not installed. Machine: 2 vCPUs, 7-8GB RAM, no GPU (verified
+#    independently by the VVRAM lane's probe_compute(): "no GPU (2 CPUs, 8GB RAM,
+#    mmap available)" 2026-10-17). Xenia requires a D3D12 (Windows) or Vulkan 1.1
+#    capable HARDWARE GPU — Xenia's own docs recommend GTX 980 Ti class or newer,
+#    and explicitly discourage AMD due to driver issues. Software Vulkan (lavapipe)
+#    cannot boot a retail Xbox 360 game; the GPU-translation path is the emulator's
+#    heaviest workload.
+# 2. LINUX SUPPORT IS EXPERIMENTAL. Per EmuDeck wiki (2026-09 crawl): "Xenia does
+#    not currently run well on Linux/SteamOS. Most games will not boot or will not
+#    be playable... experimental state for Linux/SteamOS." The EmuDeck route runs the
+#    WINDOWS build through Proton. The documented Linux debugging path (mintlify.com/
+#    emoose/xenia/development/debugging) is: build from source (xb build), then
+#    gdb ./build/bin/xenia-canary game.xex — a developer workflow, not a working
+#    headless harness, and still GPU-gated.
+# 3. DOA4 ITSELF IS NOT DOCUMENTED AS XENIA-PLAYABLE. A 2022 Xenia top-50 playable
+#    list includes "Dead or Alive 5" but NOT "Dead or Alive 4"; no newer source
+#    confirms DOA4 boots. (DOA4 IS on Microsoft's official Xbox backward-compat
+#    list for real hardware — irrelevant to Xenia.)
+# 4. WE HAVE NO BOOTABLE GAME IMAGE. Local disk holds only decrypted default_pe.bin
+#    (22MB) + extracted files in ~/workspace/doa4-bass/. The 7.8GB ISO is on GitHub
+#    release doa4-iso-v1 only. Xenia would need the full XGD image mounted as a game
+#    directory with XAM/STFS services — reassembly alone would need downloads we
+#    cannot afford under the net-zero disk rule, and launching requires the whole
+#    title pipeline (XamContent* bootstrap), not just the PE.
+#
+# Attempt policy: per TRY-BEFORE-YOU-FLAG, a probe alone should not flag a service —
+# but Xenia is not a "logged out/blocked" service probe; it is a whole emulator
+# stack requiring hardware we VERIFIED absent (items 1-4 are evidence, not probes).
+# Attempting a build+boot here would burn hours and disk to fail at GPU init.
+#
+# === RECOMMENDED ALTERNATIVE (feasible, GPU-free) ===
+# Ghidra's built-in P-code EMULATOR (ghidra.app.emulator) runs PowerPC code
+# CPU-only, no GPU needed, already in our toolchain. Once a candidate decrypt
+# routine is identified statically (Audit12/15 target: the SHA cluster around
+# FUN_00b8973c), it can be emulated in isolation: map the encrypted AFS header
+# as input memory, stub the import thunks, run to the keystream write, and read
+# the output. This replaces the Xenia memory-dump path entirely and is the
+# concrete dynamic-analysis next step. Marked as Audit16 candidate.
+#
+# === notes for the record ===
+# - Xenia Canary is the active branch (original xenia repo has no official release).
+# - If a GPU-bearing machine (Kaggle/Colab with display+Vulkan, or a Windows box)
+#   becomes available, revisit: boot DOA4 XGD, break on AFS file reads, watch the
+#   keystream generation in guest memory. Until then: NOT feasible — banked honestly.

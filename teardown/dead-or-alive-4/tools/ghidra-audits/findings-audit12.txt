@@ -1,0 +1,57 @@
+# findings-audit12.txt — DOA4 deep-RE Audit 12 (crypto/content cluster decompile)
+# Run: 2026-10-18 ~09:35 CDT, headless Ghidra 12.1.4 (Doa4Audit12.java), program default_pe.bin, -noanalysis
+# Targets: FUN_00b8973c, FUN_00b8dfd8, FUN_00b8c784, FUN_00b8ea08 + 5 unowned call sites.
+# NOTE: raw decompile output in /tmp/audit12full.log (lines 53-191). All four functions
+# show "bad instruction data" warnings mid-body — disassembly is INCOMPLETE inside them.
+# === findings ===
+--- FUN_00b8973c [00b8973c,00b897a3], 26 insns ---
+  call 00b89748 -> thunk-slot34 ; call 00b89754 -> thunk-slot33
+  Decompile: func_0x00f58984(auStack_30); func_0x00f58974(auStack_30,&uStack_20);
+    copies 8 u16 words from stack to out-param. A SHA-compute wrapper (Audit9 named
+    slots 33/34 XeCryptShaUpdate/Final from import order — treat names as
+    approximate, not XDK-verified). NOTABLE: call order in program flow is slot34
+    THEN slot33 (Final before Update) — unusual; likely finalize-then-rehash or the
+    slot naming is flipped. Candidate for the keystream KDF (SHA) step.
+
+--- FUN_00b8dfd8 [00b8dfd8,00b8e027], 20 insns ---
+  call 00b8e008 -> thunk-slot99 (XamContentOpenFile)
+  Clean decompile: iVar1 = XamContentOpenFile(param_1,0,0,0,local_10,param_2,param_3,0);
+    if OK return local_10[0]. PLAIN content-file-open wrapper — NOT crypto.
+
+--- FUN_00b8c784 [00b8c784,00b8c79b], 6 insns ---
+  call 00b8c790 -> thunk-slot34 ; call 00b8c798 -> FUN_00b8d530
+  Decompile: func_0x00f58984(auStack_40); FUN_00b8d530(auStack_38); then bad data.
+  SHA-call + helper; body truncated by bad instruction data.
+
+--- FUN_00b8ea08 [00b8ea08,00b8eb0f] [00b8eb80,00b8eb8b], 69 insns ---
+  calls: FUN_00b92120 (at 00b8ea1c), thunk_FUN_00b8d270 (00b8ea28),
+         thunk-slot34 (00b8ea9c), FUN_00b91ec8 (00b8eac8 AND 00b8eae4)
+  Decompile (partial): iVar1 = FUN_00b92120(param_1, aiStack_40); if iVar1==0 {
+    zero two buffers (param_1+0x44/0x98 region, 16+16 bytes u16 + 64 bytes u32);
+    func_0x00f58984(auStack_38);            // <-- SHA output computed here
+    if (both words nonzero &&
+        FUN_00b91ec8(param_1+0x44, auStack_28, auStack_38, 1) &&
+        FUN_00b91ec8(param_1+0x98, auStack_30, auStack_38, 1)) ...
+  }
+  *** STRONGEST LEAD YET: SHA-final-style call whose output buffer (auStack_38) is
+  fed TWICE into FUN_00b91ec8 with a mode flag of 1 — the classic
+  "derive key via SHA, then decrypt two blocks/regions" shape. FUN_00b91ec8 is the
+  top candidate for the actual game-side decrypt routine. It sits in the 00b91xxx
+  neighborhood next to the unowned ShaUpdate caller at 00b91fdc (Audit11).
+
+--- 5 unowned call sites (still in "(none)", no function contains them) ---
+  00b8c7b4 (ShaUpdate), 00b92058 (ShaUpdate), 00b91fdc (ShaUpdate),
+  00b8dc94 (ShaFinal), 00b8df88 (XamContentOpenFile)
+  They persist as unowned even after Audit8's 68.8% sweep — the 00b8xxxx/00b9xxxx
+  crypto neighborhood has code that Ghidra never turned into functions. This is
+  exactly what Audit13's finer sweep must fix.
+# === verdict ===
+- FUN_00b8ea08 -> FUN_00b91ec8 (SHA-output-fed double call, mode=1) is the prime
+  AFS-decrypt candidate cluster. Next: decompile FUN_00b91ec8 and FUN_00b92120
+  (Audit15), after Audit13's sweep creates the missing functions.
+- FUN_00b8dfd8 is content-file open only — excluded from the crypto path.
+- Slot33/34 "ShaUpdate/ShaFinal" names are from import-order inference (Audit9);
+  call arity in decompile (1-arg "Final", 2-arg "Update") does not match XDK
+  XeCryptSha* prototypes — flag as UNVERIFIED naming, do not cite as fact.
+- The (none) call sites prove disassembly of the crypto neighborhood is still
+  incomplete; Audit13 priority: convert them into functions, then re-walk callees.
