@@ -1,0 +1,224 @@
+{
+ "fighter": "negativo",
+ "display": "N3G\u0394TIV0",
+ "tekken_base": "Negan",
+ "t3_source": "bryan",
+ "proxy": true,
+ "proxy_note": "Negan has no T3 bank - Bryan proxy (intimidation)",
+ "variant": 4,
+ "moves": {
+  "1": {
+   "name": "N3G\u0394TIV0 1 (T3 bryan r48)",
+   "input": "1",
+   "t3_source": "bryan",
+   "t3_row": 48,
+   "t3_command": "LP",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 9,
+   "t3_damage": 15,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8
+  },
+  "2": {
+   "name": "N3G\u0394TIV0 2 (T3 bryan r152)",
+   "input": "2",
+   "t3_source": "bryan",
+   "t3_row": 152,
+   "t3_command": "RP",
+   "startup": 0.283,
+   "active": 0.017,
+   "recovery": 0.65,
+   "damage": 12,
+   "t3_damage": 21,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8
+  },
+  "2,1": {
+   "name": "N3G\u0394TIV0 2,1 (T3 bryan r153)",
+   "input": "2,1",
+   "t3_source": "bryan",
+   "t3_row": 153,
+   "t3_command": "LP",
+   "startup": 0.317,
+   "active": 0.017,
+   "recovery": 0.65,
+   "damage": 12,
+   "t3_damage": 21,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "string_hit": "2"
+  },
+  "2,1,2": {
+   "name": "N3G\u0394TIV0 2,1,2 (T3 bryan r151)",
+   "input": "2,1,2",
+   "t3_source": "bryan",
+   "t3_row": 151,
+   "t3_command": "RP",
+   "startup": 0.217,
+   "active": 0.017,
+   "recovery": 0.783,
+   "damage": 12,
+   "t3_damage": 21,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "string_hit": "2,1"
+  },
+  "3": {
+   "name": "N3G\u0394TIV0 3 (T3 bryan r70)",
+   "input": "3",
+   "t3_source": "bryan",
+   "t3_row": 70,
+   "t3_command": "LK",
+   "startup": 0.233,
+   "active": 0.017,
+   "recovery": 0.8,
+   "damage": 15,
+   "t3_damage": 25,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11
+  },
+  "4": {
+   "name": "N3G\u0394TIV0 4 (T3 bryan r86)",
+   "input": "4",
+   "t3_source": "bryan",
+   "t3_row": 86,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 12,
+   "t3_damage": 21,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8
+  },
+  "1+3": {
+   "name": "N3G\u0394TIV0 1+3 throw (T3 bryan r211)",
+   "input": "1+3",
+   "t3_source": "bryan",
+   "t3_row": 211,
+   "t3_command": "LP+LK",
+   "startup": 0.183,
+   "active": 0.017,
+   "recovery": 0.483,
+   "damage": 21,
+   "t3_damage": 35,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 11,
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+  },
+  "2+4": {
+   "name": "N3G\u0394TIV0 2+4 throw (T3 bryan r212)",
+   "input": "2+4",
+   "t3_source": "bryan",
+   "t3_row": 212,
+   "t3_command": "RP+RK",
+   "startup": 0.2,
+   "active": 0.05,
+   "recovery": 0.6,
+   "damage": 21,
+   "t3_damage": 35,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 11,
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+  },
+  "d/f+2": {
+   "name": "N3G\u0394TIV0 d/f+2 (T3 bryan r149)",
+   "input": "d/f+2",
+   "t3_source": "bryan",
+   "t3_row": 149,
+   "t3_command": "3+RP",
+   "startup": 0.383,
+   "active": 0.017,
+   "recovery": 0.633,
+   "damage": 9,
+   "t3_damage": 16,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8
+  },
+  "u/f+4": {
+   "name": "N3G\u0394TIV0 u/f+4 (T3 bryan r183)",
+   "input": "u/f+4",
+   "t3_source": "bryan",
+   "t3_row": 183,
+   "t3_command": "9+RK",
+   "startup": 0.4,
+   "active": 0.05,
+   "recovery": 0.567,
+   "damage": 13,
+   "t3_damage": 22,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8
+  }
+ },
+ "strings": [
+  {
+   "input": "2,1",
+   "hits": [
+    "2",
+    "1"
+   ],
+   "t3_rows": [
+    152,
+    153
+   ]
+  },
+  {
+   "input": "2,1,2",
+   "hits": [
+    "2",
+    "1",
+    "2"
+   ],
+   "t3_rows": [
+    152,
+    153,
+    151
+   ]
+  }
+ ],
+ "specials": [
+  {
+   "input": "d/f+2",
+   "t3_row": 149,
+   "damage": 9,
+   "throw": false,
+   "fallback": "directional \u2014 no motion inputs in T3 bank"
+  },
+  {
+   "input": "u/f+4",
+   "t3_row": 183,
+   "damage": 13,
+   "throw": false,
+   "fallback": "directional \u2014 no motion inputs in T3 bank"
+  }
+ ],
+ "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP"
+}
