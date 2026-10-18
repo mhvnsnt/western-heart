@@ -9,14 +9,18 @@ import { audio } from './audio.js';
 import { assets } from './assets.js';
 import { ROSTER, getCharacter } from './characters.js';
 import { loadRealMovesets } from './fighter.js';
+import { loadFighterMovesets } from './movesets.js';
 import { loadT3Clips } from './t3anims.js';
 import * as THREE from 'three';
 import { whUiEnabled, mountWhUi } from './ui-wh-bridge.js';
 import { getCustomFighter, customFighterToRoster } from './custom-fighter.js';
 import { STAGES, STAGE_TIERS, getStage, randomStageId } from './stages.js';
+import { ModeController } from './modes.js';
 
 // Load REAL Tekken 3 moveset data (not hand-written frame data)
 loadRealMovesets();
+// Load per-fighter Tekken movelists (1/2/3/4, throws, strings, specials) — LANE 3
+loadFighterMovesets();
 
 const screens = {
   menu:   document.getElementById('screen-menu'),
@@ -25,6 +29,10 @@ const screens = {
   stage:  document.getElementById('screen-stage'),
   result: document.getElementById('screen-result'),
   hud:    document.getElementById('hud'),
+  stage:      document.getElementById('screen-stage'),
+  reincarnate: document.getElementById('screen-reincarnate'),
+  trader:  document.getElementById('screen-trader'),
+  modewin: document.getElementById('screen-modewin'),
 };
 function show(name) {
   Object.values(screens).forEach(s => s.classList.remove('active'));
@@ -139,7 +147,30 @@ ui._buildMeter('p2');
 
 let selectedChar = null;
 let assetsReady = false;
-let gameMode = 'arcade'; // arcade | versus | story — versus: no reincarnation; story: death = reincarnation
+
+/* ---- Game modes (lane 5): versus / arcade / story(+reincarnation) / training.
+   The controller owns mode state; main.js just routes menu + select events. */
+/* ---- Game modes (lane 5) + stage select (lane 4) integration ----
+   The mode controller owns mode state and fight setup; versus-mode fights
+   route through the CHOOSE YOUR ARENA screen. Arcade/story/training keep
+   their mode-dictated flow (stage comes from the mode, not the player). */
+let pendingFight = null;
+function startFightViaStage(p1, p2, opts = {}) {
+  if (opts.mode !== 'versus') { startFight(p1, p2, opts); return; }
+  pendingFight = { p1, p2, opts };
+  buildStageSelect();
+  show('stage');
+  const hint = document.getElementById('stage-hint');
+  const s = getStage(selectedStage);
+  if (hint && s) hint.textContent = `${s.name} — ${s.description}`;
+  const btn = document.getElementById('confirm-stage');
+  if (btn) btn.disabled = false;
+}
+const modes = new ModeController({
+  game, ui, show, startFight: startFightViaStage,
+  roster: ROSTER, getChar: getCharacterWithCustom, audio,
+});
+window.__modes = modes;
 
 /* TEKKEN 3 LESSON: don't load fighters at boot. Menu + select use PNG
    portraits — 3D models load on demand at fight start (see assets.js).
@@ -249,7 +280,7 @@ document.addEventListener('keydown', (e) => {
     const card = cards[focusedCardIdx];
     const c = ROSTER.find(x => x.id === card.dataset.id) || getCustomRosterEntry(card.dataset.id);
     if (c) {
-      if (selectedChar === c.id) { startFight(); } // Enter again = confirm
+      if (selectedChar === c.id) { confirmSelection(); } // Enter again = confirm
       else selectCard(card, c);
     }
     e.preventDefault();
@@ -401,15 +432,17 @@ document.querySelectorAll('[data-action]').forEach((el) => {
     unlockAudio();
     audio.uiClick();
     const a = el.dataset.action;
-    if (a === 'play' || a === 'mode-arcade' || a === 'mode-versus') {
-      gameMode = a === 'mode-versus' ? 'versus' : 'arcade';
-      show('select');
+    if (a === 'play' || a === 'mode-arcade') {
+      modes.startMode('arcade');
+    }
+    else if (a === 'mode-versus') {
+      modes.startMode('versus');
     }
     else if (a === 'mode-story') {
-      gameMode = 'story';
-      show('select');
-      // Story mode: pick your soul, death = reincarnation (per owner 2026-10-13)
-      document.getElementById('select-hint').textContent = 'STORY: Choose your soul. Death is not the end — it is reincarnation.';
+      modes.startMode('story');
+    }
+    else if (a === 'mode-training') {
+      modes.startMode('training');
     }
     else if (a === 'mode-create') {
       // Character creation — launches the Create Fighter CAW suite.
@@ -422,33 +455,41 @@ document.querySelectorAll('[data-action]').forEach((el) => {
       // CLEAN-INIT: leaving fight → full state reset. No leaked fighters,
       // timers, or listeners carry into the menu.
       game.leaveFight();
+      modes.clearState();
       show('menu');
       audio.stopMusic();
     }
     else if (a === 'back-select') {
       show('select');
     }
-    else if (a === 'rematch') { startFight(); }
+    else if (a === 'rematch') {
+      if (modes.mode) modes.rematch();
+      else startFight();
+    }
   });
 });
 
-document.getElementById('confirm-fighter').addEventListener('click', () => {
+/* Confirm routing: the mode controller owns the select flow
+   (versus needs a P1→P2 two-step; other modes start on confirm).
+   Lane 4 integration: versus-mode fights route through the stage-select
+   screen via startFightViaStage (wired as the ModeController's startFight
+   dep below); arcade/story/training use their mode-dictated flow. */
+function confirmSelection() {
   if (!selectedChar) return;
   audio.uiClick();
-  // Lane 4: fighter confirmed -> stage select -> fight.
-  buildStageSelect();
-  show('stage');
-  const hint = document.getElementById('stage-hint');
-  const s = getStage(selectedStage);
-  if (hint && s) hint.textContent = `${s.name} — ${s.description}`;
-  const btn = document.getElementById('confirm-stage');
-  if (btn) btn.disabled = false;
-});
+  modes.onConfirm(selectedChar);
+  selectedChar = null; // always clear — versus P2 must click a card to pick
+}
 
+document.getElementById('confirm-fighter').addEventListener('click', confirmSelection);
+
+/* Lane 4: stage-select screen handlers (CHOOSE YOUR ARENA). */
 document.getElementById('confirm-stage').addEventListener('click', () => {
-  if (!selectedStage) return;
+  if (!selectedStage || !pendingFight) return;
   audio.uiClick();
-  startFight();
+  const { p1, p2, opts } = pendingFight;
+  pendingFight = null;
+  startFight(p1, p2, { ...opts, stage: selectedStage });
 });
 
 document.getElementById('random-stage').addEventListener('click', () => {
@@ -463,11 +504,25 @@ document.getElementById('random-stage').addEventListener('click', () => {
   }
 });
 
-async function startFight(playerId, enemyId) {
+/* Training quit button (HUD, visible only in training mode) */
+document.getElementById('training-quit').addEventListener('click', () => {
+  audio.uiClick();
+  game.leaveFight();
+  modes.clearState();
+  show('menu');
+  audio.stopMusic();
+});
+
+async function startFight(playerId, enemyId, opts = {}) {
   unlockAudio();
   if (typeof playerId === 'string') selectedChar = playerId;
-  const player = getCharacterWithCustom(selectedChar || ROSTER[0].id);
-  const enemy = typeof enemyId === 'string' && enemyId !== player.id ? getCharacterWithCustom(enemyId) : randomEnemy(player.id);
+  // Lane 4: stage-select may pass an explicit stage via opts.
+  if (opts.stage && getStage(opts.stage)) selectedStage = getStage(opts.stage).id;
+  // modes lane: opts may carry full char-entry overrides (force-buffed
+  // player, scaled-AI foe, the Assembled Soul boss, training dummy).
+  const player = opts.playerChar || getCharacterWithCustom(selectedChar || ROSTER[0].id);
+  const enemy = opts.enemyChar ||
+    (typeof enemyId === 'string' && enemyId !== player.id ? getCharacterWithCustom(enemyId) : randomEnemy(player.id));
   // On-demand: load only the 2 fighters for this fight (Tekken 3 pattern).
   // Models may already be prefetched from select-screen highlight.
   const need = [...new Set([player.model || 'pantera', enemy.model || 'pantera'])];

@@ -31,6 +31,7 @@
         <button class="btn-primary" data-action="mode-arcade">ARCADE</button>
         <button class="btn-primary" data-action="mode-versus">VERSUS</button>
         <button class="btn-primary" data-action="mode-story">STORY</button>
+        <button class="btn-primary" data-action="mode-training">TRAINING</button>
         <button class="btn-ghost" data-action="mode-create">CREATE FIGHTER</button>
         <button class="btn-ghost" data-action="howto">HOW TO PLAY</button>
       </div>
@@ -101,6 +102,9 @@
 
   <!-- ====================== IN-GAME HUD ====================== -->
   <section id="hud" class="screen hud">
+    <!-- modes lane: current mode / ladder progress -->
+    <div id="mode-badge" class="mode-badge" style="display:none"></div>
+    <button id="training-quit" class="training-quit" style="display:none">✕ QUIT</button>
     <div class="hud-top">
       <!-- Player health -->
       <div class="fighter-status left">
@@ -152,6 +156,59 @@
         <button class="act-btn block" data-btn="block">B</button>
         <button class="act-btn dodge" data-btn="dodge">D</button>
       </div>
+    </div>
+  </section>
+
+  <!-- ====================== STORY: STAGE INTRO ====================== -->
+  <section id="screen-stage" class="screen">
+    <div class="panel">
+      <p id="stage-kicker" class="stage-kicker"></p>
+      <h2 id="stage-title"></h2>
+      <p id="stage-sub" class="stage-sub"></p>
+      <p id="stage-reward" class="stage-reward"></p>
+      <p id="stage-foe" class="stage-foe"></p>
+      <p id="stage-forces" class="stage-forces"></p>
+      <div class="menu-buttons">
+        <button id="stage-fight" class="btn-primary">ENTER</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== STORY: REINCARNATION ======================
+       Death is not failure. It is the mechanism. Pick your next vessel. -->
+  <section id="screen-reincarnate" class="screen">
+    <div class="panel reinc-panel">
+      <p id="reinc-deaths" class="stage-kicker"></p>
+      <h2>DEATH IS NOT THE END</h2>
+      <p id="reinc-flavor" class="stage-sub"></p>
+      <div id="reinc-cards" class="reinc-cards"></div>
+      <p id="reinc-forces" class="stage-forces"></p>
+    </div>
+  </section>
+
+  <!-- ====================== STORY: THE TRADER ====================== -->
+  <section id="screen-trader" class="screen">
+    <div class="panel">
+      <p class="stage-kicker">PHANTOM MARKETPLACE</p>
+      <h2>THE TRADER</h2>
+      <p class="stage-sub">"I will buy your Fire. I will sell you Water. All transactions are final. Nothing here is real, but the prices are."</p>
+      <h3 class="trade-h">GIVE ONE FORCE</h3>
+      <div id="trade-give" class="trade-list"></div>
+      <h3 class="trade-h">TAKE ONE FORCE</h3>
+      <div id="trade-take" class="trade-list"></div>
+      <div class="menu-buttons">
+        <button id="trade-confirm" class="btn-primary" disabled>CHOOSE</button>
+        <button id="trade-skip" class="btn-ghost">KEEP WHAT I HOLD</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== MODE WIN / GAME OVER ====================== -->
+  <section id="screen-modewin" class="screen">
+    <div class="panel">
+      <h2 id="modewin-title"></h2>
+      <p id="modewin-sub" class="stage-sub"></p>
+      <div id="modewin-buttons" class="menu-buttons"></div>
     </div>
   </section>
 

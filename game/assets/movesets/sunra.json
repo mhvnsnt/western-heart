@@ -1,0 +1,224 @@
+{
+ "fighter": "sunra",
+ "display": "SUN R\u0100",
+ "tekken_base": "Pac-Man",
+ "t3_source": "heihachi",
+ "proxy": true,
+ "proxy_note": "boss; Pac-Man has no bank - Heihachi proxy (boss power)",
+ "variant": 4,
+ "moves": {
+  "1": {
+   "name": "SUN R\u0100 1 (T3 heihachi r44)",
+   "input": "1",
+   "t3_source": "heihachi",
+   "t3_row": 44,
+   "t3_command": "LP",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 9,
+   "t3_damage": 15,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8
+  },
+  "2": {
+   "name": "SUN R\u0100 2 (T3 heihachi r157)",
+   "input": "2",
+   "t3_source": "heihachi",
+   "t3_row": 157,
+   "t3_command": "RP",
+   "startup": 0.2,
+   "active": 0.017,
+   "recovery": 0.483,
+   "damage": 4,
+   "t3_damage": 7,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8
+  },
+  "2,1": {
+   "name": "SUN R\u0100 2,1 (T3 heihachi r158)",
+   "input": "2,1",
+   "t3_source": "heihachi",
+   "t3_row": 158,
+   "t3_command": "LP",
+   "startup": 0.233,
+   "active": 0.017,
+   "recovery": 0.483,
+   "damage": 5,
+   "t3_damage": 8,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "string_hit": "2"
+  },
+  "2,1,2": {
+   "name": "SUN R\u0100 2,1,2 (T3 heihachi r159)",
+   "input": "2,1,2",
+   "t3_source": "heihachi",
+   "t3_row": 159,
+   "t3_command": "RP",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 0.483,
+   "damage": 4,
+   "t3_damage": 6,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "string_hit": "2,1"
+  },
+  "3": {
+   "name": "SUN R\u0100 3 (T3 heihachi r153)",
+   "input": "3",
+   "t3_source": "heihachi",
+   "t3_row": 153,
+   "t3_command": "LK",
+   "startup": 0.317,
+   "active": 0.083,
+   "recovery": 0.633,
+   "damage": 14,
+   "t3_damage": 23,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8
+  },
+  "4": {
+   "name": "SUN R\u0100 4 (T3 heihachi r84)",
+   "input": "4",
+   "t3_source": "heihachi",
+   "t3_row": 84,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 12,
+   "t3_damage": 21,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8
+  },
+  "1+3": {
+   "name": "SUN R\u0100 1+3 throw (T3 heihachi r243)",
+   "input": "1+3",
+   "t3_source": "heihachi",
+   "t3_row": 243,
+   "t3_command": "LP+LK",
+   "startup": 0.2,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 21,
+   "t3_damage": 35,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 11,
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+  },
+  "2+4": {
+   "name": "SUN R\u0100 2+4 throw (T3 heihachi r244)",
+   "input": "2+4",
+   "t3_source": "heihachi",
+   "t3_row": 244,
+   "t3_command": "RP+RK",
+   "startup": 0.2,
+   "active": 0.05,
+   "recovery": 0.6,
+   "damage": 21,
+   "t3_damage": 35,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 11,
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+  },
+  "d/f+2": {
+   "name": "SUN R\u0100 d/f+2 (T3 heihachi r179)",
+   "input": "d/f+2",
+   "t3_source": "heihachi",
+   "t3_row": 179,
+   "t3_command": "3+RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.633,
+   "damage": 15,
+   "t3_damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11
+  },
+  "u/f+4": {
+   "name": "SUN R\u0100 u/f+4 (T3 heihachi r86)",
+   "input": "u/f+4",
+   "t3_source": "heihachi",
+   "t3_row": 86,
+   "t3_command": "9+RK",
+   "startup": 0.4,
+   "active": 0.05,
+   "recovery": 0.917,
+   "damage": 15,
+   "t3_damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11
+  }
+ },
+ "strings": [
+  {
+   "input": "2,1",
+   "hits": [
+    "2",
+    "1"
+   ],
+   "t3_rows": [
+    157,
+    158
+   ]
+  },
+  {
+   "input": "2,1,2",
+   "hits": [
+    "2",
+    "1",
+    "2"
+   ],
+   "t3_rows": [
+    157,
+    158,
+    159
+   ]
+  }
+ ],
+ "specials": [
+  {
+   "input": "d/f+2",
+   "t3_row": 179,
+   "damage": 15,
+   "throw": false,
+   "fallback": "directional \u2014 no motion inputs in T3 bank"
+  },
+  {
+   "input": "u/f+4",
+   "t3_row": 86,
+   "damage": 15,
+   "throw": false,
+   "fallback": "directional \u2014 no motion inputs in T3 bank"
+  }
+ ],
+ "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP"
+}

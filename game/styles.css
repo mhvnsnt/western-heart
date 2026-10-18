@@ -364,3 +364,65 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
   text-shadow: 0 1px 3px rgba(0,0,0,0.8); white-space: nowrap;
 }
 .select-footer .btn-ghost { margin-right: 8px; }
+/* ==================== GAME MODES (lane 5) ==================== */
+/* Mode badge: ladder progress shown over the fight HUD */
+.mode-badge {
+  position: absolute; top: 8px; left: 50%; transform: translateX(-50%);
+  z-index: 12; pointer-events: none;
+  font-size: 12px; letter-spacing: 2px; font-weight: 700;
+  color: #ffd76a; background: rgba(10,4,16,0.72);
+  border: 1px solid rgba(255,215,106,0.45); border-radius: 20px;
+  padding: 6px 14px; white-space: nowrap; max-width: 92vw;
+  overflow: hidden; text-overflow: ellipsis;
+}
+/* Training quit: HUD is pointer-events:none, so this re-enables itself */
+.training-quit {
+  position: absolute; top: 44px; right: 10px; z-index: 12;
+  pointer-events: auto;
+  background: rgba(120,10,10,0.8); color: #fff;
+  border: 1px solid rgba(255,120,120,0.6); border-radius: 8px;
+  font-size: 12px; letter-spacing: 1px; padding: 8px 12px;
+}
+
+/* Story screens */
+.stage-kicker { font-size: 12px; letter-spacing: 3px; color: #b28dff; margin-bottom: 8px; }
+.stage-sub { font-size: 15px; opacity: 0.85; margin: 10px 0; line-height: 1.5; }
+.stage-reward {
+  font-size: 15px; font-weight: 700; color: #ffd76a; letter-spacing: 1px;
+  border: 1px solid rgba(255,215,106,0.4); border-radius: 10px;
+  padding: 10px 12px; margin: 12px 0; background: rgba(255,215,106,0.06);
+}
+.stage-foe { font-size: 13px; letter-spacing: 2px; opacity: 0.75; }
+.stage-forces { font-size: 12px; letter-spacing: 1px; color: #9fd8ff; margin-top: 12px; }
+
+/* Reincarnation: vessel cards */
+.reinc-panel { max-width: 640px; }
+.reinc-cards { display: flex; gap: 12px; margin: 16px 0; flex-wrap: wrap; justify-content: center; }
+.reinc-card {
+  flex: 1 1 160px; max-width: 200px; cursor: pointer;
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(178,141,255,0.45);
+  border-radius: 12px; padding: 10px; color: inherit; font: inherit;
+  transition: transform 0.12s, border-color 0.12s;
+}
+.reinc-card:hover { transform: translateY(-3px); border-color: #ffd76a; }
+.reinc-card .portrait img { width: 100%; border-radius: 8px; display: block; }
+.reinc-card .cname { font-weight: 800; letter-spacing: 2px; margin-top: 8px; color: var(--gold); }
+.reinc-card .cstyle { font-size: 12px; opacity: 0.7; }
+.reinc-card .rwhy { font-size: 12px; line-height: 1.45; opacity: 0.85; margin-top: 8px; font-style: italic; }
+
+/* Trader */
+.trade-h { font-size: 13px; letter-spacing: 3px; color: #9fd8ff; margin: 14px 0 8px; }
+.trade-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 6px; }
+.trade-opt {
+  cursor: pointer; text-align: left; color: inherit; font: inherit;
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 10px; padding: 10px 12px;
+}
+.trade-opt b { letter-spacing: 2px; color: #ffd76a; display: block; margin-bottom: 4px; }
+.trade-opt span { font-size: 12px; opacity: 0.75; }
+.trade-opt.sel { border-color: #ffd76a; background: rgba(255,215,106,0.10); }
+.trade-note { font-size: 13px; opacity: 0.7; font-style: italic; }
+
+/* Mode win / game over */
+#modewin-title.win { color: #ffd76a; }
+#modewin-title.lose { color: #ff6a6a; }

@@ -40,6 +40,16 @@ export class Game {
     this._roundLockT = 0;
     this._hitStop = 0;
 
+    /* ---- game-modes lane hooks (modes.js) ----
+       onMatchEnd(playerWon): fired when a full match (not a round) is
+       decided, instead of ui.matchOver. Null = classic behavior.
+       training: endless rounds vs a passive dummy; rounds auto-reset.
+       matchStats: per-match player action counters, folded into the
+       story reincarnation profile. Reset in startMatch. */
+    this.onMatchEnd = null;
+    this.training = false;
+    this.matchStats = null;
+
     this._loop = this._loop.bind(this);
     requestAnimationFrame(this._loop);
   }
@@ -68,6 +78,7 @@ export class Game {
     this.ui.setNames(playerChar.name, enemyChar.name);
     if (this.ui.setStageName) this.ui.setStageName(stage.name);
     this.ui.setRounds(this.wins);
+    this.matchStats = { attacks: { punch: 0, kick: 0, grab: 0, surge: 0, dodge: 0 }, blockTime: 0, time: 0, dmgDealt: 0, dmgTaken: 0 };
     this.running = true;
     this.paused = false;
     // Stage content streams in (Tekken retro OBJs fetch async); the fight
@@ -181,21 +192,31 @@ export class Game {
         }
       } else {
         const inp = this.input;
+        const ms = this.matchStats; // story reincarnation profiling
+        const rec = (k) => { if (ms && ms.attacks[k] !== undefined) ms.attacks[k]++; };
         this.p1.tryMove(inp.axisX);
         if (inp.up) this.p1.tryJump();
         this.p1.tryBlock(inp.held.block);
+        // Feed facing-relative direction into the Tekken input buffer
+        // (drives motion specials qcf/f,F and directional attacks f+1)
+        this.p1.tekken.noteDirection(this._tekkenDir(inp, this.p1.facing));
+        if (ms && this.p1.isBlocking()) ms.blockTime += dt;
+        if (ms) ms.time += dt;
         for (const act of inp.consume()) {
-          if (act === 'punch') { if (this.p1.tryAttack('punch')) audio.whiff(); }
-          else if (act === 'kick') { if (this.p1.tryAttack('kick')) audio.whiff(); }
-          else if (act === 'grab') { if (this.p1.tryAttack('grab')) audio.whiff(); }
+          if (act === 'punch' || act === 'kick' || act === 'grab' ||
+              act === '1' || act === '2' || act === '3' || act === '4' ||
+              act === '1+3' || act === '2+4' || act === '1+2' || act === '3+4') {
+            if (this.p1.tryAttack(act)) { audio.whiff(); rec(act); }
+          }
           else if (act === 'surge') {
             if (this.p1.tryAttack('surge')) {
+              rec('surge');
               audio.soulSurge(this.p1.char.id);
               this.ui.surgeFlash(this.p1.char.surge.color, this.p1.char.surge.accent);
               this.ui.surgeName(this.p1.char.surge.name);
             }
           }
-          else if (act === 'dodge') this.p1.tryDodge();
+          else if (act === 'dodge') { if (this.p1.tryDodge()) rec('dodge'); }
         }
       }
 
@@ -228,6 +249,21 @@ export class Game {
     }
   }
 
+  /* Facing-relative Tekken direction from input state: f/b/u/d + diagonals. */
+  _tekkenDir(inp, facing) {
+    const fwd = (inp.axisX || 0) * facing; // forward-positive
+    const f = fwd > 0.25, b = fwd < -0.25;
+    if (inp.up && f) return 'u/f';
+    if (inp.up && b) return 'u/b';
+    if (inp.up) return 'u';
+    if (inp.down && f) return 'd/f';
+    if (inp.down && b) return 'd/b';
+    if (inp.down) return 'd';
+    if (f) return 'f';
+    if (b) return 'b';
+    return 'n';
+  }
+
   /* Test attacker's active hitbox against defender's hurtboxes */
   _resolveCombat(attacker, defender) {
     const hb = attacker.getHitbox();
@@ -238,7 +274,14 @@ export class Game {
       const rr = (hb.r + hu.r);
       if (dx * dx + dy * dy + dz * dz <= rr * rr) {
         attacker.registerHit();
+        const hpBefore = defender.hp;
         const result = defender.receiveHit(hb.move, attacker);
+        // story reincarnation profiling: who dealt / took what
+        const dealt = Math.max(0, hpBefore - defender.hp);
+        if (this.matchStats) {
+          if (attacker === this.p1) this.matchStats.dmgDealt += dealt;
+          else if (defender === this.p1) this.matchStats.dmgTaken += dealt;
+        }
 
         if (result === 'block') {
           audio.block();
@@ -343,10 +386,23 @@ export class Game {
   }
 
   _afterRound() {
+    if (this.training) {
+      // TRAINING (modes lane): endless round vs the passive dummy.
+      // The round resets instead of the match ending; the dummy is restored.
+      this.wins = { p1: 0, p2: 0 };
+      this.ui.setRounds(this.wins);
+      this.round = 1;
+      this.ui.banner('RESET — DUMMY RESTORED');
+      this._startRound();
+      return;
+    }
     if (this.wins.p1 >= ROUNDS_TO_WIN || this.wins.p2 >= ROUNDS_TO_WIN) {
       this.running = false;
       const playerWon = this.wins.p1 > this.wins.p2;
-      this.ui.matchOver(playerWon);
+      // modes lane: a mode controller consumes the match result
+      // (arcade ladder, story reincarnation, ...). Null = classic.
+      if (this.onMatchEnd) this.onMatchEnd(playerWon);
+      else this.ui.matchOver(playerWon);
     } else {
       this.round++;
       this._startRound();
