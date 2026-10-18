@@ -1,0 +1,275 @@
+# findings-audit10.txt — DOA4 deep-RE Audit 10 (Lead 3: FUN_00d9df70 deep dive)
+# Run: 2026-10-18 ~08:45 CDT, headless Ghidra 12.1.4 (Doa4Audit10.java)
+# Full disassembly (127 insns) + decompile (125 lines) + 1-level callee walk.
+# NOTE: FUN_00d9df70 is a CONTENT/STORAGE state manager, NOT the AFS keystream routine (see verdict).
+# === raw script output ===
+--- disassembly ---
+00d9df70  stwu r1,-0x1a0(r1)
+00d9df74  or r31,r3,r3
+00d9df78  li r28,0x0
+00d9df7c  or r27,r28,r28
+00d9df80  lwz r3,0x8(r31)
+00d9df84  bl 0x00f591d4
+00d9df88  lwz r11,0xc0(r31)
+00d9df8c  cmpwi r11,0x0
+00d9df90  beq 0x00d9df9c
+00d9df94  cmpwi cr6,r3,0x0
+00d9df98  beq cr6,0x00d9dfac
+00d9df9c  cmpwi cr6,r11,0x0
+00d9dfa0  bne cr6,0x00d9dfb0
+00d9dfa4  cmpwi cr6,r3,0x0
+00d9dfa8  beq cr6,0x00d9dfb0
+00d9dfac  li r27,0x1
+00d9dfb0  lwz r11,0x90(r31)
+00d9dfb4  stw r3,0xc0(r31)
+00d9dfb8  lwz r11,0x524(r11)
+00d9dfbc  cmpwi cr6,r11,0x0
+00d9dfc0  bne cr6,0x00d9dfd0
+00d9dfc4  lwz r11,0xbc(r31)
+00d9dfc8  cmpwi cr6,r11,0x0
+00d9dfcc  beq cr6,0x00d9e14c
+00d9dfd0  lwz r3,0x0(r31)
+00d9dfd4  bl 0x00f587a4
+00d9dfd8  lwz r11,0xbc(r31)
+00d9dfdc  or r29,r3,r3
+00d9dfe0  cmpwi cr6,r11,0x0
+00d9dfe4  beq cr6,0x00d9e18c
+00d9dfe8  addi r30,r31,0x94
+00d9dfec  li r5,0x0
+00d9dff0  li r4,0x0
+00d9dff4  or r3,r30,r30
+00d9dff8  bl 0x00b8a330
+00d9dffc  cmpwi cr6,r29,0x0
+00d9e000  beq cr6,0x00d9e120
+00d9e004  cmplwi cr6,r3,0x0
+00d9e008  bne cr6,0x00d9e120
+00d9e00c  lwz r11,0xb0(r31)
+00d9e010  or r8,r28,r28
+00d9e014  stw r28,0xbc(r31)
+00d9e018  lwz r11,0x0(r11)
+00d9e01c  cmplwi cr6,r11,0x0
+00d9e020  ble cr6,0x00d9e14c
+00d9e024  or r9,r28,r28
+00d9e028  lwz r11,0xb0(r31)
+00d9e02c  lwz r11,0x4(r11)
+00d9e030  add r11,r11,r9
+00d9e034  lwz r10,0x10(r11)
+00d9e038  subis r10,r10,0x1004
+00d9e03c  subic. r10,r10,0xc
+00d9e040  beq 0x00d9e0e4
+00d9e044  cmplwi cr6,r10,0x1
+00d9e048  beq cr6,0x00d9e0a4
+00d9e04c  cmplwi cr6,r10,0x2
+00d9e050  bne cr6,0x00d9e104
+00d9e054  lwz r10,0x20(r11)
+00d9e058  cmpwi cr6,r10,0x64
+00d9e05c  ble cr6,0x00d9e068
+00d9e060  li r10,0x64
+00d9e064  stw r10,0x20(r11)
+00d9e0a4  lwz r10,0x20(r11)
+00d9e0a8  cmpwi cr6,r10,0x0
+00d9e0ac  lwz r10,0xc4(r31)
+00d9e0b0  beq cr6,0x00d9e0bc
+00d9e0b4  ori r10,r10,0x2
+00d9e0b8  b 0x00d9e0c0
+00d9e0bc  rlwinm r10,r10,0x0,0x1f,0x1d
+00d9e0c0  stw r10,0xc4(r31)
+00d9e0c4  lwz r11,0x20(r11)
+00d9e0c8  cmpwi cr6,r11,0x1
+00d9e0cc  rlwinm r11,r10,0x0,0x0,0x1f
+00d9e0d0  beq cr6,0x00d9e0dc
+00d9e0d4  ori r11,r11,0x4
+00d9e0d8  b 0x00d9e100
+00d9e0dc  rlwinm r11,r11,0x0,0x1e,0x1c
+00d9e0e0  b 0x00d9e100
+00d9e0e4  lwz r11,0x20(r11)
+00d9e0e8  cmpwi cr6,r11,0x0
+00d9e0ec  lwz r11,0xc4(r31)
+00d9e0f0  beq cr6,0x00d9e0fc
+00d9e0f4  ori r11,r11,0x1
+00d9e0f8  b 0x00d9e100
+00d9e0fc  rlwinm r11,r11,0x0,0x0,0x1e
+00d9e100  stw r11,0xc4(r31)
+00d9e104  lwz r11,0xb0(r31)
+00d9e108  addi r8,r8,0x1
+00d9e10c  addi r9,r9,0x28
+00d9e110  lwz r11,0x0(r11)
+00d9e114  cmplw cr6,r8,r11
+00d9e118  blt cr6,0x00d9e028
+00d9e11c  b 0x00d9e14c
+00d9e120  lwz r11,0x0(r30)
+00d9e124  cmplwi cr6,r11,0x3e5
+00d9e128  beq cr6,0x00d9e14c
+00d9e12c  stw r28,0xbc(r31)
+00d9e130  lis r11,0x2
+00d9e134  lwz r10,0xc4(r31)
+00d9e138  ori r11,r11,0x6404
+00d9e13c  cmplw cr6,r10,r11
+00d9e140  beq cr6,0x00d9e14c
+00d9e144  li r27,0x1
+00d9e148  stw r11,0xc4(r31)
+00d9e14c  cmpwi cr6,r27,0x1
+00d9e150  bne cr6,0x00d9e184
+00d9e154  lbz r11,0xc6(r31)
+00d9e158  or r4,r31,r31
+00d9e15c  lwz r3,0x90(r31)
+00d9e184  addi r1,r1,0x1a0
+00d9e188  b 0x00dfd514
+00d9e18c  cmpwi cr6,r29,0x0
+00d9e190  beq cr6,0x00d9e130
+00d9e194  addi r5,r31,0x94
+00d9e198  lwz r10,0xb0(r31)
+00d9e19c  lis r11,-0x7d48
+00d9e1a0  lwz r4,0x0(r31)
+00d9e1a4  lis r3,-0x2
+00d9e1a8  subi r8,r11,0x1984
+00d9e1ac  addi r9,r31,0xb4
+00d9e1b0  stw r5,0x54(r1)
+00d9e1b4  li r7,0x3
+00d9e1b8  li r6,0x0
+00d9e1bc  li r5,0x0
+00d9e1c0  ori r3,r3,0x7d1
+00d9e1c4  bl 0x00f591c4
+00d9e1c8  cmplwi r3,0x0
+instructions printed: 127
+--- decompile ---
+decompiled lines: 125
+C: 
+C: /* WARNING: Control flow encountered bad instruction data */
+C: 
+C: void FUN_00d9df70(undefined4 *param_1)
+C: 
+C: {
+C:   bool bVar1;
+C:   int iVar2;
+C:   int iVar3;
+C:   uint uVar4;
+C:   uint uVar5;
+C:   int iVar6;
+C:   int iStack_140;
+C:   int aiStack_13c [3];
+C:   int aiStack_130 [4];
+C:   undefined1 auStack_120 [288];
+C:   
+C:   bVar1 = false;
+C:   iVar2 = func_0x00f591d4(param_1[2]);
+C:   if (((param_1[0x30] != 0) && (iVar2 == 0)) || ((param_1[0x30] == 0 && (iVar2 != 0)))) {
+C:     bVar1 = true;
+C:   }
+C:   param_1[0x30] = iVar2;
+C:   if ((*(int *)(param_1[0x24] + 0x524) == 0) && (param_1[0x2f] == 0)) goto LAB_00d9e14c;
+C:   iVar2 = func_0x00f587a4(*param_1);
+C:   if (param_1[0x2f] == 0) {
+C:     if (iVar2 == 0) goto LAB_00d9e130;
+C:     iVar2 = func_0x00f591c4(0xfffe07d1,*param_1,0,0,3,0x82b7e67c,param_1 + 0x2d,param_1[0x2c]);
+C:     if ((iVar2 == 0) || (iVar2 == 0x3e5)) {
+C:       param_1[0x2f] = 1;
+C:     }
+C:     else if (param_1[0x31] != 0x26404) {
+C:       bVar1 = true;
+C:       param_1[0x31] = 0x26404;
+C:     }
+C:     iVar2 = func_0x00f587c4(*param_1,0xfc,&iStack_140);
+C:     if ((iVar2 == 0) && (iStack_140 != 1)) {
+C:       iVar2 = func_0x00f587c4(*param_1,0xfb,&iStack_140);
+C:       if ((iVar2 == 0) && (iStack_140 == 1)) {
+C:         uVar4 = 0x10000;
+C:       }
+C:       else {
+C:         uVar4 = 0;
+C:       }
+C:     }
+C:     else {
+C:       uVar4 = 0x20000;
+C:     }
+C:     if (*(int *)(param_1[0x24] + 0x24) != 0) {
+C:       uVar4 = 0x20000;
+C:     }
+C:     param_1[0x31] = param_1[0x31] & 0xfff0ffff | uVar4;
+C:     if (((uVar4 != 0x10000) ||
+C:         (FUN_00d9c310(param_1[0x24],aiStack_130,auStack_120), aiStack_130[0] == 0)) ||
+C:        (func_0x00f587b4(*param_1,auStack_120,aiStack_130[0],aiStack_13c,0), aiStack_13c[0] != 0))
+C:     goto LAB_00d9e14c;
+C:     uVar4 = param_1[0x31] & 0xfff0ffff;
+C:   }
+C:   else {
+C:     iVar3 = FUN_00b8a330(param_1 + 0x25,0,0);
+C:     if ((iVar2 != 0) && (iVar3 == 0)) {
+C:       uVar4 = 0;
+C:       param_1[0x2f] = 0;
+C:       if (*(int *)param_1[0x2c] != 0) {
+C:         iVar2 = 0;
+C:         do {
+C:           iVar6 = *(int *)(param_1[0x2c] + 4) + iVar2;
+C:           iVar3 = *(int *)(iVar6 + 0x10);
+C:           if (iVar3 == 0x1004000c) {
+C:             if (*(int *)(iVar6 + 0x20) == 0) {
+C:               uVar5 = param_1[0x31] & 0xfffffffe;
+C:             }
+C:             else {
+C:               uVar5 = param_1[0x31] | 1;
+C:             }
+C: LAB_00d9e100:
+C:             param_1[0x31] = uVar5;
+C:           }
+C:           else {
+C:             if (iVar3 == 0x1004000d) {
+C:               if (*(int *)(iVar6 + 0x20) == 0) {
+C:                 uVar5 = param_1[0x31] & 0xfffffffd;
+C:               }
+C:               else {
+C:                 uVar5 = param_1[0x31] | 2;
+C:               }
+C:               param_1[0x31] = uVar5;
+C:               if (*(int *)(iVar6 + 0x20) == 1) {
+C:                 uVar5 = uVar5 & 0xfffffffb;
+C:               }
+C:               else {
+C:                 uVar5 = uVar5 | 4;
+C:               }
+C:               goto LAB_00d9e100;
+C:             }
+C:             if (iVar3 == 0x1004000e) {
+C:               if (100 < *(int *)(iVar6 + 0x20)) {
+C:                 *(undefined4 *)(iVar6 + 0x20) = 100;
+C:               }
+C:                     /* WARNING: Bad instruction - Truncating control flow here */
+C:               halt_baddata();
+C:             }
+C:           }
+C:           uVar4 = uVar4 + 1;
+C:           iVar2 = iVar2 + 0x28;
+C:         } while (uVar4 < *(uint *)param_1[0x2c]);
+C:       }
+C:       goto LAB_00d9e14c;
+C:     }
+C:     if (param_1[0x25] == 0x3e5) goto LAB_00d9e14c;
+C:     param_1[0x2f] = 0;
+C: LAB_00d9e130:
+C:     uVar4 = 0x26404;
+C:     if (param_1[0x31] == 0x26404) goto LAB_00d9e14c;
+C:   }
+C:   bVar1 = true;
+C:   param_1[0x31] = uVar4;
+C: LAB_00d9e14c:
+C:   if (!bVar1) {
+C:                     /* WARNING: Bad instruction - Truncating control flow here */
+C:     halt_baddata();
+C:   }
+C:                     /* WARNING: Bad instruction - Truncating control flow here */
+C:   halt_baddata();
+C: }
+--- callee walk (1 level) ---
+call @ 00d9dff8 -> FUN_00b8a330 (00b8a330)
+    subcalls: []
+    decompiled FUN_00b8a330 (9 lines), first 40:
+    C: 
+    C: /* WARNING: Control flow encountered bad instruction data */
+    C: 
+    C: void FUN_00b8a330(void)
+    C: 
+    C: {
+    C:                     /* WARNING: Bad instruction - Truncating control flow here */
+    C:   halt_baddata();
+    C: }
+=== AUDIT 10 DONE ===
