@@ -10,9 +10,10 @@
    ============================================================ */
 import * as THREE from 'three';
 import { Arena } from './scene.js';
-import { Fighter } from './fighter.js';
+import { Fighter, setArenaLimit } from './fighter.js';
 import { AIController } from './ai.js';
 import { audio } from './audio.js';
+import { getStage } from './stages.js';
 
 const ROUND_TIME = 60;
 const ROUNDS_TO_WIN = 2;   // best of 3
@@ -57,11 +58,17 @@ export class Game {
      CLEAN-INIT: every match starts from a known-clean state. No leftover
      fighters, no running timers, no half-loaded assets, no leaked state
      from the previous match. This is the "starts clean" standard. */
-  startMatch(playerChar, enemyChar) {
+  startMatch(playerChar, enemyChar, stageId) {
     this.resetFightState();
 
-    this.p1 = new Fighter(playerChar, -3.5, 1, true);
-    this.p2 = new Fighter(enemyChar, 3.5, -1, false);
+    // Lane 4: stage selection drives arena, collision bounds, spawns.
+    const stage = getStage(stageId || 'shrine');
+    setArenaLimit(stage.dims.wallDistance);
+    this._stageId = stage.id;
+    this._stageName = stage.name;
+
+    this.p1 = new Fighter(playerChar, stage.spawns.p1, 1, true);
+    this.p2 = new Fighter(enemyChar, stage.spawns.p2, -1, false);
     this.arena.scene.add(this.p1.root, this.p2.root);
     this.ai = new AIController(this.p2, enemyChar.ai);
     this.ai1 = this.demo ? new AIController(this.p1, playerChar.ai) : null;
@@ -69,10 +76,14 @@ export class Game {
     this.wins = { p1: 0, p2: 0 };
     this.round = 1;
     this.ui.setNames(playerChar.name, enemyChar.name);
+    if (this.ui.setStageName) this.ui.setStageName(stage.name);
     this.ui.setRounds(this.wins);
     this.matchStats = { attacks: { punch: 0, kick: 0, grab: 0, surge: 0, dodge: 0 }, blockTime: 0, time: 0, dmgDealt: 0, dmgTaken: 0 };
     this.running = true;
     this.paused = false;
+    // Stage content streams in (Tekken retro OBJs fetch async); the fight
+    // intro runs on the base arena while the shell loads.
+    this.arena.setStage(stage.id);
     this._startRound();
   }
 
@@ -110,7 +121,8 @@ export class Game {
     this.timer = ROUND_TIME;
     this.p1.hp = this.p1.maxHp; this.p2.hp = this.p2.maxHp;
     this.p1.meter = this.p2.meter = 0;
-    this.p1.root.position.set(-3.5, 0, 0); this.p2.root.position.set(3.5, 0, 0);
+    const spawns = getStage(this._stageId || 'shrine').spawns;
+    this.p1.root.position.set(spawns.p1, 0, 0); this.p2.root.position.set(spawns.p2, 0, 0);
     this.p1.facing = 1; this.p1.lean.rotation.y = 0;
     this.p2.facing = -1; this.p2.lean.rotation.y = Math.PI;
     this.p1.state = 'idle'; this.p2.state = 'idle';

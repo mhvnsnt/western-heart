@@ -14,6 +14,7 @@ import { loadT3Clips } from './t3anims.js';
 import * as THREE from 'three';
 import { whUiEnabled, mountWhUi } from './ui-wh-bridge.js';
 import { getCustomFighter, customFighterToRoster } from './custom-fighter.js';
+import { STAGES, STAGE_TIERS, getStage, randomStageId } from './stages.js';
 import { ModeController } from './modes.js';
 
 // Load REAL Tekken 3 moveset data (not hand-written frame data)
@@ -25,6 +26,7 @@ const screens = {
   menu:   document.getElementById('screen-menu'),
   howto:  document.getElementById('screen-howto'),
   select: document.getElementById('screen-select'),
+  stage:  document.getElementById('screen-stage'),
   result: document.getElementById('screen-result'),
   hud:    document.getElementById('hud'),
   stage:      document.getElementById('screen-stage'),
@@ -54,6 +56,10 @@ const ui = {
   setNames(p1, p2) {
     document.getElementById('p1-name').textContent = p1;
     document.getElementById('p2-name').textContent = p2;
+  },
+  setStageName(name) {
+    const el = document.getElementById('stage-label');
+    if (el) el.textContent = name;
   },
   _buildMeter(id) {
     const wrap = document.getElementById(`${id}-meter`);
@@ -144,8 +150,24 @@ let assetsReady = false;
 
 /* ---- Game modes (lane 5): versus / arcade / story(+reincarnation) / training.
    The controller owns mode state; main.js just routes menu + select events. */
+/* ---- Game modes (lane 5) + stage select (lane 4) integration ----
+   The mode controller owns mode state and fight setup; versus-mode fights
+   route through the CHOOSE YOUR ARENA screen. Arcade/story/training keep
+   their mode-dictated flow (stage comes from the mode, not the player). */
+let pendingFight = null;
+function startFightViaStage(p1, p2, opts = {}) {
+  if (opts.mode !== 'versus') { startFight(p1, p2, opts); return; }
+  pendingFight = { p1, p2, opts };
+  buildStageSelect();
+  show('stage');
+  const hint = document.getElementById('stage-hint');
+  const s = getStage(selectedStage);
+  if (hint && s) hint.textContent = `${s.name} — ${s.description}`;
+  const btn = document.getElementById('confirm-stage');
+  if (btn) btn.disabled = false;
+}
 const modes = new ModeController({
-  game, ui, show, startFight,
+  game, ui, show, startFight: startFightViaStage,
   roster: ROSTER, getChar: getCharacterWithCustom, audio,
 });
 window.__modes = modes;
@@ -264,6 +286,83 @@ document.addEventListener('keydown', (e) => {
     e.preventDefault();
   }
 });
+/* ---------------- Stage select (Lane 4) ----------------
+   After the fighter is confirmed, pick the arena: 8 canon Eastern
+   Mind lands + 15 Tekken 3 retro arenas (real teardown geometry). */
+let selectedStage = 'shrine';
+
+function buildStageSelect() {
+  const grid = document.getElementById('stage-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  for (const tier of STAGE_TIERS) {
+    const stages = STAGES.filter(s => s.tier === tier);
+    if (!stages.length) continue;
+    const tierHeader = document.createElement('div');
+    tierHeader.className = 'tier-header';
+    tierHeader.textContent = tier;
+    grid.appendChild(tierHeader);
+    for (const s of stages) {
+      const card = document.createElement('div');
+      card.className = 'stage-card' + (s.id === selectedStage ? ' selected' : '');
+      card.dataset.id = s.id;
+      card.innerHTML =
+        `<div class="swatch" style="background:linear-gradient(135deg, ${s.swatch[0]}, ${s.swatch[1]})"></div>
+         <div class="sname">${s.name}</div>
+         <div class="suniverse">${s.universe}</div>`;
+      card.addEventListener('click', () => selectStageCard(card, s));
+      grid.appendChild(card);
+    }
+  }
+}
+function selectStageCard(card, s) {
+  audio.uiClick();
+  document.querySelectorAll('.stage-card').forEach(x => x.classList.remove('selected'));
+  card.classList.add('selected');
+  selectedStage = s.id;
+  const hint = document.getElementById('stage-hint');
+  if (hint) hint.textContent = `${s.name} — ${s.description}`;
+  const btn = document.getElementById('confirm-stage');
+  if (btn) btn.disabled = false;
+}
+function allStageCards() { return [...document.querySelectorAll('.stage-card')]; }
+let focusedStageIdx = 0;
+function focusStage(i) {
+  const cards = allStageCards();
+  if (!cards.length) return;
+  focusedStageIdx = (i + cards.length) % cards.length;
+  cards.forEach(x => x.classList.remove('kb-focus'));
+  const el = cards[focusedStageIdx];
+  el.classList.add('kb-focus');
+  el.scrollIntoView({ block: 'nearest' });
+}
+document.addEventListener('keydown', (e) => {
+  const sc = document.getElementById('screen-stage');
+  if (!sc || !sc.classList.contains('active')) return;
+  const cards = allStageCards();
+  if (!cards.length) return;
+  const grid = document.getElementById('stage-grid');
+  const cols = grid ? getComputedStyle(grid).gridTemplateColumns.split(' ').length : 2;
+  if (e.key === 'ArrowRight') { focusStage(focusedStageIdx + 1); e.preventDefault(); }
+  else if (e.key === 'ArrowLeft') { focusStage(focusedStageIdx - 1); e.preventDefault(); }
+  else if (e.key === 'ArrowDown') { focusStage(focusedStageIdx + cols); e.preventDefault(); }
+  else if (e.key === 'ArrowUp') { focusStage(focusedStageIdx - cols); e.preventDefault(); }
+  else if (e.key === 'Enter' || e.key === ' ') {
+    const card = cards[focusedStageIdx];
+    const s = getStage(card.dataset.id);
+    if (s) {
+      if (selectedStage === s.id) { startFight(); }
+      else selectStageCard(card, s);
+    }
+    e.preventDefault();
+  }
+});
+/* Deep link: ?stage=<id> pre-selects that arena */
+(function () {
+  const id = new URLSearchParams(location.search).get('stage');
+  if (id && getStage(id)) selectedStage = getStage(id).id;
+})();
+
 /* 99-second select timer (Tekken standard selector: starts at 99).
    The countdown starts only once assets are loaded (maybeStartSelectTimer),
    and at 0 it auto-highlights a random fighter — it never starts a fight
@@ -360,6 +459,9 @@ document.querySelectorAll('[data-action]').forEach((el) => {
       show('menu');
       audio.stopMusic();
     }
+    else if (a === 'back-select') {
+      show('select');
+    }
     else if (a === 'rematch') {
       if (modes.mode) modes.rematch();
       else startFight();
@@ -368,7 +470,10 @@ document.querySelectorAll('[data-action]').forEach((el) => {
 });
 
 /* Confirm routing: the mode controller owns the select flow
-   (versus needs a P1→P2 two-step; other modes start on confirm). */
+   (versus needs a P1→P2 two-step; other modes start on confirm).
+   Lane 4 integration: versus-mode fights route through the stage-select
+   screen via startFightViaStage (wired as the ModeController's startFight
+   dep below); arcade/story/training use their mode-dictated flow. */
 function confirmSelection() {
   if (!selectedChar) return;
   audio.uiClick();
@@ -377,6 +482,27 @@ function confirmSelection() {
 }
 
 document.getElementById('confirm-fighter').addEventListener('click', confirmSelection);
+
+/* Lane 4: stage-select screen handlers (CHOOSE YOUR ARENA). */
+document.getElementById('confirm-stage').addEventListener('click', () => {
+  if (!selectedStage || !pendingFight) return;
+  audio.uiClick();
+  const { p1, p2, opts } = pendingFight;
+  pendingFight = null;
+  startFight(p1, p2, { ...opts, stage: selectedStage });
+});
+
+document.getElementById('random-stage').addEventListener('click', () => {
+  audio.uiClick();
+  selectedStage = randomStageId();
+  const s = getStage(selectedStage);
+  const card = document.querySelector(`.stage-card[data-id="${s.id}"]`);
+  if (card) {
+    selectStageCard(card, s);
+    const idx = allStageCards().indexOf(card);
+    if (idx >= 0) focusStage(idx);
+  }
+});
 
 /* Training quit button (HUD, visible only in training mode) */
 document.getElementById('training-quit').addEventListener('click', () => {
@@ -390,6 +516,8 @@ document.getElementById('training-quit').addEventListener('click', () => {
 async function startFight(playerId, enemyId, opts = {}) {
   unlockAudio();
   if (typeof playerId === 'string') selectedChar = playerId;
+  // Lane 4: stage-select may pass an explicit stage via opts.
+  if (opts.stage && getStage(opts.stage)) selectedStage = getStage(opts.stage).id;
   // modes lane: opts may carry full char-entry overrides (force-buffed
   // player, scaled-AI foe, the Assembled Soul boss, training dummy).
   const player = opts.playerChar || getCharacterWithCustom(selectedChar || ROSTER[0].id);
@@ -431,7 +559,7 @@ async function startFight(playerId, enemyId, opts = {}) {
   show('hud');
   game.paused = false;
   audio.startMusic();
-  game.startMatch(player, enemy);
+  await game.startMatch(player, enemy, selectedStage);
   // Control hints: show for 6s at fight start, H toggles
   const hints = document.getElementById('control-hints');
   if (hints) {
@@ -456,6 +584,7 @@ document.addEventListener('visibilitychange', () => {
 // expose for debugging / verification
 window.__game = game;
 window.__ui = ui;
+window.__stages = STAGES;
 
 // New Western Heart menu/UI (game/ui-wh/) behind a toggle; classic menus stay as fallback.
 if (whUiEnabled()) mountWhUi({ game, ui, show, startFight, ROSTER });

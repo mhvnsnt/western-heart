@@ -76,6 +76,23 @@
     </footer>
   </section>
 
+  <!-- ====================== STAGE SELECT (Lane 4) ======================
+       Tekken setup: sticky header (BACK + title), scrolling arena grid
+       grouped by tier (canon lands / Tekken retro), sticky footer. -->
+  <section id="screen-stage" class="screen select-screen">
+    <header class="select-header">
+      <button class="btn-ghost select-back" data-action="back-select">BACK</button>
+      <h2>CHOOSE YOUR ARENA</h2>
+      <div class="select-timer" style="visibility:hidden">99</div>
+    </header>
+    <div id="stage-grid" class="char-grid stage-grid"><!-- filled by JS --></div>
+    <footer class="select-footer">
+      <span id="stage-hint">Pick an arena</span>
+      <button id="random-stage" class="btn-ghost">RANDOM</button>
+      <button id="confirm-stage" class="btn-primary" disabled>CONFIRM</button>
+    </footer>
+  </section>
+
   <!-- ====================== ROUND BANNER ====================== -->
   <div id="round-banner" class="banner"></div>
 
@@ -104,6 +121,7 @@
           <em>VS</em>
           <span class="round-pip" id="p2-r1"></span><span class="round-pip" id="p2-r2"></span>
         </div>
+        <div class="stage-label" id="stage-label">SHRINE OF THE BLADE</div>
       </div>
       <!-- Enemy health -->
       <div class="fighter-status right">

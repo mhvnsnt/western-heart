@@ -111,7 +111,9 @@ export function getRealMove(charId, moveType) {
 }
 
 const GROUND_Y = 0;
-const ARENA_LIMIT = 8.4; // shrine.json: arena 16.8 wide
+let ARENA_LIMIT = 8.4; // default: shrine.json arena 16.8 wide; set per-stage via setArenaLimit()
+/* Lane 4: collision bounds come from the stage def (stages.js dims.wallDistance). */
+export function setArenaLimit(v) { ARENA_LIMIT = v; }
 
 let _glowTex = null;
 function _glowTexture() {
