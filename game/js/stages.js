@@ -141,8 +141,8 @@ export function makeVeinSkyTexture() {
     const g = ctx.createLinearGradient(0, 0, 0, s);
     g.addColorStop(0, '#060608'); g.addColorStop(0.7, '#0d0a14'); g.addColorStop(1, '#1a0f18');
     ctx.fillStyle = g; ctx.fillRect(0, 0, s, s);
-    ctx.strokeStyle = 'rgba(150,40,50,0.35)'; ctx.lineWidth = 2;
-    for (let i = 0; i < 22; i++) {
+    ctx.strokeStyle = 'rgba(150,40,50,0.18)'; ctx.lineWidth = 1;
+    for (let i = 0; i < 34; i++) {
       ctx.beginPath();
       let x = Math.random() * s, y = 0; ctx.moveTo(x, y);
       for (let k = 0; k < 8; k++) { x += (Math.random() - 0.5) * 60; y += s / 8; ctx.lineTo(x, y); }
@@ -545,16 +545,16 @@ function buildTongNou(g, def, api) {
       ctx.stroke();
     }
   });
-  const head = new THREE.Mesh(new THREE.SphereGeometry(15, 32, 24),
+  const head = new THREE.Mesh(new THREE.SphereGeometry(18, 32, 24),
     new THREE.MeshStandardMaterial({ map: headTex, roughness: 0.7, emissive: 0x0a3a14, emissiveIntensity: 0.7 }));
-  head.position.set(0, 13, -38); g.add(head);
+  head.position.set(0, 17, -58); g.add(head);
   const eyeMat = new THREE.MeshBasicMaterial({ color: 0xaaffaa });
-  const eyeL = new THREE.Mesh(new THREE.SphereGeometry(1.1, 16, 12), eyeMat);
+  const eyeL = new THREE.Mesh(new THREE.SphereGeometry(1.3, 16, 12), eyeMat);
   const eyeR = eyeL.clone();
-  eyeL.position.set(-5.2, 15.5, -24.5); eyeR.position.set(5.2, 15.5, -24.5);
+  eyeL.position.set(-6, 19, -39); eyeR.position.set(6, 19, -39);
   g.add(eyeL, eyeR);
   const eyeLight = new THREE.PointLight(0x5aff7a, 30, 60, 2);
-  eyeLight.position.set(0, 14, -24); g.add(eyeLight);
+  eyeLight.position.set(0, 17, -39); g.add(eyeLight);
   const N = api.isMobile ? 50 : 120;
   const motes = new THREE.InstancedMesh(new THREE.SphereGeometry(0.09, 8, 6),
     new THREE.MeshBasicMaterial({ color: 0x9affaa, transparent: true, opacity: 0.85 }), N);
@@ -569,7 +569,7 @@ function buildTongNou(g, def, api) {
   updaters.push((dt, t, fA, fB) => {
     if (fA && fB) {
       const mid = (fA.root.position.x + fB.root.position.x) / 2;
-      eyeL.position.x = -5.2 + mid * 0.15; eyeR.position.x = 5.2 + mid * 0.15;
+      eyeL.position.x = -6 + mid * 0.2; eyeR.position.x = 6 + mid * 0.2;
     }
     const pulse = 0.75 + Math.sin(t * 1.7) * 0.25;
     eyeMat.color.setRGB(0.55 * pulse + 0.2, 1.0 * pulse, 0.55 * pulse + 0.2);
@@ -589,10 +589,10 @@ function buildTongNou(g, def, api) {
 function buildTreeLife(g, def, api) {
   const { updaters, skyTex, fog } = buildBase(g, def, api);
   const barkMat = new THREE.MeshStandardMaterial({ color: 0x4a3420, roughness: 1 });
-  const trunk = new THREE.Mesh(new THREE.CylinderGeometry(2.6, 3.6, 26, 10), barkMat);
-  trunk.position.set(-13, 12, -12); trunk.castShadow = true; g.add(trunk);
+  const trunk = new THREE.Mesh(new THREE.CylinderGeometry(2.2, 3.0, 18, 10), barkMat);
+  trunk.position.set(-10, 8, -15); trunk.castShadow = true; g.add(trunk);
   const leafMat = new THREE.MeshStandardMaterial({ color: 0x1e4a24, roughness: 0.9 });
-  for (const [x, y, z, r] of [[-13, 26, -12, 7], [-18, 23, -9, 4.5], [-8, 24, -14, 5], [-13, 29, -12, 5.5]]) {
+  for (const [x, y, z, r] of [[-10, 17, -15, 6], [-14, 15, -13, 4], [-6, 15.5, -16, 4.5], [-10, 20, -15, 5]]) {
     const c = new THREE.Mesh(new THREE.SphereGeometry(r, 14, 10), leafMat);
     c.position.set(x, y, z); g.add(c);
   }
@@ -602,12 +602,12 @@ function buildTreeLife(g, def, api) {
   fruits.frustumCulled = false;
   const fruitData = []; const dummy = new THREE.Object3D();
   for (let i = 0; i < N; i++) {
-    const a = Math.random() * Math.PI * 2, r = 2 + Math.random() * 5;
-    fruitData.push({ x: -13 + Math.cos(a) * r, y: 20 + Math.random() * 8, z: -12 + Math.sin(a) * r, ph: Math.random() * 10 });
+    const a = Math.random() * Math.PI * 2, r = 1.5 + Math.random() * 3;
+    fruitData.push({ x: -10 + Math.cos(a) * r, y: 11 + Math.random() * 6, z: -15 + Math.sin(a) * r, ph: Math.random() * 10 });
   }
   g.add(fruits);
   const fruitLight = new THREE.PointLight(0xffc86a, 20, 40, 2);
-  fruitLight.position.set(-13, 22, -12); g.add(fruitLight);
+  fruitLight.position.set(-10, 14, -15); g.add(fruitLight);
   const duneMat = new THREE.MeshStandardMaterial({ color: 0xa8824e, roughness: 1 });
   for (let i = 0; i < 6; i++) {
     const d = new THREE.Mesh(new THREE.SphereGeometry(6 + Math.random() * 6, 12, 8, 0, Math.PI * 2, 0, Math.PI / 2), duneMat);
@@ -632,14 +632,14 @@ function buildChiU(g, def, api) {
   const { updaters, skyTex, fog } = buildBase(g, def, api);
   const towerMat = new THREE.MeshStandardMaterial({ color: 0x1a0f0c, roughness: 0.95 });
   const tower = new THREE.Mesh(new THREE.BoxGeometry(4, 26, 4), towerMat);
-  tower.position.set(12, 12, -18); tower.castShadow = true; g.add(tower);
+  tower.position.set(9, 12, -20); tower.castShadow = true; g.add(tower);
   const winMat = new THREE.MeshBasicMaterial({ color: 0xff7a2a });
   for (let i = 0; i < 6; i++) {
     const w = new THREE.Mesh(new THREE.PlaneGeometry(2.6, 0.7), winMat);
-    w.position.set(12, 4 + i * 3.6, -15.95); g.add(w);
+    w.position.set(9, 4 + i * 3.6, -17.95); g.add(w);
   }
   const fireLight = new THREE.PointLight(0xff5a1a, 60, 55, 2);
-  fireLight.position.set(12, 14, -16); g.add(fireLight);
+  fireLight.position.set(9, 14, -18); g.add(fireLight);
   const N = api.isMobile ? 40 : 80;
   const embers = new THREE.InstancedMesh(new THREE.PlaneGeometry(0.12, 0.12),
     new THREE.MeshBasicMaterial({ color: 0xff8a3a, transparent: true, opacity: 0.9, side: THREE.DoubleSide }), N);
@@ -719,18 +719,18 @@ function buildHelix(g, def, api) {
   ];
   const roomMats = [];
   for (const [color, x, y, z] of rooms) {
-    const m = new THREE.MeshStandardMaterial({ color, emissive: color, emissiveIntensity: 1.8, roughness: 0.3 });
-    const pod = new THREE.Mesh(new THREE.SphereGeometry(1.3, 18, 14), m);
+    const m = new THREE.MeshStandardMaterial({ color, emissive: color, emissiveIntensity: 1.0, roughness: 0.3 });
+    const pod = new THREE.Mesh(new THREE.SphereGeometry(0.9, 18, 14), m);
     pod.position.set(x, y, z); g.add(pod);
-    const halo = new THREE.PointLight(color, 14, 18, 2);
+    const halo = new THREE.PointLight(color, 8, 14, 2);
     halo.position.set(x, y, z); g.add(halo);
-    roomMats.push({ m, halo, base: 1.8, ph: Math.random() * 10 });
+    roomMats.push({ m, halo, base: 1.0, ph: Math.random() * 10 });
   }
   updaters.push((dt, t) => {
     for (const r of roomMats) {
       const p = 0.7 + Math.sin(t * 2.4 + r.ph) * 0.3;
       r.m.emissiveIntensity = r.base * p;
-      r.halo.intensity = 14 * p;
+      r.halo.intensity = 8 * p;
     }
   });
   return { updaters, skyTex, fog };
@@ -742,9 +742,9 @@ function buildDreaming(g, def, api) {
   const walls = [];
   for (let i = 0; i < 8; i++) {
     const a = (i / 8) * Math.PI * 2, r = 14;
-    const w = new THREE.Mesh(new THREE.PlaneGeometry(9, 7),
-      new THREE.MeshStandardMaterial({ color: 0x3a5ac0, emissive: 0x1a2a80, emissiveIntensity: 0.9,
-        transparent: true, opacity: 0.75, roughness: 0.2, metalness: 0.3, side: THREE.DoubleSide }));
+    const w = new THREE.Mesh(new THREE.PlaneGeometry(7, 5.5),
+      new THREE.MeshStandardMaterial({ color: 0x3a5ac0, emissive: 0x1a2a80, emissiveIntensity: 0.7,
+        transparent: true, opacity: 0.55, roughness: 0.2, metalness: 0.3, side: THREE.DoubleSide }));
     w.position.set(Math.cos(a) * r, 3.2, Math.sin(a) * r);
     w.lookAt(0, 3.2, 0); g.add(w);
     walls.push({ w, ph: (i / 8) * Math.PI * 2 });
@@ -789,8 +789,8 @@ function buildMarketplace(g, def, api) {
     eye.position.set(x, 16.5 * s - 1, z); g.add(eye);
     return eye;
   };
-  const eyes = [eyeAt(-26, -30, 1.2), eyeAt(0, -38, 1.6), eyeAt(26, -30, 1.2), eyeAt(-40, -8, 0.9), eyeAt(40, -8, 0.9)];
-  const stallWood = new THREE.MeshStandardMaterial({ color: 0x4a2e18, roughness: 0.9 });
+  const eyes = [eyeAt(-24, -32, 0.9), eyeAt(0, -40, 1.1), eyeAt(24, -32, 0.9), eyeAt(-16, -14, 0.7), eyeAt(16, -14, 0.7)];
+  const stallWood = new THREE.MeshStandardMaterial({ color: 0x6a4020, roughness: 0.9 });
   const awnTex = _canvas(128, (ctx, s) => {
     for (let i = 0; i < 8; i++) { ctx.fillStyle = i % 2 ? '#8a2a4a' : '#e0c080'; ctx.fillRect(i * s / 8, 0, s / 8, s); }
   });
@@ -812,7 +812,7 @@ function buildMarketplace(g, def, api) {
     }
     st.position.set(x, 0, z); st.rotation.y = ry; g.add(st);
   };
-  stallAt(-11, -4, 0.5); stallAt(11, -4, -0.5); stallAt(-11, 5, 2.6); stallAt(11, 5, -2.6);
+  stallAt(-7.5, -3, 0.5); stallAt(7.5, -3, -0.5); stallAt(-7.5, 4, 2.6); stallAt(7.5, 4, -2.6);
   const bulbMat = new THREE.MeshBasicMaterial({ color: 0xffc86a });
   for (let i = 0; i <= 12; i++) {
     const b = new THREE.Mesh(new THREE.SphereGeometry(0.09, 8, 6), bulbMat);
@@ -822,6 +822,8 @@ function buildMarketplace(g, def, api) {
   }
   const bLight = new THREE.PointLight(0xffaa5a, 18, 30, 2);
   bLight.position.set(0, 4, -4); g.add(bLight);
+  const stallLight = new THREE.PointLight(0xffc080, 12, 25, 2);
+  stallLight.position.set(0, 3, 1); g.add(stallLight);
   updaters.push((dt, t) => {
     for (const e of eyes) e.rotation.y = Math.sin(t * 0.4) * 0.25;
     bLight.intensity = 18 * (0.85 + Math.sin(t * 7) * 0.1 + Math.sin(t * 13) * 0.05);
