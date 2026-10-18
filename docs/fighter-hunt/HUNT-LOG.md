@@ -112,3 +112,14 @@ convert → scale → render → own-eyes → release → wire.)
   2048px front T-pose, white void, fingertips clear. Own-eyes: Anna's feathered
   shoulders/wrists, long skirt, matches preview photo.
 - Wired: assets.js += torch; roster-full.js torch.model steve-fox→torch.
+
+### 2026-10-18 — MICHIKO (Katarina Alves) ✅ WIRED
+- Source: `katarina-alves-t7-p1.7z` (tekken-models-batch-3). GTA SA DFF+TXD port of
+  T7 Katarina P1 (glasses, striped pants, black bra, white jacket) by "4L13NW4R3_2021".
+  Two DFFs in archive (KatarinaAP1.dff + KatarinaAP1V2.dff); used KatarinaAP1.dff.
+  License: community game rip. Verified by own eyes on preview photo (01.png).
+- Pipeline: same DFF script. game/assets/models/michiko.glb (1.2MB, untextured).
+  Gate: PASS.
+- Render: probe → facing = -Y (front). 2048px front T-pose, white void, fingertips
+  clear. Own-eyes: Katarina's face, open jacket, belt, striped pants.
+- Wired: assets.js += michiko; roster-full.js michiko.model steve-fox→michiko.

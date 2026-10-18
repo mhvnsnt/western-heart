@@ -48,6 +48,7 @@ const MODEL_URLS = {
   // retargeted to Mixamo skeleton. See docs/fighter-hunt/HUNT-LOG.md.
   star: 'assets/models/star.glb',
   torch: 'assets/models/torch.glb',
+  michiko: 'assets/models/michiko.glb',
   // Created fighters use the Soldier.glb base from the CAW suite.
   // Relative path works on GitHub Pages (game/ -> customization/).
   custom: '../customization/create-fighter/assets/Soldier.glb',
