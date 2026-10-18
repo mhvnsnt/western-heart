@@ -17,11 +17,13 @@ export class AIController {
     this._action = 'neutral';
     this._actionT = 0;
     this._block = 0;
+    this.passive = !!personality.passive; // modes lane: training dummy never acts
   }
 
   update(dt, player) {
     const f = this.f, p = player;
     if (f.dead || f.state === 'ko' || f.state === 'victory') return;
+    if (this.passive) return; // training dummy: stands, takes hits, never fights back
 
     this._think -= dt;
     this._actionT -= dt;
