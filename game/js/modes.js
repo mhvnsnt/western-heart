@@ -259,14 +259,18 @@ export class ModeController {
   }
 
   /* ---------- mode entry (called from menu buttons) ---------- */
-  startMode(mode) {
-    this.mode = mode;
-    this.vsStep = 0; this.vsP1 = null;
+  clearState() {
+    this.mode = null;
+    this.vsStep = 0; this.vsP1 = null; this._lastVersus = null;
     this.arcade = null; this.story = null; this.training = null;
     this.game.onMatchEnd = null;
     this.game.training = false;
     this._badge('');
     this._showQuit(false);
+  }
+  startMode(mode) {
+    this.clearState();
+    this.mode = mode;
     const hint = this._el('select-hint');
     this.show('select');
     if (!hint) return;
@@ -572,8 +576,8 @@ export class ModeController {
     };
     (extraButtons || []).forEach((e) => mk(e.label, 'btn-primary', e.fn));
     mk('MAIN MENU', 'btn-ghost', () => {
-      this.game.leaveFight(); this.game.training = false;
-      this.mode = null; this._badge(''); this._showQuit(false);
+      this.game.leaveFight();
+      this.clearState();
       this.show('menu'); this.audio && this.audio.stopMusic && this.audio.stopMusic();
     });
     this.show('modewin');
