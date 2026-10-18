@@ -1,0 +1,95 @@
+openjdk version "21.0.12.1" 2026-08-18 LTS
+OpenJDK Runtime Environment Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS)
+OpenJDK 64-Bit Server VM Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS, mixed mode)
+INFO  Using log config file: jar:file:/home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml (LoggingInitialization)  
+INFO  Using log file: /root/.config/ghidra/ghidra_12.1.4_PUBLIC/application.log (LoggingInitialization)  
+INFO  Loading user preferences: /root/.config/ghidra/ghidra_12.1.4_PUBLIC/preferences (Preferences)  
+INFO  Searching for classes... (ClassSearcher)  
+INFO  Ignoring class 'ghidra.app.plugin.core.analysis.MipsPreAnalyzer' from '/home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Extensions/ghidra_psx_ldr/lib/ghidra_psx_ldr.jar'. Already found at '/home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Processors/MIPS/lib/MIPS.jar'. (ClassSearcher)  
+INFO  Class search complete (3335 ms) (ClassSearcher)  
+INFO  Initializing SSL Context (DefaultSSLContextInitializer)  
+INFO  Initializing Random Number Generator... (SecureRandomFactory)  
+INFO  Random Number Generator initialization complete: NativePRNGNonBlocking (SecureRandomFactory)  
+INFO  Trust manager disabled, cacerts have not been set (DefaultTrustManagerFactory)  
+INFO  Starting cache cleanup: /var/tmp/root-ghidra/fscache2 (FileCacheMaintenanceDaemon)  
+INFO  Finished cache cleanup, estimated storage used: 0 (FileCacheMaintenanceDaemon)  
+INFO  Headless startup complete (17000 ms) (AnalyzeHeadless)  
+INFO  Class searcher loaded 60 extension points (20 false positives) (ClassSearcher)  
+INFO  HEADLESS Script Paths:
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/Decompiler/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/FileFormats/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Debug/Debugger-rmi-trace/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/DecompilerDependent/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Extensions/ghidra_psx_ldr/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Processors/8051/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Processors/Atmel/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Processors/PIC/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Debug/Debugger/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/MicrosoftCodeAnalyzer/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Processors/DATA/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/PDB/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/BytePatterns/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/BSim/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/FunctionID/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/PyGhidra/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/WildcardAssembler/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/Base/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/SystemEmulation/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/GnuDemangler/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Processors/JVM/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/VersionTracking/ghidra_scripts
+    /home/hatch/workspace/ghidra-projects/doa4
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/SwiftDemangler/ghidra_scripts (HeadlessAnalyzer)  
+INFO  HEADLESS: execution starts (HeadlessAnalyzer)  
+INFO  Opening existing project: /home/hatch/workspace/ghidra-projects/doa4/DOA4 (HeadlessAnalyzer)  
+INFO  Opening project: /home/hatch/workspace/ghidra-projects/doa4/DOA4 (HeadlessProject)  
+INFO  REPORT: Processing project file: /default_pe.bin (HeadlessAnalyzer)  
+INFO  REPORT: Execute script: Doa4Audit1  (HeadlessAnalyzer)  
+INFO  SCRIPT: /home/hatch/workspace/ghidra-projects/doa4/Doa4Audit1.java (HeadlessAnalyzer)  
+INFO  Doa4Audit1.java> === DOA4 AUDIT 1: string-driven decrypt-path hunt === (GhidraScript)  
+INFO  Doa4Audit1.java> BLOCK Headers 00400000-004003ff r=true w=false x=false init=true (GhidraScript)  
+INFO  Doa4Audit1.java> BLOCK .rdata 00400400-006b3ef7 r=true w=false x=false init=true (GhidraScript)  
+INFO  Doa4Audit1.java> BLOCK .pdata 006b4000-006d166f r=true w=false x=false init=true (GhidraScript)  
+INFO  Doa4Audit1.java> BLOCK .text 006e0000-00f4adff r=true w=false x=true init=true (GhidraScript)  
+INFO  Doa4Audit1.java> BLOCK PSFD00 00f4ae00-00f50943 r=true w=false x=true init=true (GhidraScript)  
+INFO  Doa4Audit1.java> BLOCK .data 00f60000-019a18b7 r=true w=true x=false init=true (GhidraScript)  
+INFO  Doa4Audit1.java> BLOCK .XEXID 019a1a00-019a1a03 r=true w=true x=false init=true (GhidraScript)  
+INFO  Doa4Audit1.java> BLOCK .idata 019b0000-019b05ff r=true w=true x=false init=true (GhidraScript)  
+INFO  Doa4Audit1.java> BLOCK .XBLD 019c0000-019c01ff r=true w=false x=false init=true (GhidraScript)  
+INFO  Doa4Audit1.java> BLOCK .reloc 019c0200-01a9d0af r=true w=false x=false init=true (GhidraScript)  
+INFO  Doa4Audit1.java> TOTAL INSTRUCTIONS: 194031 (GhidraScript)  
+INFO  Doa4Audit1.java> STRING "cache:\spr.afs" @ 0061e8d0 [.rdata] (GhidraScript)  
+INFO  Doa4Audit1.java>     (no xrefs) (GhidraScript)  
+INFO  Doa4Audit1.java> STRING "cache:\snd.afs" @ 0061e8ec [.rdata] (GhidraScript)  
+INFO  Doa4Audit1.java>     (no xrefs) (GhidraScript)  
+INFO  Doa4Audit1.java> STRING "cache:\mot.afs" @ 0061e908 [.rdata] (GhidraScript)  
+INFO  Doa4Audit1.java>     (no xrefs) (GhidraScript)  
+INFO  Doa4Audit1.java> STRING "cache:\cmn.afs" @ 0061e924 [.rdata] (GhidraScript)  
+INFO  Doa4Audit1.java>     (no xrefs) (GhidraScript)  
+INFO  Doa4Audit1.java> STRING "cache:\chrthree.afs" @ 0061e964 [.rdata] (GhidraScript)  
+INFO  Doa4Audit1.java>     (no xrefs) (GhidraScript)  
+INFO  Doa4Audit1.java> STRING "cache:\chrtwo.afs" @ 0061e988 [.rdata] (GhidraScript)  
+INFO  Doa4Audit1.java>     (no xrefs) (GhidraScript)  
+INFO  Doa4Audit1.java> STRING "cache:\chrone.afs" @ 0061e9ac [.rdata] (GhidraScript)  
+INFO  Doa4Audit1.java>     (no xrefs) (GhidraScript)  
+INFO  Doa4Audit1.java> STRING "%ls.anm%d.afs" NOT FOUND anywhere (GhidraScript)  
+INFO  Doa4Audit1.java> STRING "%s:\anm.afs" @ 00686844 [.rdata] (GhidraScript)  
+INFO  Doa4Audit1.java>     (no xrefs) (GhidraScript)  
+INFO  Doa4Audit1.java> STRING "adxf_GetPtStat" @ 0044784c [.rdata] (GhidraScript)  
+INFO  Doa4Audit1.java>     (no xrefs) (GhidraScript)  
+INFO  Doa4Audit1.java> STRING "adxf_GetPtStat" @ 0044787d [.rdata] (GhidraScript)  
+INFO  Doa4Audit1.java>     (no xrefs) (GhidraScript)  
+INFO  Doa4Audit1.java> STRING "adxf_GetPtStat" @ 004478b2 [.rdata] (GhidraScript)  
+INFO  Doa4Audit1.java>     (no xrefs) (GhidraScript)  
+INFO  Doa4Audit1.java> STRING "adxf_GetPtStat" @ 004478e7 [.rdata] (GhidraScript)  
+INFO  Doa4Audit1.java>     (no xrefs) (GhidraScript)  
+INFO  Doa4Audit1.java> STRING "Illigal format(not AFS)" @ 00447899 [.rdata] (GhidraScript)  
+INFO  Doa4Audit1.java>     (no xrefs) (GhidraScript)  
+INFO  Doa4Audit1.java> 
+=== POINTER TABLE SCAN === (GhidraScript)  
+INFO  Doa4Audit1.java> 
+=== S-BOX LEAD 0x822f06d0 === (GhidraScript)  
+INFO  Doa4Audit1.java> 0x822f06d0 NOT IN ANY MEMORY BLOCK (address space max?) (GhidraScript)  
+INFO  Doa4Audit1.java> === AUDIT 1 DONE === (GhidraScript)  
+INFO  REPORT: Save succeeded for processed file: /default_pe.bin (HeadlessAnalyzer)  
+EXITCODE=0
