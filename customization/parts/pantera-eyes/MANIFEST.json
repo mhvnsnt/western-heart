@@ -1,0 +1,71 @@
+{
+ "library": "pantera-eyes",
+ "character": "Pantera (Western Heart roster/pantera)",
+ "source": "Owner directive 2026-10-18: eyes must be swappable Tekken/WWE-style. Every variant saved, never overwritten.",
+ "created": "2026-10-18",
+ "texture": "King_Eye_D (Modeleyes_Material003 baseColor, 128x128)",
+ "coordinate_system": {
+  "pixel_space": "x right, y DOWN, origin top-left of the PNG as stored in the GLB",
+  "uv_space": "Both eye meshes share the FULL texture: u=[0,1], v=[0,1]. Iris is centered, pupil at center."
+ },
+ "canonical_eye_placement": {
+  "description": "The whole King_Eye_D texture maps onto each eyeball. Iris circle is centered in the texture; pupil at the texture center. Any eye option is a drop-in 128x128 replacement.",
+  "texture": "King_Eye_D",
+  "uv_rect": {
+   "u": 0.0,
+   "v": 0.0,
+   "w": 1.0,
+   "h": 1.0
+  },
+  "pixel_rect": {
+   "x": 0,
+   "y": 0,
+   "w": 128,
+   "h": 128
+  },
+  "notes": "Both eyes (left/right) share this UV region, so one PNG covers both eyes."
+ },
+ "entries": [
+  {
+   "id": "eye-yellow-tiger",
+   "name": "Eyes - yellow tiger / snow leopard (realistic)",
+   "type": "eyes",
+   "png": "eye-yellow-tiger.png",
+   "size_px": [
+    128,
+    128
+   ],
+   "default_placement": "canonical_eye_placement",
+   "notes": "CURRENTLY APPLIED on Attire 3. Realistic golden-yellow feline iris: radial fiber striations, dark limbal ring, deep amber peripupillary ring, round black pupil (accurate for tigers/snow leopards), specular highlight. Painted 2026-10-18 per owner order."
+  },
+  {
+   "id": "eye-snow-leopard-blue",
+   "name": "Eyes - snow leopard blue (Attire 3 default)",
+   "type": "eyes",
+   "png": "eye-snow-leopard-blue.png",
+   "size_px": [
+    128,
+    128
+   ],
+   "default_placement": "canonical_eye_placement",
+   "notes": "The blue eyes from the 2026-10-17 snow-leopard reskin (recolored from yellow). Saved as the snow-leopard BLUE default option per owner 2026-10-18. Drop-in swap restores them exactly."
+  },
+  {
+   "id": "eye-original-classic",
+   "name": "Eyes - original classic yellow",
+   "type": "eyes",
+   "png": "eye-original-classic.png",
+   "size_px": [
+    128,
+    128
+   ],
+   "default_placement": "canonical_eye_placement",
+   "notes": "Pantera's ORIGINAL classic yellow eyes (pre-reskin), extracted from roster/pantera/attires/classic/pantera-classic.glb. Byte-identical to the Attire 1 (pantera-t7king) eyes. Drop-in swap restores them exactly."
+  }
+ ],
+ "how_to_swap": [
+  "1. Pick an eye option PNG.",
+  "2. Re-embed it as image 5 (King_Eye_D, Modeleyes_Material003 baseColor) in roster/pantera/attires/snow-leopard/pantera-snow-leopard.glb.",
+  "3. To restore the current look: re-embed eye-yellow-tiger.png. For the blue snow-leopard default: eye-snow-leopard-blue.png."
+ ]
+}
