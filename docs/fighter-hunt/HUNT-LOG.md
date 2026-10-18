@@ -141,3 +141,16 @@ convert → scale → render → own-eyes → release → wire.)
   find working clothed bodygroup, or rig lane adds clothing.
 - Render: 2048px front T-pose at /tmp/fh_final5/shaheen-scimitar_front.png (kept as
   proof of conversion, NOT for wiring).
+
+### 2026-10-18 — DIO (Akuma) ✅ WIRED
+- Source: `akuma-t7-sfmlab.rar` (tekken-models-batch-3). SFMLab Source-engine port
+  of T7 Akuma (single akuma.mdl + VVD, game/usermod path). Extracted via
+  ~/workspace/tools/bin/unrar (system unrar found on disk). License: community rip.
+- Pipeline: SourceIO direct import_model() bypass (operator broken via Python) →
+  T7→Mixamo rename (bip_* map, 174-bone skeleton) → game/assets/models/dio.glb
+  (45MB, TEXTURED — VTF textures embedded: gi, skin, hair, beads, rope belt).
+  Gate: PASS (Mixamo bones, skinned, ~1.78m).
+- Render: probe → facing = -Y (front). 2048px front T-pose, white void, fingertips
+  clear. Own-eyes: Akuma's wild spiky hair, prayer beads, torn gi, rope obi,
+  green pants, wrist ropes, sandals. Unmistakable.
+- Wired: assets.js += dio; roster-full.js dio.model steve-fox→dio.

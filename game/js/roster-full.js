@@ -67,7 +67,7 @@ export const FULL_ROSTER = [
     colors: { suit: 0x6b2d8f, trim: 0xff00ff }, style: 'Martial Arts', archetype: 'Stylish' },
   { id: 'nightwolf', name: 'NIGHTWOLF', title: 'Storm Shadow', base: 'Julia', moveset: 'xiaoyu', model: 'steve-fox', tintStrength: 0.6,
     colors: { suit: 0x1a3a5a, trim: 0x6accff }, style: 'Xinyi Liuhe', archetype: 'Balanced' },
-  { id: 'dio', name: 'DIO', title: 'Raging Demon', base: 'Akuma', moveset: 'heihachi', model: 'steve-fox', tintStrength: 0.6,
+  { id: 'dio', name: 'DIO', title: 'Raging Demon', base: 'Akuma', moveset: 'heihachi', model: 'dio', tintStrength: 0.6,
     colors: { suit: 0x1a1a1a, trim: 0xff0000 }, style: 'Satsui no Hado', archetype: 'Shoto' },
   { id: 'cyborgx', name: 'CYBORG X', title: 'GYOU Splinter', base: 'Alisa', moveset: 'gunjack', model: 'steve-fox', tintStrength: 0.6,
     colors: { suit: 0xcccccc, trim: 0x00ffcc }, style: 'Robot Combat', archetype: 'Zoner' },
