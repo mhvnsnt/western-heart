@@ -28,6 +28,8 @@ function hashStr(s){ let h=2166136261; for(let i=0;i<s.length;i++){ h^=s.charCod
 
 export function friendlyName(part){
   const id = part.part_id;
+  // defjam: defjam:V2CP_110_0001_A.o — prefer the indexed name (DJNY 110-0001A)
+  if(part.source_game==='defjam' && part.name) return `Def Jam · ${part.name}`;
   // wmxix: edit_data/MODEL/Man/Upper_Body/mp0_000/c5.ymg
   let m = id.match(/MODEL\/(?:Man|Woman)\/([^/]+)\/([a-z0-9]+)_(\d+)/i);
   if(m) return `${titleCase(m[1].replace(/_/g,' '))} · Set ${m[3]}`;
@@ -82,4 +84,23 @@ export class Catalog {
     return null;
   }
   catBySlotId(slotId){ return CATEGORIES.find(c=>c.slotId===slotId); }
+  /* Merge an external part index (Def Jam: 22,360 parts, indexed not duplicated).
+     Parts carry their own slot keys; only matching catalog categories merge. */
+  mergeExternal(extJson){
+    let n=0;
+    for(const p of extJson.parts||[]){
+      if(!this.byCategory[p.slot]) continue;
+      if(this.byCategory[p.slot].some(x=>x.part_id===p.part_id)) continue;
+      this.byCategory[p.slot].push({
+        ...p,
+        displayName: friendlyName(p),
+        price: priceFor(p),
+        rarity: rarityFor(p),
+        geometryPending: true,
+      });
+      n++;
+    }
+    this.total += n;
+    return n;
+  }
 }

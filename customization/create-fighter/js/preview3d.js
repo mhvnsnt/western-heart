@@ -13,6 +13,51 @@ import { clone as skeletonClone } from '../vendor/addons/utils/SkeletonUtils.js'
 const SKIN_TONES = ['#f7c2a1','#e8a87c','#c98d5e','#a06a42','#7c4a2d','#5d3320','#3d2114','#2a150c'];
 const SOLDIER_GLB = 'assets/Soldier.glb';
 
+/* ---- T3 real-motion clips (wh-anim/1 JSON) for live preview ----
+   Same source as game/js/t3anims.js: assets/anim/t3/king_on_pantera_leoman/.
+   Bone names in the JSON (Hips, Spine, …) match this preview's stripped
+   Mixamo names, so tracks bind directly. */
+const T3_ANIM_BASE = '../../game/assets/anim/t3/king_on_pantera_leoman/';
+const T3_CLIP_FILES = {
+  t3_light:'t3_light.json', t3_medium:'t3_medium.json', t3_heavy:'t3_heavy.json',
+  t3_grab:'t3_grab.json', t3_stance:'t3_stance.json',
+  t3_stance_b:'t3_stance_b.json', t3_stance_c:'t3_stance_c.json',
+  t3_walk_fwd:'t3_walk_fwd.json', t3_walk_fwd_b:'t3_walk_fwd_b.json',
+  t3_dash_fwd:'t3_dash_fwd.json',
+  t3_win_rp:'t3_win_rp.json', t3_win_lp:'t3_win_lp.json',
+  t3_win_rk:'t3_win_rk.json', t3_win_lk:'t3_win_lk.json',
+};
+const T3_BONES = ['Root','Hips','Spine','Chest','Neck','Head',
+  'LeftShoulder','LeftArm','LeftForeArm','LeftHand',
+  'RightShoulder','RightArm','RightForeArm','RightHand',
+  'LeftUpLeg','LeftLeg','LeftFoot','LeftToeBase',
+  'RightUpLeg','RightLeg','RightFoot','RightToeBase'];
+
+function t3JsonToClip(name, data){
+  const fps = data.fps || 30.0;
+  const tracks = [];
+  const bones = data.bones || T3_BONES;
+  let frameCount = 0;
+  for(const b of bones){
+    const arr = data.rot_xyzw && data.rot_xyzw[b];
+    if(arr && arr.length > frameCount) frameCount = arr.length;
+  }
+  if(frameCount === 0) return null;
+  const times = new Float32Array(frameCount);
+  for(let i=0;i<frameCount;i++) times[i] = i/fps;
+  for(const bone of bones){
+    const quats = data.rot_xyzw && data.rot_xyzw[bone];
+    if(!quats || !quats.length) continue;
+    const values = new Float32Array(frameCount*4);
+    for(let i=0;i<frameCount;i++){
+      const q = quats[Math.min(i, quats.length-1)];
+      values[i*4]=q[0]; values[i*4+1]=q[1]; values[i*4+2]=q[2]; values[i*4+3]=q[3];
+    }
+    tracks.push(new THREE.QuaternionKeyframeTrack(`${bone}.quaternion`, times, values));
+  }
+  return new THREE.AnimationClip(name, frameCount/fps, tracks);
+}
+
 export class Preview3D {
   constructor(canvas){
     this.canvas = canvas;
@@ -141,6 +186,7 @@ export class Preview3D {
       // Idle animation so the fighter is ALIVE, never T-posed
       if(glb.animations && glb.animations.length){
         const idle = glb.animations.find(a=>/idle/i.test(a.name)) || glb.animations[0];
+        this._idleClip = idle;
         const mixer = new THREE.AnimationMixer(this.fighter);
         mixer.clipAction(idle).play();
         this.mixers.push(mixer);
@@ -235,6 +281,43 @@ export class Preview3D {
   snapshot(){
     this.renderer.render(this.scene, this.camera);
     return this.canvas.toDataURL('image/jpeg', 0.85);
+  }
+
+  /* ---- live T3 clip preview (moveset / performance tabs) ----
+     Tap-once = preview (MDickie pattern). Plays the real T3 clip on the
+     fighter, then returns to idle. Loop=true keeps playing (intro/victory). */
+  _fighterMixer(){
+    if(!this.fighter) return null;
+    if(!this.mixers.length) this.mixers.push(new THREE.AnimationMixer(this.fighter));
+    return this.mixers[0];
+  }
+  playIdle(){
+    const mixer = this._fighterMixer();
+    if(!mixer || !this._idleClip) return;
+    mixer.stopAllAction();
+    mixer.clipAction(this._idleClip).play();
+  }
+  async playClip(clipId, loop=false){
+    const file = T3_CLIP_FILES[clipId];
+    const mixer = this._fighterMixer();
+    if(!file || !mixer) return false;
+    try{
+      const res = await fetch(T3_ANIM_BASE + file);
+      if(!res.ok) throw new Error('HTTP '+res.status);
+      const clip = t3JsonToClip(clipId, await res.json());
+      if(!clip) return false;
+      mixer.stopAllAction();
+      const action = mixer.clipAction(clip);
+      action.setLoop(loop ? THREE.LoopRepeat : THREE.LoopOnce, Infinity);
+      action.clampWhenFinished = !loop;
+      action.play();
+      clearTimeout(this._clipT);
+      if(!loop) this._clipT = setTimeout(()=>this.playIdle(), clip.duration*1000 + 200);
+      return true;
+    }catch(e){
+      console.warn('[preview] playClip failed:', clipId, e.message || e);
+      return false;
+    }
   }
 
   _animate(){

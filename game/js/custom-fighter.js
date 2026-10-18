@@ -1,8 +1,22 @@
 /* ============================================================
-   WESTERN HEART — Custom Fighter loader
-   Reads created fighters from the CAW suite (localStorage
-   'wh_create_fighter_v1') and converts to roster-compatible
-   fighter objects for character select and matches.
+   WESTERN HEART — Custom Fighter loader (v0.3)
+   Reads created fighters from the CAW suite and converts to
+   roster-compatible fighter objects for character select and matches.
+
+   Save slots: localStorage 'wh_create_fighter_slots' (array of
+   {slot, saved, fighter}). Legacy single save 'wh_create_fighter_v1'
+   is read as slot 0 (backward compatible).
+
+   Moveset: the fighter's Tekken-input move assignments
+   (fighter.moveset: input -> move_id) resolve against the derived
+   library (customization/create-fighter/data/TEKKEN-LIBRARY.json)
+   and register as window.WH_MOVESETS['custom'] — the same shape
+   Lane F's per-fighter files use, so getRealMove('custom', notation)
+   works with zero game-code changes.
+
+   Performance: fighter.performance {intro, victory, victory_alignment,
+   taunt, signature, finisher} rides on the roster object for the
+   match intro/victory/taunt systems.
    ============================================================ */
 
 // Body type presets (must match customization/create-fighter/js/app.js)
@@ -17,28 +31,130 @@ const BODY_TYPES = {
   'King Frame': { h: 1.04, w: 1.14 }, 'Ganryu Frame': { h: 0.96, w: 1.34 },
 };
 
-const LS_KEY = 'wh_create_fighter_v1';
+const LS_KEY = 'wh_create_fighter_v1';          // legacy single save
+const LS_SLOTS = 'wh_create_fighter_slots';     // v0.3 multi-slot saves
+const LIB_URL = '../customization/create-fighter/data/TEKKEN-LIBRARY.json';
+const MAX_SLOTS = 4;
+
+let _libCache = null;
+let _libPromise = null;
+
+function readJson(key) {
+  try {
+    const raw = localStorage.getItem(key);
+    return raw ? JSON.parse(raw) : null;
+  } catch (e) { return null; }
+}
 
 /**
- * Load the saved custom fighter from localStorage.
+ * Load a saved custom fighter. slot 0 falls back to the legacy key.
  * Returns null if none exists or data is invalid.
  */
-export function getCustomFighter() {
-  try {
-    const raw = localStorage.getItem(LS_KEY);
-    if (!raw) return null;
-    const F = JSON.parse(raw);
-    if (!F || !F.profile) return null;
-    return F;
-  } catch (e) {
-    console.warn('[WH] Failed to load custom fighter:', e.message);
-    return null;
+export function getCustomFighter(slot = 0) {
+  const slots = readJson(LS_SLOTS);
+  if (Array.isArray(slots) && slots[slot] && slots[slot].fighter) {
+    return slots[slot].fighter;
   }
+  if (slot === 0) {
+    const F = readJson(LS_KEY);
+    if (F && F.profile) return F;
+  }
+  return null;
+}
+
+/** List all save slots: [{slot, saved, name}]. */
+export function listCustomFighterSlots() {
+  const out = [];
+  const slots = readJson(LS_SLOTS);
+  for (let i = 0; i < MAX_SLOTS; i++) {
+    const s = Array.isArray(slots) ? slots[i] : null;
+    if (s && s.fighter) {
+      out.push({ slot: i, saved: s.saved || null, name: s.fighter.profile?.name || 'CUSTOM' });
+    } else if (i === 0) {
+      const legacy = readJson(LS_KEY);
+      if (legacy && legacy.profile) {
+        out.push({ slot: 0, saved: null, name: legacy.profile.name || 'CUSTOM', legacy: true });
+      }
+    }
+  }
+  return out;
+}
+
+/** Save a fighter JSON to a slot (used by the suite; game page is read-only). */
+export function saveCustomFighter(F, slot = 0) {
+  let slots = readJson(LS_SLOTS);
+  if (!Array.isArray(slots)) slots = [];
+  slots[slot] = { slot, saved: new Date().toISOString(), fighter: F };
+  try {
+    localStorage.setItem(LS_SLOTS, JSON.stringify(slots));
+    return true;
+  } catch (e) { return false; }
+}
+
+/** Fetch (cached) the derived Tekken move library. */
+function loadLibrary() {
+  if (_libCache) return Promise.resolve(_libCache);
+  if (_libPromise) return _libPromise;
+  _libPromise = fetch(LIB_URL)
+    .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(lib => {
+      const byId = {};
+      (lib.moves || []).forEach(m => { byId[m.move_id] = m; });
+      _libCache = { ...lib, byId };
+      return _libCache;
+    })
+    .catch(e => {
+      console.warn('[WH] custom fighter library unavailable:', e.message || e);
+      _libCache = { moves: [], byId: {} };
+      return _libCache;
+    });
+  return _libPromise;
+}
+
+/**
+ * Resolve a fighter's Tekken-input move assignments into a WH_MOVESETS-shaped
+ * object and register it as window.WH_MOVESETS['custom'].
+ * Async (fetches the derived library once, then cached). Safe to call repeatedly.
+ */
+export async function resolveCustomMoveset(F) {
+  if (!F || !F.moveset) return null;
+  const lib = await loadLibrary();
+  const moves = {};
+  for (const [input, moveId] of Object.entries(F.moveset)) {
+    const m = lib.byId[moveId];
+    if (!m) continue;
+    const heavy = /[34]/.test((m.limb || '')) || (typeof m.damage === 'number' && m.damage >= 20);
+    moves[input] = {
+      name: m.move_name,
+      input: m.input,
+      t3_source: m.source_fighter || m.source,
+      t3_row: m.t3_row,
+      t3_command: m.t3_command,
+      startup: m.startup ?? 0.15,
+      active: 0.05,
+      recovery: 0.55,
+      damage: typeof m.damage === 'number' ? m.damage : 10,
+      limb: m.limb || 'armR',
+      heavy,
+      knock: heavy ? 4.2 : 2.2,
+      soulGain: 8,
+      federation: !!m.federation,
+    };
+  }
+  const ms = { fighter: 'custom', display: F.profile?.name || 'CUSTOM', moves };
+  try {
+    const g = typeof window !== 'undefined' ? window : globalThis;
+    g.WH_MOVESETS = g.WH_MOVESETS || {};
+    g.WH_MOVESETS['custom'] = ms;   // getRealMove('custom', notation) now works
+  } catch (e) { /* non-browser */ }
+  console.log(`[WH] custom moveset resolved: ${Object.keys(moves).length} inputs`);
+  return ms;
 }
 
 /**
  * Convert CAW fighter JSON to a roster-compatible fighter object.
- * Uses Soldier.glb base model with saved appearance applied.
+ * Kicks off async moveset resolution (cached); the roster object is
+ * usable immediately, moves resolve before match start.
  */
 export function customFighterToRoster(F) {
   if (!F || !F.profile) return null;
@@ -46,25 +162,27 @@ export function customFighterToRoster(F) {
   const bodyType = BODY_TYPES[F.body?.body_type] || BODY_TYPES['Medium 1'];
   const skinTone = F.body?.skin_tone || '#c98d5e';
   const name = (F.profile.name || 'CUSTOM').toUpperCase();
-
-  // Convert hex skin tone to integer for the game's color system
   const suitColor = parseInt(skinTone.replace('#', ''), 16) || 0xc98d5e;
+
+  // Resolve the real moveset in the background (cached after first load).
+  // Until it lands, getRealMove falls back to base MOVES — same as before.
+  resolveCustomMoveset(F);
+
+  const perf = F.performance || {};
 
   return {
     id: 'custom',
     name: name,
     title: F.profile.alias || 'Created Fighter',
     base: 'Custom',
-    moveset: 'jin', // Default; TODO: wire custom moveset slots
+    moveset: 'custom',   // v0.3: real resolved moveset, no longer hardcoded 'jin'
     model: 'custom',
     tintStrength: 0.3,
     colors: { suit: suitColor, trim: 0xe8b64c },
     style: F.fighting_style?.archetype || 'Balanced',
     archetype: 'Custom',
-    // Body type affects scale
     bodyScale: bodyType.h,
     bodyWidth: bodyType.w,
-    // Custom stats from CAW parameters
     stats: {
       speed: 2.8,
       jump: 7.2,
@@ -76,14 +194,21 @@ export function customFighterToRoster(F) {
       grabBias: 0.15,
       reaction: 0.55,
     },
-    // Raw CAW data for appearance application
+    // Performance picks (intro/victory/taunt) for the match presentation systems
+    performance: {
+      intro: perf.intro || 't3_walk_fwd',
+      victory: perf.victory || 't3_win_rp',
+      victory_alignment: perf.victory_alignment || 'Face',
+      taunt: perf.taunt || 't3_stance',
+      signature: perf.signature || '',
+      finisher: perf.finisher || '',
+    },
+    decals: Array.isArray(F.decals) ? F.decals : [],
     _caw: F,
   };
 }
 
-/**
- * Check if a custom fighter exists and is valid.
- */
+/** Check if any custom fighter exists and is valid. */
 export function hasCustomFighter() {
-  return getCustomFighter() !== null;
+  return listCustomFighterSlots().length > 0;
 }
