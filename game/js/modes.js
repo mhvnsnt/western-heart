@@ -783,8 +783,9 @@ export class ModeController {
       setTimeout(() => this._survivalNext(), 1400);
     } else {
       const rec = whGetRecords();
+      const best = rec.survival || s.wave;
       this._modeWin(false, 'SURVIVAL — RUN OVER',
-        `Fell at wave ${s.wave + 1}. Best run: ${rec.survival || s.wave} waves. The shrine is silent. Run it back.`,
+        `Fell at wave ${s.wave + 1}. Best run: ${best} wave${best === 1 ? '' : 's'}. The shrine is silent. Run it back.`,
         [{ label: 'RETRY SURVIVAL', fn: () => { this.survival = { wave: 0, fighterId: s.fighterId, hp: null }; this._survivalNext(); } }]);
     }
   }
@@ -962,9 +963,10 @@ export class ModeController {
       const eaten = (rec.qombatEaten || 0) + 1;
       whSetRecord('qombatEaten', eaten);
       const vessel = this.getChar(q.fighterId);
+      const best = rec.qombat || q.wave;
       this._modeWin(false, 'THE SUN EATS',
         `${vessel ? vessel.name : 'Your soul'} is absorbed at wave ${q.wave + 1}. ` +
-        `${eaten} soul${eaten === 1 ? '' : 's'} now burn inside Sun Rā. Best run: ${rec.qombat || q.wave} waves.`,
+        `${eaten} soul${eaten === 1 ? '' : 's'} now burn${eaten === 1 ? 's' : ''} inside Sun Rā. Best run: ${best} wave${best === 1 ? '' : 's'}.`,
         [{ label: 'FEED THE SUN AGAIN', fn: () => { this.qombat = { wave: 0, fighterId: q.fighterId, hp: null, powerMult: 1 }; this._qombatNext(); } }]);
     }
   }
