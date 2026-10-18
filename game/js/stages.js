@@ -840,6 +840,9 @@ async function buildT3Retro(g, def, api) {
     const shell = new THREE.Mesh(geo, new THREE.MeshBasicMaterial({
       color: _hex(def.panoTint), side: THREE.DoubleSide, fog: true,
     }));
+    // The TMD panorama shell spans y<=0 (below the floor plane) — lift it
+    // so its midsection forms a visible backdrop ridge above the horizon.
+    shell.position.y = 6;
     g.add(shell);
   } catch (e) {
     console.warn(`[WH] stage ${def.id}: panorama failed (${e.message}), palette backdrop only`);
