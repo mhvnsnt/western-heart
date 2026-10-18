@@ -123,3 +123,21 @@ convert → scale → render → own-eyes → release → wire.)
 - Render: probe → facing = -Y (front). 2048px front T-pose, white void, fingertips
   clear. Own-eyes: Katarina's face, open jacket, belt, striped pants.
 - Wired: assets.js += michiko; roster-full.js michiko.model steve-fox→michiko.
+
+### 2026-10-18 — SCIMITAR (Shaheen) ⚠️ SOURCED, VERIFIED, NOT WIRED (nude base)
+- Source: `shaheen-t7-sfmlab.zip` (tekken-models-batch-3). SFMLab Source-engine port
+  of T7 Shaheen. License: community game rip.
+- Breakthrough: SourceIO Blender operator silently imports nothing via Python
+  (empty `files` collection). Bypassed by calling `import_model()` +
+  `put_into_collections()` directly — WORKS. Full T7→Mixamo pipeline proven:
+  bip_pelvis→Hips, bip_spine_0/1/2→Spine/Spine1/Spine2, bip_collar→Shoulder,
+  bip_upperArm/lowerArm/hand→Arm/ForeArm/Hand, bip_hip/knee/foot/toe→UpLeg/Leg/
+  Foot/ToeBase, fingers mapped. Exported shaheen_scimitar.glb (26MB, textured).
+- Character verified by own eyes: Shaheen's bearded face, T-pose, -Y front.
+- NOT WIRED: the only working mesh is `shaheen_nude.mdl` — anatomically nude base
+  body. The 4 clothed bodygroup MDLs (bodygroupsa/b/c/d) import ZERO meshes via
+  SourceIO (likely attachment models needing the base, or broken). Wiring nudity
+  into the game is a defect, not a feature — held for outfit pass. Owner decides:
+  find working clothed bodygroup, or rig lane adds clothing.
+- Render: 2048px front T-pose at /tmp/fh_final5/shaheen-scimitar_front.png (kept as
+  proof of conversion, NOT for wiring).
