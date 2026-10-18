@@ -1,0 +1,48 @@
+# findings-audit17.txt — DOA4 deep-RE Audit 17 (5 new functions + 00dfxxxx byte dump)
+# Run: 2026-10-18 ~11:05 CDT, headless Ghidra 12.1.4 (Doa4Audit17.java), program default_pe.bin, -noanalysis
+# Raw output in /tmp/a17.txt (extracted from /tmp/audit17full.log).
+# === findings ===
+--- 5 Audit16 functions decompiled ---
+FUN_00b8c7b4 (20 insns): bl slot33(Sha); then 8x lhz from stack + 8x sth to (r31)
+  — copies 8 halfwords out of a SHA context buffer. SHA-result extraction helper.
+FUN_00b92058 (16 insns): bl slot33(Sha); loop calling slot41 (NEW external,
+  thunk 0x00f589f4 = 0x00f58764+16*41, NOT in Audit9's 10-external list); tail
+  `00b92110 b 0x00dfd4f8` — DIRECT BRANCH into the 00dfxxxx region.
+FUN_00b91fdc (30 insns): bl slot33(Sha); short-int arithmetic loop; calls slot41
+  twice; SHA-update calls in loop — hash-chaining loop shape.
+FUN_00b8dc94 (3 insns, truncated): bl slot34(Sha); lwz/stw — SHA-result store.
+FUN_00b8df88 (18 insns): bl slot99 (XamContentOpenFile); on failure calls slot40
+  (thunk 0x00f589e4 = 0x00f58764+16*40, also NEW); tail `00b8dfd4 b 0x00dfd518`
+  — DIRECT BRANCH into the 00dfxxxx region.
+  All five: xor/rot/mul counts = 0. No crypto ops in these wrappers — the actual
+  crypto is behind the calls/branches they make.
+--- NEW EXTERNALS: slots 40 and 41 ---
+  slot40 = thunk 0x00f589e4, called by FUN_00b8df88 (content-open error path)
+  slot41 = thunk 0x00f589f4, called by FUN_00b92058 + FUN_00b91fdc (SHA loops)
+  Audit9's 10-external list is INCOMPLETE; slots 40/41 need naming (Audit18).
+--- bytes @ 0x00dfd4a8 (in .text, rwx, initialized) ---
+  fa81ff98 faa1ffa0 fac1ffa8 fae1ffb0 fb01ffb8 fb21ffc0 fb41ffc8 fb61ffd0
+  fb81ffd8 fba1ffe0 fbc1ffe8 fbe1fff0 9181fff8 4e800020 e9c1ff68 e9e1ff70 ...
+  Hand-decode: std r20,-104(r1); std r21,-96(r1); ... std r31,0(r1);
+  stw r12,-8(r1); blr; ld r14,-152(r1); ...
+  These are 64-bit PPC stores/loads (std/ld). Ghidra created ZERO instructions
+  here (instructionAt=(none), definedDataAt=(none), zeros=1/64, distinct=32).
+  HYPOTHESIS (not verified): the program's PPC language is 32-bit, where std/ld
+  are invalid encodings, so the disassembler rejects the region. Either the
+  region is DATA that happens to decode as 64-bit prologue/epilogue fragments,
+  or it is real 64-bit code (or runtime-patched code) the 32-bit disassembler
+  cannot see. The thunks' bl targets here are REAL (hand-verified 0x4826B5DD ->
+  0x00DFD4A8), and two functions BRANCH directly to 0x00dfd4f8 / 0x00dfd518 —
+  so SOMETHING executable is expected there at runtime.
+# === verdict ===
+- The crypto cluster's wrappers are now fully mapped: SHA helpers (00b8c7b4,
+  00b8dc94), SHA-chaining loops (00b91fdc, 00b92058), content-open wrapper
+  (00b8df88). None contains the cipher itself.
+- Two NEW import slots (40, 41) found in the cluster — Audit9's external list
+  was incomplete. Name them via import-ordinal analysis (Audit18).
+- The trail now points INTO 00dfxxxx (branches to 0x00dfd4f8, 0x00dfd518; bl to
+  0x00dfd4a8/0x00dfd4c8) but that region will not disassemble as 32-bit PPC.
+  Next: (a) confirm the program's PPC language variant; (b) if 32-bit, re-examine
+  whether the 00dfxxxx bytes are 64-bit code, encrypted code, or data; (c) name
+  slots 40/41 — if slot41 is e.g. XeCryptAes* or a Team Ninja crypto import,
+  the cipher may be an XDK call, not game code at all.
