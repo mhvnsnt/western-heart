@@ -6,7 +6,7 @@ hands/feet), sane world scale (~1.5–2.2 m). Verified with
 `workspace/lane2-work/lane2-verify.mjs` (three.js GLTFLoader + meshopt)
 and Blender bbox checks — own eyes on the numbers, no worker claims.
 
-## PASS — playable now (6)
+## PASS — playable now (6 + 41 re-rigged 2026-10-18)
 
 | Model | Skinned | Bones | Height | Notes |
 |---|---|---|---|---|
@@ -22,46 +22,94 @@ and Blender bbox checks — own eyes on the numbers, no worker claims.
 `game/vendor/addons/libs/meshopt_decoder.js` — Tripo meshopt-compressed
 GLBs (cape-jones, thor, waterfall, …) previously could not load at all.
 
-## FAIL — unrigged miniatures (~2.5 cm, 0 skinned meshes, 0 bones)
+## PASS — Round-2 auto-rig wave, Lane B (2026-10-18)
 
-Wiring any of these would REGRESS the game (invisible/static fighters;
-fighter.js crashes on missing Hips). They are concept sculpts or bad
-exports, NOT playable models. Each needs: ×100 scale fix + auto-rig onto
-the WH/Mixamo skeleton (tools/rig_repair pipeline) before wiring.
+All 41 previously-failing GLBs re-rigged and passing the playable gate
+(valid glTF, ≥1 skinned mesh, Hips + Mixamo-style bones, 1.5–2.2 m).
+Verified with `workspace/lane2-work/lane2-verify.mjs` + Blender T-pose
+renders (own eyes on every model). Methods:
 
-awa-pop, baek, jin-body, kai-body, king-tyrant(+_alt1), kinpo(+_alt1),
-lili, n3g4tiv0, nightwolf, pantera_alt1, pantera-body, phantom,
-purple-rain, rave, retsu-body, saku-ra(+_alt1), sam-ur-a1(+_body),
-skull, thor, waterfall, dxmmii
+- **29 unrigged miniatures** — ×100 normalize to target height, facing
+  rotated to −Z (pantera convention), then Blender bone-heat auto-rig onto
+  the WH 49-bone skeleton (imported from pantera.glb). Heights: 1.75 m
+  default; king-tyrant(+_alt1) 1.95 m, thor 1.90 m, dxmmii 1.80 m.
+- **6 foreign skeletons** — JSON bone renames to canonical Mixamo-style
+  names (no geometry change): cyborg-x (ValveBiped→canonical, 160 bones,
+  rescaled 1.48→1.58 m), diablo (custom, 32 bones, 2.00 m), doc-frank
+  (T7-native, 178 bones, 1.79 m), zafina (T7-native, 246 bones, 1.93 m),
+  kinpo-t8 (T8-native, 244 bones, rescaled 1.12→1.56 m), phantom-t8
+  (T8-native, 311 bones, 2.02 m). All keep their native skeletons; only
+  names were canonicalized. diablo/doc-frank/zafina/kinpo-t8/phantom-t8
+  have 2 spine bones (Spine1/Spine2) — the T3 "Spine" track won't bind on
+  them, game doesn't require it.
+- **6 Tripo statics** — numpy k-NN weight transfer from pantera's full
+  skinned mesh set (bone heat fails on ~1M-vert meshes): cape-jones,
+  kiko-tanaka(+_alt1), purple-rain-main, mariposa, saku-ra-main. 49 bones,
+  1.75 m, geometry byte-identical to source.
 
-Affected roster fighters (stay on base fallback until re-rigged):
-PHANTOM, SKULL, SAM-UR-A1, SAKU RA, KINPO, WATERFALL, KING TYRANT,
-AWA POP, PURPLE RAIN, NIGHTWOLF, CYBORG X (cyborg-x.glb is ValveBiped —
-see below), N3GΔTIV0, THOR, DOC FRANK (doc-frank.glb is T7-native —
-see below).
+`game/js/assets.js` MODEL_URLS gained 19 append-only entries for the newly
+wired per-fighter variants (jin-body, kai-body, king-tyrant_alt1, kinpo-t8,
+kinpo_alt1, phantom-t8, pantera_alt1, pantera-body, retsu-body, saku-ra_alt1,
+saku-ra-main, sam-ur-a1-body, sha-body, zen-body, zui_alt1, zui_alt2,
+kiko-tanaka, kiko-tanaka_alt1, purple-rain-main).
 
-## FAIL — rigged but foreign skeleton (needs retarget, not a rename)
+Known honest flags: saku-ra.glb / sha-body.glb are authored in a dynamic
+idol pose (leg raised) — rigged in that pose, clips animate from it.
+mariposa's wings follow the arm/shoulder bones (nearest-neighbor). The
+Blender exports carry a harmless extra `neutral_bone` (50 vs 49 bones) on
+some models — the game indexes bones by name and ignores it. Pantera rule
+held: NO facial/mouth rig on any King-based model (pantera_alt1,
+pantera-body) — the WH skeleton has no face bones at all.
 
-| Model | Skeleton | Bones | Height |
+| Model | Skinned | Bones | Height |
 |---|---|---|---|
-| cyborg-x.glb | ValveBiped (SFM) | 160 | 1.49 m |
-| diablo.glb | custom (_Pelvis/_Spine_1/…) | 32 | 2.00 m |
-| doc-frank.glb | T7-native (root_hips/spine_lower/…) | 178 | 1.79 m |
-| zafina.glb | T7-native | 246 | 1.93 m |
-| kinpo-t8.glb | T8-native (SFM) | 244 | 1.12 m |
-| phantom-t8.glb | T8-native | 311 | 2.02 m |
+| awa-pop.glb | 31 | 49 | 1.75 m |
+| baek.glb | 35 | 50 | 1.75 m |
+| jin-body.glb | 32 | 49 | 1.75 m |
+| kai-body.glb | 24 | 50 | 1.75 m |
+| king-tyrant.glb | 24 | 50 | 1.95 m |
+| king-tyrant_alt1.glb | 24 | 50 | 1.95 m |
+| kinpo.glb | 16 | 50 | 1.75 m |
+| kinpo_alt1.glb | 16 | 50 | 1.75 m |
+| lili.glb | 42 | 50 | 1.75 m |
+| n3g4tiv0.glb | 25 | 50 | 1.75 m |
+| nightwolf.glb | 37 | 50 | 1.75 m |
+| pantera_alt1.glb | 18 | 50 | 1.75 m |
+| pantera-body.glb | 18 | 50 | 1.75 m |
+| phantom.glb | 32 | 49 | 1.75 m |
+| purple-rain.glb | 35 | 49 | 1.75 m |
+| rave.glb | 28 | 50 | 1.75 m |
+| retsu-body.glb | 27 | 49 | 1.75 m |
+| saku-ra.glb | 32 | 50 | 1.75 m |
+| saku-ra_alt1.glb | 31 | 50 | 1.75 m |
+| sam-ur-a1.glb | 24 | 49 | 1.75 m |
+| sam-ur-a1-body.glb | 24 | 49 | 1.75 m |
+| skull.glb | 27 | 49 | 1.75 m |
+| thor.glb | 25 | 49 | 1.90 m |
+| waterfall.glb | 21 | 50 | 1.75 m |
+| dxmmii.glb | 21 | 49 | 1.80 m |
+| sha-body.glb | 32 | 50 | 1.75 m |
+| zen-body.glb | 37 | 50 | 1.75 m |
+| zui_alt1.glb | 18 | 50 | 1.75 m |
+| zui_alt2.glb | 18 | 50 | 1.75 m |
+| cyborg-x.glb | 52 | 160 | 1.58 m |
+| diablo.glb | 1 | 32 | 2.00 m |
+| doc-frank.glb | 25 | 178 | 1.79 m |
+| zafina.glb | 38 | 246 | 1.93 m |
+| kinpo-t8.glb | 15 | 244 | 1.56 m |
+| phantom-t8.glb | 18 | 311 | 2.02 m |
+| cape-jones.glb | 1 | 49 | 1.75 m |
+| kiko-tanaka.glb | 1 | 49 | 1.75 m |
+| kiko-tanaka_alt1.glb | 1 | 49 | 1.75 m |
+| purple-rain-main.glb | 1 | 49 | 1.75 m |
+| mariposa.glb | 1 | 49 | 1.75 m |
+| saku-ra-main.glb | 1 | 49 | 1.75 m |
 
-## FAIL — Tripo statics (~1 m, 1 mesh, 0 bones, meshopt)
-
-cape-jones.glb (0.93 m), kiko-tanaka.glb (0.98 m),
-kiko-tanaka_alt1.glb, purple-rain-main.glb (0.98 m), mariposa.glb (0.86 m).
-Loadable now (meshopt wired) but unrigged — auto-rig before wiring.
+Roster note: these GLBs are loadable and playable; switching roster
+fighters off the steve-fox/pantera fallbacks onto their own models is a
+separate roster-lane decision. lili.glb / baek.glb stay UNASSIGNED —
+Lili and Baek have NO Western Heart names. Never invent names for them.
 cape-jones = Cyborg X Attire 1 per canon.
-
-## Re-pulled 2026-10-18 — all parse clean now (earlier errors were
-truncated downloads). Final classification: saku-ra-main.glb = Tripo
-static (0.98 m, unrigged, meshopt); sha-body / zen-body / zui_alt1 /
-zui_alt2 = unrigged miniatures (2.5 cm). Same auto-rig path as above.
 
 ## No model in repo (unchanged from audit)
 
