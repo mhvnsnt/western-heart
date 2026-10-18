@@ -1,12 +1,17 @@
 /* app.js — Create Fighter hub logic.
    Tekken loop: pick category -> grid -> hover try-on -> BUY -> EQUIP -> conflict
    check (Replace/Cancel) -> color/material edit. Fighter JSON save format matches
-   customization/CHARACTER-CREATION.md §6, extended with wardrobe/attire slots. */
+   customization/CHARACTER-CREATION.md §6, extended with wardrobe/attire slots,
+   roster base models (data/ROSTER-BASE.json) and the preset library.
+   v0.2: fighter select loads REAL roster GLBs from game/assets/models/; BODY tab
+   locks for canon roster bodies; presets = named saved fighters (save/load/delete). */
 import { Preview3D, SKIN_TONES } from './preview3d.js';
 import { Catalog, CATEGORIES, CONFLICTS } from './catalog.js';
 
 const LS_KEY = 'wh_create_fighter_v1';
+const PRESET_LS_KEY = 'wh_create_fighter_presets';
 const START_MONEY = 12400;
+const SOLDIER_GLB = 'assets/Soldier.glb';   // WMXIX default CAW base rig
 
 const BODY_TYPES = [
   { name:'Skinny 1', h:1.02, w:0.86, m:0.85 }, { name:'Skinny 2', h:0.98, w:0.88, m:0.85 },
@@ -23,22 +28,25 @@ const ELEMENTS = ['—','Wood','Fire','Earth','Metal','Water'];
 const LANDS = ['—','Tree of Life','Iron Desert','Silent Sea','Cinder Wastes','Hollow Peaks'];
 const TITLE_A = ['RAGING','SILENT','GOLDEN','BROKEN','HOWLING','IRON','CRIMSON','LONE'];
 const TITLE_B = ['BEAST','PANTHER','KING','GHOST','STORM','WOLF','TIGER','DEMON'];
+const TIERS = [['custom','CUSTOM'],['souls','THE NINE SOULS'],['main','MAIN ROSTER'],['bonus','BONUS ROSTER']];
 
-const ROSTER = [
-  { id:'new', name:'NEW FIGHTER', desc:'WMXIX default CAW base', tone:'#c98d5e' },
-  { id:'pantera', name:'PANTERA', desc:'Roster — grappler', tone:'#7c4a2d' },
-  { id:'demonio', name:'DEMONIO', desc:'Roster — striker', tone:'#a06a42' },
+/* ROSTER is data-driven: 'new' + the 36 named fighters from data/ROSTER-BASE.json
+   (ids/names/tiers trace to game/js/roster-full.js; GLB paths verified in
+   game/assets/models/). Filled at boot; the 'new' entry is always present. */
+let ROSTER = [
+  { id:'new', name:'NEW FIGHTER', desc:'WMXIX default CAW base', glb:SOLDIER_GLB, tier:'custom', modelSrc:'exact' },
 ];
 
 /* ---------------- state ---------------- */
 function blankAttire(){ return { name:'', thumb:'', equipped:{}, owned:[], colors:{} }; }
 function blankFighter(){
   return {
-    version: 1, app:'wh-create-fighter',
+    version: 2, app:'wh-create-fighter',
     profile:{ name:'NEW FIGHTER', short_name:'NEWF', alias:'', height:`6'0"`, weight:220,
       music:'', titantron:'', soul:'—', element:'—', land:'—',
       title:['',''], picture:'' },
     base:'new',
+    model:SOLDIER_GLB,   // base GLB, relative to customization/create-fighter/
     body:{ body_type:'Medium 1', skin_tone:'#c98d5e', head_shape:'male_3',
       proportions:{ height:1, weight:1, muscle:1 } },
     attireIndex: 0,
@@ -65,11 +73,16 @@ let ui = { tab:'body', attireCat:null, gridPage:0, gridQuery:'', selPart:null, s
 
 const $ = s=>document.querySelector(s);
 const attire = ()=>F.attires[F.attireIndex];
+const isCustom = ()=>F.base==='new';
 
 /* ---------------- persistence ---------------- */
 function persist(){ try{ localStorage.setItem(LS_KEY, JSON.stringify(F)); }catch(e){} toast('Saved ✓'); }
 function loadStored(){ try{ const s=localStorage.getItem(LS_KEY); if(s){ F=Object.assign(blankFighter(), JSON.parse(s)); return true; } }catch(e){} return false; }
 function toast(msg){ const t=$('#save-toast'); t.textContent=msg; setTimeout(()=>t.textContent='',2500); }
+
+/* ---------------- preset library (named saved fighters) ---------------- */
+function getPresets(){ try{ return JSON.parse(localStorage.getItem(PRESET_LS_KEY)||'{}'); }catch(e){ return {}; } }
+function setPresets(p){ try{ localStorage.setItem(PRESET_LS_KEY, JSON.stringify(p)); }catch(e){} }
 
 /* ---------------- modal ---------------- */
 function modal(title, bodyHTML, actions){
@@ -90,7 +103,10 @@ $('#modal-scrim').onclick=closeModal;
 /* ---------------- preview sync ---------------- */
 function syncPreview(){
   if(!preview) return;
-  preview.setSkinTone(F.body.skin_tone);
+  if(F.model && preview.modelUrl!==F.model && !preview._loading){ preview.loadModel(F.model); return; }
+  if(isCustom()){
+    preview.setSkinTone(F.body.skin_tone);
+  } // roster fighters keep their real textures — never tint canon models
   const bt = BODY_TYPES.find(b=>b.name===F.body.body_type);
   const p = F.body.proportions;
   preview.setProportions({
@@ -120,7 +136,7 @@ function renderTopbar(){
     b.className='attire-tab'+(i===F.attireIndex?' active':'');
     b.setAttribute('role','tab');
     const nm = a.name || `ATTIRE ${i+1}`;
-    b.innerHTML = `<span class="athumb" ${a.thumb?`style="background-image:url('${a.thumb}')"`:''}></span>${nm}`;
+    b.innerHTML = `<span class="athumb" ${a.thumb?`style="background-image:url('${a.thumb}')"` : ''}></span>${nm}`;
     b.title = nm + (i>0?'':' (clone source for empty slots)');
     b.onclick=()=>{ F.attireIndex=i; if(!F.attires[i].name && i>0){ /* empty slot: clone attire 1 appearance */ const src=JSON.parse(JSON.stringify(F.attires[0])); src.name=''; src.thumb=''; F.attires[i]=src; } ui.selPart=null; renderAll(); };
     tabs.appendChild(b);
@@ -148,8 +164,10 @@ function renderPanel(){
 
 /* ================= BODY ================= */
 function renderBody(el){
+  const locked = !isCustom();   // roster fighters' bodies are canon — lock per UI promise
   $('#panel-sub').textContent = 'Wrestling CAW — body, skin, head, hair';
   el.innerHTML = `
+    ${locked?`<div class="note">🔒 <b>Canon body</b> — ${esc(F.profile.name)}'s body is locked. Switch to NEW FIGHTER for full BODY access. Body type, skin tone, proportions and head shape stay with the custom base.</div>`:''}
     <div class="sect">BODY TYPE — No Mercy 14</div>
     <div class="roster-grid" id="bodytypes"></div>
     <div class="sect">SKIN TONE — 8 tones</div>
@@ -157,7 +175,7 @@ function renderBody(el){
     <div class="sect">PROPORTIONS — WMXIX parametric</div>
     <div id="propsliders"></div>
     <div class="sect">HEAD</div>
-    <div class="field"><label>HEAD SHAPE</label><select id="headshape">
+    <div class="field"><label>HEAD SHAPE</label><select id="headshape" ${locked?'disabled':''}>
       ${['male_1','male_2','male_3','male_4','male_5','male_6','male_7','female_1','female_2','female_3'].map(h=>`<option ${F.body.head_shape===h?'selected':''}>${h}</option>`).join('')}
     </select></div>
     <div class="note">Face (348) &amp; Hair (156) live under ATTIRE — they equip into the Face / Hairstyle slots with the same buy/equip loop.</div>
@@ -169,6 +187,7 @@ function renderBody(el){
     const b=document.createElement('button');
     b.className='roster-card'+(F.body.body_type===t.name?' active':'');
     b.textContent=t.name;
+    if(locked) b.disabled=true;
     b.onclick=()=>{ F.body.body_type=t.name; renderAll(); };
     bt.appendChild(b);
   });
@@ -177,17 +196,20 @@ function renderBody(el){
     const s=document.createElement('div');
     s.className='swatch'+(F.body.skin_tone===hex?' active':'');
     s.style.background=hex; s.title=hex;
-    s.onclick=()=>{ F.body.skin_tone=hex; renderAll(); };
+    if(locked) s.style.opacity='0.35';
+    s.onclick=()=>{ if(locked) return; F.body.skin_tone=hex; renderAll(); };
     st.appendChild(s);
   });
   const sl=el.querySelector('#propsliders');
   [['height','Height',0.85,1.15],['weight','Weight',0.85,1.3],['muscle','Muscle',0.85,1.3]].forEach(([k,label,lo,hi])=>{
     const d=document.createElement('div'); d.className='ctl';
     d.innerHTML=`<label>${label}<span class="val">${F.body.proportions[k].toFixed(2)}</span></label>
-      <input type="range" min="${lo}" max="${hi}" step="0.01" value="${F.body.proportions[k]}" aria-label="${label}">`;
-    d.querySelector('input').oninput=e=>{ F.body.proportions[k]=+e.target.value;
-      d.querySelector('.val').textContent=(+e.target.value).toFixed(2); syncPreview(); persistQuiet(); };
-    d.querySelector('input').onchange=()=>persistQuiet();
+      <input type="range" min="${lo}" max="${hi}" step="0.01" value="${F.body.proportions[k]}" aria-label="${label}" ${locked?'disabled':''}>`;
+    if(!locked){
+      d.querySelector('input').oninput=e=>{ F.body.proportions[k]=+e.target.value;
+        d.querySelector('.val').textContent=(+e.target.value).toFixed(2); syncPreview(); persistQuiet(); };
+      d.querySelector('input').onchange=()=>persistQuiet();
+    }
     sl.appendChild(d);
   });
   el.querySelector('#headshape').onchange=e=>{ F.body.head_shape=e.target.value; persistQuiet(); };
@@ -567,18 +589,76 @@ function renderLimbs(el){
   };
 }
 
-/* ================= fighter select / photo / save-load ================= */
+/* ================= fighter select / presets / photo / save-load ================= */
+function selectBase(id){
+  const r=ROSTER.find(x=>x.id===id); if(!r) return;
+  F.base=r.id;
+  F.model=r.glb||SOLDIER_GLB;
+  F.profile.name=r.name;
+  ui.selPart=null; ui.attireCat=null;
+  if(preview) preview.loadModel(F.model);
+}
+
 $('#btn-roster').onclick=()=>{
-  modal('FIGHTER SELECT', `<div class="roster-grid">${ROSTER.map(r=>
-    `<button class="roster-card${F.base===r.id?' active':''}" data-r="${r.id}"><div>${r.name}</div><div style="font-size:12px;color:var(--dim);font-weight:400;margin-top:4px">${r.desc}</div></button>`).join('')}</div>
-    <div class="note">Roster fighters' bodies are canon (BODY tab locks for them). NEW FIGHTER gets full BODY access.</div>`,
+  const groups=TIERS.map(([tk,label])=>{
+    const items=ROSTER.filter(r=>(r.tier||'custom')===tk);
+    if(!items.length) return '';
+    return `<div class="sect">${label} (${items.length})</div><div class="roster-grid">`+items.map(r=>
+      `<button class="roster-card${F.base===r.id?' active':''}" data-r="${r.id}"><div>${r.name}</div>`+
+      `<div style="font-size:12px;color:var(--dim);font-weight:400;margin-top:4px">${r.desc||r.title||''}</div>`+
+      (r.id!=='new'
+        ? `<div style="font-size:10px;margin-top:4px"><span class="${r.modelSrc==='exact'?'owned':'price'}">${r.modelSrc==='exact'?'● REAL MODEL':'● BASE MODEL'}</span></div>`
+        : `<div style="font-size:10px;margin-top:4px"><span class="owned">● SOLDIER BASE RIG</span></div>`)+
+      `</button>`).join('')+`</div>`;
+  }).join('');
+  modal('FIGHTER SELECT', groups+
+    `<div class="note">Roster fighters load their real GLB from <span class="mono">game/assets/models/</span> — bodies are canon, BODY tab locks. NEW FIGHTER gets full BODY access on the Soldier base rig. <span class="owned">● REAL MODEL</span> = fighter-specific GLB · <span class="price">● BASE MODEL</span> = shared base until a dedicated extraction lands.</div>`,
     [{label:'CLOSE',cls:'btn-gold'}]);
   document.querySelectorAll('[data-r]').forEach(b=>b.onclick=()=>{
-    const r=ROSTER.find(x=>x.id===b.dataset.r);
-    F.base=r.id; F.profile.name=r.name;
-    if(r.id!=='new') F.body.skin_tone=r.tone;
+    selectBase(b.dataset.r);
     closeModal(); renderAll();
   });
+};
+
+$('#btn-presets').onclick=()=>{
+  const draw=()=>{
+    const ps=getPresets();
+    const names=Object.keys(ps).sort();
+    modal('FIGHTER PRESETS',
+      `<div class="field"><label>SAVE CURRENT AS</label><input id="preset-name" placeholder="e.g. my-pantera-alt" style="width:100%"></div>
+       <div class="btn-row"><button class="btn btn-green" id="preset-save">💾 SAVE PRESET</button></div>
+       <div class="sect">SAVED PRESETS (${names.length})</div>
+       <div id="preset-list">${
+         names.length?names.map(n=>{
+           const pf=ps[n].fighter||{};
+           return `<div class="kv"><span>${esc(n)}<br><small style="color:var(--dim)">${esc(pf.profile?.name||'')} · ${esc(pf.base||'')}</small></span>`+
+             `<span><button class="btn btn-gold" data-pl="${esc(n)}">⤒ LOAD</button> <button class="btn btn-red" data-pd="${esc(n)}" data-armed="">🗑</button></span></div>`;
+         }).join(''):'<div class="note">No presets yet — name your build above and hit SAVE PRESET.</div>'
+       }</div>
+       <div class="note">Presets store the full fighter JSON (appearance, moveset, limbs, wardrobe). Loading replaces the current fighter. The autosave slot (<span class="mono">wh_create_fighter_v1</span>) keeps updating as you work.</div>`,
+      [{label:'CLOSE',cls:''}]);
+    const bodyEl=$('#modal-body');
+    bodyEl.querySelector('#preset-save').onclick=()=>{
+      const n=(bodyEl.querySelector('#preset-name').value||'').trim();
+      if(!n){ toast('Name the preset first'); return; }
+      const ps2=getPresets();
+      ps2[n]={ saved:new Date().toISOString(), fighter:JSON.parse(JSON.stringify(F)) };
+      setPresets(ps2); draw(); toast('Preset saved ✓');
+    };
+    bodyEl.querySelectorAll('[data-pl]').forEach(b=>b.onclick=()=>{
+      const n=b.dataset.pl; const ps2=getPresets();
+      if(!ps2[n]) return;
+      F=Object.assign(blankFighter(), JSON.parse(JSON.stringify(ps2[n].fighter)));
+      ui.selPart=null; ui.attireCat=null; ui.selSlot=null;
+      closeModal(); renderAll(); toast(`Preset "${n}" loaded ✓`);
+    });
+    bodyEl.querySelectorAll('[data-pd]').forEach(b=>b.onclick=()=>{
+      if(!b.dataset.armed){ b.dataset.armed='1'; b.textContent='SURE?'; return; }  // two-step delete
+      const n=b.dataset.pd; const ps2=getPresets();
+      delete ps2[n]; setPresets(ps2); draw(); toast('Preset deleted');
+    });
+  };
+  draw();
 };
 
 $('#btn-photo').onclick=()=>{
@@ -610,12 +690,21 @@ $('#file-load').onchange=e=>{
 async function boot(){
   const had=loadStored();
   try{
-    const [pi,md,ms]=await Promise.all([
+    const [pi,md,ms,rb]=await Promise.all([
       fetch('data/PARTS-INDEX.json').then(r=>r.json()),
       fetch('data/MOVE-DATABASE.json').then(r=>r.json()),
       fetch('data/MOVE-SLOTS.json').then(r=>r.json()),
+      fetch('data/ROSTER-BASE.json').then(r=>r.json()),
     ]);
     catalog=new Catalog(pi); moveDb=md; moveSlots=ms;
+    ROSTER=[
+      { id:'new', name:'NEW FIGHTER', desc:'WMXIX default CAW base', glb:SOLDIER_GLB, tier:'custom', modelSrc:'exact' },
+      ...rb.fighters.map(f=>({ id:f.id, name:f.name, desc:f.title, title:f.title, glb:f.glb,
+        tier:f.tier, modelSrc:f.modelSrc, style:f.style, archetype:f.archetype, base:f.base })),
+    ];
+    // a stored fighter may reference a base that no longer exists — fall back to new
+    if(!ROSTER.some(r=>r.id===F.base)){ F.base='new'; F.model=SOLDIER_GLB; }
+    if(!F.model) F.model=SOLDIER_GLB;
   }catch(e){
     console.error('data load failed',e);
     document.getElementById('loader').innerHTML='<div>DATA LOAD FAILED — serve over http</div>';
@@ -624,6 +713,8 @@ async function boot(){
   preview=new Preview3D($('#preview3d'));
   window.__preview=preview;   // debug/testing handle
   preview.onReady=()=>{ renderAll(); };
+  // load the stored/current fighter's model (roster GLB or Soldier base)
+  if(F.model && F.model!==SOLDIER_GLB) preview.loadModel(F.model);
   renderAll();
   if(!had) toast('New fighter — start with BODY');
 }

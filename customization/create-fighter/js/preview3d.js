@@ -1,7 +1,9 @@
 /* preview3d.js — full-screen fighter preview.
-   Vendored three.js (./vendor/three.module.js + GLTFLoader). Soldier.glb base rig.
-   Fighter ALWAYS visible, full-body, centered slightly left of screen so the right
-   rail never covers it. Slow auto-rotate, drag-orbit, scroll/pinch zoom.
+   Vendored three.js (./vendor/three.module.js + GLTFLoader). Soldier.glb base rig
+   for NEW FIGHTER; roster fighters load their real GLB from game/assets/models/
+   via loadModel() (data/ROSTER-BASE.json). Fighter ALWAYS visible, full-body,
+   centered slightly left of screen so the right rail never covers it.
+   Slow auto-rotate, drag-orbit, scroll/pinch zoom.
    Equip visuals: labeled socket-proxy rings (honest placeholders — real ymg/obj
    meshes are not wired yet). */
 import * as THREE from 'three';
@@ -9,6 +11,7 @@ import { GLTFLoader } from '../vendor/addons/loaders/GLTFLoader.js';
 import { clone as skeletonClone } from '../vendor/addons/utils/SkeletonUtils.js';
 
 const SKIN_TONES = ['#f7c2a1','#e8a87c','#c98d5e','#a06a42','#7c4a2d','#5d3320','#3d2114','#2a150c'];
+const SOLDIER_GLB = 'assets/Soldier.glb';
 
 export class Preview3D {
   constructor(canvas){
@@ -22,6 +25,8 @@ export class Preview3D {
     this.proxyRings = new Map();   // slotId -> ring mesh
     this.dummy = null;
     this.onReady = null;
+    this.modelUrl = null;          // currently loaded base model
+    this._loading = false;
 
     // orbit state
     this.az = 0.5; this.el = 0.06; this.dist = 4.6;
@@ -93,7 +98,7 @@ export class Preview3D {
     let pinchD = 0;
     cv.addEventListener('touchmove', e=>{
       if(e.touches.length===2){
-        const d = Math.hypot(e.touches[0].clientX-e.touches[1].clientX, e.touches[0].clientY-e.touches[1].clientY);
+        const d = Math.hypot(e.touches[0].clientX-e.touches[1].clientX, e.touches[1].clientY-e.touches[1].clientY);
         if(pinchD) this.targetDist = THREE.MathUtils.clamp(this.targetDist - (d-pinchD)*0.01, 2.2, 9);
         pinchD = d;
       }
@@ -109,12 +114,27 @@ export class Preview3D {
   }
 
   _loadFighter(){
-    new GLTFLoader().load('assets/Soldier.glb', glb=>{
+    this.loadModel(SOLDIER_GLB);
+  }
+
+  /* ---- dynamic base-model loading: roster GLBs from game/assets/models/ ----
+     Disposes the old fighter + dummy, loads the new GLB, re-collects materials
+     and bones, plays Idle (or first clip). On failure falls back to the Soldier
+     base rig so the suite never bricks on a missing model. */
+  loadModel(url){
+    if(!url || url===this.modelUrl || this._loading) return;
+    this._loading = true;
+    this.modelUrl = url;
+    if(this.fighter){ this.scene.remove(this.fighter); this._disposeObj(this.fighter); this.fighter=null; this.mats=null; this.baseColors=null; this.bones=null; }
+    if(this.dummy){ this.scene.remove(this.dummy); this.dummy=null; }
+    this.clearAllProxies();
+    this.mixers = [];
+    new GLTFLoader().load(url, glb=>{
       this.fighter = glb.scene;
       this.fighter.position.set(-0.35, 0, 0);
       this.fighter.traverse(o=>{ if(o.isMesh){ o.castShadow = true; } });
       this.scene.add(this.fighter);
-      // collect materials for skin-tone control
+      // collect materials for skin-tone control (custom base only)
       this.mats = [];
       this.fighter.traverse(o=>{ if(o.isMesh){ (Array.isArray(o.material)?o.material:[o.material]).forEach(m=>{ if(!this.mats.includes(m)) this.mats.push(m); }); } });
       this.baseColors = this.mats.map(m=>m.color.clone());
@@ -125,14 +145,27 @@ export class Preview3D {
         mixer.clipAction(idle).play();
         this.mixers.push(mixer);
       }
-      // bone lookup for socket anchors
+      // bone lookup for socket anchors (mixamorig prefix stripped when present)
       this.bones = {};
       this.fighter.traverse(o=>{ if(o.isBone) this.bones[o.name.replace('mixamorig:','')] = o; });
+      this._loading = false;
       this._hideLoader();
       if(this.onReady) this.onReady();
     }, undefined, err=>{
-      console.error('Soldier.glb failed to load', err);
+      console.error('model failed to load:', url, err);
+      this._loading = false;
       this._hideLoader();
+      if(url!==SOLDIER_GLB){ this.modelUrl=null; this.loadModel(SOLDIER_GLB); }
+    });
+  }
+
+  _disposeObj(root){
+    root.traverse(o=>{
+      if(o.isMesh){
+        if(o.geometry) o.geometry.dispose();
+        const ms = Array.isArray(o.material)?o.material:[o.material];
+        ms.forEach(m=>{ if(m && m.dispose) m.dispose(); });
+      }
     });
   }
 
