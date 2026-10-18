@@ -17,7 +17,7 @@ const SOLDIER_GLB = 'assets/Soldier.glb';
    Same source as game/js/t3anims.js: assets/anim/t3/king_on_pantera_leoman/.
    Bone names in the JSON (Hips, Spine, …) match this preview's stripped
    Mixamo names, so tracks bind directly. */
-const T3_ANIM_BASE = '../../game/assets/anim/t3/king_on_pantera_leoman/';
+const T3_ANIM_BASE = '../../assets/anim/t3/king_on_pantera_leoman/';
 const T3_CLIP_FILES = {
   t3_light:'t3_light.json', t3_medium:'t3_medium.json', t3_heavy:'t3_heavy.json',
   t3_grab:'t3_grab.json', t3_stance:'t3_stance.json',
