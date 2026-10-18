@@ -1,6 +1,10 @@
 /* ============================================================
    WESTERN HEART — Game Modes
-   VERSUS · ARCADE · STORY (reincarnation) · TRAINING
+   Round-1: VERSUS · ARCADE · STORY (reincarnation) · TRAINING
+   Round-2 (Lane G): SURVIVAL · TIME ATTACK · TEAM BATTLE (Tekken,
+   researched — docs/modes/TEKKEN-MODES-RESEARCH.md) ·
+   不死クォンバット · SOUL SURGE GAUNTLET · TRADER'S MIMIC
+   (WH originals, grounded in CANON.md — cited per mode)
 
    Canon grounding (CANON.md):
    • Versus = no reincarnation.
@@ -240,6 +244,145 @@ export function scaledAi(char, diff) {
 /* ============================================================
    ModeController — DOM + Game wiring. Constructed once in main.js.
    ============================================================ */
+
+/* ---------------- Mode registry (Round-2: Lane G) ----------------
+   Every playable mode, one entry. origin: 'tekken' = researched from
+   the Tekken series (see docs/modes/TEKKEN-MODES-RESEARCH.md);
+   'wh' = original Western Heart mode grounded in CANON.md (cited). */
+export const MODE_LIST = [
+  { key: 'arcade',    name: 'ARCADE',              origin: 'tekken', debut: 'Tekken',
+    desc: 'Climb the 6-fight ladder. One life. Diablo waits near the top.' },
+  { key: 'versus',    name: 'VERSUS',              origin: 'tekken', debut: 'Tekken',
+    desc: 'Two players, best of 3. No reincarnation.' },
+  { key: 'story',     name: 'STORY',               origin: 'wh', canon: 'CANON.md §5 The Trial',
+    desc: 'Walk the Trial. Death is not the end — it is reincarnation.' },
+  { key: 'training',  name: 'TRAINING',            origin: 'tekken', debut: 'Tekken (Practice)',
+    desc: 'Endless rounds vs a passive dummy. H toggles hints.' },
+  { key: 'survival',  name: 'SURVIVAL',            origin: 'tekken', debut: 'Tekken 2',
+    desc: 'Endless one-round fights. Health carries over — a little back per win. How many can you beat?' },
+  { key: 'timeattack', name: 'TIME ATTACK',        origin: 'tekken', debut: 'Tekken 2',
+    desc: '8 fights against the clock. Fastest total time wins. Graded S/A/B/C.' },
+  { key: 'team',      name: 'TEAM BATTLE',         origin: 'tekken', debut: 'Tekken 2',
+    desc: '3v3. Winner stays on with carried health. Last team standing.' },
+  { key: 'qombat',    name: '不死クォンバット',        origin: 'wh', canon: 'CANON.md § SUN RĀ',
+    desc: "Sun Rā's pocket realm. Endless waves, no reincarnation — win and eat, lose and be eaten." },
+  { key: 'surge',     name: 'SOUL SURGE GAUNTLET', origin: 'wh', canon: 'CANON.md §4 The Nine-Soul Meter',
+    desc: '9 fights — each one channeling a different soul of the nine through you.' },
+  { key: 'trader',    name: "TRADER'S MIMIC",      origin: 'wh', canon: 'CANON.md §5 The Trader',
+    desc: "A 3-bout duel at the Phantom Marketplace. The Trader wears your moveset like a borrowed coat." },
+];
+
+/* ---------------- Records (localStorage, guarded) ---------------- */
+const REC_KEY = 'wh_records';
+export function whGetRecords() {
+  try { return JSON.parse(localStorage.getItem(REC_KEY)) || {}; }
+  catch { return {}; }
+}
+export function whSetRecord(k, v) {
+  try {
+    const r = whGetRecords();
+    r[k] = v;
+    localStorage.setItem(REC_KEY, JSON.stringify(r));
+  } catch { /* private mode — records just don't persist */ }
+}
+
+/* ---------------- Survival (Tekken 2+) ----------------
+   One round per fight, HP carries over, small restore per win. */
+export const SURVIVAL_CFG = { restore: 0.25, roundsToWin: 1 };
+export function survivalCarry(hpLeft, maxHp) {
+  return Math.min(maxHp, hpLeft + maxHp * SURVIVAL_CFG.restore);
+}
+
+/* ---------------- Time Attack (Tekken 2+) ----------------
+   8 single-round fights, total wall-clock time, S/A/B/C grades. */
+export const TIME_ATTACK_CFG = { fights: 8, roundsToWin: 1 };
+export function timeAttackGrade(totalMs) {
+  if (totalMs < 4 * 60 * 1000) return 'S';
+  if (totalMs < 6 * 60 * 1000) return 'A';
+  if (totalMs < 9 * 60 * 1000) return 'B';
+  return 'C';
+}
+export function fmtTime(ms) {
+  const s = Math.floor(ms / 1000);
+  return `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}.${Math.floor((ms % 1000) / 100)}`;
+}
+
+/* ---------------- Team Battle (Tekken 2–TTT2) ----------------
+   3v3, winner stays on, winner's HP carries with a small recovery. */
+export const TEAM_CFG = { size: 3, restore: 0.15 };
+export function teamCarry(hpLeft, maxHp) {
+  return Math.min(maxHp, hpLeft + maxHp * TEAM_CFG.restore);
+}
+
+/* ---------------- Immortal Qombat / 不死クォンバット (WH original) ----------------
+   Canon (SUN RĀ): endless death-tournament waves in the pocket realm
+   "where the trial's rules don't apply" — no reincarnation. Win: you
+   eat (HP restore + stacking power — the eater grows). Lose: absorbed. */
+export const QOMBAT_CFG = { restore: 0.35, absorbPower: 0.05, roundsToWin: 1, stage: 'plains-of-chi-u' };
+export function qombatCarry(hpLeft, maxHp) {
+  return Math.min(maxHp, hpLeft + maxHp * QOMBAT_CFG.restore);
+}
+export function qombatBuff(stats, wave) {
+  const s = { ...(stats || BASE_STATS) };
+  s.power = (s.power || 1.1) * (1 + QOMBAT_CFG.absorbPower * wave);
+  return s;
+}
+export function qombatDiff(wave) {
+  return Math.min(0.98, 0.50 + wave * 0.06);
+}
+
+/* ---------------- Soul Surge Gauntlet (WH original) ----------------
+   Canon (§4 The Nine-Soul Meter): "a fighter can invoke a Soul Surge —
+   channeling one of the other eight souls for ten seconds, borrowing its
+   signature techniques." The gauntlet walks all nine souls — each fight
+   opens with one soul channeling through you for the whole bout.
+   Engine translations are drawn from each soul's canon nature. */
+export const SURGE_BLESSINGS = [
+  { soul: 'rin',   kanji: '凛', apply: (s) => ({ ...s, defense: s.defense * 1.25 }),
+    line: 'RIN channels through you — dignified, cold, self-possessed. Your guard hardens.' },
+  { soul: 'byou',  kanji: '病', apply: (s) => ({ ...s, speed: Math.min(3.5, s.speed * 1.20) }),
+    line: 'BYOU channels through you — sickness moves wrong. So do you.' },
+  { soul: 'tou',   kanji: '闘', apply: (s) => ({ ...s, power: s.power * 1.25 }),
+    line: 'TOU channels through you — battle itself. Your strikes are the argument.' },
+  { soul: 'sha',   kanji: '沙', apply: (s) => ({ ...s, chipMult: (s.chipMult || 1) * 2 }),
+    line: 'SHA channels through you — sand erodes mountains. Even blocked strikes wear them down.' },
+  { soul: 'kai',   kanji: '海', apply: (s) => ({ ...s, speed: Math.min(3.5, s.speed * 1.10), regenPerSec: (s.regenPerSec || 0) + 0.5 }),
+    line: 'KAI channels through you — the sea does not stop. Your wounds close as you move.' },
+  { soul: 'jin',   kanji: '刃', apply: (s) => ({ ...s, power: s.power * 1.15, reachMult: (s.reachMult || 1) * 1.15 }),
+    line: 'JIN channels through you — the blade. Precise, ritual, terrifying.' },
+  { soul: 'retsu', kanji: '烈', apply: (s) => ({ ...s, power: s.power * 1.30, defense: s.defense * 0.90 }),
+    line: 'RETSU channels through you — pure violence. Hit harder. Bleed easier.' },
+  { soul: 'zen',   kanji: '禅', apply: (s) => ({ ...s, defense: s.defense * 1.30, speed: s.speed * 0.95 }),
+    line: 'ZEN channels through you — stillness. Barely move. Do not need to.' },
+  { soul: 'gyou',  kanji: '行', apply: (s) => ({ ...s, speed: Math.min(3.5, s.speed * 1.25) }),
+    line: 'GYOU channels through you — motion itself. Cannot stop moving.' },
+];
+export function surgeBlessing(idx) { return SURGE_BLESSINGS[idx % SURGE_BLESSINGS.length]; }
+
+/* ---------------- Trader's Mimic (WH original) ----------------
+   Canon (§5 The Trader): "The Trader's fighting style is mimicry — it
+   wears the opponent's moveset like a borrowed coat." 3 single-round
+   bouts at the Phantom Marketplace: bout 1 a borrowed coat, bout 2 YOUR
+   coat, bout 3 your coat worn better (buffed). */
+export const TRADER_CFG = { bouts: 3, roundsToWin: 1, stage: 'phantom-marketplace' };
+export function traderFoe(playerChar, bout, randomMoveset) {
+  const buff = bout === 2 ? 1.15 : 1.0;
+  const stats = { ...(playerChar.stats || BASE_STATS) };
+  stats.power = (stats.power || 1.1) * buff;
+  stats.defense = (stats.defense || 1.05) * buff;
+  return {
+    id: 'trader',
+    name: 'THE TRADER',
+    title: 'The Marketplace',
+    base: 'Wears your coat',
+    moveset: bout === 0 ? randomMoveset : (playerChar.moveset || 'jin'),
+    model: 'scimitar', // marketplace-born vizier's frame; the Trader was already there
+    colors: { suit: 0x1a0a2a, trim: 0xffd700 },
+    style: 'Mimicry',
+    stats,
+    ai: { aggression: 0.70 + bout * 0.10, grabBias: 0.20, reaction: 0.75 + bout * 0.08 },
+  };
+}
 export class ModeController {
   constructor(deps) {
     this.game = deps.game;
@@ -255,14 +398,28 @@ export class ModeController {
     this.arcade = null;        // { idx, fighterId, wins }
     this.story = null;         // { stage, forces, deaths, vesselId, acc, startTime }
     this.training = null;      // { fighterId }
+    // Round-2 (Lane G): tekken modes + canon-original modes
+    this.survival = null;      // { wave, fighterId, hp }
+    this.timeattack = null;    // { idx, fighterId, totalMs, fightStart, _watch }
+    this.team = null;          // { pTeam, cTeam, pIdx, cIdx, pHp, cHp }
+    this.qombat = null;        // { wave, fighterId, hp, powerMult }
+    this.surge = null;         // { idx, fighterId }
+    this.trader = null;        // { bout, fighterId }
+    this._teamTray = null;
+    this._teamPending = [];
     this._el = (id) => document.getElementById(id);
   }
 
   /* ---------- mode entry (called from menu buttons) ---------- */
   clearState() {
+    if (this.timeattack && this.timeattack._watch) { clearInterval(this.timeattack._watch); }
     this.mode = null;
     this.vsStep = 0; this.vsP1 = null; this._lastVersus = null;
     this.arcade = null; this.story = null; this.training = null;
+    this.survival = null; this.timeattack = null; this.team = null;
+    this.qombat = null; this.surge = null; this.trader = null;
+    this._teamPending = [];
+    if (this._teamTray) { this._teamTray.remove(); this._teamTray = null; }
     this.game.onMatchEnd = null;
     this.game.training = false;
     this._badge('');
@@ -282,6 +439,19 @@ export class ModeController {
       hint.textContent = 'STORY — choose your soul. Death is not the end. It is reincarnation.';
     } else if (mode === 'training') {
       hint.textContent = 'TRAINING — pick your fighter. The dummy will not fight back. H toggles hints.';
+    } else if (mode === 'survival') {
+      hint.textContent = 'SURVIVAL — pick your fighter. One round each, health carries over. How many can you beat?';
+    } else if (mode === 'timeattack') {
+      hint.textContent = 'TIME ATTACK — pick your fighter. 8 fights, one round each, against the clock. Go fast.';
+    } else if (mode === 'team') {
+      hint.textContent = 'TEAM BATTLE — pick 3 fighters for your team. Winner stays on.';
+      this._teamTrayBuild();
+    } else if (mode === 'qombat') {
+      hint.textContent = '不死クォンバット — pick your soul. Sun Rā\'s realm. No reincarnation here. Win and eat — or be eaten.';
+    } else if (mode === 'surge') {
+      hint.textContent = 'SOUL SURGE GAUNTLET — pick your vessel. Nine fights. Nine souls will channel through you.';
+    } else if (mode === 'trader') {
+      hint.textContent = 'TRADER\'S MIMIC — pick your fighter. Three bouts. The Trader wears your moveset like a borrowed coat.';
     }
   }
 
@@ -318,6 +488,51 @@ export class ModeController {
     if (this.mode === 'training') {
       this.training = { fighterId: selectedId };
       this._beginTraining(selectedId);
+      return true;
+    }
+    if (this.mode === 'survival') {
+      this.survival = { wave: 0, fighterId: selectedId, hp: null };
+      this._survivalNext();
+      return true;
+    }
+    if (this.mode === 'timeattack') {
+      this.timeattack = { idx: 0, fighterId: selectedId, totalMs: 0, fightStart: 0, _watch: null };
+      this._timeAttackNext();
+      return true;
+    }
+    if (this.mode === 'team') {
+      // 3-pick flow: collect the team, then start. Duplicates refused.
+      if (!this._teamPending.includes(selectedId)) this._teamPending.push(selectedId);
+      this._teamTrayRender();
+      this.audio && this.audio.uiClick && this.audio.uiClick();
+      if (this._teamPending.length >= TEAM_CFG.size) {
+        const pTeam = this._teamPending.slice(0, TEAM_CFG.size);
+        const cTeam = this._teamBuildCpu(pTeam);
+        this.team = { pTeam, cTeam, pIdx: 0, cIdx: 0, pHp: null, cHp: null };
+        if (this._teamTray) { this._teamTray.remove(); this._teamTray = null; }
+        this._teamFight();
+        return true;
+      }
+      const hint = this._el('select-hint');
+      if (hint) hint.textContent = `TEAM BATTLE — pick fighter ${this._teamPending.length + 1} of ${TEAM_CFG.size}.`;
+      document.querySelectorAll('.char-card').forEach((x) => x.classList.remove('selected'));
+      const confirmBtn = this._el('confirm-fighter');
+      if (confirmBtn) confirmBtn.disabled = true;
+      return false; // flow continues; main.js must clear its selectedChar
+    }
+    if (this.mode === 'qombat') {
+      this.qombat = { wave: 0, fighterId: selectedId, hp: null, powerMult: 1 };
+      this._qombatNext();
+      return true;
+    }
+    if (this.mode === 'surge') {
+      this.surge = { idx: 0, fighterId: selectedId };
+      this._surgeNext();
+      return true;
+    }
+    if (this.mode === 'trader') {
+      this.trader = { bout: 0, fighterId: selectedId };
+      this._traderNext();
       return true;
     }
     return false;
@@ -536,6 +751,314 @@ export class ModeController {
     this.game.training = true;
     this.game.onMatchEnd = null; // training never "ends" — rounds auto-reset
     this.startFight(fighterId, null, { mode: 'training', enemyChar: dummy });
+  }
+
+  /* ---------- SURVIVAL (Tekken 2+): endless, HP carries, small restore ----------
+     Canon note: none — this is pure Tekken. One round, lose once = run over. */
+  _survivalNext() {
+    const s = this.survival;
+    const foe = this._pickFoe(s.fighterId, null, Math.min(0.95, 0.45 + s.wave * 0.05));
+    const foeEntry = { ...foe, ai: scaledAi(foe, Math.min(0.95, 0.45 + s.wave * 0.05)) };
+    this._survivalFoe = foeEntry;
+    this._badge(`SURVIVAL · WAVE ${s.wave + 1} · ${foe.name}`);
+    this.ui.banner(`WAVE ${s.wave + 1} — ${foe.name}`);
+    this.game.onMatchEnd = (won) => this._survivalEnd(won);
+    this._survivalFight();
+  }
+  _survivalFight() { // (re)start current wave — used by rematch
+    const s = this.survival;
+    const opts = { mode: 'survival', roundsToWin: SURVIVAL_CFG.roundsToWin, enemyChar: this._survivalFoe };
+    if (s.hp != null) opts.hpCarry = s.hp;
+    this.startFight(s.fighterId, null, opts);
+  }
+  _survivalEnd(won) {
+    const s = this.survival;
+    if (won) {
+      s.wave++;
+      const g = this.game;
+      s.hp = survivalCarry(g.p1.hp, g.p1.maxHp);
+      const rec = whGetRecords();
+      if (s.wave > (rec.survival || 0)) whSetRecord('survival', s.wave);
+      this.ui.banner(`WAVE ${s.wave} CLEARED — +${Math.round(SURVIVAL_CFG.restore * 100)}% health restored`);
+      setTimeout(() => this._survivalNext(), 1400);
+    } else {
+      const rec = whGetRecords();
+      const best = rec.survival || s.wave;
+      this._modeWin(false, 'SURVIVAL — RUN OVER',
+        `Fell at wave ${s.wave + 1}. Best run: ${best} wave${best === 1 ? '' : 's'}. The shrine is silent. Run it back.`,
+        [{ label: 'RETRY SURVIVAL', fn: () => { this.survival = { wave: 0, fighterId: s.fighterId, hp: null }; this._survivalNext(); } }]);
+    }
+  }
+
+  /* ---------- TIME ATTACK (Tekken 2+): 8 fights vs the clock ---------- */
+  _timeAttackNext() {
+    const t = this.timeattack;
+    if (t.idx >= TIME_ATTACK_CFG.fights) { this._timeAttackClear(); return; }
+    const diff = 0.50 + (t.idx / TIME_ATTACK_CFG.fights) * 0.40;
+    const foe = this._pickFoe(t.fighterId, null, diff);
+    const foeEntry = { ...foe, ai: scaledAi(foe, diff) };
+    this._timeAttackFoe = foeEntry;
+    this._badge(`TIME ATTACK · FIGHT ${t.idx + 1}/${TIME_ATTACK_CFG.fights} · ${fmtTime(t.totalMs)}`);
+    this.ui.banner(`FIGHT ${t.idx + 1} — ${foe.name}`);
+    this.game.onMatchEnd = (won) => this._timeAttackEnd(won);
+    this._timeAttackFight();
+  }
+  _timeAttackFight() {
+    const t = this.timeattack;
+    this.startFight(t.fighterId, null, {
+      mode: 'timeattack', roundsToWin: TIME_ATTACK_CFG.roundsToWin, enemyChar: this._timeAttackFoe,
+    });
+    // Clock starts when the round actually begins — not during model loads.
+    if (t._watch) clearInterval(t._watch);
+    t._watch = setInterval(() => {
+      if (this.game.roundState === 'fight') { clearInterval(t._watch); t._watch = null; t.fightStart = Date.now(); }
+    }, 250);
+  }
+  _timeAttackEnd(won) {
+    const t = this.timeattack;
+    if (t._watch) { clearInterval(t._watch); t._watch = null; }
+    if (won) {
+      t.totalMs += Date.now() - (t.fightStart || Date.now());
+      t.idx++;
+      setTimeout(() => this._timeAttackNext(), 1200);
+    } else {
+      this._modeWin(false, 'TIME ATTACK — CLOCK STOPS',
+        `Fell at fight ${t.idx + 1} of ${TIME_ATTACK_CFG.fights} with ${fmtTime(t.totalMs)} on the clock. ` +
+        `Best clear: ${whGetRecords().timeattack ? fmtTime(whGetRecords().timeattack) : 'none yet'}.`,
+        [{ label: 'RETRY TIME ATTACK', fn: () => { this.timeattack = { idx: 0, fighterId: t.fighterId, totalMs: 0, fightStart: 0, _watch: null }; this._timeAttackNext(); } }]);
+    }
+  }
+  _timeAttackClear() {
+    const t = this.timeattack;
+    const grade = timeAttackGrade(t.totalMs);
+    const rec = whGetRecords();
+    const best = rec.timeattack;
+    if (!best || t.totalMs < best) whSetRecord('timeattack', t.totalMs);
+    this._modeWin(true, `TIME ATTACK CLEARED — GRADE ${grade}`,
+      `8 fights in ${fmtTime(t.totalMs)}. ${!best || t.totalMs < best ? 'NEW RECORD.' : `Best: ${fmtTime(best)}.`} ` +
+      `S < 4:00 · A < 6:00 · B < 9:00.`,
+      [{ label: 'RUN IT BACK', fn: () => { this.timeattack = { idx: 0, fighterId: t.fighterId, totalMs: 0, fightStart: 0, _watch: null }; this._timeAttackNext(); } }]);
+  }
+
+  /* ---------- TEAM BATTLE (Tekken 2–TTT2): 3v3, winner stays on ---------- */
+  _teamTrayBuild() {
+    const screen = this._el('screen-select');
+    if (!screen || this._teamTray) return;
+    const tray = document.createElement('div');
+    tray.id = 'team-tray';
+    tray.style.cssText = 'display:flex;gap:8px;justify-content:center;padding:8px;flex-wrap:wrap;';
+    screen.appendChild(tray);
+    this._teamTray = tray;
+    this._teamTrayRender();
+  }
+  _teamTrayRender() {
+    if (!this._teamTray) return;
+    this._teamTray.innerHTML = '';
+    for (let i = 0; i < TEAM_CFG.size; i++) {
+      const id = this._teamPending[i];
+      const c = id ? this.getChar(id) : null;
+      const slot = document.createElement('div');
+      slot.style.cssText = 'min-width:120px;padding:8px 12px;border:1px solid #8a6cff;border-radius:8px;' +
+        'background:' + (c ? 'rgba(138,108,255,.18)' : 'rgba(255,255,255,.04)') + ';text-align:center;font-size:12px;';
+      slot.textContent = c ? `P${i + 1} · ${c.name}` : `P${i + 1} · — pick —`;
+      this._teamTray.appendChild(slot);
+    }
+  }
+  _teamBuildCpu(pTeam) {
+    const pool = this.roster.map((c) => c.id).filter((id) => !pTeam.includes(id) && id !== 'custom');
+    const team = [];
+    while (team.length < TEAM_CFG.size && pool.length) {
+      team.push(pool.splice(Math.floor(Math.random() * pool.length), 1)[0]);
+    }
+    return team;
+  }
+  _teamFight() {
+    const t = this.team;
+    const pId = t.pTeam[t.pIdx], cId = t.cTeam[t.cIdx];
+    const pc = this.getChar(pId), cc = this.getChar(cId);
+    const diff = 0.55 + (t.pIdx + t.cIdx) * 0.05;
+    const foeEntry = { ...cc, ai: scaledAi(cc, Math.min(0.95, diff)) };
+    this._teamFoe = foeEntry;
+    this._badge(`TEAM BATTLE · YOU ${t.pIdx + 1}/3 (${pc.name}) VS CPU ${t.cIdx + 1}/3 (${cc.name})`);
+    this.ui.banner(`${pc.name} VS ${cc.name}`);
+    this.game.onMatchEnd = (won) => this._teamEnd(won);
+    const opts = { mode: 'team', roundsToWin: 1, enemyChar: foeEntry };
+    if (t.pHp != null) opts.hpCarry = t.pHp;
+    this.startFight(pId, null, opts);
+  }
+  _teamEnd(playerWon) {
+    const t = this.team;
+    const g = this.game;
+    if (playerWon) {
+      t.pHp = teamCarry(g.p1.hp, g.p1.maxHp);
+      t.cIdx++; t.cHp = null;
+    } else {
+      // CPU winner keeps ITS health: p2 is the cpu fighter here.
+      t.cHp = teamCarry(g.p2.hp, g.p2.maxHp);
+      t.pIdx++; t.pHp = null;
+    }
+    if (t.cIdx >= TEAM_CFG.size) {
+      const left = TEAM_CFG.size - t.pIdx;
+      this._modeWin(true, 'TEAM BATTLE — YOUR TEAM STANDS',
+        `CPU team wiped. ${left} of your ${TEAM_CFG.size} fighters still standing. The shrine remembers the team.`, []);
+    } else if (t.pIdx >= TEAM_CFG.size) {
+      const left = TEAM_CFG.size - t.cIdx;
+      this._modeWin(false, 'TEAM BATTLE — TEAM WIPED',
+        `Your team fell. CPU has ${left} fighter${left === 1 ? '' : 's'} left. Draft again.`,
+        [{ label: 'REMATCH TEAMS', fn: () => { this._teamPending = []; this.startMode('team'); } }]);
+    } else {
+      const who = playerWon ? 'CPU sends its next fighter.' : 'You send your next fighter.';
+      this.ui.banner(who);
+      setTimeout(() => this._teamFight(), 1400);
+    }
+  }
+
+  /* ---------- IMMORTAL QOMBAT / 不死クォンバット (WH original, CANON.md § SUN RĀ) ----------
+     The pocket realm "where the trial's rules don't apply": no reincarnation.
+     Win a wave = you eat (+HP, +power). Lose = the sun eats you. */
+  _qombatNext() {
+    const q = this.qombat;
+    const diff = qombatDiff(q.wave);
+    const foe = this._pickFoe(q.fighterId, null, diff);
+    const foeEntry = { ...foe, ai: scaledAi(foe, diff) };
+    this._qombatFoe = foeEntry;
+    const player = this.getChar(q.fighterId);
+    const buffed = { ...player, stats: qombatBuff(player.stats, q.wave) };
+    this._badge(`不死クォンバット · WAVE ${q.wave + 1} · ${foe.name}`);
+    if (q.wave === 0) {
+      // The naming law (CANON.md): only Sun Rā gets the English version.
+      this.ui.banner('SUN RĀ: "IMMORTAL QOMBAT."');
+      setTimeout(() => this.ui.banner(`WAVE 1 — ${foe.name}. The sun is watching.`), 1500);
+    } else {
+      this.ui.banner(`WAVE ${q.wave + 1} — ${foe.name}. The sun is watching.`);
+    }
+    this.game.onMatchEnd = (won) => this._qombatEnd(won);
+    const opts = {
+      mode: 'qombat', roundsToWin: QOMBAT_CFG.roundsToWin,
+      stage: QOMBAT_CFG.stage, playerChar: buffed, enemyChar: foeEntry,
+    };
+    if (q.hp != null) opts.hpCarry = q.hp;
+    this._qombatOpts = opts;
+    this.startFight(q.fighterId, null, opts);
+  }
+  _qombatFight() { // rematch current wave
+    const q = this.qombat;
+    const opts = { ...this._qombatOpts };
+    if (q.hp != null) opts.hpCarry = q.hp; else delete opts.hpCarry;
+    this.startFight(q.fighterId, null, opts);
+  }
+  _qombatEnd(won) {
+    const q = this.qombat;
+    if (won) {
+      q.wave++;
+      q.powerMult = 1 + QOMBAT_CFG.absorbPower * q.wave;
+      const g = this.game;
+      q.hp = qombatCarry(g.p1.hp, g.p1.maxHp);
+      const rec = whGetRecords();
+      if (q.wave > (rec.qombat || 0)) whSetRecord('qombat', q.wave);
+      this.ui.banner(`YOU EAT — WAVE ${q.wave}. +power. The sun feeds the survivor.`);
+      setTimeout(() => this._qombatNext(), 1400);
+    } else {
+      const rec = whGetRecords();
+      const eaten = (rec.qombatEaten || 0) + 1;
+      whSetRecord('qombatEaten', eaten);
+      const vessel = this.getChar(q.fighterId);
+      const best = rec.qombat || q.wave;
+      this._modeWin(false, 'THE SUN EATS',
+        `${vessel ? vessel.name : 'Your soul'} is absorbed at wave ${q.wave + 1}. ` +
+        `${eaten} soul${eaten === 1 ? '' : 's'} now burn${eaten === 1 ? 's' : ''} inside Sun Rā. Best run: ${best} wave${best === 1 ? '' : 's'}.`,
+        [{ label: 'FEED THE SUN AGAIN', fn: () => { this.qombat = { wave: 0, fighterId: q.fighterId, hp: null, powerMult: 1 }; this._qombatNext(); } }]);
+    }
+  }
+
+  /* ---------- SOUL SURGE GAUNTLET (WH original, CANON.md §4) ----------
+     9 fights, one per soul. Each fight opens with that soul channeling
+     through you — the canon Soul Surge, bout-long. */
+  _surgeNext() {
+    const s = this.surge;
+    if (s.idx >= SURGE_BLESSINGS.length) { this._surgeClear(); return; }
+    const blessing = surgeBlessing(s.idx);
+    const player = this.getChar(s.fighterId);
+    const buffed = { ...player, stats: blessing.apply(player.stats || BASE_STATS) };
+    const diff = Math.min(0.95, 0.50 + s.idx * 0.05);
+    const foe = this._pickFoe(s.fighterId, null, diff);
+    const foeEntry = { ...foe, ai: scaledAi(foe, diff) };
+    this._surgeFoe = foeEntry;
+    this._badge(`SOUL SURGE GAUNTLET · ${blessing.soul.toUpperCase()} ${blessing.kanji} · FIGHT ${s.idx + 1}/9`);
+    this.ui.banner(blessing.line);
+    this.game.onMatchEnd = (won) => this._surgeEnd(won);
+    this._surgePlayer = buffed;
+    this.startFight(s.fighterId, null, { mode: 'surge', roundsToWin: 1, playerChar: buffed, enemyChar: foeEntry });
+  }
+  _surgeFight() { // rematch current soul
+    this.startFight(this.surge.fighterId, null,
+      { mode: 'surge', roundsToWin: 1, playerChar: this._surgePlayer, enemyChar: this._surgeFoe });
+  }
+  _surgeEnd(won) {
+    const s = this.surge;
+    if (won) {
+      s.idx++;
+      setTimeout(() => this._surgeNext(), 1300);
+    } else {
+      const b = surgeBlessing(s.idx);
+      this._modeWin(false, 'THE CHANNEL BREAKS',
+        `${b.soul.toUpperCase()} ${b.kanji} withdraws at fight ${s.idx + 1} of 9. The souls are patient. Channel again.`,
+        [{ label: 'CHANNEL AGAIN', fn: () => { this.surge = { idx: 0, fighterId: s.fighterId }; this._surgeNext(); } }]);
+    }
+  }
+  _surgeClear() {
+    this._modeWin(true, 'NINE SOULS, ONE VESSEL',
+      'All nine channeled. Rin, Byou, Tou, Sha, Kai, Jin, Retsu, Zen, Gyou — remembered, not borrowed. You are nearly whole.', []);
+  }
+
+  /* ---------- TRADER'S MIMIC (WH original, CANON.md §5) ----------
+     "The Trader's fighting style is mimicry — it wears the opponent's
+     moveset like a borrowed coat." 3 single-round bouts at the Phantom
+     Marketplace. Lose one and the Trader keeps your coat. */
+  _traderNext() {
+    const t = this.trader;
+    if (t.bout >= TRADER_CFG.bouts) { this._traderClear(); return; }
+    const player = this.getChar(t.fighterId);
+    if (t.bout === 0) {
+      // A borrowed coat: some other vessel's moveset.
+      const donor = this._pickFoe(t.fighterId, null, 0.5);
+      t._donorMoveset = (donor && donor.moveset) || 'jin';
+    }
+    const foeEntry = traderFoe(player, t.bout, t._donorMoveset);
+    this._traderFoe = foeEntry;
+    const lines = [
+      'BOUT 1 — the Trader wears a borrowed coat.',
+      'BOUT 2 — the Trader tries on YOUR coat.',
+      'BOUT 3 — the Trader wears it better.',
+    ];
+    this._badge(`TRADER'S MIMIC · ${lines[t.bout].split(' — ')[0]}`);
+    this.ui.banner(lines[t.bout] + ' Nothing here is real, but the prices are.');
+    this.game.onMatchEnd = (won) => this._traderEnd(won);
+    this._traderOpts = {
+      mode: 'trader', roundsToWin: TRADER_CFG.roundsToWin,
+      stage: TRADER_CFG.stage, enemyChar: foeEntry,
+    };
+    this.startFight(t.fighterId, null, this._traderOpts);
+  }
+  _traderFight() { // rematch current bout
+    this.startFight(this.trader.fighterId, null, this._traderOpts);
+  }
+  _traderEnd(won) {
+    const t = this.trader;
+    if (won) {
+      t.bout++;
+      setTimeout(() => this._traderNext(), 1300);
+    } else {
+      this._modeWin(false, 'THE TRADER KEEPS YOUR COAT',
+        `Fell at bout ${t.bout + 1} of ${TRADER_CFG.bouts}. The Trader smiles with its mouth. Its eyes smile only when it has already won.`,
+        [{ label: 'TAKE IT BACK', fn: () => { this.trader = { bout: 0, fighterId: t.fighterId }; this._traderNext(); } }]);
+    }
+  }
+  _traderClear() {
+    const n = (whGetRecords().traderWins || 0) + 1;
+    whSetRecord('traderWins', n);
+    this._modeWin(true, 'THE TRADER PAYS UP',
+      `Three bouts, one coat — yours. The Trader settles in forces and favors. Mimicries survived: ${n}.`, []);
   }
 
   /* ---------- shared helpers ---------- */

@@ -1,4 +1,6 @@
 import { ROSTER } from "./roster.js";
+// [LANE-I select-redesign] rebuilt select screen (Tekken 8-style, live 3D)
+import { initSelect } from "./cards.js";
 const $ = (s) => document.querySelector(s);
 const EMBED = new URLSearchParams(location.search).has("embed");
 if (EMBED) { document.body.classList.add("embed"); document.documentElement.style.background = "transparent"; }
@@ -39,19 +41,26 @@ $("#ds-open").href = SANDBOX_URL;
 nav($("#mode-cards"), MODES, ([en, sub, jp, d], i) =>
   `<div class="card ${i === 0 ? "on" : ""}"><b>${en}</b><em>${sub}</em><i>${jp}</i><p>${d}</p></div>`);
 
-const side = (r, who) => `<img src="${r.full}" class="${r.model ? "" : "sil"}"><div class="tag ${who}">
-  <span class="k">${r.kanji}</span><b>${r.name}</b><em>${r.soul}</em>
-  <small>ORIGIN · ${r.origin}</small>${r.model ? "" : "<small class='pend'>MODEL PENDING</small>"}</div>`;
-function renderSelect() {
-$("#sel-p1").innerHTML = side(P1, "p1"); $("#sel-p2").innerHTML = side(P2, "p2");
-nav($("#sel-grid"), ROSTER, (r) => `<div class="cell ${r.id === P1.id ? "c1" : ""} ${r.id === P2.id ? "c2" : ""}">
-  <img src="${r.bust}" class="${r.model ? "" : "sil"}"><span class="k">${r.kanji}</span><b>${r.name}</b></div>`);
-$("#sel-grid").querySelectorAll(".cell").forEach((c, i) => c.addEventListener("click", () => {
-  if (ROSTER[i].id === P1.id) return startVs();
-  P1 = ROSTER[i]; if (P2.id === P1.id) P2 = ROSTER[(i + 6) % ROSTER.length]; renderSelect(); renderVs();
-}));
+// [LANE-I select-redesign] OLD select grid DELETED here (the .sel-side/#sel-grid
+// renderer with repeated 2-3 renders, no names, page-level vertical scroll —
+// owner-flagged embarrassment). The #select section is now a mount point; the
+// rebuilt Tekken 8-style select screen lives in cards.js (initSelect: bisected
+// live-3D zone, contained card strip, attire slots, hints bar).
+let selectHandle = null;
+function mountSelect() {
+  const root = document.getElementById("select-root");
+  if (!root || selectHandle) return;
+  selectHandle = initSelect(root, {
+    initial: { p1: P1.id, p2: P2.id },
+    onFight: (p1, p2, attire1, attire2) => {
+      P1 = byId(p1) || P1; P2 = byId(p2) || P2;
+      renderVs();
+      startVs(attire1, attire2);
+    },
+    onBack: () => go("menu"),
+  });
 }
-renderSelect();
+function syncSelect() { if (selectHandle) selectHandle.setFighters(P1.id, P2.id); }
 
 const vs = (r) => `<img src="${r.full}" class="${r.model ? "" : "sil"}"><div class="vs-name"><span class="k">${r.kanji}</span>${r.name}<em>${r.soul}</em><small>${r.origin}</small>${r.model ? "" : "<small class='pend'> · MODEL PENDING</small>"}</div>`;
 function renderVs() { $("#vs-l").innerHTML = vs(P1); $("#vs-r").innerHTML = vs(P2); }
@@ -81,21 +90,24 @@ function route() {
   document.body.dataset.screen = s;
   const fr = $("#ds-frame");   // load the sandbox only while its page is open
   if (s === "devsandbox" && !fr.src) fr.src = SANDBOX_URL;
+  if (s === "select") mountSelect(); // [LANE-I select-redesign] mount rebuilt screen
 }
 addEventListener("hashchange", route); route();
 // Keyboard flow: Enter advances title→menu→modes→select→vs→hud, Esc pauses/backs.
+// [LANE-I select-redesign] the rebuilt select screen owns Enter/Esc on #select
+// (P1/P2 confirm flow, punch/kick attire rule) — the old skip-to-VS is gone.
 const FLOW = ["title", "menu", "modes", "select", "vs", "hud", "results"];
 addEventListener("keydown", (e) => {
   const s = document.body.dataset.screen, i = FLOW.indexOf(s);
-  if (e.key === "Enter" && s === "select") return startVs();
   if (s === "options" || s === "devsandbox") { if (e.key === "Escape") go(s === "devsandbox" ? "options" : "menu"); return; }
   if (EMBED && (s === "vs" || s === "hud" || s === "results")) { if (e.key === "Escape" && s === "hud") post({ type: "pause" }); return; }
-  if (e.key === "Enter" && i >= 0 && i < FLOW.length - 1) location.hash = FLOW[i + 1];
-  if (e.key === "Escape") location.hash = s === "hud" ? "pause" : s === "pause" ? "hud" : FLOW[Math.max(i - 1, 0)];
+  if (e.key === "Enter" && s !== "select" && i >= 0 && i < FLOW.length - 1) location.hash = FLOW[i + 1];
+  if (e.key === "Escape" && s !== "select") location.hash = s === "hud" ? "pause" : s === "pause" ? "hud" : FLOW[Math.max(i - 1, 0)];
 });
 
 // ---- interactivity (standalone + embedded in game/) ----
-function startVs() { go("vs"); if (EMBED) setTimeout(() => post({ type: "fight", p1: P1.id, p2: P2.id }), 1800); }
+// [LANE-I select-redesign] attire slots now ride along (T8: slot chosen on select)
+function startVs(attire1, attire2) { go("vs"); if (EMBED) setTimeout(() => post({ type: "fight", p1: P1.id, p2: P2.id, attire1, attire2 }), 1800); }
 const bind = (sel, fn) => document.querySelectorAll(sel).forEach((el, i) => el.addEventListener("click", () => fn(i)));
 document.querySelector('section[data-screen="title"]').addEventListener("click", () => go("menu"));
 bind("#menu-list a", (i) => { if (i === 0 || i === 1) go("modes"); else if (i === 2) { P2 = P1; go("select"); } else if (i === 5) go("options"); });
@@ -123,7 +135,7 @@ function hud(d) {
 addEventListener("message", (e) => {
   const m = e.data || {}; if (m.src !== "wh-game") return;
   if (m.type === "show") go(m.screen);
-  if (m.type === "fighters") { P1 = byId(m.p1) || P1; P2 = byId(m.p2) || P2; renderSelect(); renderVs();
+  if (m.type === "fighters") { P1 = byId(m.p1) || P1; P2 = byId(m.p2) || P2; syncSelect(); renderVs(); // [LANE-I select-redesign] old renderSelect() deleted
     $("#hud-n1").innerHTML = `${P1.name}<i>${P1.kanji}</i>`; $("#hud-n2").innerHTML = `<i>${P2.kanji}</i>${P2.name}`; }
   if (m.type === "hud") hud(m);
   if (m.type === "combo") { const fx = document.querySelector(".hud-fx"); fx.querySelector("b").textContent = m.n; fx.classList.remove("pop"); void fx.offsetWidth; fx.classList.add("pop"); }
