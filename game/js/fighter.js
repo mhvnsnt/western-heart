@@ -301,7 +301,8 @@ export class Fighter {
     const facingAttacker = Math.sign(attacker.root.position.x - this.root.position.x) === this.facing;
     // Throws are unblockable — blocking does nothing against a grab.
     if (this.isBlocking() && facingAttacker && !move.unblockable) {
-      const chip = move.damage * attacker.stats.power * 0.12 / this.stats.defense;
+      // FIRE force (modes lane): strikes chip through guard — chipMult on attacker stats.
+      const chip = move.damage * attacker.stats.power * 0.12 * (attacker.stats.chipMult || 1) / this.stats.defense;
       this.hp = Math.max(0, this.hp - chip);
       this.stun = 0.18 + move.damage * 0.01;
       this.vx = Math.sign(this.root.position.x - attacker.root.position.x) * move.knock * 0.5;
@@ -338,6 +339,7 @@ export class Fighter {
     node.getWorldPosition(_v1);
     let r = this.attackName === 'surge' ? 1.0 : 0.5;
     if (this.attackName === 'grab') r = 0.95; // generous grab sphere
+    r *= (this.stats.reachMult || 1); // WOOD force (modes lane): reach extends
     return { x: _v1.x, y: _v1.y, z: _v1.z, r, move: this.attack };
   }
   getHurtboxes() {
@@ -353,6 +355,10 @@ export class Fighter {
   /* ---------------- per-frame update ---------------- */
   update(dt, opponent) {
     this.stateT += dt;
+    // METAL force (modes lane): wounds close as you fight.
+    if (this.stats.regenPerSec && this.hp > 0 && this.hp < this.maxHp) {
+      this.hp = Math.min(this.maxHp, this.hp + this.stats.regenPerSec * dt);
+    }
     if (this.stun > 0 && this.state !== 'ko') this.stun -= dt;
     if (this.invuln > 0) this.invuln -= dt;
     if (this._comboTimer > 0) { this._comboTimer -= dt; if (this._comboTimer <= 0) this.combo = 0; }
