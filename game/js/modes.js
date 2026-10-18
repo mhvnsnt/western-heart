@@ -412,6 +412,7 @@ export class ModeController {
 
   /* ---------- mode entry (called from menu buttons) ---------- */
   clearState() {
+    if (this.timeattack && this.timeattack._watch) { clearInterval(this.timeattack._watch); }
     this.mode = null;
     this.vsStep = 0; this.vsP1 = null; this._lastVersus = null;
     this.arcade = null; this.story = null; this.training = null;
@@ -419,7 +420,6 @@ export class ModeController {
     this.qombat = null; this.surge = null; this.trader = null;
     this._teamPending = [];
     if (this._teamTray) { this._teamTray.remove(); this._teamTray = null; }
-    if (this.timeattack && this.timeattack._watch) { clearInterval(this.timeattack._watch); }
     this.game.onMatchEnd = null;
     this.game.training = false;
     this._badge('');
