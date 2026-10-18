@@ -1,0 +1,37 @@
+# findings-audit15.txt — DOA4 deep-RE Audit 15 (prime candidate decompile + unowned re-check)
+# Run: 2026-10-18 ~10:30 CDT, headless Ghidra 12.1.4 (Doa4Audit15.java), program default_pe.bin, -noanalysis
+# Raw output in /tmp/a15.txt (extracted from /tmp/audit15full.log).
+# === KEY FINDING: the Audit12 lead functions are THUNKS — the real code is in 00dfxxxx ===
+FUN_00b91ec8 body=[[00b91ec8,00b91ecf]] (2 insns): mflr r12; bl 0x00dfd4a8
+  Entry-bytes (64B) continue with a real prologue (stwu r1, mr r4/r5, lwz...)
+  AFTER the bl — so 0x00b91ec8 is a THUNK/redirect to FUN_00dfd4a8, NOT the decrypt
+  routine itself. Audit12's "SHA-fed double call with mode=1" calls into this thunk;
+  the REAL decrypt candidate is FUN_00dfd4a8 in the 00dfxxxx region.
+FUN_00b92120 body=[[00b92120,00b92127]] (2 insns): mflr r12; bl 0x00dfd4c8
+  Same shape: thunk to FUN_00dfd4c8 (sibling routine in the same 00dfxxxx cluster).
+FUN_00b8d530 body=[[00b8d530,00b8d537]] (2 insns): mflr r12; then bad data —
+  Ghidra truncated it; likely another thunk or a misbounded function. Entry bytes
+  show real code (stwu r1,-16(r1), lwz, bl...).
+FUN_00b8973c (26 insns): confirmed SHA-compute wrapper as in Audit12 (slot34 then
+  slot33, 8x u16 out). crypto-flavor xor/rot/mul counts = 0 across all four — but
+  MEANINGLESS since three of the four "functions" are 2-insn stubs; the counts do
+  not reflect the real routines.
+--- 5 unowned call sites (STILL unowned after Audit13's 85.6% sweep) ---
+  0xb8c7b4 func=(none) insn=bl 0x00f58974 (Sha)
+  0xb92058 func=(none) insn=bl 0x00f58974 (Sha)
+  0xb91fdc func=(none) insn=bl 0x00f58974 (Sha)
+  0xb8dc94 func=(none) insn=bl 0x00f58984 (Sha)
+  0xb8df88 func=(none) insn=bl 0x00f58d94 (XamContentOpenFile)
+  The bl instructions EXIST (disassembled) but no Function object contains them.
+  Sweeping more will not fix this — the fix is explicit createFunction() at these
+  sites. Note 00b8c7b4 sits just past FUN_00b8c784's [00b8c784,00b8c79b] body —
+  likely its truncated tail or the next function.
+# === verdict ===
+- PRIME LEAD MOVED: FUN_00b91ec8 -> real target FUN_00dfd4a8; FUN_00b92120 ->
+  real target FUN_00dfd4c8. The 00dfxxxx region is the actual crypto neighborhood
+  and has never been analyzed (all prior attention was on 00b8/00b9 thunks).
+- Ghidra function boundaries in the 00b8xxxx/00b9xxxx crypto cluster are
+  unreliable (2-insn stubs, truncated bodies, 5 unowned call sites). All decompile
+  verdicts on these stubs are provisional until the real bodies are bounded.
+- Next (Audit16): createFunction() at the 5 unowned sites + disassemble/decompile
+  the real targets 00dfd4a8 and 00dfd4c8.
