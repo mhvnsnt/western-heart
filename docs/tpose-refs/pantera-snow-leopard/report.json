@@ -1,28 +1,45 @@
 {
-  "src": "roster/pantera/attires/snow-leopard/pantera-snow-leopard.glb",
-  "attire_slot": 3,
-  "display_name": "Pantera \u2014 Snow Leopard",
-  "facing": "-Y (faceY variant used)",
-  "camera": "front on -X, ortho 2048x2048, white bg",
-  "ortho_scale": "1.12 x max(span)",
-  "reskin": {
-    "source": "roster/pantera/attires/classic/pantera-classic.glb (T7 King P1, Mixamo rig)",
-    "changes": [
-      "tights purple -> blue (image 44, HSV hue shift; black panther decal + red claws kept)",
-      "head/mask black -> white with snow-leopard rosette spots (image 50 regenerated; image 11 whitened)",
-      "eyes yellow -> blue (image 5, HSV hue shift)",
-      "nose -> pink (image 11, UV-located via gradient render)"
-    ],
-    "untouched": "geometry, rig, black trunks + red PANTERA, boots, gloves, specular/normal maps"
-  },
-  "own_eyes_verified": [
-    "blue tights",
-    "white spotted head",
-    "blue eyes",
-    "pink nose",
-    "arms attached, T-pose",
-    "faces camera"
+ "src": "pantera-snow-leopard-decal.glb",
+ "armatures": 1,
+ "posed": [
+  "LeftArm",
+  "RightArm",
+  "LeftForeArm",
+  "RightForeArm"
+ ],
+ "textures": {
+  "recovered": 0,
+  "missing": [
+   "Modelarms_Material018",
+   "Modelbelt2_Material019",
+   "Modelboots1_Material020",
+   "Modelboots2_Material021",
+   "Modelboots3_Material022",
+   "Modelbuckles_Material023",
+   "Modeleyein_Material002",
+   "Modeleyes_Material003",
+   "Modelfingers_Material024",
+   "Modelfur3out_Material036",
+   "Modelgloveparts_Material025",
+   "Modelhead_Material005",
+   "Modellogo_Material041",
+   "Modelneck_Material026",
+   "Modelpants_Material027",
+   "Modelteeth_Material004",
+   "Modelthighs_Material029",
+   "Modeltorso_Material030"
+  ]
+ },
+ "bbox": [
+  [
+   -0.23666928708553314,
+   -0.9795340895652771,
+   5.294789957588364e-07
   ],
-  "render_script_note": "used fixed faceY ordering (pose-then-rotate); repo script unchanged",
-  "date": "2026-10-17"
+  [
+   0.23666946589946747,
+   0.9795334339141846,
+   1.7499995231628418
+  ]
+ ]
 }
