@@ -155,6 +155,20 @@ convert → scale → render → own-eyes → release → wire.)
   green pants, wrist ropes, sandals. Unmistakable.
 - Wired: assets.js += dio; roster-full.js dio.model steve-fox→dio.
 
+### 2026-10-18 — BRUNO (Miguel Caballero Rojo) ✅ WIRED
+- Source: `miguel-t7-sfmlab.zip` (tekken-models-batch-3). SFMLab Source-engine port
+  of T7 Miguel. Two MDLs: miguel_bodygroups.mdl (clothing: jacket, pants, gloves,
+  belt) + miguel_nude.mdl (body+head). License: community rip.
+- Pipeline: SourceIO direct import_model() bypass. Bodygroups imported fine;
+  nude OOM-killed with textures → re-imported with import_textures=False (worked).
+  Merged mg_head.smd (4,887v) from nude into bodygroups via bpy.ops.wm.append.
+  T7→Mixamo rename → game/assets/models/bruno.glb (40MB, TEXTURED).
+  Gate: PASS.
+- Render: probe → facing = -Y. 2048px front T-pose, white void, fingertips clear.
+  Own-eyes: Miguel's curly blonde hair, face, red matador jacket (fur collar,
+  embroidery), white shirt, necklaces, striped pants, boots. Complete.
+- Wired: assets.js += bruno; roster-full.js bruno.model pantera→bruno.
+
 ### 2026-10-18 — REALIZZT/KUTZ (Brad Burns) ⚠️ DATA EXTRACTED, FORMAT NEEDS RE
 - Source: `braitm.farc` (47MB) + `bra.farc` (761B) from vf5-ps3-v1 release
   (Virtua Fighter 5 PS3). "bra" = Brad Burns. The VF5 teardown only had aki/akixx;

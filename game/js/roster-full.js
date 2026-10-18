@@ -77,7 +77,7 @@ export const FULL_ROSTER = [
     colors: { suit: 0xffd700, trim: 0xff6b00 }, style: 'Capoeira', archetype: 'Rushdown' },
   { id: 'torch', name: 'TORCH', title: 'Fire Assassin', base: 'Anna', moveset: 'jin', model: 'torch', tintStrength: 0.6,
     colors: { suit: 0x8a1a1a, trim: 0xff8800 }, style: 'Assassin', archetype: 'Tricky' },
-  { id: 'bruno', name: 'BRUNO', title: 'Matador', base: 'Miguel', moveset: 'bryan', model: 'pantera', tintStrength: 0.25,
+  { id: 'bruno', name: 'BRUNO', title: 'Matador', base: 'Miguel', moveset: 'bryan', model: 'bruno', tintStrength: 0.25,
     colors: { suit: 0x5a1a1a, trim: 0xcc3333 }, style: 'Brawler', archetype: 'Power' },
   { id: 'negativo', name: 'N3GΔTIV0', title: 'Galactic Bounty Hunter', base: 'Negan', moveset: 'bryan', model: 'pantera', tintStrength: 0.25,
     colors: { suit: 0x0a0a0a, trim: 0x00ff00 }, style: 'Brawler', archetype: 'Intimidation' },

@@ -50,6 +50,7 @@ const MODEL_URLS = {
   torch: 'assets/models/torch.glb',
   michiko: 'assets/models/michiko.glb',
   dio: 'assets/models/dio.glb',
+  bruno: 'assets/models/bruno.glb',
   // Created fighters use the Soldier.glb base from the CAW suite.
   // Relative path works on GitHub Pages (game/ -> customization/).
   custom: '../customization/create-fighter/assets/Soldier.glb',
