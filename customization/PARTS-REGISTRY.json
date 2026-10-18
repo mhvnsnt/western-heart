@@ -80,6 +80,22 @@
         "reskinned_glb": "roster/jin/attires/bloodline-ember/jin-bloodline-ember.glb",
         "source_glb": "game/assets/models/jin.glb"
       }
+    },
+    "doc-frank": {
+      "character": "Doc Frank \u2014 The Builder Soul (Western Heart roster/doc-frank)",
+      "eye": {
+        "material": "eye material (baseColor)",
+        "replaces_texture": "eyes_d",
+        "texture_size": [
+          128,
+          128
+        ]
+      },
+      "reskin": {
+        "manifest": "customization/reskin-library/doc-frank/MANIFEST.json",
+        "reskinned_glb": "roster/doc-frank/attires/machine-shop/doc-frank-machine-shop.glb",
+        "source_glb": "game/assets/models/doc-frank.glb"
+      }
     }
   },
   "created": "2026-10-18",
@@ -131,6 +147,20 @@
       "note": "Jin's saved eye variants: original brown (default) + yellow tiger (owner's universal 'I like' variant, composited onto Jin's native eye). Swappable, never overwritten.",
       "part_class": "texture_part",
       "path": "customization/parts/jin-eyes/"
+    },
+    "reskin-library-doc-frank": {
+      "kind": "reskin | texture_part",
+      "manifest": "customization/reskin-library/doc-frank/MANIFEST.json",
+      "note": "Doc Frank 'Machine Shop' \u2014 first custom look (owner 2026-10-18). Builder workwear: oil-stained charcoal coat, brass/copper tie, dark brown workwear. Originals saved as restore points.",
+      "part_class": "texture_part",
+      "path": "customization/reskin-library/doc-frank/"
+    },
+    "doc-frank-eyes": {
+      "kind": "eye",
+      "manifest": "customization/parts/doc-frank-eyes/MANIFEST.json",
+      "note": "Doc Frank's saved eye variants: original blue-green (default) + yellow tiger (owner's universal 'I like' variant, composited onto Doc's native eye). Swappable, never overwritten.",
+      "part_class": "texture_part",
+      "path": "customization/parts/doc-frank-eyes/"
     }
   },
   "parts": [
