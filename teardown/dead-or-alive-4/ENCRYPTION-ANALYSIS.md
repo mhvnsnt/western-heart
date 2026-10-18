@@ -152,3 +152,42 @@ The 8-byte repeating ciphertext pattern is the strongest lead. A cryptographer s
 The encryption is a per-file keyed XOR stream cipher. The 4-byte keys are recovered, but the full keystream generation remains unknown. The keys are not stored in the binary and are not simple filename hashes — they are likely derived via a custom algorithm or decrypted from an obfuscated table at runtime.
 
 **This is a solvable problem** but requires either dynamic analysis (Xenia) or deeper Ghidra work (data flow/emulation) than static xref analysis could provide.
+
+## Deep-RE audit continuation — 2026-10-18 (watchdog-resumed)
+
+**Context:** Prior teardown delivered everything except the 6 encrypted AFS header
+keystreams (chrone/chrtwo/chrthree/anm/mot/stg). 129 triangulated GLBs merged via
+PR #248. This pass continued the header-keystream deep-RE.
+
+**What ran (05:55–06:25 CDT):** 8 headless Ghidra audit scripts against the
+decrypted PE (default_pe.bin) in project `~/workspace/ghidra-projects/doa4/`
+(script copies banked in `tools/ghidra-audits/`):
+- Doa4Audit1: string-driven decrypt-path hunt (AFS filename strings, `cache:\*.afs`,
+  `%ls.anm%d.afs` format strings; pointer-table detection; S-box VA 0x822f06d0 check)
+- Doa4Audit2: idata externals + xref counts; `lis *,0x61` byte scan; rebased S-box lead
+- Doa4Audit3: surgical strikes — disasm/decompile around 007725cc (lone lis-0x61
+  site); `lis *,0x4146` (AFS magic construction) scan; 6 file keys as BE32 scan;
+  `bl`-to-thunk scan; `d:\*.afs` string xrefs
+- Doa4Audit4: disasm around bl->thunk call sites; decompile callers to identify
+  the 10 externals (file I/O? alloc? crypto?)
+- Doa4Audit5: (script present; see source)
+- Doa4Audit6: `lis *,0x8261` in .text (unrelocated refs to runtime 0x8261xxxx
+  .rdata strings), flagged when followed by ori/addi with 0xe8xx–0xe9xx
+  (AFS filename string offsets)
+- Doa4Audit6b: (script present; see source)
+- Doa4Audit7: lis/ori|addi pairs building runtime addresses in [0x8261e800,
+  0x8261ec00] (AFS filename strings)
+
+**Outcome:** Cron execution timeout killed the worker at 06:25 CDT mid-Audit7.
+The audit SCRIPT artifacts survived (banked here); the audits' FINDINGS output
+was lost in the kill (never committed). Ghidra project saved with the 7 new
+scripts + newly disassembled regions.
+
+**Resume instructions (next deep-RE turn):**
+1. Rerun Doa4Audit1–7 headless against `~/workspace/ghidra-projects/doa4/` —
+   each script prints findings to stdout; capture each to a findings file.
+2. COMMIT FINDINGS EARLY AND OFTEN (after EACH audit) — a timeout kill must
+   never again lose uncommitted output. Net-zero rule: audit text is small.
+3. Update this file's Conclusion with whatever the audits prove about the
+   keystream generator, and chase Option B (data-flow from file-read syscalls
+   to the keystream routine) before Option C cryptanalysis.
