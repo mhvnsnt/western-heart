@@ -1,5 +1,5 @@
 /* ============================================================
-   WESTERN HEART — Stage system (Lane 4: stage/environment integration)
+   WESTERN HEART — Stage system (Lane E: ARENAS)
    • Registry of every playable stage: 8 canon Eastern Mind lands
      (per CANON.md: Tong-Nou, the Five Lands, Phantom Marketplace,
      plus the Shrine of the Blade) + 15 Tekken 3 retro arenas built
@@ -7,22 +7,33 @@
    • Every stage: collision bounds (wallDistance), spawn points,
      lighting rig, floor, backdrop. Builders return an update hook
      for animated elements (flicker, drift, ripple).
-   • Tekken 3 panoramas are untextured TMD-extracted shells — they
-     render tinted with per-stage palettes until the texture-atlas
-     pipeline (gapfill lane) lands; UVs are preserved in the loader.
+   • Tekken 3 panoramas are TEXTURED: per-stage atlases
+     (game/assets/stages/t3/stg_<letter>_atlas.png) decoded from the
+     real stage texture ARCs (BNS 36-50) by the texture-atlas pipeline
+     (docs/arenas/t3-texture-pipeline/). TMD per-packet RGB rides as
+     vertex colors. If an atlas fails to load, the builder falls back
+     to the palette tint (panoTint) so the stage still renders.
    ============================================================ */
 import * as THREE from 'three';
 
 /* ---------------- minimal OBJ loader ----------------
-   Tekken 3 panoramas use only v / vt / f (triangles, 1-indexed,
-   faces as v/vt). No materials, no groups — a tiny parser beats
+   Tekken 3 panoramas use v / vt / f (triangles, 1-indexed, faces as
+   v/vt). Textured panoramas additionally carry TMD vertex colors on
+   the v lines (v x y z r g b) — parsed when present, ignored by old
+   tint-only shells. No materials, no groups — a tiny parser beats
    vendoring all of OBJLoader for this. */
 export function parseStageOBJ(text) {
-  const pos = [], uv = [], outP = [], outU = [];
+  const pos = [], uv = [], col = [], outP = [], outU = [], outC = [];
+  let hasColor = false;
   for (const line of text.split('\n')) {
     const c = line.charAt(0);
     if (c === 'v' && line.charAt(1) === ' ') {
       const p = line.split(/\s+/); pos.push(+p[1], +p[2], +p[3]);
+      if (p.length >= 7 && p[4] !== '') { // v x y z r g b (TMD vertex colors)
+        col.push(+p[4], +p[5], +p[6]); hasColor = true;
+      } else {
+        col.push(1, 1, 1);
+      }
     } else if (c === 'v' && line.charAt(1) === 't') {
       const p = line.split(/\s+/); uv.push(+p[1], +p[2]);
     } else if (c === 'f') {
@@ -30,6 +41,7 @@ export function parseStageOBJ(text) {
       for (let i = 1; i < p.length; i++) {
         const [vi, vti] = p[i].split('/').map(Number);
         outP.push(pos[(vi - 1) * 3], pos[(vi - 1) * 3 + 1], pos[(vi - 1) * 3 + 2]);
+        outC.push(col[(vi - 1) * 3], col[(vi - 1) * 3 + 1], col[(vi - 1) * 3 + 2]);
         if (vti && uv.length) outU.push(uv[(vti - 1) * 2], uv[(vti - 1) * 2 + 1]);
       }
     }
@@ -38,6 +50,8 @@ export function parseStageOBJ(text) {
   g.setAttribute('position', new THREE.Float32BufferAttribute(outP, 3));
   if (outU.length === outP.length / 3 * 2)
     g.setAttribute('uv', new THREE.Float32BufferAttribute(outU, 2));
+  if (hasColor && outC.length === outP.length)
+    g.setAttribute('color', new THREE.Float32BufferAttribute(outC, 3));
   g.computeVertexNormals();
   return g;
 }
@@ -310,11 +324,12 @@ export const STAGES = [
 ];
 
 /* ---------------- Tekken 3 retro stages ----------------
-   Real teardown geometry: panorama shells extracted from T3 TMD
-   records (teardown/tekken3/stages/{letter}/stg_{letter}_panorama.obj).
-   Home-fighter attribution from each stage.json. The shells are
-   untextured, so each gets a distinct palette + lighting identity;
-   UVs are preserved for the future texture-atlas pipeline. */
+   Real teardown geometry + real teardown textures: panorama shells
+   from T3 TMD records (teardown/tekken3/stages/{letter}/) with
+   texture atlases decoded from the stage texture ARCs (BNS 36-50)
+   by docs/arenas/t3-texture-pipeline/. TMD per-packet RGB rides as
+   vertex colors; panoTint remains as the no-texture fallback.
+   Home-fighter attribution from each stage.json. */
 const T3_RETRO = [
   // letter, name, fighters, palette notes, panoTint, floor kind/tint, sky, fog, sun, hemi
   ['a', 'PAUL / BRYAN', 'Paul, Bryan', '#7a5a3a', 'stone', '#a89a90',
@@ -355,7 +370,7 @@ for (const [letter, label, fighters, panoTint, floorKind, floorTint, sky, fogC, 
     tier: 'TEKKEN RETRO',
     universe: 'Tekken 3 (legacy)',
     element: 'Retro',
-    description: `Real Tekken 3 panorama geometry (${fighters}). TMD-extracted shell, untextured - palette reconstruction.`,
+    description: `Real Tekken 3 panorama (${fighters}) — real TMD geometry with the decoded texture atlas.`,
     dims: { width: 16.8, depth: 6.0, wallDistance: 8.4 },
     spawns: { p1: -3.5, p2: 3.5 },
     lighting: {
@@ -369,6 +384,7 @@ for (const [letter, label, fighters, panoTint, floorKind, floorTint, sky, fogC, 
     swatch: [sky[0][1], sunC],
     builder: 't3retro',
     obj: `assets/stages/t3/stg_${letter}_panorama.obj`,
+    map: `assets/stages/t3/stg_${letter}_atlas.png`,
     panoTint,
     homeFighters: fighters,
   });
@@ -831,15 +847,32 @@ function buildMarketplace(g, def, api) {
   return { updaters, skyTex, fog };
 }
 
-/* ---- TEKKEN RETRO: real T3 panorama shell + palette floor ---- */
+/* ---- TEKKEN RETRO: real T3 panorama shell + decoded texture atlas ---- */
 async function buildT3Retro(g, def, api) {
   const { updaters, skyTex, fog } = buildBase(g, def, api);
   try {
     const geo = await fetchStageOBJ(def.obj);
     geo.scale(0.015, 0.015, 0.015); // T3 units (~±1200) -> game units
-    const shell = new THREE.Mesh(geo, new THREE.MeshBasicMaterial({
-      color: _hex(def.panoTint), side: THREE.DoubleSide, fog: true,
-    }));
+    let mat = null;
+    if (def.map) {
+      try {
+        const tex = await new THREE.TextureLoader().loadAsync(def.map);
+        tex.colorSpace = THREE.SRGBColorSpace;
+        tex.anisotropy = 4;
+        mat = new THREE.MeshBasicMaterial({
+          map: tex, vertexColors: !!geo.getAttribute('color'),
+          side: THREE.DoubleSide, fog: true,
+        });
+      } catch (e) {
+        console.warn(`[WH] stage ${def.id}: atlas ${def.map} failed (${e.message}), tint fallback`);
+      }
+    }
+    if (!mat) { // untextured fallback: palette-tinted shell
+      mat = new THREE.MeshBasicMaterial({
+        color: _hex(def.panoTint), side: THREE.DoubleSide, fog: true,
+      });
+    }
+    const shell = new THREE.Mesh(geo, mat);
     // The TMD panorama shell spans y<=0 (below the floor plane) — lift it
     // so its midsection forms a visible backdrop ridge above the horizon.
     shell.position.y = 6;
