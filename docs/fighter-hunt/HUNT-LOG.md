@@ -72,3 +72,30 @@ convert → scale → render → own-eyes → release → wire.)
   anywhere (textures-only zip + movelist exist; 129 triangulated GLBs on main
   are unidentified chrone/chrtwo/chrthree/mot decodes; keystream deep-RE ongoing).
   NOT duplicating. Will re-check at end of lane; if Bass mesh appears, convert.
+
+### 2026-10-18 — STAR (Christie Monteiro) ✅ WIRED
+- Source: `christie-monteiro-2p.7z` (tekken-models-batch-3 release). GTA San Andreas
+  DFF+TXD port of TTT2 Christie 2P outfit by "4L13NW4R3_2021"/H4ckOptimus.
+  License: community game rip (fan port of commercial asset, not for sale).
+  Character verified by own eyes on archive preview photo (01.png) + T-pose render.
+- Pipeline (proven, reusable for anna/katarina DFFs):
+  1. DragonFF Blender addon → import DFF (mesh 12,462 verts + 32-bone GTA skeleton).
+  2. Rename bones GTA→Mixamo (Pelvis→Hips, Spine 1→Spine, Spine 2→Spine1,
+     Bip01 L Clavicle→LeftShoulder, L UpperArm→LeftArm, L ForeArm→LeftForeArm,
+     L Hand→LeftHand, L Thigh→LeftUpLeg, L Calf→LeftLeg, L Foot→LeftFoot,
+     L Toe0→LeftToeBase, mirror for right; strip leading spaces).
+  3. Create Spine2 bone (child of Spine1, parent of Neck) — fighter.js hard-requires
+     Hips + Spine2 (unguarded getWorldPosition); chains are guarded.
+  4. Rename vertex groups to match. Export GLB (game/assets/models/star.glb, 905KB).
+- Gate check: valid glTF, 1 skinned mesh, 33 joints, Mixamo bones (Hips/Spine2/Head ✓),
+  ~1.75m. PASS. Textures: TXD holds 33 real textures but DragonFF TXD import is
+  too heavy for this VM (SIGKILLed twice); shipping UNTEXTERED (gray clay) now,
+  texture pass as follow-up. Honest flag in log, not hidden.
+- Render: batch_render.py probe (4-axis) → facing = -Y (nose test was wrong; own-eyes
+  on front/back pair) → 2048px front T-pose, white void, full arm reach, fingertips
+  clear. Own-eyes verified: Christie 2P silhouette (jacket+ring, strappy bottom,
+  gladiator sandals, long hair). Render at /tmp/fh_final2/christie-star_front.png
+  (will attach to release).
+- Wired: assets.js MODEL_URLS += star; roster-full.js star.model pantera→star.
+- NOTE: worktree ~/workspace/wh-fighter-hunt was wiped mid-lane (disk cleanup or
+  restart); branch was safe on origin (pushed). Recreated sparse worktree, no loss.

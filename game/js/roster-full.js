@@ -73,7 +73,7 @@ export const FULL_ROSTER = [
     colors: { suit: 0xcccccc, trim: 0x00ffcc }, style: 'Robot Combat', archetype: 'Zoner' },
   { id: 'michiko', name: 'MICHIKO', title: 'Savate Queen', base: 'Katarina', moveset: 'jin', model: 'steve-fox', tintStrength: 0.6,
     colors: { suit: 0x8a1a4a, trim: 0xff6b9d }, style: 'Savate', archetype: 'Rushdown' },
-  { id: 'star', name: 'STAR', title: 'KAI Splinter', base: 'Christie', moveset: 'xiaoyu', model: 'pantera', tintStrength: 0.25,
+  { id: 'star', name: 'STAR', title: 'KAI Splinter', base: 'Christie', moveset: 'xiaoyu', model: 'star', tintStrength: 0.25,
     colors: { suit: 0xffd700, trim: 0xff6b00 }, style: 'Capoeira', archetype: 'Rushdown' },
   { id: 'torch', name: 'TORCH', title: 'Fire Assassin', base: 'Anna', moveset: 'jin', model: 'steve-fox', tintStrength: 0.6,
     colors: { suit: 0x8a1a1a, trim: 0xff8800 }, style: 'Assassin', archetype: 'Tricky' },
