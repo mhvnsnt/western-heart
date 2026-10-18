@@ -1,0 +1,452 @@
+openjdk version "21.0.12.1" 2026-08-18 LTS
+OpenJDK Runtime Environment Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS)
+OpenJDK 64-Bit Server VM Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS, mixed mode)
+INFO  Using log config file: jar:file:/home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml (LoggingInitialization)  
+INFO  Using log file: /root/.config/ghidra/ghidra_12.1.4_PUBLIC/application.log (LoggingInitialization)  
+INFO  Loading user preferences: /root/.config/ghidra/ghidra_12.1.4_PUBLIC/preferences (Preferences)  
+INFO  Searching for classes... (ClassSearcher)  
+INFO  Ignoring class 'ghidra.app.plugin.core.analysis.MipsPreAnalyzer' from '/home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Extensions/ghidra_psx_ldr/lib/ghidra_psx_ldr.jar'. Already found at '/home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Processors/MIPS/lib/MIPS.jar'. (ClassSearcher)  
+INFO  Class search complete (3134 ms) (ClassSearcher)  
+INFO  Initializing SSL Context (DefaultSSLContextInitializer)  
+INFO  Initializing Random Number Generator... (SecureRandomFactory)  
+INFO  Random Number Generator initialization complete: NativePRNGNonBlocking (SecureRandomFactory)  
+INFO  Trust manager disabled, cacerts have not been set (DefaultTrustManagerFactory)  
+INFO  Headless startup complete (13661 ms) (AnalyzeHeadless)  
+INFO  Class searcher loaded 60 extension points (20 false positives) (ClassSearcher)  
+INFO  HEADLESS Script Paths:
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/Decompiler/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/FileFormats/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Debug/Debugger-rmi-trace/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/DecompilerDependent/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Extensions/ghidra_psx_ldr/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Processors/8051/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Processors/Atmel/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Processors/PIC/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Debug/Debugger/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/MicrosoftCodeAnalyzer/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Processors/DATA/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/PDB/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/BytePatterns/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/BSim/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/FunctionID/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/PyGhidra/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/WildcardAssembler/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/Base/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/SystemEmulation/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/GnuDemangler/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Processors/JVM/ghidra_scripts
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/VersionTracking/ghidra_scripts
+    /home/hatch/workspace/ghidra-projects/doa4
+    /home/hatch/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC/Ghidra/Features/SwiftDemangler/ghidra_scripts (HeadlessAnalyzer)  
+INFO  HEADLESS: execution starts (HeadlessAnalyzer)  
+INFO  Opening existing project: /home/hatch/workspace/ghidra-projects/doa4/DOA4 (HeadlessAnalyzer)  
+INFO  Opening project: /home/hatch/workspace/ghidra-projects/doa4/DOA4 (HeadlessProject)  
+INFO  REPORT: Processing project file: /default_pe.bin (HeadlessAnalyzer)  
+INFO  REPORT: Execute script: Doa4Audit4  (HeadlessAnalyzer)  
+INFO  SCRIPT: /home/hatch/workspace/ghidra-projects/doa4/Doa4Audit4.java (HeadlessAnalyzer)  
+INFO  Doa4Audit4.java> === DOA4 AUDIT 4 === (GhidraScript)  
+INFO  Doa4Audit4.java> --- thunk bodies --- (GhidraScript)  
+INFO  Doa4Audit4.java> thunk 0xf58764:  (GhidraScript)  
+INFO  Doa4Audit4.java> thunk 0xf58774:  (GhidraScript)  
+INFO  Doa4Audit4.java> thunk 0xf58794:  (GhidraScript)  
+INFO  Doa4Audit4.java> thunk 0xf587a4:  (GhidraScript)  
+INFO  Doa4Audit4.java> thunk 0xf587c4:  (GhidraScript)  
+INFO  Doa4Audit4.java> thunk 0xf58984:  (GhidraScript)  
+INFO  Doa4Audit4.java> thunk 0xf58a34:  (GhidraScript)  
+INFO  Doa4Audit4.java> thunk 0xf58c84:  (GhidraScript)  
+INFO  Doa4Audit4.java> thunk 0xf588c4:  (GhidraScript)  
+INFO  Doa4Audit4.java> thunk 0xf59154:  (GhidraScript)  
+INFO  Doa4Audit4.java> 
+=== caller @ 00b89748 === (GhidraScript)  
+INFO  Doa4Audit4.java> func start guess: 00b8973c (GhidraScript)  
+INFO  Doa4Audit4.java> func: FUN_00b8973c size~104 (GhidraScript)  
+WARN  Decompiling 00b8973c, pcode error at 00b897a4: Unable to resolve constructor at 00b897a4 (DecompileCallback)  
+INFO  Doa4Audit4.java> --- decomp (712 chars) ---
+
+/* WARNING: Control flow encountered bad instruction data */
+
+void FUN_00b8973c(undefined2 *param_1)
+
+{
+  undefined1 auStack_30 [16];
+  undefined2 uStack_20;
+  undefined2 uStack_1e;
+  undefined2 uStack_1c;
+  undefined2 uStack_1a;
+  undefined2 uStack_18;
+  undefined2 uStack_16;
+  undefined2 uStack_14;
+  undefined2 uStack_12;
+  
+  func_0x00f58984(auStack_30);
+  func_0x00f58974(auStack_30,&uStack_20);
+  *param_1 = uStack_20;
+  param_1[1] = uStack_1e;
+  param_1[2] = uStack_12;
+  param_1[3] = uStack_1c;
+  param_1[4] = uStack_1a;
+  param_1[5] = uStack_18;
+  param_1[6] = uStack_16;
+  param_1[7] = uStack_14;
+                    /* WARNING: Bad instruction - Truncating control flow here */
+  halt_baddata();
+}
+
+ (GhidraScript)  
+INFO  Doa4Audit4.java> 
+=== caller @ 00b8c790 === (GhidraScript)  
+INFO  Doa4Audit4.java> func start guess: 00b8c784 (GhidraScript)  
+INFO  Doa4Audit4.java> func: FUN_00b8c784 size~24 (GhidraScript)  
+WARN  Decompiling 00b8c784, pcode error at 00b8c79c: Unable to resolve constructor at 00b8c79c (DecompileCallback)  
+INFO  Doa4Audit4.java> --- decomp (314 chars) ---
+
+/* WARNING: Control flow encountered bad instruction data */
+
+void FUN_00b8c784(void)
+
+{
+  undefined1 auStack_40 [8];
+  undefined1 auStack_38 [56];
+  
+  func_0x00f58984(auStack_40);
+  FUN_00b8d530(auStack_38);
+                    /* WARNING: Bad instruction - Truncating control flow here */
+  halt_baddata();
+}
+
+ (GhidraScript)  
+INFO  Doa4Audit4.java> 
+=== caller @ 00b8dc94 === (GhidraScript)  
+INFO  Doa4Audit4.java> func start guess: 00b8dc54 (GhidraScript)  
+INFO  Doa4Audit4.java> func: FUN_00b8dc54 size~32 (GhidraScript)  
+WARN  Decompiling 00b8dc54, pcode error at 00dfd504: Unable to resolve constructor at 00dfd504 (DecompileCallback)  
+INFO  Doa4Audit4.java> --- decomp (266 chars) ---
+
+/* WARNING: Control flow encountered bad instruction data */
+
+void FUN_00b8dc54(void)
+
+{
+  undefined4 in_stack_00000060;
+  
+  func_0x00f589e4(in_stack_00000060);
+                    /* WARNING: Bad instruction - Truncating control flow here */
+  halt_baddata();
+}
+
+ (GhidraScript)  
+INFO  Doa4Audit4.java> 
+=== caller @ 00b8ea9c === (GhidraScript)  
+INFO  Doa4Audit4.java> func start guess: 00b8ea08 (GhidraScript)  
+INFO  Doa4Audit4.java> func: FUN_00b8ea08 size~276 (GhidraScript)  
+WARN  Decompiling 00b8ea08, pcode error at 00dfd51c: Unable to resolve constructor at 00dfd51c (DecompileCallback)  
+WARN  Decompiling 00b8ea08, pcode error at 00b8eb10: Unable to resolve constructor at 00b8eb10 (DecompileCallback)  
+INFO  Doa4Audit4.java> --- decomp (1565 chars) ---
+
+/* WARNING: Control flow encountered bad instruction data */
+
+void FUN_00b8ea08(int param_1)
+
+{
+  int iVar1;
+  char cVar2;
+  undefined2 *puVar3;
+  undefined4 *puVar4;
+  int aiStack_40 [2];
+  undefined1 auStack_38 [8];
+  undefined1 auStack_30 [8];
+  undefined1 auStack_28 [40];
+  
+  iVar1 = FUN_00b92120(param_1,aiStack_40);
+  if (iVar1 == 0) {
+    if (aiStack_40[0] == 0) {
+      puVar3 = (undefined2 *)(param_1 + 0x44);
+      *(undefined4 *)(param_1 + 0x54) = 0;
+      iVar1 = 8;
+      do {
+        *puVar3 = 0;
+        puVar3 = puVar3 + 1;
+        iVar1 = iVar1 + -1;
+      } while (iVar1 != 0);
+      puVar3 = (undefined2 *)(param_1 + 0x98);
+      *(undefined4 *)(param_1 + 0xa8) = 0;
+      iVar1 = 8;
+      do {
+        *puVar3 = 0;
+        puVar3 = puVar3 + 1;
+        iVar1 = iVar1 + -1;
+      } while (iVar1 != 0);
+      puVar4 = (undefined4 *)(param_1 + 0x58);
+      iVar1 = 0x10;
+      do {
+        *puVar4 = 0;
+        puVar4 = puVar4 + 1;
+        iVar1 = iVar1 + -1;
+      } while (iVar1 != 0);
+    }
+    func_0x00f58984(auStack_38);
+    if ((((*(short *)(param_1 + 0x46) != 0) && (*(short *)(param_1 + 0x9a) != 0)) &&
+        (cVar2 = FUN_00b91ec8(param_1 + 0x44,auStack_28,auStack_38,1), cVar2 != '\0')) &&
+       (cVar2 = FUN_00b91ec8(param_1 + 0x98,auStack_30,auStack_38,1), cVar2 != '\0')) {
+                    /* WARNING: Bad instruction - Truncating control flow here */
+      halt_baddata();
+    }
+  }
+  else {
+    thunk_FUN_00b8d270();
+  }
+                    /* WARNING: Bad instruction - Truncating control flow here */
+  halt_baddata();
+}
+
+ (GhidraScript)  
+INFO  Doa4Audit4.java> 
+=== caller @ 00d9dfd4 === (GhidraScript)  
+INFO  Doa4Audit4.java> func start guess: 00d9df70 (GhidraScript)  
+INFO  Doa4Audit4.java> func: FUN_00d9df70 size~508 (GhidraScript)  
+WARN  Decompiling 00d9df70, pcode error at 00d9e068: Unable to resolve constructor at 00d9e068 (DecompileCallback)  
+WARN  Decompiling 00d9df70, pcode error at 00d9e160: Unable to resolve constructor at 00d9e160 (DecompileCallback)  
+WARN  Decompiling 00d9df70, pcode error at 00dfd514: Unable to resolve constructor at 00dfd514 (DecompileCallback)  
+INFO  Doa4Audit4.java> --- decomp (3679 chars) ---
+
+/* WARNING: Control flow encountered bad instruction data */
+
+void FUN_00d9df70(undefined4 *param_1)
+
+{
+  bool bVar1;
+  int iVar2;
+  int iVar3;
+  uint uVar4;
+  uint uVar5;
+  int iVar6;
+  int iStack_140;
+  int aiStack_13c [3];
+  int aiStack_130 [4];
+  undefined1 auStack_120 [288];
+  
+  bVar1 = false;
+  iVar2 = func_0x00f591d4(param_1[2]);
+  if (((param_1[0x30] != 0) && (iVar2 == 0)) || ((param_1[0x30] == 0 && (iVar2 != 0)))) {
+    bVar1 = true;
+  }
+  param_1[0x30] = iVar2;
+  if ((*(int *)(param_1[0x24] + 0x524) == 0) && (param_1[0x2f] == 0)) goto LAB_00d9e14c;
+  iVar2 = func_0x00f587a4(*param_1);
+  if (param_1[0x2f] == 0) {
+    if (iVar2 == 0) goto LAB_00d9e130;
+    iVar2 = func_0x00f591c4(0xfffe07d1,*param_1,0,0,3,0x82b7e67c,param_1 + 0x2d,param_1[0x2c]);
+    if ((iVar2 == 0) || (iVar2 == 0x3e5)) {
+      param_1[0x2f] = 1;
+    }
+    else if (param_1[0x31] != 0x26404) {
+      bVar1 = true;
+      param_1[0x31] = 0x26404;
+    }
+    iVar2 = func_0x00f587c4(*param_1,0xfc,&iStack_140);
+    if ((iVar2 == 0) && (iStack_140 != 1)) {
+      iVar2 = func_0x00f587c4(*param_1,0xfb,&iStack_140);
+      if ((iVar2 == 0) && (iStack_140 == 1)) {
+        uVar4 = 0x10000;
+      }
+      else {
+        uVar4 = 0;
+      }
+    }
+    else {
+      uVar4 = 0x20000;
+    }
+    if (*(int *)(param_1[0x24] + 0x24) != 0) {
+      uVar4 = 0x20000;
+    }
+    param_1[0x31] = param_1[0x31] & 0xfff0ffff | uVar4;
+    if (((uVar4 != 0x10000) ||
+        (FUN_00d9c310(param_1[0x24],aiStack_130,auStack_120), aiStack_130[0] == 0)) ||
+       (func_0x00f587b4(*param_1,auStack_120,aiStack_130[0],aiStack_13c,0), aiStack_13c[0] != 0))
+    goto LAB_00d9e14c;
+    uVar4 = param_1[0x31] & 0xfff0ffff;
+  }
+  else {
+    iVar3 = FUN_00b8a330(param_1 + 0x25,0,0);
+    if ((iVar2 != 0) && (iVar3 == 0)) {
+      uVar4 = 0;
+      param_1[0x2f] = 0;
+      if (*(int *)param_1[0x2c] != 0) {
+        iVar2 = 0;
+        do {
+          iVar6 = *(int *)(param_1[0x2c] + 4) + iVar2;
+          iVar3 = *(int *)(iVar6 + 0x10);
+          if (iVar3 == 0x1004000c) {
+            if (*(int *)(iVar6 + 0x20) == 0) {
+              uVar5 = param_1[0x31] & 0xfffffffe;
+            }
+            else {
+              uVar5 = param_1[0x31] | 1;
+            }
+LAB_00d9e100:
+            param_1[0x31] = uVar5;
+          }
+          else {
+            if (iVar3 == 0x1004000d) {
+              if (*(int *)(iVar6 + 0x20) == 0) {
+                uVar5 = param_1[0x31] & 0xfffffffd;
+              }
+              else {
+                uVar5 = param_1[0x31] | 2;
+              }
+              param_1[0x31] = uVar5;
+              if (*(int *)(iVar6 + 0x20) == 1) {
+                uVar5 = uVar5 & 0xfffffffb;
+              }
+              else {
+                uVar5 = uVar5 | 4;
+              }
+              goto LAB_00d9e100;
+            }
+            if (iVar3 == 0x1004000e) {
+              if (100 < *(int *)(iVar6 + 0x20)) {
+                *(undefined4 *)(iVar6 + 0x20) = 100;
+              }
+                    /* WARNING: Bad instruction - Truncating control flow here */
+              halt_baddata();
+            }
+          }
+          uVar4 = uVar4 + 1;
+          iVar2 = iVar2 + 0x28;
+        } while (uVar4 < *(uint *)param_1[0x2c]);
+      }
+      goto LAB_00d9e14c;
+    }
+    if (param_1[0x25] == 0x3e5) goto LAB_00d9e14c;
+    param_1[0x2f] = 0;
+LAB_00d9e130:
+    uVar4 = 0x26404;
+    if (param_1[0x31] == 0x26404) goto LAB_00d9e14c;
+  }
+  bVar1 = true;
+  param_1[0x31] = uVar4;
+LAB_00d9e14c:
+  if (!bVar1) {
+                    /* WARNING: Bad instruction - Truncating control flow here */
+    halt_baddata();
+  }
+                    /* WARNING: Bad instruction - Truncating control flow here */
+  halt_baddata();
+}
+
+ (GhidraScript)  
+INFO  Doa4Audit4.java> 
+=== caller @ 00d9e20c === (GhidraScript)  
+INFO  Doa4Audit4.java> func start guess: 00d9e1cc (GhidraScript)  
+INFO  Doa4Audit4.java> func: FUN_00d9e1cc size~36 (GhidraScript)  
+WARN  Decompiling 00d9e1cc, pcode error at 00d9e160: Unable to resolve constructor at 00d9e160 (DecompileCallback)  
+WARN  Decompiling 00d9e1cc, pcode error at 00dfd514: Unable to resolve constructor at 00dfd514 (DecompileCallback)  
+INFO  Doa4Audit4.java> --- decomp (1457 chars) ---
+
+/* WARNING: Control flow encountered bad instruction data */
+
+void FUN_00d9e1cc(int param_1)
+
+{
+  int iVar1;
+  int unaff_r27;
+  uint unaff_r28;
+  undefined4 *unaff_r31;
+  byte in_cr0;
+  int in_stack_00000060;
+  int in_stack_00000064;
+  int in_stack_00000070;
+  
+  if (((bool)(in_cr0 >> 1 & 1)) || (param_1 == 0x3e5)) {
+    unaff_r31[0x2f] = 1;
+  }
+  else if (unaff_r31[0x31] != 0x26404) {
+    unaff_r27 = 1;
+    unaff_r31[0x31] = 0x26404;
+  }
+  iVar1 = func_0x00f587c4(*unaff_r31,0xfc,&stack0x00000060);
+  if ((iVar1 == 0) && (in_stack_00000060 != 1)) {
+    iVar1 = func_0x00f587c4(*unaff_r31,0xfb,&stack0x00000060);
+    if ((iVar1 == 0) && (in_stack_00000060 == 1)) {
+      unaff_r28 = 0x10000;
+    }
+  }
+  else {
+    unaff_r28 = 0x20000;
+  }
+  if (*(int *)(unaff_r31[0x24] + 0x24) != 0) {
+    unaff_r28 = 0x20000;
+  }
+  unaff_r31[0x31] = unaff_r31[0x31] & 0xfff0ffff | unaff_r28;
+  if ((((unaff_r28 & 0xf0000) == 0x10000) &&
+      (FUN_00d9c310(unaff_r31[0x24],&stack0x00000070,&stack0x00000080), in_stack_00000070 != 0)) &&
+     (func_0x00f587b4(*unaff_r31,&stack0x00000080,in_stack_00000070,&stack0x00000064,0),
+     in_stack_00000064 == 0)) {
+    unaff_r27 = 1;
+    unaff_r31[0x31] = unaff_r31[0x31] & 0xfff0ffff;
+  }
+  if (unaff_r27 != 1) {
+                    /* WARNING: Bad instruction - Truncating control flow here */
+    halt_baddata();
+  }
+                    /* WARNING: Bad instruction - Truncating control flow here */
+  halt_baddata();
+}
+
+ (GhidraScript)  
+INFO  Doa4Audit4.java> 
+=== caller @ 00d9e230 === (GhidraScript)  
+INFO  Doa4Audit4.java> func start guess: 00d9e1f0 (GhidraScript)  
+INFO  Doa4Audit4.java> func: FUN_00d9e1f0 size~220 (GhidraScript)  
+WARN  Decompiling 00d9e1f0, pcode error at 00d9e160: Unable to resolve constructor at 00d9e160 (DecompileCallback)  
+WARN  Decompiling 00d9e1f0, pcode error at 00dfd514: Unable to resolve constructor at 00dfd514 (DecompileCallback)  
+INFO  Doa4Audit4.java> --- decomp (1303 chars) ---
+
+/* WARNING: Control flow encountered bad instruction data */
+
+void FUN_00d9e1f0(void)
+
+{
+  int iVar1;
+  undefined4 in_r11;
+  int unaff_r27;
+  uint unaff_r28;
+  undefined4 *unaff_r31;
+  int in_stack_00000060;
+  int in_stack_00000064;
+  int in_stack_00000070;
+  
+  unaff_r31[0x31] = in_r11;
+  iVar1 = func_0x00f587c4(*unaff_r31,0xfc,&stack0x00000060);
+  if ((iVar1 == 0) && (in_stack_00000060 != 1)) {
+    iVar1 = func_0x00f587c4(*unaff_r31,0xfb,&stack0x00000060);
+    if ((iVar1 == 0) && (in_stack_00000060 == 1)) {
+      unaff_r28 = 0x10000;
+    }
+  }
+  else {
+    unaff_r28 = 0x20000;
+  }
+  if (*(int *)(unaff_r31[0x24] + 0x24) != 0) {
+    unaff_r28 = 0x20000;
+  }
+  unaff_r31[0x31] = unaff_r31[0x31] & 0xfff0ffff | unaff_r28;
+  if ((((unaff_r28 & 0xf0000) == 0x10000) &&
+      (FUN_00d9c310(unaff_r31[0x24],&stack0x00000070,&stack0x00000080), in_stack_00000070 != 0)) &&
+     (func_0x00f587b4(*unaff_r31,&stack0x00000080,in_stack_00000070,&stack0x00000064,0),
+     in_stack_00000064 == 0)) {
+    unaff_r27 = 1;
+    unaff_r31[0x31] = unaff_r31[0x31] & 0xfff0ffff;
+  }
+  if (unaff_r27 != 1) {
+                    /* WARNING: Bad instruction - Truncating control flow here */
+    halt_baddata();
+  }
+                    /* WARNING: Bad instruction - Truncating control flow here */
+  halt_baddata();
+}
+
+ (GhidraScript)  
+INFO  Doa4Audit4.java> === AUDIT 4 DONE === (GhidraScript)  
+INFO  REPORT: Save succeeded for processed file: /default_pe.bin (HeadlessAnalyzer)  
+EXITCODE=0
