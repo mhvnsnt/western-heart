@@ -1,0 +1,47 @@
+# findings-audit11.txt — DOA4 deep-RE Audit 11 (crypto/content thunk callers)
+# Run: 2026-10-18 ~08:50 CDT, headless Ghidra 12.1.4 (Doa4Audit11.java), program default_pe.bin, -noanalysis
+# Thunk VA = 0x00f58764 + 16*slot (stride verified in Audit9).
+# Script found callers via symbol references; fallback raw bl-target scan fired only
+# where no symbol xrefs existed (slots 157/159 with zero callers have no refs at all).
+# NOTE: raw script output (log lines 47-84 of /tmp/audit11full.log).
+# === findings ===
+slot 4  XeKeysVerifyRSASignature        thunk 0x00f587a4  1 caller : 00d9dfd4  in FUN_00d9df70@00d9df70
+slot 5  VdSwap                          thunk 0x00f587b4  1 caller : 00d9e2b8  in FUN_00d9e1f0@00d9e1f0
+slot 6  StfsControlDevice               thunk 0x00f587c4  2 callers: 00d9e20c, 00d9e230  both in FUN_00d9e1f0@00d9e1f0
+slot 33 XeCryptShaUpdate                thunk 0x00f58974  4 callers: 00b89754 in FUN_00b8973c@00b8973c;
+                                                                   00b8c7b4 in (none);
+                                                                   00b92058 in (none);
+                                                                   00b91fdc in (none)
+slot 34 XeCryptShaFinal                 thunk 0x00f58984  4 callers: 00b89748 in FUN_00b8973c@00b8973c;
+                                                                   00b8c790 in FUN_00b8c784@00b8c784;
+                                                                   00b8dc94 in (none);
+                                                                   00b8ea9c in FUN_00b8ea08@00b8ea08
+slot 99 XamContentOpenFile              thunk 0x00f58d94  2 callers: 00b8e008 in FUN_00b8dfd8@00b8dfd8;
+                                                                   00b8df88 in (none)
+slot 157 XamContentCreateEx             thunk 0x00f59124  0 callers (no refs)
+slot 159 XamContentClose                thunk 0x00f59144  0 callers (no refs)
+slot 166 XamContentLaunchImageFromFileInternal thunk 0x00f591d4  2 callers: 00d9e1c4 in FUN_00d9df70@00d9df70;
+                                                                   00d9eddc in (none)
+# === verdict ===
+- The crypto/content call graph is SMALL and TIGHT: 5 call sites cluster in the
+  00b8xxxx-00b9xxxx range (FUN_00b8973c, FUN_00b8c784, FUN_00b8ea08, FUN_00b8dfd8),
+  plus a second cluster at 00d9xxxx (FUN_00d9df70, FUN_00d9e1f0).
+- FUN_00b8973c calls BOTH XeCryptShaUpdate (slot33) and XeCryptShaFinal (slot34):
+  it is a complete SHA-compute wrapper — top candidate for the keystream-preparation
+  routine (SHA is often the KDF step). Audit12 decompiles it.
+- Callers reported as "(none)" are call sites NOT inside any Ghidra function:
+  00b8c7b4, 00b92058, 00b91fdc (ShaUpdate); 00b8dc94 (ShaFinal); 00b8df88 (OpenFile);
+  00d9eddc (LaunchImage). These are regions where code exists but no function was
+  created — disassembly is incomplete there. This is exactly why Audit13's finer
+  sweep matters: it should convert these into named functions.
+- XamContentCreateEx (157) and XamContentClose (159) have ZERO code callers —
+  either unused in this build, or called via a path with no static ref (unlikely
+  for direct bl). Not crypto-relevant for the AFS path.
+- FUN_00d9df70 calls RSA-verify (slot4) and LaunchImage (slot166): confirms Audit10's
+  "content/storage manager" verdict (title-verification + launch path).
+# === leads for Audit12/15 ===
+1. FUN_00b8973c (SHA Update+Final pair) — decompile first.
+2. The (none) call sites in 00b8xxxx-00b9xxxx — after Audit13's sweep converts them
+   to functions, walk their 1-level callees for crypto ops (xor loops, S-box tables).
+3. FUN_00b8dfd8 (XamContentOpenFile caller) — the game's content-file open path;
+   its callees may lead to the AFS read/decrypt chain.
