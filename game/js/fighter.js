@@ -20,6 +20,7 @@
 import * as THREE from 'three';
 import { assets } from './assets.js';
 import { getT3Clips, createT3Actions } from './t3anims.js';
+import { TekkenBuffer } from './movesets.js';
 
 // ---- Frame data: REAL Tekken 3 data (teardown/tekken3/movesets/moveset_king.json, moveset_jin.json)
 // Extracted 2026-10-14: representative light/medium/heavy from 652 King / 413 Jin moves.
@@ -45,9 +46,9 @@ const MOVESET_MAP = {
   pantera: 'king', demonio: 'jin', phantom: 'yoshimitsu', diablo: 'heihachi',
   skull: 'bryan', samura1: 'gunjack', sakura: 'xiaoyu',
   // BONUS ROSTER
-  zui: 'jin', kinpo: 'jin', waterfall: 'jin', kingtyrant: 'jin', burger: 'bryan',
+  zui: 'jin', kinpo: 'jin', waterfall: 'jin', kingtyrant: 'xiaoyu', burger: 'bryan',
   awapop: 'jin', scimitar: 'jin', purplerain: 'jin', nightwolf: 'xiaoyu',
-  dio: 'heihachi', cyborgx: 'gunjack', michiko: 'jin', star: 'jin',
+  dio: 'heihachi', cyborgx: 'gunjack', michiko: 'jin', star: 'xiaoyu',
   torch: 'jin', bruno: 'bryan', negativo: 'bryan', thor: 'bryan',
   yukihyo: 'king', slice: 'bryan', docfrank: 'gunjack',
 };
@@ -71,22 +72,42 @@ export async function loadRealMovesets() {
   }
 }
 
+// Legacy action names -> Tekken notation (AI + old UI keep working)
+const LEGACY_TO_TEKKEN = { punch: '1', kick: '4', grab: '1+3' };
+
 export function getRealMove(charId, moveType) {
+  const tekken = LEGACY_TO_TEKKEN[moveType] || moveType;
   const ms = window.WH_MOVESETS?.[charId];
-  if (!ms) return null;
-  // Map game moves to T3 data: punch=light, kick=medium, grab=grab timing
-  // Surge is WH-original (Soul Surge), not from T3 — uses fallback MOVES.
-  const key = moveType === 'punch' ? 'light' : moveType === 'kick' ? 'medium' : moveType === 'grab' ? 'grab' : null;
-  if (!key) return null;
-  const data = ms[key];
-  if (!data) return null;
-  return {
-    startup: data.startup, active: data.active, recovery: data.recovery,
-    damage: data.dmg, knock: moveType === 'punch' ? 2.2 : moveType === 'kick' ? 4.2 : 6.5,
-    soulGain: moveType === 'punch' ? 8 : 11, cost: 0,
-    limb: moveType === 'punch' ? 'armR' : 'legR',
-    heavy: moveType !== 'punch',
-  };
+  if (ms) {
+    // New shape: per-fighter moveset { moves: { '1': {...}, '1+3': {...}, ... } }
+    if (ms.moves) {
+      const mv = ms.moves[tekken];
+      if (mv) {
+        return {
+          startup: mv.startup, active: mv.active, recovery: mv.recovery,
+          damage: mv.damage, knock: mv.knock ?? 2.2,
+          soulGain: mv.soulGain ?? 8, cost: 0,
+          limb: mv.limb || 'armR', heavy: !!mv.heavy,
+          unblockable: !!mv.unblockable, isGrab: !!mv.isGrab,
+          tekkenInput: mv.input, t3row: mv.t3_row, moveName: mv.name,
+        };
+      }
+    } else {
+      // Old shape: aggregate T3 { light, medium, grab } (pre-lane-3)
+      const key = moveType === 'punch' ? 'light' : moveType === 'kick' ? 'medium' : moveType === 'grab' ? 'grab' : null;
+      const data = key && ms[key];
+      if (data) {
+        return {
+          startup: data.startup, active: data.active, recovery: data.recovery,
+          damage: data.dmg, knock: moveType === 'punch' ? 2.2 : moveType === 'kick' ? 4.2 : 6.5,
+          soulGain: moveType === 'punch' ? 8 : 11, cost: 0,
+          limb: moveType === 'punch' ? 'armR' : 'legR',
+          heavy: moveType !== 'punch',
+        };
+      }
+    }
+  }
+  return null;
 }
 
 const GROUND_Y = 0;
@@ -134,6 +155,7 @@ export class Fighter {
     this.attack = null; this.attackName = null; this._attackPhase = 'startup';
     this.hasHit = false; this.stun = 0; this.invuln = 0; this.dodgeDir = 0;
     this.dead = false; this.combo = 0; this._comboTimer = 0;
+    this.tekken = new TekkenBuffer(charData.id); // strings / motion specials / directionals
 
     // smoothed lean (body english)
     this._lean = { x: 0, z: 0 };
@@ -273,8 +295,26 @@ export class Fighter {
   }
   tryAttack(name) {
     if (!this.canAct()) return false;
-    // Use REAL T3 moveset data when available, fallback to base MOVES
-    let move = getRealMove(this.char.id, name) || MOVES[name];
+    // Tekken notation resolution: strings (1,2), motion specials (qcf+2),
+    // directionals (f+1) via the fighter's TekkenBuffer. Legacy names map.
+    let notation = LEGACY_TO_TEKKEN[name] || name;
+    if (/^[1234]$/.test(notation)) {
+      const resolved = this.tekken.pressButton(notation);
+      if (resolved) notation = resolved;
+      else return false;
+    } else if (/^[1234]\+[1234]$/.test(notation)) {
+      const resolved = this.tekken.pressChord(notation);
+      if (!resolved) return false; // chord with no matching move: whiff, no action
+      notation = resolved;
+    }
+    // Use REAL per-fighter T3 moveset data when available, fallback to base MOVES
+    let move = getRealMove(this.char.id, notation) || MOVES[name] || MOVES[notation];
+    if (!move) {
+      // Last resort: moveset JSONs failed to load - map Tekken buttons to base moves
+      const fb = { '1': 'punch', '2': 'punch', '3': 'kick', '4': 'kick',
+                   '1+3': 'grab', '2+4': 'grab', '1+2': 'grab', '3+4': 'grab' }[notation];
+      if (fb) move = MOVES[fb];
+    }
     if (!move) return false;
     // Preserve WH-specific properties (grab unblockable, surge cost)
     if (MOVES[name]) {
@@ -284,11 +324,11 @@ export class Fighter {
     }
     if (move.cost > 0 && this.meter < move.cost) return false;
     if (move.cost > 0) this.meter = Math.max(0, this.meter - move.cost);
-    this.attack = move; this.attackName = name; this.hasHit = false;
+    this.attack = move; this.attackName = notation; this.hasHit = false;
     this._attackId = (this._attackId || 0) + 1;
     this.vx = 0; this._enter('attack'); this._attackPhase = 'startup';
     if (name === 'surge') this._auraFlash = 0.7;
-    if (name === 'grab') this.vx = this.facing * 2.5; // lunge into the grab
+    if (move.isGrab || notation === '1+3' || notation === '2+4') this.vx = this.facing * 2.5; // lunge into the grab
     return true;
   }
   _enter(state) { this.state = state; this.stateT = 0; }
@@ -329,7 +369,12 @@ export class Fighter {
 
   /* ---------------- hit / hurt queries (world-space spheres) ---------------- */
   _weaponBone() {
-    if (this.attackName === 'kick') return this.bones.RightFoot;
+    // Tekken notation: 3/4 are kicks -> foot; throws/specials use the move's limb
+    const limb = this.attack?.limb || '';
+    if (limb.startsWith('leg') || this.attackName === 'kick' || this.attackName === '3' || this.attackName === '4') {
+      return limb === 'legL' ? this.bones.LeftFoot : this.bones.RightFoot;
+    }
+    if (limb === 'armL') return this.bones.LeftHand;
     return this.bones.RightHand;
   }
   getHitbox() {
@@ -337,7 +382,7 @@ export class Fighter {
     const node = this._weaponBone(); if (!node) return null;
     node.getWorldPosition(_v1);
     let r = this.attackName === 'surge' ? 1.0 : 0.5;
-    if (this.attackName === 'grab') r = 0.95; // generous grab sphere
+    if (this.attack?.isGrab || this.attackName === 'grab' || this.attackName === '1+3' || this.attackName === '2+4') r = 0.95; // generous grab sphere
     return { x: _v1.x, y: _v1.y, z: _v1.z, r, move: this.attack };
   }
   getHurtboxes() {
@@ -496,10 +541,15 @@ export class Fighter {
     this._leanT.x = 0; this._leanT.z = 0;
     this.trail.visible = false;
     // REAL T3 clips for combat states (falls back to procedural if unavailable)
-    const T3_ATTACK_MAP = { punch: 'light', kick: 'medium', grab: 'grab', surge: 'heavy', heavy: 'heavy' };
+    const T3_ATTACK_MAP = { punch: 'light', kick: 'medium', grab: 'grab', surge: 'heavy', heavy: 'heavy',
+      '1': 'light', '2': 'light', '3': 'medium', '4': 'medium', '1+3': 'grab', '2+4': 'grab' };
     switch (this.state) {
       case 'attack': {
-        const t3name = T3_ATTACK_MAP[this.attackName];
+        let t3name = T3_ATTACK_MAP[this.attackName];
+        if (!t3name && typeof this.attackName === 'string') {
+          const lastBtn = this.attackName.split(',').pop().split('+').pop();
+          t3name = T3_ATTACK_MAP[lastBtn] || 'heavy'; // strings -> last hit's clip; specials -> heavy
+        }
         if (t3name && this._playT3Once(t3name, 'atk:' + this.attackName + ':' + this._attackId)) {
           // Real T3 clip playing; add slight lean for body english
           this._leanT.x = -0.1;
@@ -574,14 +624,16 @@ export class Fighter {
     const fwd = _v3.set(this.facing, 0, 0); // world forward
     const name = this.attackName;
 
-    if (name === 'kick') {
+    const isKick = name === 'kick' || name === '3' || name === '4' || this.attack?.limb?.startsWith('leg');
+    const isThrow = name === 'grab' || name === '1+3' || name === '2+4' || this.attack?.isGrab;
+    if (isKick) {
       this._leanT.x = -0.18 * e; this._leanT.z = this.facing * 0.12 * e;
       this.bones.Hips.getWorldPosition(_v1);
       const reach = 0.5 + e * 1.5;
       _v2.copy(_v1).addScaledVector(fwd, reach); _v2.y = _v1.y - 0.1 + e * 0.6;
       this._ik(['RightUpLeg', 'RightLeg'], 'RightFoot', _v2, e * 0.95);
       this._showTrail(this.bones.RightFoot, e);
-    } else if (name === 'grab') {
+    } else if (isThrow) {
       // Double-arm snatch: both hands drive forward at chest height.
       this._leanT.x = -0.22 * e;
       this.bones.Spine2.getWorldPosition(_v1);

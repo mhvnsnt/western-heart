@@ -172,10 +172,15 @@ export class Game {
         this.p1.tryMove(inp.axisX);
         if (inp.up) this.p1.tryJump();
         this.p1.tryBlock(inp.held.block);
+        // Feed facing-relative direction into the Tekken input buffer
+        // (drives motion specials qcf/f,F and directional attacks f+1)
+        this.p1.tekken.noteDirection(this._tekkenDir(inp, this.p1.facing));
         for (const act of inp.consume()) {
-          if (act === 'punch') { if (this.p1.tryAttack('punch')) audio.whiff(); }
-          else if (act === 'kick') { if (this.p1.tryAttack('kick')) audio.whiff(); }
-          else if (act === 'grab') { if (this.p1.tryAttack('grab')) audio.whiff(); }
+          if (act === 'punch' || act === 'kick' || act === 'grab' ||
+              act === '1' || act === '2' || act === '3' || act === '4' ||
+              act === '1+3' || act === '2+4' || act === '1+2' || act === '3+4') {
+            if (this.p1.tryAttack(act)) audio.whiff();
+          }
           else if (act === 'surge') {
             if (this.p1.tryAttack('surge')) {
               audio.soulSurge(this.p1.char.id);
@@ -214,6 +219,21 @@ export class Game {
       this.p2.update(dt, this.p1);
       if (this._roundLockT <= 0) this._afterRound();
     }
+  }
+
+  /* Facing-relative Tekken direction from input state: f/b/u/d + diagonals. */
+  _tekkenDir(inp, facing) {
+    const fwd = (inp.axisX || 0) * facing; // forward-positive
+    const f = fwd > 0.25, b = fwd < -0.25;
+    if (inp.up && f) return 'u/f';
+    if (inp.up && b) return 'u/b';
+    if (inp.up) return 'u';
+    if (inp.down && f) return 'd/f';
+    if (inp.down && b) return 'd/b';
+    if (inp.down) return 'd';
+    if (f) return 'f';
+    if (b) return 'b';
+    return 'n';
   }
 
   /* Test attacker's active hitbox against defender's hurtboxes */

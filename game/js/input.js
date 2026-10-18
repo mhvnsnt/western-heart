@@ -6,17 +6,24 @@
    Exposed state:
      axisX  : -1..1 horizontal move
      up     : bool (jump intent)
+     down   : bool (crouch intent — enables d/df/db motions)
      held   : { block }                  // continuous
-     pressed: queue of one-shot actions  // punch/kick/grab/surge/dodge
+     pressed: queue of one-shot actions  // 1/2/3/4 (Tekken), 1+3/2+4 throws,
+                                         // punch/kick/grab/surge/dodge (legacy)
 
-   COMMAND GRAB: press P+K together (touch) or J+K together / U (keyboard).
+   TEKKEN INPUTS: 1/2/3/4 keys = left punch / right punch / left kick / right kick.
+   1+3 or 2+4 together (140ms chord) = throw. Motions (qcf, f,F) tracked via
+   direction history in the fighter's TekkenBuffer (see movesets.js).
+   COMMAND GRAB (legacy): press P+K together (touch) or J+K together / U (keyboard).
    ============================================================ */
 
 export class InputManager {
   constructor() {
     this.axisX = 0;
     this.up = false;
+    this.down = false;
     this.held = { block: false };
+    this._lastT = { '1': 0, '2': 0, '3': 0, '4': 0 };
     this._queue = [];
     this._keys = {};
     this._joyActive = false;
@@ -36,9 +43,10 @@ export class InputManager {
   enable(on) { this.enabled = on; if (!on) this.reset(); }
 
   reset() {
-    this.axisX = 0; this.up = false; this.held.block = false; this._queue.length = 0;
+    this.axisX = 0; this.up = false; this.down = false; this.held.block = false; this._queue.length = 0;
     this._keys = {};
     this._lastPunchT = 0; this._lastKickT = 0;
+    this._lastT = { '1': 0, '2': 0, '3': 0, '4': 0 };
     this._resetJoyKnob();
   }
 
@@ -60,6 +68,28 @@ export class InputManager {
     this._push(kind);
   }
 
+  /* Tekken chords: 1+3 / 2+4 => throw, 1+2 / 3+4 => special chord.
+     Same 140ms window as the legacy P+K grab. */
+  _tekken(btn) {
+    const now = performance.now();
+    const chords = { '1': ['3', '1+3'], '3': ['1', '1+3'], '2': ['4', '2+4'], '4': ['2', '2+4'],
+                     '1x': ['2', '1+2'], '2x': ['1', '1+2'] };
+    // primary: 1+3 / 2+4 throws; secondary: 1+2 / 3+4 (chain-throw specials)
+    const pairs = btn === '1' ? [['3', '1+3'], ['2', '1+2']]
+                : btn === '2' ? [['4', '2+4'], ['1', '1+2']]
+                : btn === '3' ? [['1', '1+3'], ['4', '3+4']]
+                : [['2', '2+4'], ['3', '3+4']];
+    for (const [pair, name] of pairs) {
+      if (now - this._lastT[pair] < 140) {
+        this._lastT[pair] = 0; this._lastT[btn] = 0;
+        this._push(name);
+        return;
+      }
+    }
+    this._lastT[btn] = now;
+    this._push(btn);
+  }
+
   /* ---------------- Keyboard ---------------- */
   _bindKeyboard() {
     window.addEventListener('keydown', (e) => {
@@ -74,6 +104,11 @@ export class InputManager {
         case 'KeyK': this._strike('kick'); break;
         case 'KeyU': this._push('grab'); break;
         case 'KeyL': this._push('surge'); break;
+        case 'Digit1': this._tekken('1'); break;
+        case 'Digit2': this._tekken('2'); break;
+        case 'Digit3': this._tekken('3'); break;
+        case 'Digit4': this._tekken('4'); break;
+        case 'KeyS': case 'ArrowDown': this.down = true; break;
         case 'Space': this.held.block = true; e.preventDefault(); break;
         case 'ShiftLeft': case 'ShiftRight': this._push('dodge'); break;
       }
@@ -84,6 +119,7 @@ export class InputManager {
         case 'KeyA': case 'ArrowLeft': if (this.axisX < 0) this.axisX = this._keys['KeyD'] ? 1 : 0; break;
         case 'KeyD': case 'ArrowRight': if (this.axisX > 0) this.axisX = this._keys['KeyA'] ? -1 : 0; break;
         case 'KeyW': case 'ArrowUp': this.up = false; break;
+        case 'KeyS': case 'ArrowDown': this.down = false; break;
         case 'Space': this.held.block = false; break;
       }
     });
@@ -115,10 +151,11 @@ export class InputManager {
       const nx = (Math.cos(ang) * clamped) / maxR;
       this.axisX = Math.abs(nx) > 0.25 ? Math.max(-1, Math.min(1, nx)) : 0;
       this.up = (Math.sin(ang) * clamped) / maxR < -0.55; // pushed up
+      this.down = (Math.sin(ang) * clamped) / maxR > 0.55; // pushed down (crouch)
     };
     const end = () => {
       this._joyActive = false; this._joyId = null;
-      this.axisX = 0; this.up = false;
+      this.axisX = 0; this.up = false; this.down = false;
       this._resetJoyKnob();
     };
     this._resetJoyKnob = () => { if (knob) knob.style.transform = 'translate(0,0)'; };

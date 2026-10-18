@@ -9,6 +9,7 @@ import { audio } from './audio.js';
 import { assets } from './assets.js';
 import { ROSTER, getCharacter } from './characters.js';
 import { loadRealMovesets } from './fighter.js';
+import { loadFighterMovesets } from './movesets.js';
 import { loadT3Clips } from './t3anims.js';
 import * as THREE from 'three';
 import { whUiEnabled, mountWhUi } from './ui-wh-bridge.js';
@@ -16,6 +17,8 @@ import { getCustomFighter, customFighterToRoster } from './custom-fighter.js';
 
 // Load REAL Tekken 3 moveset data (not hand-written frame data)
 loadRealMovesets();
+// Load per-fighter Tekken movelists (1/2/3/4, throws, strings, specials) — LANE 3
+loadFighterMovesets();
 
 const screens = {
   menu:   document.getElementById('screen-menu'),
