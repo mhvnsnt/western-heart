@@ -921,182 +921,43 @@ She was never called. She *came*. Tong-Nou didn't summon her; she followed the p
 ---
 
 ### MARIPOSA — The Sealed Soul
-**Not one of the nine. The keeper.**
+**Not one of the nine. The keeper. The native.**
 
-**Backstory.** For generations, her bloodline has kept the seal on Azazel's tomb — the demon god the world forgot and the earth remembered. Mariposa is the last keeper: the woman with the prophecy she never asked for, the joints that bend wrong, the duty that bends her whole life around one buried door.
+**Backstory.** Every other fighter *arrived* in the Western Heart. Mariposa hatched here — in the branches of the Tree of Life, in a cocoon the color of dusk, while the trial wasn't looking. She is the trial's only native: not called, not claimed, not built. Grown.
 
-When the trial called, she didn't hear a summons. She heard a *leak*. Something sealed followed her into Tong-Nou — or was already here, wearing a new shape. She came to check the locks. She's still checking.
+And she hatched carrying her bloodline's duty: for generations, her line has kept the seal on Azazel's tomb — the demon god the world forgot and the earth remembered. Mariposa is the last keeper: the woman with the prophecy she never asked for, the joints that bend wrong, the duty that bends her whole life around one buried door.
 
-**Personality.** Calm. Secretive. Speaks in fragments of prophecy and hates every word of it. The only fighter who treats the trial like a *job*.
+When the trial stirred, she didn't hear a summons. She heard a *leak*. Something sealed followed her into Tong-Nou — or was already here, wearing a new shape. She came to check the locks. She's still checking.
 
-**Fighting philosophy.** "The seal holds as long as I do."
+**Personality.** Calm. Secretive. Speaks in fragments of prophecy and hates every word of it. Curious, airy — and harder than she looks: the softest thing in the trial that no one has managed to break. The only fighter who treats the trial like a *job*.
+
+**Fighting philosophy.** "The seal holds as long as I do." And: "Everything soft lands last."
 
 **Relationships.**
-- **Jin Kazama:** She failed to stop him once — the Devil Gene woke what she was sworn to keep asleep. She isn't here to try again. She's here to make sure there's nothing left here worth waking.
+- **Jin Kazama:** She failed to stop him once — the Devil Gene woke what she was sworn to keep asleep. She isn't here to try again. She's here to make sure there's nothing left here worth waking. Two cursed bloodlines, mutual recognition — they don't spar. They understand each other too well for that.
 - **Diablo:** The intruder who tore his way in. She watches him the way a locksmith watches a crowbar. He knows. He performs for her.
-- **Waterfall:** Two women carrying things too heavy to name. Mariposa carries a seal; Waterfall carries grief. They sit together sometimes. Neither talks. It helps.
-
-**Element.** Earth — the Octagonal Shrine Par-fang. She seals things. The shrine is where seals belong.
-
-**Body / Mind / Soul.** BODY: Mariposa's serpentine frame — the bone-twisting strikes, the impossible angles, the body as a lock with too many keys. MIND: the keeper — duty first, self somewhere far down the list. SOUL: not one of the nine. A soul that was never *lost*, only *posted* — stationed at a door for a thousand years. The trial keeps offering her purification. She keeps declining. She has a post to hold.
-
-**Why Mariposa thinks she's here.** She believes she followed a leak in the seal — that something she was guarding slipped into the Western Heart and she's here to drag it back. The truth is older: the seal was *always* going to follow her. You don't guard a door that long without the door becoming part of you.
-
-**Being purified of:** The post. Mariposa was raised to be a lock, not a person. The trial keeps asking who she is when she's not guarding anything. She doesn't know yet. The joints crack when she thinks about it.
-
-**Signature detail.** Before every fight she stretches — and her joints crack *backward*, elbow and knee bending the wrong way with a sound like a door unlatching. The other fighters have learned: the crack means the seal is still holding. When it stops, worry.
-
-**Base model.** Zafina's Tekken frame, re-owned and reskinned as Mariposa's Golden Pharaoh attire — her proprietary Eastern Mind/Western Heart name; the old name is retired.
-
----
-
-### BAEK — The Master Soul
-**Not one of the nine. The teacher.**
-
-**Backstory.** Baek Doo San — taekwondo master, the man who taught Hwoarang everything the boy refused to learn gently. In the old world he was lost at sea, taken, broken, rebuilt; he came back anyway, because students don't stop needing teachers just because the teacher drowns.
-
-The trial didn't call him. A student followed the pull — and Baek followed the student. That's the whole story. That's always the whole story with him.
-
-**Personality.** Strict. Fatherly. Terrifyingly patient. The only fighter the younger souls are *afraid to disappoint*.
-
-**Fighting philosophy.** "The kick is the question. Discipline is the answer."
-
-**Relationships.**
-- **Zui:** The teacher's longest project. Baek has tried to sober him up eleven times. Zui has converted two of Baek's lectures into drinking songs. Baek keeps trying. That's what teachers do.
-- **Pantera:** Mutual respect, no words wasted. The panther fights honest; the master teaches honest. They spar at dawn. Nobody watches. Everybody knows.
-- **Kinpo:** Discipline recognizes discipline. He corrects her stance; she corrects his manners. Both pretend the other isn't helping.
-
-**Element.** Fire — the Plains of Chi-U. The honest fight, under the burning sky. No tricks. No seals. Just the work.
-
-**Body / Mind / Soul.** BODY: Baek's flawless taekwondo — the kicks are textbooks, the textbooks are weapons. MIND: the teacher — every soul is a student, every fight is a lesson, every loss is homework. SOUL: not one of the nine. A soul that came *on purpose*, for someone else. The trial doesn't know what to do with a volunteer. It's still deciding.
-
-**Why Baek thinks he's here.** He believes he followed a student into the dark — that somewhere in the Western Heart there's a boy who needs his master, and he'll find him. He may be right. The trial is full of lost students. It may have called him the way a classroom calls a teacher: not by name, but by need.
-
-**Being purified of:** The guilt. Every teacher carries the ones he couldn't save — the students who drowned, who left, who chose the bottle, who chose the devil. Baek's guilt has a seating chart. The trial keeps handing him students he *can* save. He's learning to take them.
-
-**Signature detail.** He bows to every opponent — before the match, after it, win or lose. The bow is never rushed. Fighters who've tried to rush him have learned: the bow takes as long as the bow takes.
-
----
-
-### JIN KAZAMA — The Bloodline Soul
-**Not one of the nine. The bloodline. (Not the SOUL JIN — the soul JIN (刃 — the blade) wears Phantom. This Jin wears a curse.)**
-
-**Backstory.** Jin Kazama — heir of the Mishima bloodline, the Devil Gene made flesh, the boy who threw his grandfather off a cliff and then spent his life trying to throw the devil off himself. He started a world war to draw the devil out. It worked. That's the problem with Jin's plans: they work.
-
-In the Western Heart, the Gene followed him in — and inside Tong-Nou, the devil has nowhere to hide. No corporations. No wars. No distractions. Just the blood, the trial, and the quiet.
-
-**Personality.** Brooding. Self-controlled. One bad day from the wings. The only fighter who treats every victory like a warning.
-
-**Fighting philosophy.** "The blood ends with me."
-
-**Relationships.**
-- **Mariposa:** Two cursed bloodlines, mutual recognition. She keeps the seal; he *is* the thing seals are for. They don't spar. They understand each other too well for that.
-- **Diablo:** The devil who doesn't hide — Jin's mirror and his warning. Diablo tore his way in to rule; Jin clawed his way in to *end*. Their fights are the trial's exorcisms.
-- **Phantom:** They share a name — his name, the soul's name — and neither will say whether it's coincidence. Phantom's blade is ritual and precise. Jin's devil is neither. The name sits between them like a drawn knife.
-
-**Element.** Fire — the Plains of Chi-U. The confrontation is internal, but the sky burns the same.
-
-**Body / Mind / Soul.** BODY: Jin's Mishima-ryu — the lightning footwork, the electric fists, the style his bloodline perfected and his conscience condemns. MIND: iron control — every breath measured, every impulse caged. SOUL: not one of the nine. A bloodline wearing a soul's shape — or a soul wearing a bloodline's curse. The trial keeps trying to separate the two. So does he.
-
-**Why Jin Kazama thinks he's here.** He believes he came to end the bloodline — that the trial is the last arena, and if he dies here properly, the Gene dies with him. The trial has other plans: it doesn't want the bloodline *ended*. It wants it *purified*. Jin hasn't decided whether that's mercy or a worse sentence.
-
-**Being purified of:** The devil. The trial's oldest customer. Every round is an exorcism; every reincarnation, a little less devil. He's counting. The count is going down. That's the most hopeful thing about him, and he hates hope.
-
-**Signature detail.** When the Gene stirs, his eyes go red — and the whole arena goes quiet. Not out of fear. Out of respect for the fight he's fighting. The other fighters have learned not to mention it.
-
----
-
-### STEVE FOX — The Boxer Soul
-**Vessel of BYOU (病 — sickness). The name ZUI wore before the monastery.**
-
-**Backstory.** Before the robes, before the sake, before the tattoos — there was the ring. Steve Fox: British champion, the purest boxer in the old world, Nina Williams' son, a young man who fought with his hands and smiled with his whole face.
-
-Zui *is* Steve — the same vessel, the same BYOU soul, before the monastery and the bottle. The sway was footwork first. The dodge was a slip-roll before it was a stumble. When the trial needs the boxer instead of the monk, Steve steps forward — same soul, straighter spine, both hands up.
-
-**Personality.** Cocky charm. Showman's heart. The smile is real; the guard never drops.
-
-**Fighting philosophy.** "Hit clean. Bow cleaner."
-
-**Relationships.**
-- **Zui:** Himself, before. Steve doesn't drink — that's the difference, and the whole argument. Zui toasts him before fights. Steve pretends not to be moved. He is.
-- **Awa Pop:** She wears his mother's face — Nina Williams' grace, the assassin's economy. He has never said what that does to him. She hums while she fights. He listens.
-- **Kinpo:** Annoyed by him. He thinks this is flirting. It is not. (Some things don't change between vessels.)
-
-**Element.** Water — the Palace of Dreaming. Same soul, same water. He drowns opponents in rhythm instead of sake; the drowning is still the point.
-
-**Body / Mind / Soul.** BODY: Steve's championship boxing — the purest hands in the trial, before or after the bottle. MIND: the showman — he fights for the crowd the way Zui drinks for the truth. SOUL: BYOU, sickness. The body is disciplined. The mind is bright. The soul *moves wrong* — and where Zui agreed with the sickness, Steve *outboxes* it. Same soul, two answers. The trial is watching to see which one wins.
-
-**Why Steve Fox thinks he's here.** He believes he came for a title fight — the biggest purse, the strangest venue — and stayed because the monastery he never joined keeps sending him postcards in the form of a drunk monk. He's wrong about the purse. He's right that he's supposed to be here. BYOU doesn't do accidents.
-
-**Being purified of:** The crowd. The boxer fights to be *watched*; BYOU moves wrong whether or not anyone's looking. Somewhere between the showman and the sickness is a man who fights for himself. The trial is introducing them.
-
-**Signature detail.** He shadowboxes before every match — crisp, beautiful, championship form. The other fighters swear the shadow sometimes hits back.
-
-**Owner-locked:** "Zooey" was a speech-to-text error for ZUI (owner 2026-10-18). Steve Fox = Zui confirmed — same vessel, same soul, before the monastery.
-
----
-
-### DXMMII — The Rebuilt Soul
-**Not one of the nine. The remix.**
-
-**Backstory.** Mokujin was a wooden dummy that learned to fight by copying everyone it faced — no style of its own, every style at once. DXMMII is what happened when the dummy kept the copies and started *mixing* them.
-
-Patchwork body — different colored panels stitched together, each one a fight he survived, a night he played. X-shaped eyes like a dead cartoon character. Tongue hanging out. The crash-test-dummy target circle on his chest: aim here, it says. Everyone does. Nobody's collected.
-
-He's a DJ now. The trial is the biggest venue he's ever played, and he plays the crowd the way he fights — everybody's style, his beat.
-
-**Personality.** Chaos with a tempo. Plays the room. Remembers every sample, forgets every name.
-
-**Fighting philosophy.** "Everybody's style is my style."
-
-**Relationships.**
-- **SAM-UR-A1:** Fellow built thing. SAM-UR-A1 studies his patchwork like a manual. DXMMII has started leaving new patches where SAM-UR-A1 can find them. Neither calls it friendship.
-- **Doc Frank:** Wants to "fix" him — proper panels, clean seams, *improvements*. DXMMII has hidden his toolbox three times. The patches stay crooked. The patches are the point.
-- **Saku Ra:** The idol recognizes a performer. They've discussed a collaboration. The trial is not ready.
-
-**Element.** Metal — the Helix Palace. A thing assembled from want, at home in the house of desire. The Destruction room keeps breaking him. He keeps coming back. The room is starting to take it personally.
-
-**Body / Mind / Soul.** BODY: the patchwork — stitched panels, X-eyes, the tongue, the target. Every rebuild left a seam. MIND: the DJ — reads the crowd, rides the beat, never plays the same set twice. SOUL: not one of the nine. A *copy* that became an original — the mimic soul. The trial keeps asking what he is underneath the patches. He's starting to wonder if there's an underneath. There's a beat, though. The beat is his.
-
-**Why DXMMII thinks he's here.** He believes the trial booked him — biggest venue, longest set, crowd that literally *dies* for the music. The idea that he's here to be purified has never occurred to him. Purification doesn't have a dance floor.
-
-**Being purified of:** The copy. Every patch is someone else's style. The trial keeps stripping the patches away — not the panels, the *habit* — asking what's left when he's not imitating anyone. What's left has a beat. It's his. He's learning to hear it.
-
-**Signature detail.** His X-eyes pulse with the beat — whatever he's playing, whatever he's fighting. When the music stops, the tongue goes back in. The other fighters have learned: tongue out, you're entertainment. Tongue in, run.
-
-**Owner-locked:** Name DXMMII (locked 2026-10-15). Patchwork X-eyed tongue-out crash-test-dummy DJ, multi-colored panels, crash-test symbol on chest. Mokujin base.
-
----
-
-### MARIPOSA — The Butterfly Soul
-**Not one of the nine. The native.**
-
-**Backstory.** Every other fighter *arrived* in the Western Heart. Mariposa hatched here — in the branches of the Tree of Life, in a cocoon the color of dusk, while the trial wasn't looking.
-
-She is the trial's only native: not called, not claimed, not built. Grown. Butterfly wings with eye-spots that watch back, dark hair, pink and purple like the inside of the bloom. The trial made one fighter on purpose, by accident, and has been pretending it meant to ever since.
-
-**Personality.** Curious. Airy. Harder than she looks — the softest thing in the trial that no one has managed to break.
-
-**Fighting philosophy.** "Everything soft lands last."
-
-**Relationships.**
-- **Waterfall:** Two gentle souls carrying heavy things. Mariposa doesn't cry — she *lands*, lightly, on Waterfall's shoulder, and stays until the tears slow. It works. Nobody knows why.
+- **Waterfall:** Two women carrying things too heavy to name. Mariposa carries a seal; Waterfall carries grief. They sit together sometimes. Neither talks. It helps. And Mariposa doesn't cry — she *lands*, lightly, on Waterfall's shoulder, and stays until the tears slow. It works. Nobody knows why.
 - **Saku Ra:** The bloom and the butterfly. Saku Ra has adopted her as the trio's unofficial fourth. Kinpo pretends to object. Awa Pop braided her hair.
 - **N3GΔTIV0:** He doesn't hunt her. He's not sure she's alive in the way he understands alive. She offered him nectar once. He didn't know what to do with it. He kept the cup.
 
-**Element.** Wood — the Tree of Life, Ming-ken. She was born in the branches. The element isn't her home. It's her *mother*.
+**Element.** Earth — the Octagonal Shrine Par-fang. She seals things; the shrine is where seals belong. Wood — the Tree of Life, Ming-ken. She was born in the branches; the element isn't her home, it's her *mother*.
 
-**Body / Mind / Soul.** BODY: the butterfly — light, the eye-spots staring back, the wings that shouldn't be able to take a punch and somehow do. MIND: newborn curiosity — everything is firsts, even the fights. Especially the fights. SOUL: the trial's own. The only fighter Tong-Nou made instead of finding. The other souls whisper that she's the control sample — the one the trial measures the purified against.
+**Body / Mind / Soul.** BODY: the butterfly and the lock — serpentine frame, bone-twisting strikes, impossible angles, the body as a lock with too many keys; light wings with eye-spots that stare back, wings that shouldn't be able to take a punch and somehow do. MIND: the keeper — duty first, self somewhere far down the list — with a newborn's curiosity: everything is firsts, even the fights. Especially the fights. SOUL: not one of the nine. A keeper's soul, stationed at a door for a thousand years — and the trial's own native, hatched in its branches, the one the trial measures the purified against. The trial keeps offering her purification. She keeps declining. She has a post to hold.
 
-**Why Mariposa thinks she's here.** She doesn't think about it. She hatched here. This is home. Asked once by SAM-UR-A1 what she was being purified of, she said: "Nothing yet. I'm new." The trial agreed. For now.
+**Why Mariposa thinks she's here.** She doesn't think about it much — she hatched here. This is home. But she also followed a leak: something she was guarding slipped into the Western Heart and she's here to drag it back. The truth is older: the seal was *always* going to follow her. You don't guard a door that long without the door becoming part of you.
 
-**Being purified of:** Nothing yet — she's the trial's control sample, the unbroken thing the broken are measured against. But cocoons are for changing, and she's starting to feel the itch in her wings. The trial is watching. So is she.
+**Being purified of:** The post. Mariposa was raised to be a lock, not a person. The trial keeps asking who she is when she's not guarding anything. She doesn't know yet. The joints crack when she thinks about it. But cocoons are for changing — and she's starting to feel the itch in her wings. The trial is watching. So is she.
 
-**Signature detail.** The eye-spots on her wings blink — one by one, in sequence, left to right — in the breath before she strikes. Fighters who've seen all four blink say the fifth thing you see is the floor.
+**Signature detail.** Before every fight she stretches — and her joints crack *backward*, elbow and knee bending the wrong way with a sound like a door unlatching. The other fighters have learned: the crack means the seal is still holding. When it stops, worry. And the eye-spots on her wings blink — one by one, in sequence, left to right — in the breath before she strikes. Fighters who've seen all four blink say the fifth thing you see is the floor.
+
+**Base model.** Zafina's Tekken frame, re-owned and reskinned — her proprietary Eastern Mind/Western Heart name; the old name is retired.
+
+**Attires.** Attire 1 = her Tripo 3D butterfly model (made based on Zafina — her default). Attire 2 = "Monarch" (monarch-orange reskin). Later attires = her Zafina in-game models (Golden Pharaoh and others), laddering behind the custom attires.
+
+**Owner-locked:** Mariposa is ONE character (owner 2026-10-18) — the Tripo butterfly model replaced Zafina's in-game model as her default; the old Zafina in-game models are her later attires. Never split into two characters.
 
 ---
 
-### DOC FRANK — The Builder Soul
 **Not one of the nine. The builder.**
 
 **Backstory.** Born Franklin Bauzzkoh. Shortened it to Frank Bozko for business and recognition — "nobody funds a Bauzzkoh." Became DOC FRANK: the universe's Dr. Frankenstein *and* its Dr. Gero in one coat, the mad scientist who started building androids and didn't stop until he'd turned *himself* into one.
