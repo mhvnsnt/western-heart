@@ -30,7 +30,7 @@ recorded in flight. Characters with pulls already in flight are marked separatel
 | 11 | **BRUNO** | `game/assets/models/bruno.glb` wired (fighter hunt) | Miguel |
 | 12 | **N3GΔTIV0** | `game/assets/models/n3g4tiv0.glb` wired | Negan-style base |
 | 13 | **DXMMII** | `game/assets/models/dxmmii.glb` wired (in-game base only) | Patchwork build |
-| 14 | **RAVE** | `game/assets/models/rave.glb` wired (in-game base only) | Lei Wulong |
+| 14 | **RAVE** (= KIKO TANAKA in Western Heart — owner 2026-10-19) | Tripo attached: `kiko-tanaka.glb` (A1 hooded/robed, default) + `kiko-tanaka_alt1.glb` (A2 unrobed "ghost Tanaka" = Raver personality); `rave.glb` (Lei Wulong in-game base) ladders back to A3 | Lei Wulong / Kiko Tanaka |
 | 15 | **DOC FRANK** | `game/assets/models/doc-frank.glb` wired | Dr. Bosconovitch |
 | 16 | **JIN** (Kazama) | `game/assets/models/jin.glb` wired (in-game base only) | Jin Kazama |
 | 17 | **YUKIHYŌ** | `game/assets/models/yukihyo.glb` wired (fighter hunt) | (fighter-hunt source) |
@@ -38,6 +38,10 @@ recorded in flight. Characters with pulls already in flight are marked separatel
 | 19 | **CHORDZ** | **NO SOURCE FOUND** — nothing on disk; disk too tight for a full T7 pull | unknown |
 | 20 | **VAIN** | Tripo GLB exists locally (`~/workspace/tripo-downloads/`, 19MB, by marz6kdabest) but **NOT wired, NOT recorded** in the registry | Bass Armstrong |
 | 21 | **PANTERA** | ⚠️ Tripo model EXISTS per owner but is **NOT ON RECORD** — no link/GLB in repo. Slot 2 ("Leo man") is reserved for it. **Needs the owner to send the link.** | King (T7 reskin) |
+
+### ✅ CORRECTION (owner 2026-10-19 — supersedes this audit's separation)
+
+KIKO TANAKA and RAVE are the SAME character in Western Heart. Owner's words: "Kiko is rave in this game and Kiko in others, Rave is his Raver personality from our canon." — "the ghost tanaka is Rave." The robe pair (`game/assets/models/kiko-tanaka.glb` hooded/robed, `kiko-tanaka_alt1.glb` unrobed/shrouded face) are RAVE's models: A1 = hooded default, A2 = the "ghost Tanaka" Raver personality, A3+ = `rave.glb` (Lei Wulong in-game base) ladders back. His bio lives as "KIKO TANAKA — The Painted Soul" in CANON.md.
 
 ### Pulled already — wiring/rigging in flight (NOT "needs a model")
 
@@ -51,7 +55,7 @@ recorded in flight. Characters with pulls already in flight are marked separatel
 
 ### Tripo-attached and done (for reference)
 
-ZUI, THOR, AWA POP, WATERFALL, SAKU RA, PURPLE RAIN, KIKO TANAKA, CAPE JONES/CYBORG X, MARIPOSA (Slot 1 wired).
+ZUI, THOR, AWA POP, WATERFALL, SAKU RA, PURPLE RAIN, RAVE (= KIKO TANAKA in Western Heart — owner 2026-10-19), CAPE JONES/CYBORG X, MARIPOSA (Slot 1 wired).
 
 ---
 
@@ -62,7 +66,7 @@ The Four, The Twelve, and The New Vessels is done. The gaps:
 
 | # | Character | Name status | Bio status | Notes |
 |---|---|---|---|---|
-| 1 | **RAVE** | ✅ WH name locked (Rave) | ❌ **NO BIO in CANON.md** | Lei Wulong base; kitbash notes "Great Muta/Keiji Mutoh skin" |
+| 1 | **RAVE** | ✅ WH name locked (Rave = Kiko Tanaka in Western Heart, owner 2026-10-19) | ✅ bio exists as "KIKO TANAKA — The Painted Soul" in CANON.md + "Raver personality" recorded 2026-10-19 | Lei Wulong base; kitbash notes "Great Muta/Keiji Mutoh skin" |
 | 2 | **JIN** (Kazama) | ❌ still "Jin Kazama" — **name conflicts with the JIN blade soul**; needs a proprietary name | ❌ **NO BIO in CANON.md** | "Bloodline Soul" (PR #258) — but that entry is missing from current CANON.md (see flag below) |
 | 3 | **KEVIN** (replacing Baek) | ✅ WH name locked (Kevin) | ❌ **NO BIO** — canon rewrite lane still needed (God Molecule tie-in: Central Mountain trickster, inside Mars' head, forehead portal) | PR #278 (model swap) open |
 | 4 | **DXMMII** | ✅ WH name locked (Dxmmii), pronouns it/its | ❌ **NO BIO in CANON.md** (mentioned once, in Doc Frank's relationships) | "Patchwork DJ" attire owner-approved |
