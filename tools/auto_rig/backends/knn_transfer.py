@@ -19,7 +19,7 @@ It cannot fix a bad donor — validate.py gates the result.
 Usage:
     python3 knn_transfer.py --in TARGET.glb --donor DONOR.glb --out OUT.glb
                             [--k 4]
-Requires: numpy, scipy, pygltflib.
+Requires: numpy, scipy.
 """
 
 import argparse

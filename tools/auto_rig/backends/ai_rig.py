@@ -10,9 +10,9 @@ Pipeline per model:
   1. vendor inference -> predicted skeleton (rig .txt: "joints <name> x y z")
   2. canonicalize names -> WH set (unmapped joints are KEPT with their
      predicted names, flagged in the report — never silently dropped)
-  3. skin: use the vendor's predicted skinning when available (unirig,
-     puppeteer); otherwise fall back to blender-heat on the predicted
-     skeleton.
+  3. report written as JSON; the rigged GLB is assembled by running
+     blender-heat on the predicted skeleton (wired next wave — the
+     adapter currently stops at the canonicalization report).
 
 GPU-only. On a CPU box this module refuses to run the vendor inference
 and tells you the Kaggle command instead.
