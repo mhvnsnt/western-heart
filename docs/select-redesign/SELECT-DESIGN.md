@@ -105,7 +105,7 @@ which game each design element comes from (T8 vs TTT2 vs T6 vs owner spec).
     fine for a menu, they only need to LOOK right): diablo, phantom, skull,
     saku-ra, sam-ur-a1, kinpo, king-tyrant, nightwolf, purple-rain, waterfall,
     awa-pop (×40 scale fix — 2.5 cm miniatures), thor, cape-jones, mariposa
-    (Tripo statics ~1 m), doc-frank, zafina, phantom-t8, kinpo-t8 (foreign
+    (Tripo statics ~1 m), doc-frank, mariposa (T7 base), phantom-t8, kinpo-t8 (foreign
     skeletons). See MODEL-STATUS.md for the audit.
   - Fighters with NO GLB in the repo (BURGER, SCIMITAR, MICHIKO, STAR, TORCH,
     DIO, BRUNO): the fighter's card art (`docs/qa/roster-cards/card_<id>.png`)
