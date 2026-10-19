@@ -1,0 +1,269 @@
+{
+ "fighter": "iori",
+ "display": "IORI",
+ "tekken_base": "Iori Yagami (KOF)",
+ "t3_source": "heihachi",
+ "proxy": true,
+ "proxy_note": "Iori (KOF) has no T3 bank - Heihachi proxy (power). WH name pending owner pick.",
+ "variant": 1,
+ "moves": {
+  "1": {
+   "name": "IORI 1 (T3 heihachi r43)",
+   "input": "1",
+   "t3_source": "heihachi",
+   "t3_row": 43,
+   "t3_command": "LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 11,
+   "t3_damage": 18,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:43",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "2": {
+   "name": "IORI 2 (T3 heihachi r48)",
+   "input": "2",
+   "t3_source": "heihachi",
+   "t3_row": 48,
+   "t3_command": "RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 12,
+   "t3_damage": 20,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:48",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "3": {
+   "name": "IORI 3 (T3 heihachi r54)",
+   "input": "3",
+   "t3_source": "heihachi",
+   "t3_row": 54,
+   "t3_command": "LK",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 13,
+   "t3_damage": 22,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:54",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "4": {
+   "name": "IORI 4 (T3 heihachi r60)",
+   "input": "4",
+   "t3_source": "heihachi",
+   "t3_row": 60,
+   "t3_command": "RK",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 11,
+   "t3_damage": 18,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:60",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "5": {
+   "name": "IORI 5 (T3 heihachi r66)",
+   "input": "f+1",
+   "t3_source": "heihachi",
+   "t3_row": 66,
+   "t3_command": "f+LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 14,
+   "t3_damage": 23,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:66",
+   "input_slots": [
+    "f+1"
+   ],
+   "move_class": "strike"
+  },
+  "6": {
+   "name": "IORI 6 (T3 heihachi r72)",
+   "input": "f+2",
+   "t3_source": "heihachi",
+   "t3_row": 72,
+   "t3_command": "f+RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 12,
+   "t3_damage": 20,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:72",
+   "input_slots": [
+    "f+2"
+   ],
+   "move_class": "strike"
+  },
+  "7": {
+   "name": "IORI 7 (T3 heihachi r78)",
+   "input": "d+1",
+   "t3_source": "heihachi",
+   "t3_row": 78,
+   "t3_command": "d+LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 15,
+   "t3_damage": 25,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:78",
+   "input_slots": [
+    "d+1"
+   ],
+   "move_class": "strike"
+  },
+  "8": {
+   "name": "IORI 8 (T3 heihachi r84)",
+   "input": "d+2",
+   "t3_source": "heihachi",
+   "t3_row": 84,
+   "t3_command": "d+RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 13,
+   "t3_damage": 22,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:84",
+   "input_slots": [
+    "d+2"
+   ],
+   "move_class": "strike"
+  },
+  "9": {
+   "name": "IORI 9 (T3 heihachi r90)",
+   "input": "b+1",
+   "t3_source": "heihachi",
+   "t3_row": 90,
+   "t3_command": "b+LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 14,
+   "t3_damage": 23,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:90",
+   "input_slots": [
+    "b+1"
+   ],
+   "move_class": "strike"
+  },
+  "10": {
+   "name": "IORI 10 (T3 heihachi r96)",
+   "input": "b+2",
+   "t3_source": "heihachi",
+   "t3_row": 96,
+   "t3_command": "b+RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 16,
+   "t3_damage": 27,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:96",
+   "input_slots": [
+    "b+2"
+   ],
+   "move_class": "strike"
+  },
+  "11": {
+   "name": "MAIDEN MASHER",
+   "input": "qcf+1+2",
+   "t3_source": "heihachi",
+   "t3_row": 0,
+   "t3_command": "qcf+1+2",
+   "startup": 0.3,
+   "active": 0.05,
+   "recovery": 0.8,
+   "damage": 26,
+   "t3_damage": 44,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 3.5,
+   "soulGain": 15,
+   "anim_ref": "wh:iori:sig:1",
+   "input_slots": [
+    "qcf+1+2"
+   ],
+   "move_class": "special",
+   "wh_signature": true,
+   "wh_note": "WH signature: Iori's flame combo super."
+  },
+  "12": {
+   "name": "108 SHIKI YAMIBARAI",
+   "input": "qcf+1",
+   "t3_source": "heihachi",
+   "t3_row": 0,
+   "t3_command": "qcf+1",
+   "startup": 0.3,
+   "active": 0.05,
+   "recovery": 0.8,
+   "damage": 16,
+   "t3_damage": 27,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.5,
+   "soulGain": 15,
+   "anim_ref": "wh:iori:sig:2",
+   "input_slots": [
+    "qcf+1"
+   ],
+   "move_class": "projectile",
+   "wh_signature": true,
+   "wh_note": "WH signature: Iori's purple flame projectile."
+  }
+ },
+ "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
+ "schema_version": 2
+}
