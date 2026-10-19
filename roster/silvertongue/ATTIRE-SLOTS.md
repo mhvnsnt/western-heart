@@ -37,3 +37,4 @@ older in-game attires slot in after. (Pantera is the exception.)
 
 - 2026-10-18: Slot 1 built — Spy Debut default attire (this PR).
 - 2026-10-18: Noir Gala moved to Slot 3 (was Slot 1; PR #262).
+- 2026-10-19: Slot 2 built — Rated-M Nude variant (owner: "Need a rated M nudity version... same for SilverTongue, fully rigged jiggle parts and all"). Texture-level build: silver bodysuit + clothing replaced with skin, tasteful anatomy. Fully rigged (22-bone) with 7 jiggle bones. `attires/attire2/model.glb`.
