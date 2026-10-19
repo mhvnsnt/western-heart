@@ -544,10 +544,15 @@ async function startFight(playerId, enemyId, opts = {}) {
   // On-demand: load only the 2 fighters for this fight (Tekken 3 pattern).
   // Models may already be prefetched from select-screen highlight.
   const need = [...new Set([player.model || 'pantera', enemy.model || 'pantera'])];
+  // Mid-match transform targets must be preloaded (createInstance is sync).
+  for (const c of [player, enemy]) if (c.transform && c.transform.targetModel) need.push(c.transform.targetModel);
   const hint = document.getElementById('select-hint');
   const confirmBtn = document.getElementById('confirm-fighter');
   try {
     if (hint) hint.textContent = 'Entering the arena…';
+    // Show the TRANSFORM touch button only for fighters that can transform.
+    const tBtn = document.querySelector('.act-btn.transform');
+    if (tBtn) tBtn.style.display = player.transform ? '' : 'none';
     if (confirmBtn) confirmBtn.disabled = true;
     await assets.loadModels(need, (p, loaded, total) => {
       if (!hint) return;

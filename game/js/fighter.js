@@ -170,6 +170,12 @@ export class Fighter {
     this._locoIdle = 1; this._locoWalk = 0; this._locoRun = 0;
     this._auraFlash = 0;
 
+    // MID-MATCH TRANSFORMATION (Roshi-style, owner 2026-10-19).
+    // Fighters with charData.transform swap models mid-fight:
+    // { targetModel, powerMult, speedMult, defenseMult, bodyScale }.
+    this.transformCfg = charData.transform || null;
+    this.transformed = false;
+
     this._build(startX);
   }
 
@@ -288,6 +294,57 @@ export class Fighter {
     return !this.dead && this.stun <= 0 &&
       (this.state === 'idle' || this.state === 'walk' || this.state === 'jump');
   }
+  canTransform() {
+    return !!(this.transformCfg && !this.transformed && this.canAct());
+  }
+
+  /* Mid-match transformation (Roshi-style power-up, owner 2026-10-19).
+     Swaps the fighter's model for the transform target, applies stat
+     changes. One-way per match. Returns true if the transform fired. */
+  tryTransform() {
+    const t = this.transformCfg;
+    if (!t || this.transformed || !this.canAct()) return false;
+    let inst;
+    try {
+      inst = assets.createInstance(
+        t.targetModel,
+        this.char.colors.suit, this.char.colors.trim,
+        this.char.tintStrength ?? 0.45
+      );
+    } catch (e) {
+      console.error(`[WH] transform failed — unknown model ${t.targetModel}:`, e.message || e);
+      return false;
+    }
+    // Swap under the same lean group: facing + body english preserved.
+    this.lean.remove(this.model);
+    this.lean.add(inst.model);
+    this.model = inst.model;
+    this.bones = inst.bones;
+    this.mixer = inst.mixer;
+    this.actions = inst.actions;
+    // Rebuild the T3 action set on the new mixer (same clips, new skeleton).
+    this.t3actions = {};
+    this._t3current = null;
+    this._t3stateKey = null;
+    const t3clips = getT3Clips();
+    if (t3clips && Object.keys(t3clips).length > 0) {
+      this.t3actions = createT3Actions(this.mixer, t3clips, THREE);
+    }
+    // Bigger = more damage, slower (owner spec).
+    this.stats = {
+      ...this.stats,
+      power: this.stats.power * (t.powerMult ?? 1.35),
+      speed: Math.min(3.5, this.stats.speed * (t.speedMult ?? 0.9)),
+      defense: this.stats.defense * (t.defenseMult ?? 1.1),
+    };
+    if (t.bodyScale) this.root.scale.setScalar(t.bodyScale);
+    this.transformed = true;
+    this._auraFlash = 1.0; // full-body flash on transform
+    this._enter('idle');
+    console.log(`[WH] ${this.char.id} TRANSFORMED -> ${t.targetModel}`);
+    return true;
+  }
+
   tryMove(dir) { if (this.canAct()) this.vx = dir * this.stats.speed; }
   tryJump() { if (this.canAct() && this.onGround) { this.vy = this.stats.jump; this.onGround = false; this._enter('jump'); } }
   tryBlock(on) {
