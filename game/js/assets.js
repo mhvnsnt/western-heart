@@ -24,7 +24,8 @@ const MODEL_URLS = {
   diablo: 'assets/models/diablo.glb',
   phantom: 'assets/models/phantom.glb',
   skull: 'assets/models/skull.glb',
-  'sam-ur-a1': 'assets/models/sam-ur-a1.glb',
+  // SAM-UR-A1 Attire 1 (owner 2026-10-19): Tripo pull replaces the fan-rip placeholder.
+  'sam-ur-a1': '../roster/sam-ur-a1/attires/attire1/model.glb',
   'saku-ra': 'assets/models/saku-ra.glb',
   'awa-pop': 'assets/models/awa-pop.glb',
   'purple-rain': 'assets/models/purple-rain.glb',
@@ -35,6 +36,8 @@ const MODEL_URLS = {
   'n3g4tiv0': 'assets/models/n3g4tiv0.glb',
   thor: 'assets/models/thor.glb',
   'doc-frank': 'assets/models/doc-frank.glb',
+  // Doc Frank post-transform bigger form (owner 2026-10-19, Tripo pull).
+  'doc-frank-big': '../roster/doc-frank/attires/attire1/post-transform/model.glb',
   'cyborg-x': 'assets/models/cyborg-x.glb',
   'cape-jones': 'assets/models/cape-jones.glb',
   // Bonus / music fighters and name-pending models (loadable, unassigned).
@@ -77,6 +80,15 @@ const MODEL_URLS = {
   // Created fighters use the Soldier.glb base from the CAW suite.
   // Relative path works on GitHub Pages (game/ -> customization/).
   custom: '../customization/create-fighter/assets/Soldier.glb',
+  // Reskin wave (2026-10-19): first custom attires, wired as selectable fighters.
+  // Jin Bloodline Ember + Doc Frank Machine Shop are rigged drop-ins from their
+  // lanes; Baek/Mariposa/Dxmmii are texture-transplants onto their rigged bases
+  // (reskin lanes dropped the skins on buffer rebuild) — *-rigged.glb.
+  'demonio-bloodline-ember': '../roster/demonio/attires/bloodline-ember/demonio-bloodline-ember.glb',
+  'doc-frank-machine-shop': '../roster/doc-frank/attires/machine-shop/doc-frank-machine-shop-rigged.glb',
+  'baek-master-white': '../roster/baek/attires/master-white/baek-master-white-rigged.glb',
+  'mariposa-monarch': '../roster/mariposa/attires/monarch/mariposa-monarch-rigged.glb',
+  'dxmmii-patchwork': '../roster/dxmmii/attires/patchwork-dj/dxmmii-patchwork-rigged.glb',
 };
 
 class AssetManager {

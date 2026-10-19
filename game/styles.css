@@ -306,6 +306,7 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
 .act-btn.special{ right: 122px; bottom: 28px; background: linear-gradient(180deg,#e0b3ff,#8b2bd8); width:60px;height:60px;font-size:18px; }
 .act-btn.block  { right: 10px; bottom: 142px; background: linear-gradient(180deg,#9fd8ff,#3f6dc8); width:58px;height:58px;font-size:18px; }
 .act-btn.dodge  { right: 46px; bottom: 8px; background: linear-gradient(180deg,#ff5c7a,#c81f43); width:58px;height:58px;font-size:18px; }
+.act-btn.transform { right: 106px; bottom: 96px; background: linear-gradient(180deg,#fff36b,#d8a02b); width:58px;height:58px;font-size:18px; color:#3a2a00; }
 
 /* Hide touch controls on devices without touch (desktop) */
 @media (hover: hover) and (pointer: fine) {
