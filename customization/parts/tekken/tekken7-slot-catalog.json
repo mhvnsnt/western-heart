@@ -1,1 +1,400 @@
-{"asset_prefixes":{"ACI":"AuraCharacterItem — character aura effects","BP":"Blueprint — visual scripting logic","CCI":"Customize Character Item — clothing/accessory items (references CI file)","CI":"Character Item — specific equippable item data","CS":"Character Set — character customization/appearance data","ECI":"EffectCharacterItem — character visual effects","EI":"Extra Item (Sets) — signature items (Negan's bat, Noctis' sword, Kunimitsu's dagger, Anna's rocket launcher, Lili's teacup)","M":"MasterShader — material definitions","MI":"Material Instance — material variations","PA":"Physics Asset — physics simulation","SK":"Skeleton Mesh — character models","SKT":"Skeleton — rig/skeleton structure","SM":"Static Mesh — props, environments","T":"Texture — textures"},"character_ids":{"note":"Full 57-character ID list (IDs 0-56) lives in tekkenmods-docs (Tekken 7 / Basic Information / Overview / Characters). Included here are the Western Heart-relevant mappings.","scope":"0-56","wh_relevant":{"10":{"abbr":"STE","name":"Steve Fox","wh":"Steve (have model)"},"12":{"abbr":"ASK","name":"Asuka Kazama","wh":"Asuka (have model)"},"19":{"abbr":"ASA","name":"Alisa Bosconovitch","wh":"Cape Jones / Cyborg X base"},"2":{"abbr":"KIN","name":"King","wh":"Pantera base"},"35":{"abbr":"EDD","name":"Eddy Gordo","wh":"Eddy (have model)"},"5":{"abbr":"XIA","name":"Ling Xiaoyu","wh":"Xiaoyu (have model)"},"51":{"abbr":"ZAF","name":"Zafina","wh":"Mariposa base"}}},"color_system":{"max_slots":5,"slots_meaning":"0 = not colorable; 1-5 = colorable material channels","stored_as":"hex values per color slot in item data"},"conflicts":{"FACE":["FULL_HEAD"],"FULL_BODY":["UPPER","LOWER"],"FULL_HEAD":["HEAD","HAIR","FACE","HAIR_ACC","GLA","FACE_HAIR"],"HAIR":["FULL_HEAD"],"HEAD":["FULL_HEAD"],"LOWER":["FULL_BODY"],"UPPER":["FULL_BODY"]},"item_csv_spec":{"example":"561001,-1,nsd_bdu_1p_cus,0,56,9,-1,0,NIN_CUS_008,0,-249,0,1,5,0,1,-255,0,-1,\\x00,0","example_meaning":"Lidia's (charId 56) Upper Body (slotId 9) item with 5 color slots","fields":["ShopID","packageIndex","CCI_Reference","Unknown_D","charId","slotId","Unknown_G","NameByID","ItemName","Unknown_J","SlotGroupID","Unknown_L","PlayerCusID","SlotColors","Unknown_O","Rarity","packageId","ItemCost","Unknown_S","AdditionalText","Unknown_U"],"fields_detail":[{"desc":"Unique item ID","key":"A","name":"Shop ID","type":"int"},{"desc":"Always -1","key":"B","name":"packageIndex","type":"int32"},{"desc":"Asset lookup: TekkenGame/Content/<Path>/<CHAR_ABBR>/<SLOT_TITLE>/<NAME>","key":"C","name":"CCI Reference","type":"string"},{"desc":"Always 0","key":"D","name":"Unknown","type":"int32"},{"desc":"Character ID","key":"E","name":"charId","type":"0-255"},{"desc":"Equipment slot","key":"F","name":"slotId","type":"0-255"},{"desc":"—","key":"G","name":"Unknown","type":"int16"},{"desc":"—","key":"H","name":"Name by ID","type":"int"},{"desc":"e.g. NSD_CUS_007 (Lidia's swimsuit)","key":"I","name":"Item Name","type":"string"},{"desc":"Usually 0","key":"J","name":"Unknown","type":"int"},{"desc":"UI group (negative values)","key":"K","name":"Slot Group ID","type":"int"},{"desc":"—","key":"L","name":"Unknown","type":"int32"},{"desc":"1=1P, 2=2P, 0=Generic (all characters)","key":"M","name":"PlayerCus ID","type":"int"},{"desc":"Number of colorable slots. 0=not colorable. Max 5.","key":"N","name":"Slot Colors","type":"0-5"},{"desc":"—","key":"O","name":"Unknown","type":"0-255"},{"desc":"Item rarity tier","key":"P","name":"Rarity","type":"int"},{"desc":"Usually -255","key":"Q","name":"packageId","type":"int"},{"desc":"Fight Money cost","key":"R","name":"Item Cost","type":"int"},{"desc":"Usually -1","key":"S","name":"Unknown","type":"int"},{"desc":"Usually \\x00","key":"T","name":"Additional Text","type":"string"},{"desc":"Usually 0","key":"U","name":"Unknown","type":"int"}],"note":"21-field spec from TKDataPatcher documentation. Unknown fields preserved as-is for round-trip fidelity."},"player_cus_id":{"0":"Generic (all characters)","1":"Player 1 costume (character-specific)","2":"Player 2 costume (character-specific)"},"slot_groups":{"-236":"Mirroring","-237":"Skin Tone","-238":"Aura","-240":"Effects","-242":"Lower Accessory","-243":"Upper Accessory","-244":"Lower Body","-245":"Full Body","-246":"Upper Body","-247":"Face Paint","-249":"Face","-250":"Glasses","-251":"Hair Accessory","-252":"Full Head","-253":"Hairstyle","-254":"Head"},"slots":{"1":{"asset_type":"CharacterCustomizeItem","game_path":"Character/Item/Customize","title":"HEAD"},"10":{"asset_type":"CharacterCustomizeItem","game_path":"Character/Item/Customize","title":"FULL_BODY"},"11":{"asset_type":"CharacterCustomizeItem","game_path":"Character/Item/Customize","title":"LOWER"},"12":{"asset_type":"CharacterCustomizeItem","game_path":"Character/Item/Customize","title":"UPPER_ACC"},"13":{"asset_type":"CharacterCustomizeItem","game_path":"Character/Item/Customize","title":"LOWER_ACC"},"14":{"asset_type":"CharacterCustomizeItem","game_path":"Character/Item/Customize","title":"EXTRA"},"15":{"asset_type":"EffectCharacterItem","game_path":"Character/Item/EffectItem","title":"EFFECT"},"17":{"asset_type":"AuraCharacterItem","game_path":"Character/Item/AuraItem","title":"AURA"},"2":{"asset_type":"CharacterCustomizeItem","game_path":"Character/Item/Customize","title":"HAIR"},"3":{"asset_type":"CharacterCustomizeItem","game_path":"Character/Item/Customize","title":"FULL_HEAD"},"4":{"asset_type":"CharacterCustomizeItem","game_path":"Character/Item/Customize","title":"HAIR_ACC"},"5":{"asset_type":"CharacterCustomizeItem","game_path":"Character/Item/Customize","title":"GLA"},"6":{"asset_type":"CharacterCustomizeItem","game_path":"Character/Item/Customize","title":"FACE"},"7":{"asset_type":"CharacterCustomizeItem","game_path":"Character/Item/Customize","title":"FACE_HAIR"},"8":{"asset_type":"CharacterItemTex","game_path":"Character/Item/Customize","title":"MAKE_UP"},"9":{"asset_type":"CharacterCustomizeItem","game_path":"Character/Item/Customize","title":"UPPER"}},"source":"Tekken 7 TKDataPatcher documentation via tekkenmods-docs, extracted 2026-10-16 (~/workspace/tekken-customization-extraction/REPORT.md). Schema is research-verified; actual .uasset item models are NOT in our teardown (need Tekken 7 game files).","system":"tekken7-customization-schema","tekken8_additions":{"2_accessory_slots":"no two items in same area","characters_stand":"not fighting stance in customization screen","footwear_slot":"separate from Lower Body","shared_slots":30}}
+{
+ "asset_prefixes": {
+  "ACI": "AuraCharacterItem \u2014 character aura effects",
+  "BP": "Blueprint \u2014 visual scripting logic",
+  "CCI": "Customize Character Item \u2014 clothing/accessory items (references CI file)",
+  "CI": "Character Item \u2014 specific equippable item data",
+  "CS": "Character Set \u2014 character customization/appearance data",
+  "ECI": "EffectCharacterItem \u2014 character visual effects",
+  "EI": "Extra Item (Sets) \u2014 signature items (Negan's bat, Noctis' sword, Kunimitsu's dagger, Anna's rocket launcher, Lili's teacup)",
+  "M": "MasterShader \u2014 material definitions",
+  "MI": "Material Instance \u2014 material variations",
+  "PA": "Physics Asset \u2014 physics simulation",
+  "SK": "Skeleton Mesh \u2014 character models",
+  "SKT": "Skeleton \u2014 rig/skeleton structure",
+  "SM": "Static Mesh \u2014 props, environments",
+  "T": "Texture \u2014 textures"
+ },
+ "character_ids": {
+  "note": "Full 57-character ID list (IDs 0-56) lives in tekkenmods-docs (Tekken 7 / Basic Information / Overview / Characters). Included here are the Western Heart-relevant mappings.",
+  "scope": "0-56",
+  "wh_relevant": {
+   "10": {
+    "abbr": "STE",
+    "name": "Steve Fox",
+    "wh": "Steve (have model)"
+   },
+   "12": {
+    "abbr": "ASK",
+    "name": "Asuka Kazama",
+    "wh": "Asuka (have model)"
+   },
+   "19": {
+    "abbr": "ASA",
+    "name": "Alisa Bosconovitch",
+    "wh": "Cape Jones / Cyborg X base"
+   },
+   "2": {
+    "abbr": "KIN",
+    "name": "King",
+    "wh": "Pantera base"
+   },
+   "35": {
+    "abbr": "EDD",
+    "name": "Eddy Gordo",
+    "wh": "Eddy (have model)"
+   },
+   "5": {
+    "abbr": "XIA",
+    "name": "Ling Xiaoyu",
+    "wh": "Xiaoyu (have model)"
+   },
+   "51": {
+    "abbr": "ZAF",
+    "name": "Zafina",
+    "wh": "Mariposa base"
+   }
+  }
+ },
+ "color_system": {
+  "max_slots": 5,
+  "slots_meaning": "0 = not colorable; 1-5 = colorable material channels",
+  "stored_as": "hex values per color slot in item data"
+ },
+ "conflicts": {
+  "FACE": [
+   "FULL_HEAD"
+  ],
+  "FULL_BODY": [
+   "UPPER",
+   "LOWER"
+  ],
+  "FULL_HEAD": [
+   "HEAD",
+   "HAIR",
+   "FACE",
+   "HAIR_ACC",
+   "GLA",
+   "FACE_HAIR"
+  ],
+  "HAIR": [
+   "FULL_HEAD"
+  ],
+  "HEAD": [
+   "FULL_HEAD"
+  ],
+  "LOWER": [
+   "FULL_BODY"
+  ],
+  "UPPER": [
+   "FULL_BODY"
+  ]
+ },
+ "item_csv_spec": {
+  "example": "561001,-1,nsd_bdu_1p_cus,0,56,9,-1,0,NIN_CUS_008,0,-249,0,1,5,0,1,-255,0,-1,\\x00,0",
+  "example_meaning": "Lidia's (charId 56) Upper Body (slotId 9) item with 5 color slots",
+  "fields": [
+   "ShopID",
+   "packageIndex",
+   "CCI_Reference",
+   "Unknown_D",
+   "charId",
+   "slotId",
+   "Unknown_G",
+   "NameByID",
+   "ItemName",
+   "Unknown_J",
+   "SlotGroupID",
+   "Unknown_L",
+   "PlayerCusID",
+   "SlotColors",
+   "Unknown_O",
+   "Rarity",
+   "packageId",
+   "ItemCost",
+   "Unknown_S",
+   "AdditionalText",
+   "Unknown_U"
+  ],
+  "fields_detail": [
+   {
+    "desc": "Unique item ID",
+    "key": "A",
+    "name": "Shop ID",
+    "type": "int"
+   },
+   {
+    "desc": "Always -1",
+    "key": "B",
+    "name": "packageIndex",
+    "type": "int32"
+   },
+   {
+    "desc": "Asset lookup: TekkenGame/Content/<Path>/<CHAR_ABBR>/<SLOT_TITLE>/<NAME>",
+    "key": "C",
+    "name": "CCI Reference",
+    "type": "string"
+   },
+   {
+    "desc": "Always 0",
+    "key": "D",
+    "name": "Unknown",
+    "type": "int32"
+   },
+   {
+    "desc": "Character ID",
+    "key": "E",
+    "name": "charId",
+    "type": "0-255"
+   },
+   {
+    "desc": "Equipment slot",
+    "key": "F",
+    "name": "slotId",
+    "type": "0-255"
+   },
+   {
+    "desc": "\u2014",
+    "key": "G",
+    "name": "Unknown",
+    "type": "int16"
+   },
+   {
+    "desc": "\u2014",
+    "key": "H",
+    "name": "Name by ID",
+    "type": "int"
+   },
+   {
+    "desc": "e.g. NSD_CUS_007 (Lidia's swimsuit)",
+    "key": "I",
+    "name": "Item Name",
+    "type": "string"
+   },
+   {
+    "desc": "Usually 0",
+    "key": "J",
+    "name": "Unknown",
+    "type": "int"
+   },
+   {
+    "desc": "UI group (negative values)",
+    "key": "K",
+    "name": "Slot Group ID",
+    "type": "int"
+   },
+   {
+    "desc": "\u2014",
+    "key": "L",
+    "name": "Unknown",
+    "type": "int32"
+   },
+   {
+    "desc": "1=1P, 2=2P, 0=Generic (all characters)",
+    "key": "M",
+    "name": "PlayerCus ID",
+    "type": "int"
+   },
+   {
+    "desc": "Number of colorable slots. 0=not colorable. Max 5.",
+    "key": "N",
+    "name": "Slot Colors",
+    "type": "0-5"
+   },
+   {
+    "desc": "\u2014",
+    "key": "O",
+    "name": "Unknown",
+    "type": "0-255"
+   },
+   {
+    "desc": "Item rarity tier",
+    "key": "P",
+    "name": "Rarity",
+    "type": "int"
+   },
+   {
+    "desc": "Usually -255",
+    "key": "Q",
+    "name": "packageId",
+    "type": "int"
+   },
+   {
+    "desc": "Fight Money cost",
+    "key": "R",
+    "name": "Item Cost",
+    "type": "int"
+   },
+   {
+    "desc": "Usually -1",
+    "key": "S",
+    "name": "Unknown",
+    "type": "int"
+   },
+   {
+    "desc": "Usually \\x00",
+    "key": "T",
+    "name": "Additional Text",
+    "type": "string"
+   },
+   {
+    "desc": "Usually 0",
+    "key": "U",
+    "name": "Unknown",
+    "type": "int"
+   }
+  ],
+  "note": "21-field spec from TKDataPatcher documentation. Unknown fields preserved as-is for round-trip fidelity."
+ },
+ "player_cus_id": {
+  "0": "Generic (all characters)",
+  "1": "Player 1 costume (character-specific)",
+  "2": "Player 2 costume (character-specific)"
+ },
+ "slot_groups": {
+  "-236": "Mirroring",
+  "-237": "Skin Tone",
+  "-238": "Aura",
+  "-240": "Effects",
+  "-242": "Lower Accessory",
+  "-243": "Upper Accessory",
+  "-244": "Lower Body",
+  "-245": "Full Body",
+  "-246": "Upper Body",
+  "-247": "Face Paint",
+  "-249": "Face",
+  "-250": "Glasses",
+  "-251": "Hair Accessory",
+  "-252": "Full Head",
+  "-253": "Hairstyle",
+  "-254": "Head"
+ },
+ "slots": {
+  "1": {
+   "asset_type": "CharacterCustomizeItem",
+   "game_path": "Character/Item/Customize",
+   "title": "HEAD"
+  },
+  "10": {
+   "asset_type": "CharacterCustomizeItem",
+   "game_path": "Character/Item/Customize",
+   "title": "FULL_BODY"
+  },
+  "11": {
+   "asset_type": "CharacterCustomizeItem",
+   "game_path": "Character/Item/Customize",
+   "title": "LOWER"
+  },
+  "12": {
+   "asset_type": "CharacterCustomizeItem",
+   "game_path": "Character/Item/Customize",
+   "title": "UPPER_ACC"
+  },
+  "13": {
+   "asset_type": "CharacterCustomizeItem",
+   "game_path": "Character/Item/Customize",
+   "title": "LOWER_ACC"
+  },
+  "14": {
+   "asset_type": "CharacterCustomizeItem",
+   "game_path": "Character/Item/Customize",
+   "title": "EXTRA"
+  },
+  "15": {
+   "asset_type": "EffectCharacterItem",
+   "game_path": "Character/Item/EffectItem",
+   "title": "EFFECT"
+  },
+  "17": {
+   "asset_type": "AuraCharacterItem",
+   "game_path": "Character/Item/AuraItem",
+   "title": "AURA"
+  },
+  "2": {
+   "asset_type": "CharacterCustomizeItem",
+   "game_path": "Character/Item/Customize",
+   "title": "HAIR"
+  },
+  "3": {
+   "asset_type": "CharacterCustomizeItem",
+   "game_path": "Character/Item/Customize",
+   "title": "FULL_HEAD"
+  },
+  "4": {
+   "asset_type": "CharacterCustomizeItem",
+   "game_path": "Character/Item/Customize",
+   "title": "HAIR_ACC"
+  },
+  "5": {
+   "asset_type": "CharacterCustomizeItem",
+   "game_path": "Character/Item/Customize",
+   "title": "GLA"
+  },
+  "6": {
+   "asset_type": "CharacterCustomizeItem",
+   "game_path": "Character/Item/Customize",
+   "title": "FACE"
+  },
+  "7": {
+   "asset_type": "CharacterCustomizeItem",
+   "game_path": "Character/Item/Customize",
+   "title": "FACE_HAIR"
+  },
+  "8": {
+   "asset_type": "CharacterItemTex",
+   "game_path": "Character/Item/Customize",
+   "title": "MAKE_UP"
+  },
+  "9": {
+   "asset_type": "CharacterCustomizeItem",
+   "game_path": "Character/Item/Customize",
+   "title": "UPPER"
+  }
+ },
+ "source": "Tekken 7 TKDataPatcher documentation via tekkenmods-docs, extracted 2026-10-16 (~/workspace/tekken-customization-extraction/REPORT.md). Schema is research-verified; actual .uasset item models are NOT in our teardown (need Tekken 7 game files).",
+ "system": "tekken7-customization-schema",
+ "tekken8_additions": {
+  "2_accessory_slots": "no two items in same area",
+  "characters_stand": "not fighting stance in customization screen",
+  "footwear_slot": "separate from Lower Body",
+  "shared_slots": 30
+ },
+ "wh_attires": {
+  "note": "Western Heart attire slot assignments in Tekken 7 customization-slot terms (owner 2026-10-18 pipeline). Character: Mariposa (charId 51 ZAF per character_ids).",
+  "mariposa": {
+   "character_id": 51,
+   "attires": [
+    {
+     "slot": 1,
+     "display": "Mariposa \u2014 Butterfly Default",
+     "glb": "roster/mariposa/attires/butterfly-default/mariposa-butterfly-default.glb",
+     "t7_slots": {
+      "2": "HAIR (reshaped dark silhouette, ponytail/rose meshes removed)",
+      "8": "MAKE_UP (butterfly wing eyeshadow, plum lips \u2014 baked in head_d)",
+      "9": "UPPER (near-black iridescent butterfly bustier + violet scarf)",
+      "11": "LOWER (flared skirt-morph shorts)",
+      "12": "UPPER_ACC (butterfly eyespot gloves)",
+      "13": "LOWER_ACC (butterfly eyespot boots)"
+     },
+     "morphs": [
+      "mpfb2_body_curvy",
+      "gnm_face_butterfly",
+      "hair_butterfly_silhouette",
+      "skirt_flare"
+     ]
+    },
+    {
+     "slot": 3,
+     "display": "Mariposa \u2014 Golden Pharaoh",
+     "glb": "roster/zafina/attires/golden-pharaoh/zafina-golden-pharaoh.glb",
+     "t7_slots": {
+      "9": "UPPER (gold butterfly top)",
+      "11": "LOWER",
+      "2": "HAIR (original)"
+     },
+     "note": "Texture-only reskin, merged #262. Untouched by the Slot 1 build."
+    }
+   ]
+  }
+ }
+}

@@ -1,6 +1,6 @@
 {
  "character_mapping_format": {
-  "description": "Same universal format as eye-library (see CUSTOMIZATION-LIBRARY-LAYOUT.md). To make every part work on a NEW character: add one entry here naming that character's eye/decal textures (texture_part) \u2014 mesh_parts attach at bone sockets and need no mapping, only optional per-character offsets.",
+  "description": "Same universal format as eye-library (see CUSTOMIZATION-LIBRARY-LAYOUT.md). To make every part work on a NEW character: add one entry here naming that character's eye/decal textures (texture_part) — mesh_parts attach at bone sockets and need no mapping, only optional per-character offsets.",
   "mesh_part_fields": {
    "bone_aliases": [
     "bone",
@@ -96,7 +96,7 @@
      1024
     ]
    },
-   "notes": "Full-texture dress options in customization/decal-library/lili/. Eye options in customization/parts/lili-eyes/. DEFAULT ATTIRE is now Silvertongue Slot 1 (roster/silvertongue/); see character_mappings.silvertongue."
+   "notes": "Full-texture dress options in customization/decal-library/lili/ (MANIFEST.json, 18 entries: noir + white-original restore). Eye options in customization/parts/lili-eyes/."
   },
   "zafina": {
    "character": "Mariposa (Western Heart roster/zafina, Tekken 6 outfit)",
@@ -117,63 +117,77 @@
    },
    "notes": "Butterfly-top options in customization/decal-library/zafina/ (MANIFEST.json: gold-pharaoh + pink-original restore). Eye options in customization/parts/zafina-eyes/."
   },
-  "silvertongue": {
-   "character": "Silvertongue (Western Heart roster/silvertongue, Slot 1 Spy Debut default attire)",
+  "mariposa": {
+   "character": "Mariposa (proprietary; wired Tekken 6 base, Slot 1 Butterfly Default)",
    "eye": {
-    "material": "Modelpart1_eyeball_Material005",
-    "replaces_texture": "T_CH_eye_D",
+    "material": "24_eyes_1_16_16",
+    "replaces_texture": "eyes_d-eyes_d.dds",
+    "texture_size": [
+     128,
+     128
+    ]
+   },
+   "top": {
+    "material": "24_butterfly_1_16_16",
+    "replaces_texture": "butterfly_d-butterfly_d.dds",
     "texture_size": [
      256,
-     256
-    ]
-   },
-   "face": {
-    "material": "Modelpart1_face_Material006",
-    "replaces_texture": "T_CH_lil_face_D",
-    "texture_size": [
-     1024,
-     1024
-    ]
-   },
-   "hair": {
-    "materials": [
-     "Modelpart2_hair1_Material047",
-     "Modelpart2_hair2_Material048"
-    ],
-    "replaces_texture": "T_CH_lil_hair_1p_D",
-    "texture_size": [
-     1024,
      512
     ]
    },
-   "spy_jacket": {
-    "replaces_texture": "T_CH_lil_bdu_1p_old_jacket_D",
+   "scarf": {
+    "material": "24_scarf_1_0_0",
+    "replaces_texture": "scarf_d-scarf_d.dds",
     "texture_size": [
      512,
-     1024
+     128
     ]
    },
-   "spy_boots": {
-    "replaces_texture": "T_CH_lil_bdl_1p_old_boots_D",
+   "hair": {
+    "material": "25_hairtop_1_16_16",
+    "replaces_texture": "hairtop_d-hairtop_d.dds",
     "texture_size": [
      256,
      256
     ]
    },
-   "spy_gloves": {
-    "replaces_texture": "T_CH_lil_bdu_1p_old_glove_D",
+   "shorts": {
+    "material": "24_shorts_1_16_16",
+    "replaces_texture": "shorts_d-shorts_d.dds",
     "texture_size": [
-     256,
+     512,
      256
     ]
    },
-   "notes": "Slot 1 Spy Debut options in customization/parts/silvertongue-default/ (MANIFEST.json). Eye options in customization/parts/lili-eyes/."
+   "mouth": {
+    "material": "24_mouth_1_16_16",
+    "replaces_texture": "mouth_d-mouth_d.dds",
+    "texture_size": [
+     64,
+     128
+    ]
+   },
+   "head": {
+    "material": "24_head_1_0_0",
+    "replaces_texture": "head_d-head_d.dds",
+    "texture_size": [
+     512,
+     512
+    ]
+   },
+   "morphs": [
+    "mpfb2_body_curvy",
+    "gnm_face_butterfly",
+    "hair_butterfly_silhouette",
+    "skirt_flare"
+   ],
+   "notes": "Slot 1 Butterfly Default applies: eye-yellow-tiger (eye), top-butterfly-default, scarf-butterfly-default, hair-butterfly-default, shorts-butterfly-default (decal-library/mariposa) + baked morphs. Originals restorable from customization/parts/mariposa-default/."
   }
  },
  "created": "2026-10-18",
  "how_to_use": [
   "1. The suite (packages/creation-suite/src/parts.js) loads this registry.",
-  "2. Texture parts: resolveEntry(entry, charId) merges the character's mapping; swapTexture() replaces the texture live \u2014 swap back restores the original (nothing overwritten).",
+  "2. Texture parts: resolveEntry(entry, charId) merges the character's mapping; swapTexture() replaces the texture live — swap back restores the original (nothing overwritten).",
   "3. Mesh parts: attachPart() routes to attach() at the registry socket (bone aliases shared across rigs) with optional fit=headHeight auto-scale.",
   "4. Web UI (customization/create-fighter/): Catalog gains the eyes / decals / masks categories sourced from the same entries."
  ],
@@ -206,12 +220,19 @@
    "part_class": "mesh_part",
    "path": "customization/parts/superhero/"
   },
-  "silvertongue-default": {
-   "path": "customization/parts/silvertongue-default/",
-   "manifest": "customization/parts/silvertongue-default/MANIFEST.json",
-   "kind": "face | hair | outfit",
+  "decal-library-mariposa": {
+   "kind": "top | scarf | hair | shorts",
+   "manifest": "customization/decal-library/mariposa/MANIFEST.json",
+   "note": "Mariposa butterfly-default texture options (applied) + originals (restore).",
    "part_class": "texture_part",
-   "note": "Silvertongue Slot 1 Spy Debut originals, saved as swap options (nothing overwritten)."
+   "path": "customization/decal-library/mariposa/"
+  },
+  "mariposa-default": {
+   "kind": "eye | head | top | hair_mesh | morph",
+   "manifest": "customization/parts/mariposa-default/MANIFEST.json",
+   "note": "Slot 1 originals saved as options (nothing overwritten) + morph definitions.",
+   "part_class": "texture_part",
+   "path": "customization/parts/mariposa-default/"
   }
  },
  "parts": [
@@ -225,8 +246,8 @@
    "id": "eye-yellow-tiger",
    "kind": "eye",
    "library": "eye-library",
-   "name": "Yellow tiger eye (OWNER'S 'I LIKE' VARIANT \u2014 universal)",
-   "notes": "Realistic amber iris, radial striations, round pupil, dark limbal ring. Universal \u2014 add a character_mappings entry to drop it onto any character.",
+   "name": "Yellow tiger eye (OWNER'S 'I LIKE' VARIANT — universal)",
+   "notes": "Realistic amber iris, radial striations, round pupil, dark limbal ring. Universal — add a character_mappings entry to drop it onto any character.",
    "part_class": "texture_part",
    "placement": {
     "default_character": "pantera",
@@ -300,7 +321,7 @@
    "id": "pantera-eye-yellow-tiger",
    "kind": "eye",
    "library": "pantera-eyes",
-   "name": "Pantera eyes \u2014 yellow tiger (currently applied)",
+   "name": "Pantera eyes — yellow tiger (currently applied)",
    "notes": "Pantera-local saved variant; same art family as the universal eye-library entry.",
    "part_class": "texture_part",
    "placement": {
@@ -325,7 +346,7 @@
    "id": "pantera-eye-snow-leopard-blue",
    "kind": "eye",
    "library": "pantera-eyes",
-   "name": "Pantera eyes \u2014 snow leopard blue (Attire 3 default)",
+   "name": "Pantera eyes — snow leopard blue (Attire 3 default)",
    "notes": "Pantera-local saved variant.",
    "part_class": "texture_part",
    "placement": {
@@ -350,7 +371,7 @@
    "id": "pantera-eye-original-classic",
    "kind": "eye",
    "library": "pantera-eyes",
-   "name": "Pantera eyes \u2014 original classic yellow",
+   "name": "Pantera eyes — original classic yellow",
    "notes": "Pantera-local saved variant.",
    "part_class": "texture_part",
    "placement": {
@@ -376,7 +397,7 @@
    "id": "pantera-logo-white-scratches",
    "kind": "decal_logo",
    "library": "decal-library-pantera",
-   "name": "Pantera logo \u2014 white scratch marks (original)",
+   "name": "Pantera logo — white scratch marks (original)",
    "notes": "Original thigh decal, transparent background. Both thighs share the UV region (mirrored).",
    "part_class": "texture_part",
    "placement": {
@@ -408,7 +429,7 @@
    "id": "pantera-logo-red-scratches",
    "kind": "decal_logo",
    "library": "decal-library-pantera",
-   "name": "Pantera logo \u2014 red scratch marks",
+   "name": "Pantera logo — red scratch marks",
    "notes": "Red scratch-marks variant of the original thigh decal.",
    "part_class": "texture_part",
    "placement": {
@@ -440,7 +461,7 @@
    "id": "pantera-logo-snow-leopard",
    "kind": "decal_logo",
    "library": "decal-library-pantera",
-   "name": "Pantera logo \u2014 snow leopard",
+   "name": "Pantera logo — snow leopard",
    "notes": "Owner-supplied snow leopard art; currently applied at +50% size centered on canonical placement.",
    "part_class": "texture_part",
    "placement": {
@@ -472,7 +493,7 @@
    "id": "pantera-logo-snow-leopard-owner",
    "kind": "decal_logo",
    "library": "decal-library-pantera",
-   "name": "Pantera logo \u2014 snow leopard (owner transparent)",
+   "name": "Pantera logo — snow leopard (owner transparent)",
    "notes": "Owner's own background-removed transparent PNG (2048x2048 source).",
    "part_class": "texture_part",
    "placement": {
@@ -499,8 +520,8 @@
    "id": "pantera-tights-blue-snow-leopard",
    "kind": "tights",
    "library": "decal-library-pantera",
-   "name": "Tights \u2014 blue (snow leopard attire, decal baked)",
-   "notes": "Full blue tights texture with snow leopard decal baked in \u2014 the current Attire 3 state.",
+   "name": "Tights — blue (snow leopard attire, decal baked)",
+   "notes": "Full blue tights texture with snow leopard decal baked in — the current Attire 3 state.",
    "part_class": "texture_part",
    "placement": {
     "default_character": "pantera",
@@ -520,7 +541,7 @@
    "id": "pantera-tights-blue-clean",
    "kind": "tights",
    "library": "decal-library-pantera",
-   "name": "Tights \u2014 blue, clean (neutral base)",
+   "name": "Tights — blue, clean (neutral base)",
    "notes": "Neutral base: composite any logo option onto this, then re-embed.",
    "part_class": "texture_part",
    "placement": {
@@ -541,7 +562,7 @@
    "id": "pantera-pants-black-trunks",
    "kind": "pants",
    "library": "decal-library-pantera",
-   "name": "Pants \u2014 black trunks",
+   "name": "Pants — black trunks",
    "notes": "Black trunks texture, PANTERA chest/trunks logo included.",
    "part_class": "texture_part",
    "placement": {
@@ -571,7 +592,7 @@
    "kind": "eye_lenses",
    "library": "superhero",
    "name": "Spider-Girl white eye lenses",
-   "notes": "White angular eye lenses, slight emissive. Modeled in place at cyborg-x coords \u2014 drops on as-is there; on other characters use fit=headHeight.",
+   "notes": "White angular eye lenses, slight emissive. Modeled in place at cyborg-x coords — drops on as-is there; on other characters use fit=headHeight.",
    "part_class": "mesh_part",
    "placement": {
     "bone_aliases": [
@@ -653,7 +674,7 @@
    "kind": "cowl",
    "library": "superhero",
    "name": "Space Ghost cowl (no ears)",
-   "notes": "Skull-cap cowl, purple, no ears/fins \u2014 the Cape Jones signature. Modeled in place for cyborg-x.",
+   "notes": "Skull-cap cowl, purple, no ears/fins — the Cape Jones signature. Modeled in place for cyborg-x.",
    "part_class": "mesh_part",
    "placement": {
     "bone_aliases": [
@@ -718,156 +739,209 @@
    "suite_slot": "gauntlets"
   },
   {
-   "id": "silv-face-original",
-   "library": "silvertongue-default",
-   "suite_slot": "face",
+   "asset": "customization/decal-library/mariposa/top-butterfly-default.png",
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ],
+   "id": "mariposa-top-butterfly-default",
+   "kind": "top",
+   "library": "decal-library-mariposa",
+   "name": "Mariposa top — butterfly default (Slot 1)",
+   "notes": "Near-black bustier, iridescent blue/violet butterfly wings + eyespots, gold trim.",
    "part_class": "texture_part",
-   "name": "Original face",
-   "replaces_texture": "T_CH_lil_face_D",
-   "texture_size": [
-    1024,
-    1024
-   ],
-   "materials": [
-    "Modelpart1_face_Material006"
-   ],
-   "applies_to": "roster/silvertongue/attires/spy-debut/silvertongue-spy-debut.glb"
-  },
-  {
-   "id": "silv-face-007-makeup",
-   "library": "silvertongue-default",
-   "suite_slot": "face",
-   "part_class": "texture_part",
-   "name": "007 makeup (applied)",
-   "replaces_texture": "T_CH_lil_face_D",
-   "texture_size": [
-    1024,
-    1024
-   ],
-   "materials": [
-    "Modelpart1_face_Material006"
-   ],
-   "applies_to": "roster/silvertongue/attires/spy-debut/silvertongue-spy-debut.glb"
-  },
-  {
-   "id": "silv-hair-original",
-   "library": "silvertongue-default",
-   "suite_slot": "hair",
-   "part_class": "texture_part",
-   "name": "Original blonde hair",
-   "replaces_texture": "T_CH_lil_hair_1p_D",
-   "texture_size": [
-    1024,
+   "placement": {
+    "default_character": "mariposa",
+    "material": "24_butterfly_1_16_16",
+    "mode": "full_replace",
+    "texture": "butterfly_d-butterfly_d.dds"
+   },
+   "size_px": [
+    256,
     512
    ],
-   "materials": [
-    "Modelpart2_hair1_Material047",
-    "Modelpart2_hair2_Material048"
-   ],
-   "applies_to": "roster/silvertongue/attires/spy-debut/silvertongue-spy-debut.glb"
+   "suite_slot": "top"
   },
   {
-   "id": "silv-hair-spy-sleek",
-   "library": "silvertongue-default",
-   "suite_slot": "hair",
+   "asset": "customization/decal-library/mariposa/scarf-butterfly-default.png",
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ],
+   "id": "mariposa-scarf-butterfly-default",
+   "kind": "scarf",
+   "library": "decal-library-mariposa",
+   "name": "Mariposa scarf — butterfly default (Slot 1)",
+   "notes": "Indigo-to-violet gradient with butterfly pattern band.",
    "part_class": "texture_part",
-   "name": "Spy sleek, no drills (applied)",
-   "replaces_texture": "T_CH_lil_hair_1p_D",
-   "texture_size": [
-    1024,
+   "placement": {
+    "default_character": "mariposa",
+    "material": "24_scarf_1_0_0",
+    "mode": "full_replace",
+    "texture": "scarf_d-scarf_d.dds"
+   },
+   "size_px": [
+    512,
+    128
+   ],
+   "suite_slot": "scarf"
+  },
+  {
+   "asset": "customization/decal-library/mariposa/hair-butterfly-default.png",
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ],
+   "id": "mariposa-hair-butterfly-default",
+   "kind": "hair",
+   "library": "decal-library-mariposa",
+   "name": "Mariposa hair — butterfly default (Slot 1)",
+   "notes": "Near-black hair, blue iridescent sheen + butterfly eyespots.",
+   "part_class": "texture_part",
+   "placement": {
+    "default_character": "mariposa",
+    "material": "25_hairtop_1_16_16",
+    "mode": "full_replace",
+    "texture": "hairtop_d-hairtop_d.dds"
+   },
+   "size_px": [
+    256,
+    256
+   ],
+   "suite_slot": "hair"
+  },
+  {
+   "asset": "customization/decal-library/mariposa/shorts-butterfly-default.png",
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ],
+   "id": "mariposa-shorts-butterfly-default",
+   "kind": "pants",
+   "library": "decal-library-mariposa",
+   "name": "Mariposa shorts — butterfly default (Slot 1)",
+   "notes": "Near-black violet shorts with wing-trim hem (pairs with skirt_flare morph).",
+   "part_class": "texture_part",
+   "placement": {
+    "default_character": "mariposa",
+    "material": "24_shorts_1_16_16",
+    "mode": "full_replace",
+    "texture": "shorts_d-shorts_d.dds"
+   },
+   "size_px": [
+    512,
+    256
+   ],
+   "suite_slot": "pants"
+  },
+  {
+   "asset": "customization/parts/mariposa-default/top-pink-original.png",
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ],
+   "id": "mariposa-top-pink-original",
+   "kind": "top",
+   "library": "mariposa-default",
+   "name": "Mariposa top — pink original (restore option)",
+   "notes": "Original T6 pink butterfly top. Restores the pre-Slot-1 look.",
+   "part_class": "texture_part",
+   "placement": {
+    "default_character": "mariposa",
+    "material": "24_butterfly_1_16_16",
+    "mode": "full_replace",
+    "texture": "butterfly_d-butterfly_d.dds"
+   },
+   "size_px": [
+    256,
     512
    ],
-   "materials": [
-    "Modelpart2_hair1_Material047",
-    "Modelpart2_hair2_Material048"
-   ],
-   "applies_to": "roster/silvertongue/attires/spy-debut/silvertongue-spy-debut.glb"
+   "suite_slot": "top"
   },
   {
-   "id": "silv-drills-tiara-corsage",
-   "library": "silvertongue-default",
-   "suite_slot": "hair",
+   "asset": "customization/parts/mariposa-default/eye-brown-original.png",
+   "editable": [
+    "position",
+    "size",
+    "opacity"
+   ],
+   "id": "mariposa-eye-brown-original",
+   "kind": "eye",
+   "library": "mariposa-default",
+   "name": "Mariposa eye — brown original (restore option)",
+   "notes": "Original T6 dark-brown eye. Slot 1 default uses universal yellow tiger.",
+   "part_class": "texture_part",
+   "placement": {
+    "default_character": "mariposa",
+    "material": "24_eyes_1_16_16",
+    "mode": "full_replace",
+    "texture": "eyes_d-eyes_d.dds"
+   },
+   "size_px": [
+    128,
+    128
+   ],
+   "suite_slot": "eye"
+  },
+  {
+   "asset": "customization/parts/mariposa-default/head-original-no-makeup.png",
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ],
+   "id": "mariposa-head-no-makeup",
+   "kind": "decal_logo",
+   "library": "mariposa-default",
+   "name": "Mariposa head — no butterfly makeup (restore option)",
+   "notes": "Original head diffuse without wing eyeshadow / plum lips.",
+   "part_class": "texture_part",
+   "placement": {
+    "default_character": "mariposa",
+    "material": "24_head_1_0_0",
+    "mode": "full_replace",
+    "texture": "head_d-head_d.dds"
+   },
+   "size_px": [
+    512,
+    512
+   ],
+   "suite_slot": "decal_logo"
+  },
+  {
+   "asset": "customization/parts/mariposa-default/mariposa-hair-original-opt.glb",
+   "editable": [
+    "position",
+    "rotation",
+    "scale"
+   ],
+   "id": "mariposa-hair-original-ponytail-roses",
+   "kind": "hair",
+   "library": "mariposa-default",
+   "name": "Mariposa hair meshes — original ponytail + roses (restore option)",
+   "notes": "Original long ponytail + head roses meshes removed for the Slot 1 silhouette. Mesh part: attach at head socket via suite attach().",
    "part_class": "mesh_part",
-   "name": "Original drill rolls + tiara + corsage (mesh)",
-   "replaces_texture": null,
-   "texture_size": null,
-   "materials": [
-    "Modelpart1_hair5roll1",
-    "Modelpart1_hair6roll2",
-    "Modelpart1_tiara",
-    "Modelpart1_corsage1-4"
-   ],
-   "applies_to": "roster/silvertongue/attires/spy-debut/silvertongue-spy-debut.glb",
-   "glb": "customization/parts/silvertongue-default/drill-hair-tiara-corsage.glb",
-   "note": "Re-attach meshes to restore the original drill silhouette."
-  },
-  {
-   "id": "silv-jacket-spy-black",
-   "library": "silvertongue-default",
-   "suite_slot": "outfit",
-   "part_class": "texture_part",
-   "name": "Spy jacket black leather (applied)",
-   "replaces_texture": "T_CH_lil_bdu_1p_old_jacket_D",
-   "texture_size": [
-    512,
-    1024
-   ],
-   "materials": [
-    "Modelpart2_jacket1_Material041",
-    "Modelpart2_jacket2_Material042",
-    "Modelpart2_jacket3_Material043"
-   ],
-   "applies_to": "roster/silvertongue/attires/spy-debut/silvertongue-spy-debut.glb"
-  },
-  {
-   "id": "silv-jacket-original",
-   "library": "silvertongue-default",
-   "suite_slot": "outfit",
-   "part_class": "texture_part",
-   "name": "Original white formal jacket",
-   "replaces_texture": "T_CH_lil_bdu_1p_old_jacket_D",
-   "texture_size": [
-    512,
-    1024
-   ],
-   "materials": [
-    "Modelpart2_jacket1_Material041",
-    "Modelpart2_jacket2_Material042",
-    "Modelpart2_jacket3_Material043"
-   ],
-   "applies_to": "roster/silvertongue/attires/spy-debut/silvertongue-spy-debut.glb"
-  },
-  {
-   "id": "silv-boots-spy-black",
-   "library": "silvertongue-default",
-   "suite_slot": "outfit",
-   "part_class": "texture_part",
-   "name": "Spy boots black patent (applied)",
-   "replaces_texture": "T_CH_lil_bdl_1p_old_boots_D",
-   "texture_size": [
-    256,
-    256
-   ],
-   "materials": [
-    "Modelpart2_boots_Material031"
-   ],
-   "applies_to": "roster/silvertongue/attires/spy-debut/silvertongue-spy-debut.glb"
-  },
-  {
-   "id": "silv-gloves-spy-black",
-   "library": "silvertongue-default",
-   "suite_slot": "outfit",
-   "part_class": "texture_part",
-   "name": "Spy gloves black opera (applied)",
-   "replaces_texture": "T_CH_lil_bdu_1p_old_glove_D",
-   "texture_size": [
-    256,
-    256
-   ],
-   "materials": [
-    "Modelpart2_glove_Material040"
-   ],
-   "applies_to": "roster/silvertongue/attires/spy-debut/silvertongue-spy-debut.glb"
+   "placement": {
+    "bone_aliases": [
+     "head",
+     "Head",
+     "mixamorigHead"
+    ],
+    "modeled_in_place_for": "mariposa",
+    "socket": "head"
+   },
+   "suite_slot": "hair"
   }
  ],
  "registry": "creation-suite-parts-registry",
@@ -927,24 +1001,119 @@
    "note": "full texture replace on the legs garment material",
    "tab": "Lower"
   },
-  "face": {
-   "tab": "Face",
-   "menu": "head",
-   "attire_slot": null,
-   "note": "texture swap on the character's face material"
-  },
   "hair": {
-   "tab": "Hair",
-   "menu": "head",
-   "attire_slot": null,
-   "note": "texture swap on hair materials, or mesh re-attach for silhouette parts"
-  },
-  "outfit": {
-   "tab": "Outfit",
+   "attire_slot": "head",
    "menu": "attire",
-   "attire_slot": "torso",
-   "note": "full texture replace on the garment materials"
+   "note": "full texture replace on the hair material",
+   "tab": "Head"
+  },
+  "top": {
+   "attire_slot": "upper",
+   "menu": "attire",
+   "note": "full texture replace on the upper garment material",
+   "tab": "Upper"
+  },
+  "scarf": {
+   "attire_slot": "upper",
+   "menu": "attire",
+   "note": "full texture replace on the scarf material",
+   "tab": "Upper"
   }
  },
- "version": 1
+ "version": 1,
+ "morph_definitions": {
+  "note": "Parametric morphs baked into Mariposa Slot 1. parts.js v1 handles texture_part/mesh_part only; these definitions let the suite (or a future morph driver) re-apply them. Parameters are the exact build values (work/build_model.py).",
+  "mariposa": [
+   {
+    "applies_to": "all 36 body meshes + 246 armature bones (same positional function, keeps bind pose consistent)",
+    "class": "MPFB2-class parametric body morph",
+    "id": "mpfb2_body_curvy",
+    "note": "Deviation: MPFB2 targets are authored for MPFB2 base meshes; this is the equivalent parametric morph implemented on the real Tekken mesh (same math the suite would drive). Parameters recorded so the suite can re-apply.",
+    "parameters": {
+     "bust": {
+      "band_y": [
+       1.38,
+       1.62
+      ],
+      "lift_y": 0.012,
+      "radial_xz": 1.05
+     },
+     "height": {
+      "factor": 1.02,
+      "from_y": 1.0
+     },
+     "hips": {
+      "band_y": [
+       0.88,
+       1.3
+      ],
+      "radial_xz": 1.085
+     },
+     "waist": {
+      "band_y": [
+       1.16,
+       1.44
+      ],
+      "radial_xz": 0.94
+     }
+    },
+    "seed": 20261019,
+    "source": "work/build_model.py body_morph_fn"
+   },
+   {
+    "applies_to": "24_head_1_0_0, 24_eyes_1_16_16, 7_eyeshad_0.1_0_0, 7_lashes_0.2_0_0, 24_mouth_1_16_16, 24_neck_1_16_16",
+    "class": "GNM-class parametric face morph",
+    "id": "gnm_face_butterfly",
+    "note": "Deviation: GNM-shape fits a PCA head model; this is the equivalent parametric control set (eyes/nose/mouth/face) implemented on the real Tekken head mesh, mirroring the cape-jones GNM-head lane's control philosophy. Parameters recorded for suite re-application.",
+    "parameters": {
+     "eyes": {
+      "outward_shift": 0.006,
+      "radius": 0.065,
+      "widen": "push away from eye centers horizontally"
+     },
+     "jaw": {
+      "lift_y": 0.003,
+      "region": "y<1.70, |x|<0.09 front"
+     },
+     "lips": {
+      "fuller_out_z": 0.005,
+      "radius": 0.055
+     },
+     "nose": {
+      "bridge_narrow_x": 0.94,
+      "radius": 0.04
+     }
+    },
+    "seed": 20261019,
+    "source": "work/build_model.py face_morph_fn"
+   },
+   {
+    "applies_to": "25_hairtop_1_16_16, 25_hairfront_1_16_16, 25_hairside_1_16_16, 25_hairback_1_16_16",
+    "class": "hair silhouette morph",
+    "id": "hair_butterfly_silhouette",
+    "note": "Volumetric reshape of the real T6 hair parts (ponytail + headroses removed and saved as mesh options in this folder).",
+    "parameters": {
+     "hairback": "z-0.035 sweep back, y+0.012",
+     "hairfront": "z-0.012 sweep back, y+0.014",
+     "hairside": "x*1.32, z*1.18 widen",
+     "hairtop": "radial *1.24 volume, y+0.022"
+    },
+    "seed": 20261019,
+    "source": "work/build_model.py hair_fn_factory"
+   },
+   {
+    "applies_to": "24_shorts_1_16_16",
+    "class": "garment morph",
+    "id": "skirt_flare",
+    "note": "Shorts hem flared into a mini-skirt silhouette (real T6 shorts part, reshaped).",
+    "parameters": {
+     "flare_xz": 1.5,
+     "hem_drop_y": 0.02,
+     "hem_y_below": 1.04
+    },
+    "seed": 20261019,
+    "source": "work/build_model.py shorts_flare_fn"
+   }
+  ]
+ }
 }
