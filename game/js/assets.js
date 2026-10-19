@@ -44,6 +44,14 @@ const MODEL_URLS = {
   rave: 'assets/models/rave.glb',
   lili: 'assets/models/lili.glb',   // NO WH name yet — do not assign
   baek: 'assets/models/baek.glb',   // NO WH name yet — do not assign
+  // Lane C fighter-hunt (Round 2): per-fighter models from community rips,
+  // retargeted to Mixamo skeleton. See docs/fighter-hunt/HUNT-LOG.md.
+  star: 'assets/models/star.glb',
+  torch: 'assets/models/torch.glb',
+  michiko: 'assets/models/michiko.glb',
+  dio: 'assets/models/dio.glb',
+  bruno: 'assets/models/bruno.glb',
+  yukihyo: 'assets/models/yukihyo.glb',
   // Created fighters use the Soldier.glb base from the CAW suite.
   // Relative path works on GitHub Pages (game/ -> customization/).
   custom: '../customization/create-fighter/assets/Soldier.glb',
