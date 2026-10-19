@@ -108,6 +108,13 @@
    "note": "Mariposa first custom look: monarch-orange wing colorway. Original + reskin saved, swappable.",
    "part_class": "texture_part",
    "path": "customization/parts/mariposa-monarch/"
+  },
+  "dxmmii-patchwork": {
+   "kind": "full_reskin",
+   "manifest": "customization/parts/dxmmii-patchwork/MANIFEST.json",
+   "note": "DXMMII first custom look: patchwork DJ colorway. Original + reskin saved, swappable. X-eyes preserved (owner-locked).",
+   "part_class": "texture_part",
+   "path": "customization/parts/dxmmii-patchwork/"
   }
  },
  "parts": [
@@ -662,6 +669,26 @@
     "default_character": "mariposa"
    },
    "notes": "Original indigo/violet colorway, byte-identical extract. Drop-in restore."
+  },
+  {
+   "id": "dxmmii-patchwork-reskin",
+   "kind": "full_reskin",
+   "library": "dxmmii-patchwork",
+   "name": "DXMMII Patchwork DJ reskin (vibrant multi-color)",
+   "asset": "customization/parts/dxmmii-patchwork/textures_patchwork/",
+   "size_px": "various",
+   "part_class": "texture_part",
+   "suite_slot": "attire",
+   "editable": [
+    "position",
+    "size",
+    "opacity"
+   ],
+   "placement": {
+    "mode": "full_replace",
+    "default_character": "dxmmii"
+   },
+   "notes": "Vibrant patchwork panels, crash-test target on chest. Currently applied on roster/dxmmii/attires/patchwork-dj/dxmmii-patchwork.glb. X-eyes preserved."
   }
  ],
  "registry": "creation-suite-parts-registry",
