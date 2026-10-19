@@ -4,20 +4,19 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
-/* suite socket -> anchor placement as fractions of the model's bounding box.
-   Anchors are placed in model space; placement offsets apply on top. */
-const SOCKET_ANCHORS = {
-  head:  { pos:[0.5, 0.93, 0.5],  desc:"top of head" },
-  face:  { pos:[0.5, 0.85, 0.98], desc:"front of face" },
-  hands: { pos:[0.5, 0.55, 0.5],  desc:"hands (both)" },
-  chest: { pos:[0.5, 0.72, 0.62], desc:"chest front" },
-  waist: { pos:[0.5, 0.55, 0.55], desc:"waist front" },
+/* suite socket -> bone names (bone world positions are exact under skinning scale) */
+const SOCKET_BONES = {
+  head:  { bones:['Head'],            off:[0, 0.03, 0] },
+  face:  { bones:['Head'],            off:[0, -0.01, 0.09] },
+  hands: { bones:['RightHand'],       off:[0, 0, 0] },
+  chest: { bones:['Spine2','Spine1'], off:[0, 0, 0.10] },
+  waist: { bones:['Hips'],            off:[0, 0, 0.08] },
 };
 
 export class SuiteViewer {
   constructor(canvas){
     this.canvas = canvas;
-    this.renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true });
+    this.renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true, preserveDrawingBuffer:true });
     this.renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
     this.scene = new THREE.Scene();
     this.scene.background = new THREE.Color(0x0c0e14);
@@ -79,7 +78,11 @@ export class SuiteViewer {
     el.addEventListener('touchend', ()=>pinch=0);
   }
   _tick(){
+    if(this.paused) return;
     requestAnimationFrame(()=>this._tick());
+    this._frame();
+  }
+  _frame(){
     const t=this.camTarget;
     this.camera.position.set(
       t.x + this.camDist*Math.sin(this.phi)*Math.sin(this.theta),
@@ -88,6 +91,8 @@ export class SuiteViewer {
     this.camera.lookAt(t);
     this.renderer.render(this.scene, this.camera);
   }
+  pause(){ this.paused = true; this._frame(); }   // one last clean frame, then hold
+  resume(){ if(this.paused){ this.paused=false; this._tick(); } }
   loadBase(url){
     return new Promise((res, rej)=>{
       this.loader.load(url, gltf=>{
@@ -95,14 +100,17 @@ export class SuiteViewer {
         this.model = gltf.scene;
         this.scene.add(this.model);
         this.modelBox = new THREE.Box3().setFromObject(this.model);
-        // auto-frame: fit the whole fighter in view (fighter stays fully visible)
-        const sphere = this.modelBox.getBoundingSphere(new THREE.Sphere());
-        this.camTarget.copy(sphere.center);
-        this.camDist = sphere.radius / Math.tan(THREE.MathUtils.degToRad(this.camera.fov/2)) * 1.15;
-        // ground the fighter: disc under feet, sized to the model
-        this.disc.position.y = this.modelBox.min.y + 0.001;
-        this.ring.position.y = this.modelBox.min.y + 0.002;
-        const dr = Math.max(sphere.radius*0.9, 0.5);
+        // bone lookup (mixamorig:/mixamorig prefixes stripped) — exact under skinning scale
+        this.bones = {};
+        this.model.traverse(o=>{ if(o.isBone) this.bones[o.name.replace(/^mixamorig:?/, '')] = o; });
+        // frame from the Head bone (bind-pose geometry bbox lies under bone scale)
+        const headY = this.boneY('Head', 1.7);
+        this.camTarget.set(0, headY*0.55, 0);
+        this.camDist = headY*2.6;
+        this.headHeight = headY;
+        // ground the fighter under the feet, sized to the model
+        this.disc.position.y = 0.002; this.ring.position.y = 0.003;
+        const dr = Math.max(headY*0.35, 0.3);
         this.disc.scale.setScalar(dr/1.6); this.ring.scale.setScalar(dr/1.6);
         this.ready = true;
         this.onReady && this.onReady();
@@ -110,24 +118,47 @@ export class SuiteViewer {
       }, undefined, rej);
     });
   }
-  /* socket anchor in world space */
+  boneY(name, fallback){
+    const b = this.bones && this.bones[name];
+    if(!b) return fallback;
+    const v = new THREE.Vector3(); b.getWorldPosition(v); return v.y;
+  }
+  /* socket anchor in world space — from bones, scaled offsets by head height.
+     Facing is read from the Head bone's world quaternion, so it works for any model. */
   socketPoint(socket){
-    const a = SOCKET_ANCHORS[socket] || SOCKET_ANCHORS.head;
-    const b = this.modelBox, out = new THREE.Vector3();
-    if(!b) return out.set(0,1.6,0);
-    out.set(
-      b.min.x + (b.max.x-b.min.x)*a.pos[0],
-      b.min.y + (b.max.y-b.min.y)*a.pos[1],
-      b.min.z + (b.max.z-b.min.z)*a.pos[2]);
+    const s = SOCKET_BONES[socket] || SOCKET_BONES.head;
+    const out = new THREE.Vector3(0, 1.6, 0);
+    let bone = null;
+    for(const n of s.bones){ if(this.bones && this.bones[n]){ bone = this.bones[n]; break; } }
+    if(!bone) return out;
+    bone.getWorldPosition(out);
+    const k = (this.headHeight || 1.7) / 1.7;
+    if(socket==='face' || socket==='chest' || socket==='waist'){
+      const q = new THREE.Quaternion(); bone.getWorldQuaternion(q);
+      const fwd = new THREE.Vector3(0,0,1).applyQuaternion(q); // bone-space forward
+      const dist = (socket==='face' ? 0.10 : 0.09) * k;
+      out.addScaledVector(fwd, dist);
+      out.y += (socket==='face' ? -0.015 : 0) * k;
+    } else {
+      out.x += s.off[0]*k; out.y += s.off[1]*k; out.z += s.off[2]*k;
+    }
     return out;
   }
-  /* attach a mesh part GLB at a socket with placement {px,py,pz,rx,ry,rz,s} */
+  /* attach a mesh part GLB at a socket with placement {px,py,pz,rx,ry,rz,s}.
+     Part geometry is normalized: its bbox center is moved to the group origin, so the
+     socket anchor + user nudge fully determine placement even when the source file was
+     modeled for a different character (e.g. cyborg-x coords). */
   attachPart(partId, glbUrl, def, placement){
     return new Promise((res, rej)=>{
       this.loader.load(glbUrl, gltf=>{
         this.detachPart(partId);
         const g = new THREE.Group();
-        g.add(gltf.scene);
+        const inner = gltf.scene;
+        const bb = new THREE.Box3().setFromObject(inner);
+        const c = new THREE.Vector3(); bb.getCenter(c);
+        inner.position.sub(c); // visual center -> group origin
+        g.add(inner);
+        g.userData.geomShift = c;
         this._applyPlacement(g, def, placement);
         this.scene.add(g);
         this.parts.set(partId, { group:g, def, placement:{...placement} });
