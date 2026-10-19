@@ -1199,6 +1199,8 @@ async function buildSunRa(g, def, api) {
   shock.position.copy(portal.position); g.add(shock);
 
   S = { shiftT: -1, prePulse: -1, nextShift: 24 };
+  // debug hook (used by the stage-test harness to force a shift on demand)
+  g.userData.sunraDebug = { forceShift: () => { if (S.shiftT < 0) S.prePulse = 0; } };
   updaters.push((dt, t) => {
     // planets: inclined orbits, real relative sizes, visual-period motion + spin
     for (const pl of planets) {
