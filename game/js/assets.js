@@ -77,6 +77,15 @@ const MODEL_URLS = {
   // Created fighters use the Soldier.glb base from the CAW suite.
   // Relative path works on GitHub Pages (game/ -> customization/).
   custom: '../customization/create-fighter/assets/Soldier.glb',
+  // Reskin wave (2026-10-19): first custom attires, wired as selectable fighters.
+  // Jin Bloodline Ember + Doc Frank Machine Shop are rigged drop-ins from their
+  // lanes; Baek/Mariposa/Dxmmii are texture-transplants onto their rigged bases
+  // (reskin lanes dropped the skins on buffer rebuild) — *-rigged.glb.
+  'demonio-bloodline-ember': '../roster/demonio/attires/bloodline-ember/demonio-bloodline-ember.glb',
+  'doc-frank-machine-shop': '../roster/doc-frank/attires/machine-shop/doc-frank-machine-shop-rigged.glb',
+  'baek-master-white': '../roster/baek/attires/master-white/baek-master-white-rigged.glb',
+  'mariposa-monarch': '../roster/mariposa/attires/monarch/mariposa-monarch-rigged.glb',
+  'dxmmii-patchwork': '../roster/dxmmii/attires/patchwork-dj/dxmmii-patchwork-rigged.glb',
 };
 
 class AssetManager {

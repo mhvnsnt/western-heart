@@ -51,6 +51,10 @@ const MOVESET_MAP = {
   dio: 'heihachi', cyborgx: 'gunjack', michiko: 'jin', star: 'xiaoyu',
   torch: 'jin', bruno: 'bryan', negativo: 'bryan', thor: 'bryan',
   yukihyo: 'king', slice: 'bryan', docfrank: 'gunjack',
+  // Reskin wave (2026-10-19): first custom attires as selectable fighters.
+  'demonio-bloodline-ember': 'jin', 'doc-frank-machine-shop': 'gunjack',
+  'baek-master-white': 'bryan', 'mariposa-monarch': 'xiaoyu',
+  'dxmmii-patchwork': 'jin',
 };
 
 export async function loadRealMovesets() {
