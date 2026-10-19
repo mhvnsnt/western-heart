@@ -306,6 +306,46 @@
     "n,d/f,n,d/f+1"
    ],
    "move_class": "throw"
+  },
+  "S": {
+   "name": "Cannot Stop [WH SIGNATURE]",
+   "input": "S",
+   "startup": 0.29,
+   "active": 0.1,
+   "recovery": 0.88,
+   "damage": 18,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 12,
+   "anim_ref": "wh:gyou:sig:cannot-stop",
+   "input_slots": [
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "GYOU is motion itself. It cannot stop moving - so neither does this flurry."
+  },
+  "D+P": {
+   "name": "Everywhere Already [WH SIGNATURE]",
+   "input": "D+P",
+   "startup": 0.23,
+   "active": 0.017,
+   "recovery": 0.72,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "wh:gyou:sig:everywhere-already",
+   "input_slots": [
+    "D+P",
+    "D",
+    "P"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "GYOU is everywhere already, therefore nowhere in particular. A dodge-blur strike from all of it."
   }
  },
  "strings": [

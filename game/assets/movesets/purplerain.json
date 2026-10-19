@@ -306,6 +306,46 @@
     "n,d/f,n,d/f+1"
    ],
    "move_class": "throw"
+  },
+  "S": {
+   "name": "Four-Four Time [WH SIGNATURE]",
+   "input": "S",
+   "startup": 0.28,
+   "active": 0.1,
+   "recovery": 0.85,
+   "damage": 18,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 12,
+   "anim_ref": "wh:purplerain:sig:four-four-time",
+   "input_slots": [
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "He fights in 4/4 time. The kicks land on the beat. No one has ever found the rhythm twice."
+  },
+  "u+K": {
+   "name": "Encore Bow [WH SIGNATURE]",
+   "input": "u+K",
+   "startup": 0.31,
+   "active": 0.017,
+   "recovery": 0.88,
+   "damage": 17,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 12,
+   "anim_ref": "wh:purplerain:sig:encore-bow",
+   "input_slots": [
+    "u+K",
+    "u",
+    "K"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "His standing bet with Silvertongue: who bows lower after a win. Rising showman kick, bow included."
   }
  },
  "strings": [

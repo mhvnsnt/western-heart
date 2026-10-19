@@ -182,6 +182,46 @@
     "d+4"
    ],
    "move_class": "special"
+  },
+  "S": {
+   "name": "Green Mist [WH SIGNATURE]",
+   "input": "S",
+   "startup": 0.3,
+   "active": 0.1,
+   "recovery": 0.9,
+   "damage": 18,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 12,
+   "anim_ref": "wh:rave:sig:green-mist",
+   "input_slots": [
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "Before every match he blows mist - green, thick, smelling faintly of rain. The world goes beautiful for a second. Then the bell."
+  },
+  "u+P": {
+   "name": "Entrance Is the Fight [WH SIGNATURE]",
+   "input": "u+P",
+   "startup": 0.29,
+   "active": 0.017,
+   "recovery": 0.85,
+   "damage": 17,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 12,
+   "anim_ref": "wh:rave:sig:entrance-is-the-fight",
+   "input_slots": [
+    "u+P",
+    "u",
+    "P"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "The entrance is the fight. Ritual rising strike from the painted lineage of the Great Muta."
   }
  },
  "strings": [],

@@ -236,6 +236,49 @@
     "d,d/f,d,d/f+1+2"
    ],
    "move_class": "throw"
+  },
+  "S": {
+   "name": "Whiteout [WH SIGNATURE]",
+   "input": "S",
+   "startup": 0.28,
+   "active": 0.1,
+   "recovery": 0.88,
+   "damage": 18,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 12,
+   "anim_ref": "wh:yukihyo:sig:whiteout",
+   "input_slots": [
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "Snow leopard in white digital camo. The pounce comes out of the whiteout."
+  },
+  "P+K": {
+   "name": "Storm Shadow's Lesson [WH SIGNATURE]",
+   "input": "P+K",
+   "startup": 0.3,
+   "active": 0.05,
+   "recovery": 0.9,
+   "damage": 21,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 13,
+   "anim_ref": "wh:yukihyo:sig:storm-shadows-lesson",
+   "input_slots": [
+    "P+K",
+    "P",
+    "K"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "Based on Snake Eyes, MORE based on Storm Shadow. A silent ninja grab - you never saw the lesson start.",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true
   }
  },
  "strings": [],

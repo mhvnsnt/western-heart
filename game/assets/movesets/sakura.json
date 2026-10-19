@@ -182,6 +182,70 @@
     "d+4"
    ],
    "move_class": "special"
+  },
+  "S": {
+   "name": "Bloom Opening [WH SIGNATURE]",
+   "input": "S",
+   "startup": 0.28,
+   "active": 0.1,
+   "recovery": 0.85,
+   "damage": 17,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 12,
+   "anim_ref": "wh:sakura:sig:bloom-opening",
+   "input_slots": [
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "Saku - bloom. The desert flower opens: spinning petal kick flurry."
+  },
+  "D+P": {
+   "name": "You Can't Hit a Song [WH SIGNATURE]",
+   "input": "D+P",
+   "startup": 0.22,
+   "active": 0.017,
+   "recovery": 0.7,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "wh:sakura:sig:you-cant-hit-a-song",
+   "input_slots": [
+    "D+P",
+    "D",
+    "P"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "You can't hit a song. Dodge-sway into a dancing strike that was never where you struck."
+  },
+  "P+K": {
+   "name": "Called By Name [WH SIGNATURE]",
+   "input": "P+K",
+   "startup": 0.29,
+   "active": 0.05,
+   "recovery": 0.88,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 13,
+   "anim_ref": "wh:sakura:sig:called-by-name",
+   "input_slots": [
+    "P+K",
+    "P",
+    "K"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "She remembers everyone's name. A gentle-looking redirect throw that says the old name out loud, once.",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true
   }
  },
  "strings": [],

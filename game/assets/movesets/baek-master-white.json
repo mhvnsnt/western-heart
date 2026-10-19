@@ -281,6 +281,49 @@
     "n,d/b,n,f+1+2"
    ],
    "move_class": "throw"
+  },
+  "S": {
+   "name": "Master's White [WH SIGNATURE]",
+   "input": "S",
+   "startup": 0.26,
+   "active": 0.017,
+   "recovery": 0.78,
+   "damage": 17,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 12,
+   "anim_ref": "wh:baek-master-white:sig:masters-white",
+   "input_slots": [
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "The master in white. A pristine textbook kick - the lesson, perfectly pressed."
+  },
+  "P+K": {
+   "name": "Eleventh Lecture [WH SIGNATURE]",
+   "input": "P+K",
+   "startup": 0.3,
+   "active": 0.05,
+   "recovery": 0.9,
+   "damage": 21,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 13,
+   "anim_ref": "wh:baek-master-white:sig:eleventh-lecture",
+   "input_slots": [
+    "P+K",
+    "P",
+    "K"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "He tried to sober Zui up eleven times. Zui made two of them drinking songs. The eleventh lecture lands anyway.",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true
   }
  },
  "strings": [

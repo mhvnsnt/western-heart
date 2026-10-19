@@ -355,6 +355,49 @@
     "n,d/f,n,d/f+1"
    ],
    "move_class": "throw"
+  },
+  "S": {
+   "name": "Crooked Patch [WH SIGNATURE]",
+   "input": "S",
+   "startup": 0.3,
+   "active": 0.1,
+   "recovery": 0.9,
+   "damage": 18,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 12,
+   "anim_ref": "wh:dxmmii-patchwork:sig:crooked-patch",
+   "input_slots": [
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "Doc Frank wants to fix him. The patches stay crooked. The patches are the point."
+  },
+  "P+K": {
+   "name": "Hidden Toolbox [WH SIGNATURE]",
+   "input": "P+K",
+   "startup": 0.29,
+   "active": 0.05,
+   "recovery": 0.88,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 13,
+   "anim_ref": "wh:dxmmii-patchwork:sig:hidden-toolbox",
+   "input_slots": [
+    "P+K",
+    "P",
+    "K"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "DXMMII has hidden his toolbox three times. A grab assembled from whatever was in it.",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true
   }
  },
  "strings": [

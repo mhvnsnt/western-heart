@@ -306,6 +306,46 @@
     "n,d/f,n,d/f+1"
    ],
    "move_class": "throw"
+  },
+  "S": {
+   "name": "Still Point [WH SIGNATURE]",
+   "input": "S",
+   "startup": 0.24,
+   "active": 0.017,
+   "recovery": 0.72,
+   "damage": 16,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 12,
+   "anim_ref": "wh:rin:sig:still-point",
+   "input_slots": [
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "RIN is the baseline, the still point at the center. Dignified, cold, self-possessed - one perfect strike."
+  },
+  "b+P": {
+   "name": "Cold Dignity [WH SIGNATURE]",
+   "input": "b+P",
+   "startup": 0.22,
+   "active": 0.017,
+   "recovery": 0.7,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 11,
+   "anim_ref": "wh:rin:sig:cold-dignity",
+   "input_slots": [
+    "b+P",
+    "b",
+    "P"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "The soul that apologizes to no one and explains itself to no one. An untouchable parry-strike."
   }
  },
  "strings": [

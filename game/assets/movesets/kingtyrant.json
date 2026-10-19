@@ -182,6 +182,49 @@
     "d+4"
    ],
    "move_class": "special"
+  },
+  "S": {
+   "name": "Coronation Entrance [WH SIGNATURE]",
+   "input": "S",
+   "startup": 0.32,
+   "active": 0.1,
+   "recovery": 0.9,
+   "damage": 19,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 13,
+   "anim_ref": "wh:kingtyrant:sig:coronation-entrance",
+   "input_slots": [
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "He has never fought without an entrance - even alone in the training room. Spinning coronation kick."
+  },
+  "P+K": {
+   "name": "Dig This [WH SIGNATURE]",
+   "input": "P+K",
+   "startup": 0.3,
+   "active": 0.05,
+   "recovery": 0.9,
+   "damage": 22,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 13,
+   "anim_ref": "wh:kingtyrant:sig:dig-this",
+   "input_slots": [
+    "P+K",
+    "P",
+    "K"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "Can you dig THAT? Showman slam with the full pose, the turn, the roar.",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true
   }
  },
  "strings": [],

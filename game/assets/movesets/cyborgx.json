@@ -257,6 +257,46 @@
     "n,d,d/b+1+3"
    ],
    "move_class": "throw"
+  },
+  "S": {
+   "name": "Motion Mandatory [WH SIGNATURE]",
+   "input": "S",
+   "startup": 0.3,
+   "active": 0.1,
+   "recovery": 0.9,
+   "damage": 19,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 13,
+   "anim_ref": "wh:cyborgx:sig:motion-mandatory",
+   "input_slots": [
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "MOTION IS MANDATORY. REST IS A RUMOR. Hand-cannon burst - her cannon shots map to rocket punches."
+  },
+  "D+S": {
+   "name": "Lullaby Hum [WH SIGNATURE]",
+   "input": "D+S",
+   "startup": 0.25,
+   "active": 0.1,
+   "recovery": 0.78,
+   "damage": 16,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 12,
+   "anim_ref": "wh:cyborgx:sig:lullaby-hum",
+   "input_slots": [
+    "D+S",
+    "D",
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "Her chainsaw arms hum lullabies when idle. Nobody programmed that. Dodge into a humming chainsaw flurry."
   }
  },
  "strings": [],

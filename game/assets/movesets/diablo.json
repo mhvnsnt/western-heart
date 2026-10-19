@@ -306,6 +306,70 @@
     "n,d/f,n,d/f+1"
    ],
    "move_class": "throw"
+  },
+  "S": {
+   "name": "Declaration of Conquest [WH SIGNATURE]",
+   "input": "S",
+   "startup": 0.38,
+   "active": 0.05,
+   "recovery": 1.0,
+   "damage": 21,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 13,
+   "anim_ref": "wh:diablo:sig:declaration-of-conquest",
+   "input_slots": [
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "He doesn't trash-talk; he makes declarations. Overhead boss smash announced before it lands."
+  },
+  "qcf+P": {
+   "name": "Membrane Tear [WH SIGNATURE]",
+   "input": "qcf+P",
+   "startup": 0.27,
+   "active": 0.017,
+   "recovery": 0.78,
+   "damage": 17,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 12,
+   "anim_ref": "wh:diablo:sig:membrane-tear",
+   "input_slots": [
+    "qcf+P",
+    "qcf",
+    "P"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "He tore through the membrane of the head-world to get in. A ripping claw strike through the same seam."
+  },
+  "P+K": {
+   "name": "Final Boss Tax [WH SIGNATURE]",
+   "input": "P+K",
+   "startup": 0.31,
+   "active": 0.05,
+   "recovery": 0.92,
+   "damage": 23,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 13,
+   "anim_ref": "wh:diablo:sig:final-boss-tax",
+   "input_slots": [
+    "P+K",
+    "P",
+    "K"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "The strong don't wait to be invited. He collects from everyone at the table.",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true
   }
  },
  "strings": [

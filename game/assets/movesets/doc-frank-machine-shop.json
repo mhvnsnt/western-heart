@@ -257,6 +257,49 @@
     "n,d,d/b+1+3"
    ],
    "move_class": "throw"
+  },
+  "S": {
+   "name": "Shop Upgrade [WH SIGNATURE]",
+   "input": "S",
+   "startup": 0.31,
+   "active": 0.1,
+   "recovery": 0.9,
+   "damage": 19,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 13,
+   "anim_ref": "wh:doc-frank-machine-shop:sig:shop-upgrade",
+   "input_slots": [
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "Straight out of the machine shop. A gadget blast with the serial numbers filed off."
+  },
+  "P+K": {
+   "name": "Warranty Void [WH SIGNATURE]",
+   "input": "P+K",
+   "startup": 0.3,
+   "active": 0.05,
+   "recovery": 0.9,
+   "damage": 21,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 13,
+   "anim_ref": "wh:doc-frank-machine-shop:sig:warranty-void",
+   "input_slots": [
+    "P+K",
+    "P",
+    "K"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "Upgraded past the point of warranty. A wrench-turn grab - no refunds.",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true
   }
  },
  "strings": [],
