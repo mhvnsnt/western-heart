@@ -44,6 +44,27 @@ const MODEL_URLS = {
   rave: 'assets/models/rave.glb',
   lili: 'assets/models/lili.glb',   // NO WH name yet — do not assign
   baek: 'assets/models/baek.glb',   // NO WH name yet — do not assign
+  // Round-2 auto-rig wave (lane B): re-rigged per-fighter variants + Tripo
+  // attires, all passing the playable gate (valid glTF, skinned, Hips, 1.5-2.2m).
+  'jin-body': 'assets/models/jin-body.glb',
+  'kai-body': 'assets/models/kai-body.glb',
+  'king-tyrant_alt1': 'assets/models/king-tyrant_alt1.glb',
+  'kinpo-t8': 'assets/models/kinpo-t8.glb',
+  'kinpo_alt1': 'assets/models/kinpo_alt1.glb',
+  'phantom-t8': 'assets/models/phantom-t8.glb',
+  'pantera_alt1': 'assets/models/pantera_alt1.glb',
+  'pantera-body': 'assets/models/pantera-body.glb',
+  'retsu-body': 'assets/models/retsu-body.glb',
+  'saku-ra_alt1': 'assets/models/saku-ra_alt1.glb',
+  'saku-ra-main': 'assets/models/saku-ra-main.glb',
+  'sam-ur-a1-body': 'assets/models/sam-ur-a1-body.glb',
+  'sha-body': 'assets/models/sha-body.glb',
+  'zen-body': 'assets/models/zen-body.glb',
+  'zui_alt1': 'assets/models/zui_alt1.glb',
+  'zui_alt2': 'assets/models/zui_alt2.glb',
+  'kiko-tanaka': 'assets/models/kiko-tanaka.glb',
+  'kiko-tanaka_alt1': 'assets/models/kiko-tanaka_alt1.glb',
+  'purple-rain-main': 'assets/models/purple-rain-main.glb',
   // Lane C fighter-hunt (Round 2): per-fighter models from community rips,
   // retargeted to Mixamo skeleton. See docs/fighter-hunt/HUNT-LOG.md.
   star: 'assets/models/star.glb',
