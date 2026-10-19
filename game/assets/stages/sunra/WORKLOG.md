@@ -23,3 +23,18 @@
 ## next
 - Push branch via git API (additions only), open PR with law-15 sections.
 - Serve game/ + Playwright: jump('sunra'), screenshots + video, own-eyes verify.
+
+## 2026-10-19 ~07:30 CDT — harness test + own-eyes verification (DONE)
+- Served game/ from the branch over HTTP, Playwright + SwiftShader against
+  game/stage-test.html: jump('sunra') → 0 console errors, 0 pageerrors
+  across 8+ runs. 24 stages registered (was 23).
+- Own-eyes verified stills: arena floor (Malakor sigil rings + Central Mountain
+  barter hub), wide sky (Mars + Saturn/ring + Jupiter + planets + 2 totems),
+  Mars close-up (portal + bleeding-eye glows), Mars facing arena (yaw fix),
+  orbit progression (planets moved between wide shots), sky money-shot.
+- Fixes from verification: Mars head yaw (-PI/2, was profile-on); added
+  sunraDebug.forceShift debug hook.
+- VIDEO: not captured — 6 concurrent Blender renders from other lanes held the
+  box at ~95% RAM; Chromium tabs crashed repeatedly on pages living >40s.
+  The datamosh shift state machine is code-verified; forceShift hook lets any
+  lane trigger it on demand when memory frees. Honest flag in PR + README.
