@@ -203,6 +203,90 @@
           1024
         ]
       }
+    },
+    "lili": {
+      "character": "Lili (Western Heart roster/lili, Tekken 7 1P formal outfit)",
+      "eye": {
+        "material": "Modelpart1_eyeball_Material005",
+        "replaces_texture": "T_CH_eye_D",
+        "texture_size": [
+          256,
+          256
+        ]
+      },
+      "dress_jacket": {
+        "replaces_texture": "T_CH_lil_bdu_1p_old_jacket_D",
+        "texture_size": [
+          512,
+          1024
+        ]
+      },
+      "dress_skirt": {
+        "replaces_texture": "T_CH_lil_bdl_1p_old_skirt_D",
+        "texture_size": [
+          1024,
+          512
+        ]
+      },
+      "dress_formal": {
+        "replaces_texture": "T_CH_xia_bdl_formal_B_D",
+        "texture_size": [
+          1024,
+          1024
+        ]
+      },
+      "notes": "Full-texture dress options in customization/decal-library/lili/ (MANIFEST.json, 18 entries: noir + white-original restore). Eye options in customization/parts/lili-eyes/."
+    },
+    "zafina": {
+      "character": "Zafina (Western Heart roster/zafina, Tekken 6 outfit)",
+      "eye": {
+        "material": "24_eyes_1_16_16",
+        "replaces_texture": "eyes_d-eyes_d.dds",
+        "texture_size": [
+          128,
+          128
+        ]
+      },
+      "top": {
+        "replaces_texture": "butterfly_d",
+        "texture_size": [
+          256,
+          512
+        ]
+      },
+      "notes": "Butterfly-top options in customization/decal-library/zafina/ (MANIFEST.json: gold-pharaoh + pink-original restore). Eye options in customization/parts/zafina-eyes/."
+    },
+    "jin": {
+      "character": "Jin Kazama \u2014 The Bloodline Soul (Western Heart roster/jin)",
+      "eye": {
+        "material": "eye material (eyeball_l / eyeball_r baseColor)",
+        "replaces_texture": "eye-iris",
+        "texture_size": [
+          128,
+          128
+        ]
+      },
+      "reskin": {
+        "manifest": "customization/reskin-library/jin/MANIFEST.json",
+        "reskinned_glb": "roster/jin/attires/bloodline-ember/jin-bloodline-ember.glb",
+        "source_glb": "game/assets/models/jin.glb"
+      }
+    },
+    "doc-frank": {
+      "character": "Doc Frank \u2014 The Builder Soul (Western Heart roster/doc-frank)",
+      "eye": {
+        "material": "eye material (baseColor)",
+        "replaces_texture": "eyes_d",
+        "texture_size": [
+          128,
+          128
+        ]
+      },
+      "reskin": {
+        "manifest": "customization/reskin-library/doc-frank/MANIFEST.json",
+        "reskinned_glb": "roster/doc-frank/attires/machine-shop/doc-frank-machine-shop.glb",
+        "source_glb": "game/assets/models/doc-frank.glb"
+      }
     }
   },
   "created": "2026-10-18",
@@ -275,6 +359,34 @@
       "note": "DXMMII first custom look: patchwork DJ colorway. Original + reskin saved, swappable. X-eyes preserved (owner-locked).",
       "part_class": "texture_part",
       "path": "customization/parts/dxmmii-patchwork/"
+    },
+    "reskin-library-jin": {
+      "kind": "reskin | texture_part",
+      "manifest": "customization/reskin-library/jin/MANIFEST.json",
+      "note": "Jin Kazama 'Bloodline Ember' \u2014 first custom look (owner 2026-10-18). Devil-gene ember reskin: torso flame marking, crimson flame decal, deepened pants, ember obi. Originals saved as restore points.",
+      "part_class": "texture_part",
+      "path": "customization/reskin-library/jin/"
+    },
+    "jin-eyes": {
+      "kind": "eye",
+      "manifest": "customization/parts/jin-eyes/MANIFEST.json",
+      "note": "Jin's saved eye variants: original brown (default) + yellow tiger (owner's universal 'I like' variant, composited onto Jin's native eye). Swappable, never overwritten.",
+      "part_class": "texture_part",
+      "path": "customization/parts/jin-eyes/"
+    },
+    "reskin-library-doc-frank": {
+      "kind": "reskin | texture_part",
+      "manifest": "customization/reskin-library/doc-frank/MANIFEST.json",
+      "note": "Doc Frank 'Machine Shop' \u2014 first custom look (owner 2026-10-18). Builder workwear: oil-stained charcoal coat, brass/copper tie, dark brown workwear. Originals saved as restore points.",
+      "part_class": "texture_part",
+      "path": "customization/reskin-library/doc-frank/"
+    },
+    "doc-frank-eyes": {
+      "kind": "eye",
+      "manifest": "customization/parts/doc-frank-eyes/MANIFEST.json",
+      "note": "Doc Frank's saved eye variants: original blue-green (default) + yellow tiger (owner's universal 'I like' variant, composited onto Doc's native eye). Swappable, never overwritten.",
+      "part_class": "texture_part",
+      "path": "customization/parts/doc-frank-eyes/"
     }
   },
   "parts": [
