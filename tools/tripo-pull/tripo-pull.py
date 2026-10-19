@@ -13,6 +13,8 @@ and this tool resolves each link to the direct download URL.
 If a pull 401s here, the UUID is wrong or the link is bad — CHECK THE URL,
 do not ask for a login. The owner has ordered this: the tool IS the method.
 
+tripo-pull — Download 3D models from Tripo3D Studio.
+
 Tripo locked free exports behind a paywall / their site has Cloudflare and
 auth issues, but models shared via public links expose their files through
 Tripo's public project-detail API. This tool resolves each link to the
