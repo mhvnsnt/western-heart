@@ -96,7 +96,7 @@
      1024
     ]
    },
-   "notes": "Full-texture dress options in customization/decal-library/lili/ (MANIFEST.json, 18 entries: noir + white-original restore). Eye options in customization/parts/lili-eyes/."
+   "notes": "Full-texture dress options in customization/decal-library/lili/. Eye options in customization/parts/lili-eyes/. DEFAULT ATTIRE is now Silvertongue Slot 1 (roster/silvertongue/); see character_mappings.silvertongue."
   },
   "zafina": {
    "character": "Mariposa (Western Heart roster/zafina, Tekken 6 outfit)",
@@ -116,6 +116,58 @@
     ]
    },
    "notes": "Butterfly-top options in customization/decal-library/zafina/ (MANIFEST.json: gold-pharaoh + pink-original restore). Eye options in customization/parts/zafina-eyes/."
+  },
+  "silvertongue": {
+   "character": "Silvertongue (Western Heart roster/silvertongue, Slot 1 Spy Debut default attire)",
+   "eye": {
+    "material": "Modelpart1_eyeball_Material005",
+    "replaces_texture": "T_CH_eye_D",
+    "texture_size": [
+     256,
+     256
+    ]
+   },
+   "face": {
+    "material": "Modelpart1_face_Material006",
+    "replaces_texture": "T_CH_lil_face_D",
+    "texture_size": [
+     1024,
+     1024
+    ]
+   },
+   "hair": {
+    "materials": [
+     "Modelpart2_hair1_Material047",
+     "Modelpart2_hair2_Material048"
+    ],
+    "replaces_texture": "T_CH_lil_hair_1p_D",
+    "texture_size": [
+     1024,
+     512
+    ]
+   },
+   "spy_jacket": {
+    "replaces_texture": "T_CH_lil_bdu_1p_old_jacket_D",
+    "texture_size": [
+     512,
+     1024
+    ]
+   },
+   "spy_boots": {
+    "replaces_texture": "T_CH_lil_bdl_1p_old_boots_D",
+    "texture_size": [
+     256,
+     256
+    ]
+   },
+   "spy_gloves": {
+    "replaces_texture": "T_CH_lil_bdu_1p_old_glove_D",
+    "texture_size": [
+     256,
+     256
+    ]
+   },
+   "notes": "Slot 1 Spy Debut options in customization/parts/silvertongue-default/ (MANIFEST.json). Eye options in customization/parts/lili-eyes/."
   },
   "mariposa": {
    "character": "Mariposa (proprietary; wired Tekken 6 base, Slot 1 Butterfly Default)",
@@ -219,6 +271,13 @@
    "note": "Original-geometry 3D pieces (GLB) for the female Cape Jones reskin; attach at bone sockets on any character.",
    "part_class": "mesh_part",
    "path": "customization/parts/superhero/"
+  },
+  "silvertongue-default": {
+   "path": "customization/parts/silvertongue-default/",
+   "manifest": "customization/parts/silvertongue-default/MANIFEST.json",
+   "kind": "face | hair | outfit",
+   "part_class": "texture_part",
+   "note": "Silvertongue Slot 1 Spy Debut originals, saved as swap options (nothing overwritten)."
   },
   "decal-library-mariposa": {
    "kind": "top | scarf | hair | shorts",
@@ -739,6 +798,158 @@
    "suite_slot": "gauntlets"
   },
   {
+   "id": "silv-face-original",
+   "library": "silvertongue-default",
+   "suite_slot": "face",
+   "part_class": "texture_part",
+   "name": "Original face",
+   "replaces_texture": "T_CH_lil_face_D",
+   "texture_size": [
+    1024,
+    1024
+   ],
+   "materials": [
+    "Modelpart1_face_Material006"
+   ],
+   "applies_to": "roster/silvertongue/attires/spy-debut/silvertongue-spy-debut.glb"
+  },
+  {
+   "id": "silv-face-007-makeup",
+   "library": "silvertongue-default",
+   "suite_slot": "face",
+   "part_class": "texture_part",
+   "name": "007 makeup (applied)",
+   "replaces_texture": "T_CH_lil_face_D",
+   "texture_size": [
+    1024,
+    1024
+   ],
+   "materials": [
+    "Modelpart1_face_Material006"
+   ],
+   "applies_to": "roster/silvertongue/attires/spy-debut/silvertongue-spy-debut.glb"
+  },
+  {
+   "id": "silv-hair-original",
+   "library": "silvertongue-default",
+   "suite_slot": "hair",
+   "part_class": "texture_part",
+   "name": "Original blonde hair",
+   "replaces_texture": "T_CH_lil_hair_1p_D",
+   "texture_size": [
+    1024,
+    512
+   ],
+   "materials": [
+    "Modelpart2_hair1_Material047",
+    "Modelpart2_hair2_Material048"
+   ],
+   "applies_to": "roster/silvertongue/attires/spy-debut/silvertongue-spy-debut.glb"
+  },
+  {
+   "id": "silv-hair-spy-sleek",
+   "library": "silvertongue-default",
+   "suite_slot": "hair",
+   "part_class": "texture_part",
+   "name": "Spy sleek, no drills (applied)",
+   "replaces_texture": "T_CH_lil_hair_1p_D",
+   "texture_size": [
+    1024,
+    512
+   ],
+   "materials": [
+    "Modelpart2_hair1_Material047",
+    "Modelpart2_hair2_Material048"
+   ],
+   "applies_to": "roster/silvertongue/attires/spy-debut/silvertongue-spy-debut.glb"
+  },
+  {
+   "id": "silv-drills-tiara-corsage",
+   "library": "silvertongue-default",
+   "suite_slot": "hair",
+   "part_class": "mesh_part",
+   "name": "Original drill rolls + tiara + corsage (mesh)",
+   "replaces_texture": null,
+   "texture_size": null,
+   "materials": [
+    "Modelpart1_hair5roll1",
+    "Modelpart1_hair6roll2",
+    "Modelpart1_tiara",
+    "Modelpart1_corsage1-4"
+   ],
+   "applies_to": "roster/silvertongue/attires/spy-debut/silvertongue-spy-debut.glb",
+   "glb": "customization/parts/silvertongue-default/drill-hair-tiara-corsage.glb",
+   "note": "Re-attach meshes to restore the original drill silhouette."
+  },
+  {
+   "id": "silv-jacket-spy-black",
+   "library": "silvertongue-default",
+   "suite_slot": "outfit",
+   "part_class": "texture_part",
+   "name": "Spy jacket black leather (applied)",
+   "replaces_texture": "T_CH_lil_bdu_1p_old_jacket_D",
+   "texture_size": [
+    512,
+    1024
+   ],
+   "materials": [
+    "Modelpart2_jacket1_Material041",
+    "Modelpart2_jacket2_Material042",
+    "Modelpart2_jacket3_Material043"
+   ],
+   "applies_to": "roster/silvertongue/attires/spy-debut/silvertongue-spy-debut.glb"
+  },
+  {
+   "id": "silv-jacket-original",
+   "library": "silvertongue-default",
+   "suite_slot": "outfit",
+   "part_class": "texture_part",
+   "name": "Original white formal jacket",
+   "replaces_texture": "T_CH_lil_bdu_1p_old_jacket_D",
+   "texture_size": [
+    512,
+    1024
+   ],
+   "materials": [
+    "Modelpart2_jacket1_Material041",
+    "Modelpart2_jacket2_Material042",
+    "Modelpart2_jacket3_Material043"
+   ],
+   "applies_to": "roster/silvertongue/attires/spy-debut/silvertongue-spy-debut.glb"
+  },
+  {
+   "id": "silv-boots-spy-black",
+   "library": "silvertongue-default",
+   "suite_slot": "outfit",
+   "part_class": "texture_part",
+   "name": "Spy boots black patent (applied)",
+   "replaces_texture": "T_CH_lil_bdl_1p_old_boots_D",
+   "texture_size": [
+    256,
+    256
+   ],
+   "materials": [
+    "Modelpart2_boots_Material031"
+   ],
+   "applies_to": "roster/silvertongue/attires/spy-debut/silvertongue-spy-debut.glb"
+  },
+  {
+   "id": "silv-gloves-spy-black",
+   "library": "silvertongue-default",
+   "suite_slot": "outfit",
+   "part_class": "texture_part",
+   "name": "Spy gloves black opera (applied)",
+   "replaces_texture": "T_CH_lil_bdu_1p_old_glove_D",
+   "texture_size": [
+    256,
+    256
+   ],
+   "materials": [
+    "Modelpart2_glove_Material040"
+   ],
+   "applies_to": "roster/silvertongue/attires/spy-debut/silvertongue-spy-debut.glb"
+  },
+  {
    "asset": "customization/decal-library/mariposa/top-butterfly-default.png",
    "editable": [
     "position",
@@ -1001,11 +1212,23 @@
    "note": "full texture replace on the legs garment material",
    "tab": "Lower"
   },
+  "face": {
+   "tab": "Face",
+   "menu": "head",
+   "attire_slot": null,
+   "note": "texture swap on the character's face material"
+  },
   "hair": {
    "attire_slot": "head",
    "menu": "attire",
    "note": "full texture replace on the hair material",
    "tab": "Head"
+  },
+  "outfit": {
+   "tab": "Outfit",
+   "menu": "attire",
+   "attire_slot": "torso",
+   "note": "full texture replace on the garment materials"
   },
   "top": {
    "attire_slot": "upper",

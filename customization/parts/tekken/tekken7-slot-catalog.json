@@ -360,14 +360,14 @@
   "shared_slots": 30
  },
  "wh_attires": {
-  "note": "Western Heart attire slot assignments in Tekken 7 customization-slot terms (owner 2026-10-18 pipeline). Character: Mariposa (charId 51 ZAF per character_ids).",
+  "note": "Western Heart attire slot assignments in Tekken 7 customization-slot terms (owner 2026-10-18 pipeline). Character: Mariposa (charId 51 ZAF per character_ids). Canon slot order per #277 (owner 2026-10-18 ~21:57 CDT): Tripo customs 1-4, Tekken-wire attires 5+.",
   "mariposa": {
    "character_id": 51,
    "attires": [
     {
-     "slot": 1,
+     "slot": "5+",
      "display": "Mariposa \u2014 Butterfly Default",
-     "glb": "roster/mariposa/attires/butterfly-default/mariposa-butterfly-default.glb",
+     "glb": "roster/zafina/attires/butterfly-default/mariposa-butterfly-default.glb",
      "t7_slots": {
       "2": "HAIR (reshaped dark silhouette, ponytail/rose meshes removed)",
       "8": "MAKE_UP (butterfly wing eyeshadow, plum lips \u2014 baked in head_d)",
@@ -381,10 +381,11 @@
       "gnm_face_butterfly",
       "hair_butterfly_silhouette",
       "skirt_flare"
-     ]
+     ],
+     "note": "Pipeline-built Tekken-wire attire (this PR). Ladders at 5+ with the other Tekken attires per canon."
     },
     {
-     "slot": 3,
+     "slot": "5+",
      "display": "Mariposa \u2014 Golden Pharaoh",
      "glb": "roster/zafina/attires/golden-pharaoh/zafina-golden-pharaoh.glb",
      "t7_slots": {
@@ -392,7 +393,7 @@
       "11": "LOWER",
       "2": "HAIR (original)"
      },
-     "note": "Texture-only reskin, merged #262. Untouched by the Slot 1 build."
+     "note": "Texture-only reskin, merged #262. Untouched."
     }
    ]
   }
