@@ -10,9 +10,10 @@ and color ways."
 
 - **Attire 1 (DEFAULT)** — "Red Latex" — Tripo 3D model as pulled, red latex
   bodysuit, blonde afro puffs, boots, leg holster. `attires/attire1/model.glb`
-- **Attire 2** — "After Dark" — RATED-M version of the Tripo base: black latex
-  colorway, same mesh. Texture-level build (red latex → near-black, shading
-  preserved). `attires/attire2/model.glb`
+- **Attire 2** — "After Dark" — black-latex colorway of the Tripo base, same
+  mesh. Texture-level build (red latex → near-black, shading preserved).
+  NOT rated-M (owner correction 2026-10-19: "Black does not mean rated M at
+  all"). `attires/attire2/model.glb`
 - **Attire 3** — "Capoeira Gold" — colorway variant on the Tripo base: Brazil
   green/yellow honoring her capoeira roots. Texture-level build.
   `attires/attire3/model.glb`
@@ -20,8 +21,9 @@ and color ways."
   (`game/assets/models/star.glb`, fighter-hunt wire). HONEST FLAG: ships
   untextured (gray clay) — texture pass is follow-up work, never a gate.
 
-Slots 5+ reserved — see `attires/_VARIANT-PIPELINE.md` for the rated-M /
-variant / colorway roadmap.
+Slots 5+ reserved — see `attires/_VARIANT-PIPELINE.md` for the true
+rated-M (mature content) / variant / colorway roadmap — the real rated-M
+versions are a separate in-flight lane, NOT After Dark.
 
 NOTE: All Tripo GLBs are unrigged statics — the live game default
 (`game/js/assets.js`) does NOT swap yet. The playable swap rides with the
