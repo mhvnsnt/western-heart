@@ -231,6 +231,46 @@
     "u/f+4"
    ],
    "move_class": "special"
+  },
+  "S": {
+   "name": "Immortal Qombat [WH SIGNATURE]",
+   "input": "S",
+   "startup": 0.4,
+   "active": 0.15,
+   "recovery": 1.1,
+   "damage": 24,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 14,
+   "anim_ref": "wh:sunra:sig:immortal-qombat",
+   "input_slots": [
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "Only he gets the English version. Everyone else says fushi kwonbatto. The soul-eating sun's proclamation burst."
+  },
+  "b+S": {
+   "name": "The Stare [WH SIGNATURE]",
+   "input": "b+S",
+   "startup": 0.26,
+   "active": 0.017,
+   "recovery": 0.8,
+   "damage": 16,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 12,
+   "anim_ref": "wh:sunra:sig:the-stare",
+   "input_slots": [
+    "b+S",
+    "b",
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "His eyes never close. He is cursed to stare and watch forever - that is WHY he makes the souls fight. A gaze counter."
   }
  },
  "strings": [

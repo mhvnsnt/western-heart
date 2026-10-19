@@ -281,6 +281,49 @@
     "n,d/b,n,f+1+2"
    ],
    "move_class": "throw"
+  },
+  "S": {
+   "name": "Swallowed Thunder [WH SIGNATURE]",
+   "input": "S",
+   "startup": 0.35,
+   "active": 0.1,
+   "recovery": 1.0,
+   "damage": 21,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 13,
+   "anim_ref": "wh:thor:sig:swallowed-thunder",
+   "input_slots": [
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "In Niflheim the mist world opened its mouth to swallow him, so HE SWALLOWED THE THUNDER FIRST. Double-palm thunder-clap."
+  },
+  "P+K": {
+   "name": "Niflheim's Mouth [WH SIGNATURE]",
+   "input": "P+K",
+   "startup": 0.32,
+   "active": 0.05,
+   "recovery": 0.95,
+   "damage": 23,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 13,
+   "anim_ref": "wh:thor:sig:niflheims-mouth",
+   "input_slots": [
+    "P+K",
+    "P",
+    "K"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "The storm - ice, fog, cold silence - is still inside him. An engulfing grab from the mist world's own mouth.",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true
   }
  },
  "strings": [

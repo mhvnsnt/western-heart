@@ -281,6 +281,49 @@
     "n,d/b,n,f+1+2"
    ],
    "move_class": "throw"
+  },
+  "S": {
+   "name": "Surgical Slice [WH SIGNATURE]",
+   "input": "S",
+   "startup": 0.25,
+   "active": 0.1,
+   "recovery": 0.82,
+   "damage": 18,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 12,
+   "anim_ref": "wh:slice:sig:surgical-slice",
+   "input_slots": [
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "The unhinged surgical blade. Blade-like chops, no anesthesia."
+  },
+  "P+K": {
+   "name": "Skull Mask Off [WH SIGNATURE]",
+   "input": "P+K",
+   "startup": 0.3,
+   "active": 0.05,
+   "recovery": 0.9,
+   "damage": 21,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 13,
+   "anim_ref": "wh:slice:sig:skull-mask-off",
+   "input_slots": [
+    "P+K",
+    "P",
+    "K"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "He usually wears the skull mask to hide his identity and scars. Sometimes his face is seen. You won't forget it.",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true
   }
  },
  "strings": [
