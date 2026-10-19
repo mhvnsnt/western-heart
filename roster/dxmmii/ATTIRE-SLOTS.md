@@ -7,7 +7,7 @@ Canonical slot map. DXMMII pronouns: neutral it/its until the owner decides
 
 | Slot | Display name | Status | Contents |
 |------|--------------|--------|----------|
-| 1 | **Dxmmii — Default patchwork** | ✅ wired | Base model: multi-colored patchwork body, X-eyes, tongue out, crash-test-dummy target on chest. `game/assets/models/dxmmii.glb`. |
+| 1 | **Dxmmii — Tripo Default** | ✅ wired | Tripo pull (2026-10-16): patchwork robot, X-eyes, tongue out, crash-test target on chest — the model from the multi-arm work (floating/gyro/docock renders). `roster/dxmmii/attires/attire1/model.glb` (60MB, blob-identical to `tools/limb-system/dxmmii/viz/dxmmii_plain.glb`). Replaces the wooden-dummy base as Slot 1 per owner 2026-10-19. |
 | 2 | **Dxmmii — Patchwork DJ** | ✅ owner-approved (2026-10-18) | Amplified patchwork panels + crash-test target symbol painted on chest; X-eyes kept (owner-locked, no tiger eyes). PR #271. |
 
 ## Slot-ordering law
@@ -18,3 +18,4 @@ Canonical slot map. DXMMII pronouns: neutral it/its until the owner decides
 ## History
 
 - 2026-10-18: Patchwork DJ reskin owner-approved as an attire (PR #271, merged).
+- 2026-10-19: Slot 1 replaced with the Tripo model (owner order) — `roster/dxmmii/attires/attire1/model.glb`. Wooden dummy retired from Slot 1.
