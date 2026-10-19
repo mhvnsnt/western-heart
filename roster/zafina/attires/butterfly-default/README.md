@@ -1,14 +1,14 @@
-# Mariposa — Butterfly Default (Tekken-wire attire, slot 5+)
+# Mariposa — Butterfly Default (owner-designated Slot 1 default, 2026-10-19)
 
 Real pipeline-built Mariposa attire (proprietary name; "Zafina" retired).
 Built 2026-10-19 inside the wired customization pipeline.
 
 ## Slotting (canon per #277, owner 2026-10-18 ~21:57 CDT)
 
-Tekken-wire attires ladder at **slot 5+**, behind all custom Tripo-based
-attires (1 Tripo default, 2 Monarch, 3 Blue Morpho, 4 Luna Moth). Canonical slot
-map: `roster/mariposa/ATTIRE-SLOTS.md` (canon lane owns it — this README does
-not duplicate it). This attire sits with the other Tekken-wire attires in
+Per owner decision 2026-10-19 this attire is her **Slot 1 default** (was
+slotted 5+ under the 2026-10-18 canon). Canonical slot map:
+`roster/mariposa/ATTIRE-SLOTS.md` (canon lane owns it — this README does
+not duplicate it). It lives on disk with the other Tekken-wire attires in
 `roster/zafina/attires/` (Golden Pharaoh etc.), untouched by the canon merge.
 
 ## What changed (~30%+ like Pantera's Attire 1)
