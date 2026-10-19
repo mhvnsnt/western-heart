@@ -1137,6 +1137,8 @@ He didn't hear the trial's call. He heard that there was an *audience* — and w
 
 **Owner-locked:** Keiji Mutoh / The Great Muta likeness — the mist, the paint, the mask, the entrance as art. Co-created with the owner.
 
+**Western Heart name (owner 2026-10-19):** In this game he is **RAVE** — "Kiko is rave in this game and Kiko in others, Rave is his Raver personality from our canon." The unrobed, shrouded-face variant — the "ghost Tanaka" — is Rave.
+
 ---
 
 ### SUN RĀ — The Soul-Eating Sun (Boss)
