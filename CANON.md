@@ -75,6 +75,8 @@ Pantera does not fight for the katana. He fights because fighting is what he is.
 
 **Owner-locked:** Black panther (not leopard), yellow eyes, black tail, pro wrestling gear, purple/black/red colorway, red metal PANTERA lettering, thigh tattoo-panther decal. Attire 1 complete.
 
+**Owner-locked chat-canon (production conversations, 2026-10):** PANTXRΛ-88 is his cyborg name — a cyborg attire concept: robot panther head from Heavy Leomon, robot left arm on his actual left arm, Heavy Leomon robot right shin and foot — different Heavy Leomon pieces mixed with Pantera and Leomon vibe, "like a humanoid cat like robot cyborg." Related: Doc Frank's per-character story arc turns Pantera into a panther cyborg, grafting robotic/weapon pieces from Heavy Leomon and other weaponed Leomon variants onto him. (Source: main chat owner seq 14723/14743; memory/2026-10-13.md#L1242.)
+
 ---
 
 ### DEMONIO — The Demon Soul
@@ -128,6 +130,9 @@ RIN is the protagonist soul — the baseline every other soul deviates from. Dem
 **Being purified of:** The wound. JIN's power moves damage the wielder — the blade cuts both ways. The trial is teaching the blade that it doesn't have to bleed to cut. Phantom hasn't decided whether a painless blade is still a blade.
 
 **Signature detail.** His self-damaging techniques leave no scars. The wounds close between rounds. The pain doesn't. He has never flinched. Waterfall has seen him flinch. She hasn't told anyone.
+
+**Owner-locked chat-canon (production conversations, 2026-10):** He has three faces he wears on purpose and one he doesn't. Publicly he is Jiraiya — loud, laughing, hands everywhere, the pervy-sage energy dialed until it annoys people. Privately he is Kakashi — quiet, reads, watches, says half of what he's thinking and means all of it. Then there's the other one: the Fiend mixed with Mankind, living inside him uninvited. It comes out when the mask slips, which is whenever it wants; he can't control it, and he's pissed about it — the only time he shows anger. When it's out it talks crude and screaming and delighted, and watches the dying the way a shinigami watches: detached, amused, taking notes. He fights like Jiraiya when he's himself — big, sloppy-looking, deceptively precise — and when the other one takes over, the style doesn't change. That's the worst part: it's still his body, his blade, his technique, just driven by something that thinks the screaming is funny. The Marketplace named itself after him and he won't say why. His signature: after a kill, whichever one of him is driving, he goes quiet for exactly three seconds. Then the laughing starts again — or it doesn't. (Source: chat "Western Heart recon", assistant bio seq 980, from owner's direction. OPEN QUESTION for owner: this bio describes his face in detail — oni's face filtered through the Fiend, broad jaw, heavy brow, skin like old bone, Japanese-style canines always showing, long white hair past his waist tied with cord when he fights. The repo line above says nobody has seen his face. Owner decides which stands — see docs/bios/BIOS-HARVEST-2026-10-19.md conflict C2.)
+
 
 ---
 
@@ -187,6 +192,9 @@ lies underneath is none of anyone's business.
 **Signature detail.** The paint goes on before every fight. Once, it wouldn't come off after — it stayed for three days. He didn't sleep. On the fourth day, Waterfall washed it off with her tears. He let her. He hasn't told anyone.
 
 **Owner-locked:** Punisher / Finn Balor demon-paint direction. Keep Bryan's pants. Alternate attires pending review.
+
+**Owner-locked chat-canon (production conversations, 2026-10):** Under the paint is Devitt — Finn Balor / Prince Devitt likeness, "sharp-boned, cold-eyed, the kind of handsome that looks like it was carved for wanted posters." The paint is not decoration: when RETSU rides him the paint SPREADS — it starts at the face and moves down the neck, across the chest, down the arms, until his whole upper body is marked by the end of the fight. It was not there when the round started, and nobody has ever seen him put it on. He does bone-breaking kickboxing and he COUNTS — after every fight he knows exactly how many broke, and he remembers the number of every man he ever fought. "That's the RETSU in him. Retribution keeps books." His signature: he doesn't celebrate — when the round ends he stands over the spot where it ended and looks down at it, like he's making sure it stays down. Owner spec: cargo pants and combat boots (military surplus pants, broken-in boots). (Source: chat "Western Heart recon", owner seq 944 / assistant bio seq 949, save-confirmed seq 961.)
+
 
 ---
 
@@ -814,6 +822,9 @@ She is the answer to SAM-UR-A1's question. Is there a soul in the machine? In *t
 
 **Owner-locked:** Name CYBORG X. The android — detachable head, chainsaw arms, jetpack. Pairs with SAM-UR-A1 as the two built souls. Alisa Bosconovitch base.
 
+**Owner-locked chat-canon (production conversations, 2026-10):** Cyborg X and Cape Jones are the SAME person — Cape Jones IS her, as her first attire / main look. He entered the Western Heart universe multidimensionally: bored during an LED session, he flew through the TV into the game — and it was real. That's how he joined the immortal combat. He is a Space Ghost / Batman-type fighter who doesn't even want to fight or be a hero — he only fights because everyone thinks he looks like a superhero and either wants his help or wants to fight him. ("I don't even want to be here.") He has hand cannons like Mega Man and Android 16; his cannon shots map to her rocket punches, her chainsaw stuff becomes his gadget-hero flavor. His origin is unknown to him until he runs into Doc Frank: somehow he was born like that — born from a mom AND made in a lab, the Cell / Dr. Gero cartoon-logic joke that relates back to Cape Jones's own canon (multiverse tie-back). Owner balance rule: "honest mid-tier, never been jack." (Source: chat "Western Heart recon" owner seq 515/579/612, assistant lock-ins seq 584/617; chat "Combine repos into Cape Jones" seq 835/2730/2736/2740; "Cape Jones 3D scenes repo" seq 299. Owner law 2026-10-17: Cyborg X and Cape Jones are the same person.)
+
+
 ---
 
 ### BRUNO — The Heartbreak Soul
@@ -1036,6 +1047,9 @@ He's a DJ now. The trial is the biggest venue he's ever played, and he plays the
 
 **Owner-locked:** Name DXMMII (locked 2026-10-15). Patchwork X-eyed tongue-out crash-test-dummy DJ, multi-colored panels, crash-test symbol on chest. Mokujin base.
 
+**Owner-locked chat-canon (production conversations, 2026-10):** The four-arm system. DXMMII's arms are retractable into the body — nobody knows if it's a robot or a cyborg or an android or just a DJ in a robotic patchwork crash-test-dummy costume, and that mystery is the character: it is NEVER to be answered. The arms switch stances like Tekken stance fighters: four arms OUT is gyro brawler, arms IN is human Tekken style, arms FLOATING detached is its own thing — same inputs as the Tekken stance-switch fighters. Canon precedent: Bannon canonically had Goro from Mortal Kombat — four arms and all — with Goro rig files to study. Owner pronoun rule (2026-10-18): Dxmmii is it/its until he decides otherwise. (Source: chat "Western Heart recon" owner seq 886/838, assistant seq 892. The limb-system build is on main at tools/limb-system/dxmmii/ — 107 files, landed via PR #221.)
+
+
 ---
 
 ### MARIPOSA — The Sealed Soul
@@ -1107,6 +1121,8 @@ He built Cyborg X. He built SAM-UR-A1. The three built souls: two machines who w
 
 **Owner-locked:** Name DOC FRANK (owner-named 2026-10-13) — also Android 9, or just 9. Born Franklin Bauzzkoh, shortened to Frank Bozko for business and recognition. The universe's Dr. Frankenstein × Dr. Gero — the mad scientist who built androids until he turned himself into one. Built Cyborg X and SAM-UR-A1: the three built souls. Dr. Bosconovitch base.
 
+**Owner-locked naming rule (production conversations, 2026-10):** Alisa's name is CYBORG X. The Android name went to Doc Frank — he is **Android 9** (or just **9**). "No Android X anywhere." (Source: chat "Western Heart recon", assistant seq 607 restating owner direction; main chat owner seq 13801: "We call him DOC Frank, also know as Android 9, or 9".)
+
 ---
 
 ### KIKO TANAKA — The Painted Soul
@@ -1137,6 +1153,8 @@ He didn't hear the trial's call. He heard that there was an *audience* — and w
 
 **Owner-locked:** Keiji Mutoh / The Great Muta likeness — the mist, the paint, the mask, the entrance as art. Co-created with the owner.
 
+**Western Heart name (owner 2026-10-19):** In this game he is **RAVE** — "Kiko is rave in this game and Kiko in others, Rave is his Raver personality from our canon." The unrobed, shrouded-face variant — the "ghost Tanaka" — is Rave.
+
 ---
 
 ### SUN RĀ — The Soul-Eating Sun (Boss)
@@ -1165,3 +1183,5 @@ Sun Rā does not fight in the tournament. He IS the tournament — or one of the
 **Signature detail.** He says "Immortal Qombat" in English. Only he gets the English version. Everyone else says 不死クォンバット. The distinction is the only law in his realm that he didn't make up — and he doesn't know who did.
 
 *Owner-directed 2026-10-13. Sun Rā's arena is a boss realm, not a standard stage. Name: SUN + ラー (Rā, the Egyptian sun god in Japanese).*
+
+**Owner-locked chat-canon (owner 2026-10-18, verbatim):** "he kind of has an open mouth already with like big jagged teeth so you should be able to make him talk easily and his eyes don't blink because he's like a sun and his like he's like a sun god and he's cursed to stare and watch forever so that's why he make all of the that's why he make all of the souls fight" — his eyes DO NOT blink; he is a sun god, CURSED TO STARE AND WATCH FOREVER, and that is WHY he makes all the souls fight. "his like eyes are bleeding they're like really deep sunken in like the moon from Soul Eater and he is blood coming from the corner of his mouth from the staring and being the sun and from eating the souls" — his eyes are bleeding, deep and sunken like the Soul Eater moon; blood comes from the corner of his mouth from the eternal staring, from being the sun, from eating the souls. The open jagged-toothed mouth is built for talking animation. Work the blood into canon AND model (texture/VFX detail). Tripo model (his proprietary look): https://studio.tripo3d.ai/3d-model/cf2dee24-15df-4d44-8a61-56fb5510a4e1 — pulled 2026-10-18. (Source: side chat "Find Western Heart repo name", owner seq 2192/2200, 2026-10-18 ~20:38-20:39 CDT.)

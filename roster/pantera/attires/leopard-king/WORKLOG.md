@@ -53,3 +53,27 @@
 - The only fix beyond the literal ask was correcting the two docs that repeated
   the registry error (TRIPO-REGISTRY.md is the source of truth; ROSTER-GAPS and
   ATTIRE-SLOTS.md carried the same wrong note).
+
+## Conflict resolution (2026-10-19 ~05:15 CDT)
+
+PR #295 went CONFLICTING/DIRTY after PR #296 (Kiko/Rave registry rewrite) merged
+to main. Resolved by forward-merging main into the branch as a merge commit
+(parents: branch tip b3be9a2b + main 54978da8). Merge commits only — no
+rebase/squash/force-push.
+
+**What conflicted:** `roster/TRIPO-REGISTRY.md` and
+`roster/ROSTER-GAPS-2026-10-19.md` — both sides had touched them since the merge
+base (af5802bd).
+
+**Resolution — kept BOTH sides, verified line-by-line via API diffs:**
+- The branch's versions of both files were strict SUPERSETS of main's: every
+  main-side change (RAVE merged row, Awa Pop A2 + Thor A2 registry rows, Kiko=Rave
+  correction blocks, RAVE Q2 row) was already present in the branch versions.
+- Branch-unique content kept: PANTERA row corrected to "Leo man IS the Tripo
+  model" + Leopard King Slot 6 (registry); Pantera removed from the Q1 gaps
+  table + added to the "Tripo-attached and done" list (gaps doc).
+- `roster/pantera/attires/ATTIRE-SLOTS.md`: main never touched it since the merge
+  base — branch version (Slot 2 + Slot 6) carried over unchanged.
+- The 3 added files (`leopard-king/model.glb`, `WORKLOG.md`,
+  `docs/tpose-refs/pantera-leopard-king/p1_front.png`) were absent on main —
+  clean adds, zero deletions anywhere in the merge.
