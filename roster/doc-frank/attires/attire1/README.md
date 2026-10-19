@@ -11,10 +11,16 @@
 | Form | Model | Source |
 |------|-------|--------|
 | **Pre-transform (old man)** | `pre-transform/model.glb` | The Doc Frank Machine Shop reskin (`roster/doc-frank/attires/machine-shop/doc-frank-machine-shop.glb`, PR #263) — wild grey hair, goggles, trench coat. |
-| **Post-transform (bigger)** | `post-transform/model.glb` | Tripo pull 2026-10-19: https://studio.tripo3d.ai/3d-model/597c67b3-c1ea-4827-b736-97318c4e154a ("futuristic character 3d model" by dg88will), 20.6MB meshopt. |
+| **Post-transform (bigger)** | `post-transform/model.glb` | Tripo pull 2026-10-19: https://studio.tripo3d.ai/3d-model/2c6cff79-d2d0-489c-b3c7-118d18472147 ("muscular humanoid 3d model" by dg88will), 20.9MB meshopt. **This is the true transform target** — the owner's label for this link was "Doc Frank Transformation for attire 1". |
 
 Concept targets: the 4 renders the owner sent 2026-10-19 (old man in suit →
 shirtless muscular forms, brain-dome variants).
+
+### Alternate take (not wired)
+The earlier link https://studio.tripo3d.ai/3d-model/597c67b3-c1ea-4827-b736-97318c4e154a
+("futuristic character 3d model" by dg88will, 20.6MB) was the first candidate
+for the bigger form, but the owner's later link (2c6cff79, labeled "Doc Frank
+Transformation for attire 1") supersedes it. Documented here, not wired.
 
 ## How the mechanic works (game/js/)
 

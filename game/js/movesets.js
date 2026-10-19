@@ -40,8 +40,6 @@ export const MOVESET_IDS = [
   // Reskin wave (2026-10-19): first custom attires as selectable fighters.
   'demonio-bloodline-ember', 'doc-frank-machine-shop', 'baek-master-white',
   'mariposa-monarch', 'dxmmii-patchwork',
-  // SAM-UR-A1 (owner 2026-10-19): Tripo Attire 1 + rocket fist.
-  'sam-ur-a1',
 ];
 
 const _movesets = {};

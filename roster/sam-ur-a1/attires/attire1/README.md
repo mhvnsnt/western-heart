@@ -8,6 +8,13 @@
 - **Character:** Dark sci-fi mecha, bronze/gold armor accents, tentacle-cable shoulder rigs, armored greaves.
 - **Canon base:** Gun Jack (per `roster/sam-ur-a1/kitbash_v1.json`).
 
+## Wiring
+
+This Tripo model is **Attire 1 (default)** for the existing SAM-UR-A1 fighter
+(roster id `samura1`, name "SAM-UR-A1", "The Mech Soul"). The roster entry's
+model was pointed at this Tripo attire per the Tripo-default law (owner
+2026-10-18); the former pantera base is documented, not deleted.
+
 ## The floating forearms — ROCKET FIST (owner 2026-10-19, verbatim)
 
 > "Has extra floating arms like DXMMII tripo model had, but this one's is just the forearms down, can be used to blast his fist off like a rocket like how gun Jack does in his movesets In Tekken games."
@@ -16,7 +23,7 @@ The Tripo mesh includes **detached forearm/fist units** floating at the shoulder
 the same class of hardware as DXMMII's gyro arms. This is a FEATURE, not a
 modeling error. In-game it becomes the **ROCKET FIST** special:
 
-- **Input:** `qcf+1+2` (Tekken notation) — wired in `game/assets/movesets/sam-ur-a1.json`.
+- **Input:** `qcf+1+2` (Tekken notation) — wired in `game/assets/movesets/samura1.json`.
 - **Effect:** heavy projectile-style fist blast, Gun Jack style. Damage 26, long
   startup (0.45s), big knockback.
 - **Current status:** moveset data ships with a placeholder `anim_ref`
@@ -38,8 +45,3 @@ PR #302 — the Child Of keyframing fix spec):
    by a projectile path) → RETURN (influence back to 1 at the socket).
 4. The DXMMII 5-state machine (`ATTACHED → DETACHED → GYRO → REATTACHED`)
    in `tools/limb-system/dxmmii/BUILD.md` is the reference implementation.
-
-## Name status
-
-⚠️ **Owner calls this fighter "SAM-UR-A1"** — wired under that id. If the
-canon name differs, rename the folder/id (do not invent canon).

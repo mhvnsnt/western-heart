@@ -1,0 +1,206 @@
+{
+ "fighter": "mariposa-monarch",
+ "display": "MARIPOSA MONARCH",
+ "tekken_base": "Zafina",
+ "t3_source": "xiaoyu",
+ "proxy": true,
+ "proxy_note": "Mariposa (Zafina) has no T3 bank \u2014 Xiaoyu proxy (evasive stance archetype)",
+ "variant": 0,
+ "moves": {
+  "1": {
+   "name": "MARIPOSA MONARCH 1 (T3 xiaoyu r53)",
+   "input": "1",
+   "t3_source": "xiaoyu",
+   "t3_row": 53,
+   "t3_command": "LP",
+   "startup": 0.117,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 11,
+   "t3_damage": 18,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:53",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "2": {
+   "name": "MARIPOSA MONARCH 2 (T3 xiaoyu r60)",
+   "input": "2",
+   "t3_source": "xiaoyu",
+   "t3_row": 60,
+   "t3_command": "RP",
+   "startup": 0.183,
+   "active": 0.05,
+   "recovery": 0.667,
+   "damage": 11,
+   "t3_damage": 18,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:60",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "3": {
+   "name": "MARIPOSA MONARCH 3 (T3 xiaoyu r67)",
+   "input": "3",
+   "t3_source": "xiaoyu",
+   "t3_row": 67,
+   "t3_command": "LK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 15,
+   "t3_damage": 25,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:xiaoyu:row:67",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "4": {
+   "name": "MARIPOSA MONARCH 4 (T3 xiaoyu r79)",
+   "input": "4",
+   "t3_source": "xiaoyu",
+   "t3_row": 79,
+   "t3_command": "RK",
+   "startup": 0.133,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 15,
+   "t3_damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:xiaoyu:row:79",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "1+3": {
+   "name": "MARIPOSA MONARCH 1+3 throw (T3 xiaoyu r154)",
+   "input": "1+3",
+   "t3_source": "xiaoyu",
+   "t3_row": 154,
+   "t3_command": "LP+LK",
+   "startup": 0.267,
+   "active": 0.017,
+   "recovery": 0.1,
+   "damage": 21,
+   "t3_damage": 35,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 11,
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+   "anim_ref": "t3:xiaoyu:row:154",
+   "input_slots": [
+    "1+3"
+   ],
+   "move_class": "throw"
+  },
+  "2+4": {
+   "name": "MARIPOSA MONARCH 2+4 throw (T3 xiaoyu r155)",
+   "input": "2+4",
+   "t3_source": "xiaoyu",
+   "t3_row": 155,
+   "t3_command": "RP+RK",
+   "startup": 0.1,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 21,
+   "t3_damage": 35,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 11,
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+   "anim_ref": "t3:xiaoyu:row:155",
+   "input_slots": [
+    "2+4"
+   ],
+   "move_class": "throw"
+  },
+  "d/f+2": {
+   "name": "MARIPOSA MONARCH d/f+2 (T3 xiaoyu r270)",
+   "input": "d/f+2",
+   "t3_source": "xiaoyu",
+   "t3_row": 270,
+   "t3_command": "3+RP",
+   "startup": 0.317,
+   "active": 0.017,
+   "recovery": 0.85,
+   "damage": 6,
+   "t3_damage": 10,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:270",
+   "input_slots": [
+    "d/f+2"
+   ],
+   "move_class": "special"
+  },
+  "d+4": {
+   "name": "MARIPOSA MONARCH d+4 (T3 xiaoyu r371)",
+   "input": "d+4",
+   "t3_source": "xiaoyu",
+   "t3_row": 371,
+   "t3_command": "2+RK",
+   "startup": 0.217,
+   "active": 0.017,
+   "recovery": 0.783,
+   "damage": 2,
+   "t3_damage": 3,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:371",
+   "input_slots": [
+    "d+4"
+   ],
+   "move_class": "special"
+  }
+ },
+ "strings": [],
+ "specials": [
+  {
+   "input": "d/f+2",
+   "t3_row": 270,
+   "damage": 6,
+   "throw": false,
+   "fallback": "directional \u2014 no motion inputs in T3 bank"
+  },
+  {
+   "input": "d+4",
+   "t3_row": 371,
+   "damage": 2,
+   "throw": false,
+   "fallback": "directional \u2014 no motion inputs in T3 bank"
+  }
+ ],
+ "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
+ "schema_version": 2
+}

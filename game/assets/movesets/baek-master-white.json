@@ -1,0 +1,328 @@
+{
+ "fighter": "baek-master-white",
+ "display": "BAEK MASTER WHITE",
+ "tekken_base": "Baek",
+ "t3_source": "bryan",
+ "proxy": true,
+ "proxy_note": "Baek Master's White attire \u2014 Baek base, Bryan T3 proxy (TKD kicks, same as BAEK)",
+ "variant": 8,
+ "moves": {
+  "1": {
+   "name": "BAEK MASTER WHITE 1 (T3 bryan r46)",
+   "input": "1",
+   "t3_source": "bryan",
+   "t3_row": 46,
+   "t3_command": "LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 7,
+   "t3_damage": 12,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:46",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "2": {
+   "name": "BAEK MASTER WHITE 2 (T3 bryan r152)",
+   "input": "2",
+   "t3_source": "bryan",
+   "t3_row": 152,
+   "t3_command": "RP",
+   "startup": 0.283,
+   "active": 0.017,
+   "recovery": 0.65,
+   "damage": 12,
+   "t3_damage": 21,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:152",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "2,1": {
+   "name": "BAEK MASTER WHITE 2,1 (T3 bryan r153)",
+   "input": "2,1",
+   "t3_source": "bryan",
+   "t3_row": 153,
+   "t3_command": "LP",
+   "startup": 0.317,
+   "active": 0.017,
+   "recovery": 0.65,
+   "damage": 12,
+   "t3_damage": 21,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "string_hit": "2",
+   "anim_ref": "t3:bryan:row:153",
+   "input_slots": [
+    "2,1",
+    "2",
+    "1"
+   ],
+   "move_class": "string"
+  },
+  "2,1,2": {
+   "name": "BAEK MASTER WHITE 2,1,2 (T3 bryan r151)",
+   "input": "2,1,2",
+   "t3_source": "bryan",
+   "t3_row": 151,
+   "t3_command": "RP",
+   "startup": 0.217,
+   "active": 0.017,
+   "recovery": 0.783,
+   "damage": 12,
+   "t3_damage": 21,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "string_hit": "2,1",
+   "anim_ref": "t3:bryan:row:151",
+   "input_slots": [
+    "2,1,2",
+    "2",
+    "1",
+    "2"
+   ],
+   "move_class": "string"
+  },
+  "3": {
+   "name": "BAEK MASTER WHITE 3 (T3 bryan r67)",
+   "input": "3",
+   "t3_source": "bryan",
+   "t3_row": 67,
+   "t3_command": "LK",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.817,
+   "damage": 15,
+   "t3_damage": 25,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:bryan:row:67",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "4": {
+   "name": "BAEK MASTER WHITE 4 (T3 bryan r81)",
+   "input": "4",
+   "t3_source": "bryan",
+   "t3_row": 81,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 15,
+   "t3_damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:bryan:row:81",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "1+3": {
+   "name": "BAEK MASTER WHITE 1+3 throw (T3 bryan r138)",
+   "input": "1+3",
+   "t3_source": "bryan",
+   "t3_row": 138,
+   "t3_command": "LP+LK",
+   "startup": 0.1,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 21,
+   "t3_damage": 35,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 11,
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+   "anim_ref": "t3:bryan:row:138",
+   "input_slots": [
+    "1+3"
+   ],
+   "move_class": "throw"
+  },
+  "2+4": {
+   "name": "BAEK MASTER WHITE 2+4 throw (T3 bryan r210)",
+   "input": "2+4",
+   "t3_source": "bryan",
+   "t3_row": 210,
+   "t3_command": "RP+RK",
+   "startup": 0.2,
+   "active": 0.05,
+   "recovery": 0.467,
+   "damage": 21,
+   "t3_damage": 35,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 11,
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+   "anim_ref": "t3:bryan:row:210",
+   "input_slots": [
+    "2+4"
+   ],
+   "move_class": "throw"
+  },
+  "d/f+2": {
+   "name": "BAEK MASTER WHITE d/f+2 (T3 bryan r149)",
+   "input": "d/f+2",
+   "t3_source": "bryan",
+   "t3_row": 149,
+   "t3_command": "3+RP",
+   "startup": 0.383,
+   "active": 0.017,
+   "recovery": 0.633,
+   "damage": 9,
+   "t3_damage": 16,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:149",
+   "input_slots": [
+    "d/f+2"
+   ],
+   "move_class": "strike"
+  },
+  "u/f+4": {
+   "name": "BAEK MASTER WHITE u/f+4 (T3 bryan r183)",
+   "input": "u/f+4",
+   "t3_source": "bryan",
+   "t3_row": 183,
+   "t3_command": "9+RK",
+   "startup": 0.4,
+   "active": 0.05,
+   "recovery": 0.567,
+   "damage": 13,
+   "t3_damage": 22,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:183",
+   "input_slots": [
+    "u/f+4"
+   ],
+   "move_class": "strike"
+  },
+  "d,d/f,d,d/f+1+2": {
+   "name": "BAEK MASTER WHITE d,d/f,d,d/f+1+2 throw (T3 bryan r211)",
+   "input": "d,d/f,d,d/f+1+2",
+   "t3_source": "bryan",
+   "t3_row": 211,
+   "t3_command": "[2 3 2 3+LP+RP](59f)",
+   "startup": 0.183,
+   "active": 0.017,
+   "recovery": 0.483,
+   "damage": 21,
+   "t3_damage": 35,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 11,
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+   "anim_ref": "t3:bryan:row:211",
+   "input_slots": [
+    "d,d/f,d,d/f+1+2"
+   ],
+   "move_class": "throw"
+  },
+  "n,d/b,n,f+1+2": {
+   "name": "BAEK MASTER WHITE n,d/b,n,f+1+2 throw (T3 bryan r211)",
+   "input": "n,d/b,n,f+1+2",
+   "t3_source": "bryan",
+   "t3_row": 211,
+   "t3_command": "[5 1 5 6+LP+RP](25f)",
+   "startup": 0.183,
+   "active": 0.017,
+   "recovery": 0.483,
+   "damage": 21,
+   "t3_damage": 35,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 11,
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+   "anim_ref": "t3:bryan:row:211",
+   "input_slots": [
+    "n,d/b,n,f+1+2"
+   ],
+   "move_class": "throw"
+  }
+ },
+ "strings": [
+  {
+   "input": "2,1",
+   "hits": [
+    "2",
+    "1"
+   ],
+   "t3_rows": [
+    152,
+    153
+   ]
+  },
+  {
+   "input": "2,1,2",
+   "hits": [
+    "2",
+    "1",
+    "2"
+   ],
+   "t3_rows": [
+    152,
+    153,
+    151
+   ]
+  }
+ ],
+ "specials": [
+  {
+   "input": "d,d/f,d,d/f+1+2",
+   "t3_row": 211,
+   "damage": 21,
+   "throw": true
+  },
+  {
+   "input": "n,d/b,n,f+1+2",
+   "t3_row": 211,
+   "damage": 21,
+   "throw": true
+  }
+ ],
+ "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
+ "schema_version": 2
+}
