@@ -253,6 +253,101 @@ function selectCard(card, c) {
   const surgeName = c.surge ? c.surge.name : 'SOUL SURGE';
   document.getElementById('select-hint').textContent = `${c.name} — ${c.style} · ${surgeName}`;
   document.getElementById('confirm-fighter').disabled = false;
+  // Tekken-style: show the picked fighter BIG in the 3D preview pane.
+  previewFighter(c);
+}
+
+/* ============ TEKKEN-STYLE 3D PREVIEW PANE ============
+   The selected fighter renders large, playing their idle animation.
+   Model loads on demand; a lightweight separate renderer keeps the
+   preview independent of the fight scene. */
+let previewRenderer = null, previewScene = null, previewCamera = null;
+let previewMixer = null, previewModel = null, previewClock = null;
+let previewRaf = 0, previewLoading = false;
+
+function initPreview() {
+  const canvas = document.getElementById('preview-canvas');
+  if (!canvas || previewRenderer) return;
+  previewRenderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  previewRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  previewScene = new THREE.Scene();
+  // Stage lighting: key + rim for that Tekken select pop
+  previewScene.add(new THREE.HemisphereLight(0xffffff, 0x332244, 1.1));
+  const key = new THREE.DirectionalLight(0xffffff, 1.6);
+  key.position.set(2.5, 4, 3); previewScene.add(key);
+  const rim = new THREE.DirectionalLight(0x9fd8ff, 0.9);
+  rim.position.set(-3, 2, -2.5); previewScene.add(rim);
+  const gold = new THREE.PointLight(0xffb14d, 12, 12);
+  gold.position.set(0, 0.4, 2.2); previewScene.add(gold);
+  previewCamera = new THREE.PerspectiveCamera(32, 1, 0.01, 50);
+  previewCamera.position.set(0, 1.15, 3.4);
+  previewCamera.lookAt(0, 0.95, 0);
+  previewClock = new THREE.Clock();
+  const resize = () => {
+    const el = document.getElementById('select-preview');
+    if (!el || !previewRenderer) return;
+    const w = el.clientWidth, h = el.clientHeight;
+    if (w < 2 || h < 2) return;
+    previewRenderer.setSize(w, h, false);
+    previewCamera.aspect = w / h;
+    previewCamera.updateProjectionMatrix();
+  };
+  new ResizeObserver(resize).observe(document.getElementById('select-preview'));
+  resize();
+  const loop = () => {
+    previewRaf = requestAnimationFrame(loop);
+    const dt = Math.min(previewClock.getDelta(), 0.05);
+    if (previewMixer) previewMixer.update(dt);
+    // Slow heroic turntable when idle — Tekken select energy
+    if (previewModel && !previewLoading) previewModel.rotation.y += dt * 0.35;
+    previewRenderer.render(previewScene, previewCamera);
+  };
+  loop();
+}
+
+async function previewFighter(c) {
+  initPreview();
+  if (!previewScene) return;
+  const modelId = c.model || 'pantera';
+  // Update the text immediately; the 3D follows when loaded.
+  document.getElementById('preview-name').textContent = c.name || '—';
+  document.getElementById('preview-title').textContent = c.title || '';
+  document.getElementById('preview-style').textContent =
+    [c.style, c.archetype].filter(Boolean).join(' · ');
+  // Clear the old model.
+  if (previewModel) { previewScene.remove(previewModel); previewModel = null; previewMixer = null; }
+  previewLoading = true;
+  try {
+    await assets.loadModels([modelId]);
+    const inst = assets.createInstance(
+      modelId, c.colors?.suit ?? 0xffffff, c.colors?.trim ?? 0x888888, c.tintStrength ?? 0.3);
+    previewModel = inst.model;
+    previewModel.rotation.y = 0.15;
+    previewScene.add(previewModel);
+    previewMixer = inst.mixer;
+    // createInstance auto-plays the Idle clip when the model has one.
+    // Fall back to procedural breathing when no idle exists.
+    if (!inst.actions || !inst.actions.Idle) {
+      const chest = inst.bones['Spine2'] || inst.bones['Spine1'] || inst.bones['Spine'];
+      if (chest) {
+        const t0 = performance.now();
+        const y0 = chest.position.y;
+        const breathe = () => {
+          if (previewModel !== inst.model) return; // replaced
+          const t = (performance.now() - t0) / 1000;
+          chest.rotation.x = Math.sin(t * 1.4) * 0.03;
+          chest.position.y = y0 + Math.sin(t * 1.4) * 0.008;
+          requestAnimationFrame(breathe);
+        };
+        breathe();
+      }
+    }
+  } catch (e) {
+    console.warn('[WH] preview failed for', modelId, e.message || e);
+    document.getElementById('preview-title').textContent = 'Model loading…';
+  } finally {
+    previewLoading = false;
+  }
 }
 function focusCard(i) {
   const cards = allCards();
