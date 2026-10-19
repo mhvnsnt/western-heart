@@ -319,10 +319,15 @@ export class Fighter {
 
   /* Mid-match transformation (Roshi-style power-up, owner 2026-10-19).
      Swaps the fighter's model for the transform target, applies stat
-     changes. One-way per match. Returns true if the transform fired. */
+     changes. One-way per match. Tekken mirror: Devil Jin needs a FULL
+     Devil Gauge — here the transform needs a FULL nine-soul meter, which
+     is spent on the transform. Touch button only, no keyboard.
+     Returns true if the transform fired. */
   tryTransform(direction='up') {
     const t = this._resolveTransform(direction);
     if (!t || !this.canAct()) return false;
+    if (this.meter < this.maxMeter) return false; // gauge must be full
+    this.meter = 0; // spend the gauge
     let inst;
     try {
       inst = assets.createInstance(
