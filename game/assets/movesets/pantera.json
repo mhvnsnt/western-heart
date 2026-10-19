@@ -260,6 +260,70 @@
     "d,d/f,d,d/f+1+2"
    ],
    "move_class": "throw"
+  },
+  "P+K": {
+   "name": "Honest Hold [WH SIGNATURE]",
+   "input": "P+K",
+   "startup": 0.32,
+   "active": 0.05,
+   "recovery": 0.9,
+   "damage": 22,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 13,
+   "anim_ref": "wh:pantera:sig:honest-hold",
+   "input_slots": [
+    "P+K",
+    "P",
+    "K"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "The hold is honest. Everything else is negotiation. Chain-throw closer.",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true
+  },
+  "f+P": {
+   "name": "Tail-Tip Lunge [WH SIGNATURE]",
+   "input": "f+P",
+   "startup": 0.22,
+   "active": 0.017,
+   "recovery": 0.72,
+   "damage": 16,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "wh:pantera:sig:tail-tip-lunge",
+   "input_slots": [
+    "f+P",
+    "f",
+    "P"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "The tail telegraphs the hold. No one has ever read it in time. Lunging claw rake."
+  },
+  "S": {
+   "name": "Battle Itself [WH SIGNATURE]",
+   "input": "S",
+   "startup": 0.35,
+   "active": 0.2,
+   "recovery": 1.05,
+   "damage": 19,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 14,
+   "anim_ref": "wh:pantera:sig:battle-itself",
+   "input_slots": [
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "Vessel of TOU (battle itself). Roaring multi-hit claw flurry; no motive, only the hold."
   }
  },
  "strings": [

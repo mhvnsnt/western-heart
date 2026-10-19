@@ -306,6 +306,67 @@
     "f+1"
    ],
    "move_class": "special"
+  },
+  "S": {
+   "name": "Cut Is the Prayer [WH SIGNATURE]",
+   "input": "S",
+   "startup": 0.33,
+   "active": 0.1,
+   "recovery": 0.95,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 13,
+   "anim_ref": "wh:phantom:sig:cut-is-the-prayer",
+   "input_slots": [
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "The cut is the prayer. The wound is the answer. Spinning blade draw; wounds the wielder (self-chip) - the blade cuts both ways."
+  },
+  "D+S": {
+   "name": "Three Seconds Quiet [WH SIGNATURE]",
+   "input": "D+S",
+   "startup": 0.26,
+   "active": 0.017,
+   "recovery": 0.78,
+   "damage": 16,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 12,
+   "anim_ref": "wh:phantom:sig:three-seconds-quiet",
+   "input_slots": [
+    "D+S",
+    "D",
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "After a kill he goes quiet for exactly three seconds. Dodge-vanish into a teleport slash."
+  },
+  "u+P": {
+   "name": "Mask-Slip Spin [WH SIGNATURE]",
+   "input": "u+P",
+   "startup": 0.3,
+   "active": 0.1,
+   "recovery": 0.9,
+   "damage": 18,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 12,
+   "anim_ref": "wh:phantom:sig:mask-slip-spin",
+   "input_slots": [
+    "u+P",
+    "u",
+    "P"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "When the other one takes over, the style doesn't change - it just stops pretending. Rising wild spin."
   }
  },
  "strings": [

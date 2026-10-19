@@ -281,6 +281,67 @@
     "n,d/b,n,f+1+2"
    ],
    "move_class": "throw"
+  },
+  "S": {
+   "name": "Retribution Keeps Books [WH SIGNATURE]",
+   "input": "S",
+   "startup": 0.34,
+   "active": 0.017,
+   "recovery": 0.92,
+   "damage": 20,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 13,
+   "anim_ref": "wh:skull:sig:retribution-keeps-books",
+   "input_slots": [
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "After every fight he knows exactly how many broke. Bone-breaking kick, counted."
+  },
+  "f+K": {
+   "name": "Paint-Ride Flurry [WH SIGNATURE]",
+   "input": "f+K",
+   "startup": 0.25,
+   "active": 0.1,
+   "recovery": 0.8,
+   "damage": 17,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 12,
+   "anim_ref": "wh:skull:sig:paint-ride-flurry",
+   "input_slots": [
+    "f+K",
+    "f",
+    "K"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "When RETSU rides him the paint spreads down the arms. A kick flurry thrown mid-spread."
+  },
+  "d+K": {
+   "name": "Stays Down Stomp [WH SIGNATURE]",
+   "input": "d+K",
+   "startup": 0.29,
+   "active": 0.017,
+   "recovery": 0.85,
+   "damage": 18,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 12,
+   "anim_ref": "wh:skull:sig:stays-down-stomp",
+   "input_slots": [
+    "d+K",
+    "d",
+    "K"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "When the round ends he stands over the spot where it ended, making sure it stays down."
   }
  },
  "strings": [
