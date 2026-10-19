@@ -44,6 +44,10 @@ recorded in flight. Characters with pulls already in flight are marked separatel
 
 KIKO TANAKA and RAVE are the SAME character in Western Heart. Owner's words: "Kiko is rave in this game and Kiko in others, Rave is his Raver personality from our canon." — "the ghost tanaka is Rave." The robe pair (`game/assets/models/kiko-tanaka.glb` hooded/robed, `kiko-tanaka_alt1.glb` unrobed/shrouded face) are RAVE's models: A1 = hooded default, A2 = the "ghost Tanaka" Raver personality, A3+ = `rave.glb` (Lei Wulong in-game base) ladders back. His bio lives as "KIKO TANAKA — The Painted Soul" in CANON.md.
 
+### ✅ CORRECTION (owner 2026-10-19 — supersedes this audit's separation)
+
+KIKO TANAKA and RAVE are the SAME character in Western Heart. Owner's words: "Kiko is rave in this game and Kiko in others, Rave is his Raver personality from our canon." — "the ghost tanaka is Rave." The robe pair (`game/assets/models/kiko-tanaka.glb` hooded/robed, `kiko-tanaka_alt1.glb` unrobed/shrouded face) are RAVE's models: A1 = hooded default, A2 = the "ghost Tanaka" Raver personality, A3+ = `rave.glb` (Lei Wulong in-game base) ladders back. His bio lives as "KIKO TANAKA — The Painted Soul" in CANON.md.
+
 ### Pulled already — wiring/rigging in flight (NOT "needs a model")
 
 - **NIGHTWOLF** — Tripo pulled (`nightwolf-tripo.glb`); wiring pending.
