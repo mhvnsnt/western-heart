@@ -104,7 +104,7 @@ export class InputManager {
         case 'KeyK': this._strike('kick'); break;
         case 'KeyU': this._push('grab'); break;
         case 'KeyL': this._push('surge'); break;
-        case 'KeyT': this._push('transform'); break;
+        case 'KeyT': this._push(this.down ? 'transform-down' : 'transform'); break;
         case 'Digit1': this._tekken('1'); break;
         case 'Digit2': this._tekken('2'); break;
         case 'Digit3': this._tekken('3'); break;

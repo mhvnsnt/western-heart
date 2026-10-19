@@ -32,9 +32,23 @@ export const FULL_ROSTER = [
     surge: { name: "PANTHER'S WRATH", color: 0x8b2bd8, accent: 0xff2222 },
     stats: { speed: 4.0, jump: 6.8, power: 1.3, defense: 1.2 },
     ai: { aggression: 0.85, grabBias: 0.45, reaction: 0.55 } },
-  { id: 'demonio', name: 'DEMONIO', title: 'The Demon Soul', base: 'Jin Kazama', moveset: 'demonio', model: 'demonio', tintStrength: 0.25,
+  { id: 'demonio', name: 'DEMONIO', title: 'The Demon Soul', base: 'Jin Kazama', moveset: 'demonio', model: 'demonio-a1', tintStrength: 0.25,
     colors: { suit: 0x1a3a6b, trim: 0x9fd8ff }, style: 'Mishima Karate',
     surge: { name: 'COLD FLAME', color: 0x9fd8ff, accent: 0xffffff },
+    // Attire 1 = Tripo unwinged demon (owner 2026-10-19). Three forms, transform both directions (Roshi-style).
+    // KeyT = up, Down+KeyT = down (rare).
+    forms: {
+      'demonio-a1': {
+        up: { target: 'demonio-winged', label: 'DEVIL ASCENSION', powerMult: 1.5, speedMult: 1.05, defenseMult: 1.2, bodyScale: 1.22, moveset: 'demonio-winged' },
+        down: { target: 'demonio-human', label: 'DEPOWER', powerMult: 0.7, speedMult: 1.1, defenseMult: 0.9, bodyScale: 0.95, moveset: 'demonio' },
+      },
+      'demonio-winged': {
+        down: { target: 'demonio-a1', label: 'REVERT', powerMult: 0.67, speedMult: 0.95, defenseMult: 0.83, bodyScale: 0.82, moveset: 'demonio' },
+      },
+      'demonio-human': {
+        up: { target: 'demonio-a1', label: 'REPOWER', powerMult: 1.43, speedMult: 0.91, defenseMult: 1.11, bodyScale: 1.05, moveset: 'demonio' },
+      },
+    } },
     stats: { speed: 4.8, jump: 7.6, power: 1.05, defense: 1.0 },
     ai: { aggression: 0.6, grabBias: 0.05, reaction: 0.6 } },
   { id: 'phantom', name: 'PHANTOM', title: 'The Ghost Blade Soul', base: 'Yoshimitsu', moveset: 'yoshimitsu', model: 'steve-fox', tintStrength: 0.6,
@@ -96,6 +110,29 @@ export const FULL_ROSTER = [
   // ——— RESKIN WAVE (2026-10-19): first custom attires as selectable fighters ———
   { id: 'demonio-bloodline-ember', name: 'DEMONIO', title: 'Bloodline Ember', base: 'Jin Kazama', moveset: 'demonio', model: 'demonio-bloodline-ember', tintStrength: 0.25,
     colors: { suit: 0x8a1a0a, trim: 0xff4400 }, style: 'Mishima Karate', archetype: 'Balanced' },
+  // ——— WAVE 2 (2026-10-19): Demonio forms (dual access) + Doc Frank attires ———
+  { id: 'demonio-winged', name: 'DEMONIO', title: 'Devil Ascendant', base: 'Jin Kazama', moveset: 'demonio-winged', model: 'demonio-winged', tintStrength: 0.25,
+    colors: { suit: 0x2a0a2a, trim: 0xff00ff }, style: 'Devil Mishima', archetype: 'Boss',
+    forms: {
+      'demonio-winged': {
+        down: { target: 'demonio-a1', label: 'REVERT', powerMult: 0.67, speedMult: 0.95, defenseMult: 0.83, bodyScale: 0.82, moveset: 'demonio' },
+      },
+    } },
+  { id: 'demonio-human', name: 'DEMONIO', title: 'The Possessed', base: 'Jin Kazama', moveset: 'demonio', model: 'demonio-human', tintStrength: 0.25,
+    colors: { suit: 0x3a3a3a, trim: 0x9fd8ff }, style: 'Mishima Karate', archetype: 'Balanced',
+    forms: {
+      'demonio-human': {
+        up: { target: 'demonio-a1', label: 'REPOWER', powerMult: 1.43, speedMult: 0.91, defenseMult: 1.11, bodyScale: 1.05, moveset: 'demonio' },
+      },
+    } },
+  { id: 'doc-frank-wowomomo', name: 'DOC FRANK', title: 'Wowomomo', base: 'Bosconovitch', moveset: 'gunjack', model: 'doc-frank-wowomomo', tintStrength: 0.25,
+    colors: { suit: 0x4a4a5a, trim: 0xff8800 }, style: 'Inventor', archetype: 'Tricky',
+    // Attire 2 "Wowomomo" (owner 2026-10-19): Dr gero meets mojo Jojo meets bosconovitch meets Dr wierd.
+    transform: { targetModel: 'doc-frank-wowomomo-big', powerMult: 1.4, speedMult: 0.88, defenseMult: 1.15, bodyScale: 1.18 } },
+  { id: 'doc-frank-hood', name: 'DOC FRANK', title: 'Hood Scientist', base: 'Bosconovitch', moveset: 'gunjack', model: 'doc-frank-hood', tintStrength: 0.25,
+    colors: { suit: 0x2a2a3a, trim: 0xcccccc }, style: 'Inventor', archetype: 'Tricky',
+    // Attire 3 "Hood scientist" (owner 2026-10-19): old mob boss scientist, club night.
+    transform: { targetModel: 'doc-frank-hood-big', powerMult: 1.4, speedMult: 0.88, defenseMult: 1.15, bodyScale: 1.18 } },
   { id: 'doc-frank-machine-shop', name: 'DOC FRANK', title: 'Machine Shop', base: 'Bosconovitch', moveset: 'gunjack', model: 'doc-frank-machine-shop', tintStrength: 0.25,
     colors: { suit: 0x4a4a5a, trim: 0xff8800 }, style: 'Inventor', archetype: 'Tricky' },
   { id: 'baek-master-white', name: 'BAEK', title: "Master's White", base: 'Baek', moveset: 'bryan', model: 'baek-master-white', tintStrength: 0.25,

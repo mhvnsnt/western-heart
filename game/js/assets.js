@@ -39,6 +39,15 @@ const MODEL_URLS = {
   'doc-frank': 'assets/models/doc-frank.glb',
   // Doc Frank post-transform bigger form (owner 2026-10-19, Tripo pull).
   'doc-frank-big': '../roster/doc-frank/attires/attire1/post-transform/model.glb',
+  // Wave 2 (2026-10-19): Wowomomo Attire 2, Hood Scientist Attire 3, Demonio forms, Dxmmii Attire 2.
+  'doc-frank-wowomomo': '../roster/doc-frank/attires/attire2/base/model.glb',
+  'doc-frank-wowomomo-big': '../roster/doc-frank/attires/attire2/transformed/model.glb',
+  'doc-frank-hood': '../roster/doc-frank/attires/attire3/base/model.glb',
+  'doc-frank-hood-big': '../roster/doc-frank/attires/attire3/transformed/model.glb',
+  'demonio-a1': '../roster/demonio/attires/attire1/model.glb',
+  'demonio-winged': '../roster/demonio/attires/winged-devil/model.glb',
+  'demonio-human': '../roster/demonio/attires/human/model.glb',
+  'dxmmii-a2': '../roster/dxmmii/attires/attire2/model.glb',
   'cyborg-x': 'assets/models/cyborg-x.glb',
   'cape-jones': 'assets/models/cape-jones.glb',
   // Bonus / music fighters and name-pending models (loadable, unassigned).

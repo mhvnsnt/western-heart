@@ -75,3 +75,9 @@ Legend: ✅ attached · ❌ no Tripo on record · ⚠️ needs owner link/pull �
 - 2026-10-19: Star Tripo attached (Attires 1–3: Red Latex default, After Dark (black-latex colorway — NOT rated-M, owner correction 2026-10-19), Capoeira Gold colorway; A4 = in-game Classic) — owner: "That's her attire 1 and we will make more and some rated M versions and models of her and some variants and color ways."
 
 - 2026-10-19: SAM-UR-A1 Tripo attached (Attire 1, floating-forearm rocket-fist feature) + Doc Frank bigger-form Tripo attached (Attire 1 post-transform, Roshi-style mid-match transform mechanic in game/js/).
+- 2026-10-19: Doc Frank Attire 2 "Wowomomo" base (Tripo 84b128d2,
+- 2026-10-19: Demonio three forms — Attire 1 unwinged demon (Tripo 879b6dae,
+- 2026-10-19: Dxmmii Attire 2 "Block built blockhead crash dummy" (Tripo
+- 2026-10-19: Zui Attire 1 link (Tripo cdf894fc, `tattooed_monk_3d_model.glb`,
+- 2026-10-19: Bannon mask accessory (Tripo 0c9b54ac,
+- 2026-10-19: Doc Frank Attire 1 transform target CORRECTION — the true
