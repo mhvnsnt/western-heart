@@ -2,11 +2,2427 @@
  "fighter": "docfrank",
  "display": "DOC FRANK",
  "tekken_base": "Bosconovitch",
- "t3_source": "gunjack",
- "proxy": true,
- "proxy_note": "Bosconovitch has no T3 bank - Gun Jack proxy",
+ "t3_source": "bosconovitch",
+ "proxy": false,
+ "proxy_note": "REAL Dr. Bosconovitch moveset - Tekken Wiki Tekken 3 movelist (complete T3 command list), not the old Gun Jack proxy. Old proxy moves preserved under legacy_proxy_moves.",
+ "canon_note": "Plus 5 Dr. Gero-inspired ORIGINAL moves (Energy Absorption, Eye Laser Beam, Rocket Punch, Afterimage, Ki Blast), labeled canon:'gero-inspired', per owner 2026-10-19.",
  "variant": 2,
  "moves": {
+  "f,f+4": {
+   "name": "Whippersnapper",
+   "input": "f,f+4",
+   "t3_source": "bosconovitch",
+   "t3_command": "f, f+4",
+   "t3_damage": [
+    15,
+    18
+   ],
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 20,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:whippersnapper",
+   "input_slots": [
+    "f,f+4"
+   ],
+   "move_class": "throw",
+   "multi_hit": {
+    "hits": [
+     9,
+     11
+    ],
+    "total": 20
+   },
+   "note": "Two-part dash throw; escapable throw, front",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true
+  },
+  "ground_f,f_b+1+2": {
+   "name": "Stonehead",
+   "input": "on ground f,f (or b,b), b+1+2",
+   "t3_source": "bosconovitch",
+   "t3_command": "f, f (or b, b), b+1+2 (grounded)",
+   "t3_damage": 33,
+   "startup": 0.2,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 20,
+   "limb": "head",
+   "heavy": true,
+   "knock": 7.0,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:stonehead",
+   "input_slots": [
+    "on ground f,f (or b,b), b+1+2"
+   ],
+   "move_class": "throw",
+   "note": "Ground headbutt; escapes with 1+2",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true
+  },
+  "1+2": {
+   "name": "Parry",
+   "input": "1+2",
+   "t3_source": "bosconovitch",
+   "t3_command": "1+2",
+   "t3_damage": null,
+   "startup": 0.1,
+   "active": 0.3,
+   "recovery": 0.35,
+   "damage": 0,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:parry",
+   "input_slots": [
+    "1+2"
+   ],
+   "move_class": "parry",
+   "note": "Parry stance; chains into Rolling Powerbomb (3+4) and Irish Whip (1+2)"
+  },
+  "1+2_parry_3+4": {
+   "name": "Rolling Powerbomb",
+   "input": "1+2 (parry), 3+4",
+   "t3_source": "bosconovitch",
+   "t3_command": "1+2 (parry), 3+4",
+   "t3_damage": 37,
+   "startup": 0.2,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 22,
+   "limb": "both",
+   "heavy": true,
+   "knock": 7.0,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:rolling_powerbomb",
+   "input_slots": [
+    "1+2 (parry), 3+4"
+   ],
+   "move_class": "throw",
+   "note": "Crouching throw from parry",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true
+  },
+  "1+2_parry_1+2": {
+   "name": "Irish Whip",
+   "input": "1+2 (parry), 1+2",
+   "t3_source": "bosconovitch",
+   "t3_command": "1+2 (parry), 1+2",
+   "t3_damage": 10,
+   "startup": 0.2,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 6,
+   "limb": "both",
+   "heavy": false,
+   "knock": 6.5,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:irish_whip",
+   "input_slots": [
+    "1+2 (parry), 1+2"
+   ],
+   "move_class": "throw",
+   "note": "Front throw from parry; escape 1+2; chains into Elbow Drop line",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true
+  },
+  "d+1+2": {
+   "name": "Lower Dodge",
+   "input": "d+1+2",
+   "t3_source": "bosconovitch",
+   "t3_command": "d+1+2",
+   "t3_damage": null,
+   "startup": 0.1,
+   "active": 0.3,
+   "recovery": 0.35,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:lower_dodge",
+   "input_slots": [
+    "d+1+2"
+   ],
+   "move_class": "parry",
+   "note": "Low parry dodge"
+  },
+  "badstomach_1+2_a": {
+   "name": "Arm Takedown",
+   "input": "during Bad Stomach, 1+2",
+   "t3_source": "bosconovitch",
+   "t3_command": "Bad Stomach 1+2",
+   "t3_damage": 45,
+   "startup": 0.2,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 27,
+   "limb": "both",
+   "heavy": true,
+   "knock": 7.0,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:arm_takedown",
+   "input_slots": [
+    "during Bad Stomach, 1+2"
+   ],
+   "move_class": "throw",
+   "note": "Bad Stomach chain throw; left escape 1",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true
+  },
+  "badstomach_1+2_t": {
+   "name": "Trip Up",
+   "input": "during Bad Stomach, 1+2",
+   "t3_source": "bosconovitch",
+   "t3_command": "Bad Stomach 1+2",
+   "t3_damage": 40,
+   "startup": 0.2,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 24,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 7.0,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:trip_up",
+   "input_slots": [
+    "during Bad Stomach, 1+2"
+   ],
+   "move_class": "throw",
+   "note": "Bad Stomach chain throw; right escape 2",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true
+  },
+  "badstomach_1+2_d": {
+   "name": "Atomic Drop",
+   "input": "during Bad Stomach, 1+2",
+   "t3_source": "bosconovitch",
+   "t3_command": "Bad Stomach 1+2",
+   "t3_damage": 60,
+   "startup": 0.2,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 36,
+   "limb": "both",
+   "heavy": true,
+   "knock": 8.0,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:atomic_drop",
+   "input_slots": [
+    "during Bad Stomach, 1+2"
+   ],
+   "move_class": "throw",
+   "note": "Bad Stomach chain throw, back variant; heaviest Doc throw",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true
+  },
+  "1,2": {
+   "name": "Doc's One-Two",
+   "input": "1,2",
+   "t3_source": "bosconovitch",
+   "t3_command": "1, 2",
+   "t3_damage": [
+    4,
+    10
+   ],
+   "startup": 0.1,
+   "active": 0.017,
+   "recovery": 0.35,
+   "damage": 8,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:docs_one-two",
+   "input_slots": [
+    "1",
+    "1,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     2,
+     6
+    ],
+    "total": 8
+   }
+  },
+  "2~1": {
+   "name": "Anxiety Attack",
+   "input": "[2~1]",
+   "t3_source": "bosconovitch",
+   "t3_command": "2~1",
+   "t3_damage": null,
+   "startup": 0.1,
+   "active": 0.017,
+   "recovery": 0.35,
+   "damage": 0,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:anxiety_attack",
+   "input_slots": [
+    "[2~1]"
+   ],
+   "move_class": "special",
+   "note": "Anxiety slide combo from wiki T3 movelist"
+  },
+  "3,4": {
+   "name": "Low Spin Kick - Shin Kick",
+   "input": "3,4",
+   "t3_source": "bosconovitch",
+   "t3_command": "3, 4",
+   "t3_damage": [
+    12,
+    7
+   ],
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 11,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:low_spin_kick_-_shin_kick",
+   "input_slots": [
+    "3",
+    "3,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     7,
+     4
+    ],
+    "total": 11
+   },
+   "note": "Low, low"
+  },
+  "3+4_charge": {
+   "name": "Panik Charge",
+   "input": "3+4",
+   "t3_source": "bosconovitch",
+   "t3_command": "3+4",
+   "t3_damage": null,
+   "startup": 0.1,
+   "active": 0.3,
+   "recovery": 0.3,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:panik_charge",
+   "input_slots": [
+    "3+4"
+   ],
+   "move_class": "special",
+   "note": "Stance: leads to Stagger Old Fist / Panik Old Fist Chain / Shadow Run"
+  },
+  "pc_u/f+1": {
+   "name": "Stagger Old Fist",
+   "input": "during Panik Charge, u/f+1",
+   "t3_source": "bosconovitch",
+   "t3_command": "Panik Charge u/f+1",
+   "t3_damage": 25,
+   "startup": 0.283,
+   "active": 0.05,
+   "recovery": 0.7,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:stagger_old_fist",
+   "input_slots": [
+    "during Panik Charge, u/f+1"
+   ],
+   "move_class": "strike",
+   "note": "Mid, from Panik Charge"
+  },
+  "pc_u/f+1,3,3,3,3": {
+   "name": "Panik Old Fist Chain",
+   "input": "during Panik Charge, u/f+1, 3, 3, 3, 3",
+   "t3_source": "bosconovitch",
+   "t3_command": "Panik Charge u/f+1, 3, 3, 3, 3",
+   "t3_damage": [
+    25,
+    20,
+    10,
+    10,
+    10
+   ],
+   "startup": 0.283,
+   "active": 0.05,
+   "recovery": 0.7,
+   "damage": 45,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:panik_old_fist_chain",
+   "input_slots": [
+    "during Panik Charge, u/f+1, 3, 3, 3, 3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     12,
+     6,
+     6,
+     6
+    ],
+    "total": 45
+   },
+   "note": "All mid"
+  },
+  "pc_shadow": {
+   "name": "Shadow Run",
+   "input": "during Panik Charge, ~B",
+   "t3_source": "bosconovitch",
+   "t3_command": "Panik Charge ~B",
+   "t3_damage": null,
+   "startup": 0.1,
+   "active": 0.3,
+   "recovery": 0.3,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:shadow_run",
+   "input_slots": [
+    "during Panik Charge, ~B"
+   ],
+   "move_class": "special",
+   "note": "Transition from Panik Charge into Shadow Legs"
+  },
+  "sl_3": {
+   "name": "Overhead Crescent",
+   "input": "during Shadow Legs, 3",
+   "t3_source": "bosconovitch",
+   "t3_command": "Shadow Legs 3",
+   "t3_damage": 28,
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.65,
+   "damage": 17,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:overhead_crescent",
+   "input_slots": [
+    "during Shadow Legs, 3"
+   ],
+   "move_class": "strike",
+   "note": "High"
+  },
+  "sl_4": {
+   "name": "Disgrace Kick",
+   "input": "during Shadow Legs, 4",
+   "t3_source": "bosconovitch",
+   "t3_command": "Shadow Legs 4",
+   "t3_damage": 21,
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.65,
+   "damage": 13,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:disgrace_kick",
+   "input_slots": [
+    "during Shadow Legs, 4"
+   ],
+   "move_class": "strike",
+   "note": "High, guard break property",
+   "guard_break": true
+  },
+  "1+4": {
+   "name": "Bad Stomach",
+   "input": "1+4",
+   "t3_source": "bosconovitch",
+   "t3_command": "1+4",
+   "t3_damage": null,
+   "startup": 0.1,
+   "active": 0.3,
+   "recovery": 0.3,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:bad_stomach",
+   "input_slots": [
+    "1+4"
+   ],
+   "move_class": "special",
+   "note": "Stance: leads to Arm Takedown / Trip Up / Atomic Drop"
+  },
+  "iw_2,2,1+2": {
+   "name": "Elbow Drop",
+   "input": "during Irish Whip 2, 2, 1+2",
+   "t3_source": "bosconovitch",
+   "t3_command": "Irish Whip 2, 2, 1+2",
+   "t3_damage": 21,
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.65,
+   "damage": 13,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:elbow_drop",
+   "input_slots": [
+    "during Irish Whip 2, 2, 1+2"
+   ],
+   "move_class": "strike",
+   "note": "Face-buster property from throw chain",
+   "face_buster": true
+  },
+  "ed_1+4": {
+   "name": "King Step",
+   "input": "during Elbow Drop 1+4",
+   "t3_source": "bosconovitch",
+   "t3_command": "Elbow Drop 1+4",
+   "t3_damage": null,
+   "startup": 0.1,
+   "active": 0.3,
+   "recovery": 0.3,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:king_step",
+   "input_slots": [
+    "during Elbow Drop 1+4"
+   ],
+   "move_class": "special",
+   "note": "Transition after Elbow Drop"
+  },
+  "ks_2,1,3,4": {
+   "name": "Running Bulldog",
+   "input": "during King Step 2, 1, 3, 4",
+   "t3_source": "bosconovitch",
+   "t3_command": "King Step 2, 1, 3, 4",
+   "t3_damage": 38,
+   "startup": 0.2,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 23,
+   "limb": "both",
+   "heavy": true,
+   "knock": 7.0,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:running_bulldog",
+   "input_slots": [
+    "during King Step 2, 1, 3, 4"
+   ],
+   "move_class": "throw",
+   "note": "Throw-chain finisher; face-buster",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "face_buster": true
+  },
+  "ed_1+2": {
+   "name": "Cartwheel",
+   "input": "during Elbow Drop 1+2",
+   "t3_source": "bosconovitch",
+   "t3_command": "Elbow Drop 1+2",
+   "t3_damage": null,
+   "startup": 0.1,
+   "active": 0.3,
+   "recovery": 0.3,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:cartwheel",
+   "input_slots": [
+    "during Elbow Drop 1+2"
+   ],
+   "move_class": "special",
+   "note": "Sidestep transition; cancel point"
+  },
+  "cw_3+4": {
+   "name": "Taunt Doc - Panik Charge",
+   "input": "during Cartwheel 3+4",
+   "t3_source": "bosconovitch",
+   "t3_command": "Cartwheel 3+4",
+   "t3_damage": null,
+   "startup": 0.2,
+   "active": 0.5,
+   "recovery": 0.4,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:taunt_doc_-_panik_charge",
+   "input_slots": [
+    "during Cartwheel 3+4"
+   ],
+   "move_class": "special",
+   "note": "Taunt into Panik Charge"
+  },
+  "sr_1+2": {
+   "name": "Shoulder Ram",
+   "input": "during Shoulder Ram 1+2",
+   "t3_source": "bosconovitch",
+   "t3_command": "Shoulder Ram 1+2",
+   "t3_damage": 50,
+   "startup": 0.283,
+   "active": 0.05,
+   "recovery": 0.7,
+   "damage": 30,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:shoulder_ram",
+   "input_slots": [
+    "during Shoulder Ram 1+2"
+   ],
+   "move_class": "strike",
+   "note": "Face-buster property",
+   "face_buster": true
+  },
+  "ed_3+4": {
+   "name": "Running Head Dive",
+   "input": "during Elbow Drop 3+4",
+   "t3_source": "bosconovitch",
+   "t3_command": "Elbow Drop 3+4",
+   "t3_damage": 10,
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 6,
+   "limb": "head",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:running_head_dive",
+   "input_slots": [
+    "during Elbow Drop 3+4"
+   ],
+   "move_class": "strike",
+   "note": "Face-buster property",
+   "face_buster": true
+  },
+  "f+4": {
+   "name": "Right Kick",
+   "input": "f+4",
+   "t3_source": "bosconovitch",
+   "t3_command": "f+4",
+   "t3_damage": 10,
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 6,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:right_kick",
+   "input_slots": [
+    "f+4"
+   ],
+   "move_class": "strike",
+   "note": "Low"
+  },
+  "f+3+4": {
+   "name": "Trip Slide",
+   "input": "f+3+4",
+   "t3_source": "bosconovitch",
+   "t3_command": "f+3+4",
+   "t3_damage": 17,
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 10,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:trip_slide",
+   "input_slots": [
+    "f+3+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; also 3+4 / Hop Up d+3+4 variants"
+  },
+  "d/f+1,2": {
+   "name": "Twin Pistons",
+   "input": "d/f+1, 2",
+   "t3_source": "bosconovitch",
+   "t3_command": "d/f+1, 2",
+   "t3_damage": [
+    8,
+    21
+   ],
+   "startup": 0.133,
+   "active": 0.017,
+   "recovery": 0.45,
+   "damage": 18,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:twin_pistons",
+   "input_slots": [
+    "d/f+1",
+    "d/f+1,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     13
+    ],
+    "total": 18
+   },
+   "note": "Mid, mid; juggle-capable"
+  },
+  "d+4": {
+   "name": "Slicer",
+   "input": "d+4",
+   "t3_source": "bosconovitch",
+   "t3_command": "d+4",
+   "t3_damage": 10,
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 6,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:slicer",
+   "input_slots": [
+    "d+4"
+   ],
+   "move_class": "strike",
+   "note": "Low"
+  },
+  "d+3+4": {
+   "name": "Meditation",
+   "input": "d+3+4",
+   "t3_source": "bosconovitch",
+   "t3_command": "d+3+4",
+   "t3_damage": null,
+   "startup": 0.1,
+   "active": 0.3,
+   "recovery": 0.3,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:meditation",
+   "input_slots": [
+    "d+3+4"
+   ],
+   "move_class": "special",
+   "note": "Stance: leads to Doc Mobile"
+  },
+  "med_3": {
+   "name": "Doc Mobile",
+   "input": "during Meditation, 3 (or 4)",
+   "t3_source": "bosconovitch",
+   "t3_command": "Meditation 3 (or 4)",
+   "t3_damage": null,
+   "startup": 0.1,
+   "active": 0.3,
+   "recovery": 0.3,
+   "damage": 0,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:doc_mobile",
+   "input_slots": [
+    "during Meditation, 3 (or 4)"
+   ],
+   "move_class": "special",
+   "note": "Hopping movement stance"
+  },
+  "d/b+3,4,3,4,3,4": {
+   "name": "Dancin' Doc",
+   "input": "D/B+3, 4, 3, 4, 3, 4",
+   "t3_source": "bosconovitch",
+   "t3_command": "D/B+3, 4, 3, 4, 3, 4",
+   "t3_damage": [
+    15,
+    12,
+    10,
+    12,
+    12,
+    12
+   ],
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.65,
+   "damage": 43,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:dancin_doc",
+   "input_slots": [
+    "D/B+3, 4, 3, 4, 3, 4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     9,
+     7,
+     6,
+     7,
+     7,
+     7
+    ],
+    "total": 43
+   },
+   "note": "All low; long low chain"
+  },
+  "b+3+4": {
+   "name": "Back Protoplast",
+   "input": "b+3+4",
+   "t3_source": "bosconovitch",
+   "t3_command": "b+3+4",
+   "t3_damage": null,
+   "startup": 0.1,
+   "active": 0.3,
+   "recovery": 0.3,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:back_protoplast",
+   "input_slots": [
+    "b+3+4"
+   ],
+   "move_class": "special",
+   "note": "Stance: leads to Shadow Run / Shadow Run Kick L / R"
+  },
+  "bt_1+2": {
+   "name": "Back Off!",
+   "input": "back to opponent, 1+2",
+   "t3_source": "bosconovitch",
+   "t3_command": "BT 1+2",
+   "t3_damage": 25,
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.45,
+   "damage": 15,
+   "limb": "both",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:back_off!",
+   "input_slots": [
+    "back to opponent, 1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid, back-turned"
+  },
+  "bp_3": {
+   "name": "Shadow Run Kick L",
+   "input": "during Back Protoplast, 3",
+   "t3_source": "bosconovitch",
+   "t3_command": "Back Protoplast 3",
+   "t3_damage": 25,
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:shadow_run_kick_l",
+   "input_slots": [
+    "during Back Protoplast, 3"
+   ],
+   "move_class": "strike",
+   "note": "Mid"
+  },
+  "bp_4": {
+   "name": "Shadow Run Kick R",
+   "input": "during Back Protoplast, 4",
+   "t3_source": "bosconovitch",
+   "t3_command": "Back Protoplast 4",
+   "t3_damage": 21,
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 13,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:shadow_run_kick_r",
+   "input_slots": [
+    "during Back Protoplast, 4"
+   ],
+   "move_class": "strike",
+   "note": "High, juggle-capable"
+  },
+  "bt_f,f": {
+   "name": "Back Turned Dash",
+   "input": "back to opponent, f, f",
+   "t3_source": "bosconovitch",
+   "t3_command": "BT f, f",
+   "t3_damage": null,
+   "startup": 0.1,
+   "active": 0.3,
+   "recovery": 0.3,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:back_turned_dash",
+   "input_slots": [
+    "back to opponent, f, f"
+   ],
+   "move_class": "special",
+   "note": "Back-turned dash"
+  },
+  "bt_f,f+1": {
+   "name": "Dragon Back Blow",
+   "input": "back to opponent, f, f+1",
+   "t3_source": "bosconovitch",
+   "t3_command": "BT f, f+1",
+   "t3_damage": 15,
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 9,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:dragon_back_blow",
+   "input_slots": [
+    "back to opponent, f, f+1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; ob property"
+  },
+  "ground_1,2": {
+   "name": "Turn Over",
+   "input": "while on ground, 1 or 2",
+   "t3_source": "bosconovitch",
+   "t3_command": "ground 1 or 2",
+   "t3_damage": null,
+   "startup": 0.1,
+   "active": 0.3,
+   "recovery": 0.3,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:turn_over",
+   "input_slots": [
+    "while on ground, 1 or 2"
+   ],
+   "move_class": "special",
+   "note": "Ground orientation swap"
+  },
+  "bk_3": {
+   "name": "Low Kick Rise",
+   "input": "while on back, feet towards opponent, 3",
+   "t3_source": "bosconovitch",
+   "t3_command": "on back 3",
+   "t3_damage": 7,
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 4,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:low_kick_rise",
+   "input_slots": [
+    "while on back, feet towards opponent, 3"
+   ],
+   "move_class": "strike",
+   "note": "Low"
+  },
+  "bk_4": {
+   "name": "Mid Kick Rise",
+   "input": "while on back, feet towards opponent, 4",
+   "t3_source": "bosconovitch",
+   "t3_command": "on back 4",
+   "t3_damage": 10,
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 6,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:mid_kick_rise",
+   "input_slots": [
+    "while on back, feet towards opponent, 4"
+   ],
+   "move_class": "strike",
+   "note": "Mid"
+  },
+  "3+4_ts": {
+   "name": "Trip Slide",
+   "input": "3+4",
+   "t3_source": "bosconovitch",
+   "t3_command": "3+4",
+   "t3_damage": 15,
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 9,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:trip_slide",
+   "input_slots": [
+    "3+4"
+   ],
+   "move_class": "strike",
+   "note": "Low variant"
+  },
+  "roll_u,d": {
+   "name": "Roll Over",
+   "input": "u or d",
+   "t3_source": "bosconovitch",
+   "t3_command": "u or d",
+   "t3_damage": null,
+   "startup": 0.1,
+   "active": 0.3,
+   "recovery": 0.3,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:roll_over",
+   "input_slots": [
+    "u or d"
+   ],
+   "move_class": "special",
+   "note": "Ground roll direction"
+  },
+  "roll_f": {
+   "name": "Forward Roll",
+   "input": "f",
+   "t3_source": "bosconovitch",
+   "t3_command": "f",
+   "t3_damage": null,
+   "startup": 0.1,
+   "active": 0.3,
+   "recovery": 0.3,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:forward_roll",
+   "input_slots": [
+    "f"
+   ],
+   "move_class": "special",
+   "note": "Forward roll; chains into Head Dive / Mind Warp"
+  },
+  "fr_f+1+2": {
+   "name": "Head Dive",
+   "input": "during Forward Roll, f+1+2",
+   "t3_source": "bosconovitch",
+   "t3_command": "Forward Roll f+1+2",
+   "t3_damage": 15,
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 9,
+   "limb": "head",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:head_dive",
+   "input_slots": [
+    "during Forward Roll, f+1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid, guard break property",
+   "guard_break": true
+  },
+  "hd_b+1+2": {
+   "name": "Mind Warp",
+   "input": "during Head Dive, b+1+2",
+   "t3_source": "bosconovitch",
+   "t3_command": "Head Dive b+1+2",
+   "t3_damage": 25,
+   "startup": 0.283,
+   "active": 0.05,
+   "recovery": 0.7,
+   "damage": 15,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:mind_warp",
+   "input_slots": [
+    "during Head Dive, b+1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid follow-up"
+  },
+  "roll_b": {
+   "name": "Backward Roll",
+   "input": "b",
+   "t3_source": "bosconovitch",
+   "t3_command": "b",
+   "t3_damage": null,
+   "startup": 0.1,
+   "active": 0.3,
+   "recovery": 0.3,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:backward_roll",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "special",
+   "note": "Backward roll; chains into Head Dive"
+  },
+  "fd_3": {
+   "name": "Trip Kick Rise",
+   "input": "face down, feet to opponent, 3",
+   "t3_source": "bosconovitch",
+   "t3_command": "face down 3",
+   "t3_damage": 7,
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 4,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:trip_kick_rise",
+   "input_slots": [
+    "face down, feet to opponent, 3"
+   ],
+   "move_class": "strike",
+   "note": "Low, juggle-capable"
+  },
+  "fd_4": {
+   "name": "Spinning Crescent Lunge",
+   "input": "face down, feet to opponent, 4",
+   "t3_source": "bosconovitch",
+   "t3_command": "face down 4",
+   "t3_damage": 18,
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 11,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:spinning_crescent_lunge",
+   "input_slots": [
+    "face down, feet to opponent, 4"
+   ],
+   "move_class": "strike",
+   "note": "Mid"
+  },
+  "b+1+2": {
+   "name": "Brain Drain",
+   "input": "b+1+2",
+   "t3_source": "bosconovitch",
+   "t3_command": "b+1+2",
+   "t3_damage": [
+    10,
+    10,
+    10,
+    10
+   ],
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.45,
+   "damage": 24,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:brain_drain",
+   "input_slots": [
+    "b+1+2"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     6,
+     6,
+     6,
+     6
+    ],
+    "total": 24
+   },
+   "note": "Unblockable brain-tickler mash, 10xN",
+   "mash": true,
+   "unblockable": true
+  },
+  "b+3+4,U": {
+   "name": "Escapism Bomb",
+   "input": "b+3+4, U",
+   "t3_source": "bosconovitch",
+   "t3_command": "b+3+4, U",
+   "t3_damage": 48,
+   "startup": 0.283,
+   "active": 0.05,
+   "recovery": 0.7,
+   "damage": 29,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:escapism_bomb",
+   "input_slots": [
+    "b+3+4, U"
+   ],
+   "move_class": "special",
+   "note": "Unblockable explosive escape; Doc's big unblockable"
+  },
+  "b+1+4": {
+   "name": "Guard Breaker",
+   "input": "b+1+4",
+   "t3_source": "bosconovitch",
+   "t3_command": "b+1+4",
+   "t3_damage": null,
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.45,
+   "damage": 0,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 0.0,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:guard_breaker",
+   "input_slots": [
+    "b+1+4"
+   ],
+   "move_class": "special",
+   "note": "Guard break stance move"
+  },
+  "u/f+1": {
+   "name": "Senior Fist",
+   "input": "u/f+1",
+   "t3_source": "bosconovitch",
+   "t3_command": "u/f+1",
+   "t3_damage": 25,
+   "startup": 0.283,
+   "active": 0.05,
+   "recovery": 0.7,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:senior_fist",
+   "input_slots": [
+    "u/f+1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; also Stagger Old Fist in Panik Charge"
+  },
+  "u/f+2": {
+   "name": "Wisdom Fist",
+   "input": "u/f+2",
+   "t3_source": "bosconovitch",
+   "t3_command": "u/f+2",
+   "t3_damage": 15,
+   "startup": 0.1,
+   "active": 0.017,
+   "recovery": 0.35,
+   "damage": 9,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:wisdom_fist",
+   "input_slots": [
+    "u/f+2"
+   ],
+   "move_class": "strike",
+   "note": "High, juggle-capable"
+  },
+  "f,f+1": {
+   "name": "Panik Jab",
+   "input": "f, f+1",
+   "t3_source": "bosconovitch",
+   "t3_command": "f, f+1",
+   "t3_damage": 13,
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 8,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:panik_jab",
+   "input_slots": [
+    "f, f+1"
+   ],
+   "move_class": "strike",
+   "note": "Mid, mSc property"
+  },
+  "1+2_pd": {
+   "name": "Panic Doctor",
+   "input": "1+2",
+   "t3_source": "bosconovitch",
+   "t3_command": "1+2",
+   "t3_damage": null,
+   "startup": 0.1,
+   "active": 0.3,
+   "recovery": 0.3,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:panic_doctor",
+   "input_slots": [
+    "1+2"
+   ],
+   "move_class": "special",
+   "note": "Panic stance variant; chains to The Zen",
+   "stance_variant_of": "parry_1+2"
+  },
+  "3+4_ff": {
+   "name": "Flip Flop",
+   "input": "3+4",
+   "t3_source": "bosconovitch",
+   "t3_command": "3+4",
+   "t3_damage": 25,
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.65,
+   "damage": 15,
+   "limb": "both",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:flip_flop",
+   "input_slots": [
+    "3+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; Doc's flipping somersault"
+  },
+  "cancel_u/f,f,d/f": {
+   "name": "Fall Back Cancel",
+   "input": "u/f or f or d/f",
+   "t3_source": "bosconovitch",
+   "t3_command": "u/f or f or d/f",
+   "t3_damage": null,
+   "startup": 0.1,
+   "active": 0.3,
+   "recovery": 0.3,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:fall_back_cancel",
+   "input_slots": [
+    "u/f or f or d/f"
+   ],
+   "move_class": "special",
+   "note": "Cancel"
+  },
+  "cancel_d,2": {
+   "name": "Fast Fall Back",
+   "input": "d or 2",
+   "t3_source": "bosconovitch",
+   "t3_command": "d or 2",
+   "t3_damage": null,
+   "startup": 0.1,
+   "active": 0.3,
+   "recovery": 0.3,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:fast_fall_back",
+   "input_slots": [
+    "d or 2"
+   ],
+   "move_class": "special",
+   "note": "Fast fall-back cancel"
+  },
+  "u_bounce": {
+   "name": "Doctor Bounce",
+   "input": "u",
+   "t3_source": "bosconovitch",
+   "t3_command": "u",
+   "t3_damage": 27,
+   "startup": 0.283,
+   "active": 0.05,
+   "recovery": 0.7,
+   "damage": 16,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:doctor_bounce",
+   "input_slots": [
+    "u"
+   ],
+   "move_class": "strike",
+   "note": "Mid; spring-bounce launch"
+  },
+  "f,f+1,4,3,2,1": {
+   "name": "Gene Bank Combo",
+   "input": "f, f+1, 4, 3, 2, 1",
+   "t3_source": "bosconovitch",
+   "t3_command": "f, f+1, 4, 3, 2, 1",
+   "t3_damage": [
+    13,
+    8,
+    10,
+    12,
+    13
+   ],
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 34,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:gene_bank_combo",
+   "input_slots": [
+    "f,f+1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     8,
+     5,
+     6,
+     7,
+     8
+    ],
+    "total": 34
+   },
+   "note": "Mid, low, low, mid, mid; FS property"
+  },
+  "f,f+1,4,3,3,3,2,1": {
+   "name": "Panik Jam Combo",
+   "input": "f, f+1, 4, 3, 3, 3, 2, 1",
+   "t3_source": "bosconovitch",
+   "t3_command": "f, f+1, 4, 3, 3, 3, 2, 1",
+   "t3_damage": [
+    13,
+    8,
+    10,
+    10,
+    7,
+    12,
+    13
+   ],
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 44,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:panik_jam_combo",
+   "input_slots": [
+    "f,f+1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     8,
+     5,
+     6,
+     6,
+     4,
+     7,
+     8
+    ],
+    "total": 44
+   },
+   "note": "Mid, low, low, low, low, mid, mid; FS property"
+  },
+  "f,f+2": {
+   "name": "Stomach Ache",
+   "input": "f, f+2",
+   "t3_source": "bosconovitch",
+   "t3_command": "f, f+2",
+   "t3_damage": 20,
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 12,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:stomach_ache",
+   "input_slots": [
+    "f, f+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; counter-stun property (CSc)",
+   "counter_stun": true
+  },
+  "f,f+2_gj_N": {
+   "name": "Dark Greeting Reversal",
+   "input": "f, f+2 (against Gun Jack only in counterattack), N",
+   "t3_source": "bosconovitch",
+   "t3_command": "f, f+2 CH vs Gun Jack, N",
+   "t3_damage": 32,
+   "startup": 0.283,
+   "active": 0.05,
+   "recovery": 0.7,
+   "damage": 19,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:dark_greeting_reversal",
+   "input_slots": [
+    "f, f+2 (against Gun Jack only in counterattack), N"
+   ],
+   "move_class": "special",
+   "note": "Counter-hit only vs Gun Jack; unblockable class",
+   "unblockable": true
+  },
+  "f,f+2_gj_u": {
+   "name": "Remote Control Giga Stomp",
+   "input": "f, f+2 (against Gun Jack only in counterattack), ~ u",
+   "t3_source": "bosconovitch",
+   "t3_command": "f, f+2 CH vs Gun Jack, ~ u",
+   "t3_damage": null,
+   "startup": 0.1,
+   "active": 0.3,
+   "recovery": 0.3,
+   "damage": 0,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 0.0,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:remote_control_giga_stomp",
+   "input_slots": [
+    "f, f+2 (against Gun Jack only in counterattack), ~ u"
+   ],
+   "move_class": "special",
+   "note": "Counter-hit only vs Gun Jack transition"
+  },
+  "f,f+2_gj_d": {
+   "name": "Fall Back",
+   "input": "f, f+2 (against Gun Jack only in counterattack), ~ d",
+   "t3_source": "bosconovitch",
+   "t3_command": "f, f+2 CH vs Gun Jack, ~ d",
+   "t3_damage": null,
+   "startup": 0.1,
+   "active": 0.3,
+   "recovery": 0.3,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:fall_back",
+   "input_slots": [
+    "f, f+2 (against Gun Jack only in counterattack), ~ d"
+   ],
+   "move_class": "special",
+   "note": "Counter-hit only vs Gun Jack fall-back transition"
+  },
+  "f,f+3": {
+   "name": "Leaping Sidekick",
+   "input": "f, f+3",
+   "t3_source": "bosconovitch",
+   "t3_command": "f, f+3",
+   "t3_damage": 30,
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 18,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:leaping_sidekick",
+   "input_slots": [
+    "f, f+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid, guard break property",
+   "guard_break": true
+  },
+  "f,f+1+2": {
+   "name": "Base Stealer",
+   "input": "f, f+1+2",
+   "t3_source": "bosconovitch",
+   "t3_command": "f, f+1+2",
+   "t3_damage": 27,
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 16,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:base_stealer",
+   "input_slots": [
+    "f, f+1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; sliding base-steal"
+  },
+  "f,f+3+4": {
+   "name": "Oops!!!",
+   "input": "f, f+3+4",
+   "t3_source": "bosconovitch",
+   "t3_command": "f, f+3+4",
+   "t3_damage": 30,
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 18,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:oops!!!",
+   "input_slots": [
+    "f, f+3+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; Doc's whoopsie dive"
+  },
+  "f,f,N,2": {
+   "name": "Elbow Rush",
+   "input": "f, f, N, 2",
+   "t3_source": "bosconovitch",
+   "t3_command": "f, f, N, 2",
+   "t3_damage": 8,
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 5,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:elbow_rush",
+   "input_slots": [
+    "f, f, N, 2"
+   ],
+   "move_class": "strike",
+   "note": "Mid"
+  },
+  "f,f,N,2_ch": {
+   "name": "Elbow Warp",
+   "input": "f, f, N, 2 (Counterattack)",
+   "t3_source": "bosconovitch",
+   "t3_command": "f, f, N, 2 CH",
+   "t3_damage": [
+    9,
+    5
+   ],
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 8,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:elbow_warp",
+   "input_slots": [
+    "f, f, N, 2 (Counterattack)"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     5,
+     3
+    ],
+    "total": 8
+   },
+   "note": "Mid; counter variant"
+  },
+  "f,f,N,3": {
+   "name": "Spindoctor",
+   "input": "f, f, N, 3",
+   "t3_source": "bosconovitch",
+   "t3_command": "f, f, N, 3",
+   "t3_damage": 25,
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:spindoctor",
+   "input_slots": [
+    "f, f, N, 3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; spinning doctor"
+  },
+  "ss+2": {
+   "name": "Gut Stun Punch",
+   "input": "SS+2",
+   "t3_source": "bosconovitch",
+   "t3_command": "SS+2",
+   "t3_damage": 18,
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.45,
+   "damage": 11,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:gut_stun_punch",
+   "input_slots": [
+    "SS+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; DSc property",
+   "down_stun": true
+  },
+  "ss+2,1": {
+   "name": "Spinning Old Fist",
+   "input": "SS+2, 1",
+   "t3_source": "bosconovitch",
+   "t3_command": "SS+2, 1",
+   "t3_damage": 25,
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.45,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:spinning_old_fist",
+   "input_slots": [
+    "SS+2",
+    "SS+2,1"
+   ],
+   "move_class": "string",
+   "note": "Mid, mid"
+  },
+  "breath_1,2": {
+   "name": "Doctor Breath",
+   "input": "1 or 2",
+   "t3_source": "bosconovitch",
+   "t3_command": "1 or 2",
+   "t3_damage": 3,
+   "startup": 0.1,
+   "active": 0.017,
+   "recovery": 0.35,
+   "damage": 2,
+   "limb": "both",
+   "heavy": false,
+   "knock": 1.0,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:doctor_breath",
+   "input_slots": [
+    "1 or 2"
+   ],
+   "move_class": "strike",
+   "note": "Unblockable toxic breath puff",
+   "unblockable": true,
+   "chip": true
+  },
+  "bk_3,3": {
+   "name": "Rolling Kicks",
+   "input": "while on back, feet towards opponent, 3, 3",
+   "t3_source": "bosconovitch",
+   "t3_command": "on back 3, 3",
+   "t3_damage": [
+    7,
+    30
+   ],
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 22,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:rolling_kicks",
+   "input_slots": [
+    "while on back, feet towards opponent, 3, 3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     4,
+     18
+    ],
+    "total": 22
+   },
+   "note": "Low, mid"
+  },
+  "bk_4,3,4,3,4": {
+   "name": "Roger Kicks",
+   "input": "while on back, feet towards opponent, 4, 3, 4, 3, 4",
+   "t3_source": "bosconovitch",
+   "t3_command": "on back 4, 3, 4, 3, 4",
+   "t3_damage": [
+    0,
+    10,
+    10,
+    10,
+    17
+   ],
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 28,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:roger_kicks",
+   "input_slots": [
+    "while on back, feet towards opponent, 4, 3, 4, 3, 4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     0,
+     6,
+     6,
+     6,
+     10
+    ],
+    "total": 28
+   },
+   "note": "Mid x4 (first whiffs)"
+  },
+  "bk_4,4,3,4,3,4": {
+   "name": "Trick Thrash Kicks",
+   "input": "while on back, feet towards opponent, 4, 4, 3, 4, 3, 4",
+   "t3_source": "bosconovitch",
+   "t3_command": "on back 4, 4, 3, 4, 3, 4",
+   "t3_damage": [
+    0,
+    0,
+    10,
+    10,
+    10,
+    17
+   ],
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 28,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:trick_thrash_kicks",
+   "input_slots": [
+    "while on back, feet towards opponent, 4, 4, 3, 4, 3, 4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     0,
+     0,
+     6,
+     6,
+     6,
+     10
+    ],
+    "total": 28
+   },
+   "note": "Mid x4 (first two whiff)"
+  },
+  "bk_3+4": {
+   "name": "Hop Up",
+   "input": "while on back, feet towards opponent, 3+4",
+   "t3_source": "bosconovitch",
+   "t3_command": "on back 3+4",
+   "t3_damage": 20,
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.65,
+   "damage": 12,
+   "limb": "both",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:hop_up",
+   "input_slots": [
+    "while on back, feet towards opponent, 3+4"
+   ],
+   "move_class": "special",
+   "note": "Mid; springs up; leads to Knock Down / Stand Up"
+  },
+  "hu_b": {
+   "name": "Knock Down Position",
+   "input": "during Hop Up, b",
+   "t3_source": "bosconovitch",
+   "t3_command": "Hop Up b",
+   "t3_damage": null,
+   "startup": 0.1,
+   "active": 0.3,
+   "recovery": 0.3,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:knock_down_position",
+   "input_slots": [
+    "during Hop Up, b"
+   ],
+   "move_class": "special",
+   "note": "Transition"
+  },
+  "hu_d": {
+   "name": "Stand Up",
+   "input": "during Hop Up, d",
+   "t3_source": "bosconovitch",
+   "t3_command": "Hop Up d",
+   "t3_damage": null,
+   "startup": 0.1,
+   "active": 0.3,
+   "recovery": 0.3,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:stand_up",
+   "input_slots": [
+    "during Hop Up, d"
+   ],
+   "move_class": "special",
+   "note": "Transition to standing"
+  },
+  "hu_d+3+4": {
+   "name": "Trip Slide",
+   "input": "during Hop Up, d+3+4",
+   "t3_source": "bosconovitch",
+   "t3_command": "Hop Up d+3+4",
+   "t3_damage": 15,
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 9,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:trip_slide",
+   "input_slots": [
+    "during Hop Up, d+3+4"
+   ],
+   "move_class": "strike",
+   "note": "Low; Hop Up variant"
+  },
+  "bk_1+2+3+4": {
+   "name": "Grounded Ki Charge",
+   "input": "while on back, 1+2+3+4",
+   "t3_source": "bosconovitch",
+   "t3_command": "on back 1+2+3+4",
+   "t3_damage": null,
+   "startup": 0.2,
+   "active": 0.5,
+   "recovery": 0.4,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:grounded_ki_charge",
+   "input_slots": [
+    "while on back, 1+2+3+4"
+   ],
+   "move_class": "special",
+   "note": "Ki charge while grounded"
+  },
+  "bk_f,b": {
+   "name": "Doctor Scoot",
+   "input": "while on back, f or b",
+   "t3_source": "bosconovitch",
+   "t3_command": "on back f or b",
+   "t3_damage": null,
+   "startup": 0.1,
+   "active": 0.3,
+   "recovery": 0.3,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:doctor_scoot",
+   "input_slots": [
+    "while on back, f or b"
+   ],
+   "move_class": "special",
+   "note": "Ground scoot"
+  },
+  "bk_f,f": {
+   "name": "Forward Doctor Roll",
+   "input": "while on back, f, f",
+   "t3_source": "bosconovitch",
+   "t3_command": "on back f, f",
+   "t3_damage": null,
+   "startup": 0.1,
+   "active": 0.3,
+   "recovery": 0.3,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:forward_doctor_roll",
+   "input_slots": [
+    "while on back, f, f"
+   ],
+   "move_class": "special",
+   "note": "Forward roll; chains into Falling Heel / Head Dive"
+  },
+  "fdr_4": {
+   "name": "Falling Heel",
+   "input": "during Forward Doctor Roll, 4",
+   "t3_source": "bosconovitch",
+   "t3_command": "FDR 4",
+   "t3_damage": 16,
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 10,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:falling_heel",
+   "input_slots": [
+    "during Forward Doctor Roll, 4"
+   ],
+   "move_class": "strike",
+   "note": "Mid"
+  },
+  "bk_b,b": {
+   "name": "Backward Doctor Roll",
+   "input": "while on back, b, b",
+   "t3_source": "bosconovitch",
+   "t3_command": "on back b, b",
+   "t3_damage": null,
+   "startup": 0.1,
+   "active": 0.3,
+   "recovery": 0.3,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:backward_doctor_roll",
+   "input_slots": [
+    "while on back, b, b"
+   ],
+   "move_class": "special",
+   "note": "Backward doctor roll"
+  },
+  "bkhead_3+4": {
+   "name": "Kangaroo Kick",
+   "input": "while on back, head towards opponent, 3+4",
+   "t3_source": "bosconovitch",
+   "t3_command": "on back head-to-opp 3+4",
+   "t3_damage": 21,
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.65,
+   "damage": 13,
+   "limb": "both",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:kangaroo_kick",
+   "input_slots": [
+    "while on back, head towards opponent, 3+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid"
+  },
+  "bkhead_f,f+3+4": {
+   "name": "Rolling Kangaroo Kick",
+   "input": "while on back, head towards opponent, f, f+3+4",
+   "t3_source": "bosconovitch",
+   "t3_command": "on back head-to-opp f, f+3+4",
+   "t3_damage": 25,
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.65,
+   "damage": 15,
+   "limb": "both",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:rolling_kangaroo_kick",
+   "input_slots": [
+    "while on back, head towards opponent, f, f+3+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid"
+  },
+  "10hit": {
+   "name": "Bosconovitch 10 Hit Combo",
+   "input": "3+4, u/f+1, 3, 3, 3, f+3, 3, 3, 3, 3, 3, 4, 4, 4, 3, 3, 3, 3, 3, 2, 1",
+   "t3_source": "bosconovitch",
+   "t3_command": "3+4, u/f+1, 3, 3, 3, f+3, 3, 3, 3, 3, 3, 4, 4, 4, 3, 3, 3, 3, 3, 2, 1",
+   "t3_damage": 102,
+   "startup": 0.283,
+   "active": 0.05,
+   "recovery": 0.7,
+   "damage": 61,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:bosconovitch_10_hit_combo",
+   "input_slots": [
+    "3+4, u/f+1, 3, 3, 3, f+3, 3, 3, 3, 3, 3, 4, 4, 4, 3, 3, 3, 3, 3, 2, 1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits_total": 61
+   },
+   "note": "T3 102 dmg; 21 inputs, hit range mmmmmhmmmlhhhllllmm"
+  },
+  "b,b+1+2": {
+   "name": "Energy Absorption",
+   "input": "b,b+1+2",
+   "t3_source": "original",
+   "canon": "gero-inspired",
+   "t3_command": "b,b+1+2",
+   "startup": 0.2,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 4,
+   "limb": "both",
+   "heavy": true,
+   "knock": 1.0,
+   "soulGain": 11,
+   "anim_ref": "wh:gero:energy_absorption",
+   "input_slots": [
+    "b,b+1+2"
+   ],
+   "move_class": "special",
+   "note": "Gero-inspired ORIGINAL: grabs and drains the opponent's meter (soul/health), converting it into Doc's own charge. Not from Tekken.",
+   "meter_drain": 25,
+   "meter_self_gain": 25,
+   "throw": true,
+   "isGrab": true,
+   "unblockable": true
+  },
+  "d,d/f,f+1+2": {
+   "name": "Eye Laser Beam",
+   "input": "d,d/f,f+1+2",
+   "t3_source": "original",
+   "canon": "gero-inspired",
+   "t3_command": "qcf+1+2",
+   "startup": 0.283,
+   "active": 0.05,
+   "recovery": 0.7,
+   "damage": 18,
+   "limb": "head",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "wh:gero:eye_laser_beam",
+   "input_slots": [
+    "d,d/f,f+1+2"
+   ],
+   "move_class": "special",
+   "note": "Gero-inspired ORIGINAL: eye laser beam, full-screen projectile. Not from Tekken.",
+   "projectile": true,
+   "unblockable": false
+  },
+  "d,d/f,f+1": {
+   "name": "Rocket Punch",
+   "input": "d,d/f,f+1",
+   "t3_source": "original",
+   "canon": "gero-inspired",
+   "t3_command": "qcf+1",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 16,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "wh:gero:rocket_punch",
+   "input_slots": [
+    "d,d/f,f+1"
+   ],
+   "move_class": "special",
+   "note": "Gero-inspired ORIGINAL: detachable rocket punch - fist fires off and returns. Not from Tekken.",
+   "projectile": true
+  },
+  "b,b+3+4": {
+   "name": "Afterimage",
+   "input": "b,b+3+4",
+   "t3_source": "original",
+   "canon": "gero-inspired",
+   "t3_command": "b,b+3+4",
+   "startup": 0.1,
+   "active": 0.3,
+   "recovery": 0.3,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "wh:gero:afterimage",
+   "input_slots": [
+    "b,b+3+4"
+   ],
+   "move_class": "special",
+   "note": "Gero-inspired ORIGINAL: afterimage dodge - Doc vanishes and reappears behind the opponent. Not from Tekken.",
+   "invuln_window": 0.3,
+   "teleport_behind": true
+  },
+  "d/f+1+2": {
+   "name": "Ki Blast",
+   "input": "d/f+1+2",
+   "t3_source": "original",
+   "canon": "gero-inspired",
+   "t3_command": "d/f+1+2",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 14,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "wh:gero:ki_blast",
+   "input_slots": [
+    "d/f+1+2"
+   ],
+   "move_class": "special",
+   "note": "Gero-inspired ORIGINAL: palm ki blast, mid-range energy shot. Not from Tekken.",
+   "projectile": true
+  },
+  "1": {
+   "name": "Doctor Breath",
+   "input": "1",
+   "t3_source": "bosconovitch",
+   "t3_command": "1 or 2",
+   "t3_damage": 3,
+   "startup": 0.1,
+   "active": 0.017,
+   "recovery": 0.35,
+   "damage": 2,
+   "limb": "both",
+   "heavy": false,
+   "knock": 1.0,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:doctor_breath",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "note": "Unblockable toxic breath puff | Game-neutral lookup: T3 '1 or 2' = Doctor Breath.",
+   "unblockable": true,
+   "chip": true
+  },
+  "2": {
+   "name": "Doctor Breath",
+   "input": "2",
+   "t3_source": "bosconovitch",
+   "t3_command": "1 or 2",
+   "t3_damage": 3,
+   "startup": 0.1,
+   "active": 0.017,
+   "recovery": 0.35,
+   "damage": 2,
+   "limb": "both",
+   "heavy": false,
+   "knock": 1.0,
+   "soulGain": 8,
+   "anim_ref": "t3:bosconovitch:doctor_breath",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike",
+   "note": "Unblockable toxic breath puff | Game-neutral lookup: T3 '1 or 2' = Doctor Breath.",
+   "unblockable": true,
+   "chip": true
+  },
+  "3": {
+   "name": "Low Spin Kick - Shin Kick",
+   "input": "3",
+   "t3_source": "bosconovitch",
+   "t3_command": "3, 4",
+   "t3_damage": [
+    12,
+    7
+   ],
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 11,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:low_spin_kick_-_shin_kick",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     7,
+     4
+    ],
+    "total": 11
+   },
+   "note": "Low, low | Game-neutral lookup: 3 from '3,4' (Low Spin Kick)."
+  },
+  "4": {
+   "name": "Shin Kick",
+   "input": "4",
+   "t3_source": "bosconovitch",
+   "t3_command": "3, 4 (second hit)",
+   "t3_damage": 7,
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 4,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:low_spin_kick_-_shin_kick",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     7,
+     4
+    ],
+    "total": 11
+   },
+   "note": "Low, low. | Game-neutral lookup: 4 from '3,4' (Shin Kick)."
+  },
+  "1+3": {
+   "name": "Whippersnapper",
+   "input": "1+3",
+   "t3_source": "bosconovitch",
+   "t3_command": "f, f+4",
+   "t3_damage": [
+    15,
+    18
+   ],
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 20,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:whippersnapper",
+   "input_slots": [
+    "1+3"
+   ],
+   "move_class": "throw",
+   "multi_hit": {
+    "hits": [
+     9,
+     11
+    ],
+    "total": 20
+   },
+   "note": "Two-part dash throw; escapable throw, front | Game-neutral grab lookup: Whippersnapper.",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true
+  },
+  "2+4": {
+   "name": "Rolling Powerbomb",
+   "input": "2+4",
+   "t3_source": "bosconovitch",
+   "t3_command": "1+2 (parry), 3+4",
+   "t3_damage": 37,
+   "startup": 0.2,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 22,
+   "limb": "both",
+   "heavy": true,
+   "knock": 7.0,
+   "soulGain": 11,
+   "anim_ref": "t3:bosconovitch:rolling_powerbomb",
+   "input_slots": [
+    "2+4"
+   ],
+   "move_class": "throw",
+   "note": "Crouching throw from parry | Game-neutral grab lookup: Rolling Powerbomb (T3 is parry->3+4).",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true
+  }
+ },
+ "legacy_proxy_moves": {
   "1": {
    "name": "DOC FRANK 1 (T3 gunjack r45)",
    "input": "1",
@@ -262,24 +2678,44 @@
  "strings": [],
  "specials": [
   {
-   "input": "d,d/f,d,d/f+1+2",
-   "t3_row": 276,
-   "damage": 21,
+   "input": "f,f+4",
+   "damage": 20,
    "throw": true
   },
   {
-   "input": "d/b,n,f+2",
-   "t3_row": 271,
-   "damage": 21,
+   "input": "on ground f,f (or b,b), b+1+2",
+   "damage": 20,
    "throw": true
   },
   {
-   "input": "n,d,d/b+1+3",
-   "t3_row": 269,
-   "damage": 21,
+   "input": "1+2 (parry), 3+4",
+   "damage": 22,
    "throw": true
+  },
+  {
+   "input": "1+2 (parry), 1+2",
+   "damage": 6,
+   "throw": true
+  },
+  {
+   "input": "during Bad Stomach, 1+2 (x3)",
+   "damage": 45,
+   "throw": true
+  },
+  {
+   "input": "b+3+4, U",
+   "damage": 29,
+   "throw": false,
+   "note": "Escapism Bomb unblockable"
+  },
+  {
+   "input": "b,b+1+2",
+   "damage": 4,
+   "throw": true,
+   "canon": "gero-inspired",
+   "note": "Energy Absorption meter drain"
   }
  ],
- "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
+ "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP (x0.6)",
  "schema_version": 2
 }
