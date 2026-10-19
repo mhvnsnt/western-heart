@@ -990,7 +990,7 @@ In the Western Heart, the Gene followed him in — and inside Tong-Nou, the devi
 **Fighting philosophy.** "The blood ends with me."
 
 **Relationships.**
-- **Zafina:** Two cursed bloodlines, mutual recognition. She keeps the seal; he *is* the thing seals are for. They don't spar. They understand each other too well for that.
+- **Mariposa:** Two cursed bloodlines, mutual recognition. She keeps the seal; he *is* the thing seals are for. They don't spar. They understand each other too well for that.
 - **Diablo:** The devil who doesn't hide — Jin's mirror and his warning. Diablo tore his way in to rule; Jin clawed his way in to *end*. Their fights are the trial's exorcisms.
 - **Phantom:** They share a name — his name, the soul's name — and neither will say whether it's coincidence. Phantom's blade is ritual and precise. Jin's devil is neither. The name sits between them like a drawn knife.
 
