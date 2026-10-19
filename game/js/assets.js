@@ -52,6 +52,7 @@ const MODEL_URLS = {
   dio: 'assets/models/dio.glb',
   bruno: 'assets/models/bruno.glb',
   yukihyo: 'assets/models/yukihyo.glb',
+  scimitar: 'assets/models/scimitar.glb',   // Shaheen-based base mesh — NO-GATE: wired as-is, clothing via Creation Suite as an option
   // Created fighters use the Soldier.glb base from the CAW suite.
   // Relative path works on GitHub Pages (game/ -> customization/).
   custom: '../customization/create-fighter/assets/Soldier.glb',

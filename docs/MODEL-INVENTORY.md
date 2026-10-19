@@ -7,7 +7,7 @@ Legend: ✅ WIRED (in `game/assets/models/` or a roster attire slot) · 📦 HAV
 
 ## Summary (as of 2026-10-18)
 
-- **WIRED:** 54 GLBs in `game/assets/models/` + 5 roster slot GLBs (zui attire1/attire2, pantera classic/snow-leopard, awa-pop attire1)
+- **WIRED:** 55 GLBs in `game/assets/models/` (incl. scimitar) + 5 roster slot GLBs (zui attire1/attire2, pantera classic/snow-leopard, awa-pop attire1)
 - **HAVE (not wired):** ~60+ models: Tripo pulls (Vain, Cape Jones sitting), 19 pull-rest GLBs, T7/T3 FBX teardown models, Bass Armstrong, Shaheen, Brad Burns, release archives, wrestling-repo No Mercy GLBs
 
 ---
@@ -89,7 +89,7 @@ Legend: ✅ WIRED (in `game/assets/models/` or a roster attire slot) · 📦 HAV
 | **Bass Armstrong** | DOA5 (GTA SA port) | `~/workspace/bass-hunt/DOA5_Bass_Armstrong_Costume_1.zip` (20MB) | 📦 DFF+TXD — needs conversion | convert DFF→GLB (DOA5 tool / Blender), textures ship in zip |
 | **Shaheen** | T7 SFMLab | `~/workspace/tmp-transient/shaheen/shaheen-t7-sfmlab.zip` | 📦 **NUDE BASE** (SFM mdl + VTF) | dress from its OWN costume textures (cos1/2/3, cape, shmagh, shoes) + Creation Suite parts — see clothing plans below |
 | **Brad Burns** | VF5 PS3 (braitm.farc, 47MB) | release `vf5-local-models-v1` / local | 🔧 cracked (156 files) — model format needs RE | finish RE, then VF5 outfit |
-| **Scimitar (Shaheen alt)** | T7 Shaheen | nude MDL base | 🔧 imports nude | dress via Creation Suite (owner: unblocks it) |
+| **Scimitar (Shaheen alt)** | T7 Shaheen | nude MDL base | ✅ WIRED (`game/assets/models/scimitar.glb`, in MODEL_URLS) | static base mesh, rip pose — auto-rig + clothing via Creation Suite as OPTIONS, never gates (NO-GATE LAW 2026-10-18) |
 
 ### pull-rest GLBs — have, not wired (19)
 
@@ -138,7 +138,7 @@ Nudity/partial nudity does NOT block wiring — models go in as-is. These are th
 | Model | State | Clothing/customization option |
 |---|---|---|
 | **Shaheen** (T7 SFMLab nude MDL) | nude base, clothes textures SHIP in the zip | assemble base outfit from its OWN VTF costumes (T_cos1/2/3 + cape + shmagh + shoes), composite via Creation Suite; full mesh swap path on top |
-| **Scimitar** (Shaheen alt) | nude base | same as Shaheen — Creation Suite clothing pass as an option |
+| **Scimitar** (Shaheen alt) | nude base, now WIRED as static | auto-rig + Creation Suite clothing pass as options, never gates |
 | **sha-body** | baked body, 0 skins/armatures | base outfit from parts library as an option |
 | **Bass Armstrong** (after DFF→GLB) | ships WITH DOA5 costume textures | convert with textures → costume intact |
 | **Brad Burns** (after RE) | VF5 outfit files expected in farc | extract outfit with model |
