@@ -444,6 +444,24 @@ document.querySelectorAll('[data-action]').forEach((el) => {
     else if (a === 'mode-training') {
       modes.startMode('training');
     }
+    else if (a === 'mode-survival') {
+      modes.startMode('survival');
+    }
+    else if (a === 'mode-timeattack') {
+      modes.startMode('timeattack');
+    }
+    else if (a === 'mode-team') {
+      modes.startMode('team');
+    }
+    else if (a === 'mode-qombat') {
+      modes.startMode('qombat');
+    }
+    else if (a === 'mode-surge') {
+      modes.startMode('surge');
+    }
+    else if (a === 'mode-trader') {
+      modes.startMode('trader');
+    }
     else if (a === 'mode-create') {
       // Character creation — launches the Create Fighter CAW suite.
       // Returns to game menu via the BACK TO GAME button in the creator.
@@ -559,7 +577,7 @@ async function startFight(playerId, enemyId, opts = {}) {
   show('hud');
   game.paused = false;
   audio.startMusic();
-  await game.startMatch(player, enemy, selectedStage);
+  await game.startMatch(player, enemy, selectedStage, opts);
   // Control hints: show for 6s at fight start, H toggles
   const hints = document.getElementById('control-hints');
   if (hints) {

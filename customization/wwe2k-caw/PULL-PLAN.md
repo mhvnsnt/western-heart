@@ -1,24 +1,57 @@
-# WWE 2K Pull Plan — CAW Parts (2K14 / 2K19)
+# WWE 2K Parts — Pull Plan
 
-**Lane:** cust-wwe2k-inventory — 2026-10-18
-**Owner confirmation:** WWE 2K19/2K18 pull CONFIRMED 2026-10-18 ~09:26 CDT.
-Target: `pac/edit/` creation-suite data — slot 256 Male default CAW, `bbtemplate.pac`,
-`edit.pac`, `default.pac` (per `customization/wwe2k-caw/PARTS-CATALOG.md`).
+Owner CONFIRMED 2026-10-18 ~09:26 CDT: pull WWE 2K19 or 2K18 for the
+creation-suite research — target the customization/creation-suite data
+specifically. Standing CAW exception: the WWE 2K creation system goes into
+WESTERN HEART.
 
-## 1. Status as of 2026-10-18
+## Status (2026-10-18)
 
-| Item | Status |
-|------|--------|
-| WWE 2K14 full game (ISO/disc) | **NOT on disk.** `PARTS-CATALOG.md` said "downloading (extraction pending)" — a full disk search on 2026-10-18 found NO ISO, NO partial download, NO staging dir. Only 2K14 artifacts anywhere: the 2K14 DLC zip already on GitHub (see below) and a DLC catalog doc. If a 2K14 download was started by another lane, its location is unknown — check with the parent lane before assuming it exists. |
-| WWE 2K19 full game (CSF 50.96GB) | **Not verified on TeraBox.** TeraBox has no read API from this environment (browser-lane only), and subagents cannot run browser tasks. The parent/browser lane must confirm `/WesternHeart/teardowns/wwe2k/` contents. |
-| WWE 2K18 (45.11GB) | Same as 2K19 — needs TeraBox folder listing. |
-| Already secured (no re-pull) | `wwe2k19-entrance-pack.tar.gz` (175,112,192 B) + `wwe2k19-moves-pack.tar.gz` (123,317,410 B) — GitHub release `wwe2k19-animation-packs-v1` on `mhvnsnt/wrestling-game`. `WWE.2K14.DLCS.zip` (44,660,178 B, 12 PS3 DLC unlock PKGs + RAPs) — release `wwe2k14-dlcs-v1` on `mhvnsnt/wrestling-game`. |
+- WWE 2K14: PARTS-CATALOG.md said "downloading (extraction pending)" — **no game
+  files found on disk** (only `game-reverse-engineering/wrestling-games/WWE2K14-DLC-CATALOG.md`).
+- WWE 2K19: was "via TeraBox pipeline" — **not verified on TeraBox** (listing
+  needs a browser lane; subagents cannot operate the live browser).
+- **No `pac/edit/` files anywhere on disk.** The extraction lane is blocked on
+  the game files landing.
 
-## 2. Pull plan (do NOT start on the VM — disk is 84%)
+## Exact targets (from PARTS-CATALOG.md)
 
-**Destination:** TeraBox folder `/WesternHeart/teardowns/wwe2k/` (create if missing).
-Upload in ≤25 MB parts; verify name + byte size in the folder listing before clearing
-staging. Never route through the VM (each game is 33–84 GB; extraction needs 2–3×).
+| Category | Location | Contents |
+|----------|----------|----------|
+| Body templates | `pac/edit/bbtemplate.pac` | Male/female base bodies, morph targets |
+| Default parts | `pac/edit/default.pac` | Starter heads, bodies, attire |
+| Edit parts | `pac/edit/edit.pac` | Full customization part library |
+| Sample parts | `pac/edit/sample.pac` | Preset samples |
+| Head parts | `pac/edit/ch/` | Masks, face accessories, normals |
+| Body parts | `pac/edit/body/` | Torso, limb meshes |
+| CAW metadata | `pac/profile/profile_dat.pac` | Hometown, CAW IDs, slot data |
+
+Reference models: slots 256 (Male default CAW) / 257 (Female default CAW) —
+used in cutscenes, the base bodies to build on.
+
+## Extraction toolchain
+
+1. Get game files (2K19 preferred; 2K14 as fallback): ~51GB. Pull straight to
+   TeraBox per the PULL-STRAIGHT-TO-STORE law — do NOT stage 51GB on local
+   disk (disk at 84%).
+2. Extract `pac/edit/` with 2K modding tools (real tooling, no hand-guesses):
+   the `.pac` format is Yuke's archive — use the community pac extractor used
+   for 2K14/2K19 modding.
+3. Wire parts into `customization/parts/wwe2k/` with MANIFEST entries in the
+   canonical format (see `CUSTOMIZATION-LIBRARY-LAYOUT.md`).
+4. Slots 256/257 bodies → `customization/parts/templates/` as FULL CHARACTER
+   TEMPLATES.
+
+## Blockers
+
+- Disk: 84% — the 51GB game files must go straight to a store, not local disk.
+- TeraBox verification needs a browser lane (parent/main chat delegation).
+- 2K14 download status unknown — check whether it completed anywhere before
+  starting a fresh pull.
+
+---
+
+## Detailed pull batches (cust-wwe2k-inventory lane, 2026-10-18)
 
 **Batch A — already on GitHub, pull straight to TeraBox (no VM disk used):**
 
@@ -49,24 +82,3 @@ Download URLs:
 **2K14 full game:** true PS3/360 2K14 was NOT found on Archive.org as of 2026-10-14
 (the two `wwe-2-k-14*` items there are mislabeled SvR2011 PSP / a PSP mod — do NOT pull).
 2K14 remains "still hunting" — the confirmed path is 2K18/2K19 for now.
-
-## 3. Extraction toolchain (runs AFTER the 7z lands on TeraBox, NOT on this VM)
-
-Requirements: a machine with 200 GB+ free (not this VM — 84% full).
-
-1. `7z x` the game archive.
-2. Yukes PAC unpack — all `.pac` are Yukes PAC containers (same family as WMXIX; the
-   `wrestling-game` lane's existing PAC tooling applies). 2K community modding tools for
-   per-version quirks — real tooling, no guessing.
-3. Targets: `pac/edit/bbtemplate.pac`, `pac/edit/default.pac`, `pac/edit/edit.pac`,
-   `pac/edit/sample.pac`, `pac/edit/ch/`, `pac/edit/body/`,
-   `pac/profile/profile_dat.pac` (per PARTS-CATALOG.md: slots 256/257 = default
-   Male/Female CAW reference models).
-4. Decode meshes + textures → wire into `customization/parts/wwe2k/<slot>/` in the
-   canonical layout (`CUSTOMIZATION-LIBRARY-LAYOUT.md`), one `MANIFEST.json` per part
-   folder, then update `parts/PARTS-INDEX.json` and the count table in PARTS-CATALOG.md.
-
-**Estimated result:** the full 2K19/2K18 CAW part library (100+ hairstyles, layered
-attire per body region, masks, face paint, tattoos) — feeding
-`customization/parts/hair/`, `parts/attire/`, `parts/accessories/`, `parts/decals/`,
-`parts/tattoos/`.

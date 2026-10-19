@@ -1,105 +1,77 @@
 # Customization Library — Canonical Layout
 
-**Version:** 1.0 — 2026-10-18 (cust-wwe2k-inventory lane)
-**Purpose:** the single reference every part lane (Tekken, Def Jam, WWE 2K, open-source,
-owner-owned) follows when wiring a new part into `customization/`. No lane invents its own
-folder scheme.
+Owner directive 2026-10-18: a whole library of pieces/parts/decals — eyes,
+hairstyles, clothes, accessories, character parts, clothing parts, FULL
+CHARACTER TEMPLATES — that created characters can be built on top of.
+WWE/Tekken-style swapping: every variant is saved, nothing is overwritten.
 
-## 1. Directory layout (under `customization/`)
+## Directory layout (under `customization/`)
 
-| Path | Contents |
-|------|----------|
-| `eye-library/` | Universal eye texture options (canonical eye home — see `customization/eye-library/`) |
-| `decal-library/<character>/` | Character-bound decal PNGs composited into that character's UV maps (e.g. `decal-library/pantera/`) |
-| `parts/<source-game>/` | Raw teardown extracts, organized by source game: `wmxix/`, `no-mercy/`, `doa/`, `superhero/`, `tekken/`, `defjam/`, `wwe2k/` (when it lands) |
-| `parts/eyes/` | Eye textures pulled into parts form (mirrors `eye-library/` entries) |
-| `parts/hair/<style>/` | Hair / beard / eyebrow / facial-hair MESH parts (rigged or with rig notes) |
-| `parts/attire/<region>/<style>/` | Clothing pieces. Regions: `upper/`, `lower/`, `full/`, `headwear/`, `handwear/`, `footwear/` |
-| `parts/accessories/<type>/<style>/` | Chains, jewelry, belts, glasses, masks. Types: `chains/`, `jewelry/`, `belts/`, `head/`, `other/` |
-| `parts/decals/<style>/` | Character-agnostic decal sheets / logos (paint/face-paint/tattoo art) |
-| `parts/tattoos/<style>/` | Tattoo sheets (layered, placeable, scalable, rotatable) |
-| `parts/templates/` | FULL CHARACTER TEMPLATES — whole-character base models for created fighters to build on |
-| `parts/base/` | Base bodies / morph references |
-| `wwe2k-caw/` | WWE 2K CAW research, parts catalog, pull plan |
-| `tools/` | Extraction/indexing scripts shared across lanes |
+```
+customization/
+├── eye-library/            # Universal eye options (done — owner's "I like" yellow tiger)
+│   ├── eye-*.png
+│   ├── MANIFEST.json       # entries + character_mappings (universal format)
+│   └── README.md
+├── decal-library/
+│   └── <character>/        # e.g. pantera/ — logos, tights, pants + MANIFEST
+├── parts/
+│   ├── tekken/             # Tekken 7 slot schema + (later) item assets
+│   ├── defjam/             # Def Jam CAW parts (raw + decoded)
+│   ├── wwe2k/              # WWE 2K pac/edit parts (when pulled)
+│   ├── wmxix/              # WMXIX CAW parts (3,479 files, indexed)
+│   ├── no-mercy/           # No Mercy parts (993 files, indexed)
+│   ├── superhero/          # Original superhero pieces (9)
+│   ├── doa/                # DOA parts (4)
+│   ├── base/               # Base body templates (2)
+│   ├── hair/               # Hairstyle parts (CC0 pulls fold in here)
+│   ├── attire/             # Attire/clothing parts
+│   ├── accessories/        # Accessories (glasses, gloves, boots…)
+│   ├── templates/          # FULL CHARACTER TEMPLATES for created characters
+│   └── PARTS-INDEX.json    # master index (see below)
+├── wwe2k-caw/              # WWE 2K research: CAW-SUITE-BREAKDOWN.md, PARTS-CATALOG.md, PULL-PLAN.md
+├── create-fighter/         # Creation Suite web UI
+├── tools/                  # extraction/RE tooling
+└── CUSTOMIZATION-FILES-INDEX.json  # whole-tree file index (existing)
+```
 
-`PARTS-INDEX.json` at `parts/` root is the master machine-readable index over everything above.
+## Naming conventions
 
-## 2. Naming conventions
+- Part files: `<category>-<descriptor>-<variant>.png|.glb` (e.g. `eye-yellow-tiger.png`)
+- Libraries are per-domain (`eye-library/`, `decal-library/<character>/`); `parts/`
+  is per-source-game for bulk extractions.
+- Every library dir carries `MANIFEST.json` + `README.md`, no exceptions.
 
-- **Folder ids:** lowercase, dashes, no spaces, no special chars:
-  `toon-dread-ponytail`, `chain-gold-bannon`, `eye-yellow-tiger`.
-- **Entry ids:** `<type>-<style>-<variant>`:
-  `hair-toon-dread-ponytail`, `accessory-chain-bannon-rigged`.
-- **Part types:** `eye`, `hair`, `beard`, `eyebrows`, `attire-upper`, `attire-lower`,
-  `attire-full`, `headwear`, `handwear`, `footwear`, `accessory`, `decal`, `tattoo`,
-  `template`, `body-morph`.
-- **File names:** descriptive; keep source naming when it carries meaning
-  (`King_Eye_D_yellow_tiger.png`), otherwise `<entry-id>.glb/.png`.
-- **License files:** every open-source folder carries its license text:
-  `LICENSE-<source>.txt` at the folder root.
-
-## 3. MANIFEST format
-
-Every part folder carries a `MANIFEST.json`. Fields follow the universal pattern set by
-`decal-library/pantera/MANIFEST.json` and `eye-library/MANIFEST.json`:
+## MANIFEST entry format
 
 ```json
 {
-  "library": "hair library",
-  "source": "Human-readable provenance: author, site, license, owner directive/date",
-  "created": "2026-10-18",
-  "entries": [
-    {
-      "id": "hair-toon-dread-ponytail",
-      "name": "Toon dread ponytail (tiko479)",
-      "type": "hair",
-      "files": ["Toon Dread Ponytail.glb", "Dreads Multicolored_Bake1_pbr_diffuse.png"],
-      "notes": "Static mesh — must be rigged to the head bone (see universal_format.rigging)"
-    }
-  ],
-  "character_mappings": {
-    "pantera": {
-      "character": "Pantera (Western Heart roster/pantera, King-based)",
-      "bone": "Head",
-      "material": "...",
-      "notes": "..."
-    }
-  },
-  "universal_format": {
-    "description": "...what an entry is and how to drop it onto any character...",
-    "placement_fields": {
-      "character": "character id",
-      "bone": "bone name to attach/rig to",
-      "material": "material name (for texture-swap parts)",
-      "replaces_texture": "texture name in that character's GLB",
-      "rect": "pixel rect to composite into (full replace if omitted)",
-      "notes": "free text"
-    }
-  }
+  "id": "eye-yellow-tiger",
+  "name": "Yellow tiger eye (universal)",
+  "type": "eye",
+  "png": "eye-yellow-tiger.png",
+  "size_px": [128, 128],
+  "notes": "what it is, where it came from",
+  "default_placement": "<placement key, for textures that composite into a rect>",
+  "replaces_texture": "<texture name in target GLB>"
 }
 ```
 
-Rules:
-- `entries[].id` is globally unique across the whole library.
-- `character_mappings` is how a part becomes UNIVERSAL: one part folder, one entry,
-  N character mappings. Add a mapping per character; never duplicate the part files.
-- **Variants are never overwritten.** A new variant = a new entry + a new file.
-  Old entries stay (options stack, WWE/Tekken-style).
+## The universal format (how parts drop onto ANY character)
 
-## 4. Texture-swap parts vs mesh parts
+Texture-swap parts (eyes, decals, face paint, tattoos) are universal by design:
+the part is a standalone PNG; `character_mappings` in the MANIFEST says which
+texture/material/rect it composites into per character. Add a mapping → the
+part works on that character. No geometry changes, no new art.
 
-- **Texture-swap parts** (eyes, decals, some tattoos): square/rect RGBA PNGs; mapping names
-  `replaces_texture` + `material` + `rect`. Follow the eye-library pattern exactly.
-- **Mesh parts** (hair, attire, accessories): GLB/glTF (preferred; embedded textures);
-  mapping names `bone` (attach/rig target) + fit notes. If a part is not yet rigged,
-  the entry `notes` MUST say what rigging it needs (static mesh → rig to head bone, etc.).
+Mesh parts (hair, clothes, accessories) attach at bone sockets with
+position/rotation/scale offsets — Tekken's paradigm (already in PartPoser).
+Each mesh part's MANIFEST entry names its default socket + offsets; the UI can
+reposition or snap back, same as the decal library.
 
-## 5. Workflow for new lanes
+## Master indexes
 
-1. Put files in the right folder per §1 (new source game → `parts/<source-game>/`;
-   new reusable style → `parts/<type>/<style>/`).
-2. Write `MANIFEST.json` per §3. License text in the folder if open-source.
-3. Add entries to `parts/PARTS-INDEX.json` (one record per entry id).
-4. Update this doc only if the layout itself changed.
-5. Worklog entry in `docs/WORKLOG.md`.
+- `customization/parts/PARTS-INDEX.json` — every indexed part: part_id, name,
+  source_game, slot, file_path, size. Bulk extractions (wmxix, no-mercy) live here.
+- `customization/CUSTOMIZATION-FILES-INDEX.json` — whole-tree file index.
+- New libraries get their parts appended to PARTS-INDEX.json.
