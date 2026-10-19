@@ -17,7 +17,8 @@ import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.js';
 const MODEL_URLS = {
   pantera: 'assets/models/pantera.glb',
   'steve-fox': 'assets/models/steve-fox.glb',
-  jin: 'assets/models/jin.glb',
+  // NOTE (owner canon 2026-10-19): Tekken's Jin = DEMONIO — the old `jin:` key was removed;
+  // `demonio: 'assets/models/demonio.glb'` (below) is the canonical model.
   // Per-fighter models wired from teardown extractions + Tripo rescans.
   // Keys match FULL_ROSTER `model` ids in roster-full.js (lane 2).
   demonio: 'assets/models/demonio.glb',
@@ -46,7 +47,7 @@ const MODEL_URLS = {
   baek: 'assets/models/baek.glb',   // NO WH name yet — do not assign
   // Round-2 auto-rig wave (lane B): re-rigged per-fighter variants + Tripo
   // attires, all passing the playable gate (valid glTF, skinned, Hips, 1.5-2.2m).
-  'jin-body': 'assets/models/jin-body.glb',
+  'demonio-body': 'assets/models/demonio-body.glb',
   'kai-body': 'assets/models/kai-body.glb',
   'king-tyrant_alt1': 'assets/models/king-tyrant_alt1.glb',
   'kinpo-t8': 'assets/models/kinpo-t8.glb',
@@ -191,12 +192,12 @@ class AssetManager {
 
   // Preload the base models the moment the select screen opens.
   // Fighters with their own GLB use it; the rest fall back to the
-  // pantera / steve-fox / jin bases (see MODEL-STATUS.md), so warming
+  // pantera / steve-fox / demonio bases (see MODEL-STATUS.md), so warming
   // those bases here means CONFIRM rarely waits on a download.
   // Per-fighter GLBs load on demand when their fight starts —
   // never all at once (TEKKEN 3 LESSON above).
   preloadAll() {
-    for (const id of ['pantera', 'steve-fox', 'jin', 'custom']) this.prefetch(id);
+    for (const id of ['pantera', 'steve-fox', 'demonio', 'custom']) this.prefetch(id);
   }
 
   /* { model, bones, mixer, actions } for one fighter.
