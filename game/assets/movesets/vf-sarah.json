@@ -215,6 +215,46 @@
    "isGrab": true,
    "unblockable": true,
    "note": "Damage estimated."
+  },
+  "S": {
+   "name": "Flamingo's Answer [WH SIGNATURE]",
+   "input": "S",
+   "startup": 0.28,
+   "active": 0.1,
+   "recovery": 0.85,
+   "damage": 18,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 12,
+   "anim_ref": "wh:vf-sarah:sig:flamingos-answer",
+   "input_slots": [
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "The flamingo stance, answered at full speed. Spinning kick with no wasted motion."
+  },
+  "b+K": {
+   "name": "Bryant Intercept [WH SIGNATURE]",
+   "input": "b+K",
+   "startup": 0.23,
+   "active": 0.017,
+   "recovery": 0.72,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "wh:vf-sarah:sig:bryant-intercept",
+   "input_slots": [
+    "b+K",
+    "b",
+    "K"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "She doesn't wait for the punch. A back-step intercepting kick that arrives first."
   }
  },
  "strings": [
