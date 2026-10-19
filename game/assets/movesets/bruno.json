@@ -163,7 +163,8 @@
    "input_slots": [
     "1+3"
    ],
-   "move_class": "throw"
+   "move_class": "throw",
+   "throw_break": "1"
   },
   "2+4": {
    "name": "BRUNO 2+4 throw (T3 bryan r211)",
@@ -188,7 +189,8 @@
    "input_slots": [
     "2+4"
    ],
-   "move_class": "throw"
+   "move_class": "throw",
+   "throw_break": "2"
   },
   "d/f+2": {
    "name": "BRUNO d/f+2 (T3 bryan r149)",
@@ -232,9 +234,9 @@
    ],
    "move_class": "special"
   },
-  "S": {
+  "1+2": {
    "name": "3AM Despair [WH SIGNATURE]",
-   "input": "S",
+   "input": "1+2",
    "startup": 0.32,
    "active": 0.017,
    "recovery": 0.88,
@@ -245,15 +247,16 @@
    "soulGain": 12,
    "anim_ref": "wh:bruno:sig:3am-despair",
    "input_slots": [
-    "S"
+    "1+2"
    ],
    "move_class": "signature",
    "wh_original": true,
-   "note": "The Weeknd's 3AM despair, thrown from the gut. Every hit is personal."
+   "note": "The Weeknd's 3AM despair, thrown from the gut. Every hit is personal.",
+   "input_remapped_from": "S"
   },
-  "P+K": {
+  "1+4": {
    "name": "Lean In [WH SIGNATURE]",
-   "input": "P+K",
+   "input": "1+4",
    "startup": 0.29,
    "active": 0.05,
    "recovery": 0.88,
@@ -264,16 +267,376 @@
    "soulGain": 13,
    "anim_ref": "wh:bruno:sig:lean-in",
    "input_slots": [
-    "P+K",
-    "P",
-    "K"
+    "1+4"
    ],
    "move_class": "signature",
    "wh_original": true,
    "note": "His mumble is actually crystal clear. You just have to lean in. A grab that pulls you close enough to hear it.",
    "throw": true,
    "unblockable": true,
-   "isGrab": true
+   "isGrab": true,
+   "input_remapped_from": "P+K",
+   "throw_break": "1+2"
+  },
+  "b+2": {
+   "name": "BRUNO b+2 (T3 bryan r158)",
+   "input": "b+2",
+   "t3_source": "bryan",
+   "t3_row": 158,
+   "t3_command": "4+RP",
+   "startup": 0.317,
+   "active": 0.017,
+   "recovery": 0.7,
+   "damage": 11,
+   "t3_damage": 18,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:158",
+   "input_slots": [
+    "b+2"
+   ],
+   "move_class": "strike"
+  },
+  "b+4": {
+   "name": "BRUNO b+4 (T3 bryan r111)",
+   "input": "b+4",
+   "t3_source": "bryan",
+   "t3_row": 111,
+   "t3_command": "4+RK",
+   "startup": 0.35,
+   "active": 0.2,
+   "recovery": 0.633,
+   "damage": 15,
+   "t3_damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:bryan:row:111",
+   "input_slots": [
+    "b+4"
+   ],
+   "move_class": "strike"
+  },
+  "f+2": {
+   "name": "BRUNO f+2 (T3 bryan r150)",
+   "input": "f+2",
+   "t3_source": "bryan",
+   "t3_row": 150,
+   "t3_command": "6+RP",
+   "startup": 0.217,
+   "active": 0.017,
+   "recovery": 0.783,
+   "damage": 18,
+   "t3_damage": 30,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:bryan:row:150",
+   "input_slots": [
+    "f+2"
+   ],
+   "move_class": "strike"
+  },
+  "f+3": {
+   "name": "BRUNO f+3 (T3 bryan r191)",
+   "input": "f+3",
+   "t3_source": "bryan",
+   "t3_row": 191,
+   "t3_command": "6+LK",
+   "startup": 0.367,
+   "active": 0.05,
+   "recovery": 0.867,
+   "damage": 21,
+   "t3_damage": 36,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:bryan:row:191",
+   "input_slots": [
+    "f+3"
+   ],
+   "move_class": "strike"
+  },
+  "b+1+2": {
+   "name": "BRUNO b+1+2 (T3 bryan r167)",
+   "input": "b+1+2",
+   "t3_source": "bryan",
+   "t3_row": 167,
+   "t3_command": "4+LP+RP",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.1,
+   "damage": 8,
+   "t3_damage": 14,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:167",
+   "input_slots": [
+    "b+1+2"
+   ],
+   "move_class": "strike"
+  },
+  "b+1+4": {
+   "name": "BRUNO b+1+4 (T3 bryan r178)",
+   "input": "b+1+4",
+   "t3_source": "bryan",
+   "t3_row": 178,
+   "t3_command": "4+LP+RK",
+   "startup": 0.85,
+   "active": 0.083,
+   "recovery": 0.833,
+   "damage": 35,
+   "t3_damage": 60,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:bryan:row:178",
+   "input_slots": [
+    "b+1+4"
+   ],
+   "move_class": "strike"
+  },
+  "d/f+1": {
+   "name": "BRUNO d/f+1 (T3 bryan r146)",
+   "input": "d/f+1",
+   "t3_source": "bryan",
+   "t3_row": 146,
+   "t3_command": "3+LP",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 0.517,
+   "damage": 9,
+   "t3_damage": 15,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:146",
+   "input_slots": [
+    "d/f+1"
+   ],
+   "move_class": "strike"
+  },
+  "f+1+4": {
+   "name": "BRUNO f+1+4 (T3 bryan r179)",
+   "input": "f+1+4",
+   "t3_source": "bryan",
+   "t3_row": 179,
+   "t3_command": "6+LP+RK",
+   "startup": 0.467,
+   "active": 0.017,
+   "recovery": 0.833,
+   "damage": 12,
+   "t3_damage": 21,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:179",
+   "input_slots": [
+    "f+1+4"
+   ],
+   "move_class": "strike"
+  },
+  "u/b+1": {
+   "name": "BRUNO u/b+1 (T3 bryan r43)",
+   "input": "u/b+1",
+   "t3_source": "bryan",
+   "t3_row": 43,
+   "t3_command": "4/7+LP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 7,
+   "t3_damage": 12,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:43",
+   "input_slots": [
+    "u/b+1"
+   ],
+   "move_class": "strike"
+  },
+  "u/b+3": {
+   "name": "BRUNO u/b+3 (T3 bryan r65)",
+   "input": "u/b+3",
+   "t3_source": "bryan",
+   "t3_row": 65,
+   "t3_command": "4/7+LK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 15,
+   "t3_damage": 25,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:bryan:row:65",
+   "input_slots": [
+    "u/b+3"
+   ],
+   "move_class": "strike"
+  },
+  "u/b+4": {
+   "name": "BRUNO u/b+4 (T3 bryan r87)",
+   "input": "u/b+4",
+   "t3_source": "bryan",
+   "t3_row": 87,
+   "t3_command": "4/7+RK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 11,
+   "t3_damage": 18,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:87",
+   "input_slots": [
+    "u/b+4"
+   ],
+   "move_class": "strike"
+  },
+  "u/f+1": {
+   "name": "BRUNO u/f+1 (T3 bryan r42)",
+   "input": "u/f+1",
+   "t3_source": "bryan",
+   "t3_row": 42,
+   "t3_command": "6/9+LP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 7,
+   "t3_damage": 12,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:42",
+   "input_slots": [
+    "u/f+1"
+   ],
+   "move_class": "strike"
+  },
+  "u/f+3": {
+   "name": "BRUNO u/f+3 (T3 bryan r64)",
+   "input": "u/f+3",
+   "t3_source": "bryan",
+   "t3_row": 64,
+   "t3_command": "6/9+LK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 15,
+   "t3_damage": 25,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:bryan:row:64",
+   "input_slots": [
+    "u/f+3"
+   ],
+   "move_class": "strike"
+  },
+  "d/f+1+2": {
+   "name": "BRUNO d/f+1+2 (T3 bryan r113)",
+   "input": "d/f+1+2",
+   "t3_source": "bryan",
+   "t3_row": 113,
+   "t3_command": "3+LP+RP",
+   "startup": 0.133,
+   "active": 0.017,
+   "recovery": 0.483,
+   "damage": 2,
+   "t3_damage": 3,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:113",
+   "input_slots": [
+    "d/f+1+2"
+   ],
+   "move_class": "strike"
+  },
+  "u/b+3+4": {
+   "name": "BRUNO u/b+3+4 (T3 bryan r62)",
+   "input": "u/b+3+4",
+   "t3_source": "bryan",
+   "t3_row": 62,
+   "t3_command": "4/7+LK+RK",
+   "startup": 0.35,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 15,
+   "t3_damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:bryan:row:62",
+   "input_slots": [
+    "u/b+3+4"
+   ],
+   "move_class": "strike"
+  },
+  "u/f+3+4": {
+   "name": "BRUNO u/f+3+4 (T3 bryan r61)",
+   "input": "u/f+3+4",
+   "t3_source": "bryan",
+   "t3_row": 61,
+   "t3_command": "6/9+LK+RK",
+   "startup": 0.35,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 15,
+   "t3_damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:bryan:row:61",
+   "input_slots": [
+    "u/f+3+4"
+   ],
+   "move_class": "strike"
+  },
+  "2,4": {
+   "name": "BRUNO 2,4 (T3 bryan r182)",
+   "input": "2,4",
+   "t3_source": "bryan",
+   "t3_row": 182,
+   "t3_command": "RK",
+   "startup": 0.367,
+   "active": 0.05,
+   "recovery": 0.717,
+   "damage": 15,
+   "t3_damage": 26,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:bryan:row:182",
+   "input_slots": [
+    "2,4",
+    "2",
+    "4"
+   ],
+   "move_class": "string",
+   "string_hit": "2"
   }
  },
  "strings": [
@@ -300,6 +663,16 @@
     153,
     151
    ]
+  },
+  {
+   "input": "2,4",
+   "hits": [
+    "2",
+    "4"
+   ],
+   "t3_rows": [
+    182
+   ]
   }
  ],
  "specials": [
@@ -319,5 +692,15 @@
   }
  ],
  "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
- "schema_version": 2
+ "schema_version": 2,
+ "expansion": {
+  "stream": "stream6/combat-100",
+  "date": "2026-10-19",
+  "moves_added": 17,
+  "inputs_remapped": [
+   "S->1+2",
+   "P+K->1+4"
+  ],
+  "note": "Additive expansion from real T3 teardown bank rows. Existing moves untouched."
+ }
 }

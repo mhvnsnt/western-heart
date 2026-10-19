@@ -236,7 +236,8 @@
    "input_slots": [
     "1+3"
    ],
-   "move_class": "throw"
+   "move_class": "throw",
+   "throw_break": "1"
   },
   "2+4": {
    "name": "MICHIKO 2+4 throw (T3 jin r139)",
@@ -261,7 +262,8 @@
    "input_slots": [
     "2+4"
    ],
-   "move_class": "throw"
+   "move_class": "throw",
+   "throw_break": "2"
   },
   "d/f+2": {
    "name": "MICHIKO d/f+2 (T3 jin r269)",
@@ -328,7 +330,8 @@
    "input_slots": [
     "d,d/b,d,d/b+1+2"
    ],
-   "move_class": "throw"
+   "move_class": "throw",
+   "throw_break": "1+2"
   },
   "d/b,n,f+2": {
    "name": "MICHIKO d/b,n,f+2 throw (T3 jin r276)",
@@ -353,7 +356,8 @@
    "input_slots": [
     "d/b,n,f+2"
    ],
-   "move_class": "throw"
+   "move_class": "throw",
+   "throw_break": "1+2"
   },
   "n,d/f,n,d/f+1": {
    "name": "MICHIKO n,d/f,n,d/f+1 throw (T3 jin r277)",
@@ -378,11 +382,12 @@
    "input_slots": [
     "n,d/f,n,d/f+1"
    ],
-   "move_class": "throw"
+   "move_class": "throw",
+   "throw_break": "1+2"
   },
-  "S": {
+  "1+2": {
    "name": "Edge of the Coin [WH SIGNATURE]",
-   "input": "S",
+   "input": "1+2",
    "startup": 0.29,
    "active": 0.1,
    "recovery": 0.88,
@@ -393,15 +398,16 @@
    "soulGain": 12,
    "anim_ref": "wh:michiko:sig:edge-of-the-coin",
    "input_slots": [
-    "S"
+    "1+2"
    ],
    "move_class": "signature",
    "wh_original": true,
-   "note": "Heads she fights clean, tails she doesn't. The coin always lands on its edge. Unpredictable spinning kick."
+   "note": "Heads she fights clean, tails she doesn't. The coin always lands on its edge. Unpredictable spinning kick.",
+   "input_remapped_from": "S"
   },
-  "P+K": {
+  "1+4": {
    "name": "Better Marketing [WH SIGNATURE]",
-   "input": "P+K",
+   "input": "1+4",
    "startup": 0.3,
    "active": 0.05,
    "recovery": 0.9,
@@ -412,16 +418,901 @@
    "soulGain": 13,
    "anim_ref": "wh:michiko:sig:better-marketing",
    "input_slots": [
-    "P+K",
-    "P",
-    "K"
+    "1+4"
    ],
    "move_class": "signature",
    "wh_original": true,
    "note": "Thrones are just chairs with better marketing. A disrespectful slam off the imaginary throne.",
    "throw": true,
    "unblockable": true,
-   "isGrab": true
+   "isGrab": true,
+   "input_remapped_from": "P+K",
+   "throw_break": "1+2"
+  },
+  "f+2": {
+   "name": "MICHIKO f+2 (T3 jin r220)",
+   "input": "f+2",
+   "t3_source": "jin",
+   "t3_row": 220,
+   "t3_command": "6+RP",
+   "startup": 0.2,
+   "active": 0.017,
+   "recovery": 0.483,
+   "damage": 4,
+   "t3_damage": 7,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:220",
+   "input_slots": [
+    "f+2"
+   ],
+   "move_class": "strike"
+  },
+  "f+4": {
+   "name": "MICHIKO f+4 (T3 jin r214)",
+   "input": "f+4",
+   "t3_source": "jin",
+   "t3_row": 214,
+   "t3_command": "6+RK",
+   "startup": 0.5,
+   "active": 0.05,
+   "recovery": 0.533,
+   "damage": 6,
+   "t3_damage": 10,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:214",
+   "input_slots": [
+    "f+4"
+   ],
+   "move_class": "strike"
+  },
+  "d+1+2": {
+   "name": "MICHIKO d+1+2 (T3 jin r92)",
+   "input": "d+1+2",
+   "t3_source": "jin",
+   "t3_row": 92,
+   "t3_command": "2+LP+RP",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 0.483,
+   "damage": 4,
+   "t3_damage": 6,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:92",
+   "input_slots": [
+    "d+1+2"
+   ],
+   "move_class": "strike"
+  },
+  "d/f+1": {
+   "name": "MICHIKO d/f+1 (T3 jin r179)",
+   "input": "d/f+1",
+   "t3_source": "jin",
+   "t3_row": 179,
+   "t3_command": "3+LP",
+   "startup": 0.367,
+   "active": 0.067,
+   "recovery": 0.7,
+   "damage": 21,
+   "t3_damage": 35,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:jin:row:179",
+   "input_slots": [
+    "d/f+1"
+   ],
+   "move_class": "strike"
+  },
+  "d/f+4": {
+   "name": "MICHIKO d/f+4 (T3 jin r205)",
+   "input": "d/f+4",
+   "t3_source": "jin",
+   "t3_row": 205,
+   "t3_command": "2/3+RK",
+   "startup": 0.267,
+   "active": 0.017,
+   "recovery": 0.767,
+   "damage": 11,
+   "t3_damage": 18,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:205",
+   "input_slots": [
+    "d/f+4"
+   ],
+   "move_class": "strike"
+  },
+  "u/b+1": {
+   "name": "MICHIKO u/b+1 (T3 jin r34)",
+   "input": "u/b+1",
+   "t3_source": "jin",
+   "t3_row": 34,
+   "t3_command": "4/7+LP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 7,
+   "t3_damage": 12,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:34",
+   "input_slots": [
+    "u/b+1"
+   ],
+   "move_class": "strike"
+  },
+  "u/b+3": {
+   "name": "MICHIKO u/b+3 (T3 jin r56)",
+   "input": "u/b+3",
+   "t3_source": "jin",
+   "t3_row": 56,
+   "t3_command": "4/7+LK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 15,
+   "t3_damage": 25,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:jin:row:56",
+   "input_slots": [
+    "u/b+3"
+   ],
+   "move_class": "strike"
+  },
+  "u/b+4": {
+   "name": "MICHIKO u/b+4 (T3 jin r78)",
+   "input": "u/b+4",
+   "t3_source": "jin",
+   "t3_row": 78,
+   "t3_command": "4/7+RK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 11,
+   "t3_damage": 18,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:78",
+   "input_slots": [
+    "u/b+4"
+   ],
+   "move_class": "strike"
+  },
+  "u/f+1": {
+   "name": "MICHIKO u/f+1 (T3 jin r33)",
+   "input": "u/f+1",
+   "t3_source": "jin",
+   "t3_row": 33,
+   "t3_command": "6/9+LP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 7,
+   "t3_damage": 12,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:33",
+   "input_slots": [
+    "u/f+1"
+   ],
+   "move_class": "strike"
+  },
+  "u/f+3": {
+   "name": "MICHIKO u/f+3 (T3 jin r55)",
+   "input": "u/f+3",
+   "t3_source": "jin",
+   "t3_row": 55,
+   "t3_command": "6/9+LK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 15,
+   "t3_damage": 25,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:jin:row:55",
+   "input_slots": [
+    "u/f+3"
+   ],
+   "move_class": "strike"
+  },
+  "u/b+3+4": {
+   "name": "MICHIKO u/b+3+4 (T3 jin r53)",
+   "input": "u/b+3+4",
+   "t3_source": "jin",
+   "t3_row": 53,
+   "t3_command": "4/7+LK+RK",
+   "startup": 0.35,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 15,
+   "t3_damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:jin:row:53",
+   "input_slots": [
+    "u/b+3+4"
+   ],
+   "move_class": "strike"
+  },
+  "u/f+3+4": {
+   "name": "MICHIKO u/f+3+4 (T3 jin r52)",
+   "input": "u/f+3+4",
+   "t3_source": "jin",
+   "t3_row": 52,
+   "t3_command": "6/9+LK+RK",
+   "startup": 0.35,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 15,
+   "t3_damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:jin:row:52",
+   "input_slots": [
+    "u/f+3+4"
+   ],
+   "move_class": "strike"
+  },
+  "qcb+1+3": {
+   "name": "MICHIKO qcb+1+3 throw (T3 jin r275)",
+   "input": "qcb+1+3",
+   "t3_source": "jin",
+   "t3_row": 275,
+   "t3_command": "[2 1 4+LP+LK](30f)",
+   "startup": 0.183,
+   "active": 0.017,
+   "recovery": 0.517,
+   "damage": 21,
+   "t3_damage": 35,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 11,
+   "anim_ref": "t3:jin:row:275",
+   "input_slots": [
+    "qcb+1+3"
+   ],
+   "move_class": "throw",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1",
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+  },
+  "2,4,4": {
+   "name": "MICHIKO 2,4,4 (T3 jin r254)",
+   "input": "2,4,4",
+   "t3_source": "jin",
+   "t3_row": 254,
+   "t3_command": "RK",
+   "startup": 0.4,
+   "active": 0.05,
+   "recovery": 1.017,
+   "damage": 6,
+   "t3_damage": 10,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:254",
+   "input_slots": [
+    "2,4,4",
+    "2",
+    "4",
+    "4"
+   ],
+   "move_class": "string",
+   "string_hit": "2,4"
+  },
+  "u/f+4,3": {
+   "name": "MICHIKO u/f+4,3 (T3 jin r193)",
+   "input": "u/f+4,3",
+   "t3_source": "jin",
+   "t3_row": 193,
+   "t3_command": "LK",
+   "startup": 0.583,
+   "active": 0.05,
+   "recovery": 0.467,
+   "damage": 15,
+   "t3_damage": 25,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:jin:row:193",
+   "input_slots": [
+    "u/f+4,3",
+    "u/f+4",
+    "3"
+   ],
+   "move_class": "string",
+   "string_hit": "u/f+4"
+  },
+  "u/f+4,4": {
+   "name": "MICHIKO u/f+4,4 (T3 jin r207)",
+   "input": "u/f+4,4",
+   "t3_source": "jin",
+   "t3_row": 207,
+   "t3_command": "RK",
+   "startup": 0.783,
+   "active": 0.017,
+   "recovery": 0.65,
+   "damage": 9,
+   "t3_damage": 15,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:207",
+   "input_slots": [
+    "u/f+4,4",
+    "u/f+4",
+    "4"
+   ],
+   "move_class": "string",
+   "string_hit": "u/f+4"
+  },
+  "f+2,1": {
+   "name": "MICHIKO f+2,1 (T3 jin r221)",
+   "input": "f+2,1",
+   "t3_source": "jin",
+   "t3_row": 221,
+   "t3_command": "LP",
+   "startup": 0.233,
+   "active": 0.017,
+   "recovery": 0.483,
+   "damage": 5,
+   "t3_damage": 8,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:221",
+   "input_slots": [
+    "f+2,1",
+    "f+2",
+    "1"
+   ],
+   "move_class": "string",
+   "string_hit": "f+2"
+  },
+  "d+1+2,1": {
+   "name": "MICHIKO d+1+2,1 (T3 jin r177)",
+   "input": "d+1+2,1",
+   "t3_source": "jin",
+   "t3_row": 177,
+   "t3_command": "LP",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.483,
+   "damage": 5,
+   "t3_damage": 8,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:177",
+   "input_slots": [
+    "d+1+2,1",
+    "d+1+2",
+    "1"
+   ],
+   "move_class": "string",
+   "string_hit": "d+1+2"
+  },
+  "d+1+2,2": {
+   "name": "MICHIKO d+1+2,2 (T3 jin r93)",
+   "input": "d+1+2,2",
+   "t3_source": "jin",
+   "t3_row": 93,
+   "t3_command": "RP",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 0.483,
+   "damage": 4,
+   "t3_damage": 6,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:93",
+   "input_slots": [
+    "d+1+2,2",
+    "d+1+2",
+    "2"
+   ],
+   "move_class": "string",
+   "string_hit": "d+1+2"
+  },
+  "d/f+1,3": {
+   "name": "MICHIKO d/f+1,3 (T3 jin r197)",
+   "input": "d/f+1,3",
+   "t3_source": "jin",
+   "t3_row": 197,
+   "t3_command": "LK",
+   "startup": 0.9,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 12,
+   "t3_damage": 20,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:197",
+   "input_slots": [
+    "d/f+1,3",
+    "d/f+1",
+    "3"
+   ],
+   "move_class": "string",
+   "string_hit": "d/f+1"
+  },
+  "d/f+1,4": {
+   "name": "MICHIKO d/f+1,4 (T3 jin r204)",
+   "input": "d/f+1,4",
+   "t3_source": "jin",
+   "t3_row": 204,
+   "t3_command": "RK",
+   "startup": 1.0,
+   "active": 0.05,
+   "recovery": 0.75,
+   "damage": 7,
+   "t3_damage": 12,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:204",
+   "input_slots": [
+    "d/f+1,4",
+    "d/f+1",
+    "4"
+   ],
+   "move_class": "string",
+   "string_hit": "d/f+1"
+  },
+  "d/f+4,4": {
+   "name": "MICHIKO d/f+4,4 (T3 jin r212)",
+   "input": "d/f+4,4",
+   "t3_source": "jin",
+   "t3_row": 212,
+   "t3_command": "RK",
+   "startup": 0.217,
+   "active": 0.017,
+   "recovery": 0.95,
+   "damage": 15,
+   "t3_damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:jin:row:212",
+   "input_slots": [
+    "d/f+4,4",
+    "d/f+4",
+    "4"
+   ],
+   "move_class": "string",
+   "string_hit": "d/f+4"
+  },
+  "2,4,4,4": {
+   "name": "MICHIKO 2,4,4,4 (T3 jin r256)",
+   "input": "2,4,4,4",
+   "t3_source": "jin",
+   "t3_row": 256,
+   "t3_command": "RK",
+   "startup": 0.767,
+   "active": 0.033,
+   "recovery": 0.65,
+   "damage": 5,
+   "t3_damage": 8,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:256",
+   "input_slots": [
+    "2,4,4,4",
+    "2",
+    "4",
+    "4",
+    "4"
+   ],
+   "move_class": "string",
+   "string_hit": "2,4,4"
+  },
+  "u/f+4,4,4": {
+   "name": "MICHIKO u/f+4,4,4 (T3 jin r210)",
+   "input": "u/f+4,4,4",
+   "t3_source": "jin",
+   "t3_row": 210,
+   "t3_command": "RK",
+   "startup": 0.4,
+   "active": 0.017,
+   "recovery": 0.767,
+   "damage": 7,
+   "t3_damage": 12,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:210",
+   "input_slots": [
+    "u/f+4,4,4",
+    "u/f+4",
+    "4",
+    "4"
+   ],
+   "move_class": "string",
+   "string_hit": "u/f+4,4"
+  },
+  "f+2,1,2": {
+   "name": "MICHIKO f+2,1,2 (T3 jin r222)",
+   "input": "f+2,1,2",
+   "t3_source": "jin",
+   "t3_row": 222,
+   "t3_command": "RP",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 0.483,
+   "damage": 4,
+   "t3_damage": 6,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:222",
+   "input_slots": [
+    "f+2,1,2",
+    "f+2",
+    "1",
+    "2"
+   ],
+   "move_class": "string",
+   "string_hit": "f+2,1"
+  },
+  "f+2,1,4": {
+   "name": "MICHIKO f+2,1,4 (T3 jin r230)",
+   "input": "f+2,1,4",
+   "t3_source": "jin",
+   "t3_row": 230,
+   "t3_command": "RK",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 4,
+   "t3_damage": 7,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:230",
+   "input_slots": [
+    "f+2,1,4",
+    "f+2",
+    "1",
+    "4"
+   ],
+   "move_class": "string",
+   "string_hit": "f+2,1"
+  },
+  "d+1+2,1,2": {
+   "name": "MICHIKO d+1+2,1,2 (T3 jin r183)",
+   "input": "d+1+2,1,2",
+   "t3_source": "jin",
+   "t3_row": 183,
+   "t3_command": "RP",
+   "startup": 0.217,
+   "active": 0.017,
+   "recovery": 0.783,
+   "damage": 11,
+   "t3_damage": 18,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:183",
+   "input_slots": [
+    "d+1+2,1,2",
+    "d+1+2",
+    "1",
+    "2"
+   ],
+   "move_class": "string",
+   "string_hit": "d+1+2,1"
+  },
+  "2,4,4,4,4": {
+   "name": "MICHIKO 2,4,4,4,4 (T3 jin r257)",
+   "input": "2,4,4,4,4",
+   "t3_source": "jin",
+   "t3_row": 257,
+   "t3_command": "RK",
+   "startup": 0.4,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 4,
+   "t3_damage": 6,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:257",
+   "input_slots": [
+    "2,4,4,4,4",
+    "2",
+    "4",
+    "4",
+    "4",
+    "4"
+   ],
+   "move_class": "string",
+   "string_hit": "2,4,4,4"
+  },
+  "u/f+4,4,4,4": {
+   "name": "MICHIKO u/f+4,4,4,4 (T3 jin r211)",
+   "input": "u/f+4,4,4,4",
+   "t3_source": "jin",
+   "t3_row": 211,
+   "t3_command": "RK",
+   "startup": 0.367,
+   "active": 0.017,
+   "recovery": 0.8,
+   "damage": 15,
+   "t3_damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:jin:row:211",
+   "input_slots": [
+    "u/f+4,4,4,4",
+    "u/f+4",
+    "4",
+    "4",
+    "4"
+   ],
+   "move_class": "string",
+   "string_hit": "u/f+4,4,4"
+  },
+  "f+2,1,2,2": {
+   "name": "MICHIKO f+2,1,2,2 (T3 jin r223)",
+   "input": "f+2,1,2,2",
+   "t3_source": "jin",
+   "t3_row": 223,
+   "t3_command": "RP",
+   "startup": 0.283,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 4,
+   "t3_damage": 7,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:223",
+   "input_slots": [
+    "f+2,1,2,2",
+    "f+2",
+    "1",
+    "2",
+    "2"
+   ],
+   "move_class": "string",
+   "string_hit": "f+2,1,2"
+  },
+  "f+2,1,4,4": {
+   "name": "MICHIKO f+2,1,4,4 (T3 jin r231)",
+   "input": "f+2,1,4,4",
+   "t3_source": "jin",
+   "t3_row": 231,
+   "t3_command": "RK",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 6,
+   "t3_damage": 10,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:231",
+   "input_slots": [
+    "f+2,1,4,4",
+    "f+2",
+    "1",
+    "4",
+    "4"
+   ],
+   "move_class": "string",
+   "string_hit": "f+2,1,4"
+  },
+  "2,4,4,4,4,2": {
+   "name": "MICHIKO 2,4,4,4,4,2 (T3 jin r258)",
+   "input": "2,4,4,4,4,2",
+   "t3_source": "jin",
+   "t3_row": 258,
+   "t3_command": "RP",
+   "startup": 0.367,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 4,
+   "t3_damage": 6,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:258",
+   "input_slots": [
+    "2,4,4,4,4,2",
+    "2",
+    "4",
+    "4",
+    "4",
+    "4",
+    "2"
+   ],
+   "move_class": "string",
+   "string_hit": "2,4,4,4,4"
+  },
+  "f+2,1,2,2,3": {
+   "name": "MICHIKO f+2,1,2,2,3 (T3 jin r224)",
+   "input": "f+2,1,2,2,3",
+   "t3_source": "jin",
+   "t3_row": 224,
+   "t3_command": "LK",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 4,
+   "t3_damage": 6,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:224",
+   "input_slots": [
+    "f+2,1,2,2,3",
+    "f+2",
+    "1",
+    "2",
+    "2",
+    "3"
+   ],
+   "move_class": "string",
+   "string_hit": "f+2,1,2,2"
+  },
+  "f+2,1,4,4,2": {
+   "name": "MICHIKO f+2,1,4,4,2 (T3 jin r232)",
+   "input": "f+2,1,4,4,2",
+   "t3_source": "jin",
+   "t3_row": 232,
+   "t3_command": "RP",
+   "startup": 0.383,
+   "active": 0.017,
+   "recovery": 0.75,
+   "damage": 3,
+   "t3_damage": 5,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:232",
+   "input_slots": [
+    "f+2,1,4,4,2",
+    "f+2",
+    "1",
+    "4",
+    "4",
+    "2"
+   ],
+   "move_class": "string",
+   "string_hit": "f+2,1,4,4"
+  },
+  "f+2,1,2,2,3,4": {
+   "name": "MICHIKO f+2,1,2,2,3,4 (T3 jin r225)",
+   "input": "f+2,1,2,2,3,4",
+   "t3_source": "jin",
+   "t3_row": 225,
+   "t3_command": "RK",
+   "startup": 0.617,
+   "active": 0.05,
+   "recovery": 0.617,
+   "damage": 6,
+   "t3_damage": 11,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:225",
+   "input_slots": [
+    "f+2,1,2,2,3,4",
+    "f+2",
+    "1",
+    "2",
+    "2",
+    "3",
+    "4"
+   ],
+   "move_class": "string",
+   "string_hit": "f+2,1,2,2,3"
+  },
+  "f+2,1,4,4,2,4": {
+   "name": "MICHIKO f+2,1,4,4,2,4 (T3 jin r233)",
+   "input": "f+2,1,4,4,2,4",
+   "t3_source": "jin",
+   "t3_row": 233,
+   "t3_command": "RK",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 4,
+   "t3_damage": 7,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:233",
+   "input_slots": [
+    "f+2,1,4,4,2,4",
+    "f+2",
+    "1",
+    "4",
+    "4",
+    "2",
+    "4"
+   ],
+   "move_class": "string",
+   "string_hit": "f+2,1,4,4,2"
+  },
+  "n,b,n,f+2": {
+   "name": "MICHIKO n,b,n,f+2 (T3 jin r162)",
+   "input": "n,b,n,f+2",
+   "t3_source": "jin",
+   "t3_row": 162,
+   "t3_command": "[5 4 5 6+RP](50f)",
+   "startup": 0.25,
+   "active": 0.05,
+   "recovery": 0.617,
+   "damage": 11,
+   "t3_damage": 18,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:162",
+   "input_slots": [
+    "n,b,n,f+2"
+   ],
+   "move_class": "special"
   }
  },
  "strings": [
@@ -483,6 +1374,270 @@
     184,
     186
    ]
+  },
+  {
+   "input": "2,4,4",
+   "hits": [
+    "2",
+    "4",
+    "4"
+   ],
+   "t3_rows": [
+    254
+   ]
+  },
+  {
+   "input": "u/f+4,3",
+   "hits": [
+    "u/f+4",
+    "3"
+   ],
+   "t3_rows": [
+    193
+   ]
+  },
+  {
+   "input": "u/f+4,4",
+   "hits": [
+    "u/f+4",
+    "4"
+   ],
+   "t3_rows": [
+    207
+   ]
+  },
+  {
+   "input": "f+2,1",
+   "hits": [
+    "f+2",
+    "1"
+   ],
+   "t3_rows": [
+    221
+   ]
+  },
+  {
+   "input": "d+1+2,1",
+   "hits": [
+    "d+1+2",
+    "1"
+   ],
+   "t3_rows": [
+    177
+   ]
+  },
+  {
+   "input": "d+1+2,2",
+   "hits": [
+    "d+1+2",
+    "2"
+   ],
+   "t3_rows": [
+    93
+   ]
+  },
+  {
+   "input": "d/f+1,3",
+   "hits": [
+    "d/f+1",
+    "3"
+   ],
+   "t3_rows": [
+    197
+   ]
+  },
+  {
+   "input": "d/f+1,4",
+   "hits": [
+    "d/f+1",
+    "4"
+   ],
+   "t3_rows": [
+    204
+   ]
+  },
+  {
+   "input": "d/f+4,4",
+   "hits": [
+    "d/f+4",
+    "4"
+   ],
+   "t3_rows": [
+    212
+   ]
+  },
+  {
+   "input": "2,4,4,4",
+   "hits": [
+    "2",
+    "4",
+    "4",
+    "4"
+   ],
+   "t3_rows": [
+    256
+   ]
+  },
+  {
+   "input": "u/f+4,4,4",
+   "hits": [
+    "u/f+4",
+    "4",
+    "4"
+   ],
+   "t3_rows": [
+    210
+   ]
+  },
+  {
+   "input": "f+2,1,2",
+   "hits": [
+    "f+2",
+    "1",
+    "2"
+   ],
+   "t3_rows": [
+    222
+   ]
+  },
+  {
+   "input": "f+2,1,4",
+   "hits": [
+    "f+2",
+    "1",
+    "4"
+   ],
+   "t3_rows": [
+    230
+   ]
+  },
+  {
+   "input": "d+1+2,1,2",
+   "hits": [
+    "d+1+2",
+    "1",
+    "2"
+   ],
+   "t3_rows": [
+    183
+   ]
+  },
+  {
+   "input": "2,4,4,4,4",
+   "hits": [
+    "2",
+    "4",
+    "4",
+    "4",
+    "4"
+   ],
+   "t3_rows": [
+    257
+   ]
+  },
+  {
+   "input": "u/f+4,4,4,4",
+   "hits": [
+    "u/f+4",
+    "4",
+    "4",
+    "4"
+   ],
+   "t3_rows": [
+    211
+   ]
+  },
+  {
+   "input": "f+2,1,2,2",
+   "hits": [
+    "f+2",
+    "1",
+    "2",
+    "2"
+   ],
+   "t3_rows": [
+    223
+   ]
+  },
+  {
+   "input": "f+2,1,4,4",
+   "hits": [
+    "f+2",
+    "1",
+    "4",
+    "4"
+   ],
+   "t3_rows": [
+    231
+   ]
+  },
+  {
+   "input": "2,4,4,4,4,2",
+   "hits": [
+    "2",
+    "4",
+    "4",
+    "4",
+    "4",
+    "2"
+   ],
+   "t3_rows": [
+    258
+   ]
+  },
+  {
+   "input": "f+2,1,2,2,3",
+   "hits": [
+    "f+2",
+    "1",
+    "2",
+    "2",
+    "3"
+   ],
+   "t3_rows": [
+    224
+   ]
+  },
+  {
+   "input": "f+2,1,4,4,2",
+   "hits": [
+    "f+2",
+    "1",
+    "4",
+    "4",
+    "2"
+   ],
+   "t3_rows": [
+    232
+   ]
+  },
+  {
+   "input": "f+2,1,2,2,3,4",
+   "hits": [
+    "f+2",
+    "1",
+    "2",
+    "2",
+    "3",
+    "4"
+   ],
+   "t3_rows": [
+    225
+   ]
+  },
+  {
+   "input": "f+2,1,4,4,2,4",
+   "hits": [
+    "f+2",
+    "1",
+    "4",
+    "4",
+    "2",
+    "4"
+   ],
+   "t3_rows": [
+    233
+   ]
   }
  ],
  "specials": [
@@ -503,8 +1658,24 @@
    "t3_row": 277,
    "damage": 21,
    "throw": true
+  },
+  {
+   "input": "n,b,n,f+2",
+   "t3_row": 162,
+   "damage": 11,
+   "throw": false
   }
  ],
  "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
- "schema_version": 2
+ "schema_version": 2,
+ "expansion": {
+  "stream": "stream6/combat-100",
+  "date": "2026-10-19",
+  "moves_added": 37,
+  "inputs_remapped": [
+   "S->1+2",
+   "P+K->1+4"
+  ],
+  "note": "Additive expansion from real T3 teardown bank rows. Existing moves untouched."
+ }
 }

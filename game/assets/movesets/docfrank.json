@@ -40,7 +40,8 @@
    "note": "Two-part dash throw; escapable throw, front",
    "throw": true,
    "unblockable": true,
-   "isGrab": true
+   "isGrab": true,
+   "throw_break": "1+2"
   },
   "ground_f,f_b+1+2": {
    "name": "Stonehead",
@@ -64,7 +65,8 @@
    "note": "Ground headbutt; escapes with 1+2",
    "throw": true,
    "unblockable": true,
-   "isGrab": true
+   "isGrab": true,
+   "throw_break": "1+2"
   },
   "1+2": {
    "name": "Parry",
@@ -109,7 +111,8 @@
    "note": "Crouching throw from parry",
    "throw": true,
    "unblockable": true,
-   "isGrab": true
+   "isGrab": true,
+   "throw_break": "1+2"
   },
   "1+2_parry_1+2": {
    "name": "Irish Whip",
@@ -133,7 +136,8 @@
    "note": "Front throw from parry; escape 1+2; chains into Elbow Drop line",
    "throw": true,
    "unblockable": true,
-   "isGrab": true
+   "isGrab": true,
+   "throw_break": "1+2"
   },
   "d+1+2": {
    "name": "Lower Dodge",
@@ -178,7 +182,8 @@
    "note": "Bad Stomach chain throw; left escape 1",
    "throw": true,
    "unblockable": true,
-   "isGrab": true
+   "isGrab": true,
+   "throw_break": "1+2"
   },
   "badstomach_1+2_t": {
    "name": "Trip Up",
@@ -202,7 +207,8 @@
    "note": "Bad Stomach chain throw; right escape 2",
    "throw": true,
    "unblockable": true,
-   "isGrab": true
+   "isGrab": true,
+   "throw_break": "1+2"
   },
   "badstomach_1+2_d": {
    "name": "Atomic Drop",
@@ -226,7 +232,8 @@
    "note": "Bad Stomach chain throw, back variant; heaviest Doc throw",
    "throw": true,
    "unblockable": true,
-   "isGrab": true
+   "isGrab": true,
+   "throw_break": "1+2"
   },
   "1,2": {
    "name": "Doc's One-Two",
@@ -542,7 +549,8 @@
    "throw": true,
    "unblockable": true,
    "isGrab": true,
-   "face_buster": true
+   "face_buster": true,
+   "throw_break": "1+2"
   },
   "ed_1+2": {
    "name": "Cartwheel",
@@ -2166,7 +2174,8 @@
    "meter_self_gain": 25,
    "throw": true,
    "isGrab": true,
-   "unblockable": true
+   "unblockable": true,
+   "throw_break": "1+2"
   },
   "d,d/f,f+1+2": {
    "name": "Eye Laser Beam",
@@ -2395,7 +2404,8 @@
    "note": "Two-part dash throw; escapable throw, front | Game-neutral grab lookup: Whippersnapper.",
    "throw": true,
    "unblockable": true,
-   "isGrab": true
+   "isGrab": true,
+   "throw_break": "1"
   },
   "2+4": {
    "name": "Rolling Powerbomb",
@@ -2419,7 +2429,8 @@
    "note": "Crouching throw from parry | Game-neutral grab lookup: Rolling Powerbomb (T3 is parry->3+4).",
    "throw": true,
    "unblockable": true,
-   "isGrab": true
+   "isGrab": true,
+   "throw_break": "2"
   }
  },
  "legacy_proxy_moves": {

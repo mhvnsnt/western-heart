@@ -138,7 +138,8 @@
    "input_slots": [
     "1+3"
    ],
-   "move_class": "throw"
+   "move_class": "throw",
+   "throw_break": "1"
   },
   "2+4": {
    "name": "PANTERA 2+4 throw (T3 king r128)",
@@ -163,7 +164,8 @@
    "input_slots": [
     "2+4"
    ],
-   "move_class": "throw"
+   "move_class": "throw",
+   "throw_break": "2"
   },
   "d/f+2": {
    "name": "PANTERA d/f+2 (T3 king r202)",
@@ -209,7 +211,8 @@
    "input_slots": [
     "b,n,f+1+2"
    ],
-   "move_class": "throw"
+   "move_class": "throw",
+   "throw_break": "1+2"
   },
   "d,d/b,d,d/b+1+2": {
    "name": "PANTERA d,d/b,d,d/b+1+2 throw (T3 king r287)",
@@ -234,7 +237,8 @@
    "input_slots": [
     "d,d/b,d,d/b+1+2"
    ],
-   "move_class": "throw"
+   "move_class": "throw",
+   "throw_break": "1+2"
   },
   "d,d/f,d,d/f+1+2": {
    "name": "PANTERA d,d/f,d,d/f+1+2 throw (T3 king r284)",
@@ -259,11 +263,12 @@
    "input_slots": [
     "d,d/f,d,d/f+1+2"
    ],
-   "move_class": "throw"
+   "move_class": "throw",
+   "throw_break": "1+2"
   },
-  "P+K": {
+  "1+4": {
    "name": "Honest Hold [WH SIGNATURE]",
-   "input": "P+K",
+   "input": "1+4",
    "startup": 0.32,
    "active": 0.05,
    "recovery": 0.9,
@@ -274,20 +279,20 @@
    "soulGain": 13,
    "anim_ref": "wh:pantera:sig:honest-hold",
    "input_slots": [
-    "P+K",
-    "P",
-    "K"
+    "1+4"
    ],
    "move_class": "signature",
    "wh_original": true,
    "note": "The hold is honest. Everything else is negotiation. Chain-throw closer.",
    "throw": true,
    "unblockable": true,
-   "isGrab": true
+   "isGrab": true,
+   "input_remapped_from": "P+K",
+   "throw_break": "1+2"
   },
-  "f+P": {
+  "f+1": {
    "name": "Tail-Tip Lunge [WH SIGNATURE]",
-   "input": "f+P",
+   "input": "f+1",
    "startup": 0.22,
    "active": 0.017,
    "recovery": 0.72,
@@ -298,17 +303,16 @@
    "soulGain": 11,
    "anim_ref": "wh:pantera:sig:tail-tip-lunge",
    "input_slots": [
-    "f+P",
-    "f",
-    "P"
+    "f+1"
    ],
    "move_class": "signature",
    "wh_original": true,
-   "note": "The tail telegraphs the hold. No one has ever read it in time. Lunging claw rake."
+   "note": "The tail telegraphs the hold. No one has ever read it in time. Lunging claw rake.",
+   "input_remapped_from": "f+P"
   },
-  "S": {
+  "1+2": {
    "name": "Battle Itself [WH SIGNATURE]",
-   "input": "S",
+   "input": "1+2",
    "startup": 0.35,
    "active": 0.2,
    "recovery": 1.05,
@@ -319,11 +323,820 @@
    "soulGain": 14,
    "anim_ref": "wh:pantera:sig:battle-itself",
    "input_slots": [
-    "S"
+    "1+2"
    ],
    "move_class": "signature",
    "wh_original": true,
-   "note": "Vessel of TOU (battle itself). Roaring multi-hit claw flurry; no motive, only the hold."
+   "note": "Vessel of TOU (battle itself). Roaring multi-hit claw flurry; no motive, only the hold.",
+   "input_remapped_from": "S"
+  },
+  "d+1+2": {
+   "name": "PANTERA d+1+2 (T3 king r97)",
+   "input": "d+1+2",
+   "t3_source": "king",
+   "t3_row": 97,
+   "t3_command": "2+LP+RP",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 0.5,
+   "damage": 4,
+   "t3_damage": 6,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:97",
+   "input_slots": [
+    "d+1+2"
+   ],
+   "move_class": "strike"
+  },
+  "d/f+1": {
+   "name": "PANTERA d/f+1 (T3 king r117)",
+   "input": "d/f+1",
+   "t3_source": "king",
+   "t3_row": 117,
+   "t3_command": "3+LP",
+   "startup": 0.5,
+   "active": 0.05,
+   "recovery": 0.633,
+   "damage": 12,
+   "t3_damage": 21,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:117",
+   "input_slots": [
+    "d/f+1"
+   ],
+   "move_class": "strike"
+  },
+  "d/f+4": {
+   "name": "PANTERA d/f+4 (T3 king r135)",
+   "input": "d/f+4",
+   "t3_source": "king",
+   "t3_row": 135,
+   "t3_command": "3+RK",
+   "startup": 0.267,
+   "active": 0.017,
+   "recovery": 0.1,
+   "damage": 8,
+   "t3_damage": 13,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:135",
+   "input_slots": [
+    "d/f+4"
+   ],
+   "move_class": "strike"
+  },
+  "u/b+1": {
+   "name": "PANTERA u/b+1 (T3 king r37)",
+   "input": "u/b+1",
+   "t3_source": "king",
+   "t3_row": 37,
+   "t3_command": "4/7+LP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 7,
+   "t3_damage": 12,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:37",
+   "input_slots": [
+    "u/b+1"
+   ],
+   "move_class": "strike"
+  },
+  "u/b+3": {
+   "name": "PANTERA u/b+3 (T3 king r56)",
+   "input": "u/b+3",
+   "t3_source": "king",
+   "t3_row": 56,
+   "t3_command": "4/7+LK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 15,
+   "t3_damage": 25,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:king:row:56",
+   "input_slots": [
+    "u/b+3"
+   ],
+   "move_class": "strike"
+  },
+  "u/b+4": {
+   "name": "PANTERA u/b+4 (T3 king r83)",
+   "input": "u/b+4",
+   "t3_source": "king",
+   "t3_row": 83,
+   "t3_command": "4/7+RK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 11,
+   "t3_damage": 18,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:83",
+   "input_slots": [
+    "u/b+4"
+   ],
+   "move_class": "strike"
+  },
+  "u/f+1": {
+   "name": "PANTERA u/f+1 (T3 king r36)",
+   "input": "u/f+1",
+   "t3_source": "king",
+   "t3_row": 36,
+   "t3_command": "6/9+LP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 7,
+   "t3_damage": 12,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:36",
+   "input_slots": [
+    "u/f+1"
+   ],
+   "move_class": "strike"
+  },
+  "u/f+2": {
+   "name": "PANTERA u/f+2 (T3 king r245)",
+   "input": "u/f+2",
+   "t3_source": "king",
+   "t3_row": 245,
+   "t3_command": "6/9+RP",
+   "startup": 0.783,
+   "active": 0.117,
+   "recovery": 0.7,
+   "damage": 21,
+   "t3_damage": 35,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:king:row:245",
+   "input_slots": [
+    "u/f+2"
+   ],
+   "move_class": "strike"
+  },
+  "u/f+3": {
+   "name": "PANTERA u/f+3 (T3 king r55)",
+   "input": "u/f+3",
+   "t3_source": "king",
+   "t3_row": 55,
+   "t3_command": "6/9+LK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 15,
+   "t3_damage": 25,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:king:row:55",
+   "input_slots": [
+    "u/f+3"
+   ],
+   "move_class": "strike"
+  },
+  "u/f+4": {
+   "name": "PANTERA u/f+4 (T3 king r82)",
+   "input": "u/f+4",
+   "t3_source": "king",
+   "t3_row": 82,
+   "t3_command": "6/9+RK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 12,
+   "t3_damage": 21,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:82",
+   "input_slots": [
+    "u/f+4"
+   ],
+   "move_class": "strike"
+  },
+  "d/f+1+4": {
+   "name": "PANTERA d/f+1+4 (T3 king r242)",
+   "input": "d/f+1+4",
+   "t3_source": "king",
+   "t3_row": 242,
+   "t3_command": "3+LP+RK",
+   "startup": 0.517,
+   "active": 0.083,
+   "recovery": 0.733,
+   "damage": 9,
+   "t3_damage": 15,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:242",
+   "input_slots": [
+    "d/f+1+4"
+   ],
+   "move_class": "strike"
+  },
+  "u/b+2+4": {
+   "name": "PANTERA u/b+2+4 (T3 king r246)",
+   "input": "u/b+2+4",
+   "t3_source": "king",
+   "t3_row": 246,
+   "t3_command": "4/7+RP+RK",
+   "startup": 0.783,
+   "active": 0.117,
+   "recovery": 0.7,
+   "damage": 21,
+   "t3_damage": 35,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:king:row:246",
+   "input_slots": [
+    "u/b+2+4"
+   ],
+   "move_class": "strike"
+  },
+  "u/b+3+4": {
+   "name": "PANTERA u/b+3+4 (T3 king r68)",
+   "input": "u/b+3+4",
+   "t3_source": "king",
+   "t3_row": 68,
+   "t3_command": "4/7+LK+RK",
+   "startup": 0.383,
+   "active": 0.017,
+   "recovery": 0.817,
+   "damage": 15,
+   "t3_damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:king:row:68",
+   "input_slots": [
+    "u/b+3+4"
+   ],
+   "move_class": "strike"
+  },
+  "u/f+1+2": {
+   "name": "PANTERA u/f+1+2 (T3 king r222)",
+   "input": "u/f+1+2",
+   "t3_source": "king",
+   "t3_row": 222,
+   "t3_command": "6/9+LP+RP",
+   "startup": 0.583,
+   "active": 0.033,
+   "recovery": 0.633,
+   "damage": 21,
+   "t3_damage": 35,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:king:row:222",
+   "input_slots": [
+    "u/f+1+2"
+   ],
+   "move_class": "strike"
+  },
+  "u/f+3+4": {
+   "name": "PANTERA u/f+3+4 (T3 king r67)",
+   "input": "u/f+3+4",
+   "t3_source": "king",
+   "t3_row": 67,
+   "t3_command": "6/9+LK+RK",
+   "startup": 0.383,
+   "active": 0.017,
+   "recovery": 0.817,
+   "damage": 15,
+   "t3_damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:king:row:67",
+   "input_slots": [
+    "u/f+3+4"
+   ],
+   "move_class": "strike"
+  },
+  "2+3": {
+   "name": "PANTERA 2+3 throw (T3 king r288)",
+   "input": "2+3",
+   "t3_source": "king",
+   "t3_row": 288,
+   "t3_command": "RP+LK",
+   "startup": 0.2,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 21,
+   "t3_damage": 35,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 11,
+   "anim_ref": "t3:king:row:288",
+   "input_slots": [
+    "2+3"
+   ],
+   "move_class": "throw",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2",
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+  },
+  "b+1+2": {
+   "name": "PANTERA b+1+2 throw (T3 king r279)",
+   "input": "b+1+2",
+   "t3_source": "king",
+   "t3_row": 279,
+   "t3_command": "4+LP+RP",
+   "startup": 0.2,
+   "active": 0.1,
+   "recovery": 0.383,
+   "damage": 21,
+   "t3_damage": 35,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 11,
+   "anim_ref": "t3:king:row:279",
+   "input_slots": [
+    "b+1+2"
+   ],
+   "move_class": "throw",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2",
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+  },
+  "b+2+3": {
+   "name": "PANTERA b+2+3 throw (T3 king r283)",
+   "input": "b+2+3",
+   "t3_source": "king",
+   "t3_row": 283,
+   "t3_command": "4+RP+LK",
+   "startup": 0.183,
+   "active": 0.017,
+   "recovery": 0.517,
+   "damage": 21,
+   "t3_damage": 35,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 11,
+   "anim_ref": "t3:king:row:283",
+   "input_slots": [
+    "b+2+3"
+   ],
+   "move_class": "throw",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2",
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+  },
+  "d/b+1+2": {
+   "name": "PANTERA d/b+1+2 throw (T3 king r286)",
+   "input": "d/b+1+2",
+   "t3_source": "king",
+   "t3_row": 286,
+   "t3_command": "1+LP+RP",
+   "startup": 0.2,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 21,
+   "t3_damage": 35,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 11,
+   "anim_ref": "t3:king:row:286",
+   "input_slots": [
+    "d/b+1+2"
+   ],
+   "move_class": "throw",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2",
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+  },
+  "d/b+1+3": {
+   "name": "PANTERA d/b+1+3 throw (T3 king r277)",
+   "input": "d/b+1+3",
+   "t3_source": "king",
+   "t3_row": 277,
+   "t3_command": "1+LP+LK",
+   "startup": 0.333,
+   "active": 0.017,
+   "recovery": 0.667,
+   "damage": 21,
+   "t3_damage": 35,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 11,
+   "anim_ref": "t3:king:row:277",
+   "input_slots": [
+    "d/b+1+3"
+   ],
+   "move_class": "throw",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1",
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+  },
+  "d/b+2+4": {
+   "name": "PANTERA d/b+2+4 throw (T3 king r278)",
+   "input": "d/b+2+4",
+   "t3_source": "king",
+   "t3_row": 278,
+   "t3_command": "1+RP+RK",
+   "startup": 0.333,
+   "active": 0.017,
+   "recovery": 0.667,
+   "damage": 21,
+   "t3_damage": 35,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 11,
+   "anim_ref": "t3:king:row:278",
+   "input_slots": [
+    "d/b+2+4"
+   ],
+   "move_class": "throw",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "2",
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+  },
+  "d/f+2+3": {
+   "name": "PANTERA d/f+2+3 throw (T3 king r285)",
+   "input": "d/f+2+3",
+   "t3_source": "king",
+   "t3_row": 285,
+   "t3_command": "3+RP+LK",
+   "startup": 0.2,
+   "active": 0.017,
+   "recovery": 0.5,
+   "damage": 21,
+   "t3_damage": 35,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 11,
+   "anim_ref": "t3:king:row:285",
+   "input_slots": [
+    "d/f+2+3"
+   ],
+   "move_class": "throw",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2",
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+  },
+  "f,n,b,d/b,d,f+1": {
+   "name": "PANTERA f,n,b,d/b,d,f+1 throw (T3 king r280)",
+   "input": "f,n,b,d/b,d,f+1",
+   "t3_source": "king",
+   "t3_row": 280,
+   "t3_command": "[6 5 4 1 2 6+LP](30f)",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 0.5,
+   "damage": 21,
+   "t3_damage": 35,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 11,
+   "anim_ref": "t3:king:row:280",
+   "input_slots": [
+    "f,n,b,d/b,d,f+1"
+   ],
+   "move_class": "throw",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2",
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+  },
+  "n,d,d/b+1+3": {
+   "name": "PANTERA n,d,d/b+1+3 throw (T3 king r282)",
+   "input": "n,d,d/b+1+3",
+   "t3_source": "king",
+   "t3_row": 282,
+   "t3_command": "[5 2 1+LP+LK](50f)",
+   "startup": 0.183,
+   "active": 0.017,
+   "recovery": 0.517,
+   "damage": 21,
+   "t3_damage": 35,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 11,
+   "anim_ref": "t3:king:row:282",
+   "input_slots": [
+    "n,d,d/b+1+3"
+   ],
+   "move_class": "throw",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2",
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+  },
+  "n,d/f,n,d/f+2+4": {
+   "name": "PANTERA n,d/f,n,d/f+2+4 throw (T3 king r276)",
+   "input": "n,d/f,n,d/f+2+4",
+   "t3_source": "king",
+   "t3_row": 276,
+   "t3_command": "[5 3 5 3+RP+RK](40f)",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.667,
+   "damage": 21,
+   "t3_damage": 35,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 11,
+   "anim_ref": "t3:king:row:276",
+   "input_slots": [
+    "n,d/f,n,d/f+2+4"
+   ],
+   "move_class": "throw",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2",
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+  },
+  "d+1+2,2": {
+   "name": "PANTERA d+1+2,2 (T3 king r98)",
+   "input": "d+1+2,2",
+   "t3_source": "king",
+   "t3_row": 98,
+   "t3_command": "RP",
+   "startup": 0.2,
+   "active": 0.017,
+   "recovery": 0.5,
+   "damage": 9,
+   "t3_damage": 15,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:98",
+   "input_slots": [
+    "d+1+2,2",
+    "d+1+2",
+    "2"
+   ],
+   "move_class": "string",
+   "string_hit": "d+1+2"
+  },
+  "d/f+4,2": {
+   "name": "PANTERA d/f+4,2 (T3 king r196)",
+   "input": "d/f+4,2",
+   "t3_source": "king",
+   "t3_row": 196,
+   "t3_command": "RP",
+   "startup": 0.1,
+   "active": 0.017,
+   "recovery": 0.9,
+   "damage": 8,
+   "t3_damage": 13,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:196",
+   "input_slots": [
+    "d/f+4,2",
+    "d/f+4",
+    "2"
+   ],
+   "move_class": "string",
+   "string_hit": "d/f+4"
+  },
+  "d/f+4,4": {
+   "name": "PANTERA d/f+4,4 (T3 king r197)",
+   "input": "d/f+4,4",
+   "t3_source": "king",
+   "t3_row": 197,
+   "t3_command": "RK",
+   "startup": 0.1,
+   "active": 0.017,
+   "recovery": 0.9,
+   "damage": 10,
+   "t3_damage": 17,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:197",
+   "input_slots": [
+    "d/f+4,4",
+    "d/f+4",
+    "4"
+   ],
+   "move_class": "string",
+   "string_hit": "d/f+4"
+  },
+  "d+1+2,2,1": {
+   "name": "PANTERA d+1+2,2,1 (T3 king r198)",
+   "input": "d+1+2,2,1",
+   "t3_source": "king",
+   "t3_row": 198,
+   "t3_command": "LP",
+   "startup": 0.4,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 6,
+   "t3_damage": 10,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:198",
+   "input_slots": [
+    "d+1+2,2,1",
+    "d+1+2",
+    "2",
+    "1"
+   ],
+   "move_class": "string",
+   "string_hit": "d+1+2,2"
+  },
+  "d+1+2,2,1,1": {
+   "name": "PANTERA d+1+2,2,1,1 (T3 king r257)",
+   "input": "d+1+2,2,1,1",
+   "t3_source": "king",
+   "t3_row": 257,
+   "t3_command": "LP",
+   "startup": 0.433,
+   "active": 0.017,
+   "recovery": 0.6,
+   "damage": 4,
+   "t3_damage": 6,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:257",
+   "input_slots": [
+    "d+1+2,2,1,1",
+    "d+1+2",
+    "2",
+    "1",
+    "1"
+   ],
+   "move_class": "string",
+   "string_hit": "d+1+2,2,1"
+  },
+  "d+1+2,2,1,1,2": {
+   "name": "PANTERA d+1+2,2,1,1,2 (T3 king r258)",
+   "input": "d+1+2,2,1,1,2",
+   "t3_source": "king",
+   "t3_row": 258,
+   "t3_command": "RP",
+   "startup": 0.283,
+   "active": 0.05,
+   "recovery": 0.467,
+   "damage": 4,
+   "t3_damage": 6,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:258",
+   "input_slots": [
+    "d+1+2,2,1,1,2",
+    "d+1+2",
+    "2",
+    "1",
+    "1",
+    "2"
+   ],
+   "move_class": "string",
+   "string_hit": "d+1+2,2,1,1"
+  },
+  "d+1+2,2,1,1,3": {
+   "name": "PANTERA d+1+2,2,1,1,3 (T3 king r264)",
+   "input": "d+1+2,2,1,1,3",
+   "t3_source": "king",
+   "t3_row": 264,
+   "t3_command": "LK",
+   "startup": 0.433,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 5,
+   "t3_damage": 8,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:264",
+   "input_slots": [
+    "d+1+2,2,1,1,3",
+    "d+1+2",
+    "2",
+    "1",
+    "1",
+    "3"
+   ],
+   "move_class": "string",
+   "string_hit": "d+1+2,2,1,1"
+  },
+  "d+1+2,2,1,1,2,4": {
+   "name": "PANTERA d+1+2,2,1,1,2,4 (T3 king r259)",
+   "input": "d+1+2,2,1,1,2,4",
+   "t3_source": "king",
+   "t3_row": 259,
+   "t3_command": "RK",
+   "startup": 0.35,
+   "active": 0.017,
+   "recovery": 0.917,
+   "damage": 3,
+   "t3_damage": 5,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:259",
+   "input_slots": [
+    "d+1+2,2,1,1,2,4",
+    "d+1+2",
+    "2",
+    "1",
+    "1",
+    "2",
+    "4"
+   ],
+   "move_class": "string",
+   "string_hit": "d+1+2,2,1,1,2"
+  },
+  "d+1+2,2,1,1,3,3": {
+   "name": "PANTERA d+1+2,2,1,1,3,3 (T3 king r265)",
+   "input": "d+1+2,2,1,1,3,3",
+   "t3_source": "king",
+   "t3_row": 265,
+   "t3_command": "LK",
+   "startup": 0.45,
+   "active": 0.017,
+   "recovery": 0.817,
+   "damage": 6,
+   "t3_damage": 10,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:265",
+   "input_slots": [
+    "d+1+2,2,1,1,3,3",
+    "d+1+2",
+    "2",
+    "1",
+    "1",
+    "3",
+    "3"
+   ],
+   "move_class": "string",
+   "string_hit": "d+1+2,2,1,1,3"
   }
  },
  "strings": [
@@ -336,6 +1149,113 @@
    "t3_rows": [
     203,
     220
+   ]
+  },
+  {
+   "input": "d+1+2,2",
+   "hits": [
+    "d+1+2",
+    "2"
+   ],
+   "t3_rows": [
+    98
+   ]
+  },
+  {
+   "input": "d/f+4,2",
+   "hits": [
+    "d/f+4",
+    "2"
+   ],
+   "t3_rows": [
+    196
+   ]
+  },
+  {
+   "input": "d/f+4,4",
+   "hits": [
+    "d/f+4",
+    "4"
+   ],
+   "t3_rows": [
+    197
+   ]
+  },
+  {
+   "input": "d+1+2,2,1",
+   "hits": [
+    "d+1+2",
+    "2",
+    "1"
+   ],
+   "t3_rows": [
+    198
+   ]
+  },
+  {
+   "input": "d+1+2,2,1,1",
+   "hits": [
+    "d+1+2",
+    "2",
+    "1",
+    "1"
+   ],
+   "t3_rows": [
+    257
+   ]
+  },
+  {
+   "input": "d+1+2,2,1,1,2",
+   "hits": [
+    "d+1+2",
+    "2",
+    "1",
+    "1",
+    "2"
+   ],
+   "t3_rows": [
+    258
+   ]
+  },
+  {
+   "input": "d+1+2,2,1,1,3",
+   "hits": [
+    "d+1+2",
+    "2",
+    "1",
+    "1",
+    "3"
+   ],
+   "t3_rows": [
+    264
+   ]
+  },
+  {
+   "input": "d+1+2,2,1,1,2,4",
+   "hits": [
+    "d+1+2",
+    "2",
+    "1",
+    "1",
+    "2",
+    "4"
+   ],
+   "t3_rows": [
+    259
+   ]
+  },
+  {
+   "input": "d+1+2,2,1,1,3,3",
+   "hits": [
+    "d+1+2",
+    "2",
+    "1",
+    "1",
+    "3",
+    "3"
+   ],
+   "t3_rows": [
+    265
    ]
   }
  ],
@@ -360,5 +1280,16 @@
   }
  ],
  "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
- "schema_version": 2
+ "schema_version": 2,
+ "expansion": {
+  "stream": "stream6/combat-100",
+  "date": "2026-10-19",
+  "moves_added": 34,
+  "inputs_remapped": [
+   "P+K->1+4",
+   "f+P->f+1",
+   "S->1+2"
+  ],
+  "note": "Additive expansion from real T3 teardown bank rows. Existing moves untouched."
+ }
 }

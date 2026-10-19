@@ -163,7 +163,8 @@
    "input_slots": [
     "1+3"
    ],
-   "move_class": "throw"
+   "move_class": "throw",
+   "throw_break": "1"
   },
   "2+4": {
    "name": "PHANTOM 2+4 throw (T3 yoshimitsu r165)",
@@ -188,7 +189,8 @@
    "input_slots": [
     "2+4"
    ],
-   "move_class": "throw"
+   "move_class": "throw",
+   "throw_break": "2"
   },
   "b+1": {
    "name": "PHANTOM b+1 (T3 yoshimitsu r286)",
@@ -255,7 +257,8 @@
    "input_slots": [
     "n,d,d/b,b+1+2"
    ],
-   "move_class": "throw"
+   "move_class": "throw",
+   "throw_break": "1+2"
   },
   "n,d/b,n,f+1+2": {
    "name": "PHANTOM n,d/b,n,f+1+2 throw (T3 yoshimitsu r314)",
@@ -280,7 +283,8 @@
    "input_slots": [
     "n,d/b,n,f+1+2"
    ],
-   "move_class": "throw"
+   "move_class": "throw",
+   "throw_break": "1+2"
   },
   "n,d,d/f,f+1": {
    "name": "PHANTOM n,d,d/f,f+1 (T3 yoshimitsu r227)",
@@ -307,9 +311,9 @@
    ],
    "move_class": "special"
   },
-  "S": {
+  "1+2": {
    "name": "Cut Is the Prayer [WH SIGNATURE]",
-   "input": "S",
+   "input": "1+2",
    "startup": 0.33,
    "active": 0.1,
    "recovery": 0.95,
@@ -320,15 +324,16 @@
    "soulGain": 13,
    "anim_ref": "wh:phantom:sig:cut-is-the-prayer",
    "input_slots": [
-    "S"
+    "1+2"
    ],
    "move_class": "signature",
    "wh_original": true,
-   "note": "The cut is the prayer. The wound is the answer. Spinning blade draw; wounds the wielder (self-chip) - the blade cuts both ways."
+   "note": "The cut is the prayer. The wound is the answer. Spinning blade draw; wounds the wielder (self-chip) - the blade cuts both ways.",
+   "input_remapped_from": "S"
   },
-  "D+S": {
+  "d+1+2": {
    "name": "Three Seconds Quiet [WH SIGNATURE]",
-   "input": "D+S",
+   "input": "d+1+2",
    "startup": 0.26,
    "active": 0.017,
    "recovery": 0.78,
@@ -339,17 +344,16 @@
    "soulGain": 12,
    "anim_ref": "wh:phantom:sig:three-seconds-quiet",
    "input_slots": [
-    "D+S",
-    "D",
-    "S"
+    "d+1+2"
    ],
    "move_class": "signature",
    "wh_original": true,
-   "note": "After a kill he goes quiet for exactly three seconds. Dodge-vanish into a teleport slash."
+   "note": "After a kill he goes quiet for exactly three seconds. Dodge-vanish into a teleport slash.",
+   "input_remapped_from": "D+S"
   },
-  "u+P": {
+  "u+1": {
    "name": "Mask-Slip Spin [WH SIGNATURE]",
-   "input": "u+P",
+   "input": "u+1",
    "startup": 0.3,
    "active": 0.1,
    "recovery": 0.9,
@@ -360,13 +364,548 @@
    "soulGain": 12,
    "anim_ref": "wh:phantom:sig:mask-slip-spin",
    "input_slots": [
-    "u+P",
-    "u",
-    "P"
+    "u+1"
    ],
    "move_class": "signature",
    "wh_original": true,
-   "note": "When the other one takes over, the style doesn't change - it just stops pretending. Rising wild spin."
+   "note": "When the other one takes over, the style doesn't change - it just stops pretending. Rising wild spin.",
+   "input_remapped_from": "u+P"
+  },
+  "f+4": {
+   "name": "PHANTOM f+4 (T3 yoshimitsu r258)",
+   "input": "f+4",
+   "t3_source": "yoshimitsu",
+   "t3_row": 258,
+   "t3_command": "6+RK",
+   "startup": 0.117,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 12,
+   "t3_damage": 20,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:yoshimitsu:row:258",
+   "input_slots": [
+    "f+4"
+   ],
+   "move_class": "strike"
+  },
+  "d+1+4": {
+   "name": "PHANTOM d+1+4 (T3 yoshimitsu r285)",
+   "input": "d+1+4",
+   "t3_source": "yoshimitsu",
+   "t3_row": 285,
+   "t3_command": "2+LP+RK",
+   "startup": 0.483,
+   "active": 0.033,
+   "recovery": 1.45,
+   "damage": 35,
+   "t3_damage": 60,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:yoshimitsu:row:285",
+   "input_slots": [
+    "d+1+4"
+   ],
+   "move_class": "strike"
+  },
+  "d/b+1": {
+   "name": "PHANTOM d/b+1 (T3 yoshimitsu r156)",
+   "input": "d/b+1",
+   "t3_source": "yoshimitsu",
+   "t3_row": 156,
+   "t3_command": "1+LP",
+   "startup": 0.4,
+   "active": 0.067,
+   "recovery": 0.717,
+   "damage": 6,
+   "t3_damage": 10,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:yoshimitsu:row:156",
+   "input_slots": [
+    "d/b+1"
+   ],
+   "move_class": "strike"
+  },
+  "d/b+2": {
+   "name": "PHANTOM d/b+2 (T3 yoshimitsu r157)",
+   "input": "d/b+2",
+   "t3_source": "yoshimitsu",
+   "t3_row": 157,
+   "t3_command": "1+RP",
+   "startup": 0.233,
+   "active": 0.017,
+   "recovery": 0.1,
+   "damage": 6,
+   "t3_damage": 10,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:yoshimitsu:row:157",
+   "input_slots": [
+    "d/b+2"
+   ],
+   "move_class": "strike"
+  },
+  "d/f+1": {
+   "name": "PHANTOM d/f+1 (T3 yoshimitsu r223)",
+   "input": "d/f+1",
+   "t3_source": "yoshimitsu",
+   "t3_row": 223,
+   "t3_command": "3+LP",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.883,
+   "damage": 9,
+   "t3_damage": 15,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:yoshimitsu:row:223",
+   "input_slots": [
+    "d/f+1"
+   ],
+   "move_class": "strike"
+  },
+  "d/f+3": {
+   "name": "PHANTOM d/f+3 (T3 yoshimitsu r252)",
+   "input": "d/f+3",
+   "t3_source": "yoshimitsu",
+   "t3_row": 252,
+   "t3_command": "3+LK",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.817,
+   "damage": 7,
+   "t3_damage": 12,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:yoshimitsu:row:252",
+   "input_slots": [
+    "d/f+3"
+   ],
+   "move_class": "strike"
+  },
+  "u+2+3": {
+   "name": "PHANTOM u+2+3 (T3 yoshimitsu r236)",
+   "input": "u+2+3",
+   "t3_source": "yoshimitsu",
+   "t3_row": 236,
+   "t3_command": "8+RP+LK",
+   "startup": 1.3,
+   "active": 0.05,
+   "recovery": 0.833,
+   "damage": 53,
+   "t3_damage": 90,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:yoshimitsu:row:236",
+   "input_slots": [
+    "u+2+3"
+   ],
+   "move_class": "strike"
+  },
+  "u/b+1": {
+   "name": "PHANTOM u/b+1 (T3 yoshimitsu r55)",
+   "input": "u/b+1",
+   "t3_source": "yoshimitsu",
+   "t3_row": 55,
+   "t3_command": "4/7+LP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 7,
+   "t3_damage": 12,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:yoshimitsu:row:55",
+   "input_slots": [
+    "u/b+1"
+   ],
+   "move_class": "strike"
+  },
+  "u/b+3": {
+   "name": "PHANTOM u/b+3 (T3 yoshimitsu r75)",
+   "input": "u/b+3",
+   "t3_source": "yoshimitsu",
+   "t3_row": 75,
+   "t3_command": "4/7+LK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 15,
+   "t3_damage": 25,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:yoshimitsu:row:75",
+   "input_slots": [
+    "u/b+3"
+   ],
+   "move_class": "strike"
+  },
+  "u/b+4": {
+   "name": "PHANTOM u/b+4 (T3 yoshimitsu r99)",
+   "input": "u/b+4",
+   "t3_source": "yoshimitsu",
+   "t3_row": 99,
+   "t3_command": "4/7+RK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 11,
+   "t3_damage": 18,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:yoshimitsu:row:99",
+   "input_slots": [
+    "u/b+4"
+   ],
+   "move_class": "strike"
+  },
+  "u/f+1": {
+   "name": "PHANTOM u/f+1 (T3 yoshimitsu r66)",
+   "input": "u/f+1",
+   "t3_source": "yoshimitsu",
+   "t3_row": 66,
+   "t3_command": "6/9+LP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 7,
+   "t3_damage": 12,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:yoshimitsu:row:66",
+   "input_slots": [
+    "u/f+1"
+   ],
+   "move_class": "strike"
+  },
+  "u/f+3": {
+   "name": "PHANTOM u/f+3 (T3 yoshimitsu r74)",
+   "input": "u/f+3",
+   "t3_source": "yoshimitsu",
+   "t3_row": 74,
+   "t3_command": "6/9+LK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 15,
+   "t3_damage": 25,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:yoshimitsu:row:74",
+   "input_slots": [
+    "u/f+3"
+   ],
+   "move_class": "strike"
+  },
+  "u/f+4": {
+   "name": "PHANTOM u/f+4 (T3 yoshimitsu r98)",
+   "input": "u/f+4",
+   "t3_source": "yoshimitsu",
+   "t3_row": 98,
+   "t3_command": "6/9+RK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 12,
+   "t3_damage": 21,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:yoshimitsu:row:98",
+   "input_slots": [
+    "u/f+4"
+   ],
+   "move_class": "strike"
+  },
+  "u/b+1+2": {
+   "name": "PHANTOM u/b+1+2 (T3 yoshimitsu r261)",
+   "input": "u/b+1+2",
+   "t3_source": "yoshimitsu",
+   "t3_row": 261,
+   "t3_command": "7+LP+RP",
+   "startup": 1.883,
+   "active": 0.033,
+   "recovery": 0.333,
+   "damage": 24,
+   "t3_damage": 40,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:yoshimitsu:row:261",
+   "input_slots": [
+    "u/b+1+2"
+   ],
+   "move_class": "strike"
+  },
+  "u/b+3+4": {
+   "name": "PHANTOM u/b+3+4 (T3 yoshimitsu r87)",
+   "input": "u/b+3+4",
+   "t3_source": "yoshimitsu",
+   "t3_row": 87,
+   "t3_command": "4/7+LK+RK",
+   "startup": 0.383,
+   "active": 0.017,
+   "recovery": 0.817,
+   "damage": 15,
+   "t3_damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:yoshimitsu:row:87",
+   "input_slots": [
+    "u/b+3+4"
+   ],
+   "move_class": "strike"
+  },
+  "u/f+3+4": {
+   "name": "PHANTOM u/f+3+4 (T3 yoshimitsu r291)",
+   "input": "u/f+3+4",
+   "t3_source": "yoshimitsu",
+   "t3_row": 291,
+   "t3_command": "6/9+LK+RK",
+   "startup": 0.517,
+   "active": 0.083,
+   "recovery": 0.867,
+   "damage": 6,
+   "t3_damage": 10,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:yoshimitsu:row:291",
+   "input_slots": [
+    "u/f+3+4"
+   ],
+   "move_class": "strike"
+  },
+  "2,2,4,1": {
+   "name": "PHANTOM 2,2,4,1 (T3 yoshimitsu r310)",
+   "input": "2,2,4,1",
+   "t3_source": "yoshimitsu",
+   "t3_row": 310,
+   "t3_command": "LP",
+   "startup": 0.583,
+   "active": 0.033,
+   "recovery": 0.733,
+   "damage": 5,
+   "t3_damage": 8,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:yoshimitsu:row:310",
+   "input_slots": [
+    "2,2,4,1",
+    "2",
+    "2",
+    "4",
+    "1"
+   ],
+   "move_class": "string",
+   "string_hit": "2,2,4"
+  },
+  "f+4,3": {
+   "name": "PHANTOM f+4,3 (T3 yoshimitsu r275)",
+   "input": "f+4,3",
+   "t3_source": "yoshimitsu",
+   "t3_row": 275,
+   "t3_command": "LK",
+   "startup": 0.6,
+   "active": 0.033,
+   "recovery": 0.75,
+   "damage": 18,
+   "t3_damage": 30,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:yoshimitsu:row:275",
+   "input_slots": [
+    "f+4,3",
+    "f+4",
+    "3"
+   ],
+   "move_class": "string",
+   "string_hit": "f+4"
+  },
+  "d/f+1,1": {
+   "name": "PHANTOM d/f+1,1 (T3 yoshimitsu r224)",
+   "input": "d/f+1,1",
+   "t3_source": "yoshimitsu",
+   "t3_row": 224,
+   "t3_command": "LP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.5,
+   "damage": 7,
+   "t3_damage": 12,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:yoshimitsu:row:224",
+   "input_slots": [
+    "d/f+1,1",
+    "d/f+1",
+    "1"
+   ],
+   "move_class": "string",
+   "string_hit": "d/f+1"
+  },
+  "d/f+1,2": {
+   "name": "PHANTOM d/f+1,2 (T3 yoshimitsu r244)",
+   "input": "d/f+1,2",
+   "t3_source": "yoshimitsu",
+   "t3_row": 244,
+   "t3_command": "RP",
+   "startup": 0.417,
+   "active": 0.033,
+   "recovery": 0.717,
+   "damage": 7,
+   "t3_damage": 12,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:yoshimitsu:row:244",
+   "input_slots": [
+    "d/f+1,2",
+    "d/f+1",
+    "2"
+   ],
+   "move_class": "string",
+   "string_hit": "d/f+1"
+  },
+  "u+2+3,1": {
+   "name": "PHANTOM u+2+3,1 (T3 yoshimitsu r237)",
+   "input": "u+2+3,1",
+   "t3_source": "yoshimitsu",
+   "t3_row": 237,
+   "t3_command": "LP",
+   "startup": 0.333,
+   "active": 1.433,
+   "recovery": 0.683,
+   "damage": 18,
+   "t3_damage": 30,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:yoshimitsu:row:237",
+   "input_slots": [
+    "u+2+3,1",
+    "u+2+3",
+    "1"
+   ],
+   "move_class": "string",
+   "string_hit": "u+2+3"
+  },
+  "2,2,4,1,1": {
+   "name": "PHANTOM 2,2,4,1,1 (T3 yoshimitsu r311)",
+   "input": "2,2,4,1,1",
+   "t3_source": "yoshimitsu",
+   "t3_row": 311,
+   "t3_command": "LP",
+   "startup": 0.533,
+   "active": 0.033,
+   "recovery": 1.117,
+   "damage": 18,
+   "t3_damage": 30,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:yoshimitsu:row:311",
+   "input_slots": [
+    "2,2,4,1,1",
+    "2",
+    "2",
+    "4",
+    "1",
+    "1"
+   ],
+   "move_class": "string",
+   "string_hit": "2,2,4,1"
+  },
+  "d/f+1,1,1": {
+   "name": "PHANTOM d/f+1,1,1 (T3 yoshimitsu r225)",
+   "input": "d/f+1,1,1",
+   "t3_source": "yoshimitsu",
+   "t3_row": 225,
+   "t3_command": "LP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.5,
+   "damage": 7,
+   "t3_damage": 12,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:yoshimitsu:row:225",
+   "input_slots": [
+    "d/f+1,1,1",
+    "d/f+1",
+    "1",
+    "1"
+   ],
+   "move_class": "string",
+   "string_hit": "d/f+1,1"
+  },
+  "d/f+1,1,1,1": {
+   "name": "PHANTOM d/f+1,1,1,1 (T3 yoshimitsu r226)",
+   "input": "d/f+1,1,1,1",
+   "t3_source": "yoshimitsu",
+   "t3_row": 226,
+   "t3_command": "LP",
+   "startup": 0.417,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 14,
+   "t3_damage": 24,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:yoshimitsu:row:226",
+   "input_slots": [
+    "d/f+1,1,1,1",
+    "d/f+1",
+    "1",
+    "1",
+    "1"
+   ],
+   "move_class": "string",
+   "string_hit": "d/f+1,1,1"
   }
  },
  "strings": [
@@ -393,6 +932,94 @@
     308,
     309
    ]
+  },
+  {
+   "input": "2,2,4,1",
+   "hits": [
+    "2",
+    "2",
+    "4",
+    "1"
+   ],
+   "t3_rows": [
+    310
+   ]
+  },
+  {
+   "input": "f+4,3",
+   "hits": [
+    "f+4",
+    "3"
+   ],
+   "t3_rows": [
+    275
+   ]
+  },
+  {
+   "input": "d/f+1,1",
+   "hits": [
+    "d/f+1",
+    "1"
+   ],
+   "t3_rows": [
+    224
+   ]
+  },
+  {
+   "input": "d/f+1,2",
+   "hits": [
+    "d/f+1",
+    "2"
+   ],
+   "t3_rows": [
+    244
+   ]
+  },
+  {
+   "input": "u+2+3,1",
+   "hits": [
+    "u+2+3",
+    "1"
+   ],
+   "t3_rows": [
+    237
+   ]
+  },
+  {
+   "input": "2,2,4,1,1",
+   "hits": [
+    "2",
+    "2",
+    "4",
+    "1",
+    "1"
+   ],
+   "t3_rows": [
+    311
+   ]
+  },
+  {
+   "input": "d/f+1,1,1",
+   "hits": [
+    "d/f+1",
+    "1",
+    "1"
+   ],
+   "t3_rows": [
+    225
+   ]
+  },
+  {
+   "input": "d/f+1,1,1,1",
+   "hits": [
+    "d/f+1",
+    "1",
+    "1",
+    "1"
+   ],
+   "t3_rows": [
+    226
+   ]
   }
  ],
  "specials": [
@@ -416,5 +1043,16 @@
   }
  ],
  "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
- "schema_version": 2
+ "schema_version": 2,
+ "expansion": {
+  "stream": "stream6/combat-100",
+  "date": "2026-10-19",
+  "moves_added": 24,
+  "inputs_remapped": [
+   "S->1+2",
+   "D+S->d+1+2",
+   "u+P->u+1"
+  ],
+  "note": "Additive expansion from real T3 teardown bank rows. Existing moves untouched."
+ }
 }

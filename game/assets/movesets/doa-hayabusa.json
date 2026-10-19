@@ -232,7 +232,8 @@
    "throw": true,
    "isGrab": true,
    "unblockable": true,
-   "note": "frame data estimated from archetype; marked per schema honesty rule"
+   "note": "frame data estimated from archetype; marked per schema honesty rule",
+   "throw_break": "1"
   },
   "b+1+2": {
    "name": "Hayabusa 4H \u2014 mid punch hold",
@@ -294,9 +295,9 @@
    "move_class": "special",
    "note": "DOA counter-hold -> Tekken parry-style reversal. frame data estimated from archetype; marked per schema honesty rule"
   },
-  "S": {
+  "1+2": {
    "name": "Dragon's Shadow [WH SIGNATURE]",
-   "input": "S",
+   "input": "1+2",
    "startup": 0.28,
    "active": 0.1,
    "recovery": 0.85,
@@ -307,15 +308,16 @@
    "soulGain": 12,
    "anim_ref": "wh:doa-hayabusa:sig:dragons-shadow",
    "input_slots": [
-    "S"
+    "1+2"
    ],
    "move_class": "signature",
    "wh_original": true,
-   "note": "The ninja arrives as a shadow and leaves as a rumor. Blade-hand strike from nowhere."
+   "note": "The ninja arrives as a shadow and leaves as a rumor. Blade-hand strike from nowhere.",
+   "input_remapped_from": "S"
   },
-  "u+K": {
+  "u+4": {
    "name": "Falcon's Perch [WH SIGNATURE]",
-   "input": "u+K",
+   "input": "u+4",
    "startup": 0.3,
    "active": 0.017,
    "recovery": 0.88,
@@ -326,13 +328,12 @@
    "soulGain": 12,
    "anim_ref": "wh:doa-hayabusa:sig:falcons-perch",
    "input_slots": [
-    "u+K",
-    "u",
-    "K"
+    "u+4"
    ],
    "move_class": "signature",
    "wh_original": true,
-   "note": "Up where the falcon perches, then down like weather. Diving kick."
+   "note": "Up where the falcon perches, then down like weather. Diving kick.",
+   "input_remapped_from": "u+K"
   }
  },
  "strings": [

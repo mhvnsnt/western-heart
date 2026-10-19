@@ -138,7 +138,8 @@
    "input_slots": [
     "1+3"
    ],
-   "move_class": "throw"
+   "move_class": "throw",
+   "throw_break": "1"
   },
   "2+4": {
    "name": "DIO 2+4 throw (T3 heihachi r243)",
@@ -163,7 +164,8 @@
    "input_slots": [
     "2+4"
    ],
-   "move_class": "throw"
+   "move_class": "throw",
+   "throw_break": "2"
   },
   "d/f+2": {
    "name": "DIO d/f+2 (T3 heihachi r179)",
@@ -207,9 +209,9 @@
    ],
    "move_class": "special"
   },
-  "S": {
+  "1+2": {
    "name": "Crime Scene [WH SIGNATURE]",
-   "input": "S",
+   "input": "1+2",
    "startup": 0.38,
    "active": 0.1,
    "recovery": 1.05,
@@ -220,15 +222,16 @@
    "soulGain": 14,
    "anim_ref": "wh:dio:sig:crime-scene",
    "input_slots": [
-    "S"
+    "1+2"
    ],
    "move_class": "signature",
    "wh_original": true,
-   "note": "He has no win pose. He has a crime scene. The Satsui no Hado made audible."
+   "note": "He has no win pose. He has a crime scene. The Satsui no Hado made audible.",
+   "input_remapped_from": "S"
   },
-  "P+K": {
+  "1+4": {
    "name": "Hunger Wears a Mind [WH SIGNATURE]",
-   "input": "P+K",
+   "input": "1+4",
    "startup": 0.32,
    "active": 0.05,
    "recovery": 0.95,
@@ -239,16 +242,751 @@
    "soulGain": 13,
    "anim_ref": "wh:dio:sig:hunger-wears-a-mind",
    "input_slots": [
-    "P+K",
-    "P",
-    "K"
+    "1+4"
    ],
    "move_class": "signature",
    "wh_original": true,
    "note": "Not a mind but a hunger wearing a mind's shape. The Raging Demon collects.",
    "throw": true,
    "unblockable": true,
-   "isGrab": true
+   "isGrab": true,
+   "input_remapped_from": "P+K",
+   "throw_break": "1+2"
+  },
+  "b+2": {
+   "name": "DIO b+2 (T3 heihachi r207)",
+   "input": "b+2",
+   "t3_source": "heihachi",
+   "t3_row": 207,
+   "t3_command": "4+RP",
+   "startup": 0.367,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 12,
+   "t3_damage": 21,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:207",
+   "input_slots": [
+    "b+2"
+   ],
+   "move_class": "strike"
+  },
+  "d+1": {
+   "name": "DIO d+1 (T3 heihachi r123)",
+   "input": "d+1",
+   "t3_source": "heihachi",
+   "t3_row": 123,
+   "t3_command": "2+LP",
+   "startup": 0.233,
+   "active": 0.05,
+   "recovery": 0.6,
+   "damage": 9,
+   "t3_damage": 15,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:123",
+   "input_slots": [
+    "d+1"
+   ],
+   "move_class": "strike"
+  },
+  "f+1": {
+   "name": "DIO f+1 (T3 heihachi r133)",
+   "input": "f+1",
+   "t3_source": "heihachi",
+   "t3_row": 133,
+   "t3_command": "4/6+LP",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 7,
+   "t3_damage": 12,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:133",
+   "input_slots": [
+    "f+1"
+   ],
+   "move_class": "strike"
+  },
+  "f+2": {
+   "name": "DIO f+2 (T3 heihachi r134)",
+   "input": "f+2",
+   "t3_source": "heihachi",
+   "t3_row": 134,
+   "t3_command": "4/6+RP",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 9,
+   "t3_damage": 15,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:134",
+   "input_slots": [
+    "f+2"
+   ],
+   "move_class": "strike"
+  },
+  "f+3": {
+   "name": "DIO f+3 (T3 heihachi r135)",
+   "input": "f+3",
+   "t3_source": "heihachi",
+   "t3_row": 135,
+   "t3_command": "4/6+LK",
+   "startup": 0.267,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 16,
+   "t3_damage": 28,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:heihachi:row:135",
+   "input_slots": [
+    "f+3"
+   ],
+   "move_class": "strike"
+  },
+  "f+4": {
+   "name": "DIO f+4 (T3 heihachi r136)",
+   "input": "f+4",
+   "t3_source": "heihachi",
+   "t3_row": 136,
+   "t3_command": "4/6+RK",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 7,
+   "t3_damage": 12,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:136",
+   "input_slots": [
+    "f+4"
+   ],
+   "move_class": "strike"
+  },
+  "b+1+2": {
+   "name": "DIO b+1+2 (T3 heihachi r98)",
+   "input": "b+1+2",
+   "t3_source": "heihachi",
+   "t3_row": 98,
+   "t3_command": "4+LP+RP",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 0.483,
+   "damage": 3,
+   "t3_damage": 5,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:98",
+   "input_slots": [
+    "b+1+2"
+   ],
+   "move_class": "strike"
+  },
+  "d+1+4": {
+   "name": "DIO d+1+4 (T3 heihachi r198)",
+   "input": "d+1+4",
+   "t3_source": "heihachi",
+   "t3_row": 198,
+   "t3_command": "2+LP+RK",
+   "startup": 1.0,
+   "active": 0.033,
+   "recovery": 0.85,
+   "damage": 41,
+   "t3_damage": 70,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:heihachi:row:198",
+   "input_slots": [
+    "d+1+4"
+   ],
+   "move_class": "strike"
+  },
+  "d/f+1": {
+   "name": "DIO d/f+1 (T3 heihachi r173)",
+   "input": "d/f+1",
+   "t3_source": "heihachi",
+   "t3_row": 173,
+   "t3_command": "3+LP",
+   "startup": 0.317,
+   "active": 0.117,
+   "recovery": 0.7,
+   "damage": 21,
+   "t3_damage": 35,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:heihachi:row:173",
+   "input_slots": [
+    "d/f+1"
+   ],
+   "move_class": "strike"
+  },
+  "d/f+3": {
+   "name": "DIO d/f+3 (T3 heihachi r181)",
+   "input": "d/f+3",
+   "t3_source": "heihachi",
+   "t3_row": 181,
+   "t3_command": "3+LK",
+   "startup": 0.55,
+   "active": 0.017,
+   "recovery": 0.817,
+   "damage": 12,
+   "t3_damage": 21,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:181",
+   "input_slots": [
+    "d/f+3"
+   ],
+   "move_class": "strike"
+  },
+  "d/f+4": {
+   "name": "DIO d/f+4 (T3 heihachi r184)",
+   "input": "d/f+4",
+   "t3_source": "heihachi",
+   "t3_row": 184,
+   "t3_command": "3/6+RK",
+   "startup": 0.267,
+   "active": 0.017,
+   "recovery": 0.767,
+   "damage": 10,
+   "t3_damage": 17,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:184",
+   "input_slots": [
+    "d/f+4"
+   ],
+   "move_class": "strike"
+  },
+  "u/b+1": {
+   "name": "DIO u/b+1 (T3 heihachi r51)",
+   "input": "u/b+1",
+   "t3_source": "heihachi",
+   "t3_row": 51,
+   "t3_command": "4/7+LP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 7,
+   "t3_damage": 12,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:51",
+   "input_slots": [
+    "u/b+1"
+   ],
+   "move_class": "strike"
+  },
+  "u/b+3": {
+   "name": "DIO u/b+3 (T3 heihachi r61)",
+   "input": "u/b+3",
+   "t3_source": "heihachi",
+   "t3_row": 61,
+   "t3_command": "4/7+LK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 15,
+   "t3_damage": 25,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:heihachi:row:61",
+   "input_slots": [
+    "u/b+3"
+   ],
+   "move_class": "strike"
+  },
+  "u/b+4": {
+   "name": "DIO u/b+4 (T3 heihachi r73)",
+   "input": "u/b+4",
+   "t3_source": "heihachi",
+   "t3_row": 73,
+   "t3_command": "4/7+RK",
+   "startup": 0.25,
+   "active": 0.05,
+   "recovery": 0.6,
+   "damage": 6,
+   "t3_damage": 11,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:73",
+   "input_slots": [
+    "u/b+4"
+   ],
+   "move_class": "strike"
+  },
+  "u/f+1": {
+   "name": "DIO u/f+1 (T3 heihachi r50)",
+   "input": "u/f+1",
+   "t3_source": "heihachi",
+   "t3_row": 50,
+   "t3_command": "6/9+LP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 7,
+   "t3_damage": 12,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:50",
+   "input_slots": [
+    "u/f+1"
+   ],
+   "move_class": "strike"
+  },
+  "u/f+3": {
+   "name": "DIO u/f+3 (T3 heihachi r71)",
+   "input": "u/f+3",
+   "t3_source": "heihachi",
+   "t3_row": 71,
+   "t3_command": "6/9+LK",
+   "startup": 0.467,
+   "active": 0.033,
+   "recovery": 0.733,
+   "damage": 15,
+   "t3_damage": 25,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:heihachi:row:71",
+   "input_slots": [
+    "u/f+3"
+   ],
+   "move_class": "strike"
+  },
+  "d/f+1+2": {
+   "name": "DIO d/f+1+2 (T3 heihachi r110)",
+   "input": "d/f+1+2",
+   "t3_source": "heihachi",
+   "t3_row": 110,
+   "t3_command": "3+LP+RP",
+   "startup": 0.133,
+   "active": 0.017,
+   "recovery": 0.483,
+   "damage": 2,
+   "t3_damage": 3,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:110",
+   "input_slots": [
+    "d/f+1+2"
+   ],
+   "move_class": "strike"
+  },
+  "u/b+1+2": {
+   "name": "DIO u/b+1+2 (T3 heihachi r39)",
+   "input": "u/b+1+2",
+   "t3_source": "heihachi",
+   "t3_row": 39,
+   "t3_command": "4/7+LP+RP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 7,
+   "t3_damage": 12,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:39",
+   "input_slots": [
+    "u/b+1+2"
+   ],
+   "move_class": "strike"
+  },
+  "u/b+3+4": {
+   "name": "DIO u/b+3+4 (T3 heihachi r58)",
+   "input": "u/b+3+4",
+   "t3_source": "heihachi",
+   "t3_row": 58,
+   "t3_command": "4/7+LK+RK",
+   "startup": 0.35,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 15,
+   "t3_damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:heihachi:row:58",
+   "input_slots": [
+    "u/b+3+4"
+   ],
+   "move_class": "strike"
+  },
+  "u/f+1+2": {
+   "name": "DIO u/f+1+2 (T3 heihachi r38)",
+   "input": "u/f+1+2",
+   "t3_source": "heihachi",
+   "t3_row": 38,
+   "t3_command": "6/9+LP+RP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 7,
+   "t3_damage": 12,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:38",
+   "input_slots": [
+    "u/f+1+2"
+   ],
+   "move_class": "strike"
+  },
+  "u/f+3+4": {
+   "name": "DIO u/f+3+4 (T3 heihachi r57)",
+   "input": "u/f+3+4",
+   "t3_source": "heihachi",
+   "t3_row": 57,
+   "t3_command": "6/9+LK+RK",
+   "startup": 0.35,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 15,
+   "t3_damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:heihachi:row:57",
+   "input_slots": [
+    "u/f+3+4"
+   ],
+   "move_class": "strike"
+  },
+  "f+1+4": {
+   "name": "DIO f+1+4 throw (T3 heihachi r246)",
+   "input": "f+1+4",
+   "t3_source": "heihachi",
+   "t3_row": 246,
+   "t3_command": "6+LP+RK",
+   "startup": 0.2,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 21,
+   "t3_damage": 35,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 11,
+   "anim_ref": "t3:heihachi:row:246",
+   "input_slots": [
+    "f+1+4"
+   ],
+   "move_class": "throw",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2",
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+  },
+  "b+2,4": {
+   "name": "DIO b+2,4 (T3 heihachi r214)",
+   "input": "b+2,4",
+   "t3_source": "heihachi",
+   "t3_row": 214,
+   "t3_command": "RK",
+   "startup": 0.367,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 12,
+   "t3_damage": 21,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:214",
+   "input_slots": [
+    "b+2,4",
+    "b+2",
+    "4"
+   ],
+   "move_class": "string",
+   "string_hit": "b+2"
+  },
+  "b+2,1": {
+   "name": "DIO b+2,1 (T3 heihachi r216)",
+   "input": "b+2,1",
+   "t3_source": "heihachi",
+   "t3_row": 216,
+   "t3_command": "LP",
+   "startup": 0.367,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 12,
+   "t3_damage": 21,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:216",
+   "input_slots": [
+    "b+2,1",
+    "b+2",
+    "1"
+   ],
+   "move_class": "string",
+   "string_hit": "b+2"
+  },
+  "d+1,2": {
+   "name": "DIO d+1,2 (T3 heihachi r240)",
+   "input": "d+1,2",
+   "t3_source": "heihachi",
+   "t3_row": 240,
+   "t3_command": "RP",
+   "startup": 0.483,
+   "active": 0.017,
+   "recovery": 0.783,
+   "damage": 15,
+   "t3_damage": 26,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:heihachi:row:240",
+   "input_slots": [
+    "d+1,2",
+    "d+1",
+    "2"
+   ],
+   "move_class": "string",
+   "string_hit": "d+1"
+  },
+  "f+4,3": {
+   "name": "DIO f+4,3 (T3 heihachi r150)",
+   "input": "f+4,3",
+   "t3_source": "heihachi",
+   "t3_row": 150,
+   "t3_command": "LK",
+   "startup": 0.583,
+   "active": 0.05,
+   "recovery": 0.467,
+   "damage": 15,
+   "t3_damage": 25,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:heihachi:row:150",
+   "input_slots": [
+    "f+4,3",
+    "f+4",
+    "3"
+   ],
+   "move_class": "string",
+   "string_hit": "f+4"
+  },
+  "f+4,4": {
+   "name": "DIO f+4,4 (T3 heihachi r155)",
+   "input": "f+4,4",
+   "t3_source": "heihachi",
+   "t3_row": 155,
+   "t3_command": "RK",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 12,
+   "t3_damage": 21,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:155",
+   "input_slots": [
+    "f+4,4",
+    "f+4",
+    "4"
+   ],
+   "move_class": "string",
+   "string_hit": "f+4"
+  },
+  "b+1+2,1": {
+   "name": "DIO b+1+2,1 (T3 heihachi r145)",
+   "input": "b+1+2,1",
+   "t3_source": "heihachi",
+   "t3_row": 145,
+   "t3_command": "LP",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.483,
+   "damage": 5,
+   "t3_damage": 8,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:145",
+   "input_slots": [
+    "b+1+2,1",
+    "b+1+2",
+    "1"
+   ],
+   "move_class": "string",
+   "string_hit": "b+1+2"
+  },
+  "b+1+2,2": {
+   "name": "DIO b+1+2,2 (T3 heihachi r99)",
+   "input": "b+1+2,2",
+   "t3_source": "heihachi",
+   "t3_row": 99,
+   "t3_command": "RP",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 0.483,
+   "damage": 5,
+   "t3_damage": 8,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:99",
+   "input_slots": [
+    "b+1+2,2",
+    "b+1+2",
+    "2"
+   ],
+   "move_class": "string",
+   "string_hit": "b+1+2"
+  },
+  "u/f+3,4": {
+   "name": "DIO u/f+3,4 (T3 heihachi r171)",
+   "input": "u/f+3,4",
+   "t3_source": "heihachi",
+   "t3_row": 171,
+   "t3_command": "RK",
+   "startup": 0.467,
+   "active": 0.033,
+   "recovery": 0.733,
+   "damage": 10,
+   "t3_damage": 17,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:171",
+   "input_slots": [
+    "u/f+3,4",
+    "u/f+3",
+    "4"
+   ],
+   "move_class": "string",
+   "string_hit": "u/f+3"
+  },
+  "b+1+2,1,2": {
+   "name": "DIO b+1+2,1,2 (T3 heihachi r149)",
+   "input": "b+1+2,1,2",
+   "t3_source": "heihachi",
+   "t3_row": 149,
+   "t3_command": "RP",
+   "startup": 0.217,
+   "active": 0.017,
+   "recovery": 0.783,
+   "damage": 11,
+   "t3_damage": 18,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:149",
+   "input_slots": [
+    "b+1+2,1,2",
+    "b+1+2",
+    "1",
+    "2"
+   ],
+   "move_class": "string",
+   "string_hit": "b+1+2,1"
+  },
+  "b+1+2,2,2": {
+   "name": "DIO b+1+2,2,2 (T3 heihachi r147)",
+   "input": "b+1+2,2,2",
+   "t3_source": "heihachi",
+   "t3_row": 147,
+   "t3_command": "RP",
+   "startup": 0.283,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 11,
+   "t3_damage": 18,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:147",
+   "input_slots": [
+    "b+1+2,2,2",
+    "b+1+2",
+    "2",
+    "2"
+   ],
+   "move_class": "string",
+   "string_hit": "b+1+2,2"
+  },
+  "b+1+2,2,2,1": {
+   "name": "DIO b+1+2,2,2,1 (T3 heihachi r224)",
+   "input": "b+1+2,2,2,1",
+   "t3_source": "heihachi",
+   "t3_row": 224,
+   "t3_command": "LP",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 13,
+   "t3_damage": 22,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:224",
+   "input_slots": [
+    "b+1+2,2,2,1",
+    "b+1+2",
+    "2",
+    "2",
+    "1"
+   ],
+   "move_class": "string",
+   "string_hit": "b+1+2,2,2"
   }
  },
  "strings": [
@@ -261,6 +999,120 @@
    "t3_rows": [
     222,
     223
+   ]
+  },
+  {
+   "input": "b+2,4",
+   "hits": [
+    "b+2",
+    "4"
+   ],
+   "t3_rows": [
+    214
+   ]
+  },
+  {
+   "input": "b+2,1",
+   "hits": [
+    "b+2",
+    "1"
+   ],
+   "t3_rows": [
+    216
+   ]
+  },
+  {
+   "input": "d+1,2",
+   "hits": [
+    "d+1",
+    "2"
+   ],
+   "t3_rows": [
+    240
+   ]
+  },
+  {
+   "input": "f+4,3",
+   "hits": [
+    "f+4",
+    "3"
+   ],
+   "t3_rows": [
+    150
+   ]
+  },
+  {
+   "input": "f+4,4",
+   "hits": [
+    "f+4",
+    "4"
+   ],
+   "t3_rows": [
+    155
+   ]
+  },
+  {
+   "input": "b+1+2,1",
+   "hits": [
+    "b+1+2",
+    "1"
+   ],
+   "t3_rows": [
+    145
+   ]
+  },
+  {
+   "input": "b+1+2,2",
+   "hits": [
+    "b+1+2",
+    "2"
+   ],
+   "t3_rows": [
+    99
+   ]
+  },
+  {
+   "input": "u/f+3,4",
+   "hits": [
+    "u/f+3",
+    "4"
+   ],
+   "t3_rows": [
+    171
+   ]
+  },
+  {
+   "input": "b+1+2,1,2",
+   "hits": [
+    "b+1+2",
+    "1",
+    "2"
+   ],
+   "t3_rows": [
+    149
+   ]
+  },
+  {
+   "input": "b+1+2,2,2",
+   "hits": [
+    "b+1+2",
+    "2",
+    "2"
+   ],
+   "t3_rows": [
+    147
+   ]
+  },
+  {
+   "input": "b+1+2,2,2,1",
+   "hits": [
+    "b+1+2",
+    "2",
+    "2",
+    "1"
+   ],
+   "t3_rows": [
+    224
    ]
   }
  ],
@@ -281,5 +1133,15 @@
   }
  ],
  "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
- "schema_version": 2
+ "schema_version": 2,
+ "expansion": {
+  "stream": "stream6/combat-100",
+  "date": "2026-10-19",
+  "moves_added": 33,
+  "inputs_remapped": [
+   "S->1+2",
+   "P+K->1+4"
+  ],
+  "note": "Additive expansion from real T3 teardown bank rows. Existing moves untouched."
+ }
 }
