@@ -1,4 +1,4 @@
-# ZAFINA — Attire Slots (owner 2026-10-18)
+# MARIPOSA — Attire Slots (owner 2026-10-18)
 
 Canonical slot map. Ordering follows the Tripo Attachment Registry law
 (owner 2026-10-18): Tripo 3D models are the main/default attires when attached;
@@ -8,7 +8,7 @@ older in-game attires slot in after. (Pantera is the exception.)
 
 | Slot | Display name | Contents |
 |------|--------------|----------|
-| 1 | **Zafina — Golden Pharaoh** | `roster/zafina/attires/golden-pharaoh/zafina-golden-pharaoh.glb` — custom colorway reskin of her Tekken 6 outfit: butterfly top pink → metallic gold on black, teal scarf + lapis-blue roses kept, gold ring belt, yellow tiger "I like" eyes. Texture-only; rig intact. **No Tripo model attached for Zafina as of 2026-10-18** — if one is attached later it takes the main slot per registry law and Golden Pharaoh shifts down. |
+| 1 | **Mariposa — Golden Pharaoh** | `roster/zafina/attires/golden-pharaoh/zafina-golden-pharaoh.glb` — custom colorway reskin of her Tekken 6 outfit: butterfly top pink → metallic gold on black, teal scarf + lapis-blue roses kept, gold ring belt, yellow tiger "I like" eyes. Texture-only; rig intact. **No Tripo model attached for Mariposa as of 2026-10-18** — if one is attached later it takes the main slot per registry law and Golden Pharaoh shifts down. |
 | — | *(reserved)* | Future Tripo main attire (registry law). |
 
 ## Slot-ordering law

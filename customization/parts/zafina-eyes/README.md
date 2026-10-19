@@ -1,4 +1,4 @@
-# Zafina eye options (owner 2026-10-18)
+# Mariposa eye options (owner 2026-10-18)
 
 Per-character eye option library — same pattern as `customization/parts/pantera-eyes/`.
 Every variant is swappable Tekken/WWE-style; nothing is overwritten.

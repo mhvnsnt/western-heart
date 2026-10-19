@@ -1,4 +1,4 @@
-# LILI — Attire Slots (owner 2026-10-18)
+# SILVERTONGUE — Attire Slots (owner 2026-10-18)
 
 Canonical slot map. Ordering follows the Tripo Attachment Registry law
 (owner 2026-10-18): Tripo 3D models are the main/default attires when attached;
@@ -8,7 +8,7 @@ older in-game attires slot in after. (Pantera is the exception.)
 
 | Slot | Display name | Contents |
 |------|--------------|----------|
-| 1 | **Lili — Noir Gala** | `roster/lili/attires/noir-gala/lili-noir-gala.glb` — custom colorway reskin of her Tekken 7 1P formal outfit: white/cream dress → deep black, red bow tie + boot/glove trim kept, silver tiara, purple corsage, yellow tiger "I like" eyes. Texture-only; rig intact. **No Tripo model attached for Lili as of 2026-10-18** — if one is attached later it takes the main slot per registry law and Noir Gala shifts down. |
+| 1 | **Silvertongue — Noir Gala** | `roster/lili/attires/noir-gala/lili-noir-gala.glb` — custom colorway reskin of her Tekken 7 1P formal outfit: white/cream dress → deep black, red bow tie + boot/glove trim kept, silver tiara, purple corsage, yellow tiger "I like" eyes. Texture-only; rig intact. **No Tripo model attached for Silvertongue as of 2026-10-18** — if one is attached later it takes the main slot per registry law and Noir Gala shifts down. |
 | — | *(reserved)* | Future Tripo main attire (registry law). |
 
 ## Slot-ordering law
