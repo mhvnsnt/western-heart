@@ -182,6 +182,46 @@
     "d+4"
    ],
    "move_class": "special"
+  },
+  "S": {
+   "name": "Sage for the New Face [WH SIGNATURE]",
+   "input": "S",
+   "startup": 0.27,
+   "active": 0.017,
+   "recovery": 0.8,
+   "damage": 16,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 12,
+   "anim_ref": "wh:nightwolf:sig:sage-for-the-new-face",
+   "input_slots": [
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "She burns sage over the newly dead between death and return. A guiding palm that walks you through."
+  },
+  "b+S": {
+   "name": "Ancestor's Answer [WH SIGNATURE]",
+   "input": "b+S",
+   "startup": 0.24,
+   "active": 0.017,
+   "recovery": 0.72,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 12,
+   "anim_ref": "wh:nightwolf:sig:ancestors-answer",
+   "input_slots": [
+    "b+S",
+    "b",
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "She speaks to her ancestors between rounds. Rooted counter - the spirits move her."
   }
  },
  "strings": [],

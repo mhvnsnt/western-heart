@@ -231,6 +231,49 @@
     "u/f+4"
    ],
    "move_class": "special"
+  },
+  "P+K": {
+   "name": "Bounty or Fun [WH SIGNATURE]",
+   "input": "P+K",
+   "startup": 0.3,
+   "active": 0.05,
+   "recovery": 0.9,
+   "damage": 22,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 13,
+   "anim_ref": "wh:negativo:sig:bounty-or-fun",
+   "input_slots": [
+    "P+K",
+    "P",
+    "K"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "Before every match he offers the choice. No one knows what the difference is. No one wants to find out.",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true
+  },
+  "S": {
+   "name": "Running Out of Room [WH SIGNATURE]",
+   "input": "S",
+   "startup": 0.34,
+   "active": 0.017,
+   "recovery": 0.95,
+   "damage": 21,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 13,
+   "anim_ref": "wh:negativo:sig:running-out-of-room",
+   "input_slots": [
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "The kill-count is carved into the bat's handle. He's running out of room. Barbed-wire bat finisher."
   }
  },
  "strings": [

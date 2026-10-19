@@ -281,6 +281,49 @@
     "n,d/b,n,f+1+2"
    ],
    "move_class": "throw"
+  },
+  "S": {
+   "name": "Side Dish Slam [WH SIGNATURE]",
+   "input": "S",
+   "startup": 0.36,
+   "active": 0.05,
+   "recovery": 1.0,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 13,
+   "anim_ref": "wh:burger:sig:side-dish-slam",
+   "input_slots": [
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "The katana is a side dish. Belly-bounce slam served hot."
+  },
+  "P+K": {
+   "name": "Appetite's Grip [WH SIGNATURE]",
+   "input": "P+K",
+   "startup": 0.31,
+   "active": 0.05,
+   "recovery": 0.92,
+   "damage": 22,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 13,
+   "anim_ref": "wh:burger:sig:appetites-grip",
+   "input_slots": [
+    "P+K",
+    "P",
+    "K"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "His stomach growls in the exact pitch of the Appetite room's hum. A gnawing hug you can't stop feeding.",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true
   }
  },
  "strings": [

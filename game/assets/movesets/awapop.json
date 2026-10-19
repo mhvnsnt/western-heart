@@ -330,6 +330,49 @@
     "f+2"
    ],
    "move_class": "special"
+  },
+  "S": {
+   "name": "Pop! [WH SIGNATURE]",
+   "input": "S",
+   "startup": 0.26,
+   "active": 0.017,
+   "recovery": 0.78,
+   "damage": 17,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 12,
+   "anim_ref": "wh:awapop:sig:pop",
+   "input_slots": [
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "Her fighting philosophy, one syllable long. Bubbles rise. Bubbles pop."
+  },
+  "P+K": {
+   "name": "Last Thing You Hear [WH SIGNATURE]",
+   "input": "P+K",
+   "startup": 0.29,
+   "active": 0.05,
+   "recovery": 0.88,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 13,
+   "anim_ref": "wh:awapop:sig:last-thing-you-hear",
+   "input_slots": [
+    "P+K",
+    "P",
+    "K"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "She hums while she fights. Survivors say the humming is the last thing you hear before the pop.",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true
   }
  },
  "strings": [

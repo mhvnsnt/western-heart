@@ -379,6 +379,49 @@
     "n,d/f,n,d/f+1"
    ],
    "move_class": "throw"
+  },
+  "S": {
+   "name": "Nail File [WH SIGNATURE]",
+   "input": "S",
+   "startup": 0.24,
+   "active": 0.017,
+   "recovery": 0.75,
+   "damage": 16,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 12,
+   "anim_ref": "wh:torch:sig:nail-file",
+   "input_slots": [
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "She files her nails during the versus screen. Opponents say the sound is worse than the fight."
+  },
+  "P+K": {
+   "name": "Extraction Team of One [WH SIGNATURE]",
+   "input": "P+K",
+   "startup": 0.31,
+   "active": 0.05,
+   "recovery": 0.92,
+   "damage": 22,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 13,
+   "anim_ref": "wh:torch:sig:extraction-team-of-one",
+   "input_slots": [
+    "P+K",
+    "P",
+    "K"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "She broke in after her sister. Get Awa Pop. Get out. A dragging grab toward the exit.",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true
   }
  },
  "strings": [

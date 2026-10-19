@@ -231,6 +231,46 @@
     "d+4"
    ],
    "move_class": "special"
+  },
+  "d/b+K": {
+   "name": "Undertow [WH SIGNATURE]",
+   "input": "d/b+K",
+   "startup": 0.26,
+   "active": 0.017,
+   "recovery": 0.8,
+   "damage": 16,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 12,
+   "anim_ref": "wh:star:sig:undertow",
+   "input_slots": [
+    "d/b+K",
+    "d/b",
+    "K"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "The tide announces itself. The current doesn't. The sweep you don't see until you're in it."
+  },
+  "S": {
+   "name": "Tide-Song [WH SIGNATURE]",
+   "input": "S",
+   "startup": 0.3,
+   "active": 0.1,
+   "recovery": 0.88,
+   "damage": 18,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 12,
+   "anim_ref": "wh:star:sig:tide-song",
+   "input_slots": [
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "She followed the music here. The trial's war-drums have started syncing to her. Rhythmic ginga flurry."
   }
  },
  "strings": [
