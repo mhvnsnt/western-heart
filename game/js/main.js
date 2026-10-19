@@ -545,14 +545,21 @@ async function startFight(playerId, enemyId, opts = {}) {
   // Models may already be prefetched from select-screen highlight.
   const need = [...new Set([player.model || 'pantera', enemy.model || 'pantera'])];
   // Mid-match transform targets must be preloaded (createInstance is sync).
-  for (const c of [player, enemy]) if (c.transform && c.transform.targetModel) need.push(c.transform.targetModel);
+  for (const c of [player, enemy]) {
+    if (c.transform && c.transform.targetModel) need.push(c.transform.targetModel);
+    if (c.forms) for (const fk of Object.keys(c.forms)) {
+      const fe = c.forms[fk];
+      const tgts = fe.target ? [fe] : [fe.up, fe.down].filter(Boolean);
+      for (const t of tgts) if (t.target) need.push(t.target);
+    }
+  }
   const hint = document.getElementById('select-hint');
   const confirmBtn = document.getElementById('confirm-fighter');
   try {
     if (hint) hint.textContent = 'Entering the arena…';
     // Show the TRANSFORM touch button only for fighters that can transform.
     const tBtn = document.querySelector('.act-btn.transform');
-    if (tBtn) tBtn.style.display = player.transform ? '' : 'none';
+    if (tBtn) tBtn.style.display = (player.transform || player.forms) ? '' : 'none';
     if (confirmBtn) confirmBtn.disabled = true;
     await assets.loadModels(need, (p, loaded, total) => {
       if (!hint) return;

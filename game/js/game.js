@@ -230,7 +230,10 @@ export class Game {
           }
           else if (act === 'dodge') { if (this.p1.tryDodge()) rec('dodge'); }
           else if (act === 'transform') {
-            if (this.p1.tryTransform()) { audio.soulSurge(this.p1.char.id); rec('transform'); }
+            if (this.p1.tryTransform('up')) { audio.soulSurge(this.p1.char.id); rec('transform'); }
+          }
+          else if (act === 'transform-down') {
+            if (this.p1.tryTransform('down')) { audio.soulSurge(this.p1.char.id); rec('transform-down'); }
           }
         }
       }

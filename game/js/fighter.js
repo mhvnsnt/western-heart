@@ -171,10 +171,24 @@ export class Fighter {
     this._auraFlash = 0;
 
     // MID-MATCH TRANSFORMATION (Roshi-style, owner 2026-10-19).
-    // Fighters with charData.transform swap models mid-fight:
-    // { targetModel, powerMult, speedMult, defenseMult, bodyScale }.
-    this.transformCfg = charData.transform || null;
+    // Fighters with charData.transform (single) or charData.forms (multi-form
+    // map keyed by current model key) swap models mid-fight.
+    // Single: { targetModel, powerMult, speedMult, defenseMult, bodyScale }.
+    // Multi: { 'model-key': { target, label, powerMult, speedMult, defenseMult,
+    //   bodyScale, moveset }, 'model-key': { up: {...}, down: {...} } }.
+    this._forms = null;
+    this.formKey = charData.model;
+    if (charData.forms) {
+      this._forms = charData.forms;
+    } else if (charData.transform) {
+      const t0 = charData.transform;
+      this._forms = { [charData.model]: {
+        target: t0.targetModel, label: 'TRANSFORM',
+        powerMult: t0.powerMult, speedMult: t0.speedMult,
+        defenseMult: t0.defenseMult, bodyScale: t0.bodyScale } };
+    }
     this.transformed = false;
+    this._movesetId = charData.id; // may be overridden by transform
 
     this._build(startX);
   }
@@ -294,25 +308,30 @@ export class Fighter {
     return !this.dead && this.stun <= 0 &&
       (this.state === 'idle' || this.state === 'walk' || this.state === 'jump');
   }
-  canTransform() {
-    return !!(this.transformCfg && !this.transformed && this.canAct());
+  _resolveTransform(direction) {
+    const f = this._forms && this._forms[this.formKey];
+    if (!f) return null;
+    return f.target ? f : (f[direction] || null);
+  }
+  canTransform(direction='up') {
+    return !!(this._resolveTransform(direction) && this.canAct());
   }
 
   /* Mid-match transformation (Roshi-style power-up, owner 2026-10-19).
      Swaps the fighter's model for the transform target, applies stat
      changes. One-way per match. Returns true if the transform fired. */
-  tryTransform() {
-    const t = this.transformCfg;
-    if (!t || this.transformed || !this.canAct()) return false;
+  tryTransform(direction='up') {
+    const t = this._resolveTransform(direction);
+    if (!t || !this.canAct()) return false;
     let inst;
     try {
       inst = assets.createInstance(
-        t.targetModel,
+        t.target,
         this.char.colors.suit, this.char.colors.trim,
         this.char.tintStrength ?? 0.45
       );
     } catch (e) {
-      console.error(`[WH] transform failed — unknown model ${t.targetModel}:`, e.message || e);
+      console.error(`[WH] transform failed — unknown model ${t.target}:`, e.message || e);
       return false;
     }
     // Swap under the same lean group: facing + body english preserved.
@@ -338,10 +357,15 @@ export class Fighter {
       defense: this.stats.defense * (t.defenseMult ?? 1.1),
     };
     if (t.bodyScale) this.root.scale.setScalar(t.bodyScale);
+    this.formKey = t.target;
+    if (t.moveset) {
+      this._movesetId = t.moveset;
+      if (this.tekken) this.tekken.fighterId = t.moveset;
+    }
     this.transformed = true;
     this._auraFlash = 1.0; // full-body flash on transform
     this._enter('idle');
-    console.log(`[WH] ${this.char.id} TRANSFORMED -> ${t.targetModel}`);
+    console.log(`[WH] ${this.char.id} TRANSFORMED (${direction}) -> ${t.target}${t.label ? ' ['+t.label+']' : ''}`);
     return true;
   }
 
@@ -372,7 +396,7 @@ export class Fighter {
       notation = resolved;
     }
     // Use REAL per-fighter T3 moveset data when available, fallback to base MOVES
-    let move = getRealMove(this.char.id, notation) || MOVES[name] || MOVES[notation];
+    let move = getRealMove(this._movesetId, notation) || MOVES[name] || MOVES[notation];
     if (!move) {
       // Last resort: moveset JSONs failed to load - map Tekken buttons to base moves
       const fb = { '1': 'punch', '2': 'punch', '3': 'kick', '4': 'kick',
