@@ -1088,6 +1088,8 @@ When the trial stirred, she didn't hear a summons. She heard a *leak*. Something
 
 **Owner-locked:** Mariposa is ONE character (owner 2026-10-18) — the Tripo butterfly model replaced Zafina's in-game model as her default; the old Zafina in-game models are her later attires. Never split into two characters.
 
+**Owner decision 2026-10-19:** Butterfly Default (pipeline-built Tekken-wire custom, PR #282) is her Slot 1 default; the Tripo butterfly model moves to Slot 2; Monarch → Slot 3; Blue Morpho / Luna Moth → Slots 4/5; Zafina in-game models → Slot 6+. Owner exception to the Tripo-default law (cf. Pantera Attire 1). Full map: `roster/mariposa/ATTIRE-SLOTS.md`.
+
 ---
 
 ### DOC FRANK — The Builder Soul
