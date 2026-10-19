@@ -1078,10 +1078,10 @@ async function buildSunRa(g, def, api) {
   const eyeGlowMat = new THREE.MeshBasicMaterial({ color: 0xff2a1a, transparent: true, opacity: 0.9 });
   const eyeL = new THREE.Mesh(new THREE.SphereGeometry(0.32, 12, 10), eyeGlowMat);
   const eyeR = eyeL.clone();
-  eyeL.position.set(-1.7, 25.6, -40.9); eyeR.position.set(1.7, 25.6, -40.9);
+  eyeL.position.set(-1.7, 32, -40.9); eyeR.position.set(1.7, 32, -40.9); // owner 2026-10-19: raised 25% on Y
   g.add(eyeL, eyeR);
   const eyeLight = new THREE.PointLight(0xff3a22, 25, 40, 2);
-  eyeLight.position.set(0, 25.4, -40.4); g.add(eyeLight);
+  eyeLight.position.set(0, 31.75, -40.4); // owner 2026-10-19: raised 25% on Y with the glow g.add(eyeLight);
   try {
     const gltf = await new GLTFLoader().loadAsync('assets/stages/sunra/mars-sky.glb');
     marsHead = gltf.scene;
