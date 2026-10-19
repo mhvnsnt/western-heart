@@ -40,7 +40,7 @@ Legend: ✅ attached · ❌ no Tripo on record · ⚠️ needs owner link/pull �
 | CAPE JONES / CYBORG X | ✅ YES (Attire 1) | Tripo Studio account pull (tripo-pull, 2026-10-16) | `game/assets/models/cape-jones.glb` | A1 = Cape Jones Tripo (default; = Cyborg X Attire 1 per canon) | 👁️ `renders/cape-jones.png` | 🎨 yes — unrigged static |
 | LILI | ❌ no Tripo on record | — | `game/assets/models/lili.glb` (base) | base GLB as-is | 👁️ `docs/tpose-refs/lili/` | — |
 | ZAFINA | ❌ no Tripo on record | — | `game/assets/models/zafina.glb` (base) | base GLB as-is | 👁️ `docs/tpose-refs/zafina/` | — |
-| BAEK | ❌ no Tripo on record | — | `game/assets/models/baek.glb` (base) | base GLB as-is | 👁️ `docs/tpose-refs/baek/` | — |
+| BAEK / KEVIN | ✅ YES (Attire 1) | tripo3d.ai/3d-model/86d12371-a3f6-4f45-8b8b-4abdd47b881e ("human figure 3d model" by marquiswhitacre — Kevin from the God Molecule show, "just a guy, inside Mars' head") | `roster/baek/attires/attire1/model.glb` | A1 = Kevin Tripo (default, replaces boring Baek model) · A2 = original Baek `game/assets/models/baek.glb` · A3 = "Master's White" reskin (PR #265) | render pending | 🎨 yes — unrigged static (auto-rig before live-game swap) |
 | DXMMII | ❌ no Tripo on record | — | `game/assets/models/dxmmii.glb` (base) | base GLB as-is | check `docs/tpose-refs/` | — |
 | RAVE | ❌ no Tripo on record | — | `game/assets/models/rave.glb` (base) | base GLB as-is | per tpose sweep | — |
 | Others (demonio, diablo, n3g4tiv0, nightwolf, phantom, skull, sam-ur-a1, kinpo, mariposa, doc-frank, jin, steve-fox→zui) | ❌ no Tripo on record | — | base GLBs in `game/assets/models/` | base GLBs as-is | see `docs/tpose-refs/` | — |
