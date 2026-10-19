@@ -15,6 +15,7 @@
      to the palette tint (panoTint) so the stage still renders.
    ============================================================ */
 import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 /* ---------------- minimal OBJ loader ----------------
    Tekken 3 panoramas use v / vt / f (triangles, 1-indexed, faces as
@@ -389,6 +390,36 @@ for (const [letter, label, fighters, panoTint, floorKind, floorTint, sky, fogC, 
     homeFighters: fighters,
   });
 }
+
+
+/* ---- SUN RĀ — THE STARING SKY (boss stage; Kevin's home base) ---- */
+STAGES.push({
+  id: 'sunra',
+  name: 'SUN RĀ — THE STARING SKY',
+  tier: 'BOSS STAGES',
+  universe: "God Molecule fever-dream (Sun Rā's arena)",
+  element: 'Curse',
+  description: "Mars floats in the sky — cobalt head, bleeding eyes that never blink — with Mercury→Neptune+Pluto on inclined orbits around him. Fever-dream floor zoned by the four lands; Central Mountain is Kevin's home turf. Malakor-occult sigils ring the arena.",
+  dims: { width: 16.8, depth: 6.0, wallDistance: 8.4 },
+  spawns: { p1: -3.5, p2: 3.5 },
+  lighting: {
+    sky: [[0.0, '#020208'], [0.5, '#0a0a24'], [0.78, '#1a1040'], [0.9, '#4a1030'], [1.0, '#0a0512']],
+    fog: ['#0a0818', 25, 95],
+    hemi: ['#3a3a8a', '#0a0512', 1.6],
+    sun: ['#ff4a3a', 2.0, [-10, 8, 6]],
+    rim: ['#4a6aff', 0.8, [8, 7, -8]],
+    fill: ['#8a7aff', 0.7, [0, 5, 12]],
+  },
+  floor: { kind: 'dark', tint: '#8a8aa8', repeat: 40, platformTint: '#6a6a8a', platformRepeat: 8 },
+  swatch: ['#050510', '#ff3a2a'],
+  builder: 'sunra',
+  homeFighters: 'Sun Rā, Kevin',
+  associatedFighters: ['sun-ra', 'baek'],
+  // God Molecule canon: per-land musical palettes + continuous music across
+  // reality transitions ("the cut carries the story"). Consumed by audio.js
+  // when the per-land palette wiring lands (follow-up).
+  music: { land: 'dreaming', palette: 'fluid ambient textures', continuous: true },
+});
 
 export function getStage(id) {
   return STAGES.find((s) => s.id === id) || STAGES[0];
@@ -891,6 +922,7 @@ const BUILDERS = {
   shrine: buildShrine, tongnou: buildTongNou, treelife: buildTreeLife,
   chiu: buildChiU, parfang: buildParFang, helix: buildHelix,
   dreaming: buildDreaming, marketplace: buildMarketplace, t3retro: buildT3Retro,
+  sunra: buildSunRa,
 };
 
 /* Build a stage into a fresh group. Returns { group, update, def, skyTex, fog }.
@@ -922,4 +954,298 @@ export function disposeStage(group) {
 }
 
 /* Tier order for the stage-select screen. */
-export const STAGE_TIERS = ['CANON LANDS', 'TEKKEN RETRO'];
+export const STAGE_TIERS = ['CANON LANDS', 'TEKKEN RETRO', 'BOSS STAGES'];
+
+/* ---------------- SUN RĀ — THE STARING SKY ----------------
+   Boss stage. Kevin's home base (he takes Baek's roster slot; can fight
+   anywhere, but THIS is home).
+
+   RESEARCH (game/assets/stages/sunra/README.md):
+   - GOD MOLECULE bible: four-land taxonomy — Life=Wood/organic-techno/growth,
+     Time=Fire/driving-percussion/urgency, Desire=Metal/sharp-synthetic/appetite,
+     Dreaming=Water/fluid-ambient/memory; Central Mountain = Kevin's trickster
+     hub (barter-only, absurd exchange rates). Mars: cobalt/electric blue,
+     glowing white eyes, forehead symbol = living portal/organ. Reality
+     transitions = datamosh-style bridges + continuous music ("the cut carries
+     the story").
+   - TONG-NOU / EASTERN MIND: Osamu Sato surrealist fever-dream; living-island
+     heads; reality-shift mechanics; death-as-transition.
+   - MALAKOR (@obruxomalakor, TikTok): occult grimoire/mystery aesthetic —
+     arcane sigils, ritual rings, infernal iconography ("AVEH Belzebub").
+   - Planets: REAL relative diameters (NASA fact sheets, km): Mercury 4879,
+     Venus 12104, Earth 12756, Mars 6792, Jupiter 142984, Saturn 120536,
+     Uranus 51118, Neptune 49528, Pluto 2376 (owner: the 9th is Pluto).
+     Textures: NASA/USGS public-domain cylindrical maps (sources in README).
+   - Mars head: decimated Tripo pull (spiky_sun_creature_3d_model, 1M verts
+     -> ~50k), full-res stays in tripo-downloads/.
+   --------------------------------------------------------------- */
+
+const SUNRA_PLANETS = [
+  // name, diameterKm (NASA), texture, orbitRadius, periodSec, inclinationDeg, spinRate
+  { name: 'mercury', d: 4879, tex: 'mercury.jpg', orbit: 11, period: 44, incl: 7.0, spin: 0.10 },
+  { name: 'venus', d: 12104, tex: 'venus.jpg', orbit: 14, period: 58, incl: -4.0, spin: 0.05 },
+  { name: 'earth', d: 12756, tex: 'earth.jpg', orbit: 17, period: 72, incl: 2.5, spin: 0.20 },
+  { name: 'mars', d: 6792, tex: 'mars.jpg', orbit: 20, period: 86, incl: -6.5, spin: 0.19 },
+  { name: 'jupiter', d: 142984, tex: 'jupiter.jpg', orbit: 25, period: 112, incl: 3.2, spin: 0.45 },
+  { name: 'saturn', d: 120536, tex: 'saturn.jpg', orbit: 30, period: 132, incl: -8.0, spin: 0.42, ring: 'saturn_ring.jpg' },
+  { name: 'uranus', d: 51118, tex: 'uranus.jpg', orbit: 34, period: 152, incl: 5.5, spin: 0.28 },
+  { name: 'neptune', d: 49528, tex: 'neptune.jpg', orbit: 38, period: 172, incl: -3.0, spin: 0.27 },
+  { name: 'pluto', d: 2376, tex: 'pluto.jpg', orbit: 42, period: 200, incl: 9.0, spin: 0.12 },
+];
+const SUNRA_JUPITER_R = 2.2; // game units; every other planet scales from real diameters
+
+function _sunraZoneDisc() {
+  // Fever-dream floor: four-land quadrant washes + Central Mountain hub + Malakor sigil rings.
+  return _canvas(1024, (ctx, s) => {
+    const c = s / 2;
+    ctx.fillStyle = '#0a0a16'; ctx.fillRect(0, 0, s, s);
+    for (let i = 0; i < 5000; i++) { // void grain
+      const v = 8 + Math.random() * 22;
+      ctx.fillStyle = `rgba(${v},${v},${v + 8},${Math.random() * 0.5})`;
+      ctx.fillRect(Math.random() * s, Math.random() * s, 2, 2);
+    }
+    const quad = (x0, y0, col) => { // four-land washes: Life/Time/Desire/Dreaming
+      const g = ctx.createRadialGradient(x0, y0, 40, x0, y0, 420);
+      g.addColorStop(0, col); g.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = g; ctx.fillRect(0, 0, s, s);
+    };
+    quad(c + 260, c - 260, 'rgba(40,140,70,0.20)');   // Life = Wood (NE)
+    quad(c + 260, c + 260, 'rgba(200,60,30,0.20)');    // Time = Fire (SE)
+    quad(c - 260, c + 260, 'rgba(130,60,200,0.20)');   // Desire = Metal (SW)
+    quad(c - 260, c - 260, 'rgba(50,110,220,0.20)');   // Dreaming = Water (NW)
+    // Central Mountain: Kevin's trickster hub — bronze disc, barter glyphs
+    const hub = ctx.createRadialGradient(c, c, 20, c, c, 190);
+    hub.addColorStop(0, '#3a2a14'); hub.addColorStop(0.8, '#241a0c'); hub.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = hub; ctx.beginPath(); ctx.arc(c, c, 190, 0, 7); ctx.fill();
+    ctx.strokeStyle = 'rgba(220,170,90,0.75)'; ctx.lineWidth = 5;
+    ctx.beginPath(); ctx.arc(c, c, 178, 0, 7); ctx.stroke();
+    ctx.fillStyle = 'rgba(230,190,110,0.85)'; ctx.font = '44px serif'; ctx.textAlign = 'center';
+    const glyphs = ['\u2715', '\u20bf', '\u2609', '\u263d', '\u2696', '\u2318', '\u2726', '\u2756'];
+    for (let i = 0; i < 8; i++) {
+      const a = (i / 8) * Math.PI * 2;
+      ctx.fillText(glyphs[i], c + Math.cos(a) * 128, c + Math.sin(a) * 128 + 16);
+    }
+    // Malakor sigil rings: arcane runes circling the arena
+    for (const [rr, alpha] of [[330, 0.55], [392, 0.35]]) {
+      ctx.strokeStyle = `rgba(190,40,50,${alpha})`; ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.arc(c, c, rr, 0, 7); ctx.stroke();
+      ctx.fillStyle = `rgba(220,80,90,${alpha})`; ctx.font = '30px serif';
+      const runes = '\u16a0\u16a2\u16a6\u16a8\u16b1\u16b2\u16b7\u16b9\u16ba\u16be\u16c1\u16c3\u16c7\u16c8\u16c9\u16ca\u16cf\u16d2\u16d6\u16d7\u16da\u16dc\u16de\u16df';
+      const n = 28;
+      for (let i = 0; i < n; i++) {
+        const a = (i / n) * Math.PI * 2;
+        ctx.save(); ctx.translate(c + Math.cos(a) * rr, c + Math.sin(a) * rr);
+        ctx.rotate(a + Math.PI / 2); ctx.fillText(runes[i % runes.length], 0, 10); ctx.restore();
+      }
+    }
+  });
+}
+
+async function buildSunRa(g, def, api) {
+  const { updaters, skyTex, fog } = buildBase(g, def, api);
+  const texLoader = new THREE.TextureLoader();
+  const sunraTex = (f) => {
+    const t = texLoader.load('assets/stages/sunra/planets/' + f);
+    t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4;
+    return t;
+  };
+
+  // ---- starfield shell ----
+  {
+    const N = api.isMobile ? 250 : 700;
+    const pos = new Float32Array(N * 3);
+    for (let i = 0; i < N; i++) {
+      const r = 120 + Math.random() * 60, th = Math.random() * Math.PI * 2, ph = Math.acos(2 * Math.random() - 1);
+      pos[i * 3] = r * Math.sin(ph) * Math.cos(th);
+      pos[i * 3 + 1] = Math.abs(r * Math.cos(ph)) * 0.7 - 6;
+      pos[i * 3 + 2] = r * Math.sin(ph) * Math.sin(th);
+    }
+    const sg = new THREE.BufferGeometry();
+    sg.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    const stars = new THREE.Points(sg, new THREE.PointsMaterial({ color: 0xbfd0ff, size: 0.55, sizeAttenuation: true, fog: false }));
+    stars.frustumCulled = false; g.add(stars);
+  }
+
+  // ---- Mars: the staring head (decimated Tripo GLB sky prop) ----
+  const MARS_POS = new THREE.Vector3(0, 24, -46);
+  let marsHead = null;
+  const portal = new THREE.Mesh(new THREE.SphereGeometry(0.55, 16, 12),
+    new THREE.MeshBasicMaterial({ color: 0xbfe8ff }));
+  portal.position.set(0, 26.6, -40.6); g.add(portal);
+  const portalLight = new THREE.PointLight(0x4a9aff, 60, 70, 2);
+  portalLight.position.copy(portal.position); g.add(portalLight);
+  // bleeding-eye glow: twin red points where the eyes stare (Sun Rā never blinks)
+  const eyeGlowMat = new THREE.MeshBasicMaterial({ color: 0xff2a1a, transparent: true, opacity: 0.9 });
+  const eyeL = new THREE.Mesh(new THREE.SphereGeometry(0.32, 12, 10), eyeGlowMat);
+  const eyeR = eyeL.clone();
+  eyeL.position.set(-1.7, 25.6, -40.9); eyeR.position.set(1.7, 25.6, -40.9);
+  g.add(eyeL, eyeR);
+  const eyeLight = new THREE.PointLight(0xff3a22, 25, 40, 2);
+  eyeLight.position.set(0, 25.4, -40.4); g.add(eyeLight);
+  try {
+    const gltf = await new GLTFLoader().loadAsync('assets/stages/sunra/mars-sky.glb');
+    marsHead = gltf.scene;
+    // normalize: fit head height to ~11 units, center it on MARS_POS
+    const bbox = new THREE.Box3().setFromObject(marsHead);
+    const size = bbox.getSize(new THREE.Vector3());
+    const k = 11 / Math.max(size.x, size.y, size.z);
+    marsHead.scale.setScalar(k);
+    const c = bbox.getCenter(new THREE.Vector3());
+    marsHead.position.set(MARS_POS.x - c.x * k, MARS_POS.y - c.y * k, MARS_POS.z - c.z * k);
+    marsHead.traverse((o) => { if (o.isMesh) { o.material.side = THREE.DoubleSide; } });
+    g.add(marsHead);
+  } catch (e) {
+    console.warn(`[WH] stage sunra: mars-sky.glb failed (${e.message}) — portal + planets carry the sky`);
+  }
+
+  // ---- 9 planets: real relative diameters, inclined orbits around Mars ----
+  const planets = [];
+  const kR = SUNRA_JUPITER_R / (142984 / 2); // game units per km of radius
+  for (const p of SUNRA_PLANETS) {
+    const r = Math.max((p.d / 2) * kR, 0.03);
+    const pivot = new THREE.Group();
+    pivot.position.copy(MARS_POS);
+    pivot.rotation.x = p.incl * Math.PI / 180;
+    const mesh = new THREE.Mesh(
+      new THREE.SphereGeometry(r, api.isMobile ? 16 : 28, api.isMobile ? 12 : 20),
+      new THREE.MeshStandardMaterial({ map: sunraTex(p.tex), roughness: 0.95, metalness: 0.02 })
+    );
+    if (p.ring) { // Saturn's ring
+      const ringTex = sunraTex(p.ring);
+      const ring = new THREE.Mesh(
+        new THREE.RingGeometry(r * 1.3, r * 2.3, 48),
+        new THREE.MeshBasicMaterial({ map: ringTex, transparent: true, side: THREE.DoubleSide, opacity: 0.9 })
+      );
+      ring.rotation.x = -Math.PI / 2 + 0.35;
+      mesh.add(ring);
+    }
+    pivot.add(mesh); g.add(pivot);
+    planets.push({ p, pivot, mesh, angle: Math.random() * Math.PI * 2 });
+  }
+
+  // ---- fever-dream floor disc: four lands + Central Mountain + Malakor rings ----
+  // (shared shift-state S is declared with the reality-shift updater below)
+  let S = null;
+  {
+    const discTex = _sunraZoneDisc();
+    discTex.colorSpace = THREE.SRGBColorSpace; discTex.anisotropy = 4;
+    discTex.wrapS = discTex.wrapT = THREE.RepeatWrapping;
+    const disc = new THREE.Mesh(
+      new THREE.CircleGeometry(9.18, 48),
+      new THREE.MeshStandardMaterial({ map: discTex, roughness: 0.85, metalness: 0.1, transparent: true, opacity: 0.96 })
+    );
+    disc.rotation.x = -Math.PI / 2; disc.position.y = 0.012;
+    g.add(disc);
+    updaters.push((dt) => { if (S && S.shiftT >= 0) discTex.offset.x += dt * 2.5; });
+  }
+
+  // ---- zone totems: wizards / thugs / goblins / knights ----
+  const totemDefs = [
+    { name: 'wizards', land: 'Life - Wood', color: 0x3ae06a, pos: [-11.5, 0, -3.5], geo: () => new THREE.OctahedronGeometry(1.5) },
+    { name: 'thugs', land: 'Time - Fire', color: 0xff4a22, pos: [11.5, 0, -3.5], geo: () => new THREE.BoxGeometry(1.8, 3.2, 1.8) },
+    { name: 'goblins', land: 'Desire - Metal', color: 0xa04aff, pos: [-11.5, 0, 4.5], geo: () => new THREE.ConeGeometry(1.3, 3.4, 7) },
+    { name: 'knights', land: 'Dreaming - Water', color: 0x4aa8ff, pos: [11.5, 0, 4.5], geo: () => new THREE.BoxGeometry(0.7, 4.2, 1.4) },
+  ];
+  const totems = [];
+  for (const td of totemDefs) {
+    const grp = new THREE.Group(); grp.position.set(td.pos[0], 0, td.pos[2]);
+    const base = new THREE.Mesh(new THREE.CylinderGeometry(1.1, 1.4, 0.5, 8),
+      new THREE.MeshStandardMaterial({ color: 0x1a1a26, roughness: 0.9 }));
+    base.position.y = 0.25; grp.add(base);
+    const crystal = new THREE.Mesh(td.geo(),
+      new THREE.MeshStandardMaterial({ color: td.color, emissive: td.color, emissiveIntensity: 0.55, roughness: 0.35 }));
+    crystal.position.y = 2.4; grp.add(crystal);
+    const halo = new THREE.Mesh(new THREE.TorusGeometry(2.2, 0.06, 8, 40),
+      new THREE.MeshBasicMaterial({ color: td.color, transparent: true, opacity: 0.6 }));
+    halo.position.y = 2.4; halo.rotation.x = Math.PI / 2.4; grp.add(halo);
+    g.add(grp);
+    totems.push({ grp, crystal, halo, ph: Math.random() * 10, color: td.color });
+  }
+
+  // ---- T3 panorama shell: real teardown geometry as the distant fever-dream ridge ----
+  try {
+    const geo = await fetchStageOBJ('assets/stages/t3/stg_n_panorama.obj');
+    geo.scale(0.02, 0.02, 0.02);
+    let mat = null;
+    try {
+      const tex = await new THREE.TextureLoader().loadAsync('assets/stages/t3/stg_n_atlas.png');
+      tex.colorSpace = THREE.SRGBColorSpace;
+      mat = new THREE.MeshBasicMaterial({ map: tex, vertexColors: !!geo.getAttribute('color'), side: THREE.DoubleSide, fog: true, color: 0x8a7ab8 });
+    } catch (e) { mat = new THREE.MeshBasicMaterial({ color: 0x2a1a4a, side: THREE.DoubleSide, fog: true }); }
+    const shell = new THREE.Mesh(geo, mat);
+    shell.position.y = 7; shell.rotation.y = Math.PI;
+    g.add(shell);
+  } catch (e) {
+    console.warn(`[WH] stage sunra: T3 shell failed (${e.message}) — sky gradient carries the backdrop`);
+  }
+
+  // ---- datamosh reality-shift: glitch slices + planet smear + portal shockwave ----
+  const slices = [];
+  {
+    const sliceGeo = new THREE.PlaneGeometry(60, 1);
+    for (let i = 0; i < 14; i++) {
+      const m = new THREE.Mesh(sliceGeo, new THREE.MeshBasicMaterial({
+        color: new THREE.Color().setHSL(Math.random(), 0.9, 0.55),
+        transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false, fog: false,
+      }));
+      m.position.set((Math.random() - 0.5) * 40, 4 + Math.random() * 26, -30 - Math.random() * 25);
+      m.scale.y = 0.4 + Math.random() * 2.2;
+      g.add(m); slices.push(m);
+    }
+  }
+  const shock = new THREE.Mesh(new THREE.TorusGeometry(1, 0.18, 10, 48),
+    new THREE.MeshBasicMaterial({ color: 0x9ad0ff, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false, fog: false }));
+  shock.position.copy(portal.position); g.add(shock);
+
+  S = { shiftT: -1, prePulse: -1, nextShift: 24 };
+  updaters.push((dt, t) => {
+    // planets: inclined orbits, real relative sizes, visual-period motion + spin
+    for (const pl of planets) {
+      pl.angle += dt * (Math.PI * 2 / pl.p.period);
+      pl.mesh.position.set(Math.cos(pl.angle) * pl.p.orbit, 0, Math.sin(pl.angle) * pl.p.orbit);
+      pl.mesh.rotation.y += dt * pl.p.spin;
+      if (S.shiftT >= 0) { // datamosh smear: jitter positions during the shift
+        pl.mesh.position.x += (Math.random() - 0.5) * 1.6;
+        pl.mesh.position.z += (Math.random() - 0.5) * 1.6;
+      }
+    }
+    if (marsHead) { marsHead.rotation.y += dt * 0.08; marsHead.position.y = MARS_POS.y + Math.sin(t * 0.35) * 0.7; }
+    // Mars stares: eye glow breathes, never blinks
+    const stare = 0.7 + Math.sin(t * 0.9) * 0.3;
+    eyeGlowMat.opacity = 0.55 + stare * 0.4;
+    eyeLight.intensity = 18 + stare * 14;
+    // totems drift
+    for (const tm of totems) {
+      tm.crystal.rotation.y += dt * 0.5;
+      tm.crystal.position.y = 2.4 + Math.sin(t * 0.8 + tm.ph) * 0.25;
+      tm.halo.rotation.z += dt * 0.7;
+    }
+    portal.rotation.y += dt * 1.2;
+    // reality-shift state machine: organ pre-pulse -> datamosh bridge
+    if (S.shiftT < 0 && S.prePulse < 0 && t > S.nextShift - 1.2) S.prePulse = 0;
+    if (S.prePulse >= 0) { // the forehead organ reacts before transit (Tong-Nou)
+      S.prePulse += dt;
+      const k = Math.min(S.prePulse / 1.2, 1);
+      portal.scale.setScalar(1 + k * 0.8);
+      portalLight.intensity = 60 + k * 90;
+      if (S.prePulse >= 1.2) { S.prePulse = -1; S.shiftT = 0; S.nextShift = t + 24 + Math.random() * 8; }
+    }
+    if (S.shiftT >= 0) {
+      S.shiftT += dt;
+      const k = S.shiftT / 1.4;
+      for (const s of slices) {
+        s.material.opacity = 0.5 * (1 - k);
+        s.position.x += (Math.random() - 0.5) * 6;
+      }
+      shock.material.opacity = 0.8 * (1 - k);
+      shock.scale.setScalar(1 + k * 22);
+      if (S.shiftT >= 1.4) {
+        S.shiftT = -1;
+        for (const s of slices) s.material.opacity = 0;
+        shock.material.opacity = 0; shock.scale.setScalar(1);
+        portal.scale.setScalar(1); portalLight.intensity = 60;
+      }
+    }
+  });
+  return { updaters, skyTex, fog };
+}
