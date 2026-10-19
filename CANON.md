@@ -920,6 +920,124 @@ She was never called. She *came*. Tong-Nou didn't summon her; she followed the p
 
 ---
 
+### BAEK — The Master Soul
+**Not one of the nine. The teacher.**
+
+**Backstory.** Baek Doo San — taekwondo master, the man who taught Hwoarang everything the boy refused to learn gently. In the old world he was lost at sea, taken, broken, rebuilt; he came back anyway, because students don't stop needing teachers just because the teacher drowns.
+
+The trial didn't call him. A student followed the pull — and Baek followed the student. That's the whole story. That's always the whole story with him.
+
+**Personality.** Strict. Fatherly. Terrifyingly patient. The only fighter the younger souls are *afraid to disappoint*.
+
+**Fighting philosophy.** "The kick is the question. Discipline is the answer."
+
+**Relationships.**
+- **Zui:** The teacher's longest project. Baek has tried to sober him up eleven times. Zui has converted two of Baek's lectures into drinking songs. Baek keeps trying. That's what teachers do.
+- **Pantera:** Mutual respect, no words wasted. The panther fights honest; the master teaches honest. They spar at dawn. Nobody watches. Everybody knows.
+- **Kinpo:** Discipline recognizes discipline. He corrects her stance; she corrects his manners. Both pretend the other isn't helping.
+
+**Element.** Fire — the Plains of Chi-U. The honest fight, under the burning sky. No tricks. No seals. Just the work.
+
+**Body / Mind / Soul.** BODY: Baek's flawless taekwondo — the kicks are textbooks, the textbooks are weapons. MIND: the teacher — every soul is a student, every fight is a lesson, every loss is homework. SOUL: not one of the nine. A soul that came *on purpose*, for someone else. The trial doesn't know what to do with a volunteer. It's still deciding.
+
+**Why Baek thinks he's here.** He believes he followed a student into the dark — that somewhere in the Western Heart there's a boy who needs his master, and he'll find him. He may be right. The trial is full of lost students. It may have called him the way a classroom calls a teacher: not by name, but by need.
+
+**Being purified of:** The guilt. Every teacher carries the ones he couldn't save — the students who drowned, who left, who chose the bottle, who chose the devil. Baek's guilt has a seating chart. The trial keeps handing him students he *can* save. He's learning to take them.
+
+**Signature detail.** He bows to every opponent — before the match, after it, win or lose. The bow is never rushed. Fighters who've tried to rush him have learned: the bow takes as long as the bow takes.
+
+---
+
+### JIN KAZAMA — The Bloodline Soul
+**Not one of the nine. The bloodline. (Not the SOUL JIN — the soul JIN (刃 — the blade) wears Phantom. This Jin wears a curse.)**
+
+**Backstory.** Jin Kazama — heir of the Mishima bloodline, the Devil Gene made flesh, the boy who threw his grandfather off a cliff and then spent his life trying to throw the devil off himself. He started a world war to draw the devil out. It worked. That's the problem with Jin's plans: they work.
+
+In the Western Heart, the Gene followed him in — and inside Tong-Nou, the devil has nowhere to hide. No corporations. No wars. No distractions. Just the blood, the trial, and the quiet.
+
+**Personality.** Brooding. Self-controlled. One bad day from the wings. The only fighter who treats every victory like a warning.
+
+**Fighting philosophy.** "The blood ends with me."
+
+**Relationships.**
+- **Zafina:** Two cursed bloodlines, mutual recognition. She keeps the seal; he *is* the thing seals are for. They don't spar. They understand each other too well for that.
+- **Diablo:** The devil who doesn't hide — Jin's mirror and his warning. Diablo tore his way in to rule; Jin clawed his way in to *end*. Their fights are the trial's exorcisms.
+- **Phantom:** They share a name — his name, the soul's name — and neither will say whether it's coincidence. Phantom's blade is ritual and precise. Jin's devil is neither. The name sits between them like a drawn knife.
+
+**Element.** Fire — the Plains of Chi-U. The confrontation is internal, but the sky burns the same.
+
+**Body / Mind / Soul.** BODY: Jin's Mishima-ryu — the lightning footwork, the electric fists, the style his bloodline perfected and his conscience condemns. MIND: iron control — every breath measured, every impulse caged. SOUL: not one of the nine. A bloodline wearing a soul's shape — or a soul wearing a bloodline's curse. The trial keeps trying to separate the two. So does he.
+
+**Why Jin Kazama thinks he's here.** He believes he came to end the bloodline — that the trial is the last arena, and if he dies here properly, the Gene dies with him. The trial has other plans: it doesn't want the bloodline *ended*. It wants it *purified*. Jin hasn't decided whether that's mercy or a worse sentence.
+
+**Being purified of:** The devil. The trial's oldest customer. Every round is an exorcism; every reincarnation, a little less devil. He's counting. The count is going down. That's the most hopeful thing about him, and he hates hope.
+
+**Signature detail.** When the Gene stirs, his eyes go red — and the whole arena goes quiet. Not out of fear. Out of respect for the fight he's fighting. The other fighters have learned not to mention it.
+
+---
+
+### STEVE FOX — The Boxer Soul
+**Vessel of BYOU (病 — sickness). The name ZUI wore before the monastery.**
+
+**Backstory.** Before the robes, before the sake, before the tattoos — there was the ring. Steve Fox: British champion, the purest boxer in the old world, Nina Williams' son, a young man who fought with his hands and smiled with his whole face.
+
+Zui *is* Steve — the same vessel, the same BYOU soul, before the monastery and the bottle. The sway was footwork first. The dodge was a slip-roll before it was a stumble. When the trial needs the boxer instead of the monk, Steve steps forward — same soul, straighter spine, both hands up.
+
+**Personality.** Cocky charm. Showman's heart. The smile is real; the guard never drops.
+
+**Fighting philosophy.** "Hit clean. Bow cleaner."
+
+**Relationships.**
+- **Zui:** Himself, before. Steve doesn't drink — that's the difference, and the whole argument. Zui toasts him before fights. Steve pretends not to be moved. He is.
+- **Awa Pop:** She wears his mother's face — Nina Williams' grace, the assassin's economy. He has never said what that does to him. She hums while she fights. He listens.
+- **Kinpo:** Annoyed by him. He thinks this is flirting. It is not. (Some things don't change between vessels.)
+
+**Element.** Water — the Palace of Dreaming. Same soul, same water. He drowns opponents in rhythm instead of sake; the drowning is still the point.
+
+**Body / Mind / Soul.** BODY: Steve's championship boxing — the purest hands in the trial, before or after the bottle. MIND: the showman — he fights for the crowd the way Zui drinks for the truth. SOUL: BYOU, sickness. The body is disciplined. The mind is bright. The soul *moves wrong* — and where Zui agreed with the sickness, Steve *outboxes* it. Same soul, two answers. The trial is watching to see which one wins.
+
+**Why Steve Fox thinks he's here.** He believes he came for a title fight — the biggest purse, the strangest venue — and stayed because the monastery he never joined keeps sending him postcards in the form of a drunk monk. He's wrong about the purse. He's right that he's supposed to be here. BYOU doesn't do accidents.
+
+**Being purified of:** The crowd. The boxer fights to be *watched*; BYOU moves wrong whether or not anyone's looking. Somewhere between the showman and the sickness is a man who fights for himself. The trial is introducing them.
+
+**Signature detail.** He shadowboxes before every match — crisp, beautiful, championship form. The other fighters swear the shadow sometimes hits back.
+
+**Owner-locked:** "Zooey" was a speech-to-text error for ZUI (owner 2026-10-18). Steve Fox = Zui confirmed — same vessel, same soul, before the monastery.
+
+---
+
+### DXMMII — The Rebuilt Soul
+**Not one of the nine. The remix.**
+
+**Backstory.** Mokujin was a wooden dummy that learned to fight by copying everyone it faced — no style of its own, every style at once. DXMMII is what happened when the dummy kept the copies and started *mixing* them.
+
+Patchwork body — different colored panels stitched together, each one a fight he survived, a night he played. X-shaped eyes like a dead cartoon character. Tongue hanging out. The crash-test-dummy target circle on his chest: aim here, it says. Everyone does. Nobody's collected.
+
+He's a DJ now. The trial is the biggest venue he's ever played, and he plays the crowd the way he fights — everybody's style, his beat.
+
+**Personality.** Chaos with a tempo. Plays the room. Remembers every sample, forgets every name.
+
+**Fighting philosophy.** "Everybody's style is my style."
+
+**Relationships.**
+- **SAM-UR-A1:** Fellow built thing. SAM-UR-A1 studies his patchwork like a manual. DXMMII has started leaving new patches where SAM-UR-A1 can find them. Neither calls it friendship.
+- **Doc Frank:** Wants to "fix" him — proper panels, clean seams, *improvements*. DXMMII has hidden his toolbox three times. The patches stay crooked. The patches are the point.
+- **Saku Ra:** The idol recognizes a performer. They've discussed a collaboration. The trial is not ready.
+
+**Element.** Metal — the Helix Palace. A thing assembled from want, at home in the house of desire. The Destruction room keeps breaking him. He keeps coming back. The room is starting to take it personally.
+
+**Body / Mind / Soul.** BODY: the patchwork — stitched panels, X-eyes, the tongue, the target. Every rebuild left a seam. MIND: the DJ — reads the crowd, rides the beat, never plays the same set twice. SOUL: not one of the nine. A *copy* that became an original — the mimic soul. The trial keeps asking what he is underneath the patches. He's starting to wonder if there's an underneath. There's a beat, though. The beat is his.
+
+**Why DXMMII thinks he's here.** He believes the trial booked him — biggest venue, longest set, crowd that literally *dies* for the music. The idea that he's here to be purified has never occurred to him. Purification doesn't have a dance floor.
+
+**Being purified of:** The copy. Every patch is someone else's style. The trial keeps stripping the patches away — not the panels, the *habit* — asking what's left when he's not imitating anyone. What's left has a beat. It's his. He's learning to hear it.
+
+**Signature detail.** His X-eyes pulse with the beat — whatever he's playing, whatever he's fighting. When the music stops, the tongue goes back in. The other fighters have learned: tongue out, you're entertainment. Tongue in, run.
+
+**Owner-locked:** Name DXMMII (locked 2026-10-15). Patchwork X-eyed tongue-out crash-test-dummy DJ, multi-colored panels, crash-test symbol on chest. Mokujin base.
+
+---
+
 ### MARIPOSA — The Sealed Soul
 **Not one of the nine. The keeper. The native.**
 
@@ -957,6 +1075,8 @@ When the trial stirred, she didn't hear a summons. She heard a *leak*. Something
 **Owner-locked:** Mariposa is ONE character (owner 2026-10-18) — the Tripo butterfly model replaced Zafina's in-game model as her default; the old Zafina in-game models are her later attires. Never split into two characters.
 
 ---
+
+### DOC FRANK — The Builder Soul
 
 **Not one of the nine. The builder.**
 
