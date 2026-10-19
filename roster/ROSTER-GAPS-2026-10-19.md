@@ -15,6 +15,8 @@ recorded in flight. Characters with pulls already in flight are marked separatel
 
 ### No Tripo on record (needs an owner Tripo link / new Tripo build)
 
+**CORRECTION 2026-10-19:** PANTERA was listed here in error and has been removed — the owner confirmed "Leo man" IS his original Tripo model (Slot 2). The "NOT ON RECORD" note in this doc and in TRIPO-REGISTRY.md was wrong; both corrected.
+
 | # | Character | Current model state | Base |
 |---|---|---|---|
 | 1 | **DEMONIO** | `game/assets/models/demonio.glb` wired (in-game base only) | Jin Kazama |
@@ -37,7 +39,10 @@ recorded in flight. Characters with pulls already in flight are marked separatel
 | 18 | **SLICE** | **NOT WIRED** — Dragunov source is a 509-bone pro control rig (needs dedicated rigging lane) | Dragunov |
 | 19 | **CHORDZ** | **NO SOURCE FOUND** — nothing on disk; disk too tight for a full T7 pull | unknown |
 | 20 | **VAIN** | Tripo GLB exists locally (`~/workspace/tripo-downloads/`, 19MB, by marz6kdabest) but **NOT wired, NOT recorded** in the registry | Bass Armstrong |
-| 21 | **PANTERA** | ⚠️ Tripo model EXISTS per owner but is **NOT ON RECORD** — no link/GLB in repo. Slot 2 ("Leo man") is reserved for it. **Needs the owner to send the link.** | King (T7 reskin) |
+
+### ✅ CORRECTION (owner 2026-10-19 — supersedes this audit's separation)
+
+KIKO TANAKA and RAVE are the SAME character in Western Heart. Owner's words: "Kiko is rave in this game and Kiko in others, Rave is his Raver personality from our canon." — "the ghost tanaka is Rave." The robe pair (`game/assets/models/kiko-tanaka.glb` hooded/robed, `kiko-tanaka_alt1.glb` unrobed/shrouded face) are RAVE's models: A1 = hooded default, A2 = the "ghost Tanaka" Raver personality, A3+ = `rave.glb` (Lei Wulong in-game base) ladders back. His bio lives as "KIKO TANAKA — The Painted Soul" in CANON.md.
 
 ### ✅ CORRECTION (owner 2026-10-19 — supersedes this audit's separation)
 
@@ -55,7 +60,7 @@ KIKO TANAKA and RAVE are the SAME character in Western Heart. Owner's words: "Ki
 
 ### Tripo-attached and done (for reference)
 
-ZUI, THOR, AWA POP, WATERFALL, SAKU RA, PURPLE RAIN, RAVE (= KIKO TANAKA in Western Heart — owner 2026-10-19), CAPE JONES/CYBORG X, MARIPOSA (Slot 1 wired).
+ZUI, THOR, AWA POP, WATERFALL, SAKU RA, PURPLE RAIN, RAVE (= KIKO TANAKA in Western Heart — owner 2026-10-19), CAPE JONES/CYBORG X, MARIPOSA (Slot 1 wired), PANTERA (Slot 2 = "Leo man" Tripo, owner-confirmed 2026-10-19; Slot 6 = Leopard King wired 2026-10-19).
 
 ---
 
