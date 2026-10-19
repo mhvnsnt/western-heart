@@ -169,6 +169,22 @@ convert → scale → render → own-eyes → release → wire.)
   embroidery), white shirt, necklaces, striped pants, boots. Complete.
 - Wired: assets.js += bruno; roster-full.js bruno.model pantera→bruno.
 
+### 2026-10-18 — YUKIHYŌ (Armor King) ✅ WIRED
+- Source: `Tekken_8_-_Armor_King__Battle_Cloth_.rar` (132MB, king-variants-2026-10-13).
+  Contains T8 FBX (NOT .blend): `Armor King Battle Cloth.fbx` (8.9MB) + TGAs.
+  License: community rip.
+- Pipeline: Blender FBX import → found 3 skeletons (body naked_msl 326 bones,
+  mask knk_fac 333 bones, tail). Mask skeleton is a DUPLICATE full body —
+  re-skinned 10 mask meshes to body armature via modifier retarget, deleted
+  duplicate. T8→Mixamo rename (Hip→Hips, Spine1→Spine, Spine2→Spine1, L_UpperArm→
+  LeftArm, etc., fingers mapped) → game/assets/models/yukihyo.glb (2.2MB,
+  untextured gray clay — TGA textures didn't embed, follow-up).
+  Gate: PASS.
+- Render: probe → facing = -Y. 2048px front T-pose, white void, fingertips clear.
+  Own-eyes: Armor King's jaguar mask (ears, feline features), muscular wrestler
+  body, loincloth/apron (Battle Cloth), barefoot. Unmistakable.
+- Wired: assets.js += yukihyo; roster-full.js yukihyo.model pantera→yukihyo.
+
 ### 2026-10-18 — REALIZZT/KUTZ (Brad Burns) ⚠️ DATA EXTRACTED, FORMAT NEEDS RE
 - Source: `braitm.farc` (47MB) + `bra.farc` (761B) from vf5-ps3-v1 release
   (Virtua Fighter 5 PS3). "bra" = Brad Burns. The VF5 teardown only had aki/akixx;

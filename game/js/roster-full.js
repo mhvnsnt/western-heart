@@ -83,7 +83,7 @@ export const FULL_ROSTER = [
     colors: { suit: 0x0a0a0a, trim: 0x00ff00 }, style: 'Brawler', archetype: 'Intimidation' },
   { id: 'thor', name: 'THOR', title: 'Norse God', base: 'Ganryu', moveset: 'bryan', model: 'pantera', tintStrength: 0.25,
     colors: { suit: 0x4a3a2a, trim: 0xffd700 }, style: 'Sumo', archetype: 'Power' },
-  { id: 'yukihyo', name: 'YUKIHYŌ', title: 'Snow Leopard Ninja', base: 'Armor King', moveset: 'king', model: 'pantera', tintStrength: 0.25,
+  { id: 'yukihyo', name: 'YUKIHYŌ', title: 'Snow Leopard Ninja', base: 'Armor King', moveset: 'king', model: 'yukihyo', tintStrength: 0.25,
     colors: { suit: 0xd0d0d0, trim: 0x6accff }, style: 'Grappler', archetype: 'Ninja' },
   { id: 'slice', name: 'SLICE', title: 'Maniacal Agent', base: 'Dragunov', moveset: 'bryan', model: 'steve-fox', tintStrength: 0.6,
     colors: { suit: 0x2a2a2a, trim: 0xcc0000 }, style: 'Commando Sambo', archetype: 'Grappler' },
