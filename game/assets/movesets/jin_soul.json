@@ -257,6 +257,46 @@
     "f+1"
    ],
    "move_class": "special"
+  },
+  "S": {
+   "name": "Blood Ends With Me [WH SIGNATURE]",
+   "input": "S",
+   "startup": 0.34,
+   "active": 0.1,
+   "recovery": 0.98,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 13,
+   "anim_ref": "wh:jin_soul:sig:blood-ends-with-me",
+   "input_slots": [
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "The blood ends with me. Devil-gene burst punch thrown like an exorcism."
+  },
+  "u+P": {
+   "name": "Red-Eye Warning [WH SIGNATURE]",
+   "input": "u+P",
+   "startup": 0.28,
+   "active": 0.017,
+   "recovery": 0.85,
+   "damage": 17,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 12,
+   "anim_ref": "wh:jin_soul:sig:red-eye-warning",
+   "input_slots": [
+    "u+P",
+    "u",
+    "P"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "When the Gene stirs his eyes go red and the arena goes quiet - out of respect for the fight he's fighting."
   }
  },
  "strings": [],
