@@ -74,3 +74,5 @@ Tripo generation was not available for this lane — no Tripo model attached;
 per registry law a future Tripo main takes Slot 1 and this shifts to Slot 2.
 
 <!-- instruction-gate trigger -->
+
+<!-- gate trigger 2 -->
