@@ -1,0 +1,721 @@
+{
+ "character_mapping_format": {
+  "description": "Same universal format as eye-library (see CUSTOMIZATION-LIBRARY-LAYOUT.md). To make every part work on a NEW character: add one entry here naming that character's eye/decal textures (texture_part) \u2014 mesh_parts attach at bone sockets and need no mapping, only optional per-character offsets.",
+  "mesh_part_fields": {
+   "bone_aliases": [
+    "bone",
+    "names"
+   ],
+   "character": "character id (optional)",
+   "offset": [
+    0,
+    0,
+    0
+   ],
+   "rotation": [
+    0,
+    0,
+    0
+   ],
+   "scale": 1.0,
+   "socket": "suite socket name"
+  },
+  "texture_part_fields": {
+   "character": "character id",
+   "material": "material name",
+   "rect": "pixel rect to composite into (full replace if omitted)",
+   "replaces_texture": "texture name in that character's GLB",
+   "texture_size": [
+    128,
+    128
+   ]
+  }
+ },
+ "character_mappings": {
+  "pantera": {
+   "character": "Pantera (Western Heart roster/pantera, King-based)",
+   "decal_logo": {
+    "material": "Modelthighs_Material029",
+    "texture": "King_PantsLower_D",
+    "texture_size": [
+     512,
+     512
+    ]
+   },
+   "eye": {
+    "material": "Modeleyes_Material003",
+    "replaces_texture": "King_Eye_D",
+    "texture_size": [
+     128,
+     128
+    ]
+   },
+   "pants": {
+    "replaces_texture": "King_PantsUpper_D",
+    "texture_size": [
+     512,
+     256
+    ]
+   },
+   "tights": {
+    "replaces_texture": "King_PantsLower_D",
+    "texture_size": [
+     512,
+     512
+    ]
+   }
+  },
+  "lili": {
+   "character": "Silvertongue (Western Heart roster/lili, Tekken 7 1P formal outfit)",
+   "eye": {
+    "material": "Modelpart1_eyeball_Material005",
+    "replaces_texture": "T_CH_eye_D",
+    "texture_size": [
+     256,
+     256
+    ]
+   },
+   "dress_jacket": {
+    "replaces_texture": "T_CH_lil_bdu_1p_old_jacket_D",
+    "texture_size": [
+     512,
+     1024
+    ]
+   },
+   "dress_skirt": {
+    "replaces_texture": "T_CH_lil_bdl_1p_old_skirt_D",
+    "texture_size": [
+     1024,
+     512
+    ]
+   },
+   "dress_formal": {
+    "replaces_texture": "T_CH_xia_bdl_formal_B_D",
+    "texture_size": [
+     1024,
+     1024
+    ]
+   },
+   "notes": "Full-texture dress options in customization/decal-library/lili/ (MANIFEST.json, 18 entries: noir + white-original restore). Eye options in customization/parts/lili-eyes/."
+  },
+  "zafina": {
+   "character": "Mariposa (Western Heart roster/zafina, Tekken 6 outfit)",
+   "eye": {
+    "material": "24_eyes_1_16_16",
+    "replaces_texture": "eyes_d-eyes_d.dds",
+    "texture_size": [
+     128,
+     128
+    ]
+   },
+   "top": {
+    "replaces_texture": "butterfly_d",
+    "texture_size": [
+     256,
+     512
+    ]
+   },
+   "notes": "Butterfly-top options in customization/decal-library/zafina/ (MANIFEST.json: gold-pharaoh + pink-original restore). Eye options in customization/parts/zafina-eyes/."
+  }
+ },
+ "created": "2026-10-18",
+ "how_to_use": [
+  "1. The suite (packages/creation-suite/src/parts.js) loads this registry.",
+  "2. Texture parts: resolveEntry(entry, charId) merges the character's mapping; swapTexture() replaces the texture live \u2014 swap back restores the original (nothing overwritten).",
+  "3. Mesh parts: attachPart() routes to attach() at the registry socket (bone aliases shared across rigs) with optional fit=headHeight auto-scale.",
+  "4. Web UI (customization/create-fighter/): Catalog gains the eyes / decals / masks categories sourced from the same entries."
+ ],
+ "libraries": {
+  "decal-library-pantera": {
+   "kind": "decal_logo | tights | pants",
+   "manifest": "customization/decal-library/pantera/MANIFEST.json",
+   "note": "Parameterized logo/tights/pants texture swaps with canonical placements.",
+   "part_class": "texture_part",
+   "path": "customization/decal-library/pantera/"
+  },
+  "eye-library": {
+   "kind": "eye",
+   "manifest": "customization/eye-library/MANIFEST.json",
+   "note": "Universal eye options incl. the owner's 'I like' yellow tiger variant.",
+   "part_class": "texture_part",
+   "path": "customization/eye-library/"
+  },
+  "pantera-eyes": {
+   "kind": "eye",
+   "manifest": "customization/parts/pantera-eyes/MANIFEST.json",
+   "note": "Pantera's saved eye variants (same art family as eye-library; kept as pantera-local options).",
+   "part_class": "texture_part",
+   "path": "customization/parts/pantera-eyes/"
+  },
+  "superhero": {
+   "kind": "mask | cowl | gauntlets | eye_lenses",
+   "manifest": "customization/parts/superhero/MANIFEST.json",
+   "note": "Original-geometry 3D pieces (GLB) for the female Cape Jones reskin; attach at bone sockets on any character.",
+   "part_class": "mesh_part",
+   "path": "customization/parts/superhero/"
+  }
+ },
+ "parts": [
+  {
+   "asset": "customization/eye-library/eye-yellow-tiger.png",
+   "editable": [
+    "position",
+    "size",
+    "opacity"
+   ],
+   "id": "eye-yellow-tiger",
+   "kind": "eye",
+   "library": "eye-library",
+   "name": "Yellow tiger eye (OWNER'S 'I LIKE' VARIANT \u2014 universal)",
+   "notes": "Realistic amber iris, radial striations, round pupil, dark limbal ring. Universal \u2014 add a character_mappings entry to drop it onto any character.",
+   "part_class": "texture_part",
+   "placement": {
+    "default_character": "pantera",
+    "material": "Modeleyes_Material003",
+    "mode": "full_replace",
+    "texture": "King_Eye_D"
+   },
+   "size_px": [
+    128,
+    128
+   ],
+   "suite_slot": "eye"
+  },
+  {
+   "asset": "customization/eye-library/eye-blue-snow-leopard.png",
+   "editable": [
+    "position",
+    "size",
+    "opacity"
+   ],
+   "id": "eye-blue-snow-leopard",
+   "kind": "eye",
+   "library": "eye-library",
+   "name": "Snow leopard blue eye (Attire 3 snow-leopard default)",
+   "notes": "Blue variant from the snow-leopard reskin, saved as a swappable option.",
+   "part_class": "texture_part",
+   "placement": {
+    "default_character": "pantera",
+    "material": "Modeleyes_Material003",
+    "mode": "full_replace",
+    "texture": "King_Eye_D"
+   },
+   "size_px": [
+    128,
+    128
+   ],
+   "suite_slot": "eye"
+  },
+  {
+   "asset": "customization/eye-library/eye-classic-original.png",
+   "editable": [
+    "position",
+    "size",
+    "opacity"
+   ],
+   "id": "eye-classic-original",
+   "kind": "eye",
+   "library": "eye-library",
+   "name": "Classic original eye (King gold)",
+   "notes": "King's original golden-yellow eyes, pre-reskin. Saved option.",
+   "part_class": "texture_part",
+   "placement": {
+    "default_character": "pantera",
+    "material": "Modeleyes_Material003",
+    "mode": "full_replace",
+    "texture": "King_Eye_D"
+   },
+   "size_px": [
+    128,
+    128
+   ],
+   "suite_slot": "eye"
+  },
+  {
+   "asset": "customization/parts/pantera-eyes/eye-yellow-tiger.png",
+   "editable": [
+    "position",
+    "size",
+    "opacity"
+   ],
+   "id": "pantera-eye-yellow-tiger",
+   "kind": "eye",
+   "library": "pantera-eyes",
+   "name": "Pantera eyes \u2014 yellow tiger (currently applied)",
+   "notes": "Pantera-local saved variant; same art family as the universal eye-library entry.",
+   "part_class": "texture_part",
+   "placement": {
+    "default_character": "pantera",
+    "material": "Modeleyes_Material003",
+    "mode": "full_replace",
+    "texture": "King_Eye_D"
+   },
+   "size_px": [
+    128,
+    128
+   ],
+   "suite_slot": "eye"
+  },
+  {
+   "asset": "customization/parts/pantera-eyes/eye-snow-leopard-blue.png",
+   "editable": [
+    "position",
+    "size",
+    "opacity"
+   ],
+   "id": "pantera-eye-snow-leopard-blue",
+   "kind": "eye",
+   "library": "pantera-eyes",
+   "name": "Pantera eyes \u2014 snow leopard blue (Attire 3 default)",
+   "notes": "Pantera-local saved variant.",
+   "part_class": "texture_part",
+   "placement": {
+    "default_character": "pantera",
+    "material": "Modeleyes_Material003",
+    "mode": "full_replace",
+    "texture": "King_Eye_D"
+   },
+   "size_px": [
+    128,
+    128
+   ],
+   "suite_slot": "eye"
+  },
+  {
+   "asset": "customization/parts/pantera-eyes/eye-original-classic.png",
+   "editable": [
+    "position",
+    "size",
+    "opacity"
+   ],
+   "id": "pantera-eye-original-classic",
+   "kind": "eye",
+   "library": "pantera-eyes",
+   "name": "Pantera eyes \u2014 original classic yellow",
+   "notes": "Pantera-local saved variant.",
+   "part_class": "texture_part",
+   "placement": {
+    "default_character": "pantera",
+    "material": "Modeleyes_Material003",
+    "mode": "full_replace",
+    "texture": "King_Eye_D"
+   },
+   "size_px": [
+    128,
+    128
+   ],
+   "suite_slot": "eye"
+  },
+  {
+   "asset": "customization/decal-library/pantera/pantera-logo-white-scratches.png",
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ],
+   "id": "pantera-logo-white-scratches",
+   "kind": "decal_logo",
+   "library": "decal-library-pantera",
+   "name": "Pantera logo \u2014 white scratch marks (original)",
+   "notes": "Original thigh decal, transparent background. Both thighs share the UV region (mirrored).",
+   "part_class": "texture_part",
+   "placement": {
+    "default_character": "pantera",
+    "material": "Modelthighs_Material029",
+    "mode": "composite",
+    "pixel_rect": {
+     "h": 390,
+     "w": 186,
+     "x": 176,
+     "y": 34
+    },
+    "texture": "King_PantsLower_D"
+   },
+   "size_px": [
+    186,
+    390
+   ],
+   "suite_slot": "decal_logo"
+  },
+  {
+   "asset": "customization/decal-library/pantera/pantera-logo-red-scratches.png",
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ],
+   "id": "pantera-logo-red-scratches",
+   "kind": "decal_logo",
+   "library": "decal-library-pantera",
+   "name": "Pantera logo \u2014 red scratch marks",
+   "notes": "Red scratch-marks variant of the original thigh decal.",
+   "part_class": "texture_part",
+   "placement": {
+    "default_character": "pantera",
+    "material": "Modelthighs_Material029",
+    "mode": "composite",
+    "pixel_rect": {
+     "h": 390,
+     "w": 186,
+     "x": 176,
+     "y": 34
+    },
+    "texture": "King_PantsLower_D"
+   },
+   "size_px": [
+    186,
+    390
+   ],
+   "suite_slot": "decal_logo"
+  },
+  {
+   "asset": "customization/decal-library/pantera/pantera-logo-snow-leopard.png",
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ],
+   "id": "pantera-logo-snow-leopard",
+   "kind": "decal_logo",
+   "library": "decal-library-pantera",
+   "name": "Pantera logo \u2014 snow leopard",
+   "notes": "Owner-supplied snow leopard art; currently applied at +50% size centered on canonical placement.",
+   "part_class": "texture_part",
+   "placement": {
+    "default_character": "pantera",
+    "material": "Modelthighs_Material029",
+    "mode": "composite",
+    "pixel_rect": {
+     "h": 279,
+     "w": 279,
+     "x": 130,
+     "y": 90
+    },
+    "texture": "King_PantsLower_D"
+   },
+   "size_px": [
+    279,
+    279
+   ],
+   "suite_slot": "decal_logo"
+  },
+  {
+   "asset": "customization/decal-library/pantera/pantera-logo-snow-leopard-owner.png",
+   "editable": [
+    "position",
+    "size",
+    "rotation",
+    "opacity"
+   ],
+   "id": "pantera-logo-snow-leopard-owner",
+   "kind": "decal_logo",
+   "library": "decal-library-pantera",
+   "name": "Pantera logo \u2014 snow leopard (owner transparent)",
+   "notes": "Owner's own background-removed transparent PNG (2048x2048 source).",
+   "part_class": "texture_part",
+   "placement": {
+    "default_character": "pantera",
+    "material": "Modelthighs_Material029",
+    "mode": "composite",
+    "pixel_rect": {
+     "h": 279,
+     "w": 279,
+     "x": 130,
+     "y": 90
+    },
+    "texture": "King_PantsLower_D"
+   },
+   "size_px": [
+    279,
+    279
+   ],
+   "suite_slot": "decal_logo"
+  },
+  {
+   "asset": "customization/decal-library/pantera/tights-blue-snow-leopard.png",
+   "editable": [],
+   "id": "pantera-tights-blue-snow-leopard",
+   "kind": "tights",
+   "library": "decal-library-pantera",
+   "name": "Tights \u2014 blue (snow leopard attire, decal baked)",
+   "notes": "Full blue tights texture with snow leopard decal baked in \u2014 the current Attire 3 state.",
+   "part_class": "texture_part",
+   "placement": {
+    "default_character": "pantera",
+    "material": "Modelthighs_Material029",
+    "mode": "full_replace",
+    "texture": "King_PantsLower_D"
+   },
+   "size_px": [
+    512,
+    512
+   ],
+   "suite_slot": "tights"
+  },
+  {
+   "asset": "customization/decal-library/pantera/tights-blue-clean.png",
+   "editable": [],
+   "id": "pantera-tights-blue-clean",
+   "kind": "tights",
+   "library": "decal-library-pantera",
+   "name": "Tights \u2014 blue, clean (neutral base)",
+   "notes": "Neutral base: composite any logo option onto this, then re-embed.",
+   "part_class": "texture_part",
+   "placement": {
+    "default_character": "pantera",
+    "material": "Modelthighs_Material029",
+    "mode": "full_replace",
+    "texture": "King_PantsLower_D"
+   },
+   "size_px": [
+    512,
+    512
+   ],
+   "suite_slot": "tights"
+  },
+  {
+   "asset": "customization/decal-library/pantera/pants-black-trunks.png",
+   "editable": [],
+   "id": "pantera-pants-black-trunks",
+   "kind": "pants",
+   "library": "decal-library-pantera",
+   "name": "Pants \u2014 black trunks",
+   "notes": "Black trunks texture, PANTERA chest/trunks logo included.",
+   "part_class": "texture_part",
+   "placement": {
+    "default_character": "pantera",
+    "material": "Modelpants_Material027",
+    "mode": "full_replace",
+    "texture": "King_PantsUpper_D"
+   },
+   "size_px": [
+    512,
+    256
+   ],
+   "suite_slot": "pants"
+  },
+  {
+   "asset": "customization/parts/superhero/spidergirl/spidergirl-eyes.glb",
+   "editable": [
+    "tint",
+    "roughness",
+    "metalness",
+    "offset",
+    "rotation",
+    "scale",
+    "visible"
+   ],
+   "id": "spidergirl-eye-lenses",
+   "kind": "eye_lenses",
+   "library": "superhero",
+   "name": "Spider-Girl white eye lenses",
+   "notes": "White angular eye lenses, slight emissive. Modeled in place at cyborg-x coords \u2014 drops on as-is there; on other characters use fit=headHeight.",
+   "part_class": "mesh_part",
+   "placement": {
+    "bone_aliases": [
+     "Head",
+     "mixamorig:Head",
+     "head",
+     "J_Head",
+     "Bip01 Head"
+    ],
+    "modeled_in_place_for": "cyborg-x",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1.0,
+    "socket": "face"
+   },
+   "suite_slot": "eye_lenses"
+  },
+  {
+   "asset": "customization/parts/superhero/batgirl/batgirl-domino-mask.glb",
+   "editable": [
+    "tint",
+    "roughness",
+    "metalness",
+    "offset",
+    "rotation",
+    "scale",
+    "visible"
+   ],
+   "id": "batgirl-domino-mask",
+   "kind": "mask",
+   "library": "superhero",
+   "name": "Batgirl domino mask",
+   "notes": "Domino eye mask, dark charcoal. Modeled in place for cyborg-x.",
+   "part_class": "mesh_part",
+   "placement": {
+    "bone_aliases": [
+     "Head",
+     "mixamorig:Head",
+     "head",
+     "J_Head",
+     "Bip01 Head"
+    ],
+    "modeled_in_place_for": "cyborg-x",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1.0,
+    "socket": "face"
+   },
+   "suite_slot": "mask"
+  },
+  {
+   "asset": "customization/parts/superhero/spaceghost/spaceghost-cowl-no-ears.glb",
+   "editable": [
+    "tint",
+    "roughness",
+    "metalness",
+    "offset",
+    "rotation",
+    "scale",
+    "visible"
+   ],
+   "id": "spaceghost-cowl-no-ears",
+   "kind": "cowl",
+   "library": "superhero",
+   "name": "Space Ghost cowl (no ears)",
+   "notes": "Skull-cap cowl, purple, no ears/fins \u2014 the Cape Jones signature. Modeled in place for cyborg-x.",
+   "part_class": "mesh_part",
+   "placement": {
+    "bone_aliases": [
+     "Head",
+     "mixamorig:Head",
+     "head",
+     "J_Head",
+     "Bip01 Head"
+    ],
+    "modeled_in_place_for": "cyborg-x",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1.0,
+    "socket": "head"
+   },
+   "suite_slot": "cowl"
+  },
+  {
+   "asset": "customization/parts/superhero/batgirl/batgirl-gauntlets.glb",
+   "editable": [
+    "tint",
+    "roughness",
+    "metalness",
+    "offset",
+    "rotation",
+    "scale",
+    "visible"
+   ],
+   "id": "batgirl-gauntlets",
+   "kind": "gauntlets",
+   "library": "superhero",
+   "name": "Batgirl finned gauntlets",
+   "notes": "Finned forearm gauntlets, dark gray. Modeled in place for cyborg-x.",
+   "part_class": "mesh_part",
+   "placement": {
+    "bone_aliases": [
+     "RightHand",
+     "mixamorig:RightHand"
+    ],
+    "modeled_in_place_for": "cyborg-x",
+    "offset": [
+     0,
+     0,
+     0
+    ],
+    "rotation": [
+     0,
+     0,
+     0
+    ],
+    "scale": 1.0,
+    "socket": "hands"
+   },
+   "suite_slot": "gauntlets"
+  }
+ ],
+ "registry": "creation-suite-parts-registry",
+ "source": "Owner directive 2026-10-18: make the parts libraries swappable on ANY character, Tekken/WWE-style.",
+ "suite_slots": {
+  "cowl": {
+   "attire_slot": "head",
+   "menu": "attire",
+   "note": "mesh part on the Head socket",
+   "tab": "Head"
+  },
+  "decal_logo": {
+   "attire_slot": null,
+   "menu": "paint",
+   "note": "composites into the garment texture at a parameterized rect",
+   "tab": "Paint & Tattoos"
+  },
+  "eye": {
+   "attire_slot": null,
+   "menu": "head",
+   "note": "texture swap on the character's eye material",
+   "tab": "Eyes"
+  },
+  "eye_lenses": {
+   "attire_slot": "face",
+   "menu": "attire",
+   "note": "mesh part on the Head socket",
+   "tab": "Face (masks)"
+  },
+  "gauntlets": {
+   "attire_slot": "hands",
+   "menu": "attire",
+   "note": "mesh part on the hand sockets",
+   "tab": "Hands"
+  },
+  "mask": {
+   "attire_slot": "face",
+   "menu": "attire",
+   "note": "mesh part on the Head socket",
+   "tab": "Face (masks)"
+  },
+  "mouth": {
+   "attire_slot": null,
+   "menu": "head",
+   "note": "texture swap on the mouth-interior material",
+   "tab": "Face"
+  },
+  "pants": {
+   "attire_slot": "legs",
+   "menu": "attire",
+   "note": "full texture replace on the lower garment material",
+   "tab": "Lower"
+  },
+  "tights": {
+   "attire_slot": "legs",
+   "menu": "attire",
+   "note": "full texture replace on the legs garment material",
+   "tab": "Lower"
+  }
+ },
+ "version": 1
+}

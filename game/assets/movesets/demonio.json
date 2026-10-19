@@ -21,7 +21,12 @@
    "limb": "armL",
    "heavy": false,
    "knock": 2.2,
-   "soulGain": 8
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:41",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
   },
   "2": {
    "name": "DEMONIO 2 (T3 jin r220)",
@@ -37,7 +42,12 @@
    "limb": "armR",
    "heavy": false,
    "knock": 2.2,
-   "soulGain": 8
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:220",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
   },
   "2,1": {
    "name": "DEMONIO 2,1 (T3 jin r221)",
@@ -54,7 +64,14 @@
    "heavy": false,
    "knock": 2.2,
    "soulGain": 8,
-   "string_hit": "2"
+   "string_hit": "2",
+   "anim_ref": "t3:jin:row:221",
+   "input_slots": [
+    "2,1",
+    "2",
+    "1"
+   ],
+   "move_class": "string"
   },
   "2,1,2": {
    "name": "DEMONIO 2,1,2 (T3 jin r222)",
@@ -71,7 +88,15 @@
    "heavy": false,
    "knock": 2.2,
    "soulGain": 8,
-   "string_hit": "2,1"
+   "string_hit": "2,1",
+   "anim_ref": "t3:jin:row:222",
+   "input_slots": [
+    "2,1,2",
+    "2",
+    "1",
+    "2"
+   ],
+   "move_class": "string"
   },
   "3": {
    "name": "DEMONIO 3 (T3 jin r195)",
@@ -87,7 +112,12 @@
    "limb": "legL",
    "heavy": false,
    "knock": 4.2,
-   "soulGain": 8
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:195",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
   },
   "4": {
    "name": "DEMONIO 4 (T3 jin r199)",
@@ -103,7 +133,12 @@
    "limb": "legR",
    "heavy": false,
    "knock": 4.2,
-   "soulGain": 8
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:199",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
   },
   "4,1": {
    "name": "DEMONIO 4,1 (T3 jin r184)",
@@ -120,7 +155,14 @@
    "heavy": false,
    "knock": 2.2,
    "soulGain": 8,
-   "string_hit": "4"
+   "string_hit": "4",
+   "anim_ref": "t3:jin:row:184",
+   "input_slots": [
+    "4,1",
+    "4",
+    "1"
+   ],
+   "move_class": "string"
   },
   "4,1,2": {
    "name": "DEMONIO 4,1,2 (T3 jin r186)",
@@ -137,7 +179,15 @@
    "heavy": false,
    "knock": 2.2,
    "soulGain": 8,
-   "string_hit": "4,1"
+   "string_hit": "4,1",
+   "anim_ref": "t3:jin:row:186",
+   "input_slots": [
+    "4,1,2",
+    "4",
+    "1",
+    "2"
+   ],
+   "move_class": "string"
   },
   "1+3": {
    "name": "DEMONIO 1+3 throw (T3 jin r117)",
@@ -157,7 +207,12 @@
    "throw": true,
    "unblockable": true,
    "isGrab": true,
-   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+   "anim_ref": "t3:jin:row:117",
+   "input_slots": [
+    "1+3"
+   ],
+   "move_class": "throw"
   },
   "2+4": {
    "name": "DEMONIO 2+4 throw (T3 jin r118)",
@@ -177,7 +232,12 @@
    "throw": true,
    "unblockable": true,
    "isGrab": true,
-   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+   "anim_ref": "t3:jin:row:118",
+   "input_slots": [
+    "2+4"
+   ],
+   "move_class": "throw"
   },
   "d/f+2": {
    "name": "DEMONIO d/f+2 (T3 jin r269)",
@@ -193,7 +253,12 @@
    "limb": "armR",
    "heavy": true,
    "knock": 4.2,
-   "soulGain": 11
+   "soulGain": 11,
+   "anim_ref": "t3:jin:row:269",
+   "input_slots": [
+    "d/f+2"
+   ],
+   "move_class": "strike"
   },
   "u/f+4": {
    "name": "DEMONIO u/f+4 (T3 jin r80)",
@@ -209,7 +274,12 @@
    "limb": "legR",
    "heavy": true,
    "knock": 4.2,
-   "soulGain": 11
+   "soulGain": 11,
+   "anim_ref": "t3:jin:row:80",
+   "input_slots": [
+    "u/f+4"
+   ],
+   "move_class": "strike"
   },
   "d,d/b,d,d/b+1+2": {
    "name": "DEMONIO d,d/b,d,d/b+1+2 throw (T3 jin r277)",
@@ -229,7 +299,12 @@
    "throw": true,
    "unblockable": true,
    "isGrab": true,
-   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+   "anim_ref": "t3:jin:row:277",
+   "input_slots": [
+    "d,d/b,d,d/b+1+2"
+   ],
+   "move_class": "throw"
   },
   "d/b,n,f+2": {
    "name": "DEMONIO d/b,n,f+2 throw (T3 jin r276)",
@@ -249,7 +324,12 @@
    "throw": true,
    "unblockable": true,
    "isGrab": true,
-   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+   "anim_ref": "t3:jin:row:276",
+   "input_slots": [
+    "d/b,n,f+2"
+   ],
+   "move_class": "throw"
   },
   "n,d/f,n,d/f+1": {
    "name": "DEMONIO n,d/f,n,d/f+1 throw (T3 jin r277)",
@@ -269,7 +349,12 @@
    "throw": true,
    "unblockable": true,
    "isGrab": true,
-   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+   "anim_ref": "t3:jin:row:277",
+   "input_slots": [
+    "n,d/f,n,d/f+1"
+   ],
+   "move_class": "throw"
   }
  },
  "strings": [
@@ -342,5 +427,6 @@
    "throw": true
   }
  ],
- "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP"
+ "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
+ "schema_version": 2
 }

@@ -12,7 +12,17 @@
    Every move carries t3_source/t3_row/t3_command provenance.
    Fighters whose Tekken base has no T3 bank use the closest
    archetype proxy — marked "proxy": true with an honest note.
-   (T7/TTT2 per-character banks are gapfill lane's extraction work.)
+   (T7/TTT2 per-character banks are gapfill lane's extraction work).
+
+   SCHEMA v2 (moveset-editor contract, docs/movesets/MOVESET-SCHEMA.md):
+   each move also carries:
+     anim_ref    — preview-animation clip ref for the editor's live preview
+                   ("t3:king:row:44", "doa:bass:palm-jab", ...)
+     input_slots — Tekken input slots the move can occupy in the editor
+                   (canonical first; strings also list component inputs)
+     move_class  — "strike" | "throw" | "string" | "special" (editor filters)
+   Top level: schema_version: 2, plus per-game provenance fields and the
+   honest "proxy" flag. v2 is additive — no v1 field was renamed/removed.
    ============================================================ */
 
 // All fighter ids with a wired moveset file (36 playable + 9 staged for lane 2)

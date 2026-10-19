@@ -57,9 +57,15 @@ export class Game {
   /* ---------------- Match setup ----------------
      CLEAN-INIT: every match starts from a known-clean state. No leftover
      fighters, no running timers, no half-loaded assets, no leaked state
-     from the previous match. This is the "starts clean" standard. */
-  startMatch(playerChar, enemyChar, stageId) {
+     from the previous match. This is the "starts clean" standard.
+     Modes lane (r2): opts.roundsToWin (per-match round count, e.g.
+     survival/time-attack single-round) and opts.hpCarry (survival/team
+     HP carry-over) are honored here so modes.js never pokes the
+     fighter internals directly. */
+  startMatch(playerChar, enemyChar, stageId, opts = {}) {
     this.resetFightState();
+    // Modes lane: per-match round target (default = classic best-of-3).
+    this.roundsToWin = opts.roundsToWin || ROUNDS_TO_WIN;
 
     // Lane 4: stage selection drives arena, collision bounds, spawns.
     const stage = getStage(stageId || 'shrine');
@@ -85,6 +91,12 @@ export class Game {
     // intro runs on the base arena while the shell loads.
     this.arena.setStage(stage.id);
     this._startRound();
+    // Modes lane: HP carry-over (survival / team battle / qombat) —
+    // applied after _startRound's full-heal so the carry is exact.
+    if (opts.hpCarry != null && this.p1) {
+      this.p1.hp = Math.max(1, Math.min(this.p1.maxHp, opts.hpCarry));
+      this.ui.updateHP(this.p1, this.p2);
+    }
   }
 
   /* Fully reset all fight state. Called at the start of every match AND
@@ -396,7 +408,8 @@ export class Game {
       this._startRound();
       return;
     }
-    if (this.wins.p1 >= ROUNDS_TO_WIN || this.wins.p2 >= ROUNDS_TO_WIN) {
+    if (this.wins.p1 >= (this.roundsToWin || ROUNDS_TO_WIN) ||
+        this.wins.p2 >= (this.roundsToWin || ROUNDS_TO_WIN)) {
       this.running = false;
       const playerWon = this.wins.p1 > this.wins.p2;
       // modes lane: a mode controller consumes the match result
