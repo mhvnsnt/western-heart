@@ -37,12 +37,35 @@ teardown lane; only that counts as wired — no hand-tooled stand-ins.
 - Status: blocked on DOA4 lane (world-space stage meshes + valid GLBs +
   TX2D textures). Coordinate, don't duplicate. NOT wired this round.
 
-## Urban Reign (PS2) — stage geometry NOT yet decoded
-- 7 stage PPKs extracted (34MB). PPK container format understood
-  (`teardown/urban-reign/PPK-FORMAT.md`); character geometry decoded
-  (`PPK-GEOMETRY.md`), but the *stage* PPKs' inner Namco geometry is
-  explicitly "not yet decoded" (ARENA-INVENTORY.md).
-- Status: blocked on stage-PPK geometry RE. No real geometry to wire yet.
+## Urban Reign (PS2) — stage PPKs secured, geometry format in RE
+- 7 stage PPKs (stage003, 004, 020, 028, 029, 030, 031; 34MB total)
+  surgically extracted 2026-10-18 via HTTP Range requests against release
+  `urban-reign-iso-v1` (parsed ISO9660 → DVD000.AFS @ ISO 3063840768 →
+  AFS file table → 7 contiguous PPKs @ AFS 998561792–1032468352 → single
+  34MB Range fetch from `urban-reign-500m.part_ah`). No 4.1GB ISO download.
+  PPKs stored at `~/workspace/_arenas-scratch/ur/ppks/` (scratch, not in repo).
+- PPK container: magic `ppk\0`, data offset @ byte 8 (512 for stage PPKs).
+  Sub-chunk offset table at data+48: 146 entries (stage028), 4-aligned,
+  strictly increasing — header/metadata chunks only (2KB range).
+- Geometry: 243 float32-dense 512B windows from data+0x1a000 (stage028).
+  Values use 128.0 as separator/sentinel (not clean xyz triplets) —
+  likely a Namco strip/packet format, NOT the char-PPK vertex layout.
+  Full vertex/index decode is open RE work.
+- Status: geometry EXISTS and is located; decode blocked on format RE.
+  No real geometry wired yet. Next: identify packet headers around the
+  float regions, find index buffers, reconstruct meshes.
+
+## Tekken 7 — arenas/ exists in release, not yet pulled
+- Release `tekken7-full-v1` (3.1GB, 7×500MB tar parts) contains
+  `tekken7/arenas/` per its description (verified: parts aa–ac hold
+  tekkenmods-docs/, tools/umodel_linux, king/, models/king-variants/;
+  arenas/ is in later parts ad–ag).
+- Disk at 84–85% blocked pulling the full 3.1GB this round. The arenas/
+  directory is confirmed present; selective extraction is the next step
+  (tar headers are scannable per-part; umodel_linux is bundled for UE4
+  .uasset export).
+- Status: not pulled, not wired. Next: pull parts ad–ag (or Range-scan
+  for arenas/ headers), extract, convert via umodel to GLB.
 
 ## Tekken Tag Tournament 2 — stage data opaque
 - 29 battle stages + Fight Lab documented from public data (Tekkenpedia /

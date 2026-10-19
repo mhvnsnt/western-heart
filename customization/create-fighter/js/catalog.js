@@ -36,6 +36,9 @@ export function friendlyName(part){
   if(m) return `${titleCase(m[2].replace(/_/g,' '))} · 0x${m[1].toUpperCase()}`;
   m = id.match(/^no-mercy:skin-tex:(.+)\.png/i);
   if(m) return `Skin Texture · ${m[1]}`;
+  // cc0-hair: cc0-hair:quaternius-buns:Hair_Buns.gltf
+  m = id.match(/^cc0-hair:([^:]+):(.+?)\.(gltf|glb)$/i);
+  if(m) return `${titleCase(m[1].replace(/-/g,' '))} (CC0)`;
   return id.split('/').pop();
 }
 function titleCase(s){ return s.replace(/\b\w/g,c=>c.toUpperCase()); }
@@ -60,7 +63,9 @@ export class Catalog {
           displayName: friendlyName(p),
           price: priceFor(p),
           rarity: rarityFor(p),
-          geometryPending: true,   // no .obj/.glb wired to the preview yet — honest badge
+          // CC0 universal parts ship real geometry (GLB/glTF in-repo); teardown
+          // ymg/obj parts are honest about it: geometryPending until decoded.
+          geometryPending: !(p.geometryReady || p.source_game==='cc0-hair'),
         });
       }
     }
