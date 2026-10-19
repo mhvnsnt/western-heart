@@ -355,6 +355,46 @@
     "n,f,n,f+1+2"
    ],
    "move_class": "throw"
+  },
+  "S": {
+   "name": "Buttercup Finishes [WH SIGNATURE]",
+   "input": "S",
+   "startup": 0.27,
+   "active": 0.017,
+   "recovery": 0.8,
+   "damage": 18,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 12,
+   "anim_ref": "wh:kinpo:sig:buttercup-finishes",
+   "input_slots": [
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "Blossom leads. Buttercup finishes. Forward-pressure finisher, no wasted charm."
+  },
+  "f+P": {
+   "name": "Plus-One Pressure [WH SIGNATURE]",
+   "input": "f+P",
+   "startup": 0.2,
+   "active": 0.017,
+   "recovery": 0.68,
+   "damage": 14,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 11,
+   "anim_ref": "wh:kinpo:sig:plus-one-pressure",
+   "input_slots": [
+    "f+P",
+    "f",
+    "P"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "She believes she's the plus-one. She fights like the main event anyway. Sharp thorn elbow."
   }
  },
  "strings": [

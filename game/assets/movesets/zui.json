@@ -355,6 +355,46 @@
     "n,d/f,n,d/f+1"
    ],
    "move_class": "throw"
+  },
+  "S": {
+   "name": "Bottle's Honest Truth [WH SIGNATURE]",
+   "input": "S",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.85,
+   "damage": 18,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 12,
+   "anim_ref": "wh:zui:sig:bottles-honest-truth",
+   "input_slots": [
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "The sake bottle never leaves his hand. The bottle was more honest than the monastery."
+  },
+  "D+K": {
+   "name": "Beautiful Stumble [WH SIGNATURE]",
+   "input": "D+K",
+   "startup": 0.24,
+   "active": 0.017,
+   "recovery": 0.72,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "wh:zui:sig:beautiful-stumble",
+   "input_slots": [
+    "D+K",
+    "D",
+    "K"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "The straight line is a lie. Everything stumbles - so stumble beautifully. Sway-dodge into low kick."
   }
  },
  "strings": [
