@@ -38,12 +38,13 @@ Legend: ✅ attached · ❌ no Tripo on record · ⚠️ needs owner link/pull �
 | PURPLE RAIN | ✅ YES (main attire) | Tripo Studio account pull (tripo-pull, 2026-10-16) | `game/assets/models/purple-rain-main.glb` (existing `purple-rain.glb` kept) | A1 = Tripo (default) · `purple-rain.glb` later slot | 👁️ `game/assets/models/renders/purple-rain-main.png` | 🎨 yes — unrigged static |
 | KIKO TANAKA | ✅ YES (main + alt1) | Tripo Studio account pull (tripo-pull, 2026-10-16) | `game/assets/models/kiko-tanaka.glb` (A1 hooded/robed), `kiko-tanaka_alt1.glb` (A2 unrobed, shrouded face) | A1 = Tripo hooded (default) · A2 = Tripo unrobed | 👁️ `renders/kiko-tanaka.png`, `renders/kiko-tanaka_alt1.png` | 🎨 yes — unrigged statics |
 | CAPE JONES / CYBORG X | ✅ YES (Attire 1) | Tripo Studio account pull (tripo-pull, 2026-10-16) | `game/assets/models/cape-jones.glb` | A1 = Cape Jones Tripo (default; = Cyborg X Attire 1 per canon) | 👁️ `renders/cape-jones.png` | 🎨 yes — unrigged static |
+| SKULL | ✅ YES (Attire 1) | tripo3d.ai/3d-model/d77eb53a-5369-4055-9ee6-b4a46eaf7789 ("human figure 3d model" — skull face paint, skeleton ribcage body paint, digital-camo cargo pants; the Bryan Fury proprietary replacement) | `roster/skull/attires/attire1/model.glb` | A1 = Tripo (default) · A2/A3 reserved customs · A4+ = Bryan Fury in-game attires (`game/assets/models/skull.glb` base) ladder back | 👁️ `docs/tpose-refs/skull/p1_front.png` | 🎨 yes — unrigged static (auto-rig before live-game swap) |
 | LILI | ❌ no Tripo on record | — | `game/assets/models/lili.glb` (base) | base GLB as-is | 👁️ `docs/tpose-refs/lili/` | — |
 | ZAFINA | ❌ no Tripo on record | — | `game/assets/models/zafina.glb` (base) | base GLB as-is | 👁️ `docs/tpose-refs/zafina/` | — |
 | BAEK / KEVIN | ✅ YES (Attire 1) | tripo3d.ai/3d-model/86d12371-a3f6-4f45-8b8b-4abdd47b881e ("human figure 3d model" by marquiswhitacre — Kevin from the God Molecule show, "just a guy, inside Mars' head") | `roster/baek/attires/attire1/model.glb` | A1 = Kevin Tripo (default, replaces boring Baek model) · A2 = original Baek `game/assets/models/baek.glb` · A3 = "Master's White" reskin (PR #265) | render pending | 🎨 yes — unrigged static (auto-rig before live-game swap) |
 | DXMMII | ❌ no Tripo on record | — | `game/assets/models/dxmmii.glb` (base) | base GLB as-is | check `docs/tpose-refs/` | — |
 | RAVE | ❌ no Tripo on record | — | `game/assets/models/rave.glb` (base) | base GLB as-is | per tpose sweep | — |
-| Others (demonio, diablo, n3g4tiv0, nightwolf, phantom, skull, sam-ur-a1, kinpo, mariposa, doc-frank, jin, steve-fox→zui) | ❌ no Tripo on record | — | base GLBs in `game/assets/models/` | base GLBs as-is | see `docs/tpose-refs/` | — |
+| Others (demonio, diablo, n3g4tiv0, nightwolf, phantom, sam-ur-a1, kinpo, mariposa, doc-frank, jin, steve-fox→zui) | ❌ no Tripo on record | — | base GLBs in `game/assets/models/` | base GLBs as-is | see `docs/tpose-refs/` | — |
 
 ## How to attach a new Tripo model (checklist)
 
@@ -60,3 +61,4 @@ Legend: ✅ attached · ❌ no Tripo on record · ⚠️ needs owner link/pull �
 - 2026-10-16: Awa Pop Tripo pulled (PR #215, `roster/awa-pop/awa-pop-attire-1.glb`).
 - 2026-10-15/16: Zui attires wired (PR #170): A1 Drunken Monk Tripo, A2 rework v2.
 - 2026-10-18: registry created per owner order — Tripo = default attire law; Pantera exception; "Zooey" flagged as unresolved; Pantera Tripo marked NOT ON RECORD (needs owner link).
+- 2026-10-19: Skull Tripo attached (Attire 1, the Bryan Fury proprietary replacement) — Bryan Fury in-game attires ladder to A4+ per owner slot order.
