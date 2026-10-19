@@ -7,6 +7,7 @@
    locks for canon roster bodies; presets = named saved fighters (save/load/delete). */
 import { Preview3D, SKIN_TONES } from './preview3d.js';
 import { Catalog, CATEGORIES, CONFLICTS } from './catalog.js';
+import { BODY_MORPHS, FACE_SHAPE_MORPHS, FACE_PARAMS, FACE_PRESETS, FACE_CHECKLIST, facePresetVector } from './morphdata.js';
 
 const LS_KEY = 'wh_create_fighter_v1';
 const PRESET_LS_KEY = 'wh_create_fighter_presets';
@@ -49,6 +50,8 @@ function blankFighter(){
     model:SOLDIER_GLB,   // base GLB, relative to customization/create-fighter/
     body:{ body_type:'Medium 1', skin_tone:'#c98d5e', head_shape:'male_3',
       proportions:{ height:1, weight:1, muscle:1 } },
+    morphs:{},                       // MPFB2 body morph id -> -1..1 (bakes to MPFB_<id> shape keys)
+    face:{ preset:'', params:{} },   // GNM-derived face preset + 20 semantic params
     attireIndex: 0,
     attires:[ blankAttire(), blankAttire(), blankAttire(), blankAttire() ],
     wardrobe:[ null,null,null,null,null,null,null,null,null,null ],
@@ -111,6 +114,7 @@ function syncPreview(){
   const p = F.body.proportions;
   preview.setProportions({
     height:(bt?bt.h:1)*p.height, weight:(bt?bt.w:1)*p.weight, muscle:(bt?bt.m:1)*p.muscle });
+  if(preview.setMorphValues) preview.setMorphValues(F.morphs || {});
   preview.clearAllProxies();
   const eq = attire().equipped;
   for(const slotId of Object.keys(eq)){
@@ -159,7 +163,7 @@ function renderPanel(){
   $('#panel-title').textContent = ui.tab.toUpperCase();
   $('#panel-sub').textContent = '';
   body.innerHTML='';
-  ({ body:renderBody, attire:renderAttire, wardrobe:renderWardrobe, profile:renderProfile, moveset:renderMoveset, limbs:renderLimbs })[ui.tab](body);
+  ({ body:renderBody, face:renderFace, attire:renderAttire, wardrobe:renderWardrobe, profile:renderProfile, moveset:renderMoveset, limbs:renderLimbs })[ui.tab](body);
 }
 
 /* ================= BODY ================= */
@@ -178,7 +182,12 @@ function renderBody(el){
     <div class="field"><label>HEAD SHAPE</label><select id="headshape" ${locked?'disabled':''}>
       ${['male_1','male_2','male_3','male_4','male_5','male_6','male_7','female_1','female_2','female_3'].map(h=>`<option ${F.body.head_shape===h?'selected':''}>${h}</option>`).join('')}
     </select></div>
-    <div class="note">Face (348) &amp; Hair (156) live under ATTIRE — they equip into the Face / Hairstyle slots with the same buy/equip loop.</div>
+    <div class="note">Face (348) &amp; Hair (165, incl. 9 universal CC0) live under ATTIRE — they equip into the Face / Hairstyle slots with the same buy/equip loop.</div>
+    <div class="sect">BODY MORPHS — MPFB2</div>
+    <div class="note">Real MPFB2 morph targets (cape-jones PR #128). Bake to <b>MPFB_&lt;id&gt;</b> shape keys with <span style="font-size:11px">customization/body-morphs/apply_mpfb_morphs.py</span> — sliders below drive the live preview now and persist in your fighter JSON.</div>
+    <div id="mpfb-body"></div>
+    <div class="sect">FACE SHAPE — MPFB2 regional</div>
+    <div id="mpfb-face"></div>
     <div class="sect">BODY PARTS — ${catalog.count('bodies')} meshes</div>
     <div class="note">220 No Mercy body-part meshes. <span class="geo-badge">GEOMETRY PENDING</span> .obj wiring not in this build — equip records the part in your fighter JSON and shows a socket marker.</div>
     <div class="btn-row"><button class="btn" id="btn-bodyparts">BROWSE BODY PARTS</button></div>`;
@@ -213,6 +222,25 @@ function renderBody(el){
     sl.appendChild(d);
   });
   el.querySelector('#headshape').onchange=e=>{ F.body.head_shape=e.target.value; persistQuiet(); };
+  // MPFB2 morph sliders (live preview + fighter JSON; bake = shape keys)
+  const mb=el.querySelector('#mpfb-body');
+  BODY_MORPHS.forEach(m=>{
+    const d=document.createElement('div'); d.className='ctl';
+    d.innerHTML=`<label>${esc(m.label)}<span class="val">${(+((F.morphs||{})[m.id]||0)).toFixed(2)}</span></label>
+      <input type="range" min="${m.range[0]}" max="${m.range[1]}" step="0.01" value="${(F.morphs||{})[m.id]||0}" aria-label="${esc(m.label)}" ${locked?'disabled':''}>`;
+    if(!locked) d.querySelector('input').oninput=e=>{ F.morphs=F.morphs||{}; F.morphs[m.id]=+e.target.value;
+      d.querySelector('.val').textContent=(+e.target.value).toFixed(2); syncPreview(); persistQuiet(); };
+    mb.appendChild(d);
+  });
+  const mf=el.querySelector('#mpfb-face');
+  FACE_SHAPE_MORPHS.forEach(m=>{
+    const d=document.createElement('div'); d.className='ctl';
+    d.innerHTML=`<label>${esc(m.label)}<span class="val">${(+((F.morphs||{})[m.id]||0)).toFixed(2)}</span></label>
+      <input type="range" min="${m.range[0]}" max="${m.range[1]}" step="0.01" value="${(F.morphs||{})[m.id]||0}" aria-label="${esc(m.label)}" ${locked?'disabled':''}>`;
+    if(!locked) d.querySelector('input').oninput=e=>{ F.morphs=F.morphs||{}; F.morphs[m.id]=+e.target.value;
+      d.querySelector('.val').textContent=(+e.target.value).toFixed(2); syncPreview(); persistQuiet(); };
+    mf.appendChild(d);
+  });
   el.querySelector('#btn-bodyparts').onclick=()=>{
     ui.tab='attire';
     document.querySelectorAll('.rail-btn').forEach(x=>x.classList.toggle('active',x.dataset.tab==='attire'));
@@ -222,12 +250,51 @@ function renderBody(el){
   };
 }
 
+/* ================= FACE — GNM-derived morphs =================
+   TAP-TO-ASSIGN: tap a preset card to apply it, drag sliders for detail.
+   Never drag-and-drop. Presets come from cape-jones 3d-assets/face-rig/
+   (GNM Head, Apache-2.0, PR #125). */
+function renderFace(el){
+  const locked = !isCustom();
+  $('#panel-sub').textContent = 'GNM expressions — tap a preset, tune the sliders';
+  F.face = F.face || { preset:'', params:{} };
+  el.innerHTML = `
+    ${locked?`<div class="note">🔒 <b>Canon face</b> — switch to NEW FIGHTER for full FACE access.</div>`:''}
+    <div class="sect">EXPRESSION PRESETS — tap to assign</div>
+    <div class="roster-grid" id="facepresets"></div>
+    <div class="sect">SEMANTIC PARAMS — 20 GNM params</div>
+    <div id="faceparams"></div>
+    <div class="btn-row"><button class="btn" id="btn-facereset">RESET FACE</button></div>
+    <div class="note">Presets blend like GNM's <b>blend_expressions</b>: pick one, then drag sliders to mix. Values persist in your fighter JSON; the 17-mouth swap set applies on bake.</div>`;
+  const gp=el.querySelector('#facepresets');
+  Object.keys(FACE_PRESETS).forEach(name=>{
+    const b=document.createElement('button');
+    b.className='roster-card'+(F.face.preset===name?' active':'');
+    b.textContent=name.replace(/_/g,' ');
+    if(locked) b.disabled=true;
+    b.onclick=()=>{ if(locked) return; F.face.preset=name; F.face.params=facePresetVector(name); renderAll(); };
+    gp.appendChild(b);
+  });
+  const fp=el.querySelector('#faceparams');
+  FACE_PARAMS.forEach(p=>{
+    const d=document.createElement('div'); d.className='ctl';
+    const val = (F.face.params||{})[p] || 0;
+    d.innerHTML=`<label>${esc(p)}<span class="val">${(+val).toFixed(2)}</span></label>
+      <input type="range" min="-1" max="1" step="0.01" value="${val}" aria-label="${esc(p)}" ${locked?'disabled':''}>`;
+    if(!locked) d.querySelector('input').oninput=e=>{ F.face.params=F.face.params||{};
+      F.face.params[p]=+e.target.value; F.face.preset='';
+      d.querySelector('.val').textContent=(+e.target.value).toFixed(2); persistQuiet(); };
+    fp.appendChild(d);
+  });
+  el.querySelector('#btn-facereset').onclick=()=>{ F.face={preset:'',params:{}}; renderAll(); };
+}
+
 /* ================= ATTIRE ================= */
 function renderAttire(el){
   if(!ui.attireCat){
     $('#panel-sub').textContent = 'Tekken item shop — pick a category';
     const eq = attire().equipped;
-    el.innerHTML = `<div class="note">Buy → Equip loop. Items try on instantly. <span class="geo-badge">GEOMETRY PENDING</span> on every part: real ymg/obj meshes aren't wired yet, so equip shows a labeled socket marker + records the part in your fighter JSON. No fake equipped meshes — ever.</div>`;
+    el.innerHTML = `<div class="note"><b>TAP-TO-ASSIGN:</b> tap/scroll the library and tap a part to select it, then BUY → EQUIP. No drag-and-drop — ever. Items try on instantly. <span class="geo-badge">GEOMETRY PENDING</span> on teardown parts: real ymg/obj meshes aren't wired yet, so equip shows a labeled socket marker + records the part in your fighter JSON. CC0 universal hair shows the REAL mesh. No fake equipped meshes — ever.</div>`;
     CATEGORIES.filter(c=>c.key!=='bodies'&&c.key!=='skins').forEach(c=>{
       const b=document.createElement('button'); b.className='subcat'+(eq[c.slotId]?' equipped':'');
       b.innerHTML=`<span class="sc-ico">${c.icon}</span><span>${c.label}${eq[c.slotId]?'<br><small style="color:var(--green)">✓ '+esc(catalog.get(eq[c.slotId])?.displayName||eq[c.slotId])+'</small>':''}</span><span class="sc-count">${catalog.count(c.key)}</span>`;
@@ -279,7 +346,7 @@ function renderItemGrid(el, cat){
     d.innerHTML=`<div class="item-mono">${cat.icon}</div>
       <div class="item-name">${esc(p.displayName)}</div>
       <div class="item-meta"><span class="stars">${'★'.repeat(p.rarity)}${'☆'.repeat(5-p.rarity)}</span><br>
-      <span class="geo-badge">GEOMETRY PENDING</span><br>
+      ${p.geometryPending?'<span class="geo-badge">GEOMETRY PENDING</span>':'<span class="owned">REAL MESH</span>'}<br>
       ${owned?'<span class="owned">OWNED</span>':`<span class="price">${p.price.toLocaleString()}G</span>`}<br>
       <span title="${esc(p.part_id)}">${esc(p.source_game)}</span></div>`;
     d.onclick=()=>{ ui.selPart=p; renderPanel(); syncPreview(); };
@@ -299,8 +366,9 @@ function renderItemDetail(el, p, cat){
     <div class="kv"><span>Slot</span><b>${cat.label} (${cat.slotId})</b></div>
     <div class="kv"><span>Socket</span><b>${cat.anchor}</b></div>
     <div class="kv"><span>File</span><b style="font-size:11px">${esc(p.file_path||'—')}</b></div>
-    <div class="note"><span class="geo-badge">GEOMETRY PENDING</span> 3D mesh for this part isn't wired yet (ymg/obj parser pending).
-      Equip records it in your fighter JSON and shows a pulsing socket marker at the <b>${cat.anchor}</b> anchor in your chosen colors. Color/material edits below apply to the marker now and to the real mesh when it lands.</div>
+    <div class="note">${p.geometryPending
+      ? `<span class="geo-badge">GEOMETRY PENDING</span> 3D mesh for this part isn't wired yet (ymg/obj parser pending). Equip records it in your fighter JSON and shows a pulsing socket marker at the <b>${cat.anchor}</b> anchor in your chosen colors. Color/material edits below apply to the marker now and to the real mesh when it lands.`
+      : `<span class="owned">REAL MESH</span> This part ships real geometry — equipping it shows the actual mesh on your fighter in the preview.`}</div>
     <div class="sect">COLOR / MATERIAL</div>
     ${['c1','c2','c3'].map((k,i)=>`<div class="color-row"><span class="chip">CH ${i+1}</span>
       <input type="color" value="${col[k]}" data-ck="${k}" aria-label="Channel ${i+1}"></div>`).join('')}

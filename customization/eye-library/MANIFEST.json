@@ -11,7 +11,7 @@
       ]
     },
     "lili": {
-      "character": "Lili (Western Heart roster/lili, Tekken 7 1P formal outfit)",
+      "character": "Silvertongue (Western Heart roster/lili, Tekken 7 1P formal outfit)",
       "material": "Modelpart1_eyeball_Material005 (eye material baseColor)",
       "notes": "Single shared texture \u2014 both eyes use it. Drop-in full replace. Applied: yellow tiger on Attire 1 (Noir Gala); original blue-gray saved in customization/parts/lili-eyes/.",
       "replaces_texture": "T_CH_eye_D",
@@ -21,7 +21,7 @@
       ]
     },
     "zafina": {
-      "character": "Zafina (Western Heart roster/zafina, Tekken 6 outfit)",
+      "character": "Mariposa (Western Heart roster/zafina, Tekken 6 outfit)",
       "material": "24_eyes_1_16_16 (eye material baseColor)",
       "notes": "Single shared texture \u2014 both eyes use it. Drop-in full replace. Applied: yellow tiger on Attire 1 (Golden Pharaoh); original dark brown saved in customization/parts/zafina-eyes/.",
       "replaces_texture": "eyes_d-eyes_d.dds",
@@ -29,6 +29,16 @@
         128,
         128
       ]
+    },
+    "mariposa": {
+      "character": "Mariposa \u2014 The Butterfly Soul (Western Heart, Zafina base)",
+      "material": "tripo_material_187bb8a9 baseColor (eyes baked into 4096 color atlas)",
+      "replaces_texture": "Color_187bb8a9-669f-4a56-9b2c-f1ab87cbd225",
+      "texture_size": [
+        4096,
+        4096
+      ],
+      "notes": "Eyes are painted into the single 4096x4096 color atlas (Tripo-baked, no separate eye texture). Yellow tiger eye is a swappable OPTION via compositing; default eyes NOT overwritten. See customization/parts/mariposa-monarch/ for the Monarch reskin."
     },
     "jin": {
       "character": "Jin Kazama \u2014 The Bloodline Soul (Western Heart roster/jin)",
