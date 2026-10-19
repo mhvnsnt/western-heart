@@ -22,6 +22,10 @@ const TITLE_B=['BEAST','PANTHER','KING','GHOST','STORM','WOLF','TIGER','DEMON'];
 /* suite_slot -> ATTIRE category slot key */
 const SLOT2CAT = { mask:'3', eye_lenses:'6', cowl:'3', gauntlets:'H', hair:'2',
   decal_logo:'8', eye:'EYES', tights:'11', pants:'11', top:'9', outfit:'9', scarf:'12', face:'8' };
+/* suite_slot -> fallback 3D socket for texture-part markers (registry has no placement block for texture parts) */
+const SLOT2SOCKET = { eye:'face', face:'face', decal_logo:'chest', top:'chest', outfit:'chest',
+  scarf:'chest', tights:'waist', pants:'waist', hair:'head', mask:'face', eye_lenses:'face', cowl:'head', gauntlets:'hands' };
+const partSocket = p => p.socket || SLOT2SOCKET[p.suite_slot] || 'chest';
 
 function blankAttire(){ return { name:'', thumb:'', equipped:{}, owned:[], colors:{}, placements:{} }; }
 function blankFighter(){
@@ -85,6 +89,16 @@ function syncPreview(){
   if(!viewer) return;
   viewer.setProportions(F.body.proportions);
   syncParts3D();
+  // re-apply texture-part markers (they don't persist in the 3D scene across re-renders)
+  const texSeen = new Set();
+  for(const [slotKey, partId] of Object.entries(attire().equipped)){
+    const p = PARTS.find(x=>x.id===partId);
+    if(p && p.part_class!=='mesh_part'){
+      texSeen.add('tex-'+p.id);
+      viewer.setMarker('tex-'+p.id, partSocket(p), '#e8b64c', p.name);
+    }
+  }
+  for(const key of [...viewer.markers.keys()]) if(!texSeen.has(key)) viewer.clearMarker(key);
 }
 
 /* ---------- topbar ---------- */
@@ -257,7 +271,7 @@ function renderPartDetail(el, p, slotKey){
   } else {
     const b=document.createElement('button'); b.className='btn btn-green'; b.id='btn-apply-part'; b.textContent='APPLY';
     b.onclick=()=>{ attire().equipped[slotKey]=p.id;
-      if(viewer) viewer.setMarker('tex-'+p.id, p.socket||'face', '#e8b64c', p.name);
+      if(viewer) viewer.setMarker('tex-'+p.id, partSocket(p), '#e8b64c', p.name);
       renderAll(); toast('Applied ✓'); };
     box.appendChild(b);
   }

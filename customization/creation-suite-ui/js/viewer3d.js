@@ -123,8 +123,11 @@ export class SuiteViewer {
     if(!b) return fallback;
     const v = new THREE.Vector3(); b.getWorldPosition(v); return v.y;
   }
-  /* socket anchor in world space — from bones, scaled offsets by head height.
-     Facing is read from the Head bone's world quaternion, so it works for any model. */
+  socketBone(socket){
+    const s = SOCKET_BONES[socket] || SOCKET_BONES.head;
+    for(const n of s.bones){ if(this.bones && this.bones[n]) return this.bones[n]; }
+    return null;
+  }
   socketPoint(socket){
     const s = SOCKET_BONES[socket] || SOCKET_BONES.head;
     const out = new THREE.Vector3(0, 1.6, 0);
@@ -170,10 +173,15 @@ export class SuiteViewer {
     const base = this.socketPoint(def.socket || 'head');
     const d = def.offset || [0,0,0];
     group.position.set(base.x + d[0] + (p.px||0), base.y + d[1] + (p.py||0), base.z + d[2] + (p.pz||0));
-    group.rotation.set(
+    // orient the part with the socket bone (part-local +Z = bone facing), then user euler on top
+    const bone = this.socketBone(def.socket || 'head');
+    const q = new THREE.Quaternion();
+    if(bone) bone.getWorldQuaternion(q);
+    const user = new THREE.Quaternion().setFromEuler(new THREE.Euler(
       THREE.MathUtils.degToRad(p.rx||0) + (def.rotation?def.rotation[0]:0),
       THREE.MathUtils.degToRad(p.ry||0) + (def.rotation?def.rotation[1]:0),
-      THREE.MathUtils.degToRad(p.rz||0) + (def.rotation?def.rotation[2]:0));
+      THREE.MathUtils.degToRad(p.rz||0) + (def.rotation?def.rotation[2]:0)));
+    group.quaternion.copy(q).multiply(user);
     const s = (p.s||1) * (def.scale||1);
     group.scale.setScalar(s);
   }

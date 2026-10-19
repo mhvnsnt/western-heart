@@ -57,6 +57,18 @@ rebuild the front end on the wired systems → placement-accuracy UI → video d
   lanes depend on it); the rebuild reuses its vendored three.js + Soldier.glb.
 - UI art is original rather than Kenney-pulled (donation gate) — documented.
 
+### 3D placement engineering (verified with own eyes, 2026-10-19)
+- Soldier.glb's rendered size comes from BONE scale, not geometry bbox — sockets
+  resolve from bone world positions (mixamorig/mixamorig: prefix stripped), facing
+  from the Head bone's world quaternion. Works for any model.
+- Part geometry normalized on attach (bbox center → group origin) so cross-character
+  parts (modeled for cyborg-x) land on the socket; part-local +Z aligns to bone
+  facing, user euler applies on top.
+- Batgirl domino mask verified attached at the face socket, oriented correctly
+  (eye holes forward), nudge-tested in 0.01/0.001 steps with live readout.
+- Demo video: `demo/creation-suite-demo.mp4` (165s, 8.8MB) — full UI walkthrough,
+  every frame own-eyes verified via extracted stills.
+
 ### Proof
-- `demo/` video + frame grabs (own-eyes verified).
+- `demo/creation-suite-demo.mp4` + extracted frame stills (own-eyes verified).
 - PR body carries law-15 sections.
