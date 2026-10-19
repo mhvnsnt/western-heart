@@ -261,6 +261,20 @@
       "note": "WrestleMania XIX teardown parts (ymg binaries; geometryPending until decoded to GLB).",
       "part_class": "mesh_part",
       "path": "customization/parts/wmxix/"
+    },
+    "mariposa-monarch": {
+      "kind": "full_reskin",
+      "manifest": "customization/parts/mariposa-monarch/MANIFEST.json",
+      "note": "Mariposa first custom look: monarch-orange wing colorway. Original + reskin saved, swappable.",
+      "part_class": "texture_part",
+      "path": "customization/parts/mariposa-monarch/"
+    },
+    "dxmmii-patchwork": {
+      "kind": "full_reskin",
+      "manifest": "customization/parts/dxmmii-patchwork/MANIFEST.json",
+      "note": "DXMMII first custom look: patchwork DJ colorway. Original + reskin saved, swappable. X-eyes preserved (owner-locked).",
+      "part_class": "texture_part",
+      "path": "customization/parts/dxmmii-patchwork/"
     }
   },
   "parts": [
@@ -51325,6 +51339,76 @@
         "socket": "head"
       },
       "suite_slot": "hair"
+    },
+    {
+      "id": "mariposa-monarch-reskin",
+      "kind": "full_reskin",
+      "library": "mariposa-monarch",
+      "name": "Mariposa Monarch reskin (vibrant orange wings)",
+      "asset": "customization/parts/mariposa-monarch/mariposa-color-monarch.jpg",
+      "size_px": [
+        4096,
+        4096
+      ],
+      "part_class": "texture_part",
+      "suite_slot": "attire",
+      "editable": [
+        "position",
+        "size",
+        "opacity"
+      ],
+      "placement": {
+        "mode": "full_replace",
+        "texture": "Color_187bb8a9-669f-4a56-9b2c-f1ab87cbd225",
+        "material": "tripo_material_187bb8a9",
+        "default_character": "mariposa"
+      },
+      "notes": "Monarch-orange wing membranes, black veins, eye-spots preserved. Currently applied on roster/mariposa/attires/monarch/mariposa-monarch.glb."
+    },
+    {
+      "id": "mariposa-original-reskin",
+      "kind": "full_reskin",
+      "library": "mariposa-monarch",
+      "name": "Mariposa original indigo/violet (restore)",
+      "asset": "customization/parts/mariposa-monarch/mariposa-color-original.jpg",
+      "size_px": [
+        4096,
+        4096
+      ],
+      "part_class": "texture_part",
+      "suite_slot": "attire",
+      "editable": [
+        "position",
+        "size",
+        "opacity"
+      ],
+      "placement": {
+        "mode": "full_replace",
+        "texture": "Color_187bb8a9-669f-4a56-9b2c-f1ab87cbd225",
+        "material": "tripo_material_187bb8a9",
+        "default_character": "mariposa"
+      },
+      "notes": "Original indigo/violet colorway, byte-identical extract. Drop-in restore."
+    },
+    {
+      "id": "dxmmii-patchwork-reskin",
+      "kind": "full_reskin",
+      "library": "dxmmii-patchwork",
+      "name": "DXMMII Patchwork DJ reskin (vibrant multi-color)",
+      "asset": "customization/parts/dxmmii-patchwork/textures_patchwork/",
+      "size_px": "various",
+      "part_class": "texture_part",
+      "suite_slot": "attire",
+      "editable": [
+        "position",
+        "size",
+        "opacity"
+      ],
+      "placement": {
+        "mode": "full_replace",
+        "default_character": "dxmmii"
+      },
+      "notes": "Vibrant patchwork panels, crash-test target on chest. Currently applied on roster/dxmmii/attires/patchwork-dj/dxmmii-patchwork.glb. X-eyes preserved."
     }
   ],
   "registry": "creation-suite-parts-registry",
