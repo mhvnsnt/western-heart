@@ -29,3 +29,9 @@ NOTE: All Tripo GLBs are unrigged statics — the live game default
 (`game/js/assets.js`) does NOT swap yet. The playable swap rides with the
 auto-rig pass (same pattern as Kevin/Thor). Until then A1 is the canonical
 default per the TRIPO=MAIN ATTIRES law.
+- **Attire 5** — "Rated-M Nude" — TRUE rated-M nudity variant (owner 2026-10-19:
+  "Need a rated M nudity version of star... fully rigged jiggle parts and all").
+  Texture-level build: red latex + all clothing (straps, boots, holster, belt)
+  replaced with skin, tasteful anatomy painted. Fully rigged (22-bone skeleton,
+  distance-weighted) with 7 jiggle bones (mammary, glutes, thighs, belly).
+  `attires/attire5/model.glb`
