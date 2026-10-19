@@ -60,6 +60,11 @@ const MODEL_URLS = {
   zafina: 'assets/models/zafina.glb',
   dxmmii: 'assets/models/dxmmii.glb',
   rave: 'assets/models/rave.glb',
+  // Cain Elias — Vain Abel's brother, Undertaker archetype (owner 2026-10-19, Tripo pulls).
+  'cain-elias': '../roster/cain-elias/attires/attire1/model.glb',
+  'cain-elias-attire2': '../roster/cain-elias/attires/attire2/model.glb',
+  // Burger — Demon mode, possessed by greed (owner 2026-10-19, Tripo pull).
+  burger: '../roster/burger/attires/attire1/model.glb',
   lili: 'assets/models/lili.glb',   // NO WH name yet — do not assign
   baek: 'assets/models/baek.glb',   // NO WH name yet — do not assign
   // Round-2 auto-rig wave (lane B): re-rigged per-fighter variants + Tripo
