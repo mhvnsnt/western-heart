@@ -220,13 +220,6 @@
       "part_class": "mesh_part",
       "path": "customization/parts/hair/cc0/"
     },
-    "decal-library-mariposa": {
-      "kind": "top | scarf | hair | shorts",
-      "manifest": "customization/decal-library/mariposa/MANIFEST.json",
-      "note": "Mariposa butterfly-default texture options (applied) + originals (restore).",
-      "part_class": "texture_part",
-      "path": "customization/decal-library/mariposa/"
-    },
     "decal-library-pantera": {
       "kind": "decal_logo | tights | pants",
       "manifest": "customization/decal-library/pantera/MANIFEST.json",
@@ -240,13 +233,6 @@
       "note": "Universal eye options incl. the owner's 'I like' yellow tiger variant.",
       "part_class": "texture_part",
       "path": "customization/eye-library/"
-    },
-    "mariposa-default": {
-      "kind": "eye | head | top | hair_mesh | morph",
-      "manifest": "customization/parts/mariposa-default/MANIFEST.json",
-      "note": "Slot 1 originals saved as options (nothing overwritten) + morph definitions.",
-      "part_class": "texture_part",
-      "path": "customization/parts/mariposa-default/"
     },
     "no-mercy": {
       "kind": "upper_body | lower_body | accessories | gears",
@@ -262,13 +248,6 @@
       "part_class": "texture_part",
       "path": "customization/parts/pantera-eyes/"
     },
-    "silvertongue-default": {
-      "kind": "face | hair | outfit",
-      "manifest": "customization/parts/silvertongue-default/MANIFEST.json",
-      "note": "Silvertongue Slot 1 Spy Debut originals, saved as swap options (nothing overwritten).",
-      "part_class": "texture_part",
-      "path": "customization/parts/silvertongue-default/"
-    },
     "superhero": {
       "kind": "mask | cowl | gauntlets | eye_lenses",
       "manifest": "customization/parts/superhero/MANIFEST.json",
@@ -283,101 +262,6 @@
       "part_class": "mesh_part",
       "path": "customization/parts/wmxix/"
     }
-  },
-  "morph_definitions": {
-    "mariposa": [
-      {
-        "applies_to": "all 36 body meshes + 246 armature bones (same positional function, keeps bind pose consistent)",
-        "class": "MPFB2-class parametric body morph",
-        "id": "mpfb2_body_curvy",
-        "note": "Deviation: MPFB2 targets are authored for MPFB2 base meshes; this is the equivalent parametric morph implemented on the real Tekken mesh (same math the suite would drive). Parameters recorded so the suite can re-apply.",
-        "parameters": {
-          "bust": {
-            "band_y": [
-              1.38,
-              1.62
-            ],
-            "lift_y": 0.012,
-            "radial_xz": 1.05
-          },
-          "height": {
-            "factor": 1.02,
-            "from_y": 1.0
-          },
-          "hips": {
-            "band_y": [
-              0.88,
-              1.3
-            ],
-            "radial_xz": 1.085
-          },
-          "waist": {
-            "band_y": [
-              1.16,
-              1.44
-            ],
-            "radial_xz": 0.94
-          }
-        },
-        "seed": 20261019,
-        "source": "work/build_model.py body_morph_fn"
-      },
-      {
-        "applies_to": "24_head_1_0_0, 24_eyes_1_16_16, 7_eyeshad_0.1_0_0, 7_lashes_0.2_0_0, 24_mouth_1_16_16, 24_neck_1_16_16",
-        "class": "GNM-class parametric face morph",
-        "id": "gnm_face_butterfly",
-        "note": "Deviation: GNM-shape fits a PCA head model; this is the equivalent parametric control set (eyes/nose/mouth/face) implemented on the real Tekken head mesh, mirroring the cape-jones GNM-head lane's control philosophy. Parameters recorded for suite re-application.",
-        "parameters": {
-          "eyes": {
-            "outward_shift": 0.006,
-            "radius": 0.065,
-            "widen": "push away from eye centers horizontally"
-          },
-          "jaw": {
-            "lift_y": 0.003,
-            "region": "y<1.70, |x|<0.09 front"
-          },
-          "lips": {
-            "fuller_out_z": 0.005,
-            "radius": 0.055
-          },
-          "nose": {
-            "bridge_narrow_x": 0.94,
-            "radius": 0.04
-          }
-        },
-        "seed": 20261019,
-        "source": "work/build_model.py face_morph_fn"
-      },
-      {
-        "applies_to": "25_hairtop_1_16_16, 25_hairfront_1_16_16, 25_hairside_1_16_16, 25_hairback_1_16_16",
-        "class": "hair silhouette morph",
-        "id": "hair_butterfly_silhouette",
-        "note": "Volumetric reshape of the real T6 hair parts (ponytail + headroses removed and saved as mesh options in this folder).",
-        "parameters": {
-          "hairback": "z-0.035 sweep back, y+0.012",
-          "hairfront": "z-0.012 sweep back, y+0.014",
-          "hairside": "x*1.32, z*1.18 widen",
-          "hairtop": "radial *1.24 volume, y+0.022"
-        },
-        "seed": 20261019,
-        "source": "work/build_model.py hair_fn_factory"
-      },
-      {
-        "applies_to": "24_shorts_1_16_16",
-        "class": "garment morph",
-        "id": "skirt_flare",
-        "note": "Shorts hem flared into a mini-skirt silhouette (real T6 shorts part, reshaped).",
-        "parameters": {
-          "flare_xz": 1.5,
-          "hem_drop_y": 0.02,
-          "hem_y_below": 1.04
-        },
-        "seed": 20261019,
-        "source": "work/build_model.py shorts_flare_fn"
-      }
-    ],
-    "note": "Parametric morphs baked into Mariposa Slot 1. parts.js v1 handles texture_part/mesh_part only; these definitions let the suite (or a future morph driver) re-apply them. Parameters are the exact build values (work/build_model.py)."
   },
   "parts": [
     {
