@@ -1,3 +1,10 @@
+# tripo-pull — THE ONLY WAY TO DOWNLOAD TRIPO MODELS. USE THIS. ALWAYS.
+
+**NEVER ask the owner for a Tripo sign-in. NEVER try a browser session. NEVER say a model "needs his login."**
+If a pull 401s, the UUID/link is wrong — CHECK THE URL, do not ask for a login. The owner has ordered this: the tool IS the method.
+
+---
+
 # tripo-pull — download your Tripo3D Studio models, any time
 
 Tripo Studio locked free exports behind a paywall, and their site has

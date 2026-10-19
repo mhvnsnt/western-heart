@@ -184,6 +184,27 @@ export class Preview3D {
     if(!this.fighter) return;
     this.fighter.scale.set(weight*(1+(muscle-1)*0.5), height, weight*(1+(muscle-1)*0.5));
   }
+  /* ---- MPFB2 morph live-preview proxies (2026-10-18).
+     Real morphs bake as MPFB_<id> shape keys via
+     customization/body-morphs/apply_mpfb_morphs.py; these bone-scale
+     proxies give instant feedback in the preview only. Never destructive. */
+  setMorphValues(values = {}){
+    if(!this.fighter) return;
+    const bone = n => (this.bones && this.bones[n]) || this.fighter.getObjectByName(n);
+    const set = (n, sx, sy, sz)=>{ const o = bone(n); if(o) o.scale.set(sx, sy, sz); };
+    const v = id => values[id] || 0;
+    const s = x => 1 + 0.15 * x;
+    if(v('height')) set('Hips', 1, s(v('height')), 1);
+    const girth = 1 + 0.12*(v('bulk')+v('muscle')) + 0.10*v('fat');
+    if(girth !== 1){ set('Spine', girth, 1, girth); set('Spine1', girth, 1, girth); }
+    if(v('shoulders')){ set('LeftShoulder', 1+v('shoulders')*0.2, 1, 1); set('RightShoulder', 1+v('shoulders')*0.2, 1, 1); }
+    if(v('belly')) set('Spine1', 1, 1, 1 + v('belly')*0.25);
+    if(v('limbs')){ const l = 1 + v('limbs')*0.15;
+      for(const b of ['LeftUpperLeg','RightUpperLeg','LeftLowerLeg','RightLowerLeg','LeftUpperArm','RightUpperArm']) set(b, 1, l, 1); }
+    if(v('neck')) set('Neck', 1+v('neck')*0.15, 1, 1+v('neck')*0.15);
+    if(v('chest')) set('Spine1', 1+v('chest')*0.1, 1, 1+v('chest')*0.12);
+    if(v('hips')) set('Hips', 1+v('hips')*0.12, 1, 1+v('hips')*0.1);
+  }
   setBodyType(preset){
     // No Mercy body-type presets -> scale recipes
     this.setProportions(preset);

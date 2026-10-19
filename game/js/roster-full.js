@@ -61,7 +61,7 @@ export const FULL_ROSTER = [
     colors: { suit: 0xcc8833, trim: 0xff4400 }, style: 'Sumo/Brawler', archetype: 'Power' },
   { id: 'awapop', name: 'AWA POP', title: 'Bubbles', base: 'Nina', moveset: 'jin', model: 'steve-fox', tintStrength: 0.6,
     colors: { suit: 0xff9dcc, trim: 0xffffff }, style: 'Assassin', archetype: 'Rushdown' },
-  { id: 'scimitar', name: 'SCIMITAR', title: 'Desert Blade', base: 'Shaheen', moveset: 'jin', model: 'steve-fox', tintStrength: 0.6,
+  { id: 'scimitar', name: 'SCIMITAR', title: 'Desert Blade', base: 'Shaheen', moveset: 'jin', model: 'scimitar', tintStrength: 0.6,
     colors: { suit: 0x2a2a3a, trim: 0xc2a36b }, style: 'Military', archetype: 'Balanced' },
   { id: 'purplerain', name: 'PURPLE RAIN', title: 'MJ x Prince x Pimp', base: 'Lee', moveset: 'jin', model: 'steve-fox', tintStrength: 0.6,
     colors: { suit: 0x6b2d8f, trim: 0xff00ff }, style: 'Martial Arts', archetype: 'Stylish' },
