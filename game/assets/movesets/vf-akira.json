@@ -1,0 +1,437 @@
+{
+ "fighter": "vf-akira",
+ "display": "AKIRA (VF)",
+ "tekken_base": "Akira Yuki (Virtua Fighter 5 Final Showdown)",
+ "vf_source": "community movelist + frame data (see docs/movesets/DOA-VF-CONVERSION-2026-10-19.md)",
+ "proxy": false,
+ "proxy_note": null,
+ "schema_version": 2,
+ "moves": {
+  "1": {
+   "name": "Akira P \u2014 Chusui",
+   "input": "1",
+   "vf_move": "Chusui",
+   "vf_input": "P",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.367,
+   "damage": 7,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "vf:akira/chusui",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "note": "frame data estimated from archetype; marked per schema honesty rule"
+  },
+  "1,2": {
+   "name": "Akira PP \u2014 Hacimon Kaida",
+   "input": "1,2",
+   "vf_move": "Hacimon Kaida",
+   "vf_input": "P,P",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.433,
+   "damage": 12,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "vf:akira/pp",
+   "input_slots": [
+    "1,2",
+    "1",
+    "2"
+   ],
+   "move_class": "string",
+   "note": "frame data estimated from archetype; marked per schema honesty rule"
+  },
+  "1,3": {
+   "name": "Akira PK \u2014 Kansuitai",
+   "input": "1,3",
+   "vf_move": "Kansuitai",
+   "vf_input": "P,K",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 13,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "vf:akira/pk",
+   "input_slots": [
+    "1,3",
+    "1",
+    "3"
+   ],
+   "move_class": "string",
+   "note": "frame data estimated from archetype; marked per schema honesty rule"
+  },
+  "f+1": {
+   "name": "Akira 6P \u2014 Shousui elbow",
+   "input": "f+1",
+   "vf_move": "Shousui (elbow)",
+   "vf_input": "6P",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.433,
+   "damage": 12,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "vf:akira/6p",
+   "input_slots": [
+    "f+1"
+   ],
+   "move_class": "strike",
+   "note": "VFDC Orange Book: 14f execution, -6 guard / -2 hit / +4 CH."
+  },
+  "f,f+1": {
+   "name": "Akira 66P \u2014 Rimon Chouchu",
+   "input": "f,f+1",
+   "vf_move": "Rimon Chouchu",
+   "vf_input": "66P",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 14,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.6,
+   "soulGain": 8,
+   "anim_ref": "vf:akira/66p",
+   "input_slots": [
+    "f,f+1"
+   ],
+   "move_class": "special",
+   "note": "/vg/ VF writeup: fast elbow, advantage. frame data estimated from archetype; marked per schema honesty rule"
+  },
+  "b,f+1": {
+   "name": "Akira 46P \u2014 step palm",
+   "input": "b,f+1",
+   "vf_move": "46P",
+   "vf_input": "46P",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.433,
+   "damage": 10,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "vf:akira/46p",
+   "input_slots": [
+    "b,f+1"
+   ],
+   "move_class": "special",
+   "note": "/vg/: super fast mini juggle starter. frame data estimated from archetype; marked per schema honesty rule"
+  },
+  "d/f+1": {
+   "name": "Akira 33P \u2014 Yoho (launcher)",
+   "input": "d/f+1",
+   "vf_move": "Yoho",
+   "vf_input": "33P",
+   "startup": 0.3,
+   "active": 0.05,
+   "recovery": 0.567,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.0,
+   "soulGain": 8,
+   "anim_ref": "vf:akira/yoho",
+   "input_slots": [
+    "d/f+1"
+   ],
+   "move_class": "special",
+   "note": "/vg/: big launch. VF crouch-dash 33 -> Tekken d/f. frame data estimated from archetype; marked per schema honesty rule"
+  },
+  "3": {
+   "name": "Akira K \u2014 Shoutai",
+   "input": "3",
+   "vf_move": "Shoutai",
+   "vf_input": "K",
+   "startup": 0.233,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 10,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 8,
+   "anim_ref": "vf:akira/k",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike",
+   "note": "frame data estimated from archetype; marked per schema honesty rule"
+  },
+  "f+3": {
+   "name": "Akira 6K \u2014 Youteitou",
+   "input": "f+3",
+   "vf_move": "Youteitou",
+   "vf_input": "6K",
+   "startup": 0.267,
+   "active": 0.05,
+   "recovery": 0.533,
+   "damage": 13,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.0,
+   "soulGain": 8,
+   "anim_ref": "vf:akira/6k",
+   "input_slots": [
+    "f+3"
+   ],
+   "move_class": "strike",
+   "note": "frame data estimated from archetype; marked per schema honesty rule"
+  },
+  "f,f+3": {
+   "name": "Akira 66K \u2014 Utankyaku",
+   "input": "f,f+3",
+   "vf_move": "Utankyaku",
+   "vf_input": "66K",
+   "startup": 0.3,
+   "active": 0.05,
+   "recovery": 0.567,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.4,
+   "soulGain": 8,
+   "anim_ref": "vf:akira/66k",
+   "input_slots": [
+    "f,f+3"
+   ],
+   "move_class": "special",
+   "note": "frame data estimated from archetype; marked per schema honesty rule"
+  },
+  "d/f+1+2": {
+   "name": "Akira 3P+K \u2014 low palm",
+   "input": "d/f+1+2",
+   "vf_move": "3P+K",
+   "vf_input": "3P+K",
+   "startup": 0.267,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 11,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "vf:akira/3pk",
+   "input_slots": [
+    "d/f+1+2"
+   ],
+   "move_class": "special",
+   "note": "/vg/: long low poke, + on hit (rare in VF). frame data estimated from archetype; marked per schema honesty rule"
+  },
+  "1+2": {
+   "name": "Akira P+K \u2014 Kinkei Tourei",
+   "input": "1+2",
+   "vf_move": "Kinkei Tourei",
+   "vf_input": "P+K",
+   "startup": 0.25,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 12,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "vf:akira/pk2",
+   "input_slots": [
+    "1+2"
+   ],
+   "move_class": "special",
+   "note": "frame data estimated from archetype; marked per schema honesty rule"
+  },
+  "3+4": {
+   "name": "Akira K+G \u2014 Knee (just-frame)",
+   "input": "3+4",
+   "vf_move": "Knee",
+   "vf_input": "K+G (just-frame: release G after 1f)",
+   "startup": 0.283,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 22,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 6.4,
+   "soulGain": 8,
+   "anim_ref": "vf:akira/knee",
+   "input_slots": [
+    "3+4"
+   ],
+   "move_class": "special",
+   "note": "VF just-frame timing not modeled in WH input buffer \u2014 fires as special. /vg/ writeup."
+  },
+  "b,f+1+2": {
+   "name": "Akira 46P+K \u2014 charging shoulder",
+   "input": "b,f+1+2",
+   "vf_move": "46P+K",
+   "vf_input": "46P+K",
+   "startup": 0.4,
+   "active": 0.067,
+   "recovery": 0.667,
+   "damage": 18,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.6,
+   "soulGain": 8,
+   "anim_ref": "vf:akira/46pk",
+   "input_slots": [
+    "b,f+1+2"
+   ],
+   "move_class": "special",
+   "note": "Chargeable, tracking per /vg/. frame data estimated from archetype; marked per schema honesty rule"
+  },
+  "hcb+1+2": {
+   "name": "Akira Gaimon Chouchu \u2014 deflect",
+   "input": "hcb+1+2",
+   "vf_move": "Gaimon Chouchu (deflect)",
+   "vf_input": "2,1,4+P+K",
+   "startup": 0.067,
+   "active": 0.233,
+   "recovery": 0.367,
+   "damage": 18,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "vf:akira/gaimon",
+   "input_slots": [
+    "hcb+1+2"
+   ],
+   "move_class": "special",
+   "note": "VF sabaki/deflect -> Tekken special reversal. frame data estimated from archetype; marked per schema honesty rule"
+  },
+  "1+3": {
+   "name": "Akira P+G \u2014 Taitou hip throw",
+   "input": "1+3",
+   "vf_move": "Taitou",
+   "vf_input": "P+G",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 8,
+   "anim_ref": "vf:akira/taitou",
+   "input_slots": [
+    "1+3"
+   ],
+   "move_class": "throw",
+   "throw": true,
+   "isGrab": true,
+   "unblockable": true,
+   "note": "Damage estimated."
+  },
+  "f+1+3": {
+   "name": "Akira 6P+G \u2014 forward throw",
+   "input": "f+1+3",
+   "vf_move": "6P+G",
+   "vf_input": "6P+G",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 28,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 7.0,
+   "soulGain": 8,
+   "anim_ref": "vf:akira/6pg",
+   "input_slots": [
+    "f+1+3"
+   ],
+   "move_class": "throw",
+   "throw": true,
+   "isGrab": true,
+   "unblockable": true,
+   "note": "Damage estimated."
+  }
+ },
+ "strings": [
+  {
+   "input": "1,2",
+   "components": [
+    "1",
+    "2"
+   ],
+   "damage": 12
+  },
+  {
+   "input": "1,3",
+   "components": [
+    "1",
+    "3"
+   ],
+   "damage": 13
+  }
+ ],
+ "specials": [
+  {
+   "input": "f,f+1",
+   "damage": 14,
+   "throw": false,
+   "vf_input": "66P"
+  },
+  {
+   "input": "b,f+1",
+   "damage": 10,
+   "throw": false,
+   "vf_input": "46P"
+  },
+  {
+   "input": "d/f+1",
+   "damage": 20,
+   "throw": false,
+   "vf_input": "33P"
+  },
+  {
+   "input": "f,f+3",
+   "damage": 15,
+   "throw": false,
+   "vf_input": "66K"
+  },
+  {
+   "input": "d/f+1+2",
+   "damage": 11,
+   "throw": false,
+   "vf_input": "3P+K"
+  },
+  {
+   "input": "3+4",
+   "damage": 22,
+   "throw": false,
+   "vf_input": "K+G"
+  },
+  {
+   "input": "b,f+1+2",
+   "damage": 18,
+   "throw": false,
+   "vf_input": "46P+K"
+  },
+  {
+   "input": "hcb+1+2",
+   "damage": 18,
+   "throw": false,
+   "vf_input": "2,1,4+P+K",
+   "note": "sabaki/deflect"
+  },
+  {
+   "input": "f+1+3",
+   "damage": 28,
+   "throw": true,
+   "vf_input": "6P+G"
+  }
+ ],
+ "frame_convention": "VF5FS 60fps -> seconds; damage archetype-scaled to WH 100HP (VF5FS source HP not verified \u2014 see notes); 6P 14f per VFDC Orange Book; movelist per gamerevolution VF5 FAQ"
+}

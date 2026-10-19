@@ -34,6 +34,9 @@ export const MOVESET_IDS = [
   'bruno', 'negativo', 'thor', 'yukihyo', 'slice', 'docfrank',
   'sunra', 'dxmmii', 'realizzt', 'rave', 'kutz', 'chordz', 'vainabel',
   'lili', 'baek',
+  // DOA/VF federation (owner 2026-10-19): converted movelists, Tekken-notation
+  'doa-kasumi', 'doa-bass', 'doa-hayabusa',
+  'vf-akira', 'vf-sarah', 'vf-kage',
 ];
 
 const _movesets = {};
