@@ -1093,6 +1093,7 @@ async function buildSunRa(g, def, api) {
     const c = bbox.getCenter(new THREE.Vector3());
     marsHead.position.set(MARS_POS.x - c.x * k, MARS_POS.y - c.y * k, MARS_POS.z - c.z * k);
     marsHead.traverse((o) => { if (o.isMesh) { o.material.side = THREE.DoubleSide; } });
+    marsHead.rotation.y = -Math.PI / 2; // face the arena (+z); the slow spin continues from here
     g.add(marsHead);
   } catch (e) {
     console.warn(`[WH] stage sunra: mars-sky.glb failed (${e.message}) — portal + planets carry the sky`);
