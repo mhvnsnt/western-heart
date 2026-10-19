@@ -898,6 +898,12 @@ Sun Rā does not fight in the tournament. He IS the tournament — or one of the
 
 **Body / Mind / Soul.** BODY: the round, cute, evil sun — the least threatening shape for the most threatening appetite. MIND: the showman-tyrant — Shao Kahn's arena logic, Malakor's hunger, all of it wearing a smile. SOUL: unknown. He may be a fragment of Tong-Nou that *refused* purification and went feral. He may be something else entirely. The other bosses don't talk about him.
 
+**The Curse of the Stare (owner 2026-10-18).** Sun Rā is a sun god, and he is cursed: his eyes never close. They do not blink. He stares and watches — forever. That is WHY he makes all the souls fight. An eternity of watching demands something worth watching; the death tournaments of 不死クォンバット are his theater, and the souls are the show. If the fighting ever stopped, there would be nothing left but the staring.
+
+**The Bleeding Eyes.** His eyes are deep and sunken — like the moon in the old stories, the calm-creepy counterpoint to his grin — and they bleed, constantly, from the eternal staring. The blood is the price of never looking away.
+
+**Blood at the Corner of the Mouth.** Blood gathers at the corner of his grin. It comes from three places: from the eternal staring, from being the sun (the wrong fire burns even him), and from eating the souls. His mouth hangs open, ringed with big jagged teeth — the talking mouth, the eating mouth. It never fully closes.
+
 **Why Sun Rā thinks he's here.** He doesn't think he's *in* anything. In his story, the pocket realm IS the world, and he's its sun — its god, its appetite, its law. The idea that he's a boss in someone else's trial — a side attraction in a dying head — would be incomprehensible to him. He says "Immortal Qombat" in English because in his world, he's the one who names things.
 
 **Being purified of:** The trial isn't purifying him. He's *quarantined* — the pocket realm is where the trial puts the things it can't heal yet. One day, when the vessels are whole, they'll come for him. He doesn't know that. He thinks the tournaments are his idea.
