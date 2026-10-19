@@ -325,13 +325,9 @@ async function previewFighter(c) {
     previewModel.rotation.y = 0.15;
     previewScene.add(previewModel);
     previewMixer = inst.mixer;
-    // Play the idle animation if the model has one; otherwise gentle breathing.
-    const clips = assets.gltfs[modelId]?.animations || [];
-    const idle = clips.find(a => /idle|breath|stand/i.test(a.name)) || clips[0];
-    if (idle) {
-      previewMixer.clipAction(idle).play();
-    } else {
-      // Procedural breathing on the chest when no clip exists.
+    // createInstance auto-plays the Idle clip when the model has one.
+    // Fall back to procedural breathing when no idle exists.
+    if (!inst.actions || !inst.actions.Idle) {
       const chest = inst.bones['Spine2'] || inst.bones['Spine1'] || inst.bones['Spine'];
       if (chest) {
         const t0 = performance.now();
