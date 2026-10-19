@@ -1,0 +1,269 @@
+{
+ "fighter": "armor-king",
+ "display": "ARMOR KING",
+ "tekken_base": "Armor King (Tekken)",
+ "t3_source": "king",
+ "proxy": true,
+ "proxy_note": "Armor King (Tekken) - King T3 bank (grappler, distinct row pool from zangief). WH name pending owner pick.",
+ "variant": 1,
+ "moves": {
+  "1": {
+   "name": "ARMOR KING 1 (T3 king r100)",
+   "input": "1",
+   "t3_source": "king",
+   "t3_row": 100,
+   "t3_command": "LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 12,
+   "t3_damage": 20,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:100",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "2": {
+   "name": "ARMOR KING 2 (T3 king r106)",
+   "input": "2",
+   "t3_source": "king",
+   "t3_row": 106,
+   "t3_command": "RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 13,
+   "t3_damage": 22,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:106",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "3": {
+   "name": "ARMOR KING 3 (T3 king r112)",
+   "input": "3",
+   "t3_source": "king",
+   "t3_row": 112,
+   "t3_command": "LK",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 14,
+   "t3_damage": 23,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:112",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "4": {
+   "name": "ARMOR KING 4 (T3 king r118)",
+   "input": "4",
+   "t3_source": "king",
+   "t3_row": 118,
+   "t3_command": "RK",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 12,
+   "t3_damage": 20,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:118",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "5": {
+   "name": "ARMOR KING 5 (T3 king r124)",
+   "input": "f+1",
+   "t3_source": "king",
+   "t3_row": 124,
+   "t3_command": "f+LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 15,
+   "t3_damage": 25,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:124",
+   "input_slots": [
+    "f+1"
+   ],
+   "move_class": "strike"
+  },
+  "6": {
+   "name": "ARMOR KING 6 (T3 king r130)",
+   "input": "f+2",
+   "t3_source": "king",
+   "t3_row": 130,
+   "t3_command": "f+RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 13,
+   "t3_damage": 22,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:130",
+   "input_slots": [
+    "f+2"
+   ],
+   "move_class": "strike"
+  },
+  "7": {
+   "name": "ARMOR KING 7 (T3 king r136)",
+   "input": "d+1",
+   "t3_source": "king",
+   "t3_row": 136,
+   "t3_command": "d+LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 16,
+   "t3_damage": 27,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:136",
+   "input_slots": [
+    "d+1"
+   ],
+   "move_class": "strike"
+  },
+  "8": {
+   "name": "ARMOR KING 8 (T3 king r142)",
+   "input": "d+2",
+   "t3_source": "king",
+   "t3_row": 142,
+   "t3_command": "d+RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 14,
+   "t3_damage": 23,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:142",
+   "input_slots": [
+    "d+2"
+   ],
+   "move_class": "strike"
+  },
+  "9": {
+   "name": "ARMOR KING 9 (T3 king r148)",
+   "input": "b+1",
+   "t3_source": "king",
+   "t3_row": 148,
+   "t3_command": "b+LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 15,
+   "t3_damage": 25,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:148",
+   "input_slots": [
+    "b+1"
+   ],
+   "move_class": "strike"
+  },
+  "10": {
+   "name": "ARMOR KING 10 (T3 king r154)",
+   "input": "b+2",
+   "t3_source": "king",
+   "t3_row": 154,
+   "t3_command": "b+RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 17,
+   "t3_damage": 28,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:154",
+   "input_slots": [
+    "b+2"
+   ],
+   "move_class": "strike"
+  },
+  "11": {
+   "name": "CHAIN THROW: TOMBSTONE",
+   "input": "b,n,f+1+2",
+   "t3_source": "king",
+   "t3_row": 0,
+   "t3_command": "b,n,f+1+2",
+   "startup": 0.3,
+   "active": 0.05,
+   "recovery": 0.8,
+   "damage": 30,
+   "t3_damage": 51,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 3.5,
+   "soulGain": 15,
+   "anim_ref": "wh:armor-king:sig:1",
+   "input_slots": [
+    "b,n,f+1+2"
+   ],
+   "move_class": "throw",
+   "wh_signature": true,
+   "wh_note": "WH signature: Armor King's chain throw starter."
+  },
+  "12": {
+   "name": "DARK UPPERCUT",
+   "input": "ws+2",
+   "t3_source": "king",
+   "t3_row": 0,
+   "t3_command": "ws+2",
+   "startup": 0.3,
+   "active": 0.05,
+   "recovery": 0.8,
+   "damage": 20,
+   "t3_damage": 34,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.5,
+   "soulGain": 15,
+   "anim_ref": "wh:armor-king:sig:2",
+   "input_slots": [
+    "ws+2"
+   ],
+   "move_class": "launcher",
+   "wh_signature": true,
+   "wh_note": "WH signature: Armor King's launcher."
+  }
+ },
+ "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
+ "schema_version": 2
+}

@@ -56,6 +56,9 @@ const MOVESET_MAP = {
   'demonio-bloodline-ember': 'demonio', 'doc-frank-machine-shop': 'gunjack',
   'baek-master-white': 'bryan', 'mariposa-monarch': 'xiaoyu',
   'dxmmii-patchwork': 'demonio',
+  // Sketchfab intake (owner 2026-10-19): working names.
+  zangief: 'king', blanka: 'bryan', vega: 'xiaoyu', iori: 'heihachi',
+  'armor-king': 'king',
 };
 
 export async function loadRealMovesets() {

@@ -1,0 +1,269 @@
+{
+ "fighter": "blanka",
+ "display": "BLANKA",
+ "tekken_base": "Blanka (SF)",
+ "t3_source": "bryan",
+ "proxy": true,
+ "proxy_note": "Blanka (SF) has no T3 bank - Bryan proxy (aggressive rushdown). WH name pending owner pick.",
+ "variant": 1,
+ "moves": {
+  "1": {
+   "name": "BLANKA 1 (T3 bryan r44)",
+   "input": "1",
+   "t3_source": "bryan",
+   "t3_row": 44,
+   "t3_command": "LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 10,
+   "t3_damage": 17,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:44",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "2": {
+   "name": "BLANKA 2 (T3 bryan r48)",
+   "input": "2",
+   "t3_source": "bryan",
+   "t3_row": 48,
+   "t3_command": "RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 11,
+   "t3_damage": 18,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:48",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "3": {
+   "name": "BLANKA 3 (T3 bryan r54)",
+   "input": "3",
+   "t3_source": "bryan",
+   "t3_row": 54,
+   "t3_command": "LK",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 12,
+   "t3_damage": 20,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:54",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "4": {
+   "name": "BLANKA 4 (T3 bryan r60)",
+   "input": "4",
+   "t3_source": "bryan",
+   "t3_row": 60,
+   "t3_command": "RK",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 10,
+   "t3_damage": 17,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:60",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "5": {
+   "name": "BLANKA 5 (T3 bryan r66)",
+   "input": "f+1",
+   "t3_source": "bryan",
+   "t3_row": 66,
+   "t3_command": "f+LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 13,
+   "t3_damage": 22,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:66",
+   "input_slots": [
+    "f+1"
+   ],
+   "move_class": "strike"
+  },
+  "6": {
+   "name": "BLANKA 6 (T3 bryan r72)",
+   "input": "f+2",
+   "t3_source": "bryan",
+   "t3_row": 72,
+   "t3_command": "f+RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 11,
+   "t3_damage": 18,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:72",
+   "input_slots": [
+    "f+2"
+   ],
+   "move_class": "strike"
+  },
+  "7": {
+   "name": "BLANKA 7 (T3 bryan r78)",
+   "input": "d+1",
+   "t3_source": "bryan",
+   "t3_row": 78,
+   "t3_command": "d+LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 14,
+   "t3_damage": 23,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:78",
+   "input_slots": [
+    "d+1"
+   ],
+   "move_class": "strike"
+  },
+  "8": {
+   "name": "BLANKA 8 (T3 bryan r84)",
+   "input": "d+2",
+   "t3_source": "bryan",
+   "t3_row": 84,
+   "t3_command": "d+RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 12,
+   "t3_damage": 20,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:84",
+   "input_slots": [
+    "d+2"
+   ],
+   "move_class": "strike"
+  },
+  "9": {
+   "name": "BLANKA 9 (T3 bryan r90)",
+   "input": "b+1",
+   "t3_source": "bryan",
+   "t3_row": 90,
+   "t3_command": "b+LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 13,
+   "t3_damage": 22,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:90",
+   "input_slots": [
+    "b+1"
+   ],
+   "move_class": "strike"
+  },
+  "10": {
+   "name": "BLANKA 10 (T3 bryan r96)",
+   "input": "b+2",
+   "t3_source": "bryan",
+   "t3_row": 96,
+   "t3_command": "b+RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 15,
+   "t3_damage": 25,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:96",
+   "input_slots": [
+    "b+2"
+   ],
+   "move_class": "strike"
+  },
+  "11": {
+   "name": "ELECTRIC THUNDER",
+   "input": "1+2+3",
+   "t3_source": "bryan",
+   "t3_row": 0,
+   "t3_command": "1+2+3",
+   "startup": 0.3,
+   "active": 0.05,
+   "recovery": 0.8,
+   "damage": 22,
+   "t3_damage": 37,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 3.5,
+   "soulGain": 15,
+   "anim_ref": "wh:blanka:sig:1",
+   "input_slots": [
+    "1+2+3"
+   ],
+   "move_class": "special",
+   "wh_signature": true,
+   "wh_note": "WH signature: Blanka's electricity. Close-range shock."
+  },
+  "12": {
+   "name": "ROLLING ATTACK",
+   "input": "b,n,f+4",
+   "t3_source": "bryan",
+   "t3_row": 0,
+   "t3_command": "b,n,f+4",
+   "startup": 0.3,
+   "active": 0.05,
+   "recovery": 0.8,
+   "damage": 20,
+   "t3_damage": 34,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 3.5,
+   "soulGain": 15,
+   "anim_ref": "wh:blanka:sig:2",
+   "input_slots": [
+    "b,n,f+4"
+   ],
+   "move_class": "special",
+   "wh_signature": true,
+   "wh_note": "WH signature: Blanka ball roll."
+  }
+ },
+ "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
+ "schema_version": 2
+}

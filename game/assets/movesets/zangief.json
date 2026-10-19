@@ -1,0 +1,269 @@
+{
+ "fighter": "zangief",
+ "display": "ZANGIEF",
+ "tekken_base": "Zangief (SF)",
+ "t3_source": "king",
+ "proxy": true,
+ "proxy_note": "Zangief (SF) has no T3 bank - King proxy (grappler). WH name pending owner pick from INTAKE-PROPOSAL.md.",
+ "variant": 1,
+ "moves": {
+  "1": {
+   "name": "ZANGIEF 1 (T3 king r44)",
+   "input": "1",
+   "t3_source": "king",
+   "t3_row": 44,
+   "t3_command": "LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 11,
+   "t3_damage": 18,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:44",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "2": {
+   "name": "ZANGIEF 2 (T3 king r46)",
+   "input": "2",
+   "t3_source": "king",
+   "t3_row": 46,
+   "t3_command": "RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 11,
+   "t3_damage": 18,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:46",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "3": {
+   "name": "ZANGIEF 3 (T3 king r52)",
+   "input": "3",
+   "t3_source": "king",
+   "t3_row": 52,
+   "t3_command": "LK",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 13,
+   "t3_damage": 22,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:52",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "4": {
+   "name": "ZANGIEF 4 (T3 king r58)",
+   "input": "4",
+   "t3_source": "king",
+   "t3_row": 58,
+   "t3_command": "RK",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 12,
+   "t3_damage": 20,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:58",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "5": {
+   "name": "ZANGIEF 5 (T3 king r64)",
+   "input": "f+1",
+   "t3_source": "king",
+   "t3_row": 64,
+   "t3_command": "f+LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 14,
+   "t3_damage": 23,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:64",
+   "input_slots": [
+    "f+1"
+   ],
+   "move_class": "strike"
+  },
+  "6": {
+   "name": "ZANGIEF 6 (T3 king r70)",
+   "input": "f+2",
+   "t3_source": "king",
+   "t3_row": 70,
+   "t3_command": "f+RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 12,
+   "t3_damage": 20,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:70",
+   "input_slots": [
+    "f+2"
+   ],
+   "move_class": "strike"
+  },
+  "7": {
+   "name": "ZANGIEF 7 (T3 king r76)",
+   "input": "d+1",
+   "t3_source": "king",
+   "t3_row": 76,
+   "t3_command": "d+LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 15,
+   "t3_damage": 25,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:76",
+   "input_slots": [
+    "d+1"
+   ],
+   "move_class": "strike"
+  },
+  "8": {
+   "name": "ZANGIEF 8 (T3 king r82)",
+   "input": "d+2",
+   "t3_source": "king",
+   "t3_row": 82,
+   "t3_command": "d+RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 13,
+   "t3_damage": 22,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:82",
+   "input_slots": [
+    "d+2"
+   ],
+   "move_class": "strike"
+  },
+  "9": {
+   "name": "ZANGIEF 9 (T3 king r88)",
+   "input": "b+1",
+   "t3_source": "king",
+   "t3_row": 88,
+   "t3_command": "b+LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 14,
+   "t3_damage": 23,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:88",
+   "input_slots": [
+    "b+1"
+   ],
+   "move_class": "strike"
+  },
+  "10": {
+   "name": "ZANGIEF 10 (T3 king r94)",
+   "input": "b+2",
+   "t3_source": "king",
+   "t3_row": 94,
+   "t3_command": "b+RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 16,
+   "t3_damage": 27,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:94",
+   "input_slots": [
+    "b+2"
+   ],
+   "move_class": "strike"
+  },
+  "11": {
+   "name": "SPINNING PILEDRIVER",
+   "input": "b,n,f+1+2",
+   "t3_source": "king",
+   "t3_row": 0,
+   "t3_command": "b,n,f+1+2",
+   "startup": 0.3,
+   "active": 0.05,
+   "recovery": 0.8,
+   "damage": 28,
+   "t3_damage": 47,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 3.5,
+   "soulGain": 15,
+   "anim_ref": "wh:zangief:sig:1",
+   "input_slots": [
+    "b,n,f+1+2"
+   ],
+   "move_class": "throw",
+   "wh_signature": true,
+   "wh_note": "WH signature: Zangief's iconic spinning piledriver. 360 motion grab."
+  },
+  "12": {
+   "name": "BANISHING FLAT",
+   "input": "f,f+2",
+   "t3_source": "king",
+   "t3_row": 0,
+   "t3_command": "f,f+2",
+   "startup": 0.3,
+   "active": 0.05,
+   "recovery": 0.8,
+   "damage": 18,
+   "t3_damage": 30,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.5,
+   "soulGain": 15,
+   "anim_ref": "wh:zangief:sig:2",
+   "input_slots": [
+    "f,f+2"
+   ],
+   "move_class": "strike",
+   "wh_signature": true,
+   "wh_note": "WH signature: green-hand lariat with armor."
+  }
+ },
+ "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
+ "schema_version": 2
+}
