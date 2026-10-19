@@ -355,6 +355,46 @@
     "n,d/f,n,d/f+1"
    ],
    "move_class": "throw"
+  },
+  "S": {
+   "name": "Doesn't Stop [WH SIGNATURE]",
+   "input": "S",
+   "startup": 0.3,
+   "active": 0.1,
+   "recovery": 0.9,
+   "damage": 18,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 12,
+   "anim_ref": "wh:kai:sig:doesnt-stop",
+   "input_slots": [
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "The sea doesn't stop. Rhythmic, unstoppable - the wave that keeps its own time."
+  },
+  "d/f+K": {
+   "name": "Lowest Point [WH SIGNATURE]",
+   "input": "d/f+K",
+   "startup": 0.27,
+   "active": 0.017,
+   "recovery": 0.82,
+   "damage": 16,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 12,
+   "anim_ref": "wh:kai:sig:lowest-point",
+   "input_slots": [
+    "d/f+K",
+    "d/f",
+    "K"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "Water finds the lowest point and fills it. A low kick that was always going to land."
   }
  },
  "strings": [

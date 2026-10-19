@@ -306,6 +306,46 @@
     "n,d/f,n,d/f+1"
    ],
    "move_class": "throw"
+  },
+  "b+S": {
+   "name": "Does Not Compete [WH SIGNATURE]",
+   "input": "b+S",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.7,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 12,
+   "anim_ref": "wh:zen:sig:does-not-compete",
+   "input_slots": [
+    "b+S",
+    "b",
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "Stillness does not compete. A counter thrown from total stillness - he barely moved."
+  },
+  "S": {
+   "name": "Refused Seat [WH SIGNATURE]",
+   "input": "S",
+   "startup": 0.28,
+   "active": 0.017,
+   "recovery": 0.8,
+   "damage": 16,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 12,
+   "anim_ref": "wh:zen:sig:refused-seat",
+   "input_slots": [
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "The still soul refused the trial - and showed up anyway. One strike, no wasted motion, no interest."
   }
  },
  "strings": [
