@@ -185,6 +185,35 @@ convert → scale → render → own-eyes → release → wire.)
   body, loincloth/apron (Battle Cloth), barefoot. Unmistakable.
 - Wired: assets.js += yukihyo; roster-full.js yukihyo.model pantera→yukihyo.
 
+### 2026-10-18 — SLICE (Dragunov) ⚠️ SOURCED, RIG TOO COMPLEX FOR RENAME
+- Source: `dragunov-t7-rig.blend` (71MB, tekken-models-batch-2). Professional
+  control rig: 509 bones, 216 deform. NOT a clean T7 bip_* skeleton.
+- The deform bones use `__offset` suffix (Hip__offset, Spine1__offset,
+  L_Leg__offset, etc.) parented to CONTROL bones (c_root.x, leg_stretch.l,
+  arm_stretch.l). Vertex groups reference the __offset helpers. This is a
+  "deform rig driven by control rig" — renaming bones won't work; needs proper
+  rig bake/retarget (reparent __offset bones to Mixamo hierarchy in world space).
+- NOT WIRED: needs a dedicated rigging lane. The mesh data is good (multiple
+  costume meshes), just needs the skeleton converted properly.
+
+### 2026-10-18 — BURGER (Bob Richards) ❌ NO SOURCE FOUND
+- Searched: tekken-models-batch-2/3 releases (no Bob), king-variants (no),
+  web search for SFMLab/DeviantArt (no direct download URLs found via text search).
+- Bob IS in the tekken7-full-v1 release (3.5GB, 7 parts) — but disk at 75-88%
+  blocks downloading the full game for one character. Needs: (a) disk space to
+  pull T7 full + umodel (UE4) extraction, OR (b) browser lane to hunt rigmodels /
+  DeviantArt whitemagesunny / TekkenMods for a direct Bob rip.
+
+### 2026-10-18 — CHORDZ (Lars Alexandersson) ❌ NO SOURCE FOUND
+- Same as Bob: not on the model releases, web search found no direct download.
+  Lars IS in tekken7-full-v1 (3.5GB). Needs disk space for T7 full + umodel,
+  OR browser lane hunt.
+
+### 2026-10-18 — VAIN ABEL ELIAS (Bass Armstrong) ⏸️ BLOCKED ON DOA4 LANE
+- Per task: check DOA4 lane state, do NOT duplicate. Did not touch
+  teardown/dead-or-alive-4/. If the DOA4 lane extracts Bass, convert to
+  vain-abel.glb (T-pose, ~1.93m) per spec. Currently waiting on that lane.
+
 ### 2026-10-18 — REALIZZT/KUTZ (Brad Burns) ⚠️ DATA EXTRACTED, FORMAT NEEDS RE
 - Source: `braitm.farc` (47MB) + `bra.farc` (761B) from vf5-ps3-v1 release
   (Virtua Fighter 5 PS3). "bra" = Brad Burns. The VF5 teardown only had aki/akixx;
