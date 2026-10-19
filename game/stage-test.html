@@ -30,6 +30,7 @@ window.addEventListener('unhandledrejection', (e) => errors.push('rejection: ' +
 const canvas = document.getElementById('game-canvas');
 const status = document.getElementById('status');
 const arena = new Arena(canvas);
+window.__arena = arena; // Stream 3: lets verification scripts pose the camera
 let idx = -1;
 
 // Drive with: await window.__test.next() -> { id, name, errorCount }

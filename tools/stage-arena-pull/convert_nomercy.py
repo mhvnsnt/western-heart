@@ -45,7 +45,20 @@ ARENAS = [
 import re as _re
 DROP_RES = [_re.compile(p, _re.I) for p in
             (r"ring_step", r"ring_post", r"turnbuckle", r"apron",
-             r"cage_piece", r"announce_table", r"ladder_match")]
+             r"cage_piece", r"announce_table", r"ladder_match",
+             # unlabeled FileTableDB groups (bare "0xNNN_Arena"): ring-hardware
+             # templates in the 0x4f*-0x51* range, incl. junk-coordinate pieces
+             r"^0x[0-9a-f]+_arena$",
+             # crowd/balcony sections: the game instances these around the
+             # bowl at runtime; stored templates sit at the ring. Pending the
+             # arena-code RE lane (placement data), they are omitted rather
+             # than shipped misplaced.
+             r"crowd", r"balcony",
+             # "Outside_Floor_Pads_Larger_Pieces": stored at y=90, i.e. 10u
+             # ABOVE the ring-mat top, overlapping the fighting surface.
+             # Mixed-frame junk (ARENAS.md caveat 2); the corner-section
+             # floormats at y=0 are kept.
+             r"outside_floor_pads_larger")]
 RING_ARENAS = {n for n in ARENAS if n.startswith("arena_")}
 
 

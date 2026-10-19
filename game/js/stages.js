@@ -437,92 +437,92 @@ STAGES.push({
    and are omitted; the builder re-adds procedural posts+ropes. */
 const NM_ARENAS = [
   // nm-raw, RAW IS WAR, arena_raw.glb
-  ['nm-raw', 'RAW IS WAR', 'arena_raw', true,
+  ['nm-raw', 'RAW IS WAR', 'arena_raw', true, '',
    14, 14, 5.2, -2.8, 2.8,
    '#ff6a5a', '#0a0508', '#3a0a10', '#140608', '#7a4a4a',
    `The real No Mercy RAW arena: titan tron, ramp, crowd bowl, ring. Template pieces (posts, ropes, aprons) omitted — ropes rebuilt procedurally.`],
   // nm-smackdown, SMACKDOWN, arena_smackdown.glb
-  ['nm-smackdown', 'SMACKDOWN', 'arena_smackdown', true,
+  ['nm-smackdown', 'SMACKDOWN', 'arena_smackdown', true, '',
    14, 14, 5.2, -2.8, 2.8,
    '#6a9aff', '#04060e', '#0a1a3a', '#060a14', '#4a5a7a',
    `The real No Mercy SmackDown arena: blue stage set, oval tron, crowd bowl, ring.`],
   // nm-royal-rumble, ROYAL RUMBLE, arena_royal_rumble.glb
-  ['nm-royal-rumble', 'ROYAL RUMBLE', 'arena_royal_rumble', true,
+  ['nm-royal-rumble', 'ROYAL RUMBLE', 'arena_royal_rumble', true, '',
    14, 14, 5.2, -2.8, 2.8,
    '#b07aea', '#0a0612', '#2a1040', '#0c0816', '#5a4a7a',
    `The real No Mercy Royal Rumble arena.`],
   // nm-wrestlemania, WRESTLEMANIA, arena_wrestlemania.glb
-  ['nm-wrestlemania', 'WRESTLEMANIA', 'arena_wrestlemania', true,
+  ['nm-wrestlemania', 'WRESTLEMANIA', 'arena_wrestlemania', true, '',
    14, 14, 5.2, -2.8, 2.8,
    '#ffca5a', '#0c0804', '#3a2408', '#100a06', '#7a6a4a',
    `The real No Mercy WrestleMania arena: grand stage, gold trim.`],
   // nm-king-of-the-ring, KING OF THE RING, arena_king_of_the_ring.glb
-  ['nm-king-of-the-ring', 'KING OF THE RING', 'arena_king_of_the_ring', true,
+  ['nm-king-of-the-ring', 'KING OF THE RING', 'arena_king_of_the_ring', true, '',
    14, 14, 5.2, -2.8, 2.8,
    '#ff8a6a', '#0c0408', '#40101a', '#12060a', '#7a4a5a',
    `The real No Mercy King of the Ring arena.`],
   // nm-summerslam, SUMMERSLAM, arena_summerslam.glb
-  ['nm-summerslam', 'SUMMERSLAM', 'arena_summerslam', true,
+  ['nm-summerslam', 'SUMMERSLAM', 'arena_summerslam', true, '',
    14, 14, 5.2, -2.8, 2.8,
    '#ff9a3a', '#0c0804', '#402408', '#120c06', '#7a6a4a',
    `The real No Mercy SummerSlam arena.`],
   // nm-survivor-series, SURVIVOR SERIES, arena_survivor_series.glb
-  ['nm-survivor-series', 'SURVIVOR SERIES', 'arena_survivor_series', true,
+  ['nm-survivor-series', 'SURVIVOR SERIES', 'arena_survivor_series', true, '',
    14, 14, 5.2, -2.8, 2.8,
    '#5a7aff', '#04060c', '#0a1430', '#060a12', '#4a5a7a',
    `The real No Mercy Survivor Series arena.`],
   // nm-backlash, BACKLASH, arena_backlash.glb
-  ['nm-backlash', 'BACKLASH', 'arena_backlash', true,
+  ['nm-backlash', 'BACKLASH', 'arena_backlash', true, '',
    14, 14, 5.2, -2.8, 2.8,
    '#ff4a4a', '#0a0404', '#380a0a', '#120606', '#7a4a4a',
    `The real No Mercy Backlash arena.`],
   // nm-armageddon, ARMAGEDDON, arena_armageddon.glb
-  ['nm-armageddon', 'ARMAGEDDON', 'arena_armageddon', true,
+  ['nm-armageddon', 'ARMAGEDDON', 'arena_armageddon', true, '',
    14, 14, 5.2, -2.8, 2.8,
    '#9aaa8a', '#060806', '#1a2416', '#0a0c08', '#5a6a5a',
    `The real No Mercy Armageddon arena.`],
   // nm-no-mercy, NO MERCY, arena_no_mercy.glb
-  ['nm-no-mercy', 'NO MERCY', 'arena_no_mercy', true,
+  ['nm-no-mercy', 'NO MERCY', 'arena_no_mercy', true, '',
    14, 14, 5.2, -2.8, 2.8,
    '#a06aea', '#080410', '#200a3a', '#0c0616', '#5a4a7a',
    `The real No Mercy PPV arena: purple truss, No Mercy tron.`],
   // nm-cage, STEEL CAGE, arena_cage.glb
-  ['nm-cage', 'STEEL CAGE', 'arena_cage', true,
+  ['nm-cage', 'STEEL CAGE', 'arena_cage', true, 'cage',
    12, 12, 4.6, -2.5, 2.5,
    '#aab0c0', '#060608', '#1a1a22', '#0a0a0e', '#5a5a6a',
    `The real No Mercy cage-match arena. Cage wall pieces ship as ROM templates (no placement data) — pending the arena-code RE lane.`],
   // nm-bar, BACKSTAGE: BAR, backstage_bar_lounge.glb
-  ['nm-bar', 'BACKSTAGE: BAR', 'backstage_bar_lounge', false,
+  ['nm-bar', 'BACKSTAGE: BAR', 'backstage_bar_lounge', false, '',
    6, 8, 2.8, -2, 2,
    '#ffca8a', '#0a0604', '#241408', '#0e0a06', '#6a5a4a',
    `Real No Mercy backstage bar/lounge: bottles, counter, chairs. Falls-count-anywhere energy.`],
   // nm-boiler-room, BACKSTAGE: BOILER ROOM, backstage_boiler_room.glb
-  ['nm-boiler-room', 'BACKSTAGE: BOILER ROOM', 'backstage_boiler_room', false,
+  ['nm-boiler-room', 'BACKSTAGE: BOILER ROOM', 'backstage_boiler_room', false, '',
    10, 6, 4.5, -2.5, 2.5,
    '#ff9a5a', '#080604', '#201410', '#0c0806', '#6a5a4a',
    `Real No Mercy boiler room: pipes, tanks, industrial gloom.`],
   // nm-hallway, BACKSTAGE: HALLWAY, backstage_hallway.glb
-  ['nm-hallway', 'BACKSTAGE: HALLWAY', 'backstage_hallway', false,
+  ['nm-hallway', 'BACKSTAGE: HALLWAY', 'backstage_hallway', false, '',
    5, 15, 2.2, -2, 2,
    '#c0c8d8', '#060608', '#14161c', '#0a0a0c', '#5a5e6a',
    `Real No Mercy backstage hallway: long corridor brawl.`],
   // nm-locker-room, BACKSTAGE: LOCKER ROOM, backstage_locker_room.glb
-  ['nm-locker-room', 'BACKSTAGE: LOCKER ROOM', 'backstage_locker_room', false,
+  ['nm-locker-room', 'BACKSTAGE: LOCKER ROOM', 'backstage_locker_room', false, '',
    10, 7, 4.5, -2.5, 2.5,
    '#ffd8a0', '#080604', '#1c140c', '#0c0806', '#6a5e4a',
    `Real No Mercy locker room: lockers, benches, chairs, whiteboard.`],
   // nm-parking-lot, BACKSTAGE: PARKING LOT, backstage_parking_lot.glb
-  ['nm-parking-lot', 'BACKSTAGE: PARKING LOT', 'backstage_parking_lot', false,
+  ['nm-parking-lot', 'BACKSTAGE: PARKING LOT', 'backstage_parking_lot', false, '',
    15, 14, 6.5, -3, 3,
    '#9ab0d0', '#04060a', '#101820', '#080a0e', '#5a6a7a',
    `Real No Mercy parking lot: cars, open asphalt, room to brawl.`],
   // nm-lobby, LOBBY, lobby.glb
-  ['nm-lobby', 'LOBBY', 'lobby', false,
+  ['nm-lobby', 'LOBBY', 'lobby', false, '',
    11, 11, 5, -3, 3,
    '#d0b89a', '#080604', '#1a140e', '#0c0806', '#6a5e4a',
    `Real No Mercy lobby/gorilla position: the area just behind the curtain.`],
 ];
-for (const [sid, nmName, glb, ropes, w, d, wall, s1, s2, sunC, sky0, sky1, fogC, hemiC, nmDesc] of NM_ARENAS) {
+for (const [sid, nmName, glb, ropes, cageFlag, w, d, wall, s1, s2, sunC, sky0, sky1, fogC, hemiC, nmDesc] of NM_ARENAS) {
   STAGES.push({
     id: sid, name: nmName, tier: 'WWF NO MERCY',
     universe: 'WWF No Mercy (N64)', element: 'Wrestling',
@@ -543,6 +543,7 @@ for (const [sid, nmName, glb, ropes, w, d, wall, s1, s2, sunC, sky0, sky1, fogC,
     glb: `assets/stages/nomercy/${glb}.glb`,
     hidePlatform: true, // the GLB carries its own fighting surface
     ropes,
+    cage: cageFlag === 'cage',
     associatedFighters: [],
   });
 }
@@ -1085,6 +1086,40 @@ async function buildNoMercy(g, def, api) {
     g.add(arena);
   } catch (e) {
     console.warn(`[WH] stage ${def.id}: GLB ${def.glb} failed (${e.message})`);
+  }
+  if (def.cage) {
+    // Procedural steel-cage walls: the ROM's cage pieces are placement-less
+    // templates (no arena-code positions yet), so the builder stands in
+    // chain-link panels around the ring. Swapped for real geometry when the
+    // arena-code RE lane lands.
+    const linkTex = (() => {
+      const c = document.createElement('canvas'); c.width = c.height = 128;
+      const x = c.getContext('2d');
+      x.clearRect(0, 0, 128, 128);
+      x.strokeStyle = 'rgba(180,190,205,0.95)'; x.lineWidth = 3;
+      for (let i = -128; i < 256; i += 16) {
+        x.beginPath(); x.moveTo(i, 0); x.lineTo(i + 128, 128); x.stroke();
+        x.beginPath(); x.moveTo(i + 128, 0); x.lineTo(i, 128); x.stroke();
+      }
+      const t = new THREE.CanvasTexture(c);
+      t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(6, 6);
+      return t;
+    })();
+    const wallMat = new THREE.MeshStandardMaterial({
+      map: linkTex, transparent: true, side: THREE.DoubleSide,
+      roughness: 0.4, metalness: 0.8, alphaTest: 0.25,
+    });
+    const C = 4.7, CH = 4.2; // half-width, height
+    for (const [w, h, px, pz, ry] of [
+      [C * 2, CH, 0, -C, 0], [C * 2, CH, 0, C, 0],
+      [C * 2, CH, -C, 0, Math.PI / 2], [C * 2, CH, C, 0, Math.PI / 2]]) {
+      const wall = new THREE.Mesh(new THREE.PlaneGeometry(w, h), wallMat);
+      wall.position.set(px, CH / 2, pz); wall.rotation.y = ry;
+      wall.castShadow = true; g.add(wall);
+    }
+    const frameMat = new THREE.MeshStandardMaterial({ color: 0x3a3d45, roughness: 0.5, metalness: 0.7 });
+    const top = new THREE.Mesh(new THREE.BoxGeometry(C * 2 + 0.3, 0.18, C * 2 + 0.3), frameMat);
+    top.position.y = CH + 0.09; g.add(top);
   }
   if (def.ropes) {
     // ring mat is ±3.64 m; posts just outside, ropes at 3 heights
