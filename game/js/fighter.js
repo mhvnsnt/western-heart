@@ -23,9 +23,10 @@ import { getT3Clips, createT3Actions } from './t3anims.js';
 import { TekkenBuffer } from './movesets.js';
 
 // ---- Frame data: REAL Tekken 3 data (teardown/tekken3/movesets/moveset_king.json, moveset_jin.json)
+// NOTE (owner canon 2026-10-19): Tekken's Jin = DEMONIO in Western Heart. The 'jin' moveset family is now 'demonio'.
 // Extracted 2026-10-14: representative light/medium/heavy from 652 King / 413 Jin moves.
 // 60fps frame counts -> seconds. Damage scaled T3 170HP -> WH 100HP.
-// game/assets/king_moves.json + jin_moves.json hold the full extraction.
+// game/assets/king_moves.json + jin_moves.json hold the full extraction (jin = demonio per canon).
 // This fallback uses King averages; the JSONs load per-character at boot.
 let MOVES = {
   punch: { startup: 0.30, active: 0.017, recovery: 0.55, damage: 7, knock: 2.2, soulGain: 8, cost: 0, limb: 'armR', heavy: false },
@@ -40,26 +41,26 @@ let MOVES = {
    extracted map to the closest archetype. */
 const MOVESET_MAP = {
   // THE NINE SOULS
-  rin: 'jin', byou: 'jin', tou: 'heihachi', sha: 'xiaoyu', kai: 'jin',
-  jin_soul: 'yoshimitsu', retsu: 'bryan', zen: 'heihachi', gyou: 'jin',
+  rin: 'demonio', byou: 'demonio', tou: 'heihachi', sha: 'xiaoyu', kai: 'demonio',
+  jin_soul: 'yoshimitsu', retsu: 'bryan', zen: 'heihachi', gyou: 'demonio',
   // MAIN ROSTER
-  pantera: 'king', demonio: 'jin', phantom: 'yoshimitsu', diablo: 'heihachi',
+  pantera: 'king', demonio: 'demonio', phantom: 'yoshimitsu', diablo: 'heihachi',
   skull: 'bryan', samura1: 'gunjack', sakura: 'xiaoyu',
   // BONUS ROSTER
-  zui: 'jin', kinpo: 'jin', waterfall: 'jin', kingtyrant: 'xiaoyu', burger: 'bryan',
-  awapop: 'jin', scimitar: 'jin', purplerain: 'jin', nightwolf: 'xiaoyu',
-  dio: 'heihachi', cyborgx: 'gunjack', michiko: 'jin', star: 'xiaoyu',
-  torch: 'jin', bruno: 'bryan', negativo: 'bryan', thor: 'bryan',
+  zui: 'demonio', kinpo: 'demonio', waterfall: 'demonio', kingtyrant: 'xiaoyu', burger: 'bryan',
+  awapop: 'demonio', scimitar: 'demonio', purplerain: 'demonio', nightwolf: 'xiaoyu',
+  dio: 'heihachi', cyborgx: 'gunjack', michiko: 'demonio', star: 'xiaoyu',
+  torch: 'demonio', bruno: 'bryan', negativo: 'bryan', thor: 'bryan',
   yukihyo: 'king', slice: 'bryan', docfrank: 'gunjack',
   // Reskin wave (2026-10-19): first custom attires as selectable fighters.
-  'demonio-bloodline-ember': 'jin', 'doc-frank-machine-shop': 'gunjack',
+  'demonio-bloodline-ember': 'demonio', 'doc-frank-machine-shop': 'gunjack',
   'baek-master-white': 'bryan', 'mariposa-monarch': 'xiaoyu',
-  'dxmmii-patchwork': 'jin',
+  'dxmmii-patchwork': 'demonio',
 };
 
 export async function loadRealMovesets() {
   try {
-    const names = ['king', 'jin', 'bryan', 'heihachi', 'xiaoyu', 'yoshimitsu', 'gunjack'];
+    const names = ['king', 'demonio', 'bryan', 'heihachi', 'xiaoyu', 'yoshimitsu', 'gunjack'];
     const data = await Promise.all(
       names.map(n => fetch(`assets/${n}_moves.json`).then(r => r.json()))
     );
