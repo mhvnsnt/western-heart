@@ -890,7 +890,7 @@ The late arrivals. The trial called the nine; the world kept sending more. Some 
 
 ---
 
-### LILI — The Heiress Soul
+### SILVERTONGUE — The Heiress Soul
 **Not one of the nine. The tourist.**
 
 **Backstory.** Emilie De Rochefort — Monaco heiress, the Rochefort fortune's only daughter, the girl who treated the King of Iron Fist Tournament like a debutante ball and nearly won it. In the Western Heart, she is exactly what she appears to be: a rich girl who wandered into a trial for lost souls because the invitation looked *exclusive*.
@@ -902,26 +902,28 @@ She was never called. She *came*. Tong-Nou didn't summon her; she followed the p
 **Fighting philosophy.** "Elegance is a weapon. So is money. I brought both."
 
 **Relationships.**
-- **Kinpo:** She wears the face of Lili's oldest rival. Lili has tried to befriend her eleven times. Kinpo has declined eleven times. Lili considers this a rivalry. Kinpo considers this a Tuesday.
+- **Kinpo:** She wears the face of Silvertongue's oldest rival. Silvertongue has tried to befriend her eleven times. Kinpo has declined eleven times. Silvertongue considers this a rivalry. Kinpo considers this a Tuesday.
 - **Purple Rain:** Fellow showmen. They have a standing bet on who bows lower after a win. The bows keep getting lower. Someone will get hurt.
 - **Steve Fox:** She adores him — the boxer, the charm, the *story*. He finds her exhausting and hasn't told her. She knows. She doesn't mind.
 
-**Element.** Metal — the Helix Palace. Wealth is the Greed room's native language, and Lili is fluent.
+**Element.** Metal — the Helix Palace. Wealth is the Greed room's native language, and Silvertongue is fluent.
 
-**Body / Mind / Soul.** BODY: Lili's acrobatic elegance — the cartwheels, the impossible angles, the fight as dance recital. MIND: the tourist — everything here is *fascinating*, nothing here is *real*, and that is the most dangerous thing about her. SOUL: not one of the nine, not claimed by any room. A soul that wandered in off the street and stayed for the show. The trial doesn't know what to do with her. Neither does she. That's why she's winning.
+**Body / Mind / Soul.** BODY: Silvertongue's acrobatic elegance — the cartwheels, the impossible angles, the fight as dance recital. MIND: the tourist — everything here is *fascinating*, nothing here is *real*, and that is the most dangerous thing about her. SOUL: not one of the nine, not claimed by any room. A soul that wandered in off the street and stayed for the show. The trial doesn't know what to do with her. Neither does she. That's why she's winning.
 
-**Why Lili thinks she's here.** She believes the trial is the most exclusive tournament in existence and that she was *selected* — scouted, the way the good schools scout. The idea that Tong-Nou is a dying god trying to heal itself would bore her. So she keeps the story. The trial, for once, is the one being entertained.
+**Why Silvertongue thinks she's here.** She believes the trial is the most exclusive tournament in existence and that she was *selected* — scouted, the way the good schools scout. The idea that Tong-Nou is a dying god trying to heal itself would bore her. So she keeps the story. The trial, for once, is the one being entertained.
 
-**Being purified of:** The game of it. Lili treats lives like amusements — not cruelly, just carelessly. The trial keeps putting her across from souls who are *drowning*. She's starting to notice. It annoys her. That's the purification working.
+**Being purified of:** The game of it. Silvertongue treats lives like amusements — not cruelly, just carelessly. The trial keeps putting her across from souls who are *drowning*. She's starting to notice. It annoys her. That's the purification working.
 
 **Signature detail.** She curtsies before every match — deep, perfect, infuriating. After a win, she blows a kiss. Fighters who've taken the kiss say it lands like a slap.
 
+**Base model.** Lili's Tekken 7 frame, re-owned and reskinned as Silvertongue — her proprietary Eastern Mind/Western Heart name; the old name is retired.
+
 ---
 
-### ZAFINA — The Sealed Soul
+### MARIPOSA — The Sealed Soul
 **Not one of the nine. The keeper.**
 
-**Backstory.** For generations, her bloodline has kept the seal on Azazel's tomb — the demon god the world forgot and the earth remembered. Zafina is the last keeper: the woman with the prophecy she never asked for, the joints that bend wrong, the duty that bends her whole life around one buried door.
+**Backstory.** For generations, her bloodline has kept the seal on Azazel's tomb — the demon god the world forgot and the earth remembered. Mariposa is the last keeper: the woman with the prophecy she never asked for, the joints that bend wrong, the duty that bends her whole life around one buried door.
 
 When the trial called, she didn't hear a summons. She heard a *leak*. Something sealed followed her into Tong-Nou — or was already here, wearing a new shape. She came to check the locks. She's still checking.
 
@@ -932,17 +934,19 @@ When the trial called, she didn't hear a summons. She heard a *leak*. Something 
 **Relationships.**
 - **Jin Kazama:** She failed to stop him once — the Devil Gene woke what she was sworn to keep asleep. She isn't here to try again. She's here to make sure there's nothing left here worth waking.
 - **Diablo:** The intruder who tore his way in. She watches him the way a locksmith watches a crowbar. He knows. He performs for her.
-- **Waterfall:** Two women carrying things too heavy to name. Zafina carries a seal; Waterfall carries grief. They sit together sometimes. Neither talks. It helps.
+- **Waterfall:** Two women carrying things too heavy to name. Mariposa carries a seal; Waterfall carries grief. They sit together sometimes. Neither talks. It helps.
 
 **Element.** Earth — the Octagonal Shrine Par-fang. She seals things. The shrine is where seals belong.
 
-**Body / Mind / Soul.** BODY: Zafina's serpentine frame — the bone-twisting strikes, the impossible angles, the body as a lock with too many keys. MIND: the keeper — duty first, self somewhere far down the list. SOUL: not one of the nine. A soul that was never *lost*, only *posted* — stationed at a door for a thousand years. The trial keeps offering her purification. She keeps declining. She has a post to hold.
+**Body / Mind / Soul.** BODY: Mariposa's serpentine frame — the bone-twisting strikes, the impossible angles, the body as a lock with too many keys. MIND: the keeper — duty first, self somewhere far down the list. SOUL: not one of the nine. A soul that was never *lost*, only *posted* — stationed at a door for a thousand years. The trial keeps offering her purification. She keeps declining. She has a post to hold.
 
-**Why Zafina thinks she's here.** She believes she followed a leak in the seal — that something she was guarding slipped into the Western Heart and she's here to drag it back. The truth is older: the seal was *always* going to follow her. You don't guard a door that long without the door becoming part of you.
+**Why Mariposa thinks she's here.** She believes she followed a leak in the seal — that something she was guarding slipped into the Western Heart and she's here to drag it back. The truth is older: the seal was *always* going to follow her. You don't guard a door that long without the door becoming part of you.
 
-**Being purified of:** The post. Zafina was raised to be a lock, not a person. The trial keeps asking who she is when she's not guarding anything. She doesn't know yet. The joints crack when she thinks about it.
+**Being purified of:** The post. Mariposa was raised to be a lock, not a person. The trial keeps asking who she is when she's not guarding anything. She doesn't know yet. The joints crack when she thinks about it.
 
 **Signature detail.** Before every fight she stretches — and her joints crack *backward*, elbow and knee bending the wrong way with a sound like a door unlatching. The other fighters have learned: the crack means the seal is still holding. When it stops, worry.
+
+**Base model.** Zafina's Tekken frame, re-owned and reskinned as Mariposa's Golden Pharaoh attire — her proprietary Eastern Mind/Western Heart name; the old name is retired.
 
 ---
 
