@@ -72,3 +72,5 @@ Built 2026-10-18 from `game/assets/models/lili.glb` (main).
 Base model untouched on main — this GLB is an addition, not a replacement.
 Tripo generation was not available for this lane — no Tripo model attached;
 per registry law a future Tripo main takes Slot 1 and this shifts to Slot 2.
+
+<!-- instruction-gate trigger -->
