@@ -75,6 +75,8 @@ Pantera does not fight for the katana. He fights because fighting is what he is.
 
 **Owner-locked:** Black panther (not leopard), yellow eyes, black tail, pro wrestling gear, purple/black/red colorway, red metal PANTERA lettering, thigh tattoo-panther decal. Attire 1 complete.
 
+**Owner-locked chat-canon (production conversations, 2026-10):** PANTXRΛ-88 is his cyborg name — a cyborg attire concept: robot panther head from Heavy Leomon, robot left arm on his actual left arm, Heavy Leomon robot right shin and foot — different Heavy Leomon pieces mixed with Pantera and Leomon vibe, "like a humanoid cat like robot cyborg." Related: Doc Frank's per-character story arc turns Pantera into a panther cyborg, grafting robotic/weapon pieces from Heavy Leomon and other weaponed Leomon variants onto him. (Source: main chat owner seq 14723/14743; memory/2026-10-13.md#L1242.)
+
 ---
 
 ### DEMONIO — The Demon Soul
@@ -128,6 +130,9 @@ RIN is the protagonist soul — the baseline every other soul deviates from. Dem
 **Being purified of:** The wound. JIN's power moves damage the wielder — the blade cuts both ways. The trial is teaching the blade that it doesn't have to bleed to cut. Phantom hasn't decided whether a painless blade is still a blade.
 
 **Signature detail.** His self-damaging techniques leave no scars. The wounds close between rounds. The pain doesn't. He has never flinched. Waterfall has seen him flinch. She hasn't told anyone.
+
+**Owner-locked chat-canon (production conversations, 2026-10):** He has three faces he wears on purpose and one he doesn't. Publicly he is Jiraiya — loud, laughing, hands everywhere, the pervy-sage energy dialed until it annoys people. Privately he is Kakashi — quiet, reads, watches, says half of what he's thinking and means all of it. Then there's the other one: the Fiend mixed with Mankind, living inside him uninvited. It comes out when the mask slips, which is whenever it wants; he can't control it, and he's pissed about it — the only time he shows anger. When it's out it talks crude and screaming and delighted, and watches the dying the way a shinigami watches: detached, amused, taking notes. He fights like Jiraiya when he's himself — big, sloppy-looking, deceptively precise — and when the other one takes over, the style doesn't change. That's the worst part: it's still his body, his blade, his technique, just driven by something that thinks the screaming is funny. The Marketplace named itself after him and he won't say why. His signature: after a kill, whichever one of him is driving, he goes quiet for exactly three seconds. Then the laughing starts again — or it doesn't. (Source: chat "Western Heart recon", assistant bio seq 980, from owner's direction. OPEN QUESTION for owner: this bio describes his face in detail — oni's face filtered through the Fiend, broad jaw, heavy brow, skin like old bone, Japanese-style canines always showing, long white hair past his waist tied with cord when he fights. The repo line above says nobody has seen his face. Owner decides which stands — see docs/bios/BIOS-HARVEST-2026-10-19.md conflict C2.)
+
 
 ---
 
@@ -187,6 +192,9 @@ lies underneath is none of anyone's business.
 **Signature detail.** The paint goes on before every fight. Once, it wouldn't come off after — it stayed for three days. He didn't sleep. On the fourth day, Waterfall washed it off with her tears. He let her. He hasn't told anyone.
 
 **Owner-locked:** Punisher / Finn Balor demon-paint direction. Keep Bryan's pants. Alternate attires pending review.
+
+**Owner-locked chat-canon (production conversations, 2026-10):** Under the paint is Devitt — Finn Balor / Prince Devitt likeness, "sharp-boned, cold-eyed, the kind of handsome that looks like it was carved for wanted posters." The paint is not decoration: when RETSU rides him the paint SPREADS — it starts at the face and moves down the neck, across the chest, down the arms, until his whole upper body is marked by the end of the fight. It was not there when the round started, and nobody has ever seen him put it on. He does bone-breaking kickboxing and he COUNTS — after every fight he knows exactly how many broke, and he remembers the number of every man he ever fought. "That's the RETSU in him. Retribution keeps books." His signature: he doesn't celebrate — when the round ends he stands over the spot where it ended and looks down at it, like he's making sure it stays down. Owner spec: cargo pants and combat boots (military surplus pants, broken-in boots). (Source: chat "Western Heart recon", owner seq 944 / assistant bio seq 949, save-confirmed seq 961.)
+
 
 ---
 
@@ -814,6 +822,9 @@ She is the answer to SAM-UR-A1's question. Is there a soul in the machine? In *t
 
 **Owner-locked:** Name CYBORG X. The android — detachable head, chainsaw arms, jetpack. Pairs with SAM-UR-A1 as the two built souls. Alisa Bosconovitch base.
 
+**Owner-locked chat-canon (production conversations, 2026-10):** Cyborg X and Cape Jones are the SAME person — Cape Jones IS her, as her first attire / main look. He entered the Western Heart universe multidimensionally: bored during an LED session, he flew through the TV into the game — and it was real. That's how he joined the immortal combat. He is a Space Ghost / Batman-type fighter who doesn't even want to fight or be a hero — he only fights because everyone thinks he looks like a superhero and either wants his help or wants to fight him. ("I don't even want to be here.") He has hand cannons like Mega Man and Android 16; his cannon shots map to her rocket punches, her chainsaw stuff becomes his gadget-hero flavor. His origin is unknown to him until he runs into Doc Frank: somehow he was born like that — born from a mom AND made in a lab, the Cell / Dr. Gero cartoon-logic joke that relates back to Cape Jones's own canon (multiverse tie-back). Owner balance rule: "honest mid-tier, never been jack." (Source: chat "Western Heart recon" owner seq 515/579/612, assistant lock-ins seq 584/617; chat "Combine repos into Cape Jones" seq 835/2730/2736/2740; "Cape Jones 3D scenes repo" seq 299. Owner law 2026-10-17: Cyborg X and Cape Jones are the same person.)
+
+
 ---
 
 ### BRUNO — The Heartbreak Soul
@@ -920,6 +931,127 @@ She was never called. She *came*. Tong-Nou didn't summon her; she followed the p
 
 ---
 
+### BAEK — The Master Soul
+**Not one of the nine. The teacher.**
+
+**Backstory.** Baek Doo San — taekwondo master, the man who taught Hwoarang everything the boy refused to learn gently. In the old world he was lost at sea, taken, broken, rebuilt; he came back anyway, because students don't stop needing teachers just because the teacher drowns.
+
+The trial didn't call him. A student followed the pull — and Baek followed the student. That's the whole story. That's always the whole story with him.
+
+**Personality.** Strict. Fatherly. Terrifyingly patient. The only fighter the younger souls are *afraid to disappoint*.
+
+**Fighting philosophy.** "The kick is the question. Discipline is the answer."
+
+**Relationships.**
+- **Zui:** The teacher's longest project. Baek has tried to sober him up eleven times. Zui has converted two of Baek's lectures into drinking songs. Baek keeps trying. That's what teachers do.
+- **Pantera:** Mutual respect, no words wasted. The panther fights honest; the master teaches honest. They spar at dawn. Nobody watches. Everybody knows.
+- **Kinpo:** Discipline recognizes discipline. He corrects her stance; she corrects his manners. Both pretend the other isn't helping.
+
+**Element.** Fire — the Plains of Chi-U. The honest fight, under the burning sky. No tricks. No seals. Just the work.
+
+**Body / Mind / Soul.** BODY: Baek's flawless taekwondo — the kicks are textbooks, the textbooks are weapons. MIND: the teacher — every soul is a student, every fight is a lesson, every loss is homework. SOUL: not one of the nine. A soul that came *on purpose*, for someone else. The trial doesn't know what to do with a volunteer. It's still deciding.
+
+**Why Baek thinks he's here.** He believes he followed a student into the dark — that somewhere in the Western Heart there's a boy who needs his master, and he'll find him. He may be right. The trial is full of lost students. It may have called him the way a classroom calls a teacher: not by name, but by need.
+
+**Being purified of:** The guilt. Every teacher carries the ones he couldn't save — the students who drowned, who left, who chose the bottle, who chose the devil. Baek's guilt has a seating chart. The trial keeps handing him students he *can* save. He's learning to take them.
+
+**Signature detail.** He bows to every opponent — before the match, after it, win or lose. The bow is never rushed. Fighters who've tried to rush him have learned: the bow takes as long as the bow takes.
+
+---
+
+### JIN KAZAMA — The Bloodline Soul
+**Not one of the nine. The bloodline. (Not the SOUL JIN — the soul JIN (刃 — the blade) wears Phantom. This Jin wears a curse.)**
+
+**Backstory.** Jin Kazama — heir of the Mishima bloodline, the Devil Gene made flesh, the boy who threw his grandfather off a cliff and then spent his life trying to throw the devil off himself. He started a world war to draw the devil out. It worked. That's the problem with Jin's plans: they work.
+
+In the Western Heart, the Gene followed him in — and inside Tong-Nou, the devil has nowhere to hide. No corporations. No wars. No distractions. Just the blood, the trial, and the quiet.
+
+**Personality.** Brooding. Self-controlled. One bad day from the wings. The only fighter who treats every victory like a warning.
+
+**Fighting philosophy.** "The blood ends with me."
+
+**Relationships.**
+- **Zafina:** Two cursed bloodlines, mutual recognition. She keeps the seal; he *is* the thing seals are for. They don't spar. They understand each other too well for that.
+- **Diablo:** The devil who doesn't hide — Jin's mirror and his warning. Diablo tore his way in to rule; Jin clawed his way in to *end*. Their fights are the trial's exorcisms.
+- **Phantom:** They share a name — his name, the soul's name — and neither will say whether it's coincidence. Phantom's blade is ritual and precise. Jin's devil is neither. The name sits between them like a drawn knife.
+
+**Element.** Fire — the Plains of Chi-U. The confrontation is internal, but the sky burns the same.
+
+**Body / Mind / Soul.** BODY: Jin's Mishima-ryu — the lightning footwork, the electric fists, the style his bloodline perfected and his conscience condemns. MIND: iron control — every breath measured, every impulse caged. SOUL: not one of the nine. A bloodline wearing a soul's shape — or a soul wearing a bloodline's curse. The trial keeps trying to separate the two. So does he.
+
+**Why Jin Kazama thinks he's here.** He believes he came to end the bloodline — that the trial is the last arena, and if he dies here properly, the Gene dies with him. The trial has other plans: it doesn't want the bloodline *ended*. It wants it *purified*. Jin hasn't decided whether that's mercy or a worse sentence.
+
+**Being purified of:** The devil. The trial's oldest customer. Every round is an exorcism; every reincarnation, a little less devil. He's counting. The count is going down. That's the most hopeful thing about him, and he hates hope.
+
+**Signature detail.** When the Gene stirs, his eyes go red — and the whole arena goes quiet. Not out of fear. Out of respect for the fight he's fighting. The other fighters have learned not to mention it.
+
+---
+
+### STEVE FOX — The Boxer Soul
+**Vessel of BYOU (病 — sickness). The name ZUI wore before the monastery.**
+
+**Backstory.** Before the robes, before the sake, before the tattoos — there was the ring. Steve Fox: British champion, the purest boxer in the old world, Nina Williams' son, a young man who fought with his hands and smiled with his whole face.
+
+Zui *is* Steve — the same vessel, the same BYOU soul, before the monastery and the bottle. The sway was footwork first. The dodge was a slip-roll before it was a stumble. When the trial needs the boxer instead of the monk, Steve steps forward — same soul, straighter spine, both hands up.
+
+**Personality.** Cocky charm. Showman's heart. The smile is real; the guard never drops.
+
+**Fighting philosophy.** "Hit clean. Bow cleaner."
+
+**Relationships.**
+- **Zui:** Himself, before. Steve doesn't drink — that's the difference, and the whole argument. Zui toasts him before fights. Steve pretends not to be moved. He is.
+- **Awa Pop:** She wears his mother's face — Nina Williams' grace, the assassin's economy. He has never said what that does to him. She hums while she fights. He listens.
+- **Kinpo:** Annoyed by him. He thinks this is flirting. It is not. (Some things don't change between vessels.)
+
+**Element.** Water — the Palace of Dreaming. Same soul, same water. He drowns opponents in rhythm instead of sake; the drowning is still the point.
+
+**Body / Mind / Soul.** BODY: Steve's championship boxing — the purest hands in the trial, before or after the bottle. MIND: the showman — he fights for the crowd the way Zui drinks for the truth. SOUL: BYOU, sickness. The body is disciplined. The mind is bright. The soul *moves wrong* — and where Zui agreed with the sickness, Steve *outboxes* it. Same soul, two answers. The trial is watching to see which one wins.
+
+**Why Steve Fox thinks he's here.** He believes he came for a title fight — the biggest purse, the strangest venue — and stayed because the monastery he never joined keeps sending him postcards in the form of a drunk monk. He's wrong about the purse. He's right that he's supposed to be here. BYOU doesn't do accidents.
+
+**Being purified of:** The crowd. The boxer fights to be *watched*; BYOU moves wrong whether or not anyone's looking. Somewhere between the showman and the sickness is a man who fights for himself. The trial is introducing them.
+
+**Signature detail.** He shadowboxes before every match — crisp, beautiful, championship form. The other fighters swear the shadow sometimes hits back.
+
+**Owner-locked:** "Zooey" was a speech-to-text error for ZUI (owner 2026-10-18). Steve Fox = Zui confirmed — same vessel, same soul, before the monastery.
+
+---
+
+### DXMMII — The Rebuilt Soul
+**Not one of the nine. The remix.**
+
+**Backstory.** Mokujin was a wooden dummy that learned to fight by copying everyone it faced — no style of its own, every style at once. DXMMII is what happened when the dummy kept the copies and started *mixing* them.
+
+Patchwork body — different colored panels stitched together, each one a fight he survived, a night he played. X-shaped eyes like a dead cartoon character. Tongue hanging out. The crash-test-dummy target circle on his chest: aim here, it says. Everyone does. Nobody's collected.
+
+He's a DJ now. The trial is the biggest venue he's ever played, and he plays the crowd the way he fights — everybody's style, his beat.
+
+**Personality.** Chaos with a tempo. Plays the room. Remembers every sample, forgets every name.
+
+**Fighting philosophy.** "Everybody's style is my style."
+
+**Relationships.**
+- **SAM-UR-A1:** Fellow built thing. SAM-UR-A1 studies his patchwork like a manual. DXMMII has started leaving new patches where SAM-UR-A1 can find them. Neither calls it friendship.
+- **Doc Frank:** Wants to "fix" him — proper panels, clean seams, *improvements*. DXMMII has hidden his toolbox three times. The patches stay crooked. The patches are the point.
+- **Saku Ra:** The idol recognizes a performer. They've discussed a collaboration. The trial is not ready.
+
+**Element.** Metal — the Helix Palace. A thing assembled from want, at home in the house of desire. The Destruction room keeps breaking him. He keeps coming back. The room is starting to take it personally.
+
+**Body / Mind / Soul.** BODY: the patchwork — stitched panels, X-eyes, the tongue, the target. Every rebuild left a seam. MIND: the DJ — reads the crowd, rides the beat, never plays the same set twice. SOUL: not one of the nine. A *copy* that became an original — the mimic soul. The trial keeps asking what he is underneath the patches. He's starting to wonder if there's an underneath. There's a beat, though. The beat is his.
+
+**Why DXMMII thinks he's here.** He believes the trial booked him — biggest venue, longest set, crowd that literally *dies* for the music. The idea that he's here to be purified has never occurred to him. Purification doesn't have a dance floor.
+
+**Being purified of:** The copy. Every patch is someone else's style. The trial keeps stripping the patches away — not the panels, the *habit* — asking what's left when he's not imitating anyone. What's left has a beat. It's his. He's learning to hear it.
+
+**Signature detail.** His X-eyes pulse with the beat — whatever he's playing, whatever he's fighting. When the music stops, the tongue goes back in. The other fighters have learned: tongue out, you're entertainment. Tongue in, run.
+
+**Owner-locked:** Name DXMMII (locked 2026-10-15). Patchwork X-eyed tongue-out crash-test-dummy DJ, multi-colored panels, crash-test symbol on chest. Mokujin base.
+
+**Owner-locked chat-canon (production conversations, 2026-10):** The four-arm system. DXMMII's arms are retractable into the body — nobody knows if it's a robot or a cyborg or an android or just a DJ in a robotic patchwork crash-test-dummy costume, and that mystery is the character: it is NEVER to be answered. The arms switch stances like Tekken stance fighters: four arms OUT is gyro brawler, arms IN is human Tekken style, arms FLOATING detached is its own thing — same inputs as the Tekken stance-switch fighters. Canon precedent: Bannon canonically had Goro from Mortal Kombat — four arms and all — with Goro rig files to study. Owner pronoun rule (2026-10-18): Dxmmii is it/its until he decides otherwise. (Source: chat "Western Heart recon" owner seq 886/838, assistant seq 892. The limb-system build is on main at tools/limb-system/dxmmii/ — 107 files, landed via PR #221.)
+
+
+---
+
 ### MARIPOSA — The Sealed Soul
 **Not one of the nine. The keeper. The native.**
 
@@ -958,6 +1090,8 @@ When the trial stirred, she didn't hear a summons. She heard a *leak*. Something
 
 ---
 
+### DOC FRANK — The Builder Soul
+
 **Not one of the nine. The builder.**
 
 **Backstory.** Born Franklin Bauzzkoh. Shortened it to Frank Bozko for business and recognition — "nobody funds a Bauzzkoh." Became DOC FRANK: the universe's Dr. Frankenstein *and* its Dr. Gero in one coat, the mad scientist who started building androids and didn't stop until he'd turned *himself* into one.
@@ -986,6 +1120,8 @@ He built Cyborg X. He built SAM-UR-A1. The three built souls: two machines who w
 **Signature detail.** He takes notes mid-fight. On a clipboard. In crayon. Opponents who've peeked say the notes are detailed, accurate, and deeply insulting.
 
 **Owner-locked:** Name DOC FRANK (owner-named 2026-10-13) — also Android 9, or just 9. Born Franklin Bauzzkoh, shortened to Frank Bozko for business and recognition. The universe's Dr. Frankenstein × Dr. Gero — the mad scientist who built androids until he turned himself into one. Built Cyborg X and SAM-UR-A1: the three built souls. Dr. Bosconovitch base.
+
+**Owner-locked naming rule (production conversations, 2026-10):** Alisa's name is CYBORG X. The Android name went to Doc Frank — he is **Android 9** (or just **9**). "No Android X anywhere." (Source: chat "Western Heart recon", assistant seq 607 restating owner direction; main chat owner seq 13801: "We call him DOC Frank, also know as Android 9, or 9".)
 
 ---
 
@@ -1017,6 +1153,8 @@ He didn't hear the trial's call. He heard that there was an *audience* — and w
 
 **Owner-locked:** Keiji Mutoh / The Great Muta likeness — the mist, the paint, the mask, the entrance as art. Co-created with the owner.
 
+**Western Heart name (owner 2026-10-19):** In this game he is **RAVE** — "Kiko is rave in this game and Kiko in others, Rave is his Raver personality from our canon." The unrobed, shrouded-face variant — the "ghost Tanaka" — is Rave.
+
 ---
 
 ### SUN RĀ — The Soul-Eating Sun (Boss)
@@ -1045,3 +1183,5 @@ Sun Rā does not fight in the tournament. He IS the tournament — or one of the
 **Signature detail.** He says "Immortal Qombat" in English. Only he gets the English version. Everyone else says 不死クォンバット. The distinction is the only law in his realm that he didn't make up — and he doesn't know who did.
 
 *Owner-directed 2026-10-13. Sun Rā's arena is a boss realm, not a standard stage. Name: SUN + ラー (Rā, the Egyptian sun god in Japanese).*
+
+**Owner-locked chat-canon (owner 2026-10-18, verbatim):** "he kind of has an open mouth already with like big jagged teeth so you should be able to make him talk easily and his eyes don't blink because he's like a sun and his like he's like a sun god and he's cursed to stare and watch forever so that's why he make all of the that's why he make all of the souls fight" — his eyes DO NOT blink; he is a sun god, CURSED TO STARE AND WATCH FOREVER, and that is WHY he makes all the souls fight. "his like eyes are bleeding they're like really deep sunken in like the moon from Soul Eater and he is blood coming from the corner of his mouth from the staring and being the sun and from eating the souls" — his eyes are bleeding, deep and sunken like the Soul Eater moon; blood comes from the corner of his mouth from the eternal staring, from being the sun, from eating the souls. The open jagged-toothed mouth is built for talking animation. Work the blood into canon AND model (texture/VFX detail). Tripo model (his proprietary look): https://studio.tripo3d.ai/3d-model/cf2dee24-15df-4d44-8a61-56fb5510a4e1 — pulled 2026-10-18. (Source: side chat "Find Western Heart repo name", owner seq 2192/2200, 2026-10-18 ~20:38-20:39 CDT.)
