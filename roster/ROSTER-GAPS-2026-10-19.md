@@ -15,6 +15,8 @@ recorded in flight. Characters with pulls already in flight are marked separatel
 
 ### No Tripo on record (needs an owner Tripo link / new Tripo build)
 
+**CORRECTION 2026-10-19:** PANTERA was listed here in error and has been removed — the owner confirmed "Leo man" IS his original Tripo model (Slot 2). The "NOT ON RECORD" note in this doc and in TRIPO-REGISTRY.md was wrong; both corrected.
+
 | # | Character | Current model state | Base |
 |---|---|---|---|
 | 1 | **DEMONIO** | `game/assets/models/demonio.glb` wired (in-game base only) | Jin Kazama |
@@ -37,7 +39,6 @@ recorded in flight. Characters with pulls already in flight are marked separatel
 | 18 | **SLICE** | **NOT WIRED** — Dragunov source is a 509-bone pro control rig (needs dedicated rigging lane) | Dragunov |
 | 19 | **CHORDZ** | **NO SOURCE FOUND** — nothing on disk; disk too tight for a full T7 pull | unknown |
 | 20 | **VAIN** | Tripo GLB exists locally (`~/workspace/tripo-downloads/`, 19MB, by marz6kdabest) but **NOT wired, NOT recorded** in the registry | Bass Armstrong |
-| 21 | **PANTERA** | ⚠️ Tripo model EXISTS per owner but is **NOT ON RECORD** — no link/GLB in repo. Slot 2 ("Leo man") is reserved for it. **Needs the owner to send the link.** | King (T7 reskin) |
 
 ### Pulled already — wiring/rigging in flight (NOT "needs a model")
 
@@ -51,7 +52,7 @@ recorded in flight. Characters with pulls already in flight are marked separatel
 
 ### Tripo-attached and done (for reference)
 
-ZUI, THOR, AWA POP, WATERFALL, SAKU RA, PURPLE RAIN, KIKO TANAKA, CAPE JONES/CYBORG X, MARIPOSA (Slot 1 wired).
+ZUI, THOR, AWA POP, WATERFALL, SAKU RA, PURPLE RAIN, KIKO TANAKA, CAPE JONES/CYBORG X, MARIPOSA (Slot 1 wired), PANTERA (Slot 2 = "Leo man" Tripo, owner-confirmed 2026-10-19; Slot 6 = Leopard King wired 2026-10-19).
 
 ---
 
