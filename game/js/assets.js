@@ -65,6 +65,14 @@ const MODEL_URLS = {
   'kiko-tanaka': 'assets/models/kiko-tanaka.glb',
   'kiko-tanaka_alt1': 'assets/models/kiko-tanaka_alt1.glb',
   'purple-rain-main': 'assets/models/purple-rain-main.glb',
+  // Lane C fighter-hunt (Round 2): per-fighter models from community rips,
+  // retargeted to Mixamo skeleton. See docs/fighter-hunt/HUNT-LOG.md.
+  star: 'assets/models/star.glb',
+  torch: 'assets/models/torch.glb',
+  michiko: 'assets/models/michiko.glb',
+  dio: 'assets/models/dio.glb',
+  bruno: 'assets/models/bruno.glb',
+  yukihyo: 'assets/models/yukihyo.glb',
   // Created fighters use the Soldier.glb base from the CAW suite.
   // Relative path works on GitHub Pages (game/ -> customization/).
   custom: '../customization/create-fighter/assets/Soldier.glb',
