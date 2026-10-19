@@ -23,19 +23,22 @@ const MODEL_URLS = {
   // Keys match FULL_ROSTER `model` ids in roster-full.js (lane 2).
   demonio: 'assets/models/demonio.glb',
   diablo: 'assets/models/diablo.glb',
-  phantom: 'assets/models/phantom.glb',
-  skull: 'assets/models/skull.glb',
+  // Tripo pulls wired 2026-10-19 (owner: stop saying "not in the repo").
+  phantom: '../roster/phantom/attires/attire1/model.glb',
+  skull: '../roster/skull/attires/attire1/model.glb',
   // SAM-UR-A1 Attire 1 (owner 2026-10-19): Tripo pull replaces the fan-rip placeholder.
   'sam-ur-a1': '../roster/sam-ur-a1/attires/attire1/model.glb',
-  'saku-ra': 'assets/models/saku-ra.glb',
+  'saku-ra': '../roster/sakura/attires/attire1/model.glb',
   'awa-pop': 'assets/models/awa-pop.glb',
-  'purple-rain': 'assets/models/purple-rain.glb',
+  'purple-rain': '../roster/purplerain/attires/attire1/model.glb',
   nightwolf: 'assets/models/nightwolf.glb',
   'king-tyrant': 'assets/models/king-tyrant.glb',
   kinpo: 'assets/models/kinpo.glb',
-  waterfall: 'assets/models/waterfall.glb',
+  waterfall: '../roster/waterfall/attires/attire1/model.glb',
   'n3g4tiv0': 'assets/models/n3g4tiv0.glb',
-  thor: 'assets/models/thor.glb',
+  thor: '../roster/thor/attires/attire1/model.glb',
+  // Thor Attire 2: phantom-mimic oni mask (owner 2026-10-19).
+  'thor-attire2': '../roster/thor/attires/attire2/model.glb',
   'doc-frank': 'assets/models/doc-frank.glb',
   // Doc Frank post-transform bigger form (owner 2026-10-19, Tripo pull).
   'doc-frank-big': '../roster/doc-frank/attires/attire1/post-transform/model.glb',
@@ -52,6 +55,8 @@ const MODEL_URLS = {
   'cape-jones': 'assets/models/cape-jones.glb',
   // Bonus / music fighters and name-pending models (loadable, unassigned).
   mariposa: 'assets/models/mariposa.glb',
+  // Mariposa Slot 2: the real Tripo pull (owner 2026-10-19; Butterfly Default is Slot 1).
+  'mariposa-slot2': '../roster/mariposa/attires/slot2/model.glb',
   zafina: 'assets/models/zafina.glb',
   dxmmii: 'assets/models/dxmmii.glb',
   rave: 'assets/models/rave.glb',
