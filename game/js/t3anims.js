@@ -1,14 +1,18 @@
 /* t3anims.js — REAL Tekken 3 animation clips for Western Heart.
  *
- * Loads Grok's decoded T3 King motion (wh-anim/1 JSON format) and converts
- * to THREE.AnimationClip for the game's AnimationMixer.
+ * Loads the decoded T3 motion banks (wh-anim/1 JSON format) and converts
+ * them to THREE.AnimationClip for the game's AnimationMixer.
  *
- * Source: assets/anim/t3/king_on_pantera_leoman/*.json
- *         (decoded from owner's T3 disc via lab/tools/t3_motion_bake.py)
+ * Source: assets/anim/t3/<bank>/*.json — one bank per decoded T3
+ *         character (king, jin, xiaoyu, bryan, gunjack, yoshimitsu),
+ *         decoded from the owner's T3 disc via lab/tools/t3_motion_bake.py.
  * Provenance: REAL T3 motion data, not procedural. See docs/anim/PROCEDURAL_AUDIT.md.
  *
  * Bone names in the JSON (Hips, Spine, etc.) match the game's stripped
  * Mixamo bone names (mixamorigHips -> Hips), so tracks bind directly.
+ * Each fighter plays ONLY their own moveset source's bank (see
+ * SOURCE_TO_BANK + fighter.js bankIdFor) — a fighter must never be
+ * animated with a different character's clips.
  */
 
 const T3_CLIP_DEFS = {
@@ -37,11 +41,32 @@ const T3_BONES = ['Root','Hips','Spine','Chest','Neck','Head',
   'LeftUpLeg','LeftLeg','LeftFoot','LeftToeBase',
   'RightUpLeg','RightLeg','RightFoot','RightToeBase'];
 
-// Base URL for T3 clip JSONs. NOTE (teardown-integration 2026-10-19): the
-// decoded clip JSONs live at the REPO ROOT (assets/anim/t3/...), not under
-// game/assets/anim/ — game/ is a subpath, so this resolves up one level.
-// The old base 404'd every clip and the real T3 motion never loaded.
-const T3_ANIM_BASE = '../assets/anim/t3/king_on_pantera_leoman/';
+// Decoded T3 motion banks. Real teardown animation data (wh-anim/1 JSON),
+// one bank per T3 character decoded so far.
+// Paths are relative to the game page like every other game asset
+// (assets/portraits, assets/*_moves.json). DEPLOY NOTE (verified live
+// 2026-10-19): the game is served at the site root, so the previous
+// '../assets/anim/...' base resolved ABOVE the game and 404'd every
+// clip in production — the banks must live under game/assets/anim/.
+export const T3_BANKS = {
+  king:       'assets/anim/t3/king_on_pantera_leoman/',
+  jin:        'assets/anim/t3/jin/',
+  xiaoyu:     'assets/anim/t3/xiaoyu/',
+  bryan:      'assets/anim/t3/bryan/',
+  gunjack:    'assets/anim/t3/gunjack/',
+  yoshimitsu: 'assets/anim/t3/yoshimitsu/',
+  // heihachi: no decoded bank exists (raw divmot only) — intentionally absent.
+};
+
+// Moveset source name -> bank key. 'demonio' is the game's rename of Jin
+// (owner canon 2026-10-19: Tekken's Jin = DEMONIO). Fixups for fictitious
+// sources: deviljin -> jin, bosconovitch -> gunjack. heihachi -> null.
+export const SOURCE_TO_BANK = {
+  king: 'king', demonio: 'jin', jin: 'jin', bryan: 'bryan',
+  xiaoyu: 'xiaoyu', yoshimitsu: 'yoshimitsu', gunjack: 'gunjack',
+  bosconovitch: 'gunjack', deviljin: 'jin',
+  heihachi: null,
+};
 
 /**
  * Convert a wh-anim/1 JSON object to a THREE.AnimationClip.
@@ -97,44 +122,48 @@ function jsonToClip(name, data, THREE) {
 
 /**
  * Load all T3 clips. Returns { actionName: THREE.AnimationClip }.
- * Failures are logged but don't throw — the game falls back to procedural.
- * Results are cached module-level so Fighters can access synchronously.
+ * Per-bank loading (GYRO-ARMS FIX 2026-10-19): loadT3Clips(THREE, bankId)
+ * loads ONE character bank; results are cached per bank so Fighters can
+ * access them synchronously via getT3Clips(bankId). Failures are logged
+ * but don't throw — the game falls back to procedural.
  */
-let _t3clipCache = null;
-let _t3clipPromise = null;
+const _t3clipCache = {};    // bankId -> { actionName: clip }
+const _t3clipPromises = {}; // bankId -> Promise
 
-export async function loadT3Clips(THREE) {
-  if (_t3clipCache) return _t3clipCache;
-  if (_t3clipPromise) return _t3clipPromise;
-  _t3clipPromise = (async () => {
+export async function loadT3Clips(THREE, bankId = 'king') {
+  if (!bankId || !T3_BANKS[bankId]) return null;
+  if (_t3clipCache[bankId]) return _t3clipCache[bankId];
+  if (_t3clipPromises[bankId]) return _t3clipPromises[bankId];
+  const base = T3_BANKS[bankId];
+  _t3clipPromises[bankId] = (async () => {
     const clips = {};
     const jobs = Object.entries(T3_CLIP_DEFS).map(async ([action, def]) => {
       try {
-        const res = await fetch(T3_ANIM_BASE + def.file);
+        const res = await fetch(base + def.file);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
         if (data.format !== 'wh-anim/1') {
-          console.warn(`[WH-T3] ${def.file}: unexpected format ${data.format}`);
+          console.warn(`[WH-T3] ${bankId}/${def.file}: unexpected format ${data.format}`);
         }
-        const clip = jsonToClip(`t3_${action}`, data, THREE);
+        const clip = jsonToClip(`t3_${bankId}_${action}`, data, THREE);
         if (clip) {
           clip.userData.loop = def.loop;
           clips[action] = clip;
         }
       } catch (e) {
-        console.warn(`[WH-T3] failed to load ${def.file}:`, e.message || e);
+        console.warn(`[WH-T3] failed to load ${bankId}/${def.file}:`, e.message || e);
       }
     });
     await Promise.all(jobs);
-    console.log(`[WH-T3] loaded ${Object.keys(clips).length}/${Object.keys(T3_CLIP_DEFS).length} real T3 clips`);
-    _t3clipCache = clips;
+    console.log(`[WH-T3] bank '${bankId}': loaded ${Object.keys(clips).length}/${Object.keys(T3_CLIP_DEFS).length} real T3 clips`);
+    _t3clipCache[bankId] = clips;
     return clips;
   })();
-  return _t3clipPromise;
+  return _t3clipPromises[bankId];
 }
 
-/** Synchronous accessor for cached clips (null if not loaded yet). */
-export function getT3Clips() { return _t3clipCache; }
+/** Synchronous accessor for one bank's cached clips (null if not loaded). */
+export function getT3Clips(bankId = 'king') { return _t3clipCache[bankId] || null; }
 
 /**
  * Create mixer actions for T3 clips on a fighter's mixer.
