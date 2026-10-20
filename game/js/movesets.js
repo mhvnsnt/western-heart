@@ -65,6 +65,10 @@ export const MOVESET_IDS = [
   'sf-guile', 'sf-mbison', 'sf-sagat', 'sf-dhalsim', 'sf-cammy',
   // Only in the teardown-pr2 lane: fully binary+guide verified Akuma set.
   'sf-akuma',
+  // Teardown-integration (owner 2026-10-19): roster ids that had no per-fighter
+  // file — Demonio human form + Doc Frank Wowomomo/Hood Scientist attires +
+  // KRONOS Attire 2 "TimberWolf" (shares the Zangief/Golem moveset).
+  'demonio-human', 'doc-frank-wowomomo', 'doc-frank-hood', 'kronos-attire2',
 ];
 
 const _movesets = {};

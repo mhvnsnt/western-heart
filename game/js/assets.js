@@ -84,7 +84,10 @@ const MODEL_URLS = {
   baek: 'assets/models/baek.glb',   // NO WH name yet — do not assign
   // Round-2 auto-rig wave (lane B): re-rigged per-fighter variants + Tripo
   // attires, all passing the playable gate (valid glTF, skinned, Hips, 1.5-2.2m).
-  'demonio-body': 'assets/models/demonio-body.glb',
+  // 'demonio-body' round-2 re-rig variant was never pushed to the repo;
+  // repointed to the shipped Demonio body (teardown-integration 2026-10-19)
+  // so the key resolves instead of 404ing.
+  'demonio-body': 'assets/models/demonio.glb',
   'kai-body': 'assets/models/kai-body.glb',
   'king-tyrant_alt1': 'assets/models/king-tyrant_alt1.glb',
   'kinpo-t8': 'assets/models/kinpo-t8.glb',
