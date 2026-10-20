@@ -48,11 +48,14 @@ export const FULL_ROSTER = [
       'demonio-human': {
         up: { target: 'demonio-a1', label: 'REPOWER', powerMult: 1.43, speedMult: 0.91, defenseMult: 1.11, bodyScale: 1.05, moveset: 'demonio' },
       },
-    } },
+    },
     stats: { speed: 4.8, jump: 7.6, power: 1.05, defense: 1.0 },
     ai: { aggression: 0.6, grabBias: 0.05, reaction: 0.6 } },
   { id: 'phantom', name: 'PHANTOM', title: 'The Ghost Blade Soul', base: 'Yoshimitsu', moveset: 'yoshimitsu', model: 'steve-fox', tintStrength: 0.6,
     colors: { suit: 0x1a1a2a, trim: 0x00ffcc }, style: 'Sword Style', archetype: 'Tricky' },
+  // Cluster A moveset wave (2026-10-19): Koreshi, owner original creation.
+  { id: 'koreshi', name: 'KORESHI', title: 'The Delta Ninja', base: 'Yoshimitsu', moveset: 'koreshi', model: 'steve-fox', tintStrength: 0.6,
+    colors: { suit: 0x101018, trim: 0xffcc33 }, style: 'Ninja', archetype: 'Tricky' },
   { id: 'diablo', name: 'DIABLO', title: 'The Devil Soul', base: 'Heihachi', moveset: 'heihachi', model: 'steve-fox', tintStrength: 0.6,
     colors: { suit: 0x5a0a0a, trim: 0xff4400 }, style: 'Mishima', archetype: 'Boss' },
   { id: 'skull', name: 'SKULL', title: 'The Punisher Soul', base: 'Bryan Fury', moveset: 'bryan', model: 'pantera', tintStrength: 0.25,

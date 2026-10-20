@@ -246,25 +246,4245 @@
    "throw": true,
    "unblockable": true,
    "isGrab": true
+  },
+  "1+2": {
+   "name": "Birds Flock",
+   "input": "1+2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-1+2",
+   "t8_damage": "24",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 24,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:xiaoyu:xiaoyu-1+2",
+   "input_slots": [
+    "1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -7; knockdown on hit"
+  },
+  "1,2": {
+   "name": "Bayonet",
+   "input": "1,2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-1,2",
+   "t8_damage": ",8",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 13,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:xiaoyu:xiaoyu-1,2",
+   "input_slots": [
+    "1",
+    "1,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     8
+    ],
+    "total": 13
+   },
+   "note": "High; on block -3"
+  },
+  "1,2,1": {
+   "name": "Bayonet Thruster",
+   "input": "1,2,1",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-1,2,1",
+   "t8_damage": ",20",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 33,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-1,2,1",
+   "input_slots": [
+    "1",
+    "1,2",
+    "1,2,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     8,
+     20
+    ],
+    "total": 33
+   },
+   "note": "Mid; on block -9; knockdown on hit"
+  },
+  "1+2+3+4": {
+   "name": "Ki Charge",
+   "input": "1+2+3+4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-1+2+3+4",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:xiaoyu:xiaoyu-1+2+3+4",
+   "input_slots": [
+    "1+2+3+4"
+   ],
+   "move_class": "special"
+  },
+  "1+3+4": {
+   "name": "False Salute",
+   "input": "1+3+4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-1+3+4",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:xiaoyu:xiaoyu-1+3+4",
+   "input_slots": [
+    "1+3+4"
+   ],
+   "move_class": "special"
+  },
+  "1,d+2": {
+   "name": "Fan Dance",
+   "input": "1,d+2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-1,d+2",
+   "t8_damage": ",10",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 15,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:xiaoyu:xiaoyu-1,d+2",
+   "input_slots": [
+    "1",
+    "1,d+2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     10
+    ],
+    "total": 15
+   },
+   "note": "Mid; on block -3"
+  },
+  "1,d+2,1+2": {
+   "name": "Birds Flock",
+   "input": "1,d+2,1+2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-1,d+2,1+2",
+   "t8_damage": ",24",
+   "startup": 0.483,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 39,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-1,d+2,1+2",
+   "input_slots": [
+    "1",
+    "1,d+2",
+    "1,d+2,1+2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     10,
+     24
+    ],
+    "total": 39
+   },
+   "note": "Mid; on block -12; knockdown on hit"
+  },
+  "2,1": {
+   "name": "April Showers",
+   "input": "2,1",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-2,1",
+   "t8_damage": ",10",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 18,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 9,
+   "anim_ref": "t8:xiaoyu:xiaoyu-2,1",
+   "input_slots": [
+    "2",
+    "2,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     8,
+     10
+    ],
+    "total": 18
+   },
+   "note": "Mid; on block -4"
+  },
+  "2+3": {
+   "name": "Heat Burst",
+   "input": "2+3",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-2+3",
+   "t8_damage": "[12;12]",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 24,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:xiaoyu:xiaoyu-2+3",
+   "input_slots": [
+    "2+3"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     12,
+     12
+    ],
+    "total": 24
+   },
+   "note": "Mid; on block +1"
+  },
+  "2+3+4": {
+   "name": "Greetings",
+   "input": "2+3+4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-2+3+4",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:xiaoyu:xiaoyu-2+3+4",
+   "input_slots": [
+    "2+3+4"
+   ],
+   "move_class": "special"
+  },
+  "3+4": {
+   "name": "Crescent Moon Kick",
+   "input": "3+4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-3+4",
+   "t8_damage": "23",
+   "startup": 0.383,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 23,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:xiaoyu:xiaoyu-3+4",
+   "input_slots": [
+    "3+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -1c"
+  },
+  "AOP.1": {
+   "name": "Move AOP.1 (AOP.1)",
+   "input": "AOP.1",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-AOP.1",
+   "t8_damage": "11",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.4,
+   "damage": 11,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:xiaoyu:xiaoyu-aop.1",
+   "input_slots": [
+    "AOP.1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -5"
+  },
+  "AOP.1+2": {
+   "name": "Phoenix Cannon",
+   "input": "AOP.1+2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-AOP.1+2",
+   "t8_damage": "25",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.433,
+   "damage": 25,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:xiaoyu:xiaoyu-aop.1+2",
+   "input_slots": [
+    "AOP.1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -1; knockdown on hit"
+  },
+  "AOP.1,2": {
+   "name": "Double Serving",
+   "input": "AOP.1,2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-AOP.1,2",
+   "t8_damage": ",15",
+   "startup": 0.35,
+   "active": 0.033,
+   "recovery": 0.4,
+   "damage": 26,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 13,
+   "anim_ref": "t8:xiaoyu:xiaoyu-aop.1,2",
+   "input_slots": [
+    "AOP.1",
+    "AOP.1,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     11,
+     15
+    ],
+    "total": 26
+   },
+   "note": "High; on block -3"
+  },
+  "AOP.1+3": {
+   "name": "Feng Huang Zhuan Wu",
+   "input": "AOP.1+3",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-AOP.1+3",
+   "t8_damage": "35",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 35,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-aop.1+3",
+   "input_slots": [
+    "AOP.1+3"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -6",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "AOP.1,4": {
+   "name": "Twin Mandarin Blows",
+   "input": "AOP.1,4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-AOP.1,4",
+   "t8_damage": ",20",
+   "startup": 0.417,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 31,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-aop.1,4",
+   "input_slots": [
+    "AOP.1",
+    "AOP.1,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     11,
+     20
+    ],
+    "total": 31
+   },
+   "note": "Mid; on block -9"
+  },
+  "AOP.2": {
+   "name": "Move AOP.2 (AOP.2)",
+   "input": "AOP.2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-AOP.2",
+   "t8_damage": "10",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 10,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:xiaoyu:xiaoyu-aop.2",
+   "input_slots": [
+    "AOP.2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -11"
+  },
+  "AOP.2,1": {
+   "name": "Phoenix Double Palm",
+   "input": "AOP.2,1",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-AOP.2,1",
+   "t8_damage": ",20",
+   "startup": 0.35,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 30,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-aop.2,1",
+   "input_slots": [
+    "AOP.2",
+    "AOP.2,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     20
+    ],
+    "total": 30
+   },
+   "note": "Mid; on block -12; knockdown on hit"
+  },
+  "AOP.3": {
+   "name": "Piercing Spear Kick",
+   "input": "AOP.3",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-AOP.3",
+   "t8_damage": "19",
+   "startup": 0.417,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 19,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 10,
+   "anim_ref": "t8:xiaoyu:xiaoyu-aop.3",
+   "input_slots": [
+    "AOP.3"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -16~-11"
+  },
+  "AOP.3+4": {
+   "name": "Sliding Firecracker",
+   "input": "AOP.3+4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-AOP.3+4",
+   "t8_damage": "22",
+   "startup": 0.383,
+   "active": 0.033,
+   "recovery": 0.833,
+   "damage": 22,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t8:xiaoyu:xiaoyu-aop.3+4",
+   "input_slots": [
+    "AOP.3+4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -33"
+  },
+  "AOP.4": {
+   "name": "Rising Front Kick",
+   "input": "AOP.4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-AOP.4",
+   "t8_damage": "14",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.35,
+   "damage": 14,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 7,
+   "anim_ref": "t8:xiaoyu:xiaoyu-aop.4",
+   "input_slots": [
+    "AOP.4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -3"
+  },
+  "AOP.d": {
+   "name": "Butterfly",
+   "input": "AOP.d",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-AOP.d",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.017,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:xiaoyu:xiaoyu-aop.d",
+   "input_slots": [
+    "AOP.d"
+   ],
+   "move_class": "special"
+  },
+  "AOP.d+1": {
+   "name": "Phoenix Swipe",
+   "input": "AOP.d+1",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-AOP.d+1",
+   "t8_damage": "13",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 13,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:xiaoyu:xiaoyu-aop.d+1",
+   "input_slots": [
+    "AOP.d+1"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -12"
+  },
+  "AOP.d+1+2": {
+   "name": "Wave Crest",
+   "input": "AOP.d+1+2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-AOP.d+1+2",
+   "t8_damage": "21",
+   "startup": 0.433,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 21,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:xiaoyu:xiaoyu-aop.d+1+2",
+   "input_slots": [
+    "AOP.d+1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -8; knockdown on hit"
+  },
+  "AOP.f+2": {
+   "name": "Move AOP.f+2 (AOP.f+2)",
+   "input": "AOP.f+2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-AOP.f+2",
+   "t8_damage": "8",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 8,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 4,
+   "anim_ref": "t8:xiaoyu:xiaoyu-aop.f+2",
+   "input_slots": [
+    "AOP.f+2"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -8"
+  },
+  "AOP.f+2,1": {
+   "name": "Lotus Twist",
+   "input": "AOP.f+2,1",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-AOP.f+2,1",
+   "t8_damage": ",10",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 18,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 9,
+   "anim_ref": "t8:xiaoyu:xiaoyu-aop.f+2,1",
+   "input_slots": [
+    "AOP.f+2",
+    "AOP.f+2,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     8,
+     10
+    ],
+    "total": 18
+   },
+   "note": "Low; on block -8"
+  },
+  "AOP.f+3+4": {
+   "name": "Roll Ball",
+   "input": "AOP.f+3+4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-AOP.f+3+4",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.483,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:xiaoyu:xiaoyu-aop.f+3+4",
+   "input_slots": [
+    "AOP.f+3+4"
+   ],
+   "move_class": "special"
+  },
+  "AOP.f+4": {
+   "name": "Move AOP.f+4 (AOP.f+4)",
+   "input": "AOP.f+4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-AOP.f+4",
+   "t8_damage": "13",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 13,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:xiaoyu:xiaoyu-aop.f+4",
+   "input_slots": [
+    "AOP.f+4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -7"
+  },
+  "AOP.f+4,4": {
+   "name": "Flower Garden",
+   "input": "AOP.f+4,4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-AOP.f+4,4",
+   "t8_damage": ",13",
+   "startup": 0.45,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 26,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 13,
+   "anim_ref": "t8:xiaoyu:xiaoyu-aop.f+4,4",
+   "input_slots": [
+    "AOP.f+4",
+    "AOP.f+4,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     13
+    ],
+    "total": 26
+   },
+   "note": "Low; on block -6"
+  },
+  "AOP.uf": {
+   "name": "Jumping",
+   "input": "AOP.uf",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-AOP.uf",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:xiaoyu:xiaoyu-aop.uf",
+   "input_slots": [
+    "AOP.uf"
+   ],
+   "move_class": "special"
+  },
+  "AOP.uf+3": {
+   "name": "Move AOP.uf+3 (AOP.uf+3)",
+   "input": "AOP.uf+3",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-AOP.uf+3",
+   "t8_damage": "14",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 14,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 7,
+   "anim_ref": "t8:xiaoyu:xiaoyu-aop.uf+3",
+   "input_slots": [
+    "AOP.uf+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -17; knockdown on hit"
+  },
+  "AOP.uf+3,1": {
+   "name": "Alley-Oop",
+   "input": "AOP.uf+3,1",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-AOP.uf+3,1",
+   "t8_damage": ",22 (15)",
+   "startup": 0.4,
+   "active": 0.033,
+   "recovery": 0.367,
+   "damage": 14,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 7,
+   "anim_ref": "t8:xiaoyu:xiaoyu-aop.uf+3,1",
+   "input_slots": [
+    "AOP.uf+3",
+    "AOP.uf+3,1"
+   ],
+   "move_class": "string",
+   "note": "Mid; on block -4"
+  },
+  "AOP.uf+3,4": {
+   "name": "Double Scissor Kick",
+   "input": "AOP.uf+3,4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-AOP.uf+3,4",
+   "t8_damage": ",17",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 31,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-aop.uf+3,4",
+   "input_slots": [
+    "AOP.uf+3",
+    "AOP.uf+3,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     14,
+     17
+    ],
+    "total": 31
+   },
+   "note": "Mid; on block -14"
+  },
+  "AOP.uf+4": {
+   "name": "Move AOP.uf+4 (AOP.uf+4)",
+   "input": "AOP.uf+4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-AOP.uf+4",
+   "t8_damage": "12",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 12,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:xiaoyu:xiaoyu-aop.uf+4",
+   "input_slots": [
+    "AOP.uf+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -10"
+  },
+  "AOP.uf+4,4": {
+   "name": "Flower Power",
+   "input": "AOP.uf+4,4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-AOP.uf+4,4",
+   "t8_damage": ",12",
+   "startup": 0.383,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 24,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:xiaoyu:xiaoyu-aop.uf+4,4",
+   "input_slots": [
+    "AOP.uf+4",
+    "AOP.uf+4,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     12
+    ],
+    "total": 24
+   },
+   "note": "Mid; on block -12"
+  },
+  "While in the air 3": {
+   "name": "Jumping Pirouette",
+   "input": "While in the air 3",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-AOP.While in the Air 3",
+   "t8_damage": "30",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 30,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-aop.while in the air 3",
+   "input_slots": [
+    "While in the air 3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -2"
+  },
+  "b+1": {
+   "name": "Great Wall Left",
+   "input": "b+1",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-b+1",
+   "t8_damage": "10",
+   "startup": 0.133,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 10,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:xiaoyu:xiaoyu-b+1",
+   "input_slots": [
+    "b+1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -12"
+  },
+  "b+1+2": {
+   "name": "Cross Lifting Palms",
+   "input": "b+1+2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-b+1+2",
+   "t8_damage": "8,12",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:xiaoyu:xiaoyu-b+1+2",
+   "input_slots": [
+    "b+1+2"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     8,
+     12
+    ],
+    "total": 20
+   },
+   "note": "Mid, Mid; on block -13; knockdown on hit"
+  },
+  "b+1+3": {
+   "name": "High Mid Parry",
+   "input": "b+1+3",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-b+1+3",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:xiaoyu:xiaoyu-b+1+3",
+   "input_slots": [
+    "b+1+3"
+   ],
+   "move_class": "parry"
+  },
+  "b+2": {
+   "name": "Move b+2 (b+2)",
+   "input": "b+2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-b+2",
+   "t8_damage": "13",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 13,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:xiaoyu:xiaoyu-b+2",
+   "input_slots": [
+    "b+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -6"
+  },
+  "b+2,2": {
+   "name": "Seven Star Fist",
+   "input": "b+2,2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-b+2,2",
+   "t8_damage": ",15",
+   "startup": 0.35,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 28,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:xiaoyu:xiaoyu-b+2,2",
+   "input_slots": [
+    "b+2",
+    "b+2,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     15
+    ],
+    "total": 28
+   },
+   "note": "Low; on block -7"
+  },
+  "b+3": {
+   "name": "Peacock Kick",
+   "input": "b+3",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-b+3",
+   "t8_damage": "22",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 22,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t8:xiaoyu:xiaoyu-b+3",
+   "input_slots": [
+    "b+3"
+   ],
+   "move_class": "strike",
+   "note": "High; on block +3"
+  },
+  "b+3+4": {
+   "name": "Rain Dance",
+   "input": "b+3+4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-b+3+4",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.35,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:xiaoyu:xiaoyu-b+3+4",
+   "input_slots": [
+    "b+3+4"
+   ],
+   "move_class": "special"
+  },
+  "b+4": {
+   "name": "Move b+4 (b+4)",
+   "input": "b+4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-b+4",
+   "t8_damage": "10",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 10,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:xiaoyu:xiaoyu-b+4",
+   "input_slots": [
+    "b+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -9"
+  },
+  "b+4,1": {
+   "name": "Moonhare Palm",
+   "input": "b+4,1",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-b+4,1",
+   "t8_damage": ",20",
+   "startup": 0.45,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 30,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-b+4,1",
+   "input_slots": [
+    "b+4",
+    "b+4,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     20
+    ],
+    "total": 30
+   },
+   "note": "Mid; on block -14"
+  },
+  "Back Throw": {
+   "name": "Crank up",
+   "input": "Back Throw",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-Back Throw",
+   "t8_damage": "50",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 50,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-back throw",
+   "input_slots": [
+    "Back Throw"
+   ],
+   "move_class": "throw",
+   "note": "Throw",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2"
+  },
+  "(back to wall).b,b,UB": {
+   "name": "Wall Jump Backflip",
+   "input": "(back to wall).b,b,UB",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-(back to wall).b,b,UB",
+   "t8_damage": "21",
+   "startup": 0.583,
+   "active": 0.033,
+   "recovery": 0.283,
+   "damage": 21,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:xiaoyu:xiaoyu-(back to wall).b,b,ub",
+   "input_slots": [
+    "(back to wall).b,b,UB"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +1"
+  },
+  "BT.1": {
+   "name": "Move BT.1 (BT.1)",
+   "input": "BT.1",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-BT.1",
+   "t8_damage": "17",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.4,
+   "damage": 17,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:xiaoyu:xiaoyu-bt.1",
+   "input_slots": [
+    "BT.1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -5"
+  },
+  "BT.1+2": {
+   "name": "Move BT.1+2 (BT.1+2)",
+   "input": "BT.1+2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-BT.1+2",
+   "t8_damage": "6,6",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 12,
+   "limb": "both",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:xiaoyu:xiaoyu-bt.1+2",
+   "input_slots": [
+    "BT.1+2"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     6,
+     6
+    ],
+    "total": 12
+   },
+   "note": "Mid, Mid; on block -6"
+  },
+  "BT.1,2": {
+   "name": "Waking Prominence",
+   "input": "BT.1,2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-BT.1,2",
+   "t8_damage": ",20",
+   "startup": 0.4,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 37,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-bt.1,2",
+   "input_slots": [
+    "BT.1",
+    "BT.1,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     17,
+     20
+    ],
+    "total": 37
+   },
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "BT.1+2,1+2": {
+   "name": "Battering Winds",
+   "input": "BT.1+2,1+2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-BT.1+2,1+2",
+   "t8_damage": ",6,6",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 24,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:xiaoyu:xiaoyu-bt.1+2,1+2",
+   "input_slots": [
+    "BT.1+2",
+    "BT.1+2,1+2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     6,
+     6,
+     6,
+     6
+    ],
+    "total": 24
+   },
+   "note": "Mid; on block -13"
+  },
+  "BT.1+2,4": {
+   "name": "Battering Storm",
+   "input": "BT.1+2,4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-BT.1+2,4",
+   "t8_damage": ",20",
+   "startup": 0.383,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 32,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-bt.1+2,4",
+   "input_slots": [
+    "BT.1+2",
+    "BT.1+2,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     6,
+     6,
+     20
+    ],
+    "total": 32
+   },
+   "note": "High; on block +3; knockdown on hit"
+  },
+  "BT.2": {
+   "name": "Move BT.2 (BT.2)",
+   "input": "BT.2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-BT.2",
+   "t8_damage": "9",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 9,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 4,
+   "anim_ref": "t8:xiaoyu:xiaoyu-bt.2",
+   "input_slots": [
+    "BT.2"
+   ],
+   "move_class": "strike",
+   "note": "High; on block +0"
+  },
+  "BT.2,1": {
+   "name": "Move 1 (1)",
+   "input": "BT.2,1",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-BT.2,1",
+   "t8_damage": ",8",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.333,
+   "damage": 17,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:xiaoyu:xiaoyu-bt.2,1",
+   "input_slots": [
+    "BT.2",
+    "BT.2,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     9,
+     8
+    ],
+    "total": 17
+   },
+   "note": "High; on block -1"
+  },
+  "BT.2,1,4": {
+   "name": "Dark & Stormy",
+   "input": "BT.2,1,4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-BT.2,1,4",
+   "t8_damage": ",15",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 32,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-bt.2,1,4",
+   "input_slots": [
+    "BT.2",
+    "BT.2,1",
+    "BT.2,1,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     9,
+     8,
+     15
+    ],
+    "total": 32
+   },
+   "note": "Mid; on block -18; knockdown on hit"
+  },
+  "BT.2,2": {
+   "name": "Move 2 (2)",
+   "input": "BT.2,2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-BT.2,2",
+   "t8_damage": ",12",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 21,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:xiaoyu:xiaoyu-bt.2,2",
+   "input_slots": [
+    "BT.2",
+    "BT.2,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     9,
+     12
+    ],
+    "total": 21
+   },
+   "note": "Mid; on block -7"
+  },
+  "BT.2,2,1": {
+   "name": "Turn of Fortune",
+   "input": "BT.2,2,1",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-BT.2,2,1",
+   "t8_damage": ",7,7,7",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 42,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-bt.2,2,1",
+   "input_slots": [
+    "BT.2",
+    "BT.2,2",
+    "BT.2,2,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     9,
+     12,
+     7,
+     7,
+     7
+    ],
+    "total": 42
+   },
+   "note": "Mid, Mid, Mid; on block -11"
+  },
+  "BT.3": {
+   "name": "Peg Leg",
+   "input": "BT.3",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-BT.3",
+   "t8_damage": "13",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 13,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:xiaoyu:xiaoyu-bt.3",
+   "input_slots": [
+    "BT.3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -5"
+  },
+  "BT.3+4": {
+   "name": "Monkey Kick",
+   "input": "BT.3+4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-BT.3+4",
+   "t8_damage": "25",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 25,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:xiaoyu:xiaoyu-bt.3+4",
+   "input_slots": [
+    "BT.3+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -16; knockdown on hit"
+  },
+  "BT.4": {
+   "name": "Mistrust",
+   "input": "BT.4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-BT.4",
+   "t8_damage": "13",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 13,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:xiaoyu:xiaoyu-bt.4",
+   "input_slots": [
+    "BT.4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -18; knockdown on hit"
+  },
+  "BT.b+1+2": {
+   "name": "Scorched Feather Tackle",
+   "input": "BT.b+1+2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-BT.b+1+2",
+   "t8_damage": "25",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 25,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:xiaoyu:xiaoyu-bt.b+1+2",
+   "input_slots": [
+    "BT.b+1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -14; knockdown on hit"
+  },
+  "BT.b+1+3": {
+   "name": "High Mid Parry",
+   "input": "BT.b+1+3",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-BT.b+1+3",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:xiaoyu:xiaoyu-bt.b+1+3",
+   "input_slots": [
+    "BT.b+1+3"
+   ],
+   "move_class": "parry"
+  },
+  "BT.d+1+3": {
+   "name": "Reverse Low Parry",
+   "input": "BT.d+1+3",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-BT.d+1+3",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.417,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:xiaoyu:xiaoyu-bt.d+1+3",
+   "input_slots": [
+    "BT.d+1+3"
+   ],
+   "move_class": "parry",
+   "note": "knockdown on hit"
+  },
+  "BT.d+3": {
+   "name": "Move BT.d+3 (BT.d+3)",
+   "input": "BT.d+3",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-BT.d+3",
+   "t8_damage": "12",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 12,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:xiaoyu:xiaoyu-bt.d+3",
+   "input_slots": [
+    "BT.d+3"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -12"
+  },
+  "BT.d+3+4": {
+   "name": "Spin Tornado Up (Down)",
+   "input": "BT.d+3+4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-BT.d+3+4",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:xiaoyu:xiaoyu-bt.d+3+4",
+   "input_slots": [
+    "BT.d+3+4"
+   ],
+   "move_class": "special"
+  },
+  "BT.d+3,4": {
+   "name": "Spinning Crane",
+   "input": "BT.d+3,4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-BT.d+3,4",
+   "t8_damage": ",20",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 32,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-bt.d+3,4",
+   "input_slots": [
+    "BT.d+3",
+    "BT.d+3,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     20
+    ],
+    "total": 32
+   },
+   "note": "High; on block -5; knockdown on hit"
+  },
+  "BT.d+4": {
+   "name": "Hou Sao Tui",
+   "input": "BT.d+4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-BT.d+4",
+   "t8_damage": "19",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 19,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 10,
+   "anim_ref": "t8:xiaoyu:xiaoyu-bt.d+4",
+   "input_slots": [
+    "BT.d+4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -26"
+  },
+  "BT.db+4": {
+   "name": "Reverse Knee Cracker",
+   "input": "BT.db+4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-BT.db+4",
+   "t8_damage": "0",
+   "startup": 0.25,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:xiaoyu:xiaoyu-bt.db+4",
+   "input_slots": [
+    "BT.db+4"
+   ],
+   "move_class": "special",
+   "note": "Low; on block +2c"
+  },
+  "BT.f+1+2": {
+   "name": "Spinning Push Hands",
+   "input": "BT.f+1+2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-BT.f+1+2",
+   "t8_damage": "21",
+   "startup": 0.383,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 21,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:xiaoyu:xiaoyu-bt.f+1+2",
+   "input_slots": [
+    "BT.f+1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -8"
+  },
+  "BT.f+1+3": {
+   "name": "Bei Shen Zhuan Wu",
+   "input": "BT.f+1+3",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-BT.f+1+3",
+   "t8_damage": "35",
+   "startup": 0.517,
+   "active": 0.033,
+   "recovery": 0.683,
+   "damage": 35,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-bt.f+1+3",
+   "input_slots": [
+    "BT.f+1+3"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -6",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "BT.f+2+3": {
+   "name": "Wang's Waning Moon (BT)",
+   "input": "BT.f+2+3",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-BT.f+2+3",
+   "t8_damage": "20",
+   "startup": 0.517,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 10,
+   "anim_ref": "t8:xiaoyu:xiaoyu-bt.f+2+3",
+   "input_slots": [
+    "BT.f+2+3"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -2; knockdown on hit",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "BT.f+3+4": {
+   "name": "Move BT.f+3+4 (BT.f+3+4)",
+   "input": "BT.f+3+4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-BT.f+3+4",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:xiaoyu:xiaoyu-bt.f+3+4",
+   "input_slots": [
+    "BT.f+3+4"
+   ],
+   "move_class": "special"
+  },
+  "BT.f+3+4,3+4": {
+   "name": "Cyclone Left",
+   "input": "BT.f+3+4,3+4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-BT.f+3+4,3+4",
+   "t8_damage": "23",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 23,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:xiaoyu:xiaoyu-bt.f+3+4,3+4",
+   "input_slots": [
+    "BT.f+3+4",
+    "BT.f+3+4,3+4"
+   ],
+   "move_class": "string",
+   "note": "Mid; on block -11; knockdown on hit"
+  },
+  "BT.f,F+3+4": {
+   "name": "Back Layout",
+   "input": "BT.f,F+3+4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-BT.f,F+3+4",
+   "t8_damage": "15 (43)",
+   "startup": 0.65,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:xiaoyu:xiaoyu-bt.f,f+3+4",
+   "input_slots": [
+    "BT.f,F+3+4"
+   ],
+   "move_class": "special",
+   "note": "M (t); on block +4; knockdown on hit"
+  },
+  "BT.uf+1": {
+   "name": "Silver Needle",
+   "input": "BT.uf+1",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-BT.uf+1",
+   "t8_damage": "15",
+   "startup": 0.55,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:xiaoyu:xiaoyu-bt.uf+1",
+   "input_slots": [
+    "BT.uf+1"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -7"
+  },
+  "CH AOP.d+1": {
+   "name": "Return to the Nest",
+   "input": "CH AOP.d+1",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-CH AOP.d+1",
+   "t8_damage": "40",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 1.733,
+   "damage": 40,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-ch aop.d+1",
+   "input_slots": [
+    "CH AOP.d+1"
+   ],
+   "move_class": "throw",
+   "note": "Low, Throw",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "d+1": {
+   "name": "Sunset Fan",
+   "input": "d+1",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-d+1",
+   "t8_damage": "7,7,7",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 21,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:xiaoyu:xiaoyu-d+1",
+   "input_slots": [
+    "d+1"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     7,
+     7,
+     7
+    ],
+    "total": 21
+   },
+   "note": "Mid, Mid, Mid; on block -5"
+  },
+  "d+1+2": {
+   "name": "Phoenix",
+   "input": "d+1+2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-d+1+2",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.333,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:xiaoyu:xiaoyu-d+1+2",
+   "input_slots": [
+    "d+1+2"
+   ],
+   "move_class": "special"
+  },
+  "d+2": {
+   "name": "Move d+2 (d+2)",
+   "input": "d+2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-d+2",
+   "t8_damage": "8",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 8,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 4,
+   "anim_ref": "t8:xiaoyu:xiaoyu-d+2",
+   "input_slots": [
+    "d+2"
+   ],
+   "move_class": "strike",
+   "note": "Special low; on block -4"
+  },
+  "d+3": {
+   "name": "Move d+3 (d+3)",
+   "input": "d+3",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-d+3",
+   "t8_damage": "12",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 12,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:xiaoyu:xiaoyu-d+3",
+   "input_slots": [
+    "d+3"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -12"
+  },
+  "d+3+4": {
+   "name": "Spinner",
+   "input": "d+3+4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-d+3+4",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:xiaoyu:xiaoyu-d+3+4",
+   "input_slots": [
+    "d+3+4"
+   ],
+   "move_class": "special",
+   "note": "special"
+  },
+  "d+3,4": {
+   "name": "Giant Slayer",
+   "input": "d+3,4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-d+3,4",
+   "t8_damage": ",21",
+   "startup": 0.417,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 33,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-d+3,4",
+   "input_slots": [
+    "d+3",
+    "d+3,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     21
+    ],
+    "total": 33
+   },
+   "note": "High; on block +0; knockdown on hit"
+  },
+  "db+1": {
+   "name": "Storming Flower",
+   "input": "db+1",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-db+1",
+   "t8_damage": "22",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 22,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t8:xiaoyu:xiaoyu-db+1",
+   "input_slots": [
+    "db+1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -9; knockdown on hit"
+  },
+  "db+1+2": {
+   "name": "Hypnotist",
+   "input": "db+1+2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-db+1+2",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.333,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:xiaoyu:xiaoyu-db+1+2",
+   "input_slots": [
+    "db+1+2"
+   ],
+   "move_class": "special"
+  },
+  "db+2": {
+   "name": "Feathered Fan",
+   "input": "db+2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-db+2",
+   "t8_damage": "13",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 13,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:xiaoyu:xiaoyu-db+2",
+   "input_slots": [
+    "db+2"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -8"
+  },
+  "db+3": {
+   "name": "Knee Cracker",
+   "input": "db+3",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-db+3",
+   "t8_damage": "0",
+   "startup": 0.25,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:xiaoyu:xiaoyu-db+3",
+   "input_slots": [
+    "db+3"
+   ],
+   "move_class": "special",
+   "note": "Low; on block +2c"
+  },
+  "db+4": {
+   "name": "Nutcracker",
+   "input": "db+4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-db+4",
+   "t8_damage": "14",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 14,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 7,
+   "anim_ref": "t8:xiaoyu:xiaoyu-db+4",
+   "input_slots": [
+    "db+4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -12"
+  },
+  "df+1": {
+   "name": "Belly Chop",
+   "input": "df+1",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-df+1",
+   "t8_damage": "13",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 13,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:xiaoyu:xiaoyu-df+1",
+   "input_slots": [
+    "df+1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -2"
+  },
+  "df+2": {
+   "name": "Move df+2 (df+2)",
+   "input": "df+2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-df+2",
+   "t8_damage": "15",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 15,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:xiaoyu:xiaoyu-df+2",
+   "input_slots": [
+    "df+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -6"
+  },
+  "df+2,1+2": {
+   "name": "Moon Scorched Feather Tackle",
+   "input": "df+2,1+2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-df+2,1+2",
+   "t8_damage": ",25",
+   "startup": 0.4,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 40,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-df+2,1+2",
+   "input_slots": [
+    "df+2",
+    "df+2,1+2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     25
+    ],
+    "total": 40
+   },
+   "note": "Mid; on block -14; knockdown on hit"
+  },
+  "df+2,3": {
+   "name": "Moon Swallow",
+   "input": "df+2,3",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-df+2,3",
+   "t8_damage": ",23",
+   "startup": 0.383,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 38,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-df+2,3",
+   "input_slots": [
+    "df+2",
+    "df+2,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     23
+    ],
+    "total": 38
+   },
+   "note": "High; on block -1; knockdown on hit"
+  },
+  "df+2+4": {
+   "name": "Dragon Fall",
+   "input": "df+2+4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-df+2+4",
+   "t8_damage": "38",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 38,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-df+2+4",
+   "input_slots": [
+    "df+2+4"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -2",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "2"
+  },
+  "df+3": {
+   "name": "Phoenix Tail",
+   "input": "df+3",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-df+3",
+   "t8_damage": "23",
+   "startup": 0.483,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 23,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:xiaoyu:xiaoyu-df+3",
+   "input_slots": [
+    "df+3"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -23; knockdown on hit"
+  },
+  "df+4": {
+   "name": "Move df+4 (df+4)",
+   "input": "df+4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-df+4",
+   "t8_damage": "12",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 12,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:xiaoyu:xiaoyu-df+4",
+   "input_slots": [
+    "df+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -4"
+  },
+  "f+1+2": {
+   "name": "Clouded Peak",
+   "input": "f+1+2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-f+1+2",
+   "t8_damage": "30",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 30,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-f+1+2",
+   "input_slots": [
+    "f+1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -16"
+  },
+  "f+2": {
+   "name": "Move f+2 (f+2)",
+   "input": "f+2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-f+2",
+   "t8_damage": "12",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 12,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:xiaoyu:xiaoyu-f+2",
+   "input_slots": [
+    "f+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -5"
+  },
+  "f+2,1": {
+   "name": "Move 1 (1)",
+   "input": "f+2,1",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-f+2,1",
+   "t8_damage": ",14",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 26,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 13,
+   "anim_ref": "t8:xiaoyu:xiaoyu-f+2,1",
+   "input_slots": [
+    "f+2",
+    "f+2,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     14
+    ],
+    "total": 26
+   },
+   "note": "High; on block -6"
+  },
+  "f+2,1,4": {
+   "name": "Bai Yang Zhuan Wu",
+   "input": "f+2,1,4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-f+2,1,4",
+   "t8_damage": ",20",
+   "startup": 0.433,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 46,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-f+2,1,4",
+   "input_slots": [
+    "f+2",
+    "f+2,1",
+    "f+2,1,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     14,
+     20
+    ],
+    "total": 46
+   },
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "f+2,1,H.2": {
+   "name": "Bai Yang Yan Di Po",
+   "input": "f+2,1,H.2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-f+2,1,H.2",
+   "t8_damage": ",20",
+   "startup": 0.433,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 46,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-f+2,1,h.2",
+   "input_slots": [
+    "f+2",
+    "f+2,1",
+    "f+2,1,H.2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     14,
+     20
+    ],
+    "total": 46
+   },
+   "note": "Mid; on block +6"
+  },
+  "f+2+3": {
+   "name": "Wang's Waning Moon",
+   "input": "f+2+3",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-f+2+3",
+   "t8_damage": "20",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 10,
+   "anim_ref": "t8:xiaoyu:xiaoyu-f+2+3",
+   "input_slots": [
+    "f+2+3"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -2; knockdown on hit",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "f+3": {
+   "name": "Move f+3 (f+3)",
+   "input": "f+3",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-f+3",
+   "t8_damage": "14",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 14,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 7,
+   "anim_ref": "t8:xiaoyu:xiaoyu-f+3",
+   "input_slots": [
+    "f+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -9"
+  },
+  "f+3,1": {
+   "name": "Move 1 (1)",
+   "input": "f+3,1",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-f+3,1",
+   "t8_damage": ",8",
+   "startup": 0.367,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 22,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t8:xiaoyu:xiaoyu-f+3,1",
+   "input_slots": [
+    "f+3",
+    "f+3,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     14,
+     8
+    ],
+    "total": 22
+   },
+   "note": "Mid; on block -3"
+  },
+  "f+3,1,1+2": {
+   "name": "Wings of Fury",
+   "input": "f+3,1,1+2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-f+3,1,1+2",
+   "t8_damage": ",6,20",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 48,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-f+3,1,1+2",
+   "input_slots": [
+    "f+3",
+    "f+3,1",
+    "f+3,1,1+2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     14,
+     8,
+     6,
+     20
+    ],
+    "total": 48
+   },
+   "note": "Mid, Mid; on block -12"
+  },
+  "f+3,1,4": {
+   "name": "Talons of Fury",
+   "input": "f+3,1,4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-f+3,1,4",
+   "t8_damage": ",20",
+   "startup": 0.433,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 42,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-f+3,1,4",
+   "input_slots": [
+    "f+3",
+    "f+3,1",
+    "f+3,1,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     14,
+     8,
+     20
+    ],
+    "total": 42
+   },
+   "note": "Mid; on block -22; knockdown on hit"
+  },
+  "f+3+4": {
+   "name": "Forward Roll",
+   "input": "f+3+4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-f+3+4",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:xiaoyu:xiaoyu-f+3+4",
+   "input_slots": [
+    "f+3+4"
+   ],
+   "move_class": "special"
+  },
+  "f+3+4,3+4": {
+   "name": "Phoenix Talon",
+   "input": "f+3+4,3+4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-f+3+4,3+4",
+   "t8_damage": "8,8,14",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 30,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-f+3+4,3+4",
+   "input_slots": [
+    "f+3+4",
+    "f+3+4,3+4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     8,
+     8,
+     14
+    ],
+    "total": 30
+   },
+   "note": "Mid, Mid, Mid; on block +8"
+  },
+  "f+4": {
+   "name": "Swivel Kick",
+   "input": "f+4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-f+4",
+   "t8_damage": "23",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 23,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:xiaoyu:xiaoyu-f+4",
+   "input_slots": [
+    "f+4"
+   ],
+   "move_class": "strike",
+   "note": "High; on block +1"
+  },
+  "hdb+3+4": {
+   "name": "Low Back Turn",
+   "input": "hdb+3+4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-FC.db+3+4",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.417,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:xiaoyu:xiaoyu-fc.db+3+4",
+   "input_slots": [
+    "hdb+3+4"
+   ],
+   "move_class": "special"
+  },
+  "FC.df+2": {
+   "name": "Move FC.df+2 (FC.df+2)",
+   "input": "FC.df+2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-FC.df+2",
+   "t8_damage": "8",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 8,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 4,
+   "anim_ref": "t8:xiaoyu:xiaoyu-fc.df+2",
+   "input_slots": [
+    "FC.df+2"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -8"
+  },
+  "FC.df+2,1": {
+   "name": "Lotus Twist",
+   "input": "FC.df+2,1",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-FC.df+2,1",
+   "t8_damage": ",10",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 18,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 9,
+   "anim_ref": "t8:xiaoyu:xiaoyu-fc.df+2,1",
+   "input_slots": [
+    "FC.df+2",
+    "FC.df+2,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     8,
+     10
+    ],
+    "total": 18
+   },
+   "note": "Low; on block -8"
+  },
+  "FC.df+4": {
+   "name": "Move FC.df+4 (FC.df+4)",
+   "input": "FC.df+4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-FC.df+4",
+   "t8_damage": "13",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 13,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:xiaoyu:xiaoyu-fc.df+4",
+   "input_slots": [
+    "FC.df+4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -7"
+  },
+  "FC.df+4,4": {
+   "name": "Flower Garden",
+   "input": "FC.df+4,4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-FC.df+4,4",
+   "t8_damage": ",13",
+   "startup": 0.45,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 26,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 13,
+   "anim_ref": "t8:xiaoyu:xiaoyu-fc.df+4,4",
+   "input_slots": [
+    "FC.df+4",
+    "FC.df+4,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     13
+    ],
+    "total": 26
+   },
+   "note": "Low; on block -6"
+  },
+  "f,F+1": {
+   "name": "Move f,F+1 (f,F+1)",
+   "input": "f,F+1",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-f,F+1",
+   "t8_damage": "13",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 13,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:xiaoyu:xiaoyu-f,f+1",
+   "input_slots": [
+    "f,F+1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -11"
+  },
+  "f,F+1+2": {
+   "name": "Move f,F+1+2 (f,F+1+2)",
+   "input": "f,F+1+2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-f,F+1+2",
+   "t8_damage": "12",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 12,
+   "limb": "both",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:xiaoyu:xiaoyu-f,f+1+2",
+   "input_slots": [
+    "f,F+1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -9"
+  },
+  "f,F+1+2,1+2": {
+   "name": "X Marks the Spot",
+   "input": "f,F+1+2,1+2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-f,F+1+2,1+2",
+   "t8_damage": ",20",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 32,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-f,f+1+2,1+2",
+   "input_slots": [
+    "f,F+1+2",
+    "f,F+1+2,1+2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     20
+    ],
+    "total": 32
+   },
+   "note": "Mid; on block -8"
+  },
+  "f,F+1,3": {
+   "name": "Poison Flower",
+   "input": "f,F+1,3",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-f,F+1,3",
+   "t8_damage": ",20",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 33,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-f,f+1,3",
+   "input_slots": [
+    "f,F+1",
+    "f,F+1,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     20
+    ],
+    "total": 33
+   },
+   "note": "High; on block -1; knockdown on hit"
+  },
+  "f,F+1,4": {
+   "name": "Eclipsing Moon",
+   "input": "f,F+1,4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-f,F+1,4",
+   "t8_damage": ",20",
+   "startup": 0.35,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 33,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-f,f+1,4",
+   "input_slots": [
+    "f,F+1",
+    "f,F+1,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     20
+    ],
+    "total": 33
+   },
+   "note": "Mid; on block -12"
+  },
+  "f,F+1,H.2": {
+   "name": "Bai Lian Yan Di Po",
+   "input": "f,F+1,H.2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-f,F+1,H.2",
+   "t8_damage": "20",
+   "startup": 0.433,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 33,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-f,f+1,h.2",
+   "input_slots": [
+    "f,F+1",
+    "f,F+1,H.2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     20
+    ],
+    "total": 33
+   },
+   "note": "Mid; on block +6"
+  },
+  "f,F+2": {
+   "name": "Move f,F+2 (f,F+2)",
+   "input": "f,F+2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-f,F+2",
+   "t8_damage": "12",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 12,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:xiaoyu:xiaoyu-f,f+2",
+   "input_slots": [
+    "f,F+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -5"
+  },
+  "f,F+2,1": {
+   "name": "Fortune",
+   "input": "f,F+2,1",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-f,F+2,1",
+   "t8_damage": ",20",
+   "startup": 0.45,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 32,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-f,f+2,1",
+   "input_slots": [
+    "f,F+2",
+    "f,F+2,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     20
+    ],
+    "total": 32
+   },
+   "note": "Mid; on block -12; knockdown on hit"
+  },
+  "f,F+3": {
+   "name": "Raccoon Swing",
+   "input": "f,F+3",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-f,F+3",
+   "t8_damage": "12",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 12,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:xiaoyu:xiaoyu-f,f+3",
+   "input_slots": [
+    "f,F+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -5"
+  },
+  "f,F+3+4": {
+   "name": "Front Layout",
+   "input": "f,F+3+4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-f,F+3+4",
+   "t8_damage": "23",
+   "startup": 0.617,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 23,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:xiaoyu:xiaoyu-f,f+3+4",
+   "input_slots": [
+    "f,F+3+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -3; knockdown on hit"
+  },
+  "f,F+4": {
+   "name": "Soaring Blaze",
+   "input": "f,F+4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-f,F+4",
+   "t8_damage": "20",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:xiaoyu:xiaoyu-f,f+4",
+   "input_slots": [
+    "f,F+4"
+   ],
+   "move_class": "strike",
+   "note": "High; on block +9"
+  },
+  "f,f,F+3": {
+   "name": "Diving Falcon",
+   "input": "f,f,F+3",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-f,f,F+3",
+   "t8_damage": "20",
+   "startup": 0.383,
+   "active": 0.033,
+   "recovery": 0.233,
+   "damage": 20,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:xiaoyu:xiaoyu-f,f,f+3",
+   "input_slots": [
+    "f,f,F+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +7g~+14g; knockdown on hit"
+  },
+  "H.2+3": {
+   "name": "Divine Shooting Star",
+   "input": "H.2+3",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-H.2+3",
+   "t8_damage": "8,10,12,20 (50)",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.633,
+   "damage": 30,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-h.2+3",
+   "input_slots": [
+    "H.2+3"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     8,
+     10,
+     12
+    ],
+    "total": 30
+   },
+   "note": "Mid, Mid, Mid, Mid; on block +9"
+  },
+  "H.BT.2+3": {
+   "name": "Innumerable Moons",
+   "input": "H.BT.2+3",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-H.BT.2+3",
+   "t8_damage": "7,7,7,30",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 51,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-h.bt.2+3",
+   "input_slots": [
+    "H.BT.2+3"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     7,
+     7,
+     7,
+     30
+    ],
+    "total": 51
+   },
+   "note": "Mid, Mid, Mid, Mid; on block +9"
+  },
+  "hFC.1": {
+   "name": "Move hFC.1 (hFC.1)",
+   "input": "hFC.1",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-hFC.1",
+   "t8_damage": "5",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 5,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 2,
+   "anim_ref": "t8:xiaoyu:xiaoyu-hfc.1",
+   "input_slots": [
+    "hFC.1"
+   ],
+   "move_class": "strike",
+   "note": "Special low; on block -5"
+  },
+  "hFC.2": {
+   "name": "Move hFC.2 (hFC.2)",
+   "input": "hFC.2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-hFC.2",
+   "t8_damage": "8",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 8,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 4,
+   "anim_ref": "t8:xiaoyu:xiaoyu-hfc.2",
+   "input_slots": [
+    "hFC.2"
+   ],
+   "move_class": "strike",
+   "note": "Special low; on block -4"
+  },
+  "hFC.3": {
+   "name": "Move hFC.3 (hFC.3)",
+   "input": "hFC.3",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-hFC.3",
+   "t8_damage": "11",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 11,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:xiaoyu:xiaoyu-hfc.3",
+   "input_slots": [
+    "hFC.3"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -15"
+  },
+  "hFC.3,2": {
+   "name": "Move 2 (2)",
+   "input": "hFC.3,2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-hFC.3,2",
+   "t8_damage": ",6",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 17,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:xiaoyu:xiaoyu-hfc.3,2",
+   "input_slots": [
+    "hFC.3",
+    "hFC.3,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     11,
+     6
+    ],
+    "total": 17
+   },
+   "note": "High; on block +0"
+  },
+  "hFC.3,2,1": {
+   "name": "Move 1 (1)",
+   "input": "hFC.3,2,1",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-hFC.3,2,1",
+   "t8_damage": ",6",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 23,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:xiaoyu:xiaoyu-hfc.3,2,1",
+   "input_slots": [
+    "hFC.3",
+    "hFC.3,2",
+    "hFC.3,2,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     11,
+     6,
+     6
+    ],
+    "total": 23
+   },
+   "note": "High; on block -1"
+  },
+  "hFC.3,2,1,4": {
+   "name": "Fire Dancer",
+   "input": "hFC.3,2,1,4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-hFC.3,2,1,4",
+   "t8_damage": ",12",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 35,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-hfc.3,2,1,4",
+   "input_slots": [
+    "hFC.3",
+    "hFC.3,2",
+    "hFC.3,2,1",
+    "hFC.3,2,1,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     11,
+     6,
+     6,
+     12
+    ],
+    "total": 35
+   },
+   "note": "Mid; on block -18; knockdown on hit"
+  },
+  "hFC.4": {
+   "name": "Move hFC.4 (hFC.4)",
+   "input": "hFC.4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-hFC.4",
+   "t8_damage": "6",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 6,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 3,
+   "anim_ref": "t8:xiaoyu:xiaoyu-hfc.4",
+   "input_slots": [
+    "hFC.4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -15"
+  },
+  "HYP.1+2": {
+   "name": "Hypnotist",
+   "input": "HYP.1+2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-HYP.1+2",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.333,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:xiaoyu:xiaoyu-hyp.1+2",
+   "input_slots": [
+    "HYP.1+2"
+   ],
+   "move_class": "special"
+  },
+  "HYP.2": {
+   "name": "Spin Sticker",
+   "input": "HYP.2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-HYP.2",
+   "t8_damage": "25",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:xiaoyu:xiaoyu-hyp.2",
+   "input_slots": [
+    "HYP.2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -4"
+  },
+  "HYP.2+3": {
+   "name": "Thunder Strike",
+   "input": "HYP.2+3",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-HYP.2+3",
+   "t8_damage": "40",
+   "startup": 1.017,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 40,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-hyp.2+3",
+   "input_slots": [
+    "HYP.2+3"
+   ],
+   "move_class": "strike",
+   "note": "m!"
+  },
+  "HYP.3": {
+   "name": "Blue Luan Sweep",
+   "input": "HYP.3",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-HYP.3",
+   "t8_damage": "17",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 17,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:xiaoyu:xiaoyu-hyp.3",
+   "input_slots": [
+    "HYP.3"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -13"
+  },
+  "HYP.3+4": {
+   "name": "Deadly Orchid",
+   "input": "HYP.3+4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-HYP.3+4",
+   "t8_damage": "20",
+   "startup": 0.417,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:xiaoyu:xiaoyu-hyp.3+4",
+   "input_slots": [
+    "HYP.3+4"
+   ],
+   "move_class": "strike",
+   "note": "High; on block +8; knockdown on hit"
+  },
+  "HYP.4": {
+   "name": "Falling Tiger Kick",
+   "input": "HYP.4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-HYP.4",
+   "t8_damage": "20",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:xiaoyu:xiaoyu-hyp.4",
+   "input_slots": [
+    "HYP.4"
+   ],
+   "move_class": "strike",
+   "note": "High; on block -2; knockdown on hit"
+  },
+  "Left Throw": {
+   "name": "Arm Flip",
+   "input": "Left Throw",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-Left Throw",
+   "t8_damage": "45",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 45,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-left throw",
+   "input_slots": [
+    "Left Throw"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -3",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "R.df+1+2": {
+   "name": "Wang's Celestial Epic",
+   "input": "R.df+1+2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-R.df+1+2",
+   "t8_damage": "55+",
+   "startup": 0.333,
+   "active": 0.3,
+   "recovery": 0.65,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:xiaoyu:xiaoyu-r.df+1+2",
+   "input_slots": [
+    "R.df+1+2"
+   ],
+   "move_class": "special",
+   "note": "Mid, Throw; on block -18"
+  },
+  "Right Throw": {
+   "name": "Dump the Bucket",
+   "input": "Right Throw",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-Right Throw",
+   "t8_damage": "45",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 45,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-right throw",
+   "input_slots": [
+    "Right Throw"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -3",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "SS.4": {
+   "name": "Street Sweeper",
+   "input": "SS.4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-ss4",
+   "t8_damage": "19",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 19,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 10,
+   "anim_ref": "t8:xiaoyu:xiaoyu-ss4",
+   "input_slots": [
+    "SS.4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -13"
+  },
+  "u+1+2": {
+   "name": "Move u+1+2 (u+1+2)",
+   "input": "u+1+2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-u+1+2",
+   "t8_damage": "5,5",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 10,
+   "limb": "both",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:xiaoyu:xiaoyu-u+1+2",
+   "input_slots": [
+    "u+1+2"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     5,
+     5
+    ],
+    "total": 10
+   },
+   "note": "Mid, Mid; on block -11"
+  },
+  "u+1+2,2": {
+   "name": "Move 2 (2)",
+   "input": "u+1+2,2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-u+1+2,2",
+   "t8_damage": ",12",
+   "startup": 0.45,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 22,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t8:xiaoyu:xiaoyu-u+1+2,2",
+   "input_slots": [
+    "u+1+2",
+    "u+1+2,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     5,
+     12
+    ],
+    "total": 22
+   },
+   "note": "Mid; on block -12"
+  },
+  "u+1+2,2,1": {
+   "name": "Fortune Cookie",
+   "input": "u+1+2,2,1",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-u+1+2,2,1",
+   "t8_damage": ",20",
+   "startup": 0.45,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 42,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-u+1+2,2,1",
+   "input_slots": [
+    "u+1+2",
+    "u+1+2,2",
+    "u+1+2,2,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     5,
+     12,
+     20
+    ],
+    "total": 42
+   },
+   "note": "Mid; on block -12; knockdown on hit"
+  },
+  "u+4": {
+   "name": "1st Hit",
+   "input": "u+4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-u+4",
+   "t8_damage": "20",
+   "startup": 0.383,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:xiaoyu:xiaoyu-u+4",
+   "input_slots": [
+    "u+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -7"
+  },
+  "u+4,1": {
+   "name": "2nd Hit",
+   "input": "u+4,1",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-u+4,1",
+   "t8_damage": ",4",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 24,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:xiaoyu:xiaoyu-u+4,1",
+   "input_slots": [
+    "u+4",
+    "u+4,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     20,
+     4
+    ],
+    "total": 24
+   },
+   "note": "High; on block -10"
+  },
+  "u+4,1,2": {
+   "name": "3rd Hit",
+   "input": "u+4,1,2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-u+4,1,2",
+   "t8_damage": ",7",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 31,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-u+4,1,2",
+   "input_slots": [
+    "u+4",
+    "u+4,1",
+    "u+4,1,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     20,
+     4,
+     7
+    ],
+    "total": 31
+   },
+   "note": "High; on block -10"
+  },
+  "ub+3": {
+   "name": "From the Ashes",
+   "input": "ub+3",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-ub+3",
+   "t8_damage": "23",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 23,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:xiaoyu:xiaoyu-ub+3",
+   "input_slots": [
+    "ub+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "ub+4": {
+   "name": "Born of Fire",
+   "input": "ub+4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-ub+4",
+   "t8_damage": "20",
+   "startup": 0.367,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 20,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:xiaoyu:xiaoyu-ub+4",
+   "input_slots": [
+    "ub+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -13"
+  },
+  "uf+1": {
+   "name": "Silver Needle",
+   "input": "uf+1",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-uf+1",
+   "t8_damage": "15",
+   "startup": 0.55,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:xiaoyu:xiaoyu-uf+1",
+   "input_slots": [
+    "uf+1"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -7"
+  },
+  "uf+1+2": {
+   "name": "Dislocator",
+   "input": "uf+1+2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-uf+1+2",
+   "t8_damage": "40",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 40,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-uf+1+2",
+   "input_slots": [
+    "uf+1+2"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block +0",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2"
+  },
+  "uf+2": {
+   "name": "Phoenix Flight",
+   "input": "uf+2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-uf+2",
+   "t8_damage": "23",
+   "startup": 0.433,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 23,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:xiaoyu:xiaoyu-uf+2",
+   "input_slots": [
+    "uf+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +6"
+  },
+  "uf+3": {
+   "name": "Bolting Rabbit",
+   "input": "uf+3",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-uf+3",
+   "t8_damage": "13",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 13,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:xiaoyu:xiaoyu-uf+3",
+   "input_slots": [
+    "uf+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "uf+3+4": {
+   "name": "Shooting Star",
+   "input": "uf+3+4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-uf+3+4",
+   "t8_damage": "8,10,12",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 30,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-uf+3+4",
+   "input_slots": [
+    "uf+3+4"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     8,
+     10,
+     12
+    ],
+    "total": 30
+   },
+   "note": "Mid, Mid, Mid; on block -1"
+  },
+  "uf+4": {
+   "name": "Flare Kick",
+   "input": "uf+4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-uf+4",
+   "t8_damage": "20",
+   "startup": 0.383,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:xiaoyu:xiaoyu-uf+4",
+   "input_slots": [
+    "uf+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -7"
+  },
+  "uf,n,4": {
+   "name": "Delayed Rising Toe Kick",
+   "input": "uf,n,4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-uf,n,4",
+   "t8_damage": "20",
+   "startup": 0.383,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:xiaoyu:xiaoyu-uf,n,4",
+   "input_slots": [
+    "uf,n,4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -18; knockdown on hit"
+  },
+  "While landing 4": {
+   "name": "Crane Kick",
+   "input": "While landing 4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-While in the air 4",
+   "t8_damage": "25",
+   "startup": 0.133,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:xiaoyu:xiaoyu-while in the air 4",
+   "input_slots": [
+    "While landing 4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -8; knockdown on hit"
+  },
+  "While landing 3": {
+   "name": "Sky Kick",
+   "input": "While landing 3",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-While landing 3",
+   "t8_damage": "19",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 19,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 10,
+   "anim_ref": "t8:xiaoyu:xiaoyu-while landing 3",
+   "input_slots": [
+    "While landing 3"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -18; knockdown on hit"
+  },
+  "ws1": {
+   "name": "Move ws1 (ws1)",
+   "input": "ws1",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-ws1",
+   "t8_damage": "8",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.417,
+   "damage": 8,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 4,
+   "anim_ref": "t8:xiaoyu:xiaoyu-ws1",
+   "input_slots": [
+    "ws1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -7"
+  },
+  "ws1+2": {
+   "name": "Move ws1+2 (ws1+2)",
+   "input": "ws1+2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-ws+1+2",
+   "t8_damage": "12",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 12,
+   "limb": "both",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:xiaoyu:xiaoyu-ws+1+2",
+   "input_slots": [
+    "ws1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -9"
+  },
+  "ws1+2,1+2": {
+   "name": "X Marks the Spot",
+   "input": "ws1+2,1+2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-ws+1+2,1+2",
+   "t8_damage": ",20",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 32,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:xiaoyu:xiaoyu-ws+1+2,1+2",
+   "input_slots": [
+    "ws1+2",
+    "ws1+2,1+2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     20
+    ],
+    "total": 32
+   },
+   "note": "Mid; on block -8"
+  },
+  "ws1,4": {
+   "name": "Whirlwind Cross Kick",
+   "input": "ws1,4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-ws1,4",
+   "t8_damage": ",16",
+   "startup": 0.367,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 24,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:xiaoyu:xiaoyu-ws1,4",
+   "input_slots": [
+    "ws1",
+    "ws1,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     8,
+     16
+    ],
+    "total": 24
+   },
+   "note": "Mid; on block -10"
+  },
+  "ws2": {
+   "name": "Sunflower",
+   "input": "ws2",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-ws2",
+   "t8_damage": "17",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.35,
+   "damage": 17,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:xiaoyu:xiaoyu-ws2",
+   "input_slots": [
+    "ws2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -3"
+  },
+  "ws2*": {
+   "name": "Jasmine Blossom",
+   "input": "ws2*",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-ws2*",
+   "t8_damage": "20",
+   "startup": 0.367,
+   "active": 0.033,
+   "recovery": 0.35,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:xiaoyu:xiaoyu-ws2*",
+   "input_slots": [
+    "ws2*"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -3; knockdown on hit"
+  },
+  "ws3": {
+   "name": "Rising Axe Kick",
+   "input": "ws3",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-ws3",
+   "t8_damage": "22",
+   "startup": 0.367,
+   "active": 0.033,
+   "recovery": 0.383,
+   "damage": 22,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t8:xiaoyu:xiaoyu-ws3",
+   "input_slots": [
+    "ws3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +3"
+  },
+  "ws4": {
+   "name": "Skyscraper Kick",
+   "input": "ws4",
+   "t8_source": "xiaoyu",
+   "t8_id": "Xiaoyu-ws4",
+   "t8_damage": "20",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 20,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:xiaoyu:xiaoyu-ws4",
+   "input_slots": [
+    "ws4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -10; knockdown on hit"
   }
  },
- "strings": [],
+ "strings": [
+  "1,2",
+  "1,2,1",
+  "1,d+2",
+  "1,d+2,1+2",
+  "2,1",
+  "AOP.1,2",
+  "AOP.1,4",
+  "AOP.2,1",
+  "AOP.f+2,1",
+  "AOP.f+4,4",
+  "AOP.uf+3,1",
+  "AOP.uf+3,4",
+  "AOP.uf+4,4",
+  "b+2,2",
+  "b+4,1",
+  "BT.1,2",
+  "BT.1+2,1+2",
+  "BT.1+2,4",
+  "BT.2,1",
+  "BT.2,1,4",
+  "BT.2,2",
+  "BT.2,2,1",
+  "BT.d+3,4",
+  "BT.f+3+4,3+4",
+  "d+3,4",
+  "df+2,1+2",
+  "df+2,3",
+  "f+2,1",
+  "f+2,1,4",
+  "f+2,1,H.2",
+  "f+3,1",
+  "f+3,1,1+2",
+  "f+3,1,4",
+  "f+3+4,3+4",
+  "FC.df+2,1",
+  "FC.df+4,4",
+  "f,F+1+2,1+2",
+  "f,F+1,3",
+  "f,F+1,4",
+  "f,F+1,H.2",
+  "f,F+2,1",
+  "hFC.3,2",
+  "hFC.3,2,1",
+  "hFC.3,2,1,4",
+  "u+1+2,2",
+  "u+1+2,2,1",
+  "u+4,1",
+  "u+4,1,2",
+  "ws1+2,1+2",
+  "ws1,4"
+ ],
  "specials": [
   {
-   "input": "d/f+2",
-   "t3_row": 270,
-   "damage": 6,
-   "throw": false,
-   "fallback": "directional \u2014 no motion inputs in T3 bank"
+   "input": "1+2+3+4",
+   "damage": 0
   },
   {
-   "input": "d+4",
-   "t3_row": 371,
-   "damage": 2,
-   "throw": false,
-   "fallback": "directional \u2014 no motion inputs in T3 bank"
+   "input": "1+3",
+   "damage": 35,
+   "throw": true
+  },
+  {
+   "input": "1+3+4",
+   "damage": 0
+  },
+  {
+   "input": "2+3+4",
+   "damage": 0
+  },
+  {
+   "input": "2+4",
+   "damage": 35,
+   "throw": true
+  },
+  {
+   "input": "AOP.1+3",
+   "damage": 35,
+   "throw": true
+  },
+  {
+   "input": "AOP.d",
+   "damage": 0
+  },
+  {
+   "input": "AOP.f+3+4",
+   "damage": 0
+  },
+  {
+   "input": "AOP.uf",
+   "damage": 0
+  },
+  {
+   "input": "b+1+3",
+   "damage": 0
+  },
+  {
+   "input": "b+3+4",
+   "damage": 0
+  },
+  {
+   "input": "Back Throw",
+   "damage": 50,
+   "throw": true
+  },
+  {
+   "input": "BT.b+1+3",
+   "damage": 0
+  },
+  {
+   "input": "BT.d+1+3",
+   "damage": 0
+  },
+  {
+   "input": "BT.d+3+4",
+   "damage": 0
+  },
+  {
+   "input": "BT.db+4",
+   "damage": 0
+  },
+  {
+   "input": "BT.f+1+3",
+   "damage": 35,
+   "throw": true
+  },
+  {
+   "input": "BT.f+2+3",
+   "damage": 20,
+   "throw": true
+  },
+  {
+   "input": "BT.f+3+4",
+   "damage": 0
+  },
+  {
+   "input": "BT.f,F+3+4",
+   "damage": 0
+  },
+  {
+   "input": "CH AOP.d+1",
+   "damage": 40,
+   "throw": true
+  },
+  {
+   "input": "d+1+2",
+   "damage": 0
+  },
+  {
+   "input": "d+3+4",
+   "damage": 0
+  },
+  {
+   "input": "db+1+2",
+   "damage": 0
+  },
+  {
+   "input": "db+3",
+   "damage": 0
+  },
+  {
+   "input": "df+2+4",
+   "damage": 38,
+   "throw": true
+  },
+  {
+   "input": "f+2+3",
+   "damage": 20,
+   "throw": true
+  },
+  {
+   "input": "f+3+4",
+   "damage": 0
+  },
+  {
+   "input": "hdb+3+4",
+   "damage": 0
+  },
+  {
+   "input": "HYP.1+2",
+   "damage": 0
+  },
+  {
+   "input": "Left Throw",
+   "damage": 45,
+   "throw": true
+  },
+  {
+   "input": "R.df+1+2",
+   "damage": 0
+  },
+  {
+   "input": "Right Throw",
+   "damage": 45,
+   "throw": true
+  },
+  {
+   "input": "uf+1+2",
+   "damage": 40,
+   "throw": true
   }
  ],
- "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
- "schema_version": 2
+ "frame_convention": "T8 60fps -> seconds (frames/60); damage T8 180HP scale as-is",
+ "schema_version": 2,
+ "canon_note": "Sakura WH signature moves preserved; T8 Xiaoyu frame data folded in."
 }

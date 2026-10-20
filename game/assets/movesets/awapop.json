@@ -373,72 +373,5026 @@
    "throw": true,
    "unblockable": true,
    "isGrab": true
+  },
+  "1+2": {
+   "name": "Ray Hands",
+   "input": "1+2",
+   "t8_source": "nina",
+   "t8_id": "Nina-1+2",
+   "t8_damage": "19",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.4,
+   "damage": 19,
+   "limb": "both",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 10,
+   "anim_ref": "t8:nina:nina-1+2",
+   "input_slots": [
+    "1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -3"
+  },
+  "1,2": {
+   "name": "Left Right Combo",
+   "input": "1,2",
+   "t8_source": "nina",
+   "t8_id": "Nina-1,2",
+   "t8_damage": ",10",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.367,
+   "damage": 15,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-1,2",
+   "input_slots": [
+    "1",
+    "1,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     10
+    ],
+    "total": 15
+   },
+   "note": "High; on block -3"
+  },
+  "1,2,1": {
+   "name": "Left Right Combo (1)",
+   "input": "1,2,1",
+   "t8_source": "nina",
+   "t8_id": "Nina-1,2,1",
+   "t8_damage": ",17",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 32,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-1,2,1",
+   "input_slots": [
+    "1",
+    "1,2",
+    "1,2,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     10,
+     17
+    ],
+    "total": 32
+   },
+   "note": "High; on block -3"
+  },
+  "1,2,1,1+2": {
+   "name": "Biting Kiss Shot",
+   "input": "1,2,1,1+2",
+   "t8_source": "nina",
+   "t8_id": "Nina-1,2,1,1+2",
+   "t8_damage": ",6,6,6",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.667,
+   "damage": 50,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-1,2,1,1+2",
+   "input_slots": [
+    "1",
+    "1,2",
+    "1,2,1",
+    "1,2,1,1+2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     10,
+     17,
+     6,
+     6,
+     6
+    ],
+    "total": 50
+   },
+   "note": "High, High, High; on block -9"
+  },
+  "1,2,1+2": {
+   "name": "Double Explosion",
+   "input": "1,2,1+2",
+   "t8_source": "nina",
+   "t8_id": "Nina-1,2,1+2",
+   "t8_damage": ",22",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 37,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-1,2,1+2",
+   "input_slots": [
+    "1",
+    "1,2",
+    "1,2,1+2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     10,
+     22
+    ],
+    "total": 37
+   },
+   "note": "Mid; on block -14; knockdown on hit"
+  },
+  "1,2,1,H.1+2": {
+   "name": "Biting Kiss Shot",
+   "input": "1,2,1,H.1+2",
+   "t8_source": "nina",
+   "t8_id": "Nina-1,2,1,H.1+2",
+   "t8_damage": ",6,6,6,[5],[5]",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 50,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-1,2,1,h.1+2",
+   "input_slots": [
+    "1",
+    "1,2",
+    "1,2,1",
+    "1,2,1,H.1+2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     10,
+     17,
+     6,
+     6,
+     6
+    ],
+    "total": 50
+   },
+   "note": "High, High, High, High, High; on block -2; knockdown on hit"
+  },
+  "1+2+3+4": {
+   "name": "Ki Charge",
+   "input": "1+2+3+4",
+   "t8_source": "nina",
+   "t8_id": "Nina-1+2+3+4",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.917,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-1+2+3+4",
+   "input_slots": [
+    "1+2+3+4"
+   ],
+   "move_class": "special"
+  },
+  "1,2,4": {
+   "name": "Bermuda Triangle",
+   "input": "1,2,4",
+   "t8_source": "nina",
+   "t8_id": "Nina-1,2,4",
+   "t8_damage": ",22",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 37,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-1,2,4",
+   "input_slots": [
+    "1",
+    "1,2",
+    "1,2,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     10,
+     22
+    ],
+    "total": 37
+   },
+   "note": "High; on block -6; knockdown on hit"
+  },
+  "1+4": {
+   "name": "Ivory Cutter",
+   "input": "1+4",
+   "t8_source": "nina",
+   "t8_id": "Nina-1+4",
+   "t8_damage": "4,20",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 24,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:nina:nina-1+4",
+   "input_slots": [
+    "1+4"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     4,
+     20
+    ],
+    "total": 24
+   },
+   "note": "Mid, Mid; on block -5"
+  },
+  "1,4": {
+   "name": "PK Combo",
+   "input": "1,4",
+   "t8_source": "nina",
+   "t8_id": "Nina-1,4",
+   "t8_damage": ",17",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 22,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t8:nina:nina-1,4",
+   "input_slots": [
+    "1",
+    "1,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     17
+    ],
+    "total": 22
+   },
+   "note": "High; on block -4"
+  },
+  "1,4,1": {
+   "name": "Assassin's Blade",
+   "input": "1,4,1",
+   "t8_source": "nina",
+   "t8_id": "Nina-1,4,1",
+   "t8_damage": ",21",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 43,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-1,4,1",
+   "input_slots": [
+    "1",
+    "1,4",
+    "1,4,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     17,
+     21
+    ],
+    "total": 43
+   },
+   "note": "Mid; on block -11"
+  },
+  "2,3": {
+   "name": "Spider Knee",
+   "input": "2,3",
+   "t8_source": "nina",
+   "t8_id": "Nina-2,3",
+   "t8_damage": ",15",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 25,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:nina:nina-2,3",
+   "input_slots": [
+    "2",
+    "2,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     15
+    ],
+    "total": 25
+   },
+   "note": "Mid; on block -13"
+  },
+  "2+4,2": {
+   "name": "Shoulder Through Buster (STB)",
+   "input": "2+4,2",
+   "t8_source": "nina",
+   "t8_id": "Nina-2+4,2",
+   "t8_damage": "25",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 25,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 12,
+   "anim_ref": "t8:nina:nina-2+4,2",
+   "input_slots": [
+    "2+4,2"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block +0",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "2"
+  },
+  "3,2": {
+   "name": "Spiral Explosion",
+   "input": "3,2",
+   "t8_source": "nina",
+   "t8_id": "Nina-3,2",
+   "t8_damage": ",22",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 36,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-3,2",
+   "input_slots": [
+    "3",
+    "3,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     14,
+     22
+    ],
+    "total": 36
+   },
+   "note": "Mid; on block -9; knockdown on hit"
+  },
+  "3,3": {
+   "name": "Move 3 (3)",
+   "input": "3,3",
+   "t8_source": "nina",
+   "t8_id": "Nina-3,3",
+   "t8_damage": ",4",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 18,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 9,
+   "anim_ref": "t8:nina:nina-3,3",
+   "input_slots": [
+    "3",
+    "3,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     14,
+     4
+    ],
+    "total": 18
+   },
+   "note": "High; on block -14"
+  },
+  "3,3,3": {
+   "name": "Move 3 (3)",
+   "input": "3,3,3",
+   "t8_source": "nina",
+   "t8_id": "Nina-3,3,3",
+   "t8_damage": ",6",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 24,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:nina:nina-3,3,3",
+   "input_slots": [
+    "3",
+    "3,3",
+    "3,3,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     14,
+     4,
+     6
+    ],
+    "total": 24
+   },
+   "note": "High; on block -14"
+  },
+  "3,3,3,4": {
+   "name": "Flash Kicks",
+   "input": "3,3,3,4",
+   "t8_source": "nina",
+   "t8_id": "Nina-3,3,3,4",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 44,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-3,3,3,4",
+   "input_slots": [
+    "3",
+    "3,3",
+    "3,3,3",
+    "3,3,3,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     14,
+     4,
+     6,
+     20
+    ],
+    "total": 44
+   },
+   "note": "High; on block -6; knockdown on hit"
+  },
+  "3+4": {
+   "name": "Fatal Blow",
+   "input": "3+4",
+   "t8_source": "nina",
+   "t8_id": "Nina-3+4",
+   "t8_damage": "20",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 20,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:nina:nina-3+4",
+   "input_slots": [
+    "3+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -10"
+  },
+  "3,4": {
+   "name": "Head Ringer",
+   "input": "3,4",
+   "t8_source": "nina",
+   "t8_id": "Nina-3,4",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 34,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-3,4",
+   "input_slots": [
+    "3",
+    "3,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     14,
+     20
+    ],
+    "total": 34
+   },
+   "note": "High; on block -6; knockdown on hit"
+  },
+  "4,2": {
+   "name": "Spiral Explosion",
+   "input": "4,2",
+   "t8_source": "nina",
+   "t8_id": "Nina-4,2",
+   "t8_damage": ",22",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 37,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-4,2",
+   "input_slots": [
+    "4",
+    "4,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     22
+    ],
+    "total": 37
+   },
+   "note": "Mid; on block -9"
+  },
+  "4,3": {
+   "name": "Easy Prey Kick Combo",
+   "input": "4,3",
+   "t8_source": "nina",
+   "t8_id": "Nina-4,3",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 35,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-4,3",
+   "input_slots": [
+    "4",
+    "4,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     20
+    ],
+    "total": 35
+   },
+   "note": "Mid; on block -2c"
+  },
+  "4,4": {
+   "name": "High Kick (4)",
+   "input": "4,4",
+   "t8_source": "nina",
+   "t8_id": "Nina-4,4",
+   "t8_damage": ",21",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 36,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-4,4",
+   "input_slots": [
+    "4",
+    "4,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     21
+    ],
+    "total": 36
+   },
+   "note": "High; on block -7"
+  },
+  "4,4,3+4": {
+   "name": "Deadly Assault",
+   "input": "4,4,3+4",
+   "t8_source": "nina",
+   "t8_id": "Nina-4,4,3+4",
+   "t8_damage": ",8,21",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.4,
+   "damage": 65,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-4,4,3+4",
+   "input_slots": [
+    "4",
+    "4,4",
+    "4,4,3+4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     21,
+     8,
+     21
+    ],
+    "total": 65
+   },
+   "note": "Mid, Mid; on block -6~+0; knockdown on hit"
+  },
+  "4,4,4": {
+   "name": "Deadly Hunter",
+   "input": "4,4,4",
+   "t8_source": "nina",
+   "t8_id": "Nina-4,4,4",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 56,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-4,4,4",
+   "input_slots": [
+    "4",
+    "4,4",
+    "4,4,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     21,
+     20
+    ],
+    "total": 56
+   },
+   "note": "Low; on block -12"
+  },
+  "ABK.1": {
+   "name": "Double Arm Break",
+   "input": "ABK.1",
+   "t8_source": "nina",
+   "t8_id": "Nina-ABK.1",
+   "t8_damage": "15 (20)",
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-abk.1",
+   "input_slots": [
+    "ABK.1"
+   ],
+   "move_class": "special",
+   "note": "Throw; on block -3"
+  },
+  "ABK.2": {
+   "name": "Falling Arm Break",
+   "input": "ABK.2",
+   "t8_source": "nina",
+   "t8_id": "Nina-ABK.2",
+   "t8_damage": "15 (20)",
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-abk.2",
+   "input_slots": [
+    "ABK.2"
+   ],
+   "move_class": "special",
+   "note": "Throw; on block -3"
+  },
+  "b+1": {
+   "name": "Throat Slasher",
+   "input": "b+1",
+   "t8_source": "nina",
+   "t8_id": "Nina-b+1",
+   "t8_damage": "10",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.417,
+   "damage": 10,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:nina:nina-b+1",
+   "input_slots": [
+    "b+1"
+   ],
+   "move_class": "strike",
+   "note": "High; on block -7"
+  },
+  "b+1+2": {
+   "name": "Shockwave Palm",
+   "input": "b+1+2",
+   "t8_source": "nina",
+   "t8_id": "Nina-b+1+2",
+   "t8_damage": "5,20",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 25,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:nina:nina-b+1+2",
+   "input_slots": [
+    "b+1+2"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     5,
+     20
+    ],
+    "total": 25
+   },
+   "note": "Mid, Mid; on block -4; knockdown on hit"
+  },
+  "b+1+3_b+2+4": {
+   "name": "Attack Reversal",
+   "input": "b+1+3_b+2+4",
+   "t8_source": "nina",
+   "t8_id": "Nina-b+1+3_b+2+4",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.583,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-b+1+3_b+2+4",
+   "input_slots": [
+    "b+1+3_b+2+4"
+   ],
+   "move_class": "special",
+   "note": "on block -6"
+  },
+  "b+1+4": {
+   "name": "Reverse Ivory Cutter",
+   "input": "b+1+4",
+   "t8_source": "nina",
+   "t8_id": "Nina-b+1+4",
+   "t8_damage": "4,14",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 18,
+   "limb": "both",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 9,
+   "anim_ref": "t8:nina:nina-b+1+4",
+   "input_slots": [
+    "b+1+4"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     4,
+     14
+    ],
+    "total": 18
+   },
+   "note": "Mid, Mid; on block -15; knockdown on hit"
+  },
+  "b+1,4": {
+   "name": "Glass Jaw",
+   "input": "b+1,4",
+   "t8_source": "nina",
+   "t8_id": "Nina-b+1,4",
+   "t8_damage": ",22",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 32,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-b+1,4",
+   "input_slots": [
+    "b+1",
+    "b+1,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     22
+    ],
+    "total": 32
+   },
+   "note": "Mid; on block -12"
+  },
+  "b+2": {
+   "name": "Move b+2 (b+2)",
+   "input": "b+2",
+   "t8_source": "nina",
+   "t8_id": "Nina-b+2",
+   "t8_damage": "12",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 12,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:nina:nina-b+2",
+   "input_slots": [
+    "b+2"
+   ],
+   "move_class": "strike",
+   "note": "High; on block -14"
+  },
+  "b+2,2": {
+   "name": "Move 2 (2)",
+   "input": "b+2,2",
+   "t8_source": "nina",
+   "t8_id": "Nina-b+2,2",
+   "t8_damage": ",12",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.4,
+   "damage": 24,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:nina:nina-b+2,2",
+   "input_slots": [
+    "b+2",
+    "b+2,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     12
+    ],
+    "total": 24
+   },
+   "note": "High; on block -6"
+  },
+  "b+2,2,2": {
+   "name": "Backhand Combo",
+   "input": "b+2,2,2",
+   "t8_source": "nina",
+   "t8_id": "Nina-b+2,2,2",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 44,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-b+2,2,2",
+   "input_slots": [
+    "b+2",
+    "b+2,2",
+    "b+2,2,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     12,
+     20
+    ],
+    "total": 44
+   },
+   "note": "High; on block -9"
+  },
+  "b+3": {
+   "name": "Move b+3 (b+3)",
+   "input": "b+3",
+   "t8_source": "nina",
+   "t8_id": "Nina-b+3",
+   "t8_damage": "10",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 10,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:nina:nina-b+3",
+   "input_slots": [
+    "b+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -6"
+  },
+  "b+3+4": {
+   "name": "Out of Sight",
+   "input": "b+3+4",
+   "t8_source": "nina",
+   "t8_id": "Nina-b+3+4",
+   "t8_damage": "16",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 16,
+   "limb": "both",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-b+3+4",
+   "input_slots": [
+    "b+3+4"
+   ],
+   "move_class": "strike",
+   "note": "High; on block -5"
+  },
+  "b+3,4": {
+   "name": "Stinger Heel Kick Combo",
+   "input": "b+3,4",
+   "t8_source": "nina",
+   "t8_id": "Nina-b+3,4",
+   "t8_damage": ",17",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 27,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:nina:nina-b+3,4",
+   "input_slots": [
+    "b+3",
+    "b+3,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     17
+    ],
+    "total": 27
+   },
+   "note": "High; on block -8"
+  },
+  "b+3+4,1+2": {
+   "name": "Kiss Shot",
+   "input": "b+3+4,1+2",
+   "t8_source": "nina",
+   "t8_id": "Nina-b+3+4,1+2",
+   "t8_damage": ",6,6,6",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.667,
+   "damage": 34,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-b+3+4,1+2",
+   "input_slots": [
+    "b+3+4",
+    "b+3+4,1+2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     16,
+     6,
+     6,
+     6
+    ],
+    "total": 34
+   },
+   "note": "High, High, High; on block -5"
+  },
+  "b+3+4,3": {
+   "name": "Assassin Somersault Kick",
+   "input": "b+3+4,3",
+   "t8_source": "nina",
+   "t8_id": "Nina-b+3+4,3",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.667,
+   "damage": 36,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-b+3+4,3",
+   "input_slots": [
+    "b+3+4",
+    "b+3+4,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     16,
+     20
+    ],
+    "total": 36
+   },
+   "note": "Mid; on block -15~-14; knockdown on hit"
+  },
+  "b+3+4,H.1+2": {
+   "name": "Kiss Shot",
+   "input": "b+3+4,H.1+2",
+   "t8_source": "nina",
+   "t8_id": "Nina-b+3+4,H.1+2",
+   "t8_damage": ",6,6,6,[5],[5]",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 34,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-b+3+4,h.1+2",
+   "input_slots": [
+    "b+3+4",
+    "b+3+4,H.1+2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     16,
+     6,
+     6,
+     6
+    ],
+    "total": 34
+   },
+   "note": "High, High, High, High, High; on block -2; knockdown on hit"
+  },
+  "b+4": {
+   "name": "Spear Kick",
+   "input": "b+4",
+   "t8_source": "nina",
+   "t8_id": "Nina-b+4",
+   "t8_damage": "15",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-b+4",
+   "input_slots": [
+    "b+4"
+   ],
+   "move_class": "strike",
+   "note": "High; on block -9"
+  },
+  "Back throw": {
+   "name": "Leaping Triangle Hold",
+   "input": "Back throw",
+   "t8_source": "nina",
+   "t8_id": "Nina-Back throw",
+   "t8_damage": "60",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 60,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-back throw",
+   "input_slots": [
+    "Back throw"
+   ],
+   "move_class": "throw",
+   "note": "Throw",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2"
+  },
+  "(back to wall).b,b,UB": {
+   "name": "Wall Jump Backflip",
+   "input": "(back to wall).b,b,UB",
+   "t8_source": "nina",
+   "t8_id": "Nina-(back to wall).b,b,UB",
+   "t8_damage": "21",
+   "startup": 0.583,
+   "active": 0.033,
+   "recovery": 0.283,
+   "damage": 21,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:nina:nina-(back to wall).b,b,ub",
+   "input_slots": [
+    "(back to wall).b,b,UB"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +1"
+  },
+  "b,B+2+3": {
+   "name": "Hunting Swan",
+   "input": "b,B+2+3",
+   "t8_source": "nina",
+   "t8_id": "Nina-b,B+2+3",
+   "t8_damage": "50",
+   "startup": 1.083,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 50,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-b,b+2+3",
+   "input_slots": [
+    "b,B+2+3"
+   ],
+   "move_class": "strike",
+   "note": "m!; Power Charge; knockdown on hit"
+  },
+  "BHS.1": {
+   "name": "Arm Break (ABK)",
+   "input": "BHS.1",
+   "t8_source": "nina",
+   "t8_id": "Nina-BHS.1",
+   "t8_damage": "8 (13)",
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-bhs.1",
+   "input_slots": [
+    "BHS.1"
+   ],
+   "move_class": "special",
+   "note": "Throw; on block -3"
+  },
+  "BHS.1+2": {
+   "name": "Seoi Gyaku Juji-gatame",
+   "input": "BHS.1+2",
+   "t8_source": "nina",
+   "t8_id": "Nina-BHS.1+2",
+   "t8_damage": "10 (15),10",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 10,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 5,
+   "anim_ref": "t8:nina:nina-bhs.1+2",
+   "input_slots": [
+    "BHS.1+2"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -3",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2"
+  },
+  "BHS.2": {
+   "name": "Stomach Lock (TSS)",
+   "input": "BHS.2",
+   "t8_source": "nina",
+   "t8_id": "Nina-BHS.2",
+   "t8_damage": "9 (12),6 (8)",
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-bhs.2",
+   "input_slots": [
+    "BHS.2"
+   ],
+   "move_class": "special",
+   "note": "Throw; on block -3"
+  },
+  "BT+1": {
+   "name": "Twist Jab",
+   "input": "BT+1",
+   "t8_source": "nina",
+   "t8_id": "Nina-BT+1",
+   "t8_damage": "15",
+   "startup": 0.133,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-bt+1",
+   "input_slots": [
+    "BT+1"
+   ],
+   "move_class": "strike",
+   "note": "High; on block -8"
+  },
+  "BTR.1": {
+   "name": "Arm Break (ABK)",
+   "input": "BTR.1",
+   "t8_source": "nina",
+   "t8_id": "Nina-BTR.1",
+   "t8_damage": "13 (18)",
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-btr.1",
+   "input_slots": [
+    "BTR.1"
+   ],
+   "move_class": "special",
+   "note": "Throw; on block -3"
+  },
+  "BTR.2": {
+   "name": "Twisted Nightmare (NTM)",
+   "input": "BTR.2",
+   "t8_source": "nina",
+   "t8_id": "Nina-BTR.2",
+   "t8_damage": "10 (15)",
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-btr.2",
+   "input_slots": [
+    "BTR.2"
+   ],
+   "move_class": "special",
+   "note": "Throw; on block -3"
+  },
+  "CD.1": {
+   "name": "Hellbringer",
+   "input": "CD.1",
+   "t8_source": "nina",
+   "t8_id": "Nina-CD.1",
+   "t8_damage": "19",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.433,
+   "damage": 19,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 10,
+   "anim_ref": "t8:nina:nina-cd.1",
+   "input_slots": [
+    "CD.1"
+   ],
+   "move_class": "strike",
+   "note": "High; on block +1~+3"
+  },
+  "CD.2": {
+   "name": "Shut Up",
+   "input": "CD.2",
+   "t8_source": "nina",
+   "t8_id": "Nina-CD.2",
+   "t8_damage": "25",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:nina:nina-cd.2",
+   "input_slots": [
+    "CD.2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -8; knockdown on hit"
+  },
+  "CD.2+3": {
+   "name": "Evil Mist",
+   "input": "CD.2+3",
+   "t8_source": "nina",
+   "t8_id": "Nina-CD.2+3",
+   "t8_damage": "[10;10]",
+   "startup": 0.4,
+   "active": 0.033,
+   "recovery": 0.0,
+   "damage": 20,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:nina:nina-cd.2+3",
+   "input_slots": [
+    "CD.2+3"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     10,
+     10
+    ],
+    "total": 20
+   },
+   "note": "h!"
+  },
+  "CD.3": {
+   "name": "Sideslip",
+   "input": "CD.3",
+   "t8_source": "nina",
+   "t8_id": "Nina-CD.3",
+   "t8_damage": "17",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 17,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-cd.3",
+   "input_slots": [
+    "CD.3"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -20~-11"
+  },
+  "CD.4": {
+   "name": "Move CD.4 (CD.4)",
+   "input": "CD.4",
+   "t8_source": "nina",
+   "t8_id": "Nina-CD.4",
+   "t8_damage": "15",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.6,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-cd.4",
+   "input_slots": [
+    "CD.4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -8"
+  },
+  "CD.4,3": {
+   "name": "Move 3 (3)",
+   "input": "CD.4,3",
+   "t8_source": "nina",
+   "t8_id": "Nina-CD.4,3",
+   "t8_damage": ",23",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.6,
+   "damage": 38,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-cd.4,3",
+   "input_slots": [
+    "CD.4",
+    "CD.4,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     23
+    ],
+    "total": 38
+   },
+   "note": "High; on block -10; knockdown on hit"
+  },
+  "CD.4,3,1+2": {
+   "name": "Lapwing Kiss Shot",
+   "input": "CD.4,3,1+2",
+   "t8_source": "nina",
+   "t8_id": "Nina-CD.4,3,1+2",
+   "t8_damage": "6,6,6",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.667,
+   "damage": 56,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-cd.4,3,1+2",
+   "input_slots": [
+    "CD.4",
+    "CD.4,3",
+    "CD.4,3,1+2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     23,
+     6,
+     6,
+     6
+    ],
+    "total": 56
+   },
+   "note": "High, High, High; on block -9"
+  },
+  "CHD.1": {
+   "name": "Commando Arm Lock",
+   "input": "CHD.1",
+   "t8_source": "nina",
+   "t8_id": "Nina-CHD.1",
+   "t8_damage": "25 (30)",
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-chd.1",
+   "input_slots": [
+    "CHD.1"
+   ],
+   "move_class": "special",
+   "note": "Throw; on block +0d"
+  },
+  "CHD.2": {
+   "name": "Heel Hold (HHD)",
+   "input": "CHD.2",
+   "t8_source": "nina",
+   "t8_id": "Nina-CHD.2",
+   "t8_damage": "8 (13)",
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-chd.2",
+   "input_slots": [
+    "CHD.2"
+   ],
+   "move_class": "special",
+   "note": "Throw; on block +0d"
+  },
+  "d+1": {
+   "name": "Low Jab",
+   "input": "d+1",
+   "t8_source": "nina",
+   "t8_id": "Nina-d+1",
+   "t8_damage": "5",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.4,
+   "damage": 5,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 2,
+   "anim_ref": "t8:nina:nina-d+1",
+   "input_slots": [
+    "d+1"
+   ],
+   "move_class": "strike",
+   "note": "Special low; on block -5"
+  },
+  "d+1,4": {
+   "name": "Mid Kick",
+   "input": "d+1,4",
+   "t8_source": "nina",
+   "t8_id": "Nina-d+1,4",
+   "t8_damage": ",10",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-d+1,4",
+   "input_slots": [
+    "d+1",
+    "d+1,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     10
+    ],
+    "total": 15
+   },
+   "note": "Mid; on block -11"
+  },
+  "d+2": {
+   "name": "Move d+2 (d+2)",
+   "input": "d+2",
+   "t8_source": "nina",
+   "t8_id": "Nina-d+2",
+   "t8_damage": "13",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 13,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:nina:nina-d+2",
+   "input_slots": [
+    "d+2"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -12"
+  },
+  "d+2,2": {
+   "name": "Vertical Slitter",
+   "input": "d+2,2",
+   "t8_source": "nina",
+   "t8_id": "Nina-d+2,2",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 33,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-d+2,2",
+   "input_slots": [
+    "d+2",
+    "d+2,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     20
+    ],
+    "total": 33
+   },
+   "note": "Mid; on block -12; knockdown on hit"
+  },
+  "d+3": {
+   "name": "Left Spin Low Kick",
+   "input": "d+3",
+   "t8_source": "nina",
+   "t8_id": "Nina-d+3",
+   "t8_damage": "10",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 10,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:nina:nina-d+3",
+   "input_slots": [
+    "d+3"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -17"
+  },
+  "d+3,2": {
+   "name": "Right Upper",
+   "input": "d+3,2",
+   "t8_source": "nina",
+   "t8_id": "Nina-d+3,2",
+   "t8_damage": ",18",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 28,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:nina:nina-d+3,2",
+   "input_slots": [
+    "d+3",
+    "d+3,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     18
+    ],
+    "total": 28
+   },
+   "note": "Mid; on block -11~-9"
+  },
+  "d+3,4": {
+   "name": "Left Spin Low Kick (4)",
+   "input": "d+3,4",
+   "t8_source": "nina",
+   "t8_id": "Nina-d+3,4",
+   "t8_damage": ",14",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 24,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:nina:nina-d+3,4",
+   "input_slots": [
+    "d+3",
+    "d+3,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     14
+    ],
+    "total": 24
+   },
+   "note": "High; on block -8"
+  },
+  "d+3,4,3": {
+   "name": "Easy Prey",
+   "input": "d+3,4,3",
+   "t8_source": "nina",
+   "t8_id": "Nina-d+3,4,3",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 44,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-d+3,4,3",
+   "input_slots": [
+    "d+3",
+    "d+3,4",
+    "d+3,4,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     14,
+     20
+    ],
+    "total": 44
+   },
+   "note": "Mid; on block -7; knockdown on hit"
+  },
+  "d+4": {
+   "name": "Right Low Kick",
+   "input": "d+4",
+   "t8_source": "nina",
+   "t8_id": "Nina-d+4",
+   "t8_damage": "6",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 6,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 3,
+   "anim_ref": "t8:nina:nina-d+4",
+   "input_slots": [
+    "d+4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -15"
+  },
+  "d+4,1": {
+   "name": "Back Spin Chop",
+   "input": "d+4,1",
+   "t8_source": "nina",
+   "t8_id": "Nina-d+4,1",
+   "t8_damage": ",10",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 16,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-d+4,1",
+   "input_slots": [
+    "d+4",
+    "d+4,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     6,
+     10
+    ],
+    "total": 16
+   },
+   "note": "High; on block +0"
+  },
+  "db+1+2": {
+   "name": "Reverberation Palm Bomb",
+   "input": "db+1+2",
+   "t8_source": "nina",
+   "t8_id": "Nina-db+1+2",
+   "t8_damage": "5,22",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 27,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:nina:nina-db+1+2",
+   "input_slots": [
+    "db+1+2"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     5,
+     22
+    ],
+    "total": 27
+   },
+   "note": "High, Mid; on block -14; knockdown on hit"
+  },
+  "db+2": {
+   "name": "Right Backhand Body Blow",
+   "input": "db+2",
+   "t8_source": "nina",
+   "t8_id": "Nina-db+2",
+   "t8_damage": "17",
+   "startup": 0.4,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 17,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-db+2",
+   "input_slots": [
+    "db+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -5"
+  },
+  "db+3": {
+   "name": "Stiletto Heel",
+   "input": "db+3",
+   "t8_source": "nina",
+   "t8_id": "Nina-db+3",
+   "t8_damage": "17",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 17,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-db+3",
+   "input_slots": [
+    "db+3"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -13"
+  },
+  "db+3+4": {
+   "name": "Geyser Cannon",
+   "input": "db+3+4",
+   "t8_source": "nina",
+   "t8_id": "Nina-db+3+4",
+   "t8_damage": "21",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 21,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:nina:nina-db+3+4",
+   "input_slots": [
+    "db+3+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -17; knockdown on hit"
+  },
+  "db+4": {
+   "name": "Slicer",
+   "input": "db+4",
+   "t8_source": "nina",
+   "t8_id": "Nina-db+4",
+   "t8_damage": "5",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 5,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 2,
+   "anim_ref": "t8:nina:nina-db+4",
+   "input_slots": [
+    "db+4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -9a"
+  },
+  "db+4,3": {
+   "name": "Geyser Cannon Combo",
+   "input": "db+4,3",
+   "t8_source": "nina",
+   "t8_id": "Nina-db+4,3",
+   "t8_damage": ",21",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 26,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 13,
+   "anim_ref": "t8:nina:nina-db+4,3",
+   "input_slots": [
+    "db+4",
+    "db+4,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     21
+    ],
+    "total": 26
+   },
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "db,qcf,n,DB+2+3": {
+   "name": "Move db,qcf,n,DB+2+3 (db,qcf,n,DB+2+3)",
+   "input": "db,qcf,n,DB+2+3",
+   "t8_source": "nina",
+   "t8_id": "Nina-db,qcf,n,DB+2+3",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-db,qcf,n,db+2+3",
+   "input_slots": [
+    "db,qcf,n,DB+2+3"
+   ],
+   "move_class": "special"
+  },
+  "d,DF+4": {
+   "name": "Wipe the Floor",
+   "input": "d,DF+4",
+   "t8_source": "nina",
+   "t8_id": "Nina-d,DF+4",
+   "t8_damage": "20",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.883,
+   "damage": 20,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:nina:nina-d,df+4",
+   "input_slots": [
+    "d,DF+4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -37; knockdown on hit"
+  },
+  "df+1": {
+   "name": "Uppercut",
+   "input": "df+1",
+   "t8_source": "nina",
+   "t8_id": "Nina-df+1",
+   "t8_damage": "10",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 10,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:nina:nina-df+1",
+   "input_slots": [
+    "df+1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -1"
+  },
+  "df+1,2": {
+   "name": "Jab",
+   "input": "df+1,2",
+   "t8_source": "nina",
+   "t8_id": "Nina-df+1,2",
+   "t8_damage": ",10",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.383,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:nina:nina-df+1,2",
+   "input_slots": [
+    "df+1",
+    "df+1,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     10
+    ],
+    "total": 20
+   },
+   "note": "High; on block -5"
+  },
+  "df+1,2,1": {
+   "name": "Jab",
+   "input": "df+1,2,1",
+   "t8_source": "nina",
+   "t8_id": "Nina-df+1,2,1",
+   "t8_damage": ",17",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 37,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-df+1,2,1",
+   "input_slots": [
+    "df+1",
+    "df+1,2",
+    "df+1,2,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     10,
+     17
+    ],
+    "total": 37
+   },
+   "note": "High; on block -3"
+  },
+  "df+1,2,1,1+2": {
+   "name": "Biting Kiss Shot",
+   "input": "df+1,2,1,1+2",
+   "t8_source": "nina",
+   "t8_id": "Nina-df+1,2,1,1+2",
+   "t8_damage": ",6,6,6",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.667,
+   "damage": 55,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-df+1,2,1,1+2",
+   "input_slots": [
+    "df+1",
+    "df+1,2",
+    "df+1,2,1",
+    "df+1,2,1,1+2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     10,
+     17,
+     6,
+     6,
+     6
+    ],
+    "total": 55
+   },
+   "note": "High, High, High; on block -9"
+  },
+  "df+1,2,1+2": {
+   "name": "Double Explosion",
+   "input": "df+1,2,1+2",
+   "t8_source": "nina",
+   "t8_id": "Nina-df+1,2,1+2",
+   "t8_damage": ",22",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 42,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-df+1,2,1+2",
+   "input_slots": [
+    "df+1",
+    "df+1,2",
+    "df+1,2,1+2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     10,
+     22
+    ],
+    "total": 42
+   },
+   "note": "Mid; on block -14; knockdown on hit"
+  },
+  "df+1,2,1,H.1+2": {
+   "name": "Biting Kiss Shot",
+   "input": "df+1,2,1,H.1+2",
+   "t8_source": "nina",
+   "t8_id": "Nina-df+1,2,1,H.1+2",
+   "t8_damage": ",6,6,6,[5],[5]",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 55,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-df+1,2,1,h.1+2",
+   "input_slots": [
+    "df+1",
+    "df+1,2",
+    "df+1,2,1",
+    "df+1,2,1,H.1+2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     10,
+     17,
+     6,
+     6,
+     6
+    ],
+    "total": 55
+   },
+   "note": "High, High, High, High, High; on block -2; knockdown on hit"
+  },
+  "df+1,2,4": {
+   "name": "Bermuda Triangle",
+   "input": "df+1,2,4",
+   "t8_source": "nina",
+   "t8_id": "Nina-df+1,2,4",
+   "t8_damage": ",22",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 42,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-df+1,2,4",
+   "input_slots": [
+    "df+1",
+    "df+1,2",
+    "df+1,2,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     10,
+     22
+    ],
+    "total": 42
+   },
+   "note": "High; on block -6; knockdown on hit"
+  },
+  "df+1+3": {
+   "name": "Arm Grab Flip",
+   "input": "df+1+3",
+   "t8_source": "nina",
+   "t8_id": "Nina-df+1+3",
+   "t8_damage": "37",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 37,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-df+1+3",
+   "input_slots": [
+    "df+1+3"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -2",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "df+2": {
+   "name": "Silent Uppercut",
+   "input": "df+2",
+   "t8_source": "nina",
+   "t8_id": "Nina-df+2",
+   "t8_damage": "12",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.417,
+   "damage": 12,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:nina:nina-df+2",
+   "input_slots": [
+    "df+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -7; knockdown on hit"
+  },
+  "df+2+4": {
+   "name": "Reverse Neck Breaker",
+   "input": "df+2+4",
+   "t8_source": "nina",
+   "t8_id": "Nina-df+2+4",
+   "t8_damage": "37",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 37,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-df+2+4",
+   "input_slots": [
+    "df+2+4"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -2",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "2"
+  },
+  "df+3": {
+   "name": "Move df+3 (df+3)",
+   "input": "df+3",
+   "t8_source": "nina",
+   "t8_id": "Nina-df+3",
+   "t8_damage": "13",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 13,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:nina:nina-df+3",
+   "input_slots": [
+    "df+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -11"
+  },
+  "df+3,1": {
+   "name": "Move 1 (1)",
+   "input": "df+3,1",
+   "t8_source": "nina",
+   "t8_id": "Nina-df+3,1",
+   "t8_damage": ",10",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 23,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:nina:nina-df+3,1",
+   "input_slots": [
+    "df+3",
+    "df+3,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     10
+    ],
+    "total": 23
+   },
+   "note": "High; on block -8"
+  },
+  "df+3,1,2": {
+   "name": "Dead Drop Combo",
+   "input": "df+3,1,2",
+   "t8_source": "nina",
+   "t8_id": "Nina-df+3,1,2",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 43,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-df+3,1,2",
+   "input_slots": [
+    "df+3",
+    "df+3,1",
+    "df+3,1,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     10,
+     20
+    ],
+    "total": 43
+   },
+   "note": "Mid; on block -12c"
+  },
+  "df+3,2": {
+   "name": "Move 2 (2)",
+   "input": "df+3,2",
+   "t8_source": "nina",
+   "t8_id": "Nina-df+3,2",
+   "t8_damage": ",9",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.3,
+   "damage": 22,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t8:nina:nina-df+3,2",
+   "input_slots": [
+    "df+3",
+    "df+3,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     9
+    ],
+    "total": 22
+   },
+   "note": "High; on block +1"
+  },
+  "df+3,2,1": {
+   "name": "Move 1 (1)",
+   "input": "df+3,2,1",
+   "t8_source": "nina",
+   "t8_id": "Nina-df+3,2,1",
+   "t8_damage": ",6",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.35,
+   "damage": 28,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:nina:nina-df+3,2,1",
+   "input_slots": [
+    "df+3",
+    "df+3,2",
+    "df+3,2,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     9,
+     6
+    ],
+    "total": 28
+   },
+   "note": "High; on block -3"
+  },
+  "df+3,2,1,2": {
+   "name": "Move 2 (2)",
+   "input": "df+3,2,1,2",
+   "t8_source": "nina",
+   "t8_id": "Nina-df+3,2,1,2",
+   "t8_damage": ",6",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 34,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-df+3,2,1,2",
+   "input_slots": [
+    "df+3",
+    "df+3,2",
+    "df+3,2,1",
+    "df+3,2,1,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     9,
+     6,
+     6
+    ],
+    "total": 34
+   },
+   "note": "High"
+  },
+  "df+3,2,1,2,1+2": {
+   "name": "Move 1+2 (1+2)",
+   "input": "df+3,2,1,2,1+2",
+   "t8_source": "nina",
+   "t8_id": "Nina-df+3,2,1,2,1+2",
+   "t8_damage": ",22",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 56,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-df+3,2,1,2,1+2",
+   "input_slots": [
+    "df+3",
+    "df+3,2",
+    "df+3,2,1",
+    "df+3,2,1,2",
+    "df+3,2,1,2,1+2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     9,
+     6,
+     6,
+     22
+    ],
+    "total": 56
+   },
+   "note": "Mid; on block -14; knockdown on hit"
+  },
+  "df+3,2,1,4": {
+   "name": "Creeping Snake",
+   "input": "df+3,2,1,4",
+   "t8_source": "nina",
+   "t8_id": "Nina-df+3,2,1,4",
+   "t8_damage": "12",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 40,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-df+3,2,1,4",
+   "input_slots": [
+    "df+3",
+    "df+3,2",
+    "df+3,2,1",
+    "df+3,2,1,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     9,
+     6,
+     12
+    ],
+    "total": 40
+   },
+   "note": "Low; on block -13"
+  },
+  "df+3,2,3": {
+   "name": "Geyser Cannon",
+   "input": "df+3,2,3",
+   "t8_source": "nina",
+   "t8_id": "Nina-df+3,2,3",
+   "t8_damage": ",21",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 43,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-df+3,2,3",
+   "input_slots": [
+    "df+3",
+    "df+3,2",
+    "df+3,2,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     9,
+     21
+    ],
+    "total": 43
+   },
+   "note": "Mid; on block -17; knockdown on hit"
+  },
+  "df+3,2,4": {
+   "name": "Right High Kick",
+   "input": "df+3,2,4",
+   "t8_source": "nina",
+   "t8_id": "Nina-df+3,2,4",
+   "t8_damage": ",22",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 44,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-df+3,2,4",
+   "input_slots": [
+    "df+3",
+    "df+3,2",
+    "df+3,2,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     9,
+     22
+    ],
+    "total": 44
+   },
+   "note": "High; on block -6; knockdown on hit"
+  },
+  "df+3,3": {
+   "name": "Bisection Combo",
+   "input": "df+3,3",
+   "t8_source": "nina",
+   "t8_id": "Nina-df+3,3",
+   "t8_damage": ",14",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 27,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:nina:nina-df+3,3",
+   "input_slots": [
+    "df+3",
+    "df+3,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     14
+    ],
+    "total": 27
+   },
+   "note": "Mid; on block -10"
+  },
+  "df+3+4": {
+   "name": "Move df+3+4 (df+3+4)",
+   "input": "df+3+4",
+   "t8_source": "nina",
+   "t8_id": "Nina-df+3+4",
+   "t8_damage": null,
+   "startup": 0.517,
+   "active": 0.3,
+   "recovery": 0.75,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-df+3+4",
+   "input_slots": [
+    "df+3+4"
+   ],
+   "move_class": "special"
+  },
+  "df+4": {
+   "name": "Move df+4 (df+4)",
+   "input": "df+4",
+   "t8_source": "nina",
+   "t8_id": "Nina-df+4",
+   "t8_damage": "15",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.383,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-df+4",
+   "input_slots": [
+    "df+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -4"
+  },
+  "df,df+1": {
+   "name": "Elbow Smash",
+   "input": "df,df+1",
+   "t8_source": "nina",
+   "t8_id": "Nina-df,df+1",
+   "t8_damage": "43",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 43,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-df,df+1",
+   "input_slots": [
+    "df,df+1"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -6",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "f+1+2": {
+   "name": "Blonde Bomb",
+   "input": "f+1+2",
+   "t8_source": "nina",
+   "t8_id": "Nina-f+1+2",
+   "t8_damage": "24",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 24,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:nina:nina-f+1+2",
+   "input_slots": [
+    "f+1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -14; knockdown on hit"
+  },
+  "f+1+3": {
+   "name": "Crab Hold (CHD)",
+   "input": "f+1+3",
+   "t8_source": "nina",
+   "t8_id": "Nina-f+1+3",
+   "t8_damage": "15",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 15,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-f+1+3",
+   "input_slots": [
+    "f+1+3"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -2",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "f+2": {
+   "name": "Move f+2 (f+2)",
+   "input": "f+2",
+   "t8_source": "nina",
+   "t8_id": "Nina-f+2",
+   "t8_damage": "12",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.367,
+   "damage": 12,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:nina:nina-f+2",
+   "input_slots": [
+    "f+2"
+   ],
+   "move_class": "strike",
+   "note": "High; on block -3"
+  },
+  "f+2,1": {
+   "name": "Move 1 (1)",
+   "input": "f+2,1",
+   "t8_source": "nina",
+   "t8_id": "Nina-f+2,1",
+   "t8_damage": ",12",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 24,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:nina:nina-f+2,1",
+   "input_slots": [
+    "f+2",
+    "f+2,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     12
+    ],
+    "total": 24
+   },
+   "note": "Mid; on block -13"
+  },
+  "f+2,1,3": {
+   "name": "Swallowtail",
+   "input": "f+2,1,3",
+   "t8_source": "nina",
+   "t8_id": "Nina-f+2,1,3",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.65,
+   "damage": 44,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-f+2,1,3",
+   "input_slots": [
+    "f+2",
+    "f+2,1",
+    "f+2,1,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     12,
+     20
+    ],
+    "total": 44
+   },
+   "note": "Mid; on block -15~-13; knockdown on hit"
+  },
+  "f+2,1,4": {
+   "name": "Mimosa Combo",
+   "input": "f+2,1,4",
+   "t8_source": "nina",
+   "t8_id": "Nina-f+2,1,4",
+   "t8_damage": ",22",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.417,
+   "damage": 46,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-f+2,1,4",
+   "input_slots": [
+    "f+2",
+    "f+2,1",
+    "f+2,1,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     12,
+     22
+    ],
+    "total": 46
+   },
+   "note": "High; on block -3~-1; knockdown on hit"
+  },
+  "f+2+4": {
+   "name": "Backhand Slap (BHS)",
+   "input": "f+2+4",
+   "t8_source": "nina",
+   "t8_id": "Nina-f+2+4",
+   "t8_damage": "15",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 15,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-f+2+4",
+   "input_slots": [
+    "f+2+4"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -2",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "2"
+  },
+  "f+3": {
+   "name": "Siren's Kiss",
+   "input": "f+3",
+   "t8_source": "nina",
+   "t8_id": "Nina-f+3",
+   "t8_damage": "10,20",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.417,
+   "damage": 30,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-f+3",
+   "input_slots": [
+    "f+3"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     10,
+     20
+    ],
+    "total": 30
+   },
+   "note": "High, High; on block +3~+4; knockdown on hit"
+  },
+  "f+3+4": {
+   "name": "Move f+3+4 (f+3+4)",
+   "input": "f+3+4",
+   "t8_source": "nina",
+   "t8_id": "Nina-f+3+4",
+   "t8_damage": "12",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 12,
+   "limb": "both",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:nina:nina-f+3+4",
+   "input_slots": [
+    "f+3+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -6"
+  },
+  "f+3+4,1": {
+   "name": "Impact Palm Bomb",
+   "input": "f+3+4,1",
+   "t8_source": "nina",
+   "t8_id": "Nina-f+3+4,1",
+   "t8_damage": ",22",
+   "startup": 0.45,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 34,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-f+3+4,1",
+   "input_slots": [
+    "f+3+4",
+    "f+3+4,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     22
+    ],
+    "total": 34
+   },
+   "note": "Mid; on block -14; knockdown on hit"
+  },
+  "f+3+4,2": {
+   "name": "Quick Kiss Shot",
+   "input": "f+3+4,2",
+   "t8_source": "nina",
+   "t8_id": "Nina-f+3+4,2",
+   "t8_damage": ",12,12",
+   "startup": 0.5,
+   "active": 0.033,
+   "recovery": 0.667,
+   "damage": 36,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-f+3+4,2",
+   "input_slots": [
+    "f+3+4",
+    "f+3+4,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     12,
+     12
+    ],
+    "total": 36
+   },
+   "note": "Special mid, Special mid; on block -9"
+  },
+  "f+3+4,H.2": {
+   "name": "Quick Kiss Shot",
+   "input": "f+3+4,H.2",
+   "t8_source": "nina",
+   "t8_id": "Nina-f+3+4,H.2",
+   "t8_damage": ",12,12,5,5",
+   "startup": 0.5,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 46,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-f+3+4,h.2",
+   "input_slots": [
+    "f+3+4",
+    "f+3+4,H.2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     12,
+     12,
+     5,
+     5
+    ],
+    "total": 46
+   },
+   "note": "Special mid, Special mid, Special mid, Special mid; on block -6; knockdown on hit"
+  },
+  "f+4": {
+   "name": "Move f+4 (f+4)",
+   "input": "f+4",
+   "t8_source": "nina",
+   "t8_id": "Nina-f+4",
+   "t8_damage": "15",
+   "startup": 0.35,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-f+4",
+   "input_slots": [
+    "f+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -5"
+  },
+  "f+4,2": {
+   "name": "Aconite",
+   "input": "f+4,2",
+   "t8_source": "nina",
+   "t8_id": "Nina-f+4,2",
+   "t8_damage": ",22",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 37,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-f+4,2",
+   "input_slots": [
+    "f+4",
+    "f+4,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     22
+    ],
+    "total": 37
+   },
+   "note": "High; on block -9"
+  },
+  "FC.df+2": {
+   "name": "Sadistic Cupid",
+   "input": "FC.df+2",
+   "t8_source": "nina",
+   "t8_id": "Nina-FC.df+2",
+   "t8_damage": "15,15",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 30,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-fc.df+2",
+   "input_slots": [
+    "FC.df+2"
+   ],
+   "move_class": "throw",
+   "multi_hit": {
+    "hits": [
+     15,
+     15
+    ],
+    "total": 30
+   },
+   "note": "Mid, Throw; on block -11",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "f,F+1+2": {
+   "name": "Bombshell Blast",
+   "input": "f,F+1+2",
+   "t8_source": "nina",
+   "t8_id": "Nina-f,F+1+2",
+   "t8_damage": "26",
+   "startup": 0.383,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 26,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 13,
+   "anim_ref": "t8:nina:nina-f,f+1+2",
+   "input_slots": [
+    "f,F+1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -5; knockdown on hit"
+  },
+  "f,F+1+2*": {
+   "name": "Bombshell Blast",
+   "input": "f,F+1+2*",
+   "t8_source": "nina",
+   "t8_id": "Nina-f,F+1+2*",
+   "t8_damage": "32",
+   "startup": 0.55,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 32,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-f,f+1+2*",
+   "input_slots": [
+    "f,F+1+2*"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +8g; knockdown on hit"
+  },
+  "f,F+2": {
+   "name": "Sunset Strike",
+   "input": "f,F+2",
+   "t8_source": "nina",
+   "t8_id": "Nina-f,F+2",
+   "t8_damage": "20",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:nina:nina-f,f+2",
+   "input_slots": [
+    "f,F+2"
+   ],
+   "move_class": "strike",
+   "note": "High; on block -4; knockdown on hit"
+  },
+  "f,F+3": {
+   "name": "Bad Habit",
+   "input": "f,F+3",
+   "t8_source": "nina",
+   "t8_id": "Nina-f,F+3",
+   "t8_damage": "24",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 24,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:nina:nina-f,f+3",
+   "input_slots": [
+    "f,F+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -14"
+  },
+  "f,F+4": {
+   "name": "Kneel Kick",
+   "input": "f,F+4",
+   "t8_source": "nina",
+   "t8_id": "Nina-f,F+4",
+   "t8_damage": "20",
+   "startup": 0.467,
+   "active": 0.033,
+   "recovery": 0.417,
+   "damage": 20,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:nina:nina-f,f+4",
+   "input_slots": [
+    "f,F+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -10~-6"
+  },
+  "f,f,F+1+2": {
+   "name": "Spiral Bombshell Blast",
+   "input": "f,f,F+1+2",
+   "t8_source": "nina",
+   "t8_id": "Nina-f,f,F+1+2",
+   "t8_damage": "30",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 30,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-f,f,f+1+2",
+   "input_slots": [
+    "f,f,F+1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +4; knockdown on hit"
+  },
+  "f,f,F+3": {
+   "name": "Move f,f,F+3 (f,f,F+3)",
+   "input": "f,f,F+3",
+   "t8_source": "nina",
+   "t8_id": "Nina-f,f,F+3",
+   "t8_damage": "10",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 10,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:nina:nina-f,f,f+3",
+   "input_slots": [
+    "f,f,F+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -8"
+  },
+  "f,f,F+3,3": {
+   "name": "Electric Ray",
+   "input": "f,f,F+3,3",
+   "t8_source": "nina",
+   "t8_id": "Nina-f,f,F+3,3",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 30,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-f,f,f+3,3",
+   "input_slots": [
+    "f,f,F+3",
+    "f,f,F+3,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     20
+    ],
+    "total": 30
+   },
+   "note": "Mid; on block -4~-1; knockdown on hit"
+  },
+  "f,f,F+3,4": {
+   "name": "Stingray",
+   "input": "f,f,F+3,4",
+   "t8_source": "nina",
+   "t8_id": "Nina-f,f,F+3,4",
+   "t8_damage": ",21",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 31,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-f,f,f+3,4",
+   "input_slots": [
+    "f,f,F+3",
+    "f,f,F+3,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     21
+    ],
+    "total": 31
+   },
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "H.2+3": {
+   "name": "Bullet Assassination",
+   "input": "H.2+3",
+   "t8_source": "nina",
+   "t8_id": "Nina-H.2+3",
+   "t8_damage": "20,9, 12 (8), 14 (7), 14 (5), 30 (52)",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 29,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:nina:nina-h.2+3",
+   "input_slots": [
+    "H.2+3"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     20,
+     9
+    ],
+    "total": 29
+   },
+   "note": "Mid, High, High, High, High, Mid; on block +5~+6"
+  },
+  "H.b+1+2": {
+   "name": "Kiss Shot Penetrator",
+   "input": "H.b+1+2",
+   "t8_source": "nina",
+   "t8_id": "Nina-H.b+1+2",
+   "t8_damage": "5,20,2,2,3,3",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 35,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-h.b+1+2",
+   "input_slots": [
+    "H.b+1+2"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     5,
+     20,
+     2,
+     2,
+     3,
+     3
+    ],
+    "total": 35
+   },
+   "note": "Mid, Mid, High, High, High, High; on block +0; knockdown on hit"
+  },
+  "CD.4,3,H.1+2": {
+   "name": "Lapwing Kiss Shot",
+   "input": "CD.4,3,H.1+2",
+   "t8_source": "nina",
+   "t8_id": "Nina-H.CD.4,3,1+2",
+   "t8_damage": ",6 (4),6 (3),6 (2),[5] ([1]),[5] ([1])",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 38,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-h.cd.4,3,1+2",
+   "input_slots": [
+    "CD.4",
+    "CD.4,3",
+    "CD.4,3,H.1+2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     23
+    ],
+    "total": 38
+   },
+   "note": "High, High, High, High, High; on block -2; knockdown on hit"
+  },
+  "hFC.1": {
+   "name": "Crouch Jab",
+   "input": "hFC.1",
+   "t8_source": "nina",
+   "t8_id": "Nina-hFC.1",
+   "t8_damage": "5",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.4,
+   "damage": 5,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 2,
+   "anim_ref": "t8:nina:nina-hfc.1",
+   "input_slots": [
+    "hFC.1"
+   ],
+   "move_class": "strike",
+   "note": "Special low; on block -5"
+  },
+  "hFC.1,4": {
+   "name": "Crouch Jab (4)",
+   "input": "hFC.1,4",
+   "t8_source": "nina",
+   "t8_id": "Nina-hFC.1,4",
+   "t8_damage": ",10",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-hfc.1,4",
+   "input_slots": [
+    "hFC.1",
+    "hFC.1,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     10
+    ],
+    "total": 15
+   },
+   "note": "Mid; on block -11"
+  },
+  "hFC.2": {
+   "name": "Crouch Straight",
+   "input": "hFC.2",
+   "t8_source": "nina",
+   "t8_id": "Nina-hFC.2",
+   "t8_damage": "8",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.383,
+   "damage": 8,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 4,
+   "anim_ref": "t8:nina:nina-hfc.2",
+   "input_slots": [
+    "hFC.2"
+   ],
+   "move_class": "strike",
+   "note": "Special low; on block -4"
+  },
+  "hFC.3": {
+   "name": "Crouch Spin Kick",
+   "input": "hFC.3",
+   "t8_source": "nina",
+   "t8_id": "Nina-hFC.3",
+   "t8_damage": "10",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.6,
+   "damage": 10,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:nina:nina-hfc.3",
+   "input_slots": [
+    "hFC.3"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -17"
+  },
+  "hFC.4": {
+   "name": "Crouch Shin Kick",
+   "input": "hFC.4",
+   "t8_source": "nina",
+   "t8_id": "Nina-hFC.4",
+   "t8_damage": "6",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 6,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 3,
+   "anim_ref": "t8:nina:nina-hfc.4",
+   "input_slots": [
+    "hFC.4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -15"
+  },
+  "HHD.1": {
+   "name": "Kneebar",
+   "input": "HHD.1",
+   "t8_source": "nina",
+   "t8_id": "Nina-HHD.1",
+   "t8_damage": "20 (25)",
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-hhd.1",
+   "input_slots": [
+    "HHD.1"
+   ],
+   "move_class": "special",
+   "note": "Throw; on block -9"
+  },
+  "HHD.2": {
+   "name": "Double Heel Hold",
+   "input": "HHD.2",
+   "t8_source": "nina",
+   "t8_id": "Nina-HHD.2",
+   "t8_damage": "25 (30)",
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-hhd.2",
+   "input_slots": [
+    "HHD.2"
+   ],
+   "move_class": "special",
+   "note": "Throw; on block -9"
+  },
+  "Left throw": {
+   "name": "Kneebar",
+   "input": "Left throw",
+   "t8_source": "nina",
+   "t8_id": "Nina-Left throw",
+   "t8_damage": "40",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 40,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-left throw",
+   "input_slots": [
+    "Left throw"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -3",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "NTM.1": {
+   "name": "Neck Crusher",
+   "input": "NTM.1",
+   "t8_source": "nina",
+   "t8_id": "Nina-NTM.1",
+   "t8_damage": "15 (20)",
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-ntm.1",
+   "input_slots": [
+    "NTM.1"
+   ],
+   "move_class": "special",
+   "note": "Throw; on block -3"
+  },
+  "NTM.2": {
+   "name": "Leg Stretch Arm Lock",
+   "input": "NTM.2",
+   "t8_source": "nina",
+   "t8_id": "Nina-NTM.2",
+   "t8_damage": "20 (25)",
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-ntm.2",
+   "input_slots": [
+    "NTM.2"
+   ],
+   "move_class": "special",
+   "note": "Throw; on block -3"
+  },
+  "OTG.d+3+4": {
+   "name": "Twisted Mind",
+   "input": "OTG.d+3+4",
+   "t8_source": "nina",
+   "t8_id": "Nina-OTG.d+3+4",
+   "t8_damage": "30 (21)",
+   "startup": 0.283,
+   "active": 0.3,
+   "recovery": 0.583,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-otg.d+3+4",
+   "input_slots": [
+    "OTG.d+3+4"
+   ],
+   "move_class": "special",
+   "note": "Low; on block -17"
+  },
+  "qcb": {
+   "name": "Sway",
+   "input": "qcb",
+   "t8_source": "nina",
+   "t8_id": "Nina-qcb",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.017,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-qcb",
+   "input_slots": [
+    "qcb"
+   ],
+   "move_class": "special"
+  },
+  "qcb,B+1+3": {
+   "name": "Betrayer (BTR)",
+   "input": "qcb,B+1+3",
+   "t8_source": "nina",
+   "t8_id": "Nina-qcb,B+1+3",
+   "t8_damage": "15",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 15,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-qcb,b+1+3",
+   "input_slots": [
+    "qcb,B+1+3"
+   ],
+   "move_class": "throw",
+   "note": "Throw",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "qcf": {
+   "name": "Ducking Step",
+   "input": "qcf",
+   "t8_source": "nina",
+   "t8_id": "Nina-qcf",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.017,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-qcf",
+   "input_slots": [
+    "qcf"
+   ],
+   "move_class": "special"
+  },
+  "R.df+1+2": {
+   "name": "Death by Degrees",
+   "input": "R.df+1+2",
+   "t8_source": "nina",
+   "t8_id": "Nina-R.df+1+2",
+   "t8_damage": "55+",
+   "startup": 0.333,
+   "active": 0.3,
+   "recovery": 0.65,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-r.df+1+2",
+   "input_slots": [
+    "R.df+1+2"
+   ],
+   "move_class": "special",
+   "note": "Mid, Throw; on block -18"
+  },
+  "Right throw": {
+   "name": "Hammer Throw",
+   "input": "Right throw",
+   "t8_source": "nina",
+   "t8_id": "Nina-Right throw",
+   "t8_damage": "38",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 38,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-right throw",
+   "input_slots": [
+    "Right throw"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -3",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "SS.1": {
+   "name": "Snakeshot",
+   "input": "SS.1",
+   "t8_source": "nina",
+   "t8_id": "Nina-SS.1",
+   "t8_damage": "15",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.433,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-ss.1",
+   "input_slots": [
+    "SS.1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -10"
+  },
+  "SS.1+2": {
+   "name": "Spiral Explosion",
+   "input": "SS.1+2",
+   "t8_source": "nina",
+   "t8_id": "Nina-SS.1+2",
+   "t8_damage": "22",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 22,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t8:nina:nina-ss.1+2",
+   "input_slots": [
+    "SS.1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -8"
+  },
+  "SS.1,2": {
+   "name": "Double Shot",
+   "input": "SS.1,2",
+   "t8_source": "nina",
+   "t8_id": "Nina-SS.1,2",
+   "t8_damage": ",15",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.333,
+   "damage": 30,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-ss.1,2",
+   "input_slots": [
+    "SS.1",
+    "SS.1,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     15
+    ],
+    "total": 30
+   },
+   "note": "Mid; on block -3"
+  },
+  "SS.1+2,1+2": {
+   "name": "Spiral Kiss Shot",
+   "input": "SS.1+2,1+2",
+   "t8_source": "nina",
+   "t8_id": "Nina-SS.1+2,1+2",
+   "t8_damage": ",8,8",
+   "startup": 0.5,
+   "active": 0.033,
+   "recovery": 0.667,
+   "damage": 38,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-ss.1+2,1+2",
+   "input_slots": [
+    "SS.1+2",
+    "SS.1+2,1+2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     22,
+     8,
+     8
+    ],
+    "total": 38
+   },
+   "note": "Special mid, Special mid; on block -9; knockdown on hit"
+  },
+  "SS.1+2,H.1+2": {
+   "name": "Spiral Kiss Shot",
+   "input": "SS.1+2,H.1+2",
+   "t8_source": "nina",
+   "t8_id": "Nina-SS.1+2,H.1+2",
+   "t8_damage": ",8,8,[5],[5]",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 38,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-ss.1+2,h.1+2",
+   "input_slots": [
+    "SS.1+2",
+    "SS.1+2,H.1+2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     22,
+     8,
+     8
+    ],
+    "total": 38
+   },
+   "note": "Special mid, Special mid, Special mid, Special mid; on block -2; knockdown on hit"
+  },
+  "SS.2": {
+   "name": "Lift Shot",
+   "input": "SS.2",
+   "t8_source": "nina",
+   "t8_id": "Nina-SS.2",
+   "t8_damage": "15",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 15,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-ss.2",
+   "input_slots": [
+    "SS.2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -14; knockdown on hit"
+  },
+  "SS.4": {
+   "name": "Heel Slicer",
+   "input": "SS.4",
+   "t8_source": "nina",
+   "t8_id": "Nina-SS.4",
+   "t8_damage": "14",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 14,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 7,
+   "anim_ref": "t8:nina:nina-ss.4",
+   "input_slots": [
+    "SS.4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -14"
+  },
+  "SS.4,2": {
+   "name": "Tranquilizer",
+   "input": "SS.4,2",
+   "t8_source": "nina",
+   "t8_id": "Nina-SS.4,2",
+   "t8_damage": ",22",
+   "startup": 0.367,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 36,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-ss.4,2",
+   "input_slots": [
+    "SS.4",
+    "SS.4,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     14,
+     22
+    ],
+    "total": 36
+   },
+   "note": "High; on block -7"
+  },
+  "STB.2": {
+   "name": "Shoulder Through Arm Breaker",
+   "input": "STB.2",
+   "t8_source": "nina",
+   "t8_id": "Nina-STB.2",
+   "t8_damage": "5 (7)",
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-stb.2",
+   "input_slots": [
+    "STB.2"
+   ],
+   "move_class": "special",
+   "note": "Throw; on block +0"
+  },
+  "SWA.b+4": {
+   "name": "Ice Pick",
+   "input": "SWA.b+4",
+   "t8_source": "nina",
+   "t8_id": "Nina-SWA.b+4",
+   "t8_damage": "20",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 20,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:nina:nina-swa.b+4",
+   "input_slots": [
+    "SWA.b+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -12; knockdown on hit"
+  },
+  "TSS.1": {
+   "name": "Neck Crusher",
+   "input": "TSS.1",
+   "t8_source": "nina",
+   "t8_id": "Nina-TSS.1",
+   "t8_damage": "15 (20)",
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-tss.1",
+   "input_slots": [
+    "TSS.1"
+   ],
+   "move_class": "special",
+   "note": "Throw; on block -3"
+  },
+  "TSS.2": {
+   "name": "Leg Stretch Arm Lock",
+   "input": "TSS.2",
+   "t8_source": "nina",
+   "t8_id": "Nina-TSS.2",
+   "t8_damage": "20 (25)",
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-tss.2",
+   "input_slots": [
+    "TSS.2"
+   ],
+   "move_class": "special",
+   "note": "Throw"
+  },
+  "u+3": {
+   "name": "Move u+3 (u+3)",
+   "input": "u+3",
+   "t8_source": "nina",
+   "t8_id": "Nina-u+3",
+   "t8_damage": "20",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 20,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:nina:nina-u+3",
+   "input_slots": [
+    "u+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -15; knockdown on hit"
+  },
+  "u+4": {
+   "name": "Leaping Axe Kick",
+   "input": "u+4",
+   "t8_source": "nina",
+   "t8_id": "Nina-u+4",
+   "t8_damage": "21",
+   "startup": 0.383,
+   "active": 0.033,
+   "recovery": 0.383,
+   "damage": 21,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:nina:nina-u+4",
+   "input_slots": [
+    "u+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +0c~+5c"
+  },
+  "ub+1": {
+   "name": "Left Backhand Body Blow",
+   "input": "ub+1",
+   "t8_source": "nina",
+   "t8_id": "Nina-ub+1",
+   "t8_damage": "15",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-ub+1",
+   "input_slots": [
+    "ub+1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -16; knockdown on hit"
+  },
+  "ub+3": {
+   "name": "Move ub+3 (ub+3)",
+   "input": "ub+3",
+   "t8_source": "nina",
+   "t8_id": "Nina-ub+3",
+   "t8_damage": "15",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-ub+3",
+   "input_slots": [
+    "ub+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -15"
+  },
+  "uf+1": {
+   "name": "Skull Splitter",
+   "input": "uf+1",
+   "t8_source": "nina",
+   "t8_id": "Nina-uf+1",
+   "t8_damage": "20",
+   "startup": 0.433,
+   "active": 0.033,
+   "recovery": 0.4,
+   "damage": 20,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:nina:nina-uf+1",
+   "input_slots": [
+    "uf+1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -5; knockdown on hit"
+  },
+  "uf+1+2": {
+   "name": "Jumping Flip",
+   "input": "uf+1+2",
+   "t8_source": "nina",
+   "t8_id": "Nina-uf+1+2",
+   "t8_damage": "30,10",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 40,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-uf+1+2",
+   "input_slots": [
+    "uf+1+2"
+   ],
+   "move_class": "throw",
+   "multi_hit": {
+    "hits": [
+     30,
+     10
+    ],
+    "total": 40
+   },
+   "note": "Throw; on block +0; knockdown on hit",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2"
+  },
+  "uf+2": {
+   "name": "Move uf+2 (uf+2)",
+   "input": "uf+2",
+   "t8_source": "nina",
+   "t8_id": "Nina-uf+2",
+   "t8_damage": "10",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 10,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:nina:nina-uf+2",
+   "input_slots": [
+    "uf+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -10"
+  },
+  "uf+2,1": {
+   "name": "Binding Whip",
+   "input": "uf+2,1",
+   "t8_source": "nina",
+   "t8_id": "Nina-uf+2,1",
+   "t8_damage": ",10",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 20,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:nina:nina-uf+2,1",
+   "input_slots": [
+    "uf+2",
+    "uf+2,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     10
+    ],
+    "total": 20
+   },
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "uf+3": {
+   "name": "Catapult Kick",
+   "input": "uf+3",
+   "t8_source": "nina",
+   "t8_id": "Nina-uf+3",
+   "t8_damage": "18",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 18,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 9,
+   "anim_ref": "t8:nina:nina-uf+3",
+   "input_slots": [
+    "uf+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -10; knockdown on hit"
+  },
+  "uf+3+4": {
+   "name": "Running Jump Kick",
+   "input": "uf+3+4",
+   "t8_source": "nina",
+   "t8_id": "Nina-uf+3+4",
+   "t8_damage": "20,13",
+   "startup": 0.383,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 33,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-uf+3+4",
+   "input_slots": [
+    "uf+3+4"
+   ],
+   "move_class": "throw",
+   "multi_hit": {
+    "hits": [
+     20,
+     13
+    ],
+    "total": 33
+   },
+   "note": "Mid, Throw; on block -23a~-16a; knockdown on hit",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2"
+  },
+  "uf+4": {
+   "name": "Move uf+4 (uf+4)",
+   "input": "uf+4",
+   "t8_source": "nina",
+   "t8_id": "Nina-uf+4",
+   "t8_damage": "22",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.433,
+   "damage": 22,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t8:nina:nina-uf+4",
+   "input_slots": [
+    "uf+4"
+   ],
+   "move_class": "strike",
+   "note": "High; on block -9"
+  },
+  "uf+4,3": {
+   "name": "Move 3 (3)",
+   "input": "uf+4,3",
+   "t8_source": "nina",
+   "t8_id": "Nina-uf+4,3",
+   "t8_damage": ",10",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.633,
+   "damage": 32,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-uf+4,3",
+   "input_slots": [
+    "uf+4",
+    "uf+4,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     22,
+     10
+    ],
+    "total": 32
+   },
+   "note": "Low; on block -19"
+  },
+  "uf+4,3,4": {
+   "name": "Can Opener",
+   "input": "uf+4,3,4",
+   "t8_source": "nina",
+   "t8_id": "Nina-uf+4,3,4",
+   "t8_damage": ",14",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.417,
+   "damage": 46,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-uf+4,3,4",
+   "input_slots": [
+    "uf+4",
+    "uf+4,3",
+    "uf+4,3,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     22,
+     10,
+     14
+    ],
+    "total": 46
+   },
+   "note": "High; on block -6"
+  },
+  "uf,n,D+3": {
+   "name": "Move uf,n,D+3 (uf,n,D+3)",
+   "input": "uf,n,D+3",
+   "t8_source": "nina",
+   "t8_id": "Nina-uf,n,D+3",
+   "t8_damage": "15",
+   "startup": 0.717,
+   "active": 0.033,
+   "recovery": 0.6,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-uf,n,d+3",
+   "input_slots": [
+    "uf,n,D+3"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -17"
+  },
+  "uf,n,D+3,2": {
+   "name": "Hopping Low Kick to Right Uppercut",
+   "input": "uf,n,D+3,2",
+   "t8_source": "nina",
+   "t8_id": "Nina-uf,n,D+3,2",
+   "t8_damage": ",18",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 33,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-uf,n,d+3,2",
+   "input_slots": [
+    "uf,n,D+3",
+    "uf,n,D+3,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     18
+    ],
+    "total": 33
+   },
+   "note": "Mid; on block -11~-9"
+  },
+  "uf,n,D+3,4": {
+   "name": "Move 4 (4)",
+   "input": "uf,n,D+3,4",
+   "t8_source": "nina",
+   "t8_id": "Nina-uf,n,D+3,4",
+   "t8_damage": ",14",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 29,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:nina:nina-uf,n,d+3,4",
+   "input_slots": [
+    "uf,n,D+3",
+    "uf,n,D+3,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     14
+    ],
+    "total": 29
+   },
+   "note": "High; on block -8"
+  },
+  "uf,n,D+3,4,3": {
+   "name": "Hopping Low Kick to Easy Prey",
+   "input": "uf,n,D+3,4,3",
+   "t8_source": "nina",
+   "t8_id": "Nina-uf,n,D+3,4,3",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 49,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-uf,n,d+3,4,3",
+   "input_slots": [
+    "uf,n,D+3",
+    "uf,n,D+3,4",
+    "uf,n,D+3,4,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     14,
+     20
+    ],
+    "total": 49
+   },
+   "note": "Mid; on block -7; knockdown on hit"
+  },
+  "ws1": {
+   "name": "Move ws1 (ws1)",
+   "input": "ws1",
+   "t8_source": "nina",
+   "t8_id": "Nina-ws1",
+   "t8_damage": "17",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.4,
+   "damage": 17,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-ws1",
+   "input_slots": [
+    "ws1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -6"
+  },
+  "ws1,1+2": {
+   "name": "Fluttering Kiss Shot",
+   "input": "ws1,1+2",
+   "t8_source": "nina",
+   "t8_id": "Nina-ws1,1+2",
+   "t8_damage": ",6,6,6",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.667,
+   "damage": 35,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-ws1,1+2",
+   "input_slots": [
+    "ws1",
+    "ws1,1+2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     17,
+     6,
+     6,
+     6
+    ],
+    "total": 35
+   },
+   "note": "High, High, High; on block -9"
+  },
+  "ws1,4": {
+   "name": "Diving Hornet",
+   "input": "ws1,4",
+   "t8_source": "nina",
+   "t8_id": "Nina-ws1,4",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 37,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-ws1,4",
+   "input_slots": [
+    "ws1",
+    "ws1,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     17,
+     20
+    ],
+    "total": 37
+   },
+   "note": "Mid; on block -3c"
+  },
+  "ws1,H.1+2": {
+   "name": "Fluttering Kiss Shot",
+   "input": "ws1,H.1+2",
+   "t8_source": "nina",
+   "t8_id": "Nina-ws1,H.1+2",
+   "t8_damage": ",6,6,6,[5],[5]",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 35,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-ws1,h.1+2",
+   "input_slots": [
+    "ws1",
+    "ws1,H.1+2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     17,
+     6,
+     6,
+     6
+    ],
+    "total": 35
+   },
+   "note": "High, High, High, High, High; on block -2; knockdown on hit"
+  },
+  "ws2": {
+   "name": "Palm Uppercut",
+   "input": "ws2",
+   "t8_source": "nina",
+   "t8_id": "Nina-ws2",
+   "t8_damage": "15",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 15,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-ws2",
+   "input_slots": [
+    "ws2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "ws3": {
+   "name": "Spider Knee",
+   "input": "ws3",
+   "t8_source": "nina",
+   "t8_id": "Nina-ws3",
+   "t8_damage": "15",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-ws3",
+   "input_slots": [
+    "ws3"
+   ],
+   "move_class": "throw",
+   "note": "Mid, Throw; on block -13",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "ws3+4": {
+   "name": "Geyser Cannon",
+   "input": "ws3+4",
+   "t8_source": "nina",
+   "t8_id": "Nina-ws3+4",
+   "t8_damage": "21",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 21,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:nina:nina-ws3+4",
+   "input_slots": [
+    "ws3+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -17; knockdown on hit"
+  },
+  "ws4": {
+   "name": "Toe Smash",
+   "input": "ws4",
+   "t8_source": "nina",
+   "t8_id": "Nina-ws4",
+   "t8_damage": "15",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.367,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:nina:nina-ws4",
+   "input_slots": [
+    "ws4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -4"
+  },
+  "ws4,2": {
+   "name": "Spiral Explosion",
+   "input": "ws4,2",
+   "t8_source": "nina",
+   "t8_id": "Nina-ws4,2",
+   "t8_damage": ",22",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 37,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-ws4,2",
+   "input_slots": [
+    "ws4",
+    "ws4,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     22
+    ],
+    "total": 37
+   },
+   "note": "Mid; on block -9; knockdown on hit"
+  },
+  "ws4,3": {
+   "name": "Flashing Escape",
+   "input": "ws4,3",
+   "t8_source": "nina",
+   "t8_id": "Nina-ws4,3",
+   "t8_damage": ",24",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.6,
+   "damage": 39,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-ws4,3",
+   "input_slots": [
+    "ws4",
+    "ws4,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     24
+    ],
+    "total": 39
+   },
+   "note": "High; on block -10; knockdown on hit"
+  },
+  "ws4,3,1+2": {
+   "name": "Haematopus Kiss Shot",
+   "input": "ws4,3,1+2",
+   "t8_source": "nina",
+   "t8_id": "Nina-ws4,3,1+2",
+   "t8_damage": ",6 (4),6 (3),6 (2)",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.667,
+   "damage": 39,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-ws4,3,1+2",
+   "input_slots": [
+    "ws4",
+    "ws4,3",
+    "ws4,3,1+2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     24
+    ],
+    "total": 39
+   },
+   "note": "High, High, High; on block -9"
+  },
+  "ws4,3,H.1+2": {
+   "name": "Haematopus Kiss Shot",
+   "input": "ws4,3,H.1+2",
+   "t8_source": "nina",
+   "t8_id": "Nina-ws4,3,H.1+2",
+   "t8_damage": ",6 (4),6 (3),6 (2),[5] ([1]),[5] ([1])",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 39,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:nina:nina-ws4,3,h.1+2",
+   "input_slots": [
+    "ws4",
+    "ws4,3",
+    "ws4,3,H.1+2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     24
+    ],
+    "total": 39
+   },
+   "note": "High, High, High, High, High; on block -2; knockdown on hit"
   }
  },
  "strings": [
-  {
-   "input": "2,4",
-   "hits": [
-    "2",
-    "4"
-   ],
-   "t3_rows": [
-    106,
-    251
-   ]
-  },
-  {
-   "input": "2,4,2",
-   "hits": [
-    "2",
-    "4",
-    "2"
-   ],
-   "t3_rows": [
-    106,
-    251,
-    252
-   ]
-  },
-  {
-   "input": "4,1",
-   "hits": [
-    "4",
-    "1"
-   ],
-   "t3_rows": [
-    199,
-    184
-   ]
-  },
-  {
-   "input": "4,1,2",
-   "hits": [
-    "4",
-    "1",
-    "2"
-   ],
-   "t3_rows": [
-    199,
-    184,
-    186
-   ]
-  }
+  "1,2",
+  "1,2,1",
+  "1,2,1,1+2",
+  "1,2,1+2",
+  "1,2,1,H.1+2",
+  "1,2,4",
+  "1,4",
+  "1,4,1",
+  "2,3",
+  "3,2",
+  "3,3",
+  "3,3,3",
+  "3,3,3,4",
+  "3,4",
+  "4,2",
+  "4,3",
+  "4,4",
+  "4,4,3+4",
+  "4,4,4",
+  "b+1,4",
+  "b+2,2",
+  "b+2,2,2",
+  "b+3,4",
+  "b+3+4,1+2",
+  "b+3+4,3",
+  "b+3+4,H.1+2",
+  "CD.4,3",
+  "CD.4,3,1+2",
+  "d+1,4",
+  "d+2,2",
+  "d+3,2",
+  "d+3,4",
+  "d+3,4,3",
+  "d+4,1",
+  "db+4,3",
+  "df+1,2",
+  "df+1,2,1",
+  "df+1,2,1,1+2",
+  "df+1,2,1+2",
+  "df+1,2,1,H.1+2",
+  "df+1,2,4",
+  "df+3,1",
+  "df+3,1,2",
+  "df+3,2",
+  "df+3,2,1",
+  "df+3,2,1,2",
+  "df+3,2,1,2,1+2",
+  "df+3,2,1,4",
+  "df+3,2,3",
+  "df+3,2,4",
+  "df+3,3",
+  "f+2,1",
+  "f+2,1,3",
+  "f+2,1,4",
+  "f+3+4,1",
+  "f+3+4,2",
+  "f+3+4,H.2",
+  "f+4,2",
+  "f,f,F+3,3",
+  "f,f,F+3,4",
+  "CD.4,3,H.1+2",
+  "hFC.1,4",
+  "SS.1,2",
+  "SS.1+2,1+2",
+  "SS.1+2,H.1+2",
+  "SS.4,2",
+  "uf+2,1",
+  "uf+4,3",
+  "uf+4,3,4",
+  "uf,n,D+3,2",
+  "uf,n,D+3,4",
+  "uf,n,D+3,4,3",
+  "ws1,1+2",
+  "ws1,4",
+  "ws1,H.1+2",
+  "ws4,2",
+  "ws4,3",
+  "ws4,3,1+2",
+  "ws4,3,H.1+2"
  ],
  "specials": [
   {
-   "input": "d/b,n,f+2",
-   "t3_row": 276,
-   "damage": 21,
+   "input": "1+2+3+4",
+   "damage": 0
+  },
+  {
+   "input": "1+3",
+   "damage": 35,
    "throw": true
   },
   {
-   "input": "n,b,n,f+2",
-   "t3_row": 162,
-   "damage": 11,
-   "throw": false
+   "input": "2+4",
+   "damage": 35,
+   "throw": true
+  },
+  {
+   "input": "2+4,2",
+   "damage": 25,
+   "throw": true
+  },
+  {
+   "input": "ABK.1",
+   "damage": 0
+  },
+  {
+   "input": "ABK.2",
+   "damage": 0
+  },
+  {
+   "input": "b+1+3_b+2+4",
+   "damage": 0
+  },
+  {
+   "input": "Back throw",
+   "damage": 60,
+   "throw": true
+  },
+  {
+   "input": "BHS.1",
+   "damage": 0
+  },
+  {
+   "input": "BHS.1+2",
+   "damage": 10,
+   "throw": true
+  },
+  {
+   "input": "BHS.2",
+   "damage": 0
+  },
+  {
+   "input": "BTR.1",
+   "damage": 0
+  },
+  {
+   "input": "BTR.2",
+   "damage": 0
+  },
+  {
+   "input": "CHD.1",
+   "damage": 0
+  },
+  {
+   "input": "CHD.2",
+   "damage": 0
+  },
+  {
+   "input": "db,qcf,n,DB+2+3",
+   "damage": 0
+  },
+  {
+   "input": "df+1+3",
+   "damage": 37,
+   "throw": true
+  },
+  {
+   "input": "df+2+4",
+   "damage": 37,
+   "throw": true
+  },
+  {
+   "input": "df+3+4",
+   "damage": 0
+  },
+  {
+   "input": "df,df+1",
+   "damage": 43,
+   "throw": true
+  },
+  {
+   "input": "f+1+3",
+   "damage": 15,
+   "throw": true
+  },
+  {
+   "input": "f+2+4",
+   "damage": 15,
+   "throw": true
+  },
+  {
+   "input": "FC.df+2",
+   "damage": 30,
+   "throw": true
+  },
+  {
+   "input": "HHD.1",
+   "damage": 0
+  },
+  {
+   "input": "HHD.2",
+   "damage": 0
+  },
+  {
+   "input": "Left throw",
+   "damage": 40,
+   "throw": true
+  },
+  {
+   "input": "NTM.1",
+   "damage": 0
+  },
+  {
+   "input": "NTM.2",
+   "damage": 0
+  },
+  {
+   "input": "OTG.d+3+4",
+   "damage": 0
+  },
+  {
+   "input": "qcb",
+   "damage": 0
+  },
+  {
+   "input": "qcb,B+1+3",
+   "damage": 15,
+   "throw": true
+  },
+  {
+   "input": "qcf",
+   "damage": 0
+  },
+  {
+   "input": "R.df+1+2",
+   "damage": 0
+  },
+  {
+   "input": "Right throw",
+   "damage": 38,
+   "throw": true
+  },
+  {
+   "input": "STB.2",
+   "damage": 0
+  },
+  {
+   "input": "TSS.1",
+   "damage": 0
+  },
+  {
+   "input": "TSS.2",
+   "damage": 0
+  },
+  {
+   "input": "uf+1+2",
+   "damage": 40,
+   "throw": true
+  },
+  {
+   "input": "uf+3+4",
+   "damage": 33,
+   "throw": true
+  },
+  {
+   "input": "ws3",
+   "damage": 15,
+   "throw": true
   }
  ],
- "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
- "schema_version": 2
+ "frame_convention": "T8 60fps -> seconds (frames/60); damage T8 180HP scale as-is",
+ "schema_version": 2,
+ "canon_note": "Awa Pop WH signature moves preserved; T8 Nina frame data folded in."
 }

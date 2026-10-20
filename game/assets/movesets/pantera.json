@@ -324,41 +324,5497 @@
    "move_class": "signature",
    "wh_original": true,
    "note": "Vessel of TOU (battle itself). Roaring multi-hit claw flurry; no motive, only the hold."
+  },
+  "1+2": {
+   "name": "Move 1+2 (1+2)",
+   "input": "1+2",
+   "t8_source": "king",
+   "t8_id": "King-1+2",
+   "t8_damage": "17",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 17,
+   "limb": "both",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-1+2",
+   "input_slots": [
+    "1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -11"
+  },
+  "1,2": {
+   "name": "Palm Strike",
+   "input": "1,2",
+   "t8_source": "king",
+   "t8_id": "King-1,2",
+   "t8_damage": ",15",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.35,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:king:king-1,2",
+   "input_slots": [
+    "1",
+    "1,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     15
+    ],
+    "total": 20
+   },
+   "note": "High; on block -3"
+  },
+  "1+2,1": {
+   "name": "Head Spinner",
+   "input": "1+2,1",
+   "t8_source": "king",
+   "t8_id": "King-1+2,1",
+   "t8_damage": ",21",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 38,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-1+2,1",
+   "input_slots": [
+    "1+2",
+    "1+2,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     17,
+     21
+    ],
+    "total": 38
+   },
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "1,2,1": {
+   "name": "Palm Strike Uppercut",
+   "input": "1,2,1",
+   "t8_source": "king",
+   "t8_id": "King-1,2,1",
+   "t8_damage": ",10",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 30,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-1,2,1",
+   "input_slots": [
+    "1",
+    "1,2",
+    "1,2,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     15,
+     10
+    ],
+    "total": 30
+   },
+   "note": "Mid; on block -4"
+  },
+  "1,2,1,2+4": {
+   "name": "Suplex",
+   "input": "1,2,1,2+4",
+   "t8_source": "king",
+   "t8_id": "King-1,2,1,2+4",
+   "t8_damage": ",40",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.433,
+   "damage": 70,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-1,2,1,2+4",
+   "input_slots": [
+    "1",
+    "1,2",
+    "1,2,1",
+    "1,2,1,2+4"
+   ],
+   "move_class": "throw",
+   "multi_hit": {
+    "hits": [
+     5,
+     15,
+     10,
+     40
+    ],
+    "total": 70
+   },
+   "note": "Throw; on block -3",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "2"
+  },
+  "1,2,1,d+2+4": {
+   "name": "V Driver",
+   "input": "1,2,1,d+2+4",
+   "t8_source": "king",
+   "t8_id": "King-1,2,1,d+2+4",
+   "t8_damage": ",35",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.417,
+   "damage": 65,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-1,2,1,d+2+4",
+   "input_slots": [
+    "1",
+    "1,2",
+    "1,2,1",
+    "1,2,1,d+2+4"
+   ],
+   "move_class": "throw",
+   "multi_hit": {
+    "hits": [
+     5,
+     15,
+     10,
+     35
+    ],
+    "total": 65
+   },
+   "note": "Throw",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "2"
+  },
+  "1,2,2+4": {
+   "name": "Head Jammer",
+   "input": "1,2,2+4",
+   "t8_source": "king",
+   "t8_id": "King-1,2,2+4",
+   "t8_damage": ",30",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.433,
+   "damage": 50,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-1,2,2+4",
+   "input_slots": [
+    "1",
+    "1,2",
+    "1,2,2+4"
+   ],
+   "move_class": "throw",
+   "multi_hit": {
+    "hits": [
+     5,
+     15,
+     30
+    ],
+    "total": 50
+   },
+   "note": "Throw; on block -6",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "2"
+  },
+  "1+2,3": {
+   "name": "Brutal Sting",
+   "input": "1+2,3",
+   "t8_source": "king",
+   "t8_id": "King-1+2,3",
+   "t8_damage": ",25",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 42,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-1+2,3",
+   "input_slots": [
+    "1+2",
+    "1+2,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     17,
+     25
+    ],
+    "total": 42
+   },
+   "note": "High; on block -3; knockdown on hit"
+  },
+  "1+2+3+4": {
+   "name": "Ki Charge",
+   "input": "1+2+3+4",
+   "t8_source": "king",
+   "t8_id": "King-1+2+3+4",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-1+2+3+4",
+   "input_slots": [
+    "1+2+3+4"
+   ],
+   "move_class": "special"
+  },
+  "1,2,d+2+4": {
+   "name": "V Driver",
+   "input": "1,2,d+2+4",
+   "t8_source": "king",
+   "t8_id": "King-1,2,d+2+4",
+   "t8_damage": ",35",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 55,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-1,2,d+2+4",
+   "input_slots": [
+    "1",
+    "1,2",
+    "1,2,d+2+4"
+   ],
+   "move_class": "throw",
+   "multi_hit": {
+    "hits": [
+     5,
+     15,
+     35
+    ],
+    "total": 55
+   },
+   "note": "Throw",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "2"
+  },
+  "2+3": {
+   "name": "Heat Burst",
+   "input": "2+3",
+   "t8_source": "king",
+   "t8_id": "King-2+3",
+   "t8_damage": "[12;12]",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 24,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:king:king-2+3",
+   "input_slots": [
+    "2+3"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     12,
+     12
+    ],
+    "total": 24
+   },
+   "note": "Mid; on block +1"
+  },
+  "3,2": {
+   "name": "Left Kick (2)",
+   "input": "3,2",
+   "t8_source": "king",
+   "t8_id": "King-3,2",
+   "t8_damage": ",18",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 35,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-3,2",
+   "input_slots": [
+    "3",
+    "3,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     17,
+     18
+    ],
+    "total": 35
+   },
+   "note": "Mid; on block -9"
+  },
+  "3,2,2": {
+   "name": "Stampede Crush",
+   "input": "3,2,2",
+   "t8_source": "king",
+   "t8_id": "King-3,2,2",
+   "t8_damage": ",24",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 59,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-3,2,2",
+   "input_slots": [
+    "3",
+    "3,2",
+    "3,2,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     17,
+     18,
+     24
+    ],
+    "total": 59
+   },
+   "note": "Mid; on block -13"
+  },
+  "3,2,2*": {
+   "name": "Stampede Crush (Hold)",
+   "input": "3,2,2*",
+   "t8_source": "king",
+   "t8_id": "King-3,2,2*",
+   "t8_damage": ",30",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 65,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-3,2,2*",
+   "input_slots": [
+    "3",
+    "3,2",
+    "3,2,2*"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     17,
+     18,
+     30
+    ],
+    "total": 65
+   },
+   "note": "Mid; on block +9c; knockdown on hit"
+  },
+  "3+4": {
+   "name": "Jaguar Step",
+   "input": "3+4",
+   "t8_source": "king",
+   "t8_id": "King-3+4",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.4,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-3+4",
+   "input_slots": [
+    "3+4"
+   ],
+   "move_class": "special"
+  },
+  "AB1.1,1+2": {
+   "name": "Triple Arm Breaker (AB2a)",
+   "input": "AB1.1,1+2",
+   "t8_source": "king",
+   "t8_id": "King-AB1.1,1+2",
+   "t8_damage": "12,18",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 30,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-ab1.1,1+2",
+   "input_slots": [
+    "AB1.1,1+2"
+   ],
+   "move_class": "throw",
+   "multi_hit": {
+    "hits": [
+     12,
+     18
+    ],
+    "total": 30
+   },
+   "note": "Throw; on block -3",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2"
+  },
+  "AB1.2,1,1+3": {
+   "name": "Chicken Wing Face Lock (AB2c)",
+   "input": "AB1.2,1,1+3",
+   "t8_source": "king",
+   "t8_id": "King-AB1.2,1,1+3",
+   "t8_damage": "20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 10,
+   "anim_ref": "t8:king:king-ab1.2,1,1+3",
+   "input_slots": [
+    "AB1.2,1,1+3"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -3",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "AB1.2,4,2+4": {
+   "name": "Head Jammer (AB2b)",
+   "input": "AB1.2,4,2+4",
+   "t8_source": "king",
+   "t8_id": "King-AB1.2,4,2+4",
+   "t8_damage": "20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 10,
+   "anim_ref": "t8:king:king-ab1.2,4,2+4",
+   "input_slots": [
+    "AB1.2,4,2+4"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -3",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "2"
+  },
+  "AB2b.3,4,3+4,1+2": {
+   "name": "Struggle Combination (AB2b1)",
+   "input": "AB2b.3,4,3+4,1+2",
+   "t8_source": "king",
+   "t8_id": "King-AB2b.3,4,3+4,1+2",
+   "t8_damage": "20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 10,
+   "anim_ref": "t8:king:king-ab2b.3,4,3+4,1+2",
+   "input_slots": [
+    "AB2b.3,4,3+4,1+2"
+   ],
+   "move_class": "throw",
+   "note": "Throw",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2"
+  },
+  "AB2c.1,3,4,2,1+2": {
+   "name": "Rolling Death Cradle (AB3cb)",
+   "input": "AB2c.1,3,4,2,1+2",
+   "t8_source": "king",
+   "t8_id": "King-AB2c.1,3,4,2,1+2",
+   "t8_damage": "60",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 60,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-ab2c.1,3,4,2,1+2",
+   "input_slots": [
+    "AB2c.1,3,4,2,1+2"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -3",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2"
+  },
+  "AB2c.2,1,3,1+2": {
+   "name": "Dragon Sleeper Finish (AB3ca)",
+   "input": "AB2c.2,1,3,1+2",
+   "t8_source": "king",
+   "t8_id": "King-AB2c.2,1,3,1+2",
+   "t8_damage": "25",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 25,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 12,
+   "anim_ref": "t8:king:king-ab2c.2,1,3,1+2",
+   "input_slots": [
+    "AB2c.2,1,3,1+2"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -3",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2"
+  },
+  "AIR.1+3 / AIR.f+1+3": {
+   "name": "Mid-Air Leg Cross Hold",
+   "input": "AIR.1+3 / AIR.f+1+3",
+   "t8_source": "king",
+   "t8_id": "King-AIR.1+3",
+   "t8_damage": "30",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 30,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-air.1+3",
+   "input_slots": [
+    "AIR.1+3 / AIR.f+1+3"
+   ],
+   "move_class": "strike",
+   "note": "t(a)"
+  },
+  "AIR.2+4 / AIR.f+2+4": {
+   "name": "Spine Cracker",
+   "input": "AIR.2+4 / AIR.f+2+4",
+   "t8_source": "king",
+   "t8_id": "King-AIR.2+4",
+   "t8_damage": "20",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:king:king-air.2+4",
+   "input_slots": [
+    "AIR.2+4 / AIR.f+2+4"
+   ],
+   "move_class": "strike",
+   "note": "t(a)"
+  },
+  "AIR.d+1+3_2+4": {
+   "name": "Double Heel Hold (DHH)",
+   "input": "AIR.d+1+3_2+4",
+   "t8_source": "king",
+   "t8_id": "King-AIR.d+1+3",
+   "t8_damage": "15",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 15,
+   "limb": "both",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-air.d+1+3",
+   "input_slots": [
+    "AIR.d+1+3_2+4"
+   ],
+   "move_class": "strike",
+   "note": "t(a)"
+  },
+  "DHH.1+2,1+2": {
+   "name": "Flapjack (From DHH)",
+   "input": "DHH.1+2,1+2",
+   "t8_source": "king",
+   "t8_id": "King-AIR.d+1+3,1+2,1+2",
+   "t8_damage": "15",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 15,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-air.d+1+3,1+2,1+2",
+   "input_slots": [
+    "DHH.1+2,1+2"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -6",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2"
+  },
+  "DHH.2,1,3,4": {
+   "name": "Giant Swing (From DHH)",
+   "input": "DHH.2,1,3,4",
+   "t8_source": "king",
+   "t8_id": "King-Air.d+1+3,2,1,3,4",
+   "t8_damage": "12,13 / 32",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 12,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 6,
+   "anim_ref": "t8:king:king-air.d+1+3,2,1,3,4",
+   "input_slots": [
+    "DHH.2,1,3,4"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -6",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "AIR.f,f,F+2+4": {
+   "name": "Running Jaguar Bomb",
+   "input": "AIR.f,f,F+2+4",
+   "t8_source": "king",
+   "t8_id": "King-AIR.f,f,F+2+4",
+   "t8_damage": "65(70)",
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-air.f,f,f+2+4",
+   "input_slots": [
+    "AIR.f,f,F+2+4"
+   ],
+   "move_class": "special",
+   "note": "t(a)"
+  },
+  "AIR.f,hcf+1": {
+   "name": "Aerial Jaguar Bomb",
+   "input": "AIR.f,hcf+1",
+   "t8_source": "king",
+   "t8_id": "King-AIR.f,hcf+1",
+   "t8_damage": "55(60)",
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-air.f,hcf+1",
+   "input_slots": [
+    "AIR.f,hcf+1"
+   ],
+   "move_class": "special",
+   "note": "t(a)"
+  },
+  "b+1": {
+   "name": "Quick Hook",
+   "input": "b+1",
+   "t8_source": "king",
+   "t8_id": "King-b+1",
+   "t8_damage": "13",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 13,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:king:king-b+1",
+   "input_slots": [
+    "b+1"
+   ],
+   "move_class": "strike",
+   "note": "High; on block -8"
+  },
+  "b+1+2": {
+   "name": "Throw Away",
+   "input": "b+1+2",
+   "t8_source": "king",
+   "t8_id": "King-b+1+2",
+   "t8_damage": "0",
+   "startup": 0.2,
+   "active": 0.3,
+   "recovery": 0.333,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-b+1+2",
+   "input_slots": [
+    "b+1+2"
+   ],
+   "move_class": "special",
+   "note": "Throw; on block -3"
+  },
+  "b+1,2": {
+   "name": "Uppercut",
+   "input": "b+1,2",
+   "t8_source": "king",
+   "t8_id": "King-b+1,2",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 33,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-b+1,2",
+   "input_slots": [
+    "b+1",
+    "b+1,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     20
+    ],
+    "total": 33
+   },
+   "note": "High; on block -13"
+  },
+  "b+1+2,1+2": {
+   "name": "Back Swing",
+   "input": "b+1+2,1+2",
+   "t8_source": "king",
+   "t8_id": "King-b+1+2,1+2",
+   "t8_damage": "0",
+   "startup": 0.2,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-b+1+2,1+2",
+   "input_slots": [
+    "b+1+2,1+2"
+   ],
+   "move_class": "special",
+   "note": "Throw"
+  },
+  "b+1+3": {
+   "name": "Arm Whip",
+   "input": "b+1+3",
+   "t8_source": "king",
+   "t8_id": "King-b+1+3",
+   "t8_damage": "25",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 25,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:king:king-b+1+3",
+   "input_slots": [
+    "b+1+3"
+   ],
+   "move_class": "strike",
+   "note": "r(m)"
+  },
+  "b+1,4": {
+   "name": "Heel Kick",
+   "input": "b+1,4",
+   "t8_source": "king",
+   "t8_id": "King-b+1,4",
+   "t8_damage": ",23",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.667,
+   "damage": 36,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-b+1,4",
+   "input_slots": [
+    "b+1",
+    "b+1,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     23
+    ],
+    "total": 36
+   },
+   "note": "Mid; on block -10d"
+  },
+  "b+2": {
+   "name": "Chupacabra",
+   "input": "b+2",
+   "t8_source": "king",
+   "t8_id": "King-b+2",
+   "t8_damage": "16",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.4,
+   "damage": 16,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-b+2",
+   "input_slots": [
+    "b+2"
+   ],
+   "move_class": "strike",
+   "note": "High; on block -5"
+  },
+  "b+2,1": {
+   "name": "Spinning Back Elbow",
+   "input": "b+2,1",
+   "t8_source": "king",
+   "t8_id": "King-b+2,1",
+   "t8_damage": ",21",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 37,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-b+2,1",
+   "input_slots": [
+    "b+2",
+    "b+2,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     16,
+     21
+    ],
+    "total": 37
+   },
+   "note": "High; on block -9; knockdown on hit"
+  },
+  "b+2,1+2": {
+   "name": "Head Butt",
+   "input": "b+2,1+2",
+   "t8_source": "king",
+   "t8_id": "King-b+2,1+2",
+   "t8_damage": ",22",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 38,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-b+2,1+2",
+   "input_slots": [
+    "b+2",
+    "b+2,1+2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     16,
+     22
+    ],
+    "total": 38
+   },
+   "note": "High; on block +2c; knockdown on hit"
+  },
+  "b+2+4": {
+   "name": "Spinning Heel Hold",
+   "input": "b+2+4",
+   "t8_source": "king",
+   "t8_id": "King-b+2+4",
+   "t8_damage": "25",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 25,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:king:king-b+2+4",
+   "input_slots": [
+    "b+2+4"
+   ],
+   "move_class": "strike",
+   "note": "r(m)"
+  },
+  "b+2,4": {
+   "name": "Olympia Slam",
+   "input": "b+2,4",
+   "t8_source": "king",
+   "t8_id": "King-b+2,4",
+   "t8_damage": ",18,20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.433,
+   "damage": 54,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-b+2,4",
+   "input_slots": [
+    "b+2",
+    "b+2,4"
+   ],
+   "move_class": "throw",
+   "multi_hit": {
+    "hits": [
+     16,
+     18,
+     20
+    ],
+    "total": 54
+   },
+   "note": "Mid, Throw; on block -8",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "b+2+4:3+4": {
+   "name": "Figure Four Leg Lock",
+   "input": "b+2+4:3+4",
+   "t8_source": "king",
+   "t8_id": "King-b+2+4:3+4",
+   "t8_damage": "25(,28)",
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-b+2+4:3+4",
+   "input_slots": [
+    "b+2+4:3+4"
+   ],
+   "move_class": "special",
+   "note": "r(m)"
+  },
+  "b+3": {
+   "name": "Toll Kick",
+   "input": "b+3",
+   "t8_source": "king",
+   "t8_id": "King-b+3",
+   "t8_damage": "23",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 23,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:king:king-b+3",
+   "input_slots": [
+    "b+3"
+   ],
+   "move_class": "strike",
+   "note": "High; on block -10"
+  },
+  "b+3,&amp;#58;1+2": {
+   "name": "Guillotine Drop",
+   "input": "b+3,&amp;#58;1+2",
+   "t8_source": "king",
+   "t8_id": "King-b+3:1+2",
+   "t8_damage": ",15",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 38,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-b+3:1+2",
+   "input_slots": [
+    "b+3",
+    "b+3,&amp;#58;1+2"
+   ],
+   "move_class": "throw",
+   "multi_hit": {
+    "hits": [
+     23,
+     15
+    ],
+    "total": 38
+   },
+   "note": "Throw",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2"
+  },
+  "b+3+4": {
+   "name": "Reverse Jaguar Step",
+   "input": "b+3+4",
+   "t8_source": "king",
+   "t8_id": "King-b+3+4",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.4,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-b+3+4",
+   "input_slots": [
+    "b+3+4"
+   ],
+   "move_class": "special"
+  },
+  "b+4": {
+   "name": "Disgraceful Kick",
+   "input": "b+4",
+   "t8_source": "king",
+   "t8_id": "King-b+4",
+   "t8_damage": "25",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:king:king-b+4",
+   "input_slots": [
+    "b+4"
+   ],
+   "move_class": "strike",
+   "note": "High; on block +2"
+  },
+  "(back to wall).b,b,UB": {
+   "name": "[[Wall jump attack]]",
+   "input": "(back to wall).b,b,UB",
+   "t8_source": "king",
+   "t8_id": "King-(back to wall).b,b,UB",
+   "t8_damage": "45 / 21",
+   "startup": 0.717,
+   "active": 0.3,
+   "recovery": 0.433,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-(back to wall).b,b,ub",
+   "input_slots": [
+    "(back to wall).b,b,UB"
+   ],
+   "move_class": "special",
+   "note": "t / m; on block -8"
+  },
+  "(Behind 1 throw)": {
+   "name": "Half Boston Crab",
+   "input": "(Behind 1 throw)",
+   "t8_source": "king",
+   "t8_id": "King-Behind.1+3",
+   "t8_damage": "60",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 60,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-behind.1+3",
+   "input_slots": [
+    "(Behind 1 throw)"
+   ],
+   "move_class": "throw",
+   "note": "Throw",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "(Behind 2 throw)": {
+   "name": "Cobra Twist",
+   "input": "(Behind 2 throw)",
+   "t8_source": "king",
+   "t8_id": "King-Behind.2+4",
+   "t8_damage": "60",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 60,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-behind.2+4",
+   "input_slots": [
+    "(Behind 2 throw)"
+   ],
+   "move_class": "throw",
+   "note": "Throw",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "Behind.b,f+1+2": {
+   "name": "Stretch Buster",
+   "input": "Behind.b,f+1+2",
+   "t8_source": "king",
+   "t8_id": "King-Behind.b,f+1+2",
+   "t8_damage": "75",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 75,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-behind.b,f+1+2",
+   "input_slots": [
+    "Behind.b,f+1+2"
+   ],
+   "move_class": "throw",
+   "note": "Throw",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2"
+  },
+  "BT.1+2": {
+   "name": "Atomic Blaster",
+   "input": "BT.1+2",
+   "t8_source": "king",
+   "t8_id": "King-BT.1+2",
+   "t8_damage": "45",
+   "startup": 0.433,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 45,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-bt.1+2",
+   "input_slots": [
+    "BT.1+2"
+   ],
+   "move_class": "strike",
+   "note": "h!"
+  },
+  "BT.1+4": {
+   "name": "Moonsault Body Press",
+   "input": "BT.1+4",
+   "t8_source": "king",
+   "t8_id": "King-BT.1+4",
+   "t8_damage": "30",
+   "startup": 0.683,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 30,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-bt.1+4",
+   "input_slots": [
+    "BT.1+4"
+   ],
+   "move_class": "strike",
+   "note": "M!"
+  },
+  "BT.3": {
+   "name": "Blind Kick",
+   "input": "BT.3",
+   "t8_source": "king",
+   "t8_id": "King-BT.3",
+   "t8_damage": "18",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 18,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 9,
+   "anim_ref": "t8:king:king-bt.3",
+   "input_slots": [
+    "BT.3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -13"
+  },
+  "BT.3,&amp;#58;1+2": {
+   "name": "Neck Breaker",
+   "input": "BT.3,&amp;#58;1+2",
+   "t8_source": "king",
+   "t8_id": "King-BT3,1+2",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 38,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-bt3,1+2",
+   "input_slots": [
+    "BT.3",
+    "BT.3,&amp;#58;1+2"
+   ],
+   "move_class": "throw",
+   "multi_hit": {
+    "hits": [
+     18,
+     20
+    ],
+    "total": 38
+   },
+   "note": "Throw",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2"
+  },
+  "BT.3+4": {
+   "name": "Jaguar Step (BT)",
+   "input": "BT.3+4",
+   "t8_source": "king",
+   "t8_id": "King-BT.3+4",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.4,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-bt.3+4",
+   "input_slots": [
+    "BT.3+4"
+   ],
+   "move_class": "special"
+  },
+  "BT.d+4": {
+   "name": "Low Drop Kick (BT)",
+   "input": "BT.d+4",
+   "t8_source": "king",
+   "t8_id": "King-BT.d+4",
+   "t8_damage": "20",
+   "startup": 0.367,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 20,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:king:king-bt.d+4",
+   "input_slots": [
+    "BT.d+4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -14"
+  },
+  "CD.1+3": {
+   "name": "Arm Breaker (AB1)",
+   "input": "CD.1+3",
+   "t8_source": "king",
+   "t8_id": "King-CD.1+3",
+   "t8_damage": "20",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 20,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 10,
+   "anim_ref": "t8:king:king-cd.1+3",
+   "input_slots": [
+    "CD.1+3"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -2",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "CD.2+4": {
+   "name": "Standing Heel Hold (SHH1)",
+   "input": "CD.2+4",
+   "t8_source": "king",
+   "t8_id": "King-CD.2+4",
+   "t8_damage": "25",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 25,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 12,
+   "anim_ref": "t8:king:king-cd.2+4",
+   "input_slots": [
+    "CD.2+4"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -2",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "2"
+  },
+  "CD.1+2": {
+   "name": "Black Bomb",
+   "input": "CD.1+2",
+   "t8_source": "king",
+   "t8_id": "King-CD.DF+1+2",
+   "t8_damage": "24",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 24,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:king:king-cd.df+1+2",
+   "input_slots": [
+    "CD.1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -5c"
+  },
+  "CD.DF+4": {
+   "name": "Knee Lift",
+   "input": "CD.DF+4",
+   "t8_source": "king",
+   "t8_id": "King-CD.DF+4",
+   "t8_damage": "21",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.6,
+   "damage": 21,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:king:king-cd.df+4",
+   "input_slots": [
+    "CD.DF+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -9; knockdown on hit"
+  },
+  "d+1": {
+   "name": "Move d+1 (d+1)",
+   "input": "d+1",
+   "t8_source": "king",
+   "t8_id": "King-d+1",
+   "t8_damage": "5",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.4,
+   "damage": 5,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 2,
+   "anim_ref": "t8:king:king-d+1",
+   "input_slots": [
+    "d+1"
+   ],
+   "move_class": "strike",
+   "note": "Special low; on block -5"
+  },
+  "d+1+2": {
+   "name": "Atlas Hammer",
+   "input": "d+1+2",
+   "t8_source": "king",
+   "t8_id": "King-d+1+2",
+   "t8_damage": "21",
+   "startup": 0.383,
+   "active": 0.033,
+   "recovery": 0.75,
+   "damage": 21,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:king:king-d+1+2",
+   "input_slots": [
+    "d+1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -24; knockdown on hit"
+  },
+  "d+1,2": {
+   "name": "Uppercut",
+   "input": "d+1,2",
+   "t8_source": "king",
+   "t8_id": "King-d+1,2",
+   "t8_damage": ",13",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 18,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 9,
+   "anim_ref": "t8:king:king-d+1,2",
+   "input_slots": [
+    "d+1",
+    "d+1,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     13
+    ],
+    "total": 18
+   },
+   "note": "Mid; on block -11"
+  },
+  "d+1+3": {
+   "name": "Iron Lariat",
+   "input": "d+1+3",
+   "t8_source": "king",
+   "t8_id": "King-d+1+3",
+   "t8_damage": "35",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 35,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-d+1+3",
+   "input_slots": [
+    "d+1+3"
+   ],
+   "move_class": "strike",
+   "note": "t(c)"
+  },
+  "d+1+4": {
+   "name": "Freedom Face Buster",
+   "input": "d+1+4",
+   "t8_source": "king",
+   "t8_id": "King-d+1+4",
+   "t8_damage": "35",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.4,
+   "damage": 35,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-d+1+4",
+   "input_slots": [
+    "d+1+4"
+   ],
+   "move_class": "strike",
+   "note": "t(c)"
+  },
+  "d+2": {
+   "name": "Move d+2 (d+2)",
+   "input": "d+2",
+   "t8_source": "king",
+   "t8_id": "King-d+2",
+   "t8_damage": "8",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.383,
+   "damage": 8,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 4,
+   "anim_ref": "t8:king:king-d+2",
+   "input_slots": [
+    "d+2"
+   ],
+   "move_class": "strike",
+   "note": "Special low; on block -4"
+  },
+  "d+2+3": {
+   "name": "Corporate Elbow",
+   "input": "d+2+3",
+   "t8_source": "king",
+   "t8_id": "King-d+2+3",
+   "t8_damage": "25",
+   "startup": 0.5,
+   "active": 0.033,
+   "recovery": 0.633,
+   "damage": 25,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:king:king-d+2+3",
+   "input_slots": [
+    "d+2+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -8~-3"
+  },
+  "d+2+4": {
+   "name": "V Driver",
+   "input": "d+2+4",
+   "t8_source": "king",
+   "t8_id": "King-d+2+4",
+   "t8_damage": "35",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 35,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-d+2+4",
+   "input_slots": [
+    "d+2+4"
+   ],
+   "move_class": "strike",
+   "note": "t(c)"
+  },
+  "d+3": {
+   "name": "Stomp",
+   "input": "d+3",
+   "t8_source": "king",
+   "t8_id": "King-d+3",
+   "t8_damage": "12",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 12,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:king:king-d+3",
+   "input_slots": [
+    "d+3"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -12"
+  },
+  "d+3+4": {
+   "name": "Move d+3+4 (d+3+4)",
+   "input": "d+3+4",
+   "t8_source": "king",
+   "t8_id": "King-d+3+4",
+   "t8_damage": "14",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.733,
+   "damage": 14,
+   "limb": "both",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 7,
+   "anim_ref": "t8:king:king-d+3+4",
+   "input_slots": [
+    "d+3+4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -25"
+  },
+  "d+3+4,4": {
+   "name": "Move 4 (4)",
+   "input": "d+3+4,4",
+   "t8_source": "king",
+   "t8_id": "King-d+3+4,4",
+   "t8_damage": ",7",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.733,
+   "damage": 21,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:king:king-d+3+4,4",
+   "input_slots": [
+    "d+3+4",
+    "d+3+4,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     14,
+     7
+    ],
+    "total": 21
+   },
+   "note": "Low; on block -25"
+  },
+  "d+3+4,4,4": {
+   "name": "Stagger Kicks",
+   "input": "d+3+4,4,4",
+   "t8_source": "king",
+   "t8_id": "King-d+3+4,4,4",
+   "t8_damage": ",7",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.733,
+   "damage": 28,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:king:king-d+3+4,4,4",
+   "input_slots": [
+    "d+3+4",
+    "d+3+4,4",
+    "d+3+4,4,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     14,
+     7,
+     7
+    ],
+    "total": 28
+   },
+   "note": "Low; on block -25"
+  },
+  "d+3+4,4,4,2": {
+   "name": "Stagger Kick Spinning Uppercut",
+   "input": "d+3+4,4,4,2",
+   "t8_source": "king",
+   "t8_id": "King-d+3+4,4,4,2",
+   "t8_damage": ",10",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 38,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-d+3+4,4,4,2",
+   "input_slots": [
+    "d+3+4",
+    "d+3+4,4",
+    "d+3+4,4,4",
+    "d+3+4,4,4,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     14,
+     7,
+     7,
+     10
+    ],
+    "total": 38
+   },
+   "note": "Mid; on block -15"
+  },
+  "d+3+4,4,4,4": {
+   "name": "Stagger Kick Flurry",
+   "input": "d+3+4,4,4,4",
+   "t8_source": "king",
+   "t8_id": "King-d+3+4,4,4,4",
+   "t8_damage": ",4,3",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.75,
+   "damage": 35,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-d+3+4,4,4,4",
+   "input_slots": [
+    "d+3+4",
+    "d+3+4,4",
+    "d+3+4,4,4",
+    "d+3+4,4,4,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     14,
+     7,
+     7,
+     4,
+     3
+    ],
+    "total": 35
+   },
+   "note": "Low, Low; on block -26"
+  },
+  "d+4": {
+   "name": "Move d+4 (d+4)",
+   "input": "d+4",
+   "t8_source": "king",
+   "t8_id": "King-d+4",
+   "t8_damage": "6",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 6,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 3,
+   "anim_ref": "t8:king:king-d+4",
+   "input_slots": [
+    "d+4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -15"
+  },
+  "db+1+2": {
+   "name": "Muscle Armor",
+   "input": "db+1+2",
+   "t8_source": "king",
+   "t8_id": "King-db+1+2",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.283,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-db+1+2",
+   "input_slots": [
+    "db+1+2"
+   ],
+   "move_class": "special"
+  },
+  "db+1+2,2": {
+   "name": "Emerald Elbow",
+   "input": "db+1+2,2",
+   "t8_source": "king",
+   "t8_id": "King-db+1+2,2",
+   "t8_damage": ",15",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 15,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-db+1+2,2",
+   "input_slots": [
+    "db+1+2",
+    "db+1+2,2"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -9",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2"
+  },
+  "db+1+2,3+4": {
+   "name": "Jaguar Sprint",
+   "input": "db+1+2,3+4",
+   "t8_source": "king",
+   "t8_id": "King-db+1+2,3+4",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.5,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-db+1+2,3+4",
+   "input_slots": [
+    "db+1+2",
+    "db+1+2,3+4"
+   ],
+   "move_class": "special"
+  },
+  "db+2": {
+   "name": "Brain Chop",
+   "input": "db+2",
+   "t8_source": "king",
+   "t8_id": "King-db+2",
+   "t8_damage": "21",
+   "startup": 0.417,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 21,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:king:king-db+2",
+   "input_slots": [
+    "db+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -5c; knockdown on hit"
+  },
+  "db+2+3": {
+   "name": "Figure Four Leg Lock",
+   "input": "db+2+3",
+   "t8_source": "king",
+   "t8_id": "King-db+2+3",
+   "t8_damage": "40 (8+20+12)",
+   "startup": 0.2,
+   "active": 0.3,
+   "recovery": 0.45,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-db+2+3",
+   "input_slots": [
+    "db+2+3"
+   ],
+   "move_class": "special",
+   "note": "Throw; on block -6"
+  },
+  "db+3": {
+   "name": "Crouching Low Kick",
+   "input": "db+3",
+   "t8_source": "king",
+   "t8_id": "King-db+3",
+   "t8_damage": "17",
+   "startup": 0.383,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 17,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-db+3",
+   "input_slots": [
+    "db+3"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -14"
+  },
+  "db+4": {
+   "name": "Low Drop Kick",
+   "input": "db+4",
+   "t8_source": "king",
+   "t8_id": "King-db+4",
+   "t8_damage": "20",
+   "startup": 0.483,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 20,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:king:king-db+4",
+   "input_slots": [
+    "db+4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -17a"
+  },
+  "db,n,f+2+4": {
+   "name": "Tombstone Pile Driver",
+   "input": "db,n,f+2+4",
+   "t8_source": "king",
+   "t8_id": "King-db,n,f+2+4",
+   "t8_damage": "53",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 53,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-db,n,f+2+4",
+   "input_slots": [
+    "db,n,f+2+4"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -2",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "2"
+  },
+  "df+1": {
+   "name": "Move df+1 (df+1)",
+   "input": "df+1",
+   "t8_source": "king",
+   "t8_id": "King-df+1",
+   "t8_damage": "15",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.433,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-df+1",
+   "input_slots": [
+    "df+1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -1"
+  },
+  "df+1,2": {
+   "name": "Elbow Sting",
+   "input": "df+1,2",
+   "t8_source": "king",
+   "t8_id": "King-df+1,2",
+   "t8_damage": ",15",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 30,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-df+1,2",
+   "input_slots": [
+    "df+1",
+    "df+1,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     15
+    ],
+    "total": 30
+   },
+   "note": "Mid; on block -10"
+  },
+  "df+1+3": {
+   "name": "Reverse Arm Slam (RAS1)",
+   "input": "df+1+3",
+   "t8_source": "king",
+   "t8_id": "King-df+1+3",
+   "t8_damage": "19",
+   "startup": 0.533,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 19,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 10,
+   "anim_ref": "t8:king:king-df+1+3",
+   "input_slots": [
+    "df+1+3"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -2",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "df+2": {
+   "name": "Move df+2 (df+2)",
+   "input": "df+2",
+   "t8_source": "king",
+   "t8_id": "King-df+2",
+   "t8_damage": "12",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.417,
+   "damage": 12,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:king:king-df+2",
+   "input_slots": [
+    "df+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -6"
+  },
+  "df+2,1": {
+   "name": "Double Hook Disaster",
+   "input": "df+2,1",
+   "t8_source": "king",
+   "t8_id": "King-df+2,1",
+   "t8_damage": ",15",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 27,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:king:king-df+2,1",
+   "input_slots": [
+    "df+2",
+    "df+2,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     15
+    ],
+    "total": 27
+   },
+   "note": "High; on block -4; knockdown on hit"
+  },
+  "df+2+3": {
+   "name": "Knee Bash",
+   "input": "df+2+3",
+   "t8_source": "king",
+   "t8_id": "King-df+2+3",
+   "t8_damage": "40",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 40,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-df+2+3",
+   "input_slots": [
+    "df+2+3"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -2",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "df+2+4": {
+   "name": "Reverse Special Stretch Bomb (RSSB1)",
+   "input": "df+2+4",
+   "t8_source": "king",
+   "t8_id": "King-df+2+4",
+   "t8_damage": "20",
+   "startup": 0.533,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 20,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 10,
+   "anim_ref": "t8:king:king-df+2+4",
+   "input_slots": [
+    "df+2+4"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -2",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "2"
+  },
+  "df+3": {
+   "name": "Move df+3 (df+3)",
+   "input": "df+3",
+   "t8_source": "king",
+   "t8_id": "King-df+3",
+   "t8_damage": "17",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 17,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-df+3",
+   "input_slots": [
+    "df+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -9"
+  },
+  "df+3+4": {
+   "name": "Frankensteiner",
+   "input": "df+3+4",
+   "t8_source": "king",
+   "t8_id": "King-df+3+4",
+   "t8_damage": "30,15",
+   "startup": 0.467,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 45,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-df+3+4",
+   "input_slots": [
+    "df+3+4"
+   ],
+   "move_class": "throw",
+   "multi_hit": {
+    "hits": [
+     30,
+     15
+    ],
+    "total": 45
+   },
+   "note": "SM, Throw; on block -12d~-18d",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2"
+  },
+  "df+3,4": {
+   "name": "Lasso Kick",
+   "input": "df+3,4",
+   "t8_source": "king",
+   "t8_id": "King-df+3,4",
+   "t8_damage": ",23",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.417,
+   "damage": 40,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-df+3,4",
+   "input_slots": [
+    "df+3",
+    "df+3,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     17,
+     23
+    ],
+    "total": 40
+   },
+   "note": "High; on block +0"
+  },
+  "df+4": {
+   "name": "Move df+4 (df+4)",
+   "input": "df+4",
+   "t8_source": "king",
+   "t8_id": "King-df+4",
+   "t8_damage": "10",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 10,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:king:king-df+4",
+   "input_slots": [
+    "df+4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -14"
+  },
+  "df+4,3": {
+   "name": "Move 3 (3)",
+   "input": "df+4,3",
+   "t8_source": "king",
+   "t8_id": "King-df+4,3",
+   "t8_damage": ",11",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.4,
+   "damage": 21,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:king:king-df+4,3",
+   "input_slots": [
+    "df+4",
+    "df+4,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     11
+    ],
+    "total": 21
+   },
+   "note": "High; on block -5"
+  },
+  "df+4,3,4": {
+   "name": "Mincer",
+   "input": "df+4,3,4",
+   "t8_source": "king",
+   "t8_id": "King-df+4,3,4",
+   "t8_damage": ",27",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.633,
+   "damage": 48,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-df+4,3,4",
+   "input_slots": [
+    "df+4",
+    "df+4,3",
+    "df+4,3,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     11,
+     27
+    ],
+    "total": 48
+   },
+   "note": "Mid; on block -15; knockdown on hit"
+  },
+  "df+4,3,d+4": {
+   "name": "Mincer Low",
+   "input": "df+4,3,d+4",
+   "t8_source": "king",
+   "t8_id": "King-df+4,3,d+4",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 41,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-df+4,3,d+4",
+   "input_slots": [
+    "df+4",
+    "df+4,3",
+    "df+4,3,d+4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     11,
+     20
+    ],
+    "total": 41
+   },
+   "note": "Low; on block -10d; knockdown on hit"
+  },
+  "f+1+2": {
+   "name": "Shadow Lariat",
+   "input": "f+1+2",
+   "t8_source": "king",
+   "t8_id": "King-f+1+2",
+   "t8_damage": "23",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 23,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:king:king-f+1+2",
+   "input_slots": [
+    "f+1+2"
+   ],
+   "move_class": "strike",
+   "note": "High; on block +0~+1"
+  },
+  "f+1+4": {
+   "name": "Body Check",
+   "input": "f+1+4",
+   "t8_source": "king",
+   "t8_id": "King-f+1+4",
+   "t8_damage": "21",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.433,
+   "damage": 21,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:king:king-f+1+4",
+   "input_slots": [
+    "f+1+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +3"
+  },
+  "f+2": {
+   "name": "Move f+2 (f+2)",
+   "input": "f+2",
+   "t8_source": "king",
+   "t8_id": "King-f+2",
+   "t8_damage": "12",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 12,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:king:king-f+2",
+   "input_slots": [
+    "f+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -11"
+  },
+  "f+2,1": {
+   "name": "Elbow Impact",
+   "input": "f+2,1",
+   "t8_source": "king",
+   "t8_id": "King-f+2,1",
+   "t8_damage": ",25",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 37,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-f+2,1",
+   "input_slots": [
+    "f+2",
+    "f+2,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     25
+    ],
+    "total": 37
+   },
+   "note": "High; on block -9; knockdown on hit"
+  },
+  "f+2+3": {
+   "name": "Shoulder Tackle",
+   "input": "f+2+3",
+   "t8_source": "king",
+   "t8_id": "King-f+2+3",
+   "t8_damage": "27",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 27,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:king:king-f+2+3",
+   "input_slots": [
+    "f+2+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -5; knockdown on hit"
+  },
+  "f+2,d+1": {
+   "name": "Move d+1 (d+1)",
+   "input": "f+2,d+1",
+   "t8_source": "king",
+   "t8_id": "King-f+2,d+1",
+   "t8_damage": ",15",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.633,
+   "damage": 27,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:king:king-f+2,d+1",
+   "input_slots": [
+    "f+2",
+    "f+2,d+1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     15
+    ],
+    "total": 27
+   },
+   "note": "Mid; on block -13c"
+  },
+  "f+2,d+1,2": {
+   "name": "Jaguar Smash Combo",
+   "input": "f+2,d+1,2",
+   "t8_source": "king",
+   "t8_id": "King-f+2,d+1,2",
+   "t8_damage": ",16",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.6,
+   "damage": 43,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-f+2,d+1,2",
+   "input_slots": [
+    "f+2",
+    "f+2,d+1",
+    "f+2,d+1,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     15,
+     16
+    ],
+    "total": 43
+   },
+   "note": "Mid; on block -15; knockdown on hit"
+  },
+  "f+3": {
+   "name": "Front Kick",
+   "input": "f+3",
+   "t8_source": "king",
+   "t8_id": "King-f+3",
+   "t8_damage": "18",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.433,
+   "damage": 18,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 9,
+   "anim_ref": "t8:king:king-f+3",
+   "input_slots": [
+    "f+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -8"
+  },
+  "f+3,1+2": {
+   "name": "DDT",
+   "input": "f+3,1+2",
+   "t8_source": "king",
+   "t8_id": "King-f+3,1+2",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 38,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-f+3,1+2",
+   "input_slots": [
+    "f+3",
+    "f+3,1+2"
+   ],
+   "move_class": "throw",
+   "multi_hit": {
+    "hits": [
+     18,
+     20
+    ],
+    "total": 38
+   },
+   "note": "Throw",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2"
+  },
+  "f+3+4": {
+   "name": "Jaguar Sprint",
+   "input": "f+3+4",
+   "t8_source": "king",
+   "t8_id": "King-f+3+4",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.5,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-f+3+4",
+   "input_slots": [
+    "f+3+4"
+   ],
+   "move_class": "special"
+  },
+  "f+4": {
+   "name": "Rolling Sobat",
+   "input": "f+4",
+   "t8_source": "king",
+   "t8_id": "King-f+4",
+   "t8_damage": "25",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:king:king-f+4",
+   "input_slots": [
+    "f+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -9; knockdown on hit"
+  },
+  "FC.db,d,db+1+2": {
+   "name": "Clothesline Press (Rock Bottom)",
+   "input": "FC.db,d,db+1+2",
+   "t8_source": "king",
+   "t8_id": "King-FC.db,d,db+1+2",
+   "t8_damage": "45",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 45,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-fc.db,d,db+1+2",
+   "input_slots": [
+    "FC.db,d,db+1+2"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -6",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2"
+  },
+  "FC.df+1": {
+   "name": "Leg Breaker",
+   "input": "FC.df+1",
+   "t8_source": "king",
+   "t8_id": "King-FC.df+1",
+   "t8_damage": "20",
+   "startup": 0.533,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 20,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:king:king-fc.df+1",
+   "input_slots": [
+    "FC.df+1"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -12; knockdown on hit"
+  },
+  "FC.df+2": {
+   "name": "Body Blow",
+   "input": "FC.df+2",
+   "t8_source": "king",
+   "t8_id": "King-FC.df+2",
+   "t8_damage": "21",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 21,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:king:king-fc.df+2",
+   "input_slots": [
+    "FC.df+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -14; knockdown on hit"
+  },
+  "FDFA.db+1+3_2+4": {
+   "name": "Wing Tearer",
+   "input": "FDFA.db+1+3_2+4",
+   "t8_source": "king",
+   "t8_id": "King-FDFA.db+1+3",
+   "t8_damage": "32",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 32,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-fdfa.db+1+3",
+   "input_slots": [
+    "FDFA.db+1+3_2+4"
+   ],
+   "move_class": "strike",
+   "note": "t(g); on block +0"
+  },
+  "FDFL.db+1+3_2+4": {
+   "name": "Bow & Arrow Stretch Hold",
+   "input": "FDFL.db+1+3_2+4",
+   "t8_source": "king",
+   "t8_id": "King-FDFL.db+1+3",
+   "t8_damage": "37",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 37,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-fdfl.db+1+3",
+   "input_slots": [
+    "FDFL.db+1+3_2+4"
+   ],
+   "move_class": "strike",
+   "note": "t(g); on block +0"
+  },
+  "FDFR.db+1+3_2+4": {
+   "name": "Camel Clutch",
+   "input": "FDFR.db+1+3_2+4",
+   "t8_source": "king",
+   "t8_id": "King-FDFR.db+1+3",
+   "t8_damage": "35",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 35,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-fdfr.db+1+3",
+   "input_slots": [
+    "FDFR.db+1+3_2+4"
+   ],
+   "move_class": "strike",
+   "note": "t(g); on block +0"
+  },
+  "FDFT.db+1+3_2+4": {
+   "name": "Half Boston Crab (OTG)",
+   "input": "FDFT.db+1+3_2+4",
+   "t8_source": "king",
+   "t8_id": "King-FDFT.db+1+3",
+   "t8_damage": "30",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 30,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-fdft.db+1+3",
+   "input_slots": [
+    "FDFT.db+1+3_2+4"
+   ],
+   "move_class": "strike",
+   "note": "t(g); on block +0"
+  },
+  "f,F+1": {
+   "name": "Jaguar Hook",
+   "input": "f,F+1",
+   "t8_source": "king",
+   "t8_id": "King-f,F+1",
+   "t8_damage": "21",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 21,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:king:king-f,f+1",
+   "input_slots": [
+    "f,F+1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -5"
+  },
+  "f,F+2": {
+   "name": "Beast Elbow",
+   "input": "f,F+2",
+   "t8_source": "king",
+   "t8_id": "King-f,F+2",
+   "t8_damage": "21",
+   "startup": 0.517,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 21,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:king:king-f,f+2",
+   "input_slots": [
+    "f,F+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +7"
+  },
+  "f,F+2+3": {
+   "name": "Diving Body Press",
+   "input": "f,F+2+3",
+   "t8_source": "king",
+   "t8_id": "King-f,F+2+3",
+   "t8_damage": "20,15",
+   "startup": 0.35,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 35,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-f,f+2+3",
+   "input_slots": [
+    "f,F+2+3"
+   ],
+   "move_class": "throw",
+   "multi_hit": {
+    "hits": [
+     20,
+     15
+    ],
+    "total": 35
+   },
+   "note": "Mid, Throw; on block -16c~+2c",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "f,F+3+4": {
+   "name": "Exploder",
+   "input": "f,F+3+4",
+   "t8_source": "king",
+   "t8_id": "King-f,F+3+4",
+   "t8_damage": "25",
+   "startup": 0.467,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 25,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:king:king-f,f+3+4",
+   "input_slots": [
+    "f,F+3+4"
+   ],
+   "move_class": "strike",
+   "note": "High; on block 0"
+  },
+  "f,F+4": {
+   "name": "Konvict Kick",
+   "input": "f,F+4",
+   "t8_source": "king",
+   "t8_id": "King-f,F+4",
+   "t8_damage": "25,(14)",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:king:king-f,f+4",
+   "input_slots": [
+    "f,F+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid, (t); on block -15; knockdown on hit"
+  },
+  "f,f,F+2+4": {
+   "name": "Tomahawk",
+   "input": "f,f,F+2+4",
+   "t8_source": "king",
+   "t8_id": "King-f,f,F+2+4",
+   "t8_damage": "40(45)",
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.483,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-f,f,f+2+4",
+   "input_slots": [
+    "f,f,F+2+4"
+   ],
+   "move_class": "special",
+   "note": "Throw; on block -5"
+  },
+  "f,f,F+3": {
+   "name": "Strong Knee",
+   "input": "f,f,F+3",
+   "t8_source": "king",
+   "t8_id": "King-f,f,F+3",
+   "t8_damage": "25",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 25,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:king:king-f,f,f+3",
+   "input_slots": [
+    "f,f,F+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +3"
+  },
+  "f,f,F+3+4": {
+   "name": "Running Exploder",
+   "input": "f,f,F+3+4",
+   "t8_source": "king",
+   "t8_id": "King-f,f,F+3+4",
+   "t8_damage": "40",
+   "startup": 0.467,
+   "active": 0.033,
+   "recovery": 0.7,
+   "damage": 40,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-f,f,f+3+4",
+   "input_slots": [
+    "f,f,F+3+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +17"
+  },
+  "f,f,n,1+2": {
+   "name": "Lay Off",
+   "input": "f,f,n,1+2",
+   "t8_source": "king",
+   "t8_id": "King-f,f,n,1+2",
+   "t8_damage": "0",
+   "startup": 0.15,
+   "active": 0.3,
+   "recovery": 0.383,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-f,f,n,1+2",
+   "input_slots": [
+    "f,f,n,1+2"
+   ],
+   "move_class": "special",
+   "note": "Mid; on block +0"
+  },
+  "f,f,n,2": {
+   "name": "Stomach Smash / Jaguar Hammer",
+   "input": "f,f,n,2",
+   "t8_source": "king",
+   "t8_id": "King-f,f,n,2",
+   "t8_damage": "17,(30)",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 17,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-f,f,n,2",
+   "input_slots": [
+    "f,f,n,2"
+   ],
+   "move_class": "strike",
+   "note": "Low, (t); on block -13"
+  },
+  "f,hcf+1": {
+   "name": "Giant Swing",
+   "input": "f,hcf+1",
+   "t8_source": "king",
+   "t8_id": "King-f,hcf+1",
+   "t8_damage": "45(50)/70,5",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 5,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 2,
+   "anim_ref": "t8:king:king-f,hcf+1",
+   "input_slots": [
+    "f,hcf+1"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -13",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "f,hcf+2": {
+   "name": "Tijuana Twister",
+   "input": "f,hcf+2",
+   "t8_source": "king",
+   "t8_id": "King-f,hcf+2",
+   "t8_damage": "50(55)",
+   "startup": 0.2,
+   "active": 0.3,
+   "recovery": 0.417,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-f,hcf+2",
+   "input_slots": [
+    "f,hcf+2"
+   ],
+   "move_class": "special",
+   "note": "Throw; on block -6"
+  },
+  "f,n,d,df": {
+   "name": "Beast Step",
+   "input": "f,n,d,df",
+   "t8_source": "king",
+   "t8_id": "King-f,n,d,df",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.017,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-f,n,d,df",
+   "input_slots": [
+    "f,n,d,df"
+   ],
+   "move_class": "special"
+  },
+  "FUFA.db+1+3_2+4": {
+   "name": "Shoulder Cracker",
+   "input": "FUFA.db+1+3_2+4",
+   "t8_source": "king",
+   "t8_id": "King-FUFA.db+1+3",
+   "t8_damage": "28",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 28,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:king:king-fufa.db+1+3",
+   "input_slots": [
+    "FUFA.db+1+3_2+4"
+   ],
+   "move_class": "strike",
+   "note": "t(g); on block +0"
+  },
+  "FUFL.db+1+3_2+4/ FUFR.db+1+3_2+4": {
+   "name": "Turn Over",
+   "input": "FUFL.db+1+3_2+4/ FUFR.db+1+3_2+4",
+   "t8_source": "king",
+   "t8_id": "King-FUFL/FUFR.db+1+3",
+   "t8_damage": "0",
+   "startup": 0.3,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-fufl/fufr.db+1+3",
+   "input_slots": [
+    "FUFL.db+1+3_2+4/ FUFR.db+1+3_2+4"
+   ],
+   "move_class": "special",
+   "note": "t(g); on block +0"
+  },
+  "FUFT.b+3+4": {
+   "name": "Whirling Spring Kick",
+   "input": "FUFT.b+3+4",
+   "t8_source": "king",
+   "t8_id": "King-FUFT.b+3+4",
+   "t8_damage": "25",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 25,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:king:king-fuft.b+3+4",
+   "input_slots": [
+    "FUFT.b+3+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -25; knockdown on hit"
+  },
+  "FUFT.db+1+3_2+4": {
+   "name": "Swing Away",
+   "input": "FUFT.db+1+3_2+4",
+   "t8_source": "king",
+   "t8_id": "King-FUFT.db+1+3",
+   "t8_damage": "20,10 / 35",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:king:king-fuft.db+1+3",
+   "input_slots": [
+    "FUFT.db+1+3_2+4"
+   ],
+   "move_class": "strike",
+   "note": "t(g); on block +0"
+  },
+  "FUFT.DB+1+3": {
+   "name": "Head Bomber",
+   "input": "FUFT.DB+1+3",
+   "t8_source": "king",
+   "t8_id": "King-FUFT.DB+1+3",
+   "t8_damage": "25",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 25,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:king:king-fuft.db+1+3",
+   "input_slots": [
+    "FUFT.DB+1+3"
+   ],
+   "move_class": "strike",
+   "note": "t(g); on block +0"
+  },
+  "FUFT.DB+2+4": {
+   "name": "Figure Four Leg Lock (OTG)",
+   "input": "FUFT.DB+2+4",
+   "t8_source": "king",
+   "t8_id": "King-FUFT.DB+2+4",
+   "t8_damage": "28",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 28,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:king:king-fuft.db+2+4",
+   "input_slots": [
+    "FUFT.DB+2+4"
+   ],
+   "move_class": "strike",
+   "note": "t(g); on block +0"
+  },
+  "H.2+3": {
+   "name": "Ultimo Jaguar",
+   "input": "H.2+3",
+   "t8_source": "king",
+   "t8_id": "King-H.2+3",
+   "t8_damage": "20,40",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 60,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-h.2+3",
+   "input_slots": [
+    "H.2+3"
+   ],
+   "move_class": "throw",
+   "multi_hit": {
+    "hits": [
+     20,
+     40
+    ],
+    "total": 60
+   },
+   "note": "Mid, Throw; on block +12 JGR",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "hFC.1+2": {
+   "name": "Ultimate Tackle (UT)",
+   "input": "hFC.1+2",
+   "t8_source": "king",
+   "t8_id": "King-hFC.1+2",
+   "t8_damage": "0",
+   "startup": 0.533,
+   "active": 0.3,
+   "recovery": 0.55,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-hfc.1+2",
+   "input_slots": [
+    "hFC.1+2"
+   ],
+   "move_class": "special",
+   "note": "t(m); on block -5"
+  },
+  "hFC.3": {
+   "name": "Move hFC.3 (hFC.3)",
+   "input": "hFC.3",
+   "t8_source": "king",
+   "t8_id": "King-hFC.3",
+   "t8_damage": "10",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 10,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:king:king-hfc.3",
+   "input_slots": [
+    "hFC.3"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -17"
+  },
+  "JGR.1": {
+   "name": "Running Elbow Smash",
+   "input": "JGR.1",
+   "t8_source": "king",
+   "t8_id": "King-JGR.1",
+   "t8_damage": "21",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 21,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:king:king-jgr.1",
+   "input_slots": [
+    "JGR.1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -8"
+  },
+  "JGR.1*": {
+   "name": "Running Elbow Smash (charged)",
+   "input": "JGR.1*",
+   "t8_source": "king",
+   "t8_id": "King-JGR.1*",
+   "t8_damage": "25",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 25,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:king:king-jgr.1*",
+   "input_slots": [
+    "JGR.1*"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -4; knockdown on hit"
+  },
+  "JGR.1+2": {
+   "name": "Diving Body Press",
+   "input": "JGR.1+2",
+   "t8_source": "king",
+   "t8_id": "King-JGR.1+2",
+   "t8_damage": "20,15",
+   "startup": 0.35,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 35,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-jgr.1+2",
+   "input_slots": [
+    "JGR.1+2"
+   ],
+   "move_class": "throw",
+   "multi_hit": {
+    "hits": [
+     20,
+     15
+    ],
+    "total": 35
+   },
+   "note": "Mid, Throw; on block -16c~+2c",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2"
+  },
+  "JGR.1+3_2+4": {
+   "name": "Rapid King Onslaught",
+   "input": "JGR.1+3_2+4",
+   "t8_source": "king",
+   "t8_id": "King-JGR.1+3",
+   "t8_damage": "45",
+   "startup": 0.383,
+   "active": 0.033,
+   "recovery": 0.4,
+   "damage": 45,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-jgr.1+3",
+   "input_slots": [
+    "JGR.1+3_2+4"
+   ],
+   "move_class": "throw",
+   "note": "Throw",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "JGR.2": {
+   "name": "Jaguar Axe",
+   "input": "JGR.2",
+   "t8_source": "king",
+   "t8_id": "King-JGR.2",
+   "t8_damage": "24",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 24,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:king:king-jgr.2",
+   "input_slots": [
+    "JGR.2"
+   ],
+   "move_class": "strike",
+   "note": "High; on block +3; knockdown on hit"
+  },
+  "JGR.2*": {
+   "name": "Jaguar Axe (charged)",
+   "input": "JGR.2*",
+   "t8_source": "king",
+   "t8_id": "King-JGR.2*",
+   "t8_damage": "28",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 28,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:king:king-jgr.2*",
+   "input_slots": [
+    "JGR.2*"
+   ],
+   "move_class": "strike",
+   "note": "High; on block +8; knockdown on hit"
+  },
+  "JGR.3": {
+   "name": "Sprint K.",
+   "input": "JGR.3",
+   "t8_source": "king",
+   "t8_id": "King-JGR.3",
+   "t8_damage": "30",
+   "startup": 0.367,
+   "active": 0.033,
+   "recovery": 0.717,
+   "damage": 30,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-jgr.3",
+   "input_slots": [
+    "JGR.3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -9"
+  },
+  "JGR.3*": {
+   "name": "Sprint K. (charged)",
+   "input": "JGR.3*",
+   "t8_source": "king",
+   "t8_id": "King-JGR.3*",
+   "t8_damage": "34",
+   "startup": 0.367,
+   "active": 0.033,
+   "recovery": 0.717,
+   "damage": 34,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-jgr.3*",
+   "input_slots": [
+    "JGR.3*"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +2; knockdown on hit"
+  },
+  "JGR.4": {
+   "name": "Dashing Low Drop Kick",
+   "input": "JGR.4",
+   "t8_source": "king",
+   "t8_id": "King-JGR.4",
+   "t8_damage": "20",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.6,
+   "damage": 20,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:king:king-jgr.4",
+   "input_slots": [
+    "JGR.4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -21"
+  },
+  "JGR.4*": {
+   "name": "Dashing Low Drop Kick (charged)",
+   "input": "JGR.4*",
+   "t8_source": "king",
+   "t8_id": "King-JGR.4*",
+   "t8_damage": "24",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.6,
+   "damage": 24,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:king:king-jgr.4*",
+   "input_slots": [
+    "JGR.4*"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -21; knockdown on hit"
+  },
+  "JGS.1": {
+   "name": "Hook",
+   "input": "JGS.1",
+   "t8_source": "king",
+   "t8_id": "King-JGS.1",
+   "t8_damage": "21/25/31",
+   "startup": 0.283,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-jgs.1",
+   "input_slots": [
+    "JGS.1"
+   ],
+   "move_class": "special",
+   "note": "High; on block -7/-1"
+  },
+  "JGS.1+3_2+4": {
+   "name": "Cobra Clutch (MMD1)",
+   "input": "JGS.1+3_2+4",
+   "t8_source": "king",
+   "t8_id": "King-JGS.1+3_2+4",
+   "t8_damage": "20",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 10,
+   "anim_ref": "t8:king:king-jgs.1+3_2+4",
+   "input_slots": [
+    "JGS.1+3_2+4"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -3",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "JGS.2": {
+   "name": "Hammer",
+   "input": "JGS.2",
+   "t8_source": "king",
+   "t8_id": "King-JGS.2",
+   "t8_damage": "15/18/22",
+   "startup": 0.183,
+   "active": 0.3,
+   "recovery": 0.45,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-jgs.2",
+   "input_slots": [
+    "JGS.2"
+   ],
+   "move_class": "special",
+   "note": "Mid; on block -9/-2/0c"
+  },
+  "JGS.3": {
+   "name": "Sobat",
+   "input": "JGS.3",
+   "t8_source": "king",
+   "t8_id": "King-JGS.3",
+   "t8_damage": "23/27/34",
+   "startup": 0.367,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-jgs.3",
+   "input_slots": [
+    "JGS.3"
+   ],
+   "move_class": "special",
+   "note": "Mid; on block -5/-1; knockdown on hit"
+  },
+  "JGS.3,2+3": {
+   "name": "Sobat & Press",
+   "input": "JGS.3,2+3",
+   "t8_source": "king",
+   "t8_id": "King-JGS.3,2+3",
+   "t8_damage": ",20,15",
+   "startup": 0.35,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 35,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-jgs.3,2+3",
+   "input_slots": [
+    "JGS.3",
+    "JGS.3,2+3"
+   ],
+   "move_class": "throw",
+   "multi_hit": {
+    "hits": [
+     20,
+     15
+    ],
+    "total": 35
+   },
+   "note": "Mid, Throw; on block -16c~+2c",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "JGS.4": {
+   "name": "High Kick",
+   "input": "JGS.4",
+   "t8_source": "king",
+   "t8_id": "King-JGS.4",
+   "t8_damage": "40/42/52",
+   "startup": 0.283,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-jgs.4",
+   "input_slots": [
+    "JGS.4"
+   ],
+   "move_class": "special",
+   "note": "High; on block +8/+15; knockdown on hit"
+  },
+  "JGS.df+4": {
+   "name": "Mid Kick",
+   "input": "JGS.df+4",
+   "t8_source": "king",
+   "t8_id": "King-JGS.df+4",
+   "t8_damage": "30/36/45",
+   "startup": 0.283,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-jgs.df+4",
+   "input_slots": [
+    "JGS.df+4"
+   ],
+   "move_class": "special",
+   "note": "Mid; on block -16/+8; knockdown on hit"
+  },
+  "(Left side throw)": {
+   "name": "Argentina Backbreaker",
+   "input": "(Left side throw)",
+   "t8_source": "king",
+   "t8_id": "King-LeftSide.1+3",
+   "t8_damage": "40",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 40,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-leftside.1+3",
+   "input_slots": [
+    "(Left side throw)"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -3",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "MMD1.1,4,2,3": {
+   "name": "Cobra Twist (MMD2)",
+   "input": "MMD1.1,4,2,3",
+   "t8_source": "king",
+   "t8_id": "King-MMD1.1,4,2,3",
+   "t8_damage": "12",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 12,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 6,
+   "anim_ref": "t8:king:king-mmd1.1,4,2,3",
+   "input_slots": [
+    "MMD1.1,4,2,3"
+   ],
+   "move_class": "throw",
+   "note": "Throw",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "MMD2.1,1+3/ MMD2.2,2+4": {
+   "name": "Reverse DDT (MMD3)",
+   "input": "MMD2.1,1+3/ MMD2.2,2+4",
+   "t8_source": "king",
+   "t8_id": "King-MMD2.1,1+3_2,2+4",
+   "t8_damage": "13",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 13,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 6,
+   "anim_ref": "t8:king:king-mmd2.1,1+3_2,2+4",
+   "input_slots": [
+    "MMD2.1,1+3/ MMD2.2,2+4"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -6",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "MMD3.1+2,1,1+3/ MMD3.1+2,2,2+4": {
+   "name": "Reverse Special Stretch Bomb (MMD4)",
+   "input": "MMD3.1+2,1,1+3/ MMD3.1+2,2,2+4",
+   "t8_source": "king",
+   "t8_id": "King-MMD3.1+2,1,1+3_1+2,2,2+4",
+   "t8_damage": "12",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 12,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 6,
+   "anim_ref": "t8:king:king-mmd3.1+2,1,1+3_1+2,2,2+4",
+   "input_slots": [
+    "MMD3.1+2,1,1+3/ MMD3.1+2,2,2+4"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -6",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "MMD3.2,3,1,1+2": {
+   "name": "Samurai Rock (MMD4a)",
+   "input": "MMD3.2,3,1,1+2",
+   "t8_source": "king",
+   "t8_id": "King-MMD3.2,3,1,1+2",
+   "t8_damage": "24",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 24,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 12,
+   "anim_ref": "t8:king:king-mmd3.2,3,1,1+2",
+   "input_slots": [
+    "MMD3.2,3,1,1+2"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -6",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2"
+  },
+  "MMD4.3+4,1+2": {
+   "name": "Backdrop (MMD5)",
+   "input": "MMD4.3+4,1+2",
+   "t8_source": "king",
+   "t8_id": "King-MMD4.3+4,1+2",
+   "t8_damage": "10",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 10,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 5,
+   "anim_ref": "t8:king:king-mmd4.3+4,1+2",
+   "input_slots": [
+    "MMD4.3+4,1+2"
+   ],
+   "move_class": "throw",
+   "note": "Throw",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2"
+  },
+  "MMD5.1+2,3,1+3/ MMD5.1+2,4,2+4": {
+   "name": "Burning Hammer (MMD6)",
+   "input": "MMD5.1+2,3,1+3/ MMD5.1+2,4,2+4",
+   "t8_source": "king",
+   "t8_id": "King-MMD5.1+2,3,1+3_1+2,4,2+4",
+   "t8_damage": "18",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 18,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 9,
+   "anim_ref": "t8:king:king-mmd5.1+2,3,1+3_1+2,4,2+4",
+   "input_slots": [
+    "MMD5.1+2,3,1+3/ MMD5.1+2,4,2+4"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -3",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "MMD5.1+2,4,2,1+2": {
+   "name": "Sol Naciente (MMD6a)",
+   "input": "MMD5.1+2,4,2,1+2",
+   "t8_source": "king",
+   "t8_id": "King-MMD5.1+2,4,2,1+2",
+   "t8_damage": "11,15",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 26,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 13,
+   "anim_ref": "t8:king:king-mmd5.1+2,4,2,1+2",
+   "input_slots": [
+    "MMD5.1+2,4,2,1+2"
+   ],
+   "move_class": "throw",
+   "multi_hit": {
+    "hits": [
+     11,
+     15
+    ],
+    "total": 26
+   },
+   "note": "Throw; on block -3",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2"
+  },
+  "MMD6.2,4,3,1,1+3/ MMD6.2,4,3,1,2+4": {
+   "name": "Screwdriver (MMD7)",
+   "input": "MMD6.2,4,3,1,1+3/ MMD6.2,4,3,1,2+4",
+   "t8_source": "king",
+   "t8_id": "King-MMD6.2,4,3,1,1+3_2,4,3,1,2+4",
+   "t8_damage": "31",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 31,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-mmd6.2,4,3,1,1+3_2,4,3,1,2+4",
+   "input_slots": [
+    "MMD6.2,4,3,1,1+3/ MMD6.2,4,3,1,2+4"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -6",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "PD.1+2,1+2": {
+   "name": "Double Arm Face Buster (from PD)",
+   "input": "PD.1+2,1+2",
+   "t8_source": "king",
+   "t8_id": "King-PD.1+2,1+2",
+   "t8_damage": "35",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 35,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-pd.1+2,1+2",
+   "input_slots": [
+    "PD.1+2,1+2"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -7",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2"
+  },
+  "PD.1+2,3,4,1+2": {
+   "name": "Boston Crab (from PD)",
+   "input": "PD.1+2,3,4,1+2",
+   "t8_source": "king",
+   "t8_id": "King-PD.1+2,3,4,1+2",
+   "t8_damage": "45",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 45,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-pd.1+2,3,4,1+2",
+   "input_slots": [
+    "PD.1+2,3,4,1+2"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -7",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2"
+  },
+  "qcb+1+2": {
+   "name": "Muscle Buster",
+   "input": "qcb+1+2",
+   "t8_source": "king",
+   "t8_id": "King-qcb+1+2",
+   "t8_damage": "50",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 50,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-qcb+1+2",
+   "input_slots": [
+    "qcb+1+2"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -6",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2"
+  },
+  "qcb+1+3": {
+   "name": "Elevating Spine Cracker",
+   "input": "qcb+1+3",
+   "t8_source": "king",
+   "t8_id": "King-qcb+1+3",
+   "t8_damage": "8",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 8,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 4,
+   "anim_ref": "t8:king:king-qcb+1+3",
+   "input_slots": [
+    "qcb+1+3"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -2; knockdown on hit",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "qcf+1": {
+   "name": "Pile Driver (PD)",
+   "input": "qcf+1",
+   "t8_source": "king",
+   "t8_id": "King-qcf+1",
+   "t8_damage": "30",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 30,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-qcf+1",
+   "input_slots": [
+    "qcf+1"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -2/-7",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "RAS1.1_2": {
+   "name": "Backdrop (RAS2)",
+   "input": "RAS1.1_2",
+   "t8_source": "king",
+   "t8_id": "King-RAS1.1_2",
+   "t8_damage": "7/15",
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-ras1.1_2",
+   "input_slots": [
+    "RAS1.1_2"
+   ],
+   "move_class": "special",
+   "note": "Throw"
+  },
+  "RAS2.1_2": {
+   "name": "German Suplex (RAS3)",
+   "input": "RAS2.1_2",
+   "t8_source": "king",
+   "t8_id": "King-RAS2.1_2",
+   "t8_damage": "7/15",
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-ras2.1_2",
+   "input_slots": [
+    "RAS2.1_2"
+   ],
+   "move_class": "special",
+   "note": "Throw; on block -9"
+  },
+  "RAS3.1_2": {
+   "name": "Power Bomb (RAS4)",
+   "input": "RAS3.1_2",
+   "t8_source": "king",
+   "t8_id": "King-RAS3.1_2",
+   "t8_damage": "12/17",
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-ras3.1_2",
+   "input_slots": [
+    "RAS3.1_2"
+   ],
+   "move_class": "special",
+   "note": "Throw"
+  },
+  "RAS4.1": {
+   "name": "Giant Swing (RAS5a)",
+   "input": "RAS4.1",
+   "t8_source": "king",
+   "t8_id": "King-RAS4.1",
+   "t8_damage": "15/20/31",
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-ras4.1",
+   "input_slots": [
+    "RAS4.1"
+   ],
+   "move_class": "special",
+   "note": "Throw; on block -3"
+  },
+  "RAS4.2": {
+   "name": "Muscle Buster (RAS5b)",
+   "input": "RAS4.2",
+   "t8_source": "king",
+   "t8_id": "King-RAS4.2",
+   "t8_damage": "20/25",
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-ras4.2",
+   "input_slots": [
+    "RAS4.2"
+   ],
+   "move_class": "special",
+   "note": "Throw; on block -6"
+  },
+  "R.df+1+2": {
+   "name": "Anger Of The Beast",
+   "input": "R.df+1+2",
+   "t8_source": "king",
+   "t8_id": "King-R.df+1+2",
+   "t8_damage": "55+",
+   "startup": 0.333,
+   "active": 0.3,
+   "recovery": 0.65,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-r.df+1+2",
+   "input_slots": [
+    "R.df+1+2"
+   ],
+   "move_class": "special",
+   "note": "Mid, Throw; on block -18"
+  },
+  "(Right side throw)": {
+   "name": "Knee Crusher",
+   "input": "(Right side throw)",
+   "t8_source": "king",
+   "t8_id": "King-RightSide.2+4",
+   "t8_damage": "42",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 42,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-rightside.2+4",
+   "input_slots": [
+    "(Right side throw)"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -3",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "RSSB1.1_2": {
+   "name": "Cannonball Buster (RSSB2)",
+   "input": "RSSB1.1_2",
+   "t8_source": "king",
+   "t8_id": "King-RSSB1.1_2",
+   "t8_damage": "7/15",
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-rssb1.1_2",
+   "input_slots": [
+    "RSSB1.1_2"
+   ],
+   "move_class": "special",
+   "note": "Throw"
+  },
+  "RSSB2.1_2": {
+   "name": "Manhattan Drop (RSSB3)",
+   "input": "RSSB2.1_2",
+   "t8_source": "king",
+   "t8_id": "King-RSSB2.1_2",
+   "t8_damage": "7/15",
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-rssb2.1_2",
+   "input_slots": [
+    "RSSB2.1_2"
+   ],
+   "move_class": "special",
+   "note": "Throw; on block -3"
+  },
+  "RSSB3.1_2": {
+   "name": "Victory Bomb (RSSB4)",
+   "input": "RSSB3.1_2",
+   "t8_source": "king",
+   "t8_id": "King-RSSB3.1_2",
+   "t8_damage": "9/13",
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-rssb3.1_2",
+   "input_slots": [
+    "RSSB3.1_2"
+   ],
+   "move_class": "special",
+   "note": "Throw"
+  },
+  "RSSB4.1": {
+   "name": "Giant Swing (RSSB5a)",
+   "input": "RSSB4.1",
+   "t8_source": "king",
+   "t8_id": "King-RSSB4.1",
+   "t8_damage": "15/20/31",
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-rssb4.1",
+   "input_slots": [
+    "RSSB4.1"
+   ],
+   "move_class": "special",
+   "note": "Throw"
+  },
+  "RSSB4.2": {
+   "name": "Muscle Buster (RSSB5b)",
+   "input": "RSSB4.2",
+   "t8_source": "king",
+   "t8_id": "King-RSSB4.2",
+   "t8_damage": "20/25",
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-rssb4.2",
+   "input_slots": [
+    "RSSB4.2"
+   ],
+   "move_class": "special",
+   "note": "Throw"
+  },
+  "SHH1.1,2,1+2": {
+   "name": "S.T.F. (SHH2a)",
+   "input": "SHH1.1,2,1+2",
+   "t8_source": "king",
+   "t8_id": "King-SHH1.1,2,1+2",
+   "t8_damage": "25",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 25,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 12,
+   "anim_ref": "t8:king:king-shh1.1,2,1+2",
+   "input_slots": [
+    "SHH1.1,2,1+2"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -10",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2"
+  },
+  "SHH1.1+2,1,3": {
+   "name": "Indian Death Lock (SHH2c)",
+   "input": "SHH1.1+2,1,3",
+   "t8_source": "king",
+   "t8_id": "King-SHH1.1+2,1,3",
+   "t8_damage": "20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 10,
+   "anim_ref": "t8:king:king-shh1.1+2,1,3",
+   "input_slots": [
+    "SHH1.1+2,1,3"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -10",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2"
+  },
+  "SHH1.2,1,1+3": {
+   "name": "Scorpion Death Lock (SHH2b)",
+   "input": "SHH1.2,1,1+3",
+   "t8_source": "king",
+   "t8_id": "King-SHH1.2,1,1+3",
+   "t8_damage": "30",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 30,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-shh1.2,1,1+3",
+   "input_slots": [
+    "SHH1.2,1,1+3"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -10",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "SHH2c.3,4,1+2,3+4": {
+   "name": "King's Bridge (SHH3ca)",
+   "input": "SHH2c.3,4,1+2,3+4",
+   "t8_source": "king",
+   "t8_id": "King-SHH2c.3,4,1+2,3+4",
+   "t8_damage": "40",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 40,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-shh2c.3,4,1+2,3+4",
+   "input_slots": [
+    "SHH2c.3,4,1+2,3+4"
+   ],
+   "move_class": "throw",
+   "note": "Throw",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2"
+  },
+  "ss2": {
+   "name": "Victory Palm",
+   "input": "ss2",
+   "t8_source": "king",
+   "t8_id": "King-ss2",
+   "t8_damage": "25",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:king:king-ss2",
+   "input_slots": [
+    "ss2"
+   ],
+   "move_class": "strike",
+   "note": "High; on block -5; knockdown on hit"
+  },
+  "ss2+4": {
+   "name": "Side Step to RSSB2 / RSSB1",
+   "input": "ss2+4",
+   "t8_source": "king",
+   "t8_id": "King-ss2+4",
+   "t8_damage": "15 / 20",
+   "startup": 0.217,
+   "active": 0.3,
+   "recovery": 0.45,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-ss2+4",
+   "input_slots": [
+    "ss2+4"
+   ],
+   "move_class": "special",
+   "note": "Throw; on block -3"
+  },
+  "ss2+4,b/db": {
+   "name": "Reverse Special Stretch Bomb (Cancel)",
+   "input": "ss2+4,b/db",
+   "t8_source": "king",
+   "t8_id": "King-ss2+4,b",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-ss2+4,b",
+   "input_slots": [
+    "ss2+4,b/db"
+   ],
+   "move_class": "special"
+  },
+  "ss3+4": {
+   "name": "Deadly Boomerang",
+   "input": "ss3+4",
+   "t8_source": "king",
+   "t8_id": "King-ss3+4",
+   "t8_damage": "50",
+   "startup": 0.45,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 50,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-ss3+4",
+   "input_slots": [
+    "ss3+4"
+   ],
+   "move_class": "strike",
+   "note": "High; on block +0"
+  },
+  "u+1+2": {
+   "name": "Capital Punishment",
+   "input": "u+1+2",
+   "t8_source": "king",
+   "t8_id": "King-u+1+2",
+   "t8_damage": "25",
+   "startup": 0.583,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 25,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:king:king-u+1+2",
+   "input_slots": [
+    "u+1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +2c; knockdown on hit"
+  },
+  "u+1+2*": {
+   "name": "Burning Knuckle",
+   "input": "u+1+2*",
+   "t8_source": "king",
+   "t8_id": "King-u+1+2*",
+   "t8_damage": "40",
+   "startup": 1.117,
+   "active": 0.033,
+   "recovery": 0.633,
+   "damage": 40,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-u+1+2*",
+   "input_slots": [
+    "u+1+2*"
+   ],
+   "move_class": "strike",
+   "note": "m!"
+  },
+  "ub+4": {
+   "name": "Move ub+4 (ub+4)",
+   "input": "ub+4",
+   "t8_source": "king",
+   "t8_id": "King-ub+4",
+   "t8_damage": "15",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-ub+4",
+   "input_slots": [
+    "ub+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "uf+1": {
+   "name": "Water Parting Chop",
+   "input": "uf+1",
+   "t8_source": "king",
+   "t8_id": "King-uf+1",
+   "t8_damage": "21",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 21,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:king:king-uf+1",
+   "input_slots": [
+    "uf+1"
+   ],
+   "move_class": "strike",
+   "note": "High; on block -3; knockdown on hit"
+  },
+  "uf+1+2": {
+   "name": "Executioner Drop",
+   "input": "uf+1+2",
+   "t8_source": "king",
+   "t8_id": "King-uf+1+2",
+   "t8_damage": "30",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 30,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-uf+1+2",
+   "input_slots": [
+    "uf+1+2"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -6",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2"
+  },
+  "uf+2": {
+   "name": "High Elbow Drop",
+   "input": "uf+2",
+   "t8_source": "king",
+   "t8_id": "King-uf+2",
+   "t8_damage": "40",
+   "startup": 0.783,
+   "active": 0.033,
+   "recovery": 0.7,
+   "damage": 40,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-uf+2",
+   "input_slots": [
+    "uf+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -17d (-17)"
+  },
+  "uf+3": {
+   "name": "Falling Heel Kick",
+   "input": "uf+3",
+   "t8_source": "king",
+   "t8_id": "King-uf+3",
+   "t8_damage": "23",
+   "startup": 0.367,
+   "active": 0.033,
+   "recovery": 0.433,
+   "damage": 23,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:king:king-uf+3",
+   "input_slots": [
+    "uf+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -10d"
+  },
+  "uf+3+4": {
+   "name": "Sole Crusher",
+   "input": "uf+3+4",
+   "t8_source": "king",
+   "t8_id": "King-uf+3+4",
+   "t8_damage": "23",
+   "startup": 0.367,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 23,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:king:king-uf+3+4",
+   "input_slots": [
+    "uf+3+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -12"
+  },
+  "uf+4": {
+   "name": "Jumping Knee Lift",
+   "input": "uf+4",
+   "t8_source": "king",
+   "t8_id": "King-uf+4",
+   "t8_damage": "13",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 13,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:king:king-uf+4",
+   "input_slots": [
+    "uf+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "uf,n,4": {
+   "name": "Delayed Rising Toe Kick",
+   "input": "uf,n,4",
+   "t8_source": "king",
+   "t8_id": "King-uf,n,4",
+   "t8_damage": "20",
+   "startup": 0.383,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 20,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:king:king-uf,n,4",
+   "input_slots": [
+    "uf,n,4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "UT,1+2": {
+   "name": "Armbar",
+   "input": "UT,1+2",
+   "t8_source": "king",
+   "t8_id": "King-UT,1+2",
+   "t8_damage": "25",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 25,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 12,
+   "anim_ref": "t8:king:king-ut,1+2",
+   "input_slots": [
+    "UT,1+2"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -9",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2"
+  },
+  "UT,1+2,1+2": {
+   "name": "Arm Twist",
+   "input": "UT,1+2,1+2",
+   "t8_source": "king",
+   "t8_id": "King-UT,1+2,1+2",
+   "t8_damage": ",10",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 35,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-ut,1+2,1+2",
+   "input_slots": [
+    "UT,1+2",
+    "UT,1+2,1+2"
+   ],
+   "move_class": "throw",
+   "multi_hit": {
+    "hits": [
+     25,
+     10
+    ],
+    "total": 35
+   },
+   "note": "Throw",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2"
+  },
+  "UT,2,1,2,1": {
+   "name": "Ultimate Punch",
+   "input": "UT,2,1,2,1",
+   "t8_source": "king",
+   "t8_id": "King-UT,2,1,2,1",
+   "t8_damage": "5,5,5,15",
+   "startup": 0.767,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 30,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-ut,2,1,2,1",
+   "input_slots": [
+    "UT,2,1,2,1"
+   ],
+   "move_class": "throw",
+   "multi_hit": {
+    "hits": [
+     5,
+     5,
+     5,
+     15
+    ],
+    "total": 30
+   },
+   "note": "Throw; on block +0",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "UT,3+4": {
+   "name": "Leg Cross Hold",
+   "input": "UT,3+4",
+   "t8_source": "king",
+   "t8_id": "King-UT,3+4",
+   "t8_damage": "20",
+   "startup": 1.15,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 10,
+   "anim_ref": "t8:king:king-ut,3+4",
+   "input_slots": [
+    "UT,3+4"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block +0",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2"
+  },
+  "UT,3+4,&amp;#58;1+2": {
+   "name": "Stretch Combo",
+   "input": "UT,3+4,&amp;#58;1+2",
+   "t8_source": "king",
+   "t8_id": "King-UT,3+4,1+2",
+   "t8_damage": ",30",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 50,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-ut,3+4,1+2",
+   "input_slots": [
+    "UT,3+4",
+    "UT,3+4,&amp;#58;1+2"
+   ],
+   "move_class": "throw",
+   "multi_hit": {
+    "hits": [
+     20,
+     30
+    ],
+    "total": 50
+   },
+   "note": "Throw",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2"
+  },
+  "WALL.f,hcf+1": {
+   "name": "Shining Torpedo",
+   "input": "WALL.f,hcf+1",
+   "t8_source": "king",
+   "t8_id": "King-WALL.f,hcf+1",
+   "t8_damage": "65(70)",
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:king:king-wall.f,hcf+1",
+   "input_slots": [
+    "WALL.f,hcf+1"
+   ],
+   "move_class": "special",
+   "note": "t(w)"
+  },
+  "ws1": {
+   "name": "Move ws1 (ws1)",
+   "input": "ws1",
+   "t8_source": "king",
+   "t8_id": "King-ws1",
+   "t8_damage": "12",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.367,
+   "damage": 12,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:king:king-ws1",
+   "input_slots": [
+    "ws1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -3"
+  },
+  "ws1+2": {
+   "name": "Snap Uppercut",
+   "input": "ws1+2",
+   "t8_source": "king",
+   "t8_id": "King-ws1+2",
+   "t8_damage": "20",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 20,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:king:king-ws1+2",
+   "input_slots": [
+    "ws1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -10; knockdown on hit"
+  },
+  "ws2": {
+   "name": "Move ws2 (ws2)",
+   "input": "ws2",
+   "t8_source": "king",
+   "t8_id": "King-ws2",
+   "t8_damage": "11",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 11,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:king:king-ws2",
+   "input_slots": [
+    "ws2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -9"
+  },
+  "ws2,2": {
+   "name": "Round Trip Chop",
+   "input": "ws2,2",
+   "t8_source": "king",
+   "t8_id": "King-ws2,2",
+   "t8_damage": ",25",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 36,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:king:king-ws2,2",
+   "input_slots": [
+    "ws2",
+    "ws2,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     11,
+     25
+    ],
+    "total": 36
+   },
+   "note": "Mid; on block -12"
+  },
+  "ws3": {
+   "name": "Move ws3 (ws3)",
+   "input": "ws3",
+   "t8_source": "king",
+   "t8_id": "King-ws3",
+   "t8_damage": "20",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 20,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:king:king-ws3",
+   "input_slots": [
+    "ws3"
+   ],
+   "move_class": "strike",
+   "note": "High; on block 0; knockdown on hit"
+  },
+  "ws4": {
+   "name": "Toe Smash",
+   "input": "ws4",
+   "t8_source": "king",
+   "t8_id": "King-ws4",
+   "t8_damage": "20",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.4,
+   "damage": 20,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:king:king-ws4",
+   "input_slots": [
+    "ws4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -6"
   }
  },
  "strings": [
-  {
-   "input": "2,1",
-   "hits": [
-    "2",
-    "1"
-   ],
-   "t3_rows": [
-    203,
-    220
-   ]
-  }
+  "1,2",
+  "1+2,1",
+  "1,2,1",
+  "1+2,3",
+  "2,1",
+  "3,2",
+  "3,2,2",
+  "3,2,2*",
+  "b+1,2",
+  "b+1,4",
+  "b+2,1",
+  "b+2,1+2",
+  "d+1,2",
+  "d+3+4,4",
+  "d+3+4,4,4",
+  "d+3+4,4,4,2",
+  "d+3+4,4,4,4",
+  "df+1,2",
+  "df+2,1",
+  "df+3,4",
+  "df+4,3",
+  "df+4,3,4",
+  "df+4,3,d+4",
+  "f+2,1",
+  "f+2,d+1",
+  "f+2,d+1,2",
+  "ws2,2"
  ],
  "specials": [
   {
-   "input": "b,n,f+1+2",
-   "t3_row": 281,
-   "damage": 21,
+   "input": "1,2,1,2+4",
+   "damage": 70,
    "throw": true
   },
   {
-   "input": "d,d/b,d,d/b+1+2",
-   "t3_row": 287,
-   "damage": 21,
+   "input": "1,2,1,d+2+4",
+   "damage": 65,
    "throw": true
   },
   {
-   "input": "d,d/f,d,d/f+1+2",
-   "t3_row": 284,
-   "damage": 21,
+   "input": "1,2,2+4",
+   "damage": 50,
    "throw": true
+  },
+  {
+   "input": "1+2+3+4",
+   "damage": 0
+  },
+  {
+   "input": "1,2,d+2+4",
+   "damage": 55,
+   "throw": true
+  },
+  {
+   "input": "1+3",
+   "damage": 35,
+   "throw": true
+  },
+  {
+   "input": "2+4",
+   "damage": 35,
+   "throw": true
+  },
+  {
+   "input": "3+4",
+   "damage": 0
+  },
+  {
+   "input": "AB1.1,1+2",
+   "damage": 30,
+   "throw": true
+  },
+  {
+   "input": "AB1.2,1,1+3",
+   "damage": 20,
+   "throw": true
+  },
+  {
+   "input": "AB1.2,4,2+4",
+   "damage": 20,
+   "throw": true
+  },
+  {
+   "input": "AB2b.3,4,3+4,1+2",
+   "damage": 20,
+   "throw": true
+  },
+  {
+   "input": "AB2c.1,3,4,2,1+2",
+   "damage": 60,
+   "throw": true
+  },
+  {
+   "input": "AB2c.2,1,3,1+2",
+   "damage": 25,
+   "throw": true
+  },
+  {
+   "input": "DHH.1+2,1+2",
+   "damage": 15,
+   "throw": true
+  },
+  {
+   "input": "DHH.2,1,3,4",
+   "damage": 12,
+   "throw": true
+  },
+  {
+   "input": "AIR.f,f,F+2+4",
+   "damage": 0
+  },
+  {
+   "input": "AIR.f,hcf+1",
+   "damage": 0
+  },
+  {
+   "input": "b+1+2",
+   "damage": 0
+  },
+  {
+   "input": "b+1+2,1+2",
+   "damage": 0
+  },
+  {
+   "input": "b+2,4",
+   "damage": 54,
+   "throw": true
+  },
+  {
+   "input": "b+2+4:3+4",
+   "damage": 0
+  },
+  {
+   "input": "b+3,&amp;#58;1+2",
+   "damage": 38,
+   "throw": true
+  },
+  {
+   "input": "b+3+4",
+   "damage": 0
+  },
+  {
+   "input": "(back to wall).b,b,UB",
+   "damage": 0
+  },
+  {
+   "input": "(Behind 1 throw)",
+   "damage": 60,
+   "throw": true
+  },
+  {
+   "input": "(Behind 2 throw)",
+   "damage": 60,
+   "throw": true
+  },
+  {
+   "input": "Behind.b,f+1+2",
+   "damage": 75,
+   "throw": true
+  },
+  {
+   "input": "BT.3,&amp;#58;1+2",
+   "damage": 38,
+   "throw": true
+  },
+  {
+   "input": "BT.3+4",
+   "damage": 0
+  },
+  {
+   "input": "CD.1+3",
+   "damage": 20,
+   "throw": true
+  },
+  {
+   "input": "CD.2+4",
+   "damage": 25,
+   "throw": true
+  },
+  {
+   "input": "db+1+2",
+   "damage": 0
+  },
+  {
+   "input": "db+1+2,2",
+   "damage": 15,
+   "throw": true
+  },
+  {
+   "input": "db+1+2,3+4",
+   "damage": 0
+  },
+  {
+   "input": "db+2+3",
+   "damage": 0
+  },
+  {
+   "input": "db,n,f+2+4",
+   "damage": 53,
+   "throw": true
+  },
+  {
+   "input": "df+1+3",
+   "damage": 19,
+   "throw": true
+  },
+  {
+   "input": "df+2+3",
+   "damage": 40,
+   "throw": true
+  },
+  {
+   "input": "df+2+4",
+   "damage": 20,
+   "throw": true
+  },
+  {
+   "input": "df+3+4",
+   "damage": 45,
+   "throw": true
+  },
+  {
+   "input": "f+3,1+2",
+   "damage": 38,
+   "throw": true
+  },
+  {
+   "input": "f+3+4",
+   "damage": 0
+  },
+  {
+   "input": "FC.db,d,db+1+2",
+   "damage": 45,
+   "throw": true
+  },
+  {
+   "input": "f,F+2+3",
+   "damage": 35,
+   "throw": true
+  },
+  {
+   "input": "f,f,F+2+4",
+   "damage": 0
+  },
+  {
+   "input": "f,f,n,1+2",
+   "damage": 0
+  },
+  {
+   "input": "f,hcf+1",
+   "damage": 5,
+   "throw": true
+  },
+  {
+   "input": "f,hcf+2",
+   "damage": 0
+  },
+  {
+   "input": "f,n,d,df",
+   "damage": 0
+  },
+  {
+   "input": "FUFL.db+1+3_2+4/ FUFR.db+1+3_2+4",
+   "damage": 0
+  },
+  {
+   "input": "H.2+3",
+   "damage": 60,
+   "throw": true
+  },
+  {
+   "input": "hFC.1+2",
+   "damage": 0
+  },
+  {
+   "input": "JGR.1+2",
+   "damage": 35,
+   "throw": true
+  },
+  {
+   "input": "JGR.1+3_2+4",
+   "damage": 45,
+   "throw": true
+  },
+  {
+   "input": "JGS.1",
+   "damage": 0
+  },
+  {
+   "input": "JGS.1+3_2+4",
+   "damage": 20,
+   "throw": true
+  },
+  {
+   "input": "JGS.2",
+   "damage": 0
+  },
+  {
+   "input": "JGS.3",
+   "damage": 0
+  },
+  {
+   "input": "JGS.3,2+3",
+   "damage": 35,
+   "throw": true
+  },
+  {
+   "input": "JGS.4",
+   "damage": 0
+  },
+  {
+   "input": "JGS.df+4",
+   "damage": 0
+  },
+  {
+   "input": "(Left side throw)",
+   "damage": 40,
+   "throw": true
+  },
+  {
+   "input": "MMD1.1,4,2,3",
+   "damage": 12,
+   "throw": true
+  },
+  {
+   "input": "MMD2.1,1+3/ MMD2.2,2+4",
+   "damage": 13,
+   "throw": true
+  },
+  {
+   "input": "MMD3.1+2,1,1+3/ MMD3.1+2,2,2+4",
+   "damage": 12,
+   "throw": true
+  },
+  {
+   "input": "MMD3.2,3,1,1+2",
+   "damage": 24,
+   "throw": true
+  },
+  {
+   "input": "MMD4.3+4,1+2",
+   "damage": 10,
+   "throw": true
+  },
+  {
+   "input": "MMD5.1+2,3,1+3/ MMD5.1+2,4,2+4",
+   "damage": 18,
+   "throw": true
+  },
+  {
+   "input": "MMD5.1+2,4,2,1+2",
+   "damage": 26,
+   "throw": true
+  },
+  {
+   "input": "MMD6.2,4,3,1,1+3/ MMD6.2,4,3,1,2+4",
+   "damage": 31,
+   "throw": true
+  },
+  {
+   "input": "PD.1+2,1+2",
+   "damage": 35,
+   "throw": true
+  },
+  {
+   "input": "PD.1+2,3,4,1+2",
+   "damage": 45,
+   "throw": true
+  },
+  {
+   "input": "qcb+1+2",
+   "damage": 50,
+   "throw": true
+  },
+  {
+   "input": "qcb+1+3",
+   "damage": 8,
+   "throw": true
+  },
+  {
+   "input": "qcf+1",
+   "damage": 30,
+   "throw": true
+  },
+  {
+   "input": "RAS1.1_2",
+   "damage": 0
+  },
+  {
+   "input": "RAS2.1_2",
+   "damage": 0
+  },
+  {
+   "input": "RAS3.1_2",
+   "damage": 0
+  },
+  {
+   "input": "RAS4.1",
+   "damage": 0
+  },
+  {
+   "input": "RAS4.2",
+   "damage": 0
+  },
+  {
+   "input": "R.df+1+2",
+   "damage": 0
+  },
+  {
+   "input": "(Right side throw)",
+   "damage": 42,
+   "throw": true
+  },
+  {
+   "input": "RSSB1.1_2",
+   "damage": 0
+  },
+  {
+   "input": "RSSB2.1_2",
+   "damage": 0
+  },
+  {
+   "input": "RSSB3.1_2",
+   "damage": 0
+  },
+  {
+   "input": "RSSB4.1",
+   "damage": 0
+  },
+  {
+   "input": "RSSB4.2",
+   "damage": 0
+  },
+  {
+   "input": "SHH1.1,2,1+2",
+   "damage": 25,
+   "throw": true
+  },
+  {
+   "input": "SHH1.1+2,1,3",
+   "damage": 20,
+   "throw": true
+  },
+  {
+   "input": "SHH1.2,1,1+3",
+   "damage": 30,
+   "throw": true
+  },
+  {
+   "input": "SHH2c.3,4,1+2,3+4",
+   "damage": 40,
+   "throw": true
+  },
+  {
+   "input": "ss2+4",
+   "damage": 0
+  },
+  {
+   "input": "ss2+4,b/db",
+   "damage": 0
+  },
+  {
+   "input": "uf+1+2",
+   "damage": 30,
+   "throw": true
+  },
+  {
+   "input": "UT,1+2",
+   "damage": 25,
+   "throw": true
+  },
+  {
+   "input": "UT,1+2,1+2",
+   "damage": 35,
+   "throw": true
+  },
+  {
+   "input": "UT,2,1,2,1",
+   "damage": 30,
+   "throw": true
+  },
+  {
+   "input": "UT,3+4",
+   "damage": 20,
+   "throw": true
+  },
+  {
+   "input": "UT,3+4,&amp;#58;1+2",
+   "damage": 50,
+   "throw": true
+  },
+  {
+   "input": "WALL.f,hcf+1",
+   "damage": 0
   }
  ],
- "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
- "schema_version": 2
+ "frame_convention": "T8 60fps -> seconds (frames/60); damage T8 180HP scale as-is",
+ "schema_version": 2,
+ "canon_note": "Pantera WH signature moves preserved verbatim; T8 King frame data folded in."
 }

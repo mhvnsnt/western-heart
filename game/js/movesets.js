@@ -44,6 +44,8 @@ export const MOVESET_IDS = [
   'demonio-winged',
   // Sketchfab intake (owner 2026-10-19): working names, WH names pending.
   'zangief', 'blanka', 'vega', 'iori', 'armor-king',
+  // Cluster A moveset wave (2026-10-19): Koreshi new fighter, T8 Yoshimitsu kit.
+  'koreshi',
 ];
 
 const _movesets = {};

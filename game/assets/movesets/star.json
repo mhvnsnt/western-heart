@@ -1,7 +1,7 @@
 {
  "fighter": "star",
  "display": "STAR",
- "tekken_base": "Christie",
+ "tekken_base": "Eddy",
  "t3_source": "xiaoyu",
  "proxy": true,
  "proxy_note": "Christie has no T3 bank - Xiaoyu proxy (capoeira flow)",
@@ -271,50 +271,3679 @@
    "move_class": "signature",
    "wh_original": true,
    "note": "She followed the music here. The trial's war-drums have started syncing to her. Rhythmic ginga flurry."
+  },
+  "1+2": {
+   "name": "Faisão",
+   "input": "1+2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-1+2",
+   "t8_damage": "17",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 17,
+   "limb": "both",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-1+2",
+   "input_slots": [
+    "1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +3c"
+  },
+  "1,2": {
+   "name": "One Two Galopantes",
+   "input": "1,2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-1,2",
+   "t8_damage": ",12",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.367,
+   "damage": 17,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-1,2",
+   "input_slots": [
+    "1",
+    "1,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     12
+    ],
+    "total": 17
+   },
+   "note": "High; on block -3"
+  },
+  "1,2,3": {
+   "name": "One Two Lunging Brush Fire",
+   "input": "1,2,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-1,2,3",
+   "t8_damage": ",21",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 38,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-1,2,3",
+   "input_slots": [
+    "1",
+    "1,2",
+    "1,2,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     12,
+     21
+    ],
+    "total": 38
+   },
+   "note": "High; on block -9; knockdown on hit"
+  },
+  "1+2+3+4": {
+   "name": "Ki Charge",
+   "input": "1+2+3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-1+2+3+4",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-1+2+3+4",
+   "input_slots": [
+    "1+2+3+4"
+   ],
+   "move_class": "special"
+  },
+  "1,2,4": {
+   "name": "One Two Galopantes (4)",
+   "input": "1,2,4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-1,2,4",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.75,
+   "damage": 17,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-1,2,4",
+   "input_slots": [
+    "1",
+    "1,2",
+    "1,2,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     12
+    ],
+    "total": 17
+   },
+   "note": "on block +6"
+  },
+  "1,2,4~3": {
+   "name": "Chute Baixo",
+   "input": "1,2,4~3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-1,2,4~3",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 1.083,
+   "damage": 37,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-1,2,4~3",
+   "input_slots": [
+    "1",
+    "1,2",
+    "1,2,4~3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     12,
+     20
+    ],
+    "total": 37
+   },
+   "note": "Low; on block -14c; knockdown on hit"
+  },
+  "1,2,4~4": {
+   "name": "Chute Alto",
+   "input": "1,2,4~4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-1,2,4~4",
+   "t8_damage": ",27",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 1.05,
+   "damage": 44,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-1,2,4~4",
+   "input_slots": [
+    "1",
+    "1,2",
+    "1,2,4~4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     12,
+     27
+    ],
+    "total": 44
+   },
+   "note": "High; on block +8~+10"
+  },
+  "1,3": {
+   "name": "Céu Gafanhoto",
+   "input": "1,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-1,3",
+   "t8_damage": ",16",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 21,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-1,3",
+   "input_slots": [
+    "1",
+    "1,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     16
+    ],
+    "total": 21
+   },
+   "note": "Mid; on block -14"
+  },
+  "2,1": {
+   "name": "Move 1 (1)",
+   "input": "2,1",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-2,1",
+   "t8_damage": ",13",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 23,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:eddy:eddy-2,1",
+   "input_slots": [
+    "2",
+    "2,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     13
+    ],
+    "total": 23
+   },
+   "note": "High; on block -9"
+  },
+  "2,1,4": {
+   "name": "Combo Furacão",
+   "input": "2,1,4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-2,1,4",
+   "t8_damage": ",21",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 44,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-2,1,4",
+   "input_slots": [
+    "2",
+    "2,1",
+    "2,1,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     13,
+     21
+    ],
+    "total": 44
+   },
+   "note": "Mid; on block -12~-10; knockdown on hit"
+  },
+  "2+3": {
+   "name": "Heat Burst",
+   "input": "2+3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-2+3",
+   "t8_damage": "[12;12]",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 24,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:eddy:eddy-2+3",
+   "input_slots": [
+    "2+3"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     12,
+     12
+    ],
+    "total": 24
+   },
+   "note": "Mid; on block +1"
+  },
+  "2,3": {
+   "name": "Batida de Compasso",
+   "input": "2,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-2,3",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.433,
+   "damage": 30,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-2,3",
+   "input_slots": [
+    "2",
+    "2,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     20
+    ],
+    "total": 30
+   },
+   "note": "Mid; on block -8"
+  },
+  "3,3": {
+   "name": "Sincelo",
+   "input": "3,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-3,3",
+   "t8_damage": ",22",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.417,
+   "damage": 34,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-3,3",
+   "input_slots": [
+    "3",
+    "3,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     22
+    ],
+    "total": 34
+   },
+   "note": "Mid; on block -3"
+  },
+  "4,4": {
+   "name": "Lufada",
+   "input": "4,4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-4,4",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 30,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-4,4",
+   "input_slots": [
+    "4",
+    "4,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     20
+    ],
+    "total": 30
+   },
+   "note": "Mid; on block -7"
+  },
+  "b+1": {
+   "name": "Move b+1 (b+1)",
+   "input": "b+1",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-b+1",
+   "t8_damage": "15",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.417,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-b+1",
+   "input_slots": [
+    "b+1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -7"
+  },
+  "b+1+2": {
+   "name": "Back Bananeira",
+   "input": "b+1+2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-b+1+2",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.467,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-b+1+2",
+   "input_slots": [
+    "b+1+2"
+   ],
+   "move_class": "special"
+  },
+  "b+1,4": {
+   "name": "Move 4 (4)",
+   "input": "b+1,4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-b+1,4",
+   "t8_damage": ",10",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:eddy:eddy-b+1,4",
+   "input_slots": [
+    "b+1",
+    "b+1,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     10
+    ],
+    "total": 25
+   },
+   "note": "Mid; on block -8"
+  },
+  "b+1,4,3": {
+   "name": "Move 3 (3)",
+   "input": "b+1,4,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-b+1,4,3",
+   "t8_damage": ",8",
+   "startup": 0.383,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 33,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-b+1,4,3",
+   "input_slots": [
+    "b+1",
+    "b+1,4",
+    "b+1,4,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     10,
+     8
+    ],
+    "total": 33
+   },
+   "note": "Mid; on block -13"
+  },
+  "b+1,4,3,3+4": {
+   "name": "Aú do Sol",
+   "input": "b+1,4,3,3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-b+1,4,3,3+4",
+   "t8_damage": ",7,20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 60,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-b+1,4,3,3+4",
+   "input_slots": [
+    "b+1",
+    "b+1,4",
+    "b+1,4,3",
+    "b+1,4,3,3+4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     10,
+     8,
+     7,
+     20
+    ],
+    "total": 60
+   },
+   "note": "Mid, Mid; on block -12; knockdown on hit"
+  },
+  "b+1,4,3+4": {
+   "name": "Aú da Lua",
+   "input": "b+1,4,3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-b+1,4,3+4",
+   "t8_damage": ",7,7",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 39,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-b+1,4,3+4",
+   "input_slots": [
+    "b+1",
+    "b+1,4",
+    "b+1,4,3+4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     10,
+     7,
+     7
+    ],
+    "total": 39
+   },
+   "note": "Low; on block -24c"
+  },
+  "b+2": {
+   "name": "Move b+2 (b+2)",
+   "input": "b+2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-b+2",
+   "t8_damage": "12",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 12,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:eddy:eddy-b+2",
+   "input_slots": [
+    "b+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -8"
+  },
+  "b+2,3": {
+   "name": "Move 3 (3)",
+   "input": "b+2,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-b+2,3",
+   "t8_damage": ",13",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 25,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:eddy:eddy-b+2,3",
+   "input_slots": [
+    "b+2",
+    "b+2,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     13
+    ],
+    "total": 25
+   },
+   "note": "Mid; on block -11"
+  },
+  "b+2,3,3": {
+   "name": "Combo Martelo",
+   "input": "b+2,3,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-b+2,3,3",
+   "t8_damage": ",25",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 50,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-b+2,3,3",
+   "input_slots": [
+    "b+2",
+    "b+2,3",
+    "b+2,3,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     13,
+     25
+    ],
+    "total": 50
+   },
+   "note": "Mid; on block -14; knockdown on hit"
+  },
+  "b+2,4": {
+   "name": "Calcanheira",
+   "input": "b+2,4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-b+2,4",
+   "t8_damage": ",23",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 35,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-b+2,4",
+   "input_slots": [
+    "b+2",
+    "b+2,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     23
+    ],
+    "total": 35
+   },
+   "note": "High; on block -7; knockdown on hit"
+  },
+  "b+3": {
+   "name": "Move b+3 (b+3)",
+   "input": "b+3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-b+3",
+   "t8_damage": "10",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 10,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:eddy:eddy-b+3",
+   "input_slots": [
+    "b+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -9"
+  },
+  "b+3,3": {
+   "name": "Relâmpago",
+   "input": "b+3,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-b+3,3",
+   "t8_damage": ",21",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 31,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-b+3,3",
+   "input_slots": [
+    "b+3",
+    "b+3,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     21
+    ],
+    "total": 31
+   },
+   "note": "Mid; on block -15; knockdown on hit"
+  },
+  "b+3+4": {
+   "name": "Lunging Brush Fire",
+   "input": "b+3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-b+3+4",
+   "t8_damage": "28",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 28,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:eddy:eddy-b+3+4",
+   "input_slots": [
+    "b+3+4"
+   ],
+   "move_class": "strike",
+   "note": "High; on block -9; knockdown on hit"
+  },
+  "b+4": {
+   "name": "Move b+4 (b+4)",
+   "input": "b+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-b+4",
+   "t8_damage": "14",
+   "startup": 0.35,
+   "active": 0.033,
+   "recovery": 0.4,
+   "damage": 14,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 7,
+   "anim_ref": "t8:eddy:eddy-b+4",
+   "input_slots": [
+    "b+4"
+   ],
+   "move_class": "strike",
+   "note": "High; on block +0"
+  },
+  "b+4,4": {
+   "name": "Move 4 (4)",
+   "input": "b+4,4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-b+4,4",
+   "t8_damage": ",6,6",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 26,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 13,
+   "anim_ref": "t8:eddy:eddy-b+4,4",
+   "input_slots": [
+    "b+4",
+    "b+4,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     14,
+     6,
+     6
+    ],
+    "total": 26
+   },
+   "note": "Mid, Mid; on block -9"
+  },
+  "b+4,4,3": {
+   "name": "Leg Whip Mars Attack Flip",
+   "input": "b+4,4,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-b+4,4,3",
+   "t8_damage": ",10",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 36,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-b+4,4,3",
+   "input_slots": [
+    "b+4",
+    "b+4,4",
+    "b+4,4,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     14,
+     6,
+     6,
+     10
+    ],
+    "total": 36
+   },
+   "note": "Mid; on block +4c; knockdown on hit"
+  },
+  "Back throw": {
+   "name": "Back Rodeo Spin",
+   "input": "Back throw",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-Back throw",
+   "t8_damage": "50",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 50,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-back throw",
+   "input_slots": [
+    "Back throw"
+   ],
+   "move_class": "strike",
+   "note": "th(h)"
+  },
+  "(back to wall).b,b,UB": {
+   "name": "Wall Jump Backflip",
+   "input": "(back to wall).b,b,UB",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-(back to wall).b,b,UB",
+   "t8_damage": "21",
+   "startup": 0.583,
+   "active": 0.033,
+   "recovery": 0.283,
+   "damage": 21,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-(back to wall).b,b,ub",
+   "input_slots": [
+    "(back to wall).b,b,UB"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +1"
+  },
+  "b,B+2+3": {
+   "name": "Fruit Picker",
+   "input": "b,B+2+3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-b,B+2+3",
+   "t8_damage": "25,30",
+   "startup": 1.283,
+   "active": 0.033,
+   "recovery": 1.417,
+   "damage": 55,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-b,b+2+3",
+   "input_slots": [
+    "b,B+2+3"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     25,
+     30
+    ],
+    "total": 55
+   },
+   "note": "h!, h!; knockdown on hit"
+  },
+  "b,ub": {
+   "name": "Flic Flac",
+   "input": "b,ub",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-b,ub",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 1.1,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-b,ub",
+   "input_slots": [
+    "b,ub"
+   ],
+   "move_class": "special"
+  },
+  "d+1+3": {
+   "name": "Vingativa Zanga",
+   "input": "d+1+3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-d+1+3",
+   "t8_damage": "30",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 30,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-d+1+3",
+   "input_slots": [
+    "d+1+3"
+   ],
+   "move_class": "strike",
+   "note": "th(m)"
+  },
+  "d+2": {
+   "name": "Move d+2 (d+2)",
+   "input": "d+2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-d+2",
+   "t8_damage": "10",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 10,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:eddy:eddy-d+2",
+   "input_slots": [
+    "d+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -9"
+  },
+  "d+2,3": {
+   "name": "Palmares Giro",
+   "input": "d+2,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-d+2,3",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 30,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-d+2,3",
+   "input_slots": [
+    "d+2",
+    "d+2,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     20
+    ],
+    "total": 30
+   },
+   "note": "Mid; on block -4c"
+  },
+  "d+2+4": {
+   "name": "Vingativa Funeral",
+   "input": "d+2+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-d+2+4",
+   "t8_damage": "35",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 35,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-d+2+4",
+   "input_slots": [
+    "d+2+4"
+   ],
+   "move_class": "strike",
+   "note": "th(m)"
+  },
+  "d+3": {
+   "name": "Sismo",
+   "input": "d+3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-d+3",
+   "t8_damage": "17",
+   "startup": 0.35,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 17,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-d+3",
+   "input_slots": [
+    "d+3"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -14c"
+  },
+  "d+3+4": {
+   "name": "Negativa",
+   "input": "d+3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-d+3+4",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.333,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-d+3+4",
+   "input_slots": [
+    "d+3+4"
+   ],
+   "move_class": "special"
+  },
+  "d+4,3": {
+   "name": "Aú de Bico",
+   "input": "d+4,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-d+4,3",
+   "t8_damage": ",20",
+   "startup": 0.35,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 30,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-d+4,3",
+   "input_slots": [
+    "d+4",
+    "d+4,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     20
+    ],
+    "total": 30
+   },
+   "note": "Mid; on block -13c"
+  },
+  "db+1+2": {
+   "name": "Double Arm Stinger",
+   "input": "db+1+2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-db+1+2",
+   "t8_damage": "20",
+   "startup": 0.5,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 20,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-db+1+2",
+   "input_slots": [
+    "db+1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -8"
+  },
+  "db+2": {
+   "name": "Move db+2 (db+2)",
+   "input": "db+2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-db+2",
+   "t8_damage": "10",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.6,
+   "damage": 10,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:eddy:eddy-db+2",
+   "input_slots": [
+    "db+2"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -18c"
+  },
+  "db+2,3": {
+   "name": "Twister Mirage",
+   "input": "db+2,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-db+2,3",
+   "t8_damage": ",23",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.633,
+   "damage": 33,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-db+2,3",
+   "input_slots": [
+    "db+2",
+    "db+2,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     23
+    ],
+    "total": 33
+   },
+   "note": "Mid; on block -18; knockdown on hit"
+  },
+  "db+3": {
+   "name": "Rasteira Forte",
+   "input": "db+3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-db+3",
+   "t8_damage": "21",
+   "startup": 0.467,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 21,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-db+3",
+   "input_slots": [
+    "db+3"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -14c"
+  },
+  "db+3+4": {
+   "name": "Move db+3+4 (db+3+4)",
+   "input": "db+3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-db+3+4",
+   "t8_damage": "12,12",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 24,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:eddy:eddy-db+3+4",
+   "input_slots": [
+    "db+3+4"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     12,
+     12
+    ],
+    "total": 24
+   },
+   "note": "Mid, Mid; on block -6"
+  },
+  "db+3+4,4": {
+   "name": "Move 4 (4)",
+   "input": "db+3+4,4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-db+3+4,4",
+   "t8_damage": ",10",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 34,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-db+3+4,4",
+   "input_slots": [
+    "db+3+4",
+    "db+3+4,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     12,
+     10
+    ],
+    "total": 34
+   },
+   "note": "Mid; on block -8"
+  },
+  "db+3+4,4,3": {
+   "name": "Meia-Lua de Compasso",
+   "input": "db+3+4,4,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-db+3+4,4,3",
+   "t8_damage": ",26",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 60,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-db+3+4,4,3",
+   "input_slots": [
+    "db+3+4",
+    "db+3+4,4",
+    "db+3+4,4,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     12,
+     10,
+     26
+    ],
+    "total": 60
+   },
+   "note": "Mid; on block -14; knockdown on hit"
+  },
+  "db+4": {
+   "name": "Move db+4 (db+4)",
+   "input": "db+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-db+4",
+   "t8_damage": "14",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 14,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 7,
+   "anim_ref": "t8:eddy:eddy-db+4",
+   "input_slots": [
+    "db+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -8"
+  },
+  "db+4,4": {
+   "name": "Rabo de Arraia",
+   "input": "db+4,4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-db+4,4",
+   "t8_damage": ",27",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 41,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-db+4,4",
+   "input_slots": [
+    "db+4",
+    "db+4,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     14,
+     27
+    ],
+    "total": 41
+   },
+   "note": "High; on block +1; knockdown on hit"
+  },
+  "df+1": {
+   "name": "Move df+1 (df+1)",
+   "input": "df+1",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-df+1",
+   "t8_damage": "10",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.367,
+   "damage": 10,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:eddy:eddy-df+1",
+   "input_slots": [
+    "df+1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -3"
+  },
+  "df+1,3": {
+   "name": "Gêiser",
+   "input": "df+1,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-df+1,3",
+   "t8_damage": ",21",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 31,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-df+1,3",
+   "input_slots": [
+    "df+1",
+    "df+1,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     21
+    ],
+    "total": 31
+   },
+   "note": "High; on block -7; knockdown on hit"
+  },
+  "df+2": {
+   "name": "Elbow Uppercut",
+   "input": "df+2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-df+2",
+   "t8_damage": "19",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 19,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-df+2",
+   "input_slots": [
+    "df+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -5"
+  },
+  "df+3": {
+   "name": "Mirage",
+   "input": "df+3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-df+3",
+   "t8_damage": "17",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.6,
+   "damage": 17,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-df+3",
+   "input_slots": [
+    "df+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -18~-16; knockdown on hit"
+  },
+  "df+3+4": {
+   "name": "Aú Reversão",
+   "input": "df+3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-df+3+4",
+   "t8_damage": "10,16",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.4,
+   "damage": 26,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 13,
+   "anim_ref": "t8:eddy:eddy-df+3+4",
+   "input_slots": [
+    "df+3+4"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     10,
+     16
+    ],
+    "total": 26
+   },
+   "note": "Mid, Mid; on block -3~+0; knockdown on hit"
+  },
+  "df+4": {
+   "name": "Kneecap Crusher",
+   "input": "df+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-df+4",
+   "t8_damage": "14",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 14,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 7,
+   "anim_ref": "t8:eddy:eddy-df+4",
+   "input_slots": [
+    "df+4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -12"
+  },
+  "f+1+2": {
+   "name": "Bananeira",
+   "input": "f+1+2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-f+1+2",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.417,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-f+1+2",
+   "input_slots": [
+    "f+1+2"
+   ],
+   "move_class": "special"
+  },
+  "f+2": {
+   "name": "Move f+2 (f+2)",
+   "input": "f+2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-f+2",
+   "t8_damage": "15",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 15,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-f+2",
+   "input_slots": [
+    "f+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -9"
+  },
+  "f+2,4": {
+   "name": "Ventania",
+   "input": "f+2,4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-f+2,4",
+   "t8_damage": ",17",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 32,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-f+2,4",
+   "input_slots": [
+    "f+2",
+    "f+2,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     17
+    ],
+    "total": 32
+   },
+   "note": "Low; on block -14c"
+  },
+  "f+3": {
+   "name": "Move f+3 (f+3)",
+   "input": "f+3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-f+3",
+   "t8_damage": "16",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 16,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-f+3",
+   "input_slots": [
+    "f+3"
+   ],
+   "move_class": "strike",
+   "note": "High; on block -5"
+  },
+  "f+3+4": {
+   "name": "Xangô",
+   "input": "f+3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-f+3+4",
+   "t8_damage": "25",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 25,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:eddy:eddy-f+3+4",
+   "input_slots": [
+    "f+3+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -9; knockdown on hit"
+  },
+  "f+3,4": {
+   "name": "Combo do Funâmbolo",
+   "input": "f+3,4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-f+3,4",
+   "t8_damage": ",25",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 41,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-f+3,4",
+   "input_slots": [
+    "f+3",
+    "f+3,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     16,
+     25
+    ],
+    "total": 41
+   },
+   "note": "Mid; on block -11~-9; knockdown on hit"
+  },
+  "f+4": {
+   "name": "Move f+4 (f+4)",
+   "input": "f+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-f+4",
+   "t8_damage": "13",
+   "startup": 0.383,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 13,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:eddy:eddy-f+4",
+   "input_slots": [
+    "f+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -8"
+  },
+  "f+4,3": {
+   "name": "Move 3 (3)",
+   "input": "f+4,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-f+4,3",
+   "t8_damage": ",8",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 21,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-f+4,3",
+   "input_slots": [
+    "f+4",
+    "f+4,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     8
+    ],
+    "total": 21
+   },
+   "note": "Mid; on block -13"
+  },
+  "f+4,3,3+4": {
+   "name": "Aú do Sol",
+   "input": "f+4,3,3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-f+4,3,3+4",
+   "t8_damage": ",7,20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 48,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-f+4,3,3+4",
+   "input_slots": [
+    "f+4",
+    "f+4,3",
+    "f+4,3,3+4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     8,
+     7,
+     20
+    ],
+    "total": 48
+   },
+   "note": "Mid, Mid; on block -12; knockdown on hit"
+  },
+  "f+4,3+4": {
+   "name": "Aú da Lua",
+   "input": "f+4,3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-f+4,3+4",
+   "t8_damage": ",7,7",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.8,
+   "damage": 27,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:eddy:eddy-f+4,3+4",
+   "input_slots": [
+    "f+4",
+    "f+4,3+4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     7,
+     7
+    ],
+    "total": 27
+   },
+   "note": "Low, Low; on block -24c; knockdown on hit"
+  },
+  "FC.4": {
+   "name": "Move FC.4 (FC.4)",
+   "input": "FC.4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-FC.4",
+   "t8_damage": "6",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 6,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 3,
+   "anim_ref": "t8:eddy:eddy-fc.4",
+   "input_slots": [
+    "FC.4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -15"
+  },
+  "FC.df+3": {
+   "name": "Gafanhoto",
+   "input": "FC.df+3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-FC.df+3",
+   "t8_damage": "20",
+   "startup": 0.367,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-fc.df+3",
+   "input_slots": [
+    "FC.df+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +6"
+  },
+  "FC.df+4": {
+   "name": "Tornada",
+   "input": "FC.df+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-FC.df+4",
+   "t8_damage": "25",
+   "startup": 0.4,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:eddy:eddy-fc.df+4",
+   "input_slots": [
+    "FC.df+4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -21c"
+  },
+  "f,F+3": {
+   "name": "Terremoto",
+   "input": "f,F+3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-f,F+3",
+   "t8_damage": "20",
+   "startup": 0.35,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 20,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-f,f+3",
+   "input_slots": [
+    "f,F+3"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -14c"
+  },
+  "f,F+3+4": {
+   "name": "Roda Gigante",
+   "input": "f,F+3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-f,F+3+4",
+   "t8_damage": "10,20",
+   "startup": 0.383,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 30,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-f,f+3+4",
+   "input_slots": [
+    "f,F+3+4"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     10,
+     20
+    ],
+    "total": 30
+   },
+   "note": "Mid, Mid; on block +5; knockdown on hit"
+  },
+  "f,F+4": {
+   "name": "Folha Ataque",
+   "input": "f,F+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-f,F+4",
+   "t8_damage": "25",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:eddy:eddy-f,f+4",
+   "input_slots": [
+    "f,F+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -12; knockdown on hit"
+  },
+  "f,f,F+3": {
+   "name": "Trovão",
+   "input": "f,f,F+3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-f,f,F+3",
+   "t8_damage": "30",
+   "startup": 0.417,
+   "active": 0.033,
+   "recovery": 0.65,
+   "damage": 30,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-f,f,f+3",
+   "input_slots": [
+    "f,f,F+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +8; knockdown on hit"
+  },
+  "FUFT.b+3+4": {
+   "name": "Whirling Spring Kick",
+   "input": "FUFT.b+3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-FUFT.b+3+4",
+   "t8_damage": "25",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 25,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:eddy:eddy-fuft.b+3+4",
+   "input_slots": [
+    "FUFT.b+3+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -15~-27; knockdown on hit"
+  },
+  "H.2+3": {
+   "name": "Caveirinha Zangada",
+   "input": "H.2+3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-H.2+3",
+   "t8_damage": "55",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 55,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-h.2+3",
+   "input_slots": [
+    "H.2+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +6"
+  },
+  "H.3+4": {
+   "name": "Guerreiro Explosivo",
+   "input": "H.3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-H.3+4",
+   "t8_damage": "20",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-h.3+4",
+   "input_slots": [
+    "H.3+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +5; knockdown on hit"
+  },
+  "H.qcf+4": {
+   "name": "Rabo de Arraia Liberado",
+   "input": "H.qcf+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-H.qcf+4",
+   "t8_damage": "35",
+   "startup": 0.367,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 35,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-h.qcf+4",
+   "input_slots": [
+    "H.qcf+4"
+   ],
+   "move_class": "strike",
+   "note": "High; on block +7; knockdown on hit"
+  },
+  "HSP.1": {
+   "name": "Godeme Trovoada",
+   "input": "HSP.1",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-HSP.1",
+   "t8_damage": "21",
+   "startup": 0.383,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 21,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-hsp.1",
+   "input_slots": [
+    "HSP.1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +6"
+  },
+  "HSP.1+2": {
+   "name": "Cabeçada Direta",
+   "input": "HSP.1+2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-HSP.1+2",
+   "t8_damage": "20",
+   "startup": 0.367,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-hsp.1+2",
+   "input_slots": [
+    "HSP.1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -12"
+  },
+  "HSP.1+3": {
+   "name": "Batucada",
+   "input": "HSP.1+3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-HSP.1+3",
+   "t8_damage": "26",
+   "startup": 0.383,
+   "active": 0.033,
+   "recovery": 0.383,
+   "damage": 26,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 13,
+   "anim_ref": "t8:eddy:eddy-hsp.1+3",
+   "input_slots": [
+    "HSP.1+3"
+   ],
+   "move_class": "strike",
+   "note": "th(h)"
+  },
+  "HSP.2": {
+   "name": "Move HSP.2 (HSP.2)",
+   "input": "HSP.2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-HSP.2",
+   "t8_damage": "15",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 15,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-hsp.2",
+   "input_slots": [
+    "HSP.2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -8"
+  },
+  "HSP.2,3": {
+   "name": "Combo Escorão",
+   "input": "HSP.2,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-HSP.2,3",
+   "t8_damage": ",23",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 38,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-hsp.2,3",
+   "input_slots": [
+    "HSP.2",
+    "HSP.2,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     23
+    ],
+    "total": 38
+   },
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "HSP.3": {
+   "name": "Move HSP.3 (HSP.3)",
+   "input": "HSP.3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-HSP.3",
+   "t8_damage": "10",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 10,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:eddy:eddy-hsp.3",
+   "input_slots": [
+    "HSP.3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -8"
+  },
+  "HSP.3,3": {
+   "name": "Move 3 (3)",
+   "input": "HSP.3,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-HSP.3,3",
+   "t8_damage": ",10",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-hsp.3,3",
+   "input_slots": [
+    "HSP.3",
+    "HSP.3,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     10
+    ],
+    "total": 20
+   },
+   "note": "High; on block -3"
+  },
+  "HSP.3,3,3": {
+   "name": "Enxurrada",
+   "input": "HSP.3,3,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-HSP.3,3,3",
+   "t8_damage": ",23",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 43,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-hsp.3,3,3",
+   "input_slots": [
+    "HSP.3",
+    "HSP.3,3",
+    "HSP.3,3,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     10,
+     23
+    ],
+    "total": 43
+   },
+   "note": "High; on block -5"
+  },
+  "HSP.4": {
+   "name": "Move HSP.4 (HSP.4)",
+   "input": "HSP.4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-HSP.4",
+   "t8_damage": "10",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.383,
+   "damage": 10,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:eddy:eddy-hsp.4",
+   "input_slots": [
+    "HSP.4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -1"
+  },
+  "HSP.4,2": {
+   "name": "Lança de Braço",
+   "input": "HSP.4,2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-HSP.4,2",
+   "t8_damage": ",21",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 31,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-hsp.4,2",
+   "input_slots": [
+    "HSP.4",
+    "HSP.4,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     21
+    ],
+    "total": 31
+   },
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "HSP.4,2~3": {
+   "name": "Salto Yotori",
+   "input": "HSP.4,2~3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-HSP.4,2~3",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 30,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-hsp.4,2~3",
+   "input_slots": [
+    "HSP.4",
+    "HSP.4,2~3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     20
+    ],
+    "total": 30
+   },
+   "note": "Mid; on block +4c"
+  },
+  "HSP.b+3": {
+   "name": "Chapa Esquivando",
+   "input": "HSP.b+3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-HSP.b+3",
+   "t8_damage": "20",
+   "startup": 0.6,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-hsp.b+3",
+   "input_slots": [
+    "HSP.b+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -12; knockdown on hit"
+  },
+  "HSP.n,d": {
+   "name": "Negativa",
+   "input": "HSP.n,d",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-HSP.n,d",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.417,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-hsp.n,d",
+   "input_slots": [
+    "HSP.n,d"
+   ],
+   "move_class": "special"
+  },
+  "HSP.n,f": {
+   "name": "Move Forward",
+   "input": "HSP.n,f",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-HSP.n,f",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.467,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-hsp.n,f",
+   "input_slots": [
+    "HSP.n,f"
+   ],
+   "move_class": "special"
+  },
+  "Left throw": {
+   "name": "Missile Launcher",
+   "input": "Left throw",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-Left throw",
+   "t8_damage": "40",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 40,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-left throw",
+   "input_slots": [
+    "Left throw"
+   ],
+   "move_class": "strike",
+   "note": "th(h); on block -3"
+  },
+  "MD1.HSP.3+4": {
+   "name": "Yansan Mandinga",
+   "input": "MD1.HSP.3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-MD1.HSP.3+4",
+   "t8_damage": "6,6,16",
+   "startup": 0.35,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 28,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:eddy:eddy-md1.hsp.3+4",
+   "input_slots": [
+    "MD1.HSP.3+4"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     6,
+     6,
+     16
+    ],
+    "total": 28
+   },
+   "note": "Low, Mid, Mid; on block -14"
+  },
+  "MD1.HSP.b+4": {
+   "name": "Ogum Mandinga",
+   "input": "MD1.HSP.b+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-MD1.HSP.b+4",
+   "t8_damage": "23",
+   "startup": 0.383,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 23,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:eddy:eddy-md1.hsp.b+4",
+   "input_slots": [
+    "MD1.HSP.b+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +5"
+  },
+  "MD2.HSP.3+4": {
+   "name": "Yansan Mandinga",
+   "input": "MD2.HSP.3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-MD2.HSP.3+4",
+   "t8_damage": "16,6 (4),24 (12)",
+   "startup": 0.35,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 16,
+   "limb": "both",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-md2.hsp.3+4",
+   "input_slots": [
+    "MD2.HSP.3+4"
+   ],
+   "move_class": "strike",
+   "note": "Low, Mid, Mid; on block -14; knockdown on hit"
+  },
+  "MD2.HSP.b+4": {
+   "name": "Ogum Mandinga",
+   "input": "MD2.HSP.b+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-MD2.HSP.b+4",
+   "t8_damage": "23",
+   "startup": 0.383,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 23,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:eddy:eddy-md2.hsp.b+4",
+   "input_slots": [
+    "MD2.HSP.b+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +5; knockdown on hit"
+  },
+  "qcb+4": {
+   "name": "Voragem",
+   "input": "qcb+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-qcb+4",
+   "t8_damage": "25",
+   "startup": 0.35,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:eddy:eddy-qcb+4",
+   "input_slots": [
+    "qcb+4"
+   ],
+   "move_class": "strike",
+   "note": "High; on block +3; knockdown on hit"
+  },
+  "R.df+1+2": {
+   "name": "Enchente de Axé",
+   "input": "R.df+1+2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-R.df+1+2",
+   "t8_damage": "55+",
+   "startup": 0.333,
+   "active": 0.3,
+   "recovery": 0.65,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-r.df+1+2",
+   "input_slots": [
+    "R.df+1+2"
+   ],
+   "move_class": "special",
+   "note": "Mid, Throw; on block -18"
+  },
+  "Right throw": {
+   "name": "Shadow Dancer",
+   "input": "Right throw",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-Right throw",
+   "t8_damage": "40",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 40,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-right throw",
+   "input_slots": [
+    "Right throw"
+   ],
+   "move_class": "strike",
+   "note": "th(h); on block -3"
+  },
+  "RLX.1": {
+   "name": "Move RLX.1 (RLX.1)",
+   "input": "RLX.1",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-RLX.1",
+   "t8_damage": "11",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 11,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:eddy:eddy-rlx.1",
+   "input_slots": [
+    "RLX.1"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -11c"
+  },
+  "RLX.1+2": {
+   "name": "Cabeçada Fixa",
+   "input": "RLX.1+2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-RLX.1+2",
+   "t8_damage": "25",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 25,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:eddy:eddy-rlx.1+2",
+   "input_slots": [
+    "RLX.1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -8; knockdown on hit"
+  },
+  "RLX.1,3": {
+   "name": "Terra Gafanhoto",
+   "input": "RLX.1,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-RLX.1,3",
+   "t8_damage": ",17",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 28,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:eddy:eddy-rlx.1,3",
+   "input_slots": [
+    "RLX.1",
+    "RLX.1,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     11,
+     17
+    ],
+    "total": 28
+   },
+   "note": "Mid; on block -14"
+  },
+  "RLX.2": {
+   "name": "Move RLX.2 (RLX.2)",
+   "input": "RLX.2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-RLX.2",
+   "t8_damage": "16",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.383,
+   "damage": 16,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-rlx.2",
+   "input_slots": [
+    "RLX.2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -2"
+  },
+  "RLX.2,4": {
+   "name": "Move 4 (4)",
+   "input": "RLX.2,4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-RLX.2,4",
+   "t8_damage": ",17",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 33,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-rlx.2,4",
+   "input_slots": [
+    "RLX.2",
+    "RLX.2,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     16,
+     17
+    ],
+    "total": 33
+   },
+   "note": "High; on block -5"
+  },
+  "RLX.2,4,4": {
+   "name": "Maré Cheia",
+   "input": "RLX.2,4,4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-RLX.2,4,4",
+   "t8_damage": ",25",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 58,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-rlx.2,4,4",
+   "input_slots": [
+    "RLX.2",
+    "RLX.2,4",
+    "RLX.2,4,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     16,
+     17,
+     25
+    ],
+    "total": 58
+   },
+   "note": "Mid; on block -14; knockdown on hit"
+  },
+  "RLX.3": {
+   "name": "Move RLX.3 (RLX.3)",
+   "input": "RLX.3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-RLX.3",
+   "t8_damage": "12",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 12,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:eddy:eddy-rlx.3",
+   "input_slots": [
+    "RLX.3"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -26c"
+  },
+  "RLX.3,3": {
+   "name": "Iemanjá",
+   "input": "RLX.3,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-RLX.3,3",
+   "t8_damage": ",30",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 42,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-rlx.3,3",
+   "input_slots": [
+    "RLX.3",
+    "RLX.3,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     30
+    ],
+    "total": 42
+   },
+   "note": "High; on block -13; knockdown on hit"
+  },
+  "RLX.3+4": {
+   "name": "Troca e Ataque",
+   "input": "RLX.3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-RLX.3+4",
+   "t8_damage": "24",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.7,
+   "damage": 24,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:eddy:eddy-rlx.3+4",
+   "input_slots": [
+    "RLX.3+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -18; knockdown on hit"
+  },
+  "RLX.4": {
+   "name": "Move RLX.4 (RLX.4)",
+   "input": "RLX.4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-RLX.4",
+   "t8_damage": "14",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 14,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 7,
+   "anim_ref": "t8:eddy:eddy-rlx.4",
+   "input_slots": [
+    "RLX.4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -8"
+  },
+  "RLX.4,3": {
+   "name": "Chibata Ardente",
+   "input": "RLX.4,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-RLX.4,3",
+   "t8_damage": ",25",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 39,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-rlx.4,3",
+   "input_slots": [
+    "RLX.4",
+    "RLX.4,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     14,
+     25
+    ],
+    "total": 39
+   },
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "RLX.4,3+4": {
+   "name": "Chibata Avalanche",
+   "input": "RLX.4,3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-RLX.4,3+4",
+   "t8_damage": ",27",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 41,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-rlx.4,3+4",
+   "input_slots": [
+    "RLX.4",
+    "RLX.4,3+4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     14,
+     27
+    ],
+    "total": 41
+   },
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "RLX.n,d": {
+   "name": "Bananeira",
+   "input": "RLX.n,d",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-RLX.n,d",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.45,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-rlx.n,d",
+   "input_slots": [
+    "RLX.n,d"
+   ],
+   "move_class": "special"
+  },
+  "RLX.n,f": {
+   "name": "Move Forward",
+   "input": "RLX.n,f",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-RLX.n,f",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.45,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-rlx.n,f",
+   "input_slots": [
+    "RLX.n,f"
+   ],
+   "move_class": "special"
+  },
+  "RLX.uf+1+2": {
+   "name": "Rodeo Spin",
+   "input": "RLX.uf+1+2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-RLX.uf+1+2",
+   "t8_damage": "40",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 40,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-rlx.uf+1+2",
+   "input_slots": [
+    "RLX.uf+1+2"
+   ],
+   "move_class": "strike",
+   "note": "th(h); on block -6"
+  },
+  "SS.3": {
+   "name": "Hot Plate Special",
+   "input": "SS.3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-SS.3",
+   "t8_damage": "17",
+   "startup": 0.417,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 17,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-ss.3",
+   "input_slots": [
+    "SS.3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +0"
+  },
+  "SS.3+4": {
+   "name": "Faísca",
+   "input": "SS.3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-SS.3+4",
+   "t8_damage": "6,10",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 16,
+   "limb": "both",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-ss.3+4",
+   "input_slots": [
+    "SS.3+4"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     6,
+     10
+    ],
+    "total": 16
+   },
+   "note": "High, High; on block -7; knockdown on hit"
+  },
+  "SS.4": {
+   "name": "Troca Baixa",
+   "input": "SS.4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-SS.4",
+   "t8_damage": "7,10",
+   "startup": 0.35,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 17,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-ss.4",
+   "input_slots": [
+    "SS.4"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     7,
+     10
+    ],
+    "total": 17
+   },
+   "note": "Low, Low; on block -13c"
+  },
+  "u+1+2": {
+   "name": "Vassoura",
+   "input": "u+1+2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-u+1+2",
+   "t8_damage": "20",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-u+1+2",
+   "input_slots": [
+    "u+1+2"
+   ],
+   "move_class": "strike",
+   "note": "High; on block +0; knockdown on hit"
+  },
+  "u+3": {
+   "name": "Acrobacia",
+   "input": "u+3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-u+3",
+   "t8_damage": "30",
+   "startup": 0.633,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 30,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-u+3",
+   "input_slots": [
+    "u+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +0; knockdown on hit"
+  },
+  "u+4": {
+   "name": "Back Summy",
+   "input": "u+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-u+4",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-u+4",
+   "input_slots": [
+    "u+4"
+   ],
+   "move_class": "special",
+   "note": "sp"
+  },
+  "u+4~3": {
+   "name": "Chute Baixo",
+   "input": "u+4~3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-u+4~3",
+   "t8_damage": "20",
+   "startup": 0.533,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-u+4~3",
+   "input_slots": [
+    "u+4~3"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -14c; knockdown on hit"
+  },
+  "u+4~4": {
+   "name": "Chute Alto",
+   "input": "u+4~4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-u+4~4",
+   "t8_damage": "27",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 27,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:eddy:eddy-u+4~4",
+   "input_slots": [
+    "u+4~4"
+   ],
+   "move_class": "strike",
+   "note": "High; on block +8"
+  },
+  "ub+3": {
+   "name": "Perna da Lua",
+   "input": "ub+3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-ub+3",
+   "t8_damage": "25",
+   "startup": 0.517,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 25,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:eddy:eddy-ub+3",
+   "input_slots": [
+    "ub+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +4c; knockdown on hit"
+  },
+  "ub+4": {
+   "name": "Satellite Moon",
+   "input": "ub+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-ub+4",
+   "t8_damage": "12",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 12,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:eddy:eddy-ub+4",
+   "input_slots": [
+    "ub+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -17"
+  },
+  "uf+1": {
+   "name": "Move uf+1 (uf+1)",
+   "input": "uf+1",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-uf+1",
+   "t8_damage": "12",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 12,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:eddy:eddy-uf+1",
+   "input_slots": [
+    "uf+1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -5"
+  },
+  "uf+1+2": {
+   "name": "Cabra Macaco Throw",
+   "input": "uf+1+2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-uf+1+2",
+   "t8_damage": "40",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 40,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-uf+1+2",
+   "input_slots": [
+    "uf+1+2"
+   ],
+   "move_class": "strike",
+   "note": "th(h); on block -6; knockdown on hit"
+  },
+  "uf+1,3": {
+   "name": "Oxóssi",
+   "input": "uf+1,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-uf+1,3",
+   "t8_damage": ",23",
+   "startup": 0.483,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 35,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-uf+1,3",
+   "input_slots": [
+    "uf+1",
+    "uf+1,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     23
+    ],
+    "total": 35
+   },
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "uf+1,4": {
+   "name": "Oxum",
+   "input": "uf+1,4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-uf+1,4",
+   "t8_damage": ",25",
+   "startup": 0.483,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 37,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-uf+1,4",
+   "input_slots": [
+    "uf+1",
+    "uf+1,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     25
+    ],
+    "total": 37
+   },
+   "note": "High; on block -8"
+  },
+  "uf+2": {
+   "name": "Asfixiante",
+   "input": "uf+2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-uf+2",
+   "t8_damage": "21",
+   "startup": 0.367,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 21,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-uf+2",
+   "input_slots": [
+    "uf+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "uf+3": {
+   "name": "Move uf+3 (uf+3)",
+   "input": "uf+3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-uf+3",
+   "t8_damage": "15",
+   "startup": 0.433,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-uf+3",
+   "input_slots": [
+    "uf+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -10c"
+  },
+  "uf+3,3": {
+   "name": "Jumping Jacks Mirage",
+   "input": "uf+3,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-uf+3,3",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 35,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-uf+3,3",
+   "input_slots": [
+    "uf+3",
+    "uf+3,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     20
+    ],
+    "total": 35
+   },
+   "note": "Mid; on block -18; knockdown on hit"
+  },
+  "uf+3+4": {
+   "name": "Meia-Lua Pulando",
+   "input": "uf+3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-uf+3+4",
+   "t8_damage": "10,14",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 24,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:eddy:eddy-uf+3+4",
+   "input_slots": [
+    "uf+3+4"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     10,
+     14
+    ],
+    "total": 24
+   },
+   "note": "Mid, High; on block -13; knockdown on hit"
+  },
+  "uf+3,4": {
+   "name": "Baixo",
+   "input": "uf+3,4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-uf+3,4",
+   "t8_damage": ",10",
+   "startup": 0.4,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:eddy:eddy-uf+3,4",
+   "input_slots": [
+    "uf+3",
+    "uf+3,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     10
+    ],
+    "total": 25
+   },
+   "note": "Low; on block -14c"
+  },
+  "uf+4": {
+   "name": "Chapa Giratória",
+   "input": "uf+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-uf+4",
+   "t8_damage": "20",
+   "startup": 0.367,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-uf+4",
+   "input_slots": [
+    "uf+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -9"
+  },
+  "uf,n,4": {
+   "name": "Delayed Rising Toe Kick",
+   "input": "uf,n,4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-uf,n,4",
+   "t8_damage": "20",
+   "startup": 0.383,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-uf,n,4",
+   "input_slots": [
+    "uf,n,4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "ws1": {
+   "name": "Move ws1 (ws1)",
+   "input": "ws1",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-ws1",
+   "t8_damage": "6",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 6,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 3,
+   "anim_ref": "t8:eddy:eddy-ws1",
+   "input_slots": [
+    "ws1"
+   ],
+   "move_class": "strike",
+   "note": "High; on block -6"
+  },
+  "ws1,3": {
+   "name": "Fuzilação",
+   "input": "ws1,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-ws1,3",
+   "t8_damage": ",14",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-ws1,3",
+   "input_slots": [
+    "ws1",
+    "ws1,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     6,
+     14
+    ],
+    "total": 20
+   },
+   "note": "Mid; on block -15; knockdown on hit"
+  },
+  "ws1,4": {
+   "name": "Chapeu de Couro",
+   "input": "ws1,4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-ws1,4",
+   "t8_damage": ",23",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 29,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:eddy:eddy-ws1,4",
+   "input_slots": [
+    "ws1",
+    "ws1,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     6,
+     23
+    ],
+    "total": 29
+   },
+   "note": "High; on block -7"
+  },
+  "ws2": {
+   "name": "Machado",
+   "input": "ws2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-ws2",
+   "t8_damage": "20",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-ws2",
+   "input_slots": [
+    "ws2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -18; knockdown on hit"
+  },
+  "ws3": {
+   "name": "Martelo",
+   "input": "ws3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-ws3",
+   "t8_damage": "20",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-ws3",
+   "input_slots": [
+    "ws3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "ws3+4": {
+   "name": "Front Stinger",
+   "input": "ws3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-ws3+4",
+   "t8_damage": "20",
+   "startup": 0.417,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-ws3+4",
+   "input_slots": [
+    "ws3+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +5c"
+  },
+  "ws4": {
+   "name": "Move ws4 (ws4)",
+   "input": "ws4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-ws4",
+   "t8_damage": "13",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 13,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:eddy:eddy-ws4",
+   "input_slots": [
+    "ws4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -4"
+  },
+  "ws4,4": {
+   "name": "Move 4 (4)",
+   "input": "ws4,4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-ws4,4",
+   "t8_damage": ",10",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 23,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:eddy:eddy-ws4,4",
+   "input_slots": [
+    "ws4",
+    "ws4,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     10
+    ],
+    "total": 23
+   },
+   "note": "High; on block -4"
+  },
+  "ws4,4,4": {
+   "name": "Move 4 (4)",
+   "input": "ws4,4,4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-ws4,4,4",
+   "t8_damage": ",6,6",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 35,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-ws4,4,4",
+   "input_slots": [
+    "ws4",
+    "ws4,4",
+    "ws4,4,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     10,
+     6,
+     6
+    ],
+    "total": 35
+   },
+   "note": "Mid, Mid; on block -9"
+  },
+  "ws4,4,4,3": {
+   "name": "Tempestade",
+   "input": "ws4,4,4,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-ws4,4,4,3",
+   "t8_damage": ",10",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 45,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-ws4,4,4,3",
+   "input_slots": [
+    "ws4",
+    "ws4,4",
+    "ws4,4,4",
+    "ws4,4,4,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     10,
+     6,
+     6,
+     10
+    ],
+    "total": 45
+   },
+   "note": "Mid; on block +4c; knockdown on hit"
   }
  },
  "strings": [
-  {
-   "input": "2,4",
-   "hits": [
-    "2",
-    "4"
-   ],
-   "t3_rows": [
-    343,
-    353
-   ]
-  },
-  {
-   "input": "2,4,4",
-   "hits": [
-    "2",
-    "4",
-    "4"
-   ],
-   "t3_rows": [
-    343,
-    353,
-    354
-   ]
-  }
+  "1,2",
+  "1,2,3",
+  "1,2,4",
+  "1,2,4~3",
+  "1,2,4~4",
+  "1,3",
+  "2,1",
+  "2,1,4",
+  "2,3",
+  "3,3",
+  "4,4",
+  "b+1,4",
+  "b+1,4,3",
+  "b+1,4,3,3+4",
+  "b+1,4,3+4",
+  "b+2,3",
+  "b+2,3,3",
+  "b+2,4",
+  "b+3,3",
+  "b+4,4",
+  "b+4,4,3",
+  "d+2,3",
+  "d+4,3",
+  "db+2,3",
+  "db+3+4,4",
+  "db+3+4,4,3",
+  "db+4,4",
+  "df+1,3",
+  "f+2,4",
+  "f+3,4",
+  "f+4,3",
+  "f+4,3,3+4",
+  "f+4,3+4",
+  "HSP.2,3",
+  "HSP.3,3",
+  "HSP.3,3,3",
+  "HSP.4,2",
+  "HSP.4,2~3",
+  "RLX.1,3",
+  "RLX.2,4",
+  "RLX.2,4,4",
+  "RLX.3,3",
+  "RLX.4,3",
+  "RLX.4,3+4",
+  "uf+1,3",
+  "uf+1,4",
+  "uf+3,3",
+  "uf+3,4",
+  "ws1,3",
+  "ws1,4",
+  "ws4,4",
+  "ws4,4,4",
+  "ws4,4,4,3"
  ],
  "specials": [
   {
-   "input": "d/f+2",
-   "t3_row": 270,
-   "damage": 6,
-   "throw": false,
-   "fallback": "directional \u2014 no motion inputs in T3 bank"
+   "input": "1+2+3+4",
+   "damage": 0
   },
   {
-   "input": "d+4",
-   "t3_row": 371,
-   "damage": 2,
-   "throw": false,
-   "fallback": "directional \u2014 no motion inputs in T3 bank"
+   "input": "b+1+2",
+   "damage": 0
+  },
+  {
+   "input": "b,ub",
+   "damage": 0
+  },
+  {
+   "input": "d+3+4",
+   "damage": 0
+  },
+  {
+   "input": "f+1+2",
+   "damage": 0
+  },
+  {
+   "input": "HSP.n,d",
+   "damage": 0
+  },
+  {
+   "input": "HSP.n,f",
+   "damage": 0
+  },
+  {
+   "input": "R.df+1+2",
+   "damage": 0
+  },
+  {
+   "input": "RLX.n,d",
+   "damage": 0
+  },
+  {
+   "input": "RLX.n,f",
+   "damage": 0
+  },
+  {
+   "input": "u+4",
+   "damage": 0
   }
  ],
- "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
- "schema_version": 2
+ "frame_convention": "T8 60fps -> seconds (frames/60); damage T8 180HP scale as-is",
+ "schema_version": 2,
+ "canon_note": "Christie Monteiro capoeira flavor on Eddy base (Star is the capoeira fighter)."
 }

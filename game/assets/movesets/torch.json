@@ -422,89 +422,4190 @@
    "throw": true,
    "unblockable": true,
    "isGrab": true
+  },
+  "1+2": {
+   "name": "Open Sesame",
+   "input": "1+2",
+   "t8_source": "anna",
+   "t8_id": "Anna-1+2",
+   "t8_damage": "[5;5]",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 10,
+   "limb": "both",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:anna:anna-1+2",
+   "input_slots": [
+    "1+2"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     5,
+     5
+    ],
+    "total": 10
+   },
+   "note": "Mid; on block +1"
+  },
+  "1,2,1": {
+   "name": "Left Right Left",
+   "input": "1,2,1",
+   "t8_source": "anna",
+   "t8_id": "Anna-1,2,1",
+   "t8_damage": ",4",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.417,
+   "damage": 17,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:anna:anna-1,2,1",
+   "input_slots": [
+    "1",
+    "1,2",
+    "1,2,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     8,
+     4
+    ],
+    "total": 17
+   },
+   "note": "High; on block -4"
+  },
+  "1,2,1,2": {
+   "name": "Roasted with Love",
+   "input": "1,2,1,2",
+   "t8_source": "anna",
+   "t8_id": "Anna-1,2,1,2",
+   "t8_damage": ",24",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.217,
+   "damage": 41,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-1,2,1,2",
+   "input_slots": [
+    "1",
+    "1,2",
+    "1,2,1",
+    "1,2,1,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     8,
+     4,
+     24
+    ],
+    "total": 41
+   },
+   "note": "Mid; on block -14~+35; knockdown on hit"
+  },
+  "1,2,1,4": {
+   "name": "Frost Combination",
+   "input": "1,2,1,4",
+   "t8_source": "anna",
+   "t8_id": "Anna-1,2,1,4",
+   "t8_damage": ",18",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 35,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-1,2,1,4",
+   "input_slots": [
+    "1",
+    "1,2",
+    "1,2,1",
+    "1,2,1,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     8,
+     4,
+     18
+    ],
+    "total": 35
+   },
+   "note": "High; on block +4; knockdown on hit"
+  },
+  "1,2,1,H.2": {
+   "name": "Roasted with Eternal Love",
+   "input": "1,2,1,H.2",
+   "t8_source": "anna",
+   "t8_id": "Anna-1,2,1,H.2",
+   "t8_damage": "5,5,24",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.4,
+   "damage": 51,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-1,2,1,h.2",
+   "input_slots": [
+    "1",
+    "1,2",
+    "1,2,1",
+    "1,2,1,H.2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     8,
+     4,
+     5,
+     5,
+     24
+    ],
+    "total": 51
+   },
+   "note": "Mid, Mid, Mid; on block -2~+47g; knockdown on hit"
+  },
+  "1,2,2": {
+   "name": "Left Right Stinger",
+   "input": "1,2,2",
+   "t8_source": "anna",
+   "t8_id": "Anna-1,2,2",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 33,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-1,2,2",
+   "input_slots": [
+    "1",
+    "1,2",
+    "1,2,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     8,
+     20
+    ],
+    "total": 33
+   },
+   "note": "Mid; on block -8"
+  },
+  "1,2,4": {
+   "name": "Bermuda Triangle",
+   "input": "1,2,4",
+   "t8_source": "anna",
+   "t8_id": "Anna-1,2,4",
+   "t8_damage": ",22",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 35,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-1,2,4",
+   "input_slots": [
+    "1",
+    "1,2",
+    "1,2,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     8,
+     22
+    ],
+    "total": 35
+   },
+   "note": "High; on block -6; knockdown on hit"
+  },
+  "1,2,uf+1+2": {
+   "name": "Left Right Fried Love",
+   "input": "1,2,uf+1+2",
+   "t8_source": "anna",
+   "t8_id": "Anna-1,2,uf+1+2",
+   "t8_damage": ",13",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.133,
+   "damage": 26,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 13,
+   "anim_ref": "t8:anna:anna-1,2,uf+1+2",
+   "input_slots": [
+    "1",
+    "1,2",
+    "1,2,uf+1+2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     8,
+     13
+    ],
+    "total": 26
+   },
+   "note": "High; on block -14~+10; knockdown on hit"
+  },
+  "1,4": {
+   "name": "Reverse PDK Combo",
+   "input": "1,4",
+   "t8_source": "anna",
+   "t8_id": "Anna-1,4",
+   "t8_damage": ",12",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 17,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:anna:anna-1,4",
+   "input_slots": [
+    "1",
+    "1,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     12
+    ],
+    "total": 17
+   },
+   "note": "Low; on block -13"
+  },
+  "2,2": {
+   "name": "Quick Stinger",
+   "input": "2,2",
+   "t8_source": "anna",
+   "t8_id": "Anna-2,2",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 30,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-2,2",
+   "input_slots": [
+    "2",
+    "2,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     20
+    ],
+    "total": 30
+   },
+   "note": "Mid; on block -8"
+  },
+  "2+3": {
+   "name": "Heat Burst",
+   "input": "2+3",
+   "t8_source": "anna",
+   "t8_id": "Anna-2+3",
+   "t8_damage": "[12;12]",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 24,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:anna:anna-2+3",
+   "input_slots": [
+    "2+3"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     12,
+     12
+    ],
+    "total": 24
+   },
+   "note": "Mid; on block +1"
+  },
+  "2,3": {
+   "name": "Straight Face Wash",
+   "input": "2,3",
+   "t8_source": "anna",
+   "t8_id": "Anna-2,3",
+   "t8_damage": ",14",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.333,
+   "damage": 24,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:anna:anna-2,3",
+   "input_slots": [
+    "2",
+    "2,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     14
+    ],
+    "total": 24
+   },
+   "note": "Mid; on block -3"
+  },
+  "2,4": {
+   "name": "Jab Roundhouse",
+   "input": "2,4",
+   "t8_source": "anna",
+   "t8_id": "Anna-2,4",
+   "t8_damage": ",22",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 32,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-2,4",
+   "input_slots": [
+    "2",
+    "2,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     22
+    ],
+    "total": 32
+   },
+   "note": "High; on block -6; knockdown on hit"
+  },
+  "2,uf+1+2": {
+   "name": "Quick Fried Love",
+   "input": "2,uf+1+2",
+   "t8_source": "anna",
+   "t8_id": "Anna-2,uf+1+2",
+   "t8_damage": ",13",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.133,
+   "damage": 23,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:anna:anna-2,uf+1+2",
+   "input_slots": [
+    "2",
+    "2,uf+1+2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     13
+    ],
+    "total": 23
+   },
+   "note": "High; on block -14~+10; knockdown on hit"
+  },
+  "3,2": {
+   "name": "Serval Cleaver",
+   "input": "3,2",
+   "t8_source": "anna",
+   "t8_id": "Anna-3,2",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.633,
+   "damage": 37,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-3,2",
+   "input_slots": [
+    "3",
+    "3,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     17,
+     20
+    ],
+    "total": 37
+   },
+   "note": "Mid; on block -11c"
+  },
+  "3+4": {
+   "name": "Aphrodite's Scorn",
+   "input": "3+4",
+   "t8_source": "anna",
+   "t8_id": "Anna-3+4",
+   "t8_damage": "26",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 26,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 13,
+   "anim_ref": "t8:anna:anna-3+4",
+   "input_slots": [
+    "3+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -16; knockdown on hit"
+  },
+  "4,2": {
+   "name": "Right High Kick (2)",
+   "input": "4,2",
+   "t8_source": "anna",
+   "t8_id": "Anna-4,2",
+   "t8_damage": ",12",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 27,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:anna:anna-4,2",
+   "input_slots": [
+    "4",
+    "4,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     12
+    ],
+    "total": 27
+   },
+   "note": "High; on block -8"
+  },
+  "4,2,1+2": {
+   "name": "Blonde Bomb Blitz",
+   "input": "4,2,1+2",
+   "t8_source": "anna",
+   "t8_id": "Anna-4,2,1+2",
+   "t8_damage": ",21",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 48,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-4,2,1+2",
+   "input_slots": [
+    "4",
+    "4,2",
+    "4,2,1+2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     12,
+     21
+    ],
+    "total": 48
+   },
+   "note": "Mid; on block -15; knockdown on hit"
+  },
+  "b+1": {
+   "name": "Move b+1 (b+1)",
+   "input": "b+1",
+   "t8_source": "anna",
+   "t8_id": "Anna-b+1",
+   "t8_damage": "14",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 14,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 7,
+   "anim_ref": "t8:anna:anna-b+1",
+   "input_slots": [
+    "b+1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -2"
+  },
+  "b+1+2": {
+   "name": "Weeping Slap",
+   "input": "b+1+2",
+   "t8_source": "anna",
+   "t8_id": "Anna-b+1+2",
+   "t8_damage": "21",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 21,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:anna:anna-b+1+2",
+   "input_slots": [
+    "b+1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "b+1,2": {
+   "name": "Move 2 (2)",
+   "input": "b+1,2",
+   "t8_source": "anna",
+   "t8_id": "Anna-b+1,2",
+   "t8_damage": ",12",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 26,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 13,
+   "anim_ref": "t8:anna:anna-b+1,2",
+   "input_slots": [
+    "b+1",
+    "b+1,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     14,
+     12
+    ],
+    "total": 26
+   },
+   "note": "High; on block -11"
+  },
+  "b+1,2,2": {
+   "name": "Cross Cut Saw",
+   "input": "b+1,2,2",
+   "t8_source": "anna",
+   "t8_id": "Anna-b+1,2,2",
+   "t8_damage": ",24",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 50,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-b+1,2,2",
+   "input_slots": [
+    "b+1",
+    "b+1,2",
+    "b+1,2,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     14,
+     12,
+     24
+    ],
+    "total": 50
+   },
+   "note": "Mid; on block -12; knockdown on hit"
+  },
+  "b+1+3": {
+   "name": "Attack Reversal",
+   "input": "b+1+3",
+   "t8_source": "anna",
+   "t8_id": "Anna-b+1+3",
+   "t8_damage": "25",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 25,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:anna:anna-b+1+3",
+   "input_slots": [
+    "b+1+3"
+   ],
+   "move_class": "strike"
+  },
+  "b+2": {
+   "name": "Move b+2 (b+2)",
+   "input": "b+2",
+   "t8_source": "anna",
+   "t8_id": "Anna-b+2",
+   "t8_damage": "10",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 10,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:anna:anna-b+2",
+   "input_slots": [
+    "b+2"
+   ],
+   "move_class": "strike",
+   "note": "High; on block -5"
+  },
+  "b+2,2": {
+   "name": "Double Slap",
+   "input": "b+2,2",
+   "t8_source": "anna",
+   "t8_id": "Anna-b+2,2",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 30,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-b+2,2",
+   "input_slots": [
+    "b+2",
+    "b+2,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     20
+    ],
+    "total": 30
+   },
+   "note": "High; on block -9"
+  },
+  "b+3": {
+   "name": "Chaos Judgement",
+   "input": "b+3",
+   "t8_source": "anna",
+   "t8_id": "Anna-b+3",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.267,
+   "damage": 0,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:anna:anna-b+3",
+   "input_slots": [
+    "b+3"
+   ],
+   "move_class": "special"
+  },
+  "b+4": {
+   "name": "Leopard Swipe",
+   "input": "b+4",
+   "t8_source": "anna",
+   "t8_id": "Anna-b+4",
+   "t8_damage": "17",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.433,
+   "damage": 17,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:anna:anna-b+4",
+   "input_slots": [
+    "b+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -9"
+  },
+  "Back throw": {
+   "name": "Overhead Triangle Lock",
+   "input": "Back throw",
+   "t8_source": "anna",
+   "t8_id": "Anna-Back throw",
+   "t8_damage": "50",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 50,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-back throw",
+   "input_slots": [
+    "Back throw"
+   ],
+   "move_class": "throw",
+   "note": "Throw",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2"
+  },
+  "BT.1": {
+   "name": "Twist Jab",
+   "input": "BT.1",
+   "t8_source": "anna",
+   "t8_id": "Anna-BT.1",
+   "t8_damage": "15",
+   "startup": 0.133,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:anna:anna-bt.1",
+   "input_slots": [
+    "BT.1"
+   ],
+   "move_class": "strike",
+   "note": "High; on block -8"
+  },
+  "CJM.1": {
+   "name": "Infernal Storm",
+   "input": "CJM.1",
+   "t8_source": "anna",
+   "t8_id": "Anna-CJM.1",
+   "t8_damage": "17",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 17,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:anna:anna-cjm.1",
+   "input_slots": [
+    "CJM.1"
+   ],
+   "move_class": "strike",
+   "note": "High; on block +0"
+  },
+  "CJM.1+2": {
+   "name": "Caracal",
+   "input": "CJM.1+2",
+   "t8_source": "anna",
+   "t8_id": "Anna-CJM.1+2",
+   "t8_damage": "23",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 23,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:anna:anna-cjm.1+2",
+   "input_slots": [
+    "CJM.1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +2c"
+  },
+  "CJM.2": {
+   "name": "Move CJM.2 (CJM.2)",
+   "input": "CJM.2",
+   "t8_source": "anna",
+   "t8_id": "Anna-CJM.2",
+   "t8_damage": "10",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 10,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:anna:anna-cjm.2",
+   "input_slots": [
+    "CJM.2"
+   ],
+   "move_class": "strike",
+   "note": "High; on block -11"
+  },
+  "CJM.2,1": {
+   "name": "Carmine Hands",
+   "input": "CJM.2,1",
+   "t8_source": "anna",
+   "t8_id": "Anna-CJM.2,1",
+   "t8_damage": ",16",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 26,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 13,
+   "anim_ref": "t8:anna:anna-cjm.2,1",
+   "input_slots": [
+    "CJM.2",
+    "CJM.2,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     16
+    ],
+    "total": 26
+   },
+   "note": "Mid; on block -11; knockdown on hit"
+  },
+  "CJM.3": {
+   "name": "Picking Heel",
+   "input": "CJM.3",
+   "t8_source": "anna",
+   "t8_id": "Anna-CJM.3",
+   "t8_damage": "12",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 12,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:anna:anna-cjm.3",
+   "input_slots": [
+    "CJM.3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -12"
+  },
+  "CJM.3,2": {
+   "name": "Baked with Love",
+   "input": "CJM.3,2",
+   "t8_source": "anna",
+   "t8_id": "Anna-CJM.3,2",
+   "t8_damage": ",24",
+   "startup": 0.467,
+   "active": 0.033,
+   "recovery": 0.217,
+   "damage": 36,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-cjm.3,2",
+   "input_slots": [
+    "CJM.3",
+    "CJM.3,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     24
+    ],
+    "total": 36
+   },
+   "note": "Mid; on block -14~+35; knockdown on hit"
+  },
+  "CJM.3,H.2": {
+   "name": "Baked with Eternal Love",
+   "input": "CJM.3,H.2",
+   "t8_source": "anna",
+   "t8_id": "Anna-CJM.3,H.2",
+   "t8_damage": ",5,5,24",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 46,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-cjm.3,h.2",
+   "input_slots": [
+    "CJM.3",
+    "CJM.3,H.2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     5,
+     5,
+     24
+    ],
+    "total": 46
+   },
+   "note": "Mid, Mid, Mid; on block -2~+47g; knockdown on hit"
+  },
+  "CJM.4": {
+   "name": "Queen Heel",
+   "input": "CJM.4",
+   "t8_source": "anna",
+   "t8_id": "Anna-CJM.4",
+   "t8_damage": "23",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.65,
+   "damage": 23,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:anna:anna-cjm.4",
+   "input_slots": [
+    "CJM.4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "CJM.d+3": {
+   "name": "Move CJM.d+3 (CJM.d+3)",
+   "input": "CJM.d+3",
+   "t8_source": "anna",
+   "t8_id": "Anna-CJM.d+3",
+   "t8_damage": "8",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 8,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 4,
+   "anim_ref": "t8:anna:anna-cjm.d+3",
+   "input_slots": [
+    "CJM.d+3"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -11"
+  },
+  "CJM.d+3,3": {
+   "name": "Dendrobates Azureus",
+   "input": "CJM.d+3,3",
+   "t8_source": "anna",
+   "t8_id": "Anna-CJM.d+3,3",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 28,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:anna:anna-cjm.d+3,3",
+   "input_slots": [
+    "CJM.d+3",
+    "CJM.d+3,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     8,
+     20
+    ],
+    "total": 28
+   },
+   "note": "High; on block -7"
+  },
+  "CJM.df": {
+   "name": "Forward Roll (ROLL)",
+   "input": "CJM.df",
+   "t8_source": "anna",
+   "t8_id": "Anna-CJM.df",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.333,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:anna:anna-cjm.df",
+   "input_slots": [
+    "CJM.df"
+   ],
+   "move_class": "special"
+  },
+  "CJM.f+3": {
+   "name": "Hammer Chance",
+   "input": "CJM.f+3",
+   "t8_source": "anna",
+   "t8_id": "Anna-CJM.f+3",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.217,
+   "damage": 0,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:anna:anna-cjm.f+3",
+   "input_slots": [
+    "CJM.f+3"
+   ],
+   "move_class": "special"
+  },
+  "CJM.P": {
+   "name": "Stryx",
+   "input": "CJM.P",
+   "t8_source": "anna",
+   "t8_id": "Anna-CJM.P",
+   "t8_damage": "20",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 20,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:anna:anna-cjm.p",
+   "input_slots": [
+    "CJM.P"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -14; knockdown on hit"
+  },
+  "CJM.uf+1": {
+   "name": "Flying Fascinator",
+   "input": "CJM.uf+1",
+   "t8_source": "anna",
+   "t8_id": "Anna-CJM.uf+1",
+   "t8_damage": "25",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 25,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:anna:anna-cjm.uf+1",
+   "input_slots": [
+    "CJM.uf+1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -11~+1; knockdown on hit"
+  },
+  "CJM.uf+2": {
+   "name": "Flying Penetrator",
+   "input": "CJM.uf+2",
+   "t8_source": "anna",
+   "t8_id": "Anna-CJM.uf+2",
+   "t8_damage": "35",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 35,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-cjm.uf+2",
+   "input_slots": [
+    "CJM.uf+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -11~+1; knockdown on hit"
+  },
+  "CJM.uf+3": {
+   "name": "Sudden Storm",
+   "input": "CJM.uf+3",
+   "t8_source": "anna",
+   "t8_id": "Anna-CJM.uf+3",
+   "t8_damage": "22",
+   "startup": 0.383,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 22,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t8:anna:anna-cjm.uf+3",
+   "input_slots": [
+    "CJM.uf+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +0"
+  },
+  "CJM.uf+4": {
+   "name": "Stryx",
+   "input": "CJM.uf+4",
+   "t8_source": "anna",
+   "t8_id": "Anna-CJM.uf+4",
+   "t8_damage": "22",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 22,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t8:anna:anna-cjm.uf+4",
+   "input_slots": [
+    "CJM.uf+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "d+1": {
+   "name": "Low Jab",
+   "input": "d+1",
+   "t8_source": "anna",
+   "t8_id": "Anna-d+1",
+   "t8_damage": "5",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.4,
+   "damage": 5,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 2,
+   "anim_ref": "t8:anna:anna-d+1",
+   "input_slots": [
+    "d+1"
+   ],
+   "move_class": "strike",
+   "note": "Special low; on block -5"
+  },
+  "d+1+2": {
+   "name": "Pooka's Misfortune",
+   "input": "d+1+2",
+   "t8_source": "anna",
+   "t8_id": "Anna-d+1+2",
+   "t8_damage": "20",
+   "startup": 0.4,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 20,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:anna:anna-d+1+2",
+   "input_slots": [
+    "d+1+2"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -18"
+  },
+  "d+1,4": {
+   "name": "Low Jab Rising Kick",
+   "input": "d+1,4",
+   "t8_source": "anna",
+   "t8_id": "Anna-d+1,4",
+   "t8_damage": ",10",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:anna:anna-d+1,4",
+   "input_slots": [
+    "d+1",
+    "d+1,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     10
+    ],
+    "total": 15
+   },
+   "note": "Mid; on block -11"
+  },
+  "d+2": {
+   "name": "Ice Sickle",
+   "input": "d+2",
+   "t8_source": "anna",
+   "t8_id": "Anna-d+2",
+   "t8_damage": "17",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 17,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:anna:anna-d+2",
+   "input_slots": [
+    "d+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +1c"
+  },
+  "d+3": {
+   "name": "Left Spin Low Kick",
+   "input": "d+3",
+   "t8_source": "anna",
+   "t8_id": "Anna-d+3",
+   "t8_damage": "10",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.6,
+   "damage": 10,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:anna:anna-d+3",
+   "input_slots": [
+    "d+3"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -17"
+  },
+  "d+3,2": {
+   "name": "Right Upper",
+   "input": "d+3,2",
+   "t8_source": "anna",
+   "t8_id": "Anna-d+3,2",
+   "t8_damage": ",18",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 28,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:anna:anna-d+3,2",
+   "input_slots": [
+    "d+3",
+    "d+3,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     18
+    ],
+    "total": 28
+   },
+   "note": "Mid; on block -11"
+  },
+  "d+3,4": {
+   "name": "Left Spin Low Kick (4)",
+   "input": "d+3,4",
+   "t8_source": "anna",
+   "t8_id": "Anna-d+3,4",
+   "t8_damage": ",14",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 24,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:anna:anna-d+3,4",
+   "input_slots": [
+    "d+3",
+    "d+3,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     14
+    ],
+    "total": 24
+   },
+   "note": "High; on block -8"
+  },
+  "d+3,4,1": {
+   "name": "B Slap Combo",
+   "input": "d+3,4,1",
+   "t8_source": "anna",
+   "t8_id": "Anna-d+3,4,1",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 44,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-d+3,4,1",
+   "input_slots": [
+    "d+3",
+    "d+3,4",
+    "d+3,4,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     14,
+     20
+    ],
+    "total": 44
+   },
+   "note": "Mid; on block -3"
+  },
+  "d+4": {
+   "name": "Right Low Kick",
+   "input": "d+4",
+   "t8_source": "anna",
+   "t8_id": "Anna-d+4",
+   "t8_damage": "6",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 6,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 3,
+   "anim_ref": "t8:anna:anna-d+4",
+   "input_slots": [
+    "d+4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -15"
+  },
+  "d+4,1": {
+   "name": "Back Spin Chop",
+   "input": "d+4,1",
+   "t8_source": "anna",
+   "t8_id": "Anna-d+4,1",
+   "t8_damage": ",10",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 16,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:anna:anna-d+4,1",
+   "input_slots": [
+    "d+4",
+    "d+4,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     6,
+     10
+    ],
+    "total": 16
+   },
+   "note": "High; on block +0"
+  },
+  "d+4,1~4": {
+   "name": "Sudden Severe Drop",
+   "input": "d+4,1~4",
+   "t8_source": "anna",
+   "t8_id": "Anna-d+4,1~4",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.667,
+   "damage": 26,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 13,
+   "anim_ref": "t8:anna:anna-d+4,1~4",
+   "input_slots": [
+    "d+4",
+    "d+4,1~4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     6,
+     20
+    ],
+    "total": 26
+   },
+   "note": "Mid; on block -14c"
+  },
+  "db+1": {
+   "name": "Scarlet Rain",
+   "input": "db+1",
+   "t8_source": "anna",
+   "t8_id": "Anna-db+1",
+   "t8_damage": "16",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 16,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:anna:anna-db+1",
+   "input_slots": [
+    "db+1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -12"
+  },
+  "db+1+2": {
+   "name": "Queen's Reward",
+   "input": "db+1+2",
+   "t8_source": "anna",
+   "t8_id": "Anna-db+1+2",
+   "t8_damage": "40",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 40,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-db+1+2",
+   "input_slots": [
+    "db+1+2"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -6",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2"
+  },
+  "db+1,2": {
+   "name": "Scarlet Ray",
+   "input": "db+1,2",
+   "t8_source": "anna",
+   "t8_id": "Anna-db+1,2",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 36,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-db+1,2",
+   "input_slots": [
+    "db+1",
+    "db+1,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     16,
+     20
+    ],
+    "total": 36
+   },
+   "note": "Mid; on block -13"
+  },
+  "db+1,4": {
+   "name": "Scarlet Splatter",
+   "input": "db+1,4",
+   "t8_source": "anna",
+   "t8_id": "Anna-db+1,4",
+   "t8_damage": ",24",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 40,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-db+1,4",
+   "input_slots": [
+    "db+1",
+    "db+1,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     16,
+     24
+    ],
+    "total": 40
+   },
+   "note": "High; on block -8; knockdown on hit"
+  },
+  "db+2": {
+   "name": "Ocelot Claw",
+   "input": "db+2",
+   "t8_source": "anna",
+   "t8_id": "Anna-db+2",
+   "t8_damage": "17",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 17,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:anna:anna-db+2",
+   "input_slots": [
+    "db+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -9"
+  },
+  "db+3": {
+   "name": "Mudslide",
+   "input": "db+3",
+   "t8_source": "anna",
+   "t8_id": "Anna-db+3",
+   "t8_damage": "21",
+   "startup": 0.5,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 21,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:anna:anna-db+3",
+   "input_slots": [
+    "db+3"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -26; knockdown on hit"
+  },
+  "db+3+4": {
+   "name": "Move db+3+4 (db+3+4)",
+   "input": "db+3+4",
+   "t8_source": "anna",
+   "t8_id": "Anna-db+3+4",
+   "t8_damage": "18",
+   "startup": 0.4,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 18,
+   "limb": "both",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 9,
+   "anim_ref": "t8:anna:anna-db+3+4",
+   "input_slots": [
+    "db+3+4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -26"
+  },
+  "db+3+4,4": {
+   "name": "Stalker Repellant Alter",
+   "input": "db+3+4,4",
+   "t8_source": "anna",
+   "t8_id": "Anna-db+3+4,4",
+   "t8_damage": ",23",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 41,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-db+3+4,4",
+   "input_slots": [
+    "db+3+4",
+    "db+3+4,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     18,
+     23
+    ],
+    "total": 41
+   },
+   "note": "High; on block -9; knockdown on hit"
+  },
+  "db+4": {
+   "name": "Scorned Mistress",
+   "input": "db+4",
+   "t8_source": "anna",
+   "t8_id": "Anna-db+4",
+   "t8_damage": "14",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 14,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 7,
+   "anim_ref": "t8:anna:anna-db+4",
+   "input_slots": [
+    "db+4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -13"
+  },
+  "df+1": {
+   "name": "Uppercut",
+   "input": "df+1",
+   "t8_source": "anna",
+   "t8_id": "Anna-df+1",
+   "t8_damage": "10",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 10,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:anna:anna-df+1",
+   "input_slots": [
+    "df+1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -1"
+  },
+  "df+1,2": {
+   "name": "Uppercut Jab",
+   "input": "df+1,2",
+   "t8_source": "anna",
+   "t8_id": "Anna-df+1,2",
+   "t8_damage": ",10",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.383,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:anna:anna-df+1,2",
+   "input_slots": [
+    "df+1",
+    "df+1,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     10
+    ],
+    "total": 20
+   },
+   "note": "High; on block -5"
+  },
+  "df+1,2,3": {
+   "name": "Radiant Arch",
+   "input": "df+1,2,3",
+   "t8_source": "anna",
+   "t8_id": "Anna-df+1,2,3",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 40,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-df+1,2,3",
+   "input_slots": [
+    "df+1",
+    "df+1,2",
+    "df+1,2,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     10,
+     20
+    ],
+    "total": 40
+   },
+   "note": "Mid; on block -12; knockdown on hit"
+  },
+  "df+1,2,4": {
+   "name": "Cutting Crescent",
+   "input": "df+1,2,4",
+   "t8_source": "anna",
+   "t8_id": "Anna-df+1,2,4",
+   "t8_damage": ",22",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 42,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-df+1,2,4",
+   "input_slots": [
+    "df+1",
+    "df+1,2",
+    "df+1,2,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     10,
+     22
+    ],
+    "total": 42
+   },
+   "note": "High; on block -5; knockdown on hit"
+  },
+  "df+2": {
+   "name": "Step-in Uppercut",
+   "input": "df+2",
+   "t8_source": "anna",
+   "t8_id": "Anna-df+2",
+   "t8_damage": "12",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 12,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:anna:anna-df+2",
+   "input_slots": [
+    "df+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -12; knockdown on hit"
+  },
+  "df+3": {
+   "name": "Middle Kick",
+   "input": "df+3",
+   "t8_source": "anna",
+   "t8_id": "Anna-df+3",
+   "t8_damage": "13",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 13,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:anna:anna-df+3",
+   "input_slots": [
+    "df+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -11"
+  },
+  "df+3,1": {
+   "name": "Leg Slicer",
+   "input": "df+3,1",
+   "t8_source": "anna",
+   "t8_id": "Anna-df+3,1",
+   "t8_damage": ",10",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.367,
+   "damage": 23,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:anna:anna-df+3,1",
+   "input_slots": [
+    "df+3",
+    "df+3,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     10
+    ],
+    "total": 23
+   },
+   "note": "High; on block -3"
+  },
+  "df+3,1,1": {
+   "name": "Twisting Fascinator",
+   "input": "df+3,1,1",
+   "t8_source": "anna",
+   "t8_id": "Anna-df+3,1,1",
+   "t8_damage": ",25",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 48,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-df+3,1,1",
+   "input_slots": [
+    "df+3",
+    "df+3,1",
+    "df+3,1,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     10,
+     25
+    ],
+    "total": 48
+   },
+   "note": "Mid; on block -11~+1; knockdown on hit"
+  },
+  "df+3,1,2": {
+   "name": "Twisting Penetrator",
+   "input": "df+3,1,2",
+   "t8_source": "anna",
+   "t8_id": "Anna-df+3,1,2",
+   "t8_damage": ",35",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 58,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-df+3,1,2",
+   "input_slots": [
+    "df+3",
+    "df+3,1",
+    "df+3,1,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     10,
+     35
+    ],
+    "total": 58
+   },
+   "note": "Mid; on block -11~+1"
+  },
+  "df+3,1,4": {
+   "name": "Twisting Combo",
+   "input": "df+3,1,4",
+   "t8_source": "anna",
+   "t8_id": "Anna-df+3,1,4",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 43,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-df+3,1,4",
+   "input_slots": [
+    "df+3",
+    "df+3,1",
+    "df+3,1,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     10,
+     20
+    ],
+    "total": 43
+   },
+   "note": "High; on block -3"
+  },
+  "df+3,2": {
+   "name": "Creeping Snake",
+   "input": "df+3,2",
+   "t8_source": "anna",
+   "t8_id": "Anna-df+3,2",
+   "t8_damage": ",9",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.35,
+   "damage": 22,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t8:anna:anna-df+3,2",
+   "input_slots": [
+    "df+3",
+    "df+3,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     9
+    ],
+    "total": 22
+   },
+   "note": "High; on block -2"
+  },
+  "df+3,2,1": {
+   "name": "Creeping Snake (1)",
+   "input": "df+3,2,1",
+   "t8_source": "anna",
+   "t8_id": "Anna-df+3,2,1",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 22,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t8:anna:anna-df+3,2,1",
+   "input_slots": [
+    "df+3",
+    "df+3,2",
+    "df+3,2,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     9
+    ],
+    "total": 22
+   }
+  },
+  "df+3,2,1,2": {
+   "name": "Creeping Snake (2)",
+   "input": "df+3,2,1,2",
+   "t8_source": "anna",
+   "t8_id": "Anna-df+3,2,1,2",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 22,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t8:anna:anna-df+3,2,1,2",
+   "input_slots": [
+    "df+3",
+    "df+3,2",
+    "df+3,2,1",
+    "df+3,2,1,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     9
+    ],
+    "total": 22
+   }
+  },
+  "df+3,2,1,2,4": {
+   "name": "Creeping Snake (4)",
+   "input": "df+3,2,1,2,4",
+   "t8_source": "anna",
+   "t8_id": "Anna-df+3,2,1,2,4",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 22,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t8:anna:anna-df+3,2,1,2,4",
+   "input_slots": [
+    "df+3",
+    "df+3,2",
+    "df+3,2,1",
+    "df+3,2,1,2",
+    "df+3,2,1,2,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     9
+    ],
+    "total": 22
+   }
+  },
+  "df+3,2,1,2,4,1": {
+   "name": "Creeping Snake (1)",
+   "input": "df+3,2,1,2,4,1",
+   "t8_source": "anna",
+   "t8_id": "Anna-df+3,2,1,2,4,1",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 22,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t8:anna:anna-df+3,2,1,2,4,1",
+   "input_slots": [
+    "df+3",
+    "df+3,2",
+    "df+3,2,1",
+    "df+3,2,1,2",
+    "df+3,2,1,2,4",
+    "df+3,2,1,2,4,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     9
+    ],
+    "total": 22
+   }
+  },
+  "df+3,2,1,2,4,1,2": {
+   "name": "Creeping Snake (2)",
+   "input": "df+3,2,1,2,4,1,2",
+   "t8_source": "anna",
+   "t8_id": "Anna-df+3,2,1,2,4,1,2",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 22,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t8:anna:anna-df+3,2,1,2,4,1,2",
+   "input_slots": [
+    "df+3",
+    "df+3,2",
+    "df+3,2,1",
+    "df+3,2,1,2",
+    "df+3,2,1,2,4",
+    "df+3,2,1,2,4,1",
+    "df+3,2,1,2,4,1,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     9
+    ],
+    "total": 22
+   }
+  },
+  "df+3,2,1,2,4,1,2,2": {
+   "name": "Creeping Snake (2)",
+   "input": "df+3,2,1,2,4,1,2,2",
+   "t8_source": "anna",
+   "t8_id": "Anna-df+3,2,1,2,4,1,2,2",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 22,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t8:anna:anna-df+3,2,1,2,4,1,2,2",
+   "input_slots": [
+    "df+3",
+    "df+3,2",
+    "df+3,2,1",
+    "df+3,2,1,2",
+    "df+3,2,1,2,4",
+    "df+3,2,1,2,4,1",
+    "df+3,2,1,2,4,1,2",
+    "df+3,2,1,2,4,1,2,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     9
+    ],
+    "total": 22
+   }
+  },
+  "df+3,2,1,2,4,1,2,2,3+4": {
+   "name": "Creeping Snake (3+4)",
+   "input": "df+3,2,1,2,4,1,2,2,3+4",
+   "t8_source": "anna",
+   "t8_id": "Anna-df+3,2,1,2,4,1,2,2,3+4",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 22,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t8:anna:anna-df+3,2,1,2,4,1,2,2,3+4",
+   "input_slots": [
+    "df+3",
+    "df+3,2",
+    "df+3,2,1",
+    "df+3,2,1,2",
+    "df+3,2,1,2,4",
+    "df+3,2,1,2,4,1",
+    "df+3,2,1,2,4,1,2",
+    "df+3,2,1,2,4,1,2,2",
+    "df+3,2,1,2,4,1,2,2,3+4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     9
+    ],
+    "total": 22
+   }
+  },
+  "df+3,2,1,2,4,1,2,2,3+4,2": {
+   "name": "10 Hit Combo",
+   "input": "df+3,2,1,2,4,1,2,2,3+4,2",
+   "t8_source": "anna",
+   "t8_id": "Anna-df+3,2,1,2,4,1,2,2,3+4,2",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 22,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t8:anna:anna-df+3,2,1,2,4,1,2,2,3+4,2",
+   "input_slots": [
+    "df+3",
+    "df+3,2",
+    "df+3,2,1",
+    "df+3,2,1,2",
+    "df+3,2,1,2,4",
+    "df+3,2,1,2,4,1",
+    "df+3,2,1,2,4,1,2",
+    "df+3,2,1,2,4,1,2,2",
+    "df+3,2,1,2,4,1,2,2,3+4",
+    "df+3,2,1,2,4,1,2,2,3+4,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     9
+    ],
+    "total": 22
+   }
+  },
+  "df+3,2,2": {
+   "name": "Creeping Stinger",
+   "input": "df+3,2,2",
+   "t8_source": "anna",
+   "t8_id": "Anna-df+3,2,2",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 42,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-df+3,2,2",
+   "input_slots": [
+    "df+3",
+    "df+3,2",
+    "df+3,2,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     9,
+     20
+    ],
+    "total": 42
+   },
+   "note": "Mid; on block -8"
+  },
+  "df+3,2,4": {
+   "name": "Right High Kick",
+   "input": "df+3,2,4",
+   "t8_source": "anna",
+   "t8_id": "Anna-df+3,2,4",
+   "t8_damage": ",22",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 44,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-df+3,2,4",
+   "input_slots": [
+    "df+3",
+    "df+3,2",
+    "df+3,2,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     9,
+     22
+    ],
+    "total": 44
+   },
+   "note": "High; on block -6; knockdown on hit"
+  },
+  "df+3,2,uf+1+2": {
+   "name": "Creep-Fried Love",
+   "input": "df+3,2,uf+1+2",
+   "t8_source": "anna",
+   "t8_id": "Anna-df+3,2,uf+1+2",
+   "t8_damage": ",13",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.133,
+   "damage": 35,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-df+3,2,uf+1+2",
+   "input_slots": [
+    "df+3",
+    "df+3,2",
+    "df+3,2,uf+1+2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     9,
+     13
+    ],
+    "total": 35
+   },
+   "note": "High; on block -14~+10; knockdown on hit"
+  },
+  "df+3,3+4": {
+   "name": "Furious Hail",
+   "input": "df+3,3+4",
+   "t8_source": "anna",
+   "t8_id": "Anna-df+3,3+4",
+   "t8_damage": ",6,10",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.367,
+   "damage": 29,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:anna:anna-df+3,3+4",
+   "input_slots": [
+    "df+3",
+    "df+3,3+4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     6,
+     10
+    ],
+    "total": 29
+   },
+   "note": "Mid, Mid; on block -4; knockdown on hit"
+  },
+  "df+4": {
+   "name": "Wine Opener",
+   "input": "df+4",
+   "t8_source": "anna",
+   "t8_id": "Anna-df+4",
+   "t8_damage": "17",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 17,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:anna:anna-df+4",
+   "input_slots": [
+    "df+4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -15"
+  },
+  "f+1+2": {
+   "name": "Blonde Bomb",
+   "input": "f+1+2",
+   "t8_source": "anna",
+   "t8_id": "Anna-f+1+2",
+   "t8_damage": "21",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 21,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:anna:anna-f+1+2",
+   "input_slots": [
+    "f+1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "f+2": {
+   "name": "Poison Sting",
+   "input": "f+2",
+   "t8_source": "anna",
+   "t8_id": "Anna-f+2",
+   "t8_damage": "14",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.433,
+   "damage": 14,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 7,
+   "anim_ref": "t8:anna:anna-f+2",
+   "input_slots": [
+    "f+2"
+   ],
+   "move_class": "strike",
+   "note": "High; on block -2"
+  },
+  "f+2,3": {
+   "name": "Poison Wire",
+   "input": "f+2,3",
+   "t8_source": "anna",
+   "t8_id": "Anna-f+2,3",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 34,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-f+2,3",
+   "input_slots": [
+    "f+2",
+    "f+2,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     14,
+     20
+    ],
+    "total": 34
+   },
+   "note": "High; on block -7"
+  },
+  "f+3": {
+   "name": "Hammer Chance",
+   "input": "f+3",
+   "t8_source": "anna",
+   "t8_id": "Anna-f+3",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.217,
+   "damage": 0,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:anna:anna-f+3",
+   "input_slots": [
+    "f+3"
+   ],
+   "move_class": "special"
+  },
+  "FC.df+1": {
+   "name": "Cat Sith's Paw",
+   "input": "FC.df+1",
+   "t8_source": "anna",
+   "t8_id": "Anna-FC.df+1",
+   "t8_damage": "22",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 22,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t8:anna:anna-fc.df+1",
+   "input_slots": [
+    "FC.df+1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -12"
+  },
+  "FC.df+2": {
+   "name": "Right Handed Sweep",
+   "input": "FC.df+2",
+   "t8_source": "anna",
+   "t8_id": "Anna-FC.df+2",
+   "t8_damage": "12",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.667,
+   "damage": 12,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:anna:anna-fc.df+2",
+   "input_slots": [
+    "FC.df+2"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -21; knockdown on hit"
+  },
+  "FC.df+2,H.1": {
+   "name": "Leanán Sith's Grail",
+   "input": "FC.df+2,H.1",
+   "t8_source": "anna",
+   "t8_id": "Anna-FC.df+2,H.1",
+   "t8_damage": ",18",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.65,
+   "damage": 30,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-fc.df+2,h.1",
+   "input_slots": [
+    "FC.df+2",
+    "FC.df+2,H.1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     18
+    ],
+    "total": 30
+   },
+   "note": "Low; on block -21; knockdown on hit"
+  },
+  "f,F+1+2": {
+   "name": "Sosho Zanha",
+   "input": "f,F+1+2",
+   "t8_source": "anna",
+   "t8_id": "Anna-f,F+1+2",
+   "t8_damage": "25",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 25,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:anna:anna-f,f+1+2",
+   "input_slots": [
+    "f,F+1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -9; knockdown on hit"
+  },
+  "f,F+1+2*": {
+   "name": "Sosho Zanha",
+   "input": "f,F+1+2*",
+   "t8_source": "anna",
+   "t8_id": "Anna-f,F+1+2*",
+   "t8_damage": "30",
+   "startup": 0.45,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 30,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-f,f+1+2*",
+   "input_slots": [
+    "f,F+1+2*"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +5~+7; knockdown on hit"
+  },
+  "f,F+2": {
+   "name": "Headless Horseman",
+   "input": "f,F+2",
+   "t8_source": "anna",
+   "t8_id": "Anna-f,F+2",
+   "t8_damage": "21",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 21,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:anna:anna-f,f+2",
+   "input_slots": [
+    "f,F+2"
+   ],
+   "move_class": "strike",
+   "note": "High; on block +4; knockdown on hit"
+  },
+  "f,F+3": {
+   "name": "Move f,F+3 (f,F+3)",
+   "input": "f,F+3",
+   "t8_source": "anna",
+   "t8_id": "Anna-f,F+3",
+   "t8_damage": "14",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 14,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 7,
+   "anim_ref": "t8:anna:anna-f,f+3",
+   "input_slots": [
+    "f,F+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -11"
+  },
+  "f,F+3,2": {
+   "name": "Gancanagh's Pipe",
+   "input": "f,F+3,2",
+   "t8_source": "anna",
+   "t8_id": "Anna-f,F+3,2",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 34,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-f,f+3,2",
+   "input_slots": [
+    "f,F+3",
+    "f,F+3,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     14,
+     20
+    ],
+    "total": 34
+   },
+   "note": "Mid; on block -7"
+  },
+  "f,F+3,3": {
+   "name": "Mouse Trouble",
+   "input": "f,F+3,3",
+   "t8_source": "anna",
+   "t8_id": "Anna-f,F+3,3",
+   "t8_damage": ",14",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 28,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:anna:anna-f,f+3,3",
+   "input_slots": [
+    "f,F+3",
+    "f,F+3,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     14,
+     14
+    ],
+    "total": 28
+   },
+   "note": "Low; on block -14"
+  },
+  "f,F+3+4": {
+   "name": "Treading Water",
+   "input": "f,F+3+4",
+   "t8_source": "anna",
+   "t8_id": "Anna-f,F+3+4",
+   "t8_damage": "8,8,10",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.333,
+   "damage": 26,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 13,
+   "anim_ref": "t8:anna:anna-f,f+3+4",
+   "input_slots": [
+    "f,F+3+4"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     8,
+     8,
+     10
+    ],
+    "total": 26
+   },
+   "note": "Mid, Mid, Mid; on block +0"
+  },
+  "f,F+4": {
+   "name": "Falling Heel",
+   "input": "f,F+4",
+   "t8_source": "anna",
+   "t8_id": "Anna-f,F+4",
+   "t8_damage": "20",
+   "startup": 0.517,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 20,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:anna:anna-f,f+4",
+   "input_slots": [
+    "f,F+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +5; knockdown on hit"
+  },
+  "f,f,F+2": {
+   "name": "Move f,f,F+2 (f,f,F+2)",
+   "input": "f,f,F+2",
+   "t8_source": "anna",
+   "t8_id": "Anna-f,f,F+2",
+   "t8_damage": "10",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 10,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:anna:anna-f,f,f+2",
+   "input_slots": [
+    "f,f,F+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -8"
+  },
+  "f,f,F+2,4": {
+   "name": "Double Meteor Alter",
+   "input": "f,f,F+2,4",
+   "t8_source": "anna",
+   "t8_id": "Anna-f,f,F+2,4",
+   "t8_damage": ",28",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 38,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-f,f,f+2,4",
+   "input_slots": [
+    "f,f,F+2",
+    "f,f,F+2,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     28
+    ],
+    "total": 38
+   },
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "f,f,F+3": {
+   "name": "Move f,f,F+3 (f,f,F+3)",
+   "input": "f,f,F+3",
+   "t8_source": "anna",
+   "t8_id": "Anna-f,f,F+3",
+   "t8_damage": "12",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 12,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:anna:anna-f,f,f+3",
+   "input_slots": [
+    "f,f,F+3"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -20"
+  },
+  "f,f,F+3,2": {
+   "name": "Grilled with Love",
+   "input": "f,f,F+3,2",
+   "t8_source": "anna",
+   "t8_id": "Anna-f,f,F+3,2",
+   "t8_damage": ",24",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 36,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-f,f,f+3,2",
+   "input_slots": [
+    "f,f,F+3",
+    "f,f,F+3,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     24
+    ],
+    "total": 36
+   },
+   "note": "SL; on block -16~+33g; knockdown on hit"
+  },
+  "f,f,F+3,H.2": {
+   "name": "Grilled with Eternal Love",
+   "input": "f,f,F+3,H.2",
+   "t8_source": "anna",
+   "t8_id": "Anna-f,f,F+3,H.2",
+   "t8_damage": ",5,5,24",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.667,
+   "damage": 46,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-f,f,f+3,h.2",
+   "input_slots": [
+    "f,f,F+3",
+    "f,f,F+3,H.2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     5,
+     5,
+     24
+    ],
+    "total": 46
+   },
+   "note": "SL, SL, SL; on block -5~+44g; knockdown on hit"
+  },
+  "f,f,F+4": {
+   "name": "Imploding Star",
+   "input": "f,f,F+4",
+   "t8_source": "anna",
+   "t8_id": "Anna-f,f,F+4",
+   "t8_damage": "28",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 28,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:anna:anna-f,f,f+4",
+   "input_slots": [
+    "f,f,F+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +3; knockdown on hit"
+  },
+  "H.2+3": {
+   "name": "From Éire with Love",
+   "input": "H.2+3",
+   "t8_source": "anna",
+   "t8_id": "Anna-H.2+3",
+   "t8_damage": "23, 10 (50)",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 23,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:anna:anna-h.2+3",
+   "input_slots": [
+    "H.2+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -5"
+  },
+  "HAM.1": {
+   "name": "Cupid's Arrow",
+   "input": "HAM.1",
+   "t8_source": "anna",
+   "t8_id": "Anna-HAM.1",
+   "t8_damage": "20",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 20,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:anna:anna-ham.1",
+   "input_slots": [
+    "HAM.1"
+   ],
+   "move_class": "strike",
+   "note": "High; on block +6; knockdown on hit"
+  },
+  "HAM.1+2": {
+   "name": "Dullahan Smash",
+   "input": "HAM.1+2",
+   "t8_source": "anna",
+   "t8_id": "Anna-HAM.1+2",
+   "t8_damage": "30",
+   "startup": 0.4,
+   "active": 0.033,
+   "recovery": 0.633,
+   "damage": 30,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-ham.1+2",
+   "input_slots": [
+    "HAM.1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +2c; knockdown on hit"
+  },
+  "HAM.1+3": {
+   "name": "Backhand Slap",
+   "input": "HAM.1+3",
+   "t8_source": "anna",
+   "t8_id": "Anna-HAM.1+3",
+   "t8_damage": "15",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 15,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 8,
+   "anim_ref": "t8:anna:anna-ham.1+3",
+   "input_slots": [
+    "HAM.1+3"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -2",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "HAM.1+3,1": {
+   "name": "Double Arm Lock Toss",
+   "input": "HAM.1+3,1",
+   "t8_source": "anna",
+   "t8_id": "Anna-HAM.1+3,1",
+   "t8_damage": ",35",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 50,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-ham.1+3,1",
+   "input_slots": [
+    "HAM.1+3",
+    "HAM.1+3,1"
+   ],
+   "move_class": "throw",
+   "multi_hit": {
+    "hits": [
+     15,
+     35
+    ],
+    "total": 50
+   },
+   "note": "Throw; on block -3",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "HAM.1+3,2": {
+   "name": "Arm Snap",
+   "input": "HAM.1+3,2",
+   "t8_source": "anna",
+   "t8_id": "Anna-HAM.1+3,2",
+   "t8_damage": ",30",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 45,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-ham.1+3,2",
+   "input_slots": [
+    "HAM.1+3",
+    "HAM.1+3,2"
+   ],
+   "move_class": "throw",
+   "multi_hit": {
+    "hits": [
+     15,
+     30
+    ],
+    "total": 45
+   },
+   "note": "Throw; on block -3",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "HAM.2": {
+   "name": "Move HAM.2 (HAM.2)",
+   "input": "HAM.2",
+   "t8_source": "anna",
+   "t8_id": "Anna-HAM.2",
+   "t8_damage": "12",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 12,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:anna:anna-ham.2",
+   "input_slots": [
+    "HAM.2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -9"
+  },
+  "HAM.2,1": {
+   "name": "Move 1 (1)",
+   "input": "HAM.2,1",
+   "t8_source": "anna",
+   "t8_id": "Anna-HAM.2,1",
+   "t8_damage": ",23",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 35,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-ham.2,1",
+   "input_slots": [
+    "HAM.2",
+    "HAM.2,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     23
+    ],
+    "total": 35
+   },
+   "note": "High; on block -3; knockdown on hit"
+  },
+  "HAM.2,1,2": {
+   "name": "Banshee Scream",
+   "input": "HAM.2,1,2",
+   "t8_source": "anna",
+   "t8_id": "Anna-HAM.2,1,2",
+   "t8_damage": ",32",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.633,
+   "damage": 67,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-ham.2,1,2",
+   "input_slots": [
+    "HAM.2",
+    "HAM.2,1",
+    "HAM.2,1,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     23,
+     32
+    ],
+    "total": 67
+   },
+   "note": "Mid; on block +2c; knockdown on hit"
+  },
+  "HAM.2,2": {
+   "name": "Banshee's Comb",
+   "input": "HAM.2,2",
+   "t8_source": "anna",
+   "t8_id": "Anna-HAM.2,2",
+   "t8_damage": ",23",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.683,
+   "damage": 35,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-ham.2,2",
+   "input_slots": [
+    "HAM.2",
+    "HAM.2,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     23
+    ],
+    "total": 35
+   },
+   "note": "Mid; on block -14; knockdown on hit"
+  },
+  "HAM.3": {
+   "name": "Rat Sweep",
+   "input": "HAM.3",
+   "t8_source": "anna",
+   "t8_id": "Anna-HAM.3",
+   "t8_damage": "17",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 17,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:anna:anna-ham.3",
+   "input_slots": [
+    "HAM.3"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -14"
+  },
+  "HAM.4": {
+   "name": "Piston Kick",
+   "input": "HAM.4",
+   "t8_source": "anna",
+   "t8_id": "Anna-HAM.4",
+   "t8_damage": "12,12",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 24,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:anna:anna-ham.4",
+   "input_slots": [
+    "HAM.4"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     12,
+     12
+    ],
+    "total": 24
+   },
+   "note": "Mid, Mid; on block -12"
+  },
+  "HAM.b+3": {
+   "name": "Move HAM.b+3 (HAM.b+3)",
+   "input": "HAM.b+3",
+   "t8_source": "anna",
+   "t8_id": "Anna-HAM.b+3",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:anna:anna-ham.b+3",
+   "input_slots": [
+    "HAM.b+3"
+   ],
+   "move_class": "special"
+  },
+  "Left throw": {
+   "name": "Torso Splitter",
+   "input": "Left throw",
+   "t8_source": "anna",
+   "t8_id": "Anna-Left throw",
+   "t8_damage": "40",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 40,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-left throw",
+   "input_slots": [
+    "Left throw"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -3",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "OTG.d+3+4": {
+   "name": "Heel Grind",
+   "input": "OTG.d+3+4",
+   "t8_source": "anna",
+   "t8_id": "Anna-OTG.d+3+4",
+   "t8_damage": "30",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 30,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-otg.d+3+4",
+   "input_slots": [
+    "OTG.d+3+4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -17"
+  },
+  "qcf+1": {
+   "name": "Assassin's Dagger",
+   "input": "qcf+1",
+   "t8_source": "anna",
+   "t8_id": "Anna-qcf+1",
+   "t8_damage": "20",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.383,
+   "damage": 20,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:anna:anna-qcf+1",
+   "input_slots": [
+    "qcf+1"
+   ],
+   "move_class": "strike",
+   "note": "High; on block +1~+5"
+  },
+  "qcf+2": {
+   "name": "Crimson Arrow",
+   "input": "qcf+2",
+   "t8_source": "anna",
+   "t8_id": "Anna-qcf+2",
+   "t8_damage": "10",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 10,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:anna:anna-qcf+2",
+   "input_slots": [
+    "qcf+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -12"
+  },
+  "qcf+2,1": {
+   "name": "Artemis Arrow",
+   "input": "qcf+2,1",
+   "t8_source": "anna",
+   "t8_id": "Anna-qcf+2,1",
+   "t8_damage": ",16",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 26,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 13,
+   "anim_ref": "t8:anna:anna-qcf+2,1",
+   "input_slots": [
+    "qcf+2",
+    "qcf+2,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     16
+    ],
+    "total": 26
+   },
+   "note": "Mid; on block -16; knockdown on hit"
+  },
+  "R.df+1+2": {
+   "name": "Some Like It Rough!",
+   "input": "R.df+1+2",
+   "t8_source": "anna",
+   "t8_id": "Anna-R.df+1+2",
+   "t8_damage": "55+",
+   "startup": 0.333,
+   "active": 0.3,
+   "recovery": 0.65,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:anna:anna-r.df+1+2",
+   "input_slots": [
+    "R.df+1+2"
+   ],
+   "move_class": "special",
+   "note": "Mid, Throw; on block -18"
+  },
+  "Right throw": {
+   "name": "Serpentine Arm Break",
+   "input": "Right throw",
+   "t8_source": "anna",
+   "t8_id": "Anna-Right throw",
+   "t8_damage": "38",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 38,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-right throw",
+   "input_slots": [
+    "Right throw"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -3",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "ROLL.3": {
+   "name": "Rolling Stone",
+   "input": "ROLL.3",
+   "t8_source": "anna",
+   "t8_id": "Anna-ROLL.3",
+   "t8_damage": "27",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 27,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:anna:anna-roll.3",
+   "input_slots": [
+    "ROLL.3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -9"
+  },
+  "ROLL.4": {
+   "name": "Falling Frost",
+   "input": "ROLL.4",
+   "t8_source": "anna",
+   "t8_id": "Anna-ROLL.4",
+   "t8_damage": "21",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.633,
+   "damage": 21,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:anna:anna-roll.4",
+   "input_slots": [
+    "ROLL.4"
+   ],
+   "move_class": "strike",
+   "note": "High; on block +7; knockdown on hit"
+  },
+  "SS.1+2": {
+   "name": "Bloody Chaos",
+   "input": "SS.1+2",
+   "t8_source": "anna",
+   "t8_id": "Anna-SS.1+2",
+   "t8_damage": "5,7",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.433,
+   "damage": 12,
+   "limb": "both",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:anna:anna-ss.1+2",
+   "input_slots": [
+    "SS.1+2"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     5,
+     7
+    ],
+    "total": 12
+   },
+   "note": "Mid, Mid; on block -11; knockdown on hit"
+  },
+  "SS.2": {
+   "name": "Chaos Tail",
+   "input": "SS.2",
+   "t8_source": "anna",
+   "t8_id": "Anna-SS.2",
+   "t8_damage": "12",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 12,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:anna:anna-ss.2",
+   "input_slots": [
+    "SS.2"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -12"
+  },
+  "SS.3": {
+   "name": "Heel Mash",
+   "input": "SS.3",
+   "t8_source": "anna",
+   "t8_id": "Anna-SS.3",
+   "t8_damage": "23",
+   "startup": 0.35,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 23,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:anna:anna-ss.3",
+   "input_slots": [
+    "SS.3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +4c"
+  },
+  "TOM.1": {
+   "name": "Machree Fascinator",
+   "input": "TOM.1",
+   "t8_source": "anna",
+   "t8_id": "Anna-TOM.1",
+   "t8_damage": "20",
+   "startup": 0.133,
+   "active": 0.033,
+   "recovery": 0.6,
+   "damage": 20,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:anna:anna-tom.1",
+   "input_slots": [
+    "TOM.1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +4~+53; knockdown on hit"
+  },
+  "TOM.2": {
+   "name": "Machree Penetrator",
+   "input": "TOM.2",
+   "t8_source": "anna",
+   "t8_id": "Anna-TOM.2",
+   "t8_damage": "30",
+   "startup": 0.133,
+   "active": 0.033,
+   "recovery": 0.6,
+   "damage": 30,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-tom.2",
+   "input_slots": [
+    "TOM.2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -1~+98; knockdown on hit"
+  },
+  "TOM.3": {
+   "name": "Chaos Judgement",
+   "input": "TOM.3",
+   "t8_source": "anna",
+   "t8_id": "Anna-TOM.3",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.433,
+   "damage": 0,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:anna:anna-tom.3",
+   "input_slots": [
+    "TOM.3"
+   ],
+   "move_class": "special"
+  },
+  "TOM.4": {
+   "name": "Banquet Crasher",
+   "input": "TOM.4",
+   "t8_source": "anna",
+   "t8_id": "Anna-TOM.4",
+   "t8_damage": "21",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 21,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:anna:anna-tom.4",
+   "input_slots": [
+    "TOM.4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -13"
+  },
+  "ub+1+2": {
+   "name": "Bloody Scissors",
+   "input": "ub+1+2",
+   "t8_source": "anna",
+   "t8_id": "Anna-ub+1+2",
+   "t8_damage": "50",
+   "startup": 1.0,
+   "active": 0.033,
+   "recovery": 0.65,
+   "damage": 50,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-ub+1+2",
+   "input_slots": [
+    "ub+1+2"
+   ],
+   "move_class": "strike",
+   "note": "m!; knockdown on hit"
+  },
+  "ub,b": {
+   "name": "Back Handspring",
+   "input": "ub,b",
+   "t8_source": "anna",
+   "t8_id": "Anna-ub,b",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.817,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:anna:anna-ub,b",
+   "input_slots": [
+    "ub,b"
+   ],
+   "move_class": "special",
+   "note": "sp"
+  },
+  "uf+1": {
+   "name": "Move uf+1 (uf+1)",
+   "input": "uf+1",
+   "t8_source": "anna",
+   "t8_id": "Anna-uf+1",
+   "t8_damage": "6",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.383,
+   "damage": 6,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 3,
+   "anim_ref": "t8:anna:anna-uf+1",
+   "input_slots": [
+    "uf+1"
+   ],
+   "move_class": "strike",
+   "note": "High; on block -4"
+  },
+  "uf+1+2": {
+   "name": "Overhead Toss",
+   "input": "uf+1+2",
+   "t8_source": "anna",
+   "t8_id": "Anna-uf+1+2",
+   "t8_damage": "30,10",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 40,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-uf+1+2",
+   "input_slots": [
+    "uf+1+2"
+   ],
+   "move_class": "throw",
+   "multi_hit": {
+    "hits": [
+     30,
+     10
+    ],
+    "total": 40
+   },
+   "note": "Throw; Jumping Flip; on block +0",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2"
+  },
+  "uf+1,3": {
+   "name": "Fatal Attack Combo",
+   "input": "uf+1,3",
+   "t8_source": "anna",
+   "t8_id": "Anna-uf+1,3",
+   "t8_damage": ",17",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 23,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:anna:anna-uf+1,3",
+   "input_slots": [
+    "uf+1",
+    "uf+1,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     6,
+     17
+    ],
+    "total": 23
+   },
+   "note": "Mid; on block -16"
+  },
+  "uf+1,3,3+4": {
+   "name": "Hail Storm",
+   "input": "uf+1,3,3+4",
+   "t8_source": "anna",
+   "t8_id": "Anna-uf+1,3,3+4",
+   "t8_damage": ",6,10",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.367,
+   "damage": 39,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-uf+1,3,3+4",
+   "input_slots": [
+    "uf+1",
+    "uf+1,3",
+    "uf+1,3,3+4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     6,
+     17,
+     6,
+     10
+    ],
+    "total": 39
+   },
+   "note": "Mid, Mid; on block -4; knockdown on hit"
+  },
+  "uf+2": {
+   "name": "Bane Stinger",
+   "input": "uf+2",
+   "t8_source": "anna",
+   "t8_id": "Anna-uf+2",
+   "t8_damage": "18",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 18,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 9,
+   "anim_ref": "t8:anna:anna-uf+2",
+   "input_slots": [
+    "uf+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -8"
+  },
+  "uf+3": {
+   "name": "Sudden Storm",
+   "input": "uf+3",
+   "t8_source": "anna",
+   "t8_id": "Anna-uf+3",
+   "t8_damage": "22",
+   "startup": 0.383,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 22,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t8:anna:anna-uf+3",
+   "input_slots": [
+    "uf+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +0"
+  },
+  "uf+3+4": {
+   "name": "Dominatrix Heel",
+   "input": "uf+3+4",
+   "t8_source": "anna",
+   "t8_id": "Anna-uf+3+4",
+   "t8_damage": "4,18",
+   "startup": 0.417,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 22,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t8:anna:anna-uf+3+4",
+   "input_slots": [
+    "uf+3+4"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     4,
+     18
+    ],
+    "total": 22
+   },
+   "note": "Mid, Mid; on block -3c"
+  },
+  "uf+3,H.1": {
+   "name": "Sudden Fascinator",
+   "input": "uf+3,H.1",
+   "t8_source": "anna",
+   "t8_id": "Anna-uf+3,H.1",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.267,
+   "damage": 42,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-uf+3,h.1",
+   "input_slots": [
+    "uf+3",
+    "uf+3,H.1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     22,
+     20
+    ],
+    "total": 42
+   },
+   "note": "High; on block +4g~+53g; knockdown on hit"
+  },
+  "uf+3,H.2": {
+   "name": "Sudden Penetrator",
+   "input": "uf+3,H.2",
+   "t8_source": "anna",
+   "t8_id": "Anna-uf+3,H.2",
+   "t8_damage": ",30",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.267,
+   "damage": 52,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:anna:anna-uf+3,h.2",
+   "input_slots": [
+    "uf+3",
+    "uf+3,H.2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     22,
+     30
+    ],
+    "total": 52
+   },
+   "note": "High; on block -1~+98g; knockdown on hit"
+  },
+  "uf+4": {
+   "name": "Quick Somersault Kick",
+   "input": "uf+4",
+   "t8_source": "anna",
+   "t8_id": "Anna-uf+4",
+   "t8_damage": "24",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 24,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:anna:anna-uf+4",
+   "input_slots": [
+    "uf+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -18; knockdown on hit"
+  },
+  "ws1": {
+   "name": "Move ws1 (ws1)",
+   "input": "ws1",
+   "t8_source": "anna",
+   "t8_id": "Anna-ws1",
+   "t8_damage": "10",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.433,
+   "damage": 10,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:anna:anna-ws1",
+   "input_slots": [
+    "ws1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -8"
+  },
+  "ws1+2": {
+   "name": "Right Hand Stab",
+   "input": "ws1+2",
+   "t8_source": "anna",
+   "t8_id": "Anna-ws1+2",
+   "t8_damage": "25",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 25,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:anna:anna-ws1+2",
+   "input_slots": [
+    "ws1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -14; knockdown on hit"
+  },
+  "ws1,2": {
+   "name": "Ocelot Frenzy",
+   "input": "ws1,2",
+   "t8_source": "anna",
+   "t8_id": "Anna-ws1,2",
+   "t8_damage": ",17",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 27,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:anna:anna-ws1,2",
+   "input_slots": [
+    "ws1",
+    "ws1,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     17
+    ],
+    "total": 27
+   },
+   "note": "Mid; on block -13"
+  },
+  "ws2": {
+   "name": "Rising Palm",
+   "input": "ws2",
+   "t8_source": "anna",
+   "t8_id": "Anna-ws2",
+   "t8_damage": "16",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 16,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:anna:anna-ws2",
+   "input_slots": [
+    "ws2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "ws3": {
+   "name": "Face Wash",
+   "input": "ws3",
+   "t8_source": "anna",
+   "t8_id": "Anna-ws3",
+   "t8_damage": "20",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.35,
+   "damage": 20,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:anna:anna-ws3",
+   "input_slots": [
+    "ws3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -3"
+  },
+  "ws4": {
+   "name": "Toe Smash",
+   "input": "ws4",
+   "t8_source": "anna",
+   "t8_id": "Anna-ws4",
+   "t8_damage": "16",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.4,
+   "damage": 16,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:anna:anna-ws4",
+   "input_slots": [
+    "ws4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -6"
   }
  },
  "strings": [
-  {
-   "input": "1,2",
-   "hits": [
-    "1",
-    "2"
-   ],
-   "t3_rows": [
-    248,
-    249
-   ]
-  },
-  {
-   "input": "2,1",
-   "hits": [
-    "2",
-    "1"
-   ],
-   "t3_rows": [
-    220,
-    221
-   ]
-  },
-  {
-   "input": "2,1,2",
-   "hits": [
-    "2",
-    "1",
-    "2"
-   ],
-   "t3_rows": [
-    220,
-    221,
-    222
-   ]
-  },
-  {
-   "input": "4,1",
-   "hits": [
-    "4",
-    "1"
-   ],
-   "t3_rows": [
-    199,
-    184
-   ]
-  },
-  {
-   "input": "4,1,2",
-   "hits": [
-    "4",
-    "1",
-    "2"
-   ],
-   "t3_rows": [
-    199,
-    184,
-    186
-   ]
-  }
+  "1,2",
+  "1,2,1",
+  "1,2,1,2",
+  "1,2,1,4",
+  "1,2,1,H.2",
+  "1,2,2",
+  "1,2,4",
+  "1,2,uf+1+2",
+  "1,4",
+  "2,2",
+  "2,3",
+  "2,4",
+  "2,uf+1+2",
+  "3,2",
+  "4,2",
+  "4,2,1+2",
+  "b+1,2",
+  "b+1,2,2",
+  "b+2,2",
+  "CJM.2,1",
+  "CJM.3,2",
+  "CJM.3,H.2",
+  "CJM.d+3,3",
+  "d+1,4",
+  "d+3,2",
+  "d+3,4",
+  "d+3,4,1",
+  "d+4,1",
+  "d+4,1~4",
+  "db+1,2",
+  "db+1,4",
+  "db+3+4,4",
+  "df+1,2",
+  "df+1,2,3",
+  "df+1,2,4",
+  "df+3,1",
+  "df+3,1,1",
+  "df+3,1,2",
+  "df+3,1,4",
+  "df+3,2",
+  "df+3,2,1",
+  "df+3,2,1,2",
+  "df+3,2,1,2,4",
+  "df+3,2,1,2,4,1",
+  "df+3,2,1,2,4,1,2",
+  "df+3,2,1,2,4,1,2,2",
+  "df+3,2,1,2,4,1,2,2,3+4",
+  "df+3,2,1,2,4,1,2,2,3+4,2",
+  "df+3,2,2",
+  "df+3,2,4",
+  "df+3,2,uf+1+2",
+  "df+3,3+4",
+  "f+2,3",
+  "FC.df+2,H.1",
+  "f,F+3,2",
+  "f,F+3,3",
+  "f,f,F+2,4",
+  "f,f,F+3,2",
+  "f,f,F+3,H.2",
+  "HAM.2,1",
+  "HAM.2,1,2",
+  "HAM.2,2",
+  "qcf+2,1",
+  "uf+1,3",
+  "uf+1,3,3+4",
+  "uf+3,H.1",
+  "uf+3,H.2",
+  "ws1,2"
  ],
  "specials": [
   {
-   "input": "d,d/b,d,d/b+1+2",
-   "t3_row": 277,
+   "input": "1+3",
+   "damage": 35,
+   "throw": true
+  },
+  {
+   "input": "2+4",
    "damage": 21,
    "throw": true
   },
   {
-   "input": "d/b,n,f+2",
-   "t3_row": 276,
-   "damage": 21,
+   "input": "b+3",
+   "damage": 0
+  },
+  {
+   "input": "Back throw",
+   "damage": 50,
    "throw": true
   },
   {
-   "input": "n,d/f,n,d/f+1",
-   "t3_row": 277,
-   "damage": 21,
+   "input": "CJM.df",
+   "damage": 0
+  },
+  {
+   "input": "CJM.f+3",
+   "damage": 0
+  },
+  {
+   "input": "db+1+2",
+   "damage": 40,
+   "throw": true
+  },
+  {
+   "input": "f+3",
+   "damage": 0
+  },
+  {
+   "input": "HAM.1+3",
+   "damage": 15,
+   "throw": true
+  },
+  {
+   "input": "HAM.1+3,1",
+   "damage": 50,
+   "throw": true
+  },
+  {
+   "input": "HAM.1+3,2",
+   "damage": 45,
+   "throw": true
+  },
+  {
+   "input": "HAM.b+3",
+   "damage": 0
+  },
+  {
+   "input": "Left throw",
+   "damage": 40,
+   "throw": true
+  },
+  {
+   "input": "R.df+1+2",
+   "damage": 0
+  },
+  {
+   "input": "Right throw",
+   "damage": 38,
+   "throw": true
+  },
+  {
+   "input": "TOM.3",
+   "damage": 0
+  },
+  {
+   "input": "ub,b",
+   "damage": 0
+  },
+  {
+   "input": "uf+1+2",
+   "damage": 40,
    "throw": true
   }
  ],
- "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
- "schema_version": 2
+ "frame_convention": "T8 60fps -> seconds (frames/60); damage T8 180HP scale as-is",
+ "schema_version": 2,
+ "canon_note": "Torch WH signature moves preserved; T8 Anna frame data folded in."
 }

@@ -370,54 +370,3520 @@
    "throw": true,
    "unblockable": true,
    "isGrab": true
+  },
+  "1,1": {
+   "name": "Jab (1)",
+   "input": "1,1",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-1,1",
+   "t8_damage": ",6",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.4,
+   "damage": 11,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:heihachi:heihachi-1,1",
+   "input_slots": [
+    "1",
+    "1,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     6
+    ],
+    "total": 11
+   },
+   "note": "High; on block -5"
+  },
+  "1,1,2": {
+   "name": "Flash Punch Combo",
+   "input": "1,1,2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-1,1,2",
+   "t8_damage": ",16",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 27,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:heihachi:heihachi-1,1,2",
+   "input_slots": [
+    "1",
+    "1,1",
+    "1,1,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     6,
+     16
+    ],
+    "total": 27
+   },
+   "note": "Mid; on block -17; knockdown on hit"
+  },
+  "1,1,WAR.2": {
+   "name": "Ultimate Flash Punch Combo",
+   "input": "1,1,WAR.2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-1,1,WAR.2",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 31,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-1,1,war.2",
+   "input_slots": [
+    "1",
+    "1,1",
+    "1,1,WAR.2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     6,
+     20
+    ],
+    "total": 31
+   },
+   "note": "Mid; on block -17; knockdown on hit"
+  },
+  "1+2": {
+   "name": "Demon Breath",
+   "input": "1+2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-1+2",
+   "t8_damage": "25",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 25,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:heihachi:heihachi-1+2",
+   "input_slots": [
+    "1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -10; knockdown on hit"
+  },
+  "1,2": {
+   "name": "One Two Strike",
+   "input": "1,2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-1,2",
+   "t8_damage": ",8",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.367,
+   "damage": 13,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:heihachi:heihachi-1,2",
+   "input_slots": [
+    "1",
+    "1,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     8
+    ],
+    "total": 13
+   },
+   "note": "High; on block -3"
+  },
+  "1,2,2": {
+   "name": "Back Fist Combo",
+   "input": "1,2,2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-1,2,2",
+   "t8_damage": ",12",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:heihachi:heihachi-1,2,2",
+   "input_slots": [
+    "1",
+    "1,2",
+    "1,2,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     8,
+     12
+    ],
+    "total": 25
+   },
+   "note": "High; on block -12"
+  },
+  "1,2,2~1": {
+   "name": "One Two Strike (2~1)",
+   "input": "1,2,2~1",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-1,2,2~1",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 33,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-1,2,2~1",
+   "input_slots": [
+    "1",
+    "1,2",
+    "1,2,2~1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     8,
+     20
+    ],
+    "total": 33
+   },
+   "note": "Mid; on block -11"
+  },
+  "1,2,2~1,1+2": {
+   "name": "Demon Executioner Volley",
+   "input": "1,2,2~1,1+2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-1,2,2~1,1+2",
+   "t8_damage": ",24",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 57,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-1,2,2~1,1+2",
+   "input_slots": [
+    "1",
+    "1,2",
+    "1,2,2~1",
+    "1,2,2~1,1+2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     8,
+     20,
+     24
+    ],
+    "total": 57
+   },
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "1+2+3+4": {
+   "name": "Ki Charge",
+   "input": "1+2+3+4",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-1+2+3+4",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.917,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:heihachi:heihachi-1+2+3+4",
+   "input_slots": [
+    "1+2+3+4"
+   ],
+   "move_class": "special"
+  },
+  "1,2,4": {
+   "name": "Wailing Demon Otoko Geri",
+   "input": "1,2,4",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-1,2,4",
+   "t8_damage": ",21",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 34,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-1,2,4",
+   "input_slots": [
+    "1",
+    "1,2",
+    "1,2,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     8,
+     21
+    ],
+    "total": 34
+   },
+   "note": "High; on block -9"
+  },
+  "1,2,4*": {
+   "name": "Wailing Demon Otoko Geri (charged)",
+   "input": "1,2,4*",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-1,2,4*",
+   "t8_damage": ",27",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 40,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-1,2,4*",
+   "input_slots": [
+    "1",
+    "1,2",
+    "1,2,4*"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     8,
+     27
+    ],
+    "total": 40
+   },
+   "note": "High; on block +6; knockdown on hit"
+  },
+  "1+4": {
+   "name": "Mishima-Style Ultimate Technique: Warrior Instinct",
+   "input": "1+4",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-1+4",
+   "t8_damage": "[10;10]",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 20,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:heihachi:heihachi-1+4",
+   "input_slots": [
+    "1+4"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     10,
+     10
+    ],
+    "total": 20
+   },
+   "note": "SL; on block +2"
+  },
+  "1,b+2": {
+   "name": "Jab (b+2)",
+   "input": "1,b+2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-1,b+2",
+   "t8_damage": ",17",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 22,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t8:heihachi:heihachi-1,b+2",
+   "input_slots": [
+    "1",
+    "1,b+2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     17
+    ],
+    "total": 22
+   },
+   "note": "Mid; on block -2"
+  },
+  "1,b+2,1": {
+   "name": "Demon Massacre",
+   "input": "1,b+2,1",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-1,b+2,1",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 42,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-1,b+2,1",
+   "input_slots": [
+    "1",
+    "1,b+2",
+    "1,b+2,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     17,
+     20
+    ],
+    "total": 42
+   },
+   "note": "Mid; on block -15; knockdown on hit"
+  },
+  "1,b+2,2": {
+   "name": "Demon Basara",
+   "input": "1,b+2,2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-1,b+2,2",
+   "t8_damage": ",17",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.6,
+   "damage": 39,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-1,b+2,2",
+   "input_slots": [
+    "1",
+    "1,b+2",
+    "1,b+2,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     17,
+     17
+    ],
+    "total": 39
+   },
+   "note": "Mid; on block -13c"
+  },
+  "1,b+2,4": {
+   "name": "Demon Lair",
+   "input": "1,b+2,4",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-1,b+2,4",
+   "t8_damage": ",30",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.683,
+   "damage": 52,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-1,b+2,4",
+   "input_slots": [
+    "1",
+    "1,b+2",
+    "1,b+2,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     17,
+     30
+    ],
+    "total": 52
+   },
+   "note": "Mid; on block +5; knockdown on hit"
+  },
+  "1,b+2,WAR.2": {
+   "name": "Ultimate Demon Basara",
+   "input": "1,b+2,WAR.2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-1,b+2,WAR.2",
+   "t8_damage": ",22",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.6,
+   "damage": 44,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-1,b+2,war.2",
+   "input_slots": [
+    "1",
+    "1,b+2",
+    "1,b+2,WAR.2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     17,
+     22
+    ],
+    "total": 44
+   },
+   "note": "Mid; on block -13c; knockdown on hit"
+  },
+  "2,2": {
+   "name": "Dogenkotsu",
+   "input": "2,2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-2,2",
+   "t8_damage": ",13",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 23,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:heihachi:heihachi-2,2",
+   "input_slots": [
+    "2",
+    "2,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     13
+    ],
+    "total": 23
+   },
+   "note": "Mid; on block -8"
+  },
+  "2+3": {
+   "name": "Heat Burst",
+   "input": "2+3",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-2+3",
+   "t8_damage": "[12;12]",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 24,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:heihachi:heihachi-2+3",
+   "input_slots": [
+    "2+3"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     12,
+     12
+    ],
+    "total": 24
+   },
+   "note": "Mid; on block +1"
+  },
+  "2+3+4": {
+   "name": "Auger",
+   "input": "2+3+4",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-2+3+4",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.833,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:heihachi:heihachi-2+3+4",
+   "input_slots": [
+    "2+3+4"
+   ],
+   "move_class": "special"
+  },
+  "3,2": {
+   "name": "Byakko Gekishin",
+   "input": "3,2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-3,2",
+   "t8_damage": ",10",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:heihachi:heihachi-3,2",
+   "input_slots": [
+    "3",
+    "3,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     10
+    ],
+    "total": 20
+   },
+   "note": "Mid; on block -13"
+  },
+  "4*": {
+   "name": "Otoko Geri (charged)",
+   "input": "4*",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-4*",
+   "t8_damage": "27",
+   "startup": 0.4,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 27,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:heihachi:heihachi-4*",
+   "input_slots": [
+    "4*"
+   ],
+   "move_class": "strike",
+   "note": "High; on block +6; knockdown on hit"
+  },
+  "4~3": {
+   "name": "Demon Scissors",
+   "input": "4~3",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-4~3",
+   "t8_damage": "25",
+   "startup": 0.583,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 25,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:heihachi:heihachi-4~3",
+   "input_slots": [
+    "4~3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -11a; knockdown on hit"
+  },
+  "b+1": {
+   "name": "Move b+1 (b+1)",
+   "input": "b+1",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-b+1",
+   "t8_damage": "12",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 12,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:heihachi:heihachi-b+1",
+   "input_slots": [
+    "b+1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -9"
+  },
+  "b+1+2": {
+   "name": "Heaven's Merciless Wrath",
+   "input": "b+1+2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-b+1+2",
+   "t8_damage": "20",
+   "startup": 0.7,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 20,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:heihachi:heihachi-b+1+2",
+   "input_slots": [
+    "b+1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -11; knockdown on hit"
+  },
+  "b+1,4": {
+   "name": "Oni Yarai",
+   "input": "b+1,4",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-b+1,4",
+   "t8_damage": ",24",
+   "startup": 0.367,
+   "active": 0.033,
+   "recovery": 0.667,
+   "damage": 36,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-b+1,4",
+   "input_slots": [
+    "b+1",
+    "b+1,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     24
+    ],
+    "total": 36
+   },
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "b+2": {
+   "name": "Rashomon",
+   "input": "b+2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-b+2",
+   "t8_damage": "20",
+   "startup": 0.367,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:heihachi:heihachi-b+2",
+   "input_slots": [
+    "b+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +2"
+  },
+  "b+2*": {
+   "name": "True Rashomon",
+   "input": "b+2*",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-b+2*",
+   "t8_damage": "30",
+   "startup": 0.65,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 30,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-b+2*",
+   "input_slots": [
+    "b+2*"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +5; knockdown on hit"
+  },
+  "b:2*": {
+   "name": "Zenith Rashomon",
+   "input": "b:2*",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-b:2*",
+   "t8_damage": "23",
+   "startup": 0.483,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 23,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:heihachi:heihachi-b:2*",
+   "input_slots": [
+    "b:2*"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +6; knockdown on hit"
+  },
+  "b+3": {
+   "name": "Move b+3 (b+3)",
+   "input": "b+3",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-b+3",
+   "t8_damage": "14",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 14,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 7,
+   "anim_ref": "t8:heihachi:heihachi-b+3",
+   "input_slots": [
+    "b+3"
+   ],
+   "move_class": "strike",
+   "note": "High; on block -9"
+  },
+  "b+3,2": {
+   "name": "Hooking Crescent Thrust",
+   "input": "b+3,2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-b+3,2",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.417,
+   "damage": 34,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-b+3,2",
+   "input_slots": [
+    "b+3",
+    "b+3,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     14,
+     20
+    ],
+    "total": 34
+   },
+   "note": "High; on block -1"
+  },
+  "b+3,3": {
+   "name": "Hooking Crescent Kick",
+   "input": "b+3,3",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-b+3,3",
+   "t8_damage": ",25",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 39,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-b+3,3",
+   "input_slots": [
+    "b+3",
+    "b+3,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     14,
+     25
+    ],
+    "total": 39
+   },
+   "note": "Mid; on block -12c; knockdown on hit"
+  },
+  "b+3,3,H.2": {
+   "name": "Hooking Battering Ram",
+   "input": "b+3,3,H.2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-b+3,3,H.2",
+   "t8_damage": ",25",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 64,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-b+3,3,h.2",
+   "input_slots": [
+    "b+3",
+    "b+3,3",
+    "b+3,3,H.2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     14,
+     25,
+     25
+    ],
+    "total": 64
+   },
+   "note": "SM; on block +0; knockdown on hit"
+  },
+  "b+4": {
+   "name": "Indra's Kick",
+   "input": "b+4",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-b+4",
+   "t8_damage": "23",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.767,
+   "damage": 23,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:heihachi:heihachi-b+4",
+   "input_slots": [
+    "b+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -8; knockdown on hit"
+  },
+  "Back throw": {
+   "name": "Atomic Drop",
+   "input": "Back throw",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-Back throw",
+   "t8_damage": "60",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 60,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-back throw",
+   "input_slots": [
+    "Back throw"
+   ],
+   "move_class": "throw",
+   "note": "Throw",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2"
+  },
+  "d+1": {
+   "name": "Hammer Punch",
+   "input": "d+1",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-d+1",
+   "t8_damage": "12",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 12,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:heihachi:heihachi-d+1",
+   "input_slots": [
+    "d+1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -9"
+  },
+  "d+1+2": {
+   "name": "Fujin",
+   "input": "d+1+2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-d+1+2",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.5,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:heihachi:heihachi-d+1+2",
+   "input_slots": [
+    "d+1+2"
+   ],
+   "move_class": "special",
+   "note": "Wind God's Kamae"
+  },
+  "d+1,2": {
+   "name": "Hammer Beating",
+   "input": "d+1,2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-d+1,2",
+   "t8_damage": ",14",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 26,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 13,
+   "anim_ref": "t8:heihachi:heihachi-d+1,2",
+   "input_slots": [
+    "d+1",
+    "d+1,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     14
+    ],
+    "total": 26
+   },
+   "note": "Mid; on block -9"
+  },
+  "d+1+4": {
+   "name": "Lightning Hammer",
+   "input": "d+1+4",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-d+1+4",
+   "t8_damage": "50",
+   "startup": 1.0,
+   "active": 0.033,
+   "recovery": 0.683,
+   "damage": 50,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-d+1+4",
+   "input_slots": [
+    "d+1+4"
+   ],
+   "move_class": "strike",
+   "note": "m!; knockdown on hit"
+  },
+  "d+3": {
+   "name": "Jichinsai",
+   "input": "d+3",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-d+3",
+   "t8_damage": "25",
+   "startup": 0.367,
+   "active": 0.033,
+   "recovery": 0.6,
+   "damage": 25,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:heihachi:heihachi-d+3",
+   "input_slots": [
+    "d+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -7; knockdown on hit"
+  },
+  "d+3,H.2": {
+   "name": "Rending Battering Ram",
+   "input": "d+3,H.2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-d+3,H.2",
+   "t8_damage": ",25",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.833,
+   "damage": 50,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-d+3,h.2",
+   "input_slots": [
+    "d+3",
+    "d+3,H.2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     25,
+     25
+    ],
+    "total": 50
+   },
+   "note": "SM; on block +0; knockdown on hit"
+  },
+  "db+2": {
+   "name": "Eishomon",
+   "input": "db+2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-db+2",
+   "t8_damage": "25",
+   "startup": 0.383,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:heihachi:heihachi-db+2",
+   "input_slots": [
+    "db+2"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -18"
+  },
+  "db+3": {
+   "name": "Sacred Tree Fell",
+   "input": "db+3",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-db+3",
+   "t8_damage": "10",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 10,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:heihachi:heihachi-db+3",
+   "input_slots": [
+    "db+3"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -13"
+  },
+  "df+1": {
+   "name": "Move df+1 (df+1)",
+   "input": "df+1",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-df+1",
+   "t8_damage": "10",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.367,
+   "damage": 10,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:heihachi:heihachi-df+1",
+   "input_slots": [
+    "df+1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -5"
+  },
+  "df+1,1": {
+   "name": "Muso Palm Strike",
+   "input": "df+1,1",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-df+1,1",
+   "t8_damage": ",8",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.35,
+   "damage": 18,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 9,
+   "anim_ref": "t8:heihachi:heihachi-df+1,1",
+   "input_slots": [
+    "df+1",
+    "df+1,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     8
+    ],
+    "total": 18
+   },
+   "note": "High; on block -2"
+  },
+  "df+1,2": {
+   "name": "Muso Tekken",
+   "input": "df+1,2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-df+1,2",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.6,
+   "damage": 30,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-df+1,2",
+   "input_slots": [
+    "df+1",
+    "df+1,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     20
+    ],
+    "total": 30
+   },
+   "note": "Mid; on block -13"
+  },
+  "df+1,2*": {
+   "name": "True Muso Tekken",
+   "input": "df+1,2*",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-df+1,2*",
+   "t8_damage": ",28",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 38,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-df+1,2*",
+   "input_slots": [
+    "df+1",
+    "df+1,2*"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     28
+    ],
+    "total": 38
+   },
+   "note": "Mid; on block +1; knockdown on hit"
+  },
+  "df+1,&amp;#58;2*": {
+   "name": "Zenith Muso Tekken",
+   "input": "df+1,&amp;#58;2*",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-df+1:2*",
+   "t8_damage": ",23",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.6,
+   "damage": 33,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-df+1:2*",
+   "input_slots": [
+    "df+1",
+    "df+1,&amp;#58;2*"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     23
+    ],
+    "total": 33
+   },
+   "note": "Mid; on block -9; knockdown on hit"
+  },
+  "df+2": {
+   "name": "Move df+2 (df+2)",
+   "input": "df+2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-df+2",
+   "t8_damage": "8",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.417,
+   "damage": 8,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 4,
+   "anim_ref": "t8:heihachi:heihachi-df+2",
+   "input_slots": [
+    "df+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -7"
+  },
+  "df+2,1": {
+   "name": "Reverse Muso Renken",
+   "input": "df+2,1",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-df+2,1",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.633,
+   "damage": 28,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:heihachi:heihachi-df+2,1",
+   "input_slots": [
+    "df+2",
+    "df+2,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     8,
+     20
+    ],
+    "total": 28
+   },
+   "note": "Mid; on block -17; knockdown on hit"
+  },
+  "df+2,WAR.1": {
+   "name": "Ultimate Muso Renken",
+   "input": "df+2,WAR.1",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-df+2,WAR.1",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 28,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:heihachi:heihachi-df+2,war.1",
+   "input_slots": [
+    "df+2",
+    "df+2,WAR.1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     8,
+     20
+    ],
+    "total": 28
+   },
+   "note": "Mid; on block -17; knockdown on hit"
+  },
+  "df+3": {
+   "name": "Move df+3 (df+3)",
+   "input": "df+3",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-df+3",
+   "t8_damage": "10",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.4,
+   "damage": 10,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:heihachi:heihachi-df+3",
+   "input_slots": [
+    "df+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -6"
+  },
+  "df+3,1+2": {
+   "name": "Move 1+2 (1+2)",
+   "input": "df+3,1+2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-df+3,1+2",
+   "t8_damage": ",3,3,3",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.65,
+   "damage": 19,
+   "limb": "both",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 10,
+   "anim_ref": "t8:heihachi:heihachi-df+3,1+2",
+   "input_slots": [
+    "df+3",
+    "df+3,1+2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     3,
+     3,
+     3
+    ],
+    "total": 19
+   },
+   "note": "High, Mid, Mid; on block -15"
+  },
+  "df+3,1+2,1": {
+   "name": "Gokotai Rampage",
+   "input": "df+3,1+2,1",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-df+3,1+2,1",
+   "t8_damage": ",25",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 44,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-df+3,1+2,1",
+   "input_slots": [
+    "df+3",
+    "df+3,1+2",
+    "df+3,1+2,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     3,
+     3,
+     3,
+     25
+    ],
+    "total": 44
+   },
+   "note": "Mid; on block -15; knockdown on hit"
+  },
+  "df+4": {
+   "name": "Move df+4 (df+4)",
+   "input": "df+4",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-df+4",
+   "t8_damage": "10",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.4,
+   "damage": 10,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:heihachi:heihachi-df+4",
+   "input_slots": [
+    "df+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -6"
+  },
+  "df+4,2": {
+   "name": "Rapid Crush Combo",
+   "input": "df+4,2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-df+4,2",
+   "t8_damage": ",23",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 33,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-df+4,2",
+   "input_slots": [
+    "df+4",
+    "df+4,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     23
+    ],
+    "total": 33
+   },
+   "note": "Mid; on block -12; knockdown on hit"
+  },
+  "f+1+2": {
+   "name": "Chrome Dome",
+   "input": "f+1+2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-f+1+2",
+   "t8_damage": "15",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 15,
+   "limb": "both",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:heihachi:heihachi-f+1+2",
+   "input_slots": [
+    "f+1+2"
+   ],
+   "move_class": "strike",
+   "note": "High; on block -14; knockdown on hit"
+  },
+  "f+2": {
+   "name": "Move f+2 (f+2)",
+   "input": "f+2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-f+2",
+   "t8_damage": "13",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 13,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:heihachi:heihachi-f+2",
+   "input_slots": [
+    "f+2"
+   ],
+   "move_class": "strike",
+   "note": "High; on block -9"
+  },
+  "f+2~1": {
+   "name": "Move f+2~1 (f+2~1)",
+   "input": "f+2~1",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-f+2~1",
+   "t8_damage": "20",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 20,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:heihachi:heihachi-f+2~1",
+   "input_slots": [
+    "f+2~1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -11"
+  },
+  "f+2~1,1+2": {
+   "name": "Demon Shout Volley",
+   "input": "f+2~1,1+2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-f+2~1,1+2",
+   "t8_damage": ",24",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 44,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-f+2~1,1+2",
+   "input_slots": [
+    "f+2~1",
+    "f+2~1,1+2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     20,
+     24
+    ],
+    "total": 44
+   },
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "f+2,2": {
+   "name": "Tensu Gekishin",
+   "input": "f+2,2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-f+2,2",
+   "t8_damage": ",10",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 23,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:heihachi:heihachi-f+2,2",
+   "input_slots": [
+    "f+2",
+    "f+2,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     10
+    ],
+    "total": 23
+   },
+   "note": "Mid; on block -13"
+  },
+  "f+3": {
+   "name": "Lightning Crush",
+   "input": "f+3",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-f+3",
+   "t8_damage": "10",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 10,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:heihachi:heihachi-f+3",
+   "input_slots": [
+    "f+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -5"
+  },
+  "f+3+4": {
+   "name": "Thunder God's Kamae",
+   "input": "f+3+4",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-f+3+4",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.667,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:heihachi:heihachi-f+3+4",
+   "input_slots": [
+    "f+3+4"
+   ],
+   "move_class": "special"
+  },
+  "f+4": {
+   "name": "Right Splits Kick",
+   "input": "f+4",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-f+4",
+   "t8_damage": "20",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 20,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:heihachi:heihachi-f+4",
+   "input_slots": [
+    "f+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +4"
+  },
+  "FC.df+2": {
+   "name": "Ascension Upper",
+   "input": "FC.df+2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-FC.df+2",
+   "t8_damage": "17",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 17,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:heihachi:heihachi-fc.df+2",
+   "input_slots": [
+    "FC.df+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -14; knockdown on hit"
+  },
+  "FC.df+4": {
+   "name": "Crouching Dragon Kick",
+   "input": "FC.df+4",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-FC.df+4",
+   "t8_damage": "16",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.65,
+   "damage": 16,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:heihachi:heihachi-fc.df+4",
+   "input_slots": [
+    "FC.df+4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -23"
+  },
+  "f,F+1+2": {
+   "name": "Raoh Thrust",
+   "input": "f,F+1+2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-f,F+1+2",
+   "t8_damage": "22",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 22,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t8:heihachi:heihachi-f,f+1+2",
+   "input_slots": [
+    "f,F+1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -8; knockdown on hit"
+  },
+  "f,F+2": {
+   "name": "Demon God Fist",
+   "input": "f,F+2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-f,F+2",
+   "t8_damage": "22",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 22,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t8:heihachi:heihachi-f,f+2",
+   "input_slots": [
+    "f,F+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -16; knockdown on hit"
+  },
+  "f,F+3": {
+   "name": "Left Splits Kick",
+   "input": "f,F+3",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-f,F+3",
+   "t8_damage": "21",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 21,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:heihachi:heihachi-f,f+3",
+   "input_slots": [
+    "f,F+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -3c; knockdown on hit"
+  },
+  "f,f,F+1+2": {
+   "name": "Roaring Stonehead",
+   "input": "f,f,F+1+2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-f,f,F+1+2",
+   "t8_damage": "20",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.767,
+   "damage": 20,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:heihachi:heihachi-f,f,f+1+2",
+   "input_slots": [
+    "f,f,F+1+2"
+   ],
+   "move_class": "strike",
+   "note": "High; on block +3"
+  },
+  "f,f,F+3": {
+   "name": "Leaping Side Kick",
+   "input": "f,f,F+3",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-f,f,F+3",
+   "t8_damage": "30",
+   "startup": 0.367,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 30,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-f,f,f+3",
+   "input_slots": [
+    "f,f,F+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +6; knockdown on hit"
+  },
+  "f,n,d,df": {
+   "name": "Wind God Step",
+   "input": "f,n,d,df",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-f,n,d,df",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.05,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:heihachi:heihachi-f,n,d,df",
+   "input_slots": [
+    "f,n,d,df"
+   ],
+   "move_class": "special"
+  },
+  "f,n,d,df#1": {
+   "name": "Electric Thunder God Fist",
+   "input": "f,n,d,df#1",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-f,n,d,df${justFrame}1",
+   "t8_damage": "33",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.6,
+   "damage": 33,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-f,n,d,df${justframe}1",
+   "input_slots": [
+    "f,n,d,df#1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -11; knockdown on hit"
+  },
+  "f,n,d,df#2": {
+   "name": "Electric Wind God Fist",
+   "input": "f,n,d,df#2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-f,n,d,df${justFrame}2",
+   "t8_damage": "23",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.4,
+   "damage": 23,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:heihachi:heihachi-f,n,d,df${justframe}2",
+   "input_slots": [
+    "f,n,d,df#2"
+   ],
+   "move_class": "strike",
+   "note": "High; on block +5; knockdown on hit"
+  },
+  "f,n,d,df+1": {
+   "name": "Thunder God Fist",
+   "input": "f,n,d,df+1",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-f,n,d,df+1",
+   "t8_damage": "30",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 30,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-f,n,d,df+1",
+   "input_slots": [
+    "f,n,d,df+1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -15; knockdown on hit"
+  },
+  "f,n,d,df+2": {
+   "name": "Wind God Fist",
+   "input": "f,n,d,df+2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-f,n,d,df+2",
+   "t8_damage": "20",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:heihachi:heihachi-f,n,d,df+2",
+   "input_slots": [
+    "f,n,d,df+2"
+   ],
+   "move_class": "strike",
+   "note": "High; on block -10; knockdown on hit"
+  },
+  "f,n,d,df+3": {
+   "name": "Bone Splinter Kick",
+   "input": "f,n,d,df+3",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-f,n,d,df+3",
+   "t8_damage": "30",
+   "startup": 0.45,
+   "active": 0.033,
+   "recovery": 0.633,
+   "damage": 30,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-f,n,d,df+3",
+   "input_slots": [
+    "f,n,d,df+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +11g; knockdown on hit"
+  },
+  "f,n,d,DF+4": {
+   "name": "Move f,n,d,DF+4 (f,n,d,DF+4)",
+   "input": "f,n,d,DF+4",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-f,n,d,DF+4",
+   "t8_damage": "15",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:heihachi:heihachi-f,n,d,df+4",
+   "input_slots": [
+    "f,n,d,DF+4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -23"
+  },
+  "f,n,d,DF+4,4": {
+   "name": "Move 4 (4)",
+   "input": "f,n,d,DF+4,4",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-f,n,d,DF+4,4",
+   "t8_damage": ",10",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:heihachi:heihachi-f,n,d,df+4,4",
+   "input_slots": [
+    "f,n,d,DF+4",
+    "f,n,d,DF+4,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     10
+    ],
+    "total": 25
+   },
+   "note": "Low; on block -10"
+  },
+  "f,n,d,DF+4,4,4": {
+   "name": "Spinning Demon",
+   "input": "f,n,d,DF+4,4,4",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-f,n,d,DF+4,4,4",
+   "t8_damage": ",8",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 33,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-f,n,d,df+4,4,4",
+   "input_slots": [
+    "f,n,d,DF+4",
+    "f,n,d,DF+4,4",
+    "f,n,d,DF+4,4,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     10,
+     8
+    ],
+    "total": 33
+   },
+   "note": "Low; on block -10"
+  },
+  "f,n,d,DF+4,4,4,1": {
+   "name": "Spinning Demon Thunder God Fist",
+   "input": "f,n,d,DF+4,4,4,1",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-f,n,d,DF+4,4,4,1",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 53,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-f,n,d,df+4,4,4,1",
+   "input_slots": [
+    "f,n,d,DF+4",
+    "f,n,d,DF+4,4",
+    "f,n,d,DF+4,4,4",
+    "f,n,d,DF+4,4,4,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     10,
+     8,
+     20
+    ],
+    "total": 53
+   },
+   "note": "Mid; on block -15; knockdown on hit"
+  },
+  "f,n,d,DF+4,4,4,3": {
+   "name": "Spinning Demon Bell-Ringer",
+   "input": "f,n,d,DF+4,4,4,3",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-f,n,d,DF+4,4,4,3",
+   "t8_damage": ",30",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.633,
+   "damage": 63,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-f,n,d,df+4,4,4,3",
+   "input_slots": [
+    "f,n,d,DF+4",
+    "f,n,d,DF+4,4",
+    "f,n,d,DF+4,4,4",
+    "f,n,d,DF+4,4,4,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     10,
+     8,
+     30
+    ],
+    "total": 63
+   },
+   "note": "High; on block +9; knockdown on hit"
+  },
+  "f,n,d,DF+4,4,4,n+4": {
+   "name": "Spinning Demon (n+4)",
+   "input": "f,n,d,DF+4,4,4,n+4",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-f,n,d,DF+4,4,4,n+4",
+   "t8_damage": ",10",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.35,
+   "damage": 43,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-f,n,d,df+4,4,4,n+4",
+   "input_slots": [
+    "f,n,d,DF+4",
+    "f,n,d,DF+4,4",
+    "f,n,d,DF+4,4,4",
+    "f,n,d,DF+4,4,4,n+4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     10,
+     8,
+     10
+    ],
+    "total": 43
+   },
+   "note": "Mid; on block -3"
+  },
+  "f,n,d,DF+4,4,4,n+4,4": {
+   "name": "Spinning Demon Tsunami Kick",
+   "input": "f,n,d,DF+4,4,4,n+4,4",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-f,n,d,DF+4,4,4,n,4,4",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 63,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-f,n,d,df+4,4,4,n,4,4",
+   "input_slots": [
+    "f,n,d,DF+4",
+    "f,n,d,DF+4,4",
+    "f,n,d,DF+4,4,4",
+    "f,n,d,DF+4,4,4,n+4",
+    "f,n,d,DF+4,4,4,n+4,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     10,
+     8,
+     10,
+     20
+    ],
+    "total": 63
+   },
+   "note": "Mid; on block -15"
+  },
+  "f,n,d,df,UF": {
+   "name": "Move f,n,d,df,UF (f,n,d,df,UF)",
+   "input": "f,n,d,df,UF",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-f,n,d,df,UF",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.45,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:heihachi:heihachi-f,n,d,df,uf",
+   "input_slots": [
+    "f,n,d,df,UF"
+   ],
+   "move_class": "special"
+  },
+  "f,n,df#1": {
+   "name": "Omen Thunder God Fist",
+   "input": "f,n,df#1",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-f,n,df${justFrame}1",
+   "t8_damage": "38",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.6,
+   "damage": 38,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-f,n,df${justframe}1",
+   "input_slots": [
+    "f,n,df#1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -11; knockdown on hit"
+  },
+  "FUJ.1": {
+   "name": "Move FUJ.1 (FUJ.1)",
+   "input": "FUJ.1",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-FUJ.1",
+   "t8_damage": "13",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.367,
+   "damage": 13,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:heihachi:heihachi-fuj.1",
+   "input_slots": [
+    "FUJ.1"
+   ],
+   "move_class": "strike",
+   "note": "High; on block -4"
+  },
+  "FUJ.1,1": {
+   "name": "Wind God Hasai Rengeki",
+   "input": "FUJ.1,1",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-FUJ.1,1",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 33,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-fuj.1,1",
+   "input_slots": [
+    "FUJ.1",
+    "FUJ.1,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     20
+    ],
+    "total": 33
+   },
+   "note": "High; on block -2; knockdown on hit"
+  },
+  "FUJ.1+2": {
+   "name": "Tengu's Wings",
+   "input": "FUJ.1+2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-FUJ.1+2",
+   "t8_damage": "25",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.633,
+   "damage": 25,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:heihachi:heihachi-fuj.1+2",
+   "input_slots": [
+    "FUJ.1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "FUJ.1,2": {
+   "name": "Wind God Tettsui",
+   "input": "FUJ.1,2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-FUJ.1,2",
+   "t8_damage": ",24",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.6,
+   "damage": 37,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-fuj.1,2",
+   "input_slots": [
+    "FUJ.1",
+    "FUJ.1,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     24
+    ],
+    "total": 37
+   },
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "FUJ.1+3": {
+   "name": "Fire Starter",
+   "input": "FUJ.1+3",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-FUJ.1+3",
+   "t8_damage": "15",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 15,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 8,
+   "anim_ref": "t8:heihachi:heihachi-fuj.1+3",
+   "input_slots": [
+    "FUJ.1+3"
+   ],
+   "move_class": "throw",
+   "note": "Throw",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "FUJ.2": {
+   "name": "Hidden Wind God Fist",
+   "input": "FUJ.2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-FUJ.2",
+   "t8_damage": "20",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:heihachi:heihachi-fuj.2",
+   "input_slots": [
+    "FUJ.2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -10; knockdown on hit"
+  },
+  "FUJ.3": {
+   "name": "Move FUJ.3 (FUJ.3)",
+   "input": "FUJ.3",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-FUJ.3",
+   "t8_damage": "17",
+   "startup": 0.467,
+   "active": 0.033,
+   "recovery": 0.6,
+   "damage": 17,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:heihachi:heihachi-fuj.3",
+   "input_slots": [
+    "FUJ.3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -10; knockdown on hit"
+  },
+  "FUJ.3,4": {
+   "name": "Wind God Hell Axle",
+   "input": "FUJ.3,4",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-FUJ.3,4",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 37,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-fuj.3,4",
+   "input_slots": [
+    "FUJ.3",
+    "FUJ.3,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     17,
+     20
+    ],
+    "total": 37
+   },
+   "note": "Mid; on block +4; knockdown on hit"
+  },
+  "FUJ.4": {
+   "name": "Wind God Geta Stomp",
+   "input": "FUJ.4",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-FUJ.4",
+   "t8_damage": "20",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 20,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:heihachi:heihachi-fuj.4",
+   "input_slots": [
+    "FUJ.4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -14"
+  },
+  "FUJ.DF": {
+   "name": "Wind God Step",
+   "input": "FUJ.DF",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-FUJ.DF",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.067,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:heihachi:heihachi-fuj.df",
+   "input_slots": [
+    "FUJ.DF"
+   ],
+   "move_class": "special"
+  },
+  "H.2+3": {
+   "name": "Enraged Tettsui Otoshi",
+   "input": "H.2+3",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-H.2+3",
+   "t8_damage": "50",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.6,
+   "damage": 50,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-h.2+3",
+   "input_slots": [
+    "H.2+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid, Mid; on block +10"
+  },
+  "H.2+3,F": {
+   "name": "Eight Thunder Kami Slayer",
+   "input": "H.2+3,F",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-H.2+3,F",
+   "t8_damage": "50",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.6,
+   "damage": 50,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-h.2+3,f",
+   "input_slots": [
+    "H.2+3,F"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +10"
+  },
+  "H.b,b,n,3+4": {
+   "name": "Shadow Step",
+   "input": "H.b,b,n,3+4",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-H.b,b,n,3+4",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.5,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:heihachi:heihachi-h.b,b,n,3+4",
+   "input_slots": [
+    "H.b,b,n,3+4"
+   ],
+   "move_class": "special"
+  },
+  "H.d+1+2,P": {
+   "name": "Charging Hard",
+   "input": "H.d+1+2,P",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-H.d+1+2,P",
+   "t8_damage": "35",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 35,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-h.d+1+2,p",
+   "input_slots": [
+    "H.d+1+2,P"
+   ],
+   "move_class": "throw",
+   "note": "Throw",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2"
+  },
+  "H.db+1+2": {
+   "name": "Thunderous Battering Ram",
+   "input": "H.db+1+2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-H.db+1+2",
+   "t8_damage": "25",
+   "startup": 0.5,
+   "active": 0.033,
+   "recovery": 0.833,
+   "damage": 25,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:heihachi:heihachi-h.db+1+2",
+   "input_slots": [
+    "H.db+1+2"
+   ],
+   "move_class": "strike",
+   "note": "SM; on block +0; knockdown on hit"
+  },
+  "H.FUJ.1+3": {
+   "name": "Firestarter",
+   "input": "H.FUJ.1+3",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-H.FUJ.1+3",
+   "t8_damage": "15",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.7,
+   "damage": 15,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 8,
+   "anim_ref": "t8:heihachi:heihachi-h.fuj.1+3",
+   "input_slots": [
+    "H.FUJ.1+3"
+   ],
+   "move_class": "throw",
+   "note": "Throw",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "Left throw": {
+   "name": "Guillotine Chop",
+   "input": "Left throw",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-Left throw",
+   "t8_damage": "40",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 40,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-left throw",
+   "input_slots": [
+    "Left throw"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -3",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "OTG.d+4": {
+   "name": "Geta Stomp",
+   "input": "OTG.d+4",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-OTG.d+4",
+   "t8_damage": "30",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 30,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-otg.d+4",
+   "input_slots": [
+    "OTG.d+4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -14; knockdown on hit"
+  },
+  "qcf+2": {
+   "name": "Iron Hand",
+   "input": "qcf+2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-qcf+2",
+   "t8_damage": "30",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.6,
+   "damage": 30,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-qcf+2",
+   "input_slots": [
+    "qcf+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -17; knockdown on hit"
+  },
+  "RAI.1": {
+   "name": "Hidden Thunder God Fist",
+   "input": "RAI.1",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-RAI.1",
+   "t8_damage": "38",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.817,
+   "damage": 38,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-rai.1",
+   "input_slots": [
+    "RAI.1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -11; knockdown on hit"
+  },
+  "RAI.1+3": {
+   "name": "Thunder Broken Toy",
+   "input": "RAI.1+3",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-RAI.1+3",
+   "t8_damage": "30",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.65,
+   "damage": 30,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-rai.1+3",
+   "input_slots": [
+    "RAI.1+3"
+   ],
+   "move_class": "throw",
+   "note": "Throw",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "RAI.2": {
+   "name": "Thunder Cutter",
+   "input": "RAI.2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-RAI.2",
+   "t8_damage": "25",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:heihachi:heihachi-rai.2",
+   "input_slots": [
+    "RAI.2"
+   ],
+   "move_class": "strike",
+   "note": "High; on block +10; knockdown on hit"
+  },
+  "RAI.3": {
+   "name": "Jichinsai",
+   "input": "RAI.3",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-RAI.3",
+   "t8_damage": "30",
+   "startup": 0.367,
+   "active": 0.033,
+   "recovery": 0.6,
+   "damage": 30,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-rai.3",
+   "input_slots": [
+    "RAI.3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -7; knockdown on hit"
+  },
+  "RAI.4": {
+   "name": "Raijin Spinning Demon",
+   "input": "RAI.4",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-RAI.4",
+   "t8_damage": "15",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:heihachi:heihachi-rai.4",
+   "input_slots": [
+    "RAI.4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -23"
+  },
+  "R.df+1+2": {
+   "name": "Mishima Style Ultimate Technique - Tempest Dragon God Fist",
+   "input": "R.df+1+2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-R.df+1+2",
+   "t8_damage": "55+",
+   "startup": 0.333,
+   "active": 0.3,
+   "recovery": 0.65,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:heihachi:heihachi-r.df+1+2",
+   "input_slots": [
+    "R.df+1+2"
+   ],
+   "move_class": "special",
+   "note": "Mid, Throw; on block -18"
+  },
+  "Right throw": {
+   "name": "Freefall",
+   "input": "Right throw",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-Right throw",
+   "t8_damage": "45",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 45,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-right throw",
+   "input_slots": [
+    "Right throw"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -3",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "SS.2": {
+   "name": "Nail Beating",
+   "input": "SS.2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-SS.2",
+   "t8_damage": "20",
+   "startup": 0.383,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:heihachi:heihachi-ss.2",
+   "input_slots": [
+    "SS.2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -9"
+  },
+  "ub+1+2": {
+   "name": "Genkotsu Crusher",
+   "input": "ub+1+2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-ub+1+2",
+   "t8_damage": "17",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 17,
+   "limb": "both",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:heihachi:heihachi-ub+1+2",
+   "input_slots": [
+    "ub+1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -8"
+  },
+  "ub+1+2*": {
+   "name": "Genkotsu Crusher (charged)",
+   "input": "ub+1+2*",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-ub+1+2*",
+   "t8_damage": "27",
+   "startup": 0.483,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 27,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:heihachi:heihachi-ub+1+2*",
+   "input_slots": [
+    "ub+1+2*"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +4"
+  },
+  "ub+2": {
+   "name": "Skull Rupture",
+   "input": "ub+2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-ub+2",
+   "t8_damage": "25",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:heihachi:heihachi-ub+2",
+   "input_slots": [
+    "ub+2"
+   ],
+   "move_class": "strike",
+   "note": "High; on block -6"
+  },
+  "uf+1": {
+   "name": "Demon's Wings",
+   "input": "uf+1",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-uf+1",
+   "t8_damage": "25",
+   "startup": 0.4,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 25,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:heihachi:heihachi-uf+1",
+   "input_slots": [
+    "uf+1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "uf+1+2": {
+   "name": "Stonehead",
+   "input": "uf+1+2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-uf+1+2",
+   "t8_damage": "35",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 35,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-uf+1+2",
+   "input_slots": [
+    "uf+1+2"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block +0; knockdown on hit",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1+2"
+  },
+  "uf+1+4": {
+   "name": "Headbutt Clash",
+   "input": "uf+1+4",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-uf+1+4",
+   "t8_damage": "30",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 30,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-uf+1+4",
+   "input_slots": [
+    "uf+1+4"
+   ],
+   "move_class": "throw",
+   "note": "Throw; on block -6",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "uf+2": {
+   "name": "Move uf+2 (uf+2)",
+   "input": "uf+2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-uf+2",
+   "t8_damage": "16",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 16,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:heihachi:heihachi-uf+2",
+   "input_slots": [
+    "uf+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -9"
+  },
+  "uf+2,1": {
+   "name": "Kidney Crush Combo",
+   "input": "uf+2,1",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-uf+2,1",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 36,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-uf+2,1",
+   "input_slots": [
+    "uf+2",
+    "uf+2,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     16,
+     20
+    ],
+    "total": 36
+   },
+   "note": "Mid; on block -11; knockdown on hit"
+  },
+  "uf+3": {
+   "name": "Move uf+3 (uf+3)",
+   "input": "uf+3",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-uf+3",
+   "t8_damage": "17",
+   "startup": 0.467,
+   "active": 0.033,
+   "recovery": 0.6,
+   "damage": 17,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:heihachi:heihachi-uf+3",
+   "input_slots": [
+    "uf+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -10; knockdown on hit"
+  },
+  "uf+3,4": {
+   "name": "Hell Axle",
+   "input": "uf+3,4",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-uf+3,4",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 37,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-uf+3,4",
+   "input_slots": [
+    "uf+3",
+    "uf+3,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     17,
+     20
+    ],
+    "total": 37
+   },
+   "note": "Mid; on block +4; knockdown on hit"
+  },
+  "uf+4": {
+   "name": "Wind Slicer",
+   "input": "uf+4",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-uf+4",
+   "t8_damage": "17",
+   "startup": 0.4,
+   "active": 0.033,
+   "recovery": 0.367,
+   "damage": 17,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:heihachi:heihachi-uf+4",
+   "input_slots": [
+    "uf+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -9; knockdown on hit"
+  },
+  "uf+4,H.1": {
+   "name": "Soaring Anvil Smasher",
+   "input": "uf+4,H.1",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-uf+4,H.1",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.667,
+   "damage": 37,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-uf+4,h.1",
+   "input_slots": [
+    "uf+4",
+    "uf+4,H.1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     17,
+     20
+    ],
+    "total": 37
+   },
+   "note": "Mid; on block -3; knockdown on hit"
+  },
+  "WAR.1+2": {
+   "name": "Ultimate Demon Breath",
+   "input": "WAR.1+2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-WAR.1+2",
+   "t8_damage": "31",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 31,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-war.1+2",
+   "input_slots": [
+    "WAR.1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -10; knockdown on hit"
+  },
+  "WAR.f,F+2": {
+   "name": "Ultimate Demon God Fist",
+   "input": "WAR.f,F+2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-WAR.f,F+2",
+   "t8_damage": "22",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 22,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t8:heihachi:heihachi-war.f,f+2",
+   "input_slots": [
+    "WAR.f,F+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -16; knockdown on hit"
+  },
+  "WAR.f,F+3": {
+   "name": "Ultimate Splits Kick",
+   "input": "WAR.f,F+3",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-WAR.f,F+3",
+   "t8_damage": "25",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 25,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:heihachi:heihachi-war.f,f+3",
+   "input_slots": [
+    "WAR.f,F+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +1c; knockdown on hit"
+  },
+  "WAR.f,f,F+1+2": {
+   "name": "Ultimate Roaring Stonehead",
+   "input": "WAR.f,f,F+1+2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-WAR.f,f,F+1+2",
+   "t8_damage": "20",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.767,
+   "damage": 20,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:heihachi:heihachi-war.f,f,f+1+2",
+   "input_slots": [
+    "WAR.f,f,F+1+2"
+   ],
+   "move_class": "strike",
+   "note": "High; on block +6"
+  },
+  "WAR.f,n,d,DF+4": {
+   "name": "Ultimate Spinning Demon",
+   "input": "WAR.f,n,d,DF+4",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-WAR.f,n,d,DF+4",
+   "t8_damage": "15",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:heihachi:heihachi-war.f,n,d,df+4",
+   "input_slots": [
+    "WAR.f,n,d,DF+4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -14"
+  },
+  "WAR.FUJ.2": {
+   "name": "Ultimate Hidden Wind God Fist",
+   "input": "WAR.FUJ.2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-WAR.FUJ.2",
+   "t8_damage": "24",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 24,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:heihachi:heihachi-war.fuj.2",
+   "input_slots": [
+    "WAR.FUJ.2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -3; knockdown on hit"
+  },
+  "WAR.RAI.1": {
+   "name": "Ultimate Hidden Thunder God Fist",
+   "input": "WAR.RAI.1",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-WAR.RAI.1",
+   "t8_damage": "38",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.817,
+   "damage": 38,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-war.rai.1",
+   "input_slots": [
+    "WAR.RAI.1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -8~-6; knockdown on hit"
+  },
+  "ws1": {
+   "name": "Quick Iron Fist",
+   "input": "ws1",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-ws1",
+   "t8_damage": "17",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 17,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:heihachi:heihachi-ws1",
+   "input_slots": [
+    "ws1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -14; knockdown on hit"
+  },
+  "ws2": {
+   "name": "Dark Thrust",
+   "input": "ws2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-ws2",
+   "t8_damage": "20",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:heihachi:heihachi-ws2",
+   "input_slots": [
+    "ws2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -8"
+  },
+  "ws3": {
+   "name": "Move ws3 (ws3)",
+   "input": "ws3",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-ws3",
+   "t8_damage": "10",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 10,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:heihachi:heihachi-ws3",
+   "input_slots": [
+    "ws3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -11"
+  },
+  "ws3,1+2": {
+   "name": "Holy Demon Cross",
+   "input": "ws3,1+2",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-ws3,1+2",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 30,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:heihachi:heihachi-ws3,1+2",
+   "input_slots": [
+    "ws3",
+    "ws3,1+2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     20
+    ],
+    "total": 30
+   },
+   "note": "Mid; on block -9; knockdown on hit"
+  },
+  "ws4": {
+   "name": "Move ws4 (ws4)",
+   "input": "ws4",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-ws4",
+   "t8_damage": "13",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.35,
+   "damage": 13,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:heihachi:heihachi-ws4",
+   "input_slots": [
+    "ws4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -3"
+  },
+  "ws4,4": {
+   "name": "Tsunami Kick",
+   "input": "ws4,4",
+   "t8_source": "heihachi",
+   "t8_id": "Heihachi-ws4,4",
+   "t8_damage": ",16",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 29,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:heihachi:heihachi-ws4,4",
+   "input_slots": [
+    "ws4",
+    "ws4,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     16
+    ],
+    "total": 29
+   },
+   "note": "Mid; on block -15"
   }
  },
  "strings": [
-  {
-   "input": "2,1",
-   "hits": [
-    "2",
-    "1"
-   ],
-   "t3_rows": [
-    157,
-    158
-   ]
-  },
-  {
-   "input": "2,1,2",
-   "hits": [
-    "2",
-    "1",
-    "2"
-   ],
-   "t3_rows": [
-    157,
-    158,
-    159
-   ]
-  }
+  "1,1",
+  "1,1,2",
+  "1,1,WAR.2",
+  "1,2",
+  "1,2,2",
+  "1,2,2~1",
+  "1,2,2~1,1+2",
+  "1,2,4",
+  "1,2,4*",
+  "1,b+2",
+  "1,b+2,1",
+  "1,b+2,2",
+  "1,b+2,4",
+  "1,b+2,WAR.2",
+  "2,2",
+  "3,2",
+  "b+1,4",
+  "b+3,2",
+  "b+3,3",
+  "b+3,3,H.2",
+  "d+1,2",
+  "d+3,H.2",
+  "df+1,1",
+  "df+1,2",
+  "df+1,2*",
+  "df+1,&amp;#58;2*",
+  "df+2,1",
+  "df+2,WAR.1",
+  "df+3,1+2",
+  "df+3,1+2,1",
+  "df+4,2",
+  "f+2~1,1+2",
+  "f+2,2",
+  "f,n,d,DF+4,4",
+  "f,n,d,DF+4,4,4",
+  "f,n,d,DF+4,4,4,1",
+  "f,n,d,DF+4,4,4,3",
+  "f,n,d,DF+4,4,4,n+4",
+  "f,n,d,DF+4,4,4,n+4,4",
+  "FUJ.1,1",
+  "FUJ.1,2",
+  "FUJ.3,4",
+  "uf+2,1",
+  "uf+3,4",
+  "uf+4,H.1",
+  "ws3,1+2",
+  "ws4,4"
  ],
  "specials": [
   {
-   "input": "d,d/b,d,d/b+1+2",
-   "t3_row": 243,
-   "damage": 21,
+   "input": "1+2+3+4",
+   "damage": 0
+  },
+  {
+   "input": "1+3",
+   "damage": 35,
    "throw": true
   },
   {
-   "input": "n,d,d/b+1+3",
-   "t3_row": 243,
-   "damage": 21,
+   "input": "2+3+4",
+   "damage": 0
+  },
+  {
+   "input": "2+4",
+   "damage": 35,
    "throw": true
   },
   {
-   "input": "n,d/f,n,d/f+1",
-   "t3_row": 243,
-   "damage": 21,
+   "input": "Back throw",
+   "damage": 60,
+   "throw": true
+  },
+  {
+   "input": "d+1+2",
+   "damage": 0
+  },
+  {
+   "input": "f+3+4",
+   "damage": 0
+  },
+  {
+   "input": "f,n,d,df",
+   "damage": 0
+  },
+  {
+   "input": "f,n,d,df,UF",
+   "damage": 0
+  },
+  {
+   "input": "FUJ.1+3",
+   "damage": 15,
+   "throw": true
+  },
+  {
+   "input": "FUJ.DF",
+   "damage": 0
+  },
+  {
+   "input": "H.b,b,n,3+4",
+   "damage": 0
+  },
+  {
+   "input": "H.d+1+2,P",
+   "damage": 35,
+   "throw": true
+  },
+  {
+   "input": "H.FUJ.1+3",
+   "damage": 15,
+   "throw": true
+  },
+  {
+   "input": "Left throw",
+   "damage": 40,
+   "throw": true
+  },
+  {
+   "input": "RAI.1+3",
+   "damage": 30,
+   "throw": true
+  },
+  {
+   "input": "R.df+1+2",
+   "damage": 0
+  },
+  {
+   "input": "Right throw",
+   "damage": 45,
+   "throw": true
+  },
+  {
+   "input": "uf+1+2",
+   "damage": 35,
+   "throw": true
+  },
+  {
+   "input": "uf+1+4",
+   "damage": 30,
    "throw": true
   }
  ],
- "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
- "schema_version": 2
+ "frame_convention": "T8 60fps -> seconds (frames/60); damage T8 180HP scale as-is",
+ "schema_version": 2,
+ "canon_note": "Diablo WH signature moves preserved; T8 Heihachi frame data folded in."
 }
