@@ -136,9 +136,13 @@ const MODEL_URLS = {
   vega: '../roster/vega/attires/attire1/model.glb',
   iori: '../roster/iori/attires/attire1/model.glb',
   'armor-king': '../roster/armor-king/attires/attire1/model.glb',
-  // DEATHFANG (owner 2026-10-19): proprietary Iori-based fighter. Model reskin pending —
-  // currently reuses the Iori model (his moves/stance/animations are the base).
-  deathfang: '../roster/iori/attires/attire1/model.glb',
+  // DEATHFANG (owner 2026-10-19): proprietary, based on Iori Yagami — chained/shackled
+  // prisoner of his own grief, emo reskin, NO FUTURE face tattoo. Attire 2 = chained
+  // prisoner werewolf transform form. (Supersedes the parallel lane's placeholder,
+  // which pointed deathfang at the plain Iori model — the real reskin model lives
+  // in roster/deathfang/ now.)
+  deathfang: '../roster/deathfang/attires/attire1/model.glb',
+  'deathfang-werewolf': '../roster/deathfang/attires/attire2/model.glb',
   // Ryuji Yamazaki x The Rock hybrid (owner 2026-10-19). MODEL PENDING: no Yamazaki
   // model found anywhere (no KOF teardown, none in tripo-recovery, no downloadable
   // Sketchfab model). URL wired for the drop-in; model.glb lands the moment the
