@@ -14,7 +14,8 @@ import { loadT3Clips } from './t3anims.js';
 import * as THREE from 'three';
 import { whUiEnabled, mountWhUi } from './ui-wh-bridge.js';
 import { getCustomFighter, customFighterToRoster } from './custom-fighter.js';
-import { attiresFor, selectedAttireModel, setAttire, attireLabel, resolveFighterAttire } from './attires.js';
+import { resolveFighterAttire } from './attires.js';
+import { createSelectScreen } from './select-screen.js';
 import { STAGES, STAGE_TIERS, getStage, randomStageId } from './stages.js';
 import { ModeController } from './modes.js';
 import { initMenus } from './menus.js';
@@ -36,6 +37,10 @@ const screens = {
   trader:  document.getElementById('screen-trader'),
   modewin: document.getElementById('screen-modewin'),
 };
+/* Tekken-style select screen controller (js/select-screen.js).
+   Assigned once at bootstrap below; show() only runs on user
+   interaction, after the whole module has been evaluated. */
+let selectScreen = null;
 function show(name) {
   Object.values(screens).forEach(s => s.classList.remove('active'));
   if (screens[name]) screens[name].classList.add('active');
@@ -46,6 +51,7 @@ function show(name) {
     // Start downloading both fighter models the moment select opens —
     // by the time the user picks and hits CONFIRM, they're usually cached.
     assets.preloadAll();
+    if (selectScreen) selectScreen.onShow(modes.mode);
   }
   else { selectTimerArmed = false; stopSelectTimer(); }
 }
@@ -197,221 +203,30 @@ function getCharacterWithCustom(id) {
   return _origGetCharacter(id);
 }
 
-/* Build character select cards — Tekken-style tiered grid */
-function buildSelect() {
-  const grid = document.getElementById('char-grid');
-  grid.innerHTML = '';
-
-  const tiers = [
-    { label: 'THE NINE SOULS', fighters: ROSTER.slice(0, 9) },
-    { label: 'MAIN ROSTER', fighters: ROSTER.slice(9, 16) },
-    { label: 'BONUS ROSTER', fighters: ROSTER.slice(16) },
-  ];
-
-  // Custom fighter from the CAW suite (if one is saved)
+/* ---------------- Character select (Tekken-style, 2026-10-20) ----------------
+   The select screen — bisected live-3D P1/P2 fighters zone,
+   contained card strip, on-select attire switching (P = attire 1,
+   K = attire 2) — lives in js/select-screen.js, built from the
+   teardown selector record. main.js only wires it into the mode
+   flow: a highlight mirrors selectedChar, and CONFIRM routes
+   through the module's lock state before modes.onConfirm runs. */
+function composedRoster() {
+  const list = [...ROSTER];
   const customRaw = getCustomFighter();
   if (customRaw) {
     const custom = customFighterToRoster(customRaw);
-    if (custom) {
-      tiers.push({ label: 'CUSTOM', fighters: [custom] });
-    }
+    if (custom) list.push(custom);
   }
-
-  tiers.forEach(({ label, fighters }) => {
-    const tierHeader = document.createElement('div');
-    tierHeader.className = 'tier-header';
-    tierHeader.textContent = label;
-    grid.appendChild(tierHeader);
-
-    fighters.forEach((c) => {
-      const card = document.createElement('div');
-      card.className = 'char-card';
-      card.dataset.id = c.id;
-      const surgeName = c.surge ? c.surge.name : 'SOUL SURGE';
-      // REAL portrait render from the 3D fighter model (game/assets/portraits/).
-      // Tekken 2:3 center-crop convention (SELECTOR_CAROUSEL.md).
-      card.innerHTML =
-        `<div class="portrait"><img src="assets/portraits/${c.id}.png" alt="${c.name}" loading="lazy"></div>
-         <div class="cname">${c.name}</div>
-         <div class="cstyle">${c.style}</div>`;
-      card.addEventListener('click', () => selectCard(card, c));
-      grid.appendChild(card);
-    });
-  });
+  return list;
 }
-buildSelect();
-
-/* Card selection (shared by mouse + keyboard) */
-let focusedCardIdx = 0;
-function allCards() { return [...document.querySelectorAll('.char-card')]; }
-function selectCard(card, c) {
-  audio.uiClick();
-  document.querySelectorAll('.char-card').forEach(x => x.classList.remove('selected'));
-  card.classList.add('selected');
-  selectedChar = c.id;
-  // Prefetch this fighter's 3D model while the user decides — Tekken 3
-  // loads the character record when highlighted, not at boot.
-  assets.prefetch(c.model || 'pantera');
-  const surgeName = c.surge ? c.surge.name : 'SOUL SURGE';
-  document.getElementById('select-hint').textContent = `${c.name} — ${c.style} · ${surgeName}`;
-  document.getElementById('confirm-fighter').disabled = false;
-  // Tekken-style: show the picked fighter BIG in the 3D preview pane.
-  previewFighter(c);
-  // Attire picker (stream 4): show this fighter's attires as touch chips.
-  renderAttireStrip(c);
-}
-/* ============ ATTIRE PICKER STRIP (stream 4) ============ */
-let _stripFighter = null;
-function renderAttireStrip(c) {
-  _stripFighter = c;
-  const strip = document.getElementById('attire-strip');
-  if (!strip) return;
-  const list = attiresFor(c);
-  const sel = selectedAttireModel(c);
-  if (list.length < 2) { strip.innerHTML = ''; strip.style.display = 'none'; return; }
-  strip.style.display = '';
-  strip.innerHTML = '';
-  list.forEach(a => {
-    const chip = document.createElement('button');
-    chip.className = 'attire-chip' + (a.model === sel ? ' on' : '');
-    chip.type = 'button';
-    chip.textContent = a.label;
-    chip.addEventListener('click', (e) => {
-      e.stopPropagation();
-      audio.uiClick();
-      setAttire(c, a.model);
-      strip.querySelectorAll('.attire-chip').forEach(x => x.classList.remove('on'));
-      chip.classList.add('on');
-      previewFighter({ ...c, model: a.model });
-      assets.prefetch(a.model);
-      document.getElementById('select-hint').textContent =
-        `${c.name} — ${attireLabel(c, a.model)}`;
-    });
-    strip.appendChild(chip);
-  });
-}
-
-/* ============ TEKKEN-STYLE 3D PREVIEW PANE (restored from #328, polished) ============ */
-let previewRenderer = null, previewScene = null, previewCamera = null;
-let previewMixer = null, previewModel = null, previewClock = null;
-let previewRaf = 0, previewLoading = false;
-
-function initPreview() {
-  const canvas = document.getElementById('preview-canvas');
-  if (!canvas || previewRenderer) return;
-  previewRenderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-  previewRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  previewScene = new THREE.Scene();
-  previewScene.add(new THREE.HemisphereLight(0xffffff, 0x332244, 1.1));
-  const key = new THREE.DirectionalLight(0xffffff, 1.6);
-  key.position.set(2.5, 4, 3); previewScene.add(key);
-  const rim = new THREE.DirectionalLight(0x9fd8ff, 0.9);
-  rim.position.set(-3, 2, -2.5); previewScene.add(rim);
-  const gold = new THREE.PointLight(0xffb14d, 12, 12);
-  gold.position.set(0, 0.4, 2.2); previewScene.add(gold);
-  previewCamera = new THREE.PerspectiveCamera(32, 1, 0.01, 50);
-  previewCamera.position.set(0, 1.15, 3.4);
-  previewCamera.lookAt(0, 0.95, 0);
-  previewClock = new THREE.Clock();
-  const resize = () => {
-    const el = document.getElementById('select-preview');
-    if (!el || !previewRenderer) return;
-    const w = el.clientWidth, h = el.clientHeight;
-    if (w < 2 || h < 2) return;
-    previewRenderer.setSize(w, h, false);
-    previewCamera.aspect = w / h;
-    previewCamera.updateProjectionMatrix();
-  };
-  new ResizeObserver(resize).observe(document.getElementById('select-preview'));
-  resize();
-  const loop = () => {
-    previewRaf = requestAnimationFrame(loop);
-    const dt = Math.min(previewClock.getDelta(), 0.05);
-    if (previewMixer) previewMixer.update(dt);
-    if (previewModel && !previewLoading) previewModel.rotation.y += dt * 0.35;
-    previewRenderer.render(previewScene, previewCamera);
-  };
-  loop();
-}
-
-async function previewFighter(c) {
-  initPreview();
-  if (!previewScene) return;
-  const modelId = c.model || 'pantera';
-  document.getElementById('preview-name').textContent = c.name || '\u2014';
-  document.getElementById('preview-title').textContent = c.title || '';
-  document.getElementById('preview-style').textContent =
-    [c.style, c.archetype].filter(Boolean).join(' \u00b7 ');
-  const info = document.querySelector('.preview-info');
-  if (info) { info.classList.remove('plate-pop'); void info.offsetWidth; info.classList.add('plate-pop'); }
-  if (previewModel) { previewScene.remove(previewModel); previewModel = null; previewMixer = null; }
-  previewLoading = true;
-  try {
-    await assets.loadModels([modelId]);
-    const inst = assets.createInstance(
-      modelId, c.colors?.suit ?? 0xffffff, c.colors?.trim ?? 0x888888, c.tintStrength ?? 0.3);
-    previewModel = inst.model;
-    previewModel.rotation.y = 0.15;
-    const s = c.bodyScale || 1;
-    previewCamera.position.set(0, 1.15 * s, 3.4 * s);
-    previewCamera.lookAt(0, 0.95 * s, 0);
-    previewScene.add(previewModel);
-    previewMixer = inst.mixer;
-    if (!inst.actions || !inst.actions.Idle) {
-      const chest = inst.bones['Spine2'] || inst.bones['Spine1'] || inst.bones['Spine'];
-      if (chest) {
-        const t0 = performance.now();
-        const y0 = chest.position.y;
-        const breathe = () => {
-          if (previewModel !== inst.model) return;
-          const t = (performance.now() - t0) / 1000;
-          chest.rotation.x = Math.sin(t * 1.4) * 0.03;
-          chest.position.y = y0 + Math.sin(t * 1.4) * 0.008;
-          requestAnimationFrame(breathe);
-        };
-        breathe();
-      }
-    }
-  } catch (e) {
-    console.warn('[WH] preview failed for', modelId, e.message || e);
-    document.getElementById('preview-title').textContent = 'Model loading...';
-  } finally {
-    previewLoading = false;
-  }
-}
-
-function focusCard(i) {
-  const cards = allCards();
-  if (!cards.length) return;
-  focusedCardIdx = (i + cards.length) % cards.length;
-  cards.forEach(x => x.classList.remove('kb-focus'));
-  const el = cards[focusedCardIdx];
-  el.classList.add('kb-focus');
-  el.scrollIntoView({ block: 'nearest' });
-}
-/* Keyboard navigation on the select screen */
-document.addEventListener('keydown', (e) => {
-  const sel = document.getElementById('screen-select');
-  if (!sel || !sel.classList.contains('active')) return;
-  const cards = allCards();
-  if (!cards.length) return;
-  // match the responsive CSS grid columns (2 phone portrait, 3 tablet, 4 desktop/landscape)
-  const grid = document.getElementById('char-grid');
-  const cols = grid ? getComputedStyle(grid).gridTemplateColumns.split(' ').length : 2;
-  if (e.key === 'ArrowRight') { focusCard(focusedCardIdx + 1); e.preventDefault(); }
-  else if (e.key === 'ArrowLeft') { focusCard(focusedCardIdx - 1); e.preventDefault(); }
-  else if (e.key === 'ArrowDown') { focusCard(focusedCardIdx + cols); e.preventDefault(); }
-  else if (e.key === 'ArrowUp') { focusCard(focusedCardIdx - cols); e.preventDefault(); }
-  else if (e.key === 'Enter' || e.key === ' ') {
-    const card = cards[focusedCardIdx];
-    const c = ROSTER.find(x => x.id === card.dataset.id) || getCustomRosterEntry(card.dataset.id);
-    if (c) {
-      if (selectedChar === c.id) { confirmSelection(); } // Enter again = confirm
-      else selectCard(card, c);
-    }
-    e.preventDefault();
-  }
+selectScreen = createSelectScreen({
+  roster: composedRoster,
+  findChar: (id) => ROSTER.find(x => x.id === id) || getCustomRosterEntry(id),
+  audio,
+  onHighlight: (c) => { selectedChar = c ? c.id : null; },
 });
+selectScreen.build();
+
 /* ---------------- Stage select (Lane 4) ----------------
    After the fighter is confirmed, pick the arena: 8 canon Eastern
    Mind lands + 15 Tekken 3 retro arenas (real teardown geometry). */
@@ -514,12 +329,7 @@ function startSelectTimer() {
       // match does NOT start — the user still taps CONFIRM to fight.
       const pool = ROSTER.filter(c => c.id !== selectedChar);
       const pick = pool[Math.floor(Math.random() * pool.length)];
-      const card = document.querySelector(`.char-card[data-id="${pick.id}"]`);
-      if (card) {
-        selectCard(card, pick);
-        const idx = Array.from(allCards()).indexOf(card);
-        if (idx >= 0) focusCard(idx);
-      }
+      if (pick) selectScreen.selectById(pick.id);
       document.getElementById('select-hint').textContent = 'TIME UP — random fighter picked. Tap CONFIRM to fight.';
     }
   }, 1000);
@@ -530,10 +340,7 @@ function stopSelectTimer() {
 /* Deep link: ?fighter=<id> pre-selects that fighter on the select screen */
 (function () {
   const id = new URLSearchParams(location.search).get('fighter');
-  if (!id) return;
-  const card = document.querySelector(`.char-card[data-id="${id}"]`);
-  const c = ROSTER.find(x => x.id === id);
-  if (card && c) selectCard(card, c);
+  if (id) selectScreen.selectById(id);
 })();
 
 /* Random opponent different from the player */
@@ -620,8 +427,12 @@ document.querySelectorAll('[data-action]').forEach((el) => {
    dep below); arcade/story/training use their mode-dictated flow. */
 function confirmSelection() {
   if (!selectedChar) return;
+  const id = selectedChar; // capture: notifyConfirm may clear the mirror
   audio.uiClick();
-  modes.onConfirm(selectedChar);
+  // Select-screen lock state first (P1 lock -> P2 cursor in versus),
+  // then the mode controller routes the fight.
+  selectScreen.notifyConfirm(id);
+  modes.onConfirm(id);
   selectedChar = null; // always clear — versus P2 must click a card to pick
 }
 
