@@ -133,6 +133,10 @@ export const FULL_ROSTER = [
     colors: { suit: 0x2a2a3a, trim: 0xcccccc }, style: 'Inventor', archetype: 'Tricky',
     // Attire 3 "Hood scientist" (owner 2026-10-19): old mob boss scientist, club night.
     transform: { targetModel: 'doc-frank-hood-big', powerMult: 1.4, speedMult: 0.88, defenseMult: 1.15, bodyScale: 1.18 } },
+  { id: 'doc-frank-frankenstein', name: 'DOC FRANK', title: "Frankenstein's Cyborg", base: 'Bosconovitch', moveset: 'gunjack', model: 'doc-frank-frankenstein', tintStrength: 0.25,
+    colors: { suit: 0x3a4a3a, trim: 0x88cc88 }, style: 'Inventor', archetype: 'Tricky',
+    // Attire 4 "Frankenstein's Cyborg" (owner 2026-10-19): two-form transform attire.
+    transform: { targetModel: 'doc-frank-frankenstein-big', powerMult: 1.4, speedMult: 0.88, defenseMult: 1.15, bodyScale: 1.18 } },
   { id: 'doc-frank-machine-shop', name: 'DOC FRANK', title: 'Machine Shop', base: 'Bosconovitch', moveset: 'gunjack', model: 'doc-frank-machine-shop', tintStrength: 0.25,
     colors: { suit: 0x4a4a5a, trim: 0xff8800 }, style: 'Inventor', archetype: 'Tricky' },
   { id: 'baek-master-white', name: 'BAEK', title: "Master's White", base: 'Baek', moveset: 'bryan', model: 'baek-master-white', tintStrength: 0.25,

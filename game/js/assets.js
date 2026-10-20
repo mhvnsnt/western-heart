@@ -26,6 +26,10 @@ const MODEL_URLS = {
   // Tripo pulls wired 2026-10-19 (owner: stop saying "not in the repo").
   phantom: '../roster/phantom/attires/attire1/model.glb',
   skull: '../roster/skull/attires/attire1/model.glb',
+  // KRONOS (owner custom Zangief fighter, 2026-10-19): Tripo models live at
+  // tripo-recovery/kronos_attire1_default.glb/ + kronos_attire2_timberwolf/;
+  // copying the GLB into roster/kronos/attires/attire1/model.glb is a follow-up.
+  kronos: '../roster/kronos/attires/attire1/model.glb',
   // SAM-UR-A1 Attire 1 (owner 2026-10-19): Tripo pull replaces the fan-rip placeholder.
   'sam-ur-a1': '../roster/sam-ur-a1/attires/attire1/model.glb',
   'saku-ra': '../roster/sakura/attires/attire1/model.glb',
@@ -47,6 +51,9 @@ const MODEL_URLS = {
   'doc-frank-wowomomo-big': '../roster/doc-frank/attires/attire2/transformed/model.glb',
   'doc-frank-hood': '../roster/doc-frank/attires/attire3/base/model.glb',
   'doc-frank-hood-big': '../roster/doc-frank/attires/attire3/transformed/model.glb',
+  // Attire 4 "Frankenstein's Cyborg" (owner 2026-10-19): two-form transform attire.
+  'doc-frank-frankenstein': '../roster/doc-frank/attires/attire4/base/model.glb',
+  'doc-frank-frankenstein-big': '../roster/doc-frank/attires/attire4/transformed/model.glb',
   'demonio-a1': '../roster/demonio/attires/attire1/model.glb',
   'demonio-winged': '../roster/demonio/attires/winged-devil/model.glb',
   'demonio-human': '../roster/demonio/attires/human/model.glb',
