@@ -36,6 +36,7 @@ export const MOVESET_IDS = [
   'lili', 'baek',
   // DOA/VF federation (owner 2026-10-19): converted movelists, Tekken-notation
   'doa-kasumi', 'doa-bass', 'doa-hayabusa',
+  'doa-ayane', 'doa-tina', 'doa-jannlee',
   'vf-akira', 'vf-sarah', 'vf-kage',
   // Reskin wave (2026-10-19): first custom attires as selectable fighters.
   'demonio-bloodline-ember', 'doc-frank-machine-shop', 'baek-master-white',
@@ -44,6 +45,8 @@ export const MOVESET_IDS = [
   'demonio-winged',
   // Sketchfab intake (owner 2026-10-19): working names, WH names pending.
   'zangief', 'blanka', 'vega', 'iori', 'armor-king',
+  // DEATHFANG (owner 2026-10-19): proprietary, Iori-based — full Iori kit in deathfang.json.
+  'deathfang',
   // Custom fighters (owner 2026-10-19): KRONOS — Zangief base + Golem (Urban Reign) mix.
   'kronos',
   // Ryuji Yamazaki x The Rock hybrid (owner 2026-10-19): 22 moves, King-proxy
@@ -52,12 +55,9 @@ export const MOVESET_IDS = [
   'ryuji-rock',
   // Intake wave 2 (owner 2026-10-19): remaining four intake movesets.
   'hugo', 'raiden', 'marduk', 'bob',
-  // Custom fighters (owner 2026-10-19): KRONOS (Zangief + Golem), DEATHFANG (Iori-based), Ryuji/Rock hybrid, KORESHI (owner creation).
-  'kronos', 'deathfang', 'ryuji-rock', 'koreshi',
-  // SF authentic translations (owner 2026-10-19, Akuma-in-T7 pattern:
-  // SF motions kept, Tekken frame/throw logic). Builder: teardown/street-fighter-3d-games/tools/build_sf_movesets.py
-  'sf-zangief', 'sf-blanka', 'sf-vega', 'sf-ryu', 'sf-ken', 'sf-chunli',
-  'sf-guile', 'sf-mbison', 'sf-sagat', 'sf-dhalsim', 'sf-cammy',
+  // Custom fighters (owner 2026-10-19): KORESHI (owner creation).
+  // (deathfang already listed above; not duplicated.)
+  'koreshi',
 ];
 
 const _movesets = {};

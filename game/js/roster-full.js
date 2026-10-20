@@ -133,6 +133,10 @@ export const FULL_ROSTER = [
     colors: { suit: 0x2a2a3a, trim: 0xcccccc }, style: 'Inventor', archetype: 'Tricky',
     // Attire 3 "Hood scientist" (owner 2026-10-19): old mob boss scientist, club night.
     transform: { targetModel: 'doc-frank-hood-big', powerMult: 1.4, speedMult: 0.88, defenseMult: 1.15, bodyScale: 1.18 } },
+  { id: 'doc-frank-frankenstein', name: 'DOC FRANK', title: "Frankenstein's Cyborg", base: 'Bosconovitch', moveset: 'gunjack', model: 'doc-frank-frankenstein', tintStrength: 0.25,
+    colors: { suit: 0x3a4a3a, trim: 0x88cc88 }, style: 'Inventor', archetype: 'Tricky',
+    // Attire 4 "Frankenstein's Cyborg" (owner 2026-10-19): two-form transform attire.
+    transform: { targetModel: 'doc-frank-frankenstein-big', powerMult: 1.4, speedMult: 0.88, defenseMult: 1.15, bodyScale: 1.18 } },
   { id: 'doc-frank-machine-shop', name: 'DOC FRANK', title: 'Machine Shop', base: 'Bosconovitch', moveset: 'gunjack', model: 'doc-frank-machine-shop', tintStrength: 0.25,
     colors: { suit: 0x4a4a5a, trim: 0xff8800 }, style: 'Inventor', archetype: 'Tricky' },
   { id: 'baek-master-white', name: 'BAEK', title: "Master's White", base: 'Baek', moveset: 'bryan', model: 'baek-master-white', tintStrength: 0.25,
@@ -172,9 +176,14 @@ export const FULL_ROSTER = [
     surge: { name: "TIMBERWOLF RAGE", color: 0x4466aa, accent: 0xffcc00 },
     stats: { speed: 3.6, jump: 6.0, power: 1.45, defense: 1.3 },
     ai: { aggression: 0.8, grabBias: 0.55, reaction: 0.55 } },
-  { id: 'deathfang', name: 'DEATHFANG', title: 'The Chained Wolf', base: 'Iori Yagami', moveset: 'deathfang', model: 'deathfang', tintStrength: 0.25,
-    colors: { suit: 0x2a1a3a, trim: 0xaa22ff }, style: 'Flames/Werewolf', archetype: 'Rushdown',
-    surge: { name: 'FULL MOON HOWL', color: 0xaa22ff, accent: 0xff2222 },
+  // DEATHFANG (owner 2026-10-19): proprietary character based on Iori Yagami — keeps Iori's
+  // moves, stance and animations. Prisoner/slave to his own grief and emotions: chained and
+  // shackled, emo styling, NO FUTURE face tattoo (Soul Eater). Transforms into a chained
+  // prisoner werewolf (attire 2). (Merged entry: canon fields from the reskin lane,
+  // stats/ai from the parallel wiring lane.)
+  { id: 'deathfang', name: 'DEATHFANG', title: 'The Chained Prisoner', base: 'Iori Yagami', moveset: 'deathfang', model: 'deathfang', tintStrength: 0.25,
+    colors: { suit: 0x0a0a0f, trim: 0x8a0f1a }, style: 'Grief Flames', archetype: 'Rushdown',
+    surge: { name: 'NO FUTURE', color: 0x5a0f8a, accent: 0xff2222 },
     stats: { speed: 5.2, jump: 7.8, power: 1.15, defense: 0.95 },
     ai: { aggression: 0.85, grabBias: 0.3, reaction: 0.6 } },
   { id: 'ryuji-rock', name: 'RYUJI ROCK', title: 'The Obnoxious One', base: 'Ryuji Yamazaki + The Rock', moveset: 'ryuji-rock', model: 'ryuji-rock', tintStrength: 0.25,

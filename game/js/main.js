@@ -8,7 +8,7 @@ import { InputManager } from './input.js';
 import { audio } from './audio.js';
 import { assets } from './assets.js';
 import { ROSTER, getCharacter } from './characters.js';
-import { loadRealMovesets } from './fighter.js';
+import { loadRealMovesets, bankIdFor } from './fighter.js';
 import { loadFighterMovesets } from './movesets.js';
 import { loadT3Clips } from './t3anims.js';
 import * as THREE from 'three';
@@ -699,11 +699,14 @@ async function startFight(playerId, enemyId, opts = {}) {
         hint.textContent = `Entering the arena… ${Math.round(p * 100)}%`;
       }
     });
-    // Load REAL T3 animation clips (Grok's decoded T3 King motion).
-    // Non-blocking for fight start; fighters use procedural fallback until ready.
+    // Load the REAL T3 animation banks for THIS match's two fighters —
+    // each fighter's own moveset-source bank (per-bank wiring 2026-10-19).
+    // Fighters with no decoded bank (heihachi source) are skipped here and
+    // fall back to embedded locomotion + procedural combat.
     if (hint) hint.textContent = 'Loading real fight motion…';
     try {
-      await loadT3Clips(THREE);
+      const banks = [...new Set([bankIdFor(player.id), bankIdFor(enemy.id)].filter(Boolean))];
+      await Promise.all(banks.map(b => loadT3Clips(THREE, b)));
     } catch (e) {
       console.warn('[WH] T3 clips failed, using procedural fallback:', e.message || e);
     }

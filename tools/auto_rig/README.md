@@ -78,3 +78,21 @@ heat is the same heat-diffusion math, maintained).
   unweighted; unweighted verts crash the glTF exporter. The backend assigns
   them to the nearest bone.
 - **Inputs are never modified.** Every stage writes a new file.
+
+## Animation validation (anim_check.py)
+
+`validate.py` gates the MODEL; `anim_check.py` gates the ANIMATION.
+Headless (pure python + numpy, no Blender) retarget validator: bone-length
+variance, rest deviation, vertex tearing spikes, p99.9 edge stretch,
+root-offset drift, and wrong-node channel detection — the failure modes
+behind the 2026-10-19 tearing incidents. Full method + findings:
+`docs/RETARGET-MOVEDECODE-RESEARCH-2026.md`.
+
+```bash
+python3 tools/auto_rig/anim_check.py --in MODEL.glb [--anim NAME]
+# or fold into the playable gate (implements validate.py check #5):
+python3 tools/auto_rig/validate.py --in MODEL.glb --clips CLIPS_DIR
+```
+
+Tests: `tools/auto_rig/tests/test_anim_check.py` (synthetic GLB fixtures,
+one per failure mode).
