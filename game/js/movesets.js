@@ -44,6 +44,8 @@ export const MOVESET_IDS = [
   'demonio-winged',
   // Sketchfab intake (owner 2026-10-19): working names, WH names pending.
   'zangief', 'blanka', 'vega', 'iori', 'armor-king',
+  // Custom fighters (owner 2026-10-19): KRONOS — Zangief base + Golem (Urban Reign) mix.
+  'kronos',
   // Ryuji Yamazaki x The Rock hybrid (owner 2026-10-19): 22 moves, King-proxy
   // throws incl. ROCK BOTTOM (frame data from T3 King chain row 281). Model
   // pending the owner's Tripo link — roster-full.js entry lands with model.glb.
