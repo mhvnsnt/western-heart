@@ -1,0 +1,305 @@
+{
+  "fighter": "burger-speed-demon",
+  "display": "BURGER (Speed Demon)",
+  "tekken_base": "Bob",
+  "samsho_source": "kusaregedo",
+  "proxy": false,
+  "proxy_note": "Selected quick Kusaregedo moves for Speed Demon form (owner 2026-10-19): Flying Head Butt, Quick Palm, Sluggish Boot, Backflip + speed kit.",
+  "canon_note": "Weakest demon form, fastest mode. Spikes out, loincloth, tattered wristbands. Human-sized demon. Faster than any human form.",
+  "variant": "speed-demon",
+  "moves": {
+    "quick-palm": {
+      "name": "Quick Palm",
+      "input": "1",
+      "samsho_move": "2A",
+      "samsho_input": "2A",
+      "startup": 0.133,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 6,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "samsho:kusaregedo/2a",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "note": "Quick palm. Tick-throw setup into command grab."
+    },
+    "quick-flick": {
+      "name": "Quick Flick",
+      "input": "d+1",
+      "samsho_move": "n5A",
+      "samsho_input": "n5A",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 6,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "samsho:kusaregedo/n5a",
+      "input_slots": [
+        "d"
+      ],
+      "move_class": "strike",
+      "note": "Quick flick. Buffers command grab."
+    },
+    "fat-poke": {
+      "name": "Fat Poke",
+      "input": "2",
+      "samsho_move": "5B",
+      "samsho_input": "5B",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 9,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "samsho:kusaregedo/5b",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike",
+      "note": "Fat poke, very far reach for its speed."
+    },
+    "ground-slap": {
+      "name": "Ground Slap",
+      "input": "d+2",
+      "samsho_move": "5A",
+      "samsho_input": "5A",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 11,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 3.0,
+      "soulGain": 8,
+      "anim_ref": "samsho:kusaregedo/5a",
+      "input_slots": [
+        "d"
+      ],
+      "move_class": "strike",
+      "note": "Big slap to ground. Strong counter-poke."
+    },
+    "backflip": {
+      "name": "Backflip",
+      "input": "u+4",
+      "samsho_move": "6D",
+      "samsho_input": "6D",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 13,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.5,
+      "soulGain": 8,
+      "anim_ref": "samsho:kusaregedo/6d",
+      "input_slots": [
+        "u"
+      ],
+      "move_class": "strike",
+      "note": "Backflip with fat hitbox. Hard-read anti-air. Bad recovery."
+    },
+    "tongue-sweep": {
+      "name": "Tongue Sweep",
+      "input": "d/b+4",
+      "samsho_move": "3D",
+      "samsho_input": "3D",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 9,
+      "limb": "head",
+      "heavy": false,
+      "knock": 4.0,
+      "soulGain": 8,
+      "anim_ref": "samsho:kusaregedo/3d",
+      "input_slots": [
+        "d/b"
+      ],
+      "move_class": "strike",
+      "note": "Long low-hitting tongue sweep. Unsafe on block."
+    },
+    "overhead-leap": {
+      "name": "Overhead Leap",
+      "input": "f+3",
+      "samsho_move": "4D",
+      "samsho_input": "4D",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 10,
+      "limb": "body",
+      "heavy": false,
+      "knock": 4.0,
+      "soulGain": 8,
+      "anim_ref": "samsho:kusaregedo/4d",
+      "input_slots": [
+        "f"
+      ],
+      "move_class": "strike",
+      "note": "Leaping overhead over lows. Whiff-cancels into grab fakeout."
+    },
+    "elbow-drop": {
+      "name": "Elbow Drop",
+      "input": "u/f+2",
+      "samsho_move": "njB",
+      "samsho_input": "njB",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 12,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.5,
+      "soulGain": 8,
+      "anim_ref": "samsho:kusaregedo/njb",
+      "input_slots": [
+        "u/f"
+      ],
+      "move_class": "strike",
+      "note": "Air elbow drop. Long downward hitbox. Knockdown."
+    },
+    "demon-dash": {
+      "name": "Demon Dash",
+      "input": "f,f,f",
+      "samsho_move": "Speed Demon: Step Dash",
+      "samsho_input": "step-dash",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 0,
+      "limb": "body",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "samsho:kusaregedo/speed-demon:-step-dash",
+      "input_slots": [
+        "f"
+      ],
+      "move_class": "special",
+      "note": "Signature mobility. Long fast step-dash."
+    },
+    "rapid-bites": {
+      "name": "Rapid Bites",
+      "input": "1,1,1",
+      "samsho_move": "Speed Demon: Feral Bites",
+      "samsho_input": "bite-string",
+      "startup": 0.1,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 12,
+      "limb": "head",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "samsho:kusaregedo/speed-demon:-feral-bites",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "string",
+      "note": "Fast triple bite string."
+    },
+    "speed-boot": {
+      "name": "Speed Boot",
+      "input": "4",
+      "samsho_move": "5D (sped up)",
+      "samsho_input": "5D",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 10,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 3.0,
+      "soulGain": 8,
+      "anim_ref": "samsho:kusaregedo/5d-(sped-up)",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike",
+      "note": "Sluggish Boot at Speed Demon tempo. Still heavy."
+    },
+    "feral-rend": {
+      "name": "Feral Rend",
+      "input": "3,4",
+      "samsho_move": "Feral Hunger: Feral Rend",
+      "samsho_input": "rend",
+      "startup": 0.133,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 13,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "samsho:kusaregedo/feral-hunger:-feral-rend",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "string",
+      "note": "Wild clawing string."
+    }
+  },
+  "strings": [
+    {
+      "input": "1,1,1",
+      "hits": [
+        "rapid-bites"
+      ]
+    },
+    {
+      "input": "3,4",
+      "hits": [
+        "feral-rend"
+      ]
+    }
+  ],
+  "specials": [
+    {
+      "input": "qcf+1+2",
+      "name": "Dinner's Coming (Up)",
+      "samsho_move": "Flying Head Butt (up)",
+      "samsho_input": "236AB",
+      "damage": 22,
+      "move_class": "special",
+      "note": "Rips head off, flies FULLSCREEN diagonally up (anti-air), boomerangs back.",
+      "projectile": true,
+      "angle": "up",
+      "wh_name": "Dinner's Coming"
+    },
+    {
+      "input": "qcb+1+2",
+      "name": "Dinner's Coming (Down)",
+      "samsho_move": "Flying Head Butt (down)",
+      "samsho_input": "236AD",
+      "damage": 22,
+      "move_class": "special",
+      "note": "Rips head off, flies FULLSCREEN diagonally down (ground control), boomerangs back.",
+      "projectile": true,
+      "angle": "down",
+      "wh_name": "Dinner's Coming"
+    },
+    {
+      "input": "f+1+2",
+      "name": "Quick Snatch",
+      "samsho_move": "Heretic Brand (speed)",
+      "samsho_input": "6428C",
+      "damage": 20,
+      "move_class": "throw",
+      "note": "Faster weaker Heretic Brand. Speed Demon trades damage for speed.",
+      "startup": 0.04,
+      "wh_name": "Quick Snatch"
+    }
+  ],
+  "frame_convention": "SamSho VI 60fps -> seconds; damage scaled to WH 100HP (Kusaregedo fixed grab dmg preserved as %)",
+  "schema_version": 2
+}
