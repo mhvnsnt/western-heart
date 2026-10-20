@@ -31,3 +31,9 @@
 - Wired 17 WWF No Mercy arenas as playable stages (game/assets/stages/no-mercy/, vertex colors merged from .vc), WRESTLING tier; stages 24->41.
 - Added roster entries: KRONOS x2 + Sketchfab 5 (zangief/blanka/vega/iori/armor-king); MOVESET_MAP fallbacks.
 - Verified: node --check all JS, 71/71 moveset loads via fetch stub, stages smoke test (41, 0 dups), curated subset 0 lost.
+## 2026-10-20 — Stream 4 parity push (attire picker, select polish, customization wiring)
+- **Attire picker UI (item 3):** new `game/js/attires.js` — curated ATTIRE_VARIANTS (12 fighters: thor, demonio, doc-frank, mariposa, burger, cain-elias, dxmmii, baek, purple-rain, saku-ra, phantom, kinpo), touch-scroll chip strip in the preview pane, per-fighter persistence `wh_attires_v1`, applied in every mode via main.js startFight → resolveFighterAttire. Own-eyes verified (THOR: ATTIRE 1 / ATTIRE 2 · ONI MASK chips render; selection persists).
+- **Select polish (item 5):** PR #328's 3D preview pane was CLOBBERED from main (45 preview refs at its merge commit 6e90cdcf → 0 on current main). RESTORED verbatim (initPreview/previewFighter, hero lighting, turntable, idle fallback) + polish: nameplate plate-pop animation on fighter change, bodyScale camera framing, selected-card gold pulse, smooth/scroll-behavior grid, touch press states.
+- **Customization wiring (item 6):** CREATE FIGHTER now launches the flagship Creation Suite (`customization/creation-suite-ui/index.html`); added 🏠 GAME back button (saves first) to the suite topbar; `custom-fighter.js` reads BOTH suite formats (`wh_creation_suite_v1` flagship + `wh_create_fighter_v1` legacy) with title-pair handling.
+- 3D preview canvas renders correctly in DOM (WebGL2 context live, 390×261); full model render needs device GPU (sandbox swiftshader can't load 8.8MB GLBs under current load — UI wiring verified, model draw deferred to device).
+

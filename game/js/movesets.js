@@ -46,8 +46,18 @@ export const MOVESET_IDS = [
   'zangief', 'blanka', 'vega', 'iori', 'armor-king',
   // Custom fighters (owner 2026-10-19): KRONOS — Zangief base + Golem (Urban Reign) mix.
   'kronos',
+  // Ryuji Yamazaki x The Rock hybrid (owner 2026-10-19): 22 moves, King-proxy
+  // throws incl. ROCK BOTTOM (frame data from T3 King chain row 281). Model
+  // pending the owner's Tripo link — roster-full.js entry lands with model.glb.
+  'ryuji-rock',
   // Intake wave 2 (owner 2026-10-19): remaining four intake movesets.
   'hugo', 'raiden', 'marduk', 'bob',
+  // Custom fighters (owner 2026-10-19): KRONOS (Zangief + Golem), DEATHFANG (Iori-based), Ryuji/Rock hybrid, KORESHI (owner creation).
+  'deathfang', 'koreshi',
+  // SF authentic translations (owner 2026-10-19, Akuma-in-T7 pattern:
+  // SF motions kept, Tekken frame/throw logic). Builder: teardown/street-fighter-3d-games/tools/build_sf_movesets.py
+  'sf-zangief', 'sf-blanka', 'sf-vega', 'sf-ryu', 'sf-ken', 'sf-chunli',
+  'sf-guile', 'sf-mbison', 'sf-sagat', 'sf-dhalsim', 'sf-cammy',
   // Teardown-integration (owner 2026-10-19): roster ids that had no per-fighter
   // file — Demonio human form + Doc Frank Wowomomo/Hood Scientist attires +
   // KRONOS Attire 2 "TimberWolf" (shares the Zangief/Golem moveset).

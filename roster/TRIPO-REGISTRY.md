@@ -58,6 +58,8 @@ Legend: ✅ attached · ❌ no Tripo on record · ⚠️ needs owner link/pull �
 | GYOU | ✅ YES (Spirit form) | tripo3d.ai/3d-model/6414fa3b-1091-4f4b-a6d8-b5735cea4424 ("fiery face 3d model" by tzflo312) — pulled 2026-10-19 via tools/tripo-pull/ | `roster/gyou/attires/spirit-form/model.glb` (17.0MB meshopt) | Spirit = Fiery Face Tripo (the unvesseled soul; a splinter is trapped in Cyborg X per CANON.md) | 👁️ `docs/tpose-refs/gyou/spirit_front.png` (Cycles, own-eyes verified 2026-10-19, gap-audit stream) | 🎨 yes — unrigged static |
 | KRONOS | ✅ YES (Attires 1–2) | A1: tripo3d.ai/3d-model/6cca2267-4227-4eb2-9554-382e2610646e ("muscular warrior 3d model" by tzflo312) · A2: tripo3d.ai/3d-model/40013fc2-e3e8-42d2-85e6-a43e6c5d6ee0 ("stylized fantasy character 3d model" by tzflo312) — both pulled 2026-10-19 via tools/tripo-pull/ | `roster/kronos/attires/attire1/model.glb` (19.1MB meshopt) · `attire2/model.glb` (A2 timberwolf, 20.4MB) | A1 = Default Tripo (massive bearded warrior, topknot, gold belt) · A2 = Timberwolf | 👁️ `docs/tpose-refs/kronos/a1_front.png`, `a2_front.png` (Cycles, own-eyes verified 2026-10-19, gap-audit stream) | 🎨 yes — unrigged statics |
 
+| KORESHI | ✅ YES (Attire 1) | tripo3d.ai/3d-model/034bb96f-eb5a-4c5b-a3f7-563287603c09 ("ninja action figure 3d model" by tzflo312) — owner 2026-10-19, pulled via tools/tripo-pull/ | `roster/koreshi/attires/attire1/model.glb` (25.4MB meshopt) | A1 = Ninja Tripo (default) — owner's own creation (Kakashi + SSJ4/5 + ninja + Togepi + traditional paintings) | 🎨 yes — unrigged static |
+
 ## How to attach a new Tripo model (checklist)
 
 1. Pull via `tools/tripo-pull/` (Forge3D) from the owner's share link — verify valid GLB.
