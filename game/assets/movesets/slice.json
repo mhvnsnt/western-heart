@@ -3,8 +3,8 @@
  "display": "SLICE",
  "tekken_base": "Dragunov",
  "t3_source": "bryan",
- "proxy": true,
- "proxy_note": "Dragunov has no T3 bank - Bryan proxy (commando)",
+ "proxy": false,
+ "proxy_note": null,
  "variant": 6,
  "moves": {
   "1": {
@@ -325,10 +325,1596 @@
    "unblockable": true,
    "isGrab": true
   },
+  "1+2": {
+   "name": "SLICE 1+2 (T3 bryan r41)",
+   "input": "1+2",
+   "t3_source": "bryan",
+   "t3_row": 41,
+   "t3_command": "LP+RP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:41",
+   "input_slots": [
+    "1+2"
+   ],
+   "move_class": "strike"
+  },
+  "f": {
+   "name": "SLICE f (T3 bryan r42)",
+   "input": "f",
+   "t3_source": "bryan",
+   "t3_row": 42,
+   "t3_command": "6/9+LP+RP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:42",
+   "input_slots": [
+    "f"
+   ],
+   "move_class": "strike"
+  },
+  "b": {
+   "name": "SLICE b (T3 bryan r43)",
+   "input": "b",
+   "t3_source": "bryan",
+   "t3_row": 43,
+   "t3_command": "4/7+LP+RP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:43",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "strike"
+  },
+  "1_r45": {
+   "name": "SLICE 1_r45 (T3 bryan r45)",
+   "input": "1_r45",
+   "t3_source": "bryan",
+   "t3_row": 45,
+   "t3_command": "LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:45",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r46": {
+   "name": "SLICE 1_r46 (T3 bryan r46)",
+   "input": "1_r46",
+   "t3_source": "bryan",
+   "t3_row": 46,
+   "t3_command": "LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:46",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r47": {
+   "name": "SLICE 1_r47 (T3 bryan r47)",
+   "input": "1_r47",
+   "t3_source": "bryan",
+   "t3_row": 47,
+   "t3_command": "LP",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 9,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:47",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r48": {
+   "name": "SLICE 1_r48 (T3 bryan r48)",
+   "input": "1_r48",
+   "t3_source": "bryan",
+   "t3_row": 48,
+   "t3_command": "LP",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 9,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:48",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r49": {
+   "name": "SLICE 1_r49 (T3 bryan r49)",
+   "input": "1_r49",
+   "t3_source": "bryan",
+   "t3_row": 49,
+   "t3_command": "LP",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 9,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:49",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r50": {
+   "name": "SLICE 1_r50 (T3 bryan r50)",
+   "input": "1_r50",
+   "t3_source": "bryan",
+   "t3_row": 50,
+   "t3_command": "LP",
+   "startup": 0.117,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 11,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:50",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r51": {
+   "name": "SLICE 1_r51 (T3 bryan r51)",
+   "input": "1_r51",
+   "t3_source": "bryan",
+   "t3_row": 51,
+   "t3_command": "LP",
+   "startup": 0.117,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 11,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:51",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r52": {
+   "name": "SLICE 1_r52 (T3 bryan r52)",
+   "input": "1_r52",
+   "t3_source": "bryan",
+   "t3_row": 52,
+   "t3_command": "LP",
+   "startup": 0.117,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 11,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:52",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_c36_r53": {
+   "name": "SLICE 1_c36_r53 (T3 bryan r53)",
+   "input": "1_c36_r53",
+   "t3_source": "bryan",
+   "t3_row": 53,
+   "t3_command": "LP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:53",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "f_c36_r54": {
+   "name": "SLICE f_c36_r54 (T3 bryan r54)",
+   "input": "f_c36_r54",
+   "t3_source": "bryan",
+   "t3_row": 54,
+   "t3_command": "6/9+LP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:54",
+   "input_slots": [
+    "f"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "b_c36_r55": {
+   "name": "SLICE b_c36_r55 (T3 bryan r55)",
+   "input": "b_c36_r55",
+   "t3_source": "bryan",
+   "t3_row": 55,
+   "t3_command": "4/7+LP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:55",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "2_r57": {
+   "name": "SLICE 2_r57 (T3 bryan r57)",
+   "input": "2_r57",
+   "t3_source": "bryan",
+   "t3_row": 57,
+   "t3_command": "RP",
+   "startup": 0.183,
+   "active": 0.05,
+   "recovery": 0.667,
+   "damage": 11,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:57",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "2_r58": {
+   "name": "SLICE 2_r58 (T3 bryan r58)",
+   "input": "2_r58",
+   "t3_source": "bryan",
+   "t3_row": 58,
+   "t3_command": "RP",
+   "startup": 0.183,
+   "active": 0.05,
+   "recovery": 0.667,
+   "damage": 11,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:58",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "3+4_r107": {
+   "name": "SLICE 3+4_r107 (T3 bryan r60)",
+   "input": "3+4_r107",
+   "t3_source": "bryan",
+   "t3_row": 60,
+   "t3_command": "LK+RK",
+   "startup": 0.35,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:60",
+   "input_slots": [
+    "3+4"
+   ],
+   "move_class": "strike",
+   "t3_restriction": 107
+  },
+  "f_r61": {
+   "name": "SLICE f_r61 (T3 bryan r61)",
+   "input": "f_r61",
+   "t3_source": "bryan",
+   "t3_row": 61,
+   "t3_command": "6/9+LK+RK",
+   "startup": 0.35,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:61",
+   "input_slots": [
+    "f"
+   ],
+   "move_class": "strike"
+  },
+  "b_r62": {
+   "name": "SLICE b_r62 (T3 bryan r62)",
+   "input": "b_r62",
+   "t3_source": "bryan",
+   "t3_row": 62,
+   "t3_command": "4/7+LK+RK",
+   "startup": 0.35,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:62",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "strike"
+  },
+  "3_c36": {
+   "name": "SLICE 3_c36 (T3 bryan r63)",
+   "input": "3_c36",
+   "t3_source": "bryan",
+   "t3_row": 63,
+   "t3_command": "LK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:63",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "f_c36_r64": {
+   "name": "SLICE f_c36_r64 (T3 bryan r64)",
+   "input": "f_c36_r64",
+   "t3_source": "bryan",
+   "t3_row": 64,
+   "t3_command": "6/9+LK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:64",
+   "input_slots": [
+    "f"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "b_c36_r65": {
+   "name": "SLICE b_c36_r65 (T3 bryan r65)",
+   "input": "b_c36_r65",
+   "t3_source": "bryan",
+   "t3_row": 65,
+   "t3_command": "4/7+LK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:65",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "3_r67": {
+   "name": "SLICE 3_r67 (T3 bryan r67)",
+   "input": "3_r67",
+   "t3_source": "bryan",
+   "t3_row": 67,
+   "t3_command": "LK",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.817,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:67",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r68": {
+   "name": "SLICE 3_r68 (T3 bryan r68)",
+   "input": "3_r68",
+   "t3_source": "bryan",
+   "t3_row": 68,
+   "t3_command": "LK",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.817,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:68",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r69": {
+   "name": "SLICE 3_r69 (T3 bryan r69)",
+   "input": "3_r69",
+   "t3_source": "bryan",
+   "t3_row": 69,
+   "t3_command": "LK",
+   "startup": 0.233,
+   "active": 0.017,
+   "recovery": 0.8,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:69",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r70": {
+   "name": "SLICE 3_r70 (T3 bryan r70)",
+   "input": "3_r70",
+   "t3_source": "bryan",
+   "t3_row": 70,
+   "t3_command": "LK",
+   "startup": 0.233,
+   "active": 0.017,
+   "recovery": 0.8,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:70",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r71": {
+   "name": "SLICE 3_r71 (T3 bryan r71)",
+   "input": "3_r71",
+   "t3_source": "bryan",
+   "t3_row": 71,
+   "t3_command": "LK",
+   "startup": 0.233,
+   "active": 0.017,
+   "recovery": 0.8,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:71",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r72": {
+   "name": "SLICE 3_r72 (T3 bryan r72)",
+   "input": "3_r72",
+   "t3_source": "bryan",
+   "t3_row": 72,
+   "t3_command": "LK",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.817,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:72",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r73": {
+   "name": "SLICE 3_r73 (T3 bryan r73)",
+   "input": "3_r73",
+   "t3_source": "bryan",
+   "t3_row": 73,
+   "t3_command": "LK",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.817,
+   "damage": 9,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:73",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r74": {
+   "name": "SLICE 3_r74 (T3 bryan r74)",
+   "input": "3_r74",
+   "t3_source": "bryan",
+   "t3_row": 74,
+   "t3_command": "LK",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.817,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:74",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "b_r75": {
+   "name": "SLICE b_r75 (T3 bryan r75)",
+   "input": "b_r75",
+   "t3_source": "bryan",
+   "t3_row": 75,
+   "t3_command": "4/7+RK",
+   "startup": 0.25,
+   "active": 0.05,
+   "recovery": 0.6,
+   "damage": 6,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:75",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "strike"
+  },
+  "b_c36": {
+   "name": "SLICE b_c36 (T3 bryan r75)",
+   "input": "b_c36",
+   "t3_source": "bryan",
+   "t3_row": 75,
+   "t3_command": "4/7+RK",
+   "startup": 0.25,
+   "active": 0.05,
+   "recovery": 0.6,
+   "damage": 6,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:75",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "special",
+   "t3_condition": 36
+  },
+  "4_r77": {
+   "name": "SLICE 4_r77 (T3 bryan r77)",
+   "input": "4_r77",
+   "t3_source": "bryan",
+   "t3_row": 77,
+   "t3_command": "RK",
+   "startup": 0.133,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:77",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r78": {
+   "name": "SLICE 4_r78 (T3 bryan r78)",
+   "input": "4_r78",
+   "t3_source": "bryan",
+   "t3_row": 78,
+   "t3_command": "RK",
+   "startup": 0.133,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:78",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r79": {
+   "name": "SLICE 4_r79 (T3 bryan r79)",
+   "input": "4_r79",
+   "t3_source": "bryan",
+   "t3_row": 79,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:79",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r80": {
+   "name": "SLICE 4_r80 (T3 bryan r80)",
+   "input": "4_r80",
+   "t3_source": "bryan",
+   "t3_row": 80,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:80",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r81": {
+   "name": "SLICE 4_r81 (T3 bryan r81)",
+   "input": "4_r81",
+   "t3_source": "bryan",
+   "t3_row": 81,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:81",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r82": {
+   "name": "SLICE 4_r82 (T3 bryan r82)",
+   "input": "4_r82",
+   "t3_source": "bryan",
+   "t3_row": 82,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 9,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:82",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r83": {
+   "name": "SLICE 4_r83 (T3 bryan r83)",
+   "input": "4_r83",
+   "t3_source": "bryan",
+   "t3_row": 83,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 9,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:83",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r84": {
+   "name": "SLICE 4_r84 (T3 bryan r84)",
+   "input": "4_r84",
+   "t3_source": "bryan",
+   "t3_row": 84,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 9,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:84",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_c36_r85": {
+   "name": "SLICE 4_c36_r85 (T3 bryan r85)",
+   "input": "4_c36_r85",
+   "t3_source": "bryan",
+   "t3_row": 85,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 12,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:85",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "f_c36_r86": {
+   "name": "SLICE f_c36_r86 (T3 bryan r86)",
+   "input": "f_c36_r86",
+   "t3_source": "bryan",
+   "t3_row": 86,
+   "t3_command": "6/9+RK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 12,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:86",
+   "input_slots": [
+    "f"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "b_c36_r87": {
+   "name": "SLICE b_c36_r87 (T3 bryan r87)",
+   "input": "b_c36_r87",
+   "t3_source": "bryan",
+   "t3_row": 87,
+   "t3_command": "4/7+RK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 11,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:87",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "3+4_r8": {
+   "name": "SLICE 3+4_r8 (T3 bryan r107)",
+   "input": "3+4_r8",
+   "t3_source": "bryan",
+   "t3_row": 107,
+   "t3_command": "LK+RK",
+   "startup": 0.267,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:107",
+   "input_slots": [
+    "3+4"
+   ],
+   "move_class": "strike",
+   "t3_restriction": 8
+  },
+  "b+4_r13": {
+   "name": "SLICE b+4_r13 (T3 bryan r111)",
+   "input": "b+4_r13",
+   "t3_source": "bryan",
+   "t3_row": 111,
+   "t3_command": "4+RK",
+   "startup": 0.35,
+   "active": 0.2,
+   "recovery": 0.633,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:111",
+   "input_slots": [
+    "b+4"
+   ],
+   "move_class": "strike",
+   "t3_restriction": 13
+  },
+  "d/f+1+2_r17": {
+   "name": "SLICE d/f+1+2_r17 (T3 bryan r113)",
+   "input": "d/f+1+2_r17",
+   "t3_source": "bryan",
+   "t3_row": 113,
+   "t3_command": "3+LP+RP",
+   "startup": 0.133,
+   "active": 0.017,
+   "recovery": 0.483,
+   "damage": 2,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:113",
+   "input_slots": [
+    "d/f+1+2"
+   ],
+   "move_class": "strike",
+   "t3_restriction": 17
+  },
+  "3_r127": {
+   "name": "SLICE 3_r127 (T3 bryan r127)",
+   "input": "3_r127",
+   "t3_source": "bryan",
+   "t3_row": 127,
+   "t3_command": "LK",
+   "startup": 0.267,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 9,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:127",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "2_r149": {
+   "name": "SLICE 2_r149 (T3 bryan r149)",
+   "input": "2_r149",
+   "t3_source": "bryan",
+   "t3_row": 149,
+   "t3_command": "RP",
+   "startup": 0.383,
+   "active": 0.017,
+   "recovery": 0.633,
+   "damage": 9,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:149",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "f+2": {
+   "name": "SLICE f+2 (T3 bryan r150)",
+   "input": "f+2",
+   "t3_source": "bryan",
+   "t3_row": 150,
+   "t3_command": "6+RP",
+   "startup": 0.217,
+   "active": 0.017,
+   "recovery": 0.783,
+   "damage": 18,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:150",
+   "input_slots": [
+    "f+2"
+   ],
+   "move_class": "strike"
+  },
+  "2_r151": {
+   "name": "SLICE 2_r151 (T3 bryan r151)",
+   "input": "2_r151",
+   "t3_source": "bryan",
+   "t3_row": 151,
+   "t3_command": "RP",
+   "startup": 0.217,
+   "active": 0.017,
+   "recovery": 0.783,
+   "damage": 12,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:151",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "2_r13_r156": {
+   "name": "SLICE 2_r13_r156 (T3 bryan r156)",
+   "input": "2_r13_r156",
+   "t3_source": "bryan",
+   "t3_row": 156,
+   "t3_command": "RP",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.75,
+   "damage": 15,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:156",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike",
+   "t3_restriction": 13
+  },
+  "1_c2_r160": {
+   "name": "SLICE 1_c2_r160 (T3 bryan r160)",
+   "input": "1_c2_r160",
+   "t3_source": "bryan",
+   "t3_row": 160,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 1.667,
+   "damage": 12,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:160",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 2
+  },
+  "2_r166": {
+   "name": "SLICE 2_r166 (T3 bryan r166)",
+   "input": "2_r166",
+   "t3_source": "bryan",
+   "t3_row": 166,
+   "t3_command": "RP",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.683,
+   "damage": 16,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:166",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "1_r168": {
+   "name": "SLICE 1_r168 (T3 bryan r168)",
+   "input": "1_r168",
+   "t3_source": "bryan",
+   "t3_row": 168,
+   "t3_command": "any-button",
+   "startup": 0.183,
+   "active": 0.05,
+   "recovery": 0.65,
+   "damage": 12,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:168",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "2_r177": {
+   "name": "SLICE 2_r177 (T3 bryan r177)",
+   "input": "2_r177",
+   "t3_source": "bryan",
+   "t3_row": 177,
+   "t3_command": "RP",
+   "startup": 0.317,
+   "active": 0.017,
+   "recovery": 0.683,
+   "damage": 8,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:177",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "b+1+4": {
+   "name": "SLICE b+1+4 (T3 bryan r178)",
+   "input": "b+1+4",
+   "t3_source": "bryan",
+   "t3_row": 178,
+   "t3_command": "4+LP+RK",
+   "startup": 0.85,
+   "active": 0.083,
+   "recovery": 0.833,
+   "damage": 35,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:178",
+   "input_slots": [
+    "b+1+4"
+   ],
+   "move_class": "strike"
+  },
+  "f+1+4": {
+   "name": "SLICE f+1+4 (T3 bryan r179)",
+   "input": "f+1+4",
+   "t3_source": "bryan",
+   "t3_row": 179,
+   "t3_command": "6+LP+RK",
+   "startup": 0.467,
+   "active": 0.017,
+   "recovery": 0.833,
+   "damage": 12,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:179",
+   "input_slots": [
+    "f+1+4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r180": {
+   "name": "SLICE 4_r180 (T3 bryan r180)",
+   "input": "4_r180",
+   "t3_source": "bryan",
+   "t3_row": 180,
+   "t3_command": "RK",
+   "startup": 0.367,
+   "active": 0.017,
+   "recovery": 0.483,
+   "damage": 7,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:180",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r13_r182": {
+   "name": "SLICE 4_r13_r182 (T3 bryan r182)",
+   "input": "4_r13_r182",
+   "t3_source": "bryan",
+   "t3_row": 182,
+   "t3_command": "RK",
+   "startup": 0.367,
+   "active": 0.05,
+   "recovery": 0.717,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:182",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike",
+   "t3_restriction": 13
+  },
+  "f_r183": {
+   "name": "SLICE f_r183 (T3 bryan r183)",
+   "input": "f_r183",
+   "t3_source": "bryan",
+   "t3_row": 183,
+   "t3_command": "6/9+RK",
+   "startup": 0.4,
+   "active": 0.05,
+   "recovery": 0.567,
+   "damage": 13,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:183",
+   "input_slots": [
+    "f"
+   ],
+   "move_class": "strike"
+  },
+  "4_r184": {
+   "name": "SLICE 4_r184 (T3 bryan r184)",
+   "input": "4_r184",
+   "t3_source": "bryan",
+   "t3_row": 184,
+   "t3_command": "RK",
+   "startup": 0.4,
+   "active": 0.05,
+   "recovery": 0.567,
+   "damage": 12,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:184",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "3_r185": {
+   "name": "SLICE 3_r185 (T3 bryan r185)",
+   "input": "3_r185",
+   "t3_source": "bryan",
+   "t3_row": 185,
+   "t3_command": "LK",
+   "startup": 0.45,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:185",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "f_r186": {
+   "name": "SLICE f_r186 (T3 bryan r186)",
+   "input": "f_r186",
+   "t3_source": "bryan",
+   "t3_row": 186,
+   "t3_command": "6/9+LK",
+   "startup": 0.45,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:186",
+   "input_slots": [
+    "f"
+   ],
+   "move_class": "strike"
+  },
+  "4_r190": {
+   "name": "SLICE 4_r190 (T3 bryan r190)",
+   "input": "4_r190",
+   "t3_source": "bryan",
+   "t3_row": 190,
+   "t3_command": "RK",
+   "startup": 0.567,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 9,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:190",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "f+3": {
+   "name": "SLICE f+3 (T3 bryan r191)",
+   "input": "f+3",
+   "t3_source": "bryan",
+   "t3_row": 191,
+   "t3_command": "6+LK",
+   "startup": 0.367,
+   "active": 0.05,
+   "recovery": 0.867,
+   "damage": 21,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:191",
+   "input_slots": [
+    "f+3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r192": {
+   "name": "SLICE 3_r192 (T3 bryan r192)",
+   "input": "3_r192",
+   "t3_source": "bryan",
+   "t3_row": 192,
+   "t3_command": "LK",
+   "startup": 0.383,
+   "active": 0.017,
+   "recovery": 0.617,
+   "damage": 9,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:192",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "4_r194": {
+   "name": "SLICE 4_r194 (T3 bryan r194)",
+   "input": "4_r194",
+   "t3_source": "bryan",
+   "t3_row": 194,
+   "t3_command": "RK",
+   "startup": 0.4,
+   "active": 0.017,
+   "recovery": 0.667,
+   "damage": 11,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:194",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "2_r195": {
+   "name": "SLICE 2_r195 (T3 bryan r195)",
+   "input": "2_r195",
+   "t3_source": "bryan",
+   "t3_row": 195,
+   "t3_command": "RP",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.683,
+   "damage": 12,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:195",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "2_r208": {
+   "name": "SLICE 2_r208 (T3 bryan r208)",
+   "input": "2_r208",
+   "t3_source": "bryan",
+   "t3_row": 208,
+   "t3_command": "RP",
+   "startup": 0.217,
+   "active": 0.017,
+   "recovery": 0.783,
+   "damage": 12,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:208",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "1_c36_r224": {
+   "name": "SLICE 1_c36_r224 (T3 bryan r224)",
+   "input": "1_c36_r224",
+   "t3_source": "bryan",
+   "t3_row": 224,
+   "t3_command": "any-button",
+   "startup": 0.367,
+   "active": 0.017,
+   "recovery": 0.667,
+   "damage": 5,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:224",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "1_c36_r225": {
+   "name": "SLICE 1_c36_r225 (T3 bryan r225)",
+   "input": "1_c36_r225",
+   "t3_source": "bryan",
+   "t3_row": 225,
+   "t3_command": "any-button",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 8,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:225",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "1_c36_r228": {
+   "name": "SLICE 1_c36_r228 (T3 bryan r228)",
+   "input": "1_c36_r228",
+   "t3_source": "bryan",
+   "t3_row": 228,
+   "t3_command": "any-button",
+   "startup": 0.233,
+   "active": 0.017,
+   "recovery": 0.667,
+   "damage": 4,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:228",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "1_c36_r229": {
+   "name": "SLICE 1_c36_r229 (T3 bryan r229)",
+   "input": "1_c36_r229",
+   "t3_source": "bryan",
+   "t3_row": 229,
+   "t3_command": "any-button",
+   "startup": 0.183,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 6,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:229",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "1_c2_r343": {
+   "name": "SLICE 1_c2_r343 (T3 bryan r343)",
+   "input": "1_c2_r343",
+   "t3_source": "bryan",
+   "t3_row": 343,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 2.333,
+   "damage": 18,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:343",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 2
+  },
+  "1_c2_r345": {
+   "name": "SLICE 1_c2_r345 (T3 bryan r345)",
+   "input": "1_c2_r345",
+   "t3_source": "bryan",
+   "t3_row": 345,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 2.567,
+   "damage": 18,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:345",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 2
+  },
+  "1_c4_r347": {
+   "name": "SLICE 1_c4_r347 (T3 bryan r347)",
+   "input": "1_c4_r347",
+   "t3_source": "bryan",
+   "t3_row": 347,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 2.75,
+   "damage": 24,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:347",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 4
+  },
+  "1_c5_r349": {
+   "name": "SLICE 1_c5_r349 (T3 bryan r349)",
+   "input": "1_c5_r349",
+   "t3_source": "bryan",
+   "t3_row": 349,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 1.45,
+   "damage": 24,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:349",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 5
+  },
+  "1_c3_r351": {
+   "name": "SLICE 1_c3_r351 (T3 bryan r351)",
+   "input": "1_c3_r351",
+   "t3_source": "bryan",
+   "t3_row": 351,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 1.5,
+   "damage": 35,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:351",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 3
+  },
   "b,b,u/b": {
    "name": "SLICE Back towards wall... b,b,u/b",
    "input": "b,b,u/b",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_1",
    "t7_command": "Back towards wall... b, b, u/b",
    "t7_hit_level": "mid",
@@ -357,7 +1943,7 @@
   "1,1": {
    "name": "Eye Gouge to Hilt (chain)",
    "input": "1,1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_3",
    "t7_command": "1, 1",
    "t7_hit_level": "high, high",
@@ -392,7 +1978,7 @@
   "(1),1": {
    "name": "Eye Gouge to Hilt (chain)",
    "input": "(1),1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_4",
    "t7_command": "(1), 1",
    "t7_hit_level": "high",
@@ -420,7 +2006,7 @@
   "1,1,3": {
    "name": "Eye Gouge to Hilt",
    "input": "1,1,3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_5",
    "t7_command": "1, 1, 3",
    "t7_hit_level": "high, high, mid",
@@ -457,7 +2043,7 @@
   "(1),1,3": {
    "name": "SLICE (1),1,3",
    "input": "(1),1,3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_6",
    "t7_command": "(1), 1, 3",
    "t7_hit_level": "high, mid",
@@ -493,7 +2079,7 @@
   "(1),(1),3": {
    "name": "SLICE (1),(1),3",
    "input": "(1),(1),3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_7",
    "t7_command": "(1), (1), 3",
    "t7_hit_level": "mid",
@@ -522,7 +2108,7 @@
   "1,2": {
    "name": "Salvo (chain)",
    "input": "1,2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_8",
    "t7_command": "1, 2",
    "t7_hit_level": "high, mid",
@@ -557,7 +2143,7 @@
   "(1),2": {
    "name": "Salvo (chain)",
    "input": "(1),2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_9",
    "t7_command": "(1), 2",
    "t7_hit_level": "mid",
@@ -585,7 +2171,7 @@
   "1,2,1": {
    "name": "Salvo",
    "input": "1,2,1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_10",
    "t7_command": "1, 2, 1",
    "t7_hit_level": "high, mid, mid",
@@ -622,7 +2208,7 @@
   "(1),2,1": {
    "name": "SLICE (1),2,1",
    "input": "(1),2,1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_11",
    "t7_command": "(1), 2, 1",
    "t7_hit_level": "mid, mid",
@@ -658,7 +2244,7 @@
   "(1),(2),1": {
    "name": "SLICE (1),(2),1",
    "input": "(1),(2),1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_12",
    "t7_command": "(1), (2), 1",
    "t7_hit_level": "mid",
@@ -687,7 +2273,7 @@
   "1,3": {
    "name": "Hammer and Sickle (chain)",
    "input": "1,3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_13",
    "t7_command": "1, 3",
    "t7_hit_level": "high, high",
@@ -722,7 +2308,7 @@
   "(1),3": {
    "name": "Hammer and Sickle (chain)",
    "input": "(1),3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_14",
    "t7_command": "(1), 3",
    "t7_hit_level": "high",
@@ -750,7 +2336,7 @@
   "1,3,2": {
    "name": "Hammer and Sickle",
    "input": "1,3,2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_15",
    "t7_command": "1, 3, 2",
    "t7_hit_level": "high, high, mid",
@@ -787,7 +2373,7 @@
   "(1),3,2": {
    "name": "SLICE (1),3,2",
    "input": "(1),3,2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_16",
    "t7_command": "(1), 3, 2",
    "t7_hit_level": "high, mid",
@@ -823,7 +2409,7 @@
   "(1),(3),2": {
    "name": "SLICE (1),(3),2",
    "input": "(1),(3),2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_17",
    "t7_command": "(1), (3), 2",
    "t7_hit_level": "mid",
@@ -852,7 +2438,7 @@
   "1,3,2~1+2": {
    "name": "SLICE 1,3,2~1+2",
    "input": "1,3,2~1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_18",
    "t7_command": "1, 3, 2~1+2",
    "t7_hit_level": "high, high, high throw",
@@ -890,7 +2476,7 @@
   "(1),(3),2~1+2": {
    "name": "SLICE (1),(3),2~1+2",
    "input": "(1),(3),2~1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_19",
    "t7_command": "(1), (3), 2~1+2",
    "t7_hit_level": "high throw",
@@ -919,7 +2505,7 @@
   "1,3,2~1+2,B": {
    "name": "SLICE 1,3,2~1+2,B",
    "input": "1,3,2~1+2,B",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_20",
    "t7_command": "1, 3, 2~1+2, B",
    "t7_hit_level": "-",
@@ -949,7 +2535,7 @@
   "(2),1": {
    "name": "One Two Scud Kick (chain)",
    "input": "(2),1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_23",
    "t7_command": "(2), 1",
    "t7_hit_level": "high",
@@ -977,7 +2563,7 @@
   "2,1,3": {
    "name": "One Two Scud Kick",
    "input": "2,1,3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_24",
    "t7_command": "2, 1, 3",
    "t7_hit_level": "high, high, high",
@@ -1014,7 +2600,7 @@
   "(2),1,3": {
    "name": "SLICE (2),1,3",
    "input": "(2),1,3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_25",
    "t7_command": "(2), 1, 3",
    "t7_hit_level": "high, high",
@@ -1050,7 +2636,7 @@
   "(2),(1),3": {
    "name": "SLICE (2),(1),3",
    "input": "(2),(1),3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_26",
    "t7_command": "(2), (1), 3",
    "t7_hit_level": "high",
@@ -1079,7 +2665,7 @@
   "2,1,4": {
    "name": "One Two Mine Kick",
    "input": "2,1,4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_27",
    "t7_command": "2, 1, 4",
    "t7_hit_level": "high, high, low",
@@ -1116,7 +2702,7 @@
   "(2),1,4": {
    "name": "SLICE (2),1,4",
    "input": "(2),1,4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_28",
    "t7_command": "(2), 1, 4",
    "t7_hit_level": "high, low",
@@ -1152,7 +2738,7 @@
   "(2),(1),4": {
    "name": "SLICE (2),(1),4",
    "input": "(2),(1),4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_29",
    "t7_command": "(2), (1), 4",
    "t7_hit_level": "low",
@@ -1181,7 +2767,7 @@
   "3,1": {
    "name": "Disconnector Combo Middle (chain)",
    "input": "3,1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_31",
    "t7_command": "3, 1",
    "t7_hit_level": "mid, high",
@@ -1216,7 +2802,7 @@
   "(3),1": {
    "name": "Disconnector Combo Middle (chain)",
    "input": "(3),1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_32",
    "t7_command": "(3), 1",
    "t7_hit_level": "high",
@@ -1244,7 +2830,7 @@
   "3,1,D/F": {
    "name": "SLICE 3,1,D/F",
    "input": "3,1,D/F",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_33",
    "t7_command": "3, 1, D/F",
    "t7_hit_level": "mid, high",
@@ -1280,7 +2866,7 @@
   "(3),1,D/F": {
    "name": "SLICE (3),1,D/F",
    "input": "(3),1,D/F",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_34",
    "t7_command": "(3), 1, D/F",
    "t7_hit_level": "high",
@@ -1309,7 +2895,7 @@
   "3,1,2": {
    "name": "Disconnector Combo Middle",
    "input": "3,1,2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_35",
    "t7_command": "3, 1, 2",
    "t7_hit_level": "mid, high, mid",
@@ -1346,7 +2932,7 @@
   "(3),1,2": {
    "name": "SLICE (3),1,2",
    "input": "(3),1,2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_36",
    "t7_command": "(3), 1, 2",
    "t7_hit_level": "high, mid",
@@ -1382,7 +2968,7 @@
   "(3),(1),2": {
    "name": "SLICE (3),(1),2",
    "input": "(3),(1),2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_37",
    "t7_command": "(3), (1), 2",
    "t7_hit_level": "mid",
@@ -1411,7 +2997,7 @@
   "3,1,4": {
    "name": "Disconnector Combo High",
    "input": "3,1,4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_38",
    "t7_command": "3, 1, 4",
    "t7_hit_level": "mid, high, high",
@@ -1448,7 +3034,7 @@
   "(3),1,4": {
    "name": "SLICE (3),1,4",
    "input": "(3),1,4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_39",
    "t7_command": "(3), 1, 4",
    "t7_hit_level": "high, high",
@@ -1484,7 +3070,7 @@
   "(3),(1),4": {
    "name": "SLICE (3),(1),4",
    "input": "(3),(1),4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_40",
    "t7_command": "(3), (1), 4",
    "t7_hit_level": "high",
@@ -1513,7 +3099,7 @@
   "4,1": {
    "name": "Karnov Hook",
    "input": "4,1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_42",
    "t7_command": "4, 1",
    "t7_hit_level": "high, high",
@@ -1548,7 +3134,7 @@
   "(4),1": {
    "name": "SLICE (4),1",
    "input": "(4),1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_43",
    "t7_command": "(4), 1",
    "t7_hit_level": "high",
@@ -1576,7 +3162,7 @@
   "4,3": {
    "name": "Karnov Kick",
    "input": "4,3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_44",
    "t7_command": "4, 3",
    "t7_hit_level": "high, mid",
@@ -1611,7 +3197,7 @@
   "(4),3": {
    "name": "SLICE (4),3",
    "input": "(4),3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_45",
    "t7_command": "(4), 3",
    "t7_hit_level": "mid",
@@ -1639,7 +3225,7 @@
   "4,4": {
    "name": "Karmov Avalanche",
    "input": "4,4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_46",
    "t7_command": "4, 4",
    "t7_hit_level": "high, mid",
@@ -1674,7 +3260,7 @@
   "(4),4": {
    "name": "SLICE (4),4",
    "input": "(4),4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_47",
    "t7_command": "(4), 4",
    "t7_hit_level": "mid",
@@ -1702,7 +3288,7 @@
   "3+4": {
    "name": "Iron Flail",
    "input": "3+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_48",
    "t7_command": "3+4",
    "t7_hit_level": "high",
@@ -1729,7 +3315,7 @@
   "3+4,any button": {
    "name": "SLICE 3+4,any button",
    "input": "3+4,any button",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_49",
    "t7_command": "3+4, any button",
    "t7_hit_level": "-",
@@ -1757,7 +3343,7 @@
   "u/f+1": {
    "name": "Eye Blast",
    "input": "u/f+1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_50",
    "t7_command": "u/f+1",
    "t7_hit_level": "high",
@@ -1784,7 +3370,7 @@
   "u/f+2": {
    "name": "Under Pressure",
    "input": "u/f+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_51",
    "t7_command": "u/f+2",
    "t7_hit_level": "mid",
@@ -1811,7 +3397,7 @@
   "u/f+3": {
    "name": "SLICE u/f+3",
    "input": "u/f+3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_52",
    "t7_command": "u/f+3",
    "t7_hit_level": "mid",
@@ -1835,10 +3421,10 @@
    "move_class": "strike",
    "note": "T7 [mid] on block -7 / on hit KND / CH KND | TJ 9f | t7chicken lists no name for this move; labeled by T7 command"
   },
-  "f+2": {
+  "f+2_t7": {
    "name": "SLICE f+2",
    "input": "f+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_54",
    "t7_command": "f+2",
    "t7_hit_level": "high",
@@ -1860,12 +3446,13 @@
     "f+2"
    ],
    "move_class": "strike",
-   "note": "T7 [high] on block -8 / on hit +3 / CH +8 | t7chicken lists no name for this move; labeled by T7 command"
+   "note": "T7 [high] on block -8 / on hit +3 / CH +8 | t7chicken lists no name for this move; labeled by T7 command",
+   "t7_input": "f+2"
   },
   "f+2,4": {
    "name": "Stun Gun",
    "input": "f+2,4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_55",
    "t7_command": "f+2, 4",
    "t7_hit_level": "high, mid",
@@ -1900,7 +3487,7 @@
   "(f+2),4": {
    "name": "SLICE (f+2),4",
    "input": "(f+2),4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_56",
    "t7_command": "(f+2), 4",
    "t7_hit_level": "mid",
@@ -1925,10 +3512,10 @@
    "move_class": "string",
    "note": "T7 [mid] on block -7 / on hit KND / CH STUN | t7chicken lists no name for this move; labeled by T7 command"
   },
-  "f+3": {
+  "f+3_t7": {
    "name": "SLICE f+3",
    "input": "f+3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_57",
    "t7_command": "f+3",
    "t7_hit_level": "mid",
@@ -1950,12 +3537,13 @@
     "f+3"
    ],
    "move_class": "strike",
-   "note": "T7 [mid] on block -6 / on hit +2 / CH +2 | t7chicken lists no name for this move; labeled by T7 command"
+   "note": "T7 [mid] on block -6 / on hit +2 / CH +2 | t7chicken lists no name for this move; labeled by T7 command",
+   "t7_input": "f+3"
   },
   "f+3~D/F": {
    "name": "High Salute to Sneak",
    "input": "f+3~D/F",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_58",
    "t7_command": "f+3~D/F",
    "t7_hit_level": "mid",
@@ -1982,7 +3570,7 @@
   "f+3,2": {
    "name": "Step-in Bardiche",
    "input": "f+3,2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_59",
    "t7_command": "f+3, 2",
    "t7_hit_level": "mid, high",
@@ -2017,7 +3605,7 @@
   "(f+3),2": {
    "name": "SLICE (f+3),2",
    "input": "(f+3),2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_60",
    "t7_command": "(f+3), 2",
    "t7_hit_level": "high",
@@ -2045,7 +3633,7 @@
   "f+3,3": {
    "name": "Step-in Mantis",
    "input": "f+3,3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_61",
    "t7_command": "f+3, 3",
    "t7_hit_level": "mid, mid",
@@ -2081,7 +3669,7 @@
   "(f+3),3 (close)": {
    "name": "SLICE (f+3),3 (close)",
    "input": "(f+3),3 (close)",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_62",
    "t7_command": "(f+3), 3 (close)",
    "t7_hit_level": "mid",
@@ -2116,7 +3704,7 @@
   "(f+3),3 (far)": {
    "name": "SLICE (f+3),3 (far)",
    "input": "(f+3),3 (far)",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_63",
    "t7_command": "(f+3), 3 (far)",
    "t7_hit_level": "mid",
@@ -2144,7 +3732,7 @@
   "f+4": {
    "name": "SLICE f+4",
    "input": "f+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_64",
    "t7_command": "f+4",
    "t7_hit_level": "high",
@@ -2171,7 +3759,7 @@
   "f+4,4": {
    "name": "Cougar Combination (chain)",
    "input": "f+4,4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_65",
    "t7_command": "f+4, 4",
    "t7_hit_level": "high, high",
@@ -2206,7 +3794,7 @@
   "(f+4),4": {
    "name": "Cougar Combination (chain)",
    "input": "(f+4),4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_66",
    "t7_command": "(f+4), 4",
    "t7_hit_level": "high",
@@ -2234,7 +3822,7 @@
   "f+4,4,3": {
    "name": "Cougar Combination",
    "input": "f+4,4,3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_67",
    "t7_command": "f+4, 4, 3",
    "t7_hit_level": "high, high, high",
@@ -2271,7 +3859,7 @@
   "(f+4),4,3": {
    "name": "SLICE (f+4),4,3",
    "input": "(f+4),4,3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_68",
    "t7_command": "(f+4), 4, 3",
    "t7_hit_level": "high, high",
@@ -2307,7 +3895,7 @@
   "(f+4),(4),3": {
    "name": "SLICE (f+4),(4),3",
    "input": "(f+4),(4),3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_69",
    "t7_command": "(f+4), (4), 3",
    "t7_hit_level": "high",
@@ -2336,7 +3924,7 @@
   "f+4,d+4": {
    "name": "Cougar Maul",
    "input": "f+4,d+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_70",
    "t7_command": "f+4, d+4",
    "t7_hit_level": "high, low",
@@ -2371,7 +3959,7 @@
   "(f+4),d+4": {
    "name": "SLICE (f+4),d+4",
    "input": "(f+4),d+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_71",
    "t7_command": "(f+4), d+4",
    "t7_hit_level": "low",
@@ -2399,7 +3987,7 @@
   "f+1+2": {
    "name": "Scabbard",
    "input": "f+1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_72",
    "t7_command": "f+1+2",
    "t7_hit_level": "high",
@@ -2426,7 +4014,7 @@
   "f,F+2": {
    "name": "Russian Sickle",
    "input": "f,F+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_73",
    "t7_command": "f, F+2",
    "t7_hit_level": "mid",
@@ -2454,7 +4042,7 @@
   "f,F+2,1+2": {
    "name": "Feint & Catch",
    "input": "f,F+2,1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_74",
    "t7_command": "f, F+2, 1+2",
    "t7_hit_level": "high throw",
@@ -2483,7 +4071,7 @@
   "f,F+3": {
    "name": "Stinger Kick",
    "input": "f,F+3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_75",
    "t7_command": "f, F+3",
    "t7_hit_level": "high",
@@ -2511,7 +4099,7 @@
   "f,F+4": {
    "name": "Rolling Thunder",
    "input": "f,F+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_76",
    "t7_command": "f, F+4",
    "t7_hit_level": "mid",
@@ -2539,7 +4127,7 @@
   "f,f,f+2": {
    "name": "Russian Assault",
    "input": "f,f,f+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_77",
    "t7_command": "f, f, f+2 (or WR 2)",
    "t7_hit_level": "mid",
@@ -2568,7 +4156,7 @@
   "f,f,f+4": {
    "name": "Spetsnaz Assault",
    "input": "f,f,f+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_78",
    "t7_command": "f, f, f+4 (or WR 4)",
    "t7_hit_level": "mid",
@@ -2604,7 +4192,7 @@
   "d/f+1": {
    "name": "SLICE d/f+1",
    "input": "d/f+1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_79",
    "t7_command": "d/f+1",
    "t7_hit_level": "mid",
@@ -2631,7 +4219,7 @@
   "d/f+1,4": {
    "name": "Switchblade Ripper",
    "input": "d/f+1,4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_80",
    "t7_command": "d/f+1, 4",
    "t7_hit_level": "mid, high",
@@ -2666,7 +4254,7 @@
   "(d/f+1),4": {
    "name": "SLICE (d/f+1),4",
    "input": "(d/f+1),4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_81",
    "t7_command": "(d/f+1), 4",
    "t7_hit_level": "high",
@@ -2694,7 +4282,7 @@
   "d/f+3 (close)": {
    "name": "Mantis Heel",
    "input": "d/f+3 (close)",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_83",
    "t7_command": "d/f+3 (close)",
    "t7_hit_level": "mid",
@@ -2721,7 +4309,7 @@
   "d/f+3 (far)": {
    "name": "SLICE d/f+3 (far)",
    "input": "d/f+3 (far)",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_84",
    "t7_command": "d/f+3 (far)",
    "t7_hit_level": "mid",
@@ -2748,7 +4336,7 @@
   "d/f+4": {
    "name": "SLICE d/f+4",
    "input": "d/f+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_85",
    "t7_command": "d/f+4",
    "t7_hit_level": "mid",
@@ -2775,7 +4363,7 @@
   "d+1": {
    "name": "Bunker-buster Elbow",
    "input": "d+1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_86",
    "t7_command": "d+1",
    "t7_hit_level": "mid",
@@ -2802,7 +4390,7 @@
   "d+2": {
    "name": "Razer",
    "input": "d+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_87",
    "t7_command": "d+2",
    "t7_hit_level": "low",
@@ -2829,7 +4417,7 @@
   "d+3": {
    "name": "SLICE d+3",
    "input": "d+3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_88",
    "t7_command": "d+3",
    "t7_hit_level": "low",
@@ -2856,7 +4444,7 @@
   "d+3,4": {
    "name": "March of Tyranny",
    "input": "d+3,4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_89",
    "t7_command": "d+3, 4",
    "t7_hit_level": "low, mid",
@@ -2891,7 +4479,7 @@
   "(d+3),4": {
    "name": "SLICE (d+3),4",
    "input": "(d+3),4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_90",
    "t7_command": "(d+3), 4",
    "t7_hit_level": "mid",
@@ -2919,7 +4507,7 @@
   "d+4": {
    "name": "SLICE d+4",
    "input": "d+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_91",
    "t7_command": "d+4",
    "t7_hit_level": "low",
@@ -2946,7 +4534,7 @@
   "d+4,1": {
    "name": "Separator (chain)",
    "input": "d+4,1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_92",
    "t7_command": "d+4, 1",
    "t7_hit_level": "low, high",
@@ -2981,7 +4569,7 @@
   "(d+4),1": {
    "name": "Separator (chain)",
    "input": "(d+4),1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_93",
    "t7_command": "(d+4), 1",
    "t7_hit_level": "high",
@@ -3009,7 +4597,7 @@
   "d+4,1,3": {
    "name": "Separator",
    "input": "d+4,1,3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_94",
    "t7_command": "d+4, 1, 3",
    "t7_hit_level": "low, high, high",
@@ -3046,7 +4634,7 @@
   "(d+4),1,3": {
    "name": "SLICE (d+4),1,3",
    "input": "(d+4),1,3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_95",
    "t7_command": "(d+4), 1, 3",
    "t7_hit_level": "high, high",
@@ -3082,7 +4670,7 @@
   "(d+4),(1),3": {
    "name": "SLICE (d+4),(1),3",
    "input": "(d+4),(1),3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_96",
    "t7_command": "(d+4), (1), 3",
    "t7_hit_level": "high",
@@ -3111,7 +4699,7 @@
   "d+4,4": {
    "name": "Stiletto",
    "input": "d+4,4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_97",
    "t7_command": "d+4, 4",
    "t7_hit_level": "low, high",
@@ -3146,7 +4734,7 @@
   "(d+4),4": {
    "name": "SLICE (d+4),4",
    "input": "(d+4),4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_98",
    "t7_command": "(d+4), 4",
    "t7_hit_level": "high",
@@ -3174,7 +4762,7 @@
   "d+3+4": {
    "name": "Six Feet Under",
    "input": "d+3+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_99",
    "t7_command": "While enemy is down... d+3+4",
    "t7_hit_level": "low",
@@ -3201,7 +4789,7 @@
   "qcb+2": {
    "name": "Mass Elbow",
    "input": "qcb+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_100",
    "t7_command": "qcb+2",
    "t7_hit_level": "mid",
@@ -3228,7 +4816,7 @@
   "d/b+1+2,1+2": {
    "name": "SLICE d/b+1+2,1+2",
    "input": "d/b+1+2,1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_101",
    "t7_command": "d/b+1+2, 1+2",
    "t7_hit_level": "-",
@@ -3256,7 +4844,7 @@
   "d/b+2": {
    "name": "SLICE d/b+2",
    "input": "d/b+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_102",
    "t7_command": "d/b+2",
    "t7_hit_level": "mid, mid, mid",
@@ -3283,7 +4871,7 @@
   "d/b+2,1": {
    "name": "Death's Door (chain)",
    "input": "d/b+2,1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_103",
    "t7_command": "d/b+2, 1",
    "t7_hit_level": "mid, mid",
@@ -3318,7 +4906,7 @@
   "(d/b+2),1": {
    "name": "Death's Door (chain)",
    "input": "(d/b+2),1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_104",
    "t7_command": "(d/b+2), 1",
    "t7_hit_level": "mid",
@@ -3346,7 +4934,7 @@
   "d/b+2,1,2": {
    "name": "Death's Door",
    "input": "d/b+2,1,2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_105",
    "t7_command": "d/b+2, 1, 2",
    "t7_hit_level": "mid",
@@ -3383,7 +4971,7 @@
   "(d/b+2),1,2": {
    "name": "SLICE (d/b+2),1,2",
    "input": "(d/b+2),1,2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_106",
    "t7_command": "(d/b+2), 1, 2",
    "t7_hit_level": "mid, mid",
@@ -3419,7 +5007,7 @@
   "(d/b+2),(1),2": {
    "name": "SLICE (d/b+2),(1),2",
    "input": "(d/b+2),(1),2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_107",
    "t7_command": "(d/b+2), (1), 2",
    "t7_hit_level": "mid",
@@ -3448,7 +5036,7 @@
   "d/b+3 (close)": {
    "name": "Clipping Sweep",
    "input": "d/b+3 (close)",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_108",
    "t7_command": "d/b+3 (close)",
    "t7_hit_level": "low",
@@ -3475,7 +5063,7 @@
   "d/b+3 (far)": {
    "name": "SLICE d/b+3 (far)",
    "input": "d/b+3 (far)",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_109",
    "t7_command": "d/b+3 (far)",
    "t7_hit_level": "low",
@@ -3502,7 +5090,7 @@
   "CH d/b+3 (close)": {
    "name": "Clipping Heel Hook",
    "input": "CH d/b+3 (close)",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_110",
    "t7_command": "CH d/b+3 (close)",
    "t7_hit_level": "low",
@@ -3529,7 +5117,7 @@
   "d/b+3~1+2": {
    "name": "Clipping Sweep to Feint & Catch",
    "input": "d/b+3~1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_111",
    "t7_command": "Approach crouching enemy... d/b+3~1+2",
    "t7_hit_level": "mid throw",
@@ -3560,7 +5148,7 @@
   "d/b+3~1+2,D": {
    "name": "SLICE Approach crouching enemy... d/b+3~1+2,D",
    "input": "d/b+3~1+2,D",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_112",
    "t7_command": "Approach crouching enemy... d/b+3~1+2, D",
    "t7_hit_level": "-",
@@ -3588,7 +5176,7 @@
   "d/b+4": {
    "name": "SLICE d/b+4",
    "input": "d/b+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_113",
    "t7_command": "d/b+4",
    "t7_hit_level": "low",
@@ -3615,7 +5203,7 @@
   "b+1": {
    "name": "SLICE b+1",
    "input": "b+1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_114",
    "t7_command": "b+1",
    "t7_hit_level": "mid",
@@ -3642,7 +5230,7 @@
   "b+1,2": {
    "name": "Pommel Swing",
    "input": "b+1,2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_115",
    "t7_command": "b+1, 2",
    "t7_hit_level": "mid, mid",
@@ -3677,7 +5265,7 @@
   "(b+1),2": {
    "name": "SLICE (b+1),2",
    "input": "(b+1),2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_116",
    "t7_command": "(b+1), 2",
    "t7_hit_level": "mid",
@@ -3705,7 +5293,7 @@
   "b+2": {
    "name": "SLICE b+2",
    "input": "b+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_117",
    "t7_command": "b+2",
    "t7_hit_level": "mid",
@@ -3732,7 +5320,7 @@
   "b+2,1": {
    "name": "Eye Gouge to Stingray (chain)",
    "input": "b+2,1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_118",
    "t7_command": "b+2, 1",
    "t7_hit_level": "mid, high",
@@ -3767,7 +5355,7 @@
   "(b+2),1": {
    "name": "Eye Gouge to Stingray (chain)",
    "input": "(b+2),1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_119",
    "t7_command": "(b+2), 1",
    "t7_hit_level": "high",
@@ -3795,7 +5383,7 @@
   "b+2,1,3": {
    "name": "Eye Gouge to Stingray",
    "input": "b+2,1,3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_120",
    "t7_command": "b+2, 1, 3",
    "t7_hit_level": "mid, high, low",
@@ -3832,7 +5420,7 @@
   "(b+2),1,3": {
    "name": "SLICE (b+2),1,3",
    "input": "(b+2),1,3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_121",
    "t7_command": "(b+2), 1, 3",
    "t7_hit_level": "high, low",
@@ -3868,7 +5456,7 @@
   "(b+2),(1),3 (close)": {
    "name": "SLICE (b+2),(1),3 (close)",
    "input": "(b+2),(1),3 (close)",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_122",
    "t7_command": "(b+2), (1), 3 (close)",
    "t7_hit_level": "low",
@@ -3897,7 +5485,7 @@
   "(b+2),(1),3 (far)": {
    "name": "SLICE (b+2),(1),3 (far)",
    "input": "(b+2),(1),3 (far)",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_123",
    "t7_command": "(b+2), (1), 3 (far)",
    "t7_hit_level": "low",
@@ -3926,7 +5514,7 @@
   "b+2,1,3~1+2": {
    "name": "SLICE b+2,1,3~1+2",
    "input": "b+2,1,3~1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_124",
    "t7_command": "b+2, 1, 3~1+2",
    "t7_hit_level": "mid, high, mid throw",
@@ -3963,7 +5551,7 @@
   "b+2,1,3~1+2,D": {
    "name": "SLICE b+2,1,3~1+2,D",
    "input": "b+2,1,3~1+2,D",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_125",
    "t7_command": "b+2, 1, 3~1+2, D",
    "t7_hit_level": "-",
@@ -3993,7 +5581,7 @@
   "b+3": {
    "name": "Serrated Edge",
    "input": "b+3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_126",
    "t7_command": "b+3",
    "t7_hit_level": "high",
@@ -4020,7 +5608,7 @@
   "b+4": {
    "name": "SLICE b+4",
    "input": "b+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_127",
    "t7_command": "b+4",
    "t7_hit_level": "mid",
@@ -4047,7 +5635,7 @@
   "b+4,2": {
    "name": "Death March to Ear Grab (chain)",
    "input": "b+4,2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_128",
    "t7_command": "b+4, 2",
    "t7_hit_level": "mid, mid",
@@ -4082,7 +5670,7 @@
   "(b+4),2": {
    "name": "Death March to Ear Grab (chain)",
    "input": "(b+4),2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_129",
    "t7_command": "(b+4), 2",
    "t7_hit_level": "mid",
@@ -4110,7 +5698,7 @@
   "b+4,2,D": {
    "name": "SLICE b+4,2,D",
    "input": "b+4,2,D",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_130",
    "t7_command": "b+4, 2, D",
    "t7_hit_level": "-",
@@ -4139,7 +5727,7 @@
   "b+4,2,1": {
    "name": "Death March to Ear Grab",
    "input": "b+4,2,1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_131",
    "t7_command": "b+4, 2, 1",
    "t7_hit_level": "mid, mid, high",
@@ -4176,7 +5764,7 @@
   "(b+4),2,1": {
    "name": "SLICE (b+4),2,1",
    "input": "(b+4),2,1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_132",
    "t7_command": "(b+4), 2, 1",
    "t7_hit_level": "mid, high",
@@ -4212,7 +5800,7 @@
   "(b+4),(2),1": {
    "name": "SLICE (b+4),(2),1",
    "input": "(b+4),(2),1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_133",
    "t7_command": "(b+4), (2), 1",
    "t7_hit_level": "high",
@@ -4241,7 +5829,7 @@
   "(b+4),(2),1+2": {
    "name": "SLICE (b+4),(2),1+2",
    "input": "(b+4),(2),1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_134",
    "t7_command": "(b+4), (2), 1+2",
    "t7_hit_level": "mid throw",
@@ -4270,7 +5858,7 @@
   "(b+4),(2),1+2,any button": {
    "name": "SLICE (b+4),(2),1+2,any button",
    "input": "(b+4),(2),1+2,any button",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_135",
    "t7_command": "(b+4), (2), 1+2, any button",
    "t7_hit_level": "-",
@@ -4300,7 +5888,7 @@
   "b+4,3": {
    "name": "War Machine",
    "input": "b+4,3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_136",
    "t7_command": "b+4, 3",
    "t7_hit_level": "mid, high",
@@ -4335,7 +5923,7 @@
   "(b+4),3": {
    "name": "SLICE (b+4),3",
    "input": "(b+4),3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_137",
    "t7_command": "(b+4), 3",
    "t7_hit_level": "high",
@@ -4363,7 +5951,7 @@
   "b+1+2": {
    "name": "Blizzard Hammer",
    "input": "b+1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_138",
    "t7_command": "b+1+2",
    "t7_hit_level": "mid",
@@ -4390,7 +5978,7 @@
   "b+3+4": {
    "name": "Inertia Kick",
    "input": "b+3+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_139",
    "t7_command": "b+3+4",
    "t7_hit_level": "high",
@@ -4417,7 +6005,7 @@
   "u/b+2": {
    "name": "Counterstrike",
    "input": "u/b+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_140",
    "t7_command": "u/b+2",
    "t7_hit_level": "high",
@@ -4444,7 +6032,7 @@
   "BT 1": {
    "name": "SLICE BT 1",
    "input": "BT 1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_141",
    "t7_command": "BT 1 (or 2)",
    "t7_hit_level": "high",
@@ -4471,7 +6059,7 @@
   "BT 3": {
    "name": "SLICE BT 3",
    "input": "BT 3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_142",
    "t7_command": "BT 3 (or 4)",
    "t7_hit_level": "high",
@@ -4498,7 +6086,7 @@
   "BT d+3": {
    "name": "Cane Stab",
    "input": "BT d+3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_143",
    "t7_command": "BT d+3",
    "t7_hit_level": "low",
@@ -4525,7 +6113,7 @@
   "FC 1": {
    "name": "SLICE FC 1",
    "input": "FC 1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_144",
    "t7_command": "FC 1",
    "t7_hit_level": "s. mid",
@@ -4552,7 +6140,7 @@
   "FC 2": {
    "name": "SLICE FC 2",
    "input": "FC 2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_145",
    "t7_command": "FC 2",
    "t7_hit_level": "s. mid",
@@ -4579,7 +6167,7 @@
   "FC 3": {
    "name": "SLICE FC 3",
    "input": "FC 3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_146",
    "t7_command": "FC 3",
    "t7_hit_level": "low",
@@ -4606,7 +6194,7 @@
   "FC 4": {
    "name": "SLICE FC 4",
    "input": "FC 4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_147",
    "t7_command": "FC 4",
    "t7_hit_level": "low",
@@ -4633,7 +6221,7 @@
   "SS 2": {
    "name": "SLICE SS 2",
    "input": "SS 2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_148",
    "t7_command": "SS 2",
    "t7_hit_level": "mid",
@@ -4660,7 +6248,7 @@
   "SS 2,3": {
    "name": "Integral Slicer",
    "input": "SS 2,3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_149",
    "t7_command": "SS 2, 3",
    "t7_hit_level": "mid, high",
@@ -4695,7 +6283,7 @@
   "(SS 2),3": {
    "name": "SLICE (SS 2),3",
    "input": "(SS 2),3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_150",
    "t7_command": "(SS 2), 3",
    "t7_hit_level": "high",
@@ -4723,7 +6311,7 @@
   "(SS 2),3 (far)": {
    "name": "SLICE (SS 2),3 (far)",
    "input": "(SS 2),3 (far)",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_151",
    "t7_command": "(SS 2), 3 (far)",
    "t7_hit_level": "high",
@@ -4751,7 +6339,7 @@
   "SS 2,1+2": {
    "name": "Integral Blitz (chain)",
    "input": "SS 2,1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_152",
    "t7_command": "SS 2, 1+2",
    "t7_hit_level": "mid, high, mid",
@@ -4787,7 +6375,7 @@
   "(SS 2),1+2": {
    "name": "Integral Blitz (chain)",
    "input": "(SS 2),1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_153",
    "t7_command": "(SS 2), 1+2",
    "t7_hit_level": "high, mid",
@@ -4822,7 +6410,7 @@
   "(SS 2),1+2 (second hit only)": {
    "name": "SLICE (SS 2),1+2 (second hit only)",
    "input": "(SS 2),1+2 (second hit only)",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_154",
    "t7_command": "(SS 2), 1+2 (second hit only)",
    "t7_hit_level": "mid",
@@ -4850,7 +6438,7 @@
   "SS 2,1+2,4": {
    "name": "Integral Blitz",
    "input": "SS 2,1+2,4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_155",
    "t7_command": "SS 2, 1+2, 4",
    "t7_hit_level": "mid, high, mid, high",
@@ -4888,7 +6476,7 @@
   "(SS 2),(1+2),4": {
    "name": "SLICE (SS 2),(1+2),4",
    "input": "(SS 2),(1+2),4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_156",
    "t7_command": "(SS 2), (1+2), 4",
    "t7_hit_level": "high",
@@ -4917,7 +6505,7 @@
   "SS 2,1+2,1+2": {
    "name": "Integral Takedown",
    "input": "SS 2,1+2,1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_157",
    "t7_command": "SS 2, 1+2, 1+2",
    "t7_hit_level": "mid, high, mid, mid throw",
@@ -4955,7 +6543,7 @@
   "(SS 2),(1+2),1+2": {
    "name": "SLICE (SS 2),(1+2),1+2",
    "input": "(SS 2),(1+2),1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_158",
    "t7_command": "(SS 2), (1+2), 1+2",
    "t7_hit_level": "mid throw",
@@ -4984,7 +6572,7 @@
   "(SS 2),(1+2),(1+2),any button": {
    "name": "SLICE (SS 2),(1+2),(1+2),any button",
    "input": "(SS 2),(1+2),(1+2),any button",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_159",
    "t7_command": "(SS 2), (1+2), (1+2), any button",
    "t7_hit_level": "-",
@@ -5014,7 +6602,7 @@
   "SS 3+4": {
    "name": "Pigeon Roll",
    "input": "SS 3+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_160",
    "t7_command": "SS 3+4",
    "t7_hit_level": "-",
@@ -5041,7 +6629,7 @@
   "WR f,f,F (Full Screen)": {
    "name": "SLICE WR f,f,F (Full Screen)",
    "input": "WR f,f,F (Full Screen)",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_161",
    "t7_command": "WR f, f, F (Full Screen)",
    "t7_hit_level": "mid",
@@ -5070,7 +6658,7 @@
   "WR f,f,F (Full Screen) (On Grounded Opponent)": {
    "name": "SLICE WR f,f,F (Full Screen) (On Grounded Opponent)",
    "input": "WR f,f,F (Full Screen) (On Grounded Opponent)",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_162",
    "t7_command": "WR f, f, F (Full Screen) (On Grounded Opponent)",
    "t7_hit_level": "low",
@@ -5099,7 +6687,7 @@
   "WR 3 (close)": {
    "name": "Cher-bog Sweep",
    "input": "WR 3 (close)",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_163",
    "t7_command": "WR 3 (close)",
    "t7_hit_level": "low throw",
@@ -5126,7 +6714,7 @@
   "WR 3 (far)": {
    "name": "SLICE WR 3 (far)",
    "input": "WR 3 (far)",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_164",
    "t7_command": "WR 3 (far)",
    "t7_hit_level": "low",
@@ -5153,7 +6741,7 @@
   "WS 1": {
    "name": "SLICE WS 1",
    "input": "WS 1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_165",
    "t7_command": "WS 1",
    "t7_hit_level": "mid",
@@ -5180,7 +6768,7 @@
   "WS 1,2": {
    "name": "Qullion",
    "input": "WS 1,2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_166",
    "t7_command": "WS 1, 2",
    "t7_hit_level": "mid, high",
@@ -5215,7 +6803,7 @@
   "WS (1),2": {
    "name": "SLICE WS (1),2",
    "input": "WS (1),2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_167",
    "t7_command": "WS (1), 2",
    "t7_hit_level": "high",
@@ -5243,7 +6831,7 @@
   "WS 1,3": {
    "name": "Double Hilt",
    "input": "WS 1,3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_168",
    "t7_command": "WS 1, 3",
    "t7_hit_level": "mid, mid",
@@ -5278,7 +6866,7 @@
   "WS (1),3": {
    "name": "SLICE WS (1),3",
    "input": "WS (1),3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_169",
    "t7_command": "WS (1), 3",
    "t7_hit_level": "mid",
@@ -5306,7 +6894,7 @@
   "WS 2": {
    "name": "Ballistic Upper",
    "input": "WS 2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_170",
    "t7_command": "WS 2",
    "t7_hit_level": "mid",
@@ -5333,7 +6921,7 @@
   "WS 3": {
    "name": "Glacial Hilt",
    "input": "WS 3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_171",
    "t7_command": "WS 3",
    "t7_hit_level": "mid",
@@ -5360,7 +6948,7 @@
   "WS 4": {
    "name": "SLICE WS 4",
    "input": "WS 4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_172",
    "t7_command": "WS 4",
    "t7_hit_level": "mid",
@@ -5387,7 +6975,7 @@
   "WS 1+2": {
    "name": "Frost Tackle",
    "input": "WS 1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_173",
    "t7_command": "WS 1+2 (or qcf+1+2)",
    "t7_hit_level": "mid",
@@ -5411,10 +6999,10 @@
    "move_class": "strike",
    "note": "T7 [mid] on block -14 / on hit KND / CH KND"
   },
-  "1+2": {
+  "1+2_t7": {
    "name": "Living Dead",
    "input": "1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_174",
    "t7_command": "While down facing down... 1+2",
    "t7_hit_level": "-",
@@ -5436,12 +7024,13 @@
     "wdd:1+2"
    ],
    "move_class": "strike",
-   "note": "T7 [-] on block - / on hit - / CH - | 2 BREAK"
+   "note": "T7 [-] on block - / on hit - / CH - | 2 BREAK",
+   "t7_input": "1+2"
   },
   "1+2,1+2": {
    "name": "Death's Embrace",
    "input": "1+2,1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_175",
    "t7_command": "While down facing down... 1+2, 1+2",
    "t7_hit_level": "mid throw",
@@ -5469,7 +7058,7 @@
   "1,3,1,2,1,1,4,1,3,2": {
    "name": "10 Hit Combo 1",
    "input": "1,3,1,2,1,1,4,1,3,2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_177",
    "t7_command": "1, 3, 1, 2, 1, 1, 4, 1, 3, 2",
    "t7_hit_level": "-",
@@ -5505,7 +7094,7 @@
   "1,3,1,2,4,1+2": {
    "name": "10 Hit Combo 2",
    "input": "1,3,1,2,4,1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_178",
    "t7_command": "1, 3, 1, 2, 4, 1+2",
    "t7_hit_level": "-",
@@ -5537,7 +7126,7 @@
   "Face Up,Feet Towards+3 or (After Rolling Forward)": {
    "name": "SLICE Face Up,Feet Towards+3 or (After Rolling Forward)",
    "input": "Face Up,Feet Towards+3 or (After Rolling Forward)",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_179",
    "t7_command": "Face Up, Feet Towards+3 or (After Rolling Forward)",
    "t7_hit_level": "low",
@@ -5565,7 +7154,7 @@
   "Face Up,Feet Towards+4 or (After Rolling Forward)": {
    "name": "SLICE Face Up,Feet Towards+4 or (After Rolling Forward)",
    "input": "Face Up,Feet Towards+4 or (After Rolling Forward)",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_180",
    "t7_command": "Face Up, Feet Towards+4 or (After Rolling Forward)",
    "t7_hit_level": "mid",
@@ -5593,7 +7182,7 @@
   "Face Up,Feet Towards,d+3": {
    "name": "SLICE Face Up,Feet Towards,d+3",
    "input": "Face Up,Feet Towards,d+3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_181",
    "t7_command": "Face Up, Feet Towards, d+3 (or 4)",
    "t7_hit_level": "low",
@@ -5622,7 +7211,7 @@
   "Face Up,Feet Towards+3+4": {
    "name": "SLICE Face Up,Feet Towards+3+4",
    "input": "Face Up,Feet Towards+3+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_182",
    "t7_command": "Face Up, Feet Towards+3+4",
    "t7_hit_level": "mid",
@@ -5650,7 +7239,7 @@
   "Face Up,Feet Towards,Roll Forward+1+2": {
    "name": "SLICE Face Up,Feet Towards,Roll Forward+1+2",
    "input": "Face Up,Feet Towards,Roll Forward+1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_183",
    "t7_command": "Face Up, Feet Towards, Roll Forward+1+2",
    "t7_hit_level": "mid",
@@ -5679,7 +7268,7 @@
   "Face Down,Feet Away+3": {
    "name": "SLICE Face Down,Feet Away+3",
    "input": "Face Down,Feet Away+3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_184",
    "t7_command": "Face Down, Feet Away+3",
    "t7_hit_level": "low",
@@ -5707,7 +7296,7 @@
   "Face Down,Feet Away+4": {
    "name": "SLICE Face Down,Feet Away+4",
    "input": "Face Down,Feet Away+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_185",
    "t7_command": "Face Down, Feet Away+4",
    "t7_hit_level": "mid",
@@ -5735,7 +7324,7 @@
   "(Upon Landing) f": {
    "name": "SLICE (Upon Landing) f",
    "input": "(Upon Landing) f",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_186",
    "t7_command": "(Upon Landing) f",
    "t7_hit_level": "mid",
@@ -5762,7 +7351,7 @@
   "qcf": {
    "name": "SLICE qcf",
    "input": "qcf",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_187",
    "t7_command": "qcf",
    "t7_hit_level": "-",
@@ -5789,7 +7378,7 @@
   "qcf+1": {
    "name": "Cocked Hammer",
    "input": "qcf+1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_188",
    "t7_command": "qcf+1",
    "t7_hit_level": "high",
@@ -5816,7 +7405,7 @@
   "qcf+2": {
    "name": "Stinger Elbow",
    "input": "qcf+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_189",
    "t7_command": "qcf+2",
    "t7_hit_level": "mid",
@@ -5843,7 +7432,7 @@
   "qcf+3 (close)": {
    "name": "Slay Ride",
    "input": "qcf+3 (close)",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_190",
    "t7_command": "qcf+3 (close)",
    "t7_hit_level": "low",
@@ -5870,7 +7459,7 @@
   "qcf+3 (far)": {
    "name": "SLICE qcf+3 (far)",
    "input": "qcf+3 (far)",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_191",
    "t7_command": "qcf+3 (far)",
    "t7_hit_level": "low",
@@ -5897,7 +7486,7 @@
   "qcf+4": {
    "name": "Snap Knee",
    "input": "qcf+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_192",
    "t7_command": "qcf+4",
    "t7_hit_level": "mid",
@@ -5924,7 +7513,7 @@
   "qcf+4:1,3,4,2": {
    "name": "Pinpoint Fracture",
    "input": "qcf+4:1,3,4,2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_193",
    "t7_command": "qcf+4:1, 3, 4, 2",
    "t7_hit_level": "mid",
@@ -5962,7 +7551,7 @@
   "qcf+4:2,4,3,1": {
    "name": "Pinpoint Fracture",
    "input": "qcf+4:2,4,3,1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_194",
    "t7_command": "qcf+4:2, 4, 3, 1",
    "t7_hit_level": "mid",
@@ -6000,7 +7589,7 @@
   "(During Rage) d+1+2": {
    "name": "Rage Art",
    "input": "(During Rage) d+1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_196",
    "t7_command": "(During Rage) d+1+2",
    "t7_hit_level": "mid",
@@ -6027,7 +7616,7 @@
   "(During Rage) f,f,f+1+2": {
    "name": "Rage Drive",
    "input": "(During Rage) f,f,f+1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_197",
    "t7_command": "(During Rage) f, f, f+1+2 (or WR 2)",
    "t7_hit_level": "mid",
@@ -6056,7 +7645,7 @@
   "(During Rage) (f,f,f+1+2),d/b+1+2": {
    "name": "SLICE (During Rage) (f,f,f+1+2),d/b+1+2",
    "input": "(During Rage) (f,f,f+1+2),d/b+1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_198",
    "t7_command": "(During Rage) (f, f, f+1+2), d/b+1+2",
    "t7_hit_level": "mid throw",
@@ -6086,7 +7675,7 @@
   "(During Rage) f,f,f+1+2,d/b+1+2,1+2": {
    "name": "SLICE (During Rage) f,f,f+1+2,d/b+1+2,1+2",
    "input": "(During Rage) f,f,f+1+2,d/b+1+2,1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_199",
    "t7_command": "(During Rage) f, f, f+1+2, d/b+1+2, 1+2",
    "t7_hit_level": "-",
@@ -6117,7 +7706,7 @@
   "b+2+3": {
    "name": "Sub Zero",
    "input": "b+2+3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_200",
    "t7_command": "b+2+3",
    "t7_hit_level": "mid",
@@ -6144,7 +7733,7 @@
   "u/f+3+4": {
    "name": "Scorpion Scissors",
    "input": "u/f+3+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_203",
    "t7_command": "Approach enemy... u/f+3+4",
    "t7_hit_level": "high throw",
@@ -6175,7 +7764,7 @@
   "f+1+3": {
    "name": "Volk Clutch",
    "input": "f+1+3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_204",
    "t7_command": "Approach enemy... f+1+3",
    "t7_hit_level": "high throw",
@@ -6203,10 +7792,10 @@
    "isGrab": true,
    "throw_break": "1"
   },
-  "f+1+4": {
+  "f+1+4_t7": {
    "name": "Reverse Victor Clutch",
    "input": "f+1+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_205",
    "t7_command": "Approach enemy... f+1+4",
    "t7_hit_level": "high throw",
@@ -6232,12 +7821,13 @@
    "throw": true,
    "unblockable": true,
    "isGrab": true,
-   "throw_break": "1"
+   "throw_break": "1",
+   "t7_input": "f+1+4"
   },
   "f+2+3": {
    "name": "Victor Clutch",
    "input": "f+2+3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_206",
    "t7_command": "Approach enemy... f+2+3",
    "t7_hit_level": "high throw",
@@ -6268,7 +7858,7 @@
   "f+2+4": {
    "name": "Purge Slam",
    "input": "f+2+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_207",
    "t7_command": "Approach enemy... f+2+4",
    "t7_hit_level": "high throw",
@@ -6299,7 +7889,7 @@
   "f,F+1+2": {
    "name": "Blizzard Rush",
    "input": "f,F+1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_208",
    "t7_command": "Approach enemy... f, F+1+2",
    "t7_hit_level": "high throw",
@@ -6331,7 +7921,7 @@
   "d/b+1+2": {
    "name": "Ambush Tackle",
    "input": "d/b+1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_209",
    "t7_command": "Approach enemy... d/b+1+2",
    "t7_hit_level": "mid throw",
@@ -6362,7 +7952,7 @@
   "d+1+3": {
    "name": "Cold Fate",
    "input": "d+1+3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_213",
    "t7_command": "Approach crouching enemy... d+1+3 (or d+2+4)",
    "t7_hit_level": "-",
@@ -6393,7 +7983,7 @@
   "FC 1+2": {
    "name": "SLICE FC 1+2",
    "input": "FC 1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_214",
    "t7_command": "FC 1+2",
    "t7_hit_level": "mid throw",
@@ -6420,7 +8010,7 @@
   "FC 1+2,any button": {
    "name": "SLICE FC 1+2,any button",
    "input": "FC 1+2,any button",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_215",
    "t7_command": "FC 1+2, any button",
    "t7_hit_level": "-",
@@ -6448,7 +8038,7 @@
   "WR f,f,F (Mid Screen)": {
    "name": "SLICE WR f,f,F (Mid Screen)",
    "input": "WR f,f,F (Mid Screen)",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_216",
    "t7_command": "WR f, f, F (Mid Screen)",
    "t7_hit_level": "mid throw",
@@ -6477,7 +8067,7 @@
   "(During Ambush Tackle) 1": {
    "name": "Frost Bite",
    "input": "(During Ambush Tackle) 1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_217",
    "t7_command": "(During Ambush Tackle) 1",
    "t7_hit_level": "-",
@@ -6504,7 +8094,7 @@
   "(During Ambush Tackle) 2": {
    "name": "Achilles' Hold",
    "input": "(During Ambush Tackle) 2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_218",
    "t7_command": "(During Ambush Tackle) 2",
    "t7_hit_level": "-",
@@ -6531,7 +8121,7 @@
   "(During Ambush Tackle) 1+2": {
    "name": "Iron Curtain",
    "input": "(During Ambush Tackle) 1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_219",
    "t7_command": "(During Ambush Tackle) 1+2",
    "t7_hit_level": "-",
@@ -6558,7 +8148,7 @@
   "d/f+1+2": {
    "name": "Pit Fall",
    "input": "d/f+1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_220",
    "t7_command": "Time with enemy low attack... d/f+1+2",
    "t7_hit_level": "-",
@@ -6585,7 +8175,7 @@
   "b+1+3": {
    "name": "Red Alert",
    "input": "b+1+3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_221",
    "t7_command": "Time with enemy high or mid attack... b+1+3 (or b+2+4)",
    "t7_hit_level": "-",
@@ -6612,7 +8202,7 @@
   "u/f~1": {
    "name": "SLICE u/f~1",
    "input": "u/f~1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_222",
    "t7_command": "u/f~1",
    "t7_hit_level": "mid",
@@ -6639,7 +8229,7 @@
   "u/f,n~1": {
    "name": "SLICE u/f,n~1",
    "input": "u/f,n~1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_223",
    "t7_command": "u/f, n~1",
    "t7_hit_level": "mid",
@@ -6667,7 +8257,7 @@
   "u/f,n,1": {
    "name": "SLICE u/f,n,1",
    "input": "u/f,n,1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_224",
    "t7_command": "u/f, n, 1",
    "t7_hit_level": "mid",
@@ -6696,7 +8286,7 @@
   "U/F,1": {
    "name": "SLICE U/F,1",
    "input": "U/F,1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_225",
    "t7_command": "U/F, 1",
    "t7_hit_level": "mid",
@@ -6724,7 +8314,7 @@
   "u/f~2": {
    "name": "SLICE u/f~2",
    "input": "u/f~2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_226",
    "t7_command": "u/f~2",
    "t7_hit_level": "mid",
@@ -6751,7 +8341,7 @@
   "U/F,2": {
    "name": "SLICE U/F,2",
    "input": "U/F,2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_227",
    "t7_command": "U/F, 2",
    "t7_hit_level": "mid",
@@ -6779,7 +8369,7 @@
   "u/f~3": {
    "name": "SLICE u/f~3",
    "input": "u/f~3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_228",
    "t7_command": "u/f~3",
    "t7_hit_level": "mid",
@@ -6806,7 +8396,7 @@
   "u/f,3": {
    "name": "SLICE u/f,3",
    "input": "u/f,3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_229",
    "t7_command": "u/f, 3",
    "t7_hit_level": "mid",
@@ -6834,7 +8424,7 @@
   "U/F~3": {
    "name": "SLICE U/F~3",
    "input": "U/F~3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_230",
    "t7_command": "U/F~3",
    "t7_hit_level": "mid",
@@ -6861,7 +8451,7 @@
   "U/F,3": {
    "name": "SLICE U/F,3",
    "input": "U/F,3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_231",
    "t7_command": "U/F, 3",
    "t7_hit_level": "low",
@@ -6889,7 +8479,7 @@
   "u/f~4": {
    "name": "SLICE u/f~4",
    "input": "u/f~4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_232",
    "t7_command": "u/f~4",
    "t7_hit_level": "mid",
@@ -6916,7 +8506,7 @@
   "U/F~4": {
    "name": "SLICE U/F~4",
    "input": "U/F~4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_233",
    "t7_command": "U/F~4",
    "t7_hit_level": "mid",
@@ -6943,7 +8533,7 @@
   "U/F,4": {
    "name": "SLICE U/F,4",
    "input": "U/F,4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "dragunov_234",
    "t7_command": "U/F, 4",
    "t7_hit_level": "mid",
@@ -7009,9 +8599,43 @@
    "throw": true
   }
  ],
- "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP; T7 additions: frames/60->s, damage as-is, recovery estimated",
+ "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
  "schema_version": 2,
+ "t3_bank": "moveset_bryan.json",
+ "t3_bank_rows": 365,
+ "t3_bank_attack_rows": 82,
+ "generated_full_moveset": {
+  "by": "tools/gen-movesets-t3.py",
+  "date": "2026-10-20",
+  "note": "Full T3 bank depth merged over curated base; curated moves preserved verbatim. Smallest T3 bank (365 rows, 188 attacks); 79 attack rows have no per-character input in the extracted data (common-bank / reaction rows). Unique playable inputs top out at ~90-97 per fighter."
+ },
  "t7_base": "dragunov",
- "t7_dataset": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
- "t7_import_note": "Full T7 movelist imported from genuine T7 frame data; existing moves kept verbatim, new moves appended and deduped by input. Heat/rage mechanics unchanged; no T8 data used."
+ "t7_dataset": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+ "t7_import_note": "Full T7 movelist imported from genuine T7 frame data; existing moves kept verbatim, new moves appended and deduped by input. Heat/rage mechanics unchanged; no T8 data used.",
+ "forward_merge": {
+  "date": "2026-10-20",
+  "pr": 359,
+  "method": "semantic union of branch (moveset-cluster-b-t7) and main versions; main keeps contested move keys, branch entries rekeyed <key>_t7 with t7_input recorded; colliding branch specials appended with forward_merge_alt_of",
+  "branch_counts": {
+   "moves": 234,
+   "specials": 2,
+   "strings": 2
+  },
+  "main_counts": {
+   "moves": 92,
+   "specials": 2,
+   "strings": 2
+  },
+  "merged_counts": {
+   "moves": 312,
+   "specials": 2,
+   "strings": 2
+  },
+  "rekeyed_inputs": [
+   "f+2",
+   "f+3",
+   "1+2",
+   "f+1+4"
+  ]
+ }
 }

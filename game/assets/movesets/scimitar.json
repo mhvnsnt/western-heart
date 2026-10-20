@@ -3,8 +3,8 @@
  "display": "SCIMITAR",
  "tekken_base": "Shaheen",
  "t3_source": "jin",
- "proxy": true,
- "proxy_note": "Shaheen has no T3 bank - Jin proxy",
+ "proxy": false,
+ "proxy_note": null,
  "variant": 9,
  "moves": {
   "1": {
@@ -373,6 +373,3920 @@
    "move_class": "signature",
    "wh_original": true,
    "note": "Every fighter owes him something - a favor, a debt, a secret. Filed in a hand no one else can read."
+  },
+  "1+2": {
+   "name": "SCIMITAR 1+2 (T3 jin r32)",
+   "input": "1+2",
+   "t3_source": "jin",
+   "t3_row": 32,
+   "t3_command": "LP+RP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:32",
+   "input_slots": [
+    "1+2"
+   ],
+   "move_class": "strike"
+  },
+  "f": {
+   "name": "SCIMITAR f (T3 jin r33)",
+   "input": "f",
+   "t3_source": "jin",
+   "t3_row": 33,
+   "t3_command": "6/9+LP+RP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:33",
+   "input_slots": [
+    "f"
+   ],
+   "move_class": "strike"
+  },
+  "b": {
+   "name": "SCIMITAR b (T3 jin r34)",
+   "input": "b",
+   "t3_source": "jin",
+   "t3_row": 34,
+   "t3_command": "4/7+LP+RP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:34",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "strike"
+  },
+  "1_r36": {
+   "name": "SCIMITAR 1_r36 (T3 jin r36)",
+   "input": "1_r36",
+   "t3_source": "jin",
+   "t3_row": 36,
+   "t3_command": "LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:36",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r37": {
+   "name": "SCIMITAR 1_r37 (T3 jin r37)",
+   "input": "1_r37",
+   "t3_source": "jin",
+   "t3_row": 37,
+   "t3_command": "LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:37",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r38": {
+   "name": "SCIMITAR 1_r38 (T3 jin r38)",
+   "input": "1_r38",
+   "t3_source": "jin",
+   "t3_row": 38,
+   "t3_command": "LP",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 9,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:38",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r39": {
+   "name": "SCIMITAR 1_r39 (T3 jin r39)",
+   "input": "1_r39",
+   "t3_source": "jin",
+   "t3_row": 39,
+   "t3_command": "LP",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 9,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:39",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r40": {
+   "name": "SCIMITAR 1_r40 (T3 jin r40)",
+   "input": "1_r40",
+   "t3_source": "jin",
+   "t3_row": 40,
+   "t3_command": "LP",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 9,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:40",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r41": {
+   "name": "SCIMITAR 1_r41 (T3 jin r41)",
+   "input": "1_r41",
+   "t3_source": "jin",
+   "t3_row": 41,
+   "t3_command": "LP",
+   "startup": 0.117,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 11,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:41",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r42": {
+   "name": "SCIMITAR 1_r42 (T3 jin r42)",
+   "input": "1_r42",
+   "t3_source": "jin",
+   "t3_row": 42,
+   "t3_command": "LP",
+   "startup": 0.117,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 11,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:42",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r43": {
+   "name": "SCIMITAR 1_r43 (T3 jin r43)",
+   "input": "1_r43",
+   "t3_source": "jin",
+   "t3_row": 43,
+   "t3_command": "LP",
+   "startup": 0.117,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 11,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:43",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_c36_r44": {
+   "name": "SCIMITAR 1_c36_r44 (T3 jin r44)",
+   "input": "1_c36_r44",
+   "t3_source": "jin",
+   "t3_row": 44,
+   "t3_command": "LP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:44",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "f_c36_r45": {
+   "name": "SCIMITAR f_c36_r45 (T3 jin r45)",
+   "input": "f_c36_r45",
+   "t3_source": "jin",
+   "t3_row": 45,
+   "t3_command": "6/9+LP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:45",
+   "input_slots": [
+    "f"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "b_c36_r46": {
+   "name": "SCIMITAR b_c36_r46 (T3 jin r46)",
+   "input": "b_c36_r46",
+   "t3_source": "jin",
+   "t3_row": 46,
+   "t3_command": "4/7+LP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:46",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "2_r48": {
+   "name": "SCIMITAR 2_r48 (T3 jin r48)",
+   "input": "2_r48",
+   "t3_source": "jin",
+   "t3_row": 48,
+   "t3_command": "RP",
+   "startup": 0.183,
+   "active": 0.05,
+   "recovery": 0.667,
+   "damage": 11,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:48",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "2_r49": {
+   "name": "SCIMITAR 2_r49 (T3 jin r49)",
+   "input": "2_r49",
+   "t3_source": "jin",
+   "t3_row": 49,
+   "t3_command": "RP",
+   "startup": 0.183,
+   "active": 0.05,
+   "recovery": 0.667,
+   "damage": 11,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:49",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "3+4_r107": {
+   "name": "SCIMITAR 3+4_r107 (T3 jin r51)",
+   "input": "3+4_r107",
+   "t3_source": "jin",
+   "t3_row": 51,
+   "t3_command": "LK+RK",
+   "startup": 0.35,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:51",
+   "input_slots": [
+    "3+4"
+   ],
+   "move_class": "strike",
+   "t3_restriction": 107
+  },
+  "f_r52": {
+   "name": "SCIMITAR f_r52 (T3 jin r52)",
+   "input": "f_r52",
+   "t3_source": "jin",
+   "t3_row": 52,
+   "t3_command": "6/9+LK+RK",
+   "startup": 0.35,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:52",
+   "input_slots": [
+    "f"
+   ],
+   "move_class": "strike"
+  },
+  "b_r53": {
+   "name": "SCIMITAR b_r53 (T3 jin r53)",
+   "input": "b_r53",
+   "t3_source": "jin",
+   "t3_row": 53,
+   "t3_command": "4/7+LK+RK",
+   "startup": 0.35,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:53",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "strike"
+  },
+  "3_c36": {
+   "name": "SCIMITAR 3_c36 (T3 jin r54)",
+   "input": "3_c36",
+   "t3_source": "jin",
+   "t3_row": 54,
+   "t3_command": "LK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:54",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "f_c36_r55": {
+   "name": "SCIMITAR f_c36_r55 (T3 jin r55)",
+   "input": "f_c36_r55",
+   "t3_source": "jin",
+   "t3_row": 55,
+   "t3_command": "6/9+LK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:55",
+   "input_slots": [
+    "f"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "b_c36_r56": {
+   "name": "SCIMITAR b_c36_r56 (T3 jin r56)",
+   "input": "b_c36_r56",
+   "t3_source": "jin",
+   "t3_row": 56,
+   "t3_command": "4/7+LK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:56",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "3_r58": {
+   "name": "SCIMITAR 3_r58 (T3 jin r58)",
+   "input": "3_r58",
+   "t3_source": "jin",
+   "t3_row": 58,
+   "t3_command": "LK",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.817,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:58",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r59": {
+   "name": "SCIMITAR 3_r59 (T3 jin r59)",
+   "input": "3_r59",
+   "t3_source": "jin",
+   "t3_row": 59,
+   "t3_command": "LK",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.817,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:59",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r60": {
+   "name": "SCIMITAR 3_r60 (T3 jin r60)",
+   "input": "3_r60",
+   "t3_source": "jin",
+   "t3_row": 60,
+   "t3_command": "LK",
+   "startup": 0.233,
+   "active": 0.017,
+   "recovery": 0.8,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:60",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r61": {
+   "name": "SCIMITAR 3_r61 (T3 jin r61)",
+   "input": "3_r61",
+   "t3_source": "jin",
+   "t3_row": 61,
+   "t3_command": "LK",
+   "startup": 0.233,
+   "active": 0.017,
+   "recovery": 0.8,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:61",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r62": {
+   "name": "SCIMITAR 3_r62 (T3 jin r62)",
+   "input": "3_r62",
+   "t3_source": "jin",
+   "t3_row": 62,
+   "t3_command": "LK",
+   "startup": 0.233,
+   "active": 0.017,
+   "recovery": 0.8,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:62",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r63": {
+   "name": "SCIMITAR 3_r63 (T3 jin r63)",
+   "input": "3_r63",
+   "t3_source": "jin",
+   "t3_row": 63,
+   "t3_command": "LK",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.817,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:63",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r64": {
+   "name": "SCIMITAR 3_r64 (T3 jin r64)",
+   "input": "3_r64",
+   "t3_source": "jin",
+   "t3_row": 64,
+   "t3_command": "LK",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.817,
+   "damage": 9,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:64",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r65": {
+   "name": "SCIMITAR 3_r65 (T3 jin r65)",
+   "input": "3_r65",
+   "t3_source": "jin",
+   "t3_row": 65,
+   "t3_command": "LK",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.817,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:65",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "b_r66": {
+   "name": "SCIMITAR b_r66 (T3 jin r66)",
+   "input": "b_r66",
+   "t3_source": "jin",
+   "t3_row": 66,
+   "t3_command": "4/7+RK",
+   "startup": 0.25,
+   "active": 0.05,
+   "recovery": 0.6,
+   "damage": 6,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:66",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "strike"
+  },
+  "b_c36": {
+   "name": "SCIMITAR b_c36 (T3 jin r66)",
+   "input": "b_c36",
+   "t3_source": "jin",
+   "t3_row": 66,
+   "t3_command": "4/7+RK",
+   "startup": 0.25,
+   "active": 0.05,
+   "recovery": 0.6,
+   "damage": 6,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:66",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "special",
+   "t3_condition": 36
+  },
+  "4_r68": {
+   "name": "SCIMITAR 4_r68 (T3 jin r68)",
+   "input": "4_r68",
+   "t3_source": "jin",
+   "t3_row": 68,
+   "t3_command": "RK",
+   "startup": 0.133,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:68",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r69": {
+   "name": "SCIMITAR 4_r69 (T3 jin r69)",
+   "input": "4_r69",
+   "t3_source": "jin",
+   "t3_row": 69,
+   "t3_command": "RK",
+   "startup": 0.133,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:69",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r70": {
+   "name": "SCIMITAR 4_r70 (T3 jin r70)",
+   "input": "4_r70",
+   "t3_source": "jin",
+   "t3_row": 70,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:70",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r71": {
+   "name": "SCIMITAR 4_r71 (T3 jin r71)",
+   "input": "4_r71",
+   "t3_source": "jin",
+   "t3_row": 71,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:71",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r72": {
+   "name": "SCIMITAR 4_r72 (T3 jin r72)",
+   "input": "4_r72",
+   "t3_source": "jin",
+   "t3_row": 72,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:72",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r73": {
+   "name": "SCIMITAR 4_r73 (T3 jin r73)",
+   "input": "4_r73",
+   "t3_source": "jin",
+   "t3_row": 73,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 9,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:73",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r74": {
+   "name": "SCIMITAR 4_r74 (T3 jin r74)",
+   "input": "4_r74",
+   "t3_source": "jin",
+   "t3_row": 74,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 9,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:74",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r75": {
+   "name": "SCIMITAR 4_r75 (T3 jin r75)",
+   "input": "4_r75",
+   "t3_source": "jin",
+   "t3_row": 75,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 9,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:75",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_c36_r76": {
+   "name": "SCIMITAR 4_c36_r76 (T3 jin r76)",
+   "input": "4_c36_r76",
+   "t3_source": "jin",
+   "t3_row": 76,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 12,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:76",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "f_c36_r77": {
+   "name": "SCIMITAR f_c36_r77 (T3 jin r77)",
+   "input": "f_c36_r77",
+   "t3_source": "jin",
+   "t3_row": 77,
+   "t3_command": "6/9+RK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 12,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:77",
+   "input_slots": [
+    "f"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "b_c36_r78": {
+   "name": "SCIMITAR b_c36_r78 (T3 jin r78)",
+   "input": "b_c36_r78",
+   "t3_source": "jin",
+   "t3_row": 78,
+   "t3_command": "4/7+RK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 11,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:78",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "d/f+1+2_r17": {
+   "name": "SCIMITAR d/f+1+2_r17 (T3 jin r117)",
+   "input": "d/f+1+2_r17",
+   "t3_source": "jin",
+   "t3_row": 117,
+   "t3_command": "3+LP+RP",
+   "startup": 0.433,
+   "active": 0.017,
+   "recovery": 0.0,
+   "damage": 21,
+   "limb": "both",
+   "heavy": false,
+   "knock": 6.5,
+   "soulGain": 11,
+   "anim_ref": "t3:jin:row:117",
+   "input_slots": [
+    "d/f+1+2"
+   ],
+   "move_class": "throw",
+   "t3_restriction": 17,
+   "damage_note": "t3 row damage 0; WH grappler convention 21"
+  },
+  "1_r144": {
+   "name": "SCIMITAR 1_r144 (T3 jin r144)",
+   "input": "1_r144",
+   "t3_source": "jin",
+   "t3_row": 144,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 1.25,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:144",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "u/f+3": {
+   "name": "SCIMITAR u/f+3 (T3 jin r157)",
+   "input": "u/f+3",
+   "t3_source": "jin",
+   "t3_row": 157,
+   "t3_command": "9+LK",
+   "startup": 0.367,
+   "active": 0.033,
+   "recovery": 0.733,
+   "damage": 18,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:157",
+   "input_slots": [
+    "u/f+3"
+   ],
+   "move_class": "strike"
+  },
+  "b_r169": {
+   "name": "SCIMITAR b_r169 (T3 jin r169)",
+   "input": "b_r169",
+   "t3_source": "jin",
+   "t3_row": 169,
+   "t3_command": "4/6/7/8/9+RP",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 14,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:169",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "strike"
+  },
+  "2_r178": {
+   "name": "SCIMITAR 2_r178 (T3 jin r178)",
+   "input": "2_r178",
+   "t3_source": "jin",
+   "t3_row": 178,
+   "t3_command": "RP",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 16,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:178",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "2_r180": {
+   "name": "SCIMITAR 2_r180 (T3 jin r180)",
+   "input": "2_r180",
+   "t3_source": "jin",
+   "t3_row": 180,
+   "t3_command": "RP",
+   "startup": 0.283,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 12,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:180",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "2_r183": {
+   "name": "SCIMITAR 2_r183 (T3 jin r183)",
+   "input": "2_r183",
+   "t3_source": "jin",
+   "t3_row": 183,
+   "t3_command": "RP",
+   "startup": 0.217,
+   "active": 0.017,
+   "recovery": 0.783,
+   "damage": 11,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:183",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "4_r188": {
+   "name": "SCIMITAR 4_r188 (T3 jin r188)",
+   "input": "4_r188",
+   "t3_source": "jin",
+   "t3_row": 188,
+   "t3_command": "RK",
+   "startup": 0.35,
+   "active": 0.05,
+   "recovery": 0.65,
+   "damage": 12,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:188",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "d/b": {
+   "name": "SCIMITAR d/b (T3 jin r189)",
+   "input": "d/b",
+   "t3_source": "jin",
+   "t3_row": 189,
+   "t3_command": "1/2/3+RK",
+   "startup": 0.367,
+   "active": 0.033,
+   "recovery": 0.65,
+   "damage": 8,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:189",
+   "input_slots": [
+    "d/b"
+   ],
+   "move_class": "strike"
+  },
+  "2_r190": {
+   "name": "SCIMITAR 2_r190 (T3 jin r190)",
+   "input": "2_r190",
+   "t3_source": "jin",
+   "t3_row": 190,
+   "t3_command": "RP",
+   "startup": 0.35,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 9,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:190",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "2_r10_r192": {
+   "name": "SCIMITAR 2_r10_r192 (T3 jin r192)",
+   "input": "2_r10_r192",
+   "t3_source": "jin",
+   "t3_row": 192,
+   "t3_command": "RP",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.767,
+   "damage": 9,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:192",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike",
+   "t3_restriction": 10
+  },
+  "3_r195": {
+   "name": "SCIMITAR 3_r195 (T3 jin r195)",
+   "input": "3_r195",
+   "t3_source": "jin",
+   "t3_row": 195,
+   "t3_command": "LK",
+   "startup": 0.317,
+   "active": 0.083,
+   "recovery": 0.633,
+   "damage": 14,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:195",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r197": {
+   "name": "SCIMITAR 3_r197 (T3 jin r197)",
+   "input": "3_r197",
+   "t3_source": "jin",
+   "t3_row": 197,
+   "t3_command": "LK",
+   "startup": 0.9,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 12,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:197",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "4_r201": {
+   "name": "SCIMITAR 4_r201 (T3 jin r201)",
+   "input": "4_r201",
+   "t3_source": "jin",
+   "t3_row": 201,
+   "t3_command": "RK",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 12,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:201",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r202": {
+   "name": "SCIMITAR 4_r202 (T3 jin r202)",
+   "input": "4_r202",
+   "t3_source": "jin",
+   "t3_row": 202,
+   "t3_command": "RK",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 9,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:202",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r203": {
+   "name": "SCIMITAR 4_r203 (T3 jin r203)",
+   "input": "4_r203",
+   "t3_source": "jin",
+   "t3_row": 203,
+   "t3_command": "RK",
+   "startup": 0.6,
+   "active": 0.033,
+   "recovery": 0.6,
+   "damage": 18,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:203",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r204": {
+   "name": "SCIMITAR 4_r204 (T3 jin r204)",
+   "input": "4_r204",
+   "t3_source": "jin",
+   "t3_row": 204,
+   "t3_command": "RK",
+   "startup": 1.0,
+   "active": 0.05,
+   "recovery": 0.75,
+   "damage": 7,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:204",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "1_r208": {
+   "name": "SCIMITAR 1_r208 (T3 jin r208)",
+   "input": "1_r208",
+   "t3_source": "jin",
+   "t3_row": 208,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 1.433,
+   "damage": 9,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:208",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "4_r211": {
+   "name": "SCIMITAR 4_r211 (T3 jin r211)",
+   "input": "4_r211",
+   "t3_source": "jin",
+   "t3_row": 211,
+   "t3_command": "RK",
+   "startup": 0.367,
+   "active": 0.017,
+   "recovery": 0.8,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:211",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "1_r213": {
+   "name": "SCIMITAR 1_r213 (T3 jin r213)",
+   "input": "1_r213",
+   "t3_source": "jin",
+   "t3_row": 213,
+   "t3_command": "any-button",
+   "startup": 0.367,
+   "active": 0.017,
+   "recovery": 0.8,
+   "damage": 9,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:213",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "f+4": {
+   "name": "SCIMITAR f+4 (T3 jin r214)",
+   "input": "f+4",
+   "t3_source": "jin",
+   "t3_row": 214,
+   "t3_command": "6+RK",
+   "startup": 0.5,
+   "active": 0.05,
+   "recovery": 0.533,
+   "damage": 6,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:214",
+   "input_slots": [
+    "f+4"
+   ],
+   "move_class": "strike"
+  },
+  "b+1": {
+   "name": "SCIMITAR b+1 (T3 jin r216)",
+   "input": "b+1",
+   "t3_source": "jin",
+   "t3_row": 216,
+   "t3_command": "4+any-button",
+   "startup": 1.05,
+   "active": 0.033,
+   "recovery": 0.883,
+   "damage": 47,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:216",
+   "input_slots": [
+    "b+1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r229": {
+   "name": "SCIMITAR 1_r229 (T3 jin r229)",
+   "input": "1_r229",
+   "t3_source": "jin",
+   "t3_row": 229,
+   "t3_command": "LP",
+   "startup": 0.45,
+   "active": 0.033,
+   "recovery": 0.717,
+   "damage": 18,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:229",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r236": {
+   "name": "SCIMITAR 1_r236 (T3 jin r236)",
+   "input": "1_r236",
+   "t3_source": "jin",
+   "t3_row": 236,
+   "t3_command": "LP",
+   "startup": 0.767,
+   "active": 0.05,
+   "recovery": 0.883,
+   "damage": 18,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:236",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "2_r249": {
+   "name": "SCIMITAR 2_r249 (T3 jin r249)",
+   "input": "2_r249",
+   "t3_source": "jin",
+   "t3_row": 249,
+   "t3_command": "RP",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 18,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:249",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "1+2+3": {
+   "name": "SCIMITAR 1+2+3 (T3 jin r255)",
+   "input": "1+2+3",
+   "t3_source": "jin",
+   "t3_row": 255,
+   "t3_command": "any+LP+RP+LK",
+   "startup": 0.767,
+   "active": 0.033,
+   "recovery": 0.667,
+   "damage": 5,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:255",
+   "input_slots": [
+    "1+2+3"
+   ],
+   "move_class": "strike"
+  },
+  "1_r263": {
+   "name": "SCIMITAR 1_r263 (T3 jin r263)",
+   "input": "1_r263",
+   "t3_source": "jin",
+   "t3_row": 263,
+   "t3_command": "any-button",
+   "startup": 0.4,
+   "active": 0.067,
+   "recovery": 0.833,
+   "damage": 12,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:263",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "4_r268": {
+   "name": "SCIMITAR 4_r268 (T3 jin r268)",
+   "input": "4_r268",
+   "t3_source": "jin",
+   "t3_row": 268,
+   "t3_command": "RK",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.633,
+   "damage": 12,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:268",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "d/f+2_r10": {
+   "name": "SCIMITAR d/f+2_r10 (T3 jin r269)",
+   "input": "d/f+2_r10",
+   "t3_source": "jin",
+   "t3_row": 269,
+   "t3_command": "3+RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.633,
+   "damage": 18,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:269",
+   "input_slots": [
+    "d/f+2"
+   ],
+   "move_class": "strike",
+   "t3_restriction": 10
+  },
+  "4_r271": {
+   "name": "SCIMITAR 4_r271 (T3 jin r271)",
+   "input": "4_r271",
+   "t3_source": "jin",
+   "t3_row": 271,
+   "t3_command": "RK",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.633,
+   "damage": 9,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:271",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "1_r272": {
+   "name": "SCIMITAR 1_r272 (T3 jin r272)",
+   "input": "1_r272",
+   "t3_source": "jin",
+   "t3_row": 272,
+   "t3_command": "any-button",
+   "startup": 0.4,
+   "active": 0.067,
+   "recovery": 0.833,
+   "damage": 12,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:272",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_c36_r291": {
+   "name": "SCIMITAR 1_c36_r291 (T3 jin r291)",
+   "input": "1_c36_r291",
+   "t3_source": "jin",
+   "t3_row": 291,
+   "t3_command": "any-button",
+   "startup": 0.367,
+   "active": 0.017,
+   "recovery": 0.667,
+   "damage": 5,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:291",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "1_c36_r292": {
+   "name": "SCIMITAR 1_c36_r292 (T3 jin r292)",
+   "input": "1_c36_r292",
+   "t3_source": "jin",
+   "t3_row": 292,
+   "t3_command": "any-button",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 8,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:292",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "1_c36_r295": {
+   "name": "SCIMITAR 1_c36_r295 (T3 jin r295)",
+   "input": "1_c36_r295",
+   "t3_source": "jin",
+   "t3_row": 295,
+   "t3_command": "any-button",
+   "startup": 0.233,
+   "active": 0.017,
+   "recovery": 0.667,
+   "damage": 4,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:295",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "1_c36_r296": {
+   "name": "SCIMITAR 1_c36_r296 (T3 jin r296)",
+   "input": "1_c36_r296",
+   "t3_source": "jin",
+   "t3_row": 296,
+   "t3_command": "any-button",
+   "startup": 0.183,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 6,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:296",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "1_c5_r365": {
+   "name": "SCIMITAR 1_c5_r365 (T3 jin r365)",
+   "input": "1_c5_r365",
+   "t3_source": "jin",
+   "t3_row": 365,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 1.417,
+   "damage": 24,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:365",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 5
+  },
+  "1_c3_r367": {
+   "name": "SCIMITAR 1_c3_r367 (T3 jin r367)",
+   "input": "1_c3_r367",
+   "t3_source": "jin",
+   "t3_row": 367,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 3.317,
+   "damage": 35,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:367",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 3
+  },
+  "1_r371": {
+   "name": "SCIMITAR 1_r371 (T3 jin r371)",
+   "input": "1_r371",
+   "t3_source": "jin",
+   "t3_row": 371,
+   "t3_command": "any-button",
+   "startup": 0.917,
+   "active": 0.017,
+   "recovery": 0.0,
+   "damage": 9,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:371",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "f+2+4_r14": {
+   "name": "SCIMITAR f+2+4_r14 (T3 jin r372)",
+   "input": "f+2+4_r14",
+   "t3_source": "jin",
+   "t3_row": 372,
+   "t3_command": "6+RP+RK",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 0.283,
+   "damage": 8,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:372",
+   "input_slots": [
+    "f+2+4"
+   ],
+   "move_class": "strike",
+   "t3_restriction": 14
+  },
+  "f+2+4": {
+   "name": "SCIMITAR f+2+4 (T3 jin r373)",
+   "input": "f+2+4",
+   "t3_source": "jin",
+   "t3_row": 373,
+   "t3_command": "6+RP+RK",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 0.283,
+   "damage": 8,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:373",
+   "input_slots": [
+    "f+2+4"
+   ],
+   "move_class": "strike"
+  },
+  "1_c2_r376": {
+   "name": "SCIMITAR 1_c2_r376 (T3 jin r376)",
+   "input": "1_c2_r376",
+   "t3_source": "jin",
+   "t3_row": 376,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 1.817,
+   "damage": 19,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:376",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 2
+  },
+  "1_c2_r377": {
+   "name": "SCIMITAR 1_c2_r377 (T3 jin r377)",
+   "input": "1_c2_r377",
+   "t3_source": "jin",
+   "t3_row": 377,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 1.55,
+   "damage": 21,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:377",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 2
+  },
+  "1_c2_r381": {
+   "name": "SCIMITAR 1_c2_r381 (T3 jin r381)",
+   "input": "1_c2_r381",
+   "t3_source": "jin",
+   "t3_row": 381,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 1.767,
+   "damage": 22,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:381",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 2
+  },
+  "1_c75_r384": {
+   "name": "SCIMITAR 1_c75_r384 (T3 jin r384)",
+   "input": "1_c75_r384",
+   "t3_source": "jin",
+   "t3_row": 384,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 1.333,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:384",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 75,
+   "t3_restriction": 10
+  },
+  "1_c75_r385": {
+   "name": "SCIMITAR 1_c75_r385 (T3 jin r385)",
+   "input": "1_c75_r385",
+   "t3_source": "jin",
+   "t3_row": 385,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 1.167,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:385",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 75,
+   "t3_restriction": 10
+  },
+  "1_c75_r387": {
+   "name": "SCIMITAR 1_c75_r387 (T3 jin r387)",
+   "input": "1_c75_r387",
+   "t3_source": "jin",
+   "t3_row": 387,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 0.917,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:387",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 75,
+   "t3_restriction": 10
+  },
+  "1_c75_r389": {
+   "name": "SCIMITAR 1_c75_r389 (T3 jin r389)",
+   "input": "1_c75_r389",
+   "t3_source": "jin",
+   "t3_row": 389,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 2.767,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:389",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 75,
+   "t3_restriction": 10
+  },
+  "1_c73": {
+   "name": "SCIMITAR 1_c73 (T3 jin r389)",
+   "input": "1_c73",
+   "t3_source": "jin",
+   "t3_row": 389,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 2.767,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:389",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "special",
+   "t3_condition": 73,
+   "t3_restriction": 10
+  },
+  "1_c74": {
+   "name": "SCIMITAR 1_c74 (T3 jin r389)",
+   "input": "1_c74",
+   "t3_source": "jin",
+   "t3_row": 389,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 2.767,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:389",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "special",
+   "t3_condition": 74,
+   "t3_restriction": 10
+  },
+  "1_c75_r391": {
+   "name": "SCIMITAR 1_c75_r391 (T3 jin r391)",
+   "input": "1_c75_r391",
+   "t3_source": "jin",
+   "t3_row": 391,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 2.717,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:391",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 75,
+   "t3_restriction": 10
+  },
+  "1_c75_r393": {
+   "name": "SCIMITAR 1_c75_r393 (T3 jin r393)",
+   "input": "1_c75_r393",
+   "t3_source": "jin",
+   "t3_row": 393,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 3.567,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:393",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 75,
+   "t3_restriction": 10
+  },
+  "1_c75_r395": {
+   "name": "SCIMITAR 1_c75_r395 (T3 jin r395)",
+   "input": "1_c75_r395",
+   "t3_source": "jin",
+   "t3_row": 395,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 2.167,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:395",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 75,
+   "t3_restriction": 10
+  },
+  "1_c75_r397": {
+   "name": "SCIMITAR 1_c75_r397 (T3 jin r397)",
+   "input": "1_c75_r397",
+   "t3_source": "jin",
+   "t3_row": 397,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 1.217,
+   "damage": 24,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:397",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 75,
+   "t3_restriction": 10
+  },
+  "1_c74_r399": {
+   "name": "SCIMITAR 1_c74_r399 (T3 jin r399)",
+   "input": "1_c74_r399",
+   "t3_source": "jin",
+   "t3_row": 399,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 2.0,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:399",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 74,
+   "t3_restriction": 10
+  },
+  "1_c75_r401": {
+   "name": "SCIMITAR 1_c75_r401 (T3 jin r401)",
+   "input": "1_c75_r401",
+   "t3_source": "jin",
+   "t3_row": 401,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 1.667,
+   "damage": 6,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:jin:row:401",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 75,
+   "t3_restriction": 10
+  },
+  "1,2,2": {
+   "name": "Spica Gut Punch",
+   "input": "1,2,2",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-1,2,2",
+   "t8_damage": ",17",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 31,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:shaheen:shaheen-1,2,2",
+   "input_slots": [
+    "1",
+    "1,2",
+    "1,2,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     9,
+     17
+    ],
+    "total": 31
+   },
+   "note": "Mid; on block -11"
+  },
+  "1,2,3": {
+   "name": "Spica Blinding Sands",
+   "input": "1,2,3",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-1,2,3",
+   "t8_damage": ",18",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 32,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:shaheen:shaheen-1,2,3",
+   "input_slots": [
+    "1",
+    "1,2",
+    "1,2,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     9,
+     18
+    ],
+    "total": 32
+   },
+   "note": "High; on block -8"
+  },
+  "1+2+3+4": {
+   "name": "Ki Charge",
+   "input": "1+2+3+4",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-1+2+3+4",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:shaheen:shaheen-1+2+3+4",
+   "input_slots": [
+    "1+2+3+4"
+   ],
+   "move_class": "special",
+   "note": "sp"
+  },
+  "1,2,4": {
+   "name": "Spica Wheel Spin",
+   "input": "1,2,4",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-1,2,4",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 34,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:shaheen:shaheen-1,2,4",
+   "input_slots": [
+    "1",
+    "1,2",
+    "1,2,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     9,
+     20
+    ],
+    "total": 34
+   },
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "2+3": {
+   "name": "Heat Burst",
+   "input": "2+3",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-2+3",
+   "t8_damage": "[12;12]",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 24,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:shaheen:shaheen-2+3",
+   "input_slots": [
+    "2+3"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     12,
+     12
+    ],
+    "total": 24
+   },
+   "note": "Mid; on block +1"
+  },
+  "2,3": {
+   "name": "Porrima Blinding Sands",
+   "input": "2,3",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-2,3",
+   "t8_damage": ",13",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 23,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:shaheen:shaheen-2,3",
+   "input_slots": [
+    "2",
+    "2,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     13
+    ],
+    "total": 23
+   },
+   "note": "High; on block -8"
+  },
+  "3+4": {
+   "name": "Wheel Spin",
+   "input": "3+4",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-3+4",
+   "t8_damage": "20",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:shaheen:shaheen-3+4",
+   "input_slots": [
+    "3+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -9; knockdown on hit"
+  },
+  "4,1": {
+   "name": "Algenib",
+   "input": "4,1",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-4,1",
+   "t8_damage": ",14",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 30,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:shaheen:shaheen-4,1",
+   "input_slots": [
+    "4",
+    "4,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     16,
+     14
+    ],
+    "total": 30
+   },
+   "note": "High; on block -5"
+  },
+  "4,3": {
+   "name": "High Slashing Kick",
+   "input": "4,3",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-4,3",
+   "t8_damage": ",21",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 37,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:shaheen:shaheen-4,3",
+   "input_slots": [
+    "4",
+    "4,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     16,
+     21
+    ],
+    "total": 37
+   },
+   "note": "High; on block -1; knockdown on hit"
+  },
+  "4,4": {
+   "name": "Ra'd",
+   "input": "4,4",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-4,4",
+   "t8_damage": ",25",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 41,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:shaheen:shaheen-4,4",
+   "input_slots": [
+    "4",
+    "4,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     16,
+     25
+    ],
+    "total": 41
+   },
+   "note": "Mid; on block -13"
+  },
+  "b+1_t8": {
+   "name": "Achernar",
+   "input": "b+1",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-b+1",
+   "t8_damage": "20",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:shaheen:shaheen-b+1",
+   "input_slots": [
+    "b+1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +0c",
+   "t8_input": "b+1"
+  },
+  "b+1+3": {
+   "name": "Silent Death Trap",
+   "input": "b+1+3",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-b+1+3",
+   "t8_damage": "15 (15)",
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:shaheen:shaheen-b+1+3",
+   "input_slots": [
+    "b+1+3"
+   ],
+   "move_class": "special",
+   "note": "sp"
+  },
+  "b+2": {
+   "name": "Dust Storm",
+   "input": "b+2",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-b+2",
+   "t8_damage": "12,16",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 28,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:shaheen:shaheen-b+2",
+   "input_slots": [
+    "b+2"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     12,
+     16
+    ],
+    "total": 28
+   },
+   "note": "m(th); on block -9"
+  },
+  "b+3": {
+   "name": "Heel Strike",
+   "input": "b+3",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-b+3",
+   "t8_damage": "17",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 17,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:shaheen:shaheen-b+3",
+   "input_slots": [
+    "b+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +1c"
+  },
+  "b+3+4": {
+   "name": "Elnath",
+   "input": "b+3+4",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-b+3+4",
+   "t8_damage": "25",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 25,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:shaheen:shaheen-b+3+4",
+   "input_slots": [
+    "b+3+4"
+   ],
+   "move_class": "strike",
+   "note": "High; on block -9; knockdown on hit"
+  },
+  "b+4": {
+   "name": "Broken Mirage",
+   "input": "b+4",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-b+4",
+   "t8_damage": "23",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.6,
+   "damage": 23,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:shaheen:shaheen-b+4",
+   "input_slots": [
+    "b+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -15"
+  },
+  "Back throw": {
+   "name": "Silent Death",
+   "input": "Back throw",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-Back throw",
+   "t8_damage": "50",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 50,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:shaheen:shaheen-back throw",
+   "input_slots": [
+    "Back throw"
+   ],
+   "move_class": "strike",
+   "note": "th(h)"
+  },
+  "(back to wall).b,b,UB": {
+   "name": "Wall Jump Backflip",
+   "input": "(back to wall).b,b,UB",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-(back to wall).b,b,UB",
+   "t8_damage": "21",
+   "startup": 0.583,
+   "active": 0.033,
+   "recovery": 0.283,
+   "damage": 21,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:shaheen:shaheen-(back to wall).b,b,ub",
+   "input_slots": [
+    "(back to wall).b,b,UB"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +1"
+  },
+  "BT.2": {
+   "name": "Reverse Edge",
+   "input": "BT.2",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-BT.2",
+   "t8_damage": "20",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:shaheen:shaheen-bt.2",
+   "input_slots": [
+    "BT.2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -3; knockdown on hit"
+  },
+  "d+1": {
+   "name": "Hermit Needle",
+   "input": "d+1",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-d+1",
+   "t8_damage": "16",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 16,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:shaheen:shaheen-d+1",
+   "input_slots": [
+    "d+1"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -13"
+  },
+  "d+2": {
+   "name": "Gut Impact",
+   "input": "d+2",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-d+2",
+   "t8_damage": "15",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 15,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:shaheen:shaheen-d+2",
+   "input_slots": [
+    "d+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -6"
+  },
+  "d+3": {
+   "name": "Silent Rigel",
+   "input": "d+3",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-d+3",
+   "t8_damage": "12",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 12,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:shaheen:shaheen-d+3",
+   "input_slots": [
+    "d+3"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -14"
+  },
+  "d+3+4": {
+   "name": "Crouch Shin Kick",
+   "input": "d+3+4",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-d+3+4",
+   "t8_damage": "6",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 6,
+   "limb": "both",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 3,
+   "anim_ref": "t8:shaheen:shaheen-d+3+4",
+   "input_slots": [
+    "d+3+4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -15"
+  },
+  "d+4": {
+   "name": "Vicious Stomp",
+   "input": "d+4",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-d+4",
+   "t8_damage": "10",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 10,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:shaheen:shaheen-d+4",
+   "input_slots": [
+    "d+4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -12"
+  },
+  "db+1": {
+   "name": "Crouch Jab",
+   "input": "db+1",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-db+1",
+   "t8_damage": "5",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.4,
+   "damage": 5,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 2,
+   "anim_ref": "t8:shaheen:shaheen-db+1",
+   "input_slots": [
+    "db+1"
+   ],
+   "move_class": "strike",
+   "note": "Special low; on block -5"
+  },
+  "db+1+2": {
+   "name": "Shaula",
+   "input": "db+1+2",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-db+1+2",
+   "t8_damage": "40",
+   "startup": 1.067,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 40,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:shaheen:shaheen-db+1+2",
+   "input_slots": [
+    "db+1+2"
+   ],
+   "move_class": "strike",
+   "note": "ub!(m)",
+   "unblockable": true
+  },
+  "db+2": {
+   "name": "Move db+2 (db+2)",
+   "input": "db+2",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-db+2",
+   "t8_damage": "11",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 11,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:shaheen:shaheen-db+2",
+   "input_slots": [
+    "db+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -10"
+  },
+  "db+2,1": {
+   "name": "Rapid Strikes",
+   "input": "db+2,1",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-db+2,1",
+   "t8_damage": ",24",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 35,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:shaheen:shaheen-db+2,1",
+   "input_slots": [
+    "db+2",
+    "db+2,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     11,
+     24
+    ],
+    "total": 35
+   },
+   "note": "High; on block -11"
+  },
+  "db+3": {
+   "name": "Snake's Bite",
+   "input": "db+3",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-db+3",
+   "t8_damage": "12",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 12,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:shaheen:shaheen-db+3",
+   "input_slots": [
+    "db+3"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -17"
+  },
+  "db+3,4": {
+   "name": "Rising Scimitar",
+   "input": "db+3,4",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-db+3,4",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 32,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:shaheen:shaheen-db+3,4",
+   "input_slots": [
+    "db+3",
+    "db+3,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     20
+    ],
+    "total": 32
+   },
+   "note": "High; on block -13; knockdown on hit"
+  },
+  "db+4": {
+   "name": "Rising Scimitar",
+   "input": "db+4",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-db+4",
+   "t8_damage": "23",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 23,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:shaheen:shaheen-db+4",
+   "input_slots": [
+    "db+4"
+   ],
+   "move_class": "strike",
+   "note": "High; on block -13"
+  },
+  "df+1": {
+   "name": "Move df+1 (df+1)",
+   "input": "df+1",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-df+1",
+   "t8_damage": "12",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 12,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:shaheen:shaheen-df+1",
+   "input_slots": [
+    "df+1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -1"
+  },
+  "df+2": {
+   "name": "Rising Falcon",
+   "input": "df+2",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-df+2",
+   "t8_damage": "13",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.417,
+   "damage": 13,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:shaheen:shaheen-df+2",
+   "input_slots": [
+    "df+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -7; knockdown on hit"
+  },
+  "df+3": {
+   "name": "Whirlwind Kick",
+   "input": "df+3",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-df+3",
+   "t8_damage": "20",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 20,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:shaheen:shaheen-df+3",
+   "input_slots": [
+    "df+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -13"
+  },
+  "df+3+4": {
+   "name": "Stealth Step",
+   "input": "df+3+4",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-df+3+4",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.25,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:shaheen:shaheen-df+3+4",
+   "input_slots": [
+    "df+3+4"
+   ],
+   "move_class": "special",
+   "note": "sp"
+  },
+  "df+4": {
+   "name": "Move df+4 (df+4)",
+   "input": "df+4",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-df+4",
+   "t8_damage": "13",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 13,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:shaheen:shaheen-df+4",
+   "input_slots": [
+    "df+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -7"
+  },
+  "df+4,1": {
+   "name": "Move 1 (1)",
+   "input": "df+4,1",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-df+4,1",
+   "t8_damage": ",10",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 23,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:shaheen:shaheen-df+4,1",
+   "input_slots": [
+    "df+4",
+    "df+4,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     10
+    ],
+    "total": 23
+   },
+   "note": "Mid; on block -9"
+  },
+  "df+4,1,3": {
+   "name": "Al-Faras",
+   "input": "df+4,1,3",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-df+4,1,3",
+   "t8_damage": ",28",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 51,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:shaheen:shaheen-df+4,1,3",
+   "input_slots": [
+    "df+4",
+    "df+4,1",
+    "df+4,1,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     10,
+     28
+    ],
+    "total": 51
+   },
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "df+4,3": {
+   "name": "Al-Fard al-Shuja",
+   "input": "df+4,3",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-df+4,3",
+   "t8_damage": ",23",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 36,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:shaheen:shaheen-df+4,3",
+   "input_slots": [
+    "df+4",
+    "df+4,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     23
+    ],
+    "total": 36
+   },
+   "note": "High; on block -4; knockdown on hit"
+  },
+  "D*,u+2": {
+   "name": "Al-Ghul",
+   "input": "D*,u+2",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-D*,u+2",
+   "t8_damage": "35",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 35,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:shaheen:shaheen-d*,u+2",
+   "input_slots": [
+    "D*,u+2"
+   ],
+   "move_class": "strike",
+   "note": "High; on block +6"
+  },
+  "f+2": {
+   "name": "Move f+2 (f+2)",
+   "input": "f+2",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-f+2",
+   "t8_damage": "10",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 10,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:shaheen:shaheen-f+2",
+   "input_slots": [
+    "f+2"
+   ],
+   "move_class": "strike",
+   "note": "High; on block -8"
+  },
+  "f+2,3": {
+   "name": "Silent Sting",
+   "input": "f+2,3",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-f+2,3",
+   "t8_damage": ",23",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 33,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:shaheen:shaheen-f+2,3",
+   "input_slots": [
+    "f+2",
+    "f+2,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     23
+    ],
+    "total": 33
+   },
+   "note": "High; on block -12; knockdown on hit"
+  },
+  "f+2,4": {
+   "name": "Move 4 (4)",
+   "input": "f+2,4",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-f+2,4",
+   "t8_damage": ",16",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 26,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 13,
+   "anim_ref": "t8:shaheen:shaheen-f+2,4",
+   "input_slots": [
+    "f+2",
+    "f+2,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     16
+    ],
+    "total": 26
+   },
+   "note": "Low; on block -13"
+  },
+  "f+2,4,4": {
+   "name": "Silent Flow",
+   "input": "f+2,4,4",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-f+2,4,4",
+   "t8_damage": ",21",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 47,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:shaheen:shaheen-f+2,4,4",
+   "input_slots": [
+    "f+2",
+    "f+2,4",
+    "f+2,4,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     16,
+     21
+    ],
+    "total": 47
+   },
+   "note": "High; on block -7"
+  },
+  "f+3": {
+   "name": "Crescent Moon",
+   "input": "f+3",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-f+3",
+   "t8_damage": "17",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 17,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:shaheen:shaheen-f+3",
+   "input_slots": [
+    "f+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -5"
+  },
+  "f+3+4": {
+   "name": "Skyline",
+   "input": "f+3+4",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-f+3+4",
+   "t8_damage": "20",
+   "startup": 0.367,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:shaheen:shaheen-f+3+4",
+   "input_slots": [
+    "f+3+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid, Mid; on block +3c"
+  },
+  "f+4_t8": {
+   "name": "Piercing Talon",
+   "input": "f+4",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-f+4",
+   "t8_damage": "24",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 24,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:shaheen:shaheen-f+4",
+   "input_slots": [
+    "f+4"
+   ],
+   "move_class": "strike",
+   "note": "High; on block +0",
+   "t8_input": "f+4"
+  },
+  "f,b+2": {
+   "name": "Hornet",
+   "input": "f,b+2",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-f,b+2",
+   "t8_damage": "42",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 42,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:shaheen:shaheen-f,b+2",
+   "input_slots": [
+    "f,b+2"
+   ],
+   "move_class": "strike",
+   "note": "High; on block -4"
+  },
+  "f:b+2": {
+   "name": "Hornet",
+   "input": "f:b+2",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-f:b+2",
+   "t8_damage": "42",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 42,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:shaheen:shaheen-f:b+2",
+   "input_slots": [
+    "f:b+2"
+   ],
+   "move_class": "strike",
+   "note": "High; on block -4"
+  },
+  "FC.df+2": {
+   "name": "Janbiya",
+   "input": "FC.df+2",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-FC.df+2",
+   "t8_damage": "21",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 21,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:shaheen:shaheen-fc.df+2",
+   "input_slots": [
+    "FC.df+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -9; knockdown on hit"
+  },
+  "FC.df+4": {
+   "name": "Move FC.df+4 (FC.df+4)",
+   "input": "FC.df+4",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-FC.df+4",
+   "t8_damage": "16",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 16,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:shaheen:shaheen-fc.df+4",
+   "input_slots": [
+    "FC.df+4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -14"
+  },
+  "FC.df+4,1": {
+   "name": "Serpens",
+   "input": "FC.df+4,1",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-FC.df+4,1",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 36,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:shaheen:shaheen-fc.df+4,1",
+   "input_slots": [
+    "FC.df+4",
+    "FC.df+4,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     16,
+     20
+    ],
+    "total": 36
+   },
+   "note": "High; on block -2; knockdown on hit"
+  },
+  "FC.df,d,DF": {
+   "name": "Slide Step",
+   "input": "FC.df,d,DF",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-FC.df,d,DF",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:shaheen:shaheen-fc.df,d,df",
+   "input_slots": [
+    "FC.df,d,DF"
+   ],
+   "move_class": "special",
+   "note": "sp"
+  },
+  "FC.df,d,DF+3": {
+   "name": "Sand Storm",
+   "input": "FC.df,d,DF+3",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-FC.df,d,DF+3",
+   "t8_damage": "17",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 17,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:shaheen:shaheen-fc.df,d,df+3",
+   "input_slots": [
+    "FC.df,d,DF+3"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -23a; knockdown on hit"
+  },
+  "f,F+3": {
+   "name": "Hunting Falcon Dive",
+   "input": "f,F+3",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-f,F+3",
+   "t8_damage": "23",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 23,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:shaheen:shaheen-f,f+3",
+   "input_slots": [
+    "f,F+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -12; knockdown on hit"
+  },
+  "f,f,F+2": {
+   "name": "Antares",
+   "input": "f,f,F+2",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-f,f,F+2",
+   "t8_damage": "30",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 30,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:shaheen:shaheen-f,f,f+2",
+   "input_slots": [
+    "f,f,F+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +5"
+  },
+  "H.2+3": {
+   "name": "Rumh al-Muzaffar",
+   "input": "H.2+3",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-H.2+3",
+   "t8_damage": "40",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.683,
+   "damage": 40,
+   "limb": "both",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 15,
+   "anim_ref": "t8:shaheen:shaheen-h.2+3",
+   "input_slots": [
+    "H.2+3"
+   ],
+   "move_class": "throw",
+   "note": "Low, Throw; on block -14; knockdown on hit",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "throw_break": "1"
+  },
+  "H.D*,u+2": {
+   "name": "Al-Ghul Master",
+   "input": "H.D*,u+2",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-H.D*,u+2",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:shaheen:shaheen-h.d*,u+2",
+   "input_slots": [
+    "H.D*,u+2"
+   ],
+   "move_class": "special",
+   "note": "on block [[Shaheen_combos#Mini-combos|+13]]; knockdown on hit"
+  },
+  "H.f+1+2": {
+   "name": "Rumh al-Dawla",
+   "input": "H.f+1+2",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-H.f+1+2",
+   "t8_damage": "15,25 (17)",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 15,
+   "limb": "both",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:shaheen:shaheen-h.f+1+2",
+   "input_slots": [
+    "H.f+1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid, Mid; on block +4c SNK"
+  },
+  "Left throw": {
+   "name": "Chasm Drop",
+   "input": "Left throw",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-Left throw",
+   "t8_damage": "40",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 40,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:shaheen:shaheen-left throw",
+   "input_slots": [
+    "Left throw"
+   ],
+   "move_class": "strike",
+   "note": "th(h); on block -3"
+  },
+  "R.df+1+2": {
+   "name": "Najm Alshamal",
+   "input": "R.df+1+2",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-R.df+1+2",
+   "t8_damage": "55+",
+   "startup": 0.333,
+   "active": 0.3,
+   "recovery": 0.65,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:shaheen:shaheen-r.df+1+2",
+   "input_slots": [
+    "R.df+1+2"
+   ],
+   "move_class": "special",
+   "note": "Mid, Throw; on block -18"
+  },
+  "Right throw": {
+   "name": "Axel Spinner",
+   "input": "Right throw",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-Right throw",
+   "t8_damage": "40",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 40,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:shaheen:shaheen-right throw",
+   "input_slots": [
+    "Right throw"
+   ],
+   "move_class": "strike",
+   "note": "th(h); on block -3"
+  },
+  "SNK.1": {
+   "name": "Blinding Snake",
+   "input": "SNK.1",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-SNK.1",
+   "t8_damage": "10",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 10,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:shaheen:shaheen-snk.1",
+   "input_slots": [
+    "SNK.1"
+   ],
+   "move_class": "strike",
+   "note": "High; on block -1"
+  },
+  "SNK.1+2": {
+   "name": "Al-Sayf",
+   "input": "SNK.1+2",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-SNK.1+2",
+   "t8_damage": "21",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 21,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:shaheen:shaheen-snk.1+2",
+   "input_slots": [
+    "SNK.1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +4c"
+  },
+  "SNK.2": {
+   "name": "Crimson Tempest",
+   "input": "SNK.2",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-SNK.2",
+   "t8_damage": "17",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 17,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:shaheen:shaheen-snk.2",
+   "input_slots": [
+    "SNK.2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -9"
+  },
+  "SNK.3": {
+   "name": "Hunting Falcon Dive",
+   "input": "SNK.3",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-SNK.3",
+   "t8_damage": "23",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 23,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:shaheen:shaheen-snk.3",
+   "input_slots": [
+    "SNK.3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -12; knockdown on hit"
+  },
+  "SNK.4": {
+   "name": "Sliding Shave",
+   "input": "SNK.4",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-SNK.4",
+   "t8_damage": "20",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:shaheen:shaheen-snk.4",
+   "input_slots": [
+    "SNK.4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -14"
+  },
+  "SNK.df+1": {
+   "name": "Move SNK.df+1 (SNK.df+1)",
+   "input": "SNK.df+1",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-SNK.df+1",
+   "t8_damage": "12",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 12,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:shaheen:shaheen-snk.df+1",
+   "input_slots": [
+    "SNK.df+1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -5"
+  },
+  "SNK.df+1,2": {
+   "name": "Flash Hornet",
+   "input": "SNK.df+1,2",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-SNK.df+1,2",
+   "t8_damage": ",40",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 52,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:shaheen:shaheen-snk.df+1,2",
+   "input_slots": [
+    "SNK.df+1",
+    "SNK.df+1,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     40
+    ],
+    "total": 52
+   },
+   "note": "High; on block -4"
+  },
+  "SNK.df+1,3": {
+   "name": "Flash Deneb",
+   "input": "SNK.df+1,3",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-SNK.df+1,3",
+   "t8_damage": ",28",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 40,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:shaheen:shaheen-snk.df+1,3",
+   "input_slots": [
+    "SNK.df+1",
+    "SNK.df+1,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     28
+    ],
+    "total": 40
+   },
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "SS.1+2": {
+   "name": "Haboob",
+   "input": "SS.1+2",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-SS.1+2",
+   "t8_damage": "23",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 23,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:shaheen:shaheen-ss.1+2",
+   "input_slots": [
+    "SS.1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +3"
+  },
+  "SS.2": {
+   "name": "Nisif Kamar",
+   "input": "SS.2",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-SS.2",
+   "t8_damage": "14",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 14,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 7,
+   "anim_ref": "t8:shaheen:shaheen-ss.2",
+   "input_slots": [
+    "SS.2"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -12"
+  },
+  "uf+1": {
+   "name": "Vega",
+   "input": "uf+1",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-uf+1",
+   "t8_damage": "25",
+   "startup": 0.4,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 25,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:shaheen:shaheen-uf+1",
+   "input_slots": [
+    "uf+1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +1"
+  },
+  "uf+1+2": {
+   "name": "Wezen",
+   "input": "uf+1+2",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-uf+1+2",
+   "t8_damage": "40",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 40,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:shaheen:shaheen-uf+1+2",
+   "input_slots": [
+    "uf+1+2"
+   ],
+   "move_class": "strike",
+   "note": "th(h); on block -3"
+  },
+  "uf+3": {
+   "name": "Crescent Cleaver",
+   "input": "uf+3",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-uf+3",
+   "t8_damage": "22",
+   "startup": 0.417,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 22,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 11,
+   "anim_ref": "t8:shaheen:shaheen-uf+3",
+   "input_slots": [
+    "uf+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -7; knockdown on hit"
+  },
+  "uf+4": {
+   "name": "Altair",
+   "input": "uf+4",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-uf+4",
+   "t8_damage": "13",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 13,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:shaheen:shaheen-uf+4",
+   "input_slots": [
+    "uf+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "uf,n,4": {
+   "name": "Delayed Rising Toe Kick",
+   "input": "uf,n,4",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-uf,n,4",
+   "t8_damage": "20",
+   "startup": 0.383,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:shaheen:shaheen-uf,n,4",
+   "input_slots": [
+    "uf,n,4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "ws1": {
+   "name": "Albireo",
+   "input": "ws1",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-ws1",
+   "t8_damage": "17",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 17,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:shaheen:shaheen-ws1",
+   "input_slots": [
+    "ws1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -2"
+  },
+  "ws2": {
+   "name": "Hawk Edge",
+   "input": "ws2",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-ws2",
+   "t8_damage": "21",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 21,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:shaheen:shaheen-ws2",
+   "input_slots": [
+    "ws2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -17; knockdown on hit"
+  },
+  "ws3": {
+   "name": "Move ws3 (ws3)",
+   "input": "ws3",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-ws3",
+   "t8_damage": "9",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 9,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 4,
+   "anim_ref": "t8:shaheen:shaheen-ws3",
+   "input_slots": [
+    "ws3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -11"
+  },
+  "ws3,3": {
+   "name": "Double Scorpion",
+   "input": "ws3,3",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-ws3,3",
+   "t8_damage": ",25",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 34,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:shaheen:shaheen-ws3,3",
+   "input_slots": [
+    "ws3",
+    "ws3,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     9,
+     25
+    ],
+    "total": 34
+   },
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "ws4": {
+   "name": "Jaw Smash",
+   "input": "ws4",
+   "t8_source": "shaheen",
+   "t8_id": "Shaheen-ws4",
+   "t8_damage": "16",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 16,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:shaheen:shaheen-ws4",
+   "input_slots": [
+    "ws4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -6"
   }
  },
  "strings": [
@@ -410,7 +4324,28 @@
     221,
     222
    ]
-  }
+  },
+  "1,2",
+  "1,2,2",
+  "1,2,3",
+  "1,2,4",
+  "2,1",
+  "2,3",
+  "4,1",
+  "4,3",
+  "4,4",
+  "db+2,1",
+  "db+3,4",
+  "df+4,1",
+  "df+4,1,3",
+  "df+4,3",
+  "f+2,3",
+  "f+2,4",
+  "f+2,4,4",
+  "FC.df+4,1",
+  "SNK.df+1,2",
+  "SNK.df+1,3",
+  "ws3,3"
  ],
  "specials": [
   {
@@ -430,8 +4365,70 @@
    "t3_row": 277,
    "damage": 21,
    "throw": true
+  },
+  {
+   "input": "1+2+3+4",
+   "damage": 0
+  },
+  {
+   "input": "b+1+3",
+   "damage": 0
+  },
+  {
+   "input": "df+3+4",
+   "damage": 0
+  },
+  {
+   "input": "FC.df,d,DF",
+   "damage": 0
+  },
+  {
+   "input": "H.2+3",
+   "damage": 40,
+   "throw": true
+  },
+  {
+   "input": "H.D*,u+2",
+   "damage": 0
+  },
+  {
+   "input": "R.df+1+2",
+   "damage": 0
   }
  ],
  "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
- "schema_version": 2
+ "schema_version": 2,
+ "t3_bank": "moveset_jin.json",
+ "t3_bank_rows": 413,
+ "t3_bank_attack_rows": 102,
+ "generated_full_moveset": {
+  "by": "tools/gen-movesets-t3.py",
+  "date": "2026-10-20",
+  "note": "Full T3 bank depth merged over curated base; curated moves preserved verbatim. 413 rows, 242 attacks."
+ },
+ "canon_note": "Scimitar WH signature moves preserved; T8 Shaheen frame data folded in.",
+ "forward_merge": {
+  "date": "2026-10-20",
+  "pr": 357,
+  "method": "semantic union of branch (moveset-cluster-a-t8) and main versions; main keeps contested move keys, branch entries rekeyed <key>_t8 with t8_input recorded; colliding branch specials appended with forward_merge_alt_of",
+  "branch_counts": {
+   "moves": 98,
+   "specials": 7,
+   "strings": 21
+  },
+  "main_counts": {
+   "moves": 114,
+   "specials": 3,
+   "strings": 3
+  },
+  "merged_counts": {
+   "moves": 196,
+   "specials": 10,
+   "strings": 24
+  },
+  "rekeyed_inputs": [
+   "b+1",
+   "f+4"
+  ]
+ }
 }

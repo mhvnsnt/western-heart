@@ -3,8 +3,8 @@
  "display": "LILI",
  "tekken_base": "Lili",
  "t3_source": "xiaoyu",
- "proxy": true,
- "proxy_note": "Lili has no T3 bank - Xiaoyu proxy (graceful striker)",
+ "proxy": false,
+ "proxy_note": null,
  "variant": 6,
  "moves": {
   "1": {
@@ -226,10 +226,2097 @@
    "unblockable": true,
    "isGrab": true
   },
+  "b": {
+   "name": "LILI b (T3 xiaoyu r46)",
+   "input": "b",
+   "t3_source": "xiaoyu",
+   "t3_row": 46,
+   "t3_command": "4/7+LP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:46",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "strike"
+  },
+  "1_r48": {
+   "name": "LILI 1_r48 (T3 xiaoyu r48)",
+   "input": "1_r48",
+   "t3_source": "xiaoyu",
+   "t3_row": 48,
+   "t3_command": "LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:48",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r49": {
+   "name": "LILI 1_r49 (T3 xiaoyu r49)",
+   "input": "1_r49",
+   "t3_source": "xiaoyu",
+   "t3_row": 49,
+   "t3_command": "LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:49",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r50": {
+   "name": "LILI 1_r50 (T3 xiaoyu r50)",
+   "input": "1_r50",
+   "t3_source": "xiaoyu",
+   "t3_row": 50,
+   "t3_command": "LP",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 9,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:50",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r51": {
+   "name": "LILI 1_r51 (T3 xiaoyu r51)",
+   "input": "1_r51",
+   "t3_source": "xiaoyu",
+   "t3_row": 51,
+   "t3_command": "LP",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 9,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:51",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r52": {
+   "name": "LILI 1_r52 (T3 xiaoyu r52)",
+   "input": "1_r52",
+   "t3_source": "xiaoyu",
+   "t3_row": 52,
+   "t3_command": "LP",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 9,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:52",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r53": {
+   "name": "LILI 1_r53 (T3 xiaoyu r53)",
+   "input": "1_r53",
+   "t3_source": "xiaoyu",
+   "t3_row": 53,
+   "t3_command": "LP",
+   "startup": 0.117,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 11,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:53",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r54": {
+   "name": "LILI 1_r54 (T3 xiaoyu r54)",
+   "input": "1_r54",
+   "t3_source": "xiaoyu",
+   "t3_row": 54,
+   "t3_command": "LP",
+   "startup": 0.117,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 11,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:54",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r55": {
+   "name": "LILI 1_r55 (T3 xiaoyu r55)",
+   "input": "1_r55",
+   "t3_source": "xiaoyu",
+   "t3_row": 55,
+   "t3_command": "LP",
+   "startup": 0.117,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 11,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:55",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_c36_r56": {
+   "name": "LILI 1_c36_r56 (T3 xiaoyu r56)",
+   "input": "1_c36_r56",
+   "t3_source": "xiaoyu",
+   "t3_row": 56,
+   "t3_command": "LP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:56",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "f_c36": {
+   "name": "LILI f_c36 (T3 xiaoyu r57)",
+   "input": "f_c36",
+   "t3_source": "xiaoyu",
+   "t3_row": 57,
+   "t3_command": "6/9+LP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:57",
+   "input_slots": [
+    "f"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "b_c36_r58": {
+   "name": "LILI b_c36_r58 (T3 xiaoyu r58)",
+   "input": "b_c36_r58",
+   "t3_source": "xiaoyu",
+   "t3_row": 58,
+   "t3_command": "4/7+LP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:58",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "2_r61": {
+   "name": "LILI 2_r61 (T3 xiaoyu r61)",
+   "input": "2_r61",
+   "t3_source": "xiaoyu",
+   "t3_row": 61,
+   "t3_command": "RP",
+   "startup": 0.183,
+   "active": 0.05,
+   "recovery": 0.667,
+   "damage": 11,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:61",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "2_r62": {
+   "name": "LILI 2_r62 (T3 xiaoyu r62)",
+   "input": "2_r62",
+   "t3_source": "xiaoyu",
+   "t3_row": 62,
+   "t3_command": "RP",
+   "startup": 0.183,
+   "active": 0.05,
+   "recovery": 0.667,
+   "damage": 11,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:62",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "3+4_r107": {
+   "name": "LILI 3+4_r107 (T3 xiaoyu r64)",
+   "input": "3+4_r107",
+   "t3_source": "xiaoyu",
+   "t3_row": 64,
+   "t3_command": "LK+RK",
+   "startup": 0.35,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:64",
+   "input_slots": [
+    "3+4"
+   ],
+   "move_class": "strike",
+   "t3_restriction": 107
+  },
+  "f": {
+   "name": "LILI f (T3 xiaoyu r65)",
+   "input": "f",
+   "t3_source": "xiaoyu",
+   "t3_row": 65,
+   "t3_command": "6/9+LK+RK",
+   "startup": 0.35,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:65",
+   "input_slots": [
+    "f"
+   ],
+   "move_class": "strike"
+  },
+  "b_r66": {
+   "name": "LILI b_r66 (T3 xiaoyu r66)",
+   "input": "b_r66",
+   "t3_source": "xiaoyu",
+   "t3_row": 66,
+   "t3_command": "4/7+LK+RK",
+   "startup": 0.35,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:66",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "strike"
+  },
+  "3_c36": {
+   "name": "LILI 3_c36 (T3 xiaoyu r67)",
+   "input": "3_c36",
+   "t3_source": "xiaoyu",
+   "t3_row": 67,
+   "t3_command": "LK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:67",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "f_c36_r68": {
+   "name": "LILI f_c36_r68 (T3 xiaoyu r68)",
+   "input": "f_c36_r68",
+   "t3_source": "xiaoyu",
+   "t3_row": 68,
+   "t3_command": "6/9+LK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:68",
+   "input_slots": [
+    "f"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "b_c36_r69": {
+   "name": "LILI b_c36_r69 (T3 xiaoyu r69)",
+   "input": "b_c36_r69",
+   "t3_source": "xiaoyu",
+   "t3_row": 69,
+   "t3_command": "4/7+LK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:69",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "3_r71": {
+   "name": "LILI 3_r71 (T3 xiaoyu r71)",
+   "input": "3_r71",
+   "t3_source": "xiaoyu",
+   "t3_row": 71,
+   "t3_command": "LK",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.817,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:71",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r72": {
+   "name": "LILI 3_r72 (T3 xiaoyu r72)",
+   "input": "3_r72",
+   "t3_source": "xiaoyu",
+   "t3_row": 72,
+   "t3_command": "LK",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.817,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:72",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r73": {
+   "name": "LILI 3_r73 (T3 xiaoyu r73)",
+   "input": "3_r73",
+   "t3_source": "xiaoyu",
+   "t3_row": 73,
+   "t3_command": "LK",
+   "startup": 0.233,
+   "active": 0.017,
+   "recovery": 0.8,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:73",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r74": {
+   "name": "LILI 3_r74 (T3 xiaoyu r74)",
+   "input": "3_r74",
+   "t3_source": "xiaoyu",
+   "t3_row": 74,
+   "t3_command": "LK",
+   "startup": 0.233,
+   "active": 0.017,
+   "recovery": 0.8,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:74",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r75": {
+   "name": "LILI 3_r75 (T3 xiaoyu r75)",
+   "input": "3_r75",
+   "t3_source": "xiaoyu",
+   "t3_row": 75,
+   "t3_command": "LK",
+   "startup": 0.233,
+   "active": 0.017,
+   "recovery": 0.8,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:75",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r76": {
+   "name": "LILI 3_r76 (T3 xiaoyu r76)",
+   "input": "3_r76",
+   "t3_source": "xiaoyu",
+   "t3_row": 76,
+   "t3_command": "LK",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.817,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:76",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r77": {
+   "name": "LILI 3_r77 (T3 xiaoyu r77)",
+   "input": "3_r77",
+   "t3_source": "xiaoyu",
+   "t3_row": 77,
+   "t3_command": "LK",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.817,
+   "damage": 9,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:77",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r78": {
+   "name": "LILI 3_r78 (T3 xiaoyu r78)",
+   "input": "3_r78",
+   "t3_source": "xiaoyu",
+   "t3_row": 78,
+   "t3_command": "LK",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.817,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:78",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "4_r80": {
+   "name": "LILI 4_r80 (T3 xiaoyu r80)",
+   "input": "4_r80",
+   "t3_source": "xiaoyu",
+   "t3_row": 80,
+   "t3_command": "RK",
+   "startup": 0.133,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:80",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r81": {
+   "name": "LILI 4_r81 (T3 xiaoyu r81)",
+   "input": "4_r81",
+   "t3_source": "xiaoyu",
+   "t3_row": 81,
+   "t3_command": "RK",
+   "startup": 0.133,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:81",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r82": {
+   "name": "LILI 4_r82 (T3 xiaoyu r82)",
+   "input": "4_r82",
+   "t3_source": "xiaoyu",
+   "t3_row": 82,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:82",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r83": {
+   "name": "LILI 4_r83 (T3 xiaoyu r83)",
+   "input": "4_r83",
+   "t3_source": "xiaoyu",
+   "t3_row": 83,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:83",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r84": {
+   "name": "LILI 4_r84 (T3 xiaoyu r84)",
+   "input": "4_r84",
+   "t3_source": "xiaoyu",
+   "t3_row": 84,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:84",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r85": {
+   "name": "LILI 4_r85 (T3 xiaoyu r85)",
+   "input": "4_r85",
+   "t3_source": "xiaoyu",
+   "t3_row": 85,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 9,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:85",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r86": {
+   "name": "LILI 4_r86 (T3 xiaoyu r86)",
+   "input": "4_r86",
+   "t3_source": "xiaoyu",
+   "t3_row": 86,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 9,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:86",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r87": {
+   "name": "LILI 4_r87 (T3 xiaoyu r87)",
+   "input": "4_r87",
+   "t3_source": "xiaoyu",
+   "t3_row": 87,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 9,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:87",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_c36_r88": {
+   "name": "LILI 4_c36_r88 (T3 xiaoyu r88)",
+   "input": "4_c36_r88",
+   "t3_source": "xiaoyu",
+   "t3_row": 88,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 12,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:88",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "f_c36_r89": {
+   "name": "LILI f_c36_r89 (T3 xiaoyu r89)",
+   "input": "f_c36_r89",
+   "t3_source": "xiaoyu",
+   "t3_row": 89,
+   "t3_command": "6/9+RK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 12,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:89",
+   "input_slots": [
+    "f"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "b_c36_r90": {
+   "name": "LILI b_c36_r90 (T3 xiaoyu r90)",
+   "input": "b_c36_r90",
+   "t3_source": "xiaoyu",
+   "t3_row": 90,
+   "t3_command": "4/7+RK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 11,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:90",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "b_r93": {
+   "name": "LILI b_r93 (T3 xiaoyu r93)",
+   "input": "b_r93",
+   "t3_source": "xiaoyu",
+   "t3_row": 93,
+   "t3_command": "4/7+RK",
+   "startup": 0.25,
+   "active": 0.05,
+   "recovery": 0.6,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:93",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "strike"
+  },
+  "b_c36": {
+   "name": "LILI b_c36 (T3 xiaoyu r93)",
+   "input": "b_c36",
+   "t3_source": "xiaoyu",
+   "t3_row": 93,
+   "t3_command": "4/7+RK",
+   "startup": 0.25,
+   "active": 0.05,
+   "recovery": 0.6,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:93",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "special",
+   "t3_condition": 36
+  },
+  "2_r105": {
+   "name": "LILI 2_r105 (T3 xiaoyu r105)",
+   "input": "2_r105",
+   "t3_source": "xiaoyu",
+   "t3_row": 105,
+   "t3_command": "RP",
+   "startup": 0.183,
+   "active": 0.017,
+   "recovery": 0.483,
+   "damage": 4,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:105",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "d/b+4": {
+   "name": "LILI d/b+4 (T3 xiaoyu r149)",
+   "input": "d/b+4",
+   "t3_source": "xiaoyu",
+   "t3_row": 149,
+   "t3_command": "1+RK",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.7,
+   "damage": 6,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:149",
+   "input_slots": [
+    "d/b+4"
+   ],
+   "move_class": "strike"
+  },
+  "3_r251": {
+   "name": "LILI 3_r251 (T3 xiaoyu r251)",
+   "input": "3_r251",
+   "t3_source": "xiaoyu",
+   "t3_row": 251,
+   "t3_command": "LK",
+   "startup": 0.35,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 9,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:251",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "1_r252": {
+   "name": "LILI 1_r252 (T3 xiaoyu r252)",
+   "input": "1_r252",
+   "t3_source": "xiaoyu",
+   "t3_row": 252,
+   "t3_command": "LP",
+   "startup": 0.35,
+   "active": 0.017,
+   "recovery": 0.8,
+   "damage": 9,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:252",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r253": {
+   "name": "LILI 1_r253 (T3 xiaoyu r253)",
+   "input": "1_r253",
+   "t3_source": "xiaoyu",
+   "t3_row": 253,
+   "t3_command": "LP",
+   "startup": 0.45,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:253",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r254": {
+   "name": "LILI 1_r254 (T3 xiaoyu r254)",
+   "input": "1_r254",
+   "t3_source": "xiaoyu",
+   "t3_row": 254,
+   "t3_command": "LP",
+   "startup": 0.233,
+   "active": 0.017,
+   "recovery": 0.683,
+   "damage": 4,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:254",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "2_r261": {
+   "name": "LILI 2_r261 (T3 xiaoyu r261)",
+   "input": "2_r261",
+   "t3_source": "xiaoyu",
+   "t3_row": 261,
+   "t3_command": "RP",
+   "startup": 0.367,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 15,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:261",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "2_r262": {
+   "name": "LILI 2_r262 (T3 xiaoyu r262)",
+   "input": "2_r262",
+   "t3_source": "xiaoyu",
+   "t3_row": 262,
+   "t3_command": "RP",
+   "startup": 0.367,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 18,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:262",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "2_r263": {
+   "name": "LILI 2_r263 (T3 xiaoyu r263)",
+   "input": "2_r263",
+   "t3_source": "xiaoyu",
+   "t3_row": 263,
+   "t3_command": "RP",
+   "startup": 0.367,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 21,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:263",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "1_r266": {
+   "name": "LILI 1_r266 (T3 xiaoyu r266)",
+   "input": "1_r266",
+   "t3_source": "xiaoyu",
+   "t3_row": 266,
+   "t3_command": "any-button",
+   "startup": 1.067,
+   "active": 0.017,
+   "recovery": 0.6,
+   "damage": 6,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:266",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r268": {
+   "name": "LILI 1_r268 (T3 xiaoyu r268)",
+   "input": "1_r268",
+   "t3_source": "xiaoyu",
+   "t3_row": 268,
+   "t3_command": "any-button",
+   "startup": 1.067,
+   "active": 0.05,
+   "recovery": 0.567,
+   "damage": 24,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:268",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "2_r272": {
+   "name": "LILI 2_r272 (T3 xiaoyu r272)",
+   "input": "2_r272",
+   "t3_source": "xiaoyu",
+   "t3_row": 272,
+   "t3_command": "RP",
+   "startup": 0.2,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 7,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:272",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "d": {
+   "name": "LILI d (T3 xiaoyu r273)",
+   "input": "d",
+   "t3_source": "xiaoyu",
+   "t3_row": 273,
+   "t3_command": "2/3+RP",
+   "startup": 0.35,
+   "active": 0.05,
+   "recovery": 0.483,
+   "damage": 6,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:273",
+   "input_slots": [
+    "d"
+   ],
+   "move_class": "strike"
+  },
+  "b_r274": {
+   "name": "LILI b_r274 (T3 xiaoyu r274)",
+   "input": "b_r274",
+   "t3_source": "xiaoyu",
+   "t3_row": 274,
+   "t3_command": "4/6+LK",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.817,
+   "damage": 8,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:274",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "strike"
+  },
+  "3_r278": {
+   "name": "LILI 3_r278 (T3 xiaoyu r278)",
+   "input": "3_r278",
+   "t3_source": "xiaoyu",
+   "t3_row": 278,
+   "t3_command": "LK",
+   "startup": 0.167,
+   "active": 0.117,
+   "recovery": 0.8,
+   "damage": 18,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:278",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r279": {
+   "name": "LILI 3_r279 (T3 xiaoyu r279)",
+   "input": "3_r279",
+   "t3_source": "xiaoyu",
+   "t3_row": 279,
+   "t3_command": "LK",
+   "startup": 0.167,
+   "active": 0.117,
+   "recovery": 0.8,
+   "damage": 18,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:279",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r280": {
+   "name": "LILI 3_r280 (T3 xiaoyu r280)",
+   "input": "3_r280",
+   "t3_source": "xiaoyu",
+   "t3_row": 280,
+   "t3_command": "LK",
+   "startup": 0.167,
+   "active": 0.117,
+   "recovery": 0.8,
+   "damage": 18,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:280",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r281": {
+   "name": "LILI 3_r281 (T3 xiaoyu r281)",
+   "input": "3_r281",
+   "t3_source": "xiaoyu",
+   "t3_row": 281,
+   "t3_command": "LK",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.817,
+   "damage": 11,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:281",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r282": {
+   "name": "LILI 3_r282 (T3 xiaoyu r282)",
+   "input": "3_r282",
+   "t3_source": "xiaoyu",
+   "t3_row": 282,
+   "t3_command": "LK",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.817,
+   "damage": 11,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:282",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r283": {
+   "name": "LILI 3_r283 (T3 xiaoyu r283)",
+   "input": "3_r283",
+   "t3_source": "xiaoyu",
+   "t3_row": 283,
+   "t3_command": "LK",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.817,
+   "damage": 11,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:283",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r284": {
+   "name": "LILI 3_r284 (T3 xiaoyu r284)",
+   "input": "3_r284",
+   "t3_source": "xiaoyu",
+   "t3_row": 284,
+   "t3_command": "LK",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 14,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:284",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r285": {
+   "name": "LILI 3_r285 (T3 xiaoyu r285)",
+   "input": "3_r285",
+   "t3_source": "xiaoyu",
+   "t3_row": 285,
+   "t3_command": "LK",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 14,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:285",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r286": {
+   "name": "LILI 3_r286 (T3 xiaoyu r286)",
+   "input": "3_r286",
+   "t3_source": "xiaoyu",
+   "t3_row": 286,
+   "t3_command": "LK",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 14,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:286",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "f+3_c36": {
+   "name": "LILI f+3_c36 (T3 xiaoyu r287)",
+   "input": "f+3_c36",
+   "t3_source": "xiaoyu",
+   "t3_row": 287,
+   "t3_command": "6+LK",
+   "startup": 0.267,
+   "active": 0.017,
+   "recovery": 0.067,
+   "damage": 12,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:287",
+   "input_slots": [
+    "f+3"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "4_r292": {
+   "name": "LILI 4_r292 (T3 xiaoyu r292)",
+   "input": "4_r292",
+   "t3_source": "xiaoyu",
+   "t3_row": 292,
+   "t3_command": "RK",
+   "startup": 0.45,
+   "active": 0.05,
+   "recovery": 0.583,
+   "damage": 6,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:292",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r296": {
+   "name": "LILI 4_r296 (T3 xiaoyu r296)",
+   "input": "4_r296",
+   "t3_source": "xiaoyu",
+   "t3_row": 296,
+   "t3_command": "RK",
+   "startup": 0.383,
+   "active": 0.217,
+   "recovery": 0.5,
+   "damage": 7,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:296",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r298": {
+   "name": "LILI 4_r298 (T3 xiaoyu r298)",
+   "input": "4_r298",
+   "t3_source": "xiaoyu",
+   "t3_row": 298,
+   "t3_command": "RK",
+   "startup": 0.3,
+   "active": 0.05,
+   "recovery": 0.917,
+   "damage": 7,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:298",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r299": {
+   "name": "LILI 4_r299 (T3 xiaoyu r299)",
+   "input": "4_r299",
+   "t3_source": "xiaoyu",
+   "t3_row": 299,
+   "t3_command": "RK",
+   "startup": 0.3,
+   "active": 0.05,
+   "recovery": 0.917,
+   "damage": 9,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:299",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r300": {
+   "name": "LILI 4_r300 (T3 xiaoyu r300)",
+   "input": "4_r300",
+   "t3_source": "xiaoyu",
+   "t3_row": 300,
+   "t3_command": "RK",
+   "startup": 0.133,
+   "active": 0.017,
+   "recovery": 0.633,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:300",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r301": {
+   "name": "LILI 4_r301 (T3 xiaoyu r301)",
+   "input": "4_r301",
+   "t3_source": "xiaoyu",
+   "t3_row": 301,
+   "t3_command": "RK",
+   "startup": 0.133,
+   "active": 0.017,
+   "recovery": 0.633,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:301",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r302": {
+   "name": "LILI 4_r302 (T3 xiaoyu r302)",
+   "input": "4_r302",
+   "t3_source": "xiaoyu",
+   "t3_row": 302,
+   "t3_command": "RK",
+   "startup": 0.133,
+   "active": 0.017,
+   "recovery": 0.633,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:302",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r303": {
+   "name": "LILI 4_r303 (T3 xiaoyu r303)",
+   "input": "4_r303",
+   "t3_source": "xiaoyu",
+   "t3_row": 303,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.583,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:303",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r304": {
+   "name": "LILI 4_r304 (T3 xiaoyu r304)",
+   "input": "4_r304",
+   "t3_source": "xiaoyu",
+   "t3_row": 304,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.583,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:304",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r305": {
+   "name": "LILI 4_r305 (T3 xiaoyu r305)",
+   "input": "4_r305",
+   "t3_source": "xiaoyu",
+   "t3_row": 305,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.583,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:305",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r306": {
+   "name": "LILI 4_r306 (T3 xiaoyu r306)",
+   "input": "4_r306",
+   "t3_source": "xiaoyu",
+   "t3_row": 306,
+   "t3_command": "RK",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:306",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r307": {
+   "name": "LILI 4_r307 (T3 xiaoyu r307)",
+   "input": "4_r307",
+   "t3_source": "xiaoyu",
+   "t3_row": 307,
+   "t3_command": "RK",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:307",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r308": {
+   "name": "LILI 4_r308 (T3 xiaoyu r308)",
+   "input": "4_r308",
+   "t3_source": "xiaoyu",
+   "t3_row": 308,
+   "t3_command": "RK",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:308",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "b_r309": {
+   "name": "LILI b_r309 (T3 xiaoyu r309)",
+   "input": "b_r309",
+   "t3_source": "xiaoyu",
+   "t3_row": 309,
+   "t3_command": "4/6+RK",
+   "startup": 0.4,
+   "active": 0.033,
+   "recovery": 0.65,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:309",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "strike"
+  },
+  "1+2": {
+   "name": "LILI 1+2 (T3 xiaoyu r314)",
+   "input": "1+2",
+   "t3_source": "xiaoyu",
+   "t3_row": 314,
+   "t3_command": "LP+RP",
+   "startup": 0.433,
+   "active": 0.017,
+   "recovery": 0.65,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:314",
+   "input_slots": [
+    "1+2"
+   ],
+   "move_class": "strike"
+  },
+  "1+2_r315": {
+   "name": "LILI 1+2_r315 (T3 xiaoyu r315)",
+   "input": "1+2_r315",
+   "t3_source": "xiaoyu",
+   "t3_row": 315,
+   "t3_command": "LP+RP",
+   "startup": 0.383,
+   "active": 0.017,
+   "recovery": 0.65,
+   "damage": 9,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:315",
+   "input_slots": [
+    "1+2"
+   ],
+   "move_class": "strike"
+  },
+  "1+2_r316": {
+   "name": "LILI 1+2_r316 (T3 xiaoyu r316)",
+   "input": "1+2_r316",
+   "t3_source": "xiaoyu",
+   "t3_row": 316,
+   "t3_command": "LP+RP",
+   "startup": 0.35,
+   "active": 0.017,
+   "recovery": 0.65,
+   "damage": 8,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:316",
+   "input_slots": [
+    "1+2"
+   ],
+   "move_class": "strike"
+  },
+  "1+2_r320": {
+   "name": "LILI 1+2_r320 (T3 xiaoyu r320)",
+   "input": "1+2_r320",
+   "t3_source": "xiaoyu",
+   "t3_row": 320,
+   "t3_command": "LP+RP",
+   "startup": 0.317,
+   "active": 0.05,
+   "recovery": 0.683,
+   "damage": 16,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:320",
+   "input_slots": [
+    "1+2"
+   ],
+   "move_class": "strike"
+  },
+  "1+2_c57_r321": {
+   "name": "LILI 1+2_c57_r321 (T3 xiaoyu r321)",
+   "input": "1+2_c57_r321",
+   "t3_source": "xiaoyu",
+   "t3_row": 321,
+   "t3_command": "LP+RP",
+   "startup": 0.317,
+   "active": 0.05,
+   "recovery": 0.683,
+   "damage": 16,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:321",
+   "input_slots": [
+    "1+2"
+   ],
+   "move_class": "strike",
+   "t3_condition": 57
+  },
+  "3_r322": {
+   "name": "LILI 3_r322 (T3 xiaoyu r322)",
+   "input": "3_r322",
+   "t3_source": "xiaoyu",
+   "t3_row": 322,
+   "t3_command": "LK",
+   "startup": 0.383,
+   "active": 0.05,
+   "recovery": 0.85,
+   "damage": 9,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:322",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "f+3+4": {
+   "name": "LILI f+3+4 (T3 xiaoyu r335)",
+   "input": "f+3+4",
+   "t3_source": "xiaoyu",
+   "t3_row": 335,
+   "t3_command": "6+LK+RK",
+   "startup": 0.617,
+   "active": 0.233,
+   "recovery": 0.55,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:335",
+   "input_slots": [
+    "f+3+4"
+   ],
+   "move_class": "strike"
+  },
+  "1_c18_r336": {
+   "name": "LILI 1_c18_r336 (T3 xiaoyu r336)",
+   "input": "1_c18_r336",
+   "t3_source": "xiaoyu",
+   "t3_row": 336,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 1.667,
+   "damage": 18,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:336",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 18
+  },
+  "1_c19_r338": {
+   "name": "LILI 1_c19_r338 (T3 xiaoyu r338)",
+   "input": "1_c19_r338",
+   "t3_source": "xiaoyu",
+   "t3_row": 338,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 1.667,
+   "damage": 18,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:338",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 19
+  },
+  "2_r359": {
+   "name": "LILI 2_r359 (T3 xiaoyu r359)",
+   "input": "2_r359",
+   "t3_source": "xiaoyu",
+   "t3_row": 359,
+   "t3_command": "RP",
+   "startup": 0.8,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 12,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:359",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "3_r372": {
+   "name": "LILI 3_r372 (T3 xiaoyu r372)",
+   "input": "3_r372",
+   "t3_source": "xiaoyu",
+   "t3_row": 372,
+   "t3_command": "LK",
+   "startup": 0.367,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 4,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:372",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "4_r373": {
+   "name": "LILI 4_r373 (T3 xiaoyu r373)",
+   "input": "4_r373",
+   "t3_source": "xiaoyu",
+   "t3_row": 373,
+   "t3_command": "RK",
+   "startup": 0.367,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 7,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:373",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "3_c36_r374": {
+   "name": "LILI 3_c36_r374 (T3 xiaoyu r374)",
+   "input": "3_c36_r374",
+   "t3_source": "xiaoyu",
+   "t3_row": 374,
+   "t3_command": "LK",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.15,
+   "damage": 4,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:374",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "d+4_c36_r375": {
+   "name": "LILI d+4_c36_r375 (T3 xiaoyu r375)",
+   "input": "d+4_c36_r375",
+   "t3_source": "xiaoyu",
+   "t3_row": 375,
+   "t3_command": "2+RK",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.217,
+   "damage": 6,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:375",
+   "input_slots": [
+    "d+4"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "1_c36_r382": {
+   "name": "LILI 1_c36_r382 (T3 xiaoyu r382)",
+   "input": "1_c36_r382",
+   "t3_source": "xiaoyu",
+   "t3_row": 382,
+   "t3_command": "any-button",
+   "startup": 0.367,
+   "active": 0.017,
+   "recovery": 0.667,
+   "damage": 5,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:382",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "1_c36_r383": {
+   "name": "LILI 1_c36_r383 (T3 xiaoyu r383)",
+   "input": "1_c36_r383",
+   "t3_source": "xiaoyu",
+   "t3_row": 383,
+   "t3_command": "any-button",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 8,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:383",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "1_c36_r386": {
+   "name": "LILI 1_c36_r386 (T3 xiaoyu r386)",
+   "input": "1_c36_r386",
+   "t3_source": "xiaoyu",
+   "t3_row": 386,
+   "t3_command": "any-button",
+   "startup": 0.233,
+   "active": 0.017,
+   "recovery": 0.667,
+   "damage": 4,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:386",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "1_c36_r387": {
+   "name": "LILI 1_c36_r387 (T3 xiaoyu r387)",
+   "input": "1_c36_r387",
+   "t3_source": "xiaoyu",
+   "t3_row": 387,
+   "t3_command": "any-button",
+   "startup": 0.183,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 6,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:387",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "1_c2_r570": {
+   "name": "LILI 1_c2_r570 (T3 xiaoyu r570)",
+   "input": "1_c2_r570",
+   "t3_source": "xiaoyu",
+   "t3_row": 570,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 2.267,
+   "damage": 18,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:570",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 2
+  },
+  "1_c4_r572": {
+   "name": "LILI 1_c4_r572 (T3 xiaoyu r572)",
+   "input": "1_c4_r572",
+   "t3_source": "xiaoyu",
+   "t3_row": 572,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 2.0,
+   "damage": 26,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:572",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 4
+  },
+  "1_c5_r574": {
+   "name": "LILI 1_c5_r574 (T3 xiaoyu r574)",
+   "input": "1_c5_r574",
+   "t3_source": "xiaoyu",
+   "t3_row": 574,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 1.8,
+   "damage": 22,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:574",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 5
+  },
+  "1_c3_r576": {
+   "name": "LILI 1_c3_r576 (T3 xiaoyu r576)",
+   "input": "1_c3_r576",
+   "t3_source": "xiaoyu",
+   "t3_row": 576,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 2.033,
+   "damage": 29,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:576",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 3
+  },
+  "1_c2_r578": {
+   "name": "LILI 1_c2_r578 (T3 xiaoyu r578)",
+   "input": "1_c2_r578",
+   "t3_source": "xiaoyu",
+   "t3_row": 578,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 2.05,
+   "damage": 21,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:578",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 2
+  },
+  "1_c2_r580": {
+   "name": "LILI 1_c2_r580 (T3 xiaoyu r580)",
+   "input": "1_c2_r580",
+   "t3_source": "xiaoyu",
+   "t3_row": 580,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 1.333,
+   "damage": 2,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:580",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 2
+  },
   "b,b,u/b": {
    "name": "LILI Back towards wall... b,b,u/b",
    "input": "b,b,u/b",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_1",
    "t7_command": "Back towards wall... b, b, u/b",
    "t7_hit_level": "mid",
@@ -258,7 +2345,7 @@
   "1,2": {
    "name": "Left Right Combo",
    "input": "1,2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_3",
    "t7_command": "1, 2",
    "t7_hit_level": "high, high",
@@ -293,7 +2380,7 @@
   "(1),2": {
    "name": "Left Right Back Strike (chain)",
    "input": "(1),2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_4",
    "t7_command": "(1), 2",
    "t7_hit_level": "high",
@@ -321,7 +2408,7 @@
   "1,2,3": {
    "name": "Left Right Back Strike",
    "input": "1,2,3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_5",
    "t7_command": "1, 2, 3",
    "t7_hit_level": "high, high, low",
@@ -358,7 +2445,7 @@
   "(1),2,3": {
    "name": "LILI (1),2,3",
    "input": "(1),2,3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_6",
    "t7_command": "(1), 2, 3",
    "t7_hit_level": "high, low",
@@ -394,7 +2481,7 @@
   "(1),(2),3": {
    "name": "LILI (1),(2),3",
    "input": "(1),(2),3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_7",
    "t7_command": "(1), (2), 3",
    "t7_hit_level": "low",
@@ -423,7 +2510,7 @@
   "1,2,4": {
    "name": "Left Right Piercing Thorn",
    "input": "1,2,4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_8",
    "t7_command": "1, 2, 4",
    "t7_hit_level": "high, high, mid",
@@ -460,7 +2547,7 @@
   "(1),2,4": {
    "name": "LILI (1),2,4",
    "input": "(1),2,4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_9",
    "t7_command": "(1), 2, 4",
    "t7_hit_level": "high, mid",
@@ -496,7 +2583,7 @@
   "(1),(2),4": {
    "name": "LILI (1),(2),4",
    "input": "(1),(2),4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_10",
    "t7_command": "(1), (2), 4",
    "t7_hit_level": "mid",
@@ -522,10 +2609,10 @@
    "move_class": "string",
    "note": "T7 [mid] on block -9 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
   },
-  "1+2": {
+  "1+2_t7": {
    "name": "Broken Heart",
    "input": "1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_11",
    "t7_command": "1+2",
    "t7_hit_level": "mid",
@@ -547,12 +2634,13 @@
     "1+2"
    ],
    "move_class": "strike",
-   "note": "T7 [mid] on block -12 / on hit KND / CH KND"
+   "note": "T7 [mid] on block -12 / on hit KND / CH KND",
+   "t7_input": "1+2"
   },
   "2,3": {
    "name": "Sunrise Sunset",
    "input": "2,3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_13",
    "t7_command": "2, 3",
    "t7_hit_level": "high, low",
@@ -587,7 +2675,7 @@
   "(2),3": {
    "name": "LILI (2),3",
    "input": "(2),3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_14",
    "t7_command": "(2), 3",
    "t7_hit_level": "low",
@@ -615,7 +2703,7 @@
   "2,4": {
    "name": "Bed Time",
    "input": "2,4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_15",
    "t7_command": "2, 4",
    "t7_hit_level": "high, high",
@@ -650,7 +2738,7 @@
   "(2),4": {
    "name": "LILI (2),4",
    "input": "(2),4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_16",
    "t7_command": "(2), 4",
    "t7_hit_level": "high",
@@ -678,7 +2766,7 @@
   "3,1": {
    "name": "Peacock Waltz",
    "input": "3,1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_17",
    "t7_command": "3, 1",
    "t7_hit_level": "mid, mid",
@@ -713,7 +2801,7 @@
   "(3),1": {
    "name": "LILI (3),1",
    "input": "(3),1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_18",
    "t7_command": "(3), 1",
    "t7_hit_level": "mid",
@@ -741,7 +2829,7 @@
   "3,2": {
    "name": "Peacock Jive (chain)",
    "input": "3,2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_19",
    "t7_command": "3, 2",
    "t7_hit_level": "mid, high",
@@ -776,7 +2864,7 @@
   "(3),2": {
    "name": "Peacock Jive (chain)",
    "input": "(3),2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_20",
    "t7_command": "(3), 2",
    "t7_hit_level": "high",
@@ -804,7 +2892,7 @@
   "3,2,3": {
    "name": "Peacock Jive",
    "input": "3,2,3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_21",
    "t7_command": "3, 2, 3",
    "t7_hit_level": "mid, high, high",
@@ -841,7 +2929,7 @@
   "(3),2,3": {
    "name": "LILI (3),2,3",
    "input": "(3),2,3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_22",
    "t7_command": "(3), 2, 3",
    "t7_hit_level": "high, high",
@@ -877,7 +2965,7 @@
   "(3),(2),3": {
    "name": "LILI (3),(2),3",
    "input": "(3),(2),3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_23",
    "t7_command": "(3), (2), 3",
    "t7_hit_level": "high",
@@ -906,7 +2994,7 @@
   "4,1": {
    "name": "10 Hit Combo 3 (chain)",
    "input": "4,1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_25",
    "t7_command": "4, 1",
    "t7_hit_level": "high, high",
@@ -941,7 +3029,7 @@
   "(4),1": {
    "name": "10 Hit Combo 3 (chain)",
    "input": "(4),1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_26",
    "t7_command": "(4), 1",
    "t7_hit_level": "high",
@@ -969,7 +3057,7 @@
   "4,1,3": {
    "name": "10 Hit Combo 3 (chain)",
    "input": "4,1,3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_27",
    "t7_command": "4, 1, 3",
    "t7_hit_level": "high, high, mid",
@@ -1006,7 +3094,7 @@
   "(4),1,3": {
    "name": "10 Hit Combo 3 (chain)",
    "input": "(4),1,3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_28",
    "t7_command": "(4), 1, 3",
    "t7_hit_level": "high, mid",
@@ -1042,7 +3130,7 @@
   "(4),(1),3": {
    "name": "10 Hit Combo 3 (chain)",
    "input": "(4),(1),3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_29",
    "t7_command": "(4), (1), 3",
    "t7_hit_level": "mid",
@@ -1071,7 +3159,7 @@
   "u+3": {
    "name": "Moonsault",
    "input": "u+3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_30",
    "t7_command": "u+3",
    "t7_hit_level": "mid",
@@ -1098,7 +3186,7 @@
   "u+3,3": {
    "name": "Moonsault Narcissus",
    "input": "u+3,3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_31",
    "t7_command": "u+3, 3",
    "t7_hit_level": "mid, mid",
@@ -1133,7 +3221,7 @@
   "(u+3),3": {
    "name": "Moonsault Alstroemeria (chain)",
    "input": "(u+3),3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_32",
    "t7_command": "(u+3), 3",
    "t7_hit_level": "mid",
@@ -1161,7 +3249,7 @@
   "u+3,3,3+4": {
    "name": "Moonsault Alstroemeria",
    "input": "u+3,3,3+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_33",
    "t7_command": "u+3, 3, 3+4",
    "t7_hit_level": "mid, mid, mid, mid",
@@ -1199,7 +3287,7 @@
   "(u+3),3,3+4": {
    "name": "LILI (u+3),3,3+4",
    "input": "(u+3),3,3+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_34",
    "t7_command": "(u+3), 3, 3+4",
    "t7_hit_level": "mid, mid, mid",
@@ -1236,7 +3324,7 @@
   "u+3+4 (close)": {
    "name": "Divine Step",
    "input": "u+3+4 (close)",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_35",
    "t7_command": "u+3+4 (close)",
    "t7_hit_level": "mid",
@@ -1263,7 +3351,7 @@
   "u+3+4 (far)": {
    "name": "LILI u+3+4 (far)",
    "input": "u+3+4 (far)",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_36",
    "t7_command": "u+3+4 (far)",
    "t7_hit_level": "mid",
@@ -1290,7 +3378,7 @@
   "u/f+2": {
    "name": "Stinging Nettle",
    "input": "u/f+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_37",
    "t7_command": "u/f+2",
    "t7_hit_level": "mid",
@@ -1317,7 +3405,7 @@
   "u/f+3": {
    "name": "Capricorn Kick",
    "input": "u/f+3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_38",
    "t7_command": "u/f+3",
    "t7_hit_level": "mid",
@@ -1344,7 +3432,7 @@
   "u/f+4": {
    "name": "LILI u/f+4",
    "input": "u/f+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_39",
    "t7_command": "u/f+4",
    "t7_hit_level": "mid",
@@ -1371,7 +3459,7 @@
   "u/f+4,3": {
    "name": "Sunflower Lance",
    "input": "u/f+4,3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_40",
    "t7_command": "u/f+4, 3",
    "t7_hit_level": "mid, mid",
@@ -1406,7 +3494,7 @@
   "(u/f+4),3": {
    "name": "LILI (u/f+4),3",
    "input": "(u/f+4),3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_41",
    "t7_command": "(u/f+4), 3",
    "t7_hit_level": "mid",
@@ -1434,7 +3522,7 @@
   "u/f+3+4": {
    "name": "LILI u/f+3+4",
    "input": "u/f+3+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_42",
    "t7_command": "u/f+3+4",
    "t7_hit_level": "mid",
@@ -1461,7 +3549,7 @@
   "u/f+3+4,3": {
    "name": "Angel Knee to Front Kick",
    "input": "u/f+3+4,3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_43",
    "t7_command": "u/f+3+4, 3",
    "t7_hit_level": "mid, mid",
@@ -1496,7 +3584,7 @@
   "(u/f+3+4),3": {
    "name": "LILI (u/f+3+4),3",
    "input": "(u/f+3+4),3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_44",
    "t7_command": "(u/f+3+4), 3",
    "t7_hit_level": "mid",
@@ -1524,7 +3612,7 @@
   "u/f+3+4,3+4": {
    "name": "Angel Knee Ascension",
    "input": "u/f+3+4,3+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_45",
    "t7_command": "u/f+3+4, 3+4",
    "t7_hit_level": "mid, high",
@@ -1559,7 +3647,7 @@
   "(u/f+3+4),3+4": {
    "name": "LILI (u/f+3+4),3+4",
    "input": "(u/f+3+4),3+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_46",
    "t7_command": "(u/f+3+4), 3+4",
    "t7_hit_level": "high",
@@ -1587,7 +3675,7 @@
   "f+2": {
    "name": "LILI f+2",
    "input": "f+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_47",
    "t7_command": "f+2",
    "t7_hit_level": "high",
@@ -1614,7 +3702,7 @@
   "f+2,3": {
    "name": "Mars Sword",
    "input": "f+2,3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_48",
    "t7_command": "f+2, 3",
    "t7_hit_level": "high, mid",
@@ -1649,7 +3737,7 @@
   "(f+2),3": {
    "name": "LILI (f+2),3",
    "input": "(f+2),3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_49",
    "t7_command": "(f+2), 3",
    "t7_hit_level": "mid",
@@ -1677,7 +3765,7 @@
   "f+3": {
    "name": "Circle Knee",
    "input": "f+3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_50",
    "t7_command": "f+3",
    "t7_hit_level": "mid",
@@ -1702,9 +3790,9 @@
    "note": "T7 [mid] on block -6 / on hit KND / CH KND"
   },
   "f+4": {
-   "name": "B\u00e9lier Attaque",
+   "name": "Bélier Attaque",
    "input": "f+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_51",
    "t7_command": "f+4",
    "t7_hit_level": "mid",
@@ -1731,7 +3819,7 @@
   "f+1+2": {
    "name": "Kitty Claws",
    "input": "f+1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_52",
    "t7_command": "f+1+2",
    "t7_hit_level": "mid",
@@ -1755,10 +3843,10 @@
    "move_class": "strike",
    "note": "T7 [mid] on block -6 / on hit +3 (OC) / CH KND"
   },
-  "f+3+4": {
+  "f+3+4_t7": {
    "name": "Sundial",
    "input": "f+3+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_53",
    "t7_command": "f+3+4",
    "t7_hit_level": "mid, mid",
@@ -1780,12 +3868,13 @@
     "f+3+4"
    ],
    "move_class": "strike",
-   "note": "T7 [mid, mid] on block -4 / on hit KND / CH KND"
+   "note": "T7 [mid, mid] on block -4 / on hit KND / CH KND",
+   "t7_input": "f+3+4"
   },
   "f+3+4 (second hit only)": {
    "name": "LILI f+3+4 (second hit only)",
    "input": "f+3+4 (second hit only)",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_54",
    "t7_command": "f+3+4 (second hit only)",
    "t7_hit_level": "mid",
@@ -1812,7 +3901,7 @@
   "f+3+4,3": {
    "name": "Delayed Sundial",
    "input": "f+3+4,3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_55",
    "t7_command": "f+3+4, 3",
    "t7_hit_level": "mid, mid",
@@ -1847,7 +3936,7 @@
   "(f+3+4),3": {
    "name": "Garland Kick Combo (chain)",
    "input": "(f+3+4),3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_56",
    "t7_command": "(f+3+4), 3",
    "t7_hit_level": "mid",
@@ -1875,7 +3964,7 @@
   "f+3+4,3,4": {
    "name": "Garland Kick Combo",
    "input": "f+3+4,3,4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_57",
    "t7_command": "f+3+4, 3, 4",
    "t7_hit_level": "mid, mid, mid",
@@ -1912,7 +4001,7 @@
   "(f+3+4),3,4": {
    "name": "LILI (f+3+4),3,4",
    "input": "(f+3+4),3,4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_58",
    "t7_command": "(f+3+4), 3, 4",
    "t7_hit_level": "mid, mid",
@@ -1948,7 +4037,7 @@
   "(f+3+4),(3),4": {
    "name": "LILI (f+3+4),(3),4",
    "input": "(f+3+4),(3),4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_59",
    "t7_command": "(f+3+4), (3), 4",
    "t7_hit_level": "mid",
@@ -1977,7 +4066,7 @@
   "f,F+3": {
    "name": "Alstroemeria (chain)",
    "input": "f,F+3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_60",
    "t7_command": "f, F+3",
    "t7_hit_level": "mid",
@@ -2005,7 +4094,7 @@
   "f,F+3,3+4": {
    "name": "Alstroemeria",
    "input": "f,F+3,3+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_61",
    "t7_command": "f, F+3, 3+4",
    "t7_hit_level": "mid, mid",
@@ -2042,7 +4131,7 @@
   "f,F+4": {
    "name": "Root of Evil",
    "input": "f,F+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_62",
    "t7_command": "f, F+4",
    "t7_hit_level": "low",
@@ -2070,7 +4159,7 @@
   "f,F+1+2": {
    "name": "Lashing Iris",
    "input": "f,F+1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_63",
    "t7_command": "f, F+1+2",
    "t7_hit_level": "mid",
@@ -2098,7 +4187,7 @@
   "f,F+1+2* (2 spins)": {
    "name": "LILI f,F+1+2* (2 spins)",
    "input": "f,F+1+2* (2 spins)",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_64",
    "t7_command": "f, F+1+2* (2 spins)",
    "t7_hit_level": "mid",
@@ -2126,7 +4215,7 @@
   "f,F+3+4": {
    "name": "Piercing Thorn",
    "input": "f,F+3+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_65",
    "t7_command": "f, F+3+4",
    "t7_hit_level": "mid",
@@ -2154,7 +4243,7 @@
   "f,f,f+3": {
    "name": "Sabre Slash",
    "input": "f,f,f+3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_66",
    "t7_command": "f, f, f+3 (or WR 3)",
    "t7_hit_level": "mid",
@@ -2183,7 +4272,7 @@
   "d/f+3": {
    "name": "Submissive Heel",
    "input": "d/f+3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_68",
    "t7_command": "d/f+3",
    "t7_hit_level": "mid",
@@ -2210,7 +4299,7 @@
   "d/f+4": {
    "name": "Dominating Knee",
    "input": "d/f+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_69",
    "t7_command": "d/f+4",
    "t7_hit_level": "mid",
@@ -2237,7 +4326,7 @@
   "d/f+4,4": {
    "name": "Dominating Heel",
    "input": "d/f+4,4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_70",
    "t7_command": "d/f+4, 4",
    "t7_hit_level": "mid, low",
@@ -2272,7 +4361,7 @@
   "(d/f+4),4": {
    "name": "LILI (d/f+4),4",
    "input": "(d/f+4),4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_71",
    "t7_command": "(d/f+4), 4",
    "t7_hit_level": "low",
@@ -2300,7 +4389,7 @@
   "d+1": {
    "name": "LILI d+1",
    "input": "d+1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_72",
    "t7_command": "d+1",
    "t7_hit_level": "low",
@@ -2327,7 +4416,7 @@
   "d+1,D": {
    "name": "LILI d+1,D",
    "input": "d+1,D",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_73",
    "t7_command": "d+1, D",
    "t7_hit_level": "low",
@@ -2355,7 +4444,7 @@
   "d+1,2": {
    "name": "Heavy Languish (chain)",
    "input": "d+1,2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_74",
    "t7_command": "d+1, 2",
    "t7_hit_level": "low, high",
@@ -2390,7 +4479,7 @@
   "(d+1),2": {
    "name": "Heavy Languish (chain)",
    "input": "(d+1),2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_75",
    "t7_command": "(d+1), 2",
    "t7_hit_level": "high",
@@ -2418,7 +4507,7 @@
   "d+1,2,4": {
    "name": "Heavy Languish",
    "input": "d+1,2,4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_76",
    "t7_command": "d+1, 2, 4",
    "t7_hit_level": "low, high, mid",
@@ -2455,7 +4544,7 @@
   "(d+1),2,4": {
    "name": "LILI (d+1),2,4",
    "input": "(d+1),2,4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_77",
    "t7_command": "(d+1), 2, 4",
    "t7_hit_level": "high, mid",
@@ -2491,7 +4580,7 @@
   "(d+1),(2),4": {
    "name": "LILI (d+1),(2),4",
    "input": "(d+1),(2),4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_78",
    "t7_command": "(d+1), (2), 4",
    "t7_hit_level": "mid",
@@ -2520,7 +4609,7 @@
   "d+2": {
    "name": "LILI d+2",
    "input": "d+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_79",
    "t7_command": "d+2",
    "t7_hit_level": "mid",
@@ -2547,7 +4636,7 @@
   "d+2,2": {
    "name": "Bloody Masquerade Piton (chain)",
    "input": "d+2,2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_80",
    "t7_command": "d+2, 2",
    "t7_hit_level": "mid, high",
@@ -2582,7 +4671,7 @@
   "(d+2),2": {
    "name": "Bloody Masquerade Piton (chain)",
    "input": "(d+2),2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_81",
    "t7_command": "(d+2), 2",
    "t7_hit_level": "high",
@@ -2610,7 +4699,7 @@
   "d+2,2,3": {
    "name": "Bloody Masquerade Piton",
    "input": "d+2,2,3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_82",
    "t7_command": "d+2, 2, 3",
    "t7_hit_level": "mid, high, high",
@@ -2647,7 +4736,7 @@
   "(d+2),2,3": {
    "name": "LILI (d+2),2,3",
    "input": "(d+2),2,3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_83",
    "t7_command": "(d+2), 2, 3",
    "t7_hit_level": "high, high",
@@ -2683,7 +4772,7 @@
   "(d+2),(2),3": {
    "name": "LILI (d+2),(2),3",
    "input": "(d+2),(2),3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_84",
    "t7_command": "(d+2), (2), 3",
    "t7_hit_level": "high",
@@ -2712,7 +4801,7 @@
   "d+2,2,4": {
    "name": "Bloody Masquerade Lance",
    "input": "d+2,2,4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_85",
    "t7_command": "d+2, 2, 4",
    "t7_hit_level": "mid, high, mid",
@@ -2749,7 +4838,7 @@
   "(d+2),2,4": {
    "name": "LILI (d+2),2,4",
    "input": "(d+2),2,4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_86",
    "t7_command": "(d+2), 2, 4",
    "t7_hit_level": "high, mid",
@@ -2785,7 +4874,7 @@
   "(d+2),(2),4": {
    "name": "LILI (d+2),(2),4",
    "input": "(d+2),(2),4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_87",
    "t7_command": "(d+2), (2), 4",
    "t7_hit_level": "mid",
@@ -2814,7 +4903,7 @@
   "d+3": {
    "name": "Thorn Whip",
    "input": "d+3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_88",
    "t7_command": "d+3",
    "t7_hit_level": "low",
@@ -2841,7 +4930,7 @@
   "d+3+4": {
    "name": "Matterhorn Ascension",
    "input": "d+3+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_89",
    "t7_command": "d+3+4",
    "t7_hit_level": "mid",
@@ -2868,7 +4957,7 @@
   "d/b+3": {
    "name": "Twist of Fate",
    "input": "d/b+3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_90",
    "t7_command": "d/b+3",
    "t7_hit_level": "high",
@@ -2892,10 +4981,10 @@
    "move_class": "strike",
    "note": "T7 [high] on block -9 / on hit KND / CH S!"
   },
-  "d/b+4": {
+  "d/b+4_t7": {
    "name": "Edelweiss",
    "input": "d/b+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_91",
    "t7_command": "d/b+4",
    "t7_hit_level": "low",
@@ -2917,12 +5006,13 @@
     "d/b+4"
    ],
    "move_class": "strike",
-   "note": "T7 [low] on block -24 / on hit STUN / CH STUN"
+   "note": "T7 [low] on block -24 / on hit STUN / CH STUN",
+   "t7_input": "d/b+4"
   },
   "b+1": {
-   "name": "\u00c9lys\u00e9e Le Bras Allong\u00e9",
+   "name": "Élysée Le Bras Allongé",
    "input": "b+1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_92",
    "t7_command": "b+1",
    "t7_hit_level": "mid",
@@ -2947,9 +5037,9 @@
    "note": "T7 [mid] on block -6 / on hit +2 / CH +2"
   },
   "b+1,4": {
-   "name": "\u00c9lys\u00e9e Le Bras Allong\u00e9 Caracole",
+   "name": "Élysée Le Bras Allongé Caracole",
    "input": "b+1,4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_93",
    "t7_command": "b+1, 4",
    "t7_hit_level": "mid, mid",
@@ -2984,7 +5074,7 @@
   "(b+1),4": {
    "name": "LILI (b+1),4",
    "input": "(b+1),4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_94",
    "t7_command": "(b+1), 4",
    "t7_hit_level": "mid",
@@ -3012,7 +5102,7 @@
   "b+2": {
    "name": "Heliotrope",
    "input": "b+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_95",
    "t7_command": "b+2",
    "t7_hit_level": "high",
@@ -3039,7 +5129,7 @@
   "b+2,1": {
    "name": "Heliotrope Corsage (chain)",
    "input": "b+2,1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_96",
    "t7_command": "b+2, 1",
    "t7_hit_level": "high, mid",
@@ -3074,7 +5164,7 @@
   "(b+2),1": {
    "name": "Heliotrope Corsage (chain)",
    "input": "(b+2),1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_97",
    "t7_command": "(b+2), 1",
    "t7_hit_level": "mid",
@@ -3102,7 +5192,7 @@
   "b+2,1,1+2": {
    "name": "Heliotrope Corsage",
    "input": "b+2,1,1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_98",
    "t7_command": "b+2, 1, 1+2",
    "t7_hit_level": "high, mid, mid",
@@ -3139,7 +5229,7 @@
   "(b+2),1,1+2": {
    "name": "LILI (b+2),1,1+2",
    "input": "(b+2),1,1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_99",
    "t7_command": "(b+2), 1, 1+2",
    "t7_hit_level": "mid, mid",
@@ -3175,7 +5265,7 @@
   "(b+2),(1),1+2": {
    "name": "LILI (b+2),(1),1+2",
    "input": "(b+2),(1),1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_100",
    "t7_command": "(b+2), (1), 1+2",
    "t7_hit_level": "mid",
@@ -3204,7 +5294,7 @@
   "b+1+2": {
    "name": "Dendrobium",
    "input": "b+1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_101",
    "t7_command": "b+1+2",
    "t7_hit_level": "mid",
@@ -3231,7 +5321,7 @@
   "u/b+1": {
    "name": "Shattered Crown",
    "input": "u/b+1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_102",
    "t7_command": "u/b+1",
    "t7_hit_level": "mid",
@@ -3258,7 +5348,7 @@
   "FC 1": {
    "name": "LILI FC 1",
    "input": "FC 1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_103",
    "t7_command": "FC 1",
    "t7_hit_level": "s. mid",
@@ -3285,7 +5375,7 @@
   "FC 2": {
    "name": "LILI FC 2",
    "input": "FC 2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_104",
    "t7_command": "FC 2",
    "t7_hit_level": "s. mid",
@@ -3312,7 +5402,7 @@
   "FC 3": {
    "name": "LILI FC 3",
    "input": "FC 3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_105",
    "t7_command": "FC 3",
    "t7_hit_level": "low",
@@ -3339,7 +5429,7 @@
   "FC 4": {
    "name": "LILI FC 4",
    "input": "FC 4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_106",
    "t7_command": "FC 4",
    "t7_hit_level": "low",
@@ -3366,7 +5456,7 @@
   "FC d/f+1": {
    "name": "Slashing Vine",
    "input": "FC d/f+1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_107",
    "t7_command": "FC d/f+1",
    "t7_hit_level": "mid",
@@ -3393,7 +5483,7 @@
   "FC d/f+3": {
    "name": "Horizon Slide",
    "input": "FC d/f+3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_108",
    "t7_command": "FC d/f+3 (or d, D/F+3)",
    "t7_hit_level": "low",
@@ -3420,7 +5510,7 @@
   "SS 3": {
    "name": "Stunning Toe Kick",
    "input": "SS 3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_109",
    "t7_command": "SS 3",
    "t7_hit_level": "mid",
@@ -3447,7 +5537,7 @@
   "SS 1+2": {
    "name": "Minuet",
    "input": "SS 1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_110",
    "t7_command": "SS 1+2",
    "t7_hit_level": "mid",
@@ -3474,7 +5564,7 @@
   "WR f,f,F (Full Screen)": {
    "name": "LILI WR f,f,F (Full Screen)",
    "input": "WR f,f,F (Full Screen)",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_111",
    "t7_command": "WR f, f, F (Full Screen)",
    "t7_hit_level": "mid",
@@ -3503,7 +5593,7 @@
   "WR f,f,F (Full Screen) (On Grounded Opponent)": {
    "name": "LILI WR f,f,F (Full Screen) (On Grounded Opponent)",
    "input": "WR f,f,F (Full Screen) (On Grounded Opponent)",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_112",
    "t7_command": "WR f, f, F (Full Screen) (On Grounded Opponent)",
    "t7_hit_level": "low",
@@ -3532,7 +5622,7 @@
   "WR 4": {
    "name": "LILI WR 4",
    "input": "WR 4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_113",
    "t7_command": "WR 4",
    "t7_hit_level": "low",
@@ -3559,7 +5649,7 @@
   "WR 1+2": {
    "name": "LILI WR 1+2",
    "input": "WR 1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_114",
    "t7_command": "WR 1+2",
    "t7_hit_level": "mid",
@@ -3586,7 +5676,7 @@
   "WS 1": {
    "name": "LILI WS 1",
    "input": "WS 1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_115",
    "t7_command": "WS 1",
    "t7_hit_level": "mid",
@@ -3613,7 +5703,7 @@
   "WS 1,2": {
    "name": "Sullen Daisy (chain)",
    "input": "WS 1,2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_116",
    "t7_command": "WS 1, 2",
    "t7_hit_level": "mid, high",
@@ -3648,7 +5738,7 @@
   "WS (1),2": {
    "name": "Sullen Daisy (chain)",
    "input": "WS (1),2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_117",
    "t7_command": "WS (1), 2",
    "t7_hit_level": "high",
@@ -3676,7 +5766,7 @@
   "WS 1,2,4": {
    "name": "Sullen Daisy",
    "input": "WS 1,2,4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_118",
    "t7_command": "WS 1, 2, 4",
    "t7_hit_level": "mid, high, low",
@@ -3713,7 +5803,7 @@
   "WS (1),2,4": {
    "name": "LILI WS (1),2,4",
    "input": "WS (1),2,4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_119",
    "t7_command": "WS (1), 2, 4",
    "t7_hit_level": "high, low",
@@ -3749,7 +5839,7 @@
   "WS (1),(2),4": {
    "name": "LILI WS (1),(2),4",
    "input": "WS (1),(2),4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_120",
    "t7_command": "WS (1), (2), 4",
    "t7_hit_level": "low",
@@ -3778,7 +5868,7 @@
   "WS 2": {
    "name": "Delicate Uprising",
    "input": "WS 2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_121",
    "t7_command": "WS 2",
    "t7_hit_level": "mid",
@@ -3805,7 +5895,7 @@
   "WS 3": {
    "name": "LILI WS 3",
    "input": "WS 3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_122",
    "t7_command": "WS 3",
    "t7_hit_level": "mid",
@@ -3832,7 +5922,7 @@
   "WS 3,4": {
    "name": "Honeysuckle",
    "input": "WS 3,4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_123",
    "t7_command": "WS 3, 4",
    "t7_hit_level": "mid, mid",
@@ -3867,7 +5957,7 @@
   "WS (3),4": {
    "name": "LILI WS (3),4",
    "input": "WS (3),4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_124",
    "t7_command": "WS (3), 4",
    "t7_hit_level": "mid",
@@ -3895,7 +5985,7 @@
   "WS 4": {
    "name": "LILI WS 4",
    "input": "WS 4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_125",
    "t7_command": "WS 4",
    "t7_hit_level": "mid",
@@ -3922,7 +6012,7 @@
   "4,1,3,4,4,3,4,4,3+4": {
    "name": "10 Hit Combo 1",
    "input": "4,1,3,4,4,3,4,4,3+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_126",
    "t7_command": "4, 1, 3, 4, 4, 3, 4, 4, 3+4",
    "t7_hit_level": "-",
@@ -3957,7 +6047,7 @@
   "4,1,3,3+4,3,4,3,1,3+4,4": {
    "name": "10 Hit Combo 2",
    "input": "4,1,3,3+4,3,4,3,1,3+4,4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_127",
    "t7_command": "4, 1, 3, 3+4, 3, 4, 3, 1, 3+4, 4",
    "t7_hit_level": "-",
@@ -3993,7 +6083,7 @@
   "4,1,3,3+4": {
    "name": "10 Hit Combo 3",
    "input": "4,1,3,3+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_128",
    "t7_command": "4, 1, 3, 3+4",
    "t7_hit_level": "high, high, mid, mid, mid",
@@ -4033,7 +6123,7 @@
   "(4),1,3,3+4": {
    "name": "10 Hit Combo 2 (chain)",
    "input": "(4),1,3,3+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_129",
    "t7_command": "(4), 1, 3, 3+4",
    "t7_hit_level": "high, mid, mid, mid",
@@ -4072,7 +6162,7 @@
   "(4),(1),3,3+4": {
    "name": "10 Hit Combo 2 (chain)",
    "input": "(4),(1),3,3+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_130",
    "t7_command": "(4), (1), 3, 3+4",
    "t7_hit_level": "mid, mid, mid",
@@ -4110,7 +6200,7 @@
   "(4),(1),(3),3+4": {
    "name": "10 Hit Combo 2 (chain)",
    "input": "(4),(1),(3),3+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_131",
    "t7_command": "(4), (1), (3), 3+4",
    "t7_hit_level": "mid, mid",
@@ -4147,7 +6237,7 @@
   "(4),(1),(3),3+4 (second hit only)": {
    "name": "LILI (4),(1),(3),3+4 (second hit only)",
    "input": "(4),(1),(3),3+4 (second hit only)",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_132",
    "t7_command": "(4), (1), (3), 3+4 (second hit only)",
    "t7_hit_level": "mid",
@@ -4177,7 +6267,7 @@
   "Face Up,Feet Towards+3 or (After Rolling Forward)": {
    "name": "LILI Face Up,Feet Towards+3 or (After Rolling Forward)",
    "input": "Face Up,Feet Towards+3 or (After Rolling Forward)",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_133",
    "t7_command": "Face Up, Feet Towards+3 or (After Rolling Forward)",
    "t7_hit_level": "low",
@@ -4205,7 +6295,7 @@
   "Face Up,Feet Towards+4 or (After Rolling Forward)": {
    "name": "LILI Face Up,Feet Towards+4 or (After Rolling Forward)",
    "input": "Face Up,Feet Towards+4 or (After Rolling Forward)",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_134",
    "t7_command": "Face Up, Feet Towards+4 or (After Rolling Forward)",
    "t7_hit_level": "mid",
@@ -4233,7 +6323,7 @@
   "Face Up,Feet Towards,d+3": {
    "name": "LILI Face Up,Feet Towards,d+3",
    "input": "Face Up,Feet Towards,d+3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_135",
    "t7_command": "Face Up, Feet Towards, d+3 (or 4)",
    "t7_hit_level": "low",
@@ -4262,7 +6352,7 @@
   "Face Up,Feet Towards+3+4": {
    "name": "LILI Face Up,Feet Towards+3+4",
    "input": "Face Up,Feet Towards+3+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_136",
    "t7_command": "Face Up, Feet Towards+3+4",
    "t7_hit_level": "mid",
@@ -4290,7 +6380,7 @@
   "Face Up,Feet Towards,Roll Forward+1+2": {
    "name": "LILI Face Up,Feet Towards,Roll Forward+1+2",
    "input": "Face Up,Feet Towards,Roll Forward+1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_137",
    "t7_command": "Face Up, Feet Towards, Roll Forward+1+2",
    "t7_hit_level": "mid",
@@ -4319,7 +6409,7 @@
   "Face Down,Feet Away+3": {
    "name": "LILI Face Down,Feet Away+3",
    "input": "Face Down,Feet Away+3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_138",
    "t7_command": "Face Down, Feet Away+3",
    "t7_hit_level": "low",
@@ -4347,7 +6437,7 @@
   "Face Down,Feet Away+4 (close)": {
    "name": "LILI Face Down,Feet Away+4 (close)",
    "input": "Face Down,Feet Away+4 (close)",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_139",
    "t7_command": "Face Down, Feet Away+4 (close)",
    "t7_hit_level": "mid",
@@ -4375,7 +6465,7 @@
   "Face Down,Feet Away+4 (far)": {
    "name": "LILI Face Down,Feet Away+4 (far)",
    "input": "Face Down,Feet Away+4 (far)",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_140",
    "t7_command": "Face Down, Feet Away+4 (far)",
    "t7_hit_level": "mid",
@@ -4403,7 +6493,7 @@
   "(Upon Landing) f": {
    "name": "LILI (Upon Landing) f",
    "input": "(Upon Landing) f",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_141",
    "t7_command": "(Upon Landing) f",
    "t7_hit_level": "mid",
@@ -4430,7 +6520,7 @@
   "qcf": {
    "name": "Dew Glide",
    "input": "qcf",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_142",
    "t7_command": "qcf",
    "t7_hit_level": "-",
@@ -4457,7 +6547,7 @@
   "3,2,F": {
    "name": "LILI 3,2,F",
    "input": "3,2,F",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_143",
    "t7_command": "3, 2, F",
    "t7_hit_level": "mid, high",
@@ -4493,7 +6583,7 @@
   "(3),2,F": {
    "name": "LILI (3),2,F",
    "input": "(3),2,F",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_144",
    "t7_command": "(3), 2, F",
    "t7_hit_level": "high",
@@ -4522,7 +6612,7 @@
   "u+3,F": {
    "name": "Moonsault to Dew Glide",
    "input": "u+3,F",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_145",
    "t7_command": "u+3, F",
    "t7_hit_level": "mid",
@@ -4550,7 +6640,7 @@
   "u+3,3,F": {
    "name": "Moonsault Narcissus to Dew Glide",
    "input": "u+3,3,F",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_146",
    "t7_command": "u+3, 3, F",
    "t7_hit_level": "mid, mid",
@@ -4586,7 +6676,7 @@
   "f,F+3,F": {
    "name": "Narcissus to Dew Glide",
    "input": "f,F+3,F",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_147",
    "t7_command": "f, F+3, F",
    "t7_hit_level": "mid",
@@ -4615,7 +6705,7 @@
   "b+2,1,F": {
    "name": "LILI b+2,1,F",
    "input": "b+2,1,F",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_148",
    "t7_command": "b+2, 1, F",
    "t7_hit_level": "high, mid",
@@ -4649,9 +6739,9 @@
    }
   },
   "b+1,F": {
-   "name": "\u00c9lys\u00e9e Le Bras Allong\u00e9 to Dew Glide",
+   "name": "Élysée Le Bras Allongé to Dew Glide",
    "input": "b+1,F",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_149",
    "t7_command": "b+1, F",
    "t7_hit_level": "mid",
@@ -4679,7 +6769,7 @@
   "RAB F": {
    "name": "Fiesty Rabbit to Dew Glide",
    "input": "RAB F",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_150",
    "t7_command": "RAB F",
    "t7_hit_level": "-",
@@ -4706,7 +6796,7 @@
   "DEW 1": {
    "name": "LILI DEW 1",
    "input": "DEW 1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_151",
    "t7_command": "DEW 1",
    "t7_hit_level": "mid",
@@ -4733,7 +6823,7 @@
   "DEW 1,2": {
    "name": "Rose Pique",
    "input": "DEW 1,2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_152",
    "t7_command": "DEW 1, 2",
    "t7_hit_level": "mid, mid",
@@ -4768,7 +6858,7 @@
   "DEW (1),2": {
    "name": "LILI DEW (1),2",
    "input": "DEW (1),2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_153",
    "t7_command": "DEW (1), 2",
    "t7_hit_level": "mid",
@@ -4796,7 +6886,7 @@
   "DEW 2": {
    "name": "LILI DEW 2",
    "input": "DEW 2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_154",
    "t7_command": "DEW 2",
    "t7_hit_level": "mid",
@@ -4823,7 +6913,7 @@
   "DEW 2,1": {
    "name": "Nocturne",
    "input": "DEW 2,1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_155",
    "t7_command": "DEW 2, 1",
    "t7_hit_level": "mid, mid",
@@ -4858,7 +6948,7 @@
   "DEW (2),1": {
    "name": "LILI DEW (2),1",
    "input": "DEW (2),1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_156",
    "t7_command": "DEW (2), 1",
    "t7_hit_level": "mid",
@@ -4886,7 +6976,7 @@
   "DEW 3": {
    "name": "LILI DEW 3",
    "input": "DEW 3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_157",
    "t7_command": "DEW 3",
    "t7_hit_level": "mid",
@@ -4913,7 +7003,7 @@
   "DEW 3,4": {
    "name": "LILI DEW 3,4",
    "input": "DEW 3,4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_158",
    "t7_command": "DEW 3, 4",
    "t7_hit_level": "mid, mid",
@@ -4948,7 +7038,7 @@
   "DEW (3),4": {
    "name": "LILI DEW (3),4",
    "input": "DEW (3),4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_159",
    "t7_command": "DEW (3), 4",
    "t7_hit_level": "mid",
@@ -4976,7 +7066,7 @@
   "DEW 4": {
    "name": "LILI DEW 4",
    "input": "DEW 4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_160",
    "t7_command": "DEW 4",
    "t7_hit_level": "mid",
@@ -5003,7 +7093,7 @@
   "DEW 3+4": {
    "name": "Cloisonne",
    "input": "DEW 3+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_161",
    "t7_command": "DEW 3+4",
    "t7_hit_level": "high, high",
@@ -5030,7 +7120,7 @@
   "DEW 3+4 (second hit only)": {
    "name": "LILI DEW 3+4 (second hit only)",
    "input": "DEW 3+4 (second hit only)",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_162",
    "t7_command": "DEW 3+4 (second hit only)",
    "t7_hit_level": "high",
@@ -5057,7 +7147,7 @@
   "b+3": {
    "name": "Fiesty Rabbit (Left)",
    "input": "b+3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_163",
    "t7_command": "b+3 (or IMG b+3)",
    "t7_hit_level": "-",
@@ -5084,7 +7174,7 @@
   "b+4": {
    "name": "Fiesty Rabbit (Right)",
    "input": "b+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_164",
    "t7_command": "b+4 (or IMG b+4)",
    "t7_hit_level": "-",
@@ -5111,7 +7201,7 @@
   "RAB 3": {
    "name": "Rabbit's Foot",
    "input": "RAB 3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_165",
    "t7_command": "RAB 3",
    "t7_hit_level": "low",
@@ -5138,7 +7228,7 @@
   "RAB 4": {
    "name": "Rabbit Thorn",
    "input": "RAB 4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_166",
    "t7_command": "RAB 4",
    "t7_hit_level": "mid",
@@ -5165,7 +7255,7 @@
   "b+3+4": {
    "name": "Mirror Image",
    "input": "b+3+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_167",
    "t7_command": "b+3+4",
    "t7_hit_level": "-",
@@ -5192,7 +7282,7 @@
   "d/f+2,B": {
    "name": "LILI d/f+2,B",
    "input": "d/f+2,B",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_169",
    "t7_command": "d/f+2, B",
    "t7_hit_level": "mid",
@@ -5220,7 +7310,7 @@
   "d/f+3+4": {
    "name": "Freesia Thrust",
    "input": "d/f+3+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_170",
    "t7_command": "d/f+3+4",
    "t7_hit_level": "mid",
@@ -5247,7 +7337,7 @@
   "d/f+3+4,3+4": {
    "name": "Backflip Spinning Edge",
    "input": "d/f+3+4,3+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_171",
    "t7_command": "d/f+3+4, 3+4",
    "t7_hit_level": "mid, mid, mid",
@@ -5283,7 +7373,7 @@
   "(d/f+3+4),3+4": {
    "name": "LILI (d/f+3+4),3+4",
    "input": "(d/f+3+4),3+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_172",
    "t7_command": "(d/f+3+4), 3+4",
    "t7_hit_level": "mid, mid",
@@ -5318,7 +7408,7 @@
   "d+1,2,B": {
    "name": "LILI d+1,2,B",
    "input": "d+1,2,B",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_173",
    "t7_command": "d+1, 2, B",
    "t7_hit_level": "low, high",
@@ -5354,7 +7444,7 @@
   "(d+1),2,B": {
    "name": "LILI (d+1),2,B",
    "input": "(d+1),2,B",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_174",
    "t7_command": "(d+1), 2, B",
    "t7_hit_level": "high",
@@ -5383,7 +7473,7 @@
   "b+2,1,B": {
    "name": "LILI b+2,1,B",
    "input": "b+2,1,B",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_175",
    "t7_command": "b+2, 1, B",
    "t7_hit_level": "high, mid",
@@ -5419,7 +7509,7 @@
   "(b+2),1,B": {
    "name": "LILI (b+2),1,B",
    "input": "(b+2),1,B",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_176",
    "t7_command": "(b+2), 1, B",
    "t7_hit_level": "mid",
@@ -5448,7 +7538,7 @@
   "f,F+4,B": {
    "name": "LILI f,F+4,B",
    "input": "f,F+4,B",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_177",
    "t7_command": "f, F+4, B",
    "t7_hit_level": "low",
@@ -5477,7 +7567,7 @@
   "WS 2,B": {
    "name": "LILI WS 2,B",
    "input": "WS 2,B",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_178",
    "t7_command": "WS 2, B",
    "t7_hit_level": "mid",
@@ -5505,7 +7595,7 @@
   "DEW 1,2,B": {
    "name": "LILI DEW 1,2,B",
    "input": "DEW 1,2,B",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_179",
    "t7_command": "DEW 1, 2, B",
    "t7_hit_level": "mid",
@@ -5534,7 +7624,7 @@
   "IMG 1": {
    "name": "LILI IMG 1",
    "input": "IMG 1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_180",
    "t7_command": "IMG 1",
    "t7_hit_level": "high",
@@ -5561,7 +7651,7 @@
   "IMG 1,2": {
    "name": "Cancer Une-Deux",
    "input": "IMG 1,2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_181",
    "t7_command": "IMG 1, 2",
    "t7_hit_level": "high, high",
@@ -5596,7 +7686,7 @@
   "IMG (1),2": {
    "name": "LILI IMG (1),2",
    "input": "IMG (1),2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_182",
    "t7_command": "IMG (1), 2",
    "t7_hit_level": "high",
@@ -5624,7 +7714,7 @@
   "IMG 2": {
    "name": "Rompez Fleuret",
    "input": "IMG 2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_183",
    "t7_command": "IMG 2",
    "t7_hit_level": "mid",
@@ -5651,7 +7741,7 @@
   "IMG 3": {
    "name": "LILI IMG 3",
    "input": "IMG 3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_184",
    "t7_command": "IMG 3",
    "t7_hit_level": "high",
@@ -5678,7 +7768,7 @@
   "IMG 1+2": {
    "name": "Tempest",
    "input": "IMG 1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_185",
    "t7_command": "IMG 1+2",
    "t7_hit_level": "mid, mid",
@@ -5705,7 +7795,7 @@
   "IMG 1+2 (second hit only)": {
    "name": "LILI IMG 1+2 (second hit only)",
    "input": "IMG 1+2 (second hit only)",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_186",
    "t7_command": "IMG 1+2 (second hit only)",
    "t7_hit_level": "mid",
@@ -5732,7 +7822,7 @@
   "IMG 3+4,2": {
    "name": "Twist Backflip Fleuret",
    "input": "IMG 3+4,2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_187",
    "t7_command": "IMG 3+4, 2",
    "t7_hit_level": "mid, mid",
@@ -5767,7 +7857,7 @@
   "IMG (3+4),2": {
    "name": "LILI IMG (3+4),2",
    "input": "IMG (3+4),2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_188",
    "t7_command": "IMG (3+4), 2",
    "t7_hit_level": "mid",
@@ -5795,7 +7885,7 @@
   "IMG d+3": {
    "name": "LILI IMG d+3",
    "input": "IMG d+3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_189",
    "t7_command": "IMG d+3",
    "t7_hit_level": "low",
@@ -5822,7 +7912,7 @@
   "IMG d+3,4": {
    "name": "Autumn Wind",
    "input": "IMG d+3,4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_190",
    "t7_command": "IMG d+3, 4",
    "t7_hit_level": "low, mid",
@@ -5857,7 +7947,7 @@
   "IMG (d+3),4": {
    "name": "LILI IMG (d+3),4",
    "input": "IMG (d+3),4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_191",
    "t7_command": "IMG (d+3), 4",
    "t7_hit_level": "mid",
@@ -5885,7 +7975,7 @@
   "IMG d+3+4,F": {
    "name": "LILI IMG d+3+4,F",
    "input": "IMG d+3+4,F",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_192",
    "t7_command": "IMG d+3+4, F",
    "t7_hit_level": "low",
@@ -5913,7 +8003,7 @@
   "IMG 4": {
    "name": "LILI IMG 4",
    "input": "IMG 4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_193",
    "t7_command": "IMG 4",
    "t7_hit_level": "mid, mid",
@@ -5940,7 +8030,7 @@
   "IMG 4 (second hit only)": {
    "name": "LILI IMG 4 (second hit only)",
    "input": "IMG 4 (second hit only)",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_194",
    "t7_command": "IMG 4 (second hit only)",
    "t7_hit_level": "mid",
@@ -5967,7 +8057,7 @@
   "IMG 4,3+4": {
    "name": "Shears to Spinning Edge",
    "input": "IMG 4,3+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_195",
    "t7_command": "IMG 4, 3+4",
    "t7_hit_level": "mid, mid, mid, mid",
@@ -6004,7 +8094,7 @@
   "IMG 4 (second hit only),3+4": {
    "name": "LILI IMG 4 (second hit only),3+4",
    "input": "IMG 4 (second hit only),3+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_196",
    "t7_command": "IMG 4 (second hit only), 3+4",
    "t7_hit_level": "mid, mid, mid",
@@ -6040,7 +8130,7 @@
   "IMG (4),3+4": {
    "name": "LILI IMG (4),3+4",
    "input": "IMG (4),3+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_197",
    "t7_command": "IMG (4), 3+4",
    "t7_hit_level": "mid, mid",
@@ -6075,7 +8165,7 @@
   "IMG (4),3+4 (second hit only)": {
    "name": "LILI IMG (4),3+4 (second hit only)",
    "input": "IMG (4),3+4 (second hit only)",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_198",
    "t7_command": "IMG (4), 3+4 (second hit only)",
    "t7_hit_level": "mid",
@@ -6103,7 +8193,7 @@
   "IMG 3+4": {
    "name": "LILI IMG 3+4",
    "input": "IMG 3+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_199",
    "t7_command": "IMG 3+4",
    "t7_hit_level": "mid",
@@ -6130,7 +8220,7 @@
   "IMG d+3+4": {
    "name": "Orchid Ring",
    "input": "IMG d+3+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_200",
    "t7_command": "IMG d+3+4",
    "t7_hit_level": "low",
@@ -6157,7 +8247,7 @@
   "f,F+2": {
    "name": "Allonger Le Bras",
    "input": "f,F+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_201",
    "t7_command": "f, F+2",
    "t7_hit_level": "mid",
@@ -6185,7 +8275,7 @@
   "d+1+2": {
    "name": "Barcarolle",
    "input": "d+1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_202",
    "t7_command": "d+1+2",
    "t7_hit_level": "mid",
@@ -6212,7 +8302,7 @@
   "(During Rage) 3+4": {
    "name": "Rage Art",
    "input": "(During Rage) 3+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_203",
    "t7_command": "(During Rage) 3+4",
    "t7_hit_level": "mid",
@@ -6239,7 +8329,7 @@
   "(During Rage) d/f+2+3": {
    "name": "Rage Drive",
    "input": "(During Rage) d/f+2+3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_204",
    "t7_command": "(During Rage) d/f+2+3",
    "t7_hit_level": "mid, high",
@@ -6266,7 +8356,7 @@
   "(During Rage) d/f+2+3 (second hit only)": {
    "name": "LILI (During Rage) d/f+2+3 (second hit only)",
    "input": "(During Rage) d/f+2+3 (second hit only)",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_205",
    "t7_command": "(During Rage) d/f+2+3 (second hit only)",
    "t7_hit_level": "high",
@@ -6293,7 +8383,7 @@
   "f,F+1+2* (3 spins)": {
    "name": "LILI f,F+1+2* (3 spins)",
    "input": "f,F+1+2* (3 spins)",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_206",
    "t7_command": "f, F+1+2* (3 spins)",
    "t7_hit_level": "mid",
@@ -6321,7 +8411,7 @@
   "b+1+4": {
    "name": "Piercing Thorn Fortissimo",
    "input": "b+1+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_207",
    "t7_command": "b+1+4",
    "t7_hit_level": "mid",
@@ -6348,7 +8438,7 @@
   "f+1+3": {
    "name": "Kiss of Devotion",
    "input": "f+1+3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_210",
    "t7_command": "Approach enemy... f+1+3",
    "t7_hit_level": "high",
@@ -6379,7 +8469,7 @@
   "f+2+4": {
    "name": "Femme Fatale",
    "input": "f+2+4",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_211",
    "t7_command": "Approach enemy... f+2+4",
    "t7_hit_level": "high",
@@ -6410,7 +8500,7 @@
   "d/f+1+2": {
    "name": "Rafflesia",
    "input": "d/f+1+2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_212",
    "t7_command": "Approach enemy... d/f+1+2",
    "t7_hit_level": "high",
@@ -6441,7 +8531,7 @@
   "WR f,f,F (Mid Screen)": {
    "name": "LILI WR f,f,F (Mid Screen)",
    "input": "WR f,f,F (Mid Screen)",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_217",
    "t7_command": "WR f, f, F (Mid Screen)",
    "t7_hit_level": "mid",
@@ -6470,7 +8560,7 @@
   "(During Tackle) 1": {
    "name": "LILI (During Tackle) 1",
    "input": "(During Tackle) 1",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_218",
    "t7_command": "(During Tackle) 1 (or 2)",
    "t7_hit_level": "-",
@@ -6497,7 +8587,7 @@
   "(During Tackle) 1/2,1/2": {
    "name": "LILI (During Tackle) 1/2,1/2",
    "input": "(During Tackle) 1/2,1/2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_219",
    "t7_command": "(During Tackle) 1/2, 1/2",
    "t7_hit_level": "-",
@@ -6532,7 +8622,7 @@
   "(During Tackle) 1/2,1/2,1/2": {
    "name": "LILI (During Tackle) 1/2,1/2,1/2",
    "input": "(During Tackle) 1/2,1/2,1/2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_220",
    "t7_command": "(During Tackle) 1/2, 1/2, 1/2",
    "t7_hit_level": "-",
@@ -6569,7 +8659,7 @@
   "(During Tackle) 1/2,1/2,1/2,1/2": {
    "name": "LILI (During Tackle) 1/2,1/2,1/2,1/2",
    "input": "(During Tackle) 1/2,1/2,1/2,1/2",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_221",
    "t7_command": "(During Tackle) 1/2, 1/2, 1/2, 1/2",
    "t7_hit_level": "-",
@@ -6608,7 +8698,7 @@
   "u/b,b": {
    "name": "Back Flip",
    "input": "u/b,b",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_222",
    "t7_command": "u/b, b",
    "t7_hit_level": "-",
@@ -6636,7 +8726,7 @@
   "b+1+3": {
    "name": "Attack Reversal",
    "input": "b+1+3",
-   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+   "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
    "t7_move_id": "lili_223",
    "t7_command": "Time with enemy attack... b+1+3 (or b+2+4)",
    "t7_hit_level": "-",
@@ -6668,19 +8758,52 @@
    "t3_row": 270,
    "damage": 6,
    "throw": false,
-   "fallback": "directional \u2014 no motion inputs in T3 bank"
+   "fallback": "directional — no motion inputs in T3 bank"
   },
   {
    "input": "d+4",
    "t3_row": 371,
    "damage": 2,
    "throw": false,
-   "fallback": "directional \u2014 no motion inputs in T3 bank"
+   "fallback": "directional — no motion inputs in T3 bank"
   }
  ],
- "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP; T7 additions: frames/60->s, damage as-is, recovery estimated",
+ "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
  "schema_version": 2,
+ "t3_bank": "moveset_xiaoyu.json",
+ "t3_bank_rows": 594,
+ "t3_bank_attack_rows": 111,
+ "generated_full_moveset": {
+  "by": "tools/gen-movesets-t3.py",
+  "date": "2026-10-20",
+  "note": "Full T3 bank depth merged over curated base; curated moves preserved verbatim. 594 rows, 243 attacks."
+ },
  "t7_base": "lili",
- "t7_dataset": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
- "t7_import_note": "Full T7 movelist imported from genuine T7 frame data; existing moves kept verbatim, new moves appended and deduped by input. Heat/rage mechanics unchanged; no T8 data used."
+ "t7_dataset": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+ "t7_import_note": "Full T7 movelist imported from genuine T7 frame data; existing moves kept verbatim, new moves appended and deduped by input. Heat/rage mechanics unchanged; no T8 data used.",
+ "forward_merge": {
+  "date": "2026-10-20",
+  "pr": 359,
+  "method": "semantic union of branch (moveset-cluster-b-t7) and main versions; main keeps contested move keys, branch entries rekeyed <key>_t7 with t7_input recorded; colliding branch specials appended with forward_merge_alt_of",
+  "branch_counts": {
+   "moves": 222,
+   "specials": 2,
+   "strings": 0
+  },
+  "main_counts": {
+   "moves": 113,
+   "specials": 2,
+   "strings": 0
+  },
+  "merged_counts": {
+   "moves": 325,
+   "specials": 2,
+   "strings": 0
+  },
+  "rekeyed_inputs": [
+   "1+2",
+   "f+3+4",
+   "d/b+4"
+  ]
+ }
 }
