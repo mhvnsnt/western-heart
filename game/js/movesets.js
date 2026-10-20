@@ -46,13 +46,25 @@ export const MOVESET_IDS = [
   'zangief', 'blanka', 'vega', 'iori', 'armor-king',
   // Custom fighters (owner 2026-10-19): KRONOS — Zangief base + Golem (Urban Reign) mix.
   'kronos',
+  // Ryuji Yamazaki x The Rock hybrid (owner 2026-10-19): 22 moves, King-proxy
+  // throws incl. ROCK BOTTOM (frame data from T3 King chain row 281). Model
+  // pending the owner's Tripo link — roster-full.js entry lands with model.glb.
+  'ryuji-rock',
   // Intake wave 2 (owner 2026-10-19): remaining four intake movesets.
   'hugo', 'raiden', 'marduk', 'bob',
-  // Street Fighter EX (owner 2026-10-19, teardown PR 2): REAL SF move data
-  // (names + commands source-verified: SLUS_005.48 binary verbatim list +
-  // dlh/megura guides + SuperCombo EX2 wiki), translated Akuma-in-T7 pattern.
-  // See teardown/street-fighter-3d-games/SF-TEARDOWN-STATUS.md.
-  'sf-ryu', 'sf-ken', 'sf-akuma', 'sf-zangief', 'sf-blanka', 'sf-vega',
+  // Custom fighters (owner 2026-10-19): DEATHFANG (Iori-based), KORESHI (owner creation).
+  // (kronos/ryuji-rock already listed above; not duplicated.)
+  'deathfang', 'koreshi',
+  // SF authentic translations + game-verified sets (owner 2026-10-19, Akuma-in-T7 pattern:
+  // SF motions kept, Tekken frame/throw logic). Lanes sf/teardown-moves-20261019 (PR #354)
+  // and sf/teardown-pr2 (PR #360) content-merged 2026-10-20: union by input key,
+  // game-verified variants win collisions. Builders:
+  // teardown/street-fighter-3d-games/tools/build_sf_movesets.py +
+  // build_sf_movesets_rich.py. See SF-TEARDOWN-STATUS.md.
+  'sf-zangief', 'sf-blanka', 'sf-vega', 'sf-ryu', 'sf-ken', 'sf-chunli',
+  'sf-guile', 'sf-mbison', 'sf-sagat', 'sf-dhalsim', 'sf-cammy',
+  // Only in the teardown-pr2 lane: fully binary+guide verified Akuma set.
+  'sf-akuma',
 ];
 
 const _movesets = {};

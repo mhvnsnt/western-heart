@@ -630,6 +630,148 @@
    ],
    "move_class": "special",
    "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)"
+  },
+  "df+3": {
+   "name": "Crouching Medium Kick",
+   "input": "df+3",
+   "sf_move": "Crouching Medium Kick",
+   "sf_command": "2+MK",
+   "startup": 0.117,
+   "active": 0.05,
+   "recovery": 0.4,
+   "damage": 9,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 10,
+   "anim_ref": "sf:df-3",
+   "input_slots": [
+    "df+3"
+   ],
+   "move_class": "strike",
+   "wh_note": "The classic footsie poke; cancels into Hadouken."
+  },
+  "qcf+2": {
+   "name": "Hadouken",
+   "input": "qcf+2",
+   "sf_move": "Hadouken",
+   "sf_command": "236+P",
+   "startup": 0.217,
+   "active": 0.05,
+   "recovery": 0.816,
+   "damage": 8,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "sf:ryu:hadouken",
+   "input_slots": [
+    "qcf+2"
+   ],
+   "move_class": "special",
+   "wh_note": "Fireball. Tekken (Akuma) translation: projectile, chip damage, sidestep beats it."
+  },
+  "hcb+2": {
+   "name": "Shakunetsu Hadouken",
+   "input": "hcb+2",
+   "sf_move": "Shakunetsu Hadouken",
+   "sf_command": "63214+P",
+   "startup": 0.3,
+   "active": 0.05,
+   "recovery": 0.9,
+   "damage": 12,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 12,
+   "anim_ref": "sf:ryu:shakunetsu",
+   "input_slots": [
+    "hcb+2"
+   ],
+   "move_class": "special",
+   "wh_note": "Flaming multi-hit fireball."
+  },
+  "f,d,df+1": {
+   "name": "Shoryuken",
+   "input": "f,d,df+1",
+   "sf_move": "Shoryuken",
+   "sf_command": "623+P",
+   "startup": 0.05,
+   "active": 0.2,
+   "recovery": 0.7,
+   "damage": 14,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.8,
+   "soulGain": 12,
+   "anim_ref": "sf:ryu:shoryuken",
+   "input_slots": [
+    "f,d,df+1"
+   ],
+   "move_class": "special",
+   "wh_note": "Invincible anti-air uppercut (3f startup, SFIV data)."
+  },
+  "qcb+3": {
+   "name": "Tatsumaki Senpuukyaku",
+   "input": "qcb+3",
+   "sf_move": "Tatsumaki Senpuukyaku",
+   "sf_command": "214+K",
+   "startup": 0.183,
+   "active": 0.25,
+   "recovery": 0.6,
+   "damage": 12,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf:ryu:tatsumaki",
+   "input_slots": [
+    "qcb+3"
+   ],
+   "move_class": "special",
+   "wh_note": "Hurricane kick; advances, juggle filler."
+  },
+  "1+3": {
+   "name": "Seoi Throw",
+   "input": "1+3",
+   "sf_move": "Seoi Throw",
+   "sf_command": "close LP+LK",
+   "startup": 0.083,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 12,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.2,
+   "soulGain": 10,
+   "anim_ref": "sf:1-3",
+   "input_slots": [
+    "1+3"
+   ],
+   "move_class": "throw"
+  },
+  "qcf,qcf+2": {
+   "name": "Shinkuu Hadouken",
+   "input": "qcf,qcf+2",
+   "sf_move": "Shinkuu Hadouken",
+   "sf_command": "236236+P (super)",
+   "startup": 0.15,
+   "active": 0.3,
+   "recovery": 1.0,
+   "damage": 26,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 25,
+   "anim_ref": "sf:ryu:shinkuu",
+   "input_slots": [
+    "qcf,qcf+2"
+   ],
+   "move_class": "special",
+   "wh_note": "Super fireball, 5 hits."
   }
- }
+ },
+ "sf_authentic": true,
+ "variant": 1,
+ "sf_lane_note": "Content-merged 2026-10-20: lane sf/teardown-moves-20261019 (PR #354, 11 moves) + this lane's game-verified set (27 moves). Union by input key; collisions kept the game-verified variant. See SF-TEARDOWN-STATUS.md."
 }

@@ -722,6 +722,128 @@
    ],
    "move_class": "special",
    "note": "frame data estimated from archetype; SF move names/commands verified (see sf_source); real frame data pending OVL decode (TEARDOWN.md 2c)"
+  },
+  "b+1": {
+   "name": "Rock Crusher",
+   "input": "b+1",
+   "sf_move": "Rock Crusher",
+   "sf_command": "b+LP",
+   "startup": 0.15,
+   "active": 0.05,
+   "recovery": 0.4,
+   "damage": 10,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 3.0,
+   "soulGain": 10,
+   "anim_ref": "sf:b-1",
+   "input_slots": [
+    "b+1"
+   ],
+   "move_class": "strike"
+  },
+  "1,1,1,1": {
+   "name": "Electric Thunder",
+   "input": "1,1,1,1",
+   "sf_move": "Electric Thunder",
+   "sf_command": "rapid PPP",
+   "startup": 0.2,
+   "active": 0.4,
+   "recovery": 0.5,
+   "damage": 12,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.2,
+   "soulGain": 15,
+   "anim_ref": "sf:blanka:electric-thunder",
+   "input_slots": [
+    "1,1,1,1"
+   ],
+   "move_class": "special",
+   "wh_note": "Body-wide shock field; anti-rushdown. Tekken translation: multi-hit pressure string."
+  },
+  "b~f+2": {
+   "name": "Rolling Attack",
+   "input": "b~f+2",
+   "sf_move": "Rolling Attack",
+   "sf_command": "[b]f+P",
+   "startup": 0.183,
+   "active": 0.15,
+   "recovery": 0.5,
+   "damage": 15,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.0,
+   "soulGain": 15,
+   "anim_ref": "sf:blanka:rolling-attack",
+   "input_slots": [
+    "b~f+2"
+   ],
+   "move_class": "special",
+   "wh_note": "Charge move: horizontal cannonball."
+  },
+  "d~u+4": {
+   "name": "Vertical Roll",
+   "input": "d~u+4",
+   "sf_move": "Vertical Roll",
+   "sf_command": "[d]u+K",
+   "startup": 0.2,
+   "active": 0.15,
+   "recovery": 0.5,
+   "damage": 14,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 3.8,
+   "soulGain": 12,
+   "anim_ref": "sf:blanka:vertical-roll",
+   "input_slots": [
+    "d~u+4"
+   ],
+   "move_class": "special",
+   "wh_note": "Charge move: rising arc, anti-air."
+  },
+  "qcb+2": {
+   "name": "Backstep Roll",
+   "input": "qcb+2",
+   "sf_move": "Backstep Roll",
+   "sf_command": "214+P",
+   "startup": 0.25,
+   "active": 0.1,
+   "recovery": 0.45,
+   "damage": 13,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.2,
+   "soulGain": 12,
+   "anim_ref": "sf:blanka:backstep-roll",
+   "input_slots": [
+    "qcb+2"
+   ],
+   "move_class": "special",
+   "wh_note": "Evasive roll into hop strike; cancellable."
+  },
+  "b+1+2": {
+   "name": "Ground Shave Rolling",
+   "input": "b+1+2",
+   "sf_move": "Ground Shave Rolling",
+   "sf_command": "[b]f+PPP (super)",
+   "startup": 0.3,
+   "active": 0.3,
+   "recovery": 0.7,
+   "damage": 28,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.5,
+   "soulGain": 25,
+   "anim_ref": "sf:blanka:ground-shave",
+   "input_slots": [
+    "b+1+2"
+   ],
+   "move_class": "special",
+   "wh_note": "Super: full-screen rolling charge."
   }
- }
+ },
+ "sf_authentic": true,
+ "variant": 1,
+ "sf_lane_note": "Content-merged 2026-10-20: lane sf/teardown-moves-20261019 (PR #354, 11 moves) + this lane's game-verified set (31 moves). Union by input key; collisions kept the game-verified variant. See SF-TEARDOWN-STATUS.md."
 }

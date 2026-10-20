@@ -68,6 +68,8 @@ const MODEL_URLS = {
   // Kronos — new fighter (owner 2026-10-19, Tripo pull).
   kronos: '../roster/kronos/attires/attire1/model.glb',
   'kronos-attire2': '../roster/kronos/attires/attire2/model.glb',
+  // KORESHI (owner 2026-10-19): his own creation (Kakashi + SSJ4/5 + ninja, Tripo pull).
+  koreshi: '../roster/koreshi/attires/attire1/model.glb',
   // Burger hunger-state variants (owner 2026-10-19, Tripo pulls).
   'burger-attire2': '../roster/burger/attires/attire2/model.glb',
   'burger-attire3': '../roster/burger/attires/attire3/model.glb',
@@ -131,6 +133,14 @@ const MODEL_URLS = {
   vega: '../roster/vega/attires/attire1/model.glb',
   iori: '../roster/iori/attires/attire1/model.glb',
   'armor-king': '../roster/armor-king/attires/attire1/model.glb',
+  // DEATHFANG (owner 2026-10-19): proprietary Iori-based fighter. Model reskin pending —
+  // currently reuses the Iori model (his moves/stance/animations are the base).
+  deathfang: '../roster/iori/attires/attire1/model.glb',
+  // Ryuji Yamazaki x The Rock hybrid (owner 2026-10-19). MODEL PENDING: no Yamazaki
+  // model found anywhere (no KOF teardown, none in tripo-recovery, no downloadable
+  // Sketchfab model). URL wired for the drop-in; model.glb lands the moment the
+  // owner sends a Tripo link. See roster/ryuji-rock/attires/attire1/README.md.
+  'ryuji-rock': '../roster/ryuji-rock/attires/attire1/model.glb',
 };
 
 class AssetManager {
