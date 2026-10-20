@@ -33,11 +33,36 @@ export class AIController {
     const dir = Math.sign(dx) || 1;
     const playerAttacking = p.state === 'attack' && p._attackPhase !== 'recovery';
 
-    // Reactive defense: block/dodge incoming attacks (gated by reaction stat)
+    // Stream 6: caught in a throw — attempt the break (gated by reaction).
+    // The AI "reads the arm" after a reaction delay, like a human would.
+    if (f.state === 'thrown' && f.lockMove) {
+      if (this._breakT === undefined) {
+        // reaction delay: better AI reads the arm faster
+        this._breakT = 0.08 + (1 - this.reaction) * 0.18;
+        this._breakWill = Math.random() < (0.3 + this.reaction * 0.55);
+      }
+      this._breakT -= dt;
+      if (this._breakT <= 0) {
+        const want = f.lockMove.throw_break || '1';
+        if (this._breakWill) f.tryThrowBreak(want === '1+2' ? '1+2' : want);
+        else f.tryThrowBreak(want === '1' ? '2' : '1'); // wrong read
+        this._breakT = undefined;
+      }
+      return;
+    }
+    this._breakT = undefined;
+
+    // Reactive defense: block/dodge/sidestep incoming attacks (gated by reaction stat)
     if (playerAttacking && dist < 2.6 && f.canAct()) {
       const react = Math.random() < (0.25 + this.reaction * 0.5);
       if (react) {
-        if (Math.random() < 0.35 && f.onGround) { f.tryDodge(); this._think = 0.4; return; }
+        const r = Math.random();
+        // Stream 6: sidestep the linear attack (reads like a Tekken player).
+        if (r < 0.22 && f.onGround) {
+          f.trySidestep(Math.random() < 0.5 ? -1 : 1);
+          this._think = 0.5; return;
+        }
+        if (r < 0.5 && f.onGround) { f.tryDodge(); this._think = 0.4; return; }
         f.tryBlock(true); this._block = 0.35; this._think = 0.25; return;
       }
     }
@@ -74,10 +99,11 @@ export class AIController {
       f.tryMove(dir);
     } else if (dist < 1.4) {
       if (Math.random() < 0.2 - this.aggression * 0.1) { this._action = 'retreat'; f.tryMove(-dir); }
-      else { this._action = 'attack'; f.tryAttack(Math.random() < 0.6 ? 'punch' : 'kick'); }
+      // Stream 6: full Tekken limbs (1/2/3/4) so the AI uses expanded movelists.
+      else { this._action = 'attack'; f.tryAttack(String(1 + Math.floor(Math.random() * 4))); }
     } else {
       const r = Math.random();
-      if (r < 0.5 + this.aggression * 0.2) { this._action = 'attack'; f.tryAttack(r < 0.3 ? 'kick' : 'punch'); }
+      if (r < 0.5 + this.aggression * 0.2) { this._action = 'attack'; f.tryAttack(String(1 + Math.floor(Math.random() * 4))); }
       else if (r < 0.8) { this._action = 'approach'; f.tryMove(dir); }
       else { this._action = 'neutral'; }
     }

@@ -35,6 +35,8 @@ const T3_CLIP_DEFS = {
   jumpUp:  { file: 't3_jump_up.json', loop: false },
   jumpFwd: { file: 't3_jump_fwd.json', loop: false },
   jumpBack:{ file: 't3_jump_back.json', loop: false },
+  sidestepA:{ file: 't3_sidestep_a.json', loop: false },
+  sidestepB:{ file: 't3_sidestep_b.json', loop: false },
 };
 
 // Bones in the game's Mixamo skeleton that the T3 clips drive.
@@ -124,6 +126,9 @@ function jsonToClip(name, data, THREE) {
     slot: data.slot,
     move_row: data.move_row,
     sha256: data.sha256,
+    // Lateral root drift (source frame, +x = the character's left):
+    // tells side steps apart without guessing which slot goes where.
+    lateralDx: raw.root_t && raw.root_t.length > 1 ? raw.root_t[raw.root_t.length - 1][0] - raw.root_t[0][0] : 0,
     raw,
   };
   return clip;
