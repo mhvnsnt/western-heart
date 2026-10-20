@@ -145,8 +145,28 @@ select screen with no select-side changes.
 
 Local (worktree served on 127.0.0.1, headless Chromium, CDP captures
 — Playwright page.screenshot stalls under SwiftShader with live
-WebGL canvases; harness: ~/workspace/_wh-work/select-harness/capture_select.py):
-<!-- filled in after the capture run -->
+WebGL canvases; harness: ~/workspace/_wh-work/select-harness/):
+- Strip facts (390×844): 57 cards (56 roster + RANDOM), strip
+  scrollWidth 5576px inside a 390px client box, document does not
+  overflow (the strip is the only scroller), strip height 167px ≈
+  20% of viewport, fighters zone 535px.
+- Flow: menu → VERSUS → DEMONIO pick (pane ready, all 5 attire
+  chips) → K tap switches BASE → ATTIRE 1 (pane-state verified:
+  chip ATTIRE 1*, style '· ATTIRE 1', model swapped to the
+  demonio-a1 devil model) → CONFIRM locks P1 (badge + locked:true)
+  and hands the cursor to P2 → RIN pick on P2 → CONFIRM → stage
+  select → CONFIRM STAGE → fight HUD reached (twice, zero page
+  errors in the versus/fight stages).
+- Motion: QA-hook samples 75s apart in the starved test renderer
+  (~3% of real time): model rotation.y 0.18 → 0.5867, mixer time
+  0.05 → 1.21 — the preview animates (turntable fallback + embedded
+  clips; bank stances currently rejected by the fit gate, see the
+  animation note: jin stance on demonio measured head-hips gap
+  −0.10, king stance on pantera gap 0.04).
+- Screenshots (own-eyes viewed): select-v3-phone-demonio-stance-a/b,
+  select-v3-phone-demonio-attire1, select-v3-phone-versus-p2-rin,
+  select-v3-phone-pantera-gate, select-v3-desktop-initial,
+  select-v3-desktop-pantera-stance-a (~/workspace/your_files/).
 
 Live (after merge + gh-pages redeploy):
 <!-- filled in after redeploy -->
