@@ -45,6 +45,8 @@ export const MOVESET_IDS = [
   'mariposa',
   // Wave 2 (2026-10-19): Demonio winged devil form.
   'demonio-winged',
+  // Burger Kusaregedo kit (owner 2026-10-19): per-form movesets.
+  'burger-demon', 'burger-speed-demon', 'burger-the-mouth',
   // Sketchfab intake (owner 2026-10-19): working names, WH names pending.
   'zangief', 'blanka', 'vega', 'iori', 'armor-king',
   // DEATHFANG (owner 2026-10-19): proprietary, Iori-based — full Iori kit in deathfang.json.
