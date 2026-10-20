@@ -656,7 +656,8 @@
    "move_class": "throw",
    "input_slots": [
     "1+3"
-   ]
+   ],
+   "throw_break": "1"
   },
   "2+4": {
    "name": "Water Mill (DOA Bass 4F+P (4T))",
@@ -680,7 +681,8 @@
    "move_class": "throw",
    "input_slots": [
     "2+4"
-   ]
+   ],
+   "throw_break": "2"
   },
   "f+1+3": {
    "name": "Bass Tornado (DOA Bass 6F+P (6T))",
@@ -704,7 +706,8 @@
    "move_class": "throw",
    "input_slots": [
     "f+1+3"
-   ]
+   ],
+   "throw_break": "1"
   },
   "f,f+1+3": {
    "name": "Powerslam (DOA Bass 66F+P (66T))",
@@ -728,7 +731,8 @@
    "move_class": "throw",
    "input_slots": [
     "f,f+1+3"
-   ]
+   ],
+   "throw_break": "1+2"
   },
   "d+1+3": {
    "name": "Bass Bomb (DOA Bass 2F+P (2T))",
@@ -752,7 +756,8 @@
    "move_class": "throw",
    "input_slots": [
     "d+1+3"
-   ]
+   ],
+   "throw_break": "1"
   },
   "d/f,d/f+1+3": {
    "name": "Double Arm DDT (DOA Bass 33F+P)",
@@ -776,7 +781,8 @@
    "move_class": "throw",
    "input_slots": [
     "d/f,d/f+1+3"
-   ]
+   ],
+   "throw_break": "1+2"
   },
   "qcf+1+3": {
    "name": "Spear Grapple (DOA Bass 236F+P)",
@@ -800,7 +806,8 @@
    "move_class": "special",
    "input_slots": [
     "qcf+1+3"
-   ]
+   ],
+   "throw_break": "1"
   },
   "b,f+1+3": {
    "name": "Dynamite Lariat (DOA Bass 64F+P)",
@@ -824,7 +831,8 @@
    "move_class": "special",
    "input_slots": [
     "b,f+1+3"
-   ]
+   ],
+   "throw_break": "1+2"
   },
   "hcb+1+3": {
    "name": "Powerbomb (DOA Bass 63214T)",
@@ -848,7 +856,8 @@
    "move_class": "special",
    "input_slots": [
     "hcb+1+3"
-   ]
+   ],
+   "throw_break": "1"
   },
   "qcb+1+3": {
    "name": "Manhattan Driver (DOA Bass 214F+P,2F+P,2,8F+P)",
@@ -872,7 +881,8 @@
    "move_class": "special",
    "input_slots": [
     "qcb+1+3"
-   ]
+   ],
+   "throw_break": "1"
   },
   "u+1+3": {
    "name": "Super Freak (DOA Bass 8F+P (8T))",
@@ -896,7 +906,8 @@
    "move_class": "throw",
    "input_slots": [
     "u+1+3"
-   ]
+   ],
+   "throw_break": "1"
   },
   "1+2": {
    "name": "Front Facelock (DOA Bass H (offensive hold))",
@@ -921,7 +932,8 @@
    "move_class": "throw",
    "input_slots": [
     "1+2"
-   ]
+   ],
+   "throw_break": "1+2"
   },
   "qcf+1+2": {
    "name": "Headlock (DOA Bass 236H)",
@@ -946,7 +958,8 @@
    "move_class": "special",
    "input_slots": [
     "qcf+1+2"
-   ]
+   ],
+   "throw_break": "1+2"
   },
   "u/b+1+2": {
    "name": "Buffalo Rampage (DOA Bass 7P+K held)",
@@ -969,9 +982,9 @@
     "u/b+1+2"
    ]
   },
-  "P+K": {
+  "1+4": {
    "name": "Elias Brothers' Chokeslam [WH SIGNATURE]",
-   "input": "P+K",
+   "input": "1+4",
    "startup": 0.33,
    "active": 0.05,
    "recovery": 0.95,
@@ -982,20 +995,20 @@
    "soulGain": 14,
    "anim_ref": "wh:vainabel:sig:elias-brothers-chokeslam",
    "input_slots": [
-    "P+K",
-    "P",
-    "K"
+    "1+4"
    ],
    "move_class": "signature",
    "wh_original": true,
    "note": "He teams with Kane Abel as the Elias Brothers. The double chokeslam, solo edition - the devil's favorite demon.",
    "throw": true,
    "unblockable": true,
-   "isGrab": true
+   "isGrab": true,
+   "input_remapped_from": "P+K",
+   "throw_break": "1+2"
   },
-  "S": {
+  "3+4": {
    "name": "Purple Light Sermon [WH SIGNATURE]",
-   "input": "S",
+   "input": "3+4",
    "startup": 0.31,
    "active": 0.1,
    "recovery": 0.92,
@@ -1006,11 +1019,12 @@
    "soulGain": 13,
    "anim_ref": "wh:vainabel:sig:purple-light-sermon",
    "input_slots": [
-    "S"
+    "3+4"
    ],
    "move_class": "signature",
    "wh_original": true,
-   "note": "He enters under purple lights to distorted church organ. A false-gospel sermon with the spiked glove."
+   "note": "He enters under purple lights to distorted church organ. A false-gospel sermon with the spiked glove.",
+   "input_remapped_from": "S"
   }
  },
  "strings": [

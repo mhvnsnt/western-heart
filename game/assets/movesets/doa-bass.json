@@ -273,7 +273,8 @@
    "throw": true,
    "isGrab": true,
    "unblockable": true,
-   "note": "Damage estimated."
+   "note": "Damage estimated.",
+   "throw_break": "1"
   },
   "hcf+1+3": {
    "name": "Bass 41236T \u2014 Fisherman's Buster",
@@ -296,7 +297,8 @@
    "throw": true,
    "isGrab": true,
    "unblockable": true,
-   "note": "Damage estimated."
+   "note": "Damage estimated.",
+   "throw_break": "1"
   },
   "hcb+1+3": {
    "name": "Bass 63214T \u2014 spinning throw",
@@ -320,7 +322,8 @@
    "throw": true,
    "isGrab": true,
    "unblockable": true,
-   "note": "DOA5 v1.03: 63214T 66->62."
+   "note": "DOA5 v1.03: 63214T 66->62.",
+   "throw_break": "1"
   },
   "b+1+2": {
    "name": "Bass 4H \u2014 Arm Whip (mid P hold)",
@@ -382,9 +385,9 @@
    "move_class": "special",
    "note": "DOA signature counter-hold. Damage estimated."
   },
-  "S": {
+  "3+4": {
    "name": "Platform Drop [WH SIGNATURE]",
-   "input": "S",
+   "input": "3+4",
    "startup": 0.34,
    "active": 0.05,
    "recovery": 0.98,
@@ -395,15 +398,16 @@
    "soulGain": 13,
    "anim_ref": "wh:doa-bass:sig:platform-drop",
    "input_slots": [
-    "S"
+    "3+4"
    ],
    "move_class": "signature",
    "wh_original": true,
-   "note": "The rig worker hits like the platform drops. Powerhouse slam, no finesse required."
+   "note": "The rig worker hits like the platform drops. Powerhouse slam, no finesse required.",
+   "input_remapped_from": "S"
   },
-  "P+K": {
+  "1+4": {
    "name": "Overtime Shift [WH SIGNATURE]",
-   "input": "P+K",
+   "input": "1+4",
    "startup": 0.32,
    "active": 0.05,
    "recovery": 0.95,
@@ -414,16 +418,16 @@
    "soulGain": 13,
    "anim_ref": "wh:doa-bass:sig:overtime-shift",
    "input_slots": [
-    "P+K",
-    "P",
-    "K"
+    "1+4"
    ],
    "move_class": "signature",
    "wh_original": true,
    "note": "He's working late. A bear-hug overtime shift that doesn't clock out.",
    "throw": true,
    "unblockable": true,
-   "isGrab": true
+   "isGrab": true,
+   "input_remapped_from": "P+K",
+   "throw_break": "1+2"
   }
  },
  "strings": [

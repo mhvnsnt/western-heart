@@ -150,7 +150,8 @@
    "throw": true,
    "isGrab": true,
    "unblockable": true,
-   "note": "Damage estimated."
+   "note": "Damage estimated.",
+   "throw_break": "1"
   },
   "d+1+3": {
    "name": "Kage Koenraku \u2014 launch throw",
@@ -173,7 +174,8 @@
    "throw": true,
    "isGrab": true,
    "unblockable": true,
-   "note": "Launches very high; follow-ups possible. Damage estimated."
+   "note": "Launches very high; follow-ups possible. Damage estimated.",
+   "throw_break": "1"
   },
   "qcf+1+3": {
    "name": "Kage Katana Gasumi \u2014 flip throw",
@@ -196,7 +198,8 @@
    "throw": true,
    "isGrab": true,
    "unblockable": true,
-   "note": "Flips opponent upside down. Damage estimated."
+   "note": "Flips opponent upside down. Damage estimated.",
+   "throw_break": "1"
   },
   "b+1+3": {
    "name": "Kage Haura Gasumi \u2014 back throw",
@@ -219,11 +222,12 @@
    "throw": true,
    "isGrab": true,
    "unblockable": true,
-   "note": "Damage estimated."
+   "note": "Damage estimated.",
+   "throw_break": "1"
   },
-  "S": {
+  "1+2": {
    "name": "Hagakure Leaf [WH SIGNATURE]",
-   "input": "S",
+   "input": "1+2",
    "startup": 0.27,
    "active": 0.017,
    "recovery": 0.82,
@@ -234,15 +238,16 @@
    "soulGain": 12,
    "anim_ref": "wh:vf-kage:sig:hagakure-leaf",
    "input_slots": [
-    "S"
+    "1+2"
    ],
    "move_class": "signature",
    "wh_original": true,
-   "note": "The Hagakure ninja lands like a leaf and cuts like the wind under it."
+   "note": "The Hagakure ninja lands like a leaf and cuts like the wind under it.",
+   "input_remapped_from": "S"
   },
-  "D+K": {
+  "d+4": {
    "name": "Shadow Step [WH SIGNATURE]",
-   "input": "D+K",
+   "input": "d+4",
    "startup": 0.24,
    "active": 0.017,
    "recovery": 0.74,
@@ -253,13 +258,12 @@
    "soulGain": 11,
    "anim_ref": "wh:vf-kage:sig:shadow-step",
    "input_slots": [
-    "D+K",
-    "D",
-    "K"
+    "d+4"
    ],
    "move_class": "signature",
    "wh_original": true,
-   "note": "Dodge-step into a low sweep. The shadow was the attack."
+   "note": "Dodge-step into a low sweep. The shadow was the attack.",
+   "input_remapped_from": "D+K"
   }
  },
  "strings": [
