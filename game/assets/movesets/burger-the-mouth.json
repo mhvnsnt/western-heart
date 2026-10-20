@@ -1,0 +1,292 @@
+{
+  "fighter": "burger-the-mouth",
+  "display": "BURGER (The Mouth)",
+  "tekken_base": "Bob",
+  "samsho_source": "kusaregedo",
+  "proxy": false,
+  "proxy_note": "Head/bite-focused Kusaregedo selection for The Mouth form (owner 2026-10-19): headbutt, head projectile, tongue, bone AA + clumsy heavies.",
+  "canon_note": "Second demon form. Head overgrows body: slow, topples over, too heavy, clumsy. Weak normals, devastating head/bite attacks.",
+  "variant": "the-mouth",
+  "moves": {
+    "huge-headbutt": {
+      "name": "Huge Headbutt",
+      "input": "f+1+2",
+      "samsho_move": "n5C",
+      "samsho_input": "n5C",
+      "startup": 0.317,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 16,
+      "limb": "head",
+      "heavy": true,
+      "knock": 6.0,
+      "soulGain": 8,
+      "anim_ref": "samsho:kusaregedo/n5c",
+      "input_slots": [
+        "f"
+      ],
+      "move_class": "strike",
+      "note": "Huge headbutt. Great punish tool."
+    },
+    "mega-chomp": {
+      "name": "Mega Chomp",
+      "input": "1",
+      "samsho_move": "The Mouth: Mega Chomp",
+      "samsho_input": "chomp",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 18,
+      "limb": "head",
+      "heavy": true,
+      "knock": 6.0,
+      "soulGain": 8,
+      "anim_ref": "samsho:kusaregedo/the-mouth:-mega-chomp",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "note": "Signature. Overgrown jaw bite. Strong."
+    },
+    "head-slam": {
+      "name": "Head Slam",
+      "input": "u/f+1+2",
+      "samsho_move": "The Mouth: Head Slam",
+      "samsho_input": "head-slam",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 20,
+      "limb": "head",
+      "heavy": true,
+      "knock": 7.0,
+      "soulGain": 8,
+      "anim_ref": "samsho:kusaregedo/the-mouth:-head-slam",
+      "input_slots": [
+        "u/f"
+      ],
+      "move_class": "strike",
+      "note": "Overhead slam with the overgrown head."
+    },
+    "tongue-lick": {
+      "name": "Tongue Lick",
+      "input": "d/f+1",
+      "samsho_move": "2D",
+      "samsho_input": "2D",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 8,
+      "limb": "head",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "samsho:kusaregedo/2d",
+      "input_slots": [
+        "d/f"
+      ],
+      "move_class": "strike",
+      "note": "Upward lick. Niche anti-air."
+    },
+    "tongue-sweep": {
+      "name": "Tongue Sweep",
+      "input": "d/b+4",
+      "samsho_move": "3D",
+      "samsho_input": "3D",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 9,
+      "limb": "head",
+      "heavy": false,
+      "knock": 4.0,
+      "soulGain": 8,
+      "anim_ref": "samsho:kusaregedo/3d",
+      "input_slots": [
+        "d/b"
+      ],
+      "move_class": "strike",
+      "note": "Long low-hitting tongue sweep. Unsafe on block."
+    },
+    "bone-uppercut": {
+      "name": "Bone Uppercut",
+      "input": "d/f+2",
+      "samsho_move": "2C",
+      "samsho_input": "2C",
+      "startup": 0.367,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 14,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 8,
+      "anim_ref": "samsho:kusaregedo/2c",
+      "input_slots": [
+        "d/f"
+      ],
+      "move_class": "strike",
+      "note": "Swings arm-bone diagonally upward. Hitbox follows the arc. Anti-air."
+    },
+    "spine-attack": {
+      "name": "Spine Attack",
+      "input": "d+1+2",
+      "samsho_move": "n2C",
+      "samsho_input": "n2C",
+      "startup": 0.317,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 12,
+      "limb": "body",
+      "heavy": true,
+      "knock": 4.5,
+      "soulGain": 8,
+      "anim_ref": "samsho:kusaregedo/n2c",
+      "input_slots": [
+        "d"
+      ],
+      "move_class": "strike",
+      "note": "Attacks with his own spine. Faster AA that hits crouchers."
+    },
+    "ground-slap": {
+      "name": "Ground Slap",
+      "input": "d+2",
+      "samsho_move": "5A",
+      "samsho_input": "5A",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 11,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 3.0,
+      "soulGain": 8,
+      "anim_ref": "samsho:kusaregedo/5a",
+      "input_slots": [
+        "d"
+      ],
+      "move_class": "strike",
+      "note": "Big slap to ground. Strong counter-poke."
+    },
+    "sluggish-boot": {
+      "name": "Sluggish Boot",
+      "input": "4",
+      "samsho_move": "5D",
+      "samsho_input": "5D",
+      "startup": 0.283,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 11,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 3.0,
+      "soulGain": 8,
+      "anim_ref": "samsho:kusaregedo/5d",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike",
+      "note": "Slow heavy kick. Heavy poke."
+    },
+    "low-sweep": {
+      "name": "Low Sweep",
+      "input": "d+4",
+      "samsho_move": "2B",
+      "samsho_input": "2B",
+      "startup": 0.3,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 10,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.0,
+      "soulGain": 8,
+      "anim_ref": "samsho:kusaregedo/2b",
+      "input_slots": [
+        "d"
+      ],
+      "move_class": "strike",
+      "note": "Low-hitting sweep with good range."
+    },
+    "quick-palm": {
+      "name": "Quick Palm",
+      "input": "1",
+      "samsho_move": "2A",
+      "samsho_input": "2A",
+      "startup": 0.133,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 6,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "samsho:kusaregedo/2a",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "note": "Quick palm. Tick-throw setup into command grab."
+    },
+    "clumsy-stumble": {
+      "name": "Clumsy Stumble",
+      "input": "d/f+3+4",
+      "samsho_move": "The Mouth: Topple",
+      "samsho_input": "topple",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 14,
+      "limb": "body",
+      "heavy": true,
+      "knock": 8.0,
+      "soulGain": 8,
+      "anim_ref": "samsho:kusaregedo/the-mouth:-topple",
+      "input_slots": [
+        "d/f"
+      ],
+      "move_class": "strike",
+      "note": "Head overgrows body: topples forward into a crushing fall. Slow, clumsy, devastating."
+    }
+  },
+  "strings": [],
+  "specials": [
+    {
+      "input": "f,f+1+2",
+      "name": "Infinite Feast",
+      "samsho_move": "Heretic Brand",
+      "samsho_input": "6428C",
+      "damage": 30,
+      "move_class": "throw",
+      "note": "Long-range command grab (frame 3). Fixed damage. Bite HEALS Burger 5 HP (hunger theme).",
+      "startup": 0.05,
+      "heal": 5,
+      "wh_name": "Infinite Feast"
+    },
+    {
+      "input": "qcb+1+2",
+      "name": "Dinner's Coming (Down)",
+      "samsho_move": "Flying Head Butt (down)",
+      "samsho_input": "236AD",
+      "damage": 22,
+      "move_class": "special",
+      "note": "Rips head off, flies FULLSCREEN diagonally down (ground control), boomerangs back.",
+      "projectile": true,
+      "angle": "down",
+      "wh_name": "Dinner's Coming"
+    },
+    {
+      "input": "d+1+2",
+      "name": "Maw of Hunger",
+      "samsho_move": "WH: Maw of Hunger",
+      "samsho_input": "wh-exclusive",
+      "damage": 24,
+      "move_class": "throw",
+      "note": "THE MOUTH signature grab: unhinges the overgrown jaw and swallows the opponent's guard. Big bite damage.",
+      "startup": 0.08,
+      "wh_name": "Maw of Hunger"
+    }
+  ],
+  "frame_convention": "SamSho VI 60fps -> seconds; damage scaled to WH 100HP (Kusaregedo fixed grab dmg preserved as %)",
+  "schema_version": 2
+}

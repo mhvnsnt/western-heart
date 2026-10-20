@@ -33,15 +33,19 @@ glass too. Brain already inside — NEVER add an extra brain.
 ## Verification status
 
 - ✅ **Structural:** GLB parses, 3 materials with correct transmission values,
-  2 meshes (main + fluid), 73MB.
-- ❌ **Visual (transparency):** NOT verified. The VM has no GPU/EGL for EEVEE
-  (Blender crashes on EEVEE renders). Workbench renders don't show
-  transmission. The glass/fluid WILL render correctly in the game engine
-  (which supports glTF KHR_materials_transmission), but this has not been
-  seen with own eyes.
+  2 meshes (main + fluid).
+- ✅ **Visual (transparency) — OWN-EYES VERIFIED 2026-10-19:** Rendered with
+  Blender Cycles (transmission-capable). The dome glass IS transparent —
+  the brain/head is clearly visible through it. The green fluid is a proper
+  partial fill (65% of dome height) with a flat visible liquid surface on
+  top. The brain sits submerged in the green fluid. No extra brain added.
+  Render: `/tmp/dome-glass-v2.png` (verified).
 - ⚠️ **Sloshing:** The fluid is a static mesh. Shader-based sloshing (vertex
   displacement/UV scroll) must be implemented in the game engine — not baked
   into the GLB.
+- ℹ️ **v1:** `model-dome-glass-v1-thindisc.glb` — the original build where
+  the fluid was a thin disc at the top of the dome (wrong). Kept for
+  reference.
 
 ## Next steps
 
