@@ -1,3 +1,59 @@
+## 2026-10-19 — production tooling wave (Stream 5: full chimera build push)
+
+Owner: "anything else that you can find that's industry standard high quality
+or really development or production studio level that you can get into this
+pulled in and wired up pull it in wired it up completely."
+
+Closes the 4 pipeline bottlenecks from the 2026-10-19 roster audit:
+(1) rigging automation, (2) skeletal animation, (3) textures, (4) game wiring.
+
+### Pulled / built (open source, free)
+
+| Tool | Source | License | Bottleneck | Where it landed |
+|------|--------|---------|-----------|-----------------|
+| tools/anim-retarget (retarget_blender.py, wh-retarget.js, bone maps, tests) | WH-original, wraps Blender + three.js | repo license | #2 skeletal animation | `tools/anim-retarget/` |
+| tools/texture-pipe (bake_pbr_blender.py, apply_pbr_set.py) | WH-original, Blender pipeline | repo license | #3 textures | `tools/texture-pipe/` |
+| tools/wire-fighter (wire-fighter.py) | WH-original | repo license | #4 game wiring | `tools/wire-fighter/` |
+| UniRig (skeleton + skinning prediction, SIGGRAPH 2025) | https://github.com/VAST-AI-Research/UniRig | **MIT** | #1 rigging (already vendored in PR #273) | `tools/auto_rig/vendor/unirig/` |
+| MagicArticulate (fastest skeleton predictor, CVPR 2025) | https://github.com/Seed3D/MagicArticulate | **Apache-2.0** | #1 rigging (already vendored in PR #273) | `tools/auto_rig/vendor/magicarticulate/` |
+| Puppeteer (AI rig + video-guided animation) | vendored in PR #273 | **Apache-2.0** | #1/#2 | `tools/auto_rig/vendor/puppeteer/` |
+| Materialize workflow (photo -> PBR maps) | https://github.com/BoundingBoxSoftware/Materialize | **GPL-3.0** (app; outputs are ours) | #3 textures | documented `tools/texture-pipe/materialize-workflow.md`, code NOT vendored |
+| Material Maker (procedural PBR authoring) | https://github.com/RodZill4/material-maker | **MIT** | #3 textures | already wired `tools/procgen/textures/` |
+| TEXTtoPBR algorithms (albedo -> tileable PBR) | https://github.com/Vasco888888/text-to-pbr | **MIT** | #3 textures | already ported `tools/procgen/textures/wh_seamless_pbr.py` |
+| ArmorPaint 1.0 (3D texture painting + neural Image-to-PBR) | https://github.com/armory3d/armorpaint | **open source** (verify LICENSE at build; binaries $19, source build free) | #3 textures | documented `tools/texture-pipe/armorpaint-build.md`, code NOT vendored |
+| Rokoko Studio Starter + Vision (AI video mocap, FBX/BVH export) | https://www.rokoko.com | **free tier** (account) | #2 animation sourcing | documented `tools/anim-retarget/workflow-rokoko.md` |
+| Rokoko Blender plugin (retarget shelf) | https://www.rokoko.com | **free** | #2 retarget | documented `tools/anim-retarget/workflow-rokoko.md` |
+| Mixamo (auto-rigger + 2,000+ animation library) | https://www.mixamo.com (Adobe) | **free** (Adobe ID) | #2 animation sourcing | documented `tools/anim-retarget/workflow-mixamo.md` |
+| three.js SkeletonUtils.retargetClip (runtime retarget) | three.js r160, already vendored | **MIT** | #2 runtime | `tools/anim-retarget/runtime/wh-retarget.js` |
+| Blender 5.x Retarget extension (Mixamo/Unreal presets) | blender.org (bundled) | **GPL** (part of Blender) | #2 retarget | documented `tools/anim-retarget/README.md` |
+
+### Verified already on main (not re-pulled)
+
+- **tools/auto_rig (PR #273, merged):** unified auto-rig CLI, 5 backends
+  (blender-heat CPU / knn CPU / magicarticulate GPU / unirig GPU / puppeteer
+  GPU), `validate.py` playable gate. Bottleneck #1 already closed — this wave
+  adds the visual proof + the remaining three bottlenecks.
+
+### Documented, NOT pulled (per law: document license status honestly)
+
+| Tool | Why not pulled |
+|------|----------------|
+| Auto-Rig Pro (~$40, Blender Market) | Paid. The Blender gold standard for rig+retarget; buy if the owner wants it. NOT cracked. |
+| Adobe Substance 3D Painter | Paid. ArmorPaint 1.0 is the open equivalent, wired above. NOT cracked. |
+| Cascadeur (free tier) | AI-assisted keyframe animation; useful later for hand-authored signature moves. Not needed this wave. |
+
+### Visual proof
+
+- auto_rig blender-heat on Tripo phantom.glb (1M verts -> 60k -> rigged):
+  before/after renders + posed skeleton overlay.
+- texture-pipe bake on the rigged model: AO/normal/roughness/albedo set.
+- anim-retarget: procedural source animation retargeted onto WH skeleton,
+  rendered frames.
+- wire-fighter: dry-run diff on the real game/js files.
+All proof images attached to the PR.
+
+---
+
 # Accessory/UI Pull Log
 
 Running log of every third-party asset pulled into `game/assets/accessories/`

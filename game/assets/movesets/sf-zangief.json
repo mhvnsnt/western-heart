@@ -1,0 +1,227 @@
+{
+ "fighter": "sf-zangief",
+ "display": "ZANGIEF (SF authentic)",
+ "tekken_base": "Zangief (SF) \u2014 Akuma-pattern translation",
+ "proxy": false,
+ "sf_authentic": true,
+ "sf_game_source": "SF EX / SFIV source move data",
+ "proxy_note": null,
+ "variant": 1,
+ "moves": {
+  "1": {
+   "name": "Standing Jab",
+   "input": "1",
+   "sf_move": "Standing Jab",
+   "sf_command": "LP",
+   "startup": 0.067,
+   "active": 0.05,
+   "recovery": 0.3,
+   "damage": 6,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 10,
+   "anim_ref": "sf:1",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "2": {
+   "name": "Body Blow",
+   "input": "2",
+   "sf_move": "Body Blow",
+   "sf_command": "MP",
+   "startup": 0.083,
+   "active": 0.05,
+   "recovery": 0.35,
+   "damage": 8,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 10,
+   "anim_ref": "sf:2",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "3": {
+   "name": "Low Kick",
+   "input": "3",
+   "sf_move": "Low Kick",
+   "sf_command": "LK",
+   "startup": 0.1,
+   "active": 0.05,
+   "recovery": 0.4,
+   "damage": 8,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 10,
+   "anim_ref": "sf:3",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "4": {
+   "name": "Standing Short",
+   "input": "4",
+   "sf_move": "Standing Short",
+   "sf_command": "MK",
+   "startup": 0.083,
+   "active": 0.05,
+   "recovery": 0.35,
+   "damage": 9,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 10,
+   "anim_ref": "sf:4",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "f+1": {
+   "name": "Overhead Chop",
+   "input": "f+1",
+   "sf_move": "Overhead Chop",
+   "sf_command": "f+LP",
+   "startup": 0.25,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 11,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 3.0,
+   "soulGain": 10,
+   "anim_ref": "sf:f-1",
+   "input_slots": [
+    "f+1"
+   ],
+   "move_class": "strike"
+  },
+  "f+2": {
+   "name": "Headbutt",
+   "input": "f+2",
+   "sf_move": "Headbutt",
+   "sf_command": "f+MP",
+   "startup": 0.2,
+   "active": 0.05,
+   "recovery": 0.45,
+   "damage": 12,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.2,
+   "soulGain": 10,
+   "anim_ref": "sf:f-2",
+   "input_slots": [
+    "f+2"
+   ],
+   "move_class": "strike"
+  },
+  "qcf+2": {
+   "name": "Green Hand (Banishing Flat)",
+   "input": "qcf+2",
+   "sf_move": "Green Hand (Banishing Flat)",
+   "sf_command": "236+P",
+   "startup": 0.267,
+   "active": 0.1,
+   "recovery": 0.45,
+   "damage": 14,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.5,
+   "soulGain": 15,
+   "anim_ref": "sf:qcf-2",
+   "input_slots": [
+    "qcf+2"
+   ],
+   "move_class": "special",
+   "wh_note": "Advancing arm smash, armor through one hit (Banishing Flat)."
+  },
+  "hcb,f+1+2": {
+   "name": "Spinning Piledriver",
+   "input": "hcb,f+1+2",
+   "sf_move": "Spinning Piledriver",
+   "sf_command": "63214+P",
+   "startup": 0.083,
+   "active": 0.05,
+   "recovery": 0.6,
+   "damage": 22,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.0,
+   "soulGain": 20,
+   "anim_ref": "sf:zangief:spinning-piledriver",
+   "input_slots": [
+    "hcb,f+1+2"
+   ],
+   "move_class": "throw",
+   "wh_note": "Iconic 360 command throw. Tekken translation: breakable, 1+2 break."
+  },
+  "1+2,1+2,1+2": {
+   "name": "Double Lariat",
+   "input": "1+2,1+2,1+2",
+   "sf_move": "Double Lariat",
+   "sf_command": "PPP",
+   "startup": 0.15,
+   "active": 0.3,
+   "recovery": 0.55,
+   "damage": 16,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.8,
+   "soulGain": 15,
+   "anim_ref": "sf:zangief:double-lariat",
+   "input_slots": [
+    "1+2,1+2,1+2"
+   ],
+   "move_class": "special",
+   "wh_note": "Rapid spin lariat; upper-body invuln vs projectiles."
+  },
+  "f,F+2": {
+   "name": "Running Bear Grab",
+   "input": "f,F+2",
+   "sf_move": "Running Bear Grab",
+   "sf_command": "66+K (run)",
+   "startup": 0.35,
+   "active": 0.05,
+   "recovery": 0.6,
+   "damage": 18,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.5,
+   "soulGain": 15,
+   "anim_ref": "sf:zangief:running-bear-grab",
+   "input_slots": [
+    "f,F+2"
+   ],
+   "move_class": "throw"
+  },
+  "b+1+2": {
+   "name": "Final Atomic Buster",
+   "input": "b+1+2",
+   "sf_move": "Final Atomic Buster",
+   "sf_command": "360+P (ultra)",
+   "startup": 0.12,
+   "active": 0.05,
+   "recovery": 0.9,
+   "damage": 30,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 25,
+   "anim_ref": "sf:zangief:fab",
+   "input_slots": [
+    "b+1+2"
+   ],
+   "move_class": "throw",
+   "wh_note": "Super: double SPD into atomic buster. Soul-cost move."
+  }
+ },
+ "frame_convention": "SF 60fps -> seconds; damage scaled to WH 100HP; Akuma-in-T7 translation: SF motions kept, Tekken whiff/juggle/throw-break logic",
+ "schema_version": 2
+}

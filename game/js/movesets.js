@@ -1,5 +1,4 @@
-/* ============================================================
-   WESTERN HEART — Movesets (LANE 3: moveset wiring)
+/* =====================================================   WESTERN HEART — Movesets (LANE 3: moveset wiring)
    Per-fighter Tekken movelists built from REAL T3 teardown data
    (teardown/tekken3/movesets/moveset_{king,jin,bryan,heihachi,
    xiaoyu,yoshimitsu,gunjack}.json — decoded motion banks).
@@ -46,6 +45,18 @@ export const MOVESET_IDS = [
   'zangief', 'blanka', 'vega', 'iori', 'armor-king',
   // Cluster A moveset wave (2026-10-19): Koreshi new fighter, T8 Yoshimitsu kit.
   'koreshi',
+  // Custom fighters (owner 2026-10-19): KRONOS — Zangief base + Golem (Urban Reign) mix.
+  'kronos',
+  // Ryuji Yamazaki x The Rock hybrid (owner 2026-10-19): 22 moves, King-proxy
+  // throws incl. ROCK BOTTOM (frame data from T3 King chain row 281). Model
+  // pending the owner's Tripo link — roster-full.js entry lands with model.glb.
+  'ryuji-rock',
+  // Intake wave 2 (owner 2026-10-19): remaining four intake movesets.
+  'hugo', 'raiden', 'marduk', 'bob',
+  // SF authentic translations (owner 2026-10-19, Akuma-in-T7 pattern:
+  // SF motions kept, Tekken frame/throw logic). Builder: teardown/street-fighter-3d-games/tools/build_sf_movesets.py
+  'sf-zangief', 'sf-blanka', 'sf-vega', 'sf-ryu', 'sf-ken', 'sf-chunli',
+  'sf-guile', 'sf-mbison', 'sf-sagat', 'sf-dhalsim', 'sf-cammy',
 ];
 
 const _movesets = {};
