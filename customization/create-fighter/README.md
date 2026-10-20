@@ -16,6 +16,7 @@ three.js is vendored (`vendor/`), Soldier.glb base rig in `assets/`, data snapsh
 - PROFILE: name/alias/music/titantron + Soul/Element/Land canon + fighting style + No Mercy parameters.
 - MOVESET: full 176-slot tree from `MOVE-SLOTS.json`, assign moves from `MOVE-DATABASE.json`, Combot cross-roster rule; grey dummy opponent appears in-ring on this tab.
 - **Preset library (v0.2):** 🗂 PRESETS — save the full fighter JSON under a name, load it back, delete it (two-step). Autosave slot + export/import JSON unchanged.
+- **Doc Frank dome editor (2026-10-19):** FIGHTER SELECT → DOC FRANK → ATTIRE tab → Attire 2 → **DOME PARAMETERS**. The `game/js/dome-params.js` module is mounted into the ATTIRE flow: Glass / Liquid / Effects groups with sliders + color pickers, live in-scene preview (Attire 2's real base model + the v5 dome GLB, same model space the dome was built in). Liquid Top stays LOCKED (owner: DO NOT RAISE). "Save to Attire" persists the params onto the attire in the fighter JSON and downloads `dome-params.json` for the repo build pipeline. Lava/bubble counts are build-time params (0 hides them in-scene; exact counts land on GLB rebuild) — labeled in-panel, never faked.
 - Save/export/load fighter JSON (CHARACTER-CREATION.md §6 format, v2 adds `model` = base GLB path, backward-compatible) — download + localStorage + photo-mode thumbnails (📸 captures the live canvas).
 
 ## Honest gaps (marked in-UI, never faked)
