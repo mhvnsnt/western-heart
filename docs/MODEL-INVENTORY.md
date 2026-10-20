@@ -69,6 +69,9 @@ Legend: ✅ WIRED (in `game/assets/models/` or a roster attire slot) · 📦 HAV
 | `roster/pantera/attires/classic/pantera-classic.glb` | Pantera | A3 | older build reskin |
 | `roster/pantera/attires/snow-leopard/pantera-snow-leopard.glb` | Pantera | A3 alt | snow-leopard reskin (tweaked) |
 | `roster/awa-pop/awa-pop-attire-1.glb` | Awa Pop | A1 DEFAULT | Tripo |
+| `roster/kronos/attires/attire1/model.glb` | KRONOS | A1 DEFAULT | Tripo "muscular warrior" (19.1MB) |
+| `roster/kronos/attires/attire2/model.glb` | KRONOS | A2 Timberwolf | Tripo (20.4MB) |
+| `roster/kronos/attires/attire3/model.glb` | KRONOS | A3 TimberWolf Fully suited | Tripo (21.5MB) — Wolverine claws both hands; middle claw each hand short + rounded |
 
 ---
 
