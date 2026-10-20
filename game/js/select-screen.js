@@ -159,6 +159,16 @@ class PreviewPane {
       // 'Idle' clips are near-static bind-pose holds (verified by
       // sampling demonio.glb: arm-bone swing ~0.02 rad), so the
       // bank stance takes precedence wherever a bank exists.
+      // Bind-pose reference (shoulder orientations) for the fit gate,
+      // sampled from this instance before any bank clip is applied.
+      let bindQ = null;
+      if (inst.bones && inst.bones.LeftShoulder && inst.bones.RightShoulder) {
+        this.model.updateWorldMatrix(true, true);
+        bindQ = {
+          LeftShoulder: inst.bones.LeftShoulder.getWorldQuaternion(new THREE.Quaternion()),
+          RightShoulder: inst.bones.RightShoulder.getWorldQuaternion(new THREE.Quaternion()),
+        };
+      }
       try {
         const bank = bankIdFor(c.id, c.moveset || c.id);
         const clips = bank ? await loadT3Clips(THREE, bank) : null;
@@ -192,6 +202,19 @@ class PreviewPane {
                 // bone segment lengths are pose-invariant
                 const reach = (gp(arm).distanceTo(gp(fore)) + gp(fore).distanceTo(gp(hand))) * 1.25 + 0.05;
                 if (gp(arm).distanceTo(gp(hand)) > reach) { fit = false; why = `${s} hand beyond arm reach`; break; }
+              }
+            }
+            if (fit && bindQ) {
+              // (c) clavicle check: shoulder bones are near-rigid
+              // parts of the torso in any real stance; a clip that
+              // swings them far from bind is misapplied (the
+              // gyro-shoulder failure), even when the hands stay
+              // within reach.
+              for (const s of ['Left', 'Right']) {
+                const sh = inst.bones[s + 'Shoulder'];
+                if (!sh) continue;
+                const ang = sh.getWorldQuaternion(new THREE.Quaternion()).angleTo(bindQ[s + 'Shoulder']);
+                if (ang > 0.6) { fit = false; why = `${s} shoulder swung ${(ang).toFixed(2)} rad from bind`; break; }
               }
             }
             if (fit) {
