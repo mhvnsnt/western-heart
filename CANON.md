@@ -1251,3 +1251,34 @@ Cain Elias walks in where Vain Abel Elias walked out — the brother who stayed 
 **Models (owner-made Tripo pulls, wired 2026-10-19):** Attire 1 (biker): https://studio.tripo3d.ai/3d-model/6aeaaffd-e7d5-45ba-8026-3f0c7b357d86 — `roster/cain-elias/attires/attire1/model.glb`. Attire 2 (fight gear): https://studio.tripo3d.ai/3d-model/752ad786-5076-4469-aaf7-39048f283624 — `roster/cain-elias/attires/attire2/model.glb`. Renders: `docs/tpose-refs/cain-elias/a1_front.png`, `a2_front.png` (own-eyes verified).
 
 *Owner-directed 2026-10-19 (naming, design, attires). Wired into repo 2026-10-19 (gap-audit stream). Moveset pick owned by the moveset lane.*
+
+---
+
+<!-- BEGIN No Mercy / mat-kings section (wiring lane 2026-10-20; source of truth: teardown/wwf-no-mercy/CANON-CONVERSION.md) -->
+## mat-kings — the No Mercy stratum (added 2026-10-20)
+
+`mat-kings` is Western Heart's wrestling stratum, converted from the WWF No Mercy
+teardown (universe name per RENAME-MAP.md). What Western Heart takes from it is
+systems and motion, authored into this world — never its wrestler characters
+(federated design, CHIMERA-ARCHITECTURE.md; the wrestler models live in the
+wrestling repos).
+
+- **Grappling library.** All 4,409 move clips + 1,353 system clips are catalogued
+  in `moveset-library/movesets/mat-kings-move-database.json` under MK-#### canon
+  IDs, each wired to a Tekken-style input and MOVE-SLOTS slot eligibility
+  (federation rule: wrestling moves enter as Tekken-input moves). Pantera's
+  grappling canon (above, §Pantera) is the flagship consumer; his Scoop Slam is
+  MK-0125 (`anim_339F.npy`, corrected 2026-10-20).
+- **Creation lineage.** The Creation Suite's modular body/attire system descends
+  from No Mercy's CAW: 220 body-type meshes, face/hair meshes, weapons and
+  attire parts are wired in `customization/parts/no-mercy/` (682 indexed parts,
+  `customization/PARTS-REGISTRY.json` library `no-mercy`).
+- **Stages.** The 17 mat-kings arenas/backstage areas are playable stages
+  (`game/js/stages.js` ids `nm-*`; GLB layer in PR #345). Their display names
+  still carry the source game's event names — WH canon stage names are
+  AWAITING OWNER (conversion table in CANON-CONVERSION.md §4). No names were
+  invented by the wiring lane.
+- **Characters.** No mat-kings-native fighters are defined yet. The 42 source
+  wrestler identities (`teardown/wwf-no-mercy/docs/wrestler-id-table.json`)
+  have no WH mappings in RENAME-MAP.md — owner decision, flagged, not invented.
+<!-- END No Mercy / mat-kings section -->
