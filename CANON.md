@@ -1251,3 +1251,91 @@ Cain Elias walks in where Vain Abel Elias walked out — the brother who stayed 
 **Models (owner-made Tripo pulls, wired 2026-10-19):** Attire 1 (biker): https://studio.tripo3d.ai/3d-model/6aeaaffd-e7d5-45ba-8026-3f0c7b357d86 — `roster/cain-elias/attires/attire1/model.glb`. Attire 2 (fight gear): https://studio.tripo3d.ai/3d-model/752ad786-5076-4469-aaf7-39048f283624 — `roster/cain-elias/attires/attire2/model.glb`. Renders: `docs/tpose-refs/cain-elias/a1_front.png`, `a2_front.png` (own-eyes verified).
 
 *Owner-directed 2026-10-19 (naming, design, attires). Wired into repo 2026-10-19 (gap-audit stream). Moveset pick owned by the moveset lane.*
+
+---
+
+## 8. THE HEAD-WORLD, AS THE TRIAL FOUND IT
+
+*Eastern Mind wiring + canon conversion, 2026-10-20. This section is additive: it extends the world of §1, the souls of §4, and the story of §5 without altering them. Every place, system, and beat below is converted from the Eastern Mind teardown (`teardown/eastern-mind/`); the full source-to-canon log is `teardown/eastern-mind/CANON-CONVERSION.md`, the file checklist is `teardown/eastern-mind/WIRING-INVENTORY.md`, and the machine-readable stage registry is `game/assets/stages/eastern-mind/stages.json`.*
+
+### The Shape of the Head
+
+The head is not a metaphor and it is not a container. It is a body, and the lands are its organs.
+
+Outside is the dark — not night, not space, just the dark the head floats in, the dark Diablo and Dio tore through and the dark N3GΔTIV0 camps at the edge of. Inside, the dark continues, but it learns shapes: a tree, a plain, a mountain, a palace, another palace, a market. The sky inside the head is the inside of the head — dark, vast, veined — and the fighters who look up for too long stop looking up.
+
+The lands are joined by **tunnels**. Every land keeps one: narrow passages in the head's own flesh, older than the trial, that open where a land ends and close where the next begins. Nobody maintains the tunnels. Nobody built them. A soul walks into the tunnel under the Tree of Life and walks out under a burning sky, and the distance between those two places is not a distance anyone can measure. The tunnels are why the trial can be a ladder: without them, the lands are islands, and islands do not climb.
+
+Each land also keeps a **King**. Not a ruler — the Western Heart has no government — but a resident power: the figure a land grew around itself, the way a pearl grows around grit. The King of the scorched plains is not the King of the dreaming palace, and neither of them answers to the shrine. To walk a land, a soul meets its King. To claim a land's force, a soul settles with its King. What "settles" means is different in every land, and every land thinks its way is the obvious one.
+
+### The Two Laws of Death
+
+The trial runs on two laws of death, and every fighter learns both in their bones.
+
+**In Versus, death is only death.** Two souls meet, one falls, the matter ends. No return, no new face, no lesson carried. This is why the veterans prefer Versus for settling things: what happens there stays ended. The head does not interfere. The head is not interested in endings. It is interested in returns.
+
+**In the Story — the career of a soul walking the Trial — death is the mechanism.** Lose, and you do not continue. You *return*: reborn into a new vessel, chosen the way the Reincarnation has always chosen — from what you did. The soul that grabbed and held is offered vessels built for the hold. The soul that was never where the blow landed is offered vessels that move wrong. The soul that kept reaching for the other eight souls mid-fight is offered vessels that reach back. Your actions influence who you become next. That is not a feature of the game. That is the entire game.
+
+Three details the shrine stones insist on:
+
+- **The old vessel is gone.** A soul never returns to the body it died in. Grief has an address; it is not that one.
+- **The face is chosen in pieces.** Three pairs of eyes, three noses, three mouths — the returning soul assembles the face it will be judged by, and the face is not cosmetic. Sharper eyes, faster hands. A heavier nose, heavier hits. The Reincarnation is the only character creator the Western Heart has ever needed.
+- **The intruder waits for the third death.** Diablo cannot be chosen, offered, or inherited until a soul has died three times. Then — and the stones are silent about why — he may take an interest. The membrane let him in. Dying keeps letting him closer.
+
+Nightwolf walks the newly dead through all of this. She is the only guide the Reincarnation has. She burns sage over the new faces. The faces do not thank her. She does it anyway.
+
+### The Lands As Places
+
+The five lands are arenas in §5. They are also *places*, and a soul walking the ladder lives in them longer than it fights in them.
+
+**The Tree of Life** is entered through its field — open ground under the colossal tree, where glowing souls hang like fruit too high to pick and too bright to ignore. Deeper in is the forest proper, then the inner tree: hollow, warm, grown around a silence. Something large keeps a clearing in the Tree's country — the fighters call it the Ogre's clearing, and they lower their voices there, and none of them can say why. The Sha-mo Desert begins where the roots end. Saku Ra's home ground. Where souls begin is also where souls are *kept* — the fruit does not fall until the trial calls it.
+
+**The Plains of Chi-U** are a field of confrontation under a burning sky, and the field is the honest part. The land's argument stands at its center: the **Fire Tower of Time**, which burns and never collapses, climbed in three reaches, each one hotter and more certain than the last. Time does not pass on the plains the way it passes elsewhere; it *accumulates*, like heat. Fighters who stay too long start finishing each other's sentences. Fighters who stay longer stop needing to.
+
+**The Helix Palace** is approached the way desire is approached: through an entrance that flatters, up past a roof that reflects, around a boulder that should not be balanced where it is balanced, beneath palms and beside a flower that the palace gardeners — there are no gardeners — keep perfect. Inside, beside the castle-heart of the palace, are the five glowing rooms of §1: Greed, Appetite, Immortality, Sexual Desire, Destruction. The rooms are not locked. That is the palace's whole method. What the rooms claim, they keep: Burger belongs to Appetite, Scimitar's heart belongs to Greed whether he signs for it or not, Skull's violence has an address in Destruction, and the Immortality room is Doc Frank's, as far as he's concerned. The palace also keeps the souls it has reflected longest in side-chambers the ladder does not visit — a Buddha-quiet room, a Sha-quiet room — because desire keeps souvenirs of everything it has ever wanted, including stillness.
+
+**The Palace of Dreaming** will not stay still, and its geography is the proof. It keeps two lakes that are one lake on different days. It keeps a palace in two aspects — the aspect that receives you and the aspect that receives who you were about to be. And it keeps *rooms for the souls*: a room wearing KAI's rhythm, a room wearing SHA's patience, rooms for the drowned and the ill and the eye that watches, a room with a map of a palace that is not this one. A soul sleeping in the Palace of Dreaming does not dream its own dreams. It dreams the room's. Waterfall's tears fall upward here, once a year, for one hour. She has stopped apologizing for it.
+
+**The Phantom Marketplace** is the smallest land and the only one that is a *verb*. Under the Eyeball Mountains — which watch, which have always watched, which are the trial's only reliable audience — the Trader's people keep the stalls, the scales, and the ledger. Nothing here is real, but the prices are. The marketplace is neutral ground the way a knife is neutral: it cuts for whoever holds it. N3GΔTIV0 camps here for the sightlines. King Tyrant performs here for the crowd. Scimitar was born here, which the marketplace counts as its finest product and its worst mistake.
+
+**The Octagonal Shrine Par-fang** sits on the Central Mountain, and the mountain is climbed by stairs that count the climber back. The shrine keeps two rooms before the last room: a room for arriving and a room for being weighed, though the stones will not say which is which. The last room is the smallest place in the Western Heart and the only one that matters — eight-sided, ancient, still — where the Assembled Soul waits, wearing every style the climber has ever survived, including the climber's own. The sky above the last room is the inside of the head at its thinnest. Winning there is not an explosion. It is an absorption, fragment by fragment, until one fighter is standing where two stood, and the mountain is quiet, and the quiet has a heartbeat in it.
+
+### The Threshold
+
+Before the first fight, and after the last one, every soul passes the same country. The trial calls it nothing. The fighters call it the Threshold, when they call it anything.
+
+The Threshold keeps a **Face** — all the faces, hung like masks in a green room: the faces the dead wore, the faces the unborn will. A soul entering the trial sees the face it is about to wear before it wears it. A soul leaving sees every face it ever wore, in a row, watching. It keeps a **Book** — the illustrated record of the head-world, written in a hand that changes whenever it is read, in which every fighter in this bible has a page and no fighter has ever found their own page while looking for it. It keeps a **Mirror** that shows the soul its vessel from the soul's side — the only view no fighter is built to survive comfortably — and a **Sea**, because every crossing in the Western Heart is a water crossing in the end, and a **Rock**, because one thing in the Threshold does not change, and the trial points at it whenever a soul claims nothing stays the same. And it keeps the sumi-e dark: the ink-wash black from which the green head itself is painted, visible only at the Threshold, where the painting is thin.
+
+The Threshold is also where the trial keeps its **ending**. Not a place — a condition. The absorbed soul does not go anywhere. The head simply stops hurting in that shape. What the ending looks like from inside is the one thing this bible does not describe, because the only witnesses are whole, and the whole do not come back to file reports. The last text card stands as written in §5. In the deadpan the head-world reserves for the truth:
+
+*"You are whole. Rest now."*
+
+### The Incarnations
+
+The shrine keeps an incarnation record for every soul of the nine — a face, a portrait, a voice, a way the soul looked when the head first dreamed it. RIN's record is the plainest and the oldest. BYOU's record twitches in its frame. TOU's record is mostly impact damage. SHA's record is three records that insist they are one. KAI's record is wet. JIN's record is kept sharp. RETSU's record is kept behind the others, by the shrine's choice. ZEN has two records — the stillness, and the stillness again, identical, filed separately, because the shrine does not argue with ZEN. GYOU has two records as well, and both of them are blurred, and the second one is blurred *differently*.
+
+The records are not archives. They are *doors*. The Reincarnation works because the shrine can open the record of a soul and let the soul wear what the record remembers. This is why the newly dead are offered vessels their actions earned: the records lean toward the living soul that resembles them. A soul that fights like battle itself finds TOU's door already open. This is also why Waterfall feels all nine: the records are kept in the same wall, and the wall is thin, and grief goes through thin walls the way water goes through everything.
+
+SAM-UR-A1 has no record. The shrine has built him an empty frame, out of something like respect and something like curiosity, and the frame hangs with the others. What the frame will hold, if it ever holds anything, is the experiment of §2. The GYOU splinter in Cyborg X hums through the wall at night. The records of ZEN do not object. The records of ZEN have never objected to anything. That is what makes them frightening.
+
+### Colour Is Law
+
+The head-world runs on one palette the way a body runs on one blood. Every land draws its colours from that single shared spectrum — the deep greens of the head itself, the winter blue-whites of RIN's record, the desert ochres of SHA's country, the abyssal blues of KAI's water, the charcoal and molten crack of the Destruction room — and then each soul, each character, each face keeps a palette of its own inside the shared one. This is why a fighter reborn in a new face is still recognisable across the arena: the body changes, the colours testify.
+
+Colour is how the trial tells the truth when words would lie. A land whose force has been claimed does not announce it. Its colours *settle* — the burning sky of Chi-U cools a fraction, the Dreaming palace's reflections clear — and the souls who live there feel the settling before they can name it. Tong-Nou is healing or it is not, and the palette is the chart on the hospital wall. Read the colours. They have never once been decorative.
+
+### The Music of the Head-World
+
+The head has a pulse, and the pulse has a theme. The trial's music is not scored to the fights; it is *under* them, the way a heartbeat is under a conversation — the head-world's theme, long and patient, that the fighters stop hearing after their first death and start hearing again before their last one.
+
+For the ending there is the transmigration music: the sound of a soul crossing the Threshold in the leaving direction, played once per soul, never repeated, never hurried. And for the long walks between the lands — the tunnels, the stairs, the desert — there is the esoteric mix: the theme taken apart and put back together wrong on purpose, hours of it, the head humming to itself in the dark it floats in. A soul that hums along is not mocked for it. Half the roster hums. The head does not mind. The head started it.
+
+### Soul Progression, or What the Ladder Does to a Soul
+
+Claiming a force is not collecting a prize. It is a permanent change in the claiming soul, and §5 names them plainly: reach, bite, solidity, renewal, speed. What the ladder does *between* the claims matters as much:
+
+- **A claimed force cannot be unclaimed — only traded.** The Trader exists because the generating cycle is a circle, not a staircase: sometimes becoming whole means letting go of the fire you fought hardest for, and the marketplace is where a soul learns what its own strength costs.
+- **The Soul Surge is memory, not magic.** When a fighter channels one of the other eight souls, the borrowed techniques arrive with the borrowed *nature* attached — TOU's surge has no brakes, BYOU's surge cannot be read because it cannot read itself — and when the ten seconds end, the fighter keeps a splinter of having been someone else. Fighters who surge often start finishing each other's sentences, the way the plains teach. The nine were one being. The surge is the scar tissue remembering.
+- **Grief is progression too.** Every death on the ladder passes through Waterfall. A soul that has died often carries her attention the way a veteran carries weather in a wound — and she, alone, can read a soul's whole career at a glance: not the wins, the *returns*. Who you kept becoming is who you are. The trial grades on the returns.
+
+The Assembled Soul is the sum of all of it: every force claimed, every vessel worn, every surge borrowed, every death returned from — assembled, and waiting in the last room, and patient, because it has already waited exactly as long as you have.
