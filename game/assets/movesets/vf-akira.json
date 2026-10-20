@@ -356,6 +356,49 @@
    "isGrab": true,
    "unblockable": true,
    "note": "Damage estimated."
+  },
+  "S": {
+   "name": "Mountain Stance [WH SIGNATURE]",
+   "input": "S",
+   "startup": 0.31,
+   "active": 0.017,
+   "recovery": 0.9,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 13,
+   "anim_ref": "wh:vf-akira:sig:mountain-stance",
+   "input_slots": [
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "Bajiquan's iron mountain. Shoulder burst from a stance that doesn't move for anyone."
+  },
+  "P+K": {
+   "name": "Eight Extremes [WH SIGNATURE]",
+   "input": "P+K",
+   "startup": 0.3,
+   "active": 0.05,
+   "recovery": 0.9,
+   "damage": 22,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 13,
+   "anim_ref": "wh:vf-akira:sig:eight-extremes",
+   "input_slots": [
+    "P+K",
+    "P",
+    "K"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "Eight extremes, one answer. Close-range grapple from the style's brutal clinch.",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true
   }
  },
  "strings": [
