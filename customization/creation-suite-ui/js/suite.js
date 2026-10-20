@@ -438,6 +438,8 @@ $('#btn-roster').onclick=()=>{
   document.querySelectorAll('[data-r]').forEach(b=>b.onclick=()=>{ F.profile.name=b.dataset.r; closeModal(); renderAll(); });
 };
 $('#btn-save').onclick=persist;
+/* Stream 4: in-game wiring — back to the game menu (saves first). */
+{ const bg=$('#btn-back-game'); if(bg) bg.onclick=()=>{ persistQuiet(); window.location.href='../../game/index.html'; } }
 $('#btn-export').onclick=()=>{
   const blob=new Blob([JSON.stringify(F,null,2)],{type:'application/json'});
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
