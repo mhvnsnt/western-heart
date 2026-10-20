@@ -131,6 +131,11 @@ const MODEL_URLS = {
   vega: '../roster/vega/attires/attire1/model.glb',
   iori: '../roster/iori/attires/attire1/model.glb',
   'armor-king': '../roster/armor-king/attires/attire1/model.glb',
+  // Ryuji Yamazaki x The Rock hybrid (owner 2026-10-19). MODEL PENDING: no Yamazaki
+  // model found anywhere (no KOF teardown, none in tripo-recovery, no downloadable
+  // Sketchfab model). URL wired for the drop-in; model.glb lands the moment the
+  // owner sends a Tripo link. See roster/ryuji-rock/attires/attire1/README.md.
+  'ryuji-rock': '../roster/ryuji-rock/attires/attire1/model.glb',
 };
 
 class AssetManager {
