@@ -72,5 +72,5 @@ builder (or reuse `nomercy`'s GLB pattern), register entries with
 
 ## PRs
 
-- Stream 3 work: branch `stream3/arena-pull-20261019` → PR (to be opened on
-  completion of the gallery pass).
+- Stream 3 work: branch `stream3/arena-pull-20261019` → **PR #345**
+  (opened 2026-10-20): 17 No Mercy arenas, reskin pipeline, 41-stage gallery.
