@@ -21,6 +21,7 @@ import * as THREE from 'three';
 import { assets } from './assets.js';
 import { getT3Clips, createT3Actions, SOURCE_TO_BANK } from './t3anims.js';
 import { TekkenBuffer, getFighterMoveset } from './movesets.js';
+import { TransformCinematic } from './transform-cinematic.js';
 
 // ---- Frame data: REAL Tekken 3 data (teardown/tekken3/movesets/moveset_king.json, moveset_jin.json)
 // NOTE (owner canon 2026-10-19): Tekken's Jin = DEMONIO in Western Heart. The 'jin' moveset family is now 'demonio'.
@@ -227,6 +228,10 @@ export class Fighter {
     }
     this.transformed = false;
     this._movesetId = charData.id; // may be overridden by transform
+    // Transformation cinematic (v1, owner 2026-10-19): timeline-based,
+    // personalized per fighter. Replaces the instant model swap.
+    this._cinematic = null;
+    this._sceneRef = null; // set by game.js — arena scene for shake()
 
     this._build(startX);
   }
@@ -349,6 +354,9 @@ export class Fighter {
 
   /* ---------------- combat intents ---------------- */
   canAct() {
+    // Mid-cinematic: rooted, cannot act (but still vulnerable — damage
+    // applies separately). Owner spec: vulnerable during transform.
+    if (this._cinematic && !this._cinematic.done) return false;
     return !this.dead && this.stun <= 0 &&
       (this.state === 'idle' || this.state === 'walk' || this.state === 'jump');
   }
@@ -362,11 +370,37 @@ export class Fighter {
   }
 
   /* Mid-match transformation (Roshi-style power-up, owner 2026-10-19).
-     Swaps the fighter's model for the transform target, applies stat
-     changes. One-way per match. Returns true if the transform fired. */
+     v1 cinematic: validates, spends the gauge, then runs a personalized
+     timeline (phases) instead of an instant swap. The model swap fires at
+     the cinematic's climax via _doModelSwap().
+     Tekken mirror: Devil Jin needs a FULL Devil Gauge — here the transform
+     needs a FULL nine-soul meter, which is spent on the transform.
+     Touch button only, no keyboard.
+     Returns true if the transform fired. */
   tryTransform(direction='up') {
     const t = this._resolveTransform(direction);
     if (!t || !this.canAct()) return false;
+    if (this.meter < this.maxMeter) return false; // gauge must be full
+    if (this._cinematic && !this._cinematic.done) return false; // already transforming
+    this.meter = 0; // spend the gauge
+    // Start the personalized cinematic timeline. The model swap happens
+    // at the climax (see TransformCinematic).
+    const phases = TransformCinematic.phasesFor(this.char.id);
+    this._cinematic = new TransformCinematic(this, this._sceneRef, {
+      phases,
+      swapAt: phases.reduce((m, p) => Math.max(m, p.t + p.dur), 0) * 0.75,
+      onSwap: (f) => f._doModelSwap(t, direction),
+    });
+    // Fighter is vulnerable but rooted during the cinematic.
+    this._enter('idle');
+    this.vx = 0; this.vy = 0;
+    console.log(`[WH] ${this.char.id} TRANSFORM CINEMATIC start (${direction}) -> ${t.target}`);
+    return true;
+  }
+
+  /* The actual model swap — called by the cinematic at the climax.
+     (Was inline in tryTransform; extracted so the cinematic owns timing.) */
+  _doModelSwap(t, direction='up') {
     let inst;
     try {
       inst = assets.createInstance(
@@ -534,6 +568,11 @@ export class Fighter {
   /* ---------------- per-frame update ---------------- */
   update(dt, opponent) {
     this.stateT += dt;
+    // Drive the transformation cinematic timeline.
+    if (this._cinematic && !this._cinematic.done) {
+      this._cinematic.update(dt);
+      if (this._cinematic.done) this._cinematic = null;
+    }
     // METAL force (modes lane): wounds close as you fight.
     if (this.stats.regenPerSec && this.hp > 0 && this.hp < this.maxHp) {
       this.hp = Math.min(this.maxHp, this.hp + this.stats.regenPerSec * dt);

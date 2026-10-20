@@ -36,7 +36,7 @@ export const FULL_ROSTER = [
     colors: { suit: 0x1a3a6b, trim: 0x9fd8ff }, style: 'Mishima Karate',
     surge: { name: 'COLD FLAME', color: 0x9fd8ff, accent: 0xffffff },
     // Attire 1 = Tripo unwinged demon (owner 2026-10-19). Three forms, transform both directions (Roshi-style).
-    // KeyT = up, Down+KeyT = down (rare).
+    // TRANSFORM touch button = up, tap while crouching = down (rare). Full meter required.
     forms: {
       'demonio-a1': {
         up: { target: 'demonio-winged', label: 'DEVIL ASCENSION', powerMult: 1.5, speedMult: 1.05, defenseMult: 1.2, bodyScale: 1.22, moveset: 'demonio-winged' },
@@ -105,7 +105,7 @@ export const FULL_ROSTER = [
   { id: 'docfrank', name: 'DOC FRANK', title: 'Father of Machines', base: 'Bosconovitch', moveset: 'gunjack', model: 'doc-frank-machine-shop', tintStrength: 0.6,
     colors: { suit: 0x6a6a7a, trim: 0x00ffcc }, style: 'Inventor', archetype: 'Tricky',
     // Mid-match Roshi-style transformation (owner 2026-10-19):
-    // old-man Attire 1 -> bigger Tripo form (2c6cff79, the true transform target). KeyT / TRANSFORM button.
+    // old-man Attire 1 -> bigger Tripo form (2c6cff79, the true transform target). TRANSFORM touch button.
     transform: { targetModel: 'doc-frank-big', powerMult: 1.4, speedMult: 0.88, defenseMult: 1.15, bodyScale: 1.18 } },
   // ——— RESKIN WAVE (2026-10-19): first custom attires as selectable fighters ———
   { id: 'demonio-bloodline-ember', name: 'DEMONIO', title: 'Bloodline Ember', base: 'Jin Kazama', moveset: 'demonio', model: 'demonio-bloodline-ember', tintStrength: 0.25,
