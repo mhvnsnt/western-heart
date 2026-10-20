@@ -47,6 +47,9 @@ const MODEL_URLS = {
   'doc-frank-wowomomo-big': '../roster/doc-frank/attires/attire2/transformed/model.glb',
   'doc-frank-hood': '../roster/doc-frank/attires/attire3/base/model.glb',
   'doc-frank-hood-big': '../roster/doc-frank/attires/attire3/transformed/model.glb',
+  // Attire 4 "Frankenstein's Cyborg" (owner 2026-10-19): two-form transform attire.
+  'doc-frank-frankenstein': '../roster/doc-frank/attires/attire4/base/model.glb',
+  'doc-frank-frankenstein-big': '../roster/doc-frank/attires/attire4/transformed/model.glb',
   'demonio-a1': '../roster/demonio/attires/attire1/model.glb',
   'demonio-winged': '../roster/demonio/attires/winged-devil/model.glb',
   'demonio-human': '../roster/demonio/attires/human/model.glb',
