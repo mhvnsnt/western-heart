@@ -1339,3 +1339,17 @@ Claiming a force is not collecting a prize. It is a permanent change in the clai
 - **Grief is progression too.** Every death on the ladder passes through Waterfall. A soul that has died often carries her attention the way a veteran carries weather in a wound — and she, alone, can read a soul's whole career at a glance: not the wins, the *returns*. Who you kept becoming is who you are. The trial grades on the returns.
 
 The Assembled Soul is the sum of all of it: every force claimed, every vessel worn, every surge borrowed, every death returned from — assembled, and waiting in the last room, and patient, because it has already waited exactly as long as you have.
+
+<!-- BEGIN WMXIX / MAT-LEGENDS SECTION (WMXIX wiring lane, 2026-10-20 — coordinator reconciles at merge) -->
+
+## MAT-LEGENDS (WWE WrestleMania XIX) — wired 2026-10-20
+
+The `mat-legends` universe is Western Heart's wrestling-mechanics donor: its grappling system, arena bones, and create-a-wrestler part library, converted to WH canon. Per-game source of truth: `teardown/wmxix/CANON-CONVERSION.md`. Full inventory + reconciliation of both teardown folders: `teardown/wmxix/WIRING-INVENTORY.md`.
+
+- **Moves/animations:** all 170 decoded YANM clips carry canon IDs (`ML-<CLIP>`) in `moveset-library/animations/WMXIX-CLIP-INDEX.json`; 169 are registered as library moves in `moveset-library/movesets/WMXIX-MOVES.json`, wired to Tekken-style throw inputs (federation rule: wrestling moves enter only on Tekken inputs/structure). Per-clip move names are NOT canon yet — the clip-semantics decode is open and no names were invented.
+- **Arenas → canon stages:** the conversions authored in `teardown/wmxix/ARENA-UNIVERSE-MAP.md` are wired as data in `game/assets/stages/mat-legends/stages.json` (arena 00 → Helix Palace, 01 → Octagonal Shrine Par-Fang, 02 → Phantom Marketplace, Hell-cell → The Drill Wound, backstage sets → Helix Palace interiors / Wrestling Mode areas). Arena geometry is decoded point clouds; face reconstruction is open, so no WMXIX geometry is playable in the build yet.
+- **CAW parts:** the 2,690-part XIX create-a-wrestler library is indexed for the Creation Suite in `customization/mat-legends-caw.json` (catalog: `teardown/wmxix/caw-parts/files.tsv`).
+- **Characters:** wrestler slot → WH character assignment is the owner's and remains PENDING (`teardown/wwe-wrestlemania-xix/WRESTLER-IDENTITY-MAP.md`); the models themselves live in the wrestling repos per the federation rule. Nothing was assigned or invented by this lane.
+- **Revenge Mode:** XIX's out-of-ring traversal mode has no canon name or implementation yet — flagged, not invented. Its stage data is registered in `stages.json` as `backstage_traversal` / `open_traversal`.
+
+<!-- END WMXIX / MAT-LEGENDS SECTION -->
