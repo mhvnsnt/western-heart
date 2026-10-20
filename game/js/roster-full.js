@@ -48,7 +48,7 @@ export const FULL_ROSTER = [
       'demonio-human': {
         up: { target: 'demonio-a1', label: 'REPOWER', powerMult: 1.43, speedMult: 0.91, defenseMult: 1.11, bodyScale: 1.05, moveset: 'demonio' },
       },
-    } },
+    },
     stats: { speed: 4.8, jump: 7.6, power: 1.05, defense: 1.0 },
     ai: { aggression: 0.6, grabBias: 0.05, reaction: 0.6 } },
   { id: 'phantom', name: 'PHANTOM', title: 'The Ghost Blade Soul', base: 'Yoshimitsu', moveset: 'yoshimitsu', model: 'steve-fox', tintStrength: 0.6,
@@ -141,22 +141,6 @@ export const FULL_ROSTER = [
     colors: { suit: 0x2a1a3a, trim: 0xff8800 }, style: 'Azazel Arts', archetype: 'Tricky' },
   { id: 'dxmmii-patchwork', name: 'DXMMII', title: 'Patchwork DJ', base: 'Mokujin', moveset: 'demonio', model: 'dxmmii-patchwork', tintStrength: 0.25,
     colors: { suit: 0x3a2a5a, trim: 0x00ffcc }, style: 'Mimicry', archetype: 'Trickster' },
-  // Sketchfab intake (owner 2026-10-19): working names, WH names pending owner pick.
-  { id: 'zangief', name: 'ZANGIEF', title: 'The Red Cyclone', base: 'Zangief', moveset: 'king', model: 'zangief', tintStrength: 0.25,
-    colors: { suit: 0x8a1a1a, trim: 0x000000 }, style: 'Grappler', archetype: 'Power',
-    surge: { name: "CYCLONE'S WRATH", color: 0xcc2222, accent: 0xff8800 } },
-  { id: 'blanka', name: 'BLANKA', title: 'The Beast', base: 'Blanka', moveset: 'bryan', model: 'blanka', tintStrength: 0.25,
-    colors: { suit: 0x2a8a2a, trim: 0xff8800 }, style: 'Beast', archetype: 'Rushdown',
-    surge: { name: 'ELECTRIC STORM', color: 0x88ccff, accent: 0xffff00 } },
-  { id: 'vega', name: 'VEGA', title: 'The Claw', base: 'Vega', moveset: 'xiaoyu', model: 'vega', tintStrength: 0.25,
-    colors: { suit: 0x8a2a6b, trim: 0xffd700 }, style: 'Claw', archetype: 'Evasive',
-    surge: { name: "MATADOR'S FURY", color: 0xcc2288, accent: 0xffffff } },
-  { id: 'iori', name: 'IORI', title: 'The Flame', base: 'Iori Yagami', moveset: 'heihachi', model: 'iori', tintStrength: 0.25,
-    colors: { suit: 0x6b1a8a, trim: 0xff2222 }, style: 'Flames', archetype: 'Rushdown',
-    surge: { name: 'CRIMSON INFERNO', color: 0xaa22ff, accent: 0xff4400 } },
-  { id: 'armor-king', name: 'ARMOR KING', title: 'The Chain', base: 'Armor King', moveset: 'king', model: 'armor-king', tintStrength: 0.25,
-    colors: { suit: 0x1a1a2a, trim: 0xccaa00 }, style: 'Grappler', archetype: 'Power',
-    surge: { name: "JAGUAR'S GRIP", color: 0x888800, accent: 0xffcc00 } },
 ];
 
 export function getFighter(id) {
