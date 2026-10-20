@@ -293,6 +293,46 @@
    ],
    "move_class": "special",
    "note": "DOA counter-hold -> Tekken parry-style reversal. frame data estimated from archetype; marked per schema honesty rule"
+  },
+  "S": {
+   "name": "Dragon's Shadow [WH SIGNATURE]",
+   "input": "S",
+   "startup": 0.28,
+   "active": 0.1,
+   "recovery": 0.85,
+   "damage": 18,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 12,
+   "anim_ref": "wh:doa-hayabusa:sig:dragons-shadow",
+   "input_slots": [
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "The ninja arrives as a shadow and leaves as a rumor. Blade-hand strike from nowhere."
+  },
+  "u+K": {
+   "name": "Falcon's Perch [WH SIGNATURE]",
+   "input": "u+K",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.88,
+   "damage": 17,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 12,
+   "anim_ref": "wh:doa-hayabusa:sig:falcons-perch",
+   "input_slots": [
+    "u+K",
+    "u",
+    "K"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "Up where the falcon perches, then down like weather. Diving kick."
   }
  },
  "strings": [

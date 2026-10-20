@@ -2673,6 +2673,49 @@
     "n,d,d/b+1+3"
    ],
    "move_class": "throw"
+  },
+  "S": {
+   "name": "Peer Review [WH SIGNATURE]",
+   "input": "S",
+   "startup": 0.32,
+   "active": 0.1,
+   "recovery": 0.92,
+   "damage": 19,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 13,
+   "anim_ref": "wh:docfrank:sig:peer-review",
+   "input_slots": [
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "He believes the trial is peer review and he'll publish. A gadget blast, footnoted."
+  },
+  "P+K": {
+   "name": "Crayon Notes [WH SIGNATURE]",
+   "input": "P+K",
+   "startup": 0.29,
+   "active": 0.05,
+   "recovery": 0.88,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 13,
+   "anim_ref": "wh:docfrank:sig:crayon-notes",
+   "input_slots": [
+    "P+K",
+    "P",
+    "K"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "He takes notes mid-fight. On a clipboard. In crayon. Detailed, accurate, deeply insulting. Filed on you.",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true
   }
  },
  "strings": [],

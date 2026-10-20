@@ -1193,3 +1193,77 @@ Sun Rā does not fight in the tournament. He IS the tournament — or one of the
 *Owner-directed 2026-10-13. Sun Rā's arena is a boss realm, not a standard stage. Name: SUN + ラー (Rā, the Egyptian sun god in Japanese).*
 
 **Owner-locked chat-canon (owner 2026-10-18, verbatim):** "he kind of has an open mouth already with like big jagged teeth so you should be able to make him talk easily and his eyes don't blink because he's like a sun and his like he's like a sun god and he's cursed to stare and watch forever so that's why he make all of the that's why he make all of the souls fight" — his eyes DO NOT blink; he is a sun god, CURSED TO STARE AND WATCH FOREVER, and that is WHY he makes all the souls fight. "his like eyes are bleeding they're like really deep sunken in like the moon from Soul Eater and he is blood coming from the corner of his mouth from the staring and being the sun and from eating the souls" — his eyes are bleeding, deep and sunken like the Soul Eater moon; blood comes from the corner of his mouth from the eternal staring, from being the sun, from eating the souls. The open jagged-toothed mouth is built for talking animation. Work the blood into canon AND model (texture/VFX detail). Tripo model (his proprietary look): https://studio.tripo3d.ai/3d-model/cf2dee24-15df-4d44-8a61-56fb5510a4e1 — pulled 2026-10-18. (Source: side chat "Find Western Heart repo name", owner seq 2192/2200, 2026-10-18 ~20:38-20:39 CDT.)
+
+### THOR — The Thunder God (Bonus)
+
+**Owner's words, verbatim (2026-10-13):** "Ganryu is Thor, the literal norse god of lightning (and thunder claps)."
+
+Thor is the literal Norse god of lightning — and thunder claps — built on Ganryu's sumo frame. His palm strikes ARE thunder claps. He is not a vessel for one of the nine souls; when the shrine stones were asked, they went silent. Only the two refused souls (Zen, Gyou) answered, with silence too. He is unclaimed by the five lands. His element is the storm he carries inside him.
+
+**The Journey (owner's words, verbatim, 2026-10-13 — four messages, in order):**
+> "Yes, nievan and Valhalla were not enough, he wanted the 不死の戦い , or the 'Immortal Qombat' he says in a questioning and comical way cause he heard it called that before once"
+> "Nirvana and Valhalla i mean"
+> "And Niflheim"
+> "He swallowed the thunder and said 'immortal Qombat?' And went there"
+
+He walked through three afterlives and none of them were enough: Nirvana, Valhalla, Niflheim. He wanted the 不死の戦い — the immortal battle. In Niflheim, when the mist world opened its mouth to swallow him, he swallowed the thunder first — took the storm (ice, fog, cold silence) whole inside him. His thunder-clap slaps are literal because the swallowed storm is still in him. Then, crackling with swallowed thunder, he said "Immortal Qombat?" — questioning and comical, echoing a phrase he once overheard Sun Rā speak, always slightly wrong — and went there, to the trial.
+
+**Why Thor thinks he's here.** He thinks he's climbing to a tournament. He has no idea it's purification. Sun Rā hasn't decided if the mangled echo is amusing or insulting. Thor hasn't noticed.
+
+**Models (owner-made):** Attire 1 (main): https://studio.tripo3d.ai/3d-model/65ff7ad8-c423-46ff-8a46-4582a782c59f — wired 2026-10-19. Attire 2 (phantom mimic, oni mask): https://studio.tripo3d.ai/3d-model/c85dc47b-a3b4-41ad-b39c-86ea81b418cd. Plus gabeyus attires from the files and character customization.
+
+**Relationships.**
+- **BURGER:** Sumo brothers. Eating-contest rivals.
+- **DIABLO:** Two uninvited kings. When they fight, the ground shakes like an earthquake.
+- **SKULL, KING TYRANT, ZUI:** Drinking companions.
+- **SUN RĀ:** Thor overheard him say "Immortal Qombat" once. He repeats it wrong. Sun Rā is still deciding how he feels about that.
+
+**Being purified of:** He doesn't know he's being purified. That's the point.
+
+*Owner-directed 2026-10-13 (naming, journey, models). Wired into repo 2026-10-19.*
+
+### SLICE — The Maniacal Agent (Bonus)
+
+**Owner's words, verbatim (2026-10-13):** "Dragonuv is SLICE, a maniacal secret agent who slices up his enemies with his blade like chops and strikes, usually wearing a skull mask to hide his identity and scars, but sometimes his face is seen."
+
+SLICE — real name Dragonuv — is a maniacal secret agent. He slices up his enemies with his blade: chops and strikes. He usually wears a skull mask to hide his identity and his scars — but sometimes his face is seen.
+
+Backstory, soul assignment, and trial role still open — owner's material to come.
+
+*Owner-directed 2026-10-13 (naming + concept). Wired into repo 2026-10-19.*
+
+### YUKIHYŌ — The Snow Leopard (Bonus)
+
+**Owner's words, verbatim (2026-10-13):** "Armor king will be, ユキヒョウ, but Spelled in English, Yukihyō, reskinned as a leapord head and black/white or striped/spotted, digital camo whit / attires"
+
+YUKIHYŌ (ユキヒョウ — "snow leopard") is the Western Heart version of Armor King. Reskinned with a leopard head: black/white, striped/spotted, white digital-camo attires. A masked ninja in the Storm Shadow mold — the owner's reference correction: Snake Eyes is the black ninja, Storm Shadow is the white ninja (G.I. Joe); Yukihyō is based on Snake Eyes but MORE based on Storm Shadow.
+
+Backstory, soul assignment, and trial role still open — owner's material to come.
+
+*Owner-directed 2026-10-13 (naming + design). Wired into repo 2026-10-19.*
+
+### CAIN ELIAS — The Deadman (Bonus)
+
+**Owner's words (2026-10-19):** "Cain Elias" — Vain Abel's brother, based on the Undertaker (WWE). Attire 1 = biker; Attire 2 = fight gear. Moveset: Glen Kluger (Urban Reign biker gang leader) or a fitting Tekken character — NOT one already remade. Signature moves include the Last Ride powerbomb and the Tombstone (check Urban Reign models for the moves).
+
+Cain Elias walks in where Vain Abel Elias walked out — the brother who stayed dead. The biker leathers are his ring gear; the fight gear is what he wears when the bell tolls and the lights go out. He does not rush. The Tombstone is not a move, it is an appointment.
+
+**Models (owner-made Tripo pulls, wired 2026-10-19):** Attire 1 (biker): https://studio.tripo3d.ai/3d-model/6aeaaffd-e7d5-45ba-8026-3f0c7b357d86 — `roster/cain-elias/attires/attire1/model.glb`. Attire 2 (fight gear): https://studio.tripo3d.ai/3d-model/752ad786-5076-4469-aaf7-39048f283624 — `roster/cain-elias/attires/attire2/model.glb`. Renders: `docs/tpose-refs/cain-elias/a1_front.png`, `a2_front.png` (own-eyes verified).
+
+*Owner-directed 2026-10-19 (naming, design, attires). Wired into repo 2026-10-19 (gap-audit stream). Moveset pick owned by the moveset lane.*
+
+---
+
+<!-- BEGIN WMXIX / MAT-LEGENDS SECTION (WMXIX wiring lane, 2026-10-20 — coordinator reconciles at merge) -->
+
+## MAT-LEGENDS (WWE WrestleMania XIX) — wired 2026-10-20
+
+The `mat-legends` universe is Western Heart's wrestling-mechanics donor: its grappling system, arena bones, and create-a-wrestler part library, converted to WH canon. Per-game source of truth: `teardown/wmxix/CANON-CONVERSION.md`. Full inventory + reconciliation of both teardown folders: `teardown/wmxix/WIRING-INVENTORY.md`.
+
+- **Moves/animations:** all 170 decoded YANM clips carry canon IDs (`ML-<CLIP>`) in `moveset-library/animations/WMXIX-CLIP-INDEX.json`; 169 are registered as library moves in `moveset-library/movesets/WMXIX-MOVES.json`, wired to Tekken-style throw inputs (federation rule: wrestling moves enter only on Tekken inputs/structure). Per-clip move names are NOT canon yet — the clip-semantics decode is open and no names were invented.
+- **Arenas → canon stages:** the conversions authored in `teardown/wmxix/ARENA-UNIVERSE-MAP.md` are wired as data in `game/assets/stages/mat-legends/stages.json` (arena 00 → Helix Palace, 01 → Octagonal Shrine Par-Fang, 02 → Phantom Marketplace, Hell-cell → The Drill Wound, backstage sets → Helix Palace interiors / Wrestling Mode areas). Arena geometry is decoded point clouds; face reconstruction is open, so no WMXIX geometry is playable in the build yet.
+- **CAW parts:** the 2,690-part XIX create-a-wrestler library is indexed for the Creation Suite in `customization/mat-legends-caw.json` (catalog: `teardown/wmxix/caw-parts/files.tsv`).
+- **Characters:** wrestler slot → WH character assignment is the owner's and remains PENDING (`teardown/wwe-wrestlemania-xix/WRESTLER-IDENTITY-MAP.md`); the models themselves live in the wrestling repos per the federation rule. Nothing was assigned or invented by this lane.
+- **Revenge Mode:** XIX's out-of-ring traversal mode has no canon name or implementation yet — flagged, not invented. Its stage data is registered in `stages.json` as `backstage_traversal` / `open_traversal`.
+
+<!-- END WMXIX / MAT-LEGENDS SECTION -->

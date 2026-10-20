@@ -381,6 +381,49 @@
    ],
    "move_class": "special",
    "note": "DOA signature counter-hold. Damage estimated."
+  },
+  "S": {
+   "name": "Platform Drop [WH SIGNATURE]",
+   "input": "S",
+   "startup": 0.34,
+   "active": 0.05,
+   "recovery": 0.98,
+   "damage": 21,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 13,
+   "anim_ref": "wh:doa-bass:sig:platform-drop",
+   "input_slots": [
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "The rig worker hits like the platform drops. Powerhouse slam, no finesse required."
+  },
+  "P+K": {
+   "name": "Overtime Shift [WH SIGNATURE]",
+   "input": "P+K",
+   "startup": 0.32,
+   "active": 0.05,
+   "recovery": 0.95,
+   "damage": 23,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 13,
+   "anim_ref": "wh:doa-bass:sig:overtime-shift",
+   "input_slots": [
+    "P+K",
+    "P",
+    "K"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "He's working late. A bear-hug overtime shift that doesn't clock out.",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true
   }
  },
  "strings": [

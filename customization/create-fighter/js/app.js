@@ -7,6 +7,7 @@
    locks for canon roster bodies; presets = named saved fighters (save/load/delete). */
 import { Preview3D, SKIN_TONES } from './preview3d.js';
 import { Catalog, CATEGORIES, CONFLICTS } from './catalog.js';
+import { createDomeParamUI, loadDomeParams } from '../../../game/js/dome-params.js';
 import { BODY_MORPHS, FACE_SHAPE_MORPHS, FACE_PARAMS, FACE_PRESETS, FACE_CHECKLIST, facePresetVector } from './morphdata.js';
 
 const LS_KEY = 'wh_create_fighter_v1';
@@ -72,11 +73,22 @@ function blankFighter(){
 let F = blankFighter();
 let catalog=null, moveDb=null, moveSlots=null;
 let preview=null;
-let ui = { tab:'body', attireCat:null, gridPage:0, gridQuery:'', selPart:null, selSlot:null, wardSel:0 };
+let ui = { tab:'body', attireCat:null, gridPage:0, gridQuery:'', selPart:null, selSlot:null, wardSel:0, domeOpen:false };
 
 const $ = s=>document.querySelector(s);
 const attire = ()=>F.attires[F.attireIndex];
 const isCustom = ()=>F.base==='new';
+
+/* Doc Frank Attire 2 "Wowomomo" dome editor — game/js/dome-params.js mounted
+   into the ATTIRE flow (owner 2026-10-19: put ALL dome edit abilities in the
+   Creation Suite with visual preview so he edits it himself). Paths are
+   relative to this page (customization/create-fighter/index.html). */
+const DOME_ATTIRE_PATH = '../../roster/doc-frank/attires/attire2';
+const DOME_BASE_GLB = DOME_ATTIRE_PATH + '/base/model.glb';
+const DOME_GLB = DOME_ATTIRE_PATH + '/dome-fix/model-dome-glass-v5.glb';
+let domeParams = null;      // live params object (the dome module mutates it in place)
+let domeSavedBase = null;   // params the v5 GLB was baked from (preview delta base)
+const isDomeAttire = ()=>F.base==='docfrank' && F.attireIndex===1;
 
 /* ---------------- persistence ---------------- */
 function persist(){ try{ localStorage.setItem(LS_KEY, JSON.stringify(F)); }catch(e){} toast('Saved ✓'); }
@@ -106,6 +118,12 @@ $('#modal-scrim').onclick=closeModal;
 /* ---------------- preview sync ---------------- */
 function syncPreview(){
   if(!preview) return;
+  // Dome editor open (Doc Frank Attire 2): the dome preview owns the scene.
+  if(preview.domeActive && !(ui.domeOpen && isDomeAttire())) preview.exitDomePreview();
+  if(ui.domeOpen && isDomeAttire()){
+    if(domeParams) preview.applyDomeParams(domeParams);
+    return;
+  }
   if(F.model && preview.modelUrl!==F.model && !preview._loading){ preview.loadModel(F.model); return; }
   if(isCustom()){
     preview.setSkinTone(F.body.skin_tone);
@@ -142,14 +160,14 @@ function renderTopbar(){
     const nm = a.name || `ATTIRE ${i+1}`;
     b.innerHTML = `<span class="athumb" ${a.thumb?`style="background-image:url('${a.thumb}')"` : ''}></span>${nm}`;
     b.title = nm + (i>0?'':' (clone source for empty slots)');
-    b.onclick=()=>{ F.attireIndex=i; if(!F.attires[i].name && i>0){ /* empty slot: clone attire 1 appearance */ const src=JSON.parse(JSON.stringify(F.attires[0])); src.name=''; src.thumb=''; F.attires[i]=src; } ui.selPart=null; renderAll(); };
+    b.onclick=()=>{ F.attireIndex=i; if(!F.attires[i].name && i>0){ /* empty slot: clone attire 1 appearance */ const src=JSON.parse(JSON.stringify(F.attires[0])); src.name=''; src.thumb=''; F.attires[i]=src; } ui.selPart=null; ui.domeOpen=false; renderAll(); };
     tabs.appendChild(b);
   });
 }
 
 /* ---------------- left rail ---------------- */
 function setTab(tab){
-  ui.tab=tab; ui.attireCat=null; ui.selPart=null; ui.gridPage=0;
+  ui.tab=tab; ui.attireCat=null; ui.selPart=null; ui.gridPage=0; ui.domeOpen=false;
   document.querySelectorAll('.rail-btn').forEach(x=>x.classList.toggle('active',x.dataset.tab===tab));
   renderAll();
 }
@@ -291,10 +309,18 @@ function renderFace(el){
 
 /* ================= ATTIRE ================= */
 function renderAttire(el){
+  if(ui.domeOpen && isDomeAttire()){ renderDomePanel(el); return; }
   if(!ui.attireCat){
     $('#panel-sub').textContent = 'Tekken item shop — pick a category';
     const eq = attire().equipped;
     el.innerHTML = `<div class="note"><b>TAP-TO-ASSIGN:</b> tap/scroll the library and tap a part to select it, then BUY → EQUIP. No drag-and-drop — ever. Items try on instantly. <span class="geo-badge">GEOMETRY PENDING</span> on teardown parts: real ymg/obj meshes aren't wired yet, so equip shows a labeled socket marker + records the part in your fighter JSON. CC0 universal hair shows the REAL mesh. No fake equipped meshes — ever.</div>`;
+    if(isDomeAttire()){
+      // Doc Frank Attire 2 "Wowomomo" dome — the dome parameter module lives here.
+      const db=document.createElement('button'); db.className='subcat';
+      db.innerHTML=`<span class="sc-ico">🔮</span><span>DOME PARAMETERS<br><small style="color:var(--dim)">Wowomomo dome — Glass / Liquid / Effects · live preview</small></span><span class="sc-count">⚙</span>`;
+      db.onclick=()=>{ ui.domeOpen=true; renderAll(); };
+      el.appendChild(db);
+    }
     CATEGORIES.filter(c=>c.key!=='bodies'&&c.key!=='skins').forEach(c=>{
       const b=document.createElement('button'); b.className='subcat'+(eq[c.slotId]?' equipped':'');
       b.innerHTML=`<span class="sc-ico">${c.icon}</span><span>${c.label}${eq[c.slotId]?'<br><small style="color:var(--green)">✓ '+esc(catalog.get(eq[c.slotId])?.displayName||eq[c.slotId])+'</small>':''}</span><span class="sc-count">${catalog.count(c.key)}</span>`;
@@ -307,6 +333,51 @@ function renderAttire(el){
 }
 
 function esc(s){ return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+/* ================= DOME — Doc Frank Attire 2 "Wowomomo" parameter editor =================
+   game/js/dome-params.js mounted into the ATTIRE flow. Glass / Liquid / Effects
+   groups with sliders + color pickers, live in-scene preview via the v5 dome
+   GLB overlaid on Attire 2's real base model (same model space the dome was
+   built in — verified against both GLBs, no guessed transform).
+   "Save to Attire": the module's button downloads dome-params.json (the file
+   the build script reads) AND we persist the params onto this attire in the
+   fighter JSON (localStorage autosave + presets + export).
+   Liquid Top stays LOCKED — DO NOT RAISE (owner 2026-10-19). */
+async function renderDomePanel(el){
+  $('#panel-sub').textContent = 'Doc Frank · Attire 2 "Wowomomo" — dome editor';
+  el.innerHTML = `
+    <div class="back-row"><button class="btn back-btn" id="btn-dome-back">← CATEGORIES</button></div>
+    <div class="note">🔮 <b>DOME PARAMETERS</b> — the preview shows Attire 2's real base model with the v5 dome. Every slider moves the dome <b>in-scene</b>. <b>Liquid Top is locked</b> — DO NOT RAISE (owner 2026-10-19). Lava/bubble <b>counts</b> are build-time: 0 hides them here, the exact count lands when the saved <span class="mono">dome-params.json</span> is rebuilt into the GLB.</div>
+    <div id="dome-params-ui"></div>`;
+  el.querySelector('#btn-dome-back').onclick=()=>{
+    ui.domeOpen=false; if(preview) preview.exitDomePreview(); renderAll();
+  };
+  const host = el.querySelector('#dome-params-ui');
+  host.dataset.attirePath = DOME_ATTIRE_PATH;
+  if(!domeParams){
+    const fileParams = await loadDomeParams(DOME_ATTIRE_PATH);
+    if(!el.isConnected || !ui.domeOpen) return;   // left the panel while loading
+    domeSavedBase = { ...fileParams };             // what the v5 GLB was baked from
+    domeParams = attire().domeParams
+      ? { ...fileParams, ...attire().domeParams }  // suite-saved edits win
+      : { ...fileParams };
+  }
+  if(!el.isConnected || !ui.domeOpen) return;
+  createDomeParamUI(host, domeParams, ()=>{
+    if(preview) preview.applyDomeParams(domeParams);
+  });
+  // The module's own Save button downloads dome-params.json for the repo
+  // pipeline — ALSO persist the params onto this attire itself.
+  const saveBtn = host.querySelector('.dome-param-save');
+  if(saveBtn) saveBtn.addEventListener('click', ()=>{
+    attire().domeParams = { ...domeParams };
+    persistQuiet(); toast('Dome saved to Attire 2 ✓');
+  });
+  if(preview){
+    preview.enterDomePreview(DOME_BASE_GLB, DOME_GLB, domeSavedBase || domeParams);
+    preview.applyDomeParams(domeParams);
+  }
+}
 
 function renderItemGrid(el, cat){
   $('#panel-sub').textContent = `${cat.label} — ${catalog.count(cat.key)} parts · slot ${cat.slotId}`;
@@ -663,7 +734,7 @@ function selectBase(id){
   F.base=r.id;
   F.model=r.glb||SOLDIER_GLB;
   F.profile.name=r.name;
-  ui.selPart=null; ui.attireCat=null;
+  ui.selPart=null; ui.attireCat=null; ui.domeOpen=false;
   if(preview) preview.loadModel(F.model);
 }
 
@@ -717,7 +788,7 @@ $('#btn-presets').onclick=()=>{
       const n=b.dataset.pl; const ps2=getPresets();
       if(!ps2[n]) return;
       F=Object.assign(blankFighter(), JSON.parse(JSON.stringify(ps2[n].fighter)));
-      ui.selPart=null; ui.attireCat=null; ui.selSlot=null;
+      ui.selPart=null; ui.attireCat=null; ui.selSlot=null; ui.domeOpen=false;
       closeModal(); renderAll(); toast(`Preset "${n}" loaded ✓`);
     });
     bodyEl.querySelectorAll('[data-pd]').forEach(b=>b.onclick=()=>{
@@ -749,7 +820,7 @@ $('#btn-load').onclick=()=>$('#file-load').click();
 $('#file-load').onchange=e=>{
   const f=e.target.files[0]; if(!f) return;
   const r=new FileReader();
-  r.onload=()=>{ try{ F=Object.assign(blankFighter(), JSON.parse(r.result)); ui.selPart=null; ui.attireCat=null; renderAll(); toast('Fighter loaded ✓'); }
+  r.onload=()=>{ try{ F=Object.assign(blankFighter(), JSON.parse(r.result)); ui.selPart=null; ui.attireCat=null; ui.domeOpen=false; renderAll(); toast('Fighter loaded ✓'); }
     catch(err){ modal('LOAD FAILED','<p>Not a valid fighter JSON.</p>',[{label:'OK',cls:'btn-gold'}]); } };
   r.readAsText(f); e.target.value='';
 };
