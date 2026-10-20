@@ -1251,3 +1251,34 @@ Cain Elias walks in where Vain Abel Elias walked out — the brother who stayed 
 **Models (owner-made Tripo pulls, wired 2026-10-19):** Attire 1 (biker): https://studio.tripo3d.ai/3d-model/6aeaaffd-e7d5-45ba-8026-3f0c7b357d86 — `roster/cain-elias/attires/attire1/model.glb`. Attire 2 (fight gear): https://studio.tripo3d.ai/3d-model/752ad786-5076-4469-aaf7-39048f283624 — `roster/cain-elias/attires/attire2/model.glb`. Renders: `docs/tpose-refs/cain-elias/a1_front.png`, `a2_front.png` (own-eyes verified).
 
 *Owner-directed 2026-10-19 (naming, design, attires). Wired into repo 2026-10-19 (gap-audit stream). Moveset pick owned by the moveset lane.*
+
+---
+
+## APPENDIX (2026-10-20) — TEKKEN 3 / iron-legacy WIRING & CONVERSION
+
+*Added by the Tekken 3 full-wiring lane (owner order 2026-10-20 ~08:06 CDT). Append-only;
+the per-game source of truth is `teardown/tekken3/CANON-CONVERSION.md`, the checklist is
+`teardown/tekken3/WIRING-INVENTORY.md` (19,477 files audited).*
+
+Tekken 3's universe name in Western Heart is **iron-legacy**. As of 2026-10-20, all 20
+character motion banks present on the owner's disc image (types 0–20) plus the common bank
+are extracted from TEKKEN3.BNS and SHA-256-verified, and full movesets (frame data) exist
+for all 20 — the original 7 (King, Yoshimitsu, Xiaoyu, Jin, Bryan, Heihachi, Gun Jack) plus
+13 extracted that day (Paul, Law, Lei, Nina, Hwoarang, Eddy, Julia, Kuma/Panda, Ogre, Anna,
+Dr. Bosconovitch, Gon, Forest Law; 5,663 additional move rows). Type 15 (Mokujin) has no
+bank on this disc image (BNS record 295 is size 0).
+
+The canon identities of the T3 sources are the ones already established in this bible and
+the roster: King→PANTERA, Jin→DEMONIO (soul RIN), Yoshimitsu→PHANTOM, Heihachi→DIABLO,
+Bryan→SKULL, Gun Jack→SAM-UR-A1, Xiaoyu→SAKU RA, Paul→TOU, Eddy→KING TYRANT (soul KAI),
+Hwoarang→GYOU, Julia→NIGHTWOLF / soul ZEN (a three-way doc conflict is flagged in the
+conversion record, unresolved), Lei→soul BYOU (vessel name pending the owner's Lei naming
+decision, as noted in §4 of this bible), Nina→AWA POP, Anna→TORCH, Dr. Bosconovitch→DOC
+FRANK. Law, Ogre, Gon, Panda, and Mokujin have **no** Western Heart mapping in canon —
+flagged for the owner's decision, never invented. The bear's reserved name, if ever pulled,
+is URSA (per §6, DIO).
+
+Diablo is the one T3-sourced member of the Seven whose real animation bank is not yet
+decoded into the game: Heihachi's KMD carries empty vertex rows for parts 2/9/13 in both
+costume records, which blocks the shared bake pipeline at its part-2 pivot step (full
+evidence in the conversion record §5). His moveset is fully wired; his motion is the gap.
