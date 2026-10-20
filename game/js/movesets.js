@@ -44,6 +44,8 @@ export const MOVESET_IDS = [
   'demonio-winged',
   // Sketchfab intake (owner 2026-10-19): working names, WH names pending.
   'zangief', 'blanka', 'vega', 'iori', 'armor-king',
+  // Custom fighters (owner 2026-10-19): KRONOS — Zangief base + Golem (Urban Reign) mix.
+  'kronos',
 ];
 
 const _movesets = {};
