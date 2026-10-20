@@ -36,7 +36,7 @@ export const FULL_ROSTER = [
     colors: { suit: 0x1a3a6b, trim: 0x9fd8ff }, style: 'Mishima Karate',
     surge: { name: 'COLD FLAME', color: 0x9fd8ff, accent: 0xffffff },
     // Attire 1 = Tripo unwinged demon (owner 2026-10-19). Three forms, transform both directions (Roshi-style).
-    // KeyT = up, Down+KeyT = down (rare).
+    // TRANSFORM touch button = up, tap while crouching = down (rare). Full meter required.
     forms: {
       'demonio-a1': {
         up: { target: 'demonio-winged', label: 'DEVIL ASCENSION', powerMult: 1.5, speedMult: 1.05, defenseMult: 1.2, bodyScale: 1.22, moveset: 'demonio-winged' },
@@ -73,7 +73,26 @@ export const FULL_ROSTER = [
   { id: 'kingtyrant', name: 'KING TYRANT', title: 'Showman King', base: 'Eddy Gordo', moveset: 'xiaoyu', model: 'pantera', tintStrength: 0.25,
     colors: { suit: 0x8a6a1a, trim: 0xffd700 }, style: 'Capoeira', archetype: 'Showman' },
   { id: 'burger', name: 'BURGER', title: 'Hunger is a Curse', base: 'Bob', moveset: 'bryan', model: 'pantera', tintStrength: 0.25,
-    colors: { suit: 0xcc8833, trim: 0xff4400 }, style: 'Sumo/Brawler', archetype: 'Power' },
+    colors: { suit: 0xcc8833, trim: 0xff4400 }, style: 'Sumo/Brawler', archetype: 'Power',
+    // Burger demon transformation chain (owner 2026-10-19): Kusaregedo kit per form.
+    // Chain: base -> speed-demon -> the-mouth -> demon (final). Demon form gets FULL kit
+    // + mix of smaller forms' abilities + exclusives. Extensible for new forms.
+    forms: {
+      'pantera': {
+        up: { target: 'burger-speed-demon', label: 'SPEED DEMON', powerMult: 1.1, speedMult: 1.3, defenseMult: 0.9, moveset: 'burger-speed-demon' },
+      },
+      'burger-speed-demon': {
+        up: { target: 'burger-the-mouth', label: 'THE MOUTH', powerMult: 1.18, speedMult: 0.65, defenseMult: 1.22, bodyScale: 1.1, moveset: 'burger-the-mouth' },
+        down: { target: 'pantera', label: 'POWER DOWN', powerMult: 0.91, speedMult: 0.77, defenseMult: 1.11, moveset: 'bryan' },
+      },
+      'burger-the-mouth': {
+        up: { target: 'burger-demon', label: 'DEMON ASCENSION', powerMult: 1.23, speedMult: 1.06, defenseMult: 1.18, bodyScale: 1.14, moveset: 'burger-demon' },
+        down: { target: 'burger-speed-demon', label: 'POWER DOWN', powerMult: 0.85, speedMult: 1.54, defenseMult: 0.82, bodyScale: 0.91, moveset: 'burger-speed-demon' },
+      },
+      'burger-demon': {
+        down: { target: 'burger-the-mouth', label: 'POWER DOWN', powerMult: 0.81, speedMult: 0.94, defenseMult: 0.85, bodyScale: 0.88, moveset: 'burger-the-mouth' },
+      },
+    } },
   { id: 'awapop', name: 'AWA POP', title: 'Bubbles', base: 'Nina', moveset: 'demonio', model: 'steve-fox', tintStrength: 0.6,
     colors: { suit: 0xff9dcc, trim: 0xffffff }, style: 'Assassin', archetype: 'Rushdown' },
   { id: 'scimitar', name: 'SCIMITAR', title: 'Desert Blade', base: 'Shaheen', moveset: 'demonio', model: 'scimitar', tintStrength: 0.6,
@@ -105,7 +124,7 @@ export const FULL_ROSTER = [
   { id: 'docfrank', name: 'DOC FRANK', title: 'Father of Machines', base: 'Bosconovitch', moveset: 'gunjack', model: 'doc-frank-machine-shop', tintStrength: 0.6,
     colors: { suit: 0x6a6a7a, trim: 0x00ffcc }, style: 'Inventor', archetype: 'Tricky',
     // Mid-match Roshi-style transformation (owner 2026-10-19):
-    // old-man Attire 1 -> bigger Tripo form (2c6cff79, the true transform target). KeyT / TRANSFORM button.
+    // old-man Attire 1 -> bigger Tripo form (2c6cff79, the true transform target). TRANSFORM touch button.
     transform: { targetModel: 'doc-frank-big', powerMult: 1.4, speedMult: 0.88, defenseMult: 1.15, bodyScale: 1.18 } },
   // ——— RESKIN WAVE (2026-10-19): first custom attires as selectable fighters ———
   { id: 'demonio-bloodline-ember', name: 'DEMONIO', title: 'Bloodline Ember', base: 'Jin Kazama', moveset: 'demonio', model: 'demonio-bloodline-ember', tintStrength: 0.25,

@@ -83,3 +83,53 @@ flagged: belt2/buckles prims are authored displaced at neck height
 across the whole pantera model family; renders confirm they float at
 the shoulders in the shipped model. Not repositioned — no source of
 truth for their intended placement (see docs/RULES_NO_GUESSING.md).
+
+## 2026-10-20 — Forward-merge of moveset-cluster-a-t8 (PR #357) into main (recovery run)
+- Method: `git merge origin/main` in the lane worktree; 18 moveset JSONs resolved by semantic-union script (/tmp tooling, verifier re-checked every entry against both source versions — all OK); game/js/movesets.js resolved to main's version (branch's only functional addition, koreshi in MOVESET_IDS, already on main; branch header garble not carried over).
+- ONE deletion, named per anti-clobber law 4: the branch's duplicate `koreshi` roster block in game/js/roster-full.js (comment + 2 lines, placeholder model steve-fox) removed because the merge also carries main's canonical koreshi entry (model koreshi, surge/stats/ai) — same dedupe as PR #363's kronos. Roster after: 57 entries, 57 unique ids.
+- Merged counts (moves): pantera 333, phantom 405, koreshi 329, samura1 302, cyborgx 290, sakura 282, sha 281, torch 274, purplerain 263, star 260, kingtyrant 258, skull 255, kinpo 253, diablo 247, burger 246, demonio 237, awapop 299, scimitar 196 — all at/above both source versions.
+
+## 2026-10-20 — Forward-merge of moveset-cluster-b-t7 (PR #359) into main (recovery run)
+- Method: `git merge origin/main` in a dedicated worktree; the 10 conflicted moveset JSONs resolved by semantic-union script and re-verified entry-by-entry against both source versions (independent verifier: ALL OK). Contested keys keep main's entry; branch T7 entries rekeyed <key>_t7 with t7_input recorded; each file carries a forward_merge provenance block. mariposa.json is the branch's new file (223 moves, Zafina base) and lands as a pure addition; game/js/movesets.js auto-merged to the exact id union (74 ids incl. mariposa, zero duplicates, all resolve to files).
+- Deletions introduced by this merge: none.
+- Merged counts (moves): rave 625, mariposa-monarch 328, lili 325, slice 312, yukihyo 306, bruno 296, michiko 293, negativo 251, dio 230, thor 225 — all at/above both source versions.
+
+# WORKLOG — Burger Kusaregedo Kit (2026-10-19)
+
+## Task
+Wire Youkai Kusaregedo's full kit into Burger per owner 2026-10-19 ~18:41 CDT.
+Owner confirmed Samurai Shodown (not Onimusha) is the right source.
+
+## Sources (NO-GUESSING compliance)
+- Frame data: https://dreamcancel.com/wiki/Samurai_Shodown_VI/Kusaregedo (Tekitogate)
+- Powers/story: https://snk.fandom.com/wiki/Youkai_Kusaregedo
+- Research doc: ~/workspace/burger-kusaregedo/KUSAREGEDO-MOVESET.md
+- All startup/active frames are real SamSho VI data (60fps -> seconds).
+- Damage scaled to WH 100HP. Kusaregedo's fixed grab % preserved.
+
+## Files
+- `game/assets/movesets/burger-demon.json` (NEW): 24 moves, 8 specials. Full kit + form-mix + 2 exclusives.
+- `game/assets/movesets/burger-speed-demon.json` (NEW): 12 moves, 3 specials. Quick moves.
+- `game/assets/movesets/burger-the-mouth.json` (NEW): 12 moves, 3 specials. Head/bite.
+- `game/js/movesets.js` (EDIT): registered 3 IDs in MOVESET_IDS.
+- `game/js/roster-full.js` (EDIT): Burger `forms` block — chain base -> speed-demon -> the-mouth -> demon.
+- `roster/burger/ATTIRE-SLOTS.md` (EDIT): documented per-form movesets + chain.
+
+## Per-form distribution
+- **Demon (final)**: FULL kit (7 signatures + 16 normals) + smaller-form abilities
+  (demon-dash, rapid-bites, mega-chomp, head-slam, hungry-eyes, feral-rend)
+  + exclusives (INFINITE HUNGER ultimate, Gaki's Feast armor stance).
+- **Speed Demon**: Flying Head Butt (up/down), Quick Palm, Speed Boot, Backflip + speed kit.
+- **The Mouth**: Huge Headbutt, Mega Chomp, Head Slam, Tongue Lick/Sweep, Maw of Hunger.
+
+## Verification
+- All 3 JSONs: schema_version 2, valid JSON, fighter IDs match filenames.
+- `node --check` passes on both edited JS files.
+- `git status`: 3 modified + 3 new, zero deletions (anti-clobber check clean).
+
+## Follow-ups (not in this PR)
+- Mini Tank form (model pulled 2026-10-19): needs its own moveset + chain slot.
+- New form models (speed-demon, the-mouth) not yet wired to roster/ — Tripo pulls exist in ~/workspace/tripo-recovery/.
+- Bob's full Tekken moveset for Burger base (separate lane).
+- Kusaregedo animation clips: anim_ref points to samsho:kusaregedo/ — clips to be built from footage.
+

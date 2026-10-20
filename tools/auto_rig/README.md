@@ -1,7 +1,7 @@
 # tools/auto_rig — unified auto-rig system for Western Heart
 
 Production-grade auto-rigging, built from real 2026 research
-(see `docs/AUTO-RIG-DEEP-RESEARCH-2026.md`). One CLI, five backends, one gate.
+(see `docs/AUTO-RIG-DEEP-RESEARCH-2026.md`). One CLI, six backends, one gate.
 
 ## Quick start
 
@@ -13,6 +13,14 @@ python3 tools/auto_rig/auto_rig.py --in MODEL.glb --out RIGGED.glb \
 # dense Tripo static: k-NN weight transfer from a donor rig
 python3 tools/auto_rig/auto_rig.py --in STATIC.glb --out RIGGED.glb \
     --backend knn --donor game/assets/models/pantera.glb
+
+# GameRig: fresh game-ready skeleton generated per-mesh (Rigify-based),
+# with a CMU mocap clip baked in as animation proof
+python3 tools/auto_rig/auto_rig.py \
+    --in roster/baek/attires/master-white/baek-master-white.glb \
+    --out baek_gamerig.glb --backend gamerig \
+    --donor assets/free-pull-1/cmu-mocap/fighting/135_04.bvh \
+    --clip CMU135_04_boxing --clip-start 240 --clip-frames 72 --clip-step 4
 
 # GPU: AI skeleton prediction (Kaggle/Colab)
 python3 tools/auto_rig/kaggle/auto_rig_gpu.py --backend magicarticulate \
@@ -28,6 +36,7 @@ doesn't pass.
 | Backend | Needs | What it does |
 |---|---|---|
 | `blender-heat` | Blender 4.0.2 (local) | normalize → fixed WH skeleton → heat-diffusion weights. Deterministic. For T-pose/A-pose humanoids. |
+| `gamerig` | Blender 4.0.2 (local) | GameRig (vendored Rigify feature set) generates a fresh single-hierarchy deform skeleton fitted to the mesh → bone-heat skinning → optional donor clip baked (GLB clips or CMU BVH). Skeleton fits the mesh. See `examples/gamerig-baek/` and `tools/open-source/gamerig/USAGE.md`. |
 | `knn` | numpy/scipy | k-NN weight transfer from a donor rig. For dense statics Blender chokes on. |
 | `magicarticulate` | CUDA 4.6GB+ | AI skeleton prediction (Apache-2.0, vendored). 1–2 s/mesh. |
 | `unirig` | CUDA 8GB+ | AI skeleton + skinning (MIT, vendored). |
@@ -42,6 +51,7 @@ tools/auto_rig/
   backends/
     normalize.py         pure-Python GLB normalize (bake transforms, feet y=0, scale)
     blender_heat.py      Blender: build WH skeleton + heat weights + export
+    gamerig_backend.py   Blender: GameRig generate + fit + skin + clip bake + export
     skeleton_template.json  52-bone WH Mixamo-style template (Y-up, faces -Z)
     knn_transfer.py      k-NN weight transfer from donor rig
     ai_rig.py            GPU adapter: run vendor AI, canonicalize joint names

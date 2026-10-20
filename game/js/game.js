@@ -75,6 +75,9 @@ export class Game {
 
     this.p1 = new Fighter(playerChar, stage.spawns.p1, 1, true);
     this.p2 = new Fighter(enemyChar, stage.spawns.p2, -1, false);
+    // Transformation cinematics need the arena for camera shake.
+    this.p1._sceneRef = this.arena;
+    this.p2._sceneRef = this.arena;
     this.arena.scene.add(this.p1.root, this.p2.root);
     this.ai = new AIController(this.p2, enemyChar.ai);
     this.ai1 = this.demo ? new AIController(this.p1, playerChar.ai) : null;
