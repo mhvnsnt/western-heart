@@ -262,8 +262,2395 @@
    "move_class": "special",
    "wh_signature": true,
    "wh_note": "WH signature: Blanka ball roll."
+  },
+  "n+1": {
+   "name": "Standing Light Punch",
+   "input": "n+1",
+   "t3_source": "sf6",
+   "sf_motion": "5LP",
+   "startup": 0.083,
+   "active": 0.05,
+   "recovery": 0.167,
+   "damage": 9,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 4,
+   "anim_ref": "sf6:blanka:standing_light_punch",
+   "input_slots": [
+    "n+1"
+   ],
+   "move_class": "strike",
+   "note": "SF: 5LP."
+  },
+  "n+2": {
+   "name": "Standing Medium Punch",
+   "input": "n+2",
+   "t3_source": "sf6",
+   "sf_motion": "5MP",
+   "startup": 0.15,
+   "active": 0.05,
+   "recovery": 0.25,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 10,
+   "anim_ref": "sf6:blanka:standing_medium_punch",
+   "input_slots": [
+    "n+2"
+   ],
+   "move_class": "strike",
+   "note": "SF: 5MP."
+  },
+  "n+1+2": {
+   "name": "Standing Heavy Punch",
+   "input": "n+1+2",
+   "t3_source": "sf6",
+   "sf_motion": "5HP",
+   "startup": 0.167,
+   "active": 0.117,
+   "recovery": 0.283,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.6,
+   "soulGain": 10,
+   "anim_ref": "sf6:blanka:standing_heavy_punch",
+   "input_slots": [
+    "n+1+2"
+   ],
+   "move_class": "strike",
+   "note": "SF: 5HP."
+  },
+  "n+3": {
+   "name": "Standing Light Kick",
+   "input": "n+3",
+   "t3_source": "sf6",
+   "sf_motion": "5LK",
+   "startup": 0.067,
+   "active": 0.067,
+   "recovery": 0.117,
+   "damage": 9,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 4,
+   "anim_ref": "sf6:blanka:standing_light_kick",
+   "input_slots": [
+    "n+3"
+   ],
+   "move_class": "strike",
+   "note": "SF: 5LK."
+  },
+  "n+4": {
+   "name": "Standing Medium Kick",
+   "input": "n+4",
+   "t3_source": "sf6",
+   "sf_motion": "5MK",
+   "startup": 0.133,
+   "active": 0.05,
+   "recovery": 0.283,
+   "damage": 18,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 9,
+   "anim_ref": "sf6:blanka:standing_medium_kick",
+   "input_slots": [
+    "n+4"
+   ],
+   "move_class": "strike",
+   "note": "SF: 5MK."
+  },
+  "n+3+4": {
+   "name": "Standing Heavy Kick",
+   "input": "n+3+4",
+   "t3_source": "sf6",
+   "sf_motion": "5HK",
+   "startup": 0.117,
+   "active": 0.15,
+   "recovery": 0.3,
+   "damage": 20,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.6,
+   "soulGain": 10,
+   "anim_ref": "sf6:blanka:standing_heavy_kick",
+   "input_slots": [
+    "n+3+4"
+   ],
+   "move_class": "strike",
+   "note": "SF: 5HK."
+  },
+  "fc+1": {
+   "name": "Crouching Light Punch",
+   "input": "fc+1",
+   "t3_source": "sf6",
+   "sf_motion": "2LP",
+   "startup": 0.1,
+   "active": 0.05,
+   "recovery": 0.133,
+   "damage": 9,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 4,
+   "anim_ref": "sf6:blanka:crouching_light_punch",
+   "input_slots": [
+    "fc+1"
+   ],
+   "move_class": "strike",
+   "note": "SF: 2LP."
+  },
+  "fc+2": {
+   "name": "Crouching Medium Punch",
+   "input": "fc+2",
+   "t3_source": "sf6",
+   "sf_motion": "2MP",
+   "startup": 0.15,
+   "active": 0.083,
+   "recovery": 0.267,
+   "damage": 18,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 9,
+   "anim_ref": "sf6:blanka:crouching_medium_punch",
+   "input_slots": [
+    "fc+2"
+   ],
+   "move_class": "strike",
+   "note": "SF: 2MP."
+  },
+  "fc+1+2": {
+   "name": "Crouching Heavy Punch",
+   "input": "fc+1+2",
+   "t3_source": "sf6",
+   "sf_motion": "2HP",
+   "startup": 0.25,
+   "active": 0.083,
+   "recovery": 0.333,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.6,
+   "soulGain": 10,
+   "anim_ref": "sf6:blanka:crouching_heavy_punch",
+   "input_slots": [
+    "fc+1+2"
+   ],
+   "move_class": "strike",
+   "note": "SF: 2HP."
+  },
+  "fc+3": {
+   "name": "Crouching Light Kick",
+   "input": "fc+3",
+   "t3_source": "sf6",
+   "sf_motion": "2LK",
+   "startup": 0.083,
+   "active": 0.033,
+   "recovery": 0.167,
+   "damage": 6,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 3,
+   "anim_ref": "sf6:blanka:crouching_light_kick",
+   "input_slots": [
+    "fc+3"
+   ],
+   "move_class": "strike",
+   "note": "SF: 2LK."
+  },
+  "fc+4": {
+   "name": "Crouching Medium Kick",
+   "input": "fc+4",
+   "t3_source": "sf6",
+   "sf_motion": "2MK",
+   "startup": 0.133,
+   "active": 0.05,
+   "recovery": 0.267,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "sf6:blanka:crouching_medium_kick",
+   "input_slots": [
+    "fc+4"
+   ],
+   "move_class": "strike",
+   "note": "SF: 2MK."
+  },
+  "fc+3+4": {
+   "name": "Crouching Heavy Kick",
+   "input": "fc+3+4",
+   "t3_source": "sf6",
+   "sf_motion": "2HK",
+   "startup": 0.183,
+   "active": 0.067,
+   "recovery": 0.383,
+   "damage": 20,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.6,
+   "soulGain": 10,
+   "anim_ref": "sf6:blanka:crouching_heavy_kick",
+   "input_slots": [
+    "fc+3+4"
+   ],
+   "move_class": "strike",
+   "note": "SF: 2HK."
+  },
+  "u+1": {
+   "name": "Jumping Light Punch",
+   "input": "u+1",
+   "t3_source": "sf6",
+   "sf_motion": "j.LP",
+   "startup": 0.067,
+   "active": 0.083,
+   "recovery": 0.05,
+   "damage": 9,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 4,
+   "anim_ref": "sf6:blanka:jumping_light_punch",
+   "input_slots": [
+    "u+1"
+   ],
+   "move_class": "strike",
+   "note": "SF: j.LP."
+  },
+  "u+2": {
+   "name": "Jumping Medium Punch",
+   "input": "u+2",
+   "t3_source": "sf6",
+   "sf_motion": "j.MP",
+   "startup": 0.117,
+   "active": 0.117,
+   "recovery": 0.05,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 10,
+   "anim_ref": "sf6:blanka:jumping_medium_punch",
+   "input_slots": [
+    "u+2"
+   ],
+   "move_class": "strike",
+   "note": "SF: j.MP."
+  },
+  "u+1+2": {
+   "name": "Jumping Heavy Punch",
+   "input": "u+1+2",
+   "t3_source": "sf6",
+   "sf_motion": "j.HP",
+   "startup": 0.15,
+   "active": 0.067,
+   "recovery": 0.05,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.6,
+   "soulGain": 10,
+   "anim_ref": "sf6:blanka:jumping_heavy_punch",
+   "input_slots": [
+    "u+1+2"
+   ],
+   "move_class": "strike",
+   "note": "SF: j.HP."
+  },
+  "u+1+2 (neutral)": {
+   "name": "Neutral Jumping Heavy Punch",
+   "input": "u+1+2 (neutral)",
+   "t3_source": "sf6",
+   "sf_motion": "8j.HP",
+   "startup": 0.117,
+   "active": 0.05,
+   "recovery": 0.05,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.6,
+   "soulGain": 10,
+   "anim_ref": "sf6:blanka:neutral_jumping_heavy_punch",
+   "input_slots": [
+    "u+1+2 (neutral)"
+   ],
+   "move_class": "strike",
+   "note": "SF: 8j.HP."
+  },
+  "u+3": {
+   "name": "Jumping Light Kick",
+   "input": "u+3",
+   "t3_source": "sf6",
+   "sf_motion": "j.LK",
+   "startup": 0.083,
+   "active": 0.1,
+   "recovery": 0.05,
+   "damage": 9,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 4,
+   "anim_ref": "sf6:blanka:jumping_light_kick",
+   "input_slots": [
+    "u+3"
+   ],
+   "move_class": "strike",
+   "note": "SF: j.LK."
+  },
+  "u+4": {
+   "name": "Jumping Medium Kick",
+   "input": "u+4",
+   "t3_source": "sf6",
+   "sf_motion": "j.MK",
+   "startup": 0.117,
+   "active": 0.1,
+   "recovery": 0.05,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "sf6:blanka:jumping_medium_kick",
+   "input_slots": [
+    "u+4"
+   ],
+   "move_class": "strike",
+   "note": "SF: j.MK."
+  },
+  "u+3+4": {
+   "name": "Jumping Heavy Kick",
+   "input": "u+3+4",
+   "t3_source": "sf6",
+   "sf_motion": "j.HK",
+   "startup": 0.183,
+   "active": 0.1,
+   "recovery": 0.05,
+   "damage": 20,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.6,
+   "soulGain": 10,
+   "anim_ref": "sf6:blanka:jumping_heavy_kick",
+   "input_slots": [
+    "u+3+4"
+   ],
+   "move_class": "strike",
+   "note": "SF: j.HK."
+  },
+  "f+2": {
+   "name": "Rock Crusher",
+   "input": "f+2",
+   "t3_source": "sf6",
+   "sf_motion": "6MP",
+   "startup": 0.333,
+   "active": 0.05,
+   "recovery": 0.333,
+   "damage": 18,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.6,
+   "soulGain": 9,
+   "anim_ref": "sf6:blanka:rock_crusher",
+   "input_slots": [
+    "f+2"
+   ],
+   "move_class": "strike",
+   "note": "SF: 6MP. 2-hit overhead.",
+   "multi_hit": {
+    "hits": [
+     9,
+     9
+    ],
+    "total": 18
+   }
+  },
+  "f+4": {
+   "name": "Double Knee Bombs",
+   "input": "f+4",
+   "t3_source": "sf6",
+   "sf_motion": "6MK",
+   "startup": 0.15,
+   "active": 0.2,
+   "recovery": 0.3,
+   "damage": 18,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 9,
+   "anim_ref": "sf6:blanka:double_knee_bombs",
+   "input_slots": [
+    "f+4"
+   ],
+   "move_class": "strike",
+   "note": "SF: 6MK.",
+   "multi_hit": {
+    "hits": [
+     9,
+     9
+    ],
+    "total": 18
+   }
+  },
+  "b+4": {
+   "name": "Wild Edge",
+   "input": "b+4",
+   "t3_source": "sf6",
+   "sf_motion": "4MK",
+   "startup": 0.15,
+   "active": 0.1,
+   "recovery": 0.2,
+   "damage": 18,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 9,
+   "anim_ref": "sf6:blanka:wild_edge",
+   "input_slots": [
+    "b+4"
+   ],
+   "move_class": "strike",
+   "note": "SF: 4MK."
+  },
+  "f+1+2": {
+   "name": "Wild Nail",
+   "input": "f+1+2",
+   "t3_source": "sf6",
+   "sf_motion": "6HP",
+   "startup": 0.3,
+   "active": 0.067,
+   "recovery": 0.467,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.6,
+   "soulGain": 10,
+   "anim_ref": "sf6:blanka:wild_nail",
+   "input_slots": [
+    "f+1+2"
+   ],
+   "move_class": "strike",
+   "note": "SF: 6HP."
+  },
+  "df+1+2": {
+   "name": "Amazon River Run",
+   "input": "df+1+2",
+   "t3_source": "sf6",
+   "sf_motion": "3HP",
+   "startup": 0.233,
+   "active": 0.167,
+   "recovery": 0.367,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.6,
+   "soulGain": 10,
+   "anim_ref": "sf6:blanka:amazon_river_run",
+   "input_slots": [
+    "df+1+2"
+   ],
+   "move_class": "strike",
+   "note": "SF: 3HP. Long low slide; low-profiles fireballs."
+  },
+  "1+3": {
+   "name": "Wild Fang",
+   "input": "1+3",
+   "t3_source": "sf6",
+   "sf_motion": "LPLK",
+   "startup": 0.083,
+   "active": 0.05,
+   "recovery": 0.383,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:wild_fang",
+   "input_slots": [
+    "1+3"
+   ],
+   "move_class": "throw",
+   "note": "SF: LPLK. Forward throw.",
+   "throw": true,
+   "throw_break": "1",
+   "isGrab": true
+  },
+  "b+1+3": {
+   "name": "Jungle Flip",
+   "input": "b+1+3",
+   "t3_source": "sf6",
+   "sf_motion": "4LPLK",
+   "startup": 0.083,
+   "active": 0.05,
+   "recovery": 0.383,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:jungle_flip",
+   "input_slots": [
+    "b+1+3"
+   ],
+   "move_class": "throw",
+   "note": "SF: 4LPLK. Back throw.",
+   "throw": true,
+   "throw_break": "1",
+   "isGrab": true
+  },
+  "u+1+3": {
+   "name": "Wild Bites",
+   "input": "u+1+3",
+   "t3_source": "sf6",
+   "sf_motion": "j.LPLK",
+   "startup": 0.083,
+   "active": 0.05,
+   "recovery": 0.05,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:wild_bites",
+   "input_slots": [
+    "u+1+3"
+   ],
+   "move_class": "throw",
+   "note": "SF: j.LPLK. Air throw.",
+   "throw": true,
+   "throw_break": "1",
+   "isGrab": true
+  },
+  "3+4": {
+   "name": "Wild Scratch",
+   "input": "3+4",
+   "t3_source": "sf6",
+   "sf_motion": "HPHK (Drive Impact)",
+   "startup": 0.433,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.6,
+   "soulGain": 10,
+   "anim_ref": "sf6:blanka:wild_scratch",
+   "input_slots": [
+    "3+4"
+   ],
+   "move_class": "strike",
+   "note": "SF: HPHK (Drive Impact). Drive Impact; 2-hit armor."
+  },
+  "f,f": {
+   "name": "Drive Rush (66)",
+   "input": "f,f",
+   "t3_source": "sf6",
+   "sf_motion": "66 (from Drive Parry)",
+   "startup": 0.0,
+   "active": 0.0,
+   "recovery": 0.0,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sf6:blanka:drive_rush_66",
+   "input_slots": [
+    "f,f"
+   ],
+   "move_class": "stance",
+   "note": "SF: 66 (from Drive Parry)."
+  },
+  "2+4": {
+   "name": "Drive Parry",
+   "input": "2+4",
+   "t3_source": "sf6",
+   "sf_motion": "MPMK",
+   "startup": 0.017,
+   "active": 0.2,
+   "recovery": 0.55,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sf6:blanka:drive_parry",
+   "input_slots": [
+    "2+4"
+   ],
+   "move_class": "parry",
+   "note": "SF: MPMK."
+  },
+  "2+4,f,f": {
+   "name": "Parry Drive Rush",
+   "input": "2+4,f,f",
+   "t3_source": "sf6",
+   "sf_motion": "MPMK~66",
+   "startup": 0.05,
+   "active": 0.133,
+   "recovery": 0.0,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sf6:blanka:parry_drive_rush",
+   "input_slots": [
+    "2+4,f,f"
+   ],
+   "move_class": "stance",
+   "note": "SF: MPMK~66."
+  },
+  "f,f,b": {
+   "name": "Quick Rolling Attack (Drive Rush Block)",
+   "input": "f,f,b",
+   "t3_source": "sf6",
+   "sf_motion": "66 (block)",
+   "startup": 0.333,
+   "active": 0.05,
+   "recovery": 0.433,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sf6:blanka:quick_rolling_attack_drive_rush_block",
+   "input_slots": [
+    "f,f,b"
+   ],
+   "move_class": "stance",
+   "note": "SF: 66 (block)."
+  },
+  "f,f,db": {
+   "name": "Quick Rolling Attack (Drive Rush Recovery)",
+   "input": "f,f,db",
+   "t3_source": "sf6",
+   "sf_motion": "66 (recovery)",
+   "startup": 0.3,
+   "active": 0.05,
+   "recovery": 0.433,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sf6:blanka:quick_rolling_attack_drive_rush_recovery",
+   "input_slots": [
+    "f,f,db"
+   ],
+   "move_class": "stance",
+   "note": "SF: 66 (recovery)."
+  },
+  "d+1+2": {
+   "name": "Coward Crouch",
+   "input": "d+1+2",
+   "t3_source": "sf6",
+   "sf_motion": "2PP",
+   "startup": 0.3,
+   "active": 0.0,
+   "recovery": 0.467,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sf6:blanka:coward_crouch",
+   "input_slots": [
+    "d+1+2"
+   ],
+   "move_class": "stance",
+   "note": "SF: 2PP. Low-profile crouch stance; cancels to Wild Lift / Raid Jump."
+  },
+  "d+1+2,1": {
+   "name": "Wild Lift",
+   "input": "d+1+2,1",
+   "t3_source": "sf6",
+   "sf_motion": "2PP~P",
+   "startup": 0.433,
+   "active": 0.117,
+   "recovery": 0.517,
+   "damage": 18,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 9,
+   "anim_ref": "sf6:blanka:wild_lift",
+   "input_slots": [
+    "d+1+2,1"
+   ],
+   "move_class": "special",
+   "note": "SF: 2PP~P."
+  },
+  "d+1+2,3": {
+   "name": "Raid Jump",
+   "input": "d+1+2,3",
+   "t3_source": "sf6",
+   "sf_motion": "2PP~K",
+   "startup": 0.3,
+   "active": 0.0,
+   "recovery": 0.0,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sf6:blanka:raid_jump",
+   "input_slots": [
+    "d+1+2,3"
+   ],
+   "move_class": "movement",
+   "note": "SF: 2PP~K. Leap out of Coward Crouch."
+  },
+  "f+3+4": {
+   "name": "Surprise Forward Hop",
+   "input": "f+3+4",
+   "t3_source": "sf6",
+   "sf_motion": "6KKK",
+   "startup": 0.0,
+   "active": 0.0,
+   "recovery": 0.45,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sf6:blanka:surprise_forward_hop",
+   "input_slots": [
+    "f+3+4"
+   ],
+   "move_class": "movement",
+   "note": "SF: 6KKK."
+  },
+  "b+3+4": {
+   "name": "Surprise Back Hop",
+   "input": "b+3+4",
+   "t3_source": "sf6",
+   "sf_motion": "4KKK",
+   "startup": 0.0,
+   "active": 0.0,
+   "recovery": 0.533,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sf6:blanka:surprise_back_hop",
+   "input_slots": [
+    "b+3+4"
+   ],
+   "move_class": "movement",
+   "note": "SF: 4KKK."
+  },
+  "qcb+1": {
+   "name": "Electric Thunder",
+   "input": "qcb+1",
+   "t3_source": "sf6",
+   "sf_motion": "214P",
+   "startup": 0.167,
+   "active": 0.5,
+   "recovery": 0.25,
+   "damage": 24,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:electric_thunder",
+   "input_slots": [
+    "qcb+1"
+   ],
+   "move_class": "special",
+   "note": "SF: 214P. Sustained electricity field.",
+   "multi_hit": {
+    "hits": [
+     8,
+     8,
+     8
+    ],
+    "total": 24
+   }
+  },
+  "qcb+1 (hold)": {
+   "name": "Electric Thunder (Hold)",
+   "input": "qcb+1 (hold)",
+   "t3_source": "sf6",
+   "sf_motion": "214[P]",
+   "startup": 0.167,
+   "active": 0.5,
+   "recovery": 0.267,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:electric_thunder_hold",
+   "input_slots": [
+    "qcb+1 (hold)"
+   ],
+   "move_class": "special",
+   "note": "SF: 214[P].",
+   "multi_hit": {
+    "hits": [
+     10,
+     15
+    ],
+    "total": 25
+   }
+  },
+  "qcb+1+2": {
+   "name": "Electric Thunder (OD)",
+   "input": "qcb+1+2",
+   "t3_source": "sf6",
+   "sf_motion": "214PP",
+   "startup": 0.167,
+   "active": 0.5,
+   "recovery": 0.25,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:electric_thunder_od",
+   "input_slots": [
+    "qcb+1+2"
+   ],
+   "move_class": "special",
+   "note": "SF: 214PP.",
+   "multi_hit": {
+    "hits": [
+     10,
+     15
+    ],
+    "total": 25
+   }
+  },
+  "charge_b,f+1": {
+   "name": "Rolling Attack (LP)",
+   "input": "charge_b,f+1",
+   "t3_source": "sf6",
+   "sf_motion": "[4]6LP",
+   "startup": 0.167,
+   "active": 0.183,
+   "recovery": 0.183,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:rolling_attack_lp",
+   "input_slots": [
+    "charge_b,f+1"
+   ],
+   "move_class": "special",
+   "note": "SF: [4]6LP. Charge back, forward+P; Blanka Ball."
+  },
+  "charge_b,f+2": {
+   "name": "Rolling Attack (MP)",
+   "input": "charge_b,f+2",
+   "t3_source": "sf6",
+   "sf_motion": "[4]6MP",
+   "startup": 0.2,
+   "active": 0.317,
+   "recovery": 0.183,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:rolling_attack_mp",
+   "input_slots": [
+    "charge_b,f+2"
+   ],
+   "move_class": "special",
+   "note": "SF: [4]6MP."
+  },
+  "charge_b,f+1+2": {
+   "name": "Rolling Attack (HP)",
+   "input": "charge_b,f+1+2",
+   "t3_source": "sf6",
+   "sf_motion": "[4]6HP",
+   "startup": 0.367,
+   "active": 0.333,
+   "recovery": 0.417,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:rolling_attack_hp",
+   "input_slots": [
+    "charge_b,f+1+2"
+   ],
+   "move_class": "special",
+   "note": "SF: [4]6HP."
+  },
+  "charge_b,f+1+2_od": {
+   "name": "Rolling Attack (OD)",
+   "input": "charge_b,f+1+2_od",
+   "t3_source": "sf6",
+   "sf_motion": "[4]6PP",
+   "startup": 0.3,
+   "active": 0.367,
+   "recovery": 0.283,
+   "damage": 24,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:rolling_attack_od",
+   "input_slots": [
+    "charge_b,f+1+2_od"
+   ],
+   "move_class": "special",
+   "note": "SF: [4]6PP."
+  },
+  "charge_b,f+1_sa2": {
+   "name": "Rolling Attack (LP, SA2)",
+   "input": "charge_b,f+1_sa2",
+   "t3_source": "sf6",
+   "sf_motion": "[4]6LP (SA2)",
+   "startup": 0.167,
+   "active": 0.183,
+   "recovery": 0.183,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:rolling_attack_lp_sa2",
+   "input_slots": [
+    "charge_b,f+1_sa2"
+   ],
+   "move_class": "special",
+   "note": "SF: [4]6LP (SA2). Lightning Beast enhanced."
+  },
+  "charge_b,f+2_sa2": {
+   "name": "Rolling Attack (MP, SA2)",
+   "input": "charge_b,f+2_sa2",
+   "t3_source": "sf6",
+   "sf_motion": "[4]6MP (SA2)",
+   "startup": 0.2,
+   "active": 0.317,
+   "recovery": 0.183,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:rolling_attack_mp_sa2",
+   "input_slots": [
+    "charge_b,f+2_sa2"
+   ],
+   "move_class": "special",
+   "note": "SF: [4]6MP (SA2)."
+  },
+  "charge_b,f+1+2_sa2": {
+   "name": "Rolling Attack (HP, SA2)",
+   "input": "charge_b,f+1+2_sa2",
+   "t3_source": "sf6",
+   "sf_motion": "[4]6HP (SA2)",
+   "startup": 0.367,
+   "active": 0.333,
+   "recovery": 0.417,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:rolling_attack_hp_sa2",
+   "input_slots": [
+    "charge_b,f+1+2_sa2"
+   ],
+   "move_class": "special",
+   "note": "SF: [4]6HP (SA2)."
+  },
+  "charge_b,f+1+2_od_sa2": {
+   "name": "Rolling Attack (OD, SA2)",
+   "input": "charge_b,f+1+2_od_sa2",
+   "t3_source": "sf6",
+   "sf_motion": "[4]6PP (SA2)",
+   "startup": 0.3,
+   "active": 0.367,
+   "recovery": 0.283,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:rolling_attack_od_sa2",
+   "input_slots": [
+    "charge_b,f+1+2_od_sa2"
+   ],
+   "move_class": "special",
+   "note": "SF: [4]6PP (SA2)."
+  },
+  "air_charge_b,f+1": {
+   "name": "Aerial Rolling Attack",
+   "input": "air_charge_b,f+1",
+   "t3_source": "sf6",
+   "sf_motion": "j.[4]6P",
+   "startup": 0.217,
+   "active": 0.333,
+   "recovery": 0.283,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:aerial_rolling_attack",
+   "input_slots": [
+    "air_charge_b,f+1"
+   ],
+   "move_class": "special",
+   "note": "SF: j.[4]6P."
+  },
+  "air_charge_b,f+1+2_od": {
+   "name": "Aerial Rolling Attack (OD)",
+   "input": "air_charge_b,f+1+2_od",
+   "t3_source": "sf6",
+   "sf_motion": "j.[4]6PP",
+   "startup": 0.217,
+   "active": 0.333,
+   "recovery": 0.25,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:aerial_rolling_attack_od",
+   "input_slots": [
+    "air_charge_b,f+1+2_od"
+   ],
+   "move_class": "special",
+   "note": "SF: j.[4]6PP.",
+   "multi_hit": {
+    "hits": [
+     13,
+     12
+    ],
+    "total": 25
+   }
+  },
+  "air_charge_b,f+1_sa2": {
+   "name": "Aerial Rolling Attack (SA2)",
+   "input": "air_charge_b,f+1_sa2",
+   "t3_source": "sf6",
+   "sf_motion": "j.[4]6P (SA2)",
+   "startup": 0.217,
+   "active": 0.333,
+   "recovery": 0.283,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:aerial_rolling_attack_sa2",
+   "input_slots": [
+    "air_charge_b,f+1_sa2"
+   ],
+   "move_class": "special",
+   "note": "SF: j.[4]6P (SA2)."
+  },
+  "air_charge_b,f+1+2_od_sa2": {
+   "name": "Aerial Rolling Attack (OD, SA2)",
+   "input": "air_charge_b,f+1+2_od_sa2",
+   "t3_source": "sf6",
+   "sf_motion": "j.[4]6PP (SA2)",
+   "startup": 0.217,
+   "active": 0.333,
+   "recovery": 0.25,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:aerial_rolling_attack_od_sa2",
+   "input_slots": [
+    "air_charge_b,f+1+2_od_sa2"
+   ],
+   "move_class": "special",
+   "note": "SF: j.[4]6PP (SA2).",
+   "multi_hit": {
+    "hits": [
+     13,
+     12
+    ],
+    "total": 25
+   }
+  },
+  "charge_d,u+3": {
+   "name": "Vertical Rolling Attack (LK)",
+   "input": "charge_d,u+3",
+   "t3_source": "sf6",
+   "sf_motion": "[2]8LK",
+   "startup": 0.133,
+   "active": 0.317,
+   "recovery": 0.8,
+   "damage": 25,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:vertical_rolling_attack_lk",
+   "input_slots": [
+    "charge_d,u+3"
+   ],
+   "move_class": "special",
+   "note": "SF: [2]8LK. Charge down, up+K; rising roll."
+  },
+  "charge_d,u+4": {
+   "name": "Vertical Rolling Attack (MK)",
+   "input": "charge_d,u+4",
+   "t3_source": "sf6",
+   "sf_motion": "[2]8MK",
+   "startup": 0.133,
+   "active": 0.317,
+   "recovery": 0.8,
+   "damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:vertical_rolling_attack_mk",
+   "input_slots": [
+    "charge_d,u+4"
+   ],
+   "move_class": "special",
+   "note": "SF: [2]8MK."
+  },
+  "charge_d,u+3+4": {
+   "name": "Vertical Rolling Attack (HK)",
+   "input": "charge_d,u+3+4",
+   "t3_source": "sf6",
+   "sf_motion": "[2]8HK",
+   "startup": 0.133,
+   "active": 0.317,
+   "recovery": 0.8,
+   "damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:vertical_rolling_attack_hk",
+   "input_slots": [
+    "charge_d,u+3+4"
+   ],
+   "move_class": "special",
+   "note": "SF: [2]8HK."
+  },
+  "charge_d,u+3+4_od": {
+   "name": "Vertical Rolling Attack (OD)",
+   "input": "charge_d,u+3+4_od",
+   "t3_source": "sf6",
+   "sf_motion": "[2]8KK",
+   "startup": 0.117,
+   "active": 0.233,
+   "recovery": 0.8,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:vertical_rolling_attack_od",
+   "input_slots": [
+    "charge_d,u+3+4_od"
+   ],
+   "move_class": "special",
+   "note": "SF: [2]8KK.",
+   "multi_hit": {
+    "hits": [
+     13,
+     12
+    ],
+    "total": 25
+   }
+  },
+  "charge_d,u+3_sa2": {
+   "name": "Vertical Rolling Attack (LK, SA2)",
+   "input": "charge_d,u+3_sa2",
+   "t3_source": "sf6",
+   "sf_motion": "[2]8LK (SA2)",
+   "startup": 0.133,
+   "active": 0.317,
+   "recovery": 0.8,
+   "damage": 25,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:vertical_rolling_attack_lk_sa2",
+   "input_slots": [
+    "charge_d,u+3_sa2"
+   ],
+   "move_class": "special",
+   "note": "SF: [2]8LK (SA2)."
+  },
+  "charge_d,u+4_sa2": {
+   "name": "Vertical Rolling Attack (MK, SA2)",
+   "input": "charge_d,u+4_sa2",
+   "t3_source": "sf6",
+   "sf_motion": "[2]8MK (SA2)",
+   "startup": 0.133,
+   "active": 0.317,
+   "recovery": 0.8,
+   "damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:vertical_rolling_attack_mk_sa2",
+   "input_slots": [
+    "charge_d,u+4_sa2"
+   ],
+   "move_class": "special",
+   "note": "SF: [2]8MK (SA2)."
+  },
+  "charge_d,u+3+4_sa2": {
+   "name": "Vertical Rolling Attack (HK, SA2)",
+   "input": "charge_d,u+3+4_sa2",
+   "t3_source": "sf6",
+   "sf_motion": "[2]8HK (SA2)",
+   "startup": 0.133,
+   "active": 0.317,
+   "recovery": 0.8,
+   "damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:vertical_rolling_attack_hk_sa2",
+   "input_slots": [
+    "charge_d,u+3+4_sa2"
+   ],
+   "move_class": "special",
+   "note": "SF: [2]8HK (SA2)."
+  },
+  "charge_d,u+3+4_od_sa2": {
+   "name": "Vertical Rolling Attack (OD, SA2)",
+   "input": "charge_d,u+3+4_od_sa2",
+   "t3_source": "sf6",
+   "sf_motion": "[2]8KK (SA2)",
+   "startup": 0.117,
+   "active": 0.233,
+   "recovery": 0.8,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:vertical_rolling_attack_od_sa2",
+   "input_slots": [
+    "charge_d,u+3+4_od_sa2"
+   ],
+   "move_class": "special",
+   "note": "SF: [2]8KK (SA2).",
+   "multi_hit": {
+    "hits": [
+     13,
+     12
+    ],
+    "total": 25
+   }
+  },
+  "hcb+3": {
+   "name": "Backstep Rolling Attack (LK)",
+   "input": "hcb+3",
+   "t3_source": "sf6",
+   "sf_motion": "63214LK",
+   "startup": 0.683,
+   "active": 0.4,
+   "recovery": 0.083,
+   "damage": 25,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:backstep_rolling_attack_lk",
+   "input_slots": [
+    "hcb+3"
+   ],
+   "move_class": "special",
+   "note": "SF: 63214LK. Backflip then roll."
+  },
+  "hcb+4": {
+   "name": "Backstep Rolling Attack (MK)",
+   "input": "hcb+4",
+   "t3_source": "sf6",
+   "sf_motion": "63214MK",
+   "startup": 0.683,
+   "active": 0.45,
+   "recovery": 0.083,
+   "damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:backstep_rolling_attack_mk",
+   "input_slots": [
+    "hcb+4"
+   ],
+   "move_class": "special",
+   "note": "SF: 63214MK."
+  },
+  "hcb+3+4": {
+   "name": "Backstep Rolling Attack (HK)",
+   "input": "hcb+3+4",
+   "t3_source": "sf6",
+   "sf_motion": "63214HK",
+   "startup": 0.683,
+   "active": 0.483,
+   "recovery": 0.083,
+   "damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:backstep_rolling_attack_hk",
+   "input_slots": [
+    "hcb+3+4"
+   ],
+   "move_class": "special",
+   "note": "SF: 63214HK."
+  },
+  "hcb+3+4_od": {
+   "name": "Backstep Rolling Attack (OD)",
+   "input": "hcb+3+4_od",
+   "t3_source": "sf6",
+   "sf_motion": "63214KK",
+   "startup": 0.817,
+   "active": 0.5,
+   "recovery": 0.067,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:backstep_rolling_attack_od",
+   "input_slots": [
+    "hcb+3+4_od"
+   ],
+   "move_class": "special",
+   "note": "SF: 63214KK.",
+   "multi_hit": {
+    "hits": [
+     8,
+     9,
+     8
+    ],
+    "total": 25
+   }
+  },
+  "hcb+3_sa2": {
+   "name": "Backstep Rolling Attack (LK, SA2)",
+   "input": "hcb+3_sa2",
+   "t3_source": "sf6",
+   "sf_motion": "63214LK (SA2)",
+   "startup": 0.683,
+   "active": 0.4,
+   "recovery": 0.083,
+   "damage": 25,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:backstep_rolling_attack_lk_sa2",
+   "input_slots": [
+    "hcb+3_sa2"
+   ],
+   "move_class": "special",
+   "note": "SF: 63214LK (SA2)."
+  },
+  "hcb+4_sa2": {
+   "name": "Backstep Rolling Attack (MK, SA2)",
+   "input": "hcb+4_sa2",
+   "t3_source": "sf6",
+   "sf_motion": "63214MK (SA2)",
+   "startup": 0.683,
+   "active": 0.45,
+   "recovery": 0.083,
+   "damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:backstep_rolling_attack_mk_sa2",
+   "input_slots": [
+    "hcb+4_sa2"
+   ],
+   "move_class": "special",
+   "note": "SF: 63214MK (SA2)."
+  },
+  "hcb+3+4_sa2": {
+   "name": "Backstep Rolling Attack (HK, SA2)",
+   "input": "hcb+3+4_sa2",
+   "t3_source": "sf6",
+   "sf_motion": "63214HK (SA2)",
+   "startup": 0.683,
+   "active": 0.483,
+   "recovery": 0.083,
+   "damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:backstep_rolling_attack_hk_sa2",
+   "input_slots": [
+    "hcb+3+4_sa2"
+   ],
+   "move_class": "special",
+   "note": "SF: 63214HK (SA2)."
+  },
+  "hcb+3+4_od_sa2": {
+   "name": "Backstep Rolling Attack (OD, SA2)",
+   "input": "hcb+3+4_od_sa2",
+   "t3_source": "sf6",
+   "sf_motion": "63214KK (SA2)",
+   "startup": 0.817,
+   "active": 0.5,
+   "recovery": 0.067,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:backstep_rolling_attack_od_sa2",
+   "input_slots": [
+    "hcb+3+4_od_sa2"
+   ],
+   "move_class": "special",
+   "note": "SF: 63214KK (SA2).",
+   "multi_hit": {
+    "hits": [
+     8,
+     9,
+     8
+    ],
+    "total": 25
+   }
+  },
+  "qcf+3": {
+   "name": "Wild Hunt (LK)",
+   "input": "qcf+3",
+   "t3_source": "sf6",
+   "sf_motion": "236LK",
+   "startup": 0.567,
+   "active": 0.05,
+   "recovery": 0.95,
+   "damage": 25,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:wild_hunt_lk",
+   "input_slots": [
+    "qcf+3"
+   ],
+   "move_class": "throw",
+   "note": "SF: 236LK. Leaping command grab.",
+   "throw": true,
+   "throw_break": "1+2",
+   "unblockable": true,
+   "isGrab": true
+  },
+  "qcf+4": {
+   "name": "Wild Hunt (MK)",
+   "input": "qcf+4",
+   "t3_source": "sf6",
+   "sf_motion": "236MK",
+   "startup": 0.65,
+   "active": 0.05,
+   "recovery": 0.95,
+   "damage": 25,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:wild_hunt_mk",
+   "input_slots": [
+    "qcf+4"
+   ],
+   "move_class": "throw",
+   "note": "SF: 236MK.",
+   "throw": true,
+   "throw_break": "1+2",
+   "unblockable": true,
+   "isGrab": true
+  },
+  "qcf+3+4": {
+   "name": "Wild Hunt (HK)",
+   "input": "qcf+3+4",
+   "t3_source": "sf6",
+   "sf_motion": "236HK",
+   "startup": 0.717,
+   "active": 0.05,
+   "recovery": 0.95,
+   "damage": 25,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:wild_hunt_hk",
+   "input_slots": [
+    "qcf+3+4"
+   ],
+   "move_class": "throw",
+   "note": "SF: 236HK.",
+   "throw": true,
+   "throw_break": "1+2",
+   "unblockable": true,
+   "isGrab": true
+  },
+  "qcf+3+4_od": {
+   "name": "Wild Hunt (OD)",
+   "input": "qcf+3+4_od",
+   "t3_source": "sf6",
+   "sf_motion": "236KK",
+   "startup": 0.533,
+   "active": 0.05,
+   "recovery": 0.95,
+   "damage": 25,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:wild_hunt_od",
+   "input_slots": [
+    "qcf+3+4_od"
+   ],
+   "move_class": "throw",
+   "note": "SF: 236KK.",
+   "throw": true,
+   "throw_break": "1+2",
+   "unblockable": true,
+   "isGrab": true
+  },
+  "d,d+1": {
+   "name": "Blanka-chan Bomb",
+   "input": "d,d+1",
+   "t3_source": "sf6",
+   "sf_motion": "22P",
+   "startup": 0.65,
+   "active": 0.0,
+   "recovery": 0.583,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sf6:blanka:blanka_chan_bomb",
+   "input_slots": [
+    "d,d+1"
+   ],
+   "move_class": "stance",
+   "note": "SF: 22P. Places a Blanka-chan doll."
+  },
+  "d,d+1,qcb+1": {
+   "name": "Blanka-chan Bomb (Charge)",
+   "input": "d,d+1,qcb+1",
+   "t3_source": "sf6",
+   "sf_motion": "22P~214P",
+   "startup": 0.6,
+   "active": 0.167,
+   "recovery": 0.0,
+   "damage": 24,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:blanka_chan_bomb_charge",
+   "input_slots": [
+    "d,d+1,qcb+1"
+   ],
+   "move_class": "special",
+   "note": "SF: 22P~214P. Activates the placed doll."
+  },
+  "d,d+1,qcb+1+2": {
+   "name": "Blanka-chan Bomb (OD Charge)",
+   "input": "d,d+1,qcb+1+2",
+   "t3_source": "sf6",
+   "sf_motion": "22P~214PP",
+   "startup": 0.6,
+   "active": 0.167,
+   "recovery": 0.0,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:blanka_chan_bomb_od_charge",
+   "input_slots": [
+    "d,d+1,qcb+1+2"
+   ],
+   "move_class": "special",
+   "note": "SF: 22P~214PP.",
+   "multi_hit": {
+    "hits": [
+     8,
+     8,
+     9
+    ],
+    "total": 25
+   }
+  },
+  "d,d+1,qcf,qcf+1": {
+   "name": "Blanka-chan Bomb (SA1 Charge)",
+   "input": "d,d+1,qcf,qcf+1",
+   "t3_source": "sf6",
+   "sf_motion": "22P~236236P",
+   "startup": 0.6,
+   "active": 0.167,
+   "recovery": 0.0,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:blanka_chan_bomb_sa1_charge",
+   "input_slots": [
+    "d,d+1,qcf,qcf+1"
+   ],
+   "move_class": "special",
+   "note": "SF: 22P~236236P.",
+   "multi_hit": {
+    "hits": [
+     5,
+     5,
+     5,
+     5,
+     5
+    ],
+    "total": 25
+   }
+  },
+  "qcf,qcf+1": {
+   "name": "Shout of Earth",
+   "input": "qcf,qcf+1",
+   "t3_source": "sf6",
+   "sf_motion": "236236P (SA1)",
+   "startup": 0.133,
+   "active": 0.15,
+   "recovery": 1.033,
+   "damage": 40,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 7.0,
+   "soulGain": 15,
+   "anim_ref": "sf6:blanka:shout_of_earth",
+   "input_slots": [
+    "qcf,qcf+1"
+   ],
+   "move_class": "super",
+   "note": "SF: 236236P (SA1). SA1; ground lightning burst."
+  },
+  "qcb,qcb+1": {
+   "name": "Lightning Beast",
+   "input": "qcb,qcb+1",
+   "t3_source": "sf6",
+   "sf_motion": "214214P (SA2)",
+   "startup": 0.017,
+   "active": 0.0,
+   "recovery": 0.15,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sf6:blanka:lightning_beast",
+   "input_slots": [
+    "qcb,qcb+1"
+   ],
+   "move_class": "stance",
+   "note": "SF: 214214P (SA2). SA2 install; empowers Rolling Attacks, enables Rolling Cannon."
+  },
+  "qcb,qcb+1 (cannon)": {
+   "name": "Rolling Cannon",
+   "input": "qcb,qcb+1 (cannon)",
+   "t3_source": "sf6",
+   "sf_motion": "214214P (during SA2)",
+   "startup": 0.05,
+   "active": 0.417,
+   "recovery": 0.117,
+   "damage": 12,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 6,
+   "anim_ref": "sf6:blanka:rolling_cannon",
+   "input_slots": [
+    "qcb,qcb+1 (cannon)"
+   ],
+   "move_class": "special",
+   "note": "SF: 214214P (during SA2). Directional roll follow-up during Lightning Beast."
+  },
+  "qcf,qcf+3": {
+   "name": "Ground Shave Cannonball",
+   "input": "qcf,qcf+3",
+   "t3_source": "sf6",
+   "sf_motion": "236236K (SA3)",
+   "startup": 0.167,
+   "active": 0.05,
+   "recovery": 1.017,
+   "damage": 40,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 7.0,
+   "soulGain": 15,
+   "anim_ref": "sf6:blanka:ground_shave_cannonball",
+   "input_slots": [
+    "qcf,qcf+3"
+   ],
+   "move_class": "super",
+   "note": "SF: 236236K (SA3)."
+  },
+  "qcf,qcf+3 (ca)": {
+   "name": "Ground Shave Cannonball (CA)",
+   "input": "qcf,qcf+3 (ca)",
+   "t3_source": "sf6",
+   "sf_motion": "236236K (CA)",
+   "startup": 0.167,
+   "active": 0.05,
+   "recovery": 1.017,
+   "damage": 40,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 7.0,
+   "soulGain": 15,
+   "anim_ref": "sf6:blanka:ground_shave_cannonball_ca",
+   "input_slots": [
+    "qcf,qcf+3 (ca)"
+   ],
+   "move_class": "super",
+   "note": "SF: 236236K (CA). Critical Art version at 25% HP or below."
+  },
+  "1+2+3+4": {
+   "name": "Taunt (Neutral)",
+   "input": "1+2+3+4",
+   "t3_source": "sf6",
+   "sf_motion": "5PPPKKK",
+   "startup": 0.0,
+   "active": 0.0,
+   "recovery": 2.417,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sf6:blanka:taunt_neutral",
+   "input_slots": [
+    "1+2+3+4"
+   ],
+   "move_class": "stance",
+   "note": "SF: 5PPPKKK. 'Peekaboo!'"
+  },
+  "f+1+2+3+4": {
+   "name": "Taunt (Forward)",
+   "input": "f+1+2+3+4",
+   "t3_source": "sf6",
+   "sf_motion": "6PPPKKK",
+   "startup": 0.0,
+   "active": 0.0,
+   "recovery": 2.5,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sf6:blanka:taunt_forward",
+   "input_slots": [
+    "f+1+2+3+4"
+   ],
+   "move_class": "stance",
+   "note": "SF: 6PPPKKK."
+  },
+  "b+1+2+3+4": {
+   "name": "Taunt (Back)",
+   "input": "b+1+2+3+4",
+   "t3_source": "sf6",
+   "sf_motion": "4PPPKKK",
+   "startup": 0.0,
+   "active": 0.0,
+   "recovery": 3.883,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sf6:blanka:taunt_back",
+   "input_slots": [
+    "b+1+2+3+4"
+   ],
+   "move_class": "stance",
+   "note": "SF: 4PPPKKK. Juggles a Blanka-chan; replenishes one doll."
+  },
+  "f+2 (hold)": {
+   "name": "Rock Crusher (Hold)",
+   "input": "f+2 (hold)",
+   "t3_source": "sfv",
+   "sf_motion": "6MP (hold, SFV)",
+   "startup": 0.567,
+   "active": 0.05,
+   "recovery": 0.283,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.6,
+   "soulGain": 10,
+   "anim_ref": "sfv:blanka:rock_crusher_hold",
+   "input_slots": [
+    "f+2 (hold)"
+   ],
+   "move_class": "strike",
+   "note": "SF: 6MP (hold, SFV). SFV charged overhead",
+   "multi_hit": {
+    "hits": [
+     10,
+     10
+    ],
+    "total": 20
+   }
+  },
+  "qcf,qcf+1_sfv": {
+   "name": "Dynamic Rolling",
+   "input": "qcf,qcf+1_sfv",
+   "t3_source": "sfv",
+   "sf_motion": "236236P (Critical Art)",
+   "startup": 0.133,
+   "active": 0.417,
+   "recovery": 1.0,
+   "damage": 40,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 7.0,
+   "soulGain": 15,
+   "anim_ref": "sfv:blanka:dynamic_rolling",
+   "input_slots": [
+    "qcf,qcf+1_sfv"
+   ],
+   "move_class": "super",
+   "note": "SF: 236236P (Critical Art). SFV Critical Art."
+  },
+  "3+4 (jungle)": {
+   "name": "Jungle Dynamo",
+   "input": "3+4 (jungle)",
+   "t3_source": "sfv",
+   "sf_motion": "HPHK (V-Trigger 1)",
+   "startup": 0.017,
+   "active": 0.0,
+   "recovery": 0.1,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sfv:blanka:jungle_dynamo",
+   "input_slots": [
+    "3+4 (jungle)"
+   ],
+   "move_class": "stance",
+   "note": "SF: HPHK (V-Trigger 1). SFV VT1 install; powers up Blanka Balls and Electric Thunder."
+  },
+  "3+4 (gsr)": {
+   "name": "Ground Shave Rolling",
+   "input": "3+4 (gsr)",
+   "t3_source": "sfv",
+   "sf_motion": "HPHK (during VT1)",
+   "startup": 0.1,
+   "active": 0.5,
+   "recovery": 0.417,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sfv:blanka:ground_shave_rolling",
+   "input_slots": [
+    "3+4 (gsr)"
+   ],
+   "move_class": "special",
+   "note": "SF: HPHK (during VT1). VT1-only rolling attack.",
+   "multi_hit": {
+    "hits": [
+     8,
+     7,
+     7,
+     7,
+     7
+    ],
+    "total": 25
+   }
+  },
+  "3+4 (gsr, hold)": {
+   "name": "Ground Shave Rolling (Hold)",
+   "input": "3+4 (gsr, hold)",
+   "t3_source": "sfv",
+   "sf_motion": "HPHK (hold, VT1)",
+   "startup": 1.633,
+   "active": 0.5,
+   "recovery": 0.167,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sfv:blanka:ground_shave_rolling_hold",
+   "input_slots": [
+    "3+4 (gsr, hold)"
+   ],
+   "move_class": "special",
+   "note": "SF: HPHK (hold, VT1). Fully charged; last hit guard-breaks."
+  },
+  "3+4 (gsr, release)": {
+   "name": "Ground Shave Rolling (Release)",
+   "input": "3+4 (gsr, release)",
+   "t3_source": "sfv",
+   "sf_motion": "HPHK (release, VT1)",
+   "startup": 0.05,
+   "active": 0.383,
+   "recovery": 0.417,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sfv:blanka:ground_shave_rolling_release",
+   "input_slots": [
+    "3+4 (gsr, release)"
+   ],
+   "move_class": "special",
+   "note": "SF: HPHK (release, VT1)."
+  },
+  "2+4 (vs2)": {
+   "name": "Shout of Earth lvl 1",
+   "input": "2+4 (vs2)",
+   "t3_source": "sfv",
+   "sf_motion": "MPMK (V-Skill 2)",
+   "startup": 0.6,
+   "active": 0.117,
+   "recovery": 0.45,
+   "damage": 24,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sfv:blanka:shout_of_earth_lvl_1",
+   "input_slots": [
+    "2+4 (vs2)"
+   ],
+   "move_class": "special",
+   "note": "SF: MPMK (V-Skill 2). SFV V-Skill 2 ground lightning."
+  },
+  "2+4 (vs2, hold)": {
+   "name": "Shout of Earth lvl 2 (hold)",
+   "input": "2+4 (vs2, hold)",
+   "t3_source": "sfv",
+   "sf_motion": "MPMK (V-Skill 2, hold)",
+   "startup": 1.6,
+   "active": 0.117,
+   "recovery": 0.45,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sfv:blanka:shout_of_earth_lvl_2_hold",
+   "input_slots": [
+    "2+4 (vs2, hold)"
+   ],
+   "move_class": "special",
+   "note": "SF: MPMK (V-Skill 2, hold)."
+  },
+  "2+4 (vs2, release)": {
+   "name": "Shout of Earth lvl 2 (release)",
+   "input": "2+4 (vs2, release)",
+   "t3_source": "sfv",
+   "sf_motion": "MPMK (V-Skill 2, release)",
+   "startup": 0.383,
+   "active": 0.117,
+   "recovery": 0.45,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sfv:blanka:shout_of_earth_lvl_2_release",
+   "input_slots": [
+    "2+4 (vs2, release)"
+   ],
+   "move_class": "special",
+   "note": "SF: MPMK (V-Skill 2, release)."
+  },
+  "2+4 (vs2, charge)": {
+   "name": "Shout of Earth (charge)",
+   "input": "2+4 (vs2, charge)",
+   "t3_source": "sfv",
+   "sf_motion": "MPMK (V-Skill 2, charge)",
+   "startup": 0.85,
+   "active": 0.0,
+   "recovery": 0.267,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sfv:blanka:shout_of_earth_charge",
+   "input_slots": [
+    "2+4 (vs2, charge)"
+   ],
+   "move_class": "stance",
+   "note": "SF: MPMK (V-Skill 2, charge). Charges/stores level 2 Shout of Earth."
+  },
+  "1,1,1": {
+   "name": "Electric Thunder (SFV)",
+   "input": "1,1,1",
+   "t3_source": "sfv",
+   "sf_motion": "P (mash)",
+   "startup": 0.167,
+   "active": 0.333,
+   "recovery": 0.283,
+   "damage": 24,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sfv:blanka:electric_thunder_sfv",
+   "input_slots": [
+    "1,1,1"
+   ],
+   "move_class": "special",
+   "note": "SF: P (mash). SFV mash-punch electricity.",
+   "multi_hit": {
+    "hits": [
+     6,
+     6,
+     6,
+     6
+    ],
+    "total": 24
+   }
+  },
+  "1,1,1 (vt1)": {
+   "name": "Electric Thunder (VT1)",
+   "input": "1,1,1 (vt1)",
+   "t3_source": "sfv",
+   "sf_motion": "P (mash, V-Trigger 1)",
+   "startup": 0.2,
+   "active": 0.417,
+   "recovery": 0.2,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sfv:blanka:electric_thunder_vt1",
+   "input_slots": [
+    "1,1,1 (vt1)"
+   ],
+   "move_class": "special",
+   "note": "SF: P (mash, V-Trigger 1).",
+   "multi_hit": {
+    "hits": [
+     5,
+     5,
+     5,
+     5,
+     5
+    ],
+    "total": 25
+   }
+  },
+  "1,1,1+2": {
+   "name": "EX Electric Thunder",
+   "input": "1,1,1+2",
+   "t3_source": "sfv",
+   "sf_motion": "PP (mash)",
+   "startup": 0.167,
+   "active": 0.333,
+   "recovery": 0.233,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sfv:blanka:ex_electric_thunder",
+   "input_slots": [
+    "1,1,1+2"
+   ],
+   "move_class": "special",
+   "note": "SF: PP (mash).",
+   "multi_hit": {
+    "hits": [
+     6,
+     6,
+     6,
+     6
+    ],
+    "total": 25
+   }
+  },
+  "3+4 (vt2)": {
+   "name": "Lightning Beast (SFV VT2)",
+   "input": "3+4 (vt2)",
+   "t3_source": "sfv",
+   "sf_motion": "HPHK (V-Trigger 2)",
+   "startup": 0.017,
+   "active": 0.0,
+   "recovery": 0.1,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sfv:blanka:lightning_beast_sfv_vt2",
+   "input_slots": [
+    "3+4 (vt2)"
+   ],
+   "move_class": "stance",
+   "note": "SF: HPHK (V-Trigger 2). SFV VT2 install; enables Rolling Cannon cancels."
+  },
+  "3+4 (cannon)": {
+   "name": "Rolling Cannon (SFV)",
+   "input": "3+4 (cannon)",
+   "t3_source": "sfv",
+   "sf_motion": "HPHK (any direction, VT2)",
+   "startup": 0.05,
+   "active": 0.333,
+   "recovery": 0.15,
+   "damage": 15,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 8,
+   "anim_ref": "sfv:blanka:rolling_cannon_sfv",
+   "input_slots": [
+    "3+4 (cannon)"
+   ],
+   "move_class": "special",
+   "note": "SF: HPHK (any direction, VT2). 8-way rolling follow-up from Blanka Ball specials."
+  },
+  "charge_b,f+1 (cannon)": {
+   "name": "Rolling Cannon from LP Roll",
+   "input": "charge_b,f+1 (cannon)",
+   "t3_source": "sfv",
+   "sf_motion": "46LP > 3HPHK",
+   "startup": 0.2,
+   "active": 0.333,
+   "recovery": 0.15,
+   "damage": 15,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 8,
+   "anim_ref": "sfv:blanka:rolling_cannon_from_lp_roll",
+   "input_slots": [
+    "charge_b,f+1 (cannon)"
+   ],
+   "move_class": "special",
+   "note": "SF: 46LP > 3HPHK."
+  },
+  "charge_b,f+2 (cannon)": {
+   "name": "Rolling Cannon from MP Roll",
+   "input": "charge_b,f+2 (cannon)",
+   "t3_source": "sfv",
+   "sf_motion": "46HP > 3HPHK",
+   "startup": 0.2,
+   "active": 0.333,
+   "recovery": 0.15,
+   "damage": 15,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 8,
+   "anim_ref": "sfv:blanka:rolling_cannon_from_mp_roll",
+   "input_slots": [
+    "charge_b,f+2 (cannon)"
+   ],
+   "move_class": "special",
+   "note": "SF: 46HP > 3HPHK."
+  },
+  "charge_b,f+1+2 (cannon)": {
+   "name": "Rolling Cannon from EX Roll",
+   "input": "charge_b,f+1+2 (cannon)",
+   "t3_source": "sfv",
+   "sf_motion": "46PP > 3HPHK",
+   "startup": 0.183,
+   "active": 0.333,
+   "recovery": 0.15,
+   "damage": 15,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 8,
+   "anim_ref": "sfv:blanka:rolling_cannon_from_ex_roll",
+   "input_slots": [
+    "charge_b,f+1+2 (cannon)"
+   ],
+   "move_class": "special",
+   "note": "SF: 46PP > 3HPHK."
+  },
+  "3+4 (vshift)": {
+   "name": "V-Shift",
+   "input": "3+4 (vshift)",
+   "t3_source": "sfv",
+   "sf_motion": "5MKHP",
+   "startup": 0.017,
+   "active": 0.15,
+   "recovery": 0.367,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sfv:blanka:v_shift",
+   "input_slots": [
+    "3+4 (vshift)"
+   ],
+   "move_class": "stance",
+   "note": "SF: 5MKHP."
+  },
+  "3+4 (vshift, break)": {
+   "name": "Anaconda's Maw",
+   "input": "3+4 (vshift, break)",
+   "t3_source": "sfv",
+   "sf_motion": "5MKHP (V-Shift Break)",
+   "startup": 0.167,
+   "active": 0.05,
+   "recovery": 0.333,
+   "damage": 18,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 9,
+   "anim_ref": "sfv:blanka:anaconda_s_maw",
+   "input_slots": [
+    "3+4 (vshift, break)"
+   ],
+   "move_class": "special",
+   "note": "SF: 5MKHP (V-Shift Break)."
+  },
+  "f+1+2+3 (vrev)": {
+   "name": "Quick Rolling",
+   "input": "f+1+2+3 (vrev)",
+   "t3_source": "sfv",
+   "sf_motion": "6PPP (V-Reversal)",
+   "startup": 0.283,
+   "active": 0.05,
+   "recovery": 0.383,
+   "damage": 18,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 9,
+   "anim_ref": "sfv:blanka:quick_rolling",
+   "input_slots": [
+    "f+1+2+3 (vrev)"
+   ],
+   "move_class": "special",
+   "note": "SF: 6PPP (V-Reversal). SFV V-Reversal."
+  },
+  "2+4 (sfv)": {
+   "name": "Coward Crouch (SFV)",
+   "input": "2+4 (sfv)",
+   "t3_source": "sfv",
+   "sf_motion": "MPMK (V-Skill 1)",
+   "startup": 0.167,
+   "active": 0.0,
+   "recovery": 0.767,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sfv:blanka:coward_crouch_sfv",
+   "input_slots": [
+    "2+4 (sfv)"
+   ],
+   "move_class": "stance",
+   "note": "SF: MPMK (V-Skill 1). SFV V-Skill 1 stance."
+  },
+  "2+4 (sfv),1": {
+   "name": "Wild Lift (SFV)",
+   "input": "2+4 (sfv),1",
+   "t3_source": "sfv",
+   "sf_motion": "MPMK > P (V-Skill 1)",
+   "startup": 0.383,
+   "active": 0.067,
+   "recovery": 0.4,
+   "damage": 18,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 9,
+   "anim_ref": "sfv:blanka:wild_lift_sfv",
+   "input_slots": [
+    "2+4 (sfv),1"
+   ],
+   "move_class": "special",
+   "note": "SF: MPMK > P (V-Skill 1)."
+  },
+  "2+4 (sfv),3": {
+   "name": "Raid Jump (SFV)",
+   "input": "2+4 (sfv),3",
+   "t3_source": "sfv",
+   "sf_motion": "MPMK > K (V-Skill 1)",
+   "startup": 0.483,
+   "active": 0.0,
+   "recovery": 0.067,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sfv:blanka:raid_jump_sfv",
+   "input_slots": [
+    "2+4 (sfv),3"
+   ],
+   "move_class": "movement",
+   "note": "SF: MPMK > K (V-Skill 1)."
   }
  },
  "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
- "schema_version": 2
+ "schema_version": 2,
+ "canon_note": "Full Blanka SF6 set (supercombo.gg) + SFV V-System/CA extras (supercombo.gg) added 2026-10-19 under the FULL MOVESET LAW; SF motion inputs converted to Tekken notation, original motion kept in note/sf_motion. SF6 damage x0.03, SFV damage x0.3 (1000-HP scale), frames /60.",
+ "strings": [],
+ "specials": [
+  {
+   "input": "1+3",
+   "damage": 25,
+   "throw": true
+  },
+  {
+   "input": "b+1+3",
+   "damage": 25,
+   "throw": true
+  },
+  {
+   "input": "u+1+3",
+   "damage": 25,
+   "throw": true
+  },
+  {
+   "input": "qcf+3",
+   "damage": 25,
+   "throw": true
+  },
+  {
+   "input": "qcf+4",
+   "damage": 25,
+   "throw": true
+  },
+  {
+   "input": "qcf+3+4",
+   "damage": 25,
+   "throw": true
+  },
+  {
+   "input": "qcf+3+4_od",
+   "damage": 25,
+   "throw": true
+  }
+ ]
 }

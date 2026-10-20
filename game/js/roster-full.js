@@ -155,6 +155,10 @@ export const FULL_ROSTER = [
   { id: 'vega', name: 'VEGA', title: 'The Claw', base: 'Vega', moveset: 'xiaoyu', model: 'vega', tintStrength: 0.25,
     colors: { suit: 0x8a2a6b, trim: 0xffd700 }, style: 'Claw', archetype: 'Evasive',
     surge: { name: "MATADOR'S FURY", color: 0xcc2288, accent: 0xffffff } },
+  // KRONOS (owner custom Zangief fighter, 2026-10-19): full Zangief moveset + Golem (Urban Reign) extras.
+  { id: 'kronos', name: 'KRONOS', title: 'The Custom Cyclone', base: 'Zangief', moveset: 'kronos', model: 'kronos', tintStrength: 0.25,
+    colors: { suit: 0x3a3a4a, trim: 0xff8800 }, style: 'Grappler', archetype: 'Power',
+    surge: { name: "CUSTOM CYCLONE", color: 0xcc2222, accent: 0xffcc00 } },
   { id: 'iori', name: 'IORI', title: 'The Flame', base: 'Iori Yagami', moveset: 'heihachi', model: 'iori', tintStrength: 0.25,
     colors: { suit: 0x6b1a8a, trim: 0xff2222 }, style: 'Flames', archetype: 'Rushdown',
     surge: { name: 'CRIMSON INFERNO', color: 0xaa22ff, accent: 0xff4400 } },
