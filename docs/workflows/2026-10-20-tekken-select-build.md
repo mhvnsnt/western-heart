@@ -169,4 +169,23 @@ WebGL canvases; harness: ~/workspace/_wh-work/select-harness/):
   select-v3-desktop-pantera-stance-a (~/workspace/your_files/).
 
 Live (after merge + gh-pages redeploy):
-<!-- filled in after redeploy -->
+PR #384 merged 2026-10-20 (merge commit 113739ae). Redeployed with
+the established recipe (gh-pages tree, game subtree swapped to the
+new main; gh-pages commit aea76adf). Byte-verify against
+origin/main: ALL MATCH (sha256) — game/index.html 13234B,
+game/select.css 11928B, game/js/select-screen.js 26481B,
+game/js/main.js 22824B. Live browser proof
+(https://mhvnsnt.github.io/western-heart/game/): strip facts —
+58 cards (57 roster on current main + RANDOM), strip scrollWidth
+5672px in a 390px box, page does not scroll; DEMONIO pick live
+with real stats and all 5 attire chips; K tap switched to ATTIRE 1
+live (model swapped); CONFIRM locked P1 and activated P2 (pane
+state). Live screenshots (own-eyes viewed):
+live-select-final-phone-initial.png,
+live-select-final-phone-demonio.png,
+live-select-final-phone-demonio-attire1.png
+(~/workspace/your_files/). The live P2 capture was cut short by
+the test VM's SwiftShader target dying under load; the full
+versus → stage → fight-HUD flow is proven locally against the
+byte-identical code (see above). Full live results are also
+commented on PR #384.
