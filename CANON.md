@@ -1282,3 +1282,17 @@ Diablo is the one T3-sourced member of the Seven whose real animation bank is no
 decoded into the game: Heihachi's KMD carries empty vertex rows for parts 2/9/13 in both
 costume records, which blocks the shared bake pipeline at its part-2 pivot step (full
 evidence in the conversion record §5). His moveset is fully wired; his motion is the gap.
+
+<!-- BEGIN WMXIX / MAT-LEGENDS SECTION (WMXIX wiring lane, 2026-10-20 — coordinator reconciles at merge) -->
+
+## MAT-LEGENDS (WWE WrestleMania XIX) — wired 2026-10-20
+
+The `mat-legends` universe is Western Heart's wrestling-mechanics donor: its grappling system, arena bones, and create-a-wrestler part library, converted to WH canon. Per-game source of truth: `teardown/wmxix/CANON-CONVERSION.md`. Full inventory + reconciliation of both teardown folders: `teardown/wmxix/WIRING-INVENTORY.md`.
+
+- **Moves/animations:** all 170 decoded YANM clips carry canon IDs (`ML-<CLIP>`) in `moveset-library/animations/WMXIX-CLIP-INDEX.json`; 169 are registered as library moves in `moveset-library/movesets/WMXIX-MOVES.json`, wired to Tekken-style throw inputs (federation rule: wrestling moves enter only on Tekken inputs/structure). Per-clip move names are NOT canon yet — the clip-semantics decode is open and no names were invented.
+- **Arenas → canon stages:** the conversions authored in `teardown/wmxix/ARENA-UNIVERSE-MAP.md` are wired as data in `game/assets/stages/mat-legends/stages.json` (arena 00 → Helix Palace, 01 → Octagonal Shrine Par-Fang, 02 → Phantom Marketplace, Hell-cell → The Drill Wound, backstage sets → Helix Palace interiors / Wrestling Mode areas). Arena geometry is decoded point clouds; face reconstruction is open, so no WMXIX geometry is playable in the build yet.
+- **CAW parts:** the 2,690-part XIX create-a-wrestler library is indexed for the Creation Suite in `customization/mat-legends-caw.json` (catalog: `teardown/wmxix/caw-parts/files.tsv`).
+- **Characters:** wrestler slot → WH character assignment is the owner's and remains PENDING (`teardown/wwe-wrestlemania-xix/WRESTLER-IDENTITY-MAP.md`); the models themselves live in the wrestling repos per the federation rule. Nothing was assigned or invented by this lane.
+- **Revenge Mode:** XIX's out-of-ring traversal mode has no canon name or implementation yet — flagged, not invented. Its stage data is registered in `stages.json` as `backstage_traversal` / `open_traversal`.
+
+<!-- END WMXIX / MAT-LEGENDS SECTION -->

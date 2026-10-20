@@ -323,3 +323,14 @@ The directory rename `teardown/tekken3/` → `teardown/iron-legacy/` remains PEN
 map's table): it must land with all consumer references updated (`game/js/t3anims.js`,
 `game/js/movesets.js`, `lab/tools/`, stage pipeline docs) and a boot check, sequenced by
 the coordinator — it was not executed by the wiring lane.
+
+<!-- BEGIN WMXIX / MAT-LEGENDS SECTION (WMXIX wiring lane, 2026-10-20 — coordinator reconciles at merge) -->
+
+### mat-legends (WMXIX) — wiring + conversion status, 2026-10-20
+
+- Universe rename `WWE WrestleMania XIX` → `mat-legends` is APPLIED at the data/registry layer: `moveset-library/animations/WMXIX-CLIP-INDEX.json`, `moveset-library/movesets/WMXIX-MOVES.json`, `game/assets/stages/mat-legends/stages.json`, `customization/mat-legends-caw.json`. Per-game record: `teardown/wmxix/CANON-CONVERSION.md`.
+- Physical folder renames in `teardown/wmxix/docs/RENAME-ENTRIES-WMXIX.md` (`teardown/wmxix/` → `teardown/mat-legends/`, `teardown/wwe-wrestlemania-xix/` → `teardown/mat-legends-research/`) remain PLANNED — gated on the watchdog lane finishing and owner wrestler-name assignment. Not executed by this lane; nothing deleted.
+- Wrestler model files (127 OBJs, slots 000–110): ACCOUNTED-ELSEWHERE — canonical home is mhvnsnt/wrestling-game + mhvnsnt/wrestlemania-xix-mod per the federation rule; WH keeps the mechanics and the teardown.
+- The "~80%" status above predates the solved teardown (closed 2026-10-17: assembly solution exact, YANM fully decoded 169/170 clean). Remaining opens: arena face indices, per-clip move semantics, CAW part-level consumption, owner character names.
+
+<!-- END WMXIX / MAT-LEGENDS SECTION -->
