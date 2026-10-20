@@ -155,12 +155,18 @@ export const FULL_ROSTER = [
   { id: 'vega', name: 'VEGA', title: 'The Claw', base: 'Vega', moveset: 'xiaoyu', model: 'vega', tintStrength: 0.25,
     colors: { suit: 0x8a2a6b, trim: 0xffd700 }, style: 'Claw', archetype: 'Evasive',
     surge: { name: "MATADOR'S FURY", color: 0xcc2288, accent: 0xffffff } },
-  { id: 'iori', name: 'IORI', title: 'The Flame', base: 'Iori Yagami', moveset: 'heihachi', model: 'iori', tintStrength: 0.25,
+  { id: 'iori', name: 'IORI', title: 'The Flame', base: 'Iori Yagami', moveset: 'iori', model: 'iori', tintStrength: 0.25,
     colors: { suit: 0x6b1a8a, trim: 0xff2222 }, style: 'Flames', archetype: 'Rushdown',
     surge: { name: 'CRIMSON INFERNO', color: 0xaa22ff, accent: 0xff4400 } },
   { id: 'armor-king', name: 'ARMOR KING', title: 'The Chain', base: 'Armor King', moveset: 'king', model: 'armor-king', tintStrength: 0.25,
     colors: { suit: 0x1a1a2a, trim: 0xccaa00 }, style: 'Grappler', archetype: 'Power',
     surge: { name: "JAGUAR'S GRIP", color: 0x888800, accent: 0xffcc00 } },
+  { id: 'deathfang', name: 'DEATHFANG', title: 'The Chained Flame', base: 'Iori Yagami', moveset: 'deathfang', model: 'iori', tintStrength: 0.25,
+    colors: { suit: 0x2a0a2a, trim: 0x8800cc }, style: 'Yasakani Claw / Chained Werewolf', archetype: 'Rushdown',
+    surge: { name: 'NO FUTURE', color: 0x6600aa, accent: 0xff2222 } },
+  { id: 'ryuji', name: 'RYUJI', title: 'The Wicked Heretic', base: 'Ryuji Yamazaki', moveset: 'ryuji', model: 'steve-fox', tintStrength: 0.25,
+    colors: { suit: 0x111111, trim: 0xd8b25a }, style: 'Hebi Tsukai / Wrestling', archetype: 'Zoner/Grappler',
+    surge: { name: 'SERPENT DRILL', color: 0x224411, accent: 0xffcc00 } },
 ];
 
 export function getFighter(id) {

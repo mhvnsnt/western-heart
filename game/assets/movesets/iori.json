@@ -1,10 +1,10 @@
 {
  "fighter": "iori",
  "display": "IORI",
- "tekken_base": "Iori Yagami (KOF)",
+ "tekken_base": "Iori Yagami (KOF XV)",
  "t3_source": "heihachi",
- "proxy": true,
- "proxy_note": "Iori (KOF) has no T3 bank - Heihachi proxy (power). WH name pending owner pick.",
+ "proxy": false,
+ "proxy_note": "Full KOF XV moveset (Cluster D, owner FULL MOVESET LAW 2026-10-19). Original 12 Heihachi-proxy entries kept verbatim; canonical KOF XV set added: normals (far/close/crouch/jump/hop/blowback), Geshiki command normals, Sakahagi throw, Yamibarai/Oniyaki/Aoi Hana/Kototsuki In/Kuzukaze/Tsumagushi specials + EX, Ya Otome super, Saika, Yamisogi (XIII legacy), Ya Sakazuki climax, Homurabotogi (XIII legacy), Rush + XV system moves. Sources: dreamcancel KOFXV, SNK wiki Iori move list, supercombo KOF XIII.",
  "variant": 1,
  "moves": {
   "1": {
@@ -262,8 +262,1758 @@
    "move_class": "projectile",
    "wh_signature": true,
    "wh_note": "WH signature: Iori's purple flame projectile."
+  },
+  "far_1": {
+   "name": "Standing LP (Far)",
+   "input": "far 1 (KOFXV)",
+   "kof_motion": "5A (far)",
+   "startup": 0.083,
+   "active": 0.033,
+   "recovery": 0.267,
+   "damage": 2,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:far_1",
+   "input_slots": [
+    "far 1 (KOFXV)"
+   ],
+   "move_class": "strike",
+   "note": ""
+  },
+  "far_2": {
+   "name": "Standing RP (Far)",
+   "input": "far 2 (KOFXV)",
+   "kof_motion": "5B (far)",
+   "startup": 0.083,
+   "active": 0.033,
+   "recovery": 0.267,
+   "damage": 2,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:far_2",
+   "input_slots": [
+    "far 2 (KOFXV)"
+   ],
+   "move_class": "strike",
+   "note": ""
+  },
+  "far_3": {
+   "name": "Standing LK (Far)",
+   "input": "far 3 (KOFXV)",
+   "kof_motion": "5C (far)",
+   "startup": 0.083,
+   "active": 0.033,
+   "recovery": 0.267,
+   "damage": 2,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:far_3",
+   "input_slots": [
+    "far 3 (KOFXV)"
+   ],
+   "move_class": "strike",
+   "note": ""
+  },
+  "far_4": {
+   "name": "Standing RK (Far)",
+   "input": "far 4 (KOFXV)",
+   "kof_motion": "5D (far)",
+   "startup": 0.083,
+   "active": 0.033,
+   "recovery": 0.267,
+   "damage": 2,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:far_4",
+   "input_slots": [
+    "far 4 (KOFXV)"
+   ],
+   "move_class": "strike",
+   "note": ""
+  },
+  "close_1": {
+   "name": "Standing LP (Close)",
+   "input": "1 (close) (KOFXV)",
+   "kof_motion": "cl.A",
+   "startup": 0.083,
+   "active": 0.033,
+   "recovery": 0.267,
+   "damage": 2,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:close_1",
+   "input_slots": [
+    "1 (close) (KOFXV)"
+   ],
+   "move_class": "strike",
+   "note": ""
+  },
+  "close_2": {
+   "name": "Standing RP (Close)",
+   "input": "2 (close) (KOFXV)",
+   "kof_motion": "cl.B",
+   "startup": 0.15,
+   "active": 0.033,
+   "recovery": 0.267,
+   "damage": 2,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:close_2",
+   "input_slots": [
+    "2 (close) (KOFXV)"
+   ],
+   "move_class": "strike",
+   "note": ""
+  },
+  "close_3": {
+   "name": "Standing LK (Close)",
+   "input": "3 (close) (KOFXV)",
+   "kof_motion": "cl.C",
+   "startup": 0.083,
+   "active": 0.033,
+   "recovery": 0.267,
+   "damage": 2,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:close_3",
+   "input_slots": [
+    "3 (close) (KOFXV)"
+   ],
+   "move_class": "strike",
+   "note": ""
+  },
+  "close_4": {
+   "name": "Standing RK (Close)",
+   "input": "4 (close) (KOFXV)",
+   "kof_motion": "cl.D",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.267,
+   "damage": 2,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:close_4",
+   "input_slots": [
+    "4 (close) (KOFXV)"
+   ],
+   "move_class": "strike",
+   "note": ""
+  },
+  "cr_1": {
+   "name": "Crouching LP",
+   "input": "d+1 (crouch) (KOFXV)",
+   "kof_motion": "2A",
+   "startup": 0.083,
+   "active": 0.033,
+   "recovery": 0.267,
+   "damage": 2,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:crouch_1",
+   "input_slots": [
+    "d+1 (crouch) (KOFXV)"
+   ],
+   "move_class": "strike",
+   "note": ""
+  },
+  "cr_2": {
+   "name": "Crouching RP",
+   "input": "d+2 (crouch) (KOFXV)",
+   "kof_motion": "2B",
+   "startup": 0.083,
+   "active": 0.033,
+   "recovery": 0.267,
+   "damage": 2,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:crouch_2",
+   "input_slots": [
+    "d+2 (crouch) (KOFXV)"
+   ],
+   "move_class": "strike",
+   "note": ""
+  },
+  "cr_3": {
+   "name": "Crouching LK",
+   "input": "d+3 (crouch) (KOFXV)",
+   "kof_motion": "2C",
+   "startup": 0.083,
+   "active": 0.033,
+   "recovery": 0.267,
+   "damage": 2,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:crouch_3",
+   "input_slots": [
+    "d+3 (crouch) (KOFXV)"
+   ],
+   "move_class": "strike",
+   "note": "Low"
+  },
+  "cr_4": {
+   "name": "Crouching RK",
+   "input": "d+4 (crouch) (KOFXV)",
+   "kof_motion": "2D",
+   "startup": 0.083,
+   "active": 0.033,
+   "recovery": 0.267,
+   "damage": 2,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:crouch_4",
+   "input_slots": [
+    "d+4 (crouch) (KOFXV)"
+   ],
+   "move_class": "strike",
+   "note": "Low"
+  },
+  "jump_1": {
+   "name": "Jumping LP",
+   "input": "u/f+1 (KOFXV)",
+   "kof_motion": "j.A (jumping)",
+   "startup": 0.133,
+   "active": 0.05,
+   "recovery": 0.233,
+   "damage": 2,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:jump_1",
+   "input_slots": [
+    "u/f+1 (KOFXV)"
+   ],
+   "move_class": "strike",
+   "note": "Overhead (air)"
+  },
+  "jump_2": {
+   "name": "Jumping RP",
+   "input": "u/f+2 (KOFXV)",
+   "kof_motion": "j.B (jumping)",
+   "startup": 0.133,
+   "active": 0.05,
+   "recovery": 0.233,
+   "damage": 2,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:jump_2",
+   "input_slots": [
+    "u/f+2 (KOFXV)"
+   ],
+   "move_class": "strike",
+   "note": "Overhead (air)"
+  },
+  "jump_3": {
+   "name": "Jumping LK",
+   "input": "u/f+3 (KOFXV)",
+   "kof_motion": "j.C (jumping)",
+   "startup": 0.133,
+   "active": 0.05,
+   "recovery": 0.233,
+   "damage": 2,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:jump_3",
+   "input_slots": [
+    "u/f+3 (KOFXV)"
+   ],
+   "move_class": "strike",
+   "note": "Overhead (air)"
+  },
+  "jump_4": {
+   "name": "Jumping RK",
+   "input": "u/f+4 (KOFXV)",
+   "kof_motion": "j.D (jumping)",
+   "startup": 0.133,
+   "active": 0.05,
+   "recovery": 0.233,
+   "damage": 2,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:jump_4",
+   "input_slots": [
+    "u/f+4 (KOFXV)"
+   ],
+   "move_class": "strike",
+   "note": "Overhead (air)"
+  },
+  "njump_1": {
+   "name": "Neutral Jump LP",
+   "input": "u+1 (KOFXV)",
+   "kof_motion": "j.A (neutral jump)",
+   "startup": 0.133,
+   "active": 0.05,
+   "recovery": 0.233,
+   "damage": 2,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:njump_1",
+   "input_slots": [
+    "u+1 (KOFXV)"
+   ],
+   "move_class": "strike",
+   "note": "Overhead (air)"
+  },
+  "njump_2": {
+   "name": "Neutral Jump RP",
+   "input": "u+2 (KOFXV)",
+   "kof_motion": "j.B (neutral jump)",
+   "startup": 0.133,
+   "active": 0.05,
+   "recovery": 0.233,
+   "damage": 2,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:njump_2",
+   "input_slots": [
+    "u+2 (KOFXV)"
+   ],
+   "move_class": "strike",
+   "note": "Overhead (air)"
+  },
+  "njump_3": {
+   "name": "Neutral Jump LK",
+   "input": "u+3 (KOFXV)",
+   "kof_motion": "j.C (neutral jump)",
+   "startup": 0.133,
+   "active": 0.05,
+   "recovery": 0.233,
+   "damage": 2,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:njump_3",
+   "input_slots": [
+    "u+3 (KOFXV)"
+   ],
+   "move_class": "strike",
+   "note": "Overhead (air)"
+  },
+  "njump_4": {
+   "name": "Neutral Jump RK",
+   "input": "u+4 (KOFXV)",
+   "kof_motion": "j.D (neutral jump)",
+   "startup": 0.133,
+   "active": 0.05,
+   "recovery": 0.233,
+   "damage": 2,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:njump_4",
+   "input_slots": [
+    "u+4 (KOFXV)"
+   ],
+   "move_class": "strike",
+   "note": "Overhead (air)"
+  },
+  "hop_1": {
+   "name": "Hop LP",
+   "input": "hop u/f+1 (KOFXV)",
+   "kof_motion": "j.A (hop)",
+   "startup": 0.133,
+   "active": 0.05,
+   "recovery": 0.233,
+   "damage": 2,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:hop_1",
+   "input_slots": [
+    "hop u/f+1 (KOFXV)"
+   ],
+   "move_class": "strike",
+   "note": "Overhead (air)"
+  },
+  "hop_2": {
+   "name": "Hop RP",
+   "input": "hop u/f+2 (KOFXV)",
+   "kof_motion": "j.B (hop)",
+   "startup": 0.133,
+   "active": 0.05,
+   "recovery": 0.233,
+   "damage": 2,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:hop_2",
+   "input_slots": [
+    "hop u/f+2 (KOFXV)"
+   ],
+   "move_class": "strike",
+   "note": "Overhead (air)"
+  },
+  "hop_3": {
+   "name": "Hop LK",
+   "input": "hop u/f+3 (KOFXV)",
+   "kof_motion": "j.C (hop)",
+   "startup": 0.133,
+   "active": 0.05,
+   "recovery": 0.233,
+   "damage": 2,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:hop_3",
+   "input_slots": [
+    "hop u/f+3 (KOFXV)"
+   ],
+   "move_class": "strike",
+   "note": "Overhead (air)"
+  },
+  "hop_4": {
+   "name": "Hop RK",
+   "input": "hop u/f+4 (KOFXV)",
+   "kof_motion": "j.D (hop)",
+   "startup": 0.133,
+   "active": 0.05,
+   "recovery": 0.233,
+   "damage": 2,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:hop_4",
+   "input_slots": [
+    "hop u/f+4 (KOFXV)"
+   ],
+   "move_class": "strike",
+   "note": "Overhead (air)"
+  },
+  "nhop_1": {
+   "name": "Neutral Hop LP",
+   "input": "hop u+1 (KOFXV)",
+   "kof_motion": "j.A (neutral hop)",
+   "startup": 0.133,
+   "active": 0.05,
+   "recovery": 0.233,
+   "damage": 2,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:nhop_1",
+   "input_slots": [
+    "hop u+1 (KOFXV)"
+   ],
+   "move_class": "strike",
+   "note": "Overhead (air)"
+  },
+  "nhop_2": {
+   "name": "Neutral Hop RP",
+   "input": "hop u+2 (KOFXV)",
+   "kof_motion": "j.B (neutral hop)",
+   "startup": 0.133,
+   "active": 0.05,
+   "recovery": 0.233,
+   "damage": 2,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:nhop_2",
+   "input_slots": [
+    "hop u+2 (KOFXV)"
+   ],
+   "move_class": "strike",
+   "note": "Overhead (air)"
+  },
+  "nhop_3": {
+   "name": "Neutral Hop LK",
+   "input": "hop u+3 (KOFXV)",
+   "kof_motion": "j.C (neutral hop)",
+   "startup": 0.133,
+   "active": 0.05,
+   "recovery": 0.233,
+   "damage": 2,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:nhop_3",
+   "input_slots": [
+    "hop u+3 (KOFXV)"
+   ],
+   "move_class": "strike",
+   "note": "Overhead (air)"
+  },
+  "nhop_4": {
+   "name": "Neutral Hop RK",
+   "input": "hop u+4 (KOFXV)",
+   "kof_motion": "j.D (neutral hop)",
+   "startup": 0.133,
+   "active": 0.05,
+   "recovery": 0.233,
+   "damage": 2,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:nhop_4",
+   "input_slots": [
+    "hop u+4 (KOFXV)"
+   ],
+   "move_class": "strike",
+   "note": "Overhead (air)"
+  },
+  "cd_stand": {
+   "name": "Blowback Attack",
+   "input": "3+4 (blowback) (KOFXV)",
+   "kof_motion": "C+D",
+   "startup": 0.233,
+   "active": 0.067,
+   "recovery": 0.467,
+   "damage": 2,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:blowback",
+   "input_slots": [
+    "3+4 (blowback) (KOFXV)"
+   ],
+   "move_class": "strike",
+   "note": "Soft knockdown; special-cancelable"
+  },
+  "cd_jump": {
+   "name": "Jumping Blowback Attack",
+   "input": "u/f+3+4 (KOFXV)",
+   "kof_motion": "j.C+D",
+   "startup": 0.167,
+   "active": 0.067,
+   "recovery": 0.3,
+   "damage": 3,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 2,
+   "anim_ref": "kofxv:iori:jump_blowback",
+   "input_slots": [
+    "u/f+3+4 (KOFXV)"
+   ],
+   "move_class": "strike",
+   "note": "Overhead (air); soft knockdown"
+  },
+  "cd_hop": {
+   "name": "Hop Blowback Attack",
+   "input": "hop u/f+3+4 (KOFXV)",
+   "kof_motion": "hop j.C+D",
+   "startup": 0.167,
+   "active": 0.067,
+   "recovery": 0.3,
+   "damage": 2,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:hop_blowback",
+   "input_slots": [
+    "hop u/f+3+4 (KOFXV)"
+   ],
+   "move_class": "strike",
+   "note": "Overhead (air); soft knockdown"
+  },
+  "evade_fwd": {
+   "name": "Emergency Evasion (Forward)",
+   "input": "f,f (roll) (KOFXV)",
+   "kof_motion": "A+B",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.333,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "kofxv:iori:evade_fwd",
+   "input_slots": [
+    "f,f (roll) (KOFXV)"
+   ],
+   "move_class": "special",
+   "note": "Forward roll; invulnerable startup (KOF XV system)"
+  },
+  "evade_back": {
+   "name": "Emergency Evasion (Back)",
+   "input": "b,b (roll) (KOFXV)",
+   "kof_motion": "b+A+B",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.333,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "kofxv:iori:evade_back",
+   "input_slots": [
+    "b,b (roll) (KOFXV)"
+   ],
+   "move_class": "special",
+   "note": "Back roll (KOF XV system)"
+  },
+  "gc_blowback": {
+   "name": "Guard Cancel Blowback",
+   "input": "b+1+2 (guard) (KOFXV)",
+   "kof_motion": "b+C+D (guard)",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.333,
+   "damage": 2,
+   "limb": "both",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:gc_blowback",
+   "input_slots": [
+    "b+1+2 (guard) (KOFXV)"
+   ],
+   "move_class": "strike",
+   "note": "Guard-cancel blowback; costs 1 stock (KOF XV system)"
+  },
+  "gc_roll_fwd": {
+   "name": "Guard Cancel Evasion (Forward)",
+   "input": "f+1+2 (guard) (KOFXV)",
+   "kof_motion": "A+B (guard)",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.333,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "kofxv:iori:gc_roll_fwd",
+   "input_slots": [
+    "f+1+2 (guard) (KOFXV)"
+   ],
+   "move_class": "special",
+   "note": "Guard-cancel roll forward; costs 1 stock (KOF XV system)"
+  },
+  "gc_roll_back": {
+   "name": "Guard Cancel Evasion (Back)",
+   "input": "b+3+4 (guard) (KOFXV)",
+   "kof_motion": "b+A+B (guard)",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.333,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "kofxv:iori:gc_roll_back",
+   "input_slots": [
+    "b+3+4 (guard) (KOFXV)"
+   ],
+   "move_class": "special",
+   "note": "Guard-cancel roll back; costs 1 stock (KOF XV system)"
+  },
+  "shatter": {
+   "name": "Shatter Strike",
+   "input": "qcf+3+4 (KOFXV)",
+   "kof_motion": "236+C+D",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.333,
+   "damage": 2,
+   "limb": "both",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:shatter",
+   "input_slots": [
+    "qcf+3+4 (KOFXV)"
+   ],
+   "move_class": "special",
+   "note": "KOF XV Shatter Strike; guard point, crumple on counter hit"
+  },
+  "maxmode": {
+   "name": "MAX Mode",
+   "input": "1+2+3+4 (MAX) (KOFXV)",
+   "kof_motion": "B+C (MAX Mode)",
+   "startup": 0.5,
+   "active": 0.033,
+   "recovery": 0.333,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "kofxv:iori:maxmode",
+   "input_slots": [
+    "1+2+3+4 (MAX) (KOFXV)"
+   ],
+   "move_class": "special",
+   "note": "KOF XV MAX Mode activation; +damage, EX access"
+  },
+  "taunt": {
+   "name": "Taunt",
+   "input": "2+3 (taunt) (KOFXV)",
+   "kof_motion": "Start (taunt)",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.333,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "kofxv:iori:taunt",
+   "input_slots": [
+    "2+3 (taunt) (KOFXV)"
+   ],
+   "move_class": "special",
+   "note": "Taunt"
+  },
+  "fallbreaker": {
+   "name": "Fallbreaker (Recovery Roll)",
+   "input": "1+2 (grounded) (KOFXV)",
+   "kof_motion": "any button (downed)",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.333,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "kofxv:iori:fallbreaker",
+   "input_slots": [
+    "1+2 (grounded) (KOFXV)"
+   ],
+   "move_class": "special",
+   "note": "Recovery roll on knockdown (KOF system)"
+  },
+  "throw_escape": {
+   "name": "Throw Escape",
+   "input": "3+4 (throw escape) (KOFXV)",
+   "kof_motion": "C+D (on throw)",
+   "startup": 0.083,
+   "active": 0.033,
+   "recovery": 0.333,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "kofxv:iori:throw_escape",
+   "input_slots": [
+    "3+4 (throw escape) (KOFXV)"
+   ],
+   "move_class": "special",
+   "note": "Throw tech (KOF system)"
+  },
+  "dash": {
+   "name": "Forward Dash",
+   "input": "f,f (dash) (KOFXV)",
+   "kof_motion": "f,f",
+   "startup": 0.083,
+   "active": 0.033,
+   "recovery": 0.333,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "kofxv:iori:dash",
+   "input_slots": [
+    "f,f (dash) (KOFXV)"
+   ],
+   "move_class": "special",
+   "note": "KOF run/dash step"
+  },
+  "backdash": {
+   "name": "Backdash",
+   "input": "b,b (backdash) (KOFXV)",
+   "kof_motion": "b,b",
+   "startup": 0.083,
+   "active": 0.033,
+   "recovery": 0.333,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "kofxv:iori:backdash",
+   "input_slots": [
+    "b,b (backdash) (KOFXV)"
+   ],
+   "move_class": "special",
+   "note": "KOF backstep"
+  },
+  "rush_l1": {
+   "name": "Light Rush 1",
+   "input": "1 (Rush) (KOFXV)",
+   "kof_motion": "A x1 (Rush)",
+   "startup": 0.083,
+   "active": 0.033,
+   "recovery": 0.267,
+   "damage": 2,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:rush_l1",
+   "input_slots": [
+    "1 (Rush) (KOFXV)"
+   ],
+   "move_class": "string",
+   "note": "KOF XV Rush auto-combo (light chain)"
+  },
+  "rush_l2": {
+   "name": "Light Rush 2",
+   "input": "1,1 (Rush) (KOFXV)",
+   "kof_motion": "A x2 (Rush)",
+   "startup": 0.083,
+   "active": 0.033,
+   "recovery": 0.267,
+   "damage": 2,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:rush_l2",
+   "input_slots": [
+    "1,1 (Rush) (KOFXV)"
+   ],
+   "move_class": "string",
+   "note": "KOF XV Rush auto-combo (light chain)"
+  },
+  "rush_l3": {
+   "name": "Light Rush 3",
+   "input": "1,1,1 (Rush) (KOFXV)",
+   "kof_motion": "A x3 (Rush)",
+   "startup": 0.083,
+   "active": 0.033,
+   "recovery": 0.267,
+   "damage": 2,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:rush_l3",
+   "input_slots": [
+    "1,1,1 (Rush) (KOFXV)"
+   ],
+   "move_class": "string",
+   "note": "KOF XV Rush auto-combo (light chain)"
+  },
+  "rush_l4": {
+   "name": "Light Rush 4",
+   "input": "1,1,1,1 (Rush) (KOFXV)",
+   "kof_motion": "A x4 (Rush)",
+   "startup": 0.083,
+   "active": 0.033,
+   "recovery": 0.267,
+   "damage": 2,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:rush_l4",
+   "input_slots": [
+    "1,1,1,1 (Rush) (KOFXV)"
+   ],
+   "move_class": "string",
+   "note": "KOF XV Rush auto-combo (light chain)"
+  },
+  "rush_h1": {
+   "name": "Heavy Rush 1",
+   "input": "2 (Rush) (KOFXV)",
+   "kof_motion": "C x1 (Rush)",
+   "startup": 0.15,
+   "active": 0.033,
+   "recovery": 0.333,
+   "damage": 2,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:rush_h1",
+   "input_slots": [
+    "2 (Rush) (KOFXV)"
+   ],
+   "move_class": "string",
+   "note": "KOF XV Rush auto-combo (heavy chain)"
+  },
+  "rush_h2": {
+   "name": "Heavy Rush 2",
+   "input": "2,2 (Rush) (KOFXV)",
+   "kof_motion": "C x2 (Rush)",
+   "startup": 0.15,
+   "active": 0.033,
+   "recovery": 0.333,
+   "damage": 2,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:rush_h2",
+   "input_slots": [
+    "2,2 (Rush) (KOFXV)"
+   ],
+   "move_class": "string",
+   "note": "KOF XV Rush auto-combo (heavy chain)"
+  },
+  "rush_h3": {
+   "name": "Heavy Rush 3",
+   "input": "2,2,2 (Rush) (KOFXV)",
+   "kof_motion": "C x3 (Rush)",
+   "startup": 0.15,
+   "active": 0.033,
+   "recovery": 0.333,
+   "damage": 3,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 2,
+   "anim_ref": "kofxv:iori:rush_h3",
+   "input_slots": [
+    "2,2,2 (Rush) (KOFXV)"
+   ],
+   "move_class": "string",
+   "note": "KOF XV Rush auto-combo (heavy chain)"
+  },
+  "rush_h4": {
+   "name": "Heavy Rush 4",
+   "input": "2,2,2,2 (Rush) (KOFXV)",
+   "kof_motion": "C x4 (Rush)",
+   "startup": 0.15,
+   "active": 0.033,
+   "recovery": 0.333,
+   "damage": 3,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 2,
+   "anim_ref": "kofxv:iori:rush_h4",
+   "input_slots": [
+    "2,2,2,2 (Rush) (KOFXV)"
+   ],
+   "move_class": "string",
+   "note": "KOF XV Rush auto-combo (heavy chain)"
+  },
+  "yumebiki_1": {
+   "name": "Geshiki: Yumebiki (1st)",
+   "input": "f+1 (KOFXV)",
+   "kof_motion": "6+A",
+   "startup": 0.183,
+   "active": 0.05,
+   "recovery": 0.233,
+   "damage": 2,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:yumebiki_1",
+   "input_slots": [
+    "f+1 (KOFXV)"
+   ],
+   "move_class": "strike",
+   "note": "Command normal; special-cancelable. Original KOF motion: f+A"
+  },
+  "yumebiki_2": {
+   "name": "Geshiki: Yumebiki (2nd)",
+   "input": "f+1,1 (KOFXV)",
+   "kof_motion": "6+A,A",
+   "startup": 0.183,
+   "active": 0.05,
+   "recovery": 0.25,
+   "damage": 2,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:yumebiki_2",
+   "input_slots": [
+    "f+1,1 (KOFXV)"
+   ],
+   "move_class": "string",
+   "note": "Overhead 2nd hit. Original KOF motion: f+A,A"
+  },
+  "goufu_in": {
+   "name": "Geshiki: Goufu In \"Shinigami\"",
+   "input": "f+3 (KOFXV)",
+   "kof_motion": "6+B",
+   "startup": 0.283,
+   "active": 0.05,
+   "recovery": 0.283,
+   "damage": 2,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:goufu_in",
+   "input_slots": [
+    "f+3 (KOFXV)"
+   ],
+   "move_class": "strike",
+   "note": "Overhead command normal. Original KOF motion: f+B"
+  },
+  "yuri_ori": {
+   "name": "Geshiki: Yuri Ori",
+   "input": "u/b+3 (air) (KOFXV)",
+   "kof_motion": "b+B (air)",
+   "startup": 0.15,
+   "active": 0.05,
+   "recovery": 0.233,
+   "damage": 2,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:yuri_ori",
+   "input_slots": [
+    "u/b+3 (air) (KOFXV)"
+   ],
+   "move_class": "strike",
+   "note": "Air command normal; cross-up. Original KOF motion: b+B in air"
+  },
+  "sakahagi_f": {
+   "name": "Sakahagi",
+   "input": "1+3 (KOFXV)",
+   "kof_motion": "f+C/D (close)",
+   "startup": 0.083,
+   "active": 0.033,
+   "recovery": 0.333,
+   "damage": 3,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 2,
+   "anim_ref": "kofxv:iori:sakahagi_f",
+   "input_slots": [
+    "1+3 (KOFXV)"
+   ],
+   "move_class": "throw",
+   "note": "Forward throw. Original KOF motion: b/f+C or D",
+   "throw": true,
+   "throw_break": "1",
+   "unblockable": true,
+   "isGrab": true
+  },
+  "sakahagi_b": {
+   "name": "Sakahagi (Back)",
+   "input": "2+4 (KOFXV)",
+   "kof_motion": "b+C/D (close)",
+   "startup": 0.083,
+   "active": 0.033,
+   "recovery": 0.333,
+   "damage": 3,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 2,
+   "anim_ref": "kofxv:iori:sakahagi_b",
+   "input_slots": [
+    "2+4 (KOFXV)"
+   ],
+   "move_class": "throw",
+   "note": "Backward throw. Original KOF motion: b/f+C or D",
+   "throw": true,
+   "throw_break": "2",
+   "unblockable": true,
+   "isGrab": true
+  },
+  "yamibarai_c": {
+   "name": "108 Shiki: Yami Barai (Heavy)",
+   "input": "qcf+2 (KOFXV)",
+   "kof_motion": "236+C",
+   "startup": 0.233,
+   "active": 0.067,
+   "recovery": 0.5,
+   "damage": 2,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:yamibarai_c",
+   "input_slots": [
+    "qcf+2 (KOFXV)"
+   ],
+   "move_class": "special",
+   "note": "Ground-travelling purple flame projectile, heavy version. Original KOF motion: 236+P"
+  },
+  "oniyaki_a": {
+   "name": "100 Shiki: Oniyaki (Light)",
+   "input": "f,n,d,d/f+1 (KOFXV)",
+   "kof_motion": "623+A",
+   "startup": 0.083,
+   "active": 0.1,
+   "recovery": 0.65,
+   "damage": 2,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:oniyaki_a",
+   "input_slots": [
+    "f,n,d,d/f+1 (KOFXV)"
+   ],
+   "move_class": "special",
+   "note": "Rising flame uppercut; anti-air invuln. Original KOF motion: 623+P"
+  },
+  "oniyaki_c": {
+   "name": "100 Shiki: Oniyaki (Heavy)",
+   "input": "f,n,d,d/f+2 (KOFXV)",
+   "kof_motion": "623+C",
+   "startup": 0.1,
+   "active": 0.133,
+   "recovery": 0.767,
+   "damage": 4,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 2,
+   "anim_ref": "kofxv:iori:oniyaki_c",
+   "input_slots": [
+    "f,n,d,d/f+2 (KOFXV)"
+   ],
+   "move_class": "special",
+   "note": "Two-hit rising flame uppercut. Original KOF motion: 623+P"
+  },
+  "oniyaki_ex": {
+   "name": "100 Shiki: Oniyaki (EX)",
+   "input": "f,n,d,d/f+1+2 (KOFXV)",
+   "kof_motion": "623+A+C",
+   "startup": 0.083,
+   "active": 0.167,
+   "recovery": 0.667,
+   "damage": 8,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 4,
+   "anim_ref": "kofxv:iori:oniyaki_ex",
+   "input_slots": [
+    "f,n,d,d/f+1+2 (KOFXV)"
+   ],
+   "move_class": "special",
+   "note": "EX: multi-hit rising flame uppercut. Original KOF motion: 623+AC"
+  },
+  "aoihana_a1": {
+   "name": "127 Shiki: Aoi Hana (1) [Light]",
+   "input": "qcb+1 (KOFXV)",
+   "kof_motion": "214+A",
+   "startup": 0.25,
+   "active": 0.05,
+   "recovery": 0.4,
+   "damage": 2,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:aoihana_a1",
+   "input_slots": [
+    "qcb+1 (KOFXV)"
+   ],
+   "move_class": "special",
+   "note": "Rekka stage 1. Original KOF motion: 214+P x3"
+  },
+  "aoihana_a2": {
+   "name": "127 Shiki: Aoi Hana (2) [Light]",
+   "input": "qcb+1,1 (KOFXV)",
+   "kof_motion": "214+A x2",
+   "startup": 0.2,
+   "active": 0.05,
+   "recovery": 0.4,
+   "damage": 2,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:aoihana_a2",
+   "input_slots": [
+    "qcb+1,1 (KOFXV)"
+   ],
+   "move_class": "string",
+   "note": "Rekka stage 2. Original KOF motion: 214+P x3"
+  },
+  "aoihana_a3": {
+   "name": "127 Shiki: Aoi Hana (3) [Light]",
+   "input": "qcb+1,1,1 (KOFXV)",
+   "kof_motion": "214+A x3",
+   "startup": 0.233,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 3,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 2,
+   "anim_ref": "kofxv:iori:aoihana_a3",
+   "input_slots": [
+    "qcb+1,1,1 (KOFXV)"
+   ],
+   "move_class": "string",
+   "note": "Rekka stage 3; overhead finisher, hard knockdown. Original KOF motion: 214+P x3"
+  },
+  "aoihana_c1": {
+   "name": "127 Shiki: Aoi Hana (1) [Heavy]",
+   "input": "qcb+2 (KOFXV)",
+   "kof_motion": "214+C",
+   "startup": 0.25,
+   "active": 0.05,
+   "recovery": 0.4,
+   "damage": 2,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:aoihana_c1",
+   "input_slots": [
+    "qcb+2 (KOFXV)"
+   ],
+   "move_class": "special",
+   "note": "Rekka stage 1. Original KOF motion: 214+P x3"
+  },
+  "aoihana_c2": {
+   "name": "127 Shiki: Aoi Hana (2) [Heavy]",
+   "input": "qcb+2,2 (KOFXV)",
+   "kof_motion": "214+C x2",
+   "startup": 0.2,
+   "active": 0.05,
+   "recovery": 0.4,
+   "damage": 2,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:aoihana_c2",
+   "input_slots": [
+    "qcb+2,2 (KOFXV)"
+   ],
+   "move_class": "string",
+   "note": "Rekka stage 2. Original KOF motion: 214+P x3"
+  },
+  "aoihana_c3": {
+   "name": "127 Shiki: Aoi Hana (3) [Heavy]",
+   "input": "qcb+2,2,2 (KOFXV)",
+   "kof_motion": "214+C x3",
+   "startup": 0.233,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 3,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 2,
+   "anim_ref": "kofxv:iori:aoihana_c3",
+   "input_slots": [
+    "qcb+2,2,2 (KOFXV)"
+   ],
+   "move_class": "string",
+   "note": "Rekka stage 3; overhead finisher, hard knockdown. Original KOF motion: 214+P x3"
+  },
+  "aoihana_ex1": {
+   "name": "127 Shiki: Aoi Hana (1) [EX]",
+   "input": "qcb+1+2 (KOFXV)",
+   "kof_motion": "214+A+C",
+   "startup": 0.217,
+   "active": 0.05,
+   "recovery": 0.367,
+   "damage": 2,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:aoihana_ex1",
+   "input_slots": [
+    "qcb+1+2 (KOFXV)"
+   ],
+   "move_class": "special",
+   "note": "EX rekka stage 1. Original KOF motion: 214+AC"
+  },
+  "aoihana_ex2": {
+   "name": "127 Shiki: Aoi Hana (2) [EX]",
+   "input": "qcb+1+2,1+2 (KOFXV)",
+   "kof_motion": "214+A+C x2",
+   "startup": 0.183,
+   "active": 0.05,
+   "recovery": 0.367,
+   "damage": 2,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:aoihana_ex2",
+   "input_slots": [
+    "qcb+1+2,1+2 (KOFXV)"
+   ],
+   "move_class": "string",
+   "note": "EX rekka stage 2"
+  },
+  "aoihana_ex3": {
+   "name": "127 Shiki: Aoi Hana (3) [EX]",
+   "input": "qcb+1+2,1+2,1+2 (KOFXV)",
+   "kof_motion": "214+A+C x3",
+   "startup": 0.217,
+   "active": 0.05,
+   "recovery": 0.467,
+   "damage": 2,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:aoihana_ex3",
+   "input_slots": [
+    "qcb+1+2,1+2,1+2 (KOFXV)"
+   ],
+   "move_class": "string",
+   "note": "EX rekka stage 3 finisher"
+  },
+  "kototsuki_b": {
+   "name": "212 Shiki: Kototsuki In (Light)",
+   "input": "hcb+3 (KOFXV)",
+   "kof_motion": "63214+B",
+   "startup": 0.3,
+   "active": 0.067,
+   "recovery": 0.5,
+   "damage": 5,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 2,
+   "anim_ref": "kofxv:iori:kototsuki_b",
+   "input_slots": [
+    "hcb+3 (KOFXV)"
+   ],
+   "move_class": "special",
+   "note": "Running grab into flame burst. Original KOF motion: 63214+K"
+  },
+  "kototsuki_d": {
+   "name": "212 Shiki: Kototsuki In (Heavy)",
+   "input": "hcb+4 (KOFXV)",
+   "kof_motion": "63214+D",
+   "startup": 0.367,
+   "active": 0.067,
+   "recovery": 0.567,
+   "damage": 5,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 2,
+   "anim_ref": "kofxv:iori:kototsuki_d",
+   "input_slots": [
+    "hcb+4 (KOFXV)"
+   ],
+   "move_class": "special",
+   "note": "Running grab into flame burst, longer run. Original KOF motion: 63214+K"
+  },
+  "kototsuki_ex": {
+   "name": "212 Shiki: Kototsuki In (EX)",
+   "input": "hcb+3+4 (KOFXV)",
+   "kof_motion": "63214+B+D",
+   "startup": 0.267,
+   "active": 0.067,
+   "recovery": 0.5,
+   "damage": 5,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 2,
+   "anim_ref": "kofxv:iori:kototsuki_ex",
+   "input_slots": [
+    "hcb+3+4 (KOFXV)"
+   ],
+   "move_class": "special",
+   "note": "EX running grab; OTG-capable. Original KOF motion: 63214+BD"
+  },
+  "kuzukaze_a": {
+   "name": "Kuzukaze (Light)",
+   "input": "hcb,f+1 (KOFXV)",
+   "kof_motion": "632146+A",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 0,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "kofxv:iori:kuzukaze_a",
+   "input_slots": [
+    "hcb,f+1 (KOFXV)"
+   ],
+   "move_class": "throw",
+   "note": "Command grab; leaves opponent stunned for mix-up. Original KOF motion: 632146+P (near)",
+   "throw": true,
+   "throw_break": "1+2",
+   "unblockable": true,
+   "isGrab": true
+  },
+  "kuzukaze_c": {
+   "name": "Kuzukaze (Heavy)",
+   "input": "hcb,f+2 (KOFXV)",
+   "kof_motion": "632146+C",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 0,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "kofxv:iori:kuzukaze_c",
+   "input_slots": [
+    "hcb,f+2 (KOFXV)"
+   ],
+   "move_class": "throw",
+   "note": "Command grab, slower. Original KOF motion: 632146+P (near)",
+   "throw": true,
+   "throw_break": "1+2",
+   "unblockable": true,
+   "isGrab": true
+  },
+  "kuzukaze_ex": {
+   "name": "Kuzukaze (EX)",
+   "input": "hcb,f+1+2 (KOFXV)",
+   "kof_motion": "632146+A+C",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 0,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "kofxv:iori:kuzukaze_ex",
+   "input_slots": [
+    "hcb,f+1+2 (KOFXV)"
+   ],
+   "move_class": "throw",
+   "note": "EX command grab; faster. Original KOF motion: 632146+AC",
+   "throw": true,
+   "throw_break": "1+2",
+   "unblockable": true,
+   "isGrab": true
+  },
+  "tsumagushi_b": {
+   "name": "311 Shiki: Tsumagushi (Light)",
+   "input": "qcb+3 (KOFXV)",
+   "kof_motion": "214+B",
+   "startup": 0.267,
+   "active": 0.05,
+   "recovery": 0.433,
+   "damage": 3,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 2,
+   "anim_ref": "kofxv:iori:tsumagushi_b",
+   "input_slots": [
+    "qcb+3 (KOFXV)"
+   ],
+   "move_class": "special",
+   "note": "Spinning claw kick (KOF series). Original KOF motion: 214+K"
+  },
+  "tsumagushi_d": {
+   "name": "311 Shiki: Tsumagushi (Heavy)",
+   "input": "qcb+4 (KOFXV)",
+   "kof_motion": "214+D",
+   "startup": 0.3,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 3,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 2,
+   "anim_ref": "kofxv:iori:tsumagushi_d",
+   "input_slots": [
+    "qcb+4 (KOFXV)"
+   ],
+   "move_class": "special",
+   "note": "Spinning claw kick, heavy (KOF series). Original KOF motion: 214+K"
+  },
+  "tsumagushi_ex": {
+   "name": "311 Shiki: Tsumagushi (EX)",
+   "input": "qcb+3+4 (KOFXV)",
+   "kof_motion": "214+B+D",
+   "startup": 0.25,
+   "active": 0.067,
+   "recovery": 0.467,
+   "damage": 4,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 2,
+   "anim_ref": "kofxv:iori:tsumagushi_ex",
+   "input_slots": [
+    "qcb+3+4 (KOFXV)"
+   ],
+   "move_class": "special",
+   "note": "EX spinning claw kick (KOF series). Original KOF motion: 214+BD"
+  },
+  "yaotome_a": {
+   "name": "Kin 1211 Shiki: Ya Otome",
+   "input": "qcf,hcb+1 (KOFXV)",
+   "kof_motion": "236,63214+A",
+   "startup": 0.133,
+   "active": 0.5,
+   "recovery": 1.0,
+   "damage": 6,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 3,
+   "anim_ref": "kofxv:iori:ya_otome",
+   "input_slots": [
+    "qcf,hcb+1 (KOFXV)"
+   ],
+   "move_class": "special",
+   "note": "Super: dashing eight-claw rush ending in flame burst (Maiden Masher). Original KOF motion: 23663214+P"
+  },
+  "yaotome_c": {
+   "name": "Kin 1211 Shiki: Ya Otome (MAX)",
+   "input": "qcf,hcb+2 (KOFXV)",
+   "kof_motion": "236,63214+C",
+   "startup": 0.133,
+   "active": 0.567,
+   "recovery": 1.033,
+   "damage": 8,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 4,
+   "anim_ref": "kofxv:iori:ya_otome_max",
+   "input_slots": [
+    "qcf,hcb+2 (KOFXV)"
+   ],
+   "move_class": "special",
+   "note": "MAX super version. Original KOF motion: 23663214+P"
+  },
+  "saika": {
+   "name": "Ura 316 Shiki: Saika",
+   "input": "during Ya Otome, qcf,qcf,qcf,qcf+1+2 (KOFXV)",
+   "kof_motion": "Ya Otome, then 236236236236+A+C",
+   "startup": 0.083,
+   "active": 0.167,
+   "recovery": 0.833,
+   "damage": 3,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 2,
+   "anim_ref": "kofxv:iori:saika",
+   "input_slots": [
+    "during Ya Otome, qcf,qcf,qcf,qcf+1+2 (KOFXV)"
+   ],
+   "move_class": "special",
+   "note": "Follow-up finisher after Ya Otome (KOF XIII). Original KOF motion: during Ya Otome, 236x4+AC"
+  },
+  "yamisogi": {
+   "name": "Ura 1207 Shiki: Yamisogi",
+   "input": "qcf,qcf+1 (KOFXV)",
+   "kof_motion": "236236+A",
+   "startup": 0.167,
+   "active": 0.133,
+   "recovery": 0.917,
+   "damage": 7,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 4,
+   "anim_ref": "kofxv:iori:yamisogi",
+   "input_slots": [
+    "qcf,qcf+1 (KOFXV)"
+   ],
+   "move_class": "special",
+   "note": "Twin flame pillars super (KOF XIII EX Iori DM, legacy). Original KOF motion: 236236+P"
+  },
+  "ya_sakazuki": {
+   "name": "Ura 108 Shiki: Ya Sakazuki",
+   "input": "qcb,hcf+1+2 (KOFXV)",
+   "kof_motion": "214,632146+A+C",
+   "startup": 0.233,
+   "active": 0.333,
+   "recovery": 1.167,
+   "damage": 14,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 7,
+   "anim_ref": "kofxv:iori:ya_sakazuki",
+   "input_slots": [
+    "qcb,hcf+1+2 (KOFXV)"
+   ],
+   "move_class": "special",
+   "note": "CLIMAX: eight wine-cup flame pillars freeze the opponent in place. Original KOF motion: 214632146+AC (KOF XV Climax)"
+  },
+  "homurabotogi": {
+   "name": "Ura 1029 Shiki: Homurabotogi",
+   "input": "qcb,hcf+1 (KOFXV)",
+   "kof_motion": "214,632146+A",
+   "startup": 0.2,
+   "active": 0.4,
+   "recovery": 1.167,
+   "damage": 14,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 7,
+   "anim_ref": "kofxv:iori:homurabotogi",
+   "input_slots": [
+    "qcb,hcf+1 (KOFXV)"
+   ],
+   "move_class": "special",
+   "note": "Legacy NeoMAX (KOF XIII). Original KOF motion: 214632146+AC"
+  },
+  "yuri_ori_hop": {
+   "name": "Geshiki: Yuri Ori (Hop)",
+   "input": "hop u/b+3 (air)",
+   "kof_motion": "b+B (air)",
+   "startup": 0.15,
+   "active": 0.05,
+   "recovery": 0.233,
+   "damage": 2,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:yuri_ori_hop",
+   "input_slots": [
+    "hop u/b+3 (air)"
+   ],
+   "move_class": "strike",
+   "note": "Air command normal from short hop. Original KOF motion: b+B in air"
+  },
+  "ya_sakazuki_l1": {
+   "name": "Ura 108 Shiki: Ya Sakazuki (DM)",
+   "input": "qcf,qcf+1+2",
+   "kof_motion": "236236+A+C",
+   "startup": 0.2,
+   "active": 0.267,
+   "recovery": 1.083,
+   "damage": 9,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 4,
+   "anim_ref": "kofxv:iori:ya_sakazuki_l1",
+   "input_slots": [
+    "qcf,qcf+1+2"
+   ],
+   "move_class": "special",
+   "note": "Level-1 DM version (KOF XI-era). Original KOF motion: 236236+AC"
+  },
+  "getup_low": {
+   "name": "Getup Low Kick",
+   "input": "(grounded) d+3",
+   "kof_motion": "3 (grounded)",
+   "startup": 0.2,
+   "active": 0.05,
+   "recovery": 0.367,
+   "damage": 2,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:getup_low",
+   "input_slots": [
+    "(grounded) d+3"
+   ],
+   "move_class": "strike",
+   "note": "Tekken universal getup kick, low"
+  },
+  "getup_mid": {
+   "name": "Getup Mid Kick",
+   "input": "(grounded) d+4",
+   "kof_motion": "4 (grounded)",
+   "startup": 0.233,
+   "active": 0.05,
+   "recovery": 0.4,
+   "damage": 2,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:getup_mid",
+   "input_slots": [
+    "(grounded) d+4"
+   ],
+   "move_class": "strike",
+   "note": "Tekken universal getup kick, mid"
+  },
+  "facedown_kick": {
+   "name": "Face-Down Kick",
+   "input": "(face down) 3+4",
+   "kof_motion": "3+4 (face down)",
+   "startup": 0.233,
+   "active": 0.05,
+   "recovery": 0.4,
+   "damage": 2,
+   "limb": "both",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:facedown_kick",
+   "input_slots": [
+    "(face down) 3+4"
+   ],
+   "move_class": "strike",
+   "note": "Tekken universal face-down getup attack"
+  },
+  "bt_strike": {
+   "name": "Back-Turned Strike",
+   "input": "(BT) 2",
+   "kof_motion": "C (back-turned)",
+   "startup": 0.167,
+   "active": 0.05,
+   "recovery": 0.333,
+   "damage": 2,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 1,
+   "anim_ref": "kofxv:iori:bt_strike",
+   "input_slots": [
+    "(BT) 2"
+   ],
+   "move_class": "strike",
+   "note": "Tekken universal back-turned strike"
   }
  },
- "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
- "schema_version": 2
+ "frame_convention": "KOF XV 60fps -> seconds; damage = round(KOF dmg x 0.03), caps: normals 20 / specials+throws 25 / supers+climax 45; soulGain ~= dmg/2 cap 15. Frame values converted from KOF frame-data norms (dreamcancel / SNK wiki).",
+ "schema_version": 2,
+ "kof_source": "KOF XV (dreamcancel / SNK wiki)"
 }
