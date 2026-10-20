@@ -225,6 +225,7 @@ export const STAGES = [
     floor: { kind: 'sand', tint: '#c09a68', repeat: 26, platformTint: '#d0aa74', platformRepeat: 6 },
     swatch: ['#0a1a2a', '#ffca7a'],
     builder: 'treelife',
+    pano: 'assets/stages/eastern-mind/tree-of-life/pano.png', // real Eastern Mind background art
     associatedFighters: ['saku-ra'],
   },
   {
@@ -244,6 +245,7 @@ export const STAGES = [
     floor: { kind: 'scorched', tint: '#8a5a48', repeat: 24, platformTint: '#9a6a50', platformRepeat: 6 },
     swatch: ['#1a0608', '#ff6a2a'],
     builder: 'chiu',
+    pano: 'assets/stages/eastern-mind/plains-of-chi-u/pano.png', // real Eastern Mind background art
     associatedFighters: ['michiko'],
   },
   {
@@ -263,6 +265,7 @@ export const STAGES = [
     floor: { kind: 'stone', tint: '#8a8492', repeat: 26, platformTint: '#9a94a2', platformRepeat: 6, octagon: true },
     swatch: ['#0a0810', '#c0a080'],
     builder: 'parfang',
+    pano: 'assets/stages/eastern-mind/octagonal-shrine/pano.png', // real Eastern Mind background art
     associatedFighters: ['pantera'],
   },
   {
@@ -282,6 +285,7 @@ export const STAGES = [
     floor: { kind: 'metal', tint: '#a0a8b8', repeat: 20, platformTint: '#b0b8c8', platformRepeat: 5 },
     swatch: ['#0a0a18', '#ff6ad0'],
     builder: 'helix',
+    pano: 'assets/stages/eastern-mind/helix-palace/pano.png', // real Eastern Mind background art
     associatedFighters: ['purple-rain'],
   },
   {
@@ -301,6 +305,7 @@ export const STAGES = [
     floor: { kind: 'dream', tint: '#8a90c8', repeat: 18, platformTint: '#9aa0d8', platformRepeat: 5 },
     swatch: ['#0a1030', '#4ae0ff'],
     builder: 'dreaming',
+    pano: 'assets/stages/eastern-mind/palace-of-dreaming/pano.png', // real Eastern Mind background art
     associatedFighters: ['waterfall'],
   },
   {
@@ -320,6 +325,7 @@ export const STAGES = [
     floor: { kind: 'stone', tint: '#7a6a80', repeat: 26, platformTint: '#8a7a90', platformRepeat: 6 },
     swatch: ['#0c0a20', '#b06ae0'],
     builder: 'marketplace',
+    pano: 'assets/stages/eastern-mind/phantom-marketplace/pano.png', // real Eastern Mind background art
     associatedFighters: ['skull'],
   },
 ];
@@ -392,6 +398,56 @@ for (const [letter, label, fighters, panoTint, floorKind, floorTint, sky, fogC, 
 }
 
 
+/* ---------------- WWF NO MERCY ARENAS (teardown-integration 2026-10-19) ----
+   17 real arena assemblies from teardown/wwf-no-mercy/arenas/ (see ARENAS.md
+   there): 11 show/PPV arenas + cage + 6 backstage areas. Geometry is the
+   actual AkiModel pieces; vertex colors from the teardown .vc sidecars. */
+const NO_MERCY = [
+  // file, name, description, skyTop, skyMid, sun, floorTint
+  ['arena_raw', 'RAW IS WAR', 'The Monday-night war room — ring, ramp, trons and a full crowd bowl.', '#0a0a18', '#2a0a14', '#ff3a3a', '#6a5a52'],
+  ['arena_smackdown', 'SMACKDOWN', 'Blue-brand arena bowl with the fist-era staging bones.', '#0a0a20', '#101a3a', '#3a7aff', '#5a6068'],
+  ['arena_royal_rumble', 'ROYAL RUMBLE', 'January classic bowl — every fighter for themselves.', '#120a20', '#241040', '#8a4aff', '#605a68'],
+  ['arena_wrestlemania', 'WRESTLEMANIA', 'The grandest stage of them all, No Mercy vintage.', '#0c0c1c', '#1c1440', '#ffd76a', '#6a6058'],
+  ['arena_king_of_the_ring', 'KING OF THE RING', 'Tournament-night arena. Win three and take the crown.', '#100c08', '#2a1c0c', '#ffb03a', '#6a5c4a'],
+  ['arena_summerslam', 'SUMMERSLAM', 'The biggest party of the summer, year-2000 edition.', '#081018', '#0c2a3a', '#3ad0ff', '#5a6660'],
+  ['arena_survivor_series', 'SURVIVOR SERIES', 'Thanksgiving-tradition arena — teams of five strive to survive.', '#140c0c', '#301414', '#ff6a3a', '#66584e'],
+  ['arena_backlash', 'BACKLASH', 'Post-WrestleMania fallout bowl.', '#0c0814', '#1c1030', '#b03aff', '#5c565e'],
+  ['arena_armageddon', 'ARMAGEDDON', 'End-of-the-world PPV arena, six-man cell energy.', '#100808', '#2c0c0c', '#ff2a2a', '#605450'],
+  ['arena_no_mercy', 'NO MERCY', 'The namesake show — barricades, bowl and bad intentions.', '#0a0c14', '#14202c', '#7ab0ff', '#5e6058'],
+  ['arena_cage', 'STEEL CAGE', 'Cage-match ring — the walls are part of the fight.', '#0a0a0c', '#18181c', '#c0c8d0', '#565a60'],
+  ['backstage_bar_lounge', 'BACKSTAGE: BAR LOUNGE', 'Where the brawls spill after last call.', '#120c08', '#241408', '#ff9a4a', '#5c4a3a'],
+  ['backstage_boiler_room', 'BACKSTAGE: BOILER ROOM', 'Steam, pipes and Mankind energy.', '#0c0a08', '#1c140c', '#ff7a2a', '#54483e'],
+  ['backstage_hallway', 'BACKSTAGE: HALLWAY', 'Gorilla-adjacent corridor — anything can happen here.', '#0c0c10', '#181820', '#aab4c0', '#585c60'],
+  ['backstage_locker_room', 'BACKSTAGE: LOCKER ROOM', 'Benches, lockers and grudges.', '#0a0e0c', '#14201a', '#6aff9a', '#4e5c50'],
+  ['backstage_parking_lot', 'BACKSTAGE: PARKING LOT', 'Asphalt rules. Cars are furniture.', '#080a10', '#101820', '#8ab4d8', '#4c5054'],
+  ['lobby', 'THE LOBBY', 'Gorilla position — one corridor from the curtain.', '#0e0c0a', '#201a12', '#ffd9a0', '#5e584c'],
+];
+for (const [file, name, desc, skyTop, skyMid, sunC, floorTint] of NO_MERCY) {
+  STAGES.push({
+    id: `nm-${file.replace(/_/g, '-')}`,
+    name: `NO MERCY: ${name}`,
+    tier: 'WRESTLING',
+    universe: 'WWF No Mercy (AKI)',
+    element: 'Ring',
+    description: desc,
+    dims: { width: 16.8, depth: 6.0, wallDistance: 8.4 },
+    spawns: { p1: -3.5, p2: 3.5 },
+    lighting: {
+      sky: [[0.0, skyTop], [0.55, skyMid], [0.85, sunC], [1.0, skyTop]],
+      fog: [skyTop, 22, 80],
+      hemi: ['#8a8aa8', '#1a1420', 1.5],
+      sun: [sunC, 2.2, [-10, 8, 5]],
+      rim: [sunC, 0.6, [8, 6, -7]],
+      fill: ['#ffe0c0', 0.8, [0, 4, 10]],
+    },
+    floor: { kind: 'stone', tint: floorTint, repeat: 26, platformTint: floorTint, platformRepeat: 6 },
+    swatch: [skyTop, sunC],
+    builder: 'nomercy',
+    obj: `assets/stages/no-mercy/${file}.obj`,
+    panoTint: '#ffffff',
+  });
+}
+
 /* ---- SUN RĀ — THE STARING SKY (boss stage; Kevin's home base) ---- */
 STAGES.push({
   id: 'sunra',
@@ -421,6 +477,153 @@ STAGES.push({
   music: { land: 'dreaming', palette: 'fluid ambient textures', continuous: true },
 });
 
+/* ---------------- WWF NO MERCY arenas ----------------
+   Real N64 arena geometry: teardown/wwf-no-mercy/arenas/*.obj
+   (AkiModel assemblies) converted to GLB by
+   tools/stage-arena-pull/convert_nomercy.py — vertex colors from
+   the .vc sidecars, fighting surface at y=0, uniform 0.007 scale.
+   Template pieces (ring posts, turnbuckles, apron skirts, cage
+   walls, announce table) ship in the ROM without placement data
+   and are omitted; the builder re-adds procedural posts+ropes. */
+const NM_ARENAS = [
+  // nm-raw, RAW IS WAR, arena_raw.glb
+  ['nm-raw', 'RAW IS WAR', 'arena_raw', true, '',
+   14, 14, 5.2, -2.8, 2.8,
+   '#ff6a5a', '#0a0508', '#3a0a10', '#140608', '#7a4a4a',
+   `The real No Mercy RAW arena: titan tron, ramp, crowd bowl, ring. Template pieces (posts, ropes, aprons) omitted — ropes rebuilt procedurally.`],
+  // nm-smackdown, SMACKDOWN, arena_smackdown.glb
+  ['nm-smackdown', 'SMACKDOWN', 'arena_smackdown', true, '',
+   14, 14, 5.2, -2.8, 2.8,
+   '#6a9aff', '#04060e', '#0a1a3a', '#060a14', '#4a5a7a',
+   `The real No Mercy SmackDown arena: blue stage set, oval tron, crowd bowl, ring.`],
+  // nm-royal-rumble, ROYAL RUMBLE, arena_royal_rumble.glb
+  ['nm-royal-rumble', 'ROYAL RUMBLE', 'arena_royal_rumble', true, '',
+   14, 14, 5.2, -2.8, 2.8,
+   '#b07aea', '#0a0612', '#2a1040', '#0c0816', '#5a4a7a',
+   `The real No Mercy Royal Rumble arena.`],
+  // nm-wrestlemania, WRESTLEMANIA, arena_wrestlemania.glb
+  ['nm-wrestlemania', 'WRESTLEMANIA', 'arena_wrestlemania', true, '',
+   14, 14, 5.2, -2.8, 2.8,
+   '#ffca5a', '#0c0804', '#3a2408', '#100a06', '#7a6a4a',
+   `The real No Mercy WrestleMania arena: grand stage, gold trim.`],
+  // nm-king-of-the-ring, KING OF THE RING, arena_king_of_the_ring.glb
+  ['nm-king-of-the-ring', 'KING OF THE RING', 'arena_king_of_the_ring', true, '',
+   14, 14, 5.2, -2.8, 2.8,
+   '#ff8a6a', '#0c0408', '#40101a', '#12060a', '#7a4a5a',
+   `The real No Mercy King of the Ring arena.`],
+  // nm-summerslam, SUMMERSLAM, arena_summerslam.glb
+  ['nm-summerslam', 'SUMMERSLAM', 'arena_summerslam', true, '',
+   14, 14, 5.2, -2.8, 2.8,
+   '#ff9a3a', '#0c0804', '#402408', '#120c06', '#7a6a4a',
+   `The real No Mercy SummerSlam arena.`],
+  // nm-survivor-series, SURVIVOR SERIES, arena_survivor_series.glb
+  ['nm-survivor-series', 'SURVIVOR SERIES', 'arena_survivor_series', true, '',
+   14, 14, 5.2, -2.8, 2.8,
+   '#5a7aff', '#04060c', '#0a1430', '#060a12', '#4a5a7a',
+   `The real No Mercy Survivor Series arena.`],
+  // nm-backlash, BACKLASH, arena_backlash.glb
+  ['nm-backlash', 'BACKLASH', 'arena_backlash', true, '',
+   14, 14, 5.2, -2.8, 2.8,
+   '#ff4a4a', '#0a0404', '#380a0a', '#120606', '#7a4a4a',
+   `The real No Mercy Backlash arena.`],
+  // nm-armageddon, ARMAGEDDON, arena_armageddon.glb
+  ['nm-armageddon', 'ARMAGEDDON', 'arena_armageddon', true, '',
+   14, 14, 5.2, -2.8, 2.8,
+   '#9aaa8a', '#060806', '#1a2416', '#0a0c08', '#5a6a5a',
+   `The real No Mercy Armageddon arena.`],
+  // nm-no-mercy, NO MERCY, arena_no_mercy.glb
+  ['nm-no-mercy', 'NO MERCY', 'arena_no_mercy', true, '',
+   14, 14, 5.2, -2.8, 2.8,
+   '#a06aea', '#080410', '#200a3a', '#0c0616', '#5a4a7a',
+   `The real No Mercy PPV arena: purple truss, No Mercy tron.`],
+  // nm-cage, STEEL CAGE, arena_cage.glb
+  ['nm-cage', 'STEEL CAGE', 'arena_cage', true, 'cage',
+   12, 12, 4.6, -2.5, 2.5,
+   '#aab0c0', '#060608', '#1a1a22', '#0a0a0e', '#5a5a6a',
+   `The real No Mercy cage-match arena. Cage wall pieces ship as ROM templates (no placement data) — pending the arena-code RE lane.`],
+  // nm-bar, BACKSTAGE: BAR, backstage_bar_lounge.glb
+  ['nm-bar', 'BACKSTAGE: BAR', 'backstage_bar_lounge', false, '',
+   6, 8, 2.8, -2, 2,
+   '#ffca8a', '#0a0604', '#241408', '#0e0a06', '#6a5a4a',
+   `Real No Mercy backstage bar/lounge: bottles, counter, chairs. Falls-count-anywhere energy.`],
+  // nm-boiler-room, BACKSTAGE: BOILER ROOM, backstage_boiler_room.glb
+  ['nm-boiler-room', 'BACKSTAGE: BOILER ROOM', 'backstage_boiler_room', false, '',
+   10, 6, 4.5, -2.5, 2.5,
+   '#ff9a5a', '#080604', '#201410', '#0c0806', '#6a5a4a',
+   `Real No Mercy boiler room: pipes, tanks, industrial gloom.`],
+  // nm-hallway, BACKSTAGE: HALLWAY, backstage_hallway.glb
+  ['nm-hallway', 'BACKSTAGE: HALLWAY', 'backstage_hallway', false, '',
+   5, 15, 2.2, -2, 2,
+   '#c0c8d8', '#060608', '#14161c', '#0a0a0c', '#5a5e6a',
+   `Real No Mercy backstage hallway: long corridor brawl.`],
+  // nm-locker-room, BACKSTAGE: LOCKER ROOM, backstage_locker_room.glb
+  ['nm-locker-room', 'BACKSTAGE: LOCKER ROOM', 'backstage_locker_room', false, '',
+   10, 7, 4.5, -2.5, 2.5,
+   '#ffd8a0', '#080604', '#1c140c', '#0c0806', '#6a5e4a',
+   `Real No Mercy locker room: lockers, benches, chairs, whiteboard.`],
+  // nm-parking-lot, BACKSTAGE: PARKING LOT, backstage_parking_lot.glb
+  ['nm-parking-lot', 'BACKSTAGE: PARKING LOT', 'backstage_parking_lot', false, '',
+   15, 14, 6.5, -3, 3,
+   '#9ab0d0', '#04060a', '#101820', '#080a0e', '#5a6a7a',
+   `Real No Mercy parking lot: cars, open asphalt, room to brawl.`],
+  // nm-lobby-glb, LOBBY, lobby.glb
+  ['nm-lobby-glb', 'LOBBY', 'lobby', false, '',
+   11, 11, 5, -3, 3,
+   '#d0b89a', '#080604', '#1a140e', '#0c0806', '#6a5e4a',
+   `Real No Mercy lobby/gorilla position: the area just behind the curtain.`],
+];
+for (const [sid, nmName, glb, ropes, cageFlag, w, d, wall, s1, s2, sunC, sky0, sky1, fogC, hemiC, nmDesc] of NM_ARENAS) {
+  STAGES.push({
+    id: sid, name: nmName, tier: 'WWF NO MERCY',
+    universe: 'WWF No Mercy (N64)', element: 'Wrestling',
+    description: nmDesc + ' Extracted from the No Mercy ROM (Rev-A).',
+    dims: { width: w, depth: d, wallDistance: wall },
+    spawns: { p1: s1, p2: s2 },
+    lighting: {
+      sky: [[0.0, sky0], [0.6, sky1], [1.0, sky0]],
+      fog: [fogC, 20, 70],
+      hemi: [hemiC, '#0a0a0c', 1.5],
+      sun: [sunC, 2.0, [-10, 7, 5]],
+      rim: [sunC, 0.5, [8, 6, -7]],
+      fill: ['#ffe0c0', 0.7, [0, 4, 10]],
+    },
+    floor: { kind: 'dark', tint: '#1c1c22', repeat: 30, platformTint: '#22222a', platformRepeat: 6 },
+    swatch: [sky1, sunC],
+    builder: 'nomercy',
+    glb: `assets/stages/nomercy/${glb}.glb`,
+    hidePlatform: true, // the GLB carries its own fighting surface
+    ropes,
+    cage: cageFlag === 'cage',
+    associatedFighters: [],
+  });
+}
+/* Per-stage camera + interior lighting: the cage camera sits INSIDE the
+   walls; backstage rooms are small enclosed spaces needing their own
+   camera distance and warm interior lights. */
+for (const [sid, camDist, interior, camAngle] of [
+  ['nm-cage', 4.2, false, 0], ['nm-bar', 3.0, true, 0],
+  ['nm-boiler-room', 4.0, true, 0], ['nm-hallway', 5.0, true, 0],
+  ['nm-locker-room', 3.5, true, 0], ['nm-parking-lot', 7, false, 32],
+  ['nm-lobby-glb', 5.0, true, 28],
+]) {
+  const s = STAGES.find((x) => x.id === sid);
+  if (s) { s.camDist = camDist; if (interior) s.interior = true; if (camAngle) s.camAngle = camAngle; }
+}
+// Explicit elevated poses for the two dense backstage areas (the default
+// fighting camera sits inside pillars/lobby clutter at eye level).
+for (const [sid, pos, tgt] of [
+  ['nm-parking-lot', [8, 4.2, 10], [0, 0.4, 0]],
+  ['nm-lobby-glb', [5.5, 3.6, 6.5], [0, 0.4, 0]],
+]) {
+  const s = STAGES.find((x) => x.id === sid);
+  if (s) { s.camPos = pos; s.camTgt = tgt; }
+}
+
+/* Thumbnails: rendered own-eyes shots, one per stage
+   (tools/stage-arena-pull/render_gallery.py). The select screen shows the
+   thumbnail and falls back to the palette swatch when the file is absent. */
+for (const s of STAGES) s.thumb = `assets/stages/thumbs/${s.id}.png`;
+
 export function getStage(id) {
   return STAGES.find((s) => s.id === id) || STAGES[0];
 }
@@ -439,6 +642,24 @@ function buildBase(g, def, api) {
   const L = def.lighting;
   // sky
   const skyTex = L.sky === 'veins' ? makeVeinSkyTexture() : makeSkyTexture(L.sky);
+  // real teardown panorama backdrop (Eastern Mind bitmaps, etc.): a cylinder
+  // wearing the original game's background art, behind the procedural sky.
+  if (def.pano) {
+    try {
+      const panoTex = new THREE.TextureLoader().load(def.pano);
+      panoTex.colorSpace = THREE.SRGBColorSpace;
+      // The teardown panos are 580px-wide 2D backdrops: repeat 3x around so
+      // the art reads at a sane scale instead of one stretched wrap.
+      panoTex.wrapS = THREE.RepeatWrapping; panoTex.repeat.set(3, 1);
+      const pano = new THREE.Mesh(
+        new THREE.CylinderGeometry(30, 30, 10, 48, 1, true),
+        new THREE.MeshBasicMaterial({ map: panoTex, side: THREE.BackSide, fog: false })
+      );
+      pano.position.y = 3.5; g.add(pano);
+    } catch (e) {
+      console.warn(`[WH] stage ${def.id}: pano ${def.pano} failed (${e.message})`);
+    }
+  }
   // ground far plane
   const ground = new THREE.Mesh(
     new THREE.PlaneGeometry(140, 140),
@@ -446,14 +667,18 @@ function buildBase(g, def, api) {
   );
   ground.rotation.x = -Math.PI / 2; ground.position.y = -0.05;
   ground.receiveShadow = true; g.add(ground);
-  // fighting platform (16.8 wide arena, octagonal option for Par-fang)
-  const platGeo = def.floor.octagon
-    ? new THREE.CylinderGeometry(9.2, 9.6, 0.5, 8)
-    : new THREE.CylinderGeometry(9.2, 9.6, 0.5, 8);
-  const plat = new THREE.Mesh(platGeo,
-    makeFloorTexture(def.floor.kind, def.floor.platformTint, def.floor.platformRepeat));
-  plat.position.y = -0.25; plat.rotation.y = Math.PI / 8;
-  plat.receiveShadow = true; g.add(plat);
+  // fighting platform (16.8 wide arena, octagonal option for Par-fang).
+  // Stages with real geometry floors (No Mercy GLBs) skip it: it would
+  // z-fight the model's own fighting surface at y=0.
+  if (!def.hidePlatform) {
+    const platGeo = def.floor.octagon
+      ? new THREE.CylinderGeometry(9.2, 9.6, 0.5, 8)
+      : new THREE.CylinderGeometry(9.2, 9.6, 0.5, 8);
+    const plat = new THREE.Mesh(platGeo,
+      makeFloorTexture(def.floor.kind, def.floor.platformTint, def.floor.platformRepeat));
+    plat.position.y = -0.25; plat.rotation.y = Math.PI / 8;
+    plat.receiveShadow = true; g.add(plat);
+  }
   // lights
   g.add(new THREE.HemisphereLight(_hex(L.hemi[0]), _hex(L.hemi[1]), L.hemi[2]));
   const sun = new THREE.DirectionalLight(_hex(L.sun[0]), L.sun[1]);
@@ -918,11 +1143,141 @@ async function buildT3Retro(g, def, api) {
   return { updaters, skyTex, fog };
 }
 
+/* ---- WWF NO MERCY: real N64 arena GLB + procedural ropes ----
+   The GLB carries vertex-colored arena geometry with the fighting surface
+   at y=0. The ROM never stored ropes (procedural at runtime) and its ring
+   posts/turnbuckles/aprons are placement-less templates, so the builder
+   re-adds simple posts + 3 ropes per side for ring arenas. Backstage
+   arenas (rooms, lot) skip ropes. */
+async function buildNoMercy(g, def, api) {
+  const { updaters, skyTex, fog } = buildBase(g, def, api);
+  if (def.glb) {
+    // GLB arena family (arena-pull lane): real N64 arena GLB + ring furniture.
+      try {
+        const gltf = await new GLTFLoader().loadAsync(def.glb);
+        const arena = gltf.scene;
+        arena.traverse((o) => {
+          if (o.isMesh) {
+            o.castShadow = true; o.receiveShadow = true;
+            // GLBs ship vertex colors; make sure the material honors them.
+            if (o.material && o.geometry.getAttribute('color'))
+              o.material.vertexColors = true;
+          }
+        });
+        g.add(arena);
+      } catch (e) {
+        console.warn(`[WH] stage ${def.id}: GLB ${def.glb} failed (${e.message})`);
+      }
+      if (def.interior) {
+        // enclosed backstage rooms: warm ceiling lights (the sun/rim rig is
+        // built for open arenas and doesn't reach indoors)
+        for (const [lx, lz] of [[-2.5, -1.5], [2.5, 1.5], [0, 0]]) {
+          const pl = new THREE.PointLight(0xffd9a0, 7, 14, 2);
+          pl.position.set(lx, 2.0, lz); g.add(pl);
+        }
+      }
+      if (def.id === 'nm-parking-lot') {
+        // night lot: cool sodium streetlights so the fighters read
+        for (const [lx, lz] of [[-6, -5], [6, 5], [0, 0]]) {
+          const pl = new THREE.PointLight(0xbfd4ff, 30, 30, 2);
+          pl.position.set(lx, 6.0, lz); g.add(pl);
+        }
+      }
+      if (def.cage) {
+        // Procedural steel-cage walls: the ROM's cage pieces are placement-less
+        // templates (no arena-code positions yet), so the builder stands in
+        // chain-link panels around the ring. Swapped for real geometry when the
+        // arena-code RE lane lands.
+        const linkTex = (() => {
+          const c = document.createElement('canvas'); c.width = c.height = 128;
+          const x = c.getContext('2d');
+          x.clearRect(0, 0, 128, 128);
+          x.strokeStyle = 'rgba(180,190,205,0.95)'; x.lineWidth = 3;
+          for (let i = -128; i < 256; i += 16) {
+            x.beginPath(); x.moveTo(i, 0); x.lineTo(i + 128, 128); x.stroke();
+            x.beginPath(); x.moveTo(i + 128, 0); x.lineTo(i, 128); x.stroke();
+          }
+          const t = new THREE.CanvasTexture(c);
+          t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(6, 6);
+          return t;
+        })();
+        const wallMat = new THREE.MeshStandardMaterial({
+          map: linkTex, transparent: true, side: THREE.DoubleSide,
+          roughness: 0.4, metalness: 0.8, alphaTest: 0.25,
+        });
+        const C = 4.7, CH = 4.2; // half-width, height
+        for (const [w, h, px, pz, ry] of [
+          [C * 2, CH, 0, -C, 0], [C * 2, CH, 0, C, 0],
+          [C * 2, CH, -C, 0, Math.PI / 2], [C * 2, CH, C, 0, Math.PI / 2]]) {
+          const wall = new THREE.Mesh(new THREE.PlaneGeometry(w, h), wallMat);
+          wall.position.set(px, CH / 2, pz); wall.rotation.y = ry;
+          wall.castShadow = false; wall.receiveShadow = false; g.add(wall);
+        }
+        const frameMat = new THREE.MeshStandardMaterial({ color: 0x3a3d45, roughness: 0.5, metalness: 0.7 });
+        const top = new THREE.Mesh(new THREE.BoxGeometry(C * 2 + 0.3, 0.18, C * 2 + 0.3), frameMat);
+        top.position.y = CH + 0.09; g.add(top);
+        // The cage assembly ships no center mat (its "Ring_Mat" label is a tiny
+        // mislabeled quad; the true mat geometry isn't in the ROM dump), so the
+        // builder lays a procedural mat. The ROM's dark apron ring surrounds it.
+        const mat = new THREE.Mesh(
+          new THREE.PlaneGeometry(7.3, 7.3),
+          new THREE.MeshStandardMaterial({ color: 0x8a94a8, roughness: 0.95 })
+        );
+        mat.rotation.x = -Math.PI / 2; mat.position.y = 0.012;
+        mat.receiveShadow = true; g.add(mat);
+      }
+      if (def.ropes) {
+        // ring mat is ±3.64 m; posts just outside, ropes at 3 heights
+        const postMat = new THREE.MeshStandardMaterial({ color: 0x2a2c34, roughness: 0.5, metalness: 0.7 });
+        const ropeMat = new THREE.MeshStandardMaterial({ color: 0xd83a3a, roughness: 0.8 });
+        const H = 3.95, heights = [0.55, 0.9, 1.25];
+        for (const sx of [-1, 1]) for (const sz of [-1, 1]) {
+          const post = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.07, 1.5, 10), postMat);
+          post.position.set(sx * H, 0.75, sz * H); post.castShadow = true; g.add(post);
+        }
+        for (const y of heights) {
+          for (const [x1, z1, x2, z2] of [[-H, -H, H, -H], [H, -H, H, H], [H, H, -H, H], [-H, H, -H, -H]]) {
+            const len = Math.hypot(x2 - x1, z2 - z1);
+            const rope = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.03, len, 8), ropeMat);
+            rope.position.set((x1 + x2) / 2, y, (z1 + z2) / 2);
+            rope.rotation.z = Math.PI / 2; rope.rotation.y = -Math.atan2(z2 - z1, x2 - x1);
+            g.add(rope);
+          }
+        }
+      }
+      // arena edge marker in the stage palette
+      const edge = new THREE.Mesh(new THREE.TorusGeometry(def.dims.wallDistance, 0.07, 10, 48),
+        new THREE.MeshBasicMaterial({ color: _hex(def.lighting.sun[0]) }));
+      edge.rotation.x = Math.PI / 2; edge.position.y = 0.02; g.add(edge);
+  } else if (def.obj) {
+    /* WWF No Mercy arenas (teardown-integration 2026-10-19): real assembled
+       arena geometry from teardown/wwf-no-mercy/arenas/ (AkiModel pieces grouped
+       by assemble_arenas.py), vertex colors merged from the .vc sidecars into
+       the OBJ v-lines (game/assets/stages/no-mercy/). AkiModel units: floor
+       plane sits at y=0, bowl spans ~+-2700 -> scale 0.012 puts the ring at
+       fight scale and the bowl walls ~32 units out. */
+      try {
+        const geo = await fetchStageOBJ(def.obj);
+        geo.scale(0.012, 0.012, 0.012);
+        const mat = new THREE.MeshBasicMaterial({
+          vertexColors: !!geo.getAttribute('color'),
+          color: _hex(def.panoTint),
+          side: THREE.DoubleSide, fog: true,
+        });
+        const shell = new THREE.Mesh(geo, mat);
+        g.add(shell);
+      } catch (e) {
+        console.warn(`[WH] stage ${def.id}: arena shell failed (${e.message}), palette backdrop only`);
+      }
+  }
+  return { updaters, skyTex, fog };
+}
+
 const BUILDERS = {
   shrine: buildShrine, tongnou: buildTongNou, treelife: buildTreeLife,
   chiu: buildChiU, parfang: buildParFang, helix: buildHelix,
   dreaming: buildDreaming, marketplace: buildMarketplace, t3retro: buildT3Retro,
-  sunra: buildSunRa,
+  sunra: buildSunRa, nomercy: buildNoMercy,
 };
 
 /* Build a stage into a fresh group. Returns { group, update, def, skyTex, fog }.
@@ -954,7 +1309,7 @@ export function disposeStage(group) {
 }
 
 /* Tier order for the stage-select screen. */
-export const STAGE_TIERS = ['CANON LANDS', 'TEKKEN RETRO', 'BOSS STAGES'];
+export const STAGE_TIERS = ['CANON LANDS', 'TEKKEN RETRO', 'WWF NO MERCY', 'WRESTLING', 'BOSS STAGES'];
 
 /* ---------------- SUN RĀ — THE STARING SKY ----------------
    Boss stage. Kevin's home base (he takes Baek's roster slot; can fight
