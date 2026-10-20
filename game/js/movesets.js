@@ -48,6 +48,10 @@ export const MOVESET_IDS = [
   'kronos',
   // Intake wave 2 (owner 2026-10-19): remaining four intake movesets.
   'hugo', 'raiden', 'marduk', 'bob',
+  // Teardown-integration (owner 2026-10-19): roster ids that had no per-fighter
+  // file — Demonio human form + Doc Frank Wowomomo/Hood Scientist attires +
+  // KRONOS Attire 2 "TimberWolf" (shares the Zangief/Golem moveset).
+  'demonio-human', 'doc-frank-wowomomo', 'doc-frank-hood', 'kronos-attire2',
 ];
 
 const _movesets = {};

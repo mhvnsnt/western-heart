@@ -23,3 +23,11 @@
 - 2026-10-19 Character Episodes (full story mode): every fighter's own CANON.md-grounded storyline — chapters of beats + fights, shadow-self final ("they all face themselves"). Deep episodes for demonio/docfrank/mariposa/thor/nine souls; generic frame for rest. New file: game/js/episodes.js.
 - 2026-10-19 CRITICAL FIX: game/js/roster-full.js had a brace bug (demonio `forms:` block closed the entry early; `stats:`/`ai:` dangled) — roster module failed to parse, entire game did not boot on origin/main. One-line fix; 45 fighters import cleanly. Verified boot + all overlays with own eyes via Playwright (docs/modes/shots/, rig: docs/modes/shoot-screenshots.py).
 - Branch feat/stream4-modes-menus-20261019. Next: attire picker UI, character-select polish (on PR #328), in-game customization menus (coordinate 4808ea28), Heart/Mind phase-2 multi-enemy (on T5 teardown).
+
+## 2026-10-19 ~22:30 CDT — Teardown integration audit + wiring (subagent lane)
+- Audited teardown-done vs game-wired on origin/main@1eacf7a9; report: docs/TEARDOWN-INTEGRATION-AUDIT-2026-10-19.md.
+- Generator tools/gen-movesets-t3.py: full T3 bank depth (branch-graph Dijkstra -> Tekken notation) merged over 61 per-fighter files (+5879 moves/strings); 3 new files (demonio-human, doc-frank-wowomomo, doc-frank-hood) + kronos-attire2; 7 aggregates incl. missing demonio_moves.json; MOVESET_IDS 67->71.
+- Fixed t3anims.js anim base (repo-root assets/anim), demonio-body MODEL_URLS repoint.
+- Wired 17 WWF No Mercy arenas as playable stages (game/assets/stages/no-mercy/, vertex colors merged from .vc), WRESTLING tier; stages 24->41.
+- Added roster entries: KRONOS x2 + Sketchfab 5 (zangief/blanka/vega/iori/armor-king); MOVESET_MAP fallbacks.
+- Verified: node --check all JS, 71/71 moveset loads via fetch stub, stages smoke test (41, 0 dups), curated subset 0 lost.
