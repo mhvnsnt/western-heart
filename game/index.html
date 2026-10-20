@@ -7,6 +7,7 @@
   <meta name="theme-color" content="#14091f" />
   <title>WESTERN HEART — a lost multiverse bastard child</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="menus.css" />
   <!-- Three.js loaded as an ES module from local vendor (no CDN) -->
   <script type="importmap">
   {
@@ -75,7 +76,18 @@
       <h2>CHOOSE YOUR SOUL</h2>
       <div id="select-timer" class="select-timer">99</div>
     </header>
-    <div id="char-grid" class="char-grid"><!-- filled by JS --></div>
+    <div class="select-body">
+      <div id="char-grid" class="char-grid"><!-- filled by JS --></div>
+      <div id="select-preview" class="select-preview">
+        <canvas id="preview-canvas"></canvas>
+        <div class="preview-info">
+          <div id="preview-name" class="preview-name">—</div>
+          <div id="preview-title" class="preview-title">Pick a fighter</div>
+          <div id="preview-style" class="preview-style"></div>
+          <div id="attire-strip" class="attire-strip"><!-- attire chips filled by JS (stream 4) --></div>
+        </div>
+      </div>
+    </div>
     <footer class="select-footer">
       <span id="select-hint">Pick a fighter</span>
       <button id="confirm-fighter" class="btn-primary" disabled>CONFIRM</button>

@@ -341,6 +341,46 @@
    ],
    "move_class": "special",
    "note": "DOA signature counter-hold -> Tekken parry-style reversal input. frame data estimated from archetype; marked per schema honesty rule"
+  },
+  "S": {
+   "name": "Petal Scatter [WH SIGNATURE]",
+   "input": "S",
+   "startup": 0.26,
+   "active": 0.1,
+   "recovery": 0.82,
+   "damage": 17,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 12,
+   "anim_ref": "wh:doa-kasumi:sig:petal-scatter",
+   "input_slots": [
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "The kunoichi crosses the gap in a scatter of petals. You were blocking the wrong one."
+  },
+  "D+P": {
+   "name": "Mist Vanish [WH SIGNATURE]",
+   "input": "D+P",
+   "startup": 0.23,
+   "active": 0.017,
+   "recovery": 0.72,
+   "damage": 15,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "wh:doa-kasumi:sig:mist-vanish",
+   "input_slots": [
+    "D+P",
+    "D",
+    "P"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "Dodge into mist, strike out of it. She was never where you looked."
   }
  },
  "strings": [

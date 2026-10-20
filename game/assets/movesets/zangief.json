@@ -1,0 +1,4772 @@
+{
+  "fighter": "zangief",
+  "display": "ZANGIEF",
+  "tekken_base": "Zangief (SF)",
+  "t3_source": "king",
+  "proxy": false,
+  "proxy_note": null,
+  "variant": 1,
+  "moves": {
+    "1": {
+      "name": "ZANGIEF 1 (T3 king r44)",
+      "input": "1",
+      "t3_source": "king",
+      "t3_row": 44,
+      "t3_command": "LP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 11,
+      "t3_damage": 18,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:44",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "2": {
+      "name": "ZANGIEF 2 (T3 king r46)",
+      "input": "2",
+      "t3_source": "king",
+      "t3_row": 46,
+      "t3_command": "RP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 11,
+      "t3_damage": 18,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:46",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike"
+    },
+    "3": {
+      "name": "ZANGIEF 3 (T3 king r52)",
+      "input": "3",
+      "t3_source": "king",
+      "t3_row": 52,
+      "t3_command": "LK",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 13,
+      "t3_damage": 22,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:52",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "4": {
+      "name": "ZANGIEF 4 (T3 king r58)",
+      "input": "4",
+      "t3_source": "king",
+      "t3_row": 58,
+      "t3_command": "RK",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 12,
+      "t3_damage": 20,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:58",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "5": {
+      "name": "ZANGIEF 5 (T3 king r64)",
+      "input": "f+1",
+      "t3_source": "king",
+      "t3_row": 64,
+      "t3_command": "f+LP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 14,
+      "t3_damage": 23,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:64",
+      "input_slots": [
+        "f+1"
+      ],
+      "move_class": "strike"
+    },
+    "6": {
+      "name": "ZANGIEF 6 (T3 king r70)",
+      "input": "f+2",
+      "t3_source": "king",
+      "t3_row": 70,
+      "t3_command": "f+RP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 12,
+      "t3_damage": 20,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:70",
+      "input_slots": [
+        "f+2"
+      ],
+      "move_class": "strike"
+    },
+    "7": {
+      "name": "ZANGIEF 7 (T3 king r76)",
+      "input": "d+1",
+      "t3_source": "king",
+      "t3_row": 76,
+      "t3_command": "d+LP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:76",
+      "input_slots": [
+        "d+1"
+      ],
+      "move_class": "strike"
+    },
+    "8": {
+      "name": "ZANGIEF 8 (T3 king r82)",
+      "input": "d+2",
+      "t3_source": "king",
+      "t3_row": 82,
+      "t3_command": "d+RP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 13,
+      "t3_damage": 22,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:82",
+      "input_slots": [
+        "d+2"
+      ],
+      "move_class": "strike"
+    },
+    "9": {
+      "name": "ZANGIEF 9 (T3 king r88)",
+      "input": "b+1",
+      "t3_source": "king",
+      "t3_row": 88,
+      "t3_command": "b+LP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 14,
+      "t3_damage": 23,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:88",
+      "input_slots": [
+        "b+1"
+      ],
+      "move_class": "strike"
+    },
+    "10": {
+      "name": "ZANGIEF 10 (T3 king r94)",
+      "input": "b+2",
+      "t3_source": "king",
+      "t3_row": 94,
+      "t3_command": "b+RP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 16,
+      "t3_damage": 27,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:94",
+      "input_slots": [
+        "b+2"
+      ],
+      "move_class": "strike"
+    },
+    "11": {
+      "name": "SPINNING PILEDRIVER",
+      "input": "b,n,f+1+2",
+      "t3_source": "king",
+      "t3_row": 0,
+      "t3_command": "b,n,f+1+2",
+      "startup": 0.3,
+      "active": 0.05,
+      "recovery": 0.8,
+      "damage": 28,
+      "t3_damage": 47,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 3.5,
+      "soulGain": 15,
+      "anim_ref": "wh:zangief:sig:1",
+      "input_slots": [
+        "b,n,f+1+2"
+      ],
+      "move_class": "throw",
+      "wh_signature": true,
+      "wh_note": "WH signature: Zangief's iconic spinning piledriver. 360 motion grab."
+    },
+    "12": {
+      "name": "BANISHING FLAT",
+      "input": "f,f+2",
+      "t3_source": "king",
+      "t3_row": 0,
+      "t3_command": "f,f+2",
+      "startup": 0.3,
+      "active": 0.05,
+      "recovery": 0.8,
+      "damage": 18,
+      "t3_damage": 30,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 3.5,
+      "soulGain": 15,
+      "anim_ref": "wh:zangief:sig:2",
+      "input_slots": [
+        "f,f+2"
+      ],
+      "move_class": "strike",
+      "wh_signature": true,
+      "wh_note": "WH signature: green-hand lariat with armor."
+    },
+    "1+2": {
+      "name": "ZANGIEF 1+2 (T3 king r35)",
+      "input": "1+2",
+      "t3_source": "king",
+      "t3_row": 35,
+      "t3_command": "LP+RP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:35",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "strike"
+    },
+    "f": {
+      "name": "ZANGIEF f (T3 king r36)",
+      "input": "f",
+      "t3_source": "king",
+      "t3_row": 36,
+      "t3_command": "6/9+LP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:36",
+      "input_slots": [
+        "f"
+      ],
+      "move_class": "strike"
+    },
+    "b": {
+      "name": "ZANGIEF b (T3 king r37)",
+      "input": "b",
+      "t3_source": "king",
+      "t3_row": 37,
+      "t3_command": "4/7+LP+RP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:37",
+      "input_slots": [
+        "b"
+      ],
+      "move_class": "strike"
+    },
+    "1_r39": {
+      "name": "ZANGIEF 1_r39 (T3 king r39)",
+      "input": "1_r39",
+      "t3_source": "king",
+      "t3_row": 39,
+      "t3_command": "LP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:39",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r40": {
+      "name": "ZANGIEF 1_r40 (T3 king r40)",
+      "input": "1_r40",
+      "t3_source": "king",
+      "t3_row": 40,
+      "t3_command": "LP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:40",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r41": {
+      "name": "ZANGIEF 1_r41 (T3 king r41)",
+      "input": "1_r41",
+      "t3_source": "king",
+      "t3_row": 41,
+      "t3_command": "LP",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:41",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r42": {
+      "name": "ZANGIEF 1_r42 (T3 king r42)",
+      "input": "1_r42",
+      "t3_source": "king",
+      "t3_row": 42,
+      "t3_command": "LP",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:42",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r43": {
+      "name": "ZANGIEF 1_r43 (T3 king r43)",
+      "input": "1_r43",
+      "t3_source": "king",
+      "t3_row": 43,
+      "t3_command": "LP",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:43",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r44": {
+      "name": "ZANGIEF 1_r44 (T3 king r44)",
+      "input": "1_r44",
+      "t3_source": "king",
+      "t3_row": 44,
+      "t3_command": "LP",
+      "startup": 0.117,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 11,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:44",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r45": {
+      "name": "ZANGIEF 1_r45 (T3 king r45)",
+      "input": "1_r45",
+      "t3_source": "king",
+      "t3_row": 45,
+      "t3_command": "LP",
+      "startup": 0.117,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 11,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:45",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r46": {
+      "name": "ZANGIEF 1_r46 (T3 king r46)",
+      "input": "1_r46",
+      "t3_source": "king",
+      "t3_row": 46,
+      "t3_command": "LP",
+      "startup": 0.117,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 11,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:46",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_c36_r47": {
+      "name": "ZANGIEF 1_c36_r47 (T3 king r47)",
+      "input": "1_c36_r47",
+      "t3_source": "king",
+      "t3_row": 47,
+      "t3_command": "LP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:47",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "f_c36_r48": {
+      "name": "ZANGIEF f_c36_r48 (T3 king r48)",
+      "input": "f_c36_r48",
+      "t3_source": "king",
+      "t3_row": 48,
+      "t3_command": "6/9+LP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:48",
+      "input_slots": [
+        "f"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "b_c36_r49": {
+      "name": "ZANGIEF b_c36_r49 (T3 king r49)",
+      "input": "b_c36_r49",
+      "t3_source": "king",
+      "t3_row": 49,
+      "t3_command": "4/7+LP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:49",
+      "input_slots": [
+        "b"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "2_r51": {
+      "name": "ZANGIEF 2_r51 (T3 king r51)",
+      "input": "2_r51",
+      "t3_source": "king",
+      "t3_row": 51,
+      "t3_command": "RP",
+      "startup": 0.183,
+      "active": 0.05,
+      "recovery": 0.667,
+      "damage": 11,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:51",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike"
+    },
+    "2_r52": {
+      "name": "ZANGIEF 2_r52 (T3 king r52)",
+      "input": "2_r52",
+      "t3_source": "king",
+      "t3_row": 52,
+      "t3_command": "RP",
+      "startup": 0.183,
+      "active": 0.05,
+      "recovery": 0.667,
+      "damage": 11,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:52",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike"
+    },
+    "3_c36": {
+      "name": "ZANGIEF 3_c36 (T3 king r54)",
+      "input": "3_c36",
+      "t3_source": "king",
+      "t3_row": 54,
+      "t3_command": "LK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:54",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "f_c36_r55": {
+      "name": "ZANGIEF f_c36_r55 (T3 king r55)",
+      "input": "f_c36_r55",
+      "t3_source": "king",
+      "t3_row": 55,
+      "t3_command": "6/9+LK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:55",
+      "input_slots": [
+        "f"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "b_c36_r56": {
+      "name": "ZANGIEF b_c36_r56 (T3 king r56)",
+      "input": "b_c36_r56",
+      "t3_source": "king",
+      "t3_row": 56,
+      "t3_command": "4/7+LK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:56",
+      "input_slots": [
+        "b"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "3_r58": {
+      "name": "ZANGIEF 3_r58 (T3 king r58)",
+      "input": "3_r58",
+      "t3_source": "king",
+      "t3_row": 58,
+      "t3_command": "LK",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.817,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:58",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "3_r59": {
+      "name": "ZANGIEF 3_r59 (T3 king r59)",
+      "input": "3_r59",
+      "t3_source": "king",
+      "t3_row": 59,
+      "t3_command": "LK",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.817,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:59",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "3_r60": {
+      "name": "ZANGIEF 3_r60 (T3 king r60)",
+      "input": "3_r60",
+      "t3_source": "king",
+      "t3_row": 60,
+      "t3_command": "LK",
+      "startup": 0.233,
+      "active": 0.017,
+      "recovery": 0.8,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:60",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "3_r61": {
+      "name": "ZANGIEF 3_r61 (T3 king r61)",
+      "input": "3_r61",
+      "t3_source": "king",
+      "t3_row": 61,
+      "t3_command": "LK",
+      "startup": 0.233,
+      "active": 0.017,
+      "recovery": 0.8,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:61",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "3_r62": {
+      "name": "ZANGIEF 3_r62 (T3 king r62)",
+      "input": "3_r62",
+      "t3_source": "king",
+      "t3_row": 62,
+      "t3_command": "LK",
+      "startup": 0.233,
+      "active": 0.017,
+      "recovery": 0.8,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:62",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "3_r63": {
+      "name": "ZANGIEF 3_r63 (T3 king r63)",
+      "input": "3_r63",
+      "t3_source": "king",
+      "t3_row": 63,
+      "t3_command": "LK",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.817,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:63",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "3_r64": {
+      "name": "ZANGIEF 3_r64 (T3 king r64)",
+      "input": "3_r64",
+      "t3_source": "king",
+      "t3_row": 64,
+      "t3_command": "LK",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.817,
+      "damage": 9,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:64",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "3_r65": {
+      "name": "ZANGIEF 3_r65 (T3 king r65)",
+      "input": "3_r65",
+      "t3_source": "king",
+      "t3_row": 65,
+      "t3_command": "LK",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.817,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:65",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "3+4_r107": {
+      "name": "ZANGIEF 3+4_r107 (T3 king r66)",
+      "input": "3+4_r107",
+      "t3_source": "king",
+      "t3_row": 66,
+      "t3_command": "LK+RK",
+      "startup": 0.383,
+      "active": 0.017,
+      "recovery": 0.817,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:66",
+      "input_slots": [
+        "3+4"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 107
+    },
+    "f_r67": {
+      "name": "ZANGIEF f_r67 (T3 king r67)",
+      "input": "f_r67",
+      "t3_source": "king",
+      "t3_row": 67,
+      "t3_command": "6/9+LK+RK",
+      "startup": 0.383,
+      "active": 0.017,
+      "recovery": 0.817,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:67",
+      "input_slots": [
+        "f"
+      ],
+      "move_class": "strike"
+    },
+    "b_r68": {
+      "name": "ZANGIEF b_r68 (T3 king r68)",
+      "input": "b_r68",
+      "t3_source": "king",
+      "t3_row": 68,
+      "t3_command": "4/7+LK+RK",
+      "startup": 0.383,
+      "active": 0.017,
+      "recovery": 0.817,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:68",
+      "input_slots": [
+        "b"
+      ],
+      "move_class": "strike"
+    },
+    "f_r70": {
+      "name": "ZANGIEF f_r70 (T3 king r70)",
+      "input": "f_r70",
+      "t3_source": "king",
+      "t3_row": 70,
+      "t3_command": "6/9+RK",
+      "startup": 0.25,
+      "active": 0.05,
+      "recovery": 0.6,
+      "damage": 8,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:70",
+      "input_slots": [
+        "f"
+      ],
+      "move_class": "strike"
+    },
+    "b_r71": {
+      "name": "ZANGIEF b_r71 (T3 king r71)",
+      "input": "b_r71",
+      "t3_source": "king",
+      "t3_row": 71,
+      "t3_command": "4/7+RK",
+      "startup": 0.25,
+      "active": 0.05,
+      "recovery": 0.6,
+      "damage": 6,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:71",
+      "input_slots": [
+        "b"
+      ],
+      "move_class": "strike"
+    },
+    "4_r72": {
+      "name": "ZANGIEF 4_r72 (T3 king r72)",
+      "input": "4_r72",
+      "t3_source": "king",
+      "t3_row": 72,
+      "t3_command": "RK",
+      "startup": 0.133,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 15,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:72",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_r73": {
+      "name": "ZANGIEF 4_r73 (T3 king r73)",
+      "input": "4_r73",
+      "t3_source": "king",
+      "t3_row": 73,
+      "t3_command": "RK",
+      "startup": 0.133,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 15,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:73",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_r74": {
+      "name": "ZANGIEF 4_r74 (T3 king r74)",
+      "input": "4_r74",
+      "t3_source": "king",
+      "t3_row": 74,
+      "t3_command": "RK",
+      "startup": 0.133,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 15,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:74",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_r75": {
+      "name": "ZANGIEF 4_r75 (T3 king r75)",
+      "input": "4_r75",
+      "t3_source": "king",
+      "t3_row": 75,
+      "t3_command": "RK",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 15,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:75",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_r76": {
+      "name": "ZANGIEF 4_r76 (T3 king r76)",
+      "input": "4_r76",
+      "t3_source": "king",
+      "t3_row": 76,
+      "t3_command": "RK",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 15,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:76",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_r77": {
+      "name": "ZANGIEF 4_r77 (T3 king r77)",
+      "input": "4_r77",
+      "t3_source": "king",
+      "t3_row": 77,
+      "t3_command": "RK",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 15,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:77",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_r78": {
+      "name": "ZANGIEF 4_r78 (T3 king r78)",
+      "input": "4_r78",
+      "t3_source": "king",
+      "t3_row": 78,
+      "t3_command": "RK",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 9,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:78",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_r79": {
+      "name": "ZANGIEF 4_r79 (T3 king r79)",
+      "input": "4_r79",
+      "t3_source": "king",
+      "t3_row": 79,
+      "t3_command": "RK",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 9,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:79",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_r80": {
+      "name": "ZANGIEF 4_r80 (T3 king r80)",
+      "input": "4_r80",
+      "t3_source": "king",
+      "t3_row": 80,
+      "t3_command": "RK",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 9,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:80",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_c36_r81": {
+      "name": "ZANGIEF 4_c36_r81 (T3 king r81)",
+      "input": "4_c36_r81",
+      "t3_source": "king",
+      "t3_row": 81,
+      "t3_command": "RK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 12,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:81",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "f_c36_r82": {
+      "name": "ZANGIEF f_c36_r82 (T3 king r82)",
+      "input": "f_c36_r82",
+      "t3_source": "king",
+      "t3_row": 82,
+      "t3_command": "6/9+RK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 12,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:82",
+      "input_slots": [
+        "f"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "b_c36_r83": {
+      "name": "ZANGIEF b_c36_r83 (T3 king r83)",
+      "input": "b_c36_r83",
+      "t3_source": "king",
+      "t3_row": 83,
+      "t3_command": "4/7+RK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 11,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:83",
+      "input_slots": [
+        "b"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "d/f+1_r4": {
+      "name": "ZANGIEF d/f+1_r4 (T3 king r117)",
+      "input": "d/f+1_r4",
+      "t3_source": "king",
+      "t3_row": 117,
+      "t3_command": "3+LP",
+      "startup": 0.5,
+      "active": 0.05,
+      "recovery": 0.633,
+      "damage": 12,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:117",
+      "input_slots": [
+        "d/f+1"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 4
+    },
+    "d/f+1+2_r17": {
+      "name": "ZANGIEF d/f+1+2_r17 (T3 king r127)",
+      "input": "d/f+1+2_r17",
+      "t3_source": "king",
+      "t3_row": 127,
+      "t3_command": "3+LP+RP",
+      "startup": 0.433,
+      "active": 0.017,
+      "recovery": 0.0,
+      "damage": 21,
+      "limb": "both",
+      "heavy": false,
+      "knock": 6.5,
+      "soulGain": 11,
+      "anim_ref": "t3:king:row:127",
+      "input_slots": [
+        "d/f+1+2"
+      ],
+      "move_class": "throw",
+      "t3_restriction": 17,
+      "damage_note": "t3 row damage 0; WH grappler convention 21"
+    },
+    "1_r153": {
+      "name": "ZANGIEF 1_r153 (T3 king r153)",
+      "input": "1_r153",
+      "t3_source": "king",
+      "t3_row": 153,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.25,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:153",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1+2_r4_r163": {
+      "name": "ZANGIEF 1+2_r4_r163 (T3 king r163)",
+      "input": "1+2_r4_r163",
+      "t3_source": "king",
+      "t3_row": 163,
+      "t3_command": "LP+RP",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 3.45,
+      "damage": 6,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:163",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 4
+    },
+    "1_r179": {
+      "name": "ZANGIEF 1_r179 (T3 king r179)",
+      "input": "1_r179",
+      "t3_source": "king",
+      "t3_row": 179,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:179",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r195": {
+      "name": "ZANGIEF 1_r195 (T3 king r195)",
+      "input": "1_r195",
+      "t3_source": "king",
+      "t3_row": 195,
+      "t3_command": "any-button",
+      "startup": 0.483,
+      "active": 0.067,
+      "recovery": 0.583,
+      "damage": 29,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:195",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_c24": {
+      "name": "ZANGIEF 1_c24 (T3 king r195)",
+      "input": "1_c24",
+      "t3_source": "king",
+      "t3_row": 195,
+      "t3_command": "any-button",
+      "startup": 0.483,
+      "active": 0.067,
+      "recovery": 0.583,
+      "damage": 29,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:195",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "special",
+      "t3_condition": 24
+    },
+    "1_r4_r199": {
+      "name": "ZANGIEF 1_r4_r199 (T3 king r199)",
+      "input": "1_r4_r199",
+      "t3_source": "king",
+      "t3_row": 199,
+      "t3_command": "LP",
+      "startup": 0.383,
+      "active": 0.033,
+      "recovery": 0.55,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:199",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 4
+    },
+    "2_r200": {
+      "name": "ZANGIEF 2_r200 (T3 king r200)",
+      "input": "2_r200",
+      "t3_source": "king",
+      "t3_row": 200,
+      "t3_command": "RP",
+      "startup": 0.25,
+      "active": 0.05,
+      "recovery": 0.617,
+      "damage": 9,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:200",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike"
+    },
+    "2_r4_r201": {
+      "name": "ZANGIEF 2_r4_r201 (T3 king r201)",
+      "input": "2_r4_r201",
+      "t3_source": "king",
+      "t3_row": 201,
+      "t3_command": "RP",
+      "startup": 0.467,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 6,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:201",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 4
+    },
+    "d/f+2_r4": {
+      "name": "ZANGIEF d/f+2_r4 (T3 king r202)",
+      "input": "d/f+2_r4",
+      "t3_source": "king",
+      "t3_row": 202,
+      "t3_command": "3+RP",
+      "startup": 0.267,
+      "active": 0.017,
+      "recovery": 0.7,
+      "damage": 12,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:202",
+      "input_slots": [
+        "d/f+2"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 4
+    },
+    "1_r4_r209": {
+      "name": "ZANGIEF 1_r4_r209 (T3 king r209)",
+      "input": "1_r4_r209",
+      "t3_source": "king",
+      "t3_row": 209,
+      "t3_command": "LP",
+      "startup": 0.367,
+      "active": 0.033,
+      "recovery": 0.6,
+      "damage": 12,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:209",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 4
+    },
+    "4_r212": {
+      "name": "ZANGIEF 4_r212 (T3 king r212)",
+      "input": "4_r212",
+      "t3_source": "king",
+      "t3_row": 212,
+      "t3_command": "RK",
+      "startup": 0.483,
+      "active": 0.017,
+      "recovery": 0.9,
+      "damage": 4,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:212",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "1_r215": {
+      "name": "ZANGIEF 1_r215 (T3 king r215)",
+      "input": "1_r215",
+      "t3_source": "king",
+      "t3_row": 215,
+      "t3_command": "any-button",
+      "startup": 0.483,
+      "active": 0.017,
+      "recovery": 0.9,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:215",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "4_r216": {
+      "name": "ZANGIEF 4_r216 (T3 king r216)",
+      "input": "4_r216",
+      "t3_source": "king",
+      "t3_row": 216,
+      "t3_command": "RK",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.65,
+      "damage": 18,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:216",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "3+4_r4": {
+      "name": "ZANGIEF 3+4_r4 (T3 king r217)",
+      "input": "3+4_r4",
+      "t3_source": "king",
+      "t3_row": 217,
+      "t3_command": "LK+RK",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.1,
+      "damage": 35,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:217",
+      "input_slots": [
+        "3+4"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 4
+    },
+    "1_c28_r221": {
+      "name": "ZANGIEF 1_c28_r221 (T3 king r221)",
+      "input": "1_c28_r221",
+      "t3_source": "king",
+      "t3_row": 221,
+      "t3_command": "any-button",
+      "startup": 0.65,
+      "active": 0.117,
+      "recovery": 0.667,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:221",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 28
+    },
+    "f_r222": {
+      "name": "ZANGIEF f_r222 (T3 king r222)",
+      "input": "f_r222",
+      "t3_source": "king",
+      "t3_row": 222,
+      "t3_command": "6/9+LP+RP",
+      "startup": 0.583,
+      "active": 0.033,
+      "recovery": 0.633,
+      "damage": 21,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:222",
+      "input_slots": [
+        "f"
+      ],
+      "move_class": "strike"
+    },
+    "1+2_r227": {
+      "name": "ZANGIEF 1+2_r227 (T3 king r227)",
+      "input": "1+2_r227",
+      "t3_source": "king",
+      "t3_row": 227,
+      "t3_command": "LP+RP",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.717,
+      "damage": 16,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:227",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "strike"
+    },
+    "1_c26_r235": {
+      "name": "ZANGIEF 1_c26_r235 (T3 king r235)",
+      "input": "1_c26_r235",
+      "t3_source": "king",
+      "t3_row": 235,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.917,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:235",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 26
+    },
+    "2+3": {
+      "name": "ZANGIEF 2+3 (T3 king r237)",
+      "input": "2+3",
+      "t3_source": "king",
+      "t3_row": 237,
+      "t3_command": "RP+LK",
+      "startup": 0.417,
+      "active": 0.133,
+      "recovery": 0.8,
+      "damage": 24,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:237",
+      "input_slots": [
+        "2+3"
+      ],
+      "move_class": "strike"
+    },
+    "1_c26_r240": {
+      "name": "ZANGIEF 1_c26_r240 (T3 king r240)",
+      "input": "1_c26_r240",
+      "t3_source": "king",
+      "t3_row": 240,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.917,
+      "damage": 21,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:240",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 26
+    },
+    "d/f+1+4_r4": {
+      "name": "ZANGIEF d/f+1+4_r4 (T3 king r242)",
+      "input": "d/f+1+4_r4",
+      "t3_source": "king",
+      "t3_row": 242,
+      "t3_command": "3+LP+RK",
+      "startup": 0.517,
+      "active": 0.083,
+      "recovery": 0.733,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:242",
+      "input_slots": [
+        "d/f+1+4"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 4
+    },
+    "b_r246": {
+      "name": "ZANGIEF b_r246 (T3 king r246)",
+      "input": "b_r246",
+      "t3_source": "king",
+      "t3_row": 246,
+      "t3_command": "4/7+RP+RK",
+      "startup": 0.783,
+      "active": 0.117,
+      "recovery": 0.7,
+      "damage": 21,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:246",
+      "input_slots": [
+        "b"
+      ],
+      "move_class": "strike"
+    },
+    "1_c2_r247": {
+      "name": "ZANGIEF 1_c2_r247 (T3 king r247)",
+      "input": "1_c2_r247",
+      "t3_source": "king",
+      "t3_row": 247,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.3,
+      "damage": 26,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:247",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 2,
+      "t3_restriction": 4
+    },
+    "3_r263": {
+      "name": "ZANGIEF 3_r263 (T3 king r263)",
+      "input": "3_r263",
+      "t3_source": "king",
+      "t3_row": 263,
+      "t3_command": "LK",
+      "startup": 0.383,
+      "active": 0.017,
+      "recovery": 0.817,
+      "damage": 18,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:263",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "1_r4_r271": {
+      "name": "ZANGIEF 1_r4_r271 (T3 king r271)",
+      "input": "1_r4_r271",
+      "t3_source": "king",
+      "t3_row": 271,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.35,
+      "damage": 18,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:271",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 4
+    },
+    "1_r4_r272": {
+      "name": "ZANGIEF 1_r4_r272 (T3 king r272)",
+      "input": "1_r4_r272",
+      "t3_source": "king",
+      "t3_row": 272,
+      "t3_command": "LP",
+      "startup": 0.75,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 14,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:272",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 4
+    },
+    "1_c36_r312": {
+      "name": "ZANGIEF 1_c36_r312 (T3 king r312)",
+      "input": "1_c36_r312",
+      "t3_source": "king",
+      "t3_row": 312,
+      "t3_command": "any-button",
+      "startup": 0.367,
+      "active": 0.017,
+      "recovery": 0.667,
+      "damage": 5,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:312",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "1_c36_r313": {
+      "name": "ZANGIEF 1_c36_r313 (T3 king r313)",
+      "input": "1_c36_r313",
+      "t3_source": "king",
+      "t3_row": 313,
+      "t3_command": "any-button",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 8,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:313",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "1_c36_r316": {
+      "name": "ZANGIEF 1_c36_r316 (T3 king r316)",
+      "input": "1_c36_r316",
+      "t3_source": "king",
+      "t3_row": 316,
+      "t3_command": "any-button",
+      "startup": 0.233,
+      "active": 0.017,
+      "recovery": 0.667,
+      "damage": 4,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:316",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "1_c36_r317": {
+      "name": "ZANGIEF 1_c36_r317 (T3 king r317)",
+      "input": "1_c36_r317",
+      "t3_source": "king",
+      "t3_row": 317,
+      "t3_command": "any-button",
+      "startup": 0.183,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 6,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:317",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "1_c2_r415": {
+      "name": "ZANGIEF 1_c2_r415 (T3 king r415)",
+      "input": "1_c2_r415",
+      "t3_source": "king",
+      "t3_row": 415,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.183,
+      "damage": 21,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:415",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 2
+    },
+    "1_c2_r417": {
+      "name": "ZANGIEF 1_c2_r417 (T3 king r417)",
+      "input": "1_c2_r417",
+      "t3_source": "king",
+      "t3_row": 417,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.8,
+      "damage": 21,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:417",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 2
+    },
+    "1_c5_r421": {
+      "name": "ZANGIEF 1_c5_r421 (T3 king r421)",
+      "input": "1_c5_r421",
+      "t3_source": "king",
+      "t3_row": 421,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.667,
+      "damage": 25,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:421",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 5
+    },
+    "1_c3_r423": {
+      "name": "ZANGIEF 1_c3_r423 (T3 king r423)",
+      "input": "1_c3_r423",
+      "t3_source": "king",
+      "t3_row": 423,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 3.367,
+      "damage": 35,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:423",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 3
+    },
+    "1_c3_r425": {
+      "name": "ZANGIEF 1_c3_r425 (T3 king r425)",
+      "input": "1_c3_r425",
+      "t3_source": "king",
+      "t3_row": 425,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 4.0,
+      "damage": 35,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:425",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 3
+    },
+    "1+2_r433": {
+      "name": "ZANGIEF 1+2_r433 (T3 king r433)",
+      "input": "1+2_r433",
+      "t3_source": "king",
+      "t3_row": 433,
+      "t3_command": "LP+RP",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.167,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:433",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "strike"
+    },
+    "3+4": {
+      "name": "ZANGIEF 3+4 (T3 king r435)",
+      "input": "3+4",
+      "t3_source": "king",
+      "t3_row": 435,
+      "t3_command": "LK+RK",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.05,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:435",
+      "input_slots": [
+        "3+4"
+      ],
+      "move_class": "strike"
+    },
+    "1_c2_r439": {
+      "name": "ZANGIEF 1_c2_r439 (T3 king r439)",
+      "input": "1_c2_r439",
+      "t3_source": "king",
+      "t3_row": 439,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 4.067,
+      "damage": 29,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:439",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 2
+    },
+    "1_c2_r443": {
+      "name": "ZANGIEF 1_c2_r443 (T3 king r443)",
+      "input": "1_c2_r443",
+      "t3_source": "king",
+      "t3_row": 443,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 3.8,
+      "damage": 34,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:443",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 2
+    },
+    "1_c2_r445": {
+      "name": "ZANGIEF 1_c2_r445 (T3 king r445)",
+      "input": "1_c2_r445",
+      "t3_source": "king",
+      "t3_row": 445,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.0,
+      "damage": 32,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:445",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 2
+    },
+    "3+4_r451": {
+      "name": "ZANGIEF 3+4_r451 (T3 king r451)",
+      "input": "3+4_r451",
+      "t3_source": "king",
+      "t3_row": 451,
+      "t3_command": "LK+RK",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 3.333,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:451",
+      "input_slots": [
+        "3+4"
+      ],
+      "move_class": "strike"
+    },
+    "1_c3_r455": {
+      "name": "ZANGIEF 1_c3_r455 (T3 king r455)",
+      "input": "1_c3_r455",
+      "t3_source": "king",
+      "t3_row": 455,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.75,
+      "damage": 44,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:455",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 3
+    },
+    "1_c2_r457": {
+      "name": "ZANGIEF 1_c2_r457 (T3 king r457)",
+      "input": "1_c2_r457",
+      "t3_source": "king",
+      "t3_row": 457,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.167,
+      "damage": 18,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:457",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 2
+    },
+    "1+3": {
+      "name": "ZANGIEF 1+3 (T3 king r463)",
+      "input": "1+3",
+      "t3_source": "king",
+      "t3_row": 463,
+      "t3_command": "LP+LK",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.1,
+      "damage": 21,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:463",
+      "input_slots": [
+        "1+3"
+      ],
+      "move_class": "strike"
+    },
+    "1_c58_r465": {
+      "name": "ZANGIEF 1_c58_r465 (T3 king r465)",
+      "input": "1_c58_r465",
+      "t3_source": "king",
+      "t3_row": 465,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.883,
+      "damage": 21,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:465",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 58
+    },
+    "2+4": {
+      "name": "ZANGIEF 2+4 (T3 king r467)",
+      "input": "2+4",
+      "t3_source": "king",
+      "t3_row": 467,
+      "t3_command": "RP+RK",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.85,
+      "damage": 5,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:467",
+      "input_slots": [
+        "2+4"
+      ],
+      "move_class": "strike"
+    },
+    "1_c59_r469": {
+      "name": "ZANGIEF 1_c59_r469 (T3 king r469)",
+      "input": "1_c59_r469",
+      "t3_source": "king",
+      "t3_row": 469,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.917,
+      "damage": 21,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:469",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 59
+    },
+    "3+4_r471": {
+      "name": "ZANGIEF 3+4_r471 (T3 king r471)",
+      "input": "3+4_r471",
+      "t3_source": "king",
+      "t3_row": 471,
+      "t3_command": "LK+RK",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.833,
+      "damage": 6,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:471",
+      "input_slots": [
+        "3+4"
+      ],
+      "move_class": "strike"
+    },
+    "3+4_r474": {
+      "name": "ZANGIEF 3+4_r474 (T3 king r474)",
+      "input": "3+4_r474",
+      "t3_source": "king",
+      "t3_row": 474,
+      "t3_command": "LK+RK",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.117,
+      "damage": 21,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:474",
+      "input_slots": [
+        "3+4"
+      ],
+      "move_class": "strike"
+    },
+    "1_c6_r478": {
+      "name": "ZANGIEF 1_c6_r478 (T3 king r478)",
+      "input": "1_c6_r478",
+      "t3_source": "king",
+      "t3_row": 478,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.617,
+      "damage": 26,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:478",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 6
+    },
+    "1_c11_r482": {
+      "name": "ZANGIEF 1_c11_r482 (T3 king r482)",
+      "input": "1_c11_r482",
+      "t3_source": "king",
+      "t3_row": 482,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 3.05,
+      "damage": 16,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:482",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 11,
+      "t3_restriction": 4
+    },
+    "1_c10_r486": {
+      "name": "ZANGIEF 1_c10_r486 (T3 king r486)",
+      "input": "1_c10_r486",
+      "t3_source": "king",
+      "t3_row": 486,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.1,
+      "damage": 19,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:486",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 10
+    },
+    "d/b+1_c10": {
+      "name": "ZANGIEF d/b+1_c10 (T3 king r488)",
+      "input": "d/b+1_c10",
+      "t3_source": "king",
+      "t3_row": 488,
+      "t3_command": "1+any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 3.683,
+      "damage": 19,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:488",
+      "input_slots": [
+        "d/b+1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 10
+    },
+    "1_c15_r503": {
+      "name": "ZANGIEF 1_c15_r503 (T3 king r503)",
+      "input": "1_c15_r503",
+      "t3_source": "king",
+      "t3_row": 503,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.8,
+      "damage": 19,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:503",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 15,
+      "t3_restriction": 4
+    },
+    "1_c14_r505": {
+      "name": "ZANGIEF 1_c14_r505 (T3 king r505)",
+      "input": "1_c14_r505",
+      "t3_source": "king",
+      "t3_row": 505,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.7,
+      "damage": 18,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:505",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 14,
+      "t3_restriction": 4
+    },
+    "1_c17_r507": {
+      "name": "ZANGIEF 1_c17_r507 (T3 king r507)",
+      "input": "1_c17_r507",
+      "t3_source": "king",
+      "t3_row": 507,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.583,
+      "damage": 21,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:507",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 17,
+      "t3_restriction": 4
+    },
+    "1_c16_r509": {
+      "name": "ZANGIEF 1_c16_r509 (T3 king r509)",
+      "input": "1_c16_r509",
+      "t3_source": "king",
+      "t3_row": 509,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 3.0,
+      "damage": 22,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:509",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 16,
+      "t3_restriction": 4
+    },
+    "1_c75_r519": {
+      "name": "ZANGIEF 1_c75_r519 (T3 king r519)",
+      "input": "1_c75_r519",
+      "t3_source": "king",
+      "t3_row": 519,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.767,
+      "damage": 29,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:519",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 4
+    },
+    "1_c73": {
+      "name": "ZANGIEF 1_c73 (T3 king r519)",
+      "input": "1_c73",
+      "t3_source": "king",
+      "t3_row": 519,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.767,
+      "damage": 29,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:519",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "special",
+      "t3_condition": 73,
+      "t3_restriction": 4
+    },
+    "1_c74": {
+      "name": "ZANGIEF 1_c74 (T3 king r519)",
+      "input": "1_c74",
+      "t3_source": "king",
+      "t3_row": 519,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.767,
+      "damage": 29,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:519",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "special",
+      "t3_condition": 74,
+      "t3_restriction": 4
+    },
+    "1_c75_r521": {
+      "name": "ZANGIEF 1_c75_r521 (T3 king r521)",
+      "input": "1_c75_r521",
+      "t3_source": "king",
+      "t3_row": 521,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 4.183,
+      "damage": 29,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:521",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 4
+    },
+    "1_r578": {
+      "name": "ZANGIEF 1_r578 (T3 king r578)",
+      "input": "1_r578",
+      "t3_source": "king",
+      "t3_row": 578,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 3.667,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:578",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r620": {
+      "name": "ZANGIEF 1_r620 (T3 king r620)",
+      "input": "1_r620",
+      "t3_source": "king",
+      "t3_row": 620,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.45,
+      "damage": 16,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:620",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r630": {
+      "name": "ZANGIEF 1_r630 (T3 king r630)",
+      "input": "1_r630",
+      "t3_source": "king",
+      "t3_row": 630,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.3,
+      "damage": 16,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:630",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_c60_r650": {
+      "name": "ZANGIEF 1_c60_r650 (T3 king r650)",
+      "input": "1_c60_r650",
+      "t3_source": "king",
+      "t3_row": 650,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.05,
+      "damage": 6,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:650",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 60
+    },
+    "1_c58": {
+      "name": "ZANGIEF 1_c58 (T3 king r650)",
+      "input": "1_c58",
+      "t3_source": "king",
+      "t3_row": 650,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.05,
+      "damage": 6,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:650",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "special",
+      "t3_condition": 58
+    },
+    "1_c59": {
+      "name": "ZANGIEF 1_c59 (T3 king r650)",
+      "input": "1_c59",
+      "t3_source": "king",
+      "t3_row": 650,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.05,
+      "damage": 6,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:king:row:650",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "special",
+      "t3_condition": 59
+    },
+    "n+1": {
+      "name": "Standing Light Punch",
+      "input": "n+1",
+      "t3_source": "sf6",
+      "sf_motion": "5LP",
+      "startup": 0.117,
+      "active": 0.05,
+      "recovery": 0.15,
+      "damage": 12,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 6,
+      "anim_ref": "sf6:zangief:standing_light_punch",
+      "input_slots": [
+        "n+1"
+      ],
+      "move_class": "strike",
+      "note": "SF: 5LP."
+    },
+    "n+2": {
+      "name": "Standing Medium Punch",
+      "input": "n+2",
+      "t3_source": "sf6",
+      "sf_motion": "5MP",
+      "startup": 0.15,
+      "active": 0.067,
+      "recovery": 0.283,
+      "damage": 20,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 10,
+      "anim_ref": "sf6:zangief:standing_medium_punch",
+      "input_slots": [
+        "n+2"
+      ],
+      "move_class": "strike",
+      "note": "SF: 5MP."
+    },
+    "n+1+2": {
+      "name": "Standing Heavy Punch",
+      "input": "n+1+2",
+      "t3_source": "sf6",
+      "sf_motion": "5HP",
+      "startup": 0.267,
+      "active": 0.05,
+      "recovery": 0.367,
+      "damage": 20,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.6,
+      "soulGain": 10,
+      "anim_ref": "sf6:zangief:standing_heavy_punch",
+      "input_slots": [
+        "n+1+2"
+      ],
+      "move_class": "strike",
+      "note": "SF: 5HP."
+    },
+    "n+1+2 (charge)": {
+      "name": "Standing Heavy Punch (Charged)",
+      "input": "n+1+2 (charge)",
+      "t3_source": "sf6",
+      "sf_motion": "5[HP]",
+      "startup": 0.533,
+      "active": 0.05,
+      "recovery": 0.367,
+      "damage": 20,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.6,
+      "soulGain": 10,
+      "anim_ref": "sf6:zangief:standing_heavy_punch_charged",
+      "input_slots": [
+        "n+1+2 (charge)"
+      ],
+      "move_class": "strike",
+      "note": "SF: 5[HP]. Hold HP to charge; adds armor."
+    },
+    "n+3": {
+      "name": "Standing Light Kick",
+      "input": "n+3",
+      "t3_source": "sf6",
+      "sf_motion": "5LK",
+      "startup": 0.117,
+      "active": 0.033,
+      "recovery": 0.283,
+      "damage": 12,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 6,
+      "anim_ref": "sf6:zangief:standing_light_kick",
+      "input_slots": [
+        "n+3"
+      ],
+      "move_class": "strike",
+      "note": "SF: 5LK."
+    },
+    "n+4": {
+      "name": "Standing Medium Kick",
+      "input": "n+4",
+      "t3_source": "sf6",
+      "sf_motion": "5MK",
+      "startup": 0.167,
+      "active": 0.067,
+      "recovery": 0.317,
+      "damage": 20,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 10,
+      "anim_ref": "sf6:zangief:standing_medium_kick",
+      "input_slots": [
+        "n+4"
+      ],
+      "move_class": "strike",
+      "note": "SF: 5MK."
+    },
+    "n+3+4": {
+      "name": "Standing Heavy Kick",
+      "input": "n+3+4",
+      "t3_source": "sf6",
+      "sf_motion": "5HK",
+      "startup": 0.217,
+      "active": 0.067,
+      "recovery": 0.35,
+      "damage": 20,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.6,
+      "soulGain": 10,
+      "anim_ref": "sf6:zangief:standing_heavy_kick",
+      "input_slots": [
+        "n+3+4"
+      ],
+      "move_class": "strike",
+      "note": "SF: 5HK."
+    },
+    "fc+1": {
+      "name": "Crouching Light Punch",
+      "input": "fc+1",
+      "t3_source": "sf6",
+      "sf_motion": "2LP",
+      "startup": 0.1,
+      "active": 0.033,
+      "recovery": 0.133,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "anim_ref": "sf6:zangief:crouching_light_punch",
+      "input_slots": [
+        "fc+1"
+      ],
+      "move_class": "strike",
+      "note": "SF: 2LP."
+    },
+    "fc+2": {
+      "name": "Crouching Medium Punch",
+      "input": "fc+2",
+      "t3_source": "sf6",
+      "sf_motion": "2MP",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.267,
+      "damage": 20,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 10,
+      "anim_ref": "sf6:zangief:crouching_medium_punch",
+      "input_slots": [
+        "fc+2"
+      ],
+      "move_class": "strike",
+      "note": "SF: 2MP."
+    },
+    "fc+1+2": {
+      "name": "Crouching Heavy Punch",
+      "input": "fc+1+2",
+      "t3_source": "sf6",
+      "sf_motion": "2HP",
+      "startup": 0.183,
+      "active": 0.15,
+      "recovery": 0.583,
+      "damage": 20,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.6,
+      "soulGain": 10,
+      "anim_ref": "sf6:zangief:crouching_heavy_punch",
+      "input_slots": [
+        "fc+1+2"
+      ],
+      "move_class": "strike",
+      "note": "SF: 2HP."
+    },
+    "fc+3": {
+      "name": "Crouching Light Kick",
+      "input": "fc+3",
+      "t3_source": "sf6",
+      "sf_motion": "2LK",
+      "startup": 0.067,
+      "active": 0.05,
+      "recovery": 0.2,
+      "damage": 8,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "anim_ref": "sf6:zangief:crouching_light_kick",
+      "input_slots": [
+        "fc+3"
+      ],
+      "move_class": "strike",
+      "note": "SF: 2LK."
+    },
+    "fc+4": {
+      "name": "Crouching Medium Kick",
+      "input": "fc+4",
+      "t3_source": "sf6",
+      "sf_motion": "2MK",
+      "startup": 0.15,
+      "active": 0.05,
+      "recovery": 0.3,
+      "damage": 20,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 10,
+      "anim_ref": "sf6:zangief:crouching_medium_kick",
+      "input_slots": [
+        "fc+4"
+      ],
+      "move_class": "strike",
+      "note": "SF: 2MK."
+    },
+    "fc+3+4": {
+      "name": "Big Stampede",
+      "input": "fc+3+4",
+      "t3_source": "sf6",
+      "sf_motion": "2HK",
+      "startup": 0.2,
+      "active": 0.05,
+      "recovery": 0.45,
+      "damage": 20,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.6,
+      "soulGain": 10,
+      "anim_ref": "sf6:zangief:big_stampede",
+      "input_slots": [
+        "fc+3+4"
+      ],
+      "move_class": "strike",
+      "note": "SF: 2HK."
+    },
+    "u+1": {
+      "name": "Jumping Light Punch",
+      "input": "u+1",
+      "t3_source": "sf6",
+      "sf_motion": "j.LP",
+      "startup": 0.083,
+      "active": 0.117,
+      "recovery": 0.05,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "anim_ref": "sf6:zangief:jumping_light_punch",
+      "input_slots": [
+        "u+1"
+      ],
+      "move_class": "strike",
+      "note": "SF: j.LP."
+    },
+    "u+2": {
+      "name": "Jumping Medium Punch",
+      "input": "u+2",
+      "t3_source": "sf6",
+      "sf_motion": "j.MP",
+      "startup": 0.133,
+      "active": 0.083,
+      "recovery": 0.05,
+      "damage": 20,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 10,
+      "anim_ref": "sf6:zangief:jumping_medium_punch",
+      "input_slots": [
+        "u+2"
+      ],
+      "move_class": "strike",
+      "note": "SF: j.MP."
+    },
+    "u+1+2": {
+      "name": "Jumping Heavy Punch",
+      "input": "u+1+2",
+      "t3_source": "sf6",
+      "sf_motion": "j.HP",
+      "startup": 0.15,
+      "active": 0.1,
+      "recovery": 0.05,
+      "damage": 20,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.6,
+      "soulGain": 10,
+      "anim_ref": "sf6:zangief:jumping_heavy_punch",
+      "input_slots": [
+        "u+1+2"
+      ],
+      "move_class": "strike",
+      "note": "SF: j.HP."
+    },
+    "u+3": {
+      "name": "Jumping Light Kick",
+      "input": "u+3",
+      "t3_source": "sf6",
+      "sf_motion": "j.LK",
+      "startup": 0.083,
+      "active": 0.167,
+      "recovery": 0.05,
+      "damage": 9,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "anim_ref": "sf6:zangief:jumping_light_kick",
+      "input_slots": [
+        "u+3"
+      ],
+      "move_class": "strike",
+      "note": "SF: j.LK."
+    },
+    "u+4": {
+      "name": "Jumping Medium Kick",
+      "input": "u+4",
+      "t3_source": "sf6",
+      "sf_motion": "j.MK",
+      "startup": 0.133,
+      "active": 0.133,
+      "recovery": 0.05,
+      "damage": 15,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "sf6:zangief:jumping_medium_kick",
+      "input_slots": [
+        "u+4"
+      ],
+      "move_class": "strike",
+      "note": "SF: j.MK."
+    },
+    "u+3+4": {
+      "name": "Jumping Heavy Kick",
+      "input": "u+3+4",
+      "t3_source": "sf6",
+      "sf_motion": "j.HK",
+      "startup": 0.167,
+      "active": 0.117,
+      "recovery": 0.05,
+      "damage": 20,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.6,
+      "soulGain": 10,
+      "anim_ref": "sf6:zangief:jumping_heavy_kick",
+      "input_slots": [
+        "u+3+4"
+      ],
+      "move_class": "strike",
+      "note": "SF: j.HK."
+    },
+    "u+3+4 (charge)": {
+      "name": "Jumping Heavy Kick (Charged)",
+      "input": "u+3+4 (charge)",
+      "t3_source": "sf6",
+      "sf_motion": "j.[HK]",
+      "startup": 0.533,
+      "active": 0.1,
+      "recovery": 0.5,
+      "damage": 20,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.6,
+      "soulGain": 10,
+      "anim_ref": "sf6:zangief:jumping_heavy_kick_charged",
+      "input_slots": [
+        "u+3+4 (charge)"
+      ],
+      "move_class": "strike",
+      "note": "SF: j.[HK]."
+    },
+    "df+2": {
+      "name": "Hellstab",
+      "input": "df+2",
+      "t3_source": "sf6",
+      "sf_motion": "3MP",
+      "startup": 0.117,
+      "active": 0.05,
+      "recovery": 0.35,
+      "damage": 20,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.6,
+      "soulGain": 10,
+      "anim_ref": "sf6:zangief:hellstab",
+      "input_slots": [
+        "df+2"
+      ],
+      "move_class": "strike",
+      "note": "SF: 3MP."
+    },
+    "f+4": {
+      "name": "Knee Hammer",
+      "input": "f+4",
+      "t3_source": "sf6",
+      "sf_motion": "6MK",
+      "startup": 0.233,
+      "active": 0.117,
+      "recovery": 0.217,
+      "damage": 20,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 10,
+      "anim_ref": "sf6:zangief:knee_hammer",
+      "input_slots": [
+        "f+4"
+      ],
+      "move_class": "strike",
+      "note": "SF: 6MK."
+    },
+    "f+1+2": {
+      "name": "Headbutt",
+      "input": "f+1+2",
+      "t3_source": "sf6",
+      "sf_motion": "6HP",
+      "startup": 0.233,
+      "active": 0.083,
+      "recovery": 0.25,
+      "damage": 20,
+      "limb": "head",
+      "heavy": true,
+      "knock": 2.6,
+      "soulGain": 10,
+      "anim_ref": "sf6:zangief:headbutt",
+      "input_slots": [
+        "f+1+2"
+      ],
+      "move_class": "strike",
+      "note": "SF: 6HP."
+    },
+    "f+3+4": {
+      "name": "Cyclone Wheel Kick",
+      "input": "f+3+4",
+      "t3_source": "sf6",
+      "sf_motion": "6HK",
+      "startup": 0.367,
+      "active": 0.117,
+      "recovery": 0.417,
+      "damage": 20,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.6,
+      "soulGain": 10,
+      "anim_ref": "sf6:zangief:cyclone_wheel_kick",
+      "input_slots": [
+        "f+3+4"
+      ],
+      "move_class": "strike",
+      "note": "SF: 6HK."
+    },
+    "df+3+4": {
+      "name": "Smetana Dropkick",
+      "input": "df+3+4",
+      "t3_source": "sf6",
+      "sf_motion": "3HK",
+      "startup": 0.267,
+      "active": 0.067,
+      "recovery": 0.667,
+      "damage": 20,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.6,
+      "soulGain": 10,
+      "anim_ref": "sf6:zangief:smetana_dropkick",
+      "input_slots": [
+        "df+3+4"
+      ],
+      "move_class": "strike",
+      "note": "SF: 3HK."
+    },
+    "d+3+4": {
+      "name": "Power Stomp",
+      "input": "d+3+4",
+      "t3_source": "sf6",
+      "sf_motion": "22MK",
+      "startup": 0.15,
+      "active": 0.05,
+      "recovery": 0.283,
+      "damage": 15,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "sf6:zangief:power_stomp",
+      "input_slots": [
+        "d+3+4"
+      ],
+      "move_class": "strike",
+      "note": "SF: 22MK."
+    },
+    "u,fc+1+2": {
+      "name": "Flying Body Press",
+      "input": "u,fc+1+2",
+      "t3_source": "sf6",
+      "sf_motion": "j.2HP",
+      "startup": 0.15,
+      "active": 0.15,
+      "recovery": 0.133,
+      "damage": 20,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.6,
+      "soulGain": 10,
+      "anim_ref": "sf6:zangief:flying_body_press",
+      "input_slots": [
+        "u,fc+1+2"
+      ],
+      "move_class": "strike",
+      "note": "SF: j.2HP. Cross-up body splash during forward jump."
+    },
+    "u+1+2 (neutral)": {
+      "name": "Flying Headbutt",
+      "input": "u+1+2 (neutral)",
+      "t3_source": "sf6",
+      "sf_motion": "j.8HP",
+      "startup": 0.133,
+      "active": 0.067,
+      "recovery": 0.05,
+      "damage": 20,
+      "limb": "head",
+      "heavy": true,
+      "knock": 2.6,
+      "soulGain": 10,
+      "anim_ref": "sf6:zangief:flying_headbutt",
+      "input_slots": [
+        "u+1+2 (neutral)"
+      ],
+      "move_class": "strike",
+      "note": "SF: j.8HP. Neutral jump rising headbutt."
+    },
+    "n+2,2": {
+      "name": "Machine Gun Chops 1",
+      "input": "n+2,2",
+      "t3_source": "sf6",
+      "sf_motion": "5MP~MP",
+      "startup": 0.15,
+      "active": 0.067,
+      "recovery": 0.333,
+      "damage": 18,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 9,
+      "anim_ref": "sf6:zangief:machine_gun_chops_1",
+      "input_slots": [
+        "n+2,2"
+      ],
+      "move_class": "strike",
+      "note": "SF: 5MP~MP."
+    },
+    "n+2,2,2": {
+      "name": "Machine Gun Chops 2",
+      "input": "n+2,2,2",
+      "t3_source": "sf6",
+      "sf_motion": "5MP~MP~MP",
+      "startup": 0.25,
+      "active": 0.05,
+      "recovery": 0.533,
+      "damage": 20,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.6,
+      "soulGain": 10,
+      "anim_ref": "sf6:zangief:machine_gun_chops_2",
+      "input_slots": [
+        "n+2,2,2"
+      ],
+      "move_class": "strike",
+      "note": "SF: 5MP~MP~MP."
+    },
+    "d+3+4,4": {
+      "name": "Power Stomps 2",
+      "input": "d+3+4,4",
+      "t3_source": "sf6",
+      "sf_motion": "22MK~MK",
+      "startup": 0.15,
+      "active": 0.05,
+      "recovery": 0.317,
+      "damage": 15,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "sf6:zangief:power_stomps_2",
+      "input_slots": [
+        "d+3+4,4"
+      ],
+      "move_class": "strike",
+      "note": "SF: 22MK~MK."
+    },
+    "d+3+4,4,4": {
+      "name": "Power Stomps 3",
+      "input": "d+3+4,4,4",
+      "t3_source": "sf6",
+      "sf_motion": "22MK~MK~MK",
+      "startup": 0.167,
+      "active": 0.05,
+      "recovery": 0.4,
+      "damage": 20,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 10,
+      "anim_ref": "sf6:zangief:power_stomps_3",
+      "input_slots": [
+        "d+3+4,4,4"
+      ],
+      "move_class": "strike",
+      "note": "SF: 22MK~MK~MK."
+    },
+    "1+3_sf": {
+      "name": "Bodyslam",
+      "input": "1+3_sf",
+      "t3_source": "sf6",
+      "sf_motion": "LPLK (neutral)",
+      "startup": 0.083,
+      "active": 0.05,
+      "recovery": 0.383,
+      "damage": 25,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "sf6:zangief:bodyslam",
+      "input_slots": [
+        "1+3"
+      ],
+      "move_class": "throw",
+      "note": "SF: LPLK (neutral). Neutral throw.",
+      "throw": true,
+      "throw_break": "1",
+      "isGrab": true,
+      "sf_input": "1+3"
+    },
+    "b+1+3": {
+      "name": "Capture Suplex",
+      "input": "b+1+3",
+      "t3_source": "sf6",
+      "sf_motion": "4LPLK",
+      "startup": 0.083,
+      "active": 0.05,
+      "recovery": 0.383,
+      "damage": 25,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "sf6:zangief:capture_suplex",
+      "input_slots": [
+        "b+1+3"
+      ],
+      "move_class": "throw",
+      "note": "SF: 4LPLK. Back throw.",
+      "throw": true,
+      "throw_break": "1",
+      "isGrab": true
+    },
+    "f+1+3": {
+      "name": "German Suplex",
+      "input": "f+1+3",
+      "t3_source": "sf6",
+      "sf_motion": "6LPLK",
+      "startup": 0.083,
+      "active": 0.05,
+      "recovery": 0.383,
+      "damage": 25,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "sf6:zangief:german_suplex",
+      "input_slots": [
+        "f+1+3"
+      ],
+      "move_class": "throw",
+      "note": "SF: 6LPLK. Forward throw.",
+      "throw": true,
+      "throw_break": "1",
+      "isGrab": true
+    },
+    "fc+1+3": {
+      "name": "Brain Buster",
+      "input": "fc+1+3",
+      "t3_source": "sf6",
+      "sf_motion": "2LPLK",
+      "startup": 0.083,
+      "active": 0.05,
+      "recovery": 0.383,
+      "damage": 25,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "sf6:zangief:brain_buster",
+      "input_slots": [
+        "fc+1+3"
+      ],
+      "move_class": "throw",
+      "note": "SF: 2LPLK. Crouching throw.",
+      "throw": true,
+      "throw_break": "1",
+      "isGrab": true
+    },
+    "fc,f+1+3": {
+      "name": "Spinebuster",
+      "input": "fc,f+1+3",
+      "t3_source": "sf6",
+      "sf_motion": "2LPLK (crouch forward)",
+      "startup": 0.083,
+      "active": 0.05,
+      "recovery": 0.383,
+      "damage": 25,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "sf6:zangief:spinebuster",
+      "input_slots": [
+        "fc,f+1+3"
+      ],
+      "move_class": "throw",
+      "note": "SF: 2LPLK (crouch forward). Crouching forward throw.",
+      "throw": true,
+      "throw_break": "1",
+      "isGrab": true
+    },
+    "fc,b+1+3": {
+      "name": "Russian Drop",
+      "input": "fc,b+1+3",
+      "t3_source": "sf6",
+      "sf_motion": "1LPLK (crouch back)",
+      "startup": 0.083,
+      "active": 0.05,
+      "recovery": 0.383,
+      "damage": 25,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "sf6:zangief:russian_drop",
+      "input_slots": [
+        "fc,b+1+3"
+      ],
+      "move_class": "throw",
+      "note": "SF: 1LPLK (crouch back). Crouching back throw.",
+      "throw": true,
+      "throw_break": "1",
+      "isGrab": true
+    },
+    "3+4_sf": {
+      "name": "Double Russian Chop",
+      "input": "3+4_sf",
+      "t3_source": "sf6",
+      "sf_motion": "HPHK (Drive Impact)",
+      "startup": 0.433,
+      "active": 0.033,
+      "recovery": 0.583,
+      "damage": 20,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.6,
+      "soulGain": 10,
+      "anim_ref": "sf6:zangief:double_russian_chop",
+      "input_slots": [
+        "3+4"
+      ],
+      "move_class": "strike",
+      "note": "SF: HPHK (Drive Impact). Drive Impact; 2-hit armor.",
+      "sf_input": "3+4"
+    },
+    "f,f": {
+      "name": "Drive Rush (66)",
+      "input": "f,f",
+      "t3_source": "sf6",
+      "sf_motion": "66 (from Drive Parry)",
+      "startup": 0.0,
+      "active": 0.0,
+      "recovery": 0.0,
+      "damage": 0,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 0,
+      "anim_ref": "sf6:zangief:drive_rush_66",
+      "input_slots": [
+        "f,f"
+      ],
+      "move_class": "stance",
+      "note": "SF: 66 (from Drive Parry). Universal Drive Rush dash."
+    },
+    "2+4_sf": {
+      "name": "Drive Parry",
+      "input": "2+4_sf",
+      "t3_source": "sf6",
+      "sf_motion": "MPMK",
+      "startup": 0.017,
+      "active": 0.2,
+      "recovery": 0.55,
+      "damage": 0,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 0,
+      "anim_ref": "sf6:zangief:drive_parry",
+      "input_slots": [
+        "2+4"
+      ],
+      "move_class": "parry",
+      "note": "SF: MPMK. Universal Drive Parry.",
+      "sf_input": "2+4"
+    },
+    "2+4,f,f": {
+      "name": "Parry Drive Rush",
+      "input": "2+4,f,f",
+      "t3_source": "sf6",
+      "sf_motion": "MPMK~66",
+      "startup": 0.05,
+      "active": 0.133,
+      "recovery": 0.0,
+      "damage": 0,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 0,
+      "anim_ref": "sf6:zangief:parry_drive_rush",
+      "input_slots": [
+        "2+4,f,f"
+      ],
+      "move_class": "stance",
+      "note": "SF: MPMK~66. Dash out of Drive Parry."
+    },
+    "f,f,b": {
+      "name": "Reverse Russian Kick (Drive Rush Block)",
+      "input": "f,f,b",
+      "t3_source": "sf6",
+      "sf_motion": "66 (block)",
+      "startup": 0.333,
+      "active": 0.05,
+      "recovery": 0.433,
+      "damage": 0,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 0,
+      "anim_ref": "sf6:zangief:reverse_russian_kick_drive_rush_block",
+      "input_slots": [
+        "f,f,b"
+      ],
+      "move_class": "stance",
+      "note": "SF: 66 (block). Drive Rush canceled into block."
+    },
+    "f,f,db": {
+      "name": "Reverse Russian Kick (Drive Rush Recovery)",
+      "input": "f,f,db",
+      "t3_source": "sf6",
+      "sf_motion": "66 (recovery)",
+      "startup": 0.3,
+      "active": 0.05,
+      "recovery": 0.433,
+      "damage": 0,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 0,
+      "anim_ref": "sf6:zangief:reverse_russian_kick_drive_rush_recovery",
+      "input_slots": [
+        "f,f,db"
+      ],
+      "move_class": "stance",
+      "note": "SF: 66 (recovery). Drive Rush canceled into recovery."
+    },
+    "1+2_sf": {
+      "name": "Double Lariat",
+      "input": "1+2_sf",
+      "t3_source": "sf6",
+      "sf_motion": "PP (all punches)",
+      "startup": 0.25,
+      "active": 0.2,
+      "recovery": 0.45,
+      "damage": 25,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 3.4,
+      "soulGain": 12,
+      "anim_ref": "sf6:zangief:double_lariat",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "special",
+      "note": "SF: PP (all punches). Spinning lariat; upper-body invuln, passes fireballs.",
+      "sf_input": "1+2"
+    },
+    "1+2_od": {
+      "name": "Double Lariat (OD)",
+      "input": "1+2_od",
+      "t3_source": "sf6",
+      "sf_motion": "PP (OD)",
+      "startup": 0.2,
+      "active": 0.2,
+      "recovery": 0.433,
+      "damage": 25,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 3.4,
+      "soulGain": 12,
+      "anim_ref": "sf6:zangief:double_lariat_od",
+      "input_slots": [
+        "1+2_od"
+      ],
+      "move_class": "special",
+      "note": "SF: PP (OD)."
+    },
+    "spd_lp": {
+      "name": "Spinning Piledriver (LP)",
+      "input": "spd_lp",
+      "t3_source": "sf6",
+      "sf_motion": "360+LP",
+      "startup": 0.083,
+      "active": 0.05,
+      "recovery": 0.9,
+      "damage": 25,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "sf6:zangief:spinning_piledriver_lp",
+      "input_slots": [
+        "spd_lp"
+      ],
+      "move_class": "throw",
+      "note": "SF: 360+LP. 360 command grab.",
+      "throw": true,
+      "throw_break": "1",
+      "unblockable": true,
+      "isGrab": true
+    },
+    "spd_mp": {
+      "name": "Spinning Piledriver (MP)",
+      "input": "spd_mp",
+      "t3_source": "sf6",
+      "sf_motion": "360+MP",
+      "startup": 0.083,
+      "active": 0.05,
+      "recovery": 0.9,
+      "damage": 25,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "sf6:zangief:spinning_piledriver_mp",
+      "input_slots": [
+        "spd_mp"
+      ],
+      "move_class": "throw",
+      "note": "SF: 360+MP.",
+      "throw": true,
+      "throw_break": "2",
+      "unblockable": true,
+      "isGrab": true
+    },
+    "spd_hp": {
+      "name": "Spinning Piledriver (HP)",
+      "input": "spd_hp",
+      "t3_source": "sf6",
+      "sf_motion": "360+HP",
+      "startup": 0.083,
+      "active": 0.05,
+      "recovery": 0.9,
+      "damage": 25,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "sf6:zangief:spinning_piledriver_hp",
+      "input_slots": [
+        "spd_hp"
+      ],
+      "move_class": "throw",
+      "note": "SF: 360+HP.",
+      "throw": true,
+      "throw_break": "1+2",
+      "unblockable": true,
+      "isGrab": true
+    },
+    "spd_od": {
+      "name": "Spinning Piledriver (OD)",
+      "input": "spd_od",
+      "t3_source": "sf6",
+      "sf_motion": "360+PP (OD)",
+      "startup": 0.083,
+      "active": 0.05,
+      "recovery": 0.9,
+      "damage": 25,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "sf6:zangief:spinning_piledriver_od",
+      "input_slots": [
+        "spd_od"
+      ],
+      "move_class": "throw",
+      "note": "SF: 360+PP (OD).",
+      "throw": true,
+      "throw_break": "1+2",
+      "unblockable": true,
+      "isGrab": true
+    },
+    "spd_air": {
+      "name": "Borscht Dynamite",
+      "input": "spd_air",
+      "t3_source": "sf6",
+      "sf_motion": "j.360+K",
+      "startup": 0.067,
+      "active": 0.05,
+      "recovery": 0.617,
+      "damage": 25,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "sf6:zangief:borscht_dynamite",
+      "input_slots": [
+        "spd_air"
+      ],
+      "move_class": "throw",
+      "note": "SF: j.360+K. Air 360 command grab.",
+      "throw": true,
+      "throw_break": "1+2",
+      "unblockable": true,
+      "isGrab": true
+    },
+    "spd_air_od": {
+      "name": "Borscht Dynamite (OD)",
+      "input": "spd_air_od",
+      "t3_source": "sf6",
+      "sf_motion": "j.360+KK (OD)",
+      "startup": 0.067,
+      "active": 0.05,
+      "recovery": 0.617,
+      "damage": 25,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "sf6:zangief:borscht_dynamite_od",
+      "input_slots": [
+        "spd_air_od"
+      ],
+      "move_class": "throw",
+      "note": "SF: j.360+KK (OD).",
+      "throw": true,
+      "throw_break": "1+2",
+      "unblockable": true,
+      "isGrab": true
+    },
+    "spd_close": {
+      "name": "Russian Suplex",
+      "input": "spd_close",
+      "t3_source": "sf6",
+      "sf_motion": "360+K (close)",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.833,
+      "damage": 25,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "sf6:zangief:russian_suplex",
+      "input_slots": [
+        "spd_close"
+      ],
+      "move_class": "throw",
+      "note": "SF: 360+K (close). Running bear grab, close range.",
+      "throw": true,
+      "throw_break": "1+2",
+      "unblockable": true,
+      "isGrab": true
+    },
+    "spd_close_od": {
+      "name": "Russian Suplex (OD)",
+      "input": "spd_close_od",
+      "t3_source": "sf6",
+      "sf_motion": "360+KK (close, OD)",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.833,
+      "damage": 25,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "sf6:zangief:russian_suplex_od",
+      "input_slots": [
+        "spd_close_od"
+      ],
+      "move_class": "throw",
+      "note": "SF: 360+KK (close, OD).",
+      "throw": true,
+      "throw_break": "1+2",
+      "unblockable": true,
+      "isGrab": true
+    },
+    "spd_mid": {
+      "name": "Siberian Express (Mid)",
+      "input": "spd_mid",
+      "t3_source": "sf6",
+      "sf_motion": "360+K (mid)",
+      "startup": 0.467,
+      "active": 0.033,
+      "recovery": 0.683,
+      "damage": 25,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "sf6:zangief:siberian_express_mid",
+      "input_slots": [
+        "spd_mid"
+      ],
+      "move_class": "throw",
+      "note": "SF: 360+K (mid). Running bear grab, mid range.",
+      "throw": true,
+      "throw_break": "1+2",
+      "unblockable": true,
+      "isGrab": true
+    },
+    "spd_mid_od": {
+      "name": "Siberian Express (Mid) (OD)",
+      "input": "spd_mid_od",
+      "t3_source": "sf6",
+      "sf_motion": "360+KK (mid, OD)",
+      "startup": 0.383,
+      "active": 0.033,
+      "recovery": 0.733,
+      "damage": 25,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "sf6:zangief:siberian_express_mid_od",
+      "input_slots": [
+        "spd_mid_od"
+      ],
+      "move_class": "throw",
+      "note": "SF: 360+KK (mid, OD).",
+      "throw": true,
+      "throw_break": "1+2",
+      "unblockable": true,
+      "isGrab": true
+    },
+    "spd_far": {
+      "name": "Siberian Express (Far)",
+      "input": "spd_far",
+      "t3_source": "sf6",
+      "sf_motion": "360+K (far)",
+      "startup": 0.917,
+      "active": 0.033,
+      "recovery": 0.667,
+      "damage": 25,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "sf6:zangief:siberian_express_far",
+      "input_slots": [
+        "spd_far"
+      ],
+      "move_class": "throw",
+      "note": "SF: 360+K (far). Running bear grab, far range.",
+      "throw": true,
+      "throw_break": "1+2",
+      "unblockable": true,
+      "isGrab": true
+    },
+    "spd_far_od": {
+      "name": "Siberian Express (Far) (OD)",
+      "input": "spd_far_od",
+      "t3_source": "sf6",
+      "sf_motion": "360+KK (far, OD)",
+      "startup": 0.9,
+      "active": 0.033,
+      "recovery": 0.667,
+      "damage": 25,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "sf6:zangief:siberian_express_far_od",
+      "input_slots": [
+        "spd_far_od"
+      ],
+      "move_class": "throw",
+      "note": "SF: 360+KK (far, OD).",
+      "throw": true,
+      "throw_break": "1+2",
+      "unblockable": true,
+      "isGrab": true
+    },
+    "tundra_storm": {
+      "name": "Tundra Storm",
+      "input": "tundra_storm",
+      "t3_source": "sf6",
+      "sf_motion": "623+KKK",
+      "startup": 0.1,
+      "active": 0.833,
+      "recovery": 0.4,
+      "damage": 25,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "sf6:zangief:tundra_storm",
+      "input_slots": [
+        "tundra_storm"
+      ],
+      "move_class": "throw",
+      "note": "SF: 623+KKK. Anti-air kick counter grab.",
+      "throw": true,
+      "throw_break": "1+2",
+      "unblockable": true,
+      "isGrab": true
+    },
+    "qcf,qcf+1": {
+      "name": "Aerial Russian Slam",
+      "input": "qcf,qcf+1",
+      "t3_source": "sf6",
+      "sf_motion": "236236P (SA1, air OK)",
+      "startup": 0.183,
+      "active": 0.117,
+      "recovery": 1.0,
+      "damage": 40,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 7.0,
+      "soulGain": 15,
+      "anim_ref": "sf6:zangief:aerial_russian_slam",
+      "input_slots": [
+        "qcf,qcf+1"
+      ],
+      "move_class": "super",
+      "note": "SF: 236236P (SA1, air OK). SA1; anti-air slam."
+    },
+    "qcb,qcb+1": {
+      "name": "Cyclone Lariat",
+      "input": "qcb,qcb+1",
+      "t3_source": "sf6",
+      "sf_motion": "214214P (SA2)",
+      "startup": 0.3,
+      "active": 1.7,
+      "recovery": 0.867,
+      "damage": 40,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 7.0,
+      "soulGain": 15,
+      "anim_ref": "sf6:zangief:cyclone_lariat",
+      "input_slots": [
+        "qcb,qcb+1"
+      ],
+      "move_class": "super",
+      "note": "SF: 214214P (SA2). SA2; spinning lariat install-attack."
+    },
+    "qcb,qcb+1 (hold)": {
+      "name": "Cyclone Lariat (Hold)",
+      "input": "qcb,qcb+1 (hold)",
+      "t3_source": "sf6",
+      "sf_motion": "214214P (SA2, hold)",
+      "startup": 0.3,
+      "active": 1.75,
+      "recovery": 0.417,
+      "damage": 33,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 7.0,
+      "soulGain": 15,
+      "anim_ref": "sf6:zangief:cyclone_lariat_hold",
+      "input_slots": [
+        "qcb,qcb+1 (hold)"
+      ],
+      "move_class": "super",
+      "note": "SF: 214214P (SA2, hold)."
+    },
+    "spd_720": {
+      "name": "Bolshoi Storm Buster",
+      "input": "spd_720",
+      "t3_source": "sf6",
+      "sf_motion": "720+P (SA3)",
+      "startup": 0.1,
+      "active": 0.033,
+      "recovery": 1.933,
+      "damage": 25,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "sf6:zangief:bolshoi_storm_buster",
+      "input_slots": [
+        "spd_720"
+      ],
+      "move_class": "throw",
+      "note": "SF: 720+P (SA3). SA3; full-circle command grab.",
+      "throw": true,
+      "throw_break": "1+2",
+      "unblockable": true,
+      "isGrab": true
+    },
+    "spd_720_ca": {
+      "name": "Bolshoi Storm Buster (CA)",
+      "input": "spd_720_ca",
+      "t3_source": "sf6",
+      "sf_motion": "720+P (CA)",
+      "startup": 0.1,
+      "active": 0.033,
+      "recovery": 1.933,
+      "damage": 25,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "sf6:zangief:bolshoi_storm_buster_ca",
+      "input_slots": [
+        "spd_720_ca"
+      ],
+      "move_class": "throw",
+      "note": "SF: 720+P (CA). Critical Art version at 25% HP or below.",
+      "throw": true,
+      "throw_break": "1+2",
+      "unblockable": true,
+      "isGrab": true
+    },
+    "1+2+3+4": {
+      "name": "Taunt (Neutral)",
+      "input": "1+2+3+4",
+      "t3_source": "sf6",
+      "sf_motion": "5PPPKKK",
+      "startup": 0.0,
+      "active": 0.0,
+      "recovery": 3.233,
+      "damage": 0,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 0,
+      "anim_ref": "sf6:zangief:taunt_neutral",
+      "input_slots": [
+        "1+2+3+4"
+      ],
+      "move_class": "stance",
+      "note": "SF: 5PPPKKK."
+    },
+    "f+1+2+3+4": {
+      "name": "Taunt (Forward)",
+      "input": "f+1+2+3+4",
+      "t3_source": "sf6",
+      "sf_motion": "6PPPKKK",
+      "startup": 0.0,
+      "active": 0.0,
+      "recovery": 3.783,
+      "damage": 0,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 0,
+      "anim_ref": "sf6:zangief:taunt_forward",
+      "input_slots": [
+        "f+1+2+3+4"
+      ],
+      "move_class": "stance",
+      "note": "SF: 6PPPKKK."
+    },
+    "b+1+2+3+4": {
+      "name": "Taunt (Back)",
+      "input": "b+1+2+3+4",
+      "t3_source": "sf6",
+      "sf_motion": "4PPPKKK",
+      "startup": 0.0,
+      "active": 0.0,
+      "recovery": 3.367,
+      "damage": 0,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 0,
+      "anim_ref": "sf6:zangief:taunt_back",
+      "input_slots": [
+        "b+1+2+3+4"
+      ],
+      "move_class": "stance",
+      "note": "SF: 4PPPKKK."
+    },
+    "d+1+2+3+4": {
+      "name": "Taunt (Down)",
+      "input": "d+1+2+3+4",
+      "t3_source": "sf6",
+      "sf_motion": "2PPPKKK",
+      "startup": 0.0,
+      "active": 0.0,
+      "recovery": 3.5,
+      "damage": 0,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 0,
+      "anim_ref": "sf6:zangief:taunt_down",
+      "input_slots": [
+        "d+1+2+3+4"
+      ],
+      "move_class": "stance",
+      "note": "SF: 2PPPKKK."
+    },
+    "2+4 (tap)": {
+      "name": "Iron Muscle (tap)",
+      "input": "2+4 (tap)",
+      "t3_source": "sfv",
+      "sf_motion": "MPMK (V-Skill 1, tap)",
+      "startup": 0.017,
+      "active": 0.25,
+      "recovery": 0.167,
+      "damage": 0,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 0,
+      "anim_ref": "sfv:zangief:iron_muscle_tap",
+      "input_slots": [
+        "2+4 (tap)"
+      ],
+      "move_class": "stance",
+      "note": "SF: MPMK (V-Skill 1, tap). Armor flex; 2 hits of armor."
+    },
+    "2+4 (hold)": {
+      "name": "Iron Muscle (hold)",
+      "input": "2+4 (hold)",
+      "t3_source": "sfv",
+      "sf_motion": "MPMK (V-Skill 1, hold)",
+      "startup": 0.017,
+      "active": 0.817,
+      "recovery": 0.25,
+      "damage": 15,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "sfv:zangief:iron_muscle_hold",
+      "input_slots": [
+        "2+4 (hold)"
+      ],
+      "move_class": "strike",
+      "note": "SF: MPMK (V-Skill 1, hold). Armored flex walk."
+    },
+    "2+4 (release)": {
+      "name": "Iron Muscle (release)",
+      "input": "2+4 (release)",
+      "t3_source": "sfv",
+      "sf_motion": "MPMK (V-Skill 1, release)",
+      "startup": 0.15,
+      "active": 0.083,
+      "recovery": 0.25,
+      "damage": 15,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "sfv:zangief:iron_muscle_release",
+      "input_slots": [
+        "2+4 (release)"
+      ],
+      "move_class": "strike",
+      "note": "SF: MPMK (V-Skill 1, release). Flex follow-up body blow."
+    },
+    "2+4 (backdash)": {
+      "name": "Iron Muscle (backdash)",
+      "input": "2+4 (backdash)",
+      "t3_source": "sfv",
+      "sf_motion": "MPMK (V-Skill 1, backdash)",
+      "startup": 0.0,
+      "active": 0.0,
+      "recovery": 0.417,
+      "damage": 0,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 0,
+      "anim_ref": "sfv:zangief:iron_muscle_backdash",
+      "input_slots": [
+        "2+4 (backdash)"
+      ],
+      "move_class": "movement",
+      "note": "SF: MPMK (V-Skill 1, backdash). Cancel flex into backdash."
+    },
+    "2+4 (vs2)": {
+      "name": "Super Russian Kick",
+      "input": "2+4 (vs2)",
+      "t3_source": "sfv",
+      "sf_motion": "MPMK (V-Skill 2)",
+      "startup": 0.55,
+      "active": 0.117,
+      "recovery": 0.283,
+      "damage": 20,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 10,
+      "anim_ref": "sfv:zangief:super_russian_kick",
+      "input_slots": [
+        "2+4 (vs2)"
+      ],
+      "move_class": "strike",
+      "note": "SF: MPMK (V-Skill 2). Armored charging kick."
+    },
+    "2+4 (vs2, hold)": {
+      "name": "Super Russian Kick (hold)",
+      "input": "2+4 (vs2, hold)",
+      "t3_source": "sfv",
+      "sf_motion": "MPMK (V-Skill 2, hold)",
+      "startup": 1.633,
+      "active": 0.117,
+      "recovery": 0.35,
+      "damage": 20,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.6,
+      "soulGain": 10,
+      "anim_ref": "sfv:zangief:super_russian_kick_hold",
+      "input_slots": [
+        "2+4 (vs2, hold)"
+      ],
+      "move_class": "strike",
+      "note": "SF: MPMK (V-Skill 2, hold). Charged version wall-bounces; guard break on block."
+    },
+    "3+4 (cyclone1)": {
+      "name": "Cyclone Lariat (V-Trigger 1)",
+      "input": "3+4 (cyclone1)",
+      "t3_source": "sfv",
+      "sf_motion": "HPHK (V-Trigger 1, tap)",
+      "startup": 0.15,
+      "active": 0.317,
+      "recovery": 0.267,
+      "damage": 0,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 0,
+      "anim_ref": "sfv:zangief:cyclone_lariat_v_trigger_1",
+      "input_slots": [
+        "3+4 (cyclone1)"
+      ],
+      "move_class": "stance",
+      "note": "SF: HPHK (V-Trigger 1, tap). VT1 install; suction spin."
+    },
+    "3+4 (cyclone2)": {
+      "name": "Cyclone Lariat (lvl 2)",
+      "input": "3+4 (cyclone2)",
+      "t3_source": "sfv",
+      "sf_motion": "HPHK (V-Trigger 1, brief hold)",
+      "startup": 0.15,
+      "active": 0.333,
+      "recovery": 0.0,
+      "damage": 25,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 3.4,
+      "soulGain": 12,
+      "anim_ref": "sfv:zangief:cyclone_lariat_lvl_2",
+      "input_slots": [
+        "3+4 (cyclone2)"
+      ],
+      "move_class": "special",
+      "note": "SF: HPHK (V-Trigger 1, brief hold). Multi-hit spinning lariat.",
+      "multi_hit": {
+        "hits": [
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "total": 25
+      }
+    },
+    "3+4 (cyclone3)": {
+      "name": "Cyclone Lariat (lvl 3)",
+      "input": "3+4 (cyclone3)",
+      "t3_source": "sfv",
+      "sf_motion": "HPHK (V-Trigger 1, hold)",
+      "startup": 0.15,
+      "active": 0.667,
+      "recovery": 0.433,
+      "damage": 25,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 3.4,
+      "soulGain": 12,
+      "anim_ref": "sfv:zangief:cyclone_lariat_lvl_3",
+      "input_slots": [
+        "3+4 (cyclone3)"
+      ],
+      "move_class": "special",
+      "note": "SF: HPHK (V-Trigger 1, hold). Full-charge spinning lariat.",
+      "multi_hit": {
+        "hits": [
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6
+        ],
+        "total": 25
+      }
+    },
+    "3+4 (vt2)": {
+      "name": "Cossack Muscle",
+      "input": "3+4 (vt2)",
+      "t3_source": "sfv",
+      "sf_motion": "HPHK (V-Trigger 2)",
+      "startup": 0.017,
+      "active": 0.0,
+      "recovery": 0.067,
+      "damage": 0,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 0,
+      "anim_ref": "sfv:zangief:cossack_muscle",
+      "input_slots": [
+        "3+4 (vt2)"
+      ],
+      "move_class": "stance",
+      "note": "SF: HPHK (V-Trigger 2). VT2 install; powers up SPD and Borscht Dynamite."
+    },
+    "f+3+4 (vrev)": {
+      "name": "Muscle Explosion",
+      "input": "f+3+4 (vrev)",
+      "t3_source": "sfv",
+      "sf_motion": "6KKK (V-Reversal)",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.4,
+      "damage": 12,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 3.4,
+      "soulGain": 6,
+      "anim_ref": "sfv:zangief:muscle_explosion",
+      "input_slots": [
+        "f+3+4 (vrev)"
+      ],
+      "move_class": "special",
+      "note": "SF: 6KKK (V-Reversal). V-Reversal body blow."
+    },
+    "3+4 (vshift)": {
+      "name": "V-Shift",
+      "input": "3+4 (vshift)",
+      "t3_source": "sfv",
+      "sf_motion": "5MKHP",
+      "startup": 0.017,
+      "active": 0.15,
+      "recovery": 0.367,
+      "damage": 0,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 0,
+      "anim_ref": "sfv:zangief:v_shift",
+      "input_slots": [
+        "3+4 (vshift)"
+      ],
+      "move_class": "stance",
+      "note": "SF: 5MKHP. Universal V-Shift evasive backstep."
+    },
+    "3+4 (vshift, break)": {
+      "name": "Colossal Boot",
+      "input": "3+4 (vshift, break)",
+      "t3_source": "sfv",
+      "sf_motion": "5MKHP (V-Shift Break)",
+      "startup": 0.167,
+      "active": 0.05,
+      "recovery": 0.333,
+      "damage": 18,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 3.4,
+      "soulGain": 9,
+      "anim_ref": "sfv:zangief:colossal_boot",
+      "input_slots": [
+        "3+4 (vshift, break)"
+      ],
+      "move_class": "special",
+      "note": "SF: 5MKHP (V-Shift Break). V-Shift Break counter kick."
+    },
+    "spd_720x2": {
+      "name": "Bolshoi Russian Suplex",
+      "input": "spd_720x2",
+      "t3_source": "sfv",
+      "sf_motion": "42684268P (Critical Art)",
+      "startup": 0.017,
+      "active": 0.033,
+      "recovery": 1.083,
+      "damage": 25,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "sfv:zangief:bolshoi_russian_suplex",
+      "input_slots": [
+        "spd_720x2"
+      ],
+      "move_class": "throw",
+      "note": "SF: 42684268P (Critical Art). SFV Critical Art; double-360 command grab.",
+      "throw": true,
+      "throw_break": "1+2",
+      "unblockable": true,
+      "isGrab": true
+    },
+    "1+3 (sfv)": {
+      "name": "Atomic Drop",
+      "input": "1+3 (sfv)",
+      "t3_source": "sfv",
+      "sf_motion": "LPLK (SFV)",
+      "startup": 0.083,
+      "active": 0.05,
+      "recovery": 0.283,
+      "damage": 25,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "sfv:zangief:atomic_drop",
+      "input_slots": [
+        "1+3 (sfv)"
+      ],
+      "move_class": "throw",
+      "note": "SF: LPLK (SFV). SFV forward throw.",
+      "throw": true,
+      "throw_break": "1",
+      "isGrab": true
+    },
+    "b+1+3 (sfv)": {
+      "name": "Captured",
+      "input": "b+1+3 (sfv)",
+      "t3_source": "sfv",
+      "sf_motion": "4LPLK (SFV)",
+      "startup": 0.083,
+      "active": 0.05,
+      "recovery": 0.283,
+      "damage": 25,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "sfv:zangief:captured",
+      "input_slots": [
+        "b+1+3 (sfv)"
+      ],
+      "move_class": "throw",
+      "note": "SF: 4LPLK (SFV). SFV back throw.",
+      "throw": true,
+      "throw_break": "1",
+      "isGrab": true
+    },
+    "spd_lp_vt2": {
+      "name": "Screw Pile Driver (LP, VT2)",
+      "input": "spd_lp_vt2",
+      "t3_source": "sfv",
+      "sf_motion": "4268LP (V-Trigger 2)",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 1.0,
+      "damage": 25,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "sfv:zangief:screw_pile_driver_lp_vt2",
+      "input_slots": [
+        "spd_lp_vt2"
+      ],
+      "move_class": "throw",
+      "note": "SF: 4268LP (V-Trigger 2). Cossack Muscle powered SPD.",
+      "throw": true,
+      "throw_break": "1",
+      "unblockable": true,
+      "isGrab": true
+    },
+    "spd_mp_vt2": {
+      "name": "Screw Pile Driver (MP, VT2)",
+      "input": "spd_mp_vt2",
+      "t3_source": "sfv",
+      "sf_motion": "4268MP (V-Trigger 2)",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 1.0,
+      "damage": 25,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "sfv:zangief:screw_pile_driver_mp_vt2",
+      "input_slots": [
+        "spd_mp_vt2"
+      ],
+      "move_class": "throw",
+      "note": "SF: 4268MP (V-Trigger 2).",
+      "throw": true,
+      "throw_break": "2",
+      "unblockable": true,
+      "isGrab": true
+    },
+    "spd_hp_vt2": {
+      "name": "Screw Pile Driver (HP, VT2)",
+      "input": "spd_hp_vt2",
+      "t3_source": "sfv",
+      "sf_motion": "4268HP (V-Trigger 2)",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 1.0,
+      "damage": 25,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "sfv:zangief:screw_pile_driver_hp_vt2",
+      "input_slots": [
+        "spd_hp_vt2"
+      ],
+      "move_class": "throw",
+      "note": "SF: 4268HP (V-Trigger 2).",
+      "throw": true,
+      "throw_break": "1+2",
+      "unblockable": true,
+      "isGrab": true
+    },
+    "spd_od_vt2": {
+      "name": "Screw Pile Driver (EX, VT2)",
+      "input": "spd_od_vt2",
+      "t3_source": "sfv",
+      "sf_motion": "4268PP (V-Trigger 2)",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 1.0,
+      "damage": 25,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "sfv:zangief:screw_pile_driver_ex_vt2",
+      "input_slots": [
+        "spd_od_vt2"
+      ],
+      "move_class": "throw",
+      "note": "SF: 4268PP (V-Trigger 2).",
+      "throw": true,
+      "throw_break": "1+2",
+      "unblockable": true,
+      "isGrab": true
+    },
+    "spd_air_lp_vt2": {
+      "name": "Borscht Dynamite (LP, VT2)",
+      "input": "spd_air_lp_vt2",
+      "t3_source": "sfv",
+      "sf_motion": "4268LP (air, V-Trigger 2)",
+      "startup": 0.05,
+      "active": 0.067,
+      "recovery": 0.2,
+      "damage": 25,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "sfv:zangief:borscht_dynamite_lp_vt2",
+      "input_slots": [
+        "spd_air_lp_vt2"
+      ],
+      "move_class": "throw",
+      "note": "SF: 4268LP (air, V-Trigger 2).",
+      "throw": true,
+      "throw_break": "1+2",
+      "unblockable": true,
+      "isGrab": true
+    },
+    "spd_air_mp_vt2": {
+      "name": "Borscht Dynamite (MP, VT2)",
+      "input": "spd_air_mp_vt2",
+      "t3_source": "sfv",
+      "sf_motion": "4268MP (air, V-Trigger 2)",
+      "startup": 0.05,
+      "active": 0.067,
+      "recovery": 0.2,
+      "damage": 25,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "sfv:zangief:borscht_dynamite_mp_vt2",
+      "input_slots": [
+        "spd_air_mp_vt2"
+      ],
+      "move_class": "throw",
+      "note": "SF: 4268MP (air, V-Trigger 2).",
+      "throw": true,
+      "throw_break": "1+2",
+      "unblockable": true,
+      "isGrab": true
+    },
+    "spd_air_hp_vt2": {
+      "name": "Borscht Dynamite (HP, VT2)",
+      "input": "spd_air_hp_vt2",
+      "t3_source": "sfv",
+      "sf_motion": "4268HP (air, V-Trigger 2)",
+      "startup": 0.05,
+      "active": 0.067,
+      "recovery": 0.2,
+      "damage": 25,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "sfv:zangief:borscht_dynamite_hp_vt2",
+      "input_slots": [
+        "spd_air_hp_vt2"
+      ],
+      "move_class": "throw",
+      "note": "SF: 4268HP (air, V-Trigger 2).",
+      "throw": true,
+      "throw_break": "1+2",
+      "unblockable": true,
+      "isGrab": true
+    },
+    "spd_air_od_vt2": {
+      "name": "Borscht Dynamite (EX, VT2)",
+      "input": "spd_air_od_vt2",
+      "t3_source": "sfv",
+      "sf_motion": "4268PP (air, V-Trigger 2)",
+      "startup": 0.05,
+      "active": 0.067,
+      "recovery": 0.2,
+      "damage": 25,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "sfv:zangief:borscht_dynamite_ex_vt2",
+      "input_slots": [
+        "spd_air_od_vt2"
+      ],
+      "move_class": "throw",
+      "note": "SF: 4268PP (air, V-Trigger 2).",
+      "throw": true,
+      "throw_break": "1+2",
+      "unblockable": true,
+      "isGrab": true
+    }
+  },
+  "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
+  "schema_version": 2,
+  "strings": [],
+  "t3_bank": "moveset_king.json",
+  "t3_bank_rows": 652,
+  "t3_bank_attack_rows": 145,
+  "generated_full_moveset": {
+    "by": "tools/gen-movesets-t3.py",
+    "date": "2026-10-20",
+    "note": "Full T3 bank depth merged over curated base; curated moves preserved verbatim. Largest T3 bank (652 rows, 218 attacks)."
+  },
+  "specials": [
+    {
+      "input": "1+3",
+      "damage": 25,
+      "throw": true
+    },
+    {
+      "input": "b+1+3",
+      "damage": 25,
+      "throw": true
+    },
+    {
+      "input": "f+1+3",
+      "damage": 25,
+      "throw": true
+    },
+    {
+      "input": "fc+1+3",
+      "damage": 25,
+      "throw": true
+    },
+    {
+      "input": "fc,f+1+3",
+      "damage": 25,
+      "throw": true
+    },
+    {
+      "input": "fc,b+1+3",
+      "damage": 25,
+      "throw": true
+    },
+    {
+      "input": "spd_lp",
+      "damage": 25,
+      "throw": true
+    },
+    {
+      "input": "spd_mp",
+      "damage": 25,
+      "throw": true
+    },
+    {
+      "input": "spd_hp",
+      "damage": 25,
+      "throw": true
+    },
+    {
+      "input": "spd_od",
+      "damage": 25,
+      "throw": true
+    },
+    {
+      "input": "spd_air",
+      "damage": 25,
+      "throw": true
+    },
+    {
+      "input": "spd_air_od",
+      "damage": 25,
+      "throw": true
+    },
+    {
+      "input": "spd_close",
+      "damage": 25,
+      "throw": true
+    },
+    {
+      "input": "spd_close_od",
+      "damage": 25,
+      "throw": true
+    },
+    {
+      "input": "spd_mid",
+      "damage": 25,
+      "throw": true
+    },
+    {
+      "input": "spd_mid_od",
+      "damage": 25,
+      "throw": true
+    },
+    {
+      "input": "spd_far",
+      "damage": 25,
+      "throw": true
+    },
+    {
+      "input": "spd_far_od",
+      "damage": 25,
+      "throw": true
+    },
+    {
+      "input": "tundra_storm",
+      "damage": 25,
+      "throw": true
+    },
+    {
+      "input": "spd_720",
+      "damage": 25,
+      "throw": true
+    },
+    {
+      "input": "spd_720_ca",
+      "damage": 25,
+      "throw": true
+    },
+    {
+      "input": "spd_720x2",
+      "damage": 25,
+      "throw": true
+    },
+    {
+      "input": "1+3 (sfv)",
+      "damage": 25,
+      "throw": true
+    },
+    {
+      "input": "b+1+3 (sfv)",
+      "damage": 25,
+      "throw": true
+    },
+    {
+      "input": "spd_lp_vt2",
+      "damage": 25,
+      "throw": true
+    },
+    {
+      "input": "spd_mp_vt2",
+      "damage": 25,
+      "throw": true
+    },
+    {
+      "input": "spd_hp_vt2",
+      "damage": 25,
+      "throw": true
+    },
+    {
+      "input": "spd_od_vt2",
+      "damage": 25,
+      "throw": true
+    },
+    {
+      "input": "spd_air_lp_vt2",
+      "damage": 25,
+      "throw": true
+    },
+    {
+      "input": "spd_air_mp_vt2",
+      "damage": 25,
+      "throw": true
+    },
+    {
+      "input": "spd_air_hp_vt2",
+      "damage": 25,
+      "throw": true
+    },
+    {
+      "input": "spd_air_od_vt2",
+      "damage": 25,
+      "throw": true
+    }
+  ],
+  "canon_note": "Full Zangief SF6 set (supercombo.gg) + SFV V-System/CA extras (supercombo.gg) added 2026-10-19 under the FULL MOVESET LAW; SF motion inputs converted to Tekken notation, original motion kept in note/sf_motion. SF6 damage x0.03, SFV damage x0.3 (1000-HP scale), frames /60.",
+  "forward_merge": {
+    "date": "2026-10-20",
+    "pr": 363,
+    "action": "Forward-merge: origin/main merged into sf/full-100plus-20261019. Movesets unioned semantically - every move from BOTH sides preserved; different moves colliding on one input key keep main's entry at the input key and the branch SF move under a \"<input>_sf\" key (sf_input records the original input).",
+    "branch_moves": 104,
+    "main_moves": 125,
+    "merged_moves": 217,
+    "rekeyed_collisions": [
+      "1+3->1+3_sf",
+      "3+4->3+4_sf",
+      "2+4->2+4_sf",
+      "1+2->1+2_sf"
+    ],
+    "branch_proxy_note": "Zangief (SF) has no T3 bank - King proxy (grappler). WH name pending owner pick from INTAKE-PROPOSAL.md."
+  }
+}

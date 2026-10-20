@@ -46,15 +46,31 @@ Mode-by-mode fidelity notes below; "WIRED" = implemented in `game/js/modes.js`.
   (fighters remaining per side). Team pick flow: the mode controller
   collects 3 picks from the select screen before starting.
 
-## 4. TEKKEN FORCE (T3) / DEVIL WITHIN (T5) — DOCUMENTED, NOT WIRED
+## 4. TEKKEN FORCE (T3) / DEVIL WITHIN (T5) — WIRED (2026-10-19, Stream 4)
 - **Rules:** A short beat-'em-up: 4 stages (T3) of side-scrolling brawling
   against waves of Tekken Force soldiers with a boss at the end of each
-  stage. T5's Devil Within is the same idea with a third-person camera.
-- **Why not wired:** our engine is a 1v1 versus fighter — a beat-'em-up
-  needs multi-attacker targeting, walk-plane depth movement, and pickup
-  items. That is a whole new engine subsystem, not a mode. Honest gap:
-  revisit when (if) a brawler subsystem exists. The closest wired
-  equivalents are SURVIVAL and IMMORTAL QOMBAT (endless waves, 1v1).
+  stage. T5's Devil Within is the same idea with a third-person camera:
+  5 stages, enemy groups, door/key puzzles, stage bosses, and the Devil
+  Gene meter (transform at full meter — more power, costs health).
+- **WH wiring — "THE HEART AND MIND INSIDE" (owner-locked name):**
+  clone-then-proprietize. The skeleton is Devil Within's (5 stages →
+  enemy waves → stage boss, transform meter); the flesh is Western Heart.
+  Phase 1 (shipped): sequential inner battles — each wave a single-round
+  fight vs an **echo** (roster fighter as inner demon, dark tint, real
+  moveset) with HP carry-over + **soul-ember** restores between waves
+  (the eater grows — same pattern as SURVIVAL/IMMORTAL QOMBAT, which this
+  doc already names as the closest wired equivalents). Soul Surge is the
+  transform-meter analog. 5 proprietary inner stages on canon Eastern Mind
+  lands (Tong-Nou → Phantom Marketplace → Palace of Dreaming →
+  Plains of Chi-U → Octagonal Shrine); stage wardens, then the final boss:
+  your **SHADOW SELF**. Any fighter playable, each with their OWN
+  storyline (entry cutscene, mid-descent beats tied to their CANON.md
+  "Being purified of", shadow confrontation, resolution).
+  Phase 2 (T5 teardown lands, NO-DEFERRAL): `HM_TEARDOWN` seam in
+  `game/js/heartmind.js` consumes the teardown's enemy AI patterns, wave
+  tables, and door systems 1:1 for simultaneous multi-enemy density.
+- **Files:** `game/js/heartmind.js`, design doc
+  `docs/modes/HEART-AND-MIND-INSIDE.md`.
 
 ## 5. TEKKEN BALL (T3) / TEKKEN BOWL (T7) — DOCUMENTED, NOT WIRED
 - **Rules:** Tekken Ball: 1v1 volleyball — hit a beach ball back over the
