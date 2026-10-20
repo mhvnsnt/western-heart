@@ -73,7 +73,26 @@ export const FULL_ROSTER = [
   { id: 'kingtyrant', name: 'KING TYRANT', title: 'Showman King', base: 'Eddy Gordo', moveset: 'xiaoyu', model: 'pantera', tintStrength: 0.25,
     colors: { suit: 0x8a6a1a, trim: 0xffd700 }, style: 'Capoeira', archetype: 'Showman' },
   { id: 'burger', name: 'BURGER', title: 'Hunger is a Curse', base: 'Bob', moveset: 'bryan', model: 'pantera', tintStrength: 0.25,
-    colors: { suit: 0xcc8833, trim: 0xff4400 }, style: 'Sumo/Brawler', archetype: 'Power' },
+    colors: { suit: 0xcc8833, trim: 0xff4400 }, style: 'Sumo/Brawler', archetype: 'Power',
+    // Burger demon transformation chain (owner 2026-10-19): Kusaregedo kit per form.
+    // Chain: base -> speed-demon -> the-mouth -> demon (final). Demon form gets FULL kit
+    // + mix of smaller forms' abilities + exclusives. Extensible for new forms.
+    forms: {
+      'pantera': {
+        up: { target: 'burger-speed-demon', label: 'SPEED DEMON', powerMult: 1.1, speedMult: 1.3, defenseMult: 0.9, moveset: 'burger-speed-demon' },
+      },
+      'burger-speed-demon': {
+        up: { target: 'burger-the-mouth', label: 'THE MOUTH', powerMult: 1.18, speedMult: 0.65, defenseMult: 1.22, bodyScale: 1.1, moveset: 'burger-the-mouth' },
+        down: { target: 'pantera', label: 'POWER DOWN', powerMult: 0.91, speedMult: 0.77, defenseMult: 1.11, moveset: 'bryan' },
+      },
+      'burger-the-mouth': {
+        up: { target: 'burger-demon', label: 'DEMON ASCENSION', powerMult: 1.23, speedMult: 1.06, defenseMult: 1.18, bodyScale: 1.14, moveset: 'burger-demon' },
+        down: { target: 'burger-speed-demon', label: 'POWER DOWN', powerMult: 0.85, speedMult: 1.54, defenseMult: 0.82, bodyScale: 0.91, moveset: 'burger-speed-demon' },
+      },
+      'burger-demon': {
+        down: { target: 'burger-the-mouth', label: 'POWER DOWN', powerMult: 0.81, speedMult: 0.94, defenseMult: 0.85, bodyScale: 0.88, moveset: 'burger-the-mouth' },
+      },
+    } },
   { id: 'awapop', name: 'AWA POP', title: 'Bubbles', base: 'Nina', moveset: 'demonio', model: 'steve-fox', tintStrength: 0.6,
     colors: { suit: 0xff9dcc, trim: 0xffffff }, style: 'Assassin', archetype: 'Rushdown' },
   { id: 'scimitar', name: 'SCIMITAR', title: 'Desert Blade', base: 'Shaheen', moveset: 'demonio', model: 'scimitar', tintStrength: 0.6,
