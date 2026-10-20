@@ -52,12 +52,19 @@ export const MOVESET_IDS = [
   'ryuji-rock',
   // Intake wave 2 (owner 2026-10-19): remaining four intake movesets.
   'hugo', 'raiden', 'marduk', 'bob',
-  // Custom fighters (owner 2026-10-19): KRONOS (Zangief + Golem), DEATHFANG (Iori-based), Ryuji/Rock hybrid, KORESHI (owner creation).
+  // Custom fighters (owner 2026-10-19): DEATHFANG (Iori-based), KORESHI (owner creation).
+  // (kronos/ryuji-rock already listed above; not duplicated.)
   'deathfang', 'koreshi',
-  // SF authentic translations (owner 2026-10-19, Akuma-in-T7 pattern:
-  // SF motions kept, Tekken frame/throw logic). Builder: teardown/street-fighter-3d-games/tools/build_sf_movesets.py
+  // SF authentic translations + game-verified sets (owner 2026-10-19, Akuma-in-T7 pattern:
+  // SF motions kept, Tekken frame/throw logic). Lanes sf/teardown-moves-20261019 (PR #354)
+  // and sf/teardown-pr2 (PR #360) content-merged 2026-10-20: union by input key,
+  // game-verified variants win collisions. Builders:
+  // teardown/street-fighter-3d-games/tools/build_sf_movesets.py +
+  // build_sf_movesets_rich.py. See SF-TEARDOWN-STATUS.md.
   'sf-zangief', 'sf-blanka', 'sf-vega', 'sf-ryu', 'sf-ken', 'sf-chunli',
   'sf-guile', 'sf-mbison', 'sf-sagat', 'sf-dhalsim', 'sf-cammy',
+  // Only in the teardown-pr2 lane: fully binary+guide verified Akuma set.
+  'sf-akuma',
   // Teardown-integration (owner 2026-10-19): roster ids that had no per-fighter
   // file — Demonio human form + Doc Frank Wowomomo/Hood Scientist attires +
   // KRONOS Attire 2 "TimberWolf" (shares the Zangief/Golem moveset).
