@@ -36,6 +36,7 @@ export const MOVESET_IDS = [
   'lili', 'baek',
   // DOA/VF federation (owner 2026-10-19): converted movelists, Tekken-notation
   'doa-kasumi', 'doa-bass', 'doa-hayabusa',
+  'doa-ayane', 'doa-tina', 'doa-jannlee',
   'vf-akira', 'vf-sarah', 'vf-kage',
   // Reskin wave (2026-10-19): first custom attires as selectable fighters.
   'demonio-bloodline-ember', 'doc-frank-machine-shop', 'baek-master-white',
