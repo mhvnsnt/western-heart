@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Western Heart — Creation Suite</title>
+<link rel="stylesheet" href="css/suite.css">
+</head>
+<body>
+<!-- ============ FULL-SCREEN 3D FIGHTER (never covered — UNIFIED-UI-SPEC §1) ============ -->
+<canvas id="stage3d"></canvas>
+<div id="stage-vignette"></div>
+<div id="part-layer-note"></div>
+
+<!-- ============ TOP BAR ============ -->
+<header id="topbar">
+  <div class="tb-left">
+    <div class="tb-title">CREATION&nbsp;SUITE</div>
+    <div id="breadcrumb" class="tb-crumb">New Fighter &gt; Attire 1 &gt; Body</div>
+  </div>
+  <div class="tb-mid">
+    <div id="fighter-name" class="tb-fighter">NEW FIGHTER</div>
+    <div id="attire-tabs" class="attire-tabs" role="tablist" aria-label="Attire slots"></div>
+  </div>
+  <div class="tb-right">
+    <div id="wallet" class="wallet" title="Fight Money">💰 <span id="wallet-amt">12,400</span>G</div>
+    <button id="btn-save" class="btn btn-green">💾 SAVE</button>
+    <button id="btn-export" class="btn">⤓ EXPORT</button>
+    <!-- Stream 4: in-game wiring — return to the game menu. -->
+    <button id="btn-back-game" class="btn btn-gold" title="Back to game menu">🏠 GAME</button>
+  </div>
+</header>
+
+<!-- ============ LEFT RAIL ============ -->
+<nav id="left-rail" aria-label="Customization categories">
+  <button class="rail-btn active" data-tab="body"><span class="rail-ico">🦾</span><span class="rail-tx">BODY</span></button>
+  <button class="rail-btn" data-tab="attire"><span class="rail-ico">🥋</span><span class="rail-tx">ATTIRE</span></button>
+  <button class="rail-btn" data-tab="parts"><span class="rail-ico">🎭</span><span class="rail-tx">PARTS</span></button>
+  <button class="rail-btn" data-tab="jiggle"><span class="rail-ico">〰️</span><span class="rail-tx">JIGGLE</span></button>
+  <button class="rail-btn" data-tab="wardrobe"><span class="rail-ico">👕</span><span class="rail-tx">WARDROBE</span></button>
+  <button class="rail-btn" data-tab="profile"><span class="rail-ico">📇</span><span class="rail-tx">PROFILE</span></button>
+  <button class="rail-btn" data-tab="moveset"><span class="rail-ico">🥊</span><span class="rail-tx">MOVESET</span></button>
+  <button class="rail-btn" data-tab="dome"><span class="rail-ico">🫧</span><span class="rail-tx">DOME</span></button>
+</nav>
+
+<!-- ============ RIGHT RAIL (context panel) ============ -->
+<aside id="right-rail">
+  <div id="panel-head">
+    <div id="panel-title">BODY</div>
+    <div id="panel-sub"></div>
+  </div>
+  <div id="panel-body"></div>
+</aside>
+
+<!-- ============ PLACEMENT DOCK (bottom-right, appears when a mesh part is selected) ============ -->
+<aside id="place-dock" hidden>
+  <div class="pd-head">
+    <span id="pd-title">PLACEMENT</span>
+    <button id="pd-close" class="btn btn-sm">✕</button>
+  </div>
+  <div class="pd-sub" id="pd-partname"></div>
+  <div class="pd-socket">SOCKET: <b id="pd-socket"></b></div>
+  <div id="pd-axes"></div>
+  <div class="pd-row">
+    <span class="pd-lbl">NUDGE STEP</span>
+    <div class="pd-steps" id="pd-steps">
+      <button data-step="0.001" class="active">0.001</button>
+      <button data-step="0.01">0.01</button>
+      <button data-step="0.1">0.1</button>
+    </div>
+  </div>
+  <div class="pd-row">
+    <button class="btn btn-sm" id="pd-snap">⌖ SNAP TO SOCKET</button>
+    <button class="btn btn-sm" id="pd-reset">↺ RESET DEFAULTS</button>
+  </div>
+  <div class="pd-readout" id="pd-readout"></div>
+</aside>
+
+<!-- ============ BOTTOM BAR ============ -->
+<footer id="bottombar">
+  <div class="bb-left">
+    <button id="btn-roster" class="btn">🧍 FIGHTER SELECT</button>
+    <span id="slot-status" class="bb-hint">Tap slot → scroll library → tap to assign · No drag-and-drop</span>
+  </div>
+  <div class="bb-right"><span class="bb-hint" id="src-note"></span></div>
+</footer>
+
+<div id="modal-scrim" hidden></div>
+<div id="modal" hidden>
+  <div id="modal-title"></div>
+  <div id="modal-body"></div>
+  <div id="modal-actions"></div>
+</div>
+<div id="save-toast"></div>
+<div id="loader"><div>LOADING CREATION SUITE…</div></div>
+
+<script type="importmap">
+{ "imports": { "three": "../create-fighter/vendor/three.module.js",
+               "three/addons/": "../create-fighter/vendor/addons/" } }
+</script>
+<script type="module" src="js/suite.js"></script>
+</body>
+</html>

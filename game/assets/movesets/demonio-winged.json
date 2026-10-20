@@ -1,0 +1,480 @@
+{
+ "fighter": "demonio-winged",
+ "display": "DEMONIO (Devil)",
+ "tekken_base": "Devil Jin",
+ "t3_source": "deviljin",
+ "proxy": false,
+ "proxy_note": null,
+ "variant": 1,
+ "moves": {
+  "1": {
+   "name": "DEVIL 1 (T3 jin r41)",
+   "input": "1",
+   "t3_source": "deviljin",
+   "t3_row": 41,
+   "t3_command": "LP",
+   "startup": 0.117,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 13,
+   "t3_damage": 21,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:deviljin:row:41",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "2": {
+   "name": "DEVIL 2 (T3 jin r220)",
+   "input": "2",
+   "t3_source": "deviljin",
+   "t3_row": 220,
+   "t3_command": "RP",
+   "startup": 0.2,
+   "active": 0.017,
+   "recovery": 0.483,
+   "damage": 5,
+   "t3_damage": 8,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:deviljin:row:220",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "2,1": {
+   "name": "DEVIL 2,1 (T3 jin r221)",
+   "input": "2,1",
+   "t3_source": "deviljin",
+   "t3_row": 221,
+   "t3_command": "LP",
+   "startup": 0.233,
+   "active": 0.017,
+   "recovery": 0.483,
+   "damage": 6,
+   "t3_damage": 9,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "string_hit": "2",
+   "anim_ref": "t3:deviljin:row:221",
+   "input_slots": [
+    "2,1",
+    "2",
+    "1"
+   ],
+   "move_class": "string"
+  },
+  "2,1,2": {
+   "name": "DEVIL 2,1,2 (T3 jin r222)",
+   "input": "2,1,2",
+   "t3_source": "deviljin",
+   "t3_row": 222,
+   "t3_command": "RP",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 0.483,
+   "damage": 5,
+   "t3_damage": 7,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "string_hit": "2,1",
+   "anim_ref": "t3:deviljin:row:222",
+   "input_slots": [
+    "2,1,2",
+    "2",
+    "1",
+    "2"
+   ],
+   "move_class": "string"
+  },
+  "3": {
+   "name": "DEVIL 3 (T3 jin r195)",
+   "input": "3",
+   "t3_source": "deviljin",
+   "t3_row": 195,
+   "t3_command": "LK",
+   "startup": 0.317,
+   "active": 0.083,
+   "recovery": 0.633,
+   "damage": 16,
+   "t3_damage": 26,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:deviljin:row:195",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "4": {
+   "name": "DEVIL 4 (T3 jin r199)",
+   "input": "4",
+   "t3_source": "deviljin",
+   "t3_row": 199,
+   "t3_command": "RK",
+   "startup": 0.183,
+   "active": 0.017,
+   "recovery": 0.633,
+   "damage": 8,
+   "t3_damage": 14,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t3:deviljin:row:199",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4,1": {
+   "name": "DEVIL 4,1 (T3 jin r184)",
+   "input": "4,1",
+   "t3_source": "deviljin",
+   "t3_row": 184,
+   "t3_command": "LP",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.85,
+   "damage": 3,
+   "t3_damage": 6,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "string_hit": "4",
+   "anim_ref": "t3:deviljin:row:184",
+   "input_slots": [
+    "4,1",
+    "4",
+    "1"
+   ],
+   "move_class": "string"
+  },
+  "4,1,2": {
+   "name": "DEVIL 4,1,2 (T3 jin r186)",
+   "input": "4,1,2",
+   "t3_source": "deviljin",
+   "t3_row": 186,
+   "t3_command": "RP",
+   "startup": 0.45,
+   "active": 0.017,
+   "recovery": 0.617,
+   "damage": 7,
+   "t3_damage": 12,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "string_hit": "4,1",
+   "anim_ref": "t3:deviljin:row:186",
+   "input_slots": [
+    "4,1,2",
+    "4",
+    "1",
+    "2"
+   ],
+   "move_class": "string"
+  },
+  "1+3": {
+   "name": "DEVIL 1+3 throw (T3 jin r117)",
+   "input": "1+3",
+   "t3_source": "deviljin",
+   "t3_row": 117,
+   "t3_command": "LP+LK",
+   "startup": 0.433,
+   "active": 0.017,
+   "recovery": 0.1,
+   "damage": 24,
+   "t3_damage": 40,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 11,
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+   "anim_ref": "t3:deviljin:row:117",
+   "input_slots": [
+    "1+3"
+   ],
+   "move_class": "throw"
+  },
+  "2+4": {
+   "name": "DEVIL 2+4 throw (T3 jin r118)",
+   "input": "2+4",
+   "t3_source": "deviljin",
+   "t3_row": 118,
+   "t3_command": "RP+RK",
+   "startup": 0.1,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 24,
+   "t3_damage": 40,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 11,
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+   "anim_ref": "t3:deviljin:row:118",
+   "input_slots": [
+    "2+4"
+   ],
+   "move_class": "throw"
+  },
+  "d/f+2": {
+   "name": "DEVIL d/f+2 (T3 jin r269)",
+   "input": "d/f+2",
+   "t3_source": "deviljin",
+   "t3_row": 269,
+   "t3_command": "3+RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.633,
+   "damage": 21,
+   "t3_damage": 34,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:deviljin:row:269",
+   "input_slots": [
+    "d/f+2"
+   ],
+   "move_class": "strike"
+  },
+  "u/f+4": {
+   "name": "DEVIL u/f+4 (T3 jin r80)",
+   "input": "u/f+4",
+   "t3_source": "deviljin",
+   "t3_row": 80,
+   "t3_command": "9+RK",
+   "startup": 0.417,
+   "active": 0.017,
+   "recovery": 0.683,
+   "damage": 17,
+   "t3_damage": 29,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "t3:deviljin:row:80",
+   "input_slots": [
+    "u/f+4"
+   ],
+   "move_class": "strike"
+  },
+  "d,d/b,d,d/b+1+2": {
+   "name": "DEVIL d,d/b,d,d/b+1+2 throw (T3 jin r277)",
+   "input": "d,d/b,d,d/b+1+2",
+   "t3_source": "deviljin",
+   "t3_row": 277,
+   "t3_command": "[2 1 2 1+LP+RP](59f)",
+   "startup": 0.2,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 24,
+   "t3_damage": 40,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 11,
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+   "anim_ref": "t3:deviljin:row:277",
+   "input_slots": [
+    "d,d/b,d,d/b+1+2"
+   ],
+   "move_class": "throw"
+  },
+  "d/b,n,f+2": {
+   "name": "DEVIL d/b,n,f+2 throw (T3 jin r276)",
+   "input": "d/b,n,f+2",
+   "t3_source": "deviljin",
+   "t3_row": 276,
+   "t3_command": "[1 5 6+RP](30f)",
+   "startup": 0.183,
+   "active": 0.017,
+   "recovery": 0.517,
+   "damage": 24,
+   "t3_damage": 40,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 11,
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+   "anim_ref": "t3:deviljin:row:276",
+   "input_slots": [
+    "d/b,n,f+2"
+   ],
+   "move_class": "throw"
+  },
+  "n,d/f,n,d/f+1": {
+   "name": "DEVIL n,d/f,n,d/f+1 throw (T3 jin r277)",
+   "input": "n,d/f,n,d/f+1",
+   "t3_source": "deviljin",
+   "t3_row": 277,
+   "t3_command": "[5 3 5 3+LP](25f)",
+   "startup": 0.2,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 24,
+   "t3_damage": 40,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 11,
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+   "anim_ref": "t3:deviljin:row:277",
+   "input_slots": [
+    "n,d/f,n,d/f+1"
+   ],
+   "move_class": "throw"
+  }
+ },
+ "strings": [
+  {
+   "input": "2,1",
+   "hits": [
+    "2",
+    "1"
+   ],
+   "t3_rows": [
+    220,
+    221
+   ]
+  },
+  {
+   "input": "2,1,2",
+   "hits": [
+    "2",
+    "1",
+    "2"
+   ],
+   "t3_rows": [
+    220,
+    221,
+    222
+   ]
+  },
+  {
+   "input": "4,1",
+   "hits": [
+    "4",
+    "1"
+   ],
+   "t3_rows": [
+    199,
+    184
+   ]
+  },
+  {
+   "input": "4,1,2",
+   "hits": [
+    "4",
+    "1",
+    "2"
+   ],
+   "t3_rows": [
+    199,
+    184,
+    186
+   ]
+  }
+ ],
+ "specials": [
+  {
+   "input": "d,d/b,d,d/b+1+2",
+   "t3_row": 277,
+   "damage": 24,
+   "throw": true
+  },
+  {
+   "input": "d/b,n,f+2",
+   "t3_row": 276,
+   "damage": 24,
+   "throw": true
+  },
+  {
+   "input": "n,d/f,n,d/f+1",
+   "t3_row": 277,
+   "damage": 24,
+   "throw": true
+  },
+  {
+   "input": "u+1+2",
+   "name": "DEVIL FLIGHT (takeoff)",
+   "t3_source": "deviljin",
+   "t3_row": null,
+   "anim_ref": "t3:deviljin:flight:takeoff",
+   "move_class": "stance",
+   "flight": true,
+   "startup": 0.5,
+   "active": 0.0,
+   "recovery": 0.3,
+   "damage": 0,
+   "knock": 0,
+   "soulGain": 10,
+   "note": "Wings carry Demonio airborne; flight stance. Placeholder anim until devil-jin T3 rows mapped."
+  },
+  {
+   "input": "f,f+1+2",
+   "name": "INFERNO BEAM (devil laser)",
+   "t3_source": "deviljin",
+   "t3_row": null,
+   "anim_ref": "t3:deviljin:special:beam",
+   "move_class": "projectile",
+   "flight_only": true,
+   "startup": 0.667,
+   "active": 0.5,
+   "recovery": 0.8,
+   "damage": 28,
+   "knock": 7.0,
+   "soulGain": 15,
+   "note": "Devil Jin-style forehead/chest laser. Placeholder anim until devil-jin T3 rows mapped."
+  },
+  {
+   "input": "d/b+1+2",
+   "name": "HELLFIRE SWEEP",
+   "t3_source": "deviljin",
+   "t3_row": null,
+   "anim_ref": "t3:deviljin:special:sweep",
+   "move_class": "strike",
+   "limb": "legL",
+   "startup": 0.333,
+   "active": 0.05,
+   "recovery": 0.6,
+   "damage": 18,
+   "knock": 4.0,
+   "soulGain": 10,
+   "note": "Devil low sweep. Placeholder anim until devil-jin T3 rows mapped."
+  }
+ ],
+ "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
+ "schema_version": 2
+}

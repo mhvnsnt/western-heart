@@ -1,0 +1,378 @@
+{
+ "fighter": "doa-hayabusa",
+ "display": "HAYABUSA (DOA)",
+ "tekken_base": "Ryu Hayabusa (DOA5 Last Round)",
+ "doa_source": "community movelist + frame data (see docs/movesets/DOA-VF-CONVERSION-2026-10-19.md)",
+ "proxy": false,
+ "proxy_note": null,
+ "schema_version": 2,
+ "moves": {
+  "1": {
+   "name": "Hayabusa P \u2014 jab",
+   "input": "1",
+   "doa_move": "P",
+   "doa_input": "P",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.367,
+   "damage": 4,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "doa:hayabusa/p",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "note": "frame data estimated from archetype; marked per schema honesty rule"
+  },
+  "1,2": {
+   "name": "Hayabusa PP string",
+   "input": "1,2",
+   "doa_move": "PP",
+   "doa_input": "PP",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.433,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "doa:hayabusa/pp",
+   "input_slots": [
+    "1,2",
+    "1",
+    "2"
+   ],
+   "move_class": "string",
+   "note": "frame data estimated from archetype; marked per schema honesty rule"
+  },
+  "f+1": {
+   "name": "Hayabusa 6P \u2014 elbow",
+   "input": "f+1",
+   "doa_move": "6P",
+   "doa_input": "6P",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.433,
+   "damage": 6,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "doa:hayabusa/6p",
+   "input_slots": [
+    "f+1"
+   ],
+   "move_class": "strike",
+   "note": "frame data estimated from archetype; marked per schema honesty rule"
+  },
+  "u/f+1": {
+   "name": "Hayabusa 9P \u2014 jumping punch",
+   "input": "u/f+1",
+   "doa_move": "9P",
+   "doa_input": "9P",
+   "startup": 0.25,
+   "active": 0.067,
+   "recovery": 0.5,
+   "damage": 8,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "doa:hayabusa/9p",
+   "input_slots": [
+    "u/f+1"
+   ],
+   "move_class": "strike",
+   "note": "DOA5LR ver2.00: jump (evade lows) frames. frame data estimated from archetype; marked per schema honesty rule"
+  },
+  "u/b+1": {
+   "name": "Hayabusa 7P \u2014 back jump punch",
+   "input": "u/b+1",
+   "doa_move": "7P",
+   "doa_input": "7P",
+   "startup": 0.25,
+   "active": 0.067,
+   "recovery": 0.5,
+   "damage": 8,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "doa:hayabusa/7p",
+   "input_slots": [
+    "u/b+1"
+   ],
+   "move_class": "strike",
+   "note": "DOA5LR ver2.00: jump frames. frame data estimated from archetype; marked per schema honesty rule"
+  },
+  "u/b+1,2": {
+   "name": "Hayabusa 7PK \u2014 jump string",
+   "input": "u/b+1,2",
+   "doa_move": "7PK",
+   "doa_input": "7PK",
+   "startup": 0.25,
+   "active": 0.067,
+   "recovery": 0.567,
+   "damage": 13,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 4.0,
+   "soulGain": 8,
+   "anim_ref": "doa:hayabusa/7pk",
+   "input_slots": [
+    "u/b+1,2",
+    "1",
+    "2"
+   ],
+   "move_class": "string",
+   "note": "frame data estimated from archetype; marked per schema honesty rule"
+  },
+  "b,b+1": {
+   "name": "Hayabusa 44P \u2014 backdash punch",
+   "input": "b,b+1",
+   "doa_move": "44P",
+   "doa_input": "44P",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 7,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "doa:hayabusa/44p",
+   "input_slots": [
+    "b,b+1"
+   ],
+   "move_class": "special",
+   "note": "DOA5LR ver2.00: guard -8 -> -7F. frame data estimated from archetype; marked per schema honesty rule"
+  },
+  "qcb+1": {
+   "name": "Hayabusa 214P \u2014 spinning punch",
+   "input": "qcb+1",
+   "doa_move": "214P",
+   "doa_input": "214P",
+   "startup": 0.283,
+   "active": 0.05,
+   "recovery": 0.533,
+   "damage": 9,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "doa:hayabusa/214p",
+   "input_slots": [
+    "qcb+1"
+   ],
+   "move_class": "special",
+   "note": "DOA5LR ver2.00: guard +2 -> -5F. frame data estimated from archetype; marked per schema honesty rule"
+  },
+  "3": {
+   "name": "Hayabusa K \u2014 kick",
+   "input": "3",
+   "doa_move": "K",
+   "doa_input": "K",
+   "startup": 0.233,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 8,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 3.2,
+   "soulGain": 8,
+   "anim_ref": "doa:hayabusa/k",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike",
+   "note": "frame data estimated from archetype; marked per schema honesty rule"
+  },
+  "d/f+3": {
+   "name": "Hayabusa 3K \u2014 mid kick",
+   "input": "d/f+3",
+   "doa_move": "3K",
+   "doa_input": "3K",
+   "startup": 0.25,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 9,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "doa:hayabusa/3k",
+   "input_slots": [
+    "d/f+3"
+   ],
+   "move_class": "strike",
+   "note": "frame data estimated from archetype; marked per schema honesty rule"
+  },
+  "1+3": {
+   "name": "Hayabusa T \u2014 throw",
+   "input": "1+3",
+   "doa_move": "T",
+   "doa_input": "T",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 14,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 8,
+   "anim_ref": "doa:hayabusa/t",
+   "input_slots": [
+    "1+3"
+   ],
+   "move_class": "throw",
+   "throw": true,
+   "isGrab": true,
+   "unblockable": true,
+   "note": "frame data estimated from archetype; marked per schema honesty rule"
+  },
+  "b+1+2": {
+   "name": "Hayabusa 4H \u2014 mid punch hold",
+   "input": "b+1+2",
+   "doa_move": "4H (mid punch hold)",
+   "doa_input": "4H",
+   "startup": 0.05,
+   "active": 0.2,
+   "recovery": 0.333,
+   "damage": 16,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "doa:hayabusa/4h-hold",
+   "input_slots": [
+    "b+1+2"
+   ],
+   "move_class": "special",
+   "note": "DOA counter-hold -> Tekken parry-style reversal. frame data estimated from archetype; marked per schema honesty rule"
+  },
+  "f+1+2": {
+   "name": "Hayabusa 6H \u2014 mid kick hold",
+   "input": "f+1+2",
+   "doa_move": "6H (mid kick hold)",
+   "doa_input": "6H",
+   "startup": 0.05,
+   "active": 0.2,
+   "recovery": 0.333,
+   "damage": 16,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "doa:hayabusa/6h-hold",
+   "input_slots": [
+    "f+1+2"
+   ],
+   "move_class": "special",
+   "note": "DOA counter-hold -> Tekken parry-style reversal. frame data estimated from archetype; marked per schema honesty rule"
+  },
+  "d/b+1+2": {
+   "name": "Hayabusa 2H \u2014 low hold",
+   "input": "d/b+1+2",
+   "doa_move": "2H (low hold)",
+   "doa_input": "2H",
+   "startup": 0.05,
+   "active": 0.2,
+   "recovery": 0.333,
+   "damage": 14,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "doa:hayabusa/2h-hold",
+   "input_slots": [
+    "d/b+1+2"
+   ],
+   "move_class": "special",
+   "note": "DOA counter-hold -> Tekken parry-style reversal. frame data estimated from archetype; marked per schema honesty rule"
+  },
+  "S": {
+   "name": "Dragon's Shadow [WH SIGNATURE]",
+   "input": "S",
+   "startup": 0.28,
+   "active": 0.1,
+   "recovery": 0.85,
+   "damage": 18,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 12,
+   "anim_ref": "wh:doa-hayabusa:sig:dragons-shadow",
+   "input_slots": [
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "The ninja arrives as a shadow and leaves as a rumor. Blade-hand strike from nowhere."
+  },
+  "u+K": {
+   "name": "Falcon's Perch [WH SIGNATURE]",
+   "input": "u+K",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.88,
+   "damage": 17,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 12,
+   "anim_ref": "wh:doa-hayabusa:sig:falcons-perch",
+   "input_slots": [
+    "u+K",
+    "u",
+    "K"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "Up where the falcon perches, then down like weather. Diving kick."
+  }
+ },
+ "strings": [
+  {
+   "input": "1,2",
+   "components": [
+    "1",
+    "2"
+   ],
+   "damage": 7
+  },
+  {
+   "input": "u/b+1,2",
+   "components": [
+    "1",
+    "2"
+   ],
+   "damage": 13
+  }
+ ],
+ "specials": [
+  {
+   "input": "b,b+1",
+   "damage": 7,
+   "throw": false,
+   "doa_input": "44P"
+  },
+  {
+   "input": "qcb+1",
+   "damage": 9,
+   "throw": false,
+   "doa_input": "214P"
+  },
+  {
+   "input": "b+1+2",
+   "damage": 16,
+   "throw": false,
+   "doa_input": "4H",
+   "note": "hold/counter"
+  }
+ ],
+ "frame_convention": "DOA5LR 60fps -> seconds; damage scaled DOA5LR 270HP -> WH 100HP (x0.37); 44P/214P/9P/7P/7PK per Team Ninja ver2.00 notes"
+}
