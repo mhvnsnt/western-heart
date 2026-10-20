@@ -1,0 +1,56 @@
+calibrated
+--- frame1 ---
+  DEF-spine.004      head_dev=0.0025 quat_dev=3.2
+  DEF-spine.006      head_dev=0.0029 quat_dev=5.0
+  DEF-spine.007      head_dev=0.0047 quat_dev=18.1
+  DEF-shin.L         head_dev=0.0000 quat_dev=184.8
+  DEF-shin.R         head_dev=0.0000 quat_dev=184.8
+  DEF-foot.L         head_dev=0.0217 quat_dev=189.4
+  DEF-foot.R         head_dev=0.0217 quat_dev=189.4
+  DEF-toe.L          head_dev=0.0294 quat_dev=62.8
+  DEF-toe.R          head_dev=0.0294 quat_dev=57.4
+  head               head_dev=0.0000 quat_dev=89.8
+  DEF-shoulder.L     head_dev=0.0000 quat_dev=182.6
+  DEF-upper_arm.L    head_dev=0.0000 quat_dev=177.4
+  DEF-shoulder.R     head_dev=0.0000 quat_dev=93.3
+  DEF-upper_arm.R    head_dev=0.0000 quat_dev=93.3
+  DEF-forearm.L      head_dev=0.2477 quat_dev=267.3
+  DEF-forearm.R      head_dev=0.2537 quat_dev=102.0
+  DEF-hand.L         head_dev=0.4384 quat_dev=266.7
+  DEF-hand.R         head_dev=0.4392 quat_dev=100.5
+  WORST head_dev=0.4392 quat_dev=267.3
+--- frame1311 dest-vs-source world quat angle (deg) ---
+            Hips -> DEF-spine          angle=    0.0
+       LowerBack -> DEF-spine.001      angle=    1.6
+           Spine -> DEF-spine.002      angle=    4.7
+            Hips -> ORG-spine          angle=    0.0
+          Spine1 -> DEF-spine.004      angle=    1.8
+       LeftUpLeg -> DEF-thigh.L        angle=  175.2
+      RightUpLeg -> DEF-thigh.R        angle=  184.8
+            Neck -> DEF-spine.006      angle=   22.8
+           Neck1 -> DEF-spine.007      angle=   12.7
+         LeftLeg -> DEF-shin.L         angle=    4.9
+        RightLeg -> DEF-shin.R         angle=    4.9
+        LeftFoot -> DEF-foot.L         angle=  186.8
+       RightFoot -> DEF-foot.R         angle=  188.9
+     LeftToeBase -> DEF-toe.L          angle=  180.3
+    RightToeBase -> DEF-toe.R          angle=  179.0
+          Spine1 -> ORG-shoulder.L     angle=  177.4
+          Spine1 -> ORG-shoulder.R     angle=   93.3
+          Spine1 -> MCH-breast.L       angle=  256.2
+          Spine1 -> MCH-breast.R       angle=  256.1
+           Neck1 -> MCH-ROT-head       angle=   89.8
+            Head -> head               angle=   75.9
+    LeftShoulder -> DEF-shoulder.L     angle=   77.3
+         LeftArm -> DEF-upper_arm.L    angle=  109.7
+   RightShoulder -> DEF-shoulder.R     angle=   80.0
+        RightArm -> DEF-upper_arm.R    angle=  199.5
+     LeftForeArm -> DEF-forearm.L      angle=    3.6
+    RightForeArm -> DEF-forearm.R      angle=    3.6
+        LeftHand -> DEF-hand.L         angle=    0.8
+       RightHand -> DEF-hand.R         angle=    0.8
+Blender 4.0.2 (hash 9be62e85b727 built 2023-12-05 08:48:50)
+Read prefs: "/home/hatch/.config/blender/4.0/config/userpref.blend"
+Read blend: "/home/hatch/workspace/anim-fix-work/scarlett_base.blend"
+
+Blender quit
