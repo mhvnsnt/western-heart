@@ -19,7 +19,7 @@
    ============================================================ */
 import * as THREE from 'three';
 import { assets } from './assets.js';
-import { getT3Clips, createT3Actions, SOURCE_TO_BANK } from './t3anims.js';
+import { getT3Clips, createT3Actions, retargetT3Clips, SOURCE_TO_BANK } from './t3anims.js';
 import { TekkenBuffer, getFighterMoveset } from './movesets.js';
 import { TransformCinematic } from './transform-cinematic.js';
 
@@ -247,21 +247,16 @@ export class Fighter {
     this.actions = inst.actions;
 
     // REAL T3 animation clips — this fighter's OWN moveset-source bank
-    // (see bankIdFor). The clips carry absolute bone quaternions keyed
-    // to the canonical 22-bone Mixamo-name skeleton; if this model
-    // lacks those bones the actions can't bind, so skip them and stay
-    // on embedded locomotion + procedural combat.
+    // (see bankIdFor), RETARGETED onto this model's rig (t3anims.js
+    // retargetT3Clips: the bank's local rotations only mean something
+    // on the identity-rest rig they were baked onto, so they are
+    // rebuilt per rig from the decoded frames + both rest poses).
+    // A rig without the core humanoid bones keeps embedded locomotion
+    // + procedural combat.
     this.t3actions = {};
     this._t3current = null;
     this._t3stateKey = null;
-    const bank = bankIdFor(this.char.id, this._movesetId);
-    const t3clips = bank ? getT3Clips(bank) : null;
-    if (t3clips && Object.keys(t3clips).length > 0 && this.bones.Hips && this.bones.RightArm) {
-      this.t3actions = createT3Actions(this.mixer, t3clips, THREE);
-      console.log(`[WH] Fighter ${this.char.id}: ${Object.keys(this.t3actions).length} real T3 actions from bank '${bank}'`);
-    } else if (!bank) {
-      console.log(`[WH-T3] no decoded anim bank for ${this.char.id} (source has none yet) — embedded/procedural fallback`);
-    }
+    this._bindT3(inst.model, this._movesetId, this.char.model);
 
     // root (world position) -> lean (facing + body english) -> model
     this.root = new THREE.Group();
@@ -420,15 +415,12 @@ export class Fighter {
     this.mixer = inst.mixer;
     this.actions = inst.actions;
     // Rebuild the T3 action set on the new mixer — bank recomputed from
-    // the (possibly new) moveset source after the form change.
+    // the (possibly new) moveset source after the form change, and
+    // retargeted onto the new form's rig.
     this.t3actions = {};
     this._t3current = null;
     this._t3stateKey = null;
-    const tbank = bankIdFor(this.char.id, t.moveset || this._movesetId);
-    const tt3clips = tbank ? getT3Clips(tbank) : null;
-    if (tt3clips && Object.keys(tt3clips).length > 0 && this.bones.Hips && this.bones.RightArm) {
-      this.t3actions = createT3Actions(this.mixer, tt3clips, THREE);
-    }
+    this._bindT3(inst.model, t.moveset || this._movesetId, t.target);
     // Bigger = more damage, slower (owner spec).
     this.stats = {
       ...this.stats,
@@ -449,6 +441,25 @@ export class Fighter {
     return true;
   }
 
+  /* Bind this fighter's own T3 bank, retargeted onto `model`'s rig.
+     Must run before the model's mixer first updates (rest pose). */
+  _bindT3(model, movesetId, modelKey) {
+    const bank = bankIdFor(this.char.id, movesetId);
+    if (!bank) {
+      console.log(`[WH-T3] no decoded anim bank for ${this.char.id} (source has none yet) — embedded/procedural fallback`);
+      return;
+    }
+    const t3clips = getT3Clips(bank);
+    if (!t3clips || !Object.keys(t3clips).length) return;
+    const clips = retargetT3Clips(t3clips, bank, model, THREE, modelKey);
+    if (!clips || !Object.keys(clips).length) {
+      console.log(`[WH-T3] ${this.char.id}: rig '${modelKey}' lacks core humanoid bones — bank '${bank}' not bound`);
+      return;
+    }
+    this.t3actions = createT3Actions(this.mixer, clips, THREE);
+    console.log(`[WH] Fighter ${this.char.id}: ${Object.keys(this.t3actions).length} real T3 actions from bank '${bank}' (retargeted onto ${modelKey})`);
+  }
+
   tryMove(dir) { if (this.canAct()) this.vx = dir * this.stats.speed; }
   tryJump() { if (this.canAct() && this.onGround) { this.vy = this.stats.jump; this.onGround = false; this._enter('jump'); } }
   tryBlock(on) {
@@ -459,6 +470,7 @@ export class Fighter {
   tryDodge() {
     if (!this.canAct() || !this.onGround) return;
     this._enter('dodge'); this.invuln = 0.34; this.dodgeDir = -this.facing;
+    this._dodgeId = (this._dodgeId || 0) + 1;
     this.vx = this.dodgeDir * this.stats.speed * 1.7;
   }
   tryAttack(name) {
@@ -755,9 +767,28 @@ export class Fighter {
       case 'victory':
         this._playT3('win', { loop: true });
         break;
-      case 'dodge': this._leanT.z = this.dodgeDir * this.facing * 0.32; this._stopT3(); break;
-      case 'jump': this._animJump(); this._stopT3(); break;
-      default: this._stopT3(); break;
+      case 'dodge':
+        // The dodge moves the fighter backwards: T3's own back-dash
+        // (b,b branch of the neutral row) when the bank is bound.
+        if (!this._playT3Once('backdash', 'dodge:' + this._dodgeId)) {
+          this._leanT.z = this.dodgeDir * this.facing * 0.32; this._stopT3();
+        }
+        break;
+      case 'jump': {
+        const jn = Math.abs(this.vx) < 0.4 ? 'jumpUp' : (Math.sign(this.vx) === this.facing ? 'jumpFwd' : 'jumpBack');
+        if (!this._playT3Once(this.t3actions[jn] ? jn : 'jumpUp', 'jump')) { this._animJump(); this._stopT3(); }
+        break;
+      }
+      default: {
+        // idle / walk: the bank's neutral stance and walk cycles. Without
+        // a bound bank the embedded Mixamo locomotion layer (above) shows.
+        let loco = null;
+        if (this.state === 'walk' && this.t3actions.walkFwd) loco = dirSign > 0 || !this.t3actions.walkBack ? 'walkFwd' : 'walkBack';
+        else if (this.t3actions.stance) loco = 'stance';
+        if (loco && this._playT3(loco, { loop: true, fade: 0.12 })) this._t3stateKey = null;
+        else this._stopT3();
+        break;
+      }
     }
 
     // 6) Smooth & apply lean (body english) — composed with facing
