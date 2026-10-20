@@ -572,6 +572,8 @@ def prep(src: str, dst: str, max_verts: int, max_texture: int,
     log["steps"].append(f"validated input: {rep0.stats.get('vertices')} verts, "
                          f"{rep0.stats.get('triangles')} tris, "
                          f"texture max dim {rep0.stats.get('texture_max_dim')}")
+    if scratch:
+        os.makedirs(scratch, exist_ok=True)
     tmp = tempfile.mkdtemp(prefix="render-prep-", dir=scratch)
     try:
         work = os.path.join(tmp, "work.glb")
