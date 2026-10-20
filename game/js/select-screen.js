@@ -64,6 +64,7 @@ class PreviewPane {
     this._token = 0;
     this._loading = false;
     this._bodyScale = 1;
+    this._fitW = 0; this._fitH = 0; this._fitCY = 0;
     const host = canvas.parentElement;
     new ResizeObserver(() => this._resize()).observe(host);
   }
@@ -108,17 +109,22 @@ class PreviewPane {
     this._frame();
   }
 
-  /* Frame the model for the pane's aspect: a half-screen phone pane
-     is tall and narrow, so the camera pulls back until the model's
-     width fits too (the old single preview only had to fit one
-     wide canvas). Wide panes keep the classic 3.4 framing. */
+  /* Frame the model from its measured bind-pose bounds: the camera
+     pulls back until BOTH the figure's height and its width (a
+     T-pose arm span is as wide as the model is tall) fit the pane.
+     The old single preview only had to fit one wide canvas; a
+     half-screen phone pane is tall and narrow, so width rules. */
   _frame() {
     if (!this.camera) return;
     const s = this._bodyScale;
     const aspect = Math.max(this.camera.aspect || 1, 0.2);
-    const dist = THREE.MathUtils.clamp(3.4 * (0.62 / aspect), 3.4, 6.4);
-    this.camera.position.set(0, 1.15 * s, dist * s);
-    this.camera.lookAt(0, 0.95 * s, 0);
+    const tanH = Math.tan(THREE.MathUtils.degToRad(this.camera.fov / 2));
+    const w = (this._fitW || 1) * s, h = (this._fitH || 2) * s;
+    const dist = THREE.MathUtils.clamp(
+      Math.max(3.4 * s, (h * 0.56) / tanH, (w * 0.56) / (tanH * aspect)), 3.2, 10);
+    const cy = (this._fitCY || 0.95) * s;
+    this.camera.position.set(0, cy + 0.18 * s, dist);
+    this.camera.lookAt(0, cy, 0);
   }
 
   /* Show a fighter (roster entry) with a specific attire model id.
@@ -137,6 +143,9 @@ class PreviewPane {
       this.model = inst.model;
       this.model.rotation.y = this.baseRotY;
       this._bodyScale = c.bodyScale || 1;
+      const bb = new THREE.Box3().setFromObject(inst.model);
+      const sz = bb.getSize(new THREE.Vector3());
+      if (sz.y > 0.1) { this._fitW = sz.x; this._fitH = sz.y; this._fitCY = bb.min.y + sz.y / 2; }
       this._frame();
       this.scene.add(this.model);
       this.mixer = inst.mixer;
@@ -466,8 +475,7 @@ export function createSelectScreen(deps) {
     const list = attiresFor(c);
     if (list.length < 2) return;
     audio.uiClick();
-    state.kickCycle = 1;
-    applyAttire(state.activeSide, c, list[0].model);
+    applyAttire(state.activeSide, c, list[0].model); // applyAttire records index 0
   }
   function kickAttire() {
     const c = state.highlight[state.activeSide];
@@ -486,7 +494,9 @@ export function createSelectScreen(deps) {
     if (state.locked[side]) return;
     audio.uiClick();
     state.highlight[side] = c;
-    state.kickCycle = Math.max(1, attiresFor(c).findIndex(a => a.model === selectedAttireModel(c)));
+    // kickCycle tracks the CURRENT attire index; K advances it
+    // (wrapping 2..n), P returns it to 0 (attire 1).
+    state.kickCycle = Math.max(0, attiresFor(c).findIndex(a => a.model === selectedAttireModel(c)));
     paintCards();
     renderPlate('p1');
     renderPlate('p2');
@@ -600,5 +610,5 @@ export function createSelectScreen(deps) {
   if (pBtn) pBtn.addEventListener('click', punchAttire);
   if (kBtn) kBtn.addEventListener('click', kickAttire);
 
-  return { build, onShow, selectById, notifyConfirm, highlight, _state: state };
+  return { build, onShow, selectById, notifyConfirm, highlight, _state: state, _panes: panes };
 }

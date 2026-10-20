@@ -225,6 +225,7 @@ selectScreen = createSelectScreen({
   audio,
   onHighlight: (c) => { selectedChar = c ? c.id : null; },
 });
+window.__selectScreen = selectScreen; // QA hook (same pattern as __modes/__game)
 selectScreen.build();
 
 /* ---------------- Stage select (Lane 4) ----------------
