@@ -9,12 +9,12 @@ blocked (see below). Remaining items logged on TEARDOWN-IDLE-QUEUE.
 |---|---|---|
 | chrone.afs | 30/30 | ✅ complete |
 | chrtwo.afs | 68/68 | ✅ complete |
-| chrthree.afs | 50/75 | ⚠️ tables 09–33 (25) not decoded |
+| chrthree.afs | **56/75** | tables 09, 11, 12, 16, 18, 19 decoded 2026-10-19 via per-table IBUF base auto-discovery (quality gate passed: 0.6–1.1% degenerate, no NaN). 19 tables remain — they use a relative-offset VBUF/IBUF sub-layout (GPU addr < file offset) the current decoder rejects |
 | mot.afs | 11/11 | ✅ complete |
-| stg.afs | 0/18 | ❌ IBUF base not discovered; stage models exist as point clouds only (doa4-bass/carved_models/stg) |
+| stg.afs | 0 verified | ⚠️ base auto-discovery triangulates but FAILS quality gate (NaN positions, 4–39% degenerate) — vertex pools located, triangulation unverified; GLBs generated once and **removed from the branch** rather than merged unverified. Stage point clouds exist in doa4-bass/carved_models/stg |
 | anm.afs | 0 | ❌ animation format unknown (see ENCRYPTION-ANALYSIS.md) |
 
-Total triangulated GLBs on main: **159**.
+Total verified triangulated GLBs: **165** (159 previous + 6 chrthree this continuation).
 
 ## Movesets (game/assets/movesets/, schema v2, MOVESET_IDS wired)
 
