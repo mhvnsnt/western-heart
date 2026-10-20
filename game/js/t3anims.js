@@ -4,8 +4,11 @@
  * them to THREE.AnimationClip for the game's AnimationMixer.
  *
  * Source: assets/anim/t3/<bank>/*.json — one bank per decoded T3
- *         character (king, jin, xiaoyu, bryan, gunjack, yoshimitsu),
- *         decoded from the owner's T3 disc via lab/tools/t3_motion_bake.py.
+ *         character (king, jin, xiaoyu, bryan, gunjack, yoshimitsu,
+ *         paul, lei, nina, hwoarang, eddy, julia, anna, bosconovitch,
+ *         heihachi, armorking), decoded from the owner's T3 disc via
+ *         lab/tools/t3_motion_bake.py. Remainder banks + mokujin blocker:
+ *         docs/anim/T3-REMAINDER-BANKS-20261020.md.
  * Provenance: REAL T3 motion data, not procedural. See docs/anim/PROCEDURAL_AUDIT.md.
  *
  * Bone names in the JSON (Hips, Spine, etc.) match the game's stripped
@@ -55,17 +58,41 @@ export const T3_BANKS = {
   bryan:      'assets/anim/t3/bryan/',
   gunjack:    'assets/anim/t3/gunjack/',
   yoshimitsu: 'assets/anim/t3/yoshimitsu/',
-  // heihachi: no decoded bank exists (raw divmot only) — intentionally absent.
+  // Remainder banks (2026-10-20, T3 bank remainder lane): REAL divmot
+  // banks decoded from TEKKEN3.BNS through the same bake pipeline.
+  // Heihachi's bake needed the pose-chain pivot override for his
+  // geometry-less KMD parts 2/9/13 — see the remainder doc.
+  // armorking = divmot03_king baked on King's OWN rig (Armor King has
+  // no T3 divmot of his own; reached via the fighter.js override).
+  // mokujin: NO bank — divmot15 is absent from the owner's disc image
+  // (BNS entry 295 has size 0); no fighter references him as a source.
+  paul:         'assets/anim/t3/paul/',
+  lei:          'assets/anim/t3/lei/',
+  nina:         'assets/anim/t3/nina/',
+  hwoarang:     'assets/anim/t3/hwoarang/',
+  eddy:         'assets/anim/t3/eddy/',
+  julia:        'assets/anim/t3/julia/',
+  anna:         'assets/anim/t3/anna/',
+  bosconovitch: 'assets/anim/t3/bosconovitch/',
+  heihachi:     'assets/anim/t3/heihachi/',
+  armorking:    'assets/anim/t3/armorking/',
 };
 
 // Moveset source name -> bank key. 'demonio' is the game's rename of Jin
-// (owner canon 2026-10-19: Tekken's Jin = DEMONIO). Fixups for fictitious
-// sources: deviljin -> jin, bosconovitch -> gunjack. heihachi -> null.
+// (owner canon 2026-10-19: Tekken's Jin = DEMONIO). Fixup for fictitious
+// sources: deviljin -> jin. bosconovitch and heihachi map to their REAL
+// banks since 2026-10-20 (the old bosconovitch -> gunjack stand-in and
+// the heihachi -> null dead end are retired: docfrank's frame data was
+// built from Bosconovitch's real moveset, and the 9 heihachi-source
+// fighters now get Heihachi's own clips).
 export const SOURCE_TO_BANK = {
   king: 'king', demonio: 'jin', jin: 'jin', bryan: 'bryan',
   xiaoyu: 'xiaoyu', yoshimitsu: 'yoshimitsu', gunjack: 'gunjack',
-  bosconovitch: 'gunjack', deviljin: 'jin',
-  heihachi: null,
+  deviljin: 'jin',
+  paul: 'paul', lei: 'lei', nina: 'nina', hwoarang: 'hwoarang',
+  eddy: 'eddy', julia: 'julia', anna: 'anna',
+  bosconovitch: 'bosconovitch', heihachi: 'heihachi',
+  armorking: 'armorking', 'armor-king': 'armorking',
 };
 
 /**

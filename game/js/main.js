@@ -514,8 +514,9 @@ async function startFight(playerId, enemyId, opts = {}) {
     });
     // Load the REAL T3 animation banks for THIS match's two fighters —
     // each fighter's own moveset-source bank (per-bank wiring 2026-10-19).
-    // Fighters with no decoded bank (heihachi source) are skipped here and
-    // fall back to embedded locomotion + procedural combat.
+    // Fighters whose source has no decoded bank are skipped here and
+    // fall back to embedded locomotion + procedural combat. (Heihachi
+    // source fighters have their own real bank since 2026-10-20.)
     if (hint) hint.textContent = 'Loading real fight motion…';
     try {
       const banks = [...new Set([bankIdFor(player.id), bankIdFor(enemy.id)].filter(Boolean))];
