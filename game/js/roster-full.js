@@ -203,6 +203,18 @@ export const FULL_ROSTER = [
   { id: 'deathfang', name: 'DEATHFANG', title: 'The Chained Prisoner', base: 'Iori Yagami', moveset: 'deathfang', model: 'deathfang', tintStrength: 0.25,
     colors: { suit: 0x0a0a0f, trim: 0x8a0f1a }, style: 'Grief Flames', archetype: 'Rushdown',
     surge: { name: 'NO FUTURE', color: 0x5a0f8a, accent: 0xff2222 },
+    // Werewolf transform (owner 2026-10-20): Attire 2 = his real Tripo werewolf model
+    // (b4094ecf). TRANSFORM touch button + full nine-soul meter, both directions
+    // (tap while crouching = revert). The wolf keeps Iori's stance + locomotion and the
+    // FULL DEATHFANG kit; beast flavor is attack-only (deathfang-werewolf.json mix-ins).
+    forms: {
+      'deathfang': {
+        up: { target: 'deathfang-werewolf', label: 'WEREWOLF UNLEASHED', powerMult: 1.35, speedMult: 1.08, defenseMult: 1.15, bodyScale: 1.12, moveset: 'deathfang-werewolf' },
+      },
+      'deathfang-werewolf': {
+        down: { target: 'deathfang', label: 'CHAINED AGAIN', powerMult: 0.74, speedMult: 0.93, defenseMult: 0.87, bodyScale: 0.89, moveset: 'deathfang' },
+      },
+    },
     stats: { speed: 5.2, jump: 7.8, power: 1.15, defense: 0.95 },
     ai: { aggression: 0.85, grabBias: 0.3, reaction: 0.6 } },
   { id: 'ryuji', name: 'RYUJI', title: 'The Wicked Heretic', base: 'Ryuji Yamazaki', moveset: 'ryuji', model: 'steve-fox', tintStrength: 0.25,

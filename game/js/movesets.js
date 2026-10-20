@@ -51,6 +51,8 @@ export const MOVESET_IDS = [
   'zangief', 'blanka', 'vega', 'iori', 'armor-king',
   // DEATHFANG (owner 2026-10-19): proprietary, Iori-based — full Iori kit in deathfang.json.
   'deathfang',
+  // DEATHFANG werewolf form (owner 2026-10-20): full kit + beast mix-ins, Iori stance kept.
+  'deathfang-werewolf',
   // Custom fighters (owner 2026-10-19): KRONOS — Zangief base + Golem (Urban Reign) mix.
   'kronos',
   // Ryuji Yamazaki x The Rock hybrid (owner 2026-10-19): 22 moves, King-proxy

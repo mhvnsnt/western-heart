@@ -22,6 +22,10 @@ export const ATTIRE_VARIANTS = {
     { model: 'demonio-human', label: 'HUMAN' },
     { model: 'demonio-bloodline-ember', label: 'BLOODLINE EMBER' },
   ],
+  'deathfang': [
+    { model: 'deathfang', label: 'ATTIRE 1 · CHAINED PRISONER' },
+    { model: 'deathfang-werewolf', label: 'ATTIRE 2 · WEREWOLF' },
+  ],
   'doc-frank': [
     { model: 'doc-frank', label: 'BASE' },
     { model: 'doc-frank-big', label: 'TRANSFORMED' },
