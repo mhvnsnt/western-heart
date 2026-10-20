@@ -62,8 +62,45 @@ DROP_RES = [_re.compile(p, _re.I) for p in
 RING_ARENAS = {n for n in ARENAS if n.startswith("arena_")}
 
 
+# Backstage rooms are modeled to a different effective scale than the ring:
+# at 0.007 their ceilings sit at ~1.26m, clipping 1.8m fighters. 0.01225
+# puts ceilings at ~2.2m and makes the parking-lot cars ~4.8m long.
+BACKSTAGE_SCALE = 0.01225
+BACKSTAGE_ARENAS = {n for n in ARENAS if n.startswith("backstage_") or n == "lobby"}
+
+
+def arena_scale(name):
+    return BACKSTAGE_SCALE if name in BACKSTAGE_ARENAS else SCALE
+
+# Per-arena extra drops (beyond DROP_RES).
+ARENA_DROPS = {
+    # - scaffolding_piece: floating slabs over the ring (y 0.4..0.7),
+    #   rafter pieces stored in the wrong frame.
+    # - rafter_sign: stored under/poking through the mat (y -0.77..0.42);
+    #   they belong in the rafters, which this assembly doesn't place.
+    # - cage_match_ring_mat: the label is misaligned in this arena — the
+    #   group is a tiny vertical quad, not the mat (see ARENA_KEEPS).
+    "arena_cage": [_re.compile(r"scaffolding_piece", _re.I),
+                   _re.compile(r"rafter_sign", _re.I),
+                   _re.compile(r"cage_match_ring_mat", _re.I)],
+}
+# Allowlist (overrides everything): arena_cage's assembly is corrupt
+# (mislabeled groups + template junk), so only the true ring mat is kept —
+# the group LABELED "Ring_Post" (0x569), a 1060-unit flat quad at y=0.
+# The procedural cage walls + ropes + posts (builder) carry the scene.
+ARENA_ALLOW = {
+    "arena_cage": [_re.compile(r"0x569_arena_cage_match_ring_post", _re.I)],
+}
+# y_floor overrides (pre-scale units). arena_cage's true mat is flat at y=0.
+ARENA_Y_FLOOR = {"arena_cage": 0.0}
+
+
 def keep_group(arena, gname):
+    if arena in ARENA_ALLOW:
+        return any(p.search(gname) for p in ARENA_ALLOW[arena])
     if arena in RING_ARENAS and any(p.search(gname) for p in DROP_RES):
+        return False
+    if any(p.search(gname) for p in ARENA_DROPS.get(arena, ())):
         return False
     return True
 
@@ -101,13 +138,15 @@ def parse_obj(text):
     return np.array(verts, np.float32), np.array(uvs, np.float32), groups
 
 
-def fighting_surface_y(verts, groups):
+def fighting_surface_y(verts, groups, arena):
     """Y (pre-scale) of the fighting surface -> translated to y=0.
 
     Name-driven first (ring mat / room floor groups are labeled), because
     some template pieces (ring steps, titan tron) carry junk coordinates
     with huge bogus areas (see teardown ARENAS.md caveat 2).
     """
+    if arena in ARENA_Y_FLOOR:
+        return ARENA_Y_FLOOR[arena]
     lname = [(g[0].lower(), g[1]) for g in groups]
 
     def group_max_y(pred):
@@ -123,11 +162,8 @@ def fighting_surface_y(verts, groups):
     y = group_max_y(lambda n: "ring_mat" in n)
     if y is not None:
         return y
-    y = group_max_y(lambda n: "_floor" in n and "floormat" not in n
-                    and "outside" not in n)
-    if y is not None:
-        return y
-    # Fallback: largest-area near-horizontal level below the 70th %ile of y.
+    # Rooms: the standing surface is the lowest large horizontal level
+    # (walls start there). A "_floor"-named prop may be a small mat/step.
     levels = {}
     for _, tris in groups:
         for tri in tris:
@@ -142,9 +178,10 @@ def fighting_surface_y(verts, groups):
                 levels[key] = levels.get(key, 0.0) + area
     if not levels:
         return float(verts[:, 1].min())
-    cap = np.percentile(list(levels), 70)
-    cands = {k: v for k, v in levels.items() if k <= cap}
-    return max(cands, key=lambda k: cands[k])
+    # lowest level carrying real area (ignore props/shelves < 25% of max)
+    amax = max(levels.values())
+    cands = [k for k, v in levels.items() if v >= 0.25 * amax]
+    return min(cands)
 
 
 def write_glb(path, prims):
@@ -221,7 +258,7 @@ def convert(name, obj_bytes, vc_bytes):
     assert len(vc_lines) == 3 * len(verts), \
         f"{name}: vc count {len(vc_lines)//3} != verts {len(verts)}"
     vcol = (np.array(vc_lines, np.float32).reshape(-1, 3) / 255.0)
-    y_floor = fighting_surface_y(verts, groups)
+    y_floor = fighting_surface_y(verts, groups, name)
 
     prims = []
     for gname, tris in groups:
@@ -235,7 +272,8 @@ def convert(name, obj_bytes, vc_bytes):
         ln = np.linalg.norm(n, axis=1, keepdims=True)
         ln[ln == 0] = 1
         n = (n / ln)[:, None, :].repeat(3, axis=1).reshape(-1, 3)
-        pos = (p.reshape(-1, 3) - np.array([0, y_floor, 0], np.float32)) * SCALE
+        sc = arena_scale(name)
+        pos = (p.reshape(-1, 3) - np.array([0, y_floor, 0], np.float32)) * sc
         col = vcol[idx.reshape(-1)]
         uv = None
         if len(uvs) and (uv_idx >= 0).all():
@@ -276,7 +314,7 @@ def main():
             "groups": len(prims),
             "tris": ntri,
             "y_floor_units": y_floor,
-            "scale": SCALE,
+            "scale": arena_scale(name),
         }
         print(f"{name}: {len(prims)} groups, {ntri} tris, "
               f"{os.path.getsize(out)} bytes -> {out}")

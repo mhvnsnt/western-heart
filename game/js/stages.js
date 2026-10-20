@@ -547,6 +547,22 @@ for (const [sid, nmName, glb, ropes, cageFlag, w, d, wall, s1, s2, sunC, sky0, s
     associatedFighters: [],
   });
 }
+/* Per-stage camera + interior lighting: the cage camera sits INSIDE the
+   walls; backstage rooms are small enclosed spaces needing their own
+   camera distance and warm interior lights. */
+for (const [sid, camDist, interior] of [
+  ['nm-cage', 4.2, false], ['nm-bar', 3.0, true], ['nm-boiler-room', 4.0, true],
+  ['nm-hallway', 5.0, true], ['nm-locker-room', 3.5, true],
+  ['nm-parking-lot', 7, false], ['nm-lobby', 5.0, true],
+]) {
+  const s = STAGES.find((x) => x.id === sid);
+  if (s) { s.camDist = camDist; if (interior) s.interior = true; }
+}
+
+/* Thumbnails: rendered own-eyes shots, one per stage
+   (tools/stage-arena-pull/render_gallery.py). The select screen shows the
+   thumbnail and falls back to the palette swatch when the file is absent. */
+for (const s of STAGES) s.thumb = `assets/stages/thumbs/${s.id}.png`;
 
 export function getStage(id) {
   return STAGES.find((s) => s.id === id) || STAGES[0];
@@ -572,11 +588,14 @@ function buildBase(g, def, api) {
     try {
       const panoTex = new THREE.TextureLoader().load(def.pano);
       panoTex.colorSpace = THREE.SRGBColorSpace;
+      // The teardown panos are 580px-wide 2D backdrops: repeat 3x around so
+      // the art reads at a sane scale instead of one stretched wrap.
+      panoTex.wrapS = THREE.RepeatWrapping; panoTex.repeat.set(3, 1);
       const pano = new THREE.Mesh(
-        new THREE.CylinderGeometry(34, 34, 20, 48, 1, true),
+        new THREE.CylinderGeometry(30, 30, 10, 48, 1, true),
         new THREE.MeshBasicMaterial({ map: panoTex, side: THREE.BackSide, fog: false })
       );
-      pano.position.y = 6; g.add(pano);
+      pano.position.y = 3.5; g.add(pano);
     } catch (e) {
       console.warn(`[WH] stage ${def.id}: pano ${def.pano} failed (${e.message})`);
     }
@@ -1087,6 +1106,14 @@ async function buildNoMercy(g, def, api) {
   } catch (e) {
     console.warn(`[WH] stage ${def.id}: GLB ${def.glb} failed (${e.message})`);
   }
+  if (def.interior) {
+    // enclosed backstage rooms: warm ceiling lights (the sun/rim rig is
+    // built for open arenas and doesn't reach indoors)
+    for (const [lx, lz] of [[-2.5, -1.5], [2.5, 1.5], [0, 0]]) {
+      const pl = new THREE.PointLight(0xffd9a0, 7, 14, 2);
+      pl.position.set(lx, 2.0, lz); g.add(pl);
+    }
+  }
   if (def.cage) {
     // Procedural steel-cage walls: the ROM's cage pieces are placement-less
     // templates (no arena-code positions yet), so the builder stands in
@@ -1115,11 +1142,20 @@ async function buildNoMercy(g, def, api) {
       [C * 2, CH, -C, 0, Math.PI / 2], [C * 2, CH, C, 0, Math.PI / 2]]) {
       const wall = new THREE.Mesh(new THREE.PlaneGeometry(w, h), wallMat);
       wall.position.set(px, CH / 2, pz); wall.rotation.y = ry;
-      wall.castShadow = true; g.add(wall);
+      wall.castShadow = false; wall.receiveShadow = false; g.add(wall);
     }
     const frameMat = new THREE.MeshStandardMaterial({ color: 0x3a3d45, roughness: 0.5, metalness: 0.7 });
     const top = new THREE.Mesh(new THREE.BoxGeometry(C * 2 + 0.3, 0.18, C * 2 + 0.3), frameMat);
     top.position.y = CH + 0.09; g.add(top);
+    // The cage assembly ships no center mat (its "Ring_Mat" label is a tiny
+    // mislabeled quad; the true mat geometry isn't in the ROM dump), so the
+    // builder lays a procedural mat. The ROM's dark apron ring surrounds it.
+    const mat = new THREE.Mesh(
+      new THREE.PlaneGeometry(7.3, 7.3),
+      new THREE.MeshStandardMaterial({ color: 0x8a94a8, roughness: 0.95 })
+    );
+    mat.rotation.x = -Math.PI / 2; mat.position.y = 0.012;
+    mat.receiveShadow = true; g.add(mat);
   }
   if (def.ropes) {
     // ring mat is ±3.64 m; posts just outside, ropes at 3 heights

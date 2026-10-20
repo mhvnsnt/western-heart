@@ -35,42 +35,39 @@ def serve(port):
         httpd.serve_forever()
 
 
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--only", default=None)
-    ap.add_argument("--serve-port", type=int, default=8901)
-    args = ap.parse_args()
+import os
+BATCH = int(os.environ.get("GALLERY_BATCH", "6"))  # restart browser every N stages (SwiftShader OOM guard)
 
-    os.makedirs(GALLERY_DIR, exist_ok=True)
-    os.makedirs(THUMB_DIR, exist_ok=True)
 
-    t = threading.Thread(target=serve, args=(args.serve_port,), daemon=True)
-    t.start()
-    time.sleep(1)
-
-    with sync_playwright() as p:
-        b = p.chromium.launch(headless=True, args=["--use-gl=swiftshader", "--enable-webgl"])
-        pg = b.new_page(viewport={"width": 1280, "height": 720})
-        msgs = []
+def render_batch(p, port, stages, results, msgs):
+    b = p.chromium.launch(headless=True, args=["--use-gl=swiftshader", "--enable-webgl"])
+    try:
+        pg = b.new_page(viewport={"width": 960, "height": 540})
         pg.on("console", lambda m: msgs.append(f"{m.type}: {m.text[:160]}"))
         pg.on("pageerror", lambda e: msgs.append(f"pageerror: {str(e)[:160]}"))
-        pg.goto(f"http://127.0.0.1:{args.serve_port}/stage-test.html")
+        pg.goto(f"http://127.0.0.1:{port}/stage-test.html")
         pg.wait_for_function("window.__test && window.__test.stages.length > 0", timeout=30000)
-        stages = pg.evaluate("window.__test.stages")
-        print(f"{len(stages)} stages registered")
-        if args.only:
-            want = set(args.only.split(","))
-            stages = [s for s in stages if s["id"] in want]
-
-        results = []
         for s in stages:
             sid = s["id"]
-            r = pg.evaluate(f"window.__test.jump('{sid}')")
+            try:
+                r = pg.evaluate(f"window.__test.jump('{sid}')")
+            except Exception as e:
+                print(f"{sid}: BROWSER CRASH ({e}), will retry in next batch")
+                return False
             # let GLBs/textures stream in, then settle
             pg.wait_for_timeout(2500)
-            pg.evaluate("window.__test.snap()")
-            pg.wait_for_timeout(400)
-            shot = pg.screenshot()
+            try:
+                # pose the camera per-stage (the harness only runs one
+                # update(), so the fighting-camera lerp never settles)
+                camd = pg.evaluate(
+                    f"(window.__test.stages.find(s=>s.id==='{sid}').camDist)||7")
+                pg.evaluate(f"__arena.camera.position.set(0,1.8,{camd});"
+                            "__arena.camera.lookAt(0,1,0); __arena.render();")
+                pg.wait_for_timeout(400)
+                shot = pg.screenshot()
+            except Exception as e:
+                print(f"{sid}: shot failed ({e}), will retry in next batch")
+                return False
             gpath = os.path.join(GALLERY_DIR, f"{sid}.png")
             with open(gpath, "wb") as f:
                 f.write(shot)
@@ -85,8 +82,53 @@ def main():
             err = r.get("newErrors") or []
             results.append({"id": sid, "name": s["name"], "errors": err})
             flag = "ERRORS: " + " | ".join(err) if err else "OK"
-            print(f"{sid}: {flag} -> {gpath}")
+            print(f"{sid}: {flag} -> {gpath}", flush=True)
+    finally:
         b.close()
+    return True
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--only", default=None)
+    ap.add_argument("--skip-done", action="store_true",
+                    help="skip stages that already have a gallery png")
+    ap.add_argument("--serve-port", type=int, default=8901)
+    args = ap.parse_args()
+
+    os.makedirs(GALLERY_DIR, exist_ok=True)
+    os.makedirs(THUMB_DIR, exist_ok=True)
+
+    t = threading.Thread(target=serve, args=(args.serve_port,), daemon=True)
+    t.start()
+    time.sleep(1)
+
+    with sync_playwright() as p:
+        # probe stage list once
+        b = p.chromium.launch(headless=True, args=["--use-gl=swiftshader"])
+        pg = b.new_page()
+        pg.goto(f"http://127.0.0.1:{args.serve_port}/stage-test.html")
+        pg.wait_for_function("window.__test && window.__test.stages.length > 0", timeout=30000)
+        stages = pg.evaluate("window.__test.stages")
+        b.close()
+        print(f"{len(stages)} stages registered")
+        if args.only:
+            want = set(args.only.split(","))
+            stages = [s for s in stages if s["id"] in want]
+        if args.skip_done:
+            stages = [s for s in stages
+                      if not os.path.exists(os.path.join(GALLERY_DIR, s["id"] + ".png"))]
+            print(f"{len(stages)} remaining after --skip-done")
+
+        results, msgs = [], []
+        i = 0
+        while i < len(stages):
+            ok = render_batch(p, args.serve_port, stages[i:i + BATCH], results, msgs)
+            if ok:
+                i += BATCH
+            else:
+                print("batch failed, retrying same batch with fresh browser...")
+                time.sleep(2)
 
     with open(os.path.join(GALLERY_DIR, "_render-report.json"), "w") as f:
         json.dump(results, f, indent=2)

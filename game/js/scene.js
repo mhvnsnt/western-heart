@@ -90,11 +90,14 @@ export class Arena {
     if (this._stage) this._stage.update(dt, t, fighterA, fighterB);
 
     // dynamic fighting camera
-    let baseX = 0, baseZ = 7, baseY = 1.8, lookY = 1.0;
+    // Stream 3: stages may declare camDist (cage interiors, backstage rooms)
+    // to pull the camera inside their geometry.
+    const camScale = ((this._stage && this._stage.def.camDist) || 7) / 7;
+    let baseX = 0, baseZ = 7 * camScale, baseY = 1.8, lookY = 1.0;
     if (fighterA && fighterB) {
       const mid = (fighterA.root.position.x + fighterB.root.position.x) / 2;
       const spread = Math.abs(fighterA.root.position.x - fighterB.root.position.x);
-      baseZ = Math.max(5.6, Math.min(12, 5.4 + spread * 0.85));
+      baseZ = Math.max(5.6, Math.min(12, 5.4 + spread * 0.85)) * camScale;
       baseX = mid * 0.6;
       const maxY = Math.max(fighterA.root.position.y, fighterB.root.position.y);
       baseY = 1.75 + maxY * 0.45;

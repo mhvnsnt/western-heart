@@ -307,7 +307,8 @@ function buildStageSelect() {
       card.className = 'stage-card' + (s.id === selectedStage ? ' selected' : '');
       card.dataset.id = s.id;
       card.innerHTML =
-        `<div class="swatch" style="background:linear-gradient(135deg, ${s.swatch[0]}, ${s.swatch[1]})"></div>
+        `<img class="sthumb" src="${s.thumb}" alt="${s.name}" loading="lazy"
+              onerror="this.outerHTML='<div class=&quot;swatch&quot; style=&quot;background:linear-gradient(135deg, ${s.swatch[0]}, ${s.swatch[1]})&quot;></div>'">
          <div class="sname">${s.name}</div>
          <div class="suniverse">${s.universe}</div>`;
       card.addEventListener('click', () => selectStageCard(card, s));

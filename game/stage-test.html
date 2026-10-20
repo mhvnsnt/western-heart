@@ -37,7 +37,7 @@ let idx = -1;
 // Optional ?stage=<id> preselects the starting stage (Lane E verification).
 const _qs = new URLSearchParams(location.search).get('stage');
 window.__test = {
-  stages: STAGES.map(s => ({ id: s.id, name: s.name })),
+  stages: STAGES.map(s => ({ id: s.id, name: s.name, camDist: s.camDist || 7 })),
   errors,
   async jump(id) {
     const i = STAGES.findIndex(s => s.id === id);

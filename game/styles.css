@@ -352,6 +352,7 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
 .stage-card.selected { border-color: #ffd34d; box-shadow: 0 0 14px rgba(255,211,77,0.45); }
 .stage-card.kb-focus { outline: 3px solid #ffd34d; outline-offset: 2px; }
 .stage-card .swatch { width: 100%; aspect-ratio: 16 / 6; }
+.stage-card .sthumb { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; background: #0a0a10; }
 .stage-card .sname { font-size: 13px; font-weight: 700; letter-spacing: 1px; padding: 8px 8px 2px; color: #f0e8d8; }
 .stage-card .suniverse { font-size: 11px; padding: 0 8px 8px; color: #9a90a8; letter-spacing: 0.5px; }
 @media (min-width: 700px) {
