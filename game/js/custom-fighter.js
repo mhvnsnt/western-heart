@@ -18,22 +18,28 @@ const BODY_TYPES = {
 };
 
 const LS_KEY = 'wh_create_fighter_v1';
+// Stream 4: the flagship Creation Suite (customization/creation-suite-ui)
+// saves under its own key with a compatible profile/body shape.
+const LS_KEY_SUITE = 'wh_creation_suite_v1';
 
 /**
  * Load the saved custom fighter from localStorage.
+ * Reads the flagship Creation Suite format first (`wh_creation_suite_v1`),
+ * then falls back to the legacy create-fighter format (`wh_create_fighter_v1`).
  * Returns null if none exists or data is invalid.
  */
 export function getCustomFighter() {
-  try {
-    const raw = localStorage.getItem(LS_KEY);
-    if (!raw) return null;
-    const F = JSON.parse(raw);
-    if (!F || !F.profile) return null;
-    return F;
-  } catch (e) {
-    console.warn('[WH] Failed to load custom fighter:', e.message);
-    return null;
+  for (const key of [LS_KEY_SUITE, LS_KEY]) {
+    try {
+      const raw = localStorage.getItem(key);
+      if (!raw) continue;
+      const F = JSON.parse(raw);
+      if (!F || !F.profile) continue;
+      return F;
+    } catch (e) { /* try next key */ }
   }
+  console.warn('[WH] No custom fighter found in either suite slot');
+  return null;
 }
 
 /**
@@ -46,6 +52,10 @@ export function customFighterToRoster(F) {
   const bodyType = BODY_TYPES[F.body?.body_type] || BODY_TYPES['Medium 1'];
   const skinTone = F.body?.skin_tone || '#c98d5e';
   const name = (F.profile.name || 'CUSTOM').toUpperCase();
+  // Title: legacy `alias` string, or flagship suite `title: [A, B]` pair.
+  const title = F.profile.alias ||
+    (Array.isArray(F.profile.title) ? F.profile.title.filter(Boolean).join(' ') : '') ||
+    'Created Fighter';
 
   // Convert hex skin tone to integer for the game's color system
   const suitColor = parseInt(skinTone.replace('#', ''), 16) || 0xc98d5e;
@@ -53,7 +63,7 @@ export function customFighterToRoster(F) {
   return {
     id: 'custom',
     name: name,
-    title: F.profile.alias || 'Created Fighter',
+    title: title,
     base: 'Custom',
     moveset: 'jin', // Default; TODO: wire custom moveset slots
     model: 'custom',

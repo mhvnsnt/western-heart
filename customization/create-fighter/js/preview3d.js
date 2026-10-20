@@ -24,6 +24,11 @@ export class Preview3D {
     this.mixers = [];
     this.proxyRings = new Map();   // slotId -> ring mesh
     this.dummy = null;
+    this.dome = null;              // Doc Frank dome preview state (see enterDomePreview)
+    this.domeActive = false;
+    this._domeToken = 0;
+    this._domeParams = null;
+    this._savedTargetDist = null;
     this.onReady = null;
     this.modelUrl = null;          // currently loaded base model
     this._loading = false;
@@ -238,6 +243,122 @@ export class Preview3D {
     if(r){ this.scene.remove(r); r.geometry.dispose(); r.material.dispose(); this.proxyRings.delete(slotId); }
   }
   clearAllProxies(){ [...this.proxyRings.keys()].forEach(k=>this.clearProxy(k)); }
+
+  /* ---- Doc Frank Wowomomo dome preview (Attire 2 dome editor) ----
+     The v5 dome GLB was built in Attire 2's base-model space
+     (roster/doc-frank/attires/attire2/base/model.glb — same tripo_node
+     49e6f6b9-c4df-412d-b959-4510b1ebe0c5, identical bounds, identity
+     transform — verified against both GLBs), so the base model and the
+     dome parts overlay exactly with NO guessed transform. The roster
+     fighter is hidden while the dome preview is open. Param edits map
+     onto the dome meshes relative to the SAVED build params (the values
+     dome-params.json held when the GLB was baked — its fluid/glass
+     z-bounds match the baked geometry exactly). */
+  async enterDomePreview(baseUrl, domeUrl, savedParams){
+    const token = ++this._domeToken;
+    this.domeActive = true;
+    if(this._savedTargetDist===null) this._savedTargetDist = this.targetDist;
+    this.targetDist = 2.4;                       // closer framing for dome work
+    if(this.fighter) this.fighter.visible = false;
+    if(this.dummy){ this.scene.remove(this.dummy); this.dummy = null; }
+    this.clearAllProxies();
+    // cached group (exitDomePreview only hides it) — reuse, no reload
+    if(this.dome && this.dome.baseUrl===baseUrl && this.dome.domeUrl===domeUrl){
+      this.dome.group.visible = true;
+      if(this._domeParams) this.applyDomeParams(this._domeParams);
+      return;
+    }
+    this._disposeDome();
+    const loader = new GLTFLoader();
+    try{
+      const [base, domeGlb] = await Promise.all([
+        loader.loadAsync(baseUrl), loader.loadAsync(domeUrl) ]);
+      if(token !== this._domeToken || !this.domeActive){
+        this._disposeObj(base.scene); this._disposeObj(domeGlb.scene); return;
+      }
+      const group = new THREE.Group();
+      group.add(base.scene);
+      const parts = {};
+      domeGlb.scene.traverse(o=>{ if(o.isMesh) parts[o.name] = o; });
+      // take ONLY the dome parts — node 0 of the dome GLB is the base
+      // model's own head mesh; adding it would duplicate the head.
+      for(const n of ['DomeGlassExtV5','DomeFluidV5','LavaBlobsV5','DomeBubblesV5']){
+        if(parts[n]) group.add(parts[n]);
+      }
+      group.traverse(o=>{ if(o.isMesh) o.castShadow = true; });
+      // frame the base model on the preview focus point
+      const box = new THREE.Box3().setFromObject(base.scene);
+      const c = box.getCenter(new THREE.Vector3());
+      group.position.set(this.focus.x - c.x, this.focus.y - c.y, this.focus.z - c.z);
+      this.scene.add(group);
+      this.dome = { group, baseUrl, domeUrl,
+        glass: parts['DomeGlassExtV5'] || null, fluid: parts['DomeFluidV5'] || null,
+        lava: parts['LavaBlobsV5'] || null, bubbles: parts['DomeBubblesV5'] || null,
+        saved: { ...savedParams } };
+      if(this._domeParams) this.applyDomeParams(this._domeParams);
+    }catch(e){ console.error('dome preview failed to load:', e); }
+  }
+
+  /* Map dome params onto the in-scene dome meshes (live preview).
+     Verticals remap the baked z-range onto the requested one; colors /
+     clarity / IOR write straight into the baked materials. */
+  applyDomeParams(p){
+    if(!p) return;
+    this._domeParams = p;
+    if(!this.dome) return;
+    const s = this.dome.saved;   // params the v5 GLB was baked from
+    const { fluid, glass, lava, bubbles } = this.dome;
+    // Liquid Top is LOCKED (owner 2026-10-19: DO NOT RAISE) — clamp hard.
+    const top = Math.min(p.fluid_z_top, 0.421);
+    if(fluid){
+      const sy = (top - p.fluid_z_bot) / (s.fluid_z_top - s.fluid_z_bot);
+      fluid.scale.y = sy;
+      fluid.position.y = top - sy * s.fluid_z_top;
+      const sr = p.liquid_radius_scale / s.liquid_radius_scale;
+      fluid.scale.x = sr; fluid.scale.z = sr;
+      fluid.position.z = p.liquid_forward_offset - s.liquid_forward_offset;
+      const fm = Array.isArray(fluid.material) ? fluid.material[0] : fluid.material;
+      if(fm){
+        fm.color.setRGB(p.fluid_color[0], p.fluid_color[1], p.fluid_color[2]);
+        if('transmission' in fm) fm.transmission = p.fluid_transmission;
+      }
+    }
+    if(glass){
+      // glass bottom moves; the joint (top of the extension) stays put
+      const gy = (s.glass_joint_z - p.glass_z_bot) / (s.glass_joint_z - s.glass_z_bot);
+      glass.scale.y = gy;
+      glass.position.y = s.glass_joint_z - gy * s.glass_joint_z;
+      const gm = Array.isArray(glass.material) ? glass.material[0] : glass.material;
+      if(gm){
+        if('transmission' in gm) gm.transmission = p.glass_transmission;
+        if('ior' in gm) gm.ior = p.glass_ior;
+      }
+    }
+    // Lava/bubble COUNTS are build-time params: the baked GLB merges each
+    // set into one mesh, so in-scene they only toggle at 0. The exact count
+    // lands when the saved dome-params.json is rebuilt into the GLB.
+    if(lava){
+      lava.visible = p.lava_count > 0;
+      const lm = Array.isArray(lava.material) ? lava.material[0] : lava.material;
+      if(lm && lm.emissive) lm.emissive.setRGB(p.lava_emissive[0], p.lava_emissive[1], p.lava_emissive[2]);
+    }
+    if(bubbles){ bubbles.visible = p.bubble_count > 0; }
+  }
+
+  exitDomePreview(){
+    this._domeToken++;
+    this.domeActive = false;
+    if(this.dome) this.dome.group.visible = false;
+    if(this.fighter) this.fighter.visible = true;
+    if(this._savedTargetDist!==null){ this.targetDist = this._savedTargetDist; this._savedTargetDist = null; }
+  }
+
+  _disposeDome(){
+    if(!this.dome) return;
+    this.scene.remove(this.dome.group);
+    this._disposeObj(this.dome.group);
+    this.dome = null;
+  }
 
   /* ---- moveset dummy opponent (WWE two-fighter preview) ---- */
   setDummyVisible(show){

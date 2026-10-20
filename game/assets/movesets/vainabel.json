@@ -968,6 +968,49 @@
    "input_slots": [
     "u/b+1+2"
    ]
+  },
+  "P+K": {
+   "name": "Elias Brothers' Chokeslam [WH SIGNATURE]",
+   "input": "P+K",
+   "startup": 0.33,
+   "active": 0.05,
+   "recovery": 0.95,
+   "damage": 24,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 14,
+   "anim_ref": "wh:vainabel:sig:elias-brothers-chokeslam",
+   "input_slots": [
+    "P+K",
+    "P",
+    "K"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "He teams with Kane Abel as the Elias Brothers. The double chokeslam, solo edition - the devil's favorite demon.",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true
+  },
+  "S": {
+   "name": "Purple Light Sermon [WH SIGNATURE]",
+   "input": "S",
+   "startup": 0.31,
+   "active": 0.1,
+   "recovery": 0.92,
+   "damage": 19,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 13,
+   "anim_ref": "wh:vainabel:sig:purple-light-sermon",
+   "input_slots": [
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "He enters under purple lights to distorted church organ. A false-gospel sermon with the spiked glove."
   }
  },
  "strings": [

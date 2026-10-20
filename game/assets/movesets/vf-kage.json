@@ -220,6 +220,46 @@
    "isGrab": true,
    "unblockable": true,
    "note": "Damage estimated."
+  },
+  "S": {
+   "name": "Hagakure Leaf [WH SIGNATURE]",
+   "input": "S",
+   "startup": 0.27,
+   "active": 0.017,
+   "recovery": 0.82,
+   "damage": 17,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 12,
+   "anim_ref": "wh:vf-kage:sig:hagakure-leaf",
+   "input_slots": [
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "The Hagakure ninja lands like a leaf and cuts like the wind under it."
+  },
+  "D+K": {
+   "name": "Shadow Step [WH SIGNATURE]",
+   "input": "D+K",
+   "startup": 0.24,
+   "active": 0.017,
+   "recovery": 0.74,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "wh:vf-kage:sig:shadow-step",
+   "input_slots": [
+    "D+K",
+    "D",
+    "K"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "Dodge-step into a low sweep. The shadow was the attack."
   }
  },
  "strings": [
