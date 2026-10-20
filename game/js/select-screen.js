@@ -121,7 +121,7 @@ class PreviewPane {
     const tanH = Math.tan(THREE.MathUtils.degToRad(this.camera.fov / 2));
     const w = (this._fitW || 1) * s, h = (this._fitH || 2) * s;
     const dist = THREE.MathUtils.clamp(
-      Math.max(3.4 * s, (h * 0.56) / tanH, (w * 0.56) / (tanH * aspect)), 3.2, 10);
+      Math.max(3.4 * s, (h * 0.62) / tanH, (w * 0.62) / (tanH * aspect)), 3.2, 11);
     const cy = (this._fitCY || 0.95) * s;
     this.camera.position.set(0, cy + 0.18 * s, dist);
     this.camera.lookAt(0, cy, 0);
