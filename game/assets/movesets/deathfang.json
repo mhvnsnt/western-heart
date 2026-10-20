@@ -1,0 +1,378 @@
+{
+ "fighter": "deathfang",
+ "display": "DEATHFANG",
+ "tekken_base": "Iori Yagami (KOF) + Free the werewolf (Soul Eater)",
+ "t3_source": "heihachi",
+ "proxy": true,
+ "proxy_note": "DEATHFANG is the owner's proprietary Iori-based fighter. Keeps Iori's moves, stance, animations. Heihachi proxy (power). Reskin: chained prisoner slave, prisoner to his own grief; transforms into chained prisoner WEREWOLF.",
+ "variant": 1,
+ "moves": {
+  "1": {
+   "name": "IORI 1 (T3 heihachi r43)",
+   "input": "1",
+   "t3_source": "heihachi",
+   "t3_row": 43,
+   "t3_command": "LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 11,
+   "t3_damage": 18,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:43",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "2": {
+   "name": "IORI 2 (T3 heihachi r48)",
+   "input": "2",
+   "t3_source": "heihachi",
+   "t3_row": 48,
+   "t3_command": "RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 12,
+   "t3_damage": 20,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:48",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "3": {
+   "name": "IORI 3 (T3 heihachi r54)",
+   "input": "3",
+   "t3_source": "heihachi",
+   "t3_row": 54,
+   "t3_command": "LK",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 13,
+   "t3_damage": 22,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:54",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "4": {
+   "name": "IORI 4 (T3 heihachi r60)",
+   "input": "4",
+   "t3_source": "heihachi",
+   "t3_row": 60,
+   "t3_command": "RK",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 11,
+   "t3_damage": 18,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:60",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "5": {
+   "name": "IORI 5 (T3 heihachi r66)",
+   "input": "f+1",
+   "t3_source": "heihachi",
+   "t3_row": 66,
+   "t3_command": "f+LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 14,
+   "t3_damage": 23,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:66",
+   "input_slots": [
+    "f+1"
+   ],
+   "move_class": "strike"
+  },
+  "6": {
+   "name": "IORI 6 (T3 heihachi r72)",
+   "input": "f+2",
+   "t3_source": "heihachi",
+   "t3_row": 72,
+   "t3_command": "f+RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 12,
+   "t3_damage": 20,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:72",
+   "input_slots": [
+    "f+2"
+   ],
+   "move_class": "strike"
+  },
+  "7": {
+   "name": "IORI 7 (T3 heihachi r78)",
+   "input": "d+1",
+   "t3_source": "heihachi",
+   "t3_row": 78,
+   "t3_command": "d+LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 15,
+   "t3_damage": 25,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:78",
+   "input_slots": [
+    "d+1"
+   ],
+   "move_class": "strike"
+  },
+  "8": {
+   "name": "IORI 8 (T3 heihachi r84)",
+   "input": "d+2",
+   "t3_source": "heihachi",
+   "t3_row": 84,
+   "t3_command": "d+RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 13,
+   "t3_damage": 22,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:84",
+   "input_slots": [
+    "d+2"
+   ],
+   "move_class": "strike"
+  },
+  "9": {
+   "name": "IORI 9 (T3 heihachi r90)",
+   "input": "b+1",
+   "t3_source": "heihachi",
+   "t3_row": 90,
+   "t3_command": "b+LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 14,
+   "t3_damage": 23,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:90",
+   "input_slots": [
+    "b+1"
+   ],
+   "move_class": "strike"
+  },
+  "10": {
+   "name": "IORI 10 (T3 heihachi r96)",
+   "input": "b+2",
+   "t3_source": "heihachi",
+   "t3_row": 96,
+   "t3_command": "b+RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 16,
+   "t3_damage": 27,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:96",
+   "input_slots": [
+    "b+2"
+   ],
+   "move_class": "strike"
+  },
+  "11": {
+   "name": "MAIDEN MASHER",
+   "input": "qcf+1+2",
+   "t3_source": "heihachi",
+   "t3_row": 0,
+   "t3_command": "qcf+1+2",
+   "startup": 0.3,
+   "active": 0.05,
+   "recovery": 0.8,
+   "damage": 26,
+   "t3_damage": 44,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 3.5,
+   "soulGain": 15,
+   "anim_ref": "wh:iori:sig:1",
+   "input_slots": [
+    "qcf+1+2"
+   ],
+   "move_class": "special",
+   "wh_signature": true,
+   "wh_note": "WH signature: Iori's flame combo super."
+  },
+  "12": {
+   "name": "108 SHIKI YAMIBARAI",
+   "input": "qcf+1",
+   "t3_source": "heihachi",
+   "t3_row": 0,
+   "t3_command": "qcf+1",
+   "startup": 0.3,
+   "active": 0.05,
+   "recovery": 0.8,
+   "damage": 16,
+   "t3_damage": 27,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.5,
+   "soulGain": 15,
+   "anim_ref": "wh:iori:sig:2",
+   "input_slots": [
+    "qcf+1"
+   ],
+   "move_class": "projectile",
+   "wh_signature": true,
+   "wh_note": "WH signature: Iori's purple flame projectile."
+  },
+  "13": {
+   "name": "DEATHFANG 13 \u2014 SHACKLED RUSH",
+   "input": "f,f+1",
+   "t3_source": "heihachi",
+   "t3_row": 88,
+   "t3_command": "f,F+LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 16,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:88",
+   "input_slots": [
+    "f,f+1"
+   ],
+   "move_class": "strike"
+  },
+  "14": {
+   "name": "DEATHFANG 14 \u2014 GRIEF'S BURST",
+   "input": "qcf+2",
+   "t3_source": "heihachi",
+   "t3_row": 100,
+   "t3_command": "qcf+RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 22,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:100",
+   "input_slots": [
+    "qcf+2"
+   ],
+   "move_class": "special"
+  },
+  "15": {
+   "name": "DEATHFANG 15 \u2014 CHAIN BIND THROW",
+   "input": "1+3",
+   "t3_source": "heihachi",
+   "t3_row": 201,
+   "t3_command": "1+3",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 24,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:201",
+   "input_slots": [
+    "1+3"
+   ],
+   "move_class": "throw"
+  },
+  "16": {
+   "name": "DEATHFANG 16 \u2014 FULL MOON FRENZY",
+   "input": "1+2",
+   "t3_source": "heihachi",
+   "t3_row": 105,
+   "t3_command": "1+2",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 20,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:105",
+   "input_slots": [
+    "1+2"
+   ],
+   "move_class": "special"
+  },
+  "17": {
+   "name": "DEATHFANG 17 \u2014 WEREWOLF MAUL",
+   "input": "d/f+2",
+   "t3_source": "heihachi",
+   "t3_row": 110,
+   "t3_command": "d/f+RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 26,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:110",
+   "input_slots": [
+    "d/f+2"
+   ],
+   "move_class": "strike"
+  }
+ },
+ "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
+ "schema_version": 2,
+ "canon_note": "Iori inspirations include Free the werewolf from Soul Eater. Name is DEATHFANG \u2014 all caps, one word. Model reskin pending (currently uses Iori base).",
+ "specials": [
+  {
+   "input": "qcb,hcf+1",
+   "t3_row": 100,
+   "damage": 30,
+   "name": "CRIMSON HOWL (werewolf super)"
+  }
+ ]
+}
