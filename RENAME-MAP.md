@@ -318,3 +318,17 @@ files keep EM-descriptive basenames under WH stage directories pending assignmen
 - The "~80%" status above predates the solved teardown (closed 2026-10-17: assembly solution exact, YANM fully decoded 169/170 clean). Remaining opens: arena face indices, per-clip move semantics, CAW part-level consumption, owner character names.
 
 <!-- END WMXIX / MAT-LEGENDS SECTION -->
+<!-- BEGIN No Mercy / mat-kings conversion record (wiring lane 2026-10-20; source of truth: teardown/wwf-no-mercy/CANON-CONVERSION.md) -->
+### mat-kings (No Mercy) — conversion record 2026-10-20
+
+| Item | Status |
+|---|---|
+| Universe name `mat-kings` | DONE (already mapped above) |
+| Move IDs `NM-###` → `MK-####` (4,409 moves + 1,353 system clips, `moveset-library/movesets/mat-kings-move-database.json`) | DONE |
+| Tekken-style input assignment for every move category | DONE (in the same database) |
+| NM-001/002/003 anim_ref corrections (FileTableDB evidence) | DONE |
+| 17 stage display names (in `game/js/stages.js`) | AWAITING OWNER — table in CANON-CONVERSION.md §4 |
+| 42 wrestler identities → WH names | AWAITING OWNER — none mapped; federated design keeps wrestler characters out of WH |
+| Persona-named move labels (e.g. Reverse Tazzplex) | AWAITING OWNER naming pass |
+| Directory rename `teardown/wwf-no-mercy/` (Phase 3) | NOT DONE — teardown folder stays per owner law; coordinator decision |
+<!-- END No Mercy / mat-kings conversion record -->

@@ -1353,3 +1353,31 @@ The `mat-legends` universe is Western Heart's wrestling-mechanics donor: its gra
 - **Revenge Mode:** XIX's out-of-ring traversal mode has no canon name or implementation yet — flagged, not invented. Its stage data is registered in `stages.json` as `backstage_traversal` / `open_traversal`.
 
 <!-- END WMXIX / MAT-LEGENDS SECTION -->
+<!-- BEGIN No Mercy / mat-kings section (wiring lane 2026-10-20; source of truth: teardown/wwf-no-mercy/CANON-CONVERSION.md) -->
+## mat-kings — the No Mercy stratum (added 2026-10-20)
+
+`mat-kings` is Western Heart's wrestling stratum, converted from the WWF No Mercy
+teardown (universe name per RENAME-MAP.md). What Western Heart takes from it is
+systems and motion, authored into this world — never its wrestler characters
+(federated design, CHIMERA-ARCHITECTURE.md; the wrestler models live in the
+wrestling repos).
+
+- **Grappling library.** All 4,409 move clips + 1,353 system clips are catalogued
+  in `moveset-library/movesets/mat-kings-move-database.json` under MK-#### canon
+  IDs, each wired to a Tekken-style input and MOVE-SLOTS slot eligibility
+  (federation rule: wrestling moves enter as Tekken-input moves). Pantera's
+  grappling canon (above, §Pantera) is the flagship consumer; his Scoop Slam is
+  MK-0125 (`anim_339F.npy`, corrected 2026-10-20).
+- **Creation lineage.** The Creation Suite's modular body/attire system descends
+  from No Mercy's CAW: 220 body-type meshes, face/hair meshes, weapons and
+  attire parts are wired in `customization/parts/no-mercy/` (682 indexed parts,
+  `customization/PARTS-REGISTRY.json` library `no-mercy`).
+- **Stages.** The 17 mat-kings arenas/backstage areas are playable stages
+  (`game/js/stages.js` ids `nm-*`; GLB layer in PR #345). Their display names
+  still carry the source game's event names — WH canon stage names are
+  AWAITING OWNER (conversion table in CANON-CONVERSION.md §4). No names were
+  invented by the wiring lane.
+- **Characters.** No mat-kings-native fighters are defined yet. The 42 source
+  wrestler identities (`teardown/wwf-no-mercy/docs/wrestler-id-table.json`)
+  have no WH mappings in RENAME-MAP.md — owner decision, flagged, not invented.
+<!-- END No Mercy / mat-kings section -->
