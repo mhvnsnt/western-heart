@@ -65,15 +65,29 @@ const MODEL_URLS = {
   'cain-elias-attire2': '../roster/cain-elias/attires/attire2/model.glb',
   // Burger — Demon mode, possessed by greed (owner 2026-10-19, Tripo pull).
   burger: '../roster/burger/attires/attire1/model.glb',
+  // Kronos — new fighter (owner 2026-10-19, Tripo pull).
+  kronos: '../roster/kronos/attires/attire1/model.glb',
+  'kronos-attire2': '../roster/kronos/attires/attire2/model.glb',
+  // KORESHI (owner 2026-10-19): his own creation (Kakashi + SSJ4/5 + ninja, Tripo pull).
+  koreshi: '../roster/koreshi/attires/attire1/model.glb',
   // Burger hunger-state variants (owner 2026-10-19, Tripo pulls).
   'burger-attire2': '../roster/burger/attires/attire2/model.glb',
   'burger-attire3': '../roster/burger/attires/attire3/model.glb',
   'burger-attire4': '../roster/burger/attires/attire4/model.glb',
+  // Burger attires 5-7 (owner 2026-10-19, Tripo pulls).
+  'burger-attire5': '../roster/burger/attires/attire5/model.glb',
+  'burger-attire6': '../roster/burger/attires/attire6/model.glb',
+  'burger-attire7': '../roster/burger/attires/attire7/model.glb',
+  // Gyou spirit form (owner 2026-10-19, Tripo pull).
+  'gyou-spirit': '../roster/gyou/attires/spirit-form/model.glb',
   lili: 'assets/models/lili.glb',   // NO WH name yet — do not assign
   baek: 'assets/models/baek.glb',   // NO WH name yet — do not assign
   // Round-2 auto-rig wave (lane B): re-rigged per-fighter variants + Tripo
   // attires, all passing the playable gate (valid glTF, skinned, Hips, 1.5-2.2m).
-  'demonio-body': 'assets/models/demonio-body.glb',
+  // 'demonio-body' round-2 re-rig variant was never pushed to the repo;
+  // repointed to the shipped Demonio body (teardown-integration 2026-10-19)
+  // so the key resolves instead of 404ing.
+  'demonio-body': 'assets/models/demonio.glb',
   'kai-body': 'assets/models/kai-body.glb',
   'king-tyrant_alt1': 'assets/models/king-tyrant_alt1.glb',
   'kinpo-t8': 'assets/models/kinpo-t8.glb',
@@ -124,9 +138,16 @@ const MODEL_URLS = {
   'armor-king': '../roster/armor-king/attires/attire1/model.glb',
   // DEATHFANG (owner 2026-10-19): proprietary, based on Iori Yagami — chained/shackled
   // prisoner of his own grief, emo reskin, NO FUTURE face tattoo. Attire 2 = chained
-  // prisoner werewolf transform form.
+  // prisoner werewolf transform form. (Supersedes the parallel lane's placeholder,
+  // which pointed deathfang at the plain Iori model — the real reskin model lives
+  // in roster/deathfang/ now.)
   deathfang: '../roster/deathfang/attires/attire1/model.glb',
   'deathfang-werewolf': '../roster/deathfang/attires/attire2/model.glb',
+  // Ryuji Yamazaki x The Rock hybrid (owner 2026-10-19). MODEL PENDING: no Yamazaki
+  // model found anywhere (no KOF teardown, none in tripo-recovery, no downloadable
+  // Sketchfab model). URL wired for the drop-in; model.glb lands the moment the
+  // owner sends a Tripo link. See roster/ryuji-rock/attires/attire1/README.md.
+  'ryuji-rock': '../roster/ryuji-rock/attires/attire1/model.glb',
 };
 
 class AssetManager {

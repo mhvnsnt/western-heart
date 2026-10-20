@@ -539,6 +539,111 @@
    "move_class": "special",
    "wh_signature": true,
    "wh_note": "DEATHFANG signature: a grief-flame dashing fang rush named for the tattoo on his face \u2014 no future, only the fight."
+  },
+  "25": {
+   "name": "DEATHFANG 13 \u2014 SHACKLED RUSH",
+   "input": "f,f+1",
+   "t3_source": "heihachi",
+   "t3_row": 88,
+   "t3_command": "f,F+LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 16,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:88",
+   "input_slots": [
+    "f,f+1"
+   ],
+   "move_class": "strike",
+   "merged_from": "origin/main deathfang.json (parallel lane) \u2014 kept per anti-clobber"
+  },
+  "26": {
+   "name": "DEATHFANG 14 \u2014 GRIEF'S BURST",
+   "input": "qcf+2",
+   "t3_source": "heihachi",
+   "t3_row": 100,
+   "t3_command": "qcf+RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 22,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:100",
+   "input_slots": [
+    "qcf+2"
+   ],
+   "move_class": "special",
+   "merged_from": "origin/main deathfang.json (parallel lane) \u2014 kept per anti-clobber"
+  },
+  "27": {
+   "name": "DEATHFANG 15 \u2014 CHAIN BIND THROW",
+   "input": "f+1+3",
+   "t3_source": "heihachi",
+   "t3_row": 201,
+   "t3_command": "f+LP+LK",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 24,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:201",
+   "input_slots": [
+    "f+1+3"
+   ],
+   "move_class": "throw",
+   "merged_from": "origin/main deathfang.json (parallel lane) \u2014 kept per anti-clobber"
+  },
+  "28": {
+   "name": "DEATHFANG 16 \u2014 FULL MOON FRENZY",
+   "input": "1+2",
+   "t3_source": "heihachi",
+   "t3_row": 105,
+   "t3_command": "1+2",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 20,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:105",
+   "input_slots": [
+    "1+2"
+   ],
+   "move_class": "special",
+   "merged_from": "origin/main deathfang.json (parallel lane) \u2014 kept per anti-clobber"
+  },
+  "29": {
+   "name": "DEATHFANG 17 \u2014 WEREWOLF MAUL",
+   "input": "d/f+2",
+   "t3_source": "heihachi",
+   "t3_row": 110,
+   "t3_command": "d/f+RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 26,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:heihachi:row:110",
+   "input_slots": [
+    "d/f+2"
+   ],
+   "move_class": "strike",
+   "merged_from": "origin/main deathfang.json (parallel lane) \u2014 kept per anti-clobber"
   }
  },
  "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
@@ -547,5 +652,14 @@
   "form": "CHAINED PRISONER WEREWOLF",
   "attire": "attire2",
   "note": "Werewolf transform form (owner 2026-10-19). Free the werewolf (Soul Eater) is one of Iori's own inspirations and folds into this form's canon."
- }
+ },
+ "canon_note": "Iori inspirations include Free the werewolf from Soul Eater. Name is DEATHFANG \u2014 all caps, one word. Model reskin pending (currently uses Iori base).",
+ "specials": [
+  {
+   "input": "qcb,hcf+1",
+   "t3_row": 100,
+   "damage": 30,
+   "name": "CRIMSON HOWL (werewolf super)"
+  }
+ ]
 }
