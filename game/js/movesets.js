@@ -41,6 +41,8 @@ export const MOVESET_IDS = [
   // Reskin wave (2026-10-19): first custom attires as selectable fighters.
   'demonio-bloodline-ember', 'doc-frank-machine-shop', 'baek-master-white',
   'mariposa-monarch', 'dxmmii-patchwork',
+  // T7 full-moveset wave (2026-10-19): base Mariposa (Zafina) file added.
+  'mariposa',
   // Wave 2 (2026-10-19): Demonio winged devil form.
   'demonio-winged',
   // Burger Kusaregedo kit (owner 2026-10-19): per-form movesets.
