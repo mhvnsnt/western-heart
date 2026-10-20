@@ -1,0 +1,269 @@
+{
+ "fighter": "vega",
+ "display": "VEGA",
+ "tekken_base": "Vega (SF)",
+ "t3_source": "xiaoyu",
+ "proxy": true,
+ "proxy_note": "Vega (SF) has no T3 bank - Xiaoyu proxy (evasive/fast). WH name pending owner pick.",
+ "variant": 1,
+ "moves": {
+  "1": {
+   "name": "VEGA 1 (T3 xiaoyu r47)",
+   "input": "1",
+   "t3_source": "xiaoyu",
+   "t3_row": 47,
+   "t3_command": "LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 9,
+   "t3_damage": 15,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:47",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "2": {
+   "name": "VEGA 2 (T3 xiaoyu r52)",
+   "input": "2",
+   "t3_source": "xiaoyu",
+   "t3_row": 52,
+   "t3_command": "RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 10,
+   "t3_damage": 17,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:52",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "3": {
+   "name": "VEGA 3 (T3 xiaoyu r58)",
+   "input": "3",
+   "t3_source": "xiaoyu",
+   "t3_row": 58,
+   "t3_command": "LK",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 11,
+   "t3_damage": 18,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:58",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "4": {
+   "name": "VEGA 4 (T3 xiaoyu r64)",
+   "input": "4",
+   "t3_source": "xiaoyu",
+   "t3_row": 64,
+   "t3_command": "RK",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 9,
+   "t3_damage": 15,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:64",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "5": {
+   "name": "VEGA 5 (T3 xiaoyu r70)",
+   "input": "f+1",
+   "t3_source": "xiaoyu",
+   "t3_row": 70,
+   "t3_command": "f+LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 12,
+   "t3_damage": 20,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:70",
+   "input_slots": [
+    "f+1"
+   ],
+   "move_class": "strike"
+  },
+  "6": {
+   "name": "VEGA 6 (T3 xiaoyu r76)",
+   "input": "f+2",
+   "t3_source": "xiaoyu",
+   "t3_row": 76,
+   "t3_command": "f+RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 10,
+   "t3_damage": 17,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:76",
+   "input_slots": [
+    "f+2"
+   ],
+   "move_class": "strike"
+  },
+  "7": {
+   "name": "VEGA 7 (T3 xiaoyu r82)",
+   "input": "d+1",
+   "t3_source": "xiaoyu",
+   "t3_row": 82,
+   "t3_command": "d+LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 13,
+   "t3_damage": 22,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:82",
+   "input_slots": [
+    "d+1"
+   ],
+   "move_class": "strike"
+  },
+  "8": {
+   "name": "VEGA 8 (T3 xiaoyu r88)",
+   "input": "d+2",
+   "t3_source": "xiaoyu",
+   "t3_row": 88,
+   "t3_command": "d+RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 11,
+   "t3_damage": 18,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:88",
+   "input_slots": [
+    "d+2"
+   ],
+   "move_class": "strike"
+  },
+  "9": {
+   "name": "VEGA 9 (T3 xiaoyu r94)",
+   "input": "b+1",
+   "t3_source": "xiaoyu",
+   "t3_row": 94,
+   "t3_command": "b+LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 12,
+   "t3_damage": 20,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:94",
+   "input_slots": [
+    "b+1"
+   ],
+   "move_class": "strike"
+  },
+  "10": {
+   "name": "VEGA 10 (T3 xiaoyu r100)",
+   "input": "b+2",
+   "t3_source": "xiaoyu",
+   "t3_row": 100,
+   "t3_command": "b+RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 14,
+   "t3_damage": 23,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:100",
+   "input_slots": [
+    "b+2"
+   ],
+   "move_class": "strike"
+  },
+  "11": {
+   "name": "FLYING BARCELONA",
+   "input": "d,u+3",
+   "t3_source": "xiaoyu",
+   "t3_row": 0,
+   "t3_command": "d,u+3",
+   "startup": 0.3,
+   "active": 0.05,
+   "recovery": 0.8,
+   "damage": 24,
+   "t3_damage": 40,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 3.5,
+   "soulGain": 15,
+   "anim_ref": "wh:vega:sig:1",
+   "input_slots": [
+    "d,u+3"
+   ],
+   "move_class": "special",
+   "wh_signature": true,
+   "wh_note": "WH signature: Vega's wall-dive claw attack."
+  },
+  "12": {
+   "name": "ROLLING CLAW",
+   "input": "b,n,f+1",
+   "t3_source": "xiaoyu",
+   "t3_row": 0,
+   "t3_command": "b,n,f+1",
+   "startup": 0.3,
+   "active": 0.05,
+   "recovery": 0.8,
+   "damage": 18,
+   "t3_damage": 30,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.5,
+   "soulGain": 15,
+   "anim_ref": "wh:vega:sig:2",
+   "input_slots": [
+    "b,n,f+1"
+   ],
+   "move_class": "strike",
+   "wh_signature": true,
+   "wh_note": "WH signature: spinning claw rush."
+  }
+ },
+ "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
+ "schema_version": 2
+}

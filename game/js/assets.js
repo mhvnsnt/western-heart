@@ -65,6 +65,10 @@ const MODEL_URLS = {
   'cain-elias-attire2': '../roster/cain-elias/attires/attire2/model.glb',
   // Burger — Demon mode, possessed by greed (owner 2026-10-19, Tripo pull).
   burger: '../roster/burger/attires/attire1/model.glb',
+  // Burger hunger-state variants (owner 2026-10-19, Tripo pulls).
+  'burger-attire2': '../roster/burger/attires/attire2/model.glb',
+  'burger-attire3': '../roster/burger/attires/attire3/model.glb',
+  'burger-attire4': '../roster/burger/attires/attire4/model.glb',
   lili: 'assets/models/lili.glb',   // NO WH name yet — do not assign
   baek: 'assets/models/baek.glb',   // NO WH name yet — do not assign
   // Round-2 auto-rig wave (lane B): re-rigged per-fighter variants + Tripo
@@ -109,6 +113,15 @@ const MODEL_URLS = {
   'baek-master-white': '../roster/baek/attires/master-white/baek-master-white-rigged.glb',
   'mariposa-monarch': '../roster/mariposa/attires/monarch/mariposa-monarch-rigged.glb',
   'dxmmii-patchwork': '../roster/dxmmii/attires/patchwork-dj/dxmmii-patchwork-rigged.glb',
+  // Sketchfab intake (owner 2026-10-19): Zangief, Blanka, Vega, Iori, Armor King.
+  // WH names pending owner pick from INTAKE-PROPOSAL.md — working names for now.
+  // Licenses: Zangief CC-BY (johnny136), Blanka Free Standard (allanromanreyes),
+  // Vega CC-BY (pierodsoto01), Iori CC-BY (0xo), Armor King CC-BY (theamazingdonovan207).
+  zangief: '../roster/zangief/attires/attire1/model.glb',
+  blanka: '../roster/blanka/attires/attire1/model.glb',
+  vega: '../roster/vega/attires/attire1/model.glb',
+  iori: '../roster/iori/attires/attire1/model.glb',
+  'armor-king': '../roster/armor-king/attires/attire1/model.glb',
 };
 
 class AssetManager {
