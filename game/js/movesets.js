@@ -44,6 +44,8 @@ export const MOVESET_IDS = [
   'demonio-winged',
   // Sketchfab intake (owner 2026-10-19): working names, WH names pending.
   'zangief', 'blanka', 'vega', 'iori', 'armor-king',
+  // DEATHFANG (owner 2026-10-19): proprietary, Iori-based — full Iori kit in deathfang.json.
+  'deathfang',
 ];
 
 const _movesets = {};

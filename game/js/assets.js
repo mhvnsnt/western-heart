@@ -122,6 +122,11 @@ const MODEL_URLS = {
   vega: '../roster/vega/attires/attire1/model.glb',
   iori: '../roster/iori/attires/attire1/model.glb',
   'armor-king': '../roster/armor-king/attires/attire1/model.glb',
+  // DEATHFANG (owner 2026-10-19): proprietary, based on Iori Yagami — chained/shackled
+  // prisoner of his own grief, emo reskin, NO FUTURE face tattoo. Attire 2 = chained
+  // prisoner werewolf transform form.
+  deathfang: '../roster/deathfang/attires/attire1/model.glb',
+  'deathfang-werewolf': '../roster/deathfang/attires/attire2/model.glb',
 };
 
 class AssetManager {

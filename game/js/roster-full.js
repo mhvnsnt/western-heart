@@ -154,6 +154,13 @@ export const FULL_ROSTER = [
   { id: 'iori', name: 'IORI', title: 'The Flame', base: 'Iori Yagami', moveset: 'heihachi', model: 'iori', tintStrength: 0.25,
     colors: { suit: 0x6b1a8a, trim: 0xff2222 }, style: 'Flames', archetype: 'Rushdown',
     surge: { name: 'CRIMSON INFERNO', color: 0xaa22ff, accent: 0xff4400 } },
+  // DEATHFANG (owner 2026-10-19): proprietary character based on Iori Yagami — keeps Iori's
+  // moves, stance and animations. Prisoner/slave to his own grief and emotions: chained and
+  // shackled, emo styling, NO FUTURE face tattoo (Soul Eater). Transforms into a chained
+  // prisoner werewolf (attire 2).
+  { id: 'deathfang', name: 'DEATHFANG', title: 'The Chained Prisoner', base: 'Iori Yagami', moveset: 'heihachi', model: 'deathfang', tintStrength: 0.25,
+    colors: { suit: 0x0a0a0f, trim: 0x8a0f1a }, style: 'Grief Flames', archetype: 'Rushdown',
+    surge: { name: 'NO FUTURE', color: 0x5a0f8a, accent: 0xff2222 } },
   { id: 'armor-king', name: 'ARMOR KING', title: 'The Chain', base: 'Armor King', moveset: 'king', model: 'armor-king', tintStrength: 0.25,
     colors: { suit: 0x1a1a2a, trim: 0xccaa00 }, style: 'Grappler', archetype: 'Power',
     surge: { name: "JAGUAR'S GRIP", color: 0x888800, accent: 0xffcc00 } },
