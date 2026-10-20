@@ -3,8 +3,8 @@
  "display": "KING TYRANT",
  "tekken_base": "Eddy Gordo",
  "t3_source": "xiaoyu",
- "proxy": true,
- "proxy_note": "Eddy has no T3 bank - Xiaoyu proxy (flowy/evasive)",
+ "proxy": false,
+ "proxy_note": null,
  "variant": 2,
  "moves": {
   "1": {
@@ -182,25 +182,5857 @@
     "d+4"
    ],
    "move_class": "special"
+  },
+  "S": {
+   "name": "Coronation Entrance [WH SIGNATURE]",
+   "input": "S",
+   "startup": 0.32,
+   "active": 0.1,
+   "recovery": 0.9,
+   "damage": 19,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 13,
+   "anim_ref": "wh:kingtyrant:sig:coronation-entrance",
+   "input_slots": [
+    "S"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "He has never fought without an entrance - even alone in the training room. Spinning coronation kick."
+  },
+  "P+K": {
+   "name": "Dig This [WH SIGNATURE]",
+   "input": "P+K",
+   "startup": 0.3,
+   "active": 0.05,
+   "recovery": 0.9,
+   "damage": 22,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 13,
+   "anim_ref": "wh:kingtyrant:sig:dig-this",
+   "input_slots": [
+    "P+K",
+    "P",
+    "K"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "Can you dig THAT? Showman slam with the full pose, the turn, the roar.",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true
+  },
+  "b": {
+   "name": "KING TYRANT b (T3 xiaoyu r46)",
+   "input": "b",
+   "t3_source": "xiaoyu",
+   "t3_row": 46,
+   "t3_command": "4/7+LP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:46",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "strike"
+  },
+  "1_r48": {
+   "name": "KING TYRANT 1_r48 (T3 xiaoyu r48)",
+   "input": "1_r48",
+   "t3_source": "xiaoyu",
+   "t3_row": 48,
+   "t3_command": "LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:48",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r49": {
+   "name": "KING TYRANT 1_r49 (T3 xiaoyu r49)",
+   "input": "1_r49",
+   "t3_source": "xiaoyu",
+   "t3_row": 49,
+   "t3_command": "LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:49",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r50": {
+   "name": "KING TYRANT 1_r50 (T3 xiaoyu r50)",
+   "input": "1_r50",
+   "t3_source": "xiaoyu",
+   "t3_row": 50,
+   "t3_command": "LP",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 9,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:50",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r51": {
+   "name": "KING TYRANT 1_r51 (T3 xiaoyu r51)",
+   "input": "1_r51",
+   "t3_source": "xiaoyu",
+   "t3_row": 51,
+   "t3_command": "LP",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 9,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:51",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r52": {
+   "name": "KING TYRANT 1_r52 (T3 xiaoyu r52)",
+   "input": "1_r52",
+   "t3_source": "xiaoyu",
+   "t3_row": 52,
+   "t3_command": "LP",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 9,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:52",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r53": {
+   "name": "KING TYRANT 1_r53 (T3 xiaoyu r53)",
+   "input": "1_r53",
+   "t3_source": "xiaoyu",
+   "t3_row": 53,
+   "t3_command": "LP",
+   "startup": 0.117,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 11,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:53",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r54": {
+   "name": "KING TYRANT 1_r54 (T3 xiaoyu r54)",
+   "input": "1_r54",
+   "t3_source": "xiaoyu",
+   "t3_row": 54,
+   "t3_command": "LP",
+   "startup": 0.117,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 11,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:54",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r55": {
+   "name": "KING TYRANT 1_r55 (T3 xiaoyu r55)",
+   "input": "1_r55",
+   "t3_source": "xiaoyu",
+   "t3_row": 55,
+   "t3_command": "LP",
+   "startup": 0.117,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 11,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:55",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_c36_r56": {
+   "name": "KING TYRANT 1_c36_r56 (T3 xiaoyu r56)",
+   "input": "1_c36_r56",
+   "t3_source": "xiaoyu",
+   "t3_row": 56,
+   "t3_command": "LP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:56",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "f_c36": {
+   "name": "KING TYRANT f_c36 (T3 xiaoyu r57)",
+   "input": "f_c36",
+   "t3_source": "xiaoyu",
+   "t3_row": 57,
+   "t3_command": "6/9+LP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:57",
+   "input_slots": [
+    "f"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "b_c36_r58": {
+   "name": "KING TYRANT b_c36_r58 (T3 xiaoyu r58)",
+   "input": "b_c36_r58",
+   "t3_source": "xiaoyu",
+   "t3_row": 58,
+   "t3_command": "4/7+LP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:58",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "2_r61": {
+   "name": "KING TYRANT 2_r61 (T3 xiaoyu r61)",
+   "input": "2_r61",
+   "t3_source": "xiaoyu",
+   "t3_row": 61,
+   "t3_command": "RP",
+   "startup": 0.183,
+   "active": 0.05,
+   "recovery": 0.667,
+   "damage": 11,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:61",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "2_r62": {
+   "name": "KING TYRANT 2_r62 (T3 xiaoyu r62)",
+   "input": "2_r62",
+   "t3_source": "xiaoyu",
+   "t3_row": 62,
+   "t3_command": "RP",
+   "startup": 0.183,
+   "active": 0.05,
+   "recovery": 0.667,
+   "damage": 11,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:62",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "3+4_r107": {
+   "name": "KING TYRANT 3+4_r107 (T3 xiaoyu r64)",
+   "input": "3+4_r107",
+   "t3_source": "xiaoyu",
+   "t3_row": 64,
+   "t3_command": "LK+RK",
+   "startup": 0.35,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:64",
+   "input_slots": [
+    "3+4"
+   ],
+   "move_class": "strike",
+   "t3_restriction": 107
+  },
+  "f": {
+   "name": "KING TYRANT f (T3 xiaoyu r65)",
+   "input": "f",
+   "t3_source": "xiaoyu",
+   "t3_row": 65,
+   "t3_command": "6/9+LK+RK",
+   "startup": 0.35,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:65",
+   "input_slots": [
+    "f"
+   ],
+   "move_class": "strike"
+  },
+  "b_r66": {
+   "name": "KING TYRANT b_r66 (T3 xiaoyu r66)",
+   "input": "b_r66",
+   "t3_source": "xiaoyu",
+   "t3_row": 66,
+   "t3_command": "4/7+LK+RK",
+   "startup": 0.35,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:66",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "strike"
+  },
+  "3_c36": {
+   "name": "KING TYRANT 3_c36 (T3 xiaoyu r67)",
+   "input": "3_c36",
+   "t3_source": "xiaoyu",
+   "t3_row": 67,
+   "t3_command": "LK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:67",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "f_c36_r68": {
+   "name": "KING TYRANT f_c36_r68 (T3 xiaoyu r68)",
+   "input": "f_c36_r68",
+   "t3_source": "xiaoyu",
+   "t3_row": 68,
+   "t3_command": "6/9+LK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:68",
+   "input_slots": [
+    "f"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "b_c36_r69": {
+   "name": "KING TYRANT b_c36_r69 (T3 xiaoyu r69)",
+   "input": "b_c36_r69",
+   "t3_source": "xiaoyu",
+   "t3_row": 69,
+   "t3_command": "4/7+LK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:69",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "3_r71": {
+   "name": "KING TYRANT 3_r71 (T3 xiaoyu r71)",
+   "input": "3_r71",
+   "t3_source": "xiaoyu",
+   "t3_row": 71,
+   "t3_command": "LK",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.817,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:71",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r72": {
+   "name": "KING TYRANT 3_r72 (T3 xiaoyu r72)",
+   "input": "3_r72",
+   "t3_source": "xiaoyu",
+   "t3_row": 72,
+   "t3_command": "LK",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.817,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:72",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r73": {
+   "name": "KING TYRANT 3_r73 (T3 xiaoyu r73)",
+   "input": "3_r73",
+   "t3_source": "xiaoyu",
+   "t3_row": 73,
+   "t3_command": "LK",
+   "startup": 0.233,
+   "active": 0.017,
+   "recovery": 0.8,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:73",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r74": {
+   "name": "KING TYRANT 3_r74 (T3 xiaoyu r74)",
+   "input": "3_r74",
+   "t3_source": "xiaoyu",
+   "t3_row": 74,
+   "t3_command": "LK",
+   "startup": 0.233,
+   "active": 0.017,
+   "recovery": 0.8,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:74",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r75": {
+   "name": "KING TYRANT 3_r75 (T3 xiaoyu r75)",
+   "input": "3_r75",
+   "t3_source": "xiaoyu",
+   "t3_row": 75,
+   "t3_command": "LK",
+   "startup": 0.233,
+   "active": 0.017,
+   "recovery": 0.8,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:75",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r76": {
+   "name": "KING TYRANT 3_r76 (T3 xiaoyu r76)",
+   "input": "3_r76",
+   "t3_source": "xiaoyu",
+   "t3_row": 76,
+   "t3_command": "LK",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.817,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:76",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r77": {
+   "name": "KING TYRANT 3_r77 (T3 xiaoyu r77)",
+   "input": "3_r77",
+   "t3_source": "xiaoyu",
+   "t3_row": 77,
+   "t3_command": "LK",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.817,
+   "damage": 9,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:77",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r78": {
+   "name": "KING TYRANT 3_r78 (T3 xiaoyu r78)",
+   "input": "3_r78",
+   "t3_source": "xiaoyu",
+   "t3_row": 78,
+   "t3_command": "LK",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.817,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:78",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "4_r80": {
+   "name": "KING TYRANT 4_r80 (T3 xiaoyu r80)",
+   "input": "4_r80",
+   "t3_source": "xiaoyu",
+   "t3_row": 80,
+   "t3_command": "RK",
+   "startup": 0.133,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:80",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r81": {
+   "name": "KING TYRANT 4_r81 (T3 xiaoyu r81)",
+   "input": "4_r81",
+   "t3_source": "xiaoyu",
+   "t3_row": 81,
+   "t3_command": "RK",
+   "startup": 0.133,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:81",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r82": {
+   "name": "KING TYRANT 4_r82 (T3 xiaoyu r82)",
+   "input": "4_r82",
+   "t3_source": "xiaoyu",
+   "t3_row": 82,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:82",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r83": {
+   "name": "KING TYRANT 4_r83 (T3 xiaoyu r83)",
+   "input": "4_r83",
+   "t3_source": "xiaoyu",
+   "t3_row": 83,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:83",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r84": {
+   "name": "KING TYRANT 4_r84 (T3 xiaoyu r84)",
+   "input": "4_r84",
+   "t3_source": "xiaoyu",
+   "t3_row": 84,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:84",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r85": {
+   "name": "KING TYRANT 4_r85 (T3 xiaoyu r85)",
+   "input": "4_r85",
+   "t3_source": "xiaoyu",
+   "t3_row": 85,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 9,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:85",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r86": {
+   "name": "KING TYRANT 4_r86 (T3 xiaoyu r86)",
+   "input": "4_r86",
+   "t3_source": "xiaoyu",
+   "t3_row": 86,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 9,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:86",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r87": {
+   "name": "KING TYRANT 4_r87 (T3 xiaoyu r87)",
+   "input": "4_r87",
+   "t3_source": "xiaoyu",
+   "t3_row": 87,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 9,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:87",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_c36_r88": {
+   "name": "KING TYRANT 4_c36_r88 (T3 xiaoyu r88)",
+   "input": "4_c36_r88",
+   "t3_source": "xiaoyu",
+   "t3_row": 88,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 12,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:88",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "f_c36_r89": {
+   "name": "KING TYRANT f_c36_r89 (T3 xiaoyu r89)",
+   "input": "f_c36_r89",
+   "t3_source": "xiaoyu",
+   "t3_row": 89,
+   "t3_command": "6/9+RK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 12,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:89",
+   "input_slots": [
+    "f"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "b_c36_r90": {
+   "name": "KING TYRANT b_c36_r90 (T3 xiaoyu r90)",
+   "input": "b_c36_r90",
+   "t3_source": "xiaoyu",
+   "t3_row": 90,
+   "t3_command": "4/7+RK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 11,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:90",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "b_r93": {
+   "name": "KING TYRANT b_r93 (T3 xiaoyu r93)",
+   "input": "b_r93",
+   "t3_source": "xiaoyu",
+   "t3_row": 93,
+   "t3_command": "4/7+RK",
+   "startup": 0.25,
+   "active": 0.05,
+   "recovery": 0.6,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:93",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "strike"
+  },
+  "b_c36": {
+   "name": "KING TYRANT b_c36 (T3 xiaoyu r93)",
+   "input": "b_c36",
+   "t3_source": "xiaoyu",
+   "t3_row": 93,
+   "t3_command": "4/7+RK",
+   "startup": 0.25,
+   "active": 0.05,
+   "recovery": 0.6,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:93",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "special",
+   "t3_condition": 36
+  },
+  "2_r105": {
+   "name": "KING TYRANT 2_r105 (T3 xiaoyu r105)",
+   "input": "2_r105",
+   "t3_source": "xiaoyu",
+   "t3_row": 105,
+   "t3_command": "RP",
+   "startup": 0.183,
+   "active": 0.017,
+   "recovery": 0.483,
+   "damage": 4,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:105",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "d/b+4": {
+   "name": "KING TYRANT d/b+4 (T3 xiaoyu r149)",
+   "input": "d/b+4",
+   "t3_source": "xiaoyu",
+   "t3_row": 149,
+   "t3_command": "1+RK",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.7,
+   "damage": 6,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:149",
+   "input_slots": [
+    "d/b+4"
+   ],
+   "move_class": "strike"
+  },
+  "3_r251": {
+   "name": "KING TYRANT 3_r251 (T3 xiaoyu r251)",
+   "input": "3_r251",
+   "t3_source": "xiaoyu",
+   "t3_row": 251,
+   "t3_command": "LK",
+   "startup": 0.35,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 9,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:251",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "1_r252": {
+   "name": "KING TYRANT 1_r252 (T3 xiaoyu r252)",
+   "input": "1_r252",
+   "t3_source": "xiaoyu",
+   "t3_row": 252,
+   "t3_command": "LP",
+   "startup": 0.35,
+   "active": 0.017,
+   "recovery": 0.8,
+   "damage": 9,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:252",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r253": {
+   "name": "KING TYRANT 1_r253 (T3 xiaoyu r253)",
+   "input": "1_r253",
+   "t3_source": "xiaoyu",
+   "t3_row": 253,
+   "t3_command": "LP",
+   "startup": 0.45,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:253",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r254": {
+   "name": "KING TYRANT 1_r254 (T3 xiaoyu r254)",
+   "input": "1_r254",
+   "t3_source": "xiaoyu",
+   "t3_row": 254,
+   "t3_command": "LP",
+   "startup": 0.233,
+   "active": 0.017,
+   "recovery": 0.683,
+   "damage": 4,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:254",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "2_r261": {
+   "name": "KING TYRANT 2_r261 (T3 xiaoyu r261)",
+   "input": "2_r261",
+   "t3_source": "xiaoyu",
+   "t3_row": 261,
+   "t3_command": "RP",
+   "startup": 0.367,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 15,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:261",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "2_r262": {
+   "name": "KING TYRANT 2_r262 (T3 xiaoyu r262)",
+   "input": "2_r262",
+   "t3_source": "xiaoyu",
+   "t3_row": 262,
+   "t3_command": "RP",
+   "startup": 0.367,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 18,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:262",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "2_r263": {
+   "name": "KING TYRANT 2_r263 (T3 xiaoyu r263)",
+   "input": "2_r263",
+   "t3_source": "xiaoyu",
+   "t3_row": 263,
+   "t3_command": "RP",
+   "startup": 0.367,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 21,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:263",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "1_r266": {
+   "name": "KING TYRANT 1_r266 (T3 xiaoyu r266)",
+   "input": "1_r266",
+   "t3_source": "xiaoyu",
+   "t3_row": 266,
+   "t3_command": "any-button",
+   "startup": 1.067,
+   "active": 0.017,
+   "recovery": 0.6,
+   "damage": 6,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:266",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r268": {
+   "name": "KING TYRANT 1_r268 (T3 xiaoyu r268)",
+   "input": "1_r268",
+   "t3_source": "xiaoyu",
+   "t3_row": 268,
+   "t3_command": "any-button",
+   "startup": 1.067,
+   "active": 0.05,
+   "recovery": 0.567,
+   "damage": 24,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:268",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "2_r272": {
+   "name": "KING TYRANT 2_r272 (T3 xiaoyu r272)",
+   "input": "2_r272",
+   "t3_source": "xiaoyu",
+   "t3_row": 272,
+   "t3_command": "RP",
+   "startup": 0.2,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 7,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:272",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "d": {
+   "name": "KING TYRANT d (T3 xiaoyu r273)",
+   "input": "d",
+   "t3_source": "xiaoyu",
+   "t3_row": 273,
+   "t3_command": "2/3+RP",
+   "startup": 0.35,
+   "active": 0.05,
+   "recovery": 0.483,
+   "damage": 6,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:273",
+   "input_slots": [
+    "d"
+   ],
+   "move_class": "strike"
+  },
+  "b_r274": {
+   "name": "KING TYRANT b_r274 (T3 xiaoyu r274)",
+   "input": "b_r274",
+   "t3_source": "xiaoyu",
+   "t3_row": 274,
+   "t3_command": "4/6+LK",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.817,
+   "damage": 8,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:274",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "strike"
+  },
+  "3_r278": {
+   "name": "KING TYRANT 3_r278 (T3 xiaoyu r278)",
+   "input": "3_r278",
+   "t3_source": "xiaoyu",
+   "t3_row": 278,
+   "t3_command": "LK",
+   "startup": 0.167,
+   "active": 0.117,
+   "recovery": 0.8,
+   "damage": 18,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:278",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r279": {
+   "name": "KING TYRANT 3_r279 (T3 xiaoyu r279)",
+   "input": "3_r279",
+   "t3_source": "xiaoyu",
+   "t3_row": 279,
+   "t3_command": "LK",
+   "startup": 0.167,
+   "active": 0.117,
+   "recovery": 0.8,
+   "damage": 18,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:279",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r280": {
+   "name": "KING TYRANT 3_r280 (T3 xiaoyu r280)",
+   "input": "3_r280",
+   "t3_source": "xiaoyu",
+   "t3_row": 280,
+   "t3_command": "LK",
+   "startup": 0.167,
+   "active": 0.117,
+   "recovery": 0.8,
+   "damage": 18,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:280",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r281": {
+   "name": "KING TYRANT 3_r281 (T3 xiaoyu r281)",
+   "input": "3_r281",
+   "t3_source": "xiaoyu",
+   "t3_row": 281,
+   "t3_command": "LK",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.817,
+   "damage": 11,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:281",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r282": {
+   "name": "KING TYRANT 3_r282 (T3 xiaoyu r282)",
+   "input": "3_r282",
+   "t3_source": "xiaoyu",
+   "t3_row": 282,
+   "t3_command": "LK",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.817,
+   "damage": 11,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:282",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r283": {
+   "name": "KING TYRANT 3_r283 (T3 xiaoyu r283)",
+   "input": "3_r283",
+   "t3_source": "xiaoyu",
+   "t3_row": 283,
+   "t3_command": "LK",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.817,
+   "damage": 11,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:283",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r284": {
+   "name": "KING TYRANT 3_r284 (T3 xiaoyu r284)",
+   "input": "3_r284",
+   "t3_source": "xiaoyu",
+   "t3_row": 284,
+   "t3_command": "LK",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 14,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:284",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r285": {
+   "name": "KING TYRANT 3_r285 (T3 xiaoyu r285)",
+   "input": "3_r285",
+   "t3_source": "xiaoyu",
+   "t3_row": 285,
+   "t3_command": "LK",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 14,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:285",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r286": {
+   "name": "KING TYRANT 3_r286 (T3 xiaoyu r286)",
+   "input": "3_r286",
+   "t3_source": "xiaoyu",
+   "t3_row": 286,
+   "t3_command": "LK",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 14,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:286",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "f+3_c36": {
+   "name": "KING TYRANT f+3_c36 (T3 xiaoyu r287)",
+   "input": "f+3_c36",
+   "t3_source": "xiaoyu",
+   "t3_row": 287,
+   "t3_command": "6+LK",
+   "startup": 0.267,
+   "active": 0.017,
+   "recovery": 0.067,
+   "damage": 12,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:287",
+   "input_slots": [
+    "f+3"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "4_r292": {
+   "name": "KING TYRANT 4_r292 (T3 xiaoyu r292)",
+   "input": "4_r292",
+   "t3_source": "xiaoyu",
+   "t3_row": 292,
+   "t3_command": "RK",
+   "startup": 0.45,
+   "active": 0.05,
+   "recovery": 0.583,
+   "damage": 6,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:292",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r296": {
+   "name": "KING TYRANT 4_r296 (T3 xiaoyu r296)",
+   "input": "4_r296",
+   "t3_source": "xiaoyu",
+   "t3_row": 296,
+   "t3_command": "RK",
+   "startup": 0.383,
+   "active": 0.217,
+   "recovery": 0.5,
+   "damage": 7,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:296",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r298": {
+   "name": "KING TYRANT 4_r298 (T3 xiaoyu r298)",
+   "input": "4_r298",
+   "t3_source": "xiaoyu",
+   "t3_row": 298,
+   "t3_command": "RK",
+   "startup": 0.3,
+   "active": 0.05,
+   "recovery": 0.917,
+   "damage": 7,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:298",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r299": {
+   "name": "KING TYRANT 4_r299 (T3 xiaoyu r299)",
+   "input": "4_r299",
+   "t3_source": "xiaoyu",
+   "t3_row": 299,
+   "t3_command": "RK",
+   "startup": 0.3,
+   "active": 0.05,
+   "recovery": 0.917,
+   "damage": 9,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:299",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r300": {
+   "name": "KING TYRANT 4_r300 (T3 xiaoyu r300)",
+   "input": "4_r300",
+   "t3_source": "xiaoyu",
+   "t3_row": 300,
+   "t3_command": "RK",
+   "startup": 0.133,
+   "active": 0.017,
+   "recovery": 0.633,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:300",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r301": {
+   "name": "KING TYRANT 4_r301 (T3 xiaoyu r301)",
+   "input": "4_r301",
+   "t3_source": "xiaoyu",
+   "t3_row": 301,
+   "t3_command": "RK",
+   "startup": 0.133,
+   "active": 0.017,
+   "recovery": 0.633,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:301",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r302": {
+   "name": "KING TYRANT 4_r302 (T3 xiaoyu r302)",
+   "input": "4_r302",
+   "t3_source": "xiaoyu",
+   "t3_row": 302,
+   "t3_command": "RK",
+   "startup": 0.133,
+   "active": 0.017,
+   "recovery": 0.633,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:302",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r303": {
+   "name": "KING TYRANT 4_r303 (T3 xiaoyu r303)",
+   "input": "4_r303",
+   "t3_source": "xiaoyu",
+   "t3_row": 303,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.583,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:303",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r304": {
+   "name": "KING TYRANT 4_r304 (T3 xiaoyu r304)",
+   "input": "4_r304",
+   "t3_source": "xiaoyu",
+   "t3_row": 304,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.583,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:304",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r305": {
+   "name": "KING TYRANT 4_r305 (T3 xiaoyu r305)",
+   "input": "4_r305",
+   "t3_source": "xiaoyu",
+   "t3_row": 305,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.583,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:305",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r306": {
+   "name": "KING TYRANT 4_r306 (T3 xiaoyu r306)",
+   "input": "4_r306",
+   "t3_source": "xiaoyu",
+   "t3_row": 306,
+   "t3_command": "RK",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:306",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r307": {
+   "name": "KING TYRANT 4_r307 (T3 xiaoyu r307)",
+   "input": "4_r307",
+   "t3_source": "xiaoyu",
+   "t3_row": 307,
+   "t3_command": "RK",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:307",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r308": {
+   "name": "KING TYRANT 4_r308 (T3 xiaoyu r308)",
+   "input": "4_r308",
+   "t3_source": "xiaoyu",
+   "t3_row": 308,
+   "t3_command": "RK",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:308",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "b_r309": {
+   "name": "KING TYRANT b_r309 (T3 xiaoyu r309)",
+   "input": "b_r309",
+   "t3_source": "xiaoyu",
+   "t3_row": 309,
+   "t3_command": "4/6+RK",
+   "startup": 0.4,
+   "active": 0.033,
+   "recovery": 0.65,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:309",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "strike"
+  },
+  "1+2": {
+   "name": "KING TYRANT 1+2 (T3 xiaoyu r314)",
+   "input": "1+2",
+   "t3_source": "xiaoyu",
+   "t3_row": 314,
+   "t3_command": "LP+RP",
+   "startup": 0.433,
+   "active": 0.017,
+   "recovery": 0.65,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:314",
+   "input_slots": [
+    "1+2"
+   ],
+   "move_class": "strike"
+  },
+  "1+2_r315": {
+   "name": "KING TYRANT 1+2_r315 (T3 xiaoyu r315)",
+   "input": "1+2_r315",
+   "t3_source": "xiaoyu",
+   "t3_row": 315,
+   "t3_command": "LP+RP",
+   "startup": 0.383,
+   "active": 0.017,
+   "recovery": 0.65,
+   "damage": 9,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:315",
+   "input_slots": [
+    "1+2"
+   ],
+   "move_class": "strike"
+  },
+  "1+2_r316": {
+   "name": "KING TYRANT 1+2_r316 (T3 xiaoyu r316)",
+   "input": "1+2_r316",
+   "t3_source": "xiaoyu",
+   "t3_row": 316,
+   "t3_command": "LP+RP",
+   "startup": 0.35,
+   "active": 0.017,
+   "recovery": 0.65,
+   "damage": 8,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:316",
+   "input_slots": [
+    "1+2"
+   ],
+   "move_class": "strike"
+  },
+  "1+2_r320": {
+   "name": "KING TYRANT 1+2_r320 (T3 xiaoyu r320)",
+   "input": "1+2_r320",
+   "t3_source": "xiaoyu",
+   "t3_row": 320,
+   "t3_command": "LP+RP",
+   "startup": 0.317,
+   "active": 0.05,
+   "recovery": 0.683,
+   "damage": 16,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:320",
+   "input_slots": [
+    "1+2"
+   ],
+   "move_class": "strike"
+  },
+  "1+2_c57_r321": {
+   "name": "KING TYRANT 1+2_c57_r321 (T3 xiaoyu r321)",
+   "input": "1+2_c57_r321",
+   "t3_source": "xiaoyu",
+   "t3_row": 321,
+   "t3_command": "LP+RP",
+   "startup": 0.317,
+   "active": 0.05,
+   "recovery": 0.683,
+   "damage": 16,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:321",
+   "input_slots": [
+    "1+2"
+   ],
+   "move_class": "strike",
+   "t3_condition": 57
+  },
+  "3_r322": {
+   "name": "KING TYRANT 3_r322 (T3 xiaoyu r322)",
+   "input": "3_r322",
+   "t3_source": "xiaoyu",
+   "t3_row": 322,
+   "t3_command": "LK",
+   "startup": 0.383,
+   "active": 0.05,
+   "recovery": 0.85,
+   "damage": 9,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:322",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "f+3+4": {
+   "name": "KING TYRANT f+3+4 (T3 xiaoyu r335)",
+   "input": "f+3+4",
+   "t3_source": "xiaoyu",
+   "t3_row": 335,
+   "t3_command": "6+LK+RK",
+   "startup": 0.617,
+   "active": 0.233,
+   "recovery": 0.55,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:335",
+   "input_slots": [
+    "f+3+4"
+   ],
+   "move_class": "strike"
+  },
+  "1_c18_r336": {
+   "name": "KING TYRANT 1_c18_r336 (T3 xiaoyu r336)",
+   "input": "1_c18_r336",
+   "t3_source": "xiaoyu",
+   "t3_row": 336,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 1.667,
+   "damage": 18,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:336",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 18
+  },
+  "1_c19_r338": {
+   "name": "KING TYRANT 1_c19_r338 (T3 xiaoyu r338)",
+   "input": "1_c19_r338",
+   "t3_source": "xiaoyu",
+   "t3_row": 338,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 1.667,
+   "damage": 18,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:338",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 19
+  },
+  "2_r359": {
+   "name": "KING TYRANT 2_r359 (T3 xiaoyu r359)",
+   "input": "2_r359",
+   "t3_source": "xiaoyu",
+   "t3_row": 359,
+   "t3_command": "RP",
+   "startup": 0.8,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 12,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:359",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "3_r372": {
+   "name": "KING TYRANT 3_r372 (T3 xiaoyu r372)",
+   "input": "3_r372",
+   "t3_source": "xiaoyu",
+   "t3_row": 372,
+   "t3_command": "LK",
+   "startup": 0.367,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 4,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:372",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "4_r373": {
+   "name": "KING TYRANT 4_r373 (T3 xiaoyu r373)",
+   "input": "4_r373",
+   "t3_source": "xiaoyu",
+   "t3_row": 373,
+   "t3_command": "RK",
+   "startup": 0.367,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 7,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:373",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "3_c36_r374": {
+   "name": "KING TYRANT 3_c36_r374 (T3 xiaoyu r374)",
+   "input": "3_c36_r374",
+   "t3_source": "xiaoyu",
+   "t3_row": 374,
+   "t3_command": "LK",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.15,
+   "damage": 4,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:374",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "d+4_c36_r375": {
+   "name": "KING TYRANT d+4_c36_r375 (T3 xiaoyu r375)",
+   "input": "d+4_c36_r375",
+   "t3_source": "xiaoyu",
+   "t3_row": 375,
+   "t3_command": "2+RK",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.217,
+   "damage": 6,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:375",
+   "input_slots": [
+    "d+4"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "1_c36_r382": {
+   "name": "KING TYRANT 1_c36_r382 (T3 xiaoyu r382)",
+   "input": "1_c36_r382",
+   "t3_source": "xiaoyu",
+   "t3_row": 382,
+   "t3_command": "any-button",
+   "startup": 0.367,
+   "active": 0.017,
+   "recovery": 0.667,
+   "damage": 5,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:382",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "1_c36_r383": {
+   "name": "KING TYRANT 1_c36_r383 (T3 xiaoyu r383)",
+   "input": "1_c36_r383",
+   "t3_source": "xiaoyu",
+   "t3_row": 383,
+   "t3_command": "any-button",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 8,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:383",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "1_c36_r386": {
+   "name": "KING TYRANT 1_c36_r386 (T3 xiaoyu r386)",
+   "input": "1_c36_r386",
+   "t3_source": "xiaoyu",
+   "t3_row": 386,
+   "t3_command": "any-button",
+   "startup": 0.233,
+   "active": 0.017,
+   "recovery": 0.667,
+   "damage": 4,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:386",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "1_c36_r387": {
+   "name": "KING TYRANT 1_c36_r387 (T3 xiaoyu r387)",
+   "input": "1_c36_r387",
+   "t3_source": "xiaoyu",
+   "t3_row": 387,
+   "t3_command": "any-button",
+   "startup": 0.183,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 6,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:387",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "1_c2_r570": {
+   "name": "KING TYRANT 1_c2_r570 (T3 xiaoyu r570)",
+   "input": "1_c2_r570",
+   "t3_source": "xiaoyu",
+   "t3_row": 570,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 2.267,
+   "damage": 18,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:570",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 2
+  },
+  "1_c4_r572": {
+   "name": "KING TYRANT 1_c4_r572 (T3 xiaoyu r572)",
+   "input": "1_c4_r572",
+   "t3_source": "xiaoyu",
+   "t3_row": 572,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 2.0,
+   "damage": 26,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:572",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 4
+  },
+  "1_c5_r574": {
+   "name": "KING TYRANT 1_c5_r574 (T3 xiaoyu r574)",
+   "input": "1_c5_r574",
+   "t3_source": "xiaoyu",
+   "t3_row": 574,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 1.8,
+   "damage": 22,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:574",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 5
+  },
+  "1_c3_r576": {
+   "name": "KING TYRANT 1_c3_r576 (T3 xiaoyu r576)",
+   "input": "1_c3_r576",
+   "t3_source": "xiaoyu",
+   "t3_row": 576,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 2.033,
+   "damage": 29,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:576",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 3
+  },
+  "1_c2_r578": {
+   "name": "KING TYRANT 1_c2_r578 (T3 xiaoyu r578)",
+   "input": "1_c2_r578",
+   "t3_source": "xiaoyu",
+   "t3_row": 578,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 2.05,
+   "damage": 21,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:578",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 2
+  },
+  "1_c2_r580": {
+   "name": "KING TYRANT 1_c2_r580 (T3 xiaoyu r580)",
+   "input": "1_c2_r580",
+   "t3_source": "xiaoyu",
+   "t3_row": 580,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 1.333,
+   "damage": 2,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:xiaoyu:row:580",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 2
+  },
+  "1+2_t8": {
+   "name": "Faisão",
+   "input": "1+2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-1+2",
+   "t8_damage": "17",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 17,
+   "limb": "both",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-1+2",
+   "input_slots": [
+    "1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +3c",
+   "t8_input": "1+2"
+  },
+  "1,2": {
+   "name": "One Two Galopantes",
+   "input": "1,2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-1,2",
+   "t8_damage": ",12",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.367,
+   "damage": 17,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-1,2",
+   "input_slots": [
+    "1",
+    "1,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     12
+    ],
+    "total": 17
+   },
+   "note": "High; on block -3"
+  },
+  "1,2,3": {
+   "name": "One Two Lunging Brush Fire",
+   "input": "1,2,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-1,2,3",
+   "t8_damage": ",21",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 38,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-1,2,3",
+   "input_slots": [
+    "1",
+    "1,2",
+    "1,2,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     12,
+     21
+    ],
+    "total": 38
+   },
+   "note": "High; on block -9; knockdown on hit"
+  },
+  "1+2+3+4": {
+   "name": "Ki Charge",
+   "input": "1+2+3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-1+2+3+4",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-1+2+3+4",
+   "input_slots": [
+    "1+2+3+4"
+   ],
+   "move_class": "special"
+  },
+  "1,2,4": {
+   "name": "One Two Galopantes (4)",
+   "input": "1,2,4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-1,2,4",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.75,
+   "damage": 17,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-1,2,4",
+   "input_slots": [
+    "1",
+    "1,2",
+    "1,2,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     12
+    ],
+    "total": 17
+   },
+   "note": "on block +6"
+  },
+  "1,2,4~3": {
+   "name": "Chute Baixo",
+   "input": "1,2,4~3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-1,2,4~3",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 1.083,
+   "damage": 37,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-1,2,4~3",
+   "input_slots": [
+    "1",
+    "1,2",
+    "1,2,4~3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     12,
+     20
+    ],
+    "total": 37
+   },
+   "note": "Low; on block -14c; knockdown on hit"
+  },
+  "1,2,4~4": {
+   "name": "Chute Alto",
+   "input": "1,2,4~4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-1,2,4~4",
+   "t8_damage": ",27",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 1.05,
+   "damage": 44,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-1,2,4~4",
+   "input_slots": [
+    "1",
+    "1,2",
+    "1,2,4~4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     12,
+     27
+    ],
+    "total": 44
+   },
+   "note": "High; on block +8~+10"
+  },
+  "1,3": {
+   "name": "Céu Gafanhoto",
+   "input": "1,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-1,3",
+   "t8_damage": ",16",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 21,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-1,3",
+   "input_slots": [
+    "1",
+    "1,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     5,
+     16
+    ],
+    "total": 21
+   },
+   "note": "Mid; on block -14"
+  },
+  "2,1": {
+   "name": "Move 1 (1)",
+   "input": "2,1",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-2,1",
+   "t8_damage": ",13",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 23,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:eddy:eddy-2,1",
+   "input_slots": [
+    "2",
+    "2,1"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     13
+    ],
+    "total": 23
+   },
+   "note": "High; on block -9"
+  },
+  "2,1,4": {
+   "name": "Combo Furacão",
+   "input": "2,1,4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-2,1,4",
+   "t8_damage": ",21",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 44,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-2,1,4",
+   "input_slots": [
+    "2",
+    "2,1",
+    "2,1,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     13,
+     21
+    ],
+    "total": 44
+   },
+   "note": "Mid; on block -12~-10; knockdown on hit"
+  },
+  "2+3": {
+   "name": "Heat Burst",
+   "input": "2+3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-2+3",
+   "t8_damage": "[12;12]",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 24,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:eddy:eddy-2+3",
+   "input_slots": [
+    "2+3"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     12,
+     12
+    ],
+    "total": 24
+   },
+   "note": "Mid; on block +1"
+  },
+  "2,3": {
+   "name": "Batida de Compasso",
+   "input": "2,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-2,3",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.433,
+   "damage": 30,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-2,3",
+   "input_slots": [
+    "2",
+    "2,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     20
+    ],
+    "total": 30
+   },
+   "note": "Mid; on block -8"
+  },
+  "3,3": {
+   "name": "Sincelo",
+   "input": "3,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-3,3",
+   "t8_damage": ",22",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.417,
+   "damage": 34,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-3,3",
+   "input_slots": [
+    "3",
+    "3,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     22
+    ],
+    "total": 34
+   },
+   "note": "Mid; on block -3"
+  },
+  "4,4": {
+   "name": "Lufada",
+   "input": "4,4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-4,4",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 30,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-4,4",
+   "input_slots": [
+    "4",
+    "4,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     20
+    ],
+    "total": 30
+   },
+   "note": "Mid; on block -7"
+  },
+  "b+1": {
+   "name": "Move b+1 (b+1)",
+   "input": "b+1",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-b+1",
+   "t8_damage": "15",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.417,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-b+1",
+   "input_slots": [
+    "b+1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -7"
+  },
+  "b+1+2": {
+   "name": "Back Bananeira",
+   "input": "b+1+2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-b+1+2",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.467,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-b+1+2",
+   "input_slots": [
+    "b+1+2"
+   ],
+   "move_class": "special"
+  },
+  "b+1,4": {
+   "name": "Move 4 (4)",
+   "input": "b+1,4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-b+1,4",
+   "t8_damage": ",10",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:eddy:eddy-b+1,4",
+   "input_slots": [
+    "b+1",
+    "b+1,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     10
+    ],
+    "total": 25
+   },
+   "note": "Mid; on block -8"
+  },
+  "b+1,4,3": {
+   "name": "Move 3 (3)",
+   "input": "b+1,4,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-b+1,4,3",
+   "t8_damage": ",8",
+   "startup": 0.383,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 33,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-b+1,4,3",
+   "input_slots": [
+    "b+1",
+    "b+1,4",
+    "b+1,4,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     10,
+     8
+    ],
+    "total": 33
+   },
+   "note": "Mid; on block -13"
+  },
+  "b+1,4,3,3+4": {
+   "name": "Aú do Sol",
+   "input": "b+1,4,3,3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-b+1,4,3,3+4",
+   "t8_damage": ",7,20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 60,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-b+1,4,3,3+4",
+   "input_slots": [
+    "b+1",
+    "b+1,4",
+    "b+1,4,3",
+    "b+1,4,3,3+4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     10,
+     8,
+     7,
+     20
+    ],
+    "total": 60
+   },
+   "note": "Mid, Mid; on block -12; knockdown on hit"
+  },
+  "b+1,4,3+4": {
+   "name": "Aú da Lua",
+   "input": "b+1,4,3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-b+1,4,3+4",
+   "t8_damage": ",7,7",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 39,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-b+1,4,3+4",
+   "input_slots": [
+    "b+1",
+    "b+1,4",
+    "b+1,4,3+4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     10,
+     7,
+     7
+    ],
+    "total": 39
+   },
+   "note": "Low; on block -24c"
+  },
+  "b+2": {
+   "name": "Move b+2 (b+2)",
+   "input": "b+2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-b+2",
+   "t8_damage": "12",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 12,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:eddy:eddy-b+2",
+   "input_slots": [
+    "b+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -8"
+  },
+  "b+2,3": {
+   "name": "Move 3 (3)",
+   "input": "b+2,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-b+2,3",
+   "t8_damage": ",13",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 25,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:eddy:eddy-b+2,3",
+   "input_slots": [
+    "b+2",
+    "b+2,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     13
+    ],
+    "total": 25
+   },
+   "note": "Mid; on block -11"
+  },
+  "b+2,3,3": {
+   "name": "Combo Martelo",
+   "input": "b+2,3,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-b+2,3,3",
+   "t8_damage": ",25",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 50,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-b+2,3,3",
+   "input_slots": [
+    "b+2",
+    "b+2,3",
+    "b+2,3,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     13,
+     25
+    ],
+    "total": 50
+   },
+   "note": "Mid; on block -14; knockdown on hit"
+  },
+  "b+2,4": {
+   "name": "Calcanheira",
+   "input": "b+2,4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-b+2,4",
+   "t8_damage": ",23",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 35,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-b+2,4",
+   "input_slots": [
+    "b+2",
+    "b+2,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     23
+    ],
+    "total": 35
+   },
+   "note": "High; on block -7; knockdown on hit"
+  },
+  "b+3": {
+   "name": "Move b+3 (b+3)",
+   "input": "b+3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-b+3",
+   "t8_damage": "10",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 10,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:eddy:eddy-b+3",
+   "input_slots": [
+    "b+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -9"
+  },
+  "b+3,3": {
+   "name": "Relâmpago",
+   "input": "b+3,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-b+3,3",
+   "t8_damage": ",21",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 31,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-b+3,3",
+   "input_slots": [
+    "b+3",
+    "b+3,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     21
+    ],
+    "total": 31
+   },
+   "note": "Mid; on block -15; knockdown on hit"
+  },
+  "b+3+4": {
+   "name": "Lunging Brush Fire",
+   "input": "b+3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-b+3+4",
+   "t8_damage": "28",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 28,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:eddy:eddy-b+3+4",
+   "input_slots": [
+    "b+3+4"
+   ],
+   "move_class": "strike",
+   "note": "High; on block -9; knockdown on hit"
+  },
+  "b+4": {
+   "name": "Move b+4 (b+4)",
+   "input": "b+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-b+4",
+   "t8_damage": "14",
+   "startup": 0.35,
+   "active": 0.033,
+   "recovery": 0.4,
+   "damage": 14,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 7,
+   "anim_ref": "t8:eddy:eddy-b+4",
+   "input_slots": [
+    "b+4"
+   ],
+   "move_class": "strike",
+   "note": "High; on block +0"
+  },
+  "b+4,4": {
+   "name": "Move 4 (4)",
+   "input": "b+4,4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-b+4,4",
+   "t8_damage": ",6,6",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 26,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 13,
+   "anim_ref": "t8:eddy:eddy-b+4,4",
+   "input_slots": [
+    "b+4",
+    "b+4,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     14,
+     6,
+     6
+    ],
+    "total": 26
+   },
+   "note": "Mid, Mid; on block -9"
+  },
+  "b+4,4,3": {
+   "name": "Leg Whip Mars Attack Flip",
+   "input": "b+4,4,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-b+4,4,3",
+   "t8_damage": ",10",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 36,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-b+4,4,3",
+   "input_slots": [
+    "b+4",
+    "b+4,4",
+    "b+4,4,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     14,
+     6,
+     6,
+     10
+    ],
+    "total": 36
+   },
+   "note": "Mid; on block +4c; knockdown on hit"
+  },
+  "Back throw": {
+   "name": "Back Rodeo Spin",
+   "input": "Back throw",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-Back throw",
+   "t8_damage": "50",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 50,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-back throw",
+   "input_slots": [
+    "Back throw"
+   ],
+   "move_class": "strike",
+   "note": "th(h)"
+  },
+  "(back to wall).b,b,UB": {
+   "name": "Wall Jump Backflip",
+   "input": "(back to wall).b,b,UB",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-(back to wall).b,b,UB",
+   "t8_damage": "21",
+   "startup": 0.583,
+   "active": 0.033,
+   "recovery": 0.283,
+   "damage": 21,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-(back to wall).b,b,ub",
+   "input_slots": [
+    "(back to wall).b,b,UB"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +1"
+  },
+  "b,B+2+3": {
+   "name": "Fruit Picker",
+   "input": "b,B+2+3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-b,B+2+3",
+   "t8_damage": "25,30",
+   "startup": 1.283,
+   "active": 0.033,
+   "recovery": 1.417,
+   "damage": 55,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-b,b+2+3",
+   "input_slots": [
+    "b,B+2+3"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     25,
+     30
+    ],
+    "total": 55
+   },
+   "note": "h!, h!; knockdown on hit"
+  },
+  "b,ub": {
+   "name": "Flic Flac",
+   "input": "b,ub",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-b,ub",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 1.1,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-b,ub",
+   "input_slots": [
+    "b,ub"
+   ],
+   "move_class": "special"
+  },
+  "d+1+3": {
+   "name": "Vingativa Zanga",
+   "input": "d+1+3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-d+1+3",
+   "t8_damage": "30",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 30,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-d+1+3",
+   "input_slots": [
+    "d+1+3"
+   ],
+   "move_class": "strike",
+   "note": "th(m)"
+  },
+  "d+2": {
+   "name": "Move d+2 (d+2)",
+   "input": "d+2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-d+2",
+   "t8_damage": "10",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 10,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:eddy:eddy-d+2",
+   "input_slots": [
+    "d+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -9"
+  },
+  "d+2,3": {
+   "name": "Palmares Giro",
+   "input": "d+2,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-d+2,3",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 30,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-d+2,3",
+   "input_slots": [
+    "d+2",
+    "d+2,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     20
+    ],
+    "total": 30
+   },
+   "note": "Mid; on block -4c"
+  },
+  "d+2+4": {
+   "name": "Vingativa Funeral",
+   "input": "d+2+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-d+2+4",
+   "t8_damage": "35",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 35,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-d+2+4",
+   "input_slots": [
+    "d+2+4"
+   ],
+   "move_class": "strike",
+   "note": "th(m)"
+  },
+  "d+3": {
+   "name": "Sismo",
+   "input": "d+3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-d+3",
+   "t8_damage": "17",
+   "startup": 0.35,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 17,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-d+3",
+   "input_slots": [
+    "d+3"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -14c"
+  },
+  "d+3+4": {
+   "name": "Negativa",
+   "input": "d+3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-d+3+4",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.333,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-d+3+4",
+   "input_slots": [
+    "d+3+4"
+   ],
+   "move_class": "special"
+  },
+  "d+4,3": {
+   "name": "Aú de Bico",
+   "input": "d+4,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-d+4,3",
+   "t8_damage": ",20",
+   "startup": 0.35,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 30,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-d+4,3",
+   "input_slots": [
+    "d+4",
+    "d+4,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     20
+    ],
+    "total": 30
+   },
+   "note": "Mid; on block -13c"
+  },
+  "db+1+2": {
+   "name": "Double Arm Stinger",
+   "input": "db+1+2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-db+1+2",
+   "t8_damage": "20",
+   "startup": 0.5,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 20,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-db+1+2",
+   "input_slots": [
+    "db+1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -8"
+  },
+  "db+2": {
+   "name": "Move db+2 (db+2)",
+   "input": "db+2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-db+2",
+   "t8_damage": "10",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.6,
+   "damage": 10,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:eddy:eddy-db+2",
+   "input_slots": [
+    "db+2"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -18c"
+  },
+  "db+2,3": {
+   "name": "Twister Mirage",
+   "input": "db+2,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-db+2,3",
+   "t8_damage": ",23",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.633,
+   "damage": 33,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-db+2,3",
+   "input_slots": [
+    "db+2",
+    "db+2,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     23
+    ],
+    "total": 33
+   },
+   "note": "Mid; on block -18; knockdown on hit"
+  },
+  "db+3": {
+   "name": "Rasteira Forte",
+   "input": "db+3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-db+3",
+   "t8_damage": "21",
+   "startup": 0.467,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 21,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-db+3",
+   "input_slots": [
+    "db+3"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -14c"
+  },
+  "db+3+4": {
+   "name": "Move db+3+4 (db+3+4)",
+   "input": "db+3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-db+3+4",
+   "t8_damage": "12,12",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 24,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:eddy:eddy-db+3+4",
+   "input_slots": [
+    "db+3+4"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     12,
+     12
+    ],
+    "total": 24
+   },
+   "note": "Mid, Mid; on block -6"
+  },
+  "db+3+4,4": {
+   "name": "Move 4 (4)",
+   "input": "db+3+4,4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-db+3+4,4",
+   "t8_damage": ",10",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 34,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-db+3+4,4",
+   "input_slots": [
+    "db+3+4",
+    "db+3+4,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     12,
+     10
+    ],
+    "total": 34
+   },
+   "note": "Mid; on block -8"
+  },
+  "db+3+4,4,3": {
+   "name": "Meia-Lua de Compasso",
+   "input": "db+3+4,4,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-db+3+4,4,3",
+   "t8_damage": ",26",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 60,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-db+3+4,4,3",
+   "input_slots": [
+    "db+3+4",
+    "db+3+4,4",
+    "db+3+4,4,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     12,
+     10,
+     26
+    ],
+    "total": 60
+   },
+   "note": "Mid; on block -14; knockdown on hit"
+  },
+  "db+4": {
+   "name": "Move db+4 (db+4)",
+   "input": "db+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-db+4",
+   "t8_damage": "14",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 14,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 7,
+   "anim_ref": "t8:eddy:eddy-db+4",
+   "input_slots": [
+    "db+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -8"
+  },
+  "db+4,4": {
+   "name": "Rabo de Arraia",
+   "input": "db+4,4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-db+4,4",
+   "t8_damage": ",27",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 41,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-db+4,4",
+   "input_slots": [
+    "db+4",
+    "db+4,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     14,
+     27
+    ],
+    "total": 41
+   },
+   "note": "High; on block +1; knockdown on hit"
+  },
+  "df+1": {
+   "name": "Move df+1 (df+1)",
+   "input": "df+1",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-df+1",
+   "t8_damage": "10",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.367,
+   "damage": 10,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:eddy:eddy-df+1",
+   "input_slots": [
+    "df+1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -3"
+  },
+  "df+1,3": {
+   "name": "Gêiser",
+   "input": "df+1,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-df+1,3",
+   "t8_damage": ",21",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 31,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-df+1,3",
+   "input_slots": [
+    "df+1",
+    "df+1,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     21
+    ],
+    "total": 31
+   },
+   "note": "High; on block -7; knockdown on hit"
+  },
+  "df+2": {
+   "name": "Elbow Uppercut",
+   "input": "df+2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-df+2",
+   "t8_damage": "19",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 19,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-df+2",
+   "input_slots": [
+    "df+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -5"
+  },
+  "df+3": {
+   "name": "Mirage",
+   "input": "df+3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-df+3",
+   "t8_damage": "17",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.6,
+   "damage": 17,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-df+3",
+   "input_slots": [
+    "df+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -18~-16; knockdown on hit"
+  },
+  "df+3+4": {
+   "name": "Aú Reversão",
+   "input": "df+3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-df+3+4",
+   "t8_damage": "10,16",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.4,
+   "damage": 26,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 13,
+   "anim_ref": "t8:eddy:eddy-df+3+4",
+   "input_slots": [
+    "df+3+4"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     10,
+     16
+    ],
+    "total": 26
+   },
+   "note": "Mid, Mid; on block -3~+0; knockdown on hit"
+  },
+  "df+4": {
+   "name": "Kneecap Crusher",
+   "input": "df+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-df+4",
+   "t8_damage": "14",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 14,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 7,
+   "anim_ref": "t8:eddy:eddy-df+4",
+   "input_slots": [
+    "df+4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -12"
+  },
+  "f+1+2": {
+   "name": "Bananeira",
+   "input": "f+1+2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-f+1+2",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.417,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-f+1+2",
+   "input_slots": [
+    "f+1+2"
+   ],
+   "move_class": "special"
+  },
+  "f+2": {
+   "name": "Move f+2 (f+2)",
+   "input": "f+2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-f+2",
+   "t8_damage": "15",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 15,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-f+2",
+   "input_slots": [
+    "f+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -9"
+  },
+  "f+2,4": {
+   "name": "Ventania",
+   "input": "f+2,4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-f+2,4",
+   "t8_damage": ",17",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 32,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-f+2,4",
+   "input_slots": [
+    "f+2",
+    "f+2,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     17
+    ],
+    "total": 32
+   },
+   "note": "Low; on block -14c"
+  },
+  "f+3": {
+   "name": "Move f+3 (f+3)",
+   "input": "f+3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-f+3",
+   "t8_damage": "16",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 16,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-f+3",
+   "input_slots": [
+    "f+3"
+   ],
+   "move_class": "strike",
+   "note": "High; on block -5"
+  },
+  "f+3+4_t8": {
+   "name": "Xangô",
+   "input": "f+3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-f+3+4",
+   "t8_damage": "25",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 25,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:eddy:eddy-f+3+4",
+   "input_slots": [
+    "f+3+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -9; knockdown on hit",
+   "t8_input": "f+3+4"
+  },
+  "f+3,4": {
+   "name": "Combo do Funâmbolo",
+   "input": "f+3,4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-f+3,4",
+   "t8_damage": ",25",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 41,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-f+3,4",
+   "input_slots": [
+    "f+3",
+    "f+3,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     16,
+     25
+    ],
+    "total": 41
+   },
+   "note": "Mid; on block -11~-9; knockdown on hit"
+  },
+  "f+4": {
+   "name": "Move f+4 (f+4)",
+   "input": "f+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-f+4",
+   "t8_damage": "13",
+   "startup": 0.383,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 13,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:eddy:eddy-f+4",
+   "input_slots": [
+    "f+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -8"
+  },
+  "f+4,3": {
+   "name": "Move 3 (3)",
+   "input": "f+4,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-f+4,3",
+   "t8_damage": ",8",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 21,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-f+4,3",
+   "input_slots": [
+    "f+4",
+    "f+4,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     8
+    ],
+    "total": 21
+   },
+   "note": "Mid; on block -13"
+  },
+  "f+4,3,3+4": {
+   "name": "Aú do Sol",
+   "input": "f+4,3,3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-f+4,3,3+4",
+   "t8_damage": ",7,20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 48,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-f+4,3,3+4",
+   "input_slots": [
+    "f+4",
+    "f+4,3",
+    "f+4,3,3+4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     8,
+     7,
+     20
+    ],
+    "total": 48
+   },
+   "note": "Mid, Mid; on block -12; knockdown on hit"
+  },
+  "f+4,3+4": {
+   "name": "Aú da Lua",
+   "input": "f+4,3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-f+4,3+4",
+   "t8_damage": ",7,7",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.8,
+   "damage": 27,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:eddy:eddy-f+4,3+4",
+   "input_slots": [
+    "f+4",
+    "f+4,3+4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     7,
+     7
+    ],
+    "total": 27
+   },
+   "note": "Low, Low; on block -24c; knockdown on hit"
+  },
+  "FC.4": {
+   "name": "Move FC.4 (FC.4)",
+   "input": "FC.4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-FC.4",
+   "t8_damage": "6",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 6,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 3,
+   "anim_ref": "t8:eddy:eddy-fc.4",
+   "input_slots": [
+    "FC.4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -15"
+  },
+  "FC.df+3": {
+   "name": "Gafanhoto",
+   "input": "FC.df+3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-FC.df+3",
+   "t8_damage": "20",
+   "startup": 0.367,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-fc.df+3",
+   "input_slots": [
+    "FC.df+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +6"
+  },
+  "FC.df+4": {
+   "name": "Tornada",
+   "input": "FC.df+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-FC.df+4",
+   "t8_damage": "25",
+   "startup": 0.4,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:eddy:eddy-fc.df+4",
+   "input_slots": [
+    "FC.df+4"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -21c"
+  },
+  "f,F+3": {
+   "name": "Terremoto",
+   "input": "f,F+3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-f,F+3",
+   "t8_damage": "20",
+   "startup": 0.35,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 20,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-f,f+3",
+   "input_slots": [
+    "f,F+3"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -14c"
+  },
+  "f,F+3+4": {
+   "name": "Roda Gigante",
+   "input": "f,F+3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-f,F+3+4",
+   "t8_damage": "10,20",
+   "startup": 0.383,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 30,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-f,f+3+4",
+   "input_slots": [
+    "f,F+3+4"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     10,
+     20
+    ],
+    "total": 30
+   },
+   "note": "Mid, Mid; on block +5; knockdown on hit"
+  },
+  "f,F+4": {
+   "name": "Folha Ataque",
+   "input": "f,F+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-f,F+4",
+   "t8_damage": "25",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:eddy:eddy-f,f+4",
+   "input_slots": [
+    "f,F+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -12; knockdown on hit"
+  },
+  "f,f,F+3": {
+   "name": "Trovão",
+   "input": "f,f,F+3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-f,f,F+3",
+   "t8_damage": "30",
+   "startup": 0.417,
+   "active": 0.033,
+   "recovery": 0.65,
+   "damage": 30,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-f,f,f+3",
+   "input_slots": [
+    "f,f,F+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +8; knockdown on hit"
+  },
+  "FUFT.b+3+4": {
+   "name": "Whirling Spring Kick",
+   "input": "FUFT.b+3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-FUFT.b+3+4",
+   "t8_damage": "25",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 25,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:eddy:eddy-fuft.b+3+4",
+   "input_slots": [
+    "FUFT.b+3+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -15~-27; knockdown on hit"
+  },
+  "H.2+3": {
+   "name": "Caveirinha Zangada",
+   "input": "H.2+3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-H.2+3",
+   "t8_damage": "55",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 55,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-h.2+3",
+   "input_slots": [
+    "H.2+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +6"
+  },
+  "H.3+4": {
+   "name": "Guerreiro Explosivo",
+   "input": "H.3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-H.3+4",
+   "t8_damage": "20",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-h.3+4",
+   "input_slots": [
+    "H.3+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +5; knockdown on hit"
+  },
+  "H.qcf+4": {
+   "name": "Rabo de Arraia Liberado",
+   "input": "H.qcf+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-H.qcf+4",
+   "t8_damage": "35",
+   "startup": 0.367,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 35,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-h.qcf+4",
+   "input_slots": [
+    "H.qcf+4"
+   ],
+   "move_class": "strike",
+   "note": "High; on block +7; knockdown on hit"
+  },
+  "HSP.1": {
+   "name": "Godeme Trovoada",
+   "input": "HSP.1",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-HSP.1",
+   "t8_damage": "21",
+   "startup": 0.383,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 21,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-hsp.1",
+   "input_slots": [
+    "HSP.1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +6"
+  },
+  "HSP.1+2": {
+   "name": "Cabeçada Direta",
+   "input": "HSP.1+2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-HSP.1+2",
+   "t8_damage": "20",
+   "startup": 0.367,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-hsp.1+2",
+   "input_slots": [
+    "HSP.1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -12"
+  },
+  "HSP.1+3": {
+   "name": "Batucada",
+   "input": "HSP.1+3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-HSP.1+3",
+   "t8_damage": "26",
+   "startup": 0.383,
+   "active": 0.033,
+   "recovery": 0.383,
+   "damage": 26,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 13,
+   "anim_ref": "t8:eddy:eddy-hsp.1+3",
+   "input_slots": [
+    "HSP.1+3"
+   ],
+   "move_class": "strike",
+   "note": "th(h)"
+  },
+  "HSP.2": {
+   "name": "Move HSP.2 (HSP.2)",
+   "input": "HSP.2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-HSP.2",
+   "t8_damage": "15",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 15,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-hsp.2",
+   "input_slots": [
+    "HSP.2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -8"
+  },
+  "HSP.2,3": {
+   "name": "Combo Escorão",
+   "input": "HSP.2,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-HSP.2,3",
+   "t8_damage": ",23",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 38,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-hsp.2,3",
+   "input_slots": [
+    "HSP.2",
+    "HSP.2,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     23
+    ],
+    "total": 38
+   },
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "HSP.3": {
+   "name": "Move HSP.3 (HSP.3)",
+   "input": "HSP.3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-HSP.3",
+   "t8_damage": "10",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 10,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:eddy:eddy-hsp.3",
+   "input_slots": [
+    "HSP.3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -8"
+  },
+  "HSP.3,3": {
+   "name": "Move 3 (3)",
+   "input": "HSP.3,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-HSP.3,3",
+   "t8_damage": ",10",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-hsp.3,3",
+   "input_slots": [
+    "HSP.3",
+    "HSP.3,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     10
+    ],
+    "total": 20
+   },
+   "note": "High; on block -3"
+  },
+  "HSP.3,3,3": {
+   "name": "Enxurrada",
+   "input": "HSP.3,3,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-HSP.3,3,3",
+   "t8_damage": ",23",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 43,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-hsp.3,3,3",
+   "input_slots": [
+    "HSP.3",
+    "HSP.3,3",
+    "HSP.3,3,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     10,
+     23
+    ],
+    "total": 43
+   },
+   "note": "High; on block -5"
+  },
+  "HSP.4": {
+   "name": "Move HSP.4 (HSP.4)",
+   "input": "HSP.4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-HSP.4",
+   "t8_damage": "10",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.383,
+   "damage": 10,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 5,
+   "anim_ref": "t8:eddy:eddy-hsp.4",
+   "input_slots": [
+    "HSP.4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -1"
+  },
+  "HSP.4,2": {
+   "name": "Lança de Braço",
+   "input": "HSP.4,2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-HSP.4,2",
+   "t8_damage": ",21",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 31,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-hsp.4,2",
+   "input_slots": [
+    "HSP.4",
+    "HSP.4,2"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     21
+    ],
+    "total": 31
+   },
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "HSP.4,2~3": {
+   "name": "Salto Yotori",
+   "input": "HSP.4,2~3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-HSP.4,2~3",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 30,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-hsp.4,2~3",
+   "input_slots": [
+    "HSP.4",
+    "HSP.4,2~3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     10,
+     20
+    ],
+    "total": 30
+   },
+   "note": "Mid; on block +4c"
+  },
+  "HSP.b+3": {
+   "name": "Chapa Esquivando",
+   "input": "HSP.b+3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-HSP.b+3",
+   "t8_damage": "20",
+   "startup": 0.6,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-hsp.b+3",
+   "input_slots": [
+    "HSP.b+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -12; knockdown on hit"
+  },
+  "HSP.n,d": {
+   "name": "Negativa",
+   "input": "HSP.n,d",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-HSP.n,d",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.417,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-hsp.n,d",
+   "input_slots": [
+    "HSP.n,d"
+   ],
+   "move_class": "special"
+  },
+  "HSP.n,f": {
+   "name": "Move Forward",
+   "input": "HSP.n,f",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-HSP.n,f",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.467,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-hsp.n,f",
+   "input_slots": [
+    "HSP.n,f"
+   ],
+   "move_class": "special"
+  },
+  "Left throw": {
+   "name": "Missile Launcher",
+   "input": "Left throw",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-Left throw",
+   "t8_damage": "40",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 40,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-left throw",
+   "input_slots": [
+    "Left throw"
+   ],
+   "move_class": "strike",
+   "note": "th(h); on block -3"
+  },
+  "MD1.HSP.3+4": {
+   "name": "Yansan Mandinga",
+   "input": "MD1.HSP.3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-MD1.HSP.3+4",
+   "t8_damage": "6,6,16",
+   "startup": 0.35,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 28,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:eddy:eddy-md1.hsp.3+4",
+   "input_slots": [
+    "MD1.HSP.3+4"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     6,
+     6,
+     16
+    ],
+    "total": 28
+   },
+   "note": "Low, Mid, Mid; on block -14"
+  },
+  "MD1.HSP.b+4": {
+   "name": "Ogum Mandinga",
+   "input": "MD1.HSP.b+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-MD1.HSP.b+4",
+   "t8_damage": "23",
+   "startup": 0.383,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 23,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:eddy:eddy-md1.hsp.b+4",
+   "input_slots": [
+    "MD1.HSP.b+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +5"
+  },
+  "MD2.HSP.3+4": {
+   "name": "Yansan Mandinga",
+   "input": "MD2.HSP.3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-MD2.HSP.3+4",
+   "t8_damage": "16,6 (4),24 (12)",
+   "startup": 0.35,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 16,
+   "limb": "both",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-md2.hsp.3+4",
+   "input_slots": [
+    "MD2.HSP.3+4"
+   ],
+   "move_class": "strike",
+   "note": "Low, Mid, Mid; on block -14; knockdown on hit"
+  },
+  "MD2.HSP.b+4": {
+   "name": "Ogum Mandinga",
+   "input": "MD2.HSP.b+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-MD2.HSP.b+4",
+   "t8_damage": "23",
+   "startup": 0.383,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 23,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:eddy:eddy-md2.hsp.b+4",
+   "input_slots": [
+    "MD2.HSP.b+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +5; knockdown on hit"
+  },
+  "qcb+4": {
+   "name": "Voragem",
+   "input": "qcb+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-qcb+4",
+   "t8_damage": "25",
+   "startup": 0.35,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:eddy:eddy-qcb+4",
+   "input_slots": [
+    "qcb+4"
+   ],
+   "move_class": "strike",
+   "note": "High; on block +3; knockdown on hit"
+  },
+  "R.df+1+2": {
+   "name": "Enchente de Axé",
+   "input": "R.df+1+2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-R.df+1+2",
+   "t8_damage": "55+",
+   "startup": 0.333,
+   "active": 0.3,
+   "recovery": 0.65,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-r.df+1+2",
+   "input_slots": [
+    "R.df+1+2"
+   ],
+   "move_class": "special",
+   "note": "Mid, Throw; on block -18"
+  },
+  "Right throw": {
+   "name": "Shadow Dancer",
+   "input": "Right throw",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-Right throw",
+   "t8_damage": "40",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 40,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-right throw",
+   "input_slots": [
+    "Right throw"
+   ],
+   "move_class": "strike",
+   "note": "th(h); on block -3"
+  },
+  "RLX.1": {
+   "name": "Move RLX.1 (RLX.1)",
+   "input": "RLX.1",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-RLX.1",
+   "t8_damage": "11",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 11,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:eddy:eddy-rlx.1",
+   "input_slots": [
+    "RLX.1"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -11c"
+  },
+  "RLX.1+2": {
+   "name": "Cabeçada Fixa",
+   "input": "RLX.1+2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-RLX.1+2",
+   "t8_damage": "25",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 25,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:eddy:eddy-rlx.1+2",
+   "input_slots": [
+    "RLX.1+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -8; knockdown on hit"
+  },
+  "RLX.1,3": {
+   "name": "Terra Gafanhoto",
+   "input": "RLX.1,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-RLX.1,3",
+   "t8_damage": ",17",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 28,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:eddy:eddy-rlx.1,3",
+   "input_slots": [
+    "RLX.1",
+    "RLX.1,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     11,
+     17
+    ],
+    "total": 28
+   },
+   "note": "Mid; on block -14"
+  },
+  "RLX.2": {
+   "name": "Move RLX.2 (RLX.2)",
+   "input": "RLX.2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-RLX.2",
+   "t8_damage": "16",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.383,
+   "damage": 16,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-rlx.2",
+   "input_slots": [
+    "RLX.2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -2"
+  },
+  "RLX.2,4": {
+   "name": "Move 4 (4)",
+   "input": "RLX.2,4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-RLX.2,4",
+   "t8_damage": ",17",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 33,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-rlx.2,4",
+   "input_slots": [
+    "RLX.2",
+    "RLX.2,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     16,
+     17
+    ],
+    "total": 33
+   },
+   "note": "High; on block -5"
+  },
+  "RLX.2,4,4": {
+   "name": "Maré Cheia",
+   "input": "RLX.2,4,4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-RLX.2,4,4",
+   "t8_damage": ",25",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 58,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-rlx.2,4,4",
+   "input_slots": [
+    "RLX.2",
+    "RLX.2,4",
+    "RLX.2,4,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     16,
+     17,
+     25
+    ],
+    "total": 58
+   },
+   "note": "Mid; on block -14; knockdown on hit"
+  },
+  "RLX.3": {
+   "name": "Move RLX.3 (RLX.3)",
+   "input": "RLX.3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-RLX.3",
+   "t8_damage": "12",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 12,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:eddy:eddy-rlx.3",
+   "input_slots": [
+    "RLX.3"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -26c"
+  },
+  "RLX.3,3": {
+   "name": "Iemanjá",
+   "input": "RLX.3,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-RLX.3,3",
+   "t8_damage": ",30",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 42,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-rlx.3,3",
+   "input_slots": [
+    "RLX.3",
+    "RLX.3,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     30
+    ],
+    "total": 42
+   },
+   "note": "High; on block -13; knockdown on hit"
+  },
+  "RLX.3+4": {
+   "name": "Troca e Ataque",
+   "input": "RLX.3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-RLX.3+4",
+   "t8_damage": "24",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.7,
+   "damage": 24,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:eddy:eddy-rlx.3+4",
+   "input_slots": [
+    "RLX.3+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -18; knockdown on hit"
+  },
+  "RLX.4": {
+   "name": "Move RLX.4 (RLX.4)",
+   "input": "RLX.4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-RLX.4",
+   "t8_damage": "14",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 14,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 7,
+   "anim_ref": "t8:eddy:eddy-rlx.4",
+   "input_slots": [
+    "RLX.4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -8"
+  },
+  "RLX.4,3": {
+   "name": "Chibata Ardente",
+   "input": "RLX.4,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-RLX.4,3",
+   "t8_damage": ",25",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 39,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-rlx.4,3",
+   "input_slots": [
+    "RLX.4",
+    "RLX.4,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     14,
+     25
+    ],
+    "total": 39
+   },
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "RLX.4,3+4": {
+   "name": "Chibata Avalanche",
+   "input": "RLX.4,3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-RLX.4,3+4",
+   "t8_damage": ",27",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 41,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-rlx.4,3+4",
+   "input_slots": [
+    "RLX.4",
+    "RLX.4,3+4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     14,
+     27
+    ],
+    "total": 41
+   },
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "RLX.n,d": {
+   "name": "Bananeira",
+   "input": "RLX.n,d",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-RLX.n,d",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.45,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-rlx.n,d",
+   "input_slots": [
+    "RLX.n,d"
+   ],
+   "move_class": "special"
+  },
+  "RLX.n,f": {
+   "name": "Move Forward",
+   "input": "RLX.n,f",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-RLX.n,f",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.45,
+   "damage": 0,
+   "limb": "both",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-rlx.n,f",
+   "input_slots": [
+    "RLX.n,f"
+   ],
+   "move_class": "special"
+  },
+  "RLX.uf+1+2": {
+   "name": "Rodeo Spin",
+   "input": "RLX.uf+1+2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-RLX.uf+1+2",
+   "t8_damage": "40",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 40,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-rlx.uf+1+2",
+   "input_slots": [
+    "RLX.uf+1+2"
+   ],
+   "move_class": "strike",
+   "note": "th(h); on block -6"
+  },
+  "SS.3": {
+   "name": "Hot Plate Special",
+   "input": "SS.3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-SS.3",
+   "t8_damage": "17",
+   "startup": 0.417,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 17,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-ss.3",
+   "input_slots": [
+    "SS.3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +0"
+  },
+  "SS.3+4": {
+   "name": "Faísca",
+   "input": "SS.3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-SS.3+4",
+   "t8_damage": "6,10",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 16,
+   "limb": "both",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-ss.3+4",
+   "input_slots": [
+    "SS.3+4"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     6,
+     10
+    ],
+    "total": 16
+   },
+   "note": "High, High; on block -7; knockdown on hit"
+  },
+  "SS.4": {
+   "name": "Troca Baixa",
+   "input": "SS.4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-SS.4",
+   "t8_damage": "7,10",
+   "startup": 0.35,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 17,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-ss.4",
+   "input_slots": [
+    "SS.4"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     7,
+     10
+    ],
+    "total": 17
+   },
+   "note": "Low, Low; on block -13c"
+  },
+  "u+1+2": {
+   "name": "Vassoura",
+   "input": "u+1+2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-u+1+2",
+   "t8_damage": "20",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-u+1+2",
+   "input_slots": [
+    "u+1+2"
+   ],
+   "move_class": "strike",
+   "note": "High; on block +0; knockdown on hit"
+  },
+  "u+3": {
+   "name": "Acrobacia",
+   "input": "u+3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-u+3",
+   "t8_damage": "30",
+   "startup": 0.633,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 30,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-u+3",
+   "input_slots": [
+    "u+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +0; knockdown on hit"
+  },
+  "u+4": {
+   "name": "Back Summy",
+   "input": "u+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-u+4",
+   "t8_damage": null,
+   "startup": 0.167,
+   "active": 0.3,
+   "recovery": 0.317,
+   "damage": 0,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-u+4",
+   "input_slots": [
+    "u+4"
+   ],
+   "move_class": "special",
+   "note": "sp"
+  },
+  "u+4~3": {
+   "name": "Chute Baixo",
+   "input": "u+4~3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-u+4~3",
+   "t8_damage": "20",
+   "startup": 0.533,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-u+4~3",
+   "input_slots": [
+    "u+4~3"
+   ],
+   "move_class": "strike",
+   "note": "Low; on block -14c; knockdown on hit"
+  },
+  "u+4~4": {
+   "name": "Chute Alto",
+   "input": "u+4~4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-u+4~4",
+   "t8_damage": "27",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 27,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:eddy:eddy-u+4~4",
+   "input_slots": [
+    "u+4~4"
+   ],
+   "move_class": "strike",
+   "note": "High; on block +8"
+  },
+  "ub+3": {
+   "name": "Perna da Lua",
+   "input": "ub+3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-ub+3",
+   "t8_damage": "25",
+   "startup": 0.517,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 25,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:eddy:eddy-ub+3",
+   "input_slots": [
+    "ub+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +4c; knockdown on hit"
+  },
+  "ub+4": {
+   "name": "Satellite Moon",
+   "input": "ub+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-ub+4",
+   "t8_damage": "12",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 12,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:eddy:eddy-ub+4",
+   "input_slots": [
+    "ub+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -17"
+  },
+  "uf+1": {
+   "name": "Move uf+1 (uf+1)",
+   "input": "uf+1",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-uf+1",
+   "t8_damage": "12",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 12,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:eddy:eddy-uf+1",
+   "input_slots": [
+    "uf+1"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -5"
+  },
+  "uf+1+2": {
+   "name": "Cabra Macaco Throw",
+   "input": "uf+1+2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-uf+1+2",
+   "t8_damage": "40",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 40,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-uf+1+2",
+   "input_slots": [
+    "uf+1+2"
+   ],
+   "move_class": "strike",
+   "note": "th(h); on block -6; knockdown on hit"
+  },
+  "uf+1,3": {
+   "name": "Oxóssi",
+   "input": "uf+1,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-uf+1,3",
+   "t8_damage": ",23",
+   "startup": 0.483,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 35,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-uf+1,3",
+   "input_slots": [
+    "uf+1",
+    "uf+1,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     23
+    ],
+    "total": 35
+   },
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "uf+1,4": {
+   "name": "Oxum",
+   "input": "uf+1,4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-uf+1,4",
+   "t8_damage": ",25",
+   "startup": 0.483,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 37,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-uf+1,4",
+   "input_slots": [
+    "uf+1",
+    "uf+1,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     12,
+     25
+    ],
+    "total": 37
+   },
+   "note": "High; on block -8"
+  },
+  "uf+2": {
+   "name": "Asfixiante",
+   "input": "uf+2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-uf+2",
+   "t8_damage": "21",
+   "startup": 0.367,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 21,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-uf+2",
+   "input_slots": [
+    "uf+2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "uf+3": {
+   "name": "Move uf+3 (uf+3)",
+   "input": "uf+3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-uf+3",
+   "t8_damage": "15",
+   "startup": 0.433,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 8,
+   "anim_ref": "t8:eddy:eddy-uf+3",
+   "input_slots": [
+    "uf+3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -10c"
+  },
+  "uf+3,3": {
+   "name": "Jumping Jacks Mirage",
+   "input": "uf+3,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-uf+3,3",
+   "t8_damage": ",20",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 35,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-uf+3,3",
+   "input_slots": [
+    "uf+3",
+    "uf+3,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     20
+    ],
+    "total": 35
+   },
+   "note": "Mid; on block -18; knockdown on hit"
+  },
+  "uf+3+4": {
+   "name": "Meia-Lua Pulando",
+   "input": "uf+3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-uf+3+4",
+   "t8_damage": "10,14",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 24,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:eddy:eddy-uf+3+4",
+   "input_slots": [
+    "uf+3+4"
+   ],
+   "move_class": "strike",
+   "multi_hit": {
+    "hits": [
+     10,
+     14
+    ],
+    "total": 24
+   },
+   "note": "Mid, High; on block -13; knockdown on hit"
+  },
+  "uf+3,4": {
+   "name": "Baixo",
+   "input": "uf+3,4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-uf+3,4",
+   "t8_damage": ",10",
+   "startup": 0.4,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:eddy:eddy-uf+3,4",
+   "input_slots": [
+    "uf+3",
+    "uf+3,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     15,
+     10
+    ],
+    "total": 25
+   },
+   "note": "Low; on block -14c"
+  },
+  "uf+4": {
+   "name": "Chapa Giratória",
+   "input": "uf+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-uf+4",
+   "t8_damage": "20",
+   "startup": 0.367,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-uf+4",
+   "input_slots": [
+    "uf+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -9"
+  },
+  "uf,n,4": {
+   "name": "Delayed Rising Toe Kick",
+   "input": "uf,n,4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-uf,n,4",
+   "t8_damage": "20",
+   "startup": 0.383,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-uf,n,4",
+   "input_slots": [
+    "uf,n,4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "ws1": {
+   "name": "Move ws1 (ws1)",
+   "input": "ws1",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-ws1",
+   "t8_damage": "6",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 6,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 3,
+   "anim_ref": "t8:eddy:eddy-ws1",
+   "input_slots": [
+    "ws1"
+   ],
+   "move_class": "strike",
+   "note": "High; on block -6"
+  },
+  "ws1,3": {
+   "name": "Fuzilação",
+   "input": "ws1,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-ws1,3",
+   "t8_damage": ",14",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-ws1,3",
+   "input_slots": [
+    "ws1",
+    "ws1,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     6,
+     14
+    ],
+    "total": 20
+   },
+   "note": "Mid; on block -15; knockdown on hit"
+  },
+  "ws1,4": {
+   "name": "Chapeu de Couro",
+   "input": "ws1,4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-ws1,4",
+   "t8_damage": ",23",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 29,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 14,
+   "anim_ref": "t8:eddy:eddy-ws1,4",
+   "input_slots": [
+    "ws1",
+    "ws1,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     6,
+     23
+    ],
+    "total": 29
+   },
+   "note": "High; on block -7"
+  },
+  "ws2": {
+   "name": "Machado",
+   "input": "ws2",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-ws2",
+   "t8_damage": "20",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-ws2",
+   "input_slots": [
+    "ws2"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -18; knockdown on hit"
+  },
+  "ws3": {
+   "name": "Martelo",
+   "input": "ws3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-ws3",
+   "t8_damage": "20",
+   "startup": 0.317,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-ws3",
+   "input_slots": [
+    "ws3"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -13; knockdown on hit"
+  },
+  "ws3+4": {
+   "name": "Front Stinger",
+   "input": "ws3+4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-ws3+4",
+   "t8_damage": "20",
+   "startup": 0.417,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 20,
+   "limb": "both",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "anim_ref": "t8:eddy:eddy-ws3+4",
+   "input_slots": [
+    "ws3+4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block +5c"
+  },
+  "ws4": {
+   "name": "Move ws4 (ws4)",
+   "input": "ws4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-ws4",
+   "t8_damage": "13",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 13,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 6,
+   "anim_ref": "t8:eddy:eddy-ws4",
+   "input_slots": [
+    "ws4"
+   ],
+   "move_class": "strike",
+   "note": "Mid; on block -4"
+  },
+  "ws4,4": {
+   "name": "Move 4 (4)",
+   "input": "ws4,4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-ws4,4",
+   "t8_damage": ",10",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 23,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "t8:eddy:eddy-ws4,4",
+   "input_slots": [
+    "ws4",
+    "ws4,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     10
+    ],
+    "total": 23
+   },
+   "note": "High; on block -4"
+  },
+  "ws4,4,4": {
+   "name": "Move 4 (4)",
+   "input": "ws4,4,4",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-ws4,4,4",
+   "t8_damage": ",6,6",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 35,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-ws4,4,4",
+   "input_slots": [
+    "ws4",
+    "ws4,4",
+    "ws4,4,4"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     10,
+     6,
+     6
+    ],
+    "total": 35
+   },
+   "note": "Mid, Mid; on block -9"
+  },
+  "ws4,4,4,3": {
+   "name": "Tempestade",
+   "input": "ws4,4,4,3",
+   "t8_source": "eddy",
+   "t8_id": "Eddy-ws4,4,4,3",
+   "t8_damage": ",10",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 45,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "anim_ref": "t8:eddy:eddy-ws4,4,4,3",
+   "input_slots": [
+    "ws4",
+    "ws4,4",
+    "ws4,4,4",
+    "ws4,4,4,3"
+   ],
+   "move_class": "string",
+   "multi_hit": {
+    "hits": [
+     13,
+     10,
+     6,
+     6,
+     10
+    ],
+    "total": 45
+   },
+   "note": "Mid; on block +4c; knockdown on hit"
   }
  },
- "strings": [],
+ "strings": [
+  "1,2",
+  "1,2,3",
+  "1,2,4",
+  "1,2,4~3",
+  "1,2,4~4",
+  "1,3",
+  "2,1",
+  "2,1,4",
+  "2,3",
+  "3,3",
+  "4,4",
+  "b+1,4",
+  "b+1,4,3",
+  "b+1,4,3,3+4",
+  "b+1,4,3+4",
+  "b+2,3",
+  "b+2,3,3",
+  "b+2,4",
+  "b+3,3",
+  "b+4,4",
+  "b+4,4,3",
+  "d+2,3",
+  "d+4,3",
+  "db+2,3",
+  "db+3+4,4",
+  "db+3+4,4,3",
+  "db+4,4",
+  "df+1,3",
+  "f+2,4",
+  "f+3,4",
+  "f+4,3",
+  "f+4,3,3+4",
+  "f+4,3+4",
+  "HSP.2,3",
+  "HSP.3,3",
+  "HSP.3,3,3",
+  "HSP.4,2",
+  "HSP.4,2~3",
+  "RLX.1,3",
+  "RLX.2,4",
+  "RLX.2,4,4",
+  "RLX.3,3",
+  "RLX.4,3",
+  "RLX.4,3+4",
+  "uf+1,3",
+  "uf+1,4",
+  "uf+3,3",
+  "uf+3,4",
+  "ws1,3",
+  "ws1,4",
+  "ws4,4",
+  "ws4,4,4",
+  "ws4,4,4,3"
+ ],
  "specials": [
   {
    "input": "d/f+2",
    "t3_row": 270,
    "damage": 6,
    "throw": false,
-   "fallback": "directional \u2014 no motion inputs in T3 bank"
+   "fallback": "directional — no motion inputs in T3 bank"
   },
   {
    "input": "d+4",
    "t3_row": 371,
    "damage": 2,
    "throw": false,
-   "fallback": "directional \u2014 no motion inputs in T3 bank"
+   "fallback": "directional — no motion inputs in T3 bank"
+  },
+  {
+   "input": "1+2+3+4",
+   "damage": 0
+  },
+  {
+   "input": "b+1+2",
+   "damage": 0
+  },
+  {
+   "input": "b,ub",
+   "damage": 0
+  },
+  {
+   "input": "d+3+4",
+   "damage": 0
+  },
+  {
+   "input": "f+1+2",
+   "damage": 0
+  },
+  {
+   "input": "HSP.n,d",
+   "damage": 0
+  },
+  {
+   "input": "HSP.n,f",
+   "damage": 0
+  },
+  {
+   "input": "R.df+1+2",
+   "damage": 0
+  },
+  {
+   "input": "RLX.n,d",
+   "damage": 0
+  },
+  {
+   "input": "RLX.n,f",
+   "damage": 0
+  },
+  {
+   "input": "u+4",
+   "damage": 0
   }
  ],
  "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
- "schema_version": 2
+ "schema_version": 2,
+ "t3_bank": "moveset_xiaoyu.json",
+ "t3_bank_rows": 594,
+ "t3_bank_attack_rows": 111,
+ "generated_full_moveset": {
+  "by": "tools/gen-movesets-t3.py",
+  "date": "2026-10-20",
+  "note": "Full T3 bank depth merged over curated base; curated moves preserved verbatim. 594 rows, 243 attacks."
+ },
+ "canon_note": "Tyrant flavor on Eddy base.",
+ "forward_merge": {
+  "date": "2026-10-20",
+  "pr": 357,
+  "method": "semantic union of branch (moveset-cluster-a-t8) and main versions; main keeps contested move keys, branch entries rekeyed <key>_t8 with t8_input recorded; colliding branch specials appended with forward_merge_alt_of",
+  "branch_counts": {
+   "moves": 155,
+   "specials": 11,
+   "strings": 53
+  },
+  "main_counts": {
+   "moves": 113,
+   "specials": 2,
+   "strings": 0
+  },
+  "merged_counts": {
+   "moves": 258,
+   "specials": 13,
+   "strings": 53
+  },
+  "rekeyed_inputs": [
+   "1+2",
+   "f+3+4"
+  ]
+ }
 }

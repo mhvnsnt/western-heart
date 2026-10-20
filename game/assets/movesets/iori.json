@@ -1,0 +1,3945 @@
+{
+  "fighter": "iori",
+  "display": "IORI",
+  "tekken_base": "Iori Yagami (KOF)",
+  "t3_source": "heihachi",
+  "proxy": false,
+  "proxy_note": null,
+  "variant": 1,
+  "moves": {
+    "1": {
+      "name": "IORI 1 (T3 heihachi r43)",
+      "input": "1",
+      "t3_source": "heihachi",
+      "t3_row": 43,
+      "t3_command": "LP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 11,
+      "t3_damage": 18,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:43",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "2": {
+      "name": "IORI 2 (T3 heihachi r48)",
+      "input": "2",
+      "t3_source": "heihachi",
+      "t3_row": 48,
+      "t3_command": "RP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 12,
+      "t3_damage": 20,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:48",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike"
+    },
+    "3": {
+      "name": "IORI 3 (T3 heihachi r54)",
+      "input": "3",
+      "t3_source": "heihachi",
+      "t3_row": 54,
+      "t3_command": "LK",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 13,
+      "t3_damage": 22,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:54",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "4": {
+      "name": "IORI 4 (T3 heihachi r60)",
+      "input": "4",
+      "t3_source": "heihachi",
+      "t3_row": 60,
+      "t3_command": "RK",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 11,
+      "t3_damage": 18,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:60",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "5": {
+      "name": "IORI 5 (T3 heihachi r66)",
+      "input": "f+1",
+      "t3_source": "heihachi",
+      "t3_row": 66,
+      "t3_command": "f+LP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 14,
+      "t3_damage": 23,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:66",
+      "input_slots": [
+        "f+1"
+      ],
+      "move_class": "strike"
+    },
+    "6": {
+      "name": "IORI 6 (T3 heihachi r72)",
+      "input": "f+2",
+      "t3_source": "heihachi",
+      "t3_row": 72,
+      "t3_command": "f+RP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 12,
+      "t3_damage": 20,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:72",
+      "input_slots": [
+        "f+2"
+      ],
+      "move_class": "strike"
+    },
+    "7": {
+      "name": "IORI 7 (T3 heihachi r78)",
+      "input": "d+1",
+      "t3_source": "heihachi",
+      "t3_row": 78,
+      "t3_command": "d+LP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:78",
+      "input_slots": [
+        "d+1"
+      ],
+      "move_class": "strike"
+    },
+    "8": {
+      "name": "IORI 8 (T3 heihachi r84)",
+      "input": "d+2",
+      "t3_source": "heihachi",
+      "t3_row": 84,
+      "t3_command": "d+RP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 13,
+      "t3_damage": 22,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:84",
+      "input_slots": [
+        "d+2"
+      ],
+      "move_class": "strike"
+    },
+    "9": {
+      "name": "IORI 9 (T3 heihachi r90)",
+      "input": "b+1",
+      "t3_source": "heihachi",
+      "t3_row": 90,
+      "t3_command": "b+LP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 14,
+      "t3_damage": 23,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:90",
+      "input_slots": [
+        "b+1"
+      ],
+      "move_class": "strike"
+    },
+    "10": {
+      "name": "IORI 10 (T3 heihachi r96)",
+      "input": "b+2",
+      "t3_source": "heihachi",
+      "t3_row": 96,
+      "t3_command": "b+RP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 16,
+      "t3_damage": 27,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:96",
+      "input_slots": [
+        "b+2"
+      ],
+      "move_class": "strike"
+    },
+    "11": {
+      "name": "MAIDEN MASHER",
+      "input": "qcf+1+2",
+      "t3_source": "heihachi",
+      "t3_row": 0,
+      "t3_command": "qcf+1+2",
+      "startup": 0.3,
+      "active": 0.05,
+      "recovery": 0.8,
+      "damage": 26,
+      "t3_damage": 44,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 3.5,
+      "soulGain": 15,
+      "anim_ref": "wh:iori:sig:1",
+      "input_slots": [
+        "qcf+1+2"
+      ],
+      "move_class": "special",
+      "wh_signature": true,
+      "wh_note": "WH signature: Iori's flame combo super."
+    },
+    "12": {
+      "name": "108 SHIKI YAMIBARAI",
+      "input": "qcf+1",
+      "t3_source": "heihachi",
+      "t3_row": 0,
+      "t3_command": "qcf+1",
+      "startup": 0.3,
+      "active": 0.05,
+      "recovery": 0.8,
+      "damage": 16,
+      "t3_damage": 27,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 3.5,
+      "soulGain": 15,
+      "anim_ref": "wh:iori:sig:2",
+      "input_slots": [
+        "qcf+1"
+      ],
+      "move_class": "projectile",
+      "wh_signature": true,
+      "wh_note": "WH signature: Iori's purple flame projectile."
+    },
+    "far_1": {
+      "name": "Standing LP (Far)",
+      "input": "far 1 (KOFXV)",
+      "kof_motion": "5A (far)",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:far_1",
+      "input_slots": [
+        "far 1 (KOFXV)"
+      ],
+      "move_class": "strike",
+      "note": ""
+    },
+    "far_2": {
+      "name": "Standing RP (Far)",
+      "input": "far 2 (KOFXV)",
+      "kof_motion": "5B (far)",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:far_2",
+      "input_slots": [
+        "far 2 (KOFXV)"
+      ],
+      "move_class": "strike",
+      "note": ""
+    },
+    "far_3": {
+      "name": "Standing LK (Far)",
+      "input": "far 3 (KOFXV)",
+      "kof_motion": "5C (far)",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:far_3",
+      "input_slots": [
+        "far 3 (KOFXV)"
+      ],
+      "move_class": "strike",
+      "note": ""
+    },
+    "far_4": {
+      "name": "Standing RK (Far)",
+      "input": "far 4 (KOFXV)",
+      "kof_motion": "5D (far)",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:far_4",
+      "input_slots": [
+        "far 4 (KOFXV)"
+      ],
+      "move_class": "strike",
+      "note": ""
+    },
+    "close_1": {
+      "name": "Standing LP (Close)",
+      "input": "1 (close) (KOFXV)",
+      "kof_motion": "cl.A",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:close_1",
+      "input_slots": [
+        "1 (close) (KOFXV)"
+      ],
+      "move_class": "strike",
+      "note": ""
+    },
+    "close_2": {
+      "name": "Standing RP (Close)",
+      "input": "2 (close) (KOFXV)",
+      "kof_motion": "cl.B",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:close_2",
+      "input_slots": [
+        "2 (close) (KOFXV)"
+      ],
+      "move_class": "strike",
+      "note": ""
+    },
+    "close_3": {
+      "name": "Standing LK (Close)",
+      "input": "3 (close) (KOFXV)",
+      "kof_motion": "cl.C",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:close_3",
+      "input_slots": [
+        "3 (close) (KOFXV)"
+      ],
+      "move_class": "strike",
+      "note": ""
+    },
+    "close_4": {
+      "name": "Standing RK (Close)",
+      "input": "4 (close) (KOFXV)",
+      "kof_motion": "cl.D",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:close_4",
+      "input_slots": [
+        "4 (close) (KOFXV)"
+      ],
+      "move_class": "strike",
+      "note": ""
+    },
+    "cr_1": {
+      "name": "Crouching LP",
+      "input": "d+1 (crouch) (KOFXV)",
+      "kof_motion": "2A",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:crouch_1",
+      "input_slots": [
+        "d+1 (crouch) (KOFXV)"
+      ],
+      "move_class": "strike",
+      "note": ""
+    },
+    "cr_2": {
+      "name": "Crouching RP",
+      "input": "d+2 (crouch) (KOFXV)",
+      "kof_motion": "2B",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:crouch_2",
+      "input_slots": [
+        "d+2 (crouch) (KOFXV)"
+      ],
+      "move_class": "strike",
+      "note": ""
+    },
+    "cr_3": {
+      "name": "Crouching LK",
+      "input": "d+3 (crouch) (KOFXV)",
+      "kof_motion": "2C",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:crouch_3",
+      "input_slots": [
+        "d+3 (crouch) (KOFXV)"
+      ],
+      "move_class": "strike",
+      "note": "Low"
+    },
+    "cr_4": {
+      "name": "Crouching RK",
+      "input": "d+4 (crouch) (KOFXV)",
+      "kof_motion": "2D",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:crouch_4",
+      "input_slots": [
+        "d+4 (crouch) (KOFXV)"
+      ],
+      "move_class": "strike",
+      "note": "Low"
+    },
+    "jump_1": {
+      "name": "Jumping LP",
+      "input": "u/f+1 (KOFXV)",
+      "kof_motion": "j.A (jumping)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:jump_1",
+      "input_slots": [
+        "u/f+1 (KOFXV)"
+      ],
+      "move_class": "strike",
+      "note": "Overhead (air)"
+    },
+    "jump_2": {
+      "name": "Jumping RP",
+      "input": "u/f+2 (KOFXV)",
+      "kof_motion": "j.B (jumping)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:jump_2",
+      "input_slots": [
+        "u/f+2 (KOFXV)"
+      ],
+      "move_class": "strike",
+      "note": "Overhead (air)"
+    },
+    "jump_3": {
+      "name": "Jumping LK",
+      "input": "u/f+3 (KOFXV)",
+      "kof_motion": "j.C (jumping)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:jump_3",
+      "input_slots": [
+        "u/f+3 (KOFXV)"
+      ],
+      "move_class": "strike",
+      "note": "Overhead (air)"
+    },
+    "jump_4": {
+      "name": "Jumping RK",
+      "input": "u/f+4 (KOFXV)",
+      "kof_motion": "j.D (jumping)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:jump_4",
+      "input_slots": [
+        "u/f+4 (KOFXV)"
+      ],
+      "move_class": "strike",
+      "note": "Overhead (air)"
+    },
+    "njump_1": {
+      "name": "Neutral Jump LP",
+      "input": "u+1 (KOFXV)",
+      "kof_motion": "j.A (neutral jump)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:njump_1",
+      "input_slots": [
+        "u+1 (KOFXV)"
+      ],
+      "move_class": "strike",
+      "note": "Overhead (air)"
+    },
+    "njump_2": {
+      "name": "Neutral Jump RP",
+      "input": "u+2 (KOFXV)",
+      "kof_motion": "j.B (neutral jump)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:njump_2",
+      "input_slots": [
+        "u+2 (KOFXV)"
+      ],
+      "move_class": "strike",
+      "note": "Overhead (air)"
+    },
+    "njump_3": {
+      "name": "Neutral Jump LK",
+      "input": "u+3 (KOFXV)",
+      "kof_motion": "j.C (neutral jump)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:njump_3",
+      "input_slots": [
+        "u+3 (KOFXV)"
+      ],
+      "move_class": "strike",
+      "note": "Overhead (air)"
+    },
+    "njump_4": {
+      "name": "Neutral Jump RK",
+      "input": "u+4 (KOFXV)",
+      "kof_motion": "j.D (neutral jump)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:njump_4",
+      "input_slots": [
+        "u+4 (KOFXV)"
+      ],
+      "move_class": "strike",
+      "note": "Overhead (air)"
+    },
+    "hop_1": {
+      "name": "Hop LP",
+      "input": "hop u/f+1 (KOFXV)",
+      "kof_motion": "j.A (hop)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:hop_1",
+      "input_slots": [
+        "hop u/f+1 (KOFXV)"
+      ],
+      "move_class": "strike",
+      "note": "Overhead (air)"
+    },
+    "hop_2": {
+      "name": "Hop RP",
+      "input": "hop u/f+2 (KOFXV)",
+      "kof_motion": "j.B (hop)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:hop_2",
+      "input_slots": [
+        "hop u/f+2 (KOFXV)"
+      ],
+      "move_class": "strike",
+      "note": "Overhead (air)"
+    },
+    "hop_3": {
+      "name": "Hop LK",
+      "input": "hop u/f+3 (KOFXV)",
+      "kof_motion": "j.C (hop)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:hop_3",
+      "input_slots": [
+        "hop u/f+3 (KOFXV)"
+      ],
+      "move_class": "strike",
+      "note": "Overhead (air)"
+    },
+    "hop_4": {
+      "name": "Hop RK",
+      "input": "hop u/f+4 (KOFXV)",
+      "kof_motion": "j.D (hop)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:hop_4",
+      "input_slots": [
+        "hop u/f+4 (KOFXV)"
+      ],
+      "move_class": "strike",
+      "note": "Overhead (air)"
+    },
+    "nhop_1": {
+      "name": "Neutral Hop LP",
+      "input": "hop u+1 (KOFXV)",
+      "kof_motion": "j.A (neutral hop)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:nhop_1",
+      "input_slots": [
+        "hop u+1 (KOFXV)"
+      ],
+      "move_class": "strike",
+      "note": "Overhead (air)"
+    },
+    "nhop_2": {
+      "name": "Neutral Hop RP",
+      "input": "hop u+2 (KOFXV)",
+      "kof_motion": "j.B (neutral hop)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:nhop_2",
+      "input_slots": [
+        "hop u+2 (KOFXV)"
+      ],
+      "move_class": "strike",
+      "note": "Overhead (air)"
+    },
+    "nhop_3": {
+      "name": "Neutral Hop LK",
+      "input": "hop u+3 (KOFXV)",
+      "kof_motion": "j.C (neutral hop)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:nhop_3",
+      "input_slots": [
+        "hop u+3 (KOFXV)"
+      ],
+      "move_class": "strike",
+      "note": "Overhead (air)"
+    },
+    "nhop_4": {
+      "name": "Neutral Hop RK",
+      "input": "hop u+4 (KOFXV)",
+      "kof_motion": "j.D (neutral hop)",
+      "startup": 0.133,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:nhop_4",
+      "input_slots": [
+        "hop u+4 (KOFXV)"
+      ],
+      "move_class": "strike",
+      "note": "Overhead (air)"
+    },
+    "cd_stand": {
+      "name": "Blowback Attack",
+      "input": "3+4 (blowback) (KOFXV)",
+      "kof_motion": "C+D",
+      "startup": 0.233,
+      "active": 0.067,
+      "recovery": 0.467,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:blowback",
+      "input_slots": [
+        "3+4 (blowback) (KOFXV)"
+      ],
+      "move_class": "strike",
+      "note": "Soft knockdown; special-cancelable"
+    },
+    "cd_jump": {
+      "name": "Jumping Blowback Attack",
+      "input": "u/f+3+4 (KOFXV)",
+      "kof_motion": "j.C+D",
+      "startup": 0.167,
+      "active": 0.067,
+      "recovery": 0.3,
+      "damage": 3,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 2,
+      "anim_ref": "kofxv:iori:jump_blowback",
+      "input_slots": [
+        "u/f+3+4 (KOFXV)"
+      ],
+      "move_class": "strike",
+      "note": "Overhead (air); soft knockdown"
+    },
+    "cd_hop": {
+      "name": "Hop Blowback Attack",
+      "input": "hop u/f+3+4 (KOFXV)",
+      "kof_motion": "hop j.C+D",
+      "startup": 0.167,
+      "active": 0.067,
+      "recovery": 0.3,
+      "damage": 2,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:hop_blowback",
+      "input_slots": [
+        "hop u/f+3+4 (KOFXV)"
+      ],
+      "move_class": "strike",
+      "note": "Overhead (air); soft knockdown"
+    },
+    "evade_fwd": {
+      "name": "Emergency Evasion (Forward)",
+      "input": "f,f (roll) (KOFXV)",
+      "kof_motion": "A+B",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "kofxv:iori:evade_fwd",
+      "input_slots": [
+        "f,f (roll) (KOFXV)"
+      ],
+      "move_class": "special",
+      "note": "Forward roll; invulnerable startup (KOF XV system)"
+    },
+    "evade_back": {
+      "name": "Emergency Evasion (Back)",
+      "input": "b,b (roll) (KOFXV)",
+      "kof_motion": "b+A+B",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "kofxv:iori:evade_back",
+      "input_slots": [
+        "b,b (roll) (KOFXV)"
+      ],
+      "move_class": "special",
+      "note": "Back roll (KOF XV system)"
+    },
+    "gc_blowback": {
+      "name": "Guard Cancel Blowback",
+      "input": "b+1+2 (guard) (KOFXV)",
+      "kof_motion": "b+C+D (guard)",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 2,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:gc_blowback",
+      "input_slots": [
+        "b+1+2 (guard) (KOFXV)"
+      ],
+      "move_class": "strike",
+      "note": "Guard-cancel blowback; costs 1 stock (KOF XV system)"
+    },
+    "gc_roll_fwd": {
+      "name": "Guard Cancel Evasion (Forward)",
+      "input": "f+1+2 (guard) (KOFXV)",
+      "kof_motion": "A+B (guard)",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "kofxv:iori:gc_roll_fwd",
+      "input_slots": [
+        "f+1+2 (guard) (KOFXV)"
+      ],
+      "move_class": "special",
+      "note": "Guard-cancel roll forward; costs 1 stock (KOF XV system)"
+    },
+    "gc_roll_back": {
+      "name": "Guard Cancel Evasion (Back)",
+      "input": "b+3+4 (guard) (KOFXV)",
+      "kof_motion": "b+A+B (guard)",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "kofxv:iori:gc_roll_back",
+      "input_slots": [
+        "b+3+4 (guard) (KOFXV)"
+      ],
+      "move_class": "special",
+      "note": "Guard-cancel roll back; costs 1 stock (KOF XV system)"
+    },
+    "shatter": {
+      "name": "Shatter Strike",
+      "input": "qcf+3+4 (KOFXV)",
+      "kof_motion": "236+C+D",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 2,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:shatter",
+      "input_slots": [
+        "qcf+3+4 (KOFXV)"
+      ],
+      "move_class": "special",
+      "note": "KOF XV Shatter Strike; guard point, crumple on counter hit"
+    },
+    "maxmode": {
+      "name": "MAX Mode",
+      "input": "1+2+3+4 (MAX) (KOFXV)",
+      "kof_motion": "B+C (MAX Mode)",
+      "startup": 0.5,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "kofxv:iori:maxmode",
+      "input_slots": [
+        "1+2+3+4 (MAX) (KOFXV)"
+      ],
+      "move_class": "special",
+      "note": "KOF XV MAX Mode activation; +damage, EX access"
+    },
+    "taunt": {
+      "name": "Taunt",
+      "input": "2+3 (taunt) (KOFXV)",
+      "kof_motion": "Start (taunt)",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "kofxv:iori:taunt",
+      "input_slots": [
+        "2+3 (taunt) (KOFXV)"
+      ],
+      "move_class": "special",
+      "note": "Taunt"
+    },
+    "fallbreaker": {
+      "name": "Fallbreaker (Recovery Roll)",
+      "input": "1+2 (grounded) (KOFXV)",
+      "kof_motion": "any button (downed)",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "kofxv:iori:fallbreaker",
+      "input_slots": [
+        "1+2 (grounded) (KOFXV)"
+      ],
+      "move_class": "special",
+      "note": "Recovery roll on knockdown (KOF system)"
+    },
+    "throw_escape": {
+      "name": "Throw Escape",
+      "input": "3+4 (throw escape) (KOFXV)",
+      "kof_motion": "C+D (on throw)",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "kofxv:iori:throw_escape",
+      "input_slots": [
+        "3+4 (throw escape) (KOFXV)"
+      ],
+      "move_class": "special",
+      "note": "Throw tech (KOF system)"
+    },
+    "dash": {
+      "name": "Forward Dash",
+      "input": "f,f (dash) (KOFXV)",
+      "kof_motion": "f,f",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "kofxv:iori:dash",
+      "input_slots": [
+        "f,f (dash) (KOFXV)"
+      ],
+      "move_class": "special",
+      "note": "KOF run/dash step"
+    },
+    "backdash": {
+      "name": "Backdash",
+      "input": "b,b (backdash) (KOFXV)",
+      "kof_motion": "b,b",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "kofxv:iori:backdash",
+      "input_slots": [
+        "b,b (backdash) (KOFXV)"
+      ],
+      "move_class": "special",
+      "note": "KOF backstep"
+    },
+    "rush_l1": {
+      "name": "Light Rush 1",
+      "input": "1 (Rush) (KOFXV)",
+      "kof_motion": "A x1 (Rush)",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:rush_l1",
+      "input_slots": [
+        "1 (Rush) (KOFXV)"
+      ],
+      "move_class": "string",
+      "note": "KOF XV Rush auto-combo (light chain)"
+    },
+    "rush_l2": {
+      "name": "Light Rush 2",
+      "input": "1,1 (Rush) (KOFXV)",
+      "kof_motion": "A x2 (Rush)",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:rush_l2",
+      "input_slots": [
+        "1,1 (Rush) (KOFXV)"
+      ],
+      "move_class": "string",
+      "note": "KOF XV Rush auto-combo (light chain)"
+    },
+    "rush_l3": {
+      "name": "Light Rush 3",
+      "input": "1,1,1 (Rush) (KOFXV)",
+      "kof_motion": "A x3 (Rush)",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:rush_l3",
+      "input_slots": [
+        "1,1,1 (Rush) (KOFXV)"
+      ],
+      "move_class": "string",
+      "note": "KOF XV Rush auto-combo (light chain)"
+    },
+    "rush_l4": {
+      "name": "Light Rush 4",
+      "input": "1,1,1,1 (Rush) (KOFXV)",
+      "kof_motion": "A x4 (Rush)",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:rush_l4",
+      "input_slots": [
+        "1,1,1,1 (Rush) (KOFXV)"
+      ],
+      "move_class": "string",
+      "note": "KOF XV Rush auto-combo (light chain)"
+    },
+    "rush_h1": {
+      "name": "Heavy Rush 1",
+      "input": "2 (Rush) (KOFXV)",
+      "kof_motion": "C x1 (Rush)",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:rush_h1",
+      "input_slots": [
+        "2 (Rush) (KOFXV)"
+      ],
+      "move_class": "string",
+      "note": "KOF XV Rush auto-combo (heavy chain)"
+    },
+    "rush_h2": {
+      "name": "Heavy Rush 2",
+      "input": "2,2 (Rush) (KOFXV)",
+      "kof_motion": "C x2 (Rush)",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:rush_h2",
+      "input_slots": [
+        "2,2 (Rush) (KOFXV)"
+      ],
+      "move_class": "string",
+      "note": "KOF XV Rush auto-combo (heavy chain)"
+    },
+    "rush_h3": {
+      "name": "Heavy Rush 3",
+      "input": "2,2,2 (Rush) (KOFXV)",
+      "kof_motion": "C x3 (Rush)",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 3,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 2,
+      "anim_ref": "kofxv:iori:rush_h3",
+      "input_slots": [
+        "2,2,2 (Rush) (KOFXV)"
+      ],
+      "move_class": "string",
+      "note": "KOF XV Rush auto-combo (heavy chain)"
+    },
+    "rush_h4": {
+      "name": "Heavy Rush 4",
+      "input": "2,2,2,2 (Rush) (KOFXV)",
+      "kof_motion": "C x4 (Rush)",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 3,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 2,
+      "anim_ref": "kofxv:iori:rush_h4",
+      "input_slots": [
+        "2,2,2,2 (Rush) (KOFXV)"
+      ],
+      "move_class": "string",
+      "note": "KOF XV Rush auto-combo (heavy chain)"
+    },
+    "yumebiki_1": {
+      "name": "Geshiki: Yumebiki (1st)",
+      "input": "f+1 (KOFXV)",
+      "kof_motion": "6+A",
+      "startup": 0.183,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:yumebiki_1",
+      "input_slots": [
+        "f+1 (KOFXV)"
+      ],
+      "move_class": "strike",
+      "note": "Command normal; special-cancelable. Original KOF motion: f+A"
+    },
+    "yumebiki_2": {
+      "name": "Geshiki: Yumebiki (2nd)",
+      "input": "f+1,1 (KOFXV)",
+      "kof_motion": "6+A,A",
+      "startup": 0.183,
+      "active": 0.05,
+      "recovery": 0.25,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:yumebiki_2",
+      "input_slots": [
+        "f+1,1 (KOFXV)"
+      ],
+      "move_class": "string",
+      "note": "Overhead 2nd hit. Original KOF motion: f+A,A"
+    },
+    "goufu_in": {
+      "name": "Geshiki: Goufu In \"Shinigami\"",
+      "input": "f+3 (KOFXV)",
+      "kof_motion": "6+B",
+      "startup": 0.283,
+      "active": 0.05,
+      "recovery": 0.283,
+      "damage": 2,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:goufu_in",
+      "input_slots": [
+        "f+3 (KOFXV)"
+      ],
+      "move_class": "strike",
+      "note": "Overhead command normal. Original KOF motion: f+B"
+    },
+    "yuri_ori": {
+      "name": "Geshiki: Yuri Ori",
+      "input": "u/b+3 (air) (KOFXV)",
+      "kof_motion": "b+B (air)",
+      "startup": 0.15,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:yuri_ori",
+      "input_slots": [
+        "u/b+3 (air) (KOFXV)"
+      ],
+      "move_class": "strike",
+      "note": "Air command normal; cross-up. Original KOF motion: b+B in air"
+    },
+    "sakahagi_f": {
+      "name": "Sakahagi",
+      "input": "1+3 (KOFXV)",
+      "kof_motion": "f+C/D (close)",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 3,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:iori:sakahagi_f",
+      "input_slots": [
+        "1+3 (KOFXV)"
+      ],
+      "move_class": "throw",
+      "note": "Forward throw. Original KOF motion: b/f+C or D",
+      "throw": true,
+      "throw_break": "1",
+      "unblockable": true,
+      "isGrab": true
+    },
+    "sakahagi_b": {
+      "name": "Sakahagi (Back)",
+      "input": "2+4 (KOFXV)",
+      "kof_motion": "b+C/D (close)",
+      "startup": 0.083,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 3,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:iori:sakahagi_b",
+      "input_slots": [
+        "2+4 (KOFXV)"
+      ],
+      "move_class": "throw",
+      "note": "Backward throw. Original KOF motion: b/f+C or D",
+      "throw": true,
+      "throw_break": "2",
+      "unblockable": true,
+      "isGrab": true
+    },
+    "yamibarai_c": {
+      "name": "108 Shiki: Yami Barai (Heavy)",
+      "input": "qcf+2 (KOFXV)",
+      "kof_motion": "236+C",
+      "startup": 0.233,
+      "active": 0.067,
+      "recovery": 0.5,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:yamibarai_c",
+      "input_slots": [
+        "qcf+2 (KOFXV)"
+      ],
+      "move_class": "special",
+      "note": "Ground-travelling purple flame projectile, heavy version. Original KOF motion: 236+P"
+    },
+    "oniyaki_a": {
+      "name": "100 Shiki: Oniyaki (Light)",
+      "input": "f,n,d,d/f+1 (KOFXV)",
+      "kof_motion": "623+A",
+      "startup": 0.083,
+      "active": 0.1,
+      "recovery": 0.65,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:oniyaki_a",
+      "input_slots": [
+        "f,n,d,d/f+1 (KOFXV)"
+      ],
+      "move_class": "special",
+      "note": "Rising flame uppercut; anti-air invuln. Original KOF motion: 623+P"
+    },
+    "oniyaki_c": {
+      "name": "100 Shiki: Oniyaki (Heavy)",
+      "input": "f,n,d,d/f+2 (KOFXV)",
+      "kof_motion": "623+C",
+      "startup": 0.1,
+      "active": 0.133,
+      "recovery": 0.767,
+      "damage": 4,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:iori:oniyaki_c",
+      "input_slots": [
+        "f,n,d,d/f+2 (KOFXV)"
+      ],
+      "move_class": "special",
+      "note": "Two-hit rising flame uppercut. Original KOF motion: 623+P"
+    },
+    "oniyaki_ex": {
+      "name": "100 Shiki: Oniyaki (EX)",
+      "input": "f,n,d,d/f+1+2 (KOFXV)",
+      "kof_motion": "623+A+C",
+      "startup": 0.083,
+      "active": 0.167,
+      "recovery": 0.667,
+      "damage": 8,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 4,
+      "anim_ref": "kofxv:iori:oniyaki_ex",
+      "input_slots": [
+        "f,n,d,d/f+1+2 (KOFXV)"
+      ],
+      "move_class": "special",
+      "note": "EX: multi-hit rising flame uppercut. Original KOF motion: 623+AC"
+    },
+    "aoihana_a1": {
+      "name": "127 Shiki: Aoi Hana (1) [Light]",
+      "input": "qcb+1 (KOFXV)",
+      "kof_motion": "214+A",
+      "startup": 0.25,
+      "active": 0.05,
+      "recovery": 0.4,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:aoihana_a1",
+      "input_slots": [
+        "qcb+1 (KOFXV)"
+      ],
+      "move_class": "special",
+      "note": "Rekka stage 1. Original KOF motion: 214+P x3"
+    },
+    "aoihana_a2": {
+      "name": "127 Shiki: Aoi Hana (2) [Light]",
+      "input": "qcb+1,1 (KOFXV)",
+      "kof_motion": "214+A x2",
+      "startup": 0.2,
+      "active": 0.05,
+      "recovery": 0.4,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:aoihana_a2",
+      "input_slots": [
+        "qcb+1,1 (KOFXV)"
+      ],
+      "move_class": "string",
+      "note": "Rekka stage 2. Original KOF motion: 214+P x3"
+    },
+    "aoihana_a3": {
+      "name": "127 Shiki: Aoi Hana (3) [Light]",
+      "input": "qcb+1,1,1 (KOFXV)",
+      "kof_motion": "214+A x3",
+      "startup": 0.233,
+      "active": 0.05,
+      "recovery": 0.5,
+      "damage": 3,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 2,
+      "anim_ref": "kofxv:iori:aoihana_a3",
+      "input_slots": [
+        "qcb+1,1,1 (KOFXV)"
+      ],
+      "move_class": "string",
+      "note": "Rekka stage 3; overhead finisher, hard knockdown. Original KOF motion: 214+P x3"
+    },
+    "aoihana_c1": {
+      "name": "127 Shiki: Aoi Hana (1) [Heavy]",
+      "input": "qcb+2 (KOFXV)",
+      "kof_motion": "214+C",
+      "startup": 0.25,
+      "active": 0.05,
+      "recovery": 0.4,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:aoihana_c1",
+      "input_slots": [
+        "qcb+2 (KOFXV)"
+      ],
+      "move_class": "special",
+      "note": "Rekka stage 1. Original KOF motion: 214+P x3"
+    },
+    "aoihana_c2": {
+      "name": "127 Shiki: Aoi Hana (2) [Heavy]",
+      "input": "qcb+2,2 (KOFXV)",
+      "kof_motion": "214+C x2",
+      "startup": 0.2,
+      "active": 0.05,
+      "recovery": 0.4,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:aoihana_c2",
+      "input_slots": [
+        "qcb+2,2 (KOFXV)"
+      ],
+      "move_class": "string",
+      "note": "Rekka stage 2. Original KOF motion: 214+P x3"
+    },
+    "aoihana_c3": {
+      "name": "127 Shiki: Aoi Hana (3) [Heavy]",
+      "input": "qcb+2,2,2 (KOFXV)",
+      "kof_motion": "214+C x3",
+      "startup": 0.233,
+      "active": 0.05,
+      "recovery": 0.5,
+      "damage": 3,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 2,
+      "anim_ref": "kofxv:iori:aoihana_c3",
+      "input_slots": [
+        "qcb+2,2,2 (KOFXV)"
+      ],
+      "move_class": "string",
+      "note": "Rekka stage 3; overhead finisher, hard knockdown. Original KOF motion: 214+P x3"
+    },
+    "aoihana_ex1": {
+      "name": "127 Shiki: Aoi Hana (1) [EX]",
+      "input": "qcb+1+2 (KOFXV)",
+      "kof_motion": "214+A+C",
+      "startup": 0.217,
+      "active": 0.05,
+      "recovery": 0.367,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:aoihana_ex1",
+      "input_slots": [
+        "qcb+1+2 (KOFXV)"
+      ],
+      "move_class": "special",
+      "note": "EX rekka stage 1. Original KOF motion: 214+AC"
+    },
+    "aoihana_ex2": {
+      "name": "127 Shiki: Aoi Hana (2) [EX]",
+      "input": "qcb+1+2,1+2 (KOFXV)",
+      "kof_motion": "214+A+C x2",
+      "startup": 0.183,
+      "active": 0.05,
+      "recovery": 0.367,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:aoihana_ex2",
+      "input_slots": [
+        "qcb+1+2,1+2 (KOFXV)"
+      ],
+      "move_class": "string",
+      "note": "EX rekka stage 2"
+    },
+    "aoihana_ex3": {
+      "name": "127 Shiki: Aoi Hana (3) [EX]",
+      "input": "qcb+1+2,1+2,1+2 (KOFXV)",
+      "kof_motion": "214+A+C x3",
+      "startup": 0.217,
+      "active": 0.05,
+      "recovery": 0.467,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:aoihana_ex3",
+      "input_slots": [
+        "qcb+1+2,1+2,1+2 (KOFXV)"
+      ],
+      "move_class": "string",
+      "note": "EX rekka stage 3 finisher"
+    },
+    "kototsuki_b": {
+      "name": "212 Shiki: Kototsuki In (Light)",
+      "input": "hcb+3 (KOFXV)",
+      "kof_motion": "63214+B",
+      "startup": 0.3,
+      "active": 0.067,
+      "recovery": 0.5,
+      "damage": 5,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:iori:kototsuki_b",
+      "input_slots": [
+        "hcb+3 (KOFXV)"
+      ],
+      "move_class": "special",
+      "note": "Running grab into flame burst. Original KOF motion: 63214+K"
+    },
+    "kototsuki_d": {
+      "name": "212 Shiki: Kototsuki In (Heavy)",
+      "input": "hcb+4 (KOFXV)",
+      "kof_motion": "63214+D",
+      "startup": 0.367,
+      "active": 0.067,
+      "recovery": 0.567,
+      "damage": 5,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:iori:kototsuki_d",
+      "input_slots": [
+        "hcb+4 (KOFXV)"
+      ],
+      "move_class": "special",
+      "note": "Running grab into flame burst, longer run. Original KOF motion: 63214+K"
+    },
+    "kototsuki_ex": {
+      "name": "212 Shiki: Kototsuki In (EX)",
+      "input": "hcb+3+4 (KOFXV)",
+      "kof_motion": "63214+B+D",
+      "startup": 0.267,
+      "active": 0.067,
+      "recovery": 0.5,
+      "damage": 5,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:iori:kototsuki_ex",
+      "input_slots": [
+        "hcb+3+4 (KOFXV)"
+      ],
+      "move_class": "special",
+      "note": "EX running grab; OTG-capable. Original KOF motion: 63214+BD"
+    },
+    "kuzukaze_a": {
+      "name": "Kuzukaze (Light)",
+      "input": "hcb,f+1 (KOFXV)",
+      "kof_motion": "632146+A",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 0,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "kofxv:iori:kuzukaze_a",
+      "input_slots": [
+        "hcb,f+1 (KOFXV)"
+      ],
+      "move_class": "throw",
+      "note": "Command grab; leaves opponent stunned for mix-up. Original KOF motion: 632146+P (near)",
+      "throw": true,
+      "throw_break": "1+2",
+      "unblockable": true,
+      "isGrab": true
+    },
+    "kuzukaze_c": {
+      "name": "Kuzukaze (Heavy)",
+      "input": "hcb,f+2 (KOFXV)",
+      "kof_motion": "632146+C",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 0,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "kofxv:iori:kuzukaze_c",
+      "input_slots": [
+        "hcb,f+2 (KOFXV)"
+      ],
+      "move_class": "throw",
+      "note": "Command grab, slower. Original KOF motion: 632146+P (near)",
+      "throw": true,
+      "throw_break": "1+2",
+      "unblockable": true,
+      "isGrab": true
+    },
+    "kuzukaze_ex": {
+      "name": "Kuzukaze (EX)",
+      "input": "hcb,f+1+2 (KOFXV)",
+      "kof_motion": "632146+A+C",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.467,
+      "damage": 0,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "kofxv:iori:kuzukaze_ex",
+      "input_slots": [
+        "hcb,f+1+2 (KOFXV)"
+      ],
+      "move_class": "throw",
+      "note": "EX command grab; faster. Original KOF motion: 632146+AC",
+      "throw": true,
+      "throw_break": "1+2",
+      "unblockable": true,
+      "isGrab": true
+    },
+    "tsumagushi_b": {
+      "name": "311 Shiki: Tsumagushi (Light)",
+      "input": "qcb+3 (KOFXV)",
+      "kof_motion": "214+B",
+      "startup": 0.267,
+      "active": 0.05,
+      "recovery": 0.433,
+      "damage": 3,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:iori:tsumagushi_b",
+      "input_slots": [
+        "qcb+3 (KOFXV)"
+      ],
+      "move_class": "special",
+      "note": "Spinning claw kick (KOF series). Original KOF motion: 214+K"
+    },
+    "tsumagushi_d": {
+      "name": "311 Shiki: Tsumagushi (Heavy)",
+      "input": "qcb+4 (KOFXV)",
+      "kof_motion": "214+D",
+      "startup": 0.3,
+      "active": 0.05,
+      "recovery": 0.5,
+      "damage": 3,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:iori:tsumagushi_d",
+      "input_slots": [
+        "qcb+4 (KOFXV)"
+      ],
+      "move_class": "special",
+      "note": "Spinning claw kick, heavy (KOF series). Original KOF motion: 214+K"
+    },
+    "tsumagushi_ex": {
+      "name": "311 Shiki: Tsumagushi (EX)",
+      "input": "qcb+3+4 (KOFXV)",
+      "kof_motion": "214+B+D",
+      "startup": 0.25,
+      "active": 0.067,
+      "recovery": 0.467,
+      "damage": 4,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:iori:tsumagushi_ex",
+      "input_slots": [
+        "qcb+3+4 (KOFXV)"
+      ],
+      "move_class": "special",
+      "note": "EX spinning claw kick (KOF series). Original KOF motion: 214+BD"
+    },
+    "yaotome_a": {
+      "name": "Kin 1211 Shiki: Ya Otome",
+      "input": "qcf,hcb+1 (KOFXV)",
+      "kof_motion": "236,63214+A",
+      "startup": 0.133,
+      "active": 0.5,
+      "recovery": 1.0,
+      "damage": 6,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 3,
+      "anim_ref": "kofxv:iori:ya_otome",
+      "input_slots": [
+        "qcf,hcb+1 (KOFXV)"
+      ],
+      "move_class": "special",
+      "note": "Super: dashing eight-claw rush ending in flame burst (Maiden Masher). Original KOF motion: 23663214+P"
+    },
+    "yaotome_c": {
+      "name": "Kin 1211 Shiki: Ya Otome (MAX)",
+      "input": "qcf,hcb+2 (KOFXV)",
+      "kof_motion": "236,63214+C",
+      "startup": 0.133,
+      "active": 0.567,
+      "recovery": 1.033,
+      "damage": 8,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 4,
+      "anim_ref": "kofxv:iori:ya_otome_max",
+      "input_slots": [
+        "qcf,hcb+2 (KOFXV)"
+      ],
+      "move_class": "special",
+      "note": "MAX super version. Original KOF motion: 23663214+P"
+    },
+    "saika": {
+      "name": "Ura 316 Shiki: Saika",
+      "input": "during Ya Otome, qcf,qcf,qcf,qcf+1+2 (KOFXV)",
+      "kof_motion": "Ya Otome, then 236236236236+A+C",
+      "startup": 0.083,
+      "active": 0.167,
+      "recovery": 0.833,
+      "damage": 3,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 2,
+      "anim_ref": "kofxv:iori:saika",
+      "input_slots": [
+        "during Ya Otome, qcf,qcf,qcf,qcf+1+2 (KOFXV)"
+      ],
+      "move_class": "special",
+      "note": "Follow-up finisher after Ya Otome (KOF XIII). Original KOF motion: during Ya Otome, 236x4+AC"
+    },
+    "yamisogi": {
+      "name": "Ura 1207 Shiki: Yamisogi",
+      "input": "qcf,qcf+1 (KOFXV)",
+      "kof_motion": "236236+A",
+      "startup": 0.167,
+      "active": 0.133,
+      "recovery": 0.917,
+      "damage": 7,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 4,
+      "anim_ref": "kofxv:iori:yamisogi",
+      "input_slots": [
+        "qcf,qcf+1 (KOFXV)"
+      ],
+      "move_class": "special",
+      "note": "Twin flame pillars super (KOF XIII EX Iori DM, legacy). Original KOF motion: 236236+P"
+    },
+    "ya_sakazuki": {
+      "name": "Ura 108 Shiki: Ya Sakazuki",
+      "input": "qcb,hcf+1+2 (KOFXV)",
+      "kof_motion": "214,632146+A+C",
+      "startup": 0.233,
+      "active": 0.333,
+      "recovery": 1.167,
+      "damage": 14,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 7,
+      "anim_ref": "kofxv:iori:ya_sakazuki",
+      "input_slots": [
+        "qcb,hcf+1+2 (KOFXV)"
+      ],
+      "move_class": "special",
+      "note": "CLIMAX: eight wine-cup flame pillars freeze the opponent in place. Original KOF motion: 214632146+AC (KOF XV Climax)"
+    },
+    "homurabotogi": {
+      "name": "Ura 1029 Shiki: Homurabotogi",
+      "input": "qcb,hcf+1 (KOFXV)",
+      "kof_motion": "214,632146+A",
+      "startup": 0.2,
+      "active": 0.4,
+      "recovery": 1.167,
+      "damage": 14,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 7,
+      "anim_ref": "kofxv:iori:homurabotogi",
+      "input_slots": [
+        "qcb,hcf+1 (KOFXV)"
+      ],
+      "move_class": "special",
+      "note": "Legacy NeoMAX (KOF XIII). Original KOF motion: 214632146+AC"
+    },
+    "yuri_ori_hop": {
+      "name": "Geshiki: Yuri Ori (Hop)",
+      "input": "hop u/b+3 (air)",
+      "kof_motion": "b+B (air)",
+      "startup": 0.15,
+      "active": 0.05,
+      "recovery": 0.233,
+      "damage": 2,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:yuri_ori_hop",
+      "input_slots": [
+        "hop u/b+3 (air)"
+      ],
+      "move_class": "strike",
+      "note": "Air command normal from short hop. Original KOF motion: b+B in air"
+    },
+    "ya_sakazuki_l1": {
+      "name": "Ura 108 Shiki: Ya Sakazuki (DM)",
+      "input": "qcf,qcf+1+2",
+      "kof_motion": "236236+A+C",
+      "startup": 0.2,
+      "active": 0.267,
+      "recovery": 1.083,
+      "damage": 9,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 4,
+      "anim_ref": "kofxv:iori:ya_sakazuki_l1",
+      "input_slots": [
+        "qcf,qcf+1+2"
+      ],
+      "move_class": "special",
+      "note": "Level-1 DM version (KOF XI-era). Original KOF motion: 236236+AC"
+    },
+    "getup_low": {
+      "name": "Getup Low Kick",
+      "input": "(grounded) d+3",
+      "kof_motion": "3 (grounded)",
+      "startup": 0.2,
+      "active": 0.05,
+      "recovery": 0.367,
+      "damage": 2,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:getup_low",
+      "input_slots": [
+        "(grounded) d+3"
+      ],
+      "move_class": "strike",
+      "note": "Tekken universal getup kick, low"
+    },
+    "getup_mid": {
+      "name": "Getup Mid Kick",
+      "input": "(grounded) d+4",
+      "kof_motion": "4 (grounded)",
+      "startup": 0.233,
+      "active": 0.05,
+      "recovery": 0.4,
+      "damage": 2,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:getup_mid",
+      "input_slots": [
+        "(grounded) d+4"
+      ],
+      "move_class": "strike",
+      "note": "Tekken universal getup kick, mid"
+    },
+    "facedown_kick": {
+      "name": "Face-Down Kick",
+      "input": "(face down) 3+4",
+      "kof_motion": "3+4 (face down)",
+      "startup": 0.233,
+      "active": 0.05,
+      "recovery": 0.4,
+      "damage": 2,
+      "limb": "both",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:facedown_kick",
+      "input_slots": [
+        "(face down) 3+4"
+      ],
+      "move_class": "strike",
+      "note": "Tekken universal face-down getup attack"
+    },
+    "bt_strike": {
+      "name": "Back-Turned Strike",
+      "input": "(BT) 2",
+      "kof_motion": "C (back-turned)",
+      "startup": 0.167,
+      "active": 0.05,
+      "recovery": 0.333,
+      "damage": 2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 1,
+      "anim_ref": "kofxv:iori:bt_strike",
+      "input_slots": [
+        "(BT) 2"
+      ],
+      "move_class": "strike",
+      "note": "Tekken universal back-turned strike"
+    },
+    "1+2": {
+      "name": "IORI 1+2 (T3 heihachi r37)",
+      "input": "1+2",
+      "t3_source": "heihachi",
+      "t3_row": 37,
+      "t3_command": "LP+RP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:37",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "strike"
+    },
+    "f": {
+      "name": "IORI f (T3 heihachi r38)",
+      "input": "f",
+      "t3_source": "heihachi",
+      "t3_row": 38,
+      "t3_command": "6/9+LP+RP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:38",
+      "input_slots": [
+        "f"
+      ],
+      "move_class": "strike"
+    },
+    "b": {
+      "name": "IORI b (T3 heihachi r39)",
+      "input": "b",
+      "t3_source": "heihachi",
+      "t3_row": 39,
+      "t3_command": "4/7+LP+RP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:39",
+      "input_slots": [
+        "b"
+      ],
+      "move_class": "strike"
+    },
+    "1_r41": {
+      "name": "IORI 1_r41 (T3 heihachi r41)",
+      "input": "1_r41",
+      "t3_source": "heihachi",
+      "t3_row": 41,
+      "t3_command": "LP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:41",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r42": {
+      "name": "IORI 1_r42 (T3 heihachi r42)",
+      "input": "1_r42",
+      "t3_source": "heihachi",
+      "t3_row": 42,
+      "t3_command": "LP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:42",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r43": {
+      "name": "IORI 1_r43 (T3 heihachi r43)",
+      "input": "1_r43",
+      "t3_source": "heihachi",
+      "t3_row": 43,
+      "t3_command": "LP",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:43",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r44": {
+      "name": "IORI 1_r44 (T3 heihachi r44)",
+      "input": "1_r44",
+      "t3_source": "heihachi",
+      "t3_row": 44,
+      "t3_command": "LP",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:44",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r45": {
+      "name": "IORI 1_r45 (T3 heihachi r45)",
+      "input": "1_r45",
+      "t3_source": "heihachi",
+      "t3_row": 45,
+      "t3_command": "LP",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:45",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r46": {
+      "name": "IORI 1_r46 (T3 heihachi r46)",
+      "input": "1_r46",
+      "t3_source": "heihachi",
+      "t3_row": 46,
+      "t3_command": "LP",
+      "startup": 0.117,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 11,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:46",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r47": {
+      "name": "IORI 1_r47 (T3 heihachi r47)",
+      "input": "1_r47",
+      "t3_source": "heihachi",
+      "t3_row": 47,
+      "t3_command": "LP",
+      "startup": 0.117,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 11,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:47",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r48": {
+      "name": "IORI 1_r48 (T3 heihachi r48)",
+      "input": "1_r48",
+      "t3_source": "heihachi",
+      "t3_row": 48,
+      "t3_command": "LP",
+      "startup": 0.117,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 11,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:48",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_c36_r49": {
+      "name": "IORI 1_c36_r49 (T3 heihachi r49)",
+      "input": "1_c36_r49",
+      "t3_source": "heihachi",
+      "t3_row": 49,
+      "t3_command": "LP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:49",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "f_c36_r50": {
+      "name": "IORI f_c36_r50 (T3 heihachi r50)",
+      "input": "f_c36_r50",
+      "t3_source": "heihachi",
+      "t3_row": 50,
+      "t3_command": "6/9+LP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:50",
+      "input_slots": [
+        "f"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "b_c36_r51": {
+      "name": "IORI b_c36_r51 (T3 heihachi r51)",
+      "input": "b_c36_r51",
+      "t3_source": "heihachi",
+      "t3_row": 51,
+      "t3_command": "4/7+LP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:51",
+      "input_slots": [
+        "b"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "2_r53": {
+      "name": "IORI 2_r53 (T3 heihachi r53)",
+      "input": "2_r53",
+      "t3_source": "heihachi",
+      "t3_row": 53,
+      "t3_command": "RP",
+      "startup": 0.183,
+      "active": 0.05,
+      "recovery": 0.667,
+      "damage": 11,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:53",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike"
+    },
+    "2_r54": {
+      "name": "IORI 2_r54 (T3 heihachi r54)",
+      "input": "2_r54",
+      "t3_source": "heihachi",
+      "t3_row": 54,
+      "t3_command": "RP",
+      "startup": 0.183,
+      "active": 0.05,
+      "recovery": 0.667,
+      "damage": 11,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:54",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike"
+    },
+    "3+4_r107": {
+      "name": "IORI 3+4_r107 (T3 heihachi r56)",
+      "input": "3+4_r107",
+      "t3_source": "heihachi",
+      "t3_row": 56,
+      "t3_command": "LK+RK",
+      "startup": 0.35,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:56",
+      "input_slots": [
+        "3+4"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 107
+    },
+    "f_r57": {
+      "name": "IORI f_r57 (T3 heihachi r57)",
+      "input": "f_r57",
+      "t3_source": "heihachi",
+      "t3_row": 57,
+      "t3_command": "6/9+LK+RK",
+      "startup": 0.35,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:57",
+      "input_slots": [
+        "f"
+      ],
+      "move_class": "strike"
+    },
+    "b_r58": {
+      "name": "IORI b_r58 (T3 heihachi r58)",
+      "input": "b_r58",
+      "t3_source": "heihachi",
+      "t3_row": 58,
+      "t3_command": "4/7+LK+RK",
+      "startup": 0.35,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:58",
+      "input_slots": [
+        "b"
+      ],
+      "move_class": "strike"
+    },
+    "3_c36": {
+      "name": "IORI 3_c36 (T3 heihachi r59)",
+      "input": "3_c36",
+      "t3_source": "heihachi",
+      "t3_row": 59,
+      "t3_command": "LK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:59",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "f_c36_r60": {
+      "name": "IORI f_c36_r60 (T3 heihachi r60)",
+      "input": "f_c36_r60",
+      "t3_source": "heihachi",
+      "t3_row": 60,
+      "t3_command": "6/9+LK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:60",
+      "input_slots": [
+        "f"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "b_c36_r61": {
+      "name": "IORI b_c36_r61 (T3 heihachi r61)",
+      "input": "b_c36_r61",
+      "t3_source": "heihachi",
+      "t3_row": 61,
+      "t3_command": "4/7+LK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:61",
+      "input_slots": [
+        "b"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "3_r63": {
+      "name": "IORI 3_r63 (T3 heihachi r63)",
+      "input": "3_r63",
+      "t3_source": "heihachi",
+      "t3_row": 63,
+      "t3_command": "LK",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.817,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:63",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "3_r64": {
+      "name": "IORI 3_r64 (T3 heihachi r64)",
+      "input": "3_r64",
+      "t3_source": "heihachi",
+      "t3_row": 64,
+      "t3_command": "LK",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.817,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:64",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "3_r65": {
+      "name": "IORI 3_r65 (T3 heihachi r65)",
+      "input": "3_r65",
+      "t3_source": "heihachi",
+      "t3_row": 65,
+      "t3_command": "LK",
+      "startup": 0.233,
+      "active": 0.017,
+      "recovery": 0.8,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:65",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "3_r66": {
+      "name": "IORI 3_r66 (T3 heihachi r66)",
+      "input": "3_r66",
+      "t3_source": "heihachi",
+      "t3_row": 66,
+      "t3_command": "LK",
+      "startup": 0.233,
+      "active": 0.017,
+      "recovery": 0.8,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:66",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "3_r67": {
+      "name": "IORI 3_r67 (T3 heihachi r67)",
+      "input": "3_r67",
+      "t3_source": "heihachi",
+      "t3_row": 67,
+      "t3_command": "LK",
+      "startup": 0.233,
+      "active": 0.017,
+      "recovery": 0.8,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:67",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "3_r68": {
+      "name": "IORI 3_r68 (T3 heihachi r68)",
+      "input": "3_r68",
+      "t3_source": "heihachi",
+      "t3_row": 68,
+      "t3_command": "LK",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.817,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:68",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "3_r69": {
+      "name": "IORI 3_r69 (T3 heihachi r69)",
+      "input": "3_r69",
+      "t3_source": "heihachi",
+      "t3_row": 69,
+      "t3_command": "LK",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.817,
+      "damage": 9,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:69",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "3_r70": {
+      "name": "IORI 3_r70 (T3 heihachi r70)",
+      "input": "3_r70",
+      "t3_source": "heihachi",
+      "t3_row": 70,
+      "t3_command": "LK",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.817,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:70",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "b_r73": {
+      "name": "IORI b_r73 (T3 heihachi r73)",
+      "input": "b_r73",
+      "t3_source": "heihachi",
+      "t3_row": 73,
+      "t3_command": "4/7+RK",
+      "startup": 0.25,
+      "active": 0.05,
+      "recovery": 0.6,
+      "damage": 6,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:73",
+      "input_slots": [
+        "b"
+      ],
+      "move_class": "strike"
+    },
+    "b_c36": {
+      "name": "IORI b_c36 (T3 heihachi r73)",
+      "input": "b_c36",
+      "t3_source": "heihachi",
+      "t3_row": 73,
+      "t3_command": "4/7+RK",
+      "startup": 0.25,
+      "active": 0.05,
+      "recovery": 0.6,
+      "damage": 6,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:73",
+      "input_slots": [
+        "b"
+      ],
+      "move_class": "special",
+      "t3_condition": 36
+    },
+    "4_r74": {
+      "name": "IORI 4_r74 (T3 heihachi r74)",
+      "input": "4_r74",
+      "t3_source": "heihachi",
+      "t3_row": 74,
+      "t3_command": "RK",
+      "startup": 0.133,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 15,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:74",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_r75": {
+      "name": "IORI 4_r75 (T3 heihachi r75)",
+      "input": "4_r75",
+      "t3_source": "heihachi",
+      "t3_row": 75,
+      "t3_command": "RK",
+      "startup": 0.133,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 15,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:75",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_r76": {
+      "name": "IORI 4_r76 (T3 heihachi r76)",
+      "input": "4_r76",
+      "t3_source": "heihachi",
+      "t3_row": 76,
+      "t3_command": "RK",
+      "startup": 0.133,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 15,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:76",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_r77": {
+      "name": "IORI 4_r77 (T3 heihachi r77)",
+      "input": "4_r77",
+      "t3_source": "heihachi",
+      "t3_row": 77,
+      "t3_command": "RK",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 15,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:77",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_r78": {
+      "name": "IORI 4_r78 (T3 heihachi r78)",
+      "input": "4_r78",
+      "t3_source": "heihachi",
+      "t3_row": 78,
+      "t3_command": "RK",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 15,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:78",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_r79": {
+      "name": "IORI 4_r79 (T3 heihachi r79)",
+      "input": "4_r79",
+      "t3_source": "heihachi",
+      "t3_row": 79,
+      "t3_command": "RK",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 15,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:79",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_r80": {
+      "name": "IORI 4_r80 (T3 heihachi r80)",
+      "input": "4_r80",
+      "t3_source": "heihachi",
+      "t3_row": 80,
+      "t3_command": "RK",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 9,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:80",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_r81": {
+      "name": "IORI 4_r81 (T3 heihachi r81)",
+      "input": "4_r81",
+      "t3_source": "heihachi",
+      "t3_row": 81,
+      "t3_command": "RK",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 9,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:81",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_r82": {
+      "name": "IORI 4_r82 (T3 heihachi r82)",
+      "input": "4_r82",
+      "t3_source": "heihachi",
+      "t3_row": 82,
+      "t3_command": "RK",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 9,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:82",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_c36_r83": {
+      "name": "IORI 4_c36_r83 (T3 heihachi r83)",
+      "input": "4_c36_r83",
+      "t3_source": "heihachi",
+      "t3_row": 83,
+      "t3_command": "RK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 12,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:83",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "f_c36_r84": {
+      "name": "IORI f_c36_r84 (T3 heihachi r84)",
+      "input": "f_c36_r84",
+      "t3_source": "heihachi",
+      "t3_row": 84,
+      "t3_command": "6/9+RK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 12,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:84",
+      "input_slots": [
+        "f"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "b_c36_r85": {
+      "name": "IORI b_c36_r85 (T3 heihachi r85)",
+      "input": "b_c36_r85",
+      "t3_source": "heihachi",
+      "t3_row": 85,
+      "t3_command": "4/7+RK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 11,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:85",
+      "input_slots": [
+        "b"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "d/f+1+2_r17": {
+      "name": "IORI d/f+1+2_r17 (T3 heihachi r110)",
+      "input": "d/f+1+2_r17",
+      "t3_source": "heihachi",
+      "t3_row": 110,
+      "t3_command": "3+LP+RP",
+      "startup": 0.133,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:110",
+      "input_slots": [
+        "d/f+1+2"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 17
+    },
+    "3_r107_r125": {
+      "name": "IORI 3_r107_r125 (T3 heihachi r125)",
+      "input": "3_r107_r125",
+      "t3_source": "heihachi",
+      "t3_row": 125,
+      "t3_command": "LK",
+      "startup": 0.267,
+      "active": 0.017,
+      "recovery": 0.0,
+      "damage": 7,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:125",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 107
+    },
+    "b_r133": {
+      "name": "IORI b_r133 (T3 heihachi r133)",
+      "input": "b_r133",
+      "t3_source": "heihachi",
+      "t3_row": 133,
+      "t3_command": "4/6+LP+RP",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:133",
+      "input_slots": [
+        "b"
+      ],
+      "move_class": "strike"
+    },
+    "b_r134": {
+      "name": "IORI b_r134 (T3 heihachi r134)",
+      "input": "b_r134",
+      "t3_source": "heihachi",
+      "t3_row": 134,
+      "t3_command": "4/6+RP",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:134",
+      "input_slots": [
+        "b"
+      ],
+      "move_class": "strike"
+    },
+    "b_r135": {
+      "name": "IORI b_r135 (T3 heihachi r135)",
+      "input": "b_r135",
+      "t3_source": "heihachi",
+      "t3_row": 135,
+      "t3_command": "4/6+LK+RK",
+      "startup": 0.267,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 16,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:135",
+      "input_slots": [
+        "b"
+      ],
+      "move_class": "strike"
+    },
+    "2_r146": {
+      "name": "IORI 2_r146 (T3 heihachi r146)",
+      "input": "2_r146",
+      "t3_source": "heihachi",
+      "t3_row": 146,
+      "t3_command": "RP",
+      "startup": 0.283,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 12,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:146",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike"
+    },
+    "2_r149": {
+      "name": "IORI 2_r149 (T3 heihachi r149)",
+      "input": "2_r149",
+      "t3_source": "heihachi",
+      "t3_row": 149,
+      "t3_command": "RP",
+      "startup": 0.217,
+      "active": 0.017,
+      "recovery": 0.783,
+      "damage": 11,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:149",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike"
+    },
+    "3_r153": {
+      "name": "IORI 3_r153 (T3 heihachi r153)",
+      "input": "3_r153",
+      "t3_source": "heihachi",
+      "t3_row": 153,
+      "t3_command": "LK",
+      "startup": 0.317,
+      "active": 0.083,
+      "recovery": 0.633,
+      "damage": 14,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:153",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "3_r154": {
+      "name": "IORI 3_r154 (T3 heihachi r154)",
+      "input": "3_r154",
+      "t3_source": "heihachi",
+      "t3_row": 154,
+      "t3_command": "LK",
+      "startup": 0.333,
+      "active": 0.083,
+      "recovery": 0.617,
+      "damage": 14,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:154",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "4_r155": {
+      "name": "IORI 4_r155 (T3 heihachi r155)",
+      "input": "4_r155",
+      "t3_source": "heihachi",
+      "t3_row": 155,
+      "t3_command": "RK",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.55,
+      "damage": 12,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:155",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "f+4": {
+      "name": "IORI f+4 (T3 heihachi r156)",
+      "input": "f+4",
+      "t3_source": "heihachi",
+      "t3_row": 156,
+      "t3_command": "6+RK",
+      "startup": 0.317,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 16,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:156",
+      "input_slots": [
+        "f+4"
+      ],
+      "move_class": "strike"
+    },
+    "1_r166": {
+      "name": "IORI 1_r166 (T3 heihachi r166)",
+      "input": "1_r166",
+      "t3_source": "heihachi",
+      "t3_row": 166,
+      "t3_command": "LP",
+      "startup": 0.45,
+      "active": 0.033,
+      "recovery": 0.717,
+      "damage": 18,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:166",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r175": {
+      "name": "IORI 1_r175 (T3 heihachi r175)",
+      "input": "1_r175",
+      "t3_source": "heihachi",
+      "t3_row": 175,
+      "t3_command": "LP",
+      "startup": 0.3,
+      "active": 0.133,
+      "recovery": 0.7,
+      "damage": 22,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:175",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r176": {
+      "name": "IORI 1_r176 (T3 heihachi r176)",
+      "input": "1_r176",
+      "t3_source": "heihachi",
+      "t3_row": 176,
+      "t3_command": "LP",
+      "startup": 0.367,
+      "active": 0.067,
+      "recovery": 0.7,
+      "damage": 16,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:176",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r177": {
+      "name": "IORI 1_r177 (T3 heihachi r177)",
+      "input": "1_r177",
+      "t3_source": "heihachi",
+      "t3_row": 177,
+      "t3_command": "LP",
+      "startup": 0.367,
+      "active": 0.067,
+      "recovery": 0.7,
+      "damage": 21,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:177",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "f+2": {
+      "name": "IORI f+2 (T3 heihachi r178)",
+      "input": "f+2",
+      "t3_source": "heihachi",
+      "t3_row": 178,
+      "t3_command": "6+RP",
+      "startup": 0.217,
+      "active": 0.033,
+      "recovery": 0.767,
+      "damage": 18,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:178",
+      "input_slots": [
+        "f+2"
+      ],
+      "move_class": "strike"
+    },
+    "d/f+2_r30": {
+      "name": "IORI d/f+2_r30 (T3 heihachi r179)",
+      "input": "d/f+2_r30",
+      "t3_source": "heihachi",
+      "t3_row": 179,
+      "t3_command": "3+RP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.633,
+      "damage": 15,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:179",
+      "input_slots": [
+        "d/f+2"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 30
+    },
+    "3_r182": {
+      "name": "IORI 3_r182 (T3 heihachi r182)",
+      "input": "3_r182",
+      "t3_source": "heihachi",
+      "t3_row": 182,
+      "t3_command": "LK",
+      "startup": 0.45,
+      "active": 0.017,
+      "recovery": 0.817,
+      "damage": 21,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:182",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "4_r191": {
+      "name": "IORI 4_r191 (T3 heihachi r191)",
+      "input": "4_r191",
+      "t3_source": "heihachi",
+      "t3_row": 191,
+      "t3_command": "RK",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.583,
+      "damage": 12,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:191",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "1_c53_r192": {
+      "name": "IORI 1_c53_r192 (T3 heihachi r192)",
+      "input": "1_c53_r192",
+      "t3_source": "heihachi",
+      "t3_row": 192,
+      "t3_command": "any-button",
+      "startup": 0.35,
+      "active": 0.017,
+      "recovery": 0.65,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:192",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 53
+    },
+    "4_r193": {
+      "name": "IORI 4_r193 (T3 heihachi r193)",
+      "input": "4_r193",
+      "t3_source": "heihachi",
+      "t3_row": 193,
+      "t3_command": "RK",
+      "startup": 0.75,
+      "active": 0.083,
+      "recovery": 0.517,
+      "damage": 9,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:193",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_c26_r194": {
+      "name": "IORI 4_c26_r194 (T3 heihachi r194)",
+      "input": "4_c26_r194",
+      "t3_source": "heihachi",
+      "t3_row": 194,
+      "t3_command": "RK",
+      "startup": 0.8,
+      "active": 0.033,
+      "recovery": 0.717,
+      "damage": 13,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:194",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike",
+      "t3_condition": 26
+    },
+    "4_c27": {
+      "name": "IORI 4_c27 (T3 heihachi r194)",
+      "input": "4_c27",
+      "t3_source": "heihachi",
+      "t3_row": 194,
+      "t3_command": "RK",
+      "startup": 0.8,
+      "active": 0.033,
+      "recovery": 0.717,
+      "damage": 13,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:194",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "special",
+      "t3_condition": 27
+    },
+    "4_r14_r195": {
+      "name": "IORI 4_r14_r195 (T3 heihachi r195)",
+      "input": "4_r14_r195",
+      "t3_source": "heihachi",
+      "t3_row": 195,
+      "t3_command": "RK",
+      "startup": 0.75,
+      "active": 0.067,
+      "recovery": 0.533,
+      "damage": 9,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:195",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 14
+    },
+    "1_r200": {
+      "name": "IORI 1_r200 (T3 heihachi r200)",
+      "input": "1_r200",
+      "t3_source": "heihachi",
+      "t3_row": 200,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.167,
+      "damage": 26,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:200",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_c26_r215": {
+      "name": "IORI 1_c26_r215 (T3 heihachi r215)",
+      "input": "1_c26_r215",
+      "t3_source": "heihachi",
+      "t3_row": 215,
+      "t3_command": "any-button",
+      "startup": 0.65,
+      "active": 0.017,
+      "recovery": 0.817,
+      "damage": 18,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:215",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 26
+    },
+    "1_r219": {
+      "name": "IORI 1_r219 (T3 heihachi r219)",
+      "input": "1_r219",
+      "t3_source": "heihachi",
+      "t3_row": 219,
+      "t3_command": "any-button",
+      "startup": 0.65,
+      "active": 0.1,
+      "recovery": 0.7,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:219",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "4_r220": {
+      "name": "IORI 4_r220 (T3 heihachi r220)",
+      "input": "4_r220",
+      "t3_source": "heihachi",
+      "t3_row": 220,
+      "t3_command": "RK",
+      "startup": 0.65,
+      "active": 0.017,
+      "recovery": 0.817,
+      "damage": 18,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:220",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "1+2_r223": {
+      "name": "IORI 1+2_r223 (T3 heihachi r223)",
+      "input": "1+2_r223",
+      "t3_source": "heihachi",
+      "t3_row": 223,
+      "t3_command": "LP+RP",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 13,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:223",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "strike"
+    },
+    "1_r224": {
+      "name": "IORI 1_r224 (T3 heihachi r224)",
+      "input": "1_r224",
+      "t3_source": "heihachi",
+      "t3_row": 224,
+      "t3_command": "LP",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 13,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:224",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "2_r225": {
+      "name": "IORI 2_r225 (T3 heihachi r225)",
+      "input": "2_r225",
+      "t3_source": "heihachi",
+      "t3_row": 225,
+      "t3_command": "RP",
+      "startup": 0.333,
+      "active": 0.05,
+      "recovery": 0.733,
+      "damage": 13,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:225",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike"
+    },
+    "4_r234": {
+      "name": "IORI 4_r234 (T3 heihachi r234)",
+      "input": "4_r234",
+      "t3_source": "heihachi",
+      "t3_row": 234,
+      "t3_command": "RK",
+      "startup": 0.65,
+      "active": 0.017,
+      "recovery": 0.817,
+      "damage": 21,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:234",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "1_r238": {
+      "name": "IORI 1_r238 (T3 heihachi r238)",
+      "input": "1_r238",
+      "t3_source": "heihachi",
+      "t3_row": 238,
+      "t3_command": "LP",
+      "startup": 0.7,
+      "active": 0.05,
+      "recovery": 0.7,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:238",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r239": {
+      "name": "IORI 1_r239 (T3 heihachi r239)",
+      "input": "1_r239",
+      "t3_source": "heihachi",
+      "t3_row": 239,
+      "t3_command": "LP",
+      "startup": 0.7,
+      "active": 0.05,
+      "recovery": 0.7,
+      "damage": 18,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:239",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "2_r240": {
+      "name": "IORI 2_r240 (T3 heihachi r240)",
+      "input": "2_r240",
+      "t3_source": "heihachi",
+      "t3_row": 240,
+      "t3_command": "RP",
+      "startup": 0.483,
+      "active": 0.017,
+      "recovery": 0.783,
+      "damage": 15,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:240",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike"
+    },
+    "1_c36_r260": {
+      "name": "IORI 1_c36_r260 (T3 heihachi r260)",
+      "input": "1_c36_r260",
+      "t3_source": "heihachi",
+      "t3_row": 260,
+      "t3_command": "any-button",
+      "startup": 0.367,
+      "active": 0.017,
+      "recovery": 0.667,
+      "damage": 5,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:260",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "1_c36_r261": {
+      "name": "IORI 1_c36_r261 (T3 heihachi r261)",
+      "input": "1_c36_r261",
+      "t3_source": "heihachi",
+      "t3_row": 261,
+      "t3_command": "any-button",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 8,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:261",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "1_c36_r264": {
+      "name": "IORI 1_c36_r264 (T3 heihachi r264)",
+      "input": "1_c36_r264",
+      "t3_source": "heihachi",
+      "t3_row": 264,
+      "t3_command": "any-button",
+      "startup": 0.233,
+      "active": 0.017,
+      "recovery": 0.667,
+      "damage": 4,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:264",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "1_c36_r265": {
+      "name": "IORI 1_c36_r265 (T3 heihachi r265)",
+      "input": "1_c36_r265",
+      "t3_source": "heihachi",
+      "t3_row": 265,
+      "t3_command": "any-button",
+      "startup": 0.183,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 6,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:265",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "1_c2_r340": {
+      "name": "IORI 1_c2_r340 (T3 heihachi r340)",
+      "input": "1_c2_r340",
+      "t3_source": "heihachi",
+      "t3_row": 340,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 4.033,
+      "damage": 18,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:340",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 2
+    },
+    "1_c2_r342": {
+      "name": "IORI 1_c2_r342 (T3 heihachi r342)",
+      "input": "1_c2_r342",
+      "t3_source": "heihachi",
+      "t3_row": 342,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.567,
+      "damage": 18,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:342",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 2
+    },
+    "1_c4_r344": {
+      "name": "IORI 1_c4_r344 (T3 heihachi r344)",
+      "input": "1_c4_r344",
+      "t3_source": "heihachi",
+      "t3_row": 344,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.467,
+      "damage": 24,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:344",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 4
+    },
+    "1_c5_r346": {
+      "name": "IORI 1_c5_r346 (T3 heihachi r346)",
+      "input": "1_c5_r346",
+      "t3_source": "heihachi",
+      "t3_row": 346,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.817,
+      "damage": 27,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:346",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 5
+    },
+    "1_c3_r348": {
+      "name": "IORI 1_c3_r348 (T3 heihachi r348)",
+      "input": "1_c3_r348",
+      "t3_source": "heihachi",
+      "t3_row": 348,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.333,
+      "damage": 35,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:348",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 3
+    },
+    "1_r352": {
+      "name": "IORI 1_r352 (T3 heihachi r352)",
+      "input": "1_r352",
+      "t3_source": "heihachi",
+      "t3_row": 352,
+      "t3_command": "any-button",
+      "startup": 0.833,
+      "active": 0.017,
+      "recovery": 0.0,
+      "damage": 8,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:352",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_c2_r355": {
+      "name": "IORI 1_c2_r355 (T3 heihachi r355)",
+      "input": "1_c2_r355",
+      "t3_source": "heihachi",
+      "t3_row": 355,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.817,
+      "damage": 19,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:355",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 2
+    },
+    "1_r358": {
+      "name": "IORI 1_r358 (T3 heihachi r358)",
+      "input": "1_r358",
+      "t3_source": "heihachi",
+      "t3_row": 358,
+      "t3_command": "any-button",
+      "startup": 0.8,
+      "active": 0.017,
+      "recovery": 0.767,
+      "damage": 19,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:358",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r365": {
+      "name": "IORI 1_r365 (T3 heihachi r365)",
+      "input": "1_r365",
+      "t3_source": "heihachi",
+      "t3_row": 365,
+      "t3_command": "any-button",
+      "startup": 0.8,
+      "active": 0.017,
+      "recovery": 0.767,
+      "damage": 20,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:365",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r369": {
+      "name": "IORI 1_r369 (T3 heihachi r369)",
+      "input": "1_r369",
+      "t3_source": "heihachi",
+      "t3_row": 369,
+      "t3_command": "any-button",
+      "startup": 0.8,
+      "active": 0.017,
+      "recovery": 0.767,
+      "damage": 29,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:heihachi:row:369",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    }
+  },
+  "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
+  "schema_version": 2,
+  "strings": [],
+  "t3_bank": "moveset_heihachi.json",
+  "t3_bank_rows": 383,
+  "t3_bank_attack_rows": 96,
+  "generated_full_moveset": {
+    "by": "tools/gen-movesets-t3.py",
+    "date": "2026-10-20",
+    "note": "Full T3 bank depth merged over curated base; curated moves preserved verbatim. 383 rows, 215 attacks."
+  },
+  "kof_source": "KOF XV (dreamcancel / SNK wiki)",
+  "forward_merge": {
+    "date": "2026-10-20",
+    "pr": 355,
+    "method": "semantic union (PR #363 playbook)",
+    "branch_moves": 103,
+    "main_moves": 105,
+    "merged_moves": 196,
+    "shared_keys": 12,
+    "rekeys": [],
+    "note": "Every entry from both versions verified present; shared input keys were byte-identical, so no rekeys were needed.",
+    "carried_branch_keys": {
+      "kof_source": "branch-only key carried in"
+    },
+    "superseded_branch_scalars": {
+      "tekken_base": {
+        "branch": "Iori Yagami (KOF XV)",
+        "main": "Iori Yagami (KOF)"
+      },
+      "proxy_note": {
+        "branch": "Full KOF XV moveset (Cluster D, owner FULL MOVESET LAW 2026-10-19). Original 12 Heihachi-proxy entries kept verbatim; canonical KOF XV set added: normals (far/close/crouch/jump/hop/blowback), Geshiki command normals, Sakahagi throw, Yamibarai/Oniyaki/Aoi Hana/Kototsuki In/Kuzukaze/Tsumagushi specials + EX, Ya Otome super, Saika, Yamisogi (XIII legacy), Ya Sakazuki climax, Homurabotogi (XIII legacy), Rush + XV system moves. Sources: dreamcancel KOFXV, SNK wiki Iori move list, supercombo KOF XIII.",
+        "main": null
+      },
+      "frame_convention": {
+        "branch": "KOF XV 60fps -> seconds; damage = round(KOF dmg x 0.03), caps: normals 20 / specials+throws 25 / supers+climax 45; soulGain ~= dmg/2 cap 15. Frame values converted from KOF frame-data norms (dreamcancel / SNK wiki).",
+        "main": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP"
+      }
+    }
+  }
+}
