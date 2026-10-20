@@ -67,6 +67,7 @@ const MODEL_URLS = {
   burger: '../roster/burger/attires/attire1/model.glb',
   // Kronos — new fighter (owner 2026-10-19, Tripo pull).
   kronos: '../roster/kronos/attires/attire1/model.glb',
+  'kronos-attire2': '../roster/kronos/attires/attire2/model.glb',
   // Burger hunger-state variants (owner 2026-10-19, Tripo pulls).
   'burger-attire2': '../roster/burger/attires/attire2/model.glb',
   'burger-attire3': '../roster/burger/attires/attire3/model.glb',
