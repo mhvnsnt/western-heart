@@ -398,6 +398,56 @@ for (const [letter, label, fighters, panoTint, floorKind, floorTint, sky, fogC, 
 }
 
 
+/* ---------------- WWF NO MERCY ARENAS (teardown-integration 2026-10-19) ----
+   17 real arena assemblies from teardown/wwf-no-mercy/arenas/ (see ARENAS.md
+   there): 11 show/PPV arenas + cage + 6 backstage areas. Geometry is the
+   actual AkiModel pieces; vertex colors from the teardown .vc sidecars. */
+const NO_MERCY = [
+  // file, name, description, skyTop, skyMid, sun, floorTint
+  ['arena_raw', 'RAW IS WAR', 'The Monday-night war room — ring, ramp, trons and a full crowd bowl.', '#0a0a18', '#2a0a14', '#ff3a3a', '#6a5a52'],
+  ['arena_smackdown', 'SMACKDOWN', 'Blue-brand arena bowl with the fist-era staging bones.', '#0a0a20', '#101a3a', '#3a7aff', '#5a6068'],
+  ['arena_royal_rumble', 'ROYAL RUMBLE', 'January classic bowl — every fighter for themselves.', '#120a20', '#241040', '#8a4aff', '#605a68'],
+  ['arena_wrestlemania', 'WRESTLEMANIA', 'The grandest stage of them all, No Mercy vintage.', '#0c0c1c', '#1c1440', '#ffd76a', '#6a6058'],
+  ['arena_king_of_the_ring', 'KING OF THE RING', 'Tournament-night arena. Win three and take the crown.', '#100c08', '#2a1c0c', '#ffb03a', '#6a5c4a'],
+  ['arena_summerslam', 'SUMMERSLAM', 'The biggest party of the summer, year-2000 edition.', '#081018', '#0c2a3a', '#3ad0ff', '#5a6660'],
+  ['arena_survivor_series', 'SURVIVOR SERIES', 'Thanksgiving-tradition arena — teams of five strive to survive.', '#140c0c', '#301414', '#ff6a3a', '#66584e'],
+  ['arena_backlash', 'BACKLASH', 'Post-WrestleMania fallout bowl.', '#0c0814', '#1c1030', '#b03aff', '#5c565e'],
+  ['arena_armageddon', 'ARMAGEDDON', 'End-of-the-world PPV arena, six-man cell energy.', '#100808', '#2c0c0c', '#ff2a2a', '#605450'],
+  ['arena_no_mercy', 'NO MERCY', 'The namesake show — barricades, bowl and bad intentions.', '#0a0c14', '#14202c', '#7ab0ff', '#5e6058'],
+  ['arena_cage', 'STEEL CAGE', 'Cage-match ring — the walls are part of the fight.', '#0a0a0c', '#18181c', '#c0c8d0', '#565a60'],
+  ['backstage_bar_lounge', 'BACKSTAGE: BAR LOUNGE', 'Where the brawls spill after last call.', '#120c08', '#241408', '#ff9a4a', '#5c4a3a'],
+  ['backstage_boiler_room', 'BACKSTAGE: BOILER ROOM', 'Steam, pipes and Mankind energy.', '#0c0a08', '#1c140c', '#ff7a2a', '#54483e'],
+  ['backstage_hallway', 'BACKSTAGE: HALLWAY', 'Gorilla-adjacent corridor — anything can happen here.', '#0c0c10', '#181820', '#aab4c0', '#585c60'],
+  ['backstage_locker_room', 'BACKSTAGE: LOCKER ROOM', 'Benches, lockers and grudges.', '#0a0e0c', '#14201a', '#6aff9a', '#4e5c50'],
+  ['backstage_parking_lot', 'BACKSTAGE: PARKING LOT', 'Asphalt rules. Cars are furniture.', '#080a10', '#101820', '#8ab4d8', '#4c5054'],
+  ['lobby', 'THE LOBBY', 'Gorilla position — one corridor from the curtain.', '#0e0c0a', '#201a12', '#ffd9a0', '#5e584c'],
+];
+for (const [file, name, desc, skyTop, skyMid, sunC, floorTint] of NO_MERCY) {
+  STAGES.push({
+    id: `nm-${file.replace(/_/g, '-')}`,
+    name: `NO MERCY: ${name}`,
+    tier: 'WRESTLING',
+    universe: 'WWF No Mercy (AKI)',
+    element: 'Ring',
+    description: desc,
+    dims: { width: 16.8, depth: 6.0, wallDistance: 8.4 },
+    spawns: { p1: -3.5, p2: 3.5 },
+    lighting: {
+      sky: [[0.0, skyTop], [0.55, skyMid], [0.85, sunC], [1.0, skyTop]],
+      fog: [skyTop, 22, 80],
+      hemi: ['#8a8aa8', '#1a1420', 1.5],
+      sun: [sunC, 2.2, [-10, 8, 5]],
+      rim: [sunC, 0.6, [8, 6, -7]],
+      fill: ['#ffe0c0', 0.8, [0, 4, 10]],
+    },
+    floor: { kind: 'stone', tint: floorTint, repeat: 26, platformTint: floorTint, platformRepeat: 6 },
+    swatch: [skyTop, sunC],
+    builder: 'nomercy',
+    obj: `assets/stages/no-mercy/${file}.obj`,
+    panoTint: '#ffffff',
+  });
+}
+
 /* ---- SUN RĀ — THE STARING SKY (boss stage; Kevin's home base) ---- */
 STAGES.push({
   id: 'sunra',
@@ -1093,28 +1143,58 @@ async function buildT3Retro(g, def, api) {
   return { updaters, skyTex, fog };
 }
 
-/* ---- WWF NO MERCY: real N64 arena GLB + procedural ropes ----
-   The GLB carries vertex-colored arena geometry with the fighting surface
-   at y=0. The ROM never stored ropes (procedural at runtime) and its ring
-   posts/turnbuckles/aprons are placement-less templates, so the builder
-   re-adds simple posts + 3 ropes per side for ring arenas. Backstage
-   arenas (rooms, lot) skip ropes. */
+/* ---- WWF NO MERCY: real N64 arena geometry (GLB + OBJ paths) ----
+   Forward-merge of branch (GLB via GLTFLoader + procedural ropes/posts/cage/
+   interior lights) and main (OBJ via fetchStageOBJ, AkiModel units scaled
+   0.012 from teardown/wwf-no-mercy/arenas/). Both geometry paths are kept:
+   GLB when def.glb is present, OBJ fallback when def.obj is present,
+   palette backdrop otherwise. The ROM never stored ropes (procedural at
+   runtime) and its ring posts/turnbuckles/aprons are placement-less
+   templates, so the builder re-adds simple posts + 3 ropes per side for
+   ring arenas. Backstage arenas (rooms, lot) skip ropes. */
 async function buildNoMercy(g, def, api) {
   const { updaters, skyTex, fog } = buildBase(g, def, api);
-  try {
-    const gltf = await new GLTFLoader().loadAsync(def.glb);
-    const arena = gltf.scene;
-    arena.traverse((o) => {
-      if (o.isMesh) {
-        o.castShadow = true; o.receiveShadow = true;
-        // GLBs ship vertex colors; make sure the material honors them.
-        if (o.material && o.geometry.getAttribute('color'))
-          o.material.vertexColors = true;
-      }
-    });
-    g.add(arena);
-  } catch (e) {
-    console.warn(`[WH] stage ${def.id}: GLB ${def.glb} failed (${e.message})`);
+  let shellOk = false;
+  if (def.glb) {
+    // branch GLB path: real N64 arena GLB, vertex-colored, y=0 fight surface
+    try {
+      const gltf = await new GLTFLoader().loadAsync(def.glb);
+      const arena = gltf.scene;
+      arena.traverse((o) => {
+        if (o.isMesh) {
+          o.castShadow = true; o.receiveShadow = true;
+          // GLBs ship vertex colors; make sure the material honors them.
+          if (o.material && o.geometry.getAttribute('color'))
+            o.material.vertexColors = true;
+        }
+      });
+      g.add(arena);
+      shellOk = true;
+    } catch (e) {
+      console.warn(`[WH] stage ${def.id}: GLB ${def.glb} failed (${e.message})`);
+    }
+  }
+  if (!shellOk && def.obj) {
+    // main OBJ path (teardown-integration 2026-10-19): real assembled arena
+    // geometry from teardown/wwf-no-mercy/arenas/ (AkiModel pieces grouped by
+    // assemble_arenas.py), vertex colors merged from the .vc sidecars into the
+    // OBJ v-lines (game/assets/stages/no-mercy/). AkiModel units: floor plane
+    // sits at y=0, bowl spans ~+-2700 -> scale 0.012 puts the ring at fight
+    // scale and the bowl walls ~32 units out.
+    try {
+      const geo = await fetchStageOBJ(def.obj);
+      geo.scale(0.012, 0.012, 0.012);
+      const mat = new THREE.MeshBasicMaterial({
+        vertexColors: !!geo.getAttribute('color'),
+        color: _hex(def.panoTint),
+        side: THREE.DoubleSide, fog: true,
+      });
+      const shell = new THREE.Mesh(geo, mat);
+      g.add(shell);
+      shellOk = true;
+    } catch (e) {
+      console.warn(`[WH] stage ${def.id}: arena shell failed (${e.message}), palette backdrop only`);
+    }
   }
   if (def.interior) {
     // enclosed backstage rooms: warm ceiling lights (the sun/rim rig is
@@ -1236,7 +1316,7 @@ export function disposeStage(group) {
 }
 
 /* Tier order for the stage-select screen. */
-export const STAGE_TIERS = ['CANON LANDS', 'TEKKEN RETRO', 'WWF NO MERCY', 'BOSS STAGES'];
+export const STAGE_TIERS = ['CANON LANDS', 'TEKKEN RETRO', 'WWF NO MERCY', 'WRESTLING', 'BOSS STAGES'];
 
 /* ---------------- SUN RĀ — THE STARING SKY ----------------
    Boss stage. Kevin's home base (he takes Baek's roster slot; can fight
