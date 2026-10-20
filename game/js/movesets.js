@@ -46,6 +46,8 @@ export const MOVESET_IDS = [
   'zangief', 'blanka', 'vega', 'iori', 'armor-king',
   // Intake wave 2 (owner 2026-10-19): remaining four intake movesets.
   'hugo', 'raiden', 'marduk', 'bob',
+  // Custom fighters (owner 2026-10-19): KRONOS (Zangief + Golem), DEATHFANG (Iori-based), Ryuji/Rock hybrid, KORESHI (owner creation).
+  'kronos', 'deathfang', 'ryuji-rock', 'koreshi',
 ];
 
 const _movesets = {};

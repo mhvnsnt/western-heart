@@ -1,0 +1,784 @@
+{
+ "fighter": "kronos",
+ "display": "KRONOS",
+ "tekken_base": "Zangief + Golem (Urban Reign)",
+ "t3_source": "king",
+ "proxy": true,
+ "proxy_note": "KRONOS is the owner's custom Zangief-based fighter (owner 2026-10-19 ~20:28 CDT): Zangief's moves + other fighters mixed in (Golem from Urban Reign, etc.) with Tekken-style inputs. King proxy for the grappler base (same T3 King pool as zangief.json). Zangief signatures (Spinning Piledriver, Atomic Buster, Banishing Flat, Lariat) are WH signatures (t3_row 0). Golem power moves are proxy-framed from the Urban Reign teardown (motion packs in teardown/urban-reign/animations/motion-packs/, decode pending), marked proxy per move. Hair swap via Creation Suite parts.",
+ "variant": 1,
+ "canon_note": "Default attire = Tripo muscular warrior. Attire 2 \"TimberWolf\" (Wolverine inspired). More Zangief attires to follow.",
+ "moves": {
+  "1": {
+   "name": "KRONOS 1 (T3 king r44)",
+   "input": "1",
+   "t3_source": "king",
+   "t3_row": 44,
+   "t3_command": "LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 11,
+   "t3_damage": 18,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:44",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "2": {
+   "name": "KRONOS 2 (T3 king r46)",
+   "input": "2",
+   "t3_source": "king",
+   "t3_row": 46,
+   "t3_command": "RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 11,
+   "t3_damage": 18,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:46",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "3": {
+   "name": "KRONOS 3 (T3 king r52)",
+   "input": "3",
+   "t3_source": "king",
+   "t3_row": 52,
+   "t3_command": "LK",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 13,
+   "t3_damage": 22,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:52",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "4": {
+   "name": "KRONOS 4 (T3 king r58)",
+   "input": "4",
+   "t3_source": "king",
+   "t3_row": 58,
+   "t3_command": "RK",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 12,
+   "t3_damage": 20,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:58",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "f+1": {
+   "name": "KRONOS 5 (T3 king r64)",
+   "input": "f+1",
+   "t3_source": "king",
+   "t3_row": 64,
+   "t3_command": "f+LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 14,
+   "t3_damage": 23,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:64",
+   "input_slots": [
+    "f+1"
+   ],
+   "move_class": "strike"
+  },
+  "f+2": {
+   "name": "KRONOS 6 (T3 king r70)",
+   "input": "f+2",
+   "t3_source": "king",
+   "t3_row": 70,
+   "t3_command": "f+RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 12,
+   "t3_damage": 20,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:70",
+   "input_slots": [
+    "f+2"
+   ],
+   "move_class": "strike"
+  },
+  "d+1": {
+   "name": "KRONOS 7 (T3 king r76)",
+   "input": "d+1",
+   "t3_source": "king",
+   "t3_row": 76,
+   "t3_command": "d+LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 15,
+   "t3_damage": 25,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:76",
+   "input_slots": [
+    "d+1"
+   ],
+   "move_class": "strike"
+  },
+  "d+2": {
+   "name": "KRONOS 8 (T3 king r82)",
+   "input": "d+2",
+   "t3_source": "king",
+   "t3_row": 82,
+   "t3_command": "d+RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 13,
+   "t3_damage": 22,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:82",
+   "input_slots": [
+    "d+2"
+   ],
+   "move_class": "strike"
+  },
+  "b+1": {
+   "name": "KRONOS 9 (T3 king r88)",
+   "input": "b+1",
+   "t3_source": "king",
+   "t3_row": 88,
+   "t3_command": "b+LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 14,
+   "t3_damage": 23,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:88",
+   "input_slots": [
+    "b+1"
+   ],
+   "move_class": "strike"
+  },
+  "b+2": {
+   "name": "KRONOS 10 (T3 king r94)",
+   "input": "b+2",
+   "t3_source": "king",
+   "t3_row": 94,
+   "t3_command": "b+RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 16,
+   "t3_damage": 27,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:94",
+   "input_slots": [
+    "b+2"
+   ],
+   "move_class": "strike"
+  },
+  "1,2": {
+   "name": "KRONOS STRING \u2014 CHOP HAMMER",
+   "input": "1,2",
+   "t3_source": "king",
+   "t3_row": 44,
+   "t3_command": "LP,RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 18,
+   "t3_damage": 30,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 3.0,
+   "soulGain": 10,
+   "anim_ref": "t3:king:row:44",
+   "input_slots": [
+    "1,2",
+    "1",
+    "2"
+   ],
+   "move_class": "string"
+  },
+  "1,2,1": {
+   "name": "KRONOS STRING \u2014 CYCLONE COMBO",
+   "input": "1,2,1",
+   "t3_source": "king",
+   "t3_row": 44,
+   "t3_command": "LP,RP,LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.6,
+   "damage": 25,
+   "t3_damage": 42,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 3.0,
+   "soulGain": 12,
+   "anim_ref": "t3:king:row:44",
+   "input_slots": [
+    "1,2,1",
+    "1,2",
+    "1",
+    "2"
+   ],
+   "move_class": "string"
+  },
+  "b,n,f+1+2": {
+   "name": "SPINNING PILEDRIVER",
+   "input": "b,n,f+1+2",
+   "t3_source": "king",
+   "t3_row": 0,
+   "t3_command": "b,n,f+1+2",
+   "startup": 0.3,
+   "active": 0.05,
+   "recovery": 0.8,
+   "damage": 28,
+   "t3_damage": 47,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 3.5,
+   "soulGain": 15,
+   "anim_ref": "wh:zangief:sig:1",
+   "input_slots": [
+    "b,n,f+1+2"
+   ],
+   "move_class": "throw",
+   "wh_signature": true,
+   "wh_note": "WH signature: Zangief's iconic spinning piledriver. 360 motion grab."
+  },
+  "f,f+2": {
+   "name": "BANISHING FLAT",
+   "input": "f,f+2",
+   "t3_source": "king",
+   "t3_row": 0,
+   "t3_command": "f,f+2",
+   "startup": 0.3,
+   "active": 0.05,
+   "recovery": 0.8,
+   "damage": 18,
+   "t3_damage": 30,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.5,
+   "soulGain": 15,
+   "anim_ref": "wh:zangief:sig:2",
+   "input_slots": [
+    "f,f+2"
+   ],
+   "move_class": "strike",
+   "wh_signature": true,
+   "wh_note": "WH signature: green-hand lariat with armor."
+  },
+  "1+2": {
+   "name": "KRONOS 13 \u2014 CYCLONE SPIN LARIAT",
+   "input": "1+2",
+   "t3_source": "king",
+   "t3_row": 101,
+   "t3_command": "1+2",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 24,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:101",
+   "input_slots": [
+    "1+2"
+   ],
+   "move_class": "special"
+  },
+  "1+3": {
+   "name": "KRONOS 14 \u2014 SIBERIAN SUPLEX",
+   "input": "1+3",
+   "t3_source": "king",
+   "t3_row": 201,
+   "t3_command": "1+3",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 28,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:201",
+   "input_slots": [
+    "1+3"
+   ],
+   "move_class": "throw"
+  },
+  "2+4": {
+   "name": "KRONOS 15 \u2014 GOLEM'S GRASP",
+   "input": "2+4",
+   "t3_source": "king",
+   "t3_row": 205,
+   "t3_command": "2+4",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 26,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:205",
+   "input_slots": [
+    "2+4"
+   ],
+   "move_class": "throw"
+  },
+  "d/f+1+2": {
+   "name": "KRONOS 16 \u2014 TITAN PILEDRIVER",
+   "input": "d/f+1+2",
+   "t3_source": "king",
+   "t3_row": 210,
+   "t3_command": "d/f+1+2",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 32,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:210",
+   "input_slots": [
+    "d/f+1+2"
+   ],
+   "move_class": "throw"
+  },
+  "f,f+1": {
+   "name": "KRONOS 17 \u2014 RED CYCLONE RUSH",
+   "input": "f,f+1",
+   "t3_source": "king",
+   "t3_row": 88,
+   "t3_command": "f,F+LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 18,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:88",
+   "input_slots": [
+    "f,f+1"
+   ],
+   "move_class": "strike"
+  },
+  "d+1+2": {
+   "name": "KRONOS 18 \u2014 MOUNTAIN BREAKER",
+   "input": "d+1+2",
+   "t3_source": "king",
+   "t3_row": 96,
+   "t3_command": "d+RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 22,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:king:row:96",
+   "input_slots": [
+    "d+1+2"
+   ],
+   "move_class": "strike",
+   "wh_note": "Re-homed from the seed's duplicate d+2 to d+1+2 (heavy crouch variant) so both the basic d+2 and Mountain Breaker stay playable."
+  },
+  "f,f+2+4": {
+   "name": "ATOMIC BUSTER",
+   "input": "f,f+2+4",
+   "t3_source": "king",
+   "t3_row": 0,
+   "t3_command": "f,f+2+4",
+   "startup": 0.35,
+   "active": 0.05,
+   "recovery": 0.85,
+   "damage": 32,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.5,
+   "soulGain": 18,
+   "anim_ref": "wh:kronos:sig:atomic-buster",
+   "input_slots": [
+    "f,f+2+4"
+   ],
+   "move_class": "throw",
+   "wh_signature": true,
+   "wh_note": "WH signature: Zangief's Atomic Buster - running bear grab chained into back-to-back suplexes, Tekken dash-grab framing."
+  },
+  "b,n,f,b,n,f+1+2": {
+   "name": "FINAL ATOMIC BUSTER",
+   "input": "b,n,f,b,n,f+1+2",
+   "t3_source": "king",
+   "t3_row": 0,
+   "t3_command": "b,n,f,b,n,f+1+2",
+   "startup": 0.45,
+   "active": 0.05,
+   "recovery": 1.0,
+   "damage": 45,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.5,
+   "soulGain": 25,
+   "anim_ref": "wh:kronos:sig:final-atomic-buster",
+   "input_slots": [
+    "b,n,f,b,n,f+1+2"
+   ],
+   "move_class": "throw",
+   "wh_signature": true,
+   "wh_note": "WH super: Zangief's Final Atomic Buster - double Spinning Piledriver into a Siberian Suplex finish. Double-spin Tekken framing."
+  },
+  "f+3": {
+   "name": "CYCLONE KNEE",
+   "input": "f+3",
+   "t3_source": "king",
+   "t3_row": 0,
+   "t3_command": "f+3",
+   "startup": 0.27,
+   "active": 0.05,
+   "recovery": 0.55,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 3.0,
+   "soulGain": 10,
+   "anim_ref": "wh:kronos:sig:knee",
+   "input_slots": [
+    "f+3"
+   ],
+   "move_class": "strike",
+   "wh_signature": true,
+   "wh_note": "WH signature: Zangief-style advancing knee drop."
+  },
+  "d/f+2": {
+   "name": "CYCLONE UPPERCUT",
+   "input": "d/f+2",
+   "t3_source": "king",
+   "t3_row": 0,
+   "t3_command": "d/f+2",
+   "startup": 0.25,
+   "active": 0.05,
+   "recovery": 0.7,
+   "damage": 17,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.0,
+   "soulGain": 12,
+   "anim_ref": "wh:kronos:sig:uppercut",
+   "input_slots": [
+    "d/f+2"
+   ],
+   "move_class": "strike",
+   "wh_signature": true,
+   "wh_note": "WH launcher: rising uppercut in the Zangief-body style, King-bank proxy framing."
+  },
+  "qcf+2": {
+   "name": "CYCLONE CHOP RUSH",
+   "input": "qcf+2",
+   "t3_source": "king",
+   "t3_row": 0,
+   "t3_command": "qcf+2",
+   "startup": 0.3,
+   "active": 0.05,
+   "recovery": 0.65,
+   "damage": 17,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "wh:kronos:sig:chop-rush",
+   "input_slots": [
+    "qcf+2"
+   ],
+   "move_class": "special",
+   "wh_signature": true,
+   "wh_note": "WH motion special: quarter-circle advancing double chop."
+  },
+  "u/f+3+4": {
+   "name": "FLYING BODY PRESS",
+   "input": "u/f+3+4",
+   "t3_source": "king",
+   "t3_row": 0,
+   "t3_command": "u/f+3+4",
+   "startup": 0.4,
+   "active": 0.1,
+   "recovery": 0.8,
+   "damage": 20,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 3.8,
+   "soulGain": 14,
+   "anim_ref": "wh:kronos:sig:body-press",
+   "input_slots": [
+    "u/f+3+4"
+   ],
+   "move_class": "special",
+   "wh_signature": true,
+   "wh_note": "WH signature: Zangief's jumping body splash - cross-body press."
+  },
+  "b+3+4": {
+   "name": "IRON STANCE",
+   "input": "b+3+4",
+   "t3_source": "king",
+   "t3_row": 0,
+   "t3_command": "b+3+4",
+   "startup": 0.2,
+   "active": 0.3,
+   "recovery": 0.5,
+   "damage": 0,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 0,
+   "soulGain": 6,
+   "anim_ref": "wh:kronos:sig:iron-stance",
+   "input_slots": [
+    "b+3+4"
+   ],
+   "move_class": "special",
+   "wh_signature": true,
+   "wh_note": "WH stance: flex/armor pose - absorbs one hit and builds soul. Golem-style intimidation."
+  },
+  "f+1+2": {
+   "name": "GOLEM SHOULDER CHARGE",
+   "input": "f+1+2",
+   "t3_source": "king",
+   "t3_row": 0,
+   "t3_command": "f+1+2",
+   "startup": 0.35,
+   "active": 0.08,
+   "recovery": 0.75,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.5,
+   "soulGain": 14,
+   "anim_ref": "ur:golem:shoulder-charge",
+   "input_slots": [
+    "f+1+2"
+   ],
+   "move_class": "special",
+   "wh_signature": true,
+   "wh_note": "GOLEM (Urban Reign) mix-in. Proxy framing in Tekken notation - Urban Reign motion packs live in teardown/urban-reign/animations/motion-packs/, per-move decode pending. Full-body shoulder charge.",
+   "proxy": true
+  },
+  "b+1+2": {
+   "name": "GOLEM AVALANCHE PRESS",
+   "input": "b+1+2",
+   "t3_source": "king",
+   "t3_row": 0,
+   "t3_command": "b+1+2",
+   "startup": 0.38,
+   "active": 0.06,
+   "recovery": 0.8,
+   "damage": 22,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 4.0,
+   "soulGain": 14,
+   "anim_ref": "ur:golem:avalanche-press",
+   "input_slots": [
+    "b+1+2"
+   ],
+   "move_class": "strike",
+   "wh_signature": true,
+   "wh_note": "GOLEM (Urban Reign) mix-in. Proxy framing in Tekken notation - Urban Reign motion packs live in teardown/urban-reign/animations/motion-packs/, per-move decode pending. Two-handed overhead axe-handle press.",
+   "proxy": true
+  },
+  "d/b+1+2": {
+   "name": "GOLEM QUAKE SLAM",
+   "input": "d/b+1+2",
+   "t3_source": "king",
+   "t3_row": 0,
+   "t3_command": "d/b+1+2",
+   "startup": 0.42,
+   "active": 0.08,
+   "recovery": 0.85,
+   "damage": 21,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 15,
+   "anim_ref": "ur:golem:quake-slam",
+   "input_slots": [
+    "d/b+1+2"
+   ],
+   "move_class": "special",
+   "wh_signature": true,
+   "wh_note": "GOLEM (Urban Reign) mix-in. Proxy framing in Tekken notation - Urban Reign motion packs live in teardown/urban-reign/animations/motion-packs/, per-move decode pending. Double-fist ground pound with quake shockwave (hits grounded opponents).",
+   "proxy": true
+  },
+  "qcf+1+3": {
+   "name": "GOLEM'S EMBRACE",
+   "input": "qcf+1+3",
+   "t3_source": "king",
+   "t3_row": 0,
+   "t3_command": "qcf+1+3",
+   "startup": 0.32,
+   "active": 0.05,
+   "recovery": 0.85,
+   "damage": 27,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.5,
+   "soulGain": 16,
+   "anim_ref": "ur:golem:chokeslam",
+   "input_slots": [
+    "qcf+1+3"
+   ],
+   "move_class": "throw",
+   "wh_signature": true,
+   "wh_note": "GOLEM (Urban Reign) mix-in. Proxy framing in Tekken notation - Urban Reign motion packs live in teardown/urban-reign/animations/motion-packs/, per-move decode pending. One-handed throat lift into a chokeslam (seed specials name kept).",
+   "proxy": true
+  },
+  "f,f+3+4": {
+   "name": "TIMBERWOLF LUNGE",
+   "input": "f,f+3+4",
+   "t3_source": "king",
+   "t3_row": 0,
+   "t3_command": "f,f+3+4",
+   "startup": 0.33,
+   "active": 0.08,
+   "recovery": 0.7,
+   "damage": 19,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 3.8,
+   "soulGain": 14,
+   "anim_ref": "wh:kronos:sig:timberwolf-lunge",
+   "input_slots": [
+    "f,f+3+4"
+   ],
+   "move_class": "special",
+   "wh_signature": true,
+   "wh_note": "Attire 2 'TimberWolf' signature (owner 2026-10-19): feral dashing claw-lunge, Wolverine-inspired framing over the Zangief/Golem power base."
+  }
+ },
+ "strings": [
+  {
+   "input": "1,2",
+   "hits": [
+    "1",
+    "2"
+   ]
+  },
+  {
+   "input": "1,2,1",
+   "hits": [
+    "1",
+    "2",
+    "1"
+   ],
+   "t3_rows": [
+    44,
+    46,
+    44
+   ]
+  }
+ ],
+ "specials": [
+  {
+   "input": "qcf+2",
+   "t3_row": 0,
+   "damage": 17,
+   "throw": false
+  },
+  {
+   "input": "1+2",
+   "t3_row": 101,
+   "damage": 24,
+   "throw": false
+  },
+  {
+   "input": "f,f+2",
+   "t3_row": 0,
+   "damage": 18,
+   "throw": false
+  },
+  {
+   "input": "f,f+3+4",
+   "t3_row": 0,
+   "damage": 19,
+   "throw": false
+  },
+  {
+   "input": "qcf+1+3",
+   "t3_row": 0,
+   "damage": 27,
+   "throw": true
+  },
+  {
+   "input": "d/f+1+2",
+   "t3_row": 210,
+   "damage": 32,
+   "throw": true
+  },
+  {
+   "input": "f,f+2+4",
+   "t3_row": 0,
+   "damage": 32,
+   "throw": true
+  },
+  {
+   "input": "b,n,f+1+2",
+   "t3_row": 0,
+   "damage": 28,
+   "throw": true
+  },
+  {
+   "input": "b,n,f,b,n,f+1+2",
+   "t3_row": 0,
+   "damage": 45,
+   "throw": true
+  }
+ ],
+ "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
+ "schema_version": 2
+}
