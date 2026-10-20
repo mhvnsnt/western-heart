@@ -1241,3 +1241,13 @@ YUKIHYŌ (ユキヒョウ — "snow leopard") is the Western Heart version of Ar
 Backstory, soul assignment, and trial role still open — owner's material to come.
 
 *Owner-directed 2026-10-13 (naming + design). Wired into repo 2026-10-19.*
+
+### CAIN ELIAS — The Deadman (Bonus)
+
+**Owner's words (2026-10-19):** "Cain Elias" — Vain Abel's brother, based on the Undertaker (WWE). Attire 1 = biker; Attire 2 = fight gear. Moveset: Glen Kluger (Urban Reign biker gang leader) or a fitting Tekken character — NOT one already remade. Signature moves include the Last Ride powerbomb and the Tombstone (check Urban Reign models for the moves).
+
+Cain Elias walks in where Vain Abel Elias walked out — the brother who stayed dead. The biker leathers are his ring gear; the fight gear is what he wears when the bell tolls and the lights go out. He does not rush. The Tombstone is not a move, it is an appointment.
+
+**Models (owner-made Tripo pulls, wired 2026-10-19):** Attire 1 (biker): https://studio.tripo3d.ai/3d-model/6aeaaffd-e7d5-45ba-8026-3f0c7b357d86 — `roster/cain-elias/attires/attire1/model.glb`. Attire 2 (fight gear): https://studio.tripo3d.ai/3d-model/752ad786-5076-4469-aaf7-39048f283624 — `roster/cain-elias/attires/attire2/model.glb`. Renders: `docs/tpose-refs/cain-elias/a1_front.png`, `a2_front.png` (own-eyes verified).
+
+*Owner-directed 2026-10-19 (naming, design, attires). Wired into repo 2026-10-19 (gap-audit stream). Moveset pick owned by the moveset lane.*
