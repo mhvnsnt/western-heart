@@ -106,3 +106,49 @@ pass `tools/auto_rig/validate.py` (skinned, Hips, 1.5–2.2 m) before it is wire
 (`--backend knn --donor game/assets/models/pantera.glb` for dense Tripo statics, or
 `gamerig`). Non-Mixamo rigs that DO have skins but unusual names (Vega SF5 naming) need
 a name map in `canonBoneName` before they can take T3 motion.
+
+---
+
+## Fix 4 — owner: "something is permanently posing their bodies awkwardly" (3 root causes, measured)
+
+Owner was right. Fix 1 alone was judged from wide fight frames where fighters are ~100 px tall,
+which is not proof. The new **pose lab** (`game/poselab.html`) plays the bank clip RAW on the
+rig it was baked onto (the true T3 pose) next to the game model playing the retargeted clip,
+front and side, large, with per-bone world-direction errors. It found three more causes:
+
+### 4a. Models face the wrong way / skeleton labels contradict the mesh
+- Raw rest renders of all 52 skinned models (`docs/proof/claude-2026-10-20/model-facing/rest_sheet_*.png`):
+  **8 meshes face -Z** (mariposa, mariposa-monarch, saku-ra-main, cape-jones, kiko-tanaka,
+  kiko-tanaka_alt1, purple-rain-main, custom/Soldier). The game's facing math assumes +Z,
+  so these fought with their backs to the opponent.
+- The auto-rig template skeleton (`tools/auto_rig/backends/skeleton_template.json`, "faces -Z")
+  sits inside **+Z meshes** on the whole pantera / steve-fox / demonio family: the bone named
+  `LeftArm` is on the mesh's anatomical RIGHT, toe joints point behind the heel. Fix 1
+  trusted the bone names, so the T3 pose was applied turned 180° (the fighter's back where
+  the front should be). `before_fix_pantera_backwards.jpg` vs `pantera_rest_faces_plusZ.jpg`.
+- Fix: `game/assets/models/model-facing.json` (per-model mesh facing read from the rest
+  renders, proof listed in the file). `assets.js` wraps each instance so its space always
+  has the mesh facing +Z. `t3anims.js analyzeRig` takes sides from mesh anatomy (+X = left)
+  and swaps L/R driving when the labels are reversed. A toe joint pointing backwards keeps
+  its rest relation to the shin. Unlisted models fall back to a feet-geometry cue only when
+  it is confident (|score| >= 0.05; it misread no model at that threshold).
+- **Muse:** check every new model's mesh facing on a raw rest render and add it to
+  `model-facing.json`. Do not infer facing from bone names.
+
+### 4b. Models authored with the origin at the hips stood waist-deep in the floor
+star, torch, michiko, diablo, vega: vertices span y -1.05..+0.8. `assets.js` now grounds
+every instance by its own skinned rest bounds (three r160 skinned bounding box).
+`star_sunk_before_grounding.jpg` → `after_grounding_diablo_star_torch.jpg`.
+
+### 4c. Broken skin weights (model defects, not animation)
+- `steve-fox.glb` / `demonio.glb` (7 roster fighters: rin, byou, sha, jin_soul, zen, phantom,
+  diablo… and demonio-body): the **shirt mesh (2,246 verts) incl. both sleeves is weighted
+  100% to Spine/Spine1**. The sleeves stay in a T for any animation
+  (`steve_fox_shirt_sleeves_spine1_BROKEN.jpg`). Being repaired by k-NN weight transfer from
+  the same model's own arm/torso/neck meshes (see next section).
+- `pantera.glb` belt2/buckles prims sit at shoulder height on Spine/Spine1 (already flagged
+  in WORKLOG 2026-10-20; no source of truth for their placement, left as is).
+- `deathfang` renders EMPTY at rest. `vega` has no Mixamo/Biped core bones.
+- `mariposa`/`mariposa-monarch` wings tear under any pose (wing geometry on spine bones).
+- **Muse:** gate every model with an arm-region skin audit (verts beyond 45% of the arm span
+  must sit on arm-chain bones, wings/capes excepted) before wiring it.

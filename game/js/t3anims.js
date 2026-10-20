@@ -281,6 +281,25 @@ function analyzeRig(model, THREE) {
     if (c && !by[c]) by[c] = b;
   }
   if (RIG_REQUIRED.some(c => !by[c])) return null;
+  // Anatomical sides come from the MESH, not the bone labels: the
+  // instance space has the mesh facing +Z (assets.js), so the
+  // character's left is +X. The auto-rig template skeleton faces -Z, and
+  // when it sits in a +Z mesh its Left* bones lie on the mesh's right
+  // (verified on rest renders, docs/proof/claude-2026-10-20/model-facing).
+  // Such rigs are driven with sides swapped so the mesh's left arm takes
+  // the source's left arm.
+  model.updateMatrixWorld(true);
+  const xOf = (b) => new THREE.Vector3().setFromMatrixPosition(new THREE.Matrix4().multiplyMatrices(inv, b.matrixWorld)).x;
+  const swapLR = xOf(by.LeftArm) < xOf(by.RightArm);
+  if (swapLR) {
+    const sw = {};
+    for (const [c, b] of Object.entries(by)) {
+      const m = c.match(/^(Left|Right)(.*)$/);
+      sw[m ? (m[1] === 'Left' ? 'Right' : 'Left') + m[2] : c] = b;
+    }
+    for (const k of Object.keys(by)) delete by[k];
+    Object.assign(by, sw);
+  }
   const restOf = new Map(); // Object3D -> { pos, quat, mat } in model space
   const tmpS = new THREE.Vector3();
   const rest = (o) => {
@@ -317,8 +336,9 @@ function analyzeRig(model, THREE) {
   }
   spine.forEach((b, i) => driver.set(b, { slerp: 0.5 + 0.5 * i / spine.length }));
   for (let o = by.Head.parent; o && o !== chest && o.isBone; o = o.parent) driver.set(o, { c: 'Chest' });
-  // Facing: canonical rigs face +Z with the character's left at +X.
-  const facesNegZ = rest(by.LeftArm).pos.x < rest(by.RightArm).pos.x;
+  // Facing: the instance space has the mesh facing +Z (assets.js), the
+  // same as the canonical source rigs, so no facing flip is needed here.
+  const facesNegZ = false;
   // Bone rest directions (model space) for the swing alignment.
   const dir = (a, b) => (a && b) ? new THREE.Vector3().subVectors(rest(b).pos, rest(a).pos) : null;
   let neckRef = by.Neck && by.Neck !== chest && isAnc(chest, by.Neck) ? by.Neck : by.Head;
@@ -330,11 +350,15 @@ function analyzeRig(model, THREE) {
     dirs[s + 'UpLeg'] = dir(by[s + 'UpLeg'], by[s + 'Leg']);
     dirs[s + 'Leg'] = dir(by[s + 'Leg'], by[s + 'Foot']);
     dirs[s + 'Foot'] = by[s + 'ToeBase'] ? dir(by[s + 'Foot'], by[s + 'ToeBase']) : null;
+    // A toe joint pointing behind the heel (template skeleton in a +Z mesh)
+    // would swing the whole foot round; such a foot keeps its rest relation
+    // to the shin instead (A(Foot) = A(Leg)).
+    if (dirs[s + 'Foot'] && dirs[s + 'Foot'].z < 0) dirs[s + 'Foot'] = 'leg';
   }
   // Track names must resolve to exactly one node under the model.
   const nameCount = {};
   model.traverse((o) => { nameCount[o.name] = (nameCount[o.name] || 0) + 1; });
-  return { bones, by, chest, driver, rest, facesNegZ, dirs, hipsY: rest(by.Hips).pos.y,
+  return { bones, by, chest, driver, rest, facesNegZ, swapLR, dirs, hipsY: rest(by.Hips).pos.y,
     trackName: (b) => (nameCount[b.name] === 1 ? b.name : b.uuid), uniqueNames: bones.every(b => nameCount[b.name] === 1) };
 }
 
@@ -384,11 +408,14 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, modelKey = null) 
   for (const c of Object.keys(src.dirs)) {
     const ds = src.dirs[c], dt = rig.dirs[c];
     A[c] = new THREE.Quaternion();
-    if (ds && dt && ds.lengthSq() > 1e-10 && dt.lengthSq() > 1e-10) {
+    if (ds && dt && dt !== 'leg' && ds.lengthSq() > 1e-10 && dt.lengthSq() > 1e-10) {
       A[c].setFromUnitVectors(dt.clone().normalize(), ds.clone().applyQuaternion(F).normalize());
     }
   }
-  for (const s of ['Left', 'Right']) { A[s + 'Hand'] = A[s + 'ForeArm']; A[s + 'ToeBase'] = A[s + 'Foot']; }
+  for (const s of ['Left', 'Right']) {
+    if (rig.dirs[s + 'Foot'] === 'leg') A[s + 'Foot'] = A[s + 'Leg'];
+    A[s + 'Hand'] = A[s + 'ForeArm']; A[s + 'ToeBase'] = A[s + 'Foot'];
+  }
   // Hips position: parent space transform + hip-height scale.
   const hips = rig.by.Hips;
   const hipsParentInv = hips.parent ? new THREE.Matrix4().copy(rig.rest(hips.parent).mat).invert() : null;
@@ -477,7 +504,7 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, modelKey = null) 
     }
     if (hipPos) tracks.push(new THREE.VectorKeyframeTrack(`${rig.trackName(hips)}.position`, times, hipPos));
     const rc = new THREE.AnimationClip(`${clip.name}@${modelKey || 'rig'}`, n / raw.fps, tracks);
-    rc.userData = { ...clip.userData, raw: undefined, retargeted: true, rigFacesNegZ: rig.facesNegZ };
+    rc.userData = { ...clip.userData, raw: undefined, retargeted: true, rigFacesNegZ: rig.facesNegZ, rigSwapLR: rig.swapLR };
     out[action] = rc;
   }
   if (key && rig.uniqueNames) _retargetCache.set(key, out);
