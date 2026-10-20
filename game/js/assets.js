@@ -69,6 +69,12 @@ const MODEL_URLS = {
   'burger-attire2': '../roster/burger/attires/attire2/model.glb',
   'burger-attire3': '../roster/burger/attires/attire3/model.glb',
   'burger-attire4': '../roster/burger/attires/attire4/model.glb',
+  // Burger attires 5-7 (owner 2026-10-19, Tripo pulls).
+  'burger-attire5': '../roster/burger/attires/attire5/model.glb',
+  'burger-attire6': '../roster/burger/attires/attire6/model.glb',
+  'burger-attire7': '../roster/burger/attires/attire7/model.glb',
+  // Gyou spirit form (owner 2026-10-19, Tripo pull).
+  'gyou-spirit': '../roster/gyou/attires/spirit-form/model.glb',
   lili: 'assets/models/lili.glb',   // NO WH name yet — do not assign
   baek: 'assets/models/baek.glb',   // NO WH name yet — do not assign
   // Round-2 auto-rig wave (lane B): re-rigged per-fighter variants + Tripo
