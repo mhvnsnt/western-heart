@@ -50,6 +50,7 @@ const BANK_GLB = {
   jin: '../lab/game/assets/t3_jin_t3real.glb', xiaoyu: '../lab/game/assets/t3_xiaoyu_t3real.glb',
   bryan: '../lab/game/assets/t3_bryan_t3real.glb', gunjack: '../lab/game/assets/t3_gunjack_t3real.glb',
   yoshimitsu: '../lab/game/assets/t3_yoshimitsu_t3real.glb',
+  heihachi: '../lab/game/assets/t3_jin.glb', // Heihachi's motion on Jin's T3 skeleton
 };
 const gltfCache = {};
 const loadGlb = (url) => gltfCache[url] || (gltfCache[url] = new GLTFLoader().loadAsync(url));
@@ -95,7 +96,7 @@ async function show({ model = 'pantera', bank = 'king', clip = 'stance', t = 0.5
   const inst = assets.createInstance(model, 0xffffff, 0x888888, tint);
   const tgt = inst.model;
   for (const n of Object.keys(inst.actions)) inst.actions[n].stop();
-  const rt = retargetT3Clips(clips, bank, tgt, THREE, model);
+  const rt = retargetT3Clips(clips, bank, tgt, THREE, model, clip.startsWith('row:') ? [clip] : null);
   if (!rt || !rt[clip]) throw new Error(`retarget failed for ${model}`);
   const tgtMixer = inst.mixer;
   const ta = tgtMixer.clipAction(rt[clip]); if (!rest) ta.play();
@@ -171,7 +172,23 @@ async function rest(model) {
   info.textContent = `REST ${model}: left = camera on +Z, right = camera on +X`;
   return { model };
 }
-window.__poselab = { show, rest, banks: Object.keys(T3_BANKS) };
+/* Resolve a roster fighter exactly like the game: model from the roster
+   entry (selected attire 1), bank from bankIdFor (moveset t3_source). */
+import { FULL_ROSTER } from './js/roster-full.js';
+import { loadFighterMovesets } from './js/movesets.js';
+import { bankIdFor } from './js/fighter.js';
+let _msReady = null;
+async function showFighter({ id, clip = 'stance', t = 0.5 }) {
+  _msReady = _msReady || loadFighterMovesets();
+  await _msReady;
+  const c = FULL_ROSTER.find(x => x.id === id);
+  if (!c) throw new Error('no roster fighter ' + id);
+  const bank = bankIdFor(c.id, c.moveset || c.id);
+  if (!bank) throw new Error(`${id}: no bank`);
+  const r = await show({ model: c.model, bank, clip, t });
+  return { id, ...r };
+}
+window.__poselab = { show, rest, showFighter, banks: Object.keys(T3_BANKS) };
 const q = new URLSearchParams(location.search);
 if (q.get('model')) show({ model: q.get('model'), bank: q.get('bank') || 'king', clip: q.get('clip') || 'stance', t: +(q.get('t') || 0.5) })
   .catch(e => { info.textContent = 'ERROR ' + e.message; });

@@ -130,7 +130,7 @@ export function getRealMove(charId, moveType) {
           soulGain: mv.soulGain ?? 8, cost: 0,
           limb: mv.limb || 'armR', heavy: !!mv.heavy,
           unblockable: !!mv.unblockable, isGrab: !!mv.isGrab,
-          tekkenInput: mv.input, t3row: mv.t3_row, moveName: mv.name,
+          tekkenInput: mv.input, t3row: mv.t3_row, t3source: mv.t3_source || ms.t3_source, moveName: mv.name,
         };
       }
     } else {
@@ -466,7 +466,29 @@ export class Fighter {
       return;
     }
     this.t3actions = createT3Actions(this.mixer, clips, THREE);
+    // Move rows retarget lazily on first use (same captured rest pose).
+    this._t3 = { bank, clips: t3clips, model, modelKey };
     console.log(`[WH] Fighter ${this.char.id}: ${Object.keys(this.t3actions).length} real T3 actions from bank '${bank}' (retargeted onto ${modelKey})`);
+  }
+
+  /* The move's OWN decoded T3 animation (its t3_row in this fighter's
+     bank, tools/anim/t3_row_bake.py), retargeted on first use and
+     time-scaled so the clip spans the move's startup+active+recovery.
+     Returns the action name, or null when the move has no row clip. */
+  _moveRowAction(move) {
+    if (!this._t3 || !move || move.t3row == null) return null;
+    if (move.t3source && SOURCE_TO_BANK[move.t3source] !== this._t3.bank) return null;
+    const name = 'row:' + move.t3row;
+    if (!this.t3actions[name]) {
+      if (!this._t3.clips[name]) return null;
+      const rc = retargetT3Clips(this._t3.clips, this._t3.bank, this._t3.model, THREE, this._t3.modelKey, [name]);
+      if (!rc || !rc[name]) return null;
+      Object.assign(this.t3actions, createT3Actions(this.mixer, rc, THREE));
+    }
+    const a = this.t3actions[name];
+    const total = (move.startup || 0) + (move.active || 0) + (move.recovery || 0);
+    a.timeScale = total > 0.05 ? a.getClip().duration / total : 1;
+    return name;
   }
 
   tryMove(dir) { if (this.canAct()) this.vx = dir * this.stats.speed; }
@@ -864,7 +886,7 @@ export class Fighter {
       '1': 'light', '2': 'light', '3': 'medium', '4': 'medium', '1+3': 'grab', '2+4': 'grab' };
     switch (this.state) {
       case 'attack': {
-        let t3name = T3_ATTACK_MAP[this.attackName];
+        let t3name = this._moveRowAction(this.attack) || T3_ATTACK_MAP[this.attackName];
         if (!t3name && typeof this.attackName === 'string') {
           const lastBtn = this.attackName.split(',').pop().split('+').pop();
           t3name = T3_ATTACK_MAP[lastBtn] || 'heavy'; // strings -> last hit's clip; specials -> heavy

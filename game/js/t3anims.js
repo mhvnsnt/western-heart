@@ -17,7 +17,11 @@
 
 const T3_CLIP_DEFS = {
   // Game action -> T3 clip file + playback mode
-  stance:  { file: 't3_stance.json',  loop: true  },
+  // Neutral standing stance = move-index slot 3 (n0madic/Tekken3Remake
+  // docs/research/code/moves.md: row +0x10 stance slot, 3 = standing).
+  // t3_stance.json is slot 0, a round-start intro move — not the idle.
+  stance:  { file: 't3_neutral.json', loop: true  },
+  intro:   { file: 't3_stance.json',  loop: false },
   light:   { file: 't3_light.json',   loop: false },  // punch (J)
   medium:  { file: 't3_medium.json',  loop: false },  // kick (K)
   heavy:   { file: 't3_heavy.json',   loop: false },  // heavy attack
@@ -30,7 +34,8 @@ const T3_CLIP_DEFS = {
   walkFwd: { file: 't3_walk_fwd.json', loop: true },
   walkBack:{ file: 't3_walk_back.json', loop: true },
   dash:    { file: 't3_dash_fwd.json', loop: false },
-  crouch:  { file: 't3_crouch.json',  loop: true  },
+  crouch:  { file: 't3_crouch.json',  loop: false },  // stand -> crouch (slot 0x3b)
+  crouchHold:{ file: 't3_crouch_hold.json', loop: true }, // crouching neutral (slot 40)
   backdash:{ file: 't3_backdash.json', loop: false },
   jumpUp:  { file: 't3_jump_up.json', loop: false },
   jumpFwd: { file: 't3_jump_fwd.json', loop: false },
@@ -61,7 +66,11 @@ export const T3_BANKS = {
   bryan:      'assets/anim/t3/bryan/',
   gunjack:    'assets/anim/t3/gunjack/',
   yoshimitsu: 'assets/anim/t3/yoshimitsu/',
-  // heihachi: no decoded bank exists (raw divmot only) — intentionally absent.
+  // Heihachi's OWN divmot13 motion stream, posed on Jin's T3 skeleton:
+  // heihachi191's KMD has no hip/shoulder vertex data, so his body can't
+  // be fitted (docs/anim/PROCEDURAL_AUDIT.md). tools/anim/t3_row_bake.py
+  // --bank heihachi --kmd-from jin. Real Heihachi motion, Jin proportions.
+  heihachi:   'assets/anim/t3/heihachi_on_jin/',
 };
 
 // Moveset source name -> bank key. 'demonio' is the game's rename of Jin
@@ -71,7 +80,7 @@ export const SOURCE_TO_BANK = {
   king: 'king', demonio: 'jin', jin: 'jin', bryan: 'bryan',
   xiaoyu: 'xiaoyu', yoshimitsu: 'yoshimitsu', gunjack: 'gunjack',
   bosconovitch: 'gunjack', deviljin: 'jin',
-  heihachi: null,
+  heihachi: 'heihachi',
 };
 
 /**
@@ -141,6 +150,26 @@ function jsonToClip(name, data, THREE) {
  * access them synchronously via getT3Clips(bankId). Failures are logged
  * but don't throw — the game falls back to procedural.
  */
+/* wh-anim-pack/1 row -> the wh-anim/1 shape jsonToClip reads. */
+function b64i16(str) {
+  const bin = atob(str), n = bin.length >> 1, out = new Int16Array(n);
+  for (let i = 0; i < n; i++) { const v = bin.charCodeAt(2 * i) | (bin.charCodeAt(2 * i + 1) << 8); out[i] = v >= 0x8000 ? v - 0x10000 : v; }
+  return out;
+}
+function decodePackRow(pack, rec) {
+  const q = b64i16(rec.q), rx = b64i16(rec.rx), ry = b64i16(rec.ry), rz = b64i16(rec.rz);
+  const nb = pack.bones.length, n = rec.n, rot = {};
+  pack.bones.forEach((b, bi) => {
+    const arr = new Array(n);
+    for (let f = 0; f < n; f++) { const o = (f * nb + bi) * 4; arr[f] = [q[o] / 32767, q[o + 1] / 32767, q[o + 2] / 32767, q[o + 3] / 32767]; }
+    rot[b] = arr;
+  });
+  const root_t = new Array(n);
+  for (let f = 0; f < n; f++) root_t[f] = [rx[f] / 1000, ry[f] / 1000, rz[f] / 1000];
+  return { format: 'wh-anim/1', fps: pack.fps, bones: pack.bones, rot_xyzw: rot, root_t,
+    bank: pack.bank, slot: rec.slot, move_row: rec.move_row };
+}
+
 const _t3clipCache = {};    // bankId -> { actionName: clip }
 const _t3clipPromises = {}; // bankId -> Promise
 const _t3skelCache = {};    // bankId -> wh-anim-skel/1 source skeleton
@@ -178,8 +207,26 @@ export async function loadT3Clips(THREE, bankId = 'king') {
         console.warn(`[WH-T3] failed to load ${bankId}/${def.file}:`, e.message || e);
       }
     });
+    // Every move row the fighters' movesets reference (rows.pack.json,
+    // tools/anim/t3_row_bake.py): clips keyed 'row:<n>', played by the
+    // move whose t3_row is n.
+    jobs.push((async () => {
+      try {
+        const res = await fetch(base + 'rows.pack.json');
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const pack = await res.json();
+        let n = 0;
+        for (const [row, rec] of Object.entries(pack.rows || {})) {
+          const clip = jsonToClip(`t3_${bankId}_row${row}`, decodePackRow(pack, rec), THREE);
+          if (clip) { clip.userData.loop = false; clip.userData.move_row = rec.move_row; clips['row:' + row] = clip; n++; }
+        }
+        console.log(`[WH-T3] bank '${bankId}': ${n} move-row clips`);
+      } catch (e) {
+        console.warn(`[WH-T3] ${bankId}/rows.pack.json unavailable:`, e.message || e);
+      }
+    })());
     await Promise.all(jobs);
-    console.log(`[WH-T3] bank '${bankId}': loaded ${Object.keys(clips).length}/${Object.keys(T3_CLIP_DEFS).length} real T3 clips`);
+    console.log(`[WH-T3] bank '${bankId}': loaded ${Object.keys(clips).length} real T3 clips`);
     _t3clipCache[bankId] = clips;
     return clips;
   })();
@@ -382,23 +429,34 @@ function sourceInfo(skel, THREE) {
   return skel._info;
 }
 
-const _retargetCache = new Map(); // `${bank}|${modelKey}` -> { action: clip }
+const _retargetCache = new WeakMap(); // model instance -> Map(bankId -> { rig, out: { action: clip } })
 
 /**
- * Retarget a bank's clips onto one fighter model (call right after
- * createInstance, before the mixer first updates). Returns
- * { actionName: THREE.AnimationClip } with tracks bound to the
- * model's own bones, or null when the rig lacks the core humanoid
- * bones (the fighter then keeps its embedded/procedural layer).
- * Clips are cached per (bank, modelKey) when bone names are unique.
+ * Retarget a bank's clips onto one fighter model. The FIRST call for a
+ * key must happen right after createInstance, before the mixer first
+ * updates: it captures the rig's rest pose. Returns
+ * { actionName: THREE.AnimationClip } with tracks bound to the model's
+ * own bones, or null when the rig lacks the core humanoid bones (the
+ * fighter then keeps its embedded/procedural layer).
+ * The captured rig is cached per model instance (WeakMap): later calls
+ * reuse that rest pose, so move rows ('row:<n>', skipped unless named in
+ * `only`) can be retargeted lazily mid-fight. `instanceKey` only names
+ * the clips.
  */
-export function retargetT3Clips(t3Clips, bankId, model, THREE, modelKey = null) {
+export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = null, only = null) {
   const skel = _t3skelCache[bankId];
   if (!t3Clips || !skel) return null;
-  const key = modelKey ? `${bankId}|${modelKey}` : null;
-  if (key && _retargetCache.has(key)) return _retargetCache.get(key);
-  const rig = analyzeRig(model, THREE);
-  if (!rig) { if (key) _retargetCache.set(key, null); return null; }
+  let perModel = _retargetCache.get(model);
+  if (!perModel) { perModel = new Map(); _retargetCache.set(model, perModel); }
+  const cached = perModel.get(bankId);
+  if (cached === null) return null;
+  const names = only || Object.keys(t3Clips).filter(n => !n.startsWith('row:')); // rows retarget on demand
+  if (cached && names.every(n => cached.out[n] || !t3Clips[n])) {
+    const o = {}; for (const n of names) if (cached.out[n]) o[n] = cached.out[n];
+    return o;
+  }
+  const rig = (cached && cached.rig) || analyzeRig(model, THREE);
+  if (!rig) { perModel.set(bankId, null); return null; }
   const src = sourceInfo(skel, THREE);
   const F = new THREE.Quaternion();
   if (rig.facesNegZ) F.setFromAxisAngle(new THREE.Vector3(0, 1, 0), Math.PI);
@@ -428,8 +486,10 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, modelKey = null) 
   const out = {};
   const G = {}, D = {}, W = new Map();
   const tmpQ = new THREE.Quaternion(), tmpV = new THREE.Vector3();
-  for (const [action, clip] of Object.entries(t3Clips)) {
-    const raw = clip.userData && clip.userData.raw;
+  for (const action of names) {
+    const clip = t3Clips[action];
+    if (cached && cached.out[action]) { out[action] = cached.out[action]; continue; }
+    const raw = clip && clip.userData && clip.userData.raw;
     if (!raw) continue;
     let n = 0;
     for (const j of src.order) if (raw.rot[j] && raw.rot[j].length > n) n = raw.rot[j].length;
@@ -503,10 +563,12 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, modelKey = null) 
       tracks.push(new THREE.QuaternionKeyframeTrack(`${rig.trackName(b)}.quaternion`, times, v));
     }
     if (hipPos) tracks.push(new THREE.VectorKeyframeTrack(`${rig.trackName(hips)}.position`, times, hipPos));
-    const rc = new THREE.AnimationClip(`${clip.name}@${modelKey || 'rig'}`, n / raw.fps, tracks);
+    const rc = new THREE.AnimationClip(`${clip.name}@${instanceKey || 'rig'}`, n / raw.fps, tracks);
     rc.userData = { ...clip.userData, raw: undefined, retargeted: true, rigFacesNegZ: rig.facesNegZ, rigSwapLR: rig.swapLR };
     out[action] = rc;
   }
-  if (key && rig.uniqueNames) _retargetCache.set(key, out);
+  const c = cached || { rig, out: {} };
+  Object.assign(c.out, out);
+  perModel.set(bankId, c);
   return out;
 }

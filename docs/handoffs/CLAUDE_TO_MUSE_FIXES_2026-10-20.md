@@ -178,3 +178,37 @@ Each file gets a `restored_from_sweep_338` provenance block. 0 files deleted.
 Before pushing any merge repair, compare per-file record counts *and* record richness
 (dict vs bare string) against both parents. Never resolve `*__main` staging fields by
 picking a side.
+
+---
+
+## Fix 6 — real neutral stance, every move's own animation, Heihachi bank, Steve Fox sleeves
+
+1. **Neutral stance = slot 3.** `t3_neutral.json` baked for all 6 banks with the unchanged
+   `lab/tools/t3_motion_bake.py --clips t3_neutral=3` (slot 3 → move row 0, the 60–216-frame
+   standing neutral every T3 branch list starts from). `t3anims.js` `stance` now plays it;
+   the old slot-0 clip stays loaded as `intro` (round-start). `crouchHold` = slot 40.
+2. **Every move plays its own decoded animation.** `tools/anim/t3_row_bake.py` bakes every
+   `t3_row` the movesets reference (jin 153, king 176, xiaoyu 135, bryan 97, gunjack 152,
+   yoshimitsu 111, heihachi 136 — 960 rows, 0 missing) into `rows.pack.json` per bank
+   (int16 quaternions, 0.6–1.5 MB each). `fighter.js _moveRowAction` plays `row:<t3_row>`,
+   retargeted on first use and time-scaled to the move's startup+active+recovery. Verified
+   in a live fight: Pantera's `4` plays `t3_king_row216` (the row in pantera.json).
+   **Muse:** stop mapping attacks to generic light/medium/heavy clips. New moves need a
+   `t3_row` (or another decoded source) and a re-run of the row bake.
+3. **Heihachi bank (new).** heihachi191's KMD has no hip/shoulder vertex data, so his body
+   can't be fitted. Instead, Heihachi's OWN divmot13 motion stream is posed on Jin's T3
+   skeleton (`t3_row_bake.py --bank heihachi --kmd-from jin --write-clips ...`) →
+   `game/assets/anim/t3/heihachi_on_jin/`. Diablo, Zen, Tou, Dio, Iori, DEATHFANG and Koreshi now
+   get real Heihachi motion instead of none. Labelled as "Heihachi motion, Jin proportions".
+4. **Steve Fox shirt re-weighted** (`tools/anim/repair_sleeve_weights.py`, k-NN from the same
+   file's arms/torso/neck/hands, JOINTS_0/WEIGHTS_0 rewritten in place, reports in
+   `docs/proof/claude-2026-10-20/sleeve-repair/`). Sleeves follow the arms on all 16 fighters
+   using steve-fox.glb / demonio.glb (`after_sleeves_rin_zen_phantom_sakura.png`).
+5. **Roster sweep** (`docs/proof/claude-2026-10-20/roster-sweep/`): 39/57 fighters bind and
+   match their T3 source pose (bone directions exact). The other 18 are model problems:
+   13 unskinned statues (demonio-a1, sam-ur-a1, scimitar, demonio-winged, demonio-human,
+   doc-frank-wowomomo, doc-frank-hood, zangief, blanka, armor-king, kronos, kronos-attire2,
+   koreshi), vega (SF5 bone names), bruno (no Head bone), deathfang (renders empty), ryuji-rock
+   (no model file), doc-frank-frankenstein (no moveset t3_source). Also broken skins:
+   demonio-bloodline-ember (stray bone geometry), mariposa-monarch (wings explode).
+   **Muse: these are the lanes to fix next, model by model, with the pose lab as the gate.**

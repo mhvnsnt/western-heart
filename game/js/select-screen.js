@@ -31,7 +31,7 @@
 import * as THREE from 'three';
 import { assets } from './assets.js';
 import { attiresFor, selectedAttireModel, setAttire, attireLabel } from './attires.js';
-import { loadT3Clips, createT3Actions } from './t3anims.js';
+import { loadT3Clips, createT3Actions, retargetT3Clips } from './t3anims.js';
 import { bankIdFor } from './fighter.js';
 
 const DEFAULT_STATS = { speed: 2.8, jump: 7.2, power: 1.1, defense: 1.05 };
@@ -174,7 +174,9 @@ class PreviewPane {
         const clips = bank ? await loadT3Clips(THREE, bank) : null;
         if (token !== this._token) return true; // superseded while loading
         if (clips && clips.stance && inst.bones && inst.bones.Hips && inst.bones.RightArm && inst.bones.Head) {
-          const t3 = createT3Actions(inst.mixer, clips, THREE);
+          // Retargeted onto this rig (t3anims.js retargetT3Clips) — the
+          // raw bank quaternions only fit the rig they were baked onto.
+          const t3 = createT3Actions(inst.mixer, retargetT3Clips(clips, bank, inst.model, THREE, modelId) || {}, THREE);
           if (t3.stance) {
             if (inst.actions && inst.actions.Idle) inst.actions.Idle.setEffectiveWeight(0);
             t3.stance.setEffectiveWeight(1);

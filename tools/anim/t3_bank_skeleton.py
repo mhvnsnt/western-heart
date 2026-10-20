@@ -28,6 +28,9 @@ BANKS = {
     "bryan": "lab/game/assets/t3_bryan_t3real.glb",
     "gunjack": "lab/game/assets/t3_gunjack_t3real.glb",
     "yoshimitsu": "lab/game/assets/t3_yoshimitsu_t3real.glb",
+    # Heihachi's own divmot13 motion posed on Jin's T3 skeleton (tools/anim/t3_row_bake.py
+    # --bank heihachi --kmd-from jin): heihachi191's KMD has no hip/shoulder vertex data.
+    "heihachi_on_jin": "lab/game/assets/t3_jin.glb",
 }
 COMP = {5120: np.int8, 5121: np.uint8, 5122: np.int16, 5123: np.uint16, 5125: np.uint32, 5126: np.float32}
 NCOMP = {"SCALAR": 1, "VEC2": 2, "VEC3": 3, "VEC4": 4, "MAT4": 16}
@@ -146,7 +149,10 @@ def main():
     for bank, glb in BANKS.items():
         if a.check:
             n, worst = check(bank, glb)
-            print(f"{bank:24s} channels={n:4d} max |1-|q.q'|| = {worst:.2e}  {'OK' if n and worst < 1e-5 else 'MISMATCH'}")
+            if n == 0:
+                print(f"{bank:24s} no source-GLB clips to compare (clips baked by tools/anim/t3_row_bake.py)")
+            else:
+                print(f"{bank:24s} channels={n:4d} max |1-|q.q'|| = {worst:.2e}  {'OK' if worst < 1e-5 else 'MISMATCH'}")
             continue
         sk = skeleton(glb)
         dst = REPO / "game/assets/anim/t3" / bank / "skeleton.json"
