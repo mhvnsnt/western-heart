@@ -136,9 +136,11 @@ const MODEL_URLS = {
   // DEATHFANG (owner 2026-10-19): proprietary Iori-based fighter. Model reskin pending —
   // currently reuses the Iori model (his moves/stance/animations are the base).
   deathfang: '../roster/iori/attires/attire1/model.glb',
-  // RYUJI/ROCK hybrid (owner 2026-10-19): Ryuji Yamazaki × The Rock. 3D model pending —
-  // placeholder on the zangief model until a Ryuji model lands.
-  'ryuji-rock': '../roster/zangief/attires/attire1/model.glb',
+  // Ryuji Yamazaki x The Rock hybrid (owner 2026-10-19). MODEL PENDING: no Yamazaki
+  // model found anywhere (no KOF teardown, none in tripo-recovery, no downloadable
+  // Sketchfab model). URL wired for the drop-in; model.glb lands the moment the
+  // owner sends a Tripo link. See roster/ryuji-rock/attires/attire1/README.md.
+  'ryuji-rock': '../roster/ryuji-rock/attires/attire1/model.glb',
 };
 
 class AssetManager {
