@@ -106,13 +106,23 @@ data is decoded from `PL/*.PAC`; frame data = archetype estimates, flagged per t
 schema honesty rule (real frame data lives in the `OVL/PLxx_*` tables — open RE work,
 see TEARDOWN.md 2c).
 
-Stage defs: `game/assets/stages/sf-ex/stages.json` — 8 EX+α packs keyed by STG/STG2
-index (names pending game-data cross-check — none invented) + 19 EX2 Plus stages
-verbatim. Data-only; registration into `game/js/stages.js` is Lane 4's edit surface
+Stage defs: `game/assets/stages/sf-ex/stages.json` — 20 EX+α packs keyed by
+STG/STG2 pack index (names pending game-data cross-check — none invented) + 19
+EX2 Plus stages verbatim. Data-only; registration into `game/js/stages.js` is Lane 4's edit surface
 (another lane owns that file; not touched here).
 
 Re-pull note (2026-10-20 ~03:33 UTC): the two 7z re-downloads resumed by a prior lane
 arrived CORRUPT (over-size appends; both failed py7zr header validation), so they were
 re-downloaded CLEAN from scratch (`~/workspace/_sf-scratch/clean-dl.sh`) with
-archive.org-metadata size checks + py7zr integrity gates. `/PL/*.PAC` + `/STG/` +
-`/STG2/` extraction follows on the same lane.
+archive.org-metadata size checks + py7zr integrity gates.
+
+**Extraction results (2026-10-20, PR 2):** EX Plus Alpha `.bin` verified
+(528,049,872 bytes; jPSXdec v2.0 + Temurin JRE 17; 612 disc items indexed) and
+fully extracted — `teardown/street-fighter-3d-games/extracted/ex-plus-alpha/`
+holds PL/ (26 PACs), STG/ + STG2/ (20 packs each — CORRECTION: earlier docs said 8),
+TMD/ (loose models), and `PAC-CHUNK-INDEX.json`. TIM-chunk finding: the 134
+magic-0x10 chunks are NOT standalone TIMs (version field 0x54 ≠ 0x00) — PAC
+container decode is a dedicated RE pass, logged on the teardown-idle queue.
+EX2 Plus 7z re-download runs a retry loop (archive.org transfer throttling);
+its `/PL/*.PAC` extraction follows in PR 3. Stage defs above were corrected
+to the real 20-pack count.
