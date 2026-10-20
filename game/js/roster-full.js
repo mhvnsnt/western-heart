@@ -48,7 +48,7 @@ export const FULL_ROSTER = [
       'demonio-human': {
         up: { target: 'demonio-a1', label: 'REPOWER', powerMult: 1.43, speedMult: 0.91, defenseMult: 1.11, bodyScale: 1.05, moveset: 'demonio' },
       },
-    } },
+    },
     stats: { speed: 4.8, jump: 7.6, power: 1.05, defense: 1.0 },
     ai: { aggression: 0.6, grabBias: 0.05, reaction: 0.6 } },
   { id: 'phantom', name: 'PHANTOM', title: 'The Ghost Blade Soul', base: 'Yoshimitsu', moveset: 'yoshimitsu', model: 'steve-fox', tintStrength: 0.6,
