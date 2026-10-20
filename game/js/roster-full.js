@@ -48,7 +48,7 @@ export const FULL_ROSTER = [
       'demonio-human': {
         up: { target: 'demonio-a1', label: 'REPOWER', powerMult: 1.43, speedMult: 0.91, defenseMult: 1.11, bodyScale: 1.05, moveset: 'demonio' },
       },
-    } },
+    },
     stats: { speed: 4.8, jump: 7.6, power: 1.05, defense: 1.0 },
     ai: { aggression: 0.6, grabBias: 0.05, reaction: 0.6 } },
   { id: 'phantom', name: 'PHANTOM', title: 'The Ghost Blade Soul', base: 'Yoshimitsu', moveset: 'yoshimitsu', model: 'steve-fox', tintStrength: 0.6,
@@ -146,25 +146,56 @@ export const FULL_ROSTER = [
   { id: 'dxmmii-patchwork', name: 'DXMMII', title: 'Patchwork DJ', base: 'Mokujin', moveset: 'demonio', model: 'dxmmii-patchwork', tintStrength: 0.25,
     colors: { suit: 0x3a2a5a, trim: 0x00ffcc }, style: 'Mimicry', archetype: 'Trickster' },
   // Sketchfab intake (owner 2026-10-19): working names, WH names pending owner pick.
-  { id: 'zangief', name: 'ZANGIEF', title: 'The Red Cyclone', base: 'Zangief', moveset: 'king', model: 'zangief', tintStrength: 0.25,
+  // Licenses: Zangief CC-BY (johnny136), Blanka Free Standard (allanromanreyes),
+  // Vega CC-BY (pierodsoto01), Iori CC-BY (0xo), Armor King CC-BY (theamazingdonovan207).
+  { id: 'zangief', name: 'ZANGIEF', title: 'The Red Cyclone', base: 'Zangief', moveset: 'zangief', model: 'zangief', tintStrength: 0.25,
     colors: { suit: 0x8a1a1a, trim: 0x000000 }, style: 'Grappler', archetype: 'Power',
     surge: { name: "CYCLONE'S WRATH", color: 0xcc2222, accent: 0xff8800 } },
-  { id: 'blanka', name: 'BLANKA', title: 'The Beast', base: 'Blanka', moveset: 'bryan', model: 'blanka', tintStrength: 0.25,
+  { id: 'blanka', name: 'BLANKA', title: 'The Beast', base: 'Blanka', moveset: 'blanka', model: 'blanka', tintStrength: 0.25,
     colors: { suit: 0x2a8a2a, trim: 0xff8800 }, style: 'Beast', archetype: 'Rushdown',
     surge: { name: 'ELECTRIC STORM', color: 0x88ccff, accent: 0xffff00 } },
-  { id: 'vega', name: 'VEGA', title: 'The Claw', base: 'Vega', moveset: 'xiaoyu', model: 'vega', tintStrength: 0.25,
+  { id: 'vega', name: 'VEGA', title: 'The Claw', base: 'Vega', moveset: 'vega', model: 'vega', tintStrength: 0.25,
     colors: { suit: 0x8a2a6b, trim: 0xffd700 }, style: 'Claw', archetype: 'Evasive',
     surge: { name: "MATADOR'S FURY", color: 0xcc2288, accent: 0xffffff } },
-  // KRONOS (owner custom Zangief fighter, 2026-10-19): full Zangief moveset + Golem (Urban Reign) extras.
-  { id: 'kronos', name: 'KRONOS', title: 'The Custom Cyclone', base: 'Zangief', moveset: 'kronos', model: 'kronos', tintStrength: 0.25,
-    colors: { suit: 0x3a3a4a, trim: 0xff8800 }, style: 'Grappler', archetype: 'Power',
-    surge: { name: "CUSTOM CYCLONE", color: 0xcc2222, accent: 0xffcc00 } },
-  { id: 'iori', name: 'IORI', title: 'The Flame', base: 'Iori Yagami', moveset: 'heihachi', model: 'iori', tintStrength: 0.25,
+  { id: 'iori', name: 'IORI', title: 'The Flame', base: 'Iori Yagami', moveset: 'iori', model: 'iori', tintStrength: 0.25,
     colors: { suit: 0x6b1a8a, trim: 0xff2222 }, style: 'Flames', archetype: 'Rushdown',
     surge: { name: 'CRIMSON INFERNO', color: 0xaa22ff, accent: 0xff4400 } },
-  { id: 'armor-king', name: 'ARMOR KING', title: 'The Chain', base: 'Armor King', moveset: 'king', model: 'armor-king', tintStrength: 0.25,
+  { id: 'armor-king', name: 'ARMOR KING', title: 'The Chain', base: 'Armor King', moveset: 'armor-king', model: 'armor-king', tintStrength: 0.25,
     colors: { suit: 0x1a1a2a, trim: 0xccaa00 }, style: 'Grappler', archetype: 'Power',
     surge: { name: "JAGUAR'S GRIP", color: 0x888800, accent: 0xffcc00 } },
+  // Custom fighters (owner 2026-10-19): KRONOS + DEATHFANG + Ryuji/Rock hybrid.
+  { id: 'kronos', name: 'KRONOS', title: 'The Titan Cyclone', base: 'Zangief + Golem', moveset: 'kronos', model: 'kronos', tintStrength: 0.25,
+    colors: { suit: 0x8a1a1a, trim: 0xccaa00 }, style: 'Grappler/Wrestler', archetype: 'Power',
+    surge: { name: "TITAN'S WRATH", color: 0xcc2222, accent: 0xffd700 },
+    stats: { speed: 3.2, jump: 5.5, power: 1.5, defense: 1.35 },
+    ai: { aggression: 0.7, grabBias: 0.6, reaction: 0.5 },
+    // Attire 2 "TimberWolf" (Wolverine inspired) — selectable via attires list.
+    attires: ['kronos', 'kronos-attire2'] },
+  { id: 'kronos-attire2', name: 'KRONOS', title: 'TimberWolf', base: 'Zangief + Golem', moveset: 'kronos', model: 'kronos-attire2', tintStrength: 0.25,
+    colors: { suit: 0x3a4a5a, trim: 0xffcc00 }, style: 'Grappler/Wrestler', archetype: 'Power',
+    surge: { name: "TIMBERWOLF RAGE", color: 0x4466aa, accent: 0xffcc00 },
+    stats: { speed: 3.6, jump: 6.0, power: 1.45, defense: 1.3 },
+    ai: { aggression: 0.8, grabBias: 0.55, reaction: 0.55 } },
+  // DEATHFANG (owner 2026-10-19): proprietary character based on Iori Yagami — keeps Iori's
+  // moves, stance and animations. Prisoner/slave to his own grief and emotions: chained and
+  // shackled, emo styling, NO FUTURE face tattoo (Soul Eater). Transforms into a chained
+  // prisoner werewolf (attire 2). (Merged entry: canon fields from the reskin lane,
+  // stats/ai from the parallel wiring lane.)
+  { id: 'deathfang', name: 'DEATHFANG', title: 'The Chained Prisoner', base: 'Iori Yagami', moveset: 'deathfang', model: 'deathfang', tintStrength: 0.25,
+    colors: { suit: 0x0a0a0f, trim: 0x8a0f1a }, style: 'Grief Flames', archetype: 'Rushdown',
+    surge: { name: 'NO FUTURE', color: 0x5a0f8a, accent: 0xff2222 },
+    stats: { speed: 5.2, jump: 7.8, power: 1.15, defense: 0.95 },
+    ai: { aggression: 0.85, grabBias: 0.3, reaction: 0.6 } },
+  { id: 'ryuji-rock', name: 'RYUJI ROCK', title: 'The Obnoxious One', base: 'Ryuji Yamazaki + The Rock', moveset: 'ryuji-rock', model: 'ryuji-rock', tintStrength: 0.25,
+    colors: { suit: 0x1a1a1a, trim: 0xffd700 }, style: 'Wrestler/Brawler', archetype: 'Power',
+    surge: { name: "PEOPLE'S CHAMPION", color: 0xffd700, accent: 0xffffff },
+    stats: { speed: 4.0, jump: 6.5, power: 1.35, defense: 1.2 },
+    ai: { aggression: 0.75, grabBias: 0.5, reaction: 0.55 } },
+  { id: 'koreshi', name: 'KORESHI', title: 'The Shadow Ninja', base: 'Kakashi + Super Saiyan', moveset: 'koreshi', model: 'koreshi', tintStrength: 0.25,
+    colors: { suit: 0x2a3a4a, trim: 0xcc2222 }, style: 'Ninja/Samurai', archetype: 'Trickster',
+    surge: { name: 'SHARINGAN AWAKENING', color: 0xcc2222, accent: 0xffffff },
+    stats: { speed: 5.5, jump: 8.0, power: 1.1, defense: 0.95 },
+    ai: { aggression: 0.7, grabBias: 0.25, reaction: 0.7 } },
 ];
 
 export function getFighter(id) {
