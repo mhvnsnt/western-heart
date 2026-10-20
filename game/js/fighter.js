@@ -19,8 +19,9 @@
    ============================================================ */
 import * as THREE from 'three';
 import { assets } from './assets.js';
-import { getT3Clips, createT3Actions } from './t3anims.js';
-import { TekkenBuffer } from './movesets.js';
+import { getT3Clips, createT3Actions, SOURCE_TO_BANK } from './t3anims.js';
+import { TekkenBuffer, getFighterMoveset } from './movesets.js';
+import { TransformCinematic } from './transform-cinematic.js';
 
 // ---- Frame data: REAL Tekken 3 data (teardown/tekken3/movesets/moveset_king.json, moveset_jin.json)
 // NOTE (owner canon 2026-10-19): Tekken's Jin = DEMONIO in Western Heart. The 'jin' moveset family is now 'demonio'.
@@ -58,13 +59,46 @@ const MOVESET_MAP = {
   'dxmmii-patchwork': 'demonio',
   // Stream 6 (2026-10-19): Cain Elias (Undertaker archetype -> King bank).
   'cainelias': 'king',
+  // Sketchfab intake (owner 2026-10-19): working names.
+  zangief: 'king', blanka: 'bryan', vega: 'xiaoyu', iori: 'heihachi',
+  'armor-king': 'king',
+  // Teardown-integration (owner 2026-10-19): aggregate-bank fallback for the
+  // roster ids whose per-fighter files landed with the full-moveset wiring.
+  kronos: 'king', 'kronos-attire2': 'king',
+  'demonio-human': 'demonio', 'doc-frank-wowomomo': 'gunjack',
+  'doc-frank-hood': 'gunjack',
+  // Late additions (anim audit 2026-10-19): were missing from the map.
+  'demonio-winged': 'demonio', deathfang: 'heihachi', 'ryuji-rock': 'king',
+  koreshi: 'heihachi',
 };
+
+/* Animation bank for a fighter (GYRO-ARMS FIX 2026-10-19).
+   A fighter plays the REAL T3 motion bank of the moveset SOURCE their
+   frame data was built from (per-fighter moveset JSON t3_source first,
+   MOVESET_MAP as fallback) — mapped through the SOURCE_TO_BANK fixups
+   in t3anims.js (demonio -> jin bank, bosconovitch -> gunjack,
+   deviljin -> jin). Returns the bank id, or null when no decoded bank
+   exists for the source (heihachi): those fighters get NO T3 actions —
+   embedded locomotion + procedural combat — never another
+   character's clips. */
+export function bankIdFor(charId, movesetId) {
+  let src = null;
+  try { src = getFighterMoveset(movesetId || charId)?.t3_source || null; } catch (e) { /* per-fighter movesets not loaded yet */ }
+  if (!src) src = MOVESET_MAP[movesetId || charId] || MOVESET_MAP[charId] || null;
+  if (!src) return null;
+  return Object.prototype.hasOwnProperty.call(SOURCE_TO_BANK, src) ? SOURCE_TO_BANK[src] : null;
+}
 
 export async function loadRealMovesets() {
   try {
     const names = ['king', 'demonio', 'bryan', 'heihachi', 'xiaoyu', 'yoshimitsu', 'gunjack'];
+    // FIX (anim audit 2026-10-19): there is no assets/demonio_moves.json —
+    // the file on disk is jin_moves.json (demonio is the game's rename of
+    // Jin). The old fetch 404'd, Promise.all rejected, and the whole
+    // aggregate moveset map silently never built.
+    const FILE_FOR = { demonio: 'jin' };
     const data = await Promise.all(
-      names.map(n => fetch(`assets/${n}_moves.json`).then(r => r.json()))
+      names.map(n => fetch(`assets/${FILE_FOR[n] || n}_moves.json`).then(r => r.json()))
     );
     const byName = {};
     names.forEach((n, i) => byName[n] = data[i]);
@@ -139,6 +173,11 @@ function _glowTexture() {
 // scratch objects (avoid per-frame allocations)
 const _v1 = new THREE.Vector3(), _v2 = new THREE.Vector3(), _v3 = new THREE.Vector3();
 const _q1 = new THREE.Quaternion(), _q2 = new THREE.Quaternion(), _q3 = new THREE.Quaternion();
+// PRIVATE scratch for Fighter._ik ONLY (gyro-arms fix 2026-10-19): callers
+// pass _v2 as the IK target, so _ik must never touch _v1/_v2/_v3/_q*.
+const _ikT = new THREE.Vector3();
+const _ikV1 = new THREE.Vector3(), _ikV2 = new THREE.Vector3(), _ikV3 = new THREE.Vector3();
+const _ikQ1 = new THREE.Quaternion(), _ikQ2 = new THREE.Quaternion(), _ikQ3 = new THREE.Quaternion();
 
 export class Fighter {
   constructor(charData, startX, facing, isPlayer) {
@@ -198,6 +237,10 @@ export class Fighter {
     }
     this.transformed = false;
     this._movesetId = charData.id; // may be overridden by transform
+    // Transformation cinematic (v1, owner 2026-10-19): timeline-based,
+    // personalized per fighter. Replaces the instant model swap.
+    this._cinematic = null;
+    this._sceneRef = null; // set by game.js — arena scene for shake()
 
     this._build(startX);
   }
@@ -212,15 +255,21 @@ export class Fighter {
     this.mixer = inst.mixer;
     this.actions = inst.actions;
 
-    // REAL T3 animation clips (Grok's decoded T3 King motion).
-    // Falls back to procedural if clips aren't loaded.
+    // REAL T3 animation clips — this fighter's OWN moveset-source bank
+    // (see bankIdFor). The clips carry absolute bone quaternions keyed
+    // to the canonical 22-bone Mixamo-name skeleton; if this model
+    // lacks those bones the actions can't bind, so skip them and stay
+    // on embedded locomotion + procedural combat.
     this.t3actions = {};
     this._t3current = null;
     this._t3stateKey = null;
-    const t3clips = getT3Clips();
-    if (t3clips && Object.keys(t3clips).length > 0) {
+    const bank = bankIdFor(this.char.id, this._movesetId);
+    const t3clips = bank ? getT3Clips(bank) : null;
+    if (t3clips && Object.keys(t3clips).length > 0 && this.bones.Hips && this.bones.RightArm) {
       this.t3actions = createT3Actions(this.mixer, t3clips, THREE);
-      console.log(`[WH] Fighter ${this.char.id}: ${Object.keys(this.t3actions).length} real T3 actions ready`);
+      console.log(`[WH] Fighter ${this.char.id}: ${Object.keys(this.t3actions).length} real T3 actions from bank '${bank}'`);
+    } else if (!bank) {
+      console.log(`[WH-T3] no decoded anim bank for ${this.char.id} (source has none yet) — embedded/procedural fallback`);
     }
 
     // root (world position) -> lean (facing + body english) -> model
@@ -314,6 +363,9 @@ export class Fighter {
 
   /* ---------------- combat intents ---------------- */
   canAct() {
+    // Mid-cinematic: rooted, cannot act (but still vulnerable — damage
+    // applies separately). Owner spec: vulnerable during transform.
+    if (this._cinematic && !this._cinematic.done) return false;
     return !this.dead && this.stun <= 0 &&
       (this.state === 'idle' || this.state === 'walk' || this.state === 'jump');
   }
@@ -327,11 +379,37 @@ export class Fighter {
   }
 
   /* Mid-match transformation (Roshi-style power-up, owner 2026-10-19).
-     Swaps the fighter's model for the transform target, applies stat
-     changes. One-way per match. Returns true if the transform fired. */
+     v1 cinematic: validates, spends the gauge, then runs a personalized
+     timeline (phases) instead of an instant swap. The model swap fires at
+     the cinematic's climax via _doModelSwap().
+     Tekken mirror: Devil Jin needs a FULL Devil Gauge — here the transform
+     needs a FULL nine-soul meter, which is spent on the transform.
+     Touch button only, no keyboard.
+     Returns true if the transform fired. */
   tryTransform(direction='up') {
     const t = this._resolveTransform(direction);
     if (!t || !this.canAct()) return false;
+    if (this.meter < this.maxMeter) return false; // gauge must be full
+    if (this._cinematic && !this._cinematic.done) return false; // already transforming
+    this.meter = 0; // spend the gauge
+    // Start the personalized cinematic timeline. The model swap happens
+    // at the climax (see TransformCinematic).
+    const phases = TransformCinematic.phasesFor(this.char.id);
+    this._cinematic = new TransformCinematic(this, this._sceneRef, {
+      phases,
+      swapAt: phases.reduce((m, p) => Math.max(m, p.t + p.dur), 0) * 0.75,
+      onSwap: (f) => f._doModelSwap(t, direction),
+    });
+    // Fighter is vulnerable but rooted during the cinematic.
+    this._enter('idle');
+    this.vx = 0; this.vy = 0;
+    console.log(`[WH] ${this.char.id} TRANSFORM CINEMATIC start (${direction}) -> ${t.target}`);
+    return true;
+  }
+
+  /* The actual model swap — called by the cinematic at the climax.
+     (Was inline in tryTransform; extracted so the cinematic owns timing.) */
+  _doModelSwap(t, direction='up') {
     let inst;
     try {
       inst = assets.createInstance(
@@ -350,13 +428,15 @@ export class Fighter {
     this.bones = inst.bones;
     this.mixer = inst.mixer;
     this.actions = inst.actions;
-    // Rebuild the T3 action set on the new mixer (same clips, new skeleton).
+    // Rebuild the T3 action set on the new mixer — bank recomputed from
+    // the (possibly new) moveset source after the form change.
     this.t3actions = {};
     this._t3current = null;
     this._t3stateKey = null;
-    const t3clips = getT3Clips();
-    if (t3clips && Object.keys(t3clips).length > 0) {
-      this.t3actions = createT3Actions(this.mixer, t3clips, THREE);
+    const tbank = bankIdFor(this.char.id, t.moveset || this._movesetId);
+    const tt3clips = tbank ? getT3Clips(tbank) : null;
+    if (tt3clips && Object.keys(tt3clips).length > 0 && this.bones.Hips && this.bones.RightArm) {
+      this.t3actions = createT3Actions(this.mixer, tt3clips, THREE);
     }
     // Bigger = more damage, slower (owner spec).
     this.stats = {
@@ -579,6 +659,11 @@ export class Fighter {
   /* ---------------- per-frame update ---------------- */
   update(dt, opponent) {
     this.stateT += dt;
+    // Drive the transformation cinematic timeline.
+    if (this._cinematic && !this._cinematic.done) {
+      this._cinematic.update(dt);
+      if (this._cinematic.done) this._cinematic = null;
+    }
     // METAL force (modes lane): wounds close as you fight.
     if (this.stats.regenPerSec && this.hp > 0 && this.hp < this.maxHp) {
       this.hp = Math.min(this.maxHp, this.hp + this.stats.regenPerSec * dt);
@@ -923,27 +1008,39 @@ export class Fighter {
      Bends `chain` (root→tip bones) so `endBone` reaches `target`
      (world space). Axis-agnostic: each step rotates a bone by the
      world-space delta that swings the effector toward the target.
-     `weight` blends the IK result against the mocap base pose. */
+     `weight` blends the IK result against the mocap base pose.
+
+     GYRO-ARMS FIX (owner playtest 2026-10-19): every caller passes
+     the shared scratch vector _v2 as `target`, but the old body of
+     this function ALSO used _v1/_v2/_v3 internally — the first
+     getWorldPosition() overwrote the target, and the solve then
+     aimed each limb at a direction derived from its own current
+     pose. Two CCD iterations per frame chasing their own tail =
+     limbs spinning like gyroscopes, detaching visually from the
+     body. This function now uses ONLY its own private scratch
+     objects (_ikT/_ikV1/_ikV2/_ikV3/_ikQ1/_ikQ2/_ikQ3) and
+     snapshots `target` before touching anything. */
   _ik(chainNames, endName, target, weight) {
     if (weight <= 0.001) return;
     const chain = chainNames.map(n => this.bones[n]);
     const endBone = this.bones[endName];
     if (!endBone || chain.some(b => !b)) return;
 
+    _ikT.copy(target); // snapshot: callers reuse _v2 across calls
     const base = chain.map(b => b.quaternion.clone());
     const ITER = 2;
     for (let it = 0; it < ITER; it++) {
       for (let i = chain.length - 1; i >= 0; i--) {
         const bone = chain[i];
-        bone.getWorldPosition(_v1);
-        endBone.getWorldPosition(_v2);
-        _v2.sub(_v1).normalize();
-        _v3.copy(target).sub(_v1).normalize();
-        _q1.setFromUnitVectors(_v2, _v3);
-        bone.getWorldQuaternion(_q2);
-        _q3.copy(_q1).multiply(_q2);
-        bone.parent.getWorldQuaternion(_q2);
-        bone.quaternion.copy(_q2.invert().multiply(_q3));
+        bone.getWorldPosition(_ikV1);
+        endBone.getWorldPosition(_ikV2);
+        _ikV2.sub(_ikV1).normalize();
+        _ikV3.copy(_ikT).sub(_ikV1).normalize();
+        _ikQ1.setFromUnitVectors(_ikV2, _ikV3);
+        bone.getWorldQuaternion(_ikQ2);
+        _ikQ3.copy(_ikQ1).multiply(_ikQ2);
+        bone.parent.getWorldQuaternion(_ikQ2);
+        bone.quaternion.copy(_ikQ2.invert().multiply(_ikQ3));
         bone.updateWorldMatrix(false, true);
       }
     }

@@ -8,15 +8,17 @@ import { InputManager } from './input.js';
 import { audio } from './audio.js';
 import { assets } from './assets.js';
 import { ROSTER, getCharacter } from './characters.js';
-import { loadRealMovesets } from './fighter.js';
+import { loadRealMovesets, bankIdFor } from './fighter.js';
 import { loadFighterMovesets } from './movesets.js';
 import { getFighterMoveset } from './movesets.js';
 import { loadT3Clips } from './t3anims.js';
 import * as THREE from 'three';
 import { whUiEnabled, mountWhUi } from './ui-wh-bridge.js';
 import { getCustomFighter, customFighterToRoster } from './custom-fighter.js';
+import { attiresFor, selectedAttireModel, setAttire, attireLabel, resolveFighterAttire } from './attires.js';
 import { STAGES, STAGE_TIERS, getStage, randomStageId } from './stages.js';
 import { ModeController } from './modes.js';
+import { initMenus } from './menus.js';
 
 // Load REAL Tekken 3 moveset data (not hand-written frame data)
 loadRealMovesets();
@@ -279,12 +281,41 @@ function selectCard(card, c) {
   document.getElementById('confirm-fighter').disabled = false;
   // Tekken-style: show the picked fighter BIG in the 3D preview pane.
   previewFighter(c);
+  // Attire picker (stream 4): show this fighter's attires as touch chips.
+  renderAttireStrip(c);
+}
+/* ============ ATTIRE PICKER STRIP (stream 4) ============ */
+let _stripFighter = null;
+function renderAttireStrip(c) {
+  _stripFighter = c;
+  const strip = document.getElementById('attire-strip');
+  if (!strip) return;
+  const list = attiresFor(c);
+  const sel = selectedAttireModel(c);
+  if (list.length < 2) { strip.innerHTML = ''; strip.style.display = 'none'; return; }
+  strip.style.display = '';
+  strip.innerHTML = '';
+  list.forEach(a => {
+    const chip = document.createElement('button');
+    chip.className = 'attire-chip' + (a.model === sel ? ' on' : '');
+    chip.type = 'button';
+    chip.textContent = a.label;
+    chip.addEventListener('click', (e) => {
+      e.stopPropagation();
+      audio.uiClick();
+      setAttire(c, a.model);
+      strip.querySelectorAll('.attire-chip').forEach(x => x.classList.remove('on'));
+      chip.classList.add('on');
+      previewFighter({ ...c, model: a.model });
+      assets.prefetch(a.model);
+      document.getElementById('select-hint').textContent =
+        `${c.name} — ${attireLabel(c, a.model)}`;
+    });
+    strip.appendChild(chip);
+  });
 }
 
-/* ============ TEKKEN-STYLE 3D PREVIEW PANE ============
-   The selected fighter renders large, playing their idle animation.
-   Model loads on demand; a lightweight separate renderer keeps the
-   preview independent of the fight scene. */
+/* ============ TEKKEN-STYLE 3D PREVIEW PANE (restored from #328, polished) ============ */
 let previewRenderer = null, previewScene = null, previewCamera = null;
 let previewMixer = null, previewModel = null, previewClock = null;
 let previewRaf = 0, previewLoading = false;
@@ -295,7 +326,6 @@ function initPreview() {
   previewRenderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
   previewRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   previewScene = new THREE.Scene();
-  // Stage lighting: key + rim for that Tekken select pop
   previewScene.add(new THREE.HemisphereLight(0xffffff, 0x332244, 1.1));
   const key = new THREE.DirectionalLight(0xffffff, 1.6);
   key.position.set(2.5, 4, 3); previewScene.add(key);
@@ -322,7 +352,6 @@ function initPreview() {
     previewRaf = requestAnimationFrame(loop);
     const dt = Math.min(previewClock.getDelta(), 0.05);
     if (previewMixer) previewMixer.update(dt);
-    // Slow heroic turntable when idle — Tekken select energy
     if (previewModel && !previewLoading) previewModel.rotation.y += dt * 0.35;
     previewRenderer.render(previewScene, previewCamera);
   };
@@ -333,12 +362,12 @@ async function previewFighter(c) {
   initPreview();
   if (!previewScene) return;
   const modelId = c.model || 'pantera';
-  // Update the text immediately; the 3D follows when loaded.
-  document.getElementById('preview-name').textContent = c.name || '—';
+  document.getElementById('preview-name').textContent = c.name || '\u2014';
   document.getElementById('preview-title').textContent = c.title || '';
   document.getElementById('preview-style').textContent =
-    [c.style, c.archetype].filter(Boolean).join(' · ');
-  // Clear the old model.
+    [c.style, c.archetype].filter(Boolean).join(' \u00b7 ');
+  const info = document.querySelector('.preview-info');
+  if (info) { info.classList.remove('plate-pop'); void info.offsetWidth; info.classList.add('plate-pop'); }
   if (previewModel) { previewScene.remove(previewModel); previewModel = null; previewMixer = null; }
   previewLoading = true;
   try {
@@ -347,17 +376,18 @@ async function previewFighter(c) {
       modelId, c.colors?.suit ?? 0xffffff, c.colors?.trim ?? 0x888888, c.tintStrength ?? 0.3);
     previewModel = inst.model;
     previewModel.rotation.y = 0.15;
+    const s = c.bodyScale || 1;
+    previewCamera.position.set(0, 1.15 * s, 3.4 * s);
+    previewCamera.lookAt(0, 0.95 * s, 0);
     previewScene.add(previewModel);
     previewMixer = inst.mixer;
-    // createInstance auto-plays the Idle clip when the model has one.
-    // Fall back to procedural breathing when no idle exists.
     if (!inst.actions || !inst.actions.Idle) {
       const chest = inst.bones['Spine2'] || inst.bones['Spine1'] || inst.bones['Spine'];
       if (chest) {
         const t0 = performance.now();
         const y0 = chest.position.y;
         const breathe = () => {
-          if (previewModel !== inst.model) return; // replaced
+          if (previewModel !== inst.model) return;
           const t = (performance.now() - t0) / 1000;
           chest.rotation.x = Math.sin(t * 1.4) * 0.03;
           chest.position.y = y0 + Math.sin(t * 1.4) * 0.008;
@@ -368,11 +398,12 @@ async function previewFighter(c) {
     }
   } catch (e) {
     console.warn('[WH] preview failed for', modelId, e.message || e);
-    document.getElementById('preview-title').textContent = 'Model loading…';
+    document.getElementById('preview-title').textContent = 'Model loading...';
   } finally {
     previewLoading = false;
   }
 }
+
 function focusCard(i) {
   const cards = allCards();
   if (!cards.length) return;
@@ -585,7 +616,7 @@ document.querySelectorAll('[data-action]').forEach((el) => {
       // Character creation — launches the Create Fighter CAW suite.
       // Returns to game menu via the BACK TO GAME button in the creator.
       audio.uiClick();
-      window.location.href = '../customization/create-fighter/index.html';
+      window.location.href = '../customization/creation-suite-ui/index.html';
     }
     else if (a === 'howto') { show('howto'); }
     else if (a === 'close-movelist') { toggleMovelist(false); }
@@ -731,7 +762,9 @@ async function startFight(playerId, enemyId, opts = {}) {
   if (opts.stage && getStage(opts.stage)) selectedStage = getStage(opts.stage).id;
   // modes lane: opts may carry full char-entry overrides (force-buffed
   // player, scaled-AI foe, the Assembled Soul boss, training dummy).
-  const player = opts.playerChar || getCharacterWithCustom(selectedChar || ROSTER[0].id);
+  // Stream 4: the player's selected attire applies in every mode.
+  const player = resolveFighterAttire(
+    opts.playerChar || getCharacterWithCustom(selectedChar || ROSTER[0].id));
   const enemy = opts.enemyChar ||
     (typeof enemyId === 'string' && enemyId !== player.id ? getCharacterWithCustom(enemyId) : randomEnemy(player.id));
   // On-demand: load only the 2 fighters for this fight (Tekken 3 pattern).
@@ -764,11 +797,14 @@ async function startFight(playerId, enemyId, opts = {}) {
         hint.textContent = `Entering the arena… ${Math.round(p * 100)}%`;
       }
     });
-    // Load REAL T3 animation clips (Grok's decoded T3 King motion).
-    // Non-blocking for fight start; fighters use procedural fallback until ready.
+    // Load the REAL T3 animation banks for THIS match's two fighters —
+    // each fighter's own moveset-source bank (per-bank wiring 2026-10-19).
+    // Fighters with no decoded bank (heihachi source) are skipped here and
+    // fall back to embedded locomotion + procedural combat.
     if (hint) hint.textContent = 'Loading real fight motion…';
     try {
-      await loadT3Clips(THREE);
+      const banks = [...new Set([bankIdFor(player.id), bankIdFor(enemy.id)].filter(Boolean))];
+      await Promise.all(banks.map(b => loadT3Clips(THREE, b)));
     } catch (e) {
       console.warn('[WH] T3 clips failed, using procedural fallback:', e.message || e);
     }
@@ -812,6 +848,10 @@ document.addEventListener('visibilitychange', () => {
 window.__game = game;
 window.__ui = ui;
 window.__stages = STAGES;
+
+// Stream 4: modes & menus — pause, options, loading, VS screen, records,
+// The Heart and Mind Inside + Character Episodes controllers.
+initMenus({ show, startFight: startFightViaStage, game, ui, ROSTER, getChar: getCharacterWithCustom, audio });
 
 // New Western Heart menu/UI (game/ui-wh/) behind a toggle; classic menus stay as fallback.
 if (whUiEnabled()) mountWhUi({ game, ui, show, startFight, ROSTER });
