@@ -485,5 +485,20 @@
   }
  },
  "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
- "schema_version": 2
+ "schema_version": 2,
+ "specials": [
+  {
+   "input": "hcb+1+2",
+   "t3_row": 210,
+   "damage": 34,
+   "throw": true,
+   "name": "ROCK BOTTOM (super)"
+  },
+  {
+   "input": "d,d/f,d,d/f+2",
+   "t3_row": 90,
+   "damage": 22,
+   "name": "PEOPLE'S ELBOW DROP"
+  }
+ ]
 }

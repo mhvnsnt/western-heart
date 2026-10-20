@@ -76,6 +76,53 @@ never invent canon names). Game-file moves are the source of truth; the Tekken-s
 ## PR staging
 
 - **PR 1 (this PR):** inventory (this doc) + extracted-archive audit + Eastern Mind design docs.
-- **PR 2:** real SF movelists translated to Tekken notation (`game/assets/movesets/sf-*.json`,
-  schema v2, Akuma pattern: qcf/dp/charge motions mapped to Tekken input slots) + arenas
-  (`game/assets/stages/sf-*`) once game-file move/anim data is in hand.
+- **PR 2 (IN PROGRESS, branch `sf/teardown-pr2-movesets-stages-20261019`):** real SF movelists
+  translated to Tekken notation — `game/assets/movesets/sf-{ryu,ken,akuma,zangief,blanka,vega}.json`
+  (schema v2, Akuma-in-T7 pattern, 173 moves total), wired in `game/js/movesets.js`
+  `MOVESET_IDS` — + arenas (`game/assets/stages/sf-ex/stages.json`: 8 EX+α packs by
+  STG/STG2 index, 19 EX2 Plus named stages verbatim). Move-name/inputs source-verified:
+  SLUS_005.48 binary verbatim list + dlh/megura guides + SuperCombo EX2 wiki.
+  Frame data = archetype estimates (honest flag per schema rule; real OVL decode open).
+
+## PR 2 — real SF movelists → Tekken notation (2026-10-20)
+
+Generator: `teardown/street-fighter-3d-games/tools/build_sf_movesets.py` (reproducible).
+
+| File | Moves | Real move data source |
+|------|-------|----------------------|
+| `game/assets/movesets/sf-ryu.json` | 27 | binary-verbatim names (SLUS_005.48) + dlh EX+α inputs; Shin Sho Ryu Ken / Fire Hado Ken flagged EX2+ |
+| `game/assets/movesets/sf-ken.json` | 25 | SuperCombo EX2 Plus wiki (Roll, Shippu Jinrai Kyaku); binary strings for Reppa/Shinryu |
+| `game/assets/movesets/sf-akuma.json` | 32 | 12 named specials/supers verified in BOTH binary + dlh guide (Ashura Sen Ku, Shakunetsu, Shun Goku Satsu, …) |
+| `game/assets/movesets/sf-zangief.json` | 29 | 8 specials/supers in binary list + Kao_Megura inputs (SPD 360+P, Russian Suplex 360+K, FAB 720, Super Stomping, …) |
+| `game/assets/movesets/sf-blanka.json` | 31 | period guides (25th-anniversary/EX2 FAQ) + SuperCombo EX2 wiki; EX2+ supers/meteor flagged |
+| `game/assets/movesets/sf-vega.json` | 29 | Capcom Fighting Collection 2 period movelist; wall-dive chain (Flying Barcelona → Izuna Drop / Claw Attack) |
+
+Translation contract (Akuma-in-T7 pattern, per file `sf_translation_contract`):
+`1=LP, 2=MP, 1+2=HP, 3=LK, 4=MK, 3+4=HK`; motions (qcf/dp/qcb/hcb/charge/360/720)
+preserved literally; mash moves marked; charge moves annotated with charge direction.
+Every move carries `sf_move`/`sf_input`/`sf_game`/`sf_source` provenance. `proxy:false`
+(real move data); `anim_ref` still points at Tekken-bank proxies until SF animation
+data is decoded from `PL/*.PAC`; frame data = archetype estimates, flagged per the
+schema honesty rule (real frame data lives in the `OVL/PLxx_*` tables — open RE work,
+see TEARDOWN.md 2c).
+
+Stage defs: `game/assets/stages/sf-ex/stages.json` — 20 EX+α packs keyed by
+STG/STG2 pack index (names pending game-data cross-check — none invented) + 19
+EX2 Plus stages verbatim. Data-only; registration into `game/js/stages.js` is Lane 4's edit surface
+(another lane owns that file; not touched here).
+
+Re-pull note (2026-10-20 ~03:33 UTC): the two 7z re-downloads resumed by a prior lane
+arrived CORRUPT (over-size appends; both failed py7zr header validation), so they were
+re-downloaded CLEAN from scratch (`~/workspace/_sf-scratch/clean-dl.sh`) with
+archive.org-metadata size checks + py7zr integrity gates.
+
+**Extraction results (2026-10-20, PR 2):** EX Plus Alpha `.bin` verified
+(528,049,872 bytes; jPSXdec v2.0 + Temurin JRE 17; 612 disc items indexed) and
+fully extracted — `teardown/street-fighter-3d-games/extracted/ex-plus-alpha/`
+holds PL/ (26 PACs), STG/ + STG2/ (20 packs each — CORRECTION: earlier docs said 8),
+TMD/ (loose models), and `PAC-CHUNK-INDEX.json`. TIM-chunk finding: the 134
+magic-0x10 chunks are NOT standalone TIMs (version field 0x54 ≠ 0x00) — PAC
+container decode is a dedicated RE pass, logged on the teardown-idle queue.
+EX2 Plus 7z re-download runs a retry loop (archive.org transfer throttling);
+its `/PL/*.PAC` extraction follows in PR 3. Stage defs above were corrected
+to the real 20-pack count.
