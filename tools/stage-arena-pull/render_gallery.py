@@ -59,10 +59,20 @@ def render_batch(p, port, stages, results, msgs):
             try:
                 # pose the camera per-stage (the harness only runs one
                 # update(), so the fighting-camera lerp never settles)
-                camd = pg.evaluate(
-                    f"(window.__test.stages.find(s=>s.id==='{sid}').camDist)||7")
-                pg.evaluate(f"__arena.camera.position.set(0,1.8,{camd});"
-                            "__arena.camera.lookAt(0,1,0); __arena.render();")
+                cam = pg.evaluate(
+                    f"window.__test.stages.find(s=>s.id==='{sid}')")
+                camd = cam.get("camDist") or 7
+                ang = (cam.get("camAngle") or 0) * 3.14159265 / 180
+                import math as _m
+                if cam.get("camPos"):
+                    p, t = cam["camPos"], cam["camTgt"] or [0, 1, 0]
+                    pg.evaluate(f"__arena.camera.position.set({p[0]},{p[1]},{p[2]});"
+                                f"__arena.camera.lookAt({t[0]},{t[1]},{t[2]}); __arena.render();")
+                else:
+                    pg.evaluate(f"__arena.camera.position.set("
+                                f"{_m.sin(ang)*camd:.3f},1.8,"
+                                f"{_m.cos(ang)*camd:.3f});"
+                                "__arena.camera.lookAt(0,1,0); __arena.render();")
                 pg.wait_for_timeout(400)
                 shot = pg.screenshot()
             except Exception as e:

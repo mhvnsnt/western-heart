@@ -91,9 +91,12 @@ export class Arena {
 
     // dynamic fighting camera
     // Stream 3: stages may declare camDist (cage interiors, backstage rooms)
-    // to pull the camera inside their geometry.
+    // to pull the camera inside their geometry, and camAngle (degrees) to
+    // orbit the camera around the target for cluttered stages.
     const camScale = ((this._stage && this._stage.def.camDist) || 7) / 7;
-    let baseX = 0, baseZ = 7 * camScale, baseY = 1.8, lookY = 1.0;
+    const camAng = (((this._stage && this._stage.def.camAngle) || 0) * Math.PI) / 180;
+    let baseX = Math.sin(camAng) * 7 * camScale, baseZ = Math.cos(camAng) * 7 * camScale;
+    let baseY = 1.8, lookY = 1.0;
     if (fighterA && fighterB) {
       const mid = (fighterA.root.position.x + fighterB.root.position.x) / 2;
       const spread = Math.abs(fighterA.root.position.x - fighterB.root.position.x);
@@ -103,6 +106,17 @@ export class Arena {
       baseY = 1.75 + maxY * 0.45;
       lookY = 1.0 + maxY * 0.25;
     }
+    if (camAng) {  // orbit the camera around the target (cluttered stages)
+      const rx = baseX * Math.cos(camAng) + baseZ * Math.sin(camAng);
+      const rz = -baseX * Math.sin(camAng) + baseZ * Math.cos(camAng);
+      baseX = rx; baseZ = rz;
+    }
+    // Stream 3: explicit camera pose override for stages where the default
+    // fighting camera sits inside geometry (dense backstage areas).
+    const def = this._stage && this._stage.def;
+    if (def && def.camPos) { baseX = def.camPos[0]; baseY = def.camPos[1]; baseZ = def.camPos[2]; }
+    let lookX = 0, lookZ = 0;
+    if (def && def.camTgt) { lookX = def.camTgt[0]; lookY = def.camTgt[1]; lookZ = def.camTgt[2]; }
     this.camera.position.x += (baseX - this.camera.position.x) * Math.min(1, dt * 4);
     this.camera.position.z += (baseZ - this.camera.position.z) * Math.min(1, dt * 3);
     this.camera.position.y += (baseY - this.camera.position.y) * Math.min(1, dt * 4);
@@ -116,7 +130,12 @@ export class Arena {
       if (this._shakeT <= 0) this._shakeMag = 0;
     }
     this.camera.position.x += ox; this.camera.position.y += oy;
-    this.camera.lookAt(this.camera.position.x - ox, this._lookY, 0);
+    if (this._stage && this._stage.def && this._stage.def.camTgt) {
+      const t = this._stage.def.camTgt;
+      this.camera.lookAt(t[0], this._lookY, t[2]);
+    } else {
+      this.camera.lookAt(this.camera.position.x - ox, this._lookY, 0);
+    }
   }
 
   resize() {

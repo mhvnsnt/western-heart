@@ -46,9 +46,6 @@ import re as _re
 DROP_RES = [_re.compile(p, _re.I) for p in
             (r"ring_step", r"ring_post", r"turnbuckle", r"apron",
              r"cage_piece", r"announce_table", r"ladder_match",
-             # unlabeled FileTableDB groups (bare "0xNNN_Arena"): ring-hardware
-             # templates in the 0x4f*-0x51* range, incl. junk-coordinate pieces
-             r"^0x[0-9a-f]+_arena$",
              # crowd/balcony sections: the game instances these around the
              # bowl at runtime; stored templates sit at the ring. Pending the
              # arena-code RE lane (placement data), they are omitted rather
@@ -59,6 +56,12 @@ DROP_RES = [_re.compile(p, _re.I) for p in
              # Mixed-frame junk (ARENAS.md caveat 2); the corner-section
              # floormats at y=0 are kept.
              r"outside_floor_pads_larger")]
+# Unlabeled FileTableDB groups (bare "0xNNN_<Area>"): hardware templates
+# with junk/no placement data. Applies to every arena.
+UNLABELED_RES = [_re.compile(p, _re.I) for p in
+                 (r"^0x[0-9a-f]+_arena$",
+                  r"^0x[0-9a-f]+_backstage_(parking_lot|locker_room|boiler_room|hallway|bar_lounge)$",
+                  r"^0x[0-9a-f]+_lobby$")]
 RING_ARENAS = {n for n in ARENAS if n.startswith("arena_")}
 
 
@@ -94,10 +97,26 @@ ARENA_ALLOW = {
 # y_floor overrides (pre-scale units). arena_cage's true mat is flat at y=0.
 ARENA_Y_FLOOR = {"arena_cage": 0.0}
 
+# Procedural placement (pre-scale units, x/z): the parking-lot cars are
+# stored stacked at the origin (runtime-placed templates). Their geometry
+# is real; only the placement is procedural. (dx, dz) shift each car
+# family's centroid to an open parking spot.
+# The parking-lot cars are runtime-placed template assemblies: stacked at
+# the origin AND with misaligned parts (e.g. orange Side_Windows sit 100u
+# off from the Front/Sides). No honest placement exists without the
+# arena-code RE lane, so the cars are dropped; the lot (asphalt, pillars,
+# power boxes) ships as the brawl space.
+ARENA_TRANSLATE = {}
+PARKING_LOT_DROP = _re.compile(r"_(white|orange|yellow|blue)_car_", _re.I)
+
 
 def keep_group(arena, gname):
     if arena in ARENA_ALLOW:
         return any(p.search(gname) for p in ARENA_ALLOW[arena])
+    if any(p.search(gname) for p in UNLABELED_RES):
+        return False
+    if arena == "backstage_parking_lot" and PARKING_LOT_DROP.search(gname):
+        return False
     if arena in RING_ARENAS and any(p.search(gname) for p in DROP_RES):
         return False
     if any(p.search(gname) for p in ARENA_DROPS.get(arena, ())):
@@ -258,6 +277,20 @@ def convert(name, obj_bytes, vc_bytes):
     assert len(vc_lines) == 3 * len(verts), \
         f"{name}: vc count {len(vc_lines)//3} != verts {len(verts)}"
     vcol = (np.array(vc_lines, np.float32).reshape(-1, 3) / 255.0)
+    # procedural placement for template-stacked groups (parking-lot cars)
+    for pat, dx, dz in ARENA_TRANSLATE.get(name, []):
+        rx = _re.compile(pat, _re.I)
+        fam_verts = np.concatenate(
+            [verts[[t[0] for tri in tris for t in tri]]
+             for g, tris in groups if rx.search(g) and tris])
+        if len(fam_verts) == 0:
+            continue
+        c = fam_verts.mean(axis=0)
+        shift = np.array([dx - c[0], 0, dz - c[2]], np.float32)
+        idxs = np.unique(np.concatenate(
+            [np.array([t[0] for tri in tris for t in tri])
+             for g, tris in groups if rx.search(g) and tris]))
+        verts[idxs] += shift
     y_floor = fighting_surface_y(verts, groups, name)
 
     prims = []

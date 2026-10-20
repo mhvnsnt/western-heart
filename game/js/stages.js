@@ -550,13 +550,23 @@ for (const [sid, nmName, glb, ropes, cageFlag, w, d, wall, s1, s2, sunC, sky0, s
 /* Per-stage camera + interior lighting: the cage camera sits INSIDE the
    walls; backstage rooms are small enclosed spaces needing their own
    camera distance and warm interior lights. */
-for (const [sid, camDist, interior] of [
-  ['nm-cage', 4.2, false], ['nm-bar', 3.0, true], ['nm-boiler-room', 4.0, true],
-  ['nm-hallway', 5.0, true], ['nm-locker-room', 3.5, true],
-  ['nm-parking-lot', 7, false], ['nm-lobby', 5.0, true],
+for (const [sid, camDist, interior, camAngle] of [
+  ['nm-cage', 4.2, false, 0], ['nm-bar', 3.0, true, 0],
+  ['nm-boiler-room', 4.0, true, 0], ['nm-hallway', 5.0, true, 0],
+  ['nm-locker-room', 3.5, true, 0], ['nm-parking-lot', 7, false, 32],
+  ['nm-lobby', 5.0, true, 28],
 ]) {
   const s = STAGES.find((x) => x.id === sid);
-  if (s) { s.camDist = camDist; if (interior) s.interior = true; }
+  if (s) { s.camDist = camDist; if (interior) s.interior = true; if (camAngle) s.camAngle = camAngle; }
+}
+// Explicit elevated poses for the two dense backstage areas (the default
+// fighting camera sits inside pillars/lobby clutter at eye level).
+for (const [sid, pos, tgt] of [
+  ['nm-parking-lot', [8, 4.2, 10], [0, 0.4, 0]],
+  ['nm-lobby', [5.5, 3.6, 6.5], [0, 0.4, 0]],
+]) {
+  const s = STAGES.find((x) => x.id === sid);
+  if (s) { s.camPos = pos; s.camTgt = tgt; }
 }
 
 /* Thumbnails: rendered own-eyes shots, one per stage
@@ -1112,6 +1122,13 @@ async function buildNoMercy(g, def, api) {
     for (const [lx, lz] of [[-2.5, -1.5], [2.5, 1.5], [0, 0]]) {
       const pl = new THREE.PointLight(0xffd9a0, 7, 14, 2);
       pl.position.set(lx, 2.0, lz); g.add(pl);
+    }
+  }
+  if (def.id === 'nm-parking-lot') {
+    // night lot: cool sodium streetlights so the fighters read
+    for (const [lx, lz] of [[-6, -5], [6, 5], [0, 0]]) {
+      const pl = new THREE.PointLight(0xbfd4ff, 30, 30, 2);
+      pl.position.set(lx, 6.0, lz); g.add(pl);
     }
   }
   if (def.cage) {
