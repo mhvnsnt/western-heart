@@ -131,7 +131,7 @@ function renderPanel(){
   $('#panel-title').textContent=ui.tab.toUpperCase(); $('#panel-sub').textContent='';
   body.innerHTML='';
   ({body:renderBody,attire:renderAttire,parts:renderParts,jiggle:renderJiggle,
-    wardrobe:renderWardrobe,profile:renderProfile,moveset:renderMoveset})[ui.tab](body);
+    wardrobe:renderWardrobe,profile:renderProfile,moveset:renderMoveset,dome:renderDome})[ui.tab](body);
 }
 
 /* ================= BODY ================= */
@@ -428,6 +428,86 @@ function renderMoveset(el){
     [{label:'GOT IT',cls:'btn-gold'}]);
 }
 
+/* ================= DOME (Doc Frank Wowomomo — owner edits it himself) =================
+   Owner 2026-10-19: "put all the abilities in the creation suite for me to change
+   and edit and move all that stuff around while having a visual preview."
+   Mounts game/js/dome-params.js (DOME_PARAM_SCHEMA + load/save) into the live
+   menu flow. Live preview = cross-section canvas drawn from the params.
+   Params persist per-attire in localStorage AND via Save (dome-params.json). */
+const DOME_ATTIRE_PATH = 'roster/doc-frank/attires/attire2';
+const DOME_LS_KEY = 'wh_dome_params_v1';
+let domeMod = null, domeParams = null;
+
+async function getDomeMod(){
+  if(domeMod) return domeMod;
+  try{ domeMod = await import('../../../game/js/dome-params.js'); }
+  catch(e){ console.warn('[WH] dome-params import failed:', e); }
+  return domeMod;
+}
+
+function drawDomePreview(cv, p){
+  const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0,0,W,H);
+  // Scale: z 0.10..0.50 maps to bottom..top of canvas; x -0.12..0.12
+  const z2y = z => H - ((z-0.10)/(0.50-0.10))*H;
+  const x2x = x => W/2 + (x/0.12)*(W/2);
+  // Head/face reference (schematic): face center z≈0.33, half-width 0.075
+  ctx.fillStyle = 'rgba(200,170,140,0.25)';
+  ctx.beginPath(); ctx.ellipse(W/2, z2y(0.345), x2x(0.075)-W/2, (z2y(0.28)-z2y(0.41))/2, 0, 0, Math.PI*2); ctx.fill();
+  // Brain (existing brain floats in the fluid — never add another)
+  ctx.fillStyle = 'rgba(255,150,180,0.8)';
+  ctx.beginPath(); ctx.ellipse(W/2, z2y(0.375), 16, 10, 0, 0, Math.PI*2); ctx.fill();
+  // Liquid: forward offset shifts it toward the viewer (drawn as +x here)
+  const lr = 0.077 * (p.liquid_radius_scale||1);
+  const lx = p.liquid_forward_offset||0;
+  const fc = p.fluid_color||[0.30,0.85,0.40,1];
+  ctx.fillStyle = `rgba(${Math.round(fc[0]*255)},${Math.round(fc[1]*255)},${Math.round(fc[2]*255)},0.55)`;
+  ctx.fillRect(x2x(lx-lr), z2y(p.fluid_z_top), x2x(lx+lr)-x2x(lx-lr), z2y(p.fluid_z_bot)-z2y(p.fluid_z_top));
+  // Glass: full 360 dome — outer shell from glass_z_bot up over the top
+  ctx.strokeStyle = 'rgba(180,230,255,0.95)'; ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.moveTo(x2x(-0.0967), z2y(p.glass_z_bot));
+  ctx.lineTo(x2x(-0.0967), z2y(p.glass_joint_z));
+  ctx.quadraticCurveTo(x2x(-0.0967), z2y(0.50), x2x(0), z2y(0.50));
+  ctx.quadraticCurveTo(x2x(0.0967), z2y(0.50), x2x(0.0967), z2y(p.glass_joint_z));
+  ctx.lineTo(x2x(0.0967), z2y(p.glass_z_bot));
+  ctx.stroke();
+  // Face coverage readout
+  const top = p.fluid_z_top, bot = p.fluid_z_bot;
+  const covered = (top>=0.41 && bot<=0.28) ? 'FACE FULLY SUBMERGED' : 'FACE PARTIALLY COVERED';
+  ctx.fillStyle = '#fff'; ctx.font = 'bold 13px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(covered, W/2, 18);
+  ctx.font = '11px sans-serif';
+  ctx.fillText(`liquid ${bot.toFixed(3)} → ${top.toFixed(3)} · fwd ${lx.toFixed(3)} · width ×${(p.liquid_radius_scale||1).toFixed(2)} · glass bottom ${p.glass_z_bot.toFixed(3)}`, W/2, H-8);
+}
+
+async function renderDome(el){
+  $('#panel-sub').textContent='Doc Frank Wowomomo dome — liquid / glass / effects (owner-editable)';
+  el.innerHTML=`<div class="note">🫧 Dome parameters for <span class="chip">${DOME_ATTIRE_PATH}</span>.
+    Live cross-section preview below. <b>Save to Attire</b> writes dome-params.json — the build script
+    (build-dome-v5.py) reads the same file, so your edits rebuild the in-game dome straight from the files.</div>
+    <canvas id="dome-preview" width="340" height="240" style="width:100%;max-width:340px;background:#10141c;border-radius:8px;display:block;margin:8px auto"></canvas>
+    <div id="dome-controls"><div class="note">Loading dome parameters…</div></div>`;
+  const mod = await getDomeMod();
+  const cv = el.querySelector('#dome-preview');
+  if(!mod){
+    el.querySelector('#dome-controls').innerHTML = '<div class="note">⚠️ dome-params module failed to load (game/js/dome-params.js).</div>';
+    return;
+  }
+  if(!domeParams){
+    domeParams = await mod.loadDomeParams(DOME_ATTIRE_PATH);
+    try{ const saved = JSON.parse(localStorage.getItem(DOME_LS_KEY)||'null');
+      if(saved) for(const k of Object.keys(mod.DOME_PARAM_DEFAULTS)) if(k in saved) domeParams[k]=saved[k];
+    }catch(e){}
+  }
+  const onChange = ()=>{ drawDomePreview(cv, domeParams);
+    try{ localStorage.setItem(DOME_LS_KEY, JSON.stringify(domeParams)); }catch(e){} };
+  el.querySelector('#dome-controls').dataset.attirePath = DOME_ATTIRE_PATH;
+  mod.createDomeParamUI(el.querySelector('#dome-controls'), domeParams, onChange);
+  drawDomePreview(cv, domeParams);
+}
+
 /* ---------- roster / save / export ---------- */
 $('#btn-roster').onclick=()=>{
   modal('FIGHTER SELECT',`<div class="roster-grid">
@@ -438,6 +518,8 @@ $('#btn-roster').onclick=()=>{
   document.querySelectorAll('[data-r]').forEach(b=>b.onclick=()=>{ F.profile.name=b.dataset.r; closeModal(); renderAll(); });
 };
 $('#btn-save').onclick=persist;
+/* Stream 4: in-game wiring — back to the game menu (saves first). */
+{ const bg=$('#btn-back-game'); if(bg) bg.onclick=()=>{ persistQuiet(); window.location.href='../../game/index.html'; } }
 $('#btn-export').onclick=()=>{
   const blob=new Blob([JSON.stringify(F,null,2)],{type:'application/json'});
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob);

@@ -566,8 +566,8 @@ const NM_ARENAS = [
    15, 14, 6.5, -3, 3,
    '#9ab0d0', '#04060a', '#101820', '#080a0e', '#5a6a7a',
    `Real No Mercy parking lot: cars, open asphalt, room to brawl.`],
-  // nm-lobby, LOBBY, lobby.glb
-  ['nm-lobby', 'LOBBY', 'lobby', false, '',
+  // nm-lobby-glb, LOBBY, lobby.glb
+  ['nm-lobby-glb', 'LOBBY', 'lobby', false, '',
    11, 11, 5, -3, 3,
    '#d0b89a', '#080604', '#1a140e', '#0c0806', '#6a5e4a',
    `Real No Mercy lobby/gorilla position: the area just behind the curtain.`],
@@ -604,7 +604,7 @@ for (const [sid, camDist, interior, camAngle] of [
   ['nm-cage', 4.2, false, 0], ['nm-bar', 3.0, true, 0],
   ['nm-boiler-room', 4.0, true, 0], ['nm-hallway', 5.0, true, 0],
   ['nm-locker-room', 3.5, true, 0], ['nm-parking-lot', 7, false, 32],
-  ['nm-lobby', 5.0, true, 28],
+  ['nm-lobby-glb', 5.0, true, 28],
 ]) {
   const s = STAGES.find((x) => x.id === sid);
   if (s) { s.camDist = camDist; if (interior) s.interior = true; if (camAngle) s.camAngle = camAngle; }
@@ -613,7 +613,7 @@ for (const [sid, camDist, interior, camAngle] of [
 // fighting camera sits inside pillars/lobby clutter at eye level).
 for (const [sid, pos, tgt] of [
   ['nm-parking-lot', [8, 4.2, 10], [0, 0.4, 0]],
-  ['nm-lobby', [5.5, 3.6, 6.5], [0, 0.4, 0]],
+  ['nm-lobby-glb', [5.5, 3.6, 6.5], [0, 0.4, 0]],
 ]) {
   const s = STAGES.find((x) => x.id === sid);
   if (s) { s.camPos = pos; s.camTgt = tgt; }
@@ -1143,140 +1143,133 @@ async function buildT3Retro(g, def, api) {
   return { updaters, skyTex, fog };
 }
 
-/* ---- WWF NO MERCY: real N64 arena geometry (GLB + OBJ paths) ----
-   Forward-merge of branch (GLB via GLTFLoader + procedural ropes/posts/cage/
-   interior lights) and main (OBJ via fetchStageOBJ, AkiModel units scaled
-   0.012 from teardown/wwf-no-mercy/arenas/). Both geometry paths are kept:
-   GLB when def.glb is present, OBJ fallback when def.obj is present,
-   palette backdrop otherwise. The ROM never stored ropes (procedural at
-   runtime) and its ring posts/turnbuckles/aprons are placement-less
-   templates, so the builder re-adds simple posts + 3 ropes per side for
-   ring arenas. Backstage arenas (rooms, lot) skip ropes. */
+/* ---- WWF NO MERCY: real N64 arena GLB + procedural ropes ----
+   The GLB carries vertex-colored arena geometry with the fighting surface
+   at y=0. The ROM never stored ropes (procedural at runtime) and its ring
+   posts/turnbuckles/aprons are placement-less templates, so the builder
+   re-adds simple posts + 3 ropes per side for ring arenas. Backstage
+   arenas (rooms, lot) skip ropes. */
 async function buildNoMercy(g, def, api) {
   const { updaters, skyTex, fog } = buildBase(g, def, api);
-  let shellOk = false;
   if (def.glb) {
-    // branch GLB path: real N64 arena GLB, vertex-colored, y=0 fight surface
-    try {
-      const gltf = await new GLTFLoader().loadAsync(def.glb);
-      const arena = gltf.scene;
-      arena.traverse((o) => {
-        if (o.isMesh) {
-          o.castShadow = true; o.receiveShadow = true;
-          // GLBs ship vertex colors; make sure the material honors them.
-          if (o.material && o.geometry.getAttribute('color'))
-            o.material.vertexColors = true;
+    // GLB arena family (arena-pull lane): real N64 arena GLB + ring furniture.
+      try {
+        const gltf = await new GLTFLoader().loadAsync(def.glb);
+        const arena = gltf.scene;
+        arena.traverse((o) => {
+          if (o.isMesh) {
+            o.castShadow = true; o.receiveShadow = true;
+            // GLBs ship vertex colors; make sure the material honors them.
+            if (o.material && o.geometry.getAttribute('color'))
+              o.material.vertexColors = true;
+          }
+        });
+        g.add(arena);
+      } catch (e) {
+        console.warn(`[WH] stage ${def.id}: GLB ${def.glb} failed (${e.message})`);
+      }
+      if (def.interior) {
+        // enclosed backstage rooms: warm ceiling lights (the sun/rim rig is
+        // built for open arenas and doesn't reach indoors)
+        for (const [lx, lz] of [[-2.5, -1.5], [2.5, 1.5], [0, 0]]) {
+          const pl = new THREE.PointLight(0xffd9a0, 7, 14, 2);
+          pl.position.set(lx, 2.0, lz); g.add(pl);
         }
-      });
-      g.add(arena);
-      shellOk = true;
-    } catch (e) {
-      console.warn(`[WH] stage ${def.id}: GLB ${def.glb} failed (${e.message})`);
-    }
-  }
-  if (!shellOk && def.obj) {
-    // main OBJ path (teardown-integration 2026-10-19): real assembled arena
-    // geometry from teardown/wwf-no-mercy/arenas/ (AkiModel pieces grouped by
-    // assemble_arenas.py), vertex colors merged from the .vc sidecars into the
-    // OBJ v-lines (game/assets/stages/no-mercy/). AkiModel units: floor plane
-    // sits at y=0, bowl spans ~+-2700 -> scale 0.012 puts the ring at fight
-    // scale and the bowl walls ~32 units out.
-    try {
-      const geo = await fetchStageOBJ(def.obj);
-      geo.scale(0.012, 0.012, 0.012);
-      const mat = new THREE.MeshBasicMaterial({
-        vertexColors: !!geo.getAttribute('color'),
-        color: _hex(def.panoTint),
-        side: THREE.DoubleSide, fog: true,
-      });
-      const shell = new THREE.Mesh(geo, mat);
-      g.add(shell);
-      shellOk = true;
-    } catch (e) {
-      console.warn(`[WH] stage ${def.id}: arena shell failed (${e.message}), palette backdrop only`);
-    }
-  }
-  if (def.interior) {
-    // enclosed backstage rooms: warm ceiling lights (the sun/rim rig is
-    // built for open arenas and doesn't reach indoors)
-    for (const [lx, lz] of [[-2.5, -1.5], [2.5, 1.5], [0, 0]]) {
-      const pl = new THREE.PointLight(0xffd9a0, 7, 14, 2);
-      pl.position.set(lx, 2.0, lz); g.add(pl);
-    }
-  }
-  if (def.id === 'nm-parking-lot') {
-    // night lot: cool sodium streetlights so the fighters read
-    for (const [lx, lz] of [[-6, -5], [6, 5], [0, 0]]) {
-      const pl = new THREE.PointLight(0xbfd4ff, 30, 30, 2);
-      pl.position.set(lx, 6.0, lz); g.add(pl);
-    }
-  }
-  if (def.cage) {
-    // Procedural steel-cage walls: the ROM's cage pieces are placement-less
-    // templates (no arena-code positions yet), so the builder stands in
-    // chain-link panels around the ring. Swapped for real geometry when the
-    // arena-code RE lane lands.
-    const linkTex = (() => {
-      const c = document.createElement('canvas'); c.width = c.height = 128;
-      const x = c.getContext('2d');
-      x.clearRect(0, 0, 128, 128);
-      x.strokeStyle = 'rgba(180,190,205,0.95)'; x.lineWidth = 3;
-      for (let i = -128; i < 256; i += 16) {
-        x.beginPath(); x.moveTo(i, 0); x.lineTo(i + 128, 128); x.stroke();
-        x.beginPath(); x.moveTo(i + 128, 0); x.lineTo(i, 128); x.stroke();
       }
-      const t = new THREE.CanvasTexture(c);
-      t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(6, 6);
-      return t;
-    })();
-    const wallMat = new THREE.MeshStandardMaterial({
-      map: linkTex, transparent: true, side: THREE.DoubleSide,
-      roughness: 0.4, metalness: 0.8, alphaTest: 0.25,
-    });
-    const C = 4.7, CH = 4.2; // half-width, height
-    for (const [w, h, px, pz, ry] of [
-      [C * 2, CH, 0, -C, 0], [C * 2, CH, 0, C, 0],
-      [C * 2, CH, -C, 0, Math.PI / 2], [C * 2, CH, C, 0, Math.PI / 2]]) {
-      const wall = new THREE.Mesh(new THREE.PlaneGeometry(w, h), wallMat);
-      wall.position.set(px, CH / 2, pz); wall.rotation.y = ry;
-      wall.castShadow = false; wall.receiveShadow = false; g.add(wall);
-    }
-    const frameMat = new THREE.MeshStandardMaterial({ color: 0x3a3d45, roughness: 0.5, metalness: 0.7 });
-    const top = new THREE.Mesh(new THREE.BoxGeometry(C * 2 + 0.3, 0.18, C * 2 + 0.3), frameMat);
-    top.position.y = CH + 0.09; g.add(top);
-    // The cage assembly ships no center mat (its "Ring_Mat" label is a tiny
-    // mislabeled quad; the true mat geometry isn't in the ROM dump), so the
-    // builder lays a procedural mat. The ROM's dark apron ring surrounds it.
-    const mat = new THREE.Mesh(
-      new THREE.PlaneGeometry(7.3, 7.3),
-      new THREE.MeshStandardMaterial({ color: 0x8a94a8, roughness: 0.95 })
-    );
-    mat.rotation.x = -Math.PI / 2; mat.position.y = 0.012;
-    mat.receiveShadow = true; g.add(mat);
-  }
-  if (def.ropes) {
-    // ring mat is ±3.64 m; posts just outside, ropes at 3 heights
-    const postMat = new THREE.MeshStandardMaterial({ color: 0x2a2c34, roughness: 0.5, metalness: 0.7 });
-    const ropeMat = new THREE.MeshStandardMaterial({ color: 0xd83a3a, roughness: 0.8 });
-    const H = 3.95, heights = [0.55, 0.9, 1.25];
-    for (const sx of [-1, 1]) for (const sz of [-1, 1]) {
-      const post = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.07, 1.5, 10), postMat);
-      post.position.set(sx * H, 0.75, sz * H); post.castShadow = true; g.add(post);
-    }
-    for (const y of heights) {
-      for (const [x1, z1, x2, z2] of [[-H, -H, H, -H], [H, -H, H, H], [H, H, -H, H], [-H, H, -H, -H]]) {
-        const len = Math.hypot(x2 - x1, z2 - z1);
-        const rope = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.03, len, 8), ropeMat);
-        rope.position.set((x1 + x2) / 2, y, (z1 + z2) / 2);
-        rope.rotation.z = Math.PI / 2; rope.rotation.y = -Math.atan2(z2 - z1, x2 - x1);
-        g.add(rope);
+      if (def.id === 'nm-parking-lot') {
+        // night lot: cool sodium streetlights so the fighters read
+        for (const [lx, lz] of [[-6, -5], [6, 5], [0, 0]]) {
+          const pl = new THREE.PointLight(0xbfd4ff, 30, 30, 2);
+          pl.position.set(lx, 6.0, lz); g.add(pl);
+        }
       }
-    }
+      if (def.cage) {
+        // Procedural steel-cage walls: the ROM's cage pieces are placement-less
+        // templates (no arena-code positions yet), so the builder stands in
+        // chain-link panels around the ring. Swapped for real geometry when the
+        // arena-code RE lane lands.
+        const linkTex = (() => {
+          const c = document.createElement('canvas'); c.width = c.height = 128;
+          const x = c.getContext('2d');
+          x.clearRect(0, 0, 128, 128);
+          x.strokeStyle = 'rgba(180,190,205,0.95)'; x.lineWidth = 3;
+          for (let i = -128; i < 256; i += 16) {
+            x.beginPath(); x.moveTo(i, 0); x.lineTo(i + 128, 128); x.stroke();
+            x.beginPath(); x.moveTo(i + 128, 0); x.lineTo(i, 128); x.stroke();
+          }
+          const t = new THREE.CanvasTexture(c);
+          t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(6, 6);
+          return t;
+        })();
+        const wallMat = new THREE.MeshStandardMaterial({
+          map: linkTex, transparent: true, side: THREE.DoubleSide,
+          roughness: 0.4, metalness: 0.8, alphaTest: 0.25,
+        });
+        const C = 4.7, CH = 4.2; // half-width, height
+        for (const [w, h, px, pz, ry] of [
+          [C * 2, CH, 0, -C, 0], [C * 2, CH, 0, C, 0],
+          [C * 2, CH, -C, 0, Math.PI / 2], [C * 2, CH, C, 0, Math.PI / 2]]) {
+          const wall = new THREE.Mesh(new THREE.PlaneGeometry(w, h), wallMat);
+          wall.position.set(px, CH / 2, pz); wall.rotation.y = ry;
+          wall.castShadow = false; wall.receiveShadow = false; g.add(wall);
+        }
+        const frameMat = new THREE.MeshStandardMaterial({ color: 0x3a3d45, roughness: 0.5, metalness: 0.7 });
+        const top = new THREE.Mesh(new THREE.BoxGeometry(C * 2 + 0.3, 0.18, C * 2 + 0.3), frameMat);
+        top.position.y = CH + 0.09; g.add(top);
+        // The cage assembly ships no center mat (its "Ring_Mat" label is a tiny
+        // mislabeled quad; the true mat geometry isn't in the ROM dump), so the
+        // builder lays a procedural mat. The ROM's dark apron ring surrounds it.
+        const mat = new THREE.Mesh(
+          new THREE.PlaneGeometry(7.3, 7.3),
+          new THREE.MeshStandardMaterial({ color: 0x8a94a8, roughness: 0.95 })
+        );
+        mat.rotation.x = -Math.PI / 2; mat.position.y = 0.012;
+        mat.receiveShadow = true; g.add(mat);
+      }
+      if (def.ropes) {
+        // ring mat is ±3.64 m; posts just outside, ropes at 3 heights
+        const postMat = new THREE.MeshStandardMaterial({ color: 0x2a2c34, roughness: 0.5, metalness: 0.7 });
+        const ropeMat = new THREE.MeshStandardMaterial({ color: 0xd83a3a, roughness: 0.8 });
+        const H = 3.95, heights = [0.55, 0.9, 1.25];
+        for (const sx of [-1, 1]) for (const sz of [-1, 1]) {
+          const post = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.07, 1.5, 10), postMat);
+          post.position.set(sx * H, 0.75, sz * H); post.castShadow = true; g.add(post);
+        }
+        for (const y of heights) {
+          for (const [x1, z1, x2, z2] of [[-H, -H, H, -H], [H, -H, H, H], [H, H, -H, H], [-H, H, -H, -H]]) {
+            const len = Math.hypot(x2 - x1, z2 - z1);
+            const rope = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.03, len, 8), ropeMat);
+            rope.position.set((x1 + x2) / 2, y, (z1 + z2) / 2);
+            rope.rotation.z = Math.PI / 2; rope.rotation.y = -Math.atan2(z2 - z1, x2 - x1);
+            g.add(rope);
+          }
+        }
+      }
+      // arena edge marker in the stage palette
+      const edge = new THREE.Mesh(new THREE.TorusGeometry(def.dims.wallDistance, 0.07, 10, 48),
+        new THREE.MeshBasicMaterial({ color: _hex(def.lighting.sun[0]) }));
+      edge.rotation.x = Math.PI / 2; edge.position.y = 0.02; g.add(edge);
+  } else if (def.obj) {
+    /* WWF No Mercy arenas (teardown-integration 2026-10-19): real assembled
+       arena geometry from teardown/wwf-no-mercy/arenas/ (AkiModel pieces grouped
+       by assemble_arenas.py), vertex colors merged from the .vc sidecars into
+       the OBJ v-lines (game/assets/stages/no-mercy/). AkiModel units: floor
+       plane sits at y=0, bowl spans ~+-2700 -> scale 0.012 puts the ring at
+       fight scale and the bowl walls ~32 units out. */
+      try {
+        const geo = await fetchStageOBJ(def.obj);
+        geo.scale(0.012, 0.012, 0.012);
+        const mat = new THREE.MeshBasicMaterial({
+          vertexColors: !!geo.getAttribute('color'),
+          color: _hex(def.panoTint),
+          side: THREE.DoubleSide, fog: true,
+        });
+        const shell = new THREE.Mesh(geo, mat);
+        g.add(shell);
+      } catch (e) {
+        console.warn(`[WH] stage ${def.id}: arena shell failed (${e.message}), palette backdrop only`);
+      }
   }
-  // arena edge marker in the stage palette
-  const edge = new THREE.Mesh(new THREE.TorusGeometry(def.dims.wallDistance, 0.07, 10, 48),
-    new THREE.MeshBasicMaterial({ color: _hex(def.lighting.sun[0]) }));
-  edge.rotation.x = Math.PI / 2; edge.position.y = 0.02; g.add(edge);
   return { updaters, skyTex, fog };
 }
 
