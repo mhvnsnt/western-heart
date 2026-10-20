@@ -3386,6 +3386,54 @@
   }
  },
  "strings": [
+  {
+   "input": "2,1",
+   "hits": [
+    "2",
+    "1"
+   ],
+   "t3_rows": [
+    220,
+    221
+   ]
+  },
+  {
+   "input": "2,1,2",
+   "hits": [
+    "2",
+    "1",
+    "2"
+   ],
+   "t3_rows": [
+    220,
+    221,
+    222
+   ]
+  },
+  {
+   "input": "4,1",
+   "hits": [
+    "4",
+    "1"
+   ],
+   "t3_rows": [
+    199,
+    184
+   ]
+  },
+  {
+   "input": "4,1,2",
+   "hits": [
+    "4",
+    "1",
+    "2"
+   ],
+   "t3_rows": [
+    199,
+    184,
+    186
+   ]
+  },
   "1,2",
   "1,2,1",
   "1,2,3",
@@ -3431,6 +3479,72 @@
   "ZEN.1,2"
  ],
  "specials": [
+  {
+   "input": "d,d/b,d,d/b+1+2",
+   "t3_row": 277,
+   "damage": 24,
+   "throw": true
+  },
+  {
+   "input": "d/b,n,f+2",
+   "t3_row": 276,
+   "damage": 24,
+   "throw": true
+  },
+  {
+   "input": "n,d/f,n,d/f+1",
+   "t3_row": 277,
+   "damage": 24,
+   "throw": true
+  },
+  {
+   "input": "u+1+2",
+   "name": "DEVIL FLIGHT (takeoff)",
+   "t3_source": "deviljin",
+   "t3_row": null,
+   "anim_ref": "t3:deviljin:flight:takeoff",
+   "move_class": "stance",
+   "flight": true,
+   "startup": 0.5,
+   "active": 0.0,
+   "recovery": 0.3,
+   "damage": 0,
+   "knock": 0,
+   "soulGain": 10,
+   "note": "Wings carry Demonio airborne; flight stance. Placeholder anim until devil-jin T3 rows mapped."
+  },
+  {
+   "input": "f,f+1+2",
+   "name": "INFERNO BEAM (devil laser)",
+   "t3_source": "deviljin",
+   "t3_row": null,
+   "anim_ref": "t3:deviljin:special:beam",
+   "move_class": "projectile",
+   "flight_only": true,
+   "startup": 0.667,
+   "active": 0.5,
+   "recovery": 0.8,
+   "damage": 28,
+   "knock": 7.0,
+   "soulGain": 15,
+   "note": "Devil Jin-style forehead/chest laser. Placeholder anim until devil-jin T3 rows mapped."
+  },
+  {
+   "input": "d/b+1+2",
+   "name": "HELLFIRE SWEEP",
+   "t3_source": "deviljin",
+   "t3_row": null,
+   "anim_ref": "t3:deviljin:special:sweep",
+   "move_class": "strike",
+   "limb": "legL",
+   "startup": 0.333,
+   "active": 0.05,
+   "recovery": 0.6,
+   "damage": 18,
+   "knock": 4.0,
+   "soulGain": 10,
+   "note": "Devil low sweep. Placeholder anim until devil-jin T3 rows mapped."
+  },
   {
    "input": "1+2+3+4",
    "damage": 0
@@ -3529,5 +3643,25 @@
  ],
  "frame_convention": "T8 60fps -> seconds (frames/60); damage T8 180HP scale as-is",
  "schema_version": 2,
- "canon_note": "Winged (Devil) form: T8 Jin kit; Devil-Jin flavored moves (ZEN stance, Hellfire/Black Wing set, Heat Burst) flagged devil_flavor."
+ "canon_note": "Winged (Devil) form: T8 Jin kit; Devil-Jin flavored moves (ZEN stance, Hellfire/Black Wing set, Heat Burst) flagged devil_flavor.",
+ "forward_merge": {
+  "date": "2026-10-20",
+  "pr": 357,
+  "method": "auto-merge had taken branch lists wholesale; main specials/strings unioned back in (main priority, branch extras appended)",
+  "branch_counts": {
+   "moves": 136,
+   "specials": 21,
+   "strings": 43
+  },
+  "main_counts": {
+   "moves": 15,
+   "specials": 6,
+   "strings": 4
+  },
+  "merged_counts": {
+   "moves": 136,
+   "specials": 27,
+   "strings": 47
+  }
+ }
 }
