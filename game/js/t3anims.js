@@ -37,8 +37,11 @@ const T3_BONES = ['Root','Hips','Spine','Chest','Neck','Head',
   'LeftUpLeg','LeftLeg','LeftFoot','LeftToeBase',
   'RightUpLeg','RightLeg','RightFoot','RightToeBase'];
 
-// Base URL for T3 clip JSONs (relative to game/ root)
-const T3_ANIM_BASE = 'assets/anim/t3/king_on_pantera_leoman/';
+// Base URL for T3 clip JSONs. NOTE (teardown-integration 2026-10-19): the
+// decoded clip JSONs live at the REPO ROOT (assets/anim/t3/...), not under
+// game/assets/anim/ — game/ is a subpath, so this resolves up one level.
+// The old base 404'd every clip and the real T3 motion never loaded.
+const T3_ANIM_BASE = '../assets/anim/t3/king_on_pantera_leoman/';
 
 /**
  * Convert a wh-anim/1 JSON object to a THREE.AnimationClip.

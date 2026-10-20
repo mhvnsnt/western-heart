@@ -59,6 +59,11 @@ const MOVESET_MAP = {
   // Sketchfab intake (owner 2026-10-19): working names.
   zangief: 'king', blanka: 'bryan', vega: 'xiaoyu', iori: 'heihachi',
   'armor-king': 'king',
+  // Teardown-integration (owner 2026-10-19): aggregate-bank fallback for the
+  // roster ids whose per-fighter files landed with the full-moveset wiring.
+  kronos: 'king', 'kronos-attire2': 'king',
+  'demonio-human': 'demonio', 'doc-frank-wowomomo': 'gunjack',
+  'doc-frank-hood': 'gunjack',
 };
 
 export async function loadRealMovesets() {
