@@ -41,8 +41,12 @@ export const MOVESET_IDS = [
   // Reskin wave (2026-10-19): first custom attires as selectable fighters.
   'demonio-bloodline-ember', 'doc-frank-machine-shop', 'baek-master-white',
   'mariposa-monarch', 'dxmmii-patchwork',
+  // T7 full-moveset wave (2026-10-19): base Mariposa (Zafina) file added.
+  'mariposa',
   // Wave 2 (2026-10-19): Demonio winged devil form.
   'demonio-winged',
+  // Burger Kusaregedo kit (owner 2026-10-19): per-form movesets.
+  'burger-demon', 'burger-speed-demon', 'burger-the-mouth',
   // Sketchfab intake (owner 2026-10-19): working names, WH names pending.
   'zangief', 'blanka', 'vega', 'iori', 'armor-king',
   // DEATHFANG (owner 2026-10-19): proprietary, Iori-based — full Iori kit in deathfang.json.

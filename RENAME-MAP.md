@@ -308,6 +308,16 @@ files keep EM-descriptive basenames under WH stage directories pending assignmen
 
 ---
 
+<!-- BEGIN WMXIX / MAT-LEGENDS SECTION (WMXIX wiring lane, 2026-10-20 — coordinator reconciles at merge) -->
+
+### mat-legends (WMXIX) — wiring + conversion status, 2026-10-20
+
+- Universe rename `WWE WrestleMania XIX` → `mat-legends` is APPLIED at the data/registry layer: `moveset-library/animations/WMXIX-CLIP-INDEX.json`, `moveset-library/movesets/WMXIX-MOVES.json`, `game/assets/stages/mat-legends/stages.json`, `customization/mat-legends-caw.json`. Per-game record: `teardown/wmxix/CANON-CONVERSION.md`.
+- Physical folder renames in `teardown/wmxix/docs/RENAME-ENTRIES-WMXIX.md` (`teardown/wmxix/` → `teardown/mat-legends/`, `teardown/wwe-wrestlemania-xix/` → `teardown/mat-legends-research/`) remain PLANNED — gated on the watchdog lane finishing and owner wrestler-name assignment. Not executed by this lane; nothing deleted.
+- Wrestler model files (127 OBJs, slots 000–110): ACCOUNTED-ELSEWHERE — canonical home is mhvnsnt/wrestling-game + mhvnsnt/wrestlemania-xix-mod per the federation rule; WH keeps the mechanics and the teardown.
+- The "~80%" status above predates the solved teardown (closed 2026-10-17: assembly solution exact, YANM fully decoded 169/170 clean). Remaining opens: arena face indices, per-clip move semantics, CAW part-level consumption, owner character names.
+
+<!-- END WMXIX / MAT-LEGENDS SECTION -->
 <!-- BEGIN No Mercy / mat-kings conversion record (wiring lane 2026-10-20; source of truth: teardown/wwf-no-mercy/CANON-CONVERSION.md) -->
 ### mat-kings (No Mercy) — conversion record 2026-10-20
 
