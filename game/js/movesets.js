@@ -44,6 +44,8 @@ export const MOVESET_IDS = [
   'demonio-winged',
   // Sketchfab intake (owner 2026-10-19): working names, WH names pending.
   'zangief', 'blanka', 'vega', 'iori', 'armor-king',
+  // Intake wave 2 (owner 2026-10-19): remaining four intake movesets.
+  'hugo', 'raiden', 'marduk', 'bob',
 ];
 
 const _movesets = {};
