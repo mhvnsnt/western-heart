@@ -48,6 +48,11 @@ export const MOVESET_IDS = [
   'kronos',
   // Intake wave 2 (owner 2026-10-19): remaining four intake movesets.
   'hugo', 'raiden', 'marduk', 'bob',
+  // Street Fighter EX (owner 2026-10-19, teardown PR 2): REAL SF move data
+  // (names + commands source-verified: SLUS_005.48 binary verbatim list +
+  // dlh/megura guides + SuperCombo EX2 wiki), translated Akuma-in-T7 pattern.
+  // See teardown/street-fighter-3d-games/SF-TEARDOWN-STATUS.md.
+  'sf-ryu', 'sf-ken', 'sf-akuma', 'sf-zangief', 'sf-blanka', 'sf-vega',
 ];
 
 const _movesets = {};
