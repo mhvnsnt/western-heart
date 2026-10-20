@@ -152,3 +152,29 @@ every instance by its own skinned rest bounds (three r160 skinned bounding box).
 - `mariposa`/`mariposa-monarch` wings tear under any pose (wing geometry on spine bones).
 - **Muse:** gate every model with an arm-region skin audit (verts beyond 45% of the arm span
   must sit on arm-chain bones, wings/capes excepted) before wiring it.
+
+---
+
+## Fix 5 — DATA LOSS ON MAIN: Muse's "Sweep repair" (8ebdc527) wiped the move data of 49 fighters
+
+**Where Muse messed up:** commit `8ebdc527` by muse-agent, "Sweep repair: restore true union
+tree for PR #338", merged to main inside PR #338. In 49 `game/assets/movesets/*.json` files it
+replaced the `moves` table (input → full record: startup/active/recovery, damage, `t3_row`,
+limb, anim_ref, …) with **a bare list of input strings**, and resolved the forward-merge
+staging fields (`strings__main`, `specials__main`) by keeping one side. Examples: pantera 370
+rich moves → 0 (366 names), byou 29 rich strings → 4, skull 275 → 266 names (9 moves gone
+entirely). Every fighter on those files lost real frame data in fights (fallback numbers
+were used instead). The anti-clobber check missed it because no FILE was deleted. Only
+content was. A key-name comparison also misses it (I made that mistake first, and caught it
+when the row bake found no rows).
+
+**Fix:** `tools/moveset-restore/restore_sweep_338.py` rebuilds each file from the sweep's
+parent `4cc6b41b` (verified: a key superset of the sweep's list, and containing every
+pre-PR-338 main move, with PR #338's intended throw-break backfills/remaps): `moves` from
+4cc6b41b, `strings`/`specials` = union by input of both staging sides (rich records win).
+Each file gets a `restored_from_sweep_338` provenance block. 0 files deleted.
+
+**Muse, going forward:** a "union"/"sweep" merge must preserve record CONTENT, not just keys.
+Before pushing any merge repair, compare per-file record counts *and* record richness
+(dict vs bare string) against both parents. Never resolve `*__main` staging fields by
+picking a side.

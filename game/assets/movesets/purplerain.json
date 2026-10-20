@@ -31,6 +31,220 @@
         186
       ]
     },
+    {
+      "input": "u/f+4,3",
+      "hits": [
+        "u/f+4",
+        "3"
+      ],
+      "t3_rows": [
+        193
+      ]
+    },
+    {
+      "input": "u/f+4,4",
+      "hits": [
+        "u/f+4",
+        "4"
+      ],
+      "t3_rows": [
+        207
+      ]
+    },
+    {
+      "input": "f+2,1",
+      "hits": [
+        "f+2",
+        "1"
+      ],
+      "t3_rows": [
+        221
+      ]
+    },
+    {
+      "input": "d+1+2,1",
+      "hits": [
+        "d+1+2",
+        "1"
+      ],
+      "t3_rows": [
+        177
+      ]
+    },
+    {
+      "input": "d+1+2,2",
+      "hits": [
+        "d+1+2",
+        "2"
+      ],
+      "t3_rows": [
+        93
+      ]
+    },
+    {
+      "input": "d/f+1,3",
+      "hits": [
+        "d/f+1",
+        "3"
+      ],
+      "t3_rows": [
+        197
+      ]
+    },
+    {
+      "input": "d/f+1,4",
+      "hits": [
+        "d/f+1",
+        "4"
+      ],
+      "t3_rows": [
+        204
+      ]
+    },
+    {
+      "input": "d/f+4,4",
+      "hits": [
+        "d/f+4",
+        "4"
+      ],
+      "t3_rows": [
+        212
+      ]
+    },
+    {
+      "input": "u/f+4,4,4",
+      "hits": [
+        "u/f+4",
+        "4",
+        "4"
+      ],
+      "t3_rows": [
+        210
+      ]
+    },
+    {
+      "input": "f+2,1,2",
+      "hits": [
+        "f+2",
+        "1",
+        "2"
+      ],
+      "t3_rows": [
+        222
+      ]
+    },
+    {
+      "input": "f+2,1,4",
+      "hits": [
+        "f+2",
+        "1",
+        "4"
+      ],
+      "t3_rows": [
+        230
+      ]
+    },
+    {
+      "input": "d+1+2,1,2",
+      "hits": [
+        "d+1+2",
+        "1",
+        "2"
+      ],
+      "t3_rows": [
+        183
+      ]
+    },
+    {
+      "input": "u/f+4,4,4,4",
+      "hits": [
+        "u/f+4",
+        "4",
+        "4",
+        "4"
+      ],
+      "t3_rows": [
+        211
+      ]
+    },
+    {
+      "input": "f+2,1,2,2",
+      "hits": [
+        "f+2",
+        "1",
+        "2",
+        "2"
+      ],
+      "t3_rows": [
+        223
+      ]
+    },
+    {
+      "input": "f+2,1,4,4",
+      "hits": [
+        "f+2",
+        "1",
+        "4",
+        "4"
+      ],
+      "t3_rows": [
+        231
+      ]
+    },
+    {
+      "input": "f+2,1,2,2,3",
+      "hits": [
+        "f+2",
+        "1",
+        "2",
+        "2",
+        "3"
+      ],
+      "t3_rows": [
+        224
+      ]
+    },
+    {
+      "input": "f+2,1,4,4,2",
+      "hits": [
+        "f+2",
+        "1",
+        "4",
+        "4",
+        "2"
+      ],
+      "t3_rows": [
+        232
+      ]
+    },
+    {
+      "input": "f+2,1,2,2,3,4",
+      "hits": [
+        "f+2",
+        "1",
+        "2",
+        "2",
+        "3",
+        "4"
+      ],
+      "t3_rows": [
+        225
+      ]
+    },
+    {
+      "input": "f+2,1,4,4,2,4",
+      "hits": [
+        "f+2",
+        "1",
+        "4",
+        "4",
+        "2",
+        "4"
+      ],
+      "t3_rows": [
+        233
+      ]
+    },
     "1,2",
     "1,2,2",
     "1,2,2,3",
@@ -72,7 +286,6 @@
     "df+3,2",
     "df+3,2,3",
     "df+4,4",
-    "f+2,1",
     "f+3,3",
     "f+3,3,3",
     "f+3,3,3,3",
@@ -119,6 +332,12 @@
       "t3_row": 277,
       "damage": 21,
       "throw": true
+    },
+    {
+      "input": "n,b,n,f+2",
+      "t3_row": 162,
+      "damage": 11,
+      "throw": false
     },
     {
       "input": "1+2+3+4",
@@ -247,299 +466,7011 @@
     ],
     "note": "Additive expansion from real T3 teardown bank rows. Existing moves untouched."
   },
-  "moves": [
-    "1",
-    "2",
-    "3",
-    "4",
-    "4,1",
-    "4,1,2",
-    "1+3",
-    "2+4",
-    "d/f+2",
-    "u/f+4",
-    "d,d/b,d,d/b+1+2",
-    "d/b,n,f+2",
-    "n,d/f,n,d/f+1",
-    "S",
-    "u+K",
-    "1+2",
-    "f",
-    "b",
-    "1_r36",
-    "1_r37",
-    "1_r38",
-    "1_r39",
-    "1_r40",
-    "1_r41",
-    "1_r42",
-    "1_r43",
-    "1_c36_r44",
-    "f_c36_r45",
-    "b_c36_r46",
-    "2_r48",
-    "2_r49",
-    "3+4_r107",
-    "f_r52",
-    "b_r53",
-    "3_c36",
-    "f_c36_r55",
-    "b_c36_r56",
-    "3_r58",
-    "3_r59",
-    "3_r60",
-    "3_r61",
-    "3_r62",
-    "3_r63",
-    "3_r64",
-    "3_r65",
-    "b_r66",
-    "b_c36",
-    "4_r68",
-    "4_r69",
-    "4_r70",
-    "4_r71",
-    "4_r72",
-    "4_r73",
-    "4_r74",
-    "4_r75",
-    "4_c36_r76",
-    "f_c36_r77",
-    "b_c36_r78",
-    "d/f+1+2_r17",
-    "1_r144",
-    "u/f+3",
-    "b_r169",
-    "2_r178",
-    "2_r180",
-    "2_r183",
-    "4_r188",
-    "d/b",
-    "2_r190",
-    "2_r10_r192",
-    "3_r195",
-    "3_r197",
-    "4_r201",
-    "4_r202",
-    "4_r203",
-    "4_r204",
-    "1_r208",
-    "4_r211",
-    "1_r213",
-    "f+4",
-    "b+1",
-    "1_r229",
-    "1_r236",
-    "2_r249",
-    "1+2+3",
-    "1_r263",
-    "4_r268",
-    "d/f+2_r10",
-    "4_r271",
-    "1_r272",
-    "1_c36_r291",
-    "1_c36_r292",
-    "1_c36_r295",
-    "1_c36_r296",
-    "1_c5_r365",
-    "1_c3_r367",
-    "1_r371",
-    "f+2+4_r14",
-    "f+2+4",
-    "1_c2_r376",
-    "1_c2_r377",
-    "1_c2_r381",
-    "1_c75_r384",
-    "1_c75_r385",
-    "1_c75_r387",
-    "1_c75_r389",
-    "1_c73",
-    "1_c74",
-    "1_c75_r391",
-    "1_c75_r393",
-    "1_c75_r395",
-    "1_c75_r397",
-    "1_c74_r399",
-    "1_c75_r401",
-    "1+2_t8",
-    "1,2",
-    "1,2,2",
-    "1,2,2,3",
-    "1+2+3+4",
-    "1,2,4",
-    "1,2,&amp;#58;4",
-    "1,3",
-    "1,3,&amp;#58;3",
-    "1,3,&amp;#58;3,&amp;#58;3",
-    "2,1",
-    "2,1,1",
-    "2,1,3",
-    "2,1,4",
-    "2,2",
-    "2,2,3",
-    "2+3",
-    "2+3+4",
-    "3,3",
-    "3~3",
-    "3~3,&amp;#58;4",
-    "3+4",
-    "4,3",
-    "4,3,3",
-    "4,3,4",
-    "4,4",
-    "4,4,4",
-    "4,4,&amp;#58;4",
-    "4,u+3",
-    "b+1_t8",
-    "b+1,1",
-    "b+1&amp;#58;1",
-    "b+1,1,2",
-    "b+1&amp;#58;1+2",
-    "b+1&amp;#58;1,2",
-    "b+1+3",
-    "b+1+3,4",
-    "b+2",
-    "b+2,4",
-    "b+2,4,3",
-    "b+3",
-    "b+3,3",
-    "b+3+4",
-    "b+4",
-    "Back Throw",
-    "(back to wall).b,b,UB",
-    "b,B+4",
-    "d+2",
-    "d+3",
-    "d+4",
-    "d+4,4",
-    "d+4,4,4",
-    "d+4,4,4,4",
-    "d+4,n,4",
-    "db+1",
-    "db+2",
-    "db+3",
-    "db+3+4",
-    "db+4",
-    "df+1",
-    "df+1,2",
-    "df+1,2,2",
-    "df+1,2,2,1",
-    "df+1,2,2,1,3",
-    "df+1,2,2,1,3,3",
-    "df+2",
-    "df+3",
-    "df+3,2",
-    "df+3,2,3",
-    "df+4",
-    "df+4,4",
-    "f+1+2",
-    "f+2",
-    "f+2,1",
-    "f+3",
-    "f+3,3",
-    "f+3,3,3",
-    "f+3,3,3,3",
-    "f+3,3,3,3,3",
-    "f+3,3,3,3,3,4",
-    "f+3,3,3,3,3,&amp;#58;4",
-    "f+3+4",
-    "f+4_t8",
-    "f+4,1",
-    "f+4,&amp;#58;1",
-    "f+4,3",
-    "FC.1",
-    "FC.2",
-    "FC.3",
-    "FC.4",
-    "FC.df+4",
-    "FC.df,d,DF",
-    "FC.df,d,DF#3",
-    "FC.df,d,DF+3",
-    "FC.UF+3+4",
-    "FC.UF+4",
-    "f,F+2",
-    "f&amp;#58;F+2",
-    "f,F+3",
-    "f,F+4",
-    "f,f,F+3",
-    "f,f,F+3,4",
-    "f,n",
-    "H.2+3",
-    "H.d+1+2",
-    "H.df+3+4",
-    "HMS.1",
-    "HMS.1,1",
-    "HMS.1,1,1",
-    "HMS.1+2",
-    "HMS.1,4",
-    "HMS.2",
-    "HMS.3",
-    "HMS.4",
-    "HMS.u+3",
-    "HMS.u+4",
-    "Left Throw",
-    "MS.3",
-    "MS.3+4",
-    "MS.3,4",
-    "MS.b,n",
-    "MS.b,n,4",
-    "qcf+4",
-    "R.df+1+2",
-    "Right Throw",
-    "u+3",
-    "ub+3",
-    "ub+3+4",
-    "ub,b",
-    "uf+1+2",
-    "uf+3",
-    "uf+3,1",
-    "uf+3+4",
-    "uf+3,4",
-    "uf+4",
-    "uf,n,4",
-    "ws1",
-    "ws1,2",
-    "ws1,4",
-    "ws1,&amp;#58;4",
-    "ws2",
-    "ws2,3",
-    "ws2,4",
-    "ws3",
-    "ws3,3",
-    "ws3,3,D+3",
-    "ws3,3,D+3,3 ...",
-    "ws3,3,DF+3",
-    "ws3,3,DF+3,3 ...",
-    "ws4",
-    "u+4",
-    "d+1+2",
-    "d/f+1",
-    "d/f+4",
-    "u/b+1",
-    "u/b+3",
-    "u/b+4",
-    "u/f+1",
-    "u/b+3+4",
-    "u/f+3+4",
-    "qcb+1+3",
-    "u/f+4,3",
-    "u/f+4,4",
-    "d+1+2,1",
-    "d+1+2,2",
-    "d/f+1,3",
-    "d/f+1,4",
-    "d/f+4,4",
-    "u/f+4,4,4",
-    "f+2,1,2",
-    "f+2,1,4",
-    "d+1+2,1,2",
-    "u/f+4,4,4,4",
-    "f+2,1,2,2",
-    "f+2,1,4,4",
-    "f+2,1,2,2,3",
-    "f+2,1,4,4,2",
-    "f+2,1,2,2,3,4",
-    "f+2,1,4,4,2,4",
-    "n,b,n,f+2"
-  ]
+  "moves": {
+    "1": {
+      "name": "PURPLE RAIN 1 (T3 jin r168)",
+      "input": "1",
+      "t3_source": "jin",
+      "t3_row": 168,
+      "t3_command": "LP",
+      "startup": 0.217,
+      "active": 0.05,
+      "recovery": 0.6,
+      "damage": 8,
+      "t3_damage": 14,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:168",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "2": {
+      "name": "PURPLE RAIN 2 (T3 jin r178)",
+      "input": "2",
+      "t3_source": "jin",
+      "t3_row": 178,
+      "t3_command": "RP",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 16,
+      "t3_damage": 27,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:jin:row:178",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike"
+    },
+    "3": {
+      "name": "PURPLE RAIN 3 (T3 jin r195)",
+      "input": "3",
+      "t3_source": "jin",
+      "t3_row": 195,
+      "t3_command": "LK",
+      "startup": 0.317,
+      "active": 0.083,
+      "recovery": 0.633,
+      "damage": 14,
+      "t3_damage": 23,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:195",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "4": {
+      "name": "PURPLE RAIN 4 (T3 jin r199)",
+      "input": "4",
+      "t3_source": "jin",
+      "t3_row": 199,
+      "t3_command": "RK",
+      "startup": 0.183,
+      "active": 0.017,
+      "recovery": 0.633,
+      "damage": 7,
+      "t3_damage": 12,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:199",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4,1": {
+      "name": "PURPLE RAIN 4,1 (T3 jin r184)",
+      "input": "4,1",
+      "t3_source": "jin",
+      "t3_row": 184,
+      "t3_command": "LP",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.85,
+      "damage": 3,
+      "t3_damage": 5,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "string_hit": "4",
+      "anim_ref": "t3:jin:row:184",
+      "input_slots": [
+        "4,1",
+        "4",
+        "1"
+      ],
+      "move_class": "string"
+    },
+    "4,1,2": {
+      "name": "PURPLE RAIN 4,1,2 (T3 jin r186)",
+      "input": "4,1,2",
+      "t3_source": "jin",
+      "t3_row": 186,
+      "t3_command": "RP",
+      "startup": 0.45,
+      "active": 0.017,
+      "recovery": 0.617,
+      "damage": 6,
+      "t3_damage": 10,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "string_hit": "4,1",
+      "anim_ref": "t3:jin:row:186",
+      "input_slots": [
+        "4,1,2",
+        "4",
+        "1",
+        "2"
+      ],
+      "move_class": "string"
+    },
+    "1+3": {
+      "name": "PURPLE RAIN 1+3 throw (T3 jin r279)",
+      "input": "1+3",
+      "t3_source": "jin",
+      "t3_row": 279,
+      "t3_command": "LP+LK",
+      "startup": 0.2,
+      "active": 0.05,
+      "recovery": 0.6,
+      "damage": 21,
+      "t3_damage": 35,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 11,
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+      "anim_ref": "t3:jin:row:279",
+      "input_slots": [
+        "1+3"
+      ],
+      "move_class": "throw",
+      "throw_break": "1"
+    },
+    "2+4": {
+      "name": "PURPLE RAIN 2+4 throw (T3 jin r117)",
+      "input": "2+4",
+      "t3_source": "jin",
+      "t3_row": 117,
+      "t3_command": "RP+RK",
+      "startup": 0.433,
+      "active": 0.017,
+      "recovery": 0.1,
+      "damage": 21,
+      "t3_damage": 35,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 11,
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+      "anim_ref": "t3:jin:row:117",
+      "input_slots": [
+        "2+4"
+      ],
+      "move_class": "throw",
+      "throw_break": "2"
+    },
+    "d/f+2": {
+      "name": "PURPLE RAIN d/f+2 (T3 jin r269)",
+      "input": "d/f+2",
+      "t3_source": "jin",
+      "t3_row": 269,
+      "t3_command": "3+RP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.633,
+      "damage": 18,
+      "t3_damage": 30,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:jin:row:269",
+      "input_slots": [
+        "d/f+2"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+4": {
+      "name": "PURPLE RAIN u/f+4 (T3 jin r80)",
+      "input": "u/f+4",
+      "t3_source": "jin",
+      "t3_row": 80,
+      "t3_command": "9+RK",
+      "startup": 0.417,
+      "active": 0.017,
+      "recovery": 0.683,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:jin:row:80",
+      "input_slots": [
+        "u/f+4"
+      ],
+      "move_class": "strike"
+    },
+    "d,d/b,d,d/b+1+2": {
+      "name": "PURPLE RAIN d,d/b,d,d/b+1+2 throw (T3 jin r277)",
+      "input": "d,d/b,d,d/b+1+2",
+      "t3_source": "jin",
+      "t3_row": 277,
+      "t3_command": "[2 1 2 1+LP+RP](59f)",
+      "startup": 0.2,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 21,
+      "t3_damage": 35,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 11,
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+      "anim_ref": "t3:jin:row:277",
+      "input_slots": [
+        "d,d/b,d,d/b+1+2"
+      ],
+      "move_class": "throw",
+      "throw_break": "1+2"
+    },
+    "d/b,n,f+2": {
+      "name": "PURPLE RAIN d/b,n,f+2 throw (T3 jin r276)",
+      "input": "d/b,n,f+2",
+      "t3_source": "jin",
+      "t3_row": 276,
+      "t3_command": "[1 5 6+RP](30f)",
+      "startup": 0.183,
+      "active": 0.017,
+      "recovery": 0.517,
+      "damage": 21,
+      "t3_damage": 35,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 11,
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+      "anim_ref": "t3:jin:row:276",
+      "input_slots": [
+        "d/b,n,f+2"
+      ],
+      "move_class": "throw",
+      "throw_break": "1+2"
+    },
+    "n,d/f,n,d/f+1": {
+      "name": "PURPLE RAIN n,d/f,n,d/f+1 throw (T3 jin r277)",
+      "input": "n,d/f,n,d/f+1",
+      "t3_source": "jin",
+      "t3_row": 277,
+      "t3_command": "[5 3 5 3+LP](25f)",
+      "startup": 0.2,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 21,
+      "t3_damage": 35,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 11,
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+      "anim_ref": "t3:jin:row:277",
+      "input_slots": [
+        "n,d/f,n,d/f+1"
+      ],
+      "move_class": "throw",
+      "throw_break": "1+2"
+    },
+    "S": {
+      "name": "Four-Four Time [WH SIGNATURE]",
+      "input": "S",
+      "startup": 0.28,
+      "active": 0.1,
+      "recovery": 0.85,
+      "damage": 18,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 12,
+      "anim_ref": "wh:purplerain:sig:four-four-time",
+      "input_slots": [
+        "S"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "He fights in 4/4 time. The kicks land on the beat. No one has ever found the rhythm twice."
+    },
+    "u+K": {
+      "name": "Encore Bow [WH SIGNATURE]",
+      "input": "u+K",
+      "startup": 0.31,
+      "active": 0.017,
+      "recovery": 0.88,
+      "damage": 17,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 12,
+      "anim_ref": "wh:purplerain:sig:encore-bow",
+      "input_slots": [
+        "u+K",
+        "u",
+        "K"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "His standing bet with Silvertongue: who bows lower after a win. Rising showman kick, bow included."
+    },
+    "1+2": {
+      "name": "Four-Four Time [WH SIGNATURE]",
+      "input": "1+2",
+      "startup": 0.28,
+      "active": 0.1,
+      "recovery": 0.85,
+      "damage": 18,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 12,
+      "anim_ref": "wh:purplerain:sig:four-four-time",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "He fights in 4/4 time. The kicks land on the beat. No one has ever found the rhythm twice.",
+      "input_remapped_from": "S"
+    },
+    "1+2__main": {
+      "name": "PURPLE RAIN 1+2 (T3 jin r32)",
+      "input": "1+2",
+      "t3_source": "jin",
+      "t3_row": 32,
+      "t3_command": "LP+RP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:32",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "strike"
+    },
+    "u+4": {
+      "name": "Encore Bow [WH SIGNATURE]",
+      "input": "u+4",
+      "startup": 0.31,
+      "active": 0.017,
+      "recovery": 0.88,
+      "damage": 17,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 12,
+      "anim_ref": "wh:purplerain:sig:encore-bow",
+      "input_slots": [
+        "u+4"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "His standing bet with Silvertongue: who bows lower after a win. Rising showman kick, bow included.",
+      "input_remapped_from": "u+K"
+    },
+    "f+2": {
+      "name": "PURPLE RAIN f+2 (T3 jin r220)",
+      "input": "f+2",
+      "t3_source": "jin",
+      "t3_row": 220,
+      "t3_command": "6+RP",
+      "startup": 0.2,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 4,
+      "t3_damage": 7,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:220",
+      "input_slots": [
+        "f+2"
+      ],
+      "move_class": "strike"
+    },
+    "f+2__main": {
+      "name": "Move f+2 (f+2)",
+      "input": "f+2",
+      "t8_source": "lee",
+      "t8_id": "Lee-f+2",
+      "t8_damage": "12",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 12,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 6,
+      "anim_ref": "t8:lee:lee-f+2",
+      "input_slots": [
+        "f+2"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -9"
+    },
+    "f+4": {
+      "name": "PURPLE RAIN f+4 (T3 jin r214)",
+      "input": "f+4",
+      "t3_source": "jin",
+      "t3_row": 214,
+      "t3_command": "6+RK",
+      "startup": 0.5,
+      "active": 0.05,
+      "recovery": 0.533,
+      "damage": 6,
+      "t3_damage": 10,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:214",
+      "input_slots": [
+        "f+4"
+      ],
+      "move_class": "strike"
+    },
+    "f+4__main": {
+      "name": "PURPLE RAIN f+4 (T3 jin r214)",
+      "input": "f+4",
+      "t3_source": "jin",
+      "t3_row": 214,
+      "t3_command": "6+RK",
+      "startup": 0.5,
+      "active": 0.05,
+      "recovery": 0.533,
+      "damage": 6,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:214",
+      "input_slots": [
+        "f+4"
+      ],
+      "move_class": "strike"
+    },
+    "d+1+2": {
+      "name": "PURPLE RAIN d+1+2 (T3 jin r92)",
+      "input": "d+1+2",
+      "t3_source": "jin",
+      "t3_row": 92,
+      "t3_command": "2+LP+RP",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 4,
+      "t3_damage": 6,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:92",
+      "input_slots": [
+        "d+1+2"
+      ],
+      "move_class": "strike"
+    },
+    "d/f+1": {
+      "name": "PURPLE RAIN d/f+1 (T3 jin r179)",
+      "input": "d/f+1",
+      "t3_source": "jin",
+      "t3_row": 179,
+      "t3_command": "3+LP",
+      "startup": 0.367,
+      "active": 0.067,
+      "recovery": 0.7,
+      "damage": 21,
+      "t3_damage": 35,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:jin:row:179",
+      "input_slots": [
+        "d/f+1"
+      ],
+      "move_class": "strike"
+    },
+    "d/f+4": {
+      "name": "PURPLE RAIN d/f+4 (T3 jin r205)",
+      "input": "d/f+4",
+      "t3_source": "jin",
+      "t3_row": 205,
+      "t3_command": "2/3+RK",
+      "startup": 0.267,
+      "active": 0.017,
+      "recovery": 0.767,
+      "damage": 11,
+      "t3_damage": 18,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:205",
+      "input_slots": [
+        "d/f+4"
+      ],
+      "move_class": "strike"
+    },
+    "u/b+1": {
+      "name": "PURPLE RAIN u/b+1 (T3 jin r34)",
+      "input": "u/b+1",
+      "t3_source": "jin",
+      "t3_row": 34,
+      "t3_command": "4/7+LP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "t3_damage": 12,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:34",
+      "input_slots": [
+        "u/b+1"
+      ],
+      "move_class": "strike"
+    },
+    "u/b+3": {
+      "name": "PURPLE RAIN u/b+3 (T3 jin r56)",
+      "input": "u/b+3",
+      "t3_source": "jin",
+      "t3_row": 56,
+      "t3_command": "4/7+LK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:jin:row:56",
+      "input_slots": [
+        "u/b+3"
+      ],
+      "move_class": "strike"
+    },
+    "u/b+4": {
+      "name": "PURPLE RAIN u/b+4 (T3 jin r78)",
+      "input": "u/b+4",
+      "t3_source": "jin",
+      "t3_row": 78,
+      "t3_command": "4/7+RK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 11,
+      "t3_damage": 18,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:78",
+      "input_slots": [
+        "u/b+4"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+1": {
+      "name": "PURPLE RAIN u/f+1 (T3 jin r33)",
+      "input": "u/f+1",
+      "t3_source": "jin",
+      "t3_row": 33,
+      "t3_command": "6/9+LP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "t3_damage": 12,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:33",
+      "input_slots": [
+        "u/f+1"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+3": {
+      "name": "PURPLE RAIN u/f+3 (T3 jin r55)",
+      "input": "u/f+3",
+      "t3_source": "jin",
+      "t3_row": 55,
+      "t3_command": "6/9+LK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:jin:row:55",
+      "input_slots": [
+        "u/f+3"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+3__main": {
+      "name": "PURPLE RAIN u/f+3 (T3 jin r157)",
+      "input": "u/f+3",
+      "t3_source": "jin",
+      "t3_row": 157,
+      "t3_command": "9+LK",
+      "startup": 0.367,
+      "active": 0.033,
+      "recovery": 0.733,
+      "damage": 18,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:157",
+      "input_slots": [
+        "u/f+3"
+      ],
+      "move_class": "strike"
+    },
+    "u/b+3+4": {
+      "name": "PURPLE RAIN u/b+3+4 (T3 jin r53)",
+      "input": "u/b+3+4",
+      "t3_source": "jin",
+      "t3_row": 53,
+      "t3_command": "4/7+LK+RK",
+      "startup": 0.35,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:jin:row:53",
+      "input_slots": [
+        "u/b+3+4"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+3+4": {
+      "name": "PURPLE RAIN u/f+3+4 (T3 jin r52)",
+      "input": "u/f+3+4",
+      "t3_source": "jin",
+      "t3_row": 52,
+      "t3_command": "6/9+LK+RK",
+      "startup": 0.35,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:jin:row:52",
+      "input_slots": [
+        "u/f+3+4"
+      ],
+      "move_class": "strike"
+    },
+    "qcb+1+3": {
+      "name": "PURPLE RAIN qcb+1+3 throw (T3 jin r275)",
+      "input": "qcb+1+3",
+      "t3_source": "jin",
+      "t3_row": 275,
+      "t3_command": "[2 1 4+LP+LK](30f)",
+      "startup": 0.183,
+      "active": 0.017,
+      "recovery": 0.517,
+      "damage": 21,
+      "t3_damage": 35,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 11,
+      "anim_ref": "t3:jin:row:275",
+      "input_slots": [
+        "qcb+1+3"
+      ],
+      "move_class": "throw",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "1",
+      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+    },
+    "u/f+4,3": {
+      "name": "PURPLE RAIN u/f+4,3 (T3 jin r193)",
+      "input": "u/f+4,3",
+      "t3_source": "jin",
+      "t3_row": 193,
+      "t3_command": "LK",
+      "startup": 0.583,
+      "active": 0.05,
+      "recovery": 0.467,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:jin:row:193",
+      "input_slots": [
+        "u/f+4,3",
+        "u/f+4",
+        "3"
+      ],
+      "move_class": "string",
+      "string_hit": "u/f+4"
+    },
+    "u/f+4,4": {
+      "name": "PURPLE RAIN u/f+4,4 (T3 jin r207)",
+      "input": "u/f+4,4",
+      "t3_source": "jin",
+      "t3_row": 207,
+      "t3_command": "RK",
+      "startup": 0.783,
+      "active": 0.017,
+      "recovery": 0.65,
+      "damage": 9,
+      "t3_damage": 15,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:207",
+      "input_slots": [
+        "u/f+4,4",
+        "u/f+4",
+        "4"
+      ],
+      "move_class": "string",
+      "string_hit": "u/f+4"
+    },
+    "f+2,1": {
+      "name": "PURPLE RAIN f+2,1 (T3 jin r221)",
+      "input": "f+2,1",
+      "t3_source": "jin",
+      "t3_row": 221,
+      "t3_command": "LP",
+      "startup": 0.233,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 5,
+      "t3_damage": 8,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:221",
+      "input_slots": [
+        "f+2,1",
+        "f+2",
+        "1"
+      ],
+      "move_class": "string",
+      "string_hit": "f+2"
+    },
+    "f+2,1__main": {
+      "name": "Double Signal",
+      "input": "f+2,1",
+      "t8_source": "lee",
+      "t8_id": "Lee-f+2,1",
+      "t8_damage": ",22",
+      "startup": 0.317,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 34,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-f+2,1",
+      "input_slots": [
+        "f+2",
+        "f+2,1"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          12,
+          22
+        ],
+        "total": 34
+      },
+      "note": "High; on block -10"
+    },
+    "d+1+2,1": {
+      "name": "PURPLE RAIN d+1+2,1 (T3 jin r177)",
+      "input": "d+1+2,1",
+      "t3_source": "jin",
+      "t3_row": 177,
+      "t3_command": "LP",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 5,
+      "t3_damage": 8,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:177",
+      "input_slots": [
+        "d+1+2,1",
+        "d+1+2",
+        "1"
+      ],
+      "move_class": "string",
+      "string_hit": "d+1+2"
+    },
+    "d+1+2,2": {
+      "name": "PURPLE RAIN d+1+2,2 (T3 jin r93)",
+      "input": "d+1+2,2",
+      "t3_source": "jin",
+      "t3_row": 93,
+      "t3_command": "RP",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 4,
+      "t3_damage": 6,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:93",
+      "input_slots": [
+        "d+1+2,2",
+        "d+1+2",
+        "2"
+      ],
+      "move_class": "string",
+      "string_hit": "d+1+2"
+    },
+    "d/f+1,3": {
+      "name": "PURPLE RAIN d/f+1,3 (T3 jin r197)",
+      "input": "d/f+1,3",
+      "t3_source": "jin",
+      "t3_row": 197,
+      "t3_command": "LK",
+      "startup": 0.9,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 12,
+      "t3_damage": 20,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:197",
+      "input_slots": [
+        "d/f+1,3",
+        "d/f+1",
+        "3"
+      ],
+      "move_class": "string",
+      "string_hit": "d/f+1"
+    },
+    "d/f+1,4": {
+      "name": "PURPLE RAIN d/f+1,4 (T3 jin r204)",
+      "input": "d/f+1,4",
+      "t3_source": "jin",
+      "t3_row": 204,
+      "t3_command": "RK",
+      "startup": 1.0,
+      "active": 0.05,
+      "recovery": 0.75,
+      "damage": 7,
+      "t3_damage": 12,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:204",
+      "input_slots": [
+        "d/f+1,4",
+        "d/f+1",
+        "4"
+      ],
+      "move_class": "string",
+      "string_hit": "d/f+1"
+    },
+    "d/f+4,4": {
+      "name": "PURPLE RAIN d/f+4,4 (T3 jin r212)",
+      "input": "d/f+4,4",
+      "t3_source": "jin",
+      "t3_row": 212,
+      "t3_command": "RK",
+      "startup": 0.217,
+      "active": 0.017,
+      "recovery": 0.95,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:jin:row:212",
+      "input_slots": [
+        "d/f+4,4",
+        "d/f+4",
+        "4"
+      ],
+      "move_class": "string",
+      "string_hit": "d/f+4"
+    },
+    "u/f+4,4,4": {
+      "name": "PURPLE RAIN u/f+4,4,4 (T3 jin r210)",
+      "input": "u/f+4,4,4",
+      "t3_source": "jin",
+      "t3_row": 210,
+      "t3_command": "RK",
+      "startup": 0.4,
+      "active": 0.017,
+      "recovery": 0.767,
+      "damage": 7,
+      "t3_damage": 12,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:210",
+      "input_slots": [
+        "u/f+4,4,4",
+        "u/f+4",
+        "4",
+        "4"
+      ],
+      "move_class": "string",
+      "string_hit": "u/f+4,4"
+    },
+    "f+2,1,2": {
+      "name": "PURPLE RAIN f+2,1,2 (T3 jin r222)",
+      "input": "f+2,1,2",
+      "t3_source": "jin",
+      "t3_row": 222,
+      "t3_command": "RP",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 4,
+      "t3_damage": 6,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:222",
+      "input_slots": [
+        "f+2,1,2",
+        "f+2",
+        "1",
+        "2"
+      ],
+      "move_class": "string",
+      "string_hit": "f+2,1"
+    },
+    "f+2,1,4": {
+      "name": "PURPLE RAIN f+2,1,4 (T3 jin r230)",
+      "input": "f+2,1,4",
+      "t3_source": "jin",
+      "t3_row": 230,
+      "t3_command": "RK",
+      "startup": 0.283,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 4,
+      "t3_damage": 7,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:230",
+      "input_slots": [
+        "f+2,1,4",
+        "f+2",
+        "1",
+        "4"
+      ],
+      "move_class": "string",
+      "string_hit": "f+2,1"
+    },
+    "d+1+2,1,2": {
+      "name": "PURPLE RAIN d+1+2,1,2 (T3 jin r183)",
+      "input": "d+1+2,1,2",
+      "t3_source": "jin",
+      "t3_row": 183,
+      "t3_command": "RP",
+      "startup": 0.217,
+      "active": 0.017,
+      "recovery": 0.783,
+      "damage": 11,
+      "t3_damage": 18,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:183",
+      "input_slots": [
+        "d+1+2,1,2",
+        "d+1+2",
+        "1",
+        "2"
+      ],
+      "move_class": "string",
+      "string_hit": "d+1+2,1"
+    },
+    "u/f+4,4,4,4": {
+      "name": "PURPLE RAIN u/f+4,4,4,4 (T3 jin r211)",
+      "input": "u/f+4,4,4,4",
+      "t3_source": "jin",
+      "t3_row": 211,
+      "t3_command": "RK",
+      "startup": 0.367,
+      "active": 0.017,
+      "recovery": 0.8,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:jin:row:211",
+      "input_slots": [
+        "u/f+4,4,4,4",
+        "u/f+4",
+        "4",
+        "4",
+        "4"
+      ],
+      "move_class": "string",
+      "string_hit": "u/f+4,4,4"
+    },
+    "f+2,1,2,2": {
+      "name": "PURPLE RAIN f+2,1,2,2 (T3 jin r223)",
+      "input": "f+2,1,2,2",
+      "t3_source": "jin",
+      "t3_row": 223,
+      "t3_command": "RP",
+      "startup": 0.283,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 4,
+      "t3_damage": 7,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:223",
+      "input_slots": [
+        "f+2,1,2,2",
+        "f+2",
+        "1",
+        "2",
+        "2"
+      ],
+      "move_class": "string",
+      "string_hit": "f+2,1,2"
+    },
+    "f+2,1,4,4": {
+      "name": "PURPLE RAIN f+2,1,4,4 (T3 jin r231)",
+      "input": "f+2,1,4,4",
+      "t3_source": "jin",
+      "t3_row": 231,
+      "t3_command": "RK",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.55,
+      "damage": 6,
+      "t3_damage": 10,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:231",
+      "input_slots": [
+        "f+2,1,4,4",
+        "f+2",
+        "1",
+        "4",
+        "4"
+      ],
+      "move_class": "string",
+      "string_hit": "f+2,1,4"
+    },
+    "f+2,1,2,2,3": {
+      "name": "PURPLE RAIN f+2,1,2,2,3 (T3 jin r224)",
+      "input": "f+2,1,2,2,3",
+      "t3_source": "jin",
+      "t3_row": 224,
+      "t3_command": "LK",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 4,
+      "t3_damage": 6,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:224",
+      "input_slots": [
+        "f+2,1,2,2,3",
+        "f+2",
+        "1",
+        "2",
+        "2",
+        "3"
+      ],
+      "move_class": "string",
+      "string_hit": "f+2,1,2,2"
+    },
+    "f+2,1,4,4,2": {
+      "name": "PURPLE RAIN f+2,1,4,4,2 (T3 jin r232)",
+      "input": "f+2,1,4,4,2",
+      "t3_source": "jin",
+      "t3_row": 232,
+      "t3_command": "RP",
+      "startup": 0.383,
+      "active": 0.017,
+      "recovery": 0.75,
+      "damage": 3,
+      "t3_damage": 5,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:232",
+      "input_slots": [
+        "f+2,1,4,4,2",
+        "f+2",
+        "1",
+        "4",
+        "4",
+        "2"
+      ],
+      "move_class": "string",
+      "string_hit": "f+2,1,4,4"
+    },
+    "f+2,1,2,2,3,4": {
+      "name": "PURPLE RAIN f+2,1,2,2,3,4 (T3 jin r225)",
+      "input": "f+2,1,2,2,3,4",
+      "t3_source": "jin",
+      "t3_row": 225,
+      "t3_command": "RK",
+      "startup": 0.617,
+      "active": 0.05,
+      "recovery": 0.617,
+      "damage": 6,
+      "t3_damage": 11,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:225",
+      "input_slots": [
+        "f+2,1,2,2,3,4",
+        "f+2",
+        "1",
+        "2",
+        "2",
+        "3",
+        "4"
+      ],
+      "move_class": "string",
+      "string_hit": "f+2,1,2,2,3"
+    },
+    "f+2,1,4,4,2,4": {
+      "name": "PURPLE RAIN f+2,1,4,4,2,4 (T3 jin r233)",
+      "input": "f+2,1,4,4,2,4",
+      "t3_source": "jin",
+      "t3_row": 233,
+      "t3_command": "RK",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 4,
+      "t3_damage": 7,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:233",
+      "input_slots": [
+        "f+2,1,4,4,2,4",
+        "f+2",
+        "1",
+        "4",
+        "4",
+        "2",
+        "4"
+      ],
+      "move_class": "string",
+      "string_hit": "f+2,1,4,4,2"
+    },
+    "n,b,n,f+2": {
+      "name": "PURPLE RAIN n,b,n,f+2 (T3 jin r162)",
+      "input": "n,b,n,f+2",
+      "t3_source": "jin",
+      "t3_row": 162,
+      "t3_command": "[5 4 5 6+RP](50f)",
+      "startup": 0.25,
+      "active": 0.05,
+      "recovery": 0.617,
+      "damage": 11,
+      "t3_damage": 18,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:162",
+      "input_slots": [
+        "n,b,n,f+2"
+      ],
+      "move_class": "special"
+    },
+    "f": {
+      "name": "PURPLE RAIN f (T3 jin r33)",
+      "input": "f",
+      "t3_source": "jin",
+      "t3_row": 33,
+      "t3_command": "6/9+LP+RP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:33",
+      "input_slots": [
+        "f"
+      ],
+      "move_class": "strike"
+    },
+    "b": {
+      "name": "PURPLE RAIN b (T3 jin r34)",
+      "input": "b",
+      "t3_source": "jin",
+      "t3_row": 34,
+      "t3_command": "4/7+LP+RP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:34",
+      "input_slots": [
+        "b"
+      ],
+      "move_class": "strike"
+    },
+    "1_r36": {
+      "name": "PURPLE RAIN 1_r36 (T3 jin r36)",
+      "input": "1_r36",
+      "t3_source": "jin",
+      "t3_row": 36,
+      "t3_command": "LP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:36",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r37": {
+      "name": "PURPLE RAIN 1_r37 (T3 jin r37)",
+      "input": "1_r37",
+      "t3_source": "jin",
+      "t3_row": 37,
+      "t3_command": "LP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:37",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r38": {
+      "name": "PURPLE RAIN 1_r38 (T3 jin r38)",
+      "input": "1_r38",
+      "t3_source": "jin",
+      "t3_row": 38,
+      "t3_command": "LP",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:38",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r39": {
+      "name": "PURPLE RAIN 1_r39 (T3 jin r39)",
+      "input": "1_r39",
+      "t3_source": "jin",
+      "t3_row": 39,
+      "t3_command": "LP",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:39",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r40": {
+      "name": "PURPLE RAIN 1_r40 (T3 jin r40)",
+      "input": "1_r40",
+      "t3_source": "jin",
+      "t3_row": 40,
+      "t3_command": "LP",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:40",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r41": {
+      "name": "PURPLE RAIN 1_r41 (T3 jin r41)",
+      "input": "1_r41",
+      "t3_source": "jin",
+      "t3_row": 41,
+      "t3_command": "LP",
+      "startup": 0.117,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 11,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:41",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r42": {
+      "name": "PURPLE RAIN 1_r42 (T3 jin r42)",
+      "input": "1_r42",
+      "t3_source": "jin",
+      "t3_row": 42,
+      "t3_command": "LP",
+      "startup": 0.117,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 11,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:42",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r43": {
+      "name": "PURPLE RAIN 1_r43 (T3 jin r43)",
+      "input": "1_r43",
+      "t3_source": "jin",
+      "t3_row": 43,
+      "t3_command": "LP",
+      "startup": 0.117,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 11,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:43",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_c36_r44": {
+      "name": "PURPLE RAIN 1_c36_r44 (T3 jin r44)",
+      "input": "1_c36_r44",
+      "t3_source": "jin",
+      "t3_row": 44,
+      "t3_command": "LP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:44",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "f_c36_r45": {
+      "name": "PURPLE RAIN f_c36_r45 (T3 jin r45)",
+      "input": "f_c36_r45",
+      "t3_source": "jin",
+      "t3_row": 45,
+      "t3_command": "6/9+LP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:45",
+      "input_slots": [
+        "f"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "b_c36_r46": {
+      "name": "PURPLE RAIN b_c36_r46 (T3 jin r46)",
+      "input": "b_c36_r46",
+      "t3_source": "jin",
+      "t3_row": 46,
+      "t3_command": "4/7+LP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:46",
+      "input_slots": [
+        "b"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "2_r48": {
+      "name": "PURPLE RAIN 2_r48 (T3 jin r48)",
+      "input": "2_r48",
+      "t3_source": "jin",
+      "t3_row": 48,
+      "t3_command": "RP",
+      "startup": 0.183,
+      "active": 0.05,
+      "recovery": 0.667,
+      "damage": 11,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:48",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike"
+    },
+    "2_r49": {
+      "name": "PURPLE RAIN 2_r49 (T3 jin r49)",
+      "input": "2_r49",
+      "t3_source": "jin",
+      "t3_row": 49,
+      "t3_command": "RP",
+      "startup": 0.183,
+      "active": 0.05,
+      "recovery": 0.667,
+      "damage": 11,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:49",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike"
+    },
+    "3+4_r107": {
+      "name": "PURPLE RAIN 3+4_r107 (T3 jin r51)",
+      "input": "3+4_r107",
+      "t3_source": "jin",
+      "t3_row": 51,
+      "t3_command": "LK+RK",
+      "startup": 0.35,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:51",
+      "input_slots": [
+        "3+4"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 107
+    },
+    "f_r52": {
+      "name": "PURPLE RAIN f_r52 (T3 jin r52)",
+      "input": "f_r52",
+      "t3_source": "jin",
+      "t3_row": 52,
+      "t3_command": "6/9+LK+RK",
+      "startup": 0.35,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:52",
+      "input_slots": [
+        "f"
+      ],
+      "move_class": "strike"
+    },
+    "b_r53": {
+      "name": "PURPLE RAIN b_r53 (T3 jin r53)",
+      "input": "b_r53",
+      "t3_source": "jin",
+      "t3_row": 53,
+      "t3_command": "4/7+LK+RK",
+      "startup": 0.35,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:53",
+      "input_slots": [
+        "b"
+      ],
+      "move_class": "strike"
+    },
+    "3_c36": {
+      "name": "PURPLE RAIN 3_c36 (T3 jin r54)",
+      "input": "3_c36",
+      "t3_source": "jin",
+      "t3_row": 54,
+      "t3_command": "LK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:54",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "f_c36_r55": {
+      "name": "PURPLE RAIN f_c36_r55 (T3 jin r55)",
+      "input": "f_c36_r55",
+      "t3_source": "jin",
+      "t3_row": 55,
+      "t3_command": "6/9+LK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:55",
+      "input_slots": [
+        "f"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "b_c36_r56": {
+      "name": "PURPLE RAIN b_c36_r56 (T3 jin r56)",
+      "input": "b_c36_r56",
+      "t3_source": "jin",
+      "t3_row": 56,
+      "t3_command": "4/7+LK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:56",
+      "input_slots": [
+        "b"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "3_r58": {
+      "name": "PURPLE RAIN 3_r58 (T3 jin r58)",
+      "input": "3_r58",
+      "t3_source": "jin",
+      "t3_row": 58,
+      "t3_command": "LK",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.817,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:58",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "3_r59": {
+      "name": "PURPLE RAIN 3_r59 (T3 jin r59)",
+      "input": "3_r59",
+      "t3_source": "jin",
+      "t3_row": 59,
+      "t3_command": "LK",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.817,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:59",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "3_r60": {
+      "name": "PURPLE RAIN 3_r60 (T3 jin r60)",
+      "input": "3_r60",
+      "t3_source": "jin",
+      "t3_row": 60,
+      "t3_command": "LK",
+      "startup": 0.233,
+      "active": 0.017,
+      "recovery": 0.8,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:60",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "3_r61": {
+      "name": "PURPLE RAIN 3_r61 (T3 jin r61)",
+      "input": "3_r61",
+      "t3_source": "jin",
+      "t3_row": 61,
+      "t3_command": "LK",
+      "startup": 0.233,
+      "active": 0.017,
+      "recovery": 0.8,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:61",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "3_r62": {
+      "name": "PURPLE RAIN 3_r62 (T3 jin r62)",
+      "input": "3_r62",
+      "t3_source": "jin",
+      "t3_row": 62,
+      "t3_command": "LK",
+      "startup": 0.233,
+      "active": 0.017,
+      "recovery": 0.8,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:62",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "3_r63": {
+      "name": "PURPLE RAIN 3_r63 (T3 jin r63)",
+      "input": "3_r63",
+      "t3_source": "jin",
+      "t3_row": 63,
+      "t3_command": "LK",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.817,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:63",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "3_r64": {
+      "name": "PURPLE RAIN 3_r64 (T3 jin r64)",
+      "input": "3_r64",
+      "t3_source": "jin",
+      "t3_row": 64,
+      "t3_command": "LK",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.817,
+      "damage": 9,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:64",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "3_r65": {
+      "name": "PURPLE RAIN 3_r65 (T3 jin r65)",
+      "input": "3_r65",
+      "t3_source": "jin",
+      "t3_row": 65,
+      "t3_command": "LK",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.817,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:65",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "b_r66": {
+      "name": "PURPLE RAIN b_r66 (T3 jin r66)",
+      "input": "b_r66",
+      "t3_source": "jin",
+      "t3_row": 66,
+      "t3_command": "4/7+RK",
+      "startup": 0.25,
+      "active": 0.05,
+      "recovery": 0.6,
+      "damage": 6,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:66",
+      "input_slots": [
+        "b"
+      ],
+      "move_class": "strike"
+    },
+    "b_c36": {
+      "name": "PURPLE RAIN b_c36 (T3 jin r66)",
+      "input": "b_c36",
+      "t3_source": "jin",
+      "t3_row": 66,
+      "t3_command": "4/7+RK",
+      "startup": 0.25,
+      "active": 0.05,
+      "recovery": 0.6,
+      "damage": 6,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:66",
+      "input_slots": [
+        "b"
+      ],
+      "move_class": "special",
+      "t3_condition": 36
+    },
+    "4_r68": {
+      "name": "PURPLE RAIN 4_r68 (T3 jin r68)",
+      "input": "4_r68",
+      "t3_source": "jin",
+      "t3_row": 68,
+      "t3_command": "RK",
+      "startup": 0.133,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 15,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:68",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_r69": {
+      "name": "PURPLE RAIN 4_r69 (T3 jin r69)",
+      "input": "4_r69",
+      "t3_source": "jin",
+      "t3_row": 69,
+      "t3_command": "RK",
+      "startup": 0.133,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 15,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:69",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_r70": {
+      "name": "PURPLE RAIN 4_r70 (T3 jin r70)",
+      "input": "4_r70",
+      "t3_source": "jin",
+      "t3_row": 70,
+      "t3_command": "RK",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 15,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:70",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_r71": {
+      "name": "PURPLE RAIN 4_r71 (T3 jin r71)",
+      "input": "4_r71",
+      "t3_source": "jin",
+      "t3_row": 71,
+      "t3_command": "RK",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 15,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:71",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_r72": {
+      "name": "PURPLE RAIN 4_r72 (T3 jin r72)",
+      "input": "4_r72",
+      "t3_source": "jin",
+      "t3_row": 72,
+      "t3_command": "RK",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 15,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:72",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_r73": {
+      "name": "PURPLE RAIN 4_r73 (T3 jin r73)",
+      "input": "4_r73",
+      "t3_source": "jin",
+      "t3_row": 73,
+      "t3_command": "RK",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 9,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:73",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_r74": {
+      "name": "PURPLE RAIN 4_r74 (T3 jin r74)",
+      "input": "4_r74",
+      "t3_source": "jin",
+      "t3_row": 74,
+      "t3_command": "RK",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 9,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:74",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_r75": {
+      "name": "PURPLE RAIN 4_r75 (T3 jin r75)",
+      "input": "4_r75",
+      "t3_source": "jin",
+      "t3_row": 75,
+      "t3_command": "RK",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 9,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:75",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_c36_r76": {
+      "name": "PURPLE RAIN 4_c36_r76 (T3 jin r76)",
+      "input": "4_c36_r76",
+      "t3_source": "jin",
+      "t3_row": 76,
+      "t3_command": "RK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 12,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:76",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "f_c36_r77": {
+      "name": "PURPLE RAIN f_c36_r77 (T3 jin r77)",
+      "input": "f_c36_r77",
+      "t3_source": "jin",
+      "t3_row": 77,
+      "t3_command": "6/9+RK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 12,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:77",
+      "input_slots": [
+        "f"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "b_c36_r78": {
+      "name": "PURPLE RAIN b_c36_r78 (T3 jin r78)",
+      "input": "b_c36_r78",
+      "t3_source": "jin",
+      "t3_row": 78,
+      "t3_command": "4/7+RK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 11,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:78",
+      "input_slots": [
+        "b"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "d/f+1+2_r17": {
+      "name": "PURPLE RAIN d/f+1+2_r17 (T3 jin r117)",
+      "input": "d/f+1+2_r17",
+      "t3_source": "jin",
+      "t3_row": 117,
+      "t3_command": "3+LP+RP",
+      "startup": 0.433,
+      "active": 0.017,
+      "recovery": 0.0,
+      "damage": 21,
+      "limb": "both",
+      "heavy": false,
+      "knock": 6.5,
+      "soulGain": 11,
+      "anim_ref": "t3:jin:row:117",
+      "input_slots": [
+        "d/f+1+2"
+      ],
+      "move_class": "throw",
+      "t3_restriction": 17,
+      "damage_note": "t3 row damage 0; WH grappler convention 21"
+    },
+    "1_r144": {
+      "name": "PURPLE RAIN 1_r144 (T3 jin r144)",
+      "input": "1_r144",
+      "t3_source": "jin",
+      "t3_row": 144,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.25,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:144",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "b_r169": {
+      "name": "PURPLE RAIN b_r169 (T3 jin r169)",
+      "input": "b_r169",
+      "t3_source": "jin",
+      "t3_row": 169,
+      "t3_command": "4/6/7/8/9+RP",
+      "startup": 0.3,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 14,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:169",
+      "input_slots": [
+        "b"
+      ],
+      "move_class": "strike"
+    },
+    "2_r178": {
+      "name": "PURPLE RAIN 2_r178 (T3 jin r178)",
+      "input": "2_r178",
+      "t3_source": "jin",
+      "t3_row": 178,
+      "t3_command": "RP",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 16,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:178",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike"
+    },
+    "2_r180": {
+      "name": "PURPLE RAIN 2_r180 (T3 jin r180)",
+      "input": "2_r180",
+      "t3_source": "jin",
+      "t3_row": 180,
+      "t3_command": "RP",
+      "startup": 0.283,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 12,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:180",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike"
+    },
+    "2_r183": {
+      "name": "PURPLE RAIN 2_r183 (T3 jin r183)",
+      "input": "2_r183",
+      "t3_source": "jin",
+      "t3_row": 183,
+      "t3_command": "RP",
+      "startup": 0.217,
+      "active": 0.017,
+      "recovery": 0.783,
+      "damage": 11,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:183",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike"
+    },
+    "4_r188": {
+      "name": "PURPLE RAIN 4_r188 (T3 jin r188)",
+      "input": "4_r188",
+      "t3_source": "jin",
+      "t3_row": 188,
+      "t3_command": "RK",
+      "startup": 0.35,
+      "active": 0.05,
+      "recovery": 0.65,
+      "damage": 12,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:188",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "d/b": {
+      "name": "PURPLE RAIN d/b (T3 jin r189)",
+      "input": "d/b",
+      "t3_source": "jin",
+      "t3_row": 189,
+      "t3_command": "1/2/3+RK",
+      "startup": 0.367,
+      "active": 0.033,
+      "recovery": 0.65,
+      "damage": 8,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:189",
+      "input_slots": [
+        "d/b"
+      ],
+      "move_class": "strike"
+    },
+    "2_r190": {
+      "name": "PURPLE RAIN 2_r190 (T3 jin r190)",
+      "input": "2_r190",
+      "t3_source": "jin",
+      "t3_row": 190,
+      "t3_command": "RP",
+      "startup": 0.35,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 9,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:190",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike"
+    },
+    "2_r10_r192": {
+      "name": "PURPLE RAIN 2_r10_r192 (T3 jin r192)",
+      "input": "2_r10_r192",
+      "t3_source": "jin",
+      "t3_row": 192,
+      "t3_command": "RP",
+      "startup": 0.3,
+      "active": 0.033,
+      "recovery": 0.767,
+      "damage": 9,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:192",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 10
+    },
+    "3_r195": {
+      "name": "PURPLE RAIN 3_r195 (T3 jin r195)",
+      "input": "3_r195",
+      "t3_source": "jin",
+      "t3_row": 195,
+      "t3_command": "LK",
+      "startup": 0.317,
+      "active": 0.083,
+      "recovery": 0.633,
+      "damage": 14,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:195",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "3_r197": {
+      "name": "PURPLE RAIN 3_r197 (T3 jin r197)",
+      "input": "3_r197",
+      "t3_source": "jin",
+      "t3_row": 197,
+      "t3_command": "LK",
+      "startup": 0.9,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 12,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:197",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "4_r201": {
+      "name": "PURPLE RAIN 4_r201 (T3 jin r201)",
+      "input": "4_r201",
+      "t3_source": "jin",
+      "t3_row": 201,
+      "t3_command": "RK",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.55,
+      "damage": 12,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:201",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_r202": {
+      "name": "PURPLE RAIN 4_r202 (T3 jin r202)",
+      "input": "4_r202",
+      "t3_source": "jin",
+      "t3_row": 202,
+      "t3_command": "RK",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.55,
+      "damage": 9,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:202",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_r203": {
+      "name": "PURPLE RAIN 4_r203 (T3 jin r203)",
+      "input": "4_r203",
+      "t3_source": "jin",
+      "t3_row": 203,
+      "t3_command": "RK",
+      "startup": 0.6,
+      "active": 0.033,
+      "recovery": 0.6,
+      "damage": 18,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:203",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_r204": {
+      "name": "PURPLE RAIN 4_r204 (T3 jin r204)",
+      "input": "4_r204",
+      "t3_source": "jin",
+      "t3_row": 204,
+      "t3_command": "RK",
+      "startup": 1.0,
+      "active": 0.05,
+      "recovery": 0.75,
+      "damage": 7,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:204",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "1_r208": {
+      "name": "PURPLE RAIN 1_r208 (T3 jin r208)",
+      "input": "1_r208",
+      "t3_source": "jin",
+      "t3_row": 208,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.433,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:208",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "4_r211": {
+      "name": "PURPLE RAIN 4_r211 (T3 jin r211)",
+      "input": "4_r211",
+      "t3_source": "jin",
+      "t3_row": 211,
+      "t3_command": "RK",
+      "startup": 0.367,
+      "active": 0.017,
+      "recovery": 0.8,
+      "damage": 15,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:211",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "1_r213": {
+      "name": "PURPLE RAIN 1_r213 (T3 jin r213)",
+      "input": "1_r213",
+      "t3_source": "jin",
+      "t3_row": 213,
+      "t3_command": "any-button",
+      "startup": 0.367,
+      "active": 0.017,
+      "recovery": 0.8,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:213",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "b+1": {
+      "name": "PURPLE RAIN b+1 (T3 jin r216)",
+      "input": "b+1",
+      "t3_source": "jin",
+      "t3_row": 216,
+      "t3_command": "4+any-button",
+      "startup": 1.05,
+      "active": 0.033,
+      "recovery": 0.883,
+      "damage": 47,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:216",
+      "input_slots": [
+        "b+1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r229": {
+      "name": "PURPLE RAIN 1_r229 (T3 jin r229)",
+      "input": "1_r229",
+      "t3_source": "jin",
+      "t3_row": 229,
+      "t3_command": "LP",
+      "startup": 0.45,
+      "active": 0.033,
+      "recovery": 0.717,
+      "damage": 18,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:229",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r236": {
+      "name": "PURPLE RAIN 1_r236 (T3 jin r236)",
+      "input": "1_r236",
+      "t3_source": "jin",
+      "t3_row": 236,
+      "t3_command": "LP",
+      "startup": 0.767,
+      "active": 0.05,
+      "recovery": 0.883,
+      "damage": 18,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:236",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "2_r249": {
+      "name": "PURPLE RAIN 2_r249 (T3 jin r249)",
+      "input": "2_r249",
+      "t3_source": "jin",
+      "t3_row": 249,
+      "t3_command": "RP",
+      "startup": 0.3,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 18,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:249",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike"
+    },
+    "1+2+3": {
+      "name": "PURPLE RAIN 1+2+3 (T3 jin r255)",
+      "input": "1+2+3",
+      "t3_source": "jin",
+      "t3_row": 255,
+      "t3_command": "any+LP+RP+LK",
+      "startup": 0.767,
+      "active": 0.033,
+      "recovery": 0.667,
+      "damage": 5,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:255",
+      "input_slots": [
+        "1+2+3"
+      ],
+      "move_class": "strike"
+    },
+    "1_r263": {
+      "name": "PURPLE RAIN 1_r263 (T3 jin r263)",
+      "input": "1_r263",
+      "t3_source": "jin",
+      "t3_row": 263,
+      "t3_command": "any-button",
+      "startup": 0.4,
+      "active": 0.067,
+      "recovery": 0.833,
+      "damage": 12,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:263",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "4_r268": {
+      "name": "PURPLE RAIN 4_r268 (T3 jin r268)",
+      "input": "4_r268",
+      "t3_source": "jin",
+      "t3_row": 268,
+      "t3_command": "RK",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.633,
+      "damage": 12,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:268",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "d/f+2_r10": {
+      "name": "PURPLE RAIN d/f+2_r10 (T3 jin r269)",
+      "input": "d/f+2_r10",
+      "t3_source": "jin",
+      "t3_row": 269,
+      "t3_command": "3+RP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.633,
+      "damage": 18,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:269",
+      "input_slots": [
+        "d/f+2"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 10
+    },
+    "4_r271": {
+      "name": "PURPLE RAIN 4_r271 (T3 jin r271)",
+      "input": "4_r271",
+      "t3_source": "jin",
+      "t3_row": 271,
+      "t3_command": "RK",
+      "startup": 0.217,
+      "active": 0.033,
+      "recovery": 0.633,
+      "damage": 9,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:271",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "1_r272": {
+      "name": "PURPLE RAIN 1_r272 (T3 jin r272)",
+      "input": "1_r272",
+      "t3_source": "jin",
+      "t3_row": 272,
+      "t3_command": "any-button",
+      "startup": 0.4,
+      "active": 0.067,
+      "recovery": 0.833,
+      "damage": 12,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:272",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_c36_r291": {
+      "name": "PURPLE RAIN 1_c36_r291 (T3 jin r291)",
+      "input": "1_c36_r291",
+      "t3_source": "jin",
+      "t3_row": 291,
+      "t3_command": "any-button",
+      "startup": 0.367,
+      "active": 0.017,
+      "recovery": 0.667,
+      "damage": 5,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:291",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "1_c36_r292": {
+      "name": "PURPLE RAIN 1_c36_r292 (T3 jin r292)",
+      "input": "1_c36_r292",
+      "t3_source": "jin",
+      "t3_row": 292,
+      "t3_command": "any-button",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 8,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:292",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "1_c36_r295": {
+      "name": "PURPLE RAIN 1_c36_r295 (T3 jin r295)",
+      "input": "1_c36_r295",
+      "t3_source": "jin",
+      "t3_row": 295,
+      "t3_command": "any-button",
+      "startup": 0.233,
+      "active": 0.017,
+      "recovery": 0.667,
+      "damage": 4,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:295",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "1_c36_r296": {
+      "name": "PURPLE RAIN 1_c36_r296 (T3 jin r296)",
+      "input": "1_c36_r296",
+      "t3_source": "jin",
+      "t3_row": 296,
+      "t3_command": "any-button",
+      "startup": 0.183,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 6,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:296",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "1_c5_r365": {
+      "name": "PURPLE RAIN 1_c5_r365 (T3 jin r365)",
+      "input": "1_c5_r365",
+      "t3_source": "jin",
+      "t3_row": 365,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.417,
+      "damage": 24,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:365",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 5
+    },
+    "1_c3_r367": {
+      "name": "PURPLE RAIN 1_c3_r367 (T3 jin r367)",
+      "input": "1_c3_r367",
+      "t3_source": "jin",
+      "t3_row": 367,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 3.317,
+      "damage": 35,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:367",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 3
+    },
+    "1_r371": {
+      "name": "PURPLE RAIN 1_r371 (T3 jin r371)",
+      "input": "1_r371",
+      "t3_source": "jin",
+      "t3_row": 371,
+      "t3_command": "any-button",
+      "startup": 0.917,
+      "active": 0.017,
+      "recovery": 0.0,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:371",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "f+2+4_r14": {
+      "name": "PURPLE RAIN f+2+4_r14 (T3 jin r372)",
+      "input": "f+2+4_r14",
+      "t3_source": "jin",
+      "t3_row": 372,
+      "t3_command": "6+RP+RK",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.283,
+      "damage": 8,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:372",
+      "input_slots": [
+        "f+2+4"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 14
+    },
+    "f+2+4": {
+      "name": "PURPLE RAIN f+2+4 (T3 jin r373)",
+      "input": "f+2+4",
+      "t3_source": "jin",
+      "t3_row": 373,
+      "t3_command": "6+RP+RK",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.283,
+      "damage": 8,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:373",
+      "input_slots": [
+        "f+2+4"
+      ],
+      "move_class": "strike"
+    },
+    "1_c2_r376": {
+      "name": "PURPLE RAIN 1_c2_r376 (T3 jin r376)",
+      "input": "1_c2_r376",
+      "t3_source": "jin",
+      "t3_row": 376,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.817,
+      "damage": 19,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:376",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 2
+    },
+    "1_c2_r377": {
+      "name": "PURPLE RAIN 1_c2_r377 (T3 jin r377)",
+      "input": "1_c2_r377",
+      "t3_source": "jin",
+      "t3_row": 377,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.55,
+      "damage": 21,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:377",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 2
+    },
+    "1_c2_r381": {
+      "name": "PURPLE RAIN 1_c2_r381 (T3 jin r381)",
+      "input": "1_c2_r381",
+      "t3_source": "jin",
+      "t3_row": 381,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.767,
+      "damage": 22,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:381",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 2
+    },
+    "1_c75_r384": {
+      "name": "PURPLE RAIN 1_c75_r384 (T3 jin r384)",
+      "input": "1_c75_r384",
+      "t3_source": "jin",
+      "t3_row": 384,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.333,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:384",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 10
+    },
+    "1_c75_r385": {
+      "name": "PURPLE RAIN 1_c75_r385 (T3 jin r385)",
+      "input": "1_c75_r385",
+      "t3_source": "jin",
+      "t3_row": 385,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.167,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:385",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 10
+    },
+    "1_c75_r387": {
+      "name": "PURPLE RAIN 1_c75_r387 (T3 jin r387)",
+      "input": "1_c75_r387",
+      "t3_source": "jin",
+      "t3_row": 387,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.917,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:387",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 10
+    },
+    "1_c75_r389": {
+      "name": "PURPLE RAIN 1_c75_r389 (T3 jin r389)",
+      "input": "1_c75_r389",
+      "t3_source": "jin",
+      "t3_row": 389,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.767,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:389",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 10
+    },
+    "1_c73": {
+      "name": "PURPLE RAIN 1_c73 (T3 jin r389)",
+      "input": "1_c73",
+      "t3_source": "jin",
+      "t3_row": 389,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.767,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:389",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "special",
+      "t3_condition": 73,
+      "t3_restriction": 10
+    },
+    "1_c74": {
+      "name": "PURPLE RAIN 1_c74 (T3 jin r389)",
+      "input": "1_c74",
+      "t3_source": "jin",
+      "t3_row": 389,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.767,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:389",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "special",
+      "t3_condition": 74,
+      "t3_restriction": 10
+    },
+    "1_c75_r391": {
+      "name": "PURPLE RAIN 1_c75_r391 (T3 jin r391)",
+      "input": "1_c75_r391",
+      "t3_source": "jin",
+      "t3_row": 391,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.717,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:391",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 10
+    },
+    "1_c75_r393": {
+      "name": "PURPLE RAIN 1_c75_r393 (T3 jin r393)",
+      "input": "1_c75_r393",
+      "t3_source": "jin",
+      "t3_row": 393,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 3.567,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:393",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 10
+    },
+    "1_c75_r395": {
+      "name": "PURPLE RAIN 1_c75_r395 (T3 jin r395)",
+      "input": "1_c75_r395",
+      "t3_source": "jin",
+      "t3_row": 395,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.167,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:395",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 10
+    },
+    "1_c75_r397": {
+      "name": "PURPLE RAIN 1_c75_r397 (T3 jin r397)",
+      "input": "1_c75_r397",
+      "t3_source": "jin",
+      "t3_row": 397,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.217,
+      "damage": 24,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:397",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 10
+    },
+    "1_c74_r399": {
+      "name": "PURPLE RAIN 1_c74_r399 (T3 jin r399)",
+      "input": "1_c74_r399",
+      "t3_source": "jin",
+      "t3_row": 399,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.0,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:399",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 74,
+      "t3_restriction": 10
+    },
+    "1_c75_r401": {
+      "name": "PURPLE RAIN 1_c75_r401 (T3 jin r401)",
+      "input": "1_c75_r401",
+      "t3_source": "jin",
+      "t3_row": 401,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.667,
+      "damage": 6,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:401",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 10
+    },
+    "1+2_t8": {
+      "name": "Pirouette Punch",
+      "input": "1+2",
+      "t8_source": "lee",
+      "t8_id": "Lee-1+2",
+      "t8_damage": "20",
+      "startup": 0.35,
+      "active": 0.033,
+      "recovery": 0.467,
+      "damage": 20,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:lee:lee-1+2",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -1",
+      "t8_input": "1+2"
+    },
+    "1,2": {
+      "name": "Left Right Combo",
+      "input": "1,2",
+      "t8_source": "lee",
+      "t8_id": "Lee-1,2",
+      "t8_damage": ",9",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.367,
+      "damage": 14,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 7,
+      "anim_ref": "t8:lee:lee-1,2",
+      "input_slots": [
+        "1",
+        "1,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          5,
+          9
+        ],
+        "total": 14
+      },
+      "note": "High; on block -3"
+    },
+    "1,2,2": {
+      "name": "Left Right Combo (2)",
+      "input": "1,2,2",
+      "t8_source": "lee",
+      "t8_id": "Lee-1,2,2",
+      "t8_damage": ",14",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 28,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 14,
+      "anim_ref": "t8:lee:lee-1,2,2",
+      "input_slots": [
+        "1",
+        "1,2",
+        "1,2,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          5,
+          9,
+          14
+        ],
+        "total": 28
+      },
+      "note": "Mid; on block -13"
+    },
+    "1,2,2,3": {
+      "name": "Revolution Zwei",
+      "input": "1,2,2,3",
+      "t8_source": "lee",
+      "t8_id": "Lee-1,2,2,3",
+      "t8_damage": ",23",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 51,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-1,2,2,3",
+      "input_slots": [
+        "1",
+        "1,2",
+        "1,2,2",
+        "1,2,2,3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          5,
+          9,
+          14,
+          23
+        ],
+        "total": 51
+      },
+      "note": "High; on block -3; knockdown on hit"
+    },
+    "1+2+3+4": {
+      "name": "Ki Charge",
+      "input": "1+2+3+4",
+      "t8_source": "lee",
+      "t8_id": "Lee-1+2+3+4",
+      "t8_damage": null,
+      "startup": 0.167,
+      "active": 0.3,
+      "recovery": 0.317,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "anim_ref": "t8:lee:lee-1+2+3+4",
+      "input_slots": [
+        "1+2+3+4"
+      ],
+      "move_class": "special"
+    },
+    "1,2,4": {
+      "name": "Left Right Mid Kick",
+      "input": "1,2,4",
+      "t8_source": "lee",
+      "t8_id": "Lee-1,2,4",
+      "t8_damage": ",10",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 24,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:lee:lee-1,2,4",
+      "input_slots": [
+        "1",
+        "1,2",
+        "1,2,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          5,
+          9,
+          10
+        ],
+        "total": 24
+      },
+      "note": "Mid; on block -12"
+    },
+    "1,2,&amp;#58;4": {
+      "name": "Left Right Mid Kick",
+      "input": "1,2,&amp;#58;4",
+      "t8_source": "lee",
+      "t8_id": "Lee-1,2:4",
+      "t8_damage": ",12",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 26,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 13,
+      "anim_ref": "t8:lee:lee-1,2:4",
+      "input_slots": [
+        "1",
+        "1,2",
+        "1,2,&amp;#58;4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          5,
+          9,
+          12
+        ],
+        "total": 26
+      },
+      "note": "Mid; on block -12"
+    },
+    "1,3": {
+      "name": "Jab (3)",
+      "input": "1,3",
+      "t8_source": "lee",
+      "t8_id": "Lee-1,3",
+      "t8_damage": ",5",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 10,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 5,
+      "anim_ref": "t8:lee:lee-1,3",
+      "input_slots": [
+        "1",
+        "1,3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          5,
+          5
+        ],
+        "total": 10
+      },
+      "note": "High; on block -11"
+    },
+    "1,3,&amp;#58;3": {
+      "name": "Jab (&amp;#58;3)",
+      "input": "1,3,&amp;#58;3",
+      "t8_source": "lee",
+      "t8_id": "Lee-1,3:3",
+      "t8_damage": ",4",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 14,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 7,
+      "anim_ref": "t8:lee:lee-1,3:3",
+      "input_slots": [
+        "1",
+        "1,3",
+        "1,3,&amp;#58;3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          5,
+          5,
+          4
+        ],
+        "total": 14
+      },
+      "note": "Mid; on block -11"
+    },
+    "1,3,&amp;#58;3,&amp;#58;3": {
+      "name": "[[Acid Rain]]",
+      "input": "1,3,&amp;#58;3,&amp;#58;3",
+      "t8_source": "lee",
+      "t8_id": "Lee-1,3:3:3",
+      "t8_damage": ",14",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.733,
+      "damage": 28,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 14,
+      "anim_ref": "t8:lee:lee-1,3:3:3",
+      "input_slots": [
+        "1",
+        "1,3",
+        "1,3,&amp;#58;3",
+        "1,3,&amp;#58;3,&amp;#58;3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          5,
+          5,
+          4,
+          14
+        ],
+        "total": 28
+      },
+      "note": "High; on block -17; knockdown on hit"
+    },
+    "2,1": {
+      "name": "Right Cross (1)",
+      "input": "2,1",
+      "t8_source": "lee",
+      "t8_id": "Lee-2,1",
+      "t8_damage": ",8",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.367,
+      "damage": 18,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 9,
+      "anim_ref": "t8:lee:lee-2,1",
+      "input_slots": [
+        "2",
+        "2,1"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          10,
+          8
+        ],
+        "total": 18
+      },
+      "note": "High; on block -5"
+    },
+    "2,1,1": {
+      "name": "Combination Drei",
+      "input": "2,1,1",
+      "t8_source": "lee",
+      "t8_id": "Lee-2,1,1",
+      "t8_damage": ",18",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 36,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-2,1,1",
+      "input_slots": [
+        "2",
+        "2,1",
+        "2,1,1"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          10,
+          8,
+          18
+        ],
+        "total": 36
+      },
+      "note": "Mid; on block -12"
+    },
+    "2,1,3": {
+      "name": "Combination Fünf",
+      "input": "2,1,3",
+      "t8_source": "lee",
+      "t8_id": "Lee-2,1,3",
+      "t8_damage": ",20",
+      "startup": 0.4,
+      "active": 0.033,
+      "recovery": 0.467,
+      "damage": 38,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-2,1,3",
+      "input_slots": [
+        "2",
+        "2,1",
+        "2,1,3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          10,
+          8,
+          20
+        ],
+        "total": 38
+      },
+      "note": "High; on block -4; knockdown on hit"
+    },
+    "2,1,4": {
+      "name": "Combination Vier",
+      "input": "2,1,4",
+      "t8_source": "lee",
+      "t8_id": "Lee-2,1,4",
+      "t8_damage": ",18",
+      "startup": 0.417,
+      "active": 0.033,
+      "recovery": 0.55,
+      "damage": 36,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-2,1,4",
+      "input_slots": [
+        "2",
+        "2,1",
+        "2,1,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          10,
+          8,
+          18
+        ],
+        "total": 36
+      },
+      "note": "Low; on block -15"
+    },
+    "2,2": {
+      "name": "Right Cross (2)",
+      "input": "2,2",
+      "t8_source": "lee",
+      "t8_id": "Lee-2,2",
+      "t8_damage": ",14",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 24,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:lee:lee-2,2",
+      "input_slots": [
+        "2",
+        "2,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          10,
+          14
+        ],
+        "total": 24
+      },
+      "note": "Mid; on block -13"
+    },
+    "2,2,3": {
+      "name": "Revolution Zwei",
+      "input": "2,2,3",
+      "t8_source": "lee",
+      "t8_id": "Lee-2,2,3",
+      "t8_damage": ",23",
+      "startup": 0.35,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 47,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-2,2,3",
+      "input_slots": [
+        "2",
+        "2,2",
+        "2,2,3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          10,
+          14,
+          23
+        ],
+        "total": 47
+      },
+      "note": "High; on block -3; knockdown on hit"
+    },
+    "2+3": {
+      "name": "Heat Burst",
+      "input": "2+3",
+      "t8_source": "lee",
+      "t8_id": "Lee-2+3",
+      "t8_damage": "[12;12]",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 24,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:lee:lee-2+3",
+      "input_slots": [
+        "2+3"
+      ],
+      "move_class": "strike",
+      "multi_hit": {
+        "hits": [
+          12,
+          12
+        ],
+        "total": 24
+      },
+      "note": "Mid; on block +1"
+    },
+    "2+3+4": {
+      "name": "Taunt",
+      "input": "2+3+4",
+      "t8_source": "lee",
+      "t8_id": "Lee-2+3+4",
+      "t8_damage": null,
+      "startup": 0.167,
+      "active": 0.3,
+      "recovery": 0.317,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "anim_ref": "t8:lee:lee-2+3+4",
+      "input_slots": [
+        "2+3+4"
+      ],
+      "move_class": "special"
+    },
+    "3,3": {
+      "name": "Mist Wolf Combination",
+      "input": "3,3",
+      "t8_source": "lee",
+      "t8_id": "Lee-3,3",
+      "t8_damage": ",18",
+      "startup": 0.283,
+      "active": 0.033,
+      "recovery": 0.467,
+      "damage": 34,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-3,3",
+      "input_slots": [
+        "3",
+        "3,3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          16,
+          18
+        ],
+        "total": 34
+      },
+      "note": "High; on block -10"
+    },
+    "3~3": {
+      "name": "Mist Trap",
+      "input": "3~3",
+      "t8_source": "lee",
+      "t8_id": "Lee-3~3",
+      "t8_damage": "18",
+      "startup": 0.283,
+      "active": 0.033,
+      "recovery": 0.467,
+      "damage": 18,
+      "limb": "both",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 9,
+      "anim_ref": "t8:lee:lee-3~3",
+      "input_slots": [
+        "3~3"
+      ],
+      "move_class": "strike",
+      "note": "High; on block -9"
+    },
+    "3~3,&amp;#58;4": {
+      "name": "Mist Trap Throw",
+      "input": "3~3,&amp;#58;4",
+      "t8_source": "lee",
+      "t8_id": "Lee-3~3:4",
+      "t8_damage": ",15,5",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 38,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-3~3:4",
+      "input_slots": [
+        "3~3",
+        "3~3,&amp;#58;4"
+      ],
+      "move_class": "throw",
+      "multi_hit": {
+        "hits": [
+          18,
+          15,
+          5
+        ],
+        "total": 38
+      },
+      "note": "Throw",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "1"
+    },
+    "3+4": {
+      "name": "Hitman",
+      "input": "3+4",
+      "t8_source": "lee",
+      "t8_id": "Lee-3+4",
+      "t8_damage": null,
+      "startup": 0.167,
+      "active": 0.3,
+      "recovery": 0.167,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "anim_ref": "t8:lee:lee-3+4",
+      "input_slots": [
+        "3+4"
+      ],
+      "move_class": "special"
+    },
+    "4,3": {
+      "name": "Head Kick (3)",
+      "input": "4,3",
+      "t8_source": "lee",
+      "t8_id": "Lee-4,3",
+      "t8_damage": ",14 (9)",
+      "startup": 0.3,
+      "active": 0.033,
+      "recovery": 0.55,
+      "damage": 14,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 7,
+      "anim_ref": "t8:lee:lee-4,3",
+      "input_slots": [
+        "4",
+        "4,3"
+      ],
+      "move_class": "string",
+      "note": "High; on block -14"
+    },
+    "4,3,3": {
+      "name": "Spinning Hammer Kick",
+      "input": "4,3,3",
+      "t8_source": "lee",
+      "t8_id": "Lee-4,3,3",
+      "t8_damage": ",20 (10)",
+      "startup": 0.317,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 14,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 7,
+      "anim_ref": "t8:lee:lee-4,3,3",
+      "input_slots": [
+        "4",
+        "4,3",
+        "4,3,3"
+      ],
+      "move_class": "string",
+      "note": "Mid; on block -13"
+    },
+    "4,3,4": {
+      "name": "Spin Kick Somersault Combo",
+      "input": "4,3,4",
+      "t8_source": "lee",
+      "t8_id": "Lee-4,3,4",
+      "t8_damage": ",25 (12)",
+      "startup": 0.5,
+      "active": 0.033,
+      "recovery": 0.483,
+      "damage": 14,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 7,
+      "anim_ref": "t8:lee:lee-4,3,4",
+      "input_slots": [
+        "4",
+        "4,3",
+        "4,3,4"
+      ],
+      "move_class": "string",
+      "note": "Mid; on block -9; knockdown on hit"
+    },
+    "4,4": {
+      "name": "Head Kick (4)",
+      "input": "4,4",
+      "t8_source": "lee",
+      "t8_id": "Lee-4,4",
+      "t8_damage": ",5 (3)",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.533,
+      "damage": 14,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 7,
+      "anim_ref": "t8:lee:lee-4,4",
+      "input_slots": [
+        "4",
+        "4,4"
+      ],
+      "move_class": "string",
+      "note": "High; on block -13"
+    },
+    "4,4,4": {
+      "name": "Machinegun Kicks",
+      "input": "4,4,4",
+      "t8_source": "lee",
+      "t8_id": "Lee-4,4,4",
+      "t8_damage": ",5 (2)",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.533,
+      "damage": 14,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 7,
+      "anim_ref": "t8:lee:lee-4,4,4",
+      "input_slots": [
+        "4",
+        "4,4",
+        "4,4,4"
+      ],
+      "move_class": "string",
+      "note": "High; on block -13"
+    },
+    "4,4,&amp;#58;4": {
+      "name": "Machinegun Kicks Cardinal",
+      "input": "4,4,&amp;#58;4",
+      "t8_source": "lee",
+      "t8_id": "Lee-4,4:4",
+      "t8_damage": ",12 (6)",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 14,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 7,
+      "anim_ref": "t8:lee:lee-4,4:4",
+      "input_slots": [
+        "4",
+        "4,4",
+        "4,4,&amp;#58;4"
+      ],
+      "move_class": "string",
+      "note": "High; on block -9; knockdown on hit"
+    },
+    "4,u+3": {
+      "name": "Lee Somersault",
+      "input": "4,u+3",
+      "t8_source": "lee",
+      "t8_id": "Lee-4,u+3",
+      "t8_damage": ",23",
+      "startup": 0.55,
+      "active": 0.033,
+      "recovery": 0.3,
+      "damage": 37,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-4,u+3",
+      "input_slots": [
+        "4",
+        "4,u+3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          14,
+          23
+        ],
+        "total": 37
+      },
+      "note": "Mid; on block -1; knockdown on hit"
+    },
+    "b+1_t8": {
+      "name": "Move b+1 (b+1)",
+      "input": "b+1",
+      "t8_source": "lee",
+      "t8_id": "Lee-b+1",
+      "t8_damage": "9",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "anim_ref": "t8:lee:lee-b+1",
+      "input_slots": [
+        "b+1"
+      ],
+      "move_class": "strike",
+      "note": "High; on block -0",
+      "t8_input": "b+1"
+    },
+    "b+1,1": {
+      "name": "Move 1 (1)",
+      "input": "b+1,1",
+      "t8_source": "lee",
+      "t8_id": "Lee-b+1,1",
+      "t8_damage": ",6",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t8:lee:lee-b+1,1",
+      "input_slots": [
+        "b+1",
+        "b+1,1"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          9,
+          6
+        ],
+        "total": 15
+      },
+      "note": "Mid; on block -5"
+    },
+    "b+1&amp;#58;1": {
+      "name": "Move b+1&amp;#58;1 (b+1&amp;#58;1)",
+      "input": "b+1&amp;#58;1",
+      "t8_source": "lee",
+      "t8_id": "Lee-b+1:1",
+      "t8_damage": "12,6",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 18,
+      "limb": "both",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 9,
+      "anim_ref": "t8:lee:lee-b+1:1",
+      "input_slots": [
+        "b+1&amp;#58;1"
+      ],
+      "move_class": "strike",
+      "multi_hit": {
+        "hits": [
+          12,
+          6
+        ],
+        "total": 18
+      },
+      "note": "High, Mid; on block -5"
+    },
+    "b+1,1,2": {
+      "name": "Triple Fang",
+      "input": "b+1,1,2",
+      "t8_source": "lee",
+      "t8_id": "Lee-b+1,1,2",
+      "t8_damage": ",18",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 33,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-b+1,1,2",
+      "input_slots": [
+        "b+1",
+        "b+1,1",
+        "b+1,1,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          9,
+          6,
+          18
+        ],
+        "total": 33
+      },
+      "note": "High; on block -11"
+    },
+    "b+1&amp;#58;1+2": {
+      "name": "Double Fang Cardinal",
+      "input": "b+1&amp;#58;1+2",
+      "t8_source": "lee",
+      "t8_id": "Lee-b+1:1+2",
+      "t8_damage": "12,25",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 37,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-b+1:1+2",
+      "input_slots": [
+        "b+1&amp;#58;1+2"
+      ],
+      "move_class": "strike",
+      "multi_hit": {
+        "hits": [
+          12,
+          25
+        ],
+        "total": 37
+      },
+      "note": "High, High; on block -6"
+    },
+    "b+1&amp;#58;1,2": {
+      "name": "Triple Fang Cardinal",
+      "input": "b+1&amp;#58;1,2",
+      "t8_source": "lee",
+      "t8_id": "Lee-b+1:1,2",
+      "t8_damage": ",23",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 41,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-b+1:1,2",
+      "input_slots": [
+        "b+1&amp;#58;1",
+        "b+1&amp;#58;1,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          12,
+          6,
+          23
+        ],
+        "total": 41
+      },
+      "note": "High; on block -6"
+    },
+    "b+1+3": {
+      "name": "Mist Illusion",
+      "input": "b+1+3",
+      "t8_source": "lee",
+      "t8_id": "Lee-b+1+3",
+      "t8_damage": null,
+      "startup": 0.167,
+      "active": 0.3,
+      "recovery": 0.317,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "anim_ref": "t8:lee:lee-b+1+3",
+      "input_slots": [
+        "b+1+3"
+      ],
+      "move_class": "special"
+    },
+    "b+1+3,4": {
+      "name": "Illusion Edge",
+      "input": "b+1+3,4",
+      "t8_source": "lee",
+      "t8_id": "Lee-b+1+3,4",
+      "t8_damage": "35",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 35,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-b+1+3,4",
+      "input_slots": [
+        "b+1+3",
+        "b+1+3,4"
+      ],
+      "move_class": "string",
+      "note": "Mid; knockdown on hit"
+    },
+    "b+2": {
+      "name": "Rear Cross Punch",
+      "input": "b+2",
+      "t8_source": "lee",
+      "t8_id": "Lee-b+2",
+      "t8_damage": "9",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 9,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "anim_ref": "t8:lee:lee-b+2",
+      "input_slots": [
+        "b+2"
+      ],
+      "move_class": "strike",
+      "note": "High; on block -5"
+    },
+    "b+2,4": {
+      "name": "Rear Cross Punch (4)",
+      "input": "b+2,4",
+      "t8_source": "lee",
+      "t8_id": "Lee-b+2,4",
+      "t8_damage": ",16",
+      "startup": 0.45,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 25,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:lee:lee-b+2,4",
+      "input_slots": [
+        "b+2",
+        "b+2,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          9,
+          16
+        ],
+        "total": 25
+      },
+      "note": "High; on block -9"
+    },
+    "b+2,4,3": {
+      "name": "Super High Combination",
+      "input": "b+2,4,3",
+      "t8_source": "lee",
+      "t8_id": "Lee-b+2,4,3",
+      "t8_damage": ",21",
+      "startup": 0.45,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 46,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-b+2,4,3",
+      "input_slots": [
+        "b+2",
+        "b+2,4",
+        "b+2,4,3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          9,
+          16,
+          21
+        ],
+        "total": 46
+      },
+      "note": "High; on block -0; knockdown on hit"
+    },
+    "b+3": {
+      "name": "Move b+3 (b+3)",
+      "input": "b+3",
+      "t8_source": "lee",
+      "t8_id": "Lee-b+3",
+      "t8_damage": "9",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 9,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "anim_ref": "t8:lee:lee-b+3",
+      "input_slots": [
+        "b+3"
+      ],
+      "move_class": "strike",
+      "note": "Low; on block -14"
+    },
+    "b+3,3": {
+      "name": "Stinging Rush",
+      "input": "b+3,3",
+      "t8_source": "lee",
+      "t8_id": "Lee-b+3,3",
+      "t8_damage": ",12",
+      "startup": 0.317,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 21,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:lee:lee-b+3,3",
+      "input_slots": [
+        "b+3",
+        "b+3,3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          9,
+          12
+        ],
+        "total": 21
+      },
+      "note": "High; on block -12"
+    },
+    "b+3+4": {
+      "name": "Silver Revolution",
+      "input": "b+3+4",
+      "t8_source": "lee",
+      "t8_id": "Lee-b+3+4",
+      "t8_damage": "23",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 23,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:lee:lee-b+3+4",
+      "input_slots": [
+        "b+3+4"
+      ],
+      "move_class": "strike",
+      "note": "High; on block -9; knockdown on hit"
+    },
+    "b+4": {
+      "name": "Silver Heel",
+      "input": "b+4",
+      "t8_source": "lee",
+      "t8_id": "Lee-b+4",
+      "t8_damage": "20",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 20,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:lee:lee-b+4",
+      "input_slots": [
+        "b+4"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -3"
+    },
+    "Back Throw": {
+      "name": "Face Crusher",
+      "input": "Back Throw",
+      "t8_source": "lee",
+      "t8_id": "Lee-Back Throw",
+      "t8_damage": "50",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 50,
+      "limb": "both",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-back throw",
+      "input_slots": [
+        "Back Throw"
+      ],
+      "move_class": "throw",
+      "note": "Throw; on block !",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "1+2"
+    },
+    "(back to wall).b,b,UB": {
+      "name": "Wall Jump Backflip",
+      "input": "(back to wall).b,b,UB",
+      "t8_source": "lee",
+      "t8_id": "Lee-(back to wall).b,b,UB",
+      "t8_damage": "21",
+      "startup": 0.583,
+      "active": 0.033,
+      "recovery": 0.283,
+      "damage": 21,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:lee:lee-(back to wall).b,b,ub",
+      "input_slots": [
+        "(back to wall).b,b,UB"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block +1"
+    },
+    "b,B+4": {
+      "name": "Lee Cutter",
+      "input": "b,B+4",
+      "t8_source": "lee",
+      "t8_id": "Lee-b,B+4",
+      "t8_damage": "23",
+      "startup": 0.317,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 23,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:lee:lee-b,b+4",
+      "input_slots": [
+        "b,B+4"
+      ],
+      "move_class": "strike",
+      "note": "High; on block +2; knockdown on hit"
+    },
+    "d+2": {
+      "name": "Gut Polisher",
+      "input": "d+2",
+      "t8_source": "lee",
+      "t8_id": "Lee-d+2",
+      "t8_damage": "17",
+      "startup": 0.3,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 17,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t8:lee:lee-d+2",
+      "input_slots": [
+        "d+2"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -6"
+    },
+    "d+3": {
+      "name": "Silver Low",
+      "input": "d+3",
+      "t8_source": "lee",
+      "t8_id": "Lee-d+3",
+      "t8_damage": "17",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 17,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t8:lee:lee-d+3",
+      "input_slots": [
+        "d+3"
+      ],
+      "move_class": "strike",
+      "note": "Low; on block -15"
+    },
+    "d+4": {
+      "name": "Shin",
+      "input": "d+4",
+      "t8_source": "lee",
+      "t8_id": "Lee-d+4",
+      "t8_damage": "7",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.533,
+      "damage": 7,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "anim_ref": "t8:lee:lee-d+4",
+      "input_slots": [
+        "d+4"
+      ],
+      "move_class": "strike",
+      "note": "Low; on block -13"
+    },
+    "d+4,4": {
+      "name": "Shin (4)",
+      "input": "d+4,4",
+      "t8_source": "lee",
+      "t8_id": "Lee-d+4,4",
+      "t8_damage": ",8",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 15,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t8:lee:lee-d+4,4",
+      "input_slots": [
+        "d+4",
+        "d+4,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          7,
+          8
+        ],
+        "total": 15
+      },
+      "note": "Low; on block -15"
+    },
+    "d+4,4,4": {
+      "name": "Shin (4)",
+      "input": "d+4,4,4",
+      "t8_source": "lee",
+      "t8_id": "Lee-d+4,4,4",
+      "t8_damage": ",5",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 20,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:lee:lee-d+4,4,4",
+      "input_slots": [
+        "d+4",
+        "d+4,4",
+        "d+4,4,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          7,
+          8,
+          5
+        ],
+        "total": 20
+      },
+      "note": "Low; on block -15"
+    },
+    "d+4,4,4,4": {
+      "name": "Laser Edge Kick Combo",
+      "input": "d+4,4,4,4",
+      "t8_source": "lee",
+      "t8_id": "Lee-d+4,4,4,4",
+      "t8_damage": ",21",
+      "startup": 0.4,
+      "active": 0.033,
+      "recovery": 0.633,
+      "damage": 41,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-d+4,4,4,4",
+      "input_slots": [
+        "d+4",
+        "d+4,4",
+        "d+4,4,4",
+        "d+4,4,4,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          7,
+          8,
+          5,
+          21
+        ],
+        "total": 41
+      },
+      "note": "Mid; on block -20; knockdown on hit"
+    },
+    "d+4,n,4": {
+      "name": "Head Kick",
+      "input": "d+4,n,4",
+      "t8_source": "lee",
+      "t8_id": "Lee-d+4,n,4",
+      "t8_damage": ",16",
+      "startup": 0.383,
+      "active": 0.033,
+      "recovery": 0.467,
+      "damage": 23,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:lee:lee-d+4,n,4",
+      "input_slots": [
+        "d+4",
+        "d+4,n,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          7,
+          16
+        ],
+        "total": 23
+      },
+      "note": "High; on block -9"
+    },
+    "db+1": {
+      "name": "Crouch Jab",
+      "input": "db+1",
+      "t8_source": "lee",
+      "t8_id": "Lee-db+1",
+      "t8_damage": "5",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.4,
+      "damage": 5,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 2,
+      "anim_ref": "t8:lee:lee-db+1",
+      "input_slots": [
+        "db+1"
+      ],
+      "move_class": "strike",
+      "note": "Special low; on block -5"
+    },
+    "db+2": {
+      "name": "Move db+2 (db+2)",
+      "input": "db+2",
+      "t8_source": "lee",
+      "t8_id": "Lee-db+2",
+      "t8_damage": "8",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 8,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "anim_ref": "t8:lee:lee-db+2",
+      "input_slots": [
+        "db+2"
+      ],
+      "move_class": "strike",
+      "note": "Special low; on block -4"
+    },
+    "db+3": {
+      "name": "Bump Kick",
+      "input": "db+3",
+      "t8_source": "lee",
+      "t8_id": "Lee-db+3",
+      "t8_damage": "12",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 12,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 6,
+      "anim_ref": "t8:lee:lee-db+3",
+      "input_slots": [
+        "db+3"
+      ],
+      "move_class": "strike",
+      "note": "Low; on block -12"
+    },
+    "db+3+4": {
+      "name": "Grass Snake",
+      "input": "db+3+4",
+      "t8_source": "lee",
+      "t8_id": "Lee-db+3+4",
+      "t8_damage": "19",
+      "startup": 0.35,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 19,
+      "limb": "both",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 10,
+      "anim_ref": "t8:lee:lee-db+3+4",
+      "input_slots": [
+        "db+3+4"
+      ],
+      "move_class": "strike",
+      "note": "Low; on block -13"
+    },
+    "db+4": {
+      "name": "Move db+4 (db+4)",
+      "input": "db+4",
+      "t8_source": "lee",
+      "t8_id": "Lee-db+4",
+      "t8_damage": "6",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 6,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 3,
+      "anim_ref": "t8:lee:lee-db+4",
+      "input_slots": [
+        "db+4"
+      ],
+      "move_class": "strike",
+      "note": "Low; on block -15"
+    },
+    "df+1": {
+      "name": "Quick Upper",
+      "input": "df+1",
+      "t8_source": "lee",
+      "t8_id": "Lee-df+1",
+      "t8_damage": "10",
+      "startup": 0.217,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 10,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 5,
+      "anim_ref": "t8:lee:lee-df+1",
+      "input_slots": [
+        "df+1"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -1"
+    },
+    "df+1,2": {
+      "name": "2nd Hit",
+      "input": "df+1,2",
+      "t8_source": "lee",
+      "t8_id": "Lee-df+1,2",
+      "t8_damage": ",5",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.483,
+      "damage": 15,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t8:lee:lee-df+1,2",
+      "input_slots": [
+        "df+1",
+        "df+1,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          10,
+          5
+        ],
+        "total": 15
+      },
+      "note": "High; on block -10"
+    },
+    "df+1,2,2": {
+      "name": "3rd Hit",
+      "input": "df+1,2,2",
+      "t8_source": "lee",
+      "t8_id": "Lee-df+1,2,2",
+      "t8_damage": ",6",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 21,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:lee:lee-df+1,2,2",
+      "input_slots": [
+        "df+1",
+        "df+1,2",
+        "df+1,2,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          10,
+          5,
+          6
+        ],
+        "total": 21
+      },
+      "note": "High; on block -18"
+    },
+    "df+1,2,2,1": {
+      "name": "4th Hit",
+      "input": "df+1,2,2,1",
+      "t8_source": "lee",
+      "t8_id": "Lee-df+1,2,2,1",
+      "t8_damage": ",5",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.483,
+      "damage": 26,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 13,
+      "anim_ref": "t8:lee:lee-df+1,2,2,1",
+      "input_slots": [
+        "df+1",
+        "df+1,2",
+        "df+1,2,2",
+        "df+1,2,2,1"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          10,
+          5,
+          6,
+          5
+        ],
+        "total": 26
+      },
+      "note": "High; on block -10"
+    },
+    "df+1,2,2,1,3": {
+      "name": "5th Hit",
+      "input": "df+1,2,2,1,3",
+      "t8_source": "lee",
+      "t8_id": "Lee-df+1,2,2,1,3",
+      "t8_damage": ",7",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.733,
+      "damage": 33,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-df+1,2,2,1,3",
+      "input_slots": [
+        "df+1",
+        "df+1,2",
+        "df+1,2,2",
+        "df+1,2,2,1",
+        "df+1,2,2,1,3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          10,
+          5,
+          6,
+          5,
+          7
+        ],
+        "total": 33
+      },
+      "note": "High; on block -26~-25"
+    },
+    "df+1,2,2,1,3,3": {
+      "name": "6th Hit",
+      "input": "df+1,2,2,1,3,3",
+      "t8_source": "lee",
+      "t8_id": "Lee-df+1,2,2,1,3,3",
+      "t8_damage": ",6",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 39,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-df+1,2,2,1,3,3",
+      "input_slots": [
+        "df+1",
+        "df+1,2",
+        "df+1,2,2",
+        "df+1,2,2,1",
+        "df+1,2,2,1,3",
+        "df+1,2,2,1,3,3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          10,
+          5,
+          6,
+          5,
+          7,
+          6
+        ],
+        "total": 39
+      },
+      "note": "Low; on block -25"
+    },
+    "df+2": {
+      "name": "Silver Uppercut",
+      "input": "df+2",
+      "t8_source": "lee",
+      "t8_id": "Lee-df+2",
+      "t8_damage": "12",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.417,
+      "damage": 12,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 6,
+      "anim_ref": "t8:lee:lee-df+2",
+      "input_slots": [
+        "df+2"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -7; knockdown on hit"
+    },
+    "df+3": {
+      "name": "Lee Left Middle Kick",
+      "input": "df+3",
+      "t8_source": "lee",
+      "t8_id": "Lee-df+3",
+      "t8_damage": "13",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 13,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 6,
+      "anim_ref": "t8:lee:lee-df+3",
+      "input_slots": [
+        "df+3"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -8"
+    },
+    "df+3,2": {
+      "name": "Lee Left Middle Kick (2)",
+      "input": "df+3,2",
+      "t8_source": "lee",
+      "t8_id": "Lee-df+3,2",
+      "t8_damage": ",13",
+      "startup": 0.317,
+      "active": 0.033,
+      "recovery": 0.467,
+      "damage": 26,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 13,
+      "anim_ref": "t8:lee:lee-df+3,2",
+      "input_slots": [
+        "df+3",
+        "df+3,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          13,
+          13
+        ],
+        "total": 26
+      },
+      "note": "High; on block -10"
+    },
+    "df+3,2,3": {
+      "name": "Mercury Drive",
+      "input": "df+3,2,3",
+      "t8_source": "lee",
+      "t8_id": "Lee-df+3,2,3",
+      "t8_damage": ",20",
+      "startup": 0.367,
+      "active": 0.033,
+      "recovery": 0.6,
+      "damage": 46,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-df+3,2,3",
+      "input_slots": [
+        "df+3",
+        "df+3,2",
+        "df+3,2,3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          13,
+          13,
+          20
+        ],
+        "total": 46
+      },
+      "note": "Mid; on block -14"
+    },
+    "df+4": {
+      "name": "Front Kick",
+      "input": "df+4",
+      "t8_source": "lee",
+      "t8_id": "Lee-df+4",
+      "t8_damage": "13",
+      "startup": 0.217,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 13,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 6,
+      "anim_ref": "t8:lee:lee-df+4",
+      "input_slots": [
+        "df+4"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -9"
+    },
+    "df+4,4": {
+      "name": "Fabulous Whip",
+      "input": "df+4,4",
+      "t8_source": "lee",
+      "t8_id": "Lee-df+4,4",
+      "t8_damage": ",20",
+      "startup": 0.367,
+      "active": 0.033,
+      "recovery": 0.533,
+      "damage": 33,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-df+4,4",
+      "input_slots": [
+        "df+4",
+        "df+4,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          13,
+          20
+        ],
+        "total": 33
+      },
+      "note": "High; on block -9"
+    },
+    "f+1+2": {
+      "name": "Aggressive One-Two",
+      "input": "f+1+2",
+      "t8_source": "lee",
+      "t8_id": "Lee-f+1+2",
+      "t8_damage": "12,20",
+      "startup": 0.217,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 32,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-f+1+2",
+      "input_slots": [
+        "f+1+2"
+      ],
+      "move_class": "strike",
+      "multi_hit": {
+        "hits": [
+          12,
+          20
+        ],
+        "total": 32
+      },
+      "note": "High, High; on block -13; knockdown on hit"
+    },
+    "f+3": {
+      "name": "Move f+3 (f+3)",
+      "input": "f+3",
+      "t8_source": "lee",
+      "t8_id": "Lee-f+3",
+      "t8_damage": "6",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 6,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 3,
+      "anim_ref": "t8:lee:lee-f+3",
+      "input_slots": [
+        "f+3"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -18"
+    },
+    "f+3,3": {
+      "name": "Move 3 (3)",
+      "input": "f+3,3",
+      "t8_source": "lee",
+      "t8_id": "Lee-f+3,3",
+      "t8_damage": ",3",
+      "startup": 0.133,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 9,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "anim_ref": "t8:lee:lee-f+3,3",
+      "input_slots": [
+        "f+3",
+        "f+3,3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          6,
+          3
+        ],
+        "total": 9
+      },
+      "note": "Mid; on block -18"
+    },
+    "f+3,3,3": {
+      "name": "Move 3 (3)",
+      "input": "f+3,3,3",
+      "t8_source": "lee",
+      "t8_id": "Lee-f+3,3,3",
+      "t8_damage": ",3",
+      "startup": 0.133,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 12,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 6,
+      "anim_ref": "t8:lee:lee-f+3,3,3",
+      "input_slots": [
+        "f+3",
+        "f+3,3",
+        "f+3,3,3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          6,
+          3,
+          3
+        ],
+        "total": 12
+      },
+      "note": "High; on block -18"
+    },
+    "f+3,3,3,3": {
+      "name": "Move 3 (3)",
+      "input": "f+3,3,3,3",
+      "t8_source": "lee",
+      "t8_id": "Lee-f+3,3,3,3",
+      "t8_damage": ",3",
+      "startup": 0.133,
+      "active": 0.033,
+      "recovery": 0.6,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t8:lee:lee-f+3,3,3,3",
+      "input_slots": [
+        "f+3",
+        "f+3,3",
+        "f+3,3,3",
+        "f+3,3,3,3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          6,
+          3,
+          3,
+          3
+        ],
+        "total": 15
+      },
+      "note": "High; on block -18"
+    },
+    "f+3,3,3,3,3": {
+      "name": "Move 3 (3)",
+      "input": "f+3,3,3,3,3",
+      "t8_source": "lee",
+      "t8_id": "Lee-f+3,3,3,3,3",
+      "t8_damage": ",3",
+      "startup": 0.133,
+      "active": 0.033,
+      "recovery": 0.6,
+      "damage": 18,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 9,
+      "anim_ref": "t8:lee:lee-f+3,3,3,3,3",
+      "input_slots": [
+        "f+3",
+        "f+3,3",
+        "f+3,3,3",
+        "f+3,3,3,3",
+        "f+3,3,3,3,3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          6,
+          3,
+          3,
+          3,
+          3
+        ],
+        "total": 18
+      },
+      "note": "High; on block -18; knockdown on hit"
+    },
+    "f+3,3,3,3,3,4": {
+      "name": "Acid Storm",
+      "input": "f+3,3,3,3,3,4",
+      "t8_source": "lee",
+      "t8_id": "Lee-f+3,3,3,3,3,4",
+      "t8_damage": ",25 (17)",
+      "startup": 0.383,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 18,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 9,
+      "anim_ref": "t8:lee:lee-f+3,3,3,3,3,4",
+      "input_slots": [
+        "f+3",
+        "f+3,3",
+        "f+3,3,3",
+        "f+3,3,3,3",
+        "f+3,3,3,3,3",
+        "f+3,3,3,3,3,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          6,
+          3,
+          3,
+          3,
+          3
+        ],
+        "total": 18
+      },
+      "note": "High; on block -9; knockdown on hit"
+    },
+    "f+3,3,3,3,3,&amp;#58;4": {
+      "name": "Acid Storm Cardinal",
+      "input": "f+3,3,3,3,3,&amp;#58;4",
+      "t8_source": "lee",
+      "t8_id": "Lee-f+3,3,3,3,3:4",
+      "t8_damage": ",26 (18)",
+      "startup": 0.383,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 18,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 9,
+      "anim_ref": "t8:lee:lee-f+3,3,3,3,3:4",
+      "input_slots": [
+        "f+3",
+        "f+3,3",
+        "f+3,3,3",
+        "f+3,3,3,3",
+        "f+3,3,3,3,3",
+        "f+3,3,3,3,3,&amp;#58;4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          6,
+          3,
+          3,
+          3,
+          3
+        ],
+        "total": 18
+      },
+      "note": "High; on block -9; knockdown on hit"
+    },
+    "f+3+4": {
+      "name": "Feather Landing",
+      "input": "f+3+4",
+      "t8_source": "lee",
+      "t8_id": "Lee-f+3+4",
+      "t8_damage": "10,20",
+      "startup": 0.5,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 30,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-f+3+4",
+      "input_slots": [
+        "f+3+4"
+      ],
+      "move_class": "strike",
+      "multi_hit": {
+        "hits": [
+          10,
+          20
+        ],
+        "total": 30
+      },
+      "note": "Mid, Mid; on block +4c"
+    },
+    "f+4_t8": {
+      "name": "Silver Whip",
+      "input": "f+4",
+      "t8_source": "lee",
+      "t8_id": "Lee-f+4",
+      "t8_damage": "13",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 13,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 6,
+      "anim_ref": "t8:lee:lee-f+4",
+      "input_slots": [
+        "f+4"
+      ],
+      "move_class": "strike",
+      "note": "High; on block -7",
+      "t8_input": "f+4"
+    },
+    "f+4,1": {
+      "name": "Deadly Revolution",
+      "input": "f+4,1",
+      "t8_source": "lee",
+      "t8_id": "Lee-f+4,1",
+      "t8_damage": ",24",
+      "startup": 0.4,
+      "active": 0.033,
+      "recovery": 0.483,
+      "damage": 37,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-f+4,1",
+      "input_slots": [
+        "f+4",
+        "f+4,1"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          13,
+          24
+        ],
+        "total": 37
+      },
+      "note": "High; on block -5; knockdown on hit"
+    },
+    "f+4,&amp;#58;1": {
+      "name": "Deadly Revolution Cardinal",
+      "input": "f+4,&amp;#58;1",
+      "t8_source": "lee",
+      "t8_id": "Lee-f+4:1",
+      "t8_damage": ",27",
+      "startup": 0.4,
+      "active": 0.033,
+      "recovery": 0.483,
+      "damage": 40,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-f+4:1",
+      "input_slots": [
+        "f+4",
+        "f+4,&amp;#58;1"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          13,
+          27
+        ],
+        "total": 40
+      },
+      "note": "High; on block +5; knockdown on hit"
+    },
+    "f+4,3": {
+      "name": "Deadly Arc",
+      "input": "f+4,3",
+      "t8_source": "lee",
+      "t8_id": "Lee-f+4,3",
+      "t8_damage": ",18",
+      "startup": 0.35,
+      "active": 0.033,
+      "recovery": 0.417,
+      "damage": 31,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-f+4,3",
+      "input_slots": [
+        "f+4",
+        "f+4,3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          13,
+          18
+        ],
+        "total": 31
+      },
+      "note": "Mid; on block -8"
+    },
+    "FC.1": {
+      "name": "Move FC.1 (FC.1)",
+      "input": "FC.1",
+      "t8_source": "lee",
+      "t8_id": "Lee-FC.1",
+      "t8_damage": "5",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 5,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 2,
+      "anim_ref": "t8:lee:lee-fc.1",
+      "input_slots": [
+        "FC.1"
+      ],
+      "move_class": "strike",
+      "note": "Special low; on block -5"
+    },
+    "FC.2": {
+      "name": "Move FC.2 (FC.2)",
+      "input": "FC.2",
+      "t8_source": "lee",
+      "t8_id": "Lee-FC.2",
+      "t8_damage": "5",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 5,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 2,
+      "anim_ref": "t8:lee:lee-fc.2",
+      "input_slots": [
+        "FC.2"
+      ],
+      "move_class": "strike",
+      "note": "Special low; on block -4"
+    },
+    "FC.3": {
+      "name": "Move FC.3 (FC.3)",
+      "input": "FC.3",
+      "t8_source": "lee",
+      "t8_id": "Lee-FC.3",
+      "t8_damage": "10",
+      "startup": 0.217,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 10,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 5,
+      "anim_ref": "t8:lee:lee-fc.3",
+      "input_slots": [
+        "FC.3"
+      ],
+      "move_class": "strike",
+      "note": "Low; on block -17"
+    },
+    "FC.4": {
+      "name": "Move FC.4 (FC.4)",
+      "input": "FC.4",
+      "t8_source": "lee",
+      "t8_id": "Lee-FC.4",
+      "t8_damage": "6",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 6,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 3,
+      "anim_ref": "t8:lee:lee-fc.4",
+      "input_slots": [
+        "FC.4"
+      ],
+      "move_class": "strike",
+      "note": "Low; on block -15"
+    },
+    "FC.df+4": {
+      "name": "Silver Tail",
+      "input": "FC.df+4",
+      "t8_source": "lee",
+      "t8_id": "Lee-FC.df+4",
+      "t8_damage": "17",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 17,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t8:lee:lee-fc.df+4",
+      "input_slots": [
+        "FC.df+4"
+      ],
+      "move_class": "strike",
+      "note": "Low; on block -14"
+    },
+    "FC.df,d,DF": {
+      "name": "Slide Step",
+      "input": "FC.df,d,DF",
+      "t8_source": "lee",
+      "t8_id": "Lee-FC.df,d,DF",
+      "t8_damage": null,
+      "startup": 0.167,
+      "active": 0.3,
+      "recovery": 0.317,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "anim_ref": "t8:lee:lee-fc.df,d,df",
+      "input_slots": [
+        "FC.df,d,DF"
+      ],
+      "move_class": "special"
+    },
+    "FC.df,d,DF#3": {
+      "name": "Friction Spear Cardinal",
+      "input": "FC.df,d,DF#3",
+      "t8_source": "lee",
+      "t8_id": "Lee-FC.df,d,DF${justFrame}3",
+      "t8_damage": "26",
+      "startup": 0.3,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 26,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 13,
+      "anim_ref": "t8:lee:lee-fc.df,d,df${justframe}3",
+      "input_slots": [
+        "FC.df,d,DF#3"
+      ],
+      "move_class": "strike",
+      "note": "Low; on block -15~-9"
+    },
+    "FC.df,d,DF+3": {
+      "name": "Friction Spear",
+      "input": "FC.df,d,DF+3",
+      "t8_source": "lee",
+      "t8_id": "Lee-FC.df,d,DF+3",
+      "t8_damage": "20",
+      "startup": 0.3,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 20,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:lee:lee-fc.df,d,df+3",
+      "input_slots": [
+        "FC.df,d,DF+3"
+      ],
+      "move_class": "strike",
+      "note": "Low; on block -15~-9"
+    },
+    "FC.UF+3+4": {
+      "name": "Catapult Drop",
+      "input": "FC.UF+3+4",
+      "t8_source": "lee",
+      "t8_id": "Lee-FC.UF+3+4",
+      "t8_damage": "30",
+      "startup": 0.767,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 30,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-fc.uf+3+4",
+      "input_slots": [
+        "FC.UF+3+4"
+      ],
+      "move_class": "strike",
+      "note": "Mid, Mid; on block -4; knockdown on hit"
+    },
+    "FC.UF+4": {
+      "name": "Catapult Kick",
+      "input": "FC.UF+4",
+      "t8_source": "lee",
+      "t8_id": "Lee-FC.UF+4",
+      "t8_damage": "25",
+      "startup": 0.3,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 25,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:lee:lee-fc.uf+4",
+      "input_slots": [
+        "FC.UF+4"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -17; knockdown on hit"
+    },
+    "f,F+2": {
+      "name": "Jostle Wolf",
+      "input": "f,F+2",
+      "t8_source": "lee",
+      "t8_id": "Lee-f,F+2",
+      "t8_damage": "23",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 23,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:lee:lee-f,f+2",
+      "input_slots": [
+        "f,F+2"
+      ],
+      "move_class": "strike",
+      "note": "High; on block +2"
+    },
+    "f&amp;#58;F+2": {
+      "name": "Jostle Wolf Cardinal",
+      "input": "f&amp;#58;F+2",
+      "t8_source": "lee",
+      "t8_id": "Lee-f:F+2",
+      "t8_damage": "26",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 26,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 13,
+      "anim_ref": "t8:lee:lee-f:f+2",
+      "input_slots": [
+        "f&amp;#58;F+2"
+      ],
+      "move_class": "strike",
+      "note": "High; on block +2"
+    },
+    "f,F+3": {
+      "name": "Pulse Blast",
+      "input": "f,F+3",
+      "t8_source": "lee",
+      "t8_id": "Lee-f,F+3",
+      "t8_damage": "23",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.55,
+      "damage": 23,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:lee:lee-f,f+3",
+      "input_slots": [
+        "f,F+3"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -9; knockdown on hit"
+    },
+    "f,F+4": {
+      "name": "Deadly Edge",
+      "input": "f,F+4",
+      "t8_source": "lee",
+      "t8_id": "Lee-f,F+4",
+      "t8_damage": "22",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.383,
+      "damage": 22,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 11,
+      "anim_ref": "t8:lee:lee-f,f+4",
+      "input_slots": [
+        "f,F+4"
+      ],
+      "move_class": "strike",
+      "note": "High; on block -5; knockdown on hit"
+    },
+    "f,f,F+3": {
+      "name": "Move f,f,F+3 (f,f,F+3)",
+      "input": "f,f,F+3",
+      "t8_source": "lee",
+      "t8_id": "Lee-f,f,F+3",
+      "t8_damage": "14",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.55,
+      "damage": 14,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 7,
+      "anim_ref": "t8:lee:lee-f,f,f+3",
+      "input_slots": [
+        "f,f,F+3"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -9; knockdown on hit"
+    },
+    "f,f,F+3,4": {
+      "name": "Waxing Crescent",
+      "input": "f,f,F+3,4",
+      "t8_source": "lee",
+      "t8_id": "Lee-f,f,F+3,4",
+      "t8_damage": ",26 (18)",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.483,
+      "damage": 14,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 7,
+      "anim_ref": "t8:lee:lee-f,f,f+3,4",
+      "input_slots": [
+        "f,f,F+3",
+        "f,f,F+3,4"
+      ],
+      "move_class": "string",
+      "note": "Mid; on block +3; knockdown on hit"
+    },
+    "f,n": {
+      "name": "Mist Step",
+      "input": "f,n",
+      "t8_source": "lee",
+      "t8_id": "Lee-f,n",
+      "t8_damage": null,
+      "startup": 0.167,
+      "active": 0.3,
+      "recovery": 0.317,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "anim_ref": "t8:lee:lee-f,n",
+      "input_slots": [
+        "f,n"
+      ],
+      "move_class": "special"
+    },
+    "H.2+3": {
+      "name": "Paradigm Breaker",
+      "input": "H.2+3",
+      "t8_source": "lee",
+      "t8_id": "Lee-H.2+3",
+      "t8_damage": "15, 7, 20 (40)",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 22,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 11,
+      "anim_ref": "t8:lee:lee-h.2+3",
+      "input_slots": [
+        "H.2+3"
+      ],
+      "move_class": "strike",
+      "multi_hit": {
+        "hits": [
+          15,
+          7
+        ],
+        "total": 22
+      },
+      "note": "l(t), Mid, Mid; on block -14"
+    },
+    "H.d+1+2": {
+      "name": "Phantom Rose",
+      "input": "H.d+1+2",
+      "t8_source": "lee",
+      "t8_id": "Lee-H.d+1+2",
+      "t8_damage": "25",
+      "startup": 0.3,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 25,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:lee:lee-h.d+1+2",
+      "input_slots": [
+        "H.d+1+2"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block +4; knockdown on hit"
+    },
+    "H.df+3+4": {
+      "name": "Crimson Howl",
+      "input": "H.df+3+4",
+      "t8_source": "lee",
+      "t8_id": "Lee-H.df+3+4",
+      "t8_damage": "30",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.65,
+      "damage": 30,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-h.df+3+4",
+      "input_slots": [
+        "H.df+3+4"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block +2; knockdown on hit"
+    },
+    "HMS.1": {
+      "name": "Freaker Jab",
+      "input": "HMS.1",
+      "t8_source": "lee",
+      "t8_id": "Lee-HMS.1",
+      "t8_damage": "7",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "anim_ref": "t8:lee:lee-hms.1",
+      "input_slots": [
+        "HMS.1"
+      ],
+      "move_class": "strike",
+      "note": "High; on block +2"
+    },
+    "HMS.1,1": {
+      "name": "Freaker Jab (1)",
+      "input": "HMS.1,1",
+      "t8_source": "lee",
+      "t8_id": "Lee-HMS.1,1",
+      "t8_damage": ",7",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 14,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 7,
+      "anim_ref": "t8:lee:lee-hms.1,1",
+      "input_slots": [
+        "HMS.1",
+        "HMS.1,1"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          7,
+          7
+        ],
+        "total": 14
+      },
+      "note": "High; on block -2"
+    },
+    "HMS.1,1,1": {
+      "name": "Amazing Swipe",
+      "input": "HMS.1,1,1",
+      "t8_source": "lee",
+      "t8_id": "Lee-HMS.1,1,1",
+      "t8_damage": ",20",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 34,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-hms.1,1,1",
+      "input_slots": [
+        "HMS.1",
+        "HMS.1,1",
+        "HMS.1,1,1"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          7,
+          7,
+          20
+        ],
+        "total": 34
+      },
+      "note": "High; on block -7"
+    },
+    "HMS.1+2": {
+      "name": "Poison Touch",
+      "input": "HMS.1+2",
+      "t8_source": "lee",
+      "t8_id": "Lee-HMS.1+2",
+      "t8_damage": "10,15",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.417,
+      "damage": 25,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:lee:lee-hms.1+2",
+      "input_slots": [
+        "HMS.1+2"
+      ],
+      "move_class": "strike",
+      "multi_hit": {
+        "hits": [
+          10,
+          15
+        ],
+        "total": 25
+      },
+      "note": "Mid, Mid; on block -5"
+    },
+    "HMS.1,4": {
+      "name": "Excellent Combo",
+      "input": "HMS.1,4",
+      "t8_source": "lee",
+      "t8_id": "Lee-HMS.1,4",
+      "t8_damage": ",17",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.533,
+      "damage": 24,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:lee:lee-hms.1,4",
+      "input_slots": [
+        "HMS.1",
+        "HMS.1,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          7,
+          17
+        ],
+        "total": 24
+      },
+      "note": "Mid; on block -8"
+    },
+    "HMS.2": {
+      "name": "Scatter Blow",
+      "input": "HMS.2",
+      "t8_source": "lee",
+      "t8_id": "Lee-HMS.2",
+      "t8_damage": "23",
+      "startup": 0.317,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 23,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:lee:lee-hms.2",
+      "input_slots": [
+        "HMS.2"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -13; knockdown on hit"
+    },
+    "HMS.3": {
+      "name": "Scatter Kick",
+      "input": "HMS.3",
+      "t8_source": "lee",
+      "t8_id": "Lee-HMS.3",
+      "t8_damage": "21,20",
+      "startup": 0.3,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 41,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-hms.3",
+      "input_slots": [
+        "HMS.3"
+      ],
+      "move_class": "throw",
+      "multi_hit": {
+        "hits": [
+          21,
+          20
+        ],
+        "total": 41
+      },
+      "note": "High, Throw; on block -3",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "1"
+    },
+    "HMS.4": {
+      "name": "Shin Slicer",
+      "input": "HMS.4",
+      "t8_source": "lee",
+      "t8_id": "Lee-HMS.4",
+      "t8_damage": "20",
+      "startup": 0.367,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 20,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:lee:lee-hms.4",
+      "input_slots": [
+        "HMS.4"
+      ],
+      "move_class": "strike",
+      "note": "Low; on block -13"
+    },
+    "HMS.u+3": {
+      "name": "Silver Slash",
+      "input": "HMS.u+3",
+      "t8_source": "lee",
+      "t8_id": "Lee-HMS.u+3",
+      "t8_damage": "32",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 32,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-hms.u+3",
+      "input_slots": [
+        "HMS.u+3"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -9"
+    },
+    "HMS.u+4": {
+      "name": "Silver Circle",
+      "input": "HMS.u+4",
+      "t8_source": "lee",
+      "t8_id": "Lee-HMS.u+4",
+      "t8_damage": "20",
+      "startup": 0.433,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 20,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:lee:lee-hms.u+4",
+      "input_slots": [
+        "HMS.u+4"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block +5c"
+    },
+    "Left Throw": {
+      "name": "Lee Harassment",
+      "input": "Left Throw",
+      "t8_source": "lee",
+      "t8_id": "Lee-Left throw",
+      "t8_damage": "40",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 40,
+      "limb": "both",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-left throw",
+      "input_slots": [
+        "Left Throw"
+      ],
+      "move_class": "throw",
+      "note": "Throw; on block -3",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "1"
+    },
+    "MS.3": {
+      "name": "Move MS.3 (MS.3)",
+      "input": "MS.3",
+      "t8_source": "lee",
+      "t8_id": "Lee-MS.3",
+      "t8_damage": "10",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 10,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 5,
+      "anim_ref": "t8:lee:lee-ms.3",
+      "input_slots": [
+        "MS.3"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -12"
+    },
+    "MS.3+4": {
+      "name": "Friction Spear",
+      "input": "MS.3+4",
+      "t8_source": "lee",
+      "t8_id": "Lee-MS.3+4",
+      "t8_damage": "20",
+      "startup": 0.417,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 20,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:lee:lee-ms.3+4",
+      "input_slots": [
+        "MS.3+4"
+      ],
+      "move_class": "strike",
+      "note": "Low; on block -15~-9"
+    },
+    "MS.3,4": {
+      "name": "Inverted Axle",
+      "input": "MS.3,4",
+      "t8_source": "lee",
+      "t8_id": "Lee-MS.3,4",
+      "t8_damage": ",10",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 20,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:lee:lee-ms.3,4",
+      "input_slots": [
+        "MS.3",
+        "MS.3,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          10,
+          10
+        ],
+        "total": 20
+      },
+      "note": "Mid; on block -13; knockdown on hit"
+    },
+    "MS.b,n": {
+      "name": "Sway",
+      "input": "MS.b,n",
+      "t8_source": "lee",
+      "t8_id": "Lee-MS.b,n",
+      "t8_damage": null,
+      "startup": 0.167,
+      "active": 0.3,
+      "recovery": 0.317,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "anim_ref": "t8:lee:lee-ms.b,n",
+      "input_slots": [
+        "MS.b,n"
+      ],
+      "move_class": "special"
+    },
+    "MS.b,n,4": {
+      "name": "Axe Sweep",
+      "input": "MS.b,n,4",
+      "t8_source": "lee",
+      "t8_id": "Lee-MS.b,n,4",
+      "t8_damage": "20",
+      "startup": 0.35,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 20,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:lee:lee-ms.b,n,4",
+      "input_slots": [
+        "MS.b,n",
+        "MS.b,n,4"
+      ],
+      "move_class": "string",
+      "note": "Low; on block -13"
+    },
+    "qcf+4": {
+      "name": "Blazing Kick",
+      "input": "qcf+4",
+      "t8_source": "lee",
+      "t8_id": "Lee-qcf+4",
+      "t8_damage": "24",
+      "startup": 0.367,
+      "active": 0.033,
+      "recovery": 0.633,
+      "damage": 24,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:lee:lee-qcf+4",
+      "input_slots": [
+        "qcf+4"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -17; knockdown on hit"
+    },
+    "R.df+1+2": {
+      "name": "The Marvelous Rose",
+      "input": "R.df+1+2",
+      "t8_source": "lee",
+      "t8_id": "Lee-R.df+1+2",
+      "t8_damage": "55+",
+      "startup": 0.333,
+      "active": 0.3,
+      "recovery": 0.65,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "anim_ref": "t8:lee:lee-r.df+1+2",
+      "input_slots": [
+        "R.df+1+2"
+      ],
+      "move_class": "special",
+      "note": "Mid, Throw; on block -18"
+    },
+    "Right Throw": {
+      "name": "Lee Stunner",
+      "input": "Right Throw",
+      "t8_source": "lee",
+      "t8_id": "Lee-Right throw",
+      "t8_damage": "40",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 40,
+      "limb": "both",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-right throw",
+      "input_slots": [
+        "Right Throw"
+      ],
+      "move_class": "throw",
+      "note": "Throw; on block -3",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "1"
+    },
+    "u+3": {
+      "name": "Fake",
+      "input": "u+3",
+      "t8_source": "lee",
+      "t8_id": "Lee-u+3",
+      "t8_damage": null,
+      "startup": 0.167,
+      "active": 0.3,
+      "recovery": 0.317,
+      "damage": 0,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "anim_ref": "t8:lee:lee-u+3",
+      "input_slots": [
+        "u+3"
+      ],
+      "move_class": "special"
+    },
+    "ub+3": {
+      "name": "Wheel of Fate",
+      "input": "ub+3",
+      "t8_source": "lee",
+      "t8_id": "Lee-ub+3",
+      "t8_damage": "20",
+      "startup": 0.3,
+      "active": 0.033,
+      "recovery": 0.467,
+      "damage": 20,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:lee:lee-ub+3",
+      "input_slots": [
+        "ub+3"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -13; knockdown on hit"
+    },
+    "ub+3+4": {
+      "name": "Silver Cyclone",
+      "input": "ub+3+4",
+      "t8_source": "lee",
+      "t8_id": "Lee-ub+3+4",
+      "t8_damage": "60",
+      "startup": 1.0,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 60,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-ub+3+4",
+      "input_slots": [
+        "ub+3+4"
+      ],
+      "move_class": "strike",
+      "note": "h!; knockdown on hit"
+    },
+    "ub,b": {
+      "name": "Hitman",
+      "input": "ub,b",
+      "t8_source": "lee",
+      "t8_id": "Lee-ub,b",
+      "t8_damage": null,
+      "startup": 0.167,
+      "active": 0.3,
+      "recovery": 1.0,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "anim_ref": "t8:lee:lee-ub,b",
+      "input_slots": [
+        "ub,b"
+      ],
+      "move_class": "special"
+    },
+    "uf+1+2": {
+      "name": "Knee Drive",
+      "input": "uf+1+2",
+      "t8_source": "lee",
+      "t8_id": "Lee-uf+1+2",
+      "t8_damage": "20",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 20,
+      "limb": "both",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 10,
+      "anim_ref": "t8:lee:lee-uf+1+2",
+      "input_slots": [
+        "uf+1+2"
+      ],
+      "move_class": "throw",
+      "note": "Throw; on block -3",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "1+2"
+    },
+    "uf+3": {
+      "name": "Move uf+3 (uf+3)",
+      "input": "uf+3",
+      "t8_source": "lee",
+      "t8_id": "Lee-uf+3",
+      "t8_damage": "12",
+      "startup": 0.417,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 12,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 6,
+      "anim_ref": "t8:lee:lee-uf+3",
+      "input_slots": [
+        "uf+3"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -9"
+    },
+    "uf+3,1": {
+      "name": "Brilliant Rosé",
+      "input": "uf+3,1",
+      "t8_source": "lee",
+      "t8_id": "Lee-uf+3,1",
+      "t8_damage": ",18",
+      "startup": 0.35,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 30,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-uf+3,1",
+      "input_slots": [
+        "uf+3",
+        "uf+3,1"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          12,
+          18
+        ],
+        "total": 30
+      },
+      "note": "Mid; on block -12"
+    },
+    "uf+3+4": {
+      "name": "Silver Bullet",
+      "input": "uf+3+4",
+      "t8_source": "lee",
+      "t8_id": "Lee-uf+3+4",
+      "t8_damage": "30",
+      "startup": 0.367,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 30,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-uf+3+4",
+      "input_slots": [
+        "uf+3+4"
+      ],
+      "move_class": "strike",
+      "note": "High; on block +5"
+    },
+    "uf+3,4": {
+      "name": "Double Mazurek",
+      "input": "uf+3,4",
+      "t8_source": "lee",
+      "t8_id": "Lee-uf+3,4",
+      "t8_damage": ",23",
+      "startup": 0.417,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 35,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-uf+3,4",
+      "input_slots": [
+        "uf+3",
+        "uf+3,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          12,
+          23
+        ],
+        "total": 35
+      },
+      "note": "High; on block -3; knockdown on hit"
+    },
+    "uf+4": {
+      "name": "Silver Arrow",
+      "input": "uf+4",
+      "t8_source": "lee",
+      "t8_id": "Lee-uf+4",
+      "t8_damage": "14",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 14,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 7,
+      "anim_ref": "t8:lee:lee-uf+4",
+      "input_slots": [
+        "uf+4"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -13; knockdown on hit"
+    },
+    "uf,n,4": {
+      "name": "Delayed Rising Toe Kick",
+      "input": "uf,n,4",
+      "t8_source": "lee",
+      "t8_id": "Lee-uf,n,4",
+      "t8_damage": "20",
+      "startup": 0.383,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 20,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:lee:lee-uf,n,4",
+      "input_slots": [
+        "uf,n,4"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -13; knockdown on hit"
+    },
+    "ws1": {
+      "name": "Move ws1 (ws1)",
+      "input": "ws1",
+      "t8_source": "lee",
+      "t8_id": "Lee-ws1",
+      "t8_damage": "12",
+      "startup": 0.217,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 12,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 6,
+      "anim_ref": "t8:lee:lee-ws1",
+      "input_slots": [
+        "ws1"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -2"
+    },
+    "ws1,2": {
+      "name": "Wonderful Spin Blow",
+      "input": "ws1,2",
+      "t8_source": "lee",
+      "t8_id": "Lee-ws1,2",
+      "t8_damage": ",17",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 29,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 14,
+      "anim_ref": "t8:lee:lee-ws1,2",
+      "input_slots": [
+        "ws1",
+        "ws1,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          12,
+          17
+        ],
+        "total": 29
+      },
+      "note": "High; on block -7"
+    },
+    "ws1,4": {
+      "name": "Wonderful Combo",
+      "input": "ws1,4",
+      "t8_source": "lee",
+      "t8_id": "Lee-ws1,4",
+      "t8_damage": ",20",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.467,
+      "damage": 32,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-ws1,4",
+      "input_slots": [
+        "ws1",
+        "ws1,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          12,
+          20
+        ],
+        "total": 32
+      },
+      "note": "High; on block -5"
+    },
+    "ws1,&amp;#58;4": {
+      "name": "Wonderful Combo Cardinal",
+      "input": "ws1,&amp;#58;4",
+      "t8_source": "lee",
+      "t8_id": "Lee-ws1:4",
+      "t8_damage": ",23",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 35,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-ws1:4",
+      "input_slots": [
+        "ws1",
+        "ws1,&amp;#58;4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          12,
+          23
+        ],
+        "total": 35
+      },
+      "note": "High; on block -5"
+    },
+    "ws2": {
+      "name": "Move ws2 (ws2)",
+      "input": "ws2",
+      "t8_source": "lee",
+      "t8_id": "Lee-ws2",
+      "t8_damage": "12",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 12,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 6,
+      "anim_ref": "t8:lee:lee-ws2",
+      "input_slots": [
+        "ws2"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -8"
+    },
+    "ws2,3": {
+      "name": "Rocket Heel",
+      "input": "ws2,3",
+      "t8_source": "lee",
+      "t8_id": "Lee-ws2,3",
+      "t8_damage": ",24",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 36,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-ws2,3",
+      "input_slots": [
+        "ws2",
+        "ws2,3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          12,
+          24
+        ],
+        "total": 36
+      },
+      "note": "Mid; on block -13; knockdown on hit"
+    },
+    "ws2,4": {
+      "name": "Twister Heel",
+      "input": "ws2,4",
+      "t8_source": "lee",
+      "t8_id": "Lee-ws2,4",
+      "t8_damage": ",23",
+      "startup": 0.45,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 35,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-ws2,4",
+      "input_slots": [
+        "ws2",
+        "ws2,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          12,
+          23
+        ],
+        "total": 35
+      },
+      "note": "High; on block -2"
+    },
+    "ws3": {
+      "name": "Move ws3 (ws3)",
+      "input": "ws3",
+      "t8_source": "lee",
+      "t8_id": "Lee-ws3",
+      "t8_damage": "16",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 16,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t8:lee:lee-ws3",
+      "input_slots": [
+        "ws3"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -21"
+    },
+    "ws3,3": {
+      "name": "Move 3 (3)",
+      "input": "ws3,3",
+      "t8_source": "lee",
+      "t8_id": "Lee-ws3,3",
+      "t8_damage": ",11",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 27,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 14,
+      "anim_ref": "t8:lee:lee-ws3,3",
+      "input_slots": [
+        "ws3",
+        "ws3,3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          16,
+          11
+        ],
+        "total": 27
+      },
+      "note": "Mid; on block -15"
+    },
+    "ws3,3,D+3": {
+      "name": "Move D+3 (D+3)",
+      "input": "ws3,3,D+3",
+      "t8_source": "lee",
+      "t8_id": "Lee-ws3,3,D+3",
+      "t8_damage": ",8",
+      "startup": 0.433,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 35,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-ws3,3,d+3",
+      "input_slots": [
+        "ws3",
+        "ws3,3",
+        "ws3,3,D+3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          16,
+          11,
+          8
+        ],
+        "total": 35
+      },
+      "note": "Low; on block -19"
+    },
+    "ws3,3,D+3,3 ...": {
+      "name": "Infinite Kick Chain: Low",
+      "input": "ws3,3,D+3,3 ...",
+      "t8_source": "lee",
+      "t8_id": "Lee-ws3,3,D+3,3",
+      "t8_damage": ",10",
+      "startup": 0.4,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 45,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-ws3,3,d+3,3",
+      "input_slots": [
+        "ws3",
+        "ws3,3",
+        "ws3,3,D+3",
+        "ws3,3,D+3,3 ..."
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          16,
+          11,
+          8,
+          10
+        ],
+        "total": 45
+      },
+      "note": "High; on block -16"
+    },
+    "ws3,3,DF+3": {
+      "name": "Move DF+3 (DF+3)",
+      "input": "ws3,3,DF+3",
+      "t8_source": "lee",
+      "t8_id": "Lee-ws3,3,DF+3",
+      "t8_damage": ",10",
+      "startup": 0.433,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 37,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-ws3,3,df+3",
+      "input_slots": [
+        "ws3",
+        "ws3,3",
+        "ws3,3,DF+3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          16,
+          11,
+          10
+        ],
+        "total": 37
+      },
+      "note": "Mid; on block -19"
+    },
+    "ws3,3,DF+3,3 ...": {
+      "name": "Infinite Kick Chain: Middle",
+      "input": "ws3,3,DF+3,3 ...",
+      "t8_source": "lee",
+      "t8_id": "Lee-ws3,3,DF+3,3",
+      "t8_damage": ",10",
+      "startup": 0.433,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 47,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:lee:lee-ws3,3,df+3,3",
+      "input_slots": [
+        "ws3",
+        "ws3,3",
+        "ws3,3,DF+3",
+        "ws3,3,DF+3,3 ..."
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          16,
+          11,
+          10,
+          10
+        ],
+        "total": 47
+      },
+      "note": "High; on block -16"
+    },
+    "ws4": {
+      "name": "Toe Smash",
+      "input": "ws4",
+      "t8_source": "lee",
+      "t8_id": "Lee-ws4",
+      "t8_damage": "16",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 16,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t8:lee:lee-ws4",
+      "input_slots": [
+        "ws4"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -6"
+    }
+  },
+  "restored_from_sweep_338": {
+    "date": "2026-10-20",
+    "by": "tools/moveset-restore/restore_sweep_338.py",
+    "source_commit": "4cc6b41b",
+    "destroyed_by": "8ebdc527",
+    "moves": 298,
+    "strings": 89,
+    "specials": 22
+  }
 }

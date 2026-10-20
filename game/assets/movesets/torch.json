@@ -66,7 +66,199 @@
         186
       ]
     },
-    "1,2",
+    {
+      "input": "2,1,4",
+      "hits": [
+        "2",
+        "1",
+        "4"
+      ],
+      "t3_rows": [
+        230
+      ]
+    },
+    {
+      "input": "2,1,2,2",
+      "hits": [
+        "2",
+        "1",
+        "2",
+        "2"
+      ],
+      "t3_rows": [
+        223
+      ]
+    },
+    {
+      "input": "u/f+4,3",
+      "hits": [
+        "u/f+4",
+        "3"
+      ],
+      "t3_rows": [
+        193
+      ]
+    },
+    {
+      "input": "u/f+4,4",
+      "hits": [
+        "u/f+4",
+        "4"
+      ],
+      "t3_rows": [
+        207
+      ]
+    },
+    {
+      "input": "d+1+2,1",
+      "hits": [
+        "d+1+2",
+        "1"
+      ],
+      "t3_rows": [
+        177
+      ]
+    },
+    {
+      "input": "d+1+2,2",
+      "hits": [
+        "d+1+2",
+        "2"
+      ],
+      "t3_rows": [
+        93
+      ]
+    },
+    {
+      "input": "d/f+1,3",
+      "hits": [
+        "d/f+1",
+        "3"
+      ],
+      "t3_rows": [
+        197
+      ]
+    },
+    {
+      "input": "d/f+1,4",
+      "hits": [
+        "d/f+1",
+        "4"
+      ],
+      "t3_rows": [
+        204
+      ]
+    },
+    {
+      "input": "d/f+4,4",
+      "hits": [
+        "d/f+4",
+        "4"
+      ],
+      "t3_rows": [
+        212
+      ]
+    },
+    {
+      "input": "2,1,4,4",
+      "hits": [
+        "2",
+        "1",
+        "4",
+        "4"
+      ],
+      "t3_rows": [
+        231
+      ]
+    },
+    {
+      "input": "2,1,2,2,3",
+      "hits": [
+        "2",
+        "1",
+        "2",
+        "2",
+        "3"
+      ],
+      "t3_rows": [
+        224
+      ]
+    },
+    {
+      "input": "u/f+4,4,4",
+      "hits": [
+        "u/f+4",
+        "4",
+        "4"
+      ],
+      "t3_rows": [
+        210
+      ]
+    },
+    {
+      "input": "d+1+2,1,2",
+      "hits": [
+        "d+1+2",
+        "1",
+        "2"
+      ],
+      "t3_rows": [
+        183
+      ]
+    },
+    {
+      "input": "2,1,4,4,2",
+      "hits": [
+        "2",
+        "1",
+        "4",
+        "4",
+        "2"
+      ],
+      "t3_rows": [
+        232
+      ]
+    },
+    {
+      "input": "2,1,2,2,3,4",
+      "hits": [
+        "2",
+        "1",
+        "2",
+        "2",
+        "3",
+        "4"
+      ],
+      "t3_rows": [
+        225
+      ]
+    },
+    {
+      "input": "u/f+4,4,4,4",
+      "hits": [
+        "u/f+4",
+        "4",
+        "4",
+        "4"
+      ],
+      "t3_rows": [
+        211
+      ]
+    },
+    {
+      "input": "2,1,4,4,2,4",
+      "hits": [
+        "2",
+        "1",
+        "4",
+        "4",
+        "2",
+        "4"
+      ],
+      "t3_rows": [
+        233
+      ]
+    },
     "1,2,1",
     "1,2,1,2",
     "1,2,1,4",
@@ -153,6 +345,12 @@
       "t3_row": 277,
       "damage": 21,
       "throw": true
+    },
+    {
+      "input": "n,b,n,f+2",
+      "t3_row": 162,
+      "damage": 11,
+      "throw": false
     },
     {
       "input": "1+3",
@@ -282,309 +480,7253 @@
     ],
     "note": "Additive expansion from real T3 teardown bank rows. Existing moves untouched."
   },
-  "moves": [
-    "1",
-    "1,2",
-    "2",
-    "2,1",
-    "2,1,2",
-    "3",
-    "4",
-    "4,1",
-    "4,1,2",
-    "1+3",
-    "2+4",
-    "d/f+2",
-    "u/f+4",
-    "d,d/b,d,d/b+1+2",
-    "d/b,n,f+2",
-    "n,d/f,n,d/f+1",
-    "S",
-    "P+K",
-    "1+2",
-    "f",
-    "b",
-    "1_r36",
-    "1_r37",
-    "1_r38",
-    "1_r39",
-    "1_r40",
-    "1_r41",
-    "1_r42",
-    "1_r43",
-    "1_c36_r44",
-    "f_c36_r45",
-    "b_c36_r46",
-    "2_r48",
-    "2_r49",
-    "3+4_r107",
-    "f_r52",
-    "b_r53",
-    "3_c36",
-    "f_c36_r55",
-    "b_c36_r56",
-    "3_r58",
-    "3_r59",
-    "3_r60",
-    "3_r61",
-    "3_r62",
-    "3_r63",
-    "3_r64",
-    "3_r65",
-    "b_r66",
-    "b_c36",
-    "4_r68",
-    "4_r69",
-    "4_r70",
-    "4_r71",
-    "4_r72",
-    "4_r73",
-    "4_r74",
-    "4_r75",
-    "4_c36_r76",
-    "f_c36_r77",
-    "b_c36_r78",
-    "d/f+1+2_r17",
-    "1_r144",
-    "u/f+3",
-    "b_r169",
-    "2_r178",
-    "2_r180",
-    "2_r183",
-    "4_r188",
-    "d/b",
-    "2_r190",
-    "2_r10_r192",
-    "3_r195",
-    "3_r197",
-    "4_r201",
-    "4_r202",
-    "4_r203",
-    "4_r204",
-    "1_r208",
-    "4_r211",
-    "1_r213",
-    "f+4",
-    "b+1",
-    "1_r229",
-    "1_r236",
-    "2_r249",
-    "1+2+3",
-    "1_r263",
-    "4_r268",
-    "d/f+2_r10",
-    "4_r271",
-    "1_r272",
-    "1_c36_r291",
-    "1_c36_r292",
-    "1_c36_r295",
-    "1_c36_r296",
-    "1_c5_r365",
-    "1_c3_r367",
-    "1_r371",
-    "f+2+4_r14",
-    "f+2+4",
-    "1_c2_r376",
-    "1_c2_r377",
-    "1_c2_r381",
-    "1_c75_r384",
-    "1_c75_r385",
-    "1_c75_r387",
-    "1_c75_r389",
-    "1_c73",
-    "1_c74",
-    "1_c75_r391",
-    "1_c75_r393",
-    "1_c75_r395",
-    "1_c75_r397",
-    "1_c74_r399",
-    "1_c75_r401",
-    "1+2_t8",
-    "1,2,1",
-    "1,2,1,2",
-    "1,2,1,4",
-    "1,2,1,H.2",
-    "1,2,2",
-    "1,2,4",
-    "1,2,uf+1+2",
-    "1,4",
-    "2,2",
-    "2+3",
-    "2,3",
-    "2,4",
-    "2,uf+1+2",
-    "3,2",
-    "3+4",
-    "4,2",
-    "4,2,1+2",
-    "b+1_t8",
-    "b+1+2",
-    "b+1,2",
-    "b+1,2,2",
-    "b+1+3",
-    "b+2",
-    "b+2,2",
-    "b+3",
-    "b+4",
-    "Back throw",
-    "BT.1",
-    "CJM.1",
-    "CJM.1+2",
-    "CJM.2",
-    "CJM.2,1",
-    "CJM.3",
-    "CJM.3,2",
-    "CJM.3,H.2",
-    "CJM.4",
-    "CJM.d+3",
-    "CJM.d+3,3",
-    "CJM.df",
-    "CJM.f+3",
-    "CJM.P",
-    "CJM.uf+1",
-    "CJM.uf+2",
-    "CJM.uf+3",
-    "CJM.uf+4",
-    "d+1",
-    "d+1+2",
-    "d+1,4",
-    "d+2",
-    "d+3",
-    "d+3,2",
-    "d+3,4",
-    "d+3,4,1",
-    "d+4",
-    "d+4,1",
-    "d+4,1~4",
-    "db+1",
-    "db+1+2",
-    "db+1,2",
-    "db+1,4",
-    "db+2",
-    "db+3",
-    "db+3+4",
-    "db+3+4,4",
-    "db+4",
-    "df+1",
-    "df+1,2",
-    "df+1,2,3",
-    "df+1,2,4",
-    "df+2",
-    "df+3",
-    "df+3,1",
-    "df+3,1,1",
-    "df+3,1,2",
-    "df+3,1,4",
-    "df+3,2",
-    "df+3,2,1",
-    "df+3,2,1,2",
-    "df+3,2,1,2,4",
-    "df+3,2,1,2,4,1",
-    "df+3,2,1,2,4,1,2",
-    "df+3,2,1,2,4,1,2,2",
-    "df+3,2,1,2,4,1,2,2,3+4",
-    "df+3,2,1,2,4,1,2,2,3+4,2",
-    "df+3,2,2",
-    "df+3,2,4",
-    "df+3,2,uf+1+2",
-    "df+3,3+4",
-    "df+4",
-    "f+1+2",
-    "f+2",
-    "f+2,3",
-    "f+3",
-    "FC.df+1",
-    "FC.df+2",
-    "FC.df+2,H.1",
-    "f,F+1+2",
-    "f,F+1+2*",
-    "f,F+2",
-    "f,F+3",
-    "f,F+3,2",
-    "f,F+3,3",
-    "f,F+3+4",
-    "f,F+4",
-    "f,f,F+2",
-    "f,f,F+2,4",
-    "f,f,F+3",
-    "f,f,F+3,2",
-    "f,f,F+3,H.2",
-    "f,f,F+4",
-    "H.2+3",
-    "HAM.1",
-    "HAM.1+2",
-    "HAM.1+3",
-    "HAM.1+3,1",
-    "HAM.1+3,2",
-    "HAM.2",
-    "HAM.2,1",
-    "HAM.2,1,2",
-    "HAM.2,2",
-    "HAM.3",
-    "HAM.4",
-    "HAM.b+3",
-    "Left throw",
-    "OTG.d+3+4",
-    "qcf+1",
-    "qcf+2",
-    "qcf+2,1",
-    "R.df+1+2",
-    "Right throw",
-    "ROLL.3",
-    "ROLL.4",
-    "SS.1+2",
-    "SS.2",
-    "SS.3",
-    "TOM.1",
-    "TOM.2",
-    "TOM.3",
-    "TOM.4",
-    "ub+1+2",
-    "ub,b",
-    "uf+1",
-    "uf+1+2",
-    "uf+1,3",
-    "uf+1,3,3+4",
-    "uf+2",
-    "uf+3",
-    "uf+3+4",
-    "uf+3,H.1",
-    "uf+3,H.2",
-    "uf+4",
-    "ws1",
-    "ws1+2",
-    "ws1,2",
-    "ws2",
-    "ws3",
-    "ws4",
-    "1+4",
-    "d/f+1",
-    "d/f+4",
-    "u/b+1",
-    "u/b+3",
-    "u/b+4",
-    "u/f+1",
-    "u/b+3+4",
-    "u/f+3+4",
-    "d/f+1+2",
-    "qcb+1+3",
-    "2,1,4",
-    "2,1,2,2",
-    "u/f+4,3",
-    "u/f+4,4",
-    "d+1+2,1",
-    "d+1+2,2",
-    "d/f+1,3",
-    "d/f+1,4",
-    "d/f+4,4",
-    "2,1,4,4",
-    "2,1,2,2,3",
-    "u/f+4,4,4",
-    "d+1+2,1,2",
-    "2,1,4,4,2",
-    "2,1,2,2,3,4",
-    "u/f+4,4,4,4",
-    "2,1,4,4,2,4",
-    "n,b,n,f+2"
-  ]
+  "moves": {
+    "1": {
+      "name": "TORCH 1 (T3 jin r248)",
+      "input": "1",
+      "t3_source": "jin",
+      "t3_row": 248,
+      "t3_command": "LP",
+      "startup": 0.217,
+      "active": 0.05,
+      "recovery": 0.6,
+      "damage": 9,
+      "t3_damage": 15,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:248",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1,2": {
+      "name": "TORCH 1,2 (T3 jin r249)",
+      "input": "1,2",
+      "t3_source": "jin",
+      "t3_row": 249,
+      "t3_command": "RP",
+      "startup": 0.3,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 18,
+      "t3_damage": 30,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "string_hit": "1",
+      "anim_ref": "t3:jin:row:249",
+      "input_slots": [
+        "1,2",
+        "1",
+        "2"
+      ],
+      "move_class": "string"
+    },
+    "2": {
+      "name": "TORCH 2 (T3 jin r220)",
+      "input": "2",
+      "t3_source": "jin",
+      "t3_row": 220,
+      "t3_command": "RP",
+      "startup": 0.2,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 4,
+      "t3_damage": 7,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:220",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike"
+    },
+    "2,1": {
+      "name": "TORCH 2,1 (T3 jin r221)",
+      "input": "2,1",
+      "t3_source": "jin",
+      "t3_row": 221,
+      "t3_command": "LP",
+      "startup": 0.233,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 5,
+      "t3_damage": 8,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "string_hit": "2",
+      "anim_ref": "t3:jin:row:221",
+      "input_slots": [
+        "2,1",
+        "2",
+        "1"
+      ],
+      "move_class": "string"
+    },
+    "2,1,2": {
+      "name": "TORCH 2,1,2 (T3 jin r222)",
+      "input": "2,1,2",
+      "t3_source": "jin",
+      "t3_row": 222,
+      "t3_command": "RP",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 4,
+      "t3_damage": 6,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "string_hit": "2,1",
+      "anim_ref": "t3:jin:row:222",
+      "input_slots": [
+        "2,1,2",
+        "2",
+        "1",
+        "2"
+      ],
+      "move_class": "string"
+    },
+    "3": {
+      "name": "TORCH 3 (T3 jin r195)",
+      "input": "3",
+      "t3_source": "jin",
+      "t3_row": 195,
+      "t3_command": "LK",
+      "startup": 0.317,
+      "active": 0.083,
+      "recovery": 0.633,
+      "damage": 14,
+      "t3_damage": 23,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:195",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "4": {
+      "name": "TORCH 4 (T3 jin r199)",
+      "input": "4",
+      "t3_source": "jin",
+      "t3_row": 199,
+      "t3_command": "RK",
+      "startup": 0.183,
+      "active": 0.017,
+      "recovery": 0.633,
+      "damage": 7,
+      "t3_damage": 12,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:199",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4,1": {
+      "name": "TORCH 4,1 (T3 jin r184)",
+      "input": "4,1",
+      "t3_source": "jin",
+      "t3_row": 184,
+      "t3_command": "LP",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.85,
+      "damage": 3,
+      "t3_damage": 5,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "string_hit": "4",
+      "anim_ref": "t3:jin:row:184",
+      "input_slots": [
+        "4,1",
+        "4",
+        "1"
+      ],
+      "move_class": "string"
+    },
+    "4,1,2": {
+      "name": "TORCH 4,1,2 (T3 jin r186)",
+      "input": "4,1,2",
+      "t3_source": "jin",
+      "t3_row": 186,
+      "t3_command": "RP",
+      "startup": 0.45,
+      "active": 0.017,
+      "recovery": 0.617,
+      "damage": 6,
+      "t3_damage": 10,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "string_hit": "4,1",
+      "anim_ref": "t3:jin:row:186",
+      "input_slots": [
+        "4,1,2",
+        "4",
+        "1",
+        "2"
+      ],
+      "move_class": "string"
+    },
+    "1+3": {
+      "name": "TORCH 1+3 throw (T3 jin r118)",
+      "input": "1+3",
+      "t3_source": "jin",
+      "t3_row": 118,
+      "t3_command": "LP+LK",
+      "startup": 0.1,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 21,
+      "t3_damage": 35,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 11,
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+      "anim_ref": "t3:jin:row:118",
+      "input_slots": [
+        "1+3"
+      ],
+      "move_class": "throw",
+      "throw_break": "1"
+    },
+    "2+4": {
+      "name": "TORCH 2+4 throw (T3 jin r140)",
+      "input": "2+4",
+      "t3_source": "jin",
+      "t3_row": 140,
+      "t3_command": "RP+RK",
+      "startup": 0.1,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 21,
+      "t3_damage": 35,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 11,
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+      "anim_ref": "t3:jin:row:140",
+      "input_slots": [
+        "2+4"
+      ],
+      "move_class": "throw",
+      "throw_break": "2"
+    },
+    "d/f+2": {
+      "name": "TORCH d/f+2 (T3 jin r269)",
+      "input": "d/f+2",
+      "t3_source": "jin",
+      "t3_row": 269,
+      "t3_command": "3+RP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.633,
+      "damage": 18,
+      "t3_damage": 30,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:jin:row:269",
+      "input_slots": [
+        "d/f+2"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+4": {
+      "name": "TORCH u/f+4 (T3 jin r80)",
+      "input": "u/f+4",
+      "t3_source": "jin",
+      "t3_row": 80,
+      "t3_command": "9+RK",
+      "startup": 0.417,
+      "active": 0.017,
+      "recovery": 0.683,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:jin:row:80",
+      "input_slots": [
+        "u/f+4"
+      ],
+      "move_class": "strike"
+    },
+    "d,d/b,d,d/b+1+2": {
+      "name": "TORCH d,d/b,d,d/b+1+2 throw (T3 jin r277)",
+      "input": "d,d/b,d,d/b+1+2",
+      "t3_source": "jin",
+      "t3_row": 277,
+      "t3_command": "[2 1 2 1+LP+RP](59f)",
+      "startup": 0.2,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 21,
+      "t3_damage": 35,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 11,
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+      "anim_ref": "t3:jin:row:277",
+      "input_slots": [
+        "d,d/b,d,d/b+1+2"
+      ],
+      "move_class": "throw",
+      "throw_break": "1+2"
+    },
+    "d/b,n,f+2": {
+      "name": "TORCH d/b,n,f+2 throw (T3 jin r276)",
+      "input": "d/b,n,f+2",
+      "t3_source": "jin",
+      "t3_row": 276,
+      "t3_command": "[1 5 6+RP](30f)",
+      "startup": 0.183,
+      "active": 0.017,
+      "recovery": 0.517,
+      "damage": 21,
+      "t3_damage": 35,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 11,
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+      "anim_ref": "t3:jin:row:276",
+      "input_slots": [
+        "d/b,n,f+2"
+      ],
+      "move_class": "throw",
+      "throw_break": "1+2"
+    },
+    "n,d/f,n,d/f+1": {
+      "name": "TORCH n,d/f,n,d/f+1 throw (T3 jin r277)",
+      "input": "n,d/f,n,d/f+1",
+      "t3_source": "jin",
+      "t3_row": 277,
+      "t3_command": "[5 3 5 3+LP](25f)",
+      "startup": 0.2,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 21,
+      "t3_damage": 35,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 11,
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+      "anim_ref": "t3:jin:row:277",
+      "input_slots": [
+        "n,d/f,n,d/f+1"
+      ],
+      "move_class": "throw",
+      "throw_break": "1+2"
+    },
+    "S": {
+      "name": "Nail File [WH SIGNATURE]",
+      "input": "S",
+      "startup": 0.24,
+      "active": 0.017,
+      "recovery": 0.75,
+      "damage": 16,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 12,
+      "anim_ref": "wh:torch:sig:nail-file",
+      "input_slots": [
+        "S"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "She files her nails during the versus screen. Opponents say the sound is worse than the fight."
+    },
+    "P+K": {
+      "name": "Extraction Team of One [WH SIGNATURE]",
+      "input": "P+K",
+      "startup": 0.31,
+      "active": 0.05,
+      "recovery": 0.92,
+      "damage": 22,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 13,
+      "anim_ref": "wh:torch:sig:extraction-team-of-one",
+      "input_slots": [
+        "P+K",
+        "P",
+        "K"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "She broke in after her sister. Get Awa Pop. Get out. A dragging grab toward the exit.",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true
+    },
+    "1+2": {
+      "name": "Nail File [WH SIGNATURE]",
+      "input": "1+2",
+      "startup": 0.24,
+      "active": 0.017,
+      "recovery": 0.75,
+      "damage": 16,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 12,
+      "anim_ref": "wh:torch:sig:nail-file",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "She files her nails during the versus screen. Opponents say the sound is worse than the fight.",
+      "input_remapped_from": "S"
+    },
+    "1+2__main": {
+      "name": "TORCH 1+2 (T3 jin r32)",
+      "input": "1+2",
+      "t3_source": "jin",
+      "t3_row": 32,
+      "t3_command": "LP+RP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:32",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "strike"
+    },
+    "1+4": {
+      "name": "Extraction Team of One [WH SIGNATURE]",
+      "input": "1+4",
+      "startup": 0.31,
+      "active": 0.05,
+      "recovery": 0.92,
+      "damage": 22,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 13,
+      "anim_ref": "wh:torch:sig:extraction-team-of-one",
+      "input_slots": [
+        "1+4"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "She broke in after her sister. Get Awa Pop. Get out. A dragging grab toward the exit.",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "input_remapped_from": "P+K",
+      "throw_break": "1+2"
+    },
+    "f+4": {
+      "name": "TORCH f+4 (T3 jin r214)",
+      "input": "f+4",
+      "t3_source": "jin",
+      "t3_row": 214,
+      "t3_command": "6+RK",
+      "startup": 0.5,
+      "active": 0.05,
+      "recovery": 0.533,
+      "damage": 6,
+      "t3_damage": 10,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:214",
+      "input_slots": [
+        "f+4"
+      ],
+      "move_class": "strike"
+    },
+    "f+4__main": {
+      "name": "TORCH f+4 (T3 jin r214)",
+      "input": "f+4",
+      "t3_source": "jin",
+      "t3_row": 214,
+      "t3_command": "6+RK",
+      "startup": 0.5,
+      "active": 0.05,
+      "recovery": 0.533,
+      "damage": 6,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:214",
+      "input_slots": [
+        "f+4"
+      ],
+      "move_class": "strike"
+    },
+    "d+1+2": {
+      "name": "TORCH d+1+2 (T3 jin r92)",
+      "input": "d+1+2",
+      "t3_source": "jin",
+      "t3_row": 92,
+      "t3_command": "2+LP+RP",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 4,
+      "t3_damage": 6,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:92",
+      "input_slots": [
+        "d+1+2"
+      ],
+      "move_class": "strike"
+    },
+    "d+1+2__main": {
+      "name": "Pooka's Misfortune",
+      "input": "d+1+2",
+      "t8_source": "anna",
+      "t8_id": "Anna-d+1+2",
+      "t8_damage": "20",
+      "startup": 0.4,
+      "active": 0.033,
+      "recovery": 0.55,
+      "damage": 20,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:anna:anna-d+1+2",
+      "input_slots": [
+        "d+1+2"
+      ],
+      "move_class": "strike",
+      "note": "Low; on block -18"
+    },
+    "d/f+1": {
+      "name": "TORCH d/f+1 (T3 jin r179)",
+      "input": "d/f+1",
+      "t3_source": "jin",
+      "t3_row": 179,
+      "t3_command": "3+LP",
+      "startup": 0.367,
+      "active": 0.067,
+      "recovery": 0.7,
+      "damage": 21,
+      "t3_damage": 35,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:jin:row:179",
+      "input_slots": [
+        "d/f+1"
+      ],
+      "move_class": "strike"
+    },
+    "d/f+4": {
+      "name": "TORCH d/f+4 (T3 jin r205)",
+      "input": "d/f+4",
+      "t3_source": "jin",
+      "t3_row": 205,
+      "t3_command": "2/3+RK",
+      "startup": 0.267,
+      "active": 0.017,
+      "recovery": 0.767,
+      "damage": 11,
+      "t3_damage": 18,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:205",
+      "input_slots": [
+        "d/f+4"
+      ],
+      "move_class": "strike"
+    },
+    "u/b+1": {
+      "name": "TORCH u/b+1 (T3 jin r34)",
+      "input": "u/b+1",
+      "t3_source": "jin",
+      "t3_row": 34,
+      "t3_command": "4/7+LP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "t3_damage": 12,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:34",
+      "input_slots": [
+        "u/b+1"
+      ],
+      "move_class": "strike"
+    },
+    "u/b+3": {
+      "name": "TORCH u/b+3 (T3 jin r56)",
+      "input": "u/b+3",
+      "t3_source": "jin",
+      "t3_row": 56,
+      "t3_command": "4/7+LK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:jin:row:56",
+      "input_slots": [
+        "u/b+3"
+      ],
+      "move_class": "strike"
+    },
+    "u/b+4": {
+      "name": "TORCH u/b+4 (T3 jin r78)",
+      "input": "u/b+4",
+      "t3_source": "jin",
+      "t3_row": 78,
+      "t3_command": "4/7+RK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 11,
+      "t3_damage": 18,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:78",
+      "input_slots": [
+        "u/b+4"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+1": {
+      "name": "TORCH u/f+1 (T3 jin r33)",
+      "input": "u/f+1",
+      "t3_source": "jin",
+      "t3_row": 33,
+      "t3_command": "6/9+LP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "t3_damage": 12,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:33",
+      "input_slots": [
+        "u/f+1"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+3": {
+      "name": "TORCH u/f+3 (T3 jin r55)",
+      "input": "u/f+3",
+      "t3_source": "jin",
+      "t3_row": 55,
+      "t3_command": "6/9+LK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:jin:row:55",
+      "input_slots": [
+        "u/f+3"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+3__main": {
+      "name": "TORCH u/f+3 (T3 jin r157)",
+      "input": "u/f+3",
+      "t3_source": "jin",
+      "t3_row": 157,
+      "t3_command": "9+LK",
+      "startup": 0.367,
+      "active": 0.033,
+      "recovery": 0.733,
+      "damage": 18,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:157",
+      "input_slots": [
+        "u/f+3"
+      ],
+      "move_class": "strike"
+    },
+    "u/b+3+4": {
+      "name": "TORCH u/b+3+4 (T3 jin r53)",
+      "input": "u/b+3+4",
+      "t3_source": "jin",
+      "t3_row": 53,
+      "t3_command": "4/7+LK+RK",
+      "startup": 0.35,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:jin:row:53",
+      "input_slots": [
+        "u/b+3+4"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+3+4": {
+      "name": "TORCH u/f+3+4 (T3 jin r52)",
+      "input": "u/f+3+4",
+      "t3_source": "jin",
+      "t3_row": 52,
+      "t3_command": "6/9+LK+RK",
+      "startup": 0.35,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:jin:row:52",
+      "input_slots": [
+        "u/f+3+4"
+      ],
+      "move_class": "strike"
+    },
+    "d/f+1+2": {
+      "name": "TORCH d/f+1+2 throw (T3 jin r117)",
+      "input": "d/f+1+2",
+      "t3_source": "jin",
+      "t3_row": 117,
+      "t3_command": "3+LP+RP",
+      "startup": 0.433,
+      "active": 0.017,
+      "recovery": 0.1,
+      "damage": 21,
+      "t3_damage": 35,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 11,
+      "anim_ref": "t3:jin:row:117",
+      "input_slots": [
+        "d/f+1+2"
+      ],
+      "move_class": "throw",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "1+2",
+      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+    },
+    "qcb+1+3": {
+      "name": "TORCH qcb+1+3 throw (T3 jin r275)",
+      "input": "qcb+1+3",
+      "t3_source": "jin",
+      "t3_row": 275,
+      "t3_command": "[2 1 4+LP+LK](30f)",
+      "startup": 0.183,
+      "active": 0.017,
+      "recovery": 0.517,
+      "damage": 21,
+      "t3_damage": 35,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 11,
+      "anim_ref": "t3:jin:row:275",
+      "input_slots": [
+        "qcb+1+3"
+      ],
+      "move_class": "throw",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "1",
+      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+    },
+    "2,1,4": {
+      "name": "TORCH 2,1,4 (T3 jin r230)",
+      "input": "2,1,4",
+      "t3_source": "jin",
+      "t3_row": 230,
+      "t3_command": "RK",
+      "startup": 0.283,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 4,
+      "t3_damage": 7,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:230",
+      "input_slots": [
+        "2,1,4",
+        "2",
+        "1",
+        "4"
+      ],
+      "move_class": "string",
+      "string_hit": "2,1"
+    },
+    "2,1,2,2": {
+      "name": "TORCH 2,1,2,2 (T3 jin r223)",
+      "input": "2,1,2,2",
+      "t3_source": "jin",
+      "t3_row": 223,
+      "t3_command": "RP",
+      "startup": 0.283,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 4,
+      "t3_damage": 7,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:223",
+      "input_slots": [
+        "2,1,2,2",
+        "2",
+        "1",
+        "2",
+        "2"
+      ],
+      "move_class": "string",
+      "string_hit": "2,1,2"
+    },
+    "u/f+4,3": {
+      "name": "TORCH u/f+4,3 (T3 jin r193)",
+      "input": "u/f+4,3",
+      "t3_source": "jin",
+      "t3_row": 193,
+      "t3_command": "LK",
+      "startup": 0.583,
+      "active": 0.05,
+      "recovery": 0.467,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:jin:row:193",
+      "input_slots": [
+        "u/f+4,3",
+        "u/f+4",
+        "3"
+      ],
+      "move_class": "string",
+      "string_hit": "u/f+4"
+    },
+    "u/f+4,4": {
+      "name": "TORCH u/f+4,4 (T3 jin r207)",
+      "input": "u/f+4,4",
+      "t3_source": "jin",
+      "t3_row": 207,
+      "t3_command": "RK",
+      "startup": 0.783,
+      "active": 0.017,
+      "recovery": 0.65,
+      "damage": 9,
+      "t3_damage": 15,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:207",
+      "input_slots": [
+        "u/f+4,4",
+        "u/f+4",
+        "4"
+      ],
+      "move_class": "string",
+      "string_hit": "u/f+4"
+    },
+    "d+1+2,1": {
+      "name": "TORCH d+1+2,1 (T3 jin r177)",
+      "input": "d+1+2,1",
+      "t3_source": "jin",
+      "t3_row": 177,
+      "t3_command": "LP",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 5,
+      "t3_damage": 8,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:177",
+      "input_slots": [
+        "d+1+2,1",
+        "d+1+2",
+        "1"
+      ],
+      "move_class": "string",
+      "string_hit": "d+1+2"
+    },
+    "d+1+2,2": {
+      "name": "TORCH d+1+2,2 (T3 jin r93)",
+      "input": "d+1+2,2",
+      "t3_source": "jin",
+      "t3_row": 93,
+      "t3_command": "RP",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 4,
+      "t3_damage": 6,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:93",
+      "input_slots": [
+        "d+1+2,2",
+        "d+1+2",
+        "2"
+      ],
+      "move_class": "string",
+      "string_hit": "d+1+2"
+    },
+    "d/f+1,3": {
+      "name": "TORCH d/f+1,3 (T3 jin r197)",
+      "input": "d/f+1,3",
+      "t3_source": "jin",
+      "t3_row": 197,
+      "t3_command": "LK",
+      "startup": 0.9,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 12,
+      "t3_damage": 20,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:197",
+      "input_slots": [
+        "d/f+1,3",
+        "d/f+1",
+        "3"
+      ],
+      "move_class": "string",
+      "string_hit": "d/f+1"
+    },
+    "d/f+1,4": {
+      "name": "TORCH d/f+1,4 (T3 jin r204)",
+      "input": "d/f+1,4",
+      "t3_source": "jin",
+      "t3_row": 204,
+      "t3_command": "RK",
+      "startup": 1.0,
+      "active": 0.05,
+      "recovery": 0.75,
+      "damage": 7,
+      "t3_damage": 12,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:204",
+      "input_slots": [
+        "d/f+1,4",
+        "d/f+1",
+        "4"
+      ],
+      "move_class": "string",
+      "string_hit": "d/f+1"
+    },
+    "d/f+4,4": {
+      "name": "TORCH d/f+4,4 (T3 jin r212)",
+      "input": "d/f+4,4",
+      "t3_source": "jin",
+      "t3_row": 212,
+      "t3_command": "RK",
+      "startup": 0.217,
+      "active": 0.017,
+      "recovery": 0.95,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:jin:row:212",
+      "input_slots": [
+        "d/f+4,4",
+        "d/f+4",
+        "4"
+      ],
+      "move_class": "string",
+      "string_hit": "d/f+4"
+    },
+    "2,1,4,4": {
+      "name": "TORCH 2,1,4,4 (T3 jin r231)",
+      "input": "2,1,4,4",
+      "t3_source": "jin",
+      "t3_row": 231,
+      "t3_command": "RK",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.55,
+      "damage": 6,
+      "t3_damage": 10,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:231",
+      "input_slots": [
+        "2,1,4,4",
+        "2",
+        "1",
+        "4",
+        "4"
+      ],
+      "move_class": "string",
+      "string_hit": "2,1,4"
+    },
+    "2,1,2,2,3": {
+      "name": "TORCH 2,1,2,2,3 (T3 jin r224)",
+      "input": "2,1,2,2,3",
+      "t3_source": "jin",
+      "t3_row": 224,
+      "t3_command": "LK",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 4,
+      "t3_damage": 6,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:224",
+      "input_slots": [
+        "2,1,2,2,3",
+        "2",
+        "1",
+        "2",
+        "2",
+        "3"
+      ],
+      "move_class": "string",
+      "string_hit": "2,1,2,2"
+    },
+    "u/f+4,4,4": {
+      "name": "TORCH u/f+4,4,4 (T3 jin r210)",
+      "input": "u/f+4,4,4",
+      "t3_source": "jin",
+      "t3_row": 210,
+      "t3_command": "RK",
+      "startup": 0.4,
+      "active": 0.017,
+      "recovery": 0.767,
+      "damage": 7,
+      "t3_damage": 12,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:210",
+      "input_slots": [
+        "u/f+4,4,4",
+        "u/f+4",
+        "4",
+        "4"
+      ],
+      "move_class": "string",
+      "string_hit": "u/f+4,4"
+    },
+    "d+1+2,1,2": {
+      "name": "TORCH d+1+2,1,2 (T3 jin r183)",
+      "input": "d+1+2,1,2",
+      "t3_source": "jin",
+      "t3_row": 183,
+      "t3_command": "RP",
+      "startup": 0.217,
+      "active": 0.017,
+      "recovery": 0.783,
+      "damage": 11,
+      "t3_damage": 18,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:183",
+      "input_slots": [
+        "d+1+2,1,2",
+        "d+1+2",
+        "1",
+        "2"
+      ],
+      "move_class": "string",
+      "string_hit": "d+1+2,1"
+    },
+    "2,1,4,4,2": {
+      "name": "TORCH 2,1,4,4,2 (T3 jin r232)",
+      "input": "2,1,4,4,2",
+      "t3_source": "jin",
+      "t3_row": 232,
+      "t3_command": "RP",
+      "startup": 0.383,
+      "active": 0.017,
+      "recovery": 0.75,
+      "damage": 3,
+      "t3_damage": 5,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:232",
+      "input_slots": [
+        "2,1,4,4,2",
+        "2",
+        "1",
+        "4",
+        "4",
+        "2"
+      ],
+      "move_class": "string",
+      "string_hit": "2,1,4,4"
+    },
+    "2,1,2,2,3,4": {
+      "name": "TORCH 2,1,2,2,3,4 (T3 jin r225)",
+      "input": "2,1,2,2,3,4",
+      "t3_source": "jin",
+      "t3_row": 225,
+      "t3_command": "RK",
+      "startup": 0.617,
+      "active": 0.05,
+      "recovery": 0.617,
+      "damage": 6,
+      "t3_damage": 11,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:225",
+      "input_slots": [
+        "2,1,2,2,3,4",
+        "2",
+        "1",
+        "2",
+        "2",
+        "3",
+        "4"
+      ],
+      "move_class": "string",
+      "string_hit": "2,1,2,2,3"
+    },
+    "u/f+4,4,4,4": {
+      "name": "TORCH u/f+4,4,4,4 (T3 jin r211)",
+      "input": "u/f+4,4,4,4",
+      "t3_source": "jin",
+      "t3_row": 211,
+      "t3_command": "RK",
+      "startup": 0.367,
+      "active": 0.017,
+      "recovery": 0.8,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:jin:row:211",
+      "input_slots": [
+        "u/f+4,4,4,4",
+        "u/f+4",
+        "4",
+        "4",
+        "4"
+      ],
+      "move_class": "string",
+      "string_hit": "u/f+4,4,4"
+    },
+    "2,1,4,4,2,4": {
+      "name": "TORCH 2,1,4,4,2,4 (T3 jin r233)",
+      "input": "2,1,4,4,2,4",
+      "t3_source": "jin",
+      "t3_row": 233,
+      "t3_command": "RK",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 4,
+      "t3_damage": 7,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:233",
+      "input_slots": [
+        "2,1,4,4,2,4",
+        "2",
+        "1",
+        "4",
+        "4",
+        "2",
+        "4"
+      ],
+      "move_class": "string",
+      "string_hit": "2,1,4,4,2"
+    },
+    "n,b,n,f+2": {
+      "name": "TORCH n,b,n,f+2 (T3 jin r162)",
+      "input": "n,b,n,f+2",
+      "t3_source": "jin",
+      "t3_row": 162,
+      "t3_command": "[5 4 5 6+RP](50f)",
+      "startup": 0.25,
+      "active": 0.05,
+      "recovery": 0.617,
+      "damage": 11,
+      "t3_damage": 18,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:162",
+      "input_slots": [
+        "n,b,n,f+2"
+      ],
+      "move_class": "special"
+    },
+    "f": {
+      "name": "TORCH f (T3 jin r33)",
+      "input": "f",
+      "t3_source": "jin",
+      "t3_row": 33,
+      "t3_command": "6/9+LP+RP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:33",
+      "input_slots": [
+        "f"
+      ],
+      "move_class": "strike"
+    },
+    "b": {
+      "name": "TORCH b (T3 jin r34)",
+      "input": "b",
+      "t3_source": "jin",
+      "t3_row": 34,
+      "t3_command": "4/7+LP+RP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:34",
+      "input_slots": [
+        "b"
+      ],
+      "move_class": "strike"
+    },
+    "1_r36": {
+      "name": "TORCH 1_r36 (T3 jin r36)",
+      "input": "1_r36",
+      "t3_source": "jin",
+      "t3_row": 36,
+      "t3_command": "LP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:36",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r37": {
+      "name": "TORCH 1_r37 (T3 jin r37)",
+      "input": "1_r37",
+      "t3_source": "jin",
+      "t3_row": 37,
+      "t3_command": "LP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:37",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r38": {
+      "name": "TORCH 1_r38 (T3 jin r38)",
+      "input": "1_r38",
+      "t3_source": "jin",
+      "t3_row": 38,
+      "t3_command": "LP",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:38",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r39": {
+      "name": "TORCH 1_r39 (T3 jin r39)",
+      "input": "1_r39",
+      "t3_source": "jin",
+      "t3_row": 39,
+      "t3_command": "LP",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:39",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r40": {
+      "name": "TORCH 1_r40 (T3 jin r40)",
+      "input": "1_r40",
+      "t3_source": "jin",
+      "t3_row": 40,
+      "t3_command": "LP",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:40",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r41": {
+      "name": "TORCH 1_r41 (T3 jin r41)",
+      "input": "1_r41",
+      "t3_source": "jin",
+      "t3_row": 41,
+      "t3_command": "LP",
+      "startup": 0.117,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 11,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:41",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r42": {
+      "name": "TORCH 1_r42 (T3 jin r42)",
+      "input": "1_r42",
+      "t3_source": "jin",
+      "t3_row": 42,
+      "t3_command": "LP",
+      "startup": 0.117,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 11,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:42",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r43": {
+      "name": "TORCH 1_r43 (T3 jin r43)",
+      "input": "1_r43",
+      "t3_source": "jin",
+      "t3_row": 43,
+      "t3_command": "LP",
+      "startup": 0.117,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 11,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:43",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_c36_r44": {
+      "name": "TORCH 1_c36_r44 (T3 jin r44)",
+      "input": "1_c36_r44",
+      "t3_source": "jin",
+      "t3_row": 44,
+      "t3_command": "LP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:44",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "f_c36_r45": {
+      "name": "TORCH f_c36_r45 (T3 jin r45)",
+      "input": "f_c36_r45",
+      "t3_source": "jin",
+      "t3_row": 45,
+      "t3_command": "6/9+LP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:45",
+      "input_slots": [
+        "f"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "b_c36_r46": {
+      "name": "TORCH b_c36_r46 (T3 jin r46)",
+      "input": "b_c36_r46",
+      "t3_source": "jin",
+      "t3_row": 46,
+      "t3_command": "4/7+LP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:46",
+      "input_slots": [
+        "b"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "2_r48": {
+      "name": "TORCH 2_r48 (T3 jin r48)",
+      "input": "2_r48",
+      "t3_source": "jin",
+      "t3_row": 48,
+      "t3_command": "RP",
+      "startup": 0.183,
+      "active": 0.05,
+      "recovery": 0.667,
+      "damage": 11,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:48",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike"
+    },
+    "2_r49": {
+      "name": "TORCH 2_r49 (T3 jin r49)",
+      "input": "2_r49",
+      "t3_source": "jin",
+      "t3_row": 49,
+      "t3_command": "RP",
+      "startup": 0.183,
+      "active": 0.05,
+      "recovery": 0.667,
+      "damage": 11,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:49",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike"
+    },
+    "3+4_r107": {
+      "name": "TORCH 3+4_r107 (T3 jin r51)",
+      "input": "3+4_r107",
+      "t3_source": "jin",
+      "t3_row": 51,
+      "t3_command": "LK+RK",
+      "startup": 0.35,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:51",
+      "input_slots": [
+        "3+4"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 107
+    },
+    "f_r52": {
+      "name": "TORCH f_r52 (T3 jin r52)",
+      "input": "f_r52",
+      "t3_source": "jin",
+      "t3_row": 52,
+      "t3_command": "6/9+LK+RK",
+      "startup": 0.35,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:52",
+      "input_slots": [
+        "f"
+      ],
+      "move_class": "strike"
+    },
+    "b_r53": {
+      "name": "TORCH b_r53 (T3 jin r53)",
+      "input": "b_r53",
+      "t3_source": "jin",
+      "t3_row": 53,
+      "t3_command": "4/7+LK+RK",
+      "startup": 0.35,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:53",
+      "input_slots": [
+        "b"
+      ],
+      "move_class": "strike"
+    },
+    "3_c36": {
+      "name": "TORCH 3_c36 (T3 jin r54)",
+      "input": "3_c36",
+      "t3_source": "jin",
+      "t3_row": 54,
+      "t3_command": "LK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:54",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "f_c36_r55": {
+      "name": "TORCH f_c36_r55 (T3 jin r55)",
+      "input": "f_c36_r55",
+      "t3_source": "jin",
+      "t3_row": 55,
+      "t3_command": "6/9+LK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:55",
+      "input_slots": [
+        "f"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "b_c36_r56": {
+      "name": "TORCH b_c36_r56 (T3 jin r56)",
+      "input": "b_c36_r56",
+      "t3_source": "jin",
+      "t3_row": 56,
+      "t3_command": "4/7+LK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:56",
+      "input_slots": [
+        "b"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "3_r58": {
+      "name": "TORCH 3_r58 (T3 jin r58)",
+      "input": "3_r58",
+      "t3_source": "jin",
+      "t3_row": 58,
+      "t3_command": "LK",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.817,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:58",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "3_r59": {
+      "name": "TORCH 3_r59 (T3 jin r59)",
+      "input": "3_r59",
+      "t3_source": "jin",
+      "t3_row": 59,
+      "t3_command": "LK",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.817,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:59",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "3_r60": {
+      "name": "TORCH 3_r60 (T3 jin r60)",
+      "input": "3_r60",
+      "t3_source": "jin",
+      "t3_row": 60,
+      "t3_command": "LK",
+      "startup": 0.233,
+      "active": 0.017,
+      "recovery": 0.8,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:60",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "3_r61": {
+      "name": "TORCH 3_r61 (T3 jin r61)",
+      "input": "3_r61",
+      "t3_source": "jin",
+      "t3_row": 61,
+      "t3_command": "LK",
+      "startup": 0.233,
+      "active": 0.017,
+      "recovery": 0.8,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:61",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "3_r62": {
+      "name": "TORCH 3_r62 (T3 jin r62)",
+      "input": "3_r62",
+      "t3_source": "jin",
+      "t3_row": 62,
+      "t3_command": "LK",
+      "startup": 0.233,
+      "active": 0.017,
+      "recovery": 0.8,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:62",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "3_r63": {
+      "name": "TORCH 3_r63 (T3 jin r63)",
+      "input": "3_r63",
+      "t3_source": "jin",
+      "t3_row": 63,
+      "t3_command": "LK",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.817,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:63",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "3_r64": {
+      "name": "TORCH 3_r64 (T3 jin r64)",
+      "input": "3_r64",
+      "t3_source": "jin",
+      "t3_row": 64,
+      "t3_command": "LK",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.817,
+      "damage": 9,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:64",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "3_r65": {
+      "name": "TORCH 3_r65 (T3 jin r65)",
+      "input": "3_r65",
+      "t3_source": "jin",
+      "t3_row": 65,
+      "t3_command": "LK",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.817,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:65",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "b_r66": {
+      "name": "TORCH b_r66 (T3 jin r66)",
+      "input": "b_r66",
+      "t3_source": "jin",
+      "t3_row": 66,
+      "t3_command": "4/7+RK",
+      "startup": 0.25,
+      "active": 0.05,
+      "recovery": 0.6,
+      "damage": 6,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:66",
+      "input_slots": [
+        "b"
+      ],
+      "move_class": "strike"
+    },
+    "b_c36": {
+      "name": "TORCH b_c36 (T3 jin r66)",
+      "input": "b_c36",
+      "t3_source": "jin",
+      "t3_row": 66,
+      "t3_command": "4/7+RK",
+      "startup": 0.25,
+      "active": 0.05,
+      "recovery": 0.6,
+      "damage": 6,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:66",
+      "input_slots": [
+        "b"
+      ],
+      "move_class": "special",
+      "t3_condition": 36
+    },
+    "4_r68": {
+      "name": "TORCH 4_r68 (T3 jin r68)",
+      "input": "4_r68",
+      "t3_source": "jin",
+      "t3_row": 68,
+      "t3_command": "RK",
+      "startup": 0.133,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 15,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:68",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_r69": {
+      "name": "TORCH 4_r69 (T3 jin r69)",
+      "input": "4_r69",
+      "t3_source": "jin",
+      "t3_row": 69,
+      "t3_command": "RK",
+      "startup": 0.133,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 15,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:69",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_r70": {
+      "name": "TORCH 4_r70 (T3 jin r70)",
+      "input": "4_r70",
+      "t3_source": "jin",
+      "t3_row": 70,
+      "t3_command": "RK",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 15,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:70",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_r71": {
+      "name": "TORCH 4_r71 (T3 jin r71)",
+      "input": "4_r71",
+      "t3_source": "jin",
+      "t3_row": 71,
+      "t3_command": "RK",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 15,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:71",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_r72": {
+      "name": "TORCH 4_r72 (T3 jin r72)",
+      "input": "4_r72",
+      "t3_source": "jin",
+      "t3_row": 72,
+      "t3_command": "RK",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 15,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:72",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_r73": {
+      "name": "TORCH 4_r73 (T3 jin r73)",
+      "input": "4_r73",
+      "t3_source": "jin",
+      "t3_row": 73,
+      "t3_command": "RK",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 9,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:73",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_r74": {
+      "name": "TORCH 4_r74 (T3 jin r74)",
+      "input": "4_r74",
+      "t3_source": "jin",
+      "t3_row": 74,
+      "t3_command": "RK",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 9,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:74",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_r75": {
+      "name": "TORCH 4_r75 (T3 jin r75)",
+      "input": "4_r75",
+      "t3_source": "jin",
+      "t3_row": 75,
+      "t3_command": "RK",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 9,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:75",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_c36_r76": {
+      "name": "TORCH 4_c36_r76 (T3 jin r76)",
+      "input": "4_c36_r76",
+      "t3_source": "jin",
+      "t3_row": 76,
+      "t3_command": "RK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 12,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:76",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "f_c36_r77": {
+      "name": "TORCH f_c36_r77 (T3 jin r77)",
+      "input": "f_c36_r77",
+      "t3_source": "jin",
+      "t3_row": 77,
+      "t3_command": "6/9+RK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 12,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:77",
+      "input_slots": [
+        "f"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "b_c36_r78": {
+      "name": "TORCH b_c36_r78 (T3 jin r78)",
+      "input": "b_c36_r78",
+      "t3_source": "jin",
+      "t3_row": 78,
+      "t3_command": "4/7+RK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 11,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:78",
+      "input_slots": [
+        "b"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "d/f+1+2_r17": {
+      "name": "TORCH d/f+1+2_r17 (T3 jin r117)",
+      "input": "d/f+1+2_r17",
+      "t3_source": "jin",
+      "t3_row": 117,
+      "t3_command": "3+LP+RP",
+      "startup": 0.433,
+      "active": 0.017,
+      "recovery": 0.0,
+      "damage": 21,
+      "limb": "both",
+      "heavy": false,
+      "knock": 6.5,
+      "soulGain": 11,
+      "anim_ref": "t3:jin:row:117",
+      "input_slots": [
+        "d/f+1+2"
+      ],
+      "move_class": "throw",
+      "t3_restriction": 17,
+      "damage_note": "t3 row damage 0; WH grappler convention 21"
+    },
+    "1_r144": {
+      "name": "TORCH 1_r144 (T3 jin r144)",
+      "input": "1_r144",
+      "t3_source": "jin",
+      "t3_row": 144,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.25,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:144",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "b_r169": {
+      "name": "TORCH b_r169 (T3 jin r169)",
+      "input": "b_r169",
+      "t3_source": "jin",
+      "t3_row": 169,
+      "t3_command": "4/6/7/8/9+RP",
+      "startup": 0.3,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 14,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:169",
+      "input_slots": [
+        "b"
+      ],
+      "move_class": "strike"
+    },
+    "2_r178": {
+      "name": "TORCH 2_r178 (T3 jin r178)",
+      "input": "2_r178",
+      "t3_source": "jin",
+      "t3_row": 178,
+      "t3_command": "RP",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 16,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:178",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike"
+    },
+    "2_r180": {
+      "name": "TORCH 2_r180 (T3 jin r180)",
+      "input": "2_r180",
+      "t3_source": "jin",
+      "t3_row": 180,
+      "t3_command": "RP",
+      "startup": 0.283,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 12,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:180",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike"
+    },
+    "2_r183": {
+      "name": "TORCH 2_r183 (T3 jin r183)",
+      "input": "2_r183",
+      "t3_source": "jin",
+      "t3_row": 183,
+      "t3_command": "RP",
+      "startup": 0.217,
+      "active": 0.017,
+      "recovery": 0.783,
+      "damage": 11,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:183",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike"
+    },
+    "4_r188": {
+      "name": "TORCH 4_r188 (T3 jin r188)",
+      "input": "4_r188",
+      "t3_source": "jin",
+      "t3_row": 188,
+      "t3_command": "RK",
+      "startup": 0.35,
+      "active": 0.05,
+      "recovery": 0.65,
+      "damage": 12,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:188",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "d/b": {
+      "name": "TORCH d/b (T3 jin r189)",
+      "input": "d/b",
+      "t3_source": "jin",
+      "t3_row": 189,
+      "t3_command": "1/2/3+RK",
+      "startup": 0.367,
+      "active": 0.033,
+      "recovery": 0.65,
+      "damage": 8,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:189",
+      "input_slots": [
+        "d/b"
+      ],
+      "move_class": "strike"
+    },
+    "2_r190": {
+      "name": "TORCH 2_r190 (T3 jin r190)",
+      "input": "2_r190",
+      "t3_source": "jin",
+      "t3_row": 190,
+      "t3_command": "RP",
+      "startup": 0.35,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 9,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:190",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike"
+    },
+    "2_r10_r192": {
+      "name": "TORCH 2_r10_r192 (T3 jin r192)",
+      "input": "2_r10_r192",
+      "t3_source": "jin",
+      "t3_row": 192,
+      "t3_command": "RP",
+      "startup": 0.3,
+      "active": 0.033,
+      "recovery": 0.767,
+      "damage": 9,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:192",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 10
+    },
+    "3_r195": {
+      "name": "TORCH 3_r195 (T3 jin r195)",
+      "input": "3_r195",
+      "t3_source": "jin",
+      "t3_row": 195,
+      "t3_command": "LK",
+      "startup": 0.317,
+      "active": 0.083,
+      "recovery": 0.633,
+      "damage": 14,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:195",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "3_r197": {
+      "name": "TORCH 3_r197 (T3 jin r197)",
+      "input": "3_r197",
+      "t3_source": "jin",
+      "t3_row": 197,
+      "t3_command": "LK",
+      "startup": 0.9,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 12,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:197",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "4_r201": {
+      "name": "TORCH 4_r201 (T3 jin r201)",
+      "input": "4_r201",
+      "t3_source": "jin",
+      "t3_row": 201,
+      "t3_command": "RK",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.55,
+      "damage": 12,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:201",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_r202": {
+      "name": "TORCH 4_r202 (T3 jin r202)",
+      "input": "4_r202",
+      "t3_source": "jin",
+      "t3_row": 202,
+      "t3_command": "RK",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.55,
+      "damage": 9,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:202",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_r203": {
+      "name": "TORCH 4_r203 (T3 jin r203)",
+      "input": "4_r203",
+      "t3_source": "jin",
+      "t3_row": 203,
+      "t3_command": "RK",
+      "startup": 0.6,
+      "active": 0.033,
+      "recovery": 0.6,
+      "damage": 18,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:203",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4_r204": {
+      "name": "TORCH 4_r204 (T3 jin r204)",
+      "input": "4_r204",
+      "t3_source": "jin",
+      "t3_row": 204,
+      "t3_command": "RK",
+      "startup": 1.0,
+      "active": 0.05,
+      "recovery": 0.75,
+      "damage": 7,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:204",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "1_r208": {
+      "name": "TORCH 1_r208 (T3 jin r208)",
+      "input": "1_r208",
+      "t3_source": "jin",
+      "t3_row": 208,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.433,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:208",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "4_r211": {
+      "name": "TORCH 4_r211 (T3 jin r211)",
+      "input": "4_r211",
+      "t3_source": "jin",
+      "t3_row": 211,
+      "t3_command": "RK",
+      "startup": 0.367,
+      "active": 0.017,
+      "recovery": 0.8,
+      "damage": 15,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:211",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "1_r213": {
+      "name": "TORCH 1_r213 (T3 jin r213)",
+      "input": "1_r213",
+      "t3_source": "jin",
+      "t3_row": 213,
+      "t3_command": "any-button",
+      "startup": 0.367,
+      "active": 0.017,
+      "recovery": 0.8,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:213",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "b+1": {
+      "name": "TORCH b+1 (T3 jin r216)",
+      "input": "b+1",
+      "t3_source": "jin",
+      "t3_row": 216,
+      "t3_command": "4+any-button",
+      "startup": 1.05,
+      "active": 0.033,
+      "recovery": 0.883,
+      "damage": 47,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:216",
+      "input_slots": [
+        "b+1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r229": {
+      "name": "TORCH 1_r229 (T3 jin r229)",
+      "input": "1_r229",
+      "t3_source": "jin",
+      "t3_row": 229,
+      "t3_command": "LP",
+      "startup": 0.45,
+      "active": 0.033,
+      "recovery": 0.717,
+      "damage": 18,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:229",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r236": {
+      "name": "TORCH 1_r236 (T3 jin r236)",
+      "input": "1_r236",
+      "t3_source": "jin",
+      "t3_row": 236,
+      "t3_command": "LP",
+      "startup": 0.767,
+      "active": 0.05,
+      "recovery": 0.883,
+      "damage": 18,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:236",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "2_r249": {
+      "name": "TORCH 2_r249 (T3 jin r249)",
+      "input": "2_r249",
+      "t3_source": "jin",
+      "t3_row": 249,
+      "t3_command": "RP",
+      "startup": 0.3,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 18,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:249",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike"
+    },
+    "1+2+3": {
+      "name": "TORCH 1+2+3 (T3 jin r255)",
+      "input": "1+2+3",
+      "t3_source": "jin",
+      "t3_row": 255,
+      "t3_command": "any+LP+RP+LK",
+      "startup": 0.767,
+      "active": 0.033,
+      "recovery": 0.667,
+      "damage": 5,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:255",
+      "input_slots": [
+        "1+2+3"
+      ],
+      "move_class": "strike"
+    },
+    "1_r263": {
+      "name": "TORCH 1_r263 (T3 jin r263)",
+      "input": "1_r263",
+      "t3_source": "jin",
+      "t3_row": 263,
+      "t3_command": "any-button",
+      "startup": 0.4,
+      "active": 0.067,
+      "recovery": 0.833,
+      "damage": 12,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:263",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "4_r268": {
+      "name": "TORCH 4_r268 (T3 jin r268)",
+      "input": "4_r268",
+      "t3_source": "jin",
+      "t3_row": 268,
+      "t3_command": "RK",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.633,
+      "damage": 12,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:268",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "d/f+2_r10": {
+      "name": "TORCH d/f+2_r10 (T3 jin r269)",
+      "input": "d/f+2_r10",
+      "t3_source": "jin",
+      "t3_row": 269,
+      "t3_command": "3+RP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.633,
+      "damage": 18,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:269",
+      "input_slots": [
+        "d/f+2"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 10
+    },
+    "4_r271": {
+      "name": "TORCH 4_r271 (T3 jin r271)",
+      "input": "4_r271",
+      "t3_source": "jin",
+      "t3_row": 271,
+      "t3_command": "RK",
+      "startup": 0.217,
+      "active": 0.033,
+      "recovery": 0.633,
+      "damage": 9,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:271",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "1_r272": {
+      "name": "TORCH 1_r272 (T3 jin r272)",
+      "input": "1_r272",
+      "t3_source": "jin",
+      "t3_row": 272,
+      "t3_command": "any-button",
+      "startup": 0.4,
+      "active": 0.067,
+      "recovery": 0.833,
+      "damage": 12,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:272",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "1_c36_r291": {
+      "name": "TORCH 1_c36_r291 (T3 jin r291)",
+      "input": "1_c36_r291",
+      "t3_source": "jin",
+      "t3_row": 291,
+      "t3_command": "any-button",
+      "startup": 0.367,
+      "active": 0.017,
+      "recovery": 0.667,
+      "damage": 5,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:291",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "1_c36_r292": {
+      "name": "TORCH 1_c36_r292 (T3 jin r292)",
+      "input": "1_c36_r292",
+      "t3_source": "jin",
+      "t3_row": 292,
+      "t3_command": "any-button",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 8,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:292",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "1_c36_r295": {
+      "name": "TORCH 1_c36_r295 (T3 jin r295)",
+      "input": "1_c36_r295",
+      "t3_source": "jin",
+      "t3_row": 295,
+      "t3_command": "any-button",
+      "startup": 0.233,
+      "active": 0.017,
+      "recovery": 0.667,
+      "damage": 4,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:295",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "1_c36_r296": {
+      "name": "TORCH 1_c36_r296 (T3 jin r296)",
+      "input": "1_c36_r296",
+      "t3_source": "jin",
+      "t3_row": 296,
+      "t3_command": "any-button",
+      "startup": 0.183,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 6,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:296",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "1_c5_r365": {
+      "name": "TORCH 1_c5_r365 (T3 jin r365)",
+      "input": "1_c5_r365",
+      "t3_source": "jin",
+      "t3_row": 365,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.417,
+      "damage": 24,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:365",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 5
+    },
+    "1_c3_r367": {
+      "name": "TORCH 1_c3_r367 (T3 jin r367)",
+      "input": "1_c3_r367",
+      "t3_source": "jin",
+      "t3_row": 367,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 3.317,
+      "damage": 35,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:367",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 3
+    },
+    "1_r371": {
+      "name": "TORCH 1_r371 (T3 jin r371)",
+      "input": "1_r371",
+      "t3_source": "jin",
+      "t3_row": 371,
+      "t3_command": "any-button",
+      "startup": 0.917,
+      "active": 0.017,
+      "recovery": 0.0,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:371",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "f+2+4_r14": {
+      "name": "TORCH f+2+4_r14 (T3 jin r372)",
+      "input": "f+2+4_r14",
+      "t3_source": "jin",
+      "t3_row": 372,
+      "t3_command": "6+RP+RK",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.283,
+      "damage": 8,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:372",
+      "input_slots": [
+        "f+2+4"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 14
+    },
+    "f+2+4": {
+      "name": "TORCH f+2+4 (T3 jin r373)",
+      "input": "f+2+4",
+      "t3_source": "jin",
+      "t3_row": 373,
+      "t3_command": "6+RP+RK",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.283,
+      "damage": 8,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:373",
+      "input_slots": [
+        "f+2+4"
+      ],
+      "move_class": "strike"
+    },
+    "1_c2_r376": {
+      "name": "TORCH 1_c2_r376 (T3 jin r376)",
+      "input": "1_c2_r376",
+      "t3_source": "jin",
+      "t3_row": 376,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.817,
+      "damage": 19,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:376",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 2
+    },
+    "1_c2_r377": {
+      "name": "TORCH 1_c2_r377 (T3 jin r377)",
+      "input": "1_c2_r377",
+      "t3_source": "jin",
+      "t3_row": 377,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.55,
+      "damage": 21,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:377",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 2
+    },
+    "1_c2_r381": {
+      "name": "TORCH 1_c2_r381 (T3 jin r381)",
+      "input": "1_c2_r381",
+      "t3_source": "jin",
+      "t3_row": 381,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.767,
+      "damage": 22,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:381",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 2
+    },
+    "1_c75_r384": {
+      "name": "TORCH 1_c75_r384 (T3 jin r384)",
+      "input": "1_c75_r384",
+      "t3_source": "jin",
+      "t3_row": 384,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.333,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:384",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 10
+    },
+    "1_c75_r385": {
+      "name": "TORCH 1_c75_r385 (T3 jin r385)",
+      "input": "1_c75_r385",
+      "t3_source": "jin",
+      "t3_row": 385,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.167,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:385",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 10
+    },
+    "1_c75_r387": {
+      "name": "TORCH 1_c75_r387 (T3 jin r387)",
+      "input": "1_c75_r387",
+      "t3_source": "jin",
+      "t3_row": 387,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.917,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:387",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 10
+    },
+    "1_c75_r389": {
+      "name": "TORCH 1_c75_r389 (T3 jin r389)",
+      "input": "1_c75_r389",
+      "t3_source": "jin",
+      "t3_row": 389,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.767,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:389",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 10
+    },
+    "1_c73": {
+      "name": "TORCH 1_c73 (T3 jin r389)",
+      "input": "1_c73",
+      "t3_source": "jin",
+      "t3_row": 389,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.767,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:389",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "special",
+      "t3_condition": 73,
+      "t3_restriction": 10
+    },
+    "1_c74": {
+      "name": "TORCH 1_c74 (T3 jin r389)",
+      "input": "1_c74",
+      "t3_source": "jin",
+      "t3_row": 389,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.767,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:389",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "special",
+      "t3_condition": 74,
+      "t3_restriction": 10
+    },
+    "1_c75_r391": {
+      "name": "TORCH 1_c75_r391 (T3 jin r391)",
+      "input": "1_c75_r391",
+      "t3_source": "jin",
+      "t3_row": 391,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.717,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:391",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 10
+    },
+    "1_c75_r393": {
+      "name": "TORCH 1_c75_r393 (T3 jin r393)",
+      "input": "1_c75_r393",
+      "t3_source": "jin",
+      "t3_row": 393,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 3.567,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:393",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 10
+    },
+    "1_c75_r395": {
+      "name": "TORCH 1_c75_r395 (T3 jin r395)",
+      "input": "1_c75_r395",
+      "t3_source": "jin",
+      "t3_row": 395,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.167,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:395",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 10
+    },
+    "1_c75_r397": {
+      "name": "TORCH 1_c75_r397 (T3 jin r397)",
+      "input": "1_c75_r397",
+      "t3_source": "jin",
+      "t3_row": 397,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.217,
+      "damage": 24,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:397",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 10
+    },
+    "1_c74_r399": {
+      "name": "TORCH 1_c74_r399 (T3 jin r399)",
+      "input": "1_c74_r399",
+      "t3_source": "jin",
+      "t3_row": 399,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.0,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:399",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 74,
+      "t3_restriction": 10
+    },
+    "1_c75_r401": {
+      "name": "TORCH 1_c75_r401 (T3 jin r401)",
+      "input": "1_c75_r401",
+      "t3_source": "jin",
+      "t3_row": 401,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.667,
+      "damage": 6,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:401",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 10
+    },
+    "1+2_t8": {
+      "name": "Open Sesame",
+      "input": "1+2",
+      "t8_source": "anna",
+      "t8_id": "Anna-1+2",
+      "t8_damage": "[5;5]",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 10,
+      "limb": "both",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 5,
+      "anim_ref": "t8:anna:anna-1+2",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "strike",
+      "multi_hit": {
+        "hits": [
+          5,
+          5
+        ],
+        "total": 10
+      },
+      "note": "Mid; on block +1",
+      "t8_input": "1+2"
+    },
+    "1,2,1": {
+      "name": "Left Right Left",
+      "input": "1,2,1",
+      "t8_source": "anna",
+      "t8_id": "Anna-1,2,1",
+      "t8_damage": ",4",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.417,
+      "damage": 17,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t8:anna:anna-1,2,1",
+      "input_slots": [
+        "1",
+        "1,2",
+        "1,2,1"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          5,
+          8,
+          4
+        ],
+        "total": 17
+      },
+      "note": "High; on block -4"
+    },
+    "1,2,1,2": {
+      "name": "Roasted with Love",
+      "input": "1,2,1,2",
+      "t8_source": "anna",
+      "t8_id": "Anna-1,2,1,2",
+      "t8_damage": ",24",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.217,
+      "damage": 41,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-1,2,1,2",
+      "input_slots": [
+        "1",
+        "1,2",
+        "1,2,1",
+        "1,2,1,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          5,
+          8,
+          4,
+          24
+        ],
+        "total": 41
+      },
+      "note": "Mid; on block -14~+35; knockdown on hit"
+    },
+    "1,2,1,4": {
+      "name": "Frost Combination",
+      "input": "1,2,1,4",
+      "t8_source": "anna",
+      "t8_id": "Anna-1,2,1,4",
+      "t8_damage": ",18",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 35,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-1,2,1,4",
+      "input_slots": [
+        "1",
+        "1,2",
+        "1,2,1",
+        "1,2,1,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          5,
+          8,
+          4,
+          18
+        ],
+        "total": 35
+      },
+      "note": "High; on block +4; knockdown on hit"
+    },
+    "1,2,1,H.2": {
+      "name": "Roasted with Eternal Love",
+      "input": "1,2,1,H.2",
+      "t8_source": "anna",
+      "t8_id": "Anna-1,2,1,H.2",
+      "t8_damage": "5,5,24",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.4,
+      "damage": 51,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-1,2,1,h.2",
+      "input_slots": [
+        "1",
+        "1,2",
+        "1,2,1",
+        "1,2,1,H.2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          5,
+          8,
+          4,
+          5,
+          5,
+          24
+        ],
+        "total": 51
+      },
+      "note": "Mid, Mid, Mid; on block -2~+47g; knockdown on hit"
+    },
+    "1,2,2": {
+      "name": "Left Right Stinger",
+      "input": "1,2,2",
+      "t8_source": "anna",
+      "t8_id": "Anna-1,2,2",
+      "t8_damage": ",20",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 33,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-1,2,2",
+      "input_slots": [
+        "1",
+        "1,2",
+        "1,2,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          5,
+          8,
+          20
+        ],
+        "total": 33
+      },
+      "note": "Mid; on block -8"
+    },
+    "1,2,4": {
+      "name": "Bermuda Triangle",
+      "input": "1,2,4",
+      "t8_source": "anna",
+      "t8_id": "Anna-1,2,4",
+      "t8_damage": ",22",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 35,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-1,2,4",
+      "input_slots": [
+        "1",
+        "1,2",
+        "1,2,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          5,
+          8,
+          22
+        ],
+        "total": 35
+      },
+      "note": "High; on block -6; knockdown on hit"
+    },
+    "1,2,uf+1+2": {
+      "name": "Left Right Fried Love",
+      "input": "1,2,uf+1+2",
+      "t8_source": "anna",
+      "t8_id": "Anna-1,2,uf+1+2",
+      "t8_damage": ",13",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.133,
+      "damage": 26,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 13,
+      "anim_ref": "t8:anna:anna-1,2,uf+1+2",
+      "input_slots": [
+        "1",
+        "1,2",
+        "1,2,uf+1+2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          5,
+          8,
+          13
+        ],
+        "total": 26
+      },
+      "note": "High; on block -14~+10; knockdown on hit"
+    },
+    "1,4": {
+      "name": "Reverse PDK Combo",
+      "input": "1,4",
+      "t8_source": "anna",
+      "t8_id": "Anna-1,4",
+      "t8_damage": ",12",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.533,
+      "damage": 17,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t8:anna:anna-1,4",
+      "input_slots": [
+        "1",
+        "1,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          5,
+          12
+        ],
+        "total": 17
+      },
+      "note": "Low; on block -13"
+    },
+    "2,2": {
+      "name": "Quick Stinger",
+      "input": "2,2",
+      "t8_source": "anna",
+      "t8_id": "Anna-2,2",
+      "t8_damage": ",20",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 30,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-2,2",
+      "input_slots": [
+        "2",
+        "2,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          10,
+          20
+        ],
+        "total": 30
+      },
+      "note": "Mid; on block -8"
+    },
+    "2+3": {
+      "name": "Heat Burst",
+      "input": "2+3",
+      "t8_source": "anna",
+      "t8_id": "Anna-2+3",
+      "t8_damage": "[12;12]",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 24,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:anna:anna-2+3",
+      "input_slots": [
+        "2+3"
+      ],
+      "move_class": "strike",
+      "multi_hit": {
+        "hits": [
+          12,
+          12
+        ],
+        "total": 24
+      },
+      "note": "Mid; on block +1"
+    },
+    "2,3": {
+      "name": "Straight Face Wash",
+      "input": "2,3",
+      "t8_source": "anna",
+      "t8_id": "Anna-2,3",
+      "t8_damage": ",14",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 24,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:anna:anna-2,3",
+      "input_slots": [
+        "2",
+        "2,3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          10,
+          14
+        ],
+        "total": 24
+      },
+      "note": "Mid; on block -3"
+    },
+    "2,4": {
+      "name": "Jab Roundhouse",
+      "input": "2,4",
+      "t8_source": "anna",
+      "t8_id": "Anna-2,4",
+      "t8_damage": ",22",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 32,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-2,4",
+      "input_slots": [
+        "2",
+        "2,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          10,
+          22
+        ],
+        "total": 32
+      },
+      "note": "High; on block -6; knockdown on hit"
+    },
+    "2,uf+1+2": {
+      "name": "Quick Fried Love",
+      "input": "2,uf+1+2",
+      "t8_source": "anna",
+      "t8_id": "Anna-2,uf+1+2",
+      "t8_damage": ",13",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.133,
+      "damage": 23,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:anna:anna-2,uf+1+2",
+      "input_slots": [
+        "2",
+        "2,uf+1+2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          10,
+          13
+        ],
+        "total": 23
+      },
+      "note": "High; on block -14~+10; knockdown on hit"
+    },
+    "3,2": {
+      "name": "Serval Cleaver",
+      "input": "3,2",
+      "t8_source": "anna",
+      "t8_id": "Anna-3,2",
+      "t8_damage": ",20",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.633,
+      "damage": 37,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-3,2",
+      "input_slots": [
+        "3",
+        "3,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          17,
+          20
+        ],
+        "total": 37
+      },
+      "note": "Mid; on block -11c"
+    },
+    "3+4": {
+      "name": "Aphrodite's Scorn",
+      "input": "3+4",
+      "t8_source": "anna",
+      "t8_id": "Anna-3+4",
+      "t8_damage": "26",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.583,
+      "damage": 26,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 13,
+      "anim_ref": "t8:anna:anna-3+4",
+      "input_slots": [
+        "3+4"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -16; knockdown on hit"
+    },
+    "4,2": {
+      "name": "Right High Kick (2)",
+      "input": "4,2",
+      "t8_source": "anna",
+      "t8_id": "Anna-4,2",
+      "t8_damage": ",12",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.55,
+      "damage": 27,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 14,
+      "anim_ref": "t8:anna:anna-4,2",
+      "input_slots": [
+        "4",
+        "4,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          15,
+          12
+        ],
+        "total": 27
+      },
+      "note": "High; on block -8"
+    },
+    "4,2,1+2": {
+      "name": "Blonde Bomb Blitz",
+      "input": "4,2,1+2",
+      "t8_source": "anna",
+      "t8_id": "Anna-4,2,1+2",
+      "t8_damage": ",21",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 48,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-4,2,1+2",
+      "input_slots": [
+        "4",
+        "4,2",
+        "4,2,1+2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          15,
+          12,
+          21
+        ],
+        "total": 48
+      },
+      "note": "Mid; on block -15; knockdown on hit"
+    },
+    "b+1_t8": {
+      "name": "Move b+1 (b+1)",
+      "input": "b+1",
+      "t8_source": "anna",
+      "t8_id": "Anna-b+1",
+      "t8_damage": "14",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.467,
+      "damage": 14,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 7,
+      "anim_ref": "t8:anna:anna-b+1",
+      "input_slots": [
+        "b+1"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -2",
+      "t8_input": "b+1"
+    },
+    "b+1+2": {
+      "name": "Weeping Slap",
+      "input": "b+1+2",
+      "t8_source": "anna",
+      "t8_id": "Anna-b+1+2",
+      "t8_damage": "21",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.583,
+      "damage": 21,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:anna:anna-b+1+2",
+      "input_slots": [
+        "b+1+2"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -13; knockdown on hit"
+    },
+    "b+1,2": {
+      "name": "Move 2 (2)",
+      "input": "b+1,2",
+      "t8_source": "anna",
+      "t8_id": "Anna-b+1,2",
+      "t8_damage": ",12",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 26,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 13,
+      "anim_ref": "t8:anna:anna-b+1,2",
+      "input_slots": [
+        "b+1",
+        "b+1,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          14,
+          12
+        ],
+        "total": 26
+      },
+      "note": "High; on block -11"
+    },
+    "b+1,2,2": {
+      "name": "Cross Cut Saw",
+      "input": "b+1,2,2",
+      "t8_source": "anna",
+      "t8_id": "Anna-b+1,2,2",
+      "t8_damage": ",24",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.583,
+      "damage": 50,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-b+1,2,2",
+      "input_slots": [
+        "b+1",
+        "b+1,2",
+        "b+1,2,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          14,
+          12,
+          24
+        ],
+        "total": 50
+      },
+      "note": "Mid; on block -12; knockdown on hit"
+    },
+    "b+1+3": {
+      "name": "Attack Reversal",
+      "input": "b+1+3",
+      "t8_source": "anna",
+      "t8_id": "Anna-b+1+3",
+      "t8_damage": "25",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.583,
+      "damage": 25,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:anna:anna-b+1+3",
+      "input_slots": [
+        "b+1+3"
+      ],
+      "move_class": "strike"
+    },
+    "b+2": {
+      "name": "Move b+2 (b+2)",
+      "input": "b+2",
+      "t8_source": "anna",
+      "t8_id": "Anna-b+2",
+      "t8_damage": "10",
+      "startup": 0.217,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 10,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 5,
+      "anim_ref": "t8:anna:anna-b+2",
+      "input_slots": [
+        "b+2"
+      ],
+      "move_class": "strike",
+      "note": "High; on block -5"
+    },
+    "b+2,2": {
+      "name": "Double Slap",
+      "input": "b+2,2",
+      "t8_source": "anna",
+      "t8_id": "Anna-b+2,2",
+      "t8_damage": ",20",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.55,
+      "damage": 30,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-b+2,2",
+      "input_slots": [
+        "b+2",
+        "b+2,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          10,
+          20
+        ],
+        "total": 30
+      },
+      "note": "High; on block -9"
+    },
+    "b+3": {
+      "name": "Chaos Judgement",
+      "input": "b+3",
+      "t8_source": "anna",
+      "t8_id": "Anna-b+3",
+      "t8_damage": null,
+      "startup": 0.167,
+      "active": 0.3,
+      "recovery": 0.267,
+      "damage": 0,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "anim_ref": "t8:anna:anna-b+3",
+      "input_slots": [
+        "b+3"
+      ],
+      "move_class": "special"
+    },
+    "b+4": {
+      "name": "Leopard Swipe",
+      "input": "b+4",
+      "t8_source": "anna",
+      "t8_id": "Anna-b+4",
+      "t8_damage": "17",
+      "startup": 0.317,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 17,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t8:anna:anna-b+4",
+      "input_slots": [
+        "b+4"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -9"
+    },
+    "Back throw": {
+      "name": "Overhead Triangle Lock",
+      "input": "Back throw",
+      "t8_source": "anna",
+      "t8_id": "Anna-Back throw",
+      "t8_damage": "50",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 50,
+      "limb": "both",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-back throw",
+      "input_slots": [
+        "Back throw"
+      ],
+      "move_class": "throw",
+      "note": "Throw",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "1+2"
+    },
+    "BT.1": {
+      "name": "Twist Jab",
+      "input": "BT.1",
+      "t8_source": "anna",
+      "t8_id": "Anna-BT.1",
+      "t8_damage": "15",
+      "startup": 0.133,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t8:anna:anna-bt.1",
+      "input_slots": [
+        "BT.1"
+      ],
+      "move_class": "strike",
+      "note": "High; on block -8"
+    },
+    "CJM.1": {
+      "name": "Infernal Storm",
+      "input": "CJM.1",
+      "t8_source": "anna",
+      "t8_id": "Anna-CJM.1",
+      "t8_damage": "17",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 17,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t8:anna:anna-cjm.1",
+      "input_slots": [
+        "CJM.1"
+      ],
+      "move_class": "strike",
+      "note": "High; on block +0"
+    },
+    "CJM.1+2": {
+      "name": "Caracal",
+      "input": "CJM.1+2",
+      "t8_source": "anna",
+      "t8_id": "Anna-CJM.1+2",
+      "t8_damage": "23",
+      "startup": 0.283,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 23,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:anna:anna-cjm.1+2",
+      "input_slots": [
+        "CJM.1+2"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block +2c"
+    },
+    "CJM.2": {
+      "name": "Move CJM.2 (CJM.2)",
+      "input": "CJM.2",
+      "t8_source": "anna",
+      "t8_id": "Anna-CJM.2",
+      "t8_damage": "10",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 10,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 5,
+      "anim_ref": "t8:anna:anna-cjm.2",
+      "input_slots": [
+        "CJM.2"
+      ],
+      "move_class": "strike",
+      "note": "High; on block -11"
+    },
+    "CJM.2,1": {
+      "name": "Carmine Hands",
+      "input": "CJM.2,1",
+      "t8_source": "anna",
+      "t8_id": "Anna-CJM.2,1",
+      "t8_damage": ",16",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 26,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 13,
+      "anim_ref": "t8:anna:anna-cjm.2,1",
+      "input_slots": [
+        "CJM.2",
+        "CJM.2,1"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          10,
+          16
+        ],
+        "total": 26
+      },
+      "note": "Mid; on block -11; knockdown on hit"
+    },
+    "CJM.3": {
+      "name": "Picking Heel",
+      "input": "CJM.3",
+      "t8_source": "anna",
+      "t8_id": "Anna-CJM.3",
+      "t8_damage": "12",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.533,
+      "damage": 12,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 6,
+      "anim_ref": "t8:anna:anna-cjm.3",
+      "input_slots": [
+        "CJM.3"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -12"
+    },
+    "CJM.3,2": {
+      "name": "Baked with Love",
+      "input": "CJM.3,2",
+      "t8_source": "anna",
+      "t8_id": "Anna-CJM.3,2",
+      "t8_damage": ",24",
+      "startup": 0.467,
+      "active": 0.033,
+      "recovery": 0.217,
+      "damage": 36,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-cjm.3,2",
+      "input_slots": [
+        "CJM.3",
+        "CJM.3,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          12,
+          24
+        ],
+        "total": 36
+      },
+      "note": "Mid; on block -14~+35; knockdown on hit"
+    },
+    "CJM.3,H.2": {
+      "name": "Baked with Eternal Love",
+      "input": "CJM.3,H.2",
+      "t8_source": "anna",
+      "t8_id": "Anna-CJM.3,H.2",
+      "t8_damage": ",5,5,24",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.483,
+      "damage": 46,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-cjm.3,h.2",
+      "input_slots": [
+        "CJM.3",
+        "CJM.3,H.2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          12,
+          5,
+          5,
+          24
+        ],
+        "total": 46
+      },
+      "note": "Mid, Mid, Mid; on block -2~+47g; knockdown on hit"
+    },
+    "CJM.4": {
+      "name": "Queen Heel",
+      "input": "CJM.4",
+      "t8_source": "anna",
+      "t8_id": "Anna-CJM.4",
+      "t8_damage": "23",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.65,
+      "damage": 23,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:anna:anna-cjm.4",
+      "input_slots": [
+        "CJM.4"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -13; knockdown on hit"
+    },
+    "CJM.d+3": {
+      "name": "Move CJM.d+3 (CJM.d+3)",
+      "input": "CJM.d+3",
+      "t8_source": "anna",
+      "t8_id": "Anna-CJM.d+3",
+      "t8_damage": "8",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 8,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "anim_ref": "t8:anna:anna-cjm.d+3",
+      "input_slots": [
+        "CJM.d+3"
+      ],
+      "move_class": "strike",
+      "note": "Low; on block -11"
+    },
+    "CJM.d+3,3": {
+      "name": "Dendrobates Azureus",
+      "input": "CJM.d+3,3",
+      "t8_source": "anna",
+      "t8_id": "Anna-CJM.d+3,3",
+      "t8_damage": ",20",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 28,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 14,
+      "anim_ref": "t8:anna:anna-cjm.d+3,3",
+      "input_slots": [
+        "CJM.d+3",
+        "CJM.d+3,3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          8,
+          20
+        ],
+        "total": 28
+      },
+      "note": "High; on block -7"
+    },
+    "CJM.df": {
+      "name": "Forward Roll (ROLL)",
+      "input": "CJM.df",
+      "t8_source": "anna",
+      "t8_id": "Anna-CJM.df",
+      "t8_damage": null,
+      "startup": 0.167,
+      "active": 0.3,
+      "recovery": 0.333,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "anim_ref": "t8:anna:anna-cjm.df",
+      "input_slots": [
+        "CJM.df"
+      ],
+      "move_class": "special"
+    },
+    "CJM.f+3": {
+      "name": "Hammer Chance",
+      "input": "CJM.f+3",
+      "t8_source": "anna",
+      "t8_id": "Anna-CJM.f+3",
+      "t8_damage": null,
+      "startup": 0.167,
+      "active": 0.3,
+      "recovery": 0.217,
+      "damage": 0,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "anim_ref": "t8:anna:anna-cjm.f+3",
+      "input_slots": [
+        "CJM.f+3"
+      ],
+      "move_class": "special"
+    },
+    "CJM.P": {
+      "name": "Stryx",
+      "input": "CJM.P",
+      "t8_source": "anna",
+      "t8_id": "Anna-CJM.P",
+      "t8_damage": "20",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 20,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:anna:anna-cjm.p",
+      "input_slots": [
+        "CJM.P"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -14; knockdown on hit"
+    },
+    "CJM.uf+1": {
+      "name": "Flying Fascinator",
+      "input": "CJM.uf+1",
+      "t8_source": "anna",
+      "t8_id": "Anna-CJM.uf+1",
+      "t8_damage": "25",
+      "startup": 0.317,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 25,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:anna:anna-cjm.uf+1",
+      "input_slots": [
+        "CJM.uf+1"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -11~+1; knockdown on hit"
+    },
+    "CJM.uf+2": {
+      "name": "Flying Penetrator",
+      "input": "CJM.uf+2",
+      "t8_source": "anna",
+      "t8_id": "Anna-CJM.uf+2",
+      "t8_damage": "35",
+      "startup": 0.317,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 35,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-cjm.uf+2",
+      "input_slots": [
+        "CJM.uf+2"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -11~+1; knockdown on hit"
+    },
+    "CJM.uf+3": {
+      "name": "Sudden Storm",
+      "input": "CJM.uf+3",
+      "t8_source": "anna",
+      "t8_id": "Anna-CJM.uf+3",
+      "t8_damage": "22",
+      "startup": 0.383,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 22,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 11,
+      "anim_ref": "t8:anna:anna-cjm.uf+3",
+      "input_slots": [
+        "CJM.uf+3"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block +0"
+    },
+    "CJM.uf+4": {
+      "name": "Stryx",
+      "input": "CJM.uf+4",
+      "t8_source": "anna",
+      "t8_id": "Anna-CJM.uf+4",
+      "t8_damage": "22",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.55,
+      "damage": 22,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 11,
+      "anim_ref": "t8:anna:anna-cjm.uf+4",
+      "input_slots": [
+        "CJM.uf+4"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -13; knockdown on hit"
+    },
+    "d+1": {
+      "name": "Low Jab",
+      "input": "d+1",
+      "t8_source": "anna",
+      "t8_id": "Anna-d+1",
+      "t8_damage": "5",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.4,
+      "damage": 5,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 2,
+      "anim_ref": "t8:anna:anna-d+1",
+      "input_slots": [
+        "d+1"
+      ],
+      "move_class": "strike",
+      "note": "Special low; on block -5"
+    },
+    "d+1,4": {
+      "name": "Low Jab Rising Kick",
+      "input": "d+1,4",
+      "t8_source": "anna",
+      "t8_id": "Anna-d+1,4",
+      "t8_damage": ",10",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.483,
+      "damage": 15,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t8:anna:anna-d+1,4",
+      "input_slots": [
+        "d+1",
+        "d+1,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          5,
+          10
+        ],
+        "total": 15
+      },
+      "note": "Mid; on block -11"
+    },
+    "d+2": {
+      "name": "Ice Sickle",
+      "input": "d+2",
+      "t8_source": "anna",
+      "t8_id": "Anna-d+2",
+      "t8_damage": "17",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.483,
+      "damage": 17,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t8:anna:anna-d+2",
+      "input_slots": [
+        "d+2"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block +1c"
+    },
+    "d+3": {
+      "name": "Left Spin Low Kick",
+      "input": "d+3",
+      "t8_source": "anna",
+      "t8_id": "Anna-d+3",
+      "t8_damage": "10",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.6,
+      "damage": 10,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 5,
+      "anim_ref": "t8:anna:anna-d+3",
+      "input_slots": [
+        "d+3"
+      ],
+      "move_class": "strike",
+      "note": "Low; on block -17"
+    },
+    "d+3,2": {
+      "name": "Right Upper",
+      "input": "d+3,2",
+      "t8_source": "anna",
+      "t8_id": "Anna-d+3,2",
+      "t8_damage": ",18",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 28,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 14,
+      "anim_ref": "t8:anna:anna-d+3,2",
+      "input_slots": [
+        "d+3",
+        "d+3,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          10,
+          18
+        ],
+        "total": 28
+      },
+      "note": "Mid; on block -11"
+    },
+    "d+3,4": {
+      "name": "Left Spin Low Kick (4)",
+      "input": "d+3,4",
+      "t8_source": "anna",
+      "t8_id": "Anna-d+3,4",
+      "t8_damage": ",14",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 24,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:anna:anna-d+3,4",
+      "input_slots": [
+        "d+3",
+        "d+3,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          10,
+          14
+        ],
+        "total": 24
+      },
+      "note": "High; on block -8"
+    },
+    "d+3,4,1": {
+      "name": "B Slap Combo",
+      "input": "d+3,4,1",
+      "t8_source": "anna",
+      "t8_id": "Anna-d+3,4,1",
+      "t8_damage": ",20",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 44,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-d+3,4,1",
+      "input_slots": [
+        "d+3",
+        "d+3,4",
+        "d+3,4,1"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          10,
+          14,
+          20
+        ],
+        "total": 44
+      },
+      "note": "Mid; on block -3"
+    },
+    "d+4": {
+      "name": "Right Low Kick",
+      "input": "d+4",
+      "t8_source": "anna",
+      "t8_id": "Anna-d+4",
+      "t8_damage": "6",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 6,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 3,
+      "anim_ref": "t8:anna:anna-d+4",
+      "input_slots": [
+        "d+4"
+      ],
+      "move_class": "strike",
+      "note": "Low; on block -15"
+    },
+    "d+4,1": {
+      "name": "Back Spin Chop",
+      "input": "d+4,1",
+      "t8_source": "anna",
+      "t8_id": "Anna-d+4,1",
+      "t8_damage": ",10",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 16,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t8:anna:anna-d+4,1",
+      "input_slots": [
+        "d+4",
+        "d+4,1"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          6,
+          10
+        ],
+        "total": 16
+      },
+      "note": "High; on block +0"
+    },
+    "d+4,1~4": {
+      "name": "Sudden Severe Drop",
+      "input": "d+4,1~4",
+      "t8_source": "anna",
+      "t8_id": "Anna-d+4,1~4",
+      "t8_damage": ",20",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.667,
+      "damage": 26,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 13,
+      "anim_ref": "t8:anna:anna-d+4,1~4",
+      "input_slots": [
+        "d+4",
+        "d+4,1~4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          6,
+          20
+        ],
+        "total": 26
+      },
+      "note": "Mid; on block -14c"
+    },
+    "db+1": {
+      "name": "Scarlet Rain",
+      "input": "db+1",
+      "t8_source": "anna",
+      "t8_id": "Anna-db+1",
+      "t8_damage": "16",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 16,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t8:anna:anna-db+1",
+      "input_slots": [
+        "db+1"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -12"
+    },
+    "db+1+2": {
+      "name": "Queen's Reward",
+      "input": "db+1+2",
+      "t8_source": "anna",
+      "t8_id": "Anna-db+1+2",
+      "t8_damage": "40",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 40,
+      "limb": "both",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-db+1+2",
+      "input_slots": [
+        "db+1+2"
+      ],
+      "move_class": "throw",
+      "note": "Throw; on block -6",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "1+2"
+    },
+    "db+1,2": {
+      "name": "Scarlet Ray",
+      "input": "db+1,2",
+      "t8_source": "anna",
+      "t8_id": "Anna-db+1,2",
+      "t8_damage": ",20",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 36,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-db+1,2",
+      "input_slots": [
+        "db+1",
+        "db+1,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          16,
+          20
+        ],
+        "total": 36
+      },
+      "note": "Mid; on block -13"
+    },
+    "db+1,4": {
+      "name": "Scarlet Splatter",
+      "input": "db+1,4",
+      "t8_source": "anna",
+      "t8_id": "Anna-db+1,4",
+      "t8_damage": ",24",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.583,
+      "damage": 40,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-db+1,4",
+      "input_slots": [
+        "db+1",
+        "db+1,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          16,
+          24
+        ],
+        "total": 40
+      },
+      "note": "High; on block -8; knockdown on hit"
+    },
+    "db+2": {
+      "name": "Ocelot Claw",
+      "input": "db+2",
+      "t8_source": "anna",
+      "t8_id": "Anna-db+2",
+      "t8_damage": "17",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 17,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t8:anna:anna-db+2",
+      "input_slots": [
+        "db+2"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -9"
+    },
+    "db+3": {
+      "name": "Mudslide",
+      "input": "db+3",
+      "t8_source": "anna",
+      "t8_id": "Anna-db+3",
+      "t8_damage": "21",
+      "startup": 0.5,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 21,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:anna:anna-db+3",
+      "input_slots": [
+        "db+3"
+      ],
+      "move_class": "strike",
+      "note": "Low; on block -26; knockdown on hit"
+    },
+    "db+3+4": {
+      "name": "Move db+3+4 (db+3+4)",
+      "input": "db+3+4",
+      "t8_source": "anna",
+      "t8_id": "Anna-db+3+4",
+      "t8_damage": "18",
+      "startup": 0.4,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 18,
+      "limb": "both",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 9,
+      "anim_ref": "t8:anna:anna-db+3+4",
+      "input_slots": [
+        "db+3+4"
+      ],
+      "move_class": "strike",
+      "note": "Low; on block -26"
+    },
+    "db+3+4,4": {
+      "name": "Stalker Repellant Alter",
+      "input": "db+3+4,4",
+      "t8_source": "anna",
+      "t8_id": "Anna-db+3+4,4",
+      "t8_damage": ",23",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.583,
+      "damage": 41,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-db+3+4,4",
+      "input_slots": [
+        "db+3+4",
+        "db+3+4,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          18,
+          23
+        ],
+        "total": 41
+      },
+      "note": "High; on block -9; knockdown on hit"
+    },
+    "db+4": {
+      "name": "Scorned Mistress",
+      "input": "db+4",
+      "t8_source": "anna",
+      "t8_id": "Anna-db+4",
+      "t8_damage": "14",
+      "startup": 0.283,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 14,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 7,
+      "anim_ref": "t8:anna:anna-db+4",
+      "input_slots": [
+        "db+4"
+      ],
+      "move_class": "strike",
+      "note": "Low; on block -13"
+    },
+    "df+1": {
+      "name": "Uppercut",
+      "input": "df+1",
+      "t8_source": "anna",
+      "t8_id": "Anna-df+1",
+      "t8_damage": "10",
+      "startup": 0.217,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 10,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 5,
+      "anim_ref": "t8:anna:anna-df+1",
+      "input_slots": [
+        "df+1"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -1"
+    },
+    "df+1,2": {
+      "name": "Uppercut Jab",
+      "input": "df+1,2",
+      "t8_source": "anna",
+      "t8_id": "Anna-df+1,2",
+      "t8_damage": ",10",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.383,
+      "damage": 20,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:anna:anna-df+1,2",
+      "input_slots": [
+        "df+1",
+        "df+1,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          10,
+          10
+        ],
+        "total": 20
+      },
+      "note": "High; on block -5"
+    },
+    "df+1,2,3": {
+      "name": "Radiant Arch",
+      "input": "df+1,2,3",
+      "t8_source": "anna",
+      "t8_id": "Anna-df+1,2,3",
+      "t8_damage": ",20",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 40,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-df+1,2,3",
+      "input_slots": [
+        "df+1",
+        "df+1,2",
+        "df+1,2,3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          10,
+          10,
+          20
+        ],
+        "total": 40
+      },
+      "note": "Mid; on block -12; knockdown on hit"
+    },
+    "df+1,2,4": {
+      "name": "Cutting Crescent",
+      "input": "df+1,2,4",
+      "t8_source": "anna",
+      "t8_id": "Anna-df+1,2,4",
+      "t8_damage": ",22",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 42,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-df+1,2,4",
+      "input_slots": [
+        "df+1",
+        "df+1,2",
+        "df+1,2,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          10,
+          10,
+          22
+        ],
+        "total": 42
+      },
+      "note": "High; on block -5; knockdown on hit"
+    },
+    "df+2": {
+      "name": "Step-in Uppercut",
+      "input": "df+2",
+      "t8_source": "anna",
+      "t8_id": "Anna-df+2",
+      "t8_damage": "12",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.533,
+      "damage": 12,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 6,
+      "anim_ref": "t8:anna:anna-df+2",
+      "input_slots": [
+        "df+2"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -12; knockdown on hit"
+    },
+    "df+3": {
+      "name": "Middle Kick",
+      "input": "df+3",
+      "t8_source": "anna",
+      "t8_id": "Anna-df+3",
+      "t8_damage": "13",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.483,
+      "damage": 13,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 6,
+      "anim_ref": "t8:anna:anna-df+3",
+      "input_slots": [
+        "df+3"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -11"
+    },
+    "df+3,1": {
+      "name": "Leg Slicer",
+      "input": "df+3,1",
+      "t8_source": "anna",
+      "t8_id": "Anna-df+3,1",
+      "t8_damage": ",10",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.367,
+      "damage": 23,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:anna:anna-df+3,1",
+      "input_slots": [
+        "df+3",
+        "df+3,1"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          13,
+          10
+        ],
+        "total": 23
+      },
+      "note": "High; on block -3"
+    },
+    "df+3,1,1": {
+      "name": "Twisting Fascinator",
+      "input": "df+3,1,1",
+      "t8_source": "anna",
+      "t8_id": "Anna-df+3,1,1",
+      "t8_damage": ",25",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 48,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-df+3,1,1",
+      "input_slots": [
+        "df+3",
+        "df+3,1",
+        "df+3,1,1"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          13,
+          10,
+          25
+        ],
+        "total": 48
+      },
+      "note": "Mid; on block -11~+1; knockdown on hit"
+    },
+    "df+3,1,2": {
+      "name": "Twisting Penetrator",
+      "input": "df+3,1,2",
+      "t8_source": "anna",
+      "t8_id": "Anna-df+3,1,2",
+      "t8_damage": ",35",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 58,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-df+3,1,2",
+      "input_slots": [
+        "df+3",
+        "df+3,1",
+        "df+3,1,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          13,
+          10,
+          35
+        ],
+        "total": 58
+      },
+      "note": "Mid; on block -11~+1"
+    },
+    "df+3,1,4": {
+      "name": "Twisting Combo",
+      "input": "df+3,1,4",
+      "t8_source": "anna",
+      "t8_id": "Anna-df+3,1,4",
+      "t8_damage": ",20",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 43,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-df+3,1,4",
+      "input_slots": [
+        "df+3",
+        "df+3,1",
+        "df+3,1,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          13,
+          10,
+          20
+        ],
+        "total": 43
+      },
+      "note": "High; on block -3"
+    },
+    "df+3,2": {
+      "name": "Creeping Snake",
+      "input": "df+3,2",
+      "t8_source": "anna",
+      "t8_id": "Anna-df+3,2",
+      "t8_damage": ",9",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.35,
+      "damage": 22,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 11,
+      "anim_ref": "t8:anna:anna-df+3,2",
+      "input_slots": [
+        "df+3",
+        "df+3,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          13,
+          9
+        ],
+        "total": 22
+      },
+      "note": "High; on block -2"
+    },
+    "df+3,2,1": {
+      "name": "Creeping Snake (1)",
+      "input": "df+3,2,1",
+      "t8_source": "anna",
+      "t8_id": "Anna-df+3,2,1",
+      "t8_damage": null,
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 22,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 11,
+      "anim_ref": "t8:anna:anna-df+3,2,1",
+      "input_slots": [
+        "df+3",
+        "df+3,2",
+        "df+3,2,1"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          13,
+          9
+        ],
+        "total": 22
+      }
+    },
+    "df+3,2,1,2": {
+      "name": "Creeping Snake (2)",
+      "input": "df+3,2,1,2",
+      "t8_source": "anna",
+      "t8_id": "Anna-df+3,2,1,2",
+      "t8_damage": null,
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 22,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 11,
+      "anim_ref": "t8:anna:anna-df+3,2,1,2",
+      "input_slots": [
+        "df+3",
+        "df+3,2",
+        "df+3,2,1",
+        "df+3,2,1,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          13,
+          9
+        ],
+        "total": 22
+      }
+    },
+    "df+3,2,1,2,4": {
+      "name": "Creeping Snake (4)",
+      "input": "df+3,2,1,2,4",
+      "t8_source": "anna",
+      "t8_id": "Anna-df+3,2,1,2,4",
+      "t8_damage": null,
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 22,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 11,
+      "anim_ref": "t8:anna:anna-df+3,2,1,2,4",
+      "input_slots": [
+        "df+3",
+        "df+3,2",
+        "df+3,2,1",
+        "df+3,2,1,2",
+        "df+3,2,1,2,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          13,
+          9
+        ],
+        "total": 22
+      }
+    },
+    "df+3,2,1,2,4,1": {
+      "name": "Creeping Snake (1)",
+      "input": "df+3,2,1,2,4,1",
+      "t8_source": "anna",
+      "t8_id": "Anna-df+3,2,1,2,4,1",
+      "t8_damage": null,
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 22,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 11,
+      "anim_ref": "t8:anna:anna-df+3,2,1,2,4,1",
+      "input_slots": [
+        "df+3",
+        "df+3,2",
+        "df+3,2,1",
+        "df+3,2,1,2",
+        "df+3,2,1,2,4",
+        "df+3,2,1,2,4,1"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          13,
+          9
+        ],
+        "total": 22
+      }
+    },
+    "df+3,2,1,2,4,1,2": {
+      "name": "Creeping Snake (2)",
+      "input": "df+3,2,1,2,4,1,2",
+      "t8_source": "anna",
+      "t8_id": "Anna-df+3,2,1,2,4,1,2",
+      "t8_damage": null,
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 22,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 11,
+      "anim_ref": "t8:anna:anna-df+3,2,1,2,4,1,2",
+      "input_slots": [
+        "df+3",
+        "df+3,2",
+        "df+3,2,1",
+        "df+3,2,1,2",
+        "df+3,2,1,2,4",
+        "df+3,2,1,2,4,1",
+        "df+3,2,1,2,4,1,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          13,
+          9
+        ],
+        "total": 22
+      }
+    },
+    "df+3,2,1,2,4,1,2,2": {
+      "name": "Creeping Snake (2)",
+      "input": "df+3,2,1,2,4,1,2,2",
+      "t8_source": "anna",
+      "t8_id": "Anna-df+3,2,1,2,4,1,2,2",
+      "t8_damage": null,
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 22,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 11,
+      "anim_ref": "t8:anna:anna-df+3,2,1,2,4,1,2,2",
+      "input_slots": [
+        "df+3",
+        "df+3,2",
+        "df+3,2,1",
+        "df+3,2,1,2",
+        "df+3,2,1,2,4",
+        "df+3,2,1,2,4,1",
+        "df+3,2,1,2,4,1,2",
+        "df+3,2,1,2,4,1,2,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          13,
+          9
+        ],
+        "total": 22
+      }
+    },
+    "df+3,2,1,2,4,1,2,2,3+4": {
+      "name": "Creeping Snake (3+4)",
+      "input": "df+3,2,1,2,4,1,2,2,3+4",
+      "t8_source": "anna",
+      "t8_id": "Anna-df+3,2,1,2,4,1,2,2,3+4",
+      "t8_damage": null,
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 22,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 11,
+      "anim_ref": "t8:anna:anna-df+3,2,1,2,4,1,2,2,3+4",
+      "input_slots": [
+        "df+3",
+        "df+3,2",
+        "df+3,2,1",
+        "df+3,2,1,2",
+        "df+3,2,1,2,4",
+        "df+3,2,1,2,4,1",
+        "df+3,2,1,2,4,1,2",
+        "df+3,2,1,2,4,1,2,2",
+        "df+3,2,1,2,4,1,2,2,3+4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          13,
+          9
+        ],
+        "total": 22
+      }
+    },
+    "df+3,2,1,2,4,1,2,2,3+4,2": {
+      "name": "10 Hit Combo",
+      "input": "df+3,2,1,2,4,1,2,2,3+4,2",
+      "t8_source": "anna",
+      "t8_id": "Anna-df+3,2,1,2,4,1,2,2,3+4,2",
+      "t8_damage": null,
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 22,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 11,
+      "anim_ref": "t8:anna:anna-df+3,2,1,2,4,1,2,2,3+4,2",
+      "input_slots": [
+        "df+3",
+        "df+3,2",
+        "df+3,2,1",
+        "df+3,2,1,2",
+        "df+3,2,1,2,4",
+        "df+3,2,1,2,4,1",
+        "df+3,2,1,2,4,1,2",
+        "df+3,2,1,2,4,1,2,2",
+        "df+3,2,1,2,4,1,2,2,3+4",
+        "df+3,2,1,2,4,1,2,2,3+4,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          13,
+          9
+        ],
+        "total": 22
+      }
+    },
+    "df+3,2,2": {
+      "name": "Creeping Stinger",
+      "input": "df+3,2,2",
+      "t8_source": "anna",
+      "t8_id": "Anna-df+3,2,2",
+      "t8_damage": ",20",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 42,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-df+3,2,2",
+      "input_slots": [
+        "df+3",
+        "df+3,2",
+        "df+3,2,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          13,
+          9,
+          20
+        ],
+        "total": 42
+      },
+      "note": "Mid; on block -8"
+    },
+    "df+3,2,4": {
+      "name": "Right High Kick",
+      "input": "df+3,2,4",
+      "t8_source": "anna",
+      "t8_id": "Anna-df+3,2,4",
+      "t8_damage": ",22",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 44,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-df+3,2,4",
+      "input_slots": [
+        "df+3",
+        "df+3,2",
+        "df+3,2,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          13,
+          9,
+          22
+        ],
+        "total": 44
+      },
+      "note": "High; on block -6; knockdown on hit"
+    },
+    "df+3,2,uf+1+2": {
+      "name": "Creep-Fried Love",
+      "input": "df+3,2,uf+1+2",
+      "t8_source": "anna",
+      "t8_id": "Anna-df+3,2,uf+1+2",
+      "t8_damage": ",13",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.133,
+      "damage": 35,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-df+3,2,uf+1+2",
+      "input_slots": [
+        "df+3",
+        "df+3,2",
+        "df+3,2,uf+1+2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          13,
+          9,
+          13
+        ],
+        "total": 35
+      },
+      "note": "High; on block -14~+10; knockdown on hit"
+    },
+    "df+3,3+4": {
+      "name": "Furious Hail",
+      "input": "df+3,3+4",
+      "t8_source": "anna",
+      "t8_id": "Anna-df+3,3+4",
+      "t8_damage": ",6,10",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.367,
+      "damage": 29,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 14,
+      "anim_ref": "t8:anna:anna-df+3,3+4",
+      "input_slots": [
+        "df+3",
+        "df+3,3+4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          13,
+          6,
+          10
+        ],
+        "total": 29
+      },
+      "note": "Mid, Mid; on block -4; knockdown on hit"
+    },
+    "df+4": {
+      "name": "Wine Opener",
+      "input": "df+4",
+      "t8_source": "anna",
+      "t8_id": "Anna-df+4",
+      "t8_damage": "17",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.533,
+      "damage": 17,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t8:anna:anna-df+4",
+      "input_slots": [
+        "df+4"
+      ],
+      "move_class": "strike",
+      "note": "Low; on block -15"
+    },
+    "f+1+2": {
+      "name": "Blonde Bomb",
+      "input": "f+1+2",
+      "t8_source": "anna",
+      "t8_id": "Anna-f+1+2",
+      "t8_damage": "21",
+      "startup": 0.283,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 21,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:anna:anna-f+1+2",
+      "input_slots": [
+        "f+1+2"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -13; knockdown on hit"
+    },
+    "f+2": {
+      "name": "Poison Sting",
+      "input": "f+2",
+      "t8_source": "anna",
+      "t8_id": "Anna-f+2",
+      "t8_damage": "14",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 14,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 7,
+      "anim_ref": "t8:anna:anna-f+2",
+      "input_slots": [
+        "f+2"
+      ],
+      "move_class": "strike",
+      "note": "High; on block -2"
+    },
+    "f+2,3": {
+      "name": "Poison Wire",
+      "input": "f+2,3",
+      "t8_source": "anna",
+      "t8_id": "Anna-f+2,3",
+      "t8_damage": ",20",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 34,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-f+2,3",
+      "input_slots": [
+        "f+2",
+        "f+2,3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          14,
+          20
+        ],
+        "total": 34
+      },
+      "note": "High; on block -7"
+    },
+    "f+3": {
+      "name": "Hammer Chance",
+      "input": "f+3",
+      "t8_source": "anna",
+      "t8_id": "Anna-f+3",
+      "t8_damage": null,
+      "startup": 0.167,
+      "active": 0.3,
+      "recovery": 0.217,
+      "damage": 0,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "anim_ref": "t8:anna:anna-f+3",
+      "input_slots": [
+        "f+3"
+      ],
+      "move_class": "special"
+    },
+    "FC.df+1": {
+      "name": "Cat Sith's Paw",
+      "input": "FC.df+1",
+      "t8_source": "anna",
+      "t8_id": "Anna-FC.df+1",
+      "t8_damage": "22",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.583,
+      "damage": 22,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 11,
+      "anim_ref": "t8:anna:anna-fc.df+1",
+      "input_slots": [
+        "FC.df+1"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -12"
+    },
+    "FC.df+2": {
+      "name": "Right Handed Sweep",
+      "input": "FC.df+2",
+      "t8_source": "anna",
+      "t8_id": "Anna-FC.df+2",
+      "t8_damage": "12",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.667,
+      "damage": 12,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 6,
+      "anim_ref": "t8:anna:anna-fc.df+2",
+      "input_slots": [
+        "FC.df+2"
+      ],
+      "move_class": "strike",
+      "note": "Low; on block -21; knockdown on hit"
+    },
+    "FC.df+2,H.1": {
+      "name": "Leanán Sith's Grail",
+      "input": "FC.df+2,H.1",
+      "t8_source": "anna",
+      "t8_id": "Anna-FC.df+2,H.1",
+      "t8_damage": ",18",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.65,
+      "damage": 30,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-fc.df+2,h.1",
+      "input_slots": [
+        "FC.df+2",
+        "FC.df+2,H.1"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          12,
+          18
+        ],
+        "total": 30
+      },
+      "note": "Low; on block -21; knockdown on hit"
+    },
+    "f,F+1+2": {
+      "name": "Sosho Zanha",
+      "input": "f,F+1+2",
+      "t8_source": "anna",
+      "t8_id": "Anna-f,F+1+2",
+      "t8_damage": "25",
+      "startup": 0.3,
+      "active": 0.033,
+      "recovery": 0.583,
+      "damage": 25,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:anna:anna-f,f+1+2",
+      "input_slots": [
+        "f,F+1+2"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -9; knockdown on hit"
+    },
+    "f,F+1+2*": {
+      "name": "Sosho Zanha",
+      "input": "f,F+1+2*",
+      "t8_source": "anna",
+      "t8_id": "Anna-f,F+1+2*",
+      "t8_damage": "30",
+      "startup": 0.45,
+      "active": 0.033,
+      "recovery": 0.583,
+      "damage": 30,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-f,f+1+2*",
+      "input_slots": [
+        "f,F+1+2*"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block +5~+7; knockdown on hit"
+    },
+    "f,F+2": {
+      "name": "Headless Horseman",
+      "input": "f,F+2",
+      "t8_source": "anna",
+      "t8_id": "Anna-f,F+2",
+      "t8_damage": "21",
+      "startup": 0.283,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 21,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:anna:anna-f,f+2",
+      "input_slots": [
+        "f,F+2"
+      ],
+      "move_class": "strike",
+      "note": "High; on block +4; knockdown on hit"
+    },
+    "f,F+3": {
+      "name": "Move f,F+3 (f,F+3)",
+      "input": "f,F+3",
+      "t8_source": "anna",
+      "t8_id": "Anna-f,F+3",
+      "t8_damage": "14",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.533,
+      "damage": 14,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 7,
+      "anim_ref": "t8:anna:anna-f,f+3",
+      "input_slots": [
+        "f,F+3"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -11"
+    },
+    "f,F+3,2": {
+      "name": "Gancanagh's Pipe",
+      "input": "f,F+3,2",
+      "t8_source": "anna",
+      "t8_id": "Anna-f,F+3,2",
+      "t8_damage": ",20",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.483,
+      "damage": 34,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-f,f+3,2",
+      "input_slots": [
+        "f,F+3",
+        "f,F+3,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          14,
+          20
+        ],
+        "total": 34
+      },
+      "note": "Mid; on block -7"
+    },
+    "f,F+3,3": {
+      "name": "Mouse Trouble",
+      "input": "f,F+3,3",
+      "t8_source": "anna",
+      "t8_id": "Anna-f,F+3,3",
+      "t8_damage": ",14",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.55,
+      "damage": 28,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 14,
+      "anim_ref": "t8:anna:anna-f,f+3,3",
+      "input_slots": [
+        "f,F+3",
+        "f,F+3,3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          14,
+          14
+        ],
+        "total": 28
+      },
+      "note": "Low; on block -14"
+    },
+    "f,F+3+4": {
+      "name": "Treading Water",
+      "input": "f,F+3+4",
+      "t8_source": "anna",
+      "t8_id": "Anna-f,F+3+4",
+      "t8_damage": "8,8,10",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 26,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 13,
+      "anim_ref": "t8:anna:anna-f,f+3+4",
+      "input_slots": [
+        "f,F+3+4"
+      ],
+      "move_class": "strike",
+      "multi_hit": {
+        "hits": [
+          8,
+          8,
+          10
+        ],
+        "total": 26
+      },
+      "note": "Mid, Mid, Mid; on block +0"
+    },
+    "f,F+4": {
+      "name": "Falling Heel",
+      "input": "f,F+4",
+      "t8_source": "anna",
+      "t8_id": "Anna-f,F+4",
+      "t8_damage": "20",
+      "startup": 0.517,
+      "active": 0.033,
+      "recovery": 0.467,
+      "damage": 20,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:anna:anna-f,f+4",
+      "input_slots": [
+        "f,F+4"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block +5; knockdown on hit"
+    },
+    "f,f,F+2": {
+      "name": "Move f,f,F+2 (f,f,F+2)",
+      "input": "f,f,F+2",
+      "t8_source": "anna",
+      "t8_id": "Anna-f,f,F+2",
+      "t8_damage": "10",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.583,
+      "damage": 10,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 5,
+      "anim_ref": "t8:anna:anna-f,f,f+2",
+      "input_slots": [
+        "f,f,F+2"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -8"
+    },
+    "f,f,F+2,4": {
+      "name": "Double Meteor Alter",
+      "input": "f,f,F+2,4",
+      "t8_source": "anna",
+      "t8_id": "Anna-f,f,F+2,4",
+      "t8_damage": ",28",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.55,
+      "damage": 38,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-f,f,f+2,4",
+      "input_slots": [
+        "f,f,F+2",
+        "f,f,F+2,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          10,
+          28
+        ],
+        "total": 38
+      },
+      "note": "Mid; on block -13; knockdown on hit"
+    },
+    "f,f,F+3": {
+      "name": "Move f,f,F+3 (f,f,F+3)",
+      "input": "f,f,F+3",
+      "t8_source": "anna",
+      "t8_id": "Anna-f,f,F+3",
+      "t8_damage": "12",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.583,
+      "damage": 12,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 6,
+      "anim_ref": "t8:anna:anna-f,f,f+3",
+      "input_slots": [
+        "f,f,F+3"
+      ],
+      "move_class": "strike",
+      "note": "Low; on block -20"
+    },
+    "f,f,F+3,2": {
+      "name": "Grilled with Love",
+      "input": "f,f,F+3,2",
+      "t8_source": "anna",
+      "t8_id": "Anna-f,f,F+3,2",
+      "t8_damage": ",24",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 36,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-f,f,f+3,2",
+      "input_slots": [
+        "f,f,F+3",
+        "f,f,F+3,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          12,
+          24
+        ],
+        "total": 36
+      },
+      "note": "SL; on block -16~+33g; knockdown on hit"
+    },
+    "f,f,F+3,H.2": {
+      "name": "Grilled with Eternal Love",
+      "input": "f,f,F+3,H.2",
+      "t8_source": "anna",
+      "t8_id": "Anna-f,f,F+3,H.2",
+      "t8_damage": ",5,5,24",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.667,
+      "damage": 46,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-f,f,f+3,h.2",
+      "input_slots": [
+        "f,f,F+3",
+        "f,f,F+3,H.2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          12,
+          5,
+          5,
+          24
+        ],
+        "total": 46
+      },
+      "note": "SL, SL, SL; on block -5~+44g; knockdown on hit"
+    },
+    "f,f,F+4": {
+      "name": "Imploding Star",
+      "input": "f,f,F+4",
+      "t8_source": "anna",
+      "t8_id": "Anna-f,f,F+4",
+      "t8_damage": "28",
+      "startup": 0.317,
+      "active": 0.033,
+      "recovery": 0.583,
+      "damage": 28,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 14,
+      "anim_ref": "t8:anna:anna-f,f,f+4",
+      "input_slots": [
+        "f,f,F+4"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block +3; knockdown on hit"
+    },
+    "H.2+3": {
+      "name": "From Éire with Love",
+      "input": "H.2+3",
+      "t8_source": "anna",
+      "t8_id": "Anna-H.2+3",
+      "t8_damage": "23, 10 (50)",
+      "startup": 0.217,
+      "active": 0.033,
+      "recovery": 0.533,
+      "damage": 23,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:anna:anna-h.2+3",
+      "input_slots": [
+        "H.2+3"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -5"
+    },
+    "HAM.1": {
+      "name": "Cupid's Arrow",
+      "input": "HAM.1",
+      "t8_source": "anna",
+      "t8_id": "Anna-HAM.1",
+      "t8_damage": "20",
+      "startup": 0.217,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 20,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:anna:anna-ham.1",
+      "input_slots": [
+        "HAM.1"
+      ],
+      "move_class": "strike",
+      "note": "High; on block +6; knockdown on hit"
+    },
+    "HAM.1+2": {
+      "name": "Dullahan Smash",
+      "input": "HAM.1+2",
+      "t8_source": "anna",
+      "t8_id": "Anna-HAM.1+2",
+      "t8_damage": "30",
+      "startup": 0.4,
+      "active": 0.033,
+      "recovery": 0.633,
+      "damage": 30,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-ham.1+2",
+      "input_slots": [
+        "HAM.1+2"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block +2c; knockdown on hit"
+    },
+    "HAM.1+3": {
+      "name": "Backhand Slap",
+      "input": "HAM.1+3",
+      "t8_source": "anna",
+      "t8_id": "Anna-HAM.1+3",
+      "t8_damage": "15",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.467,
+      "damage": 15,
+      "limb": "both",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 8,
+      "anim_ref": "t8:anna:anna-ham.1+3",
+      "input_slots": [
+        "HAM.1+3"
+      ],
+      "move_class": "throw",
+      "note": "Throw; on block -2",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "1"
+    },
+    "HAM.1+3,1": {
+      "name": "Double Arm Lock Toss",
+      "input": "HAM.1+3,1",
+      "t8_source": "anna",
+      "t8_id": "Anna-HAM.1+3,1",
+      "t8_damage": ",35",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 50,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-ham.1+3,1",
+      "input_slots": [
+        "HAM.1+3",
+        "HAM.1+3,1"
+      ],
+      "move_class": "throw",
+      "multi_hit": {
+        "hits": [
+          15,
+          35
+        ],
+        "total": 50
+      },
+      "note": "Throw; on block -3",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "1"
+    },
+    "HAM.1+3,2": {
+      "name": "Arm Snap",
+      "input": "HAM.1+3,2",
+      "t8_source": "anna",
+      "t8_id": "Anna-HAM.1+3,2",
+      "t8_damage": ",30",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 45,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-ham.1+3,2",
+      "input_slots": [
+        "HAM.1+3",
+        "HAM.1+3,2"
+      ],
+      "move_class": "throw",
+      "multi_hit": {
+        "hits": [
+          15,
+          30
+        ],
+        "total": 45
+      },
+      "note": "Throw; on block -3",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "1"
+    },
+    "HAM.2": {
+      "name": "Move HAM.2 (HAM.2)",
+      "input": "HAM.2",
+      "t8_source": "anna",
+      "t8_id": "Anna-HAM.2",
+      "t8_damage": "12",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.533,
+      "damage": 12,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 6,
+      "anim_ref": "t8:anna:anna-ham.2",
+      "input_slots": [
+        "HAM.2"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -9"
+    },
+    "HAM.2,1": {
+      "name": "Move 1 (1)",
+      "input": "HAM.2,1",
+      "t8_source": "anna",
+      "t8_id": "Anna-HAM.2,1",
+      "t8_damage": ",23",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.533,
+      "damage": 35,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-ham.2,1",
+      "input_slots": [
+        "HAM.2",
+        "HAM.2,1"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          12,
+          23
+        ],
+        "total": 35
+      },
+      "note": "High; on block -3; knockdown on hit"
+    },
+    "HAM.2,1,2": {
+      "name": "Banshee Scream",
+      "input": "HAM.2,1,2",
+      "t8_source": "anna",
+      "t8_id": "Anna-HAM.2,1,2",
+      "t8_damage": ",32",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.633,
+      "damage": 67,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-ham.2,1,2",
+      "input_slots": [
+        "HAM.2",
+        "HAM.2,1",
+        "HAM.2,1,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          12,
+          23,
+          32
+        ],
+        "total": 67
+      },
+      "note": "Mid; on block +2c; knockdown on hit"
+    },
+    "HAM.2,2": {
+      "name": "Banshee's Comb",
+      "input": "HAM.2,2",
+      "t8_source": "anna",
+      "t8_id": "Anna-HAM.2,2",
+      "t8_damage": ",23",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.683,
+      "damage": 35,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-ham.2,2",
+      "input_slots": [
+        "HAM.2",
+        "HAM.2,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          12,
+          23
+        ],
+        "total": 35
+      },
+      "note": "Mid; on block -14; knockdown on hit"
+    },
+    "HAM.3": {
+      "name": "Rat Sweep",
+      "input": "HAM.3",
+      "t8_source": "anna",
+      "t8_id": "Anna-HAM.3",
+      "t8_damage": "17",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.533,
+      "damage": 17,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t8:anna:anna-ham.3",
+      "input_slots": [
+        "HAM.3"
+      ],
+      "move_class": "strike",
+      "note": "Low; on block -14"
+    },
+    "HAM.4": {
+      "name": "Piston Kick",
+      "input": "HAM.4",
+      "t8_source": "anna",
+      "t8_id": "Anna-HAM.4",
+      "t8_damage": "12,12",
+      "startup": 0.3,
+      "active": 0.033,
+      "recovery": 0.583,
+      "damage": 24,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:anna:anna-ham.4",
+      "input_slots": [
+        "HAM.4"
+      ],
+      "move_class": "strike",
+      "multi_hit": {
+        "hits": [
+          12,
+          12
+        ],
+        "total": 24
+      },
+      "note": "Mid, Mid; on block -12"
+    },
+    "HAM.b+3": {
+      "name": "Move HAM.b+3 (HAM.b+3)",
+      "input": "HAM.b+3",
+      "t8_source": "anna",
+      "t8_id": "Anna-HAM.b+3",
+      "t8_damage": null,
+      "startup": 0.167,
+      "active": 0.3,
+      "recovery": 0.317,
+      "damage": 0,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "anim_ref": "t8:anna:anna-ham.b+3",
+      "input_slots": [
+        "HAM.b+3"
+      ],
+      "move_class": "special"
+    },
+    "Left throw": {
+      "name": "Torso Splitter",
+      "input": "Left throw",
+      "t8_source": "anna",
+      "t8_id": "Anna-Left throw",
+      "t8_damage": "40",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 40,
+      "limb": "both",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-left throw",
+      "input_slots": [
+        "Left throw"
+      ],
+      "move_class": "throw",
+      "note": "Throw; on block -3",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "1"
+    },
+    "OTG.d+3+4": {
+      "name": "Heel Grind",
+      "input": "OTG.d+3+4",
+      "t8_source": "anna",
+      "t8_id": "Anna-OTG.d+3+4",
+      "t8_damage": "30",
+      "startup": 0.283,
+      "active": 0.033,
+      "recovery": 0.583,
+      "damage": 30,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-otg.d+3+4",
+      "input_slots": [
+        "OTG.d+3+4"
+      ],
+      "move_class": "strike",
+      "note": "Low; on block -17"
+    },
+    "qcf+1": {
+      "name": "Assassin's Dagger",
+      "input": "qcf+1",
+      "t8_source": "anna",
+      "t8_id": "Anna-qcf+1",
+      "t8_damage": "20",
+      "startup": 0.217,
+      "active": 0.033,
+      "recovery": 0.383,
+      "damage": 20,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:anna:anna-qcf+1",
+      "input_slots": [
+        "qcf+1"
+      ],
+      "move_class": "strike",
+      "note": "High; on block +1~+5"
+    },
+    "qcf+2": {
+      "name": "Crimson Arrow",
+      "input": "qcf+2",
+      "t8_source": "anna",
+      "t8_id": "Anna-qcf+2",
+      "t8_damage": "10",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 10,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 5,
+      "anim_ref": "t8:anna:anna-qcf+2",
+      "input_slots": [
+        "qcf+2"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -12"
+    },
+    "qcf+2,1": {
+      "name": "Artemis Arrow",
+      "input": "qcf+2,1",
+      "t8_source": "anna",
+      "t8_id": "Anna-qcf+2,1",
+      "t8_damage": ",16",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.583,
+      "damage": 26,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 13,
+      "anim_ref": "t8:anna:anna-qcf+2,1",
+      "input_slots": [
+        "qcf+2",
+        "qcf+2,1"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          10,
+          16
+        ],
+        "total": 26
+      },
+      "note": "Mid; on block -16; knockdown on hit"
+    },
+    "R.df+1+2": {
+      "name": "Some Like It Rough!",
+      "input": "R.df+1+2",
+      "t8_source": "anna",
+      "t8_id": "Anna-R.df+1+2",
+      "t8_damage": "55+",
+      "startup": 0.333,
+      "active": 0.3,
+      "recovery": 0.65,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "anim_ref": "t8:anna:anna-r.df+1+2",
+      "input_slots": [
+        "R.df+1+2"
+      ],
+      "move_class": "special",
+      "note": "Mid, Throw; on block -18"
+    },
+    "Right throw": {
+      "name": "Serpentine Arm Break",
+      "input": "Right throw",
+      "t8_source": "anna",
+      "t8_id": "Anna-Right throw",
+      "t8_damage": "38",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 38,
+      "limb": "both",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-right throw",
+      "input_slots": [
+        "Right throw"
+      ],
+      "move_class": "throw",
+      "note": "Throw; on block -3",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "1"
+    },
+    "ROLL.3": {
+      "name": "Rolling Stone",
+      "input": "ROLL.3",
+      "t8_source": "anna",
+      "t8_id": "Anna-ROLL.3",
+      "t8_damage": "27",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.533,
+      "damage": 27,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 14,
+      "anim_ref": "t8:anna:anna-roll.3",
+      "input_slots": [
+        "ROLL.3"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -9"
+    },
+    "ROLL.4": {
+      "name": "Falling Frost",
+      "input": "ROLL.4",
+      "t8_source": "anna",
+      "t8_id": "Anna-ROLL.4",
+      "t8_damage": "21",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.633,
+      "damage": 21,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:anna:anna-roll.4",
+      "input_slots": [
+        "ROLL.4"
+      ],
+      "move_class": "strike",
+      "note": "High; on block +7; knockdown on hit"
+    },
+    "SS.1+2": {
+      "name": "Bloody Chaos",
+      "input": "SS.1+2",
+      "t8_source": "anna",
+      "t8_id": "Anna-SS.1+2",
+      "t8_damage": "5,7",
+      "startup": 0.317,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 12,
+      "limb": "both",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 6,
+      "anim_ref": "t8:anna:anna-ss.1+2",
+      "input_slots": [
+        "SS.1+2"
+      ],
+      "move_class": "strike",
+      "multi_hit": {
+        "hits": [
+          5,
+          7
+        ],
+        "total": 12
+      },
+      "note": "Mid, Mid; on block -11; knockdown on hit"
+    },
+    "SS.2": {
+      "name": "Chaos Tail",
+      "input": "SS.2",
+      "t8_source": "anna",
+      "t8_id": "Anna-SS.2",
+      "t8_damage": "12",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 12,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 6,
+      "anim_ref": "t8:anna:anna-ss.2",
+      "input_slots": [
+        "SS.2"
+      ],
+      "move_class": "strike",
+      "note": "Low; on block -12"
+    },
+    "SS.3": {
+      "name": "Heel Mash",
+      "input": "SS.3",
+      "t8_source": "anna",
+      "t8_id": "Anna-SS.3",
+      "t8_damage": "23",
+      "startup": 0.35,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 23,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:anna:anna-ss.3",
+      "input_slots": [
+        "SS.3"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block +4c"
+    },
+    "TOM.1": {
+      "name": "Machree Fascinator",
+      "input": "TOM.1",
+      "t8_source": "anna",
+      "t8_id": "Anna-TOM.1",
+      "t8_damage": "20",
+      "startup": 0.133,
+      "active": 0.033,
+      "recovery": 0.6,
+      "damage": 20,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:anna:anna-tom.1",
+      "input_slots": [
+        "TOM.1"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block +4~+53; knockdown on hit"
+    },
+    "TOM.2": {
+      "name": "Machree Penetrator",
+      "input": "TOM.2",
+      "t8_source": "anna",
+      "t8_id": "Anna-TOM.2",
+      "t8_damage": "30",
+      "startup": 0.133,
+      "active": 0.033,
+      "recovery": 0.6,
+      "damage": 30,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-tom.2",
+      "input_slots": [
+        "TOM.2"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -1~+98; knockdown on hit"
+    },
+    "TOM.3": {
+      "name": "Chaos Judgement",
+      "input": "TOM.3",
+      "t8_source": "anna",
+      "t8_id": "Anna-TOM.3",
+      "t8_damage": null,
+      "startup": 0.167,
+      "active": 0.3,
+      "recovery": 0.433,
+      "damage": 0,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "anim_ref": "t8:anna:anna-tom.3",
+      "input_slots": [
+        "TOM.3"
+      ],
+      "move_class": "special"
+    },
+    "TOM.4": {
+      "name": "Banquet Crasher",
+      "input": "TOM.4",
+      "t8_source": "anna",
+      "t8_id": "Anna-TOM.4",
+      "t8_damage": "21",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.533,
+      "damage": 21,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:anna:anna-tom.4",
+      "input_slots": [
+        "TOM.4"
+      ],
+      "move_class": "strike",
+      "note": "Low; on block -13"
+    },
+    "ub+1+2": {
+      "name": "Bloody Scissors",
+      "input": "ub+1+2",
+      "t8_source": "anna",
+      "t8_id": "Anna-ub+1+2",
+      "t8_damage": "50",
+      "startup": 1.0,
+      "active": 0.033,
+      "recovery": 0.65,
+      "damage": 50,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-ub+1+2",
+      "input_slots": [
+        "ub+1+2"
+      ],
+      "move_class": "strike",
+      "note": "m!; knockdown on hit"
+    },
+    "ub,b": {
+      "name": "Back Handspring",
+      "input": "ub,b",
+      "t8_source": "anna",
+      "t8_id": "Anna-ub,b",
+      "t8_damage": null,
+      "startup": 0.167,
+      "active": 0.3,
+      "recovery": 0.817,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "anim_ref": "t8:anna:anna-ub,b",
+      "input_slots": [
+        "ub,b"
+      ],
+      "move_class": "special",
+      "note": "sp"
+    },
+    "uf+1": {
+      "name": "Move uf+1 (uf+1)",
+      "input": "uf+1",
+      "t8_source": "anna",
+      "t8_id": "Anna-uf+1",
+      "t8_damage": "6",
+      "startup": 0.217,
+      "active": 0.033,
+      "recovery": 0.383,
+      "damage": 6,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 3,
+      "anim_ref": "t8:anna:anna-uf+1",
+      "input_slots": [
+        "uf+1"
+      ],
+      "move_class": "strike",
+      "note": "High; on block -4"
+    },
+    "uf+1+2": {
+      "name": "Overhead Toss",
+      "input": "uf+1+2",
+      "t8_source": "anna",
+      "t8_id": "Anna-uf+1+2",
+      "t8_damage": "30,10",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 40,
+      "limb": "both",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-uf+1+2",
+      "input_slots": [
+        "uf+1+2"
+      ],
+      "move_class": "throw",
+      "multi_hit": {
+        "hits": [
+          30,
+          10
+        ],
+        "total": 40
+      },
+      "note": "Throw; Jumping Flip; on block +0",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "1+2"
+    },
+    "uf+1,3": {
+      "name": "Fatal Attack Combo",
+      "input": "uf+1,3",
+      "t8_source": "anna",
+      "t8_id": "Anna-uf+1,3",
+      "t8_damage": ",17",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.583,
+      "damage": 23,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:anna:anna-uf+1,3",
+      "input_slots": [
+        "uf+1",
+        "uf+1,3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          6,
+          17
+        ],
+        "total": 23
+      },
+      "note": "Mid; on block -16"
+    },
+    "uf+1,3,3+4": {
+      "name": "Hail Storm",
+      "input": "uf+1,3,3+4",
+      "t8_source": "anna",
+      "t8_id": "Anna-uf+1,3,3+4",
+      "t8_damage": ",6,10",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.367,
+      "damage": 39,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-uf+1,3,3+4",
+      "input_slots": [
+        "uf+1",
+        "uf+1,3",
+        "uf+1,3,3+4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          6,
+          17,
+          6,
+          10
+        ],
+        "total": 39
+      },
+      "note": "Mid, Mid; on block -4; knockdown on hit"
+    },
+    "uf+2": {
+      "name": "Bane Stinger",
+      "input": "uf+2",
+      "t8_source": "anna",
+      "t8_id": "Anna-uf+2",
+      "t8_damage": "18",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 18,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 9,
+      "anim_ref": "t8:anna:anna-uf+2",
+      "input_slots": [
+        "uf+2"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -8"
+    },
+    "uf+3": {
+      "name": "Sudden Storm",
+      "input": "uf+3",
+      "t8_source": "anna",
+      "t8_id": "Anna-uf+3",
+      "t8_damage": "22",
+      "startup": 0.383,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 22,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 11,
+      "anim_ref": "t8:anna:anna-uf+3",
+      "input_slots": [
+        "uf+3"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block +0"
+    },
+    "uf+3+4": {
+      "name": "Dominatrix Heel",
+      "input": "uf+3+4",
+      "t8_source": "anna",
+      "t8_id": "Anna-uf+3+4",
+      "t8_damage": "4,18",
+      "startup": 0.417,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 22,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 11,
+      "anim_ref": "t8:anna:anna-uf+3+4",
+      "input_slots": [
+        "uf+3+4"
+      ],
+      "move_class": "strike",
+      "multi_hit": {
+        "hits": [
+          4,
+          18
+        ],
+        "total": 22
+      },
+      "note": "Mid, Mid; on block -3c"
+    },
+    "uf+3,H.1": {
+      "name": "Sudden Fascinator",
+      "input": "uf+3,H.1",
+      "t8_source": "anna",
+      "t8_id": "Anna-uf+3,H.1",
+      "t8_damage": ",20",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 42,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-uf+3,h.1",
+      "input_slots": [
+        "uf+3",
+        "uf+3,H.1"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          22,
+          20
+        ],
+        "total": 42
+      },
+      "note": "High; on block +4g~+53g; knockdown on hit"
+    },
+    "uf+3,H.2": {
+      "name": "Sudden Penetrator",
+      "input": "uf+3,H.2",
+      "t8_source": "anna",
+      "t8_id": "Anna-uf+3,H.2",
+      "t8_damage": ",30",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.267,
+      "damage": 52,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:anna:anna-uf+3,h.2",
+      "input_slots": [
+        "uf+3",
+        "uf+3,H.2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          22,
+          30
+        ],
+        "total": 52
+      },
+      "note": "High; on block -1~+98g; knockdown on hit"
+    },
+    "uf+4": {
+      "name": "Quick Somersault Kick",
+      "input": "uf+4",
+      "t8_source": "anna",
+      "t8_id": "Anna-uf+4",
+      "t8_damage": "24",
+      "startup": 0.3,
+      "active": 0.033,
+      "recovery": 0.583,
+      "damage": 24,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:anna:anna-uf+4",
+      "input_slots": [
+        "uf+4"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -18; knockdown on hit"
+    },
+    "ws1": {
+      "name": "Move ws1 (ws1)",
+      "input": "ws1",
+      "t8_source": "anna",
+      "t8_id": "Anna-ws1",
+      "t8_damage": "10",
+      "startup": 0.217,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 10,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 5,
+      "anim_ref": "t8:anna:anna-ws1",
+      "input_slots": [
+        "ws1"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -8"
+    },
+    "ws1+2": {
+      "name": "Right Hand Stab",
+      "input": "ws1+2",
+      "t8_source": "anna",
+      "t8_id": "Anna-ws1+2",
+      "t8_damage": "25",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.583,
+      "damage": 25,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:anna:anna-ws1+2",
+      "input_slots": [
+        "ws1+2"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -14; knockdown on hit"
+    },
+    "ws1,2": {
+      "name": "Ocelot Frenzy",
+      "input": "ws1,2",
+      "t8_source": "anna",
+      "t8_id": "Anna-ws1,2",
+      "t8_damage": ",17",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 27,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 14,
+      "anim_ref": "t8:anna:anna-ws1,2",
+      "input_slots": [
+        "ws1",
+        "ws1,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          10,
+          17
+        ],
+        "total": 27
+      },
+      "note": "Mid; on block -13"
+    },
+    "ws2": {
+      "name": "Rising Palm",
+      "input": "ws2",
+      "t8_source": "anna",
+      "t8_id": "Anna-ws2",
+      "t8_damage": "16",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.583,
+      "damage": 16,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t8:anna:anna-ws2",
+      "input_slots": [
+        "ws2"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -13; knockdown on hit"
+    },
+    "ws3": {
+      "name": "Face Wash",
+      "input": "ws3",
+      "t8_source": "anna",
+      "t8_id": "Anna-ws3",
+      "t8_damage": "20",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.35,
+      "damage": 20,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:anna:anna-ws3",
+      "input_slots": [
+        "ws3"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -3"
+    },
+    "ws4": {
+      "name": "Toe Smash",
+      "input": "ws4",
+      "t8_source": "anna",
+      "t8_id": "Anna-ws4",
+      "t8_damage": "16",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.4,
+      "damage": 16,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t8:anna:anna-ws4",
+      "input_slots": [
+        "ws4"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -6"
+    }
+  },
+  "restored_from_sweep_338": {
+    "date": "2026-10-20",
+    "by": "tools/moveset-restore/restore_sweep_338.py",
+    "source_commit": "4cc6b41b",
+    "destroyed_by": "8ebdc527",
+    "moves": 307,
+    "strings": 89,
+    "specials": 22
+  }
 }
