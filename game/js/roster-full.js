@@ -172,9 +172,14 @@ export const FULL_ROSTER = [
     surge: { name: "TIMBERWOLF RAGE", color: 0x4466aa, accent: 0xffcc00 },
     stats: { speed: 3.6, jump: 6.0, power: 1.45, defense: 1.3 },
     ai: { aggression: 0.8, grabBias: 0.55, reaction: 0.55 } },
-  { id: 'deathfang', name: 'DEATHFANG', title: 'The Chained Wolf', base: 'Iori Yagami', moveset: 'deathfang', model: 'deathfang', tintStrength: 0.25,
-    colors: { suit: 0x2a1a3a, trim: 0xaa22ff }, style: 'Flames/Werewolf', archetype: 'Rushdown',
-    surge: { name: 'FULL MOON HOWL', color: 0xaa22ff, accent: 0xff2222 },
+  // DEATHFANG (owner 2026-10-19): proprietary character based on Iori Yagami — keeps Iori's
+  // moves, stance and animations. Prisoner/slave to his own grief and emotions: chained and
+  // shackled, emo styling, NO FUTURE face tattoo (Soul Eater). Transforms into a chained
+  // prisoner werewolf (attire 2). (Merged entry: canon fields from the reskin lane,
+  // stats/ai from the parallel wiring lane.)
+  { id: 'deathfang', name: 'DEATHFANG', title: 'The Chained Prisoner', base: 'Iori Yagami', moveset: 'deathfang', model: 'deathfang', tintStrength: 0.25,
+    colors: { suit: 0x0a0a0f, trim: 0x8a0f1a }, style: 'Grief Flames', archetype: 'Rushdown',
+    surge: { name: 'NO FUTURE', color: 0x5a0f8a, accent: 0xff2222 },
     stats: { speed: 5.2, jump: 7.8, power: 1.15, defense: 0.95 },
     ai: { aggression: 0.85, grabBias: 0.3, reaction: 0.6 } },
   { id: 'ryuji-rock', name: 'RYUJI ROCK', title: 'The Obnoxious One', base: 'Ryuji Yamazaki + The Rock', moveset: 'ryuji-rock', model: 'ryuji-rock', tintStrength: 0.25,
