@@ -65,6 +65,8 @@ const MODEL_URLS = {
   'cain-elias-attire2': '../roster/cain-elias/attires/attire2/model.glb',
   // Burger — Demon mode, possessed by greed (owner 2026-10-19, Tripo pull).
   burger: '../roster/burger/attires/attire1/model.glb',
+  // Kronos — new fighter (owner 2026-10-19, Tripo pull).
+  kronos: '../roster/kronos/attires/attire1/model.glb',
   // Burger hunger-state variants (owner 2026-10-19, Tripo pulls).
   'burger-attire2': '../roster/burger/attires/attire2/model.glb',
   'burger-attire3': '../roster/burger/attires/attire3/model.glb',
