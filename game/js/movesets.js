@@ -46,6 +46,8 @@ export const MOVESET_IDS = [
   'zangief', 'blanka', 'vega', 'iori', 'armor-king',
   // Custom fighters (owner 2026-10-19): KRONOS — Zangief base + Golem (Urban Reign) mix.
   'kronos',
+  // Intake wave 2 (owner 2026-10-19): remaining four intake movesets.
+  'hugo', 'raiden', 'marduk', 'bob',
 ];
 
 const _movesets = {};
