@@ -296,7 +296,8 @@ const OWNERSHIP = {
   "slice": {
     "own": [
       "slice",
-      "slice-attire1"
+      "slice-attire1",
+      "slice-attire2"
     ]
   },
   "star": {

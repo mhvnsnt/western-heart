@@ -32,12 +32,21 @@ export const MODEL_URLS = {
   'diablo-attire1': '../roster/diablo/attires/attire1/model.glb',
   // Diablo Attire 2 — Devil God (owner 2026-10-20, Tripo pull).
   'diablo-attire2': '../roster/diablo/attires/attire2/model.glb',
-  // SLICE Attire 1 (owner 2026-10-21): Tekken 7 Dragunov teardown model
-  // (dragunov-t7-rig.blend from release tekken-models-batch-2) converted to
-  // GLB — Slice's first own model; he was a steve-fox fallback rider with no
-  // model of his own (model-key audit, PR #418).
+  // SLICE Attire 1 (owner 2026-10-21 ~08:42 CDT): the owner's own Tripo is
+  // his MAIN DEFAULT attire — "undead warrior 3d model" by tzflo312
+  // (cf9cf660-1673-4585-ac1b-ce4fc92f1550), pulled via tools/tripo-pull and
+  // archived on release slice-tripo-pulls-20261021. Canon: arm blades jagged
+  // chrome (Baraka/Wolverine prototype mix), skull mask blending into the
+  // head at the back, scars all over, blades on belt buckle + shoe side.
+  // Static meshopt GLB (no skin) — rig at the rig stage like other Tripo mains.
   slice: '../roster/slice/attires/attire1/model.glb',
   'slice-attire1': '../roster/slice/attires/attire1/model.glb',
+  // SLICE Attire 2 — our Dragunov build (PR #433): Tekken 7 Dragunov teardown
+  // model (dragunov-t7-rig.blend from release tekken-models-batch-2) converted
+  // to GLB. It was Attire 1 until the owner's Tripo landed; it laddered back
+  // byte-identical, never deleted — Slice's first own model, rigged on the
+  // Tekken 7 game skeleton (198 joints).
+  'slice-attire2': '../roster/slice/attires/attire2/model.glb',
   // ZUI Attires 1+2 (owner Tripos; gap found by the model-key audit, PR #418):
   // A1 = Drunken Monk Tripo, his DEFAULT attire (roster/zui/ATTIRE-SLOTS.md,
   // owner 2026-10-18). The GLBs sat in roster/zui/attires/ with NO MODEL_URLS

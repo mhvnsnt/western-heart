@@ -141,3 +141,16 @@ The audit listed SLICE as one of two fighters with no model in the repo (he rode
 | SLICE (`slice`) | `slice` (no ATTIRE_VARIANTS entry -> roster `model:` fallback) | `slice` | `slice` | `../roster/slice/attires/attire1/model.glb` | (a) OWN |
 
 Source: Tekken 7 Dragunov teardown model — `dragunov-t7-rig.blend` from release `tekken-models-batch-2` (sha256 `214dc98fcc364245cd75dc52b3538d463c21ed28e45b907c78803feb714e5efd`), the T7 default costume (beret configuration), converted to GLB on the T7 game skeleton (198 joints). `roster-full.js` `model:` changed `steve-fox` -> `slice`; `MODEL_URLS` gained `slice` + `slice-attire1`; the guard's OWNERSHIP table now lists `slice: own [slice, slice-attire1]`. Canon gap (not a defect): Slice's skull mask is a Tekken 7 customization part that is **not present in our teardown holdings** — see `roster/slice/ATTIRE-SLOTS.md`.
+
+## Follow-up (2026-10-21) — SLICE Attire 1 is now the owner's Tripo; Dragunov build laddered to Attire 2
+
+The owner dropped his own Tripo for Slice (2026-10-21 ~08:42 CDT) and named it his **main default Attire 1**: "undead warrior 3d model" by tzflo312 (cf9cf660-1673-4585-ac1b-ce4fc92f1550), pulled via `tools/tripo-pull` and archived on release `slice-tripo-pulls-20261021` (18,884,292 B, sha256 `6cddd2c9697aead7abb4a7c61dd36e9f003bafad14fd9fd6d0e49ff851074337`, digest-verified; glTF 2.0 meshopt, 1 mesh / 1 material / 3 textures, **static — no skin**; rig at the rig stage, see `roster/slice/RIG-NOTES.md`). Canon per the owner: jagged chrome arm blades (Baraka/Wolverine prototype mix), skull mask blending into the back of the head, scars all over, blades on the belt buckle and the side of the shoe.
+
+The PR #433 Dragunov build **laddered back to Attire 2 byte-identical** (sha256 `af51f6473e7764ac6f832d19a3e6a38ef89f924e3a1511f43c3b7531a01d94b0` verified before and after the move; its T-pose refs moved to `docs/tpose-refs/slice/a2_front.png` / `a2_back.png`). It stays wired and selectable — the owner: "you can keep making your version of slice."
+
+| Fighter | Player/select path | Enemy/raw path | Resolved key | Resolved URL | Class |
+|---|---|---|---|---|---|
+| SLICE (`slice`) | `slice` → `slice-attire1` (ATTIRE_VARIANTS default) | `slice` | `slice` / `slice-attire1` | `../roster/slice/attires/attire1/model.glb` | (a) OWN |
+| SLICE Attire 2 (`slice-attire2`) | `slice-attire2` (ATTIRE_VARIANTS) | `slice-attire2` | `slice-attire2` | `../roster/slice/attires/attire2/model.glb` | (a) OWN |
+
+`MODEL_URLS` gained `slice-attire2`; `slice` + `slice-attire1` still point at `attire1/model.glb` (now the Tripo file); `ATTIRE_VARIANTS['slice']` added (A1 Tripo default, A2 Dragunov build); the guard's OWNERSHIP table now lists `slice: own [slice, slice-attire1, slice-attire2]`. Proof: `node --test game/tests/model-key-guard.test.mjs` — resolution tests pass (Slice → his Tripo on both paths, Dragunov build on its own slot); renders `docs/tpose-refs/slice/a1_front.png` + `a1_back.png` own-eyes verified against the owner's description. The skull-mask note in the earlier SLICE addendum is superseded for his default look: the owner's Tripo models the mask on. The T7 generic customization skull-mask part remains a Creation Suite piece goal (see `roster/slice/ATTIRE-SLOTS.md`).
