@@ -13,8 +13,11 @@ import { clone as skeletonClone } from 'three/addons/utils/SkeletonUtils.js';
 // saku-ra-main, purple-rain-main, kiko-tanaka*). Vendored locally —
 // the game ships with no CDN (see index.html importmap).
 import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.js';
+// Creation Suite Pass: generated registry of baked customization overrides
+// (customization/tools/apply_customization.py). Empty map = exact no-op.
+import { ATTIRE_CUSTOMIZATIONS } from './attire-customizations.js';
 
-const MODEL_URLS = {
+export const MODEL_URLS = {
   pantera: 'assets/models/pantera.glb',
   'steve-fox': 'assets/models/steve-fox.glb',
   // NOTE (owner canon 2026-10-19): Tekken's Jin = DEMONIO — the old `jin:` key was removed;
@@ -162,6 +165,15 @@ const MODEL_URLS = {
   // owner sends a Tripo link. See roster/ryuji-rock/attires/attire1/README.md.
   'ryuji-rock': '../roster/ryuji-rock/attires/attire1/model.glb',
 };
+
+// Creation Suite Pass: let baked customizations override base model URLs
+// before anything loads them. Guarded — any registry problem leaves
+// MODEL_URLS exactly as authored above.
+try {
+  for (const [key, url] of Object.entries(ATTIRE_CUSTOMIZATIONS || {})) {
+    if (url) MODEL_URLS[key] = url;
+  }
+} catch (e) { /* Creation Suite registry unavailable: base URLs stand. */ }
 
 /* MESH FACING (2026-10-20). The game (fighter.js lean rotation) and the T3
    retarget assume a model's mesh faces +Z. Many shipped GLBs face -Z, and
