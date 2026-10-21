@@ -311,6 +311,19 @@ function retargetClipToRig(clip, bind, THREE) {
     const target = (bone === 'Chest' && !bind.Chest && bind.Spine2) ? CANON_TO_TARGET.Chest : bone;
     const bq = bind[target];
     if (!bq) { changed = true; continue; } // no such bone on this rig (e.g. Root)
+    // Only quaternion tracks take the bind-premultiply below. Any other
+    // track (e.g. the Hips.position VectorKeyframeTrack that
+    // retargetT3Clips emits from root_t, stride 3) must stay exactly
+    // what it is: running it through the stride-4 quaternion loop reads
+    // past its value groups, emits NaNs, and pushes a malformed
+    // duplicate '<bone>.quaternion' track (values.length = times*3)
+    // that hangs/crashes the mixer on first evaluation.
+    if (!track.name.endsWith('.quaternion')) {
+      if (target === bone) { tracks.push(track); continue; }
+      changed = true;
+      tracks.push(new track.constructor(`${target}.${track.name.slice(dot + 1)}`, track.times, track.values));
+      continue;
+    }
     const identityBind = (bq.x * bq.x + bq.y * bq.y + bq.z * bq.z) < 1e-8;
     if (target === bone && identityBind) { tracks.push(track); continue; }
     changed = true;
