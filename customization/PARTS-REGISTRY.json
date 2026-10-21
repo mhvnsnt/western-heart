@@ -32,6 +32,51 @@
     }
   },
   "character_mappings": {
+    "baek": {
+      "character": "Baek / Kevin — Master White (Tekken 7 rip, pek1u texture set). Mapped 2026-10-21 (round 2) from texture evidence: per-material mean colors of baek-master-white-rigged.glb — skin mats are the warm-tan set, hair mats the dark-brown set. Round 1 loud-failed here (mapping was null, so colors.skin/colors.hair never applied).",
+      "eye": {
+        "material": "mat_21-pek1u_29",
+        "replaces_texture": "pek1u_29.jpg",
+        "texture_size": [
+          128,
+          128
+        ]
+      },
+      "skin": {
+        "material": "mat_26-pek1u_12",
+        "materials": [
+          "mat_26-pek1u_12",
+          "mat_2-pek1u_19",
+          "mat_6-pek1u_2",
+          "mat_5-pek1u_33",
+          "mat_9-pek1u_22",
+          "mat_13-pek1u_21",
+          "mat_17-pek1u_23",
+          "mat_27-pek1u_20",
+          "mat_14-pek1u_31",
+          "mat_15-pek1u_24",
+          "mat_10-pek1u_16"
+        ],
+        "replaces_texture": "pek1u skin set (head 12; body 19/2/33/31/24; hands 22/21/23/20; trim 16). pek1u_29 (face/eyes) deliberately excluded — tinting it would shift the painted eyes.",
+        "texture_size": [
+          512,
+          512
+        ]
+      },
+      "hair": {
+        "material": "mat_20-pek1u_14",
+        "materials": [
+          "mat_20-pek1u_14",
+          "mat_25-pek1u_15",
+          "mat_31-pek1u_13"
+        ],
+        "replaces_texture": "pek1u hair set (14/15/13 — the Head-bone meshes of the base model)",
+        "texture_size": [
+          512,
+          512
+        ]
+      }
+    },
     "mariposa": {
       "character": "Mariposa (proprietary; wired Tekken 6 base, Slot 1 Butterfly Default)",
       "eye": {

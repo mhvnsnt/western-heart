@@ -918,8 +918,21 @@ def bake(cfg_path, repo_root, mpfb_src, log=print):
         before = set(bpy.context.scene.objects)
         bpy.ops.import_scene.gltf(filepath=glb_path)
         new_objs = [o for o in bpy.context.scene.objects if o not in before]
-        new_meshes = [o for o in new_objs if o.type == 'MESH']
         new_arms = [o for o in new_objs if o.type == 'ARMATURE']
+        new_meshes = [o for o in new_objs if o.type == 'MESH']
+        if new_arms:
+            # Source scenes can carry helper props that are not part of the
+            # piece (the CC0 hair files ship a root-level Icosphere). Only
+            # meshes tied to the part's own rig are the part.
+            keep = [o for o in new_meshes
+                    if o.parent in new_arms or len(o.vertex_groups) > 0 or
+                    any(m.type == 'ARMATURE' and m.object in new_arms for m in o.modifiers)]
+            for o in new_meshes:
+                if o not in keep:
+                    log(f'CSBAKE part: dropping non-part prop {o.name} from {glb_rel}')
+                    bpy.data.objects.remove(o, do_unlink=True)
+                    new_objs.remove(o)
+            new_meshes = keep
         placement = spec.get('placement') or {}
         base_bones = {b.name for b in base_arm.data.bones} if base_arm else set()
         part_bones = set()

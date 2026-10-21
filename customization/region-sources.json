@@ -1,0 +1,112 @@
+{
+ "generated_by": "customization/tools/build_region_sources.py",
+ "note": "Piece-swap sources for the Creation Suite region_swaps. skinned/bones/extensions enrich when the GLB is on disk; null fields are inspected by the bake at import time.",
+ "count": 8,
+ "sources": [
+  {
+   "path": "roster/baek/attires/attire1/model.glb",
+   "fighter": "baek",
+   "attire": "attire1",
+   "file": "model.glb",
+   "bytes": 12081796,
+   "skinned": false,
+   "bones": 0,
+   "extensions": [
+    "KHR_mesh_quantization",
+    "EXT_meshopt_compression"
+   ],
+   "meshes": 1
+  },
+  {
+   "path": "roster/baek/attires/master-white/baek-master-white-rigged.glb",
+   "fighter": "baek",
+   "attire": "master-white",
+   "file": "baek-master-white-rigged.glb",
+   "bytes": 570500,
+   "skinned": true,
+   "bones": 50,
+   "extensions": [
+    "KHR_materials_specular",
+    "KHR_materials_ior"
+   ],
+   "meshes": 35
+  },
+  {
+   "path": "roster/baek/attires/master-white/baek-master-white.glb",
+   "fighter": "baek",
+   "attire": "master-white",
+   "file": "baek-master-white.glb",
+   "bytes": 469640,
+   "skinned": false,
+   "bones": 0,
+   "extensions": [
+    "KHR_materials_specular",
+    "KHR_materials_ior"
+   ],
+   "meshes": 35
+  },
+  {
+   "path": "roster/baek/attires/master-white/model-custom.glb",
+   "fighter": "baek",
+   "attire": "master-white",
+   "file": "model-custom.glb",
+   "bytes": 579492,
+   "skinned": true,
+   "bones": 50,
+   "extensions": [
+    "KHR_materials_specular",
+    "KHR_materials_ior"
+   ],
+   "meshes": 35
+  },
+  {
+   "path": "roster/baek/attires/master-white/model-kevin-diff.glb",
+   "fighter": "baek",
+   "attire": "master-white",
+   "file": "model-kevin-diff.glb",
+   "bytes": 1313048,
+   "skinned": true,
+   "bones": 65,
+   "extensions": [
+    "KHR_materials_specular",
+    "KHR_materials_ior"
+   ],
+   "meshes": 38
+  },
+  {
+   "path": "roster/deathfang/attires/attire1/model.glb",
+   "fighter": "deathfang",
+   "attire": "attire1",
+   "file": "model.glb",
+   "bytes": 16329504,
+   "skinned": true,
+   "bones": 73,
+   "extensions": [],
+   "meshes": 1
+  },
+  {
+   "path": "roster/deathfang/attires/attire2/model.glb",
+   "fighter": "deathfang",
+   "attire": "attire2",
+   "file": "model.glb",
+   "bytes": 17394144,
+   "skinned": true,
+   "bones": 73,
+   "extensions": [],
+   "meshes": 1
+  },
+  {
+   "path": "roster/deathfang/attires/attire3/model.glb",
+   "fighter": "deathfang",
+   "attire": "attire3",
+   "file": "model.glb",
+   "bytes": 13625408,
+   "skinned": true,
+   "bones": 79,
+   "extensions": [
+    "KHR_materials_pbrSpecularGlossiness"
+   ],
+   "meshes": 11
+  }
+ ]
+}
