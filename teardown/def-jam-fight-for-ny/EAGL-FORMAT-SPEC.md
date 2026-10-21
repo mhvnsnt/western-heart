@@ -546,6 +546,86 @@ a VU-capable disassembler pass is the open tooling need);
 (3) validation gates unchanged (§7.9.1 item 3–4 + §7.9.2's BBOX /
 topology gates). The POINTS discipline still stands.
 
+#### 7.9.3 W5d follow-up (2026-10-21) — the packet-build trio is the ELF linker; the microcode is not in the exe
+
+The trio named at the end of §7.9.2 was decompiled in the retained
+Ghidra project (same targeted `-noanalysis`, 1.2 GB heap discipline;
+full decompilation + disassembly retained in the W5d lane scratch as
+`ghidra_out3.txt`). The §7.9.2 guess that these are "GeoPrim packet
+build" functions is **wrong**, and the correction matters:
+
+- `0x229008` is the **relocatable ELF loader**. It allocates a
+  0x830-byte object record, reads the ELF header fields the J4 parser
+  also reads (section count at header +0x30, shstrndx at +0x32),
+  walks the 0x28-byte section headers, dispatches on section type
+  (2/3/8/9/10/11 plus the MIPS processor-specific range
+  0x70000005–0x7FFFF421), and builds the standard gABI symbol hash
+  table (the `& 0xF0000000` / `>> 24` xor-fold loop). Its only callees
+  in this role are the allocator (via the pointer at 0x38146C) and the
+  error printer `0x227E10`.
+- `0x228A08` is the **runtime relocator / symbol resolver**. It walks
+  type-9 (SHT_REL) sections and applies the relocation-type switch
+  (case 2 = add the resolved value, case 4 = R_MIPS_26 jump-target
+  patch with region check, cases 5/6 = HI16/LO16 halfword adds). An
+  undefined symbol is resolved first against the already-loaded
+  object list (`0x229BC8` name compare), then through a per-object
+  resolver callback (object record +0x82C), then a global registry
+  (0x4A2CA8 / 0x4A2CE8); the resolved address minus the section base
+  is written back into the symbol entry (+0x10), tagged at byte +0xD
+  with the resolution source (2 = loaded object, 3 = callback,
+  4 = registry, 5 = dynamically loaded) and flagged +0xE = 1.
+- `0x229EE8` is an 8-byte **stub**: `jr ra` / `li v0,1` (return 1).
+
+**Verdict (transform vs pass-through): neither — there is no packet
+build on this path at all.** The trio contains no VIF opcode, no
+GIFtag construction, no DMA setup, and no read of any vertex record,
+in either the decompilation or the raw disassembly. Together with
+§7.9.2 this closes the CPU side completely: the entire CMorph load
+path (name lookup → ELF load → relocate → symbol-resolve → allocate)
+never touches vertex data. The streams are handed to the render path
+as loaded ELF sections; consumption — and therefore the draw order —
+is render-time, VU1-side. The "packet-build trio" lead is exhausted
+and should not be re-run.
+
+**Microcode extraction — attempted, stall point located precisely.**
+The `_C` objects do not contain the microcode: in every sampled
+`_C` (110/111/113) `LitGouraud0__EAGLMicroCode` and
+`IrradTexture_Skin0__EAGLMicroCode` are **undefined external symbols**
+(symbol value 0, size 0), resolved at load time by `0x228A08` through
+the chain above. Nor is the code in the executable under those names:
+a full byte scan of `SLUS_210.04` finds only two `__EAGLMicroCode`
+names — `Particle0__EAGLMicroCode` and `HeatParticle0__EAGLMicroCode`
+(file offsets 0x2DC3F8 / 0x2DC418, in the render-method name table
+beside the "Particle model pcode" / "Particle render method pcode"
+strings). No `LitGouraud` / `Skin0` / `Gouraud`-suffixed microcode
+name or string exists anywhere in the exe. The skinning/lighting
+microcode therefore reaches the resolver from a **separate runtime
+object or the global registry** (0x4A2CA8 / 0x4A2CE8, populated at
+device init), i.e. from another file on the disc — most plausibly an
+EAGL runtime/microcode object inside the game's VIV/BIG archives —
+and not from the two artifacts this lane holds (exe + CAW `.o` set).
+
+One corroborating datum from the `_C` symbol tables: the
+`__EAGL::GeoPrimState` symbols declare
+`SetPrimitiveType=EAGL::PT_TRIANGLESTRIP`, independently confirming
+the strip framing the J4 parser already uses. It does not order the
+vertices inside the strips.
+
+**Next crack (in order):** (1) census the extracted 2,624 `.o` set
+(and, if absent there, the disc's VIV/BIG contents) for the object
+that *defines* `LitGouraud0__EAGLMicroCode` (symbol value ≠ 0) — that
+object's `.data` is the VU1 microcode blob; (2) disassemble it with a
+VU-capable pass (Ghidra emotionengine-reloaded VPU language, already
+present in the local Ghidra extensions) and read the vertex loop's
+buffer walk + GIF emit order; (3) test the bone-local assembly lead
+(94-bone palette, 112-byte bind/inverse-bind records) against that
+loop; (4) validation gates unchanged (cross-letter topology identity,
+`_C` BBOX spans 17.44/19.33/9.0, Blender renders of
+V2CP_110_0001_A + 111/112/113, own-eyes). Until a render proves
+otherwise the POINTS discipline still stands:
+`topology_status=unproven_vertex_order` is unchanged, and no
+converter or catalog change is made by this addendum.
+
 ### 7.10 Phase B census — the extracted set (2026-10-21)
 
 The wrestling-game teardown tree holds **2,624 `.o` + 5,319 `.ssh`**
