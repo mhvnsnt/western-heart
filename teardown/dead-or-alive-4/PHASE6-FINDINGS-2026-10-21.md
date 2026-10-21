@@ -15,9 +15,15 @@ Package census = XPR2 directory scan of each AFS
 
 | AFS | packages | meshes | clean | moderate | poor |
 |---|---|---|---|---|---|
-| chrone | 30/30 | 2003 | 1078 | 665 | 354 |
-| chrtwo | 68/68 | 2497 | 1189 | 670 | 705 |
-| chrthree | 50/50 | PENDING | | | |
+| chrone | 30/30 | 2287 | 1223 | 832 | 349 |
+| chrtwo | 68/68 | 2268 | 1293 | 759 | 319 |
+| chrthree | 50/50 | 3686 | 2128 | 1147 | 603 |
+| **total** | **148/148** | **8241** | **4644** | **2738** | **1271** |
+
+Counts are a verified recount from the inventory CSVs on disk (unique
+tags, no duplicate rows). An interim tally in commit 56e0ec4's message
+(chrone 2003 / chrtwo 2497) was taken mid-lane before the wide-window
+redos and is superseded by this table.
 
 Quality is per-GeoDecl (phase-4 style): clean = full-coverage strip with
 mean edge/scale score < 0.10; moderate < 0.25; poor = worse, NO STRIP, or
@@ -38,13 +44,28 @@ Assembly notes:
   truncated by a fixed window cap and rebuilt with image-sized windows
   (`xp + f2 + 0x300000`, capped at the next package's directory +
   0x360000); the inventory rows in git are the rebuilt ones.
+- The same truncation pattern was then audited across chrtwo: every
+  package with f2 > 0xA00000 was rebuilt with the wide window
+  (17 packages: 01, 02, 03, 47, 48, 51, 54, 55, 56, 57, 58, 59, 60, 61,
+  62, 63, 67). Gains were large where truncation had bitten —
+  pkg48: 5 -> 80 meshes (poor 77 -> 9), pkg03: 31 -> 75 (poor 44 -> 9),
+  pkg51: 26 -> 80, pkg54: 19 -> 80, pkg58: 23 -> 76 — while pkg67
+  honestly stayed at 4 meshes / 67 poor (not a truncation case).
+  chrthree was built with wide windows from the start.
 - chrthree additionally contains 25 TX2D-only sub-packages in the audit
   range 0x6e7c800–0xaf46800 (XPR2 + TX2D records only — no USER/VBUF/IBUF,
   so no geometry exists to assemble). Together with the 50 full packages
   they account for all 75 chrthree tables (see Gates, G2).
 
-Viewed front renders (sample of 6 per AFS, assembly QC):
-`phase6/samples/` in this PR.
+Viewed front renders (assembly QC samples, all viewed by this lane):
+`phase6/samples/` in this PR. chrone: pkg00 coherent (vest character),
+pkg03 partial (shattered head/torso), pkg10 coherent (cheongsam
+character), pkg15 partial (gown), pkg21 poor (shattered), pkg27 coherent
+torso. chrtwo: pkg00 (phase-5 verdict), pkg07 partial (helmet), pkg20
+coherent (braided head + collar), pkg33 poor-moderate (shredded head),
+pkg48 poor, pkg60 poor. chrthree: pkg00 moderate-good (shirt torso),
+pkg12 partial (bow + gown), pkg20 partial (scissors prop package),
+pkg33 partial (hat character), pkg44 partial (torso).
 
 ## 2. Skinned exports (job 2)
 
