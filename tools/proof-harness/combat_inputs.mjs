@@ -31,7 +31,7 @@ await page.waitForFunction(() => window.__game && window.__game.roundState === '
 console.log('round state:', await page.evaluate(() => window.__game && window.__game.roundState));
 await page.waitForTimeout(1200);
 // freeze the CPU: inputs below are the only thing moving
-await page.evaluate(() => { const g = window.__game; g.ai.update = () => {}; g.timer = 999; g.p2.root.position.x = g.p1.root.position.x + 1.6 * g.p1.facing; });
+await page.evaluate(() => { const g = window.__game; g.ai.update = () => {}; g.timer = 999; g.p2.root.position.x = g.p1.root.position.x + (+(window.__SPACING || 1.15)) * g.p1.facing; });
 
 const key = async (k, ms = 40) => { await page.keyboard.down(k); await page.waitForTimeout(ms); await page.keyboard.up(k); };
 const state = () => page.evaluate(() => {
@@ -41,7 +41,7 @@ const state = () => page.evaluate(() => {
            stance: f.stance, p2hp: +g.p2.hp.toFixed(1), p1hp: +g.p1.hp.toFixed(1), bank: f._t3 && f._t3.bank };
 });
 const reset = () => page.evaluate(() => { const g = window.__game; g.p1.hp = 100; g.p2.hp = 100; g.p1._enter('idle'); g.p2._enter('idle'); g.p2.stun = 0;
-  g.p2.root.position.x = g.p1.root.position.x + 1.6 * g.p1.facing; g.p1.tekken.lastMove = null; });
+  g.p2.root.position.x = g.p1.root.position.x + (+(window.__SPACING || 1.15)) * g.p1.facing; g.p1.tekken.lastMove = null; });
 
 const fwd = await page.evaluate(() => window.__game.p1.facing > 0 ? 'ArrowRight' : 'ArrowLeft');
 const back = fwd === 'ArrowRight' ? 'ArrowLeft' : 'ArrowRight';

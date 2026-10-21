@@ -176,6 +176,7 @@ export function setInputTables(t) {
   for (const [n, ws] of Object.entries(byLen)) { ws.sort((a, b) => a - b); _seqWindows.__byLen[n] = ws[ws.length >> 1]; }
 }
 function motionWindow(dirs) {
+  dirs = dirs.filter(d => d !== 'n'); // table keys are the direction steps without neutrals
   const k = dirs.join(',');
   if (_seqWindows && _seqWindows[k]) return _seqWindows[k];
   if (_seqWindows && _seqWindows.__byLen[dirs.length]) return _seqWindows.__byLen[dirs.length];
@@ -198,14 +199,16 @@ export function parseMotion(n) {
   if (head.some(p => !DIR_TOKEN.test(p))) return null; // a button earlier = string, not motion
   let dirs = head.map(d => d.toLowerCase());
   // 'f,n,2': the stick returns to neutral and the button comes with NO direction. 'd/b,n,f+2':
-  // the n is just a step between directions (the last part carries its own direction).
+  // the n is a real step between directions — T3's sequences carry explicit neutral steps
+  // (n,d/f,n,d/f = tap d/f twice), so inner n's stay; only leading/trailing ones go.
   const neutral = !lm[1] && dirs.length > 0 && dirs[dirs.length - 1] === 'n';
-  dirs = dirs.filter(d => d !== 'n');
+  while (dirs.length && dirs[0] === 'n') dirs.shift();
+  if (neutral) while (dirs.length && dirs[dirs.length - 1] === 'n') dirs.pop(); // 'f,n,2' only
   if (lm[1]) {
     if (MOTION_DIRS[lm[1]]) dirs = dirs.concat(MOTION_DIRS[lm[1]]);
     else dirs.push(lm[1].toLowerCase());
   }
-  if (dirs.length < 2 && !(lm[1] && MOTION_DIRS[lm[1]])) return null; // plain directional
+  if (dirs.filter(d => d !== 'n').length < 2 && !(lm[1] && MOTION_DIRS[lm[1]])) return null; // plain directional
   return { prefix, dirs, btn: lm[2], neutral };
 }
 

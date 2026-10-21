@@ -709,13 +709,31 @@ export class Fighter {
     if (this.state === 'attack' && this.attack && /^[1234](\+[1234])*$/.test(name)) {
       const cont = this.tekken.continuation(name);
       if (cont) { this._queuedNext = cont; return true; }
+      // Chord upgrade: input.js emits the first button at once and the chord when the second
+      // lands inside its 140 ms window, so '1' then '1+3' means the player pressed 1+3. If the
+      // single that just started is part of this chord, the chord replaces it.
+      if (name.includes('+') && this.stateT <= 0.14 && this._attackPhase === 'startup' && !this.hasHit) {
+        const single = String(this.attackName || '').split(/[,.]/).pop();
+        const btn = single.split('+').pop();
+        if (/^[1234]$/.test(btn) && name.split('+').includes(btn)) {
+          this.tekken.lastMove = this._chordBase || null;
+          const saved = { state: this.state, attack: this.attack, attackName: this.attackName, stateT: this.stateT };
+          this.state = 'idle';
+          if (this._tryAttackFresh(name)) return true;
+          Object.assign(this, saved);
+        }
+      }
     }
+    return this._tryAttackFresh(name);
+  }
+  _tryAttackFresh(name) {
     if (!this.canAct() && !this.sidestepCancelable) return false;
     // Tekken notation resolution: strings (1,2), motion specials (qcf+2),
     // directionals (f+1), state/stance prefixes (WS. FC. SS. BT. R. SNK. ...)
     // via the fighter's TekkenBuffer + its moveset's notation table.
     let notation = LEGACY_TO_TEKKEN[name] || name;
     const ctx = this._inputCtx();
+    this._chordBase = this.tekken.lastMove;
     if (/^[1234]$/.test(notation)) {
       const resolved = this.tekken.pressButton(notation, ctx);
       // Stream 6: if the fighter has no move on this limb, keep the raw

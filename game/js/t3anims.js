@@ -336,23 +336,18 @@ function retargetClipToRig(clip, bind, THREE) {
  * Returns { actionName: AnimationAction }.
  */
 export function createT3Actions(mixer, t3Clips, THREE) {
-  // Target rig bind locals, keyed by stripped bone name (same stripping
-  // as the bones dict in assets.js). Read before the mixer ever poses the
-  // model — Fighter constructs actions on a fresh bind-pose instance.
-  const bind = {};
-  const rootObj = mixer.getRoot();
-  if (rootObj && rootObj.traverse) {
-    rootObj.traverse((o) => {
-      if (o.isBone) {
-        const nm = o.name.replace(/^mixamorig:?/, '');
-        if (!(nm in bind)) bind[nm] = o.quaternion.clone();
-      }
-    });
-  }
+  // NOT re-retargeted here (2026-10-21). Every caller — Fighter._bindT3, Fighter._moveRowAction,
+  // SelectScreen — passes clips that retargetT3Clips() already converted into THIS rig's own
+  // bone names and rest frame (PR #389). PR #403 added retargetClipToRig() at this point; on
+  // those clips it misses every 'mixamorig:'-named track (bind keys are stripped names), drops or
+  // bind-premultiplies them a second time, and fight start hung: bisect over main (pantera vs
+  // diablo, tools/proof-harness/fight.mjs) — #378 reaches the fight, #403 hangs at "Entering the
+  // arena", and with this call removed the fight starts. retargetClipToRig stays defined above
+  // for raw identity-rest clips; nothing in the game passes those any more.
   const actions = {};
   for (const [name, clip] of Object.entries(t3Clips)) {
     try {
-      const action = mixer.clipAction(retargetClipToRig(clip, bind, THREE));
+      const action = mixer.clipAction(clip);
       const loop = clip.userData.loop;
       action.setLoop(loop ? THREE.LoopRepeat : THREE.LoopOnce, Infinity);
       action.clampWhenFinished = !loop;
