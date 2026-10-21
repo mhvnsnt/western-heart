@@ -108,12 +108,50 @@ Caveats (honest, do not over-read the pass):
    same mirror seen in the decl16/34 pure clusters). Poses will need the
    mirror accounted for when animation is wired.
 
-## 5. Remaining jobs
+## 5. Job 2 — BATCH ASSEMBLY (in progress)
 
-- Job 1: pose-test render (direct palette), viewed. XEX skinning-consumer
-  cross-check in Ghidra if the render is ambiguous.
-- Job 2: batch assembly (remaining chrone packages + chrtwo) via
-  `tools/doa4_assemble2.py`, coverage-based pairing, per-character quality
-  table, ≥4 viewed front renders.
-- Job 3 (stretch): TX2D → PNG → textured chrone pkg00 GLB → viewed render.
-  Package carries 42 TX2D descriptors (vbufcensus count).
+Tooling: `tools/phase5/batch_build.py` — assemble2's exact decl/stride/
+validate logic, with strip pairing generalized: this package family's IBUF
+descriptor base is NOT portable across packages (chrone pkg01's descriptors
+admit no subtractive base mapping onto strip starts — swept exhaustively,
+`tools/phase5/ibufbase3.py`-style), so strips are paired by scanning
+index-like pages directly with the phase-4 signal (full vertex coverage
+first, geometry score second). Package bytes range-pulled from the
+doa4-mirror-20261017 release (extracted tar member map recovered by
+`tools/phase5/tarwalk.py`: chrone.afs data @ tar 1212324864 ✓ matches
+phase-4's recorded offset; chrtwo.afs @ 1578419712, 548,042,752 B;
+chrthree.afs @ 2135433728).
+
+### chrone pkg01 — ASSEMBLED (chrone_pkg01_v2.glb, 71 meshes)
+- XPR2 at chrone 0xF98000; graph = 60 objects; segments located 71/71.
+- Per-decl quality (geometry score of chosen strip): clean 37 /
+  moderate 28 / poor 6. The 6 poor are all small s0/s1 decls (21, 39, 47,
+  53, 61, 67; scores 0.26–0.49, coverage still 1.00 — right strip family,
+  rough geometry fit, same part-reuse ambiguity documented in phase 4).
+- Front render VIEWED (`chrone-pkg01-assembled-v1-front.png`): coherent
+  complete character — bow collar, ruffled chest, wide gown, front pouch,
+  one leg below the hem. Sleeve cuffs show checker-shard patches (the
+  moderate/poor small decls). Overall: moderate, a step below pkg00 v4.
+
+### chrone pkg00 — assembled in phase 4 (PR #427), pose-test renders §4.
+### chrtwo pkg00 — segments 59/59 located (XPR2 @ chrtwo 0x1DF000, graph
+59 objects); strip pairing running at doc time (first attempt was killed
+by a VM restart mid-pairing — the same hazard that killed the predecessor;
+rerun uses coverage-first candidate pruning).
+
+Viewed front renders so far: pkg00 bind, pkg00 bend14z, pkg00 bend28z,
+pkg01 front = 4.
+
+## 6. Job 3 — TX2D (stretch): NOT COMPLETED — narrowed lead, no guessing
+
+chrone pkg00 carries 42 TX2D descriptors (40 B each). Partial decode
+(`tools/phase5/tx2d.py`): word2 is a monotonic data offset within the
+package texture pool (steps = per-texture sizes); word3 = 0x30001 (type);
+word9 packs two 13-bit fields that read exactly as
+`(h_blocks−1)<<13 | (w_blocks−1)` on multiple descriptors (e.g. 0x3e01f =
+32×32 blocks, 0x7e03f = 64×64 blocks). NOT yet pinned: the pool's file base,
+the DXT variant (word0 alternates 0xc14/0xd10), and the Xbox 360 tile
+swizzle. No PNG produced and no texture claimed — per the no-guessing rule
+this stays flagged as the top TX2D lead for the next lane rather than a
+fabricated decode. The XEX skinning-consumer Ghidra cross-check (job 1
+optional step) was likewise not needed: the pose test was decisive.
