@@ -65,8 +65,26 @@ One file per attire. Next to it: `base_glb` (input, never overwritten) and
 | `body.skin_tone` | Suite skin-tone swatch (informational; `colors.skin` is the bake instruction). |
 | `morphs` | Suite morph id → MPFB slider value. Ids + ranges come from `packages/creation-suite/src/morphs.js` (`BODY_MORPHS` + `FACE_SHAPE_MORPHS`), mapped to MPFB targets by `customization/body-morphs/MANIFEST.json`. Range −1…1 (height 0…1). `0` / absent = neutral. |
 | `parts` | Suite slot → mesh part. `part_id` resolves against `customization/PARTS-REGISTRY.json`; `glb` is a repo-relative path (or `null` to take the registry part's `asset`). `placement` = bone-local offset: `px,py,pz` metres, `rx,ry,rz` degrees, `s` uniform scale. |
-| `textures` | Texture applications. `part_id` resolves against the registry; `image` is a repo-relative PNG (or the registry part's `asset` when omitted). `kind` ∈ `eye \| decal \| hair`. `material` optionally names the exact target material. `rect` = `[x, y, w, h]` composite region in the target texture's pixel space, **top-left origin**; omit it for the registry placement (registry mode `full_replace` replaces the whole texture, alpha-blended). |
+| `textures` | Texture applications. `part_id` resolves against the registry; `image` is a repo-relative PNG (or the registry part's `asset` when omitted). `kind` ∈ `eye \| decal \| hair`. `material` optionally names the exact target material. `rect` = `[x, y, w, h]` composite region in the target texture's pixel space, **top-left origin**; omit it for the registry placement (registry mode `full_replace` replaces the whole texture, alpha-blended). **Note:** `kind: "eye"` here is a *legacy texture-variant* mechanism (swapping a saved eye-texture variant on models whose eyes are part of the face/eye texture — e.g. the Baek eye-texture options). It is **not** the eye system — see "Eyes are mesh parts" below. |
 | `colors` | `hair` / `skin` hex tints. Applied to materials resolved by registry mapping or by a material name containing `hair`/`skin`, as a Principled base-color factor multiplied with the texture. If no material resolves, the bake **fails that item loudly** — it never guesses a material. |
+
+## Eyes are mesh parts (owner verdict 2026-10-20 ~19:40 CDT)
+
+Eyes are **real placeable parts, never texture-paint decals.** The owner
+rejected a hand-painted texture eye on Deathfang ("let it be a real eye not
+just a decal") and wants to place eyes himself in the Creation Suite.
+
+- Eyeball, eyelash, and eyebrow are **mesh parts** carried in the `parts` map,
+  attached at the **eye socket** (slot `eye`, aliases on the `Head` bone) with
+  the standard `placement` `{px,py,pz,rx,ry,rz,s}` — the owner can move, rotate,
+  and scale them in the suite, and the bake socket-attaches them like any
+  other mesh part. No special eye code path exists in the bake.
+- The named future test case for placeable eyes is the **DEATHFANG human**
+  form: real eyeball + lashes + brows placed through the suite, replacing the
+  provisional painted eye.
+- The `textures` `kind: "eye"` mechanism stays only as a legacy texture-variant
+  swap for models that ship with a saved eye-texture option library (the
+  baek-eyes pattern). Production eye *design* changes go through mesh parts.
 
 ## Bake semantics (`apply_customization.py`, in order)
 

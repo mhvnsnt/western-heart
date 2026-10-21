@@ -37,7 +37,11 @@ morphs.js — in headless Blender):
                       otherwise the part is bone-parented at the slot socket
                       (aliases mirror packages/creation-suite/src/attire.js
                       SOCKETS) with the schema placement offsets applied in
-                      bone-local space.
+                      bone-local space. EYES ARE MESH PARTS (owner verdict
+                      2026-10-20): eyeball/eyelash/eyebrow attach at the `eye`
+                      socket like any other part — the textures kind:"eye" path
+                      is only the legacy eye-texture-variant swap, never the
+                      eye system.
   (d) Colors        — colors.hair / colors.skin tint the Principled base-color
                       factor (multiplied with the texture at render time) of
                       materials resolved by registry mapping or by material
@@ -480,6 +484,9 @@ def bake(cfg_path, repo_root, mpfb_src, log=print):
 
     # ---- (c) mesh parts ----------------------------------------------------
     SOCKETS = {  # mirrors packages/creation-suite/src/attire.js SOCKETS
+        # 'eye' (owner verdict 2026-10-20: eyes are real placeable mesh parts)
+        # uses the Head-bone aliases, same as 'face'.
+        'eye': ['Head', 'mixamorig:Head', 'head', 'J_Head', 'Bip01 Head'],
         'face': ['Head', 'mixamorig:Head', 'head', 'J_Head', 'Bip01 Head'],
         'head': ['Head', 'mixamorig:Head', 'head', 'J_Head', 'Bip01 Head'],
         'hair': ['Head', 'mixamorig:Head', 'head'],
