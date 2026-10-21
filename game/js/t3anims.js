@@ -165,15 +165,86 @@ export async function loadT3Clips(THREE, bankId = 'king') {
 /** Synchronous accessor for one bank's cached clips (null if not loaded). */
 export function getT3Clips(bankId = 'king') { return _t3clipCache[bankId] || null; }
 
+/* Canonical -> target-rig bone retargets. The T3 banks were baked against
+   the WH-CANONICAL-22 rig (lab/tools/t3_motion_bake.py), whose bone-local
+   rest rotations are ALL identity — verified 2026-10-20 against the baked
+   GLBs (lab/game/assets/t3_*_t3real.glb): every recoverable canonical
+   rest local is exactly [0,0,0,1]. Game models are Mixamo-style: no
+   'Root' node, no 'Chest' node (the chest segment is Spine2 in the chain
+   Hips->Spine->Spine1->Spine2->Neck, mirroring canonical
+   Hips->Spine->Chest->Neck), and some bind locals are rotated ~180 deg
+   from canonical (e.g. pantera Hips [0,.707,.707,0], UpLegs 180 deg X).
+   Chest's delta therefore lands on Spine2; Root has no counterpart and
+   its track (identity in the banks) is dropped. */
+const CANON_TO_TARGET = { Chest: 'Spine2' };
+
+/* BIND-RELATIVE RETARGET (frozen/folded-pose fix, 2026-10-20).
+   Bank JSONs carry ABSOLUTE bone-local quaternions for the identity-rest
+   canonical rig. Applied raw to a Mixamo bone whose bind local is
+   non-identity, the clip's absolute frame replaces the bind frame and
+   the body folds (FK check on pantera + king stance, frame 37: raw clip
+   puts the head at hip height, pitched horizontal, feet folded up;
+   converted clip stands upright at bind head height). Conversion per
+   bone: out(t) = targetBindLocal * clipQuat(t) — the canonical rest is
+   identity, so the clip quat IS the bind-relative delta. Tracks whose
+   target bone is missing are dropped; tracks on identity-bind bones
+   with no rename pass through untouched. Returns the original clip when
+   nothing needed converting. */
+function retargetClipToRig(clip, bind, THREE) {
+  let changed = false;
+  const tracks = [];
+  const tmp = new THREE.Quaternion();
+  for (const track of clip.tracks) {
+    const dot = track.name.indexOf('.');
+    const bone = dot >= 0 ? track.name.slice(0, dot) : track.name;
+    // Chest -> Spine2 ONLY when the rig has no Chest of its own but does
+    // have Spine2 (Mixamo). Rigs that carry a real Chest (e.g. the Vega
+    // foreign-rig remap in assets.js) keep their Chest track as-is.
+    const target = (bone === 'Chest' && !bind.Chest && bind.Spine2) ? CANON_TO_TARGET.Chest : bone;
+    const bq = bind[target];
+    if (!bq) { changed = true; continue; } // no such bone on this rig (e.g. Root)
+    const identityBind = (bq.x * bq.x + bq.y * bq.y + bq.z * bq.z) < 1e-8;
+    if (target === bone && identityBind) { tracks.push(track); continue; }
+    changed = true;
+    const values = new Float32Array(track.values.length);
+    for (let i = 0; i < track.values.length; i += 4) {
+      tmp.set(track.values[i], track.values[i + 1], track.values[i + 2], track.values[i + 3]);
+      tmp.premultiply(bq); // out = bind * clip
+      values[i] = tmp.x; values[i + 1] = tmp.y; values[i + 2] = tmp.z; values[i + 3] = tmp.w;
+    }
+    tracks.push(new THREE.QuaternionKeyframeTrack(`${target}.quaternion`, track.times, values));
+  }
+  if (!changed) return clip;
+  const converted = new THREE.AnimationClip(clip.name, clip.duration, tracks);
+  converted.userData = clip.userData;
+  return converted;
+}
+
 /**
  * Create mixer actions for T3 clips on a fighter's mixer.
+ * Clips are retargeted to the mixer's rig bind pose (see above) before
+ * actions are created — the cached bank clips stay canonical, each
+ * fighter's actions carry rig-space tracks.
  * Returns { actionName: AnimationAction }.
  */
 export function createT3Actions(mixer, t3Clips, THREE) {
+  // Target rig bind locals, keyed by stripped bone name (same stripping
+  // as the bones dict in assets.js). Read before the mixer ever poses the
+  // model — Fighter constructs actions on a fresh bind-pose instance.
+  const bind = {};
+  const rootObj = mixer.getRoot();
+  if (rootObj && rootObj.traverse) {
+    rootObj.traverse((o) => {
+      if (o.isBone) {
+        const nm = o.name.replace(/^mixamorig:?/, '');
+        if (!(nm in bind)) bind[nm] = o.quaternion.clone();
+      }
+    });
+  }
   const actions = {};
   for (const [name, clip] of Object.entries(t3Clips)) {
     try {
-      const action = mixer.clipAction(clip);
+      const action = mixer.clipAction(retargetClipToRig(clip, bind, THREE));
       const loop = clip.userData.loop;
       action.setLoop(loop ? THREE.LoopRepeat : THREE.LoopOnce, Infinity);
       action.clampWhenFinished = !loop;

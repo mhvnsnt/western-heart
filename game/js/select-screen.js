@@ -138,7 +138,7 @@ class PreviewPane {
       if (token !== this._token) return true; // superseded by a newer tap
       const inst = assets.createInstance(
         modelId, c.colors?.suit ?? 0xffffff, c.colors?.trim ?? 0x888888,
-        c.tintStrength ?? 0.3);
+        0); // TINT FIX: select preview shows real texture colors, same as the fight
       this._clearModel();
       this.model = inst.model;
       this.model.rotation.y = this.baseRotY;
