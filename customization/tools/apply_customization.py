@@ -921,6 +921,50 @@ def bake(cfg_path, repo_root, mpfb_src, log=print):
         log(f'CSBAKE part tint: {item} {tint_hex} -> {len(seen)} material(s), '
             f'{len(tinted_imgs)} texture(s) multiplied')
 
+    _base_skin_cache = {}
+
+    def skin_part_from_base(part_obj, arm_obj):
+        """Copy skin weights onto a part from the nearest base verts.
+
+        Base = every non-cs_ mesh in the scene carrying vertex groups (the
+        imported base model's own skin). Vert coords are armature space on
+        both sides (imported mesh objects sit at identity under the
+        armature; part geometry was transformed into armature space by the
+        caller). Built once per bake and cached.
+        """
+        if 'tree' not in _base_skin_cache:
+            pts, wsets = [], []
+            for bo in bpy.context.scene.objects:
+                if bo.type != 'MESH' or bo.name.startswith('cs_'):
+                    continue
+                if not bo.vertex_groups:
+                    continue
+                gnames = [g.name for g in bo.vertex_groups]
+                for v in bo.data.vertices:
+                    ws = [(gnames[g.group], g.weight) for g in v.groups
+                          if g.weight > 0.0 and g.group < len(gnames)]
+                    if ws:
+                        pts.append(v.co.copy())
+                        wsets.append(ws)
+            tree = KDTree(len(pts))
+            for i, p in enumerate(pts):
+                tree.insert(p, i)
+            tree.balance()
+            _base_skin_cache['tree'] = tree
+            _base_skin_cache['wsets'] = wsets
+            log(f'CSBAKE base skin field: {len(pts)} verts indexed')
+        tree, wsets = _base_skin_cache['tree'], _base_skin_cache['wsets']
+        groups = {}
+        for v in part_obj.data.vertices:
+            _co, idx, _dist = tree.find(v.co)
+            for gname, w in wsets[idx]:
+                vg = groups.get(gname)
+                if vg is None:
+                    vg = part_obj.vertex_groups.get(gname) or \
+                        part_obj.vertex_groups.new(name=gname)
+                    groups[gname] = vg
+                vg.add([v.index], w, 'REPLACE')
+
     def placement_xform(placement):
         from math import radians
         s = placement.get('s', 1)
@@ -1050,8 +1094,16 @@ def bake(cfg_path, repo_root, mpfb_src, log=print):
                 me.transform(bone_local_mtx @ T_place)   # -> base armature space
                 no = bpy.data.objects.new(f'cs_{slot}_{o.name}', me)
                 bpy.context.collection.objects.link(no)
-                vg = no.vertex_groups.new(name=bone)
-                vg.add(list(range(len(me.vertices))), 1.0, 'REPLACE')
+                # Weight the part from the BASE's own skin field (nearest
+                # base vert's full weight set), NOT a flat 100% socket bone:
+                # the surface a part sits on blends several bones (Head/Neck/
+                # Spine), and wherever those frames differ — T7 Baek's bind
+                # has a turned head/neck — a rigid one-bone part shears away
+                # from the surface (the Master White "ring": perfect bind
+                # numbers, parts visibly rotated off the head in renders).
+                # Copying the local field makes the part deform WITH the
+                # surface it sits on, in bind and in animation alike.
+                skin_part_from_base(no, base_arm)
                 mod = no.modifiers.new(name='Armature', type='ARMATURE')
                 mod.object = base_arm
                 no.parent = base_arm
