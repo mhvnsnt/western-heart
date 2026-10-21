@@ -133,3 +133,94 @@ Owner confirmed Samurai Shodown (not Onimusha) is the right source.
 - Bob's full Tekken moveset for Burger base (separate lane).
 - Kusaregedo animation clips: anim_ref points to samsho:kusaregedo/ — clips to be built from footage.
 
+## 2026-10-20 ~23:00 CT — Claude: T3 bank runtime retarget (fighters no longer collapse)
+Branch `claude/amazing-keller-p8644u`. Full write-up + Muse directives: `docs/handoffs/CLAUDE_TO_MUSE_FIXES_2026-10-20.md`.
+- Root cause: wh-anim/1 bank quaternions are local rotations of identity-rest source rigs
+  (`lab/game/assets/pantera_leoman_t3real.glb`, `t3_<bank>_t3real.glb`); the game bound them raw onto
+  non-identity-rest Mixamo/Biped rigs.
+- `tools/anim/t3_bank_skeleton.py` (python3, numpy) → `game/assets/anim/t3/<bank>/skeleton.json` (6 banks, SHA-256 of source GLB);
+  `--check`: all 3,292 channels match their source GLB (max err 8.6e-7).
+- `game/js/t3anims.js` `retargetT3Clips` (port of `lab/tools/t3_motion_bake.py` retarget math) + `canonBoneName`;
+  `game/js/fighter.js` `_bindT3`, T3 stance/walk/backdash/jump in idle/walk/dodge/jump states.
+- Verified: headless Chromium (Playwright 1.56, SwiftShader) demo fight pantera vs rin; frames viewed;
+  head-above-hips 0.43–0.52 m every sampled frame (before: Pantera pitched sideways, Demonio flat).
+  Proof: `docs/proof/claude-2026-10-20/retarget/`.
+
+---
+
+# WORKLOG — CHARGER build (2026-10-20, branch feat/charger-blanka-replacement-20261020)
+
+Owner order 2026-10-20 ~13:32–13:34 CDT: CHARGER replaces Blanka — "his name is
+charger cause of blankas attacks and movesets will be attach to him but he's
+got powers of ice and electricity". Two owner Tripo links (Attire 1 + Attire 2).
+
+## Pulls (tools/tripo-pull, public-api strategy)
+- Attire 1 `b91318ce-2ccd-43eb-8691-d675b3ee8b10` "ice monster 3d model" →
+  `~/workspace/tripo-recovery/charger_attire1/` (18,005,236 B, 1 mesh, 3 textures).
+- Attire 2 `f87e24eb-0c0b-4444-9409-4f4dabc0bb32` "green spiky creature 3d model" →
+  `~/workspace/tripo-recovery/charger_attire2/` (17,370,960 B, 1 mesh, 3 textures).
+- Transport note: the tool's urllib reads died mid-stream through this VM's
+  egress proxy (IncompleteRead, reproduced 3x) while curl completed the same
+  endpoint reads. The tool's own strategy/verify/manifest code ran unmodified
+  via a curl-backed transport shim (`~/workspace/_wh-work/charger-scratch/
+  tripo_pull_shim.py`) — same public project-detail API, no sign-in, per the
+  TRIPO-PULL-TOOL law (never ask for a login; check the method).
+- `tools/render-prep` validate on both: RESULT OK — all 3 textures decode per
+  model (Color/ORM/NormalGL), no NaN warnings; meshopt+quantization present
+  (roster ships raw like KRONOS/KORESHI; game decodes via MeshoptDecoder).
+
+## Wiring
+- GLBs copied byte-identical (sha256-verified) to
+  `roster/charger/attires/attire1/model.glb` + `attire2/model.glb`;
+  `roster/charger/README.md` documents sources.
+- `game/js/roster-full.js`: `blanka` entry replaced by `charger` (attires
+  `['charger','charger-attire2']`) + `charger-attire2` entry.
+- `game/js/assets.js`: `charger` + `charger-attire2` MODEL_URLS keys added
+  (`blanka` key kept — his files stay).
+- `game/js/movesets.js`: `charger` added to MOVESET_IDS.
+- `game/js/fighter.js`: MOVESET_MAP `charger: 'bryan'`, `'charger-attire2': 'bryan'`.
+- `game/assets/movesets/charger.json`: built from `blanka.json` by
+  `~/workspace/_wh-work/charger-scratch/build_charger_moveset.py` — 199/199
+  moves, inputs + all non-name data field-identical (script-asserted); 46
+  signature names renamed (Electric Thunder→Cryo Thunder, Rolling family→
+  Frostcharge, Ground Shave Rolling→Glacier Shave Roll); map recorded in the
+  JSON's `canon_rename_map` and in `RENAME-MAP.md` (CHARGER section).
+- NOT deleted: `roster/blanka/`, `blanka.json`, `sf-blanka.json`, `blanka`
+  code keys. Only the playable roster entry changed.
+
+## Proof
+- Front renders of both attires from render-prep copies (own-eyes verified):
+  `~/workspace/your_files/charger-attire1-front-20261020.png`,
+  `~/workspace/your_files/charger-attire2-front-20261020.png`.
+- Node smoke test: roster module loads, `charger` + `charger-attire2` resolve,
+  charger.json move count == blanka.json (199).
+
+
+---
+
+# WORKLOG — WMXIX texture remainder decode (Job 2, 2026-10-20, branch cs-gapfill/j2-wmxix-tex-remainder)
+
+Owner order (2026-10-20 ~22:14 CDT, creation-suite gap-fill): the WMXIX
+texture batch decode remainder from the wiring audit.
+
+- New tool `customization/tools/decode_wmxix_tex_remainder.py` (pure
+  Python, no Blender): parses the .tex little-endian container directory
+  and decodes the first entry with the validated TPL tile math, extended
+  to accept the variant TPL magic 0x0120AF30 that blocked all 426
+  remaining .tex files; plus standalone TPL, TGA (PIL), TIM2 (indexed-8,
+  CSM1 CLUT unswizzle, verified against the sibling TGA), and PSD
+  (PIL + a PackBits RLE composite reader for the file PIL rejects).
+- Batch result: 433 of 446 target entries decoded to PNG under
+  `customization/parts-converted/wmxix-textures/`; CATALOG.json WMXIX
+  converted textures 1,044 -> 1,477; blocked_no_tpl 426 -> 0.
+  Remaining 13 proven non-textures (8 .ycg palette data, 1 build
+  script.txt, 3 .ymm YOBJ meshes, 1 .tpg index) carry detail reasons.
+- Unified runtime catalog regenerated with `build_suite_catalog.py`
+  (total unchanged 4,523; WMXIX texture assets 1,044 -> 1,477).
+  Creation-suite tests by filename: catalogs.test.js 5/5, dna.test.js 4/4.
+- Full counts, per-class forensic evidence, and proof:
+  `customization/parts-converted/WMXIX-TEX-REMAINDER-REPORT-2026-10-20.md`.
+- Environment note: this VM intermittently denies file-write flushes
+  (Errno 1, silent 0-byte truncation) — the tool verifies every write by
+  read-back and retries, with a perl-pipe fallback; all 1,477 output
+  PNGs re-verified on disk after the batch (0 missing, 0 invalid).

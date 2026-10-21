@@ -5,6 +5,16 @@
 
 ---
 
+## THE NORTH STAR — THE CREATIVE PRINCIPLE OF THIS UNIVERSE
+
+*Owner directive, 2026-10-20. This is the game's stated creative principle — its soul and north star. Every character, layer, and story added to Western Heart is measured against it. Full record: `docs/NORTH-STAR.md`.*
+
+The owner, in his own words: "we're mixing a lot of different folklore, mythology, different ontologies, religions, different viewpoints and perspectives, the Oni and Yokai thing, along with the whole Eastern Mind, Tong-Nou thing, all for what is creating the Western mind universe and canon."
+
+Tong-Nou is the cosmology — the souls, the vessels, the trial, the giant head holding it all — and every tradition layered in plugs into that frame as the contents of a soul. The layers land where they already rhyme: Heihachi carries storm-god arrogance in his bones, so Raijin's drum ring isn't a costume on him, it's a recognition. Akuma was already a demon walking — the oni layer just names what he is in this universe's language. The Abel brothers bring wrestling's own mythology in the same way, Serena rides inside Nightwolf. It's the same move as the game itself: Tekken supplies the grammar, and every torn-down world donates its bodies, its moves, its gods. Western Heart isn't a crossover — it's one universe that digests the others.
+
+---
+
 ## 1. THE WORLD
 
 ### Tong-Nou
@@ -671,6 +681,8 @@ She is the only fighter who knows what the Reincarnation is *for*. She explains 
 
 **Owner-locked:** Name NIGHTWOLF. Native American spirit warrior, full commitment. Julia Chang base.
 
+**Tribute (owner-locked, real-world).** Nightwolf is the tribute to **Serena Misae Brown**. In the owner's words: "This game is for that game of Mortal Kombat me and Serena never got to play before she died in that car accident in Tulsa. For Serena, Serena Misae Brown, Nightwolf." One night Serena wanted to come over and stay the night at his and his wife's apartment, and play Mortal Kombat with him, on a night he was up late alone. He didn't invite her over. He carries that. Nightwolf — and this game — is for the match they never got to play. She heads the game's credits dedications (see `docs/CREDITS.md`).
+
 ---
 
 ### MICHIKO — The Outlaw Soul
@@ -931,8 +943,10 @@ She was never called. She *came*. Tong-Nou didn't summon her; she followed the p
 
 ---
 
-### BAEK — The Master Soul
+### KEVIN — The Master Soul
 **Not one of the nine. The teacher.**
+
+*(Owner 2026-10-20: the fighter IS Kevin. Baek's model is Kevin's A2 attire; the Master's White reskin is PARKED. The Master Soul's story — the teacher who came on purpose — is Kevin's now.)*
 
 **Backstory.** Baek Doo San — taekwondo master, the man who taught Hwoarang everything the boy refused to learn gently. In the old world he was lost at sea, taken, broken, rebuilt; he came back anyway, because students don't stop needing teachers just because the teacher drowns.
 
@@ -1266,6 +1280,26 @@ Research threads the owner pointed at: Iori Yagami's design already carries the 
 
 *Owner-directed 2026-10-19 (naming + concept), 2026-10-20 (character, models, eye repair). Wired into repo 2026-10-20.*
 
+### CORNERSTONE — The Obnoxious One (Bonus)
+
+**Owner's words, verbatim (2026-10-21):** "I told u how ryuji character will be mixed with the rock from WWE and do the uranage/rock bottom, he will also get the rock bottom from king and from WWE all stars, and some animations of the rock from the WWE teardown games, and kings jumping diving elbow attack, mixed with ryuji yamazakis stance and taunts and moveset and antics mixed with the rock persona from early attitude era WWE. And his name will be CornerStone"
+
+**The foundation (owner 2026-10-19, already on record before the name):** "Ryuji Yamazaki version… black shirt, blonde top hair. Version based on The Rock (Dwayne Johnson) mixed with Ryuji Yamazaki — obnoxious like Ryuji, sticks his tongue out, personality mixed with The Rock." His moveset was set the same night: Ryuji base + The Rock's moves (Rock Bottom — King has it in Tekken, pull from there) + wrestling moves from Urban Reign, Tekken, and the other teardown games.
+
+CORNERSTONE is the name the owner locked on 2026-10-21 for the Ryuji Yamazaki × The Rock hybrid who first entered the roster as RYUJI ROCK. He is not one of the nine souls and carries no vessel — he is a bonus fighter, a collision of two personas: Yamazaki's menace underneath, The Rock's early-Attitude-Era showmanship on top.
+
+**Who he is.** Ryuji Yamazaki of the Hakkesshu — KOF/Fatal Fury's sadistic bad guy, black shirt, blonde top of hair — fused with Dwayne "The Rock" Johnson at his most obnoxious: the raised eyebrow, the smack talk, the people's showman. He is obnoxious like Ryuji and sticks his tongue out like Ryuji (the Sadomazo tongue-taunt is his signature antic), then plays to a crowd that isn't there, like The Rock. The menace is real; so is the show.
+
+**How he fights.**
+- **Base layer — Yamazaki:** his stance, his taunts (tongue-stick-out taunts AND tongue attacks), his full moveset and his antics: Serpent Slash (Hebi Tsukai), Sand Kick (Suna Kake), Knife Slash, Bai Gaeshi, Bakudan Pachiki, Todome, the Guillotine, Pit Viper, and the Drill climax.
+- **The uranage / ROCK BOTTOM — taken from every source the owner named:** King's version from Tekken; the WWE All Stars version; and The Rock's own animations out of the WWE teardown games (the No Mercy / WrestleMania XIX holdings). Plus the People's Elbow, the Sharpshooter, the Brahma Bull Lariat, Layin' the Smackdown.
+- **King's jumping diving elbow attack** — Tekken King's High Elbow Drop (u/f+2) is his diving elbow: the People's Elbow delivered off the jump, King-sourced.
+- **Second inspiration — Younger Toguro (Yu Yu Hakusho):** the fingernail blast, and whatever else of Toguro's the files give up, when a Yu Yu Hakusho teardown source is in hand. (Design intent recorded 2026-10-21; no YYH game is in the teardown holdings yet — the blast wires in when the source exists, never invented.)
+
+**Names and plumbing.** Canon/display name: **CORNERSTONE**. Source names are retained in RENAME-MAP.md (Ryuji Yamazaki + The Rock; prior WH working name RYUJI ROCK). The internal fighter id and moveset key stay `ryuji-rock` — the plumbing does not change hands, only the name the player sees. The pure-Yamazaki roster entry (`ryuji`, carrying the full KOF set) is untouched and stays in the repo.
+
+*Owner-directed 2026-10-19 (concept, persona, moveset foundation) and 2026-10-21 (the name CORNERSTONE + the full multi-source design drop).*
+
 ---
 
 ## 8. THE HEAD-WORLD, AS THE TRIAL FOUND IT
@@ -1353,6 +1387,34 @@ Claiming a force is not collecting a prize. It is a permanent change in the clai
 - **Grief is progression too.** Every death on the ladder passes through Waterfall. A soul that has died often carries her attention the way a veteran carries weather in a wound — and she, alone, can read a soul's whole career at a glance: not the wins, the *returns*. Who you kept becoming is who you are. The trial grades on the returns.
 
 The Assembled Soul is the sum of all of it: every force claimed, every vessel worn, every surge borrowed, every death returned from — assembled, and waiting in the last room, and patient, because it has already waited exactly as long as you have.
+## APPENDIX (2026-10-20) — TEKKEN 3 / iron-legacy WIRING & CONVERSION
+
+*Added by the Tekken 3 full-wiring lane (owner order 2026-10-20 ~08:06 CDT). Append-only;
+the per-game source of truth is `teardown/tekken3/CANON-CONVERSION.md`, the checklist is
+`teardown/tekken3/WIRING-INVENTORY.md` (19,477 files audited).*
+
+Tekken 3's universe name in Western Heart is **iron-legacy**. As of 2026-10-20, all 20
+character motion banks present on the owner's disc image (types 0–20) plus the common bank
+are extracted from TEKKEN3.BNS and SHA-256-verified, and full movesets (frame data) exist
+for all 20 — the original 7 (King, Yoshimitsu, Xiaoyu, Jin, Bryan, Heihachi, Gun Jack) plus
+13 extracted that day (Paul, Law, Lei, Nina, Hwoarang, Eddy, Julia, Kuma/Panda, Ogre, Anna,
+Dr. Bosconovitch, Gon, Forest Law; 5,663 additional move rows). Type 15 (Mokujin) has no
+bank on this disc image (BNS record 295 is size 0).
+
+The canon identities of the T3 sources are the ones already established in this bible and
+the roster: King→PANTERA, Jin→DEMONIO (soul RIN), Yoshimitsu→PHANTOM, Heihachi→DIABLO,
+Bryan→SKULL, Gun Jack→SAM-UR-A1, Xiaoyu→SAKU RA, Paul→TOU, Eddy→KING TYRANT (soul KAI),
+Hwoarang→GYOU, Julia→NIGHTWOLF / soul ZEN (a three-way doc conflict is flagged in the
+conversion record, unresolved), Lei→soul BYOU (vessel name pending the owner's Lei naming
+decision, as noted in §4 of this bible), Nina→AWA POP, Anna→TORCH, Dr. Bosconovitch→DOC
+FRANK. Law, Ogre, Gon, Panda, and Mokujin have **no** Western Heart mapping in canon —
+flagged for the owner's decision, never invented. The bear's reserved name, if ever pulled,
+is URSA (per §6, DIO).
+
+Diablo is the one T3-sourced member of the Seven whose real animation bank is not yet
+decoded into the game: Heihachi's KMD carries empty vertex rows for parts 2/9/13 in both
+costume records, which blocks the shared bake pipeline at its part-2 pivot step (full
+evidence in the conversion record §5). His moveset is fully wired; his motion is the gap.
 
 <!-- BEGIN WMXIX / MAT-LEGENDS SECTION (WMXIX wiring lane, 2026-10-20 — coordinator reconciles at merge) -->
 

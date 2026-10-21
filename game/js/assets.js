@@ -13,8 +13,11 @@ import { clone as skeletonClone } from 'three/addons/utils/SkeletonUtils.js';
 // saku-ra-main, purple-rain-main, kiko-tanaka*). Vendored locally —
 // the game ships with no CDN (see index.html importmap).
 import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.js';
+// Creation Suite Pass: generated registry of baked customization overrides
+// (customization/tools/apply_customization.py). Empty map = exact no-op.
+import { ATTIRE_CUSTOMIZATIONS } from './attire-customizations.js';
 
-const MODEL_URLS = {
+export const MODEL_URLS = {
   pantera: 'assets/models/pantera.glb',
   'steve-fox': 'assets/models/steve-fox.glb',
   // NOTE (owner canon 2026-10-19): Tekken's Jin = DEMONIO — the old `jin:` key was removed;
@@ -22,7 +25,26 @@ const MODEL_URLS = {
   // Per-fighter models wired from teardown extractions + Tripo rescans.
   // Keys match FULL_ROSTER `model` ids in roster-full.js (lane 2).
   demonio: 'assets/models/demonio.glb',
-  diablo: 'assets/models/diablo.glb',
+  // DIABLO Attire 1 (owner 2026-10-20, Tripo pull aee46f6a): the fantasy-demon
+  // Tripo is the main attire. The old gtainside Heihachi conversion stays at
+  // assets/models/diablo.glb as the ladder-back (not deleted).
+  diablo: '../roster/diablo/attires/attire1/model.glb',
+  'diablo-attire1': '../roster/diablo/attires/attire1/model.glb',
+  // Diablo Attire 2 — Devil God (owner 2026-10-20, Tripo pull).
+  'diablo-attire2': '../roster/diablo/attires/attire2/model.glb',
+  // SLICE Attire 1 (owner 2026-10-21): Tekken 7 Dragunov teardown model
+  // (dragunov-t7-rig.blend from release tekken-models-batch-2) converted to
+  // GLB — Slice's first own model; he was a steve-fox fallback rider with no
+  // model of his own (model-key audit, PR #418).
+  slice: '../roster/slice/attires/attire1/model.glb',
+  'slice-attire1': '../roster/slice/attires/attire1/model.glb',
+  // ZUI Attires 1+2 (owner Tripos; gap found by the model-key audit, PR #418):
+  // A1 = Drunken Monk Tripo, his DEFAULT attire (roster/zui/ATTIRE-SLOTS.md,
+  // owner 2026-10-18). The GLBs sat in roster/zui/attires/ with NO MODEL_URLS
+  // keys — unreachable. steve-fox.glb (his canon base) stays wired below and
+  // ladders back as a selectable alternate in attires.js.
+  'zui-attire1': '../roster/zui/attires/attire1/model.glb',
+  'zui-attire2': '../roster/zui/attires/attire2/model.glb',
   // Tripo pulls wired 2026-10-19 (owner: stop saying "not in the repo").
   phantom: '../roster/phantom/attires/attire1/model.glb',
   skull: '../roster/skull/attires/attire1/model.glb',
@@ -37,7 +59,14 @@ const MODEL_URLS = {
   'purple-rain': '../roster/purplerain/attires/attire1/model.glb',
   nightwolf: 'assets/models/nightwolf.glb',
   'king-tyrant': 'assets/models/king-tyrant.glb',
-  kinpo: 'assets/models/kinpo.glb',
+  // KINPO Attire 1 (owner 2026-10-20): his Tripo pull is her MAIN attire.
+  kinpo: '../roster/kinpo/attires/attire1/model.glb',
+  'kinpo-attire1': '../roster/kinpo/attires/attire1/model.glb',
+  // Previous A1 (Asuka-based game model, provenance unknown) laddered back
+  // to a legacy alternate 2026-10-20 — NOT deleted.
+  'kinpo-legacy': 'assets/models/kinpo.glb',
+  // Kinpo Attire 2 "Goth Sport" (owner 2026-10-20, Tripo pull — see roster/kinpo/ATTIRE-SLOTS.md).
+  'kinpo-attire2': '../roster/kinpo/attires/attire2/model.glb',
   waterfall: '../roster/waterfall/attires/attire1/model.glb',
   'n3g4tiv0': 'assets/models/n3g4tiv0.glb',
   thor: '../roster/thor/attires/attire1/model.glb',
@@ -70,11 +99,16 @@ const MODEL_URLS = {
   // Cain Elias — Vain Abel's brother, Undertaker archetype (owner 2026-10-19, Tripo pulls).
   'cain-elias': '../roster/cain-elias/attires/attire1/model.glb',
   'cain-elias-attire2': '../roster/cain-elias/attires/attire2/model.glb',
+  // Vain Abel — Attire 2 (owner 2026-10-20, Tripo pull).
+  'vainabel-attire2': '../roster/vainabel/attires/attire2/model.glb',
+  // Vain Abel — Kane archetype (owner 2026-10-20, Tripo pull). Attire 3: Masked Demon of the Purple Haze.
+  'vainabel-attire3': '../roster/vainabel/attires/attire3/model.glb',
   // Burger — Demon mode, possessed by greed (owner 2026-10-19, Tripo pull).
   burger: '../roster/burger/attires/attire1/model.glb',
   // Kronos — new fighter (owner 2026-10-19, Tripo pull).
   kronos: '../roster/kronos/attires/attire1/model.glb',
   'kronos-attire2': '../roster/kronos/attires/attire2/model.glb',
+  'kronos-attire3': '../roster/kronos/attires/attire3/model.glb',
   // KORESHI (owner 2026-10-19): his own creation (Kakashi + SSJ4/5 + ninja, Tripo pull).
   koreshi: '../roster/koreshi/attires/attire1/model.glb',
   // Burger hunger-state variants (owner 2026-10-19, Tripo pulls).
@@ -88,7 +122,7 @@ const MODEL_URLS = {
   // Gyou spirit form (owner 2026-10-19, Tripo pull).
   'gyou-spirit': '../roster/gyou/attires/spirit-form/model.glb',
   lili: 'assets/models/lili.glb',   // NO WH name yet — do not assign
-  baek: 'assets/models/baek.glb',   // NO WH name yet — do not assign
+  baek: 'assets/models/baek.glb',   // KEVIN's A2 attire (original Baek model)
   // Round-2 auto-rig wave (lane B): re-rigged per-fighter variants + Tripo
   // attires, all passing the playable gate (valid glTF, skinned, Hips, 1.5-2.2m).
   // 'demonio-body' round-2 re-rig variant was never pushed to the repo;
@@ -96,12 +130,16 @@ const MODEL_URLS = {
   // so the key resolves instead of 404ing.
   'demonio-body': 'assets/models/demonio.glb',
   'kai-body': 'assets/models/kai-body.glb',
+  'jin-body': 'assets/models/jin-body.glb',
+  'rin-body': 'assets/models/rin-body.glb',
+  'jin-t7': 'assets/models/jin.glb',
   'king-tyrant_alt1': 'assets/models/king-tyrant_alt1.glb',
   'kinpo-t8': 'assets/models/kinpo-t8.glb',
   'kinpo_alt1': 'assets/models/kinpo_alt1.glb',
   'phantom-t8': 'assets/models/phantom-t8.glb',
   'pantera_alt1': 'assets/models/pantera_alt1.glb',
   'pantera-body': 'assets/models/pantera-body.glb',
+  'pantera-leoman': '../roster/pantera/attires/leomon/model.glb',
   'retsu-body': 'assets/models/retsu-body.glb',
   'saku-ra_alt1': 'assets/models/saku-ra_alt1.glb',
   'saku-ra-main': 'assets/models/saku-ra-main.glb',
@@ -140,6 +178,9 @@ const MODEL_URLS = {
   // Vega CC-BY (pierodsoto01), Iori CC-BY (0xo), Armor King CC-BY (theamazingdonovan207).
   zangief: '../roster/zangief/attires/attire1/model.glb',
   blanka: '../roster/blanka/attires/attire1/model.glb',
+  // CHARGER (owner 2026-10-20): Blanka replacement fighter — owner Tripo models.
+  charger: '../roster/charger/attires/attire1/model.glb',
+  'charger-attire2': '../roster/charger/attires/attire2/model.glb',
   vega: '../roster/vega/attires/attire1/model.glb',
   iori: '../roster/iori/attires/attire1/model.glb',
   'armor-king': '../roster/armor-king/attires/attire1/model.glb',
@@ -157,10 +198,345 @@ const MODEL_URLS = {
   'ryuji-rock': '../roster/ryuji-rock/attires/attire1/model.glb',
 };
 
+/* ============================================================
+   FOREIGN-RIG REMAP — Vega only (per-character isolation law).
+   Vega's GLB (roster/vega/attires/attire1/model.glb) is fully
+   skinned (364 joints) but uses a foreign naming scheme, so ZERO
+   of the 21 canonical T3 bone names exist on it: fighter.js's
+   gate (bones.Hips && bones.RightArm) fails and every T3
+   AnimationMixer track (tracks bind by NODE NAME) misses.
+   Fix: rename the 21 core joint NODES on the cloned instance to
+   the T3 names. Renaming is skinning-safe in glTF/THREE — skins
+   reference joint node INDICES, not names (verified in the
+   playtest proof: the renamed instance skins + animates).
+
+   The correspondence was DERIVED FROM THE GLB ITSELF (node
+   hierarchy + skin weights + world positions), never from name
+   similarity alone:
+   - Waist_06 -> Hips: the pelvis. Sole joint whose children are
+     the spine chain (Stomach_07) AND both leg roots
+     (LLegRoot_0195 / RLegRoot_0184); 501 skin weight around the
+     pelvis; the Stomach/Chest/Neck/Head chain hangs off it.
+   - Stomach_07 -> Spine: Waist's only upward child, +0.124 above
+     it, sole parent of Chest_08.
+   - Chest_08 -> Chest: parent of Neck_09 AND both shoulder
+     chains (LShoulder_01 / RShoulder_0113).
+   - Neck_09 -> Neck: sole parent of Head_010.
+   - Head_010 -> Head: parent of every Face and hair joint.
+   - LShoulder_01 / RShoulder_0113 -> Left/RightShoulder: FIRST
+     joint off Chest on each side (world x -/+0.006 — the
+     sternum, exactly where a Mixamo shoulder/clavicle bone
+     originates; its child *Clavicle_* is an extra intermediate
+     this rig adds, left unrenamed to pass rotation through).
+   - LArm1_0148 / RArm1_0117 -> Left/RightArm: origin at the
+     anatomical shoulder joint (world x -/+0.273), first WEIGHTED
+     arm bone (ArmRoot above it is a 0-weight helper at the same
+     origin), parent of the forearm chain, heaviest upper-arm
+     skin weight.
+   - LArm2_0149 / RArm2_0118 -> Left/RightForeArm: origin at the
+     elbow (co-located with the *Elbow_* helper, but that helper
+     is a LEAF — Arm2 is the elbow-position joint that is the
+     actual parent of the hand chain).
+   - LhandXR_0150 / RhandXR_0121 -> Left/RightHand: wrist joint
+     (world x -/+0.819), ancestor of handRot + ALL finger chains
+     and carrier of the largest hand skin weight (160), so a Hand
+     rotation moves the whole hand rigidly.
+   - LLeg1_0196 / RLeg1_0185 -> Left/RightUpLeg: first WEIGHTED
+     leg bone (LegRoot above it is a 0-weight helper at the same
+     origin), parent of the shin chain.
+   - LLeg2_0197 / RLeg2_0186 -> Left/RightLeg: shin, sole parent
+     of the foot (co-located *Knee_* helper is a leaf, same
+     pattern as the elbow).
+   - LFoot_0198 / RFoot_0187 -> Left/RightFoot: parent of toe.
+   - LToe_0199 / RToe_0188 -> Left/RightToeBase: terminal toe
+     joint, parent of the foot-toe helpers.
+   'Root' is intentionally NOT mapped: canonical Mixamo fighters
+   have no Root bone either, so that T3 track stays unbound on
+   Vega exactly as it does on pantera/steve-fox.
+   Scope: applies ONLY when the model URL is Vega's AND every
+   source name of this scheme signature is present on the clone
+   (otherwise a strict no-op) — no other fighter can be renamed.
+   ============================================================ */
+const VEGA_MODEL_URL = '../roster/vega/attires/attire1/model.glb';
+const VEGA_T3_BONE_REMAP = {
+  Waist_06: 'Hips',
+  Stomach_07: 'Spine',
+  Chest_08: 'Chest',
+  Neck_09: 'Neck',
+  Head_010: 'Head',
+  LShoulder_01: 'LeftShoulder',
+  LArm1_0148: 'LeftArm',
+  LArm2_0149: 'LeftForeArm',
+  LhandXR_0150: 'LeftHand',
+  RShoulder_0113: 'RightShoulder',
+  RArm1_0117: 'RightArm',
+  RArm2_0118: 'RightForeArm',
+  RhandXR_0121: 'RightHand',
+  LLeg1_0196: 'LeftUpLeg',
+  LLeg2_0197: 'LeftLeg',
+  LFoot_0198: 'LeftFoot',
+  LToe_0199: 'LeftToeBase',
+  RLeg1_0185: 'RightUpLeg',
+  RLeg2_0186: 'RightLeg',
+  RFoot_0187: 'RightFoot',
+  RToe_0188: 'RightToeBase',
+};
+
+/* The canonical Mixamo models' root-chain rotation, measured
+   from pantera.glb + steve-fox.glb: their Hips parent ('Character'
+   node) carries quaternion (-0.7071, 0, 0, 0.7071). The T3 clips
+   store ABSOLUTE local quaternions authored against that frame,
+   so a clip frame only lands correctly when the world orientation
+   of every driven bone's parent chain matches the Mixamo one. */
+const CANONICAL_ROOT_CHAIN_QUAT = [-0.70710678, 0, 0, 0.70710678];
+
+/* Non-driven helper joints sitting BETWEEN driven joints in
+   Vega's chains, with non-identity bind rotations (measured from
+   the GLB): ArmRoot L/R are ~90° about Y, LegRoot L/R are a
+   ~90° tilted frame, handRot L/R carry the finger frame. The
+   Mixamo chains have NO joint in those slots, so during a clip
+   their bind rotations would ride on top of the clip pose as a
+   constant twist. They are neutralized to identity below (bind
+   pose is preserved by the inverse-bind recompute). */
+const VEGA_FRAME_HELPER_JOINTS = [
+  'LArmRoot_0147', 'RArmRoot_0116',
+  'LLegRoot_0195', 'RLegRoot_0184',
+  'LhandRot_0151', 'RhandRot_0122',
+];
+
+/* Canonical bind LOCAL quaternions per driven bone, measured
+   from pantera.glb (the working Mixamo rig the T3 banks were
+   baked against). Bones not listed here have identity bind
+   locals on the canonical rig. Vega's authored locals store
+   different per-bone frame rotations (Arm1 is
+   (-0.5005, -0.4995, -0.4995, 0.5005), Leg1 is
+   (0.0007, 0.0007, 0.7073, 0.7069), Foot is
+   (0.4999, 0.5, 0.5001, -0.5)), and its child translations are
+   expressed along its own axis conventions (arm/leg offsets
+   along X where Mixamo uses +Y) — both are converted below. */
+const CANONICAL_BIND_LOCALS = {
+  Hips: [0, 0.70710678, 0.70710678, 0],
+  LeftShoulder: [-0.70710678, -0.70710678, 0, 0],
+  RightShoulder: [0, 0, 0.70710678, 0.70710678],
+  LeftUpLeg: [1, 0, 0, 0],
+  RightUpLeg: [1, 0, 0, 0],
+  LeftFoot: [-0.70710678, 0, 0, 0.70710678],
+  RightFoot: [-0.70710678, 0, 0, 0.70710678],
+};
+
+/* Rename Vega's foreign core joints on ONE cloned instance and
+   convert the instance's bind frame to the canonical T3/Mixamo
+   frame so the absolute-quaternion clips land upright:
+   1. the rotated non-bone FBX wrapper ancestors above the
+      skeleton root are cancelled at the MODEL ROOT (their
+      inverse is premultiplied), so the authored geometry
+      presents upright in skeleton space; the RM_BLR_Middle_04
+      joint above the pelvis then takes the canonical root-
+      chain rotation (-0.7071, 0, 0, 0.7071), making the full
+      chain above the pelvis canonical.
+   2. the other in-chain helper joints are set to identity, the
+      driven bones' bind locals become the canonical ones
+      (CANONICAL_BIND_LOCALS), and their local translations are
+      re-solved so every joint keeps its authored skeleton-space
+      position.
+   3. every skeleton's inverse bind matrices are recomputed from
+      the edited bind world matrices — renaming/frame edits are
+      skinning-safe because skins reference joint indices, and
+      with IBM = inverse(new bind world) the bind-pose bone
+      matrices stay identity, so the mesh stays glued to the
+      skeleton (bind pose presented in the canonical frame).
+   4. origin lift — this rig's origin is its pelvis, not its
+      feet (see ORIGIN LIFT in the code), so the instance is
+      lifted until the bind pose's lowest point rests at y=0.
+   Returns true when the full scheme signature matched and the
+   remap was applied; false (no-op) for every other model. */
+function remapVegaBones(fighterId, model) {
+  if (MODEL_URLS[fighterId] !== VEGA_MODEL_URL) return false;
+  const byName = {};
+  model.traverse((o) => { if (o.isBone) byName[o.name] = o; });
+  // Scheme signature: ALL foreign source names must be present,
+  // and none of the target names may already exist (a model that
+  // is already T3-named, or a different rig, is never touched).
+  for (const src of Object.keys(VEGA_T3_BONE_REMAP)) {
+    if (!byName[src]) return false;
+  }
+  for (const dst of Object.values(VEGA_T3_BONE_REMAP)) {
+    if (byName[dst]) return false;
+  }
+  for (const [src, dst] of Object.entries(VEGA_T3_BONE_REMAP)) {
+    byName[src].name = dst;
+  }
+
+  // --- bind-frame conversion (see header comment) ---
+  // Skinning deforms by each bone's DELTA from its bind world
+  // matrix, and the rendered bind pose is the mesh nodes' world
+  // transform applied to the authored geometry — so a clip
+  // reproduces the canonical pose, on an upright body, when:
+  // (a) the wrapper ancestors above the skeleton root are
+  //     cancelled at the model root (geometry then presents
+  //     exactly as authored: upright, in skeleton space);
+  // (b) the remaining chain stage above the pelvis — the
+  //     RM_BLR_Middle_04 joint — carries the canonical
+  //     root-chain rotation, so the full chain above the pelvis
+  //     equals the canonical 'Character' rotation and every
+  //     clip delta is conjugated exactly like the Mixamo rigs';
+  // (c) the driven bones' bind locals are the canonical ones,
+  //     with local translations re-solved so every joint keeps
+  //     its authored position in skeleton space.
+  const hips = byName.Waist_06; // renamed 'Hips' above
+  const ancestors = [];
+  for (let p = hips.parent; p; p = p.parent) ancestors.unshift(p);
+  // Wrapper product: every ancestor above the skeleton root
+  // bone (_rootJoint) — Sketchfab_model / untitledfbx /
+  // BLR_01_skeleton carry matrix-encoded rotations (measured in
+  // the live clone: their product is -90° about X).
+  const rootBoneIdx = ancestors.findIndex((a) => a.isBone);
+  const wrapperProd = new THREE.Quaternion(0, 0, 0, 1);
+  for (let i = 0; i < rootBoneIdx; i++) wrapperProd.multiply(ancestors[i].quaternion);
+  const correction = wrapperProd.clone().invert();
+  // Full original chain product, for recovering skeleton-space
+  // positions below.
+  const chainProd = new THREE.Quaternion(0, 0, 0, 1);
+  for (const a of ancestors) chainProd.multiply(a.quaternion);
+
+  // Desired bind world positions: each joint's authored
+  // position in SKELETON space (the space the geometry is
+  // authored in) = its model-space world position with the
+  // full original chain rotation factored back out.
+  model.updateMatrixWorld(true);
+  const driven = Object.entries(VEGA_T3_BONE_REMAP)
+    .map(([src, dst]) => ({ node: byName[src], dst }));
+  const unchain = chainProd.clone().invert();
+  const desiredPos = new Map();
+  for (const { node } of driven) {
+    desiredPos.set(node, node.getWorldPosition(new THREE.Vector3()).applyQuaternion(unchain));
+  }
+
+  // (a) Cancel the wrapper rotations at the model root.
+  model.quaternion.premultiply(correction);
+  // (b) RM_BLR_Middle_04 becomes the canonical chain stage;
+  // the other in-chain helpers go to identity (the canonical
+  // chains have no joint in those slots).
+  if (byName.RM_BLR_Middle_04) {
+    byName.RM_BLR_Middle_04.quaternion.set(...CANONICAL_ROOT_CHAIN_QUAT);
+  }
+  for (const name of VEGA_FRAME_HELPER_JOINTS) {
+    if (byName[name]) byName[name].quaternion.set(0, 0, 0, 1);
+  }
+  // (c) Driven bones' bind locals become the canonical ones.
+  for (const { node, dst } of driven) {
+    const q = CANONICAL_BIND_LOCALS[dst];
+    if (q) node.quaternion.set(q[0], q[1], q[2], q[3]);
+    else node.quaternion.set(0, 0, 0, 1);
+  }
+  // Translation re-solve, parents before children: changing a
+  // frame swings every child joint around its parent, so each
+  // driven bone's local translation is re-expressed in its
+  // (now canonical) parent frame to land exactly on its
+  // desired authored world position.
+  const depthOf = (n) => { let d = 0; for (let p = n.parent; p; p = p.parent) d++; return d; };
+  driven.sort((a, b) => depthOf(a.node) - depthOf(b.node));
+  const _pw = new THREE.Vector3(), _pq = new THREE.Quaternion(), _ps = new THREE.Vector3();
+  for (const { node } of driven) {
+    const parent = node.parent;
+    parent.updateWorldMatrix(true, false);
+    parent.matrixWorld.decompose(_pw, _pq, _ps);
+    node.position.copy(desiredPos.get(node).sub(_pw).applyQuaternion(_pq.clone().invert()));
+  }
+  model.updateMatrixWorld(true);
+  const seenSkeletons = new Set();
+  model.traverse((o) => {
+    if (o.isSkinnedMesh && o.skeleton && !seenSkeletons.has(o.skeleton)) {
+      seenSkeletons.add(o.skeleton);
+      o.skeleton.calculateInverses();
+    }
+  });
+  // ORIGIN LIFT: this rig is authored with its origin at the
+  // PELVIS (pelvis local position is (0,0,0) and every ancestor
+  // translation is zero), while the canonical models are authored
+  // with their origin at their FEET (Mixamo Hips sits ~1m up).
+  // The game places the model root on the ground, so un-lifted
+  // Vega stands waist-deep under the floor and every clip pivots
+  // around a floor-level pelvis. Lift the instance so the bind
+  // pose's lowest point rests on the ground plane.
+  const bindBox = new THREE.Box3().setFromObject(model);
+  if (bindBox.min.y < -0.01) model.position.y -= bindBox.min.y;
+  console.log(`[WH] ${fighterId}: foreign rig remapped to T3 bone names (21 joints) + bind frame converted to canonical T3 frame`);
+  return true;
+}
+
+// Creation Suite Pass: let baked customizations override base model URLs
+// before anything loads them. Guarded — any registry problem leaves
+// MODEL_URLS exactly as authored above.
+try {
+  for (const [key, url] of Object.entries(ATTIRE_CUSTOMIZATIONS || {})) {
+    if (url) MODEL_URLS[key] = url;
+  }
+} catch (e) { /* Creation Suite registry unavailable: base URLs stand. */ }
+
+/* MESH FACING (2026-10-20). The game (fighter.js lean rotation) and the T3
+   retarget assume a model's mesh faces +Z. Many shipped GLBs face -Z, and
+   the auto-rig template skeleton faces -Z even inside +Z meshes, so bone
+   names/orientations cannot tell. assets/models/model-facing.json records
+   each model's mesh facing read from raw rest renders (proof listed in the
+   file). Unlisted models use the feet-geometry cue below when it is
+   confident; otherwise +Z. createInstance() wraps the clone so the
+   instance's own space always has the mesh facing +Z. */
+const FACING_URL = 'assets/models/model-facing.json';
+let _facingTable = null;
+const _facingReady = fetch(FACING_URL).then(r => (r.ok ? r.json() : null))
+  .then(j => { _facingTable = (j && j.models) || {}; })
+  .catch(() => { _facingTable = {}; });
+
+/* Feet cue: the lowest 5% of skinned vertices near each ankle extend
+   further toward the toes than toward the heel. Returns +1 (+Z), -1 (-Z)
+   or 0 (not confident; |score| < 0.05 misread no model in the 52-model
+   check against rest renders, 2026-10-20). */
+function feetFacingCue(root) {
+  root.updateMatrixWorld(true);
+  const inv = new THREE.Matrix4().copy(root.matrixWorld).invert();
+  const pts = [];
+  const v = new THREE.Vector3(), m = new THREE.Matrix4();
+  let feet = [];
+  root.traverse((o) => {
+    if (!o.isSkinnedMesh) return;
+    m.multiplyMatrices(inv, o.matrixWorld);
+    const pos = o.geometry.attributes.position;
+    const step = Math.max(1, Math.floor(pos.count / 40000));
+    for (let i = 0; i < pos.count; i += step) { v.fromBufferAttribute(pos, i).applyMatrix4(m); pts.push(v.x, v.y, v.z); }
+    if (!feet.length && o.skeleton) {
+      for (const b of o.skeleton.bones) {
+        const n = b.name.replace(/^mixamorig:?/, '').replace(/_\d+$/, '');
+        if (/^(Left|Right)Foot$|^Bip0*1_[LR]_Foot$|^[LR]_Foot$/.test(n)) {
+          feet.push(new THREE.Vector3().setFromMatrixPosition(new THREE.Matrix4().multiplyMatrices(inv, b.matrixWorld)));
+        }
+      }
+    }
+  });
+  if (pts.length < 300 || feet.length < 2) return 0;
+  let y0 = Infinity, y1 = -Infinity;
+  for (let i = 1; i < pts.length; i += 3) { y0 = Math.min(y0, pts[i]); y1 = Math.max(y1, pts[i]); }
+  const h = y1 - y0;
+  let score = 0;
+  for (const a of feet.slice(0, 2)) {
+    const zs = [];
+    for (let i = 0; i < pts.length; i += 3) {
+      if (pts[i + 1] < y0 + 0.05 * h && Math.abs(pts[i] - a.x) < 0.06 * h) zs.push(pts[i + 2]);
+    }
+    if (zs.length < 10) return 0;
+    zs.sort((p, q) => p - q);
+    const hi = zs[Math.floor(zs.length * 0.99)], lo = zs[Math.floor(zs.length * 0.01)];
+    score += ((hi - a.z) - (a.z - lo)) / h;
+  }
+  return score >= 0.05 ? 1 : (score <= -0.05 ? -1 : 0);
+}
+
 class AssetManager {
   constructor() {
     this.gltfs = {};   // id -> gltf
     this.clips = {};   // id -> {name: clip}
+    this.facing = {};  // id -> +1 (+Z) | -1 (-Z), mesh facing of the raw GLB
+    this.groundY = {}; // id -> lowest skinned-vertex height of the raw GLB at rest
     this.ready = false;
   }
 
@@ -215,7 +591,28 @@ class AssetManager {
               o.frustumCulled = false;
             }
           });
-          resolve();
+          // GROUNDING (2026-10-20): some GLBs are authored with the origin
+          // at the hips (star / torch / michiko / diablo: vertices span
+          // y -1.05..0.8), so they stood waist-deep in the floor. The
+          // instance is lifted by its own rest geometry (skinned bounds
+          // include the bone transforms in three r160).
+          {
+            gltf.scene.updateMatrixWorld(true);
+            let y0 = Infinity;
+            const bb = new THREE.Box3();
+            gltf.scene.traverse((o) => {
+              if (!o.isSkinnedMesh) return;
+              o.computeBoundingBox();
+              bb.copy(o.boundingBox).applyMatrix4(o.matrixWorld);
+              if (bb.min.y < y0) y0 = bb.min.y;
+            });
+            this.groundY[id] = Number.isFinite(y0) ? y0 : 0;
+          }
+          _facingReady.then(() => {
+            const rec = _facingTable && _facingTable[id];
+            this.facing[id] = rec === '-Z' ? -1 : rec === '+Z' ? 1 : (feetFacingCue(gltf.scene) || 1);
+            resolve();
+          });
         },
         (xhr) => {
           // Byte-level download progress: xhr.loaded / xhr.total
@@ -270,10 +667,28 @@ class AssetManager {
 
   /* { model, bones, mixer, actions } for one fighter.
      Per-fighter palette: suit color lerp + trim emissive accents. */
-  createInstance(fighterId, suitColor, trimColor, tintStrength = 0.45) {
+  /* tintStrength defaults to 0: fighters show their OWN authored textures
+     and materials (owner 2026-10-20: "what are the fighters having that
+     colored layer over their skin? fix that"). Only an explicitly
+     colorized fighter (the Create-a-Fighter skin tone, `colorize: true`)
+     passes a tint. */
+  createInstance(fighterId, suitColor, trimColor, tintStrength = 0) {
     const gltf = this.gltfs[fighterId];
     if (!gltf) throw new Error('unknown fighter model: ' + fighterId);
-    const model = skeletonClone(gltf.scene);
+    // The instance root is a wrapper whose space always has the mesh facing
+    // +Z (see MESH FACING above); callers may freely set its rotation.
+    const inner = skeletonClone(gltf.scene);
+    // FOREIGN-RIG REMAP (Vega only, see VEGA_T3_BONE_REMAP above):
+    // rename the cloned instance's core joints to the T3 names
+    // BEFORE the bones dict and mixer are built from it, so T3
+    // clips + procedural IK bind. The source gltf is untouched.
+    const vegaRemapped = remapVegaBones(fighterId, inner);
+    if ((this.facing[fighterId] || 1) < 0) inner.rotation.y = Math.PI;
+    const gy = this.groundY[fighterId] || 0;
+    if (Math.abs(gy) > 0.03) inner.position.y = -gy; // feet on the floor
+    const model = new THREE.Group();
+    model.name = `wh-instance:${fighterId}`;
+    model.add(inner);
 
     const suit = new THREE.Color(suitColor);
     const trim = new THREE.Color(trimColor);
@@ -289,11 +704,12 @@ class AssetManager {
       if (o.isSkinnedMesh) skinnedCount++;
       if (o.isMesh && o.material) {
         o.material = o.material.clone();
-        // tint toward the fighter's palette (real textures underneath)
-        if (o.material.color) o.material.color.lerp(suit, tintStrength);
-        o.material.emissive = o.material.emissive || new THREE.Color(0x000000);
-        o.material.emissive.copy(trim).multiplyScalar(0.08);
-        if (o.material.roughness !== undefined) o.material.roughness = 0.7;
+        if (tintStrength > 0) {
+          // explicit colorize only (custom fighter skin tone)
+          if (o.material.color) o.material.color.lerp(suit, tintStrength);
+          o.material.emissive = o.material.emissive || new THREE.Color(0x000000);
+          o.material.emissive.copy(trim).multiplyScalar(0.08);
+        }
         // Never ship a transparent fighter: a bad alpha kills visibility.
         if (o.material.transparent && o.material.opacity < 0.05) {
           o.material.transparent = false;
@@ -309,13 +725,31 @@ class AssetManager {
     model.traverse((o) => {
       if (o.isBone) bones[o.name.replace(/^mixamorig:?/, '')] = o;
     });
+    if (vegaRemapped) {
+      // Mixamo-spelling aliases for fighter.js's procedural layer,
+      // which reads bones.Spine1 (hurt capsule) and bones.Spine2
+      // (attack origin) — Vega's 3-bone torso has no separate
+      // Spine1/Spine2 joints. Dict aliases ONLY: node names (and
+      // therefore mixer binding + skinning) are unaffected.
+      if (bones.Spine) bones.Spine1 = bones.Spine;
+      if (bones.Chest) bones.Spine2 = bones.Chest;
+    }
 
     const mixer = new THREE.AnimationMixer(model);
     const actions = {};
     const clips = this.clips[fighterId] || {};
+    // EMBEDDED-IDLE ALIAS: Bip001-rig models (Iori, Deathfang)
+    // ship 59 embedded clips including Battle_Idle / Stage_Idle
+    // but no clip literally named 'Idle', so they used to fall
+    // back to bind pose when standing still. When — and only
+    // when — a model has no real 'Idle', register Battle_Idle
+    // (preferred) or Stage_Idle as its idle in this same
+    // clip-selection path. Models with a real Idle are unchanged.
+    const idleClip = clips.Idle || clips.Battle_Idle || clips.Stage_Idle || null;
     for (const name of ['Idle', 'Walk', 'Run']) {
-      if (clips[name]) {
-        actions[name] = mixer.clipAction(clips[name]);
+      const clip = name === 'Idle' ? idleClip : clips[name];
+      if (clip) {
+        actions[name] = mixer.clipAction(clip);
         actions[name].play();
         actions[name].setEffectiveWeight(name === 'Idle' ? 1 : 0);
       }
