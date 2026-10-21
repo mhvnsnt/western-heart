@@ -300,7 +300,7 @@ files keep EM-descriptive basenames under WH stage directories pending assignmen
 | lili (RigModels) | lili.glb | UNMAPPED | — |
 | mokujin (RigModels) | mokujin.glb | UNMAPPED | — |
 | zafina (RigModels) | zafina.glb | UNMAPPED | — |
-| baek (RigModels) | baek.glb | UNMAPPED | — |
+| baek (RigModels) | baek.glb | KEVIN | A2 attire for Kevin (owner 2026-10-20: Baek-as-fighter → KEVIN) |
 
 **Blocked:** heihachi-mishima → Diablo (RAR, no extractor on VM); dr-bosconovitch → Doc Frank (XPS format); xiaoyu-t8 → Saku Ra alt2 (RAR).
 

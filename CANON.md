@@ -931,8 +931,10 @@ She was never called. She *came*. Tong-Nou didn't summon her; she followed the p
 
 ---
 
-### BAEK — The Master Soul
+### KEVIN — The Master Soul
 **Not one of the nine. The teacher.**
+
+*(Owner 2026-10-20: the fighter IS Kevin. Baek's model is Kevin's A2 attire; the Master's White reskin is PARKED. The Master Soul's story — the teacher who came on purpose — is Kevin's now.)*
 
 **Backstory.** Baek Doo San — taekwondo master, the man who taught Hwoarang everything the boy refused to learn gently. In the old world he was lost at sea, taken, broken, rebuilt; he came back anyway, because students don't stop needing teachers just because the teacher drowns.
 

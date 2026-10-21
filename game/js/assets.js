@@ -88,7 +88,7 @@ const MODEL_URLS = {
   // Gyou spirit form (owner 2026-10-19, Tripo pull).
   'gyou-spirit': '../roster/gyou/attires/spirit-form/model.glb',
   lili: 'assets/models/lili.glb',   // NO WH name yet — do not assign
-  baek: 'assets/models/baek.glb',   // NO WH name yet — do not assign
+  baek: 'assets/models/baek.glb',   // KEVIN's A2 attire (original Baek model)
   // Round-2 auto-rig wave (lane B): re-rigged per-fighter variants + Tripo
   // attires, all passing the playable gate (valid glTF, skinned, Hips, 1.5-2.2m).
   // 'demonio-body' round-2 re-rig variant was never pushed to the repo;
