@@ -29,7 +29,9 @@ import subprocess
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-BLENDER = os.path.expanduser("~/workspace/tools/blender/blender-4.0.2-linux-x64/blender")
+# WH_BLENDER overrides the default install path (tools/setup/setup_toolchain.sh PREFIX).
+BLENDER = os.environ.get("WH_BLENDER") or os.path.expanduser(
+    "~/workspace/tools/blender/blender-4.0.2-linux-x64/blender")
 
 
 def run(cmd, env=None):

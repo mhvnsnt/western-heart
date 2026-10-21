@@ -209,6 +209,132 @@ function decodePackRow(pack, rec) {
 const _t3clipCache = {};    // bankId -> { actionName: clip }
 const _t3clipPromises = {}; // bankId -> Promise
 const _t3skelCache = {};    // bankId -> wh-anim-skel/1 source skeleton
+const _t3facing = {};       // bankId -> { turned, kneeDeg, samples } (bankFacing)
+
+/* ============================================================
+   SOURCE FACING (2026-10-21) — every bank is declared "faces +Z,
+   character left = +X" (skeleton.json note), and retargetT3Clips
+   relies on it. Five banks were baked facing -Z instead:
+   lab/tools/t3_to_gltf.py picks "forward" from the head-mesh
+   centroid, and on characters whose head/hair mass sits behind the
+   face it turned the rig 180°, then named Left/Right by the +X side
+   (so their "Left*" joints are the anatomical right). Retargeted as
+   +Z, the swing-matched torso, arms and legs land behind the fighter
+   while the delta-driven hips and head keep facing the opponent —
+   Doc Frank's "owl" (body turned the wrong way, head right).
+   Detection uses the bank's own decoded frames, nothing authored:
+   knees bend forward, so the circular mean of each knee's horizontal
+   offset from its hip-ankle midline, measured against the hips'
+   forward ((G_Hips·X) × Y), must lie in front of the hips. A bank
+   whose knees lie behind (mean forward component < 0) is turned
+   180° about Y (joint rests and root_t: (x,y,z) -> (-x,y,-z); every
+   local rotation conjugated: (x,y,z,w) -> (-x,y,-z,w)) and its
+   Left/Right joint names swapped. Measured 2026-10-21 on all 17
+   bank folders: bosconovitch -179.5°, eddy -178.6°, gunjack 149.9°,
+   heihachi (own rig) 137.7°, yoshimitsu 155.1° -> turned; the other
+   twelve lie within ±61° (anna 60.5°, lei -45.9°) -> untouched.
+   Offline twin of this check: tools/anim/t3_bank_facing.py.
+   ============================================================ */
+const FACING_CLIPS = ['stance', 'walkFwd', 'crouchHold', 'block'];
+function _qmul(a, b) {
+  return [a[3] * b[0] + a[0] * b[3] + a[1] * b[2] - a[2] * b[1],
+    a[3] * b[1] - a[0] * b[2] + a[1] * b[3] + a[2] * b[0],
+    a[3] * b[2] + a[0] * b[1] - a[1] * b[0] + a[2] * b[3],
+    a[3] * b[3] - a[0] * b[0] - a[1] * b[1] - a[2] * b[2]];
+}
+function _qrot(q, v) {
+  const [x, y, z, w] = q;
+  const tx = 2 * (y * v[2] - z * v[1]), ty = 2 * (z * v[0] - x * v[2]), tz = 2 * (x * v[1] - y * v[0]);
+  return [v[0] + w * tx + (y * tz - z * ty), v[1] + w * ty + (z * tx - x * tz), v[2] + w * tz + (x * ty - y * tx)];
+}
+function bankFacing(skel, datas) {
+  const P = {}, par = {}, order = skel.joints.map(j => j.name);
+  for (const j of skel.joints) { P[j.name] = j.rest; par[j.name] = j.parent; }
+  let fwdSum = 0, leftSum = 0, samples = 0;
+  for (const data of datas) {
+    if (!data || !data.rot_xyzw) continue;
+    let n = 0;
+    for (const v of Object.values(data.rot_xyzw)) if (v && v.length > n) n = v.length;
+    for (let f = 0; f < n; f++) {
+      const G = {}, X = {};
+      for (const j of order) {
+        const r = data.rot_xyzw[j];
+        const q = r && r.length ? r[Math.min(f, r.length - 1)] : [0, 0, 0, 1];
+        const p = par[j];
+        if (p && G[p]) {
+          G[j] = _qmul(G[p], q);
+          const o = _qrot(G[p], [P[j][0] - P[p][0], P[j][1] - P[p][1], P[j][2] - P[p][2]]);
+          X[j] = [X[p][0] + o[0], X[p][1] + o[1], X[p][2] + o[2]];
+        } else { G[j] = q; X[j] = P[j].slice(); }
+      }
+      if (!G.Hips) continue;
+      const hx = _qrot(G.Hips, [1, 0, 0]);
+      let fx = -hx[2], fz = hx[0];             // (G_Hips·X) × Y, horizontal
+      const fl = Math.hypot(fx, fz);
+      if (fl < 1e-6) continue;
+      fx /= fl; fz /= fl;
+      for (const s of ['Left', 'Right']) {
+        const a = X[s + 'UpLeg'], k = X[s + 'Leg'], e = X[s + 'Foot'];
+        if (!a || !k || !e) continue;
+        const ox = k[0] - (a[0] + e[0]) / 2, oz = k[2] - (a[2] + e[2]) / 2;
+        fwdSum += ox * fx + oz * fz;
+        leftSum += ox * fz - oz * fx;          // component along forward rotated +90° about Y
+        samples++;
+      }
+    }
+  }
+  return { turned: samples > 0 && fwdSum < 0, kneeDeg: Math.atan2(leftSum, fwdSum) * 180 / Math.PI, samples };
+}
+const _swapLR = (n) => (typeof n === 'string' ? n.replace(/^(Left|Right)/, (m) => (m === 'Left' ? 'Right' : 'Left')) : n);
+function turnSkeleton(skel) {
+  for (const j of skel.joints) {
+    j.name = _swapLR(j.name); j.parent = _swapLR(j.parent);
+    j.rest = [-j.rest[0], j.rest[1], -j.rest[2]];
+  }
+  if (skel.foot_tip) {
+    const ft = {};
+    for (const [k, v] of Object.entries(skel.foot_tip)) ft[_swapLR(k)] = [-v[0], v[1], -v[2]];
+    skel.foot_tip = ft;
+  }
+  skel._info = undefined;
+  skel.turned_180 = true;
+}
+function turnData(data) {
+  if (!data || !data.rot_xyzw) return;
+  const rot = {};
+  for (const [b, arr] of Object.entries(data.rot_xyzw)) rot[_swapLR(b)] = arr.map(q => [-q[0], q[1], -q[2], q[3]]);
+  data.rot_xyzw = rot;
+  if (data.bones) data.bones = data.bones.map(_swapLR);
+  if (data.root_t) data.root_t = data.root_t.map(t => [-t[0], t[1], -t[2]]);
+}
+export function getT3BankFacing(bankId) { return _t3facing[bankId] || null; }
+
+/* STANDING IDLE (2026-10-21). The 'stance' action loops move-index slot 3.
+   On the bosconovitch bank slot 3 (row 237) is a 15-frame fall onto his
+   back (root 0.45 -> -0.45 m; slot 1 is him lying still, slot 0 getting
+   back up): looped as the idle, Doc Frank fell through the stage twice a
+   second. A slot-3 clip that drops more than a quarter of the hip height
+   is not an idle (every other bank's drops under 0.15 x hip height).
+   Such a bank idles in its own standing guard instead — in Tekken the
+   neutral stance IS the standing guard (holding back blocks from it) —
+   the bank's guard-hold clip (T3_CLIP_DEFS.block), played ping-pong so its
+   one-way settle (crouched guard -> upright guard, seam 24 deg on
+   bosconovitch) breathes without a pop. Rendered 2026-10-21: the
+   bosconovitch guard is the same hunched, hands-up posture as his walk.
+   (The most loopable standing stretch of his round-start clip was tried
+   first and rejected on sight: it is his arms-wide stretch.)
+   Returns the replacement wh-anim/1 data or null (bank unchanged). */
+function standingIdle(actionData, skel) {
+  const st = actionData.stance, guard = actionData.block;
+  const rest = skel && skel.root_rest_y;
+  if (!st || !st.root_t || !guard || !(rest > 0)) return null;
+  const ys = st.root_t.map(t => t[1]);
+  const drop = Math.max(...ys) - Math.min(...ys);
+  if (drop <= 0.25 * rest) return null;
+  return { ...guard, pingpong: true,
+    neutral_note: `Idle = the bank's standing guard (${T3_CLIP_DEFS.block.file}, ping-pong): ` +
+      `its slot-3 clip drops ${drop.toFixed(2)} m, a fall, not a stance (t3anims.js standingIdle)` };
+}
 
 export async function loadT3Clips(THREE, bankId = 'king') {
   if (!bankId || !T3_BANKS[bankId]) return null;
@@ -226,6 +352,9 @@ export async function loadT3Clips(THREE, bankId = 'king') {
     } catch (e) {
       console.warn(`[WH-T3] ${bankId}/skeleton.json unavailable — bank cannot be retargeted:`, e.message || e);
     }
+    // Decoded frames first (all of them), then the facing check, then clips.
+    const actionData = {};
+    let rowData = {};
     const jobs = Object.entries(T3_CLIP_DEFS).map(async ([action, def]) => {
       try {
         const res = await fetch(base + def.file);
@@ -234,12 +363,7 @@ export async function loadT3Clips(THREE, bankId = 'king') {
         if (data.format !== 'wh-anim/1') {
           console.warn(`[WH-T3] ${bankId}/${def.file}: unexpected format ${data.format}`);
         }
-        const clip = jsonToClip(`t3_${bankId}_${action}`, data, THREE);
-        if (clip) {
-          clip.userData.loop = def.loop;
-          clip.userData.noRise = !!def.noRise;
-          clips[action] = clip;
-        }
+        actionData[action] = data;
       } catch (e) {
         console.warn(`[WH-T3] failed to load ${bankId}/${def.file}:`, e.message || e);
       }
@@ -252,17 +376,45 @@ export async function loadT3Clips(THREE, bankId = 'king') {
         const res = await fetch(base + 'rows.pack.json');
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const pack = await res.json();
-        let n = 0;
-        for (const [row, rec] of Object.entries(pack.rows || {})) {
-          const clip = jsonToClip(`t3_${bankId}_row${row}`, decodePackRow(pack, rec), THREE);
-          if (clip) { clip.userData.loop = false; clip.userData.move_row = rec.move_row; clips['row:' + row] = clip; n++; }
-        }
-        console.log(`[WH-T3] bank '${bankId}': ${n} move-row clips`);
+        for (const [row, rec] of Object.entries(pack.rows || {})) rowData[row] = { rec, data: decodePackRow(pack, rec) };
       } catch (e) {
         console.warn(`[WH-T3] ${bankId}/rows.pack.json unavailable:`, e.message || e);
+        rowData = {};
       }
     })());
     await Promise.all(jobs);
+    const skel = _t3skelCache[bankId];
+    if (skel) {
+      const facing = bankFacing(skel, FACING_CLIPS.map(a => actionData[a]));
+      _t3facing[bankId] = facing;
+      if (facing.turned) {
+        turnSkeleton(skel);
+        for (const d of Object.values(actionData)) turnData(d);
+        for (const r of Object.values(rowData)) turnData(r.data);
+        console.log(`[WH-T3] bank '${bankId}': baked facing -Z (knees ${facing.kneeDeg.toFixed(1)}° from hips forward) — turned 180° to +Z, Left/Right relabelled`);
+      }
+      const idle = standingIdle(actionData, skel);
+      if (idle) {
+        actionData.stance = idle;
+        console.log(`[WH-T3] bank '${bankId}': ${idle.neutral_note}`);
+      }
+    }
+    for (const [action, data] of Object.entries(actionData)) {
+      const def = T3_CLIP_DEFS[action];
+      const clip = jsonToClip(`t3_${bankId}_${action}`, data, THREE);
+      if (clip) {
+        clip.userData.loop = def.loop;
+        clip.userData.noRise = !!def.noRise;
+        if (data.pingpong) clip.userData.pingpong = true;
+        clips[action] = clip;
+      }
+    }
+    let n = 0;
+    for (const [row, { rec, data }] of Object.entries(rowData)) {
+      const clip = jsonToClip(`t3_${bankId}_row${row}`, data, THREE);
+      if (clip) { clip.userData.loop = false; clip.userData.move_row = rec.move_row; clips['row:' + row] = clip; n++; }
+    }
+    console.log(`[WH-T3] bank '${bankId}': ${n} move-row clips`);
     console.log(`[WH-T3] bank '${bankId}': loaded ${Object.keys(clips).length} real T3 clips`);
     _t3clipCache[bankId] = clips;
     return clips;
@@ -349,7 +501,7 @@ export function createT3Actions(mixer, t3Clips, THREE) {
     try {
       const action = mixer.clipAction(clip);
       const loop = clip.userData.loop;
-      action.setLoop(loop ? THREE.LoopRepeat : THREE.LoopOnce, Infinity);
+      action.setLoop(loop ? (clip.userData.pingpong ? THREE.LoopPingPong : THREE.LoopRepeat) : THREE.LoopOnce, Infinity);
       action.clampWhenFinished = !loop;
       action.enabled = true;
       action.setEffectiveWeight(0);
@@ -511,7 +663,12 @@ function analyzeRig(model, THREE) {
   // Track names must resolve to exactly one node under the model.
   const nameCount = {};
   model.traverse((o) => { nameCount[o.name] = (nameCount[o.name] || 0) + 1; });
-  return { bones, by, chest, driver, rest, facesNegZ, swapLR, dirs, hipsY: rest(by.Hips).pos.y,
+  // Floor contact (2026-10-21): the humanoid joints under the hips, and how
+  // high the lowest of them sits at rest (the standing ankle/toe height) —
+  // retargetT3Clips keeps every posed frame at or above that level.
+  const contact = Object.values(by).filter(b => b === by.Hips || isAnc(by.Hips, b));
+  const floorY = Math.min(...contact.map(b => rest(b).pos.y));
+  return { bones, by, chest, driver, rest, facesNegZ, swapLR, dirs, hipsY: rest(by.Hips).pos.y, contact, floorY,
     trackName: (b) => (nameCount[b.name] === 1 ? b.name : b.uuid), uniqueNames: bones.every(b => nameCount[b.name] === 1) };
 }
 
@@ -699,6 +856,15 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
         const rt = raw.root_t[Math.min(f, raw.root_t.length - 1)];
         let dy = (rt[1] - src.rootY) * hipScale;
         if (clip.userData.noRise && dy > 0) dy = 0;
+        // No floor penetration: no joint below its standing-rest height. The
+        // bosconovitch and yoshimitsu banks' root heights do not match their
+        // skeletons (bosconovitch lies 0.89 x hip height BELOW the floor in
+        // t3_ko, yoshimitsu stands at 0.28-0.37 x hip height; every other
+        // bank lies at +0.09..+0.21 and stands at 0.81..1.02), which sank
+        // Doc Frank, Phantom and JIN through the stage. A no-op on frames
+        // whose joints are already above the floor.
+        const low = Math.min(...targetPosed(rig, W, rig.contact).map(p => p.y)) + dy;
+        if (low < rig.floorY) dy += rig.floorY - low;
         tmpV.set(hipsRest.x, hipsRest.y + dy, hipsRest.z).applyMatrix4(hipsParentInv);
         hipPos.set([tmpV.x, tmpV.y, tmpV.z], f * 3);
       }

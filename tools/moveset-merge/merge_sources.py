@@ -793,6 +793,14 @@ def main():
         print(f"{fid:24s} moves {ms['moves_before']:4d} -> {ms['moves_after']:4d}  slots {ms['slots']:4d} "
               f"(was playable {ms['previously_playable_inputs']:4d})  +{dict(added)}  {'GUARD FAIL' if errs else 'ok'}")
     Path(a.report).parent.mkdir(parents=True, exist_ok=True)
+    if a.only and Path(a.report).exists():
+        # --only updates just those fighters' entries; the rest of the report stays as it was
+        # (a 2026-10-21 '--only zui' run had replaced the whole 96-fighter report with one entry).
+        prev = json.loads(Path(a.report).read_text())
+        merged = prev.get("fighters", {})
+        merged.update(report)
+        failures = [f for f in prev.get("failures", []) if not any(str(f).startswith(fid) for fid in report)] + failures
+        report = merged
     Path(a.report).write_text(json.dumps({"date": TODAY, "tool": "tools/moveset-merge/merge_sources.py",
                                           "fighters": report, "failures": failures}, indent=1, ensure_ascii=False) + "\n")
     if failures:

@@ -224,3 +224,36 @@ texture batch decode remainder from the wiring audit.
   (Errno 1, silent 0-byte truncation) — the tool verifies every write by
   read-back and retries, with a perl-pipe fallback; all 1,477 output
   PNGs re-verified on disk after the batch (0 missing, 0 invalid).
+
+---
+
+# WORKLOG — Doc Frank "owl" fix + backward T3 banks (2026-10-21, branch claude/amazing-keller-p8644u)
+
+Owner: "his whole body is facing the wrong way and his head is facing the right way like a owl".
+
+- Diagnosis team (workflow: GLB-data lane completed; runtime/live lanes hit the session limit and
+  their work was redone directly). GLB lane measured all Doc Frank models: binds exact, the 90 deg
+  pelvis frame is cancelled by Spine1 and is not the cause (hood attire has none and folds the same).
+- Root cause: 5 T3 banks baked facing -Z while declaring +Z (bosconovitch, eddy, gunjack,
+  yoshimitsu, heihachi own-rig). Independent offline check: `tools/anim/t3_bank_facing.py` (new).
+- Fix, `game/js/t3anims.js` (all data-derived, generic):
+  - `bankFacing()` + `turnSkeleton()`/`turnData()` in `loadT3Clips`: knee-bend cue from the bank's
+    own frames; backward banks turned 180 deg about Y, Left/Right relabelled, before any clip is built.
+  - `standingIdle()`: Dr. B's slot-3 "neutral" is a 15-frame fall (root 0.45 -> -0.45 m); a bank
+    whose slot-3 clip drops > 1/4 hip height idles in its own guard hold, ping-pong
+    (THREE.LoopPingPong via clip.userData.pingpong). Only bosconovitch triggers. The loop-point
+    search over his round-start clip was tried first and rejected on sight (arms-wide stretch).
+  - Floor contact in `retargetT3Clips` (`rig.contact`, `rig.floorY` from analyzeRig): no joint below
+    its standing-rest height (bosconovitch/yoshimitsu root heights don't match their skeletons).
+- Proof (viewed): `docs/proof/claude-2026-10-21/docfrank-facing/` — before/after renders for all
+  turned banks, live fight before/after (hips 1.0 -> -0.88 m before; 0.78-0.97 m guard bob after),
+  regression fights (0 page errors). Harness: tools/proof-harness/fight.mjs; old-vs-new served
+  side by side (old t3anims.js on :8766) with the GLB lane's retarget_check.mjs.
+- Also: `tools/moveset-merge/merge_sources.py --only` now updates only those fighters' report
+  entries (an earlier `--only zui` run had replaced the 96-fighter SOURCE-MERGE report; restored,
+  zui entry updated to 654 moves). `tools/auto_rig/auto_rig.py`: WH_BLENDER env override.
+  `tools/auto_rig/backends/gamerig_backend.py`: arm/hand fit computed from a template snapshot
+  (palm/finger subtree was left 0.23 m below the hand) and bone heat retried on coarser proxies
+  with a triangle-based decimate target (zui-attire1 heat failed for every vertex before).
+- Not done here: Phantom and Sam-ur-a1 models have ZERO skinned meshes (unrigged statics, on main
+  since 2026-10-18) — queued for the auto-rig pass with Zui/Diablo/Rave.
