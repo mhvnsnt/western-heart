@@ -38,6 +38,14 @@ export const FULL_ROSTER = [
     // Attire 1 = Tripo unwinged demon (owner 2026-10-19). Three forms, transform both directions (Roshi-style).
     // TRANSFORM touch button = up, tap while crouching = down (rare). Full meter required.
     forms: {
+      // The player default resolves to the 'demonio' BASE attire (attires.js
+      // list head), so the base form keys the same chain as A1 — without this
+      // entry the player-side formKey ('demonio') dangles and he never
+      // transforms as the player. Same targets/labels as A1; key alignment only.
+      'demonio': {
+        up: { target: 'demonio-winged', label: 'DEVIL ASCENSION', powerMult: 1.5, speedMult: 1.05, defenseMult: 1.2, bodyScale: 1.22, moveset: 'demonio-winged' },
+        down: { target: 'demonio-human', label: 'DEPOWER', powerMult: 0.7, speedMult: 1.1, defenseMult: 0.9, bodyScale: 0.95, moveset: 'demonio' },
+      },
       'demonio-a1': {
         up: { target: 'demonio-winged', label: 'DEVIL ASCENSION', powerMult: 1.5, speedMult: 1.05, defenseMult: 1.2, bodyScale: 1.22, moveset: 'demonio-winged' },
         down: { target: 'demonio-human', label: 'DEPOWER', powerMult: 0.7, speedMult: 1.1, defenseMult: 0.9, bodyScale: 0.95, moveset: 'demonio' },
@@ -158,7 +166,7 @@ export const FULL_ROSTER = [
     transform: { targetModel: 'doc-frank-frankenstein-big', powerMult: 1.4, speedMult: 0.88, defenseMult: 1.15, bodyScale: 1.18 } },
   { id: 'doc-frank-machine-shop', name: 'DOC FRANK', title: 'Machine Shop', base: 'Bosconovitch', moveset: 'gunjack', model: 'doc-frank-machine-shop', tintStrength: 0.25,
     colors: { suit: 0x4a4a5a, trim: 0xff8800 }, style: 'Inventor', archetype: 'Tricky' },
-  { id: 'baek-master-white', name: 'KEVIN', title: "The Master Soul", base: 'Kevin', moveset: 'bryan', model: 'baek-master-white', tintStrength: 0.25,
+  { id: 'baek-master-white', name: 'KEVIN', title: "The Master Soul", base: 'Kevin', moveset: 'bryan', model: 'baek', tintStrength: 0.25,
     colors: { suit: 0xf0f0f0, trim: 0x8a1a1a }, style: 'Tae Kwon Do', archetype: 'Pressure' },
   { id: 'mariposa-monarch', name: 'MARIPOSA', title: 'Monarch', base: 'Zafina', moveset: 'xiaoyu', model: 'mariposa-monarch', tintStrength: 0.25,
     colors: { suit: 0x2a1a3a, trim: 0xff8800 }, style: 'Azazel Arts', archetype: 'Tricky' },
