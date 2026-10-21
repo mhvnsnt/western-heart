@@ -154,13 +154,16 @@ def mat_to_trs(M):
     q = q / np.linalg.norm(q)
     return t.tolist(), [float(q[0]), float(q[1]), float(q[2]), float(q[3])], s.tolist()
 
-def write_glb_skinned(path, meshes, g):
-    """meshes: (name, P, N, UV, T, obj, joints(nv,4)u16, weights(nv,4)f32)"""
+def write_glb_skinned(path, meshes, g, matmap=None):
+    """meshes: (name, P, N, UV, T, obj, joints(nv,4)u16, weights(nv,4)f32)
+    matmap: optional {mesh_name: png_bytes} -> baseColor texture materials."""
     binparts = []; views = []; accs = []
     def add_view(b, target):
         off = sum(len(p) for p in binparts); pad = (4 - len(b) % 4) % 4
         binparts.append(b + b'\x00' * pad)
-        views.append({'buffer': 0, 'byteOffset': off, 'byteLength': len(b), 'target': target})
+        vv = {'buffer': 0, 'byteOffset': off, 'byteLength': len(b)}
+        if target: vv['target'] = target
+        views.append(vv)
         return len(views) - 1
     def add_acc(view, comp, count, typ, mn=None, mx=None):
         a = {'bufferView': view, 'componentType': comp, 'count': count, 'type': typ}
@@ -212,6 +215,24 @@ def write_glb_skinned(path, meshes, g):
     ibm_cm = np.ascontiguousarray(ibm.transpose(0, 2, 1)).astype(np.float32).tobytes()
     ibv = add_view(ibm_cm, None); views[-1].pop('target', None)
     iba = add_acc(ibv, 5126, nj, 'MAT4')
+    images = []; textures = []; materials = []
+    if matmap:
+        img_idx = {}
+        for name, val in matmap.items():
+            png, blend = val if isinstance(val, tuple) else (val, False)
+            if png not in img_idx:
+                iv = add_view(png, None)
+                images.append({'bufferView': iv, 'mimeType': 'image/png', 'name': name})
+                textures.append({'source': len(images) - 1})
+                img_idx[png] = len(textures) - 1
+            mat = {'name': f'mat-{name}', 'pbrMetallicRoughness':
+                   {'baseColorTexture': {'index': img_idx[png]}, 'metallicFactor': 0.0, 'roughnessFactor': 0.9},
+                   'doubleSided': True}
+            if blend: mat['alphaMode'] = 'BLEND'
+            materials.append(mat)
+            mi = len(materials) - 1
+            for gm in gltf_meshes:
+                if gm['name'] == name: gm['primitives'][0]['material'] = mi
     nodes = []
     for i, mn in enumerate(mesh_nodes):
         nodes.append({'mesh': mn, 'name': meshes[i][0], 'skin': 0})
@@ -222,6 +243,9 @@ def write_glb_skinned(path, meshes, g):
             'skins': [{'joints': [len(mesh_nodes) + k for k in range(nj)], 'inverseBindMatrices': iba,
                        'skeleton': len(mesh_nodes) + roots[0]}],
             'buffers': [{'byteLength': sum(len(p) for p in binparts)}], 'bufferViews': views, 'accessors': accs}
+    if images:
+        gltf['images'] = images; gltf['textures'] = textures; gltf['materials'] = materials
+        gltf['samplers'] = [{'wrapS': 10497, 'wrapT': 10497, 'magFilter': 9729, 'minFilter': 9987}]
     blob = b''.join(binparts)
     js = json.dumps(gltf).encode(); js += b' ' * ((4 - len(js) % 4) % 4)
     out = struct.pack('<4sII', b'glTF', 2, 12 + 8 + len(js) + 8 + len(blob))
@@ -230,7 +254,7 @@ def write_glb_skinned(path, meshes, g):
     open(path, 'wb').write(out)
     print('wrote', path, len(out), 'bytes')
 
-def build(pkgfile, graphfile, outglb, tag):
+def build(pkgfile, graphfile, outglb, tag, matmap=None):
     d = open(pkgfile, 'rb').read()
     g = json.load(open(graphfile))
     decls = parse_decls(d, g)
@@ -306,7 +330,7 @@ def build(pkgfile, graphfile, outglb, tag):
         report.append(f'decl{did} obj{dd["obj"]} s{dd["stream"]}: {len(tris)} tris {how} [{qual}]')
     for r in report: print(f'[{tag}] {r}', flush=True)
     print(f'[{tag}] meshes {len(meshes)}', flush=True)
-    write_glb_skinned(outglb, meshes, g)
+    write_glb_skinned(outglb, meshes, g, matmap=matmap)
     from collections import Counter
     q = Counter(r.split('[')[-1].rstrip(']') for r in report)
     print(f'[{tag}] QUALITY {dict(q)}', flush=True)
