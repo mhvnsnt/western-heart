@@ -20,8 +20,8 @@ stack fixes — no more hand tooling bullshit." ("Those" = the lambada mocap set
 |---|---|---|---|
 | Runtime | Blender 4.2.23 LTS | blender.org, GPL | bake environment (Jiggle Physics needs ≥4.2) |
 | Jiggle physics | **Jiggle Physics v4.5.3** (naelstrof) | github.com/naelstrof/blender-jiggle-physics, GPL; official Blender Extensions platform | Verlet spring solver — the maintained Wiggle 2 fork, same solver family as Unity Jiggle Physics; collision + squash/stretch support |
-| Mocap retarget | **Rokoko Studio Live Blender plugin** | github.com/Rokoko/rokoko-studio-live-blender | Star: CMU BVH → StarRig retarget, scripted headless (`rsl.retarget_animation`) |
-| Mocap retarget (existing) | repo `tools/anim-retarget/retarget_def_rig.py` (PR #364) | in-repo | Scarlett: her MocapRetarget action (hash-audited in run #3) is kept — re-retargeting an already-verified action would change approved motion, not improve it |
+| Mocap retarget | repo delta-math retargeter (PR #364 method) | in-repo | Star: CMU BVH → StarRig via `star_retarget_delta.py`; Scarlett: her existing MocapRetarget action (hash-audited in run #3) is kept — re-retargeting a verified action would change approved motion, not improve it |
+| Mocap retarget (evaluated, rejected) | **Rokoko Studio Live Blender plugin** | github.com/Rokoko/rokoko-studio-live-blender | Scripted headless fine (90 fcurves / 22 bones), gross pose reads clean — but it TEARS this rig: a mixed-weight patch (UpperArm/ForeArm/Shoulder blend) rips into a ribbon across the face in motion. Bisected: present with the jiggle layer muted, absent at rest, absent under the delta-math retarget on the same frame. Rejected by measurement for StarRig, same as Keemap before it. Driver kept in repo as the evaluation record (`star_retarget_rokoko.py`) |
 | Rig/weights | existing production rigs | in-repo | Scarlett RIG-SCARLETT (production skinning, PR #364 diagnosis); Star StarRig + 7 Jiggle_* bones (inverse-distance weights, jiggle-work 2026-10-19) |
 
 Paid tools evaluated and excluded (not open source): BoneDynamics Pro,
@@ -44,14 +44,23 @@ mocap action is never modified.
   (Scarlett: 270 curves, all on the 27 jiggle bones; Star: 70 curves, all on
   the 7 Jiggle_* bones). On Scarlett, no face curves exist in either action at
   all — the face was never keyed by anything in the chain.
-- Star retarget: Rokoko produced `lambada_loop Retarget` (90 fcurves, all 22
-  base bones, frames 1–72). Test frame 36 rendered + viewed: full-color Star,
-  clean dance pose, no smearing or twist.
+- Star retarget: delta-math produced `MocapRetarget` (220 fcurves, all 22
+  base bones keyed loc/rot/scale, frames 1–72). Test frame 24 rendered +
+  viewed: full-color Star mid-dance, skin intact everywhere — the same
+  frame tears under the Rokoko action. (A world-space delta simplification
+  was also tried and exploded the mesh; the local-rest-relative formulation
+  is the correct one and is what the tool implements.)
 - Foundations stored before work: releases `scarlett-source-blends-v1` and
   `star-source-blends-v1` on this repo (API size-verified, pull-back
   sha256-verified for Scarlett base; Star sha256 recorded at upload).
 
-## Pipeline note (environment)
+## Pipeline notes (environment)
+- Blender 4.2 quirk found during the Star work: removing the imported BVH
+  armature before saving makes `save_as_mainfile` fail with
+  "Operation not permitted"; saving with the source armature still in the
+  scene works (the tools save first, removal is optional cleanup).
+
+## Pipeline note (render environment)
 Bakes run on Blender 4.2.23 (required by Jiggle Physics). Proof renders run
 on Blender 4.0.2: EEVEE Next under this VM's software GL (llvmpipe) was
 OOM-killed repeatedly at render time, while 4.0's EEVEE renders the same
@@ -62,8 +71,10 @@ world, large area key/fill/rim, sun) so the characters are judgeable.
 ## Tools added to the repo by this lane
 - `tools/jiggle/jiggle_physics_bake.py` — generic Jiggle Physics bake +
   fcurve-digest verification + optional NLA layering (configs: scarlett, star).
-- `tools/anim-retarget/star_retarget_rokoko.py` — headless Rokoko retarget
-  driver (BVH → StarRig bone map).
+- `tools/anim-retarget/star_retarget_delta.py` — production Star retarget
+  (local-delta math, BVH → StarRig bone map).
+- `tools/anim-retarget/star_retarget_rokoko.py` — the Rokoko evaluation
+  driver (kept as the record of the rejected path).
 - `tools/jiggle/render_soft.py` — the soft-studio proof renderer used for
   the v2/v3 proofs (bright, framed on evaluated bounds).
 
