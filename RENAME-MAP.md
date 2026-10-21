@@ -363,3 +363,19 @@ the coordinator — it was not executed by the wiring lane.
 - **NOT deleted**: `roster/blanka/` (incl. the Sketchfab GLB), `game/assets/movesets/blanka.json`, `game/assets/movesets/sf-blanka.json`, and the `blanka` keys in assets.js / movesets.js / fighter.js all stay in the repo. Only the playable roster entry changed hands.
 
 <!-- END CHARGER SECTION -->
+
+### CORNERSTONE — Ryuji/Rock hybrid gets his name (owner 2026-10-21)
+
+| Original | File code | WH name | Status |
+|---|---|---|---|
+| Ryuji Yamazaki (KOF / Fatal Fury) x The Rock (WWE, early Attitude Era) | `ryuji-rock` | **CORNERSTONE** | NAME LOCKED |
+
+- Owner's words (2026-10-21): "I told u how ryuji character will be mixed with the rock from WWE and do the uranage/rock bottom, he will also get the rock bottom from king and from WWE all stars, and some animations of the rock from the WWE teardown games, and kings jumping diving elbow attack, mixed with ryuji yamazakis stance and taunts and moveset and antics mixed with the rock persona from early attitude era WWE. And his name will be CornerStone"
+- Foundation (owner 2026-10-19, already logged): Ryuji Yamazaki version — black shirt, blonde top hair — mixed with The Rock (Dwayne Johnson): obnoxious like Ryuji, sticks his tongue out, personality mixed with The Rock. Moveset: Ryuji base + The Rock's moves (Rock Bottom — King has it in Tekken, pull from there) + wrestling moves from Urban Reign / Tekken / other teardown games.
+- Canon entry: CANON.md — "CORNERSTONE — The Obnoxious One (Bonus)".
+- What changed: the DISPLAY / canonical name only. The `ryuji-rock` roster entry (`game/js/roster-full.js`) shows CORNERSTONE (title kept: "The Obnoxious One"); the internal fighter id, the moveset key (`game/assets/movesets/ryuji-rock.json`), the model key (`ryuji-rock` in `game/js/assets.js`) and the folder (`roster/ryuji-rock/`) keep the source code name so every loader reference stays valid.
+- NOT deleted / NOT renamed: `game/assets/movesets/ryuji.json` (the full 103-move KOF Yamazaki set) and the `ryuji` roster entry (the pure-Yamazaki form) stay exactly as they are. The pre-rename records in `roster/ryuji-rock/attires/attire1/README.md` keep the old name as their history.
+- Model: the owner delivered his Tripo link on 2026-10-21 — the exact next step the attire-1 README's model hunt (2026-10-19) was waiting on. Pull + wire follow in the same CornerStone build.
+- Design sources named by the owner that are NOT yet in the teardown holdings, recorded so they are never silently dropped or faked: the **WWE All Stars** Rock Bottom version (All Stars is queued on the teardown-idle queue — not acquired, not torn down) and **Younger Toguro's fingernail blast** (Yu Yu Hakusho — no YYH game in the holdings). Both wire in when their sources exist.
+
+<!-- END CORNERSTONE SECTION -->
