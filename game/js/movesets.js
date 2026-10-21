@@ -45,16 +45,28 @@ export const MOVESET_IDS = [
   'mariposa',
   // Wave 2 (2026-10-19): Demonio winged devil form.
   'demonio-winged',
+  // Stream 6 (2026-10-19): Cain Elias (Undertaker archetype, new fighter).
+  'cainelias',
   // Burger Kusaregedo kit (owner 2026-10-19): per-form movesets.
   'burger-demon', 'burger-speed-demon', 'burger-the-mouth',
   // Sketchfab intake (owner 2026-10-19): working names, WH names pending.
   'zangief', 'blanka', 'vega', 'iori', 'armor-king',
+  // CHARGER (owner 2026-10-20): Blanka replacement — full set in charger.json.
+  'charger',
   // DEATHFANG (owner 2026-10-19): proprietary, Iori-based — full Iori kit in deathfang.json.
   'deathfang',
   // DEATHFANG werewolf form (owner 2026-10-20): full kit + beast mix-ins, Iori stance kept.
   'deathfang-werewolf',
   // Custom fighters (owner 2026-10-19): KRONOS — Zangief base + Golem (Urban Reign) mix.
   'kronos',
+  // Fighter-completeness audit (2026-10-21, docs/FIGHTER-COMPLETENESS-AUDIT-2026-10-21.md):
+  // per-id files that EXISTED but were never loaded — the loader keys by roster
+  // id, so these fighters silently fought on the legacy T3 aggregate instead of
+  // their own sets. kronos-attire2 = his own Timberwolf set (142 moves);
+  // demonio-human = Demonio's human-form set (102 moves); charger-attire2 =
+  // Charger Attire 2's set (charger-attire2.json, his roster entry's declared
+  // moveset 'charger').
+  'kronos-attire2', 'demonio-human', 'charger-attire2',
   // Ryuji Yamazaki x The Rock hybrid (owner 2026-10-19): 22 moves, King-proxy
   // throws incl. ROCK BOTTOM (frame data from T3 King chain row 281). Model
   // pending the owner's Tripo link — roster-full.js entry lands with model.glb.
@@ -231,10 +243,12 @@ export class TekkenBuffer {
   }
 
   /**
-   * Resolve a button CHORD ('1+2', '3+4', '1+3', '2+4') to a Tekken notation.
-   * Motion specials whose chord matches fire when their motion is in the
-   * direction history (King's chain throws). Plain throw chords ('1+3','2+4')
-   * resolve to themselves. Returns the notation or null.
+   * Resolve a button CHORD ('1+2', '1+3', '1+4', '2+3', '2+4', '3+4') to a
+   * Tekken notation. Motion specials whose chord matches fire when their
+   * motion is in the direction history (King's chain throws). Directional
+   * chords ('d/b+1+3') resolve against the current direction (Stream 6).
+   * Plain chords ('1+3','2+4',...) resolve to themselves.
+   * Returns the notation or null.
    */
   pressChord(chord) {
     const ms = getFighterMoveset(this.fighterId);
@@ -248,8 +262,17 @@ export class TekkenBuffer {
         return sp.input;
       }
     }
-    // plain throw chord with no motion attached
-    if ((chord === '1+3' || chord === '2+4') && moves[chord]) {
+    // directional chord: current facing-relative dir + chord (d/b+1+3 ...)
+    const dir = this.lastDir;
+    if (dir && dir !== 'n') {
+      const dchord = `${dir}+${chord}`;
+      if (moves[dchord]) {
+        this._recordMove(dchord);
+        return dchord;
+      }
+    }
+    // plain chord with no motion attached
+    if (moves[chord]) {
       this._recordMove(chord);
       return chord;
     }
