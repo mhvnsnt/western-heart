@@ -1,0 +1,278 @@
+{
+ "_meta": {
+  "universe": "cornerstone",
+  "game": "Yu Yu Hakusho: Dark Tournament (PS2, SLUS-20805, Digital Fiction/Atari 2004)",
+  "purpose": "YYH-by-move-data fragment for CornerStone (ryuji-rock): Younger Toguro's move data, with the fingernail blast (Finger Flip Bullets) fully proven mechanically, as a Toguro inspiration source per the CornerStone canon (western-heart PR #426). NEW FILE ONLY - game/assets/movesets/ryuji-rock.json was NOT edited; integration is central.",
+  "teardown_doc": "game-reverse-engineering: yu-yu-hakusho-dark-tournament/TEARDOWN-W2B.md (PR #39, stacked on census PR #35)",
+  "date": "2026-10-21",
+  "hypothesis_verdict": "CONFIRMED BEYOND THE W2 CENSUS - the RESOURCE.PAK was fully unpacked with an unpacker ported from the Ghidra-decompiled ELF loader/decompressor (FUN_002bc280/FUN_002bbf50/FUN_00114b00). Toguro's fighter XML yields his complete 264-clip table (ANI pose ranges, spirit costs, inputs, damage) and EFFECT.XML yields the exact projectile definition for Finger Flip Bullets. ANI keyframe payloads and MDL geometry are NOT yet decoded to playable clips/GLB (documented gaps in the teardown doc); no clip is claimed below beyond the engine's own clip-table data."
+ },
+ "fighter": {
+  "name": "Younger Toguro",
+  "source_dir": "/CHAR/YTOGURO/",
+  "pak": {
+   "file": "RESOURCE.PAK",
+   "size_bytes": 2835136,
+   "entries": 32,
+   "unpack_status": "COMPLETE - all entries size-verified (ytoguro-inventory.json in the teardown repo)"
+  },
+  "character_constants": {
+   "life": 1000,
+   "spirit": 1000,
+   "spirit_start": 750,
+   "spirit_recovery": 30,
+   "bounding_radius": 24,
+   "max_speed_front": 200.0,
+   "max_speed_back": 70.0,
+   "max_speed_side": 120.0
+  },
+  "skeleton": {
+   "bone_count": 47,
+   "fully_finger_rigged": true,
+   "bones_file": "game-reverse-engineering: yu-yu-hakusho-dark-tournament/ytoguro-skeleton.json",
+   "note": "47 bones incl. L/R Finger0/01/02, Finger1/11/12, Finger2/21/22; bind pose frames ship in the same JSON (from the engine's RECZONES.XML)."
+  },
+  "animation_container": {
+   "file": "YTOGURO.ANI",
+   "size_bytes": 1457228,
+   "total_keyframes_or_poses": 1888,
+   "clip_table_file": "game-reverse-engineering: yu-yu-hakusho-dark-tournament/ytoguro-clips.json",
+   "clip_count": 264,
+   "decode_status": "Clip table fully decoded from YTOGURO.XML (engine data). ANI keyframe payload = quantized track data, header/skeleton/section (__defaultBones) decoded, payload-to-clip conversion is a named gap."
+  },
+  "models": {
+   "variants_in_pak": [
+    "YTOGURO.MDL",
+    "YTOGUROC.MDL",
+    "YTOGURL.MDL",
+    "YTOGURLC.MDL",
+    "YTOGURA.MDL",
+    "YTOGURAC.MDL",
+    "YTOGUROS.MDL",
+    "YTOGURAS.MDL"
+   ],
+   "decode_status": "Header/internal-name/section evidence documented; GLB conversion is a named gap (serialized pointer graph)."
+  }
+ },
+ "spirit_moves": [
+  {
+   "id": "A470",
+   "name": "increase strength",
+   "type": "Spirit move",
+   "input_seq": "tap sm1, hold up",
+   "ani_poses": [
+    1753,
+    1806
+   ],
+   "lenght": 10,
+   "spirit_cost": 750,
+   "spirit_min": 750,
+   "proc": "EV_YTogIncStrength (delays 0.01/0.50/0.99)",
+   "canon_note": "Manual: 'increases the damage of Finger Flip Bullets' (GameFAQs Team Toguro guide, per W2 census)."
+  },
+  {
+   "id": "A3804",
+   "name": "ki blast",
+   "type": "Spirit move",
+   "ani_poses": [
+    1801,
+    1849
+   ],
+   "lenght": 6,
+   "spirit_cost": 250,
+   "spirit_min": 250,
+   "proc": "EV_YTogKiBlast"
+  },
+  {
+   "id": "A473",
+   "name": "earth slash",
+   "type": "Projectile",
+   "input_seq": "tap sm2, hold down",
+   "ani_poses": [
+    1753,
+    1850
+   ],
+   "lenght": 6,
+   "spirit_cost": 500,
+   "spirit_min": 500,
+   "contact": {
+    "damage": 200,
+    "member": "Right Fist",
+    "direction": "Down",
+    "receivesize": "Big"
+   },
+   "options": [
+    "FaceOpponentBegin",
+    "Unblockable"
+   ],
+   "proc": "EV_YTogEarthSlash (delays 0.10/0.40)"
+  }
+ ],
+ "finger_flip_bullets": {
+  "canon_id": "YYH-A475",
+  "in_game_comment_tag": "YTOG_FINGER_FLIP_BULLETS",
+  "name": "Finger Flip Bullets (fingernail blast)",
+  "kind": "projectile spirit move",
+  "clips": [
+   {
+    "id": "A475",
+    "name": "finger bullet charge",
+    "role": "the flick itself",
+    "input_seq": "tap sm1, hold front",
+    "ani_poses": [
+     1753,
+     187
+    ],
+    "lenght": 4,
+    "priority": 1,
+    "spirit_cost": 100,
+    "spirit_min": 100,
+    "events": [
+     {
+      "proc": "EV_YTogFingerBullet",
+      "delay": 0.98,
+      "meaning": "projectile spawn"
+     },
+     {
+      "proc": "EV_Camera",
+      "name": "FX_SMPrjtleDirBeginFast",
+      "delay": 0.01
+     }
+    ],
+    "options": [
+     "FaceOpponentBegin"
+    ],
+    "contact": {
+     "damage": 60,
+     "member": "NULL",
+     "direction": "Direct"
+    }
+   },
+   {
+    "id": "A472",
+    "name": "finger bullet cycle",
+    "role": "hold-to-repeat cycle",
+    "ani_poses": [
+     187,
+     187
+    ],
+    "lenght": 2,
+    "maxloop": 10,
+    "spirit_cost": 100,
+    "spirit_min": 100,
+    "events": [
+     {
+      "proc": "EV_YTogFingerBullet",
+      "delay": 0.0
+     },
+     {
+      "proc": "EV_YTogFingerBullet",
+      "delay": 0.5
+     }
+    ],
+    "contact": {
+     "damage": 60,
+     "member": "NULL",
+     "direction": "Direct"
+    }
+   },
+   {
+    "id": "A476",
+    "name": "finger bullet rcv",
+    "role": "recovery",
+    "ani_poses": [
+     187,
+     1753
+    ],
+    "lenght": 4,
+    "priority": 15,
+    "events": [
+     {
+      "proc": "EV_YTogFingerBullet",
+      "delay": 0.2
+     },
+     {
+      "proc": "EV_Camera",
+      "name": "FX_SMPrjtleDirEnd",
+      "delay": 1.0
+     }
+    ],
+    "options": [
+     "EndingInterruptable"
+    ]
+   }
+  ],
+  "projectile": {
+   "source": "EFFECT.XML effect FxBullet, object BullProj",
+   "class": "YuGenericProjectile",
+   "radius": 20.5,
+   "range": 1000.0,
+   "life_seconds": 2.0,
+   "mode": "Thrown",
+   "spawn": {
+    "bone": "R Hand",
+    "translation": [
+     4,
+     0,
+     0
+    ],
+    "destination_initial": {
+     "bone": "Root",
+     "translation": [
+      0,
+      30,
+      50
+     ]
+    }
+   },
+   "on_throw": {
+    "speed": 1000,
+    "destination": {
+     "bone": "Root",
+     "translation": [
+      0,
+      52,
+      100
+     ]
+    },
+    "detach": true,
+    "sound": "YT_FBULLET_SHOT",
+    "trail": {
+     "name": "BullTrail",
+     "class": "DfBoneTrails",
+     "color": "0.875 0.875 0.875 1.0",
+     "life": 0.1,
+     "fade": 0.7,
+     "texture": "RingTrail"
+    }
+   },
+   "muzzle_flash": {
+    "effect": "FlashPart",
+    "class": "DfBoneParticles",
+    "preset": "YTog_BulletFlash",
+    "texture": "KiBlast_A",
+    "additive": true,
+    "bone": "R Finger01",
+    "note": "Flash binds to the right index-finger bone - the flick read - while the projectile origin is R Hand + (4,0,0)."
+   },
+   "on_collide": {
+    "speed": 0,
+    "explode_timer": 0.2,
+    "sound": "YT_FBULLET_IMPACT",
+    "impact_presets": [
+     "YTog_BulletImpact",
+     "YTog_BulletImpact2"
+    ],
+    "stop_after_seconds": 0.5,
+    "collision": "noprj (ignores other projectiles)"
+   }
+  },
+  "mechanics_summary": "100 spirit per bullet, 60 damage, straight-line air bullet at speed 1000 with 1000 range / 2.0 s life / 20.5 radius, fired after a 0.98-delay charge flick (tap spirit-move-1 + hold toward opponent), repeatable in 0.5 s-spaced pairs while held (maxloop 10). Increase Strength (A470) buffs its damage per the manual/guide.",
+  "cornerstone_feed": "CornerStone's Toguro inspiration (PR #426 canon: 'Younger Toguro (Yu Yu Hakusho) as a further inspiration (fingernail blast)'). Feed as a new yyh:YYH-A475 entry in the projectile/spirit-move layer of CornerStone's moveset: a flick-fired spirit bullet using the proven parameters above (charge delay 0.98, speed 1000, range 1000, life 2.0, damage 60-class, 100 spirit cost, hold-to-repeat pairs at 0.5 s, maxloop 10). Animation clips are NOT yet available (ANI payload gap) - wire parameters now, attach the decoded A475/A472 animation when the ANI sampler lane lands. Does not replace any existing entry."
+ },
+ "full_clip_census": {
+  "count": 264,
+  "file": "game-reverse-engineering: yu-yu-hakusho-dark-tournament/ytoguro-clips.json",
+  "note": "Every clip: id, name, type, ANI pose range (pbegin/pend of 1888), lenght, priority, spirit cost/min, event procs with delays, contact damage/member/direction, input seq, options. Type counts: Recuperation 41, StrikeCombo 38, Punch 34, Receive 31, Movement 16, Kick 12, Block 12, Projection 12, Transition 9, ComboStarter 8, Projectile 3, Spirit move 2, others <=5."
+ }
+}
