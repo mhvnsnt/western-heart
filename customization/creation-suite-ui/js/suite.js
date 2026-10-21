@@ -3,6 +3,12 @@
    Menu trees verbatim from teardown games (see menu-data.js + UI-EXTRACTION-LOG.md). */
 import { SuiteViewer } from './viewer3d.js';
 import { ATTIRE_TREE, BODY_TREE, PARTS_TREE, JIGGLE_AREAS, JIGGLE_PARAMS, JIGGLE_FAMILIES, PLACE_AXES, MENU_SRC } from './menu-data.js';
+/* Real morph catalog + DNA/body engine from packages/creation-suite
+   (importmap: wh-creation-suite/ -> ../../packages/creation-suite/src/).
+   Thin adapter below maps morph ids onto DNA sliders — logic is NOT forked. */
+import { BODY_MORPHS, FACE_SHAPE_MORPHS, applyMorphProxies } from 'wh-creation-suite/morphs.js';
+import { SLIDERS as DNA_SLIDERS } from 'wh-creation-suite/dna.js';
+import { applySliders as applyBodySliders } from 'wh-creation-suite/body.js';
 
 const LS_KEY = 'wh_creation_suite_v1';
 const START_MONEY = 12400;
@@ -136,6 +142,37 @@ function modal(title, bodyHTML, actions){
 function closeModal(){ $('#modal').hidden=true; $('#modal-scrim').hidden=true; }
 $('#modal-scrim').onclick=closeModal;
 
+/* ---------- morphs adapter (packages dna.js/body.js live preview) ----------
+   morphs.js ids -> DNA slider keys (weighted). DNA sliders drive body.js
+   procedural morph targets + bone scales on the loaded roster model.
+   Face morphs have no DNA region: they are stored in the record and also
+   passed to morphs.js applyMorphProxies (bone-name proxies where the rig
+   supports them); the baked MPFB shape keys remain the ground truth. */
+const MORPH2DNA = {
+  height:[['height',1]], bulk:[['weight',0.6],['muscle',0.4]], muscle:[['muscle',1]],
+  fat:[['weight',1]], belly:[['belly',1]], chest:[['chest',1]], waist:[['belly',0.5]],
+  hips:[['hips',1]], shoulders:[['shoulders',1]], limbs:[['armLen',0.5],['legLen',0.5]],
+  neck:[['neck',1]], hands:[], feet:[],
+};
+const FRAME_IDS = ['height','shoulders','limbs','neck','hands','feet'];
+function morphsToDnaSliders(morphs){
+  const out={};
+  for(const [id,v] of Object.entries(morphs||{})){
+    if(!v) continue;
+    for(const [key,w] of (MORPH2DNA[id]||[])){
+      const s=DNA_SLIDERS[key]; if(!s) continue;
+      out[key]=Math.min(s.range[1], Math.max(s.range[0], (out[key]||0)+v*w));
+    }
+  }
+  return out;
+}
+function syncMorphs(){
+  if(!viewer || !viewer.model) return;
+  const sliders = morphsToDnaSliders(F.morphs);
+  try{ if(Object.keys(sliders).length || viewer.model.userData._csPrepared) { applyBodySliders(viewer.model, sliders); viewer.model.userData._csPrepared=true; } }catch(e){ console.warn('[WH] body sliders failed', e); }
+  try{ applyMorphProxies(viewer.model, F.morphs||{}); }catch(e){}
+}
+
 /* ---------- 3D sync ---------- */
 function defaultPlacement(def){
   const o = def.offset||[0,0,0];
@@ -159,6 +196,7 @@ function syncParts3D(){
 function syncPreview(){
   if(!viewer) return;
   viewer.setProportions(F.body.proportions);
+  syncMorphs();
   syncParts3D();
   // re-apply texture-part markers (they don't persist in the 3D scene across re-renders)
   const texSeen = new Set();
@@ -214,7 +252,11 @@ function renderBody(el){
   el.innerHTML=`
     <div class="sect">BODY TYPE — 14M + 9F (No Mercy)</div><div class="roster-grid" id="btypes"></div>
     <div class="sect">SKIN TONE — 8 tones</div><div class="swatches" id="stones"></div>
-    <div class="sect">PROPORTIONS — WMXIX parametric (live)</div><div id="psl"></div>`;
+    <div class="sect">PROPORTIONS — WMXIX parametric (live)</div><div id="psl"></div>
+    <div class="sect">MORPHS — FRAME (packages morphs.js)</div><div id="mframe"></div>
+    <div class="sect">MORPHS — MASS</div><div id="mmass"></div>
+    <div class="sect">MORPHS — FACE SHAPE</div><div id="mface"></div>
+    <div class="note">Morph sliders are the real packages/creation-suite catalog (BODY_MORPHS + FACE_SHAPE_MORPHS), driven live through packages dna.js/body.js on the loaded model. Values save into this attire's customization record. Face values also record for the MPFB bake (shape keys are the ground truth).</div>`;
   const bt=el.querySelector('#btypes');
   BODY_TYPES.forEach(t=>{ const b=document.createElement('button');
     b.className='roster-card'+(F.body.body_type===t?' active':''); b.textContent=t;
@@ -233,6 +275,19 @@ function renderBody(el){
       d.querySelector('.val').textContent=(+inp.value).toFixed(2); syncPreview(); persistQuiet(); };
     sl.appendChild(d);
   });
+  const addMorph=(host, m)=>{
+    const v=(F.morphs && F.morphs[m.id])||0;
+    const d=document.createElement('div'); d.className='ctl'; d.id='morph-'+m.id;
+    d.innerHTML=`<label>${m.label}<span class="val">${v.toFixed(2)}</span></label>
+      <input type="range" min="${m.range[0]}" max="${m.range[1]}" step="0.01" value="${v}" data-morph="${m.id}" aria-label="${m.label}">`;
+    const inp=d.querySelector('input');
+    inp.oninput=()=>{ F.morphs=F.morphs||{}; F.morphs[m.id]=+inp.value;
+      d.querySelector('.val').textContent=(+inp.value).toFixed(2); syncMorphs(); persistQuiet(); };
+    host.appendChild(d);
+  };
+  const hf=el.querySelector('#mframe'), hm=el.querySelector('#mmass'), hface=el.querySelector('#mface');
+  BODY_MORPHS.forEach(m=> addMorph(FRAME_IDS.includes(m.id)?hf:hm, m));
+  FACE_SHAPE_MORPHS.forEach(m=> addMorph(hface, m));
 }
 
 /* ================= ATTIRE (T7 spine) ================= */
