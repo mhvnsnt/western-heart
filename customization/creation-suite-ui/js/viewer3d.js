@@ -214,6 +214,35 @@ export class SuiteViewer {
     if(n) n.textContent = label ? `◈ ${label} — texture part (applies at ${socket} socket)` : '';
   }
   clearMarker(key){ const m=this.markers.get(key); if(m){ this.scene.remove(m); this.markers.delete(key);} }
+  /* texture-part swap, mirroring packages/creation-suite/src/parts.js
+     swapTexture semantics: match materials by placement texture/material
+     name, swap the map live, keep originals for one-call restore. */
+  swapTexturePreview(partId, assetUrl, placement){
+    if(!this.texSwaps) this.texSwaps = new Map();
+    this.restoreTexture(partId);
+    if(!this.model || !placement) return Promise.resolve(false);
+    const wantTex=(placement.texture||'').toLowerCase(), wantMat=(placement.material||'').toLowerCase();
+    const targets=[];
+    this.model.traverse(o=>{ if(!o.isMesh) return;
+      const mats=Array.isArray(o.material)?o.material:[o.material];
+      for(const m of mats){ if(!m) continue;
+        const texName=((m.map&&m.map.name)||'').toLowerCase();
+        if((wantTex&&texName.includes(wantTex))||(wantMat&&(m.name||'').toLowerCase().includes(wantMat)))
+          targets.push({material:m, original:m.map}); } });
+    if(!targets.length) return Promise.resolve(false);
+    return new Promise(res=>{
+      new THREE.TextureLoader().load(assetUrl, tex=>{
+        for(const t of targets){ t.material.map=tex; t.material.needsUpdate=true; }
+        this.texSwaps.set(partId, {targets});
+        res(true);
+      }, undefined, ()=>res(false));
+    });
+  }
+  restoreTexture(partId){
+    const s=this.texSwaps && this.texSwaps.get(partId); if(!s) return;
+    for(const t of s.targets){ t.material.map=t.original; t.material.needsUpdate=true; }
+    this.texSwaps.delete(partId);
+  }
   setSkinTone(hex){ /* parametric preview: tint exposed materials */ }
   setProportions(p){
     if(!this.model) return;

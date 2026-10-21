@@ -25,9 +25,12 @@ const SOULS=['—','TOU','SHA','YIN','YANG','KAMI','ONI','RYU','TEN'];
 const TITLE_A=['RAGING','SILENT','GOLDEN','BROKEN','HOWLING','IRON','CRIMSON','LONE'];
 const TITLE_B=['BEAST','PANTHER','KING','GHOST','STORM','WOLF','TIGER','DEMON'];
 
-/* suite_slot -> ATTIRE category slot key */
+/* suite_slot -> ATTIRE category slot key (registry suite_slots mapped onto
+   the T7 spine per UNIFIED-UI-SPEC §7; build_suite_catalog.py stamps the
+   same mapping as t7_slot on every catalog entry) */
 const SLOT2CAT = { mask:'3', eye_lenses:'6', cowl:'3', gauntlets:'H', hair:'2',
-  decal_logo:'8', eye:'EYES', tights:'11', pants:'11', top:'9', outfit:'9', scarf:'12', face:'8' };
+  decal_logo:'8', eye:'EYES', tights:'11', pants:'11', top:'9', outfit:'9', scarf:'12', face:'8',
+  upper_body:'9', lower_body:'11', gloves:'H', shoes:'F', gear:'12', accessory:'12', attire:'10' };
 /* suite_slot -> fallback 3D socket for texture-part markers (registry has no placement block for texture parts) */
 const SLOT2SOCKET = { eye:'face', face:'face', decal_logo:'chest', top:'chest', outfit:'chest',
   scarf:'chest', tights:'waist', pants:'waist', hair:'head', mask:'face', eye_lenses:'face', cowl:'head', gauntlets:'hands' };
@@ -53,11 +56,12 @@ function blankFighter(){
     baseGlb:'customization/create-fighter/assets/Soldier.glb' };
 }
 let F = blankFighter();
-let PARTS = [];       // parts-catalog.json
+let PARTS = [];       // parts-catalog.json parts[] (unified catalog v2)
+let PARTS_META = null; // parts-catalog.json header (counts/sources)
 let ROSTER = null;    // data/roster-attires.json (build_roster_attires.py)
 let JIGGLE = null;    // jiggle-schema.json
 let viewer = null;
-let ui = { tab:'body', attireCat:null, partsCat:null, selPart:null, wardSel:0, nudgeStep:0.001 };
+let ui = { tab:'body', attireCat:null, partsCat:null, selPart:null, wardSel:0, nudgeStep:0.001, page:0, query:'' };
 
 const attire = ()=>F.attires[F.attireIndex];
 
@@ -198,16 +202,28 @@ function syncPreview(){
   viewer.setProportions(F.body.proportions);
   syncMorphs();
   syncParts3D();
-  // re-apply texture-part markers (they don't persist in the 3D scene across re-renders)
+  // texture parts: live swap first (packages parts.js semantics — match the
+  // registry placement's material/texture on the loaded model); when no
+  // material matches this model, fall back to the socket marker (honest:
+  // the part applies at that socket, it is not preview-swappable here).
   const texSeen = new Set();
   for(const [slotKey, partId] of Object.entries(attire().equipped)){
     const p = PARTS.find(x=>x.id===partId);
     if(p && p.part_class!=='mesh_part'){
       texSeen.add('tex-'+p.id);
-      viewer.setMarker('tex-'+p.id, partSocket(p), '#e8b64c', p.name);
+      const asset = p.asset||p.glb;
+      if(viewer.model && p.placement && p.placement.material && asset && /\.(png|jpe?g)$/i.test(asset)){
+        if(!viewer.texSwaps || !viewer.texSwaps.has(p.id))
+          viewer.swapTexturePreview(p.id, '../../'+asset, p.placement).then(ok=>{
+            if(!ok) viewer.setMarker('tex-'+p.id, partSocket(p), '#e8b64c', p.name); });
+      } else {
+        viewer.setMarker('tex-'+p.id, partSocket(p), '#e8b64c', p.name);
+      }
     }
   }
   for(const key of [...viewer.markers.keys()]) if(!texSeen.has(key)) viewer.clearMarker(key);
+  if(viewer.texSwaps) for(const id of [...viewer.texSwaps.keys()])
+    if(!Object.values(attire().equipped).includes(id)) viewer.restoreTexture(id);
 }
 
 /* ---------- topbar ---------- */
@@ -323,12 +339,26 @@ function renderAttire(el){
 }
 
 /* ================= PARTS (wired libraries) ================= */
+const T7_SLOT_LABELS = { '1':'Head','2':'Hairstyle','3':'Full Head','4':'Hair Accessory','5':'Glasses','6':'Face','7':'Facial Hair','8':'Face Paint','9':'Upper Body','10':'Full Body','11':'Lower Body','H':'Hands','F':'Feet','12':'Upper Accessory','13':'Lower Accessory','14':'Extra','15':'Effects','17':'Aura','EYES':'Eyes' };
 function renderParts(el){
   if(!ui.partsCat){
-    $('#panel-sub').textContent='Wired part libraries — tap a library, tap a part';
-    el.innerHTML=`<div class="note">Eyes, decals, masks, hair — pulled from the real repo libraries
-      (PARTS-REGISTRY.json, eye-library/, decal-library/). Tap library → scroll → tap part to assign.</div><div id="pcats"></div>`;
+    $('#panel-sub').textContent='Unified parts catalog — browse by T7 slot, tap to assign';
+    const countsTxt = PARTS_META ? Object.entries(PARTS_META.counts||{}).map(([k,v])=>`${k}: ${v}`).join(' · ') : '';
+    el.innerHTML=`<div class="note">ONE unified catalog (${PARTS.length} parts) built by
+      <span class="chip">build_suite_catalog.py</span> — ${esc(countsTxt)}.
+      Source labels are shown on every part. Tap a T7 slot → scroll → tap part to assign. No drag-and-drop.</div>
+      <div class="sect">BROWSE BY T7 SLOT</div><div id="pcats"></div>
+      <div class="sect">LIBRARIES</div><div id="plibs"></div>`;
     const host=el.querySelector('#pcats');
+    const bySlot={};
+    PARTS.forEach(p=>{ const s=p.t7_slot||SLOT2CAT[p.suite_slot]||'?'; (bySlot[s]=bySlot[s]||[]).push(p); });
+    Object.keys(bySlot).sort().forEach(s=>{
+      const b=document.createElement('button'); b.className='subcat'; b.id='pslot-'+s;
+      b.innerHTML=`<span class="sc-ico">🎭</span><span>${esc(T7_SLOT_LABELS[s]||('Slot '+s))}<br><small style="color:var(--dim)">T7 slot ${esc(s)}</small></span><span class="sc-count">${bySlot[s].length} parts</span>`;
+      b.onclick=()=>{ ui.partsCat={key:'slot-'+s, slot:s, label:(T7_SLOT_LABELS[s]||('Slot '+s))+' · T7 '+s, list:bySlot[s]}; ui.selPart=null; ui.page=0; ui.query=''; renderAll(); };
+      host.appendChild(b);
+    });
+    const libs=el.querySelector('#plibs');
     PARTS_TREE.forEach(c=>{
       const list = c.key==='eyes' ? PARTS.filter(p=>p.suite_slot==='eye')
         : c.key==='decals' ? PARTS.filter(p=>['decal_logo','tights','pants'].includes(p.suite_slot))
@@ -336,24 +366,40 @@ function renderParts(el){
         : PARTS.filter(p=>p.suite_slot==='hair');
       const b=document.createElement('button'); b.className='subcat'; b.id='pcat-'+c.key;
       b.innerHTML=`<span class="sc-ico">${c.icon}</span><span>${c.label}<br><small style="color:var(--dim)">${esc(c.note.split('—')[0])}</small></span><span class="sc-count">${list.length} parts</span>`;
-      b.onclick=()=>{ ui.partsCat={...c, list}; ui.selPart=null; renderAll(); };
-      host.appendChild(b);
+      b.onclick=()=>{ ui.partsCat={...c, list}; ui.selPart=null; ui.page=0; ui.query=''; renderAll(); };
+      libs.appendChild(b);
     });
     return;
   }
   renderPartGrid(el, ui.partsCat, ui.partsCat.list, 'partsCat');
 }
 
-/* ---- shared tap-to-assign grid ---- */
+/* ---- shared tap-to-assign grid (search + paging for the 1,149-part catalog) ---- */
+const PAGE_SIZE = 60;
 function renderPartGrid(el, cat, list, backKey){
   const slotKey = cat.slot || cat.key;
-  $('#panel-sub').textContent=`${cat.label} — ${list.length} parts · tap to ${cat.key==='eyes'||cat.key==='decals'?'apply':'equip'}`;
+  const q = (ui.query||'').toLowerCase();
+  const filtered = q ? list.filter(p=>p.name.toLowerCase().includes(q)||p.id.toLowerCase().includes(q)||(p.library||'').toLowerCase().includes(q)) : list;
+  const pages = Math.max(1, Math.ceil(filtered.length/PAGE_SIZE));
+  ui.page = Math.min(ui.page||0, pages-1);
+  const pageItems = filtered.slice(ui.page*PAGE_SIZE, ui.page*PAGE_SIZE+PAGE_SIZE);
+  $('#panel-sub').textContent=`${cat.label} — ${filtered.length} parts · tap to assign (no drag-and-drop)`;
   el.innerHTML=`
-    <div class="back-row"><button class="btn back-btn" id="btn-back">← ${backKey==='attireCat'?'CATEGORIES':'LIBRARIES'}</button></div>
+    <div class="back-row"><button class="btn back-btn" id="btn-back">← ${backKey==='attireCat'?'CATEGORIES':'SLOTS / LIBRARIES'}</button></div>
+    <input class="search" id="part-search" type="search" placeholder="Search parts…" value="${esc(ui.query||'')}" aria-label="Search parts">
+    <div class="pager"><button class="btn btn-sm" id="pg-prev" ${ui.page===0?'disabled':''}>← PREV</button>
+      <span class="bb-hint">Page ${ui.page+1} / ${pages}</span>
+      <button class="btn btn-sm" id="pg-next" ${ui.page>=pages-1?'disabled':''}>NEXT →</button></div>
     <div class="item-grid" id="grid"></div><div id="pdetail"></div>`;
-  el.querySelector('#btn-back').onclick=()=>{ ui[backKey]=null; ui.selPart=null; hidePlaceDock(); renderAll(); };
+  el.querySelector('#btn-back').onclick=()=>{ ui[backKey]=null; ui.selPart=null; ui.query=''; hidePlaceDock(); renderAll(); };
+  const search=el.querySelector('#part-search');
+  search.oninput=()=>{ ui.query=search.value; ui.page=0;
+    const pos=search.selectionStart; renderPanel();
+    const s2=document.querySelector('#part-search'); if(s2){ s2.focus(); s2.setSelectionRange(pos,pos); } };
+  el.querySelector('#pg-prev').onclick=()=>{ ui.page--; renderPanel(); };
+  el.querySelector('#pg-next').onclick=()=>{ ui.page++; renderPanel(); };
   const grid=el.querySelector('#grid');
-  list.forEach(p=>{
+  pageItems.forEach(p=>{
     const owned = attire().owned.includes(p.id);
     const eqd = Object.values(attire().equipped).includes(p.id);
     const d=document.createElement('div');
@@ -361,12 +407,14 @@ function renderPartGrid(el, cat, list, backKey){
     d.id='part-'+p.id;
     d.innerHTML=`<div class="item-mono">${p.part_class==='mesh_part'?'🧩':'🎨'}</div>
       <div class="item-name">${esc(p.name)}</div>
-      <div class="item-meta">${p.part_class==='mesh_part'?'mesh · '+esc(p.socket||''):esc(p.library||'')}<br>
+      <div class="item-meta">${p.part_class==='mesh_part'?'mesh · '+esc(p.socket||'—'):esc(p.library||'')}<br>
+      <span class="chip" style="font-size:9px">${esc(p.source||p.library||'')}</span>
+      ${p.geometry_pending?' <span class="geo-badge">GEOMETRY PENDING</span>':''}<br>
       ${owned?'<span class="owned">OWNED</span>':'<span class="price">500G</span>'}</div>`;
     d.onclick=()=>{ ui.selPart=p; renderPanel(); renderTopbar(); };
     grid.appendChild(d);
   });
-  if(ui.selPart) renderPartDetail(el.querySelector('#pdetail'), ui.selPart, slotKey);
+  if(ui.selPart && list.includes(ui.selPart)) renderPartDetail(el.querySelector('#pdetail'), ui.selPart, slotKey);
 }
 function renderPartDetail(el, p, slotKey){
   const owned = attire().owned.includes(p.id);
@@ -376,11 +424,25 @@ function renderPartDetail(el, p, slotKey){
     <div class="kv"><span>Part ID</span><b style="font-size:11px">${esc(p.id)}</b></div>
     <div class="kv"><span>Class</span><b>${esc(p.part_class)}</b></div>
     <div class="kv"><span>Library</span><b>${esc(p.library||'—')}</b></div>
+    <div class="kv"><span>Source</span><b style="font-size:11px">${esc(p.source||'—')}</b></div>
+    <div class="kv"><span>T7 slot</span><b>${esc(p.t7_slot||SLOT2CAT[p.suite_slot]||'—')} · suite slot ${esc(p.suite_slot||'—')}</b></div>
+    ${p.geometry_pending?'<div class="note">⚠️ Geometry pending — this registry part has no converted mesh yet; applying records it on the attire and marks its socket.</div>':''}
     ${p.glb?`<div class="kv"><span>Mesh</span><b style="font-size:11px">${esc(p.glb)}</b></div>
     <div class="kv"><span>Socket</span><b>${esc(p.socket||'—')}</b></div>`:''}
     <div class="btn-row" id="p-actions"></div>`;
   const box=el.querySelector('#p-actions');
-  if(p.part_class==='mesh_part'){
+  if(p.part_class==='mesh_part' && !p.glb){
+    // geometry-pending registry part: record + socket marker, no fake mesh
+    if(!eqd){
+      const b=document.createElement('button'); b.className='btn btn-green'; b.id='btn-apply-part'; b.textContent='APPLY (GEOMETRY PENDING)';
+      b.onclick=()=>{ attire().equipped[slotKey]=p.id; renderAll(); toast('Recorded ✓ — geometry pending'); };
+      box.appendChild(b);
+    } else {
+      const b=document.createElement('button'); b.className='btn btn-red'; b.id='btn-unequip-part'; b.textContent='REMOVE';
+      b.onclick=()=>{ for(const k of Object.keys(attire().equipped)) if(attire().equipped[k]===p.id) delete attire().equipped[k]; renderAll(); };
+      box.appendChild(b);
+    }
+  } else if(p.part_class==='mesh_part'){
     if(!eqd){
       const b=document.createElement('button'); b.className='btn btn-gold'; b.id='btn-equip-part';
       b.textContent=owned?'EQUIP':'BUY — 500G';
@@ -399,10 +461,15 @@ function renderPartDetail(el, p, slotKey){
     }
   } else {
     const b=document.createElement('button'); b.className='btn btn-green'; b.id='btn-apply-part'; b.textContent='APPLY';
-    b.onclick=()=>{ attire().equipped[slotKey]=p.id;
-      if(viewer) viewer.setMarker('tex-'+p.id, partSocket(p), '#e8b64c', p.name);
-      renderAll(); toast('Applied ✓'); };
+    b.onclick=()=>{ attire().equipped[slotKey]=p.id; renderAll(); toast('Applied ✓'); };
     box.appendChild(b);
+    if(eqd){
+      const b2=document.createElement('button'); b2.className='btn btn-red'; b2.id='btn-remove-part'; b2.textContent='REMOVE';
+      b2.onclick=()=>{ for(const k of Object.keys(attire().equipped)) if(attire().equipped[k]===p.id) delete attire().equipped[k];
+        if(viewer){ viewer.restoreTexture(p.id); viewer.clearMarker('tex-'+p.id); }
+        renderAll(); };
+      box.appendChild(b2);
+    }
   }
 }
 
@@ -675,7 +742,13 @@ async function boot(){
       fetch('data/jiggle-schema.json').then(r=>r.json()),
       fetch('data/roster-attires.json').then(r=>r.ok?r.json():null).catch(()=>null),
     ]);
-    PARTS=parts; JIGGLE=jig; ROSTER=roster;
+    PARTS = Array.isArray(parts) ? parts : (parts.parts||[]);
+    PARTS_META = Array.isArray(parts) ? null : parts;
+    // normalize legacy curated entries (pre-unified catalogs) to the v2 shape
+    PARTS.forEach(p=>{ if(!p.asset) p.asset=p.glb||null; if(!p.source) p.source=p.library||'curated';
+      if(!p.t7_slot) p.t7_slot=SLOT2CAT[p.suite_slot]||null;
+      if(p.geometry_pending===undefined) p.geometry_pending=!!p.geometryPending; });
+    JIGGLE=jig; ROSTER=roster;
   }catch(e){
     $('#loader').innerHTML='<div>DATA LOAD FAILED — serve over http</div>'; return;
   }
