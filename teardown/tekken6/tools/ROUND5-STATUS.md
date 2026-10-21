@@ -144,6 +144,47 @@ armed), throughput rose to ~70M ticks/s and title→attract-load took
 record its count, remove it for driving, re-arm briefly at each
 checkpoint for a fresh beside-the-negative count.
 
+### F12. ROOT CAUSE FOUND — our sector-cipher decryption corrupts every ODD 1024-byte block (attempt 5b, 2026-10-21)
+
+Attempt-5b session (fixed driver): title → cross → attract load fired
+**36 complete loader→wrapper→inflate→ret cycles**, every captured
+container + dest dumped (`dumps_r5/loadN_container.bin` /
+`loadN_dest.bin`); attract fight ran to GAME OVER (Eddy). Per-load
+captures prove the game's chain is PLAIN ZLIB semantics: e.g. seq-0
+container (GZIP header w=[magic,1,1,106768,40308], body starts
+`78 da`) — `zlib.decompress(body)` == game dest byte-exact, all
+106,768 B. Captured containers are mostly NESTED containers inside
+bundle files (bulk offsets unaligned), not the manifest's top-level 76.
+
+RAM dump `ram_attract.bin` (32 MB, sha256
+257e290e2c7de42ababe1e1b4eb301175b7376137cdfa6da76ceb8ce21d6a42f;
+taken live — `game.pause` is an unknown event in this build — 510/683
+chunks read, rest zero-filled) contains a top-level FAILING container:
+**idx74 (entry 733) resident at VA 0x9616950** with the game's own
+decrypted bytes. Three facts, each independently decisive:
+
+1. The RAM copy's body decompresses with PLAIN zlib to the FULL
+   stated 607,144 B; adler32 = 0x3841ee39 == the stream trailer.
+2. RAM vs our `bulk_decrypted.bin` copy of idx74: byte-identical for
+   the first 1,024 B, then a strict alternating block map over the
+   whole 93,191 B: `=X=X=X=…` — every EVEN 1024-B block identical,
+   every ODD 1024-B block different (45,871 divergent bytes total).
+3. Therefore the "custom gzip / missing encode context" does not
+   exist. The 56 failures are an artifact of OUR decrypt3 sector
+   cipher: it decrypts odd 1024-B blocks wrongly. The 20 passes are
+   exactly the containers whose streams end before the first odd
+   block matters (outputs 336–1,088 B). The F6 triad follows: strict
+   decoders (ours + the game's wrapper under Unicorn, fed OUR bytes)
+   die on the first bad distance in block 1; tolerant decoding limps
+   to a short output; "pre-history references" are distances into
+   garbage-decoded block-1 output. Round 4's Unicorn result is
+   explained — it was fed corrupted bytes and faithfully failed.
+
+FIX PATH: repair the sector cipher's odd-block handling in the
+decrypt3 pipeline (check k1/k2 alternation per 1024-B half-sector —
+manifest records k1/k2 per file), re-decrypt DATA401.BIN, re-run all
+76 (goal 76/76 adler-exact), then QuickBMS .bms (G5) + COM/GMO batch.
+
 ### Attempt-5 session timeline / open steps
 
 - [x] Session live + first commit pushed BEFORE driving (30a8095).
