@@ -106,10 +106,15 @@ with the local grep: `customize` in 2 files (`TEARDOWN.md`,
 
 `~/workspace/game-reverse-engineering/tekken6/` holds only the skeleton
 restored 2026-10-20 from GitHub (`RESTORE-NOTE-2026-10-20.md`): **no
-`work/` directory** — `work/decrypt3/` and `work/decrypt6/` are not on local
-disk (decrypt6's files are recorded as lost in that note; decrypt3 survives
-in the recon tar, §1.3). A filesystem-wide find for `bulk_decrypted.bin`
-and `item_tables.json` returned neither file.
+`work/` directory** — `work/decrypt3/` and `work/decrypt6/` are not in that
+tree (decrypt6's files are recorded as lost in that note; decrypt3 survives
+in the recon tar, §1.3). A filesystem-wide find for `item_tables.json`
+returned no file. For `bulk_decrypted.bin` the find located one further
+copy in another lane's transient scratch
+(`~/workspace/_t6r3-scratch/work/tekken6/work/decrypt3/bulk_decrypted.bin`,
+present during the search on 2026-10-20 and cleared by its lane shortly
+after; correction added the same day). That copy was not used: every
+extraction in §1.5 was made from the SHA-256-verified recon tar (§1.3).
 
 ### 1.5 First-hand validation on the bulk (this lane, 2026-10-20)
 
