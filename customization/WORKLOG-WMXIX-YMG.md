@@ -134,3 +134,21 @@ Until one of those lands, `blocked_ymg_decode` is the honest status,
 and this tool + log are the standing census: when the transform is
 cracked, the same tool converts and stamps the catalog in one run
 (gate first, eye validation per class, then `catalog`).
+
+## Addendum (2026-10-21): the 3 .ymm files (coordinator relay after J2)
+
+The unified catalog's remaining geometry_pending after J2's texture
+batch is 1,213 = the 998 blocked_ymg_decode + 202 DUMY + 13 non-texture
+entries, among them 3 files of this lane's format family censused here:
+`hair/woman/Hair/mk0_015/c0.ymm` (144,404 B), `mk0_022/c0.ymm`
+(147,128 B), `mk0_073/c0.ymm` (148,232 B) — CATALOG status
+`not_converted` (they were never part of the 998). All three carry
+YOBJ magic, but they are NOT the CAW-part layout this converter
+handles: at ~145 KB they are full-model containers (Bip bone-name
+strings sit at the head of the file), and their headers do not parse
+as big-endian CAW headers (BE reads give version 0 and implausible
+section offsets — consistent with the other-endian YOBJ variant used
+by full models, cf. the wrestler files). The tool's decoder returns
+`no_pool_bounds` on all three. They stay `not_converted`, honestly
+out of this converter's proven scope, and belong to the same future
+format work as the wrestler YOBJ assembly.
