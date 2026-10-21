@@ -28,6 +28,10 @@ export const ATTIRE_VARIANTS = {
     { model: 'demonio-human', label: 'HUMAN' },
     { model: 'demonio-bloodline-ember', label: 'BLOODLINE EMBER' },
   ],
+  'deathfang': [
+    { model: 'deathfang', label: 'ATTIRE 1 · CHAINED PRISONER' },
+    { model: 'deathfang-werewolf', label: 'ATTIRE 2 · WEREWOLF' },
+  ],
   /* DOC FRANK's ladder — keyed by fighter id ('docfrank'), same pattern as
      Kevin's ladder below: attiresFor() looks up fighter.model, then
      fighter.id — and the main entry's model is 'doc-frank-machine-shop',
@@ -96,9 +100,41 @@ export const ATTIRE_VARIANTS = {
     { model: 'kinpo', label: 'BASE' },
     { model: 'kinpo-t8', label: 'T8' },
   ],
+  /* DIABLO's ladder (fighter-completeness audit 2026-10-21): Attire 2
+     "Devil God" was wired as a MODEL_URLS key + GLB (PR #419) but had no
+     variant list, so the picker only ever offered Attire 1. Labels from
+     roster/diablo/ATTIRE-SLOTS.md. First entry stays the current default. */
+  'diablo': [
+    { model: 'diablo', label: 'ATTIRE 1 · FANTASY DEMON' },
+    { model: 'diablo-attire2', label: 'ATTIRE 2 · DEVIL GOD' },
+  ],
+  /* KRONOS's ladder (fighter-completeness audit 2026-10-21): Attires 2
+     "Timberwolf" and 3 "TimberWolf Fully Suited" keys + GLBs existed
+     (roster/kronos/ATTIRE-SLOTS.md marks them wired) but no variant list
+     reached them. First entry stays the current default. */
+  'kronos': [
+    { model: 'kronos', label: 'ATTIRE 1' },
+    { model: 'kronos-attire2', label: 'ATTIRE 2 · TIMBERWOLF' },
+    { model: 'kronos-attire3', label: 'ATTIRE 3 · TIMBERWOLF FULLY SUITED' },
+  ],
+  /* AWA POP's ladder (fighter-completeness audit 2026-10-21): Attire 2's
+     GLB sat in roster/awa-pop/attires/attire2/ with no MODEL_URLS key and
+     no variant list. Key added in assets.js. First entry = current default. */
+  'awa-pop': [
+    { model: 'awa-pop', label: 'ATTIRE 1' },
+    { model: 'awa-pop-attire2', label: 'ATTIRE 2' },
+  ],
+  // Pantera slot order (owner 2026-10-20 swap: Leopard King A6 -> A4,
+  // T7 P2 A4 -> A6). A1 = 'pantera' (T7King reskin, default, in
+  // game/assets). ATTIRE 2 = Leo man (restored to
+  // roster/pantera/attires/leomon/model.glb, 'pantera-leoman' key).
   'pantera': [
     { model: 'pantera', label: 'ATTIRE 1' },
     { model: 'pantera-leoman', label: 'ATTIRE 2 · LEO MAN' },
+    { model: 'pantera-snow-leopard', label: 'ATTIRE 3 · SNOW LEOPARD' },
+    { model: 'pantera-leopard-king', label: 'ATTIRE 4 · LEOPARD KING' },
+    { model: 'pantera-crimson-rage', label: 'ATTIRE 5 · CRIMSON RAGE' },
+    { model: 'pantera-p2', label: 'ATTIRE 6 · T7 P2' },
   ],
   /* ZUI's ladder (model-key audit follow-up, 2026-10-21): A1 = Drunken Monk
      Tripo (DEFAULT), A2 = Rework v2 Tripo; the steve-fox canon base and the

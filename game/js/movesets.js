@@ -55,8 +55,18 @@ export const MOVESET_IDS = [
   'charger',
   // DEATHFANG (owner 2026-10-19): proprietary, Iori-based — full Iori kit in deathfang.json.
   'deathfang',
+  // DEATHFANG werewolf form (owner 2026-10-20): full kit + beast mix-ins, Iori stance kept.
+  'deathfang-werewolf',
   // Custom fighters (owner 2026-10-19): KRONOS — Zangief base + Golem (Urban Reign) mix.
   'kronos',
+  // Fighter-completeness audit (2026-10-21, docs/FIGHTER-COMPLETENESS-AUDIT-2026-10-21.md):
+  // per-id files that EXISTED but were never loaded — the loader keys by roster
+  // id, so these fighters silently fought on the legacy T3 aggregate instead of
+  // their own sets. kronos-attire2 = his own Timberwolf set (142 moves);
+  // demonio-human = Demonio's human-form set (102 moves); charger-attire2 =
+  // Charger Attire 2's set (charger-attire2.json, his roster entry's declared
+  // moveset 'charger').
+  'kronos-attire2', 'demonio-human', 'charger-attire2',
   // Ryuji Yamazaki x The Rock hybrid (owner 2026-10-19): 22 moves, King-proxy
   // throws incl. ROCK BOTTOM (frame data from T3 King chain row 281). Model
   // pending the owner's Tripo link — roster-full.js entry lands with model.glb.
