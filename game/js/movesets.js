@@ -71,6 +71,8 @@ export const MOVESET_IDS = [
 const _movesets = {};
 const _loading = {};
 let _index = null;
+let MS_BASE = 'assets/movesets/'; // relative to the page; the creation suite points it at ../../game/assets/movesets/
+export function setMovesetBase(url) { MS_BASE = url.endsWith('/') ? url : url + '/'; }
 // Browser global mirror (fighter.js reads window.WH_MOVESETS); guarded for Node tests.
 const _g = (typeof window !== 'undefined') ? window : (typeof globalThis !== 'undefined' ? globalThis : {});
 
@@ -81,7 +83,11 @@ const _g = (typeof window !== 'undefined') ? window : (typeof globalThis !== 'un
 export async function loadFighterMovesets() {
   _g.WH_MOVESETS = _g.WH_MOVESETS || {};
   try {
-    const r = await fetch('assets/movesets/index.json');
+    const t = await fetch(MS_BASE + 't3_input_tables.json');
+    if (t.ok) setInputTables(await t.json());
+  } catch (e) { /* decoded defaults below */ }
+  try {
+    const r = await fetch(MS_BASE + 'index.json');
     if (r.ok) _index = await r.json();
     console.log(`[WH] Moveset index: ${_index ? Object.keys(_index.fighters || {}).length : 0} fighters (full sets load per fight)`);
   } catch (e) {
@@ -94,7 +100,7 @@ function _fetchOne(id) {
   if (_movesets[id]) return Promise.resolve(_movesets[id]);
   if (_index && _index.fighters && !_index.fighters[id]) return Promise.resolve(null);
   if (!_loading[id]) {
-    _loading[id] = fetch(`assets/movesets/${id}.json`)
+    _loading[id] = fetch(`${MS_BASE}${id}.json`)
       .then(r => (r.ok ? r.json() : null))
       .then(d => { if (d) registerMoveset(id, d); return d; })
       .catch(e => { console.warn(`[WH] moveset ${id} failed to load:`, e); return null; });
@@ -102,12 +108,19 @@ function _fetchOne(id) {
   return _loading[id];
 }
 
-/** Load the full movesets for these fighter ids (call before building Fighters). */
+/** Load the full movesets for these fighter ids (call before building Fighters), plus the
+    movesets their editor loadouts borrow from (base moveset / other fighters' moves). */
 export async function ensureMovesets(ids) {
   const list = [...new Set((ids || []).filter(Boolean))];
-  await Promise.all(list.map(_fetchOne));
+  const deps = [];
+  for (const id of list) deps.push(...loadoutDeps(id));
+  const all = [...new Set(list.concat(deps))];
+  await Promise.all(all.map(_fetchOne));
   return list.map(id => _movesets[id] || null);
 }
+
+/** Index of every fighter moveset (null until loadFighterMovesets resolves). */
+export function getMovesetIndex() { return _index; }
 
 /** Synchronous accessor: the FULL moveset (null until ensureMovesets/registerMoveset). */
 export function getFighterMoveset(fighterId) {
@@ -139,6 +152,36 @@ const MOTION_DIRS = {
   hcf: ['b', 'd/b', 'd', 'd/f', 'f'], hcb: ['f', 'd/f', 'd', 'd/b', 'b'],
 };
 
+/* DECODED T3 INPUT TIMING (tools/moveset-merge/t3_input_tables.py -> t3_input_tables.json):
+   motion windows come from the USA EXE sequence tables (frames), the dash from FUN_8002CB08
+   (direction, neutral, direction within 0x13 frames), history = 60 one-frame entries. */
+let DOUBLE_TAP_BUDGET = 0x13;
+let DASH_FRAMES = { 'f,f': 30, 'b,b': 32 }; // decoded: every bank's dash row is 30 frames, backdash 30-35
+const HIST_LEN = 60;
+let _seqWindows = null; // 'd,d/f,f' -> frames (directions without neutral steps)
+export function setInputTables(t) {
+  if (!t) return;
+  if (t.double_tap_budget) DOUBLE_TAP_BUDGET = t.double_tap_budget;
+  if (t.dash_frames) DASH_FRAMES = Object.assign({}, DASH_FRAMES, t.dash_frames);
+  _seqWindows = {};
+  const byLen = {};
+  for (const sq of t.sequences || []) {
+    const d = sq.dirs.filter(x => x !== 'n');
+    if (!d.length) continue;
+    const k = d.join(',');
+    _seqWindows[k] = Math.max(_seqWindows[k] || 0, sq.window);
+    (byLen[d.length] = byLen[d.length] || []).push(sq.window);
+  }
+  _seqWindows.__byLen = {};
+  for (const [n, ws] of Object.entries(byLen)) { ws.sort((a, b) => a - b); _seqWindows.__byLen[n] = ws[ws.length >> 1]; }
+}
+function motionWindow(dirs) {
+  const k = dirs.join(',');
+  if (_seqWindows && _seqWindows[k]) return _seqWindows[k];
+  if (_seqWindows && _seqWindows.__byLen[dirs.length]) return _seqWindows.__byLen[dirs.length];
+  return 25; // qcf's decoded window (n,d,d/f,f = 25 frames) when the table is not loaded
+}
+
 export function splitNotation(n) {
   const m = STATE_PREFIX.exec(n);
   return m ? { prefix: m[1], body: m[2] } : { prefix: '', body: n };
@@ -154,7 +197,9 @@ export function parseMotion(n) {
   const head = parts.slice(0, -1);
   if (head.some(p => !DIR_TOKEN.test(p))) return null; // a button earlier = string, not motion
   let dirs = head.map(d => d.toLowerCase());
-  const neutral = dirs.length && dirs[dirs.length - 1] === 'n';
+  // 'f,n,2': the stick returns to neutral and the button comes with NO direction. 'd/b,n,f+2':
+  // the n is just a step between directions (the last part carries its own direction).
+  const neutral = !lm[1] && dirs.length > 0 && dirs[dirs.length - 1] === 'n';
   dirs = dirs.filter(d => d !== 'n');
   if (lm[1]) {
     if (MOTION_DIRS[lm[1]]) dirs = dirs.concat(MOTION_DIRS[lm[1]]);
@@ -200,21 +245,49 @@ export function setLoadoutSlot(fighterId, notation, moveKey) {
   try { localStorage.setItem(LOADOUT_KEY, JSON.stringify(all)); return true; } catch (e) { return false; }
 }
 
-/** notation -> move key this fighter fires (player loadout > default slots > exact key). */
-export function resolveMoveKey(fighterId, notation) {
-  const ms = getFighterMoveset(fighterId);
-  if (!ms || !notation) return null;
-  _prepare(ms);
+/* Loadout values (moveset editor, creation suite MOVESET tab):
+     'key'            a move of this fighter's own moveset
+     'otherId::key'   a move borrowed from another fighter (WWE-style move library)
+   and the reserved entry '__base': 'otherId' = start from another fighter's whole moveset
+   (custom fighters with no moveset file of their own). */
+export function loadoutDeps(fighterId) {
+  const lo = getLoadout(fighterId), out = [];
+  if (lo.__base) out.push(lo.__base);
+  for (const [n, v] of Object.entries(lo)) if (n !== '__base' && typeof v === 'string' && v.includes('::')) out.push(v.split('::')[0]);
+  return out;
+}
+
+/** The moveset a fighter plays: its own file, else its loadout's __base. */
+export function playedMoveset(fighterId) {
+  return getFighterMoveset(fighterId) || (getLoadout(fighterId).__base ? getFighterMoveset(getLoadout(fighterId).__base) : null);
+}
+
+/** notation -> { move, key, ms, from } this fighter fires (loadout > default slots > exact key). */
+export function resolveMove(fighterId, notation) {
+  if (!notation) return null;
   const custom = getLoadout(fighterId)[notation];
-  if (custom && ms.moves[custom]) return custom;
+  if (custom) {
+    const [from, key] = custom.includes('::') ? custom.split('::') : [fighterId, custom];
+    const src = from === fighterId ? playedMoveset(fighterId) : getFighterMoveset(from);
+    if (src && src.moves[key]) return { move: src.moves[key], key, ms: src, from };
+  }
+  const ms = playedMoveset(fighterId);
+  if (!ms) return null;
+  _prepare(ms);
   const k = ms._slots[notation];
-  return k && ms.moves[k] ? k : null;
+  return k && ms.moves[k] ? { move: ms.moves[k], key: k, ms, from: fighterId } : null;
+}
+
+/** notation -> move key this fighter fires (null if none). */
+export function resolveMoveKey(fighterId, notation) {
+  const r = resolveMove(fighterId, notation);
+  return r ? r.key : null;
 }
 
 /** Notation lookup: '1', '2', '1+3', 'f+1', '1,2', 'qcf+2', 'WS.4', 'SNK.1' ... */
 export function getMove(fighterId, notation) {
-  const k = resolveMoveKey(fighterId, notation);
-  return k ? getFighterMoveset(fighterId).moves[k] : null;
+  const r = resolveMove(fighterId, notation);
+  return r ? r.move : null;
 }
 
 /** Split a special's input into {dirs:[...], button:'2'}.
@@ -248,16 +321,79 @@ export class TekkenBuffer {
     this.lastDir = 'n';
     this.lastMove = null;  // notation of last executed attack
     this.lastMoveT = 0;
+    // T3 input history: one facing-relative direction per fixed 1/60 s step (game.js calls
+    // noteDirection every update), 60 entries, newest at this.hi (fight_sim HISTORY / HIST_LEN).
+    this.hist = new Array(HIST_LEN).fill('n');
+    this.hi = 0;
   }
 
   /** Feed the current facing-relative direction (call when it changes). */
   noteDirection(dir) {
+    this.hi = (this.hi + 1) % HIST_LEN;
+    this.hist[this.hi] = dir || 'n';
+    // T3 enters the dash row on the frame double_tap matches; a button during that row is a
+    // dash move (f,F+2). Latch it for the decoded row length.
+    if (this._dash && --this._dash.left <= 0) this._dash = null;
+    if (this._doubleTap('f')) this._dash = { dir: 'f', left: DASH_FRAMES['f,f'] };
+    else if (this._doubleTap('b')) this._dash = { dir: 'b', left: DASH_FRAMES['b,b'] };
     if (dir === this.lastDir) return;
     this.lastDir = dir;
     if (dir === 'n') return;
     const now = performance.now();
     this.dirEvents.push({ dir, t: now });
     if (this.dirEvents.length > 24) this.dirEvents.shift();
+  }
+
+  _prev(i) { return i > 0 ? i - 1 : HIST_LEN - 1; }
+
+  /** T3 double tap (FUN_8002CB08 / FUN_8002CBF0, fight_sim.double_tap): the newest frame is
+      `dir`, the frame before it neutral, then within DOUBLE_TAP_BUDGET frames an earlier `dir`. */
+  _doubleTap(dir) {
+    const h = this.hist; let i = this.hi;
+    if (h[i] !== dir) return false;
+    let j = this._prev(i);
+    if (h[j] !== 'n') return false;
+    let budget = DOUBLE_TAP_BUDGET, k = j;
+    for (;;) {
+      k = this._prev(j);
+      const d = h[k];
+      if (d !== 'n') { if (d !== dir) return false; break; }
+      budget--; j = k;
+      if (budget <= 0) break;
+    }
+    if (budget <= 0) return false;
+    for (;;) {
+      const m = this._prev(k);
+      if (h[m] !== dir) break;
+      budget--; k = m;
+      if (budget <= 0) break;
+    }
+    return budget > 0;
+  }
+
+  /** T3 InputSequenceMatch (0x8002CCD8, fight_sim.sequence_match) over the direction history:
+      the newest frame must be the last step, earlier steps are found walking back within
+      `window` frames. (Button entries in the T3 history abort a match; WH records buttons as
+      events, so that clause has no counterpart here.) */
+  _seqMatch(steps, window) {
+    const h = this.hist; let k = steps.length - 1;
+    if (h[this.hi] !== steps[k]) return false;
+    k--; if (k < 0) return true;
+    let want = steps[k], pos = this.hi;
+    while (window >= 1) {
+      pos = this._prev(pos);
+      if (h[pos] === want) { k--; if (k < 0) return true; want = steps[k]; }
+      window--;
+    }
+    return false;
+  }
+
+  /** Does the history hold this motion (decoded T3 timing)? */
+  _motionHeld(dirs) {
+    if (dirs.length === 2 && dirs[0] === dirs[1] && (dirs[0] === 'f' || dirs[0] === 'b')) {
+      return !!(this._dash && this._dash.dir === dirs[0]) || this._doubleTap(dirs[0]);
+    }
+    return this._seqMatch(dirs, motionWindow(dirs));
   }
 
   /** Recent direction events within ms. */
@@ -286,7 +422,7 @@ export class TekkenBuffer {
    * Returns the notation, or null if this fighter has nothing on that input.
    */
   press(input, ctx = {}) {
-    const ms = getFighterMoveset(this.fighterId);
+    const ms = playedMoveset(this.fighterId);
     if (!ms || !ms.moves) return input; // no data — raw passthrough
     _prepare(ms);
     const has = (n) => (resolveMoveKey(this.fighterId, n) ? n : null);
@@ -294,8 +430,11 @@ export class TekkenBuffer {
     const withDir = dir ? `${dir}+${input}` : input;
     const holdDir = dir ? `${dir.toUpperCase()}+${input}` : null;
 
-    // 1) string continuation: previous notation + this hit (800 ms window)
-    if (this.lastMove && performance.now() - this.lastMoveT < 800) {
+    // 1) string continuation. In a fight (ctx.inMove defined) T3 rules: only while the previous
+    //    hit is still playing (Fighter.tryAttack buffers it into that move). Legacy callers
+    //    without ctx (tests) keep the old 800 ms window.
+    const contOk = ctx.inMove !== undefined ? ctx.inMove : (performance.now() - this.lastMoveT < 800);
+    if (this.lastMove && contOk) {
       for (const sep of [',', '~', ':']) {
         for (const c of [`${this.lastMove}${sep}${withDir}`, `${this.lastMove}${sep}${input}`]) {
           if (has(c)) return this._recordMove(c);
@@ -315,7 +454,7 @@ export class TekkenBuffer {
       for (const mo of ms._motions) {
         if (mo.prefix !== p || mo.btn !== input) continue;
         if (mo.neutral && dir) continue; // 'f,n,2' wants the stick back in neutral
-        if (this._matchMotion(mo.dirs, mo.dirs.length >= 3 ? 450 : 320) && has(mo.n)) return this._recordMove(mo.n);
+        if (this._motionHeld(mo.dirs) && has(mo.n)) return this._recordMove(mo.n);
       }
       // 3) direction + button (tap, then hold spelling 'D/B+2'), 4) button
       if (dir && has(p + withDir)) return this._recordMove(p + withDir);
@@ -329,14 +468,14 @@ export class TekkenBuffer {
 
   /** Legacy API (tests + older callers): single buttons fall back to the raw button. */
   pressButton(btn, ctx = {}) {
-    const ms = getFighterMoveset(this.fighterId);
+    const ms = playedMoveset(this.fighterId);
     if (!ms || !ms.moves) return btn;
     return this.press(btn, ctx);
   }
 
   /** Legacy API: chords resolve through the same table. */
   pressChord(chord, ctx = {}) {
-    const ms = getFighterMoveset(this.fighterId);
+    const ms = playedMoveset(this.fighterId);
     if (!ms || !ms.moves) return chord;
     return this.press(chord, ctx);
   }

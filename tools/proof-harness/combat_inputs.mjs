@@ -22,6 +22,9 @@ page.on('pageerror', e => logs.push(`[pageerror] ${e.message}`));
 console.log('loading page'); await page.goto('http://127.0.0.1:8765/game/index.html', { waitUntil: 'load' });
 await page.waitForTimeout(1500);
 await page.evaluate(() => window.__modes.startMode('arcade'));
+// Software GL in the cloud container cannot draw the stage at a usable rate (origin/main blocks the
+// same way: 0 frames per 15 s). The game logic runs unchanged; the arena only renders for screenshots.
+await page.evaluate(() => { const a = window.__game.arena; a.__render = a.render.bind(a); a.render = () => {}; });
 console.log('starting fight'); await page.evaluate(async ([a, b]) => { await window.__modes.startFight(a, b, { mode: 'arcade' }); }, [p1, p2]);
 console.log('fight started, waiting for round');
 await page.waitForFunction(() => window.__game && window.__game.roundState === 'fight', null, { timeout: 120000 }).catch(() => console.log('round never reached fight state'));
@@ -63,6 +66,7 @@ for (const [label, run] of cases) {
   const s2 = await state();
   const r = await page.evaluate(() => window.__game.renderer ? 1 : 0).catch(() => 0);
   const shot = `${out}/${label.replace(/[^a-z0-9]+/gi, '_')}.png`;
+  await page.evaluate(() => window.__game.arena.__render());
   await page.screenshot({ path: shot });
   rows.push({ input: label, ...s1, p2hp_after: s2.p2hp, shot });
   console.log(`${label.padEnd(20)} -> ${String(s1.notation).padEnd(12)} ${String(s1.key).padEnd(18)} ${String(s1.name).slice(0, 28).padEnd(28)} word=${s1.word ? '0x' + s1.word.toString(16) : '-'} anim=${s1.anim} state=${s1.state} p2hp 100->${s2.p2hp}`);

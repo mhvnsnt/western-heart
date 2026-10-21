@@ -286,6 +286,16 @@ class PreviewPane {
    onHighlight: (entryOrNull) => {}   (main.js mirrors selectedChar)
  }
 */
+/* Fighters with the owner's Tripo 3D models show first (owner 2026-10-21: "show all the fighters
+   that have tripo 3D models ... first at the top ... not people ... that don't have models in the
+   top rows"). The list is generated from the registry + the GLB files themselves by
+   tools/roster/tripo_fighters.py -> data/tripo-fighters.json (no hand-picked order). */
+let TRIPO_IDS = null;
+const _tripoReady = fetch('data/tripo-fighters.json')
+  .then(r => (r.ok ? r.json() : null))
+  .then(j => { TRIPO_IDS = new Set((j && j.ids) || []); })
+  .catch(() => { TRIPO_IDS = new Set(); });
+
 export function createSelectScreen(deps) {
   const { audio } = deps;
   const $ = (id) => document.getElementById(id);
@@ -336,11 +346,14 @@ export function createSelectScreen(deps) {
     if (!strip) return;
     strip.innerHTML = '';
     const roster = deps.roster();
+    const tripo = TRIPO_IDS || new Set();
+    const rest = (list) => list.filter(c => !tripo.has(c.id));
     const tiers = [
-      { label: 'THE NINE SOULS', fighters: roster.slice(0, 9) },
-      { label: 'MAIN ROSTER', fighters: roster.slice(9, 16) },
-      { label: 'BONUS ROSTER', fighters: roster.slice(16) },
-    ];
+      { label: 'TRIPO ORIGINALS', fighters: roster.filter(c => tripo.has(c.id)) },
+      { label: 'THE NINE SOULS', fighters: rest(roster.slice(0, 9)) },
+      { label: 'MAIN ROSTER', fighters: rest(roster.slice(9, 16)) },
+      { label: 'BONUS ROSTER', fighters: rest(roster.slice(16)) },
+    ].filter(t => t.fighters.length);
     tiers.forEach(({ label, fighters }) => {
       const t = document.createElement('div');
       t.className = 'strip-tier';
@@ -637,5 +650,7 @@ export function createSelectScreen(deps) {
   if (pBtn) pBtn.addEventListener('click', punchAttire);
   if (kBtn) kBtn.addEventListener('click', kickAttire);
 
+  // The Tripo list arrives after the first build: rebuild once so those fighters lead the grid.
+  _tripoReady.then(() => { if (strip && strip.children.length) { build(); paintCards(); } });
   return { build, onShow, selectById, notifyConfirm, highlight, _state: state, _panes: panes };
 }

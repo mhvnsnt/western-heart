@@ -20,7 +20,7 @@
 import * as THREE from 'three';
 import { assets } from './assets.js';
 import { getT3Clips, createT3Actions, retargetT3Clips, SOURCE_TO_BANK } from './t3anims.js';
-import { TekkenBuffer, getFighterMoveset, getMovesetInfo, resolveMoveKey } from './movesets.js';
+import { TekkenBuffer, getFighterMoveset, getMovesetInfo, resolveMove } from './movesets.js';
 import { TransformCinematic } from './transform-cinematic.js';
 
 // ---- Frame data: REAL Tekken 3 data (teardown/tekken3/movesets/moveset_king.json, moveset_jin.json)
@@ -134,12 +134,14 @@ const LEGACY_TO_TEKKEN = { punch: '1', kick: '4', grab: '1+3' };
 
 export function getRealMove(charId, moveType) {
   const tekken = LEGACY_TO_TEKKEN[moveType] || moveType;
-  const ms = getFighterMoveset(charId) || window.WH_MOVESETS?.[charId];
+  const res = resolveMove(charId, tekken);
+  const ms = (res && res.ms) || getFighterMoveset(charId) || window.WH_MOVESETS?.[charId];
   if (ms) {
     // New shape: per-fighter moveset { moves: { key: {...} }, slots: { notation: key } }.
-    // The notation resolves through the player's loadout, then the default slots.
+    // The notation resolves through the player's loadout (own or borrowed moves), then the
+    // default slots.
     if (ms.moves) {
-      const key = resolveMoveKey(charId, tekken) || (ms.moves[tekken] ? tekken : null);
+      const key = res ? res.key : (ms.moves[tekken] ? tekken : null);
       const mv = key && ms.moves[key];
       if (mv) {
         const anim = mv.anim_t3 || null;
@@ -560,6 +562,7 @@ export class Fighter {
       crouching: this.state === 'crouch' || st === 'FC',
       rising: this._risingT > 0,
       rage: !this._rageUsed && this.hp > 0 && this.hp <= this.maxHp * 0.25,
+      inMove: this.state === 'attack',
     };
   }
 

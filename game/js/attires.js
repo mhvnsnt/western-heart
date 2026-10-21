@@ -11,6 +11,12 @@ const LS_KEY = 'wh_attires_v1';
 /* model base -> [{ model, label }]. Labels from owner notes / CANON.md.
    Fighters not listed here get a single default (their base model). */
 export const ATTIRE_VARIANTS = {
+  // RAVE / Kiko Tanaka — roster/TRIPO-REGISTRY.md slot order
+  'kiko-tanaka': [
+    { model: 'kiko-tanaka', label: 'ATTIRE 1 · HOODED' },
+    { model: 'kiko-tanaka_alt1', label: 'ATTIRE 2 · GHOST TANAKA' },
+    { model: 'rave', label: 'ATTIRE 3 · MUTA' },
+  ],
   'thor': [
     { model: 'thor', label: 'ATTIRE 1' },
     { model: 'thor-attire2', label: 'ATTIRE 2 · ONI MASK' },
