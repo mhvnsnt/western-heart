@@ -133,3 +133,52 @@ Owner confirmed Samurai Shodown (not Onimusha) is the right source.
 - Bob's full Tekken moveset for Burger base (separate lane).
 - Kusaregedo animation clips: anim_ref points to samsho:kusaregedo/ — clips to be built from footage.
 
+---
+
+# WORKLOG — CHARGER build (2026-10-20, branch feat/charger-blanka-replacement-20261020)
+
+Owner order 2026-10-20 ~13:32–13:34 CDT: CHARGER replaces Blanka — "his name is
+charger cause of blankas attacks and movesets will be attach to him but he's
+got powers of ice and electricity". Two owner Tripo links (Attire 1 + Attire 2).
+
+## Pulls (tools/tripo-pull, public-api strategy)
+- Attire 1 `b91318ce-2ccd-43eb-8691-d675b3ee8b10` "ice monster 3d model" →
+  `~/workspace/tripo-recovery/charger_attire1/` (18,005,236 B, 1 mesh, 3 textures).
+- Attire 2 `f87e24eb-0c0b-4444-9409-4f4dabc0bb32` "green spiky creature 3d model" →
+  `~/workspace/tripo-recovery/charger_attire2/` (17,370,960 B, 1 mesh, 3 textures).
+- Transport note: the tool's urllib reads died mid-stream through this VM's
+  egress proxy (IncompleteRead, reproduced 3x) while curl completed the same
+  endpoint reads. The tool's own strategy/verify/manifest code ran unmodified
+  via a curl-backed transport shim (`~/workspace/_wh-work/charger-scratch/
+  tripo_pull_shim.py`) — same public project-detail API, no sign-in, per the
+  TRIPO-PULL-TOOL law (never ask for a login; check the method).
+- `tools/render-prep` validate on both: RESULT OK — all 3 textures decode per
+  model (Color/ORM/NormalGL), no NaN warnings; meshopt+quantization present
+  (roster ships raw like KRONOS/KORESHI; game decodes via MeshoptDecoder).
+
+## Wiring
+- GLBs copied byte-identical (sha256-verified) to
+  `roster/charger/attires/attire1/model.glb` + `attire2/model.glb`;
+  `roster/charger/README.md` documents sources.
+- `game/js/roster-full.js`: `blanka` entry replaced by `charger` (attires
+  `['charger','charger-attire2']`) + `charger-attire2` entry.
+- `game/js/assets.js`: `charger` + `charger-attire2` MODEL_URLS keys added
+  (`blanka` key kept — his files stay).
+- `game/js/movesets.js`: `charger` added to MOVESET_IDS.
+- `game/js/fighter.js`: MOVESET_MAP `charger: 'bryan'`, `'charger-attire2': 'bryan'`.
+- `game/assets/movesets/charger.json`: built from `blanka.json` by
+  `~/workspace/_wh-work/charger-scratch/build_charger_moveset.py` — 199/199
+  moves, inputs + all non-name data field-identical (script-asserted); 46
+  signature names renamed (Electric Thunder→Cryo Thunder, Rolling family→
+  Frostcharge, Ground Shave Rolling→Glacier Shave Roll); map recorded in the
+  JSON's `canon_rename_map` and in `RENAME-MAP.md` (CHARGER section).
+- NOT deleted: `roster/blanka/`, `blanka.json`, `sf-blanka.json`, `blanka`
+  code keys. Only the playable roster entry changed.
+
+## Proof
+- Front renders of both attires from render-prep copies (own-eyes verified):
+  `~/workspace/your_files/charger-attire1-front-20261020.png`,
+  `~/workspace/your_files/charger-attire2-front-20261020.png`.
+- Node smoke test: roster module loads, `charger` + `charger-attire2` resolve,
+  charger.json move count == blanka.json (199).
+
