@@ -32,7 +32,7 @@ export const FULL_ROSTER = [
     surge: { name: "PANTHER'S WRATH", color: 0x8b2bd8, accent: 0xff2222 },
     stats: { speed: 4.0, jump: 6.8, power: 1.3, defense: 1.2 },
     ai: { aggression: 0.85, grabBias: 0.45, reaction: 0.55 } },
-  { id: 'demonio', name: 'DEMONIO', title: 'The Demon Soul', base: 'Jin Kazama', moveset: 'jin', model: 'jin', tintStrength: 0.6,
+  { id: 'demonio', name: 'DEMONIO', title: 'The Demon Soul', base: 'Jin Kazama', moveset: 'jin', model: 'demonio', tintStrength: 0.25,
     colors: { suit: 0x1a3a6b, trim: 0x9fd8ff }, style: 'Mishima Karate',
     surge: { name: 'COLD FLAME', color: 0x9fd8ff, accent: 0xffffff },
     stats: { speed: 4.8, jump: 7.6, power: 1.05, defense: 1.0 },

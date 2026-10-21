@@ -9,11 +9,41 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { clone as skeletonClone } from 'three/addons/utils/SkeletonUtils.js';
+// Meshopt-compressed GLBs (Tripo outputs: cape-jones, thor, waterfall,
+// saku-ra-main, purple-rain-main, kiko-tanaka*). Vendored locally —
+// the game ships with no CDN (see index.html importmap).
+import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.js';
 
 const MODEL_URLS = {
   pantera: 'assets/models/pantera.glb',
   'steve-fox': 'assets/models/steve-fox.glb',
   jin: 'assets/models/jin.glb',
+  // Per-fighter models wired from teardown extractions + Tripo rescans.
+  // Keys match FULL_ROSTER `model` ids in roster-full.js (lane 2).
+  demonio: 'assets/models/demonio.glb',
+  diablo: 'assets/models/diablo.glb',
+  phantom: 'assets/models/phantom.glb',
+  skull: 'assets/models/skull.glb',
+  'sam-ur-a1': 'assets/models/sam-ur-a1.glb',
+  'saku-ra': 'assets/models/saku-ra.glb',
+  'awa-pop': 'assets/models/awa-pop.glb',
+  'purple-rain': 'assets/models/purple-rain.glb',
+  nightwolf: 'assets/models/nightwolf.glb',
+  'king-tyrant': 'assets/models/king-tyrant.glb',
+  kinpo: 'assets/models/kinpo.glb',
+  waterfall: 'assets/models/waterfall.glb',
+  'n3g4tiv0': 'assets/models/n3g4tiv0.glb',
+  thor: 'assets/models/thor.glb',
+  'doc-frank': 'assets/models/doc-frank.glb',
+  'cyborg-x': 'assets/models/cyborg-x.glb',
+  'cape-jones': 'assets/models/cape-jones.glb',
+  // Bonus / music fighters and name-pending models (loadable, unassigned).
+  mariposa: 'assets/models/mariposa.glb',
+  zafina: 'assets/models/zafina.glb',
+  dxmmii: 'assets/models/dxmmii.glb',
+  rave: 'assets/models/rave.glb',
+  lili: 'assets/models/lili.glb',   // NO WH name yet — do not assign
+  baek: 'assets/models/baek.glb',   // NO WH name yet — do not assign
   // Created fighters use the Soldier.glb base from the CAW suite.
   // Relative path works on GitHub Pages (game/ -> customization/).
   custom: '../customization/create-fighter/assets/Soldier.glb',
@@ -40,6 +70,7 @@ class AssetManager {
     const LOAD_TIMEOUT_MS = 90000;
     const loadOne = (id, attempt) => new Promise((resolve, reject) => {
       const loader = new GLTFLoader();
+      loader.setMeshoptDecoder(MeshoptDecoder);
       const timer = setTimeout(() => reject(new Error(`timeout loading ${id} (attempt ${attempt})`)), LOAD_TIMEOUT_MS);
       loader.load(
         MODEL_URLS[id],
@@ -119,11 +150,14 @@ class AssetManager {
       .finally(() => this._prefetching.delete(id));
   }
 
-  // Preload both base models the moment the select screen opens.
-  // All 36 fighters use pantera or demonio bases, so warming both here
-  // means CONFIRM rarely waits on a download.
+  // Preload the base models the moment the select screen opens.
+  // Fighters with their own GLB use it; the rest fall back to the
+  // pantera / steve-fox / jin bases (see MODEL-STATUS.md), so warming
+  // those bases here means CONFIRM rarely waits on a download.
+  // Per-fighter GLBs load on demand when their fight starts —
+  // never all at once (TEKKEN 3 LESSON above).
   preloadAll() {
-    for (const id of Object.keys(MODEL_URLS)) this.prefetch(id);
+    for (const id of ['pantera', 'steve-fox', 'jin', 'custom']) this.prefetch(id);
   }
 
   /* { model, bones, mixer, actions } for one fighter.
