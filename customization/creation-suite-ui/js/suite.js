@@ -3,6 +3,12 @@
    Menu trees verbatim from teardown games (see menu-data.js + UI-EXTRACTION-LOG.md). */
 import { SuiteViewer } from './viewer3d.js';
 import { ATTIRE_TREE, BODY_TREE, PARTS_TREE, JIGGLE_AREAS, JIGGLE_PARAMS, JIGGLE_FAMILIES, PLACE_AXES, MENU_SRC } from './menu-data.js';
+/* Real morph catalog + DNA/body engine from packages/creation-suite
+   (importmap: wh-creation-suite/ -> ../../packages/creation-suite/src/).
+   Thin adapter below maps morph ids onto DNA sliders — logic is NOT forked. */
+import { BODY_MORPHS, FACE_SHAPE_MORPHS, applyMorphProxies } from 'wh-creation-suite/morphs.js';
+import { SLIDERS as DNA_SLIDERS } from 'wh-creation-suite/dna.js';
+import { applySliders as applyBodySliders } from 'wh-creation-suite/body.js';
 
 const LS_KEY = 'wh_creation_suite_v1';
 const START_MONEY = 12400;
@@ -19,9 +25,13 @@ const SOULS=['—','TOU','SHA','YIN','YANG','KAMI','ONI','RYU','TEN'];
 const TITLE_A=['RAGING','SILENT','GOLDEN','BROKEN','HOWLING','IRON','CRIMSON','LONE'];
 const TITLE_B=['BEAST','PANTHER','KING','GHOST','STORM','WOLF','TIGER','DEMON'];
 
-/* suite_slot -> ATTIRE category slot key */
+/* suite_slot -> ATTIRE category slot key (registry suite_slots mapped onto
+   the T7 spine per UNIFIED-UI-SPEC §7; build_suite_catalog.py stamps the
+   same mapping as t7_slot on every catalog entry) */
 const SLOT2CAT = { mask:'3', eye_lenses:'6', cowl:'3', gauntlets:'H', hair:'2',
-  decal_logo:'8', eye:'EYES', tights:'11', pants:'11', top:'9', outfit:'9', scarf:'12', face:'8' };
+  decal_logo:'8', eye:'EYES', tights:'11', pants:'11', top:'9', outfit:'9', scarf:'12', face:'8',
+  upper_body:'9', lower_body:'11', gloves:'H', shoes:'F', gear:'12', accessory:'12', attire:'10',
+  eyebrows:'6' };
 /* suite_slot -> fallback 3D socket for texture-part markers (registry has no placement block for texture parts) */
 const SLOT2SOCKET = { eye:'face', face:'face', decal_logo:'chest', top:'chest', outfit:'chest',
   scarf:'chest', tights:'waist', pants:'waist', hair:'head', mask:'face', eye_lenses:'face', cowl:'head', gauntlets:'hands' };
@@ -33,18 +43,165 @@ function blankFighter(){
     profile:{ name:'NEW FIGHTER', short_name:'NEWF', soul:'—', title:['',''] },
     body:{ body_type:'Medium 1', skin_tone:'#c98d5e',
       proportions:{ height:1, weight:1, muscle:1, shoulder:1, chest:1, waist:1, hips:1, arms:1, legs:1 } },
+    morphs:{},
     jiggle:{ family:'female', areas:{} },
     attireIndex:0, attires:[blankAttire(),blankAttire(),blankAttire(),blankAttire()],
     wardrobe:[null,null,null,null,null,null,null,null,null,null],
-    wallet:START_MONEY };
+    wallet:START_MONEY,
+    /* Roster mode (UNIFIED-UI-SPEC §2): mode 'blank' keeps the legacy
+       blank-fighter state in the top-level fields above (the legacy key
+       wh_creation_suite_v1 keeps working for game/js/custom-fighter.js);
+       per-attire records live in records[], keyed 'fighter::attire_id'
+       ('blank' for the blank fighter). */
+    mode:'blank', rosterRef:null, records:{},
+    baseGlb:'customization/create-fighter/assets/Soldier.glb' };
 }
 let F = blankFighter();
-let PARTS = [];       // parts-catalog.json
+let PARTS = [];       // parts-catalog.json parts[] (unified catalog v2)
+let PARTS_META = null; // parts-catalog.json header (counts/sources)
+let ROSTER = null;    // data/roster-attires.json (build_roster_attires.py)
 let JIGGLE = null;    // jiggle-schema.json
 let viewer = null;
-let ui = { tab:'body', attireCat:null, partsCat:null, selPart:null, wardSel:0, nudgeStep:0.001 };
+let ui = { tab:'body', attireCat:null, partsCat:null, selPart:null, wardSel:0, nudgeStep:0.001, page:0, query:'' };
 
 const attire = ()=>F.attires[F.attireIndex];
+
+/* ---------- roster mode (UNIFIED-UI-SPEC §2 entry flow) ----------
+   pick fighter -> pick attire -> hub, loading THAT attire's real GLB.
+   Working state stays in the top-level F fields; switching stashes the
+   current state into F.records[key] and restores the target's record. */
+const BLANK_GLB = 'customization/create-fighter/assets/Soldier.glb';
+const currentKey = ()=> F.mode==='roster' && F.rosterRef ? `${F.rosterRef.fighter}::${F.rosterRef.attire}` : 'blank';
+function snapshotWorking(){
+  return JSON.parse(JSON.stringify({
+    profile:F.profile, body:F.body, morphs:F.morphs||{}, jiggle:F.jiggle,
+    attireIndex:F.attireIndex, attires:F.attires, wardrobe:F.wardrobe,
+    wallet:F.wallet, baseGlb:F.baseGlb }));
+}
+function applySnapshot(s){
+  F.profile=s.profile; F.body=s.body; F.morphs=s.morphs||{}; F.jiggle=s.jiggle;
+  F.attireIndex=s.attireIndex||0; F.attires=s.attires; F.wardrobe=s.wardrobe;
+  F.wallet=s.wallet; F.baseGlb=s.baseGlb||BLANK_GLB;
+}
+function stashCurrent(){ F.records = F.records||{}; F.records[currentKey()] = snapshotWorking(); }
+function rosterFighter(slug){ return ROSTER && ROSTER.fighters.find(f=>f.fighter===slug); }
+function rosterAttire(slug, attireId){
+  const f = rosterFighter(slug); if(!f) return null;
+  return f.attires.find(a=>a.attire_id===attireId) || null;
+}
+async function loadBaseModel(){
+  if(!viewer) return;
+  const url = F.baseGlb===BLANK_GLB ? '../create-fighter/assets/Soldier.glb' : '../../'+F.baseGlb;
+  try{ await viewer.loadBase(url); }
+  catch(e){ console.warn('[WH] base model failed', F.baseGlb, e); toast('Model failed to load: '+F.baseGlb); }
+  renderAll();
+}
+/* Select a roster fighter+attire: stash current, restore (or seed) its
+   record, then load its real GLB in the viewer. Blank mode: fighter=null. */
+async function selectRosterAttire(fighter, attireId){
+  stashCurrent();
+  if(!fighter){
+    F.mode='blank'; F.rosterRef=null;
+    if(F.records.blank) applySnapshot(F.records.blank);
+    else { const keep=F.records; Object.assign(F, blankFighter()); F.records=keep; }
+  } else {
+    const rf = rosterFighter(fighter), ra = rosterAttire(fighter, attireId);
+    if(!rf || !ra){ toast('Attire not found in roster data'); return; }
+    F.mode='roster'; F.rosterRef={ fighter, attire:attireId };
+    const key = currentKey();
+    if(F.records[key]) applySnapshot(F.records[key]);
+    else {
+      const keep=F.records;
+      Object.assign(F, blankFighter()); F.records=keep;
+      F.mode='roster'; F.rosterRef={ fighter, attire:attireId };
+      F.profile.name = rf.fighter_name.toUpperCase();
+      F.profile.short_name = rf.fighter_name.slice(0,4).toUpperCase();
+      F.attires = rf.attires.map(a=>{ const b=blankAttire(); b.name=a.attire_name; return b; });
+      F.attireIndex = Math.max(0, rf.attires.findIndex(a=>a.attire_id===attireId));
+      F.baseGlb = ra.glb;
+    }
+    // attire tab switches within this fighter re-point baseGlb at that attire
+    F.baseGlb = ra.glb;
+  }
+  ui.selPart=null; hidePlaceDock();
+  persistQuiet();
+  await loadBaseModel();
+  // Item 4: if this attire has an in-repo customization.json and no local
+  // record existed for it, fetch + restore it (per-attire save format).
+  if(fighter && !F.records[currentKey()]){
+    const ra2 = rosterAttire(fighter, attireId);
+    if(ra2 && ra2.customization_json){
+      try{
+        const r = await fetch('../../'+ra2.customization_json);
+        if(r.ok){ const rec = await r.json();
+          if(rec && rec.app==='wh-creation-suite'){ applyCustomizationRecord(rec); stashCurrent(); persistQuiet(); renderAll(); toast('Restored customization.json ✓'); } }
+      }catch(e){ console.warn('[WH] customization.json fetch failed', e); }
+    }
+  }
+}
+
+/* ---------- per-attire customization record (customization.json v1) ---------- */
+function customizationRecord(){
+  const a = attire();
+  const parts={}, textures=[];
+  for(const [slotKey, partId] of Object.entries(a.equipped)){
+    const p = PARTS.find(x=>x.id===partId); if(!p) continue;
+    const key = p.suite_slot || slotKey;
+    if(p.part_class==='mesh_part' && p.glb){
+      parts[key] = { part_id:p.id, glb:p.glb,
+        placement: a.placements[p.id] || (p.placement? { px:(p.placement.offset||[0,0,0])[0], py:(p.placement.offset||[0,0,0])[1], pz:(p.placement.offset||[0,0,0])[2], rx:(p.placement.rotation||[0,0,0])[0], ry:(p.placement.rotation||[0,0,0])[1], rz:(p.placement.rotation||[0,0,0])[2], s:p.placement.scale||1 } : null) };
+    } else {
+      textures.push({ part_id:p.id, kind:p.kind||p.suite_slot, image:p.asset||p.glb,
+        material:(p.placement&&p.placement.material)||null,
+        rect:(p.placement&&p.placement.pixel_rect)||null });
+      if(p.part_class==='mesh_part') parts[key] = { part_id:p.id, glb:null, placement:null, geometry_pending:true };
+    }
+  }
+  const morphs={}; for(const [k,v] of Object.entries(F.morphs||{})) if(v) morphs[k]=v;
+  return { version:1, app:'wh-creation-suite',
+    fighter: F.mode==='roster' ? F.rosterRef.fighter : 'blank',
+    attire: F.mode==='roster' ? F.rosterRef.attire : `attire${F.attireIndex+1}`,
+    base_glb: F.baseGlb, out_glb: null,
+    body:{ body_type:F.body.body_type, skin_tone:F.body.skin_tone },
+    morphs, parts, textures,
+    colors:{ hair:(a.colors&&a.colors.hair)||null, skin:F.body.skin_tone } };
+}
+function applyCustomizationRecord(rec){
+  if(rec.body){ if(rec.body.body_type) F.body.body_type=rec.body.body_type;
+    if(rec.body.skin_tone) F.body.skin_tone=rec.body.skin_tone; }
+  F.morphs = rec.morphs||{};
+  const a = attire();
+  a.equipped={}; a.placements={};
+  for(const [slot, entry] of Object.entries(rec.parts||{})){
+    if(!entry || !entry.part_id) continue;
+    a.equipped[slot]=entry.part_id;
+    if(entry.placement) a.placements[entry.part_id]=entry.placement;
+    if(!a.owned.includes(entry.part_id)) a.owned.push(entry.part_id);
+  }
+  for(const t of (rec.textures||[])){
+    if(!t || !t.part_id) continue;
+    const p = PARTS.find(x=>x.id===t.part_id);
+    a.equipped[(p&&p.suite_slot)||'face']=t.part_id;
+  }
+  if(rec.colors && rec.colors.hair){ a.colors=a.colors||{}; a.colors.hair=rec.colors.hair; }
+}
+function saveToAttire(){
+  stashCurrent(); persistQuiet();
+  const rec = customizationRecord();
+  const json = JSON.stringify(rec, null, 2);
+  const blob = new Blob([json], {type:'application/json'});
+  const aEl = document.createElement('a'); aEl.href=URL.createObjectURL(blob);
+  aEl.download='customization.json'; aEl.click(); URL.revokeObjectURL(aEl.href);
+  modal('SAVE TO ATTIRE — customization.json',
+    `<p>Record for <b>${esc(rec.fighter)} / ${esc(rec.attire)}</b> (base: <span class="chip">${esc(rec.base_glb||'')}</span>) was persisted locally and downloaded as <b>customization.json</b>.</p>
+     <p class="note">Same flow as dome-params.json: drop the downloaded file into the attire folder in the repo
+     (<span class="chip">${F.mode==='roster' ? esc((rosterAttire(F.rosterRef.fighter, F.rosterRef.attire)||{}).dir||'') : 'blank fighter — no repo folder'}</span>)
+     and commit it — the next time this attire is selected here, the suite fetches that file and restores it automatically.</p>
+     <textarea id="cust-json-copy" readonly rows="12" style="width:100%;background:#0a0d15;color:var(--txt);border:1px solid var(--line);border-radius:8px;font-family:ui-monospace,monospace;font-size:11px">${esc(json)}</textarea>`,
+    [{label:'DONE', cls:'btn-gold'}]);
+  const t=document.querySelector('#cust-json-copy'); if(t){ t.focus(); t.select(); }
+  toast('Saved to attire ✓');
+}
 const esc = s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
 /* ---------- persistence ---------- */
@@ -64,6 +221,37 @@ function modal(title, bodyHTML, actions){
 }
 function closeModal(){ $('#modal').hidden=true; $('#modal-scrim').hidden=true; }
 $('#modal-scrim').onclick=closeModal;
+
+/* ---------- morphs adapter (packages dna.js/body.js live preview) ----------
+   morphs.js ids -> DNA slider keys (weighted). DNA sliders drive body.js
+   procedural morph targets + bone scales on the loaded roster model.
+   Face morphs have no DNA region: they are stored in the record and also
+   passed to morphs.js applyMorphProxies (bone-name proxies where the rig
+   supports them); the baked MPFB shape keys remain the ground truth. */
+const MORPH2DNA = {
+  height:[['height',1]], bulk:[['weight',0.6],['muscle',0.4]], muscle:[['muscle',1]],
+  fat:[['weight',1]], belly:[['belly',1]], chest:[['chest',1]], waist:[['belly',0.5]],
+  hips:[['hips',1]], shoulders:[['shoulders',1]], limbs:[['armLen',0.5],['legLen',0.5]],
+  neck:[['neck',1]], hands:[], feet:[],
+};
+const FRAME_IDS = ['height','shoulders','limbs','neck','hands','feet'];
+function morphsToDnaSliders(morphs){
+  const out={};
+  for(const [id,v] of Object.entries(morphs||{})){
+    if(!v) continue;
+    for(const [key,w] of (MORPH2DNA[id]||[])){
+      const s=DNA_SLIDERS[key]; if(!s) continue;
+      out[key]=Math.min(s.range[1], Math.max(s.range[0], (out[key]||0)+v*w));
+    }
+  }
+  return out;
+}
+function syncMorphs(){
+  if(!viewer || !viewer.model) return;
+  const sliders = morphsToDnaSliders(F.morphs);
+  try{ if(Object.keys(sliders).length || viewer.model.userData._csPrepared) { applyBodySliders(viewer.model, sliders); viewer.model.userData._csPrepared=true; } }catch(e){ console.warn('[WH] body sliders failed', e); }
+  try{ applyMorphProxies(viewer.model, F.morphs||{}); }catch(e){}
+}
 
 /* ---------- 3D sync ---------- */
 function defaultPlacement(def){
@@ -88,17 +276,30 @@ function syncParts3D(){
 function syncPreview(){
   if(!viewer) return;
   viewer.setProportions(F.body.proportions);
+  syncMorphs();
   syncParts3D();
-  // re-apply texture-part markers (they don't persist in the 3D scene across re-renders)
+  // texture parts: live swap first (packages parts.js semantics — match the
+  // registry placement's material/texture on the loaded model); when no
+  // material matches this model, fall back to the socket marker (honest:
+  // the part applies at that socket, it is not preview-swappable here).
   const texSeen = new Set();
   for(const [slotKey, partId] of Object.entries(attire().equipped)){
     const p = PARTS.find(x=>x.id===partId);
     if(p && p.part_class!=='mesh_part'){
       texSeen.add('tex-'+p.id);
-      viewer.setMarker('tex-'+p.id, partSocket(p), '#e8b64c', p.name);
+      const asset = p.asset||p.glb;
+      if(viewer.model && p.placement && p.placement.material && asset && /\.(png|jpe?g)$/i.test(asset)){
+        if(!viewer.texSwaps || !viewer.texSwaps.has(p.id))
+          viewer.swapTexturePreview(p.id, '../../'+asset, p.placement).then(ok=>{
+            if(!ok) viewer.setMarker('tex-'+p.id, partSocket(p), '#e8b64c', p.name); });
+      } else {
+        viewer.setMarker('tex-'+p.id, partSocket(p), '#e8b64c', p.name);
+      }
     }
   }
   for(const key of [...viewer.markers.keys()]) if(!texSeen.has(key)) viewer.clearMarker(key);
+  if(viewer.texSwaps) for(const id of [...viewer.texSwaps.keys()])
+    if(!Object.values(attire().equipped).includes(id)) viewer.restoreTexture(id);
 }
 
 /* ---------- topbar ---------- */
@@ -111,7 +312,10 @@ function renderTopbar(){
     const b=document.createElement('button');
     b.className='attire-tab'+(i===F.attireIndex?' active':''); b.setAttribute('role','tab');
     b.innerHTML=`<span class="athumb"${a.thumb?` style="background-image:url('${a.thumb}')}`:''}></span>${esc(a.name||`ATTIRE ${i+1}`)}`;
-    b.onclick=()=>{ F.attireIndex=i; ui.selPart=null; renderAll(); };
+    b.onclick=()=>{ if(F.mode==='roster' && F.rosterRef){
+        const rf=rosterFighter(F.rosterRef.fighter);
+        if(rf && rf.attires[i]){ selectRosterAttire(F.rosterRef.fighter, rf.attires[i].attire_id); return; } }
+      F.attireIndex=i; ui.selPart=null; renderAll(); };
     tabs.appendChild(b);
   });
 }
@@ -140,7 +344,11 @@ function renderBody(el){
   el.innerHTML=`
     <div class="sect">BODY TYPE — 14M + 9F (No Mercy)</div><div class="roster-grid" id="btypes"></div>
     <div class="sect">SKIN TONE — 8 tones</div><div class="swatches" id="stones"></div>
-    <div class="sect">PROPORTIONS — WMXIX parametric (live)</div><div id="psl"></div>`;
+    <div class="sect">PROPORTIONS — WMXIX parametric (live)</div><div id="psl"></div>
+    <div class="sect">MORPHS — FRAME (packages morphs.js)</div><div id="mframe"></div>
+    <div class="sect">MORPHS — MASS</div><div id="mmass"></div>
+    <div class="sect">MORPHS — FACE SHAPE</div><div id="mface"></div>
+    <div class="note">Morph sliders are the real packages/creation-suite catalog (BODY_MORPHS + FACE_SHAPE_MORPHS), driven live through packages dna.js/body.js on the loaded model. Values save into this attire's customization record. Face values also record for the MPFB bake (shape keys are the ground truth).</div>`;
   const bt=el.querySelector('#btypes');
   BODY_TYPES.forEach(t=>{ const b=document.createElement('button');
     b.className='roster-card'+(F.body.body_type===t?' active':''); b.textContent=t;
@@ -159,6 +367,19 @@ function renderBody(el){
       d.querySelector('.val').textContent=(+inp.value).toFixed(2); syncPreview(); persistQuiet(); };
     sl.appendChild(d);
   });
+  const addMorph=(host, m)=>{
+    const v=(F.morphs && F.morphs[m.id])||0;
+    const d=document.createElement('div'); d.className='ctl'; d.id='morph-'+m.id;
+    d.innerHTML=`<label>${m.label}<span class="val">${v.toFixed(2)}</span></label>
+      <input type="range" min="${m.range[0]}" max="${m.range[1]}" step="0.01" value="${v}" data-morph="${m.id}" aria-label="${m.label}">`;
+    const inp=d.querySelector('input');
+    inp.oninput=()=>{ F.morphs=F.morphs||{}; F.morphs[m.id]=+inp.value;
+      d.querySelector('.val').textContent=(+inp.value).toFixed(2); syncMorphs(); persistQuiet(); };
+    host.appendChild(d);
+  };
+  const hf=el.querySelector('#mframe'), hm=el.querySelector('#mmass'), hface=el.querySelector('#mface');
+  BODY_MORPHS.forEach(m=> addMorph(FRAME_IDS.includes(m.id)?hf:hm, m));
+  FACE_SHAPE_MORPHS.forEach(m=> addMorph(hface, m));
 }
 
 /* ================= ATTIRE (T7 spine) ================= */
@@ -194,37 +415,80 @@ function renderAttire(el){
 }
 
 /* ================= PARTS (wired libraries) ================= */
+const T7_SLOT_LABELS = { '1':'Head','2':'Hairstyle','3':'Full Head','4':'Hair Accessory','5':'Glasses','6':'Face','7':'Facial Hair','8':'Face Paint','9':'Upper Body','10':'Full Body','11':'Lower Body','H':'Hands','F':'Feet','12':'Upper Accessory','13':'Lower Accessory','14':'Extra','15':'Effects','17':'Aura','EYES':'Eyes' };
 function renderParts(el){
   if(!ui.partsCat){
-    $('#panel-sub').textContent='Wired part libraries — tap a library, tap a part';
-    el.innerHTML=`<div class="note">Eyes, decals, masks, hair — pulled from the real repo libraries
-      (PARTS-REGISTRY.json, eye-library/, decal-library/). Tap library → scroll → tap part to assign.</div><div id="pcats"></div>`;
+    $('#panel-sub').textContent='Unified parts catalog — browse by T7 slot, tap to assign';
+    const countsTxt = PARTS_META ? Object.entries(PARTS_META.counts||{}).map(([k,v])=>`${k}: ${v}`).join(' · ') : '';
+    el.innerHTML=`<div class="note">ONE unified catalog (${PARTS.length} parts) built by
+      <span class="chip">build_suite_catalog.py</span> — ${esc(countsTxt)}.
+      Source labels are shown on every part. Tap a T7 slot → scroll → tap part to assign. No drag-and-drop.</div>
+      <div class="sect">BROWSE BY T7 SLOT</div><div id="pcats"></div>
+      <div class="sect">LIBRARIES</div><div id="plibs"></div>`;
     const host=el.querySelector('#pcats');
+    const bySlot={};
+    PARTS.forEach(p=>{ const s=p.t7_slot||SLOT2CAT[p.suite_slot]||'?'; (bySlot[s]=bySlot[s]||[]).push(p); });
+    Object.keys(bySlot).sort().forEach(s=>{
+      const b=document.createElement('button'); b.className='subcat'; b.id='pslot-'+s;
+      b.innerHTML=`<span class="sc-ico">🎭</span><span>${esc(T7_SLOT_LABELS[s]||('Slot '+s))}<br><small style="color:var(--dim)">T7 slot ${esc(s)}</small></span><span class="sc-count">${bySlot[s].length} parts</span>`;
+      b.onclick=()=>{ ui.partsCat={key:'slot-'+s, slot:s, label:(T7_SLOT_LABELS[s]||('Slot '+s))+' · T7 '+s, list:bySlot[s]}; ui.selPart=null; ui.page=0; ui.query=''; renderAll(); };
+      host.appendChild(b);
+    });
+    const libs=el.querySelector('#plibs');
     PARTS_TREE.forEach(c=>{
-      const list = c.key==='eyes' ? PARTS.filter(p=>p.suite_slot==='eye')
-        : c.key==='decals' ? PARTS.filter(p=>['decal_logo','tights','pants'].includes(p.suite_slot))
+      if(c.key==='eyes'){
+        // Owner eye verdict (2026-10-20): eyes are REAL PLACEABLE MESH PARTS.
+        // Placeable eye/brow parts and legacy texture variants are SEPARATE lists.
+        const placeable = PARTS.filter(p=>p.eye_kind==='placeable_part');
+        const variants = PARTS.filter(p=>p.eye_kind==='texture_variant');
+        [['👁️ PLACEABLE EYE PARTS — mesh, position them yourself', placeable, 'eyes-placeable'],
+         ['🎨 EYE TEXTURE VARIANTS — legacy swaps only, NOT the eye solution', variants, 'eyes-textures']].forEach(([label, list, key])=>{
+          const b=document.createElement('button'); b.className='subcat'; b.id='pcat-'+key;
+          b.innerHTML=`<span class="sc-ico">👁️</span><span>${label}</span><span class="sc-count">${list.length} parts</span>`;
+          b.onclick=()=>{ ui.partsCat={key, label, list}; ui.selPart=null; ui.page=0; ui.query=''; renderAll(); };
+          libs.appendChild(b);
+        });
+        return;
+      }
+      const list = c.key==='decals' ? PARTS.filter(p=>['decal_logo','tights','pants'].includes(p.suite_slot))
         : c.key==='masks' ? PARTS.filter(p=>['mask','eye_lenses','cowl','gauntlets'].includes(p.suite_slot))
         : PARTS.filter(p=>p.suite_slot==='hair');
       const b=document.createElement('button'); b.className='subcat'; b.id='pcat-'+c.key;
       b.innerHTML=`<span class="sc-ico">${c.icon}</span><span>${c.label}<br><small style="color:var(--dim)">${esc(c.note.split('—')[0])}</small></span><span class="sc-count">${list.length} parts</span>`;
-      b.onclick=()=>{ ui.partsCat={...c, list}; ui.selPart=null; renderAll(); };
-      host.appendChild(b);
+      b.onclick=()=>{ ui.partsCat={...c, list}; ui.selPart=null; ui.page=0; ui.query=''; renderAll(); };
+      libs.appendChild(b);
     });
     return;
   }
   renderPartGrid(el, ui.partsCat, ui.partsCat.list, 'partsCat');
 }
 
-/* ---- shared tap-to-assign grid ---- */
+/* ---- shared tap-to-assign grid (search + paging for the 1,149-part catalog) ---- */
+const PAGE_SIZE = 60;
 function renderPartGrid(el, cat, list, backKey){
   const slotKey = cat.slot || cat.key;
-  $('#panel-sub').textContent=`${cat.label} — ${list.length} parts · tap to ${cat.key==='eyes'||cat.key==='decals'?'apply':'equip'}`;
+  const q = (ui.query||'').toLowerCase();
+  const filtered = q ? list.filter(p=>p.name.toLowerCase().includes(q)||p.id.toLowerCase().includes(q)||(p.library||'').toLowerCase().includes(q)) : list;
+  const pages = Math.max(1, Math.ceil(filtered.length/PAGE_SIZE));
+  ui.page = Math.min(ui.page||0, pages-1);
+  const pageItems = filtered.slice(ui.page*PAGE_SIZE, ui.page*PAGE_SIZE+PAGE_SIZE);
+  $('#panel-sub').textContent=`${cat.label} — ${filtered.length} parts · tap to assign (no drag-and-drop)`;
   el.innerHTML=`
-    <div class="back-row"><button class="btn back-btn" id="btn-back">← ${backKey==='attireCat'?'CATEGORIES':'LIBRARIES'}</button></div>
+    <div class="back-row"><button class="btn back-btn" id="btn-back">← ${backKey==='attireCat'?'CATEGORIES':'SLOTS / LIBRARIES'}</button></div>
+    <input class="search" id="part-search" type="search" placeholder="Search parts…" value="${esc(ui.query||'')}" aria-label="Search parts">
+    <div class="pager"><button class="btn btn-sm" id="pg-prev" ${ui.page===0?'disabled':''}>← PREV</button>
+      <span class="bb-hint">Page ${ui.page+1} / ${pages}</span>
+      <button class="btn btn-sm" id="pg-next" ${ui.page>=pages-1?'disabled':''}>NEXT →</button></div>
     <div class="item-grid" id="grid"></div><div id="pdetail"></div>`;
-  el.querySelector('#btn-back').onclick=()=>{ ui[backKey]=null; ui.selPart=null; hidePlaceDock(); renderAll(); };
+  el.querySelector('#btn-back').onclick=()=>{ ui[backKey]=null; ui.selPart=null; ui.query=''; hidePlaceDock(); renderAll(); };
+  const search=el.querySelector('#part-search');
+  search.oninput=()=>{ ui.query=search.value; ui.page=0;
+    const pos=search.selectionStart; renderPanel();
+    const s2=document.querySelector('#part-search'); if(s2){ s2.focus(); s2.setSelectionRange(pos,pos); } };
+  el.querySelector('#pg-prev').onclick=()=>{ ui.page--; renderPanel(); };
+  el.querySelector('#pg-next').onclick=()=>{ ui.page++; renderPanel(); };
   const grid=el.querySelector('#grid');
-  list.forEach(p=>{
+  pageItems.forEach(p=>{
     const owned = attire().owned.includes(p.id);
     const eqd = Object.values(attire().equipped).includes(p.id);
     const d=document.createElement('div');
@@ -232,12 +496,16 @@ function renderPartGrid(el, cat, list, backKey){
     d.id='part-'+p.id;
     d.innerHTML=`<div class="item-mono">${p.part_class==='mesh_part'?'🧩':'🎨'}</div>
       <div class="item-name">${esc(p.name)}</div>
-      <div class="item-meta">${p.part_class==='mesh_part'?'mesh · '+esc(p.socket||''):esc(p.library||'')}<br>
+      <div class="item-meta">${p.part_class==='mesh_part'?'mesh · '+esc(p.socket||'—'):esc(p.library||'')}<br>
+      <span class="chip" style="font-size:9px">${esc(p.source||p.library||'')}</span>
+      ${p.eye_kind==='placeable_part'?' <span class="geo-badge" style="background:#12331c;color:#46c46a">PLACEABLE PART</span>':''}
+      ${p.eye_kind==='texture_variant'?' <span class="geo-badge">TEXTURE VARIANT (LEGACY)</span>':''}
+      ${p.geometry_pending?' <span class="geo-badge">GEOMETRY PENDING</span>':''}<br>
       ${owned?'<span class="owned">OWNED</span>':'<span class="price">500G</span>'}</div>`;
     d.onclick=()=>{ ui.selPart=p; renderPanel(); renderTopbar(); };
     grid.appendChild(d);
   });
-  if(ui.selPart) renderPartDetail(el.querySelector('#pdetail'), ui.selPart, slotKey);
+  if(ui.selPart && list.includes(ui.selPart)) renderPartDetail(el.querySelector('#pdetail'), ui.selPart, slotKey);
 }
 function renderPartDetail(el, p, slotKey){
   const owned = attire().owned.includes(p.id);
@@ -247,11 +515,27 @@ function renderPartDetail(el, p, slotKey){
     <div class="kv"><span>Part ID</span><b style="font-size:11px">${esc(p.id)}</b></div>
     <div class="kv"><span>Class</span><b>${esc(p.part_class)}</b></div>
     <div class="kv"><span>Library</span><b>${esc(p.library||'—')}</b></div>
+    <div class="kv"><span>Source</span><b style="font-size:11px">${esc(p.source||'—')}</b></div>
+    <div class="kv"><span>T7 slot</span><b>${esc(p.t7_slot||SLOT2CAT[p.suite_slot]||'—')} · suite slot ${esc(p.suite_slot||'—')}</b></div>
+    ${p.eye_kind==='placeable_part'?'<div class="note">👁️ <b>Real placeable eye part</b> (owner verdict: eyes are parts, not decals). Equip it, then use <b>PLACEMENT</b> to set position / rotation / scale yourself — placement saves into this attire\'s record.</div>':''}
+    ${p.eye_kind==='texture_variant'?'<div class="note">🎨 <b>Legacy texture variant</b> — an eye texture swap only. This is NOT the eye solution (owner verdict 2026-10-20: eyes are real placeable parts with eyelashes + eyebrows, placed by hand in this suite).</div>':''}
+    ${p.geometry_pending?'<div class="note">⚠️ Geometry pending — this registry part has no converted mesh yet; applying records it on the attire and marks its socket.</div>':''}
     ${p.glb?`<div class="kv"><span>Mesh</span><b style="font-size:11px">${esc(p.glb)}</b></div>
     <div class="kv"><span>Socket</span><b>${esc(p.socket||'—')}</b></div>`:''}
     <div class="btn-row" id="p-actions"></div>`;
   const box=el.querySelector('#p-actions');
-  if(p.part_class==='mesh_part'){
+  if(p.part_class==='mesh_part' && !p.glb){
+    // geometry-pending registry part: record + socket marker, no fake mesh
+    if(!eqd){
+      const b=document.createElement('button'); b.className='btn btn-green'; b.id='btn-apply-part'; b.textContent='APPLY (GEOMETRY PENDING)';
+      b.onclick=()=>{ attire().equipped[slotKey]=p.id; renderAll(); toast('Recorded ✓ — geometry pending'); };
+      box.appendChild(b);
+    } else {
+      const b=document.createElement('button'); b.className='btn btn-red'; b.id='btn-unequip-part'; b.textContent='REMOVE';
+      b.onclick=()=>{ for(const k of Object.keys(attire().equipped)) if(attire().equipped[k]===p.id) delete attire().equipped[k]; renderAll(); };
+      box.appendChild(b);
+    }
+  } else if(p.part_class==='mesh_part'){
     if(!eqd){
       const b=document.createElement('button'); b.className='btn btn-gold'; b.id='btn-equip-part';
       b.textContent=owned?'EQUIP':'BUY — 500G';
@@ -270,10 +554,15 @@ function renderPartDetail(el, p, slotKey){
     }
   } else {
     const b=document.createElement('button'); b.className='btn btn-green'; b.id='btn-apply-part'; b.textContent='APPLY';
-    b.onclick=()=>{ attire().equipped[slotKey]=p.id;
-      if(viewer) viewer.setMarker('tex-'+p.id, partSocket(p), '#e8b64c', p.name);
-      renderAll(); toast('Applied ✓'); };
+    b.onclick=()=>{ attire().equipped[slotKey]=p.id; renderAll(); toast('Applied ✓'); };
     box.appendChild(b);
+    if(eqd){
+      const b2=document.createElement('button'); b2.className='btn btn-red'; b2.id='btn-remove-part'; b2.textContent='REMOVE';
+      b2.onclick=()=>{ for(const k of Object.keys(attire().equipped)) if(attire().equipped[k]===p.id) delete attire().equipped[k];
+        if(viewer){ viewer.restoreTexture(p.id); viewer.clearMarker('tex-'+p.id); }
+        renderAll(); };
+      box.appendChild(b2);
+    }
   }
 }
 
@@ -412,8 +701,15 @@ function renderProfile(el){
     <div class="field"><label>SHORT NAME</label><input data-pk="short_name" type="text" value="${esc(pf.short_name)}"></div>
     <div class="sect">WESTERN HEART CANON</div>
     <div class="field"><label>SOUL</label><select data-pk="soul">${SOULS.map(s=>`<option ${pf.soul===s?'selected':''}>${s}</option>`).join('')}</select></div>
-    <div class="note">🔒 Moveset, AI style, parameters shared across all 4 attire slots (No Mercy rule).</div>`;
+    <div class="note">🔒 Moveset, AI style, parameters shared across all 4 attire slots (No Mercy rule).</div>
+    <div class="sect">PER-ATTIRE SAVE — customization.json</div>
+    <div class="note">Records are keyed <b>fighter + attire</b> in this suite. <b>Save to Attire</b> persists the record, downloads <span class="chip">customization.json</span> and shows a copyable panel.
+      Drop that file into the attire's repo folder and commit it — the same flow as <span class="chip">dome-params.json</span> for Doc Frank's dome — and selecting this attire here restores it automatically.</div>
+    <div class="btn-row"><button class="btn btn-blue" id="prof-save-attire">🎽 SAVE TO ATTIRE</button></div>
+    <div class="kv"><span>Current record key</span><b id="prof-rec-key"></b></div>`;
   el.querySelectorAll('[data-pk]').forEach(i=>i.onchange=()=>{ F.profile[i.dataset.pk]=i.value; renderTopbar(); persistQuiet(); });
+  const rk=el.querySelector('#prof-rec-key'); if(rk) rk.textContent=currentKey();
+  const ps=el.querySelector('#prof-save-attire'); if(ps) ps.onclick=saveToAttire;
 }
 function renderMoveset(el){
   $('#panel-sub').textContent='Tap slot → scroll library → tap to assign';
@@ -510,14 +806,26 @@ async function renderDome(el){
 
 /* ---------- roster / save / export ---------- */
 $('#btn-roster').onclick=()=>{
-  modal('FIGHTER SELECT',`<div class="roster-grid">
-    ${['NEW FIGHTER','PANTERA','STAR','KEVIN','MARIPOSA','SILVERTONGUE'].map(r=>
-    `<button class="roster-card${F.profile.name===r?' active':''}" data-r="${r}">${r}</button>`).join('')}</div>
-    <div class="note">Entry flow (verbatim T7): pick fighter → pick attire slot → customize. Roster bodies are canon.</div>`,
+  if(!ROSTER){ modal('FIGHTER SELECT','<p>Roster data (data/roster-attires.json) failed to load.</p>',[{label:'CLOSE',cls:'btn-gold'}]); return; }
+  const fighters = ROSTER.fighters.map(f=>
+    `<button class="roster-card${F.rosterRef&&F.rosterRef.fighter===f.fighter?' active':''}" data-f="${esc(f.fighter)}">${esc(f.fighter_name)}<br><small style="color:var(--dim)">${f.attires.length} attire${f.attires.length===1?'':'s'}</small></button>`).join('');
+  modal('FIGHTER SELECT',`<div class="sect">EDIT FIGHTER — pick fighter, then attire (UNIFIED-UI-SPEC §2)</div>
+    <div class="roster-grid"><button class="roster-card${F.mode==='blank'?' active':''}" data-f="">🧍 NEW FIGHTER<br><small style="color:var(--dim)">blank CAW base</small></button>${fighters}</div>
+    <div id="roster-attires"></div>
+    <div class="note">Entry flow (verbatim T7): pick fighter → pick attire slot → customize. Selecting loads that attire's real GLB. Blank-fighter mode stays intact.</div>`,
     [{label:'CLOSE',cls:'btn-gold'}]);
-  document.querySelectorAll('[data-r]').forEach(b=>b.onclick=()=>{ F.profile.name=b.dataset.r; closeModal(); renderAll(); });
+  document.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{
+    const slug=b.dataset.f;
+    if(!slug){ closeModal(); selectRosterAttire(null); return; }
+    const rf=rosterFighter(slug); if(!rf) return;
+    const host=document.querySelector('#roster-attires');
+    host.innerHTML=`<div class="sect">${esc(rf.fighter_name).toUpperCase()} — ATTIRE</div><div class="roster-grid">${
+      rf.attires.map(a=>`<button class="roster-card" data-a="${esc(a.attire_id)}">${esc(a.attire_name)}<br><small style="color:var(--dim)">${esc(a.glb.split('/').pop())}</small></button>`).join('')}</div>`;
+    host.querySelectorAll('[data-a]').forEach(ab=>ab.onclick=()=>{ closeModal(); selectRosterAttire(slug, ab.dataset.a); });
+  });
 };
 $('#btn-save').onclick=persist;
+{ const bsa=$('#btn-save-attire'); if(bsa) bsa.onclick=saveToAttire; }
 /* Stream 4: in-game wiring — back to the game menu (saves first). */
 { const bg=$('#btn-back-game'); if(bg) bg.onclick=()=>{ persistQuiet(); window.location.href='../../game/index.html'; } }
 $('#btn-export').onclick=()=>{
@@ -530,19 +838,27 @@ $('#btn-export').onclick=()=>{
 async function boot(){
   try{ const s=localStorage.getItem(LS_KEY); if(s) F=Object.assign(blankFighter(), JSON.parse(s)); }catch(e){}
   try{
-    const [parts, jig] = await Promise.all([
+    const [parts, jig, roster] = await Promise.all([
       fetch('data/parts-catalog.json').then(r=>r.json()),
       fetch('data/jiggle-schema.json').then(r=>r.json()),
+      fetch('data/roster-attires.json').then(r=>r.ok?r.json():null).catch(()=>null),
     ]);
-    PARTS=parts; JIGGLE=jig;
+    PARTS = Array.isArray(parts) ? parts : (parts.parts||[]);
+    PARTS_META = Array.isArray(parts) ? null : parts;
+    // normalize legacy curated entries (pre-unified catalogs) to the v2 shape
+    PARTS.forEach(p=>{ if(!p.asset) p.asset=p.glb||null; if(!p.source) p.source=p.library||'curated';
+      if(!p.t7_slot) p.t7_slot=SLOT2CAT[p.suite_slot]||null;
+      if(p.geometry_pending===undefined) p.geometry_pending=!!p.geometryPending; });
+    JIGGLE=jig; ROSTER=roster;
   }catch(e){
     $('#loader').innerHTML='<div>DATA LOAD FAILED — serve over http</div>'; return;
   }
+  if(!Array.isArray(F.records)) F.records = F.records||{};
+  if(F.mode==='roster' && (!F.rosterRef || !rosterAttire(F.rosterRef.fighter, F.rosterRef.attire))){ F.mode='blank'; F.rosterRef=null; F.baseGlb=BLANK_GLB; }
   viewer=new SuiteViewer($('#stage3d'));
-  window.__suite={ viewer, get F(){return F;}, ui, setTab };
+  window.__suite={ viewer, get F(){return F;}, ui, setTab, selectRosterAttire, customizationRecord, currentKey, get ROSTER(){return ROSTER;}, get PARTS(){return PARTS;} };
   viewer.onReady=()=>{ renderAll(); };
-  try{ await viewer.loadBase('../create-fighter/assets/Soldier.glb'); }
-  catch(e){ console.warn('base model failed', e); renderAll(); }
+  await loadBaseModel();
   renderAll();
   $('#loader').classList.add('done');
   $('#src-note').textContent='Menus: T7 slots verbatim · WWE 2K CAW flows · No Mercy/WMXIX/DOA — see UI-EXTRACTION-LOG.md';

@@ -6,6 +6,76 @@
   "proxy": false,
   "proxy_note": null,
   "variant": 8,
+  "strings": [
+    {
+      "input": "2,1",
+      "hits": [
+        "2",
+        "1"
+      ],
+      "t3_rows": [
+        152,
+        153
+      ]
+    },
+    {
+      "input": "2,1,2",
+      "hits": [
+        "2",
+        "1",
+        "2"
+      ],
+      "t3_rows": [
+        152,
+        153,
+        151
+      ]
+    },
+    {
+      "input": "2,4",
+      "hits": [
+        "2",
+        "4"
+      ],
+      "t3_rows": [
+        182
+      ]
+    }
+  ],
+  "specials": [
+    {
+      "input": "d,d/f,d,d/f+1+2",
+      "t3_row": 211,
+      "damage": 21,
+      "throw": true
+    },
+    {
+      "input": "n,d/b,n,f+1+2",
+      "t3_row": 211,
+      "damage": 21,
+      "throw": true
+    }
+  ],
+  "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
+  "schema_version": 2,
+  "t3_bank": "moveset_bryan.json",
+  "t3_bank_rows": 365,
+  "t3_bank_attack_rows": 82,
+  "generated_full_moveset": {
+    "by": "tools/gen-movesets-t3.py",
+    "date": "2026-10-20",
+    "note": "Full T3 bank depth merged over curated base; curated moves preserved verbatim. Smallest T3 bank (365 rows, 188 attacks); 79 attack rows have no per-character input in the extracted data (common-bank / reaction rows). Unique playable inputs top out at ~90-97 per fighter."
+  },
+  "expansion": {
+    "stream": "stream6/combat-100",
+    "date": "2026-10-19",
+    "moves_added": 17,
+    "inputs_remapped": [
+      "S->1+2",
+      "P+K->1+4"
+    ],
+    "note": "Additive expansion from real T3 teardown bank rows. Existing moves untouched."
+  },
   "moves": {
     "1": {
       "name": "BAEK 1 (T3 bryan r46)",
@@ -163,7 +233,8 @@
       "input_slots": [
         "1+3"
       ],
-      "move_class": "throw"
+      "move_class": "throw",
+      "throw_break": "1"
     },
     "2+4": {
       "name": "BAEK 2+4 throw (T3 bryan r210)",
@@ -188,7 +259,8 @@
       "input_slots": [
         "2+4"
       ],
-      "move_class": "throw"
+      "move_class": "throw",
+      "throw_break": "2"
     },
     "d/f+2": {
       "name": "BAEK d/f+2 (T3 bryan r149)",
@@ -255,7 +327,8 @@
       "input_slots": [
         "d,d/f,d,d/f+1+2"
       ],
-      "move_class": "throw"
+      "move_class": "throw",
+      "throw_break": "1+2"
     },
     "n,d/b,n,f+1+2": {
       "name": "BAEK n,d/b,n,f+1+2 throw (T3 bryan r211)",
@@ -280,7 +353,8 @@
       "input_slots": [
         "n,d/b,n,f+1+2"
       ],
-      "move_class": "throw"
+      "move_class": "throw",
+      "throw_break": "1+2"
     },
     "S": {
       "name": "Kick Is the Question [WH SIGNATURE]",
@@ -326,6 +400,26 @@
       "isGrab": true
     },
     "1+2": {
+      "name": "Kick Is the Question [WH SIGNATURE]",
+      "input": "1+2",
+      "startup": 0.26,
+      "active": 0.017,
+      "recovery": 0.78,
+      "damage": 17,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 12,
+      "anim_ref": "wh:baek:sig:kick-is-the-question",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "The kick is the question. Discipline is the answer. A textbook kick, graded on the spot.",
+      "input_remapped_from": "S"
+    },
+    "1+2__main": {
       "name": "BAEK 1+2 (T3 bryan r41)",
       "input": "1+2",
       "t3_source": "bryan",
@@ -344,6 +438,470 @@
         "1+2"
       ],
       "move_class": "strike"
+    },
+    "1+4": {
+      "name": "Homework [WH SIGNATURE]",
+      "input": "1+4",
+      "startup": 0.3,
+      "active": 0.05,
+      "recovery": 0.9,
+      "damage": 21,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 13,
+      "anim_ref": "wh:baek:sig:homework",
+      "input_slots": [
+        "1+4"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "Every fight is a lesson; every loss is homework. A teaching throw with corrections.",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "input_remapped_from": "P+K",
+      "throw_break": "1+2"
+    },
+    "b+2": {
+      "name": "BAEK b+2 (T3 bryan r158)",
+      "input": "b+2",
+      "t3_source": "bryan",
+      "t3_row": 158,
+      "t3_command": "4+RP",
+      "startup": 0.317,
+      "active": 0.017,
+      "recovery": 0.7,
+      "damage": 11,
+      "t3_damage": 18,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan:row:158",
+      "input_slots": [
+        "b+2"
+      ],
+      "move_class": "strike"
+    },
+    "b+4": {
+      "name": "BAEK b+4 (T3 bryan r111)",
+      "input": "b+4",
+      "t3_source": "bryan",
+      "t3_row": 111,
+      "t3_command": "4+RK",
+      "startup": 0.35,
+      "active": 0.2,
+      "recovery": 0.633,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:bryan:row:111",
+      "input_slots": [
+        "b+4"
+      ],
+      "move_class": "strike"
+    },
+    "f+2": {
+      "name": "BAEK f+2 (T3 bryan r150)",
+      "input": "f+2",
+      "t3_source": "bryan",
+      "t3_row": 150,
+      "t3_command": "6+RP",
+      "startup": 0.217,
+      "active": 0.017,
+      "recovery": 0.783,
+      "damage": 18,
+      "t3_damage": 30,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:bryan:row:150",
+      "input_slots": [
+        "f+2"
+      ],
+      "move_class": "strike"
+    },
+    "f+2__main": {
+      "name": "BAEK f+2 (T3 bryan r150)",
+      "input": "f+2",
+      "t3_source": "bryan",
+      "t3_row": 150,
+      "t3_command": "6+RP",
+      "startup": 0.217,
+      "active": 0.017,
+      "recovery": 0.783,
+      "damage": 18,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan:row:150",
+      "input_slots": [
+        "f+2"
+      ],
+      "move_class": "strike"
+    },
+    "f+3": {
+      "name": "BAEK f+3 (T3 bryan r191)",
+      "input": "f+3",
+      "t3_source": "bryan",
+      "t3_row": 191,
+      "t3_command": "6+LK",
+      "startup": 0.367,
+      "active": 0.05,
+      "recovery": 0.867,
+      "damage": 21,
+      "t3_damage": 36,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:bryan:row:191",
+      "input_slots": [
+        "f+3"
+      ],
+      "move_class": "strike"
+    },
+    "f+3__main": {
+      "name": "BAEK f+3 (T3 bryan r191)",
+      "input": "f+3",
+      "t3_source": "bryan",
+      "t3_row": 191,
+      "t3_command": "6+LK",
+      "startup": 0.367,
+      "active": 0.05,
+      "recovery": 0.867,
+      "damage": 21,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan:row:191",
+      "input_slots": [
+        "f+3"
+      ],
+      "move_class": "strike"
+    },
+    "b+1+2": {
+      "name": "BAEK b+1+2 (T3 bryan r167)",
+      "input": "b+1+2",
+      "t3_source": "bryan",
+      "t3_row": 167,
+      "t3_command": "4+LP+RP",
+      "startup": 0.3,
+      "active": 0.033,
+      "recovery": 0.1,
+      "damage": 8,
+      "t3_damage": 14,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan:row:167",
+      "input_slots": [
+        "b+1+2"
+      ],
+      "move_class": "strike"
+    },
+    "b+1+4": {
+      "name": "BAEK b+1+4 (T3 bryan r178)",
+      "input": "b+1+4",
+      "t3_source": "bryan",
+      "t3_row": 178,
+      "t3_command": "4+LP+RK",
+      "startup": 0.85,
+      "active": 0.083,
+      "recovery": 0.833,
+      "damage": 35,
+      "t3_damage": 60,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:bryan:row:178",
+      "input_slots": [
+        "b+1+4"
+      ],
+      "move_class": "strike"
+    },
+    "b+1+4__main": {
+      "name": "BAEK b+1+4 (T3 bryan r178)",
+      "input": "b+1+4",
+      "t3_source": "bryan",
+      "t3_row": 178,
+      "t3_command": "4+LP+RK",
+      "startup": 0.85,
+      "active": 0.083,
+      "recovery": 0.833,
+      "damage": 35,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan:row:178",
+      "input_slots": [
+        "b+1+4"
+      ],
+      "move_class": "strike"
+    },
+    "d/f+1": {
+      "name": "BAEK d/f+1 (T3 bryan r148)",
+      "input": "d/f+1",
+      "t3_source": "bryan",
+      "t3_row": 148,
+      "t3_command": "3+LP",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.517,
+      "damage": 6,
+      "t3_damage": 11,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan:row:148",
+      "input_slots": [
+        "d/f+1"
+      ],
+      "move_class": "strike"
+    },
+    "f+1+4": {
+      "name": "BAEK f+1+4 (T3 bryan r179)",
+      "input": "f+1+4",
+      "t3_source": "bryan",
+      "t3_row": 179,
+      "t3_command": "6+LP+RK",
+      "startup": 0.467,
+      "active": 0.017,
+      "recovery": 0.833,
+      "damage": 12,
+      "t3_damage": 21,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan:row:179",
+      "input_slots": [
+        "f+1+4"
+      ],
+      "move_class": "strike"
+    },
+    "f+1+4__main": {
+      "name": "BAEK f+1+4 (T3 bryan r179)",
+      "input": "f+1+4",
+      "t3_source": "bryan",
+      "t3_row": 179,
+      "t3_command": "6+LP+RK",
+      "startup": 0.467,
+      "active": 0.017,
+      "recovery": 0.833,
+      "damage": 12,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan:row:179",
+      "input_slots": [
+        "f+1+4"
+      ],
+      "move_class": "strike"
+    },
+    "u/b+1": {
+      "name": "BAEK u/b+1 (T3 bryan r43)",
+      "input": "u/b+1",
+      "t3_source": "bryan",
+      "t3_row": 43,
+      "t3_command": "4/7+LP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "t3_damage": 12,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan:row:43",
+      "input_slots": [
+        "u/b+1"
+      ],
+      "move_class": "strike"
+    },
+    "u/b+3": {
+      "name": "BAEK u/b+3 (T3 bryan r65)",
+      "input": "u/b+3",
+      "t3_source": "bryan",
+      "t3_row": 65,
+      "t3_command": "4/7+LK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:bryan:row:65",
+      "input_slots": [
+        "u/b+3"
+      ],
+      "move_class": "strike"
+    },
+    "u/b+4": {
+      "name": "BAEK u/b+4 (T3 bryan r87)",
+      "input": "u/b+4",
+      "t3_source": "bryan",
+      "t3_row": 87,
+      "t3_command": "4/7+RK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 11,
+      "t3_damage": 18,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan:row:87",
+      "input_slots": [
+        "u/b+4"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+1": {
+      "name": "BAEK u/f+1 (T3 bryan r42)",
+      "input": "u/f+1",
+      "t3_source": "bryan",
+      "t3_row": 42,
+      "t3_command": "6/9+LP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "t3_damage": 12,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan:row:42",
+      "input_slots": [
+        "u/f+1"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+3": {
+      "name": "BAEK u/f+3 (T3 bryan r64)",
+      "input": "u/f+3",
+      "t3_source": "bryan",
+      "t3_row": 64,
+      "t3_command": "6/9+LK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:bryan:row:64",
+      "input_slots": [
+        "u/f+3"
+      ],
+      "move_class": "strike"
+    },
+    "d/f+1+2": {
+      "name": "BAEK d/f+1+2 (T3 bryan r113)",
+      "input": "d/f+1+2",
+      "t3_source": "bryan",
+      "t3_row": 113,
+      "t3_command": "3+LP+RP",
+      "startup": 0.133,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 2,
+      "t3_damage": 3,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan:row:113",
+      "input_slots": [
+        "d/f+1+2"
+      ],
+      "move_class": "strike"
+    },
+    "u/b+3+4": {
+      "name": "BAEK u/b+3+4 (T3 bryan r62)",
+      "input": "u/b+3+4",
+      "t3_source": "bryan",
+      "t3_row": 62,
+      "t3_command": "4/7+LK+RK",
+      "startup": 0.35,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:bryan:row:62",
+      "input_slots": [
+        "u/b+3+4"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+3+4": {
+      "name": "BAEK u/f+3+4 (T3 bryan r61)",
+      "input": "u/f+3+4",
+      "t3_source": "bryan",
+      "t3_row": 61,
+      "t3_command": "6/9+LK+RK",
+      "startup": 0.35,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:bryan:row:61",
+      "input_slots": [
+        "u/f+3+4"
+      ],
+      "move_class": "strike"
+    },
+    "2,4": {
+      "name": "BAEK 2,4 (T3 bryan r182)",
+      "input": "2,4",
+      "t3_source": "bryan",
+      "t3_row": 182,
+      "t3_command": "RK",
+      "startup": 0.367,
+      "active": 0.05,
+      "recovery": 0.717,
+      "damage": 15,
+      "t3_damage": 26,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:bryan:row:182",
+      "input_slots": [
+        "2,4",
+        "2",
+        "4"
+      ],
+      "move_class": "string",
+      "string_hit": "2"
     },
     "f": {
       "name": "BAEK f (T3 bryan r42)",
@@ -1299,26 +1857,6 @@
       ],
       "move_class": "strike"
     },
-    "f+2": {
-      "name": "BAEK f+2 (T3 bryan r150)",
-      "input": "f+2",
-      "t3_source": "bryan",
-      "t3_row": 150,
-      "t3_command": "6+RP",
-      "startup": 0.217,
-      "active": 0.017,
-      "recovery": 0.783,
-      "damage": 18,
-      "limb": "armR",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:150",
-      "input_slots": [
-        "f+2"
-      ],
-      "move_class": "strike"
-    },
     "2_r151": {
       "name": "BAEK 2_r151 (T3 bryan r151)",
       "input": "2_r151",
@@ -1438,46 +1976,6 @@
       "anim_ref": "t3:bryan:row:177",
       "input_slots": [
         "2"
-      ],
-      "move_class": "strike"
-    },
-    "b+1+4": {
-      "name": "BAEK b+1+4 (T3 bryan r178)",
-      "input": "b+1+4",
-      "t3_source": "bryan",
-      "t3_row": 178,
-      "t3_command": "4+LP+RK",
-      "startup": 0.85,
-      "active": 0.083,
-      "recovery": 0.833,
-      "damage": 35,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:178",
-      "input_slots": [
-        "b+1+4"
-      ],
-      "move_class": "strike"
-    },
-    "f+1+4": {
-      "name": "BAEK f+1+4 (T3 bryan r179)",
-      "input": "f+1+4",
-      "t3_source": "bryan",
-      "t3_row": 179,
-      "t3_command": "6+LP+RK",
-      "startup": 0.467,
-      "active": 0.017,
-      "recovery": 0.833,
-      "damage": 12,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:179",
-      "input_slots": [
-        "f+1+4"
       ],
       "move_class": "strike"
     },
@@ -1619,26 +2117,6 @@
       "anim_ref": "t3:bryan:row:190",
       "input_slots": [
         "4"
-      ],
-      "move_class": "strike"
-    },
-    "f+3": {
-      "name": "BAEK f+3 (T3 bryan r191)",
-      "input": "f+3",
-      "t3_source": "bryan",
-      "t3_row": 191,
-      "t3_command": "6+LK",
-      "startup": 0.367,
-      "active": 0.05,
-      "recovery": 0.867,
-      "damage": 21,
-      "limb": "legL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:191",
-      "input_slots": [
-        "f+3"
       ],
       "move_class": "strike"
     },
@@ -1912,54 +2390,13 @@
       "t3_condition": 3
     }
   },
-  "strings": [
-    {
-      "input": "2,1",
-      "hits": [
-        "2",
-        "1"
-      ],
-      "t3_rows": [
-        152,
-        153
-      ]
-    },
-    {
-      "input": "2,1,2",
-      "hits": [
-        "2",
-        "1",
-        "2"
-      ],
-      "t3_rows": [
-        152,
-        153,
-        151
-      ]
-    }
-  ],
-  "specials": [
-    {
-      "input": "d,d/f,d,d/f+1+2",
-      "t3_row": 211,
-      "damage": 21,
-      "throw": true
-    },
-    {
-      "input": "n,d/b,n,f+1+2",
-      "t3_row": 211,
-      "damage": 21,
-      "throw": true
-    }
-  ],
-  "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
-  "schema_version": 2,
-  "t3_bank": "moveset_bryan.json",
-  "t3_bank_rows": 365,
-  "t3_bank_attack_rows": 82,
-  "generated_full_moveset": {
-    "by": "tools/gen-movesets-t3.py",
+  "restored_from_sweep_338": {
     "date": "2026-10-20",
-    "note": "Full T3 bank depth merged over curated base; curated moves preserved verbatim. Smallest T3 bank (365 rows, 188 attacks); 79 attack rows have no per-character input in the extracted data (common-bank / reaction rows). Unique playable inputs top out at ~90-97 per fighter."
+    "by": "tools/moveset-restore/restore_sweep_338.py",
+    "source_commit": "4cc6b41b",
+    "destroyed_by": "8ebdc527",
+    "moves": 111,
+    "strings": 3,
+    "specials": 2
   }
 }

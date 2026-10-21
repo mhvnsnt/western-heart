@@ -1,0 +1,96 @@
+{
+  "backend": "gamerig+df-multi-bake",
+  "input": "human-simp3.glb",
+  "output": "human-rigged.glb",
+  "shim": "stock 4.0.2 create_root_bone",
+  "input_meshes": 1,
+  "input_verts": 66587,
+  "normalize": {
+    "scale_applied": 1.8382596771177462,
+    "yaw_deg": -268.321567066874,
+    "height_m": 1.8000000194297172,
+    "span_m": 1.6266029166065081,
+    "bbox_min": [
+      -0.8144396748336078,
+      -0.25390173808563077,
+      -2.08965502679348e-08
+    ],
+    "bbox_max": [
+      0.8121632417729003,
+      0.24825797634230184,
+      1.799999998533167
+    ]
+  },
+  "face_bones_stripped": 92,
+  "fit": {
+    "metarig_scale": 0.9092746324714335,
+    "kx_arm": 1.1333639514410931,
+    "kx_leg": 1.1496684792670437,
+    "template_height": 1.979599952697754,
+    "template_span": 1.5784000158309937
+  },
+  "strip": {
+    "kept_def_bones": 73,
+    "removed_control_bones": 337
+  },
+  "skin": {
+    "donor_meshes": [
+      [
+        "Object_13",
+        3097
+      ],
+      [
+        "Object_15",
+        673
+      ],
+      [
+        "Object_17",
+        1312
+      ]
+    ],
+    "donor_height_raw": 0.534,
+    "donor_yaw_deg": -269.93,
+    "dropped_groups": [
+      "_rootJoint",
+      "Bip001_00",
+      "_rootJoint",
+      "Bip001_00",
+      "_rootJoint",
+      "Bip001_00"
+    ],
+    "donor_weighted_verts": 5082,
+    "side_swapped": 13,
+    "segment_capped": 12793,
+    "smoothed": true,
+    "unweighted_fixed": 0,
+    "capsule_fallback": 58057,
+    "skinned_via": "donor-bvh-polyinterp"
+  },
+  "unweighted_fixed": 0,
+  "idle_alias": "Idle <- Battle_Idle (action copy)",
+  "clips": [
+    {
+      "clip": "Battle_Idle",
+      "frames": 74,
+      "bones": 37
+    },
+    {
+      "clip": "Skill_01",
+      "frames": 37,
+      "bones": 37
+    },
+    {
+      "clip": "Skill_03",
+      "frames": 60,
+      "bones": 37
+    }
+  ],
+  "export_actions": [
+    "Battle_Idle",
+    "Idle",
+    "Skill_01",
+    "Skill_03"
+  ],
+  "renamed_joints": 0,
+  "joint_count": 73
+}

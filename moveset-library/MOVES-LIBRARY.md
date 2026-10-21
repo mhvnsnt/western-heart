@@ -41,7 +41,7 @@ Every fighter has the **same 176 slots**. What makes Pantera different from Demo
 |---|---|---|---|
 | WWF No Mercy | 5,787 | NPY int16 (nframes, 26, 3), AKI 26-joint | `teardown/wwf-no-mercy/animations/clips/` |
 | WWE WrestleMania XIX | 170 | JSON per clip, Yukes 70-bone | `teardown/wmxix/animations/` |
-| Tekken 3 | 7 banks | divmot (types 0-20, 99) | `teardown/tekken3/animations/` |
+| Tekken 3 | 20 character banks + common | divmot (types 0-20, 99; type 15 absent from local disc image) | `teardown/tekken3/animations/` |
 | Tekken 6 | — | Locked (PSP encryption) | 46 endings extracted |
 | Urban Reign | motion pools | PPK/GYU | `teardown/urban-reign/ppks/` |
 

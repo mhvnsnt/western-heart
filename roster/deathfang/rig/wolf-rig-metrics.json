@@ -1,0 +1,96 @@
+{
+  "backend": "gamerig+df-multi-bake",
+  "input": "wolf-simp3.glb",
+  "output": "wolf-rigged.glb",
+  "shim": "stock 4.0.2 create_root_bone",
+  "input_meshes": 1,
+  "input_verts": 65565,
+  "normalize": {
+    "scale_applied": 1.9996745321399512,
+    "yaw_deg": -94.88097393913077,
+    "height_m": 1.8000000238534994,
+    "span_m": 1.961339291245047,
+    "bbox_min": [
+      -0.9807702905933935,
+      -0.2652684150883715,
+      2.3777829483151436e-08
+    ],
+    "bbox_max": [
+      0.9805690006516534,
+      0.26968339143769526,
+      1.800000047631329
+    ]
+  },
+  "face_bones_stripped": 92,
+  "fit": {
+    "metarig_scale": 0.9092746347061184,
+    "kx_arm": 1.3665973551901307,
+    "kx_leg": 1.0781824703299145,
+    "template_height": 1.979599952697754,
+    "template_span": 1.5784000158309937
+  },
+  "strip": {
+    "kept_def_bones": 73,
+    "removed_control_bones": 337
+  },
+  "skin": {
+    "donor_meshes": [
+      [
+        "Object_13",
+        3097
+      ],
+      [
+        "Object_15",
+        673
+      ],
+      [
+        "Object_17",
+        1312
+      ]
+    ],
+    "donor_height_raw": 0.534,
+    "donor_yaw_deg": -269.93,
+    "dropped_groups": [
+      "_rootJoint",
+      "Bip001_00",
+      "_rootJoint",
+      "Bip001_00",
+      "_rootJoint",
+      "Bip001_00"
+    ],
+    "donor_weighted_verts": 5082,
+    "side_swapped": 0,
+    "segment_capped": 14199,
+    "smoothed": true,
+    "unweighted_fixed": 0,
+    "capsule_fallback": 59485,
+    "skinned_via": "donor-bvh-polyinterp"
+  },
+  "unweighted_fixed": 0,
+  "idle_alias": "Idle <- Battle_Idle (action copy)",
+  "clips": [
+    {
+      "clip": "Battle_Idle",
+      "frames": 74,
+      "bones": 37
+    },
+    {
+      "clip": "Skill_01",
+      "frames": 37,
+      "bones": 37
+    },
+    {
+      "clip": "Skill_02",
+      "frames": 47,
+      "bones": 37
+    }
+  ],
+  "export_actions": [
+    "Battle_Idle",
+    "Idle",
+    "Skill_01",
+    "Skill_02"
+  ],
+  "renamed_joints": 0,
+  "joint_count": 73
+}

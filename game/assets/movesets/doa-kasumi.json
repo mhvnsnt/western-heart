@@ -1,451 +1,507 @@
 {
- "fighter": "doa-kasumi",
- "display": "KASUMI (DOA)",
- "tekken_base": "Kasumi (DOA5 Last Round)",
- "doa_source": "community movelist + frame data (see docs/movesets/DOA-VF-CONVERSION-2026-10-19.md)",
- "proxy": false,
- "proxy_note": null,
- "schema_version": 2,
- "moves": {
-  "1": {
-   "name": "Kasumi P \u2014 jab",
-   "input": "1",
-   "doa_move": "P",
-   "doa_input": "P",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.4,
-   "damage": 4,
-   "limb": "armL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "doa:kasumi/p-jab",
-   "input_slots": [
-    "1"
-   ],
-   "move_class": "strike",
-   "note": "frame data estimated from archetype; marked per schema honesty rule"
+  "fighter": "doa-kasumi",
+  "display": "KASUMI (DOA)",
+  "tekken_base": "Kasumi (DOA5 Last Round)",
+  "doa_source": "community movelist + frame data (see docs/movesets/DOA-VF-CONVERSION-2026-10-19.md)",
+  "proxy": false,
+  "proxy_note": null,
+  "schema_version": 2,
+  "moves": {
+    "1": {
+      "name": "Kasumi P — jab",
+      "input": "1",
+      "doa_move": "P",
+      "doa_input": "P",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.4,
+      "damage": 4,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "doa:kasumi/p-jab",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "f+1": {
+      "name": "Kasumi 6P — elbow",
+      "input": "f+1",
+      "doa_move": "6P",
+      "doa_input": "6P",
+      "startup": 0.217,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 6,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "doa:kasumi/6p-elbow",
+      "input_slots": [
+        "f+1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "d/f+1": {
+      "name": "Kasumi 3P — mid palm",
+      "input": "d/f+1",
+      "doa_move": "3P",
+      "doa_input": "3P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.467,
+      "damage": 6,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "doa:kasumi/3p",
+      "input_slots": [
+        "d/f+1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "3": {
+      "name": "Kasumi K — high kick",
+      "input": "3",
+      "doa_move": "K",
+      "doa_input": "K",
+      "startup": 0.233,
+      "active": 0.05,
+      "recovery": 0.5,
+      "damage": 8,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 3.2,
+      "soulGain": 8,
+      "anim_ref": "doa:kasumi/k",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "1,2": {
+      "name": "Kasumi PP string",
+      "input": "1,2",
+      "doa_move": "PP",
+      "doa_input": "PP",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 7,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "doa:kasumi/pp",
+      "input_slots": [
+        "1,2",
+        "1",
+        "2"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "1,2,1,2": {
+      "name": "Kasumi PPPP — Ren-Kaio-Sentotsu",
+      "input": "1,2,1,2",
+      "doa_move": "PPPP (Ren-Kaio-Sentotsu)",
+      "doa_input": "PPPP",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 12,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.0,
+      "soulGain": 8,
+      "anim_ref": "doa:kasumi/pppp",
+      "input_slots": [
+        "1,2,1,2",
+        "1",
+        "2"
+      ],
+      "move_class": "string",
+      "note": "DOA2HC movelist; DOA5LR patch: 3PPP damage 26->18 on 270 scale. frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "1,2,3,4,3": {
+      "name": "Kasumi PPKKK — Tenshin-Rengo",
+      "input": "1,2,3,4,3",
+      "doa_move": "PPKKK (Tenshin-Rengo)",
+      "doa_input": "PPKKK",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.667,
+      "damage": 16,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 4.6,
+      "soulGain": 8,
+      "anim_ref": "doa:kasumi/ppkkk",
+      "input_slots": [
+        "1,2,3,4,3",
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "move_class": "string",
+      "note": "DOA2HC movelist. frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "f,f+1": {
+      "name": "Kasumi 66P — dash elbow",
+      "input": "f,f+1",
+      "doa_move": "66P",
+      "doa_input": "66P",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.467,
+      "damage": 8,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "doa:kasumi/66p",
+      "input_slots": [
+        "f,f+1"
+      ],
+      "move_class": "special",
+      "note": "DOA5LR ver2.00: 66PP stun type changed. frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "qcf+1": {
+      "name": "Kasumi 236P — Hoshinpo strike",
+      "input": "qcf+1",
+      "doa_move": "236P",
+      "doa_input": "236P",
+      "startup": 0.317,
+      "active": 0.05,
+      "recovery": 0.733,
+      "damage": 10,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "doa:kasumi/236p",
+      "input_slots": [
+        "qcf+1"
+      ],
+      "move_class": "special",
+      "note": "DOA5LR Momiji-format reference: 236-class 19f startup. Kasumi 236P per ver2.00 notes."
+    },
+    "d/b+1+2": {
+      "name": "Kasumi 4P+K — chop",
+      "input": "d/b+1+2",
+      "doa_move": "4P+K",
+      "doa_input": "4P+K",
+      "startup": 0.267,
+      "active": 0.05,
+      "recovery": 0.5,
+      "damage": 9,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "doa:kasumi/4pk",
+      "input_slots": [
+        "d/b+1+2"
+      ],
+      "move_class": "special",
+      "note": "DOA5LR ver2.00: accepts 4_P+K. frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "u/f+1": {
+      "name": "Kasumi 9P — jumping punch",
+      "input": "u/f+1",
+      "doa_move": "9P",
+      "doa_input": "9P",
+      "startup": 0.267,
+      "active": 0.067,
+      "recovery": 0.533,
+      "damage": 8,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "doa:kasumi/9p",
+      "input_slots": [
+        "u/f+1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "1+3": {
+      "name": "Kasumi T — throw",
+      "input": "1+3",
+      "doa_move": "T",
+      "doa_input": "T",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.467,
+      "damage": 14,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 8,
+      "anim_ref": "doa:kasumi/t",
+      "input_slots": [
+        "1+3"
+      ],
+      "move_class": "throw",
+      "throw": true,
+      "isGrab": true,
+      "unblockable": true,
+      "note": "frame data estimated from archetype; marked per schema honesty rule",
+      "throw_break": "1"
+    },
+    "f+1+3": {
+      "name": "Kasumi 6T — wall throw",
+      "input": "f+1+3",
+      "doa_move": "6T (near wall)",
+      "doa_input": "6T",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.467,
+      "damage": 22,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 7.0,
+      "soulGain": 8,
+      "anim_ref": "doa:kasumi/6t",
+      "input_slots": [
+        "f+1+3"
+      ],
+      "move_class": "throw",
+      "doa_damage": 60,
+      "throw": true,
+      "isGrab": true,
+      "unblockable": true,
+      "note": "DOA5LR ver2.00: near-wall 6T 40+20 -> 50+10 (=60 on 270 scale).",
+      "throw_break": "1"
+    },
+    "b+1+2": {
+      "name": "Kasumi 4H — mid punch hold",
+      "input": "b+1+2",
+      "doa_move": "4H (mid punch hold)",
+      "doa_input": "4H",
+      "startup": 0.05,
+      "active": 0.2,
+      "recovery": 0.333,
+      "damage": 16,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "doa:kasumi/4h-hold",
+      "input_slots": [
+        "b+1+2"
+      ],
+      "move_class": "special",
+      "note": "DOA signature counter-hold -> Tekken parry-style reversal input. frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "f+1+2": {
+      "name": "Kasumi 6H — mid kick hold",
+      "input": "f+1+2",
+      "doa_move": "6H (mid kick hold)",
+      "doa_input": "6H",
+      "startup": 0.05,
+      "active": 0.2,
+      "recovery": 0.333,
+      "damage": 16,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "doa:kasumi/6h-hold",
+      "input_slots": [
+        "f+1+2"
+      ],
+      "move_class": "special",
+      "note": "DOA signature counter-hold -> Tekken parry-style reversal input. frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "u+1+2": {
+      "name": "Kasumi 8H — high hold",
+      "input": "u+1+2",
+      "doa_move": "8H (high hold)",
+      "doa_input": "8H",
+      "startup": 0.05,
+      "active": 0.2,
+      "recovery": 0.333,
+      "damage": 14,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "doa:kasumi/8h-hold",
+      "input_slots": [
+        "u+1+2"
+      ],
+      "move_class": "special",
+      "note": "DOA signature counter-hold -> Tekken parry-style reversal input. frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "1+2": {
+      "name": "Petal Scatter [WH SIGNATURE]",
+      "input": "1+2",
+      "startup": 0.26,
+      "active": 0.1,
+      "recovery": 0.82,
+      "damage": 17,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 12,
+      "anim_ref": "wh:doa-kasumi:sig:petal-scatter",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "The kunoichi crosses the gap in a scatter of petals. You were blocking the wrong one.",
+      "input_remapped_from": "S"
+    },
+    "d+1": {
+      "name": "Mist Vanish [WH SIGNATURE]",
+      "input": "d+1",
+      "startup": 0.23,
+      "active": 0.017,
+      "recovery": 0.72,
+      "damage": 15,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "wh:doa-kasumi:sig:mist-vanish",
+      "input_slots": [
+        "d+1"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "Dodge into mist, strike out of it. She was never where you looked.",
+      "input_remapped_from": "D+P"
+    },
+    "D+P": {
+      "name": "Mist Vanish [WH SIGNATURE]",
+      "input": "D+P",
+      "startup": 0.23,
+      "active": 0.017,
+      "recovery": 0.72,
+      "damage": 15,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "wh:doa-kasumi:sig:mist-vanish",
+      "input_slots": [
+        "D+P",
+        "D",
+        "P"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "Dodge into mist, strike out of it. She was never where you looked."
+    },
+    "S": {
+      "name": "Petal Scatter [WH SIGNATURE]",
+      "input": "S",
+      "startup": 0.26,
+      "active": 0.1,
+      "recovery": 0.82,
+      "damage": 17,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 12,
+      "anim_ref": "wh:doa-kasumi:sig:petal-scatter",
+      "input_slots": [
+        "S"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "The kunoichi crosses the gap in a scatter of petals. You were blocking the wrong one."
+    }
   },
-  "f+1": {
-   "name": "Kasumi 6P \u2014 elbow",
-   "input": "f+1",
-   "doa_move": "6P",
-   "doa_input": "6P",
-   "startup": 0.217,
-   "active": 0.033,
-   "recovery": 0.433,
-   "damage": 6,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "doa:kasumi/6p-elbow",
-   "input_slots": [
-    "f+1"
-   ],
-   "move_class": "strike",
-   "note": "frame data estimated from archetype; marked per schema honesty rule"
-  },
-  "d/f+1": {
-   "name": "Kasumi 3P \u2014 mid palm",
-   "input": "d/f+1",
-   "doa_move": "3P",
-   "doa_input": "3P",
-   "startup": 0.233,
-   "active": 0.033,
-   "recovery": 0.467,
-   "damage": 6,
-   "limb": "armL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "doa:kasumi/3p",
-   "input_slots": [
-    "d/f+1"
-   ],
-   "move_class": "strike",
-   "note": "frame data estimated from archetype; marked per schema honesty rule"
-  },
-  "3": {
-   "name": "Kasumi K \u2014 high kick",
-   "input": "3",
-   "doa_move": "K",
-   "doa_input": "K",
-   "startup": 0.233,
-   "active": 0.05,
-   "recovery": 0.5,
-   "damage": 8,
-   "limb": "legL",
-   "heavy": true,
-   "knock": 3.2,
-   "soulGain": 8,
-   "anim_ref": "doa:kasumi/k",
-   "input_slots": [
-    "3"
-   ],
-   "move_class": "strike",
-   "note": "frame data estimated from archetype; marked per schema honesty rule"
-  },
-  "1,2": {
-   "name": "Kasumi PP string",
-   "input": "1,2",
-   "doa_move": "PP",
-   "doa_input": "PP",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.433,
-   "damage": 7,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "doa:kasumi/pp",
-   "input_slots": [
-    "1,2",
-    "1",
-    "2"
-   ],
-   "move_class": "string",
-   "note": "frame data estimated from archetype; marked per schema honesty rule"
-  },
-  "1,2,1,2": {
-   "name": "Kasumi PPPP \u2014 Ren-Kaio-Sentotsu",
-   "input": "1,2,1,2",
-   "doa_move": "PPPP (Ren-Kaio-Sentotsu)",
-   "doa_input": "PPPP",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.567,
-   "damage": 12,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 4.0,
-   "soulGain": 8,
-   "anim_ref": "doa:kasumi/pppp",
-   "input_slots": [
-    "1,2,1,2",
-    "1",
-    "2"
-   ],
-   "move_class": "string",
-   "note": "DOA2HC movelist; DOA5LR patch: 3PPP damage 26->18 on 270 scale. frame data estimated from archetype; marked per schema honesty rule"
-  },
-  "1,2,3,4,3": {
-   "name": "Kasumi PPKKK \u2014 Tenshin-Rengo",
-   "input": "1,2,3,4,3",
-   "doa_move": "PPKKK (Tenshin-Rengo)",
-   "doa_input": "PPKKK",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.667,
-   "damage": 16,
-   "limb": "legL",
-   "heavy": true,
-   "knock": 4.6,
-   "soulGain": 8,
-   "anim_ref": "doa:kasumi/ppkkk",
-   "input_slots": [
-    "1,2,3,4,3",
-    "1",
-    "2",
-    "3",
-    "4"
-   ],
-   "move_class": "string",
-   "note": "DOA2HC movelist. frame data estimated from archetype; marked per schema honesty rule"
-  },
-  "f,f+1": {
-   "name": "Kasumi 66P \u2014 dash elbow",
-   "input": "f,f+1",
-   "doa_move": "66P",
-   "doa_input": "66P",
-   "startup": 0.25,
-   "active": 0.033,
-   "recovery": 0.467,
-   "damage": 8,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "doa:kasumi/66p",
-   "input_slots": [
-    "f,f+1"
-   ],
-   "move_class": "special",
-   "note": "DOA5LR ver2.00: 66PP stun type changed. frame data estimated from archetype; marked per schema honesty rule"
-  },
-  "qcf+1": {
-   "name": "Kasumi 236P \u2014 Hoshinpo strike",
-   "input": "qcf+1",
-   "doa_move": "236P",
-   "doa_input": "236P",
-   "startup": 0.317,
-   "active": 0.05,
-   "recovery": 0.733,
-   "damage": 10,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "doa:kasumi/236p",
-   "input_slots": [
-    "qcf+1"
-   ],
-   "move_class": "special",
-   "note": "DOA5LR Momiji-format reference: 236-class 19f startup. Kasumi 236P per ver2.00 notes."
-  },
-  "d/b+1+2": {
-   "name": "Kasumi 4P+K \u2014 chop",
-   "input": "d/b+1+2",
-   "doa_move": "4P+K",
-   "doa_input": "4P+K",
-   "startup": 0.267,
-   "active": 0.05,
-   "recovery": 0.5,
-   "damage": 9,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "doa:kasumi/4pk",
-   "input_slots": [
-    "d/b+1+2"
-   ],
-   "move_class": "special",
-   "note": "DOA5LR ver2.00: accepts 4_P+K. frame data estimated from archetype; marked per schema honesty rule"
-  },
-  "u/f+1": {
-   "name": "Kasumi 9P \u2014 jumping punch",
-   "input": "u/f+1",
-   "doa_move": "9P",
-   "doa_input": "9P",
-   "startup": 0.267,
-   "active": 0.067,
-   "recovery": 0.533,
-   "damage": 8,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "doa:kasumi/9p",
-   "input_slots": [
-    "u/f+1"
-   ],
-   "move_class": "strike",
-   "note": "frame data estimated from archetype; marked per schema honesty rule"
-  },
-  "1+3": {
-   "name": "Kasumi T \u2014 throw",
-   "input": "1+3",
-   "doa_move": "T",
-   "doa_input": "T",
-   "startup": 0.2,
-   "active": 0.033,
-   "recovery": 0.467,
-   "damage": 14,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 6.5,
-   "soulGain": 8,
-   "anim_ref": "doa:kasumi/t",
-   "input_slots": [
-    "1+3"
-   ],
-   "move_class": "throw",
-   "throw": true,
-   "isGrab": true,
-   "unblockable": true,
-   "note": "frame data estimated from archetype; marked per schema honesty rule"
-  },
-  "f+1+3": {
-   "name": "Kasumi 6T \u2014 wall throw",
-   "input": "f+1+3",
-   "doa_move": "6T (near wall)",
-   "doa_input": "6T",
-   "startup": 0.2,
-   "active": 0.033,
-   "recovery": 0.467,
-   "damage": 22,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 7.0,
-   "soulGain": 8,
-   "anim_ref": "doa:kasumi/6t",
-   "input_slots": [
-    "f+1+3"
-   ],
-   "move_class": "throw",
-   "doa_damage": 60,
-   "throw": true,
-   "isGrab": true,
-   "unblockable": true,
-   "note": "DOA5LR ver2.00: near-wall 6T 40+20 -> 50+10 (=60 on 270 scale)."
-  },
-  "b+1+2": {
-   "name": "Kasumi 4H \u2014 mid punch hold",
-   "input": "b+1+2",
-   "doa_move": "4H (mid punch hold)",
-   "doa_input": "4H",
-   "startup": 0.05,
-   "active": 0.2,
-   "recovery": 0.333,
-   "damage": 16,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "doa:kasumi/4h-hold",
-   "input_slots": [
-    "b+1+2"
-   ],
-   "move_class": "special",
-   "note": "DOA signature counter-hold -> Tekken parry-style reversal input. frame data estimated from archetype; marked per schema honesty rule"
-  },
-  "f+1+2": {
-   "name": "Kasumi 6H \u2014 mid kick hold",
-   "input": "f+1+2",
-   "doa_move": "6H (mid kick hold)",
-   "doa_input": "6H",
-   "startup": 0.05,
-   "active": 0.2,
-   "recovery": 0.333,
-   "damage": 16,
-   "limb": "legR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "doa:kasumi/6h-hold",
-   "input_slots": [
-    "f+1+2"
-   ],
-   "move_class": "special",
-   "note": "DOA signature counter-hold -> Tekken parry-style reversal input. frame data estimated from archetype; marked per schema honesty rule"
-  },
-  "u+1+2": {
-   "name": "Kasumi 8H \u2014 high hold",
-   "input": "u+1+2",
-   "doa_move": "8H (high hold)",
-   "doa_input": "8H",
-   "startup": 0.05,
-   "active": 0.2,
-   "recovery": 0.333,
-   "damage": 14,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "doa:kasumi/8h-hold",
-   "input_slots": [
-    "u+1+2"
-   ],
-   "move_class": "special",
-   "note": "DOA signature counter-hold -> Tekken parry-style reversal input. frame data estimated from archetype; marked per schema honesty rule"
-  },
-  "S": {
-   "name": "Petal Scatter [WH SIGNATURE]",
-   "input": "S",
-   "startup": 0.26,
-   "active": 0.1,
-   "recovery": 0.82,
-   "damage": 17,
-   "limb": "armL",
-   "heavy": true,
-   "knock": 4.2,
-   "soulGain": 12,
-   "anim_ref": "wh:doa-kasumi:sig:petal-scatter",
-   "input_slots": [
-    "S"
-   ],
-   "move_class": "signature",
-   "wh_original": true,
-   "note": "The kunoichi crosses the gap in a scatter of petals. You were blocking the wrong one."
-  },
-  "D+P": {
-   "name": "Mist Vanish [WH SIGNATURE]",
-   "input": "D+P",
-   "startup": 0.23,
-   "active": 0.017,
-   "recovery": 0.72,
-   "damage": 15,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 4.2,
-   "soulGain": 11,
-   "anim_ref": "wh:doa-kasumi:sig:mist-vanish",
-   "input_slots": [
-    "D+P",
-    "D",
-    "P"
-   ],
-   "move_class": "signature",
-   "wh_original": true,
-   "note": "Dodge into mist, strike out of it. She was never where you looked."
+  "strings": [
+    {
+      "input": "1,2",
+      "components": [
+        "1",
+        "2"
+      ],
+      "damage": 7
+    },
+    {
+      "input": "1,2,1,2",
+      "components": [
+        "1",
+        "2",
+        "1",
+        "2"
+      ],
+      "damage": 12
+    },
+    {
+      "input": "1,2,3,4,3",
+      "components": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "3"
+      ],
+      "damage": 16
+    }
+  ],
+  "specials": [
+    {
+      "input": "f,f+1",
+      "damage": 8,
+      "throw": false,
+      "doa_input": "66P"
+    },
+    {
+      "input": "qcf+1",
+      "damage": 10,
+      "throw": false,
+      "doa_input": "236P"
+    },
+    {
+      "input": "d/b+1+2",
+      "damage": 9,
+      "throw": false,
+      "doa_input": "4P+K"
+    },
+    {
+      "input": "f+1+3",
+      "damage": 22,
+      "throw": true,
+      "doa_input": "6T"
+    },
+    {
+      "input": "b+1+2",
+      "damage": 16,
+      "throw": false,
+      "doa_input": "4H",
+      "note": "hold/counter"
+    }
+  ],
+  "frame_convention": "DOA5LR 60fps -> seconds; damage scaled DOA5LR 270HP -> WH 100HP (x0.37)",
+  "union_merge": {
+    "date": "2026-10-20",
+    "method": "additive union of all historical versions of this file (548 versions / 60 commits / all refs) over current main; identity = canonical input (entry.input, else key); main preserved verbatim, main wins contested inputs (PR #357 precedent)",
+    "versions_considered": 3,
+    "moves_added": 2,
+    "strings_added": 0,
+    "specials_added": 0,
+    "specials_alt_appended": 0,
+    "added_move_keys": [
+      "D+P",
+      "S"
+    ],
+    "era_note": "final set era census: T8/WH-newest=4, T6/other-teardown=16; additions selected newest-era first (T8/T7/TTT2/T6+other teardowns), T3 payloads used only where no newer expression exists; union-first, no-loss absolute"
   }
- },
- "strings": [
-  {
-   "input": "1,2",
-   "components": [
-    "1",
-    "2"
-   ],
-   "damage": 7
-  },
-  {
-   "input": "1,2,1,2",
-   "components": [
-    "1",
-    "2",
-    "1",
-    "2"
-   ],
-   "damage": 12
-  },
-  {
-   "input": "1,2,3,4,3",
-   "components": [
-    "1",
-    "2",
-    "3",
-    "4",
-    "3"
-   ],
-   "damage": 16
-  }
- ],
- "specials": [
-  {
-   "input": "f,f+1",
-   "damage": 8,
-   "throw": false,
-   "doa_input": "66P"
-  },
-  {
-   "input": "qcf+1",
-   "damage": 10,
-   "throw": false,
-   "doa_input": "236P"
-  },
-  {
-   "input": "d/b+1+2",
-   "damage": 9,
-   "throw": false,
-   "doa_input": "4P+K"
-  },
-  {
-   "input": "f+1+3",
-   "damage": 22,
-   "throw": true,
-   "doa_input": "6T"
-  },
-  {
-   "input": "b+1+2",
-   "damage": 16,
-   "throw": false,
-   "doa_input": "4H",
-   "note": "hold/counter"
-  }
- ],
- "frame_convention": "DOA5LR 60fps -> seconds; damage scaled DOA5LR 270HP -> WH 100HP (x0.37)"
 }

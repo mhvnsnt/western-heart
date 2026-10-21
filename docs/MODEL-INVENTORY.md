@@ -22,7 +22,7 @@ Legend: ✅ WIRED (in `game/assets/models/` or a roster attire slot) · 📦 HAV
 | cape-jones.glb | Cape Jones | Tripo (default attire = Cyborg X Attire 1) | wired |
 | cyborg-x.glb | Cyborg X | SFM Alisa fix | wired; Attire 2 = female Cape Jones build (pending) |
 | demonio.glb | Demonio | T7 | wired |
-| diablo.glb | Diablo | T7 | wired |
+| diablo.glb | Diablo | gtainside Heihachi conversion | wired — ladder-back (former default; replaced by Tripo Attire 1 on 2026-10-20) |
 | dio.glb | Dio | fighter hunt R2 | wired (untextured — texture pass follow-up) |
 | doc-frank.glb | Doc Frank | T7 | wired |
 | dxmmii.glb | Dxmmii | limb system | wired |
@@ -32,7 +32,7 @@ Legend: ✅ WIRED (in `game/assets/models/` or a roster attire slot) · 📦 HAV
 | kiko-tanaka.glb | Kiko Tanaka | Tripo (hooded, default) | wired |
 | kiko-tanaka_alt1.glb | Kiko Tanaka | Tripo (unrobed) | wired |
 | king-tyrant.glb / _alt1 | King Tyrant | T7 King variant | wired |
-| kinpo-t8.glb / kinpo.glb / kinpo_alt1 | Kinpo | T8/T7 base | wired |
+| kinpo-t8.glb / kinpo.glb / kinpo_alt1 | Kinpo | T8/T7 base | wired — legacy alternates since 2026-10-20 (kinpo.glb = `kinpo-legacy` key; A1 default is now the Tripo pull, roster slot below) |
 | lili.glb | **Silvertongue** | T7 Lili base | wired; Noir Gala = later attire slot (recolor) |
 | mariposa.glb | **Mariposa** | T7 base | wired; Golden Pharaoh = later attire slot (recolor) |
 | michiko.glb | Michiko | fighter hunt R2 | wired (untextured — texture pass follow-up) |
@@ -58,17 +58,28 @@ Legend: ✅ WIRED (in `game/assets/models/` or a roster attire slot) · 📦 HAV
 | yukihyo.glb | Yukihyō | fighter hunt R2 | wired |
 | zafina.glb | **Mariposa** | T7 Zafina base | wired (renamed — use Mariposa everywhere) |
 | zen-body.glb | — | body shell | wired |
-| zui_alt1.glb / zui_alt2.glb | Zui | T7 Steve base | wired (later slots) |
+| zui_alt1.glb / zui_alt2.glb | Zui | T7 Steve base | wired (Zui alternates in ATTIRE_VARIANTS, 2026-10-21) |
 
 ### Roster slot GLBs (wired as attires)
 
 | Path | Character | Slot | Source |
 |---|---|---|---|
-| `roster/zui/attires/attire1/model.glb` | Zui | A1 DEFAULT | Tripo Drunken Monk (20.7MB) |
-| `roster/zui/attires/attire2/model.glb` | Zui | A2 | Tripo rework v2 |
+| `roster/zui/attires/attire1/model.glb` | Zui | A1 DEFAULT | Tripo Drunken Monk (20.7MB) — WIRED 2026-10-21: MODEL_URLS `zui-attire1`, default on both paths (model-key audit follow-up) |
+| `roster/zui/attires/attire2/model.glb` | Zui | A2 | Tripo rework v2 — WIRED 2026-10-21: MODEL_URLS `zui-attire2`, selectable alternate |
 | `roster/pantera/attires/classic/pantera-classic.glb` | Pantera | A3 | older build reskin |
 | `roster/pantera/attires/snow-leopard/pantera-snow-leopard.glb` | Pantera | A3 alt | snow-leopard reskin (tweaked) |
+| `roster/pantera/attires/leomon/model.glb` | Pantera | A2 · Leo man | owner's model via Google Drive (restored 2026-10-20) — WH-Canonical-22 rig, T3 King clips embedded |
 | `roster/awa-pop/awa-pop-attire-1.glb` | Awa Pop | A1 DEFAULT | Tripo |
+| `roster/kronos/attires/attire1/model.glb` | KRONOS | A1 DEFAULT | Tripo "muscular warrior" (19.1MB) |
+| `roster/kronos/attires/attire2/model.glb` | KRONOS | A2 Timberwolf | Tripo (20.4MB) |
+| `roster/kronos/attires/attire3/model.glb` | KRONOS | A3 TimberWolf Fully suited | Tripo (21.5MB) — Wolverine claws both hands; middle claw each hand short + rounded |
+| `roster/diablo/attires/attire1/model.glb` | DIABLO | A1 DEFAULT | Tripo "fantasy demon" (22.8MB) — oni Heihachi: long silver wing-hair, two short horns, tattooed chest/arms, purple dragon hakama |
+| `roster/diablo/attires/attire2/model.glb` | DIABLO | A2 Devil God | Tripo (22.5MB) — Hagoromo drapery + Raijin Taiko Drum Ring |
+| `roster/slice/attires/attire1/model.glb` | SLICE | A1 DEFAULT | Tekken 7 Dragunov teardown conversion (52.4MB) — beret default costume, T7 skeleton (198 joints); source `dragunov-t7-rig.blend` (release `tekken-models-batch-2`) |
+| `roster/vainabel/attires/attire2/model.glb` | VAIN ABEL | A2 | Tripo "wrestler character" (19.8MB) — purple flame vest, purple-stitched black pants; mismatched eyes |
+| `roster/vainabel/attires/attire3/model.glb` | VAIN ABEL | A3 · Masked Demon of the Purple Haze | Tripo "masked fighter" (19.6MB) |
+| `roster/kinpo/attires/attire1/model.glb` | Kinpo | A1 DEFAULT | Tripo "stylized female character" (20.3MB meshopt) — mini skirt; jiggle butt/thighs/hips at rig stage (owner 2026-10-20, `roster/kinpo/RIG-NOTES.md`) |
+| `roster/kinpo/attires/attire2/model.glb` | Kinpo | A2 "Goth Sport" | Tripo "gothic punk character" (18.4MB meshopt) — owner 2026-10-20; same mini skirt as A1, no jacket, goth makeup, little fangs; enhanced jiggle + M-rated anatomy rig specs in `roster/kinpo/RIG-NOTES.md` |
 
 ---
 

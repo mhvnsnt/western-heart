@@ -59,7 +59,7 @@ export const BODY_TREE = [
 
 /* ---- PARTS tab: the wired libraries ---- */
 export const PARTS_TREE = [
-  { key:"eyes",   label:"Eyes",   icon:"👁️", src:"WH_PARTS", note:"customization/eye-library/ — universal eye options incl. owner's yellow-tiger 'I like' variant; MANIFEST character_mappings" },
+  { key:"eyes",   label:"Eyes",   icon:"👁️", src:"WH_PARTS", note:"PLACEABLE mesh eye parts first (Spider-Girl lenses, CC0 eyebrows — owner verdict 2026-10-20: eyes are parts, not decals); eye-library textures are legacy variants, listed separately" },
   { key:"decals", label:"Decals", icon:"🏷️", src:"WH_PARTS", note:"customization/decal-library/pantera/ — logo/tights/pants texture swaps at parameterized placements" },
   { key:"masks",  label:"Masks",  icon:"🦸", src:"WH_PARTS", note:"customization/parts/superhero/ — spidergirl eyes, batgirl mask+gauntlets, spaceghost cowl; mesh parts on head/hand sockets" },
   { key:"hair",   label:"Hair",   icon:"💇‍♀️", src:"WH_PARTS", note:"mesh + texture hair parts (silvertongue drills, mariposa ponytail restore)" },

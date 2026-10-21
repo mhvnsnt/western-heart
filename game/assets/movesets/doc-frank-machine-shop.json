@@ -6,6 +6,173 @@
   "proxy": false,
   "proxy_note": null,
   "variant": 2,
+  "strings": [
+    {
+      "input": "d/b+1,1",
+      "hits": [
+        "d/b+1",
+        "1"
+      ],
+      "t3_rows": [
+        207
+      ]
+    },
+    {
+      "input": "u/f+3+4,1",
+      "hits": [
+        "u/f+3+4",
+        "1"
+      ],
+      "t3_rows": [
+        177
+      ]
+    },
+    {
+      "input": "u/f+3+4,2",
+      "hits": [
+        "u/f+3+4",
+        "2"
+      ],
+      "t3_rows": [
+        193
+      ]
+    },
+    {
+      "input": "d/b+1,1,1",
+      "hits": [
+        "d/b+1",
+        "1",
+        "1"
+      ],
+      "t3_rows": [
+        208
+      ]
+    },
+    {
+      "input": "u/f+3+4,1,2",
+      "hits": [
+        "u/f+3+4",
+        "1",
+        "2"
+      ],
+      "t3_rows": [
+        194
+      ]
+    },
+    {
+      "input": "u/f+3+4,2,1",
+      "hits": [
+        "u/f+3+4",
+        "2",
+        "1"
+      ],
+      "t3_rows": [
+        178
+      ]
+    },
+    {
+      "input": "d/b+1,1,1,2",
+      "hits": [
+        "d/b+1",
+        "1",
+        "1",
+        "2"
+      ],
+      "t3_rows": [
+        216
+      ]
+    },
+    {
+      "input": "u/f+3+4,1,2,1",
+      "hits": [
+        "u/f+3+4",
+        "1",
+        "2",
+        "1"
+      ],
+      "t3_rows": [
+        179
+      ]
+    },
+    {
+      "input": "u/f+3+4,2,1,2",
+      "hits": [
+        "u/f+3+4",
+        "2",
+        "1",
+        "2"
+      ],
+      "t3_rows": [
+        195
+      ]
+    },
+    {
+      "input": "u/f+3+4,1,2,1,2",
+      "hits": [
+        "u/f+3+4",
+        "1",
+        "2",
+        "1",
+        "2"
+      ],
+      "t3_rows": [
+        196
+      ]
+    },
+    {
+      "input": "u/f+3+4,2,1,2,1",
+      "hits": [
+        "u/f+3+4",
+        "2",
+        "1",
+        "2",
+        "1"
+      ],
+      "t3_rows": [
+        180
+      ]
+    }
+  ],
+  "specials": [
+    {
+      "input": "d,d/f,d,d/f+1+2",
+      "t3_row": 276,
+      "damage": 21,
+      "throw": true
+    },
+    {
+      "input": "d/b,n,f+2",
+      "t3_row": 271,
+      "damage": 21,
+      "throw": true
+    },
+    {
+      "input": "n,d,d/b+1+3",
+      "t3_row": 269,
+      "damage": 21,
+      "throw": true
+    }
+  ],
+  "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
+  "schema_version": 2,
+  "t3_bank": "moveset_gunjack.json",
+  "t3_bank_rows": 391,
+  "t3_bank_attack_rows": 104,
+  "generated_full_moveset": {
+    "by": "tools/gen-movesets-t3.py",
+    "date": "2026-10-20",
+    "note": "Full T3 bank depth merged over curated base; curated moves preserved verbatim. 391 rows, 249 attacks."
+  },
+  "expansion": {
+    "stream": "stream6/combat-100",
+    "date": "2026-10-19",
+    "moves_added": 37,
+    "inputs_remapped": [
+      "S->1+2",
+      "P+K->1+4"
+    ],
+    "note": "Additive expansion from real T3 teardown bank rows. Existing moves untouched."
+  },
   "moves": {
     "1": {
       "name": "DOC FRANK MACHINE SHOP 1 (T3 gunjack r45)",
@@ -114,7 +281,8 @@
       "input_slots": [
         "1+3"
       ],
-      "move_class": "throw"
+      "move_class": "throw",
+      "throw_break": "1"
     },
     "2+4": {
       "name": "DOC FRANK MACHINE SHOP 2+4 throw (T3 gunjack r267)",
@@ -139,7 +307,8 @@
       "input_slots": [
         "2+4"
       ],
-      "move_class": "throw"
+      "move_class": "throw",
+      "throw_break": "2"
     },
     "f+1": {
       "name": "DOC FRANK MACHINE SHOP f+1 (T3 gunjack r110)",
@@ -206,7 +375,8 @@
       "input_slots": [
         "d,d/f,d,d/f+1+2"
       ],
-      "move_class": "throw"
+      "move_class": "throw",
+      "throw_break": "1+2"
     },
     "d/b,n,f+2": {
       "name": "DOC FRANK MACHINE SHOP d/b,n,f+2 throw (T3 gunjack r271)",
@@ -231,7 +401,8 @@
       "input_slots": [
         "d/b,n,f+2"
       ],
-      "move_class": "throw"
+      "move_class": "throw",
+      "throw_break": "1+2"
     },
     "n,d,d/b+1+3": {
       "name": "DOC FRANK MACHINE SHOP n,d,d/b+1+3 throw (T3 gunjack r269)",
@@ -256,7 +427,8 @@
       "input_slots": [
         "n,d,d/b+1+3"
       ],
-      "move_class": "throw"
+      "move_class": "throw",
+      "throw_break": "1+2"
     },
     "S": {
       "name": "Shop Upgrade [WH SIGNATURE]",
@@ -300,6 +472,1025 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true
+    },
+    "1+2": {
+      "name": "Shop Upgrade [WH SIGNATURE]",
+      "input": "1+2",
+      "startup": 0.31,
+      "active": 0.1,
+      "recovery": 0.9,
+      "damage": 19,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 13,
+      "anim_ref": "wh:doc-frank-machine-shop:sig:shop-upgrade",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "Straight out of the machine shop. A gadget blast with the serial numbers filed off.",
+      "input_remapped_from": "S"
+    },
+    "1+2__main": {
+      "name": "DOC FRANK MACHINE SHOP 1+2 (T3 gunjack r49)",
+      "input": "1+2",
+      "t3_source": "gunjack",
+      "t3_row": 49,
+      "t3_command": "LP+RP",
+      "startup": 0.433,
+      "active": 0.05,
+      "recovery": 0.7,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:gunjack:row:49",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "strike"
+    },
+    "1+4": {
+      "name": "Warranty Void [WH SIGNATURE]",
+      "input": "1+4",
+      "startup": 0.3,
+      "active": 0.05,
+      "recovery": 0.9,
+      "damage": 21,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 13,
+      "anim_ref": "wh:doc-frank-machine-shop:sig:warranty-void",
+      "input_slots": [
+        "1+4"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "Upgraded past the point of warranty. A wrench-turn grab - no refunds.",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "input_remapped_from": "P+K",
+      "throw_break": "1+2"
+    },
+    "d+1": {
+      "name": "DOC FRANK MACHINE SHOP d+1 (T3 gunjack r169)",
+      "input": "d+1",
+      "t3_source": "gunjack",
+      "t3_row": 169,
+      "t3_command": "2+LP",
+      "startup": 0.367,
+      "active": 0.05,
+      "recovery": 0.55,
+      "damage": 5,
+      "t3_damage": 8,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:gunjack:row:169",
+      "input_slots": [
+        "d+1"
+      ],
+      "move_class": "strike"
+    },
+    "d+1__main": {
+      "name": "DOC FRANK MACHINE SHOP d+1 (T3 gunjack r169)",
+      "input": "d+1",
+      "t3_source": "gunjack",
+      "t3_row": 169,
+      "t3_command": "2+LP",
+      "startup": 0.367,
+      "active": 0.05,
+      "recovery": 0.55,
+      "damage": 5,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:gunjack:row:169",
+      "input_slots": [
+        "d+1"
+      ],
+      "move_class": "strike"
+    },
+    "d+4": {
+      "name": "DOC FRANK MACHINE SHOP d+4 (T3 gunjack r282)",
+      "input": "d+4",
+      "t3_source": "gunjack",
+      "t3_row": 282,
+      "t3_command": "2+RK",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.217,
+      "damage": 6,
+      "t3_damage": 10,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:gunjack:row:282",
+      "input_slots": [
+        "d+4"
+      ],
+      "move_class": "strike"
+    },
+    "d+4__main": {
+      "name": "DOC FRANK MACHINE SHOP d+4 (T3 gunjack r280)",
+      "input": "d+4",
+      "t3_source": "gunjack",
+      "t3_row": 280,
+      "t3_command": "2+RK",
+      "startup": 0.367,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 7,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:gunjack:row:280",
+      "input_slots": [
+        "d+4"
+      ],
+      "move_class": "strike"
+    },
+    "b+1+2": {
+      "name": "DOC FRANK MACHINE SHOP b+1+2 (T3 gunjack r102)",
+      "input": "b+1+2",
+      "t3_source": "gunjack",
+      "t3_row": 102,
+      "t3_command": "4+LP+RP",
+      "startup": 0.283,
+      "active": 0.033,
+      "recovery": 0.733,
+      "damage": 12,
+      "t3_damage": 21,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:gunjack:row:102",
+      "input_slots": [
+        "b+1+2"
+      ],
+      "move_class": "strike"
+    },
+    "d+1+2": {
+      "name": "DOC FRANK MACHINE SHOP d+1+2 (T3 gunjack r246)",
+      "input": "d+1+2",
+      "t3_source": "gunjack",
+      "t3_row": 246,
+      "t3_command": "2+LP+RP",
+      "startup": 0.4,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 12,
+      "t3_damage": 21,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:gunjack:row:246",
+      "input_slots": [
+        "d+1+2"
+      ],
+      "move_class": "strike"
+    },
+    "d/b+1": {
+      "name": "DOC FRANK MACHINE SHOP d/b+1 (T3 gunjack r206)",
+      "input": "d/b+1",
+      "t3_source": "gunjack",
+      "t3_row": 206,
+      "t3_command": "1+LP",
+      "startup": 0.2,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 11,
+      "t3_damage": 18,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:gunjack:row:206",
+      "input_slots": [
+        "d/b+1"
+      ],
+      "move_class": "strike"
+    },
+    "d/b+3": {
+      "name": "DOC FRANK MACHINE SHOP d/b+3 (T3 gunjack r218)",
+      "input": "d/b+3",
+      "t3_source": "gunjack",
+      "t3_row": 218,
+      "t3_command": "1+LK",
+      "startup": 0.45,
+      "active": 0.017,
+      "recovery": 0.633,
+      "damage": 6,
+      "t3_damage": 10,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:gunjack:row:218",
+      "input_slots": [
+        "d/b+3"
+      ],
+      "move_class": "strike"
+    },
+    "d/b+4": {
+      "name": "DOC FRANK MACHINE SHOP d/b+4 (T3 gunjack r222)",
+      "input": "d/b+4",
+      "t3_source": "gunjack",
+      "t3_row": 222,
+      "t3_command": "1+RK",
+      "startup": 0.45,
+      "active": 0.017,
+      "recovery": 0.667,
+      "damage": 7,
+      "t3_damage": 12,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:gunjack:row:222",
+      "input_slots": [
+        "d/b+4"
+      ],
+      "move_class": "strike"
+    },
+    "d/b+4__main": {
+      "name": "DOC FRANK MACHINE SHOP d/b+4 (T3 gunjack r222)",
+      "input": "d/b+4",
+      "t3_source": "gunjack",
+      "t3_row": 222,
+      "t3_command": "1+RK",
+      "startup": 0.45,
+      "active": 0.017,
+      "recovery": 0.667,
+      "damage": 7,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:gunjack:row:222",
+      "input_slots": [
+        "d/b+4"
+      ],
+      "move_class": "strike"
+    },
+    "d/f+1": {
+      "name": "DOC FRANK MACHINE SHOP d/f+1 (T3 gunjack r164)",
+      "input": "d/f+1",
+      "t3_source": "gunjack",
+      "t3_row": 164,
+      "t3_command": "3+LP",
+      "startup": 0.417,
+      "active": 0.05,
+      "recovery": 0.5,
+      "damage": 6,
+      "t3_damage": 10,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:gunjack:row:164",
+      "input_slots": [
+        "d/f+1"
+      ],
+      "move_class": "strike"
+    },
+    "d/f+1__main": {
+      "name": "DOC FRANK MACHINE SHOP d/f+1 (T3 gunjack r166)",
+      "input": "d/f+1",
+      "t3_source": "gunjack",
+      "t3_row": 166,
+      "t3_command": "3+LP",
+      "startup": 0.417,
+      "active": 0.05,
+      "recovery": 0.5,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:gunjack:row:166",
+      "input_slots": [
+        "d/f+1"
+      ],
+      "move_class": "strike"
+    },
+    "f+1+2": {
+      "name": "DOC FRANK MACHINE SHOP f+1+2 (T3 gunjack r295)",
+      "input": "f+1+2",
+      "t3_source": "gunjack",
+      "t3_row": 295,
+      "t3_command": "6+LP+RP",
+      "startup": 0.317,
+      "active": 0.1,
+      "recovery": 0.833,
+      "damage": 9,
+      "t3_damage": 15,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:gunjack:row:295",
+      "input_slots": [
+        "f+1+2"
+      ],
+      "move_class": "strike"
+    },
+    "f+3+4": {
+      "name": "DOC FRANK MACHINE SHOP f+3+4 (T3 gunjack r241)",
+      "input": "f+3+4",
+      "t3_source": "gunjack",
+      "t3_row": 241,
+      "t3_command": "6+LK+RK",
+      "startup": 0.35,
+      "active": 0.167,
+      "recovery": 2.283,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:gunjack:row:241",
+      "input_slots": [
+        "f+3+4"
+      ],
+      "move_class": "strike"
+    },
+    "u/b+1": {
+      "name": "DOC FRANK MACHINE SHOP u/b+1 (T3 gunjack r48)",
+      "input": "u/b+1",
+      "t3_source": "gunjack",
+      "t3_row": 48,
+      "t3_command": "4/7+LP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "t3_damage": 12,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:gunjack:row:48",
+      "input_slots": [
+        "u/b+1"
+      ],
+      "move_class": "strike"
+    },
+    "u/b+3": {
+      "name": "DOC FRANK MACHINE SHOP u/b+3 (T3 gunjack r70)",
+      "input": "u/b+3",
+      "t3_source": "gunjack",
+      "t3_row": 70,
+      "t3_command": "4/7+LK",
+      "startup": 0.417,
+      "active": 0.017,
+      "recovery": 0.817,
+      "damage": 12,
+      "t3_damage": 20,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:gunjack:row:70",
+      "input_slots": [
+        "u/b+3"
+      ],
+      "move_class": "strike"
+    },
+    "u/b+4": {
+      "name": "DOC FRANK MACHINE SHOP u/b+4 (T3 gunjack r83)",
+      "input": "u/b+4",
+      "t3_source": "gunjack",
+      "t3_row": 83,
+      "t3_command": "4/7+RK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 11,
+      "t3_damage": 18,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:gunjack:row:83",
+      "input_slots": [
+        "u/b+4"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+1": {
+      "name": "DOC FRANK MACHINE SHOP u/f+1 (T3 gunjack r47)",
+      "input": "u/f+1",
+      "t3_source": "gunjack",
+      "t3_row": 47,
+      "t3_command": "6/9+LP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "t3_damage": 12,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:gunjack:row:47",
+      "input_slots": [
+        "u/f+1"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+3": {
+      "name": "DOC FRANK MACHINE SHOP u/f+3 (T3 gunjack r57)",
+      "input": "u/f+3",
+      "t3_source": "gunjack",
+      "t3_row": 57,
+      "t3_command": "6/9+LK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:gunjack:row:57",
+      "input_slots": [
+        "u/f+3"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+4": {
+      "name": "DOC FRANK MACHINE SHOP u/f+4 (T3 gunjack r82)",
+      "input": "u/f+4",
+      "t3_source": "gunjack",
+      "t3_row": 82,
+      "t3_command": "6/9+RK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 12,
+      "t3_damage": 21,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:gunjack:row:82",
+      "input_slots": [
+        "u/f+4"
+      ],
+      "move_class": "strike"
+    },
+    "d/f+1+2": {
+      "name": "DOC FRANK MACHINE SHOP d/f+1+2 (T3 gunjack r123)",
+      "input": "d/f+1+2",
+      "t3_source": "gunjack",
+      "t3_row": 123,
+      "t3_command": "3+LP+RP",
+      "startup": 0.383,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 12,
+      "t3_damage": 21,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:gunjack:row:123",
+      "input_slots": [
+        "d/f+1+2"
+      ],
+      "move_class": "strike"
+    },
+    "d/f+2+3": {
+      "name": "DOC FRANK MACHINE SHOP d/f+2+3 (T3 gunjack r247)",
+      "input": "d/f+2+3",
+      "t3_source": "gunjack",
+      "t3_row": 247,
+      "t3_command": "3+RP+LK",
+      "startup": 0.333,
+      "active": 0.067,
+      "recovery": 0.567,
+      "damage": 7,
+      "t3_damage": 12,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:gunjack:row:247",
+      "input_slots": [
+        "d/f+2+3"
+      ],
+      "move_class": "strike"
+    },
+    "d/f+2+3__main": {
+      "name": "DOC FRANK MACHINE SHOP d/f+2+3 (T3 gunjack r247)",
+      "input": "d/f+2+3",
+      "t3_source": "gunjack",
+      "t3_row": 247,
+      "t3_command": "3+RP+LK",
+      "startup": 0.333,
+      "active": 0.067,
+      "recovery": 0.567,
+      "damage": 7,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:gunjack:row:247",
+      "input_slots": [
+        "d/f+2+3"
+      ],
+      "move_class": "strike"
+    },
+    "u/b+1+2": {
+      "name": "DOC FRANK MACHINE SHOP u/b+1+2 (T3 gunjack r50)",
+      "input": "u/b+1+2",
+      "t3_source": "gunjack",
+      "t3_row": 50,
+      "t3_command": "4/7+LP+RP",
+      "startup": 0.433,
+      "active": 0.05,
+      "recovery": 0.7,
+      "damage": 9,
+      "t3_damage": 15,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:gunjack:row:50",
+      "input_slots": [
+        "u/b+1+2"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+3+4": {
+      "name": "DOC FRANK MACHINE SHOP u/f+3+4 (T3 gunjack r84)",
+      "input": "u/f+3+4",
+      "t3_source": "gunjack",
+      "t3_row": 84,
+      "t3_command": "6/9+LK+RK",
+      "startup": 0.567,
+      "active": 0.1,
+      "recovery": 1.183,
+      "damage": 15,
+      "t3_damage": 26,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:gunjack:row:84",
+      "input_slots": [
+        "u/f+3+4"
+      ],
+      "move_class": "strike"
+    },
+    "d/b+2+3": {
+      "name": "DOC FRANK MACHINE SHOP d/b+2+3 throw (T3 gunjack r275)",
+      "input": "d/b+2+3",
+      "t3_source": "gunjack",
+      "t3_row": 275,
+      "t3_command": "1+RP+LK",
+      "startup": 0.183,
+      "active": 0.017,
+      "recovery": 0.517,
+      "damage": 21,
+      "t3_damage": 35,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 11,
+      "anim_ref": "t3:gunjack:row:275",
+      "input_slots": [
+        "d/b+2+3"
+      ],
+      "move_class": "throw",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "1+2",
+      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+    },
+    "d/f+1+3": {
+      "name": "DOC FRANK MACHINE SHOP d/f+1+3 throw (T3 gunjack r268)",
+      "input": "d/f+1+3",
+      "t3_source": "gunjack",
+      "t3_row": 268,
+      "t3_command": "3+LP+LK",
+      "startup": 0.333,
+      "active": 0.017,
+      "recovery": 1.167,
+      "damage": 21,
+      "t3_damage": 35,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 11,
+      "anim_ref": "t3:gunjack:row:268",
+      "input_slots": [
+        "d/f+1+3"
+      ],
+      "move_class": "throw",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "1",
+      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+    },
+    "d/f+2+4": {
+      "name": "DOC FRANK MACHINE SHOP d/f+2+4 throw (T3 gunjack r272)",
+      "input": "d/f+2+4",
+      "t3_source": "gunjack",
+      "t3_row": 272,
+      "t3_command": "3+RP+RK",
+      "startup": 0.183,
+      "active": 0.017,
+      "recovery": 0.517,
+      "damage": 21,
+      "t3_damage": 35,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 11,
+      "anim_ref": "t3:gunjack:row:272",
+      "input_slots": [
+        "d/f+2+4"
+      ],
+      "move_class": "throw",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "2",
+      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+    },
+    "f+2+3": {
+      "name": "DOC FRANK MACHINE SHOP f+2+3 throw (T3 gunjack r274)",
+      "input": "f+2+3",
+      "t3_source": "gunjack",
+      "t3_row": 274,
+      "t3_command": "6+RP+LK",
+      "startup": 0.183,
+      "active": 0.017,
+      "recovery": 0.517,
+      "damage": 21,
+      "t3_damage": 35,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 11,
+      "anim_ref": "t3:gunjack:row:274",
+      "input_slots": [
+        "f+2+3"
+      ],
+      "move_class": "throw",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "1+2",
+      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+    },
+    "n,d/f,n,d/f+2+4": {
+      "name": "DOC FRANK MACHINE SHOP n,d/f,n,d/f+2+4 throw (T3 gunjack r273)",
+      "input": "n,d/f,n,d/f+2+4",
+      "t3_source": "gunjack",
+      "t3_row": 273,
+      "t3_command": "[5 3 5 3+RP+RK](59f)",
+      "startup": 0.183,
+      "active": 0.017,
+      "recovery": 0.517,
+      "damage": 21,
+      "t3_damage": 35,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 11,
+      "anim_ref": "t3:gunjack:row:273",
+      "input_slots": [
+        "n,d/f,n,d/f+2+4"
+      ],
+      "move_class": "throw",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "1+2",
+      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+    },
+    "u/f+1+2": {
+      "name": "DOC FRANK MACHINE SHOP u/f+1+2 throw (T3 gunjack r270)",
+      "input": "u/f+1+2",
+      "t3_source": "gunjack",
+      "t3_row": 270,
+      "t3_command": "6/9+LP+RP",
+      "startup": 0.183,
+      "active": 0.017,
+      "recovery": 0.517,
+      "damage": 21,
+      "t3_damage": 35,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 11,
+      "anim_ref": "t3:gunjack:row:270",
+      "input_slots": [
+        "u/f+1+2"
+      ],
+      "move_class": "throw",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "1+2",
+      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+    },
+    "d/b+1,1": {
+      "name": "DOC FRANK MACHINE SHOP d/b+1,1 (T3 gunjack r207)",
+      "input": "d/b+1,1",
+      "t3_source": "gunjack",
+      "t3_row": 207,
+      "t3_command": "LP",
+      "startup": 0.333,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:gunjack:row:207",
+      "input_slots": [
+        "d/b+1,1",
+        "d/b+1",
+        "1"
+      ],
+      "move_class": "string",
+      "string_hit": "d/b+1"
+    },
+    "u/f+3+4,1": {
+      "name": "DOC FRANK MACHINE SHOP u/f+3+4,1 (T3 gunjack r177)",
+      "input": "u/f+3+4,1",
+      "t3_source": "gunjack",
+      "t3_row": 177,
+      "t3_command": "LP",
+      "startup": 0.317,
+      "active": 0.05,
+      "recovery": 1.217,
+      "damage": 6,
+      "t3_damage": 10,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:gunjack:row:177",
+      "input_slots": [
+        "u/f+3+4,1",
+        "u/f+3+4",
+        "1"
+      ],
+      "move_class": "string",
+      "string_hit": "u/f+3+4"
+    },
+    "u/f+3+4,2": {
+      "name": "DOC FRANK MACHINE SHOP u/f+3+4,2 (T3 gunjack r193)",
+      "input": "u/f+3+4,2",
+      "t3_source": "gunjack",
+      "t3_row": 193,
+      "t3_command": "RP",
+      "startup": 0.317,
+      "active": 0.05,
+      "recovery": 1.217,
+      "damage": 6,
+      "t3_damage": 10,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:gunjack:row:193",
+      "input_slots": [
+        "u/f+3+4,2",
+        "u/f+3+4",
+        "2"
+      ],
+      "move_class": "string",
+      "string_hit": "u/f+3+4"
+    },
+    "d/b+1,1,1": {
+      "name": "DOC FRANK MACHINE SHOP d/b+1,1,1 (T3 gunjack r208)",
+      "input": "d/b+1,1,1",
+      "t3_source": "gunjack",
+      "t3_row": 208,
+      "t3_command": "LP",
+      "startup": 0.333,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:gunjack:row:208",
+      "input_slots": [
+        "d/b+1,1,1",
+        "d/b+1",
+        "1",
+        "1"
+      ],
+      "move_class": "string",
+      "string_hit": "d/b+1,1"
+    },
+    "u/f+3+4,1,2": {
+      "name": "DOC FRANK MACHINE SHOP u/f+3+4,1,2 (T3 gunjack r194)",
+      "input": "u/f+3+4,1,2",
+      "t3_source": "gunjack",
+      "t3_row": 194,
+      "t3_command": "RP",
+      "startup": 0.25,
+      "active": 0.05,
+      "recovery": 1.183,
+      "damage": 6,
+      "t3_damage": 10,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:gunjack:row:194",
+      "input_slots": [
+        "u/f+3+4,1,2",
+        "u/f+3+4",
+        "1",
+        "2"
+      ],
+      "move_class": "string",
+      "string_hit": "u/f+3+4,1"
+    },
+    "u/f+3+4,2,1": {
+      "name": "DOC FRANK MACHINE SHOP u/f+3+4,2,1 (T3 gunjack r178)",
+      "input": "u/f+3+4,2,1",
+      "t3_source": "gunjack",
+      "t3_row": 178,
+      "t3_command": "LP",
+      "startup": 0.25,
+      "active": 0.05,
+      "recovery": 1.183,
+      "damage": 6,
+      "t3_damage": 10,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:gunjack:row:178",
+      "input_slots": [
+        "u/f+3+4,2,1",
+        "u/f+3+4",
+        "2",
+        "1"
+      ],
+      "move_class": "string",
+      "string_hit": "u/f+3+4,2"
+    },
+    "d/b+1,1,1,2": {
+      "name": "DOC FRANK MACHINE SHOP d/b+1,1,1,2 (T3 gunjack r216)",
+      "input": "d/b+1,1,1,2",
+      "t3_source": "gunjack",
+      "t3_row": 216,
+      "t3_command": "RP",
+      "startup": 0.317,
+      "active": 0.017,
+      "recovery": 0.65,
+      "damage": 24,
+      "t3_damage": 40,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:gunjack:row:216",
+      "input_slots": [
+        "d/b+1,1,1,2",
+        "d/b+1",
+        "1",
+        "1",
+        "2"
+      ],
+      "move_class": "string",
+      "string_hit": "d/b+1,1,1"
+    },
+    "u/f+3+4,1,2,1": {
+      "name": "DOC FRANK MACHINE SHOP u/f+3+4,1,2,1 (T3 gunjack r179)",
+      "input": "u/f+3+4,1,2,1",
+      "t3_source": "gunjack",
+      "t3_row": 179,
+      "t3_command": "LP",
+      "startup": 0.25,
+      "active": 0.05,
+      "recovery": 1.183,
+      "damage": 6,
+      "t3_damage": 10,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:gunjack:row:179",
+      "input_slots": [
+        "u/f+3+4,1,2,1",
+        "u/f+3+4",
+        "1",
+        "2",
+        "1"
+      ],
+      "move_class": "string",
+      "string_hit": "u/f+3+4,1,2"
+    },
+    "u/f+3+4,2,1,2": {
+      "name": "DOC FRANK MACHINE SHOP u/f+3+4,2,1,2 (T3 gunjack r195)",
+      "input": "u/f+3+4,2,1,2",
+      "t3_source": "gunjack",
+      "t3_row": 195,
+      "t3_command": "RP",
+      "startup": 0.25,
+      "active": 0.05,
+      "recovery": 1.183,
+      "damage": 6,
+      "t3_damage": 10,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:gunjack:row:195",
+      "input_slots": [
+        "u/f+3+4,2,1,2",
+        "u/f+3+4",
+        "2",
+        "1",
+        "2"
+      ],
+      "move_class": "string",
+      "string_hit": "u/f+3+4,2,1"
+    },
+    "u/f+3+4,1,2,1,2": {
+      "name": "DOC FRANK MACHINE SHOP u/f+3+4,1,2,1,2 (T3 gunjack r196)",
+      "input": "u/f+3+4,1,2,1,2",
+      "t3_source": "gunjack",
+      "t3_row": 196,
+      "t3_command": "RP",
+      "startup": 0.25,
+      "active": 0.05,
+      "recovery": 1.183,
+      "damage": 6,
+      "t3_damage": 10,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:gunjack:row:196",
+      "input_slots": [
+        "u/f+3+4,1,2,1,2",
+        "u/f+3+4",
+        "1",
+        "2",
+        "1",
+        "2"
+      ],
+      "move_class": "string",
+      "string_hit": "u/f+3+4,1,2,1"
+    },
+    "u/f+3+4,2,1,2,1": {
+      "name": "DOC FRANK MACHINE SHOP u/f+3+4,2,1,2,1 (T3 gunjack r180)",
+      "input": "u/f+3+4,2,1,2,1",
+      "t3_source": "gunjack",
+      "t3_row": 180,
+      "t3_command": "LP",
+      "startup": 0.25,
+      "active": 0.05,
+      "recovery": 1.183,
+      "damage": 6,
+      "t3_damage": 10,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:gunjack:row:180",
+      "input_slots": [
+        "u/f+3+4,2,1,2,1",
+        "u/f+3+4",
+        "2",
+        "1",
+        "2",
+        "1"
+      ],
+      "move_class": "string",
+      "string_hit": "u/f+3+4,2,1,2"
     },
     "1_r38": {
       "name": "DOC FRANK MACHINE SHOP 1_r38 (T3 gunjack r38)",
@@ -523,26 +1714,6 @@
       ],
       "move_class": "strike",
       "t3_condition": 36
-    },
-    "1+2": {
-      "name": "DOC FRANK MACHINE SHOP 1+2 (T3 gunjack r49)",
-      "input": "1+2",
-      "t3_source": "gunjack",
-      "t3_row": 49,
-      "t3_command": "LP+RP",
-      "startup": 0.433,
-      "active": 0.05,
-      "recovery": 0.7,
-      "damage": 9,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:49",
-      "input_slots": [
-        "1+2"
-      ],
-      "move_class": "strike"
     },
     "b": {
       "name": "DOC FRANK MACHINE SHOP b (T3 gunjack r50)",
@@ -1129,26 +2300,6 @@
       ],
       "move_class": "strike"
     },
-    "d/f+1": {
-      "name": "DOC FRANK MACHINE SHOP d/f+1 (T3 gunjack r166)",
-      "input": "d/f+1",
-      "t3_source": "gunjack",
-      "t3_row": 166,
-      "t3_command": "3+LP",
-      "startup": 0.417,
-      "active": 0.05,
-      "recovery": 0.5,
-      "damage": 9,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:166",
-      "input_slots": [
-        "d/f+1"
-      ],
-      "move_class": "strike"
-    },
     "d/f+1_r167": {
       "name": "DOC FRANK MACHINE SHOP d/f+1_r167 (T3 gunjack r167)",
       "input": "d/f+1_r167",
@@ -1166,26 +2317,6 @@
       "anim_ref": "t3:gunjack:row:167",
       "input_slots": [
         "d/f+1"
-      ],
-      "move_class": "strike"
-    },
-    "d+1": {
-      "name": "DOC FRANK MACHINE SHOP d+1 (T3 gunjack r169)",
-      "input": "d+1",
-      "t3_source": "gunjack",
-      "t3_row": 169,
-      "t3_command": "2+LP",
-      "startup": 0.367,
-      "active": 0.05,
-      "recovery": 0.55,
-      "damage": 5,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:169",
-      "input_slots": [
-        "d+1"
       ],
       "move_class": "strike"
     },
@@ -1449,26 +2580,6 @@
       ],
       "move_class": "strike"
     },
-    "d/b+4": {
-      "name": "DOC FRANK MACHINE SHOP d/b+4 (T3 gunjack r222)",
-      "input": "d/b+4",
-      "t3_source": "gunjack",
-      "t3_row": 222,
-      "t3_command": "1+RK",
-      "startup": 0.45,
-      "active": 0.017,
-      "recovery": 0.667,
-      "damage": 7,
-      "limb": "legR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:222",
-      "input_slots": [
-        "d/b+4"
-      ],
-      "move_class": "strike"
-    },
     "1_r233": {
       "name": "DOC FRANK MACHINE SHOP 1_r233 (T3 gunjack r233)",
       "input": "1_r233",
@@ -1691,26 +2802,6 @@
       "move_class": "strike",
       "t3_restriction": 17
     },
-    "d/f+2+3": {
-      "name": "DOC FRANK MACHINE SHOP d/f+2+3 (T3 gunjack r247)",
-      "input": "d/f+2+3",
-      "t3_source": "gunjack",
-      "t3_row": 247,
-      "t3_command": "3+RP+LK",
-      "startup": 0.333,
-      "active": 0.067,
-      "recovery": 0.567,
-      "damage": 7,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:247",
-      "input_slots": [
-        "d/f+2+3"
-      ],
-      "move_class": "strike"
-    },
     "1+2_r257": {
       "name": "DOC FRANK MACHINE SHOP 1+2_r257 (T3 gunjack r257)",
       "input": "1+2_r257",
@@ -1769,26 +2860,6 @@
       "anim_ref": "t3:gunjack:row:279",
       "input_slots": [
         "3"
-      ],
-      "move_class": "strike"
-    },
-    "d+4": {
-      "name": "DOC FRANK MACHINE SHOP d+4 (T3 gunjack r280)",
-      "input": "d+4",
-      "t3_source": "gunjack",
-      "t3_row": 280,
-      "t3_command": "2+RK",
-      "startup": 0.367,
-      "active": 0.017,
-      "recovery": 0.733,
-      "damage": 7,
-      "limb": "legR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:280",
-      "input_slots": [
-        "d+4"
       ],
       "move_class": "strike"
     },
@@ -2233,35 +3304,13 @@
       "move_class": "strike"
     }
   },
-  "strings": [],
-  "specials": [
-    {
-      "input": "d,d/f,d,d/f+1+2",
-      "t3_row": 276,
-      "damage": 21,
-      "throw": true
-    },
-    {
-      "input": "d/b,n,f+2",
-      "t3_row": 271,
-      "damage": 21,
-      "throw": true
-    },
-    {
-      "input": "n,d,d/b+1+3",
-      "t3_row": 269,
-      "damage": 21,
-      "throw": true
-    }
-  ],
-  "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
-  "schema_version": 2,
-  "t3_bank": "moveset_gunjack.json",
-  "t3_bank_rows": 391,
-  "t3_bank_attack_rows": 104,
-  "generated_full_moveset": {
-    "by": "tools/gen-movesets-t3.py",
+  "restored_from_sweep_338": {
     "date": "2026-10-20",
-    "note": "Full T3 bank depth merged over curated base; curated moves preserved verbatim. 391 rows, 249 attacks."
+    "by": "tools/moveset-restore/restore_sweep_338.py",
+    "source_commit": "4cc6b41b",
+    "destroyed_by": "8ebdc527",
+    "moves": 147,
+    "strings": 11,
+    "specials": 3
   }
 }
