@@ -32,10 +32,20 @@ C = np.diag([1.0, -1.0, -1.0])
 DEFAULT_CLIPS = {"t3_stance": 0, "t3_stance_b": 1, "t3_stance_c": 2,
                  "t3_win_lp": 0xD67, "t3_win_rp": 0xD68, "t3_win_lk": 0xD69, "t3_win_rk": 0xD6A}
 BANKS = {"king": ("models/king95/king95.kmd", "animations/divmot03_king.bin", "renders/pose-check/king_stance75.obj")}
+_DIVMOT = {"paul": "00_paul", "lei": "02_lei", "nina": "05_nina", "hwoarang": "06_hwoarang",
+           "eddy": "08_eddy", "julia": "10_julia", "anna": "17_anna", "bosconovitch": "18_bosconovitch"}
 for _n, _k, _b in (("jin", "jin151/jin.kmd", "divmot09_jin.bin"), ("xiaoyu", "xiaoyu127/xiaoyu.kmd", "divmot07_xiaoyu.bin"),
                    ("bryan", "bryan183/bryan.kmd", "divmot12_bryan.bin"), ("heihachi", "heihachi191/heihachi.kmd", "divmot13_heihachi.bin"),
                    ("gunjack", "gunjack215/gunjack.kmd", "divmot16_gunjack.bin"), ("yoshimitsu", "yoshimitsu103/yoshimitsu.kmd", "divmot04_yoshimitsu.bin")):
     BANKS[_n] = ("models/" + _k, "animations/" + _b, f"renders/pose-check/{_n}_stance75.obj")  # stance = slot 0 frame 75 (pose_assemble.py)
+
+# Remainder banks (2026-10-20, anim-bank wiring lane): KMDs extracted from the
+# same TEKKEN3.BNS (teardown/tekken3/models/<char>/<char>.kmd) + stance OBJs
+# from the pose lane's pose-check renders. armorking rides King's KMD/stance
+# (Armor King has no T3 KMD/divmot of his own; his motion IS divmot03_king).
+for _n in ("paul", "lei", "nina", "hwoarang", "eddy", "julia", "anna", "bosconovitch"):
+    BANKS[_n] = (f"models/{_n}/{_n}.kmd", f"animations/divmot{_DIVMOT[_n]}.bin", f"renders/pose-check/{_n}_stance75.obj")
+BANKS["armorking"] = ("models/king95/king95.kmd", "animations/divmot03_king.bin", "renders/pose-check/king_stance75.obj")
 
 def parse_obj_text(txt):
     parts, cur = {}, None
