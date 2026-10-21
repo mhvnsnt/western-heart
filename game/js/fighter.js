@@ -61,6 +61,8 @@ const MOVESET_MAP = {
   'cainelias': 'king',
   // Sketchfab intake (owner 2026-10-19): working names.
   zangief: 'king', blanka: 'bryan', vega: 'xiaoyu', iori: 'heihachi',
+  // CHARGER (owner 2026-10-20): Blanka replacement — plays Blanka's bryan bank.
+  charger: 'bryan', 'charger-attire2': 'bryan',
   'armor-king': 'king',
   // Teardown-integration (owner 2026-10-19): aggregate-bank fallback for the
   // roster ids whose per-fighter files landed with the full-moveset wiring.

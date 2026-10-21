@@ -143,6 +143,9 @@ const MODEL_URLS = {
   // Vega CC-BY (pierodsoto01), Iori CC-BY (0xo), Armor King CC-BY (theamazingdonovan207).
   zangief: '../roster/zangief/attires/attire1/model.glb',
   blanka: '../roster/blanka/attires/attire1/model.glb',
+  // CHARGER (owner 2026-10-20): Blanka replacement fighter — owner Tripo models.
+  charger: '../roster/charger/attires/attire1/model.glb',
+  'charger-attire2': '../roster/charger/attires/attire2/model.glb',
   vega: '../roster/vega/attires/attire1/model.glb',
   iori: '../roster/iori/attires/attire1/model.glb',
   'armor-king': '../roster/armor-king/attires/attire1/model.glb',

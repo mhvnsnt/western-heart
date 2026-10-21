@@ -1,0 +1,4302 @@
+{
+ "fighter": "charger",
+ "display": "CHARGER",
+ "tekken_base": "Blanka (SF) — fighter replaced by CHARGER (owner 2026-10-20)",
+ "t3_source": "bryan",
+ "proxy": false,
+ "proxy_note": null,
+ "variant": 1,
+ "moves": {
+  "1": {
+   "name": "BLANKA 1 (T3 bryan r44)",
+   "input": "1",
+   "t3_source": "bryan",
+   "t3_row": 44,
+   "t3_command": "LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 10,
+   "t3_damage": 17,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:44",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "2": {
+   "name": "BLANKA 2 (T3 bryan r48)",
+   "input": "2",
+   "t3_source": "bryan",
+   "t3_row": 48,
+   "t3_command": "RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 11,
+   "t3_damage": 18,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:48",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "3": {
+   "name": "BLANKA 3 (T3 bryan r54)",
+   "input": "3",
+   "t3_source": "bryan",
+   "t3_row": 54,
+   "t3_command": "LK",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 12,
+   "t3_damage": 20,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:54",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "4": {
+   "name": "BLANKA 4 (T3 bryan r60)",
+   "input": "4",
+   "t3_source": "bryan",
+   "t3_row": 60,
+   "t3_command": "RK",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 10,
+   "t3_damage": 17,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:60",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "5": {
+   "name": "BLANKA 5 (T3 bryan r66)",
+   "input": "f+1",
+   "t3_source": "bryan",
+   "t3_row": 66,
+   "t3_command": "f+LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 13,
+   "t3_damage": 22,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:66",
+   "input_slots": [
+    "f+1"
+   ],
+   "move_class": "strike"
+  },
+  "6": {
+   "name": "BLANKA 6 (T3 bryan r72)",
+   "input": "f+2",
+   "t3_source": "bryan",
+   "t3_row": 72,
+   "t3_command": "f+RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 11,
+   "t3_damage": 18,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:72",
+   "input_slots": [
+    "f+2"
+   ],
+   "move_class": "strike"
+  },
+  "7": {
+   "name": "BLANKA 7 (T3 bryan r78)",
+   "input": "d+1",
+   "t3_source": "bryan",
+   "t3_row": 78,
+   "t3_command": "d+LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 14,
+   "t3_damage": 23,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:78",
+   "input_slots": [
+    "d+1"
+   ],
+   "move_class": "strike"
+  },
+  "8": {
+   "name": "BLANKA 8 (T3 bryan r84)",
+   "input": "d+2",
+   "t3_source": "bryan",
+   "t3_row": 84,
+   "t3_command": "d+RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 12,
+   "t3_damage": 20,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:84",
+   "input_slots": [
+    "d+2"
+   ],
+   "move_class": "strike"
+  },
+  "9": {
+   "name": "BLANKA 9 (T3 bryan r90)",
+   "input": "b+1",
+   "t3_source": "bryan",
+   "t3_row": 90,
+   "t3_command": "b+LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 13,
+   "t3_damage": 22,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:90",
+   "input_slots": [
+    "b+1"
+   ],
+   "move_class": "strike"
+  },
+  "10": {
+   "name": "BLANKA 10 (T3 bryan r96)",
+   "input": "b+2",
+   "t3_source": "bryan",
+   "t3_row": 96,
+   "t3_command": "b+RP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 15,
+   "t3_damage": 25,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:96",
+   "input_slots": [
+    "b+2"
+   ],
+   "move_class": "strike"
+  },
+  "11": {
+   "name": "ELECTRIC THUNDER",
+   "input": "1+2+3",
+   "t3_source": "bryan",
+   "t3_row": 0,
+   "t3_command": "1+2+3",
+   "startup": 0.3,
+   "active": 0.05,
+   "recovery": 0.8,
+   "damage": 22,
+   "t3_damage": 37,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 3.5,
+   "soulGain": 15,
+   "anim_ref": "wh:blanka:sig:1",
+   "input_slots": [
+    "1+2+3"
+   ],
+   "move_class": "special",
+   "wh_signature": true,
+   "wh_note": "WH signature: Blanka's electricity. Close-range shock."
+  },
+  "12": {
+   "name": "ROLLING ATTACK",
+   "input": "b,n,f+4",
+   "t3_source": "bryan",
+   "t3_row": 0,
+   "t3_command": "b,n,f+4",
+   "startup": 0.3,
+   "active": 0.05,
+   "recovery": 0.8,
+   "damage": 20,
+   "t3_damage": 34,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 3.5,
+   "soulGain": 15,
+   "anim_ref": "wh:blanka:sig:2",
+   "input_slots": [
+    "b,n,f+4"
+   ],
+   "move_class": "special",
+   "wh_signature": true,
+   "wh_note": "WH signature: Blanka ball roll."
+  },
+  "1+2": {
+   "name": "BLANKA 1+2 (T3 bryan r41)",
+   "input": "1+2",
+   "t3_source": "bryan",
+   "t3_row": 41,
+   "t3_command": "LP+RP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:41",
+   "input_slots": [
+    "1+2"
+   ],
+   "move_class": "strike"
+  },
+  "f": {
+   "name": "BLANKA f (T3 bryan r42)",
+   "input": "f",
+   "t3_source": "bryan",
+   "t3_row": 42,
+   "t3_command": "6/9+LP+RP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:42",
+   "input_slots": [
+    "f"
+   ],
+   "move_class": "strike"
+  },
+  "b": {
+   "name": "BLANKA b (T3 bryan r43)",
+   "input": "b",
+   "t3_source": "bryan",
+   "t3_row": 43,
+   "t3_command": "4/7+LP+RP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:43",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "strike"
+  },
+  "1_r45": {
+   "name": "BLANKA 1_r45 (T3 bryan r45)",
+   "input": "1_r45",
+   "t3_source": "bryan",
+   "t3_row": 45,
+   "t3_command": "LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:45",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r46": {
+   "name": "BLANKA 1_r46 (T3 bryan r46)",
+   "input": "1_r46",
+   "t3_source": "bryan",
+   "t3_row": 46,
+   "t3_command": "LP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:46",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r47": {
+   "name": "BLANKA 1_r47 (T3 bryan r47)",
+   "input": "1_r47",
+   "t3_source": "bryan",
+   "t3_row": 47,
+   "t3_command": "LP",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 9,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:47",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r48": {
+   "name": "BLANKA 1_r48 (T3 bryan r48)",
+   "input": "1_r48",
+   "t3_source": "bryan",
+   "t3_row": 48,
+   "t3_command": "LP",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 9,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:48",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r49": {
+   "name": "BLANKA 1_r49 (T3 bryan r49)",
+   "input": "1_r49",
+   "t3_source": "bryan",
+   "t3_row": 49,
+   "t3_command": "LP",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 9,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:49",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r50": {
+   "name": "BLANKA 1_r50 (T3 bryan r50)",
+   "input": "1_r50",
+   "t3_source": "bryan",
+   "t3_row": 50,
+   "t3_command": "LP",
+   "startup": 0.117,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 11,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:50",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r51": {
+   "name": "BLANKA 1_r51 (T3 bryan r51)",
+   "input": "1_r51",
+   "t3_source": "bryan",
+   "t3_row": 51,
+   "t3_command": "LP",
+   "startup": 0.117,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 11,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:51",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_r52": {
+   "name": "BLANKA 1_r52 (T3 bryan r52)",
+   "input": "1_r52",
+   "t3_source": "bryan",
+   "t3_row": 52,
+   "t3_command": "LP",
+   "startup": 0.117,
+   "active": 0.017,
+   "recovery": 0.467,
+   "damage": 11,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:52",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "1_c36_r53": {
+   "name": "BLANKA 1_c36_r53 (T3 bryan r53)",
+   "input": "1_c36_r53",
+   "t3_source": "bryan",
+   "t3_row": 53,
+   "t3_command": "LP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:53",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "f_c36_r54": {
+   "name": "BLANKA f_c36_r54 (T3 bryan r54)",
+   "input": "f_c36_r54",
+   "t3_source": "bryan",
+   "t3_row": 54,
+   "t3_command": "6/9+LP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:54",
+   "input_slots": [
+    "f"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "b_c36_r55": {
+   "name": "BLANKA b_c36_r55 (T3 bryan r55)",
+   "input": "b_c36_r55",
+   "t3_source": "bryan",
+   "t3_row": 55,
+   "t3_command": "4/7+LP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:55",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "2_r57": {
+   "name": "BLANKA 2_r57 (T3 bryan r57)",
+   "input": "2_r57",
+   "t3_source": "bryan",
+   "t3_row": 57,
+   "t3_command": "RP",
+   "startup": 0.183,
+   "active": 0.05,
+   "recovery": 0.667,
+   "damage": 11,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:57",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "2_r58": {
+   "name": "BLANKA 2_r58 (T3 bryan r58)",
+   "input": "2_r58",
+   "t3_source": "bryan",
+   "t3_row": 58,
+   "t3_command": "RP",
+   "startup": 0.183,
+   "active": 0.05,
+   "recovery": 0.667,
+   "damage": 11,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:58",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "3+4_r107": {
+   "name": "BLANKA 3+4_r107 (T3 bryan r60)",
+   "input": "3+4_r107",
+   "t3_source": "bryan",
+   "t3_row": 60,
+   "t3_command": "LK+RK",
+   "startup": 0.35,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:60",
+   "input_slots": [
+    "3+4"
+   ],
+   "move_class": "strike",
+   "t3_restriction": 107
+  },
+  "f_r61": {
+   "name": "BLANKA f_r61 (T3 bryan r61)",
+   "input": "f_r61",
+   "t3_source": "bryan",
+   "t3_row": 61,
+   "t3_command": "6/9+LK+RK",
+   "startup": 0.35,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:61",
+   "input_slots": [
+    "f"
+   ],
+   "move_class": "strike"
+  },
+  "b_r62": {
+   "name": "BLANKA b_r62 (T3 bryan r62)",
+   "input": "b_r62",
+   "t3_source": "bryan",
+   "t3_row": 62,
+   "t3_command": "4/7+LK+RK",
+   "startup": 0.35,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:62",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "strike"
+  },
+  "3_c36": {
+   "name": "BLANKA 3_c36 (T3 bryan r63)",
+   "input": "3_c36",
+   "t3_source": "bryan",
+   "t3_row": 63,
+   "t3_command": "LK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:63",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "f_c36_r64": {
+   "name": "BLANKA f_c36_r64 (T3 bryan r64)",
+   "input": "f_c36_r64",
+   "t3_source": "bryan",
+   "t3_row": 64,
+   "t3_command": "6/9+LK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:64",
+   "input_slots": [
+    "f"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "b_c36_r65": {
+   "name": "BLANKA b_c36_r65 (T3 bryan r65)",
+   "input": "b_c36_r65",
+   "t3_source": "bryan",
+   "t3_row": 65,
+   "t3_command": "4/7+LK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:65",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "3_r67": {
+   "name": "BLANKA 3_r67 (T3 bryan r67)",
+   "input": "3_r67",
+   "t3_source": "bryan",
+   "t3_row": 67,
+   "t3_command": "LK",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.817,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:67",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r68": {
+   "name": "BLANKA 3_r68 (T3 bryan r68)",
+   "input": "3_r68",
+   "t3_source": "bryan",
+   "t3_row": 68,
+   "t3_command": "LK",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.817,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:68",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r69": {
+   "name": "BLANKA 3_r69 (T3 bryan r69)",
+   "input": "3_r69",
+   "t3_source": "bryan",
+   "t3_row": 69,
+   "t3_command": "LK",
+   "startup": 0.233,
+   "active": 0.017,
+   "recovery": 0.8,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:69",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r70": {
+   "name": "BLANKA 3_r70 (T3 bryan r70)",
+   "input": "3_r70",
+   "t3_source": "bryan",
+   "t3_row": 70,
+   "t3_command": "LK",
+   "startup": 0.233,
+   "active": 0.017,
+   "recovery": 0.8,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:70",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r71": {
+   "name": "BLANKA 3_r71 (T3 bryan r71)",
+   "input": "3_r71",
+   "t3_source": "bryan",
+   "t3_row": 71,
+   "t3_command": "LK",
+   "startup": 0.233,
+   "active": 0.017,
+   "recovery": 0.8,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:71",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r72": {
+   "name": "BLANKA 3_r72 (T3 bryan r72)",
+   "input": "3_r72",
+   "t3_source": "bryan",
+   "t3_row": 72,
+   "t3_command": "LK",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.817,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:72",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r73": {
+   "name": "BLANKA 3_r73 (T3 bryan r73)",
+   "input": "3_r73",
+   "t3_source": "bryan",
+   "t3_row": 73,
+   "t3_command": "LK",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.817,
+   "damage": 9,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:73",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r74": {
+   "name": "BLANKA 3_r74 (T3 bryan r74)",
+   "input": "3_r74",
+   "t3_source": "bryan",
+   "t3_row": 74,
+   "t3_command": "LK",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.817,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:74",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "b_r75": {
+   "name": "BLANKA b_r75 (T3 bryan r75)",
+   "input": "b_r75",
+   "t3_source": "bryan",
+   "t3_row": 75,
+   "t3_command": "4/7+RK",
+   "startup": 0.25,
+   "active": 0.05,
+   "recovery": 0.6,
+   "damage": 6,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:75",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "strike"
+  },
+  "b_c36": {
+   "name": "BLANKA b_c36 (T3 bryan r75)",
+   "input": "b_c36",
+   "t3_source": "bryan",
+   "t3_row": 75,
+   "t3_command": "4/7+RK",
+   "startup": 0.25,
+   "active": 0.05,
+   "recovery": 0.6,
+   "damage": 6,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:75",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "special",
+   "t3_condition": 36
+  },
+  "4_r77": {
+   "name": "BLANKA 4_r77 (T3 bryan r77)",
+   "input": "4_r77",
+   "t3_source": "bryan",
+   "t3_row": 77,
+   "t3_command": "RK",
+   "startup": 0.133,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:77",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r78": {
+   "name": "BLANKA 4_r78 (T3 bryan r78)",
+   "input": "4_r78",
+   "t3_source": "bryan",
+   "t3_row": 78,
+   "t3_command": "RK",
+   "startup": 0.133,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:78",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r79": {
+   "name": "BLANKA 4_r79 (T3 bryan r79)",
+   "input": "4_r79",
+   "t3_source": "bryan",
+   "t3_row": 79,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:79",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r80": {
+   "name": "BLANKA 4_r80 (T3 bryan r80)",
+   "input": "4_r80",
+   "t3_source": "bryan",
+   "t3_row": 80,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:80",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r81": {
+   "name": "BLANKA 4_r81 (T3 bryan r81)",
+   "input": "4_r81",
+   "t3_source": "bryan",
+   "t3_row": 81,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.033,
+   "recovery": 0.617,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:81",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r82": {
+   "name": "BLANKA 4_r82 (T3 bryan r82)",
+   "input": "4_r82",
+   "t3_source": "bryan",
+   "t3_row": 82,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 9,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:82",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r83": {
+   "name": "BLANKA 4_r83 (T3 bryan r83)",
+   "input": "4_r83",
+   "t3_source": "bryan",
+   "t3_row": 83,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 9,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:83",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r84": {
+   "name": "BLANKA 4_r84 (T3 bryan r84)",
+   "input": "4_r84",
+   "t3_source": "bryan",
+   "t3_row": 84,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.033,
+   "recovery": 0.567,
+   "damage": 9,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:84",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_c36_r85": {
+   "name": "BLANKA 4_c36_r85 (T3 bryan r85)",
+   "input": "4_c36_r85",
+   "t3_source": "bryan",
+   "t3_row": 85,
+   "t3_command": "RK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 12,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:85",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "f_c36_r86": {
+   "name": "BLANKA f_c36_r86 (T3 bryan r86)",
+   "input": "f_c36_r86",
+   "t3_source": "bryan",
+   "t3_row": 86,
+   "t3_command": "6/9+RK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 12,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:86",
+   "input_slots": [
+    "f"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "b_c36_r87": {
+   "name": "BLANKA b_c36_r87 (T3 bryan r87)",
+   "input": "b_c36_r87",
+   "t3_source": "bryan",
+   "t3_row": 87,
+   "t3_command": "4/7+RK",
+   "startup": 0.15,
+   "active": 0.017,
+   "recovery": 0.717,
+   "damage": 11,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:87",
+   "input_slots": [
+    "b"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "3+4_r8": {
+   "name": "BLANKA 3+4_r8 (T3 bryan r107)",
+   "input": "3+4_r8",
+   "t3_source": "bryan",
+   "t3_row": 107,
+   "t3_command": "LK+RK",
+   "startup": 0.267,
+   "active": 0.017,
+   "recovery": 0.567,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:107",
+   "input_slots": [
+    "3+4"
+   ],
+   "move_class": "strike",
+   "t3_restriction": 8
+  },
+  "b+4_r13": {
+   "name": "BLANKA b+4_r13 (T3 bryan r111)",
+   "input": "b+4_r13",
+   "t3_source": "bryan",
+   "t3_row": 111,
+   "t3_command": "4+RK",
+   "startup": 0.35,
+   "active": 0.2,
+   "recovery": 0.633,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:111",
+   "input_slots": [
+    "b+4"
+   ],
+   "move_class": "strike",
+   "t3_restriction": 13
+  },
+  "d/f+1+2_r17": {
+   "name": "BLANKA d/f+1+2_r17 (T3 bryan r113)",
+   "input": "d/f+1+2_r17",
+   "t3_source": "bryan",
+   "t3_row": 113,
+   "t3_command": "3+LP+RP",
+   "startup": 0.133,
+   "active": 0.017,
+   "recovery": 0.483,
+   "damage": 2,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:113",
+   "input_slots": [
+    "d/f+1+2"
+   ],
+   "move_class": "strike",
+   "t3_restriction": 17
+  },
+  "3_r127": {
+   "name": "BLANKA 3_r127 (T3 bryan r127)",
+   "input": "3_r127",
+   "t3_source": "bryan",
+   "t3_row": 127,
+   "t3_command": "LK",
+   "startup": 0.267,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 9,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:127",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "2_r149": {
+   "name": "BLANKA 2_r149 (T3 bryan r149)",
+   "input": "2_r149",
+   "t3_source": "bryan",
+   "t3_row": 149,
+   "t3_command": "RP",
+   "startup": 0.383,
+   "active": 0.017,
+   "recovery": 0.633,
+   "damage": 9,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:149",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "f+2": {
+   "name": "BLANKA f+2 (T3 bryan r150)",
+   "input": "f+2",
+   "t3_source": "bryan",
+   "t3_row": 150,
+   "t3_command": "6+RP",
+   "startup": 0.217,
+   "active": 0.017,
+   "recovery": 0.783,
+   "damage": 18,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:150",
+   "input_slots": [
+    "f+2"
+   ],
+   "move_class": "strike"
+  },
+  "2_r151": {
+   "name": "BLANKA 2_r151 (T3 bryan r151)",
+   "input": "2_r151",
+   "t3_source": "bryan",
+   "t3_row": 151,
+   "t3_command": "RP",
+   "startup": 0.217,
+   "active": 0.017,
+   "recovery": 0.783,
+   "damage": 12,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:151",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "2_r13_r156": {
+   "name": "BLANKA 2_r13_r156 (T3 bryan r156)",
+   "input": "2_r13_r156",
+   "t3_source": "bryan",
+   "t3_row": 156,
+   "t3_command": "RP",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.75,
+   "damage": 15,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:156",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike",
+   "t3_restriction": 13
+  },
+  "1_c2_r160": {
+   "name": "BLANKA 1_c2_r160 (T3 bryan r160)",
+   "input": "1_c2_r160",
+   "t3_source": "bryan",
+   "t3_row": 160,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 1.667,
+   "damage": 12,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:160",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 2
+  },
+  "2_r166": {
+   "name": "BLANKA 2_r166 (T3 bryan r166)",
+   "input": "2_r166",
+   "t3_source": "bryan",
+   "t3_row": 166,
+   "t3_command": "RP",
+   "startup": 0.25,
+   "active": 0.017,
+   "recovery": 0.683,
+   "damage": 16,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:166",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "1_r168": {
+   "name": "BLANKA 1_r168 (T3 bryan r168)",
+   "input": "1_r168",
+   "t3_source": "bryan",
+   "t3_row": 168,
+   "t3_command": "any-button",
+   "startup": 0.183,
+   "active": 0.05,
+   "recovery": 0.65,
+   "damage": 12,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:168",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike"
+  },
+  "2_r177": {
+   "name": "BLANKA 2_r177 (T3 bryan r177)",
+   "input": "2_r177",
+   "t3_source": "bryan",
+   "t3_row": 177,
+   "t3_command": "RP",
+   "startup": 0.317,
+   "active": 0.017,
+   "recovery": 0.683,
+   "damage": 8,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:177",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "b+1+4": {
+   "name": "BLANKA b+1+4 (T3 bryan r178)",
+   "input": "b+1+4",
+   "t3_source": "bryan",
+   "t3_row": 178,
+   "t3_command": "4+LP+RK",
+   "startup": 0.85,
+   "active": 0.083,
+   "recovery": 0.833,
+   "damage": 35,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:178",
+   "input_slots": [
+    "b+1+4"
+   ],
+   "move_class": "strike"
+  },
+  "f+1+4": {
+   "name": "BLANKA f+1+4 (T3 bryan r179)",
+   "input": "f+1+4",
+   "t3_source": "bryan",
+   "t3_row": 179,
+   "t3_command": "6+LP+RK",
+   "startup": 0.467,
+   "active": 0.017,
+   "recovery": 0.833,
+   "damage": 12,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:179",
+   "input_slots": [
+    "f+1+4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r180": {
+   "name": "BLANKA 4_r180 (T3 bryan r180)",
+   "input": "4_r180",
+   "t3_source": "bryan",
+   "t3_row": 180,
+   "t3_command": "RK",
+   "startup": 0.367,
+   "active": 0.017,
+   "recovery": 0.483,
+   "damage": 7,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:180",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "4_r13_r182": {
+   "name": "BLANKA 4_r13_r182 (T3 bryan r182)",
+   "input": "4_r13_r182",
+   "t3_source": "bryan",
+   "t3_row": 182,
+   "t3_command": "RK",
+   "startup": 0.367,
+   "active": 0.05,
+   "recovery": 0.717,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:182",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike",
+   "t3_restriction": 13
+  },
+  "f_r183": {
+   "name": "BLANKA f_r183 (T3 bryan r183)",
+   "input": "f_r183",
+   "t3_source": "bryan",
+   "t3_row": 183,
+   "t3_command": "6/9+RK",
+   "startup": 0.4,
+   "active": 0.05,
+   "recovery": 0.567,
+   "damage": 13,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:183",
+   "input_slots": [
+    "f"
+   ],
+   "move_class": "strike"
+  },
+  "4_r184": {
+   "name": "BLANKA 4_r184 (T3 bryan r184)",
+   "input": "4_r184",
+   "t3_source": "bryan",
+   "t3_row": 184,
+   "t3_command": "RK",
+   "startup": 0.4,
+   "active": 0.05,
+   "recovery": 0.567,
+   "damage": 12,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:184",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "3_r185": {
+   "name": "BLANKA 3_r185 (T3 bryan r185)",
+   "input": "3_r185",
+   "t3_source": "bryan",
+   "t3_row": 185,
+   "t3_command": "LK",
+   "startup": 0.45,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:185",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "f_r186": {
+   "name": "BLANKA f_r186 (T3 bryan r186)",
+   "input": "f_r186",
+   "t3_source": "bryan",
+   "t3_row": 186,
+   "t3_command": "6/9+LK",
+   "startup": 0.45,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 15,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:186",
+   "input_slots": [
+    "f"
+   ],
+   "move_class": "strike"
+  },
+  "4_r190": {
+   "name": "BLANKA 4_r190 (T3 bryan r190)",
+   "input": "4_r190",
+   "t3_source": "bryan",
+   "t3_row": 190,
+   "t3_command": "RK",
+   "startup": 0.567,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 9,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:190",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "f+3": {
+   "name": "BLANKA f+3 (T3 bryan r191)",
+   "input": "f+3",
+   "t3_source": "bryan",
+   "t3_row": 191,
+   "t3_command": "6+LK",
+   "startup": 0.367,
+   "active": 0.05,
+   "recovery": 0.867,
+   "damage": 21,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:191",
+   "input_slots": [
+    "f+3"
+   ],
+   "move_class": "strike"
+  },
+  "3_r192": {
+   "name": "BLANKA 3_r192 (T3 bryan r192)",
+   "input": "3_r192",
+   "t3_source": "bryan",
+   "t3_row": 192,
+   "t3_command": "LK",
+   "startup": 0.383,
+   "active": 0.017,
+   "recovery": 0.617,
+   "damage": 9,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:192",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike"
+  },
+  "4_r194": {
+   "name": "BLANKA 4_r194 (T3 bryan r194)",
+   "input": "4_r194",
+   "t3_source": "bryan",
+   "t3_row": 194,
+   "t3_command": "RK",
+   "startup": 0.4,
+   "active": 0.017,
+   "recovery": 0.667,
+   "damage": 11,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:194",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike"
+  },
+  "2_r195": {
+   "name": "BLANKA 2_r195 (T3 bryan r195)",
+   "input": "2_r195",
+   "t3_source": "bryan",
+   "t3_row": 195,
+   "t3_command": "RP",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.683,
+   "damage": 12,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:195",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "2_r208": {
+   "name": "BLANKA 2_r208 (T3 bryan r208)",
+   "input": "2_r208",
+   "t3_source": "bryan",
+   "t3_row": 208,
+   "t3_command": "RP",
+   "startup": 0.217,
+   "active": 0.017,
+   "recovery": 0.783,
+   "damage": 12,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:208",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike"
+  },
+  "1_c36_r224": {
+   "name": "BLANKA 1_c36_r224 (T3 bryan r224)",
+   "input": "1_c36_r224",
+   "t3_source": "bryan",
+   "t3_row": 224,
+   "t3_command": "any-button",
+   "startup": 0.367,
+   "active": 0.017,
+   "recovery": 0.667,
+   "damage": 5,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:224",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "1_c36_r225": {
+   "name": "BLANKA 1_c36_r225 (T3 bryan r225)",
+   "input": "1_c36_r225",
+   "t3_source": "bryan",
+   "t3_row": 225,
+   "t3_command": "any-button",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 8,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:225",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "1_c36_r228": {
+   "name": "BLANKA 1_c36_r228 (T3 bryan r228)",
+   "input": "1_c36_r228",
+   "t3_source": "bryan",
+   "t3_row": 228,
+   "t3_command": "any-button",
+   "startup": 0.233,
+   "active": 0.017,
+   "recovery": 0.667,
+   "damage": 4,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:228",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "1_c36_r229": {
+   "name": "BLANKA 1_c36_r229 (T3 bryan r229)",
+   "input": "1_c36_r229",
+   "t3_source": "bryan",
+   "t3_row": 229,
+   "t3_command": "any-button",
+   "startup": 0.183,
+   "active": 0.017,
+   "recovery": 0.733,
+   "damage": 6,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:229",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 36
+  },
+  "1_c2_r343": {
+   "name": "BLANKA 1_c2_r343 (T3 bryan r343)",
+   "input": "1_c2_r343",
+   "t3_source": "bryan",
+   "t3_row": 343,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 2.333,
+   "damage": 18,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:343",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 2
+  },
+  "1_c2_r345": {
+   "name": "BLANKA 1_c2_r345 (T3 bryan r345)",
+   "input": "1_c2_r345",
+   "t3_source": "bryan",
+   "t3_row": 345,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 2.567,
+   "damage": 18,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:345",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 2
+  },
+  "1_c4_r347": {
+   "name": "BLANKA 1_c4_r347 (T3 bryan r347)",
+   "input": "1_c4_r347",
+   "t3_source": "bryan",
+   "t3_row": 347,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 2.75,
+   "damage": 24,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:347",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 4
+  },
+  "1_c5_r349": {
+   "name": "BLANKA 1_c5_r349 (T3 bryan r349)",
+   "input": "1_c5_r349",
+   "t3_source": "bryan",
+   "t3_row": 349,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 1.45,
+   "damage": 24,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:349",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 5
+  },
+  "1_c3_r351": {
+   "name": "BLANKA 1_c3_r351 (T3 bryan r351)",
+   "input": "1_c3_r351",
+   "t3_source": "bryan",
+   "t3_row": 351,
+   "t3_command": "any-button",
+   "startup": 0.167,
+   "active": 0.017,
+   "recovery": 1.5,
+   "damage": 35,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "t3:bryan:row:351",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "t3_condition": 3
+  },
+  "n+1": {
+   "name": "Standing Light Punch",
+   "input": "n+1",
+   "t3_source": "sf6",
+   "sf_motion": "5LP",
+   "startup": 0.083,
+   "active": 0.05,
+   "recovery": 0.167,
+   "damage": 9,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 4,
+   "anim_ref": "sf6:blanka:standing_light_punch",
+   "input_slots": [
+    "n+1"
+   ],
+   "move_class": "strike",
+   "note": "SF: 5LP."
+  },
+  "n+2": {
+   "name": "Standing Medium Punch",
+   "input": "n+2",
+   "t3_source": "sf6",
+   "sf_motion": "5MP",
+   "startup": 0.15,
+   "active": 0.05,
+   "recovery": 0.25,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 10,
+   "anim_ref": "sf6:blanka:standing_medium_punch",
+   "input_slots": [
+    "n+2"
+   ],
+   "move_class": "strike",
+   "note": "SF: 5MP."
+  },
+  "n+1+2": {
+   "name": "Standing Heavy Punch",
+   "input": "n+1+2",
+   "t3_source": "sf6",
+   "sf_motion": "5HP",
+   "startup": 0.167,
+   "active": 0.117,
+   "recovery": 0.283,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.6,
+   "soulGain": 10,
+   "anim_ref": "sf6:blanka:standing_heavy_punch",
+   "input_slots": [
+    "n+1+2"
+   ],
+   "move_class": "strike",
+   "note": "SF: 5HP."
+  },
+  "n+3": {
+   "name": "Standing Light Kick",
+   "input": "n+3",
+   "t3_source": "sf6",
+   "sf_motion": "5LK",
+   "startup": 0.067,
+   "active": 0.067,
+   "recovery": 0.117,
+   "damage": 9,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 4,
+   "anim_ref": "sf6:blanka:standing_light_kick",
+   "input_slots": [
+    "n+3"
+   ],
+   "move_class": "strike",
+   "note": "SF: 5LK."
+  },
+  "n+4": {
+   "name": "Standing Medium Kick",
+   "input": "n+4",
+   "t3_source": "sf6",
+   "sf_motion": "5MK",
+   "startup": 0.133,
+   "active": 0.05,
+   "recovery": 0.283,
+   "damage": 18,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 9,
+   "anim_ref": "sf6:blanka:standing_medium_kick",
+   "input_slots": [
+    "n+4"
+   ],
+   "move_class": "strike",
+   "note": "SF: 5MK."
+  },
+  "n+3+4": {
+   "name": "Standing Heavy Kick",
+   "input": "n+3+4",
+   "t3_source": "sf6",
+   "sf_motion": "5HK",
+   "startup": 0.117,
+   "active": 0.15,
+   "recovery": 0.3,
+   "damage": 20,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.6,
+   "soulGain": 10,
+   "anim_ref": "sf6:blanka:standing_heavy_kick",
+   "input_slots": [
+    "n+3+4"
+   ],
+   "move_class": "strike",
+   "note": "SF: 5HK."
+  },
+  "fc+1": {
+   "name": "Crouching Light Punch",
+   "input": "fc+1",
+   "t3_source": "sf6",
+   "sf_motion": "2LP",
+   "startup": 0.1,
+   "active": 0.05,
+   "recovery": 0.133,
+   "damage": 9,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 4,
+   "anim_ref": "sf6:blanka:crouching_light_punch",
+   "input_slots": [
+    "fc+1"
+   ],
+   "move_class": "strike",
+   "note": "SF: 2LP."
+  },
+  "fc+2": {
+   "name": "Crouching Medium Punch",
+   "input": "fc+2",
+   "t3_source": "sf6",
+   "sf_motion": "2MP",
+   "startup": 0.15,
+   "active": 0.083,
+   "recovery": 0.267,
+   "damage": 18,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 9,
+   "anim_ref": "sf6:blanka:crouching_medium_punch",
+   "input_slots": [
+    "fc+2"
+   ],
+   "move_class": "strike",
+   "note": "SF: 2MP."
+  },
+  "fc+1+2": {
+   "name": "Crouching Heavy Punch",
+   "input": "fc+1+2",
+   "t3_source": "sf6",
+   "sf_motion": "2HP",
+   "startup": 0.25,
+   "active": 0.083,
+   "recovery": 0.333,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.6,
+   "soulGain": 10,
+   "anim_ref": "sf6:blanka:crouching_heavy_punch",
+   "input_slots": [
+    "fc+1+2"
+   ],
+   "move_class": "strike",
+   "note": "SF: 2HP."
+  },
+  "fc+3": {
+   "name": "Crouching Light Kick",
+   "input": "fc+3",
+   "t3_source": "sf6",
+   "sf_motion": "2LK",
+   "startup": 0.083,
+   "active": 0.033,
+   "recovery": 0.167,
+   "damage": 6,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 3,
+   "anim_ref": "sf6:blanka:crouching_light_kick",
+   "input_slots": [
+    "fc+3"
+   ],
+   "move_class": "strike",
+   "note": "SF: 2LK."
+  },
+  "fc+4": {
+   "name": "Crouching Medium Kick",
+   "input": "fc+4",
+   "t3_source": "sf6",
+   "sf_motion": "2MK",
+   "startup": 0.133,
+   "active": 0.05,
+   "recovery": 0.267,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "sf6:blanka:crouching_medium_kick",
+   "input_slots": [
+    "fc+4"
+   ],
+   "move_class": "strike",
+   "note": "SF: 2MK."
+  },
+  "fc+3+4": {
+   "name": "Crouching Heavy Kick",
+   "input": "fc+3+4",
+   "t3_source": "sf6",
+   "sf_motion": "2HK",
+   "startup": 0.183,
+   "active": 0.067,
+   "recovery": 0.383,
+   "damage": 20,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.6,
+   "soulGain": 10,
+   "anim_ref": "sf6:blanka:crouching_heavy_kick",
+   "input_slots": [
+    "fc+3+4"
+   ],
+   "move_class": "strike",
+   "note": "SF: 2HK."
+  },
+  "u+1": {
+   "name": "Jumping Light Punch",
+   "input": "u+1",
+   "t3_source": "sf6",
+   "sf_motion": "j.LP",
+   "startup": 0.067,
+   "active": 0.083,
+   "recovery": 0.05,
+   "damage": 9,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 4,
+   "anim_ref": "sf6:blanka:jumping_light_punch",
+   "input_slots": [
+    "u+1"
+   ],
+   "move_class": "strike",
+   "note": "SF: j.LP."
+  },
+  "u+2": {
+   "name": "Jumping Medium Punch",
+   "input": "u+2",
+   "t3_source": "sf6",
+   "sf_motion": "j.MP",
+   "startup": 0.117,
+   "active": 0.117,
+   "recovery": 0.05,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 10,
+   "anim_ref": "sf6:blanka:jumping_medium_punch",
+   "input_slots": [
+    "u+2"
+   ],
+   "move_class": "strike",
+   "note": "SF: j.MP."
+  },
+  "u+1+2": {
+   "name": "Jumping Heavy Punch",
+   "input": "u+1+2",
+   "t3_source": "sf6",
+   "sf_motion": "j.HP",
+   "startup": 0.15,
+   "active": 0.067,
+   "recovery": 0.05,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.6,
+   "soulGain": 10,
+   "anim_ref": "sf6:blanka:jumping_heavy_punch",
+   "input_slots": [
+    "u+1+2"
+   ],
+   "move_class": "strike",
+   "note": "SF: j.HP."
+  },
+  "u+1+2 (neutral)": {
+   "name": "Neutral Jumping Heavy Punch",
+   "input": "u+1+2 (neutral)",
+   "t3_source": "sf6",
+   "sf_motion": "8j.HP",
+   "startup": 0.117,
+   "active": 0.05,
+   "recovery": 0.05,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.6,
+   "soulGain": 10,
+   "anim_ref": "sf6:blanka:neutral_jumping_heavy_punch",
+   "input_slots": [
+    "u+1+2 (neutral)"
+   ],
+   "move_class": "strike",
+   "note": "SF: 8j.HP."
+  },
+  "u+3": {
+   "name": "Jumping Light Kick",
+   "input": "u+3",
+   "t3_source": "sf6",
+   "sf_motion": "j.LK",
+   "startup": 0.083,
+   "active": 0.1,
+   "recovery": 0.05,
+   "damage": 9,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 4,
+   "anim_ref": "sf6:blanka:jumping_light_kick",
+   "input_slots": [
+    "u+3"
+   ],
+   "move_class": "strike",
+   "note": "SF: j.LK."
+  },
+  "u+4": {
+   "name": "Jumping Medium Kick",
+   "input": "u+4",
+   "t3_source": "sf6",
+   "sf_motion": "j.MK",
+   "startup": 0.117,
+   "active": 0.1,
+   "recovery": 0.05,
+   "damage": 15,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "sf6:blanka:jumping_medium_kick",
+   "input_slots": [
+    "u+4"
+   ],
+   "move_class": "strike",
+   "note": "SF: j.MK."
+  },
+  "u+3+4": {
+   "name": "Jumping Heavy Kick",
+   "input": "u+3+4",
+   "t3_source": "sf6",
+   "sf_motion": "j.HK",
+   "startup": 0.183,
+   "active": 0.1,
+   "recovery": 0.05,
+   "damage": 20,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 2.6,
+   "soulGain": 10,
+   "anim_ref": "sf6:blanka:jumping_heavy_kick",
+   "input_slots": [
+    "u+3+4"
+   ],
+   "move_class": "strike",
+   "note": "SF: j.HK."
+  },
+  "f+2_sf": {
+   "name": "Rock Crusher",
+   "input": "f+2_sf",
+   "t3_source": "sf6",
+   "sf_motion": "6MP",
+   "startup": 0.333,
+   "active": 0.05,
+   "recovery": 0.333,
+   "damage": 18,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.6,
+   "soulGain": 9,
+   "anim_ref": "sf6:blanka:rock_crusher",
+   "input_slots": [
+    "f+2"
+   ],
+   "move_class": "strike",
+   "note": "SF: 6MP. 2-hit overhead.",
+   "multi_hit": {
+    "hits": [
+     9,
+     9
+    ],
+    "total": 18
+   },
+   "sf_input": "f+2"
+  },
+  "f+4": {
+   "name": "Double Knee Bombs",
+   "input": "f+4",
+   "t3_source": "sf6",
+   "sf_motion": "6MK",
+   "startup": 0.15,
+   "active": 0.2,
+   "recovery": 0.3,
+   "damage": 18,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 9,
+   "anim_ref": "sf6:blanka:double_knee_bombs",
+   "input_slots": [
+    "f+4"
+   ],
+   "move_class": "strike",
+   "note": "SF: 6MK.",
+   "multi_hit": {
+    "hits": [
+     9,
+     9
+    ],
+    "total": 18
+   }
+  },
+  "b+4": {
+   "name": "Wild Edge",
+   "input": "b+4",
+   "t3_source": "sf6",
+   "sf_motion": "4MK",
+   "startup": 0.15,
+   "active": 0.1,
+   "recovery": 0.2,
+   "damage": 18,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 9,
+   "anim_ref": "sf6:blanka:wild_edge",
+   "input_slots": [
+    "b+4"
+   ],
+   "move_class": "strike",
+   "note": "SF: 4MK."
+  },
+  "f+1+2": {
+   "name": "Wild Nail",
+   "input": "f+1+2",
+   "t3_source": "sf6",
+   "sf_motion": "6HP",
+   "startup": 0.3,
+   "active": 0.067,
+   "recovery": 0.467,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.6,
+   "soulGain": 10,
+   "anim_ref": "sf6:blanka:wild_nail",
+   "input_slots": [
+    "f+1+2"
+   ],
+   "move_class": "strike",
+   "note": "SF: 6HP."
+  },
+  "df+1+2": {
+   "name": "Amazon River Run",
+   "input": "df+1+2",
+   "t3_source": "sf6",
+   "sf_motion": "3HP",
+   "startup": 0.233,
+   "active": 0.167,
+   "recovery": 0.367,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.6,
+   "soulGain": 10,
+   "anim_ref": "sf6:blanka:amazon_river_run",
+   "input_slots": [
+    "df+1+2"
+   ],
+   "move_class": "strike",
+   "note": "SF: 3HP. Long low slide; low-profiles fireballs."
+  },
+  "1+3": {
+   "name": "Wild Fang",
+   "input": "1+3",
+   "t3_source": "sf6",
+   "sf_motion": "LPLK",
+   "startup": 0.083,
+   "active": 0.05,
+   "recovery": 0.383,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:wild_fang",
+   "input_slots": [
+    "1+3"
+   ],
+   "move_class": "throw",
+   "note": "SF: LPLK. Forward throw.",
+   "throw": true,
+   "throw_break": "1",
+   "isGrab": true
+  },
+  "b+1+3": {
+   "name": "Jungle Flip",
+   "input": "b+1+3",
+   "t3_source": "sf6",
+   "sf_motion": "4LPLK",
+   "startup": 0.083,
+   "active": 0.05,
+   "recovery": 0.383,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:jungle_flip",
+   "input_slots": [
+    "b+1+3"
+   ],
+   "move_class": "throw",
+   "note": "SF: 4LPLK. Back throw.",
+   "throw": true,
+   "throw_break": "1",
+   "isGrab": true
+  },
+  "u+1+3": {
+   "name": "Wild Bites",
+   "input": "u+1+3",
+   "t3_source": "sf6",
+   "sf_motion": "j.LPLK",
+   "startup": 0.083,
+   "active": 0.05,
+   "recovery": 0.05,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:wild_bites",
+   "input_slots": [
+    "u+1+3"
+   ],
+   "move_class": "throw",
+   "note": "SF: j.LPLK. Air throw.",
+   "throw": true,
+   "throw_break": "1",
+   "isGrab": true
+  },
+  "3+4": {
+   "name": "Wild Scratch",
+   "input": "3+4",
+   "t3_source": "sf6",
+   "sf_motion": "HPHK (Drive Impact)",
+   "startup": 0.433,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.6,
+   "soulGain": 10,
+   "anim_ref": "sf6:blanka:wild_scratch",
+   "input_slots": [
+    "3+4"
+   ],
+   "move_class": "strike",
+   "note": "SF: HPHK (Drive Impact). Drive Impact; 2-hit armor."
+  },
+  "f,f": {
+   "name": "Drive Rush (66)",
+   "input": "f,f",
+   "t3_source": "sf6",
+   "sf_motion": "66 (from Drive Parry)",
+   "startup": 0.0,
+   "active": 0.0,
+   "recovery": 0.0,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sf6:blanka:drive_rush_66",
+   "input_slots": [
+    "f,f"
+   ],
+   "move_class": "stance",
+   "note": "SF: 66 (from Drive Parry)."
+  },
+  "2+4": {
+   "name": "Drive Parry",
+   "input": "2+4",
+   "t3_source": "sf6",
+   "sf_motion": "MPMK",
+   "startup": 0.017,
+   "active": 0.2,
+   "recovery": 0.55,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sf6:blanka:drive_parry",
+   "input_slots": [
+    "2+4"
+   ],
+   "move_class": "parry",
+   "note": "SF: MPMK."
+  },
+  "2+4,f,f": {
+   "name": "Parry Drive Rush",
+   "input": "2+4,f,f",
+   "t3_source": "sf6",
+   "sf_motion": "MPMK~66",
+   "startup": 0.05,
+   "active": 0.133,
+   "recovery": 0.0,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sf6:blanka:parry_drive_rush",
+   "input_slots": [
+    "2+4,f,f"
+   ],
+   "move_class": "stance",
+   "note": "SF: MPMK~66."
+  },
+  "f,f,b": {
+   "name": "Quick Frostcharge Roll (Drive Rush Block)",
+   "input": "f,f,b",
+   "t3_source": "sf6",
+   "sf_motion": "66 (block)",
+   "startup": 0.333,
+   "active": 0.05,
+   "recovery": 0.433,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sf6:blanka:quick_rolling_attack_drive_rush_block",
+   "input_slots": [
+    "f,f,b"
+   ],
+   "move_class": "stance",
+   "note": "SF: 66 (block)."
+  },
+  "f,f,db": {
+   "name": "Quick Frostcharge Roll (Drive Rush Recovery)",
+   "input": "f,f,db",
+   "t3_source": "sf6",
+   "sf_motion": "66 (recovery)",
+   "startup": 0.3,
+   "active": 0.05,
+   "recovery": 0.433,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sf6:blanka:quick_rolling_attack_drive_rush_recovery",
+   "input_slots": [
+    "f,f,db"
+   ],
+   "move_class": "stance",
+   "note": "SF: 66 (recovery)."
+  },
+  "d+1+2": {
+   "name": "Coward Crouch",
+   "input": "d+1+2",
+   "t3_source": "sf6",
+   "sf_motion": "2PP",
+   "startup": 0.3,
+   "active": 0.0,
+   "recovery": 0.467,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sf6:blanka:coward_crouch",
+   "input_slots": [
+    "d+1+2"
+   ],
+   "move_class": "stance",
+   "note": "SF: 2PP. Low-profile crouch stance; cancels to Wild Lift / Raid Jump."
+  },
+  "d+1+2,1": {
+   "name": "Wild Lift",
+   "input": "d+1+2,1",
+   "t3_source": "sf6",
+   "sf_motion": "2PP~P",
+   "startup": 0.433,
+   "active": 0.117,
+   "recovery": 0.517,
+   "damage": 18,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 9,
+   "anim_ref": "sf6:blanka:wild_lift",
+   "input_slots": [
+    "d+1+2,1"
+   ],
+   "move_class": "special",
+   "note": "SF: 2PP~P."
+  },
+  "d+1+2,3": {
+   "name": "Raid Jump",
+   "input": "d+1+2,3",
+   "t3_source": "sf6",
+   "sf_motion": "2PP~K",
+   "startup": 0.3,
+   "active": 0.0,
+   "recovery": 0.0,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sf6:blanka:raid_jump",
+   "input_slots": [
+    "d+1+2,3"
+   ],
+   "move_class": "movement",
+   "note": "SF: 2PP~K. Leap out of Coward Crouch."
+  },
+  "f+3+4": {
+   "name": "Surprise Forward Hop",
+   "input": "f+3+4",
+   "t3_source": "sf6",
+   "sf_motion": "6KKK",
+   "startup": 0.0,
+   "active": 0.0,
+   "recovery": 0.45,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sf6:blanka:surprise_forward_hop",
+   "input_slots": [
+    "f+3+4"
+   ],
+   "move_class": "movement",
+   "note": "SF: 6KKK."
+  },
+  "b+3+4": {
+   "name": "Surprise Back Hop",
+   "input": "b+3+4",
+   "t3_source": "sf6",
+   "sf_motion": "4KKK",
+   "startup": 0.0,
+   "active": 0.0,
+   "recovery": 0.533,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sf6:blanka:surprise_back_hop",
+   "input_slots": [
+    "b+3+4"
+   ],
+   "move_class": "movement",
+   "note": "SF: 4KKK."
+  },
+  "qcb+1": {
+   "name": "Cryo Thunder",
+   "input": "qcb+1",
+   "t3_source": "sf6",
+   "sf_motion": "214P",
+   "startup": 0.167,
+   "active": 0.5,
+   "recovery": 0.25,
+   "damage": 24,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:electric_thunder",
+   "input_slots": [
+    "qcb+1"
+   ],
+   "move_class": "special",
+   "note": "SF: 214P. Sustained electricity field.",
+   "multi_hit": {
+    "hits": [
+     8,
+     8,
+     8
+    ],
+    "total": 24
+   }
+  },
+  "qcb+1 (hold)": {
+   "name": "Cryo Thunder (Hold)",
+   "input": "qcb+1 (hold)",
+   "t3_source": "sf6",
+   "sf_motion": "214[P]",
+   "startup": 0.167,
+   "active": 0.5,
+   "recovery": 0.267,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:electric_thunder_hold",
+   "input_slots": [
+    "qcb+1 (hold)"
+   ],
+   "move_class": "special",
+   "note": "SF: 214[P].",
+   "multi_hit": {
+    "hits": [
+     10,
+     15
+    ],
+    "total": 25
+   }
+  },
+  "qcb+1+2": {
+   "name": "Cryo Thunder (OD)",
+   "input": "qcb+1+2",
+   "t3_source": "sf6",
+   "sf_motion": "214PP",
+   "startup": 0.167,
+   "active": 0.5,
+   "recovery": 0.25,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:electric_thunder_od",
+   "input_slots": [
+    "qcb+1+2"
+   ],
+   "move_class": "special",
+   "note": "SF: 214PP.",
+   "multi_hit": {
+    "hits": [
+     10,
+     15
+    ],
+    "total": 25
+   }
+  },
+  "charge_b,f+1": {
+   "name": "Frostcharge Roll (LP)",
+   "input": "charge_b,f+1",
+   "t3_source": "sf6",
+   "sf_motion": "[4]6LP",
+   "startup": 0.167,
+   "active": 0.183,
+   "recovery": 0.183,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:rolling_attack_lp",
+   "input_slots": [
+    "charge_b,f+1"
+   ],
+   "move_class": "special",
+   "note": "SF: [4]6LP. Charge back, forward+P; Blanka Ball."
+  },
+  "charge_b,f+2": {
+   "name": "Frostcharge Roll (MP)",
+   "input": "charge_b,f+2",
+   "t3_source": "sf6",
+   "sf_motion": "[4]6MP",
+   "startup": 0.2,
+   "active": 0.317,
+   "recovery": 0.183,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:rolling_attack_mp",
+   "input_slots": [
+    "charge_b,f+2"
+   ],
+   "move_class": "special",
+   "note": "SF: [4]6MP."
+  },
+  "charge_b,f+1+2": {
+   "name": "Frostcharge Roll (HP)",
+   "input": "charge_b,f+1+2",
+   "t3_source": "sf6",
+   "sf_motion": "[4]6HP",
+   "startup": 0.367,
+   "active": 0.333,
+   "recovery": 0.417,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:rolling_attack_hp",
+   "input_slots": [
+    "charge_b,f+1+2"
+   ],
+   "move_class": "special",
+   "note": "SF: [4]6HP."
+  },
+  "charge_b,f+1+2_od": {
+   "name": "Frostcharge Roll (OD)",
+   "input": "charge_b,f+1+2_od",
+   "t3_source": "sf6",
+   "sf_motion": "[4]6PP",
+   "startup": 0.3,
+   "active": 0.367,
+   "recovery": 0.283,
+   "damage": 24,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:rolling_attack_od",
+   "input_slots": [
+    "charge_b,f+1+2_od"
+   ],
+   "move_class": "special",
+   "note": "SF: [4]6PP."
+  },
+  "charge_b,f+1_sa2": {
+   "name": "Frostcharge Roll (LP, SA2)",
+   "input": "charge_b,f+1_sa2",
+   "t3_source": "sf6",
+   "sf_motion": "[4]6LP (SA2)",
+   "startup": 0.167,
+   "active": 0.183,
+   "recovery": 0.183,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:rolling_attack_lp_sa2",
+   "input_slots": [
+    "charge_b,f+1_sa2"
+   ],
+   "move_class": "special",
+   "note": "SF: [4]6LP (SA2). Lightning Beast enhanced."
+  },
+  "charge_b,f+2_sa2": {
+   "name": "Frostcharge Roll (MP, SA2)",
+   "input": "charge_b,f+2_sa2",
+   "t3_source": "sf6",
+   "sf_motion": "[4]6MP (SA2)",
+   "startup": 0.2,
+   "active": 0.317,
+   "recovery": 0.183,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:rolling_attack_mp_sa2",
+   "input_slots": [
+    "charge_b,f+2_sa2"
+   ],
+   "move_class": "special",
+   "note": "SF: [4]6MP (SA2)."
+  },
+  "charge_b,f+1+2_sa2": {
+   "name": "Frostcharge Roll (HP, SA2)",
+   "input": "charge_b,f+1+2_sa2",
+   "t3_source": "sf6",
+   "sf_motion": "[4]6HP (SA2)",
+   "startup": 0.367,
+   "active": 0.333,
+   "recovery": 0.417,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:rolling_attack_hp_sa2",
+   "input_slots": [
+    "charge_b,f+1+2_sa2"
+   ],
+   "move_class": "special",
+   "note": "SF: [4]6HP (SA2)."
+  },
+  "charge_b,f+1+2_od_sa2": {
+   "name": "Frostcharge Roll (OD, SA2)",
+   "input": "charge_b,f+1+2_od_sa2",
+   "t3_source": "sf6",
+   "sf_motion": "[4]6PP (SA2)",
+   "startup": 0.3,
+   "active": 0.367,
+   "recovery": 0.283,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:rolling_attack_od_sa2",
+   "input_slots": [
+    "charge_b,f+1+2_od_sa2"
+   ],
+   "move_class": "special",
+   "note": "SF: [4]6PP (SA2)."
+  },
+  "air_charge_b,f+1": {
+   "name": "Aerial Frostcharge Roll",
+   "input": "air_charge_b,f+1",
+   "t3_source": "sf6",
+   "sf_motion": "j.[4]6P",
+   "startup": 0.217,
+   "active": 0.333,
+   "recovery": 0.283,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:aerial_rolling_attack",
+   "input_slots": [
+    "air_charge_b,f+1"
+   ],
+   "move_class": "special",
+   "note": "SF: j.[4]6P."
+  },
+  "air_charge_b,f+1+2_od": {
+   "name": "Aerial Frostcharge Roll (OD)",
+   "input": "air_charge_b,f+1+2_od",
+   "t3_source": "sf6",
+   "sf_motion": "j.[4]6PP",
+   "startup": 0.217,
+   "active": 0.333,
+   "recovery": 0.25,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:aerial_rolling_attack_od",
+   "input_slots": [
+    "air_charge_b,f+1+2_od"
+   ],
+   "move_class": "special",
+   "note": "SF: j.[4]6PP.",
+   "multi_hit": {
+    "hits": [
+     13,
+     12
+    ],
+    "total": 25
+   }
+  },
+  "air_charge_b,f+1_sa2": {
+   "name": "Aerial Frostcharge Roll (SA2)",
+   "input": "air_charge_b,f+1_sa2",
+   "t3_source": "sf6",
+   "sf_motion": "j.[4]6P (SA2)",
+   "startup": 0.217,
+   "active": 0.333,
+   "recovery": 0.283,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:aerial_rolling_attack_sa2",
+   "input_slots": [
+    "air_charge_b,f+1_sa2"
+   ],
+   "move_class": "special",
+   "note": "SF: j.[4]6P (SA2)."
+  },
+  "air_charge_b,f+1+2_od_sa2": {
+   "name": "Aerial Frostcharge Roll (OD, SA2)",
+   "input": "air_charge_b,f+1+2_od_sa2",
+   "t3_source": "sf6",
+   "sf_motion": "j.[4]6PP (SA2)",
+   "startup": 0.217,
+   "active": 0.333,
+   "recovery": 0.25,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:aerial_rolling_attack_od_sa2",
+   "input_slots": [
+    "air_charge_b,f+1+2_od_sa2"
+   ],
+   "move_class": "special",
+   "note": "SF: j.[4]6PP (SA2).",
+   "multi_hit": {
+    "hits": [
+     13,
+     12
+    ],
+    "total": 25
+   }
+  },
+  "charge_d,u+3": {
+   "name": "Vertical Frostcharge Roll (LK)",
+   "input": "charge_d,u+3",
+   "t3_source": "sf6",
+   "sf_motion": "[2]8LK",
+   "startup": 0.133,
+   "active": 0.317,
+   "recovery": 0.8,
+   "damage": 25,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:vertical_rolling_attack_lk",
+   "input_slots": [
+    "charge_d,u+3"
+   ],
+   "move_class": "special",
+   "note": "SF: [2]8LK. Charge down, up+K; rising roll."
+  },
+  "charge_d,u+4": {
+   "name": "Vertical Frostcharge Roll (MK)",
+   "input": "charge_d,u+4",
+   "t3_source": "sf6",
+   "sf_motion": "[2]8MK",
+   "startup": 0.133,
+   "active": 0.317,
+   "recovery": 0.8,
+   "damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:vertical_rolling_attack_mk",
+   "input_slots": [
+    "charge_d,u+4"
+   ],
+   "move_class": "special",
+   "note": "SF: [2]8MK."
+  },
+  "charge_d,u+3+4": {
+   "name": "Vertical Frostcharge Roll (HK)",
+   "input": "charge_d,u+3+4",
+   "t3_source": "sf6",
+   "sf_motion": "[2]8HK",
+   "startup": 0.133,
+   "active": 0.317,
+   "recovery": 0.8,
+   "damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:vertical_rolling_attack_hk",
+   "input_slots": [
+    "charge_d,u+3+4"
+   ],
+   "move_class": "special",
+   "note": "SF: [2]8HK."
+  },
+  "charge_d,u+3+4_od": {
+   "name": "Vertical Frostcharge Roll (OD)",
+   "input": "charge_d,u+3+4_od",
+   "t3_source": "sf6",
+   "sf_motion": "[2]8KK",
+   "startup": 0.117,
+   "active": 0.233,
+   "recovery": 0.8,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:vertical_rolling_attack_od",
+   "input_slots": [
+    "charge_d,u+3+4_od"
+   ],
+   "move_class": "special",
+   "note": "SF: [2]8KK.",
+   "multi_hit": {
+    "hits": [
+     13,
+     12
+    ],
+    "total": 25
+   }
+  },
+  "charge_d,u+3_sa2": {
+   "name": "Vertical Frostcharge Roll (LK, SA2)",
+   "input": "charge_d,u+3_sa2",
+   "t3_source": "sf6",
+   "sf_motion": "[2]8LK (SA2)",
+   "startup": 0.133,
+   "active": 0.317,
+   "recovery": 0.8,
+   "damage": 25,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:vertical_rolling_attack_lk_sa2",
+   "input_slots": [
+    "charge_d,u+3_sa2"
+   ],
+   "move_class": "special",
+   "note": "SF: [2]8LK (SA2)."
+  },
+  "charge_d,u+4_sa2": {
+   "name": "Vertical Frostcharge Roll (MK, SA2)",
+   "input": "charge_d,u+4_sa2",
+   "t3_source": "sf6",
+   "sf_motion": "[2]8MK (SA2)",
+   "startup": 0.133,
+   "active": 0.317,
+   "recovery": 0.8,
+   "damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:vertical_rolling_attack_mk_sa2",
+   "input_slots": [
+    "charge_d,u+4_sa2"
+   ],
+   "move_class": "special",
+   "note": "SF: [2]8MK (SA2)."
+  },
+  "charge_d,u+3+4_sa2": {
+   "name": "Vertical Frostcharge Roll (HK, SA2)",
+   "input": "charge_d,u+3+4_sa2",
+   "t3_source": "sf6",
+   "sf_motion": "[2]8HK (SA2)",
+   "startup": 0.133,
+   "active": 0.317,
+   "recovery": 0.8,
+   "damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:vertical_rolling_attack_hk_sa2",
+   "input_slots": [
+    "charge_d,u+3+4_sa2"
+   ],
+   "move_class": "special",
+   "note": "SF: [2]8HK (SA2)."
+  },
+  "charge_d,u+3+4_od_sa2": {
+   "name": "Vertical Frostcharge Roll (OD, SA2)",
+   "input": "charge_d,u+3+4_od_sa2",
+   "t3_source": "sf6",
+   "sf_motion": "[2]8KK (SA2)",
+   "startup": 0.117,
+   "active": 0.233,
+   "recovery": 0.8,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:vertical_rolling_attack_od_sa2",
+   "input_slots": [
+    "charge_d,u+3+4_od_sa2"
+   ],
+   "move_class": "special",
+   "note": "SF: [2]8KK (SA2).",
+   "multi_hit": {
+    "hits": [
+     13,
+     12
+    ],
+    "total": 25
+   }
+  },
+  "hcb+3": {
+   "name": "Backstep Frostcharge Roll (LK)",
+   "input": "hcb+3",
+   "t3_source": "sf6",
+   "sf_motion": "63214LK",
+   "startup": 0.683,
+   "active": 0.4,
+   "recovery": 0.083,
+   "damage": 25,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:backstep_rolling_attack_lk",
+   "input_slots": [
+    "hcb+3"
+   ],
+   "move_class": "special",
+   "note": "SF: 63214LK. Backflip then roll."
+  },
+  "hcb+4": {
+   "name": "Backstep Frostcharge Roll (MK)",
+   "input": "hcb+4",
+   "t3_source": "sf6",
+   "sf_motion": "63214MK",
+   "startup": 0.683,
+   "active": 0.45,
+   "recovery": 0.083,
+   "damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:backstep_rolling_attack_mk",
+   "input_slots": [
+    "hcb+4"
+   ],
+   "move_class": "special",
+   "note": "SF: 63214MK."
+  },
+  "hcb+3+4": {
+   "name": "Backstep Frostcharge Roll (HK)",
+   "input": "hcb+3+4",
+   "t3_source": "sf6",
+   "sf_motion": "63214HK",
+   "startup": 0.683,
+   "active": 0.483,
+   "recovery": 0.083,
+   "damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:backstep_rolling_attack_hk",
+   "input_slots": [
+    "hcb+3+4"
+   ],
+   "move_class": "special",
+   "note": "SF: 63214HK."
+  },
+  "hcb+3+4_od": {
+   "name": "Backstep Frostcharge Roll (OD)",
+   "input": "hcb+3+4_od",
+   "t3_source": "sf6",
+   "sf_motion": "63214KK",
+   "startup": 0.817,
+   "active": 0.5,
+   "recovery": 0.067,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:backstep_rolling_attack_od",
+   "input_slots": [
+    "hcb+3+4_od"
+   ],
+   "move_class": "special",
+   "note": "SF: 63214KK.",
+   "multi_hit": {
+    "hits": [
+     8,
+     9,
+     8
+    ],
+    "total": 25
+   }
+  },
+  "hcb+3_sa2": {
+   "name": "Backstep Frostcharge Roll (LK, SA2)",
+   "input": "hcb+3_sa2",
+   "t3_source": "sf6",
+   "sf_motion": "63214LK (SA2)",
+   "startup": 0.683,
+   "active": 0.4,
+   "recovery": 0.083,
+   "damage": 25,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:backstep_rolling_attack_lk_sa2",
+   "input_slots": [
+    "hcb+3_sa2"
+   ],
+   "move_class": "special",
+   "note": "SF: 63214LK (SA2)."
+  },
+  "hcb+4_sa2": {
+   "name": "Backstep Frostcharge Roll (MK, SA2)",
+   "input": "hcb+4_sa2",
+   "t3_source": "sf6",
+   "sf_motion": "63214MK (SA2)",
+   "startup": 0.683,
+   "active": 0.45,
+   "recovery": 0.083,
+   "damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:backstep_rolling_attack_mk_sa2",
+   "input_slots": [
+    "hcb+4_sa2"
+   ],
+   "move_class": "special",
+   "note": "SF: 63214MK (SA2)."
+  },
+  "hcb+3+4_sa2": {
+   "name": "Backstep Frostcharge Roll (HK, SA2)",
+   "input": "hcb+3+4_sa2",
+   "t3_source": "sf6",
+   "sf_motion": "63214HK (SA2)",
+   "startup": 0.683,
+   "active": 0.483,
+   "recovery": 0.083,
+   "damage": 25,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:backstep_rolling_attack_hk_sa2",
+   "input_slots": [
+    "hcb+3+4_sa2"
+   ],
+   "move_class": "special",
+   "note": "SF: 63214HK (SA2)."
+  },
+  "hcb+3+4_od_sa2": {
+   "name": "Backstep Frostcharge Roll (OD, SA2)",
+   "input": "hcb+3+4_od_sa2",
+   "t3_source": "sf6",
+   "sf_motion": "63214KK (SA2)",
+   "startup": 0.817,
+   "active": 0.5,
+   "recovery": 0.067,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:backstep_rolling_attack_od_sa2",
+   "input_slots": [
+    "hcb+3+4_od_sa2"
+   ],
+   "move_class": "special",
+   "note": "SF: 63214KK (SA2).",
+   "multi_hit": {
+    "hits": [
+     8,
+     9,
+     8
+    ],
+    "total": 25
+   }
+  },
+  "qcf+3": {
+   "name": "Wild Hunt (LK)",
+   "input": "qcf+3",
+   "t3_source": "sf6",
+   "sf_motion": "236LK",
+   "startup": 0.567,
+   "active": 0.05,
+   "recovery": 0.95,
+   "damage": 25,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:wild_hunt_lk",
+   "input_slots": [
+    "qcf+3"
+   ],
+   "move_class": "throw",
+   "note": "SF: 236LK. Leaping command grab.",
+   "throw": true,
+   "throw_break": "1+2",
+   "unblockable": true,
+   "isGrab": true
+  },
+  "qcf+4": {
+   "name": "Wild Hunt (MK)",
+   "input": "qcf+4",
+   "t3_source": "sf6",
+   "sf_motion": "236MK",
+   "startup": 0.65,
+   "active": 0.05,
+   "recovery": 0.95,
+   "damage": 25,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:wild_hunt_mk",
+   "input_slots": [
+    "qcf+4"
+   ],
+   "move_class": "throw",
+   "note": "SF: 236MK.",
+   "throw": true,
+   "throw_break": "1+2",
+   "unblockable": true,
+   "isGrab": true
+  },
+  "qcf+3+4": {
+   "name": "Wild Hunt (HK)",
+   "input": "qcf+3+4",
+   "t3_source": "sf6",
+   "sf_motion": "236HK",
+   "startup": 0.717,
+   "active": 0.05,
+   "recovery": 0.95,
+   "damage": 25,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:wild_hunt_hk",
+   "input_slots": [
+    "qcf+3+4"
+   ],
+   "move_class": "throw",
+   "note": "SF: 236HK.",
+   "throw": true,
+   "throw_break": "1+2",
+   "unblockable": true,
+   "isGrab": true
+  },
+  "qcf+3+4_od": {
+   "name": "Wild Hunt (OD)",
+   "input": "qcf+3+4_od",
+   "t3_source": "sf6",
+   "sf_motion": "236KK",
+   "startup": 0.533,
+   "active": 0.05,
+   "recovery": 0.95,
+   "damage": 25,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 5.0,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:wild_hunt_od",
+   "input_slots": [
+    "qcf+3+4_od"
+   ],
+   "move_class": "throw",
+   "note": "SF: 236KK.",
+   "throw": true,
+   "throw_break": "1+2",
+   "unblockable": true,
+   "isGrab": true
+  },
+  "d,d+1": {
+   "name": "Blanka-chan Bomb",
+   "input": "d,d+1",
+   "t3_source": "sf6",
+   "sf_motion": "22P",
+   "startup": 0.65,
+   "active": 0.0,
+   "recovery": 0.583,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sf6:blanka:blanka_chan_bomb",
+   "input_slots": [
+    "d,d+1"
+   ],
+   "move_class": "stance",
+   "note": "SF: 22P. Places a Blanka-chan doll."
+  },
+  "d,d+1,qcb+1": {
+   "name": "Blanka-chan Bomb (Charge)",
+   "input": "d,d+1,qcb+1",
+   "t3_source": "sf6",
+   "sf_motion": "22P~214P",
+   "startup": 0.6,
+   "active": 0.167,
+   "recovery": 0.0,
+   "damage": 24,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:blanka_chan_bomb_charge",
+   "input_slots": [
+    "d,d+1,qcb+1"
+   ],
+   "move_class": "special",
+   "note": "SF: 22P~214P. Activates the placed doll."
+  },
+  "d,d+1,qcb+1+2": {
+   "name": "Blanka-chan Bomb (OD Charge)",
+   "input": "d,d+1,qcb+1+2",
+   "t3_source": "sf6",
+   "sf_motion": "22P~214PP",
+   "startup": 0.6,
+   "active": 0.167,
+   "recovery": 0.0,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:blanka_chan_bomb_od_charge",
+   "input_slots": [
+    "d,d+1,qcb+1+2"
+   ],
+   "move_class": "special",
+   "note": "SF: 22P~214PP.",
+   "multi_hit": {
+    "hits": [
+     8,
+     8,
+     9
+    ],
+    "total": 25
+   }
+  },
+  "d,d+1,qcf,qcf+1": {
+   "name": "Blanka-chan Bomb (SA1 Charge)",
+   "input": "d,d+1,qcf,qcf+1",
+   "t3_source": "sf6",
+   "sf_motion": "22P~236236P",
+   "startup": 0.6,
+   "active": 0.167,
+   "recovery": 0.0,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sf6:blanka:blanka_chan_bomb_sa1_charge",
+   "input_slots": [
+    "d,d+1,qcf,qcf+1"
+   ],
+   "move_class": "special",
+   "note": "SF: 22P~236236P.",
+   "multi_hit": {
+    "hits": [
+     5,
+     5,
+     5,
+     5,
+     5
+    ],
+    "total": 25
+   }
+  },
+  "qcf,qcf+1": {
+   "name": "Shout of Earth",
+   "input": "qcf,qcf+1",
+   "t3_source": "sf6",
+   "sf_motion": "236236P (SA1)",
+   "startup": 0.133,
+   "active": 0.15,
+   "recovery": 1.033,
+   "damage": 40,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 7.0,
+   "soulGain": 15,
+   "anim_ref": "sf6:blanka:shout_of_earth",
+   "input_slots": [
+    "qcf,qcf+1"
+   ],
+   "move_class": "super",
+   "note": "SF: 236236P (SA1). SA1; ground lightning burst."
+  },
+  "qcb,qcb+1": {
+   "name": "Lightning Beast",
+   "input": "qcb,qcb+1",
+   "t3_source": "sf6",
+   "sf_motion": "214214P (SA2)",
+   "startup": 0.017,
+   "active": 0.0,
+   "recovery": 0.15,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sf6:blanka:lightning_beast",
+   "input_slots": [
+    "qcb,qcb+1"
+   ],
+   "move_class": "stance",
+   "note": "SF: 214214P (SA2). SA2 install; empowers Rolling Attacks, enables Rolling Cannon."
+  },
+  "qcb,qcb+1 (cannon)": {
+   "name": "Frostcharge Cannon",
+   "input": "qcb,qcb+1 (cannon)",
+   "t3_source": "sf6",
+   "sf_motion": "214214P (during SA2)",
+   "startup": 0.05,
+   "active": 0.417,
+   "recovery": 0.117,
+   "damage": 12,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 6,
+   "anim_ref": "sf6:blanka:rolling_cannon",
+   "input_slots": [
+    "qcb,qcb+1 (cannon)"
+   ],
+   "move_class": "special",
+   "note": "SF: 214214P (during SA2). Directional roll follow-up during Lightning Beast."
+  },
+  "qcf,qcf+3": {
+   "name": "Ground Shave Cannonball",
+   "input": "qcf,qcf+3",
+   "t3_source": "sf6",
+   "sf_motion": "236236K (SA3)",
+   "startup": 0.167,
+   "active": 0.05,
+   "recovery": 1.017,
+   "damage": 40,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 7.0,
+   "soulGain": 15,
+   "anim_ref": "sf6:blanka:ground_shave_cannonball",
+   "input_slots": [
+    "qcf,qcf+3"
+   ],
+   "move_class": "super",
+   "note": "SF: 236236K (SA3)."
+  },
+  "qcf,qcf+3 (ca)": {
+   "name": "Ground Shave Cannonball (CA)",
+   "input": "qcf,qcf+3 (ca)",
+   "t3_source": "sf6",
+   "sf_motion": "236236K (CA)",
+   "startup": 0.167,
+   "active": 0.05,
+   "recovery": 1.017,
+   "damage": 40,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 7.0,
+   "soulGain": 15,
+   "anim_ref": "sf6:blanka:ground_shave_cannonball_ca",
+   "input_slots": [
+    "qcf,qcf+3 (ca)"
+   ],
+   "move_class": "super",
+   "note": "SF: 236236K (CA). Critical Art version at 25% HP or below."
+  },
+  "1+2+3+4": {
+   "name": "Taunt (Neutral)",
+   "input": "1+2+3+4",
+   "t3_source": "sf6",
+   "sf_motion": "5PPPKKK",
+   "startup": 0.0,
+   "active": 0.0,
+   "recovery": 2.417,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sf6:blanka:taunt_neutral",
+   "input_slots": [
+    "1+2+3+4"
+   ],
+   "move_class": "stance",
+   "note": "SF: 5PPPKKK. 'Peekaboo!'"
+  },
+  "f+1+2+3+4": {
+   "name": "Taunt (Forward)",
+   "input": "f+1+2+3+4",
+   "t3_source": "sf6",
+   "sf_motion": "6PPPKKK",
+   "startup": 0.0,
+   "active": 0.0,
+   "recovery": 2.5,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sf6:blanka:taunt_forward",
+   "input_slots": [
+    "f+1+2+3+4"
+   ],
+   "move_class": "stance",
+   "note": "SF: 6PPPKKK."
+  },
+  "b+1+2+3+4": {
+   "name": "Taunt (Back)",
+   "input": "b+1+2+3+4",
+   "t3_source": "sf6",
+   "sf_motion": "4PPPKKK",
+   "startup": 0.0,
+   "active": 0.0,
+   "recovery": 3.883,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sf6:blanka:taunt_back",
+   "input_slots": [
+    "b+1+2+3+4"
+   ],
+   "move_class": "stance",
+   "note": "SF: 4PPPKKK. Juggles a Blanka-chan; replenishes one doll."
+  },
+  "f+2 (hold)": {
+   "name": "Rock Crusher (Hold)",
+   "input": "f+2 (hold)",
+   "t3_source": "sfv",
+   "sf_motion": "6MP (hold, SFV)",
+   "startup": 0.567,
+   "active": 0.05,
+   "recovery": 0.283,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.6,
+   "soulGain": 10,
+   "anim_ref": "sfv:blanka:rock_crusher_hold",
+   "input_slots": [
+    "f+2 (hold)"
+   ],
+   "move_class": "strike",
+   "note": "SF: 6MP (hold, SFV). SFV charged overhead",
+   "multi_hit": {
+    "hits": [
+     10,
+     10
+    ],
+    "total": 20
+   }
+  },
+  "qcf,qcf+1_sfv": {
+   "name": "Dynamic Frostcharge",
+   "input": "qcf,qcf+1_sfv",
+   "t3_source": "sfv",
+   "sf_motion": "236236P (Critical Art)",
+   "startup": 0.133,
+   "active": 0.417,
+   "recovery": 1.0,
+   "damage": 40,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 7.0,
+   "soulGain": 15,
+   "anim_ref": "sfv:blanka:dynamic_rolling",
+   "input_slots": [
+    "qcf,qcf+1_sfv"
+   ],
+   "move_class": "super",
+   "note": "SF: 236236P (Critical Art). SFV Critical Art."
+  },
+  "3+4 (jungle)": {
+   "name": "Jungle Dynamo",
+   "input": "3+4 (jungle)",
+   "t3_source": "sfv",
+   "sf_motion": "HPHK (V-Trigger 1)",
+   "startup": 0.017,
+   "active": 0.0,
+   "recovery": 0.1,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sfv:blanka:jungle_dynamo",
+   "input_slots": [
+    "3+4 (jungle)"
+   ],
+   "move_class": "stance",
+   "note": "SF: HPHK (V-Trigger 1). SFV VT1 install; powers up Blanka Balls and Electric Thunder."
+  },
+  "3+4 (gsr)": {
+   "name": "Glacier Shave Roll",
+   "input": "3+4 (gsr)",
+   "t3_source": "sfv",
+   "sf_motion": "HPHK (during VT1)",
+   "startup": 0.1,
+   "active": 0.5,
+   "recovery": 0.417,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sfv:blanka:ground_shave_rolling",
+   "input_slots": [
+    "3+4 (gsr)"
+   ],
+   "move_class": "special",
+   "note": "SF: HPHK (during VT1). VT1-only rolling attack.",
+   "multi_hit": {
+    "hits": [
+     8,
+     7,
+     7,
+     7,
+     7
+    ],
+    "total": 25
+   }
+  },
+  "3+4 (gsr, hold)": {
+   "name": "Glacier Shave Roll (Hold)",
+   "input": "3+4 (gsr, hold)",
+   "t3_source": "sfv",
+   "sf_motion": "HPHK (hold, VT1)",
+   "startup": 1.633,
+   "active": 0.5,
+   "recovery": 0.167,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sfv:blanka:ground_shave_rolling_hold",
+   "input_slots": [
+    "3+4 (gsr, hold)"
+   ],
+   "move_class": "special",
+   "note": "SF: HPHK (hold, VT1). Fully charged; last hit guard-breaks."
+  },
+  "3+4 (gsr, release)": {
+   "name": "Glacier Shave Roll (Release)",
+   "input": "3+4 (gsr, release)",
+   "t3_source": "sfv",
+   "sf_motion": "HPHK (release, VT1)",
+   "startup": 0.05,
+   "active": 0.383,
+   "recovery": 0.417,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sfv:blanka:ground_shave_rolling_release",
+   "input_slots": [
+    "3+4 (gsr, release)"
+   ],
+   "move_class": "special",
+   "note": "SF: HPHK (release, VT1)."
+  },
+  "2+4 (vs2)": {
+   "name": "Shout of Earth lvl 1",
+   "input": "2+4 (vs2)",
+   "t3_source": "sfv",
+   "sf_motion": "MPMK (V-Skill 2)",
+   "startup": 0.6,
+   "active": 0.117,
+   "recovery": 0.45,
+   "damage": 24,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sfv:blanka:shout_of_earth_lvl_1",
+   "input_slots": [
+    "2+4 (vs2)"
+   ],
+   "move_class": "special",
+   "note": "SF: MPMK (V-Skill 2). SFV V-Skill 2 ground lightning."
+  },
+  "2+4 (vs2, hold)": {
+   "name": "Shout of Earth lvl 2 (hold)",
+   "input": "2+4 (vs2, hold)",
+   "t3_source": "sfv",
+   "sf_motion": "MPMK (V-Skill 2, hold)",
+   "startup": 1.6,
+   "active": 0.117,
+   "recovery": 0.45,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sfv:blanka:shout_of_earth_lvl_2_hold",
+   "input_slots": [
+    "2+4 (vs2, hold)"
+   ],
+   "move_class": "special",
+   "note": "SF: MPMK (V-Skill 2, hold)."
+  },
+  "2+4 (vs2, release)": {
+   "name": "Shout of Earth lvl 2 (release)",
+   "input": "2+4 (vs2, release)",
+   "t3_source": "sfv",
+   "sf_motion": "MPMK (V-Skill 2, release)",
+   "startup": 0.383,
+   "active": 0.117,
+   "recovery": 0.45,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sfv:blanka:shout_of_earth_lvl_2_release",
+   "input_slots": [
+    "2+4 (vs2, release)"
+   ],
+   "move_class": "special",
+   "note": "SF: MPMK (V-Skill 2, release)."
+  },
+  "2+4 (vs2, charge)": {
+   "name": "Shout of Earth (charge)",
+   "input": "2+4 (vs2, charge)",
+   "t3_source": "sfv",
+   "sf_motion": "MPMK (V-Skill 2, charge)",
+   "startup": 0.85,
+   "active": 0.0,
+   "recovery": 0.267,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sfv:blanka:shout_of_earth_charge",
+   "input_slots": [
+    "2+4 (vs2, charge)"
+   ],
+   "move_class": "stance",
+   "note": "SF: MPMK (V-Skill 2, charge). Charges/stores level 2 Shout of Earth."
+  },
+  "1,1,1": {
+   "name": "Cryo Thunder (SFV)",
+   "input": "1,1,1",
+   "t3_source": "sfv",
+   "sf_motion": "P (mash)",
+   "startup": 0.167,
+   "active": 0.333,
+   "recovery": 0.283,
+   "damage": 24,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sfv:blanka:electric_thunder_sfv",
+   "input_slots": [
+    "1,1,1"
+   ],
+   "move_class": "special",
+   "note": "SF: P (mash). SFV mash-punch electricity.",
+   "multi_hit": {
+    "hits": [
+     6,
+     6,
+     6,
+     6
+    ],
+    "total": 24
+   }
+  },
+  "1,1,1 (vt1)": {
+   "name": "Cryo Thunder (VT1)",
+   "input": "1,1,1 (vt1)",
+   "t3_source": "sfv",
+   "sf_motion": "P (mash, V-Trigger 1)",
+   "startup": 0.2,
+   "active": 0.417,
+   "recovery": 0.2,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sfv:blanka:electric_thunder_vt1",
+   "input_slots": [
+    "1,1,1 (vt1)"
+   ],
+   "move_class": "special",
+   "note": "SF: P (mash, V-Trigger 1).",
+   "multi_hit": {
+    "hits": [
+     5,
+     5,
+     5,
+     5,
+     5
+    ],
+    "total": 25
+   }
+  },
+  "1,1,1+2": {
+   "name": "EX Cryo Thunder",
+   "input": "1,1,1+2",
+   "t3_source": "sfv",
+   "sf_motion": "PP (mash)",
+   "startup": 0.167,
+   "active": 0.333,
+   "recovery": 0.233,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 12,
+   "anim_ref": "sfv:blanka:ex_electric_thunder",
+   "input_slots": [
+    "1,1,1+2"
+   ],
+   "move_class": "special",
+   "note": "SF: PP (mash).",
+   "multi_hit": {
+    "hits": [
+     6,
+     6,
+     6,
+     6
+    ],
+    "total": 25
+   }
+  },
+  "3+4 (vt2)": {
+   "name": "Lightning Beast (SFV VT2)",
+   "input": "3+4 (vt2)",
+   "t3_source": "sfv",
+   "sf_motion": "HPHK (V-Trigger 2)",
+   "startup": 0.017,
+   "active": 0.0,
+   "recovery": 0.1,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sfv:blanka:lightning_beast_sfv_vt2",
+   "input_slots": [
+    "3+4 (vt2)"
+   ],
+   "move_class": "stance",
+   "note": "SF: HPHK (V-Trigger 2). SFV VT2 install; enables Rolling Cannon cancels."
+  },
+  "3+4 (cannon)": {
+   "name": "Frostcharge Cannon (SFV)",
+   "input": "3+4 (cannon)",
+   "t3_source": "sfv",
+   "sf_motion": "HPHK (any direction, VT2)",
+   "startup": 0.05,
+   "active": 0.333,
+   "recovery": 0.15,
+   "damage": 15,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 8,
+   "anim_ref": "sfv:blanka:rolling_cannon_sfv",
+   "input_slots": [
+    "3+4 (cannon)"
+   ],
+   "move_class": "special",
+   "note": "SF: HPHK (any direction, VT2). 8-way rolling follow-up from Blanka Ball specials."
+  },
+  "charge_b,f+1 (cannon)": {
+   "name": "Frostcharge Cannon from LP Roll",
+   "input": "charge_b,f+1 (cannon)",
+   "t3_source": "sfv",
+   "sf_motion": "46LP > 3HPHK",
+   "startup": 0.2,
+   "active": 0.333,
+   "recovery": 0.15,
+   "damage": 15,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 8,
+   "anim_ref": "sfv:blanka:rolling_cannon_from_lp_roll",
+   "input_slots": [
+    "charge_b,f+1 (cannon)"
+   ],
+   "move_class": "special",
+   "note": "SF: 46LP > 3HPHK."
+  },
+  "charge_b,f+2 (cannon)": {
+   "name": "Frostcharge Cannon from MP Roll",
+   "input": "charge_b,f+2 (cannon)",
+   "t3_source": "sfv",
+   "sf_motion": "46HP > 3HPHK",
+   "startup": 0.2,
+   "active": 0.333,
+   "recovery": 0.15,
+   "damage": 15,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 8,
+   "anim_ref": "sfv:blanka:rolling_cannon_from_mp_roll",
+   "input_slots": [
+    "charge_b,f+2 (cannon)"
+   ],
+   "move_class": "special",
+   "note": "SF: 46HP > 3HPHK."
+  },
+  "charge_b,f+1+2 (cannon)": {
+   "name": "Frostcharge Cannon from EX Roll",
+   "input": "charge_b,f+1+2 (cannon)",
+   "t3_source": "sfv",
+   "sf_motion": "46PP > 3HPHK",
+   "startup": 0.183,
+   "active": 0.333,
+   "recovery": 0.15,
+   "damage": 15,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 8,
+   "anim_ref": "sfv:blanka:rolling_cannon_from_ex_roll",
+   "input_slots": [
+    "charge_b,f+1+2 (cannon)"
+   ],
+   "move_class": "special",
+   "note": "SF: 46PP > 3HPHK."
+  },
+  "3+4 (vshift)": {
+   "name": "V-Shift",
+   "input": "3+4 (vshift)",
+   "t3_source": "sfv",
+   "sf_motion": "5MKHP",
+   "startup": 0.017,
+   "active": 0.15,
+   "recovery": 0.367,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sfv:blanka:v_shift",
+   "input_slots": [
+    "3+4 (vshift)"
+   ],
+   "move_class": "stance",
+   "note": "SF: 5MKHP."
+  },
+  "3+4 (vshift, break)": {
+   "name": "Anaconda's Maw",
+   "input": "3+4 (vshift, break)",
+   "t3_source": "sfv",
+   "sf_motion": "5MKHP (V-Shift Break)",
+   "startup": 0.167,
+   "active": 0.05,
+   "recovery": 0.333,
+   "damage": 18,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 9,
+   "anim_ref": "sfv:blanka:anaconda_s_maw",
+   "input_slots": [
+    "3+4 (vshift, break)"
+   ],
+   "move_class": "special",
+   "note": "SF: 5MKHP (V-Shift Break)."
+  },
+  "f+1+2+3 (vrev)": {
+   "name": "Quick Frostcharge",
+   "input": "f+1+2+3 (vrev)",
+   "t3_source": "sfv",
+   "sf_motion": "6PPP (V-Reversal)",
+   "startup": 0.283,
+   "active": 0.05,
+   "recovery": 0.383,
+   "damage": 18,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 9,
+   "anim_ref": "sfv:blanka:quick_rolling",
+   "input_slots": [
+    "f+1+2+3 (vrev)"
+   ],
+   "move_class": "special",
+   "note": "SF: 6PPP (V-Reversal). SFV V-Reversal."
+  },
+  "2+4 (sfv)": {
+   "name": "Coward Crouch (SFV)",
+   "input": "2+4 (sfv)",
+   "t3_source": "sfv",
+   "sf_motion": "MPMK (V-Skill 1)",
+   "startup": 0.167,
+   "active": 0.0,
+   "recovery": 0.767,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sfv:blanka:coward_crouch_sfv",
+   "input_slots": [
+    "2+4 (sfv)"
+   ],
+   "move_class": "stance",
+   "note": "SF: MPMK (V-Skill 1). SFV V-Skill 1 stance."
+  },
+  "2+4 (sfv),1": {
+   "name": "Wild Lift (SFV)",
+   "input": "2+4 (sfv),1",
+   "t3_source": "sfv",
+   "sf_motion": "MPMK > P (V-Skill 1)",
+   "startup": 0.383,
+   "active": 0.067,
+   "recovery": 0.4,
+   "damage": 18,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 9,
+   "anim_ref": "sfv:blanka:wild_lift_sfv",
+   "input_slots": [
+    "2+4 (sfv),1"
+   ],
+   "move_class": "special",
+   "note": "SF: MPMK > P (V-Skill 1)."
+  },
+  "2+4 (sfv),3": {
+   "name": "Raid Jump (SFV)",
+   "input": "2+4 (sfv),3",
+   "t3_source": "sfv",
+   "sf_motion": "MPMK > K (V-Skill 1)",
+   "startup": 0.483,
+   "active": 0.0,
+   "recovery": 0.067,
+   "damage": 0,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 0,
+   "anim_ref": "sfv:blanka:raid_jump_sfv",
+   "input_slots": [
+    "2+4 (sfv),3"
+   ],
+   "move_class": "movement",
+   "note": "SF: MPMK > K (V-Skill 1)."
+  }
+ },
+ "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
+ "schema_version": 2,
+ "strings": [],
+ "t3_bank": "moveset_bryan.json",
+ "t3_bank_rows": 365,
+ "t3_bank_attack_rows": 82,
+ "generated_full_moveset": {
+  "by": "tools/gen-movesets-t3.py",
+  "date": "2026-10-20",
+  "note": "Full T3 bank depth merged over curated base; curated moves preserved verbatim. Smallest T3 bank (365 rows, 188 attacks); 79 attack rows have no per-character input in the extracted data (common-bank / reaction rows). Unique playable inputs top out at ~90-97 per fighter."
+ },
+ "specials": [
+  {
+   "input": "1+3",
+   "damage": 25,
+   "throw": true
+  },
+  {
+   "input": "b+1+3",
+   "damage": 25,
+   "throw": true
+  },
+  {
+   "input": "u+1+3",
+   "damage": 25,
+   "throw": true
+  },
+  {
+   "input": "qcf+3",
+   "damage": 25,
+   "throw": true
+  },
+  {
+   "input": "qcf+4",
+   "damage": 25,
+   "throw": true
+  },
+  {
+   "input": "qcf+3+4",
+   "damage": 25,
+   "throw": true
+  },
+  {
+   "input": "qcf+3+4_od",
+   "damage": 25,
+   "throw": true
+  }
+ ],
+ "canon_note": "CHARGER (owner 2026-10-20): proprietary Blanka replacement. Blanka's full 199-move set (post-#363 union: SF6 set + SFV extras + T3 bryan bank rows) carried over with inputs/frame data IDENTICAL; only signature names in the Electric Thunder and Rolling families were renamed to CHARGER's ice+electric identity (see canon_rename_map). Source: blanka.json on main. CHARGER's powers are ice and electricity — the name is from Blanka's attacks attaching to him. Original canon_note for the source set: Full Blanka SF6 set (supercombo.gg) + SFV V-System/CA extras (supercombo.gg) added 2026-10-19 under the FULL MOVESET LAW; SF motion inputs converted to Tekken notation, original motion kept in note/sf_motion. SF6 damage x0.03, SFV damage x0.3 (1000-HP scale), frames /60.",
+ "replaces": "blanka",
+ "source_moveset": "blanka.json",
+ "source_move_count": 199,
+ "canon_rename_map": {
+  "Aerial Rolling Attack": "Aerial Frostcharge Roll",
+  "Aerial Rolling Attack (OD)": "Aerial Frostcharge Roll (OD)",
+  "Aerial Rolling Attack (OD, SA2)": "Aerial Frostcharge Roll (OD, SA2)",
+  "Aerial Rolling Attack (SA2)": "Aerial Frostcharge Roll (SA2)",
+  "Backstep Rolling Attack (HK)": "Backstep Frostcharge Roll (HK)",
+  "Backstep Rolling Attack (HK, SA2)": "Backstep Frostcharge Roll (HK, SA2)",
+  "Backstep Rolling Attack (LK)": "Backstep Frostcharge Roll (LK)",
+  "Backstep Rolling Attack (LK, SA2)": "Backstep Frostcharge Roll (LK, SA2)",
+  "Backstep Rolling Attack (MK)": "Backstep Frostcharge Roll (MK)",
+  "Backstep Rolling Attack (MK, SA2)": "Backstep Frostcharge Roll (MK, SA2)",
+  "Backstep Rolling Attack (OD)": "Backstep Frostcharge Roll (OD)",
+  "Backstep Rolling Attack (OD, SA2)": "Backstep Frostcharge Roll (OD, SA2)",
+  "Dynamic Rolling": "Dynamic Frostcharge",
+  "EX Electric Thunder": "EX Cryo Thunder",
+  "Electric Thunder": "Cryo Thunder",
+  "Electric Thunder (Hold)": "Cryo Thunder (Hold)",
+  "Electric Thunder (OD)": "Cryo Thunder (OD)",
+  "Electric Thunder (SFV)": "Cryo Thunder (SFV)",
+  "Electric Thunder (VT1)": "Cryo Thunder (VT1)",
+  "Ground Shave Rolling": "Glacier Shave Roll",
+  "Ground Shave Rolling (Hold)": "Glacier Shave Roll (Hold)",
+  "Ground Shave Rolling (Release)": "Glacier Shave Roll (Release)",
+  "Quick Rolling": "Quick Frostcharge",
+  "Quick Rolling Attack (Drive Rush Block)": "Quick Frostcharge Roll (Drive Rush Block)",
+  "Quick Rolling Attack (Drive Rush Recovery)": "Quick Frostcharge Roll (Drive Rush Recovery)",
+  "Rolling Attack (HP)": "Frostcharge Roll (HP)",
+  "Rolling Attack (HP, SA2)": "Frostcharge Roll (HP, SA2)",
+  "Rolling Attack (LP)": "Frostcharge Roll (LP)",
+  "Rolling Attack (LP, SA2)": "Frostcharge Roll (LP, SA2)",
+  "Rolling Attack (MP)": "Frostcharge Roll (MP)",
+  "Rolling Attack (MP, SA2)": "Frostcharge Roll (MP, SA2)",
+  "Rolling Attack (OD)": "Frostcharge Roll (OD)",
+  "Rolling Attack (OD, SA2)": "Frostcharge Roll (OD, SA2)",
+  "Rolling Cannon": "Frostcharge Cannon",
+  "Rolling Cannon (SFV)": "Frostcharge Cannon (SFV)",
+  "Rolling Cannon from EX Roll": "Frostcharge Cannon from EX Roll",
+  "Rolling Cannon from LP Roll": "Frostcharge Cannon from LP Roll",
+  "Rolling Cannon from MP Roll": "Frostcharge Cannon from MP Roll",
+  "Vertical Rolling Attack (HK)": "Vertical Frostcharge Roll (HK)",
+  "Vertical Rolling Attack (HK, SA2)": "Vertical Frostcharge Roll (HK, SA2)",
+  "Vertical Rolling Attack (LK)": "Vertical Frostcharge Roll (LK)",
+  "Vertical Rolling Attack (LK, SA2)": "Vertical Frostcharge Roll (LK, SA2)",
+  "Vertical Rolling Attack (MK)": "Vertical Frostcharge Roll (MK)",
+  "Vertical Rolling Attack (MK, SA2)": "Vertical Frostcharge Roll (MK, SA2)",
+  "Vertical Rolling Attack (OD)": "Vertical Frostcharge Roll (OD)",
+  "Vertical Rolling Attack (OD, SA2)": "Vertical Frostcharge Roll (OD, SA2)"
+ }
+}
