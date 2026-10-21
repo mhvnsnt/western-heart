@@ -78,6 +78,7 @@ export const MODEL_URLS = {
   // Kronos — new fighter (owner 2026-10-19, Tripo pull).
   kronos: '../roster/kronos/attires/attire1/model.glb',
   'kronos-attire2': '../roster/kronos/attires/attire2/model.glb',
+  'kronos-attire3': '../roster/kronos/attires/attire3/model.glb',
   // KORESHI (owner 2026-10-19): his own creation (Kakashi + SSJ4/5 + ninja, Tripo pull).
   koreshi: '../roster/koreshi/attires/attire1/model.glb',
   // Burger hunger-state variants (owner 2026-10-19, Tripo pulls).
