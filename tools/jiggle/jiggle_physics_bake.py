@@ -32,10 +32,16 @@ def digest(action, exclude):
 def main():
     argv = sys.argv[sys.argv.index("--") + 1:]
     out_path, action_name, config = argv[0], argv[1], argv[2]
-    arm = next(o for o in bpy.data.objects if o.type == "ARMATURE")
     src = bpy.data.actions[action_name]
     src.use_fake_user = True
+    arm = next((o for o in bpy.data.objects if o.type == "ARMATURE"
+                and o.animation_data and o.animation_data.action == src),
+               None)
+    if arm is None:
+        arm = max((o for o in bpy.data.objects if o.type == "ARMATURE"),
+                  key=lambda o: len(o.data.bones))
     arm.animation_data.action = src
+    print("ARMATURE:", arm.name)
 
     bone_names = {b.name for b in arm.data.bones}
     if config == "scarlett":
