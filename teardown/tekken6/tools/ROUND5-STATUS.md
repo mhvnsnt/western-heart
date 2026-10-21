@@ -51,6 +51,46 @@ end-of-stream, (b) decoded length falls SHORT of stated output size,
 - [ ] Step 3: overlay check on the dumps.
 - [ ] Verdict + PR #446 update.
 
+## Attempt 3 (2026-10-21, AUTO-RECOVERY redo of attempt 2)
+
+Attempt 2 died to a daemon restart mid-session. Its local record was
+recovered intact in `_t6r4-work/`: `trace_r5.jsonl` (13 records, now
+archived as `round5-evidence/trace_r5_attempt2.jsonl`), `ppsspp_r5.log`,
+`r5_shots/boot1.png` (2.9 KB — blank), `dumps_r5/` empty. What it
+proves: the session launched, PC sampling found the F7 hot PC
+**0x8ac6c74** again (29/40 samples), all five breakpoints were added,
+and at the single `status` probe (~7 min after READY) loader/wrapper/
+inflate/ret hits were all 0 — but **control_hits was also 0**, so by
+F7 discipline that zero is NOT readable: attempt 2 never validated
+its control in-session before dying, and no mode was driven (only
+`status` + `shot boot1` commands were ever issued).
+
+### F8. Attempt-2 driver defect found by inspection (explains control=0)
+
+`r5_driver.py` classified every breakpoint hit by parsing the PC out
+of `cpu.getAllRegs` (category scan, index 32). Every round-4 trace
+that used that parse recorded `pc: null` on all hits
+(`round4-evidence/trace_r5.jsonl`) — the parse never worked in this
+PPSSPP build, so `r5_driver.py` could never count a control hit nor
+classify a loader hit, and its RAM-dump pause (wait for a recognised
+control hit) could never trigger. The working PC source is the
+stepping event itself (`ev['pc']`, proven in `ws_control.py`, F7's
+control) with `cpu.status` as fallback.
+
+Attempt-3 driver `round5-evidence/r5c_driver.py` fixes this and the
+dump path: hit PC from the event / `cpu.status`; RAM dumps pause via
+`game.pause` / `game.resume` (both present in the v1.20.4 debugger
+API) and read memory while paused; raw `getAllRegs` replies are
+logged verbatim on the first loader/wrapper hits so register capture
+is evidence, not assumption. Tooling committed BEFORE the session
+launches (capture→commit discipline).
+
+- [ ] Step 1 (attempt 3): drive CUSTOMIZATION + GALLERY under the
+  fixed breakpoints, control validated in-session first.
+- [ ] Step 2 (attempt 3): RAM dumps (fight + customization/gallery).
+- [ ] Step 3 (attempt 3): overlay check on the dumps.
+- [ ] Verdict + PR #446 update.
+
 ## Findings
 
 (appended as they land — emulator/RAM ground truth only)
