@@ -30,6 +30,21 @@ export const MODEL_URLS = {
   // assets/models/diablo.glb as the ladder-back (not deleted).
   diablo: '../roster/diablo/attires/attire1/model.glb',
   'diablo-attire1': '../roster/diablo/attires/attire1/model.glb',
+  // Diablo Attire 2 — Devil God (owner 2026-10-20, Tripo pull).
+  'diablo-attire2': '../roster/diablo/attires/attire2/model.glb',
+  // SLICE Attire 1 (owner 2026-10-21): Tekken 7 Dragunov teardown model
+  // (dragunov-t7-rig.blend from release tekken-models-batch-2) converted to
+  // GLB — Slice's first own model; he was a steve-fox fallback rider with no
+  // model of his own (model-key audit, PR #418).
+  slice: '../roster/slice/attires/attire1/model.glb',
+  'slice-attire1': '../roster/slice/attires/attire1/model.glb',
+  // ZUI Attires 1+2 (owner Tripos; gap found by the model-key audit, PR #418):
+  // A1 = Drunken Monk Tripo, his DEFAULT attire (roster/zui/ATTIRE-SLOTS.md,
+  // owner 2026-10-18). The GLBs sat in roster/zui/attires/ with NO MODEL_URLS
+  // keys — unreachable. steve-fox.glb (his canon base) stays wired below and
+  // ladders back as a selectable alternate in attires.js.
+  'zui-attire1': '../roster/zui/attires/attire1/model.glb',
+  'zui-attire2': '../roster/zui/attires/attire2/model.glb',
   // Tripo pulls wired 2026-10-19 (owner: stop saying "not in the repo").
   phantom: '../roster/phantom/attires/attire1/model.glb',
   skull: '../roster/skull/attires/attire1/model.glb',
@@ -45,6 +60,8 @@ export const MODEL_URLS = {
   nightwolf: 'assets/models/nightwolf.glb',
   'king-tyrant': 'assets/models/king-tyrant.glb',
   kinpo: 'assets/models/kinpo.glb',
+  // Kinpo Attire 2 "Goth Sport" (owner 2026-10-20, Tripo pull — see roster/kinpo/ATTIRE-SLOTS.md).
+  'kinpo-attire2': '../roster/kinpo/attires/attire2/model.glb',
   waterfall: '../roster/waterfall/attires/attire1/model.glb',
   'n3g4tiv0': 'assets/models/n3g4tiv0.glb',
   thor: '../roster/thor/attires/attire1/model.glb',
@@ -77,6 +94,10 @@ export const MODEL_URLS = {
   // Cain Elias — Vain Abel's brother, Undertaker archetype (owner 2026-10-19, Tripo pulls).
   'cain-elias': '../roster/cain-elias/attires/attire1/model.glb',
   'cain-elias-attire2': '../roster/cain-elias/attires/attire2/model.glb',
+  // Vain Abel — Attire 2 (owner 2026-10-20, Tripo pull).
+  'vainabel-attire2': '../roster/vainabel/attires/attire2/model.glb',
+  // Vain Abel — Kane archetype (owner 2026-10-20, Tripo pull). Attire 3: Masked Demon of the Purple Haze.
+  'vainabel-attire3': '../roster/vainabel/attires/attire3/model.glb',
   // Burger — Demon mode, possessed by greed (owner 2026-10-19, Tripo pull).
   burger: '../roster/burger/attires/attire1/model.glb',
   // Kronos — new fighter (owner 2026-10-19, Tripo pull).

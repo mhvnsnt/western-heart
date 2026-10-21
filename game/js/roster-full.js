@@ -38,6 +38,14 @@ export const FULL_ROSTER = [
     // Attire 1 = Tripo unwinged demon (owner 2026-10-19). Three forms, transform both directions (Roshi-style).
     // TRANSFORM touch button = up, tap while crouching = down (rare). Full meter required.
     forms: {
+      // The player default resolves to the 'demonio' BASE attire (attires.js
+      // list head), so the base form keys the same chain as A1 — without this
+      // entry the player-side formKey ('demonio') dangles and he never
+      // transforms as the player. Same targets/labels as A1; key alignment only.
+      'demonio': {
+        up: { target: 'demonio-winged', label: 'DEVIL ASCENSION', powerMult: 1.5, speedMult: 1.05, defenseMult: 1.2, bodyScale: 1.22, moveset: 'demonio-winged' },
+        down: { target: 'demonio-human', label: 'DEPOWER', powerMult: 0.7, speedMult: 1.1, defenseMult: 0.9, bodyScale: 0.95, moveset: 'demonio' },
+      },
       'demonio-a1': {
         up: { target: 'demonio-winged', label: 'DEVIL ASCENSION', powerMult: 1.5, speedMult: 1.05, defenseMult: 1.2, bodyScale: 1.22, moveset: 'demonio-winged' },
         down: { target: 'demonio-human', label: 'DEPOWER', powerMult: 0.7, speedMult: 1.1, defenseMult: 0.9, bodyScale: 0.95, moveset: 'demonio' },
@@ -51,34 +59,34 @@ export const FULL_ROSTER = [
     },
     stats: { speed: 4.8, jump: 7.6, power: 1.05, defense: 1.0 },
     ai: { aggression: 0.6, grabBias: 0.05, reaction: 0.6 } },
-  { id: 'phantom', name: 'PHANTOM', title: 'The Ghost Blade Soul', base: 'Yoshimitsu', moveset: 'yoshimitsu', model: 'steve-fox', tintStrength: 0.6,
+  { id: 'phantom', name: 'PHANTOM', title: 'The Ghost Blade Soul', base: 'Yoshimitsu', moveset: 'yoshimitsu', model: 'phantom', tintStrength: 0.6,
     colors: { suit: 0x1a1a2a, trim: 0x00ffcc }, style: 'Sword Style', archetype: 'Tricky' },
   { id: 'diablo', name: 'DIABLO', title: 'The Devil Soul', base: 'Heihachi', moveset: 'heihachi', model: 'diablo', tintStrength: 0.6,
     colors: { suit: 0x5a0a0a, trim: 0xff4400 }, style: 'Mishima', archetype: 'Boss' },
-  { id: 'skull', name: 'SKULL', title: 'The Punisher Soul', base: 'Bryan Fury', moveset: 'bryan', model: 'pantera', tintStrength: 0.25,
+  { id: 'skull', name: 'SKULL', title: 'The Punisher Soul', base: 'Bryan Fury', moveset: 'bryan', model: 'skull', tintStrength: 0.25,
     colors: { suit: 0x2a2a2a, trim: 0xcccccc }, style: 'Kickboxing', archetype: 'Rushdown' },
   { id: 'samura1', name: 'SAM-UR-A1', title: 'The Mech Soul', base: 'Jack-7', moveset: 'gunjack', model: 'sam-ur-a1', tintStrength: 0.25,
     colors: { suit: 0x3a3a4a, trim: 0x00aaff }, style: 'Power Robot', archetype: 'Zoner' },
     // Attire 1 = Tripo pull 2026-10-19 (owner: 'SAM-UR-A1 model attire 1'). Former pantera base retired to docs.
-  { id: 'sakura', name: 'SAKU RA', title: 'The Idol Soul', base: 'Xiaoyu', moveset: 'xiaoyu', model: 'steve-fox', tintStrength: 0.6,
+  { id: 'sakura', name: 'SAKU RA', title: 'The Idol Soul', base: 'Xiaoyu', moveset: 'xiaoyu', model: 'saku-ra', tintStrength: 0.6,
     colors: { suit: 0xff6b9d, trim: 0xffd700 }, style: 'Hakkesho', archetype: 'Evasive' },
 
   // ——— BONUS ROSTER ———
-  { id: 'zui', name: 'ZUI', title: 'Drunken Master', base: 'Steve Fox', moveset: 'demonio', model: 'steve-fox', tintStrength: 0.6,
+  { id: 'zui', name: 'ZUI', title: 'Drunken Master', base: 'Steve Fox', moveset: 'demonio', model: 'zui-attire1', tintStrength: 0.6,
     colors: { suit: 0x2a4a2a, trim: 0x6acc3a }, style: 'Boxing/Drunken', archetype: 'Tricky' },
-  { id: 'kinpo', name: 'KINPO', title: 'Splinter of SHA', base: 'Asuka', moveset: 'demonio', model: 'steve-fox', tintStrength: 0.6,
+  { id: 'kinpo', name: 'KINPO', title: 'Splinter of SHA', base: 'Asuka', moveset: 'demonio', model: 'kinpo', tintStrength: 0.6,
     colors: { suit: 0xd44d8a, trim: 0xffd700 }, style: 'Kazama Style', archetype: 'Counter' },
-  { id: 'waterfall', name: 'WATERFALL', title: "Grief of Nine", base: 'Josie', moveset: 'demonio', model: 'steve-fox', tintStrength: 0.6,
+  { id: 'waterfall', name: 'WATERFALL', title: "Grief of Nine", base: 'Josie', moveset: 'demonio', model: 'waterfall', tintStrength: 0.6,
     colors: { suit: 0x3a6acc, trim: 0x9fd8ff }, style: 'Eskrima', archetype: 'Rushdown' },
-  { id: 'kingtyrant', name: 'KING TYRANT', title: 'Showman King', base: 'Eddy Gordo', moveset: 'xiaoyu', model: 'pantera', tintStrength: 0.25,
+  { id: 'kingtyrant', name: 'KING TYRANT', title: 'Showman King', base: 'Eddy Gordo', moveset: 'xiaoyu', model: 'king-tyrant', tintStrength: 0.25,
     colors: { suit: 0x8a6a1a, trim: 0xffd700 }, style: 'Capoeira', archetype: 'Showman' },
-  { id: 'burger', name: 'BURGER', title: 'Hunger is a Curse', base: 'Bob', moveset: 'bryan', model: 'pantera', tintStrength: 0.25,
+  { id: 'burger', name: 'BURGER', title: 'Hunger is a Curse', base: 'Bob', moveset: 'bryan', model: 'burger', tintStrength: 0.25,
     colors: { suit: 0xcc8833, trim: 0xff4400 }, style: 'Sumo/Brawler', archetype: 'Power',
     // Burger demon transformation chain (owner 2026-10-19): Kusaregedo kit per form.
     // Chain: base -> speed-demon -> the-mouth -> demon (final). Demon form gets FULL kit
     // + mix of smaller forms' abilities + exclusives. Extensible for new forms.
     forms: {
-      'pantera': {
+      'burger': {
         up: { target: 'burger-speed-demon', label: 'SPEED DEMON', powerMult: 1.1, speedMult: 1.3, defenseMult: 0.9, moveset: 'burger-speed-demon' },
       },
       'burger-speed-demon': {
@@ -93,17 +101,17 @@ export const FULL_ROSTER = [
         down: { target: 'burger-the-mouth', label: 'POWER DOWN', powerMult: 0.81, speedMult: 0.94, defenseMult: 0.85, bodyScale: 0.88, moveset: 'burger-the-mouth' },
       },
     } },
-  { id: 'awapop', name: 'AWA POP', title: 'Bubbles', base: 'Nina', moveset: 'demonio', model: 'steve-fox', tintStrength: 0.6,
+  { id: 'awapop', name: 'AWA POP', title: 'Bubbles', base: 'Nina', moveset: 'demonio', model: 'awa-pop', tintStrength: 0.6,
     colors: { suit: 0xff9dcc, trim: 0xffffff }, style: 'Assassin', archetype: 'Rushdown' },
   { id: 'scimitar', name: 'SCIMITAR', title: 'Desert Blade', base: 'Shaheen', moveset: 'demonio', model: 'scimitar', tintStrength: 0.6,
     colors: { suit: 0x2a2a3a, trim: 0xc2a36b }, style: 'Military', archetype: 'Balanced' },
-  { id: 'purplerain', name: 'PURPLE RAIN', title: 'MJ x Prince x Pimp', base: 'Lee', moveset: 'demonio', model: 'steve-fox', tintStrength: 0.6,
+  { id: 'purplerain', name: 'PURPLE RAIN', title: 'MJ x Prince x Pimp', base: 'Lee', moveset: 'demonio', model: 'purple-rain', tintStrength: 0.6,
     colors: { suit: 0x6b2d8f, trim: 0xff00ff }, style: 'Martial Arts', archetype: 'Stylish' },
-  { id: 'nightwolf', name: 'NIGHTWOLF', title: 'Storm Shadow', base: 'Julia', moveset: 'xiaoyu', model: 'steve-fox', tintStrength: 0.6,
+  { id: 'nightwolf', name: 'NIGHTWOLF', title: 'Storm Shadow', base: 'Julia', moveset: 'xiaoyu', model: 'nightwolf', tintStrength: 0.6,
     colors: { suit: 0x1a3a5a, trim: 0x6accff }, style: 'Xinyi Liuhe', archetype: 'Balanced' },
   { id: 'dio', name: 'DIO', title: 'Raging Demon', base: 'Akuma', moveset: 'heihachi', model: 'dio', tintStrength: 0.6,
     colors: { suit: 0x1a1a1a, trim: 0xff0000 }, style: 'Satsui no Hado', archetype: 'Shoto' },
-  { id: 'cyborgx', name: 'CYBORG X', title: 'GYOU Splinter', base: 'Alisa', moveset: 'gunjack', model: 'steve-fox', tintStrength: 0.6,
+  { id: 'cyborgx', name: 'CYBORG X', title: 'GYOU Splinter', base: 'Alisa', moveset: 'gunjack', model: 'cape-jones', tintStrength: 0.6,
     colors: { suit: 0xcccccc, trim: 0x00ffcc }, style: 'Robot Combat', archetype: 'Zoner' },
   { id: 'michiko', name: 'MICHIKO', title: 'Savate Queen', base: 'Katarina', moveset: 'demonio', model: 'michiko', tintStrength: 0.6,
     colors: { suit: 0x8a1a4a, trim: 0xff6b9d }, style: 'Savate', archetype: 'Rushdown' },
@@ -113,13 +121,13 @@ export const FULL_ROSTER = [
     colors: { suit: 0x8a1a1a, trim: 0xff8800 }, style: 'Assassin', archetype: 'Tricky' },
   { id: 'bruno', name: 'BRUNO', title: 'Matador', base: 'Miguel', moveset: 'bryan', model: 'bruno', tintStrength: 0.25,
     colors: { suit: 0x5a1a1a, trim: 0xcc3333 }, style: 'Brawler', archetype: 'Power' },
-  { id: 'negativo', name: 'N3GΔTIV0', title: 'Galactic Bounty Hunter', base: 'Negan', moveset: 'bryan', model: 'pantera', tintStrength: 0.25,
+  { id: 'negativo', name: 'N3GΔTIV0', title: 'Galactic Bounty Hunter', base: 'Negan', moveset: 'bryan', model: 'n3g4tiv0', tintStrength: 0.25,
     colors: { suit: 0x0a0a0a, trim: 0x00ff00 }, style: 'Brawler', archetype: 'Intimidation' },
-  { id: 'thor', name: 'THOR', title: 'Norse God', base: 'Ganryu', moveset: 'bryan', model: 'pantera', tintStrength: 0.25,
+  { id: 'thor', name: 'THOR', title: 'Norse God', base: 'Ganryu', moveset: 'bryan', model: 'thor', tintStrength: 0.25,
     colors: { suit: 0x4a3a2a, trim: 0xffd700 }, style: 'Sumo', archetype: 'Power' },
   { id: 'yukihyo', name: 'YUKIHYŌ', title: 'Snow Leopard Ninja', base: 'Armor King', moveset: 'king', model: 'yukihyo', tintStrength: 0.25,
     colors: { suit: 0xd0d0d0, trim: 0x6accff }, style: 'Grappler', archetype: 'Ninja' },
-  { id: 'slice', name: 'SLICE', title: 'Maniacal Agent', base: 'Dragunov', moveset: 'bryan', model: 'steve-fox', tintStrength: 0.6,
+  { id: 'slice', name: 'SLICE', title: 'Maniacal Agent', base: 'Dragunov', moveset: 'bryan', model: 'slice', tintStrength: 0.6,
     colors: { suit: 0x2a2a2a, trim: 0xcc0000 }, style: 'Commando Sambo', archetype: 'Grappler' },
   { id: 'docfrank', name: 'DOC FRANK', title: 'Father of Machines', base: 'Bosconovitch', moveset: 'gunjack', model: 'doc-frank-machine-shop', tintStrength: 0.6,
     colors: { suit: 0x6a6a7a, trim: 0x00ffcc }, style: 'Inventor', archetype: 'Tricky',
@@ -158,7 +166,7 @@ export const FULL_ROSTER = [
     transform: { targetModel: 'doc-frank-frankenstein-big', powerMult: 1.4, speedMult: 0.88, defenseMult: 1.15, bodyScale: 1.18 } },
   { id: 'doc-frank-machine-shop', name: 'DOC FRANK', title: 'Machine Shop', base: 'Bosconovitch', moveset: 'gunjack', model: 'doc-frank-machine-shop', tintStrength: 0.25,
     colors: { suit: 0x4a4a5a, trim: 0xff8800 }, style: 'Inventor', archetype: 'Tricky' },
-  { id: 'baek-master-white', name: 'KEVIN', title: "The Master Soul", base: 'Kevin', moveset: 'bryan', model: 'baek-master-white', tintStrength: 0.25,
+  { id: 'baek-master-white', name: 'KEVIN', title: "The Master Soul", base: 'Kevin', moveset: 'bryan', model: 'baek', tintStrength: 0.25,
     colors: { suit: 0xf0f0f0, trim: 0x8a1a1a }, style: 'Tae Kwon Do', archetype: 'Pressure' },
   { id: 'mariposa-monarch', name: 'MARIPOSA', title: 'Monarch', base: 'Zafina', moveset: 'xiaoyu', model: 'mariposa-monarch', tintStrength: 0.25,
     colors: { suit: 0x2a1a3a, trim: 0xff8800 }, style: 'Azazel Arts', archetype: 'Tricky' },

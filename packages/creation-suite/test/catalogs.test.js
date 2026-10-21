@@ -79,3 +79,23 @@ test('a customization.json v1 profile resolves its parts end-to-end', () => {
   assert.equal(bySlot.hair.status, 'unresolved');
   assert.equal(bySlot.hair.entry, null);
 });
+
+test('wmxix ymg parts stay honestly geometry-pending (J3 eye-validation)', () => {
+  // JOB 3 (2026-10-20): the YOBJ strip-pool decode was built and gated,
+  // but sample + gate-passing renders failed own-eyes validation in
+  // Blender (fragments, not parts) — zero GLBs shipped. The converted
+  // catalog must therefore still enumerate every .ymg part as pending:
+  // a blocked part must never surface as converted/geometry-ready.
+  const conv = readJson('customization/parts-converted/CATALOG.json');
+  const wmxix = conv.parts.filter((p) => p.source_game === 'wmxix');
+  const ymg = wmxix.filter((p) => (p.origin_file || '').endsWith('.ymg'));
+  assert.equal(ymg.length, 1200);
+  assert.equal(ymg.filter((p) => p.status === 'blocked_ymg_decode').length, 998);
+  assert.equal(ymg.filter((p) => p.status === 'blocked_dumy_placeholder').length, 202);
+  assert.ok(ymg.every((p) => p.glb === null), 'blocked ymg parts must carry no GLB');
+  const texConverted = wmxix.filter((p) => p.status === 'converted');
+  assert.ok(texConverted.length >= 1044,
+    'the Worker A texture conversions (1,044 at J3 time; J2 raised it further) must stand');
+  assert.ok(texConverted.every((p) => p.texture && existsSync(join(ROOT, p.texture))),
+    'converted texture entries point at real decoded PNGs');
+});

@@ -91,6 +91,49 @@ export function bankIdFor(charId, movesetId) {
   // Armor King's King-proportioned model. Every other king-source
   // fighter keeps the king_on_pantera_leoman bank untouched.
   if (charId === 'armor-king') return 'armorking';
+  // Per-fighter bank overrides (2026-10-20, anim-bank wiring lane; owner
+  // order: every fighter animates on THEIR OWN base character's clips).
+  // These fighters' moveset DATA was built on a proxy source's move table
+  // (their t3_source names the data provenance), but their CANON base is a
+  // different T3 character whose decoded bank now exists on main (PR #405).
+  // The override binds the ACTION clips (stance/light/medium/heavy/block/
+  // hit/walk/...) to the base character's own bank. Per-move row clips are
+  // unaffected: _t3RowClipForMove only plays a row clip when the move's own
+  // t3source maps to the bound bank, so proxy-table moves keep falling back
+  // to the generic actions until the moveset lane rebuilds them on the true
+  // base table — never another character's per-move clips.
+  //   awapop     -> nina     (CANON: Awa Pop base = Nina Williams)
+  //   torch      -> anna     (CANON: Torch base = Anna Williams)
+  //   kingtyrant -> eddy     (CANON: King Tyrant base = Eddy Gordo)
+  //   kai        -> eddy     (nine-souls appendix: KAI's vessel base = Eddy)
+  //   tou        -> paul     (nine-souls appendix: TOU's vessel base = Paul)
+  //   byou       -> lei      (nine-souls appendix: BYOU's vessel base = Lei)
+  //   gyou       -> hwoarang (nine-souls appendix: GYOU's vessel base = Hwoarang)
+  //   zen        -> julia    (nine-souls appendix: ZEN's vessel base = Julia)
+  //   rave       -> lei      (CANON: Rave base = Lei Wulong)
+  //   yukihyo    -> armorking (CANON: Yukihyo base = Armor King; same
+  //                 rationale as the armor-king override above — the 'king'
+  //                 bank is baked on Pantera's Leo-man rig, the 'armorking'
+  //                 bank on King's own rig matching his proportions)
+  //   nightwolf  -> julia    (CANON.md base = Julia Chang. Owner order
+  //                 2026-10-20 names Wolf Hawkfield (Virtua Fighter) for
+  //                 Nightwolf's clips, but NO VF motion data exists in any
+  //                 of our teardown stores (VF5 extraction holds models;
+  //                 its motion data was never converted) — Julia is his
+  //                 canon Tekken base and her bank exists. FLAGGED in
+  //                 docs/anim/BANK-TABLE-2026-10-20.md for owner confirm;
+  //                 revert is deleting this one line.)
+  // byou -> lei REMOVED 2026-10-21 (owner: "Lei wulong is not byou, he is Rave/Kiko tanaka, that's
+  // been clarified"). Byou keeps its own moveset's bank until the owner names Byou's base.
+  // zen -> julia kept as the anim-bank lane set it; CANON.md appendix lists Julia -> NIGHTWOLF /
+  // soul ZEN as an unresolved three-way conflict while roster-full.js says Zen = Heihachi —
+  // put to the owner, not decided here.
+  const FIGHTER_BANK = {
+    awapop: 'nina', torch: 'anna', kingtyrant: 'eddy', kai: 'eddy',
+    tou: 'paul', gyou: 'hwoarang', zen: 'julia', rave: 'lei',
+    yukihyo: 'armorking', nightwolf: 'julia',
+  };
+  if (Object.prototype.hasOwnProperty.call(FIGHTER_BANK, charId)) return FIGHTER_BANK[charId];
   let src = null;
   try {
     const info = getMovesetInfo(movesetId || charId);
@@ -515,7 +558,17 @@ export class Fighter {
   _moveRowAction(move) {
     if (!this._t3 || !move) return null;
     let row = move.t3row;
-    let ok = row != null && !(move.t3source && SOURCE_TO_BANK[move.t3source] !== this._t3.bank);
+    let ok = false;
+    if (row != null) {
+      const srcBank = move.t3source ? SOURCE_TO_BANK[move.t3source] : this._t3.bank;
+      // king/armorking family (anim-bank wiring lane, 2026-10-20): the
+      // 'armorking' bank is the SAME divmot03_king motion stream baked on
+      // King's own rig (PR #405), and its rows.pack carries the king-row
+      // clips — so king-sourced move rows are native to the armorking bank,
+      // not foreign clips. Every other source/bank mismatch still blocks.
+      const kingFamily = srcBank === 'king' && this._t3.bank === 'armorking';
+      ok = srcBank === this._t3.bank || kingFamily;
+    }
     if (!ok && move.animRow != null && (SOURCE_TO_BANK[move.animBank] || move.animBank) === this._t3.bank) {
       row = move.animRow; ok = true; // T7/T8 move: its base character's decoded T3 row (anim_t3)
     }

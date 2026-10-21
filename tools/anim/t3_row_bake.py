@@ -27,19 +27,31 @@ sys.path.insert(0, str(REPO / "lab/tools"))
 import t3_motion_bake as TB  # noqa: E402  (sets up the decoder import paths)
 
 SRC2BANK = {"king": "king", "demonio": "jin", "jin": "jin", "bryan": "bryan", "xiaoyu": "xiaoyu",
-            "yoshimitsu": "yoshimitsu", "gunjack": "gunjack", "bosconovitch": "bosconovitch",
+            "yoshimitsu": "yoshimitsu", "gunjack": "gunjack",
             "deviljin": "jin", "heihachi": "heihachi",
-            # 2026-10-21: the banks PR #405 added (game/assets/anim/t3/<bank>/, rig
-            # lab/game/assets/t3_<bank>_t3real.glb) bake their move rows too
-            "paul": "paul", "lei": "lei", "nina": "nina", "hwoarang": "hwoarang", "eddy": "eddy",
-            "julia": "julia", "anna": "anna"}
+            # Remainder banks (2026-10-20, anim-bank wiring lane): every
+            # source maps to its OWN bank; bosconovitch -> bosconovitch
+            # retires the gunjack stand-in above (runtime SOURCE_TO_BANK
+            # made the same fix in PR #405).
+            "paul": "paul", "lei": "lei", "nina": "nina", "hwoarang": "hwoarang",
+            "eddy": "eddy", "julia": "julia", "anna": "anna",
+            "bosconovitch": "bosconovitch", "armorking": "armorking"}
 BANK_DIR = {"king": "king_on_pantera_leoman", "jin": "jin", "xiaoyu": "xiaoyu", "bryan": "bryan",
-            "gunjack": "gunjack", "yoshimitsu": "yoshimitsu", "heihachi": "heihachi_on_jin"}
+            "gunjack": "gunjack", "yoshimitsu": "yoshimitsu", "heihachi": "heihachi_on_jin",
+            "paul": "paul", "lei": "lei", "nina": "nina", "hwoarang": "hwoarang",
+            "eddy": "eddy", "julia": "julia", "anna": "anna",
+            "bosconovitch": "bosconovitch", "armorking": "armorking"}
 TARGET_GLB = {"king": "lab/game/assets/pantera_leoman.glb", "jin": "lab/game/assets/t3_jin.glb",
               "xiaoyu": "lab/game/assets/t3_xiaoyu.glb", "bryan": "lab/game/assets/t3_bryan.glb",
-              "gunjack": "lab/game/assets/t3_gunjack.glb", "yoshimitsu": "lab/game/assets/t3_yoshimitsu.glb"}
-# Remainder banks: their runtime skeleton.json comes from lab/game/assets/t3_<bank>_t3real.glb, so the
-# rows retarget onto that same identity-rest rig. Body (KMD + slot-0 frame-75 stance) = the character's
+              "gunjack": "lab/game/assets/t3_gunjack.glb", "yoshimitsu": "lab/game/assets/t3_yoshimitsu.glb",
+              "paul": "lab/game/assets/t3_paul.glb", "lei": "lab/game/assets/t3_lei.glb",
+              "nina": "lab/game/assets/t3_nina.glb", "hwoarang": "lab/game/assets/t3_hwoarang.glb",
+              "eddy": "lab/game/assets/t3_eddy.glb", "julia": "lab/game/assets/t3_julia.glb",
+              "anna": "lab/game/assets/t3_anna.glb", "bosconovitch": "lab/game/assets/t3_bosconovitch.glb",
+              "armorking": "lab/game/assets/t3_armorking.glb"}
+# Optional override (2026-10-21): when the SHA-verified bodies from tools/anim/t3_extract_bodies.py are present
+# locally, bake onto lab/game/assets/t3_<bank>_t3real.glb — the rig each bank's runtime skeleton.json was built
+# from. Same 18-joint hierarchy as the plain t3_<bank>.glb rigs above (checked), so either rig's rows retarget alike. Body (KMD + slot-0 frame-75 stance) = the character's
 # OWN disc body paired with its own motion bank by tools/anim/t3_extract_bodies.py (BODY-EXTRACTION.json,
 # SHA-256 against the original BNS index). Run that tool first; its outputs are local (public repo).
 REMAINDER = ["paul", "lei", "nina", "hwoarang", "eddy", "julia", "anna", "bosconovitch"]

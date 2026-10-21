@@ -2,6 +2,8 @@
 
 Owner order 2026-10-19 ~20:07-20:08 CDT: "Ryuji Yamazaki version… black shirt, blonde top hair. Version based on The Rock (Dwayne Johnson) mixed with Ryuji Yamazaki — obnoxious like Ryuji, sticks his tongue out, personality mixed with The Rock."
 
+**NAME LOCKED (owner 2026-10-21): CORNERSTONE.** This fighter's Western Heart name is **CornerStone** — see CANON.md ("CORNERSTONE — The Obnoxious One (Bonus)") and RENAME-MAP.md (CORNERSTONE section). The "Ryuji / RYUJI ROCK" wording in the rest of this document is the pre-rename record and stays as history. Internal id / moveset key / model key remain `ryuji-rock` so every loader reference stays valid.
+
 ## MODEL STATUS: PENDING — no model pulled yet
 
 Model hunt (2026-10-19, lane ryuji-rock):
