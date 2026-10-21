@@ -90,6 +90,30 @@ export const ATTIRE_VARIANTS = {
     { model: 'kinpo', label: 'BASE' },
     { model: 'kinpo-t8', label: 'T8' },
   ],
+  /* DIABLO's ladder (fighter-completeness audit 2026-10-21): Attire 2
+     "Devil God" was wired as a MODEL_URLS key + GLB (PR #419) but had no
+     variant list, so the picker only ever offered Attire 1. Labels from
+     roster/diablo/ATTIRE-SLOTS.md. First entry stays the current default. */
+  'diablo': [
+    { model: 'diablo', label: 'ATTIRE 1 · FANTASY DEMON' },
+    { model: 'diablo-attire2', label: 'ATTIRE 2 · DEVIL GOD' },
+  ],
+  /* KRONOS's ladder (fighter-completeness audit 2026-10-21): Attires 2
+     "Timberwolf" and 3 "TimberWolf Fully Suited" keys + GLBs existed
+     (roster/kronos/ATTIRE-SLOTS.md marks them wired) but no variant list
+     reached them. First entry stays the current default. */
+  'kronos': [
+    { model: 'kronos', label: 'ATTIRE 1' },
+    { model: 'kronos-attire2', label: 'ATTIRE 2 · TIMBERWOLF' },
+    { model: 'kronos-attire3', label: 'ATTIRE 3 · TIMBERWOLF FULLY SUITED' },
+  ],
+  /* AWA POP's ladder (fighter-completeness audit 2026-10-21): Attire 2's
+     GLB sat in roster/awa-pop/attires/attire2/ with no MODEL_URLS key and
+     no variant list. Key added in assets.js. First entry = current default. */
+  'awa-pop': [
+    { model: 'awa-pop', label: 'ATTIRE 1' },
+    { model: 'awa-pop-attire2', label: 'ATTIRE 2' },
+  ],
   'pantera': [
     { model: 'pantera', label: 'ATTIRE 1' },
     { model: 'pantera-leoman', label: 'ATTIRE 2 · LEO MAN' },
