@@ -75,6 +75,7 @@ Legend: ✅ WIRED (in `game/assets/models/` or a roster attire slot) · 📦 HAV
 | `roster/kronos/attires/attire3/model.glb` | KRONOS | A3 TimberWolf Fully suited | Tripo (21.5MB) — Wolverine claws both hands; middle claw each hand short + rounded |
 | `roster/diablo/attires/attire1/model.glb` | DIABLO | A1 DEFAULT | Tripo "fantasy demon" (22.8MB) — oni Heihachi: long silver wing-hair, two short horns, tattooed chest/arms, purple dragon hakama |
 | `roster/diablo/attires/attire2/model.glb` | DIABLO | A2 Devil God | Tripo (22.5MB) — Hagoromo drapery + Raijin Taiko Drum Ring |
+| `roster/vainabel/attires/attire3/model.glb` | VAIN ABEL | A3 · Masked Demon of the Purple Haze | Tripo "masked fighter" (19.6MB) |
 
 ---
 
