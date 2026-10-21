@@ -22,6 +22,10 @@ export const ATTIRE_VARIANTS = {
     { model: 'demonio-human', label: 'HUMAN' },
     { model: 'demonio-bloodline-ember', label: 'BLOODLINE EMBER' },
   ],
+  'deathfang': [
+    { model: 'deathfang', label: 'ATTIRE 1 · CHAINED PRISONER' },
+    { model: 'deathfang-werewolf', label: 'ATTIRE 2 · WEREWOLF' },
+  ],
   /* DOC FRANK's ladder — keyed by fighter id ('docfrank'), same pattern as
      Kevin's ladder below: attiresFor() looks up fighter.model, then
      fighter.id — and the main entry's model is 'doc-frank-machine-shop',
@@ -114,9 +118,17 @@ export const ATTIRE_VARIANTS = {
     { model: 'awa-pop', label: 'ATTIRE 1' },
     { model: 'awa-pop-attire2', label: 'ATTIRE 2' },
   ],
+  // Pantera slot order (owner 2026-10-20 swap: Leopard King A6 -> A4,
+  // T7 P2 A4 -> A6). A1 = 'pantera' (T7King reskin, default, in
+  // game/assets). ATTIRE 2 = Leo man (restored to
+  // roster/pantera/attires/leomon/model.glb, 'pantera-leoman' key).
   'pantera': [
     { model: 'pantera', label: 'ATTIRE 1' },
     { model: 'pantera-leoman', label: 'ATTIRE 2 · LEO MAN' },
+    { model: 'pantera-snow-leopard', label: 'ATTIRE 3 · SNOW LEOPARD' },
+    { model: 'pantera-leopard-king', label: 'ATTIRE 4 · LEOPARD KING' },
+    { model: 'pantera-crimson-rage', label: 'ATTIRE 5 · CRIMSON RAGE' },
+    { model: 'pantera-p2', label: 'ATTIRE 6 · T7 P2' },
   ],
   /* ZUI's ladder (model-key audit follow-up, 2026-10-21): A1 = Drunken Monk
      Tripo (DEFAULT), A2 = Rework v2 Tripo; the steve-fox canon base and the

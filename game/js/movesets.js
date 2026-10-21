@@ -55,6 +55,8 @@ export const MOVESET_IDS = [
   'charger',
   // DEATHFANG (owner 2026-10-19): proprietary, Iori-based — full Iori kit in deathfang.json.
   'deathfang',
+  // DEATHFANG werewolf form (owner 2026-10-20): full kit + beast mix-ins, Iori stance kept.
+  'deathfang-werewolf',
   // Custom fighters (owner 2026-10-19): KRONOS — Zangief base + Golem (Urban Reign) mix.
   'kronos',
   // Fighter-completeness audit (2026-10-21, docs/FIGHTER-COMPLETENESS-AUDIT-2026-10-21.md):
