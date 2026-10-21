@@ -179,3 +179,229 @@ What transfers from this lane's work:
 - **The FK→IK requirement transfers**: Def Jam clips fed into WH's T3
   banks will hit the same IK wall; the AKI FK work, once done for No
   Mercy, is the first thing to test against the WRES sets.
+
+---
+
+# W3b addendum (2026-10-21) — the FK hunt invalidated the input data itself
+
+Workstream W3b (continuation of W3): recover the AKI FK composition from
+the No Mercy ROM player code with Ghidra, build AKI FK → T3 IK targets,
+re-bake all 11 clips through the same gate.
+
+**Verdict: the FK composition was NOT recovered — the animation player
+function was not located in the segments analyzed. No rows were written,
+no `t3_row` wiring was added, and the gate was NOT re-run.** But the hunt
+produced two proven findings that change the state of everything above:
+**the clips W3 converted were not the Rock moves at all, and the record
+field layout the whole pipeline assumes is wrong.** W3's gate numbers
+were measured on chimeric data from the wrong files with a truncated
+rotation channel; they do not measure the true clips, in either
+direction. Details and evidence below — this section follows the task's
+step-5 rule: evidence, no guessed IK mappings, no gate loosening, no
+broken rows shipped.
+
+## Finding 1 — the extraction window is wrong (proven from the game's own code)
+
+ROM used: `WWF No Mercy (USA) (Rev A)`, from this repo's GitHub release
+`no-mercy-n64-v1`. SHA-256
+`fc561fce443010b114cc8ea41226772b7b2a2d33055be163fad91ac9c3b096cb`
+(matches the release digest), CRC32 `BACEEA13` (matches the teardown
+doc), header revision byte = 1 (Rev A / NTSC-U 1.1).
+
+Ghidra 12.1.4 headless on the `main` segment (821 functions) decompiled
+the game's own file-table code:
+
+- `FUN_80003ab0` (file-table init) loads the table from **ROM
+  `0x16C31D8`** (`FUN_8000062c(0x16c31d8, buf, 0x1300c)` — 0x1300C =
+  19459 entries × 4 bytes) and computes every file address as
+  `(entry & 0xFFFFFFFE) + 0x1BD150` → **FirstFile = `0x1BD150`**.
+- `FUN_80003bd0` (get-file-info) treats file IDs as **1-based**: valid
+  range 1..0x4C02, table index = `fid − 1`; start from `table[fid−1]`,
+  end from `table[fid]`.
+
+VPWStudio's `DefaultGameData.cs` corroborates: its
+`NoMercy_NTSC_U_11` definition uses exactly FirstFile `0x1BD150` /
+FileTable `0x16C31D8` (and a `SetupFT_FTLocation` code patch point).
+
+The repo's extractors (`extract_all_anims.py`, `anim_extract.py`, and
+everything built on the resulting `.npy` bank) instead used the
+VPWStudio **NTSC_U_10** pairing — FileTable `0x16C3238`, FirstFile
+`0x1BD1B0` — with 0-based indexing. The two "tables" are one table: the
+U10 base sits exactly 24 entries into the true table, and FirstFile
+differs by exactly 0x60. Net effect, for every clip the pipeline has
+ever read:
+
+> Repo clip "fid" = the bytes of **game file `fid + 0x19`**, starting
+> 0x60 bytes (exactly 23 joint records) into it, spliced with the head
+> of game file `fid + 0x1A`. Its length — and therefore its "frame
+> count" — is game file `fid + 0x19`'s length.
+
+The bug is silent because the shifted windows still satisfy
+`length = 4 + N×98` arithmetically (the table differences are
+identical), and the "frame counts match the moveset notes" check was
+circular: the notes were derived from the same bank. For the 11 Rock
+clips (anim IDs are the correct files — every DB label matches the
+move), the truth is:
+
+| MK id | Anim | DB label | W3 frames (wrong file) | True frames (game decode) | File W3 actually converted (+0x19) |
+|---|---|---|---|---|---|
+| MK-1240 | 0x37FA | [Front Special Grapple] Rock Bottom P1 | 49 | **70** | [Front Special Grapple] Front Russian Sweep |
+| MK-2843 | 0x3E3D | [Special Ground Head Grapple] People's Elbow P1 | 7 | **112** | [Ground Head Grapple] Mahistro Cradle |
+| MK-3473 | 0x40B3 | [Running Ground Attack] People's Elbow P1 | 16 | **39** | [Strong Flying Attack] Back Body Press |
+| MK-4353 | 0x4423 | [Taunt] Rock 01 | 62 | **17** | [Taunt] Taunt 011 |
+| MK-4347 | 0x441D | [Taunt] Rock 02 | 49 | **82** | [Taunt] Edge & Christian |
+| MK-4354 | 0x4424 | [Taunt] Rock 03 | 55 | **24** | [Taunt] Taunt 019 |
+| MK-4233 | 0x43AB | [Entry Way Taunt] Rock | 34 | **102** | [Entry Way Taunt] Taka |
+| MK-4269 | 0x43CF | [In The Ring Taunt] Rock | 35 | **103** | [In The Ring Taunt] Taunt 011 |
+| MK-1885 | 0x3A7F | [Special Irish Whip Grapple] Rock Spinebuster P1 | 16 | **13** | [Special Irish Whip Grapple] Crippler Crossface |
+| MK-3120 | 0x3F52 | [Ground Attack Sitting Up] Rock Stomp | 16 | **20** | [Ground Attack Sitting Down] Stomp 02 |
+| MK-3659 | 0x416D | [Front Running Grapple] Rock Spinning DDT P1 | 28 | **28** | [Back Running Grapple] Half Nelson Suplex P1 |
+
+Every true file decodes clean: `length = 4 + 98 × frames`, remainder 0.
+The 4-byte Toki2 header's last byte independently gives
+`frames = b3/2 + 1` on the checked files (stance 0x2DD9: header
+`07ff001e` → 16 ✓; Rock Bottom 0x37FA: header `04aa008b` → 70 ✓).
+
+**Blast radius:** the `.npy` bank and the v1/v2/v3 pose artifacts
+(`aki-rock-v3/*.json`) are shifted the same way for *every* clip, not
+just Rock's. The v2 "proven" clip (0x339A) and its channel correlations
+were measured on game file 0x33B3's splice. Anything downstream of the
+bank needs re-extraction with the game-exact recipe:
+
+```
+table  = u32be[19459] at ROM 0x16C31D8
+file(fid) = ROM[ 0x1BD150 + (table[fid-1] & ~1) : 0x1BD150 + (table[fid] & ~1) ]   # fid is 1-based
+```
+
+## Finding 2 — the PivotRotation record is 12/10/10, not 12/8/12
+
+W3 (following VPWStudio's `AkiAnimation.cs` nibble layout and the repo's
+FORMAT.md) decoded each 4-byte record as PivotX s12 / **Rotation s8** /
+PivotZ s12. On the game-indexed decode of the stance clip (0x2DD9, 16
+frames — a near-static pose, the perfect control), that split makes
+PivotZ cycle through exactly {−1542, −518, +506, +1530} — values spaced
+1024 apart, i.e. two stray high bits, not motion.
+
+Re-splitting the same words as **[PivotX s12][Rotation u10][PivotZ
+s10]** (12+10+10 = 32) makes *every* channel smooth on the control clip:
+
+- Rotation (1024 = full turn): mean per-frame delta 0.1–3.7 units across
+  all 19 PR joints. Pelvis rotation arcs 43→48→42 (breathing sway);
+  OverallMovement's rotation channel arcs 176→168→178 (the root bob).
+- PivotX is constant per joint in stance (sd 0.0 for Pelvis); PivotZ's
+  low 10 bits are smooth (sd 0.0–19.5).
+- On Rock Bottom (0x37FA, 70f), rotation unwrapped mod 1024 gives mean
+  deltas 7.5–24.7 units/frame (2.6°–8.7°/frame) on all joints — real
+  action speeds, versus the 74–109°/frame garbage the gate measured.
+
+So the "s8 rotation" every converter since v1 has used is the middle 8
+bits of a 10-bit rotation; its top 2 bits were being read as PivotZ's
+high bits. W3's mod-256 unwrap fixed a symptom of this truncation.
+VPWStudio's editor documents only the storage nibbles and contains no
+playback/composition code, so its 3/2/3 split was never validated
+against the player — ours now has been, by the control clip.
+
+What is still **not** known (do not guess): the geometric meaning of
+PivotX (s12) and PivotZ (s10), the role of the 3-byte Movement records,
+and the joint hierarchy composition. Those live in the player code
+(finding 3). LeftHand/LeftFingers tracks are near-identical in the true
+decode (possibly genuine AKI duplication; unconfirmed).
+
+## Finding 3 — player search: what was covered, what each lead actually was
+
+Segments (per the in-repo recomp `nomercy.yaml`): `main` fully
+Ghidra-analyzed (821 functions); `ovl_e` fully analyzed (870
+functions); `ovl_b` imported and analyzed; `ovl_a`, `ovl_c`, `ovl_d`
+capstone-scanned only. Signatures hunted and resolved:
+
+- Immediate `0x62` (frame stride 98): all ovl_e hits are state/sound
+  IDs (0x62 = 99) and state-machine compares — not frame indexing.
+- `andi 0x3ff` clusters: ovl_b @0x8011178c and ovl_e @0x800da420 /
+  0x800db5a0 are **GBI display-list builders** — GBI packs 10-bit
+  screen coordinates with the same masks, so this signature is
+  poisoned and cannot isolate the player.
+- `sra 22` cluster in main @0x800184cc: byte-index arithmetic inside
+  the CAW appearance helpers (`FUN_8001858c`…`FUN_800188fc`); their
+  caller `FUN_80018a3c` is the CAW appearance-record builder, not the
+  player.
+- `srl 10` + `andi 0x3ff` pair in main: `FUN_800135d0`, an unrelated
+  sign-magnitude stream decoder (float output + delta accumulators).
+- `FUN_8000c1a8` (main): the **AkiModel vertex decoder** (8-byte
+  vertices, (s8 + nibble offset) × scale) — model side, not animation.
+- Caller-tracing from `FUN_80003bd0` (get-file-info) is too noisy: it
+  is called from every segment for every file type.
+
+**Where it stalls:** the player/unpacker was not found in main, ovl_b,
+or ovl_e. The two large match overlays `ovl_c` and `ovl_d` were not
+Ghidra-imported this run (box RAM was saturated by other lanes; Ghidra
+jobs were kept serialized and small), and the player may consume a
+pre-unpacked frame struct — in which case its signature is float math
+on shorts, and the *unpacker* (whoever reads 0x62-stride Toki2 frames
+for AkiAnimation file IDs) is the tractable target. What would crack
+it, in order: (1) Ghidra-import ovl_c and ovl_d, find callers of
+get-file-info that handle AkiAnimation IDs and read 98-byte strides;
+(2) failing static recovery, run the ROM in an emulator with a
+watchpoint on the stance file's RAM copy and trace the consumer;
+(3) the player decompile then answers X/Z semantics, Movement-record
+role, and hierarchy in one read.
+
+## What this does and does not change
+
+- **Invalidated:** W3's per-clip gate numbers, the "frame counts match"
+  check, the v3 pose artifacts as representations of the named moves,
+  and the `.npy` bank as a whole. The gate's verdict on the *true*
+  clips is unknown today and must not be pre-judged either way — the
+  corrected rotation channel alone removes the truncation that made
+  even correct-file data whip.
+- **Not invalidated:** the T3-side mechanism (pose.py: IK slots are
+  overwritten from IK target channels — measured on the real USA
+  tables), the gate calibration (the king pack's 176 real rows), the
+  bake pipeline shape in `aki_row_bake.py`, and the FK→IK requirement
+  itself.
+- **Bank state:** untouched by W3b (no bake was run). `ryuji-rock.json`
+  unchanged by W3b; its `aki_bake` records describe W3's run on the
+  wrong files and should be refreshed by the follow-up lane, not
+  edited on speculation here.
+
+## Corrected next-step sequence (follow-up lane)
+
+1. Fix the extractors to the game-exact window (FT `0x16C31D8`, First
+   `0x1BD150`, 1-based) and re-extract the bank; spot-verify against
+   DB labels + the `b3/2 + 1` frame rule.
+2. Re-decode with the 12/10/10 record split; re-run the v3-style
+   conversion and the **same** gate on the true 11 clips.
+3. Recover the player from ovl_c/ovl_d (static) or by emulator
+   watchpoint (dynamic); build AKI FK → wrist/ankle trajectories →
+   T3 IK target channels (YANM v2 pattern) in `aki_row_bake.py`.
+4. Only gate-passing clips write rows + `t3_row` pointers, as scoped
+   in W3.
+
+## Harness proof — PENDING (two blockers)
+
+1. No clip has passed the gate on valid input: the FK composition is
+   unrecovered and W3's input data is invalidated above, so no honest
+   frame of CornerStone performing a No Mercy Rock move can exist yet.
+2. RAM: during this run the box carried other lanes' Blender and
+   Ghidra jobs with ~1.4–3.2 GB of 7.7 GB available; per the RAM law
+   this lane started no Blender job and kept Ghidra serialized.
+
+## Def Jam transfer notes (W3b update)
+
+- The FK→IK requirement applies identically to Def Jam AKI-lineage
+  clips (WRES_ALL), as W3 stated. This lane's conversion work is
+  **not** bank-agnostic: the decode constants proven here (file-table
+  window, 1-based IDs, 12/10/10 record split) are **No Mercy ROM
+  facts**, recovered from No Mercy's own code and data.
+- Finding 1 carries a general warning for the PS2 bank: an extraction
+  window can be wrong in a way that still produces clean lengths and
+  plausible frame counts. Any WRES_ALL extraction must be validated
+  against Def Jam's own file-table/code path *before* conversion —
+  not after a gate failure.
+- Finding 2 does **not** transfer as fact: whether WRES_ALL motion
+  records share the 12/10/10 split is unverified (W3's caveat stands).
+  A PS2 variant needs its own control-clip test (a near-static clip
+  whose channels must all go smooth under the correct split) and,
+  ideally, its own player-code recovery — the PS2 binary is a
+  different RE target (EE MIPS, .VIV container) even though the
+  pipeline shape (gate + YANM overlay) carries over unchanged.
+
