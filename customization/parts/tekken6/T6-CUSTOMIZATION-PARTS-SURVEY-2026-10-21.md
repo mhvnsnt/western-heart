@@ -68,14 +68,17 @@ W7a first-hand check on the SHA-verified bulk: this lane scanned the
 entry-87 archive (2,760 `GZIP` magic hits — the 2,546 real containers
 plus mid-stream false positives) and ran the existing decoder
 (`teardown/tekken6/tools/tekken6_gzip.py` from PR #388, unmodified) on
-the first 40 plausible embedded containers (20-byte header, sane
-uncompressed size, zlib stream start): **0/40 byte-exact.** Failures
-are the signature defect — `dist > out_len` at an early match (the
-EBOOT would raise the identical error) — plus 1 invalid-Huffman false
-positive. An extended 300-container sample was still running on the
-shared box when this survey shipped; the 40/40 failure pattern, on top
-of rounds 2–3's population evidence, is not in doubt. Full method in
-the appendix.
+the first 300 plausible embedded containers (20-byte header, sane
+uncompressed size, zlib stream start): **6/300 byte-exact — and none of
+the six is a mesh.** The six payloads (336–3,200 B) are small u32
+offset/index tables (leading count 13 or 6, then offset pairs) —
+infrastructure data. 20 more containers decoded without an exception
+but failed the size/adler oracle; 255 failed with the signature
+`dist > out_len` defect; 23 were invalid-Huffman false positives; 2
+blew the output cap (false positives). So the decodable class in this
+archive is small structured data; **every mesh-bearing container in the
+sample sits in the blocked dynamic-block population.** Full method and
+numbers in the appendix.
 
 ## 3. The decode wall — one defect, emulator-proven
 
@@ -283,13 +286,24 @@ the store and verified):
    `tekken6_gzip.decompress()` (the PR #388 decoder, unmodified) and
    scored byte-exactness by the EBOOT's own oracle (output size +
    adler32 trailer immediately after the stream).
-5. Result, first 40 plausible containers: **0 byte-exact.** Failure
-   modes: 39 × distance-exceeds-output (`dist N > out_len M`, first
-   failure at out_len 128–2,773 across the sample) and 1 × invalid
-   Huffman code (a mid-stream magic false positive). Sample usize
-   range: 11,184–101,952 B — plausible per-item payload sizes.
+5. Result, first 300 plausible containers: **6 byte-exact, 0 meshes.**
+   - 6 byte-exact: archive offsets 3,074,288 (3,200 B), 3,278,880
+     (336 B), 4,135,776 (416 B), 5,939,552 (1,088 B), 6,267,584
+     (416 B), 6,294,256 (1,088 B). Every payload is a u32 table:
+     leading count (13 or 6) followed by offset/size pairs
+     (e.g. `0d000000 70000000 70020000 e0020000 …`). No GMO magic
+     (`OMG.00.1PSP`), no NDPP, no float geometry — these are
+     sub-archive index/infrastructure tables, and the two 416 B and
+     two 1,088 B payloads are pairwise identical duplicates.
+   - 20 decoded without exception but failed size/adler (the
+     round-3 lenient-parse class).
+   - 255 failed `dist > out_len` (the signature defect; first failure
+     at out_len 128–2,773 across the earlier 40-sample detail run).
+   - 23 invalid Huffman code + 2 output-cap — magic false positives.
+   Sample usize range (first-40 detail): 11,184–101,952 B.
 
 This confirms first-hand, on this lane, what rounds 2–3 inferred: the
-embedded item containers are the blocked dynamic-block population. No
-new format code was written for this test; the framing used is the
-decoder's own documented container layout.
+embedded item containers are the blocked dynamic-block population, and
+the small fixed-block class that does decode carries tables, not
+geometry. No new format code was written for this test; the framing
+used is the decoder's own documented container layout.
