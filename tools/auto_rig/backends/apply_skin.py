@@ -365,6 +365,11 @@ def main():
             else:
                 arr = nrm_r.astype('<f4')
             acc_map[ai] = b.add_acc(arr, ct, 'VEC3')
+            if ct in (5120, 5121, 5122, 5123):
+                # integer normals are only valid glTF with normalized=true
+                # (Blender's importer asserts on it); the repack preserved
+                # the flag, so the rewrite must too.
+                b.accs[acc_map[ai]]['normalized'] = True
         else:
             acc_map[ai] = b.add_acc(acc_array(tjs, tbdat, ai),
                                     a['componentType'], a['type'])
