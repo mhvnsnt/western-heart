@@ -73,8 +73,11 @@ One file per attire. Next to it: `base_glb` (input, never overwritten) and
 1. **Morphs** — existing `MPFB_<id>` shape keys are driven to the saved values;
    absent keys are transferred + baked with the height-normalized KD-tree
    transfer from `customization/body-morphs/MANIFEST.json` targets (the
-   `mpfb_wire_cj.py` method). The mix is baked into the Basis: the exported GLB
-   carries deformed geometry, no live keys.
+   `mpfb_wire_cj.py` method). MANIFEST target names are MPFB *logical* names:
+   on disk each `…-decr-incr` / `-down-up` / `-in-out` name is a paired file
+   set, often split `l-`/`r-` — the bake resolves logical → disk files and
+   picks the side matching the value's sign. The mix is baked into the Basis:
+   the exported GLB carries deformed geometry, no live keys.
 2. **Textures** — target resolution order: explicit `material`/`texture` →
    `PARTS-REGISTRY character_mappings[fighter][kind]` → registry part
    `placement` → `customization/parts/<fighter>-eyes/MANIFEST.json`

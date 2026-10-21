@@ -221,29 +221,56 @@ def bake(cfg_path, repo_root, mpfb_src, log=print):
                 bcx, bcy = (bmin.x + bmax.x) / 2, (bmin.y + bmax.y) / 2
                 # per-morph MPFB-space delta per base vert (signed decr-incr semantics;
                 # {min,max} macro picks the side file, scaled by |value|)
+                # MANIFEST rels are MPFB *logical* names; on disk a logical
+                # "x-decr-incr" is a -decr/-incr file pair, often split l-/r-
+                # (arms/upperarm-muscle -> arms/l-upperarm-muscle-incr + r-...).
+                PAIRS = [('-decr-incr', ('decr', 'incr')), ('-down-up', ('down', 'up')),
+                         ('-in-out', ('in', 'out'))]
+                def resolve_target(rel, val):
+                    """-> [(rel_path, signed_weight)] for one MANIFEST target."""
+                    def exists(r):
+                        return (os.path.exists(os.path.join(targets_dir, r + '.target.gz')) or
+                                os.path.exists(os.path.join(targets_dir, r + '.target')))
+                    if '{min,max}' in rel:
+                        r = rel.replace('{min,max}', 'max' if val >= 0 else 'min')
+                        return [(r, abs(val))] if exists(r) else []
+                    for suf, (lo, hi) in PAIRS:
+                        if rel.endswith(suf):
+                            stem = rel[:-len(suf)]
+                            group, _, name = stem.rpartition('/')
+                            pick = hi if val >= 0 else lo
+                            cands = [f'{stem}-{pick}', f'{group}/l-{name}-{pick}',
+                                     f'{group}/r-{name}-{pick}']
+                            return [(c, abs(val)) for c in cands if exists(c)]
+                    return [(rel, val)] if exists(rel) else []
+                def load_target_file(r):
+                    path = os.path.join(targets_dir, r + '.target.gz')
+                    if not os.path.exists(path):
+                        path = os.path.join(targets_dir, r + '.target')
+                    opener = gzip.open if path.endswith('.gz') else open
+                    deltas = {}
+                    with opener(path, 'rt') as fh:
+                        for line in fh:
+                            parts = line.split()
+                            if len(parts) < 4 or line.lstrip().startswith('#'):
+                                continue
+                            i = int(parts[0])
+                            # MPFB (x, y-up, z) -> Blender frame (x, z, y-up)
+                            deltas[i] = Vector((float(parts[1]), float(parts[3]), float(parts[2])))
+                    return deltas
                 morph_deltas = {}
                 for mid in need_transfer:
                     val = morphs[mid]
                     acc = {}
                     rels = suite_targets[mid]
                     for rel in rels:
-                        r = rel.replace('{min,max}', 'max' if val >= 0 else 'min')
-                        path = os.path.join(targets_dir, r + '.target.gz')
-                        if not os.path.exists(path):
-                            path = os.path.join(targets_dir, r + '.target')
-                        if not os.path.exists(path):
-                            fail('morphs', f'MPFB target missing: {r}')
+                        files = resolve_target(rel, val)
+                        if not files:
+                            fail('morphs', f'MPFB target missing on disk: {rel}')
                             continue
-                        opener = gzip.open if path.endswith('.gz') else open
-                        with opener(path, 'rt') as fh:
-                            for line in fh:
-                                parts = line.split()
-                                if len(parts) < 4 or line.lstrip().startswith('#'):
-                                    continue
-                                i = int(parts[0])
-                                d = Vector((float(parts[1]), float(parts[3]), float(parts[2])))  # (x, z, y)
-                                s = (abs(val) if '{min,max}' in rel else val) / len(rels)
-                                acc[i] = acc.get(i, Vector((0, 0, 0))) + d * s
+                        for r, w in files:
+                            for i, d in load_target_file(r).items():
+                                acc[i] = acc.get(i, Vector((0, 0, 0))) + d * (w / len(rels))
                     morph_deltas[mid] = acc
                 # normalized KD transfer, per mesh, in world space
                 bpy.context.view_layer.update()
@@ -287,7 +314,11 @@ def bake(cfg_path, repo_root, mpfb_src, log=print):
                                 sk.data[vi].co = basis.data[vi].co + dl
                     transferred[o.name] = list(new_keys)
                 log(f'CSBAKE morphs transferred+baked keys: {transferred}')
-        # drive every MPFB_<id> key to its saved value, then bake the mix into Basis
+        # Drive every MPFB_<id> key to its saved value, then bake the evaluated
+        # mix into a new Basis. (Writing Basis key data directly does NOT move
+        # the evaluated mesh — verified empirically; the from_mix promotion is
+        # the reliable path: add a from-mix key, remove the morph keys, then
+        # remove the old Basis so the mix key is promoted to Basis.)
         baked = []
         for o in meshes:
             mesh = o.data
@@ -298,27 +329,17 @@ def bake(cfg_path, repo_root, mpfb_src, log=print):
             if not active:
                 continue
             for mid in active:
-                kb['MPFB_' + mid].value = 0.0 if mid in (transferred.get(o.name) or []) else morphs[mid]
-            # new-coord = basis + sum(value * (key - basis)); transferred keys are
-            # pre-scaled, so their effective value is 1.0 with the key itself set 0
-            # -> fold them in explicitly:
-            import numpy as np
-            n = len(mesh.vertices)
-            base_co = np.empty(n * 3, dtype=np.float64)
-            kb['Basis'].data.foreach_get('co', base_co)
-            mix = base_co.copy()
-            for mid in active:
-                key = kb['MPFB_' + mid]
-                eff = 1.0 if mid in (transferred.get(o.name) or []) else morphs[mid]
-                if eff == 0.0:
-                    continue
-                kc = np.empty(n * 3, dtype=np.float64)
-                key.data.foreach_get('co', kc)
-                mix += eff * (kc - base_co)
-            kb['Basis'].data.foreach_set('co', mix)
-            mesh.update()
-            for mid in active:
-                mesh.shape_keys.key_blocks.remove(kb['MPFB_' + mid])
+                # transferred keys carry deltas pre-scaled by the saved value
+                kb['MPFB_' + mid].value = 1.0 if mid in (transferred.get(o.name) or []) else morphs[mid]
+            mix_key = o.shape_key_add(name='CSBAKE_MIX', from_mix=True)
+            for name in [k.name for k in mesh.shape_keys.key_blocks
+                         if k.name not in ('Basis', 'CSBAKE_MIX')]:
+                o.shape_key_remove(mesh.shape_keys.key_blocks[name])
+            o.shape_key_remove(mesh.shape_keys.key_blocks['Basis'])
+            try:
+                mix_key.name = 'Basis'
+            except Exception:
+                pass
             baked.append((o.name, active))
         log(f'CSBAKE morphs baked into Basis: {baked}')
 
@@ -348,16 +369,14 @@ def bake(cfg_path, repo_root, mpfb_src, log=print):
         if part:
             placement.update(part.get('placement') or {})
         kind = entry.get('kind')
+        # Character-specific mappings OVERRIDE the part's default placement
+        # (mirrors parts.js resolveEntry: character_mappings win).
         cmap = char_maps.get(fighter, {})
         kind_map = cmap.get(kind) or (cmap.get(kind.replace('_logo', '')) if kind else None)
         if kind_map:
             placement.update({k: v for k, v in kind_map.items() if v})
-        if entry.get('material'):
-            placement['material'] = entry['material']
-        if entry.get('texture'):
-            placement['texture'] = entry['texture']
         # baek-eyes pattern: customization/parts/<fighter>-eyes/MANIFEST.json
-        if kind == 'eye' and not placement.get('texture'):
+        if kind == 'eye':
             man = os.path.join(repo_root, 'customization', 'parts', f'{fighter}-eyes', 'MANIFEST.json')
             if os.path.exists(man):
                 try:
@@ -374,6 +393,11 @@ def bake(cfg_path, repo_root, mpfb_src, log=print):
                         placement.setdefault('mode', um.get('mode', 'full_replace'))
                 except Exception as e:
                     fail('textures', f'cannot parse {man}: {e}')
+        # Explicit entry fields win over everything.
+        if entry.get('material'):
+            placement['material'] = entry['material']
+        if entry.get('texture'):
+            placement['texture'] = entry['texture']
         mat = None
         want_mat = (placement.get('material') or '').lower()
         want_tex = (placement.get('texture') or '').lower()
