@@ -1,0 +1,73 @@
+{
+  "url": "http://127.0.0.1:8791/customization/creation-suite-ui/index.html",
+  "steps": [
+    "boot: blank fighter loaded",
+    "roster: Baek -> Master White loaded (../../roster/baek/attires/master-white/baek-master-white-rigged.glb)",
+    "morphs set: {'bulk': 0.6, 'shoulders': 0.35}",
+    "shot-controls.png: right-rail BODY morph controls close-up (bulk slider in view)",
+    "hair part equipped in viewer: mariposa-hair-original-ponytail-roses",
+    "shot-full.png: full suite, fighter full-body"
+  ],
+  "errors": [],
+  "roster": {
+    "mode": "roster",
+    "ref": {
+      "fighter": "baek",
+      "attire": "master-white"
+    },
+    "baseGlb": "roster/baek/attires/master-white/baek-master-white-rigged.glb",
+    "url": "../../roster/baek/attires/master-white/baek-master-white-rigged.glb",
+    "name": "BAEK"
+  },
+  "morphs": {
+    "bulk": 0.6,
+    "shoulders": 0.35
+  },
+  "equipped": {
+    "equipped": {
+      "2": "mariposa-hair-original-ponytail-roses"
+    },
+    "parts": [
+      "mariposa-hair-original-ponytail-roses"
+    ]
+  },
+  "record_key": "baek::master-white",
+  "record": {
+    "version": 1,
+    "app": "wh-creation-suite",
+    "fighter": "baek",
+    "attire": "master-white",
+    "base_glb": "roster/baek/attires/master-white/baek-master-white-rigged.glb",
+    "out_glb": null,
+    "body": {
+      "body_type": "Medium 1",
+      "skin_tone": "#c98d5e"
+    },
+    "morphs": {
+      "bulk": 0.6,
+      "shoulders": 0.35
+    },
+    "parts": {
+      "hair": {
+        "part_id": "mariposa-hair-original-ponytail-roses",
+        "glb": "customization/parts/mariposa-default/mariposa-hair-original-opt.glb",
+        "placement": {
+          "px": 0,
+          "py": 0,
+          "pz": 0,
+          "rx": 0,
+          "ry": 0,
+          "rz": 0,
+          "s": 1
+        }
+      }
+    },
+    "textures": [],
+    "colors": {
+      "hair": null,
+      "skin": "#c98d5e"
+    }
+  },
+  "parts_total": 1149,
+  "ok": true
+}

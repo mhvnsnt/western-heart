@@ -1,0 +1,75 @@
+# Tools index: every tool the 2026-10-20/21 Claude session used, and what it is for
+
+Owner, 2026-10-21: "Put all tools clearly labeled in the repo that u have used, all ur methods
+and work and everything shown in the repo and documents and handoffs."
+
+Every tool below is in this repo. Nothing in this session ran from a script that lives only on
+a private machine. External programs are free/open source and pinned. `tools/setup/setup_toolchain.sh`
+installs them. The method write-ups are in `docs/handoffs/CLAUDE_TO_MUSE_FIXES_2026-10-20.md`
+(why each fix and where the old pipeline went wrong) and `WORKLOG.md` (what ran, in order).
+
+## 1. Data pulls (game data in, nothing hand-typed)
+
+| tool | pulls | writes |
+|---|---|---|
+| `tools/fetch_wavu_framedata.py` | Tekken 8 frame data + move lists, wavu.wiki Cargo API (CC0). `--full` adds notes/alias/alt/reach/tracking. Restored from e03195de; the cd3bf38 wipe deleted the original | `docs/t7t8-reference/frame-data/` (Oct 14 baseline, 20 chars, untouched), `docs/t7t8-reference/frame-data-t8-full/` (all 41 T8 chars, 6,284 moves) |
+| `tools/fetch_t7chicken_framedata.py` | Tekken 7 frame data, dayhaysoos/t7chickenplus-graphql @ 91a054e8 (ISC, TekkenBot-extracted). The same dataset Muse used in 74efb3fb, whose import script never landed | `docs/t7t8-reference/frame-data-t7/` (47 chars, 11,137 rows) + `SOURCE.json` with SHA-256 per file; `--check` re-verifies |
+| `tools/anim/t3_extract_bodies.py` | each T3 character's own body (KMD) out of `TEKKEN3.BNS`, using the original BNS index (SHA-256 per record) to pair every body with its own motion bank | `teardown/tekken3/BODY-EXTRACTION.json` (provenance). The KMD/OBJ/GLB outputs are regenerated locally and not committed (public repo, owner rule 8) |
+| `tools/gen-movesets-t3.py` | T3 move lists from the decoded motion banks (`teardown/tekken3/movesets/moveset_*.json`) + the EXE common branch table | per-fighter move dicts (called by the moveset tools) |
+
+## 2. Animation (decoded T3 motion onto WH rigs)
+
+| tool | does |
+|---|---|
+| `tools/anim/t3_bank_skeleton.py` | writes each bank's source skeleton (`game/assets/anim/t3/<bank>/skeleton.json`) for the runtime retarget; `--check` proves bank clips == source GLB channels |
+| `tools/anim/t3_row_bake.py` | bakes every move row a moveset references (`rows.pack.json`) and named clips (neutral stance, crouch hold, ...) from the decoded banks |
+| `game/js/t3anims.js` `retargetT3Clips` | runtime swing retarget onto Mixamo / Biped / L_R_ / GameRig rigs (same math as `lab/tools/t3_motion_bake.py`) |
+| `game/poselab.html` | close-up pose lab: any model × bank × clip × frame, rest view, per-fighter view (`window.__poselab`) |
+| `tools/anim/repair_sleeve_weights.py` | k-NN weight transfer inside one GLB (fixed the steve-fox / demonio shirt weighted to the spine) |
+| `tools/anim/gltf_codec.mjs` | meshopt/quantization decode for Blender, re-encode after rigging (@gltf-transform 4.1.1, meshoptimizer 0.22.0) |
+
+## 3. Rigging (Tripo statics → skinned)
+
+| tool | does |
+|---|---|
+| `tools/auto_rig/backends/gamerig_backend.py` | GameRig (vendored Rigify feature set) in Blender 4.0.2. This session added exact `--facing`, the bone-heat proxy (world-unit voxel remesh + decimate + Data Transfer weights) and A-pose droop fitting |
+| `tools/model-audit/gamerig_debug.py`, `gamerig_debug_heat.py` | Blender debug runs that found the facing-estimate failure that left bone heat empty |
+
+## 4. Model audit (read-only checks behind every model claim)
+
+All in `tools/model-audit/`. Each file's header says what it measures and how to run it.
+`rigaudit.py` (skinned/unskinned per roster model → `data/skinned.json`, `data/statics.json`),
+`bindcheck.py` (node rest vs inverse bind), `armaudit.py` (arm-region verts on non-arm bones),
+`facing_cues.py`, `facing_joints.py`, `feet_cue.py`, `feet_cue_all.py`, `meshface.py` (facing cues),
+`glbinfo.py`, `check_bank_vs_glb.py`, `check_bank_vs_glb_jin.py`.
+`data/kmd_pairs.json` = BNS record → KMD → divmot bank pairing; `data/own.json` = models
+with their own files; `data/roster_ids.json` = roster ids at audit time.
+
+## 5. Proof harness (the frames and logs in docs/proof)
+
+`tools/proof-harness/*.mjs`. Playwright + Chromium (SwiftShader). Serve the repo with
+`python3 -m http.server 8765` from the root.
+`fight.mjs` (fight frames + per-fighter state), `select.mjs` (select screen), `poselab.mjs`,
+`rest.mjs`, `resturl.mjs` (rest renders = facing evidence), `dbg.mjs`, `dbg2.mjs`.
+Every image cited in a PR was opened and looked at before it was cited.
+
+## 6. Data repair
+
+| tool | does |
+|---|---|
+| `tools/moveset-restore/restore_sweep_338.py` | restored 49 movesets wiped by merge commit 8ebdc527 from its parent 4cc6b41b |
+
+## 7. Safety
+
+- `gitleaks` 8.21.2 runs before every push: `gitleaks detect --no-git --source <changed files>`
+  and `gitleaks git --log-opts=origin/main..HEAD`.
+- Deletion check before every commit: `git diff --cached --diff-filter=D --name-only` must be
+  empty unless the commit message names the deletion.
+- Files are staged by explicit path, never with `git add -A`. Tracked `__pycache__/*.pyc` files
+  that Python rewrites get restored with `git checkout`, never committed.
+
+## 8. External programs (pinned, installed by tools/setup/setup_toolchain.sh)
+
+Blender 4.0.2 · GameRig (vendored, tools/auto_rig/vendor) · @gltf-transform 4.1.1 · meshoptimizer 0.22.0 ·
+n0madic/Tekken3Remake @ e59c4da1 (T3 RE: fight_sim, pose, motion) · Playwright Chromium ·
+gitleaks 8.21.2 · numpy / scipy / pygltflib.

@@ -170,9 +170,24 @@ export const FULL_ROSTER = [
   { id: 'zangief', name: 'ZANGIEF', title: 'The Red Cyclone', base: 'Zangief', moveset: 'zangief', model: 'zangief', tintStrength: 0.25,
     colors: { suit: 0x8a1a1a, trim: 0x000000 }, style: 'Grappler', archetype: 'Power',
     surge: { name: "CYCLONE'S WRATH", color: 0xcc2222, accent: 0xff8800 } },
-  { id: 'blanka', name: 'BLANKA', title: 'The Beast', base: 'Blanka', moveset: 'blanka', model: 'blanka', tintStrength: 0.25,
-    colors: { suit: 0x2a8a2a, trim: 0xff8800 }, style: 'Beast', archetype: 'Rushdown',
-    surge: { name: 'ELECTRIC STORM', color: 0x88ccff, accent: 0xffff00 } },
+  // CHARGER (owner 2026-10-20): proprietary Blanka REPLACEMENT — "his name is
+  // charger cause of blankas attacks and movesets will be attach to him but he's
+  // got powers of ice and electricity". Blanka's roster slot is his now; his full
+  // 199-move set lives in movesets/charger.json (data identical, signature names
+  // given his ice+electric identity — see RENAME-MAP.md). Blanka's own files
+  // (roster/blanka/, movesets/blanka.json, sf-blanka.json) stay in the repo.
+  // Owner-made Tripo models: Attire 1 "ice monster", Attire 2 "green spiky creature".
+  { id: 'charger', name: 'CHARGER', title: 'The Ice Monster', base: 'Blanka', moveset: 'charger', model: 'charger', tintStrength: 0.25,
+    colors: { suit: 0x9fd8e8, trim: 0xffd23f }, style: 'Ice/Electric Beast', archetype: 'Rushdown',
+    surge: { name: 'ABSOLUTE ZERO SURGE', color: 0x66ccff, accent: 0xffff66 },
+    stats: { speed: 5.0, jump: 7.0, power: 1.2, defense: 1.05 },
+    ai: { aggression: 0.8, grabBias: 0.45, reaction: 0.55 },
+    attires: ['charger', 'charger-attire2'] },
+  { id: 'charger-attire2', name: 'CHARGER', title: 'The Wild Current', base: 'Blanka', moveset: 'charger', model: 'charger-attire2', tintStrength: 0.25,
+    colors: { suit: 0x2a8a2a, trim: 0xff3333 }, style: 'Ice/Electric Beast', archetype: 'Rushdown',
+    surge: { name: 'ABSOLUTE ZERO SURGE', color: 0x66ccff, accent: 0xffff66 },
+    stats: { speed: 5.2, jump: 7.2, power: 1.18, defense: 1.0 },
+    ai: { aggression: 0.85, grabBias: 0.45, reaction: 0.55 } },
   { id: 'vega', name: 'VEGA', title: 'The Claw', base: 'Vega', moveset: 'vega', model: 'vega', tintStrength: 0.25,
     colors: { suit: 0x8a2a6b, trim: 0xffd700 }, style: 'Claw', archetype: 'Evasive',
     surge: { name: "MATADOR'S FURY", color: 0xcc2288, accent: 0xffffff } },

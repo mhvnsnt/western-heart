@@ -51,6 +51,8 @@ export const MOVESET_IDS = [
   'burger-demon', 'burger-speed-demon', 'burger-the-mouth',
   // Sketchfab intake (owner 2026-10-19): working names, WH names pending.
   'zangief', 'blanka', 'vega', 'iori', 'armor-king',
+  // CHARGER (owner 2026-10-20): Blanka replacement — full set in charger.json.
+  'charger',
   // DEATHFANG (owner 2026-10-19): proprietary, Iori-based — full Iori kit in deathfang.json.
   'deathfang',
   // Custom fighters (owner 2026-10-19): KRONOS — Zangief base + Golem (Urban Reign) mix.

@@ -13,8 +13,11 @@ import { clone as skeletonClone } from 'three/addons/utils/SkeletonUtils.js';
 // saku-ra-main, purple-rain-main, kiko-tanaka*). Vendored locally —
 // the game ships with no CDN (see index.html importmap).
 import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.js';
+// Creation Suite Pass: generated registry of baked customization overrides
+// (customization/tools/apply_customization.py). Empty map = exact no-op.
+import { ATTIRE_CUSTOMIZATIONS } from './attire-customizations.js';
 
-const MODEL_URLS = {
+export const MODEL_URLS = {
   pantera: 'assets/models/pantera.glb',
   'steve-fox': 'assets/models/steve-fox.glb',
   // NOTE (owner canon 2026-10-19): Tekken's Jin = DEMONIO — the old `jin:` key was removed;
@@ -75,6 +78,7 @@ const MODEL_URLS = {
   // Kronos — new fighter (owner 2026-10-19, Tripo pull).
   kronos: '../roster/kronos/attires/attire1/model.glb',
   'kronos-attire2': '../roster/kronos/attires/attire2/model.glb',
+  'kronos-attire3': '../roster/kronos/attires/attire3/model.glb',
   // KORESHI (owner 2026-10-19): his own creation (Kakashi + SSJ4/5 + ninja, Tripo pull).
   koreshi: '../roster/koreshi/attires/attire1/model.glb',
   // Burger hunger-state variants (owner 2026-10-19, Tripo pulls).
@@ -143,6 +147,9 @@ const MODEL_URLS = {
   // Vega CC-BY (pierodsoto01), Iori CC-BY (0xo), Armor King CC-BY (theamazingdonovan207).
   zangief: '../roster/zangief/attires/attire1/model.glb',
   blanka: '../roster/blanka/attires/attire1/model.glb',
+  // CHARGER (owner 2026-10-20): Blanka replacement fighter — owner Tripo models.
+  charger: '../roster/charger/attires/attire1/model.glb',
+  'charger-attire2': '../roster/charger/attires/attire2/model.glb',
   vega: '../roster/vega/attires/attire1/model.glb',
   iori: '../roster/iori/attires/attire1/model.glb',
   'armor-king': '../roster/armor-king/attires/attire1/model.glb',
@@ -426,6 +433,15 @@ function remapVegaBones(fighterId, model) {
   console.log(`[WH] ${fighterId}: foreign rig remapped to T3 bone names (21 joints) + bind frame converted to canonical T3 frame`);
   return true;
 }
+
+// Creation Suite Pass: let baked customizations override base model URLs
+// before anything loads them. Guarded — any registry problem leaves
+// MODEL_URLS exactly as authored above.
+try {
+  for (const [key, url] of Object.entries(ATTIRE_CUSTOMIZATIONS || {})) {
+    if (url) MODEL_URLS[key] = url;
+  }
+} catch (e) { /* Creation Suite registry unavailable: base URLs stand. */ }
 
 /* MESH FACING (2026-10-20). The game (fighter.js lean rotation) and the T3
    retarget assume a model's mesh faces +Z. Many shipped GLBs face -Z, and
