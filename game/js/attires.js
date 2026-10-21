@@ -58,6 +58,10 @@ export const ATTIRE_VARIANTS = {
     { model: 'cain-elias', label: 'ATTIRE 1 · BIKER' },
     { model: 'cain-elias-attire2', label: 'ATTIRE 2 · FIGHT GEAR' },
   ],
+  'vainabel': [
+    { model: 'vainabel-attire2', label: 'ATTIRE 2' },
+    { model: 'vainabel-attire3', label: 'ATTIRE 3 · MASKED DEMON OF THE PURPLE HAZE' },
+  ],
   'dxmmii': [
     { model: 'dxmmii', label: 'BASE' },
     { model: 'dxmmii-a2', label: 'ATTIRE 2' },

@@ -79,6 +79,8 @@ export const MODEL_URLS = {
   // Cain Elias — Vain Abel's brother, Undertaker archetype (owner 2026-10-19, Tripo pulls).
   'cain-elias': '../roster/cain-elias/attires/attire1/model.glb',
   'cain-elias-attire2': '../roster/cain-elias/attires/attire2/model.glb',
+  // Vain Abel — Attire 2 (owner 2026-10-20, Tripo pull).
+  'vainabel-attire2': '../roster/vainabel/attires/attire2/model.glb',
   // Vain Abel — Kane archetype (owner 2026-10-20, Tripo pull). Attire 3: Masked Demon of the Purple Haze.
   'vainabel-attire3': '../roster/vainabel/attires/attire3/model.glb',
   // Burger — Demon mode, possessed by greed (owner 2026-10-19, Tripo pull).
