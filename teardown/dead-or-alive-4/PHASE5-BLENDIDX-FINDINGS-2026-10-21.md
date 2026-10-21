@@ -66,15 +66,47 @@ node 13 min-vert-dist 0.017; decl23 slot0 → node 27, 0.017; decl9/27 slot1 →
 mappings (duplicate joint positions at origin; mirrored-pair decls 16/34) —
 the discriminating proof is the pose test below, not centroid metrics.
 
-## 4. G3 standing (honest, interim)
+## 4. G3 — POSE TEST RUN, VIEWED: **PASS** (with two stated caveats)
 
-BLENDWEIGHT verified real (phase 4). Blend-index SOURCE identified with
-structural proof: **ObjInfo palette (+0x3c count, +0x90 u16 node array),
-count == weight columns for every object, zero for every non-blend object.**
-G3 is NOT yet called passed: the acceptance proof is the pose test (weights +
-palette applied to chrone pkg00, one Hie joint bent, rendered, viewed).
-Pose test: IN PROGRESS (numeric harness `tools/phase5/posetest.py` written;
-Blender render proof to follow in the next update of this doc).
+Pose test executed (`tools/phase5/posetest_build.py`): chrone pkg00's 64
+meshes rebuilt from the phase-4 segment walk; every blend decl skinned with
+its file BLENDWEIGHT columns paired to its object's ObjInfo palette slots
+(slot k → palette[k], a Hie node); one joint bent 40°; rendered in Blender
+(Cycles, `p4/render.py` camera) and VIEWED by this lane:
+
+- Bend node 14 about Z (`phase5-posetest-bend14z.png` vs
+  `phase5-posetest-bind.png`): the character's image-right arm/sleeve
+  cylinder + the gown region weighted to palette nodes {8, 12} swung up as
+  one connected region with smooth blend falloff. Head, torso, opposite
+  arm and the visible leg stayed exactly in place. Nothing exploded, no
+  scattered patches — with a wrong/permuted palette, one joint bend would
+  tear patches from all over the model.
+- Bend node 28 about Z (`phase5-posetest-bend28z.png`): the MIRROR chain
+  (28 → 22 → 18) swung the image-left arm/gown region — the exact
+  opposite side, symmetric with the node-14 result. Numeric sweep
+  (`tools/phase5/sweep.py`, all 46 nodes): displacement is always confined
+  to decls whose palettes intersect the bent node's subtree, and the
+  14/28 chains displace mirror-image decl sets (decl9/10/20 vs
+  decl27/28/38) with near-identical counts.
+- Cross-checks that predicted this: decl5 slot0 → node 13 min-vert-dist
+  0.017 (closest joint); decl23 slot0 → node 27, 0.017; displaced-vertex
+  counts under bends of nodes 11 and 13 are identical (2400/2404 verts —
+  nodes 11/13 share a bind position, a duplicate-joint pair).
+
+**G3 VERDICT: PASSED.** Weights (vertex streams) + bone indices (ObjInfo
+palette) are both real, correctly paired, and produce coherent, localized,
+symmetric deformation of the assembled character.
+
+Caveats (honest, do not over-read the pass):
+1. The test harness composes the bend as a pivot rotation about the bent
+   joint applied per palette node in its subtree — it proves palette
+   MEMBERSHIP and weight pairing. The game's full per-node matrix chain
+   (bind-pose inverse composition) is not yet replicated; that is
+   animation-pipeline work, not an index-source question.
+2. The phase-3 graph's Hie world matrices are X-MIRRORED relative to
+   vertex bind space (graph node 14's chain drives the image-right side;
+   same mirror seen in the decl16/34 pure clusters). Poses will need the
+   mirror accounted for when animation is wired.
 
 ## 5. Remaining jobs
 
