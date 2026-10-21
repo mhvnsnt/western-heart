@@ -231,7 +231,7 @@ export const FULL_ROSTER = [
   { id: 'ryuji', name: 'RYUJI', title: 'The Wicked Heretic', base: 'Ryuji Yamazaki', moveset: 'ryuji', model: 'steve-fox', tintStrength: 0.25,
     colors: { suit: 0x111111, trim: 0xd8b25a }, style: 'Hebi Tsukai / Wrestling', archetype: 'Zoner/Grappler',
     surge: { name: 'SERPENT DRILL', color: 0x224411, accent: 0xffcc00 } },
-  { id: 'ryuji-rock', name: 'RYUJI ROCK', title: 'The Obnoxious One', base: 'Ryuji Yamazaki + The Rock', moveset: 'ryuji-rock', model: 'ryuji-rock', tintStrength: 0.25,
+  { id: 'ryuji-rock', name: 'CORNERSTONE', title: 'The Obnoxious One', base: 'Ryuji Yamazaki + The Rock', moveset: 'ryuji-rock', model: 'ryuji-rock', tintStrength: 0.25,
     colors: { suit: 0x1a1a1a, trim: 0xffd700 }, style: 'Wrestler/Brawler', archetype: 'Power',
     surge: { name: "PEOPLE'S CHAMPION", color: 0xffd700, accent: 0xffffff },
     stats: { speed: 4.0, jump: 6.5, power: 1.35, defense: 1.2 },

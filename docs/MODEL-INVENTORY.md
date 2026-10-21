@@ -76,6 +76,7 @@ Legend: ✅ WIRED (in `game/assets/models/` or a roster attire slot) · 📦 HAV
 | `roster/diablo/attires/attire1/model.glb` | DIABLO | A1 DEFAULT | Tripo "fantasy demon" (22.8MB) — oni Heihachi: long silver wing-hair, two short horns, tattooed chest/arms, purple dragon hakama |
 | `roster/diablo/attires/attire2/model.glb` | DIABLO | A2 Devil God | Tripo (22.5MB) — Hagoromo drapery + Raijin Taiko Drum Ring |
 | `roster/vainabel/attires/attire3/model.glb` | VAIN ABEL | A3 · Masked Demon of the Purple Haze | Tripo "masked fighter" (19.6MB) |
+| `roster/ryuji-rock/attires/attire1/model.glb` | CORNERSTONE | A1 DEFAULT | Owner's Tripo "tattooed man" (18.9MB) — Ryuji Yamazaki x The Rock hybrid; name locked CORNERSTONE 2026-10-21 |
 
 ---
 
