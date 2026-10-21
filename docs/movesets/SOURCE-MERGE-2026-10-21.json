@@ -1,0 +1,1720 @@
+{
+ "date": "2026-10-21",
+ "tool": "tools/moveset-merge/merge_sources.py",
+ "fighters": {
+  "armor-king": {
+   "bases": {
+    "t8": [
+     "armor_king"
+    ],
+    "t7": [
+     "armorking"
+    ]
+   },
+   "why": "auto from tekken_base 'Armor King (Tekken)'",
+   "moves_before": 125,
+   "moves_after": 500,
+   "added": {
+    "t8": 173,
+    "t7": 202
+   },
+   "slots": 247,
+   "slots_by_priority": {
+    "signature": 2,
+    "t8": 169,
+    "t7": 71,
+    "curated/donor": 5
+   },
+   "previously_playable_inputs": 9,
+   "owner_excluded_inputs": []
+  },
+  "awapop": {
+   "bases": {
+    "t8": [
+     "nina"
+    ],
+    "t7": [
+     "nina"
+    ],
+    "t3": [
+     "nina"
+    ]
+   },
+   "why": "auto from tekken_base 'Nina'",
+   "moves_before": 340,
+   "moves_after": 909,
+   "added": {
+    "t8": 6,
+    "t7": 354,
+    "t3": 209
+   },
+   "slots": 402,
+   "slots_by_priority": {
+    "signature": 2,
+    "t8": 188,
+    "t7": 109,
+    "t3": 74,
+    "proxy": 29
+   },
+   "previously_playable_inputs": 106,
+   "owner_excluded_inputs": []
+  },
+  "baek-master-white": {
+   "bases": {
+    "donors": [
+     "baek"
+    ]
+   },
+   "why": "attire variant of baek",
+   "moves_before": 113,
+   "moves_after": 122,
+   "added": {
+    "donor": 9
+   },
+   "slots": 36,
+   "slots_by_priority": {
+    "signature": 2,
+    "curated/donor": 34
+   },
+   "previously_playable_inputs": 33,
+   "owner_excluded_inputs": []
+  },
+  "baek": {
+   "skipped": "no Tekken/teardown base with decoded data",
+   "tekken_base": "Baek"
+  },
+  "blanka": {
+   "skipped": "no Tekken/teardown base with decoded data",
+   "tekken_base": "Blanka (SF)"
+  },
+  "bob": {
+   "bases": {
+    "t8": [
+     "bob"
+    ],
+    "t7": [
+     "bob"
+    ]
+   },
+   "why": "auto from tekken_base 'Bob Richards (Tekken)'",
+   "moves_before": 115,
+   "moves_after": 557,
+   "added": {
+    "t8": 161,
+    "t7": 281
+   },
+   "slots": 238,
+   "slots_by_priority": {
+    "signature": 6,
+    "t8": 157,
+    "t7": 69,
+    "curated/donor": 6
+   },
+   "previously_playable_inputs": 10,
+   "owner_excluded_inputs": []
+  },
+  "bruno": {
+   "bases": {
+    "t7": [
+     "miguel"
+    ]
+   },
+   "why": "auto from tekken_base 'Miguel'",
+   "moves_before": 315,
+   "moves_after": 328,
+   "added": {
+    "t7": 13
+   },
+   "slots": 170,
+   "slots_by_priority": {
+    "signature": 2,
+    "t7": 158,
+    "curated/donor": 10
+   },
+   "previously_playable_inputs": 70,
+   "owner_excluded_inputs": []
+  },
+  "burger-demon": {
+   "bases": {
+    "t8": [
+     "bob"
+    ],
+    "t7": [
+     "bob"
+    ]
+   },
+   "why": "auto from tekken_base 'Bob'",
+   "moves_before": 24,
+   "moves_after": 466,
+   "added": {
+    "t8": 161,
+    "t7": 281
+   },
+   "slots": 237,
+   "slots_by_priority": {
+    "t8": 161,
+    "t7": 69,
+    "curated/donor": 7
+   },
+   "previously_playable_inputs": 0,
+   "owner_excluded_inputs": []
+  },
+  "burger-speed-demon": {
+   "bases": {
+    "t8": [
+     "bob"
+    ],
+    "t7": [
+     "bob"
+    ]
+   },
+   "why": "auto from tekken_base 'Bob'",
+   "moves_before": 12,
+   "moves_after": 454,
+   "added": {
+    "t8": 161,
+    "t7": 281
+   },
+   "slots": 233,
+   "slots_by_priority": {
+    "t8": 161,
+    "t7": 69,
+    "curated/donor": 3
+   },
+   "previously_playable_inputs": 0,
+   "owner_excluded_inputs": []
+  },
+  "burger-the-mouth": {
+   "bases": {
+    "t8": [
+     "bob"
+    ],
+    "t7": [
+     "bob"
+    ]
+   },
+   "why": "auto from tekken_base 'Bob'",
+   "moves_before": 12,
+   "moves_after": 454,
+   "added": {
+    "t8": 161,
+    "t7": 281
+   },
+   "slots": 230,
+   "slots_by_priority": {
+    "t8": 161,
+    "t7": 69
+   },
+   "previously_playable_inputs": 0,
+   "owner_excluded_inputs": []
+  },
+  "burger": {
+   "bases": {
+    "t8": [
+     "bob"
+    ],
+    "t7": [
+     "bob"
+    ]
+   },
+   "why": "auto from tekken_base 'Bob'",
+   "moves_before": 264,
+   "moves_after": 552,
+   "added": {
+    "t8": 7,
+    "t7": 281
+   },
+   "slots": 240,
+   "slots_by_priority": {
+    "signature": 2,
+    "t8": 160,
+    "t7": 69,
+    "curated/donor": 9
+   },
+   "previously_playable_inputs": 85,
+   "owner_excluded_inputs": []
+  },
+  "byou": {
+   "bases": {
+    "t7": [
+     "lei"
+    ],
+    "t3": [
+     "lei"
+    ]
+   },
+   "why": "auto from tekken_base 'Lei Wulong'",
+   "moves_before": 157,
+   "moves_after": 947,
+   "added": {
+    "t7": 524,
+    "t3": 266
+   },
+   "slots": 444,
+   "slots_by_priority": {
+    "signature": 2,
+    "t7": 314,
+    "t3": 91,
+    "proxy": 37
+   },
+   "previously_playable_inputs": 59,
+   "owner_excluded_inputs": []
+  },
+  "cainelias": {
+   "skipped": "no Tekken/teardown base with decoded data",
+   "tekken_base": "Undertaker (WWE)"
+  },
+  "charger": {
+   "skipped": "no Tekken/teardown base with decoded data",
+   "tekken_base": "Blanka (SF) — fighter replaced by CHARGER (owner 2026-10-20)"
+  },
+  "chordz": {
+   "bases": {
+    "t8": [
+     "lars"
+    ],
+    "t7": [
+     "lars"
+    ]
+   },
+   "why": "auto from tekken_base 'Lars'",
+   "moves_before": 145,
+   "moves_after": 452,
+   "added": {
+    "t8": 121,
+    "t7": 186
+   },
+   "slots": 203,
+   "slots_by_priority": {
+    "signature": 2,
+    "t8": 116,
+    "t7": 56,
+    "curated/donor": 29
+   },
+   "previously_playable_inputs": 48,
+   "owner_excluded_inputs": []
+  },
+  "cyborgx": {
+   "bases": {
+    "t8": [
+     "alisa"
+    ],
+    "t7": [
+     "alisa"
+    ]
+   },
+   "why": "auto from tekken_base 'Alisa'",
+   "moves_before": 334,
+   "moves_after": 624,
+   "added": {
+    "t8": 6,
+    "t7": 284
+   },
+   "slots": 302,
+   "slots_by_priority": {
+    "signature": 2,
+    "t8": 183,
+    "t7": 85,
+    "curated/donor": 32
+   },
+   "previously_playable_inputs": 92,
+   "owner_excluded_inputs": []
+  },
+  "deathfang": {
+   "skipped": "no Tekken/teardown base with decoded data",
+   "tekken_base": "Iori Yagami (KOF)"
+  },
+  "demonio-bloodline-ember": {
+   "bases": {
+    "t8": [
+     "jin"
+    ],
+    "t7": [
+     "jin"
+    ],
+    "t3": [
+     "jin"
+    ],
+    "donors": [
+     "demonio"
+    ]
+   },
+   "why": "attire variant of demonio",
+   "moves_before": 147,
+   "moves_after": 662,
+   "added": {
+    "t8": 128,
+    "t7": 198,
+    "t3": 183,
+    "donor": 6
+   },
+   "slots": 299,
+   "slots_by_priority": {
+    "signature": 3,
+    "t8": 119,
+    "t7": 65,
+    "t3": 112
+   },
+   "previously_playable_inputs": 49,
+   "owner_excluded_inputs": []
+  },
+  "demonio-human": {
+   "bases": {
+    "donors": [
+     "demonio"
+    ]
+   },
+   "why": "attire variant of demonio",
+   "moves_before": 102,
+   "moves_after": 271,
+   "added": {
+    "donor": 169
+   },
+   "slots": 157,
+   "slots_by_priority": {
+    "signature": 3,
+    "curated/donor": 154
+   },
+   "previously_playable_inputs": 10,
+   "owner_excluded_inputs": []
+  },
+  "demonio-winged": {
+   "bases": {
+    "t8": [
+     "devil_jin",
+     "jin"
+    ],
+    "t7": [
+     "deviljin",
+     "jin"
+    ],
+    "t3": [
+     "jin"
+    ],
+    "donors": [
+     "demonio"
+    ]
+   },
+   "why": "winged devil form of Demonio (Jin base)",
+   "moves_before": 175,
+   "moves_after": 1039,
+   "added": {
+    "t8": 148,
+    "t7": 416,
+    "t3": 199,
+    "donor": 101
+   },
+   "slots": 394,
+   "slots_by_priority": {
+    "signature": 3,
+    "t8": 192,
+    "t7": 93,
+    "t3": 106
+   },
+   "previously_playable_inputs": 87,
+   "owner_excluded_inputs": []
+  },
+  "demonio": {
+   "bases": {
+    "t8": [
+     "jin"
+    ],
+    "t7": [
+     "jin"
+    ],
+    "t3": [
+     "jin"
+    ]
+   },
+   "why": "auto from tekken_base 'Jin Kazama'",
+   "moves_before": 270,
+   "moves_after": 658,
+   "added": {
+    "t8": 7,
+    "t7": 198,
+    "t3": 183
+   },
+   "slots": 299,
+   "slots_by_priority": {
+    "signature": 3,
+    "t8": 119,
+    "t7": 65,
+    "t3": 112
+   },
+   "previously_playable_inputs": 83,
+   "owner_excluded_inputs": []
+  },
+  "diablo": {
+   "bases": {
+    "t8": [
+     "heihachi"
+    ],
+    "t7": [
+     "heihachi"
+    ],
+    "t3": [
+     "heihachi"
+    ]
+   },
+   "why": "auto from tekken_base 'Heihachi'",
+   "moves_before": 288,
+   "moves_after": 642,
+   "added": {
+    "t8": 7,
+    "t7": 183,
+    "t3": 164
+   },
+   "slots": 297,
+   "slots_by_priority": {
+    "signature": 3,
+    "t8": 135,
+    "t7": 64,
+    "t3": 95
+   },
+   "previously_playable_inputs": 73,
+   "owner_excluded_inputs": []
+  },
+  "dio": {
+   "bases": {
+    "t7": [
+     "akuma"
+    ]
+   },
+   "why": "auto from tekken_base 'Akuma'",
+   "moves_before": 265,
+   "moves_after": 275,
+   "added": {
+    "t7": 10
+   },
+   "slots": 134,
+   "slots_by_priority": {
+    "signature": 2,
+    "t7": 102,
+    "curated/donor": 30
+   },
+   "previously_playable_inputs": 59,
+   "owner_excluded_inputs": []
+  },
+  "doa-ayane": {
+   "skipped": "no Tekken/teardown base with decoded data",
+   "tekken_base": "Ayane (DOA4 / DOA Ultimate)"
+  },
+  "doa-bass": {
+   "skipped": "no Tekken/teardown base with decoded data",
+   "tekken_base": "Bass Armstrong (DOA5 Last Round / DOA Ultimate)"
+  },
+  "doa-hayabusa": {
+   "skipped": "no Tekken/teardown base with decoded data",
+   "tekken_base": "Ryu Hayabusa (DOA5 Last Round)"
+  },
+  "doa-jannlee": {
+   "skipped": "no Tekken/teardown base with decoded data",
+   "tekken_base": "Jann Lee (DOA4 / DOA Ultimate)"
+  },
+  "doa-kasumi": {
+   "skipped": "no Tekken/teardown base with decoded data",
+   "tekken_base": "Kasumi (DOA5 Last Round)"
+  },
+  "doa-tina": {
+   "skipped": "no Tekken/teardown base with decoded data",
+   "tekken_base": "Tina Armstrong (DOA4 / DOA Ultimate)"
+  },
+  "doc-frank-hood": {
+   "bases": {
+    "t3": [
+     "bosconovitch"
+    ],
+    "donors": [
+     "docfrank"
+    ]
+   },
+   "why": "owner 2026-10-20 (Doc Frank = Bosconovitch, not Gun Jack); attire variant of docfrank",
+   "moves_before": 101,
+   "moves_after": 476,
+   "added": {
+    "t3": 266,
+    "donor": 109
+   },
+   "slots": 176,
+   "slots_by_priority": {
+    "signature": 5,
+    "t3": 171
+   },
+   "previously_playable_inputs": 13,
+   "owner_excluded_inputs": [
+    "d/f+2+3",
+    "f+1"
+   ]
+  },
+  "doc-frank-machine-shop": {
+   "bases": {
+    "t3": [
+     "bosconovitch"
+    ],
+    "donors": [
+     "docfrank"
+    ]
+   },
+   "why": "owner 2026-10-20 (Doc Frank = Bosconovitch, not Gun Jack); attire variant of docfrank",
+   "moves_before": 147,
+   "moves_after": 517,
+   "added": {
+    "t3": 266,
+    "donor": 104
+   },
+   "slots": 176,
+   "slots_by_priority": {
+    "signature": 7,
+    "t3": 169
+   },
+   "previously_playable_inputs": 50,
+   "owner_excluded_inputs": [
+    "d,d/f,d,d/f+1+2",
+    "d/b+1",
+    "d/b+1,1",
+    "d/b+1,1,1",
+    "d/b+1,1,1,2",
+    "d/b+2+3",
+    "d/b,n,f+2",
+    "d/f+1+3",
+    "d/f+2+3",
+    "d/f+2+4",
+    "f+1",
+    "f+2+3",
+    "u/b+1",
+    "u/b+3",
+    "u/f+3",
+    "u/f+3+4,1",
+    "u/f+3+4,1,2",
+    "u/f+3+4,1,2,1",
+    "u/f+3+4,1,2,1,2",
+    "u/f+3+4,2",
+    "u/f+3+4,2,1",
+    "u/f+3+4,2,1,2",
+    "u/f+3+4,2,1,2,1"
+   ]
+  },
+  "doc-frank-wowomomo": {
+   "bases": {
+    "t3": [
+     "bosconovitch"
+    ],
+    "donors": [
+     "docfrank"
+    ]
+   },
+   "why": "owner 2026-10-20 (Doc Frank = Bosconovitch, not Gun Jack); attire variant of docfrank",
+   "moves_before": 101,
+   "moves_after": 476,
+   "added": {
+    "t3": 266,
+    "donor": 109
+   },
+   "slots": 176,
+   "slots_by_priority": {
+    "signature": 5,
+    "t3": 171
+   },
+   "previously_playable_inputs": 13,
+   "owner_excluded_inputs": [
+    "d/f+2+3",
+    "f+1"
+   ]
+  },
+  "docfrank": {
+   "bases": {
+    "t3": [
+     "bosconovitch"
+    ]
+   },
+   "why": "owner 2026-10-20: \"Doc Frank should not have gun jacks moves or stance it should be Dr bosconovitch stance, movements, animations\"",
+   "moves_before": 114,
+   "moves_after": 380,
+   "added": {
+    "t3": 266
+   },
+   "slots": 176,
+   "slots_by_priority": {
+    "signature": 5,
+    "t3": 171
+   },
+   "previously_playable_inputs": 30,
+   "owner_excluded_inputs": [
+    "d,d/f,d,d/f+1+2",
+    "d/b,n,f+2",
+    "f+1"
+   ]
+  },
+  "dxmmii-patchwork": {
+   "bases": {
+    "donors": [
+     "dxmmii"
+    ]
+   },
+   "why": "attire variant of dxmmii",
+   "moves_before": 150,
+   "moves_after": 154,
+   "added": {
+    "donor": 4
+   },
+   "slots": 57,
+   "slots_by_priority": {
+    "signature": 2,
+    "curated/donor": 55
+   },
+   "previously_playable_inputs": 52,
+   "owner_excluded_inputs": []
+  },
+  "dxmmii": {
+   "skipped": "no Tekken/teardown base with decoded data",
+   "tekken_base": "Mokujin"
+  },
+  "gyou": {
+   "bases": {
+    "t8": [
+     "hwoarang"
+    ],
+    "t7": [
+     "hwoarang"
+    ],
+    "t3": [
+     "hwoarang"
+    ]
+   },
+   "why": "auto from tekken_base 'Hwoarang'",
+   "moves_before": 149,
+   "moves_after": 872,
+   "added": {
+    "t8": 209,
+    "t7": 326,
+    "t3": 188
+   },
+   "slots": 358,
+   "slots_by_priority": {
+    "signature": 2,
+    "t8": 199,
+    "t7": 74,
+    "t3": 55,
+    "proxy": 28
+   },
+   "previously_playable_inputs": 51,
+   "owner_excluded_inputs": []
+  },
+  "hugo": {
+   "skipped": "no Tekken/teardown base with decoded data",
+   "tekken_base": "Hugo Andore (Final Fight/SF)"
+  },
+  "iori": {
+   "skipped": "no Tekken/teardown base with decoded data",
+   "tekken_base": "Iori Yagami (KOF)"
+  },
+  "jin_soul": {
+   "bases": {
+    "t8": [
+     "yoshimitsu"
+    ],
+    "t7": [
+     "yoshimitsu"
+    ],
+    "t3": [
+     "yoshimitsu"
+    ]
+   },
+   "why": "auto from tekken_base 'Yoshimitsu'",
+   "moves_before": 123,
+   "moves_after": 1012,
+   "added": {
+    "t8": 312,
+    "t7": 386,
+    "t3": 191
+   },
+   "slots": 536,
+   "slots_by_priority": {
+    "signature": 2,
+    "t8": 298,
+    "t7": 144,
+    "t3": 92
+   },
+   "previously_playable_inputs": 39,
+   "owner_excluded_inputs": []
+  },
+  "kai": {
+   "bases": {
+    "t8": [
+     "eddy"
+    ],
+    "t7": [
+     "eddy"
+    ],
+    "t3": [
+     "eddy"
+    ]
+   },
+   "why": "auto from tekken_base 'Eddy Gordo'",
+   "moves_before": 146,
+   "moves_after": 853,
+   "added": {
+    "t8": 152,
+    "t7": 337,
+    "t3": 218
+   },
+   "slots": 376,
+   "slots_by_priority": {
+    "signature": 2,
+    "t8": 145,
+    "t7": 142,
+    "t3": 62,
+    "proxy": 25
+   },
+   "previously_playable_inputs": 48,
+   "owner_excluded_inputs": []
+  },
+  "kingtyrant": {
+   "bases": {
+    "t8": [
+     "eddy"
+    ],
+    "t7": [
+     "eddy"
+    ],
+    "t3": [
+     "eddy"
+    ]
+   },
+   "why": "owner 2026-10-20: \"King Tyrant ... is fitted to replace eddy gordo and take Eddy moves mixed with booker T moves\" (Booker T: no WWE move data decoded yet - reported)",
+   "moves_before": 286,
+   "moves_after": 848,
+   "added": {
+    "t8": 7,
+    "t7": 337,
+    "t3": 218
+   },
+   "slots": 363,
+   "slots_by_priority": {
+    "signature": 2,
+    "t8": 146,
+    "t7": 142,
+    "t3": 62,
+    "proxy": 11
+   },
+   "previously_playable_inputs": 73,
+   "owner_excluded_inputs": []
+  },
+  "kinpo": {
+   "bases": {
+    "t8": [
+     "asuka"
+    ],
+    "t7": [
+     "asuka"
+    ]
+   },
+   "why": "auto from tekken_base 'Asuka'",
+   "moves_before": 285,
+   "moves_after": 525,
+   "added": {
+    "t8": 8,
+    "t7": 232
+   },
+   "slots": 229,
+   "slots_by_priority": {
+    "signature": 2,
+    "t8": 143,
+    "t7": 53,
+    "curated/donor": 31
+   },
+   "previously_playable_inputs": 91,
+   "owner_excluded_inputs": []
+  },
+  "koreshi": {
+   "bases": {
+    "donors": [
+     "vega",
+     "sf-vega"
+    ]
+   },
+   "why": "owner 2026-10-20: \"Same for vega, we have koreshi\" (Koreshi replaces Vega)",
+   "moves_before": 329,
+   "moves_after": 572,
+   "added": {
+    "donor": 243
+   },
+   "slots": 351,
+   "slots_by_priority": {
+    "signature": 4,
+    "curated/donor": 347
+   },
+   "previously_playable_inputs": 61,
+   "owner_excluded_inputs": []
+  },
+  "kronos-attire2": {
+   "bases": {
+    "donors": [
+     "kronos",
+     "zangief",
+     "sf-zangief"
+    ]
+   },
+   "why": "owner 2026-10-20: \"Zangief become KRONOS\"; attire variant of kronos",
+   "moves_before": 142,
+   "moves_after": 380,
+   "added": {
+    "donor": 238
+   },
+   "slots": 88,
+   "slots_by_priority": {
+    "signature": 10,
+    "curated/donor": 78
+   },
+   "previously_playable_inputs": 33,
+   "owner_excluded_inputs": []
+  },
+  "kronos": {
+   "bases": {
+    "donors": [
+     "zangief",
+     "sf-zangief"
+    ]
+   },
+   "why": "owner 2026-10-20: \"Zangief become KRONOS\"",
+   "moves_before": 257,
+   "moves_after": 388,
+   "added": {
+    "donor": 131
+   },
+   "slots": 88,
+   "slots_by_priority": {
+    "signature": 10,
+    "curated/donor": 78
+   },
+   "previously_playable_inputs": 50,
+   "owner_excluded_inputs": []
+  },
+  "kutz": {
+   "skipped": "no Tekken/teardown base with decoded data",
+   "tekken_base": "Goh Hinogami"
+  },
+  "lili": {
+   "bases": {
+    "t8": [
+     "lili"
+    ],
+    "t7": [
+     "lili"
+    ]
+   },
+   "why": "auto from tekken_base 'Lili'",
+   "moves_before": 349,
+   "moves_after": 508,
+   "added": {
+    "t8": 148,
+    "t7": 11
+   },
+   "slots": 215,
+   "slots_by_priority": {
+    "signature": 2,
+    "t8": 147,
+    "t7": 56,
+    "curated/donor": 10
+   },
+   "previously_playable_inputs": 74,
+   "owner_excluded_inputs": []
+  },
+  "marduk": {
+   "bases": {
+    "t7": [
+     "marduk"
+    ]
+   },
+   "why": "auto from tekken_base 'Craig Marduk (Tekken)'",
+   "moves_before": 130,
+   "moves_after": 340,
+   "added": {
+    "t7": 210
+   },
+   "slots": 155,
+   "slots_by_priority": {
+    "signature": 6,
+    "t7": 140,
+    "curated/donor": 9
+   },
+   "previously_playable_inputs": 9,
+   "owner_excluded_inputs": []
+  },
+  "mariposa-monarch": {
+   "bases": {
+    "t8": [
+     "zafina"
+    ],
+    "t7": [
+     "zafina"
+    ],
+    "donors": [
+     "mariposa"
+    ]
+   },
+   "why": "attire variant of mariposa",
+   "moves_before": 351,
+   "moves_after": 508,
+   "added": {
+    "t8": 146,
+    "t7": 11
+   },
+   "slots": 202,
+   "slots_by_priority": {
+    "signature": 2,
+    "t8": 145,
+    "t7": 43,
+    "curated/donor": 12
+   },
+   "previously_playable_inputs": 77,
+   "owner_excluded_inputs": []
+  },
+  "mariposa": {
+   "bases": {
+    "t8": [
+     "zafina"
+    ],
+    "t7": [
+     "zafina"
+    ]
+   },
+   "why": "auto from tekken_base 'Zafina'",
+   "moves_before": 223,
+   "moves_after": 372,
+   "added": {
+    "t8": 146,
+    "t7": 3
+   },
+   "slots": 189,
+   "slots_by_priority": {
+    "t8": 146,
+    "t7": 43
+   },
+   "previously_playable_inputs": 63,
+   "owner_excluded_inputs": []
+  },
+  "michiko": {
+   "bases": {
+    "t7": [
+     "katarina"
+    ]
+   },
+   "why": "auto from tekken_base 'Katarina'",
+   "moves_before": 332,
+   "moves_after": 344,
+   "added": {
+    "t7": 12
+   },
+   "slots": 159,
+   "slots_by_priority": {
+    "signature": 2,
+    "t7": 119,
+    "curated/donor": 38
+   },
+   "previously_playable_inputs": 102,
+   "owner_excluded_inputs": []
+  },
+  "negativo": {
+   "bases": {
+    "t7": [
+     "negan"
+    ]
+   },
+   "why": "auto from tekken_base 'Negan'",
+   "moves_before": 270,
+   "moves_after": 282,
+   "added": {
+    "t7": 12
+   },
+   "slots": 129,
+   "slots_by_priority": {
+    "signature": 2,
+    "t7": 116,
+    "curated/donor": 11
+   },
+   "previously_playable_inputs": 71,
+   "owner_excluded_inputs": []
+  },
+  "nightwolf": {
+   "bases": {
+    "t7": [
+     "julia"
+    ],
+    "t3": [
+     "julia"
+    ]
+   },
+   "why": "auto from tekken_base 'Julia'",
+   "moves_before": 135,
+   "moves_after": 554,
+   "added": {
+    "t7": 236,
+    "t3": 183
+   },
+   "slots": 221,
+   "slots_by_priority": {
+    "signature": 2,
+    "t7": 139,
+    "t3": 70,
+    "proxy": 10
+   },
+   "previously_playable_inputs": 30,
+   "owner_excluded_inputs": []
+  },
+  "pantera": {
+   "bases": {
+    "t8": [
+     "king"
+    ],
+    "t7": [
+     "king"
+    ],
+    "t3": [
+     "king"
+    ]
+   },
+   "why": "auto from tekken_base 'King'",
+   "moves_before": 370,
+   "moves_after": 873,
+   "added": {
+    "t8": 7,
+    "t7": 297,
+    "t3": 199
+   },
+   "slots": 394,
+   "slots_by_priority": {
+    "signature": 3,
+    "t8": 201,
+    "t7": 98,
+    "t3": 92
+   },
+   "previously_playable_inputs": 92,
+   "owner_excluded_inputs": []
+  },
+  "phantom": {
+   "bases": {
+    "t8": [
+     "yoshimitsu"
+    ],
+    "t7": [
+     "yoshimitsu"
+    ],
+    "t3": [
+     "yoshimitsu"
+    ]
+   },
+   "why": "auto from tekken_base 'Yoshimitsu'",
+   "moves_before": 432,
+   "moves_after": 1019,
+   "added": {
+    "t8": 8,
+    "t7": 386,
+    "t3": 193
+   },
+   "slots": 538,
+   "slots_by_priority": {
+    "signature": 3,
+    "t8": 295,
+    "t7": 145,
+    "t3": 95
+   },
+   "previously_playable_inputs": 90,
+   "owner_excluded_inputs": []
+  },
+  "purplerain": {
+   "bases": {
+    "t8": [
+     "lee"
+    ],
+    "t7": [
+     "lee"
+    ]
+   },
+   "why": "auto from tekken_base 'Lee'",
+   "moves_before": 298,
+   "moves_after": 569,
+   "added": {
+    "t8": 6,
+    "t7": 265
+   },
+   "slots": 264,
+   "slots_by_priority": {
+    "signature": 2,
+    "t8": 139,
+    "t7": 91,
+    "curated/donor": 32
+   },
+   "previously_playable_inputs": 99,
+   "owner_excluded_inputs": []
+  },
+  "raiden": {
+   "skipped": "no Tekken/teardown base with decoded data",
+   "tekken_base": "Big Bear / Raiden (Fatal Fury/KOF)"
+  },
+  "rave": {
+   "bases": {
+    "t7": [
+     "lei"
+    ],
+    "t3": [
+     "lei"
+    ]
+   },
+   "why": "auto from tekken_base 'Lei Wulong'",
+   "moves_before": 648,
+   "moves_after": 926,
+   "added": {
+    "t7": 12,
+    "t3": 266
+   },
+   "slots": 419,
+   "slots_by_priority": {
+    "signature": 2,
+    "t7": 317,
+    "t3": 91,
+    "proxy": 9
+   },
+   "previously_playable_inputs": 81,
+   "owner_excluded_inputs": []
+  },
+  "realizzt": {
+   "skipped": "no Tekken/teardown base with decoded data",
+   "tekken_base": "Brad Burns"
+  },
+  "retsu": {
+   "bases": {
+    "t8": [
+     "bryan"
+    ],
+    "t7": [
+     "bryan"
+    ],
+    "t3": [
+     "bryan"
+    ]
+   },
+   "why": "auto from tekken_base 'Bryan Fury'",
+   "moves_before": 111,
+   "moves_after": 685,
+   "added": {
+    "t8": 168,
+    "t7": 266,
+    "t3": 140
+   },
+   "slots": 292,
+   "slots_by_priority": {
+    "signature": 2,
+    "t8": 165,
+    "t7": 55,
+    "t3": 70
+   },
+   "previously_playable_inputs": 31,
+   "owner_excluded_inputs": []
+  },
+  "rin": {
+   "bases": {
+    "t8": [
+     "jin"
+    ],
+    "t7": [
+     "jin"
+    ],
+    "t3": [
+     "jin"
+    ]
+   },
+   "why": "auto from tekken_base 'Jin Kazama'",
+   "moves_before": 149,
+   "moves_after": 659,
+   "added": {
+    "t8": 128,
+    "t7": 198,
+    "t3": 184
+   },
+   "slots": 307,
+   "slots_by_priority": {
+    "signature": 2,
+    "t8": 118,
+    "t7": 65,
+    "t3": 122
+   },
+   "previously_playable_inputs": 50,
+   "owner_excluded_inputs": []
+  },
+  "ryuji-rock": {
+   "skipped": "no Tekken/teardown base with decoded data",
+   "tekken_base": "Ryuji Yamazaki (KOF) x The Rock"
+  },
+  "ryuji": {
+   "skipped": "no Tekken/teardown base with decoded data",
+   "tekken_base": "Ryuji Yamazaki (KOF XV) / The Rock hybrid"
+  },
+  "sakura": {
+   "bases": {
+    "t8": [
+     "xiaoyu"
+    ],
+    "t7": [
+     "xiaoyu"
+    ],
+    "t3": [
+     "xiaoyu"
+    ]
+   },
+   "why": "auto from tekken_base 'Xiaoyu'",
+   "moves_before": 306,
+   "moves_after": 764,
+   "added": {
+    "t8": 7,
+    "t7": 259,
+    "t3": 192
+   },
+   "slots": 325,
+   "slots_by_priority": {
+    "signature": 3,
+    "t8": 169,
+    "t7": 79,
+    "t3": 74
+   },
+   "previously_playable_inputs": 65,
+   "owner_excluded_inputs": []
+  },
+  "samura1": {
+   "bases": {
+    "t8": [
+     "jack-8"
+    ],
+    "t7": [
+     "jack-7"
+    ],
+    "t3": [
+     "gunjack"
+    ]
+   },
+   "why": "auto from tekken_base 'Gun Jack'",
+   "moves_before": 342,
+   "moves_after": 860,
+   "added": {
+    "t8": 7,
+    "t7": 298,
+    "t3": 213
+   },
+   "slots": 368,
+   "slots_by_priority": {
+    "signature": 3,
+    "t8": 189,
+    "t7": 72,
+    "t3": 103,
+    "curated/donor": 1
+   },
+   "previously_playable_inputs": 86,
+   "owner_excluded_inputs": []
+  },
+  "scimitar": {
+   "bases": {
+    "t8": [
+     "shaheen"
+    ],
+    "t7": [
+     "shaheen"
+    ]
+   },
+   "why": "auto from tekken_base 'Shaheen'",
+   "moves_before": 229,
+   "moves_after": 362,
+   "added": {
+    "t8": 8,
+    "t7": 125
+   },
+   "slots": 161,
+   "slots_by_priority": {
+    "signature": 2,
+    "t8": 90,
+    "t7": 35,
+    "curated/donor": 34
+   },
+   "previously_playable_inputs": 75,
+   "owner_excluded_inputs": []
+  },
+  "sf-akuma": {
+   "bases": {
+    "t7": [
+     "akuma"
+    ]
+   },
+   "why": "auto from tekken_base 'Akuma (SF)'",
+   "moves_before": 32,
+   "moves_after": 168,
+   "added": {
+    "t7": 136
+   },
+   "slots": 119,
+   "slots_by_priority": {
+    "t7": 102,
+    "curated/donor": 17
+   },
+   "previously_playable_inputs": 19,
+   "owner_excluded_inputs": []
+  },
+  "sf-blanka": {
+   "skipped": "no Tekken/teardown base with decoded data",
+   "tekken_base": "Blanka (SF)"
+  },
+  "sf-cammy": {
+   "skipped": "no Tekken/teardown base with decoded data",
+   "tekken_base": "Cammy (SF) — Akuma-pattern translation"
+  },
+  "sf-chunli": {
+   "skipped": "no Tekken/teardown base with decoded data",
+   "tekken_base": "Chun-Li (SF) — Akuma-pattern translation"
+  },
+  "sf-dhalsim": {
+   "skipped": "no Tekken/teardown base with decoded data",
+   "tekken_base": "Dhalsim (SF) — Akuma-pattern translation"
+  },
+  "sf-guile": {
+   "skipped": "no Tekken/teardown base with decoded data",
+   "tekken_base": "Guile (SF) — Akuma-pattern translation"
+  },
+  "sf-ken": {
+   "skipped": "no Tekken/teardown base with decoded data",
+   "tekken_base": "Ken (SF)"
+  },
+  "sf-mbison": {
+   "skipped": "no Tekken/teardown base with decoded data",
+   "tekken_base": "M. Bison (SF) — Akuma-pattern translation"
+  },
+  "sf-ryu": {
+   "skipped": "no Tekken/teardown base with decoded data",
+   "tekken_base": "Ryu (SF)"
+  },
+  "sf-sagat": {
+   "skipped": "no Tekken/teardown base with decoded data",
+   "tekken_base": "Sagat (SF) — Akuma-pattern translation"
+  },
+  "sf-vega": {
+   "skipped": "no Tekken/teardown base with decoded data",
+   "tekken_base": "Vega (SF)"
+  },
+  "sf-zangief": {
+   "skipped": "no Tekken/teardown base with decoded data",
+   "tekken_base": "Zangief (SF)"
+  },
+  "sha": {
+   "bases": {
+    "t8": [
+     "xiaoyu"
+    ],
+    "t7": [
+     "xiaoyu"
+    ],
+    "t3": [
+     "xiaoyu"
+    ]
+   },
+   "why": "auto from tekken_base 'Xiaoyu'",
+   "moves_before": 303,
+   "moves_after": 762,
+   "added": {
+    "t8": 7,
+    "t7": 259,
+    "t3": 193
+   },
+   "slots": 325,
+   "slots_by_priority": {
+    "signature": 2,
+    "t8": 170,
+    "t7": 79,
+    "t3": 74
+   },
+   "previously_playable_inputs": 64,
+   "owner_excluded_inputs": []
+  },
+  "skull": {
+   "bases": {
+    "t8": [
+     "bryan"
+    ],
+    "t7": [
+     "bryan"
+    ],
+    "t3": [
+     "bryan"
+    ]
+   },
+   "why": "auto from tekken_base 'Bryan Fury'",
+   "moves_before": 275,
+   "moves_after": 688,
+   "added": {
+    "t8": 6,
+    "t7": 266,
+    "t3": 141
+   },
+   "slots": 291,
+   "slots_by_priority": {
+    "signature": 3,
+    "t8": 163,
+    "t7": 55,
+    "t3": 70
+   },
+   "previously_playable_inputs": 92,
+   "owner_excluded_inputs": []
+  },
+  "slice": {
+   "bases": {
+    "t8": [
+     "dragunov"
+    ],
+    "t7": [
+     "dragunov"
+    ]
+   },
+   "why": "auto from tekken_base 'Dragunov'",
+   "moves_before": 331,
+   "moves_after": 486,
+   "added": {
+    "t8": 141,
+    "t7": 14
+   },
+   "slots": 208,
+   "slots_by_priority": {
+    "signature": 2,
+    "t8": 136,
+    "t7": 63,
+    "curated/donor": 7
+   },
+   "previously_playable_inputs": 87,
+   "owner_excluded_inputs": []
+  },
+  "star": {
+   "bases": {
+    "t8": [
+     "xiaoyu"
+    ],
+    "t7": [
+     "xiaoyu"
+    ],
+    "t3": [
+     "xiaoyu"
+    ]
+   },
+   "why": "owner 2026-10-20: \"Xisyous moveset gos to Star\"",
+   "moves_before": 282,
+   "moves_after": 908,
+   "added": {
+    "t8": 175,
+    "t7": 259,
+    "t3": 192
+   },
+   "slots": 402,
+   "slots_by_priority": {
+    "signature": 2,
+    "t8": 170,
+    "t7": 79,
+    "t3": 76,
+    "curated/donor": 75
+   },
+   "previously_playable_inputs": 70,
+   "owner_excluded_inputs": []
+  },
+  "sunra": {
+   "skipped": "no Tekken/teardown base with decoded data",
+   "tekken_base": "Pac-Man"
+  },
+  "thor": {
+   "skipped": "no Tekken/teardown base with decoded data",
+   "tekken_base": "Ganryu"
+  },
+  "torch": {
+   "bases": {
+    "t8": [
+     "anna"
+    ],
+    "t7": [
+     "anna"
+    ],
+    "t3": [
+     "anna"
+    ]
+   },
+   "why": "auto from tekken_base 'Anna'",
+   "moves_before": 307,
+   "moves_after": 892,
+   "added": {
+    "t8": 7,
+    "t7": 354,
+    "t3": 224
+   },
+   "slots": 392,
+   "slots_by_priority": {
+    "signature": 2,
+    "t8": 162,
+    "t7": 134,
+    "t3": 68,
+    "proxy": 26
+   },
+   "previously_playable_inputs": 85,
+   "owner_excluded_inputs": []
+  },
+  "tou": {
+   "bases": {
+    "t8": [
+     "paul"
+    ],
+    "t7": [
+     "paul"
+    ],
+    "t3": [
+     "paul"
+    ]
+   },
+   "why": "auto from tekken_base 'Paul Phoenix'",
+   "moves_before": 143,
+   "moves_after": 640,
+   "added": {
+    "t8": 143,
+    "t7": 185,
+    "t3": 169
+   },
+   "slots": 282,
+   "slots_by_priority": {
+    "signature": 2,
+    "t8": 131,
+    "t7": 60,
+    "t3": 68,
+    "proxy": 21
+   },
+   "previously_playable_inputs": 48,
+   "owner_excluded_inputs": []
+  },
+  "vainabel": {
+   "skipped": "no Tekken/teardown base with decoded data",
+   "tekken_base": "Bass Armstrong"
+  },
+  "vega": {
+   "skipped": "no Tekken/teardown base with decoded data",
+   "tekken_base": "Vega (SF)"
+  },
+  "vf-akira": {
+   "skipped": "no Tekken/teardown base with decoded data",
+   "tekken_base": "Akira Yuki (Virtua Fighter 5 Final Showdown)"
+  },
+  "vf-kage": {
+   "skipped": "no Tekken/teardown base with decoded data",
+   "tekken_base": "Kage-Maru (Virtua Fighter 5 Final Showdown)"
+  },
+  "vf-sarah": {
+   "skipped": "no Tekken/teardown base with decoded data",
+   "tekken_base": "Sarah Bryant (Virtua Fighter 5 Final Showdown)"
+  },
+  "waterfall": {
+   "bases": {
+    "t7": [
+     "josie"
+    ]
+   },
+   "why": "auto from tekken_base 'Josie'",
+   "moves_before": 146,
+   "moves_after": 341,
+   "added": {
+    "t7": 195
+   },
+   "slots": 159,
+   "slots_by_priority": {
+    "signature": 2,
+    "t7": 125,
+    "curated/donor": 32
+   },
+   "previously_playable_inputs": 48,
+   "owner_excluded_inputs": []
+  },
+  "yukihyo": {
+   "bases": {
+    "t8": [
+     "armor_king"
+    ],
+    "t7": [
+     "armorking"
+    ]
+   },
+   "why": "auto from tekken_base 'Armor King'",
+   "moves_before": 342,
+   "moves_after": 534,
+   "added": {
+    "t8": 173,
+    "t7": 19
+   },
+   "slots": 263,
+   "slots_by_priority": {
+    "signature": 2,
+    "t8": 169,
+    "t7": 69,
+    "curated/donor": 23
+   },
+   "previously_playable_inputs": 94,
+   "owner_excluded_inputs": []
+  },
+  "zangief": {
+   "skipped": "no Tekken/teardown base with decoded data",
+   "tekken_base": "Zangief (SF)"
+  },
+  "zen": {
+   "bases": {
+    "t8": [
+     "heihachi"
+    ],
+    "t7": [
+     "heihachi"
+    ],
+    "t3": [
+     "heihachi"
+    ]
+   },
+   "why": "auto from tekken_base 'Heihachi'",
+   "moves_before": 148,
+   "moves_after": 639,
+   "added": {
+    "t8": 145,
+    "t7": 183,
+    "t3": 163
+   },
+   "slots": 297,
+   "slots_by_priority": {
+    "signature": 2,
+    "t8": 136,
+    "t7": 64,
+    "t3": 95
+   },
+   "previously_playable_inputs": 53,
+   "owner_excluded_inputs": []
+  },
+  "zui": {
+   "bases": {
+    "t8": [
+     "steve"
+    ],
+    "t7": [
+     "steve"
+    ]
+   },
+   "why": "auto from tekken_base 'Steve Fox'",
+   "moves_before": 156,
+   "moves_after": 614,
+   "added": {
+    "t8": 171,
+    "t7": 287
+   },
+   "slots": 291,
+   "slots_by_priority": {
+    "signature": 2,
+    "t8": 154,
+    "t7": 94,
+    "curated/donor": 41
+   },
+   "previously_playable_inputs": 59,
+   "owner_excluded_inputs": []
+  }
+ },
+ "failures": []
+}
