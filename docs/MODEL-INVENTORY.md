@@ -22,7 +22,7 @@ Legend: ✅ WIRED (in `game/assets/models/` or a roster attire slot) · 📦 HAV
 | cape-jones.glb | Cape Jones | Tripo (default attire = Cyborg X Attire 1) | wired |
 | cyborg-x.glb | Cyborg X | SFM Alisa fix | wired; Attire 2 = female Cape Jones build (pending) |
 | demonio.glb | Demonio | T7 | wired |
-| diablo.glb | Diablo | T7 | wired |
+| diablo.glb | Diablo | gtainside Heihachi conversion | wired — ladder-back (former default; replaced by Tripo Attire 1 on 2026-10-20) |
 | dio.glb | Dio | fighter hunt R2 | wired (untextured — texture pass follow-up) |
 | doc-frank.glb | Doc Frank | T7 | wired |
 | dxmmii.glb | Dxmmii | limb system | wired |
@@ -68,10 +68,12 @@ Legend: ✅ WIRED (in `game/assets/models/` or a roster attire slot) · 📦 HAV
 | `roster/zui/attires/attire2/model.glb` | Zui | A2 | Tripo rework v2 |
 | `roster/pantera/attires/classic/pantera-classic.glb` | Pantera | A3 | older build reskin |
 | `roster/pantera/attires/snow-leopard/pantera-snow-leopard.glb` | Pantera | A3 alt | snow-leopard reskin (tweaked) |
+| `roster/pantera/attires/leomon/model.glb` | Pantera | A2 · Leo man | owner's model via Google Drive (restored 2026-10-20) — WH-Canonical-22 rig, T3 King clips embedded |
 | `roster/awa-pop/awa-pop-attire-1.glb` | Awa Pop | A1 DEFAULT | Tripo |
 | `roster/kronos/attires/attire1/model.glb` | KRONOS | A1 DEFAULT | Tripo "muscular warrior" (19.1MB) |
 | `roster/kronos/attires/attire2/model.glb` | KRONOS | A2 Timberwolf | Tripo (20.4MB) |
 | `roster/kronos/attires/attire3/model.glb` | KRONOS | A3 TimberWolf Fully suited | Tripo (21.5MB) — Wolverine claws both hands; middle claw each hand short + rounded |
+| `roster/diablo/attires/attire1/model.glb` | DIABLO | A1 DEFAULT | Tripo "fantasy demon" (22.8MB) — oni Heihachi: long silver wing-hair, two short horns, tattooed chest/arms, purple dragon hakama |
 
 ---
 

@@ -77,6 +77,10 @@ export const ATTIRE_VARIANTS = {
     { model: 'kinpo', label: 'BASE' },
     { model: 'kinpo-t8', label: 'T8' },
   ],
+  'pantera': [
+    { model: 'pantera', label: 'ATTIRE 1' },
+    { model: 'pantera-leoman', label: 'ATTIRE 2 · LEO MAN' },
+  ],
 };
 
 function loadMap() {

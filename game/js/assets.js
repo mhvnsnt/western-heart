@@ -25,7 +25,11 @@ export const MODEL_URLS = {
   // Per-fighter models wired from teardown extractions + Tripo rescans.
   // Keys match FULL_ROSTER `model` ids in roster-full.js (lane 2).
   demonio: 'assets/models/demonio.glb',
-  diablo: 'assets/models/diablo.glb',
+  // DIABLO Attire 1 (owner 2026-10-20, Tripo pull aee46f6a): the fantasy-demon
+  // Tripo is the main attire. The old gtainside Heihachi conversion stays at
+  // assets/models/diablo.glb as the ladder-back (not deleted).
+  diablo: '../roster/diablo/attires/attire1/model.glb',
+  'diablo-attire1': '../roster/diablo/attires/attire1/model.glb',
   // Tripo pulls wired 2026-10-19 (owner: stop saying "not in the repo").
   phantom: '../roster/phantom/attires/attire1/model.glb',
   skull: '../roster/skull/attires/attire1/model.glb',
@@ -109,6 +113,7 @@ export const MODEL_URLS = {
   'phantom-t8': 'assets/models/phantom-t8.glb',
   'pantera_alt1': 'assets/models/pantera_alt1.glb',
   'pantera-body': 'assets/models/pantera-body.glb',
+  'pantera-leoman': '../roster/pantera/attires/leomon/model.glb',
   'retsu-body': 'assets/models/retsu-body.glb',
   'saku-ra_alt1': 'assets/models/saku-ra_alt1.glb',
   'saku-ra-main': 'assets/models/saku-ra-main.glb',

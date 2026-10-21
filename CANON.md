@@ -5,6 +5,16 @@
 
 ---
 
+## THE NORTH STAR — THE CREATIVE PRINCIPLE OF THIS UNIVERSE
+
+*Owner directive, 2026-10-20. This is the game's stated creative principle — its soul and north star. Every character, layer, and story added to Western Heart is measured against it. Full record: `docs/NORTH-STAR.md`.*
+
+The owner, in his own words: "we're mixing a lot of different folklore, mythology, different ontologies, religions, different viewpoints and perspectives, the Oni and Yokai thing, along with the whole Eastern Mind, Tong-Nou thing, all for what is creating the Western mind universe and canon."
+
+Tong-Nou is the cosmology — the souls, the vessels, the trial, the giant head holding it all — and every tradition layered in plugs into that frame as the contents of a soul. The layers land where they already rhyme: Heihachi carries storm-god arrogance in his bones, so Raijin's drum ring isn't a costume on him, it's a recognition. Akuma was already a demon walking — the oni layer just names what he is in this universe's language. The Abel brothers bring wrestling's own mythology in the same way, Serena rides inside Nightwolf. It's the same move as the game itself: Tekken supplies the grammar, and every torn-down world donates its bodies, its moves, its gods. Western Heart isn't a crossover — it's one universe that digests the others.
+
+---
+
 ## 1. THE WORLD
 
 ### Tong-Nou
@@ -670,6 +680,8 @@ She is the only fighter who knows what the Reincarnation is *for*. She explains 
 **Signature detail.** The Reincarnation gave her a new face once. She wept — not for the death, but because her grandmother wouldn't recognize her. She keeps the face. Her grandmother would understand.
 
 **Owner-locked:** Name NIGHTWOLF. Native American spirit warrior, full commitment. Julia Chang base.
+
+**Tribute (owner-locked, real-world).** Nightwolf is the tribute to **Serena Misae Brown**. In the owner's words: "This game is for that game of Mortal Kombat me and Serena never got to play before she died in that car accident in Tulsa. For Serena, Serena Misae Brown, Nightwolf." One night Serena wanted to come over and stay the night at his and his wife's apartment, and play Mortal Kombat with him, on a night he was up late alone. He didn't invite her over. He carries that. Nightwolf — and this game — is for the match they never got to play. She heads the game's credits dedications (see `docs/CREDITS.md`).
 
 ---
 
