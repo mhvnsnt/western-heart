@@ -109,6 +109,7 @@ export const MODEL_URLS = {
   'phantom-t8': 'assets/models/phantom-t8.glb',
   'pantera_alt1': 'assets/models/pantera_alt1.glb',
   'pantera-body': 'assets/models/pantera-body.glb',
+  'pantera-leoman': '../roster/pantera/attires/leomon/model.glb',
   'retsu-body': 'assets/models/retsu-body.glb',
   'saku-ra_alt1': 'assets/models/saku-ra_alt1.glb',
   'saku-ra-main': 'assets/models/saku-ra-main.glb',
