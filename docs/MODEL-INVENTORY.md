@@ -68,6 +68,7 @@ Legend: ✅ WIRED (in `game/assets/models/` or a roster attire slot) · 📦 HAV
 | `roster/zui/attires/attire2/model.glb` | Zui | A2 | Tripo rework v2 |
 | `roster/pantera/attires/classic/pantera-classic.glb` | Pantera | A3 | older build reskin |
 | `roster/pantera/attires/snow-leopard/pantera-snow-leopard.glb` | Pantera | A3 alt | snow-leopard reskin (tweaked) |
+| `roster/pantera/attires/leomon/model.glb` | Pantera | A2 · Leo man | owner's model via Google Drive (restored 2026-10-20) — WH-Canonical-22 rig, T3 King clips embedded |
 | `roster/awa-pop/awa-pop-attire-1.glb` | Awa Pop | A1 DEFAULT | Tripo |
 | `roster/kronos/attires/attire1/model.glb` | KRONOS | A1 DEFAULT | Tripo "muscular warrior" (19.1MB) |
 | `roster/kronos/attires/attire2/model.glb` | KRONOS | A2 Timberwolf | Tripo (20.4MB) |
