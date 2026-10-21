@@ -308,6 +308,22 @@ files keep EM-descriptive basenames under WH stage directories pending assignmen
 
 ---
 
+## APPENDIX (2026-10-20) — iron-legacy (Tekken 3) CORRECTION & COMPLETION
+
+*Added by the Tekken 3 full-wiring lane. Append-only; details in
+`teardown/tekken3/CANON-CONVERSION.md` and `teardown/tekken3/WIRING-INVENTORY.md`.*
+
+The "iron-legacy (Tekken 3) — 100% complete" entry above was premature when written: at
+that time only 7 of 21 motion banks and 7 movesets had been extracted. As of 2026-10-20:
+all 20 character banks present on the disc image + the common bank are extracted and
+SHA-256-verified, and all 20 movesets are extracted (13 banks / 5,663 move rows added that
+day). The one genuine absence is divmot15 (Mokujin): BNS record 295 has size 0 in
+`teardown/tekken3/bns-table.pkl` — the data is not on this disc image.
+The directory rename `teardown/tekken3/` → `teardown/iron-legacy/` remains PENDING (this
+map's table): it must land with all consumer references updated (`game/js/t3anims.js`,
+`game/js/movesets.js`, `lab/tools/`, stage pipeline docs) and a boot check, sequenced by
+the coordinator — it was not executed by the wiring lane.
+
 <!-- BEGIN WMXIX / MAT-LEGENDS SECTION (WMXIX wiring lane, 2026-10-20 — coordinator reconciles at merge) -->
 
 ### mat-legends (WMXIX) — wiring + conversion status, 2026-10-20
@@ -318,6 +334,20 @@ files keep EM-descriptive basenames under WH stage directories pending assignmen
 - The "~80%" status above predates the solved teardown (closed 2026-10-17: assembly solution exact, YANM fully decoded 169/170 clean). Remaining opens: arena face indices, per-clip move semantics, CAW part-level consumption, owner character names.
 
 <!-- END WMXIX / MAT-LEGENDS SECTION -->
+<!-- BEGIN No Mercy / mat-kings conversion record (wiring lane 2026-10-20; source of truth: teardown/wwf-no-mercy/CANON-CONVERSION.md) -->
+### mat-kings (No Mercy) — conversion record 2026-10-20
+
+| Item | Status |
+|---|---|
+| Universe name `mat-kings` | DONE (already mapped above) |
+| Move IDs `NM-###` → `MK-####` (4,409 moves + 1,353 system clips, `moveset-library/movesets/mat-kings-move-database.json`) | DONE |
+| Tekken-style input assignment for every move category | DONE (in the same database) |
+| NM-001/002/003 anim_ref corrections (FileTableDB evidence) | DONE |
+| 17 stage display names (in `game/js/stages.js`) | AWAITING OWNER — table in CANON-CONVERSION.md §4 |
+| 42 wrestler identities → WH names | AWAITING OWNER — none mapped; federated design keeps wrestler characters out of WH |
+| Persona-named move labels (e.g. Reverse Tazzplex) | AWAITING OWNER naming pass |
+| Directory rename `teardown/wwf-no-mercy/` (Phase 3) | NOT DONE — teardown folder stays per owner law; coordinator decision |
+<!-- END No Mercy / mat-kings conversion record -->
 
 ### CHARGER — Blanka replacement fighter (owner 2026-10-20) — DONE
 

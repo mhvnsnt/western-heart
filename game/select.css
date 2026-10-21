@@ -1,0 +1,266 @@
+/* ============================================================
+   WESTERN HEART — Tekken-style character select (2026-10-20)
+   Layout per the teardown record (see js/select-screen.js):
+   top ~75-80% bisected P1/P2 fighters zone with LIVE animated
+   3D models; bottom ~20% card strip — the ONLY scrolling
+   element, scrolling horizontally inside its own box. The page
+   itself never scrolls. All rules are scoped to #screen-select
+   so the stage-select screen (which shares .char-grid /
+   .select-header in styles.css) is untouched.
+   ============================================================ */
+
+#screen-select.select-screen { overflow: hidden; }
+
+/* ---------- fighters zone (bisected) ---------- */
+#screen-select .fighters-zone {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+#screen-select .side-pane {
+  flex: 1 1 50%;
+  min-width: 0;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 72%, rgba(139,43,216,0.22) 0%, rgba(13,6,15,0.92) 72%);
+}
+#screen-select .pane-p1 { border-right: 1px solid rgba(139,43,216,0.35); }
+#screen-select .pane-p2 { border-left: 1px solid rgba(139,43,216,0.35); }
+#screen-select .side-pane.is-active {
+  box-shadow: inset 0 0 0 2px rgba(255,211,77,0.35), inset 0 0 42px rgba(255,177,77,0.07);
+}
+#screen-select .pane-p2.is-active {
+  box-shadow: inset 0 0 0 2px rgba(255,84,112,0.4), inset 0 0 42px rgba(255,84,112,0.07);
+}
+#screen-select .side-pane.is-locked { box-shadow: inset 0 0 0 2px rgba(255,211,77,0.65); }
+#screen-select .pane-p2.is-locked { box-shadow: inset 0 0 0 2px rgba(255,84,112,0.7); }
+
+#screen-select .pane-canvas {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  display: block;
+  touch-action: none;
+}
+/* Only used when the device cannot create a WebGL context at all:
+   the pane degrades to the fighter's (posed) portrait plate. */
+#screen-select .pane-fallback {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: 50% 15%;
+}
+
+#screen-select .side-tag {
+  position: absolute; top: 10px; left: 10px; z-index: 3;
+  font-weight: 900; font-size: 13px; letter-spacing: 2px;
+  padding: 5px 10px; border-radius: 6px;
+  color: #14091f; background: var(--gold);
+}
+#screen-select .pane-p2 .side-tag { background: #ff5470; color: #fff; left: auto; right: 10px; }
+#screen-select .lock-badge {
+  position: absolute; top: 10px; right: 10px; z-index: 3;
+  font-weight: 800; font-size: 11px; letter-spacing: 2px;
+  padding: 5px 10px; border-radius: 6px;
+  color: var(--gold); border: 2px solid var(--gold);
+  background: rgba(20,9,31,0.8);
+}
+#screen-select .pane-p2 .lock-badge { right: auto; left: 10px; color: #ff8fa3; border-color: #ff5470; }
+
+#screen-select .zone-vs {
+  position: absolute; left: 50%; top: 38%; z-index: 4;
+  transform: translate(-50%, -50%);
+  font-weight: 900; font-style: italic;
+  font-size: clamp(20px, 5vw, 40px); letter-spacing: 1px;
+  color: rgba(255,255,255,0.85);
+  text-shadow: 0 0 18px rgba(139,43,216,0.9), 0 2px 6px rgba(0,0,0,0.8);
+  pointer-events: none;
+}
+
+#screen-select .pane-note {
+  position: absolute; left: 50%; top: 44%; z-index: 3;
+  transform: translate(-50%, -50%);
+  font-size: 11px; font-weight: 800; letter-spacing: 3px;
+  color: rgba(255,255,255,0.75);
+  background: rgba(20,9,31,0.72); border: 1px solid rgba(255,255,255,0.25);
+  padding: 7px 12px; border-radius: 999px;
+  pointer-events: none; white-space: nowrap;
+}
+
+/* ---------- name / style / stats plate ---------- */
+#screen-select .pane-plate {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
+  padding: 26px 12px 10px;
+  background: linear-gradient(transparent, rgba(13,6,15,0.94) 46%);
+  text-align: left;
+  pointer-events: none;
+}
+#screen-select .pane-p2 .pane-plate { text-align: right; }
+#screen-select .pane-name {
+  font-size: clamp(19px, 4.6vw, 32px); font-weight: 900; letter-spacing: 3px;
+  color: var(--gold); text-shadow: 0 0 16px rgba(255,177,77,0.45);
+  line-height: 1.05; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+#screen-select .pane-p2 .pane-name { color: #ff8fa3; text-shadow: 0 0 16px rgba(255,84,112,0.45); }
+#screen-select .pane-title { font-size: 12px; opacity: 0.85; letter-spacing: 1px; margin-top: 2px; }
+#screen-select .pane-style {
+  font-size: 10px; opacity: 0.65; letter-spacing: 2px; margin-top: 2px;
+  text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+#screen-select .pane-stats { margin-top: 8px; display: grid; grid-template-columns: 1fr 1fr; gap: 3px 14px; max-width: 430px; }
+#screen-select .pane-p2 .pane-stats { margin-left: auto; }
+#screen-select .stat-row { display: flex; align-items: center; gap: 6px; font-size: 10px; }
+#screen-select .stat-lab { flex: 0 0 26px; font-weight: 800; letter-spacing: 1px; opacity: 0.8; }
+#screen-select .stat-bar {
+  flex: 1 1 auto; height: 6px; border-radius: 3px;
+  background: rgba(255,255,255,0.14); overflow: hidden;
+}
+#screen-select .stat-bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--accent, #8a2be2), var(--gold)); border-radius: 3px; }
+#screen-select .pane-p2 .stat-bar i { background: linear-gradient(90deg, #8a2be2, #ff5470); }
+#screen-select .stat-val { flex: 0 0 30px; text-align: right; font-weight: 700; opacity: 0.9; }
+#screen-select .pane-attires { pointer-events: auto; justify-content: flex-start; margin-top: 8px; flex-wrap: wrap; }
+#screen-select .pane-p2 .pane-attires { justify-content: flex-end; }
+#screen-select .pane-attires .attire-chip[disabled] { opacity: 0.55; cursor: default; }
+
+/* ---------- hints bar ---------- */
+#screen-select .hints-bar {
+  flex: 0 0 auto;
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 12px;
+  background: rgba(20,12,32,0.96);
+  border-top: 2px solid rgba(139,43,216,0.4);
+  z-index: 5;
+}
+#screen-select .hints-bar #select-hint {
+  flex: 1 1 auto; text-align: center;
+  font-size: 12px; letter-spacing: 1px; opacity: 0.9;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+#screen-select .hint-btn {
+  flex: 0 0 auto; min-height: 44px; padding: 8px 12px;
+  border-radius: 999px; border: 2px solid rgba(255,255,255,0.25);
+  background: rgba(20,9,31,0.75); color: rgba(255,255,255,0.88);
+  font-size: 11px; font-weight: 800; letter-spacing: 1.5px;
+  cursor: pointer; touch-action: manipulation; white-space: nowrap;
+}
+#screen-select .hint-btn:active { transform: scale(0.94); border-color: var(--gold); color: var(--gold); }
+#screen-select .hints-bar #confirm-fighter { flex: 0 0 auto; min-height: 48px; }
+
+/* ---------- card strip: the ONLY scrolling element ---------- */
+#screen-select .strip-wrap {
+  flex: 0 0 auto;
+  height: clamp(124px, 20vh, 188px);
+  background: rgba(13,6,15,0.97);
+  border-top: 2px solid rgba(139,43,216,0.4);
+  z-index: 5;
+  box-sizing: border-box;
+}
+#screen-select #char-grid.card-strip {
+  display: flex; flex-direction: row; align-items: stretch;
+  gap: 10px;
+  height: 100%;
+  padding: 10px 12px calc(8px + env(safe-area-inset-bottom));
+  overflow-x: auto; overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
+  overscroll-behavior: contain;
+  scroll-behavior: smooth;
+  max-width: none; margin: 0;
+  box-sizing: border-box;
+}
+#screen-select #char-grid.card-strip::-webkit-scrollbar { height: 6px; }
+#screen-select #char-grid.card-strip::-webkit-scrollbar-thumb { background: rgba(139,43,216,0.55); border-radius: 3px; }
+
+#screen-select .strip-tier {
+  flex: 0 0 auto; align-self: stretch;
+  writing-mode: vertical-rl; transform: rotate(180deg);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 10px; letter-spacing: 3px;
+  color: var(--accent2, #9fd8ff); opacity: 0.85;
+  border-left: 2px solid rgba(139,43,216,0.4);
+  padding: 4px 2px;
+}
+
+#screen-select .card-strip .char-card {
+  flex: 0 0 auto;
+  width: 86px; min-height: 0; min-width: 0;
+  display: flex; flex-direction: column;
+  border-width: 3px; border-radius: 10px;
+  scroll-snap-align: start;
+}
+#screen-select .card-strip .char-card .portrait {
+  position: relative; flex: 1 1 auto; min-height: 0;
+  overflow: hidden; border-radius: 7px 7px 0 0;
+  background: radial-gradient(ellipse at 50% 30%, rgba(139,43,216,0.3), rgba(13,6,15,0.9));
+}
+#screen-select .card-strip .char-card .portrait img {
+  width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%;
+  display: block;
+}
+#screen-select .card-strip .char-card .mono {
+  position: absolute; inset: 0; display: none;
+  align-items: center; justify-content: center;
+  font-size: 26px; font-weight: 900; letter-spacing: 2px; color: rgba(255,255,255,0.5);
+}
+#screen-select .card-strip .char-card .portrait.no-portrait .mono { display: flex; }
+#screen-select .card-strip .char-card .cname {
+  font-size: 11px; font-weight: 800; letter-spacing: 0.5px; text-align: center;
+  padding: 4px 2px 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+#screen-select .card-strip .char-card .cstyle {
+  font-size: 9px; opacity: 0.65; text-align: center; letter-spacing: 0.5px;
+  padding: 0 2px 5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+/* Tekken 3 aperture rule: the selected card is BIGGER than its neighbours. */
+#screen-select .card-strip .char-card.cursor-p1,
+#screen-select .card-strip .char-card.cursor-p2 {
+  transform: scale(1.13) translateY(-5px);
+  z-index: 2;
+}
+#screen-select .card-strip .char-card.cursor-p2 {
+  border-color: #ff5470; background: rgba(255,84,112,0.10);
+  box-shadow: 0 0 24px rgba(255,84,112,0.55), inset 0 0 0 1px rgba(255,84,112,0.6);
+  animation: card-pulse-p2 1.6s ease-in-out infinite;
+}
+@keyframes card-pulse-p2 {
+  0%, 100% { box-shadow: 0 0 18px rgba(255,84,112,0.45), inset 0 0 0 1px rgba(255,84,112,0.6); }
+  50% { box-shadow: 0 0 30px rgba(255,84,112,0.75), inset 0 0 0 1px rgba(255,84,112,0.85); }
+}
+#screen-select .card-strip .char-card.locked-p1 { border-color: var(--gold); }
+#screen-select .card-strip .char-card.locked-p2 { border-color: #ff5470; }
+#screen-select .card-strip .char-card.locked-p1::after,
+#screen-select .card-strip .char-card.locked-p2::after {
+  position: absolute; top: 4px; right: 4px; z-index: 3;
+  font-size: 9px; font-weight: 900; letter-spacing: 1px;
+  padding: 2px 5px; border-radius: 4px; color: #14091f;
+}
+#screen-select .card-strip .char-card { position: relative; }
+#screen-select .card-strip .char-card.locked-p1::after { content: 'P1'; background: var(--gold); }
+#screen-select .card-strip .char-card.locked-p2::after { content: 'P2'; background: #ff5470; color: #fff; }
+#screen-select .card-strip .char-card.in-team { border-color: rgba(255,211,77,0.7); }
+#screen-select .card-strip .random-card .portrait { display: flex; align-items: center; justify-content: center; }
+#screen-select .card-strip .random-card .qmark {
+  font-size: 44px; font-weight: 900; color: rgba(255,255,255,0.75);
+  text-shadow: 0 0 16px rgba(139,43,216,0.9);
+}
+#screen-select .card-strip .char-card.kb-focus { outline: 3px solid #ffd34d; outline-offset: 2px; }
+
+/* ---------- small / landscape phones ---------- */
+@media (orientation: landscape) and (max-height: 500px) {
+  #screen-select .strip-wrap { height: 108px; }
+  #screen-select .card-strip .char-card { width: 72px; }
+  #screen-select .pane-name { font-size: 17px; }
+  #screen-select .pane-stats { display: none; }
+  #screen-select .pane-plate { padding: 18px 10px 6px; }
+  #screen-select .hints-bar { padding: 5px 10px; }
+  #screen-select .hints-bar #confirm-fighter { min-height: 40px; }
+  #screen-select .hint-btn { min-height: 38px; }
+}
+@media (max-width: 480px) {
+  #screen-select .pane-stats { grid-template-columns: 1fr; gap: 2px; }
+  #screen-select .pane-title { display: none; }
+  #screen-select .hints-bar #select-hint { font-size: 11px; }
+  #screen-select .hint-btn { padding: 8px 9px; font-size: 10px; }
+}

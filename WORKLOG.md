@@ -133,6 +133,19 @@ Owner confirmed Samurai Shodown (not Onimusha) is the right source.
 - Bob's full Tekken moveset for Burger base (separate lane).
 - Kusaregedo animation clips: anim_ref points to samsho:kusaregedo/ — clips to be built from footage.
 
+## 2026-10-20 ~23:00 CT — Claude: T3 bank runtime retarget (fighters no longer collapse)
+Branch `claude/amazing-keller-p8644u`. Full write-up + Muse directives: `docs/handoffs/CLAUDE_TO_MUSE_FIXES_2026-10-20.md`.
+- Root cause: wh-anim/1 bank quaternions are local rotations of identity-rest source rigs
+  (`lab/game/assets/pantera_leoman_t3real.glb`, `t3_<bank>_t3real.glb`); the game bound them raw onto
+  non-identity-rest Mixamo/Biped rigs.
+- `tools/anim/t3_bank_skeleton.py` (python3, numpy) → `game/assets/anim/t3/<bank>/skeleton.json` (6 banks, SHA-256 of source GLB);
+  `--check`: all 3,292 channels match their source GLB (max err 8.6e-7).
+- `game/js/t3anims.js` `retargetT3Clips` (port of `lab/tools/t3_motion_bake.py` retarget math) + `canonBoneName`;
+  `game/js/fighter.js` `_bindT3`, T3 stance/walk/backdash/jump in idle/walk/dodge/jump states.
+- Verified: headless Chromium (Playwright 1.56, SwiftShader) demo fight pantera vs rin; frames viewed;
+  head-above-hips 0.43–0.52 m every sampled frame (before: Pantera pitched sideways, Demonio flat).
+  Proof: `docs/proof/claude-2026-10-20/retarget/`.
+
 ---
 
 # WORKLOG — CHARGER build (2026-10-20, branch feat/charger-blanka-replacement-20261020)
@@ -181,4 +194,3 @@ got powers of ice and electricity". Two owner Tripo links (Attire 1 + Attire 2).
   `~/workspace/your_files/charger-attire2-front-20261020.png`.
 - Node smoke test: roster module loads, `charger` + `charger-attire2` resolve,
   charger.json move count == blanka.json (199).
-

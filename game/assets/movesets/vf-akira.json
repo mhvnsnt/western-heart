@@ -332,7 +332,8 @@
    "throw": true,
    "isGrab": true,
    "unblockable": true,
-   "note": "Damage estimated."
+   "note": "Damage estimated.",
+   "throw_break": "1"
   },
   "f+1+3": {
    "name": "Akira 6P+G \u2014 forward throw",
@@ -355,26 +356,8 @@
    "throw": true,
    "isGrab": true,
    "unblockable": true,
-   "note": "Damage estimated."
-  },
-  "S": {
-   "name": "Mountain Stance [WH SIGNATURE]",
-   "input": "S",
-   "startup": 0.31,
-   "active": 0.017,
-   "recovery": 0.9,
-   "damage": 20,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 6.5,
-   "soulGain": 13,
-   "anim_ref": "wh:vf-akira:sig:mountain-stance",
-   "input_slots": [
-    "S"
-   ],
-   "move_class": "signature",
-   "wh_original": true,
-   "note": "Bajiquan's iron mountain. Shoulder burst from a stance that doesn't move for anyone."
+   "note": "Damage estimated.",
+   "throw_break": "1"
   },
   "P+K": {
    "name": "Eight Extremes [WH SIGNATURE]",
@@ -398,7 +381,30 @@
    "note": "Eight extremes, one answer. Close-range grapple from the style's brutal clinch.",
    "throw": true,
    "unblockable": true,
-   "isGrab": true
+   "isGrab": true,
+   "unreachable": true,
+   "unreachable_note": "input has no live mobile mapping; kept as data, needs manual mapping",
+   "throw_break": "1+2"
+  },
+  "1+4": {
+   "name": "Mountain Stance [WH SIGNATURE]",
+   "input": "1+4",
+   "startup": 0.31,
+   "active": 0.017,
+   "recovery": 0.9,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 13,
+   "anim_ref": "wh:vf-akira:sig:mountain-stance",
+   "input_slots": [
+    "1+4"
+   ],
+   "move_class": "signature",
+   "wh_original": true,
+   "note": "Bajiquan's iron mountain. Shoulder burst from a stance that doesn't move for anyone.",
+   "input_remapped_from": "S"
   }
  },
  "strings": [

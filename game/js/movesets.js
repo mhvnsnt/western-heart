@@ -45,6 +45,8 @@ export const MOVESET_IDS = [
   'mariposa',
   // Wave 2 (2026-10-19): Demonio winged devil form.
   'demonio-winged',
+  // Stream 6 (2026-10-19): Cain Elias (Undertaker archetype, new fighter).
+  'cainelias',
   // Burger Kusaregedo kit (owner 2026-10-19): per-form movesets.
   'burger-demon', 'burger-speed-demon', 'burger-the-mouth',
   // Sketchfab intake (owner 2026-10-19): working names, WH names pending.
@@ -231,10 +233,12 @@ export class TekkenBuffer {
   }
 
   /**
-   * Resolve a button CHORD ('1+2', '3+4', '1+3', '2+4') to a Tekken notation.
-   * Motion specials whose chord matches fire when their motion is in the
-   * direction history (King's chain throws). Plain throw chords ('1+3','2+4')
-   * resolve to themselves. Returns the notation or null.
+   * Resolve a button CHORD ('1+2', '1+3', '1+4', '2+3', '2+4', '3+4') to a
+   * Tekken notation. Motion specials whose chord matches fire when their
+   * motion is in the direction history (King's chain throws). Directional
+   * chords ('d/b+1+3') resolve against the current direction (Stream 6).
+   * Plain chords ('1+3','2+4',...) resolve to themselves.
+   * Returns the notation or null.
    */
   pressChord(chord) {
     const ms = getFighterMoveset(this.fighterId);
@@ -248,8 +252,17 @@ export class TekkenBuffer {
         return sp.input;
       }
     }
-    // plain throw chord with no motion attached
-    if ((chord === '1+3' || chord === '2+4') && moves[chord]) {
+    // directional chord: current facing-relative dir + chord (d/b+1+3 ...)
+    const dir = this.lastDir;
+    if (dir && dir !== 'n') {
+      const dchord = `${dir}+${chord}`;
+      if (moves[dchord]) {
+        this._recordMove(dchord);
+        return dchord;
+      }
+    }
+    // plain chord with no motion attached
+    if (moves[chord]) {
       this._recordMove(chord);
       return chord;
     }
