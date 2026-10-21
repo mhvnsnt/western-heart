@@ -212,6 +212,22 @@ def main():
     dbg = Debugger(ws)
     S = Session(dbg)
     emit({'t': 'version', 'r': dbg.request({'event': 'version', 'name': 'r5c', 'version': '1'})})
+    # Boot-wait (attempt-3 launch 1 raced this: under host load PPSSPP took
+    # >25s to start the CPU, pc sampled 0x0 and every bp.add returned
+    # 'CPU not started'). Poll until the game is running with a non-zero PC.
+    t_boot = time.time()
+    booted = False
+    while time.time() - t_boot < 300:
+        gs = dbg.request({'event': 'game.status'})
+        cs = dbg.request({'event': 'cpu.status'})
+        if gs and gs.get('game') and cs and cs.get('pc'):
+            booted = True
+            emit({'t': 'booted', 'game': gs.get('game'), 'pc': hex(cs['pc']),
+                  'wait_s': round(time.time() - t_boot, 1)})
+            break
+        time.sleep(2)
+    if not booted:
+        emit({'t': 'FATAL', 'why': 'game not running after 300s'}); return 1
     pcs = {}
     for _ in range(40):
         r = dbg.request({'event': 'cpu.status'})
@@ -219,13 +235,27 @@ def main():
             pcs[r['pc']] = pcs.get(r['pc'], 0) + 1
         time.sleep(0.5)
     emit({'t': 'pc_samples', 'top': {hex(k): v for k, v in sorted(pcs.items(), key=lambda x: -x[1])[:6]}})
+    pcs.pop(0, None)
     if not pcs:
-        emit({'t': 'FATAL', 'why': 'no pc samples'}); return 1
+        emit({'t': 'FATAL', 'why': 'no nonzero pc samples'}); return 1
     S.control_pc = max(pcs, key=pcs.get)
-    for nm, addr in [('loader', 0x89D27A0), ('wrapper', 0x8B559C8), ('ret', 0x89D27EC),
-                     ('inflate', 0x8B55BF0), ('control', S.control_pc)]:
-        emit({'t': 'bp.add', 'name': nm, 'addr': hex(addr),
-              'r': dbg.request({'event': 'cpu.breakpoint.add', 'address': addr, 'enabled': True})})
+
+    def arm():
+        ok = {}
+        for nm, addr in [('loader', 0x89D27A0), ('wrapper', 0x8B559C8), ('ret', 0x89D27EC),
+                         ('inflate', 0x8B55BF0), ('control', S.control_pc)]:
+            r = None
+            for _try in range(10):
+                r = dbg.request({'event': 'cpu.breakpoint.add', 'address': addr, 'enabled': True})
+                if r and r.get('event') != 'error':
+                    break
+                time.sleep(2)
+            ok[nm] = bool(r and r.get('event') != 'error')
+            emit({'t': 'bp.add', 'name': nm, 'addr': hex(addr), 'r': r})
+        emit({'t': 'bp.list', 'r': str(dbg.request({'event': 'cpu.breakpoint.list'}))[:600]})
+        return ok
+    S.arm = arm
+    arm()
     # wait up to 60s for first control hit as the in-session validity proof
     t0 = time.time()
     while time.time() - t0 < 60 and S.control_hits == 0:
@@ -267,6 +297,8 @@ def main():
                         emit({'t': 'regsprobe', 'gpr': {str(k): v for k, v in list(g.items())[:40]},
                               'raw': str(raw)[:1500],
                               'cpu_status': dbg.request({'event': 'cpu.status'})})
+                    elif parts[0] == 'rearm':
+                        emit({'t': 'rearm', 'ok': S.arm()})
                     elif parts[0] == 'status':
                         emit({'t': 'status', 'game': dbg.request({'event': 'game.status'}),
                               'cpu': dbg.request({'event': 'cpu.status'}),
