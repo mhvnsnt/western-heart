@@ -76,3 +76,37 @@ Verification (source-vs-retarget correlations, corrected bank):
 
 Correlations match v1, confirming the pipeline transfers correctly on the aligned data.
 **Use v2 going forward. v1 (`aki_to_tekken3_v1.json`) is deprecated.**
+
+## v3 — s8 unwrap fix + Rock set + gated bank bake (2026-10-21)
+
+Tool: `aki_to_tekken3_v3.py`. Outputs: `aki-rock-v3/*.json` (11 clips —
+the full CornerStone Rock set: MK-1240 Rock Bottom, MK-2843/MK-3473
+People's Elbow, MK-1885 Spinebuster, MK-3120 Stomp, MK-3659 Spinning DDT,
+and all five Rock taunts MK-4353/MK-4347/MK-4354/MK-4233/MK-4269).
+
+**The v3 fix (measured):** the AKI rotation channel is an angle modulo
+256 units stored as s8; joints rotating past +-127 wrap mid-clip (system
+clip 0x2DDA pelvis: 105, 121, 121, -103, 121, -103 — smooth only modulo
+256). v2 overlaid the wrapped series. v3 unwraps each joint series
+(period 256) before the overlay, and reads the King stance from this
+repo (`teardown/tekken3/models/king95/king95_stance0_pose.json`).
+
+**Bank bake attempt (the honest result):** `tools/anim/aki_row_bake.py`
+runs these poses through the game's full pipeline (PoseBuildMatrices →
+pose_assemble FK → frame_globals → t3_motion_bake retarget → wh-anim-pack/1)
+behind a quality gate calibrated on the king pack's 176 real rows
+(step gate 60.6 deg worst-bone mean step; height gate 0.70 m peak root
+height). **All 11 Rock clips FAIL** — attacks on both gates (74–109
+deg/frame limb whip), taunts on height (peak root height 0.52–0.53 m;
+own-eyes stick render shows a crumpled floor-level skeleton vs real row
+281's coherent stance). No rows were written; the pack is byte-identical.
+Full measurements: `docs/anim/AKI-BAKE-ROCK-2026-10-21.md`.
+
+**Root cause (verified in pose.py):** T3 arm/leg segment slots
+(4,5,8,9,12,13,15,16) are overwritten by the IK solver from the IK target
+channels; the Euler overlay cannot drive them. The remaining step is
+the one named in the v1 scope limits above, still open: AKI FK →
+wrist/ankle trajectories → T3 IK target channels (the YANM v2 pattern).
+AKI FK composition
+(PivotRotation + MovementXYZ → joint world positions) lives in the
+ROM's animation player code — Ghidra route, not guesswork.
