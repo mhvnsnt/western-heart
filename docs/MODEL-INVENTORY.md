@@ -58,14 +58,14 @@ Legend: ✅ WIRED (in `game/assets/models/` or a roster attire slot) · 📦 HAV
 | yukihyo.glb | Yukihyō | fighter hunt R2 | wired |
 | zafina.glb | **Mariposa** | T7 Zafina base | wired (renamed — use Mariposa everywhere) |
 | zen-body.glb | — | body shell | wired |
-| zui_alt1.glb / zui_alt2.glb | Zui | T7 Steve base | wired (later slots) |
+| zui_alt1.glb / zui_alt2.glb | Zui | T7 Steve base | wired (Zui alternates in ATTIRE_VARIANTS, 2026-10-21) |
 
 ### Roster slot GLBs (wired as attires)
 
 | Path | Character | Slot | Source |
 |---|---|---|---|
-| `roster/zui/attires/attire1/model.glb` | Zui | A1 DEFAULT | Tripo Drunken Monk (20.7MB) |
-| `roster/zui/attires/attire2/model.glb` | Zui | A2 | Tripo rework v2 |
+| `roster/zui/attires/attire1/model.glb` | Zui | A1 DEFAULT | Tripo Drunken Monk (20.7MB) — WIRED 2026-10-21: MODEL_URLS `zui-attire1`, default on both paths (model-key audit follow-up) |
+| `roster/zui/attires/attire2/model.glb` | Zui | A2 | Tripo rework v2 — WIRED 2026-10-21: MODEL_URLS `zui-attire2`, selectable alternate |
 | `roster/pantera/attires/classic/pantera-classic.glb` | Pantera | A3 | older build reskin |
 | `roster/pantera/attires/snow-leopard/pantera-snow-leopard.glb` | Pantera | A3 alt | snow-leopard reskin (tweaked) |
 | `roster/pantera/attires/leomon/model.glb` | Pantera | A2 · Leo man | owner's model via Google Drive (restored 2026-10-20) — WH-Canonical-22 rig, T3 King clips embedded |

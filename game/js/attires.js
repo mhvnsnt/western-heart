@@ -81,6 +81,18 @@ export const ATTIRE_VARIANTS = {
     { model: 'pantera', label: 'ATTIRE 1' },
     { model: 'pantera-leoman', label: 'ATTIRE 2 · LEO MAN' },
   ],
+  /* ZUI's ladder (model-key audit follow-up, 2026-10-21): A1 = Drunken Monk
+     Tripo (DEFAULT), A2 = Rework v2 Tripo; the steve-fox canon base and the
+     T7 Steve reskins (zui_alt1/zui_alt2) ladder back as alternates. Keyed by
+     fighter id — his roster model is 'zui-attire1', so attiresFor's id
+     fallback is what finds this list (same pattern as Kevin's entry above). */
+  'zui': [
+    { model: 'zui-attire1', label: 'ATTIRE 1 · DRUNKEN MONK (TRIPO)' },
+    { model: 'zui-attire2', label: 'ATTIRE 2 · REWORK V2' },
+    { model: 'steve-fox', label: 'BASE · STEVE FOX (CANON)' },
+    { model: 'zui_alt1', label: 'ALT 1 · T7 STEVE RESKIN' },
+    { model: 'zui_alt2', label: 'ALT 2 · T7 STEVE RESKIN' },
+  ],
 };
 
 function loadMap() {
