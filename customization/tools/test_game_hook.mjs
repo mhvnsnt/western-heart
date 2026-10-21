@@ -55,6 +55,12 @@ async function load(tag, registrySource) {
   return import(pathToFileURL(join(sb, 'js', 'assets.js')).href);
 }
 
+// Pristine baseline: assets.js with an EMPTY registry. Phase 4b must compare
+// against this — comparing against the real-registry load would demand that
+// an empty registry reproduce the override, which fails by construction as
+// soon as any real override exists.
+const pristine = await load('pristine', 'export const ATTIRE_CUSTOMIZATIONS = {};\n');
+
 // 1+2: loads with the real registry; MODEL_URLS populated.
 const real = await load('real');
 if (!real.MODEL_URLS || typeof real.MODEL_URLS !== 'object') fail('MODEL_URLS not exported by assets.js');
@@ -73,7 +79,7 @@ for (const [k, v] of Object.entries(ATTIRE_CUSTOMIZATIONS)) {
 console.log(`SMOKE registry: ${Object.keys(ATTIRE_CUSTOMIZATIONS).length} override(s), all resolve + applied`);
 
 // 4a: synthetic override replaces the base entry.
-const base = real.MODEL_URLS['baek-master-white'];
+const base = pristine.MODEL_URLS['baek-master-white'];
 const over = await load('override',
   "export const ATTIRE_CUSTOMIZATIONS = { 'baek-master-white': '../roster/baek/attires/master-white/model-custom.glb' };\n");
 if (over.MODEL_URLS['baek-master-white'] !== '../roster/baek/attires/master-white/model-custom.glb')
