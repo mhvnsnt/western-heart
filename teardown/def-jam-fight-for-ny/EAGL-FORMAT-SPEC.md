@@ -1,9 +1,14 @@
 # Def Jam: Fight for NY — EAGL Format Spec (Phase R, J4)
 
-**Date:** 2026-10-20 · **Lane:** creation-suite gap-fill J4 (Def Jam converter)
-**Status:** Outer format **closed with evidence**. Geometry vertex-stream
-layout is the one remaining open layer; the route to close it is named in
-§6. This spec supersedes the guesses in `EAGL-FORMAT-ANALYSIS.md` (kept
+**Date:** 2026-10-20 (Phase R) · amended 2026-10-21 (Phase V)
+**Lane:** creation-suite gap-fill J4 (Def Jam converter)
+**Status:** Outer format **closed with evidence** (Phase R). Geometry
+vertex-stream layout **closed in Phase V** — see §7 (the §6 route was
+executed: Ghidra on `SLUS_210.04` + cross-part differentials + the
+compiled `_C` twin as ground truth). Two sub-layers are documented
+open in §7, with evidence, and are NOT guessed: the Normals stream's
+payload encoding, and UV/STQ data (absent from the A/B `.o` files).
+This spec supersedes the guesses in `EAGL-FORMAT-ANALYSIS.md` (kept
 for history); where the two disagree, this spec is right and says why.
 
 ## 0. The headline correction
@@ -125,6 +130,9 @@ catalogs in `customization/parts-converted/CATALOG.json`'s family.
 
 ## 6. The one open layer, and how it closes
 
+**CLOSED in Phase V — see §7.** (This section is kept as written in
+Phase R; it records the plan that was executed.)
+
 Open: vertex-stream field layout inside `.data[0x2F70…]`, and the exact
 semantics of the header counts at `0x2F50–0x2F6F`. Sanctioned routes, in
 order (no hand-guessed parsers):
@@ -143,3 +151,154 @@ order (no hand-guessed parsers):
 
 Phase B (all 22,360) additionally waits for the coordinator's
 Blender-slot release (one Blender-heavy lane at a time).
+
+
+## 7. Phase V closure — the vertex-stream layout (PROVEN)
+
+### 7.1 How it was closed (three independent evidence lines)
+
+1. **Ghidra on the executable.** `SLUS_210.04` (fetched byte-exact
+   from the TEARDOWN.md ISO via the surgical Range method: ISO root
+   dir at LBA 261, `SLUS_210.04;1` at LBA 1941376, 3,139,200 bytes;
+   stripped MIPS ELF, single LOAD segment, vaddr = fileoff +
+   0xFF000) was analyzed with Ghidra 12.1.4, language
+   `r5900:LE:32:default`. The exe embeds the full EAGL runtime:
+   - `_BuildMorph` error string at vaddr 0x3CBC68, xref at 0x19FB1C;
+     the function at **0x19F970** is the CMorph stream/name lookup;
+     it calls **0x19FBD8**, which calls the CMorph helpers at
+     **0x114BC0 / 0x114C38**; CMorph load at **0x1149B4**.
+   - `CVertexInformation::Init` at **0x11EB88**; its member strings
+     `mpVertex` / `m_pColour` / `m_pSTQ` at 0x3AFA68 / 0x3AFA90 /
+     0x3AFAB8 (xrefs 0x11EB9C / 0x11EBB4 / 0x11EC08).
+   - `CModel` loads `"%s/%s.o"` — the A/B `.o` files are the runtime
+     source format.
+   The CPU-side loader only walks objects and passes stream pointers
+   through; per-vertex consumption happens in VU1 microcode on the
+   PS2. The loader therefore confirms the *object* structure below,
+   while the *record* layout is proven by lines 2 and 3.
+2. **Cross-part differential analysis** on 18 decompressed `.o` files
+   (slots 110/111/112/113, variants A/B/D/E/F): every framing rule in
+   §7.2 was checked byte-exactly on every strip block of every file —
+   the converter asserts header zeros, strip indices, and end
+   markers as it walks, and the Coordinates stream ends *exactly* on
+   the Normals object in all samples.
+3. **The compiled `_C` twin as ground truth.** `V2CP_110_0001_C.o` is
+   the compiled GeoPrim form of the same part as
+   `V2CP_110_0001_A/B.o`. Its strip-descriptor table (in `.data` at
+   0x17CA0, stride 0x10: `[flags|count][byteSize][dataAddr][index]`,
+   index running 1..27) carries per-strip vertex counts that match
+   the A/B block headers **exactly, all 27 strips, in order**
+   ([52, 48, 50, 51, 43, 43, 10, 36, 37, 44, 38, 42, 50, 54, 53, 42,
+   48, 52, 50, 45, 42, 32, 34, 40, 48, 49, 27], sum 1,160). Its
+   symbols prove the topology: `PT_TRIANGLESTRIP` (GeoPrimState),
+   and its variable names are the same "Coordinates" / "Normals" /
+   "Colours". The `_C` file's own packed stream encoding is a
+   separate, still-open layout (not needed: A/B are the source form).
+
+### 7.2 The Morph / stream-object layout (`.data`-relative, part 110_0001)
+
+| Offset | Content |
+|---|---|
+| 0x2F10 | string "Morph" (root name) |
+| 0x2F16 | string "Coordinates"; 0x2F22 string "Normals" |
+| 0x2F2C | Morph root: name ptr → "Morph", 0, 1, ptr, ptr, 0, stream count = 2 at +0x18 |
+| 0x2F34 | symbol `__Morph:::morph.modelname` |
+
+Each **stream object is a 32-byte header**:
+
+| +0x00 | name pointer (R_MIPS_32) → "Coordinates" / "Normals" |
+| +0x04 | 1 |
+| +0x08 | 0 |
+| +0x0C | u32 strip count (27 for slots 110/113 samples; 28–32 others) |
+| +0x10 | i16 count field + i16 stream marker |
+| +0x14 | first strip block |
+
+Count field / marker per stream: Coordinates (312, −8192 = 0xE000),
+Normals (624, −16384 = 0xC000) for part 110_0001; the Normals count
+field is always exactly 2× the Coordinates one in samples. The count
+field's full semantics are not proven (it is NOT the unique-vertex
+count: 110_0001 has 505 unique vertices vs count 312) — the
+converter does not rely on it.
+
+### 7.3 Strip block framing (both streams)
+
+```
+[6 x i16 header: vertexCount, 0, 0, 0, stripIndex, 0]
+[vertexCount x record]
+  Coordinates record = 3 x i16 (x, y, z)
+  Normals record     = 6 x i16 (payload, see §7.5)
+[if vertexCount x record is odd-length in i16 (Coordinates with an
+  odd vertexCount): ONE pad i16 immediately after the data]
+[non-final blocks only: i16 trailer (undecoded), i16 stream marker]
+```
+The final block has no trailer/marker: its data ends exactly on the
+next stream object (or end of `.data`). Marker values: −8192
+(Coordinates), −16384 (Normals) — the "recurring sentinels" of the
+Phase R notes are these block markers, and the Phase R "header
+counts" (0x1B / 312 / 52) are the stream header's strip count /
+count field / first block's vertex count.
+
+### 7.4 Coordinates semantics
+
+Records are smooth geometric positions (mean |Δ| ≈ 412 between
+neighbours; blocks include x-negated mirrored strips — left/right
+symmetry of the garment). Frame: x symmetric about 0 (110_0001_A:
+x ∈ [−1156, 1156]); z is the long axis (spans 4,069–5,089 across
+slots); y the smallest (669–969). No scale is stored in the file for
+positions (bone-transform floats in the same `.o`, by contrast, are
+~±10–21 units). Converter choices, documented in
+`convert_defjam_o.py`: `POS_SCALE = 1/1024`, axis map
+(x, y, z) → (x, z, −y) into glTF's right-handed Y-up frame, topology
+= triangle strips converted with standard alternating winding.
+
+### 7.5 Normals payload — framed, encoding OPEN (not guessed)
+
+The Normals stream is framed exactly like Coordinates (6×i16
+records; all block headers/markers verified on all samples), but its
+payload is NOT plain vectors: byte entropy 7.29 bits/byte (vs 5.70
+for Coordinates), zero correlation with the Coordinates data
+(r ≈ −0.0004), and i16, byte-swapped i16, f32 LE/BE, half-swapped
+f32 and nibble-swapped readings all fail smoothness tests. It is a
+VU1-consumed packed encoding. The converter therefore computes
+smooth normals from the proven strip geometry
+(`normals_source=computed_from_geometry` in the catalog) and does
+not emit the payload as normals.
+
+### 7.6 Textures — SHPS layout CLOSED
+
+Decompressed `.ssh` = SHPS, 1 entry ("G359"/"0000", data offset
+0x70; "Buy ERTS" block between directory and data). Image header at
+the data offset (per the Q3R ssh2tga format documentation,
+Yagotzirck/Q3R_tools, from XeNTaX SHPS research): u32 = type (low
+byte; 2 = paletted 8bpp) | next-header offset << 8; u16 width, u16
+height (256×256 in samples). Pixels follow at +16, PS2 GS-swizzled
+(unswizzle = the standard published PS2 8bpp permutation, as in
+ReverseBox); the palette header sits at header+nextHdrOffset (first
+byte 0x21, size field 0x410 = 16 + 1024), followed by 256 RGBA
+entries stored **linear** (FFNY palettes are not CSM-swizzled —
+verified by eye). PS2 alpha 0x80 = opaque (decoded as min(255, a·2)).
+Trailer after the palette contains the "EAGL240 metal bin
+attachment" string. Byte accounting on
+`V2CP_111_0001_A01_01.ssh` is exact: 128 + 65,536 + 16 + 1,024 +
+336 = 67,024. Decoded textures viewed and confirmed (denim garment
+with seams/pockets for 111_0001; patterned garment for 113_0001).
+Decoder: `customization/tools/eagl_shps.py`.
+
+### 7.7 UVs — absent from the A/B files (proven inventory)
+
+The Morph objects carry exactly two streams (Coordinates, Normals).
+STQ data exists only in the compiled `_C` GeoPrim form
+(`CVertexInformation::m_pSTQ`), whose packed layout is open. The
+converter therefore emits the decoded texture PNG next to the GLB
+and records `uv_status=absent_in_o_file` in the catalog; it does NOT
+bind a texture into the GLB — a bind without UVs would fabricate
+data. Sample renders are untextured clay by necessity, and the
+verdict in the PR's SAMPLES.md says so plainly.
+
+### 7.8 `_C` variant handling
+
+`_C` files (8-byte prefix before the RefPack record, ~112 symbols,
+no Morph stream objects — GeoPrimState/PT_* symbols instead) are
+detected by the converter and reported `status=compiled_variant`;
+they are never fed to the Morph parser. How many of the 22,360
+indexed parts are `_C` vs Morph-form is a Phase B census item.
