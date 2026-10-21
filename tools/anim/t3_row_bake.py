@@ -27,13 +27,28 @@ sys.path.insert(0, str(REPO / "lab/tools"))
 import t3_motion_bake as TB  # noqa: E402  (sets up the decoder import paths)
 
 SRC2BANK = {"king": "king", "demonio": "jin", "jin": "jin", "bryan": "bryan", "xiaoyu": "xiaoyu",
-            "yoshimitsu": "yoshimitsu", "gunjack": "gunjack", "bosconovitch": "gunjack",
-            "deviljin": "jin", "heihachi": "heihachi"}
+            "yoshimitsu": "yoshimitsu", "gunjack": "gunjack",
+            "deviljin": "jin", "heihachi": "heihachi",
+            # Remainder banks (2026-10-20, anim-bank wiring lane): every
+            # source maps to its OWN bank; bosconovitch -> bosconovitch
+            # retires the gunjack stand-in above (runtime SOURCE_TO_BANK
+            # made the same fix in PR #405).
+            "paul": "paul", "lei": "lei", "nina": "nina", "hwoarang": "hwoarang",
+            "eddy": "eddy", "julia": "julia", "anna": "anna",
+            "bosconovitch": "bosconovitch", "armorking": "armorking"}
 BANK_DIR = {"king": "king_on_pantera_leoman", "jin": "jin", "xiaoyu": "xiaoyu", "bryan": "bryan",
-            "gunjack": "gunjack", "yoshimitsu": "yoshimitsu", "heihachi": "heihachi_on_jin"}
+            "gunjack": "gunjack", "yoshimitsu": "yoshimitsu", "heihachi": "heihachi_on_jin",
+            "paul": "paul", "lei": "lei", "nina": "nina", "hwoarang": "hwoarang",
+            "eddy": "eddy", "julia": "julia", "anna": "anna",
+            "bosconovitch": "bosconovitch", "armorking": "armorking"}
 TARGET_GLB = {"king": "lab/game/assets/pantera_leoman.glb", "jin": "lab/game/assets/t3_jin.glb",
               "xiaoyu": "lab/game/assets/t3_xiaoyu.glb", "bryan": "lab/game/assets/t3_bryan.glb",
-              "gunjack": "lab/game/assets/t3_gunjack.glb", "yoshimitsu": "lab/game/assets/t3_yoshimitsu.glb"}
+              "gunjack": "lab/game/assets/t3_gunjack.glb", "yoshimitsu": "lab/game/assets/t3_yoshimitsu.glb",
+              "paul": "lab/game/assets/t3_paul.glb", "lei": "lab/game/assets/t3_lei.glb",
+              "nina": "lab/game/assets/t3_nina.glb", "hwoarang": "lab/game/assets/t3_hwoarang.glb",
+              "eddy": "lab/game/assets/t3_eddy.glb", "julia": "lab/game/assets/t3_julia.glb",
+              "anna": "lab/game/assets/t3_anna.glb", "bosconovitch": "lab/game/assets/t3_bosconovitch.glb",
+              "armorking": "lab/game/assets/t3_armorking.glb"}
 
 
 def referenced_rows(bank):
