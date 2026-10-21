@@ -158,8 +158,9 @@ class GlbBuilder:
         a = {'bufferView': bvi, 'componentType': ct, 'type': typ,
              'count': int(arr.shape[0])}
         if typ in ('VEC3', 'VEC2', 'SCALAR') and ct == 5126:
-            a['min'] = arr.min(0).tolist()
-            a['max'] = arr.max(0).tolist()
+            flat = arr.reshape(arr.shape[0], -1)
+            a['min'] = flat.min(0).tolist()
+            a['max'] = flat.max(0).tolist()
         self.accs.append(a)
         return len(self.accs) - 1
 
