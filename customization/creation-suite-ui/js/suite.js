@@ -125,6 +125,81 @@ async function selectRosterAttire(fighter, attireId){
   ui.selPart=null; hidePlaceDock();
   persistQuiet();
   await loadBaseModel();
+  // Item 4: if this attire has an in-repo customization.json and no local
+  // record existed for it, fetch + restore it (per-attire save format).
+  if(fighter && !F.records[currentKey()]){
+    const ra2 = rosterAttire(fighter, attireId);
+    if(ra2 && ra2.customization_json){
+      try{
+        const r = await fetch('../../'+ra2.customization_json);
+        if(r.ok){ const rec = await r.json();
+          if(rec && rec.app==='wh-creation-suite'){ applyCustomizationRecord(rec); stashCurrent(); persistQuiet(); renderAll(); toast('Restored customization.json ✓'); } }
+      }catch(e){ console.warn('[WH] customization.json fetch failed', e); }
+    }
+  }
+}
+
+/* ---------- per-attire customization record (customization.json v1) ---------- */
+function customizationRecord(){
+  const a = attire();
+  const parts={}, textures=[];
+  for(const [slotKey, partId] of Object.entries(a.equipped)){
+    const p = PARTS.find(x=>x.id===partId); if(!p) continue;
+    const key = p.suite_slot || slotKey;
+    if(p.part_class==='mesh_part' && p.glb){
+      parts[key] = { part_id:p.id, glb:p.glb,
+        placement: a.placements[p.id] || (p.placement? { px:(p.placement.offset||[0,0,0])[0], py:(p.placement.offset||[0,0,0])[1], pz:(p.placement.offset||[0,0,0])[2], rx:(p.placement.rotation||[0,0,0])[0], ry:(p.placement.rotation||[0,0,0])[1], rz:(p.placement.rotation||[0,0,0])[2], s:p.placement.scale||1 } : null) };
+    } else {
+      textures.push({ part_id:p.id, kind:p.kind||p.suite_slot, image:p.asset||p.glb,
+        material:(p.placement&&p.placement.material)||null,
+        rect:(p.placement&&p.placement.pixel_rect)||null });
+      if(p.part_class==='mesh_part') parts[key] = { part_id:p.id, glb:null, placement:null, geometry_pending:true };
+    }
+  }
+  const morphs={}; for(const [k,v] of Object.entries(F.morphs||{})) if(v) morphs[k]=v;
+  return { version:1, app:'wh-creation-suite',
+    fighter: F.mode==='roster' ? F.rosterRef.fighter : 'blank',
+    attire: F.mode==='roster' ? F.rosterRef.attire : `attire${F.attireIndex+1}`,
+    base_glb: F.baseGlb, out_glb: null,
+    body:{ body_type:F.body.body_type, skin_tone:F.body.skin_tone },
+    morphs, parts, textures,
+    colors:{ hair:(a.colors&&a.colors.hair)||null, skin:F.body.skin_tone } };
+}
+function applyCustomizationRecord(rec){
+  if(rec.body){ if(rec.body.body_type) F.body.body_type=rec.body.body_type;
+    if(rec.body.skin_tone) F.body.skin_tone=rec.body.skin_tone; }
+  F.morphs = rec.morphs||{};
+  const a = attire();
+  a.equipped={}; a.placements={};
+  for(const [slot, entry] of Object.entries(rec.parts||{})){
+    if(!entry || !entry.part_id) continue;
+    a.equipped[slot]=entry.part_id;
+    if(entry.placement) a.placements[entry.part_id]=entry.placement;
+    if(!a.owned.includes(entry.part_id)) a.owned.push(entry.part_id);
+  }
+  for(const t of (rec.textures||[])){
+    if(!t || !t.part_id) continue;
+    const p = PARTS.find(x=>x.id===t.part_id);
+    a.equipped[(p&&p.suite_slot)||'face']=t.part_id;
+  }
+  if(rec.colors && rec.colors.hair){ a.colors=a.colors||{}; a.colors.hair=rec.colors.hair; }
+}
+function saveToAttire(){
+  stashCurrent(); persistQuiet();
+  const rec = customizationRecord();
+  const json = JSON.stringify(rec, null, 2);
+  const blob = new Blob([json], {type:'application/json'});
+  const aEl = document.createElement('a'); aEl.href=URL.createObjectURL(blob);
+  aEl.download='customization.json'; aEl.click(); URL.revokeObjectURL(aEl.href);
+  modal('SAVE TO ATTIRE — customization.json',
+    `<p>Record for <b>${esc(rec.fighter)} / ${esc(rec.attire)}</b> (base: <span class="chip">${esc(rec.base_glb||'')}</span>) was persisted locally and downloaded as <b>customization.json</b>.</p>
+     <p class="note">Same flow as dome-params.json: drop the downloaded file into the attire folder in the repo
+     (<span class="chip">${F.mode==='roster' ? esc((rosterAttire(F.rosterRef.fighter, F.rosterRef.attire)||{}).dir||'') : 'blank fighter — no repo folder'}</span>)
+     and commit it — the next time this attire is selected here, the suite fetches that file and restores it automatically.</p>
+     <textarea id="cust-json-copy" readonly rows="12" style="width:100%;background:#0a0d15;color:var(--txt);border:1px solid var(--line);border-radius:8px;font-family:ui-monospace,monospace;font-size:11px">${esc(json)}</textarea>`,
+    [{label:'DONE', cls:'btn-gold'}]);
+  const t=document.querySelector('#cust-json-copy'); if(t){ t.focus(); t.select(); }
+  toast('Saved to attire ✓');
 }
 const esc = s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
@@ -608,8 +683,15 @@ function renderProfile(el){
     <div class="field"><label>SHORT NAME</label><input data-pk="short_name" type="text" value="${esc(pf.short_name)}"></div>
     <div class="sect">WESTERN HEART CANON</div>
     <div class="field"><label>SOUL</label><select data-pk="soul">${SOULS.map(s=>`<option ${pf.soul===s?'selected':''}>${s}</option>`).join('')}</select></div>
-    <div class="note">🔒 Moveset, AI style, parameters shared across all 4 attire slots (No Mercy rule).</div>`;
+    <div class="note">🔒 Moveset, AI style, parameters shared across all 4 attire slots (No Mercy rule).</div>
+    <div class="sect">PER-ATTIRE SAVE — customization.json</div>
+    <div class="note">Records are keyed <b>fighter + attire</b> in this suite. <b>Save to Attire</b> persists the record, downloads <span class="chip">customization.json</span> and shows a copyable panel.
+      Drop that file into the attire's repo folder and commit it — the same flow as <span class="chip">dome-params.json</span> for Doc Frank's dome — and selecting this attire here restores it automatically.</div>
+    <div class="btn-row"><button class="btn btn-blue" id="prof-save-attire">🎽 SAVE TO ATTIRE</button></div>
+    <div class="kv"><span>Current record key</span><b id="prof-rec-key"></b></div>`;
   el.querySelectorAll('[data-pk]').forEach(i=>i.onchange=()=>{ F.profile[i.dataset.pk]=i.value; renderTopbar(); persistQuiet(); });
+  const rk=el.querySelector('#prof-rec-key'); if(rk) rk.textContent=currentKey();
+  const ps=el.querySelector('#prof-save-attire'); if(ps) ps.onclick=saveToAttire;
 }
 function renderMoveset(el){
   $('#panel-sub').textContent='Tap slot → scroll library → tap to assign';
@@ -725,6 +807,7 @@ $('#btn-roster').onclick=()=>{
   });
 };
 $('#btn-save').onclick=persist;
+{ const bsa=$('#btn-save-attire'); if(bsa) bsa.onclick=saveToAttire; }
 /* Stream 4: in-game wiring — back to the game menu (saves first). */
 { const bg=$('#btn-back-game'); if(bg) bg.onclick=()=>{ persistQuiet(); window.location.href='../../game/index.html'; } }
 $('#btn-export').onclick=()=>{
@@ -755,7 +838,7 @@ async function boot(){
   if(!Array.isArray(F.records)) F.records = F.records||{};
   if(F.mode==='roster' && (!F.rosterRef || !rosterAttire(F.rosterRef.fighter, F.rosterRef.attire))){ F.mode='blank'; F.rosterRef=null; F.baseGlb=BLANK_GLB; }
   viewer=new SuiteViewer($('#stage3d'));
-  window.__suite={ viewer, get F(){return F;}, ui, setTab, selectRosterAttire, get ROSTER(){return ROSTER;} };
+  window.__suite={ viewer, get F(){return F;}, ui, setTab, selectRosterAttire, customizationRecord, currentKey, get ROSTER(){return ROSTER;}, get PARTS(){return PARTS;} };
   viewer.onReady=()=>{ renderAll(); };
   await loadBaseModel();
   renderAll();
