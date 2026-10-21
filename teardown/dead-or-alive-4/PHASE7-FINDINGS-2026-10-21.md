@@ -185,4 +185,9 @@ skinned GLB), already in git at `tools/phase6/`.
 - Capstone 5.0.7 (BSD) — XEX disassembly checks in
   `tools/phase7/dis_sbox.py`, `scan_refs2.py`.
 - parkerallan/doa4-recomp (XenonRecomp output for this XEX) —
-  consulted as cross-reference lineage (Audit 19); no code copied.
+  cloned this lane (HEAD, generated C++ in `generated/default/`)
+  and grepped: no `chrone`/`anm`/`adxf` references exist in the
+  generated code (file names live in data, not code), so the recomp
+  offers no shortcut to the loader; tracing the .data descriptor
+  tables' runtime-buffer writers through it remains possible
+  future work. No code copied.
