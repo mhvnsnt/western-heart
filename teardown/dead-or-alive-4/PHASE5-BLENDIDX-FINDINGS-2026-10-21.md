@@ -134,13 +134,23 @@ chrthree.afs @ 2135433728).
   moderate/poor small decls). Overall: moderate, a step below pkg00 v4.
 
 ### chrone pkg00 — assembled in phase 4 (PR #427), pose-test renders §4.
-### chrtwo pkg00 — segments 59/59 located (XPR2 @ chrtwo 0x1DF000, graph
-59 objects); strip pairing running at doc time (first attempt was killed
-by a VM restart mid-pairing — the same hazard that killed the predecessor;
-rerun uses coverage-first candidate pruning).
+### chrtwo pkg00 — ASSEMBLED, PARTIAL (chrtwo_pkg00_v1.glb, 59 meshes)
+- XPR2 @ chrtwo 0x1DF000; graph = 59 objects; segments located 59/59
+  (bytes = chrtwo.afs [0, 0x1400000) range-pulled from mirror part-03).
+- Quality: clean 7 / moderate 43 / poor 9 — the weakest of the three.
+- Front render VIEWED (`chrtwo-pkg00-assembled-v1-front.png`): the torso
+  is a smooth coherent shell (sleeveless top, collar opening, chest
+  emblem, arm stubs) but the lower body collapses into crumpled shards —
+  lower decls mis-paired under part reuse. Stated plainly: chrtwo pkg00
+  is a torso-grade assembly, NOT a clean character yet. (First pairing
+  attempt was also killed by a VM restart mid-run; the landed build uses
+  coverage-first top-3 candidate pruning, `batch_build_chrtwo.py`, which
+  may itself cost some geometry-score accuracy vs full scoring.)
 
-Viewed front renders so far: pkg00 bind, pkg00 bend14z, pkg00 bend28z,
-pkg01 front = 4.
+Characters assembled this phase: chrone pkg01 (complete, moderate) +
+chrtwo pkg00 (partial) — plus chrone pkg00 from phase 4 = 3 characters.
+Viewed front renders: pkg00 bind, pkg00 bend14z, pkg00 bend28z, pkg01
+front, chrtwo front = 5.
 
 ## 6. Job 3 — TX2D (stretch): NOT COMPLETED — narrowed lead, no guessing
 
