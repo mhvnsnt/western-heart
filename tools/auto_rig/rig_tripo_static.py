@@ -19,8 +19,9 @@ Wiring the rigged file into game/js/assets.js stays a reviewed step (the script 
     python3 tools/auto_rig/rig_tripo_static.py --in roster/X/attires/attire1/model.glb \\
         --report-dir docs/proof/<date>/auto-rig-X [--facing +Z] [--keep-work]
 
-Env: WH_BLENDER (Blender 4.0.2 binary), NODE_PATH (folder holding @gltf-transform + meshoptimizer;
-tools/setup/setup_toolchain.sh installs both). Exit code 0 only when every step ran; the gate
+Env: WH_BLENDER (Blender 4.0.2 binary), NODE_PATH (the node_modules folder holding @gltf-transform +
+meshoptimizer; tools/setup/setup_toolchain.sh installs both; the codec runs from a copy linked to it,
+since ES modules ignore NODE_PATH). Exit code 0 only when every step ran; the gate
 verdicts are reported in <report-dir>/rig_report.json and must be read (UNKNOWN is never PASS).
 """
 import argparse
@@ -65,9 +66,16 @@ def main():
     work = tempfile.mkdtemp(prefix="wh-rig-")
     log = os.path.join(work, "steps.log")
     dec, rig = os.path.join(work, "decoded.glb"), os.path.join(work, "rigged.glb")
+    # ES modules ignore NODE_PATH: run a copy of the codec beside a node_modules link instead.
+    codec = CODEC
+    if os.environ.get("NODE_PATH") and not os.path.isdir(os.path.join(os.path.dirname(CODEC), "node_modules")):
+        cdir = os.path.join(work, "codec")
+        os.makedirs(cdir)
+        os.symlink(os.environ["NODE_PATH"].split(os.pathsep)[0], os.path.join(cdir, "node_modules"))
+        codec = shutil.copy(CODEC, os.path.join(cdir, "gltf_codec.mjs"))
     bl = ["xvfb-run", "-a", "env", "-u", "PYTHONPATH", "XDG_RUNTIME_DIR=/tmp", blender, "-b", "--factory-startup", "--python"]
 
-    run(["node", CODEC, "decode", a.inp, dec], log=log)
+    run(["node", codec, "decode", a.inp, dec], log=log)
     cmd = bl + [os.path.join(HERE, "backends", "gamerig_backend.py"), "--", "--in", dec, "--out", rig,
                 "--height", a.height, "--donor", DONOR, "--clip", "CMU135_04_boxing", "--clip-start", "240",
                 "--clip-frames", "72", "--clip-step", "4", "--metrics-out", os.path.join(a.report_dir, "gamerig_metrics.json")]
@@ -95,7 +103,7 @@ def main():
     run(bl + [os.path.join(HERE, "render_poses.py"), "--", rig, pose_dir, times], log=log)
     for fn in os.listdir(pose_dir):
         shutil.copy(os.path.join(pose_dir, fn), os.path.join(a.report_dir, fn))
-    run(["node", CODEC, "encode", rig, out], log=log)
+    run(["node", codec, "encode", rig, out], log=log)
     vtxt = val.stdout[val.stdout.find("{"):] if "{" in val.stdout else "{}"
     try:
         vjs = json.loads(vtxt)
