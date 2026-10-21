@@ -77,13 +77,20 @@ const MOVESET_MAP = {
 /* Animation bank for a fighter (GYRO-ARMS FIX 2026-10-19).
    A fighter plays the REAL T3 motion bank of the moveset SOURCE their
    frame data was built from (per-fighter moveset JSON t3_source first,
-   MOVESET_MAP as fallback) — mapped through the SOURCE_TO_BANK fixups
-   in t3anims.js (demonio -> jin bank, bosconovitch -> gunjack,
-   deviljin -> jin). Returns the bank id, or null when no decoded bank
-   exists for the source (heihachi): those fighters get NO T3 actions —
-   embedded locomotion + procedural combat — never another
-   character's clips. */
+   MOVESET_MAP as fallback) — mapped through SOURCE_TO_BANK in
+   t3anims.js (demonio -> jin bank, deviljin -> jin; bosconovitch and
+   heihachi resolve to their own real banks since 2026-10-20).
+   Returns the bank id, or null when no decoded bank exists for the
+   source: those fighters get NO T3 actions — embedded locomotion +
+   procedural combat — never another character's clips. */
 export function bankIdFor(charId, movesetId) {
+  // Armor King override (2026-10-20, T3 bank remainder lane): his
+  // t3_source is 'king', but the 'king' bank is King motion retargeted
+  // onto the pantera_leoman rig for Pantera. The 'armorking' bank is
+  // the SAME divmot03_king motion baked on King's OWN rig, matching
+  // Armor King's King-proportioned model. Every other king-source
+  // fighter keeps the king_on_pantera_leoman bank untouched.
+  if (charId === 'armor-king') return 'armorking';
   let src = null;
   try { src = getFighterMoveset(movesetId || charId)?.t3_source || null; } catch (e) { /* per-fighter movesets not loaded yet */ }
   if (!src) src = MOVESET_MAP[movesetId || charId] || MOVESET_MAP[charId] || null;
