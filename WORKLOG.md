@@ -194,3 +194,33 @@ got powers of ice and electricity". Two owner Tripo links (Attire 1 + Attire 2).
   `~/workspace/your_files/charger-attire2-front-20261020.png`.
 - Node smoke test: roster module loads, `charger` + `charger-attire2` resolve,
   charger.json move count == blanka.json (199).
+
+
+---
+
+# WORKLOG — WMXIX texture remainder decode (Job 2, 2026-10-20, branch cs-gapfill/j2-wmxix-tex-remainder)
+
+Owner order (2026-10-20 ~22:14 CDT, creation-suite gap-fill): the WMXIX
+texture batch decode remainder from the wiring audit.
+
+- New tool `customization/tools/decode_wmxix_tex_remainder.py` (pure
+  Python, no Blender): parses the .tex little-endian container directory
+  and decodes the first entry with the validated TPL tile math, extended
+  to accept the variant TPL magic 0x0120AF30 that blocked all 426
+  remaining .tex files; plus standalone TPL, TGA (PIL), TIM2 (indexed-8,
+  CSM1 CLUT unswizzle, verified against the sibling TGA), and PSD
+  (PIL + a PackBits RLE composite reader for the file PIL rejects).
+- Batch result: 433 of 446 target entries decoded to PNG under
+  `customization/parts-converted/wmxix-textures/`; CATALOG.json WMXIX
+  converted textures 1,044 -> 1,477; blocked_no_tpl 426 -> 0.
+  Remaining 13 proven non-textures (8 .ycg palette data, 1 build
+  script.txt, 3 .ymm YOBJ meshes, 1 .tpg index) carry detail reasons.
+- Unified runtime catalog regenerated with `build_suite_catalog.py`
+  (total unchanged 4,523; WMXIX texture assets 1,044 -> 1,477).
+  Creation-suite tests by filename: catalogs.test.js 5/5, dna.test.js 4/4.
+- Full counts, per-class forensic evidence, and proof:
+  `customization/parts-converted/WMXIX-TEX-REMAINDER-REPORT-2026-10-20.md`.
+- Environment note: this VM intermittently denies file-write flushes
+  (Errno 1, silent 0-byte truncation) — the tool verifies every write by
+  read-back and retries, with a perl-pipe fallback; all 1,477 output
+  PNGs re-verified on disk after the batch (0 missing, 0 invalid).
