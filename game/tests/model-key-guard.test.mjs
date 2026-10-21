@@ -337,6 +337,10 @@ const OWNERSHIP = {
     "base": "steve-fox"
   },
   "zui": {
+    "own": [
+      "zui-attire1",
+      "zui-attire2"
+    ],
     "base": "steve-fox"
   }
 };

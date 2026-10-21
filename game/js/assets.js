@@ -32,6 +32,13 @@ export const MODEL_URLS = {
   'diablo-attire1': '../roster/diablo/attires/attire1/model.glb',
   // Diablo Attire 2 — Devil God (owner 2026-10-20, Tripo pull).
   'diablo-attire2': '../roster/diablo/attires/attire2/model.glb',
+  // ZUI Attires 1+2 (owner Tripos; gap found by the model-key audit, PR #418):
+  // A1 = Drunken Monk Tripo, his DEFAULT attire (roster/zui/ATTIRE-SLOTS.md,
+  // owner 2026-10-18). The GLBs sat in roster/zui/attires/ with NO MODEL_URLS
+  // keys — unreachable. steve-fox.glb (his canon base) stays wired below and
+  // ladders back as a selectable alternate in attires.js.
+  'zui-attire1': '../roster/zui/attires/attire1/model.glb',
+  'zui-attire2': '../roster/zui/attires/attire2/model.glb',
   // Tripo pulls wired 2026-10-19 (owner: stop saying "not in the repo").
   phantom: '../roster/phantom/attires/attire1/model.glb',
   skull: '../roster/skull/attires/attire1/model.glb',
