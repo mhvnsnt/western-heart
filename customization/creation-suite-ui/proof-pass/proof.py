@@ -29,7 +29,7 @@ def main() -> int:
     report = {"url": URL, "steps": [], "errors": []}
     try:
         with sync_playwright() as pw:
-            browser = pw.chromium.launch(args=["--use-gl=swiftshader", "--enable-unsafe-swiftshader"])
+            browser = pw.chromium.launch(args=["--use-gl=swiftshader", "--enable-unsafe-swiftshader", "--disable-dev-shm-usage", "--no-sandbox"])
             page = browser.new_page(viewport={"width": 1280, "height": 800})
             page.on("pageerror", lambda e: report["errors"].append(f"pageerror: {e}"))
             page.on("console", lambda m: report["errors"].append(f"console.error: {m.text}") if m.type == "error" else None)
