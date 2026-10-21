@@ -482,6 +482,70 @@ Until then the POINTS discipline stands: the converter output and
 the catalog's `topology_status=unproven_vertex_order` are
 unchanged by this addendum.
 
+#### 7.9.2 W5c Ghidra follow-up (2026-10-21, later session) — the loader chain is plumbing; consumption is VU-side
+
+The archive.org item node recovered during the W5c session and
+`SLUS_210.04` was fetched by the surgical Range method
+(LBA 1941376 × 2048, 3,139,200 bytes, sha256
+`4e65bf2947b3838ce372967cac448bfc8034709a6d70a87fd11d13c5f09b23b2`;
+ELF32 MIPS EXEC, entry 0x100008, vaddr = fileoff + 0xFF000 as
+recorded in §7.1). It was analyzed with Ghidra 12.1.4
+(`r5900:LE:32:default`). The box was memory-starved (7.9 GB total,
+~1.7 GB available), which killed two full-analysis JVM launches;
+the completed runs used a capped heap (1.2 GB) with `-noanalysis`
+plus targeted disassemble/create/decompile scripts — the six
+§7.1 addresses first, then their callees. The Ghidra project and
+decompiler output are retained in the W5c lane scratch
+(`_w5c-work/ghidra/DefJam`, `_w5c-work/ghidra_out.txt`,
+`_w5c-work/ghidra_out2.txt`); the executable itself is a game
+file and is not committed — re-fetch + sha256 verify per above.
+
+**Proven by decompilation (two levels):**
+
+- `FUN_0019f970` (the `_BuildMorph` caller) is a **name lookup**:
+  it formats a morph name (sprintf-like `0x347680`, format at
+  0x3CB848), resolves it in a table (`0x16CD18`), raises the
+  `_BuildMorph` error (string 0x3CBC68) on miss, and hands off to
+  `FUN_0019fbd8`, which loads the object (`FUN_00114bc0` →
+  `FUN_001149b4`) and registers it (`0x117628`, itself a thin
+  store + `0x114BE8` + list call `0x213650`).
+- `FUN_001149b4` (CMorph load) is the generic EAGL object loader:
+  find-by-name (`0x101EF8`, type id 0x11), a fast-path lookup
+  (`0x16D100`), then one of two constructor paths
+  (`0x229DF8` / `0x229E68` — both zero a header struct, store
+  name/type, then call `0x229008`, `0x228A08`, `0x229EE8`), and
+  finally a **symbol resolution** step: `FUN_0022a1e8` walks the
+  loaded object's symbol list comparing names (strcmp-like
+  `0x346EDC`) — i.e. the runtime links the relocatable `.o` and
+  resolves its named sub-objects (the mechanism behind the
+  `__Morph:::` / stream-name pointers the J4 parser follows).
+- `FUN_0011eb88` (`CVertexInformation::Init`) only **allocates**:
+  three named buffers via the allocator `0x11A288` using the
+  member-name strings `mpVertex` (0x3AFA68), `m_pColour`
+  (0x3AFA90), `m_pSTQ` (0x3AFAB8); the colour struct is
+  initialized to type 4 with four zeroed words. No stream data
+  is read, transformed, or reordered here.
+
+**Verdict:** the entire CPU-side chain named in §7.1 is object,
+symbol, and allocation plumbing — **no CPU code in this chain
+reads vertex records**, which independently confirms the §7.1
+conclusion that per-vertex consumption (and therefore the draw
+order) lives in the VU1 path: the GeoPrim packet build
+(`0x229008` / `0x228A08` / `0x229EE8`, not yet decompiled) and
+the EAGL VU1 microcode the `_C` objects name
+(`LitGouraud0__EAGLMicroCode`, `IrradTexture_Skin0__EAGLMicroCode`).
+
+**Updated "what cracks it next":** (1) decompile the packet-build
+trio `0x229008` / `0x228A08` / `0x229EE8` in the retained Ghidra
+project — if CPU code assembles the VU packets from the Morph
+streams, the vertex order is written there; (2) if the packets
+are passed through untouched, extract the EAGL VU1 microcode
+blobs from the executable and read the vertex fetch/transform
+loop (VU disassembly — Ghidra's r5900 family covers the EE core;
+a VU-capable disassembler pass is the open tooling need);
+(3) validation gates unchanged (§7.9.1 item 3–4 + §7.9.2's BBOX /
+topology gates). The POINTS discipline still stands.
+
 ### 7.10 Phase B census — the extracted set (2026-10-21)
 
 The wrestling-game teardown tree holds **2,624 `.o` + 5,319 `.ssh`**
