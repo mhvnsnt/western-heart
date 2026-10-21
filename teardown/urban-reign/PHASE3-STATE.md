@@ -76,3 +76,4 @@ delete nothing except own verified-mirrored intermediates (log to
   (HEAD 739185d verified; sparse-checkout `D` lines are artifacts, not
   deletions — the working tree did not materialize under disk pressure, so
   all commits in this lane use exact-path pathspec commits).
+- Attempt 6 start: pipeline check
