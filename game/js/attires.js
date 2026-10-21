@@ -54,9 +54,12 @@ export const ATTIRE_VARIANTS = {
     { model: 'dxmmii-a2', label: 'ATTIRE 2' },
     { model: 'dxmmii-patchwork', label: 'PATCHWORK' },
   ],
-  'baek': [
-    { model: 'baek', label: 'BASE' },
-    { model: 'baek-master-white', label: 'MASTER WHITE' },
+  /* KEVIN's ladder (owner 2026-10-20): A1 = kevin-tripo (his face, pending
+     rig/wiring), A2 = original Baek model, A3 = Master White (PARKED).
+     Keyed by fighter id so Kevin's entry finds it. */
+  'baek-master-white': [
+    { model: 'baek', label: 'KEVIN · A2 BAEK MODEL' },
+    { model: 'baek-master-white', label: 'MASTER WHITE (PARKED)' },
   ],
   'purple-rain': [
     { model: 'purple-rain', label: 'BASE' },

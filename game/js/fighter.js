@@ -249,7 +249,9 @@ export class Fighter {
 
   _build(startX) {
     // No palette tint over the fighter's own textures; only an explicitly
-    // colorized fighter (custom skin tone) is tinted.
+    // colorized fighter (custom skin tone) is tinted. (TINT FIX: the old
+    // char.tintStrength ?? 0.45 default washed both fighters in a constant
+    // suit color; real texture colors now render for the whole fight.)
     const inst = assets.createInstance(
       this.char.model || 'pantera',
       this.char.colors.suit, this.char.colors.trim,
@@ -414,7 +416,7 @@ export class Fighter {
       inst = assets.createInstance(
         t.target,
         this.char.colors.suit, this.char.colors.trim,
-        this.char.colorize ? (this.char.tintStrength ?? 0.3) : 0
+        this.char.colorize ? (this.char.tintStrength ?? 0.3) : 0 // TINT FIX: real texture colors unless explicitly colorized
       );
     } catch (e) {
       console.error(`[WH] transform failed — unknown model ${t.target}:`, e.message || e);
@@ -857,12 +859,52 @@ export class Fighter {
     // 1) Facing
     this.lean.rotation.y = this.facing * Math.PI / 2;
 
-    // 2) Locomotion crossfade (real mocap base layer)
+    // 2) Which REAL T3 clip owns this state? (FROZEN-IDLE FIX 2026-10-20:
+    // the bank's animated stance/walk clips existed but were NEVER played
+    // — idle fell through to _stopT3() and the near-static embedded Idle,
+    // whose rotation range is <=4.8 deg and whose Hips bob is pinned away
+    // at load. Headless diag on the old code: t3 stance t=0 w=0 while the
+    // mixer advanced the embedded Idle at w=1; bone movement over 2 s
+    // measured 0.0-1.0 deg on every bone.)
+    const T3_ATTACK_MAP = { punch: 'light', kick: 'medium', grab: 'grab', surge: 'heavy', heavy: 'heavy',
+      '1': 'light', '2': 'light', '3': 'medium', '4': 'medium', '1+3': 'grab', '2+4': 'grab' };
+    const attackClipFor = () => {
+      let n = T3_ATTACK_MAP[this.attackName];
+      if (!n && typeof this.attackName === 'string') {
+        const lastBtn = this.attackName.split(',').pop().split('+').pop();
+        n = T3_ATTACK_MAP[lastBtn] || 'heavy'; // strings -> last hit's clip; specials -> heavy
+      }
+      return n;
+    };
+    // Reverse the walk cycle when backing away so retreating reads
+    // as a back-step instead of a moonwalk.
+    const dirSign = Math.abs(this.vx) > 0.05 ? (Math.sign(this.vx) === this.facing ? 1 : -1) : 1;
+    let t3Wanted = null;
+    switch (this.state) {
+      case 'idle': t3Wanted = 'stance'; break;
+      case 'walk': t3Wanted = dirSign < 0 ? 'walkBack' : 'walkFwd'; break;
+      case 'block': t3Wanted = 'block'; break;
+      case 'victory': t3Wanted = 'win'; break;
+      case 'hitstun': t3Wanted = 'hit'; break;
+      case 'knockdown': t3Wanted = 'launch'; break;
+      case 'ko': t3Wanted = 'ko'; break;
+      case 'attack': t3Wanted = attackClipFor(); break;
+    }
+    if (t3Wanted && !this.t3actions[t3Wanted] && this.t3actions.stance) t3Wanted = 'stance';
+    const t3Active = !!(t3Wanted && this.t3actions[t3Wanted]);
+
+    // 3) Locomotion crossfade (embedded mocap base layer). When a T3 clip
+    // owns the state, the embedded layer is driven to ZERO: the per-frame
+    // setEffectiveWeight below re-asserts it every fixed step, and at
+    // weight ~1 it diluted every T3 clip ~50/50 with the held embedded
+    // pose (vendor three: setEffectiveWeight stops fades but the weight
+    // itself is re-applied before every mixer.update).
     let tIdle = 1, tWalk = 0, tRun = 0;
     if (this.state === 'walk') {
       const fast = Math.abs(this.vx) > this.stats.speed * 0.9;
       tIdle = 0; tWalk = fast ? 0 : 1; tRun = fast ? 1 : 0;
     } else if (this.state === 'dodge') { tIdle = 0; tRun = 1; }
+    if (t3Active) { tIdle = 0; tWalk = 0; tRun = 0; }
     const rate = 1 - Math.exp(-dt / 0.12);
     this._locoIdle += (tIdle - this._locoIdle) * rate;
     this._locoWalk += (tWalk - this._locoWalk) * rate;
@@ -870,31 +912,29 @@ export class Fighter {
     if (this.actions.Idle) this.actions.Idle.setEffectiveWeight(this._locoIdle);
     if (this.actions.Walk) this.actions.Walk.setEffectiveWeight(this._locoWalk);
     if (this.actions.Run) this.actions.Run.setEffectiveWeight(this._locoRun);
-    // Reverse the walk cycle when backing away so retreating reads
-    // as a back-step instead of a moonwalk.
-    const dirSign = Math.abs(this.vx) > 0.05 ? (Math.sign(this.vx) === this.facing ? 1 : -1) : 1;
     if (this.actions.Walk) this.actions.Walk.timeScale = dirSign;
     if (this.actions.Run) this.actions.Run.timeScale = dirSign;
 
-    // 3) Advance mocap clips (writes base pose into bones)
+    // 4) Advance clips (writes the posed skeleton into bones)
     this.mixer.update(dt);
 
-    // 4) Refresh world matrices so IK reads the posed skeleton
+    // 5) Refresh world matrices so IK reads the posed skeleton
     this.root.updateWorldMatrix(true, true);
 
-    // 5) Combat override layer (IK) + lean targets
+    // 6) Combat override layer (IK) + lean targets
     this._leanT.x = 0; this._leanT.z = 0;
     this.trail.visible = false;
-    // REAL T3 clips for combat states (falls back to procedural if unavailable)
-    const T3_ATTACK_MAP = { punch: 'light', kick: 'medium', grab: 'grab', surge: 'heavy', heavy: 'heavy',
-      '1': 'light', '2': 'light', '3': 'medium', '4': 'medium', '1+3': 'grab', '2+4': 'grab' };
+    // REAL T3 clips per state (falls back to procedural if unavailable)
     switch (this.state) {
+      case 'idle':
+      case 'walk':
+        // Animated bank stance / walk cycle — the living fighting idle.
+        if (t3Active) this._playT3(t3Wanted, { loop: true });
+        else this._stopT3();
+        break;
       case 'attack': {
-        let t3name = this._moveRowAction(this.attack) || T3_ATTACK_MAP[this.attackName];
-        if (!t3name && typeof this.attackName === 'string') {
-          const lastBtn = this.attackName.split(',').pop().split('+').pop();
-          t3name = T3_ATTACK_MAP[lastBtn] || 'heavy'; // strings -> last hit's clip; specials -> heavy
-        }
+        // Main's move-row mapping first (PR #338), then the attackName fallback.
+        const t3name = this._moveRowAction(this.attack) || attackClipFor();
         if (t3name && this._playT3Once(t3name, 'atk:' + this.attackName + ':' + this._attackId)) {
           // Real T3 clip playing; add slight lean for body english
           this._leanT.x = -0.1;
@@ -977,14 +1017,14 @@ export class Fighter {
       }
     }
 
-    // 6) Smooth & apply lean (body english) — composed with facing
+    // 7) Smooth & apply lean (body english) — composed with facing
     const lr = 1 - Math.exp(-dt / 0.05);
     this._lean.x += (this._leanT.x - this._lean.x) * lr;
     this._lean.z += (this._leanT.z - this._lean.z) * lr;
     this.lean.rotation.x = this._lean.x;
     this.lean.rotation.z = this._lean.z;
 
-    // 7) Aura + trail visuals — particles rise and flicker around the body
+    // 8) Aura + trail visuals — particles rise and flicker around the body
     const auraOn = (this.attackName === 'surge') || this._auraFlash > 0;
     const am = this.aura.material;
     am.opacity += ((auraOn ? 0.95 : 0) - am.opacity) * Math.min(1, dt * 10);
