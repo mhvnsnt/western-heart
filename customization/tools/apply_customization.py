@@ -62,7 +62,7 @@ Usage (Blender headless — bare -b segfaults on this VM, always xvfb-run):
 Registry-only regeneration (no Blender needed):
   python3 customization/tools/apply_customization.py --emit-registry [--repo-root .]
 """
-import json, os, re, sys
+import json, os, re, struct, sys
 
 # ---------------------------------------------------------------- emit (pure python)
 
@@ -424,17 +424,18 @@ def bake(cfg_path, repo_root, mpfb_src, log=print):
             return 0
         bm = bmesh.new()
         bm.from_mesh(obj.data)
-        dl = bm.verts.layers.deform.active
+        # dominant bone per vert from the MESH data (bmesh BMDeformVert is
+        # not iterable on Blender 4.0 — iterating v[dl] raised TypeError and
+        # killed every swap bake; mesh Vertex.groups is the stable API).
+        kill_idx = set()
+        for v in obj.data.vertices:
+            dc = dominant_canon(obj, v)
+            if dc and bone_in_region(dc, region):
+                kill_idx.add(v.index)
         kill = []
-        if dl is not None:
-            gnames = {i: g.name for i, g in enumerate(obj.vertex_groups)}
-            for v in bm.verts:
-                d = v[dl]
-                if not d:
-                    continue
-                gi = max(d, key=lambda k: d[k])
-                if bone_in_region(canon_bone(gnames[gi]), region):
-                    kill.append(v)
+        if kill_idx:
+            bm.verts.ensure_lookup_table()
+            kill = [bm.verts[i] for i in sorted(kill_idx)]
         if kill:
             bmesh.ops.delete(bm, geom=kill, context='VERTS')
             bm.to_mesh(obj.data)
@@ -459,10 +460,10 @@ def bake(cfg_path, repo_root, mpfb_src, log=print):
         try:
             if src_path.lower().endswith('.glb'):
                 with open(src_path, 'rb') as f:
-                    head = f.read(65536)
-                m = re.search(rb'"extensionsUsed"\s*:\s*\[([^\]]*)\]', head)
-                exts = re.findall(rb'"([^"]+)"', m.group(1)) if m else []
-                exts = [e.decode() for e in exts]
+                    head = f.read(20)
+                    clen = struct.unpack('<I', head[12:16])[0]
+                    doc = json.loads(f.read(clen))
+                exts = doc.get('extensionsUsed', [])
             elif src_path.lower().endswith('.gltf'):
                 exts = json.load(open(src_path, encoding='utf-8')).get('extensionsUsed', [])
         except Exception as e:
@@ -522,7 +523,11 @@ def bake(cfg_path, repo_root, mpfb_src, log=print):
         if not dec_path:
             continue
         before = set(bpy.context.scene.objects)
-        bpy.ops.import_scene.gltf(filepath=dec_path)
+        try:
+            bpy.ops.import_scene.gltf(filepath=dec_path)
+        except Exception as e:
+            fail(item, f'source import failed ({dec_path}): {e}')
+            continue
         src_objs = [o for o in bpy.context.scene.objects if o not in before]
         src_meshes = [o for o in src_objs if o.type == 'MESH']
         src_arms = [o for o in src_objs if o.type == 'ARMATURE']
@@ -562,17 +567,15 @@ def bake(cfg_path, repo_root, mpfb_src, log=print):
                     bpy.data.objects.remove(o, do_unlink=True)
                     continue
                 bm = bmesh.new(); bm.from_mesh(o.data)
-                dl = bm.verts.layers.deform.active
+                kill_idx = set()
+                for v in o.data.vertices:
+                    dc = dominant_canon(o, v)
+                    if not dc or not bone_in_region(dc, region):
+                        kill_idx.add(v.index)
                 kill = []
-                if dl is not None:
-                    gnames = {i: g.name for i, g in enumerate(o.vertex_groups)}
-                    for v in bm.verts:
-                        d = v[dl]
-                        if not d:
-                            kill.append(v); continue
-                        gi = max(d, key=lambda k: d[k])
-                        if not bone_in_region(canon_bone(gnames[gi]), region):
-                            kill.append(v)
+                if kill_idx:
+                    bm.verts.ensure_lookup_table()
+                    kill = [bm.verts[i] for i in sorted(kill_idx)]
                 if kill:
                     bmesh.ops.delete(bm, geom=kill, context='VERTS')
                 bm.to_mesh(o.data); bm.free(); o.data.update()
@@ -866,29 +869,53 @@ def bake(cfg_path, repo_root, mpfb_src, log=print):
     }
 
     def apply_part_tint(objs, tint_hex, item):
-        """Multiply the Principled base-color factor of the parts' materials
-        (round-2 per-part tint; materials are cloned first so a shared
-        material can never tint the base model or another part)."""
+        """Tint a part's materials (round-2 per-part tint). Textured
+        materials get the tint multiplied into a CLONE of their base-color
+        image (a Principled default-value multiply is a no-op under a
+        texture, and node-graph tricks don't survive glTF export);
+        untextured materials get the factor multiply. Materials are cloned
+        first so a tint can never leak into the base model or another part."""
         if not tint_hex:
             return
+        import numpy as np
         r, g, b = hex_rgb(tint_hex)
         seen = {}
         for o in objs:
-            for slot in o.data.materials:
-                if not slot:
+            for idx, ms in enumerate(o.material_slots):
+                if not ms.material:
                     continue
-                if slot.name not in seen:
-                    seen[slot.name] = slot.copy()
-                for idx, ms in enumerate(o.material_slots):
-                    if ms.material is slot:
-                        o.material_slots[idx].material = seen[slot.name]
+                if ms.material.name not in seen:
+                    seen[ms.material.name] = ms.material.copy()
+                o.material_slots[idx].material = seen[ms.material.name]
+        tinted_imgs = set()
         for mat in seen.values():
-            if mat.use_nodes:
-                for node in mat.node_tree.nodes:
-                    if node.type == 'BSDF_PRINCIPLED':
-                        cur = node.inputs['Base Color'].default_value
-                        cur[0] *= r; cur[1] *= g; cur[2] *= b
-        log(f'CSBAKE part tint: {item} {tint_hex} -> {len(seen)} material(s)')
+            if not mat.use_nodes:
+                continue
+            for node in mat.node_tree.nodes:
+                if node.type != 'BSDF_PRINCIPLED':
+                    continue
+                link = node.inputs['Base Color'].links
+                if link and link[0].from_node.type == 'TEX_IMAGE':
+                    img = link[0].from_node.image
+                    if img and img.name not in tinted_imgs:
+                        tinted_imgs.add(img.name)
+                        clone = img.copy()
+                        link[0].from_node.image = clone
+                        px = np.empty(len(clone.pixels), dtype=np.float32)
+                        clone.pixels.foreach_get(px)
+                        px = px.reshape(-1, 4)
+                        px[:, 0] *= r; px[:, 1] *= g; px[:, 2] *= b
+                        clone.pixels.foreach_set(px.ravel())
+                        clone.update()
+                        try:
+                            clone.pack()
+                        except Exception:
+                            pass
+                else:
+                    cur = node.inputs['Base Color'].default_value
+                    cur[0] *= r; cur[1] *= g; cur[2] *= b
+        log(f'CSBAKE part tint: {item} {tint_hex} -> {len(seen)} material(s), '
+            f'{len(tinted_imgs)} texture(s) multiplied')
 
     def placement_xform(placement):
         from math import radians
