@@ -96,16 +96,20 @@ Additive on version 1 — every round-1 file still parses and bakes.
 local frame**: at bake time the part's evaluated world geometry is
 re-expressed in the part's *own* socket-bone frame (the alias bone on the
 part's rig, else its dominant weighted bone; unskinned parts attach by
-bounding-box centre), then parented to the base bone with an identity
-parent inverse. So `world = base_bone_world × T(placement) ×
-part_bone_local_geometry`, and placement `0/0/0 · 0° · s=1` is the part in
-its native registration on the bone. Round 1's bake left the bone matrix
-inside the transform, so saved numbers were world-compensations — that is
-why the baked Master White hair floated off the head and the beard hung at
-the neck (owner grade: 40/100). The round-trip proof
+bounding-box centre), the placement is applied in that frame, and the
+result is skinned rigidly (100% weight) to the base socket bone. So
+`world = base_bone_world × T(placement) × part_bone_local_geometry`, and
+placement `0/0/0 · 0° · s=1` is the part in its native registration on the
+bone. Round 1's bake left the bone matrix inside the transform, so saved
+numbers were world-compensations — that is why the baked Master White
+hair floated off the head and the beard hung at the neck (owner grade:
+40/100). (An earlier round-2 build bone-*parented* the parts instead;
+the glTF exporter bakes a bone-parented object's world transform into
+its geometry while keeping the node TRS, so importers double-transformed
+them — skinning is the portable path.) The round-trip proof
 (`customization/tools/proof/cs-round2-roundtrip.py`) bakes the same record
 twice with a known placement delta and verifies the output GLB's part
-transform moves by exactly that delta.
+geometry moves by exactly that delta.
 
 - `sx` / `sy` / `sz` (optional): per-axis scale, overriding `s` per axis.
 - `parts.<slot>.tint` (optional hex): multiplies the Principled base-color

@@ -101,6 +101,13 @@ def measure(path):
                 hv = vw[[names[d] == 'Head' for d in dom]]
                 if len(hv):
                     head_verts.append(hv)
+                if (n.get('name') or '').startswith('cs_'):
+                    out['parts'][n['name']] = {
+                        'bbox_min': vw.min(0).round(4).tolist(),
+                        'bbox_max': vw.max(0).round(4).tolist(),
+                        'centroid': vw.mean(0).round(4).tolist(),
+                        'verts': len(vw),
+                    }
             else:
                 vw = (worlds[ni][:3, :3] @ pos.T).T + worlds[ni][:3, 3]
                 if (n.get('name') or '').startswith('cs_'):

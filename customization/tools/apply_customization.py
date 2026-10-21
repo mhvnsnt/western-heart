@@ -848,12 +848,16 @@ def bake(cfg_path, repo_root, mpfb_src, log=print):
     # were world-compensations, not bone-local offsets, and parts landed
     # "close but wrong" (owner graded the Master White hair/beard 40/100).
     # Now: a part's evaluated world geometry is re-expressed in the part's
-    # OWN socket-bone frame, then parented to the base bone with an identity
-    # parent inverse, so the object's local transform IS the placement:
+    # OWN socket-bone frame, the placement transform is applied in that
+    # frame, and the result is skinned rigidly (100% weight) to the base
+    # socket bone:
     #   world = base_bone_world x T(placement) x part_bone_local_geometry
     # Placement (0,0,0 / 0deg / scale 1) = the part in its native registration
-    # on the socket bone. Provable from the output GLB alone (round-trip test
-    # in customization/tools/proof/cs-round2-roundtrip.py).
+    # on the socket bone. (Bone-PARENTED objects were tried first and
+    # rejected: the glTF exporter bakes their world transform into the
+    # geometry while keeping the node TRS, so importers double-transform
+    # them. Skinning evaluates identically everywhere.) Provable from the
+    # output GLB alone (customization/tools/proof/cs-round2-roundtrip.py).
     SOCKETS = {  # mirrors packages/creation-suite/src/attire.js SOCKETS
         # 'eye' (owner verdict 2026-10-20: eyes are real placeable mesh parts)
         # uses the Head-bone aliases, same as 'face'.
@@ -1018,6 +1022,12 @@ def bake(cfg_path, repo_root, mpfb_src, log=print):
                                  part_arm.data.bones[p_bone].matrix_local).inverted()
                     frame_desc = f'part bone {p_bone}'
             attached = []
+            xf = placement_xform(placement)
+            from mathutils import Euler
+            T_place = (Matrix.Translation(xf['location']) @
+                       Euler(xf['rotation'], 'XYZ').to_matrix().to_4x4() @
+                       Matrix.Diagonal(xf['scale']).to_4x4())
+            bone_local_mtx = base_arm.data.bones[bone].matrix_local
             for o in new_meshes:
                 ev = o.evaluated_get(dg)
                 me = bpy.data.meshes.new_from_object(ev, depsgraph=dg)
@@ -1029,22 +1039,28 @@ def bake(cfg_path, repo_root, mpfb_src, log=print):
                     if vs:
                         c = sum(vs, Vector()) / len(vs)
                         me.transform(Matrix.Translation(-c))
+                # Skin the part rigidly to the socket bone (100% weight),
+                # geometry in base-armature space. Bone-PARENTED objects are
+                # a portability trap — the glTF exporter bakes their world
+                # transform into the geometry while keeping the node TRS,
+                # so importers double-transform them (found the hard way:
+                # perfect measurements, parts hanging off the head in the
+                # render). Plain skinning is the one path every consumer
+                # (Blender, three.js, the game) evaluates identically.
+                me.transform(bone_local_mtx @ T_place)   # -> base armature space
                 no = bpy.data.objects.new(f'cs_{slot}_{o.name}', me)
                 bpy.context.collection.objects.link(no)
+                vg = no.vertex_groups.new(name=bone)
+                vg.add(list(range(len(me.vertices))), 1.0, 'REPLACE')
+                mod = no.modifiers.new(name='Armature', type='ARMATURE')
+                mod.object = base_arm
                 no.parent = base_arm
-                no.parent_type = 'BONE'
-                no.parent_bone = bone
                 no.matrix_parent_inverse = Matrix.Identity(4)
-                xf = placement_xform(placement)
-                no.location = xf['location']
-                no.rotation_mode = 'XYZ'
-                no.rotation_euler = xf['rotation']
-                no.scale = xf['scale']
                 attached.append(no)
             for o in new_objs:
                 bpy.data.objects.remove(o, do_unlink=True)
             apply_part_tint(attached, spec.get('tint'), item)
-            log(f'CSBAKE part bone-parented: {item} -> bone {bone} frame={frame_desc} placement={placement}')
+            log(f'CSBAKE part socket-skinned: {item} -> bone {bone} frame={frame_desc} placement={placement}')
 
     # ---- (d) colors ----------------------------------------------------------
     for kind, hexval in (cfg.get('colors') or {}).items():
