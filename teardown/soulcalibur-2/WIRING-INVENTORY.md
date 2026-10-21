@@ -85,3 +85,70 @@ in the `_full` variants in the decode PR).
   (zero failures over 50 VMXs).
 - Independent re-verification (standard §5) has **not** been run on this
   inventory yet — it is a lane claim until the audit pass walks it.
+
+## Phase 5 update (2026-10-20, later) — skeletons/weights + movesets landed
+
+Decode record: game-reverse-engineering phase-5 doc (MODEL-HUNT-PHASE5),
+stacked PR on the phase-4 PR #31.
+
+### Skinned models (replaces the phase-4 bind-pose-only status)
+
+All 22 fighter GLBs now exist as **skinned** exports in
+`teardown/soulcalibur-2/models-skinned/idxNNN_skinned.glb` (JOINTS_0 /
+WEIGHTS_0, one joint per solved bone, inverse bind matrices). The skinning
+model is proven by direct solve against the file's own src/dst streams
+(residual max <= 2e-05 for 21/22 fighters; exported-GLB reproduction
+verified per fighter, 0 bad verts except idx827: 1 of 3,549). The
+bind-pose `models/` GLBs from phase 4 remain as the unskinned reference.
+
+| Entry | Fighter (source) | Bones | Verts | Solve res max | Status |
+|---|---|---|---|---|---|
+| 47 | Mitsurugi | 147 | 3,777 | 1.5e-07 | WIRED (data) — skinned GLB + moveset JSON landed; roster blocked §below |
+| 86 | Seong Mi-na | 164 | 3,982 | 1.2e-07 | WIRED (data) — same |
+| 125 | Taki | 155 | 4,182 | 1.6e-07 | WIRED (data) — same |
+| 164 | Maxi | 170 | 3,909 | 1.0e-05 | WIRED (data) — same |
+| 203 | Voldo | 106 | 4,322 | 1.4e-07 | WIRED (data) — same |
+| 242 | Sophitia | 181 | 4,207 | 3.4e-07 | WIRED (data) — same |
+| 281 | Ivy | 147 | 3,720 | 1.0e-07 | WIRED (data) — same |
+| 320 | Kilik | 165 | 4,757 | 2.3e-07 | WIRED (data) — same |
+| 359 | Xianghua | 161 | 5,056 | 1.7e-07 | WIRED (data) — same |
+| 398 | Yoshimitsu | 58 | 2,516 | 1.4e-07 | WIRED (data) — same |
+| 437 | Nightmare | 105 | 2,214 | 4.0e-06 | WIRED (data) — same |
+| 476 | Astaroth | 96 | 3,941 | 1.9e-07 | WIRED (data) — same |
+| 515 | Cervantes | 159 | 4,253 | 2.2e-06 | WIRED (data) — same |
+| 554 | Raphael | 168 | 4,301 | 1.7e-07 | WIRED (data) — same |
+| 593 | Talim | 168 | 4,634 | 4.6e-06 | WIRED (data) — same |
+| 632 | Cassandra | 187 | 4,406 | 1.9e-07 | WIRED (data) — same |
+| 671 | Necrid | 101 | 3,608 | 2.7e-06 | WIRED (data) — same |
+| 710 | Yun-seong | 157 | 4,524 | 1.7e-07 | WIRED (data) — same |
+| 827 | UNIDENTIFIED (1e) | 107 | 3,549 | 1.9e-03 | FLAGGED — section-3 segmentation approximate (decode doc §1.4); GLB landed with flag |
+| 866 | UNIDENTIFIED (1f) | 87 | 3,491 | 7.5e-07 | WIRED (data) — same |
+| 905 | UNIDENTIFIED (20) | 74 | 2,412 | 9.0e-07 | WIRED (data) — same |
+| 944 | Spawn | 102 | 2,538 | 2.0e-05 | WIRED (data) — same |
+
+Pose proof (idx47): Blender renders viewed — bind pose coherent;
+bone_12 (hip) +55 deg rotation deforms the hip/sash mass coherently
+(rigid-pair drift 2.5e-10 in the numeric test). Decode PR §1.3.
+
+### Movesets (new)
+
+24 v33 command-list files converted to `moveset-library/movesets/
+scii-<tag>-<name>.json` — 5,915 command records with source keys, SC2
+input tokens, mechanical Tekken-input conversion (logged in
+CANON-CONVERSION.md), and raw record fields in hex. Includes Link (1b)
+and Heihachi (1c) guest lists present in the Xbox build (data only, no
+models in the Xbox v982 fighter set for 1b/1c beyond their movesets).
+FLAGGED: display-name pairing table (type-8/10 sections) not yet
+decoded — display strings ride in file order under `display_strings`.
+
+### Still blocking "playable in the build" (updated)
+
+1. **Animations** — motion format NOT decoded (phase-5 probe: entry 75
+   is dense binary with no VMX/strings; bundle load transform +
+   motinfo.olk + track format are the named blockers, decode doc §3).
+2. **Canon assignment** — owner-pending (CANON-CONVERSION.md); roster
+   registration (game/js/roster-full.js, game/js/assets.js) needs it.
+3. **Game-format movesets** — game/assets/movesets schema v2 needs
+   frame/damage data from the undecoded cmd-record fields + pairing
+   table + motion data.
+4. **Textures** — VXT decode still open (unchanged).
