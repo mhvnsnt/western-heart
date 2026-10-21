@@ -280,3 +280,9 @@
 {"t": "shot", "name": "b9", "wall": 1792622406.6}
 {"t": "cmd", "line": "status", "wall": 1792622406.6}
 {"t": "status", "game": {"event": "game.status", "ticket": 1236, "game": {"id": "ULES01376", "version": "1.00", "title": "TEKKEN 6"}, "paused": false}, "cpu": {"event": "cpu.status", "ticket": 1237, "stepping": false, "paused": false, "pc": 145517684, "ticks": 51895993141}, "hits": {"loader": 36, "wrapper": 36, "inflate": 36, "ret": 36}, "control_hits": 2, "wall": 1792622406.6}
+{"t": "cmd", "line": "ctrl", "wall": 1792625336.1}
+{"t": "ctrl_check", "control_hits_delta": 2, "control_hits": 4, "hits": {"loader": 36, "wrapper": 36, "inflate": 36, "ret": 36}, "wall": 1792625349.5}
+{"t": "cmd", "line": "status", "wall": 1792625349.5}
+{"t": "status", "game": {"event": "game.status", "ticket": 1242, "game": {"id": "ULES01376", "version": "1.00", "title": "TEKKEN 6"}, "paused": false}, "cpu": {"event": "cpu.status", "ticket": 1243, "stepping": true, "paused": false, "pc": 145517684, "ticks": 85405213074}, "hits": {"loader": 36, "wrapper": 36, "inflate": 36, "ret": 36}, "control_hits": 4, "wall": 1792625349.5}
+{"t": "cmd", "line": "quit", "wall": 1792625570.2}
+{"t": "done", "hits": {"loader": 36, "wrapper": 36, "inflate": 36, "ret": 36}, "control_hits": 5, "loads": 36, "wall": 1792625570.2}
