@@ -256,7 +256,8 @@
    "throw": true,
    "isGrab": true,
    "unblockable": true,
-   "note": "frame data estimated from archetype; marked per schema honesty rule"
+   "note": "frame data estimated from archetype; marked per schema honesty rule",
+   "throw_break": "1"
   },
   "f+1+3": {
    "name": "Kasumi 6T \u2014 wall throw",
@@ -280,7 +281,8 @@
    "throw": true,
    "isGrab": true,
    "unblockable": true,
-   "note": "DOA5LR ver2.00: near-wall 6T 40+20 -> 50+10 (=60 on 270 scale)."
+   "note": "DOA5LR ver2.00: near-wall 6T 40+20 -> 50+10 (=60 on 270 scale).",
+   "throw_break": "1"
   },
   "b+1+2": {
    "name": "Kasumi 4H \u2014 mid punch hold",
@@ -342,9 +344,9 @@
    "move_class": "special",
    "note": "DOA signature counter-hold -> Tekken parry-style reversal input. frame data estimated from archetype; marked per schema honesty rule"
   },
-  "S": {
+  "1+2": {
    "name": "Petal Scatter [WH SIGNATURE]",
-   "input": "S",
+   "input": "1+2",
    "startup": 0.26,
    "active": 0.1,
    "recovery": 0.82,
@@ -355,15 +357,16 @@
    "soulGain": 12,
    "anim_ref": "wh:doa-kasumi:sig:petal-scatter",
    "input_slots": [
-    "S"
+    "1+2"
    ],
    "move_class": "signature",
    "wh_original": true,
-   "note": "The kunoichi crosses the gap in a scatter of petals. You were blocking the wrong one."
+   "note": "The kunoichi crosses the gap in a scatter of petals. You were blocking the wrong one.",
+   "input_remapped_from": "S"
   },
-  "D+P": {
+  "d+1": {
    "name": "Mist Vanish [WH SIGNATURE]",
-   "input": "D+P",
+   "input": "d+1",
    "startup": 0.23,
    "active": 0.017,
    "recovery": 0.72,
@@ -374,13 +377,12 @@
    "soulGain": 11,
    "anim_ref": "wh:doa-kasumi:sig:mist-vanish",
    "input_slots": [
-    "D+P",
-    "D",
-    "P"
+    "d+1"
    ],
    "move_class": "signature",
    "wh_original": true,
-   "note": "Dodge into mist, strike out of it. She was never where you looked."
+   "note": "Dodge into mist, strike out of it. She was never where you looked.",
+   "input_remapped_from": "D+P"
   }
  },
  "strings": [

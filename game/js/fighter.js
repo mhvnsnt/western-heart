@@ -19,7 +19,7 @@
    ============================================================ */
 import * as THREE from 'three';
 import { assets } from './assets.js';
-import { getT3Clips, createT3Actions, SOURCE_TO_BANK } from './t3anims.js';
+import { getT3Clips, createT3Actions, retargetT3Clips, SOURCE_TO_BANK } from './t3anims.js';
 import { TekkenBuffer, getFighterMoveset } from './movesets.js';
 import { TransformCinematic } from './transform-cinematic.js';
 
@@ -57,8 +57,12 @@ const MOVESET_MAP = {
   'demonio-bloodline-ember': 'demonio', 'doc-frank-machine-shop': 'gunjack',
   'baek-master-white': 'bryan', 'mariposa-monarch': 'xiaoyu',
   'dxmmii-patchwork': 'demonio',
+  // Stream 6 (2026-10-19): Cain Elias (Undertaker archetype -> King bank).
+  'cainelias': 'king',
   // Sketchfab intake (owner 2026-10-19): working names.
   zangief: 'king', blanka: 'bryan', vega: 'xiaoyu', iori: 'heihachi',
+  // CHARGER (owner 2026-10-20): Blanka replacement — plays Blanka's bryan bank.
+  charger: 'bryan', 'charger-attire2': 'bryan',
   'armor-king': 'king',
   // Teardown-integration (owner 2026-10-19): aggregate-bank fallback for the
   // roster ids whose per-fighter files landed with the full-moveset wiring.
@@ -128,7 +132,7 @@ export function getRealMove(charId, moveType) {
           soulGain: mv.soulGain ?? 8, cost: 0,
           limb: mv.limb || 'armR', heavy: !!mv.heavy,
           unblockable: !!mv.unblockable, isGrab: !!mv.isGrab,
-          tekkenInput: mv.input, t3row: mv.t3_row, moveName: mv.name,
+          tekkenInput: mv.input, t3row: mv.t3_row, t3source: mv.t3_source || ms.t3_source, moveName: mv.name,
         };
       }
     } else {
@@ -195,6 +199,8 @@ export class Fighter {
 
     // physics
     this.vx = 0; this.vy = 0; this.onGround = true;
+    // Stream 6: lateral (z-axis) velocity for sidesteps / sidewalk.
+    this.vz = 0; this.ssDir = 0;
 
     // state machine
     this.state = 'idle'; this.stateT = 0;
@@ -202,6 +208,11 @@ export class Fighter {
     this.hasHit = false; this.stun = 0; this.invuln = 0; this.dodgeDir = 0;
     this.dead = false; this.combo = 0; this._comboTimer = 0;
     this.tekken = new TekkenBuffer(charData.id); // strings / motion specials / directionals
+
+    // Stream 6: throw-lock (throw break window). When a throw connects,
+    // attacker enters 'throwing' and victim 'thrown' for THROW_LOCK_T;
+    // the victim may break with the matching input (see tryThrowBreak).
+    this.lockT = 0; this.lockMove = null; this.lockPartner = null;
 
     // smoothed lean (body english)
     this._lean = { x: 0, z: 0 };
@@ -237,31 +248,28 @@ export class Fighter {
   }
 
   _build(startX) {
+    // No palette tint over the fighter's own textures; only an explicitly
+    // colorized fighter (custom skin tone) is tinted.
     const inst = assets.createInstance(
       this.char.model || 'pantera',
       this.char.colors.suit, this.char.colors.trim,
-      this.char.tintStrength ?? 0.45
+      this.char.colorize ? (this.char.tintStrength ?? 0.3) : 0
     );
     this.bones = inst.bones;
     this.mixer = inst.mixer;
     this.actions = inst.actions;
 
     // REAL T3 animation clips — this fighter's OWN moveset-source bank
-    // (see bankIdFor). The clips carry absolute bone quaternions keyed
-    // to the canonical 22-bone Mixamo-name skeleton; if this model
-    // lacks those bones the actions can't bind, so skip them and stay
-    // on embedded locomotion + procedural combat.
+    // (see bankIdFor), RETARGETED onto this model's rig (t3anims.js
+    // retargetT3Clips: the bank's local rotations only mean something
+    // on the identity-rest rig they were baked onto, so they are
+    // rebuilt per rig from the decoded frames + both rest poses).
+    // A rig without the core humanoid bones keeps embedded locomotion
+    // + procedural combat.
     this.t3actions = {};
     this._t3current = null;
     this._t3stateKey = null;
-    const bank = bankIdFor(this.char.id, this._movesetId);
-    const t3clips = bank ? getT3Clips(bank) : null;
-    if (t3clips && Object.keys(t3clips).length > 0 && this.bones.Hips && this.bones.RightArm) {
-      this.t3actions = createT3Actions(this.mixer, t3clips, THREE);
-      console.log(`[WH] Fighter ${this.char.id}: ${Object.keys(this.t3actions).length} real T3 actions from bank '${bank}'`);
-    } else if (!bank) {
-      console.log(`[WH-T3] no decoded anim bank for ${this.char.id} (source has none yet) — embedded/procedural fallback`);
-    }
+    this._bindT3(inst.model, this._movesetId, this.char.model);
 
     // root (world position) -> lean (facing + body english) -> model
     this.root = new THREE.Group();
@@ -406,7 +414,7 @@ export class Fighter {
       inst = assets.createInstance(
         t.target,
         this.char.colors.suit, this.char.colors.trim,
-        this.char.tintStrength ?? 0.45
+        this.char.colorize ? (this.char.tintStrength ?? 0.3) : 0
       );
     } catch (e) {
       console.error(`[WH] transform failed — unknown model ${t.target}:`, e.message || e);
@@ -420,15 +428,12 @@ export class Fighter {
     this.mixer = inst.mixer;
     this.actions = inst.actions;
     // Rebuild the T3 action set on the new mixer — bank recomputed from
-    // the (possibly new) moveset source after the form change.
+    // the (possibly new) moveset source after the form change, and
+    // retargeted onto the new form's rig.
     this.t3actions = {};
     this._t3current = null;
     this._t3stateKey = null;
-    const tbank = bankIdFor(this.char.id, t.moveset || this._movesetId);
-    const tt3clips = tbank ? getT3Clips(tbank) : null;
-    if (tt3clips && Object.keys(tt3clips).length > 0 && this.bones.Hips && this.bones.RightArm) {
-      this.t3actions = createT3Actions(this.mixer, tt3clips, THREE);
-    }
+    this._bindT3(inst.model, t.moveset || this._movesetId, t.target);
     // Bigger = more damage, slower (owner spec).
     this.stats = {
       ...this.stats,
@@ -449,6 +454,47 @@ export class Fighter {
     return true;
   }
 
+  /* Bind this fighter's own T3 bank, retargeted onto `model`'s rig.
+     Must run before the model's mixer first updates (rest pose). */
+  _bindT3(model, movesetId, modelKey) {
+    const bank = bankIdFor(this.char.id, movesetId);
+    if (!bank) {
+      console.log(`[WH-T3] no decoded anim bank for ${this.char.id} (source has none yet) — embedded/procedural fallback`);
+      return;
+    }
+    const t3clips = getT3Clips(bank);
+    if (!t3clips || !Object.keys(t3clips).length) return;
+    const clips = retargetT3Clips(t3clips, bank, model, THREE, modelKey);
+    if (!clips || !Object.keys(clips).length) {
+      console.log(`[WH-T3] ${this.char.id}: rig '${modelKey}' lacks core humanoid bones — bank '${bank}' not bound`);
+      return;
+    }
+    this.t3actions = createT3Actions(this.mixer, clips, THREE);
+    // Move rows retarget lazily on first use (same captured rest pose).
+    this._t3 = { bank, clips: t3clips, model, modelKey };
+    console.log(`[WH] Fighter ${this.char.id}: ${Object.keys(this.t3actions).length} real T3 actions from bank '${bank}' (retargeted onto ${modelKey})`);
+  }
+
+  /* The move's OWN decoded T3 animation (its t3_row in this fighter's
+     bank, tools/anim/t3_row_bake.py), retargeted on first use and
+     time-scaled so the clip spans the move's startup+active+recovery.
+     Returns the action name, or null when the move has no row clip. */
+  _moveRowAction(move) {
+    if (!this._t3 || !move || move.t3row == null) return null;
+    if (move.t3source && SOURCE_TO_BANK[move.t3source] !== this._t3.bank) return null;
+    const name = 'row:' + move.t3row;
+    if (!this.t3actions[name]) {
+      if (!this._t3.clips[name]) return null;
+      const rc = retargetT3Clips(this._t3.clips, this._t3.bank, this._t3.model, THREE, this._t3.modelKey, [name]);
+      if (!rc || !rc[name]) return null;
+      Object.assign(this.t3actions, createT3Actions(this.mixer, rc, THREE));
+    }
+    const a = this.t3actions[name];
+    const total = (move.startup || 0) + (move.active || 0) + (move.recovery || 0);
+    a.timeScale = total > 0.05 ? a.getClip().duration / total : 1;
+    return name;
+  }
+
   tryMove(dir) { if (this.canAct()) this.vx = dir * this.stats.speed; }
   tryJump() { if (this.canAct() && this.onGround) { this.vy = this.stats.jump; this.onGround = false; this._enter('jump'); } }
   tryBlock(on) {
@@ -459,17 +505,99 @@ export class Fighter {
   tryDodge() {
     if (!this.canAct() || !this.onGround) return;
     this._enter('dodge'); this.invuln = 0.34; this.dodgeDir = -this.facing;
+    this._dodgeId = (this._dodgeId || 0) + 1;
     this.vx = this.dodgeDir * this.stats.speed * 1.7;
   }
+
+  /* ---------------- Stream 6: sidestep (Tekken) ----------------
+     Tap u/d on the joystick (or W/S) = sidestep into the background
+     (dir=-1) / foreground (dir=+1). Grounded in T3-era frame data
+     (Tekkenpedia side-step chart: 43f total, no block 1-11f, attacks
+     cancelable from 8f): 0.55s total, 0.12s evasion vs strikes,
+     attack-cancelable after 0.15s. Evasion is positional — the hurtboxes
+     genuinely move off the attack's line on the z-axis. */
+  trySidestep(dir) {
+    if (!this.canAct() || !this.onGround) return false;
+    this._enter('sidestep');
+    this.ssDir = dir;
+    this._ssId = (this._ssId || 0) + 1;
+    this.vz = dir * 3.4;
+    this.invuln = 0.12; // early step crushes linear strikes
+    return true;
+  }
+  get sidestepCancelable() { return this.state === 'sidestep' && this.stateT > 0.15; }
+
+  /* ---------------- Stream 6: throw lock / throw breaks (Tekken) ----------------
+     When a throw's active frames connect, both fighters enter the lock:
+     attacker 'throwing', victim 'thrown', THROW_LOCK_T = 0.3s (18f) break
+     window. Victim breaks with the matching input (T3-T7 rules):
+       1+3-family -> '1' (LP)      2+4-family -> '2' (RP)
+       1+2/3+4/chains -> '1+2' (both punches; '3+4' accepted on mobile)
+     Read the attacker's lead arm: left arm = break 1, right arm = break 2,
+     both arms = break 1+2. Wrong input or timeout = full throw damage. */
+  startThrowLock(move, attacker) {
+    this.state = 'thrown'; this.stateT = 0;
+    this.lockT = 0.3; this.lockMove = move; this.lockPartner = attacker;
+    this.vx = 0; this.vz = 0;
+    // face the attacker during the lock
+    const want = Math.sign(attacker.root.position.x - this.root.position.x) || 1;
+    this.facing = want;
+  }
+  startThrowing(victim) {
+    this.state = 'throwing'; this.stateT = 0;
+    this.lockT = 0.3; this.lockVictim = victim; this.lockMove = this.attack;
+    this.vx = this.facing * 1.2; // step in with the grab
+    this._breakCueT = 0;
+  }
+  get throwBreakInput() { return this.lockMove && this.lockMove.throw_break; }
+  tryThrowBreak(btn) {
+    if (this.state !== 'thrown' || !this.lockMove) return false;
+    const want = this.lockMove.throw_break || '1';
+    const got = (btn === '3+4') ? '1+2' : btn; // mobile: both-kicks = both-punches
+    if (got !== want) return false;
+    // ESCAPED — both fighters reset, attacker eats whiff recovery
+    const attacker = this.lockPartner;
+    this.lockT = 0; this.lockMove = null; this.lockPartner = null;
+    this._enter('idle');
+    this.vx = -this.facing * 2.0; // shoved back out of range
+    if (attacker) {
+      attacker.lockT = 0; attacker.lockVictim = null; attacker.lockMove = null;
+      attacker._enter('idle');
+      attacker.stun = Math.max(attacker.stun, 0.3); // whiffed throw = punishable
+      attacker.vx = 0;
+    }
+    this._throwEscaped = true;
+    return true;
+  }
+  completeThrow() {
+    // Break window expired — the throw lands for real. Clears both sides of
+    // the lock, then routes through the normal receiveHit path.
+    const throwing = this.state === 'throwing';
+    const attacker = throwing ? this : this.lockPartner;
+    const victim = throwing ? this.lockVictim : this;
+    const move = this.lockMove;
+    const inLock = this.state === 'thrown' || this.state === 'throwing';
+    for (const f of [attacker, victim]) {
+      if (!f) continue;
+      f.lockT = 0; f.lockMove = null; f.lockPartner = null; f.lockVictim = null;
+    }
+    if (attacker && victim && move && inLock) {
+      attacker._enter('idle'); attacker.vx = 0; attacker.vz = 0;
+      return victim.receiveHit(move, attacker);
+    }
+    if (inLock) this._enter('idle');
+    return null;
+  }
   tryAttack(name) {
-    if (!this.canAct()) return false;
+    if (!this.canAct() && !this.sidestepCancelable) return false;
     // Tekken notation resolution: strings (1,2), motion specials (qcf+2),
     // directionals (f+1) via the fighter's TekkenBuffer. Legacy names map.
     let notation = LEGACY_TO_TEKKEN[name] || name;
     if (/^[1234]$/.test(notation)) {
       const resolved = this.tekken.pressButton(notation);
+      // Stream 6: if the fighter has no move on this limb, keep the raw
+      // notation so the base-move fallback below still fires (no dead buttons).
       if (resolved) notation = resolved;
-      else return false;
     } else if (/^[1234]\+[1234]$/.test(notation)) {
       const resolved = this.tekken.pressChord(notation);
       if (!resolved) return false; // chord with no matching move: whiff, no action
@@ -557,6 +685,8 @@ export class Fighter {
   }
   getHurtboxes() {
     if (this.invuln > 0 || this.dead) return [];
+    // Throw cinematic: both locked fighters are committed, not hittable.
+    if (this.state === 'thrown' || this.state === 'throwing') return [];
     const out = [];
     if (this.bones.Spine1) { this.bones.Spine1.getWorldPosition(_v1); out.push({ x: _v1.x, y: _v1.y, z: _v1.z, r: 0.58 }); }
     if (this.bones.Head) { this.bones.Head.getWorldPosition(_v1); out.push({ x: _v1.x, y: _v1.y, z: _v1.z, r: 0.34 }); }
@@ -579,6 +709,7 @@ export class Fighter {
     }
     if (this.stun > 0 && this.state !== 'ko') this.stun -= dt;
     if (this.invuln > 0) this.invuln -= dt;
+    if (this.lockT > 0) this.lockT -= dt; // throw-break window
     if (this._comboTimer > 0) { this._comboTimer -= dt; if (this._comboTimer <= 0) this.combo = 0; }
     if (this._auraFlash > 0) this._auraFlash -= dt;
 
@@ -606,6 +737,14 @@ export class Fighter {
       case 'hitstun': if (this.stun <= 0) this._enter('idle'); break;
       case 'knockdown': if (this.onGround && this.stun <= 0) this._enter('idle'); break;
       case 'dodge': if (this.stateT > 0.34) { this.vx = 0; this._enter('idle'); } break;
+      case 'sidestep':
+        if (this.stateT > 0.55) { this.vz = 0; this._enter('idle'); }
+        break;
+      case 'thrown':
+      case 'throwing':
+        // Throw-lock: game.js resolves the lock when the break window
+        // (lockT) expires, so hit feedback stays in one place.
+        break;
       case 'idle': case 'walk':
         this.state = (Math.abs(this.vx) > 0.4 && this.onGround) ? 'walk' : 'idle';
         break;
@@ -614,12 +753,20 @@ export class Fighter {
 
   _physics(dt, opponent) {
     if (!this.onGround) this.vy -= 22 * dt;
-    if (this.onGround && this.state !== 'walk' && this.state !== 'dodge' && !(this.state === 'attack' && this.attackName === 'grab')) {
+    if (this.onGround && this.state !== 'walk' && this.state !== 'dodge' && this.state !== 'sidestep' && !(this.state === 'attack' && this.attackName === 'grab')) {
       this.vx *= Math.pow(0.0001, dt);
       if (Math.abs(this.vx) < 0.05) this.vx = 0;
     }
+    // Lateral drift decays once the sidestep ends.
+    if (this.state !== 'sidestep') {
+      this.vz *= Math.pow(0.0001, dt);
+      if (Math.abs(this.vz) < 0.05) this.vz = 0;
+    }
     this.root.position.x += this.vx * dt;
     this.root.position.y += this.vy * dt;
+    this.root.position.z += this.vz * dt;
+    // Sidestep range: about one body width into the background/foreground.
+    this.root.position.z = Math.max(-2.4, Math.min(2.4, this.root.position.z));
 
     if (this.root.position.y <= GROUND_Y) {
       this.root.position.y = GROUND_Y; this.vy = 0;
@@ -627,13 +774,21 @@ export class Fighter {
     }
     this.root.position.x = Math.max(-ARENA_LIMIT, Math.min(ARENA_LIMIT, this.root.position.x));
 
-    // Body-vs-body pushout — fighters NEVER interpenetrate.
+    // Body-vs-body pushout — fighters NEVER interpenetrate (x and z).
     if (opponent) {
       const dx = this.root.position.x - opponent.root.position.x;
+      const dz = this.root.position.z - opponent.root.position.z;
       const minDist = 1.45;
-      if (Math.abs(dx) < minDist && Math.abs(this.root.position.y - opponent.root.position.y) < 1.8) {
-        const push = (minDist - Math.abs(dx)) / 2 * (dx >= 0 ? 1 : -1);
-        this.root.position.x += push; opponent.root.position.x -= push;
+      if (Math.abs(this.root.position.y - opponent.root.position.y) < 1.8) {
+        if (Math.abs(dx) < minDist && Math.abs(dz) < 0.9) {
+          const push = (minDist - Math.abs(dx)) / 2 * (dx >= 0 ? 1 : -1);
+          this.root.position.x += push; opponent.root.position.x -= push;
+        }
+        // lateral separation after sidesteps
+        if (Math.abs(dz) < 0.7 && Math.abs(dx) < minDist) {
+          const zp = (0.7 - Math.abs(dz)) / 2 * (dz >= 0 ? 1 : -1);
+          this.root.position.z += zp; opponent.root.position.z -= zp;
+        }
       }
     }
 
@@ -665,6 +820,17 @@ export class Fighter {
     action.play();
     this._t3current = action;
     return true;
+  }
+
+  /* The bank's side-step clip that travels toward the character's
+     left (wantLeft) or right, chosen by the decoded root drift. */
+  _sidestepClip(wantLeft) {
+    for (const n of ['sidestepA', 'sidestepB']) {
+      const a = this.t3actions[n];
+      const dx = a && a.getClip().userData.lateralDx;
+      if (a && dx && (dx > 0) === wantLeft) return n;
+    }
+    return null;
   }
 
   _stopT3(fade = 0.15) {
@@ -724,7 +890,7 @@ export class Fighter {
       '1': 'light', '2': 'light', '3': 'medium', '4': 'medium', '1+3': 'grab', '2+4': 'grab' };
     switch (this.state) {
       case 'attack': {
-        let t3name = T3_ATTACK_MAP[this.attackName];
+        let t3name = this._moveRowAction(this.attack) || T3_ATTACK_MAP[this.attackName];
         if (!t3name && typeof this.attackName === 'string') {
           const lastBtn = this.attackName.split(',').pop().split('+').pop();
           t3name = T3_ATTACK_MAP[lastBtn] || 'heavy'; // strings -> last hit's clip; specials -> heavy
@@ -755,9 +921,60 @@ export class Fighter {
       case 'victory':
         this._playT3('win', { loop: true });
         break;
-      case 'dodge': this._leanT.z = this.dodgeDir * this.facing * 0.32; this._stopT3(); break;
-      case 'jump': this._animJump(); this._stopT3(); break;
-      default: this._stopT3(); break;
+      case 'dodge':
+        // The dodge moves the fighter backwards: T3's own back-dash
+        // (b,b branch of the neutral row) when the bank is bound.
+        if (!this._playT3Once('backdash', 'dodge:' + this._dodgeId)) {
+          this._leanT.z = this.dodgeDir * this.facing * 0.32; this._stopT3();
+        }
+        break;
+      case 'sidestep': {
+        // Real T3 side step when the bank is bound: the clip whose decoded
+        // root drift goes the same way as this step (character-left is
+        // world -z when facing +x). Otherwise lean into the lateral step;
+        // slight crouch like a real sidestep.
+        const ss = this._sidestepClip(this.ssDir === -this.facing);
+        if (!ss || !this._playT3Once(ss, 'ss:' + this._ssId)) {
+          this._leanT.z = this.ssDir * 0.38;
+          this._leanT.x = 0.1;
+          this._stopT3();
+        }
+        break;
+      }
+      case 'throwing': {
+        // Hold the double-arm snatch; flash the LEAD arm as the break cue
+        // (Tekken: left arm forward = break 1, right arm = break 2, both = 1+2).
+        const brk = this.lockMove && this.lockMove.throw_break;
+        this._leanT.x = -0.22;
+        const pulse = 0.55 + 0.45 * Math.sin(performance.now() * 0.03);
+        if (brk === '1') this._showTrail(this.bones.LeftHand, pulse);
+        else if (brk === '2') this._showTrail(this.bones.RightHand, pulse);
+        else { this._showTrail(this.bones.RightHand, pulse); this._showTrail(this.bones.LeftHand, pulse * 0.9); }
+        // A bound bank keeps its grab clip clamped on the snatch; stopping
+        // it would drop the rig to its rest (T-)pose.
+        if (!this.t3actions.grab) this._stopT3();
+        break;
+      }
+      case 'thrown':
+        // Victim caught: rocked back, arms up (T3 hit reaction when bound).
+        this._leanT.x = 0.3;
+        if (!this._playT3Once('hit', 'thrown')) this._stopT3();
+        break;
+      case 'jump': {
+        const jn = Math.abs(this.vx) < 0.4 ? 'jumpUp' : (Math.sign(this.vx) === this.facing ? 'jumpFwd' : 'jumpBack');
+        if (!this._playT3Once(this.t3actions[jn] ? jn : 'jumpUp', 'jump')) { this._animJump(); this._stopT3(); }
+        break;
+      }
+      default: {
+        // idle / walk: the bank's neutral stance and walk cycles. Without
+        // a bound bank the embedded Mixamo locomotion layer (above) shows.
+        let loco = null;
+        if (this.state === 'walk' && this.t3actions.walkFwd) loco = dirSign > 0 || !this.t3actions.walkBack ? 'walkFwd' : 'walkBack';
+        else if (this.t3actions.stance) loco = 'stance';
+        if (loco && this._playT3(loco, { loop: true, fade: 0.12 })) this._t3stateKey = null;
+        else this._stopT3();
+        break;
+      }
     }
 
     // 6) Smooth & apply lean (body english) — composed with facing

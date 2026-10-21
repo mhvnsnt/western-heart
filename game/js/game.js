@@ -217,12 +217,26 @@ export class Game {
         this.p1.tekken.noteDirection(this._tekkenDir(inp, this.p1.facing));
         if (ms && this.p1.isBlocking()) ms.blockTime += dt;
         if (ms) ms.time += dt;
-        for (const act of inp.consume()) {
+        // Stream 6: while caught in a throw, limb inputs are break attempts.
+        if (this.p1.state === 'thrown') {
+          for (const act of inp.consume()) {
+            if (act === '1' || act === '2' || act === '3' || act === '4' ||
+                act === '1+2' || act === '3+4') {
+              if (this.p1.tryThrowBreak(act)) {
+                this.ui.throwEscape(true);
+                audio.block();
+              }
+            }
+          }
+        } else for (const act of inp.consume()) {
           if (act === 'punch' || act === 'kick' || act === 'grab' ||
               act === '1' || act === '2' || act === '3' || act === '4' ||
-              act === '1+3' || act === '2+4' || act === '1+2' || act === '3+4') {
+              act === '1+3' || act === '2+4' || act === '1+2' || act === '3+4' ||
+              act === '1+4' || act === '2+3') {
             if (this.p1.tryAttack(act)) { audio.whiff(); rec(act); }
           }
+          else if (act === 'ss-up') { if (this.p1.trySidestep(-1)) rec('sidestep'); }
+          else if (act === 'ss-down') { if (this.p1.trySidestep(1)) rec('sidestep'); }
           else if (act === 'surge') {
             if (this.p1.tryAttack('surge')) {
               rec('surge');
@@ -251,6 +265,35 @@ export class Game {
       // --- Advance fighters ---
       this.p1.update(dt, this.p2);
       this.p2.update(dt, this.p1);
+
+      // --- Stream 6: throw-lock resolution (break window expired) ---
+      for (const atk of [this.p1, this.p2]) {
+        if (atk.state === 'throwing' && atk.lockT <= 0 && atk.lockMove) {
+          const def = atk === this.p1 ? this.p2 : this.p1;
+          const hpBefore = def.hp;
+          const result = atk.completeThrow();
+          const dealt = Math.max(0, hpBefore - def.hp);
+          if (this.matchStats) {
+            if (atk === this.p1) this.matchStats.dmgDealt += dealt;
+            else this.matchStats.dmgTaken += dealt;
+          }
+          this.ui.throwBreakPrompt(false);
+          if (result === 'ko') {
+            audio.ko(); audio.grunt(def.isPlayer ? 1.1 : 0.85);
+            this.arena.shake(0.5, 0.4);
+            this._hitStop = 0.12;
+            this._spawnImpact(def.root.position.x, 1.2, def.root.position.z, 0xffcf4d, 1.4);
+          } else if (result && result !== 'dodge') {
+            audio.grab(); audio.grunt(def.isPlayer ? 1.05 : 0.9);
+            this.arena.shake(0.45, 0.28);
+            this._hitStop = 0.1;
+            this._spawnImpact(def.root.position.x, 1.2, def.root.position.z,
+              atk.char.colors.trim || 0xffffff, 1.3);
+            const combo = atk.registerCombo();
+            this.ui.combo(Math.max(1, combo));
+          }
+        }
+      }
 
       // --- Combat resolution ---
       this._resolveCombat(this.p1, this.p2);
@@ -295,6 +338,18 @@ export class Game {
       const rr = (hb.r + hu.r);
       if (dx * dx + dy * dy + dz * dz <= rr * rr) {
         attacker.registerHit();
+        // Stream 6: throws enter the breakable throw-lock instead of
+        // landing instantly. Throws whiff against airborne opponents.
+        if (hb.move.isGrab && defender.onGround && defender.state !== 'thrown' &&
+            defender.state !== 'throwing') {
+          defender.startThrowLock(hb.move, attacker);
+          attacker.startThrowing(defender);
+          this.ui.throwBreakPrompt(defender.isPlayer, hb.move.throw_break || '1');
+          audio.grab();
+          this.arena.shake(0.3, 0.2);
+          this._hitStop = 0.06;
+          return;
+        }
         const hpBefore = defender.hp;
         const result = defender.receiveHit(hb.move, attacker);
         // story reincarnation profiling: who dealt / took what

@@ -10,6 +10,7 @@ import { assets } from './assets.js';
 import { ROSTER, getCharacter } from './characters.js';
 import { loadRealMovesets, bankIdFor } from './fighter.js';
 import { loadFighterMovesets } from './movesets.js';
+import { getFighterMoveset } from './movesets.js';
 import { loadT3Clips } from './t3anims.js';
 import * as THREE from 'three';
 import { whUiEnabled, mountWhUi } from './ui-wh-bridge.js';
@@ -135,6 +136,29 @@ const ui = {
     pop.classList.add('show');
     clearTimeout(this._comboT);
     this._comboT = setTimeout(() => pop.classList.remove('show'), 900);
+  },
+  /* Stream 6: throw-break prompt. show=false clears. breakInput '1'/'2'/'1+2'
+     tells the defender which limb button breaks the throw (Tekken rules). */
+  throwBreakPrompt(show, breakInput) {
+    const el = document.getElementById('throw-prompt');
+    if (!el) return;
+    clearTimeout(this._throwT);
+    if (!show) { el.classList.remove('show'); return; }
+    const label = breakInput === '1' ? 'TAP LP' : breakInput === '2' ? 'TAP RP' : 'TAP LP+RP';
+    el.querySelector('.throw-prompt-key').textContent = label;
+    el.classList.remove('show'); void el.offsetWidth;
+    el.classList.add('show');
+    this._throwT = setTimeout(() => el.classList.remove('show'), 900);
+  },
+  throwEscape(playerBroke) {
+    const el = document.getElementById('throw-prompt');
+    if (!el) return;
+    clearTimeout(this._throwT);
+    el.querySelector('.throw-prompt-key').textContent =
+      playerBroke ? 'ESCAPED!' : 'THROW ESCAPED';
+    el.classList.remove('show'); void el.offsetWidth;
+    el.classList.add('show', 'escaped');
+    this._throwT = setTimeout(() => el.classList.remove('show', 'escaped'), 900);
   },
   matchOver(playerWon) {
     document.getElementById('result-title').textContent = playerWon ? 'YOU WIN!' : 'YOU LOSE';
@@ -404,6 +428,7 @@ document.querySelectorAll('[data-action]').forEach((el) => {
       window.location.href = '../customization/creation-suite-ui/index.html';
     }
     else if (a === 'howto') { show('howto'); }
+    else if (a === 'close-movelist') { toggleMovelist(false); }
     else if (a === 'back-menu') {
       // CLEAN-INIT: leaving fight → full state reset. No leaked fighters,
       // timers, or listeners carry into the menu.
@@ -468,6 +493,79 @@ document.getElementById('training-quit').addEventListener('click', () => {
   modes.clearState();
   show('menu');
   audio.stopMusic();
+});
+
+/* Stream 6: per-fighter movelist (training mode HUD button + M key).
+   Overlay only — the fight keeps running underneath. */
+const MOVESET_GROUPS = [
+  ['signature', 'SIGNATURE'],
+  ['throw', 'THROWS'],
+  ['special', 'SPECIALS'],
+  ['string', 'STRINGS'],
+  ['strike', 'STRIKES'],
+];
+function renderMovelist() {
+  const fid = game.p1 && game.p1.char.id;
+  const ms = fid && getFighterMoveset(fid);
+  const groups = document.getElementById('movelist-groups');
+  document.getElementById('movelist-title').textContent =
+    'MOVE LIST — ' + (ms ? (ms.display || fid.toUpperCase()) : '???');
+  document.getElementById('movelist-sub').textContent =
+    ms ? `${Object.keys(ms.moves).length} moves · ${ms.tekken_base || ''}` : 'no data';
+  groups.innerHTML = '';
+  if (!ms || !ms.moves) return;
+  const byClass = {};
+  for (const [key, m] of Object.entries(ms.moves)) {
+    const cls = m.move_class || (m.throw ? 'throw' : 'strike');
+    (byClass[cls] = byClass[cls] || []).push([key, m]);
+  }
+  const shown = new Set();
+  for (const [cls, label] of MOVESET_GROUPS) {
+    const list = byClass[cls];
+    if (!list || !list.length) continue;
+    shown.add(cls);
+    const g = document.createElement('div');
+    g.className = 'movelist-group';
+    g.innerHTML = `<h3>${label} (${list.length})</h3>`;
+    for (const [key, m] of list) {
+      const fr = Math.round((m.startup || 0) * 60);
+      const brk = m.throw_break
+        ? `<span class="ml-break">break ${m.throw_break === '1' ? 'LP' : m.throw_break === '2' ? 'RP' : 'LP+RP'}</span>` : '';
+      const row = document.createElement('div');
+      row.className = 'movelist-row';
+      row.innerHTML = `<span class="ml-input">${key}</span>` +
+        `<span class="ml-name">${m.name || ''} ${brk}</span>` +
+        `<span class="ml-data">${m.damage}dmg ${fr}f</span>`;
+      g.appendChild(row);
+    }
+    groups.appendChild(g);
+  }
+  // anything unclassified
+  const rest = Object.entries(byClass).filter(([c]) => !shown.has(c))
+    .flatMap(([, l]) => l);
+  if (rest.length) {
+    const g = document.createElement('div');
+    g.className = 'movelist-group';
+    g.innerHTML = '<h3>OTHER (' + rest.length + ')</h3>';
+    for (const [key, m] of rest) {
+      const row = document.createElement('div');
+      row.className = 'movelist-row';
+      row.innerHTML = `<span class="ml-input">${key}</span>` +
+        `<span class="ml-name">${m.name || ''}</span>` +
+        `<span class="ml-data">${m.damage}dmg</span>`;
+      g.appendChild(row);
+    }
+    groups.appendChild(g);
+  }
+}
+function toggleMovelist(open) {
+  const el = document.getElementById('screen-movelist');
+  const willOpen = open === undefined ? !el.classList.contains('active') : open;
+  if (willOpen) renderMovelist();
+  el.classList.toggle('active', willOpen);
+}
+document.getElementById('movelist-btn').addEventListener('click', () => {
+  audio.uiClick(); toggleMovelist();
 });
 
 async function startFight(playerId, enemyId, opts = {}) {
@@ -542,11 +640,15 @@ async function startFight(playerId, enemyId, opts = {}) {
     hints._t = setTimeout(() => hints.classList.add('fade'), 6000);
   }
 }
-// H toggles control hints
+// H toggles control hints, M toggles the movelist (training)
 document.addEventListener('keydown', (e) => {
   if (e.code === 'KeyH') {
     const hints = document.getElementById('control-hints');
     if (hints) hints.classList.toggle('fade');
+  }
+  if (e.code === 'KeyM') {
+    const btn = document.getElementById('movelist-btn');
+    if (btn && btn.style.display !== 'none') toggleMovelist();
   }
 });
 
