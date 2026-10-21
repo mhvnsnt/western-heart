@@ -31,6 +31,20 @@ BANKS = {
     # Heihachi's own divmot13 motion posed on Jin's T3 skeleton (tools/anim/t3_row_bake.py
     # --bank heihachi --kmd-from jin): heihachi191's KMD has no hip/shoulder vertex data.
     "heihachi_on_jin": "lab/game/assets/t3_jin.glb",
+    # Remainder banks (2026-10-20): divmot banks decoded via lab/tools/t3_motion_bake.py
+    # onto each character's own WH-Canonical-22 GLB (see docs/anim/T3-REMAINDER-BANKS-20261020.md).
+    # heihachi = the own-rig divmot13 decode (pose-chain pivot override);
+    # armorking = divmot03_king baked on King's own rig.
+    "paul": "lab/game/assets/t3_paul_t3real.glb",
+    "lei": "lab/game/assets/t3_lei_t3real.glb",
+    "nina": "lab/game/assets/t3_nina_t3real.glb",
+    "hwoarang": "lab/game/assets/t3_hwoarang_t3real.glb",
+    "eddy": "lab/game/assets/t3_eddy_t3real.glb",
+    "julia": "lab/game/assets/t3_julia_t3real.glb",
+    "anna": "lab/game/assets/t3_anna_t3real.glb",
+    "bosconovitch": "lab/game/assets/t3_bosconovitch_t3real.glb",
+    "heihachi": "lab/game/assets/t3_heihachi_t3real.glb",
+    "armorking": "lab/game/assets/t3_armorking_t3real.glb",
 }
 COMP = {5120: np.int8, 5121: np.uint8, 5122: np.int16, 5123: np.uint16, 5125: np.uint32, 5126: np.float32}
 NCOMP = {"SCALAR": 1, "VEC2": 2, "VEC3": 3, "VEC4": 4, "MAT4": 16}
