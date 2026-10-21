@@ -30,6 +30,8 @@ export const MODEL_URLS = {
   // assets/models/diablo.glb as the ladder-back (not deleted).
   diablo: '../roster/diablo/attires/attire1/model.glb',
   'diablo-attire1': '../roster/diablo/attires/attire1/model.glb',
+  // Diablo Attire 2 — Devil God (owner 2026-10-20, Tripo pull).
+  'diablo-attire2': '../roster/diablo/attires/attire2/model.glb',
   // Tripo pulls wired 2026-10-19 (owner: stop saying "not in the repo").
   phantom: '../roster/phantom/attires/attire1/model.glb',
   skull: '../roster/skull/attires/attire1/model.glb',
