@@ -96,6 +96,9 @@ const MODEL_URLS = {
   // so the key resolves instead of 404ing.
   'demonio-body': 'assets/models/demonio.glb',
   'kai-body': 'assets/models/kai-body.glb',
+  'jin-body': 'assets/models/jin-body.glb',
+  'rin-body': 'assets/models/rin-body.glb',
+  'jin-t7': 'assets/models/jin.glb',
   'king-tyrant_alt1': 'assets/models/king-tyrant_alt1.glb',
   'kinpo-t8': 'assets/models/kinpo-t8.glb',
   'kinpo_alt1': 'assets/models/kinpo_alt1.glb',
@@ -424,10 +427,69 @@ function remapVegaBones(fighterId, model) {
   return true;
 }
 
+/* MESH FACING (2026-10-20). The game (fighter.js lean rotation) and the T3
+   retarget assume a model's mesh faces +Z. Many shipped GLBs face -Z, and
+   the auto-rig template skeleton faces -Z even inside +Z meshes, so bone
+   names/orientations cannot tell. assets/models/model-facing.json records
+   each model's mesh facing read from raw rest renders (proof listed in the
+   file). Unlisted models use the feet-geometry cue below when it is
+   confident; otherwise +Z. createInstance() wraps the clone so the
+   instance's own space always has the mesh facing +Z. */
+const FACING_URL = 'assets/models/model-facing.json';
+let _facingTable = null;
+const _facingReady = fetch(FACING_URL).then(r => (r.ok ? r.json() : null))
+  .then(j => { _facingTable = (j && j.models) || {}; })
+  .catch(() => { _facingTable = {}; });
+
+/* Feet cue: the lowest 5% of skinned vertices near each ankle extend
+   further toward the toes than toward the heel. Returns +1 (+Z), -1 (-Z)
+   or 0 (not confident; |score| < 0.05 misread no model in the 52-model
+   check against rest renders, 2026-10-20). */
+function feetFacingCue(root) {
+  root.updateMatrixWorld(true);
+  const inv = new THREE.Matrix4().copy(root.matrixWorld).invert();
+  const pts = [];
+  const v = new THREE.Vector3(), m = new THREE.Matrix4();
+  let feet = [];
+  root.traverse((o) => {
+    if (!o.isSkinnedMesh) return;
+    m.multiplyMatrices(inv, o.matrixWorld);
+    const pos = o.geometry.attributes.position;
+    const step = Math.max(1, Math.floor(pos.count / 40000));
+    for (let i = 0; i < pos.count; i += step) { v.fromBufferAttribute(pos, i).applyMatrix4(m); pts.push(v.x, v.y, v.z); }
+    if (!feet.length && o.skeleton) {
+      for (const b of o.skeleton.bones) {
+        const n = b.name.replace(/^mixamorig:?/, '').replace(/_\d+$/, '');
+        if (/^(Left|Right)Foot$|^Bip0*1_[LR]_Foot$|^[LR]_Foot$/.test(n)) {
+          feet.push(new THREE.Vector3().setFromMatrixPosition(new THREE.Matrix4().multiplyMatrices(inv, b.matrixWorld)));
+        }
+      }
+    }
+  });
+  if (pts.length < 300 || feet.length < 2) return 0;
+  let y0 = Infinity, y1 = -Infinity;
+  for (let i = 1; i < pts.length; i += 3) { y0 = Math.min(y0, pts[i]); y1 = Math.max(y1, pts[i]); }
+  const h = y1 - y0;
+  let score = 0;
+  for (const a of feet.slice(0, 2)) {
+    const zs = [];
+    for (let i = 0; i < pts.length; i += 3) {
+      if (pts[i + 1] < y0 + 0.05 * h && Math.abs(pts[i] - a.x) < 0.06 * h) zs.push(pts[i + 2]);
+    }
+    if (zs.length < 10) return 0;
+    zs.sort((p, q) => p - q);
+    const hi = zs[Math.floor(zs.length * 0.99)], lo = zs[Math.floor(zs.length * 0.01)];
+    score += ((hi - a.z) - (a.z - lo)) / h;
+  }
+  return score >= 0.05 ? 1 : (score <= -0.05 ? -1 : 0);
+}
+
 class AssetManager {
   constructor() {
     this.gltfs = {};   // id -> gltf
     this.clips = {};   // id -> {name: clip}
+    this.facing = {};  // id -> +1 (+Z) | -1 (-Z), mesh facing of the raw GLB
+    this.groundY = {}; // id -> lowest skinned-vertex height of the raw GLB at rest
     this.ready = false;
   }
 
@@ -482,7 +544,28 @@ class AssetManager {
               o.frustumCulled = false;
             }
           });
-          resolve();
+          // GROUNDING (2026-10-20): some GLBs are authored with the origin
+          // at the hips (star / torch / michiko / diablo: vertices span
+          // y -1.05..0.8), so they stood waist-deep in the floor. The
+          // instance is lifted by its own rest geometry (skinned bounds
+          // include the bone transforms in three r160).
+          {
+            gltf.scene.updateMatrixWorld(true);
+            let y0 = Infinity;
+            const bb = new THREE.Box3();
+            gltf.scene.traverse((o) => {
+              if (!o.isSkinnedMesh) return;
+              o.computeBoundingBox();
+              bb.copy(o.boundingBox).applyMatrix4(o.matrixWorld);
+              if (bb.min.y < y0) y0 = bb.min.y;
+            });
+            this.groundY[id] = Number.isFinite(y0) ? y0 : 0;
+          }
+          _facingReady.then(() => {
+            const rec = _facingTable && _facingTable[id];
+            this.facing[id] = rec === '-Z' ? -1 : rec === '+Z' ? 1 : (feetFacingCue(gltf.scene) || 1);
+            resolve();
+          });
         },
         (xhr) => {
           // Byte-level download progress: xhr.loaded / xhr.total
@@ -537,15 +620,28 @@ class AssetManager {
 
   /* { model, bones, mixer, actions } for one fighter.
      Per-fighter palette: suit color lerp + trim emissive accents. */
-  createInstance(fighterId, suitColor, trimColor, tintStrength = 0.45) {
+  /* tintStrength defaults to 0: fighters show their OWN authored textures
+     and materials (owner 2026-10-20: "what are the fighters having that
+     colored layer over their skin? fix that"). Only an explicitly
+     colorized fighter (the Create-a-Fighter skin tone, `colorize: true`)
+     passes a tint. */
+  createInstance(fighterId, suitColor, trimColor, tintStrength = 0) {
     const gltf = this.gltfs[fighterId];
     if (!gltf) throw new Error('unknown fighter model: ' + fighterId);
-    const model = skeletonClone(gltf.scene);
+    // The instance root is a wrapper whose space always has the mesh facing
+    // +Z (see MESH FACING above); callers may freely set its rotation.
+    const inner = skeletonClone(gltf.scene);
     // FOREIGN-RIG REMAP (Vega only, see VEGA_T3_BONE_REMAP above):
     // rename the cloned instance's core joints to the T3 names
     // BEFORE the bones dict and mixer are built from it, so T3
     // clips + procedural IK bind. The source gltf is untouched.
-    const vegaRemapped = remapVegaBones(fighterId, model);
+    const vegaRemapped = remapVegaBones(fighterId, inner);
+    if ((this.facing[fighterId] || 1) < 0) inner.rotation.y = Math.PI;
+    const gy = this.groundY[fighterId] || 0;
+    if (Math.abs(gy) > 0.03) inner.position.y = -gy; // feet on the floor
+    const model = new THREE.Group();
+    model.name = `wh-instance:${fighterId}`;
+    model.add(inner);
 
     const suit = new THREE.Color(suitColor);
     const trim = new THREE.Color(trimColor);
@@ -561,11 +657,12 @@ class AssetManager {
       if (o.isSkinnedMesh) skinnedCount++;
       if (o.isMesh && o.material) {
         o.material = o.material.clone();
-        // tint toward the fighter's palette (real textures underneath)
-        if (o.material.color) o.material.color.lerp(suit, tintStrength);
-        o.material.emissive = o.material.emissive || new THREE.Color(0x000000);
-        o.material.emissive.copy(trim).multiplyScalar(0.08);
-        if (o.material.roughness !== undefined) o.material.roughness = 0.7;
+        if (tintStrength > 0) {
+          // explicit colorize only (custom fighter skin tone)
+          if (o.material.color) o.material.color.lerp(suit, tintStrength);
+          o.material.emissive = o.material.emissive || new THREE.Color(0x000000);
+          o.material.emissive.copy(trim).multiplyScalar(0.08);
+        }
         // Never ship a transparent fighter: a bad alpha kills visibility.
         if (o.material.transparent && o.material.opacity < 0.05) {
           o.material.transparent = false;

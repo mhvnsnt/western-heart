@@ -1083,6 +1083,13 @@ export class ModeController {
   _showQuit(on) {
     const q = this._el('training-quit');
     if (q) q.style.display = on ? 'block' : 'none';
+    // Stream 6: movelist button rides with the training quit button.
+    const ml = this._el('movelist-btn');
+    if (ml) ml.style.display = on ? 'block' : 'none';
+    if (!on) {
+      const scr = document.getElementById('screen-movelist');
+      if (scr) scr.classList.remove('active');
+    }
   }
   _modeWin(won, title, sub, extraButtons) {
     this.game.onMatchEnd = null;
