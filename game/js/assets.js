@@ -43,7 +43,10 @@ export const MODEL_URLS = {
   // owner 2026-10-18). The GLBs sat in roster/zui/attires/ with NO MODEL_URLS
   // keys — unreachable. steve-fox.glb (his canon base) stays wired below and
   // ladders back as a selectable alternate in attires.js.
-  'zui-attire1': '../roster/zui/attires/attire1/model.glb',
+  // Rigged 2026-10-21 (Claude session): the A1 Tripo was an unrigged static (ZERO skinned
+  // meshes -> invisible fighter). Auto-rigged with tools/auto_rig (GameRig backend +
+  // smooth_weights.py); the owner's original stays untouched beside it as model.glb.
+  'zui-attire1': '../roster/zui/attires/attire1/model-rigged.glb',
   'zui-attire2': '../roster/zui/attires/attire2/model.glb',
   // Tripo pulls wired 2026-10-19 (owner: stop saying "not in the repo").
   phantom: '../roster/phantom/attires/attire1/model.glb',
