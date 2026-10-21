@@ -48,7 +48,9 @@ documented fix), 2048×2048, white background, Cycles.
 ## Game hook smoke (Node)
 
 `node customization/tools/test_game_hook.mjs .` → **SMOKE PASS**:
-91 MODEL_URLS keys load; synthetic registry override replaces
+91 MODEL_URLS keys load (96 after the origin/main merge brought in the
+jin-body/rin-body/charger entries — re-run on the merged tree, still PASS);
+synthetic registry override replaces
 `baek-master-white` base URL with `../roster/baek/attires/master-white/model-custom.glb`
 and the target file exists; empty registry is an exact no-op.
 
