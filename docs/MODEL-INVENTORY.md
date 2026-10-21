@@ -79,6 +79,7 @@ Legend: ✅ WIRED (in `game/assets/models/` or a roster attire slot) · 📦 HAV
 | `roster/vainabel/attires/attire2/model.glb` | VAIN ABEL | A2 | Tripo "wrestler character" (19.8MB) — purple flame vest, purple-stitched black pants; mismatched eyes |
 | `roster/vainabel/attires/attire3/model.glb` | VAIN ABEL | A3 · Masked Demon of the Purple Haze | Tripo "masked fighter" (19.6MB) |
 | `roster/kinpo/attires/attire2/model.glb` | Kinpo | A2 "Goth Sport" | Tripo "gothic punk character" (18.4MB meshopt) — owner 2026-10-20; same mini skirt as A1, no jacket, goth makeup, little fangs; enhanced jiggle + M-rated anatomy rig specs in `roster/kinpo/RIG-NOTES.md` |
+| `roster/ryuji-rock/attires/attire1/model.glb` | CORNERSTONE | A1 DEFAULT | Owner's Tripo "tattooed man" (18.9MB) — Ryuji Yamazaki x The Rock hybrid; name locked CORNERSTONE 2026-10-21 |
 
 ---
 

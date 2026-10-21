@@ -264,8 +264,7 @@ const OWNERSHIP = {
   "ryuji-rock": {
     "own": [
       "ryuji-rock"
-    ],
-    "pending": true
+    ]
   },
   "sakura": {
     "own": [
