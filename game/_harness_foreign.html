@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8" />
+<script type="importmap">{ "imports": { "three": "./vendor/three.module.js", "three/addons/": "./vendor/addons/" } }</script>
+<style>html,body{margin:0;background:#14091f}#game-canvas{position:fixed;inset:0;width:100vw;height:100vh;display:block}</style>
+</head><body>
+<canvas id="game-canvas"></canvas>
+<script type="module">
+import * as THREE from 'three';
+import { Game } from './js/game.js';
+import { assets } from './js/assets.js';
+import { getCharacter } from './js/characters.js';
+import { loadT3Clips } from './js/t3anims.js';
+import { loadRealMovesets, bankIdFor } from './js/fighter.js';
+
+window.__errs = [];
+window.addEventListener('error', e => window.__errs.push(String(e.message)));
+
+const uiStub = { setNames(){}, setStageName(){}, setRounds(){}, banner(){}, updateHP(){}, updateMeter(){}, setTimer(){}, combo(){}, surgeFlash(){}, surgeName(){}, matchOver(){} };
+const inputStub = { axisX: 0, up: false, held: { block: false }, consume: () => [], reset(){}, enable(){} };
+
+try {
+  const qs = new URLSearchParams(location.search);
+  const p1id = qs.get('p1') || 'vega';
+  const p2id = qs.get('p2') || 'pantera';
+  loadRealMovesets();
+  const game = new Game(document.getElementById('game-canvas'), inputStub, uiStub);
+  const p1 = getCharacter(p1id);
+  const p2 = getCharacter(p2id);
+  await assets.loadModels([p1.model, p2.model]);
+  const banks = [...new Set([bankIdFor(p1.id, p1.moveset), bankIdFor(p2.id, p2.moveset)].filter(Boolean))];
+  await Promise.all(banks.map(b => loadT3Clips(THREE, b)));
+  await game.startMatch(p1, p2, 'shrine', {});
+  game.ai = { update(){} };           // passive opponent
+  game.ai1 = null;
+  window.__game = game;
+  window.__attack = (n) => game.p1.tryAttack(n);
+  window.__stance = () => game.p1._playT3('stance', { loop: true });
+  window.__chain = () => {
+    const f = game.p1; const hips = f.bones.Hips; const out = [];
+    out.push({ name: hips.name + ' (self)', isBone: !!hips.isBone, q: hips.quaternion.toArray().map(v => +v.toFixed(4)) });
+    for (let p = hips.parent; p; p = p.parent) out.push({ name: p.name, isBone: !!p.isBone, q: p.quaternion.toArray().map(v => +v.toFixed(4)) });
+    return out;
+  };
+  window.__wdiag = () => {
+    const names = ['Hips','Spine','Chest','Neck','Head','LeftShoulder','LeftArm','LeftForeArm','LeftHand','RightShoulder','RightArm','RightForeArm','RightHand','LeftUpLeg','LeftLeg','LeftFoot','LeftToeBase','RightUpLeg','RightLeg','RightFoot','RightToeBase'];
+    const out = {};
+    for (const f of [game.p1, game.p2]) {
+      if (!f) continue;
+      const wq = {}, wp2 = {};
+      f.root.updateMatrixWorld(true);
+      for (const n of names) {
+        const bn = f.bones[n]; if (!bn) continue;
+        const q = new THREE.Quaternion(); bn.getWorldQuaternion(q);
+        wq[n] = q.toArray().map(v => +v.toFixed(3));
+        const v = new THREE.Vector3(); bn.getWorldPosition(v);
+        wp2[n] = v.toArray().map(x => +x.toFixed(2));
+      }
+      out[f.char.id] = { wq, wp: wp2, state: f.state };
+    }
+    return out;
+  };
+  window.__pause = (on) => game.pause(on);
+  window.__poll = () => {
+    const f = game.p1; if (!f) return null;
+    const a = f.t3actions && f.t3actions.light;
+    const emb = f.actions && f.actions.Idle;
+    const qa = f.bones.RightArm ? f.bones.RightArm.quaternion.toArray().map(v => +v.toFixed(4)) : null;
+    return { state: f.state, roundState: game.roundState,
+             light: a ? { t: +a.time.toFixed(3), w: +a.getEffectiveWeight().toFixed(3), run: a.isRunning() } : null,
+             idle: emb ? { clip: emb.getClip().name, t: +emb.time.toFixed(3), w: +emb.getEffectiveWeight().toFixed(3), run: emb.isRunning() } : null,
+             qRightArm: qa };
+  };
+  window.__diag = () => {
+    const one = (f) => {
+      if (!f) return null;
+      const acts = {};
+      for (const [n, a] of Object.entries(f.actions || {})) acts['emb:' + n] = { clip: a.getClip().name, t: +a.time.toFixed(3), w: +a.getEffectiveWeight().toFixed(3), run: a.isRunning() };
+      for (const [n, a] of Object.entries(f.t3actions || {})) acts['t3:' + n] = { clip: a.getClip().name, t: +a.time.toFixed(3), w: +a.getEffectiveWeight().toFixed(3), run: a.isRunning() };
+      const boneNames = Object.keys(f.bones || {});
+      const q = {};
+      for (const [k, b] of Object.entries(f.bones || {})) {
+        if (/Hips|Spine|Chest|Head|Arm|Pelvis|Clavicle/.test(k)) q[k] = b.quaternion.toArray().map(v => +v.toFixed(4));
+      }
+      let skinned = 0, maxBones = 0;
+      f.model.traverse(o => { if (o.isSkinnedMesh) { skinned++; maxBones = Math.max(maxBones, o.skeleton ? o.skeleton.bones.length : 0); } });
+      const wp = {};
+      for (const k of ['RightHand','LeftHand','Head','RightFoot']) if (f.bones[k]) { const v = new THREE.Vector3(); f.bones[k].getWorldPosition(v); wp[k] = v.toArray().map(x => +x.toFixed(3)); }
+      return { id: f.char.id, state: f.state, acts, boneCount: boneNames.length,
+               t3bonesPresent: ['Hips','Spine','Chest','Neck','Head','LeftShoulder','LeftArm','LeftForeArm','LeftHand','RightShoulder','RightArm','RightForeArm','RightHand','LeftUpLeg','LeftLeg','LeftFoot','LeftToeBase','RightUpLeg','RightLeg','RightFoot','RightToeBase'].filter(n => boneNames.includes(n)),
+               hasSpine1: !!f.bones.Spine1, hasSpine2: !!f.bones.Spine2,
+               skinned, maxBones, q, wp };
+    };
+    return { p1: one(game.p1), p2: one(game.p2), roundState: game.roundState, errs: window.__errs };
+  };
+  window.__ready = true;
+} catch (e) {
+  window.__errs.push('BOOT: ' + (e.message || e));
+  window.__ready = 'error';
+}
+</script></body></html>

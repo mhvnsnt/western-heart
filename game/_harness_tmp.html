@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8" />
+<script type="importmap">{ "imports": { "three": "./vendor/three.module.js", "three/addons/": "./vendor/addons/" } }</script>
+<style>html,body{margin:0;background:#14091f}#game-canvas{position:fixed;inset:0;width:100vw;height:100vh;display:block}</style>
+</head><body>
+<canvas id="game-canvas"></canvas>
+<script type="module">
+import * as THREE from 'three';
+import { Game } from './js/game.js';
+import { assets } from './js/assets.js';
+import { getCharacter } from './js/characters.js';
+import { loadT3Clips } from './js/t3anims.js';
+import { loadRealMovesets } from './js/fighter.js';
+
+window.__errs = [];
+window.addEventListener('error', e => window.__errs.push(String(e.message)));
+
+const uiStub = { setNames(){}, setStageName(){}, setRounds(){}, banner(){}, updateHP(){}, updateMeter(){}, setTimer(){}, combo(){}, surgeFlash(){}, surgeName(){}, matchOver(){} };
+const inputStub = { axisX: 0, up: false, held: { block: false }, consume: () => [], reset(){}, enable(){} };
+
+try {
+  loadRealMovesets();
+  const game = new Game(document.getElementById('game-canvas'), inputStub, uiStub);
+  await assets.loadModels(['pantera']);
+  await Promise.all([loadT3Clips(THREE, 'king'), loadT3Clips(THREE, 'bryan')]);
+  const p1 = getCharacter('pantera');
+  const p2 = getCharacter('skull');
+  await game.startMatch(p1, p2, 'shrine', {});
+  // Headless SwiftShader relief: bloom off + DPR 1 (pose/color proof unaffected)
+  game.arena.bloom.enabled = false;
+  game.arena.renderer.setPixelRatio(1);
+  game.arena.resize();
+  game.ai = { update(){} };           // passive opponent: pure idle observation
+  game.ai1 = null;
+  window.__game = game;
+  window.__diag = () => {
+    const one = (f) => {
+      if (!f) return null;
+      const acts = {};
+      for (const [n, a] of Object.entries(f.actions || {})) acts['emb:' + n] = { t: +a.time.toFixed(3), w: +a.getEffectiveWeight().toFixed(3), run: a.isRunning() };
+      for (const [n, a] of Object.entries(f.t3actions || {})) acts['t3:' + n] = { t: +a.time.toFixed(3), w: +a.getEffectiveWeight().toFixed(3), run: a.isRunning() };
+      let matColor = null;
+      f.model.traverse(o => { if (!matColor && o.isMesh && o.material && o.material.color) matColor = o.material.color.toArray().map(v => +v.toFixed(3)); });
+      const q = (b) => f.bones[b] ? f.bones[b].quaternion.toArray().map(v => +v.toFixed(4)) : null;
+      return { id: f.char.id, state: f.state, acts, matColor,
+               qRightArm: q('RightArm'), qLeftArm: q('LeftArm'), qHips: q('Hips'), qSpine: q('Spine'), qSpine2: q('Spine2'), qChest: q('Chest'),
+               auraOpacity: +f.aura.material.opacity.toFixed(3), auraFlash: +f._auraFlash.toFixed(3) };
+    };
+    return { p1: one(game.p1), p2: one(game.p2), roundState: game.roundState };
+  };
+  window.__ready = true;
+} catch (e) {
+  window.__errs.push('BOOT: ' + (e.message || e));
+  window.__ready = 'error';
+}
+</script></body></html>
