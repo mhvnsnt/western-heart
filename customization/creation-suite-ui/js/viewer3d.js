@@ -93,10 +93,17 @@ export class SuiteViewer {
   }
   pause(){ this.paused = true; this._frame(); }   // one last clean frame, then hold
   resume(){ if(this.paused){ this.paused=false; this._tick(); } }
+  clearParts(){
+    for(const pid of [...this.parts.keys()]) this.detachPart(pid);
+    for(const key of [...this.markers.keys()]) this.clearMarker(key);
+    if(this.texSwaps) for(const id of [...this.texSwaps.keys()]) this.restoreTexture(id);
+  }
   loadBase(url){
     return new Promise((res, rej)=>{
       this.loader.load(url, gltf=>{
+        this.clearParts();
         if(this.model) this.scene.remove(this.model);
+        this.currentUrl = url;
         this.model = gltf.scene;
         this.scene.add(this.model);
         this.modelBox = new THREE.Box3().setFromObject(this.model);

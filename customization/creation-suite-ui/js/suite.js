@@ -33,18 +33,89 @@ function blankFighter(){
     profile:{ name:'NEW FIGHTER', short_name:'NEWF', soul:'—', title:['',''] },
     body:{ body_type:'Medium 1', skin_tone:'#c98d5e',
       proportions:{ height:1, weight:1, muscle:1, shoulder:1, chest:1, waist:1, hips:1, arms:1, legs:1 } },
+    morphs:{},
     jiggle:{ family:'female', areas:{} },
     attireIndex:0, attires:[blankAttire(),blankAttire(),blankAttire(),blankAttire()],
     wardrobe:[null,null,null,null,null,null,null,null,null,null],
-    wallet:START_MONEY };
+    wallet:START_MONEY,
+    /* Roster mode (UNIFIED-UI-SPEC §2): mode 'blank' keeps the legacy
+       blank-fighter state in the top-level fields above (the legacy key
+       wh_creation_suite_v1 keeps working for game/js/custom-fighter.js);
+       per-attire records live in records[], keyed 'fighter::attire_id'
+       ('blank' for the blank fighter). */
+    mode:'blank', rosterRef:null, records:{},
+    baseGlb:'customization/create-fighter/assets/Soldier.glb' };
 }
 let F = blankFighter();
 let PARTS = [];       // parts-catalog.json
+let ROSTER = null;    // data/roster-attires.json (build_roster_attires.py)
 let JIGGLE = null;    // jiggle-schema.json
 let viewer = null;
 let ui = { tab:'body', attireCat:null, partsCat:null, selPart:null, wardSel:0, nudgeStep:0.001 };
 
 const attire = ()=>F.attires[F.attireIndex];
+
+/* ---------- roster mode (UNIFIED-UI-SPEC §2 entry flow) ----------
+   pick fighter -> pick attire -> hub, loading THAT attire's real GLB.
+   Working state stays in the top-level F fields; switching stashes the
+   current state into F.records[key] and restores the target's record. */
+const BLANK_GLB = 'customization/create-fighter/assets/Soldier.glb';
+const currentKey = ()=> F.mode==='roster' && F.rosterRef ? `${F.rosterRef.fighter}::${F.rosterRef.attire}` : 'blank';
+function snapshotWorking(){
+  return JSON.parse(JSON.stringify({
+    profile:F.profile, body:F.body, morphs:F.morphs||{}, jiggle:F.jiggle,
+    attireIndex:F.attireIndex, attires:F.attires, wardrobe:F.wardrobe,
+    wallet:F.wallet, baseGlb:F.baseGlb }));
+}
+function applySnapshot(s){
+  F.profile=s.profile; F.body=s.body; F.morphs=s.morphs||{}; F.jiggle=s.jiggle;
+  F.attireIndex=s.attireIndex||0; F.attires=s.attires; F.wardrobe=s.wardrobe;
+  F.wallet=s.wallet; F.baseGlb=s.baseGlb||BLANK_GLB;
+}
+function stashCurrent(){ F.records = F.records||{}; F.records[currentKey()] = snapshotWorking(); }
+function rosterFighter(slug){ return ROSTER && ROSTER.fighters.find(f=>f.fighter===slug); }
+function rosterAttire(slug, attireId){
+  const f = rosterFighter(slug); if(!f) return null;
+  return f.attires.find(a=>a.attire_id===attireId) || null;
+}
+async function loadBaseModel(){
+  if(!viewer) return;
+  const url = F.baseGlb===BLANK_GLB ? '../create-fighter/assets/Soldier.glb' : '../../'+F.baseGlb;
+  try{ await viewer.loadBase(url); }
+  catch(e){ console.warn('[WH] base model failed', F.baseGlb, e); toast('Model failed to load: '+F.baseGlb); }
+  renderAll();
+}
+/* Select a roster fighter+attire: stash current, restore (or seed) its
+   record, then load its real GLB in the viewer. Blank mode: fighter=null. */
+async function selectRosterAttire(fighter, attireId){
+  stashCurrent();
+  if(!fighter){
+    F.mode='blank'; F.rosterRef=null;
+    if(F.records.blank) applySnapshot(F.records.blank);
+    else { const keep=F.records; Object.assign(F, blankFighter()); F.records=keep; }
+  } else {
+    const rf = rosterFighter(fighter), ra = rosterAttire(fighter, attireId);
+    if(!rf || !ra){ toast('Attire not found in roster data'); return; }
+    F.mode='roster'; F.rosterRef={ fighter, attire:attireId };
+    const key = currentKey();
+    if(F.records[key]) applySnapshot(F.records[key]);
+    else {
+      const keep=F.records;
+      Object.assign(F, blankFighter()); F.records=keep;
+      F.mode='roster'; F.rosterRef={ fighter, attire:attireId };
+      F.profile.name = rf.fighter_name.toUpperCase();
+      F.profile.short_name = rf.fighter_name.slice(0,4).toUpperCase();
+      F.attires = rf.attires.map(a=>{ const b=blankAttire(); b.name=a.attire_name; return b; });
+      F.attireIndex = Math.max(0, rf.attires.findIndex(a=>a.attire_id===attireId));
+      F.baseGlb = ra.glb;
+    }
+    // attire tab switches within this fighter re-point baseGlb at that attire
+    F.baseGlb = ra.glb;
+  }
+  ui.selPart=null; hidePlaceDock();
+  persistQuiet();
+  await loadBaseModel();
+}
 const esc = s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
 /* ---------- persistence ---------- */
@@ -111,7 +182,10 @@ function renderTopbar(){
     const b=document.createElement('button');
     b.className='attire-tab'+(i===F.attireIndex?' active':''); b.setAttribute('role','tab');
     b.innerHTML=`<span class="athumb"${a.thumb?` style="background-image:url('${a.thumb}')}`:''}></span>${esc(a.name||`ATTIRE ${i+1}`)}`;
-    b.onclick=()=>{ F.attireIndex=i; ui.selPart=null; renderAll(); };
+    b.onclick=()=>{ if(F.mode==='roster' && F.rosterRef){
+        const rf=rosterFighter(F.rosterRef.fighter);
+        if(rf && rf.attires[i]){ selectRosterAttire(F.rosterRef.fighter, rf.attires[i].attire_id); return; } }
+      F.attireIndex=i; ui.selPart=null; renderAll(); };
     tabs.appendChild(b);
   });
 }
@@ -510,12 +584,23 @@ async function renderDome(el){
 
 /* ---------- roster / save / export ---------- */
 $('#btn-roster').onclick=()=>{
-  modal('FIGHTER SELECT',`<div class="roster-grid">
-    ${['NEW FIGHTER','PANTERA','STAR','KEVIN','MARIPOSA','SILVERTONGUE'].map(r=>
-    `<button class="roster-card${F.profile.name===r?' active':''}" data-r="${r}">${r}</button>`).join('')}</div>
-    <div class="note">Entry flow (verbatim T7): pick fighter → pick attire slot → customize. Roster bodies are canon.</div>`,
+  if(!ROSTER){ modal('FIGHTER SELECT','<p>Roster data (data/roster-attires.json) failed to load.</p>',[{label:'CLOSE',cls:'btn-gold'}]); return; }
+  const fighters = ROSTER.fighters.map(f=>
+    `<button class="roster-card${F.rosterRef&&F.rosterRef.fighter===f.fighter?' active':''}" data-f="${esc(f.fighter)}">${esc(f.fighter_name)}<br><small style="color:var(--dim)">${f.attires.length} attire${f.attires.length===1?'':'s'}</small></button>`).join('');
+  modal('FIGHTER SELECT',`<div class="sect">EDIT FIGHTER — pick fighter, then attire (UNIFIED-UI-SPEC §2)</div>
+    <div class="roster-grid"><button class="roster-card${F.mode==='blank'?' active':''}" data-f="">🧍 NEW FIGHTER<br><small style="color:var(--dim)">blank CAW base</small></button>${fighters}</div>
+    <div id="roster-attires"></div>
+    <div class="note">Entry flow (verbatim T7): pick fighter → pick attire slot → customize. Selecting loads that attire's real GLB. Blank-fighter mode stays intact.</div>`,
     [{label:'CLOSE',cls:'btn-gold'}]);
-  document.querySelectorAll('[data-r]').forEach(b=>b.onclick=()=>{ F.profile.name=b.dataset.r; closeModal(); renderAll(); });
+  document.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{
+    const slug=b.dataset.f;
+    if(!slug){ closeModal(); selectRosterAttire(null); return; }
+    const rf=rosterFighter(slug); if(!rf) return;
+    const host=document.querySelector('#roster-attires');
+    host.innerHTML=`<div class="sect">${esc(rf.fighter_name).toUpperCase()} — ATTIRE</div><div class="roster-grid">${
+      rf.attires.map(a=>`<button class="roster-card" data-a="${esc(a.attire_id)}">${esc(a.attire_name)}<br><small style="color:var(--dim)">${esc(a.glb.split('/').pop())}</small></button>`).join('')}</div>`;
+    host.querySelectorAll('[data-a]').forEach(ab=>ab.onclick=()=>{ closeModal(); selectRosterAttire(slug, ab.dataset.a); });
+  });
 };
 $('#btn-save').onclick=persist;
 /* Stream 4: in-game wiring — back to the game menu (saves first). */
@@ -530,19 +615,21 @@ $('#btn-export').onclick=()=>{
 async function boot(){
   try{ const s=localStorage.getItem(LS_KEY); if(s) F=Object.assign(blankFighter(), JSON.parse(s)); }catch(e){}
   try{
-    const [parts, jig] = await Promise.all([
+    const [parts, jig, roster] = await Promise.all([
       fetch('data/parts-catalog.json').then(r=>r.json()),
       fetch('data/jiggle-schema.json').then(r=>r.json()),
+      fetch('data/roster-attires.json').then(r=>r.ok?r.json():null).catch(()=>null),
     ]);
-    PARTS=parts; JIGGLE=jig;
+    PARTS=parts; JIGGLE=jig; ROSTER=roster;
   }catch(e){
     $('#loader').innerHTML='<div>DATA LOAD FAILED — serve over http</div>'; return;
   }
+  if(!Array.isArray(F.records)) F.records = F.records||{};
+  if(F.mode==='roster' && (!F.rosterRef || !rosterAttire(F.rosterRef.fighter, F.rosterRef.attire))){ F.mode='blank'; F.rosterRef=null; F.baseGlb=BLANK_GLB; }
   viewer=new SuiteViewer($('#stage3d'));
-  window.__suite={ viewer, get F(){return F;}, ui, setTab };
+  window.__suite={ viewer, get F(){return F;}, ui, setTab, selectRosterAttire, get ROSTER(){return ROSTER;} };
   viewer.onReady=()=>{ renderAll(); };
-  try{ await viewer.loadBase('../create-fighter/assets/Soldier.glb'); }
-  catch(e){ console.warn('base model failed', e); renderAll(); }
+  await loadBaseModel();
   renderAll();
   $('#loader').classList.add('done');
   $('#src-note').textContent='Menus: T7 slots verbatim · WWE 2K CAW flows · No Mercy/WMXIX/DOA — see UI-EXTRACTION-LOG.md';

@@ -1,11 +1,14 @@
-# Creation Suite Pass — Worker C, Recovery Run #3
+# Creation Suite Pass — Worker C, Recovery Run #4
 
 Branch: feat/cs-ui-wiring-20261020 · Worktree: ~/workspace/_wh-work/cs-ui
 Law: commit + push after EVERY item. No local-only work.
+Run #4 note: the cs-ui worktree vanished from disk mid-run (external cleanup);
+recreated from the pushed branch @1534a7746 via western-heart-main worktree add
++ sparse checkout customization/packages/game/roster. No work lost (push-early).
 
 ## Checklist
 - [x] Setup: fetched + fast-forward merged origin/main (f8b3b5d67); sparse checkout customization/packages/game/roster
-- [~] 1. ROSTER MODE: build_roster_attires.py + data/roster-attires.json GENERATED + coordinator-rescued (commit after run3 transport death); suite.js roster-mode UI wiring still TODO -> data/roster-attires.json; fighter->attire loads real GLB; blank mode intact
+- [x] 1. ROSTER MODE: build_roster_attires.py + data/roster-attires.json GENERATED (run3, coordinator-rescued); suite.js roster-mode UI WIRED (run4): FIGHTER SELECT modal lists real roster fighters -> attire picker; selecting loads that attire's real GLB (viewer.loadBase, parts/markers cleared on swap); topbar attire tabs switch attires in roster mode; blank-fighter mode intact (mode/rosterRef/records on F, legacy wh_creation_suite_v1 top-level shape unchanged)
 - [ ] 2. REAL SLIDERS: morphs.js catalog (Frame/Mass/Face) on BODY tab via packages dna.js/body.js; values -> per-attire record
 - [ ] 3. UNIFIED PARTS CATALOG: build_suite_catalog.py merges PARTS-REGISTRY (1148 entries verified) + parts-converted/CATALOG.json + hair GLBs + eye-library; T7-slot browse, source labels, tap-to-assign only
 - [ ] 4. PER-ATTIRE SAVE: records keyed fighter+attire in wh_creation_suite_v1 (legacy blank key intact); fetch in-repo customization.json on select; Save to Attire = persist + download + copyable panel
