@@ -204,10 +204,11 @@ export const MODEL_URLS = {
   // in roster/deathfang/ now.)
   deathfang: '../roster/deathfang/attires/attire1/model.glb',
   'deathfang-werewolf': '../roster/deathfang/attires/attire2/model.glb',
-  // Ryuji Yamazaki x The Rock hybrid (owner 2026-10-19). MODEL PENDING: no Yamazaki
-  // model found anywhere (no KOF teardown, none in tripo-recovery, no downloadable
-  // Sketchfab model). URL wired for the drop-in; model.glb lands the moment the
-  // owner sends a Tripo link. See roster/ryuji-rock/attires/attire1/README.md.
+  // Ryuji Yamazaki x The Rock hybrid (owner 2026-10-19) — CORNERSTONE (name locked
+  // by owner 2026-10-21; see CANON.md + RENAME-MAP.md). MODEL LANDED 2026-10-21:
+  // owner's Tripo 20c1fd2e-40d0-4500-9be6-50f6494ab5e1 ("tattooed man 3d model",
+  // 18.9MB meshopt, 3 textures) pulled via tools/tripo-pull; original archived in
+  // release cornerstone-tripo-pulls-20261021. See roster/ryuji-rock/attires/attire1/README.md.
   'ryuji-rock': '../roster/ryuji-rock/attires/attire1/model.glb',
 };
 
