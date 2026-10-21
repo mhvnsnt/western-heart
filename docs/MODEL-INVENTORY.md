@@ -77,6 +77,7 @@ Legend: ✅ WIRED (in `game/assets/models/` or a roster attire slot) · 📦 HAV
 | `roster/diablo/attires/attire2/model.glb` | DIABLO | A2 Devil God | Tripo (22.5MB) — Hagoromo drapery + Raijin Taiko Drum Ring |
 | `roster/vainabel/attires/attire2/model.glb` | VAIN ABEL | A2 | Tripo "wrestler character" (19.8MB) — purple flame vest, purple-stitched black pants; mismatched eyes |
 | `roster/vainabel/attires/attire3/model.glb` | VAIN ABEL | A3 · Masked Demon of the Purple Haze | Tripo "masked fighter" (19.6MB) |
+| `roster/kinpo/attires/attire2/model.glb` | Kinpo | A2 "Goth Sport" | Tripo "gothic punk character" (18.4MB meshopt) — owner 2026-10-20; same mini skirt as A1, no jacket, goth makeup, little fangs; enhanced jiggle + M-rated anatomy rig specs in `roster/kinpo/RIG-NOTES.md` |
 
 ---
 
