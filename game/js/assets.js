@@ -59,7 +59,12 @@ export const MODEL_URLS = {
   'purple-rain': '../roster/purplerain/attires/attire1/model.glb',
   nightwolf: 'assets/models/nightwolf.glb',
   'king-tyrant': 'assets/models/king-tyrant.glb',
-  kinpo: 'assets/models/kinpo.glb',
+  // KINPO Attire 1 (owner 2026-10-20): his Tripo pull is her MAIN attire.
+  kinpo: '../roster/kinpo/attires/attire1/model.glb',
+  'kinpo-attire1': '../roster/kinpo/attires/attire1/model.glb',
+  // Previous A1 (Asuka-based game model, provenance unknown) laddered back
+  // to a legacy alternate 2026-10-20 — NOT deleted.
+  'kinpo-legacy': 'assets/models/kinpo.glb',
   // Kinpo Attire 2 "Goth Sport" (owner 2026-10-20, Tripo pull — see roster/kinpo/ATTIRE-SLOTS.md).
   'kinpo-attire2': '../roster/kinpo/attires/attire2/model.glb',
   waterfall: '../roster/waterfall/attires/attire1/model.glb',
