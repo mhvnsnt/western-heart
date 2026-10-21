@@ -102,6 +102,16 @@ const MODEL_URLS = {
   'phantom-t8': 'assets/models/phantom-t8.glb',
   'pantera_alt1': 'assets/models/pantera_alt1.glb',
   'pantera-body': 'assets/models/pantera-body.glb',
+  // Pantera roster attires (owner slot order 2026-10-20: A1 T7King reskin =
+  // 'pantera' above, A2 Leo man, A3 snow leopard, A4 LEOPARD KING,
+  // A5 Crimson Rage, A6 T7 P2). Roster files resolve via the ../roster
+  // pattern (see phantom). 'pantera-leoman' matches the key the Leo man
+  // restore landed on main (a457d34ac, 2026-10-21).
+  'pantera-leoman': '../roster/pantera/attires/leomon/model.glb',
+  'pantera-snow-leopard': '../roster/pantera/attires/snow-leopard/pantera-snow-leopard.glb',
+  'pantera-leopard-king': '../roster/pantera/attires/leopard-king/model-rigged.glb',
+  'pantera-crimson-rage': '../roster/pantera/attires/crimson-rage/pantera-attire5-crimson.glb',
+  'pantera-p2': '../roster/pantera/attires/p2-wired/pantera-attire4-p2.glb',
   'retsu-body': 'assets/models/retsu-body.glb',
   'saku-ra_alt1': 'assets/models/saku-ra_alt1.glb',
   'saku-ra-main': 'assets/models/saku-ra-main.glb',

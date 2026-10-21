@@ -258,6 +258,12 @@ def main():
                     help='degrees; must match the rotation knn_transfer saw')
     ap.add_argument('--bake', action='append', default=[],
                     help='Name=clip.json (wh-anim/1), repeatable')
+    ap.add_argument('--rest-ref', default=None,
+                    help='GLB of the rig the --bake clips were authored for; '
+                         'per-bone rest-rotation correction q * conj(r_ref) * '
+                         'r_donor is applied (wh-anim clips are rig-specific: '
+                         'verbatim transplant is only valid when rest local '
+                         'rotations match per bone)')
     ap.add_argument('--no-tail', action='store_true')
     args = ap.parse_args()
 
@@ -449,6 +455,39 @@ def main():
 
     # baked wh-anim/1 clips
     name2node = {dnames[i]: djoints[i] for i in range(len(dnames))}
+    # Optional rest-pose retarget: wh-anim clips carry ABSOLUTE local
+    # rotations authored against a specific rig's rest pose. If that rig's
+    # rest local rotations differ from the donor's (measured 2026-10-21:
+    # leoman T3 rig vs pantera.glb donor — Hips/UpLegs/LeftShoulder 180deg,
+    # RightShoulder/Feet 90deg), verbatim baking folds the body. Correct
+    # per bone: q_out(t) = q(t) * conj(r_ref) * r_donor (Hamilton, xyzw);
+    # identity wherever the rests already match.
+    rest_corr = {}
+    if args.rest_ref:
+        rjs, _rb = read_glb(args.rest_ref)
+        ref_rest = {n['name']: np.array(n.get('rotation', [0, 0, 0, 1]),
+                                        dtype=np.float64)
+                    for n in rjs['nodes'] if 'name' in n}
+        don_rest = {}
+        for ni, dn in enumerate(djs['nodes']):
+            if 'name' in dn:
+                don_rest[dn['name']] = np.array(
+                    dn.get('rotation', [0, 0, 0, 1]), dtype=np.float64)
+
+        def qmul(a, b):
+            ax, ay, az, aw = a[..., 0], a[..., 1], a[..., 2], a[..., 3]
+            bx, by, bz, bw = b[..., 0], b[..., 1], b[..., 2], b[..., 3]
+            return np.stack([aw * bx + ax * bw + ay * bz - az * by,
+                             aw * by - ax * bz + ay * bw + az * bx,
+                             aw * bz + ax * by - ay * bx + az * bw,
+                             aw * bw - ax * bx - ay * by - az * bz], -1)
+        for bone, rr in ref_rest.items():
+            if bone in don_rest:
+                c = qmul(np.array([rr[0], rr[1], rr[2], -rr[3]]), don_rest[bone])
+                c = c / np.linalg.norm(c)
+                rest_corr[bone] = (qmul, c)
+        log.append(f'rest-ref correction armed for {len(rest_corr)} bones '
+                   f'from {args.rest_ref}')
     for spec in args.bake:
         cname, cpath = spec.split('=', 1)
         data = json.load(open(cpath))
@@ -463,6 +502,10 @@ def main():
             q = np.asarray(quats, dtype=np.float64)
             if len(q) < nfr:
                 q = np.concatenate([q, np.repeat(q[-1:], nfr - len(q), 0)])
+            if bone in rest_corr:
+                qmul, c = rest_corr[bone]
+                q = qmul(q, np.broadcast_to(c, q.shape))
+                q = q / np.linalg.norm(q, axis=1, keepdims=True)
             specs.append((name2node[bone], 'rotation', times, q))
         add_clip(cname, specs)
         log.append(f'baked {cname}: {len(specs)} rotation channels from '

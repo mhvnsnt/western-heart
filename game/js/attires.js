@@ -11,6 +11,20 @@ const LS_KEY = 'wh_attires_v1';
 /* model base -> [{ model, label }]. Labels from owner notes / CANON.md.
    Fighters not listed here get a single default (their base model). */
 export const ATTIRE_VARIANTS = {
+  // Pantera slot order (owner 2026-10-20 swap: Leopard King A6 -> A4,
+  // T7 P2 A4 -> A6). A1 = 'pantera' (T7King reskin, default, in
+  // game/assets). ATTIRE 2 = Leo man: the restore landed his model at
+  // roster/pantera/attires/leomon/model.glb on main (a457d34ac,
+  // 2026-10-21) under the 'pantera-leoman' key; this branch carries the
+  // identical file + wiring so all six attires resolve.
+  'pantera': [
+    { model: 'pantera', label: 'ATTIRE 1' },
+    { model: 'pantera-leoman', label: 'ATTIRE 2 · LEO MAN' },
+    { model: 'pantera-snow-leopard', label: 'ATTIRE 3 · SNOW LEOPARD' },
+    { model: 'pantera-leopard-king', label: 'ATTIRE 4 · LEOPARD KING' },
+    { model: 'pantera-crimson-rage', label: 'ATTIRE 5 · CRIMSON RAGE' },
+    { model: 'pantera-p2', label: 'ATTIRE 6 · T7 P2' },
+  ],
   'thor': [
     { model: 'thor', label: 'ATTIRE 1' },
     { model: 'thor-attire2', label: 'ATTIRE 2 · ONI MASK' },
