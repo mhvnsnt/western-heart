@@ -1443,3 +1443,24 @@ wrestling repos).
   wrestler identities (`teardown/wwf-no-mercy/docs/wrestler-id-table.json`)
   have no WH mappings in RENAME-MAP.md — owner decision, flagged, not invented.
 <!-- END No Mercy / mat-kings section -->
+
+## APPENDIX (2026-10-21) — URBAN REIGN / street-reign WIRING & CONVERSION
+
+*Added by the Urban Reign wiring lane (owner acceptance target 2026-10-20 ~20:57 CDT).
+Append-only; the per-game source of truth is `teardown/urban-reign/CANON-CONVERSION.md`,
+the checklist is `teardown/urban-reign/WIRING-INVENTORY.md` (3,166 files audited).*
+
+Urban Reign's universe name in Western Heart is **street-reign** (already recorded in
+`RENAME-MAP.md`). As of 2026-10-21, all 72 character PPKs are decoded to skinned GLBs
+(PR #429; the PR #397 completion gates G1–G5 pass — `docs/urban-reign/URBAN-REIGN-GATES.md`)
+and wired into the playable build as guest fighters under their source ids
+(`ur-char001`..`ur-char072`, models at `game/assets/models/street-reign/`, shared
+`street-reign` moveset carrying the engine base set with `proxy: true`).
+
+**No per-fighter canon mapping is asserted for the UR roster**: canon establishes UR
+only as a move *source* — Glen Kluger (Urban Reign) is the documented moveset candidate
+for Cain Elias, and UR wrestling moves feed the Slice/Ryuji-based fighter's foundation —
+and `TEARDOWN.md` names the protagonist (Brad Hawk) without a per-PPK identity table.
+Per-fighter identities and any vessel mapping are flagged in the conversion record for
+the owner's decision, never invented. UR's native animation banks and movelists, its
+textures, and its 7 stage models remain open work, flagged per file in the inventory.

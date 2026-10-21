@@ -66,6 +66,9 @@ export const MOVESET_IDS = [
   // Custom fighters (owner 2026-10-19): KORESHI (owner creation).
   // (deathfang already listed above; not duplicated.)
   'koreshi',
+  // Street Reign (Urban Reign) guests: shared base set,
+  // UR-native movelists pending the motion-bank decode.
+  'street-reign',
 ];
 
 const _movesets = {};
