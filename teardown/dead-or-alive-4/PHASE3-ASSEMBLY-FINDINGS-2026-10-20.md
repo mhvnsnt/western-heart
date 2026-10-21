@@ -135,3 +135,55 @@ decoder assumes:
 - stg partial (503,316,480B) pre-existed in the phase-2 scratch.
 - All pulls are scratch-local to `~/workspace/_doa4p2-scratch/` and
   re-fetchable from the release; nothing game-file was deleted.
+
+## Addendum 2026-10-20 ~21:45 CDT — gate citation (PR #29 / PR #397)
+
+Required reading landed after this PR opened: game-reverse-engineering
+PR #29 (`docs/research/teardown-completion-2026-10-20/doa4.md`) and
+western-heart PR #397 (`docs/research/TEARDOWN-WIRING-STANDARD-2026-10-20.md`).
+The DOA4 completion gates from those docs, and this PR's standing
+against each:
+
+- **G1 Keystream proof (five-oracle protocol on full payloads, all six
+  containers)** — NOT this phase. Per the lane order, keystream work
+  comes after MdlGeo assembly. When it runs, it closes by the
+  five-oracle protocol (XPR2 texture decode / table self-consistency /
+  anim float plausibility / cross-container consistency / entropy),
+  not by header evidence. One factual note for that lane: this run and
+  PR #381's audit both establish that chr/mot/stg *payloads* parse as
+  plaintext (this doc's 41 packages were parsed with no decryption);
+  the cipher covers the AFS TOCs and anm.afs's body. The oracles
+  should be aimed there.
+- **G2 chrthree completeness (75/75)** — NOT satisfied by this PR
+  (56/75 shipped previously; this lane converted no tables).
+- **G3 Skeleton/weights (real skeleton export + Blender pose test)** —
+  ADVANCED, NOT PASSED. This lane located and parsed the skeleton
+  hierarchy (the Hie block: per-object 4×4 local matrices + parent
+  links, world composition verified) — the structure G3's skeleton is
+  built from. Per-vertex weights are still unlocated (they ride on
+  the open vertex-format question), and no pose test was run. No G3
+  claim is made.
+- **G4 Animation (anm.afs clips play on chr skeletons)** — NOT
+  started; depends on G1 for anm.afs plus G3.
+- **G5 Reproducibility (proven decryption published as QuickBMS
+  `.bms`)** — NOT APPLICABLE yet: this lane proves no decryption and
+  publishes none. The `.bms` is the required delivery form when G1
+  passes.
+- **G6 Import-verify count (baseline PR #386: 165)** — NOT advanced:
+  this PR adds 0 assembled GLBs. Per this lane's evidence the 165
+  shipped GLBs are unassembled index/stream artifacts (their "pools"
+  are not position data), so the count must not be read as assembled
+  or wired models.
+
+**Owner acceptance target (2026-10-20 ~20:57 CDT) — DOA4 status in
+those terms:** assembled characters: **0**. Wired into the playable
+build (`game/`): **nothing from this lane** — no DOA4 fighter, moveset,
+or animation is live in a fight or the customization suite.
+Dependency chain remaining: vertex-pool format (GeoDecl) → assembled
+GLBs → skeletons/weights + pose test (G3) → animations via the
+five-oracle keystream work (G1/G4) → QuickBMS publication (G5) →
+wiring per the PR #397 standard (WIRING-INVENTORY with
+WIRED/FLAGGED per file, canon conversion logged, moveset-library data
+with Tekken inputs, independent verification). This PR is the
+assembly-graph foundation of that chain — not a playable-content
+claim.
