@@ -1,15 +1,28 @@
 # UR Phase 2 STATE
 workdir: ~/workspace/ur-phase2-work/ (STATE + scratch)
-clone: ~/workspace/ur-phase2-wh/ branch ur-phase2-motion (stacked on ur-sweep1-wiring / PR #434)
-strategy: follow-on stacked PR, base = ur-sweep1-wiring
-## Format status
-- .gyu bank layout: PROVEN (header+cumulative motion table+track tables; 0 nonmono motions all banks)
-- Types 8+12: DECODED, all 16,613 tracks across 4 general banks decode w/o failure
-- Types 13+14: implemented (set-2 byte-pair s16 cumsum; 13 scale 1/16383, 14 float pairs) - validation running
-- pmotNNN.ppk = fncc+gyu per-character banks (36 chars); pmot001 = 56 motions / 21 bones
-- motdat .info name lists held (Gnrl 294 names, P1 35) - bank assignment TBD
-- Bone mapping hypothesis: motion bone i = node id i = name-pool order (MUNE1..TSUMASAKI_L = nodes 0..20)
+branch: ur-phase2-motion (PR #442, stacked on ur-sweep1-wiring / PR #434)
+report: docs/urban-reign/UR-PHASE2-REPORT.md (this repo)
+
+## Format status — COMPLETE
+- .gyu bank layout PROVEN; track types 8/12/13/14 all decoded.
+- Validation: 56,844 tracks across all general banks + all 31 pmot +
+  10 tmot packs decode with 0 failures.
+- Motion bone 0 = root position track; bones 1..20 = Euler rotations.
+- Mapping: motion bone b -> GLB node index b (H-index, documented in
+  every artifact); composition = local delta (L = Lbind · R_euler),
+  root delta on node 12, scale 0.4034 (pose-evaluator position path).
+- char001 proof: baked frames 0/24/47/70 VIEWED — coherent authored
+  fighting motion; embedded-GLB sample reproduces bake at 1.8e-07.
+  Open: true game node graph (phase-1 open item too); one rigid
+  accessory piece swings wide in pmot001 m0 f47-70.
+
 ## Jobs
-1 gyu: decoder landed; next = 13/14 validation, Blender char001 proof, batch convert, game wiring
-2 texture: not started (PPK tail analysis next)
-3 polish: not started
+1. gyu conversion: DONE (decoder + embedder + batch + general bank
+   packed). 31 pmot chars native-embedded; 41 proxy (no pmot bank).
+   Movelist NAME mapping still open (pmotID correlation) — moves
+   stay engine-base, labeled as such per fighter.
+2. textures: NOT cracked. Tail = interleaved VIF/GIF stream; next
+   step = VIF/GIF stream walker -> virtual GS memory -> deswizzle
+   from stream-declared TEX0. #306 state stands.
+3. polish: not started (conditional on 1-2; char064 s16 group +
+   11 accessory pieces remain open).
