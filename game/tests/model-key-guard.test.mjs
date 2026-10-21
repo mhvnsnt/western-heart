@@ -293,7 +293,12 @@ const OWNERSHIP = {
       "skull"
     ]
   },
-  "slice": {},
+  "slice": {
+    "own": [
+      "slice",
+      "slice-attire1"
+    ]
+  },
   "star": {
     "own": [
       "star"

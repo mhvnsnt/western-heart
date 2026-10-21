@@ -32,6 +32,12 @@ export const MODEL_URLS = {
   'diablo-attire1': '../roster/diablo/attires/attire1/model.glb',
   // Diablo Attire 2 — Devil God (owner 2026-10-20, Tripo pull).
   'diablo-attire2': '../roster/diablo/attires/attire2/model.glb',
+  // SLICE Attire 1 (owner 2026-10-21): Tekken 7 Dragunov teardown model
+  // (dragunov-t7-rig.blend from release tekken-models-batch-2) converted to
+  // GLB — Slice's first own model; he was a steve-fox fallback rider with no
+  // model of his own (model-key audit, PR #418).
+  slice: '../roster/slice/attires/attire1/model.glb',
+  'slice-attire1': '../roster/slice/attires/attire1/model.glb',
   // ZUI Attires 1+2 (owner Tripos; gap found by the model-key audit, PR #418):
   // A1 = Drunken Monk Tripo, his DEFAULT attire (roster/zui/ATTIRE-SLOTS.md,
   // owner 2026-10-18). The GLBs sat in roster/zui/attires/ with NO MODEL_URLS

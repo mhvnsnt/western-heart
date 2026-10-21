@@ -128,3 +128,16 @@ Demonstrated: **green** on the fixed tree (3/3 pass); **red** on the pre-fix tre
 ## Follow-up (2026-10-21) — ZUI Tripos wired
 
 The ZUI note in this audit ("Wiring his Tripos in is a roster-lane job") is done. Zui's Tripo A1 (Drunken Monk) and A2 (Rework v2) GLBs now have MODEL_URLS keys (`zui-attire1`, `zui-attire2`), an `ATTIRE_VARIANTS['zui']` ladder with the Tripo A1 as default, and his roster `model:` field points at `zui-attire1` — so BOTH resolution paths load his own Tripo (reclassify ZUI: (b) → (a) OWN). The guard's OWNERSHIP table was updated in step (zui: own = [zui-attire1, zui-attire2], base = steve-fox retained as his declared canon base). steve-fox.glb stays wired and selectable as Zui's base alternate; the five souls' declared base is untouched. Proof: node resolution on the wired tree (player key `zui-attire1`, enemy key `zui-attire1`) + `node --test game/tests/model-key-guard.test.mjs` 3/3 pass; roster-wide resolved-path diff vs the pre-fix tree = exactly one added path (`roster/zui/attires/attire1/model.glb`). A1 render: `docs/tpose-refs/zui/a1_front.png`.
+
+
+---
+
+## Addendum 2026-10-21 — SLICE resolved
+
+The audit listed SLICE as one of two fighters with no model in the repo (he rode the `steve-fox` fallback on both paths). Resolved the same day, per the owner's order to build Slice from the Tekken teardown files:
+
+| Fighter | Player/select path | Enemy/raw path | Resolved key | Resolved URL | Class |
+|---|---|---|---|---|---|
+| SLICE (`slice`) | `slice` (no ATTIRE_VARIANTS entry -> roster `model:` fallback) | `slice` | `slice` | `../roster/slice/attires/attire1/model.glb` | (a) OWN |
+
+Source: Tekken 7 Dragunov teardown model — `dragunov-t7-rig.blend` from release `tekken-models-batch-2` (sha256 `214dc98fcc364245cd75dc52b3538d463c21ed28e45b907c78803feb714e5efd`), the T7 default costume (beret configuration), converted to GLB on the T7 game skeleton (198 joints). `roster-full.js` `model:` changed `steve-fox` -> `slice`; `MODEL_URLS` gained `slice` + `slice-attire1`; the guard's OWNERSHIP table now lists `slice: own [slice, slice-attire1]`. Canon gap (not a defect): Slice's skull mask is a Tekken 7 customization part that is **not present in our teardown holdings** — see `roster/slice/ATTIRE-SLOTS.md`.
