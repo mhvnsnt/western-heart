@@ -96,6 +96,9 @@ const MODEL_URLS = {
   // so the key resolves instead of 404ing.
   'demonio-body': 'assets/models/demonio.glb',
   'kai-body': 'assets/models/kai-body.glb',
+  'jin-body': 'assets/models/jin-body.glb',
+  'rin-body': 'assets/models/rin-body.glb',
+  'jin-t7': 'assets/models/jin.glb',
   'king-tyrant_alt1': 'assets/models/king-tyrant_alt1.glb',
   'kinpo-t8': 'assets/models/kinpo-t8.glb',
   'kinpo_alt1': 'assets/models/kinpo_alt1.glb',
@@ -350,7 +353,12 @@ class AssetManager {
 
   /* { model, bones, mixer, actions } for one fighter.
      Per-fighter palette: suit color lerp + trim emissive accents. */
-  createInstance(fighterId, suitColor, trimColor, tintStrength = 0.45) {
+  /* tintStrength defaults to 0: fighters show their OWN authored textures
+     and materials (owner 2026-10-20: "what are the fighters having that
+     colored layer over their skin? fix that"). Only an explicitly
+     colorized fighter (the Create-a-Fighter skin tone, `colorize: true`)
+     passes a tint. */
+  createInstance(fighterId, suitColor, trimColor, tintStrength = 0) {
     const gltf = this.gltfs[fighterId];
     if (!gltf) throw new Error('unknown fighter model: ' + fighterId);
     // The instance root is a wrapper whose space always has the mesh facing
@@ -377,11 +385,12 @@ class AssetManager {
       if (o.isSkinnedMesh) skinnedCount++;
       if (o.isMesh && o.material) {
         o.material = o.material.clone();
-        // tint toward the fighter's palette (real textures underneath)
-        if (o.material.color) o.material.color.lerp(suit, tintStrength);
-        o.material.emissive = o.material.emissive || new THREE.Color(0x000000);
-        o.material.emissive.copy(trim).multiplyScalar(0.08);
-        if (o.material.roughness !== undefined) o.material.roughness = 0.7;
+        if (tintStrength > 0) {
+          // explicit colorize only (custom fighter skin tone)
+          if (o.material.color) o.material.color.lerp(suit, tintStrength);
+          o.material.emissive = o.material.emissive || new THREE.Color(0x000000);
+          o.material.emissive.copy(trim).multiplyScalar(0.08);
+        }
         // Never ship a transparent fighter: a bad alpha kills visibility.
         if (o.material.transparent && o.material.opacity < 0.05) {
           o.material.transparent = false;

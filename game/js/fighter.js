@@ -246,10 +246,12 @@ export class Fighter {
   }
 
   _build(startX) {
+    // No palette tint over the fighter's own textures; only an explicitly
+    // colorized fighter (custom skin tone) is tinted.
     const inst = assets.createInstance(
       this.char.model || 'pantera',
       this.char.colors.suit, this.char.colors.trim,
-      this.char.tintStrength ?? 0.45
+      this.char.colorize ? (this.char.tintStrength ?? 0.3) : 0
     );
     this.bones = inst.bones;
     this.mixer = inst.mixer;
@@ -410,7 +412,7 @@ export class Fighter {
       inst = assets.createInstance(
         t.target,
         this.char.colors.suit, this.char.colors.trim,
-        this.char.tintStrength ?? 0.45
+        this.char.colorize ? (this.char.tintStrength ?? 0.3) : 0
       );
     } catch (e) {
       console.error(`[WH] transform failed — unknown model ${t.target}:`, e.message || e);

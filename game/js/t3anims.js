@@ -28,7 +28,7 @@ const T3_CLIP_DEFS = {
   grab:    { file: 't3_grab.json',    loop: false },  // command grab (U)
   block:   { file: 't3_block.json',   loop: true  },  // block hold
   hit:     { file: 't3_hit.json',     loop: false },  // hitstun reaction
-  launch:  { file: 't3_hit_launch.json', loop: false }, // launched
+  launch:  { file: 't3_hit_launch.json', loop: false, noRise: true }, // launched (physics owns the arc)
   ko:      { file: 't3_ko.json',      loop: false },  // knocked out
   win:     { file: 't3_win_rp.json',  loop: true  },  // victory pose
   walkFwd: { file: 't3_walk_fwd.json', loop: true },
@@ -37,9 +37,12 @@ const T3_CLIP_DEFS = {
   crouch:  { file: 't3_crouch.json',  loop: false },  // stand -> crouch (slot 0x3b)
   crouchHold:{ file: 't3_crouch_hold.json', loop: true }, // crouching neutral (slot 40)
   backdash:{ file: 't3_backdash.json', loop: false },
-  jumpUp:  { file: 't3_jump_up.json', loop: false },
-  jumpFwd: { file: 't3_jump_fwd.json', loop: false },
-  jumpBack:{ file: 't3_jump_back.json', loop: false },
+  // noRise: the game's jump/launch physics lifts the fighter, so the clip
+  // keeps its crouch/landing compression but not its rise (else the
+  // height doubles: hips measured at 2.46 m mid-jump before this).
+  jumpUp:  { file: 't3_jump_up.json', loop: false, noRise: true },
+  jumpFwd: { file: 't3_jump_fwd.json', loop: false, noRise: true },
+  jumpBack:{ file: 't3_jump_back.json', loop: false, noRise: true },
   sidestepA:{ file: 't3_sidestep_a.json', loop: false },
   sidestepB:{ file: 't3_sidestep_b.json', loop: false },
 };
@@ -201,6 +204,7 @@ export async function loadT3Clips(THREE, bankId = 'king') {
         const clip = jsonToClip(`t3_${bankId}_${action}`, data, THREE);
         if (clip) {
           clip.userData.loop = def.loop;
+          clip.userData.noRise = !!def.noRise;
           clips[action] = clip;
         }
       } catch (e) {
@@ -388,8 +392,11 @@ function analyzeRig(model, THREE) {
   const facesNegZ = false;
   // Bone rest directions (model space) for the swing alignment.
   const dir = (a, b) => (a && b) ? new THREE.Vector3().subVectors(rest(b).pos, rest(a).pos) : null;
-  let neckRef = by.Neck && by.Neck !== chest && isAnc(chest, by.Neck) ? by.Neck : by.Head;
-  const dirs = { Chest: dir(chest, neckRef) };
+  // Chest swing aligns the OVERALL torso (hips -> head) with the source's,
+  // not the upper-chest bone alone: on a model sculpted hunched (old Doc
+  // Frank, the Tripo demon) aligning Spine2->Neck straightened the chest and
+  // threw the head back (torso error 11.6 deg vs 1-2 deg on Mixamo rigs).
+  const dirs = { Chest: dir(by.Hips, by.Head) };
   for (const s of ['Left', 'Right']) {
     dirs[s + 'Shoulder'] = by[s + 'Shoulder'] ? dir(by[s + 'Shoulder'], by[s + 'Arm']) : null;
     dirs[s + 'Arm'] = dir(by[s + 'Arm'], by[s + 'ForeArm']);
@@ -415,7 +422,7 @@ function sourceInfo(skel, THREE) {
   const P = {}, par = {};
   for (const j of skel.joints) { P[j.name] = new THREE.Vector3().fromArray(j.rest); par[j.name] = j.parent; }
   const d = (a, b) => (P[a] && P[b]) ? new THREE.Vector3().subVectors(P[b], P[a]) : null;
-  const dirs = { Chest: P.Neck ? d('Chest', 'Neck') : d('Chest', 'Head') };
+  const dirs = { Chest: d('Hips', 'Head') }; // overall torso, see analyzeRig
   for (const s of ['Left', 'Right']) {
     dirs[s + 'Shoulder'] = d(s + 'Shoulder', s + 'Arm');
     dirs[s + 'Arm'] = d(s + 'Arm', s + 'ForeArm');
@@ -425,8 +432,35 @@ function sourceInfo(skel, THREE) {
     const tip = P[s + 'ToeBase'] || (skel.foot_tip && skel.foot_tip[s + 'Foot'] ? new THREE.Vector3().fromArray(skel.foot_tip[s + 'Foot']) : null);
     dirs[s + 'Foot'] = tip && P[s + 'Foot'] ? new THREE.Vector3().subVectors(tip, P[s + 'Foot']) : null;
   }
-  skel._info = { order: skel.joints.map(j => j.name), par, dirs, rootY: skel.root_rest_y };
+  skel._info = { order: skel.joints.map(j => j.name), par, dirs, rootY: skel.root_rest_y, P };
   return skel._info;
+}
+
+/* Source joint positions for one frame (FK: rest offsets rotated by G). */
+function sourcePosed(src, G) {
+  const out = {};
+  for (const j of src.order) {
+    const p = src.par[j];
+    if (!p || !out[p]) { out[j] = src.P[j].clone(); continue; }
+    out[j] = src.P[j].clone().sub(src.P[p]).applyQuaternion(G[p]).add(out[p]);
+  }
+  return out;
+}
+/* Target bone positions for the posed world rotations W (FK on rest offsets). */
+function targetPosed(rig, W, want) {
+  const pos = new Map();
+  const fk = (b) => {
+    if (pos.has(b)) return pos.get(b);
+    const r = rig.rest(b);
+    const par = b.parent && b.parent.isBone ? b.parent : null;
+    if (!par) { pos.set(b, r.pos.clone()); return pos.get(b); }
+    const pr = rig.rest(par);
+    const off = r.pos.clone().sub(pr.pos).applyQuaternion(pr.quat.clone().invert()).applyQuaternion(W.get(par));
+    const v = fk(par).clone().add(off);
+    pos.set(b, v);
+    return v;
+  };
+  return want.map(fk);
 }
 
 const _retargetCache = new WeakMap(); // model instance -> Map(bankId -> { rig, out: { action: clip } })
@@ -523,30 +557,50 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
         if (!G[s + 'Shoulder']) D[s + 'Shoulder'] = (D[s + 'Shoulder'] || new THREE.Quaternion()).copy(D.Chest);
         D[s + 'ToeBase'] = (D[s + 'ToeBase'] || new THREE.Quaternion()).copy(D[s + 'Foot']);
       }
-      // W per target bone, then local.
-      W.clear();
-      for (const b of ordered) {
-        const dv = rig.driver.get(b);
-        const w = new THREE.Quaternion();
-        if (dv) {
-          if (dv.slerp !== undefined) w.slerpQuaternions(D.Hips, D.Chest, dv.slerp);
-          else w.copy(D[dv.c] || tmpQ.identity());
-          w.multiply(rig.rest(b).quat);
-        } else {
-          const pw = b.parent && W.get(b.parent);
-          if (pw) w.copy(pw).multiply(b.quaternion); // follows its (driven) parent at rest local
-          else w.copy(rig.rest(b).quat);
+      // W per target bone.
+      const solveW = () => {
+        W.clear();
+        for (const b of ordered) {
+          const dv = rig.driver.get(b);
+          const w = W.get(b) || new THREE.Quaternion();
+          if (dv) {
+            if (dv.slerp !== undefined) w.slerpQuaternions(D.Hips, D.Chest, dv.slerp);
+            else w.copy(D[dv.c] || tmpQ.identity());
+            w.multiply(rig.rest(b).quat);
+          } else {
+            const pw = b.parent && W.get(b.parent);
+            if (pw) w.copy(pw).multiply(b.quaternion); // follows its (driven) parent at rest local
+            else w.copy(rig.rest(b).quat);
+          }
+          W.set(b, w);
         }
-        W.set(b, w);
-        if (dv) {
-          const pw = (b.parent && W.get(b.parent)) || (b.parent ? rig.rest(b.parent).quat : tmpQ.identity());
-          const local = tmpQ.copy(pw).invert().multiply(w);
-          vals.get(b).set([local.x, local.y, local.z, local.w], f * 4);
+      };
+      solveW();
+      // Exact torso match: rotate the chest so the target's POSED hips->head
+      // direction equals the source's (forward kinematics on both). A curved
+      // target spine otherwise leans differently from T3's rigid torso.
+      if (src.P.Hips && src.P.Head && G.Hips && G.Head) {
+        const sp = sourcePosed(src, G);
+        const ds = new THREE.Vector3().subVectors(sp.Head, sp.Hips).applyQuaternion(F).normalize();
+        for (let it = 0; it < 2; it++) {
+          const tp = targetPosed(rig, W, [rig.by.Hips, rig.by.Head]);
+          const dt = new THREE.Vector3().subVectors(tp[1], tp[0]).normalize();
+          if (dt.angleTo(ds) < 0.002) break;
+          D.Chest.premultiply(new THREE.Quaternion().setFromUnitVectors(dt, ds));
+          D.Neck = D.Chest;
+          solveW();
         }
+      }
+      for (const b of driven) {
+        const pw = (b.parent && W.get(b.parent)) || (b.parent ? rig.rest(b.parent).quat : tmpQ.identity());
+        const local = tmpQ.copy(pw).invert().multiply(W.get(b));
+        vals.get(b).set([local.x, local.y, local.z, local.w], f * 4);
       }
       if (hipPos) {
         const rt = raw.root_t[Math.min(f, raw.root_t.length - 1)];
-        tmpV.set(hipsRest.x, hipsRest.y + (rt[1] - src.rootY) * hipScale, hipsRest.z).applyMatrix4(hipsParentInv);
+        let dy = (rt[1] - src.rootY) * hipScale;
+        if (clip.userData.noRise && dy > 0) dy = 0;
+        tmpV.set(hipsRest.x, hipsRest.y + dy, hipsRest.z).applyMatrix4(hipsParentInv);
         hipPos.set([tmpV.x, tmpV.y, tmpV.z], f * 3);
       }
     }

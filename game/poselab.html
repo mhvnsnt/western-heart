@@ -79,7 +79,7 @@ function boneMap(root) {
   root.traverse((o) => { if (o.isBone) { const c = canonBoneName(o.name) || o.name; if (!m[c]) m[c] = o; } });
   return m;
 }
-const PAIRS = [['Chest', 'Head'], ['LeftArm', 'LeftForeArm'], ['LeftForeArm', 'LeftHand'], ['RightArm', 'RightForeArm'],
+const PAIRS = [['Hips', 'Head'], ['Chest', 'Head'], ['LeftArm', 'LeftForeArm'], ['LeftForeArm', 'LeftHand'], ['RightArm', 'RightForeArm'],
   ['RightForeArm', 'RightHand'], ['LeftUpLeg', 'LeftLeg'], ['LeftLeg', 'LeftFoot'], ['RightUpLeg', 'RightLeg'], ['RightLeg', 'RightFoot']];
 
 async function show({ model = 'pantera', bank = 'king', clip = 'stance', t = 0.5, tint = 0, rest = false } = {}) {
@@ -188,7 +188,30 @@ async function showFighter({ id, clip = 'stance', t = 0.5 }) {
   const r = await show({ model: c.model, bank, clip, t });
   return { id, ...r };
 }
-window.__poselab = { show, rest, showFighter, banks: Object.keys(T3_BANKS) };
+/* Raw rest render of any GLB by URL (statics included; meshopt decoded). */
+import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.js';
+async function restUrl(url) {
+  clear();
+  const loader = new GLTFLoader(); loader.setMeshoptDecoder(MeshoptDecoder);
+  const g = await loader.loadAsync(url);
+  const tgt = g.scene;
+  scenes[1].add(tgt);
+  cur = { src: new THREE.Group(), tgt };
+  tgt.updateMatrixWorld(true);
+  const box = new THREE.Box3().setFromObject(tgt);
+  const size = box.getSize(new THREE.Vector3()), c = box.getCenter(new THREE.Vector3());
+  const r = Math.max(size.x, size.y, size.z), dist = r * 2.3;
+  front.position.set(c.x, c.y, c.z + dist); front.lookAt(c);
+  side.position.set(c.x + dist, c.y, c.z); side.lookAt(c);
+  for (const [x, cam] of [[0, front], [W / 2, side]]) {
+    renderer.setViewport(x, 0, W / 2, H); renderer.setScissor(x, 0, W / 2, H);
+    cam.aspect = (W / 2) / H; cam.updateProjectionMatrix();
+    renderer.render(scenes[1], cam);
+    cam.aspect = (W / 2) / (H / 2); cam.updateProjectionMatrix();
+  }
+  return { url, size: size.toArray().map(v => +v.toFixed(3)) };
+}
+window.__poselab = { show, rest, restUrl, showFighter, banks: Object.keys(T3_BANKS) };
 const q = new URLSearchParams(location.search);
 if (q.get('model')) show({ model: q.get('model'), bank: q.get('bank') || 'king', clip: q.get('clip') || 'stance', t: +(q.get('t') || 0.5) })
   .catch(e => { info.textContent = 'ERROR ' + e.message; });
