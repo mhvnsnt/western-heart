@@ -436,6 +436,60 @@
   },
   "parts": [
     {
+      "asset": "customization/parts/eyes/eyeball.glb",
+      "editable": [
+        "position",
+        "rotation",
+        "scale",
+        "tint"
+      ],
+      "id": "wh-eyeball-mesh",
+      "kind": "eye",
+      "library": "wh-eyes",
+      "name": "Eyeball (mesh — real eye, placeable)",
+      "notes": "Round 2 (2026-10-21): the eye-as-part rule made real — a 24mm eyeball mesh (sclera + iris + pupil, flat PBR colours) built by customization/tools/make_eye_parts.py, facing +Z, origin at the eyeball centre. Attach at the eye socket (Head) and place it with the standard placement; mirror for the other eye with rz/ry or a second equip. Named test case: DEATHFANG human (replaces the provisional painted eye) — proof in customization/tools/proof/cs-round2/.",
+      "part_class": "mesh_part",
+      "placement": {
+        "bone_aliases": [
+          "Head",
+          "mixamorig:Head",
+          "head",
+          "J_Head",
+          "Bip01 Head",
+          "DEF-head"
+        ],
+        "socket": "eye"
+      },
+      "suite_slot": "eye"
+    },
+    {
+      "asset": "customization/parts/eyes/eyelash.glb",
+      "editable": [
+        "position",
+        "rotation",
+        "scale",
+        "tint"
+      ],
+      "id": "wh-eyelash-mesh",
+      "kind": "eye",
+      "library": "wh-eyes",
+      "name": "Eyelash (mesh strip)",
+      "notes": "Round 2 (2026-10-21): curved lash strip built by customization/tools/make_eye_parts.py; origin at the eyeball centre it sits on, arc over the top front. Pairs with wh-eyeball-mesh at the same placement.",
+      "part_class": "mesh_part",
+      "placement": {
+        "bone_aliases": [
+          "Head",
+          "mixamorig:Head",
+          "head",
+          "J_Head",
+          "Bip01 Head",
+          "DEF-head"
+        ],
+        "socket": "eye"
+      },
+      "suite_slot": "eye"
+    },
+    {
       "asset": "customization/eye-library/eye-yellow-tiger.png",
       "editable": [
         "position",
