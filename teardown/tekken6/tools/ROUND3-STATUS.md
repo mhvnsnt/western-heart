@@ -136,3 +136,130 @@ as a QuickBMS script alongside `tekken6_gzip.py` (PR #29 delivery form).
 - COM containers decoded: 0/18 (blocked on §2).
 - Tekken 6 GMO→GLB: 0 (blocked on §2); pipeline proven on samples.
 - Wired into playable build: 0 (blocked on §2/§3; plan in §5).
+
+---
+
+## Round 3 — session 2 addendum (2026-10-20, emulator ground truth)
+
+### A. THE LENGTH TABLE IS FULLY SOLVED (verification strengthened)
+
+`lt_table_verify.py` was re-run against values read DIRECTLY from
+`EBOOT.DECRYPTED.ELF` (LT at file offset 0x3d337c, vaddr 0x8bd637c): the
+transcription used in round 2 matches the binary byte-exact, and with the
+corrected index `LT[sym-256]` all 29 length bases and extra-bit counts equal
+RFC1951 LBASE/LEXT. The DIST table at 0x8bd63bc = DBASE-1, byte-exact.
+So: length/distance BASES and EXTRA COUNTS are standard. No table defect
+remains. (Deliverable formality still owed: a QuickBMS script — pointless
+until a full decode exists to encode; deferred with the decode itself, not
+dropped.)
+
+### B. EMULATOR GROUND TRUTH — THE GAME'S OWN INFLATE REJECTS THE STREAMS
+
+Built a Unicorn harness (`round3-evidence/emu3.py`) that executes the
+EBOOT's real wrapper 0x8b559c8 / inflate 0x8b55bf0 from the decrypted ELF
+(Allegrex BITREV/CLZ/MAX/MIN emulated via NOP-patch + code hook; QEMU's
+MIPS core cannot execute them natively). Validation: container 19 output
+byte-identical to the Python decoder (960 B, adler-exact file).
+
+Result on container 0 (entry 454): the game's inflate returns its own
+error 0x80000108 after producing EXACTLY the same 2,815 bytes as the
+Python decoder, failing at the same match (sym 258, len 4, dsym 24,
+dist 5978 > out 2815). An instrumented run
+(`round3-evidence/emu_log.py`) logging (out, len, dist) per match from
+the game code matches the Python decoder's log for every match including
+the failing one (emu dist reads 1 lower — an artifact of the copy loop's
+-1(s4) addressing in the logger, identified and accounted).
+
+The loader was also fully traced in the EBOOT:
+- Sole wrapper caller: 0x89d27a0 — checks "GZIP" magic, passes
+  (dest, len, container+0x14, &adler). No priming, no dictionary, no
+  preprocessing.
+- Its callers (0x887e56c, 0x887e7fc, 0x89dab8c) pass a FRESHLY ALLOCATED
+  buffer of exactly w[3] bytes.
+- The only other inflate caller (0x8b55728, in a gzip-file library whose
+  magic check is 1f 8b) is a plain single-shot uncompress; it is not a
+  streaming/dictionary variant.
+
+CONCLUSION (proven by executing the game's own code): the "main-loop
+length composition" defect chased since round 2 DOES NOT EXIST in the
+game's inflate — its composition is standard, and it cannot decode these
+containers standalone either. The defect framing is retired.
+
+### C. WHAT THE STREAMS ACTUALLY DO (all measured, idx0 unless noted)
+
+- Bit-exactness: block 2's dynamic header (bit 182,510) parses
+  Kraft-exact (CL/lit/dist all 1.000000). Base-rate control: 0/3000
+  random bit offsets in the same stream yield a Kraft-exact header.
+  The bitstream, symbols and extra values are exactly as parsed; there
+  is no desync.
+- Violations: 117 of 9,460 matches in idx0 have dist > out (excess
+  7..20,628 bytes); ALL other matches are standard-valid. Same pattern
+  in all 56 failing files: first violation at compressed bit
+  ~7,900–9,300 (scoreboard: `round3-evidence/scoreboard_strict.txt`,
+  20/76 byte-exact — unchanged).
+- Length sum: standard composition yields 104,054 of 105,472 bytes
+  (-1,418) for idx0 — independent of any dictionary (dictionaries do
+  not change output length). Other files range widely (idx5 -19,949;
+  idx17 lenient parse terminates at 24,407 of 122,288 with 280,790
+  stream bits unconsumed; idx58 misreads as stored blocks with bad
+  NLEN after its first dynamic block).
+- Population split: 23/76 files parse cleanly to the exact end of
+  their stream under lenient continuation; 53/76 hit invalid codes
+  during lenient continuation, i.e. at least one match class consumes
+  a different number of bits in the true format for those files.
+- Ruled out with evidence: per-entry raw sub-file as dictionary
+  (zlib zdict test — output length unchanged at 104,054, adler still
+  fails); predecessor-plaintext dictionary (same test class); symbol
+  table shifts (len+1/dist+1 tested, worse); bit-reversed extras
+  (tested round 3 session 1 — breaks good matches); field reordering
+  (breaks at match 2-3); layout field correlation (exact files occur
+  in both 'relaxed' and 'H1'); sector-cipher corruption (streams
+  parse bit-exact — a wrong cipher gives garbage, not a valid parse);
+  a second decoder anywhere (EBOOT-wide: exactly ONE code-length ORDER
+  table; bulk-wide scan: 0 ELF headers, 0 ORDER-table copies, 0 LT
+  copies in 384 MB; no zlib/kernel-decompress imports in EBOOT
+  strings).
+
+### D. REFRAMED DEFECT + NAMED NEXT STEP
+
+The containers were encoded against a decode context the EBOOT's
+bundled inflate does not provide (pre-window data plus value/bit
+consumption differences that vary by file population). No decoder for
+this encoding exists in any artifact we hold, and the deep-research
+proven negative stands (no public spec/tool exists anywhere; this doc
+is the citation). The mandated ground-truth method is the PPSSPP live
+trace: run the retail game, breakpoint 0x89d27a0 / 0x8b559c8 during a
+real DATA401 load, and record whether the runtime calls this inflate
+for these entries at all, with what (dest, src) — plus a WebSocket
+debugger trace of (block index, offset, size) per the teardown-
+completion gates (PR #397, gates G1/G2). Setup is documented in the
+recon archive (`PPSSPP-LIVE-RUN-GUIDE.md`). PPSSPP is not currently on
+disk (cleared under the store-and-work law); re-pulling it plus the
+ISO is the first step of that lane. The Unicorn harness above is the
+offline equivalent for the code path itself and stays as evidence.
+
+### E. GATE STATUS (PR #397)
+
+- G1 (decryption proof on >=2 unseen files): NOT MET — 20/76 decode
+  byte-exact (those 20 are proven), 56 do not decode with any decoder
+  available; the encode context is unidentified.
+- G2 (emulator/debugger offset log archived): PARTIAL — Unicorn trace
+  logs archived here (emu3/emu_log + this doc) proving the EBOOT code
+  path; the PPSSPP WebSocket trace is still owed (see D).
+- G3 (GMO->GLB clean imports): NOT MET for Tekken 6 content — blocked
+  on G1 for the 18 COM containers (idx58-75).
+- G4 (inventory 40/40 with status): MET as an inventory — see
+  WIRING-INVENTORY.md (this PR): all 76 containers + the 18 COM files
+  listed with per-file status; character assignment of COM files
+  remains impossible until they decode (round 11 proved the COM
+  container header from clean prefixes; content type unconfirmed).
+
+### F. TARGET 2 (COM/GMO batch) — BLOCKED, honestly
+
+The 18 COM containers (gzip idx 58-75, entries 709-735) share the
+same decode defect (first violations at bit ~7,947-8,242). Zero T6
+character meshes can be converted until the decode lands; claiming
+otherwise would require fabricating models. The GMO->GLB pipeline
+itself remains proven from round 2 (PiosGmoLibrary + Blender,
+cloud.glb in PR #388). Per-character directories will be created from
+the decoded COM inventory in the same PR series once G1 lands.
