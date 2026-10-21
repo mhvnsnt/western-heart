@@ -56,6 +56,10 @@ export const MODEL_URLS = {
   'sam-ur-a1': '../roster/sam-ur-a1/attires/attire1/model.glb',
   'saku-ra': '../roster/sakura/attires/attire1/model.glb',
   'awa-pop': 'assets/models/awa-pop.glb',
+  // AWA POP Attire 2 (fighter-completeness audit 2026-10-21): owner-confirmed
+  // Tripo Attire 2 (roster/awa-pop/ATTIRE-SLOTS.md slot 2) — the GLB was in the
+  // repo with no key, so it could never load.
+  'awa-pop-attire2': '../roster/awa-pop/attires/attire2/model.glb',
   'purple-rain': '../roster/purplerain/attires/attire1/model.glb',
   nightwolf: 'assets/models/nightwolf.glb',
   'king-tyrant': 'assets/models/king-tyrant.glb',
@@ -119,6 +123,15 @@ export const MODEL_URLS = {
   'burger-attire5': '../roster/burger/attires/attire5/model.glb',
   'burger-attire6': '../roster/burger/attires/attire6/model.glb',
   'burger-attire7': '../roster/burger/attires/attire7/model.glb',
+  // BURGER transformation forms (fighter-completeness audit 2026-10-21):
+  // roster-full.js forms target these semantic keys, but they were never
+  // registered here, so fighter.js _doTransform failed on every attempt
+  // (createInstance threw, catch swallowed it) and Burger could NEVER
+  // transform. Canon mapping per roster/burger/ATTIRE-SLOTS.md: Speed Demon
+  // = Attire 6, The Mouth = Attire 7, Demon (final) = Attire 1.
+  'burger-speed-demon': '../roster/burger/attires/attire6/model.glb',
+  'burger-the-mouth': '../roster/burger/attires/attire7/model.glb',
+  'burger-demon': '../roster/burger/attires/attire1/model.glb',
   // Gyou spirit form (owner 2026-10-19, Tripo pull).
   'gyou-spirit': '../roster/gyou/attires/spirit-form/model.glb',
   lili: 'assets/models/lili.glb',   // NO WH name yet — do not assign
