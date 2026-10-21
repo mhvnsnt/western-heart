@@ -105,8 +105,15 @@ function jsonToClip(name, data, THREE) {
       values[i * 4] = q[0]; values[i * 4 + 1] = q[1];
       values[i * 4 + 2] = q[2]; values[i * 4 + 3] = q[3];
     }
-    // Track name matches bone node name in the scene (Hips, Spine, etc.)
-    tracks.push(new THREE.QuaternionKeyframeTrack(`${bone}.quaternion`, times, values));
+    // Track name matches bone node name in the scene (Hips, Spine, etc.).
+    // Canonicalization: the T3 bake's skeleton named the chest bone
+    // 'Chest'; every current game skeleton (Mixamo family, Lane-C rigs,
+    // the WH auto-rig template) names it 'Spine2'. Without this mapping
+    // the chest track binds to nothing on ANY shipped model and every
+    // clip loses its chest motion. Name mapping only — no motion data
+    // is altered, and the mapping is the game's own naming convention.
+    const trackBone = bone === 'Chest' ? 'Spine2' : bone;
+    tracks.push(new THREE.QuaternionKeyframeTrack(`${trackBone}.quaternion`, times, values));
   }
 
   const clip = new THREE.AnimationClip(name, frameCount / fps, tracks);

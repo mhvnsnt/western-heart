@@ -208,6 +208,16 @@ class AssetManager {
             }
             this.clips[id][clip.name] = clip;
           }
+          // Per-character native idle (restore-from-source): some fighters'
+          // own source rigs name their idle 'Battle_Idle' / 'Stage_Idle'
+          // (KOF-style source files). Register the model's OWN idle under
+          // the canonical 'Idle' key so the base layer can play it. Fires
+          // only for a model that carries such a clip and lacks 'Idle' —
+          // the data always comes from that character's own file.
+          if (!this.clips[id].Idle) {
+            const nativeIdle = this.clips[id].Battle_Idle || this.clips[id].Stage_Idle;
+            if (nativeIdle) this.clips[id].Idle = nativeIdle;
+          }
           gltf.scene.traverse((o) => {
             if (o.isMesh) {
               o.castShadow = true;
