@@ -133,3 +133,58 @@ intake wave, custom fighters) whose roster entries/models land with their own la
   merged catalogs and applies each part at its bone socket — no changes to bind/retarget/fighter-loading
   code; a missing profile or catalog leaves the fight untouched.
 
+
+## Addendum — fixes landed + consumer wiring (2026-10-21, this lane)
+
+**PR #444 (MERGED):** the closable audit fixes — MOVESET_IDS now loads kronos-attire2's,
+demonio-human's, and charger-attire2's own movesets (+ new `charger-attire2.json`);
+Burger's transformation keys registered on their canon attire files (speed-demon =
+Attire 6, the-mouth = Attire 7, demon = Attire 1); attire ladders added for Diablo
+(A2 Devil God), Kronos (A2/A3), Awa Pop (A2, + its MODEL_URLS key). Regression guard:
+`game/tests/fighter-completeness.test.mjs`.
+
+**Consumer wiring (this lane's follow-up PR):** `game/js/customization-consumer.js` +
+a two-line hook in `game.js startMatch`. After a fighter's model is built, the
+fighter's suite profile (localStorage `wh_creation_suite_v1` record the suite UI
+saves, or `customization/profiles/<fighter-id>.json`) is resolved through the suite's
+own `catalogs.js`/`parts.js` and each part attaches at its bone socket on the
+fighting model — mesh parts, texture layers, and item-color tints. The UI-built
+Pantera proof profile is committed at `customization/profiles/pantera.json`.
+Proof harness: `game/customization-harness.html` (boots a real match through the
+game's own path). The UI v2 lane's live viewport shares this exact attach path
+(parts.js/attire.js + the consumer's exported placement normalization) — no fork.
+
+**Zen update (owner 2026-10-21 ~10:41 CDT):** Zen's own-model line above is now
+RESOLVED-BY-OWNER-TRIPO — the owner delivered the spirit-body Tripo
+(8c46e379-a51c-4741-b4a3-2132ca89078f) and the zen-spirit-body lane wires it as
+roster/zen Attire 1 default. His bank stays Julia (canon Tekken base, INTERIM as a
+final-form statement per the unvesseled ruling); Zen remains UNVESSELED.
+
+**Known v1 boundaries of the consumer (honest):** parts do not yet follow a
+mid-match transformation (they stay on the model they were attached to — re-applying
+needs a hook inside fighter.js's transform path, flagged for a follow-up lane, not
+hacked around); body morphs/body-type/skin-tone from a profile stay with the CAW
+loader and the bake engine — the consumer applies parts, part tints, and texture
+layers only, and never re-tints a roster fighter's own textured model.
+
+**Consumer fit fixes found by the proof (same PR):** two real defects surfaced
+only when a converted part was actually worn. (1) Parts are now wrapped in a
+group centred on their bounding box instead of translating geometry — converted
+parts carry baked node rotations, which swung geometry-translated parts off the
+socket (the test plate sat a full quadrant off the Spine2 bone; centred wrap:
+bbox exactly on the bone). (2) Attached part materials are forced double-sided
+in the consumer's layer — several No Mercy shells are wound inward and vanish
+single-sided from most angles (proven with/without in the viewer). Per-fighter
+surface fit (how far a piece sits proud of a given body) remains profile data,
+authored per fighter — the committed Pantera profile carries its tuned offset.
+
+**Proof-environment note (honest):** frame capture of the full fight page was
+blocked by the shared VM's load (2 cores at load 14–30 under sibling lanes'
+Ghidra/Blender/pack-objects work; the software-GL renderer repeatedly starved
+before presenting a frame across a dozen attempts, including a deterministic
+harness clock and canvas-readback captures). The in-fight evidence committed is
+the real match's console record (consumer STATE + live match STATE with banks
+and parts); the visual frame of the customized fighter comes from the same
+consumer code path in `game/customization-viewer.html`, viewed by the lane
+before filing. A clean-load rerun of `game/customization-harness.html` is the
+only remaining proof upgrade, and it is a rerun, not new work.

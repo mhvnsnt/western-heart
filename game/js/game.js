@@ -14,6 +14,7 @@ import { Fighter, setArenaLimit } from './fighter.js';
 import { AIController } from './ai.js';
 import { audio } from './audio.js';
 import { getStage } from './stages.js';
+import { applyFighterProfile } from './customization-consumer.js';
 
 const ROUND_TIME = 60;
 const ROUNDS_TO_WIN = 2;   // best of 3
@@ -79,6 +80,13 @@ export class Game {
     this.p1._sceneRef = this.arena;
     this.p2._sceneRef = this.arena;
     this.arena.scene.add(this.p1.root, this.p2.root);
+    // Creation Suite consumer (fighter-completeness lane, 2026-10-21):
+    // apply each fighter's suite profile parts at their bone sockets —
+    // additive attach layer on the finished models; a no-op for fighters
+    // without a profile and fail-silent per part, so it can never block
+    // or break a match. See js/customization-consumer.js.
+    applyFighterProfile(this.p1);
+    applyFighterProfile(this.p2);
     this.ai = new AIController(this.p2, enemyChar.ai);
     this.ai1 = this.demo ? new AIController(this.p1, playerChar.ai) : null;
 
