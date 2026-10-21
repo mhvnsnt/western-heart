@@ -98,3 +98,61 @@ launches (capture→commit discipline).
 ## Findings
 
 (appended as they land — emulator/RAM ground truth only)
+
+### F9. THE LOADER FIRES IN-GAME — title→attract-VS load runs the full chain repeatedly (attempt 5, 2026-10-21)
+
+Attempt-5 session (trace archived: `round5-evidence/trace_r5c_attempt5.jsonl`,
+screenshot `round5-evidence/a5_vs_loading.png`): control 0x8ac6c74
+validated in-session (334 hits). Boot → autosave dialog → Bandai Namco
+splash → intro movie → title. Pressing CROSS at the title started an
+attract/VS load ("VS / NOW LOADING" screen), and the FULL chain fired
+repeatedly: **19 complete loader→wrapper→inflate→ret cycles in ~9
+minutes** (seq 0–18 `load_done`, seq 19 in flight when a daemon restart
+killed PPSSPP + driver). This overturns the round-4 F7 framing: the
+chain is not dead code and not save-data-only — it decodes asset
+containers during ordinary fight loading. Round 4's controlled
+negative covered boot/title/menus/arcade-stage-load only; the attract
+load path was never driven with a working driver (attempt-2/round-4
+PC parse was broken, F8).
+
+Register ground truth (from the two `regs_raw` records — the reply
+shape is `registerNames` + `uintValues`; see F10): seq-0 loader hit:
+a0=0x09FFF3F0 (=sp, struct on stack), a1=0x0853C3A0, a2=a3=0x7960
+(31,072), ra=0x089D9D84, pc=0x089D27A0. Seq-0 wrapper hit:
+a0=0x0853C3A0 (dest = loader's a1), a1=0x7960 (cap), a2=0x097F0014
+(src), a3=0, ra=0x089D27EC (the loader's wrapper-return check — the
+ret breakpoint address), pc=0x08B559C8. PPSSPP's own symbol for the
+inflate breakpoint 0x8B55BF0 is `openseason_data_decode`.
+
+### F10. r5c_driver register-parse defect #2 (fixed in attempt 5b driver)
+
+`regs_probe` looked for category keys `values`/`registers` + `names`;
+this PPSSPP build returns `registerNames` + `uintValues`, so every
+parsed register came back null (gpr={} on all hits) and the
+container/dest dump-on-ret path never triggered. The evidence survived
+only in the two verbatim `regs_raw` records. Attempt-5b driver parses
+`registerNames`/`uintValues`.
+
+### F11. Control breakpoint throttles emulation ~35× — validate, then drop it
+
+With the hot-PC control armed, the session advanced ~2M PPSSPP ticks/s
+(each hit = pause + WS roundtrip + resume); boot→title took ~35 min.
+After removing ONLY the control via the side channel
+(`bp_side.py remove 0x8ac6c74`; loader/wrapper/inflate/ret stayed
+armed), throughput rose to ~70M ticks/s and title→attract-load took
+~2 min. Discipline going forward: validate the control in-session,
+record its count, remove it for driving, re-arm briefly at each
+checkpoint for a fresh beside-the-negative count.
+
+### Attempt-5 session timeline / open steps
+
+- [x] Session live + first commit pushed BEFORE driving (30a8095).
+- [x] Title reached; attract-VS load fired the chain 19× (F9).
+- [ ] RAM dump during the attract fight / fight load (dump command was
+  queued but the daemon restart killed the session first).
+- [ ] CUSTOMIZATION + GALLERY driven under breakpoints (main-menu
+  navigation still owed — cross at title goes to attract VS).
+- [ ] Per-container capture with the fixed regs parser (5b): match
+  in-game container bytes against the 76; diff game output vs our
+  decoder, esp. any FAILING container the game decodes live.
+- [ ] Overlay check on the dumps.
