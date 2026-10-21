@@ -40,10 +40,11 @@ def main():
     if '--repo-root' in sys.argv:
         root = sys.argv[sys.argv.index('--repo-root') + 1]
     root = os.path.abspath(root)
+    entries = []
     try:
         out = subprocess.run(['git', 'ls-tree', '-r', '-l', 'HEAD', 'roster/'],
-                             cwd=root, capture_output=True, text=True, check=True).stdout
-        entries = []
+                             cwd=root, capture_output=True, text=True, check=True,
+                             timeout=120).stdout
         for line in out.splitlines():
             meta, path = line.split('\t', 1)
             parts = meta.split()
@@ -51,6 +52,22 @@ def main():
                 continue
             entries.append({'path': path, 'bytes': int(parts[3])})
     except Exception:
+        entries = []
+    if not entries:
+        # Fallback: the GitHub trees API (local object stores can be too
+        # contended for ls-tree on the full roster tree).
+        try:
+            raw = subprocess.run(['gh', 'api', 'repos/mhvnsnt/western-heart/git/trees/main:roster?recursive=1'],
+                                 capture_output=True, text=True, check=True, timeout=180).stdout
+            tree = json.loads(raw)
+            if not tree.get('truncated'):
+                for t in tree.get('tree', []):
+                    if t.get('type') == 'blob' and t['path'].lower().endswith('.glb'):
+                        entries.append({'path': 'roster/' + t['path'],
+                                        'bytes': int(t.get('size', 0))})
+        except Exception:
+            entries = []
+    if not entries:
         entries = []
         for dirpath, _dirs, files in os.walk(os.path.join(root, 'roster')):
             for fn in files:

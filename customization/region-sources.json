@@ -1,8 +1,29 @@
 {
  "generated_by": "customization/tools/build_region_sources.py",
  "note": "Piece-swap sources for the Creation Suite region_swaps. skinned/bones/extensions enrich when the GLB is on disk; null fields are inspected by the bake at import time.",
- "count": 8,
+ "count": 104,
  "sources": [
+  {
+   "path": "roster/armor-king/attires/attire1/model.glb",
+   "fighter": "armor-king",
+   "attire": "attire1",
+   "file": "model.glb",
+   "bytes": 397876
+  },
+  {
+   "path": "roster/awa-pop/attires/attire2/model.glb",
+   "fighter": "awa-pop",
+   "attire": "attire2",
+   "file": "model.glb",
+   "bytes": 20834332
+  },
+  {
+   "path": "roster/awa-pop/awa-pop-attire-1.glb",
+   "fighter": null,
+   "attire": null,
+   "file": "awa-pop-attire-1.glb",
+   "bytes": 20583812
+  },
   {
    "path": "roster/baek/attires/attire1/model.glb",
    "fighter": "baek",
@@ -74,6 +95,90 @@
    "meshes": 38
   },
   {
+   "path": "roster/blanka/attires/attire1/model.glb",
+   "fighter": "blanka",
+   "attire": "attire1",
+   "file": "model.glb",
+   "bytes": 4561072
+  },
+  {
+   "path": "roster/burger/attires/attire1/model.glb",
+   "fighter": "burger",
+   "attire": "attire1",
+   "file": "model.glb",
+   "bytes": 20712948
+  },
+  {
+   "path": "roster/burger/attires/attire2/model.glb",
+   "fighter": "burger",
+   "attire": "attire2",
+   "file": "model.glb",
+   "bytes": 20316404
+  },
+  {
+   "path": "roster/burger/attires/attire3/model.glb",
+   "fighter": "burger",
+   "attire": "attire3",
+   "file": "model.glb",
+   "bytes": 20833904
+  },
+  {
+   "path": "roster/burger/attires/attire4/model.glb",
+   "fighter": "burger",
+   "attire": "attire4",
+   "file": "model.glb",
+   "bytes": 20955312
+  },
+  {
+   "path": "roster/burger/attires/attire5/model.glb",
+   "fighter": "burger",
+   "attire": "attire5",
+   "file": "model.glb",
+   "bytes": 22340904
+  },
+  {
+   "path": "roster/burger/attires/attire6/model.glb",
+   "fighter": "burger",
+   "attire": "attire6",
+   "file": "model.glb",
+   "bytes": 20908984
+  },
+  {
+   "path": "roster/burger/attires/attire7/model.glb",
+   "fighter": "burger",
+   "attire": "attire7",
+   "file": "model.glb",
+   "bytes": 21954676
+  },
+  {
+   "path": "roster/cain-elias/attires/attire1/model.glb",
+   "fighter": "cain-elias",
+   "attire": "attire1",
+   "file": "model.glb",
+   "bytes": 21711300
+  },
+  {
+   "path": "roster/cain-elias/attires/attire2/model.glb",
+   "fighter": "cain-elias",
+   "attire": "attire2",
+   "file": "model.glb",
+   "bytes": 21921892
+  },
+  {
+   "path": "roster/charger/attires/attire1/model.glb",
+   "fighter": "charger",
+   "attire": "attire1",
+   "file": "model.glb",
+   "bytes": 18005236
+  },
+  {
+   "path": "roster/charger/attires/attire2/model.glb",
+   "fighter": "charger",
+   "attire": "attire2",
+   "file": "model.glb",
+   "bytes": 17370960
+  },
+  {
    "path": "roster/deathfang/attires/attire1/model.glb",
    "fighter": "deathfang",
    "attire": "attire1",
@@ -107,6 +212,573 @@
     "KHR_materials_pbrSpecularGlossiness"
    ],
    "meshes": 11
+  },
+  {
+   "path": "roster/demonio/attires/attire1/model.glb",
+   "fighter": "demonio",
+   "attire": "attire1",
+   "file": "model.glb",
+   "bytes": 28872600
+  },
+  {
+   "path": "roster/demonio/attires/bloodline-ember/demonio-bloodline-ember.glb",
+   "fighter": "demonio",
+   "attire": "bloodline-ember",
+   "file": "demonio-bloodline-ember.glb",
+   "bytes": 25698348
+  },
+  {
+   "path": "roster/demonio/attires/human/model.glb",
+   "fighter": "demonio",
+   "attire": "human",
+   "file": "model.glb",
+   "bytes": 56667288
+  },
+  {
+   "path": "roster/demonio/attires/winged-devil/model.glb",
+   "fighter": "demonio",
+   "attire": "winged-devil",
+   "file": "model.glb",
+   "bytes": 55823720
+  },
+  {
+   "path": "roster/diablo/attires/attire1/model.glb",
+   "fighter": "diablo",
+   "attire": "attire1",
+   "file": "model.glb",
+   "bytes": 22770984
+  },
+  {
+   "path": "roster/diablo/attires/attire2/model.glb",
+   "fighter": "diablo",
+   "attire": "attire2",
+   "file": "model.glb",
+   "bytes": 22503560
+  },
+  {
+   "path": "roster/doc-frank/attires/attire1/post-transform/model.glb",
+   "fighter": "doc-frank",
+   "attire": "attire1",
+   "file": "model.glb",
+   "bytes": 57113408
+  },
+  {
+   "path": "roster/doc-frank/attires/attire1/pre-transform/model.glb",
+   "fighter": "doc-frank",
+   "attire": "attire1",
+   "file": "model.glb",
+   "bytes": 2526880
+  },
+  {
+   "path": "roster/doc-frank/attires/attire2/base/model.glb",
+   "fighter": "doc-frank",
+   "attire": "attire2",
+   "file": "model.glb",
+   "bytes": 55835528
+  },
+  {
+   "path": "roster/doc-frank/attires/attire2/dome-fix/model-dome-glass-v1-thindisc.glb",
+   "fighter": "doc-frank",
+   "attire": "attire2",
+   "file": "model-dome-glass-v1-thindisc.glb",
+   "bytes": 76117932
+  },
+  {
+   "path": "roster/doc-frank/attires/attire2/dome-fix/model-dome-glass-v4.glb",
+   "fighter": "doc-frank",
+   "attire": "attire2",
+   "file": "model-dome-glass-v4.glb",
+   "bytes": 76321008
+  },
+  {
+   "path": "roster/doc-frank/attires/attire2/dome-fix/model-dome-glass-v5.glb",
+   "fighter": "doc-frank",
+   "attire": "attire2",
+   "file": "model-dome-glass-v5.glb",
+   "bytes": 76449144
+  },
+  {
+   "path": "roster/doc-frank/attires/attire2/dome-fix/model-dome-glass.glb",
+   "fighter": "doc-frank",
+   "attire": "attire2",
+   "file": "model-dome-glass.glb",
+   "bytes": 76140792
+  },
+  {
+   "path": "roster/doc-frank/attires/attire2/transformed/model.glb",
+   "fighter": "doc-frank",
+   "attire": "attire2",
+   "file": "model.glb",
+   "bytes": 56257936
+  },
+  {
+   "path": "roster/doc-frank/attires/attire3/base/model.glb",
+   "fighter": "doc-frank",
+   "attire": "attire3",
+   "file": "model.glb",
+   "bytes": 29488104
+  },
+  {
+   "path": "roster/doc-frank/attires/attire3/transformed/model.glb",
+   "fighter": "doc-frank",
+   "attire": "attire3",
+   "file": "model.glb",
+   "bytes": 57340108
+  },
+  {
+   "path": "roster/doc-frank/attires/attire4/base/model.glb",
+   "fighter": "doc-frank",
+   "attire": "attire4",
+   "file": "model.glb",
+   "bytes": 19750388
+  },
+  {
+   "path": "roster/doc-frank/attires/attire4/transformed/model.glb",
+   "fighter": "doc-frank",
+   "attire": "attire4",
+   "file": "model.glb",
+   "bytes": 21156460
+  },
+  {
+   "path": "roster/doc-frank/attires/machine-shop/doc-frank-machine-shop-rigged.glb",
+   "fighter": "doc-frank",
+   "attire": "machine-shop",
+   "file": "doc-frank-machine-shop-rigged.glb",
+   "bytes": 2237976
+  },
+  {
+   "path": "roster/doc-frank/attires/machine-shop/doc-frank-machine-shop.glb",
+   "fighter": "doc-frank",
+   "attire": "machine-shop",
+   "file": "doc-frank-machine-shop.glb",
+   "bytes": 2526880
+  },
+  {
+   "path": "roster/dxmmii/attires/attire1/model.glb",
+   "fighter": "dxmmii",
+   "attire": "attire1",
+   "file": "model.glb",
+   "bytes": 60345304
+  },
+  {
+   "path": "roster/dxmmii/attires/attire2/model.glb",
+   "fighter": "dxmmii",
+   "attire": "attire2",
+   "file": "model.glb",
+   "bytes": 54101760
+  },
+  {
+   "path": "roster/dxmmii/attires/patchwork-dj/dxmmii-patchwork-rigged.glb",
+   "fighter": "dxmmii",
+   "attire": "patchwork-dj",
+   "file": "dxmmii-patchwork-rigged.glb",
+   "bytes": 403316
+  },
+  {
+   "path": "roster/dxmmii/attires/patchwork-dj/dxmmii-patchwork.glb",
+   "fighter": "dxmmii",
+   "attire": "patchwork-dj",
+   "file": "dxmmii-patchwork.glb",
+   "bytes": 290569
+  },
+  {
+   "path": "roster/gyou/attires/spirit-form/model.glb",
+   "fighter": "gyou",
+   "attire": "spirit-form",
+   "file": "model.glb",
+   "bytes": 17034224
+  },
+  {
+   "path": "roster/iori/attires/attire1/model.glb",
+   "fighter": "iori",
+   "attire": "attire1",
+   "file": "model.glb",
+   "bytes": 12304580
+  },
+  {
+   "path": "roster/jin/attires/bloodline-ember/jin-bloodline-ember.glb",
+   "fighter": "jin",
+   "attire": "bloodline-ember",
+   "file": "jin-bloodline-ember.glb",
+   "bytes": 25657736
+  },
+  {
+   "path": "roster/king-tyrant/attires/attire1/model.glb",
+   "fighter": "king-tyrant",
+   "attire": "attire1",
+   "file": "model.glb",
+   "bytes": 19405988
+  },
+  {
+   "path": "roster/king-tyrant/attires/attire2/model.glb",
+   "fighter": "king-tyrant",
+   "attire": "attire2",
+   "file": "model.glb",
+   "bytes": 19292836
+  },
+  {
+   "path": "roster/king-tyrant/attires/attire3/model.glb",
+   "fighter": "king-tyrant",
+   "attire": "attire3",
+   "file": "model.glb",
+   "bytes": 18586860
+  },
+  {
+   "path": "roster/king-tyrant/attires/attire4/model.glb",
+   "fighter": "king-tyrant",
+   "attire": "attire4",
+   "file": "model.glb",
+   "bytes": 19157944
+  },
+  {
+   "path": "roster/kinpo/attires/attire1/model.glb",
+   "fighter": "kinpo",
+   "attire": "attire1",
+   "file": "model.glb",
+   "bytes": 20304060
+  },
+  {
+   "path": "roster/kinpo/attires/attire2/model.glb",
+   "fighter": "kinpo",
+   "attire": "attire2",
+   "file": "model.glb",
+   "bytes": 18389124
+  },
+  {
+   "path": "roster/koreshi/attires/attire1/model.glb",
+   "fighter": "koreshi",
+   "attire": "attire1",
+   "file": "model.glb",
+   "bytes": 25414700
+  },
+  {
+   "path": "roster/kronos/attires/attire1/model.glb",
+   "fighter": "kronos",
+   "attire": "attire1",
+   "file": "model.glb",
+   "bytes": 19128636
+  },
+  {
+   "path": "roster/kronos/attires/attire2/model.glb",
+   "fighter": "kronos",
+   "attire": "attire2",
+   "file": "model.glb",
+   "bytes": 20392600
+  },
+  {
+   "path": "roster/kronos/attires/attire3/model.glb",
+   "fighter": "kronos",
+   "attire": "attire3",
+   "file": "model.glb",
+   "bytes": 21485380
+  },
+  {
+   "path": "roster/lili/attires/noir-gala/lili-noir-gala.glb",
+   "fighter": "lili",
+   "attire": "noir-gala",
+   "file": "lili-noir-gala.glb",
+   "bytes": 19552956
+  },
+  {
+   "path": "roster/mariposa/attires/monarch/mariposa-monarch-rigged.glb",
+   "fighter": "mariposa",
+   "attire": "monarch",
+   "file": "mariposa-monarch-rigged.glb",
+   "bytes": 90429536
+  },
+  {
+   "path": "roster/mariposa/attires/monarch/mariposa-monarch.glb",
+   "fighter": "mariposa",
+   "attire": "monarch",
+   "file": "mariposa-monarch.glb",
+   "bytes": 22127910
+  },
+  {
+   "path": "roster/mariposa/attires/slot2/model.glb",
+   "fighter": "mariposa",
+   "attire": "slot2",
+   "file": "model.glb",
+   "bytes": 21221888
+  },
+  {
+   "path": "roster/nightwolf/attires/attire1/model.glb",
+   "fighter": "nightwolf",
+   "attire": "attire1",
+   "file": "model.glb",
+   "bytes": 21870928
+  },
+  {
+   "path": "roster/pantera/attires/classic/pantera-classic.glb",
+   "fighter": "pantera",
+   "attire": "classic",
+   "file": "pantera-classic.glb",
+   "bytes": 7625912
+  },
+  {
+   "path": "roster/pantera/attires/crimson-rage/pantera-attire5-crimson.glb",
+   "fighter": "pantera",
+   "attire": "crimson-rage",
+   "file": "pantera-attire5-crimson.glb",
+   "bytes": 14675572
+  },
+  {
+   "path": "roster/pantera/attires/leomon/model.glb",
+   "fighter": "pantera",
+   "attire": "leomon",
+   "file": "model.glb",
+   "bytes": 4414284
+  },
+  {
+   "path": "roster/pantera/attires/leomon/tail/pantera_tail.glb",
+   "fighter": "pantera",
+   "attire": "leomon",
+   "file": "pantera_tail.glb",
+   "bytes": 28360
+  },
+  {
+   "path": "roster/pantera/attires/leopard-king/model-rigged.glb",
+   "fighter": "pantera",
+   "attire": "leopard-king",
+   "file": "model-rigged.glb",
+   "bytes": 81628568
+  },
+  {
+   "path": "roster/pantera/attires/leopard-king/model.glb",
+   "fighter": "pantera",
+   "attire": "leopard-king",
+   "file": "model.glb",
+   "bytes": 23362216
+  },
+  {
+   "path": "roster/pantera/attires/p2-wired/pantera-attire4-p2.glb",
+   "fighter": "pantera",
+   "attire": "p2-wired",
+   "file": "pantera-attire4-p2.glb",
+   "bytes": 14548052
+  },
+  {
+   "path": "roster/pantera/attires/snow-leopard/pantera-snow-leopard.glb",
+   "fighter": "pantera",
+   "attire": "snow-leopard",
+   "file": "pantera-snow-leopard.glb",
+   "bytes": 7434348
+  },
+  {
+   "path": "roster/pantera/pantera_rigged.glb",
+   "fighter": null,
+   "attire": null,
+   "file": "pantera_rigged.glb",
+   "bytes": 709992
+  },
+  {
+   "path": "roster/pantera/tail-rig/pantera_body.glb",
+   "fighter": "pantera",
+   "attire": null,
+   "file": "pantera_body.glb",
+   "bytes": 7207428
+  },
+  {
+   "path": "roster/pantera/tail-rig/pantera_tail.glb",
+   "fighter": "pantera",
+   "attire": null,
+   "file": "pantera_tail.glb",
+   "bytes": 28360
+  },
+  {
+   "path": "roster/phantom/attires/attire1/model.glb",
+   "fighter": "phantom",
+   "attire": "attire1",
+   "file": "model.glb",
+   "bytes": 21957208
+  },
+  {
+   "path": "roster/purplerain/attires/attire1/model.glb",
+   "fighter": "purplerain",
+   "attire": "attire1",
+   "file": "model.glb",
+   "bytes": 18982308
+  },
+  {
+   "path": "roster/sakura/attires/attire1/model.glb",
+   "fighter": "sakura",
+   "attire": "attire1",
+   "file": "model.glb",
+   "bytes": 19347460
+  },
+  {
+   "path": "roster/sam-ur-a1/attires/attire1/model.glb",
+   "fighter": "sam-ur-a1",
+   "attire": "attire1",
+   "file": "model.glb",
+   "bytes": 22786736
+  },
+  {
+   "path": "roster/silvertongue/attires/attire1/model.glb",
+   "fighter": "silvertongue",
+   "attire": "attire1",
+   "file": "model.glb",
+   "bytes": 23872756
+  },
+  {
+   "path": "roster/silvertongue/attires/attire2/model-improved.glb",
+   "fighter": "silvertongue",
+   "attire": "attire2",
+   "file": "model-improved.glb",
+   "bytes": 36078536
+  },
+  {
+   "path": "roster/silvertongue/attires/attire2/model.glb",
+   "fighter": "silvertongue",
+   "attire": "attire2",
+   "file": "model.glb",
+   "bytes": 23430592
+  },
+  {
+   "path": "roster/silvertongue/attires/spy-debut/silvertongue-spy-debut.glb",
+   "fighter": "silvertongue",
+   "attire": "spy-debut",
+   "file": "silvertongue-spy-debut.glb",
+   "bytes": 14971672
+  },
+  {
+   "path": "roster/skull/attires/attire1/model.glb",
+   "fighter": "skull",
+   "attire": "attire1",
+   "file": "model.glb",
+   "bytes": 24678364
+  },
+  {
+   "path": "roster/slice/attires/attire1/model.glb",
+   "fighter": "slice",
+   "attire": "attire1",
+   "file": "model.glb",
+   "bytes": 52403356
+  },
+  {
+   "path": "roster/star/attires/attire1/model.glb",
+   "fighter": "star",
+   "attire": "attire1",
+   "file": "model.glb",
+   "bytes": 19717000
+  },
+  {
+   "path": "roster/star/attires/attire2/model.glb",
+   "fighter": "star",
+   "attire": "attire2",
+   "file": "model.glb",
+   "bytes": 18441084
+  },
+  {
+   "path": "roster/star/attires/attire3/model.glb",
+   "fighter": "star",
+   "attire": "attire3",
+   "file": "model.glb",
+   "bytes": 18649660
+  },
+  {
+   "path": "roster/star/attires/attire5/model-improved.glb",
+   "fighter": "star",
+   "attire": "attire5",
+   "file": "model-improved.glb",
+   "bytes": 34875032
+  },
+  {
+   "path": "roster/star/attires/attire5/model.glb",
+   "fighter": "star",
+   "attire": "attire5",
+   "file": "model.glb",
+   "bytes": 19077152
+  },
+  {
+   "path": "roster/thor/attires/attire1/model.glb",
+   "fighter": "thor",
+   "attire": "attire1",
+   "file": "model.glb",
+   "bytes": 21459020
+  },
+  {
+   "path": "roster/thor/attires/attire2/model.glb",
+   "fighter": "thor",
+   "attire": "attire2",
+   "file": "model.glb",
+   "bytes": 24147212
+  },
+  {
+   "path": "roster/vainabel/attires/attire2/model.glb",
+   "fighter": "vainabel",
+   "attire": "attire2",
+   "file": "model.glb",
+   "bytes": 19846172
+  },
+  {
+   "path": "roster/vainabel/attires/attire3/model.glb",
+   "fighter": "vainabel",
+   "attire": "attire3",
+   "file": "model.glb",
+   "bytes": 19614052
+  },
+  {
+   "path": "roster/vega/attires/attire1/model.glb",
+   "fighter": "vega",
+   "attire": "attire1",
+   "file": "model.glb",
+   "bytes": 1624744
+  },
+  {
+   "path": "roster/waterfall/attires/attire1/model.glb",
+   "fighter": "waterfall",
+   "attire": "attire1",
+   "file": "model.glb",
+   "bytes": 18028208
+  },
+  {
+   "path": "roster/zafina/attires/butterfly-default/mariposa-butterfly-default.glb",
+   "fighter": "zafina",
+   "attire": "butterfly-default",
+   "file": "mariposa-butterfly-default.glb",
+   "bytes": 5840076
+  },
+  {
+   "path": "roster/zafina/attires/golden-pharaoh/zafina-golden-pharaoh.glb",
+   "fighter": "zafina",
+   "attire": "golden-pharaoh",
+   "file": "zafina-golden-pharaoh.glb",
+   "bytes": 6271368
+  },
+  {
+   "path": "roster/zangief/attires/attire1/model.glb",
+   "fighter": "zangief",
+   "attire": "attire1",
+   "file": "model.glb",
+   "bytes": 20090176
+  },
+  {
+   "path": "roster/zui/attires/attire1/model-rigged.glb",
+   "fighter": "zui",
+   "attire": "attire1",
+   "file": "model-rigged.glb",
+   "bytes": 31930816
+  },
+  {
+   "path": "roster/zui/attires/attire1/model.glb",
+   "fighter": "zui",
+   "attire": "attire1",
+   "file": "model.glb",
+   "bytes": 20699580
+  },
+  {
+   "path": "roster/zui/attires/attire2/model.glb",
+   "fighter": "zui",
+   "attire": "attire2",
+   "file": "model.glb",
+   "bytes": 22441284
+  },
+  {
+   "path": "roster/zui/imports/base_v1.glb",
+   "fighter": "zui",
+   "attire": null,
+   "file": "base_v1.glb",
+   "bytes": 23311408
   }
  ]
 }
