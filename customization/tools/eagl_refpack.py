@@ -97,12 +97,22 @@ def find_refpack_offset(data: bytes) -> int:
 
     Most FFNY records start at 0; some `.o` variants (e.g. the `_C`
     files) carry an 8-byte prefix before the ``10 FB`` record.
+
+    Phase V amendment: a candidate is only accepted if it FULLY
+    decompresses to exactly its declared size. The wider part
+    population contains files in other containers whose bytes hold
+    coincidental ``10 FB`` pairs; header-shape matching alone picked
+    those and produced misleading downstream errors.
     """
     for off in range(0, min(len(data) - 5, 4096)):
         if data[off] & ~(128 | 64 | 1) == 0x10 and data[off + 1] == 0xFB:
             declared = int.from_bytes(data[off + 2:off + 5], "big")
             if 0 < declared <= 64 * 1024 * 1024:
-                return off
+                try:
+                    refpack_decompress(data[off:])
+                    return off
+                except Exception:
+                    continue
     return -1
 
 

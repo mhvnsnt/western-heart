@@ -2,12 +2,16 @@
 
 **Date:** 2026-10-20 (Phase R) · amended 2026-10-21 (Phase V)
 **Lane:** creation-suite gap-fill J4 (Def Jam converter)
-**Status:** Outer format **closed with evidence** (Phase R). Geometry
-vertex-stream layout **closed in Phase V** — see §7 (the §6 route was
-executed: Ghidra on `SLUS_210.04` + cross-part differentials + the
-compiled `_C` twin as ground truth). Two sub-layers are documented
-open in §7, with evidence, and are NOT guessed: the Normals stream's
-payload encoding, and UV/STQ data (absent from the A/B `.o` files).
+**Status:** Outer format **closed with evidence** (Phase R). The
+vertex-stream FRAMING was **closed in Phase V** — see §7 (the §6
+route was executed: Ghidra on `SLUS_210.04` + cross-part
+differentials + the compiled `_C` twin as ground truth). Three
+sub-layers are documented open in §7, with evidence, and are NOT
+guessed: the vertex draw order / position semantics (§7.9 — the
+one blocker; sample renders failed own-eyes validation as
+meshes, so the converter ships the proven pool as POINTS), the
+Normals stream's payload encoding (§7.5), and UV/STQ data
+(absent from the A/B `.o` files, §7.7).
 This spec supersedes the guesses in `EAGL-FORMAT-ANALYSIS.md` (kept
 for history); where the two disagree, this spec is right and says why.
 
@@ -238,18 +242,22 @@ Phase R notes are these block markers, and the Phase R "header
 counts" (0x1B / 312 / 52) are the stream header's strip count /
 count field / first block's vertex count.
 
-### 7.4 Coordinates semantics
+### 7.4 Coordinates semantics — values proven, geometry OPEN
 
-Records are smooth geometric positions (mean |Δ| ≈ 412 between
-neighbours; blocks include x-negated mirrored strips — left/right
-symmetry of the garment). Frame: x symmetric about 0 (110_0001_A:
-x ∈ [−1156, 1156]); z is the long axis (spans 4,069–5,089 across
-slots); y the smallest (669–969). No scale is stored in the file for
-positions (bone-transform floats in the same `.o`, by contrast, are
-~±10–21 units). Converter choices, documented in
-`convert_defjam_o.py`: `POS_SCALE = 1/1024`, axis map
-(x, y, z) → (x, z, −y) into glTF's right-handed Y-up frame, topology
-= triangle strips converted with standard alternating winding.
+The Coordinates stream provably contains 3×i16 records in the
+framing of §7.3, with part-shaped statistics (x symmetric about 0,
+110_0001_A: x ∈ [−1156, 1156]; z the long axis, spans 4,069–5,089
+across slots; y the smallest). **But the records are NOT final
+draw-order positions**: Phase V sample validation (own-eyes,
+2026-10-21) rendered a strip build of V2CP_110_0001_A as scrambled
+spikes, and the raw pool renders as a loose scatter, not a surface
+shell. The geometric interpretation of the pool — draw order and
+any per-block transform — is OPEN; see §7.9 for the evidence, the
+falsified readings, and the live leads. Converter choices,
+documented in `convert_defjam_o.py`: `POS_SCALE = 1/1024`, axis map
+(x, y, z) → (x, z, −y) into glTF's right-handed Y-up frame. The
+converter emits the pool as a glTF POINTS primitive — exactly the
+data the file proves, nothing invented.
 
 ### 7.5 Normals payload — framed, encoding OPEN (not guessed)
 
@@ -259,10 +267,9 @@ payload is NOT plain vectors: byte entropy 7.29 bits/byte (vs 5.70
 for Coordinates), zero correlation with the Coordinates data
 (r ≈ −0.0004), and i16, byte-swapped i16, f32 LE/BE, half-swapped
 f32 and nibble-swapped readings all fail smoothness tests. It is a
-VU1-consumed packed encoding. The converter therefore computes
-smooth normals from the proven strip geometry
-(`normals_source=computed_from_geometry` in the catalog) and does
-not emit the payload as normals.
+VU1-consumed packed encoding. The converter does not emit the
+payload as normals and computes none (the POINTS output carries no
+normals); the catalog records the stream as undecoded.
 
 ### 7.6 Textures — SHPS layout CLOSED
 
@@ -292,13 +299,100 @@ STQ data exists only in the compiled `_C` GeoPrim form
 converter therefore emits the decoded texture PNG next to the GLB
 and records `uv_status=absent_in_o_file` in the catalog; it does NOT
 bind a texture into the GLB — a bind without UVs would fabricate
-data. Sample renders are untextured clay by necessity, and the
-verdict in the PR's SAMPLES.md says so plainly.
+data.
 
 ### 7.8 `_C` variant handling
 
-`_C` files (8-byte prefix before the RefPack record, ~112 symbols,
-no Morph stream objects — GeoPrimState/PT_* symbols instead) are
-detected by the converter and reported `status=compiled_variant`;
-they are never fed to the Morph parser. How many of the 22,360
-indexed parts are `_C` vs Morph-form is a Phase B census item.
+`_C` files (some carry an 8-byte prefix before the RefPack record,
+~112 symbols, no Morph stream objects — GeoPrimState/PT_* symbols
+instead) are detected by the converter and reported
+`status=compiled_variant`; they are never fed to the Morph parser.
+The compiled family in the extracted set includes letters C, C1, C2,
+C3 and some A/F-letter files — the symbol check, not the letter,
+decides. Two `_C_F` files (code 532) carry only a PosePaletteBank
+symbol and classify as `pose_palette_only`.
+
+### 7.9 Topology & position semantics — OPEN (the one blocker)
+
+**Status: the vertex draw order / geometric interpretation is not
+closed. Everything else in §7 is proven.** Evidence gathered in
+Phase V sample validation (2026-10-21):
+
+- A triangle-strip build of V2CP_110_0001_A rendered in Blender
+  (EEVEE, own-eyes) as scrambled spikes — not a head part.
+  (`teardown/def-jam-fight-for-ny/sample-renders/
+  V2CP_110_0001_A_STRIP_FAILED.png`.)
+- The raw Coordinates pool rendered as POINTS forms a loose
+  scatter with a denser core, not a surface shell
+  (`V2CP_110_0001_A_points.png`, `V2CP_111_0001_A_points.png`).
+- Stored-order consecutive-vertex distance across files: mean
+  ≈ 620–690 units vs a greedy nearest-neighbour path of ≈ 230 —
+  the stored order is not the surface order under any reading
+  tried.
+
+Falsified readings (do not re-try): triangle strips in stored
+order; independent triangle lists; component planes ([x…][y…][z…]);
+even/odd, mod-4 and mod-8 deinterleaves; split-half rails;
+two-sub-strips; Morton/Z-order storage; delta (cumulative-sum)
+encoding; parametric ring/grid structure (z-histograms show no
+rings); cross-letter permutation (A/B/D/E/F pools are distinct
+point sets, not permutations of one another).
+
+Live leads for the follow-up lane:
+1. **Bone-local assembly.** `.data` 0x0000–0x05E0 holds 94 bone
+   index records (sequential ids) mapped by `__Bone` symbols; a
+   skeleton header at 0x5E0 (count 94) is followed at 0x5F0 by a
+   per-bone float region (94 × ~112 bytes to the Morph strings at
+   0x2F10) containing matrix-like data (rotations, translations
+   ~±10–21). Block index fields (with gaps, e.g. 0..26,28) may key
+   into per-part bone groups; the exact matrix packing and the
+   block→bone map are undecoded. Naive single-matrix transforms of
+   block 0 did not produce a clean shell under a scale-sensitive
+   metric — retest with a scale-invariant one.
+2. **The VU-packed companion stream** (§7.5): the 6×i16 records
+   aligned 1:1 with Coordinates blocks may carry the ordering /
+   weighting data the VU1 uses; decoding it likely requires the
+   EAGL VU1 microcode or the loader's unpack path in SLUS_210.04
+   (CMorph load 0x1149B4, helpers 0x114BC0/0x114C38).
+3. **The `_C` compiled twin** contains the same part in draw-ready
+   GeoPrim form; its packed vertex encoding (not plain i16/f32
+   triples — searched) is a third route to the draw order.
+
+Converter behaviour while this is open: GLB output is the
+Coordinates pool as a POINTS primitive with
+`topology_status=unproven_vertex_order` in the catalog. Textures
+(§7.6) are fully decoded and unaffected. A strip-triangulation
+research mode remains in the converter behind
+`topology="strip"`, clearly marked unvalidated.
+
+### 7.10 Phase B census — the extracted set (2026-10-21)
+
+The wrestling-game teardown tree holds **2,624 `.o` + 5,319 `.ssh`**
+extracted from the disc. The PARTS-INDEX's 22,360 entries cover
+only codes 110/111/112/113 (the four CAW slots); the extracted set
+spans the game's wider part taxonomy (codes 110–532). The
+remaining **19,736 indexed parts were never extracted** — their
+bytes are still inside the disc image; extracting them is a
+separate teardown job (ISO-scale), not part of this converter's
+scope. Converter census over the 2,624 extracted `.o`:
+
+- converted (Morph pool + textures extracted): **1,201**
+  (777 with ≥1 decoded texture PNG; 2,178 PNGs total — parts carry
+  multiple `_A01_0N.ssh` variants, all decoded)
+- compiled_variant (`_C` family): **654**
+- no_valid_refpack_record: **767** — a family concentrated in
+  codes 311/312 whose files carry no RefPack record at all (heads
+  like `07 01…`, `90 11…`); root cause unresolved (other container
+  or corrupt teardown extractions) — a teardown-QA question, not
+  guessed here. Converter validation accepts only RefPack records
+  that decompress byte-exactly to their declared size.
+- pose_palette_only: **2**
+- errors: **0**
+
+Phase B format findings folded into the converter: strip-index
+fields are source ids, not positions (gaps allowed; walk requires
+strictly increasing ids); SHPS palettes vary (u24 palette-block
+size — 152-entry palettes exist, V2CP_142_0003); partial-page
+textures (height not a multiple of 16, e.g. 64×62 V2CP_361_0013)
+store the padded-page swizzle sequence with padded rows' bytes
+removed (proven by eye).

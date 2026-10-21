@@ -26,9 +26,12 @@ Paletted 8bpp layout (proven on FFNY samples, byte-exact accounting:
 
   +16                       pixel indices, PS2 GS-swizzled
   at header+nextHdrOffset:  palette header (16 bytes, first byte 0x21,
-                            u32 at +4 = 0x0410 = 16 + 1024 in samples),
-                            then 256 x RGBA palette entries (stored
-                            linear, NOT palette-swizzled in FFNY files)
+                            u24 at +1 = total palette block size
+                            including this header: 1040 = 256 entries
+                            on most parts, 624 = 152 entries on e.g.
+                            V2CP_142_0003), then the RGBA palette
+                            entries (stored linear, NOT palette-
+                            swizzled in FFNY files)
   after palette:            trailer containing the string
                             "EAGL240 metal bin attachment for runtime
                             texture management"
@@ -50,19 +53,41 @@ class ShpsError(ValueError):
     pass
 
 
+def _swizzle_index(x: int, y: int, width: int) -> int:
+    block_location = (y & ~0xF) * width + (x & ~0xF) * 2
+    swap_selector = (((y + 2) >> 2) & 0x1) * 4
+    pos_y = (((y & ~3) >> 1) + (y & 1)) & 0x7
+    column_location = pos_y * width * 2 + ((x + swap_selector) & 0x7) * 4
+    byte_num = ((y >> 1) & 1) + ((x >> 2) & 2)
+    return block_location + column_location + byte_num
+
+
 def unswizzle_ps2_8bit(data: bytes, width: int, height: int) -> bytes:
-    """Undo the PS2 GS 8bpp texture swizzle (standard published layout)."""
+    """Undo the PS2 GS 8bpp texture swizzle (standard published layout).
+
+    Partial-page rule (proven on V2CP_361_0013_A01_01.ssh, 64x62):
+    when the height is not a multiple of 16, the stored stream is
+    the padded-page swizzled sequence with the padded rows' bytes
+    removed — reconstruct by generating the padded sequence and
+    dropping positions that belong to padded rows."""
     if len(data) < width * height:
         raise ShpsError("pixel data shorter than width*height")
     out = bytearray(width * height)
-    for y in range(height):
-        for x in range(width):
-            block_location = (y & ~0xF) * width + (x & ~0xF) * 2
-            swap_selector = (((y + 2) >> 2) & 0x1) * 4
-            pos_y = (((y & ~3) >> 1) + (y & 1)) & 0x7
-            column_location = pos_y * width * 2 + ((x + swap_selector) & 0x7) * 4
-            byte_num = ((y >> 1) & 1) + ((x >> 2) & 2)
-            out[y * width + x] = data[block_location + column_location + byte_num]
+    if height % 16 == 0:
+        for y in range(height):
+            for x in range(width):
+                out[y * width + x] = data[_swizzle_index(x, y, width)]
+        return bytes(out)
+    padded = (height + 15) & ~0xF
+    seq = sorted((_swizzle_index(x, y, width), x, y)
+                 for y in range(padded) for x in range(width))
+    src = 0
+    for _idx, x, y in seq:
+        if y < height:
+            if src >= len(data):
+                raise ShpsError("partial-page pixel data exhausted")
+            out[y * width + x] = data[src]
+            src += 1
     return bytes(out)
 
 
@@ -96,12 +121,27 @@ def parse_shps(data: bytes) -> dict:
         raise ShpsError("pixel data overruns file")
     indices = unswizzle_ps2_8bit(data[pix_off:pix_off + npix], width, height)
     pal_hdr_off = img_off + next_hdr_off
-    if pal_hdr_off + 16 + 1024 > len(data):
+    if pal_hdr_off + 16 > len(data):
         raise ShpsError("palette header offset out of range")
     if data[pal_hdr_off] != 0x21:
         raise ShpsError(
             f"palette header marker is {data[pal_hdr_off]:#x}, expected 0x21")
-    pal = data[pal_hdr_off + 16:pal_hdr_off + 16 + 1024]
+    # Palette size is declared in the header (u24 at +1, including the
+    # 16-byte palette header): 1040 = 256 entries on most parts, but
+    # smaller palettes exist (624 = 152 entries on V2CP_142_0003,
+    # whose accounting then closes byte-exactly).
+    pal_total = int.from_bytes(data[pal_hdr_off + 1:pal_hdr_off + 4],
+                               "little")
+    pal_bytes = pal_total - 16
+    if pal_bytes <= 0 or pal_bytes % 4 or pal_bytes > 1024:
+        raise ShpsError(f"implausible palette size {pal_total}")
+    if pal_hdr_off + 16 + pal_bytes > len(data):
+        raise ShpsError("palette data overruns file")
+    n_entries = pal_bytes // 4
+    pal = data[pal_hdr_off + 16:pal_hdr_off + 16 + pal_bytes]
+    if indices and max(indices) >= n_entries:
+        raise ShpsError(
+            f"pixel index {max(indices)} >= palette entries {n_entries}")
     rgba = bytearray(npix * 4)
     for i, idx in enumerate(indices):
         r, g, b, a = pal[idx * 4:idx * 4 + 4]

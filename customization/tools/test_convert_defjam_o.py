@@ -70,7 +70,8 @@ def build_synthetic_o() -> bytes:
     struct.pack_into("<I", ddata, morph + 0x10, morph + 8)
     struct.pack_into("<I", ddata, morph + 0x18, 2)
 
-    def stream_obj(off, name_off, strips, marker, rec_i16, first_count):
+    def stream_obj(off, name_off, strips, marker, rec_i16, first_count,
+                   indices=None):
         struct.pack_into("<I", ddata, off + 0x00, name_off)
         struct.pack_into("<II", ddata, off + 0x04, 1, 0)
         struct.pack_into("<I", ddata, off + 0x0C, len(strips))
@@ -78,7 +79,8 @@ def build_synthetic_o() -> bytes:
         pos = off + 0x14
         for k, records in enumerate(strips):
             flat = [v for rec in records for v in rec]
-            struct.pack_into("<6h", ddata, pos, len(records), 0, 0, 0, k, 0)
+            idx = indices[k] if indices else k
+            struct.pack_into("<6h", ddata, pos, len(records), 0, 0, 0, idx, 0)
             struct.pack_into(f"<{len(flat)}h", ddata, pos + 12, *flat)
             data_i16 = len(flat) + (len(flat) & 1)  # format pad (odd counts)
             if k < len(strips) - 1:  # final block: no trailer/marker
@@ -94,7 +96,9 @@ def build_synthetic_o() -> bytes:
          (-1000, 1100, -1200)],
         [(10, 20, 30), (40, 50, 60), (70, 80, 90)],
     ]
-    end = stream_obj(coords_obj, s_coord, coord_strips, -8192, 3, 7)
+    # strip ids carry a gap (0, 2) like real part V2CP_111_0015
+    end = stream_obj(coords_obj, s_coord, coord_strips, -8192, 3, 7,
+                     indices=[0, 2])
     norm_obj = end
     norm_strips = [
         [(1, 2, 3, 4, 5, 6)] * 4,
@@ -166,7 +170,14 @@ def test_synthetic_o():
     jlen, jtype = struct.unpack("<II", glb[12:20])
     gltf = _json.loads(glb[20:20 + jlen])
     check("glb vertex count 7", gltf["accessors"][0]["count"] == 7)
-    check("glb index count 9", gltf["accessors"][2]["count"] == 9)
+    check("glb default primitive is POINTS",
+          gltf["meshes"][0]["primitives"][0].get("mode") == 0
+          and "indices" not in gltf["meshes"][0]["primitives"][0])
+    glb_strip = C.build_glb(part, "synthetic", topology="strip")
+    jlen2 = struct.unpack("<I", glb_strip[12:16])[0]
+    gltf2 = _json.loads(glb_strip[20:20 + jlen2])
+    check("strip mode index count 9",
+          gltf2["accessors"][2]["count"] == 9)
     # position of vertex 0 = (x, z, -y) * scale
     bin_off = 20 + jlen + 8
     pos = struct.unpack("<3f", glb[bin_off:bin_off + 12])
@@ -211,7 +222,7 @@ def build_synthetic_shps() -> bytes:
     struct.pack_into("<HH", out, 0x74, w, h)
     out[pix_off:pix_off + w * h] = swizzle8(indices, w, h)
     out[pal_hdr_off] = 0x21
-    struct.pack_into("<I", out, pal_hdr_off + 4, 0x410)
+    out[pal_hdr_off + 1:pal_hdr_off + 4] = (16 + 1024).to_bytes(3, "little")
     out[pal_hdr_off + 16:pal_hdr_off + 16 + 1024] = pal
     return bytes(out)
 

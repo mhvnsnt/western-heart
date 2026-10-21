@@ -85,6 +85,12 @@ class DefJamError(ValueError):
     pass
 
 
+class NonRefPackError(DefJamError):
+    """The file carries no valid RefPack record (other container or
+    corrupt extraction — a population found in the 311/312 families
+    during the Phase B batch; classified, never guessed at)."""
+
+
 # ---------------------------------------------------------------- ELF
 
 def parse_elf(data: bytes) -> dict:
@@ -181,14 +187,21 @@ def parse_stream(elf: dict, obj_off: int, stream_name: str) -> dict:
     pos = obj_off + 0x14
     strips = []
     trailers = []
+    last_idx = -1
     for k in range(strips_count):
         if pos + 12 > len(ddata):
             raise DefJamError(f"{stream_name}: strip {k} header overruns .data")
         hdr = struct.unpack("<6h", ddata[pos:pos + 12])
         count, z1, z2, z3, idx, z5 = hdr
-        if count <= 0 or z1 or z2 or z3 or z5 or idx != k:
+        # The header index is the SOURCE strip id: it normally equals
+        # the block position, but parts exist (e.g. V2CP_111_0015)
+        # whose ids have gaps (0..26, 28 — 28 blocks, ids spanning a
+        # dropped strip). Require strictly increasing ids, not
+        # positional equality.
+        if count <= 0 or z1 or z2 or z3 or z5 or idx <= last_idx:
             raise DefJamError(
                 f"{stream_name}: strip {k} header {hdr} malformed")
+        last_idx = idx
         n_i16 = count * rec_i16
         # Coordinates records are 3 x i16; an odd vertex count leaves
         # the data area odd-length, and the format pads it with one
@@ -237,7 +250,7 @@ def parse_part(raw: bytes) -> dict:
     """Full parse of one .o file's bytes (still RefPack-wrapped)."""
     off = find_refpack_offset(raw)
     if off < 0:
-        raise DefJamError("no RefPack record found")
+        raise NonRefPackError("no valid RefPack record found")
     dec = refpack_decompress(raw[off:])
     elf = parse_elf(dec)
     if "data" not in elf:
@@ -247,6 +260,9 @@ def parse_part(raw: bytes) -> dict:
         symnames = [s["name"] for s in elf.get("symbols", [])]
         if any("GeoPrimState" in n for n in symnames):
             return {"kind": "compiled_variant", "elf": elf}
+        if any("PosePaletteBank" in n for n in symnames):
+            # e.g. V2CP_532_*_C_F.o: a pose-palette object, no mesh.
+            return {"kind": "pose_palette_only", "elf": elf}
         raise DefJamError("no Coordinates stream object found")
     coords = parse_stream(elf, streams["Coordinates"], "Coordinates")
     result = {"kind": "morph", "elf": elf, "coords": coords,
@@ -362,14 +378,32 @@ def build_glb(part: dict, mesh_name: str) -> bytes:
 def convert_one(o_path: str, glb_path: str, ssh_path: str = None,
                 texture_out: str = None) -> dict:
     raw = open(o_path, "rb").read()
-    part = parse_part(raw)
+    try:
+        part = parse_part(raw)
+    except NonRefPackError:
+        return {"file": os.path.basename(o_path),
+                "status": "no_valid_refpack_record"}
     stem = os.path.splitext(os.path.basename(o_path))[0]
-    if part["kind"] == "compiled_variant":
-        return {"file": os.path.basename(o_path), "status": "compiled_variant"}
+    if part["kind"] in ("compiled_variant", "pose_palette_only"):
+        return {"file": os.path.basename(o_path), "status": part["kind"]}
     glb = build_glb(part, stem)
     os.makedirs(os.path.dirname(os.path.abspath(glb_path)), exist_ok=True)
-    with open(glb_path, "wb") as f:
-        f.write(glb)
+    # Verified write (VM write-flush flakiness: write -> read back ->
+    # size + magic check -> one retry).
+    for _attempt in range(2):
+        with open(glb_path, "wb") as f:
+            f.write(glb)
+            f.flush()
+            os.fsync(f.fileno())
+        try:
+            with open(glb_path, "rb") as f:
+                head = f.read(4)
+            if os.path.getsize(glb_path) == len(glb) and head == b"glTF":
+                break
+        except OSError:
+            pass
+    else:
+        raise DefJamError(f"verified write failed for {glb_path}")
     nverts = sum(len(s) for s in part["coords"]["strips"])
     info = {"file": os.path.basename(o_path), "status": "converted",
             "glb": glb_path, "vertices": nverts,
@@ -378,12 +412,21 @@ def convert_one(o_path: str, glb_path: str, ssh_path: str = None,
             "normals_source": "computed_from_geometry",
             "uv_status": "absent_in_o_file"}
     if ssh_path and texture_out:
-        sraw = open(ssh_path, "rb").read()
-        soff = find_refpack_offset(sraw)
-        img = parse_shps(refpack_decompress(sraw[soff:]))
-        write_png(texture_out, img["width"], img["height"], img["rgba"])
-        info["texture"] = texture_out
-        info["texture_size"] = [img["width"], img["height"]]
+        # Texture failure must not fail a good geometry conversion
+        # (the 361 family: geometry converted, texture needed the
+        # partial-page rule). Record it in the info instead.
+        try:
+            sraw = open(ssh_path, "rb").read()
+            soff = find_refpack_offset(sraw)
+            if soff < 0:
+                raise DefJamError("texture has no valid RefPack record")
+            img = parse_shps(refpack_decompress(sraw[soff:]))
+            write_png(texture_out, img["width"], img["height"],
+                      img["rgba"])
+            info["texture"] = texture_out
+            info["texture_size"] = [img["width"], img["height"]]
+        except Exception as e:
+            info["texture_error"] = f"{type(e).__name__}: {e}"
     return info
 
 
@@ -410,41 +453,73 @@ def main(argv):
         limit = int(args.get("limit", 0)) or None
         force = "force" in args
         os.makedirs(out_dir, exist_ok=True)
+        slot_by_file = {}
+        idx_path = args.get("index")
+        if idx_path and isinstance(idx_path, str) and os.path.exists(idx_path):
+            with open(idx_path) as f:
+                idx = json.load(f)
+            for p in idx.get("parts", []):
+                slot_by_file[os.path.basename(p["file_path"])] = p["slot"]
         o_files = []
         for root, _dirs, files in os.walk(src_root):
             for fn in sorted(files):
                 if fn.endswith(".o"):
                     o_files.append(os.path.join(root, fn))
         o_files.sort()
+        start = int(args.get("start", 0)) or 0
+        if start:
+            o_files = o_files[start:]
         if limit:
             o_files = o_files[:limit]
+        # Merge with any existing catalog so windowed runs compose.
+        parts_by_id = {}
+        cat_path = os.path.join(out_dir, "CATALOG.json")
+        if os.path.exists(cat_path):
+            try:
+                with open(cat_path) as f:
+                    for p in json.load(f).get("parts", []):
+                        parts_by_id[p["id"]] = p
+            except (OSError, ValueError):
+                parts_by_id = {}
         parts = []
         counts = {"converted": 0, "compiled_variant": 0, "error": 0,
                   "skipped_existing": 0}
         for o_path in o_files:
             stem = os.path.splitext(os.path.basename(o_path))[0]
-            slot = "unknown"
-            for code, sname in (("_110_", "head"), ("_111_", "upper_body"),
-                                ("_112_", "lower_body"),
-                                ("_113_", "accessories")):
-                if code in stem:
-                    slot = sname
+            slot = slot_by_file.get(os.path.basename(o_path))
+            if slot is None:
+                slot = "unknown"
+                for code, sname in (("_110_", "head"), ("_111_", "upper_body"),
+                                    ("_112_", "lower_body"),
+                                    ("_113_", "accessories")):
+                    if code in stem:
+                        slot = sname
             glb_path = os.path.join(out_dir, slot, stem + ".glb")
             if os.path.exists(glb_path) and not force:
                 counts["skipped_existing"] += 1
-                status = "skipped_existing"
-                parts.append({"id": f"defjam:{stem}.o", "name": stem,
-                              "source_game": "defjam", "slot": slot,
-                              "file": f"{slot}/{stem}.glb", "glb": glb_path,
-                              "status": "converted"})
+                entry = {"id": f"defjam:{stem}.o", "name": stem,
+                         "source_game": "defjam", "slot": slot,
+                         "file": f"{slot}/{stem}.glb", "glb": glb_path,
+                         "status": "converted",
+                         "normals_source": "computed_from_geometry",
+                         "uv_status": "absent_in_o_file"}
+                tex_png = os.path.join(out_dir, slot, stem + ".png")
+                if os.path.exists(tex_png):
+                    entry["texture"] = tex_png
+                parts.append(entry)
                 continue
-            ssh = None
-            tex_out = None
+            # Textures: a part may carry several sibling .ssh
+            # variants (<base>_A01_01.ssh, _A01_02.ssh, ...). Decode
+            # them all; convert_one binds the first for its return
+            # info, the rest are decoded here as sibling PNGs.
             base = o_path.rsplit("_", 1)[0]
-            cand = base + "_A01_01.ssh"
-            if os.path.exists(cand):
-                ssh = cand
-                tex_out = os.path.join(out_dir, slot, stem + ".png")
+            import glob as _glob
+            siblings = sorted(_glob.glob(base + "_*.ssh"))
+            ssh = siblings[0] if siblings else None
+            tex_out = None
+            if ssh:
+                ssh_stem = os.path.splitext(os.path.basename(ssh))[0]
+                tex_out = os.path.join(out_dir, slot, ssh_stem + ".png")
             try:
                 info = convert_one(o_path, glb_path, ssh, tex_out)
                 counts[info["status"]] = counts.get(info["status"], 0) + 1
@@ -456,8 +531,32 @@ def main(argv):
                              "vertices": info["vertices"],
                              "normals_source": info["normals_source"],
                              "uv_status": info["uv_status"]}
+                    textures = []
                     if "texture" in info:
-                        entry["texture"] = info["texture"]
+                        textures.append(info["texture"])
+                    for extra in siblings[1:]:
+                        try:
+                            eraw = open(extra, "rb").read()
+                            eoff = find_refpack_offset(eraw)
+                            if eoff < 0:
+                                continue
+                            eimg = parse_shps(refpack_decompress(eraw[eoff:]))
+                            estem = os.path.splitext(
+                                os.path.basename(extra))[0]
+                            eout = os.path.join(out_dir, slot,
+                                                estem + ".png")
+                            write_png(eout, eimg["width"],
+                                      eimg["height"], eimg["rgba"])
+                            textures.append(eout)
+                        except Exception:
+                            counts["texture_error"] = \
+                                counts.get("texture_error", 0) + 1
+                    if textures:
+                        entry["texture"] = textures[0]
+                        if len(textures) > 1:
+                            entry["textures"] = textures
+                    if info.get("texture_error"):
+                        entry["texture_error"] = info["texture_error"]
                     parts.append(entry)
                 else:
                     parts.append({"id": f"defjam:{stem}.o", "name": stem,
@@ -468,9 +567,20 @@ def main(argv):
                 parts.append({"id": f"defjam:{stem}.o", "name": stem,
                               "source_game": "defjam", "slot": slot,
                               "file": None, "status": f"error: {e}"})
-        with open(os.path.join(out_dir, "CATALOG.json"), "w") as f:
-            json.dump({"parts": parts}, f, indent=1)
-        print(json.dumps({"counts": counts, "total": len(o_files)}))
+        for p in parts:
+            parts_by_id[p["id"]] = p
+        merged = [parts_by_id[k] for k in sorted(parts_by_id)]
+        # Verified write: dump to temp, read back, then rename.
+        tmp_cat = cat_path + ".tmp"
+        with open(tmp_cat, "w") as f:
+            json.dump({"parts": merged}, f, indent=1)
+            f.flush()
+            os.fsync(f.fileno())
+        with open(tmp_cat) as f:
+            json.load(f)
+        os.replace(tmp_cat, cat_path)
+        print(json.dumps({"counts": counts, "total": len(o_files),
+                          "catalog_total": len(merged)}))
         return 0
     print(__doc__)
     return 2
