@@ -10,7 +10,7 @@ import { assets } from './assets.js';
 import { ROSTER, getCharacter } from './characters.js';
 import { loadRealMovesets, bankIdFor } from './fighter.js';
 import { loadFighterMovesets } from './movesets.js';
-import { getFighterMoveset } from './movesets.js';
+import { getFighterMoveset, ensureMovesets, resolveMoveKey } from './movesets.js';
 import { loadT3Clips } from './t3anims.js';
 import * as THREE from 'three';
 import { whUiEnabled, mountWhUi } from './ui-wh-bridge.js';
@@ -510,14 +510,20 @@ function renderMovelist() {
   const groups = document.getElementById('movelist-groups');
   document.getElementById('movelist-title').textContent =
     'MOVE LIST — ' + (ms ? (ms.display || fid.toUpperCase()) : '???');
+  const inputs = ms ? Object.keys(ms.slots || ms.moves) : [];
   document.getElementById('movelist-sub').textContent =
-    ms ? `${Object.keys(ms.moves).length} moves · ${ms.tekken_base || ''}` : 'no data';
+    ms ? `${inputs.length} inputs · ${Object.keys(ms.moves).length} moves · ${ms.tekken_base || ''}` : 'no data';
   groups.innerHTML = '';
   if (!ms || !ms.moves) return;
+  // One row per INPUT: the move that input fires for this fighter (moveset editor
+  // loadout > default slots). Alternates stay in the file for the editor.
   const byClass = {};
-  for (const [key, m] of Object.entries(ms.moves)) {
+  for (const notation of inputs) {
+    const key = resolveMoveKey(fid, notation);
+    const m = key && ms.moves[key];
+    if (!m) continue;
     const cls = m.move_class || (m.throw ? 'throw' : 'strike');
-    (byClass[cls] = byClass[cls] || []).push([key, m]);
+    (byClass[cls] = byClass[cls] || []).push([notation, m]);
   }
   const shown = new Set();
   for (const [cls, label] of MOVESET_GROUPS) {
@@ -615,6 +621,17 @@ async function startFight(playerId, enemyId, opts = {}) {
     // Fighters whose source has no decoded bank are skipped here and
     // fall back to embedded locomotion + procedural combat. (Heihachi
     // source fighters have their own real bank since 2026-10-20.)
+    // Full movesets for this fight (lazy since 2026-10-21; boot loads only the index).
+    // Transform forms may switch moveset mid-fight, so theirs load too.
+    if (hint) hint.textContent = 'Loading move lists…';
+    const msIds = [player.id, enemy.id];
+    for (const c of [player, enemy]) {
+      if (c.forms) for (const fk of Object.keys(c.forms)) {
+        const fe = c.forms[fk];
+        for (const t of (fe.target ? [fe] : [fe.up, fe.down].filter(Boolean))) if (t.moveset) msIds.push(t.moveset);
+      }
+    }
+    await ensureMovesets(msIds);
     if (hint) hint.textContent = 'Loading real fight motion…';
     try {
       const banks = [...new Set([bankIdFor(player.id), bankIdFor(enemy.id)].filter(Boolean))];

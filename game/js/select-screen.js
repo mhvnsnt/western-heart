@@ -33,6 +33,7 @@ import { assets } from './assets.js';
 import { attiresFor, selectedAttireModel, setAttire, attireLabel } from './attires.js';
 import { loadT3Clips, createT3Actions, retargetT3Clips } from './t3anims.js';
 import { bankIdFor } from './fighter.js';
+import { getMovesetInfo } from './movesets.js';
 
 const DEFAULT_STATS = { speed: 2.8, jump: 7.2, power: 1.1, defense: 1.05 };
 const clamp01 = (v) => Math.max(0, Math.min(1, v));
@@ -170,7 +171,8 @@ class PreviewPane {
         };
       }
       try {
-        const bank = bankIdFor(c.id, c.moveset || c.id);
+        // The fighter's OWN moveset file decides its bank (its base's motion), same as in the fight.
+        const bank = bankIdFor(c.id, getMovesetInfo(c.id) ? c.id : (c.moveset || c.id));
         const clips = bank ? await loadT3Clips(THREE, bank) : null;
         if (token !== this._token) return true; // superseded while loading
         if (clips && clips.stance && inst.bones && inst.bones.Hips && inst.bones.RightArm && inst.bones.Head) {

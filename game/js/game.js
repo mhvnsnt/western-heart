@@ -209,12 +209,15 @@ export class Game {
         const inp = this.input;
         const ms = this.matchStats; // story reincarnation profiling
         const rec = (k) => { if (ms && ms.attacks[k] !== undefined) ms.attacks[k]++; };
+        const stick = this._tekkenDir(inp, this.p1.facing);
+        this.p1.setStick(stick); // guard + posture (decoded T3 rules, fighter.js _guardBits)
         this.p1.tryMove(inp.axisX);
         if (inp.up) this.p1.tryJump();
         this.p1.tryBlock(inp.held.block);
+        this.p1.tryCrouch(inp.down && !inp.up); // hold down = crouch; release = WS. window
         // Feed facing-relative direction into the Tekken input buffer
         // (drives motion specials qcf/f,F and directional attacks f+1)
-        this.p1.tekken.noteDirection(this._tekkenDir(inp, this.p1.facing));
+        this.p1.tekken.noteDirection(stick);
         if (ms && this.p1.isBlocking()) ms.blockTime += dt;
         if (ms) ms.time += dt;
         // Stream 6: while caught in a throw, limb inputs are break attempts.
@@ -317,12 +320,14 @@ export class Game {
   _tekkenDir(inp, facing) {
     const fwd = (inp.axisX || 0) * facing; // forward-positive
     const f = fwd > 0.25, b = fwd < -0.25;
-    if (inp.up && f) return 'u/f';
-    if (inp.up && b) return 'u/b';
-    if (inp.up) return 'u';
-    if (inp.down && f) return 'd/f';
-    if (inp.down && b) return 'd/b';
-    if (inp.down) return 'd';
+    const v = inp.vertNow ? inp.vertNow() : (inp.up ? 'up' : inp.down ? 'down' : null);
+    const up = v === 'up', down = v === 'down';
+    if (up && f) return 'u/f';
+    if (up && b) return 'u/b';
+    if (up) return 'u';
+    if (down && f) return 'd/f';
+    if (down && b) return 'd/b';
+    if (down) return 'd';
     if (f) return 'f';
     if (b) return 'b';
     return 'n';
@@ -337,6 +342,9 @@ export class Game {
       const dx = hb.x - hu.x, dy = hb.y - hu.y, dz = hb.z - hu.z;
       const rr = (hb.r + hu.r);
       if (dx * dx + dy * dy + dz * dz <= rr * rr) {
+        // Decoded T3 posture rule: highs pass over crouchers, lows under jumpers,
+        // standing throws whiff crouching fighters (fighter.js canBeHitBy).
+        if (!defender.canBeHitBy(hb.move)) return;
         attacker.registerHit();
         // Stream 6: throws enter the breakable throw-lock instead of
         // landing instantly. Throws whiff against airborne opponents.

@@ -561,6 +561,122 @@ def merge_one(fid, cur, B, all_files):
     return out, before, lost, excused, added
 
 
+# ---------------------------------------------------------------- engine annotations (top level only)
+# Decoded T3 attack words (Tekken3Remake docs/research/code/combat.md "Attack levels, postures and
+# guards"; HitClassify 0x80044D24): low 3 bits = postures the attack can hit (1 crouching, 2 standing,
+# 4 down), bits 3-4 = guards that block it (0x08 crouching, 0x10 standing).
+HIGH, MID, LOW, SMID, UNBL, THROW = 0x412, 0x217, 0x10F, 0x31F, 0x607, 0x800
+_bank_rows = {}
+
+
+def bank_attack_word(bank, row):
+    if bank not in T3_BANKS:
+        return None
+    if bank not in _bank_rows:
+        d = json.loads((REPO / f"teardown/tekken3/movesets/moveset_{bank}.json").read_text())
+        _bank_rows[bank] = {m["row"]: int(m["attack_word"], 16) for m in d["moves"]}
+    w = _bank_rows[bank].get(row)
+    return w if w else None
+
+
+def word_from_label(label):
+    """T8 wavu target ('m', ',h', 'th(h)', 'm!', 'sm') or T7 hit_level ('high, mid', 's. mid',
+    'high throw') -> T3 attack word of the LAST hit."""
+    if not label:
+        return None
+    toks = [t.strip().lower() for t in re.split(r",", str(label)) if t.strip() and t.strip() != "-"]
+    if not toks:
+        return None
+    t = toks[-1]
+    if "throw" in t or t.startswith("t"):
+        return THROW
+    if "!" in t or "unblock" in t:
+        return UNBL
+    if t.startswith(("s.", "sm", "sp")) or t == "s":
+        return SMID
+    if t.startswith(("sl", "l")) or "low" in t:
+        return LOW
+    if t.startswith("m") or "mid" in t:
+        return MID
+    if t.startswith("h") or "high" in t:
+        return HIGH
+    return None
+
+
+STANCE_RE = re.compile(r"(?:Transition|Transitions|Cancel|Enter|Shift)s?\s+(?:to|into)?\s*(?:r\d+\s+)?([A-Z]{2,6})\b([^\n*;]*)")
+
+
+_notes_by_id = None
+
+
+def source_notes(m):
+    """Full notes of the move's source record (earlier imports kept only a short summary)."""
+    global _notes_by_id
+    if _notes_by_id is None:
+        _notes_by_id = {}
+        for p in list(T8_FULL.glob("*.json")) + list(T8_BASE.glob("*.json")):
+            j = json.loads(p.read_text())
+            for r in j.get("moves", []) if isinstance(j, dict) else []:
+                if r.get("notes"):
+                    _notes_by_id.setdefault(("t8", r["id"]), wiki_text(r["notes"], 2000))
+        for p in T7_DIR.glob("*.json"):
+            if p.name == "SOURCE.json":
+                continue
+            j = json.loads(p.read_text())
+            for r in (j["movelist"] if isinstance(j, dict) else j):
+                if r.get("notes") not in (None, "-"):
+                    _notes_by_id.setdefault(("t7", r.get("id")), str(r["notes"]))
+    out = []
+    if m.get("t8_id"):
+        out.append(_notes_by_id.get(("t8", m["t8_id"]), ""))
+    if m.get("t7_move_id"):
+        out.append(_notes_by_id.get(("t7", m["t7_move_id"]), ""))
+    return " ".join(out)
+
+
+def stance_after_of(m):
+    text = " ".join(str(m.get(k) or "") for k in ("note", "notes")) + " " + source_notes(m)
+    for mm in STANCE_RE.finditer(html_unescape(text)):
+        code, tail = mm.group(1), mm.group(2).lower()
+        if re.search(r"\bwith\b|on hit|on block|on ch|hold|input", tail):
+            continue  # conditional transition: needs an extra input; not automatic
+        return code
+    return None
+
+
+def html_unescape(s):
+    import html
+    return html.unescape(s)
+
+
+def annotate(fid, data):
+    """Top-level engine data derived from the move records already in the file."""
+    words, stances = {}, {}
+    for k, m in (data.get("moves") or {}).items():
+        if not isinstance(m, dict):
+            continue
+        w = None
+        if m.get("t3_source") and m.get("t3_row") is not None:
+            w = bank_attack_word(m["t3_source"], m["t3_row"])
+        if w is None:
+            w = word_from_label(m.get("hit_level") or m.get("t7_hit_level"))
+        if w is None and (m.get("throw") or m.get("isGrab")):
+            w = THROW
+        if w is not None:
+            words[k] = w
+        st = stance_after_of(m)
+        if st:
+            stances[k] = st
+    data["hit_words"] = words
+    data["stance_after"] = stances
+    bases = (data.get("merge_sources") or {}).get("bases") or {}
+    for bank in bases.get("t3", []):
+        if (REPO / f"game/assets/anim/t3/{bank}/skeleton.json").exists():
+            data["anim_bank"] = bank
+            break
+    return data
+
+
 # ---------------------------------------------------------------- guard
 def canon_json(o):
     return json.dumps(o, sort_keys=True, ensure_ascii=False)
@@ -685,10 +801,38 @@ def main():
             print(" -", f)
         sys.exit(1)
     print(f"\nGUARD PASS: {len(outs)} fighters, no move/string/special/input lost")
+    for fid, cur in files.items():
+        if only and fid not in only:
+            continue
+        if isinstance(cur, dict) and isinstance(cur.get("moves"), dict):
+            base = outs.get(fid, json.loads(json.dumps(cur)))
+            before_moves = json.dumps(base.get("moves"), sort_keys=True)
+            outs[fid] = annotate(fid, base)
+            assert json.dumps(outs[fid].get("moves"), sort_keys=True) == before_moves, fid
     if a.write:
         for fid, data in outs.items():
             dump_like(MS_DIR / f"{fid}.json", data, texts[fid])
         print(f"wrote {len(outs)} files")
+        build_index()
+
+
+def build_index():
+    """game/assets/movesets/index.json — what game/js/movesets.js loads at boot (the full
+    per-fighter files load per fight via ensureMovesets())."""
+    idx = {}
+    for p in sorted(MS_DIR.glob("*.json")):
+        if p.name == "index.json":
+            continue
+        d = json.loads(p.read_text())
+        if not isinstance(d, dict) or not isinstance(d.get("moves"), dict):
+            continue
+        idx[p.stem] = {k: d.get(k) for k in ("display", "tekken_base", "t3_source", "anim_bank") if d.get(k) is not None}
+        idx[p.stem]["moves"] = len(d["moves"])
+        idx[p.stem]["inputs"] = len(d.get("slots") or {}) or len(d["moves"])
+        idx[p.stem]["bytes"] = p.stat().st_size
+    out = {"format": "wh-moveset-index/1", "tool": "tools/moveset-merge/merge_sources.py", "fighters": idx}
+    (MS_DIR / "index.json").write_text(json.dumps(out, indent=1, ensure_ascii=False) + "\n")
+    print(f"index.json: {len(idx)} fighters")
 
 
 if __name__ == "__main__":

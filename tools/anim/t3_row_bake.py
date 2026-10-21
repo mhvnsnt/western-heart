@@ -27,13 +27,33 @@ sys.path.insert(0, str(REPO / "lab/tools"))
 import t3_motion_bake as TB  # noqa: E402  (sets up the decoder import paths)
 
 SRC2BANK = {"king": "king", "demonio": "jin", "jin": "jin", "bryan": "bryan", "xiaoyu": "xiaoyu",
-            "yoshimitsu": "yoshimitsu", "gunjack": "gunjack", "bosconovitch": "gunjack",
-            "deviljin": "jin", "heihachi": "heihachi"}
+            "yoshimitsu": "yoshimitsu", "gunjack": "gunjack", "bosconovitch": "bosconovitch",
+            "deviljin": "jin", "heihachi": "heihachi",
+            # 2026-10-21: the banks PR #405 added (game/assets/anim/t3/<bank>/, rig
+            # lab/game/assets/t3_<bank>_t3real.glb) bake their move rows too
+            "paul": "paul", "lei": "lei", "nina": "nina", "hwoarang": "hwoarang", "eddy": "eddy",
+            "julia": "julia", "anna": "anna"}
 BANK_DIR = {"king": "king_on_pantera_leoman", "jin": "jin", "xiaoyu": "xiaoyu", "bryan": "bryan",
             "gunjack": "gunjack", "yoshimitsu": "yoshimitsu", "heihachi": "heihachi_on_jin"}
 TARGET_GLB = {"king": "lab/game/assets/pantera_leoman.glb", "jin": "lab/game/assets/t3_jin.glb",
               "xiaoyu": "lab/game/assets/t3_xiaoyu.glb", "bryan": "lab/game/assets/t3_bryan.glb",
               "gunjack": "lab/game/assets/t3_gunjack.glb", "yoshimitsu": "lab/game/assets/t3_yoshimitsu.glb"}
+# Remainder banks: their runtime skeleton.json comes from lab/game/assets/t3_<bank>_t3real.glb, so the
+# rows retarget onto that same identity-rest rig. Body (KMD + slot-0 frame-75 stance) = the character's
+# OWN disc body paired with its own motion bank by tools/anim/t3_extract_bodies.py (BODY-EXTRACTION.json,
+# SHA-256 against the original BNS index). Run that tool first; its outputs are local (public repo).
+REMAINDER = ["paul", "lei", "nina", "hwoarang", "eddy", "julia", "anna", "bosconovitch"]
+_BODY = REPO / "teardown/tekken3/BODY-EXTRACTION.json"
+if _BODY.exists():
+    _bx = json.loads(_BODY.read_text())
+    for _b in REMAINDER:
+        _e = _bx.get(_b)
+        if isinstance(_e, dict) and _e.get("kmd"):
+            BANK_DIR[_b] = _b
+            TARGET_GLB[_b] = f"lab/game/assets/t3_{_b}_t3real.glb"
+            TB.BANKS[_b] = (str(Path(_e["kmd"]).relative_to("teardown/tekken3")),
+                            str(Path(_e["bank"]).relative_to("teardown/tekken3")),
+                            str(Path(_e["stance_obj"]).relative_to("teardown/tekken3")))
 
 
 def referenced_rows(bank):
@@ -49,6 +69,9 @@ def referenced_rows(bank):
                 src = v.get("t3_source") or d.get("t3_source")
                 if SRC2BANK.get(src) == bank and isinstance(v["t3_row"], int):
                     rows.setdefault(v["t3_row"], []).append(Path(f).stem)
+            at = v.get("anim_t3") if isinstance(v, dict) else None
+            if at and SRC2BANK.get(at.get("bank")) == bank and isinstance(at.get("row"), int):
+                rows.setdefault(at["row"], []).append(Path(f).stem)
     return rows
 
 
