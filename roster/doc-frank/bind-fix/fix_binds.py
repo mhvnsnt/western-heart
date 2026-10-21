@@ -1,15 +1,20 @@
 #!/usr/bin/env python3
-"""Normalize a GLB's skin bind locals to the standard convention.
+"""Normalize a GLB's skin bind locals to all-identity.
 
-Standard convention (Pantera/Steve Fox, proven in DIAGNOSIS.md): every joint's
-bind local rotation is identity EXCEPT the skeleton root joint (Hips), which
-carries 180 deg about Z. fighter.js stage-2 premultiplies tracks by bind
-locals, so any other non-identity bind corrupts the pose.
+Why all-identity (measured, see bind-fix/README.md): fighter.js stage-2
+(`createT3Actions` -> `retargetClipToRig`) premultiplies every animation
+track by the bone's bind local and skips only identity binds. Any
+non-identity bind on a driven bone corrupts the played pose (Doc Frank's
+pose-encoded binds folded him ~177 deg at the waist; even the lone Hips
+180 deg Z premultiply rotated the solved pose ~157 deg off-source in the
+facing lane's sim). Known-good fighters are stage-2-safe because their
+DRIVEN bones carry identity binds. So: every joint's bind local rotation
+becomes identity, Hips included, and stage 2 becomes a literal no-op.
 
 Method (bind-pose invariant by construction):
   - Keep every joint's world bind POSITION.
-  - Set new world bind rotation = accumulated new locals (root: 180Z,
-    all other joints: identity), translations re-expressed per joint.
+  - Set new world bind rotation = accumulated new locals (identity
+    everywhere), translations re-expressed per joint.
   - IBM'_j = W'_j^-1 * W_j * IBM_j  =>  W'_j * IBM'_j == W_j * IBM_j,
     so skinned vertices at bind pose are bit-identical.
 Only node TRS of joints + the IBM accessor bytes change. Mesh data,
@@ -111,18 +116,18 @@ def fix(path_in, path_out):
         assert len(roots) == 1, f'expected 1 skeleton root, got {roots}'
         root = roots[0]
 
-        # The convention keeper is the HIPS joint (the pelvis root the game
-        # treats as its standard bone). Auto-rig wrappers may sit ABOVE it
-        # (e.g. 'leg left butt', 'root ground') — they get zeroed like
-        # everything else; only Hips keeps the 180Z convention rotation.
+        # The HIPS joint (the pelvis root) is located only so the report can
+        # name it. Auto-rig wrappers may sit ABOVE it (e.g. 'leg left butt',
+        # 'root ground'). NOTHING keeps a bind rotation: every joint's target
+        # local is identity (see module docstring for the measured reason).
         keepers = [j for j in joints
                    if nodes[j].get('name', '').strip().lower() in ('hips', 'root hips')]
-        assert len(keepers) == 1, f'expected 1 Hips keeper, got {[nodes[k].get("name") for k in keepers]}'
+        assert len(keepers) == 1, f'expected 1 Hips joint, got {[nodes[k].get("name") for k in keepers]}'
         keeper = keepers[0]
 
         # target local rotations
         ROT180Z = quat_to_mat([0.0, 0.0, 1.0, 0.0])
-        target_rot = {j: (ROT180Z if j == keeper else np.eye(4)) for j in joints}
+        target_rot = {j: np.eye(4) for j in joints}  # variant B: ALL identity, Hips included
 
         # new world matrices for joints, BFS from root
         new_world = {}

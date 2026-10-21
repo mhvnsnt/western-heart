@@ -50,7 +50,7 @@ def main(path_in, ibm_path, path_out):
     assert len(keepers) == 1
     keeper = keepers[0]
     ROT180Z = quat_to_mat([0.0, 0.0, 1.0, 0.0])
-    target_rot = {j: (ROT180Z if j == keeper else np.eye(4)) for j in joints}
+    target_rot = {j: np.eye(4) for j in joints}  # variant B: ALL identity
 
     new_world = {}
     order = [root]
