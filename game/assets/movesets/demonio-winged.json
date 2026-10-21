@@ -1,3667 +1,4849 @@
 {
- "fighter": "demonio-winged",
- "display": "DEMONIO (Devil)",
- "tekken_base": "Jin",
- "t3_source": "deviljin",
- "proxy": false,
- "proxy_note": null,
- "variant": 1,
- "moves": {
-  "1": {
-   "name": "DEVIL 1 (T3 jin r41)",
-   "input": "1",
-   "t3_source": "deviljin",
-   "t3_row": 41,
-   "t3_command": "LP",
-   "startup": 0.117,
-   "active": 0.017,
-   "recovery": 0.467,
-   "damage": 13,
-   "t3_damage": 21,
-   "limb": "armL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "t3:deviljin:row:41",
-   "input_slots": [
-    "1"
-   ],
-   "move_class": "strike"
-  },
-  "2": {
-   "name": "DEVIL 2 (T3 jin r220)",
-   "input": "2",
-   "t3_source": "deviljin",
-   "t3_row": 220,
-   "t3_command": "RP",
-   "startup": 0.2,
-   "active": 0.017,
-   "recovery": 0.483,
-   "damage": 5,
-   "t3_damage": 8,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "t3:deviljin:row:220",
-   "input_slots": [
-    "2"
-   ],
-   "move_class": "strike"
-  },
-  "2,1": {
-   "name": "DEVIL 2,1 (T3 jin r221)",
-   "input": "2,1",
-   "t3_source": "deviljin",
-   "t3_row": 221,
-   "t3_command": "LP",
-   "startup": 0.233,
-   "active": 0.017,
-   "recovery": 0.483,
-   "damage": 6,
-   "t3_damage": 9,
-   "limb": "armL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "string_hit": "2",
-   "anim_ref": "t3:deviljin:row:221",
-   "input_slots": [
-    "2,1",
-    "2",
-    "1"
-   ],
-   "move_class": "string"
-  },
-  "2,1,2": {
-   "name": "DEVIL 2,1,2 (T3 jin r222)",
-   "input": "2,1,2",
-   "t3_source": "deviljin",
-   "t3_row": 222,
-   "t3_command": "RP",
-   "startup": 0.167,
-   "active": 0.017,
-   "recovery": 0.483,
-   "damage": 5,
-   "t3_damage": 7,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "string_hit": "2,1",
-   "anim_ref": "t3:deviljin:row:222",
-   "input_slots": [
-    "2,1,2",
-    "2",
-    "1",
-    "2"
-   ],
-   "move_class": "string"
-  },
-  "3": {
-   "name": "DEVIL 3 (T3 jin r195)",
-   "input": "3",
-   "t3_source": "deviljin",
-   "t3_row": 195,
-   "t3_command": "LK",
-   "startup": 0.317,
-   "active": 0.083,
-   "recovery": 0.633,
-   "damage": 16,
-   "t3_damage": 26,
-   "limb": "legL",
-   "heavy": false,
-   "knock": 4.2,
-   "soulGain": 8,
-   "anim_ref": "t3:deviljin:row:195",
-   "input_slots": [
-    "3"
-   ],
-   "move_class": "strike"
-  },
-  "4": {
-   "name": "DEVIL 4 (T3 jin r199)",
-   "input": "4",
-   "t3_source": "deviljin",
-   "t3_row": 199,
-   "t3_command": "RK",
-   "startup": 0.183,
-   "active": 0.017,
-   "recovery": 0.633,
-   "damage": 8,
-   "t3_damage": 14,
-   "limb": "legR",
-   "heavy": false,
-   "knock": 4.2,
-   "soulGain": 8,
-   "anim_ref": "t3:deviljin:row:199",
-   "input_slots": [
-    "4"
-   ],
-   "move_class": "strike"
-  },
-  "4,1": {
-   "name": "DEVIL 4,1 (T3 jin r184)",
-   "input": "4,1",
-   "t3_source": "deviljin",
-   "t3_row": 184,
-   "t3_command": "LP",
-   "startup": 0.2,
-   "active": 0.033,
-   "recovery": 0.85,
-   "damage": 3,
-   "t3_damage": 6,
-   "limb": "armL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "string_hit": "4",
-   "anim_ref": "t3:deviljin:row:184",
-   "input_slots": [
-    "4,1",
-    "4",
-    "1"
-   ],
-   "move_class": "string"
-  },
-  "4,1,2": {
-   "name": "DEVIL 4,1,2 (T3 jin r186)",
-   "input": "4,1,2",
-   "t3_source": "deviljin",
-   "t3_row": 186,
-   "t3_command": "RP",
-   "startup": 0.45,
-   "active": 0.017,
-   "recovery": 0.617,
-   "damage": 7,
-   "t3_damage": 12,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "string_hit": "4,1",
-   "anim_ref": "t3:deviljin:row:186",
-   "input_slots": [
-    "4,1,2",
-    "4",
-    "1",
-    "2"
-   ],
-   "move_class": "string"
-  },
-  "1+3": {
-   "name": "DEVIL 1+3 throw (T3 jin r117)",
-   "input": "1+3",
-   "t3_source": "deviljin",
-   "t3_row": 117,
-   "t3_command": "LP+LK",
-   "startup": 0.433,
-   "active": 0.017,
-   "recovery": 0.1,
-   "damage": 24,
-   "t3_damage": 40,
-   "limb": "legL",
-   "heavy": true,
-   "knock": 6.5,
-   "soulGain": 11,
-   "throw": true,
-   "unblockable": true,
-   "isGrab": true,
-   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
-   "anim_ref": "t3:deviljin:row:117",
-   "input_slots": [
-    "1+3"
-   ],
-   "move_class": "throw"
-  },
-  "2+4": {
-   "name": "DEVIL 2+4 throw (T3 jin r118)",
-   "input": "2+4",
-   "t3_source": "deviljin",
-   "t3_row": 118,
-   "t3_command": "RP+RK",
-   "startup": 0.1,
-   "active": 0.017,
-   "recovery": 0.733,
-   "damage": 24,
-   "t3_damage": 40,
-   "limb": "legR",
-   "heavy": true,
-   "knock": 6.5,
-   "soulGain": 11,
-   "throw": true,
-   "unblockable": true,
-   "isGrab": true,
-   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
-   "anim_ref": "t3:deviljin:row:118",
-   "input_slots": [
-    "2+4"
-   ],
-   "move_class": "throw"
-  },
-  "d/f+2": {
-   "name": "DEVIL d/f+2 (T3 jin r269)",
-   "input": "d/f+2",
-   "t3_source": "deviljin",
-   "t3_row": 269,
-   "t3_command": "3+RP",
-   "startup": 0.183,
-   "active": 0.033,
-   "recovery": 0.633,
-   "damage": 21,
-   "t3_damage": 34,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 4.2,
-   "soulGain": 11,
-   "anim_ref": "t3:deviljin:row:269",
-   "input_slots": [
-    "d/f+2"
-   ],
-   "move_class": "strike"
-  },
-  "u/f+4": {
-   "name": "DEVIL u/f+4 (T3 jin r80)",
-   "input": "u/f+4",
-   "t3_source": "deviljin",
-   "t3_row": 80,
-   "t3_command": "9+RK",
-   "startup": 0.417,
-   "active": 0.017,
-   "recovery": 0.683,
-   "damage": 17,
-   "t3_damage": 29,
-   "limb": "legR",
-   "heavy": true,
-   "knock": 4.2,
-   "soulGain": 11,
-   "anim_ref": "t3:deviljin:row:80",
-   "input_slots": [
-    "u/f+4"
-   ],
-   "move_class": "strike"
-  },
-  "d,d/b,d,d/b+1+2": {
-   "name": "DEVIL d,d/b,d,d/b+1+2 throw (T3 jin r277)",
-   "input": "d,d/b,d,d/b+1+2",
-   "t3_source": "deviljin",
-   "t3_row": 277,
-   "t3_command": "[2 1 2 1+LP+RP](59f)",
-   "startup": 0.2,
-   "active": 0.017,
-   "recovery": 0.467,
-   "damage": 24,
-   "t3_damage": 40,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 6.5,
-   "soulGain": 11,
-   "throw": true,
-   "unblockable": true,
-   "isGrab": true,
-   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
-   "anim_ref": "t3:deviljin:row:277",
-   "input_slots": [
-    "d,d/b,d,d/b+1+2"
-   ],
-   "move_class": "throw"
-  },
-  "d/b,n,f+2": {
-   "name": "DEVIL d/b,n,f+2 throw (T3 jin r276)",
-   "input": "d/b,n,f+2",
-   "t3_source": "deviljin",
-   "t3_row": 276,
-   "t3_command": "[1 5 6+RP](30f)",
-   "startup": 0.183,
-   "active": 0.017,
-   "recovery": 0.517,
-   "damage": 24,
-   "t3_damage": 40,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 6.5,
-   "soulGain": 11,
-   "throw": true,
-   "unblockable": true,
-   "isGrab": true,
-   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
-   "anim_ref": "t3:deviljin:row:276",
-   "input_slots": [
-    "d/b,n,f+2"
-   ],
-   "move_class": "throw"
-  },
-  "n,d/f,n,d/f+1": {
-   "name": "DEVIL n,d/f,n,d/f+1 throw (T3 jin r277)",
-   "input": "n,d/f,n,d/f+1",
-   "t3_source": "deviljin",
-   "t3_row": 277,
-   "t3_command": "[5 3 5 3+LP](25f)",
-   "startup": 0.2,
-   "active": 0.017,
-   "recovery": 0.467,
-   "damage": 24,
-   "t3_damage": 40,
-   "limb": "armL",
-   "heavy": true,
-   "knock": 6.5,
-   "soulGain": 11,
-   "throw": true,
-   "unblockable": true,
-   "isGrab": true,
-   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
-   "anim_ref": "t3:deviljin:row:277",
-   "input_slots": [
-    "n,d/f,n,d/f+1"
-   ],
-   "move_class": "throw"
-  },
-  "1+2": {
-   "name": "Median Line Destruction",
-   "input": "1+2",
-   "t8_source": "jin",
-   "t8_id": "Jin-1+2",
-   "t8_damage": "4,4,16",
-   "startup": 0.217,
-   "active": 0.033,
-   "recovery": 0.55,
-   "damage": 24,
-   "limb": "both",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 12,
-   "anim_ref": "t8:jin:jin-1+2",
-   "input_slots": [
-    "1+2"
-   ],
-   "move_class": "strike",
-   "multi_hit": {
-    "hits": [
-     4,
-     4,
-     16
-    ],
-    "total": 24
-   },
-   "note": "Mid, Mid, Mid; on block -14; knockdown on hit"
-  },
-  "1,2": {
-   "name": "Left Right Combo",
-   "input": "1,2",
-   "t8_source": "jin",
-   "t8_id": "Jin-1,2",
-   "t8_damage": ",12",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.35,
-   "damage": 17,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 4.2,
-   "soulGain": 8,
-   "anim_ref": "t8:jin:jin-1,2",
-   "input_slots": [
-    "1",
-    "1,2"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     5,
-     12
-    ],
-    "total": 17
-   },
-   "note": "High; on block -3"
-  },
-  "1,2,1": {
-   "name": "Black Wing Rondo",
-   "input": "1,2,1",
-   "t8_source": "jin",
-   "t8_id": "Jin-1,2,1",
-   "t8_damage": ",20",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.617,
-   "damage": 37,
-   "limb": "armL",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 15,
-   "anim_ref": "t8:jin:jin-1,2,1",
-   "input_slots": [
-    "1",
+  "fighter": "demonio-winged",
+  "display": "DEMONIO (Devil)",
+  "tekken_base": "Jin",
+  "t3_source": "deviljin",
+  "proxy": false,
+  "proxy_note": null,
+  "variant": 1,
+  "strings": [
+    {
+      "input": "2,1",
+      "hits": [
+        "2",
+        "1"
+      ],
+      "t3_rows": [
+        220,
+        221
+      ]
+    },
+    {
+      "input": "2,1,2",
+      "hits": [
+        "2",
+        "1",
+        "2"
+      ],
+      "t3_rows": [
+        220,
+        221,
+        222
+      ]
+    },
+    {
+      "input": "4,1",
+      "hits": [
+        "4",
+        "1"
+      ],
+      "t3_rows": [
+        199,
+        184
+      ]
+    },
+    {
+      "input": "4,1,2",
+      "hits": [
+        "4",
+        "1",
+        "2"
+      ],
+      "t3_rows": [
+        199,
+        184,
+        186
+      ]
+    },
+    {
+      "input": "2,1,4",
+      "hits": [
+        "2",
+        "1",
+        "4"
+      ],
+      "t3_rows": [
+        230
+      ]
+    },
+    {
+      "input": "2,1,2,2",
+      "hits": [
+        "2",
+        "1",
+        "2",
+        "2"
+      ],
+      "t3_rows": [
+        223
+      ]
+    },
+    {
+      "input": "u/f+4,3",
+      "hits": [
+        "u/f+4",
+        "3"
+      ],
+      "t3_rows": [
+        193
+      ]
+    },
+    {
+      "input": "u/f+4,4",
+      "hits": [
+        "u/f+4",
+        "4"
+      ],
+      "t3_rows": [
+        207
+      ]
+    },
+    {
+      "input": "f+2,1",
+      "hits": [
+        "f+2",
+        "1"
+      ],
+      "t3_rows": [
+        221
+      ]
+    },
+    {
+      "input": "f+4,1",
+      "hits": [
+        "f+4",
+        "1"
+      ],
+      "t3_rows": [
+        184
+      ]
+    },
+    {
+      "input": "d+1+2,1",
+      "hits": [
+        "d+1+2",
+        "1"
+      ],
+      "t3_rows": [
+        177
+      ]
+    },
+    {
+      "input": "d+1+2,2",
+      "hits": [
+        "d+1+2",
+        "2"
+      ],
+      "t3_rows": [
+        93
+      ]
+    },
+    {
+      "input": "d/f+1,3",
+      "hits": [
+        "d/f+1",
+        "3"
+      ],
+      "t3_rows": [
+        197
+      ]
+    },
+    {
+      "input": "d/f+1,4",
+      "hits": [
+        "d/f+1",
+        "4"
+      ],
+      "t3_rows": [
+        204
+      ]
+    },
+    {
+      "input": "d/f+4,4",
+      "hits": [
+        "d/f+4",
+        "4"
+      ],
+      "t3_rows": [
+        212
+      ]
+    },
+    {
+      "input": "2,1,4,4",
+      "hits": [
+        "2",
+        "1",
+        "4",
+        "4"
+      ],
+      "t3_rows": [
+        231
+      ]
+    },
+    {
+      "input": "2,1,2,2,3",
+      "hits": [
+        "2",
+        "1",
+        "2",
+        "2",
+        "3"
+      ],
+      "t3_rows": [
+        224
+      ]
+    },
+    {
+      "input": "u/f+4,4,4",
+      "hits": [
+        "u/f+4",
+        "4",
+        "4"
+      ],
+      "t3_rows": [
+        210
+      ]
+    },
+    {
+      "input": "f+2,1,2",
+      "hits": [
+        "f+2",
+        "1",
+        "2"
+      ],
+      "t3_rows": [
+        222
+      ]
+    },
+    {
+      "input": "f+4,1,2",
+      "hits": [
+        "f+4",
+        "1",
+        "2"
+      ],
+      "t3_rows": [
+        186
+      ]
+    },
+    {
+      "input": "d+1+2,1,2",
+      "hits": [
+        "d+1+2",
+        "1",
+        "2"
+      ],
+      "t3_rows": [
+        183
+      ]
+    },
+    {
+      "input": "2,1,4,4,2",
+      "hits": [
+        "2",
+        "1",
+        "4",
+        "4",
+        "2"
+      ],
+      "t3_rows": [
+        232
+      ]
+    },
+    {
+      "input": "2,1,2,2,3,4",
+      "hits": [
+        "2",
+        "1",
+        "2",
+        "2",
+        "3",
+        "4"
+      ],
+      "t3_rows": [
+        225
+      ]
+    },
+    {
+      "input": "u/f+4,4,4,4",
+      "hits": [
+        "u/f+4",
+        "4",
+        "4",
+        "4"
+      ],
+      "t3_rows": [
+        211
+      ]
+    },
+    {
+      "input": "2,1,4,4,2,4",
+      "hits": [
+        "2",
+        "1",
+        "4",
+        "4",
+        "2",
+        "4"
+      ],
+      "t3_rows": [
+        233
+      ]
+    },
     "1,2",
-    "1,2,1"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     5,
-     12,
-     20
-    ],
-    "total": 37
-   },
-   "note": "Mid; on block -16; knockdown on hit; Devil-Jin flavor (winged form)",
-   "devil_flavor": true
-  },
-  "1,2,3": {
-   "name": "Axe Kick",
-   "input": "1,2,3",
-   "t8_source": "jin",
-   "t8_id": "Jin-1,2,3",
-   "t8_damage": ",20",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.35,
-   "damage": 37,
-   "limb": "legL",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 15,
-   "anim_ref": "t8:jin:jin-1,2,3",
-   "input_slots": [
-    "1",
-    "1,2",
-    "1,2,3"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     5,
-     12,
-     20
-    ],
-    "total": 37
-   },
-   "note": "Mid; on block +0"
-  },
-  "1+2+3+4": {
-   "name": "Ki Charge",
-   "input": "1+2+3+4",
-   "t8_source": "jin",
-   "t8_id": "Jin-1+2+3+4",
-   "t8_damage": null,
-   "startup": 0.167,
-   "active": 0.3,
-   "recovery": 0.917,
-   "damage": 0,
-   "limb": "both",
-   "heavy": false,
-   "knock": 0.0,
-   "soulGain": 8,
-   "anim_ref": "t8:jin:jin-1+2+3+4",
-   "input_slots": [
-    "1+2+3+4"
-   ],
-   "move_class": "special",
-   "devil_flavor": true,
-   "note": "Devil-Jin flavor (winged form)"
-  },
-  "1,2,4": {
-   "name": "Spinning Hook Kick",
-   "input": "1,2,4",
-   "t8_source": "jin",
-   "t8_id": "Jin-1,2,4",
-   "t8_damage": ",26",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.417,
-   "damage": 43,
-   "limb": "legR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 15,
-   "anim_ref": "t8:jin:jin-1,2,4",
-   "input_slots": [
-    "1",
-    "1,2",
-    "1,2,4"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     5,
-     12,
-     26
-    ],
-    "total": 43
-   },
-   "note": "High; on block -4; knockdown on hit"
-  },
-  "1,3": {
-   "name": "Single Low",
-   "input": "1,3",
-   "t8_source": "jin",
-   "t8_id": "Jin-1,3",
-   "t8_damage": ",9",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.5,
-   "damage": 14,
-   "limb": "legL",
-   "heavy": false,
-   "knock": 4.2,
-   "soulGain": 7,
-   "anim_ref": "t8:jin:jin-1,3",
-   "input_slots": [
-    "1",
-    "1,3"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     5,
-     9
-    ],
-    "total": 14
-   },
-   "note": "Low; on block -12"
-  },
-  "1+3+4": {
-   "name": "State of Zanshin",
-   "input": "1+3+4",
-   "t8_source": "jin",
-   "t8_id": "Jin-1+3+4",
-   "t8_damage": null,
-   "startup": 0.167,
-   "active": 0.3,
-   "recovery": 0.767,
-   "damage": 0,
-   "limb": "both",
-   "heavy": false,
-   "knock": 0.0,
-   "soulGain": 8,
-   "anim_ref": "t8:jin:jin-1+3+4",
-   "input_slots": [
-    "1+3+4"
-   ],
-   "move_class": "special",
-   "note": "Mental Alertness"
-  },
-  "1,3,4": {
-   "name": "Double Low",
-   "input": "1,3,4",
-   "t8_source": "jin",
-   "t8_id": "Jin-1,3,4",
-   "t8_damage": ",17",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.533,
-   "damage": 31,
-   "limb": "legR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 15,
-   "anim_ref": "t8:jin:jin-1,3,4",
-   "input_slots": [
-    "1",
+    "1,2,1",
+    "1,2,3",
+    "1,2,4",
     "1,3",
-    "1,3,4"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     5,
-     9,
-     17
-    ],
-    "total": 31
-   },
-   "note": "Low; on block -13"
-  },
-  "2,1,4": {
-   "name": "Roundhouse",
-   "input": "2,1,4",
-   "t8_source": "jin",
-   "t8_id": "Jin-2,1,4",
-   "t8_damage": ",18",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.433,
-   "damage": 36,
-   "limb": "legR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 15,
-   "anim_ref": "t8:jin:jin-2,1,4",
-   "input_slots": [
-    "2",
-    "2,1",
-    "2,1,4"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     9,
-     9,
-     18
-    ],
-    "total": 36
-   },
-   "note": "Mid; on block -10"
-  },
-  "2,1,4~4": {
-   "name": "Low Trick Kick",
-   "input": "2,1,4~4",
-   "t8_source": "jin",
-   "t8_id": "Jin-2,1,4~4",
-   "t8_damage": ",20",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.467,
-   "damage": 38,
-   "limb": "both",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 15,
-   "anim_ref": "t8:jin:jin-2,1,4~4",
-   "input_slots": [
-    "2",
-    "2,1",
-    "2,1,4~4"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     9,
-     9,
-     20
-    ],
-    "total": 38
-   },
-   "note": "Low; on block -12"
-  },
-  "2+3": {
-   "name": "Heat Burst",
-   "input": "2+3",
-   "t8_source": "jin",
-   "t8_id": "Jin-2+3",
-   "t8_damage": "[12;12]",
-   "startup": 0.267,
-   "active": 0.033,
-   "recovery": 0.5,
-   "damage": 24,
-   "limb": "both",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 12,
-   "anim_ref": "t8:jin:jin-2+3",
-   "input_slots": [
-    "2+3"
-   ],
-   "move_class": "strike",
-   "multi_hit": {
-    "hits": [
-     12,
-     12
-    ],
-    "total": 24
-   },
-   "note": "Mid; on block +1; Devil-Jin flavor (winged form)",
-   "devil_flavor": true
-  },
-  "2,4": {
-   "name": "Switchblade",
-   "input": "2,4",
-   "t8_source": "jin",
-   "t8_id": "Jin-2,4",
-   "t8_damage": ",20",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.55,
-   "damage": 29,
-   "limb": "legR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 14,
-   "anim_ref": "t8:jin:jin-2,4",
-   "input_slots": [
-    "2",
-    "2,4"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     9,
-     20
-    ],
-    "total": 29
-   },
-   "note": "High; on block -13"
-  },
-  "3,1": {
-   "name": "Move 1 (1)",
-   "input": "3,1",
-   "t8_source": "jin",
-   "t8_id": "Jin-3,1",
-   "t8_damage": ",7",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.333,
-   "damage": 24,
-   "limb": "armL",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 12,
-   "anim_ref": "t8:jin:jin-3,1",
-   "input_slots": [
-    "3",
-    "3,1"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     17,
-     7
-    ],
-    "total": 24
-   },
-   "note": "High; on block -1"
-  },
-  "3,1,4": {
-   "name": "Kishin Rekko",
-   "input": "3,1,4",
-   "t8_source": "jin",
-   "t8_id": "Jin-3,1,4",
-   "t8_damage": ",18",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.533,
-   "damage": 42,
-   "limb": "legR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 15,
-   "anim_ref": "t8:jin:jin-3,1,4",
-   "input_slots": [
-    "3",
+    "1,3,4",
+    "2,1,4~4",
+    "2,4",
     "3,1",
-    "3,1,4"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     17,
-     7,
-     18
-    ],
-    "total": 42
-   },
-   "note": "Low; on block -13"
-  },
-  "4~3": {
-   "name": "Spinning Flare Kick",
-   "input": "4~3",
-   "t8_source": "jin",
-   "t8_id": "Jin-4~3",
-   "t8_damage": "27",
-   "startup": 0.4,
-   "active": 0.033,
-   "recovery": 0.467,
-   "damage": 27,
-   "limb": "both",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 14,
-   "anim_ref": "t8:jin:jin-4~3",
-   "input_slots": [
-    "4~3"
-   ],
-   "move_class": "strike",
-   "note": "Mid; on block -11~-2; knockdown on hit"
-  },
-  "b+1": {
-   "name": "Move b+1 (b+1)",
-   "input": "b+1",
-   "t8_source": "jin",
-   "t8_id": "Jin-b+1",
-   "t8_damage": "11",
-   "startup": 0.2,
-   "active": 0.033,
-   "recovery": 0.467,
-   "damage": 11,
-   "limb": "armL",
-   "heavy": false,
-   "knock": 4.2,
-   "soulGain": 6,
-   "anim_ref": "t8:jin:jin-b+1",
-   "input_slots": [
-    "b+1"
-   ],
-   "move_class": "strike",
-   "note": "High; on block -9"
-  },
-  "b+1+2": {
-   "name": "Suigetsu Strike",
-   "input": "b+1+2",
-   "t8_source": "jin",
-   "t8_id": "Jin-b+1+2",
-   "t8_damage": "20",
-   "startup": 0.383,
-   "active": 0.033,
-   "recovery": 0.5,
-   "damage": 20,
-   "limb": "both",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 10,
-   "anim_ref": "t8:jin:jin-b+1+2",
-   "input_slots": [
-    "b+1+2"
-   ],
-   "move_class": "strike",
-   "note": "Mid; on block -12"
-  },
-  "b+1,2": {
-   "name": "Shun Maten",
-   "input": "b+1,2",
-   "t8_source": "jin",
-   "t8_id": "Jin-b+1,2",
-   "t8_damage": ",20",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.517,
-   "damage": 31,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 15,
-   "anim_ref": "t8:jin:jin-b+1,2",
-   "input_slots": [
-    "b+1",
-    "b+1,2"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     11,
-     20
-    ],
-    "total": 31
-   },
-   "note": "High; on block -10; knockdown on hit"
-  },
-  "b+1+3": {
-   "name": "Parry",
-   "input": "b+1+3",
-   "t8_source": "jin",
-   "t8_id": "Jin-b+1+3",
-   "t8_damage": null,
-   "startup": 0.167,
-   "active": 0.3,
-   "recovery": 0.5,
-   "damage": 0,
-   "limb": "both",
-   "heavy": false,
-   "knock": 0.0,
-   "soulGain": 8,
-   "anim_ref": "t8:jin:jin-b+1+3",
-   "input_slots": [
-    "b+1+3"
-   ],
-   "move_class": "parry"
-  },
-  "b+2": {
-   "name": "Move b+2 (b+2)",
-   "input": "b+2",
-   "t8_source": "jin",
-   "t8_id": "Jin-b+2",
-   "t8_damage": "12",
-   "startup": 0.25,
-   "active": 0.033,
-   "recovery": 0.483,
-   "damage": 12,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 4.2,
-   "soulGain": 6,
-   "anim_ref": "t8:jin:jin-b+2",
-   "input_slots": [
-    "b+2"
-   ],
-   "move_class": "strike",
-   "note": "Mid; on block -11"
-  },
-  "b+2,1": {
-   "name": "Shun Masatsu",
-   "input": "b+2,1",
-   "t8_source": "jin",
-   "t8_id": "Jin-b+2,1",
-   "t8_damage": ",10",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.45,
-   "damage": 22,
-   "limb": "armL",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 11,
-   "anim_ref": "t8:jin:jin-b+2,1",
-   "input_slots": [
-    "b+2",
-    "b+2,1"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     12,
-     10
-    ],
-    "total": 22
-   },
-   "note": "Mid; on block -9"
-  },
-  "b+3": {
-   "name": "Left Knee",
-   "input": "b+3",
-   "t8_source": "jin",
-   "t8_id": "Jin-b+3",
-   "t8_damage": "17",
-   "startup": 0.267,
-   "active": 0.033,
-   "recovery": 0.417,
-   "damage": 17,
-   "limb": "legL",
-   "heavy": false,
-   "knock": 4.2,
-   "soulGain": 8,
-   "anim_ref": "t8:jin:jin-b+3",
-   "input_slots": [
-    "b+3"
-   ],
-   "move_class": "strike",
-   "note": "Mid; on block -6"
-  },
-  "b+3,2": {
-   "name": "Right Thrust",
-   "input": "b+3,2",
-   "t8_source": "jin",
-   "t8_id": "Jin-b+3,2",
-   "t8_damage": ",20",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.5,
-   "damage": 37,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 15,
-   "anim_ref": "t8:jin:jin-b+3,2",
-   "input_slots": [
-    "b+3",
-    "b+3,2"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     17,
-     20
-    ],
-    "total": 37
-   },
-   "note": "Mid; on block -9"
-  },
-  "b+3+4": {
-   "name": "Zanshin",
-   "input": "b+3+4",
-   "t8_source": "jin",
-   "t8_id": "Jin-b+3+4",
-   "t8_damage": null,
-   "startup": 0.167,
-   "active": 0.3,
-   "recovery": 0.083,
-   "damage": 0,
-   "limb": "both",
-   "heavy": false,
-   "knock": 0.0,
-   "soulGain": 8,
-   "anim_ref": "t8:jin:jin-b+3+4",
-   "input_slots": [
-    "b+3+4"
-   ],
-   "move_class": "special",
-   "note": "Crouching Demon Stance (CDS) / Mental Alertness (2)"
-  },
-  "b+4": {
-   "name": "Spinning Sidekick",
-   "input": "b+4",
-   "t8_source": "jin",
-   "t8_id": "Jin-b+4",
-   "t8_damage": "21",
-   "startup": 0.283,
-   "active": 0.033,
-   "recovery": 0.483,
-   "damage": 21,
-   "limb": "legR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 10,
-   "anim_ref": "t8:jin:jin-b+4",
-   "input_slots": [
-    "b+4"
-   ],
-   "move_class": "strike",
-   "note": "Mid; on block -7; knockdown on hit"
-  },
-  "Back throw": {
-   "name": "Pivoting Hip Throw",
-   "input": "Back throw",
-   "t8_source": "jin",
-   "t8_id": "Jin-Back throw",
-   "t8_damage": "50",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.317,
-   "damage": 50,
-   "limb": "both",
-   "heavy": true,
-   "knock": 6.5,
-   "soulGain": 15,
-   "anim_ref": "t8:jin:jin-back throw",
-   "input_slots": [
-    "Back throw"
-   ],
-   "move_class": "throw",
-   "note": "Throw",
-   "throw": true,
-   "unblockable": true,
-   "isGrab": true,
-   "throw_break": "1+2"
-  },
-  "b,f+2": {
-   "name": "Move b,f+2 (b,f+2)",
-   "input": "b,f+2",
-   "t8_source": "jin",
-   "t8_id": "Jin-b,f+2",
-   "t8_damage": "15",
-   "startup": 0.25,
-   "active": 0.033,
-   "recovery": 0.417,
-   "damage": 15,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 4.2,
-   "soulGain": 8,
-   "anim_ref": "t8:jin:jin-b,f+2",
-   "input_slots": [
-    "b,f+2"
-   ],
-   "move_class": "strike",
-   "note": "Mid; on block -7"
-  },
-  "b,f+2,1": {
-   "name": "Move 1 (1)",
-   "input": "b,f+2,1",
-   "t8_source": "jin",
-   "t8_id": "Jin-b,f+2,1",
-   "t8_damage": ",14",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.4,
-   "damage": 29,
-   "limb": "armL",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 14,
-   "anim_ref": "t8:jin:jin-b,f+2,1",
-   "input_slots": [
-    "b,f+2",
-    "b,f+2,1"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     15,
-     14
-    ],
-    "total": 29
-   },
-   "note": "High; on block -5"
-  },
-  "b,f+2,1,2": {
-   "name": "Evil Intent",
-   "input": "b,f+2,1,2",
-   "t8_source": "jin",
-   "t8_id": "Jin-b,f+2,1,2",
-   "t8_damage": ",20",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.433,
-   "damage": 49,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 15,
-   "anim_ref": "t8:jin:jin-b,f+2,1,2",
-   "input_slots": [
-    "b,f+2",
+    "3,1,4",
+    "b+1,2",
+    "b+2,1",
+    "b+3,2",
     "b,f+2,1",
-    "b,f+2,1,2"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     15,
-     14,
-     20
-    ],
-    "total": 49
-   },
-   "note": "Mid; on block -5; knockdown on hit"
-  },
-  "b,f+2,1,df+2": {
-   "name": "Geyser",
-   "input": "b,f+2,1,df+2",
-   "t8_source": "jin",
-   "t8_id": "Jin-b,f+2,1,df+2",
-   "t8_damage": ",22",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.6,
-   "damage": 51,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 15,
-   "anim_ref": "t8:jin:jin-b,f+2,1,df+2",
-   "input_slots": [
-    "b,f+2",
-    "b,f+2,1",
-    "b,f+2,1,df+2"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     15,
-     14,
-     22
-    ],
-    "total": 51
-   },
-   "note": "Mid; on block -14; knockdown on hit"
-  },
-  "b,f+2,3": {
-   "name": "Keito",
-   "input": "b,f+2,3",
-   "t8_source": "jin",
-   "t8_id": "Jin-b,f+2,3",
-   "t8_damage": ",17",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.517,
-   "damage": 32,
-   "limb": "legL",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 15,
-   "anim_ref": "t8:jin:jin-b,f+2,3",
-   "input_slots": [
-    "b,f+2",
-    "b,f+2,3"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     15,
-     17
-    ],
-    "total": 32
-   },
-   "note": "Mid; on block -9"
-  },
-  "CD.df#1": {
-   "name": "Electric Thrusting Uppercut",
-   "input": "CD.df#1",
-   "t8_source": "jin",
-   "t8_id": "Jin-CD.df${justFrame}1",
-   "t8_damage": "22",
-   "startup": 0.267,
-   "active": 0.033,
-   "recovery": 0.517,
-   "damage": 22,
-   "limb": "armL",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 11,
-   "anim_ref": "t8:jin:jin-cd.df${justframe}1",
-   "input_slots": [
-    "CD.df#1"
-   ],
-   "move_class": "strike",
-   "note": "Mid; on block -13; knockdown on hit"
-  },
-  "CD.df#2": {
-   "name": "Electric Wind Hook Fist",
-   "input": "CD.df#2",
-   "t8_source": "jin",
-   "t8_id": "Jin-CD.df${justFrame}2",
-   "t8_damage": "25",
-   "startup": 0.183,
-   "active": 0.033,
-   "recovery": 0.45,
-   "damage": 25,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 12,
-   "anim_ref": "t8:jin:jin-cd.df${justframe}2",
-   "input_slots": [
-    "CD.df#2"
-   ],
-   "move_class": "strike",
-   "note": "High; on block +5~+6; knockdown on hit"
-  },
-  "CD.df+1": {
-   "name": "Thrusting Uppercut",
-   "input": "CD.df+1",
-   "t8_source": "jin",
-   "t8_id": "Jin-CD.df+1",
-   "t8_damage": "20",
-   "startup": 0.267,
-   "active": 0.033,
-   "recovery": 0.517,
-   "damage": 20,
-   "limb": "armL",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 10,
-   "anim_ref": "t8:jin:jin-cd.df+1",
-   "input_slots": [
-    "CD.df+1"
-   ],
-   "move_class": "strike",
-   "note": "Mid; on block -13; knockdown on hit"
-  },
-  "CD.df+2": {
-   "name": "Wind Hook Fist",
-   "input": "CD.df+2",
-   "t8_source": "jin",
-   "t8_id": "Jin-CD.df+2",
-   "t8_damage": "20",
-   "startup": 0.183,
-   "active": 0.033,
-   "recovery": 0.467,
-   "damage": 20,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 10,
-   "anim_ref": "t8:jin:jin-cd.df+2",
-   "input_slots": [
-    "CD.df+2"
-   ],
-   "move_class": "strike",
-   "note": "High; on block -10; knockdown on hit"
-  },
-  "CD.DF+4": {
-   "name": "Move CD.DF+4 (CD.DF+4)",
-   "input": "CD.DF+4",
-   "t8_source": "jin",
-   "t8_id": "Jin-CD.DF+4",
-   "t8_damage": "12",
-   "startup": 0.333,
-   "active": 0.033,
-   "recovery": 0.467,
-   "damage": 12,
-   "limb": "legR",
-   "heavy": false,
-   "knock": 4.2,
-   "soulGain": 6,
-   "anim_ref": "t8:jin:jin-cd.df+4",
-   "input_slots": [
-    "CD.DF+4"
-   ],
-   "move_class": "strike",
-   "note": "Low; on block -31"
-  },
-  "CD.DF+4,2": {
-   "name": "Depraved Savagery",
-   "input": "CD.DF+4,2",
-   "t8_source": "jin",
-   "t8_id": "Jin-CD.DF+4,2",
-   "t8_damage": ",28",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.467,
-   "damage": 40,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 15,
-   "anim_ref": "t8:jin:jin-cd.df+4,2",
-   "input_slots": [
-    "CD.DF+4",
-    "CD.DF+4,2"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     12,
-     28
-    ],
-    "total": 40
-   },
-   "note": "Mid; on block -16; knockdown on hit"
-  },
-  "d+1": {
-   "name": "Black Wing Flash",
-   "input": "d+1",
-   "t8_source": "jin",
-   "t8_id": "Jin-d+1",
-   "t8_damage": "21,10",
-   "startup": 0.35,
-   "active": 0.033,
-   "recovery": 0.583,
-   "damage": 31,
-   "limb": "armL",
-   "heavy": true,
-   "knock": 6.5,
-   "soulGain": 15,
-   "anim_ref": "t8:jin:jin-d+1",
-   "input_slots": [
-    "d+1"
-   ],
-   "move_class": "throw",
-   "multi_hit": {
-    "hits": [
-     21,
-     10
-    ],
-    "total": 31
-   },
-   "note": "Mid, Throw; on block -13; Devil-Jin flavor (winged form)",
-   "throw": true,
-   "unblockable": true,
-   "isGrab": true,
-   "throw_break": "1",
-   "devil_flavor": true
-  },
-  "d+2": {
-   "name": "Scourge",
-   "input": "d+2",
-   "t8_source": "jin",
-   "t8_id": "Jin-d+2",
-   "t8_damage": "22",
-   "startup": 0.367,
-   "active": 0.033,
-   "recovery": 0.533,
-   "damage": 22,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 11,
-   "anim_ref": "t8:jin:jin-d+2",
-   "input_slots": [
-    "d+2"
-   ],
-   "move_class": "strike",
-   "note": "Low; on block -14"
-  },
-  "d+3": {
-   "name": "Move d+3 (d+3)",
-   "input": "d+3",
-   "t8_source": "jin",
-   "t8_id": "Jin-d+3",
-   "t8_damage": "7",
-   "startup": 0.25,
-   "active": 0.033,
-   "recovery": 0.533,
-   "damage": 7,
-   "limb": "legL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 4,
-   "anim_ref": "t8:jin:jin-d+3",
-   "input_slots": [
-    "d+3"
-   ],
-   "move_class": "strike",
-   "note": "Low; on block -14"
-  },
-  "d+3+4": {
-   "name": "Double Lift Kick",
-   "input": "d+3+4",
-   "t8_source": "jin",
-   "t8_id": "Jin-d+3+4",
-   "t8_damage": "5,15",
-   "startup": 0.25,
-   "active": 0.033,
-   "recovery": 0.6,
-   "damage": 20,
-   "limb": "both",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 10,
-   "anim_ref": "t8:jin:jin-d+3+4",
-   "input_slots": [
-    "d+3+4"
-   ],
-   "move_class": "strike",
-   "multi_hit": {
-    "hits": [
-     5,
-     15
-    ],
-    "total": 20
-   },
-   "note": "Mid, Mid; on block -19; knockdown on hit"
-  },
-  "d+3,4": {
-   "name": "Move 4 (4)",
-   "input": "d+3,4",
-   "t8_source": "jin",
-   "t8_id": "Jin-d+3,4",
-   "t8_damage": ",10",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.483,
-   "damage": 17,
-   "limb": "legR",
-   "heavy": false,
-   "knock": 4.2,
-   "soulGain": 8,
-   "anim_ref": "t8:jin:jin-d+3,4",
-   "input_slots": [
-    "d+3",
-    "d+3,4"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     7,
-     10
-    ],
-    "total": 17
-   },
-   "note": "High; on block -11"
-  },
-  "d+3,4,3": {
-   "name": "Kazama Style Three-Quarter Kick",
-   "input": "d+3,4,3",
-   "t8_source": "jin",
-   "t8_id": "Jin-d+3,4,3",
-   "t8_damage": ",21",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.55,
-   "damage": 38,
-   "limb": "legL",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 15,
-   "anim_ref": "t8:jin:jin-d+3,4,3",
-   "input_slots": [
-    "d+3",
+    "b,f+2,1,2",
+    "b,f+2,1,df+2",
+    "b,f+2,3",
+    "CD.DF+4,2",
     "d+3,4",
-    "d+3,4,3"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     7,
-     10,
-     21
-    ],
-    "total": 38
-   },
-   "note": "Mid; on block -12"
-  },
-  "d+3,4~4": {
-   "name": "Mid Sidekick",
-   "input": "d+3,4~4",
-   "t8_source": "jin",
-   "t8_id": "Jin-d+3,4~4",
-   "t8_damage": ",24",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.583,
-   "damage": 31,
-   "limb": "both",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 15,
-   "anim_ref": "t8:jin:jin-d+3,4~4",
-   "input_slots": [
-    "d+3",
-    "d+3,4~4"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     7,
-     24
-    ],
-    "total": 31
-   },
-   "note": "Mid; on block -12; knockdown on hit"
-  },
-  "d+4": {
-   "name": "Right Sweep",
-   "input": "d+4",
-   "t8_source": "jin",
-   "t8_id": "Jin-d+4",
-   "t8_damage": "11",
-   "startup": 0.267,
-   "active": 0.033,
-   "recovery": 0.5,
-   "damage": 11,
-   "limb": "legR",
-   "heavy": false,
-   "knock": 4.2,
-   "soulGain": 6,
-   "anim_ref": "t8:jin:jin-d+4",
-   "input_slots": [
-    "d+4"
-   ],
-   "move_class": "strike",
-   "note": "Low; on block -12"
-  },
-  "db+1": {
-   "name": "Crouch Jab",
-   "input": "db+1",
-   "t8_source": "jin",
-   "t8_id": "Jin-db+1",
-   "t8_damage": "5",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.4,
-   "damage": 5,
-   "limb": "armL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 2,
-   "anim_ref": "t8:jin:jin-db+1",
-   "input_slots": [
-    "db+1"
-   ],
-   "move_class": "strike",
-   "note": "Special low; on block -5"
-  },
-  "db+1+2": {
-   "name": "Power Stance",
-   "input": "db+1+2",
-   "t8_source": "jin",
-   "t8_id": "Jin-db+1+2",
-   "t8_damage": "0",
-   "startup": 0.317,
-   "active": 0.3,
-   "recovery": 0.433,
-   "damage": 0,
-   "limb": "both",
-   "heavy": false,
-   "knock": 0.0,
-   "soulGain": 8,
-   "anim_ref": "t8:jin:jin-db+1+2",
-   "input_slots": [
-    "db+1+2"
-   ],
-   "move_class": "special",
-   "note": "Mid; on block -11~+4"
-  },
-  "db+2": {
-   "name": "Move db+2 (db+2)",
-   "input": "db+2",
-   "t8_source": "jin",
-   "t8_id": "Jin-db+2",
-   "t8_damage": "12",
-   "startup": 0.267,
-   "active": 0.033,
-   "recovery": 0.567,
-   "damage": 12,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 4.2,
-   "soulGain": 6,
-   "anim_ref": "t8:jin:jin-db+2",
-   "input_slots": [
-    "db+2"
-   ],
-   "move_class": "strike",
-   "note": "Mid; on block -10"
-  },
-  "db+2,2": {
-   "name": "Move 2 (2)",
-   "input": "db+2,2",
-   "t8_source": "jin",
-   "t8_id": "Jin-db+2,2",
-   "t8_damage": ",11",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.617,
-   "damage": 23,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 12,
-   "anim_ref": "t8:jin:jin-db+2,2",
-   "input_slots": [
-    "db+2",
-    "db+2,2"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     12,
-     11
-    ],
-    "total": 23
-   },
-   "note": "High; on block -12"
-  },
-  "db+2,2,3": {
-   "name": "Savage Sword",
-   "input": "db+2,2,3",
-   "t8_source": "jin",
-   "t8_id": "Jin-db+2,2,3",
-   "t8_damage": ",21",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.45,
-   "damage": 44,
-   "limb": "legL",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 15,
-   "anim_ref": "t8:jin:jin-db+2,2,3",
-   "input_slots": [
-    "db+2",
+    "d+3,4,3",
+    "d+3,4~4",
     "db+2,2",
-    "db+2,2,3"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     12,
-     11,
-     21
-    ],
-    "total": 44
-   },
-   "note": "Mid; on block -9; knockdown on hit"
-  },
-  "db+2,3": {
-   "name": "Cascade Kick",
-   "input": "db+2,3",
-   "t8_source": "jin",
-   "t8_id": "Jin-db+2,3",
-   "t8_damage": ",23",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.517,
-   "damage": 35,
-   "limb": "legL",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 15,
-   "anim_ref": "t8:jin:jin-db+2,3",
-   "input_slots": [
-    "db+2",
-    "db+2,3"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     12,
-     23
-    ],
-    "total": 35
-   },
-   "note": "Mid; on block -8; knockdown on hit"
-  },
-  "db+3": {
-   "name": "Left Spinning Back Kick",
-   "input": "db+3",
-   "t8_source": "jin",
-   "t8_id": "Jin-db+3",
-   "t8_damage": "28",
-   "startup": 0.317,
-   "active": 0.033,
-   "recovery": 0.583,
-   "damage": 28,
-   "limb": "legL",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 14,
-   "anim_ref": "t8:jin:jin-db+3",
-   "input_slots": [
-    "db+3"
-   ],
-   "move_class": "strike",
-   "note": "High; on block -10~-8; knockdown on hit"
-  },
-  "db+4": {
-   "name": "Right Low Roundhouse",
-   "input": "db+4",
-   "t8_source": "jin",
-   "t8_id": "Jin-db+4",
-   "t8_damage": "18",
-   "startup": 0.333,
-   "active": 0.033,
-   "recovery": 0.517,
-   "damage": 18,
-   "limb": "legR",
-   "heavy": true,
-   "knock": 4.2,
-   "soulGain": 9,
-   "anim_ref": "t8:jin:jin-db+4",
-   "input_slots": [
-    "db+4"
-   ],
-   "move_class": "strike",
-   "note": "Low; on block -13"
-  },
-  "df+1": {
-   "name": "Mid Left Punch",
-   "input": "df+1",
-   "t8_source": "jin",
-   "t8_id": "Jin-df+1",
-   "t8_damage": "10",
-   "startup": 0.217,
-   "active": 0.033,
-   "recovery": 0.333,
-   "damage": 10,
-   "limb": "armL",
-   "heavy": false,
-   "knock": 4.2,
-   "soulGain": 5,
-   "anim_ref": "t8:jin:jin-df+1",
-   "input_slots": [
-    "df+1"
-   ],
-   "move_class": "strike",
-   "note": "Mid; on block -3"
-  },
-  "df+1,4": {
-   "name": "High Roundhouse Kick",
-   "input": "df+1,4",
-   "t8_source": "jin",
-   "t8_id": "Jin-df+1,4",
-   "t8_damage": ",18",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.5,
-   "damage": 28,
-   "limb": "legR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 14,
-   "anim_ref": "t8:jin:jin-df+1,4",
-   "input_slots": [
-    "df+1",
-    "df+1,4"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     10,
-     18
-    ],
-    "total": 28
-   },
-   "note": "High; on block -9"
-  },
-  "df+1,4~4": {
-   "name": "Mid Sidekick",
-   "input": "df+1,4~4",
-   "t8_source": "jin",
-   "t8_id": "Jin-df+1,4~4",
-   "t8_damage": ",24",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.583,
-   "damage": 34,
-   "limb": "both",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 15,
-   "anim_ref": "t8:jin:jin-df+1,4~4",
-   "input_slots": [
-    "df+1",
-    "df+1,4~4"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     10,
-     24
-    ],
-    "total": 34
-   },
-   "note": "Mid; on block -12; knockdown on hit"
-  },
-  "df+2": {
-   "name": "Fiendish Rend",
-   "input": "df+2",
-   "t8_source": "jin",
-   "t8_id": "Jin-df+2",
-   "t8_damage": "12",
-   "startup": 0.267,
-   "active": 0.033,
-   "recovery": 0.5,
-   "damage": 12,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 4.2,
-   "soulGain": 6,
-   "anim_ref": "t8:jin:jin-df+2",
-   "input_slots": [
-    "df+2"
-   ],
-   "move_class": "strike",
-   "note": "Mid; on block -9; Devil-Jin flavor (winged form)",
-   "devil_flavor": true
-  },
-  "df+2+4": {
-   "name": "Shun Ren Dan",
-   "input": "df+2+4",
-   "t8_source": "jin",
-   "t8_id": "Jin-df+2+4",
-   "t8_damage": "40",
-   "startup": 0.2,
-   "active": 0.033,
-   "recovery": 0.45,
-   "damage": 40,
-   "limb": "both",
-   "heavy": true,
-   "knock": 6.5,
-   "soulGain": 15,
-   "anim_ref": "t8:jin:jin-df+2+4",
-   "input_slots": [
-    "df+2+4"
-   ],
-   "move_class": "throw",
-   "note": "Throw; on block -2",
-   "throw": true,
-   "unblockable": true,
-   "isGrab": true,
-   "throw_break": "2"
-  },
-  "df+2,4": {
-   "name": "Fiendish Talon Rend",
-   "input": "df+2,4",
-   "t8_source": "jin",
-   "t8_id": "Jin-df+2,4",
-   "t8_damage": ",19",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.55,
-   "damage": 31,
-   "limb": "legR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 15,
-   "anim_ref": "t8:jin:jin-df+2,4",
-   "input_slots": [
-    "df+2",
-    "df+2,4"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     12,
-     19
-    ],
-    "total": 31
-   },
-   "note": "Mid; on block -12; Devil-Jin flavor (winged form)",
-   "devil_flavor": true
-  },
-  "df+2,H.1+2": {
-   "name": "Awakened Fiendish Claw",
-   "input": "df+2,H.1+2",
-   "t8_source": "jin",
-   "t8_id": "Jin-df+2,H.1+2",
-   "t8_damage": ",25",
-   "startup": 0.4,
-   "active": 0.033,
-   "recovery": 0.583,
-   "damage": 37,
-   "limb": "both",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 15,
-   "anim_ref": "t8:jin:jin-df+2,h.1+2",
-   "input_slots": [
-    "df+2",
-    "df+2,H.1+2"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     12,
-     25
-    ],
-    "total": 37
-   },
-   "note": "Mid; on block +2; knockdown on hit; Devil-Jin flavor (winged form)",
-   "devil_flavor": true
-  },
-  "df+3": {
-   "name": "Left Roundhouse",
-   "input": "df+3",
-   "t8_source": "jin",
-   "t8_id": "Jin-df+3",
-   "t8_damage": "16",
-   "startup": 0.2,
-   "active": 0.033,
-   "recovery": 0.45,
-   "damage": 16,
-   "limb": "legL",
-   "heavy": false,
-   "knock": 4.2,
-   "soulGain": 8,
-   "anim_ref": "t8:jin:jin-df+3",
-   "input_slots": [
-    "df+3"
-   ],
-   "move_class": "strike",
-   "note": "Mid; on block -8"
-  },
-  "df+3~3": {
-   "name": "Brazilian Kick",
-   "input": "df+3~3",
-   "t8_source": "jin",
-   "t8_id": "Jin-df+3~3",
-   "t8_damage": "20",
-   "startup": 0.383,
-   "active": 0.033,
-   "recovery": 0.383,
-   "damage": 20,
-   "limb": "both",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 10,
-   "anim_ref": "t8:jin:jin-df+3~3",
-   "input_slots": [
-    "df+3~3"
-   ],
-   "move_class": "strike",
-   "note": "Mid; on block +6c"
-  },
-  "df+4": {
-   "name": "Right Spinning Axe Kick",
-   "input": "df+4",
-   "t8_source": "jin",
-   "t8_id": "Jin-df+4",
-   "t8_damage": "22",
-   "startup": 0.333,
-   "active": 0.033,
-   "recovery": 0.35,
-   "damage": 22,
-   "limb": "legR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 11,
-   "anim_ref": "t8:jin:jin-df+4",
-   "input_slots": [
-    "df+4"
-   ],
-   "move_class": "strike",
-   "note": "Mid; on block +0"
-  },
-  "DVS.1": {
-   "name": "Awakened Thunder God Fist",
-   "input": "DVS.1",
-   "t8_source": "jin",
-   "t8_id": "Jin-DVS.1",
-   "t8_damage": "25",
-   "startup": 0.333,
-   "active": 0.033,
-   "recovery": 0.5,
-   "damage": 25,
-   "limb": "armL",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 12,
-   "anim_ref": "t8:jin:jin-dvs.1",
-   "input_slots": [
-    "DVS.1"
-   ],
-   "move_class": "strike",
-   "note": "Mid; on block -9"
-  },
-  "DVS.2": {
-   "name": "Awakened Wind God Fist",
-   "input": "DVS.2",
-   "t8_source": "jin",
-   "t8_id": "Jin-DVS.2",
-   "t8_damage": "23",
-   "startup": 0.183,
-   "active": 0.033,
-   "recovery": 0.4,
-   "damage": 23,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 12,
-   "anim_ref": "t8:jin:jin-dvs.2",
-   "input_slots": [
-    "DVS.2"
-   ],
-   "move_class": "strike",
-   "note": "Special mid; on block +4; knockdown on hit"
-  },
-  "DVS.3": {
-   "name": "Awakened Demon's Hoof",
-   "input": "DVS.3",
-   "t8_source": "jin",
-   "t8_id": "Jin-DVS.3",
-   "t8_damage": "25",
-   "startup": 0.433,
-   "active": 0.033,
-   "recovery": 0.433,
-   "damage": 25,
-   "limb": "legL",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 12,
-   "anim_ref": "t8:jin:jin-dvs.3",
-   "input_slots": [
-    "DVS.3"
-   ],
-   "move_class": "strike",
-   "note": "Mid; on block +2c; knockdown on hit"
-  },
-  "DVS.4": {
-   "name": "Move DVS.4 (DVS.4)",
-   "input": "DVS.4",
-   "t8_source": "jin",
-   "t8_id": "Jin-DVS.4",
-   "t8_damage": "10",
-   "startup": 0.267,
-   "active": 0.033,
-   "recovery": 0.65,
-   "damage": 10,
-   "limb": "legR",
-   "heavy": false,
-   "knock": 4.2,
-   "soulGain": 5,
-   "anim_ref": "t8:jin:jin-dvs.4",
-   "input_slots": [
-    "DVS.4"
-   ],
-   "move_class": "strike",
-   "note": "Low; on block -12"
-  },
-  "DVS.4,4": {
-   "name": "Awakened Spinning Demon",
-   "input": "DVS.4,4",
-   "t8_source": "jin",
-   "t8_id": "Jin-DVS.4,4",
-   "t8_damage": ",25",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.567,
-   "damage": 35,
-   "limb": "legR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 15,
-   "anim_ref": "t8:jin:jin-dvs.4,4",
-   "input_slots": [
-    "DVS.4",
-    "DVS.4,4"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     10,
-     25
-    ],
-    "total": 35
-   },
-   "note": "Mid; on block -14"
-  },
-  "DVS.DF+3": {
-   "name": "Awakened Demon's Tail",
-   "input": "DVS.DF+3",
-   "t8_source": "jin",
-   "t8_id": "Jin-DVS.DF+3",
-   "t8_damage": "24",
-   "startup": 0.55,
-   "active": 0.033,
-   "recovery": 0.683,
-   "damage": 24,
-   "limb": "legL",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 12,
-   "anim_ref": "t8:jin:jin-dvs.df+3",
-   "input_slots": [
-    "DVS.DF+3"
-   ],
-   "move_class": "strike",
-   "note": "Low; on block -23; knockdown on hit"
-  },
-  "f+1+2": {
-   "name": "Double Chamber Punch",
-   "input": "f+1+2",
-   "t8_source": "jin",
-   "t8_id": "Jin-f+1+2",
-   "t8_damage": "14,24",
-   "startup": 0.233,
-   "active": 0.033,
-   "recovery": 0.55,
-   "damage": 38,
-   "limb": "both",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 15,
-   "anim_ref": "t8:jin:jin-f+1+2",
-   "input_slots": [
-    "f+1+2"
-   ],
-   "move_class": "strike",
-   "multi_hit": {
-    "hits": [
-     14,
-     24
-    ],
-    "total": 38
-   },
-   "note": "High, High; on block -6; knockdown on hit"
-  },
-  "f+3": {
-   "name": "Left Sidekick",
-   "input": "f+3",
-   "t8_source": "jin",
-   "t8_id": "Jin-f+3",
-   "t8_damage": "12",
-   "startup": 0.233,
-   "active": 0.033,
-   "recovery": 0.583,
-   "damage": 12,
-   "limb": "legL",
-   "heavy": false,
-   "knock": 4.2,
-   "soulGain": 6,
-   "anim_ref": "t8:jin:jin-f+3",
-   "input_slots": [
-    "f+3"
-   ],
-   "move_class": "strike",
-   "note": "Mid; on block -16"
-  },
-  "f+3,1": {
-   "name": "Tanden Nidan-uchi",
-   "input": "f+3,1",
-   "t8_source": "jin",
-   "t8_id": "Jin-f+3,1",
-   "t8_damage": ",17",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.517,
-   "damage": 29,
-   "limb": "armL",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 14,
-   "anim_ref": "t8:jin:jin-f+3,1",
-   "input_slots": [
-    "f+3",
-    "f+3,1"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     12,
-     17
-    ],
-    "total": 29
-   },
-   "note": "Mid; on block -12"
-  },
-  "f+3,3": {
-   "name": "Stinger",
-   "input": "f+3,3",
-   "t8_source": "jin",
-   "t8_id": "Jin-f+3,3",
-   "t8_damage": ",14",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.45,
-   "damage": 26,
-   "limb": "legL",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 13,
-   "anim_ref": "t8:jin:jin-f+3,3",
-   "input_slots": [
-    "f+3",
-    "f+3,3"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     12,
-     14
-    ],
-    "total": 26
-   },
-   "note": "High; on block -8"
-  },
-  "f+3+4": {
-   "name": "Zenshin",
-   "input": "f+3+4",
-   "t8_source": "jin",
-   "t8_id": "Jin-f+3+4",
-   "t8_damage": null,
-   "startup": 0.167,
-   "active": 0.3,
-   "recovery": 0.167,
-   "damage": 0,
-   "limb": "both",
-   "heavy": false,
-   "knock": 0.0,
-   "soulGain": 8,
-   "anim_ref": "t8:jin:jin-f+3+4",
-   "input_slots": [
-    "f+3+4"
-   ],
-   "move_class": "special",
-   "devil_flavor": true,
-   "note": "Devil-Jin flavor (winged form)"
-  },
-  "f+4": {
-   "name": "Front Thrust Kick",
-   "input": "f+4",
-   "t8_source": "jin",
-   "t8_id": "Jin-f+4",
-   "t8_damage": "21",
-   "startup": 0.267,
-   "active": 0.033,
-   "recovery": 0.533,
-   "damage": 21,
-   "limb": "legR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 10,
-   "anim_ref": "t8:jin:jin-f+4",
-   "input_slots": [
-    "f+4"
-   ],
-   "move_class": "strike",
-   "note": "Mid; on block -8"
-  },
-  "FC.df+4": {
-   "name": "Right Sweep (2)",
-   "input": "FC.df+4",
-   "t8_source": "jin",
-   "t8_id": "Jin-FC.df+4",
-   "t8_damage": "20",
-   "startup": 0.35,
-   "active": 0.033,
-   "recovery": 0.517,
-   "damage": 20,
-   "limb": "legR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 10,
-   "anim_ref": "t8:jin:jin-fc.df+4",
-   "input_slots": [
-    "FC.df+4"
-   ],
-   "move_class": "strike",
-   "note": "Low; on block -26"
-  },
-  "f,F+2": {
-   "name": "Demon's Paw",
-   "input": "f,F+2",
-   "t8_source": "jin",
-   "t8_id": "Jin-f,F+2",
-   "t8_damage": "22",
-   "startup": 0.233,
-   "active": 0.033,
-   "recovery": 0.483,
-   "damage": 22,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 11,
-   "anim_ref": "t8:jin:jin-f,f+2",
-   "input_slots": [
-    "f,F+2"
-   ],
-   "move_class": "strike",
-   "note": "Mid; on block -8; knockdown on hit"
-  },
-  "f,F+3": {
-   "name": "Left Axe Kick",
-   "input": "f,F+3",
-   "t8_source": "jin",
-   "t8_id": "Jin-f,F+3",
-   "t8_damage": "20",
-   "startup": 0.383,
-   "active": 0.033,
-   "recovery": 0.4,
-   "damage": 20,
-   "limb": "legL",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 10,
-   "anim_ref": "t8:jin:jin-f,f+3",
-   "input_slots": [
-    "f,F+3"
-   ],
-   "move_class": "strike",
-   "note": "Mid; on block -4; knockdown on hit"
-  },
-  "f,F+3,1": {
-   "name": "Left Jab",
-   "input": "f,F+3,1",
-   "t8_source": "jin",
-   "t8_id": "Jin-f,F+3,1",
-   "t8_damage": ",5",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.3,
-   "damage": 25,
-   "limb": "armL",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 12,
-   "anim_ref": "t8:jin:jin-f,f+3,1",
-   "input_slots": [
-    "f,F+3",
-    "f,F+3,1"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     20,
-     5
-    ],
-    "total": 25
-   },
-   "note": "High; on block +1"
-  },
-  "f,F+4": {
-   "name": "Battery Sidekick",
-   "input": "f,F+4",
-   "t8_source": "jin",
-   "t8_id": "Jin-f,F+4",
-   "t8_damage": "32",
-   "startup": 0.283,
-   "active": 0.033,
-   "recovery": 0.533,
-   "damage": 32,
-   "limb": "legR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 15,
-   "anim_ref": "t8:jin:jin-f,f+4",
-   "input_slots": [
-    "f,F+4"
-   ],
-   "move_class": "strike",
-   "note": "Mid; on block -7; knockdown on hit"
-  },
-  "f,f,F+3": {
-   "name": "Leaping Side Kick",
-   "input": "f,f,F+3",
-   "t8_source": "jin",
-   "t8_id": "Jin-f,f,F+3",
-   "t8_damage": "30",
-   "startup": 0.367,
-   "active": 0.033,
-   "recovery": 0.6,
-   "damage": 30,
-   "limb": "legL",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 15,
-   "anim_ref": "t8:jin:jin-f,f,f+3",
-   "input_slots": [
-    "f,f,F+3"
-   ],
-   "move_class": "strike",
-   "note": "Mid; on block +6; knockdown on hit"
-  },
-  "f,n,d,df": {
-   "name": "Crouch Dash",
-   "input": "f,n,d,df",
-   "t8_source": "jin",
-   "t8_id": "Jin-f,n,d,df",
-   "t8_damage": null,
-   "startup": 0.167,
-   "active": 0.3,
-   "recovery": 0.05,
-   "damage": 0,
-   "limb": "both",
-   "heavy": false,
-   "knock": 0.0,
-   "soulGain": 8,
-   "anim_ref": "t8:jin:jin-f,n,d,df",
-   "input_slots": [
-    "f,n,d,df"
-   ],
-   "move_class": "special",
-   "note": "Breaking Step"
-  },
-  "f,n,d,df,UF": {
-   "name": "Crouch Dash (UF)",
-   "input": "f,n,d,df,UF",
-   "t8_source": "jin",
-   "t8_id": "Jin-f,n,d,df,UF",
-   "t8_damage": null,
-   "startup": 0.167,
-   "active": 0.3,
-   "recovery": 0.433,
-   "damage": 0,
-   "limb": "both",
-   "heavy": false,
-   "knock": 0.0,
-   "soulGain": 8,
-   "anim_ref": "t8:jin:jin-f,n,d,df,uf",
-   "input_slots": [
-    "f,n,d,df",
-    "f,n,d,df,UF"
-   ],
-   "move_class": "special",
-   "note": "Breaking Step; Stance: Crouch Dash"
-  },
-  "H.2+3": {
-   "name": "Hellfire Trespass Slayer",
-   "input": "H.2+3",
-   "t8_source": "jin",
-   "t8_id": "Jin-H.2+3",
-   "t8_damage": "57",
-   "startup": 0.25,
-   "active": 0.033,
-   "recovery": 0.55,
-   "damage": 57,
-   "limb": "both",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 15,
-   "anim_ref": "t8:jin:jin-h.2+3",
-   "input_slots": [
-    "H.2+3"
-   ],
-   "move_class": "strike",
-   "note": "Mid, High, Mid; on block +3; Devil-Jin flavor (winged form)",
-   "devil_flavor": true
-  },
-  "H.2+3,4": {
-   "name": "Hellfire Darkside Slayer",
-   "input": "H.2+3,4",
-   "t8_source": "jin",
-   "t8_id": "Jin-H.2+3,4",
-   "t8_damage": "50",
-   "startup": 0.25,
-   "active": 0.033,
-   "recovery": 0.533,
-   "damage": 50,
-   "limb": "both",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 15,
-   "anim_ref": "t8:jin:jin-h.2+3,4",
-   "input_slots": [
-    "H.2+3,4"
-   ],
-   "move_class": "strike",
-   "note": "Mid, High, Mid; on block +9; knockdown on hit; Devil-Jin flavor (winged form)",
-   "devil_flavor": true
-  },
-  "H.db+1+2": {
-   "name": "Awakened Power Stance",
-   "input": "H.db+1+2",
-   "t8_source": "jin",
-   "t8_id": "Jin-H.db+1+2",
-   "t8_damage": "0",
-   "startup": 0.317,
-   "active": 0.3,
-   "recovery": 0.433,
-   "damage": 0,
-   "limb": "both",
-   "heavy": false,
-   "knock": 0.0,
-   "soulGain": 8,
-   "anim_ref": "t8:jin:jin-h.db+1+2",
-   "input_slots": [
-    "H.db+1+2"
-   ],
-   "move_class": "special",
-   "note": "Mid; on block +4; Devil-Jin flavor (winged form)",
-   "devil_flavor": true
-  },
-  "H.f,F+1+2": {
-   "name": "Awakened Black Wing",
-   "input": "H.f,F+1+2",
-   "t8_source": "jin",
-   "t8_id": "Jin-H.f,F+1+2",
-   "t8_damage": "20",
-   "startup": 0.35,
-   "active": 0.033,
-   "recovery": 0.633,
-   "damage": 20,
-   "limb": "both",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 10,
-   "anim_ref": "t8:jin:jin-h.f,f+1+2",
-   "input_slots": [
-    "H.f,F+1+2"
-   ],
-   "move_class": "strike",
-   "note": "Mid; on block +5; Devil-Jin flavor (winged form)",
-   "devil_flavor": true
-  },
-  "Left throw": {
-   "name": "Shoulder Flip",
-   "input": "Left throw",
-   "t8_source": "jin",
-   "t8_id": "Jin-Left throw",
-   "t8_damage": "43",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.317,
-   "damage": 43,
-   "limb": "both",
-   "heavy": true,
-   "knock": 6.5,
-   "soulGain": 15,
-   "anim_ref": "t8:jin:jin-left throw",
-   "input_slots": [
-    "Left throw"
-   ],
-   "move_class": "throw",
-   "note": "Throw; on block -3",
-   "throw": true,
-   "unblockable": true,
-   "isGrab": true,
-   "throw_break": "1"
-  },
-  "OTG.d+1+2": {
-   "name": "Black Out",
-   "input": "OTG.d+1+2",
-   "t8_source": "jin",
-   "t8_id": "Jin-OTG.d+1+2",
-   "t8_damage": "24",
-   "startup": 0.317,
-   "active": 0.033,
-   "recovery": 0.517,
-   "damage": 24,
-   "limb": "both",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 12,
-   "anim_ref": "t8:jin:jin-otg.d+1+2",
-   "input_slots": [
-    "OTG.d+1+2"
-   ],
-   "move_class": "strike",
-   "note": "Low; on block -13"
-  },
-  "qcb+1+3": {
-   "name": "Complicated Wire",
-   "input": "qcb+1+3",
-   "t8_source": "jin",
-   "t8_id": "Jin-qcb+1+3",
-   "t8_damage": "40",
-   "startup": 0.2,
-   "active": 0.033,
-   "recovery": 0.45,
-   "damage": 40,
-   "limb": "both",
-   "heavy": true,
-   "knock": 6.5,
-   "soulGain": 15,
-   "anim_ref": "t8:jin:jin-qcb+1+3",
-   "input_slots": [
-    "qcb+1+3"
-   ],
-   "move_class": "throw",
-   "note": "Throw; on block -2",
-   "throw": true,
-   "unblockable": true,
-   "isGrab": true,
-   "throw_break": "1"
-  },
-  "R.df+1+2": {
-   "name": "Polar Demon Gouge",
-   "input": "R.df+1+2",
-   "t8_source": "jin",
-   "t8_id": "Jin-R.df+1+2",
-   "t8_damage": "55+",
-   "startup": 0.333,
-   "active": 0.3,
-   "recovery": 0.65,
-   "damage": 0,
-   "limb": "both",
-   "heavy": false,
-   "knock": 0.0,
-   "soulGain": 8,
-   "anim_ref": "t8:jin:jin-r.df+1+2",
-   "input_slots": [
-    "R.df+1+2"
-   ],
-   "move_class": "special",
-   "note": "Mid, Throw; on block -18"
-  },
-  "Right throw": {
-   "name": "Over the Limit",
-   "input": "Right throw",
-   "t8_source": "jin",
-   "t8_id": "Jin-Right throw",
-   "t8_damage": "40",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.317,
-   "damage": 40,
-   "limb": "both",
-   "heavy": true,
-   "knock": 6.5,
-   "soulGain": 15,
-   "anim_ref": "t8:jin:jin-right throw",
-   "input_slots": [
-    "Right throw"
-   ],
-   "move_class": "throw",
-   "note": "Throw; on block -3",
-   "throw": true,
-   "unblockable": true,
-   "isGrab": true,
-   "throw_break": "1"
-  },
-  "ub+1+2": {
-   "name": "Avenger",
-   "input": "ub+1+2",
-   "t8_source": "jin",
-   "t8_id": "Jin-ub+1+2",
-   "t8_damage": "50",
-   "startup": 1.25,
-   "active": 0.033,
-   "recovery": 0.567,
-   "damage": 50,
-   "limb": "both",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 15,
-   "anim_ref": "t8:jin:jin-ub+1+2",
-   "input_slots": [
-    "ub+1+2"
-   ],
-   "move_class": "strike",
-   "note": "m!; Konshin Seikenzuki; knockdown on hit"
-  },
-  "ub+4": {
-   "name": "Move ub+4 (ub+4)",
-   "input": "ub+4",
-   "t8_source": "jin",
-   "t8_id": "Jin-ub+4",
-   "t8_damage": "15",
-   "startup": 0.25,
-   "active": 0.033,
-   "recovery": 0.483,
-   "damage": 15,
-   "limb": "legR",
-   "heavy": false,
-   "knock": 4.2,
-   "soulGain": 8,
-   "anim_ref": "t8:jin:jin-ub+4",
-   "input_slots": [
-    "ub+4"
-   ],
-   "move_class": "strike",
-   "note": "Mid; on block -13; knockdown on hit"
-  },
-  "uf+1+2": {
-   "name": "Tidal Wave",
-   "input": "uf+1+2",
-   "t8_source": "jin",
-   "t8_id": "Jin-uf+1+2",
-   "t8_damage": "40",
-   "startup": 0.2,
-   "active": 0.033,
-   "recovery": 0.45,
-   "damage": 40,
-   "limb": "both",
-   "heavy": true,
-   "knock": 6.5,
-   "soulGain": 15,
-   "anim_ref": "t8:jin:jin-uf+1+2",
-   "input_slots": [
-    "uf+1+2"
-   ],
-   "move_class": "throw",
-   "note": "Throw; on block +0",
-   "throw": true,
-   "unblockable": true,
-   "isGrab": true,
-   "throw_break": "1+2"
-  },
-  "uf+2": {
-   "name": "Evading Middle Strike",
-   "input": "uf+2",
-   "t8_source": "jin",
-   "t8_id": "Jin-uf+2",
-   "t8_damage": "18",
-   "startup": 0.25,
-   "active": 0.033,
-   "recovery": 0.417,
-   "damage": 18,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 4.2,
-   "soulGain": 9,
-   "anim_ref": "t8:jin:jin-uf+2",
-   "input_slots": [
-    "uf+2"
-   ],
-   "move_class": "strike",
-   "note": "Mid; on block -10~-9"
-  },
-  "uf+3": {
-   "name": "Left Spinning Jump Kick",
-   "input": "uf+3",
-   "t8_source": "jin",
-   "t8_id": "Jin-uf+3",
-   "t8_damage": "17",
-   "startup": 0.367,
-   "active": 0.033,
-   "recovery": 0.5,
-   "damage": 17,
-   "limb": "legL",
-   "heavy": false,
-   "knock": 4.2,
-   "soulGain": 8,
-   "anim_ref": "t8:jin:jin-uf+3",
-   "input_slots": [
-    "uf+3"
-   ],
-   "move_class": "strike",
-   "note": "Mid; on block -9"
-  },
-  "uf+4": {
-   "name": "Front Jump Kick",
-   "input": "uf+4",
-   "t8_source": "jin",
-   "t8_id": "Jin-uf+4",
-   "t8_damage": "13",
-   "startup": 0.25,
-   "active": 0.033,
-   "recovery": 0.483,
-   "damage": 13,
-   "limb": "legR",
-   "heavy": false,
-   "knock": 4.2,
-   "soulGain": 6,
-   "anim_ref": "t8:jin:jin-uf+4",
-   "input_slots": [
-    "uf+4"
-   ],
-   "move_class": "strike",
-   "note": "Mid; on block -13; knockdown on hit"
-  },
-  "uf,n,4": {
-   "name": "Delayed Rising Toe Kick",
-   "input": "uf,n,4",
-   "t8_source": "jin",
-   "t8_id": "Jin-uf,n,4",
-   "t8_damage": "20",
-   "startup": 0.383,
-   "active": 0.033,
-   "recovery": 0.5,
-   "damage": 20,
-   "limb": "legR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 10,
-   "anim_ref": "t8:jin:jin-uf,n,4",
-   "input_slots": [
-    "uf,n,4"
-   ],
-   "move_class": "strike",
-   "note": "Mid; on block -13; knockdown on hit"
-  },
-  "ws1": {
-   "name": "Solar Plexus Strike",
-   "input": "ws1",
-   "t8_source": "jin",
-   "t8_id": "Jin-ws1",
-   "t8_damage": "7",
-   "startup": 0.217,
-   "active": 0.033,
-   "recovery": 0.4,
-   "damage": 7,
-   "limb": "armL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 4,
-   "anim_ref": "t8:jin:jin-ws1",
-   "input_slots": [
-    "ws1"
-   ],
-   "move_class": "strike",
-   "note": "Mid; on block -6"
-  },
-  "ws1,2": {
-   "name": "Twin Lancer",
-   "input": "ws1,2",
-   "t8_source": "jin",
-   "t8_id": "Jin-ws1,2",
-   "t8_damage": ",19",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.433,
-   "damage": 26,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 13,
-   "anim_ref": "t8:jin:jin-ws1,2",
-   "input_slots": [
-    "ws1",
-    "ws1,2"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     7,
-     19
-    ],
-    "total": 26
-   },
-   "note": "Mid; on block -8"
-  },
-  "ws1,3": {
-   "name": "Solar Plexus Strike (3)",
-   "input": "ws1,3",
-   "t8_source": "jin",
-   "t8_id": "Jin-ws1,3",
-   "t8_damage": ",8",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.433,
-   "damage": 15,
-   "limb": "legL",
-   "heavy": false,
-   "knock": 4.2,
-   "soulGain": 8,
-   "anim_ref": "t8:jin:jin-ws1,3",
-   "input_slots": [
-    "ws1",
-    "ws1,3"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     7,
-     8
-    ],
-    "total": 15
-   },
-   "note": "High; on block -6"
-  },
-  "ws1,3,2": {
-   "name": "Solar Plexus Strike (2)",
-   "input": "ws1,3,2",
-   "t8_source": "jin",
-   "t8_id": "Jin-ws1,3,2",
-   "t8_damage": ",4",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.317,
-   "damage": 19,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 4.2,
-   "soulGain": 10,
-   "anim_ref": "t8:jin:jin-ws1,3,2",
-   "input_slots": [
-    "ws1",
-    "ws1,3",
-    "ws1,3,2"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     7,
-     8,
-     4
-    ],
-    "total": 19
-   },
-   "note": "Mid; on block -11"
-  },
-  "ws1,3,2,1": {
-   "name": "Solar Plexus Strike (1)",
-   "input": "ws1,3,2,1",
-   "t8_source": "jin",
-   "t8_id": "Jin-ws1,3,2,1",
-   "t8_damage": ",3",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.317,
-   "damage": 22,
-   "limb": "armL",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 11,
-   "anim_ref": "t8:jin:jin-ws1,3,2,1",
-   "input_slots": [
-    "ws1",
-    "ws1,3",
-    "ws1,3,2",
-    "ws1,3,2,1"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     7,
-     8,
-     4,
-     3
-    ],
-    "total": 22
-   },
-   "note": "Mid; on block -11"
-  },
-  "ws1,3,2,1,4": {
-   "name": "Solar Plexus Strike (4)",
-   "input": "ws1,3,2,1,4",
-   "t8_source": "jin",
-   "t8_id": "Jin-ws1,3,2,1,4",
-   "t8_damage": ",5",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.317,
-   "damage": 27,
-   "limb": "legR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 14,
-   "anim_ref": "t8:jin:jin-ws1,3,2,1,4",
-   "input_slots": [
-    "ws1",
-    "ws1,3",
-    "ws1,3,2",
-    "ws1,3,2,1",
-    "ws1,3,2,1,4"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     7,
-     8,
-     4,
-     3,
-     5
-    ],
-    "total": 27
-   },
-   "note": "Low; on block -31"
-  },
-  "ws1,3,2,1,4,2": {
-   "name": "Kazama Style 6 Hit Combo Redux",
-   "input": "ws1,3,2,1,4,2",
-   "t8_source": "jin",
-   "t8_id": "Jin-ws1,3,2,1,4,2",
-   "t8_damage": ",10",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.317,
-   "damage": 37,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 15,
-   "anim_ref": "t8:jin:jin-ws1,3,2,1,4,2",
-   "input_slots": [
-    "ws1",
+    "db+2,2,3",
+    "db+2,3",
+    "df+1,4",
+    "df+1,4~4",
+    "df+2,4",
+    "df+2,H.1+2",
+    "DVS.4,4",
+    "f+3,1",
+    "f+3,3",
+    "f,F+3,1",
+    "ws1,2",
     "ws1,3",
     "ws1,3,2",
     "ws1,3,2,1",
     "ws1,3,2,1,4",
-    "ws1,3,2,1,4,2"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     7,
-     8,
-     4,
-     3,
-     5,
-     10
-    ],
-    "total": 37
-   },
-   "note": "Mid; on block -16; knockdown on hit"
-  },
-  "ws1,3~3": {
-   "name": "Brazilian Kick",
-   "input": "ws1,3~3",
-   "t8_source": "jin",
-   "t8_id": "Jin-ws1,3~3",
-   "t8_damage": ",20",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.383,
-   "damage": 27,
-   "limb": "both",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 14,
-   "anim_ref": "t8:jin:jin-ws1,3~3",
-   "input_slots": [
-    "ws1",
-    "ws1,3~3"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     7,
-     20
-    ],
-    "total": 27
-   },
-   "note": "Mid; on block +6"
-  },
-  "ws2": {
-   "name": "Crouching Uppercut",
-   "input": "ws2",
-   "t8_source": "jin",
-   "t8_id": "Jin-ws2",
-   "t8_damage": "14",
-   "startup": 0.233,
-   "active": 0.033,
-   "recovery": 0.333,
-   "damage": 14,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 4.2,
-   "soulGain": 7,
-   "anim_ref": "t8:jin:jin-ws2",
-   "input_slots": [
-    "ws2"
-   ],
-   "move_class": "strike",
-   "note": "Mid; on block -12; knockdown on hit"
-  },
-  "ws3": {
-   "name": "Bamboo Splitter",
-   "input": "ws3",
-   "t8_source": "jin",
-   "t8_id": "Jin-ws3",
-   "t8_damage": "20",
-   "startup": 0.267,
-   "active": 0.033,
-   "recovery": 0.517,
-   "damage": 20,
-   "limb": "legL",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 10,
-   "anim_ref": "t8:jin:jin-ws3",
-   "input_slots": [
-    "ws3"
-   ],
-   "move_class": "strike",
-   "note": "Mid; on block -9"
-  },
-  "ws4": {
-   "name": "Move ws4 (ws4)",
-   "input": "ws4",
-   "t8_source": "jin",
-   "t8_id": "Jin-ws4",
-   "t8_damage": "13",
-   "startup": 0.183,
-   "active": 0.033,
-   "recovery": 0.35,
-   "damage": 13,
-   "limb": "legR",
-   "heavy": false,
-   "knock": 4.2,
-   "soulGain": 6,
-   "anim_ref": "t8:jin:jin-ws4",
-   "input_slots": [
-    "ws4"
-   ],
-   "move_class": "strike",
-   "note": "Mid; on block -3"
-  },
-  "ws4,4": {
-   "name": "Double Cross Kicks",
-   "input": "ws4,4",
-   "t8_source": "jin",
-   "t8_id": "Jin-ws4,4",
-   "t8_damage": ",15",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.5,
-   "damage": 28,
-   "limb": "legR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 14,
-   "anim_ref": "t8:jin:jin-ws4,4",
-   "input_slots": [
-    "ws4",
-    "ws4,4"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     13,
-     15
-    ],
-    "total": 28
-   },
-   "note": "High; on block -7"
-  },
-  "ZEN.1": {
-   "name": "Move ZEN.1 (ZEN.1)",
-   "input": "ZEN.1",
-   "t8_source": "jin",
-   "t8_id": "Jin-ZEN.1",
-   "t8_damage": "14",
-   "startup": 0.267,
-   "active": 0.033,
-   "recovery": 0.35,
-   "damage": 14,
-   "limb": "armL",
-   "heavy": false,
-   "knock": 4.2,
-   "soulGain": 7,
-   "anim_ref": "t8:jin:jin-zen.1",
-   "input_slots": [
-    "ZEN.1"
-   ],
-   "move_class": "strike",
-   "note": "Mid; on block -3; Devil-Jin flavor (winged form)",
-   "devil_flavor": true
-  },
-  "ZEN.1+2": {
-   "name": "Karmic Epicenter",
-   "input": "ZEN.1+2",
-   "t8_source": "jin",
-   "t8_id": "Jin-ZEN.1+2",
-   "t8_damage": "10,20",
-   "startup": 0.35,
-   "active": 0.033,
-   "recovery": 0.55,
-   "damage": 30,
-   "limb": "both",
-   "heavy": true,
-   "knock": 6.5,
-   "soulGain": 15,
-   "anim_ref": "t8:jin:jin-zen.1+2",
-   "input_slots": [
-    "ZEN.1+2"
-   ],
-   "move_class": "throw",
-   "multi_hit": {
-    "hits": [
-     10,
-     20
-    ],
-    "total": 30
-   },
-   "note": "Low, Throw; on block -14; Devil-Jin flavor (winged form)",
-   "throw": true,
-   "unblockable": true,
-   "isGrab": true,
-   "throw_break": "1+2",
-   "devil_flavor": true
-  },
-  "ZEN.1,2": {
-   "name": "Brimstone Bite",
-   "input": "ZEN.1,2",
-   "t8_source": "jin",
-   "t8_id": "Jin-ZEN.1,2",
-   "t8_damage": ",21",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.533,
-   "damage": 35,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 15,
-   "anim_ref": "t8:jin:jin-zen.1,2",
-   "input_slots": [
-    "ZEN.1",
+    "ws1,3,2,1,4,2",
+    "ws1,3~3",
+    "ws4,4",
     "ZEN.1,2"
-   ],
-   "move_class": "string",
-   "multi_hit": {
-    "hits": [
-     14,
-     21
-    ],
-    "total": 35
-   },
-   "note": "Mid; on block -14; knockdown on hit; Devil-Jin flavor (winged form)",
-   "devil_flavor": true
+  ],
+  "specials": [
+    {
+      "input": "d,d/b,d,d/b+1+2",
+      "t3_row": 277,
+      "damage": 24,
+      "throw": true
+    },
+    {
+      "input": "d/b,n,f+2",
+      "t3_row": 276,
+      "damage": 24,
+      "throw": true
+    },
+    {
+      "input": "n,d/f,n,d/f+1",
+      "t3_row": 277,
+      "damage": 24,
+      "throw": true
+    },
+    {
+      "input": "u+1+2",
+      "name": "DEVIL FLIGHT (takeoff)",
+      "t3_source": "deviljin",
+      "t3_row": null,
+      "anim_ref": "t3:deviljin:flight:takeoff",
+      "move_class": "stance",
+      "flight": true,
+      "startup": 0.5,
+      "active": 0.0,
+      "recovery": 0.3,
+      "damage": 0,
+      "knock": 0,
+      "soulGain": 10,
+      "note": "Wings carry Demonio airborne; flight stance. Placeholder anim until devil-jin T3 rows mapped."
+    },
+    {
+      "input": "f,f+1+2",
+      "name": "INFERNO BEAM (devil laser)",
+      "t3_source": "deviljin",
+      "t3_row": null,
+      "anim_ref": "t3:deviljin:special:beam",
+      "move_class": "projectile",
+      "flight_only": true,
+      "startup": 0.667,
+      "active": 0.5,
+      "recovery": 0.8,
+      "damage": 28,
+      "knock": 7.0,
+      "soulGain": 15,
+      "note": "Devil Jin-style forehead/chest laser. Placeholder anim until devil-jin T3 rows mapped."
+    },
+    {
+      "input": "d/b+1+2",
+      "name": "HELLFIRE SWEEP",
+      "t3_source": "deviljin",
+      "t3_row": null,
+      "anim_ref": "t3:deviljin:special:sweep",
+      "move_class": "strike",
+      "limb": "legL",
+      "startup": 0.333,
+      "active": 0.05,
+      "recovery": 0.6,
+      "damage": 18,
+      "knock": 4.0,
+      "soulGain": 10,
+      "note": "Devil low sweep. Placeholder anim until devil-jin T3 rows mapped."
+    },
+    {
+      "input": "n,b,n,f+2",
+      "t3_row": 162,
+      "damage": 11,
+      "throw": false
+    },
+    {
+      "input": "1+2+3+4",
+      "damage": 0
+    },
+    {
+      "input": "1+3",
+      "damage": 35,
+      "throw": true
+    },
+    {
+      "input": "1+3+4",
+      "damage": 0
+    },
+    {
+      "input": "2+4",
+      "damage": 35,
+      "throw": true
+    },
+    {
+      "input": "b+1+3",
+      "damage": 0
+    },
+    {
+      "input": "b+3+4",
+      "damage": 0
+    },
+    {
+      "input": "Back throw",
+      "damage": 50,
+      "throw": true
+    },
+    {
+      "input": "d+1",
+      "damage": 31,
+      "throw": true
+    },
+    {
+      "input": "db+1+2",
+      "damage": 0
+    },
+    {
+      "input": "df+2+4",
+      "damage": 40,
+      "throw": true
+    },
+    {
+      "input": "f+3+4",
+      "damage": 0
+    },
+    {
+      "input": "f,n,d,df",
+      "damage": 0
+    },
+    {
+      "input": "f,n,d,df,UF",
+      "damage": 0
+    },
+    {
+      "input": "H.db+1+2",
+      "damage": 0
+    },
+    {
+      "input": "Left throw",
+      "damage": 43,
+      "throw": true
+    },
+    {
+      "input": "qcb+1+3",
+      "damage": 40,
+      "throw": true
+    },
+    {
+      "input": "R.df+1+2",
+      "damage": 0
+    },
+    {
+      "input": "Right throw",
+      "damage": 40,
+      "throw": true
+    },
+    {
+      "input": "uf+1+2",
+      "damage": 40,
+      "throw": true
+    },
+    {
+      "input": "ZEN.1+2",
+      "damage": 30,
+      "throw": true
+    },
+    {
+      "input": "ZEN.1,3",
+      "damage": 42,
+      "throw": true
+    }
+  ],
+  "frame_convention": "T8 60fps -> seconds (frames/60); damage T8 180HP scale as-is",
+  "schema_version": 2,
+  "canon_note": "Winged (Devil) form: T8 Jin kit; Devil-Jin flavored moves (ZEN stance, Hellfire/Black Wing set, Heat Burst) flagged devil_flavor.",
+  "forward_merge": {
+    "date": "2026-10-20",
+    "pr": 357,
+    "method": "auto-merge had taken branch lists wholesale; main specials/strings unioned back in (main priority, branch extras appended)",
+    "branch_counts": {
+      "moves": 136,
+      "specials": 21,
+      "strings": 43
+    },
+    "main_counts": {
+      "moves": 15,
+      "specials": 6,
+      "strings": 4
+    },
+    "merged_counts": {
+      "moves": 136,
+      "specials": 27,
+      "strings": 47
+    }
   },
-  "ZEN.1,3": {
-   "name": "Kazama Style Leg Strike Flurry",
-   "input": "ZEN.1,3",
-   "t8_source": "jin",
-   "t8_id": "Jin-ZEN.1,3",
-   "t8_damage": ",14,14",
-   "startup": 0.167,
-   "active": 0.033,
-   "recovery": 0.517,
-   "damage": 42,
-   "limb": "legL",
-   "heavy": true,
-   "knock": 6.5,
-   "soulGain": 15,
-   "anim_ref": "t8:jin:jin-zen.1,3",
-   "input_slots": [
-    "ZEN.1",
-    "ZEN.1,3"
-   ],
-   "move_class": "throw",
-   "multi_hit": {
-    "hits": [
-     14,
-     14,
-     14
-    ],
-    "total": 42
-   },
-   "note": "High, Throw; on block -9; Devil-Jin flavor (winged form)",
-   "throw": true,
-   "unblockable": true,
-   "isGrab": true,
-   "throw_break": "1",
-   "devil_flavor": true
+  "expansion": {
+    "stream": "stream6/combat-100",
+    "date": "2026-10-19",
+    "moves_added": 39,
+    "inputs_remapped": [],
+    "note": "Additive expansion from real T3 teardown bank rows. Existing moves untouched."
   },
-  "ZEN.2": {
-   "name": "Fiendish Claw",
-   "input": "ZEN.2",
-   "t8_source": "jin",
-   "t8_id": "Jin-ZEN.2",
-   "t8_damage": "20",
-   "startup": 0.3,
-   "active": 0.033,
-   "recovery": 0.533,
-   "damage": 20,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 10,
-   "anim_ref": "t8:jin:jin-zen.2",
-   "input_slots": [
-    "ZEN.2"
-   ],
-   "move_class": "strike",
-   "note": "High; on block -5; knockdown on hit; Devil-Jin flavor (winged form)",
-   "devil_flavor": true
+  "moves": {
+    "1": {
+      "name": "DEVIL 1 (T3 jin r41)",
+      "input": "1",
+      "t3_source": "deviljin",
+      "t3_row": 41,
+      "t3_command": "LP",
+      "startup": 0.117,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 13,
+      "t3_damage": 21,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:deviljin:row:41",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "2": {
+      "name": "DEVIL 2 (T3 jin r220)",
+      "input": "2",
+      "t3_source": "deviljin",
+      "t3_row": 220,
+      "t3_command": "RP",
+      "startup": 0.2,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 5,
+      "t3_damage": 8,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:deviljin:row:220",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike"
+    },
+    "2,1": {
+      "name": "DEVIL 2,1 (T3 jin r221)",
+      "input": "2,1",
+      "t3_source": "deviljin",
+      "t3_row": 221,
+      "t3_command": "LP",
+      "startup": 0.233,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 6,
+      "t3_damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "string_hit": "2",
+      "anim_ref": "t3:deviljin:row:221",
+      "input_slots": [
+        "2,1",
+        "2",
+        "1"
+      ],
+      "move_class": "string"
+    },
+    "2,1,2": {
+      "name": "DEVIL 2,1,2 (T3 jin r222)",
+      "input": "2,1,2",
+      "t3_source": "deviljin",
+      "t3_row": 222,
+      "t3_command": "RP",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 5,
+      "t3_damage": 7,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "string_hit": "2,1",
+      "anim_ref": "t3:deviljin:row:222",
+      "input_slots": [
+        "2,1,2",
+        "2",
+        "1",
+        "2"
+      ],
+      "move_class": "string"
+    },
+    "3": {
+      "name": "DEVIL 3 (T3 jin r195)",
+      "input": "3",
+      "t3_source": "deviljin",
+      "t3_row": 195,
+      "t3_command": "LK",
+      "startup": 0.317,
+      "active": 0.083,
+      "recovery": 0.633,
+      "damage": 16,
+      "t3_damage": 26,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:deviljin:row:195",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike"
+    },
+    "4": {
+      "name": "DEVIL 4 (T3 jin r199)",
+      "input": "4",
+      "t3_source": "deviljin",
+      "t3_row": 199,
+      "t3_command": "RK",
+      "startup": 0.183,
+      "active": 0.017,
+      "recovery": 0.633,
+      "damage": 8,
+      "t3_damage": 14,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:deviljin:row:199",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "4,1": {
+      "name": "DEVIL 4,1 (T3 jin r184)",
+      "input": "4,1",
+      "t3_source": "deviljin",
+      "t3_row": 184,
+      "t3_command": "LP",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.85,
+      "damage": 3,
+      "t3_damage": 6,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "string_hit": "4",
+      "anim_ref": "t3:deviljin:row:184",
+      "input_slots": [
+        "4,1",
+        "4",
+        "1"
+      ],
+      "move_class": "string"
+    },
+    "4,1,2": {
+      "name": "DEVIL 4,1,2 (T3 jin r186)",
+      "input": "4,1,2",
+      "t3_source": "deviljin",
+      "t3_row": 186,
+      "t3_command": "RP",
+      "startup": 0.45,
+      "active": 0.017,
+      "recovery": 0.617,
+      "damage": 7,
+      "t3_damage": 12,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "string_hit": "4,1",
+      "anim_ref": "t3:deviljin:row:186",
+      "input_slots": [
+        "4,1,2",
+        "4",
+        "1",
+        "2"
+      ],
+      "move_class": "string"
+    },
+    "1+3": {
+      "name": "DEVIL 1+3 throw (T3 jin r117)",
+      "input": "1+3",
+      "t3_source": "deviljin",
+      "t3_row": 117,
+      "t3_command": "LP+LK",
+      "startup": 0.433,
+      "active": 0.017,
+      "recovery": 0.1,
+      "damage": 24,
+      "t3_damage": 40,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 11,
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+      "anim_ref": "t3:deviljin:row:117",
+      "input_slots": [
+        "1+3"
+      ],
+      "move_class": "throw",
+      "throw_break": "1"
+    },
+    "2+4": {
+      "name": "DEVIL 2+4 throw (T3 jin r118)",
+      "input": "2+4",
+      "t3_source": "deviljin",
+      "t3_row": 118,
+      "t3_command": "RP+RK",
+      "startup": 0.1,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 24,
+      "t3_damage": 40,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 11,
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+      "anim_ref": "t3:deviljin:row:118",
+      "input_slots": [
+        "2+4"
+      ],
+      "move_class": "throw",
+      "throw_break": "2"
+    },
+    "d/f+2": {
+      "name": "DEVIL d/f+2 (T3 jin r269)",
+      "input": "d/f+2",
+      "t3_source": "deviljin",
+      "t3_row": 269,
+      "t3_command": "3+RP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.633,
+      "damage": 21,
+      "t3_damage": 34,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:deviljin:row:269",
+      "input_slots": [
+        "d/f+2"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+4": {
+      "name": "DEVIL u/f+4 (T3 jin r80)",
+      "input": "u/f+4",
+      "t3_source": "deviljin",
+      "t3_row": 80,
+      "t3_command": "9+RK",
+      "startup": 0.417,
+      "active": 0.017,
+      "recovery": 0.683,
+      "damage": 17,
+      "t3_damage": 29,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:deviljin:row:80",
+      "input_slots": [
+        "u/f+4"
+      ],
+      "move_class": "strike"
+    },
+    "d,d/b,d,d/b+1+2": {
+      "name": "DEVIL d,d/b,d,d/b+1+2 throw (T3 jin r277)",
+      "input": "d,d/b,d,d/b+1+2",
+      "t3_source": "deviljin",
+      "t3_row": 277,
+      "t3_command": "[2 1 2 1+LP+RP](59f)",
+      "startup": 0.2,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 24,
+      "t3_damage": 40,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 11,
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+      "anim_ref": "t3:deviljin:row:277",
+      "input_slots": [
+        "d,d/b,d,d/b+1+2"
+      ],
+      "move_class": "throw",
+      "throw_break": "1+2"
+    },
+    "d/b,n,f+2": {
+      "name": "DEVIL d/b,n,f+2 throw (T3 jin r276)",
+      "input": "d/b,n,f+2",
+      "t3_source": "deviljin",
+      "t3_row": 276,
+      "t3_command": "[1 5 6+RP](30f)",
+      "startup": 0.183,
+      "active": 0.017,
+      "recovery": 0.517,
+      "damage": 24,
+      "t3_damage": 40,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 11,
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+      "anim_ref": "t3:deviljin:row:276",
+      "input_slots": [
+        "d/b,n,f+2"
+      ],
+      "move_class": "throw",
+      "throw_break": "1+2"
+    },
+    "n,d/f,n,d/f+1": {
+      "name": "DEVIL n,d/f,n,d/f+1 throw (T3 jin r277)",
+      "input": "n,d/f,n,d/f+1",
+      "t3_source": "deviljin",
+      "t3_row": 277,
+      "t3_command": "[5 3 5 3+LP](25f)",
+      "startup": 0.2,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 24,
+      "t3_damage": 40,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 11,
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+      "anim_ref": "t3:deviljin:row:277",
+      "input_slots": [
+        "n,d/f,n,d/f+1"
+      ],
+      "move_class": "throw",
+      "throw_break": "1+2"
+    },
+    "f+2": {
+      "name": "DEMONIO (Devil) f+2 (T3 jin r220)",
+      "input": "f+2",
+      "t3_source": "jin",
+      "t3_row": 220,
+      "t3_command": "6+RP",
+      "startup": 0.2,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 4,
+      "t3_damage": 7,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:220",
+      "input_slots": [
+        "f+2"
+      ],
+      "move_class": "strike"
+    },
+    "f+4": {
+      "name": "DEMONIO (Devil) f+4 (T3 jin r199)",
+      "input": "f+4",
+      "t3_source": "jin",
+      "t3_row": 199,
+      "t3_command": "6+RK",
+      "startup": 0.183,
+      "active": 0.017,
+      "recovery": 0.633,
+      "damage": 7,
+      "t3_damage": 12,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:199",
+      "input_slots": [
+        "f+4"
+      ],
+      "move_class": "strike"
+    },
+    "f+4__main": {
+      "name": "Front Thrust Kick",
+      "input": "f+4",
+      "t8_source": "jin",
+      "t8_id": "Jin-f+4",
+      "t8_damage": "21",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.533,
+      "damage": 21,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:jin:jin-f+4",
+      "input_slots": [
+        "f+4"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -8"
+    },
+    "d+1+2": {
+      "name": "DEMONIO (Devil) d+1+2 (T3 jin r92)",
+      "input": "d+1+2",
+      "t3_source": "jin",
+      "t3_row": 92,
+      "t3_command": "2+LP+RP",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 4,
+      "t3_damage": 6,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:92",
+      "input_slots": [
+        "d+1+2"
+      ],
+      "move_class": "strike"
+    },
+    "d/f+1": {
+      "name": "DEMONIO (Devil) d/f+1 (T3 jin r179)",
+      "input": "d/f+1",
+      "t3_source": "jin",
+      "t3_row": 179,
+      "t3_command": "3+LP",
+      "startup": 0.367,
+      "active": 0.067,
+      "recovery": 0.7,
+      "damage": 21,
+      "t3_damage": 35,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:jin:row:179",
+      "input_slots": [
+        "d/f+1"
+      ],
+      "move_class": "strike"
+    },
+    "d/f+4": {
+      "name": "DEMONIO (Devil) d/f+4 (T3 jin r206)",
+      "input": "d/f+4",
+      "t3_source": "jin",
+      "t3_row": 206,
+      "t3_command": "2/3+RK",
+      "startup": 0.333,
+      "active": 0.017,
+      "recovery": 0.767,
+      "damage": 9,
+      "t3_damage": 15,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:206",
+      "input_slots": [
+        "d/f+4"
+      ],
+      "move_class": "strike"
+    },
+    "u/b+1": {
+      "name": "DEMONIO (Devil) u/b+1 (T3 jin r46)",
+      "input": "u/b+1",
+      "t3_source": "jin",
+      "t3_row": 46,
+      "t3_command": "4/7+LP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "t3_damage": 12,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:46",
+      "input_slots": [
+        "u/b+1"
+      ],
+      "move_class": "strike"
+    },
+    "u/b+3": {
+      "name": "DEMONIO (Devil) u/b+3 (T3 jin r56)",
+      "input": "u/b+3",
+      "t3_source": "jin",
+      "t3_row": 56,
+      "t3_command": "4/7+LK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:jin:row:56",
+      "input_slots": [
+        "u/b+3"
+      ],
+      "move_class": "strike"
+    },
+    "u/b+4": {
+      "name": "DEMONIO (Devil) u/b+4 (T3 jin r66)",
+      "input": "u/b+4",
+      "t3_source": "jin",
+      "t3_row": 66,
+      "t3_command": "4/7+RK",
+      "startup": 0.25,
+      "active": 0.05,
+      "recovery": 0.6,
+      "damage": 6,
+      "t3_damage": 11,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:66",
+      "input_slots": [
+        "u/b+4"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+1": {
+      "name": "DEMONIO (Devil) u/f+1 (T3 jin r45)",
+      "input": "u/f+1",
+      "t3_source": "jin",
+      "t3_row": 45,
+      "t3_command": "6/9+LP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "t3_damage": 12,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:45",
+      "input_slots": [
+        "u/f+1"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+3": {
+      "name": "DEMONIO (Devil) u/f+3 (T3 jin r157)",
+      "input": "u/f+3",
+      "t3_source": "jin",
+      "t3_row": 157,
+      "t3_command": "9+LK",
+      "startup": 0.367,
+      "active": 0.033,
+      "recovery": 0.733,
+      "damage": 18,
+      "t3_damage": 30,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:jin:row:157",
+      "input_slots": [
+        "u/f+3"
+      ],
+      "move_class": "strike"
+    },
+    "u/b+1+2": {
+      "name": "DEMONIO (Devil) u/b+1+2 (T3 jin r34)",
+      "input": "u/b+1+2",
+      "t3_source": "jin",
+      "t3_row": 34,
+      "t3_command": "4/7+LP+RP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "t3_damage": 12,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:34",
+      "input_slots": [
+        "u/b+1+2"
+      ],
+      "move_class": "strike"
+    },
+    "u/b+3+4": {
+      "name": "DEMONIO (Devil) u/b+3+4 (T3 jin r53)",
+      "input": "u/b+3+4",
+      "t3_source": "jin",
+      "t3_row": 53,
+      "t3_command": "4/7+LK+RK",
+      "startup": 0.35,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:jin:row:53",
+      "input_slots": [
+        "u/b+3+4"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+1+2": {
+      "name": "DEMONIO (Devil) u/f+1+2 (T3 jin r33)",
+      "input": "u/f+1+2",
+      "t3_source": "jin",
+      "t3_row": 33,
+      "t3_command": "6/9+LP+RP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "t3_damage": 12,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:33",
+      "input_slots": [
+        "u/f+1+2"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+3+4": {
+      "name": "DEMONIO (Devil) u/f+3+4 (T3 jin r52)",
+      "input": "u/f+3+4",
+      "t3_source": "jin",
+      "t3_row": 52,
+      "t3_command": "6/9+LK+RK",
+      "startup": 0.35,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:jin:row:52",
+      "input_slots": [
+        "u/f+3+4"
+      ],
+      "move_class": "strike"
+    },
+    "1+2": {
+      "name": "DEMONIO (Devil) 1+2 throw (T3 jin r117)",
+      "input": "1+2",
+      "t3_source": "jin",
+      "t3_row": 117,
+      "t3_command": "LP+RP",
+      "startup": 0.433,
+      "active": 0.017,
+      "recovery": 0.1,
+      "damage": 21,
+      "t3_damage": 35,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 11,
+      "anim_ref": "t3:jin:row:117",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "throw",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "1+2",
+      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+    },
+    "1+2__main": {
+      "name": "Median Line Destruction",
+      "input": "1+2",
+      "t8_source": "jin",
+      "t8_id": "Jin-1+2",
+      "t8_damage": "4,4,16",
+      "startup": 0.217,
+      "active": 0.033,
+      "recovery": 0.55,
+      "damage": 24,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:jin:jin-1+2",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "strike",
+      "multi_hit": {
+        "hits": [
+          4,
+          4,
+          16
+        ],
+        "total": 24
+      },
+      "note": "Mid, Mid, Mid; on block -14; knockdown on hit"
+    },
+    "n,f,n,f+1+2": {
+      "name": "DEMONIO (Devil) n,f,n,f+1+2 throw (T3 jin r277)",
+      "input": "n,f,n,f+1+2",
+      "t3_source": "jin",
+      "t3_row": 277,
+      "t3_command": "[5 6 5 6+LP+RP](20f)",
+      "startup": 0.2,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 21,
+      "t3_damage": 35,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 11,
+      "anim_ref": "t3:jin:row:277",
+      "input_slots": [
+        "n,f,n,f+1+2"
+      ],
+      "move_class": "throw",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "1+2",
+      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+    },
+    "qcb+1+3": {
+      "name": "DEMONIO (Devil) qcb+1+3 throw (T3 jin r275)",
+      "input": "qcb+1+3",
+      "t3_source": "jin",
+      "t3_row": 275,
+      "t3_command": "[2 1 4+LP+LK](30f)",
+      "startup": 0.183,
+      "active": 0.017,
+      "recovery": 0.517,
+      "damage": 21,
+      "t3_damage": 35,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 11,
+      "anim_ref": "t3:jin:row:275",
+      "input_slots": [
+        "qcb+1+3"
+      ],
+      "move_class": "throw",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "1",
+      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+    },
+    "qcb+1+3__main": {
+      "name": "Complicated Wire",
+      "input": "qcb+1+3",
+      "t8_source": "jin",
+      "t8_id": "Jin-qcb+1+3",
+      "t8_damage": "40",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 40,
+      "limb": "both",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 15,
+      "anim_ref": "t8:jin:jin-qcb+1+3",
+      "input_slots": [
+        "qcb+1+3"
+      ],
+      "move_class": "throw",
+      "note": "Throw; on block -2",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "1"
+    },
+    "2,1,4": {
+      "name": "DEMONIO (Devil) 2,1,4 (T3 jin r230)",
+      "input": "2,1,4",
+      "t3_source": "jin",
+      "t3_row": 230,
+      "t3_command": "RK",
+      "startup": 0.283,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 4,
+      "t3_damage": 7,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:230",
+      "input_slots": [
+        "2,1,4",
+        "2",
+        "1",
+        "4"
+      ],
+      "move_class": "string",
+      "string_hit": "2,1"
+    },
+    "2,1,4__main": {
+      "name": "Roundhouse",
+      "input": "2,1,4",
+      "t8_source": "jin",
+      "t8_id": "Jin-2,1,4",
+      "t8_damage": ",18",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 36,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:jin:jin-2,1,4",
+      "input_slots": [
+        "2",
+        "2,1",
+        "2,1,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          9,
+          9,
+          18
+        ],
+        "total": 36
+      },
+      "note": "Mid; on block -10"
+    },
+    "2,1,2,2": {
+      "name": "DEMONIO (Devil) 2,1,2,2 (T3 jin r223)",
+      "input": "2,1,2,2",
+      "t3_source": "jin",
+      "t3_row": 223,
+      "t3_command": "RP",
+      "startup": 0.283,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 4,
+      "t3_damage": 7,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:223",
+      "input_slots": [
+        "2,1,2,2",
+        "2",
+        "1",
+        "2",
+        "2"
+      ],
+      "move_class": "string",
+      "string_hit": "2,1,2"
+    },
+    "u/f+4,3": {
+      "name": "DEMONIO (Devil) u/f+4,3 (T3 jin r193)",
+      "input": "u/f+4,3",
+      "t3_source": "jin",
+      "t3_row": 193,
+      "t3_command": "LK",
+      "startup": 0.583,
+      "active": 0.05,
+      "recovery": 0.467,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:jin:row:193",
+      "input_slots": [
+        "u/f+4,3",
+        "u/f+4",
+        "3"
+      ],
+      "move_class": "string",
+      "string_hit": "u/f+4"
+    },
+    "u/f+4,4": {
+      "name": "DEMONIO (Devil) u/f+4,4 (T3 jin r207)",
+      "input": "u/f+4,4",
+      "t3_source": "jin",
+      "t3_row": 207,
+      "t3_command": "RK",
+      "startup": 0.783,
+      "active": 0.017,
+      "recovery": 0.65,
+      "damage": 9,
+      "t3_damage": 15,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:207",
+      "input_slots": [
+        "u/f+4,4",
+        "u/f+4",
+        "4"
+      ],
+      "move_class": "string",
+      "string_hit": "u/f+4"
+    },
+    "f+2,1": {
+      "name": "DEMONIO (Devil) f+2,1 (T3 jin r221)",
+      "input": "f+2,1",
+      "t3_source": "jin",
+      "t3_row": 221,
+      "t3_command": "LP",
+      "startup": 0.233,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 5,
+      "t3_damage": 8,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:221",
+      "input_slots": [
+        "f+2,1",
+        "f+2",
+        "1"
+      ],
+      "move_class": "string",
+      "string_hit": "f+2"
+    },
+    "f+4,1": {
+      "name": "DEMONIO (Devil) f+4,1 (T3 jin r184)",
+      "input": "f+4,1",
+      "t3_source": "jin",
+      "t3_row": 184,
+      "t3_command": "LP",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.85,
+      "damage": 3,
+      "t3_damage": 5,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:184",
+      "input_slots": [
+        "f+4,1",
+        "f+4",
+        "1"
+      ],
+      "move_class": "string",
+      "string_hit": "f+4"
+    },
+    "d+1+2,1": {
+      "name": "DEMONIO (Devil) d+1+2,1 (T3 jin r177)",
+      "input": "d+1+2,1",
+      "t3_source": "jin",
+      "t3_row": 177,
+      "t3_command": "LP",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 5,
+      "t3_damage": 8,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:177",
+      "input_slots": [
+        "d+1+2,1",
+        "d+1+2",
+        "1"
+      ],
+      "move_class": "string",
+      "string_hit": "d+1+2"
+    },
+    "d+1+2,2": {
+      "name": "DEMONIO (Devil) d+1+2,2 (T3 jin r93)",
+      "input": "d+1+2,2",
+      "t3_source": "jin",
+      "t3_row": 93,
+      "t3_command": "RP",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 4,
+      "t3_damage": 6,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:93",
+      "input_slots": [
+        "d+1+2,2",
+        "d+1+2",
+        "2"
+      ],
+      "move_class": "string",
+      "string_hit": "d+1+2"
+    },
+    "d/f+1,3": {
+      "name": "DEMONIO (Devil) d/f+1,3 (T3 jin r197)",
+      "input": "d/f+1,3",
+      "t3_source": "jin",
+      "t3_row": 197,
+      "t3_command": "LK",
+      "startup": 0.9,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 12,
+      "t3_damage": 20,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:197",
+      "input_slots": [
+        "d/f+1,3",
+        "d/f+1",
+        "3"
+      ],
+      "move_class": "string",
+      "string_hit": "d/f+1"
+    },
+    "d/f+1,4": {
+      "name": "DEMONIO (Devil) d/f+1,4 (T3 jin r204)",
+      "input": "d/f+1,4",
+      "t3_source": "jin",
+      "t3_row": 204,
+      "t3_command": "RK",
+      "startup": 1.0,
+      "active": 0.05,
+      "recovery": 0.75,
+      "damage": 7,
+      "t3_damage": 12,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:204",
+      "input_slots": [
+        "d/f+1,4",
+        "d/f+1",
+        "4"
+      ],
+      "move_class": "string",
+      "string_hit": "d/f+1"
+    },
+    "d/f+4,4": {
+      "name": "DEMONIO (Devil) d/f+4,4 (T3 jin r212)",
+      "input": "d/f+4,4",
+      "t3_source": "jin",
+      "t3_row": 212,
+      "t3_command": "RK",
+      "startup": 0.217,
+      "active": 0.017,
+      "recovery": 0.95,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:jin:row:212",
+      "input_slots": [
+        "d/f+4,4",
+        "d/f+4",
+        "4"
+      ],
+      "move_class": "string",
+      "string_hit": "d/f+4"
+    },
+    "2,1,4,4": {
+      "name": "DEMONIO (Devil) 2,1,4,4 (T3 jin r231)",
+      "input": "2,1,4,4",
+      "t3_source": "jin",
+      "t3_row": 231,
+      "t3_command": "RK",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.55,
+      "damage": 6,
+      "t3_damage": 10,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:231",
+      "input_slots": [
+        "2,1,4,4",
+        "2",
+        "1",
+        "4",
+        "4"
+      ],
+      "move_class": "string",
+      "string_hit": "2,1,4"
+    },
+    "2,1,2,2,3": {
+      "name": "DEMONIO (Devil) 2,1,2,2,3 (T3 jin r224)",
+      "input": "2,1,2,2,3",
+      "t3_source": "jin",
+      "t3_row": 224,
+      "t3_command": "LK",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 4,
+      "t3_damage": 6,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:224",
+      "input_slots": [
+        "2,1,2,2,3",
+        "2",
+        "1",
+        "2",
+        "2",
+        "3"
+      ],
+      "move_class": "string",
+      "string_hit": "2,1,2,2"
+    },
+    "u/f+4,4,4": {
+      "name": "DEMONIO (Devil) u/f+4,4,4 (T3 jin r210)",
+      "input": "u/f+4,4,4",
+      "t3_source": "jin",
+      "t3_row": 210,
+      "t3_command": "RK",
+      "startup": 0.4,
+      "active": 0.017,
+      "recovery": 0.767,
+      "damage": 7,
+      "t3_damage": 12,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:210",
+      "input_slots": [
+        "u/f+4,4,4",
+        "u/f+4",
+        "4",
+        "4"
+      ],
+      "move_class": "string",
+      "string_hit": "u/f+4,4"
+    },
+    "f+2,1,2": {
+      "name": "DEMONIO (Devil) f+2,1,2 (T3 jin r222)",
+      "input": "f+2,1,2",
+      "t3_source": "jin",
+      "t3_row": 222,
+      "t3_command": "RP",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 4,
+      "t3_damage": 6,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:222",
+      "input_slots": [
+        "f+2,1,2",
+        "f+2",
+        "1",
+        "2"
+      ],
+      "move_class": "string",
+      "string_hit": "f+2,1"
+    },
+    "f+4,1,2": {
+      "name": "DEMONIO (Devil) f+4,1,2 (T3 jin r186)",
+      "input": "f+4,1,2",
+      "t3_source": "jin",
+      "t3_row": 186,
+      "t3_command": "RP",
+      "startup": 0.45,
+      "active": 0.017,
+      "recovery": 0.617,
+      "damage": 6,
+      "t3_damage": 10,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:186",
+      "input_slots": [
+        "f+4,1,2",
+        "f+4",
+        "1",
+        "2"
+      ],
+      "move_class": "string",
+      "string_hit": "f+4,1"
+    },
+    "d+1+2,1,2": {
+      "name": "DEMONIO (Devil) d+1+2,1,2 (T3 jin r183)",
+      "input": "d+1+2,1,2",
+      "t3_source": "jin",
+      "t3_row": 183,
+      "t3_command": "RP",
+      "startup": 0.217,
+      "active": 0.017,
+      "recovery": 0.783,
+      "damage": 11,
+      "t3_damage": 18,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:183",
+      "input_slots": [
+        "d+1+2,1,2",
+        "d+1+2",
+        "1",
+        "2"
+      ],
+      "move_class": "string",
+      "string_hit": "d+1+2,1"
+    },
+    "2,1,4,4,2": {
+      "name": "DEMONIO (Devil) 2,1,4,4,2 (T3 jin r232)",
+      "input": "2,1,4,4,2",
+      "t3_source": "jin",
+      "t3_row": 232,
+      "t3_command": "RP",
+      "startup": 0.383,
+      "active": 0.017,
+      "recovery": 0.75,
+      "damage": 3,
+      "t3_damage": 5,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:232",
+      "input_slots": [
+        "2,1,4,4,2",
+        "2",
+        "1",
+        "4",
+        "4",
+        "2"
+      ],
+      "move_class": "string",
+      "string_hit": "2,1,4,4"
+    },
+    "2,1,2,2,3,4": {
+      "name": "DEMONIO (Devil) 2,1,2,2,3,4 (T3 jin r225)",
+      "input": "2,1,2,2,3,4",
+      "t3_source": "jin",
+      "t3_row": 225,
+      "t3_command": "RK",
+      "startup": 0.617,
+      "active": 0.05,
+      "recovery": 0.617,
+      "damage": 6,
+      "t3_damage": 11,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:225",
+      "input_slots": [
+        "2,1,2,2,3,4",
+        "2",
+        "1",
+        "2",
+        "2",
+        "3",
+        "4"
+      ],
+      "move_class": "string",
+      "string_hit": "2,1,2,2,3"
+    },
+    "u/f+4,4,4,4": {
+      "name": "DEMONIO (Devil) u/f+4,4,4,4 (T3 jin r211)",
+      "input": "u/f+4,4,4,4",
+      "t3_source": "jin",
+      "t3_row": 211,
+      "t3_command": "RK",
+      "startup": 0.367,
+      "active": 0.017,
+      "recovery": 0.8,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:jin:row:211",
+      "input_slots": [
+        "u/f+4,4,4,4",
+        "u/f+4",
+        "4",
+        "4",
+        "4"
+      ],
+      "move_class": "string",
+      "string_hit": "u/f+4,4,4"
+    },
+    "2,1,4,4,2,4": {
+      "name": "DEMONIO (Devil) 2,1,4,4,2,4 (T3 jin r233)",
+      "input": "2,1,4,4,2,4",
+      "t3_source": "jin",
+      "t3_row": 233,
+      "t3_command": "RK",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 4,
+      "t3_damage": 7,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:233",
+      "input_slots": [
+        "2,1,4,4,2,4",
+        "2",
+        "1",
+        "4",
+        "4",
+        "2",
+        "4"
+      ],
+      "move_class": "string",
+      "string_hit": "2,1,4,4,2"
+    },
+    "n,b,n,f+2": {
+      "name": "DEMONIO (Devil) n,b,n,f+2 (T3 jin r162)",
+      "input": "n,b,n,f+2",
+      "t3_source": "jin",
+      "t3_row": 162,
+      "t3_command": "[5 4 5 6+RP](50f)",
+      "startup": 0.25,
+      "active": 0.05,
+      "recovery": 0.617,
+      "damage": 11,
+      "t3_damage": 18,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:jin:row:162",
+      "input_slots": [
+        "n,b,n,f+2"
+      ],
+      "move_class": "special"
+    },
+    "1,2": {
+      "name": "Left Right Combo",
+      "input": "1,2",
+      "t8_source": "jin",
+      "t8_id": "Jin-1,2",
+      "t8_damage": ",12",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.35,
+      "damage": 17,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t8:jin:jin-1,2",
+      "input_slots": [
+        "1",
+        "1,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          5,
+          12
+        ],
+        "total": 17
+      },
+      "note": "High; on block -3"
+    },
+    "1,2,1": {
+      "name": "Black Wing Rondo",
+      "input": "1,2,1",
+      "t8_source": "jin",
+      "t8_id": "Jin-1,2,1",
+      "t8_damage": ",20",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 37,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:jin:jin-1,2,1",
+      "input_slots": [
+        "1",
+        "1,2",
+        "1,2,1"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          5,
+          12,
+          20
+        ],
+        "total": 37
+      },
+      "note": "Mid; on block -16; knockdown on hit; Devil-Jin flavor (winged form)",
+      "devil_flavor": true
+    },
+    "1,2,3": {
+      "name": "Axe Kick",
+      "input": "1,2,3",
+      "t8_source": "jin",
+      "t8_id": "Jin-1,2,3",
+      "t8_damage": ",20",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.35,
+      "damage": 37,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:jin:jin-1,2,3",
+      "input_slots": [
+        "1",
+        "1,2",
+        "1,2,3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          5,
+          12,
+          20
+        ],
+        "total": 37
+      },
+      "note": "Mid; on block +0"
+    },
+    "1+2+3+4": {
+      "name": "Ki Charge",
+      "input": "1+2+3+4",
+      "t8_source": "jin",
+      "t8_id": "Jin-1+2+3+4",
+      "t8_damage": null,
+      "startup": 0.167,
+      "active": 0.3,
+      "recovery": 0.917,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "anim_ref": "t8:jin:jin-1+2+3+4",
+      "input_slots": [
+        "1+2+3+4"
+      ],
+      "move_class": "special",
+      "devil_flavor": true,
+      "note": "Devil-Jin flavor (winged form)"
+    },
+    "1,2,4": {
+      "name": "Spinning Hook Kick",
+      "input": "1,2,4",
+      "t8_source": "jin",
+      "t8_id": "Jin-1,2,4",
+      "t8_damage": ",26",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.417,
+      "damage": 43,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:jin:jin-1,2,4",
+      "input_slots": [
+        "1",
+        "1,2",
+        "1,2,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          5,
+          12,
+          26
+        ],
+        "total": 43
+      },
+      "note": "High; on block -4; knockdown on hit"
+    },
+    "1,3": {
+      "name": "Single Low",
+      "input": "1,3",
+      "t8_source": "jin",
+      "t8_id": "Jin-1,3",
+      "t8_damage": ",9",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 14,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 7,
+      "anim_ref": "t8:jin:jin-1,3",
+      "input_slots": [
+        "1",
+        "1,3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          5,
+          9
+        ],
+        "total": 14
+      },
+      "note": "Low; on block -12"
+    },
+    "1+3+4": {
+      "name": "State of Zanshin",
+      "input": "1+3+4",
+      "t8_source": "jin",
+      "t8_id": "Jin-1+3+4",
+      "t8_damage": null,
+      "startup": 0.167,
+      "active": 0.3,
+      "recovery": 0.767,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "anim_ref": "t8:jin:jin-1+3+4",
+      "input_slots": [
+        "1+3+4"
+      ],
+      "move_class": "special",
+      "note": "Mental Alertness"
+    },
+    "1,3,4": {
+      "name": "Double Low",
+      "input": "1,3,4",
+      "t8_source": "jin",
+      "t8_id": "Jin-1,3,4",
+      "t8_damage": ",17",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.533,
+      "damage": 31,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:jin:jin-1,3,4",
+      "input_slots": [
+        "1",
+        "1,3",
+        "1,3,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          5,
+          9,
+          17
+        ],
+        "total": 31
+      },
+      "note": "Low; on block -13"
+    },
+    "2,1,4~4": {
+      "name": "Low Trick Kick",
+      "input": "2,1,4~4",
+      "t8_source": "jin",
+      "t8_id": "Jin-2,1,4~4",
+      "t8_damage": ",20",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.467,
+      "damage": 38,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:jin:jin-2,1,4~4",
+      "input_slots": [
+        "2",
+        "2,1",
+        "2,1,4~4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          9,
+          9,
+          20
+        ],
+        "total": 38
+      },
+      "note": "Low; on block -12"
+    },
+    "2+3": {
+      "name": "Heat Burst",
+      "input": "2+3",
+      "t8_source": "jin",
+      "t8_id": "Jin-2+3",
+      "t8_damage": "[12;12]",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 24,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:jin:jin-2+3",
+      "input_slots": [
+        "2+3"
+      ],
+      "move_class": "strike",
+      "multi_hit": {
+        "hits": [
+          12,
+          12
+        ],
+        "total": 24
+      },
+      "note": "Mid; on block +1; Devil-Jin flavor (winged form)",
+      "devil_flavor": true
+    },
+    "2,4": {
+      "name": "Switchblade",
+      "input": "2,4",
+      "t8_source": "jin",
+      "t8_id": "Jin-2,4",
+      "t8_damage": ",20",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.55,
+      "damage": 29,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 14,
+      "anim_ref": "t8:jin:jin-2,4",
+      "input_slots": [
+        "2",
+        "2,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          9,
+          20
+        ],
+        "total": 29
+      },
+      "note": "High; on block -13"
+    },
+    "3,1": {
+      "name": "Move 1 (1)",
+      "input": "3,1",
+      "t8_source": "jin",
+      "t8_id": "Jin-3,1",
+      "t8_damage": ",7",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 24,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:jin:jin-3,1",
+      "input_slots": [
+        "3",
+        "3,1"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          17,
+          7
+        ],
+        "total": 24
+      },
+      "note": "High; on block -1"
+    },
+    "3,1,4": {
+      "name": "Kishin Rekko",
+      "input": "3,1,4",
+      "t8_source": "jin",
+      "t8_id": "Jin-3,1,4",
+      "t8_damage": ",18",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.533,
+      "damage": 42,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:jin:jin-3,1,4",
+      "input_slots": [
+        "3",
+        "3,1",
+        "3,1,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          17,
+          7,
+          18
+        ],
+        "total": 42
+      },
+      "note": "Low; on block -13"
+    },
+    "4~3": {
+      "name": "Spinning Flare Kick",
+      "input": "4~3",
+      "t8_source": "jin",
+      "t8_id": "Jin-4~3",
+      "t8_damage": "27",
+      "startup": 0.4,
+      "active": 0.033,
+      "recovery": 0.467,
+      "damage": 27,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 14,
+      "anim_ref": "t8:jin:jin-4~3",
+      "input_slots": [
+        "4~3"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -11~-2; knockdown on hit"
+    },
+    "b+1": {
+      "name": "Move b+1 (b+1)",
+      "input": "b+1",
+      "t8_source": "jin",
+      "t8_id": "Jin-b+1",
+      "t8_damage": "11",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.467,
+      "damage": 11,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 6,
+      "anim_ref": "t8:jin:jin-b+1",
+      "input_slots": [
+        "b+1"
+      ],
+      "move_class": "strike",
+      "note": "High; on block -9"
+    },
+    "b+1+2": {
+      "name": "Suigetsu Strike",
+      "input": "b+1+2",
+      "t8_source": "jin",
+      "t8_id": "Jin-b+1+2",
+      "t8_damage": "20",
+      "startup": 0.383,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 20,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:jin:jin-b+1+2",
+      "input_slots": [
+        "b+1+2"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -12"
+    },
+    "b+1,2": {
+      "name": "Shun Maten",
+      "input": "b+1,2",
+      "t8_source": "jin",
+      "t8_id": "Jin-b+1,2",
+      "t8_damage": ",20",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 31,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:jin:jin-b+1,2",
+      "input_slots": [
+        "b+1",
+        "b+1,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          11,
+          20
+        ],
+        "total": 31
+      },
+      "note": "High; on block -10; knockdown on hit"
+    },
+    "b+1+3": {
+      "name": "Parry",
+      "input": "b+1+3",
+      "t8_source": "jin",
+      "t8_id": "Jin-b+1+3",
+      "t8_damage": null,
+      "startup": 0.167,
+      "active": 0.3,
+      "recovery": 0.5,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "anim_ref": "t8:jin:jin-b+1+3",
+      "input_slots": [
+        "b+1+3"
+      ],
+      "move_class": "parry"
+    },
+    "b+2": {
+      "name": "Move b+2 (b+2)",
+      "input": "b+2",
+      "t8_source": "jin",
+      "t8_id": "Jin-b+2",
+      "t8_damage": "12",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.483,
+      "damage": 12,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 6,
+      "anim_ref": "t8:jin:jin-b+2",
+      "input_slots": [
+        "b+2"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -11"
+    },
+    "b+2,1": {
+      "name": "Shun Masatsu",
+      "input": "b+2,1",
+      "t8_source": "jin",
+      "t8_id": "Jin-b+2,1",
+      "t8_damage": ",10",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 22,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 11,
+      "anim_ref": "t8:jin:jin-b+2,1",
+      "input_slots": [
+        "b+2",
+        "b+2,1"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          12,
+          10
+        ],
+        "total": 22
+      },
+      "note": "Mid; on block -9"
+    },
+    "b+3": {
+      "name": "Left Knee",
+      "input": "b+3",
+      "t8_source": "jin",
+      "t8_id": "Jin-b+3",
+      "t8_damage": "17",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.417,
+      "damage": 17,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t8:jin:jin-b+3",
+      "input_slots": [
+        "b+3"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -6"
+    },
+    "b+3,2": {
+      "name": "Right Thrust",
+      "input": "b+3,2",
+      "t8_source": "jin",
+      "t8_id": "Jin-b+3,2",
+      "t8_damage": ",20",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 37,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:jin:jin-b+3,2",
+      "input_slots": [
+        "b+3",
+        "b+3,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          17,
+          20
+        ],
+        "total": 37
+      },
+      "note": "Mid; on block -9"
+    },
+    "b+3+4": {
+      "name": "Zanshin",
+      "input": "b+3+4",
+      "t8_source": "jin",
+      "t8_id": "Jin-b+3+4",
+      "t8_damage": null,
+      "startup": 0.167,
+      "active": 0.3,
+      "recovery": 0.083,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "anim_ref": "t8:jin:jin-b+3+4",
+      "input_slots": [
+        "b+3+4"
+      ],
+      "move_class": "special",
+      "note": "Crouching Demon Stance (CDS) / Mental Alertness (2)"
+    },
+    "b+4": {
+      "name": "Spinning Sidekick",
+      "input": "b+4",
+      "t8_source": "jin",
+      "t8_id": "Jin-b+4",
+      "t8_damage": "21",
+      "startup": 0.283,
+      "active": 0.033,
+      "recovery": 0.483,
+      "damage": 21,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:jin:jin-b+4",
+      "input_slots": [
+        "b+4"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -7; knockdown on hit"
+    },
+    "Back throw": {
+      "name": "Pivoting Hip Throw",
+      "input": "Back throw",
+      "t8_source": "jin",
+      "t8_id": "Jin-Back throw",
+      "t8_damage": "50",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 50,
+      "limb": "both",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 15,
+      "anim_ref": "t8:jin:jin-back throw",
+      "input_slots": [
+        "Back throw"
+      ],
+      "move_class": "throw",
+      "note": "Throw",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "1+2"
+    },
+    "b,f+2": {
+      "name": "Move b,f+2 (b,f+2)",
+      "input": "b,f+2",
+      "t8_source": "jin",
+      "t8_id": "Jin-b,f+2",
+      "t8_damage": "15",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.417,
+      "damage": 15,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t8:jin:jin-b,f+2",
+      "input_slots": [
+        "b,f+2"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -7"
+    },
+    "b,f+2,1": {
+      "name": "Move 1 (1)",
+      "input": "b,f+2,1",
+      "t8_source": "jin",
+      "t8_id": "Jin-b,f+2,1",
+      "t8_damage": ",14",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.4,
+      "damage": 29,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 14,
+      "anim_ref": "t8:jin:jin-b,f+2,1",
+      "input_slots": [
+        "b,f+2",
+        "b,f+2,1"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          15,
+          14
+        ],
+        "total": 29
+      },
+      "note": "High; on block -5"
+    },
+    "b,f+2,1,2": {
+      "name": "Evil Intent",
+      "input": "b,f+2,1,2",
+      "t8_source": "jin",
+      "t8_id": "Jin-b,f+2,1,2",
+      "t8_damage": ",20",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 49,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:jin:jin-b,f+2,1,2",
+      "input_slots": [
+        "b,f+2",
+        "b,f+2,1",
+        "b,f+2,1,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          15,
+          14,
+          20
+        ],
+        "total": 49
+      },
+      "note": "Mid; on block -5; knockdown on hit"
+    },
+    "b,f+2,1,df+2": {
+      "name": "Geyser",
+      "input": "b,f+2,1,df+2",
+      "t8_source": "jin",
+      "t8_id": "Jin-b,f+2,1,df+2",
+      "t8_damage": ",22",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.6,
+      "damage": 51,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:jin:jin-b,f+2,1,df+2",
+      "input_slots": [
+        "b,f+2",
+        "b,f+2,1",
+        "b,f+2,1,df+2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          15,
+          14,
+          22
+        ],
+        "total": 51
+      },
+      "note": "Mid; on block -14; knockdown on hit"
+    },
+    "b,f+2,3": {
+      "name": "Keito",
+      "input": "b,f+2,3",
+      "t8_source": "jin",
+      "t8_id": "Jin-b,f+2,3",
+      "t8_damage": ",17",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 32,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:jin:jin-b,f+2,3",
+      "input_slots": [
+        "b,f+2",
+        "b,f+2,3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          15,
+          17
+        ],
+        "total": 32
+      },
+      "note": "Mid; on block -9"
+    },
+    "CD.df#1": {
+      "name": "Electric Thrusting Uppercut",
+      "input": "CD.df#1",
+      "t8_source": "jin",
+      "t8_id": "Jin-CD.df${justFrame}1",
+      "t8_damage": "22",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 22,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 11,
+      "anim_ref": "t8:jin:jin-cd.df${justframe}1",
+      "input_slots": [
+        "CD.df#1"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -13; knockdown on hit"
+    },
+    "CD.df#2": {
+      "name": "Electric Wind Hook Fist",
+      "input": "CD.df#2",
+      "t8_source": "jin",
+      "t8_id": "Jin-CD.df${justFrame}2",
+      "t8_damage": "25",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 25,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:jin:jin-cd.df${justframe}2",
+      "input_slots": [
+        "CD.df#2"
+      ],
+      "move_class": "strike",
+      "note": "High; on block +5~+6; knockdown on hit"
+    },
+    "CD.df+1": {
+      "name": "Thrusting Uppercut",
+      "input": "CD.df+1",
+      "t8_source": "jin",
+      "t8_id": "Jin-CD.df+1",
+      "t8_damage": "20",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 20,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:jin:jin-cd.df+1",
+      "input_slots": [
+        "CD.df+1"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -13; knockdown on hit"
+    },
+    "CD.df+2": {
+      "name": "Wind Hook Fist",
+      "input": "CD.df+2",
+      "t8_source": "jin",
+      "t8_id": "Jin-CD.df+2",
+      "t8_damage": "20",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.467,
+      "damage": 20,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:jin:jin-cd.df+2",
+      "input_slots": [
+        "CD.df+2"
+      ],
+      "move_class": "strike",
+      "note": "High; on block -10; knockdown on hit"
+    },
+    "CD.DF+4": {
+      "name": "Move CD.DF+4 (CD.DF+4)",
+      "input": "CD.DF+4",
+      "t8_source": "jin",
+      "t8_id": "Jin-CD.DF+4",
+      "t8_damage": "12",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.467,
+      "damage": 12,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 6,
+      "anim_ref": "t8:jin:jin-cd.df+4",
+      "input_slots": [
+        "CD.DF+4"
+      ],
+      "move_class": "strike",
+      "note": "Low; on block -31"
+    },
+    "CD.DF+4,2": {
+      "name": "Depraved Savagery",
+      "input": "CD.DF+4,2",
+      "t8_source": "jin",
+      "t8_id": "Jin-CD.DF+4,2",
+      "t8_damage": ",28",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.467,
+      "damage": 40,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:jin:jin-cd.df+4,2",
+      "input_slots": [
+        "CD.DF+4",
+        "CD.DF+4,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          12,
+          28
+        ],
+        "total": 40
+      },
+      "note": "Mid; on block -16; knockdown on hit"
+    },
+    "d+1": {
+      "name": "Black Wing Flash",
+      "input": "d+1",
+      "t8_source": "jin",
+      "t8_id": "Jin-d+1",
+      "t8_damage": "21,10",
+      "startup": 0.35,
+      "active": 0.033,
+      "recovery": 0.583,
+      "damage": 31,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 15,
+      "anim_ref": "t8:jin:jin-d+1",
+      "input_slots": [
+        "d+1"
+      ],
+      "move_class": "throw",
+      "multi_hit": {
+        "hits": [
+          21,
+          10
+        ],
+        "total": 31
+      },
+      "note": "Mid, Throw; on block -13; Devil-Jin flavor (winged form)",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "1",
+      "devil_flavor": true
+    },
+    "d+2": {
+      "name": "Scourge",
+      "input": "d+2",
+      "t8_source": "jin",
+      "t8_id": "Jin-d+2",
+      "t8_damage": "22",
+      "startup": 0.367,
+      "active": 0.033,
+      "recovery": 0.533,
+      "damage": 22,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 11,
+      "anim_ref": "t8:jin:jin-d+2",
+      "input_slots": [
+        "d+2"
+      ],
+      "move_class": "strike",
+      "note": "Low; on block -14"
+    },
+    "d+3": {
+      "name": "Move d+3 (d+3)",
+      "input": "d+3",
+      "t8_source": "jin",
+      "t8_id": "Jin-d+3",
+      "t8_damage": "7",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.533,
+      "damage": 7,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "anim_ref": "t8:jin:jin-d+3",
+      "input_slots": [
+        "d+3"
+      ],
+      "move_class": "strike",
+      "note": "Low; on block -14"
+    },
+    "d+3+4": {
+      "name": "Double Lift Kick",
+      "input": "d+3+4",
+      "t8_source": "jin",
+      "t8_id": "Jin-d+3+4",
+      "t8_damage": "5,15",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.6,
+      "damage": 20,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:jin:jin-d+3+4",
+      "input_slots": [
+        "d+3+4"
+      ],
+      "move_class": "strike",
+      "multi_hit": {
+        "hits": [
+          5,
+          15
+        ],
+        "total": 20
+      },
+      "note": "Mid, Mid; on block -19; knockdown on hit"
+    },
+    "d+3,4": {
+      "name": "Move 4 (4)",
+      "input": "d+3,4",
+      "t8_source": "jin",
+      "t8_id": "Jin-d+3,4",
+      "t8_damage": ",10",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.483,
+      "damage": 17,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t8:jin:jin-d+3,4",
+      "input_slots": [
+        "d+3",
+        "d+3,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          7,
+          10
+        ],
+        "total": 17
+      },
+      "note": "High; on block -11"
+    },
+    "d+3,4,3": {
+      "name": "Kazama Style Three-Quarter Kick",
+      "input": "d+3,4,3",
+      "t8_source": "jin",
+      "t8_id": "Jin-d+3,4,3",
+      "t8_damage": ",21",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.55,
+      "damage": 38,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:jin:jin-d+3,4,3",
+      "input_slots": [
+        "d+3",
+        "d+3,4",
+        "d+3,4,3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          7,
+          10,
+          21
+        ],
+        "total": 38
+      },
+      "note": "Mid; on block -12"
+    },
+    "d+3,4~4": {
+      "name": "Mid Sidekick",
+      "input": "d+3,4~4",
+      "t8_source": "jin",
+      "t8_id": "Jin-d+3,4~4",
+      "t8_damage": ",24",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.583,
+      "damage": 31,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:jin:jin-d+3,4~4",
+      "input_slots": [
+        "d+3",
+        "d+3,4~4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          7,
+          24
+        ],
+        "total": 31
+      },
+      "note": "Mid; on block -12; knockdown on hit"
+    },
+    "d+4": {
+      "name": "Right Sweep",
+      "input": "d+4",
+      "t8_source": "jin",
+      "t8_id": "Jin-d+4",
+      "t8_damage": "11",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 11,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 6,
+      "anim_ref": "t8:jin:jin-d+4",
+      "input_slots": [
+        "d+4"
+      ],
+      "move_class": "strike",
+      "note": "Low; on block -12"
+    },
+    "db+1": {
+      "name": "Crouch Jab",
+      "input": "db+1",
+      "t8_source": "jin",
+      "t8_id": "Jin-db+1",
+      "t8_damage": "5",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.4,
+      "damage": 5,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 2,
+      "anim_ref": "t8:jin:jin-db+1",
+      "input_slots": [
+        "db+1"
+      ],
+      "move_class": "strike",
+      "note": "Special low; on block -5"
+    },
+    "db+1+2": {
+      "name": "Power Stance",
+      "input": "db+1+2",
+      "t8_source": "jin",
+      "t8_id": "Jin-db+1+2",
+      "t8_damage": "0",
+      "startup": 0.317,
+      "active": 0.3,
+      "recovery": 0.433,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "anim_ref": "t8:jin:jin-db+1+2",
+      "input_slots": [
+        "db+1+2"
+      ],
+      "move_class": "special",
+      "note": "Mid; on block -11~+4"
+    },
+    "db+2": {
+      "name": "Move db+2 (db+2)",
+      "input": "db+2",
+      "t8_source": "jin",
+      "t8_id": "Jin-db+2",
+      "t8_damage": "12",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 12,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 6,
+      "anim_ref": "t8:jin:jin-db+2",
+      "input_slots": [
+        "db+2"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -10"
+    },
+    "db+2,2": {
+      "name": "Move 2 (2)",
+      "input": "db+2,2",
+      "t8_source": "jin",
+      "t8_id": "Jin-db+2,2",
+      "t8_damage": ",11",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 23,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:jin:jin-db+2,2",
+      "input_slots": [
+        "db+2",
+        "db+2,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          12,
+          11
+        ],
+        "total": 23
+      },
+      "note": "High; on block -12"
+    },
+    "db+2,2,3": {
+      "name": "Savage Sword",
+      "input": "db+2,2,3",
+      "t8_source": "jin",
+      "t8_id": "Jin-db+2,2,3",
+      "t8_damage": ",21",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 44,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:jin:jin-db+2,2,3",
+      "input_slots": [
+        "db+2",
+        "db+2,2",
+        "db+2,2,3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          12,
+          11,
+          21
+        ],
+        "total": 44
+      },
+      "note": "Mid; on block -9; knockdown on hit"
+    },
+    "db+2,3": {
+      "name": "Cascade Kick",
+      "input": "db+2,3",
+      "t8_source": "jin",
+      "t8_id": "Jin-db+2,3",
+      "t8_damage": ",23",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 35,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:jin:jin-db+2,3",
+      "input_slots": [
+        "db+2",
+        "db+2,3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          12,
+          23
+        ],
+        "total": 35
+      },
+      "note": "Mid; on block -8; knockdown on hit"
+    },
+    "db+3": {
+      "name": "Left Spinning Back Kick",
+      "input": "db+3",
+      "t8_source": "jin",
+      "t8_id": "Jin-db+3",
+      "t8_damage": "28",
+      "startup": 0.317,
+      "active": 0.033,
+      "recovery": 0.583,
+      "damage": 28,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 14,
+      "anim_ref": "t8:jin:jin-db+3",
+      "input_slots": [
+        "db+3"
+      ],
+      "move_class": "strike",
+      "note": "High; on block -10~-8; knockdown on hit"
+    },
+    "db+4": {
+      "name": "Right Low Roundhouse",
+      "input": "db+4",
+      "t8_source": "jin",
+      "t8_id": "Jin-db+4",
+      "t8_damage": "18",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 18,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 9,
+      "anim_ref": "t8:jin:jin-db+4",
+      "input_slots": [
+        "db+4"
+      ],
+      "move_class": "strike",
+      "note": "Low; on block -13"
+    },
+    "df+1": {
+      "name": "Mid Left Punch",
+      "input": "df+1",
+      "t8_source": "jin",
+      "t8_id": "Jin-df+1",
+      "t8_damage": "10",
+      "startup": 0.217,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 10,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 5,
+      "anim_ref": "t8:jin:jin-df+1",
+      "input_slots": [
+        "df+1"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -3"
+    },
+    "df+1,4": {
+      "name": "High Roundhouse Kick",
+      "input": "df+1,4",
+      "t8_source": "jin",
+      "t8_id": "Jin-df+1,4",
+      "t8_damage": ",18",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 28,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 14,
+      "anim_ref": "t8:jin:jin-df+1,4",
+      "input_slots": [
+        "df+1",
+        "df+1,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          10,
+          18
+        ],
+        "total": 28
+      },
+      "note": "High; on block -9"
+    },
+    "df+1,4~4": {
+      "name": "Mid Sidekick",
+      "input": "df+1,4~4",
+      "t8_source": "jin",
+      "t8_id": "Jin-df+1,4~4",
+      "t8_damage": ",24",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.583,
+      "damage": 34,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:jin:jin-df+1,4~4",
+      "input_slots": [
+        "df+1",
+        "df+1,4~4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          10,
+          24
+        ],
+        "total": 34
+      },
+      "note": "Mid; on block -12; knockdown on hit"
+    },
+    "df+2": {
+      "name": "Fiendish Rend",
+      "input": "df+2",
+      "t8_source": "jin",
+      "t8_id": "Jin-df+2",
+      "t8_damage": "12",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 12,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 6,
+      "anim_ref": "t8:jin:jin-df+2",
+      "input_slots": [
+        "df+2"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -9; Devil-Jin flavor (winged form)",
+      "devil_flavor": true
+    },
+    "df+2+4": {
+      "name": "Shun Ren Dan",
+      "input": "df+2+4",
+      "t8_source": "jin",
+      "t8_id": "Jin-df+2+4",
+      "t8_damage": "40",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 40,
+      "limb": "both",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 15,
+      "anim_ref": "t8:jin:jin-df+2+4",
+      "input_slots": [
+        "df+2+4"
+      ],
+      "move_class": "throw",
+      "note": "Throw; on block -2",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "2"
+    },
+    "df+2,4": {
+      "name": "Fiendish Talon Rend",
+      "input": "df+2,4",
+      "t8_source": "jin",
+      "t8_id": "Jin-df+2,4",
+      "t8_damage": ",19",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.55,
+      "damage": 31,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:jin:jin-df+2,4",
+      "input_slots": [
+        "df+2",
+        "df+2,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          12,
+          19
+        ],
+        "total": 31
+      },
+      "note": "Mid; on block -12; Devil-Jin flavor (winged form)",
+      "devil_flavor": true
+    },
+    "df+2,H.1+2": {
+      "name": "Awakened Fiendish Claw",
+      "input": "df+2,H.1+2",
+      "t8_source": "jin",
+      "t8_id": "Jin-df+2,H.1+2",
+      "t8_damage": ",25",
+      "startup": 0.4,
+      "active": 0.033,
+      "recovery": 0.583,
+      "damage": 37,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:jin:jin-df+2,h.1+2",
+      "input_slots": [
+        "df+2",
+        "df+2,H.1+2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          12,
+          25
+        ],
+        "total": 37
+      },
+      "note": "Mid; on block +2; knockdown on hit; Devil-Jin flavor (winged form)",
+      "devil_flavor": true
+    },
+    "df+3": {
+      "name": "Left Roundhouse",
+      "input": "df+3",
+      "t8_source": "jin",
+      "t8_id": "Jin-df+3",
+      "t8_damage": "16",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 16,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t8:jin:jin-df+3",
+      "input_slots": [
+        "df+3"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -8"
+    },
+    "df+3~3": {
+      "name": "Brazilian Kick",
+      "input": "df+3~3",
+      "t8_source": "jin",
+      "t8_id": "Jin-df+3~3",
+      "t8_damage": "20",
+      "startup": 0.383,
+      "active": 0.033,
+      "recovery": 0.383,
+      "damage": 20,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:jin:jin-df+3~3",
+      "input_slots": [
+        "df+3~3"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block +6c"
+    },
+    "df+4": {
+      "name": "Right Spinning Axe Kick",
+      "input": "df+4",
+      "t8_source": "jin",
+      "t8_id": "Jin-df+4",
+      "t8_damage": "22",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.35,
+      "damage": 22,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 11,
+      "anim_ref": "t8:jin:jin-df+4",
+      "input_slots": [
+        "df+4"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block +0"
+    },
+    "DVS.1": {
+      "name": "Awakened Thunder God Fist",
+      "input": "DVS.1",
+      "t8_source": "jin",
+      "t8_id": "Jin-DVS.1",
+      "t8_damage": "25",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 25,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:jin:jin-dvs.1",
+      "input_slots": [
+        "DVS.1"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -9"
+    },
+    "DVS.2": {
+      "name": "Awakened Wind God Fist",
+      "input": "DVS.2",
+      "t8_source": "jin",
+      "t8_id": "Jin-DVS.2",
+      "t8_damage": "23",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.4,
+      "damage": 23,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:jin:jin-dvs.2",
+      "input_slots": [
+        "DVS.2"
+      ],
+      "move_class": "strike",
+      "note": "Special mid; on block +4; knockdown on hit"
+    },
+    "DVS.3": {
+      "name": "Awakened Demon's Hoof",
+      "input": "DVS.3",
+      "t8_source": "jin",
+      "t8_id": "Jin-DVS.3",
+      "t8_damage": "25",
+      "startup": 0.433,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 25,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:jin:jin-dvs.3",
+      "input_slots": [
+        "DVS.3"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block +2c; knockdown on hit"
+    },
+    "DVS.4": {
+      "name": "Move DVS.4 (DVS.4)",
+      "input": "DVS.4",
+      "t8_source": "jin",
+      "t8_id": "Jin-DVS.4",
+      "t8_damage": "10",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.65,
+      "damage": 10,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 5,
+      "anim_ref": "t8:jin:jin-dvs.4",
+      "input_slots": [
+        "DVS.4"
+      ],
+      "move_class": "strike",
+      "note": "Low; on block -12"
+    },
+    "DVS.4,4": {
+      "name": "Awakened Spinning Demon",
+      "input": "DVS.4,4",
+      "t8_source": "jin",
+      "t8_id": "Jin-DVS.4,4",
+      "t8_damage": ",25",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 35,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:jin:jin-dvs.4,4",
+      "input_slots": [
+        "DVS.4",
+        "DVS.4,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          10,
+          25
+        ],
+        "total": 35
+      },
+      "note": "Mid; on block -14"
+    },
+    "DVS.DF+3": {
+      "name": "Awakened Demon's Tail",
+      "input": "DVS.DF+3",
+      "t8_source": "jin",
+      "t8_id": "Jin-DVS.DF+3",
+      "t8_damage": "24",
+      "startup": 0.55,
+      "active": 0.033,
+      "recovery": 0.683,
+      "damage": 24,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:jin:jin-dvs.df+3",
+      "input_slots": [
+        "DVS.DF+3"
+      ],
+      "move_class": "strike",
+      "note": "Low; on block -23; knockdown on hit"
+    },
+    "f+1+2": {
+      "name": "Double Chamber Punch",
+      "input": "f+1+2",
+      "t8_source": "jin",
+      "t8_id": "Jin-f+1+2",
+      "t8_damage": "14,24",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.55,
+      "damage": 38,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:jin:jin-f+1+2",
+      "input_slots": [
+        "f+1+2"
+      ],
+      "move_class": "strike",
+      "multi_hit": {
+        "hits": [
+          14,
+          24
+        ],
+        "total": 38
+      },
+      "note": "High, High; on block -6; knockdown on hit"
+    },
+    "f+3": {
+      "name": "Left Sidekick",
+      "input": "f+3",
+      "t8_source": "jin",
+      "t8_id": "Jin-f+3",
+      "t8_damage": "12",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.583,
+      "damage": 12,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 6,
+      "anim_ref": "t8:jin:jin-f+3",
+      "input_slots": [
+        "f+3"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -16"
+    },
+    "f+3,1": {
+      "name": "Tanden Nidan-uchi",
+      "input": "f+3,1",
+      "t8_source": "jin",
+      "t8_id": "Jin-f+3,1",
+      "t8_damage": ",17",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 29,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 14,
+      "anim_ref": "t8:jin:jin-f+3,1",
+      "input_slots": [
+        "f+3",
+        "f+3,1"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          12,
+          17
+        ],
+        "total": 29
+      },
+      "note": "Mid; on block -12"
+    },
+    "f+3,3": {
+      "name": "Stinger",
+      "input": "f+3,3",
+      "t8_source": "jin",
+      "t8_id": "Jin-f+3,3",
+      "t8_damage": ",14",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 26,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 13,
+      "anim_ref": "t8:jin:jin-f+3,3",
+      "input_slots": [
+        "f+3",
+        "f+3,3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          12,
+          14
+        ],
+        "total": 26
+      },
+      "note": "High; on block -8"
+    },
+    "f+3+4": {
+      "name": "Zenshin",
+      "input": "f+3+4",
+      "t8_source": "jin",
+      "t8_id": "Jin-f+3+4",
+      "t8_damage": null,
+      "startup": 0.167,
+      "active": 0.3,
+      "recovery": 0.167,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "anim_ref": "t8:jin:jin-f+3+4",
+      "input_slots": [
+        "f+3+4"
+      ],
+      "move_class": "special",
+      "devil_flavor": true,
+      "note": "Devil-Jin flavor (winged form)"
+    },
+    "FC.df+4": {
+      "name": "Right Sweep (2)",
+      "input": "FC.df+4",
+      "t8_source": "jin",
+      "t8_id": "Jin-FC.df+4",
+      "t8_damage": "20",
+      "startup": 0.35,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 20,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:jin:jin-fc.df+4",
+      "input_slots": [
+        "FC.df+4"
+      ],
+      "move_class": "strike",
+      "note": "Low; on block -26"
+    },
+    "f,F+2": {
+      "name": "Demon's Paw",
+      "input": "f,F+2",
+      "t8_source": "jin",
+      "t8_id": "Jin-f,F+2",
+      "t8_damage": "22",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.483,
+      "damage": 22,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 11,
+      "anim_ref": "t8:jin:jin-f,f+2",
+      "input_slots": [
+        "f,F+2"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -8; knockdown on hit"
+    },
+    "f,F+3": {
+      "name": "Left Axe Kick",
+      "input": "f,F+3",
+      "t8_source": "jin",
+      "t8_id": "Jin-f,F+3",
+      "t8_damage": "20",
+      "startup": 0.383,
+      "active": 0.033,
+      "recovery": 0.4,
+      "damage": 20,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:jin:jin-f,f+3",
+      "input_slots": [
+        "f,F+3"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -4; knockdown on hit"
+    },
+    "f,F+3,1": {
+      "name": "Left Jab",
+      "input": "f,F+3,1",
+      "t8_source": "jin",
+      "t8_id": "Jin-f,F+3,1",
+      "t8_damage": ",5",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.3,
+      "damage": 25,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:jin:jin-f,f+3,1",
+      "input_slots": [
+        "f,F+3",
+        "f,F+3,1"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          20,
+          5
+        ],
+        "total": 25
+      },
+      "note": "High; on block +1"
+    },
+    "f,F+4": {
+      "name": "Battery Sidekick",
+      "input": "f,F+4",
+      "t8_source": "jin",
+      "t8_id": "Jin-f,F+4",
+      "t8_damage": "32",
+      "startup": 0.283,
+      "active": 0.033,
+      "recovery": 0.533,
+      "damage": 32,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:jin:jin-f,f+4",
+      "input_slots": [
+        "f,F+4"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -7; knockdown on hit"
+    },
+    "f,f,F+3": {
+      "name": "Leaping Side Kick",
+      "input": "f,f,F+3",
+      "t8_source": "jin",
+      "t8_id": "Jin-f,f,F+3",
+      "t8_damage": "30",
+      "startup": 0.367,
+      "active": 0.033,
+      "recovery": 0.6,
+      "damage": 30,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:jin:jin-f,f,f+3",
+      "input_slots": [
+        "f,f,F+3"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block +6; knockdown on hit"
+    },
+    "f,n,d,df": {
+      "name": "Crouch Dash",
+      "input": "f,n,d,df",
+      "t8_source": "jin",
+      "t8_id": "Jin-f,n,d,df",
+      "t8_damage": null,
+      "startup": 0.167,
+      "active": 0.3,
+      "recovery": 0.05,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "anim_ref": "t8:jin:jin-f,n,d,df",
+      "input_slots": [
+        "f,n,d,df"
+      ],
+      "move_class": "special",
+      "note": "Breaking Step"
+    },
+    "f,n,d,df,UF": {
+      "name": "Crouch Dash (UF)",
+      "input": "f,n,d,df,UF",
+      "t8_source": "jin",
+      "t8_id": "Jin-f,n,d,df,UF",
+      "t8_damage": null,
+      "startup": 0.167,
+      "active": 0.3,
+      "recovery": 0.433,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "anim_ref": "t8:jin:jin-f,n,d,df,uf",
+      "input_slots": [
+        "f,n,d,df",
+        "f,n,d,df,UF"
+      ],
+      "move_class": "special",
+      "note": "Breaking Step; Stance: Crouch Dash"
+    },
+    "H.2+3": {
+      "name": "Hellfire Trespass Slayer",
+      "input": "H.2+3",
+      "t8_source": "jin",
+      "t8_id": "Jin-H.2+3",
+      "t8_damage": "57",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.55,
+      "damage": 57,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:jin:jin-h.2+3",
+      "input_slots": [
+        "H.2+3"
+      ],
+      "move_class": "strike",
+      "note": "Mid, High, Mid; on block +3; Devil-Jin flavor (winged form)",
+      "devil_flavor": true
+    },
+    "H.2+3,4": {
+      "name": "Hellfire Darkside Slayer",
+      "input": "H.2+3,4",
+      "t8_source": "jin",
+      "t8_id": "Jin-H.2+3,4",
+      "t8_damage": "50",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.533,
+      "damage": 50,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:jin:jin-h.2+3,4",
+      "input_slots": [
+        "H.2+3,4"
+      ],
+      "move_class": "strike",
+      "note": "Mid, High, Mid; on block +9; knockdown on hit; Devil-Jin flavor (winged form)",
+      "devil_flavor": true
+    },
+    "H.db+1+2": {
+      "name": "Awakened Power Stance",
+      "input": "H.db+1+2",
+      "t8_source": "jin",
+      "t8_id": "Jin-H.db+1+2",
+      "t8_damage": "0",
+      "startup": 0.317,
+      "active": 0.3,
+      "recovery": 0.433,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "anim_ref": "t8:jin:jin-h.db+1+2",
+      "input_slots": [
+        "H.db+1+2"
+      ],
+      "move_class": "special",
+      "note": "Mid; on block +4; Devil-Jin flavor (winged form)",
+      "devil_flavor": true
+    },
+    "H.f,F+1+2": {
+      "name": "Awakened Black Wing",
+      "input": "H.f,F+1+2",
+      "t8_source": "jin",
+      "t8_id": "Jin-H.f,F+1+2",
+      "t8_damage": "20",
+      "startup": 0.35,
+      "active": 0.033,
+      "recovery": 0.633,
+      "damage": 20,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:jin:jin-h.f,f+1+2",
+      "input_slots": [
+        "H.f,F+1+2"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block +5; Devil-Jin flavor (winged form)",
+      "devil_flavor": true
+    },
+    "Left throw": {
+      "name": "Shoulder Flip",
+      "input": "Left throw",
+      "t8_source": "jin",
+      "t8_id": "Jin-Left throw",
+      "t8_damage": "43",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 43,
+      "limb": "both",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 15,
+      "anim_ref": "t8:jin:jin-left throw",
+      "input_slots": [
+        "Left throw"
+      ],
+      "move_class": "throw",
+      "note": "Throw; on block -3",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "1"
+    },
+    "OTG.d+1+2": {
+      "name": "Black Out",
+      "input": "OTG.d+1+2",
+      "t8_source": "jin",
+      "t8_id": "Jin-OTG.d+1+2",
+      "t8_damage": "24",
+      "startup": 0.317,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 24,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:jin:jin-otg.d+1+2",
+      "input_slots": [
+        "OTG.d+1+2"
+      ],
+      "move_class": "strike",
+      "note": "Low; on block -13"
+    },
+    "R.df+1+2": {
+      "name": "Polar Demon Gouge",
+      "input": "R.df+1+2",
+      "t8_source": "jin",
+      "t8_id": "Jin-R.df+1+2",
+      "t8_damage": "55+",
+      "startup": 0.333,
+      "active": 0.3,
+      "recovery": 0.65,
+      "damage": 0,
+      "limb": "both",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "anim_ref": "t8:jin:jin-r.df+1+2",
+      "input_slots": [
+        "R.df+1+2"
+      ],
+      "move_class": "special",
+      "note": "Mid, Throw; on block -18"
+    },
+    "Right throw": {
+      "name": "Over the Limit",
+      "input": "Right throw",
+      "t8_source": "jin",
+      "t8_id": "Jin-Right throw",
+      "t8_damage": "40",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 40,
+      "limb": "both",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 15,
+      "anim_ref": "t8:jin:jin-right throw",
+      "input_slots": [
+        "Right throw"
+      ],
+      "move_class": "throw",
+      "note": "Throw; on block -3",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "1"
+    },
+    "ub+1+2": {
+      "name": "Avenger",
+      "input": "ub+1+2",
+      "t8_source": "jin",
+      "t8_id": "Jin-ub+1+2",
+      "t8_damage": "50",
+      "startup": 1.25,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 50,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:jin:jin-ub+1+2",
+      "input_slots": [
+        "ub+1+2"
+      ],
+      "move_class": "strike",
+      "note": "m!; Konshin Seikenzuki; knockdown on hit"
+    },
+    "ub+4": {
+      "name": "Move ub+4 (ub+4)",
+      "input": "ub+4",
+      "t8_source": "jin",
+      "t8_id": "Jin-ub+4",
+      "t8_damage": "15",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.483,
+      "damage": 15,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t8:jin:jin-ub+4",
+      "input_slots": [
+        "ub+4"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -13; knockdown on hit"
+    },
+    "uf+1+2": {
+      "name": "Tidal Wave",
+      "input": "uf+1+2",
+      "t8_source": "jin",
+      "t8_id": "Jin-uf+1+2",
+      "t8_damage": "40",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 40,
+      "limb": "both",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 15,
+      "anim_ref": "t8:jin:jin-uf+1+2",
+      "input_slots": [
+        "uf+1+2"
+      ],
+      "move_class": "throw",
+      "note": "Throw; on block +0",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "1+2"
+    },
+    "uf+2": {
+      "name": "Evading Middle Strike",
+      "input": "uf+2",
+      "t8_source": "jin",
+      "t8_id": "Jin-uf+2",
+      "t8_damage": "18",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.417,
+      "damage": 18,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 9,
+      "anim_ref": "t8:jin:jin-uf+2",
+      "input_slots": [
+        "uf+2"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -10~-9"
+    },
+    "uf+3": {
+      "name": "Left Spinning Jump Kick",
+      "input": "uf+3",
+      "t8_source": "jin",
+      "t8_id": "Jin-uf+3",
+      "t8_damage": "17",
+      "startup": 0.367,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 17,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t8:jin:jin-uf+3",
+      "input_slots": [
+        "uf+3"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -9"
+    },
+    "uf+4": {
+      "name": "Front Jump Kick",
+      "input": "uf+4",
+      "t8_source": "jin",
+      "t8_id": "Jin-uf+4",
+      "t8_damage": "13",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.483,
+      "damage": 13,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 6,
+      "anim_ref": "t8:jin:jin-uf+4",
+      "input_slots": [
+        "uf+4"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -13; knockdown on hit"
+    },
+    "uf,n,4": {
+      "name": "Delayed Rising Toe Kick",
+      "input": "uf,n,4",
+      "t8_source": "jin",
+      "t8_id": "Jin-uf,n,4",
+      "t8_damage": "20",
+      "startup": 0.383,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 20,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:jin:jin-uf,n,4",
+      "input_slots": [
+        "uf,n,4"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -13; knockdown on hit"
+    },
+    "ws1": {
+      "name": "Solar Plexus Strike",
+      "input": "ws1",
+      "t8_source": "jin",
+      "t8_id": "Jin-ws1",
+      "t8_damage": "7",
+      "startup": 0.217,
+      "active": 0.033,
+      "recovery": 0.4,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 4,
+      "anim_ref": "t8:jin:jin-ws1",
+      "input_slots": [
+        "ws1"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -6"
+    },
+    "ws1,2": {
+      "name": "Twin Lancer",
+      "input": "ws1,2",
+      "t8_source": "jin",
+      "t8_id": "Jin-ws1,2",
+      "t8_damage": ",19",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 26,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 13,
+      "anim_ref": "t8:jin:jin-ws1,2",
+      "input_slots": [
+        "ws1",
+        "ws1,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          7,
+          19
+        ],
+        "total": 26
+      },
+      "note": "Mid; on block -8"
+    },
+    "ws1,3": {
+      "name": "Solar Plexus Strike (3)",
+      "input": "ws1,3",
+      "t8_source": "jin",
+      "t8_id": "Jin-ws1,3",
+      "t8_damage": ",8",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t8:jin:jin-ws1,3",
+      "input_slots": [
+        "ws1",
+        "ws1,3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          7,
+          8
+        ],
+        "total": 15
+      },
+      "note": "High; on block -6"
+    },
+    "ws1,3,2": {
+      "name": "Solar Plexus Strike (2)",
+      "input": "ws1,3,2",
+      "t8_source": "jin",
+      "t8_id": "Jin-ws1,3,2",
+      "t8_damage": ",4",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 19,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 10,
+      "anim_ref": "t8:jin:jin-ws1,3,2",
+      "input_slots": [
+        "ws1",
+        "ws1,3",
+        "ws1,3,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          7,
+          8,
+          4
+        ],
+        "total": 19
+      },
+      "note": "Mid; on block -11"
+    },
+    "ws1,3,2,1": {
+      "name": "Solar Plexus Strike (1)",
+      "input": "ws1,3,2,1",
+      "t8_source": "jin",
+      "t8_id": "Jin-ws1,3,2,1",
+      "t8_damage": ",3",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 22,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 11,
+      "anim_ref": "t8:jin:jin-ws1,3,2,1",
+      "input_slots": [
+        "ws1",
+        "ws1,3",
+        "ws1,3,2",
+        "ws1,3,2,1"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          7,
+          8,
+          4,
+          3
+        ],
+        "total": 22
+      },
+      "note": "Mid; on block -11"
+    },
+    "ws1,3,2,1,4": {
+      "name": "Solar Plexus Strike (4)",
+      "input": "ws1,3,2,1,4",
+      "t8_source": "jin",
+      "t8_id": "Jin-ws1,3,2,1,4",
+      "t8_damage": ",5",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 27,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 14,
+      "anim_ref": "t8:jin:jin-ws1,3,2,1,4",
+      "input_slots": [
+        "ws1",
+        "ws1,3",
+        "ws1,3,2",
+        "ws1,3,2,1",
+        "ws1,3,2,1,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          7,
+          8,
+          4,
+          3,
+          5
+        ],
+        "total": 27
+      },
+      "note": "Low; on block -31"
+    },
+    "ws1,3,2,1,4,2": {
+      "name": "Kazama Style 6 Hit Combo Redux",
+      "input": "ws1,3,2,1,4,2",
+      "t8_source": "jin",
+      "t8_id": "Jin-ws1,3,2,1,4,2",
+      "t8_damage": ",10",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.317,
+      "damage": 37,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:jin:jin-ws1,3,2,1,4,2",
+      "input_slots": [
+        "ws1",
+        "ws1,3",
+        "ws1,3,2",
+        "ws1,3,2,1",
+        "ws1,3,2,1,4",
+        "ws1,3,2,1,4,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          7,
+          8,
+          4,
+          3,
+          5,
+          10
+        ],
+        "total": 37
+      },
+      "note": "Mid; on block -16; knockdown on hit"
+    },
+    "ws1,3~3": {
+      "name": "Brazilian Kick",
+      "input": "ws1,3~3",
+      "t8_source": "jin",
+      "t8_id": "Jin-ws1,3~3",
+      "t8_damage": ",20",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.383,
+      "damage": 27,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 14,
+      "anim_ref": "t8:jin:jin-ws1,3~3",
+      "input_slots": [
+        "ws1",
+        "ws1,3~3"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          7,
+          20
+        ],
+        "total": 27
+      },
+      "note": "Mid; on block +6"
+    },
+    "ws2": {
+      "name": "Crouching Uppercut",
+      "input": "ws2",
+      "t8_source": "jin",
+      "t8_id": "Jin-ws2",
+      "t8_damage": "14",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.333,
+      "damage": 14,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 7,
+      "anim_ref": "t8:jin:jin-ws2",
+      "input_slots": [
+        "ws2"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -12; knockdown on hit"
+    },
+    "ws3": {
+      "name": "Bamboo Splitter",
+      "input": "ws3",
+      "t8_source": "jin",
+      "t8_id": "Jin-ws3",
+      "t8_damage": "20",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 20,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:jin:jin-ws3",
+      "input_slots": [
+        "ws3"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -9"
+    },
+    "ws4": {
+      "name": "Move ws4 (ws4)",
+      "input": "ws4",
+      "t8_source": "jin",
+      "t8_id": "Jin-ws4",
+      "t8_damage": "13",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.35,
+      "damage": 13,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 6,
+      "anim_ref": "t8:jin:jin-ws4",
+      "input_slots": [
+        "ws4"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -3"
+    },
+    "ws4,4": {
+      "name": "Double Cross Kicks",
+      "input": "ws4,4",
+      "t8_source": "jin",
+      "t8_id": "Jin-ws4,4",
+      "t8_damage": ",15",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 28,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 14,
+      "anim_ref": "t8:jin:jin-ws4,4",
+      "input_slots": [
+        "ws4",
+        "ws4,4"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          13,
+          15
+        ],
+        "total": 28
+      },
+      "note": "High; on block -7"
+    },
+    "ZEN.1": {
+      "name": "Move ZEN.1 (ZEN.1)",
+      "input": "ZEN.1",
+      "t8_source": "jin",
+      "t8_id": "Jin-ZEN.1",
+      "t8_damage": "14",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.35,
+      "damage": 14,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 7,
+      "anim_ref": "t8:jin:jin-zen.1",
+      "input_slots": [
+        "ZEN.1"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -3; Devil-Jin flavor (winged form)",
+      "devil_flavor": true
+    },
+    "ZEN.1+2": {
+      "name": "Karmic Epicenter",
+      "input": "ZEN.1+2",
+      "t8_source": "jin",
+      "t8_id": "Jin-ZEN.1+2",
+      "t8_damage": "10,20",
+      "startup": 0.35,
+      "active": 0.033,
+      "recovery": 0.55,
+      "damage": 30,
+      "limb": "both",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 15,
+      "anim_ref": "t8:jin:jin-zen.1+2",
+      "input_slots": [
+        "ZEN.1+2"
+      ],
+      "move_class": "throw",
+      "multi_hit": {
+        "hits": [
+          10,
+          20
+        ],
+        "total": 30
+      },
+      "note": "Low, Throw; on block -14; Devil-Jin flavor (winged form)",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "1+2",
+      "devil_flavor": true
+    },
+    "ZEN.1,2": {
+      "name": "Brimstone Bite",
+      "input": "ZEN.1,2",
+      "t8_source": "jin",
+      "t8_id": "Jin-ZEN.1,2",
+      "t8_damage": ",21",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.533,
+      "damage": 35,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 15,
+      "anim_ref": "t8:jin:jin-zen.1,2",
+      "input_slots": [
+        "ZEN.1",
+        "ZEN.1,2"
+      ],
+      "move_class": "string",
+      "multi_hit": {
+        "hits": [
+          14,
+          21
+        ],
+        "total": 35
+      },
+      "note": "Mid; on block -14; knockdown on hit; Devil-Jin flavor (winged form)",
+      "devil_flavor": true
+    },
+    "ZEN.1,3": {
+      "name": "Kazama Style Leg Strike Flurry",
+      "input": "ZEN.1,3",
+      "t8_source": "jin",
+      "t8_id": "Jin-ZEN.1,3",
+      "t8_damage": ",14,14",
+      "startup": 0.167,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 42,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 15,
+      "anim_ref": "t8:jin:jin-zen.1,3",
+      "input_slots": [
+        "ZEN.1",
+        "ZEN.1,3"
+      ],
+      "move_class": "throw",
+      "multi_hit": {
+        "hits": [
+          14,
+          14,
+          14
+        ],
+        "total": 42
+      },
+      "note": "High, Throw; on block -9; Devil-Jin flavor (winged form)",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "throw_break": "1",
+      "devil_flavor": true
+    },
+    "ZEN.2": {
+      "name": "Fiendish Claw",
+      "input": "ZEN.2",
+      "t8_source": "jin",
+      "t8_id": "Jin-ZEN.2",
+      "t8_damage": "20",
+      "startup": 0.3,
+      "active": 0.033,
+      "recovery": 0.533,
+      "damage": 20,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:jin:jin-zen.2",
+      "input_slots": [
+        "ZEN.2"
+      ],
+      "move_class": "strike",
+      "note": "High; on block -5; knockdown on hit; Devil-Jin flavor (winged form)",
+      "devil_flavor": true
+    },
+    "ZEN.3": {
+      "name": "Halberd Heel",
+      "input": "ZEN.3",
+      "t8_source": "jin",
+      "t8_id": "Jin-ZEN.3",
+      "t8_damage": "20",
+      "startup": 0.283,
+      "active": 0.033,
+      "recovery": 0.533,
+      "damage": 20,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:jin:jin-zen.3",
+      "input_slots": [
+        "ZEN.3"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -9; Devil-Jin flavor (winged form)",
+      "devil_flavor": true
+    },
+    "ZEN.3+4": {
+      "name": "Black Wing Bolt",
+      "input": "ZEN.3+4",
+      "t8_source": "jin",
+      "t8_id": "Jin-ZEN.3+4",
+      "t8_damage": "25",
+      "startup": 0.35,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 25,
+      "limb": "both",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:jin:jin-zen.3+4",
+      "input_slots": [
+        "ZEN.3+4"
+      ],
+      "move_class": "strike",
+      "note": "High; on block +9g~+15g; knockdown on hit; Devil-Jin flavor (winged form)",
+      "devil_flavor": true
+    },
+    "ZEN.4": {
+      "name": "Corpse Crusher",
+      "input": "ZEN.4",
+      "t8_source": "jin",
+      "t8_id": "Jin-ZEN.4",
+      "t8_damage": "25",
+      "startup": 0.45,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 25,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 12,
+      "anim_ref": "t8:jin:jin-zen.4",
+      "input_slots": [
+        "ZEN.4"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block +2~+8; Devil-Jin flavor (winged form)",
+      "devil_flavor": true
+    },
+    "ZEN.u+1": {
+      "name": "Black Wing Rondo",
+      "input": "ZEN.u+1",
+      "t8_source": "jin",
+      "t8_id": "Jin-ZEN.u+1",
+      "t8_damage": "20",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 20,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "anim_ref": "t8:jin:jin-zen.u+1",
+      "input_slots": [
+        "ZEN.u+1"
+      ],
+      "move_class": "strike",
+      "note": "Mid; on block -16; knockdown on hit; Devil-Jin flavor (winged form)",
+      "devil_flavor": true
+    }
   },
-  "ZEN.3": {
-   "name": "Halberd Heel",
-   "input": "ZEN.3",
-   "t8_source": "jin",
-   "t8_id": "Jin-ZEN.3",
-   "t8_damage": "20",
-   "startup": 0.283,
-   "active": 0.033,
-   "recovery": 0.533,
-   "damage": 20,
-   "limb": "legL",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 10,
-   "anim_ref": "t8:jin:jin-zen.3",
-   "input_slots": [
-    "ZEN.3"
-   ],
-   "move_class": "strike",
-   "note": "Mid; on block -9; Devil-Jin flavor (winged form)",
-   "devil_flavor": true
-  },
-  "ZEN.3+4": {
-   "name": "Black Wing Bolt",
-   "input": "ZEN.3+4",
-   "t8_source": "jin",
-   "t8_id": "Jin-ZEN.3+4",
-   "t8_damage": "25",
-   "startup": 0.35,
-   "active": 0.033,
-   "recovery": 0.517,
-   "damage": 25,
-   "limb": "both",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 12,
-   "anim_ref": "t8:jin:jin-zen.3+4",
-   "input_slots": [
-    "ZEN.3+4"
-   ],
-   "move_class": "strike",
-   "note": "High; on block +9g~+15g; knockdown on hit; Devil-Jin flavor (winged form)",
-   "devil_flavor": true
-  },
-  "ZEN.4": {
-   "name": "Corpse Crusher",
-   "input": "ZEN.4",
-   "t8_source": "jin",
-   "t8_id": "Jin-ZEN.4",
-   "t8_damage": "25",
-   "startup": 0.45,
-   "active": 0.033,
-   "recovery": 0.517,
-   "damage": 25,
-   "limb": "legR",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 12,
-   "anim_ref": "t8:jin:jin-zen.4",
-   "input_slots": [
-    "ZEN.4"
-   ],
-   "move_class": "strike",
-   "note": "Mid; on block +2~+8; Devil-Jin flavor (winged form)",
-   "devil_flavor": true
-  },
-  "ZEN.u+1": {
-   "name": "Black Wing Rondo",
-   "input": "ZEN.u+1",
-   "t8_source": "jin",
-   "t8_id": "Jin-ZEN.u+1",
-   "t8_damage": "20",
-   "startup": 0.233,
-   "active": 0.033,
-   "recovery": 0.617,
-   "damage": 20,
-   "limb": "armL",
-   "heavy": true,
-   "knock": 5.0,
-   "soulGain": 10,
-   "anim_ref": "t8:jin:jin-zen.u+1",
-   "input_slots": [
-    "ZEN.u+1"
-   ],
-   "move_class": "strike",
-   "note": "Mid; on block -16; knockdown on hit; Devil-Jin flavor (winged form)",
-   "devil_flavor": true
+  "restored_from_sweep_338": {
+    "date": "2026-10-20",
+    "by": "tools/moveset-restore/restore_sweep_338.py",
+    "source_commit": "4cc6b41b",
+    "destroyed_by": "8ebdc527",
+    "moves": 175,
+    "strings": 66,
+    "specials": 28
   }
- },
- "strings": [
-  {
-   "input": "2,1",
-   "hits": [
-    "2",
-    "1"
-   ],
-   "t3_rows": [
-    220,
-    221
-   ]
-  },
-  {
-   "input": "2,1,2",
-   "hits": [
-    "2",
-    "1",
-    "2"
-   ],
-   "t3_rows": [
-    220,
-    221,
-    222
-   ]
-  },
-  {
-   "input": "4,1",
-   "hits": [
-    "4",
-    "1"
-   ],
-   "t3_rows": [
-    199,
-    184
-   ]
-  },
-  {
-   "input": "4,1,2",
-   "hits": [
-    "4",
-    "1",
-    "2"
-   ],
-   "t3_rows": [
-    199,
-    184,
-    186
-   ]
-  },
-  "1,2",
-  "1,2,1",
-  "1,2,3",
-  "1,2,4",
-  "1,3",
-  "1,3,4",
-  "2,1",
-  "2,1,4",
-  "2,1,4~4",
-  "2,4",
-  "3,1",
-  "3,1,4",
-  "b+1,2",
-  "b+2,1",
-  "b+3,2",
-  "b,f+2,1",
-  "b,f+2,1,2",
-  "b,f+2,1,df+2",
-  "b,f+2,3",
-  "CD.DF+4,2",
-  "d+3,4",
-  "d+3,4,3",
-  "d+3,4~4",
-  "db+2,2",
-  "db+2,2,3",
-  "db+2,3",
-  "df+1,4",
-  "df+1,4~4",
-  "df+2,4",
-  "df+2,H.1+2",
-  "DVS.4,4",
-  "f+3,1",
-  "f+3,3",
-  "f,F+3,1",
-  "ws1,2",
-  "ws1,3",
-  "ws1,3,2",
-  "ws1,3,2,1",
-  "ws1,3,2,1,4",
-  "ws1,3,2,1,4,2",
-  "ws1,3~3",
-  "ws4,4",
-  "ZEN.1,2"
- ],
- "specials": [
-  {
-   "input": "d,d/b,d,d/b+1+2",
-   "t3_row": 277,
-   "damage": 24,
-   "throw": true
-  },
-  {
-   "input": "d/b,n,f+2",
-   "t3_row": 276,
-   "damage": 24,
-   "throw": true
-  },
-  {
-   "input": "n,d/f,n,d/f+1",
-   "t3_row": 277,
-   "damage": 24,
-   "throw": true
-  },
-  {
-   "input": "u+1+2",
-   "name": "DEVIL FLIGHT (takeoff)",
-   "t3_source": "deviljin",
-   "t3_row": null,
-   "anim_ref": "t3:deviljin:flight:takeoff",
-   "move_class": "stance",
-   "flight": true,
-   "startup": 0.5,
-   "active": 0.0,
-   "recovery": 0.3,
-   "damage": 0,
-   "knock": 0,
-   "soulGain": 10,
-   "note": "Wings carry Demonio airborne; flight stance. Placeholder anim until devil-jin T3 rows mapped."
-  },
-  {
-   "input": "f,f+1+2",
-   "name": "INFERNO BEAM (devil laser)",
-   "t3_source": "deviljin",
-   "t3_row": null,
-   "anim_ref": "t3:deviljin:special:beam",
-   "move_class": "projectile",
-   "flight_only": true,
-   "startup": 0.667,
-   "active": 0.5,
-   "recovery": 0.8,
-   "damage": 28,
-   "knock": 7.0,
-   "soulGain": 15,
-   "note": "Devil Jin-style forehead/chest laser. Placeholder anim until devil-jin T3 rows mapped."
-  },
-  {
-   "input": "d/b+1+2",
-   "name": "HELLFIRE SWEEP",
-   "t3_source": "deviljin",
-   "t3_row": null,
-   "anim_ref": "t3:deviljin:special:sweep",
-   "move_class": "strike",
-   "limb": "legL",
-   "startup": 0.333,
-   "active": 0.05,
-   "recovery": 0.6,
-   "damage": 18,
-   "knock": 4.0,
-   "soulGain": 10,
-   "note": "Devil low sweep. Placeholder anim until devil-jin T3 rows mapped."
-  },
-  {
-   "input": "1+2+3+4",
-   "damage": 0
-  },
-  {
-   "input": "1+3",
-   "damage": 35,
-   "throw": true
-  },
-  {
-   "input": "1+3+4",
-   "damage": 0
-  },
-  {
-   "input": "2+4",
-   "damage": 35,
-   "throw": true
-  },
-  {
-   "input": "b+1+3",
-   "damage": 0
-  },
-  {
-   "input": "b+3+4",
-   "damage": 0
-  },
-  {
-   "input": "Back throw",
-   "damage": 50,
-   "throw": true
-  },
-  {
-   "input": "d+1",
-   "damage": 31,
-   "throw": true
-  },
-  {
-   "input": "db+1+2",
-   "damage": 0
-  },
-  {
-   "input": "df+2+4",
-   "damage": 40,
-   "throw": true
-  },
-  {
-   "input": "f+3+4",
-   "damage": 0
-  },
-  {
-   "input": "f,n,d,df",
-   "damage": 0
-  },
-  {
-   "input": "f,n,d,df,UF",
-   "damage": 0
-  },
-  {
-   "input": "H.db+1+2",
-   "damage": 0
-  },
-  {
-   "input": "Left throw",
-   "damage": 43,
-   "throw": true
-  },
-  {
-   "input": "qcb+1+3",
-   "damage": 40,
-   "throw": true
-  },
-  {
-   "input": "R.df+1+2",
-   "damage": 0
-  },
-  {
-   "input": "Right throw",
-   "damage": 40,
-   "throw": true
-  },
-  {
-   "input": "uf+1+2",
-   "damage": 40,
-   "throw": true
-  },
-  {
-   "input": "ZEN.1+2",
-   "damage": 30,
-   "throw": true
-  },
-  {
-   "input": "ZEN.1,3",
-   "damage": 42,
-   "throw": true
-  }
- ],
- "frame_convention": "T8 60fps -> seconds (frames/60); damage T8 180HP scale as-is",
- "schema_version": 2,
- "canon_note": "Winged (Devil) form: T8 Jin kit; Devil-Jin flavored moves (ZEN stance, Hellfire/Black Wing set, Heat Burst) flagged devil_flavor.",
- "forward_merge": {
-  "date": "2026-10-20",
-  "pr": 357,
-  "method": "auto-merge had taken branch lists wholesale; main specials/strings unioned back in (main priority, branch extras appended)",
-  "branch_counts": {
-   "moves": 136,
-   "specials": 21,
-   "strings": 43
-  },
-  "main_counts": {
-   "moves": 15,
-   "specials": 6,
-   "strings": 4
-  },
-  "merged_counts": {
-   "moves": 136,
-   "specials": 27,
-   "strings": 47
-  }
- }
 }

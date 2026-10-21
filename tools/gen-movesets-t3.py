@@ -105,6 +105,44 @@ def is_motion_notation(n):
     return any(d in n for d in ('d/b', 'd/f', 'u/b', 'u/f')) and len(n.split(',')) >= 2
 
 
+# ---- EXE common branch table (CALL 0xC00C = '<common>') ---------------------
+# A '<common>' branch is NOT a move slot: BranchFind (fight_sim.branch_find,
+# 0x8002E078) jumps to COMMON_ROWS + 12*target_slot in the USA EXE and walks those
+# 12-byte rows (u16 cmd, u8 restriction, u8 condition, s16 slot @+6, u8 flags,
+# u8 first/last window) until RETURN 0xC00D, then resumes the bank's own list.
+# Their slots index the fighter's OWN move_index (e.g. common block 0 holds the
+# 1+3 / 2+4 throws and throw escapes). Before 2026-10-21 the generator treated
+# target_slot as a move slot of the bank, which misrouted every common edge.
+COMMON_ROWS = 0x80017C78
+EXE_PATH = os.path.join(REPO, 'teardown', 'tekken3', 'disc', 'files', 'TEKKEN3', 'SLUS_004.02')
+_COMMON_CACHE = {}
+
+
+def common_rows(idx):
+    """[(command_text, restriction, condition, slot)] of EXE common block `idx`."""
+    if idx in _COMMON_CACHE:
+        return _COMMON_CACHE[idx]
+    import struct, types
+    sys.modules.setdefault('motion', types.ModuleType('motion'))  # command_text needs no motion parser
+    sys.path.insert(0, os.path.join(REPO, 'teardown', 'tekken3', 'tools', 'local'))
+    import moveset_extract as ME
+    if not hasattr(common_rows, 'exe'):
+        common_rows.exe = open(EXE_PATH, 'rb').read()
+        common_rows.seqs = ME.load_seq_tables(common_rows.exe)
+    exe, out = common_rows.exe, []
+    a = COMMON_ROWS + 12 * idx
+    for _ in range(256):
+        cmd = ME._u16(exe, a)
+        if cmd in (0xC000, 0xC00D):
+            break
+        o = a - ME.EXE_BASE + ME.EXE_HEADER
+        out.append((ME.command_text(cmd, common_rows.seqs), exe[o + 2], exe[o + 3],
+                    struct.unpack_from('<h', exe, o + 6)[0]))
+        a += 12
+    _COMMON_CACHE[idx] = out
+    return out
+
+
 def load_bank(bank):
     path = os.path.join(BANK_DIR, f'moveset_{bank}.json')
     with open(path) as f:
@@ -131,16 +169,23 @@ def bank_edges(bank):
 
     edges = collections.defaultdict(list)
     for m in moves:
+        branches = []
         for b in m.get('branches', []):
+            if b.get('command') == '<common>':
+                # expand the EXE common block in place (see common_rows)
+                for ctext, crest, ccond, cslot in common_rows(b.get('target_slot') or 0):
+                    branches.append({'command': ctext, 'target_slot': cslot, 'condition': ccond,
+                                     'restriction': crest, '_common': b.get('target_slot')})
+            else:
+                branches.append(b)
+        for b in branches:
             cmd = b.get('command')
             dst = slot2row.get(b.get('target_slot'))
             if dst is None or dst not in by_row:
                 continue
-            if cmd in (None, '<end>'):
+            if cmd in (None, '<end>', '<no-input>') or (cmd or '').startswith('<'):
                 continue  # no-input continuation markers carry no notation
-            if cmd == '<common>':
-                edges[m['row']].append((None, dst, 0, 0, cmd))
-            elif cmd == 'any-button' and not is_attack(by_row[dst]):
+            if cmd == 'any-button' and not is_attack(by_row[dst]):
                 # bare any-button fallback into a stance row: pass-through
                 edges[m['row']].append((None, dst, 0, 0, cmd))
             elif cmd == 'any-button' and is_attack(by_row[dst]):
@@ -171,7 +216,15 @@ def bank_edges(bank):
     found = {}
     pq = []
     counter = [0]
+    # Seed ONLY from stance hubs (non-attack rows). Seeding attack rows too
+    # (the 2026-10-19 version) made every string continuation reachable as a
+    # one-button move from the previous hit, so no multi-input string
+    # ('1,2', '1,2,1') ever formed and continuation rows were filed under
+    # bare buttons (fixed 2026-10-20). Hub rows the bank flags as attacks
+    # (e.g. Bryan 22-24) are still reached from the stance and expanded.
     for m in moves:
+        if is_attack(m):
+            continue
         if any(b.get('command') not in (None, '<end>') for b in m.get('branches', [])):
             counter[0] += 1
             pq.append((0, 0, counter[0], m['row'], [], [m['row']], None, 0, 0))

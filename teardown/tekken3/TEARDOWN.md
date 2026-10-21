@@ -22,12 +22,13 @@
   | Fighter | Name idx | BNS P1/P2 |
   |---|---|---|
   | King | 3 | 95 / 99 |
-  | Jin | 9 | 143 / 147 |
+  | Jin | 10 | 151 / 155 |
   | Yoshimitsu | 4 | 103 / 107 |
-  | Heihachi | 13 | 175 / 179 |
-  | Bryan | 12 | 167 / 171 |
-  | Gun Jack | 16 | 199 / 203 |
+  | Heihachi | 15 | 191 / 195 |
+  | Bryan | 14 | 183 / 187 |
+  | Gun Jack | 18 | 215 / 219 |
   | Xiaoyu | 7 | 127 / 131 |
+- **Correction 2026-10-20 (verification lane):** the Jin / Heihachi / Bryan / Gun Jack rows above were themselves wrong in the 2026-10-13 "correction" (143/147, 175/179, 167/171, 199/203) and are fixed here to the values in `docs/BNS-ORGANIZATION-PATTERN.md`, which the tree proves: the model folders are `models/jin151`, `models/heihachi191`, `models/bryan183`, `models/gunjack215`. Root cause: the name-index list in "Character Geometry" above omits TIGER (index 9) and PANDA (index 13), shifting every later index; the pattern doc's name table (…EDDY 8, TIGER 9, JIN 10, JULIA 11, KUMA 12, PANDA 13, BRYAN 14, HEIHACHI 15, OGRE 16, MOKUJIN 17, GUN JACK 18, GON 19, ANNA 20) governs. That list itself is flagged, not rewritten wholesale — see `docs/FULL-WIRING-VERIFICATION-2026-10-20.md` §7. Also superseded since this doc's 2026-10-13 update: pose sampling is no longer blocked (the USA EXE tables are verified and in use) and all 20 character motion banks + the common bank are extracted — see `CANON-CONVERSION.md` §5 (PR #382).
 - King geometry: 27 rows, 21 active parts, 0 unresolved seams. Files: `models/king95/king95.kmd`, `king95_parts.obj`, `renderdata.pkl`, part montage, 2 sampled stance poses
 - **Characters are ~27 separate rigid mesh parts in a hierarchy — NO vertex skinning.** Each part parented to one joint, overlapping at joints like action figures.
 
@@ -80,7 +81,7 @@ USA EXE pose/motion tables shifted −0x424 vs Japan Rev.1 (known offsets: LIMB_
 
 This is a heavy reverse-engineering step, not a quick task. Parked awaiting owner direction.
 
-**Remaining character extractions:** Jin (143/147), Yoshimitsu (103/107), Heihachi (175/179), Bryan (167/171), Gun Jack (199/203), Xiaoyu (127/131) — geometry extraction pipeline proven on King, can repeat once pose system is unblocked.
+**Remaining character extractions:** Jin (151/155), Yoshimitsu (103/107), Heihachi (191/195), Bryan (183/187), Gun Jack (215/219), Xiaoyu (127/131) — geometry extraction pipeline proven on King, can repeat once pose system is unblocked. (BNS IDs corrected 2026-10-20 per the note in "Character Geometry" above; the pose system has since been unblocked — see `CANON-CONVERSION.md` §5.)
 
 ---
 

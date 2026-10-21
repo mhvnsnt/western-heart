@@ -205,6 +205,16 @@ def parse_args():
                     help="if set, render rest + mid-clip frames of the "
                          "EXPORTED glb into this dir")
     ap.add_argument("--metrics-out", default=None)
+    ap.add_argument("--facing", choices=sorted(GLTF_FACING_TO_BLENDER), default=None,
+                    help="the static mesh's glTF facing axis (read from a rest "
+                         "render); overrides the foot-vs-shin estimate")
+    ap.add_argument("--heat-proxy-verts", type=int, default=200000,
+                    help="meshes above this vertex count are bone-heat "
+                         "weighted through a voxel-remeshed, decimated proxy "
+                         "and the weights data-transferred back")
+    ap.add_argument("--heat-voxel", type=float, default=0.008,
+                    help="proxy voxel remesh size in meters (after normalize)")
+    ap.add_argument("--heat-proxy-faces", type=int, default=48000)
     ap.add_argument("--keep-face", action="store_true",
                     help="keep the metarig face subtree (default: strip; "
                          "WH skeletons have no face bones)")
@@ -276,11 +286,19 @@ def mesh_world_stats(meshes):
     return np.concatenate(xs), np.concatenate(ys), np.concatenate(zs)
 
 
-def normalize_and_face(meshes, height):
+# glTF facing axis -> the facing vector in Blender space ((x,y,z)_gltf -> (x,-z,y))
+GLTF_FACING_TO_BLENDER = {"+X": (1.0, 0.0), "-X": (-1.0, 0.0), "+Z": (0.0, -1.0), "-Z": (0.0, 1.0)}
+
+
+def normalize_and_face(meshes, height, facing=None):
     """Uniform-scale to height, feet z=0, center x/y=0, yaw facing to -Y.
 
-    Facing estimate: the foot band's horizontal centroid sits forward of
-    the shin band's centroid (toes). Returns a metrics dict.
+    Facing: `facing` (the mesh's glTF facing axis, read from rest renders)
+    when given — exact. Otherwise estimated: the foot band's horizontal
+    centroid sits forward of the shin band's centroid (toes). The estimate
+    can land well off-axis (-74 deg instead of -90 on the demonio-a1 Tripo
+    pull, 2026-10-20), which puts the metarig's arms outside the mesh's arms
+    and makes bone heat fail for every vertex. Returns a metrics dict.
     """
     import bpy
     import numpy as np
@@ -299,6 +317,8 @@ def normalize_and_face(meshes, height):
     fvec = np.array([x[foot].mean() - x[shin].mean(),
                      y[foot].mean() - y[shin].mean()])
     yaw = 0.0
+    if facing:
+        fvec = np.array(GLTF_FACING_TO_BLENDER[facing])
     if np.linalg.norm(fvec) > 1e-6:
         # rotate facing vector onto (0,-1): yaw about Z
         ang_now = math.atan2(fvec[1], fvec[0])
@@ -353,6 +373,32 @@ def fit_metarig(meta, stats):
     kx_leg = max(0.8, min(1.4, (hip_half - 0.055 * height) / max(thigh_x, 1e-4)))
     kx_leg = max(0.8, min(1.4, kx_leg)) if thigh_x > 0 else 1.0
 
+    # A-POSE (2026-10-20): measure each arm's droop from the mesh itself —
+    # centroid of the outer-arm vertices (beyond the torso, outer half of the
+    # reach) relative to the shoulder. T-pose ~0 deg; Tripo A-poses ~35-50.
+    # Above 15 deg the chain is rotated down onto the measured arm line and
+    # the X stretch uses the arm length (span / cos(droop)), not the span.
+    import numpy as _np
+    droop = {}
+    for side, sgn in ((".L", 1.0), (".R", -1.0)):
+        sh = bones["upper_arm" + side].head_local * s
+        sx = sgn * x
+        band = (sx > abs(sh.x) + 0.08 * height) & (z > 0.30 * height) & (z < 0.95 * height)
+        if band.sum() < 50:
+            droop[side] = 0.0
+            continue
+        reach = sx[band].max()
+        outer = band & (sx > (abs(sh.x) + reach) / 2.0)
+        if outer.sum() < 20:
+            droop[side] = 0.0
+            continue
+        cx, cz = float(sx[outer].mean()), float(z[outer].mean())
+        droop[side] = max(0.0, math.degrees(math.atan2(sh.z - cz, cx - abs(sh.x))))
+    a_pose = max(droop.values()) > 15.0
+    if a_pose:
+        cosd = max(0.35, math.cos(math.radians(sum(droop.values()) / 2.0)))
+        kx_arm = max(0.8, min(1.6, (mesh_span_ratio / cosd) / tpl_span_ratio))
+
     bpy.ops.object.mode_set(mode="EDIT")
     eb = meta.data.edit_bones
     leg_prefixes = ("thigh.", "shin.", "foot.", "toe.", "heel.")
@@ -391,13 +437,28 @@ def fit_metarig(meta, stats):
                 b.tail.y += d.y
                 b.head.z += d.z
                 b.tail.z += d.z
+        if a_pose and droop[side] > 15.0:
+            # rotate the flattened chain (and its hand subtree) down about the
+            # shoulder pivot, in the character's frontal (XZ) plane
+            from mathutils import Matrix
+            piv = eb["upper_arm" + side].head.copy()
+            # right-hand rotation about +Y: x' = x cos + z sin, z' = -x sin + z cos,
+            # so the +X (.L) arm goes down for a positive angle, the .R arm for negative
+            ang = math.radians(droop[side]) * (1.0 if side == ".L" else -1.0)
+            R = Matrix.Rotation(ang, 3, "Y")
+            for b in eb:
+                if b.name.endswith(side) and b.name.startswith(
+                        ("upper_arm", "forearm", "hand", "palm.", "f_", "thumb.")):
+                    b.head = piv + R @ (b.head - piv)
+                    b.tail = piv + R @ (b.tail - piv)
     for b in eb:
         if b.name.startswith(leg_prefixes):
             b.head.x *= kx_leg
             b.tail.x *= kx_leg
     bpy.ops.object.mode_set(mode="OBJECT")
     return {"metarig_scale": s, "kx_arm": kx_arm, "kx_leg": kx_leg,
-            "template_height": tpl_height, "template_span": tpl_span}
+            "template_height": tpl_height, "template_span": tpl_span,
+            "arm_droop_deg": {k: round(v, 1) for k, v in droop.items()}, "a_pose": a_pose}
 
 
 def strip_face(meta):
@@ -455,15 +516,99 @@ def strip_to_deform(rig):
     return kept, removed
 
 
-def skin_meshes(rig, meshes):
-    """Bone-heat skinning + nearest-bone fixup for unweighted verts."""
+def heat_via_proxy(rig, m, voxel, target_faces):
+    """Bone heat on a watertight decimated proxy, transferred to `m`.
+
+    Blender's bone heat fails outright on ~1M-vertex Tripo statics ("failed
+    to find solution for one or more bones": every vertex came back
+    unweighted on demonio-a1, 2026-10-20). Standard production workaround,
+    Blender built-ins only: Voxel Remesh a copy (watertight, solvable),
+    Decimate it, heat-weight the copy, then Data Transfer the vertex-group
+    weights onto the full-resolution mesh (nearest face, interpolated).
+    Returns proxy stats."""
     import bpy
     bpy.ops.object.select_all(action="DESELECT")
+    m.select_set(True)
+    bpy.context.view_layer.objects.active = m
+    bpy.ops.object.duplicate()
+    proxy = bpy.context.object
+    proxy.name = m.name + "_heatproxy"
+    proxy.data.materials.clear()
+    rem = proxy.modifiers.new("wh_remesh", "REMESH")
+    rem.mode = "VOXEL"
+    # voxel size is in object units; normalize leaves the object scale
+    # unapplied, so convert the world-space size (measured: 0.008 local on a
+    # 1.83-scaled Tripo gave 14.7 mm voxels)
+    rem.voxel_size = voxel / max(proxy.scale)
+    bpy.ops.object.modifier_apply(modifier=rem.name)
+    faces_remeshed = len(proxy.data.polygons)
+    # Always decimate: Blender 4.0.2 bone heat failed for EVERY vertex on raw
+    # voxel-remesh grids (28k and 43k faces) yet solved a decimated proxy of
+    # the same mesh at 16k-48k faces with only stray islands unweighted
+    # (measured on demonio-a1, 2026-10-20).
+    dec = proxy.modifiers.new("wh_decimate", "DECIMATE")
+    dec.ratio = min(0.6, target_faces / max(1, faces_remeshed))
+    bpy.ops.object.modifier_apply(modifier=dec.name)
+    bpy.ops.object.select_all(action="DESELECT")
     rig.select_set(True)
-    for m in meshes:
-        m.select_set(True)
+    proxy.select_set(True)
     bpy.context.view_layer.objects.active = rig
     bpy.ops.object.parent_set(type="ARMATURE_AUTO")
+    unweighted_proxy = sum(1 for v in proxy.data.vertices if not v.groups)
+    proxy_faces = len(proxy.data.polygons)
+    proxy_verts_n = list(range(len(proxy.data.vertices)))
+    proxy_groups = len(proxy.vertex_groups)
+    for g in proxy.vertex_groups:
+        if m.vertex_groups.get(g.name) is None:
+            m.vertex_groups.new(name=g.name)
+    bpy.ops.object.select_all(action="DESELECT")
+    m.select_set(True)
+    bpy.context.view_layer.objects.active = m
+    dt = m.modifiers.new("wh_weights", "DATA_TRANSFER")
+    dt.object = proxy
+    dt.use_vert_data = True
+    dt.data_types_verts = {"VGROUP_WEIGHTS"}
+    dt.vert_mapping = "POLYINTERP_NEAREST"
+    dt.layers_vgroup_select_src = "ALL"
+    dt.layers_vgroup_select_dst = "NAME"
+    while m.modifiers.find(dt.name) > 0:
+        bpy.ops.object.modifier_move_up(modifier=dt.name)
+    bpy.ops.object.modifier_apply(modifier=dt.name)
+    bpy.data.objects.remove(proxy, do_unlink=True)
+    # bind the full mesh to the rig with its transferred groups
+    mw = m.matrix_world.copy()
+    m.parent = rig
+    m.matrix_world = mw
+    am = m.modifiers.new("Armature", "ARMATURE")
+    am.object = rig
+    # keep at most 4 influences, normalized (what glTF/three.js skin with)
+    bpy.ops.object.vertex_group_limit_total(group_select_mode="ALL", limit=4)
+    bpy.ops.object.vertex_group_normalize_all(group_select_mode="ALL", lock_active=False)
+    return {"voxel_m": voxel, "faces_remeshed": faces_remeshed, "faces_proxy_after_decimate": proxy_faces,
+            "proxy_verts": len(proxy_verts_n), "unweighted_proxy_verts": unweighted_proxy,
+            "mesh_scale": list(m.scale), "mesh_dims": list(m.dimensions),
+            "proxy_groups": proxy_groups}
+
+
+HEAT_PROXY = {"verts": 200000, "voxel": 0.008, "faces": 48000}
+PROXY_STATS = []
+
+
+def skin_meshes(rig, meshes):
+    """Bone-heat skinning + nearest-bone fixup for unweighted verts.
+    Dense meshes (> HEAT_PROXY['verts']) are weighted through a proxy."""
+    import bpy
+    dense = [m for m in meshes if len(m.data.vertices) > HEAT_PROXY["verts"]]
+    light = [m for m in meshes if m not in dense]
+    for m in dense:
+        PROXY_STATS.append(heat_via_proxy(rig, m, HEAT_PROXY["voxel"], HEAT_PROXY["faces"]))
+    if light:
+        bpy.ops.object.select_all(action="DESELECT")
+        rig.select_set(True)
+        for m in light:
+            m.select_set(True)
+        bpy.context.view_layer.objects.active = rig
+        bpy.ops.object.parent_set(type="ARMATURE_AUTO")
     # fixup (ported from blender_heat.py): unweighted verts crash the
     # glTF exporter and snap to origin at runtime; pin them to the
     # nearest deform bone head with weight 1.
@@ -823,7 +968,8 @@ def main():
         raise RuntimeError("input already has an armature; gamerig "
                            "backend is for unrigged statics")
 
-    stats = normalize_and_face(meshes, a.height)
+    stats = normalize_and_face(meshes, a.height, a.facing)
+    stats["facing_source"] = ("given: " + a.facing) if a.facing else "estimated (foot vs shin)"
     verts = stats.pop("_verts")
     stats["_verts"] = verts
     metrics["normalize"] = {k: v for k, v in stats.items() if k != "_verts"}
@@ -859,7 +1005,11 @@ def main():
     kept, removed = strip_to_deform(rig)
     metrics["strip"] = {"kept_def_bones": kept, "removed_control_bones": removed}
 
+    HEAT_PROXY.update(verts=a.heat_proxy_verts, voxel=a.heat_voxel,
+                      faces=a.heat_proxy_faces)
+    metrics["heat_proxy"] = dict(HEAT_PROXY)
     metrics["unweighted_fixed"] = skin_meshes(rig, meshes)
+    metrics["heat_proxy_stats"] = PROXY_STATS
 
     clip_info = None
     if a.donor:

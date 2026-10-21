@@ -6,6 +6,84 @@
   "proxy": false,
   "proxy_note": null,
   "variant": 3,
+  "strings": [
+    {
+      "input": "u+3,3",
+      "hits": [
+        "u+3",
+        "3"
+      ],
+      "t3_rows": [
+        284
+      ]
+    },
+    {
+      "input": "u+3,4",
+      "hits": [
+        "u+3",
+        "4"
+      ],
+      "t3_rows": [
+        306
+      ]
+    },
+    {
+      "input": "d/f+4,4",
+      "hits": [
+        "d/f+4",
+        "4"
+      ],
+      "t3_rows": [
+        292
+      ]
+    },
+    {
+      "input": "u/b+1+2,2",
+      "hits": [
+        "u/b+1+2",
+        "2"
+      ],
+      "t3_rows": [
+        243
+      ]
+    }
+  ],
+  "specials": [
+    {
+      "input": "d/f+2",
+      "t3_row": 270,
+      "damage": 6,
+      "throw": false,
+      "fallback": "directional — no motion inputs in T3 bank"
+    },
+    {
+      "input": "d+4",
+      "t3_row": 371,
+      "damage": 2,
+      "throw": false,
+      "fallback": "directional — no motion inputs in T3 bank"
+    }
+  ],
+  "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
+  "schema_version": 2,
+  "t3_bank": "moveset_xiaoyu.json",
+  "t3_bank_rows": 594,
+  "t3_bank_attack_rows": 111,
+  "generated_full_moveset": {
+    "by": "tools/gen-movesets-t3.py",
+    "date": "2026-10-20",
+    "note": "Full T3 bank depth merged over curated base; curated moves preserved verbatim. 594 rows, 243 attacks."
+  },
+  "expansion": {
+    "stream": "stream6/combat-100",
+    "date": "2026-10-19",
+    "moves_added": 20,
+    "inputs_remapped": [
+      "S->1+2",
+      "b+S->b+1+2"
+    ],
+    "note": "Additive expansion from real T3 teardown bank rows. Existing moves untouched."
+  },
   "moves": {
     "1": {
       "name": "NIGHTWOLF 1 (T3 xiaoyu r50)",
@@ -114,7 +192,8 @@
       "input_slots": [
         "1+3"
       ],
-      "move_class": "throw"
+      "move_class": "throw",
+      "throw_break": "1"
     },
     "2+4": {
       "name": "NIGHTWOLF 2+4 throw (T3 xiaoyu r362)",
@@ -139,7 +218,8 @@
       "input_slots": [
         "2+4"
       ],
-      "move_class": "throw"
+      "move_class": "throw",
+      "throw_break": "2"
     },
     "d/f+2": {
       "name": "NIGHTWOLF d/f+2 (T3 xiaoyu r270)",
@@ -222,6 +302,538 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "She speaks to her ancestors between rounds. Rooted counter - the spirits move her."
+    },
+    "1+2": {
+      "name": "Sage for the New Face [WH SIGNATURE]",
+      "input": "1+2",
+      "startup": 0.27,
+      "active": 0.017,
+      "recovery": 0.8,
+      "damage": 16,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 12,
+      "anim_ref": "wh:nightwolf:sig:sage-for-the-new-face",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "She burns sage over the newly dead between death and return. A guiding palm that walks you through.",
+      "input_remapped_from": "S"
+    },
+    "1+2__main": {
+      "name": "NIGHTWOLF 1+2 (T3 xiaoyu r314)",
+      "input": "1+2",
+      "t3_source": "xiaoyu",
+      "t3_row": 314,
+      "t3_command": "LP+RP",
+      "startup": 0.433,
+      "active": 0.017,
+      "recovery": 0.65,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:xiaoyu:row:314",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "strike"
+    },
+    "b+1+2": {
+      "name": "Ancestor's Answer [WH SIGNATURE]",
+      "input": "b+1+2",
+      "startup": 0.24,
+      "active": 0.017,
+      "recovery": 0.72,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 12,
+      "anim_ref": "wh:nightwolf:sig:ancestors-answer",
+      "input_slots": [
+        "b+1+2"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "She speaks to her ancestors between rounds. Rooted counter - the spirits move her.",
+      "input_remapped_from": "b+S"
+    },
+    "f+3": {
+      "name": "NIGHTWOLF f+3 (T3 xiaoyu r274)",
+      "input": "f+3",
+      "t3_source": "xiaoyu",
+      "t3_row": 274,
+      "t3_command": "4/6+LK",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.817,
+      "damage": 8,
+      "t3_damage": 13,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:xiaoyu:row:274",
+      "input_slots": [
+        "f+3"
+      ],
+      "move_class": "strike"
+    },
+    "f+4": {
+      "name": "NIGHTWOLF f+4 (T3 xiaoyu r309)",
+      "input": "f+4",
+      "t3_source": "xiaoyu",
+      "t3_row": 309,
+      "t3_command": "4/6+RK",
+      "startup": 0.4,
+      "active": 0.033,
+      "recovery": 0.65,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:xiaoyu:row:309",
+      "input_slots": [
+        "f+4"
+      ],
+      "move_class": "strike"
+    },
+    "u+3": {
+      "name": "NIGHTWOLF u+3 (T3 xiaoyu r275)",
+      "input": "u+3",
+      "t3_source": "xiaoyu",
+      "t3_row": 275,
+      "t3_command": "8+LK",
+      "startup": 0.233,
+      "active": 0.067,
+      "recovery": 0.65,
+      "damage": 9,
+      "t3_damage": 15,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:xiaoyu:row:275",
+      "input_slots": [
+        "u+3"
+      ],
+      "move_class": "strike"
+    },
+    "d/b+4": {
+      "name": "NIGHTWOLF d/b+4 (T3 xiaoyu r149)",
+      "input": "d/b+4",
+      "t3_source": "xiaoyu",
+      "t3_row": 149,
+      "t3_command": "1+RK",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.7,
+      "damage": 6,
+      "t3_damage": 10,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:xiaoyu:row:149",
+      "input_slots": [
+        "d/b+4"
+      ],
+      "move_class": "strike"
+    },
+    "d/b+4__main": {
+      "name": "NIGHTWOLF d/b+4 (T3 xiaoyu r149)",
+      "input": "d/b+4",
+      "t3_source": "xiaoyu",
+      "t3_row": 149,
+      "t3_command": "1+RK",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.7,
+      "damage": 6,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:xiaoyu:row:149",
+      "input_slots": [
+        "d/b+4"
+      ],
+      "move_class": "strike"
+    },
+    "d/f+4": {
+      "name": "NIGHTWOLF d/f+4 (T3 xiaoyu r297)",
+      "input": "d/f+4",
+      "t3_source": "xiaoyu",
+      "t3_row": 297,
+      "t3_command": "3+RK",
+      "startup": 0.3,
+      "active": 0.05,
+      "recovery": 0.583,
+      "damage": 4,
+      "t3_damage": 6,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:xiaoyu:row:297",
+      "input_slots": [
+        "d/f+4"
+      ],
+      "move_class": "strike"
+    },
+    "f+1+2": {
+      "name": "NIGHTWOLF f+1+2 (T3 xiaoyu r317)",
+      "input": "f+1+2",
+      "t3_source": "xiaoyu",
+      "t3_row": 317,
+      "t3_command": "6+LP+RP",
+      "startup": 0.233,
+      "active": 0.05,
+      "recovery": 0.65,
+      "damage": 7,
+      "t3_damage": 12,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:xiaoyu:row:317",
+      "input_slots": [
+        "f+1+2"
+      ],
+      "move_class": "strike"
+    },
+    "f+3+4": {
+      "name": "NIGHTWOLF f+3+4 (T3 xiaoyu r335)",
+      "input": "f+3+4",
+      "t3_source": "xiaoyu",
+      "t3_row": 335,
+      "t3_command": "6+LK+RK",
+      "startup": 0.617,
+      "active": 0.233,
+      "recovery": 0.55,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:xiaoyu:row:335",
+      "input_slots": [
+        "f+3+4"
+      ],
+      "move_class": "strike"
+    },
+    "f+3+4__main": {
+      "name": "NIGHTWOLF f+3+4 (T3 xiaoyu r335)",
+      "input": "f+3+4",
+      "t3_source": "xiaoyu",
+      "t3_row": 335,
+      "t3_command": "6+LK+RK",
+      "startup": 0.617,
+      "active": 0.233,
+      "recovery": 0.55,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:xiaoyu:row:335",
+      "input_slots": [
+        "f+3+4"
+      ],
+      "move_class": "strike"
+    },
+    "u/b+1": {
+      "name": "NIGHTWOLF u/b+1 (T3 xiaoyu r46)",
+      "input": "u/b+1",
+      "t3_source": "xiaoyu",
+      "t3_row": 46,
+      "t3_command": "4/7+LP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "t3_damage": 12,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:xiaoyu:row:46",
+      "input_slots": [
+        "u/b+1"
+      ],
+      "move_class": "strike"
+    },
+    "u/b+3": {
+      "name": "NIGHTWOLF u/b+3 (T3 xiaoyu r69)",
+      "input": "u/b+3",
+      "t3_source": "xiaoyu",
+      "t3_row": 69,
+      "t3_command": "4/7+LK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:xiaoyu:row:69",
+      "input_slots": [
+        "u/b+3"
+      ],
+      "move_class": "strike"
+    },
+    "u/b+4": {
+      "name": "NIGHTWOLF u/b+4 (T3 xiaoyu r90)",
+      "input": "u/b+4",
+      "t3_source": "xiaoyu",
+      "t3_row": 90,
+      "t3_command": "4/7+RK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 11,
+      "t3_damage": 18,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:xiaoyu:row:90",
+      "input_slots": [
+        "u/b+4"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+1": {
+      "name": "NIGHTWOLF u/f+1 (T3 xiaoyu r59)",
+      "input": "u/f+1",
+      "t3_source": "xiaoyu",
+      "t3_row": 59,
+      "t3_command": "6/9+LP",
+      "startup": 0.267,
+      "active": 0.05,
+      "recovery": 0.783,
+      "damage": 3,
+      "t3_damage": 5,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:xiaoyu:row:59",
+      "input_slots": [
+        "u/f+1"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+3": {
+      "name": "NIGHTWOLF u/f+3 (T3 xiaoyu r68)",
+      "input": "u/f+3",
+      "t3_source": "xiaoyu",
+      "t3_row": 68,
+      "t3_command": "6/9+LK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:xiaoyu:row:68",
+      "input_slots": [
+        "u/f+3"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+4": {
+      "name": "NIGHTWOLF u/f+4 (T3 xiaoyu r89)",
+      "input": "u/f+4",
+      "t3_source": "xiaoyu",
+      "t3_row": 89,
+      "t3_command": "6/9+RK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 12,
+      "t3_damage": 21,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:xiaoyu:row:89",
+      "input_slots": [
+        "u/f+4"
+      ],
+      "move_class": "strike"
+    },
+    "u/b+1+2": {
+      "name": "NIGHTWOLF u/b+1+2 (T3 xiaoyu r242)",
+      "input": "u/b+1+2",
+      "t3_source": "xiaoyu",
+      "t3_row": 242,
+      "t3_command": "4/7+LP+RP",
+      "startup": 0.267,
+      "active": 0.05,
+      "recovery": 0.817,
+      "damage": 3,
+      "t3_damage": 5,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:xiaoyu:row:242",
+      "input_slots": [
+        "u/b+1+2"
+      ],
+      "move_class": "strike"
+    },
+    "u/b+3+4": {
+      "name": "NIGHTWOLF u/b+3+4 (T3 xiaoyu r66)",
+      "input": "u/b+3+4",
+      "t3_source": "xiaoyu",
+      "t3_row": 66,
+      "t3_command": "4/7+LK+RK",
+      "startup": 0.35,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:xiaoyu:row:66",
+      "input_slots": [
+        "u/b+3+4"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+3+4": {
+      "name": "NIGHTWOLF u/f+3+4 (T3 xiaoyu r65)",
+      "input": "u/f+3+4",
+      "t3_source": "xiaoyu",
+      "t3_row": 65,
+      "t3_command": "6/9+LK+RK",
+      "startup": 0.35,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:xiaoyu:row:65",
+      "input_slots": [
+        "u/f+3+4"
+      ],
+      "move_class": "strike"
+    },
+    "u+3,3": {
+      "name": "NIGHTWOLF u+3,3 (T3 xiaoyu r284)",
+      "input": "u+3,3",
+      "t3_source": "xiaoyu",
+      "t3_row": 284,
+      "t3_command": "LK",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 14,
+      "t3_damage": 23,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:xiaoyu:row:284",
+      "input_slots": [
+        "u+3,3",
+        "u+3",
+        "3"
+      ],
+      "move_class": "string",
+      "string_hit": "u+3"
+    },
+    "u+3,4": {
+      "name": "NIGHTWOLF u+3,4 (T3 xiaoyu r306)",
+      "input": "u+3,4",
+      "t3_source": "xiaoyu",
+      "t3_row": 306,
+      "t3_command": "RK",
+      "startup": 0.25,
+      "active": 0.033,
+      "recovery": 0.583,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:xiaoyu:row:306",
+      "input_slots": [
+        "u+3,4",
+        "u+3",
+        "4"
+      ],
+      "move_class": "string",
+      "string_hit": "u+3"
+    },
+    "d/f+4,4": {
+      "name": "NIGHTWOLF d/f+4,4 (T3 xiaoyu r292)",
+      "input": "d/f+4,4",
+      "t3_source": "xiaoyu",
+      "t3_row": 292,
+      "t3_command": "RK",
+      "startup": 0.45,
+      "active": 0.05,
+      "recovery": 0.583,
+      "damage": 6,
+      "t3_damage": 10,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:xiaoyu:row:292",
+      "input_slots": [
+        "d/f+4,4",
+        "d/f+4",
+        "4"
+      ],
+      "move_class": "string",
+      "string_hit": "d/f+4"
+    },
+    "u/b+1+2,2": {
+      "name": "NIGHTWOLF u/b+1+2,2 (T3 xiaoyu r243)",
+      "input": "u/b+1+2,2",
+      "t3_source": "xiaoyu",
+      "t3_row": 243,
+      "t3_command": "RP",
+      "startup": 0.267,
+      "active": 0.05,
+      "recovery": 0.817,
+      "damage": 3,
+      "t3_damage": 5,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:xiaoyu:row:243",
+      "input_slots": [
+        "u/b+1+2,2",
+        "u/b+1+2",
+        "2"
+      ],
+      "move_class": "string",
+      "string_hit": "u/b+1+2"
     },
     "b": {
       "name": "NIGHTWOLF b (T3 xiaoyu r46)",
@@ -1074,26 +1686,6 @@
       ],
       "move_class": "strike"
     },
-    "d/b+4": {
-      "name": "NIGHTWOLF d/b+4 (T3 xiaoyu r149)",
-      "input": "d/b+4",
-      "t3_source": "xiaoyu",
-      "t3_row": 149,
-      "t3_command": "1+RK",
-      "startup": 0.3,
-      "active": 0.017,
-      "recovery": 0.7,
-      "damage": 6,
-      "limb": "legR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:xiaoyu:row:149",
-      "input_slots": [
-        "d/b+4"
-      ],
-      "move_class": "strike"
-    },
     "3_r251": {
       "name": "NIGHTWOLF 3_r251 (T3 xiaoyu r251)",
       "input": "3_r251",
@@ -1815,26 +2407,6 @@
       ],
       "move_class": "strike"
     },
-    "1+2": {
-      "name": "NIGHTWOLF 1+2 (T3 xiaoyu r314)",
-      "input": "1+2",
-      "t3_source": "xiaoyu",
-      "t3_row": 314,
-      "t3_command": "LP+RP",
-      "startup": 0.433,
-      "active": 0.017,
-      "recovery": 0.65,
-      "damage": 15,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:xiaoyu:row:314",
-      "input_slots": [
-        "1+2"
-      ],
-      "move_class": "strike"
-    },
     "1+2_r315": {
       "name": "NIGHTWOLF 1+2_r315 (T3 xiaoyu r315)",
       "input": "1+2_r315",
@@ -1933,26 +2505,6 @@
       "anim_ref": "t3:xiaoyu:row:322",
       "input_slots": [
         "3"
-      ],
-      "move_class": "strike"
-    },
-    "f+3+4": {
-      "name": "NIGHTWOLF f+3+4 (T3 xiaoyu r335)",
-      "input": "f+3+4",
-      "t3_source": "xiaoyu",
-      "t3_row": 335,
-      "t3_command": "6+LK+RK",
-      "startup": 0.617,
-      "active": 0.233,
-      "recovery": 0.55,
-      "damage": 15,
-      "limb": "legL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:xiaoyu:row:335",
-      "input_slots": [
-        "f+3+4"
       ],
       "move_class": "strike"
     },
@@ -2311,31 +2863,13 @@
       "t3_condition": 2
     }
   },
-  "strings": [],
-  "specials": [
-    {
-      "input": "d/f+2",
-      "t3_row": 270,
-      "damage": 6,
-      "throw": false,
-      "fallback": "directional \u2014 no motion inputs in T3 bank"
-    },
-    {
-      "input": "d+4",
-      "t3_row": 371,
-      "damage": 2,
-      "throw": false,
-      "fallback": "directional \u2014 no motion inputs in T3 bank"
-    }
-  ],
-  "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
-  "schema_version": 2,
-  "t3_bank": "moveset_xiaoyu.json",
-  "t3_bank_rows": 594,
-  "t3_bank_attack_rows": 111,
-  "generated_full_moveset": {
-    "by": "tools/gen-movesets-t3.py",
+  "restored_from_sweep_338": {
     "date": "2026-10-20",
-    "note": "Full T3 bank depth merged over curated base; curated moves preserved verbatim. 594 rows, 243 attacks."
+    "by": "tools/moveset-restore/restore_sweep_338.py",
+    "source_commit": "4cc6b41b",
+    "destroyed_by": "8ebdc527",
+    "moves": 135,
+    "strings": 4,
+    "specials": 2
   }
 }
