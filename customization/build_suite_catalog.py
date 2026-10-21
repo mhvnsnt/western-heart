@@ -21,6 +21,21 @@ suite_slot -> t7_slot. Texture parts keep the packages/creation-suite
 parts.js swap semantics: their `placement` block (texture/material/mode/
 pixel_rect) is carried through untouched.
 
+EYES ARE PARTS, NOT DECALS (owner verdict 2026-10-20 ~19:40 CDT): the owner
+rejected a painted texture eye ("looks funny, not placed right; he also needs
+eyelashes and eyebrows... let it be a real eye not just a decal on his face
+from hand tooling") and wants to place eyes HIMSELF in the suite. Design:
+eyeball / eyelash / eyebrow MESH parts are placeable via the suite's per-part
+placement system (socket + placement record), exactly like other mesh parts.
+The eye-library TEXTURE entries are legacy texture variants (eye_kind=
+"texture_variant") — never presented as the eye solution. Mesh eye parts
+carry eye_kind="placeable_part". Named test case: DEATHFANG (human form) —
+the suite must make his case possible; his character work belongs to another
+lane. In-repo placeable eye/brow assets today: Spider-Girl eye lenses
+(parts/superhero), Eyebrows_Regular / Eyebrows_Female glTFs (parts/hair/cc0,
+mirrored in parts/hair/quaternius). NO eyelash mesh exists in-repo yet —
+that is an honest gap, not something to fabricate.
+
 Run from anywhere:  python3 customization/build_suite_catalog.py
 """
 import json
@@ -100,41 +115,50 @@ def main() -> int:
         parts.append(e)
     counts["PARTS-REGISTRY.json"] = len(reg_parts)
 
-    # OPTIONAL source: Worker A converter output (absent on main 2026-10-20).
+    # REAL source: Worker A converter output (PR #398 merged 1dff63a52 —
+    # parts-converted/CATALOG.json, 3,372 entries: wmxix 2,690 + no-mercy 682).
+    # Run #3's absence finding was true at its check time; the merge landed after.
     converted = []
     if CONVERTED.exists():
-        try:
-            data = json.loads(CONVERTED.read_text())
-            converted = data.get("parts", data) if isinstance(data, dict) else data
-        except Exception as exc:  # malformed optional source: note, don't die
-            print(f"WARNING: parts-converted/CATALOG.json unreadable: {exc}")
-            converted = []
+        data = json.loads(CONVERTED.read_text())
+        converted = data.get("parts", []) if isinstance(data, dict) else data
     counts["parts-converted/CATALOG.json"] = len(converted)
+    CONV_T7 = {"UPPER": "9", "LOWER": "11", "FULL_BODY": "10", "HAIR": "2",
+               "FACE": "6", "MAKE_UP": "8", "EXTRA": "14", "UPPER_ACC": "12", "LOWER_ACC": "13"}
+    CONV_SUITE = {"UPPER": "upper_body", "LOWER": "lower_body", "FULL_BODY": "attire",
+                  "HAIR": "hair", "FACE": "face", "MAKE_UP": "face", "EXTRA": "accessory",
+                  "UPPER_ACC": "accessory", "LOWER_ACC": "accessory"}
     for p in converted:
         pid = p.get("id")
         if not pid or pid in seen:
             continue
         seen.add(pid)
-        asset = p.get("asset") or p.get("glb")
-        ext = Path(asset).suffix.lower() if asset else ""
+        glb = p.get("glb")
+        tex = p.get("texture")
+        status = p.get("status") or ""
+        pending = status.startswith("blocked") or status in ("not_converted", "palette_only")
+        if glb:
+            part_class, asset = "mesh_part", glb
+        elif tex:
+            part_class, asset = "texture_part", tex
+        else:
+            part_class, asset = "mesh_part", None
+        slot = p.get("slot")
         parts.append({
             "id": pid, "name": p.get("name") or pid,
-            "part_class": p.get("part_class") or ("mesh_part" if ext in MESH_EXTS else "texture_part"),
-            "suite_slot": p.get("suite_slot") or p.get("slot"),
-            "t7_slot": p.get("t7_slot") or T7_SLOT.get(p.get("suite_slot") or p.get("slot")),
-            "library": p.get("library") or "parts-converted",
+            "part_class": part_class,
+            "suite_slot": CONV_SUITE.get(slot, "accessory"),
+            "t7_slot": CONV_T7.get(slot),
+            "library": p.get("source_game") or "parts-converted",
             "source": "parts-converted/CATALOG.json",
-            "glb": asset if ext in MESH_EXTS else p.get("glb"),
-            "asset": asset,
-            "socket": (p.get("placement") or {}).get("socket") or p.get("socket"),
-            "offset": (p.get("placement") or {}).get("offset", [0, 0, 0]),
-            "rotation": (p.get("placement") or {}).get("rotation", [0, 0, 0]),
-            "scale": (p.get("placement") or {}).get("scale", 1.0),
-            "modeled_in_place_for": (p.get("placement") or {}).get("modeled_in_place_for"),
-            "geometry_pending": bool(p.get("geometryPending")),
-            "kind": p.get("kind"),
-            "placement": p.get("placement"),
-            "editable": p.get("editable", []),
+            "glb": glb, "asset": asset or glb,
+            "socket": None, "offset": [0, 0, 0], "rotation": [0, 0, 0], "scale": 1.0,
+            "modeled_in_place_for": None,
+            "geometry_pending": pending,
+            "kind": p.get("category"),
+            "placement": None,
+            "editable": [],
+            "converted_status": status,
         })
 
     # Hair GLBs anywhere under customization/parts/hair (skip .gltf sidecars:
@@ -186,6 +210,42 @@ def main() -> int:
             eye_added += 1
     counts["eye-library scan (new)"] = eye_added
 
+    # Eyebrows: REAL placeable mesh parts (owner eye verdict). The glTFs live
+    # under parts/hair/cc0 (mirrored in parts/hair/quaternius — cc0 is canonical).
+    brow_added = 0
+    for stem, label in [("Eyebrows_Regular", "Regular"), ("Eyebrows_Female", "Female")]:
+        gltf = HAIR_DIR / "cc0" / f"{stem}.gltf"
+        if not gltf.exists():
+            continue
+        pid = "brow-cc0-" + label.lower()
+        if pid in seen:
+            continue
+        seen.add(pid)
+        rp = rel(gltf)
+        parts.append({
+            "id": pid, "name": f"Eyebrows — {label} (placeable)",
+            "part_class": "mesh_part", "suite_slot": "eyebrows", "t7_slot": "6",
+            "library": "cc0-hair", "source": "parts/hair eyebrow scan",
+            "glb": rp, "asset": rp, "socket": "face",
+            "offset": [0, 0, 0], "rotation": [0, 0, 0], "scale": 1.0,
+            "modeled_in_place_for": None, "geometry_pending": False,
+            "kind": "eyebrows", "placement": {"socket": "face", "offset": [0, 0, 0], "rotation": [0, 0, 0], "scale": 1.0},
+            "editable": ["position", "rotation", "scale"],
+            "eye_kind": "placeable_part",
+        })
+        brow_added += 1
+    counts["parts/hair eyebrow scan (new)"] = brow_added
+
+    # Eye classification (owner verdict): texture eye entries are legacy
+    # texture variants; mesh eye/eyebrow parts are the placeable solution.
+    for e in parts:
+        if e.get("eye_kind"):
+            continue
+        if e["suite_slot"] == "eye" and e["part_class"] == "texture_part":
+            e["eye_kind"] = "texture_variant"
+        elif e["suite_slot"] in ("eye", "eye_lenses", "eyebrows") and e["part_class"] == "mesh_part":
+            e["eye_kind"] = "placeable_part"
+
     parts.sort(key=lambda e: (e["t7_slot"] or "ZZ", e["suite_slot"] or "", e["name"].lower()))
     data = {
         "version": 2,
@@ -193,7 +253,7 @@ def main() -> int:
         "source": "build_suite_catalog.py — unified: PARTS-REGISTRY.json + parts-converted/CATALOG.json (optional) + parts/hair GLBs + eye-library",
         "counts": counts,
         "total": len(parts),
-        "notes": "parts-converted/CATALOG.json was absent on main at build time (count 0); re-run this builder if it lands. Texture parts carry the registry placement block for packages parts.js swap semantics.",
+        "notes": "parts-converted/CATALOG.json is a REAL source since PR #398 merged (run #3 absence finding was true at check time; the merge landed after). Eyes: mesh eye/brow parts are placeable (eye_kind=placeable_part); eye texture entries are legacy variants (eye_kind=texture_variant) per the owner 2026-10-20 eye verdict. No eyelash mesh exists in-repo yet.",
         "parts": parts,
     }
     OUT.write_text(json.dumps(data, indent=1) + "\n")

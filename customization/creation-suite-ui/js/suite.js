@@ -30,7 +30,8 @@ const TITLE_B=['BEAST','PANTHER','KING','GHOST','STORM','WOLF','TIGER','DEMON'];
    same mapping as t7_slot on every catalog entry) */
 const SLOT2CAT = { mask:'3', eye_lenses:'6', cowl:'3', gauntlets:'H', hair:'2',
   decal_logo:'8', eye:'EYES', tights:'11', pants:'11', top:'9', outfit:'9', scarf:'12', face:'8',
-  upper_body:'9', lower_body:'11', gloves:'H', shoes:'F', gear:'12', accessory:'12', attire:'10' };
+  upper_body:'9', lower_body:'11', gloves:'H', shoes:'F', gear:'12', accessory:'12', attire:'10',
+  eyebrows:'6' };
 /* suite_slot -> fallback 3D socket for texture-part markers (registry has no placement block for texture parts) */
 const SLOT2SOCKET = { eye:'face', face:'face', decal_logo:'chest', top:'chest', outfit:'chest',
   scarf:'chest', tights:'waist', pants:'waist', hair:'head', mask:'face', eye_lenses:'face', cowl:'head', gauntlets:'hands' };
@@ -435,8 +436,21 @@ function renderParts(el){
     });
     const libs=el.querySelector('#plibs');
     PARTS_TREE.forEach(c=>{
-      const list = c.key==='eyes' ? PARTS.filter(p=>p.suite_slot==='eye')
-        : c.key==='decals' ? PARTS.filter(p=>['decal_logo','tights','pants'].includes(p.suite_slot))
+      if(c.key==='eyes'){
+        // Owner eye verdict (2026-10-20): eyes are REAL PLACEABLE MESH PARTS.
+        // Placeable eye/brow parts and legacy texture variants are SEPARATE lists.
+        const placeable = PARTS.filter(p=>p.eye_kind==='placeable_part');
+        const variants = PARTS.filter(p=>p.eye_kind==='texture_variant');
+        [['👁️ PLACEABLE EYE PARTS — mesh, position them yourself', placeable, 'eyes-placeable'],
+         ['🎨 EYE TEXTURE VARIANTS — legacy swaps only, NOT the eye solution', variants, 'eyes-textures']].forEach(([label, list, key])=>{
+          const b=document.createElement('button'); b.className='subcat'; b.id='pcat-'+key;
+          b.innerHTML=`<span class="sc-ico">👁️</span><span>${label}</span><span class="sc-count">${list.length} parts</span>`;
+          b.onclick=()=>{ ui.partsCat={key, label, list}; ui.selPart=null; ui.page=0; ui.query=''; renderAll(); };
+          libs.appendChild(b);
+        });
+        return;
+      }
+      const list = c.key==='decals' ? PARTS.filter(p=>['decal_logo','tights','pants'].includes(p.suite_slot))
         : c.key==='masks' ? PARTS.filter(p=>['mask','eye_lenses','cowl','gauntlets'].includes(p.suite_slot))
         : PARTS.filter(p=>p.suite_slot==='hair');
       const b=document.createElement('button'); b.className='subcat'; b.id='pcat-'+c.key;
@@ -484,6 +498,8 @@ function renderPartGrid(el, cat, list, backKey){
       <div class="item-name">${esc(p.name)}</div>
       <div class="item-meta">${p.part_class==='mesh_part'?'mesh · '+esc(p.socket||'—'):esc(p.library||'')}<br>
       <span class="chip" style="font-size:9px">${esc(p.source||p.library||'')}</span>
+      ${p.eye_kind==='placeable_part'?' <span class="geo-badge" style="background:#12331c;color:#46c46a">PLACEABLE PART</span>':''}
+      ${p.eye_kind==='texture_variant'?' <span class="geo-badge">TEXTURE VARIANT (LEGACY)</span>':''}
       ${p.geometry_pending?' <span class="geo-badge">GEOMETRY PENDING</span>':''}<br>
       ${owned?'<span class="owned">OWNED</span>':'<span class="price">500G</span>'}</div>`;
     d.onclick=()=>{ ui.selPart=p; renderPanel(); renderTopbar(); };
@@ -501,6 +517,8 @@ function renderPartDetail(el, p, slotKey){
     <div class="kv"><span>Library</span><b>${esc(p.library||'—')}</b></div>
     <div class="kv"><span>Source</span><b style="font-size:11px">${esc(p.source||'—')}</b></div>
     <div class="kv"><span>T7 slot</span><b>${esc(p.t7_slot||SLOT2CAT[p.suite_slot]||'—')} · suite slot ${esc(p.suite_slot||'—')}</b></div>
+    ${p.eye_kind==='placeable_part'?'<div class="note">👁️ <b>Real placeable eye part</b> (owner verdict: eyes are parts, not decals). Equip it, then use <b>PLACEMENT</b> to set position / rotation / scale yourself — placement saves into this attire\'s record.</div>':''}
+    ${p.eye_kind==='texture_variant'?'<div class="note">🎨 <b>Legacy texture variant</b> — an eye texture swap only. This is NOT the eye solution (owner verdict 2026-10-20: eyes are real placeable parts with eyelashes + eyebrows, placed by hand in this suite).</div>':''}
     ${p.geometry_pending?'<div class="note">⚠️ Geometry pending — this registry part has no converted mesh yet; applying records it on the attire and marks its socket.</div>':''}
     ${p.glb?`<div class="kv"><span>Mesh</span><b style="font-size:11px">${esc(p.glb)}</b></div>
     <div class="kv"><span>Socket</span><b>${esc(p.socket||'—')}</b></div>`:''}
