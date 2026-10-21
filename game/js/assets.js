@@ -47,6 +47,8 @@ export const MODEL_URLS = {
   nightwolf: 'assets/models/nightwolf.glb',
   'king-tyrant': 'assets/models/king-tyrant.glb',
   kinpo: 'assets/models/kinpo.glb',
+  // Kinpo Attire 2 "Goth Sport" (owner 2026-10-20, Tripo pull — see roster/kinpo/ATTIRE-SLOTS.md).
+  'kinpo-attire2': '../roster/kinpo/attires/attire2/model.glb',
   waterfall: '../roster/waterfall/attires/attire1/model.glb',
   'n3g4tiv0': 'assets/models/n3g4tiv0.glb',
   thor: '../roster/thor/attires/attire1/model.glb',
