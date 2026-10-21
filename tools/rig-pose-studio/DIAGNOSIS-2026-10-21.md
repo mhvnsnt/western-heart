@@ -1,7 +1,7 @@
 # Rig & Pose Studio — STEP 1 Diagnosis (Scarlett + Star shared failure)
 
-Owner order 2026-10-21 ~11:59 CDT. Status: **IN PROGRESS** — this doc is banked
-in pieces as evidence lands. No fixing before the failure is named.
+Owner order 2026-10-21 ~11:59 CDT. Status: **STEP 1 COMPLETE** (diagnosis +
+audit below, measured by this lane 2026-10-21). STEP 2 (stack) in progress.
 
 ## The owner's verdict (what "wrong" means here)
 
@@ -56,33 +56,97 @@ PR #440 tree is not this lane's to touch):
 - **Star:** corrupted armature rest pose baked in during the Jiggle-lineage
   run #3 — the output skeleton's rest pose is not the model's rest pose.
 
-### This lane's independent verification (in progress)
+### This lane's independent verification (measured 2026-10-21, this lane)
 
-Tool: `tools/rig-pose-studio/glb_inspect.py` (this PR) — parses GLB JSON +
-accessors directly: joint sets, per-joint rest rotations, rest world
-positions, IBM sanity, per-vertex weight-sum distribution, animation channel
-inventory. Applied to base vs shipped output for both characters; numbers
-appended here as they land.
+Tool: `tools/rig-pose-studio/glb_inspect.py` (this PR). Raw reports banked in
+`tools/rig-pose-studio/audit/`.
 
-## The T3-era skeleton / clip-transplant AUDIT (this step's second half)
+**Star — SHIPPED in-game model** (`game/assets/models/star.glb`, 904,980 B,
+Blender I/O export): **33 joints; nearly every core joint carries a large
+constant REST rotation** — Root 120.0°, Hips 120.05°, Spine2 119.64°, Neck
+126.77°, Jaw 111.39°, Left/RightShoulder 170.95°, Left/RightUpLeg ~177°,
+Breasts ~179°, Hands ~90°. Rest world positions: Hips at y = −0.074, feet at
+y = −1.003 — **the figure hangs DOWNWARD in −Y from the origin**: a Z-up
+authored figure exported without a clean axis conversion, the conversion
+smeared per-bone into rest rotations instead of applied once at the root.
+Weights are clean (sums = 1.0, ≤4 influences) — the mesh and skinning are not
+the problem; **the skeleton's rest frame is**.
+Contrast: Star's rated-M lineage rigs (`star-nojiggle.glb`,
+`star-attire-ratedm-nude-rigged.glb`, pygltflib path) measure **0 core
+rest-rotation flags** — a clean-rest Star skeleton exists; the shipped game
+file is from the drifted lineage (the "corrupted rest pose, Jiggle run #3"
+finding, now measured directly).
 
-Method: run `glb_inspect.py` over every roster fighter's shipped GLB; record
-joint count + joint-name set + core-bone rest-rotation flags + hips rest
-height; classify each fighter:
+**Scarlett** (`Scarlett.glb`, 20,732,212 B — the canonical file): **1,111
+joints, 1,121 nodes, 8 meshes** — a complete Daz Genesis 9 figure with a
+Rigify-style ORG/MCH/DEF/c_* control rig. Weights clean (normalized,
+≤4 influences on the body). Her rig is a legitimate professional rig — and
+nothing like any skeleton the game was built for. The large rest rotations
+(DEF-spine 90°, breast/face control bones 140–180°) are Daz/Rigify bone-roll
+CONVENTIONS, not corruption. **Scarlett's base is not broken; she was never
+template-normalized.** Note: she has **no model in `game/assets/models/`** on
+main at all — her in-game presence rides entirely on the unmerged PR #440
+attire tree.
 
-- **TEMPLATE** — rides the modern Tekken template skeleton (or a verified
-  fit of it), clips native or correctly retargeted.
-- **T3-ERA** — rides a Tekken 3-era skeleton or a GameRig/DEF rig whose rest
-  pose diverges from template.
-- **TRANSPLANT** — skeleton is one rig, clips were baked for another
-  (the Leopard King failure: T3 clips baked for the Leo-man rig transplanted
-  onto King's rig — hips pinned at bind height, feet floating, shin folded —
-  passed the stretch gate, read deformed).
+**Neither file contains any animation.** All motion is applied at runtime by
+the game's clip banks + name-map retargeting. Every posing wrongness the
+owner sees is generated at that boundary.
 
-For each non-TEMPLATE fighter: what re-templating takes (template source in
-holdings? mesh re-fit needed? weights re-transfer? clips native to template
-or re-bake?) — holdings vs gaps stated per fighter. Per-fighter re-templating
-is dispatched FROM this audit; this lane does not build it.
+### THE SHARED FAILURE (named, with the mechanism)
+
+> **The pipeline has no template-normalization step.** Models enter with
+> whatever skeleton, rest pose, axis convention, and bone-roll convention
+> their source used, and the same clip banks are then retargeted onto all of
+> them by bone NAME. Retarget math that is valid only between rigs sharing a
+> rest pose is applied across rigs that share nothing but names.
+
+- Scarlett = the extreme case: a 1,111-bone Daz/Rigify rig receiving clips
+  baked for ~49-bone game rigs via a name map + world-delta retargeter that
+  is **invalid across mismatched rest poses** (autofix lane's finding;
+  consistent with the rest-pose measurements above) → arm overhead, LBS
+  collapse, "contorted."
+- Star = the same missing step from the other side: her shipped skeleton's
+  rest frame itself is drifted (baked axis conversion, inverted world frame),
+  so even name-correct clips land on joints whose rests are pre-rotated
+  90–180° → twists and folds that read as rigging/mesh damage.
+- Same missing step, same family of symptoms — posing, joints, bones,
+  "invisible parts" (hide flags in stored blends), mesh reading as damaged.
+  **This is TEMPLATE-DRIFT as a pipeline property, not two model defects.**
+
+## The T3-era skeleton / clip-transplant AUDIT
+
+Full sweep: `tools/rig-pose-studio/audit/roster_sweep.json` (57 shipped
+models in `game/assets/models/`, measured with `glb_inspect.py`).
+
+**There is no roster skeleton.** Joint counts: 49 (×21), 50 (×20), 33 (×3),
+32 (×1), and one-offs at 109/142/160/174/178/244/246/311/328, plus 3 models
+with **no skin at all**. Classes:
+
+| Class | Files | What they ride | Re-templating takes |
+|---|---|---|---|
+| HOUSE-49/50 (41) | awa-pop, baek, cape-jones, demonio, dxmmii, jin(-body), kai-body, kiko-tanaka ×2, king-tyrant ×2, kinpo(+alt), lili, mariposa, n3g4tiv0, nightwolf, pantera ×4, phantom, purple-rain ×2, rave, retsu-body, rin-body, saku-ra ×3, sam-ur-a1 ×2, sha-body, skull, steve-fox, thor, waterfall, zen-body, zui ×2 | The de-facto house rig (King-family 49-joint + 1-joint variants; uniform 7–8 rest-flag signature = shared conventions). Leopard King lane verified A1/A3 joint-by-joint = **T7 King's canonical 49-joint rig**. | None for the skeleton — this family IS the anchor. Clips must be native or rest-locally retargeted per rig (the T3-bank transplant problem: T3 clips were baked for the Leo-man variant of this family and fold other members — see TRANSPLANT note). |
+| MINI-33/32 (4) | **star**, michiko, torch (33), diablo (32) | Daz-style mini rigs; 16–18 of ~33 core joints rest-rotated (baked axis conversion, cf. Star measurements above). | Full re-template: fit template skeleton, re-transfer weights, discard drifted rests. Meshes are small (1 mesh each) — cheapest re-templates on the roster. |
+| FOREIGN-BIG (9) | bruno 142, cyborg-x 160, dio 174, doc-frank 178, kinpo-t8 244, zafina 246, phantom-t8 311, yukihyo 328, sun-ra 109 | Source-game / UE rigs, each its own convention (incl. raw T8 exports). Doc Frank's non-standard bind locals (Spine1 90° X, Hips 180° Z) already produced the folded-torso defect via fighter.js stage-2 — same class. | Re-template onto the house skeleton (fit + weight transfer from the foreign rig as donor), OR keep the rig and generate a per-rig rest-local retarget profile. Template-first is the standard; per-rig profiles are how we got here. |
+| UNSKINNED (3) | scimitar, sun-ra-base, thor_alt1 | No skin — static meshes wired as fighters. | Rig from template via the intake pipeline (PR #456's one-command tool is the current path; STEP 2 evaluates it). |
+| OFF-ROSTER (1) | **scarlett** (1,111, Daz G9 + Rigify control rig) | Not in `game/assets/models/`; PR #440 attire tree only. | Do NOT shrink her rig to the template by deletion — she is canon-perfect. Correct treatment: template-side adapter — retarget in rest-local space against her DEF skeleton with a verified bone map, or bake clips onto her rig offline through the full stack (STEP 2). The pipeline adapts to her; not the reverse. |
+
+**TRANSPLANT note (clips, not skeletons):** most shipped GLBs carry 0
+animations; clips live in runtime banks (T3 banks especially) that were
+baked against ONE member rig and are applied across the family. The T3
+retarget crash is the T3-crash-fix lane's; the Leopard King lane owns the
+T7-King re-anchor. This audit's dispatchable output: the MINI-33/32 and
+FOREIGN-BIG re-template list (13 models) + the UNSKINNED rig list (3).
+
+**Template-standard gap (for STEP 2):** the repo's own
+`tools/auto_rig/backends/skeleton_template.json` is a **52-joint Mixamo-style
+T-pose** skeleton — Mixamo convention, not Tekken. The owner's standard is
+the most recent Tekken teardown skeleton. Holdings check: T7 teardown is in
+the repo (`teardown/tekken7/`), the house-49 family is verified T7-King —
+so a fitted, proven Tekken template exists in practice. T8 models exist in
+holdings only as raw UE exports (kinpo-t8, phantom-t8, yukihyo) — no fitted
+T8 template skeleton has been extracted yet. STEP 2 sets the standard
+explicitly: house template = T7-King-family skeleton (fitted/proven),
+with T8 template extraction logged as the gap to close.
 
 ## Retargeter note for the coordinator (not this lane's fix)
 
