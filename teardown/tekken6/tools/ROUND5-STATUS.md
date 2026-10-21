@@ -91,6 +91,10 @@ launches (capture→commit discipline).
 - [ ] Step 3 (attempt 3): overlay check on the dumps.
 - [ ] Verdict + PR #446 update.
 
+## Attempt 5 (2026-10-21, AUTO-RECOVERY redo; attempts 1–4 + first attempt-5 spawn lost to daemon restarts/infra abort)
+
+- attempt 5 session live, control hits=47 (control PC 0x8ac6c74, PPSSPP v1.20.4, game ULES01376 TEKKEN 6 booted; breakpoints armed on loader 0x89d27a0 / wrapper 0x8b559c8 / inflate 0x8b55bf0 / ret 0x89d27ec; loader/wrapper/inflate/ret hits all 0 at the READY+status probe — control validated in-session BEFORE any mode is driven, per F7 discipline).
+
 ## Findings
 
 (appended as they land — emulator/RAM ground truth only)
