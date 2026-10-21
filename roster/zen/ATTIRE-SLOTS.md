@@ -12,6 +12,14 @@ the "stand version of himself" from the owner's design._
 | **Attire 1 (default)** | Spirit Body (owner Tripo) | ✅ WIRED 2026-10-21 | `attires/attire1/model.glb` |
 | Attire 2 | Legacy Body | ✅ WIRED (pre-existing) | `game/assets/models/zen-body.glb` (key `zen-body`) |
 | Spirit form (NOT an attire) | Zen's Spirit | ✅ WIRED 2026-10-21 | `spirit/model.glb` (key `zen-spirit`) |
+| Transform stage 1 (NOT an attire) | Tentacle Mode | ✅ WIRED 2026-10-21 | `tentacle/model.glb` (key `zen-tentacle`) |
+| Transform stage 2 (NOT an attire) | Oversoul | ✅ WIRED 2026-10-21 | `oversoul/model.glb` (key `zen-oversoul`) |
+
+Transformation modes live INSIDE Attire 1 (owner canon 2026-10-21, see
+`CANON.md`): forms chain in roster-full.js — spirit body **up → Tentacle
+Mode up → Oversoul**, reciprocal down edges, via the transform system
+(touch TRANSFORM + full nine-soul meter). They are never attire-ladder
+entries.
 
 ## Attire 1 — Spirit Body (owner Tripo, 2026-10-21)
 
@@ -83,6 +91,44 @@ his body/clothes when he uses them. Tentacle manifestation is an ABILITY
   MODEL_URLS key `zen-spirit`, tied to Zen's fighter record; loadable as its
   own model; it does not replace any attire and does not change Zen's
   default body.
+
+## Tentacle Mode — transform stage 1 (owner Tripo, 2026-10-21)
+
+- **Source**: owner's own Tripo 9460095d, pulled via `tools/tripo-pull/`.
+  Raw meshopt GLB: 20,483,320 B, sha256
+  `e6f4e12df489b810233bf7a9b582be874addb96c1bd90fbb7e31e7f3225e4f03`,
+  archived in release `zen-tripo-pulls-20261021` as
+  `zen_tentacle_mode_tripo_9460095d_raw.glb`. Wired copy = the
+  meshopt-decompressed GLB at `tentacle/model.glb` (58,606,064 B, sha256
+  `35a18d51867b598bb8cc58046683a3000921d60d8b88ffb4da2376cba6114051`):
+  1 mesh, 1 material, 3 textures, static — no skeleton, no animations
+  (rigged at the rig stage). MODEL_URLS key `zen-tentacle`.
+- **Canon**: the clothing tentacle designs become REAL tentacles busting
+  out of him. NO Oversoul head in this mode. The spirit floats a little
+  HIGHER and FURTHER BACK than its base placement (see RIG-NOTES.md).
+  The model ships one loose floating tentacle — owner-chosen attachment
+  point: TOP OF HIS SPINE, behind his neck. He fights with the tentacles;
+  pastel chromatic blast attacks (ink / razor beams / waves) are a
+  moveset design requirement in RIG-NOTES.md.
+
+## Oversoul — transform stage 2 (owner Tripo, 2026-10-21)
+
+- **Source**: owner's own Tripo 2bbc8e88, pulled via `tools/tripo-pull/`.
+  Raw meshopt GLB: 20,277,088 B, sha256
+  `ca8c91c6e1de5a013a72ca09019924c4fd346364ab265386e825ed93485863ad`,
+  archived in release `zen-tripo-pulls-20261021` as
+  `zen_oversoul_combined_tripo_2bbc8e88_raw.glb`. Wired copy = the
+  meshopt-decompressed GLB at `oversoul/model.glb` (57,381,932 B, sha256
+  `788f232df63d5c98b47e4a1d01796cfc48a3084f1b6239cee423abbb4b7356d0`):
+  1 mesh, 1 material, 3 textures, static — no skeleton, no animations
+  (rigged at the rig stage). MODEL_URLS key `zen-oversoul`.
+- **Canon**: the combined form. Transformation sequence: the spirit moves
+  to the spirit body's head position, TAKES THE HEAD'S PLACE, then the
+  Oversoul form manifests — the spirit functions as his head. Body
+  tentacles are IMAGERY on the body, NOT protruding (verified on the
+  front render 2026-10-21). Head tentacles, independent snail/chameleon
+  eyes, articulating mouth, flame/ribbon-flow appendages: animation
+  requirements in RIG-NOTES.md.
 
 ## Renders
 

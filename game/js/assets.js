@@ -59,6 +59,19 @@ export const MODEL_URLS = {
   // behind his spirit body (behavior spec in roster/zen/RIG-NOTES.md).
   // Loadable as its own key, tied to Zen's fighter record.
   'zen-spirit': '../roster/zen/spirit/model.glb',
+  // ZEN TRANSFORMATION MODES (owner Tripos, 2026-10-21): NOT attires —
+  // stages of ONE transformation inside Attire 1, chained via forms in
+  // roster-full.js (spirit body -> TENTACLE MODE -> OVERSOUL). Canon:
+  // roster/zen/CANON.md; behavior spec: roster/zen/RIG-NOTES.md.
+  // TENTACLE MODE (9460095d): the clothing tentacle imagery becomes REAL
+  // tentacles busting out of him; no Oversoul head; spirit rides higher
+  // and further back (offset in RIG-NOTES.md).
+  'zen-tentacle': '../roster/zen/tentacle/model.glb',
+  // OVERSOUL (2bbc8e88): the combined form — the spirit has docked at the
+  // head position and TAKEN THE HEAD'S PLACE. Body tentacles on this
+  // model are IMAGERY on the body, not protruding tentacles (verified on
+  // the front render, 2026-10-21 — see roster/zen/ATTIRE-SLOTS.md).
+  'zen-oversoul': '../roster/zen/oversoul/model.glb',
   // Tripo pulls wired 2026-10-19 (owner: stop saying "not in the repo").
   phantom: '../roster/phantom/attires/attire1/model.glb',
   skull: '../roster/skull/attires/attire1/model.glb',
