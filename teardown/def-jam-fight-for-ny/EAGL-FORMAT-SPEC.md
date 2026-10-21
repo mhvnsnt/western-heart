@@ -365,6 +365,123 @@ Coordinates pool as a POINTS primitive with
 research mode remains in the converter behind
 `topology="strip"`, clearly marked unvalidated.
 
+#### 7.9.1 W5c addendum (2026-10-21) — new evidence, blocker stands
+
+The vertex-order attack was re-run with the complete dataset, the
+`_C` compiled twin, and cross-letter differentials. The blocker
+**stands** — no candidate order passed, and none is shipped — but
+the evidence base is now much harder. All measurements below are
+reproduced by `teardown/def-jam-fight-for-ny/tools/
+w5c_vertex_analysis.py` run against the wrestling-game `.o` files
+(parser: the proven J4 converter code, unmodified).
+
+**Proven since §7.9:**
+
+1. **Block trailers are decoded.** The "undecoded" i16 trailer
+   after each non-final strip block is the **byte size of the NEXT
+   block's record data**: Coordinates trailer[k] = 2 · 3 ·
+   count[k+1], exactly, for all 26 trailers of V2CP_110_0001_A;
+   Normals trailer[k] = 2 × Coordinates trailer[k] (= 2 · 6 ·
+   count[k+1]). The blocks form a size-linked chain (consistent
+   with per-block DMA/VU packet chunks), so the trailer carries no
+   ordering information — that sub-mystery is closed.
+2. **The pool is a clean surface sample; only the order is alien.**
+   The 505 unique points of V2CP_110_0001_A have nearest-neighbour
+   distances median 87 / p75 131 / max 321 (part spans ~4,069) —
+   proper surface density, not a volume fill. 1,143 of 1,160
+   records have an exact mirror partner (−x, y, z): the set is a
+   real, x-symmetric part. Whatever scrambles the mesh is in the
+   sequence/assembly, not in the point set.
+3. **The pool is provably NOT one rigid frame.** The `_C` twin's
+   `__BBOX` (assembled space) is x ∈ [−8.722, 8.722],
+   y ∈ [0, 19.334], z ∈ [−4, 5] (spans 17.44 / 19.33 / 9.0). The A
+   pool spans are (2312, 969, 4069). Under **every** axis
+   permutation the three span ratios differ (best pairing:
+   0.00929 / 0.00754 / 0.00475) — no permutation + uniform scale
+   maps the pool onto the assembled box. The assembled geometry is
+   therefore produced from the pool by per-vertex or per-block
+   transforms (or the pool mixes frames), never by a single rigid
+   transform of the stored triples. This kills the entire family
+   of "right order, wrong axis/scale" readings at once.
+4. **The letters are morph variants of ONE mesh with ONE order.**
+   For V2CP_110_0001, the per-strip first-occurrence (topology)
+   maps of B and F are **identical to A's in all 27 strips**
+   (D: 17/27, E: 23/27 — differing only where their geometry
+   merges/splits points). Same strip counts, same vertex counts,
+   different geometry. The vertex order is a property of the
+   format/toolchain, shared across variants — and any future
+   candidate order can be validated against all variants at once.
+   Per-letter stored-order strip scores (mean consecutive distance)
+   differ widely under the identical topology (110_0001:
+   A 685, B 424, D 762, E 1344, F 1699; 111_0001: A 642, B 345),
+   which is itself inconsistent with "stored order = surface
+   order" for any of them.
+5. **The `_C` packed stream anatomy.** Strip blocks in `_C` are
+   sequences of 8-byte units (i16 a, i16 b, i16 c, i16 w), where
+   **w = 7 · (sequential index), with −1 (0xFFFF) substituted at
+   irregular positions** (strip 0: 0, 7, 14, −1, 21, 28, …, 98,
+   −1, −1, 105, …). The (a, b, c) triples are NOT positions
+   (consecutive distance ≈ 31,570, full-scale noise), and no A/B
+   i16 sequence (flat, or any single component) occurs anywhere
+   in the `_C` `.data`. The stream is a VU-packetized compiled
+   form whose semantics live in the EAGL VU1 microcode / the
+   loader's unpack path — it does not yield its vertex order to
+   offline inspection alone.
+6. **Bone records partially decoded.** Each 112-byte bone record
+   at `.data+0x5F0` (94 records) opens with scale (1,1,1), a u32
+   (0xFFFFFFFF on record 0, else 0 in samples), and a unit
+   quaternion at floats [4:8] (record 0: identity (0,0,0,1);
+   record 1: (0,0,0.707,0.707)). The remaining 20 floats carry
+   matrix-like data including a ±10.56 translation pair
+   (bind / inverse-bind pattern). The exact matrix packing and
+   the block→bone map are still undecoded.
+
+**Falsified in W5c (with scores; do not re-try):** record-level
+deinterleaves p = 3, 5, 6, 7 (mean consecutive distance 823–870 vs
+identity 696); component-level even/odd deinterleave within
+2-record groups (818 / 822); all six axis permutations (identical
+score to identity by symmetry of the metric, and independently
+killed by item 3 above); the `_C` (a,b,c) units as positions, in
+all units and in every 3rd-unit subsequence (31,238–36,882); the
+A/B Normals stream read as positions in any component triple
+((0,2,4), (1,3,5), (0,1,2), (3,4,5) — 1,870–2,618); f32 readings
+of the Normals payload at phase 0 and phase 2 (no unit-length
+triples, components degenerate). These join the §7.9 falsified
+list.
+
+**Why the Ghidra lead could not be executed in W5c:** the route
+needs `SLUS_210.04`, which exists only inside the FFNY ISO. The
+archive.org item node serving it (`dn721808.ca.archive.org`,
+item `slus-210.04.-def-jam-fight-for-ny`) returned HTTP 500 /
+connection failure for the entire W5c session — the same outage
+the W5a lane recorded from ~14:10 CDT 2026-10-21. No mirror with
+the raw ISO was reachable. The executable was therefore never on
+disk and no Ghidra claim is made either way.
+
+**Exactly what cracks it next (in order):**
+1. Fetch `SLUS_210.04` by the proven surgical Range method
+   (ISO root dir LBA 261; `SLUS_210.04;1` at LBA 1941376,
+   3,139,200 bytes) as soon as the item node recovers.
+2. Ghidra (r5900:LE:32:default) decompile of the CMorph build
+   path — CMorph load 0x1149B4, helpers 0x114BC0 / 0x114C38,
+   `CVertexInformation::Init` 0x11EB88, and the `_BuildMorph`
+   chain 0x19F970 → 0x19FBD8 — tracing how the Coordinates /
+   Normals streams are DMA'd to VU1 and what role the 6×i16
+   companion records and the bone matrices play in assembly.
+   The EAGL VU1 microcode blobs in the exe (`__EAGLMicroCode`
+   symbols are named in the `_C` objects) are the ground truth
+   for the draw order if it lives VU-side.
+3. With the runtime semantics known, re-run the validation the
+   J4 way: build V2CP_110_0001_A + samples from at least three
+   other slots, Blender-render, own-eyes verdict, using the
+   cross-letter topology identity (item 4) and the `_C` BBOX
+   (item 3) as hard quantitative gates before any render is
+   believed.
+
+Until then the POINTS discipline stands: the converter output and
+the catalog's `topology_status=unproven_vertex_order` are
+unchanged by this addendum.
+
 ### 7.10 Phase B census — the extracted set (2026-10-21)
 
 The wrestling-game teardown tree holds **2,624 `.o` + 5,319 `.ssh`**
