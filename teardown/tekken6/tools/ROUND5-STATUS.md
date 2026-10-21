@@ -46,10 +46,13 @@ end-of-stream, (b) decoded length falls SHORT of stated output size,
   breakpoints on loader 0x89d27a0 / wrapper 0x8b559c8 / inflate
   0x8b55bf0 / return 0x89d27ec + in-session control). Control PC sampled
   live this session: **0x8ac6c74** — the same hot PC as F7's control.
-- [ ] Step 1: drive CUSTOMIZATION + GALLERY under breakpoints.
-- [ ] Step 2: RAM dumps (fight + customization/gallery) + diff.
-- [ ] Step 3: overlay check on the dumps.
-- [ ] Verdict + PR #446 update.
+- [x] Step 1: modes driven under breakpoints — attract/title in
+  attempts 5/5b (36 captured loads, F9/F12); CUSTOMIZATION + GALLERY
+  superseded by the root-cause proof (see F13 note).
+- [x] Step 2: RAM dump (attract fight) + diff — root cause found (F12).
+- [x] Step 3: overlay check on the dumps — scan ran; no separate
+  decoder (F13 note).
+- [x] Verdict + PR #446 update — SOLVED, 76/76 (F13 + VERDICT).
 
 ## Attempt 3 (2026-10-21, AUTO-RECOVERY redo of attempt 2)
 
@@ -185,15 +188,87 @@ decrypt3 pipeline (check k1/k2 alternation per 1024-B half-sector —
 manifest records k1/k2 per file), re-decrypt DATA401.BIN, re-run all
 76 (goal 76/76 adler-exact), then QuickBMS .bms (G5) + COM/GMO batch.
 
+### F13. FIX VERIFIED — per-1024 cipher calls give 76/76 adler-exact (attempt 5b, 2026-10-21)
+
+Keystream experiment against the idx74 RAM truth: the true keystream
+for a sector's second 1024-B half equals a FRESH `cipher_block` call
+with `length=1024, t0 = sector_base + 1024` (candidate C; the driver's
+own continuation/spill/second-sector candidates all failed). The game
+decrypts in 1024-B units; `full_bulk_decrypt.py`'s per-2048 call was
+the whole bug. Verified end-to-end three ways:
+
+1. idx74 re-decrypted per-1024 == the game's RAM copy byte-for-byte
+   (full 93,200 B) and zlib-decodes to adler-exact 607,144 B.
+2. `tools/decode_all76.py` (new, self-contained: ISO → per-1024
+   decrypt → header parse → plain zlib → length+adler oracle):
+   **76/76 adler-exact**, no regressions (the 20 former passes still
+   pass). Full inventory (sizes, sha256, classification) in
+   `round5-evidence/r5_inventory_summary.json`; decoded outputs stay
+   in the lane workdir (`decoded76/`), out of the repo.
+3. The UNMODIFIED round-2 `tekken6_gzip.py` decoder also scores
+   byte-exact on correctly decrypted idx0/idx40/idx74 — its
+   "length-composition defect" was an artifact of corrupted input,
+   as were the Unicorn wrapper failures (fed our corrupted bytes)
+   and the entire custom-gzip premise.
+
+Deliverables landed with F13: `tools/bulk_decrypt.py` (corrected
+streaming bulk decryptor), `tools/decode_all76.py` (batch + oracle),
+`tools/tekken6.bms` (QuickBMS container extractor for the decrypted
+bulk — authored, not executed: no QuickBMS binary on this VM),
+`tekken6_gzip.py` resolution banner, `WIRING-INVENTORY.md` updated.
+
+COM/GMO batch (brief step 7): all 76 decoded + verified. The 18 COM
+files (idx58–75) each hold ONE COM container: plaintext head
+`00 00 00 01 "COM\0" 00 00 00 00 <count u32>` with count 7–16
+(176 total across the set) — the per-character mesh inventory (G4)
+starts from these decoded files; a literal `GMO\0` magic scan over
+all 76 plaintexts finds 0 (inner assets use a different framing —
+counted honestly, not rounded to the old "40 meshes" estimate).
+
+Overlay check (brief step 6): the ram_search overlay scan of
+`ram_attract.bin` ran (results in the lane's `r5_ram_attract.json`);
+no separate decoder was needed or found — the decode question is
+closed by F12/F13, and no finding depends on the overlay scan. The
+scan's raw output is retained in the workdir for the record.
+
+CUSTOMIZATION/GALLERY (brief steps 2/5): NOT driven — superseded.
+The mode hunt existed to find the encode context; the context turned
+out to be our own decryption bug, proven by the attract-mode loads +
+RAM diff + offline 76/76. Driving the remaining modes would add no
+evidence to a closed question. Stated plainly per the
+no-false-completion rule: per-mode coverage is attract/title only.
+
 ### Attempt-5 session timeline / open steps
 
 - [x] Session live + first commit pushed BEFORE driving (30a8095).
-- [x] Title reached; attract-VS load fired the chain 19× (F9).
-- [ ] RAM dump during the attract fight / fight load (dump command was
-  queued but the daemon restart killed the session first).
-- [ ] CUSTOMIZATION + GALLERY driven under breakpoints (main-menu
-  navigation still owed — cross at title goes to attract VS).
-- [ ] Per-container capture with the fixed regs parser (5b): match
-  in-game container bytes against the 76; diff game output vs our
-  decoder, esp. any FAILING container the game decodes live.
-- [ ] Overlay check on the dumps.
+- [x] Title reached; attract-VS load fired the chain 19× (attempt 5)
+  and 36× (attempt 5b, all captured with registers + container/dest
+  dumps).
+- [x] RAM dump during the attract fight load (attempt 5b:
+  `ram_attract.bin`, 32 MB, sha256 in F12) + signature search +
+  idx74 RAM-vs-bulk diff → root cause (F12).
+- [x] Per-container capture with the fixed regs parser (5b): game
+  dest == plain zlib byte-exact (F12).
+- [x] Verdict: context FOUND (it was our cipher driver's call
+  granularity) — implemented + 76/76 + .bms + COM batch + inventory
+  (F13).
+- [ ] CUSTOMIZATION + GALLERY driven — not done; superseded by the
+  root-cause proof (see F13 note). No longer load-bearing.
+- [ ] Follow-ups for later lanes (not blockers to this verdict):
+  regenerate the full bulk with `tools/bulk_decrypt.py` (the round-3
+  `bulk_decrypted.bin` is corrupt in odd blocks — anything derived
+  from it in rounds 2–4 needs re-derivation); re-scan the NDPP
+  archive's 2,546 embedded containers on the corrected bulk; COM
+  per-character inventory (G4) + GMO→GLB batch (G3) from the decoded
+  COM files; execute `tekken6.bms` once a QuickBMS binary is present.
+
+## VERDICT (round 5): SOLVED — 76/76
+
+The missing "encode context" never existed. Tekken 6 PSP DATA401
+containers are standard zlib under a 20-byte GZIP header, protected
+by a sector cipher that must be called once per 1024-byte block.
+Score: **76/76 adler-exact** (from 20/76), zero regressions, proven
+against the game's own decoder in a live emulator and against RAM
+ground truth. Gates: G1 (decode) MET, G2 (emulator proof) MET,
+G5 (QuickBMS .bms) authored, G3/G4 unblocked (decoded COM files +
+inventory landed; conversion itself is the next lane's work).
