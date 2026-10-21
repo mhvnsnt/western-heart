@@ -52,3 +52,22 @@ identities are flagged, never invented.
 Moves retain their source names in the extracted v33 command lists; move
 renames, if any, will be logged here and in `RENAME-MAP.md` when the
 moveset-library conversion runs.
+
+## Phase 5 addition — moveset input conversion (logged, mechanical)
+
+The v33 → moveset-library conversion (phase 5) applies ONE mechanical
+input mapping, recorded here per the standard (never silent):
+
+| SC2 | Tekken (WH) | Meaning |
+|---|---|---|
+| A | 1 | horizontal attack → left-limb input |
+| B | 2 | vertical attack → right-limb input |
+| K | 3 | kick → left-kick input |
+| G | G | guard (WH guard input, unchanged) |
+| numpad digits 1-9 | unchanged | direction notation is shared |
+
+Applied only where a command's final token is a pure input
+(`tekken_input` field); variant/stance tokens keep `tekken_input: null`.
+This is a notation conversion of the game's own command strings — no
+move names were changed, and no canon names were assigned. Move-name
+renames remain pending the pairing-table decode + owner assignment.
