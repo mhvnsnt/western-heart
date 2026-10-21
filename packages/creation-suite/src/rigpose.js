@@ -44,6 +44,7 @@ export function createRigPoseState(inspect = null, savedRig = null) {
   }
   const state = {
     bones,
+    frame: null,      // {translate:[x,y,z], rot_deg:[x,y,z]} model-frame fix
     added: [],        // [{name, parent, head, tail}]
     removed: [],      // [name]
     strokes: [],      // weight brush strokes, in paint order
@@ -55,6 +56,7 @@ export function createRigPoseState(inspect = null, savedRig = null) {
 }
 
 export function applyRigSection(state, rig) {
+  if (rig.frame) state.frame = clone(rig.frame);
   for (const [name, spec] of Object.entries(rig.bones ?? {})) {
     const b = state.bones.get(name) ??
       { name, isJoint: true, restRotDeg: 0, world: null, offset: clone(ZERO_OFFSET), visible: true };
@@ -75,6 +77,11 @@ export function applyRigSection(state, rig) {
 }
 
 // --- owner operations (one function per control in the panel) ---
+
+export function setFrame(state, frame) {
+  state.frame = clone(frame);
+  return state;
+}
 
 export function setBoneOffset(state, name, partial) {
   const b = state.bones.get(name);
@@ -138,6 +145,7 @@ export function setPose(state, name, entry) {
 
 export function toRigSection(state) {
   const rig = {};
+  if (state.frame) rig.frame = clone(state.frame);
   const bones = {};
   for (const b of state.bones.values()) {
     const entry = {};

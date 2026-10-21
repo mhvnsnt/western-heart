@@ -129,6 +129,17 @@ def main():
     v0 = {int(jj4[0, c]): w4[0, c] for c in range(4) if w4[0, c] > 0}
     assert v0.get(0, 0) > 0.99, f"vert0 not bound to Root: {v0}"
     print("PASS 5 weight set stroke binds verts at center to target bone")
+    # 6) frame op moves scene roots (intake frame correction)
+    cust["rig"] = {"frame": {"translate": [0, 0.5, 0]}}
+    json.dump(cust, open(cj, "w"))
+    o5 = os.path.join(tmp, "o5.glb")
+    rb.bake(base, json.load(open(cj)), o5)
+    j5, _b5 = load(o5)
+    assert abs(j5["nodes"][0].get("translation", [0, 0, 0])[1] - 0.5) < 1e-9, "frame translate not applied to scene root"
+    w5 = rb.world_mats(j5)
+    hips_i = [i for i, n in enumerate(j5["nodes"]) if n.get("name") == "Hips"][0]
+    assert abs(w5[hips_i][1, 3] - 1.5) < 1e-6, f"hips world wrong after frame: {w5[hips_i][:3, 3]}"
+    print("PASS 6 frame translate re-frames scene roots + skeleton together")
     print("ALL RIGPOSE BAKE TESTS PASS")
 
 if __name__ == "__main__":

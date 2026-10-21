@@ -238,6 +238,22 @@ def bake(base_path, custom, out_path):
         n["rotation"] = q.tolist()
         n["scale"] = sc.tolist()
 
+    # 0) model frame: rotate/translate applied to every scene-root node —
+    # the intake frame correction (hip-origin -> floor-origin, axis fix).
+    # Runs before bone ops; every later op composes on the framed model,
+    # and IBM recomputation (step 6) keeps skinning consistent throughout.
+    frame = rig.get("frame") or {}
+    if frame:
+        off = {}
+        if "translate" in frame: off["pos"] = frame["translate"]
+        if "rot_deg" in frame: off["rot_deg"] = frame["rot_deg"]
+        roots = []
+        for sc in js.get("scenes", []):
+            roots.extend(sc.get("nodes", []))
+        for ni in roots:
+            apply_offset(ni, off)
+        report["ops"].append(f"frame {frame} on roots {roots}")
+
     # 2) bone rest offsets + pose (pose entries are rest edits = baked stance)
     for section in ("bones", "pose"):
         for name, spec in (rig.get(section, {}) or {}).items():

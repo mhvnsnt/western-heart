@@ -165,6 +165,7 @@ absence is an exact no-op, and no existing field changes shape.
 
 | Field | Meaning |
 |---|---|
+| `frame` | Model-frame correction applied to every scene-root node before all other rig ops: `translate` metres, `rot_deg` euler degrees. This is the intake frame fix as an owner control — e.g. a hip-origin model (feet at y = −1.05, like shipped Star) grounded to floor-origin with one saved value, instead of a silent exporter default. |
 | `bones.<name>.offset` | Rest-pose edit for one bone: `pos` metres (local), `rot_deg` = `[pitch (X), yaw (Y), roll (Z)]` degrees, `scale` per-axis. Applied in bone-local space. This is the control that repairs a drifted rest frame (see the STEP 1 diagnosis: shipped Star's core rests sit at 90–180°). |
 | `bones.<name>.visible` | Editor-only: bone shown/hidden in the suite viewport. No bake effect. |
 | `add_bones` | New bones parented to an existing bone; `head` is parent-local; `tail` records the bone's aim for the editor (the bake stores head + orientation; tail is editor data). Added bones join every skin their parent belongs to, with zero weights until painted. |

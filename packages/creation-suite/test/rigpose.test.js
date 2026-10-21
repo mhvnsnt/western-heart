@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
   createRigPoseState, applyRigSection, setBoneOffset, setBoneVisible,
-  addBone, removeBone, addWeightStroke, setMeshVisibility, setPose,
+  addBone, removeBone, addWeightStroke, setMeshVisibility, setPose, setFrame,
   toRigSection, rigPoseSummary,
 } from '../src/rigpose.js';
 
@@ -27,6 +27,7 @@ test('fresh state serializes to null (absence = no-op)', () => {
 
 test('owner edits serialize to exactly the schema rig section', () => {
   const s = createRigPoseState(INSPECT);
+  setFrame(s, { translate: [0, 1.05, 0] });
   setBoneOffset(s, 'Hips', { rot_deg: [-120.05, 0, 0] });
   setBoneVisible(s, 'Spine', false);
   addBone(s, { name: 'Tail', parent: 'Hips', head: [0, -0.1, -0.2], tail: [0, -0.2, -0.6] });
@@ -35,6 +36,7 @@ test('owner edits serialize to exactly the schema rig section', () => {
   setPose(s, 'Root', { rot_deg: [0, 30, 0] });
   removeBone(s, 'Spine');
   const rig = toRigSection(s);
+  assert.deepEqual(rig.frame, { translate: [0, 1.05, 0] });
   assert.deepEqual(rig.bones.Hips.offset.rot_deg, [-120.05, 0, 0]);
   assert.equal(rig.bones.Spine.visible, false);
   assert.deepEqual(rig.add_bones[0].name, 'Tail');
