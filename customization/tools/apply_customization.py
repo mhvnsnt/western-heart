@@ -553,6 +553,10 @@ def bake(cfg_path, repo_root, mpfb_src, log=print):
                 o.matrix_parent_inverse = base_arm.matrix_world.inverted()
                 if placement:
                     o.location = (placement.get('px', 0), placement.get('py', 0), placement.get('pz', 0))
+                    # glTF-imported part roots are in QUATERNION rotation mode,
+                    # where assigning rotation_euler is silently ignored and
+                    # placement rotations never apply. Set the mode first.
+                    o.rotation_mode = 'XYZ'
                     o.rotation_euler = (radians(placement.get('rx', 0)), radians(placement.get('ry', 0)),
                                         radians(placement.get('rz', 0)))
                     s = placement.get('s', 1)

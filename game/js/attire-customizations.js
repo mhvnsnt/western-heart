@@ -3,4 +3,5 @@
 // One entry per attire folder containing a customization.json with an out_glb.
 // Key = the MODEL_URLS key of the attire's base_glb in game/js/assets.js.
 export const ATTIRE_CUSTOMIZATIONS = {
+  'baek-master-white': '../roster/baek/attires/master-white/model-kevin-diff.glb',
 };
