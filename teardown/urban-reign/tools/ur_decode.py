@@ -71,6 +71,36 @@ _ACTIVE_PALETTES = None  # set per character by decode()
 def _palettes():
     return _ACTIVE_PALETTES if _ACTIVE_PALETTES is not None else PALETTES
 
+def parse_node_max(vmd):
+    """Largest node id in the header graph's child-list records
+    (`01 <tag> 07 <n>` with 0xff-separated child ids). This is the
+    loader's own bound on legal bone ids for the character.
+    Falls back to a loose 0xff-run scan of the graph zone, then
+    to 57 (chr01's proven bound)."""
+    best = None
+    for i in range(0x40, min(0x2000, len(vmd) - 4)):
+        if vmd[i] == 0x01 and vmd[i+2] == 0x07:
+            n = vmd[i+3]
+            if 3 <= n <= 64 and i + 4 + n <= len(vmd):
+                vals = [b for b in vmd[i+4:i+4+n] if b != 0xff]
+                if vals and all(b <= 70 for b in vals):
+                    m = max(vals)
+                    best = m if best is None else max(best, m)
+    if best is None:
+        run = []
+        for i in range(0x40, min(0x2000, len(vmd))):
+            b = vmd[i]
+            if b == 0xff or b <= 70:
+                run.append(b)
+            else:
+                ff = run.count(0xff)
+                ids = [x for x in run if x != 0xff]
+                if ff >= 2 and ids:
+                    m = max(ids)
+                    best = m if best is None else max(best, m)
+                run = []
+    return best if best is not None else 57
+
 def parse_header_palettes(vmd):
     """Scan the .vmd header graph zone for palette list records
     `01 <tag> 03 <n> <n bone ids>` (n in 6..40, ids <= 63, followed
@@ -563,6 +593,8 @@ def polish_by_faces(pieces, assign, W, parent, rounds=2):
             best = (cur_bad, assign[pid])
             for cand in _candidates(max(pd['gslots'])):
                 if cand == assign[pid]: continue
+                if cand[0] == 'ID' and assign[pid][0] != 'ID':
+                    continue  # provenance beats a surface tie-break
                 vv = _piece_positions(pd, cand, Wbase)
                 if vv is None: continue
                 b, _t = _strip_bad(pd, vv)
@@ -679,9 +711,11 @@ def assign_by_trusted_fit(groups, runs):
             mp, iframes, worst, nval, anchored, tshared = \
                 _eval_candidate(pd, cand, W)
             if anchored and nval >= 1 and worst is not None and worst < 0.02:
-                if proven is None or worst < proven[0]:
-                    proven = (worst, cand, iframes, mp, tshared)
-            score = (0 if anchored else 1, -nval,
+                key = (1 if cand[0] == 'ID' else 0, worst)
+                if proven is None or key < proven[0]:
+                    proven = (key, cand, iframes, mp, tshared)
+            score = (0 if anchored else 1,
+                     1 if cand[0] == 'ID' else 0, -nval,
                      worst if worst is not None else 9e9)
             if best_any is None or score < best_any[0]:
                 best_any = (score, cand, iframes, mp, worst, tshared)
@@ -738,7 +772,8 @@ def assign_by_trusted_fit(groups, runs):
             for pid in sorted(remaining):
                 proven, _ba = join_eval(pid)
                 if proven:
-                    worst, cand, iframes, mp, tshared = proven
+                    _key, cand, iframes, mp, tshared = proven
+                    worst = _key[1]
                     assign[pid] = cand
                     fitted[pid] = worst
                     shared_ct[pid] = tshared
@@ -883,7 +918,8 @@ def assign_by_trusted_fit(groups, runs):
                        key=lambda pid: len(remaining_pieces[pid]['verts']))
         comp_total = sum(len(pd['verts'])
                          for pd in remaining_pieces.values())
-        best = None
+        best = None       # best real-record seed result
+        best_id = None    # best identity-window seed result
         stale = 0
         for cand in seed_choices(remaining_pieces[seed_pid]):
             pieces = dict(remaining_pieces)
@@ -891,15 +927,26 @@ def assign_by_trusted_fit(groups, runs):
                 grow(pieces, seed_pid, cand)
             score = (proven, placed)
             if _dbg: print(f'[dbg] comp{n_comp} seed {seed_pid} {cand} proven={proven} placed={placed} cpu={_t.process_time():.1f}s', file=sys.stderr, flush=True)
-            if best is None or score > best[0]:
-                best = (score, pieces, a_c, f_c, W_c, p_c, s_c)
+            tgt = 'best_id' if cand[0] == 'ID' else 'best'
+            cur = best_id if tgt == 'best_id' else best
+            if cur is None or score > cur[0]:
+                if tgt == 'best_id':
+                    best_id = (score, pieces, a_c, f_c, W_c, p_c, s_c)
+                else:
+                    best = (score, pieces, a_c, f_c, W_c, p_c, s_c)
                 stale = 0
             else:
                 stale += 1
             if proven >= comp_total:
                 break
-            if stale >= 3 and best[0][0] >= 0.95 * comp_total:
+            ref = best if best is not None else best_id
+            if stale >= 3 and ref is not None and ref[0][0] >= 0.95 * comp_total:
                 break
+        if best is not None and best_id is not None and \
+                best[0][0] < 0.95 * best_id[0][0]:
+            best = best_id  # identity seed proves dramatically more
+        elif best is None:
+            best = best_id
         if best is None:
             break  # no candidate family covers the seed piece;
             # its pieces fall through to final placement / counted
@@ -937,7 +984,8 @@ def assign_by_trusted_fit(groups, runs):
             if pick is None:
                 continue
             if proven:
-                worst, cand, iframes, mp, tshared = proven
+                _key, cand, iframes, mp, tshared = proven
+                worst = _key[1]
                 fitted[child] = worst
             else:
                 _sc, cand, iframes, mp, worst, tshared = ba
@@ -1093,7 +1141,8 @@ def decode(ppk_path, glb_path, char_name):
                 s = slot_of(inf)
                 if s > maxslot: maxslot = s
     if maxslot >= max(len(P) for P in pal.values()):
-        pal['ID'] = list(range(64))
+        node_max = parse_node_max(vmd)
+        pal['ID'] = list(range(node_max + 1))
         _ACTIVE_PALETTES = pal
     pieces, assign, fit_resid, W, parent, sct = \
         assign_by_trusted_fit(groups, runs)
@@ -1101,13 +1150,18 @@ def decode(ppk_path, glb_path, char_name):
     W, parent, verts, faces, frame_resid = assemble(pieces, assign,
                                                     W, parent)
     stats = write_glb(glb_path, W, parent, verts, faces, char_name)
-    stats['palette_families'] = sorted(pal.keys())
-    stats['groups'] = len([g for g in groups if g])
-    stats['total_verts_parsed'] = sum(len(g) for g in groups)
-    stats['placed_verts'] = stats['verts']
     def pid_name(pid):
         gi, lo, hi = pid
         return f"g{gi}:{lo}-{hi}"
+    stats['palette_families'] = sorted(pal.keys())
+    stats['node_max'] = parse_node_max(vmd)
+    stats['palette_provenance'] = {
+        pid_name(pid): ('identity-window' if cand[0] == 'ID'
+                        else 'record')
+        for pid, cand in assign.items()}
+    stats['groups'] = len([g for g in groups if g])
+    stats['total_verts_parsed'] = sum(len(g) for g in groups)
+    stats['placed_verts'] = stats['verts']
     stats['assignment'] = {pid_name(pid): list(c) for pid, c in assign.items()}
     stats['frame_residuals'] = {pid_name(k): round(float(v), 5)
                                 for k, v in frame_resid.items()}

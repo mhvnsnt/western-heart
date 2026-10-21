@@ -221,3 +221,22 @@ layout stays per-character under
   property-bag blocks are not); the decoder bypasses the rest
   empirically via the DMA table.
 - Bone-name ↔ node-id mapping unproven (joints named `bone_<id>`).
+
+## Palette provenance tiering (gate fix, 2026-10-21)
+
+Running the PR #397 completion gates over the first batch caught
+the identity-window fallback (the conditional `ID` palette family)
+silently labeling pieces whose true palette is a header record —
+geometrically valid but provenance-wrong, in 15 characters
+producing parallel duplicate joints at bone ids 58–63. The
+decoder now tiers its candidates: **real header palette records
+always win** (in join evaluation, seed choice, and the surface
+polish); the identity window is used only for pieces no record
+can prove, is capped at the character's loader node bound
+(`parse_node_max`: child-list records ∪ palette-record ids), and
+is flagged per piece in the decode stats as
+`palette_provenance: identity-window`. With tiering, char001
+reproduces byte-identical to the record-only solution (37 joints).
+139 pieces in 10 characters remain identity-window (their
+palettes live in per-object block framing the parser does not
+fully read yet) — see `docs/urban-reign/URBAN-REIGN-GATES.md`.
