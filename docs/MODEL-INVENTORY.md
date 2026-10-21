@@ -32,7 +32,7 @@ Legend: ✅ WIRED (in `game/assets/models/` or a roster attire slot) · 📦 HAV
 | kiko-tanaka.glb | Kiko Tanaka | Tripo (hooded, default) | wired |
 | kiko-tanaka_alt1.glb | Kiko Tanaka | Tripo (unrobed) | wired |
 | king-tyrant.glb / _alt1 | King Tyrant | T7 King variant | wired |
-| kinpo-t8.glb / kinpo.glb / kinpo_alt1 | Kinpo | T8/T7 base | wired |
+| kinpo-t8.glb / kinpo.glb / kinpo_alt1 | Kinpo | T8/T7 base | wired — legacy alternates since 2026-10-20 (kinpo.glb = `kinpo-legacy` key; A1 default is now the Tripo pull, roster slot below) |
 | lili.glb | **Silvertongue** | T7 Lili base | wired; Noir Gala = later attire slot (recolor) |
 | mariposa.glb | **Mariposa** | T7 base | wired; Golden Pharaoh = later attire slot (recolor) |
 | michiko.glb | Michiko | fighter hunt R2 | wired (untextured — texture pass follow-up) |
@@ -78,6 +78,7 @@ Legend: ✅ WIRED (in `game/assets/models/` or a roster attire slot) · 📦 HAV
 | `roster/slice/attires/attire1/model.glb` | SLICE | A1 DEFAULT | Tekken 7 Dragunov teardown conversion (52.4MB) — beret default costume, T7 skeleton (198 joints); source `dragunov-t7-rig.blend` (release `tekken-models-batch-2`) |
 | `roster/vainabel/attires/attire2/model.glb` | VAIN ABEL | A2 | Tripo "wrestler character" (19.8MB) — purple flame vest, purple-stitched black pants; mismatched eyes |
 | `roster/vainabel/attires/attire3/model.glb` | VAIN ABEL | A3 · Masked Demon of the Purple Haze | Tripo "masked fighter" (19.6MB) |
+| `roster/kinpo/attires/attire1/model.glb` | Kinpo | A1 DEFAULT | Tripo "stylized female character" (20.3MB meshopt) — mini skirt; jiggle butt/thighs/hips at rig stage (owner 2026-10-20, `roster/kinpo/RIG-NOTES.md`) |
 | `roster/kinpo/attires/attire2/model.glb` | Kinpo | A2 "Goth Sport" | Tripo "gothic punk character" (18.4MB meshopt) — owner 2026-10-20; same mini skirt as A1, no jacket, goth makeup, little fangs; enhanced jiggle + M-rated anatomy rig specs in `roster/kinpo/RIG-NOTES.md` |
 
 ---
