@@ -54,6 +54,8 @@ export const MODEL_URLS = {
   nightwolf: 'assets/models/nightwolf.glb',
   'king-tyrant': 'assets/models/king-tyrant.glb',
   kinpo: 'assets/models/kinpo.glb',
+  // Kinpo Attire 2 "Goth Sport" (owner 2026-10-20, Tripo pull — see roster/kinpo/ATTIRE-SLOTS.md).
+  'kinpo-attire2': '../roster/kinpo/attires/attire2/model.glb',
   waterfall: '../roster/waterfall/attires/attire1/model.glb',
   'n3g4tiv0': 'assets/models/n3g4tiv0.glb',
   thor: '../roster/thor/attires/attire1/model.glb',
@@ -86,6 +88,10 @@ export const MODEL_URLS = {
   // Cain Elias — Vain Abel's brother, Undertaker archetype (owner 2026-10-19, Tripo pulls).
   'cain-elias': '../roster/cain-elias/attires/attire1/model.glb',
   'cain-elias-attire2': '../roster/cain-elias/attires/attire2/model.glb',
+  // Vain Abel — Attire 2 (owner 2026-10-20, Tripo pull).
+  'vainabel-attire2': '../roster/vainabel/attires/attire2/model.glb',
+  // Vain Abel — Kane archetype (owner 2026-10-20, Tripo pull). Attire 3: Masked Demon of the Purple Haze.
+  'vainabel-attire3': '../roster/vainabel/attires/attire3/model.glb',
   // Burger — Demon mode, possessed by greed (owner 2026-10-19, Tripo pull).
   burger: '../roster/burger/attires/attire1/model.glb',
   // Kronos — new fighter (owner 2026-10-19, Tripo pull).

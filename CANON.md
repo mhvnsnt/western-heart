@@ -1266,6 +1266,26 @@ Cain Elias walks in where Vain Abel Elias walked out — the brother who stayed 
 
 *Owner-directed 2026-10-19 (naming, design, attires). Wired into repo 2026-10-19 (gap-audit stream). Moveset pick owned by the moveset lane.*
 
+### CORNERSTONE — The Obnoxious One (Bonus)
+
+**Owner's words, verbatim (2026-10-21):** "I told u how ryuji character will be mixed with the rock from WWE and do the uranage/rock bottom, he will also get the rock bottom from king and from WWE all stars, and some animations of the rock from the WWE teardown games, and kings jumping diving elbow attack, mixed with ryuji yamazakis stance and taunts and moveset and antics mixed with the rock persona from early attitude era WWE. And his name will be CornerStone"
+
+**The foundation (owner 2026-10-19, already on record before the name):** "Ryuji Yamazaki version… black shirt, blonde top hair. Version based on The Rock (Dwayne Johnson) mixed with Ryuji Yamazaki — obnoxious like Ryuji, sticks his tongue out, personality mixed with The Rock." His moveset was set the same night: Ryuji base + The Rock's moves (Rock Bottom — King has it in Tekken, pull from there) + wrestling moves from Urban Reign, Tekken, and the other teardown games.
+
+CORNERSTONE is the name the owner locked on 2026-10-21 for the Ryuji Yamazaki × The Rock hybrid who first entered the roster as RYUJI ROCK. He is not one of the nine souls and carries no vessel — he is a bonus fighter, a collision of two personas: Yamazaki's menace underneath, The Rock's early-Attitude-Era showmanship on top.
+
+**Who he is.** Ryuji Yamazaki of the Hakkesshu — KOF/Fatal Fury's sadistic bad guy, black shirt, blonde top of hair — fused with Dwayne "The Rock" Johnson at his most obnoxious: the raised eyebrow, the smack talk, the people's showman. He is obnoxious like Ryuji and sticks his tongue out like Ryuji (the Sadomazo tongue-taunt is his signature antic), then plays to a crowd that isn't there, like The Rock. The menace is real; so is the show.
+
+**How he fights.**
+- **Base layer — Yamazaki:** his stance, his taunts (tongue-stick-out taunts AND tongue attacks), his full moveset and his antics: Serpent Slash (Hebi Tsukai), Sand Kick (Suna Kake), Knife Slash, Bai Gaeshi, Bakudan Pachiki, Todome, the Guillotine, Pit Viper, and the Drill climax.
+- **The uranage / ROCK BOTTOM — taken from every source the owner named:** King's version from Tekken; the WWE All Stars version; and The Rock's own animations out of the WWE teardown games (the No Mercy / WrestleMania XIX holdings). Plus the People's Elbow, the Sharpshooter, the Brahma Bull Lariat, Layin' the Smackdown.
+- **King's jumping diving elbow attack** — Tekken King's High Elbow Drop (u/f+2) is his diving elbow: the People's Elbow delivered off the jump, King-sourced.
+- **Second inspiration — Younger Toguro (Yu Yu Hakusho):** the fingernail blast, and whatever else of Toguro's the files give up, when a Yu Yu Hakusho teardown source is in hand. (Design intent recorded 2026-10-21; no YYH game is in the teardown holdings yet — the blast wires in when the source exists, never invented.)
+
+**Names and plumbing.** Canon/display name: **CORNERSTONE**. Source names are retained in RENAME-MAP.md (Ryuji Yamazaki + The Rock; prior WH working name RYUJI ROCK). The internal fighter id and moveset key stay `ryuji-rock` — the plumbing does not change hands, only the name the player sees. The pure-Yamazaki roster entry (`ryuji`, carrying the full KOF set) is untouched and stays in the repo.
+
+*Owner-directed 2026-10-19 (concept, persona, moveset foundation) and 2026-10-21 (the name CORNERSTONE + the full multi-source design drop).*
+
 ---
 
 ## 8. THE HEAD-WORLD, AS THE TRIAL FOUND IT
