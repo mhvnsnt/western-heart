@@ -40,9 +40,15 @@ class XdvdfsError(Exception):
 
 
 class XdvdfsReader:
-    def __init__(self, read_sector):
-        """read_sector(sector:int) -> bytes of length SECTOR_SIZE."""
+    def __init__(self, read_sector, volume_sector=VOLUME_SECTOR):
+        """read_sector(sector:int) -> bytes of length SECTOR_SIZE.
+
+        volume_sector: sector holding the volume descriptor (default 32,
+        the disc/video partition). For the XGD2 game partition pass
+        (0xFD90000 + 0x10000) // 0x800 = 129856.
+        """
         self._rs = read_sector
+        self._vol_sector = volume_sector
         self._cache = {}
         self.root_sector, self.root_size = self._read_volume()
 
@@ -71,9 +77,9 @@ class XdvdfsReader:
 
     # ---- volume ----
     def _read_volume(self):
-        sec = self._sector(VOLUME_SECTOR)
+        sec = self._sector(self._vol_sector)
         if sec[0:20] != MAGIC or sec[0x7EC:0x800] != MAGIC:
-            raise XdvdfsError("bad XDVDFS magic at sector 32")
+            raise XdvdfsError(f"bad XDVDFS magic at sector {self._vol_sector}")
         root_sector, root_size = struct.unpack_from("<II", sec, 0x14)
         if root_size == 0:
             raise XdvdfsError("empty root table")
