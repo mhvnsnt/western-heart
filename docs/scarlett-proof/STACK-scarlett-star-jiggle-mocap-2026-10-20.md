@@ -78,6 +78,22 @@ world, large area key/fill/rim, sun) so the characters are judgeable.
 - `tools/jiggle/render_soft.py` — the soft-studio proof renderer used for
   the v2/v3 proofs (bright, framed on evaluated bounds).
 
+## Addendum — Star's face, investigated to ground (2026-10-20, late)
+In the delta take's front stills, Star's bowed face reads as a pale column in
+front of the face at small size. Because the Rokoko take had genuinely torn
+this area, the reading was investigated with five independent checks on the
+delta file: (1) edge-stretch audit — 14 mildly stretched verts total (feet /
+spine joints), none facial, vs 1,068 in the Rokoko file; (2) head-bone-space
+rigidity — head-region verts move ≤0.022 rig units relative to the Head bone
+(rigid, as skinned); (3) spike-region occupancy — zero verts occupy the
+protrusion volume beyond the posed mesh itself; (4) right-arm paint test —
+the shape is not the arm crossing; (5) dominant-bone-group color render —
+the silhouette is continuous with the head and colored as Head/Neck groups.
+Conclusion: the geometry is sound; the reading is the lambada's deep head
+bow + turn acting on the sculpt's strong nose/lip profile at proof
+resolution. No fix was applied because no defect exists in the data — the
+Rokoko take's measured tearing (the real defect) is absent here.
+
 ## Honest limits
 - Scarlett's surviving local blends are a reduced working copy whose body
   materials resolve to a black-and-white vertex-color pattern — no skin-tone
