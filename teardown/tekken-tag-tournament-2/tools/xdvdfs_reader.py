@@ -44,8 +44,9 @@ class XdvdfsReader:
         """read_sector(sector:int) -> bytes of length SECTOR_SIZE.
 
         volume_sector: sector holding the volume descriptor (default 32,
-        the disc/video partition). For the XGD2 game partition pass
-        (0xFD90000 + 0x10000) // 0x800 = 129856.
+        the XDVDFS volume descriptor sector). For GoD images the data
+        stream is a bare game partition, so the descriptor is at sector
+        32 = byte 0x10000 (NOT at an XGD disc offset).
         """
         self._rs = read_sector
         self._vol_sector = volume_sector

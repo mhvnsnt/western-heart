@@ -16,8 +16,9 @@ Data0000/0001 (2x170MB) + listing JSON. Data files deleted after the
 walk (reproducible from the release at any time).
 
 Key fixes vs first draft:
-- XdvdfsReader hardcoded sector 32 = the VIDEO partition descriptor.
-  The game files live in the XGD2 game partition at sector 129856.
+- GoD data stream is a BARE GAME PARTITION: the XDVDFS volume descriptor is
+  at image sector 32 (byte 0x10000) — not at any XGD disc offset. Verified
+  empirically 2026-10-22 (descriptor valid, 78-file walk complete).
 - py7zr needs the 7z EndHeader (last chunk, 256MB download). A 2MB
   HTTP-range tail cache serves it without spooling chunk 26.
 """
@@ -41,7 +42,16 @@ WORK = HERE.parent
 SPOOL = WORK / "spool"
 SEVENZ_PREFIX = "Tekken Tag Tournament 2 (EU)/4E4D0859/00007000"
 GOD_HEADER_NAME = "392CFF5C9DB17CCAEBC3"
-GAME_PARTITION_SECTOR = (0xFD90000 + 0x10000) // 0x800  # 129856
+# The GoD data stream is a BARE GAME PARTITION: the XDVDFS volume descriptor
+# is at image sector 32 (byte 0x10000), NOT at an XGD disc offset.
+# Evidence: xverter format notes ("The embedded GoD stream is a bare game
+# partition (MICROSOFT*XBOX*MEDIA at 0x10000)"); verified empirically
+# 2026-10-22 on this image — sector 32 descriptor valid (magic at [0:20] and
+# [0x7EC:0x800]), root table at sector 3231, full walk = 78 files.
+# The old XGD2 assumption (sector 129856 = 0xFD90000+0x10000) is WRONG for GoD:
+# sector 129856 holds random data, no magic. (XGD3 disc offset 0x2080000 does
+# not apply — GoD strips the disc layout.)
+GAME_PARTITION_SECTOR = 32
 TAIL_SIZE = 2 * 1024 * 1024
 
 
