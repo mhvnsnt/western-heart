@@ -134,3 +134,22 @@ tentative-grade until Q1/Q2 aim it). No DOA4 content moves from
 decryption-myth, assembly, skinning, textures, heads, identity —
 closed. Animation and binding — closed as dynamic-only, with the
 proofs. Canon — the owner's.*
+
+## Phase-14 addendum (2026-10-22, PR #574) — pointer, additive only
+
+Phase 14 (`teardown/dead-or-alive-4/phase14/`) resumed and
+closed the two items §5 named: (1) the ISO assembly completed
+30/30 with a whole-ISO sha256 on record and the local assembly
+cleared per the one-store rule (`phase14/PHASE14-STATE.md`);
+(2) the ANM definition decode (§5 item 1) landed: the fighter
+.bin header is a proven 32-pointer section table, w21 is a
+1024-entry clip command table, mot.afs is a standard AFS with
+197 named .mot entries (comon.mot in cmn.afs), the parser
+round-trips all 24 definition files byte-exact (gate 1), and
+gate 2 (posed clips) stands as an exact residual — the
+keyframe/.mot stream grammar is the remaining decode
+(`phase14/ANM-DECODE.md`). A mirror-vs-ISO provenance pass
+quantified the pressing correction: the mirror's anm.afs is
+DIFFERENT (same size, 9.83% identical); chr* verdicts in
+`phase14/PROVENANCE.md`. Canon Q1–Q6 remain OWNER-pending;
+nothing else in this document changes.
