@@ -1630,6 +1630,16 @@ Tekken on-hit stack: (1) jagged star-burst HIT SPARK sprite (canvas-generated, a
 
 **Status:** report merged; 62 items await owner okay/not-okay before any wiring. Worker 22's general integration lane unaffected (separate scope).
 
+## 2026-10-22 — Worker 25: SECOND TEARDOWN GAP AUDIT (audit-only)
+
+**Task:** Owner: "After the jiggle/face/hands wiring is done, do a second teardown audit pass: go back through ALL the teardown files (Tekken 3/6/7/8, TTT2, DOA4/6, SF, SC2/6, Urban Reign, VF5, WWE, Def Jam, No Mercy) and list what else we haven't wired up yet. Report it back for the user's approval before building."
+
+**Method:** Sandbox blocks shell/Python file-writes of repo content (no cp/git clone possible), so audited the 14:13 UTC local copy for teardown sources + GitHub API (compare/contents) for post-14:13 wired state. Verified zero teardown/ files changed in the window via the compare API. Cross-referenced against game/js, customization/, moveset-library/, docs/, and merges that landed during the audit (hit detection #616, camera bounds #612, voice+intros #614, load-speed lane, WMXIX/No Mercy lanes). Excluded already-wired + in-flight (worker 21 jiggle/face/hands, worker 24 TTT2, T8 select transplant). Reconciled with worker 23's mode-mapped audit (landed mid-audit) — picked up VF5/SCVI mechanics docs, Def Jam BLAZIN', SFEX movelist translation.
+
+**Result:** docs/research/teardown-gap-audit-2026-10-22.md — ~74 actionable gap items across 15 sources, each with what-it-adds / why-it-matters / OK checkbox. Biggest: T3 round-2 movesets (13 banks, 5,663 rows), DOA6 triangle/hold/stun/break-gauge suite (5), VF5 mechanics (10), SCVI mechanics (7), Urban Reign brawl/missions/weapons/destructibles (9), Def Jam grappling core + BLAZIN' (6), rank ladder X-1 (53 tiers, user-built same day), meter/power unification X-2. Blocked: T6/T7/SC6 acquisitions, DATA401 decrypt, DOA4 index buffers. Nothing wired — user approves first.
+
+**Deliverable:** this PR (branch audit/teardown-gap-20261022). No deletions.
+
 ---
 
 ## 2026-10-22 ~13:45 CDT — Worker 27: LIGHTING + ENVIRONMENT PULL
