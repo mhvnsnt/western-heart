@@ -89,6 +89,15 @@ Living document. Updated every time the owner sets a directive. Newest first.
   Tekken-like character creation and select screens; 100% teardown of all
   Tekken games (then other games' teardowns); the game feels like all Tekken
   games combined + our own stuff on top, then turned proprietary.
+- **Tekken 3 scope (user 2026-10-22 ~17:30 CDT).** Owner verbatim:
+  "We won't need Tekken 3 models — too much to decode for bad low-poly
+  quality. But everything else — the moves, the arenas, the menus — from
+  all the other Tekken games, get the models from all those." Rule:
+  Tekken 3 = pull everything EXCEPT character models (moves, movesets,
+  arenas/stages, menus, UI, systems, audio — yes; character models —
+  skip). All other Tekken games (T5, T6, TTT2, T7, T8) = pull everything
+  INCLUDING character models. Detail:
+  `docs/decisions/2026-10-22-tekken3-scope.md`.
 - **Hardened Mind Within mode.** Tekken "Devil Within"-style mode; each
   character selectable with their own storyline; wave/tournament feel like
   Mortal Kombat Royal Rumble in places. All fighters rigged and working for
@@ -321,6 +330,17 @@ Wire it up from the teardowns (Def Jam BLAZIN' two-gate design: meter full + opp
 
 ## Protection rule (user decision 2026-10-22, permanent)
 Intro sequences and win taunts are never to be replaced. New systems layer on top or beside, never over.
+
+## INTEGRATION LAW (user directive 2026-10-22, permanent)
+Owner verbatim (2026-10-22): "Wire everything up that you pull in in a way that's aligned with the Tekken systems and menus. Don't just throw in a bunch of random menus and extra systems on top of stuff. Make it within submenus and subsystems of us trying to build into the Tekken teardown file direction of the layout of everything and the menus and all that. Everything that you pull in, set it up in a Tekken way."
+
+1. Every pulled asset/system is integrated INTO the Tekken menu/system structure — as submenus and subsystems, never as bolted-on random menus or extra systems piled on top of existing ones.
+2. Tekken is the architectural authority for layout, menus, flow — everything. New work follows the direction of the Tekken teardown files.
+3. No parallel systems competing with Tekken's structure — everything pulled in nests inside it.
+
+**End goal (owner-set):** "Keep setting up and pulling in everything from the Tekken games until my game has 100% of all the Tekken games wired up from the back end to the front end, everything." 100% Tekken coverage — every game, every system, backend to frontend.
+
+Decision log: `docs/decisions/2026-10-22-integration-law.md`.
 
 ## Rig repoint notes (2026-10-22, worker 50)
 
