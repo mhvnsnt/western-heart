@@ -485,3 +485,21 @@ smoothstep fallback. All five pass validate.py.
 Peak RAM 468–858MB (demonio-winged tail-fit the highest). Outputs
 meshopt-compressed (18–21MB vs 70–73MB logical). SHA-256s in
 batch3/SHASUMS-rigged.txt.
+
+## 2026-10-21 — Lane 4 rig batch 4: Zangief, Burger, Kronos, Kronos-Attire2 (Timberwolf), Koreshi
+
+All five are Tripo statics. Zangief is smaller (363k verts, raw export,
+y-centered — normalize handles it); the rest are meshopt-compressed ~1.0M
+verts. Facing: rotate-y 0 (+Z) per the Tripo export convention. All five pass
+validate.py. This completes all 22 unrigged fighters.
+
+| fighter | verts | far_fb | facing | tail | validate | time |
+|---|---|---|---|---|---|---|
+| zangief | 363,134 | 209,539 | +Z | no | PASS | knn 3.6s / apply 1.8s |
+| burger | 1,003,047 | 328,685 | +Z | no | PASS | knn 6.9s / apply 4.7s |
+| kronos | 1,000,377 | 259,750 | +Z | no | PASS | knn 5.9s / apply 3.8s |
+| kronos-attire2 | 1,010,767 | 209,815 | +Z | no | PASS | knn 6.1s / apply 3.9s |
+| koreshi | 1,013,835 | 269,882 | +Z | no | PASS | knn 7.1s / apply 3.6s |
+
+Peak RAM 214–626MB. Outputs meshopt-compressed (10–25MB vs 24–72MB logical).
+SHA-256s in batch4/SHASUMS-rigged.txt.
