@@ -552,7 +552,12 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
 }
 #screen-stage .stage-card {
   border: 2px solid rgba(255,255,255,0.14); border-radius: 10px; overflow: hidden;
-  background: #101018; cursor: pointer; transition: transform 0.08s, border-color 0.12s;
+  background: #101018; cursor: pointer; transition: transform 0.08s;
+  /* border-color is deliberately NOT transitioned: the gold selection
+     border must land in the same frame as the tap (measured in a
+     throttled headless run 2026-10-21: a border-color transition
+     could lag the .selected class while the untransitioned glow
+     shadow swapped instantly, desyncing the two signals). */
   min-height: 0; touch-action: manipulation;
 }
 #screen-stage .stage-card:active { transform: scale(0.97); }

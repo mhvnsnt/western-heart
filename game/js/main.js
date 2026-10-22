@@ -273,10 +273,15 @@ function buildStageSelect() {
       card.className = 'stage-card' + (s.id === selectedStage ? ' selected' : '');
       card.dataset.id = s.id;
       card.innerHTML =
-        `<img class="sthumb" src="${s.thumb}" alt="${s.name}" loading="lazy"
+        `<img class="sthumb" src="${s.thumb}" alt="${s.name}"
               onerror="this.outerHTML='<div class=&quot;swatch&quot; style=&quot;background:linear-gradient(135deg, ${s.swatch[0]}, ${s.swatch[1]})&quot;></div>'">
          <div class="sname">${s.name}</div>
          <div class="suniverse">${s.universe}</div>`;
+      /* Thumbnails load EAGERLY (no loading="lazy"): the whole grid is
+         the content of this screen, and lazy heuristics left below-fold
+         cards blank until they neared the viewport (measured in-page:
+         completion stalled at 37/58 while scrolling). 58 small PNGs
+         (~4.5MB total) load up front instead. */
       card.addEventListener('click', () => selectStageCard(card, s));
       grid.appendChild(card);
     }
@@ -284,7 +289,21 @@ function buildStageSelect() {
   const cur = getStage(selectedStage);
   if (cur) updateStagePreview(cur);
   const sel = grid.querySelector('.stage-card.selected');
-  if (sel) sel.scrollIntoView({ block: 'nearest' });
+  if (sel) scrollStageCardIntoView(sel);
+}
+/* Bring a stage card into the grid's visible window by writing
+   scrollTop directly. scrollIntoView relies on a smooth-scroll
+   animation (the grid has scroll-behavior:smooth) whose timeline
+   stalls whenever the main thread is busy — measured headless
+   2026-10-21: scrollIntoView left scrollTop at 0 while a direct
+   write scrolled instantly. Direct writes are frame-perfect on
+   real hardware too. */
+function scrollStageCardIntoView(el) {
+  const grid = document.getElementById('stage-grid');
+  if (!grid || !el) return;
+  const gr = grid.getBoundingClientRect(), r = el.getBoundingClientRect();
+  if (r.top < gr.top) grid.scrollTop -= (gr.top - r.top) + 8;
+  else if (r.bottom > gr.bottom) grid.scrollTop += (r.bottom - gr.bottom) + 8;
 }
 /* Tekken pattern: the large preview pane (image + name + description,
    inside the layout) always tracks the highlighted stage — a card tap,
@@ -332,7 +351,7 @@ function focusStage(i) {
   cards.forEach(x => x.classList.remove('kb-focus'));
   const el = cards[focusedStageIdx];
   el.classList.add('kb-focus');
-  el.scrollIntoView({ block: 'nearest' });
+  scrollStageCardIntoView(el);
   const s = getStage(el.dataset.id);
   if (s) updateStagePreview(s);
 }
