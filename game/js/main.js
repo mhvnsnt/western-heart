@@ -153,7 +153,7 @@ const ui = {
     if (!el) return;
     clearTimeout(this._throwT);
     if (!show) { el.classList.remove('show'); return; }
-    const label = breakInput === '1' ? 'TAP □' : breakInput === '2' ? 'TAP △' : 'TAP □+△';
+    const label = breakInput === '1' ? 'TAP LP' : breakInput === '2' ? 'TAP RP' : 'TAP LP+RP';
     el.querySelector('.throw-prompt-key').textContent = label;
     el.classList.remove('show'); void el.offsetWidth;
     el.classList.add('show');
@@ -210,6 +210,25 @@ function getModes() {
     });
   }
   return _modesPromise;
+}
+/* ---- Rank battle (worker 30): offline ranked ladder, lazy like modes ----
+   RankBattleController lives in js/ranks.js and mirrors ModeController's
+   deps. rankBattleSelect routes the select-screen confirm into it. */
+let rankBattle = null;
+let _rankBattlePromise = null;
+let rankBattleSelect = false;
+function getRankBattle() {
+  if (rankBattle) return Promise.resolve(rankBattle);
+  if (!_rankBattlePromise) {
+    _rankBattlePromise = lazy.ranks().then((m) => {
+      rankBattle = new m.RankBattleController({
+        game, ui, show, startFight: startFightViaStage,
+        roster: ROSTER, getChar: getCharacterWithCustom, audio,
+      });
+      return rankBattle;
+    });
+  }
+  return _rankBattlePromise;
 }
 /* ---- Game modes (lane 5) + stage select (lane 4) integration ----
    The mode controller owns mode state and fight setup; versus-mode fights
@@ -492,8 +511,14 @@ window.addEventListener('load', () => {
   setTimeout(() => document.getElementById('tap-to-start').classList.add('show'), 600);
 });
 
-document.querySelectorAll('[data-action]').forEach((el) => {
-  el.addEventListener('click', () => {
+/* Delegated data-action router (T8 menu, worker 37): one document-level
+   listener covers both the static menu and submenu cards created
+   dynamically by mainmenu.js. Previously a one-time forEach at eval. */
+document.addEventListener('click', (e) => {
+  const t = e.target;
+  const el = (t instanceof Element) ? t.closest('[data-action]') : null;
+  if (!el) return;
+  {
     unlockAudio();
     audio.uiClick();
     const a = el.dataset.action;
@@ -527,6 +552,13 @@ document.querySelectorAll('[data-action]').forEach((el) => {
     else if (a === 'mode-trader') {
       getModes().then(m => m.startMode('trader'));
     }
+    else if (a === 'mode-rankbattle') {
+      rankBattleSelect = true;
+      getRankBattle().then((rb) => rb.start());
+    }
+    else if (a === 'show-ranks') {
+      lazy.ranks().then((m) => m.initRanks().then(() => m.openRankHub()));
+    }
     else if (a === 'mode-create') {
       // Character creation — launches the Create Fighter CAW suite.
       // Returns to game menu via the BACK TO GAME button in the creator.
@@ -539,17 +571,21 @@ document.querySelectorAll('[data-action]').forEach((el) => {
       // CLEAN-INIT: leaving fight → full state reset. No leaked fighters,
       // timers, or listeners carry into the menu.
       game.leaveFight();
+      rankBattleSelect = false;
+      if (rankBattle) rankBattle.clear();
       getModes().then(m => m.clearState());
       show('menu');
       audio.stopMusic();
     }
     else if (a === 'back-select') {
+      rankBattleSelect = false;
+      if (rankBattle) rankBattle.clear();
       show('select');
     }
     else if (a === 'rematch') {
       getModes().then(m => { if (m.mode) m.rematch(); else startFight(); });
     }
-  });
+  }
 });
 
 /* Confirm routing: the mode controller owns the select flow
@@ -567,6 +603,11 @@ async function confirmSelection() {
   // Select-screen lock state first (P1 lock -> P2 cursor in versus),
   // then the mode controller routes the fight.
   selectScreen.notifyConfirm(id);
+  if (rankBattleSelect) {
+    rankBattleSelect = false;
+    (await getRankBattle()).onConfirm(id);
+    return;
+  }
   (await getModes()).onConfirm(id);
 }
 

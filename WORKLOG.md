@@ -1,72 +1,62 @@
 # WORKLOG — DEATHFANG build (2026-10-19/20, branch feat/deathfang-yamazaki-20261019)
 
-## 2026-10-22 — Worker 11 (moveset/input lane): Tekken input pipeline + PSX controls + Batch B BT fills
+## 2026-10-22 — Worker 37 (main menu overhaul): T8-style main menu rebuild
 
-Owner activation: "let's keep working on the repo and working on getting all of the
-moves working correctly all the combos and everything mapped out all the inputs all
-the stuff that we was working on with Claude earlier continue that" + INPUT-TO-MOVE
-FIDELITY LAW: "in Tekken every input produces a specific, predictable move — press 1,
-left punch comes out, every time." + PSX controls ("Square = 1, Triangle = 2,
-X = 3, Circle = 4", ditch the dodge/generic buttons, joystick left + face buttons
-right) + joystick correction ("JOYSTICK IS FINE — DO NOT TOUCH IT") + acceptance
-criteria verbatim in docs/owner-directives.md (CONTROL ACCEPTANCE CRITERIA, 2026-10-22).
+Owner directive (verbatim): "The main menu is ugly and prototype-looking. Rebuild it
+per everything described: Tekken 8 menu layouts adapted for mobile/phone inputs (from
+T8 visual references, since we don't have T8 files). Tekken 7 teardown menu structure
+underneath. All the modes we've been adding need to show up."
 
-Engine fixes (game/js/movesets.js):
-- Unified the two pressChord definitions — the second shadowed the first, so chord
-  resolution ignored ctx/state prefixes, the slots table, loadouts and __base movesets.
-  One pressChord(chord, ctx) now: motion specials -> notation table -> directional chord.
-- Dash latch changed from step-counted to wall-clock (500ms): the old latch lasted
-  seconds on slow devices and misfired dash moves on plain f+1 presses.
-- _motionHeld: any all-identical f/b run (f,F / f,f,F / b,b,B ...) is now a dash-motion
-  requiring the dash latch — previously move keys like f,f,F+2 parsed as 3-step
-  "motions" matching on merely holding forward.
+What changed (branch mainmenu/t8-rebuild):
+- game/index.html: replaced the prototype vertical button stack (#screen-menu) with a
+  T8-adapted layout — full-bleed hero backdrop (title-bg.png + cinematic wash + CSS
+  ember drift), top player bar (player card · Soul Urge 9-pip meter · rank badge),
+  compact italic WESTERN HEART wordmark, 10-item T8 rail (STORY / VERSUS / ONLINE /
+  ARCADE / SIDE GAMES / TRAINING / CREATION SUITE / COLLECTION / DAILY CHALLENGES /
+  OPTIONS), bottom status bar with rotating news ticker, slide-in submenu panel,
+  player card editor, "in the forge" dialog, toast.
+- game/mainmenu.css (NEW): T8 visual grammar — heavy italic condensed type
+  (skewX, no webfont needed), T8 crimson slash on the active item, angular
+  clip-path cards, near-black over WH dusk-shrine. Portrait: bottom-anchored
+  scrollable rail; landscape: true T8 left rail + right-side submenu panel.
+- game/js/mainmenu.js (NEW): menu controller. Submenu card data for all modes;
+  working modes route via data-action through the existing delegated handlers;
+  unbuilt modes (Tournament, Gungaku, Gallery, Jukebox, Replays, Daily Challenges)
+  open an honest "IN THE FORGE" panel. Ranked rides worker 30's rank system
+  (js/ranks.js + game/data/ranks.json — rank names NEVER hardcoded here): ONLINE
+  submenu has RANKED BATTLE (mode-rankbattle) + RANK HALL (show-ranks); the topbar
+  rank badge shows the best offline/online rank from the wh_ranks store and opens
+  the Rank Hall. Player card (name/title) persists to localStorage wh_player_v1.
+  Soul Urge pips are the Nine-Soul Meter's menu surface (ignite in-fight).
+- game/js/menus.js: import + initMainMenu() call in initMenus(); the four
+  special-action wirings (mode-options/records/heartmind/episodes) converted from
+  one-time querySelectorAll to a single delegated document listener so dynamically
+  created submenu cards route correctly. buildMenuButtons is a safe no-op now that
+  .menu-buttons is gone (returns null, no duplicates).
+- game/js/main.js: the data-action forEach at module eval converted to one
+  delegated document listener — identical routing (incl. worker 30's
+  mode-rankbattle/show-ranks), covers dynamic cards.
 
-Pilot fighter torch (game/assets/movesets/torch.json): added BT.2->BT.1, BT.4->BT.3
-(canon per T7 Anna frame data, docs/t7t8-reference/frame-data-t7/anna.json:
-"BT 1 (or 2)", "BT 3 (or 4)"); remapped placeholder f,f,F+2 -> f,F+2 (Headless
-Horseman) which shadowed the canon dash move; slots 392->394. SS.1/SS.4 fills
-REVERTED after checking T7 data (Anna/King/Jin/Nina have no SS.1/SS.4; sidestep+1/+4
-falls through to neutral — Tekken-correct).
+Anti-clobber note: main moved mid-task (worker 30's RankBattleController +
+mode-rankbattle/show-ranks + TAP □/△ throw prompt labels landed). Re-synced all
+touched files from main tip and re-applied the menu edits on top — worker 30's
+code is fully preserved. The first-draft custom 53-tier ladder panel was DELETED
+in favor of worker 30's Rank Hall (build on existing work, don't duplicate).
 
-Batch B (37 fighters, 62 slot insertions): canon BT.2/BT.4 pair fills applied
-surgically (bt_fill.py). Five files (pantera, phantom, scimitar, skull, zui) changed
-on main mid-session and were rebased to current tip + fills re-applied; every batch
-file verified byte-equal to (current tip + fills) — zero clobber risk. kronos-attire2
-needed a blob-API fetch (1.27 MB exceeds the Contents API limit).
+T7 structure underneath: STORY (Trial/Episodes/Heart & Mind) · VERSUS (1v1/Team) ·
+ONLINE (Ranked Battle/Rank Hall/Tournament) · ARCADE (Ladder/Survival/Time Attack/
+Soul Surge) · SIDE GAMES (Qombat/Trader) · TRAINING (Training/Gungaku) · CREATION
+SUITE · COLLECTION (Gallery/Jukebox/Replays) · DAILY · OPTIONS — T7/T8 hierarchy.
 
-Controls (owner correction honored): game/js/input.js REVERTED to the user's approved
-version — joystick untouched. PSX face-button layout only: game/index.html (diamond:
-triangle top=2, circle right=4, cross bottom=3, square left=1; L1=block, R1=surge;
-dodge + generic punch/kick buttons removed) + game/styles.css (authentic PSX colors,
-no overlaps — min ~4px clearance verified geometrically in portrait and landscape) +
-game/js/main.js (throw-break prompt: "TAP <square>" / "TAP <triangle>" / "TAP <square>+<triangle>").
-
-Proof (tools/input-verify/):
-- buffer-test.mjs (pure Node, real engine + real moveset JSON): torch 42/42 PASS
-  (canon-aware: SS.1/SS.4 asserted as fall-through per T7 Anna data), pantera 36/0,
-  demonio 33/0 coverage-aware PASS. Strings 1,2 / 1,2,2 / 2,1 / f+2,1 verified.
-- touch-wiring-test.mjs (NEW, pure Node, real InputManager + stub DOM): 11/11 PASS —
-  tap data-btn="1..4" queues the correct Tekken limb, every button functional,
-  block hold/release, 1+3 chord, disabled input swallows taps.
-- Browser proof BLOCKED (documented deviation): Chromium SIGTRAPs intermittently on
-  managed launch, and Chrome 152's Local Network Access checks block navigation to
-  the local http server (ERR_BLOCKED_BY_LOCAL_NETWORK_ACCESS_CHECKS) from both
-  CDP and managed launches despite --disable-features flags. verify-touch.mjs ships
-  as the browser proof harness for a working environment (button-by-button demo,
-  combos, portrait+landscape layout screenshots, overlap checks). Layout geometry
-  verified mathematically instead: zero button overlaps in both orientations.
-
-Moveset philosophy (owner 2026-10-22): Tekken movelist layouts FIRST to 100%, THEN
-proprietary/canon moves on top. This PR is the foundation layer. Rollout: Batch C =
-sparse sets needing real Tekken-layout builds (DOA/VF 14-26 moves, sf-* 10-12,
-deathfang/iori 40+ gaps, Vixen has no moveset yet — Tekken inputs per directive);
-Batch D = canned string enders (1,2,2 etc.) from T7 frame data.
-
-Files: game/js/movesets.js, game/index.html, game/styles.css, game/js/main.js,
-game/assets/movesets/torch.json + 37 batch JSONs, docs/owner-directives.md,
-tools/input-verify/ (buffer-test.mjs, touch-wiring-test.mjs, verify-touch.mjs,
-verify-inputs.mjs, baseline/), WORKLOG.md (this entry).
-
+Verification: node --check on all three JS files; 62-assertion DOM-stub test of
+mainmenu.js (init render, all 8 submenus' card counts, data-action routing incl.
+mode-rankbattle/show-ranks, rank badge refresh from wh_ranks store, card editor
+save→localStorage→topbar, forge open/close, toast, every user-required mode has a
+menu entry) — 62/62 pass; all getElementById targets present in index.html; CSS
+braces balanced; ranks.json confirmed 53 tiers matching the user's ladder.
+Headless Chromium in this VM cannot render (--screenshot/--dump-dom produce
+nothing), so live visual proof (portrait + landscape screenshots, tap-through) is
+deferred to the parent agent's live browser session.
 
 Owner orders 2026-10-19 ~20:06–20:12 CDT: build DEATHFANG (all caps, one word) —
 proprietary character based on Iori Yagami; keeps Iori's moves/stance/animations;
@@ -1707,3 +1697,40 @@ Tekken on-hit stack: (1) jagged star-burst HIT SPARK sprite (canvas-generated, a
 **Result:** docs/research/teardown-gap-audit-2026-10-22.md — ~74 actionable gap items across 15 sources, each with what-it-adds / why-it-matters / OK checkbox. Biggest: T3 round-2 movesets (13 banks, 5,663 rows), DOA6 triangle/hold/stun/break-gauge suite (5), VF5 mechanics (10), SCVI mechanics (7), Urban Reign brawl/missions/weapons/destructibles (9), Def Jam grappling core + BLAZIN' (6), rank ladder X-1 (53 tiers, user-built same day), meter/power unification X-2. Blocked: T6/T7/SC6 acquisitions, DATA401 decrypt, DOA4 index buffers. Nothing wired — user approves first.
 
 **Deliverable:** this PR (branch audit/teardown-gap-20261022). No deletions.
+
+---
+
+## 2026-10-22 ~13:40 CDT — Worker 30: RANK SYSTEM (rank-focused PR #1 of meta-systems)
+
+**Task (user verbatim):** "Wire up: (8) Rank progression — dan/kyu style ranking, ladders, leaderboards." Refinements: rank names are DATA not hardcoded; 53-tier ladder user-built (Lost Soul → 9th–1st Kyu → 1st–3rd Dan → Brawler→Warlord → Kappa→Fudo Myoo → Four Heavenly Kings → Genbu→Suzaku → Fujin→Ryujin → Nine Souls Rin→Gyou → Whole → Purified → S: Assembled → Super S: Tong-Nou → Master God of the Universe → 52–53 RESERVED unnamed placeholders, Tekken God→True→Prime→Omega style); entry/placement tier; promotion/demotion series; separate offline/online tracks; offline rank battles; online ladders/leaderboards. "PUSH RANKS NOW" as its own PR.
+
+**Delivered:**
+- `game/data/ranks.json` (NEW) — the 53-tier ladder + all rules as pure data. Sections, colors, per-section point bars and series lengths, placement config, demotion protection, reserved-tier flags. User edits names/tiers here; engine never hardcodes a name. Stable `id` slugs per tier so mid-ladder inserts don't break saves.
+- `game/js/ranks.js` (NEW, 700+ lines) — RankEngine: points with upset scaling (Tekken curve: same-rank pays best, ±25%/tier capped, 0.5x floor), placement bouts (5, 2x swings), promotion series (best-of-3 low / 5 high / 7 S-tier+reserved), demotion series (best-of-3), demotion protection (3 matches post-promotion), bottom-floor can't demote, per-character ranks on separate offline/online tracks, localStorage `wh_ranks`, per-track leaderboards, top-held counter (drives future reserved-tier invention), RankBattleController (offline arcade-style ladder vs CPU, AI scales with tier), Rank Hub overlay UI (both tracks + leaderboards + full 53-tier ladder view), runtime-injected CSS.
+- Wiring (surgical, fresh-main bases): `game/js/lazy.js` (+ranks module), `game/js/main.js` (+getRankBattle, `mode-rankbattle`/`show-ranks` dispatch, confirm routing, back-menu/back-select cleanup), `game/index.html` (RANK BATTLE + RANK HALL buttons). modes.js untouched — RankBattleController is standalone.
+- `docs/research/rank-system.md` (NEW) — teardown mapping: T7 two-track/per-character ranks, sdtekken points formula, promotion/demotion chance, 1st-Dan hardcap, offline-via-arcade, god-tiers-added-over-time → our implementation.
+- `test/ranks.test.mjs` (NEW) — 38 assertions, all passing.
+
+**Method:** fresh main SHAs via Git Database API at push time; chunked disk writes (this VM's overlay EPERMs single write()s >~4KB — same quirk worker 19 hit); exact-anchor surgical edits; node --check on all touched JS; engine verified in node (38/38), in-browser playtest deferred to parent (no live browser in subagent). PR #640 superseded by #641 after WORKLOG.md moved under it (rebuilt on f5676be01e).
+
+**Proof:** `node test/ranks.test.mjs` → 38 passed, 0 failed. Covers: 53-tier shape, reserved placeholders, placement→promo-series→promotion→protection→demo-series→demotion full cycle, upset scaling, track separation, leaderboard, top-held, mid-table tier insertion with zero code changes.
+
+**Status:** rank PR pushed; merge via git_merge.py when green. Follow-up PR: treasure battle / survival / time attack / arcade variants, unlockables/gallery, jukebox, Tekken Force + Scenario Campaign (user-approved), create-an-arena (coordinate worker 18), intro/outro cinematics layered BESIDE existing intros/win taunts (off limits).
+
+## 2026-10-22 — 3D generation pipeline research SOTA (worker 44)
+
+Owner directive (verbatim): "Research the current state-of-the-art open-source image-to-3D and text-to-3D models (as of late 2026). Candidates from earlier research: TRELLIS.2 (MIT), TripoSR, Hunyuan3D 2.1 — but check what's newest and best NOW. Goal: our in-house generation pipeline should be the most stacked, most current, best possible — BETTER than Tripo3D's output quality."
+
+### Result
+- Recommended stack: Hi3DGen (geometry, MIT) → TRELLIS.2 shape-conditioned PBR texturing (MIT) → UniRig auto-rig (MIT, humanoids + quadrupeds/creatures; already wired into tools/auto_rig backends per worker 22) → retopo/decimation → existing Tripo-intake ingest (roster/<char>/attires/attire<N>/source/).
+- Remote-first (no weights on disk): fal.ai trellis-2, Replicate (TRELLIS.2 + UniRig), WaveSpeedAI Hunyuan3D v3 ($0.30/run).
+- Key findings: Hunyuan3D 3.x and Hi3D 3.0 are hosted-only, NOT open; newest OPEN weights are TRELLIS.2 (MIT, 4B, full PBR, ≥24GB VRAM) and Hunyuan3D 2.1 (Tencent license with EU/UK/SK commercial exclusion, 29GB full pipeline); no frontier open model is natively text-conditioned — use text→image chaining.
+- VRAM ladder: TripoSR ~6GB (drafts) / Hunyuan3D 2.1 10–29GB / Hi3DGen 16GB+ / TRELLIS.2 ≥24GB official.
+
+### Files
+- Added: docs/research/3d-generation-pipeline-2026-10-22.md.
+- Modified: WORKLOG.md (append).
+- No deletions.
+
+### Proof
+- Branch research/3d-generation-pipeline-2026-10-22b, PR against main with six-section instruction-gate body; deletion-guard / clobber-guard / instruction-gate green; merged clean via git_merge.py (merge-it-yourself law). (First attempt PR #654 hit a WORKLOG.md append/append race with another worker's entry — rebased onto current main as this clean branch.)
