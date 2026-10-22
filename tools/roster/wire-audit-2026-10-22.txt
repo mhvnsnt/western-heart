@@ -239,3 +239,4 @@ roster-full entries: 48
 on-disk GLBs: 133 | wired: 89 | unwired: 44 | wired-but-unreachable: 5 | dangling keys: 4
 
 NOTE 2026-10-22: PR-body section headings corrected to the instruction-gate's exact required text (post-push fix, no code change).
+# wire-audit runbook: python3 tools/roster/wire-audit.py --manifest <github-trees-recursive.json> --assets game/js/assets.js --attires game/js/attires.js --rosterfull game/js/roster-full.js
