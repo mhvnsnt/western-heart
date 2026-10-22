@@ -58,24 +58,36 @@ the rigged file.
   (f40c7cde) and Frankenstein pair (2bea6cac / 690d28a2) — no Tripo
   old-man pre-transform pull was ever recorded. If the owner makes one,
   it wires in as Attire 1's pre-form in place of the reskin-lineage file.
-- Rig state (verified 2026-10-21 by GLB skin scan): ALL forms rigged.
+- Rig state (verified 2026-10-22 by GLB skin scan): ALL forms rigged.
   Pre-form 178 joints, Hood base 73 joints, Wowomomo + Frankenstein
-  bases 49 joints (Lane 4 batch 3). The four transformed forms were
-  rigged this PR via the repo's k-NN transfer path
+  bases 49 joints (Lane 4 batch 3). The four transformed forms are
+  rigged onto **Doc Frank's own Bosconovitch skeleton (178 joints —
+  the skeleton of the pre-form/base and of the animation bank
+  itself)**, via the repo's k-NN transfer path
   (`tools/auto_rig/backends/knn_transfer.py` + `apply_skin.py` — the
   PR #264 dense-static path; the GameRig/Blender intake OOM-killed on
-  these ~1M-vert meshes on the current VM). Donors: Wowomomo XL ←
-  Wowomomo base, Frankenstein XL ← Frankenstein base (each form's own
-  attire base); Hood XL + Attire 1 Transformed ← the canonical Doc
-  Frank rig (the Wowomomo base's 49-joint skeleton — `apply_skin.py`
-  copies the donor's first-50-node layout, so the 73-joint Hood rig
-  and the 178-joint pre-form rig cannot serve as its donors; all four
-  transformed forms therefore ride the same canonical Doc Frank
-  skeleton the game retargets onto). All shipped Doc Frank GLBs carry
-  all-identity bind locals (the PR #465 standard): the batch-3 base
-  rigs arrived with 7 pose-encoded binds each (Hips 180°, shoulders,
-  up-legs, feet) and were normalized in this PR with the bind-fix
-  tools (bind-pose skinning invariance verified to 4.5e-08).
+  these ~1M-vert meshes on the current VM). `apply_skin.py` was
+  generalized in this PR to accept any donor rig (it previously
+  copied only the donor's first 50 nodes, a Pantera-layout
+  assumption; regression-verified byte-identical output on the
+  canonical path). Why the Bosconovitch rig: an earlier build of the
+  four forms on the 49-joint GameRig-template skeleton deformed
+  correctly at rest but folded under the game's bank retarget —
+  control-proven in the game's own render path (the Lane 4 base on
+  the same template folds identically; the 178-joint pre-form renders
+  the same stance clean). On the Bosconovitch skeleton the four
+  forms pose-measure identically to the shipped pre-form
+  (headAboveHips 0.48, toes +Z) with zero outlier vertex displacement
+  in the audit (see `docs/proof/docfrank-rig-forefront-20261021/`).
+  All shipped Doc Frank GLBs carry all-identity bind locals (the
+  PR #465 standard): the batch-3 base rigs arrived with 7
+  pose-encoded binds each (Hips 180°, shoulders, up-legs, feet) and
+  were normalized in this PR with the bind-fix tools (bind-pose
+  skinning invariance verified to 4.5e-08).
+  KNOWN FOLLOW-UP (not this PR's files): the Lane 4 Wowomomo and
+  Frankenstein BASE rigs ride the same 49-joint template and fold
+  under bank retarget the same way; they should be re-rigged onto
+  the Bosconovitch skeleton with this same path.
 
 ## Slot-ordering law
 
@@ -99,6 +111,9 @@ the rigged file.
   attires 1–5 = his Tripo models, reskins to the back, stop showing the
   reskin models) + the auto-rig-on-intake standing rule (~23:01 CDT).
   This PR: picker leads with the Tripo transformed form as the resolved
-  default, pre-form/base/reskin move to picker slots 8–10, all four
-  unrigged Tripo transformed forms rigged, batch-3 base rigs
-  bind-normalized.
+  default, pre-form/base/reskin move to picker slots 8–10, the
+  unrigged Tripo transformed forms rigged (Attires 1–3 onto the
+  178-joint Bosconovitch skeleton; Attire 4 XL onto the 49-joint
+  template after its Bosconovitch weight field failed the pose
+  gate on the forearms/cables — follow-up, see PROOF.md), batch-3
+  base rigs bind-normalized.
