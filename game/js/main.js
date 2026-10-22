@@ -673,11 +673,6 @@ document.addEventListener('click', (e) => {
   }
 });
 
-/* Menu routers above are bound (delegated data-action + data-mm). The
-   non-module fallback binder in index.html checks this flag and stays
-   dormant when the module chain loaded fine. (PR #676 rebase.) */
-window.__whMenuBound = true;
-
 /* Confirm routing: the mode controller owns the select flow
    (versus needs a P1→P2 two-step; other modes start on confirm).
    Lane 4 integration: versus-mode fights route through the stage-select
@@ -979,3 +974,9 @@ warmIdle();
 ((typeof window !== 'undefined' && window.requestIdleCallback) ? window.requestIdleCallback.bind(window)
   : (fn) => setTimeout(fn, 1500))(() => { getModes().catch(() => {}); });
 requestAnimationFrame(() => requestAnimationFrame(() => mark('menu-interactive')));
+
+/* Menu routers above are bound (delegated data-action + data-mm listeners
+   registered at module evaluation). The non-module fallback binder in
+   index.html checks this flag and stays dormant when the module chain
+   loaded fine. (PR #676 rebase, worker 55.) */
+window.__whMenuBound = true;
