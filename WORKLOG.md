@@ -363,3 +363,10 @@ validation; none skipped.
 
 `MODEL_URLS` repoints (7 keys): `scimitar`, `waterfall`, `armor-king`,
 `charger`, `charger-attire2`, `saku-ra` → their `model-rigged.glb`.
+
+**Correction (2026-10-21):** Waterfall was re-processed with rotate-y 0
+(+Z) instead of 180. Three independently-confirmed Tripo models (Charger,
+Charger-A2 via nose-sharpness; Saku Ra via head-texture face color) all face
++Z, establishing the Tripo export convention; the far-vert fallback count
+dropped 7x (940k → 137k) with the +Z facing, confirming better geometric
+alignment. The model-rigged.glb in this PR is the +Z version.
