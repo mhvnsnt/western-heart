@@ -55,3 +55,21 @@ sub-result.
 - No deletions. Additions only. Specific paths committed, never
   `git add -A`. No game files in the public repo beyond evidence
   docs/JSON/renders already precedented in this teardown tree.
+
+## Results (round 7 attempt 3, PR #489)
+
+- JOB 1 PARTIAL: container directory SOLVED; packages classified
+  (12 character / 16 stage-object / 29 texture in top-76); census
+  DONE (5,470 = 3,702 A / 1,432 B / 336 other; 1,565 NDPP sane);
+  NDPP interior characterized (descriptors + count + normal
+  stream; no float3 position arrays). Vertex/index layout NOT
+  cracked — blocker B1 (Ghidra loader RE, scoped in JOB doc).
+- JOB 2 PARTIAL: `models/ndpp_bounding_volumes_r7.glb` supersedes
+  the incomplete GLB (1,222 sections / 11,663 boxes, render
+  viewed, original-comparison documented; images 0 — volumes
+  have no textures). Character-mesh GLBs: 0 (blocked on B1).
+- JOB 3 DONE: 18/18 COM movesets decoded to per-fighter JSONs
+  (`teardown/tekken6/movesets/`), 7,341 verbatim name records.
+- JOB 4 DONE: WIRING-INVENTORY round-7 update + blockers B1–B6.
+  No game-side registration (engine steer: GLB + JSON are the
+  deliverables).
