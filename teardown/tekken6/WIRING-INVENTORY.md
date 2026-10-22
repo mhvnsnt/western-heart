@@ -107,3 +107,24 @@ Evidence: `tools/round7-evidence/` (JOB1/JOB2/JOB3 docs + JSON).
 - B4: COM binary command-record encoding + count-word referent (EBOOT COM-loader RE); MOTA chunk bodies.
 - B5: Stage slot9 float-stream layout (BE control words → geometry) → stage GLBs.
 - B6: BONE record stride + full skeleton decode (counts proven: 146 body / 22 head / 110 EBOOT template).
+
+## Round-8 update (2026-10-21, PR pending)
+
+Evidence: `tools/round8-evidence/` (JOB1 docs + viewed negative render).
+
+| Layer | State after round 8 |
+|---|---|
+| NDPP interior (B1) | **Unit model + vertex stride PROVEN**: unit = 20 B header + strip table (`0x01000000+offset`, `0x04040000+count`, offsets from unit-header start) + `(0x13, 0x0b)` marker + packed stream; `offset delta == count * 12` exact on all sampled records → stride 12 B. Descriptor re-read proven (`[y_center, z_center, f2, bbox...]`); round-7 "count word 3120" is a size-like field, not a count. **12-byte packing NOT proven**: candidate A (u16@6 bbox-affine) rendered as a point cloud and VIEWED — refuted (bbox-wall pile-up, `round8-evidence/renders/r8_cloud_idx00_body_candA.png`). No character GLB shipped; the remaining step is the loader's unpack in the model-class vtable methods (asm-scoped in the verdict doc) |
+| Ghidra (EBOOT) | Pass 1 done: NTPP ctor `FUN_0892fdf0` + sibling `FUN_0892fc40` decompiled; NTPP template dumped from ELF (fields `0x110, 0x40, 0x80, 0x100050, 0x84030100, 0x80020`); second NTPP site tied to a `GIDX` string table; BONE template xrefs are memcpy defaults in character/entity ctors, not parsers; no `NDPP` string in ELF (slot dispatch, re-confirmed by raw scan) |
+| BONE skeletons (B6) | **Array structure CRACKED**: parallel arrays, offset table `[64, 64+4N, 64+16N, 64+28N, ...]` verified exactly for N=110/146/22. Array roles + post-`64+28N` sections + skeleton assembly remain |
+| NTPP textures (B2) | Seeded with the ELF template dump + GIDX tie-in; interior not decoded; nothing baked |
+| Stage slot-9 (B5) | Seeded: BE offset table head mapped (entries stepping 0x20; `0x15a60` = payload-64 on idx24); layout not decoded; no stage GLB |
+| GLBs (G3) / movesets (G4) / wiring (G6) | G3: no new GLB (0 proven character meshes — unchanged, deliberately not faked). G4: unchanged from round 7 (18/18 JSONs). G6: no game-side registration (no proven mesh to wire; GLB + JSON remain the deliverables per engine steer) |
+
+### Left before T6 PSP true 100% (round-8 blockers)
+- B1': Read the 12-byte vertex unpack from the model-class vtable methods (`FUN_0886fe88`'s class, vtable `0x08b918b8`) / shared chunk walker — one asm function between the proven unit model and the first character GLB.
+- B2: NTPP interior decode from the dumped template fields (`0x84030100` pixel-format candidate) + GIDX/CLUT.
+- B3: Per-character assignment of the 3,702 embedded A-packages (unchanged).
+- B4: COM binary command-record encoding + count-word referent (unchanged; Job 5 not attempted).
+- B5: Stage slot-9 BE layout decode from the mapped offset-table head.
+- B6': BONE array roles (consumers' asm) + skeleton assembly for the 12 character packages.

@@ -37,6 +37,21 @@ stacked on `teardown/tekken6-round7-ndpp-movesets` @ 9510e06 (PR #489).
 
 ## Results
 
-(landed incrementally below as each sub-result commits)
-
-- BOOTSTRAP: branch created, this file committed + pushed.
+- BOOTSTRAP: branch created, this file committed + pushed
+  (972076d, API-verified).
+- JOB 1 PARTIAL: NDPP unit model + stride 12 PROVEN
+  (strip-table deltas == count*12 exact); descriptor re-read
+  proven; candidate-A packing REFUTED by viewed point-cloud
+  render (bbox-wall pile-up). First character GLB NOT shipped
+  — remaining step is the loader's 12-byte unpack in the
+  model-class vtable methods, asm-scoped in
+  `round8-evidence/JOB1-VERDICT-AND-BLOCKER.md`. Ghidra pass 1
+  done (NTPP ctor/template, BONE xrefs = memcpy defaults).
+- JOB 2 SEEDED: NTPP template dumped from ELF + GIDX tie-in;
+  interior not decoded, nothing baked.
+- JOB 3 PARTIAL: BONE parallel-array structure CRACKED
+  (offsets 64/64+4N/64+16N/64+28N verified N=110/146/22);
+  array roles + skeleton assembly remain.
+- JOB 4 SEEDED: stage slot-9 BE offset-table head mapped
+  (idx24); layout not decoded, no stage GLB.
+- JOB 5: not attempted (Jobs 1-4 did not all land).
