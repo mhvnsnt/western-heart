@@ -16,6 +16,10 @@
    ============================================================ */
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+// Unified lighting rig (worker 27): stage light rigs, character key/fill/rim
+// separation, soul glow, grade hooks. See game/js/lighting-rig.js for the
+// T7/SFV/DOA6/T8 teardown audit.
+import { buildStageLightRig } from './lighting-rig.js';
 
 /* ---------------- minimal OBJ loader ----------------
    Tekken 3 panoramas use v / vt / f (triangles, 1-indexed, faces as
@@ -183,6 +187,13 @@ export const STAGES = [
       sun: ['#ff9a5c', 2.6, [-11, 6.5, 5]],
       rim: ['#5a6ab0', 0.65, [8, 6, -7]],
       fill: ['#ffe0c0', 1.0, [0, 4, 10]],
+      // Lighting rig (worker 27): Earth land — lantern gold motes (bible:
+      // "dust motes in lantern beams"), warm character key, lifted grade.
+      rig: {
+        charKey: ['#ffe9d2', 20, 7], rimBoost: 1.15,
+        motes: { color: '#FFC85C', count: 200, size: 0.06, opacity: 0.55 },
+      },
+      grade: { exposure: 1.5, bloom: 0.7 },
     },
     floor: { kind: 'stone', tint: '#a89a90', repeat: 30, platformTint: '#b5a498', platformRepeat: 7 },
     swatch: ['#120e33', '#ff7a3c'],
@@ -202,6 +213,13 @@ export const STAGES = [
       sun: ['#7ae08a', 1.4, [-6, 8, 4]],
       rim: ['#3ae060', 1.1, [6, 5, -6]],
       fill: ['#b8e8c0', 0.5, [0, 4, 10]],
+      // Lighting rig (worker 27): the Void — sparse soul-lights in darkness
+      // (bible: "like plankton in a night ocean"), darker grade, high bloom.
+      rig: {
+        charKey: ['#c8ffd8', 18, 7], rimBoost: 1.2,
+        motes: { color: '#9fd8ff', count: 90, size: 0.05, opacity: 0.5 },
+      },
+      grade: { exposure: 1.35, bloom: 0.85 },
     },
     floor: { kind: 'dark', tint: '#1a2a1e', repeat: 24, platformTint: '#223a28', platformRepeat: 6 },
     swatch: ['#031008', '#3ae060'],
@@ -221,6 +239,13 @@ export const STAGES = [
       sun: ['#ffca7a', 2.4, [-10, 7, 6]],
       rim: ['#4a7a5a', 0.6, [8, 6, -7]],
       fill: ['#ffe8c0', 0.9, [0, 4, 10]],
+      // Lighting rig (worker 27): Wood land — pollen-light motes (bible:
+      // "humid luminosity, pollen-light motes"), dawn-warm character key.
+      rig: {
+        charKey: ['#ffe0b0', 20, 7], rimBoost: 1.1,
+        motes: { color: '#FFD76A', count: 260, size: 0.05, opacity: 0.5 },
+      },
+      grade: { exposure: 1.5, bloom: 0.7 },
     },
     floor: { kind: 'sand', tint: '#c09a68', repeat: 26, platformTint: '#d0aa74', platformRepeat: 6 },
     swatch: ['#0a1a2a', '#ffca7a'],
@@ -241,6 +266,13 @@ export const STAGES = [
       sun: ['#ff6a2a', 2.8, [-11, 5, 5]],
       rim: ['#ff3a1a', 0.7, [8, 6, -7]],
       fill: ['#ffc0a0', 0.9, [0, 4, 10]],
+      // Lighting rig (worker 27): Fire land — floating cinders (bible:
+      // "heat shimmer, floating cinders"), ember character key, hot grade.
+      rig: {
+        charKey: ['#ffc0a0', 22, 7], rimBoost: 1.1,
+        motes: { color: '#E85D1F', count: 240, size: 0.06, opacity: 0.55 },
+      },
+      grade: { exposure: 1.55, bloom: 0.75 },
     },
     floor: { kind: 'scorched', tint: '#8a5a48', repeat: 24, platformTint: '#9a6a50', platformRepeat: 6 },
     swatch: ['#1a0608', '#ff6a2a'],
@@ -261,6 +293,13 @@ export const STAGES = [
       sun: ['#c0a080', 1.6, [-8, 9, 4]],
       rim: ['#6a5a8a', 0.6, [8, 6, -7]],
       fill: ['#d0c0b0', 0.7, [0, 4, 10]],
+      // Lighting rig (worker 27): the Source — stillness; Moonface Pale
+      // motes (Malakor thread), restrained grade ("absolute quiet").
+      rig: {
+        charKey: ['#f4e8d8', 18, 7], rimBoost: 1.0,
+        motes: { color: '#C9B8E8', count: 120, size: 0.045, opacity: 0.45 },
+      },
+      grade: { exposure: 1.4, bloom: 0.7 },
     },
     floor: { kind: 'stone', tint: '#8a8492', repeat: 26, platformTint: '#9a94a2', platformRepeat: 6, octagon: true },
     swatch: ['#0a0810', '#c0a080'],
@@ -281,6 +320,13 @@ export const STAGES = [
       sun: ['#c0d0ff', 2.0, [-9, 8, 5]],
       rim: ['#ff6ad0', 0.7, [8, 6, -7]],
       fill: ['#e0d0ff', 0.9, [0, 4, 10]],
+      // Lighting rig (worker 27): Metal land — refracted light motes
+      // (bible: "refracted light beams, floating dust as prisms"), cool key.
+      rig: {
+        charKey: ['#e8f0ff', 20, 7], rimBoost: 1.25,
+        motes: { color: '#EAF6FF', count: 200, size: 0.05, opacity: 0.5 },
+      },
+      grade: { exposure: 1.45, bloom: 0.85 },
     },
     floor: { kind: 'metal', tint: '#a0a8b8', repeat: 20, platformTint: '#b0b8c8', platformRepeat: 5 },
     swatch: ['#0a0a18', '#ff6ad0'],
@@ -301,6 +347,13 @@ export const STAGES = [
       sun: ['#9ac0ff', 2.0, [-9, 7, 6]],
       rim: ['#4ae0ff', 0.8, [8, 6, -7]],
       fill: ['#c0e0ff', 0.9, [0, 4, 10]],
+      // Lighting rig (worker 27): Water land — bioluminescent drift
+      // (bible: "bioluminescent drift... underwater while breathing air").
+      rig: {
+        charKey: ['#c8f0ff', 20, 7], rimBoost: 1.2,
+        motes: { color: '#4FD8E8', count: 220, size: 0.055, opacity: 0.5 },
+      },
+      grade: { exposure: 1.45, bloom: 0.85 },
     },
     floor: { kind: 'dream', tint: '#8a90c8', repeat: 18, platformTint: '#9aa0d8', platformRepeat: 5 },
     swatch: ['#0a1030', '#4ae0ff'],
@@ -321,6 +374,13 @@ export const STAGES = [
       sun: ['#ffaa6a', 2.0, [-10, 6, 6]],
       rim: ['#b06ae0', 0.7, [8, 6, -7]],
       fill: ['#ffd0a0', 0.8, [0, 4, 10]],
+      // Lighting rig (worker 27): liminal bazaar — Malakor-thread primary
+      // zone. Nostalgia Haze motes, Trader-gold character key.
+      rig: {
+        charKey: ['#ffd76a', 20, 7], rimBoost: 1.2,
+        motes: { color: '#8A6FB8', count: 200, size: 0.055, opacity: 0.5 },
+      },
+      grade: { exposure: 1.5, bloom: 0.8 },
     },
     floor: { kind: 'stone', tint: '#7a6a80', repeat: 26, platformTint: '#8a7a90', platformRepeat: 6 },
     swatch: ['#0c0a20', '#b06ae0'],
@@ -679,20 +739,11 @@ function buildBase(g, def, api) {
     plat.position.y = -0.25; plat.rotation.y = Math.PI / 8;
     plat.receiveShadow = true; g.add(plat);
   }
-  // lights
-  g.add(new THREE.HemisphereLight(_hex(L.hemi[0]), _hex(L.hemi[1]), L.hemi[2]));
-  const sun = new THREE.DirectionalLight(_hex(L.sun[0]), L.sun[1]);
-  sun.position.set(...L.sun[2]); sun.castShadow = true;
-  const sm = api.isMobile ? 1024 : 2048;
-  sun.shadow.mapSize.set(sm, sm);
-  sun.shadow.camera.near = 1; sun.shadow.camera.far = 50;
-  sun.shadow.camera.left = -12; sun.shadow.camera.right = 12;
-  sun.shadow.camera.top = 12; sun.shadow.camera.bottom = -12;
-  sun.shadow.bias = -0.0006; g.add(sun);
-  const rim = new THREE.DirectionalLight(_hex(L.rim[0]), L.rim[1]);
-  rim.position.set(...L.rim[2]); g.add(rim);
-  const fill = new THREE.DirectionalLight(_hex(L.fill[0]), L.fill[1]);
-  fill.position.set(...L.fill[2]); g.add(fill);
+  // lights — unified rig (T7 light/lightstatic split: hemi+sky+fog is the
+  // baked-ambient half; key/rim/fill + accent points are the dynamic half).
+  // Also adds atmosphere motes (bible: "darkness is a material").
+  const { updaters: rigUpdaters } = buildStageLightRig(g, def, api);
+  updaters.push(...rigUpdaters);
   return { updaters, skyTex, fog: new THREE.Fog(_hex(L.fog[0]), L.fog[1], L.fog[2]) };
 }
 
