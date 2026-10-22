@@ -114,6 +114,18 @@ export class Game {
     this.ai = new AIController(this.p2, enemyChar.ai);
     this.ai1 = this.demo ? new AIController(this.p1, playerChar.ai) : null;
 
+    // TTT2 TAG BATTLE (worker 24): benched partners + tag mechanics.
+    // game.p1/game.p2 always point at the ACTIVE fighters; TagMatch swaps
+    // which Fighter objects those references (and the scene) point at.
+    this.tagMatch = null;
+    if (opts.tagTeamEntries && opts.tagTeamEntries.p1.length === 2 && opts.tagTeamEntries.p2.length === 2) {
+      try {
+        const { TagMatch } = await import('./team-battle.js');
+        this.tagMatch = new TagMatch(this, opts.tagTeamEntries);
+        await this.tagMatch.build();
+      } catch (e) { console.warn('[WH] tag battle setup failed:', e?.message || e); this.tagMatch = null; }
+    }
+
     this.wins = { p1: 0, p2: 0 };
     this.round = 1;
     this.ui.setNames(playerChar.name, enemyChar.name);
@@ -191,6 +203,8 @@ export class Game {
     this.ui.banner(`ROUND ${this.round}`);
     this.ui.updateHP(this.p1, this.p2);
     this.ui.updateMeter(this.p1, this.p2);
+    // TTT2: tag-match round reset (re-park benched partners, clear rage).
+    if (this.tagMatch) this.tagMatch.onRoundStart();
     setTimeout(() => {
       if (this.roundState !== 'intro') return;
       this.ui.banner('FIGHT!');
@@ -295,6 +309,8 @@ export class Game {
           else if (act === 'transform-down') {
             if (this.p1.tryTransform('down')) { audio.soulSurge(this.p1.char.id); rec('transform-down'); }
           }
+          // TTT2: TAG button / T key — swap the active fighter with the benched partner.
+          else if (act === 'tag') { if (this.tagMatch) this.tagMatch.requestTag('p1', 'manual'); }
         }
       }
 
@@ -308,6 +324,8 @@ export class Game {
       // --- Advance fighters ---
       this.p1.update(dt, this.p2);
       this.p2.update(dt, this.p1);
+      // TTT2: red-health regen, rage watch, CPU auto-tag, tag-assault timer.
+      if (this.tagMatch) this.tagMatch.onUpdate(dt);
 
       // --- Stream 6: throw-lock resolution (break window expired) ---
       for (const atk of [this.p1, this.p2]) {
@@ -488,7 +506,14 @@ export class Game {
 
   /* ---------------- Round flow ---------------- */
   _timeOut() {
-    if (this.p1.hp > this.p2.hp) this.p2.hp = 0;
+    // TTT2 tag: timeout compares TOTAL team HP (active + benched), not
+    // just the fighters in the ring.
+    if (this.tagMatch) {
+      const t1 = this.tagMatch.teamHp('p1'), t2 = this.tagMatch.teamHp('p2');
+      if (t1 > t2) this.p2.hp = 0; else if (t2 > t1) this.p1.hp = 0;
+      else { this.p1.hp = this.p2.hp = 0; }
+    }
+    else if (this.p1.hp > this.p2.hp) this.p2.hp = 0;
     else if (this.p2.hp > this.p1.hp) this.p1.hp = 0;
     else { this.p1.hp = this.p2.hp = 0; }
     this._endRound();

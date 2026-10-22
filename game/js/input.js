@@ -153,6 +153,7 @@ export class InputManager {
         case 'Digit4': this._tekken('4'); break;
         case 'Space': this.held.block = true; e.preventDefault(); break;
         case 'ShiftLeft': case 'ShiftRight': this._push('dodge'); break;
+        case 'KeyT': this._push('tag'); break; // TTT2: TAG in/out (worker 24)
       }
     });
     window.addEventListener('keyup', (e) => {
