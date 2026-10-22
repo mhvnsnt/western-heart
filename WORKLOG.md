@@ -1356,6 +1356,7 @@ Also found: the feet-geometry cue misreads chunky-heel boots as -Z (false -Z on 
 - `game/js/game.js` — `_startRound` facing reset to `±π/2` convention.
 - `game/assets/models/model-facing.json` — `nightwolf` back to `+Z` + corrections note.
 - `WORKLOG.md` (this entry).
+
 ## 2026-10-22 — Model wire-up audit (worker 9: wire every unwired on-disk model)
 
 Owner (verbatim): "Everyone else the registry listed as 'missing Tripo' ALREADY HAS models — they're in the repo but not wired up. Audit what's on disk in roster/*/attires/, wire up every unwired model, and fix the registry to reflect reality."
