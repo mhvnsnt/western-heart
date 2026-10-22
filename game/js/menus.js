@@ -14,6 +14,7 @@
    ============================================================ */
 import { audio } from './audio.js';
 import { lazy } from './lazy.js';
+import { initMainMenu } from './mainmenu.js';
 
 /* ---------------- Settings ---------------- */
 const SETTINGS_KEY = 'wh_settings_v1';
@@ -406,24 +407,32 @@ function buildMenuButtons() {
   mk('RECORDS', null, 'mode-records', true,
     document.querySelector('[data-action="mode-options"]') || howto);
 
-  document.querySelectorAll('[data-action="mode-options"]').forEach((b) =>
-    b.addEventListener('click', () => { audio.unlock(); openOptions(); }));
-  document.querySelectorAll('[data-action="mode-records"]').forEach((b) =>
-    b.addEventListener('click', () => { audio.unlock(); openRecords(); }));
-  // New-mode entries dispatch to their controllers, built on first tap
+  // Special actions dispatch to their controllers, built on first tap
   // (LOADSPEED: heartmind.js / episodes.js stream via lazy.js, not boot).
-  document.querySelectorAll('[data-action="mode-heartmind"]').forEach((b) =>
-    b.addEventListener('click', async () => {
-      audio.unlock(); audio.uiClick && audio.uiClick();
-      await ensureHeartmind();
-      window.__heartmind && window.__heartmind.beginSelect();
-    }));
-  document.querySelectorAll('[data-action="mode-episodes"]').forEach((b) =>
-    b.addEventListener('click', async () => {
-      audio.unlock(); audio.uiClick && audio.uiClick();
-      await ensureEpisodes();
-      window.__episodes && window.__episodes.beginSelect();
-    }));
+  // Delegated (T8 menu, worker 37): also covers submenu cards created
+  // dynamically by mainmenu.js.
+  if (!document._whSpecialDelegated) {
+    document._whSpecialDelegated = true;
+    document.addEventListener('click', async (e) => {
+      const t = e.target;
+      const b = (t instanceof Element) ? t.closest('[data-action="mode-options"],[data-action="mode-records"],[data-action="mode-heartmind"],[data-action="mode-episodes"]') : null;
+      if (!b) return;
+      const a = b.dataset.action;
+      audio.unlock();
+      if (a === 'mode-options') { audio.uiClick && audio.uiClick(); openOptions(); }
+      else if (a === 'mode-records') { audio.uiClick && audio.uiClick(); openRecords(); }
+      else if (a === 'mode-heartmind') {
+        audio.uiClick && audio.uiClick();
+        await ensureHeartmind();
+        window.__heartmind && window.__heartmind.beginSelect();
+      }
+      else if (a === 'mode-episodes') {
+        audio.uiClick && audio.uiClick();
+        await ensureEpisodes();
+        window.__episodes && window.__episodes.beginSelect();
+      }
+    });
+  }
 }
 
 /* ---------------- Mode tag ---------------- */
@@ -515,6 +524,7 @@ export function initMenus(deps = {}) {
   booted = true;
   buildOverlays();
   buildMenuButtons();
+  initMainMenu(); // T8-style main menu controller (additive; no-ops if markup absent)
   hookAudioUnlock();
   // Stream-4 mode controllers (standalone; they reuse Game patterns).
   // LOADSPEED: built on first tap via ensureHeartmind/ensureEpisodes —
