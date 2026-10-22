@@ -1,3 +1,0 @@
-# Voiceclip
-
-More info coming soon...

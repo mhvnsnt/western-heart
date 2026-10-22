@@ -1,0 +1,54 @@
+{
+  "checkpoint": "godot-slice-20261021",
+  "task": "GODOT VERTICAL SLICE — reconcile + first build step (engine locked: Godot 4.7.2, Mobile/Vulkan renderer, Compatibility fallback; repo mhvnsnt/western-heart)",
+  "updated": "2026-10-22",
+  "phase1_reconcile": {
+    "reported_decision_doc": "docs/ENGINE-DECISION-2026-10-22.md — DOES NOT EXIST (GitHub code search total_count=0; tree search found only docs/ENGINE-SURVEY-2026.md). The sibling session's actual decision doc is docs/godot/ENGINE-DECISION.md: verdict Godot 4.x, pipeline validated headless up to 4.5.1 — agrees with the owner's 4.7.2 lock. Also on main: docs/ENGINE-SURVEY-2026.md (2026-10-16: 'Three.js on web now, Godot 4 target'; its claim that local tools already carry 4.7.2 was false on this box) and a pre-existing godot/prototype/ directory (left untouched).",
+    "lab_game": {
+      "exists": true,
+      "engine": "Godot 4.3, renderer GL Compatibility (desktop+mobile), project name 'Western Heart Lab', 1280x720, stretch canvas_items, touch emulation from mouse, physics 60 tps",
+      "structure": "Exactly one scene: scenes/main.tscn (131,814 B). Scripts: scripts/main.gd (9.4 KB), fighter.gd, ai.gd, attire.gd, height_scale.gd, hud.gd, move_table.gd; anim/ GDScript T3 loaders (wh_anim.gd, wh_anim_bank.gd, wh_t3_loader.gd); skeleton_importer.gd, stage_view.gd, anim_player.gd (20.7 KB).",
+      "what_plays": "A full 1v1 Tekken-3 slice: P1 = PANTERA (Leo-Man model, King T3 move table) vs CPU KING on King's real T3 stage; rounds (ROUND_FRAMES=3600 = 60 s, WIN_ROUNDS=2), HP 170 (T3 life bar), HUD with names/heights, FighterAI for P2 (and P1 under --autoplay, which injects the same InputMap actions keyboard/touch use), screenshot capture mode (--shots=<dir>, --quit-after-match), Bannon mask attire on P2 from round 1, pushbox 0.85 m, hit spark + camera shake. Fighter logic is frame-stepped (walk speeds in m/frame, AnimationPlayer driven manually) — a good precedent for the deterministic-core rule. The _t3real GLBs carry embedded animations; Fighter.setup takes the AnimationPlayer from the imported model.",
+      "assets": "pantera_leoman.glb + pantera_leoman_t3real.glb (14.4 MB each), t3_<char>.glb + t3_<char>_t3real.glb pairs for ~14 Tekken 3 characters, stage photos for 6 stages, docs/ (T3-ANIM-FORMAT.md, LAB-PLAN.md, godot-pipeline.md).",
+      "clobbered": false
+    }
+  },
+  "phase2_slice": {
+    "branch": "feat/godot-slice-20261021",
+    "project_path": "godot/ (repo root of this branch; alongside lab/game and godot/prototype, both untouched)",
+    "engine": "Godot 4.7.2.stable.official.ed1daf0bf — downloaded and verified this session (the box previously carried only 4.4.1). project.godot pins features '4.7' + renderer/rendering_method=mobile (+ .mobile), 1280x720, stretch canvas_items/expand, physics 60 tps, emulate_touch_from_mouse, ETC2/ASTC import on.",
+    "models_imported": [
+      "assets/models/pantera.glb — HOUSE-49 template donor, 49 joints, textured (T7-King texture set extracted by the importer and committed alongside), 4 embedded animations: Idle, Run, TPose, Walk. Track prefix 'Character/Skeleton3D'.",
+      "assets/models/star-house49.glb — re-templated MINI (PR #481), 53 joints (HOUSE-49 + LeftBreast/RightBreast/Belly/Jaw), 0 embedded animations, 0 images (textureless as shipped on main; her textures live in other attire files — restoring them is the MINI wire-up lane's work, not this slice's)."
+    ],
+    "animation": {
+      "which_clips": "REAL decoded Tekken 3 bank clips (wh-anim/1 JSON from game/assets/anim/t3/king_on_pantera_leoman/ on main): t3_light.json (slot 0xd06, move row 35) plays on PANTERA as his attack; t3_stance.json (slot 0x0, 75f) and t3_walk_fwd.json (slot 0x15, 10f) play on STAR as Idle/Walk (she has no embedded clips). Pantera's Idle/Walk come from the GLB's own embedded animations. t3_light is a crouch-leap strike (root_t Y: 0.952 -> dip 0.803 -> peak 1.334 @ f8-9 -> land 0.956), not a standing jab.",
+      "retarget_method": "scripts/bank_clip_loader.gd — world-delta FK retarget, NOT a BoneMap and NOT verbatim Animation sharing (both rejected with evidence: verbatim sharing left Star lying flat on the floor — stored locals are absolute poses in the source rig's bone frames). Formula per bone: posed_local = rest_local * (rest_world^-1 * (D * rest_world)), D = source world rotation delta. Canonical->target map: Chest->Spine2 when the target has Spine2 and no Chest; Root skipped (its motion is root_t, applied as Hips position delta on attack clips only); Spine1 driven by slerp(D Spine, D Chest, 0.5). Space conversion is per-rig and auto-detected from the rest pose (detect_conv): Pantera Z-up skeleton space -> rotX+90 conjugation; Star Y-up facing -Z -> rotY180 conjugation (ZMIRROR was probe-rejected — guard went overhead at hand-height 1.92 vs canonical 0.88; rotY180 lands hands at 0.97-1.31 guard height). Quaternion sign continuity enforced per track (a flipped key tumbled the body mid-clip before the fix). Looping stance/walk clips skip hip translation (web-runtime parity; stance root track contains a get-up crouch, root_t Y 0.479->0.982)."
+    },
+    "sim_core": "sim/fight_sim.gd — class FightSim (RefCounted): no Node, no engine physics, no wall clock, no RNG. Fixed 60 Hz ticks, integer input bitmask (IN_LEFT=1, IN_RIGHT=2, IN_ATTACK=4), press-edge attack detection, WALK_SPEED 1.7 m/s, WALK_BACK 1.3, ATTACK_TICKS 52 (= t3_light 26 frames @30fps), ATTACK_LUNGE 0.55 m/s, PUSH_DISTANCE 0.85, arena clamp +/-4.4, facing auto-update, pushbox separation, state_name() for the view. scripts/fighter_view.gd + scripts/main.gd are presentation only (instantiate GLB, drive AnimationPlayer, mirror sim state; facing via Y-rotation, never negative scale).",
+    "touch_controls": "On-screen ◀ ▶ ATK buttons (118x80) in scripts/main.gd set/clear the same sim input bits on button_down/button_up; keyboard A/D/arrows + J feed the identical bits. The deterministic proof run drives the fighters through those same bits (scripted timeline), so the viewed frames exercise the touch path's exact route into the sim.",
+    "proof": {
+      "method": "xvfb-run godot 4.7.2 --path godot --resolution 1280x720 -- --proof --proof-out=<dir>: scripted sim inputs (idle -> P1 walks right frames 40-100 -> idle -> attack at frame 120), captures at frame 84 (walk) and frame 138 (attack), PROOF_SHOT err=0, exits 0.",
+      "frames": [
+        "godot/proof/slice_walk.png — viewed by the building agent: Pantera textured, upright, in profile facing Star mid-walk; Star upright in the retargeted bank stance, guard hands at waist height, body intact.",
+        "godot/proof/slice_attack.png — viewed by the building agent: Pantera airborne at the bank leap-strike (arm extended, legs tucked, textured, body coherent); Star mid-stride in the retargeted bank walk, upright, walking toward him."
+      ],
+      "numeric_probes": "FK probes before rendering: Pantera/light t=0 stance feet 0.18/0.21 (rest 0.13), t=0.3 apex hips 1.41 head 1.78 feet ~0.95, t=0.6 landed feet 0.21/0.24. Star/stance (rotY180) across the loop: head 1.52-1.56 always above hips 0.98, hands 0.97-1.31, feet 0.14-0.20.",
+      "renderer_disclosure": "This VM has no Vulkan device (VK_KHR_surface not found under Xvfb), so headless captures ran on Godot's automatic OpenGL/Compatibility fallback. The project default remains Mobile/Vulkan; nothing was changed to make the proof pass. On-device Vulkan validation is still owed."
+    },
+    "apk": {
+      "status": "EXPORTED AND SIGNED — godot/exports/western-heart-slice-debug.apk, 36,145,479 bytes, sha256 b31cd59d3bb588d1... (full hash in the run log), apksigner verify OK independently, 232 entries incl. AndroidManifest.xml, classes.dex, lib/arm64-v8a/libgodot_android.so, 134 asset entries.",
+      "how": "Godot 4.7.2 export templates installed from the official tpz (1,281,349,702 B, byte-exact). Android SDK assembled WITHOUT sdkmanager (its Java proxy tunneling crashes against this egress proxy: NoSuchElementException at HttpURLConnection.doTunneling0, two attempts): component zips pulled directly from dl.google.com per repository2-1.xml — platform-tools r37.0.1, platform-35 r02, build-tools r35 (=35.0.0) — all zip-verified. Java: Temurin JRE 21 at ~/workspace/tools/java (keytool present; Godot generated the debug keystore and signed). Preset: godot/export_presets.cfg (arm64-v8a, use_gradle_build=false, package org.westernheart.slice). One benign warning: 'Could not find version of build tools that matches Target SDK, using 35.0.0'."
+    },
+    "gaps_to_playable": [
+      "On-device validation: install the APK on a real mid-range Android phone, confirm Vulkan/Mobile renderer path, frame rate, and touch buttons under real fingers (all proof so far is headless on the Compatibility fallback).",
+      "Combat depth: the sim has movement + one attack; no hit/hurtboxes, damage, blocking, throws, rounds, timer, KO, or AI opponent yet (lab/game's Godot 4.3 slice already has rounds/HP/AI patterns to port).",
+      "Clip coverage: only 3 bank clips wired (light/stance/walk_fwd for one bank). Roster-wide porting = run BankClipLoader's solver per fighter bank; foreign-skeleton models (109-328 joints: Dio, Doc Frank, Phantom...) are NOT HOUSE-49 and need their own canonical->target maps + rest-space detection validation per rig.",
+      "Star's textures: star-house49.glb is textureless (0 images) as shipped on main; her textured attire must be found/embedded by the MINI wire-up lane before she can be shown textured.",
+      "Facing/lean polish: Star's retargeted stance reads side-on; per-fighter view yaw and stance phase offsets need an art pass against the original-comparison gate.",
+      "Game shell: no menus, character select, stage select, Creation Suite, audio, or settings — the web game's T8-pattern shell specs are the porting source.",
+      "Bank clip semantics: t3_stance's root track contains a get-up crouch; if stance root motion is ever enabled, trim the rise-in frames first.",
+      "Determinism hardening: the sim is deterministic by construction (fixed tick, no RNG/physics), but rollback/netplay and replay verification are unbuilt; keep the sim/presentation split inviolate as features land."
+    ]
+  }
+}
