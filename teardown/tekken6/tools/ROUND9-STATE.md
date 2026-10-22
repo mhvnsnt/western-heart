@@ -82,3 +82,19 @@ suspects for a packed→float expansion.
   `round9-evidence/JOB1-UNPACK-CRACKED.md`. Ghidra import was
   OOM-killed on this VM; vtable/ctor read via capstone
   disassembler instead (documented in the evidence doc).
+- JOB 1 BATCH: all 24 NDPP sections of the 12 character
+  packages decoded to GLBs in `models/` (idx00/01/04/05/08/
+  09/12/13/16/17/20/21 x slot0+slot10). Second character's
+  face render VIEWED (idx01 slot0, coherent). idx00 slot10 =
+  T-pose full body (scatter VIEWED; its Blender frame came
+  back blank - triangles verified healthy, median area 5606,
+  framing issue only). Stage packages (idx24+) fail the
+  character-package parse as expected (no BONE; B5 scope).
+- JOB 2 (B6') DONE: BONE roles PROVEN from data (parents /
+  local translations / Euler rotations Rz*Ry*Rx / scales /
+  32B name table). Skeletons assembled + shipped:
+  `models/idx00_skeleton_r9.glb` (110 bones) +
+  `models/idx04_skeleton_r9.glb` (146 bones); bind-check vs
+  meshes PASSED (overlay render VIEWED). Remaining sub-item:
+  per-unit bone palette for skinned GLBs (unit header words
+  3-4, unproven - stated in JOB2-BONE-ROLES.md).
