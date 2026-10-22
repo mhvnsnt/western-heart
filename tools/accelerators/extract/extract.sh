@@ -92,12 +92,14 @@ cmd_install() { # install [--umodel] [--cue4parse]
 }
 
 dotnet_sdk() {
-  # Fetch the .NET 8 SDK on demand (needed to build the CUE4Parse tool).
+  # Fetch the .NET SDK on demand (needed to build the CUE4Parse tool).
+  # Channel 10.0: current CUE4Parse releases target net10.0 only.
   local sdk_dir="$BIN_DIR/dotnet-sdk"
   if [ -x "$sdk_dir/dotnet" ]; then echo "$sdk_dir/dotnet"; return 0; fi
-  echo "Resolving latest .NET 8 SDK..." >&2
+  local channel="10.0"
+  echo "Resolving latest .NET $channel SDK..." >&2
   local ver
-  ver=$(curl -fsL --max-time 60 https://builds.dotnet.microsoft.com/dotnet/release-metadata/8.0/releases.json \
+  ver=$(curl -fsL --max-time 60 "https://builds.dotnet.microsoft.com/dotnet/release-metadata/${channel}/releases.json" \
     | python3 -c "import json,sys; d=json.load(sys.stdin); print(d['latest-sdk'])")
   echo "Fetching dotnet SDK $ver (~220MB, one-time; streamed, no temp file)..." >&2
   mkdir -p "$sdk_dir"
