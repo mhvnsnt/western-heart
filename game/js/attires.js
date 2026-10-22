@@ -25,6 +25,18 @@ export const ATTIRE_VARIANTS = {
     { model: 'thor', label: 'ATTIRE 1' },
     { model: 'thor-attire2', label: 'ATTIRE 2 · ONI MASK' },
   ],
+  /* TORCH's ladder — keyed by fighter id ('torch'; attiresFor() falls back
+     to the id when the model key misses), same pattern as Doc Frank's and
+     Kevin's ladders. LADDER ORDER (owner rule 2026-10-21): her Tripo
+     original at the FOREFRONT; the Anna Williams base model ladders BACK
+     behind it. Default = first entry = Attire 1 'Valkyrie of Flame'
+     (also the main roster entry's model). Provenance per slot:
+     roster/torch/ATTIRE-SLOTS.md. */
+  'torch': [
+    { model: 'torch-tripo-a1', label: 'ATTIRE 1 · VALKYRIE OF FLAME (TRIPO)' },
+    { model: 'torch-tripo-a2', label: 'ATTIRE 2 · RED DEMON (TRIPO)' },
+    { model: 'torch', label: 'ANNA BASE (TEKKEN BASE)' },
+  ],
   'demonio': [
     { model: 'demonio', label: 'BASE' },
     { model: 'demonio-a1', label: 'ATTIRE 1' },
@@ -66,7 +78,13 @@ export const ATTIRE_VARIANTS = {
     { model: 'doc-frank', label: 'BOSCONOVITCH BASE (TEKKEN CANON)' },
     { model: 'doc-frank-machine-shop', label: 'MACHINE SHOP (TEKKEN RESKIN)' },
   ],
-  'mariposa': [
+  /* MARIPOSA's ladder — re-keyed 2026-10-22 to her roster card id
+     ('mariposa-monarch'): the old 'mariposa' key matched no fighter id or
+     model, so the whole documented slot map (roster/mariposa/ATTIRE-SLOTS.md:
+     "Mariposa is ONE character ... Never split into two characters") was
+     unreachable from her picker. Ladder contents/order untouched — Butterfly
+     Default stays the owner-designated Slot 1 default. */
+  'mariposa-monarch': [
     { model: 'mariposa', label: 'ATTIRE 1 · BUTTERFLY' },
     { model: 'mariposa-slot2', label: 'SLOT 2' },
     { model: 'mariposa-monarch', label: 'MONARCH' },
@@ -89,7 +107,12 @@ export const ATTIRE_VARIANTS = {
     { model: 'vainabel-attire3', label: 'ATTIRE 3 · MASKED DEMON OF THE PURPLE HAZE' },
     { model: 'vainabel-attire4', label: 'ATTIRE 4 · HALF MASK HORROR OF THE HAZE' },
   ],
-  'dxmmii': [
+  /* DXMMII's ladder — re-keyed 2026-10-22 to its roster card id
+     ('dxmmii-patchwork'): the old 'dxmmii' key matched no fighter id or
+     model, so the slot map (roster/dxmmii/ATTIRE-SLOTS.md) was unreachable
+     from its picker. Ladder contents/order untouched — the Tripo default
+     stays Slot 1. */
+  'dxmmii-patchwork': [
     { model: 'dxmmii', label: 'BASE' },
     { model: 'dxmmii-a2', label: 'ATTIRE 2' },
     { model: 'dxmmii-patchwork', label: 'PATCHWORK' },
@@ -109,9 +132,23 @@ export const ATTIRE_VARIANTS = {
     { model: 'saku-ra', label: 'BASE' },
     { model: 'saku-ra-main', label: 'MAIN' },
   ],
+  /* PHANTOM's ladder — JIN re-homed here 2026-10-22 (owner directive:
+     "Yoshimitsu is supposed to ladder into Phantom's attires, not stand
+     alone"). Canon: Phantom is the vessel of JIN, the Blade Soul
+     (CANON.md). Model preserved, just re-homed from the removed 'jin_soul'
+     card. */
   'phantom': [
     { model: 'phantom', label: 'BASE' },
     { model: 'phantom-t8', label: 'T8' },
+    { model: 'steve-fox', label: 'JIN · BLADE SOUL' },
+  ],
+  /* CHARGER's ladder (dedup 2026-10-22): the standalone 'charger-attire2'
+     card folded in (owner rule: attires ladder into their fighter). Without
+     this list Attire 2 would be unreachable — no key existed before. Labels
+     from the folded cards' titles. */
+  'charger': [
+    { model: 'charger', label: 'ATTIRE 1 · ICE MONSTER' },
+    { model: 'charger-attire2', label: 'ATTIRE 2 · WILD CURRENT' },
   ],
   'kinpo': [
     { model: 'kinpo', label: 'BASE' },

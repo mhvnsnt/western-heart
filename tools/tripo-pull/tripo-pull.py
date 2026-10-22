@@ -48,6 +48,7 @@ Stdlib only — no pip install needed.
 """
 
 import argparse
+import http.client
 import json
 import os
 import re
@@ -99,6 +100,22 @@ def slugify(name, fallback):
     return s or fallback.replace("-", "")[:12]
 
 
+def _curl_get(url, timeout=30, binary=False):
+    """Transport fallback: fetch via curl when urllib's connection is
+    severed mid-body by an intermediary (observed 2026-10-22: the egress
+    proxy truncated every urllib response from api.tripo3d.ai at
+    3-80 KB with IncompleteRead while curl completed the same GET in
+    ~1.5 s). curl honors the standard proxy env vars itself."""
+    cmd = ["curl", "-fsSL", "--max-time", str(timeout),
+           "-A", USER_AGENTS[0], url]
+    r = subprocess.run(cmd, capture_output=True, timeout=timeout + 30)
+    if r.returncode != 0:
+        raise RuntimeError(
+            f"curl fallback failed (exit {r.returncode}): "
+            f"{r.stderr.decode('utf-8', 'replace')[:300]}")
+    return r.stdout if binary else r.stdout.decode("utf-8", "replace")
+
+
 def http_get(url, timeout=30, binary=False, _ua_idx=0):
     """GET with UA rotation on 403/blocked responses."""
     last_err = None
@@ -115,15 +132,22 @@ def http_get(url, timeout=30, binary=False, _ua_idx=0):
                 time.sleep(1 + attempt)  # back off, try next UA
                 continue
             raise
-        except (urllib.error.URLError, TimeoutError, OSError) as e:
+        except (urllib.error.URLError, TimeoutError, OSError,
+                http.client.HTTPException) as e:
+            # HTTPException covers IncompleteRead: the connection was
+            # severed mid-body. Retryable like any transport error.
             last_err = e
             time.sleep(1 + attempt)
             continue
-    raise RuntimeError(
-        f"GET failed after {len(USER_AGENTS)} attempts: {url}\n"
-        f"  last error: {last_err}\n"
-        f"  Tripo may be rate-limiting or Cloudflare-blocking this IP. "
-        f"Wait a few minutes and retry.")
+    try:
+        return _curl_get(url, timeout=timeout, binary=binary)
+    except Exception as curl_err:
+        raise RuntimeError(
+            f"GET failed after {len(USER_AGENTS)} attempts: {url}\n"
+            f"  last error: {last_err}\n"
+            f"  curl fallback: {curl_err}\n"
+            f"  Tripo may be rate-limiting or Cloudflare-blocking this IP. "
+            f"Wait a few minutes and retry.")
 
 
 def api_get_json(url, timeout=30):
@@ -293,6 +317,22 @@ def download(url, dest, timeout=600):
                 f"with a short lifetime — just re-run tripo-pull to get "
                 f"a fresh URL.")
         raise
+    except (urllib.error.URLError, TimeoutError, OSError,
+            http.client.HTTPException):
+        # Connection severed mid-download (see _curl_get note): drop the
+        # partial file and re-fetch the whole body via the curl transport.
+        try:
+            os.unlink(dest)
+        except OSError:
+            pass
+        cmd = ["curl", "-fsSL", "--max-time", str(timeout),
+               "-A", USER_AGENTS[0], "-o", dest, url]
+        r = subprocess.run(cmd, capture_output=True, timeout=timeout + 60)
+        if r.returncode != 0:
+            raise RuntimeError(
+                f"download failed via urllib and curl fallback "
+                f"(exit {r.returncode}): "
+                f"{r.stderr.decode('utf-8', 'replace')[:300]}")
     return os.path.getsize(dest)
 
 

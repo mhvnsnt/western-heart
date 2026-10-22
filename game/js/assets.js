@@ -93,7 +93,7 @@ export const MODEL_URLS = {
   // AWA POP Attire 2 (fighter-completeness audit 2026-10-21): owner-confirmed
   // Tripo Attire 2 (roster/awa-pop/ATTIRE-SLOTS.md slot 2) — the GLB was in the
   // repo with no key, so it could never load.
-  'awa-pop-attire2': '../roster/awa-pop/attires/attire2/model.glb',
+  'awa-pop-attire2': '../roster/awa-pop/attires/attire2/model-rigged.glb',
   'purple-rain': '../roster/purplerain/attires/attire1/model-rigged.glb',
   nightwolf: 'assets/models/nightwolf.glb',
   'king-tyrant': 'assets/models/king-tyrant.glb',
@@ -127,15 +127,17 @@ export const MODEL_URLS = {
   // — a reskin by lineage, not a Tripo model, so it no longer defaults.
   'doc-frank-a1': '../roster/doc-frank/attires/attire1/pre-transform/model.glb',
   // Doc Frank post-transform bigger form (owner 2026-10-19, Tripo pull).
-  'doc-frank-big': '../roster/doc-frank/attires/attire1/post-transform/model.glb',
+  // Rigged 2026-10-21 (Tripo-forefront lane): model-rigged.glb carries the
+  // pre-form's 178-joint rig via the repo k-NN transfer; original untouched.
+  'doc-frank-big': '../roster/doc-frank/attires/attire1/post-transform/model-rigged.glb',
   // Wave 2 (2026-10-19): Wowomomo Attire 2, Hood Scientist Attire 3, Demonio forms, Dxmmii Attire 2.
   'doc-frank-wowomomo': '../roster/doc-frank/attires/attire2/base/model-rigged.glb',
-  'doc-frank-wowomomo-big': '../roster/doc-frank/attires/attire2/transformed/model.glb',
+  'doc-frank-wowomomo-big': '../roster/doc-frank/attires/attire2/transformed/model-rigged.glb',
   'doc-frank-hood': '../roster/doc-frank/attires/attire3/base/model.glb',
-  'doc-frank-hood-big': '../roster/doc-frank/attires/attire3/transformed/model.glb',
+  'doc-frank-hood-big': '../roster/doc-frank/attires/attire3/transformed/model-rigged.glb',
   // Attire 4 "Frankenstein's Cyborg" (owner 2026-10-19): two-form transform attire.
   'doc-frank-frankenstein': '../roster/doc-frank/attires/attire4/base/model-rigged.glb',
-  'doc-frank-frankenstein-big': '../roster/doc-frank/attires/attire4/transformed/model.glb',
+  'doc-frank-frankenstein-big': '../roster/doc-frank/attires/attire4/transformed/model-rigged.glb',
   'demonio-a1': '../roster/demonio/attires/attire1/model.glb',
   'demonio-winged': '../roster/demonio/attires/winged-devil/model-rigged.glb',
   'demonio-human': '../roster/demonio/attires/human/model-rigged.glb',
@@ -234,6 +236,14 @@ export const MODEL_URLS = {
   // star.glb stays in place, untouched, as the fallback file.
   star: 'assets/models/star-house49.glb',
   torch: 'assets/models/torch.glb',
+  // TORCH Attire 1 (owner 2026-10-21): Tripo original 'Valkyrie of Flame'
+  // (300d0c63), auto-rigged via tools/auto_rig/rig_tripo_static.py; raw pull
+  // archived in release torch-a1-tripo-20261021. Ladder: roster/torch/ATTIRE-SLOTS.md.
+  'torch-tripo-a1': 'assets/models/torch-tripo-a1.glb',
+  // TORCH Attire 2 (owner 2026-10-21): Tripo original 'Red demon'
+  // (7f8c7874), auto-rigged via tools/auto_rig/rig_tripo_static.py; raw pull
+  // archived in release torch-a2-tripo-20261021. Ladder: roster/torch/ATTIRE-SLOTS.md.
+  'torch-tripo-a2': 'assets/models/torch-tripo-a2.glb',
   michiko: 'assets/models/michiko.glb',
   dio: 'assets/models/dio.glb',
   bruno: 'assets/models/bruno.glb',

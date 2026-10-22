@@ -399,9 +399,20 @@ def main():
     ibm_arr = np.stack([m.T.reshape(-1) for m in ibms]).astype('<f4')
     ibm_acc = b.add_acc(ibm_arr, 5126, 'MAT4')
 
-    # nodes: donor 0..49 verbatim (joints + Character), then mesh node,
-    # then tail nodes appended (indices continue)
-    nodes = [json.loads(json.dumps(nd)) for nd in djs['nodes'][:50]]
+    # nodes: ALL donor skeleton nodes verbatim (mesh/camera nodes dropped,
+    # indices remapped) — generalizes the old Pantera-only nodes[:50] slice
+    # to any donor rig (e.g. the 178-joint Bosconovitch skeleton). For the
+    # canonical 50-node Pantera-family donors the kept set is exactly the
+    # old [:50] slice, so shipped outputs are unchanged.
+    keep = [i for i, nd in enumerate(djs['nodes'])
+            if 'mesh' not in nd and 'camera' not in nd]
+    remap = {old: new for new, old in enumerate(keep)}
+    nodes = []
+    for old in keep:
+        nd = json.loads(json.dumps(djs['nodes'][old]))
+        if 'children' in nd:
+            nd['children'] = [remap[c] for c in nd['children'] if c in remap]
+        nodes.append(nd)
     mesh_node_i = len(nodes)
     nodes.append({'name': tjs['nodes'][0].get('name', 'mesh'),
                   'mesh': 0, 'skin': 0})
@@ -413,13 +424,14 @@ def main():
             nd['children'] = [tail_first + k + 1]
         nodes.append(nd)
     if n_tail_joints:
-        nodes[hips_node].setdefault('children', []).append(tail_first)
+        nodes[remap[hips_node]].setdefault('children', []).append(tail_first)
 
     skin = {'name': dskin.get('name', 'skin'),
-            'joints': list(djoints) + [tail_first + k for k in range(n_tail_joints)],
+            'joints': [remap[j] for j in djoints] +
+                      [tail_first + k for k in range(n_tail_joints)],
             'inverseBindMatrices': ibm_acc}
     if 'skeleton' in dskin:
-        skin['skeleton'] = dskin['skeleton']
+        skin['skeleton'] = remap[dskin['skeleton']]
 
     # animations
     anims = []
@@ -448,13 +460,13 @@ def main():
             smp = a['samplers'][ch['sampler']]
             times = acc_array(djs, dbdat, smp['input']).reshape(-1)
             values = acc_array(djs, dbdat, smp['output'])
-            specs.append((ch['target']['node'], ch['target']['path'],
+            specs.append((remap[ch['target']['node']], ch['target']['path'],
                           times, values))
         add_clip('Idle', specs)
         log.append(f'copied donor Idle: {len(specs)} channels')
 
     # baked wh-anim/1 clips
-    name2node = {dnames[i]: djoints[i] for i in range(len(dnames))}
+    name2node = {dnames[i]: remap[djoints[i]] for i in range(len(dnames))}
     # Optional rest-pose retarget: wh-anim clips carry ABSOLUTE local
     # rotations authored against a specific rig's rest pose. If that rig's
     # rest local rotations differ from the donor's (measured 2026-10-21:
@@ -528,7 +540,8 @@ def main():
     if images:
         out_js['images'] = images
     out_js['nodes'] = nodes
-    out_js['scenes'] = [{'name': 'Scene', 'nodes': [49, mesh_node_i]}]
+    donor_roots = [remap[r] for r in djs['scenes'][0]['nodes'] if r in remap]
+    out_js['scenes'] = [{'name': 'Scene', 'nodes': donor_roots + [mesh_node_i]}]
     out_js['skins'] = [skin]
     if anims:
         out_js['animations'] = anims

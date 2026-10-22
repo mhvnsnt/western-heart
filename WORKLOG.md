@@ -504,6 +504,12 @@ validate.py. This completes all 22 unrigged fighters.
 Peak RAM 214–626MB. Outputs meshopt-compressed (10–25MB vs 24–72MB logical).
 SHA-256s in batch4/SHASUMS-rigged.txt.
 
+## 2026-10-21/22 — Torch Attire 1 "Valkyrie of Flame" wire-in (Tripo 300d0c63)
+- Pulled via tools/tripo-pull/tripo-pull.py only: 19,456,040 B, sha256 4f24f0c325b222658247325848dfee2d03164d30d9a61cf001404d976bd0f66d, 3 textures, unrigged statue (1,037,606 verts). Raw archived in release `torch-a1-tripo-20261021` (digest verified).
+- Rigged via tools/auto_rig/rig_tripo_static.py (GameRig backend, --facing +X measured: foot-vs-shin cue 0.7 deg off +X). Heat solved first proxy: 23,885 proxy verts, 0 unweighted; full mesh 0 unweighted after transfer; smooth gate SMOOTH_OK (p99.9 edge stretch 1.80, 0 edges > 2.0); validate PASS (73 joints, height 1.8 m, foot_y 0). Shipped game/assets/models/torch-tripo-a1.glb (29,802,744 B, sha256 62bb2918379fbcef64fb2087b5f6d0cc6aacad21b05932d49260d0effa50bb73).
+- gamerig_backend.py fixes (measured, same PR): (1) drop_micro_components — voxel remesh leaves 8-9-vert single-voxel islands (38 of them on this statue) that make Blender's bone heat fail for EVERY vertex; the body alone solves 0-unweighted. Islands dropped from the proxy only. (2) Arm droop sample narrowed to the outer quarter of reach — the outer half caught this statue's windswept hair mass and read 46.6 deg on a true 7.4 deg T-pose. (3) Leg knee/ankle joints re-anchored to measured per-side vertex centroids (hip 0.283 m / knee 0.173 m / ankle 0.086 m taper) instead of one hip-band spread.
+- Declared: the baked QA clip (CMU135_04_boxing) fails anim_check (Hips->RightPelvis length variance, p99.9 edge stretch 3.41 on the clip's worst frames, 40 spike verts) — the clip is a QA vehicle; the game drives her with its own clip bank. Worst-frame renders in the report dir show the body intact, no tearing. Wrapper process died to box memory pressure after the after-smoothing gate; validate/render/encode/report steps were re-run with the wrapper's own commands on the kept work dir (see rig_report.json recovery_note).
+- Wiring: roster-full.js Torch model -> torch-tripo-a1; attires.js ladder (A1 Valkyrie of Flame / Anna base fallback); assets.js MODEL_URLS entry; CANON.md + roster/torch/ATTIRE-SLOTS.md record the name and the owner's description verbatim.
 ## 2026-10-21 (~23:14 CDT) — Doc Frank attire reorder: Tripo models lead, Tekken reskins to the back (owner verbatim override)
 
 Owner verbatim: "his 1, 2, 3, 4, 5 should be his Tripo models; the Tekken reskins go toward the back, not 1 or 2. Stop showing me the Tekken versions first — show the Tripo 3D models I made for him."
@@ -695,6 +701,124 @@ what each engine costs when the game sells, roster more than 36 fighters.
 - Unverified items are listed in the report's last section. No Godot binary in this container, so
   the Lab tests were not re-run.
 
+## 2026-10-22 — BATCH-RIG SWEEP, batch 1: awa-pop attire2 (DoggByte subagent)
+
+Owner directive: EVERY static/unrigged model in the roster gets rigged in ONE sweep.
+Parent refinements applied: (1) proof needs BIND + IDLE STANCE + ANIMATION (T-pose alone
+insufficient — the Julia backwards-shins case); (2) identity canon: Rave = Kiko Tanaka =
+Ghost (one fighter), Mary Posa OVER Zafina, Doc Frank = Bosco, Yoshimitsu ladders into
+Phantom; Tripo-first display order (Pantera A1 sole exception).
+
+### Enumeration (current main c4be0d1, verified via GLB header scan)
+- 114 unique wired files (119 MODEL_URLS keys): 28 already rigged (*-rigged.glb),
+  1 rewire-only (`burger-demon` -> existing burger a1 model-rigged.glb),
+  26 TRUE STATICS (verified skins=0), 1 missing (ryuji-rock — blocked, needs owner's Tripo link).
+- Full list: ~/workspace/fix2/BATCHRIG-ENUMERATION.md
+- 23 dense Tripo (~1M verts) + 3 light (10-12k verts). Zen's spirit body NOT FOUND on disk
+  (searched WORKLOG, roster/, intake-stage/, game/assets/models/) — needs location from coordinator.
+
+### Batch 1: awa-pop attire2 (dense Tripo, 1,009,108 verts)
+- Tool: tools/auto_rig/rig_tripo_static.py (GameRig heavy path, Blender 4.0.2).
+- Result: PASS. Proxy heat (9 unweighted / 14k proxy verts), 681 fixed on full mesh (0.07%).
+  smooth_weights: round 0 p99.9 = 1.24 (gate 2.5) — SMOOTH_OK, no edges above threshold.
+  validate.py: PASS. anim_check (CMU boxing): p999 1.24.
+- Proof: bind renders (front/back/side, viewed — clean), CMU clip renders, stance proof
+  via tools/auto_rig/stance_proof.py (T3 nina bank: neutral stance + walk, foot-yaw check).
+- Output: roster/awa-pop/attires/attire2/model-rigged.glb, wired to `awa-pop-attire2` key.
+
+### Pipeline fixes (in this batch)
+- tools/auto_rig/rig_tripo_static.py: added `--python-exit-code 1` to Blender invocations.
+  Blender 4.0 does NOT propagate Python exceptions to the exit code by default; a failed
+  Blender step silently continued to smoothing (found on blanka pilot).
+- tools/auto_rig/rig_tripo_static.py: add ~/workspace/tools/syslibs/{egl,gl} to
+  LD_LIBRARY_PATH when present (this VM). render_poses.py crashed with missing libEGL.so.1.
+- NEW tools/auto_rig/stance_proof.py: T3 stance/walk proof (world-delta retarget, same math
+  as t3anims.js retargetT3Clips + bankFacing correction). Renders stance front/side + walk
+  mid; reports foot yaw in stance (backwards-feet check). Pose-and-render (no keyframing)
+  for speed on dense meshes.
+
+### Failure case: blanka (light, 10,321 verts)
+- GameRig direct bone-heat FAILED: 2,100/10,321 verts unweighted (20%). p999 52.76,
+  mesh tears in stance. NOT SHIPPED. Needs k-NN from donor or blender-heat backend.
+- pantera crimson-rage + p2 (11k verts) likely same — will try k-NN from pantera.glb.
+
+### Provenance
+- Input: roster/awa-pop/attires/attire2/model.glb (Tripo pull, on main).
+- Donor clip: assets/free-pull-1/cmu-mocap/fighting/135_04.bvh (CMU, on main).
+- Bank: game/assets/anim/t3/nina/ (awapop -> nina per fighter.js bankIdFor override).
+
+## 2026-10-22 — SmutBase intake sweep (DoggByte subagent)
+
+Standing order: every SmutBase model in `~/workspace/browser_downloads/` gets
+pulled into the repo and wired up. 15 downloads intaken this round.
+
+**Landed in-repo (this + 2 follow-up PRs):**
+- `docs/SMUTBASE-INTAKE-QUEUE.md` — the living queue + manifest (all 15 models,
+  hashes, per-model notes, next steps).
+- `roster/rahkasa/intake/RahkasaV1.1.blend` — four-armed female, user's
+  Oversoul spirit-body pick (Eastern Mind canon).
+- `roster/mina-ashido/intake/`, `roster/miruko/intake/`, `roster/tsuyu-asui/intake/`
+  — Rigify/IK .blends + textures, original names kept so `//` relative texture
+  paths stay linked.
+- `game/assets/stages/pink-narwhal/` — arena asset (NOT a character). Open
+  question: is this the club/DJ base (b8ada591) from CLUB-ARENA-PLAN.md?
+  Needs a Blender look before the arena lane builds on it.
+- `game/assets/materials/fishnet/` — fishnet material (RenCeifer), shared
+  material for the customization suite.
+
+**Staged in workspace (over the 95MB blobs-API limit / third-party code —
+registered in the queue doc, not committed):**
+- `~/workspace/fix2/lily/` — Lily donor, 2.6GB extracted (rig/skeleton donor
+  for the female roster, user-approved body reference).
+- `~/workspace/fix2/smutbase-source/{cydney,nyoka,parvati,vixen}/` — 541MB /
+  557MB / 596MB / 985MB .blends. Cydney: size up breasts/ass at rig time.
+  Vixen: needs a full Tekken-notation moveset (not her source game's inputs).
+- `~/workspace/fix2/smutbase-source/movie-maddness/` — 929MB .blend, contents
+  unidentified, NOT intaken as a character.
+- `~/workspace/fix2/smutbase-source/tools/{fluidpainter-nsfw,buildabod-male,buildabod-female}/`
+  — Blender addons (third-party code stays out of the repo tree per owner law).
+
+**Notes:** Nyoka.rar downloaded twice, byte-identical (md5 e16869e3…),
+extracted once. Miruko, Tsuyu, movie-maddness + 3 addon zips were not on the
+queue list — intaken anyway. Still incoming: SmutBase 22968842 (camel-toe
+check at intake: removable vs painted-on), 91fca296, 0b8ceb43, c278fcf4.
+`tools/tripo-intake/` does not apply (Tripo GLB pulls only); Blender rig lane
+owns the next step. Blender is not installed on this VM.
+
+## 2026-10-22 — Torch Attire 2 "Red demon" wire-in (Muse subagent lane)
+
+- PULLED the owner's Tripo link (2026-10-21 ~22:40 CDT,
+  7f8c7874-de2a-438f-a84f-744d1eef21e9) with `tools/tripo-pull/tripo-pull.py`
+  ONLY. The pull first failed 14x: the egress proxy severed every urllib
+  response from api.tripo3d.ai mid-body (IncompleteRead at 3-80 KB) while
+  curl completed the same GET in ~1.5 s (diagnosed read-only; API code 0,
+  link valid, never a login issue). Fixed at the source in tripo-pull:
+  IncompleteRead is now retryable and both the GET and download paths fall
+  back to a curl transport. Installed copy + this repo copy patched.
+- Raw statue: 18,006,604 B, sha256
+  52e6840dbc07ec670a75514ffa4252c4bf497292399e2c28e490e4e3450a99c7,
+  1,029,809 verts, 3 embedded textures, unrigged. Archived in release
+  `torch-a2-tripo-20261021` (asset digest verified == local sha256).
+- Facing measured on the decoded mesh before rigging: foot-vs-shin cue
+  +0.055 on X, -0.005 on Z — toes point +X; rigged with `--facing +X`.
+- Rigged via `tools/auto_rig/rig_tripo_static.py` (the PR #570-patched
+  intake) onto the 73-joint GameRig template. Report + gate renders:
+  `docs/proof/claude-2026-10-22/auto-rig-torch-a2/`.
+- Wired as Attire 2: `game/js/assets.js` MODEL_URLS `torch-tripo-a2`,
+  `game/js/attires.js` picker ladder (1 Valkyrie of Flame / 2 Red demon /
+  3 Anna Base fallback). Attire 1 untouched; her roster default stays
+  `torch-tripo-a1`. Name + owner description recorded verbatim in
+  `CANON.md` and `roster/torch/ATTIRE-SLOTS.md`.
+- Proof render (own eyes): `torch-a2-reddemon-front-20261021.png`.
+- Resume addendum (2026-10-22, second lane): the wrapper run OOM-died
+  (137) three times in the clip bake, so the ship model was produced by
+  the identical gamerig backend run without the optional donor clip
+  (manual-backend-noclip.sh, wait-gated to a zero-Blender window;
+  BACKEND EXIT 0, heat clean first proxy — 23,942 proxy verts, 0
+  unweighted), then the wrapper's own finisher steps (finish-rig.sh):
+  validate PASS (missing_bones []), pose renders, meshopt encode to
+  28,530,756 B. smooth_weights exited "no animations to evaluate
+  against" — no smoothing applied. Full deviations in the PR body.
 ## 2026-10-22 — Rig audit tools, Leo man facing, Zen + soul riders restored (Claude session, branch claude/amazing-keller-p8644u)
 
 Owner: "Need to get the bind pose overlays and heat mapping and skinning and rigging and boning fully done for

@@ -773,6 +773,10 @@ She is not lost. She is *loyal*. The trial doesn't know what to do with that.
 
 **Owner-locked:** Name TORCH. Ruthless elegant assassin — Nina's sister with the darker edge. Sister rivalry with Awa Pop. Anna Williams base.
 
+**Attire 1 — "Valkyrie of Flame" (Tripo original, owner 2026-10-21).** Owner's description, verbatim: "fully nude and blue skin but controls fire that is normal colored and can control different colors of fire too, red windswept hair and Valkyrie helm, blue furry nude crotch and little hairs flaring off her fat hips and glutes". This settles her appearance: blue skin, red windswept hair, Valkyrie helm; her fire runs normal-colored and multiple flame colors. Tripo: https://studio.tripo3d.ai/3d-model/300d0c63-c7c8-4972-b08e-b2e9c169254f — raw pull archived in release `torch-a1-tripo-20261021`; auto-rigged model `game/assets/models/torch-tripo-a1.glb` (key `torch-tripo-a1`) is her default. The Anna Williams base model ladders behind it as the fallback attire. Slots: `roster/torch/ATTIRE-SLOTS.md`.
+
+**Attire 2 — "Red demon" (Tripo original, owner 2026-10-21).** Owner's description, verbatim: "with mileena from mortal Kombat style teeth on this attire and red skin, still full nude". Tripo: https://studio.tripo3d.ai/3d-model/7f8c7874-de2a-438f-a84f-744d1eef21e9 — raw pull archived in release `torch-a2-tripo-20261021`; auto-rigged model `game/assets/models/torch-tripo-a2.glb` (key `torch-tripo-a2`) is Attire 2 in her picker ladder. The Anna Williams base model ladders behind both Tripo attires as the fallback. Slots: `roster/torch/ATTIRE-SLOTS.md`.
+
 ---
 
 ### DIO — The Demon That Is
