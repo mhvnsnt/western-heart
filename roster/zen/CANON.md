@@ -107,3 +107,17 @@ tentacles. This is a real stage of the transformation.
   downloads (teardown/street-fighter-5/CAST-STATUS.md). Until it lands, `game/js/fighter.js` FIGHTER_BANK still maps
   `zen -> julia` and his 639-move list (game/assets/movesets/zen.json) is built on T3 Heihachi rows — both are
   interim and owned by the moveset/inputs lane (PR #615 crew) to replace with the Twelve/Eleven data.
+
+### Base mix: Dural (Virtua Fighter 5) + Twelve/Eleven on top, owner 2026-10-22
+
+Owner: "not a interim base ... a base mix with everything else ... once we get that stuff from 11 and 12s converted
+over from 2D to 3D we can just add it on top ... I want him to have some of the similar movements from them like that
+weird dancing idol stance"; "the person ... from virtual fighter they might have a cool stance too ... to use for now".
+So **Dural's stance is Zen's stance for now**, Dural is a permanent layer of his base mix (with his canon kit and
+X.COPY), and Twelve's/Eleven's movement (incl. Twelve's dancing idle stance) is added ON TOP once converted 2D->3D.
+**Dural** (VF5): a chrome, faceless humanoid with
+inhuman movement, the closest match to Twelve in the teardown files (Muse lane survey: Alpha-152's moves were never
+extracted from DOA4, Charade is missing from SC2, the free T3 fighters are too human). Her model is on the VF5
+release (`dur.farc`). **Data note:** the VF5 extraction holds models; VF5 motion data has not been converted yet
+(see the Nightwolf note in game/js/fighter.js bankIdFor), so Dural's moves need VF5 motion extracted before they can
+drive Zen. Owned by the moveset/inputs lane.

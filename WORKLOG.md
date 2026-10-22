@@ -1764,3 +1764,15 @@ Owner directive (verbatim): "Research the current state-of-the-art open-source i
   validate PASS; stress-clip anim_check flags explained by viewed renders (no tearing); in-game rest faces +Z, T3 stance
   max bone error 0.4 deg. Wired 'zen' + 'zen-attire1'; model-facing.json zen/zen-attire1 +Z; roster/zen/ATTIRE-SLOTS.md.
 - Proof: docs/proof/claude-2026-10-22/zen-rig/.
+
+## 2026-10-22 — Main unplayable: two breakages fixed (Claude session, branch claude/amazing-keller-p8644u)
+
+- No fight could start: game/js/fighter.js `_build()` read `charData.jiggleFamily` / `charData.jiggleIntensity`
+  (added by 4ab3aa206, jiggle/face/hand wiring) but `charData` only exists in the constructor -> ReferenceError on
+  every Fighter. Now `this.char.*` (2 tokens).
+- Mode start crashed (`show()` -> null.classList): c31b667d9 (T8 select transplant, stale index.html) put back the
+  duplicate `id="screen-stage"` on the STORY stage-intro section that 566248169 had renamed `screen-stage-intro`
+  (main.js + modes.js still use stageIntro). Restored the id.
+- Verified headless on current main: startMode + startFight work; side switch turns the body (facing -1, hips -X,
+  hands forward within 3 frames — the aecba6c08 smooth Y-turn from the facing lane), screenshot viewed.
+- Zen canon: base mix Dural (VF5, stance for now) + Twelve/Eleven on top + X.COPY + own kit (roster/zen/CANON.md).
