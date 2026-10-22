@@ -1417,3 +1417,15 @@ Also found: the feet-geometry cue misreads chunky-heel boots as -Z (false -Z on 
 - GNM semantic expression names need the TF ExpressionSampler for English labels ("smile"); raw index mapping works without TF.
 - MPFB2 live path needs Blender 4.2+ fetched alongside (fetch-mpfb2.sh --with-blender).
 - If Build-A-Bod/NaughTyRig/Fluid Painter upstreams surface, they get the standard fetch+menu treatment (rows reserved in the wiring map).
+
+## 2026-10-22 — Worker 8: Pantera Leo Man mane-eats-face FIX (PR #597)
+
+**Owner report:** "The mane eats his face. When the user played as Leo Man, the face wasn't visible — the mane mesh covers/clips through the face."
+
+**Root cause:** NOT a geometry/rigging issue. The Leo Man model is clean — bind pose and T-pose show a perfect mane and perfect face. The bug is in the animation data: the `king_on_pantera_leoman` T3 bank bakes a systematic ~51° oblique head rotation into EVERY clip (50.9° mean in `t3_neutral.json`, should be ~0°). The game's retarget has no head-pitch correction, so the 51° flows straight to the model — the head bows and the mane swings forward over the face.
+
+**Fix:** Premultiplied every Head quaternion in the bank by the inverse of the neutral-stance mean head rotation. Applied to all 32 action clips + 176 move rows. Only Head components touched.
+
+**Verification:** Headless-Chromium repro with the game's real retarget code. Stance: head upright, face clear. Attack (row:0): face clearly visible. Proof: `docs/proof/leoman-mane-20261022/`.
+
+**Scope:** Leo Man's bank only. Did not touch inputs, shared code, other banks, or the model.
