@@ -205,6 +205,10 @@ export const MODEL_URLS = {
   // star.glb stays in place, untouched, as the fallback file.
   star: 'assets/models/star-house49.glb',
   torch: 'assets/models/torch.glb',
+  // TORCH Attire 1 (owner 2026-10-21): Tripo original 'Valkyrie of Flame'
+  // (300d0c63), auto-rigged via tools/auto_rig/rig_tripo_static.py; raw pull
+  // archived in release torch-a1-tripo-20261021. Ladder: roster/torch/ATTIRE-SLOTS.md.
+  'torch-tripo-a1': 'assets/models/torch-tripo-a1.glb',
   michiko: 'assets/models/michiko.glb',
   dio: 'assets/models/dio.glb',
   bruno: 'assets/models/bruno.glb',

@@ -21,6 +21,17 @@ export const ATTIRE_VARIANTS = {
     { model: 'thor', label: 'ATTIRE 1' },
     { model: 'thor-attire2', label: 'ATTIRE 2 · ONI MASK' },
   ],
+  /* TORCH's ladder — keyed by fighter id ('torch'; attiresFor() falls back
+     to the id when the model key misses), same pattern as Doc Frank's and
+     Kevin's ladders. LADDER ORDER (owner rule 2026-10-21): her Tripo
+     original at the FOREFRONT; the Anna Williams base model ladders BACK
+     behind it. Default = first entry = Attire 1 'Valkyrie of Flame'
+     (also the main roster entry's model). Provenance per slot:
+     roster/torch/ATTIRE-SLOTS.md. */
+  'torch': [
+    { model: 'torch-tripo-a1', label: 'ATTIRE 1 · VALKYRIE OF FLAME (TRIPO)' },
+    { model: 'torch', label: 'ANNA BASE (TEKKEN BASE)' },
+  ],
   'demonio': [
     { model: 'demonio', label: 'BASE' },
     { model: 'demonio-a1', label: 'ATTIRE 1' },
