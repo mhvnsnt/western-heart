@@ -64,7 +64,7 @@ entry's payload0, pre-stored by the translator at obj+0x758
 | 4 | 0x82430360 | 193 | same as 1 (byte-parallel) |
 | 5 | 0x82430664 | 246 | emitter-gated append ×2 key tables |
 | 6 | 0x82430A3C | 119 | NO emitter call: payload1 used directly as the append value, same gate shape |
-| 7–10 (shared) | 0x82430C18 | 54 | calls helper 0x8242F0D8 (the emitter's second half: appends the {0x2000B, byte 2, u64 −1} record), then appends |
+| 7–10 (shared) | 0x82430C18 | 54 | calls the table-translate helper 0x8242F0D8 with r4 = the tag itself (7–10) and r5 = payload1: the helper indexes a u32 constant table in .data at 0x82C3F4B4 by (per-object cntlzw slot + (tag−7)×3) and appends {u32 = table constant, byte = 1, u32 = payload1} — a scalar value translation, not a record read |
 | 11 | 0x82430CF0 | 109 | different family: calls 0x82420E18 + list ops 0x8242C988/0x8242C9F0 (insert/remove on a linked list rooted via obj+0x758) |
 | 12 | 0x82430EA4 | 78 | twin of 13: reads tag + payload1 twice, calls 0x8242F228 + SDK 0x82B49ED4; the family's only `rlwinm` extraction acts on a call's RETURN status word, not on payload data |
 | 13 | 0x82430FDC | 78 | byte-identical twin of 12 |
