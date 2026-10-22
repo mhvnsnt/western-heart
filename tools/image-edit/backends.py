@@ -5,6 +5,10 @@ backends.py — generative image-editing backends for tools/image-edit.
 Each backend takes a PIL image + a natural-language instruction and returns
 an edited PIL image. Backends are tried in order for --backend auto.
 
+    gradio        FREE, no API key, no local weights. True instruction-based
+                  surgical editing via the public InstructPix2Pix Gradio Space
+                  (timbrooks/instruct-pix2pix on HuggingFace). This is the
+                  DEFAULT — it just works.
     pollinations  Free, no API key. Text-guided GENERATION (not surgical
                   img2img): describes the edit as a fresh render. Good for
                   concept drafts and variations. Rate-limited per IP.
@@ -20,10 +24,103 @@ Muse's media pipeline, which is a separate capability, not a CLI backend.
 """
 import io
 import os
+import tempfile
 import urllib.parse
 import urllib.request
 
 from PIL import Image
+
+
+def _clean_proxy_env():
+    """Work around httpx choking on IPv6 entries in no_proxy.
+
+    The sandbox sets no_proxy with bracketed IPv6 addresses ([::1], etc.)
+    which httpx fails to parse ('Invalid port'). We simplify it for our
+    subprocess calls. Safe: only affects the current process.
+    """
+    os.environ["no_proxy"] = "localhost,127.0.0.1"
+    os.environ["NO_PROXY"] = "localhost,127.0.0.1"
+
+
+# ---------------------------------------------------------------------------
+# Backend: gradio (FREE, no key, no local weights) — DEFAULT
+# Uses the public InstructPix2Pix HuggingFace Space for true
+# instruction-based image editing. No token, no download, no GPU needed.
+# ---------------------------------------------------------------------------
+
+GRADIO_SPACE = "timbrooks/instruct-pix2pix"
+GRADIO_ENDPOINT = "/generate"
+
+
+def gradio_available():
+    try:
+        import gradio_client  # noqa: F401
+        return True
+    except ImportError:
+        return False
+
+
+def gradio_edit(img, instruction, size=512, seed=None):
+    """True instruction-based editing via public InstructPix2Pix Gradio Space.
+
+    Free, no API key, no local model download. The image is sent to the
+    public HuggingFace Space, edited, and returned. Rate-limited by the
+    Space's queue (usually a few seconds).
+    """
+    _clean_proxy_env()
+    try:
+        from gradio_client import Client, handle_file
+    except ImportError:
+        raise RuntimeError(
+            "gradio backend needs gradio_client: pip install gradio_client"
+        )
+
+    # Prepare input (InstructPix2Pix works best at 512px)
+    work = img.convert("RGB")
+    work.thumbnail((size, size))
+
+    with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as tmp:
+        tmp_path = tmp.name
+    try:
+        work.save(tmp_path, format="PNG")
+
+        client = Client(GRADIO_SPACE)
+        job = client.submit(
+            input_image=handle_file(tmp_path),
+            instruction=instruction,
+            steps=50,
+            randomize_seed="Fix Seed",
+            seed=seed if seed is not None else 42,
+            randomize_cfg="Fix CFG",
+            text_cfg_scale=7.5,
+            image_cfg_scale=1.5,
+            api_name=GRADIO_ENDPOINT,
+        )
+        result = job.result(timeout=300)
+    finally:
+        try:
+            os.unlink(tmp_path)
+        except OSError:
+            pass
+
+    # Result is a tuple: (seed, text_cfg, image_cfg, output_path)
+    out_path = None
+    if isinstance(result, (list, tuple)):
+        for item in result:
+            if isinstance(item, str) and os.path.exists(item):
+                out_path = item
+                break
+    elif isinstance(result, str) and os.path.exists(result):
+        out_path = result
+
+    if not out_path:
+        raise RuntimeError(f"gradio backend: unexpected result format: {str(result)[:200]}")
+
+    out = Image.open(out_path).convert("RGB")
+    out.info["backend"] = "gradio"
+    out.info["space"] = GRADIO_SPACE
+    out.info["instruction"] = instruction
+    return out
 
 
 # ---------------------------------------------------------------------------
@@ -168,6 +265,8 @@ def local_edit(img, instruction, size=512, seed=None):
 # ---------------------------------------------------------------------------
 
 BACKENDS = {
+    "gradio": (gradio_available, gradio_edit,
+               "FREE, no key, no download — true instruction editing via public InstructPix2Pix Space (DEFAULT)"),
     "pollinations": (pollinations_available, pollinations_edit,
                      "free, no key — text-guided generation (not surgical)"),
     "hf": (hf_available, hf_edit,
@@ -212,6 +311,7 @@ def run_instruction(img, instruction, backend="auto", size=512, seed=None):
                 raise
     raise RuntimeError(
         f"no generative backend worked (tried: {order}). Last error: {last_err}\n"
-        "Options: set HF_TOKEN for the 'hf' backend, or run on a GPU machine for 'local'.\n"
+        "Options: pip install gradio_client for the free 'gradio' backend,\n"
+        "set HF_TOKEN for the 'hf' backend, or run on a GPU machine for 'local'.\n"
         "In-conversation, the assistant edits via Muse's media pipeline instead."
     )
