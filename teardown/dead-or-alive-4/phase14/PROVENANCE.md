@@ -25,7 +25,7 @@ Tool: `phase14/tools/provenance_p14.py`.
 |---|---|---|---|---|---|
 | anm.afs | 2,949,120 | 2,949,120 | b0b09edd79e056a5580c644509c47084b3da7dc170de6dd0e03f0d0c8bc54893 | 18eed8a09bb37ea6bc83e5572dd648fd55def823ebdcb6994adf8bb3a918b85a | **DIFFERENT** |
 | chrone.afs | 366,094,336 | 366,094,336 | d6b99c60af3712a73a0a3901882c364ed1b613f55458bb400e066aa85e6000bc | 256886a06b1a0cd4405194c2bde10cc3675a721c47ff1aa64bb5f72082e919ff | **DIFFERENT** |
-| chrtwo.afs | 548,042,752 | 548,042,752 | (pending) | a9169c2ad6ede8e2ad768d62cf5bf2eb55a25bedbf0781de04e98f70c4a34553 | (pending) |
+| chrtwo.afs | 548,042,752 | 548,042,752 | a7ca3ec4cc18bbcef99cb46eca78c8e0086930be13df343abd9ee9f801548e75 | a9169c2ad6ede8e2ad768d62cf5bf2eb55a25bedbf0781de04e98f70c4a34553 | **DIFFERENT** |
 | chrthree.afs | 762,955,776 | 762,955,776 | (pending) | da9386eabf253d77f60fe60179844c44ad0d38c9f72b134ab33447448a35ab80 | (pending) |
 
 ### anm.afs (complete)
@@ -72,16 +72,32 @@ Tool: `phase14/tools/provenance_p14.py`.
   flag + numbers are the deliverable; no model rework is
   attempted in this lane.
 
-### chrtwo / chrthree (pending — fills in at completion)
+### chrtwo.afs (complete) — MAJOR PROVENANCE FLAG (same class as chrone)
 
-Mirror member sizes from the tar headers equal the ISO sizes
-exactly (548,042,752 / 762,955,776 — the phase-6 map's sizes,
-re-read from the ustar headers by the tool). Hash verdicts
-land here when their tar ranges are fully local; see
-PHASE14-STATE.md log for status. The chrone pattern (raw
-stream vs AFS container) predicts DIFFERENT for both; the
-rows will carry their own measured numbers, not the
-prediction.
+- Same size (548,042,752 B both), **first difference at byte
+  0**, only **4.6732% of bytes identical** (25,611,380 /
+  548,042,752).
+- ISO copy: **standard AFS container, 128 entries** (head
+  `41465300 80000000`). Mirror copy: raw f32-stream data
+  from byte 0 (`3ebe10dc bf7ff769 bc7411d5…`), not a
+  container. Same flag class as chrone; containment spot
+  checks were run on chrone only.
+- Mirror bytes for this row came from digest-verified tar
+  parts 02 + 03 (release sha256 matched) plus the first
+  30,462,464 B of the loop part-04 partial (sequential
+  prefix written before its proxy kill; the row's verdict
+  does not hinge on that span — the files differ from byte
+  0 — and the span is re-validated when the verified
+  part-04 lands: see PHASE14-STATE.md).
+
+### chrthree (pending — fills in at completion)
+
+Mirror member size from the tar header equals the ISO size
+exactly (762,955,776). The hash verdict lands here when its
+tar range is fully local from digest-verified parts; see
+PHASE14-STATE.md log for status. The chrone/chrtwo pattern
+predicts DIFFERENT; the row will carry its own measured
+numbers, not the prediction.
 
 ## Verdict (to be completed with the chr* rows)
 
