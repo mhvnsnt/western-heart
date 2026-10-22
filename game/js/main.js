@@ -411,19 +411,30 @@ function scrollStageCardIntoView(el) {
 function updateStagePreview(s) {
   const img = document.getElementById('stage-preview-img');
   const sw = document.getElementById('stage-preview-swatch');
+  const showSwatch = () => {
+    if (img) img.style.display = 'none';
+    if (sw) {
+      sw.hidden = false;
+      sw.style.background = `linear-gradient(135deg, ${s.swatch[0]}, ${s.swatch[1]})`;
+    }
+  };
   if (img) {
-    img.style.display = '';
-    img.onerror = () => {
-      img.style.display = 'none';
-      if (sw) {
-        sw.hidden = false;
-        sw.style.background = `linear-gradient(135deg, ${s.swatch[0]}, ${s.swatch[1]})`;
+    // W51: the preview pane markup now exists (index.html). Only set src
+    // when there's a thumb AND it changed — most thumbs 404 (atlas tiles
+    // serve the cards), and re-setting the same src flickers the pane.
+    // Re-highlighting the same stage leaves img/swatch exactly as they are.
+    if (s.thumb) {
+      if (img.getAttribute('src') !== s.thumb) {
+        img.style.display = '';
+        img.onerror = showSwatch;
+        if (sw) sw.hidden = true;
+        img.src = s.thumb;
       }
-    };
-    img.src = s.thumb;
+    } else {
+      showSwatch();
+    }
     img.alt = s.name;
   }
-  if (sw) sw.hidden = true;
   const nm = document.getElementById('stage-preview-name');
   if (nm) nm.textContent = s.name;
   const un = document.getElementById('stage-preview-universe');
@@ -470,7 +481,9 @@ document.addEventListener('keydown', (e) => {
     const card = cards[focusedStageIdx];
     const s = getStage(card.dataset.id);
     if (s) {
-      if (selectedStage === s.id) { startFight(); }
+      // W51: same confirm path as the CONFIRM button — bare startFight()
+      // here dropped pendingFight (wrong fighters, dead result screen).
+      if (selectedStage === s.id) { confirmStageFromSelect(); }
       else selectStageCard(card, s);
     }
     e.preventDefault();
@@ -691,8 +704,11 @@ document.getElementById('confirm-fighter').addEventListener('click', confirmSele
    stage screen with no feedback and no way to retry ("fight never starts").
    Now: visible loading state on the stage screen, failures surface there,
    and pendingFight is only consumed when the fight actually starts, so
-   CONFIRM retries the same fight. */
-document.getElementById('confirm-stage').addEventListener('click', () => {
+   CONFIRM retries the same fight. W51: extracted so the keyboard Enter
+   path runs the SAME confirm — a bare startFight() there used to ignore
+   pendingFight, booting the wrong fighters with no versus onMatchEnd
+   (dead result screen). */
+function confirmStageFromSelect() {
   if (!selectedStage || !pendingFight) return;
   audio.uiClick();
   const { p1, p2, opts } = pendingFight;
@@ -712,7 +728,9 @@ document.getElementById('confirm-stage').addEventListener('click', () => {
       if (btn) btn.disabled = false;
     }
   );
-});
+}
+
+document.getElementById('confirm-stage').addEventListener('click', confirmStageFromSelect);
 
 document.getElementById('random-stage').addEventListener('click', () => {
   audio.uiClick();
