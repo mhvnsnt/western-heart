@@ -98,3 +98,14 @@ suspects for a packed→float expansion.
   meshes PASSED (overlay render VIEWED). Remaining sub-item:
   per-unit bone palette for skinned GLBs (unit header words
   3-4, unproven - stated in JOB2-BONE-ROLES.md).
+- JOB 3 (B2) PARTIAL: NTPP interior MAPPED byte-exact (idx02:
+  section header fields confirmed vs ELF template; +16 =
+  first-block size; two GIDX blocks @+80/+3232 with format
+  words 0x10400612/0x10400610). Pixel format NOT decoded -
+  candidate renders rejected as unproven, nothing baked,
+  no pairings invented. Evidence: round9-evidence/
+  JOB3-JOB4-STATUS.md (exact next step: targeted decompile
+  of the five NTPP-class methods, capped-heap).
+- JOB 4 (B5) SEED RE-VERIFIED: idx24 slot-9 BE head matches
+  round 8 (0x15a60 = payload-64). Layout not decoded, no
+  stage GLB (Jobs 1-3 took the lane).

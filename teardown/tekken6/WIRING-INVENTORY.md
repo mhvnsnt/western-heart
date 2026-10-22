@@ -140,8 +140,8 @@ Decoder: `tools/r9_ndpp_decode.py`.
 | NDPP interior (B1′) | **CRACKED**: units are embedded GE display lists — header cmds 0x14/0x10/**0x12 VTYPE**, strip table = VADDR (0x01) + PRIM (0x04; type 4 strip / 3 list) command pairs, terminator 0x13/0x0B. VTYPE arg gives the full vertex layout (weights u8 sum=128, UV u8, normal s8, position s16; stride 12/14/16 by weight count 1/2–3/4–5). Position scale: world = raw × descriptor_ymax/32767, proven on 4 sections / 2 files |
 | GLBs (G3) | **First proven character meshes shipped + batch done**: `models/idx00_slot0_r9.glb` (idx00 slot-0 = head section; 3,217 verts / 1,897 tris; GLB bbox matches descriptor bbox ≤0.03 on all axes; FRONT render VIEWED — coherent human head) plus all 24 NDPP sections of the 12 character packages as `models/idxNN_slot{0,10}_r9.glb`; idx01 slot-0 FRONT render VIEWED (second coherent face); idx00 slot-10 = T-pose full body (scatter VIEWED) |
 | BONE skeletons (B6′) | **Roles PROVEN + skeletons shipped**: parents / local translations / Euler rotations / scales / 32 B name table (`tools/round9-evidence/JOB2-BONE-ROLES.md`). `models/idx00_skeleton_r9.glb` (110 bones) + `models/idx04_skeleton_r9.glb` (146 bones); bind-check vs meshes PASSED (overlay VIEWED). Vertex weights exist in the streams (u8, sum 128) but the per-unit bone palette is unproven → no skinned GLBs yet, stated not faked |
-| NTPP textures (B2) | Job 3 this round |
-| Stage slot-9 (B5) | Job 4 this round, if time |
+| NTPP textures (B2) | Interior MAPPED byte-exact (`tools/round9-evidence/JOB3-JOB4-STATUS.md`): section header fields confirmed against the ELF template, +16 = first GIDX block size, two GIDX blocks per section with format words `0x10400612/0x10400610`. Pixel format NOT decoded — no PNGs, no bake, no invented pairings |
+| Stage slot-9 (B5) | Head map RE-VERIFIED on idx24 (BE table, `0x15a60` = payload−64); layout not decoded; no stage GLB |
 | Movesets (G4) / wiring (G6) | G4 unchanged (18/18 JSONs). G6: first proven mesh now exists to wire (GLB above); game-side registration still per engine steer (GLB + JSON deliverables) |
 
 ### Left before T6 PSP true 100% (round-9 blockers)
