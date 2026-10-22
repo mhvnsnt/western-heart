@@ -53,7 +53,6 @@ for (const [k, u] of Object.entries(OVERRIDES || {})) if (u) MODEL_URLS[k] = u;
 const KNOWN_GAPS = {
   'doc-frank-wowomomo': 'file exists, not in MOVESET_IDS (Doc Frank lane)',
   'doc-frank-hood': 'file exists, not in MOVESET_IDS (Doc Frank lane)',
-  'doc-frank-frankenstein': 'no moveset file at all (Doc Frank lane)',
   'ryuji': 'file exists, not in MOVESET_IDS (CornerStone lane)',
 };
 
