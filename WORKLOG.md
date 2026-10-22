@@ -1,73 +1,5 @@
 # WORKLOG — DEATHFANG build (2026-10-19/20, branch feat/deathfang-yamazaki-20261019)
 
-## 2026-10-22 — Worker 11 (moveset/input lane): Tekken input pipeline + PSX controls + Batch B BT fills
-
-Owner activation: "let's keep working on the repo and working on getting all of the
-moves working correctly all the combos and everything mapped out all the inputs all
-the stuff that we was working on with Claude earlier continue that" + INPUT-TO-MOVE
-FIDELITY LAW: "in Tekken every input produces a specific, predictable move — press 1,
-left punch comes out, every time." + PSX controls ("Square = 1, Triangle = 2,
-X = 3, Circle = 4", ditch the dodge/generic buttons, joystick left + face buttons
-right) + joystick correction ("JOYSTICK IS FINE — DO NOT TOUCH IT") + acceptance
-criteria verbatim in docs/owner-directives.md (CONTROL ACCEPTANCE CRITERIA, 2026-10-22).
-
-Engine fixes (game/js/movesets.js):
-- Unified the two pressChord definitions — the second shadowed the first, so chord
-  resolution ignored ctx/state prefixes, the slots table, loadouts and __base movesets.
-  One pressChord(chord, ctx) now: motion specials -> notation table -> directional chord.
-- Dash latch changed from step-counted to wall-clock (500ms): the old latch lasted
-  seconds on slow devices and misfired dash moves on plain f+1 presses.
-- _motionHeld: any all-identical f/b run (f,F / f,f,F / b,b,B ...) is now a dash-motion
-  requiring the dash latch — previously move keys like f,f,F+2 parsed as 3-step
-  "motions" matching on merely holding forward.
-
-Pilot fighter torch (game/assets/movesets/torch.json): added BT.2->BT.1, BT.4->BT.3
-(canon per T7 Anna frame data, docs/t7t8-reference/frame-data-t7/anna.json:
-"BT 1 (or 2)", "BT 3 (or 4)"); remapped placeholder f,f,F+2 -> f,F+2 (Headless
-Horseman) which shadowed the canon dash move; slots 392->394. SS.1/SS.4 fills
-REVERTED after checking T7 data (Anna/King/Jin/Nina have no SS.1/SS.4; sidestep+1/+4
-falls through to neutral — Tekken-correct).
-
-Batch B (37 fighters, 62 slot insertions): canon BT.2/BT.4 pair fills applied
-surgically (bt_fill.py). Five files (pantera, phantom, scimitar, skull, zui) changed
-on main mid-session and were rebased to current tip + fills re-applied; every batch
-file verified byte-equal to (current tip + fills) — zero clobber risk. kronos-attire2
-needed a blob-API fetch (1.27 MB exceeds the Contents API limit).
-
-Controls (owner correction honored): game/js/input.js REVERTED to the user's approved
-version — joystick untouched. PSX face-button layout only: game/index.html (diamond:
-triangle top=2, circle right=4, cross bottom=3, square left=1; L1=block, R1=surge;
-dodge + generic punch/kick buttons removed) + game/styles.css (authentic PSX colors,
-no overlaps — min ~4px clearance verified geometrically in portrait and landscape) +
-game/js/main.js (throw-break prompt: "TAP <square>" / "TAP <triangle>" / "TAP <square>+<triangle>").
-
-Proof (tools/input-verify/):
-- buffer-test.mjs (pure Node, real engine + real moveset JSON): torch 42/42 PASS
-  (canon-aware: SS.1/SS.4 asserted as fall-through per T7 Anna data), pantera 36/0,
-  demonio 33/0 coverage-aware PASS. Strings 1,2 / 1,2,2 / 2,1 / f+2,1 verified.
-- touch-wiring-test.mjs (NEW, pure Node, real InputManager + stub DOM): 11/11 PASS —
-  tap data-btn="1..4" queues the correct Tekken limb, every button functional,
-  block hold/release, 1+3 chord, disabled input swallows taps.
-- Browser proof BLOCKED (documented deviation): Chromium SIGTRAPs intermittently on
-  managed launch, and Chrome 152's Local Network Access checks block navigation to
-  the local http server (ERR_BLOCKED_BY_LOCAL_NETWORK_ACCESS_CHECKS) from both
-  CDP and managed launches despite --disable-features flags. verify-touch.mjs ships
-  as the browser proof harness for a working environment (button-by-button demo,
-  combos, portrait+landscape layout screenshots, overlap checks). Layout geometry
-  verified mathematically instead: zero button overlaps in both orientations.
-
-Moveset philosophy (owner 2026-10-22): Tekken movelist layouts FIRST to 100%, THEN
-proprietary/canon moves on top. This PR is the foundation layer. Rollout: Batch C =
-sparse sets needing real Tekken-layout builds (DOA/VF 14-26 moves, sf-* 10-12,
-deathfang/iori 40+ gaps, Vixen has no moveset yet — Tekken inputs per directive);
-Batch D = canned string enders (1,2,2 etc.) from T7 frame data.
-
-Files: game/js/movesets.js, game/index.html, game/styles.css, game/js/main.js,
-game/assets/movesets/torch.json + 37 batch JSONs, docs/owner-directives.md,
-tools/input-verify/ (buffer-test.mjs, touch-wiring-test.mjs, verify-touch.mjs,
-verify-inputs.mjs, baseline/), WORKLOG.md (this entry).
-
-
 Owner orders 2026-10-19 ~20:06–20:12 CDT: build DEATHFANG (all caps, one word) —
 proprietary character based on Iori Yagami; keeps Iori's moves/stance/animations;
 reskin as prisoner/slave to his own grief, chained/shackled, emo, Soul Eater
@@ -1685,28 +1617,6 @@ Tekken on-hit stack: (1) jagged star-burst HIT SPARK sprite (canvas-generated, a
 **Deliverable:** `docs/research/ROSTER-CANON-AUDIT-2026-10-22.md` — real total, full 55-dir classification table, hardcoded/PR/intake tables, 49-slot select→canon→models mapping (source of truth), flag list. No game code changed. No deletions.
 
 **Sandbox note:** this worker's Python could not write files >~8KB, so large repo files were read through the API in chunked reads and only small extracts materialized; fresh WORKLOG.md was re-assembled from 15×8KB API chunks (120,464 bytes, size-verified) before appending this entry — no clobber.
-
----
-
-## 2026-10-22 ~13:30 CDT — modeaudit-23: Mode-mapped teardown audit (report only)
-
-**Task:** audit every teardown dir, map everything wireable to its mode (Heart and Mind Within ← Urban Reign + Devil Within; Versus ← SF + DOA + SC; Story/cutscenes ← all), report organized by mode with what each item adds and why, per-item okay/not-okay checkboxes, aggressive open-source tool pull-ins. Audit + report ONLY — no wiring.
-
-**Deliverable:** `docs/research/mode-mapped-teardown-audit-2026-10-22.md` — 20-dir teardown inventory + 62 approval-gated items: Heart and Mind Within 14 (UR mission system, double-team/partner AI, special arts meter, weapons, destructibles, brawl rule sets, motion pools, 1,033-file audio, VGS/DCM UI, Def Jam momentum→BLAZIN' two-gate loop, one-grapple-core architecture, Revenge Mode backstage traversal, AKI grappling core) · Versus 28 (SF round structure, 173 SFEX movelists in Tekken notation, SF6 Drive + SFV V-System candidates, DOA triangle/4-way holds/stun/break gauge/Fatal Rush, SC 8-way run/guard stamina/GI/Reversal Edge/Soul Charge/Critical Edge/Lethal Hit/clash/ring-out, VF5 weight classes/two-tier counters/sabaki/multi-escapes/evade/oki/walls) · Story/cutscenes 10 (UR mission records + demo PPK cutscene schema, T6 endings, Def Jam XML config, Revenge Mode traversal, No Mercy text dict, Eastern Mind prologue+music, SC chronicle, DOA cinematic, SF hub) · Open-source tools 10 (Rapier, cannon-es, Yuka, Howler.js, Tone.js, ink/inkjs, XState, GGPO, FModel/repak, jPSXdec).
-
-**Method:** fresh main SHA via github_api.py at push time; plain-copy working dir `~/workspace/fix3/modeaudit`; read teardown docs in-repo (UR/DOA6/SCVI/VF5 mechanics docs, SF status, Def Jam findings, SCII, WMXIX arenas); web-verified SF6 Drive System, GGPO MIT status, Rapier vs cannon-es. Pushed via `gh_push.py` (Git Database API, base = live main tree), merged via `git_merge.py`. Zero deletions; WORKLOG entry appended to live-main version at push time.
-
-**Status:** report merged; 62 items await owner okay/not-okay before any wiring. Worker 22's general integration lane unaffected (separate scope).
-
-## 2026-10-22 — Worker 25: SECOND TEARDOWN GAP AUDIT (audit-only)
-
-**Task:** Owner: "After the jiggle/face/hands wiring is done, do a second teardown audit pass: go back through ALL the teardown files (Tekken 3/6/7/8, TTT2, DOA4/6, SF, SC2/6, Urban Reign, VF5, WWE, Def Jam, No Mercy) and list what else we haven't wired up yet. Report it back for the user's approval before building."
-
-**Method:** Sandbox blocks shell/Python file-writes of repo content (no cp/git clone possible), so audited the 14:13 UTC local copy for teardown sources + GitHub API (compare/contents) for post-14:13 wired state. Verified zero teardown/ files changed in the window via the compare API. Cross-referenced against game/js, customization/, moveset-library/, docs/, and merges that landed during the audit (hit detection #616, camera bounds #612, voice+intros #614, load-speed lane, WMXIX/No Mercy lanes). Excluded already-wired + in-flight (worker 21 jiggle/face/hands, worker 24 TTT2, T8 select transplant). Reconciled with worker 23's mode-mapped audit (landed mid-audit) — picked up VF5/SCVI mechanics docs, Def Jam BLAZIN', SFEX movelist translation.
-
-**Result:** docs/research/teardown-gap-audit-2026-10-22.md — ~74 actionable gap items across 15 sources, each with what-it-adds / why-it-matters / OK checkbox. Biggest: T3 round-2 movesets (13 banks, 5,663 rows), DOA6 triangle/hold/stun/break-gauge suite (5), VF5 mechanics (10), SCVI mechanics (7), Urban Reign brawl/missions/weapons/destructibles (9), Def Jam grappling core + BLAZIN' (6), rank ladder X-1 (53 tiers, user-built same day), meter/power unification X-2. Blocked: T6/T7/SC6 acquisitions, DATA401 decrypt, DOA4 index buffers. Nothing wired — user approves first.
-
-**Deliverable:** this PR (branch audit/teardown-gap-20261022). No deletions.
 
 ## Arena save + upgrade pipeline (worker 18, 2026-10-22)
 Owner instruction: "FIRST: save every current arena EXACTLY as it is right now —
