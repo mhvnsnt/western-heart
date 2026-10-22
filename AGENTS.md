@@ -71,3 +71,7 @@ Carve-outs (standing owner decisions, not overridden): never merge a DRAFT PR; n
 - The game's story/canon pipeline (all future writing measured against it)
 
 Standing laws it serves: all characters are adults; all writing grounded in CANON.md; Tekken fighter names stay out of canon writing (moveset sources go in technical files only).
+
+## VISUAL STANDARD (owner 2026-10-22)
+
+**`docs/VISUAL-ART-DIRECTION-BIBLE.md` is the single source of truth for how Western Heart looks.** Every artist (human or AI), every UI screen, every stage, every hit effect, every portrait gets measured against it. Covers: Malakor reference, spiritual-psychedelic visual language, per-land visual identities, Nine Souls signatures, UI/UX art direction (yantra health bars, Sri Yantra character select, mandala hit effects), color palettes with hex codes, AI prompt templates for concept art.
