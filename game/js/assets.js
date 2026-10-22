@@ -103,10 +103,18 @@ export const MODEL_URLS = {
   'demonio-winged': '../roster/demonio/attires/winged-devil/model.glb',
   'demonio-human': '../roster/demonio/attires/human/model.glb',
   'dxmmii-a2': '../roster/dxmmii/attires/attire2/model.glb',
+  // DXMMII Slot 1 — Tripo Default (dedup 2026-10-22): the 60MB Tripo pull
+  // that replaced the wooden dummy as Slot 1 per owner 2026-10-19
+  // (roster/dxmmii/ATTIRE-SLOTS.md). Wired so his select entry defaults to it.
+  'dxmmii-tripo': '../roster/dxmmii/attires/attire1/model.glb',
   'cyborg-x': 'assets/models/cyborg-x.glb',
   'cape-jones': 'assets/models/cape-jones.glb',
   // Bonus / music fighters and name-pending models (loadable, unassigned).
   mariposa: 'assets/models/mariposa.glb',
+  // Mariposa Slot 1 — Butterfly Default (dedup 2026-10-22): owner-designated
+  // Slot 1 default 2026-10-19 (owner exception to the Tripo-first law, like
+  // Pantera's Attire 1). Wired so her select entry defaults to it.
+  'mariposa-butterfly-default': '../roster/zafina/attires/butterfly-default/mariposa-butterfly-default.glb',
   // Mariposa Slot 2: the real Tripo pull (owner 2026-10-19; Butterfly Default is Slot 1).
   'mariposa-slot2': '../roster/mariposa/attires/slot2/model.glb',
   zafina: 'assets/models/zafina.glb',

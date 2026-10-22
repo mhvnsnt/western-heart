@@ -74,3 +74,37 @@ Living document. Updated every time the owner sets a directive. Newest first.
 Tripo 3D models show FIRST and foremost for every fighter; Tekken attires/models ladder BEHIND as back-slot attire choices.
 
 **SOLE EXCEPTION: Pantera.** His Attire 1 is a King reskin, but the user already customized it, so it may show first/up front. He is the ONLY exception; every other fighter's Tekken reskins go later in the ladder. No future pass shall "fix" Pantera's attire order.
+
+## IDENTITY CANON + DEDUP LAW (2026-10-22, permanent)
+
+- **Rave = Kiko Tanaka = Ghost: ALL THE SAME PERSON.** One select entry only
+  ('rave'). Never split into separate fighters.
+- **Mary Posa goes OVER Zafina.** One entry (MARIPOSA — repo canon name; see
+  below); Zafina is never a separate fighter. Zafina's Tekken in-game model
+  ladders BEHIND Mariposa's custom attires as a back-slot attire choice.
+- **Phantom is the select entry.** Yoshimitsu ladders into Phantom's attires
+  as choices, never a separate slot.
+- **Doc Frank = Bosco** (Tekken's Doctor Bosconovitch). One entry ('docfrank').
+- **Charger = the proprietary Blanka replacement.** Blanka holds no select
+  slot; his moves/identity live under Charger.
+- **Dedup law** (owner verbatim 2026-10-22): "all of the character slots need
+  to be fixed to where it's no duplicates showing it's no duplicate images
+  showing and no duplicate fighters only duplicates will be like the ladders
+  of the attires of you know the Tekken characters coming later after the
+  proprietary characters in the attire list" — no duplicate fighters, no
+  duplicate card images; the ONLY allowed repetition is attire ladders, with
+  Tekken characters as later attire choices behind their proprietary fighter.
+- Display-order note: Mariposa's Slot 1 default is the Butterfly Default
+  (owner 2026-10-19 exception to the Tripo-first law — pipeline-built
+  Tekken-wire custom, same standing as Pantera's Attire 1).
+
+### Open naming questions (owner to decide — do NOT guess)
+- Repo canon name is **MARIPOSA** (butterfly-themed; owner-approved across
+  PRs/renders). "Mary Posa" appears nowhere in-repo, reads as voice-typed
+  "mariposa". Kept as MARIPOSA pending owner confirm.
+- 'ryuji' (RYUJI) vs 'ryuji-rock' (RYUJI ROCK hybrid): two slots, distinct
+  concepts — needs owner call on whether they merge.
+- 'armor-king' holds a slot under its Tekken name (WH rename pending owner pick).
+- 'zangief' / 'vega' / 'iori' are working names; WH names pending owner pick.
+- Kevin's Tripo (kevin-tripo) is not in the repo yet — his select default
+  stays the Baek model until it lands.
