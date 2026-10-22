@@ -1786,22 +1786,38 @@ Owner directive (verbatim): "Research the current state-of-the-art open-source i
 **Proof:** node --check on all 6 new + 4 modified JS modules (all pass); JSON validity on registry/weapons/catalog; catalog merge verified (2,624 defjam entries, unique ids, all geometry_pending); 28 unit tests pass (15 Gungaku program/recorder/preset tests, 13 photo-filter/ending/weapon/finisher tests). Live-browser play verification (menu screenshot, Fight Lab fight, photo mode, ending playback) needs a browser-capable agent — headless Chromium is broken on this VM (zygote failure); flagged for delegation.
 
 **Status:** [pending push/merge]
-## 2026-10-22 — Zen spirit body rigged + wired (Claude session, branch claude/amazing-keller-p8644u)
 
-- Zen Attire 1 (owner Tripo 8c46e379) was an unrigged static wired as 'zen'/'zen-attire1' -> invisible in fights.
-- `tools/auto_rig/rig_tripo_static.py --facing +X` -> `roster/zen/attires/attire1/model-rigged.glb` (73 joints, 29.2 MB);
-  validate PASS; stress-clip anim_check flags explained by viewed renders (no tearing); in-game rest faces +Z, T3 stance
-  max bone error 0.4 deg. Wired 'zen' + 'zen-attire1'; model-facing.json zen/zen-attire1 +Z; roster/zen/ATTIRE-SLOTS.md.
-- Proof: docs/proof/claude-2026-10-22/zen-rig/.
-
-## 2026-10-22 — Main unplayable: two breakages fixed (Claude session, branch claude/amazing-keller-p8644u)
-
-- No fight could start: game/js/fighter.js `_build()` read `charData.jiggleFamily` / `charData.jiggleIntensity`
-  (added by 4ab3aa206, jiggle/face/hand wiring) but `charData` only exists in the constructor -> ReferenceError on
-  every Fighter. Now `this.char.*` (2 tokens).
-- Mode start crashed (`show()` -> null.classList): c31b667d9 (T8 select transplant, stale index.html) put back the
-  duplicate `id="screen-stage"` on the STORY stage-intro section that 566248169 had renamed `screen-stage-intro`
-  (main.js + modes.js still use stageIntro). Restored the id.
-- Verified headless on current main: startMode + startFight work; side switch turns the body (facing -1, hips -X,
-  hands forward within 3 frames — the aecba6c08 smooth Y-turn from the facing lane), screenshot viewed.
-- Zen canon: base mix Dural (VF5, stance for now) + Twelve/Eleven on top + X.COPY + own kit (roster/zen/CANON.md).
+## 2026-10-22 — worker32: ONLINE + TOURNAMENT SYSTEMS (netcode bridge, lobbies, brackets, dailies)
+**Owner instruction (verbatim):** "Wire up: Netcode approaches from the teardowns (rollback/prediction notes). Lobby structures (TTT2, SFV player rooms). Tournament brackets (single-elim). Daily challenges / rotating events."
+**Method specified:** pull netcode/lobby/tournament approaches from teardowns; implement netcode foundation (deterministic sim hooks, input prediction, rollback), lobby UI+flow, single-elim brackets, daily challenges with rotation + reward hooks.
+**Method used:** as specified. TTT2/SFV teardowns had no network captures, so lobby structures came from public docs (tekkenpedia, reviews, patch notes) cross-checked across sources — cited in docs/research/online-lobby-tournament-research.md. Netcode builds on the existing vendored lite-rollback foundation (bridge layer added, nothing redone).
+**Deviations:** none from the instruction; two honest scope notes: (1) real-fighter netplay is architectural (needs the combat sim port — documented in docs/netcode/NETCODE-ARCHITECTURE.md with the FIELD_CONTRACT + self-test harness ready for it); (2) netcode versus is playable on the deterministic reference sim.
+- `game/js/online.js` (NEW) — OnlineController: ONLINE hub, lounge browser/create/room, NetVersus (WebRTC+rollback versus), tournament + challenges screens; self-inits, additive (no main.js/menus.js/modes.js edits)
+- `game/index.html` (MODIFY, 2 lines on current main) — ONLINE menu button + online.js script tag (rebased onto main 2026-10-22 19:29 UTC: kept worker22 integration.js + worker30 RANK BATTLE/HALL)
+- `game/js/tournament.js` (NEW) — single-elim engine: seeding, BYEs, CPU fill, serializable brackets
+- `game/js/tournament-ui.js` (NEW) — bracket rendering + local tournament runner (real fights)
+- `game/js/challenges.js` (NEW) — ChallengeManager: additive onMatchEnd chain + mode-clear hooks, localStorage progress
+- `game/data/challenges.js` (NEW) — 24 challenges as data, deterministic daily rotation, weekly events
+- `game/js/unlockables.js` (NEW) — unlockable registry (titles/frames) that challenges pay into
+- `game/netplay/bridge/input-codec.js` (NEW) — WH inputs → 16-bit netcode word
+- `game/netplay/bridge/sim-adapter.js` (NEW) — WhNetSim, FIELD_CONTRACT, checksum, 600-frame determinism self-test
+- `game/netplay/bridge/test-bridge.mjs` (NEW) — 7 tests
+- `game/netplay/lobby/lobby-protocol.js` (NEW) — LobbyClient state machine (quick/custom/create, rotation, spectate, chat, fight requests)
+- `game/netplay/lobby/test-lobby.mjs` (NEW) — 5 tests (fake server)
+- `game/netplay/signaling/server.js` (MODIFY) — v2 lobby protocol ported onto main's minimal server (another worker rewrote it to 66 lines while this PR was open); v1 demo protocol byte-identical to main, lobby layer appended
+- `game/tests/online-systems.test.mjs` (NEW) — 12 tests (brackets + rotation)
+- `game/tests/challenges-manager.test.mjs` (NEW) — 8 tests (progress/claim/persist)
+- `docs/netcode/NETCODE-ARCHITECTURE.md` (NEW) — honest playable-vs-architectural doc + browser P2P constraints
+- `docs/research/online-lobby-tournament-research.md` (NEW) — teardown/web sources
+- `docs/online-proof/*.png` (NEW) — 4 screenshots (hub, lobby, bracket, challenges)
+- `WORKLOG.md` (this entry)
+- `node --test` (repo root): **32 passed, 0 failed** — bridge (7, incl. 600-frame adapter determinism self-test), lobby client (5), tournament+rotation (12), challenge manager (8).
+- Signaling server v2 (rebased): **11/11 pass** on the new base — v1 join/peer/signal (main's), v2 welcome/create/join/ready/match-start/chat/targeted-signal/match-end, plus real LobbyClient create/join/state (3/3).
+- Headless Chromium screenshots of all four screens rendering (docs/online-proof/ — viewed and verified).
+- `node --check` clean on every new/edited JS file.
+- Honest architecture doc: `docs/netcode/NETCODE-ARCHITECTURE.md` (playable-vs-architectural table + browser P2P constraints: STUN/TURN, no authority, 2-player, same-version requirement).
+- Browser P2P needs a TURN server for symmetric NATs before shipping (STUN default is Google's; documented).
+- Ranked/leaderboards are the Nakama lane (researched, not wired).
+- The combat sim port is the critical path to real-fighter netplay; FIELD_CONTRACT + self-test harness are ready.
+- Challenge stat mapping is honest: hit-count challenges are phrased as damage (no landed-hit counter in the engine) — see CHALLENGE_TYPES docblock.
+- Rebased 2026-10-22 ~19:35 UTC onto main 7fe0cb41 (worker22 integration + worker30 ranks landed while PR was open); server.js v2 ported onto the rewritten minimal base, index.html re-applied, WORKLOG re-appended.
