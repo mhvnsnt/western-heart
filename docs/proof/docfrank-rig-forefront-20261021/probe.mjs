@@ -2,15 +2,15 @@
 // Verifies with the game's OWN modules: ladder presentation order,
 // Tripo defaults, transform targets, MODEL_URLS targets exist on disk,
 // and every Doc Frank GLB the ladder can load is RIGGED (skin + joints).
-import { ATTIRE_VARIANTS } from '../../game/js/attires.js';
-import { MODEL_URLS } from '../../game/js/assets.js';
-import { ROSTER } from '../../game/js/roster-full.js';
+import { ATTIRE_VARIANTS } from '../../../game/js/attires.js';
+import { MODEL_URLS } from '../../../game/js/assets.js';
+import { FULL_ROSTER } from '../../../game/js/roster-full.js';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
-const gameDir = path.join(here, '..', '..', 'game');
+const gameDir = path.join(here, '..', '..', '..', 'game');
 let fails = 0;
 const ok = (cond, msg) => { console.log((cond ? 'PASS ' : 'FAIL ') + msg); if (!cond) fails++; };
 
@@ -23,7 +23,7 @@ ok(JSON.stringify(ladder.slice(7)) === JSON.stringify(['doc-frank-a1', 'doc-fran
   'back of ladder = pre-form (reskin lineage), Bosconovitch base, machine-shop reskin');
 ok(ladder[0] === 'doc-frank-big', 'player default (ladder[0]) is Tripo doc-frank-big');
 
-const main = ROSTER.find(c => c.id === 'docfrank');
+const main = FULL_ROSTER.find(c => c.id === 'docfrank');
 ok(main && main.model === 'doc-frank-big', 'roster main entry model is doc-frank-big (Tripo)');
 ok(main && main.forms && main.forms['doc-frank-a1'] && main.forms['doc-frank-a1'].up.target === 'doc-frank-big',
   'transform target doc-frank-big preserved (pre-form transforms up)');
