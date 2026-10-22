@@ -190,6 +190,14 @@ export const MODEL_URLS = {
   'sam-ur-a1-body': 'assets/models/sam-ur-a1-body.glb',
   'sha-body': 'assets/models/sha-body.glb',
   'zen-body': 'assets/models/zen-body.glb',
+  // ZEN (dedup audit 2026-10-22): these four keys were referenced but never
+  // wired — ATTIRE_VARIANTS['zen'] heads 'zen-attire1' (select preview showed
+  // MODEL PENDING) and his roster forms target 'zen-tentacle'/'zen-oversoul'.
+  // GLBs + key names per roster/zen/ATTIRE-SLOTS.md (all four files exist).
+  'zen-attire1': '../roster/zen/attires/attire1/model.glb',
+  'zen-tentacle': '../roster/zen/tentacle/model.glb',
+  'zen-oversoul': '../roster/zen/oversoul/model.glb',
+  'zen-spirit': '../roster/zen/spirit/model.glb',
   'zui_alt1': 'assets/models/zui_alt1.glb',
   'zui_alt2': 'assets/models/zui_alt2.glb',
   'kiko-tanaka': 'assets/models/kiko-tanaka.glb',
