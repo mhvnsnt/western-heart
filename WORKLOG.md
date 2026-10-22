@@ -1993,6 +1993,10 @@ stale full-file copies:
   Rage/urge AI block placed after Soul Surge check; armor coexists with
   V-Skill armor (V-Skill absorbs outright, rage/urge armor absorbs with
   damage). Merged without touching that lane's code.
+- Sixth rebase (arena pipeline: mainmenu.css link in index.html; Pink Narwhal
+  club GLB + buildHelix detail-pass builder in stages.js/helix-palace).
+  Balcony breakable kept on the upgraded stage. Merged without touching
+  that lane's code.
 
 ### Flags for coordinator
 - Input overlap (documented, T8-style): `1+2` = rage art while raging, urge dash while

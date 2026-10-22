@@ -338,6 +338,12 @@ export const STAGES = [
     swatch: ['#0a0a18', '#ff6ad0'],
     builder: 'helix',
     pano: 'assets/stages/eastern-mind/helix-palace/pano.png', // real Eastern Mind background art
+    // Arena upgrade pipeline, Stage 3 (detail pass): the Pink Narwhal club
+    // interior (SmutBase Virt-A-Mate scene; see
+    // tools/stage-arena-pull/convert_pinknarwhal.py) replaces the procedural
+    // spiral blockout. The club carries its own fighting surface.
+    glb: 'assets/stages/pink-narwhal/pink-narwhal.glb',
+    hidePlatform: true,
     associatedFighters: ['purple-rain'],
     // Stage-break lane (T7 balcony break): the palace balcony edge — a heavy
     // hit there shatters the railing and drops the fight one level.
@@ -1046,6 +1052,166 @@ function buildHelix(g, def, api) {
     seg.lookAt(0, 2.6, 0); g.add(seg);
   }
   const rooms = [
+    [0xffd24a, -9, 2.2, -7], [0xff6a2a, 9, 2.2, -7], [0xf0f0ff, 0, 2.6, -11],
+    [0xff4a9a, -6, 2.2, 8], [0x8a2ae0, 6, 2.2, 8],
+  ];
+  const roomMats = [];
+  for (const [color, x, y, z] of rooms) {
+    const m = new THREE.MeshStandardMaterial({ color, emissive: color, emissiveIntensity: 1.0, roughness: 0.3 });
+    const pod = new THREE.Mesh(new THREE.SphereGeometry(0.9, 18, 14), m);
+    pod.position.set(x, y, z); g.add(pod);
+    const halo = new THREE.PointLight(color, 8, 14, 2);
+    halo.position.set(x, y, z); g.add(halo);
+    roomMats.push({ m, halo, base: 1.0, ph: Math.random() * 10 });
+  }
+  updaters.push((dt, t) => {
+    for (const r of roomMats) {
+      const p = 0.7 + Math.sin(t * 2.4 + r.ph) * 0.3;
+      r.m.emissiveIntensity = r.base * p;
+      r.halo.intensity = 8 * p;
+    }
+  });
+  return { updaters, skyTex, fog };
+}
+
+/* ---- PALACE OF DREAMING: rippling walls, mirror floor, a sky that isn't there ---- */
+function buildDreaming(g, def, api) {
+  const { updaters, skyTex, fog } = buildBase(g, def, api);
+  const walls = [];
+  for (let i = 0; i < 8; i++) {
+    const a = (i / 8) * Math.PI * 2, r = 14;
+    const w = new THREE.Mesh(new THREE.PlaneGeometry(7, 5.5),
+      new THREE.MeshStandardMaterial({ color: 0x3a5ac0, emissive: 0x1a2a80, emissiveIntensity: 0.7,
+        transparent: true, opacity: 0.55, roughness: 0.2, metalness: 0.3, side: THREE.DoubleSide }));
+    w.position.set(Math.cos(a) * r, 3.2, Math.sin(a) * r);
+    w.lookAt(0, 3.2, 0); g.add(w);
+    walls.push({ w, ph: (i / 8) * Math.PI * 2 });
+  }
+  const N = api.isMobile ? 16 : 32;
+  const orbs = new THREE.InstancedMesh(new THREE.SphereGeometry(0.3, 12, 10),
+    new THREE.MeshBasicMaterial({ color: 0x9ae0ff, transparent: true, opacity: 0.7 }), N);
+  orbs.frustumCulled = false;
+  const orbData = []; const dummy = new THREE.Object3D();
+  for (let i = 0; i < N; i++) {
+    orbData.push({ x: (Math.random() - 0.5) * 26, y: 1 + Math.random() * 7, z: (Math.random() - 0.5) * 18, ph: Math.random() * 10 });
+    dummy.position.set(0, -99, 0); dummy.updateMatrix(); orbs.setMatrixAt(i, dummy.matrix);
+  }
+  g.add(orbs);
+  updaters.push((dt, t) => {
+    for (const { w, ph } of walls) {
+      w.material.emissiveIntensity = 0.9 * (0.6 + Math.sin(t * 1.5 + ph) * 0.4);
+      w.position.y = 3.2 + Math.sin(t * 0.9 + ph) * 0.5;
+    }
+    for (let i = 0; i < orbData.length; i++) {
+      const o = orbData[i];
+      dummy.position.set(o.x + Math.sin(t * 0.7 + o.ph) * 1.5, o.y + Math.sin(t * 1.1 + o.ph) * 0.8, o.z);
+      const s = 0.7 + Math.sin(t * 2 + o.ph) * 0.3;
+      dummy.scale.set(s, s, s); dummy.updateMatrix(); orbs.setMatrixAt(i, dummy.matrix);
+    }
+    dummy.scale.set(1, 1, 1);
+    orbs.instanceMatrix.needsUpdate = true;
+  });
+  return { updaters, skyTex, fog };
+}
+
+/* ---- PHANTOM MARKETPLACE: bazaar stalls under the Eyeball Mountains ---- */
+function buildMarketplace(g, def, api) {
+  const { updaters, skyTex, fog } = buildBase(g, def, api);
+  const eyeTex = makeEyeTexture();
+  const mtnMat = new THREE.MeshStandardMaterial({ color: 0x1a1426, roughness: 1 });
+  const eyeAt = (x, z, s) => {
+    const cone = new THREE.Mesh(new THREE.ConeGeometry(7 * s, 16 * s, 7), mtnMat);
+    cone.position.set(x, 8 * s - 1, z); g.add(cone);
+    const eye = new THREE.Mesh(new THREE.SphereGeometry(2.4 * s, 18, 14),
+      new THREE.MeshStandardMaterial({ map: eyeTex, roughness: 0.25 }));
+    eye.position.set(x, 16.5 * s - 1, z); g.add(eye);
+    return eye;
+  };
+  const eyes = [eyeAt(-24, -32, 0.9), eyeAt(0, -40, 1.1), eyeAt(24, -32, 0.9), eyeAt(-16, -14, 0.7), eyeAt(16, -14, 0.7)];
+  const stallWood = new THREE.MeshStandardMaterial({ color: 0x6a4020, roughness: 0.9 });
+  const awnTex = _canvas(128, (ctx, s) => {
+    for (let i = 0; i < 8; i++) { ctx.fillStyle = i % 2 ? '#8a2a4a' : '#e0c080'; ctx.fillRect(i * s / 8, 0, s / 8, s); }
+  });
+  const awnMat = new THREE.MeshStandardMaterial({ map: awnTex, roughness: 0.8, side: THREE.DoubleSide });
+  const stallAt = (x, z, ry) => {
+    const st = new THREE.Group();
+    const counter = new THREE.Mesh(new THREE.BoxGeometry(2.4, 1.0, 1.2), stallWood);
+    counter.position.y = 0.5; counter.castShadow = true; st.add(counter);
+    for (const [px, pz] of [[-1.1, -0.5], [1.1, -0.5], [-1.1, 0.5], [1.1, 0.5]]) {
+      const post = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.06, 2.4, 6), stallWood);
+      post.position.set(px, 1.2, pz); st.add(post);
+    }
+    const awn = new THREE.Mesh(new THREE.PlaneGeometry(3.0, 1.8), awnMat);
+    awn.position.y = 2.5; awn.rotation.x = -0.35; st.add(awn);
+    for (let i = 0; i < 4; i++) {
+      const jar = new THREE.Mesh(new THREE.SphereGeometry(0.14, 8, 6),
+        new THREE.MeshStandardMaterial({ color: 0xffc86a, emissive: 0xff9a3a, emissiveIntensity: 1.6 }));
+      jar.position.set(-0.8 + i * 0.5, 1.15, (Math.random() - 0.5) * 0.5); st.add(jar);
+    }
+    st.position.set(x, 0, z); st.rotation.y = ry; g.add(st);
+  };
+  stallAt(-7.5, -3, 0.5); stallAt(7.5, -3, -0.5); stallAt(-7.5, 4, 2.6); stallAt(7.5, 4, -2.6);
+  const bulbMat = new THREE.MeshBasicMaterial({ color: 0xffc86a });
+  for (let i = 0; i <= 12; i++) {
+    const b = new THREE.Mesh(new THREE.SphereGeometry(0.09, 8, 6), bulbMat);
+    const k = i / 12;
+    b.position.set(-11 + 22 * k, 4.2 - Math.sin(k * Math.PI) * 1.2, -4);
+    g.add(b);
+  }
+  const bLight = new THREE.PointLight(0xffaa5a, 18, 30, 2);
+  bLight.position.set(0, 4, -4); g.add(bLight);
+  const stallLight = new THREE.PointLight(0xffc080, 12, 25, 2);
+  stallLight.position.set(0, 3, 1); g.add(stallLight);
+  updaters.push((dt, t) => {
+    for (const e of eyes) e.rotation.y = Math.sin(t * 0.4) * 0.25;
+    bLight.intensity = 18 * (0.85 + Math.sin(t * 7) * 0.1 + Math.sin(t * 13) * 0.05);
+  });
+  return { updaters, skyTex, fog };
+}
+
+/* ---- HELIX PALACE: Pink Narwhal club interior (teardown-sourced detail pass) ----
+   Arena upgrade pipeline, Stage 3: the procedural spiral blockout below is kept
+   as the no-GLB fallback (it is the saved Stage-2 draft in arenas/drafts/); the
+   real geometry is the Pink Narwhal club map (SmutBase Virt-A-Mate scene,
+   converted by tools/stage-arena-pull/convert_pinknarwhal.py). The five canon
+   desire rooms ride as glowing pods marking the club's five zones. */
+async function buildHelix(g, def, api) {
+  const { updaters, skyTex, fog } = buildBase(g, def, api);
+  let detailed = false;
+  if (def.glb) {
+    try {
+      const gltf = await new GLTFLoader().loadAsync(def.glb);
+      const club = gltf.scene;
+      club.traverse((o) => {
+        if (o.isMesh) {
+          o.castShadow = true; o.receiveShadow = true;
+          if (o.material && o.geometry.getAttribute('color'))
+            o.material.vertexColors = true;
+        }
+      });
+      g.add(club);
+      detailed = true;
+    } catch (e) {
+      console.warn(`[WH] stage ${def.id}: GLB ${def.glb} failed (${e.message}), blockout fallback`);
+    }
+  }
+  if (!detailed) {
+    // Stage-2 blockout fallback: spiral palace walls (the approved blockout).
+    const wallMat = new THREE.MeshStandardMaterial({ color: 0x3a3a4e, roughness: 0.4, metalness: 0.8 });
+    for (let i = 0; i < 24; i++) {
+      const a = (i / 24) * Math.PI * 2.6, r = 12 + i * 0.25;
+      const seg = new THREE.Mesh(new THREE.BoxGeometry(4.2, 5.5, 0.4), wallMat);
+      seg.position.set(Math.cos(a) * r, 2.6, Math.sin(a) * r);
+      seg.lookAt(0, 2.6, 0); g.add(seg);
+    }
+  }
+  // Five desire rooms (canon): Greed, Appetite, Immortality, Sexual Desire,
+  // Destruction. With the club interior they mark the five zones — VIP west,
+  // bar east, stage center-back, pole stage, DJ booth.
+  const rooms = detailed ? [
+    [0xffd24a, -7.5, 3.0, -9], [0xff6a2a, 7.5, 3.0, -9], [0xf0f0ff, 0, 3.6, -12],
+    [0xff4a9a, 1.2, 3.0, -9.5], [0x8a2ae0, 5.8, 3.0, -10],
+  ] : [
     [0xffd24a, -9, 2.2, -7], [0xff6a2a, 9, 2.2, -7], [0xf0f0ff, 0, 2.6, -11],
     [0xff4a9a, -6, 2.2, 8], [0x8a2ae0, 6, 2.2, 8],
   ];
