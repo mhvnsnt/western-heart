@@ -4,26 +4,15 @@ Living document. Updated every time the owner sets a directive. Newest first.
 
 ## 2026-10-22
 
-- **CONTROL ACCEPTANCE CRITERIA (owner verbatim, 2026-10-22 — this is the
-  bar for the moveset/input track).**
-  - JOYSTICK: "JOYSTICK IS FINE — DO NOT TOUCH IT." The joystick placement
-    and feel are good. Leave it exactly as-is.
-  - FACE BUTTONS: "THE PROBLEM IS THE FACE BUTTONS. They're 'fucked up and
-    real bad' — overlapping, ugly, badly positioned." Fix ONLY the face
-    buttons: "PSX layout: Square (1/Left Punch), Triangle (2/Right Punch),
-    X (3/Left Kick), Circle (4/Right Kick)"; "Clean positioning, no
-    overlaps, good spacing"; "Work in portrait AND landscape".
-  - MOVES (owner verbatim): "Pressing buttons does random moves or nothing
-    → every button must do its CORRECT Tekken move, every time"; "Combos
-    don't work, just one random move at a time → real working combo
-    strings"; "Some buttons don't work at all → every button functional".
-  - PROOF: "THE USER WANTS PROOF. When done: Show a working build where each
-    button does its correct move (button-by-button demo); Demonstrate combos
-    working (strings, not single moves); Verified by actually PLAYING, per
-    the standing rule — not code inspection."
-  - The joystick approved by the owner is `game/js/input.js` as it exists on
-    main — the moveset lane reverted its own joystick edits (2026-10-22) and
-    does not own that file.
+
+- **Audio delivery: direct download links, NEVER in-chat attachments
+  (2026-10-22).** The in-chat audio player is broken on the owner's
+  Android app (shows 0:00, won't play). ALL audio files sent to the owner
+  — voice clips, demos, music — go as direct download links via
+  remote-storage upload (`/opt/hatch/bin/remote-storage upload-file`),
+  with the link expiry stated. This applies to every agent, every time;
+  the voice pipeline's `deliver` stage does it automatically
+  (see `tools/character-voice/voice-clone/`).
 - **ANTI-CLOBBER LAW (permanent — written in blood after PR #579).** On
   2026-10-22 PR #579 committed stale full-file copies (base from Oct 17),
   wiping 427 lines of `game/js/assets.js`, 113 of `game/js/main.js`, 32 of
@@ -116,6 +105,27 @@ Living document. Updated every time the owner sets a directive. Newest first.
   `game/js/ui-skin.js` so future skins/textures drop in without touching
   screen logic.
 
+- **CONTROL ACCEPTANCE CRITERIA (owner verbatim, 2026-10-22 — this is the
+  bar for the moveset/input track).**
+  - JOYSTICK: "JOYSTICK IS FINE — DO NOT TOUCH IT." The joystick placement
+    and feel are good. Leave it exactly as-is.
+  - FACE BUTTONS: "THE PROBLEM IS THE FACE BUTTONS. They're 'fucked up and
+    real bad' — overlapping, ugly, badly positioned." Fix ONLY the face
+    buttons: "PSX layout: Square (1/Left Punch), Triangle (2/Right Punch),
+    X (3/Left Kick), Circle (4/Right Kick)"; "Clean positioning, no
+    overlaps, good spacing"; "Work in portrait AND landscape".
+  - MOVES (owner verbatim): "Pressing buttons does random moves or nothing
+    → every button must do its CORRECT Tekken move, every time"; "Combos
+    don't work, just one random move at a time → real working combo
+    strings"; "Some buttons don't work at all → every button functional".
+  - PROOF: "THE USER WANTS PROOF. When done: Show a working build where each
+    button does its correct move (button-by-button demo); Demonstrate combos
+    working (strings, not single moves); Verified by actually PLAYING, per
+    the standing rule — not code inspection."
+  - The joystick approved by the owner is `game/js/input.js` as it exists on
+    main — the moveset lane reverted its own joystick edits (2026-10-22) and
+    does not own that file.
+
 ## 2026-10-21
 
 - All fixes by AI agents, no hand-tooling by the owner (later refined — owner
@@ -165,3 +175,24 @@ Tripo 3D models show FIRST and foremost for every fighter; Tekken attires/models
 - 'zangief' / 'vega' / 'iori' are working names; WH names pending owner pick.
 - Kevin's Tripo (kevin-tripo) is not in the repo yet — his select default
   stays the Baek model until it lands.
+
+## Intake character canon (owner-approved 2026-10-22)
+- **BIRODO** (was Velvet): power broker, not just a dancer — the Velvet Room is neutral ground because SHE says so. Warm until she's not. Introduced Zen to the WH underground, invented the Nine-Soul Meter. Moveset: Feng Wei (user pick).
+- **JOTEI** (was Majesty): fallen empress playing a long game, every fight is politics. Coming to collect. Moveset: Craig Marduk.
+- **CHATUR** (Rahkasa): four-armed Oversoul spirit — a person who chose to stay, holding the spirit realm together at personal cost. Moveset: True Ogre.
+- **RYUSAN** (was Vitriol): acid punk, 15 — carrying war evidence without knowing it, angry but also a hurt kid. Moveset: Lucky Chloe.
+- **POND** (Tsuyu): swamp boundary watcher — chose the swamp over a temple position. Found Dorowani as an egg. Moveset: Raven.
+- **MEGAMI** (was Devi): temple guardian of a sealed door — grieving, holding it shut while pretending not to see her dead student. Trained Chatur. Moveset: Jun Kazama.
+- **MENAJERII** (メナジェリー): spirit-walker carrying beast spirits, sanctuary at Birodo's club. Moveset: Roger Jr. NAME LOCKED 2026-10-22 — Japanese pronunciation, NOT Hyakujuu.
+- **TOBI** (was Longleap): rabbit courier, fastest in roster — running from guilt, speed as avoidance. Moveset: Hwoarang.
+- Canon web: Jotei's crime → Ryusan's powers → Tobi's guilt → Pond's swamp → Dorowani's mud → Chatur's sacrifice → Megami's seal → Menajerii's sanctuary → Zen's cracked Oversoul.
+- Canon principle: movesets are Tekken bones, canon gives them souls — don't flatten characters to their moveset archetype.
+
+## Moveset source law (standing, 2026-10-22)
+Movesets may ONLY come from Tekken fighters nobody has claimed. Taken: King, Armor King, Akuma, Shaheen, Lars, Zafina, Bosconovitch, Yoshimitsu, Lee Chaolan, Ling Xiaoyu, Eddy/Christie, Feng Wei (Birodo). Free: True Ogre, Lucky Chloe, Hwoarang, Raven, Jun Kazama, Craig Marduk, Roger Jr. Verify against the full roster before wiring.
+
+## Character age law (user directive 2026-10-22, permanent)
+All characters are adults. No minors — no children, no teenagers — ever, unless the user explicitly authorizes it. Only the user can make that call. If a minor is ever added in the future, strict safety guidelines apply even in video game form. Current roster: adults, divine beings, animals, demons, creatures.
+
+## Canon-grounded writing law (user directive 2026-10-22, permanent)
+All character bios, stories, and lore must be built from CANON.md — Tong-Nou, the Nine Souls, the Five Lands, the Trial, the Trader, existing character entries. No invented locations, systems, or backstory elements. No AI slop.
