@@ -31,10 +31,11 @@
 import * as THREE from 'three';
 import { assets } from './assets.js';
 import { attiresFor, selectedAttireModel, setAttire, attireLabel } from './attires.js';
-import { loadT3Clips, createT3Actions, retargetT3Clips } from './t3anims.js';
-import { bankIdFor } from './fighter.js';
-import { getMovesetInfo } from './movesets.js';
-import { SOUL_IDS, MAIN_IDS } from './roster-full.js';
+// LOADSPEED: t3anims / fighter / movesets are preview-and-fight-only —
+// they stream in on first highlight through lazy.js (warmed during menu
+// idle), not at boot. See game/js/lazy.js.
+import { lazy } from './lazy.js';
+import { mark } from './loadperf.js';
 
 const DEFAULT_STATS = { speed: 2.8, jump: 7.2, power: 1.1, defense: 1.05 };
 const clamp01 = (v) => Math.max(0, Math.min(1, v));
@@ -133,10 +134,17 @@ class PreviewPane {
      Resolves false when the model could not be loaded. */
   async show(c, modelId) {
     const token = ++this._token;
+    // LOADSPEED: a new tap supersedes the previous preview — abort its
+    // download instead of finishing a doomed multi-MB fetch in the
+    // background (it used to compete with the new tap for bandwidth).
+    if (this._loadAbort) this._loadAbort.abort();
+    const loadAbort = new AbortController();
+    this._loadAbort = loadAbort;
+    mark('preview-start');
     this._loading = true;
     if (!this._ensure()) { this._loading = false; return false; }
     try {
-      await assets.loadModels([modelId]);
+      await assets.loadModels([modelId], null, { signal: loadAbort.signal });
       if (token !== this._token) return true; // superseded by a newer tap
       const inst = assets.createInstance(
         modelId, c.colors?.suit ?? 0xffffff, c.colors?.trim ?? 0x888888,
@@ -152,6 +160,7 @@ class PreviewPane {
       this.scene.add(this.model);
       this.mixer = inst.mixer;
       this.hasStance = false;
+      mark('preview-ready');
       // REAL TEKKEN IDLE (owner: use the teardown files; NO-T-POSE
       // law): where this fighter's moveset source has a decoded T3
       // bank, play the bank's looping stance clip on the preview
@@ -172,6 +181,12 @@ class PreviewPane {
         };
       }
       try {
+        // LOADSPEED: the T3 bank modules stream on first highlight
+        // (warmed during menu idle via lazy.warmIdle).
+        const [F, T3A, MS] = await Promise.all([lazy.fighter(), lazy.t3anims(), lazy.movesets()]);
+        const { bankIdFor } = F;
+        const { loadT3Clips, createT3Actions, retargetT3Clips } = T3A;
+        const { getMovesetInfo } = MS;
         // The fighter's OWN moveset file decides its bank (its base's motion), same as in the fight.
         const bank = bankIdFor(c.id, getMovesetInfo(c.id) ? c.id : (c.moveset || c.id));
         const clips = bank ? await loadT3Clips(THREE, bank) : null;
@@ -237,13 +252,15 @@ class PreviewPane {
       }
       return true;
     } catch (e) {
+      // LOADSPEED: an aborted superseded load is not a failure — stay quiet.
+      if (e && (e.name === 'AbortError' || /abort/i.test(e.message || ''))) return true;
       if (token === this._token) {
         console.warn('[WH] select preview failed for', modelId, e.message || e);
         this._clearModel();
       }
       return false;
     } finally {
-      if (token === this._token) this._loading = false;
+      if (token === this._token) { this._loading = false; this._loadAbort = null; }
     }
   }
 
@@ -262,7 +279,11 @@ class PreviewPane {
     this.hasStance = false;
   }
 
-  clear() { this._token++; this._clearModel(); }
+  clear() {
+    this._token++;
+    if (this._loadAbort) { this._loadAbort.abort(); this._loadAbort = null; }
+    this._clearModel();
+  }
 
   update(dt) {
     if (!this.renderer || !this.scene || !this.camera) return;
@@ -351,11 +372,9 @@ export function createSelectScreen(deps) {
     const rest = (list) => list.filter(c => !tripo.has(c.id));
     const tiers = [
       { label: 'TRIPO ORIGINALS', fighters: roster.filter(c => tripo.has(c.id)) },
-      // Membership-based (dedup 2026-10-22): positional slices broke when
-      // attire-cards folded out of the roster shifted every index.
-      { label: 'THE NINE SOULS', fighters: rest(roster.filter(c => SOUL_IDS.includes(c.id))) },
-      { label: 'MAIN ROSTER', fighters: rest(roster.filter(c => MAIN_IDS.includes(c.id))) },
-      { label: 'BONUS ROSTER', fighters: rest(roster.filter(c => !SOUL_IDS.includes(c.id) && !MAIN_IDS.includes(c.id))) },
+      { label: 'THE NINE SOULS', fighters: rest(roster.slice(0, 9)) },
+      { label: 'MAIN ROSTER', fighters: rest(roster.slice(9, 16)) },
+      { label: 'BONUS ROSTER', fighters: rest(roster.slice(16)) },
     ].filter(t => t.fighters.length);
     tiers.forEach(({ label, fighters }) => {
       const t = document.createElement('div');
