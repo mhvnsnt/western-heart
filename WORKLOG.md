@@ -1781,3 +1781,5 @@ Live-browser playtest (rendering, combat feel, balance) still needed — delegat
 **Method:** plain-copy rebase (no git repo): per-file 3-way analysis base/head/main via GitHub API; fighter.js/game.js rebased hunk-by-hunk with exact-verbatim block transplants; node --check on all touched JS; brawler-sim bot playthrough re-run after each rebase. Pushed as merge commits on the branch (parents: branch tip + current main) — no force-push, no clobber.
 
 **Proof:** `node --test game/tests/brawler-sim.test.mjs` on the rebased tree → PASS (stages=[0,1,2,3,4], bosses=[warden,mask,ogre,sphere,shadow,shadow2], surge fired, 45 banners, victory, no exceptions). `node --check` clean on all 9 touched JS files.
+
+**Status:** rebased onto 7fe0cb41 and pushed (e4cfd042); brawler-sim PASS post-rebase; CI re-triggered via contents API (git/refs updates don't fire push events); awaiting green checks + merge gate.
