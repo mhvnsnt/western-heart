@@ -1,26 +1,28 @@
 /* ============================================================
-   WESTERN HEART — Tekken-style character select (2026-10-20)
-   Built from the teardown record, not a guessed layout:
-   - Tekken 3 selector (teardown/tekken3/tools/tekken3recompiled):
-     the real RE'd selector composites BACKDROP + LEFT_PLAYER +
-     RIGHT_PLAYER + frames + ROSTER + CENTRE packets — a bisected
-     P1/P2 zone over a roster field; portraits center-cropped 2:3;
-     the selected aperture is LARGER than its neighbours
-     (72x108 vs 56x84); the timer starts at 99; a pick is a
-     two-step flow (choose fighter, then outfit) and the CPU card
-     appears on the CPU's own side.
-   - Tekken 1/6 (docs/select-redesign/SELECT-DESIGN.md §1):
-     punch button = outfit 1, kick button = outfit 2 at select;
-     "?" random slots sit at the ends of the portrait row.
-   - Tekken 8 (same doc): live animated 3D models in the big
-     zone (never a still), per-character costume slots chosen
-     right on the select screen, bottom hints bar.
-   Owner spec (2026-10-18 + 2026-10-19): top ~75-80% bisected
-   zone, bottom ~20% card strip is the ONLY scrolling element
-   and scrolls inside its own box, tap a card -> that fighter's
-   animated model appears on YOUR side, name + style on cards,
-   name + style + stats on the picked side, attire switching on
-   the select screen, touch first.
+   WESTERN HEART — Tekken 8-style character select (2026-10-22
+   grid transplant; replaces the 2026-10-20 bisected-zone+strip).
+   Layout lineage (decoded from public T8 references — see
+   docs/select-redesign/T8-GRID-DECODE.md; no ripped Tekken UI):
+   - T8: bisected P1/P2 big-model zone, each side with a large
+     faded portrait-art backdrop (red wash P1, blue wash P2),
+     big italic name banner, fact block (Fighting Style /
+     Nationality / Height / Weight), and a COMPACT CENTERED GRID
+     of small square portrait cards — small relative to
+     everything else, P1 (pink-red) / P2 (blue) cursors, locked
+     cards badged P1/P2, "?" random slot in the grid, bottom
+     hints bar (Confirm / Back / Customized Slots).
+   - T3 selector (teardown record): the selected aperture is LARGER
+     than its neighbours; timer starts at 99; two-step pick
+     (fighter, then outfit); "?" random slot.
+   - T6/T1: punch = outfit 1, kick = outfit 2 at select.
+   Owner spec carried over: tap a card -> that fighter's animated
+   model appears on YOUR side; name + style + stats on the plate;
+   attire switching ON the select screen (T8 "customized slots");
+   touch first; the grid is the ONLY scrolling element and scrolls
+   inside its own box — the page never scrolls.
+   The LOOK is skin-driven (js/ui-skin.js): every color, font,
+   and card-geometry token comes from the active skin, so the T8
+   look can be refined or swapped without touching this logic.
    Previews reuse the existing model pipeline (assets.js
    loadModels/createInstance) — the same GLBs and Idle clips
    the fight itself uses. Stats shown are the game's real
@@ -36,6 +38,10 @@ import { attiresFor, selectedAttireModel, setAttire, attireLabel } from './attir
 // idle), not at boot. See game/js/lazy.js.
 import { lazy } from './lazy.js';
 import { mark } from './loadperf.js';
+import { getSkin, applySkin, activeSkinId } from './ui-skin.js';
+/* Tier membership comes from the roster module (SOUL_IDS/MAIN_IDS) —
+   the same source main's select screen used; the grid only restyles
+   the presentation, it never redefines the tiers. */
 import { SOUL_IDS, MAIN_IDS } from './roster-full.js';
 
 const DEFAULT_STATS = { speed: 2.8, jump: 7.2, power: 1.1, defense: 1.05 };
@@ -319,12 +325,36 @@ const _tripoReady = fetch('data/tripo-fighters.json')
   .then(j => { TRIPO_IDS = new Set((j && j.ids) || []); })
   .catch(() => { TRIPO_IDS = new Set(); });
 
+/* Identity canon guard (owner, non-negotiable): the grid is built from
+   the roster the game hands us, and these mappings must hold there —
+   RAVE = KIKO TANAKA = GHOST is ONE entry ('rave'); MARY POSA goes
+   OVER Zafina (no separate Zafina slot); PHANTOM is the select entry
+   (Yoshimitsu ladders into Phantom's attires, never a second card).
+   This builder asserts the canon rather than re-implementing it: if
+   the roster ever violates it, the violation is logged loudly instead
+   of silently rendering two cards. */
+function assertCanon(roster) {
+  const ids = new Set(roster.map(c => c.id));
+  const problems = [];
+  if (ids.has('kiko-tanaka') || ids.has('ghost')) problems.push('rave/kiko-tanaka/ghost split into separate entries');
+  if (ids.has('zafina')) problems.push('separate zafina slot (mary posa goes OVER zafina)');
+  if (ids.has('yoshimitsu')) problems.push('separate yoshimitsu slot (ladders into phantom attires)');
+  if (problems.length) console.error('[WH] select canon violation:', problems.join(' · '));
+}
+
 export function createSelectScreen(deps) {
   const { audio } = deps;
   const $ = (id) => document.getElementById(id);
-  const strip = $('char-grid');
+  const grid = $('char-grid');
   const hint = $('select-hint');
   const confirmBtn = $('confirm-fighter');
+  const root = $('screen-select');
+
+  // Skin: every visual token comes from ui-skin.js (drop-in contract
+  // documented there). Re-applied on build + onShow so a ?skin=<id>
+  // deep link or setSkin() call takes effect without a reload.
+  const skin = () => getSkin(activeSkinId());
+  if (root) applySkin(root, skin());
 
   const panes = {
     p1: new PreviewPane($('pane-canvas-p1'), 'p1'),
@@ -353,62 +383,62 @@ export function createSelectScreen(deps) {
     focusIdx: 0,
   };
 
-  /* ---------- card strip ---------- */
+  /* ---------- T8 grid ---------- */
   function portraitHTML(c) {
-    // Portrait files are the personality pass's drop-in point: the same
-    // assets/portraits/<id>.png path the old grid used. A fighter with
-    // no portrait yet gets a monogram plate — never another fighter's
-    // face (the old repeated-placeholder bug).
+    // Portrait files are the personality pass's drop-in point:
+    // assets/portraits/<id>.png. A fighter with no portrait yet gets
+    // a monogram plate — never another fighter's face (the old
+    // repeated-placeholder bug).
     return `<div class="portrait"><img src="assets/portraits/${c.id}.png" alt="${c.name}" loading="lazy"
       onerror="this.parentElement.classList.add('no-portrait');this.remove();">
       <span class="mono">${(c.name || '?').slice(0, 2)}</span></div>
-      <div class="cname">${c.name}</div><div class="cstyle">${c.style}</div>`;
+      <div class="cname">${c.name}</div>`;
   }
 
   function build() {
-    if (!strip) return;
-    strip.innerHTML = '';
+    if (!grid) return;
+    if (root) applySkin(root, skin());
+    grid.innerHTML = '';
     const roster = deps.roster();
+    assertCanon(roster);
     const tripo = TRIPO_IDS || new Set();
     const rest = (list) => list.filter(c => !tripo.has(c.id));
     const tiers = [
       { label: 'TRIPO ORIGINALS', fighters: roster.filter(c => tripo.has(c.id)) },
-      // Membership-based (dedup 2026-10-22): positional slices broke when
-      // attire-cards folded out of the roster shifted every index.
       { label: 'THE NINE SOULS', fighters: rest(roster.filter(c => SOUL_IDS.includes(c.id))) },
       { label: 'MAIN ROSTER', fighters: rest(roster.filter(c => MAIN_IDS.includes(c.id))) },
       { label: 'BONUS ROSTER', fighters: rest(roster.filter(c => !SOUL_IDS.includes(c.id) && !MAIN_IDS.includes(c.id))) },
     ].filter(t => t.fighters.length);
     tiers.forEach(({ label, fighters }) => {
       const t = document.createElement('div');
-      t.className = 'strip-tier';
+      t.className = 'grid-tier';
       t.textContent = label;
-      strip.appendChild(t);
+      grid.appendChild(t);
       fighters.forEach((c) => {
         const card = document.createElement('div');
         card.className = 'char-card';
         card.dataset.id = c.id;
         card.innerHTML = portraitHTML(c);
         card.addEventListener('click', () => highlight(c, { fromTap: true }));
-        strip.appendChild(card);
+        grid.appendChild(card);
       });
     });
-    // Tekken 6 convention: a "?" random slot at the end of the row.
+    // Tekken 6 convention: a "?" random slot in the grid.
     const rnd = document.createElement('div');
     rnd.className = 'char-card random-card';
     rnd.dataset.id = '__random';
     rnd.innerHTML = `<div class="portrait"><span class="qmark">?</span></div>
-      <div class="cname">RANDOM</div><div class="cstyle">Fate decides</div>`;
+      <div class="cname">RANDOM</div>`;
     rnd.addEventListener('click', () => {
       const pool = deps.roster().filter(c => c.id !== state.locked.p1?.id && c.id !== state.locked.p2?.id);
       const pick = pool[Math.floor(Math.random() * pool.length)];
       if (pick) highlight(pick, { fromTap: true, scroll: true });
     });
-    strip.appendChild(rnd);
+    grid.appendChild(rnd);
   }
 
-  function allCards() { return [...strip.querySelectorAll('.char-card')]; }
-  function cardFor(id) { return strip.querySelector(`.char-card[data-id="${id}"]`); }
+  function allCards() { return [...grid.querySelectorAll('.char-card')]; }
+  function cardFor(id) { return grid.querySelector(`.char-card[data-id="${id}"]`); }
 
   function paintCards() {
     allCards().forEach((el) => {
@@ -426,17 +456,17 @@ export function createSelectScreen(deps) {
 
   /* ---------- side plates ---------- */
   function plateEls(side) {
-    const root = $(side === 'p1' ? 'pane-p1' : 'pane-p2');
+    const rootEl = $(side === 'p1' ? 'pane-p1' : 'pane-p2');
     return {
-      root,
-      name: root.querySelector('.pane-name'),
-      title: root.querySelector('.pane-title'),
-      style: root.querySelector('.pane-style'),
-      stats: root.querySelector('.pane-stats'),
-      attires: root.querySelector('.pane-attires'),
-      note: root.querySelector('.pane-note'),
-      lock: root.querySelector('.lock-badge'),
-      tag: root.querySelector('.side-tag'),
+      root: rootEl,
+      artwash: rootEl.querySelector('.pane-artwash img'),
+      name: rootEl.querySelector('.pane-name'),
+      facts: rootEl.querySelector('.pane-facts'),
+      stats: rootEl.querySelector('.pane-stats'),
+      attires: rootEl.querySelector('.pane-attires'),
+      note: rootEl.querySelector('.pane-note'),
+      lock: rootEl.querySelector('.lock-badge'),
+      tag: rootEl.querySelector('.side-tag'),
     };
   }
 
@@ -444,6 +474,20 @@ export function createSelectScreen(deps) {
     return `<div class="stat-row"><span class="stat-lab">${label}</span>
       <span class="stat-bar"><i style="width:${Math.round(clamp01(frac) * 100)}%"></i></span>
       <span class="stat-val">${fmt(value)}</span></div>`;
+  }
+
+  /* T8 fact block: label chip in the side color + value below,
+     one row per skin.facts entry. Values come from the fighter;
+     ORIGIN falls back to canon "Parts unknown" — never invented. */
+  function renderFacts(els, c, sk) {
+    const rows = [];
+    for (const [label, field] of sk.facts) {
+      let v = c[field];
+      if (field === 'origin' && !v) v = 'Parts unknown';
+      if (v === undefined || v === null || v === '') continue;
+      rows.push(`<div class="fact"><span class="fact-lab">${label}</span><span class="fact-val">${v}</span></div>`);
+    }
+    els.facts.innerHTML = rows.join('');
   }
 
   function renderPlate(side) {
@@ -454,27 +498,40 @@ export function createSelectScreen(deps) {
     els.root.classList.toggle('is-active', isActive);
     els.root.classList.toggle('is-locked', !!locked);
     els.lock.hidden = !locked;
+    // Backdrop art wash (T8): the fighter's portrait, huge and faded
+    // behind the live model, tinted by side color. Updated only when
+    // the fighter changes so the image never reload-flickers.
+    const artId = c ? c.id : '';
+    if (els.artwash && els.root.dataset.artId !== artId) {
+      els.root.dataset.artId = artId;
+      if (artId) {
+        els.artwash.hidden = false;
+        els.artwash.onerror = () => { els.artwash.hidden = true; };
+        els.artwash.src = `assets/portraits/${artId}.png`;
+      } else {
+        els.artwash.hidden = true;
+        els.artwash.removeAttribute('src');
+      }
+    }
     if (!c) {
       els.name.textContent = side === 'p1' ? 'PLAYER 1' : 'PLAYER 2';
-      els.title.textContent = state.mode === 'versus' && side === 'p2' && !state.locked.p1
-        ? 'Waiting for P1…' : 'Pick a fighter';
-      els.style.textContent = '';
+      els.facts.innerHTML = '';
       els.stats.innerHTML = '';
       els.attires.innerHTML = '';
       els.note.hidden = true;
       return;
     }
     els.name.textContent = c.name || '—';
-    els.title.textContent = c.title || '';
+    renderFacts(els, c, skin());
     const modelId = selectedAttireModel(c);
-    els.style.textContent = [c.style, c.archetype, attireLabel(c, modelId)]
-      .filter(Boolean).join(' · ');
     const s = statsFor(c);
     els.stats.innerHTML =
       statRow('POW', s.power, (s.power - 0.5) / 1.5, v => v.toFixed(2)) +
       statRow('SPD', s.speed, s.speed / 3.5, v => v.toFixed(1)) +
       statRow('JMP', s.jump, s.jump / 10, v => v.toFixed(1)) +
       statRow('DEF', s.defense, (s.defense - 0.5) / 1.5, v => v.toFixed(2));
+    // Attire label joins the fact block's tail (T8 "customized slots"
+    // live on the select screen).
     renderAttires(side, c, !locked && isActive);
   }
 
@@ -574,6 +631,14 @@ export function createSelectScreen(deps) {
       const el = cardFor(c.id);
       if (el) el.scrollIntoView({ block: 'nearest', inline: 'nearest' });
     }
+    if (opts.fromTap) {
+      const el = cardFor(c.id);
+      if (el) {
+        el.classList.remove('tap-flash');
+        void el.offsetWidth; // restart the animation
+        el.classList.add('tap-flash');
+      }
+    }
     deps.onHighlight(c);
   }
 
@@ -619,6 +684,7 @@ export function createSelectScreen(deps) {
 
   function onShow(mode) {
     const fresh = state.phase === 'done' || state.mode !== mode || !state._shown;
+    if (root) applySkin(root, skin());
     if (fresh) {
       state.mode = mode;
       state.phase = 'pick';
@@ -639,23 +705,30 @@ export function createSelectScreen(deps) {
   }
 
   /* ---------- keyboard (desktop parity; touch is primary) ----------
-     Arrows walk the strip, Enter highlights then confirms (via the
-     real CONFIRM button so every mode hook still fires), J/K are
+     Arrows walk the grid (up/down jump a full row, computed from the
+     rendered columns), Enter highlights then confirms (via the real
+     CONFIRM button so every mode hook still fires), J/K are
      punch/kick attire switching. */
+  function gridCols() {
+    if (!grid) return 1;
+    const t = getComputedStyle(grid).gridTemplateColumns.split(' ').filter(Boolean).length;
+    return Math.max(1, t || 1);
+  }
   document.addEventListener('keydown', (e) => {
     const sel = $('screen-select');
     if (!sel || !sel.classList.contains('active')) return;
-    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
-      const cards = allCards();
-      if (!cards.length) return;
-      state.focusIdx = (state.focusIdx + (e.key === 'ArrowRight' ? 1 : -1) + cards.length) % cards.length;
+    const cards = allCards();
+    if (!cards.length) return;
+    const cols = gridCols();
+    const step = { ArrowRight: 1, ArrowLeft: -1, ArrowDown: cols, ArrowUp: -cols }[e.key];
+    if (step !== undefined) {
+      state.focusIdx = (state.focusIdx + step + cards.length) % cards.length;
       cards.forEach(x => x.classList.remove('kb-focus'));
       const el = cards[state.focusIdx];
       el.classList.add('kb-focus');
       el.scrollIntoView({ block: 'nearest', inline: 'nearest' });
       e.preventDefault();
     } else if (e.key === 'Enter' || e.key === ' ') {
-      const cards = allCards();
       const card = cards[state.focusIdx];
       if (!card) return;
       if (card.dataset.id === '__random') { card.click(); e.preventDefault(); return; }
@@ -676,6 +749,6 @@ export function createSelectScreen(deps) {
   if (kBtn) kBtn.addEventListener('click', kickAttire);
 
   // The Tripo list arrives after the first build: rebuild once so those fighters lead the grid.
-  _tripoReady.then(() => { if (strip && strip.children.length) { build(); paintCards(); } });
+  _tripoReady.then(() => { if (grid && grid.children.length) { build(); paintCards(); } });
   return { build, onShow, selectById, notifyConfirm, highlight, _state: state, _panes: panes };
 }
