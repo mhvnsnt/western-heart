@@ -46,6 +46,69 @@ BANKS = {
     "heihachi": "lab/game/assets/t3_heihachi_t3real.glb",
     "armorking": "lab/game/assets/t3_armorking_t3real.glb",
 }
+# ---------------------------------------------------------------------------
+# NEUTRAL_BIND (2026-10-22, star segment-flip fix): the T3 18-part import
+# rigs carry a POSED STANCE FRAME as their joint positions (xiaoyu: thighs
+# slanted fwd ~33 deg, shins back ~31 deg, forearms crossed to the opposite
+# hip, Chest joint sitting on the Hips). The runtime retarget
+# (game/js/t3anims.js) derives its per-bone swing A from the bank skeleton's
+# rest directions, so a posed "rest" injects that stance into every frame of
+# every clip: measured in-game, xiaoyu-bank forearm fronts landed 130-170 deg
+# off the decoded motion on every rig tested (Star, Pantera), legs pitched
+# 33-39 deg. King's bank (WH-Canonical-22) uses a true neutral bind and
+# retargets cleanly (all swings <= ~9 deg). For the banks listed here,
+# rebuild the rest positions as a neutral bind in the king pattern from the
+# source rig's OWN bone lengths (lengths are pose-invariant) and proportions.
+# Clip files are untouched: their world rotations do not depend on skeleton
+# positions (positions feed only the swing/facing derivation).
+NEUTRAL_BIND_GLBS = {"lab/game/assets/t3_xiaoyu_t3real.glb"}
+NEUTRAL_BIND_NOTE = (
+    " CORRECTED 2026-10-22 (star segment-flip fix): the source GLB's joint positions are a posed stance frame, "
+    "not a bind (thighs slanted fwd, shins back, forearms crossed to the opposite hip, Chest joint on the Hips). "
+    "The runtime retarget derives its per-bone swing from these rest directions, so the stance was injected into "
+    "every frame of every clip (forearm fronts 130-170 deg off the decoded motion on every rig tested). "
+    "Rest positions rebuilt as a neutral bind from the source rig's own bone lengths and proportions "
+    "(king-canonical pattern; tools/anim/t3_bank_skeleton.py NEUTRAL_BIND_GLBS). Clip files are unchanged: "
+    "their world rotations do not depend on skeleton positions.")
+
+
+def neutral_bind(out):
+    """Neutral-bind rest positions for a stance-posed source skeleton."""
+    P = {j["name"]: np.array(j["rest"], float) for j in out}
+    L = lambda a, b: float(np.linalg.norm(P[b] - P[a]))
+    root_y = float(P["Root"][1])
+    scale = root_y / 0.9805  # king bank's root height (canonical proportions)
+    hip_half = float(np.mean([abs(P["LeftUpLeg"][0]), abs(P["RightUpLeg"][0])]))
+    hip_y = root_y - 0.056 * scale          # king: Hips -> UpLeg vertical drop
+    chest_y = root_y + 0.351 * scale        # king: Hips -> Chest rise
+    head_y = chest_y + 0.296 * scale        # king: Chest -> Head rise
+    sh_y = chest_y + 0.053 * scale          # king: Chest -> Shoulder rise
+    sh_half = max(0.055, min(0.074, 0.074 * (hip_half / 0.154)))
+    new = {"Root": [0.0, root_y, 0.0], "Hips": [0.0, root_y, 0.0],
+           "Chest": [0.0, chest_y, 0.0], "Head": [0.0, head_y, 0.0]}
+    tips = {}
+    for s, sgn in (("Left", 1.0), ("Right", -1.0)):
+        thigh, shin = L(s + "UpLeg", s + "Leg"), L(s + "Leg", s + "Foot")
+        knee_y = hip_y - thigh
+        ank_y = knee_y - shin
+        new[s + "UpLeg"] = [sgn * hip_half, hip_y, 0.0]
+        new[s + "Leg"] = [sgn * (hip_half + 0.004), knee_y, 0.0]
+        new[s + "Foot"] = [sgn * (hip_half + 0.004), ank_y, 0.0]
+        clav, upper, fore = (L(s + "Shoulder", s + "Arm"), L(s + "Arm", s + "ForeArm"),
+                             L(s + "ForeArm", s + "Hand"))
+        new[s + "Shoulder"] = [sgn * sh_half, sh_y, 0.0]
+        new[s + "Arm"] = [sgn * (sh_half + clav), sh_y, 0.0]
+        new[s + "ForeArm"] = [sgn * (sh_half + clav + upper), sh_y, 0.0]
+        new[s + "Hand"] = [sgn * (sh_half + clav + upper + fore), sh_y, 0.0]
+        ts = root_y / 0.989226  # flat forward toe, king's foot direction
+        tips[s + "Foot"] = [round(float(new[s + "Foot"][0]), 6),
+                            round(float(new[s + "Foot"][1] - 0.048 * ts), 6),
+                            round(float(new[s + "Foot"][2] + 0.135 * ts), 6)]
+    for j in out:
+        j["rest"] = [round(float(v), 6) for v in new[j["name"]]]
+    return out, tips
+
+
 COMP = {5120: np.int8, 5121: np.uint8, 5122: np.int16, 5123: np.uint16, 5125: np.uint32, 5126: np.float32}
 NCOMP = {"SCALAR": 1, "VEC2": 2, "VEC3": 3, "VEC4": 4, "MAT4": 16}
 
@@ -158,13 +221,17 @@ def skeleton(glb_rel):
             tip = centroid
         # Mesh is bound in rest = world (identity rest, no node transform above the skin root).
         tips[foot] = [round(float(x), 6) for x in tip]
+    note = "Rest pose of the rig the bank's clips were baked onto. All joint rest rotations are identity; rest = world joint positions (glTF space, meters, faces +Z, character left = +X)."
+    if glb_rel in NEUTRAL_BIND_GLBS:
+        out, tips = neutral_bind(out)
+        note += NEUTRAL_BIND_NOTE
     root = out[0]
     return {
         "format": "wh-anim-skel/1",
         "source_glb": glb_rel,
         "source_glb_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
         "tool": "tools/anim/t3_bank_skeleton.py",
-        "note": "Rest pose of the rig the bank's clips were baked onto. All joint rest rotations are identity; rest = world joint positions (glTF space, meters, faces +Z, character left = +X).",
+        "note": note,
         "root": root["name"],
         "root_rest_y": root["rest"][1],
         "joints": out,
