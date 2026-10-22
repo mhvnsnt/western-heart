@@ -157,12 +157,12 @@ export const FULL_ROSTER = [
     colors: { suit: 0xd0d0d0, trim: 0x6accff }, style: 'Grappler', archetype: 'Ninja' },
   { id: 'slice', name: 'SLICE', title: 'Maniacal Agent', base: 'Dragunov', moveset: 'bryan', model: 'slice', tintStrength: 0.6,
     colors: { suit: 0x2a2a2a, trim: 0xcc0000 }, style: 'Commando Sambo', archetype: 'Grappler' },
-  { id: 'docfrank', name: 'DOC FRANK', title: 'Father of Machines', base: 'Bosconovitch', moveset: 'gunjack', model: 'doc-frank-a1', tintStrength: 0.6,
+  { id: 'docfrank', name: 'DOC FRANK', title: 'Father of Machines', base: 'Bosconovitch', moveset: 'gunjack', model: 'doc-frank-big', tintStrength: 0.6,
     colors: { suit: 0x6a6a7a, trim: 0x00ffcc }, style: 'Inventor', archetype: 'Tricky',
-    // Main entry model = ATTIRE 1 pre-form (owner ladder rule 2026-10-21:
-    // Tripo attires at the forefront; this entry previously pointed at the
-    // machine-shop RESKIN, and the picker default at the Bosconovitch base
-    // GLB — both ladder-back entries, now fixed).
+    // Main entry model = Attire 1's Tripo bigger form (owner override
+    // 2026-10-21: "show the Tripo 3D models I made for him" — Tripo models
+    // lead, Tekken-based models ladder back). Matches the picker default
+    // (ATTIRE_VARIANTS 'docfrank' slot 1).
     // Mid-match Roshi-style transformation (owner 2026-10-19):
     // old-man Attire 1 -> bigger Tripo form (2c6cff79, the true transform target). TRANSFORM touch button.
     transform: { targetModel: 'doc-frank-big', powerMult: 1.4, speedMult: 0.88, defenseMult: 1.15, bodyScale: 1.18 } },

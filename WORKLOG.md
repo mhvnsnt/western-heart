@@ -503,3 +503,179 @@ validate.py. This completes all 22 unrigged fighters.
 
 Peak RAM 214–626MB. Outputs meshopt-compressed (10–25MB vs 24–72MB logical).
 SHA-256s in batch4/SHASUMS-rigged.txt.
+
+## 2026-10-21 (~23:14 CDT) — Doc Frank attire reorder: Tripo models lead, Tekken reskins to the back (owner verbatim override)
+
+Owner verbatim: "his 1, 2, 3, 4, 5 should be his Tripo models; the Tekken reskins go toward the back, not 1 or 2. Stop showing me the Tekken versions first — show the Tripo 3D models I made for him."
+
+Root cause found: the 2026-10-21 ~19:08 CDT "ladder rule" lane had put Attire 1's pre-form old man (`doc-frank-a1`) at picker slot 1 as the default — but its file lineage is the PR #263 machine-shop texture reskin of the Bosconovitch base (a Tekken reskin, not a Tripo model), so the user was still seeing a Tekken version first. The picker order the user sees is controlled by `ATTIRE_VARIANTS['docfrank']` in `game/js/attires.js` (rendered chip-by-chip in order by `renderAttires()` in `game/js/select-screen.js`; default = first entry via `selectedAttireModel()`; player fights go through `resolveFighterAttire()` in `game/js/main.js`). The "owner ladder rule" comment the coordinator remembered in `roster-full.js` does not exist — the actual control point is the attires.js ladder.
+
+Change (reorder only — every model stays reachable, nothing deleted):
+- `game/js/attires.js`: `ATTIRE_VARIANTS['docfrank']` reordered — all 7 Tripo models first (slots 1–7: Attire 1 Transformed, Wowomomo pair, Hood pair, Frankenstein pair), Tekken-based models at the back (slots 8–10: old-man pre-form, Bosconovitch base, Machine Shop reskin). Default = slot 1 = `doc-frank-big` (Tripo). Labels now carry provenance: `(TRIPO)` / `(TEKKEN RESKIN)` / `(TEKKEN CANON)`.
+- `game/js/roster-full.js`: main `docfrank` entry model `doc-frank-a1` → `doc-frank-big` (matches the picker default; CPU-enemy Doc Frank now also shows the Tripo model).
+- `game/js/assets.js`: `doc-frank-a1` comment corrected (was falsely claiming "Forefront default").
+- `roster/doc-frank/ATTIRE-SLOTS.md`: ladder rule replaced with the owner's verbatim override; picker-order table (slots 1–10) added; history entry added.
+- Old→new slot mapping: 1→8 (old man), 2→1 (big), 3–8→2–7 (pairs), 9→9, 10→10.
+
+Known trade-off (documented in-code): with the Tripo bigger form as the default, TRANSFORM from the default swaps big→big (no visual change); selecting a back-slot old-man form and transforming still lands on the Tripo bigger form. The A1 two-form pair is intact.
+
+Validation:
+- `node --check` clean on all three edited JS files.
+- `node --test game/tests/model-key-guard.test.mjs`: "own model on both resolution paths" PASS (docfrank player→`doc-frank-big`, enemy→`doc-frank-big`, both in own-list); the file-existence subtest fails only on rigged GLBs absent from the pre-#482 snapshot tree (phantom/diablo/skull/… `model-rigged.glb`) — pre-existing, none doc-frank related (proven via pristine-tree run).
+- `node --test game/tests/fighter-completeness.test.mjs`: "newly wired attire ladders keep the current default" PASS. Two pre-existing failures, both proven unrelated: moveset KNOWN_GAPS (frankenstein moveset JSON added to main after the snapshot) and zen transform targets (never wired on main).
+- Picker proof: executed the real `attiresFor()`/`selectedAttireModel()` against the real `FULL_ROSTER` in node — slots 1–7 Tripo, 8–10 Tekken, default `doc-frank-big`. Rendered proof image from that exact data: `docfrank_picker_proof.png` (viewed).
+- Headless Chromium in this VM cannot perform HTTP navigation (verified: even example.com and trivial pages return empty; `--screenshot` hangs), so no live 3D select-screen capture was possible here — the user reviews the reordered picker on the live Pages build per the loop.
+
+## PR
+- PR: https://github.com/mhvnsnt/western-heart/pull/502
+
+
+## 2026-10-21 — Tripo auto-intake lane: tools/tripo-intake (rig new Tripo statics ASAP)
+
+Owner directive (verbatim): "As soon as a Tripo model comes in you need to get it rigged automatically ASAP to the character rig that it goes to."
+
+Built the intake the owner asked for (PR #TBD):
+
+- tools/tripo-intake/intake.py — orchestrator. `inbox/<fighter>/attire<N>.glb`
+  (+ optional `attire<N>.json` sidecar) → env check → claim (fighter id must be
+  an existing `roster/<dir>`, never guessed; slot must not hold
+  `model-rigged.glb`, never clobbers; input must be an unrigged static) →
+  sha256 + `ledger.json` (identical bytes re-decide identically) →
+  `gltf_codec` decode → `facing_check.py` → `rig_tripo_static.py --facing` →
+  gates on `rig_report.json` → stage
+  `roster/<fighter>/attires/attire<N>/model-rigged.glb` + `WIRING-CHECKLIST.md`
+  → archive the inbox original to `outbox/<fighter>/attire<N>/<timestamp>/`.
+  Exit 0 done / 2 refused / 3 failed. Wiring `game/js/*` stays a REVIEWED step —
+  the intake never edits game code.
+- tools/tripo-intake/facing_check.py — automatic facing determination on the
+  decoded static. cue1 = gamerig foot-vs-shin centroid math (Blender-free port
+  of `normalize_and_face`, snapped to ±X/±Z, raw angle never trusted); cue2 =
+  `assets.js` `feetFacingCue` port on both axes (|score| ≥ 0.05, the game's own
+  threshold). Confidence gate: cues agree AND residual ≤ 15° AND toe offset ≥
+  1.5% of height AND ≥ 500 band verts — else REFUSE (exit 2), never guess.
+  Verified on synthetic T-poses: all 4 cardinal facings CONFIDENT; the 16°-
+  off-axis case (the demonio-a1 failure mode), a skirt-occluded foot band, and
+  a featureless sphere all REFUSE.
+- tools/tripo-intake/README.md — runbook: drop-in convention, stage table,
+  facing gate, what-done-looks-like, the manual wiring checklist, cron-vs-
+  manual recommendation (manual trigger recommended; cron as notifier only).
+- game/tripo-intake.html — suite dropzone/dashboard: drop a GLB to validate
+  it locally (GLB header parse, 0-skins check, sha256), get the exact inbox
+  path + intake commands, download the sidecar JSON; shows recent intakes
+  from `ledger.json` and the demo.
+- tools/TOOLS-INDEX.md §3 — linked.
+
+Gate semantics (aligned with the repo's actual practice): `validate.py` is the
+HARD playable gate — it must pass or nothing stages. `anim_check` is the
+deformation stress gate: its flags are RECORDED (even the shipped Zui A1
+carries anim_check flags on the CMU clip) and must be explained by viewing the
+renders before wiring.
+
+Dry run (end-to-end, --dry-run): temp copy of
+`roster/kinpo/attires/attire1/model.glb` (sha256
+`ec67f8f0ddd57e97a915cc85408df08956dcc8bfddfe982698261f03fb6a155f`, matches
+`roster/kinpo/ATTIRE-SLOTS.md`; original untouched; staged outside the repo).
+
+- facing_check: CONFIDENT +X — cue1 raw yaw 2.8° (snapped +X, residual 2.8°),
+  cue2 x-score +0.157 vs z-score −0.043 (dominant +X), toe offset 3.2% of
+  height, 74k foot verts. Both cues agree.
+- NOTE: the 2026-10-21 k-NN batch lanes rigged kinpo assuming +Z ("Tripo export
+  convention", batch 2). The intake measures +X on the source mesh. The facing
+  gate exists because that assumption is not always true — flagging for the
+  coordinator: kinpo's shipped `model-rigged.glb` may carry 90°-off weights.
+- rig: `rig_tripo_static.py` completed (exit 0); `validate.py` PASS (valid glTF, skinned mesh, canonical bones, height 1.8 m, no missing bones); `anim_check` flags recorded: Hips->LeftPelvis bone variance 155.5%, 40 tearing spikes, p99.9 edge stretch 1.927 (stress-clip flags of the kind the shipped Zui A1 carries; explained by viewed renders). Output `model-rigged.glb` 30.0 MB (sha256 `642c7b3e…`); 9 pose renders.
+- proof: `docs/proof/muse-2026-10-21/tripo-intake/` (`facing_report.json`,
+  `rig_report.json`, `intake_summary.json`, pose renders — viewed,
+  `steps.log`).
+
+Demo (visible in the suite): the dry-run output committed as
+`roster/kinpo/attires/attire1/model-intake.glb` + `MODEL_URLS` key
+`'kinpo-intake-demo'` (suite-viewer demo key only; the live game keeps using
+`'kinpo'`). View at `game/customization-viewer.html?fighter=kinpo-intake-demo`.
+
+Env note: this VM's Blender 4.0.2 needed libEGL/libGL (`Couldn't open
+libEGL.so.1`). apt hung on the mirror; extracted `libegl1_1.7.0-1build1` +
+`libgl1` debs from the Ubuntu pool (libglvnd) to `~/workspace/tools/syslibs`
+and set `LD_LIBRARY_PATH`. Documented in `tools/tripo-intake/README.md`
+troubleshooting.
+
+First dry-run attempt failed at the final encode with ENOSPC (`/tmp` is a
+512MB tmpfs); re-ran with stage/report roots and TMPDIR on the overlay
+filesystem. All intake stages completed on the re-run.
+
+## Doc Frank feet fix (2026-10-21/22, branch fix/docfrank-feet-20261021)
+
+User report (verbatim): "Bosco/Doc Frank — really close, but both feet stick
+out to the side instead of forward on all his models. Fix that; I don't know
+if the feet are twisted or backwards. Everything else is pretty close."
+
+### Diagnosis (two distinct causes, verified by measurement)
+
+**Cause A — animated models (retarget data bug, shared stage):**
+All 5 Doc Frank roster entries animate on the bosconovitch T3 animation bank.
+That bank's `game/assets/anim/t3/bosconovitch/skeleton.json` carried a
+degenerate `foot_tip`: Left ≈ +90°, Right ≈ −109° (sideways). Produced by
+`tools/anim/t3_bank_skeleton.py`'s "centroid of foot-part verts" heuristic
+applied to Bosconovitch's blobby 27-vert T3 foot parts. `t3anims.js`
+`retargetT3Clips` swings every target foot to that vector, baking ~±60°
+symmetric duck feet into every frame.
+- Proof: Node harness running the game's real `t3anims.js`:
+  doc-frank.glb + bosconovitch bank stance @40% → Left +62.8°, Right −53.6°.
+  Same model + jin bank (sane foot_tip) → +5.5°/+11.3° (forward). Model data
+  is fine; bank data was the cause.
+
+**Cause B — static Tripo models (geometry bug, per-model):**
+wowomomo (attire2/base), wowomomo-big, hood-big each have ONE foot modeled
+sideways (PCA: one foot ~84° from lateral, other ~1–8°). The wowomomo *base*
+Tripo pull has it too — a Tripo generation defect in the source asset, not
+repo-introduced. frankenstein-base and frankenstein-big (both meshopt) have
+BOTH feet sideways (PCA yaw ~90° both). Confirmed by Blender 4.0.2 renders
+(viewed).
+
+### Fix
+
+**A (shared stage — FLAG FOR COORDINATOR):**
+- `tools/anim/t3_bank_skeleton.py`: foot_tip computation now keeps the part
+  centroid when its yaw agrees with the WH-Canonical-22 template toe within
+  60° (good banks regenerate byte-identical), else uses the template toe
+  `(0,−0.08,±0.21)` rotated into the bank frame, scaled by ankle height.
+  Rationale: clips were baked for the canonical rig, so foot_tip must be the
+  canonical toe, not the T3 part centroid.
+- `game/assets/anim/t3/bosconovitch/skeleton.json`: surgical 6-number edit to
+  foot_tip → canonical toe, forward +Z, 21° down. (Full tool re-run reverted:
+  would have clobbered the offline 2026-10-22 facing-fix.)
+- Validation: probe now gives Left −8.4°, Right +35.0°; source's own stance
+  feet are Left −9.2°, Right +32.7° — retarget faithful within ~2°. The 35°
+  turnout is Bosconovitch's real stance, not a bug.
+
+**B (static geometry — 5 models):**
+Rotated sideways foot(s) ~90° about ankle (Y axis) to forward, using
+gltf-transform 4.1.1 + meshoptimizer 0.22.0 (industry-standard stack).
+POSITION and NORMAL both rotated. Blender 4.0.2 renders viewed before/after.
+- `roster/doc-frank/attires/attire2/base/model.glb` (wow): left foot −90°
+- `roster/doc-frank/attires/attire2/transformed/model.glb` (wow-big): left −90°
+- `roster/doc-frank/attires/attire3/transformed/model.glb` (hood-big): left −90°
+- `roster/doc-frank/attires/attire4/base/model.glb` (frank-base): both (±90°)
+- `roster/doc-frank/attires/attire4/transformed/model.glb` (frank-big): both
+- `roster/doc-frank/attires/attire1/post-transform/model.glb` (doc-big):
+  verified OK (feet forward), no change.
+- Validation: extent ratios (Z > X = forward) confirm all fixed. Blender
+  renders viewed.
+
+### Files (no deletions)
+- tools/anim/t3_bank_skeleton.py (foot_tip method)
+- game/assets/anim/t3/bosconovitch/skeleton.json (foot_tip 6 numbers)
+- 5 GLBs listed above (foot geometry)
+- WORKLOG.md (this entry)
+
+### Flags for coordinator
+- SHARED STAGE CHANGED: `tools/anim/t3_bank_skeleton.py` foot_tip method.
+  The parallel k-NN root-cause lane should be aware. The change is
+  conservative (good banks regenerate byte-identical).
+- The bosconovitch bank foot_tip fix affects ALL fighters using that bank,
+  not just Doc Frank. This is correct — the bank data was wrong.
+- attire1/pre-transform/model.glb (unwired, T7 bone names) cannot be
+  retargeted by canonBoneName (returns null for 'leg right ankle'). Not
+  in-game, not fixed.
+- doc-frank-wowomomo and doc-frank-frankenstein model-rigged.glb files exist
+  on main but are UNWIRED (assets.js points to unrigged model.glb). Not fixed.
