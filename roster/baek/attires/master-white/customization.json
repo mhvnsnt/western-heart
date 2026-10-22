@@ -7,7 +7,6 @@
   "skin_tone": "#dba06e"
  },
  "colors": {
-  "hair": "#2a1c10",
   "skin": "#dba06e"
  },
  "fighter": "baek",
@@ -35,41 +34,49 @@
    "part_id": "brow-cc0-regular",
    "placement": {
     "px": 0,
-    "py": 0.04,
-    "pz": 1.59,
+    "py": -0.04,
+    "pz": 0.07,
     "rx": 0,
     "ry": 180,
     "rz": 0,
     "s": 1
-   }
+   },
+   "tint": "#2a1c10"
   },
   "face": {
    "glb": "customization/parts/hair/cc0/Hair_Beard.gltf",
    "part_id": "cc0-hair-quaternius-beard",
    "placement": {
     "px": 0,
-    "py": 0.01,
-    "pz": 1.91,
+    "py": -0.046,
+    "pz": 0.068,
     "rx": 0,
     "ry": 180,
     "rz": 0,
-    "s": 1.1
-   }
+    "s": 1
+   },
+   "tint": "#2a1c10"
   },
   "hair": {
    "glb": "customization/parts/hair/cc0/Hair_Buzzed.gltf",
    "part_id": "cc0-hair-quaternius-buzzed",
    "placement": {
     "px": 0,
-    "py": 0.03,
-    "pz": 2.12,
-    "rx": 0,
+    "py": -0.03,
+    "pz": 0.025,
+    "rx": -6,
     "ry": 180,
     "rz": 0,
-    "s": 1.25
-   }
+    "s": 0.92
+   },
+   "tint": "#2a1c10"
   }
  },
  "textures": [],
- "version": 1
+ "version": 1,
+ "hide_meshes": [
+  "pek1u_14",
+  "pek1u_15",
+  "pek1u_13"
+ ]
 }
