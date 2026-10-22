@@ -4,6 +4,15 @@ Living document. Updated every time the owner sets a directive. Newest first.
 
 ## 2026-10-22
 
+
+- **Audio delivery: direct download links, NEVER in-chat attachments
+  (2026-10-22).** The in-chat audio player is broken on the owner's
+  Android app (shows 0:00, won't play). ALL audio files sent to the owner
+  — voice clips, demos, music — go as direct download links via
+  remote-storage upload (`/opt/hatch/bin/remote-storage upload-file`),
+  with the link expiry stated. This applies to every agent, every time;
+  the voice pipeline's `deliver` stage does it automatically
+  (see `tools/character-voice/voice-clone/`).
 - **ANTI-CLOBBER LAW (permanent — written in blood after PR #579).** On
   2026-10-22 PR #579 committed stale full-file copies (base from Oct 17),
   wiping 427 lines of `game/js/assets.js`, 113 of `game/js/main.js`, 32 of
