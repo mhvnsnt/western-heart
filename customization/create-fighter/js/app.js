@@ -9,6 +9,7 @@ import { Preview3D, SKIN_TONES } from './preview3d.js';
 import { Catalog, CATEGORIES, CONFLICTS } from './catalog.js';
 import { createDomeParamUI, loadDomeParams } from '../../../game/js/dome-params.js';
 import { BODY_MORPHS, FACE_SHAPE_MORPHS, FACE_PARAMS, FACE_PRESETS, FACE_CHECKLIST, facePresetVector } from './morphdata.js';
+import { renderArt } from './art.js';
 
 const LS_KEY = 'wh_create_fighter_v1';
 const PRESET_LS_KEY = 'wh_create_fighter_presets';
@@ -181,7 +182,7 @@ function renderPanel(){
   $('#panel-title').textContent = ui.tab.toUpperCase();
   $('#panel-sub').textContent = '';
   body.innerHTML='';
-  ({ body:renderBody, face:renderFace, attire:renderAttire, wardrobe:renderWardrobe, profile:renderProfile, moveset:renderMoveset, limbs:renderLimbs })[ui.tab](body);
+  ({ body:renderBody, face:renderFace, attire:renderAttire, wardrobe:renderWardrobe, profile:renderProfile, moveset:renderMoveset, limbs:renderLimbs, art:(el)=>renderArt(el, ui, { toast }) })[ui.tab](body);
 }
 
 /* ================= BODY ================= */
