@@ -1,3 +1,32 @@
+## 2026-10-22 — Worker 34: FIGHTER DEPTH + LEARNING + STAGE LIFE (canon-mapped)
+
+**Owner instruction (verbatim):** "Pull ALL of this from the teardowns and wire it up: Fighter depth — ki charge, tag throws/crash/assault, hair + cloth physics. Learning — per-character combo trials, ghost AI (learns from players), replay analysis. Stage life — stage intro camera sweeps, weather/time-of-day variants, versus banter dialogue." Follow-up: "Learning tools: YES, ALL — in-game movelist UI, Special Style (easy inputs), punishment training, combo trials, ghost AI, replay analysis. Add: movelist UI, Special Style, punishment training. All with WH canon mapping where naming/identity is a creative call."
+
+**Delivered (12 systems, 15 new files + 2 surgical wires):**
+- `game/js/soul-kindle.js` — Tekken 7 ki charge (1+2+3+4, glow, next hit guaranteed CH, +10% taken, no block in flash). Canon: "SOUL KINDLE" (proposed).
+- `game/js/tag-relay.js` — TTT2 tag assault/crash/throw + red health. Mechanics layer for worker 24's team-battle lane. Canon: "SOUL RELAY" (proposed).
+- `game/js/cloth-hair.js` — verlet cloth + bone-chain hair for Three.js (budgets, LOD, analytic colliders). Pipeline: `wh_cloth` Blender prop → glTF extras → userData → autoAttachCloth.
+- `game/js/combo-trials.js` — per-character trials, PERFECT/GOOD/LATE grades, persisted. Canon: "TRIAL INSCRIPTIONS" (proposed).
+- `game/js/ghost-ai.js` — ghost AI (situation histograms, temperature sampling, persisted). Canon: "SOUL ECHOES" (proposed).
+- `game/js/replay-analysis.js` — REPLAY EVENT CONTRACT v1 + Trial Review overlay (worker 29's recorder plugs in). Canon: "TRIAL REVIEW" (proposed).
+- `game/js/stage-intros.js` — per-land cinematic camera sweeps, skippable. Canon: "LAND REVEAL" (proposed).
+- `game/js/stage-variants.js` — weather/time-of-day variants per land's element + weather particles. Variant list proposed.
+- `game/js/versus-banter.js` — versus-screen banter extending worker 13's intro system; canon-web pairs (dorowani|zen playable now, rest [AWAITING-FIGHTER]).
+- `game/js/movelist-ui.js` — in-game movelist (live from movesets.js). Canon: "INSCRIPTIONS" (proposed).
+- `game/js/special-style.js` — T8 Special Style simplified inputs. Canon: "GUIDED HANDS" (proposed).
+- `game/js/punishment-training.js` — punishment drills, PERFECT/GOOD/MISS/WRONG. Canon: "SKULL'S LESSONS" (proposed).
+- `game/js/fighter-depth.js` — integration layer (FighterDepth + WH_DEPTH_FLAGS feature flags).
+- `game/js/game.js` (surgical): dynamic-import wire in startMatch, raw-queue capture for kindle detection, per-frame onUpdateFrame. Rebased onto current main (kept worker 27's lighting rig; did not resurrect the removed intro block).
+- `game/js/fighter.js` (surgical): kindle CH consumption + damage-taken mult in receiveHit, block denial in tryBlock. Re-applied onto current main (kept face/hand rig work).
+- `game/tests/fighter-depth.test.mjs` — 43 tests, all passing (node).
+- `docs/research/FIGHTER-DEPTH-CANON-MAPPING-2026-10-22.md` — per-system canon mapping + 11-item owner approval checklist.
+
+**Canon decisions needing owner approval:** Soul Kindle name + Kindle/Surge/Urge resolution; Soul Relay naming; Trial Inscriptions teacher (Trial vs Megami); Soul Echoes; Trial Review; Land Reveal; stage variant list; versus banter pairs/lines; Inscriptions vs Soul Manual; Guided Hands vs Soul Guidance; Skull's Lessons vs Punisher's Rite. All flagged in the mapping doc.
+**Proof:** 43/43 node tests pass; node --check on edited files; diff audit surgical-only.
+**Deviations:** working dir `~/workspace/w34/fighterdepth` (cp -r failed: sandbox EPERM on large writes); banter for unrostered fighters staged as [AWAITING-FIGHTER]; replay analyzer defines the contract worker 29 emits; headless DOM proof blocked by sandbox write filter (logic verified in V8/node).
+**Coordination:** worker 24 → call TagRelay/TagTeam; worker 29 → emit REPLAY EVENT CONTRACT v1; worker 13's intro-interactions.js extended (not modified).
+
+---
 # WORKLOG — DEATHFANG build (2026-10-19/20, branch feat/deathfang-yamazaki-20261019)
 
 ## 2026-10-22 — Worker 37 (main menu overhaul): T8-style main menu rebuild
@@ -1893,6 +1922,10 @@ stale full-file copies:
 - Third rebase (fightlab-gungaku lane: GungakuAI lazy import + programmable-dummy
   AI switch in startMatch; photo-mode dynamic import + mode-fightlab router action
   in main.js). Merged without touching those lanes' code.
+- Fourth rebase (worker 34 fighter-depth: FighterDepth dynamic import +
+  onMatchStart hook + soul-kindle queue watch in game.js; kindle block/damage/
+  counter-hit rules in fighter.js; T3 round-2 bank list in movesets.js).
+  Merged without touching that lane's code.
 
 ### Flags for coordinator
 - Input overlap (documented, T8-style): `1+2` = rage art while raging, urge dash while

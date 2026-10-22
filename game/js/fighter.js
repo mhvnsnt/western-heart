@@ -454,7 +454,7 @@ export class Fighter {
     // Secondary systems (teardown wiring 2026-10-22): jiggle spring bones,
     // face morph driver + blink timer, hand pose library.
     // Jiggle: family from char data (default by model); intensity presets.
-    const jiggleFamily = charData.jiggleFamily || 'female';
+    const jiggleFamily = this.char.jiggleFamily || 'female';
     this._jiggle = null;
     // Find first skinned mesh for jiggle rig
     this.root.traverse(o => {
@@ -462,7 +462,7 @@ export class Fighter {
         try { this._jiggle = JiggleRig.fromMesh(o, jiggleFamily); } catch (e) {}
       }
     });
-    const jiggleIntensity = charData.jiggleIntensity || 'natural';
+    const jiggleIntensity = this.char.jiggleIntensity || 'natural';
     if (this._jiggle) this._jiggle.setIntensity(jiggleIntensity);
     // Face rig: morph driver + blink timer
     this._face = FaceRig.attach(this.root);
@@ -704,6 +704,8 @@ export class Fighter {
   tryJump() { if (this.canAct() && this.onGround) { this.vy = this.stats.jump; this.onGround = false; this._enter('jump'); } }
   tryBlock(on) {
     if (this.dead) return;
+    // FIGHTER DEPTH (worker 34): soul kindle flash — cannot block during it (T7).
+    if (on && this.kindle && !this.kindle.canBlock()) return;
     if (on && this.canAct() && this.onGround) { this._enter('block'); this._blendW = 0; }
     else if (!on && this.state === 'block') this._enter('idle');
   }
@@ -931,6 +933,9 @@ export class Fighter {
       return 'block';
     }
     let dmg = move.damage * attacker.stats.power / this.stats.defense;
+    // FIGHTER DEPTH (worker 34): soul kindle — the kindled fighter takes
+    // +10% damage while kindled (Tekken 7 ki charge).
+    if (this.kindle) dmg *= this.kindle.damageTakenMult();
     // T3 HitDamage: counter hit when the defender is in the startup of its own attack:
     // d = e + d*12/10, e = |defender move damage| * 3/10 * 3/10 * (frames into startup / startup).
     let counter = false;
@@ -938,6 +943,13 @@ export class Fighter {
       counter = true;
       const prog = this.attack.startup > 0 ? Math.min(1, this.stateT / this.attack.startup) : 1;
       dmg = this.attack.damage * 0.09 * prog + dmg * 1.2;
+    }
+    // FIGHTER DEPTH (worker 34): soul kindle — the attacker's next landed
+    // hit is a guaranteed counter-hit (Tekken 7 ki charge). Consumes the
+    // kindle; CH damage bump matches the T3 formula's x1.2 term.
+    if (!counter && attacker.kindle && attacker.kindle.consumeOnHitLanded()) {
+      counter = true;
+      dmg = dmg * 1.2;
     }
     // Juggle scaling: first airborne hit x0.8, later ones x0.5.
     if (!this.onGround && !move.isGrab) { dmg *= this._juggle === 0 ? 0.8 : 0.5; this._juggle++; }
