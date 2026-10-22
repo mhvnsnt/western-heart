@@ -740,3 +740,41 @@ Phantom; Tripo-first display order (Pantera A1 sole exception).
 - Input: roster/awa-pop/attires/attire2/model.glb (Tripo pull, on main).
 - Donor clip: assets/free-pull-1/cmu-mocap/fighting/135_04.bvh (CMU, on main).
 - Bank: game/assets/anim/t3/nina/ (awapop -> nina per fighter.js bankIdFor override).
+
+## 2026-10-22 — SmutBase intake sweep (DoggByte subagent)
+
+Standing order: every SmutBase model in `~/workspace/browser_downloads/` gets
+pulled into the repo and wired up. 15 downloads intaken this round.
+
+**Landed in-repo (this + 2 follow-up PRs):**
+- `docs/SMUTBASE-INTAKE-QUEUE.md` — the living queue + manifest (all 15 models,
+  hashes, per-model notes, next steps).
+- `roster/rahkasa/intake/RahkasaV1.1.blend` — four-armed female, user's
+  Oversoul spirit-body pick (Eastern Mind canon).
+- `roster/mina-ashido/intake/`, `roster/miruko/intake/`, `roster/tsuyu-asui/intake/`
+  — Rigify/IK .blends + textures, original names kept so `//` relative texture
+  paths stay linked.
+- `game/assets/stages/pink-narwhal/` — arena asset (NOT a character). Open
+  question: is this the club/DJ base (b8ada591) from CLUB-ARENA-PLAN.md?
+  Needs a Blender look before the arena lane builds on it.
+- `game/assets/materials/fishnet/` — fishnet material (RenCeifer), shared
+  material for the customization suite.
+
+**Staged in workspace (over the 95MB blobs-API limit / third-party code —
+registered in the queue doc, not committed):**
+- `~/workspace/fix2/lily/` — Lily donor, 2.6GB extracted (rig/skeleton donor
+  for the female roster, user-approved body reference).
+- `~/workspace/fix2/smutbase-source/{cydney,nyoka,parvati,vixen}/` — 541MB /
+  557MB / 596MB / 985MB .blends. Cydney: size up breasts/ass at rig time.
+  Vixen: needs a full Tekken-notation moveset (not her source game's inputs).
+- `~/workspace/fix2/smutbase-source/movie-maddness/` — 929MB .blend, contents
+  unidentified, NOT intaken as a character.
+- `~/workspace/fix2/smutbase-source/tools/{fluidpainter-nsfw,buildabod-male,buildabod-female}/`
+  — Blender addons (third-party code stays out of the repo tree per owner law).
+
+**Notes:** Nyoka.rar downloaded twice, byte-identical (md5 e16869e3…),
+extracted once. Miruko, Tsuyu, movie-maddness + 3 addon zips were not on the
+queue list — intaken anyway. Still incoming: SmutBase 22968842 (camel-toe
+check at intake: removable vs painted-on), 91fca296, 0b8ceb43, c278fcf4.
+`tools/tripo-intake/` does not apply (Tripo GLB pulls only); Blender rig lane
+owns the next step. Blender is not installed on this VM.
