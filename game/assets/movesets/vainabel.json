@@ -1,1360 +1,3630 @@
 {
-  "fighter": "vainabel",
-  "display": "VAIN ABEL ELIAS",
-  "tekken_base": "Bass Armstrong",
-  "doa_source": "teardown/dead-or-alive-4/movesets/bass-armstrong/BASS-MOVELIST.md (triangulated DOA2/DOA5/DOA6; PR #218 in-repo copy)",
-  "proxy": false,
-  "proxy_note": null,
-  "schema_version": 2,
-  "variant": 7,
-  "moves": {
-    "1": {
-      "name": "Palm Jab (DOA Bass P)",
-      "input": "1",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Palm Jab",
-      "doa_input": "P",
-      "startup": 0.2,
-      "active": 0.017,
-      "recovery": 0.69,
-      "damage": 8,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "doa:bass:palm-jab",
-      "doa_damage": 12,
-      "note": "DOA5 12f startup per movelist; DOA's single punch distributed across Tekken 1/2",
-      "move_class": "strike",
-      "input_slots": [
-        "1"
-      ]
-    },
-    "2": {
-      "name": "Triple Jab (DOA Bass PP)",
-      "input": "2",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Triple Jab",
-      "doa_input": "PP",
-      "startup": 0.233,
-      "active": 0.017,
-      "recovery": 0.763,
-      "damage": 8,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "doa:bass:triple-jab",
-      "doa_damage": 12,
-      "note": "2nd hit of Bass PPP; DOA's single punch distributed across Tekken 1/2",
-      "move_class": "strike",
-      "input_slots": [
-        "2"
-      ]
-    },
-    "3": {
-      "name": "Low Kick (DOA Bass 2K)",
-      "input": "3",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Low Kick",
-      "doa_input": "2K",
-      "startup": 0.267,
-      "active": 0.017,
-      "recovery": 0.837,
-      "damage": 8,
-      "limb": "legL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "doa:bass:low-kick",
-      "doa_damage": 12,
-      "note": "DOA d+K mapped to neutral 3 for WH fundamentals",
-      "move_class": "strike",
-      "input_slots": [
-        "3"
-      ]
-    },
-    "4": {
-      "name": "High Kick (DOA Bass K)",
-      "input": "4",
-      "doa_source": "bass-armstrong",
-      "doa_move": "High Kick",
-      "doa_input": "K",
-      "startup": 0.367,
-      "active": 0.017,
-      "recovery": 1.057,
-      "damage": 19,
-      "limb": "legR",
-      "heavy": true,
-      "knock": 4.2,
-      "soulGain": 11,
-      "anim_ref": "doa:bass:high-kick",
-      "doa_damage": 30,
-      "note": "DOA5: guard breaks, +2 on block — only kick in cast with both",
-      "move_class": "strike",
-      "input_slots": [
-        "4"
-      ]
-    },
-    "d/f+1": {
-      "name": "Elbow Smash (DOA Bass 3P)",
-      "input": "d/f+1",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Elbow Smash",
-      "doa_input": "3P",
-      "startup": 0.267,
-      "active": 0.017,
-      "recovery": 0.837,
-      "damage": 12,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "doa:bass:elbow-smash",
-      "doa_damage": 20,
-      "move_class": "strike",
-      "input_slots": [
-        "d/f+1"
-      ]
-    },
-    "d+1": {
-      "name": "Low Knuckle (DOA Bass 2P)",
-      "input": "d+1",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Low Knuckle",
-      "doa_input": "2P",
-      "startup": 0.233,
-      "active": 0.017,
-      "recovery": 0.763,
-      "damage": 3,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "doa:bass:low-knuckle",
-      "doa_damage": 5,
-      "move_class": "strike",
-      "input_slots": [
-        "d+1"
-      ]
-    },
-    "d/f+4": {
-      "name": "Front Kick (DOA Bass 3K)",
-      "input": "d/f+4",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Front Kick",
-      "doa_input": "3K",
-      "startup": 0.3,
-      "active": 0.017,
-      "recovery": 0.91,
-      "damage": 16,
-      "limb": "legR",
-      "heavy": true,
-      "knock": 4.2,
-      "soulGain": 11,
-      "anim_ref": "doa:bass:front-kick",
-      "doa_damage": 26,
-      "move_class": "strike",
-      "input_slots": [
-        "d/f+4"
-      ]
-    },
-    "u+1": {
-      "name": "One Hand Hammer (DOA Bass 8P)",
-      "input": "u+1",
-      "doa_source": "bass-armstrong",
-      "doa_move": "One Hand Hammer",
-      "doa_input": "8P",
-      "startup": 0.4,
-      "active": 0.017,
-      "recovery": 1.13,
-      "damage": 11,
-      "limb": "armR",
-      "heavy": true,
-      "knock": 4.2,
-      "soulGain": 11,
-      "anim_ref": "doa:bass:one-hand-hammer",
-      "note": "Overhead hammer; damage estimated (Bass power tier)",
-      "move_class": "strike",
-      "input_slots": [
-        "u+1"
-      ]
-    },
-    "b+1": {
-      "name": "Muscle Elbow (DOA Bass 4P+K)",
-      "input": "b+1",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Muscle Elbow",
-      "doa_input": "4P+K",
-      "startup": 0.3,
-      "active": 0.017,
-      "recovery": 0.91,
-      "damage": 10,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "doa:bass:muscle-elbow",
-      "note": "Damage estimated (Bass power tier)",
-      "move_class": "strike",
-      "input_slots": [
-        "b+1"
-      ]
-    },
-    "f+1+2": {
-      "name": "Bass Lariat (DOA Bass 6P+K)",
-      "input": "f+1+2",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Bass Lariat",
-      "doa_input": "6P+K",
-      "startup": 0.333,
-      "active": 0.017,
-      "recovery": 0.983,
-      "damage": 15,
-      "limb": "armR",
-      "heavy": true,
-      "knock": 4.2,
-      "soulGain": 11,
-      "anim_ref": "doa:bass:bass-lariat",
-      "note": "Signature clothesline; damage estimated (Bass power tier)",
-      "move_class": "strike",
-      "input_slots": [
-        "f+1+2"
-      ]
-    },
-    "d+1+2": {
-      "name": "Axe Bomber (DOA Bass 2P+K)",
-      "input": "d+1+2",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Axe Bomber",
-      "doa_input": "2P+K",
-      "startup": 0.433,
-      "active": 0.017,
-      "recovery": 1.203,
-      "damage": 13,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 4.2,
-      "soulGain": 11,
-      "anim_ref": "doa:bass:axe-bomber",
-      "note": "Delayed follow-up in DOA; damage estimated",
-      "move_class": "strike",
-      "input_slots": [
-        "d+1+2"
-      ]
-    },
-    "f,f+1": {
-      "name": "Smash Gong (DOA Bass 66P)",
-      "input": "f,f+1",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Smash Gong",
-      "doa_input": "66P",
-      "startup": 0.3,
-      "active": 0.017,
-      "recovery": 0.91,
-      "damage": 11,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "doa:bass:smash-gong",
-      "note": "Running strike; damage estimated",
-      "move_class": "string",
-      "input_slots": [
-        "f,f+1",
-        "f",
-        "f+1"
-      ]
-    },
-    "f,f+4": {
-      "name": "Kenka Kick (DOA Bass 66K)",
-      "input": "f,f+4",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Kenka Kick",
-      "doa_input": "66K",
-      "startup": 0.333,
-      "active": 0.017,
-      "recovery": 0.983,
-      "damage": 14,
-      "limb": "legR",
-      "heavy": true,
-      "knock": 4.2,
-      "soulGain": 11,
-      "anim_ref": "doa:bass:kenka-kick",
-      "note": "Running kick; damage estimated",
-      "move_class": "string",
-      "input_slots": [
-        "f,f+4",
-        "f",
-        "f+4"
-      ]
-    },
-    "f,f+1+2": {
-      "name": "Flying Cross Chop (DOA Bass 66P+K)",
-      "input": "f,f+1+2",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Flying Cross Chop",
-      "doa_input": "66P+K",
-      "startup": 0.367,
-      "active": 0.017,
-      "recovery": 1.057,
-      "damage": 15,
-      "limb": "armR",
-      "heavy": true,
-      "knock": 4.2,
-      "soulGain": 11,
-      "anim_ref": "doa:bass:flying-cross-chop",
-      "note": "Running cross chop; damage estimated",
-      "move_class": "string",
-      "input_slots": [
-        "f,f+1+2",
-        "f",
-        "f+1+2"
-      ]
-    },
-    "d/f,d/f+1": {
-      "name": "Buffalo Crash (DOA Bass 33P)",
-      "input": "d/f,d/f+1",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Buffalo Crash",
-      "doa_input": "33P",
-      "startup": 0.4,
-      "active": 0.017,
-      "recovery": 1.13,
-      "damage": 14,
-      "limb": "armR",
-      "heavy": true,
-      "knock": 4.2,
-      "soulGain": 11,
-      "anim_ref": "doa:bass:buffalo-crash",
-      "note": "Charging shoulder; damage estimated",
-      "move_class": "string",
-      "input_slots": [
-        "d/f,d/f+1",
-        "d/f",
-        "d/f+1"
-      ]
-    },
-    "b,f+1": {
-      "name": "Rolling Axe (DOA Bass 64P)",
-      "input": "b,f+1",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Rolling Axe",
-      "doa_input": "64P",
-      "startup": 0.333,
-      "active": 0.017,
-      "recovery": 0.983,
-      "damage": 11,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "doa:bass:rolling-axe",
-      "note": "Damage estimated",
-      "move_class": "string",
-      "input_slots": [
-        "b,f+1",
-        "b",
-        "f+1"
-      ]
-    },
-    "d/b+3": {
-      "name": "Leg Break (DOA Bass 1K)",
-      "input": "d/b+3",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Leg Break",
-      "doa_input": "1K",
-      "startup": 0.3,
-      "active": 0.017,
-      "recovery": 0.91,
-      "damage": 9,
-      "limb": "legL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "doa:bass:leg-break",
-      "note": "Damage estimated",
-      "move_class": "strike",
-      "input_slots": [
-        "d/b+3"
-      ]
-    },
-    "u+4": {
-      "name": "Jumping High Kick (DOA Bass 8K)",
-      "input": "u+4",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Jumping High Kick",
-      "doa_input": "8K",
-      "startup": 0.367,
-      "active": 0.017,
-      "recovery": 1.057,
-      "damage": 11,
-      "limb": "legR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "doa:bass:jumping-high-kick",
-      "note": "Damage estimated",
-      "move_class": "strike",
-      "input_slots": [
-        "u+4"
-      ]
-    },
-    "u+1+2": {
-      "name": "Double Knee Stomp (DOA Bass 8P+K)",
-      "input": "u+1+2",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Double Knee Stomp",
-      "doa_input": "8P+K",
-      "startup": 0.4,
-      "active": 0.017,
-      "recovery": 1.13,
-      "damage": 10,
-      "limb": "legR",
-      "heavy": true,
-      "knock": 4.2,
-      "soulGain": 11,
-      "anim_ref": "doa:bass:double-knee-stomp",
-      "note": "Ground pounce vs downed opponent; damage estimated",
-      "move_class": "strike",
-      "input_slots": [
-        "u+1+2"
-      ]
-    },
-    "1,1": {
-      "name": "Triple Jab (DOA Bass PPP)",
-      "input": "1,1",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Triple Jab",
-      "doa_input": "PPP",
-      "startup": 0.233,
-      "active": 0.017,
-      "recovery": 0.763,
-      "damage": 8,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "doa:bass:triple-jab",
-      "doa_damage": 12,
-      "note": "Hits 1-2 of Bass PPP",
-      "move_class": "string",
-      "input_slots": [
-        "1,1",
-        "1",
-        "1"
-      ]
-    },
-    "1,1,4": {
-      "name": "Combo High Kick (DOA Bass PPK)",
-      "input": "1,1,4",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Combo High Kick",
-      "doa_input": "PPK",
-      "startup": 0.367,
-      "active": 0.017,
-      "recovery": 1.057,
-      "damage": 19,
-      "limb": "legR",
-      "heavy": true,
-      "knock": 4.2,
-      "soulGain": 11,
-      "anim_ref": "doa:bass:combo-high-kick",
-      "doa_damage": 30,
-      "note": "Bass PPK; finisher uses High Kick damage",
-      "move_class": "string",
-      "input_slots": [
-        "1,1,4",
-        "1",
-        "1",
-        "4"
-      ]
-    },
-    "1,1,d+1": {
-      "name": "Combo Hammer (DOA Bass PP2P)",
-      "input": "1,1,d+1",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Combo Hammer",
-      "doa_input": "PP2P",
-      "startup": 0.267,
-      "active": 0.017,
-      "recovery": 0.837,
-      "damage": 3,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "doa:bass:combo-hammer",
-      "doa_damage": 5,
-      "note": "Bass PP,2P; finisher uses Low Knuckle damage",
-      "move_class": "string",
-      "input_slots": [
-        "1,1,d+1",
-        "1",
-        "1",
-        "d+1"
-      ]
-    },
-    "f+1,1": {
-      "name": "Wild Swing (DOA Bass 6PP)",
-      "input": "f+1,1",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Wild Swing",
-      "doa_input": "6PP",
-      "startup": 0.267,
-      "active": 0.017,
-      "recovery": 0.837,
-      "damage": 12,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "doa:bass:wild-swing",
-      "note": "Damage estimated",
-      "move_class": "string",
-      "input_slots": [
-        "f+1,1",
-        "f+1",
-        "1"
-      ]
-    },
-    "b+1,1": {
-      "name": "Stungun Chop (DOA Bass 4PP)",
-      "input": "b+1,1",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Stungun Chop",
-      "doa_input": "4PP",
-      "startup": 0.3,
-      "active": 0.017,
-      "recovery": 0.91,
-      "damage": 11,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "doa:bass:stungun-chop",
-      "note": "Delayed follow-up in DOA; damage estimated",
-      "move_class": "string",
-      "input_slots": [
-        "b+1,1",
-        "b+1",
-        "1"
-      ]
-    },
-    "d/b+1,1": {
-      "name": "Power Gong (DOA Bass 1PP)",
-      "input": "d/b+1,1",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Power Gong",
-      "doa_input": "1PP",
-      "startup": 0.3,
-      "active": 0.017,
-      "recovery": 0.91,
-      "damage": 11,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "doa:bass:power-gong",
-      "note": "Damage estimated",
-      "move_class": "string",
-      "input_slots": [
-        "d/b+1,1",
-        "d/b+1",
-        "1"
-      ]
-    },
-    "f+4,1": {
-      "name": "Knee Hammer (DOA Bass 6KP)",
-      "input": "f+4,1",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Knee Hammer",
-      "doa_input": "6KP",
-      "startup": 0.3,
-      "active": 0.017,
-      "recovery": 0.91,
-      "damage": 12,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "doa:bass:knee-hammer",
-      "note": "Tiger Knee; damage estimated",
-      "move_class": "string",
-      "input_slots": [
-        "f+4,1",
-        "f+4",
-        "1"
-      ]
-    },
-    "d/f+4,4": {
-      "name": "Kick Rush (DOA Bass 3KK)",
-      "input": "d/f+4,4",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Kick Rush",
-      "doa_input": "3KK",
-      "startup": 0.333,
-      "active": 0.017,
-      "recovery": 0.983,
-      "damage": 16,
-      "limb": "legR",
-      "heavy": true,
-      "knock": 4.2,
-      "soulGain": 11,
-      "anim_ref": "doa:bass:kick-rush",
-      "doa_damage": 26,
-      "note": "Finisher uses Front Kick damage",
-      "move_class": "string",
-      "input_slots": [
-        "d/f+4,4",
-        "d/f+4",
-        "4"
-      ]
-    },
-    "u/b+1,1": {
-      "name": "Hell Scissors (DOA Bass 7PP)",
-      "input": "u/b+1,1",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Hell Scissors",
-      "doa_input": "7PP",
-      "startup": 0.333,
-      "active": 0.017,
-      "recovery": 0.983,
-      "damage": 11,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "doa:bass:hell-scissors",
-      "note": "Damage estimated",
-      "move_class": "string",
-      "input_slots": [
-        "u/b+1,1",
-        "u/b+1",
-        "1"
-      ]
-    },
-    "1+3": {
-      "name": "Falcon Arrow (DOA Bass F+P (5T))",
-      "input": "1+3",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Falcon Arrow",
-      "doa_input": "F+P (5T)",
-      "startup": 0.233,
-      "active": 0.017,
-      "recovery": 0.763,
-      "damage": 21,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 6.5,
-      "soulGain": 11,
-      "anim_ref": "doa:bass:falcon-arrow",
-      "throw": true,
-      "unblockable": true,
-      "isGrab": true,
-      "note": "Basic forward throw; DOA2 throw damage not in source — WH grappler convention",
-      "move_class": "throw",
-      "input_slots": [
-        "1+3"
-      ],
-      "throw_break": "1"
-    },
-    "2+4": {
-      "name": "Water Mill (DOA Bass 4F+P (4T))",
-      "input": "2+4",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Water Mill",
-      "doa_input": "4F+P (4T)",
-      "startup": 0.233,
-      "active": 0.017,
-      "recovery": 0.763,
-      "damage": 21,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 6.5,
-      "soulGain": 11,
-      "anim_ref": "doa:bass:water-mill",
-      "throw": true,
-      "unblockable": true,
-      "isGrab": true,
-      "note": "Waterwheel Drop, back throw; WH grappler convention",
-      "move_class": "throw",
-      "input_slots": [
-        "2+4"
-      ],
-      "throw_break": "2"
-    },
-    "f+1+3": {
-      "name": "Bass Tornado (DOA Bass 6F+P (6T))",
-      "input": "f+1+3",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Bass Tornado",
-      "doa_input": "6F+P (6T)",
-      "startup": 0.267,
-      "active": 0.017,
-      "recovery": 0.837,
-      "damage": 24,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 6.5,
-      "soulGain": 11,
-      "anim_ref": "doa:bass:bass-tornado",
-      "throw": true,
-      "unblockable": true,
-      "isGrab": true,
-      "note": "Spinning throw; WH grappler convention",
-      "move_class": "throw",
-      "input_slots": [
-        "f+1+3"
-      ],
-      "throw_break": "1"
-    },
-    "f,f+1+3": {
-      "name": "Powerslam (DOA Bass 66F+P (66T))",
-      "input": "f,f+1+3",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Powerslam",
-      "doa_input": "66F+P (66T)",
-      "startup": 0.333,
-      "active": 0.017,
-      "recovery": 0.983,
-      "damage": 26,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 6.5,
-      "soulGain": 11,
-      "anim_ref": "doa:bass:powerslam",
-      "throw": true,
-      "unblockable": true,
-      "isGrab": true,
-      "note": "Running powerslam; WH grappler convention",
-      "move_class": "throw",
-      "input_slots": [
-        "f,f+1+3"
-      ],
-      "throw_break": "1+2"
-    },
-    "d+1+3": {
-      "name": "Bass Bomb (DOA Bass 2F+P (2T))",
-      "input": "d+1+3",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Bass Bomb",
-      "doa_input": "2F+P (2T)",
-      "startup": 0.267,
-      "active": 0.017,
-      "recovery": 0.837,
-      "damage": 22,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 6.5,
-      "soulGain": 11,
-      "anim_ref": "doa:bass:bass-bomb",
-      "throw": true,
-      "unblockable": true,
-      "isGrab": true,
-      "note": "Vs crouching opponent; WH grappler convention",
-      "move_class": "throw",
-      "input_slots": [
-        "d+1+3"
-      ],
-      "throw_break": "1"
-    },
-    "d/f,d/f+1+3": {
-      "name": "Double Arm DDT (DOA Bass 33F+P)",
-      "input": "d/f,d/f+1+3",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Double Arm DDT",
-      "doa_input": "33F+P",
-      "startup": 0.333,
-      "active": 0.017,
-      "recovery": 0.983,
-      "damage": 26,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 6.5,
-      "soulGain": 11,
-      "anim_ref": "doa:bass:double-arm-ddt",
-      "throw": true,
-      "unblockable": true,
-      "isGrab": true,
-      "note": "Vs crouching opponent; WH grappler convention",
-      "move_class": "throw",
-      "input_slots": [
-        "d/f,d/f+1+3"
-      ],
-      "throw_break": "1+2"
-    },
-    "qcf+1+3": {
-      "name": "Spear Grapple (DOA Bass 236F+P)",
-      "input": "qcf+1+3",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Spear Grapple",
-      "doa_input": "236F+P",
-      "startup": 0.367,
-      "active": 0.017,
-      "recovery": 1.057,
-      "damage": 26,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 6.5,
-      "soulGain": 11,
-      "anim_ref": "doa:bass:spear-grapple",
-      "throw": true,
-      "unblockable": true,
-      "isGrab": true,
-      "note": "Running spear; WH grappler convention",
-      "move_class": "special",
-      "input_slots": [
-        "qcf+1+3"
-      ],
-      "throw_break": "1"
-    },
-    "b,f+1+3": {
-      "name": "Dynamite Lariat (DOA Bass 64F+P)",
-      "input": "b,f+1+3",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Dynamite Lariat",
-      "doa_input": "64F+P",
-      "startup": 0.3,
-      "active": 0.017,
-      "recovery": 0.91,
-      "damage": 24,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 6.5,
-      "soulGain": 11,
-      "anim_ref": "doa:bass:dynamite-lariat",
-      "throw": true,
-      "unblockable": true,
-      "isGrab": true,
-      "note": "WH grappler convention",
-      "move_class": "special",
-      "input_slots": [
-        "b,f+1+3"
-      ],
-      "throw_break": "1+2"
-    },
-    "hcb+1+3": {
-      "name": "Powerbomb (DOA Bass 63214T)",
-      "input": "hcb+1+3",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Powerbomb",
-      "doa_input": "63214T",
-      "startup": 0.4,
-      "active": 0.017,
-      "recovery": 1.13,
-      "damage": 28,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 6.5,
-      "soulGain": 11,
-      "anim_ref": "doa:bass:powerbomb",
-      "throw": true,
-      "unblockable": true,
-      "isGrab": true,
-      "note": "DOA5 chargeable (hold = spinout/double); WH grappler convention",
-      "move_class": "special",
-      "input_slots": [
-        "hcb+1+3"
-      ],
-      "throw_break": "1"
-    },
-    "qcb+1+3": {
-      "name": "Manhattan Driver (DOA Bass 214F+P,2F+P,2,8F+P)",
-      "input": "qcb+1+3",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Manhattan Driver",
-      "doa_input": "214F+P,2F+P,2,8F+P",
-      "startup": 0.433,
-      "active": 0.017,
-      "recovery": 1.203,
-      "damage": 32,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 6.5,
-      "soulGain": 11,
-      "anim_ref": "doa:bass:manhattan-driver",
-      "throw": true,
-      "unblockable": true,
-      "isGrab": true,
-      "note": "3-part combo throw, massive damage in DOA",
-      "move_class": "special",
-      "input_slots": [
-        "qcb+1+3"
-      ],
-      "throw_break": "1"
-    },
-    "u+1+3": {
-      "name": "Super Freak (DOA Bass 8F+P (8T))",
-      "input": "u+1+3",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Super Freak",
-      "doa_input": "8F+P (8T)",
-      "startup": 0.3,
-      "active": 0.017,
-      "recovery": 0.91,
-      "damage": 24,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 6.5,
-      "soulGain": 11,
-      "anim_ref": "doa:bass:super-freak",
-      "throw": true,
-      "unblockable": true,
-      "isGrab": true,
-      "note": "WH grappler convention",
-      "move_class": "throw",
-      "input_slots": [
-        "u+1+3"
-      ],
-      "throw_break": "1"
-    },
-    "1+2": {
-      "name": "Front Facelock (DOA Bass H (offensive hold))",
-      "input": "1+2",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Front Facelock",
-      "doa_input": "H (offensive hold)",
-      "startup": 0.267,
-      "active": 0.017,
-      "recovery": 0.837,
-      "damage": 25,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 6.5,
-      "soulGain": 11,
-      "anim_ref": "doa:bass:front-facelock",
-      "doa_damage": 40,
-      "throw": true,
-      "unblockable": true,
-      "isGrab": true,
-      "note": "DOA high hold wired as WH throw per federation rule",
-      "move_class": "throw",
-      "input_slots": [
-        "1+2"
-      ],
-      "throw_break": "1+2"
-    },
-    "qcf+1+2": {
-      "name": "Headlock (DOA Bass 236H)",
-      "input": "qcf+1+2",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Headlock",
-      "doa_input": "236H",
-      "startup": 0.3,
-      "active": 0.017,
-      "recovery": 0.91,
-      "damage": 22,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 6.5,
-      "soulGain": 11,
-      "anim_ref": "doa:bass:headlock",
-      "doa_damage": 35,
-      "throw": true,
-      "unblockable": true,
-      "isGrab": true,
-      "note": "DOA offensive hold wired as WH throw per federation rule",
-      "move_class": "special",
-      "input_slots": [
-        "qcf+1+2"
-      ],
-      "throw_break": "1+2"
-    },
-    "u/b+1+2": {
-      "name": "Buffalo Rampage (DOA Bass 7P+K held)",
-      "input": "u/b+1+2",
-      "doa_source": "bass-armstrong",
-      "doa_move": "Buffalo Rampage",
-      "doa_input": "7P+K held",
-      "startup": 0.5,
-      "active": 0.017,
-      "recovery": 1.35,
-      "damage": 35,
-      "limb": "armR",
-      "heavy": true,
-      "knock": 4.2,
-      "soulGain": 11,
-      "anim_ref": "doa:bass:buffalo-rampage",
-      "note": "DOA5 Power Blow: health <= 50%, cinematic, one use per round on hit",
-      "move_class": "special",
-      "input_slots": [
-        "u/b+1+2"
-      ]
-    },
-    "1+4": {
-      "name": "Elias Brothers' Chokeslam [WH SIGNATURE]",
-      "input": "1+4",
-      "startup": 0.33,
-      "active": 0.05,
-      "recovery": 0.95,
-      "damage": 24,
-      "limb": "armR",
-      "heavy": true,
-      "knock": 6.5,
-      "soulGain": 14,
-      "anim_ref": "wh:vainabel:sig:elias-brothers-chokeslam",
-      "input_slots": [
-        "1+4"
-      ],
-      "move_class": "signature",
-      "wh_original": true,
-      "note": "He teams with Kane Abel as the Elias Brothers. The double chokeslam, solo edition - the devil's favorite demon.",
-      "throw": true,
-      "unblockable": true,
-      "isGrab": true,
-      "input_remapped_from": "P+K",
-      "throw_break": "1+2"
-    },
-    "3+4": {
-      "name": "Purple Light Sermon [WH SIGNATURE]",
-      "input": "3+4",
-      "startup": 0.31,
-      "active": 0.1,
-      "recovery": 0.92,
-      "damage": 19,
-      "limb": "armR",
-      "heavy": true,
-      "knock": 4.2,
-      "soulGain": 13,
-      "anim_ref": "wh:vainabel:sig:purple-light-sermon",
-      "input_slots": [
-        "3+4"
-      ],
-      "move_class": "signature",
-      "wh_original": true,
-      "note": "He enters under purple lights to distorted church organ. A false-gospel sermon with the spiked glove.",
-      "input_remapped_from": "S"
-    },
-    "2,1": {
-      "name": "VAIN ABEL ELIAS 2,1 (T3 bryan r153)",
-      "input": "2,1",
-      "t3_source": "bryan",
-      "t3_row": 153,
-      "t3_command": "LP",
-      "startup": 0.317,
-      "active": 0.017,
-      "recovery": 0.65,
-      "damage": 12,
-      "t3_damage": 21,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "string_hit": "2"
-    },
-    "2,1,2": {
-      "name": "VAIN ABEL ELIAS 2,1,2 (T3 bryan r151)",
-      "input": "2,1,2",
-      "t3_source": "bryan",
-      "t3_row": 151,
-      "t3_command": "RP",
-      "startup": 0.217,
-      "active": 0.017,
-      "recovery": 0.783,
-      "damage": 12,
-      "t3_damage": 21,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "string_hit": "2,1"
-    },
-    "P+K": {
-      "name": "Elias Brothers' Chokeslam [WH SIGNATURE]",
-      "input": "P+K",
-      "startup": 0.33,
-      "active": 0.05,
-      "recovery": 0.95,
-      "damage": 24,
-      "limb": "armR",
-      "heavy": true,
-      "knock": 6.5,
-      "soulGain": 14,
-      "anim_ref": "wh:vainabel:sig:elias-brothers-chokeslam",
-      "input_slots": [
-        "P+K",
-        "P",
-        "K"
-      ],
-      "move_class": "signature",
-      "wh_original": true,
-      "note": "He teams with Kane Abel as the Elias Brothers. The double chokeslam, solo edition - the devil's favorite demon.",
-      "throw": true,
-      "unblockable": true,
-      "isGrab": true
-    },
-    "S": {
-      "name": "Purple Light Sermon [WH SIGNATURE]",
-      "input": "S",
-      "startup": 0.31,
-      "active": 0.1,
-      "recovery": 0.92,
-      "damage": 19,
-      "limb": "armR",
-      "heavy": true,
-      "knock": 4.2,
-      "soulGain": 13,
-      "anim_ref": "wh:vainabel:sig:purple-light-sermon",
-      "input_slots": [
-        "S"
-      ],
-      "move_class": "signature",
-      "wh_original": true,
-      "note": "He enters under purple lights to distorted church organ. A false-gospel sermon with the spiked glove."
-    },
-    "d,d/f,d,d/f+1+2": {
-      "name": "VAIN ABEL ELIAS d,d/f,d,d/f+1+2 throw (T3 bryan r211)",
-      "input": "d,d/f,d,d/f+1+2",
-      "t3_source": "bryan",
-      "t3_row": 211,
-      "t3_command": "[2 3 2 3+LP+RP](59f)",
-      "startup": 0.183,
-      "active": 0.017,
-      "recovery": 0.483,
-      "damage": 21,
-      "t3_damage": 35,
-      "limb": "armR",
-      "heavy": true,
-      "knock": 6.5,
-      "soulGain": 11,
-      "throw": true,
-      "unblockable": true,
-      "isGrab": true,
-      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
-    },
-    "d/f+2": {
-      "name": "VAIN ABEL ELIAS d/f+2 (T3 bryan r149)",
-      "input": "d/f+2",
-      "t3_source": "bryan",
-      "t3_row": 149,
-      "t3_command": "3+RP",
-      "startup": 0.383,
-      "active": 0.017,
-      "recovery": 0.633,
-      "damage": 9,
-      "t3_damage": 16,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8
-    },
-    "n,d/b,n,f+1+2": {
-      "name": "VAIN ABEL ELIAS n,d/b,n,f+1+2 throw (T3 bryan r211)",
-      "input": "n,d/b,n,f+1+2",
-      "t3_source": "bryan",
-      "t3_row": 211,
-      "t3_command": "[5 1 5 6+LP+RP](25f)",
-      "startup": 0.183,
-      "active": 0.017,
-      "recovery": 0.483,
-      "damage": 21,
-      "t3_damage": 35,
-      "limb": "armR",
-      "heavy": true,
-      "knock": 6.5,
-      "soulGain": 11,
-      "throw": true,
-      "unblockable": true,
-      "isGrab": true,
-      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
-    },
-    "u/f+4": {
-      "name": "VAIN ABEL ELIAS u/f+4 (T3 bryan r183)",
-      "input": "u/f+4",
-      "t3_source": "bryan",
-      "t3_row": 183,
-      "t3_command": "9+RK",
-      "startup": 0.4,
-      "active": 0.05,
-      "recovery": 0.567,
-      "damage": 13,
-      "t3_damage": 22,
-      "limb": "legR",
-      "heavy": false,
-      "knock": 4.2,
-      "soulGain": 8
-    }
+ "fighter": "vainabel",
+ "display": "VAIN ABEL ELIAS",
+ "tekken_base": "Bass Armstrong (DOA4) — full Tekken-notation conversion",
+ "doa_source": "deadoralive.fandom.com Bass/Dead_or_Alive_4_command_list (111 named entries) + prior DOA2/DOA5/DOA6 triangulated base",
+ "proxy": false,
+ "proxy_note": null,
+ "schema_version": 2,
+ "variant": 8,
+ "moves": {
+  "1": {
+   "name": "Palm Jab (DOA Bass P)",
+   "input": "1",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Palm Jab",
+   "doa_input": "P",
+   "startup": 0.167,
+   "active": 0.033,
+   "recovery": 0.417,
+   "damage": 7,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "doa:bass:palm-jab",
+   "move_class": "strike",
+   "hit_level": "high",
+   "input_slots": [
+    "1"
+   ],
+   "note": "DOA P; i10 jab"
   },
-  "strings": [
-    {
-      "input": "1,1",
-      "hits": [
-        "1",
-        "1"
-      ],
-      "doa": "PPP (Triple Jab)"
-    },
-    {
-      "input": "1,1,4",
-      "hits": [
-        "1",
-        "1",
-        "4"
-      ],
-      "doa": "PPK (Combo High Kick)"
-    },
-    {
-      "input": "1,1,d+1",
-      "hits": [
-        "1",
-        "1",
-        "d+1"
-      ],
-      "doa": "PP,2P (Combo Hammer)"
-    },
-    {
-      "input": "f+1,1",
-      "hits": [
-        "f+1",
-        "1"
-      ],
-      "doa": "6PP (Wild Swing)"
-    },
-    {
-      "input": "b+1,1",
-      "hits": [
-        "b+1",
-        "1"
-      ],
-      "doa": "4PP (Stungun Chop)"
-    },
-    {
-      "input": "d/b+1,1",
-      "hits": [
-        "d/b+1",
-        "1"
-      ],
-      "doa": "1PP (Power Gong)"
-    },
-    {
-      "input": "f+4,1",
-      "hits": [
-        "f+4",
-        "1"
-      ],
-      "doa": "6KP (Knee Hammer)"
-    },
-    {
-      "input": "d/f+4,4",
-      "hits": [
-        "d/f+4",
-        "4"
-      ],
-      "doa": "3KK (Kick Rush)"
-    },
-    {
-      "input": "2,1",
-      "hits": [
-        "2",
-        "1"
-      ],
-      "t3_rows": [
-        152,
-        153
-      ]
-    },
-    {
-      "input": "2,1,2",
-      "hits": [
-        "2",
-        "1",
-        "2"
-      ],
-      "t3_rows": [
-        152,
-        153,
-        151
-      ]
-    }
-  ],
-  "specials": [
-    {
-      "input": "qcf+1+3",
-      "doa_move": "Spear Grapple",
-      "damage": 26,
-      "throw": true
-    },
-    {
-      "input": "b,f+1+3",
-      "doa_move": "Dynamite Lariat",
-      "damage": 24,
-      "throw": true
-    },
-    {
-      "input": "hcb+1+3",
-      "doa_move": "Powerbomb",
-      "damage": 28,
-      "throw": true
-    },
-    {
-      "input": "qcb+1+3",
-      "doa_move": "Manhattan Driver",
-      "damage": 32,
-      "throw": true
-    },
-    {
-      "input": "qcf+1+2",
-      "doa_move": "Headlock",
-      "damage": 22,
-      "throw": true
-    },
-    {
-      "input": "d,d/f,d,d/f+1+2",
-      "t3_row": 211,
-      "damage": 21,
-      "throw": true
-    },
-    {
-      "input": "n,d/b,n,f+1+2",
-      "t3_row": 211,
-      "damage": 21,
-      "throw": true
-    }
-  ],
-  "frame_convention": "DOA2 base damage x0.625 (DOA2 160HP -> WH 100HP); 60fps -> seconds. Palm Jab 12f startup from DOA5 (movelist). All other startups = Bass archetype (official DOA stats: Speed 1/5, Power 5/5, Throw 5/5 — slowest striker). DOA2 throw damage not in source: WH grappler convention (21 base, signature 24-32). DOA inputs mapped to Tekken per docs/movesets/MOVESET-SCHEMA.md federation rule.",
-  "union_merge": {
-    "date": "2026-10-20",
-    "method": "additive union of all historical versions of this file (548 versions / 60 commits / all refs) over current main; identity = canonical input (entry.input, else key); main preserved verbatim, main wins contested inputs (PR #357 precedent)",
-    "versions_considered": 4,
-    "moves_added": 8,
-    "strings_added": 2,
-    "specials_added": 2,
-    "specials_alt_appended": 0,
-    "added_move_keys": [
-      "2,1",
-      "2,1,2",
-      "P+K",
-      "S",
-      "d,d/f,d,d/f+1+2",
-      "d/f+2",
-      "n,d/b,n,f+1+2",
-      "u/f+4"
-    ],
-    "era_note": "final set era census: T8/WH-newest=4, T6/other-teardown=42, T3=6; additions selected newest-era first (T8/T7/TTT2/T6+other teardowns), T3 payloads used only where no newer expression exists; union-first, no-loss absolute"
+  "2": {
+   "name": "Cross Punch (DOA Bass PP)",
+   "input": "2",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Cross Punch",
+   "doa_input": "PP",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 8,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "doa:bass:cross-punch",
+   "move_class": "strike",
+   "hit_level": "high",
+   "input_slots": [
+    "2"
+   ],
+   "note": "DOA PP 2nd hit as standalone 2"
   },
-  "hit_words": {
-    "1+3": 2048,
-    "2+4": 2048,
-    "f+1+3": 2048,
-    "f,f+1+3": 2048,
-    "d+1+3": 2048,
-    "d/f,d/f+1+3": 2048,
-    "qcf+1+3": 2048,
-    "b,f+1+3": 2048,
-    "hcb+1+3": 2048,
-    "qcb+1+3": 2048,
-    "u+1+3": 2048,
-    "1+2": 2048,
-    "qcf+1+2": 2048,
-    "1+4": 2048,
-    "2,1": 1042,
-    "2,1,2": 1042,
-    "P+K": 2048,
-    "d,d/f,d,d/f+1+2": 1042,
-    "d/f+2": 535,
-    "n,d/b,n,f+1+2": 1042,
-    "u/f+4": 535
+  "1,2": {
+   "name": "Combo Gong (2-hit) (DOA Bass PP)",
+   "input": "1,2",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Combo Gong",
+   "doa_input": "PP",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.433,
+   "damage": 14,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.6,
+   "soulGain": 9,
+   "anim_ref": "doa:bass:combo-gong-2-hit",
+   "move_class": "strike",
+   "hit_level": "high,high",
+   "input_slots": [
+    "1,2"
+   ]
   },
-  "stance_after": {}
+  "1,2,1": {
+   "name": "Combo Gong (DOA Bass PPP)",
+   "input": "1,2,1",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Combo Gong",
+   "doa_input": "PPP",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 21,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 3,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:combo-gong",
+   "move_class": "strike",
+   "hit_level": "high,high,high",
+   "input_slots": [
+    "1,2,1"
+   ]
+  },
+  "1,2,d+1": {
+   "name": "Combo Hammer (DOA Bass PP2P)",
+   "input": "1,2,d+1",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Combo Hammer",
+   "doa_input": "PP2P",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:combo-hammer",
+   "move_class": "strike",
+   "hit_level": "high,high,low",
+   "input_slots": [
+    "1,2,d+1"
+   ]
+  },
+  "1,2,3": {
+   "name": "Combo High Kick (DOA Bass PPK)",
+   "input": "1,2,3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Combo High Kick",
+   "doa_input": "PPK",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 22,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 3.2,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:combo-high-kick",
+   "move_class": "strike",
+   "hit_level": "high,high,high",
+   "input_slots": [
+    "1,2,3"
+   ]
+  },
+  "1,3": {
+   "name": "Triple Hit (2-hit) (DOA Bass PK)",
+   "input": "1,3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Combo Triple Hit",
+   "doa_input": "PK",
+   "startup": 0.183,
+   "active": 0.033,
+   "recovery": 0.433,
+   "damage": 15,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.6,
+   "soulGain": 9,
+   "anim_ref": "doa:bass:triple-hit-2-hit",
+   "move_class": "strike",
+   "hit_level": "high,mid",
+   "input_slots": [
+    "1,3"
+   ]
+  },
+  "1,3,2": {
+   "name": "Combo Triple Hit (DOA Bass PKP)",
+   "input": "1,3,2",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Combo Triple Hit",
+   "doa_input": "PKP",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 22,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:combo-triple-hit",
+   "move_class": "strike",
+   "hit_level": "high,mid,high",
+   "input_slots": [
+    "1,3,2"
+   ]
+  },
+  "1,3,4": {
+   "name": "Combo Kick Rush (DOA Bass PKK)",
+   "input": "1,3,4",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Combo Kick Rush",
+   "doa_input": "PKK",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 24,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 3.2,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:combo-kick-rush",
+   "move_class": "strike",
+   "hit_level": "high,mid,mid",
+   "input_slots": [
+    "1,3,4"
+   ]
+  },
+  "f+1": {
+   "name": "Wild Swing (DOA Bass 6P)",
+   "input": "f+1",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Wild Swing",
+   "doa_input": "6P",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 12,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.8,
+   "soulGain": 8,
+   "anim_ref": "doa:bass:wild-swing",
+   "move_class": "strike",
+   "hit_level": "mid",
+   "input_slots": [
+    "f+1"
+   ]
+  },
+  "f+1,2": {
+   "name": "Wild Swing Combo (DOA Bass 6PP)",
+   "input": "f+1,2",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Wild Swing",
+   "doa_input": "6PP",
+   "startup": 0.2,
+   "active": 0.033,
+   "recovery": 0.45,
+   "damage": 22,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 3,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:wild-swing-combo",
+   "move_class": "strike",
+   "hit_level": "mid,high",
+   "input_slots": [
+    "f+1,2"
+   ]
+  },
+  "f+1,2,3": {
+   "name": "Combo Stomp Kick (DOA Bass 6PK)",
+   "input": "f+1,2,3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Combo Stomp Kick",
+   "doa_input": "6PK",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 26,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:combo-stomp-kick",
+   "move_class": "strike",
+   "hit_level": "mid,high,mid",
+   "input_slots": [
+    "f+1,2,3"
+   ]
+  },
+  "u/f+1": {
+   "name": "Elbow Rush (DOA Bass 9P)",
+   "input": "u/f+1",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Elbow Rush",
+   "doa_input": "9P",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 13,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.8,
+   "soulGain": 8,
+   "anim_ref": "doa:bass:elbow-rush",
+   "move_class": "strike",
+   "hit_level": "mid",
+   "input_slots": [
+    "u/f+1"
+   ]
+  },
+  "u/f+1,2": {
+   "name": "Elbow Rush Combo (DOA Bass 9PP)",
+   "input": "u/f+1,2",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Elbow Rush",
+   "doa_input": "9PP",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 24,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 3,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:elbow-rush-combo",
+   "move_class": "strike",
+   "hit_level": "mid,high",
+   "input_slots": [
+    "u/f+1,2"
+   ]
+  },
+  "u/f+1,2,3": {
+   "name": "Elbow Gong (DOA Bass 9PKP)",
+   "input": "u/f+1,2,3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Elbow Gong",
+   "doa_input": "9PKP",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 30,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 3.6,
+   "soulGain": 11,
+   "anim_ref": "doa:bass:elbow-gong",
+   "move_class": "strike",
+   "hit_level": "mid,high,mid",
+   "input_slots": [
+    "u/f+1,2,3"
+   ]
+  },
+  "u/f+1,2,d+3": {
+   "name": "Elbow Hammer (DOA Bass 9PK2P)",
+   "input": "u/f+1,2,d+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Elbow Hammer",
+   "doa_input": "9PK2P",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 32,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.8,
+   "soulGain": 11,
+   "anim_ref": "doa:bass:elbow-hammer",
+   "move_class": "strike",
+   "hit_level": "mid,high,low",
+   "input_slots": [
+    "u/f+1,2,d+3"
+   ]
+  },
+  "u/f+1,3": {
+   "name": "Elbow Stomp Combo (DOA Bass hold-9 PK)",
+   "input": "u/f+1,3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Elbow Stomp Combo",
+   "doa_input": "hold-9 PK",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 26,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:elbow-stomp-combo",
+   "move_class": "strike",
+   "hit_level": "mid,high",
+   "input_slots": [
+    "u/f+1,3"
+   ],
+   "note": "hold 9P version"
+  },
+  "b+1": {
+   "name": "Stun Gun Chop (DOA Bass 4P)",
+   "input": "b+1",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Stun Gun Chop",
+   "doa_input": "4P",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 13,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.8,
+   "soulGain": 8,
+   "anim_ref": "doa:bass:stun-gun-chop",
+   "move_class": "strike",
+   "hit_level": "high",
+   "input_slots": [
+    "b+1"
+   ]
+  },
+  "b+1,2": {
+   "name": "Stun Gun Chop (2-hit) (DOA Bass 4PP)",
+   "input": "b+1,2",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Stun Gun Chop",
+   "doa_input": "4PP",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 24,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:stun-gun-chop-2-hit",
+   "move_class": "strike",
+   "hit_level": "high,high",
+   "input_slots": [
+    "b+1,2"
+   ]
+  },
+  "b+1,2,1": {
+   "name": "Stun Gun Chop (full) (DOA Bass 4PPP)",
+   "input": "b+1,2,1",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Stun Gun Chop",
+   "doa_input": "4PPP",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 32,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 3.6,
+   "soulGain": 11,
+   "anim_ref": "doa:bass:stun-gun-chop-full",
+   "move_class": "strike",
+   "hit_level": "high,high,high",
+   "input_slots": [
+    "b+1,2,1"
+   ]
+  },
+  "b+1,2,1+2": {
+   "name": "Hell Smasher (DOA Bass 4PPP+K)",
+   "input": "b+1,2,1+2",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Hell Smasher",
+   "doa_input": "4PPP+K",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 38,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 12,
+   "anim_ref": "doa:bass:hell-smasher",
+   "move_class": "strike",
+   "hit_level": "high,high,high,mid",
+   "input_slots": [
+    "b+1,2,1+2"
+   ],
+   "note": "heavy"
+  },
+  "u+1": {
+   "name": "One Hand Hammer (DOA Bass 8P)",
+   "input": "u+1",
+   "doa_source": "bass-armstrong",
+   "doa_move": "One Hand Hammer",
+   "doa_input": "8P",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 18,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:one-hand-hammer",
+   "move_class": "strike",
+   "hit_level": "high",
+   "input_slots": [
+    "u+1"
+   ],
+   "note": "overhead"
+  },
+  "u/b+1": {
+   "name": "Mongolian Head Butt (DOA Bass 7P hold-P)",
+   "input": "u/b+1",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Mongolian Head Butt",
+   "doa_input": "7P hold-P",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 20,
+   "limb": "head",
+   "heavy": false,
+   "knock": 3.8,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:mongolian-head-butt",
+   "move_class": "strike",
+   "hit_level": "high",
+   "input_slots": [
+    "u/b+1"
+   ]
+  },
+  "d+1": {
+   "name": "Throat Strike (DOA Bass 2P)",
+   "input": "d+1",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Throat Strike",
+   "doa_input": "2P",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 12,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.8,
+   "soulGain": 8,
+   "anim_ref": "doa:bass:throat-strike",
+   "move_class": "strike",
+   "hit_level": "mid",
+   "input_slots": [
+    "d+1"
+   ]
+  },
+  "d+1,2": {
+   "name": "Throat Strike Combo (DOA Bass 2PP)",
+   "input": "d+1,2",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Throat Strike",
+   "doa_input": "2PP",
+   "startup": 0.217,
+   "active": 0.033,
+   "recovery": 0.467,
+   "damage": 22,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 3,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:throat-strike-combo",
+   "move_class": "strike",
+   "hit_level": "mid,high",
+   "input_slots": [
+    "d+1,2"
+   ]
+  },
+  "d/b+1": {
+   "name": "Power Gong (DOA Bass 1P)",
+   "input": "d/b+1",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Power Gong",
+   "doa_input": "1P",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 14,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 3,
+   "soulGain": 9,
+   "anim_ref": "doa:bass:power-gong",
+   "move_class": "strike",
+   "hit_level": "mid",
+   "input_slots": [
+    "d/b+1"
+   ]
+  },
+  "d/b+1,2": {
+   "name": "Power Gong Combo (DOA Bass 1PP)",
+   "input": "d/b+1,2",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Power Gong",
+   "doa_input": "1PP",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 26,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:power-gong-combo",
+   "move_class": "strike",
+   "hit_level": "mid,high",
+   "input_slots": [
+    "d/b+1,2"
+   ]
+  },
+  "d/b+1,2,1+2": {
+   "name": "Gong Hell Combo (DOA Bass 1PP+K)",
+   "input": "d/b+1,2,1+2",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Gong Hell Combo",
+   "doa_input": "1PP+K",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 34,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4,
+   "soulGain": 12,
+   "anim_ref": "doa:bass:gong-hell-combo",
+   "move_class": "strike",
+   "hit_level": "mid,high,mid",
+   "input_slots": [
+    "d/b+1,2,1+2"
+   ],
+   "note": "heavy"
+  },
+  "d/f+1": {
+   "name": "Muscle Drive (DOA Bass hold-3 P)",
+   "input": "d/f+1",
+   "doa_source": "bass-armstrong",
+   "doa_move": "The Muscle Man",
+   "doa_input": "hold-3 P",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 14,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3,
+   "soulGain": 9,
+   "anim_ref": "doa:bass:muscle-drive",
+   "move_class": "strike",
+   "hit_level": "mid",
+   "input_slots": [
+    "d/f+1"
+   ]
+  },
+  "d/f+1,2": {
+   "name": "The Muscle Man (DOA Bass hold-3 PP)",
+   "input": "d/f+1,2",
+   "doa_source": "bass-armstrong",
+   "doa_move": "The Muscle Man",
+   "doa_input": "hold-3 PP",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 26,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:the-muscle-man",
+   "move_class": "strike",
+   "hit_level": "mid,high",
+   "input_slots": [
+    "d/f+1,2"
+   ]
+  },
+  "f,f+1": {
+   "name": "Smash Gong (DOA Bass 66P)",
+   "input": "f,f+1",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Smash Gong",
+   "doa_input": "66P",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.6,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:smash-gong",
+   "move_class": "strike",
+   "hit_level": "mid",
+   "input_slots": [
+    "f,f+1"
+   ]
+  },
+  "d/f,d/f+1": {
+   "name": "Buffalo Rage (DOA Bass 33P)",
+   "input": "d/f,d/f+1",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Buffalo Rage",
+   "doa_input": "33P",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 16,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.2,
+   "soulGain": 9,
+   "anim_ref": "doa:bass:buffalo-rage",
+   "move_class": "strike",
+   "hit_level": "mid",
+   "input_slots": [
+    "d/f,d/f+1"
+   ]
+  },
+  "d/f,d/f+1,2": {
+   "name": "Buffalo Rage Combo (DOA Bass 33PP)",
+   "input": "d/f,d/f+1,2",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Buffalo Rage",
+   "doa_input": "33PP",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 28,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 3.6,
+   "soulGain": 11,
+   "anim_ref": "doa:bass:buffalo-rage-combo",
+   "move_class": "strike",
+   "hit_level": "mid,high",
+   "input_slots": [
+    "d/f,d/f+1,2"
+   ]
+  },
+  "qcf+1": {
+   "name": "Rolling Hell Smasher (DOA Bass 236P)",
+   "input": "qcf+1",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Rolling Hell Smasher",
+   "doa_input": "236P",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 22,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.4,
+   "soulGain": 11,
+   "anim_ref": "doa:bass:rolling-hell-smasher",
+   "move_class": "strike",
+   "hit_level": "mid",
+   "input_slots": [
+    "qcf+1"
+   ],
+   "note": "launcher-lite"
+  },
+  "b,f+1": {
+   "name": "Diving Hammer (DOA Bass 46 hold-P)",
+   "input": "b,f+1",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Diving Hammer",
+   "doa_input": "46 hold-P",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 24,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "doa:bass:diving-hammer",
+   "move_class": "strike",
+   "hit_level": "mid",
+   "input_slots": [
+    "b,f+1"
+   ],
+   "note": "heavy"
+  },
+  "qcb+1": {
+   "name": "Rolling Axe (DOA Bass 214P)",
+   "input": "qcb+1",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Rolling Axe",
+   "doa_input": "214P",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 22,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4,
+   "soulGain": 11,
+   "anim_ref": "doa:bass:rolling-axe",
+   "move_class": "strike",
+   "hit_level": "mid",
+   "input_slots": [
+    "qcb+1"
+   ]
+  },
+  "f,f,f+1": {
+   "name": "Flying Body Press (DOA Bass running P)",
+   "input": "f,f,f+1",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Flying Body Press",
+   "doa_input": "running P",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 25,
+   "limb": "body",
+   "heavy": true,
+   "knock": 4.4,
+   "soulGain": 12,
+   "anim_ref": "doa:bass:flying-body-press",
+   "move_class": "strike",
+   "hit_level": "mid",
+   "input_slots": [
+    "f,f,f+1"
+   ],
+   "note": "heavy; while running"
+  },
+  "1+2": {
+   "name": "Hell Stab (DOA Bass P+K)",
+   "input": "1+2",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Hell Stab",
+   "doa_input": "P+K",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 16,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 3.2,
+   "soulGain": 9,
+   "anim_ref": "doa:bass:hell-stab",
+   "move_class": "strike",
+   "hit_level": "mid",
+   "input_slots": [
+    "1+2"
+   ]
+  },
+  "f+1+2": {
+   "name": "Mad Lariat (DOA Bass 6P+K)",
+   "input": "f+1+2",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Mad Lariat",
+   "doa_input": "6P+K",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 18,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:mad-lariat",
+   "move_class": "strike",
+   "hit_level": "mid",
+   "input_slots": [
+    "f+1+2"
+   ]
+  },
+  "f+1+2,1": {
+   "name": "Mad Lariat Combo (DOA Bass 6P+KP)",
+   "input": "f+1+2,1",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Mad Lariat",
+   "doa_input": "6P+KP",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 30,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.8,
+   "soulGain": 11,
+   "anim_ref": "doa:bass:mad-lariat-combo",
+   "move_class": "strike",
+   "hit_level": "mid,high",
+   "input_slots": [
+    "f+1+2,1"
+   ]
+  },
+  "b+1+2": {
+   "name": "Muscle Elbow (DOA Bass 4P+K)",
+   "input": "b+1+2",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Muscle Elbow",
+   "doa_input": "4P+K",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 20,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 3.6,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:muscle-elbow",
+   "move_class": "strike",
+   "hit_level": "mid",
+   "input_slots": [
+    "b+1+2"
+   ]
+  },
+  "d/f+1+2": {
+   "name": "Bear Crash (DOA Bass 3P+K)",
+   "input": "d/f+1+2",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Bear Crash",
+   "doa_input": "3P+K",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 22,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.8,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:bear-crash",
+   "move_class": "strike",
+   "hit_level": "mid",
+   "input_slots": [
+    "d/f+1+2"
+   ]
+  },
+  "d/b+1+2": {
+   "name": "Linebacker (DOA Bass 1 hold-P hold-K)",
+   "input": "d/b+1+2",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Linebacker",
+   "doa_input": "1 hold-P hold-K",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 25,
+   "limb": "body",
+   "heavy": true,
+   "knock": 4.4,
+   "soulGain": 12,
+   "anim_ref": "doa:bass:linebacker",
+   "move_class": "strike",
+   "hit_level": "mid",
+   "input_slots": [
+    "d/b+1+2"
+   ],
+   "note": "heavy"
+  },
+  "f,f+1+2": {
+   "name": "Flying Cross Chop (DOA Bass 66P+K)",
+   "input": "f,f+1+2",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Flying Cross Chop",
+   "doa_input": "66P+K",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 24,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "doa:bass:flying-cross-chop",
+   "move_class": "strike",
+   "hit_level": "mid",
+   "input_slots": [
+    "f,f+1+2"
+   ],
+   "note": "heavy"
+  },
+  "d+1+2": {
+   "name": "Buffalo Train (DOA Bass 2P+K)",
+   "input": "d+1+2",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Buffalo Train",
+   "doa_input": "2P+K",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 18,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:buffalo-train",
+   "move_class": "strike",
+   "hit_level": "mid",
+   "input_slots": [
+    "d+1+2"
+   ]
+  },
+  "d+1+2,1": {
+   "name": "Buffalo Train Combo (DOA Bass 2P+KP)",
+   "input": "d+1+2,1",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Buffalo Train",
+   "doa_input": "2P+KP",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 30,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.8,
+   "soulGain": 11,
+   "anim_ref": "doa:bass:buffalo-train-combo",
+   "move_class": "strike",
+   "hit_level": "mid,high",
+   "input_slots": [
+    "d+1+2,1"
+   ]
+  },
+  "d+1+2,1,3": {
+   "name": "Bass Special (DOA Bass 2P+KP+K)",
+   "input": "d+1+2,1,3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Bass Special",
+   "doa_input": "2P+KP+K",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 40,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.4,
+   "soulGain": 12,
+   "anim_ref": "doa:bass:bass-special",
+   "move_class": "strike",
+   "hit_level": "mid,high,mid",
+   "input_slots": [
+    "d+1+2,1,3"
+   ],
+   "note": "heavy"
+  },
+  "f+3": {
+   "name": "Knee Hammer (DOA Bass 6K)",
+   "input": "f+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Knee Hammer",
+   "doa_input": "6K",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 16,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 3.2,
+   "soulGain": 9,
+   "anim_ref": "doa:bass:knee-hammer",
+   "move_class": "strike",
+   "hit_level": "mid",
+   "input_slots": [
+    "f+3"
+   ]
+  },
+  "f+3,1": {
+   "name": "Knee Hammer Combo (DOA Bass 6KP)",
+   "input": "f+3,1",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Knee Hammer",
+   "doa_input": "6KP",
+   "startup": 0.233,
+   "active": 0.033,
+   "recovery": 0.483,
+   "damage": 28,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.6,
+   "soulGain": 11,
+   "anim_ref": "doa:bass:knee-hammer-combo",
+   "move_class": "strike",
+   "hit_level": "mid,high",
+   "input_slots": [
+    "f+3,1"
+   ]
+  },
+  "f+3,4": {
+   "name": "Knee Destroyer (DOA Bass 6KK)",
+   "input": "f+3,4",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Knee Destroyer",
+   "doa_input": "6KK",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 30,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 3.8,
+   "soulGain": 11,
+   "anim_ref": "doa:bass:knee-destroyer",
+   "move_class": "strike",
+   "hit_level": "mid,high",
+   "input_slots": [
+    "f+3,4"
+   ]
+  },
+  "u+3": {
+   "name": "Jumping Knee (DOA Bass 8K)",
+   "input": "u+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Jumping Knee",
+   "doa_input": "8K",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 20,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 3.6,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:jumping-knee",
+   "move_class": "strike",
+   "hit_level": "high",
+   "input_slots": [
+    "u+3"
+   ]
+  },
+  "u/f+3": {
+   "name": "High Stomp Kick (DOA Bass 9K)",
+   "input": "u/f+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "High Stomp Kick",
+   "doa_input": "9K",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 22,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 3.8,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:high-stomp-kick",
+   "move_class": "strike",
+   "hit_level": "high",
+   "input_slots": [
+    "u/f+3"
+   ]
+  },
+  "d/f+3": {
+   "name": "Bass Punch (DOA Bass 3K)",
+   "input": "d/f+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Bass Punch",
+   "doa_input": "3K",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 16,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 3.2,
+   "soulGain": 9,
+   "anim_ref": "doa:bass:bass-punch",
+   "move_class": "strike",
+   "hit_level": "mid",
+   "input_slots": [
+    "d/f+3"
+   ]
+  },
+  "d/f+3,1": {
+   "name": "Bass Punch Combo (DOA Bass 3KP)",
+   "input": "d/f+3,1",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Bass Punch",
+   "doa_input": "3KP",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 28,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.6,
+   "soulGain": 11,
+   "anim_ref": "doa:bass:bass-punch-combo",
+   "move_class": "strike",
+   "hit_level": "mid,high",
+   "input_slots": [
+    "d/f+3,1"
+   ]
+  },
+  "d/f+3,4": {
+   "name": "Kick Rush (DOA Bass 3KK)",
+   "input": "d/f+3,4",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Kick Rush",
+   "doa_input": "3KK",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 30,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 3.8,
+   "soulGain": 11,
+   "anim_ref": "doa:bass:kick-rush",
+   "move_class": "strike",
+   "hit_level": "mid,mid",
+   "input_slots": [
+    "d/f+3,4"
+   ]
+  },
+  "d/b+3": {
+   "name": "Rising Palm (DOA Bass 1K)",
+   "input": "d/b+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Rising Palm",
+   "doa_input": "1K",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 16,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 3,
+   "soulGain": 9,
+   "anim_ref": "doa:bass:rising-palm",
+   "move_class": "strike",
+   "hit_level": "low",
+   "input_slots": [
+    "d/b+3"
+   ]
+  },
+  "d/b+3,1": {
+   "name": "Rising Palm Combo (DOA Bass 1KP)",
+   "input": "d/b+3,1",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Rising Palm",
+   "doa_input": "1KP",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 28,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.6,
+   "soulGain": 11,
+   "anim_ref": "doa:bass:rising-palm-combo",
+   "move_class": "strike",
+   "hit_level": "low,high",
+   "input_slots": [
+    "d/b+3,1"
+   ]
+  },
+  "f,f+3": {
+   "name": "Brawler Kick (DOA Bass 66K)",
+   "input": "f,f+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Brawler Kick",
+   "doa_input": "66K",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 22,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 3.8,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:brawler-kick",
+   "move_class": "strike",
+   "hit_level": "high",
+   "input_slots": [
+    "f,f+3"
+   ]
+  },
+  "3+4": {
+   "name": "Drop Kick (DOA Bass F+K)",
+   "input": "3+4",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Drop Kick",
+   "doa_input": "F+K",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 24,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "doa:bass:drop-kick",
+   "move_class": "strike",
+   "hit_level": "mid",
+   "input_slots": [
+    "3+4"
+   ],
+   "note": "heavy"
+  },
+  "f+3+4": {
+   "name": "Front Roll Kick (DOA Bass 6F+K)",
+   "input": "f+3+4",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Front Roll Kick",
+   "doa_input": "6F+K",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 24,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "doa:bass:front-roll-kick",
+   "move_class": "strike",
+   "hit_level": "mid",
+   "input_slots": [
+    "f+3+4"
+   ]
+  },
+  "b+3+4": {
+   "name": "Sumo Stomp (DOA Bass 4 hold-F hold-K)",
+   "input": "b+3+4",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Sumo Stomp",
+   "doa_input": "4 hold-F hold-K",
+   "startup": 0.333,
+   "active": 0.033,
+   "recovery": 0.583,
+   "damage": 26,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.4,
+   "soulGain": 12,
+   "anim_ref": "doa:bass:sumo-stomp",
+   "move_class": "strike",
+   "hit_level": "low",
+   "input_slots": [
+    "b+3+4"
+   ],
+   "note": "heavy"
+  },
+  "d+3+4": {
+   "name": "Low Drop Kick (DOA Bass 2F+K)",
+   "input": "d+3+4",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Low Drop Kick",
+   "doa_input": "2F+K",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 22,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4,
+   "soulGain": 11,
+   "anim_ref": "doa:bass:low-drop-kick",
+   "move_class": "strike",
+   "hit_level": "low",
+   "input_slots": [
+    "d+3+4"
+   ]
+  },
+  "u/f+1~jump": {
+   "name": "Leaping Hammer (DOA Bass jumping P)",
+   "input": "u/f+1",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Leaping Hammer",
+   "doa_input": "jumping P",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 18,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.4,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:leaping-hammer",
+   "move_class": "strike",
+   "hit_level": "high",
+   "input_slots": [
+    "u/f+1"
+   ],
+   "note": "while jumping over obstacle"
+  },
+  "u/f+3~jump": {
+   "name": "Leaping Drop Kick (DOA Bass jumping K)",
+   "input": "u/f+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Leaping Drop Kick",
+   "doa_input": "jumping K",
+   "startup": 0.267,
+   "active": 0.033,
+   "recovery": 0.517,
+   "damage": 20,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 3.6,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:leaping-drop-kick",
+   "move_class": "strike",
+   "hit_level": "high",
+   "input_slots": [
+    "u/f+3"
+   ],
+   "note": "while jumping over obstacle"
+  },
+  "1+2~bt": {
+   "name": "Turning Lariat (DOA Bass P+K to foe behind)",
+   "input": "1+2",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Turning Lariat",
+   "doa_input": "P+K to foe behind",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 20,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 3.6,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:turning-lariat",
+   "move_class": "strike",
+   "hit_level": "mid",
+   "input_slots": [
+    "1+2"
+   ],
+   "note": "back-turned"
+  },
+  "b+1+2~bt": {
+   "name": "Turning Muscle Elbow (DOA Bass 4P+K to foe behind)",
+   "input": "b+1+2",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Turning Muscle Elbow",
+   "doa_input": "4P+K to foe behind",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 22,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 3.8,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:turning-muscle-elbow",
+   "move_class": "strike",
+   "hit_level": "mid",
+   "input_slots": [
+    "b+1+2"
+   ],
+   "note": "back-turned"
+  },
+  "u/b+3~bt": {
+   "name": "Turning Middle Kick (DOA Bass 7K to foe behind)",
+   "input": "u/b+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Turning Middle Kick",
+   "doa_input": "7K to foe behind",
+   "startup": 0.283,
+   "active": 0.033,
+   "recovery": 0.533,
+   "damage": 20,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 3.6,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:turning-middle-kick",
+   "move_class": "strike",
+   "hit_level": "mid",
+   "input_slots": [
+    "u/b+3"
+   ],
+   "note": "back-turned"
+  },
+  "ws3+4": {
+   "name": "Rising Low Drop Kick (DOA Bass F+K while getting up)",
+   "input": "ws3+4",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Rising Low Drop Kick",
+   "doa_input": "F+K while getting up",
+   "startup": 0.3,
+   "active": 0.033,
+   "recovery": 0.55,
+   "damage": 22,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4,
+   "soulGain": 11,
+   "anim_ref": "doa:bass:rising-low-drop-kick",
+   "move_class": "strike",
+   "hit_level": "low",
+   "input_slots": [
+    "ws3+4"
+   ],
+   "note": "while rising"
+  },
+  "1+3": {
+   "name": "Bass Slammer (DOA Bass F+P)",
+   "input": "1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Bass Slammer",
+   "doa_input": "F+P",
+   "startup": 0.2,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 40,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.5,
+   "soulGain": 12,
+   "anim_ref": "doa:bass:bass-slammer",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "1+3"
+   ]
+  },
+  "2+4": {
+   "name": "Canyon Dunk (DOA Bass F+P foe's back to slope)",
+   "input": "2+4",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Canyon Dunk",
+   "doa_input": "F+P foe's back to slope",
+   "startup": 0.2,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 42,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.5,
+   "soulGain": 12,
+   "anim_ref": "doa:bass:canyon-dunk",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "2+4"
+   ],
+   "note": "slope"
+  },
+  "2+4~v": {
+   "name": "T.F.B.D. (DOA Bass F+P slope with cliff)",
+   "input": "2+4",
+   "doa_source": "bass-armstrong",
+   "doa_move": "T.F.B.D.",
+   "doa_input": "F+P slope with cliff",
+   "startup": 0.2,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 46,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.8,
+   "soulGain": 12,
+   "anim_ref": "doa:bass:t-f-b-d",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "2+4"
+   ],
+   "note": "cliff"
+  },
+  "f+1+3": {
+   "name": "Bass Tornado (DOA Bass 6F+P)",
+   "input": "f+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Bass Tornado",
+   "doa_input": "6F+P",
+   "startup": 0.217,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 42,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.5,
+   "soulGain": 12,
+   "anim_ref": "doa:bass:bass-tornado",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "f+1+3"
+   ]
+  },
+  "f+1+3~wall": {
+   "name": "Wild Bull Head Butt (DOA Bass 66F+P next to wall)",
+   "input": "f+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Wild Bull Head Butt",
+   "doa_input": "66F+P next to wall",
+   "startup": 0.233,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 50,
+   "limb": "head",
+   "heavy": true,
+   "knock": 5.8,
+   "soulGain": 13,
+   "anim_ref": "doa:bass:wild-bull-head-butt",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "f+1+3"
+   ],
+   "note": "wall"
+  },
+  "f+2+4": {
+   "name": "Dynamite Lariat (DOA Bass 46F+P)",
+   "input": "f+2+4",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Dynamite Lariat",
+   "doa_input": "46F+P",
+   "startup": 0.233,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 45,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.6,
+   "soulGain": 12,
+   "anim_ref": "doa:bass:dynamite-lariat",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "f+2+4"
+   ]
+  },
+  "f+2+4~wall": {
+   "name": "Atomic Hammer Crash (DOA Bass 46F+P next to wall)",
+   "input": "f+2+4",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Atomic Hammer Crash",
+   "doa_input": "46F+P next to wall",
+   "startup": 0.233,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 52,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 5.8,
+   "soulGain": 13,
+   "anim_ref": "doa:bass:atomic-hammer-crash",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "f+2+4"
+   ],
+   "note": "wall"
+  },
+  "u+1+3": {
+   "name": "Flying Body Scissors (DOA Bass 8F+P)",
+   "input": "u+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Flying Body Scissors",
+   "doa_input": "8F+P",
+   "startup": 0.217,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 43,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 5.5,
+   "soulGain": 12,
+   "anim_ref": "doa:bass:flying-body-scissors",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "u+1+3"
+   ]
+  },
+  "d/f+1+3": {
+   "name": "Super Freak (DOA Bass 41236F+P)",
+   "input": "d/f+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Super Freak",
+   "doa_input": "41236F+P",
+   "startup": 0.25,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 48,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.8,
+   "soulGain": 13,
+   "anim_ref": "doa:bass:super-freak",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "d/f+1+3"
+   ]
+  },
+  "d/f+1+3~hold": {
+   "name": "Dancing Freak (DOA Bass 41236 hold-F hold-P)",
+   "input": "d/f+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Dancing Freak",
+   "doa_input": "41236 hold-F hold-P",
+   "startup": 0.267,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 50,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.8,
+   "soulGain": 13,
+   "anim_ref": "doa:bass:dancing-freak",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "d/f+1+3"
+   ],
+   "note": "held version"
+  },
+  "d/f+2+4": {
+   "name": "Spiral Bomb (DOA Bass 33F+P to crouching foe)",
+   "input": "d/f+2+4",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Spiral Bomb",
+   "doa_input": "33F+P to crouching foe",
+   "startup": 0.233,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 46,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.6,
+   "soulGain": 13,
+   "anim_ref": "doa:bass:spiral-bomb",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "d/f+2+4"
+   ],
+   "note": "crouching"
+  },
+  "qcf+1+3": {
+   "name": "Oklahoma Stampede (DOA Bass 236F+P)",
+   "input": "qcf+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Oklahoma Stampede",
+   "doa_input": "236F+P",
+   "startup": 0.233,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 45,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.6,
+   "soulGain": 13,
+   "anim_ref": "doa:bass:oklahoma-stampede",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "qcf+1+3"
+   ],
+   "note": "throw combo starter"
+  },
+  "qcb+1+3": {
+   "name": "Manhattan Driver (DOA Bass 214F+P)",
+   "input": "qcb+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Manhattan Driver",
+   "doa_input": "214F+P",
+   "startup": 0.233,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 45,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.6,
+   "soulGain": 13,
+   "anim_ref": "doa:bass:manhattan-driver",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "qcb+1+3"
+   ],
+   "note": "throw combo starter"
+  },
+  "b+1+3": {
+   "name": "Push Away (DOA Bass 4F+P)",
+   "input": "b+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Push Away",
+   "doa_input": "4F+P",
+   "startup": 0.217,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 38,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.2,
+   "soulGain": 12,
+   "anim_ref": "doa:bass:push-away",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "b+1+3"
+   ],
+   "note": "throw combo starter"
+  },
+  "b+1+3~wall": {
+   "name": "Bear Press (DOA Bass 4F+P next to wall)",
+   "input": "b+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Bear Press",
+   "doa_input": "4F+P next to wall",
+   "startup": 0.217,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 46,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.6,
+   "soulGain": 13,
+   "anim_ref": "doa:bass:bear-press",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "b+1+3"
+   ],
+   "note": "wall"
+  },
+  "b+2+4": {
+   "name": "Argentine Back Breaker (DOA Bass 4F+P to foe's back)",
+   "input": "b+2+4",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Argentine Back Breaker",
+   "doa_input": "4F+P to foe's back",
+   "startup": 0.217,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 45,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.6,
+   "soulGain": 13,
+   "anim_ref": "doa:bass:argentine-back-breaker",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "b+2+4"
+   ],
+   "note": "back"
+  },
+  "b+1+3~back": {
+   "name": "Dangerous Back Drop (DOA Bass F+P to foe's back)",
+   "input": "b+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Dangerous Back Drop",
+   "doa_input": "F+P to foe's back",
+   "startup": 0.2,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 45,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.6,
+   "soulGain": 13,
+   "anim_ref": "doa:bass:dangerous-back-drop",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "b+1+3"
+   ],
+   "note": "back"
+  },
+  "b+1+3~backwall": {
+   "name": "Locomotion Back Drop (DOA Bass F+P wall behind foe)",
+   "input": "b+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Locomotion Back Drop",
+   "doa_input": "F+P wall behind foe",
+   "startup": 0.2,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 50,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.8,
+   "soulGain": 13,
+   "anim_ref": "doa:bass:locomotion-back-drop",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "b+1+3"
+   ],
+   "note": "wall, back"
+  },
+  "f+1+3~back": {
+   "name": "Reverse Power Bomb (DOA Bass 46F+P to foe's back)",
+   "input": "f+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Reverse Power Bomb",
+   "doa_input": "46F+P to foe's back",
+   "startup": 0.233,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 48,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.8,
+   "soulGain": 13,
+   "anim_ref": "doa:bass:reverse-power-bomb",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "f+1+3"
+   ],
+   "note": "back"
+  },
+  "1+3~back": {
+   "name": "Spin Around (DOA Bass F+P to foe behind)",
+   "input": "1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Spin Around",
+   "doa_input": "F+P to foe behind",
+   "startup": 0.2,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 40,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.5,
+   "soulGain": 12,
+   "anim_ref": "doa:bass:spin-around",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "1+3"
+   ],
+   "note": "behind"
+  },
+  "1+3~pushaside": {
+   "name": "Push Aside (DOA Bass F+P behind foe, back to foe)",
+   "input": "1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Push Aside",
+   "doa_input": "F+P behind foe, back to foe",
+   "startup": 0.2,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 35,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5,
+   "soulGain": 11,
+   "anim_ref": "doa:bass:push-aside",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "1+3"
+   ],
+   "note": "behind"
+  },
+  "d+1+3": {
+   "name": "Bass Bomb (DOA Bass 2F+P to crouching foe)",
+   "input": "d+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Bass Bomb",
+   "doa_input": "2F+P to crouching foe",
+   "startup": 0.217,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 42,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.5,
+   "soulGain": 12,
+   "anim_ref": "doa:bass:bass-bomb",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "d+1+3"
+   ],
+   "note": "crouching"
+  },
+  "d+2+4": {
+   "name": "Double Arm Driver (DOA Bass 3F+P to crouching foe)",
+   "input": "d+2+4",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Double Arm Driver",
+   "doa_input": "3F+P to crouching foe",
+   "startup": 0.217,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 44,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.6,
+   "soulGain": 12,
+   "anim_ref": "doa:bass:double-arm-driver",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "d+2+4"
+   ],
+   "note": "crouching"
+  },
+  "d/b+1+3": {
+   "name": "T.F.B.B. (DOA Bass 64F+P while crouching)",
+   "input": "d/b+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "T.F.B.B.",
+   "doa_input": "64F+P while crouching",
+   "startup": 0.233,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 48,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.8,
+   "soulGain": 13,
+   "anim_ref": "doa:bass:t-f-b-b",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "d/b+1+3"
+   ],
+   "note": "crouching"
+  },
+  "d/b+1+3~wall": {
+   "name": "T.F.B.C. (DOA Bass 64F+P wall while crouching)",
+   "input": "d/b+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "T.F.B.C.",
+   "doa_input": "64F+P wall while crouching",
+   "startup": 0.233,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 52,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.8,
+   "soulGain": 13,
+   "anim_ref": "doa:bass:t-f-b-c",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "d/b+1+3"
+   ],
+   "note": "wall, crouching"
+  },
+  "d/b+1+3~ceil": {
+   "name": "T.F.B.A. (DOA Bass 64F+P ceiling while crouching)",
+   "input": "d/b+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "T.F.B.A.",
+   "doa_input": "64F+P ceiling while crouching",
+   "startup": 0.233,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 55,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6,
+   "soulGain": 14,
+   "anim_ref": "doa:bass:t-f-b-a",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "d/b+1+3"
+   ],
+   "note": "ceiling, crouching"
+  },
+  "d/b+2+4": {
+   "name": "Calf Branding (DOA Bass 2F+P to crouching foe's back)",
+   "input": "d/b+2+4",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Calf Branding",
+   "doa_input": "2F+P to crouching foe's back",
+   "startup": 0.217,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 44,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.6,
+   "soulGain": 12,
+   "anim_ref": "doa:bass:calf-branding",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "d/b+2+4"
+   ],
+   "note": "crouching back"
+  },
+  "u/b+1+3": {
+   "name": "One Leg Standing Head Butt (DOA Bass 66F+P)",
+   "input": "u/b+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "One Leg Standing Head Butt",
+   "doa_input": "66F+P",
+   "startup": 0.233,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 46,
+   "limb": "head",
+   "heavy": true,
+   "knock": 5.6,
+   "soulGain": 13,
+   "anim_ref": "doa:bass:one-leg-standing-head-butt",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "u/b+1+3"
+   ]
+  },
+  "u/f+1+3": {
+   "name": "Running Neck Breaker Drop (DOA Bass F+P while running)",
+   "input": "u/f+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Running Neck Breaker Drop",
+   "doa_input": "F+P while running",
+   "startup": 0.217,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 44,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.6,
+   "soulGain": 12,
+   "anim_ref": "doa:bass:running-neck-breaker-drop",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "u/f+1+3"
+   ],
+   "note": "running"
+  },
+  "u/f+1+3~back": {
+   "name": "Running Face Buster (DOA Bass F+P running behind foe)",
+   "input": "u/f+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Running Face Buster",
+   "doa_input": "F+P running behind foe",
+   "startup": 0.217,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 46,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.6,
+   "soulGain": 13,
+   "anim_ref": "doa:bass:running-face-buster",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "u/f+1+3"
+   ],
+   "note": "running, back"
+  },
+  "d/f+1+3~air": {
+   "name": "Barrel Throw (DOA Bass F+P to foe in air)",
+   "input": "d/f+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Barrel Throw",
+   "doa_input": "F+P to foe in air",
+   "startup": 0.233,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 40,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.5,
+   "soulGain": 12,
+   "anim_ref": "doa:bass:barrel-throw",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "d/f+1+3"
+   ],
+   "note": "air"
+  },
+  "d/f+1+3~cliff": {
+   "name": "Tandem Dive (DOA Bass F+P near cliff)",
+   "input": "d/f+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Tandem Dive",
+   "doa_input": "F+P near cliff",
+   "startup": 0.233,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 50,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.8,
+   "soulGain": 13,
+   "anim_ref": "doa:bass:tandem-dive",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "d/f+1+3"
+   ],
+   "note": "cliff"
+  },
+  "d+1+3~g1": {
+   "name": "Ground Throw 1 (DOA Bass 2F+P face-up feet)",
+   "input": "d+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Ground Throw 1",
+   "doa_input": "2F+P face-up feet",
+   "startup": 0.217,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 40,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.2,
+   "soulGain": 11,
+   "anim_ref": "doa:bass:ground-throw-1",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "d+1+3"
+   ],
+   "note": "grounded"
+  },
+  "d+1+3~g2": {
+   "name": "Ground Throw 2 (DOA Bass 2F+P face-up head)",
+   "input": "d+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Ground Throw 2",
+   "doa_input": "2F+P face-up head",
+   "startup": 0.217,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 40,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.2,
+   "soulGain": 11,
+   "anim_ref": "doa:bass:ground-throw-2",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "d+1+3"
+   ],
+   "note": "grounded"
+  },
+  "d+1+3~g3": {
+   "name": "Ground Throw 3 (DOA Bass 2F+P face-up side)",
+   "input": "d+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Ground Throw 3",
+   "doa_input": "2F+P face-up side",
+   "startup": 0.217,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 40,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.2,
+   "soulGain": 11,
+   "anim_ref": "doa:bass:ground-throw-3",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "d+1+3"
+   ],
+   "note": "grounded"
+  },
+  "d+1+3~g4": {
+   "name": "Ground Throw 4 (DOA Bass 2F+P face-down feet)",
+   "input": "d+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Ground Throw 4",
+   "doa_input": "2F+P face-down feet",
+   "startup": 0.217,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 40,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.2,
+   "soulGain": 11,
+   "anim_ref": "doa:bass:ground-throw-4",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "d+1+3"
+   ],
+   "note": "grounded"
+  },
+  "d+1+3~g5": {
+   "name": "Ground Throw 5 (DOA Bass 2F+P face-down head)",
+   "input": "d+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Ground Throw 5",
+   "doa_input": "2F+P face-down head",
+   "startup": 0.217,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 40,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.2,
+   "soulGain": 11,
+   "anim_ref": "doa:bass:ground-throw-5",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "d+1+3"
+   ],
+   "note": "grounded"
+  },
+  "d+1+3~g6": {
+   "name": "Ground Throw 6 (DOA Bass 2F+P face-down side)",
+   "input": "d+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Ground Throw 6",
+   "doa_input": "2F+P face-down side",
+   "startup": 0.217,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 40,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.2,
+   "soulGain": 11,
+   "anim_ref": "doa:bass:ground-throw-6",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "d+1+3"
+   ],
+   "note": "grounded"
+  },
+  "d/f+1+3~hug": {
+   "name": "Bear Hug (DOA Bass 3P+KF+P or 7PF+P)",
+   "input": "d/f+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Bear Hug",
+   "doa_input": "3P+KF+P or 7PF+P",
+   "startup": 0.233,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 48,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.8,
+   "soulGain": 13,
+   "anim_ref": "doa:bass:bear-hug",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "d/f+1+3"
+   ]
+  },
+  "d/f+1+3~hugwall": {
+   "name": "Bear Wall (DOA Bass wall 3P+KF+P or 7PF+P)",
+   "input": "d/f+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Bear Wall",
+   "doa_input": "wall 3P+KF+P or 7PF+P",
+   "startup": 0.233,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 52,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.8,
+   "soulGain": 13,
+   "anim_ref": "doa:bass:bear-wall",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "d/f+1+3"
+   ],
+   "note": "wall"
+  },
+  "qcf+1+3~back": {
+   "name": "Face Crusher (DOA Bass 236F+P to foe's back)",
+   "input": "qcf+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Face Crusher",
+   "doa_input": "236F+P to foe's back",
+   "startup": 0.233,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 46,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.6,
+   "soulGain": 13,
+   "anim_ref": "doa:bass:face-crusher",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "qcf+1+3"
+   ],
+   "note": "back; throw combo starter"
+  },
+  "d/f+2+4~back": {
+   "name": "Grizzly Rancher (DOA Bass 41236 hold to foe's back)",
+   "input": "d/f+2+4",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Grizzly Rancher",
+   "doa_input": "41236 hold to foe's back",
+   "startup": 0.267,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 50,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.8,
+   "soulGain": 13,
+   "anim_ref": "doa:bass:grizzly-rancher",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "d/f+2+4"
+   ],
+   "note": "back; throw combo starter"
+  },
+  "d/f+2+4~backwall": {
+   "name": "Grizzly Crash (DOA Bass 41236 hold wall behind foe)",
+   "input": "d/f+2+4",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Grizzly Crash",
+   "doa_input": "41236 hold wall behind foe",
+   "startup": 0.267,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 55,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6,
+   "soulGain": 14,
+   "anim_ref": "doa:bass:grizzly-crash",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "d/f+2+4"
+   ],
+   "note": "wall, back; throw combo"
+  },
+  "hcf+1+3~air": {
+   "name": "Catching Hammer Throw (DOA Bass 41236F+P to foe in air)",
+   "input": "hcf+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Catching Hammer Throw",
+   "doa_input": "41236F+P to foe in air",
+   "startup": 0.25,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 46,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.6,
+   "soulGain": 13,
+   "anim_ref": "doa:bass:catching-hammer-throw",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "hcf+1+3"
+   ],
+   "note": "air; throw combo starter"
+  },
+  "u/b+1+3~hug": {
+   "name": "Bear Hug (alt) (DOA Bass 7PF+P)",
+   "input": "u/b+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Bear Hug",
+   "doa_input": "7PF+P",
+   "startup": 0.233,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 48,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.8,
+   "soulGain": 13,
+   "anim_ref": "doa:bass:bear-hug-alt",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "u/b+1+3"
+   ],
+   "note": "alt input"
+  },
+  "u/b+1+3~hugwall": {
+   "name": "Bear Wall (alt) (DOA Bass 7PF+P next to wall)",
+   "input": "u/b+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Bear Wall",
+   "doa_input": "7PF+P next to wall",
+   "startup": 0.233,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 52,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.8,
+   "soulGain": 13,
+   "anim_ref": "doa:bass:bear-wall-alt",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "u/b+1+3"
+   ],
+   "note": "alt input, wall"
+  },
+  "f+1+3~po": {
+   "name": "Push Away Follow-up (DOA Bass 6F+P after 4F+P)",
+   "input": "f+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Push Away",
+   "doa_input": "6F+P after 4F+P",
+   "startup": 0.2,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 20,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.5,
+   "soulGain": 8,
+   "anim_ref": "doa:bass:push-away-follow-up",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "f+1+3"
+   ],
+   "note": "throw combo follow-up"
+  },
+  "b+1+3~gb": {
+   "name": "Get Behind Follow-up (DOA Bass 4F+P after 4F+P)",
+   "input": "b+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Get Behind",
+   "doa_input": "4F+P after 4F+P",
+   "startup": 0.2,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 22,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.5,
+   "soulGain": 8,
+   "anim_ref": "doa:bass:get-behind-follow-up",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "b+1+3"
+   ],
+   "note": "throw combo follow-up"
+  },
+  "d+1+3~f5": {
+   "name": "F5 Slam (DOA Bass 22F+P after 4F+P)",
+   "input": "d+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "F5",
+   "doa_input": "22F+P after 4F+P",
+   "startup": 0.217,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 30,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 5.2,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:f5-slam",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "d+1+3"
+   ],
+   "note": "throw combo finisher"
+  },
+  "1+3~ok": {
+   "name": "Oklahoma Stampede Slam (DOA Bass F+P after 236F+P)",
+   "input": "1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Oklahoma Stampede",
+   "doa_input": "F+P after 236F+P",
+   "startup": 0.2,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 5,
+   "soulGain": 9,
+   "anim_ref": "doa:bass:oklahoma-stampede-slam",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "1+3"
+   ],
+   "note": "throw combo follow-up"
+  },
+  "d+1+3~md": {
+   "name": "Manhattan Driver Slam (DOA Bass 2F+P after 214F+P)",
+   "input": "d+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Manhattan Driver",
+   "doa_input": "2F+P after 214F+P",
+   "startup": 0.217,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 25,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 5,
+   "soulGain": 9,
+   "anim_ref": "doa:bass:manhattan-driver-slam",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "d+1+3"
+   ],
+   "note": "throw combo follow-up"
+  },
+  "u+1+3~md": {
+   "name": "Manhattan Driver Drop (DOA Bass 8F+P after 2F+P)",
+   "input": "u+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Manhattan Driver",
+   "doa_input": "8F+P after 2F+P",
+   "startup": 0.217,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 28,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 5.2,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:manhattan-driver-drop",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "u+1+3"
+   ],
+   "note": "throw combo finisher"
+  },
+  "f+1+3~kp": {
+   "name": "Kitchen Push Away Slam (DOA Bass 6F+P after 214F+P)",
+   "input": "f+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Kitchen Push Away",
+   "doa_input": "6F+P after 214F+P",
+   "startup": 0.2,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 24,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 5,
+   "soulGain": 9,
+   "anim_ref": "doa:bass:kitchen-push-away-slam",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "f+1+3"
+   ],
+   "note": "throw combo follow-up"
+  },
+  "1+3~fc": {
+   "name": "Face Crusher Slam (DOA Bass F+P after 236F+P (back))",
+   "input": "1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Face Crusher",
+   "doa_input": "F+P after 236F+P (back)",
+   "startup": 0.2,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 26,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 5.2,
+   "soulGain": 9,
+   "anim_ref": "doa:bass:face-crusher-slam",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "1+3"
+   ],
+   "note": "throw combo follow-up"
+  },
+  "d+1+3~gr": {
+   "name": "Grizzly Rancher Slam (DOA Bass 2F+P after 41236 hold)",
+   "input": "d+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Grizzly Rancher",
+   "doa_input": "2F+P after 41236 hold",
+   "startup": 0.217,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 28,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 5.2,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:grizzly-rancher-slam",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "d+1+3"
+   ],
+   "note": "throw combo follow-up"
+  },
+  "1+3~cht": {
+   "name": "Catching Hammer Slam (DOA Bass F+P after 41236F+P (air))",
+   "input": "1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Catching Hammer Throw",
+   "doa_input": "F+P after 41236F+P (air)",
+   "startup": 0.2,
+   "active": 0.05,
+   "recovery": 0.5,
+   "damage": 26,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 5.2,
+   "soulGain": 9,
+   "anim_ref": "doa:bass:catching-hammer-slam",
+   "move_class": "throw",
+   "hit_level": "throw",
+   "input_slots": [
+    "1+3"
+   ],
+   "note": "throw combo follow-up, air"
+  },
+  "b+1+2~p": {
+   "name": "Half Lock Suplex (DOA Bass 7F vs high punch)",
+   "input": "b+1+2",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Half Lock Suplex",
+   "doa_input": "7F vs high punch",
+   "startup": 0.033,
+   "active": 0.05,
+   "recovery": 0.4,
+   "damage": 35,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.5,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:half-lock-suplex",
+   "move_class": "reversal",
+   "hit_level": "reversal",
+   "input_slots": [
+    "b+1+2"
+   ],
+   "note": "parry: high punch"
+  },
+  "b+1+2~k": {
+   "name": "Rolling Press (DOA Bass 7F vs high kick)",
+   "input": "b+1+2",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Rolling Press",
+   "doa_input": "7F vs high kick",
+   "startup": 0.033,
+   "active": 0.05,
+   "recovery": 0.4,
+   "damage": 35,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.5,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:rolling-press",
+   "move_class": "reversal",
+   "hit_level": "reversal",
+   "input_slots": [
+    "b+1+2"
+   ],
+   "note": "parry: high kick"
+  },
+  "b+2+4~p": {
+   "name": "Power Pressure (DOA Bass 4F vs mid punch)",
+   "input": "b+2+4",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Power Pressure",
+   "doa_input": "4F vs mid punch",
+   "startup": 0.033,
+   "active": 0.05,
+   "recovery": 0.4,
+   "damage": 38,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.6,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:power-pressure",
+   "move_class": "reversal",
+   "hit_level": "reversal",
+   "input_slots": [
+    "b+2+4"
+   ],
+   "note": "parry: mid punch"
+  },
+  "b+2+4~pwall": {
+   "name": "Blast Through (DOA Bass 4F wall vs mid punch)",
+   "input": "b+2+4",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Blast Through",
+   "doa_input": "4F wall vs mid punch",
+   "startup": 0.033,
+   "active": 0.05,
+   "recovery": 0.4,
+   "damage": 42,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.8,
+   "soulGain": 11,
+   "anim_ref": "doa:bass:blast-through",
+   "move_class": "reversal",
+   "hit_level": "reversal",
+   "input_slots": [
+    "b+2+4"
+   ],
+   "note": "parry: mid punch, wall"
+  },
+  "f+1+2~k": {
+   "name": "Jurassic Toss (DOA Bass 6F vs mid kick)",
+   "input": "f+1+2",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Jurassic Toss",
+   "doa_input": "6F vs mid kick",
+   "startup": 0.033,
+   "active": 0.05,
+   "recovery": 0.4,
+   "damage": 38,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.6,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:jurassic-toss",
+   "move_class": "reversal",
+   "hit_level": "reversal",
+   "input_slots": [
+    "f+1+2"
+   ],
+   "note": "parry: mid kick"
+  },
+  "d/b+1+2~p": {
+   "name": "Guillotine Drop (DOA Bass 1F vs low punch)",
+   "input": "d/b+1+2",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Guillotine Drop",
+   "doa_input": "1F vs low punch",
+   "startup": 0.033,
+   "active": 0.05,
+   "recovery": 0.4,
+   "damage": 35,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.5,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:guillotine-drop",
+   "move_class": "reversal",
+   "hit_level": "reversal",
+   "input_slots": [
+    "d/b+1+2"
+   ],
+   "note": "parry: low punch"
+  },
+  "d/b+1+2~k": {
+   "name": "Giant Hammer Throw (DOA Bass 1F vs low kick)",
+   "input": "d/b+1+2",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Giant Hammer Throw",
+   "doa_input": "1F vs low kick",
+   "startup": 0.033,
+   "active": 0.05,
+   "recovery": 0.4,
+   "damage": 35,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.5,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:giant-hammer-throw",
+   "move_class": "reversal",
+   "hit_level": "reversal",
+   "input_slots": [
+    "d/b+1+2"
+   ],
+   "note": "parry: low kick"
+  },
+  "b+1+2~jp": {
+   "name": "Iron Hammer Press (DOA Bass 4F vs jumping punch)",
+   "input": "b+1+2",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Iron Hammer Press",
+   "doa_input": "4F vs jumping punch",
+   "startup": 0.033,
+   "active": 0.05,
+   "recovery": 0.4,
+   "damage": 38,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.6,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:iron-hammer-press",
+   "move_class": "reversal",
+   "hit_level": "reversal",
+   "input_slots": [
+    "b+1+2"
+   ],
+   "note": "parry: jumping punch"
+  },
+  "f+1+2~jk": {
+   "name": "Buzz Crush (DOA Bass 6F vs jumping kick)",
+   "input": "f+1+2",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Buzz Crush",
+   "doa_input": "6F vs jumping kick",
+   "startup": 0.033,
+   "active": 0.05,
+   "recovery": 0.4,
+   "damage": 38,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.6,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:buzz-crush",
+   "move_class": "reversal",
+   "hit_level": "reversal",
+   "input_slots": [
+    "f+1+2"
+   ],
+   "note": "parry: jumping kick"
+  },
+  "u+1+2": {
+   "name": "Double Knee Drop (DOA Bass 8P+K to downed foe)",
+   "input": "u+1+2",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Double Knee Drop",
+   "doa_input": "8P+K to downed foe",
+   "startup": 0.25,
+   "active": 0.033,
+   "recovery": 0.5,
+   "damage": 20,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 3.8,
+   "soulGain": 10,
+   "anim_ref": "doa:bass:double-knee-drop",
+   "move_class": "strike",
+   "hit_level": "grounded",
+   "input_slots": [
+    "u+1+2"
+   ],
+   "note": "down attack"
+  },
+  "3~legacy": {
+   "name": "Low Kick (DOA Bass 2K)",
+   "input": "3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Low Kick",
+   "doa_input": "2K",
+   "startup": 0.267,
+   "active": 0.017,
+   "recovery": 0.837,
+   "damage": 8,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "doa:bass:low-kick",
+   "doa_damage": 12,
+   "note": "DOA d+K mapped to neutral 3 for WH fundamentals",
+   "move_class": "strike",
+   "input_slots": [
+    "3"
+   ]
+  },
+  "4~legacy": {
+   "name": "High Kick (DOA Bass K)",
+   "input": "4",
+   "doa_source": "bass-armstrong",
+   "doa_move": "High Kick",
+   "doa_input": "K",
+   "startup": 0.367,
+   "active": 0.017,
+   "recovery": 1.057,
+   "damage": 19,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "doa:bass:high-kick",
+   "doa_damage": 30,
+   "note": "DOA5: guard breaks, +2 on block — only kick in cast with both",
+   "move_class": "strike",
+   "input_slots": [
+    "4"
+   ]
+  },
+  "d/f+4~legacy": {
+   "name": "Front Kick (DOA Bass 3K)",
+   "input": "d/f+4",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Front Kick",
+   "doa_input": "3K",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.91,
+   "damage": 16,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "doa:bass:front-kick",
+   "doa_damage": 26,
+   "move_class": "strike",
+   "input_slots": [
+    "d/f+4"
+   ]
+  },
+  "f,f+4~legacy": {
+   "name": "Kenka Kick (DOA Bass 66K)",
+   "input": "f,f+4",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Kenka Kick",
+   "doa_input": "66K",
+   "startup": 0.333,
+   "active": 0.017,
+   "recovery": 0.983,
+   "damage": 14,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "doa:bass:kenka-kick",
+   "note": "Running kick; damage estimated",
+   "move_class": "string",
+   "input_slots": [
+    "f,f+4",
+    "f",
+    "f+4"
+   ]
+  },
+  "u+4~legacy": {
+   "name": "Jumping High Kick (DOA Bass 8K)",
+   "input": "u+4",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Jumping High Kick",
+   "doa_input": "8K",
+   "startup": 0.367,
+   "active": 0.017,
+   "recovery": 1.057,
+   "damage": 11,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "doa:bass:jumping-high-kick",
+   "note": "Damage estimated",
+   "move_class": "strike",
+   "input_slots": [
+    "u+4"
+   ]
+  },
+  "1,1~legacy": {
+   "name": "Triple Jab (DOA Bass PPP)",
+   "input": "1,1",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Triple Jab",
+   "doa_input": "PPP",
+   "startup": 0.233,
+   "active": 0.017,
+   "recovery": 0.763,
+   "damage": 8,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "doa:bass:triple-jab",
+   "doa_damage": 12,
+   "note": "Hits 1-2 of Bass PPP",
+   "move_class": "string",
+   "input_slots": [
+    "1,1",
+    "1",
+    "1"
+   ]
+  },
+  "b+1,1~legacy": {
+   "name": "Stungun Chop (DOA Bass 4PP)",
+   "input": "b+1,1",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Stungun Chop",
+   "doa_input": "4PP",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.91,
+   "damage": 11,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "doa:bass:stungun-chop",
+   "note": "Delayed follow-up in DOA; damage estimated",
+   "move_class": "string",
+   "input_slots": [
+    "b+1,1",
+    "b+1",
+    "1"
+   ]
+  },
+  "u/b+1,1~legacy": {
+   "name": "Hell Scissors (DOA Bass 7PP)",
+   "input": "u/b+1,1",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Hell Scissors",
+   "doa_input": "7PP",
+   "startup": 0.333,
+   "active": 0.017,
+   "recovery": 0.983,
+   "damage": 11,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.2,
+   "soulGain": 8,
+   "anim_ref": "doa:bass:hell-scissors",
+   "note": "Damage estimated",
+   "move_class": "string",
+   "input_slots": [
+    "u/b+1,1",
+    "u/b+1",
+    "1"
+   ]
+  },
+  "f,f+1+3~legacy": {
+   "name": "Powerslam (DOA Bass 66F+P (66T))",
+   "input": "f,f+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Powerslam",
+   "doa_input": "66F+P (66T)",
+   "startup": 0.333,
+   "active": 0.017,
+   "recovery": 0.983,
+   "damage": 26,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 6.5,
+   "soulGain": 11,
+   "anim_ref": "doa:bass:powerslam",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "note": "Running powerslam; WH grappler convention",
+   "move_class": "throw",
+   "input_slots": [
+    "f,f+1+3"
+   ],
+   "throw_break": "1+2"
+  },
+  "d/f,d/f+1+3~legacy": {
+   "name": "Double Arm DDT (DOA Bass 33F+P)",
+   "input": "d/f,d/f+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Double Arm DDT",
+   "doa_input": "33F+P",
+   "startup": 0.333,
+   "active": 0.017,
+   "recovery": 0.983,
+   "damage": 26,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 6.5,
+   "soulGain": 11,
+   "anim_ref": "doa:bass:double-arm-ddt",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "note": "Vs crouching opponent; WH grappler convention",
+   "move_class": "throw",
+   "input_slots": [
+    "d/f,d/f+1+3"
+   ],
+   "throw_break": "1+2"
+  },
+  "hcb+1+3~legacy": {
+   "name": "Powerbomb (DOA Bass 63214T)",
+   "input": "hcb+1+3",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Powerbomb",
+   "doa_input": "63214T",
+   "startup": 0.4,
+   "active": 0.017,
+   "recovery": 1.13,
+   "damage": 28,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 6.5,
+   "soulGain": 11,
+   "anim_ref": "doa:bass:powerbomb",
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "note": "DOA5 chargeable (hold = spinout/double); WH grappler convention",
+   "move_class": "special",
+   "input_slots": [
+    "hcb+1+3"
+   ],
+   "throw_break": "1"
+  },
+  "qcf+1+2~legacy": {
+   "name": "Headlock (DOA Bass 236H)",
+   "input": "qcf+1+2",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Headlock",
+   "doa_input": "236H",
+   "startup": 0.3,
+   "active": 0.017,
+   "recovery": 0.91,
+   "damage": 22,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 6.5,
+   "soulGain": 11,
+   "anim_ref": "doa:bass:headlock",
+   "doa_damage": 35,
+   "throw": true,
+   "unblockable": true,
+   "isGrab": true,
+   "note": "DOA offensive hold wired as WH throw per federation rule",
+   "move_class": "special",
+   "input_slots": [
+    "qcf+1+2"
+   ],
+   "throw_break": "1+2"
+  },
+  "u/b+1+2~legacy": {
+   "name": "Buffalo Rampage (DOA Bass 7P+K held)",
+   "input": "u/b+1+2",
+   "doa_source": "bass-armstrong",
+   "doa_move": "Buffalo Rampage",
+   "doa_input": "7P+K held",
+   "startup": 0.5,
+   "active": 0.017,
+   "recovery": 1.35,
+   "damage": 35,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.2,
+   "soulGain": 11,
+   "anim_ref": "doa:bass:buffalo-rampage",
+   "note": "DOA5 Power Blow: health <= 50%, cinematic, one use per round on hit",
+   "move_class": "special",
+   "input_slots": [
+    "u/b+1+2"
+   ]
+  }
+ },
+ "strings": {
+  "0": {
+   "input": "1,2,1",
+   "hits": [
+    "1",
+    "1,2",
+    "1,2,1"
+   ],
+   "doa": "PPP (Combo Gong)"
+  },
+  "1": {
+   "input": "1,2,d+1",
+   "hits": [
+    "1",
+    "1,2",
+    "1,2,d+1"
+   ],
+   "doa": "PP2P (Combo Hammer)"
+  },
+  "2": {
+   "input": "1,2,3",
+   "hits": [
+    "1",
+    "1,2",
+    "1,2,3"
+   ],
+   "doa": "PPK (Combo High Kick)"
+  },
+  "3": {
+   "input": "1,3,2",
+   "hits": [
+    "1",
+    "1,3",
+    "1,3,2"
+   ],
+   "doa": "PKP (Combo Triple Hit)"
+  },
+  "4": {
+   "input": "1,3,4",
+   "hits": [
+    "1",
+    "1,3",
+    "1,3,4"
+   ],
+   "doa": "PKK (Combo Kick Rush)"
+  },
+  "5": {
+   "input": "f+1,2",
+   "hits": [
+    "f+1",
+    "f+1,2"
+   ],
+   "doa": "6PP (Wild Swing)"
+  },
+  "6": {
+   "input": "f+1,2,3",
+   "hits": [
+    "f+1",
+    "f+1,2",
+    "f+1,2,3"
+   ],
+   "doa": "6PK (Combo Stomp Kick)"
+  },
+  "7": {
+   "input": "u/f+1,2",
+   "hits": [
+    "u/f+1",
+    "u/f+1,2"
+   ],
+   "doa": "9PP (Elbow Rush)"
+  },
+  "8": {
+   "input": "u/f+1,2,3",
+   "hits": [
+    "u/f+1",
+    "u/f+1,2",
+    "u/f+1,2,3"
+   ],
+   "doa": "9PKP (Elbow Gong)"
+  },
+  "9": {
+   "input": "u/f+1,2,d+3",
+   "hits": [
+    "u/f+1",
+    "u/f+1,2",
+    "u/f+1,2,d+3"
+   ],
+   "doa": "9PK2P (Elbow Hammer)"
+  },
+  "10": {
+   "input": "u/f+1,3",
+   "hits": [
+    "u/f+1",
+    "u/f+1,3"
+   ],
+   "doa": "hold-9 PK (Elbow Stomp Combo)"
+  },
+  "11": {
+   "input": "b+1,2,1",
+   "hits": [
+    "b+1",
+    "b+1,2",
+    "b+1,2,1"
+   ],
+   "doa": "4PPP (Stun Gun Chop)"
+  },
+  "12": {
+   "input": "b+1,2,1+2",
+   "hits": [
+    "b+1",
+    "b+1,2",
+    "b+1,2,1",
+    "b+1,2,1+2"
+   ],
+   "doa": "4PPP+K (Hell Smasher)"
+  },
+  "13": {
+   "input": "d+1,2",
+   "hits": [
+    "d+1",
+    "d+1,2"
+   ],
+   "doa": "2PP (Throat Strike)"
+  },
+  "14": {
+   "input": "d/b+1,2",
+   "hits": [
+    "d/b+1",
+    "d/b+1,2"
+   ],
+   "doa": "1PP (Power Gong)"
+  },
+  "15": {
+   "input": "d/b+1,2,1+2",
+   "hits": [
+    "d/b+1",
+    "d/b+1,2",
+    "d/b+1,2,1+2"
+   ],
+   "doa": "1PP+K (Gong Hell Combo)"
+  },
+  "16": {
+   "input": "d/f+1,2",
+   "hits": [
+    "d/f+1",
+    "d/f+1,2"
+   ],
+   "doa": "hold-3 PP (The Muscle Man)"
+  },
+  "17": {
+   "input": "d/f,d/f+1,2",
+   "hits": [
+    "d/f,d/f+1",
+    "d/f,d/f+1,2"
+   ],
+   "doa": "33PP (Buffalo Rage)"
+  },
+  "18": {
+   "input": "f+1+2,1",
+   "hits": [
+    "f+1+2",
+    "f+1+2,1"
+   ],
+   "doa": "6P+KP (Mad Lariat)"
+  },
+  "19": {
+   "input": "d+1+2,1",
+   "hits": [
+    "d+1+2",
+    "d+1+2,1"
+   ],
+   "doa": "2P+KP (Buffalo Train)"
+  },
+  "20": {
+   "input": "d+1+2,1,3",
+   "hits": [
+    "d+1+2",
+    "d+1+2,1",
+    "d+1+2,1,3"
+   ],
+   "doa": "2P+KP+K (Bass Special)"
+  },
+  "21": {
+   "input": "f+3,1",
+   "hits": [
+    "f+3",
+    "f+3,1"
+   ],
+   "doa": "6KP (Knee Hammer)"
+  },
+  "22": {
+   "input": "f+3,4",
+   "hits": [
+    "f+3",
+    "f+3,4"
+   ],
+   "doa": "6KK (Knee Destroyer)"
+  },
+  "23": {
+   "input": "d/f+3,1",
+   "hits": [
+    "d/f+3",
+    "d/f+3,1"
+   ],
+   "doa": "3KP (Bass Punch)"
+  },
+  "24": {
+   "input": "d/f+3,4",
+   "hits": [
+    "d/f+3",
+    "d/f+3,4"
+   ],
+   "doa": "3KK (Kick Rush)"
+  },
+  "25": {
+   "input": "d/b+3,1",
+   "hits": [
+    "d/b+3",
+    "d/b+3,1"
+   ],
+   "doa": "1KP (Rising Palm)"
+  },
+  "26": {
+   "input": "b+1+3,f+1+3",
+   "hits": [
+    "b+1+3",
+    "f+1+3"
+   ],
+   "doa": "4F+P, 6F+P (Push Away throw combo)"
+  },
+  "27": {
+   "input": "b+1+3,b+1+3",
+   "hits": [
+    "b+1+3",
+    "b+1+3"
+   ],
+   "doa": "4F+P, 4F+P (Get Behind throw combo)"
+  },
+  "28": {
+   "input": "b+1+3,d+1+3",
+   "hits": [
+    "b+1+3",
+    "d+1+3"
+   ],
+   "doa": "4F+P, 22F+P (F5 throw combo)"
+  },
+  "29": {
+   "input": "qcf+1+3,1+3",
+   "hits": [
+    "qcf+1+3",
+    "1+3"
+   ],
+   "doa": "236F+P, F+P (Oklahoma Stampede throw combo)"
+  },
+  "30": {
+   "input": "qcb+1+3,d+1+3,u+1+3",
+   "hits": [
+    "qcb+1+3",
+    "d+1+3",
+    "u+1+3"
+   ],
+   "doa": "214F+P, 2F+P, 8F+P (Manhattan Driver throw combo)"
+  },
+  "31": {
+   "input": "qcb+1+3,f+1+3",
+   "hits": [
+    "qcb+1+3",
+    "f+1+3"
+   ],
+   "doa": "214F+P, 6F+P (Kitchen Push Away throw combo)"
+  },
+  "32": {
+   "input": "qcf+1+3,1+3",
+   "hits": [
+    "qcf+1+3",
+    "1+3"
+   ],
+   "doa": "236F+P, F+P (Face Crusher throw combo, back)"
+  },
+  "33": {
+   "input": "d/f+1+3,d+1+3",
+   "hits": [
+    "d/f+2+4~back",
+    "d+1+3"
+   ],
+   "doa": "41236 hold, 2F+P (Grizzly Rancher throw combo, back)"
+  },
+  "34": {
+   "input": "d/f+1+3,d+1+3~wall",
+   "hits": [
+    "d/f+2+4~backwall",
+    "d+1+3"
+   ],
+   "doa": "41236 hold, 2F+P (Grizzly Crash throw combo, wall back)"
+  },
+  "35": {
+   "input": "hcf+1+3,1+3",
+   "hits": [
+    "hcf+1+3~air",
+    "1+3"
+   ],
+   "doa": "41236F+P, F+P (Catching Hammer Throw combo, air)"
+  },
+  "36": {
+   "input": "d/f+1+3~hug2",
+   "hits": [
+    "d/f+1+3~hug"
+   ],
+   "doa": "3P+KF+P / 7PF+P (Bear Hug)"
+  },
+  "37": {
+   "input": "d/f+1+3~hugwall2",
+   "hits": [
+    "d/f+1+3~hugwall"
+   ],
+   "doa": "wall Bear Hug (Bear Wall)"
+  }
+ },
+ "specials": {
+  "0": {
+   "input": "b,f,b+1+2",
+   "doa_move": "Taunt 1",
+   "damage": 0,
+   "throw": false,
+   "note": "464F+P+K taunt"
+  },
+  "1": {
+   "input": "d,d+1+2",
+   "doa_move": "Taunt 2",
+   "damage": 0,
+   "throw": false,
+   "note": "22F+P+K taunt"
+  },
+  "2": {
+   "input": "f,f,f+1+2",
+   "doa_move": "Vain Abel Rage Art",
+   "damage": 55,
+   "throw": false,
+   "note": "rage art; Flying Cross Chop animation, cinematic"
+  },
+  "3": {
+   "input": "f+1+2~rd",
+   "doa_move": "Vain Abel Rage Drive",
+   "damage": 30,
+   "throw": false,
+   "note": "rage drive; Diving Hammer animation, wall splat"
+  },
+  "4": {
+   "input": "1+2+3+4~taunt",
+   "doa_move": "Taunt (button)",
+   "damage": 0,
+   "throw": false,
+   "note": "Taunt button alternate for Taunt 1/2"
+  },
+  "5": {
+   "input": "1+2~win",
+   "doa_move": "Win Pose 1",
+   "damage": 0,
+   "throw": false,
+   "note": "flex / championship belt pose"
+  },
+  "6": {
+   "input": "2+4~win",
+   "doa_move": "Win Pose 2",
+   "damage": 0,
+   "throw": false,
+   "note": "turnbuckle climb pose"
+  },
+  "7": {
+   "input": "f,f~intro",
+   "doa_move": "Ring Intro",
+   "damage": 0,
+   "throw": false,
+   "note": "wrestler ring entrance walk"
+  },
+  "8": {
+   "input": "b,b~stance",
+   "doa_move": "Fighting Stance",
+   "damage": 0,
+   "throw": false,
+   "note": "pro-wrestler stance"
+  },
+  "l0": {
+   "input": "qcf+1+3",
+   "doa_move": "Spear Grapple",
+   "damage": 26,
+   "throw": true
+  },
+  "l1": {
+   "input": "b,f+1+3",
+   "doa_move": "Dynamite Lariat",
+   "damage": 24,
+   "throw": true
+  },
+  "l2": {
+   "input": "hcb+1+3",
+   "doa_move": "Powerbomb",
+   "damage": 28,
+   "throw": true
+  },
+  "l3": {
+   "input": "qcb+1+3",
+   "doa_move": "Manhattan Driver",
+   "damage": 32,
+   "throw": true
+  },
+  "l4": {
+   "input": "qcf+1+2",
+   "doa_move": "Headlock",
+   "damage": 22,
+   "throw": true
+  },
+  "l5": {
+   "input": "d,d/f,d,d/f+1+2",
+   "t3_row": 211,
+   "damage": 21,
+   "throw": true
+  }
+ },
+ "frame_convention": "INPUT-TO-MOVE FIDELITY LAW: DOA P/K/G+dir -> Tekken 1/2/3/4+dir. Every DOA move has one specific Tekken input. Tekken frame conventions @60fps: i10 jab 0.167, throws i12 0.2, launchers i15-i18. Damage on Tekken scale (jab 7, throws 38-55). Bass archetype: slowest striker, hardest grappler.",
+ "union_merge": null,
+ "hit_words": null,
+ "stance_after": null,
+ "conversion_note": "Bass -> Vain Abel is the TEMPLATE for all DOA->WH wiring. Bass animations used; timing/hit properties/combo structure follow Tekken conventions."
 }

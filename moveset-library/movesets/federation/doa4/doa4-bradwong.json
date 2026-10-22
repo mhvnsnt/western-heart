@@ -1,0 +1,1535 @@
+{
+  "conversion_rule": "DOA->Tekken federation: P->1/2 alternating, K->3/4 alternating, numpad 8/2/4/6/9/7/3/1 -> u/d/b/f/u\\/f/u\\/b/d\\/f/d\\/b, 66->f,f, 236->qcf, 214->qcb, F+P(throw)->1+3, F+dir(hold)->1+2, F+K/P+K->1+2 (strike). Same-input collisions get a ~suffix on the dict key only; entry.input keeps the true Tekken input.",
+  "display": "BRAD WONG (DOA4)",
+  "doa_source": "DOA4 command list — deadoralive.fandom.com/wiki/Brad_Wong/Dead_or_Alive_4_command_list (community movelist). Worker 59 federation conversion (DOA notation -> Tekken inputs).",
+  "fighter": "bradwong",
+  "frame_convention": "DOA4 60fps -> seconds. Per-move damage/frames are NOT published in the source; all damage + frames estimated from move archetype and flagged per honesty rule. WH 100HP scale.",
+  "moves": {
+    "1": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/p",
+      "damage": 4,
+      "doa_input": "P",
+      "doa_move": "P (jab)",
+      "heavy": false,
+      "hit_level": "high",
+      "input": "1",
+      "input_slots": [
+        "1"
+      ],
+      "knock": 2.2,
+      "limb": "armR",
+      "move_class": "strike",
+      "name": "Brad Wong P — jab",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.3,
+      "soulGain": 8,
+      "startup": 0.167
+    },
+    "1+2": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/p+k",
+      "damage": 8,
+      "doa_input": "P+K",
+      "doa_move": "P+K (Koshu)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "1+2",
+      "input_slots": [
+        "1+2"
+      ],
+      "knock": 3,
+      "limb": "armR",
+      "move_class": "strike",
+      "name": "Brad Wong P+K — Koshu",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.25
+    },
+    "1+2,1": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/f+kp",
+      "damage": 10,
+      "doa_input": "F+KP",
+      "doa_move": "F+KP (Koyo-Getsuga)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "1+2,1",
+      "input_slots": [
+        "1+2,1",
+        "1+2"
+      ],
+      "knock": 2.8,
+      "limb": "armR",
+      "move_class": "string",
+      "name": "Brad Wong F+KP — Koyo-Getsuga",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.25
+    },
+    "1+3": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/f+p",
+      "damage": 22,
+      "doa_input": "F+P",
+      "doa_move": "F+P (Suirin-Haikai)",
+      "heavy": true,
+      "hit_level": "throw",
+      "input": "1+3",
+      "input_slots": [
+        "1+3"
+      ],
+      "knock": 5,
+      "limb": null,
+      "move_class": "throw",
+      "name": "Brad Wong F+P — Suirin-Haikai",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "properties": [
+        "throw"
+      ],
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.2
+    },
+    "1+3~back": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/kan-shori",
+      "damage": 24,
+      "doa_input": "F+P",
+      "doa_move": "F+P (Kan-Shori, to foe's back)",
+      "heavy": true,
+      "hit_level": "throw",
+      "input": "1+3",
+      "input_slots": [
+        "1+3"
+      ],
+      "knock": 5.2,
+      "limb": null,
+      "move_class": "throw",
+      "name": "Brad Wong F+P — Kan-Shori (back throw)",
+      "note": "DOA4 command list. Back throw; shares input with Suirin-Haikai, key suffixed. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "back-turned",
+      "properties": [
+        "throw"
+      ],
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.2
+    },
+    "1,2,1": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/ppp",
+      "damage": 10,
+      "doa_input": "PPP",
+      "doa_move": "PPP (Tenshin-Chu)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "1,2,1",
+      "input_slots": [
+        "1,2,1",
+        "1",
+        "2"
+      ],
+      "knock": 2.4,
+      "limb": "armR",
+      "move_class": "string",
+      "name": "Brad Wong PPP — Tenshin-Chu",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.45,
+      "soulGain": 8,
+      "startup": 0.167
+    },
+    "1,2,3": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/ppk",
+      "damage": 11,
+      "doa_input": "PPK",
+      "doa_move": "PPK (Ren-Dokki)",
+      "heavy": false,
+      "hit_level": "high",
+      "input": "1,2,3",
+      "input_slots": [
+        "1,2,3",
+        "1",
+        "2"
+      ],
+      "knock": 2.8,
+      "limb": "legL",
+      "move_class": "string",
+      "name": "Brad Wong PPK — Ren-Dokki",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.167
+    },
+    "1,2,b+3": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/pp4k",
+      "damage": 12,
+      "doa_input": "PP4K",
+      "doa_move": "PP4K (Ren-Toshin)",
+      "heavy": false,
+      "hit_level": "high",
+      "input": "1,2,b+3",
+      "input_slots": [
+        "1,2,b+3",
+        "1",
+        "2"
+      ],
+      "knock": 3,
+      "limb": "legL",
+      "move_class": "string",
+      "name": "Brad Wong PP4K — Ren-Toshin",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.167
+    },
+    "1,2,d+3": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/pp2k",
+      "damage": 12,
+      "doa_input": "PP2K",
+      "doa_move": "PP2K (Tessa)",
+      "heavy": false,
+      "hit_level": "low",
+      "input": "1,2,d+3",
+      "input_slots": [
+        "1,2,d+3",
+        "1",
+        "2"
+      ],
+      "knock": 2.8,
+      "limb": "legL",
+      "move_class": "string",
+      "name": "Brad Wong PP2K — Tessa",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.167
+    },
+    "1,2,f+3": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/pp6k",
+      "damage": 12,
+      "doa_input": "PP6K",
+      "doa_move": "PP6K (Ren-Senpu)",
+      "heavy": false,
+      "hit_level": "high",
+      "input": "1,2,f+3",
+      "input_slots": [
+        "1,2,f+3",
+        "1",
+        "2"
+      ],
+      "knock": 3,
+      "limb": "legL",
+      "move_class": "string",
+      "name": "Brad Wong PP6K — Ren-Senpu",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.167
+    },
+    "1,3": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/pk",
+      "damage": 8,
+      "doa_input": "PK",
+      "doa_move": "PK (Katsumen-Tai)",
+      "heavy": false,
+      "hit_level": "high",
+      "input": "1,3",
+      "input_slots": [
+        "1,3",
+        "1"
+      ],
+      "knock": 2.4,
+      "limb": "legL",
+      "move_class": "string",
+      "name": "Brad Wong PK — Katsumen-Tai",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.45,
+      "soulGain": 8,
+      "startup": 0.167
+    },
+    "1,f+1,2": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/p6pp",
+      "damage": 12,
+      "doa_input": "P6PP",
+      "doa_move": "P6PP (Getsuga-Rencho)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "1,f+1,2",
+      "input_slots": [
+        "1,f+1,2",
+        "1",
+        "f+1"
+      ],
+      "knock": 2.8,
+      "limb": "armL",
+      "move_class": "string",
+      "name": "Brad Wong P6PP — Getsuga-Rencho",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.167
+    },
+    "1~lying": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/fukushin-getsuga",
+      "damage": 6,
+      "doa_input": "P",
+      "doa_move": "P (Fukushin-Getsuga, lying)",
+      "heavy": false,
+      "hit_level": "low",
+      "input": "1",
+      "input_slots": [
+        "1"
+      ],
+      "knock": 2,
+      "limb": "armR",
+      "move_class": "strike",
+      "name": "Brad Wong P — Fukushin-Getsuga (lying attack)",
+      "note": "DOA4 command list. Lying attack; key suffixed. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "grounded",
+      "recovery": 0.4,
+      "soulGain": 8,
+      "startup": 0.2
+    },
+    "3,4,3": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/kkk",
+      "damage": 12,
+      "doa_input": "KKK",
+      "doa_move": "KKK (Ren-Koshutai)",
+      "heavy": true,
+      "hit_level": "high",
+      "input": "3,4,3",
+      "input_slots": [
+        "3,4,3",
+        "3",
+        "4"
+      ],
+      "knock": 3,
+      "limb": "legL",
+      "move_class": "string",
+      "name": "Brad Wong KKK — Ren-Koshutai",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.55,
+      "soulGain": 8,
+      "startup": 0.233
+    },
+    "3,4,d+3": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/kk2k",
+      "damage": 12,
+      "doa_input": "KK2K",
+      "doa_move": "KK2K (Renkan-Kosotai)",
+      "heavy": false,
+      "hit_level": "low",
+      "input": "3,4,d+3",
+      "input_slots": [
+        "3,4,d+3",
+        "3",
+        "4"
+      ],
+      "knock": 2.8,
+      "limb": "legL",
+      "move_class": "string",
+      "name": "Brad Wong KK2K — Renkan-Kosotai",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.55,
+      "soulGain": 8,
+      "startup": 0.233
+    },
+    "b+1+2": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/4p+k",
+      "damage": 10,
+      "doa_input": "4P+K",
+      "doa_move": "4P+K (Taiho-Getsuga)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "b+1+2",
+      "input_slots": [
+        "b+1+2"
+      ],
+      "knock": 3.2,
+      "limb": "armR",
+      "move_class": "strike",
+      "name": "Brad Wong 4P+K — Taiho-Getsuga",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.25
+    },
+    "b+1+2~hold": {
+      "active": 0.1,
+      "anim_ref": "doa4:bradwong/4f",
+      "damage": 16,
+      "doa_input": "4F",
+      "doa_move": "4F (Suimu-Hateki vs mid punch; Ryusui-Rakuyo vs jumping punch)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "b+1+2",
+      "input_slots": [
+        "b+1+2"
+      ],
+      "knock": 3.8,
+      "limb": null,
+      "move_class": "counter",
+      "name": "Brad Wong 4F — Suimu-Hateki / Ryusui-Rakuyo (mid + jumping punch holds)",
+      "note": "DOA4 command list. Two named holds share input 4F; merged per federation rule. Input b+1+2 also used by strike Taiho-Getsuga (4P+K); key suffixed. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "properties": [
+        "counter-hit"
+      ],
+      "recovery": 0.4,
+      "soulGain": 10,
+      "startup": 0.15
+    },
+    "b+1+3": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/4f+p",
+      "damage": 22,
+      "doa_input": "4F+P",
+      "doa_move": "4F+P (Tenshin-Soko)",
+      "heavy": true,
+      "hit_level": "throw",
+      "input": "b+1+3",
+      "input_slots": [
+        "b+1+3"
+      ],
+      "knock": 5,
+      "limb": null,
+      "move_class": "throw",
+      "name": "Brad Wong 4F+P — Tenshin-Soko",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "properties": [
+        "throw"
+      ],
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.2
+    },
+    "b+1+3~back": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/so-kokukyu",
+      "damage": 24,
+      "doa_input": "4F+P",
+      "doa_move": "4F+P (So-Kokukyu, to foe's back)",
+      "heavy": true,
+      "hit_level": "throw",
+      "input": "b+1+3",
+      "input_slots": [
+        "b+1+3"
+      ],
+      "knock": 5.2,
+      "limb": null,
+      "move_class": "throw",
+      "name": "Brad Wong 4F+P — So-Kokukyu (back throw)",
+      "note": "DOA4 command list. Back throw; shares input with Tenshin-Soko, key suffixed. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "back-turned",
+      "properties": [
+        "throw"
+      ],
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.2
+    },
+    "b+1,2": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/4pp",
+      "damage": 10,
+      "doa_input": "4PP",
+      "doa_move": "4PP (Gyoin-Chowan)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "b+1,2",
+      "input_slots": [
+        "b+1,2",
+        "b+1"
+      ],
+      "knock": 2.6,
+      "limb": "armL",
+      "move_class": "string",
+      "name": "Brad Wong 4PP — Gyoin-Chowan",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.45,
+      "soulGain": 8,
+      "startup": 0.2
+    },
+    "b+1,3": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/4pk",
+      "damage": 11,
+      "doa_input": "4PK",
+      "doa_move": "4PK (Gyoin-Dantai)",
+      "heavy": false,
+      "hit_level": "high",
+      "input": "b+1,3",
+      "input_slots": [
+        "b+1,3",
+        "b+1"
+      ],
+      "knock": 2.8,
+      "limb": "legL",
+      "move_class": "string",
+      "name": "Brad Wong 4PK — Gyoin-Dantai",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.2
+    },
+    "b+3": {
+      "active": 0.2,
+      "anim_ref": "doa4:bradwong/4k",
+      "damage": 0,
+      "doa_input": "4K",
+      "doa_move": "4K (Dokuritsu-Ho)",
+      "heavy": false,
+      "hit_level": null,
+      "input": "b+3",
+      "input_slots": [
+        "b+3"
+      ],
+      "knock": 0,
+      "limb": null,
+      "move_class": "transition",
+      "name": "Brad Wong 4K — Dokuritsu-Ho (stance)",
+      "note": "DOA4 command list. Signature drunken stance. frame data estimated; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.2,
+      "soulGain": 4,
+      "startup": 0.2
+    },
+    "d+1+2": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/2p+k",
+      "damage": 10,
+      "doa_input": "2P+K",
+      "doa_move": "2P+K (Kokoto)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "d+1+2",
+      "input_slots": [
+        "d+1+2"
+      ],
+      "knock": 3,
+      "limb": "armR",
+      "move_class": "strike",
+      "name": "Brad Wong 2P+K — Kokoto",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.25
+    },
+    "d+1+2,3": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/2f+kk",
+      "damage": 12,
+      "doa_input": "2F+KK",
+      "doa_move": "2F+KK (Chiso-Tensen-Shu)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "d+1+2,3",
+      "input_slots": [
+        "d+1+2,3",
+        "d+1+2"
+      ],
+      "knock": 3,
+      "limb": "legL",
+      "move_class": "string",
+      "name": "Brad Wong 2F+KK — Chiso-Tensen-Shu",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.55,
+      "soulGain": 8,
+      "startup": 0.25
+    },
+    "d+1+3": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/2f+p",
+      "damage": 22,
+      "doa_input": "2F+P",
+      "doa_move": "2F+P (Hashitsu-Gyosen, to crouching foe)",
+      "heavy": true,
+      "hit_level": "throw",
+      "input": "d+1+3",
+      "input_slots": [
+        "d+1+3"
+      ],
+      "knock": 5,
+      "limb": null,
+      "move_class": "throw",
+      "name": "Brad Wong 2F+P — Hashitsu-Gyosen (crouching foe)",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "crouching",
+      "properties": [
+        "throw"
+      ],
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.2
+    },
+    "d/b+1+2": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/1f+k",
+      "damage": 10,
+      "doa_input": "1F+K",
+      "doa_move": "1F+K (Kosotai)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "d/b+1+2",
+      "input_slots": [
+        "d/b+1+2"
+      ],
+      "knock": 3,
+      "limb": "legL",
+      "move_class": "strike",
+      "name": "Brad Wong 1F+K — Kosotai",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.25
+    },
+    "d/b+1+2~hold": {
+      "active": 0.1,
+      "anim_ref": "doa4:bradwong/1f",
+      "damage": 16,
+      "doa_input": "1F",
+      "doa_move": "1F (Senri-Goan vs low punch; Ryuso-Senkyaku vs low kick)",
+      "heavy": false,
+      "hit_level": "low",
+      "input": "d/b+1+2",
+      "input_slots": [
+        "d/b+1+2"
+      ],
+      "knock": 3.8,
+      "limb": null,
+      "move_class": "counter",
+      "name": "Brad Wong 1F — Senri-Goan / Ryuso-Senkyaku (low punch + low kick holds)",
+      "note": "DOA4 command list. Two named holds share input 1F; merged per federation rule. Input d/b+1+2 also used by strike Kosotai (1F+K); key suffixed. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "properties": [
+        "counter-hit"
+      ],
+      "recovery": 0.4,
+      "soulGain": 10,
+      "startup": 0.15
+    },
+    "d/b+1,3": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/1pk",
+      "damage": 10,
+      "doa_input": "1PK",
+      "doa_move": "1PK (Keppo-Sokuto)",
+      "heavy": false,
+      "hit_level": "high",
+      "input": "d/b+1,3",
+      "input_slots": [
+        "d/b+1,3",
+        "d/b+1"
+      ],
+      "knock": 2.6,
+      "limb": "legL",
+      "move_class": "string",
+      "name": "Brad Wong 1PK — Keppo-Sokuto",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.2
+    },
+    "d/f+1": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/3p",
+      "damage": 6,
+      "doa_input": "3P",
+      "doa_move": "3P (Kyuho-Toda, hold P)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "d/f+1",
+      "input_slots": [
+        "d/f+1"
+      ],
+      "knock": 2.4,
+      "limb": "armR",
+      "move_class": "strike",
+      "name": "Brad Wong 3P — Kyuho-Toda",
+      "note": "DOA4 command list (hold P = charged). frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.42,
+      "soulGain": 8,
+      "startup": 0.22
+    },
+    "d/f+1+2": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/3p+k",
+      "damage": 10,
+      "doa_input": "3P+K",
+      "doa_move": "3P+K (Kozento)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "d/f+1+2",
+      "input_slots": [
+        "d/f+1+2"
+      ],
+      "knock": 3.2,
+      "limb": "armR",
+      "move_class": "strike",
+      "name": "Brad Wong 3P+K — Kozento",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.25
+    },
+    "d/f+1+3": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/3f+p",
+      "damage": 24,
+      "doa_input": "3F+P",
+      "doa_move": "3F+P (Ran-Saiwa, to crouching foe)",
+      "heavy": true,
+      "hit_level": "throw",
+      "input": "d/f+1+3",
+      "input_slots": [
+        "d/f+1+3"
+      ],
+      "knock": 5.2,
+      "limb": null,
+      "move_class": "throw",
+      "name": "Brad Wong 3F+P — Ran-Saiwa (crouching foe)",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "crouching",
+      "properties": [
+        "throw"
+      ],
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.2
+    },
+    "d/f+1,2": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/3pp",
+      "damage": 11,
+      "doa_input": "3PP",
+      "doa_move": "3PP (Ren-Chowan)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "d/f+1,2",
+      "input_slots": [
+        "d/f+1,2",
+        "d/f+1"
+      ],
+      "knock": 2.6,
+      "limb": "armL",
+      "move_class": "string",
+      "name": "Brad Wong 3PP — Ren-Chowan",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.2
+    },
+    "d/f+3,4": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/3kk",
+      "damage": 12,
+      "doa_input": "3KK",
+      "doa_move": "3KK (Ren-Dokui-Kyaku)",
+      "heavy": true,
+      "hit_level": "high",
+      "input": "d/f+3,4",
+      "input_slots": [
+        "d/f+3,4",
+        "d/f+3"
+      ],
+      "knock": 3.2,
+      "limb": "legR",
+      "move_class": "string",
+      "name": "Brad Wong 3KK — Ren-Dokui-Kyaku",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.55,
+      "soulGain": 8,
+      "startup": 0.25
+    },
+    "f+1+2": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/6f+k",
+      "damage": 10,
+      "doa_input": "6F+K",
+      "doa_move": "6F+K (Zenku-Hontetsu)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "f+1+2",
+      "input_slots": [
+        "f+1+2"
+      ],
+      "knock": 3.2,
+      "limb": "legL",
+      "move_class": "strike",
+      "name": "Brad Wong 6F+K — Zenku-Hontetsu",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.25
+    },
+    "f+1+2~hold": {
+      "active": 0.1,
+      "anim_ref": "doa4:bradwong/6f",
+      "damage": 16,
+      "doa_input": "6F",
+      "doa_move": "6F (Hotai-Gyoso vs mid kick; Akusoku-Hairin vs jumping kick)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "f+1+2",
+      "input_slots": [
+        "f+1+2"
+      ],
+      "knock": 3.8,
+      "limb": null,
+      "move_class": "counter",
+      "name": "Brad Wong 6F — Hotai-Gyoso / Akusoku-Hairin (mid + jumping kick holds)",
+      "note": "DOA4 command list. Two named holds share input 6F; merged per federation rule. Input f+1+2 also used by strike Zenku-Hontetsu (6F+K); key suffixed. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "properties": [
+        "counter-hit"
+      ],
+      "recovery": 0.4,
+      "soulGain": 10,
+      "startup": 0.15
+    },
+    "f+1+3": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/6f+p",
+      "damage": 24,
+      "doa_input": "6F+P",
+      "doa_move": "6F+P (Senshi)",
+      "heavy": true,
+      "hit_level": "throw",
+      "input": "f+1+3",
+      "input_slots": [
+        "f+1+3"
+      ],
+      "knock": 5.2,
+      "limb": null,
+      "move_class": "throw",
+      "name": "Brad Wong 6F+P — Senshi",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "properties": [
+        "throw"
+      ],
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.2
+    },
+    "f+1,1+2,1": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/6p+kp",
+      "damage": 13,
+      "doa_input": "6P+KP",
+      "doa_move": "6P+KP (Sohaku)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "f+1,1+2,1",
+      "input_slots": [
+        "f+1,1+2,1",
+        "f+1"
+      ],
+      "knock": 3,
+      "limb": "armR",
+      "move_class": "string",
+      "name": "Brad Wong 6P+KP — Sohaku",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.55,
+      "soulGain": 8,
+      "startup": 0.25
+    },
+    "f+1,2": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/6pp",
+      "damage": 9,
+      "doa_input": "6PP",
+      "doa_move": "6PP (Ren-Koshu)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "f+1,2",
+      "input_slots": [
+        "f+1,2",
+        "f+1"
+      ],
+      "knock": 2.6,
+      "limb": "armL",
+      "move_class": "string",
+      "name": "Brad Wong 6PP — Ren-Koshu",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.45,
+      "soulGain": 8,
+      "startup": 0.2
+    },
+    "f+1,3": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/6pk",
+      "damage": 11,
+      "doa_input": "6PK",
+      "doa_move": "6PK (Soko-Chogeki)",
+      "heavy": false,
+      "hit_level": "high",
+      "input": "f+1,3",
+      "input_slots": [
+        "f+1,3",
+        "f+1"
+      ],
+      "knock": 2.8,
+      "limb": "legL",
+      "move_class": "string",
+      "name": "Brad Wong 6PK — Soko-Chogeki",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.2
+    },
+    "f+1,f+1": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/6p6p",
+      "damage": 11,
+      "doa_input": "6P6P",
+      "doa_move": "6P6P (Senshin-Getsuga)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "f+1,f+1",
+      "input_slots": [
+        "f+1,f+1",
+        "f+1"
+      ],
+      "knock": 2.8,
+      "limb": "armL",
+      "move_class": "string",
+      "name": "Brad Wong 6P6P — Senshin-Getsuga",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.2
+    },
+    "f+3,4": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/6kk",
+      "damage": 12,
+      "doa_input": "6KK",
+      "doa_move": "6KK (Senpu, Zenku)",
+      "heavy": true,
+      "hit_level": "high",
+      "input": "f+3,4",
+      "input_slots": [
+        "f+3,4",
+        "f+3"
+      ],
+      "knock": 3.2,
+      "limb": "legR",
+      "move_class": "string",
+      "name": "Brad Wong 6KK — Senpu, Zenku",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.55,
+      "soulGain": 8,
+      "startup": 0.25
+    },
+    "f,f+1": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/66p",
+      "damage": 8,
+      "doa_input": "66P",
+      "doa_move": "66P (Koso)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "f,f+1",
+      "input_slots": [
+        "f,f+1"
+      ],
+      "knock": 2.6,
+      "limb": "armR",
+      "move_class": "strike",
+      "name": "Brad Wong 66P — Koso",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.42,
+      "soulGain": 8,
+      "startup": 0.2
+    },
+    "f,f+1+3": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/66f+p",
+      "damage": 26,
+      "doa_input": "66F+P",
+      "doa_move": "66F+P (Tetsu-Kairi)",
+      "heavy": true,
+      "hit_level": "throw",
+      "input": "f,f+1+3",
+      "input_slots": [
+        "f,f+1+3"
+      ],
+      "knock": 5.4,
+      "limb": null,
+      "move_class": "throw",
+      "name": "Brad Wong 66F+P — Tetsu-Kairi",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "properties": [
+        "throw"
+      ],
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.2
+    },
+    "qcb+1": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/214p",
+      "damage": 10,
+      "doa_input": "214P",
+      "doa_move": "214P (Honshin-Jokaku-Zengeki)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "qcb+1",
+      "input_slots": [
+        "qcb+1"
+      ],
+      "knock": 3.2,
+      "limb": "armR",
+      "move_class": "special",
+      "name": "Brad Wong 214P — Honshin-Jokaku-Zengeki",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.55,
+      "soulGain": 10,
+      "startup": 0.27
+    },
+    "qcf+1": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/236p",
+      "damage": 10,
+      "doa_input": "236P",
+      "doa_move": "236P (Senshin-Choto)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "qcf+1",
+      "input_slots": [
+        "qcf+1"
+      ],
+      "knock": 3,
+      "limb": "armR",
+      "move_class": "special",
+      "name": "Brad Wong 236P — Senshin-Choto",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.5,
+      "soulGain": 10,
+      "startup": 0.25
+    },
+    "u+1": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/8p",
+      "damage": 6,
+      "doa_input": "8P",
+      "doa_move": "8P (Suiho-Chogeki)",
+      "heavy": false,
+      "hit_level": "high",
+      "input": "u+1",
+      "input_slots": [
+        "u+1"
+      ],
+      "knock": 2.2,
+      "limb": "armR",
+      "move_class": "strike",
+      "name": "Brad Wong 8P — Suiho-Chogeki",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.4,
+      "soulGain": 8,
+      "startup": 0.2
+    },
+    "u+1+2": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/8f+k",
+      "damage": 10,
+      "doa_input": "8F+K",
+      "doa_move": "8F+K (Hoho-Sohi)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "u+1+2",
+      "input_slots": [
+        "u+1+2"
+      ],
+      "knock": 3.2,
+      "limb": "legL",
+      "move_class": "strike",
+      "name": "Brad Wong 8F+K — Hoho-Sohi",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.25
+    },
+    "u+1+2~down": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/zaban-tetsu",
+      "damage": 8,
+      "doa_input": "8P+K",
+      "doa_move": "8P+K (Zaban-Tetsu, to knocked-down foe)",
+      "heavy": false,
+      "hit_level": "low",
+      "input": "u+1+2",
+      "input_slots": [
+        "u+1+2"
+      ],
+      "knock": 2.2,
+      "limb": "armR",
+      "move_class": "strike",
+      "name": "Brad Wong 8P+K — Zaban-Tetsu (down attack)",
+      "note": "DOA4 command list. Down attack; shares input with Hoho-Sohi (8F+K), key suffixed. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "grounded",
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.25
+    },
+    "u+3": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/8k",
+      "damage": 8,
+      "doa_input": "8K",
+      "doa_move": "8K (Hisui-Senkyaku)",
+      "heavy": false,
+      "hit_level": "high",
+      "input": "u+3",
+      "input_slots": [
+        "u+3"
+      ],
+      "knock": 2.6,
+      "limb": "legL",
+      "move_class": "strike",
+      "name": "Brad Wong 8K — Hisui-Senkyaku",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.45,
+      "soulGain": 8,
+      "startup": 0.25
+    },
+    "u/b+1": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/7p",
+      "damage": 6,
+      "doa_input": "7P",
+      "doa_move": "7P (Taishin-Hon)",
+      "heavy": false,
+      "hit_level": "high",
+      "input": "u/b+1",
+      "input_slots": [
+        "u/b+1"
+      ],
+      "knock": 2.4,
+      "limb": "armR",
+      "move_class": "special",
+      "name": "Brad Wong 7P — Taishin-Hon",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.4,
+      "soulGain": 10,
+      "startup": 0.22
+    },
+    "u/b+1+2": {
+      "active": 0.1,
+      "anim_ref": "doa4:bradwong/7f",
+      "damage": 16,
+      "doa_input": "7F",
+      "doa_move": "7F (Yoki-Chochu vs high punch; Hoto-Choshitsu vs high kick)",
+      "heavy": false,
+      "hit_level": "high",
+      "input": "u/b+1+2",
+      "input_slots": [
+        "u/b+1+2"
+      ],
+      "knock": 3.8,
+      "limb": null,
+      "move_class": "counter",
+      "name": "Brad Wong 7F — Yoki-Chochu / Hoto-Choshitsu (high punch + high kick holds)",
+      "note": "DOA4 command list. Two named holds share input 7F; merged per federation rule. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "properties": [
+        "counter-hit"
+      ],
+      "recovery": 0.4,
+      "soulGain": 10,
+      "startup": 0.15
+    },
+    "u/b+3,4": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/7kk",
+      "damage": 12,
+      "doa_input": "7KK",
+      "doa_move": "7KK (Taishin-Zenku-Hontetsu)",
+      "heavy": true,
+      "hit_level": "high",
+      "input": "u/b+3,4",
+      "input_slots": [
+        "u/b+3,4",
+        "u/b+3"
+      ],
+      "knock": 3.2,
+      "limb": "legR",
+      "move_class": "string",
+      "name": "Brad Wong 7KK — Taishin-Zenku-Hontetsu",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.55,
+      "soulGain": 8,
+      "startup": 0.25
+    },
+    "u/f+1": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/9p",
+      "damage": 6,
+      "doa_input": "9P",
+      "doa_move": "9P (Kuchu-Hon)",
+      "heavy": false,
+      "hit_level": "high",
+      "input": "u/f+1",
+      "input_slots": [
+        "u/f+1"
+      ],
+      "knock": 2.4,
+      "limb": "armR",
+      "move_class": "special",
+      "name": "Brad Wong 9P — Kuchu-Hon",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.4,
+      "soulGain": 10,
+      "startup": 0.22
+    },
+    "u/f+1,2,1": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/9ppp",
+      "damage": 13,
+      "doa_input": "9PPP",
+      "doa_move": "9PPP (Yakuza-Ren-Koshu)",
+      "heavy": true,
+      "hit_level": "high",
+      "input": "u/f+1,2,1",
+      "input_slots": [
+        "u/f+1,2,1",
+        "u/f+1"
+      ],
+      "knock": 3.4,
+      "limb": "armR",
+      "move_class": "string",
+      "name": "Brad Wong 9PPP — Yakuza-Ren-Koshu",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.6,
+      "soulGain": 8,
+      "startup": 0.22
+    },
+    "u/f+3": {
+      "active": 0.033,
+      "anim_ref": "doa4:bradwong/9k",
+      "damage": 10,
+      "doa_input": "9K",
+      "doa_move": "9K (Niki-Kyaku)",
+      "heavy": true,
+      "hit_level": "high",
+      "input": "u/f+3",
+      "input_slots": [
+        "u/f+3"
+      ],
+      "knock": 4.6,
+      "limb": "legL",
+      "move_class": "strike",
+      "name": "Brad Wong 9K — Niki-Kyaku",
+      "note": "DOA4 command list. Launcher archetype. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "properties": [
+        "launch"
+      ],
+      "recovery": 0.6,
+      "soulGain": 10,
+      "startup": 0.28
+    }
+  },
+  "proxy": false,
+  "proxy_note": null,
+  "schema_version": 3,
+  "specials": [
+    {
+      "damage": 10,
+      "doa_input": "236P",
+      "input": "qcf+1",
+      "throw": false
+    },
+    {
+      "damage": 10,
+      "doa_input": "214P",
+      "input": "qcb+1",
+      "throw": false
+    },
+    {
+      "damage": 22,
+      "doa_input": "F+P",
+      "input": "1+3",
+      "throw": true
+    },
+    {
+      "damage": 24,
+      "doa_input": "6F+P",
+      "input": "f+1+3",
+      "throw": true
+    },
+    {
+      "damage": 26,
+      "doa_input": "66F+P",
+      "input": "f,f+1+3",
+      "throw": true
+    },
+    {
+      "damage": 22,
+      "doa_input": "4F+P",
+      "input": "b+1+3",
+      "throw": true
+    }
+  ],
+  "strings": [
+    {
+      "components": [
+        "1",
+        "2",
+        "1"
+      ],
+      "damage": 10,
+      "input": "1,2,1"
+    },
+    {
+      "components": [
+        "1",
+        "2",
+        "3"
+      ],
+      "damage": 11,
+      "input": "1,2,3"
+    },
+    {
+      "components": [
+        "1",
+        "2",
+        "f+3"
+      ],
+      "damage": 12,
+      "input": "1,2,f+3"
+    },
+    {
+      "components": [
+        "1",
+        "2",
+        "b+3"
+      ],
+      "damage": 12,
+      "input": "1,2,b+3"
+    },
+    {
+      "components": [
+        "1",
+        "2",
+        "d+3"
+      ],
+      "damage": 12,
+      "input": "1,2,d+3"
+    },
+    {
+      "components": [
+        "1",
+        "f+1",
+        "2"
+      ],
+      "damage": 12,
+      "input": "1,f+1,2"
+    },
+    {
+      "components": [
+        "1",
+        "3"
+      ],
+      "damage": 8,
+      "input": "1,3"
+    },
+    {
+      "components": [
+        "f+1",
+        "2"
+      ],
+      "damage": 9,
+      "input": "f+1,2"
+    },
+    {
+      "components": [
+        "f+1",
+        "f+1"
+      ],
+      "damage": 11,
+      "input": "f+1,f+1"
+    },
+    {
+      "components": [
+        "f+1",
+        "3"
+      ],
+      "damage": 11,
+      "input": "f+1,3"
+    },
+    {
+      "components": [
+        "d/f+1",
+        "2"
+      ],
+      "damage": 11,
+      "input": "d/f+1,2"
+    },
+    {
+      "components": [
+        "u/f+1",
+        "2",
+        "1"
+      ],
+      "damage": 13,
+      "input": "u/f+1,2,1"
+    },
+    {
+      "components": [
+        "d/b+1",
+        "3"
+      ],
+      "damage": 10,
+      "input": "d/b+1,3"
+    },
+    {
+      "components": [
+        "f,f+1"
+      ],
+      "damage": 8,
+      "input": "f,f+1"
+    },
+    {
+      "components": [
+        "3",
+        "4",
+        "3"
+      ],
+      "damage": 12,
+      "input": "3,4,3"
+    },
+    {
+      "components": [
+        "3",
+        "4",
+        "d+3"
+      ],
+      "damage": 12,
+      "input": "3,4,d+3"
+    },
+    {
+      "components": [
+        "f+3",
+        "4"
+      ],
+      "damage": 12,
+      "input": "f+3,4"
+    },
+    {
+      "components": [
+        "d/f+3",
+        "4"
+      ],
+      "damage": 12,
+      "input": "d/f+3,4"
+    },
+    {
+      "components": [
+        "u/b+3",
+        "4"
+      ],
+      "damage": 12,
+      "input": "u/b+3,4"
+    },
+    {
+      "components": [
+        "1+2",
+        "1"
+      ],
+      "damage": 10,
+      "input": "1+2,1"
+    },
+    {
+      "components": [
+        "f+1",
+        "1+2",
+        "1"
+      ],
+      "damage": 13,
+      "input": "f+1,1+2,1"
+    },
+    {
+      "components": [
+        "b+1",
+        "2"
+      ],
+      "damage": 10,
+      "input": "b+1,2"
+    },
+    {
+      "components": [
+        "b+1",
+        "3"
+      ],
+      "damage": 11,
+      "input": "b+1,3"
+    },
+    {
+      "components": [
+        "d+1+2",
+        "3"
+      ],
+      "damage": 12,
+      "input": "d+1+2,3"
+    }
+  ],
+  "tekken_base": "Brad Wong (Dead or Alive 4)",
+  "wh_claimed_map": "Tarzanian Devil — user-locked 2026-10-22 ~17:24. Brad Wong was unassigned; wild drunken-fighter style fits the jungle savage."
+}

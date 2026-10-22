@@ -1,0 +1,1276 @@
+{
+  "conversion_rule": "DOA->Tekken federation: P->1/2 alternating, K->3/4 alternating, numpad 8/2/4/6/9/7/3/1 -> u/d/b/f/u\\/f/u\\/b/d\\/f/d\\/b, 66->f,f, 236->qcf, 214->qcb, F+P(throw)->1+3, F+dir(hold)->1+2, F+K/P+K->1+2 (strike). Same-input collisions get a ~suffix on the dict key only; entry.input keeps the true Tekken input.",
+  "display": "GEN FU (DOA4)",
+  "doa_source": "DOA4 command list — deadoralive.fandom.com/wiki/Gen_Fu/Dead_or_Alive_4_command_list (community movelist). Worker 59 federation conversion (DOA notation -> Tekken inputs).",
+  "fighter": "genfu",
+  "frame_convention": "DOA4 60fps -> seconds. Per-move damage/frames are NOT published in the source; all damage + frames estimated from move archetype and flagged per honesty rule. WH 100HP scale.",
+  "moves": {
+    "1": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/p",
+      "damage": 4,
+      "doa_input": "P",
+      "doa_move": "P (jab)",
+      "heavy": false,
+      "hit_level": "high",
+      "input": "1",
+      "input_slots": [
+        "1"
+      ],
+      "knock": 2.2,
+      "limb": "armR",
+      "move_class": "strike",
+      "name": "Gen Fu P — jab",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.3,
+      "soulGain": 8,
+      "startup": 0.167
+    },
+    "1+2": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/f+k",
+      "damage": 8,
+      "doa_input": "F+K",
+      "doa_move": "F+K (Sohi-Kyaku)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "1+2",
+      "input_slots": [
+        "1+2"
+      ],
+      "knock": 3,
+      "limb": "legL",
+      "move_class": "strike",
+      "name": "Gen Fu F+K — Sohi-Kyaku",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.25
+    },
+    "1+2,1,2": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/p+kpp",
+      "damage": 12,
+      "doa_input": "P+KPP",
+      "doa_move": "P+KPP (Jatoshin)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "1+2,1,2",
+      "input_slots": [
+        "1+2,1,2",
+        "1+2"
+      ],
+      "knock": 2.8,
+      "limb": "armL",
+      "move_class": "string",
+      "name": "Gen Fu P+KPP — Jatoshin",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.55,
+      "soulGain": 8,
+      "startup": 0.25
+    },
+    "1+3": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/f+p",
+      "damage": 22,
+      "doa_input": "F+P",
+      "doa_move": "F+P (Juji-Kao)",
+      "heavy": true,
+      "hit_level": "throw",
+      "input": "1+3",
+      "input_slots": [
+        "1+3"
+      ],
+      "knock": 5,
+      "limb": null,
+      "move_class": "throw",
+      "name": "Gen Fu F+P — Juji-Kao",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "properties": [
+        "throw"
+      ],
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.2
+    },
+    "1+3~back": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/kohaibi",
+      "damage": 24,
+      "doa_input": "F+P",
+      "doa_move": "F+P (Kohaibi, to foe's back)",
+      "heavy": true,
+      "hit_level": "throw",
+      "input": "1+3",
+      "input_slots": [
+        "1+3"
+      ],
+      "knock": 5.2,
+      "limb": null,
+      "move_class": "throw",
+      "name": "Gen Fu F+P — Kohaibi (back throw)",
+      "note": "DOA4 command list. Back throw; shares input with Juji-Kao, key suffixed. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "back-turned",
+      "properties": [
+        "throw"
+      ],
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.2
+    },
+    "1,2,1": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/ppp",
+      "damage": 10,
+      "doa_input": "PPP",
+      "doa_move": "PPP (Rensui-Tanpa)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "1,2,1",
+      "input_slots": [
+        "1,2,1",
+        "1",
+        "2"
+      ],
+      "knock": 2.4,
+      "limb": "armR",
+      "move_class": "string",
+      "name": "Gen Fu PPP — Rensui-Tanpa",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.45,
+      "soulGain": 8,
+      "startup": 0.167
+    },
+    "1,2,3": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/ppk",
+      "damage": 11,
+      "doa_input": "PPK",
+      "doa_move": "PPK (Kodan-Tai)",
+      "heavy": false,
+      "hit_level": "high",
+      "input": "1,2,3",
+      "input_slots": [
+        "1,2,3",
+        "1",
+        "2"
+      ],
+      "knock": 2.8,
+      "limb": "legL",
+      "move_class": "string",
+      "name": "Gen Fu PPK — Kodan-Tai",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.167
+    },
+    "1,2,d+1": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/pp2p",
+      "damage": 11,
+      "doa_input": "PP2P",
+      "doa_move": "PP2P (Hakuja-Rensui)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "1,2,d+1",
+      "input_slots": [
+        "1,2,d+1",
+        "1",
+        "2"
+      ],
+      "knock": 2.6,
+      "limb": "armL",
+      "move_class": "string",
+      "name": "Gen Fu PP2P — Hakuja-Rensui",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.167
+    },
+    "1,2,d+3": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/pp2k",
+      "damage": 12,
+      "doa_input": "PP2K",
+      "doa_move": "PP2K (Rensui-Zenso)",
+      "heavy": false,
+      "hit_level": "low",
+      "input": "1,2,d+3",
+      "input_slots": [
+        "1,2,d+3",
+        "1",
+        "2"
+      ],
+      "knock": 2.8,
+      "limb": "legL",
+      "move_class": "string",
+      "name": "Gen Fu PP2K — Rensui-Zenso",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.167
+    },
+    "b+1+2": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/4p+k",
+      "damage": 10,
+      "doa_input": "4P+K",
+      "doa_move": "4P+K (Toha)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "b+1+2",
+      "input_slots": [
+        "b+1+2"
+      ],
+      "knock": 3.2,
+      "limb": "armR",
+      "move_class": "strike",
+      "name": "Gen Fu 4P+K — Toha",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.25
+    },
+    "b+1+2~hold": {
+      "active": 0.1,
+      "anim_ref": "doa4:genfu/4f",
+      "damage": 16,
+      "doa_input": "4F",
+      "doa_move": "4F (Ryukei vs mid punch; Yoshi-Honshin vs jumping punch)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "b+1+2",
+      "input_slots": [
+        "b+1+2"
+      ],
+      "knock": 3.8,
+      "limb": null,
+      "move_class": "counter",
+      "name": "Gen Fu 4F — Ryukei / Yoshi-Honshin (mid + jumping punch holds)",
+      "note": "DOA4 command list. Two named holds share input 4F; merged per federation rule. Input b+1+2 also used by strike Toha (4P+K); key suffixed. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "properties": [
+        "counter-hit"
+      ],
+      "recovery": 0.4,
+      "soulGain": 10,
+      "startup": 0.15
+    },
+    "b+1+3": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/4f+p",
+      "damage": 22,
+      "doa_input": "4F+P",
+      "doa_move": "4F+P (Shutai)",
+      "heavy": true,
+      "hit_level": "throw",
+      "input": "b+1+3",
+      "input_slots": [
+        "b+1+3"
+      ],
+      "knock": 5,
+      "limb": null,
+      "move_class": "throw",
+      "name": "Gen Fu 4F+P — Shutai",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "properties": [
+        "throw"
+      ],
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.2
+    },
+    "b+1,2": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/4pp",
+      "damage": 10,
+      "doa_input": "4PP",
+      "doa_move": "4PP (Kaiho, Yosoku)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "b+1,2",
+      "input_slots": [
+        "b+1,2",
+        "b+1"
+      ],
+      "knock": 2.6,
+      "limb": "armL",
+      "move_class": "string",
+      "name": "Gen Fu 4PP — Kaiho, Yosoku",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.45,
+      "soulGain": 8,
+      "startup": 0.2
+    },
+    "d+1+2": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/2f+k",
+      "damage": 10,
+      "doa_input": "2F+K",
+      "doa_move": "2F+K (Zenso-Tai)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "d+1+2",
+      "input_slots": [
+        "d+1+2"
+      ],
+      "knock": 3,
+      "limb": "legL",
+      "move_class": "strike",
+      "name": "Gen Fu 2F+K — Zenso-Tai",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.25
+    },
+    "d+1+3": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/2f+p",
+      "damage": 22,
+      "doa_input": "2F+P",
+      "doa_move": "2F+P (Ribyo-Joju, to crouching foe)",
+      "heavy": true,
+      "hit_level": "throw",
+      "input": "d+1+3",
+      "input_slots": [
+        "d+1+3"
+      ],
+      "knock": 5,
+      "limb": null,
+      "move_class": "throw",
+      "name": "Gen Fu 2F+P — Ribyo-Joju (crouching foe)",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "crouching",
+      "properties": [
+        "throw"
+      ],
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.2
+    },
+    "d/b+1": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/1p",
+      "damage": 6,
+      "doa_input": "1P",
+      "doa_move": "1P (Hakuja-Honsui)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "d/b+1",
+      "input_slots": [
+        "d/b+1"
+      ],
+      "knock": 2.4,
+      "limb": "armR",
+      "move_class": "strike",
+      "name": "Gen Fu 1P — Hakuja-Honsui",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.42,
+      "soulGain": 8,
+      "startup": 0.2
+    },
+    "d/b+1+2": {
+      "active": 0.1,
+      "anim_ref": "doa4:genfu/1f",
+      "damage": 16,
+      "doa_input": "1F",
+      "doa_move": "1F (Tenzan-Hosui vs low punch; Daiso vs low kick)",
+      "heavy": false,
+      "hit_level": "low",
+      "input": "d/b+1+2",
+      "input_slots": [
+        "d/b+1+2"
+      ],
+      "knock": 3.8,
+      "limb": null,
+      "move_class": "counter",
+      "name": "Gen Fu 1F — Tenzan-Hosui / Daiso (low punch + low kick holds)",
+      "note": "DOA4 command list. Two named holds share input 1F; merged per federation rule. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "properties": [
+        "counter-hit"
+      ],
+      "recovery": 0.4,
+      "soulGain": 10,
+      "startup": 0.15
+    },
+    "d/f+1": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/3p",
+      "damage": 6,
+      "doa_input": "3P",
+      "doa_move": "3P (Choryo, hold)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "d/f+1",
+      "input_slots": [
+        "d/f+1"
+      ],
+      "knock": 2.4,
+      "limb": "armR",
+      "move_class": "strike",
+      "name": "Gen Fu 3P — Choryo",
+      "note": "DOA4 command list (hold 3 = delayable). frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.42,
+      "soulGain": 8,
+      "startup": 0.2
+    },
+    "d/f+1+2": {
+      "active": 0.1,
+      "anim_ref": "doa4:genfu/3f",
+      "damage": 18,
+      "doa_input": "3F",
+      "doa_move": "3F (Bansai-Hatsu vs mid punch; Akusoku-Shoda vs mid kick)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "d/f+1+2",
+      "input_slots": [
+        "d/f+1+2"
+      ],
+      "knock": 4,
+      "limb": null,
+      "move_class": "counter",
+      "name": "Gen Fu 3F — Bansai-Hatsu / Akusoku-Shoda (advanced mid holds)",
+      "note": "DOA4 command list. Advanced parries. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "properties": [
+        "counter-hit"
+      ],
+      "recovery": 0.4,
+      "soulGain": 10,
+      "startup": 0.15
+    },
+    "d/f+1+3": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/3f+p",
+      "damage": 24,
+      "doa_input": "3F+P",
+      "doa_move": "3F+P (Batetto, to crouching foe)",
+      "heavy": true,
+      "hit_level": "throw",
+      "input": "d/f+1+3",
+      "input_slots": [
+        "d/f+1+3"
+      ],
+      "knock": 5.2,
+      "limb": null,
+      "move_class": "throw",
+      "name": "Gen Fu 3F+P — Batetto (crouching foe)",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "crouching",
+      "properties": [
+        "throw"
+      ],
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.2
+    },
+    "d/f+1,2": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/3pp",
+      "damage": 11,
+      "doa_input": "3PP",
+      "doa_move": "3PP (Tanho, Kosonzan)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "d/f+1,2",
+      "input_slots": [
+        "d/f+1,2",
+        "d/f+1"
+      ],
+      "knock": 2.6,
+      "limb": "armL",
+      "move_class": "string",
+      "name": "Gen Fu 3PP — Tanho, Kosonzan",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.2
+    },
+    "d/f+3,1,2": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/3kpp",
+      "damage": 13,
+      "doa_input": "3KPP",
+      "doa_move": "3KPP (Senryu-Ha)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "d/f+3,1,2",
+      "input_slots": [
+        "d/f+3,1,2",
+        "d/f+3"
+      ],
+      "knock": 3,
+      "limb": "armL",
+      "move_class": "string",
+      "name": "Gen Fu 3KPP — Senryu-Ha",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.55,
+      "soulGain": 8,
+      "startup": 0.25
+    },
+    "d/f,d/f+1": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/33p",
+      "damage": 8,
+      "doa_input": "33P",
+      "doa_move": "33P (Kosonzan)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "d/f,d/f+1",
+      "input_slots": [
+        "d/f,d/f+1"
+      ],
+      "knock": 2.6,
+      "limb": "armR",
+      "move_class": "strike",
+      "name": "Gen Fu 33P — Kosonzan",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.42,
+      "soulGain": 8,
+      "startup": 0.22
+    },
+    "f+1+2": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/6p+k",
+      "damage": 10,
+      "doa_input": "6P+K",
+      "doa_move": "6P+K (Soha)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "f+1+2",
+      "input_slots": [
+        "f+1+2"
+      ],
+      "knock": 3.2,
+      "limb": "armR",
+      "move_class": "strike",
+      "name": "Gen Fu 6P+K — Soha",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.25
+    },
+    "f+1+2~hold": {
+      "active": 0.1,
+      "anim_ref": "doa4:genfu/6f",
+      "damage": 16,
+      "doa_input": "6F",
+      "doa_move": "6F (Ryuchobo vs mid kick; Akusoku-Tototsu vs jumping kick)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "f+1+2",
+      "input_slots": [
+        "f+1+2"
+      ],
+      "knock": 3.8,
+      "limb": null,
+      "move_class": "counter",
+      "name": "Gen Fu 6F — Ryuchobo / Akusoku-Tototsu (mid + jumping kick holds)",
+      "note": "DOA4 command list. Two named holds share input 6F; merged per federation rule. Input f+1+2 also used by strike Soha (6P+K); key suffixed. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "properties": [
+        "counter-hit"
+      ],
+      "recovery": 0.4,
+      "soulGain": 10,
+      "startup": 0.15
+    },
+    "f+1+3": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/6f+p",
+      "damage": 24,
+      "doa_input": "6F+P",
+      "doa_move": "6F+P (Kokei, throw combo)",
+      "heavy": true,
+      "hit_level": "throw",
+      "input": "f+1+3",
+      "input_slots": [
+        "f+1+3"
+      ],
+      "knock": 5.2,
+      "limb": null,
+      "move_class": "throw",
+      "name": "Gen Fu 6F+P — Kokei (throw combo)",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "properties": [
+        "throw"
+      ],
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.2
+    },
+    "f+1+3~back": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/sokujin",
+      "damage": 26,
+      "doa_input": "6F+P",
+      "doa_move": "6F+P (Sokujin, to foe's back)",
+      "heavy": true,
+      "hit_level": "throw",
+      "input": "f+1+3",
+      "input_slots": [
+        "f+1+3"
+      ],
+      "knock": 5.4,
+      "limb": null,
+      "move_class": "throw",
+      "name": "Gen Fu 6F+P — Sokujin (back throw)",
+      "note": "DOA4 command list. Back throw; shares input with Kokei, key suffixed. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "back-turned",
+      "properties": [
+        "throw"
+      ],
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.2
+    },
+    "f+1,2,1": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/6ppp",
+      "damage": 13,
+      "doa_input": "6PPP",
+      "doa_move": "6PPP (Banchu, Tanho, Kosonzan)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "f+1,2,1",
+      "input_slots": [
+        "f+1,2,1",
+        "f+1",
+        "2"
+      ],
+      "knock": 2.8,
+      "limb": "armR",
+      "move_class": "string",
+      "name": "Gen Fu 6PPP — Banchu, Tanho, Kosonzan",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.2
+    },
+    "f+1,2,1+2": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/6ppp+k",
+      "damage": 15,
+      "doa_input": "6PPP+K",
+      "doa_move": "6PPP+K (Ban-Ho-Yokei)",
+      "heavy": true,
+      "hit_level": "high",
+      "input": "f+1,2,1+2",
+      "input_slots": [
+        "f+1,2,1+2",
+        "f+1",
+        "2"
+      ],
+      "knock": 3.6,
+      "limb": "legL",
+      "move_class": "string",
+      "name": "Gen Fu 6PPP+K — Ban-Ho-Yokei",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.6,
+      "soulGain": 8,
+      "startup": 0.2
+    },
+    "f+3": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/6k",
+      "damage": 9,
+      "doa_input": "6K",
+      "doa_move": "6K (Sokutan-Kyaku)",
+      "heavy": false,
+      "hit_level": "high",
+      "input": "f+3",
+      "input_slots": [
+        "f+3"
+      ],
+      "knock": 2.6,
+      "limb": "legL",
+      "move_class": "strike",
+      "name": "Gen Fu 6K — Sokutan-Kyaku",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.45,
+      "soulGain": 8,
+      "startup": 0.25
+    },
+    "f,f+1": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/66p",
+      "damage": 8,
+      "doa_input": "66P",
+      "doa_move": "66P (Tanpa)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "f,f+1",
+      "input_slots": [
+        "f,f+1"
+      ],
+      "knock": 2.6,
+      "limb": "armR",
+      "move_class": "strike",
+      "name": "Gen Fu 66P — Tanpa",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.42,
+      "soulGain": 8,
+      "startup": 0.2
+    },
+    "f,f+1+3": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/66f+p",
+      "damage": 26,
+      "doa_input": "66F+P",
+      "doa_move": "66F+P (Shin-i-Ha)",
+      "heavy": true,
+      "hit_level": "throw",
+      "input": "f,f+1+3",
+      "input_slots": [
+        "f,f+1+3"
+      ],
+      "knock": 5.4,
+      "limb": null,
+      "move_class": "throw",
+      "name": "Gen Fu 66F+P — Shin-i-Ha",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "properties": [
+        "throw"
+      ],
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.2
+    },
+    "qcb+1": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/214p",
+      "damage": 10,
+      "doa_input": "214(hold)P",
+      "doa_move": "214 hold P (Sen-Shippo)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "qcb+1",
+      "input_slots": [
+        "qcb+1"
+      ],
+      "knock": 3.2,
+      "limb": "armR",
+      "move_class": "special",
+      "name": "Gen Fu 214P — Sen-Shippo",
+      "note": "DOA4 command list (hold P = charged). frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.55,
+      "soulGain": 10,
+      "startup": 0.28
+    },
+    "qcb+1+2": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/214pf",
+      "damage": 10,
+      "doa_input": "214PF",
+      "doa_move": "214PF (Senpo)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "qcb+1+2",
+      "input_slots": [
+        "qcb+1+2"
+      ],
+      "knock": 3.2,
+      "limb": "armR",
+      "move_class": "special",
+      "name": "Gen Fu 214PF — Senpo",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.55,
+      "soulGain": 10,
+      "startup": 0.27
+    },
+    "qcb+1+3": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/214f+p",
+      "damage": 26,
+      "doa_input": "214F+P",
+      "doa_move": "214F+P (Kokai-San-Osa)",
+      "heavy": true,
+      "hit_level": "throw",
+      "input": "qcb+1+3",
+      "input_slots": [
+        "qcb+1+3"
+      ],
+      "knock": 5.4,
+      "limb": null,
+      "move_class": "throw",
+      "name": "Gen Fu 214F+P — Kokai-San-Osa",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "properties": [
+        "throw"
+      ],
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.2
+    },
+    "qcf+1+3": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/236f+p",
+      "damage": 26,
+      "doa_input": "236F+P",
+      "doa_move": "236F+P (Unpei-Nichigetsu-Ha)",
+      "heavy": true,
+      "hit_level": "throw",
+      "input": "qcf+1+3",
+      "input_slots": [
+        "qcf+1+3"
+      ],
+      "knock": 5.4,
+      "limb": null,
+      "move_class": "throw",
+      "name": "Gen Fu 236F+P — Unpei-Nichigetsu-Ha",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "properties": [
+        "throw"
+      ],
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.2
+    },
+    "qcf+1,2": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/236pp",
+      "damage": 14,
+      "doa_input": "236PP",
+      "doa_move": "236PP (Oshu-Kosoha)",
+      "heavy": true,
+      "hit_level": "mid",
+      "input": "qcf+1,2",
+      "input_slots": [
+        "qcf+1,2",
+        "qcf+1"
+      ],
+      "knock": 3.8,
+      "limb": "armL",
+      "move_class": "special",
+      "name": "Gen Fu 236PP — Oshu-Kosoha",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.6,
+      "soulGain": 10,
+      "startup": 0.25
+    },
+    "u+1": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/8p",
+      "damage": 6,
+      "doa_input": "8P",
+      "doa_move": "8P (To-Sho)",
+      "heavy": false,
+      "hit_level": "high",
+      "input": "u+1",
+      "input_slots": [
+        "u+1"
+      ],
+      "knock": 2.2,
+      "limb": "armR",
+      "move_class": "strike",
+      "name": "Gen Fu 8P — To-Sho",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.4,
+      "soulGain": 8,
+      "startup": 0.2
+    },
+    "u+1+2": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/8p+k",
+      "damage": 10,
+      "doa_input": "8P+K",
+      "doa_move": "8P+K (Kobokuha)",
+      "heavy": false,
+      "hit_level": "mid",
+      "input": "u+1+2",
+      "input_slots": [
+        "u+1+2"
+      ],
+      "knock": 3.2,
+      "limb": "armR",
+      "move_class": "strike",
+      "name": "Gen Fu 8P+K — Kobokuha",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.25
+    },
+    "u+1+2~down": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/rakushu-geki",
+      "damage": 8,
+      "doa_input": "8P+K",
+      "doa_move": "8P+K (Rakushu-Geki, to knocked-down foe)",
+      "heavy": false,
+      "hit_level": "low",
+      "input": "u+1+2",
+      "input_slots": [
+        "u+1+2"
+      ],
+      "knock": 2.2,
+      "limb": "armR",
+      "move_class": "strike",
+      "name": "Gen Fu 8P+K — Rakushu-Geki (down attack)",
+      "note": "DOA4 command list. Down attack; shares input with Kobokuha, key suffixed. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "grounded",
+      "recovery": 0.5,
+      "soulGain": 8,
+      "startup": 0.25
+    },
+    "u+3": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/8k",
+      "damage": 8,
+      "doa_input": "8K",
+      "doa_move": "8K (Han-Senpu)",
+      "heavy": false,
+      "hit_level": "high",
+      "input": "u+3",
+      "input_slots": [
+        "u+3"
+      ],
+      "knock": 2.6,
+      "limb": "legL",
+      "move_class": "strike",
+      "name": "Gen Fu 8K — Han-Senpu",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.45,
+      "soulGain": 8,
+      "startup": 0.25
+    },
+    "u/b+1": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/7p",
+      "damage": 6,
+      "doa_input": "7P",
+      "doa_move": "7P (Sokuten)",
+      "heavy": false,
+      "hit_level": "high",
+      "input": "u/b+1",
+      "input_slots": [
+        "u/b+1"
+      ],
+      "knock": 2.4,
+      "limb": "armR",
+      "move_class": "special",
+      "name": "Gen Fu 7P — Sokuten",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.4,
+      "soulGain": 10,
+      "startup": 0.22
+    },
+    "u/b+1+2": {
+      "active": 0.1,
+      "anim_ref": "doa4:genfu/7f",
+      "damage": 16,
+      "doa_input": "7F",
+      "doa_move": "7F (Taizan-Hosui vs high punch; Yosoku-Tenha vs high kick)",
+      "heavy": false,
+      "hit_level": "high",
+      "input": "u/b+1+2",
+      "input_slots": [
+        "u/b+1+2"
+      ],
+      "knock": 3.8,
+      "limb": null,
+      "move_class": "counter",
+      "name": "Gen Fu 7F — Taizan-Hosui / Yosoku-Tenha (high punch + high kick holds)",
+      "note": "DOA4 command list. Two named holds share input 7F; merged per federation rule. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "properties": [
+        "counter-hit"
+      ],
+      "recovery": 0.4,
+      "soulGain": 10,
+      "startup": 0.15
+    },
+    "u/b+3": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/7k",
+      "damage": 8,
+      "doa_input": "7K",
+      "doa_move": "7K (Tenshin-Koshu-Tai)",
+      "heavy": false,
+      "hit_level": "high",
+      "input": "u/b+3",
+      "input_slots": [
+        "u/b+3"
+      ],
+      "knock": 2.6,
+      "limb": "legL",
+      "move_class": "strike",
+      "name": "Gen Fu 7K — Tenshin-Koshu-Tai",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.45,
+      "soulGain": 8,
+      "startup": 0.25
+    },
+    "u/f+1": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/9p",
+      "damage": 6,
+      "doa_input": "9P",
+      "doa_move": "9P (Kohoto)",
+      "heavy": false,
+      "hit_level": "high",
+      "input": "u/f+1",
+      "input_slots": [
+        "u/f+1"
+      ],
+      "knock": 2.2,
+      "limb": "armR",
+      "move_class": "strike",
+      "name": "Gen Fu 9P — Kohoto",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.4,
+      "soulGain": 8,
+      "startup": 0.2
+    },
+    "u/f+1+2": {
+      "active": 0.1,
+      "anim_ref": "doa4:genfu/9f",
+      "damage": 18,
+      "doa_input": "9F",
+      "doa_move": "9F (Rensai-Shu vs high punch; Akusoku-Shosui vs high kick)",
+      "heavy": false,
+      "hit_level": "high",
+      "input": "u/f+1+2",
+      "input_slots": [
+        "u/f+1+2"
+      ],
+      "knock": 4,
+      "limb": null,
+      "move_class": "counter",
+      "name": "Gen Fu 9F — Rensai-Shu / Akusoku-Shosui (advanced high holds)",
+      "note": "DOA4 command list. Advanced parries. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "properties": [
+        "counter-hit"
+      ],
+      "recovery": 0.4,
+      "soulGain": 10,
+      "startup": 0.15
+    },
+    "u/f+3,4": {
+      "active": 0.033,
+      "anim_ref": "doa4:genfu/9kk",
+      "damage": 12,
+      "doa_input": "9KK",
+      "doa_move": "9KK (Senpu-Zenso-Tai)",
+      "heavy": true,
+      "hit_level": "high",
+      "input": "u/f+3,4",
+      "input_slots": [
+        "u/f+3,4",
+        "u/f+3"
+      ],
+      "knock": 3.4,
+      "limb": "legR",
+      "move_class": "string",
+      "name": "Gen Fu 9KK — Senpu-Zenso-Tai",
+      "note": "DOA4 command list. frame data + damage estimated from archetype; marked per schema honesty rule",
+      "position": "standing",
+      "recovery": 0.55,
+      "soulGain": 8,
+      "startup": 0.25
+    }
+  },
+  "proxy": false,
+  "proxy_note": null,
+  "schema_version": 3,
+  "specials": [
+    {
+      "damage": 14,
+      "doa_input": "236PP",
+      "input": "qcf+1,2",
+      "throw": false
+    },
+    {
+      "damage": 10,
+      "doa_input": "214(hold)P",
+      "input": "qcb+1",
+      "throw": false
+    },
+    {
+      "damage": 10,
+      "doa_input": "214PF",
+      "input": "qcb+1+2",
+      "throw": false
+    },
+    {
+      "damage": 22,
+      "doa_input": "F+P",
+      "input": "1+3",
+      "throw": true
+    },
+    {
+      "damage": 24,
+      "doa_input": "6F+P",
+      "input": "f+1+3",
+      "throw": true
+    },
+    {
+      "damage": 22,
+      "doa_input": "4F+P",
+      "input": "b+1+3",
+      "throw": true
+    },
+    {
+      "damage": 26,
+      "doa_input": "66F+P",
+      "input": "f,f+1+3",
+      "throw": true
+    },
+    {
+      "damage": 26,
+      "doa_input": "214F+P",
+      "input": "qcb+1+3",
+      "throw": true
+    },
+    {
+      "damage": 26,
+      "doa_input": "236F+P",
+      "input": "qcf+1+3",
+      "throw": true
+    }
+  ],
+  "strings": [
+    {
+      "components": [
+        "1",
+        "2",
+        "1"
+      ],
+      "damage": 10,
+      "input": "1,2,1"
+    },
+    {
+      "components": [
+        "1",
+        "2",
+        "d+1"
+      ],
+      "damage": 11,
+      "input": "1,2,d+1"
+    },
+    {
+      "components": [
+        "1",
+        "2",
+        "3"
+      ],
+      "damage": 11,
+      "input": "1,2,3"
+    },
+    {
+      "components": [
+        "1",
+        "2",
+        "d+3"
+      ],
+      "damage": 12,
+      "input": "1,2,d+3"
+    },
+    {
+      "components": [
+        "f+1",
+        "2",
+        "1"
+      ],
+      "damage": 13,
+      "input": "f+1,2,1"
+    },
+    {
+      "components": [
+        "f+1",
+        "2",
+        "1+2"
+      ],
+      "damage": 15,
+      "input": "f+1,2,1+2"
+    },
+    {
+      "components": [
+        "b+1",
+        "2"
+      ],
+      "damage": 10,
+      "input": "b+1,2"
+    },
+    {
+      "components": [
+        "d/f+1",
+        "2"
+      ],
+      "damage": 11,
+      "input": "d/f+1,2"
+    },
+    {
+      "components": [
+        "d/f+3",
+        "1",
+        "2"
+      ],
+      "damage": 13,
+      "input": "d/f+3,1,2"
+    },
+    {
+      "components": [
+        "1+2",
+        "1",
+        "2"
+      ],
+      "damage": 12,
+      "input": "1+2,1,2"
+    },
+    {
+      "components": [
+        "qcf+1",
+        "2"
+      ],
+      "damage": 14,
+      "input": "qcf+1,2"
+    },
+    {
+      "components": [
+        "u/f+3",
+        "4"
+      ],
+      "damage": 12,
+      "input": "u/f+3,4"
+    }
+  ],
+  "tekken_base": "Gen Fu (Dead or Alive 4)",
+  "wh_claimed_map": "Edwin Kennedy — user-locked 2026-10-22. DOA4 moveset feeds WH/Ashlane character Edwin Kennedy."
+}
