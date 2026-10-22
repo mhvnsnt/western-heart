@@ -6,7 +6,11 @@
    and is applied when the fighter is confirmed for a match.
    ============================================================ */
 
+import { FULL_ROSTER } from './roster-full.js';
+
 const LS_KEY = 'wh_attires_v1';
+// Fighter ids: a model key that is another fighter's own id is that fighter's body.
+const FIGHTER_IDS = new Set(FULL_ROSTER.map(f => f.id));
 
 /* model base -> [{ model, label }]. Labels from owner notes / CANON.md.
    Fighters not listed here get a single default (their base model). */
@@ -195,7 +199,11 @@ function saveMap(m) {
 /** Attires available for a roster fighter (by model, falls back to roster id). */
 export function attiresFor(fighter) {
   if (!fighter) return [];
-  const list = ATTIRE_VARIANTS[fighter.model] || ATTIRE_VARIANTS[fighter.id];
+  // A soul riding another fighter's body (TOU / KAI / RETSU / GYOU on 'pantera') keeps that base model:
+  // the body owner's ladder (Pantera's Tripo-first reorder, 2026-10-21) is his, not the riders'
+  // (game/tests/model-key-guard.test.mjs "declared-base riders stay on their declared base").
+  const ridesOther = fighter.model && fighter.model !== fighter.id && FIGHTER_IDS.has(fighter.model);
+  const list = ridesOther ? ATTIRE_VARIANTS[fighter.id] : (ATTIRE_VARIANTS[fighter.model] || ATTIRE_VARIANTS[fighter.id]);
   if (list && list.length) return list;
   // Default: single attire = the fighter's own model
   return [{ model: fighter.model || 'pantera', label: 'ATTIRE 1' }];

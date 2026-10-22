@@ -694,3 +694,20 @@ what each engine costs when the game sells, roster more than 36 fighters.
 - Roster count from the repo scan: 58 FULL_ROSTER entries / 49 display names / 50 model keys.
 - Unverified items are listed in the report's last section. No Godot binary in this container, so
   the Lab tests were not re-run.
+
+## 2026-10-22 — Rig audit tools, Leo man facing, Zen + soul riders restored (Claude session, branch claude/amazing-keller-p8644u)
+
+Owner: "Need to get the bind pose overlays and heat mapping and skinning and rigging and boning fully done for
+every character every glb model" and, on Pantera A2/A1, forearms/hands stretch, legs crumpled, "the right leg is
+in the opposite direction of the left leg", "the hand looks weighted to the tail".
+
+- Leo man (Pantera A1): no model-facing.json entry; the feet cue read his floor-dragging tail as a heel and turned
+  him 180 deg at load (limbs followed T3 in world space, body backwards). Added `"pantera-leoman": "+Z"`.
+- Leopard King (A2): rig_qa + bind overlay show the skeleton ~0.25 m behind the body, sides swapped, toes back,
+  26,512 bleed verts. Re-rig made with the new refit tools (sides ok, knees forward, bleed 1,010) — NOT wired yet.
+- Main-branch breakages found by game/tests: Zen's MODEL_URLS block deleted by 3942b8584 (restored verbatim);
+  TOU/KAI/RETSU/GYOU inherited Pantera's Tripo ladder (attiresFor now skips a ladder owned by another fighter's
+  body). game/tests: model-key-guard 3/3, fighter-completeness 4/4 (main had 3 failures).
+- Tools: tools/model-audit/{rig_qa,rig_overlay,tile_sheet}.py, tools/proof-harness/rig_sheet.mjs,
+  tools/auto_rig/refit_skeleton.py + backends/heat_rebind.py, heat-proxy cleanup in gamerig_backend.py.
+- Proof: docs/proof/claude-2026-10-22/pantera-rigs/ (README, before/after renders, overlays, rig_qa.json).

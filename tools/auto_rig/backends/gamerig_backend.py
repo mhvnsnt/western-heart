@@ -559,6 +559,35 @@ def heat_via_proxy(rig, m, voxel, target_faces):
         dec = proxy.modifiers.new("wh_decimate", "DECIMATE")
         dec.ratio = min(0.6, tri_target / max(1, 2 * quads))
         bpy.ops.object.modifier_apply(modifier=dec.name)
+        # Clean the proxy: a few duplicate verts and 3-5 vertex specks from the remesh made the heat solve
+        # fail for EVERY vertex on the Leopard King proxy (2026-10-22: 24,006/24,006 unweighted; merged +
+        # specks dropped -> 4 unweighted). Merge by distance, then drop islands under 1% of the proxy.
+        import bmesh
+        bm = bmesh.new()
+        bm.from_mesh(proxy.data)
+        bmesh.ops.remove_doubles(bm, verts=bm.verts, dist=0.1 * voxel / max(proxy.scale))
+        bm.verts.ensure_lookup_table()
+        seen, small = set(), []
+        for v in bm.verts:
+            if v.index in seen:
+                continue
+            stack, isl = [v], [v]
+            seen.add(v.index)
+            while stack:
+                x = stack.pop()
+                for e in x.link_edges:
+                    o = e.other_vert(x)
+                    if o.index not in seen:
+                        seen.add(o.index)
+                        stack.append(o)
+                        isl.append(o)
+            if len(isl) < 0.01 * len(bm.verts):
+                small.extend(isl)
+        if small:
+            bmesh.ops.delete(bm, geom=small, context="VERTS")
+        bm.to_mesh(proxy.data)
+        bm.free()
+        proxy.data.update()
         bpy.ops.object.select_all(action="DESELECT")
         rig.select_set(True)
         proxy.select_set(True)

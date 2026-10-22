@@ -18,6 +18,8 @@ const page = await browser.newPage({ viewport: { width: 960, height: 540 } });
 const logs = [];
 page.on('console', m => logs.push(`[${m.type()}] ${m.text()}`));
 page.on('pageerror', e => logs.push(`[pageerror] ${e.message}`));
+// ATTIRES='{"pantera":"pantera-leopard-king"}' picks attires the way the select screen saves them.
+if (process.env.ATTIRES) await page.addInitScript((m) => localStorage.setItem('wh_attires_v1', m), process.env.ATTIRES);
 await page.goto(`http://127.0.0.1:${process.env.PORT || 8765}/game/index.html?${q}`, { waitUntil: 'load' });
 await page.waitForTimeout(1500);
 await page.evaluate(([a, b]) => { window.__modes.startMode('arcade'); }, [p1, p2]);
