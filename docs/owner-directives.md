@@ -5,6 +5,15 @@ Living document. Updated every time the owner sets a directive. Newest first.
 ## 2026-10-22
 
 
+- **BANNON SUB-UNIVERSE LAW (2026-10-22).** The Bannon/Ashlane/BrutalFist universe is a
+  SUB-UNIVERSE of the Western Heart multiverse. The Bannon game
+  (`mhvnsnt/brutalfistgrokversion`, `native/media/characters/chara_bannon/` — identity,
+  character, moves, bones, hitboxes TXTs) is the canon source for the 28 fighters ("off the
+  top rope canon"). Ashlane characters keep their existing bios/backstories from their repos —
+  then each gets a "how they arrived" bridge into WH/Eastern Mind canon (the call, the trial,
+  Tong-Nou, lost souls). Raw-material reference:
+  `docs/research/bannon-universe-canon-package-2026-10-22.md`. All writing laws apply (adults
+  only, canon-grounded, no Tekken names in canon).
 - **Audio delivery: direct download links, NEVER in-chat attachments
   (2026-10-22).** The in-chat audio player is broken on the owner's
   Android app (shows 0:00, won't play). ALL audio files sent to the owner
