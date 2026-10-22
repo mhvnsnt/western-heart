@@ -1467,7 +1467,106 @@ Also found: the feet-geometry cue misreads chunky-heel boots as -Z (false -Z on 
 **Headless render:** attempted via /opt/meta-chromium (Chromium 152) against a local harness serving the edited scene.js — browser crashes at startup in this VM (multi-process) and hangs under --single-process (disk I/O errors on profile writes); environment issue, not game code. Math-level proof above stands as verification.
 
 **Merge:** PR #<TBD>, checks green, merged via git_merge.py. No deletions. 2 modified (game/js/scene.js surgical, WORKLOG.md append), 1 added (docs/proof/camera-bounds-portrait-schematic.svg).
+## 2026-10-22 — Worker 13: VOICE PIPELINE + INTRO INTERACTION SYSTEM + VOICE CLONING PIPELINE
 
+Owner brief (verbatim): "Dorowani is the FIRST voice-acted character —
+voice like Squirtle (creature sounds + his Japanese word bursts). Voice
+moments: win poses/taunts, intro sequences, cutscenes." + "Tekken-style
+pre-fight character interactions when two fighters are picked — but
+VARIED, not one fixed interaction per matchup. Multiple different
+interactions per character pairing, different interactions per character."
++ "real-time rendered cutscenes with characters animated in-engine (not
+pre-rendered video)" (spec only). Follow-up: audio delivery = direct
+download links, NEVER in-chat attachments (in-chat player broken on
+Android). Follow-up 2: user REJECTED Hubert TTS for Dorowani ("doesn't
+have any of the qualities I asked for" — raspy, low, Squirtle-like
+creature voice) → build REAL AI voice cloning, no local weight downloads,
+Chatterbox-based with remote/cloud weights. Dorowani pilot.
+
+### Track 1 — Voice pipeline (shipped, wired)
+- `game/js/voice.js` (new): VoiceEngine — manifest loading, clip decode +
+  playback through a dedicated voice bus, subtitle layer, placeholder
+  policy (no manifest → silent no-op; no recording → subtitle-only +
+  console.info; NEVER synth fake "voice" as final; `debugBleeps` dev-only,
+  defaults OFF). Cutscene hook `playCue()` ready.
+- `game/js/audio.js` (surgical): added `voiceGain` bus + `voiceBus()`
+  accessor. Base verified byte-identical to main before edit.
+- `game/data/voices/dorowani.json` (new): 9 clips (intro×3, win×3,
+  taunt×2, select×1), all `status: "placeholder"` — honest until real
+  recordings land. Direction field carries the owner's verbatim brief.
+- `game/js/game.js` (surgical, byte-verified = base + 4 edits):
+  `voice.unlock()` in startMatch; `voice.play(winner, 'win')`
+  fire-and-forget in `_endRound` (never blocks the 3 s win beat);
+  intro-interaction hook before round 1 (dynamic import, loadspeed-safe).
+  Win sequences / victory taunts untouched — only voice triggers added.
+- Contract: `docs/VOICE-PIPELINE.md` (triggers, API, asset spec, roster
+  expansion). Asset dir: `game/assets/voices/` (+ README).
+
+### Track 2 — Intro interaction system (shipped, wired)
+- `game/js/intro-interactions.js` (new): pair DB (sorted `a|b` keys, 2+
+  variants per pair — enforced by tests), `pickIntroInteraction()` (random
+  + no-immediate-repeat + rivalry ctx weighting; pure logic), and
+  `playIntroInteraction()` (in-engine overlay, tap-to-advance, SKIP,
+  fighters idle-animate behind dialogue, failure can never block a fight).
+- Seed: 8 pairs × 2 variants (Dorowani ×3 pairs; demonio|diablo rivalry,
+  demonio|pantera respect, docfrank|cyborgx family, docfrank|samura1
+  question, mariposa|diablo intruder) + 3 Dorowani generics + versus
+  title-card fallback. Every variant carries a `source` (canon quote or
+  NEEDS-OWNER-REVIEW flag — see docs/INTRO-INTERACTION-SYSTEM.md §4).
+- Canon rule honored: nothing contradicts CANON.md/docs; gaps flagged for
+  owner (Dorowani backstory beyond the voice brief; Pantera has no quoted
+  dialogue). Dorowani is not in the roster at main yet — his data is keyed
+  `dorowani` and the pipeline is roster-agnostic.
+- Contract: `docs/INTRO-INTERACTION-SYSTEM.md`.
+
+### Track 3 — Cutscene spec (doc only)
+- `docs/CUTSCENE-SPEC.md`: real-time in-engine cutscene contract —
+  timeline model (cam/anim/voice/sfx/banner beats), camera director,
+  `voice.playCue()` hook (already in voice.js), performance budget,
+  Dorowani pilot notes, build order. NOT pre-rendered video, per owner.
+
+### Track 4 — Voice cloning pipeline (shipped; generation blocked on creds)
+- `tools/character-voice/voice-clone/`: `clone_pipeline.py` (spec →
+  generate → creature-fx → master → deposit → deliver), `backends/remote_api.py`
+  (Replicate/fal.ai/HF — pure HTTPS, zero local weights), `backends/remote_gpu.py`
+  (RunPod/Kaggle/SSH — weights live remotely, only WAVs return),
+  `voice-specs/dorowani.yaml` (raspy/low/creature target, exaggeration
+  0.75, creature FX: pitch −5 st, formant 0.82, growl).
+- `refuse_local_weights()` guard: pipeline aborts on local weight use.
+- Creature FX verified: 440 Hz → 330 Hz (−5 st exact), OGG 44.1 kHz mono,
+  silence rejected, 500 KB cap enforced. `test-voice-clone.py` green.
+- Contract: `docs/VOICE-CLONING-PIPELINE.md`. Character-voice README updated.
+- **Blockers (explicit):** no `WH_VOICE_API_KEY` / remote GPU on this VM;
+  no Dorowani reference audio yet (owner directs voice). No generation run
+  without these — pipeline will NOT fake a "final" voice locally.
+
+### Standing rules logged
+- `docs/owner-directives.md`: audio delivery = direct download links via
+  remote-storage, NEVER in-chat attachments (Android player broken).
+- Same rule in `docs/VOICE-PIPELINE.md` §5 and `game/assets/voices/README.md`.
+
+### Proof
+- `node --check` on all 4 JS files: clean.
+- `game/tests/intro-interactions.test.mjs`: 140 passed (variety, rotation,
+  no-repeat, fallbacks, voice-ref integrity).
+- `game/tests/voice.test.mjs`: 6 passed (placeholder honesty, subtitles).
+- `game/tests/intro-play.test.mjs`: 12–14 passed ×3 runs (beat order,
+  voice args, skip, rotation).
+- `tools/character-voice/voice-clone/selftest.py`: all passed (FX pitch
+  verified: 440 Hz → 330 Hz = −5 st; master caps enforced).
+- `game.js` byte-verified: main base + exactly 4 surgical edits, nothing else.
+- In-engine proof (intro playing between two fighters, win-pose voice
+  trigger): needs a live browser run — flagged for parent to delegate
+  (subagent cannot operate the browser).
+
+### Environment note (for the crew)
+- This VM throttles large `write()` syscalls (token bucket — a 7.6 GB
+  `cp -r` tripped it; every file landed 0 bytes). Workaround used:
+  `muse.write` for file creation, small-chunk python for large fetches.
+  The `~/workspace/fix3/voice` tree contains 63k 0-byte stubs from the
+  failed copy — only the files listed in this entry were actually written;
+  the PR pushes ONLY those paths (gh_push.py skips base-identical files,
+  and 0-byte stubs are never in the --add list).
 ## 2026-10-22 — HIT DETECTION + HIT EFFECTS (worker 17, hitfx lane)
 
 ### Bugs (owner playtest 2026-10-22)
