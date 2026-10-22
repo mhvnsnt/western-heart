@@ -1745,3 +1745,21 @@ Tekken on-hit stack: (1) jagged star-burst HIT SPARK sprite (canvas-generated, a
 **Proof:** `node test/ranks.test.mjs` → 38 passed, 0 failed. Covers: 53-tier shape, reserved placeholders, placement→promo-series→promotion→protection→demo-series→demotion full cycle, upset scaling, track separation, leaderboard, top-held, mid-table tier insertion with zero code changes.
 
 **Status:** rank PR pushed; merge via git_merge.py when green. Follow-up PR: treasure battle / survival / time attack / arcade variants, unlockables/gallery, jukebox, Tekken Force + Scenario Campaign (user-approved), create-an-arena (coordinate worker 18), intro/outro cinematics layered BESIDE existing intros/win taunts (off limits).
+
+## 2026-10-22 — 3D generation pipeline research SOTA (worker 44)
+
+Owner directive (verbatim): "Research the current state-of-the-art open-source image-to-3D and text-to-3D models (as of late 2026). Candidates from earlier research: TRELLIS.2 (MIT), TripoSR, Hunyuan3D 2.1 — but check what's newest and best NOW. Goal: our in-house generation pipeline should be the most stacked, most current, best possible — BETTER than Tripo3D's output quality."
+
+### Result
+- Recommended stack: Hi3DGen (geometry, MIT) → TRELLIS.2 shape-conditioned PBR texturing (MIT) → UniRig auto-rig (MIT, humanoids + quadrupeds/creatures; already wired into tools/auto_rig backends per worker 22) → retopo/decimation → existing Tripo-intake ingest (roster/<char>/attires/attire<N>/source/).
+- Remote-first (no weights on disk): fal.ai trellis-2, Replicate (TRELLIS.2 + UniRig), WaveSpeedAI Hunyuan3D v3 ($0.30/run).
+- Key findings: Hunyuan3D 3.x and Hi3D 3.0 are hosted-only, NOT open; newest OPEN weights are TRELLIS.2 (MIT, 4B, full PBR, ≥24GB VRAM) and Hunyuan3D 2.1 (Tencent license with EU/UK/SK commercial exclusion, 29GB full pipeline); no frontier open model is natively text-conditioned — use text→image chaining.
+- VRAM ladder: TripoSR ~6GB (drafts) / Hunyuan3D 2.1 10–29GB / Hi3DGen 16GB+ / TRELLIS.2 ≥24GB official.
+
+### Files
+- Added: docs/research/3d-generation-pipeline-2026-10-22.md.
+- Modified: WORKLOG.md (append).
+- No deletions.
+
+### Proof
+- Branch research/3d-generation-pipeline-2026-10-22b, PR against main with six-section instruction-gate body; deletion-guard / clobber-guard / instruction-gate green; merged clean via git_merge.py (merge-it-yourself law). (First attempt PR #654 hit a WORKLOG.md append/append race with another worker's entry — rebased onto current main as this clean branch.)
