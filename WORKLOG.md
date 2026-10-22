@@ -1726,3 +1726,26 @@ Each with upstream LICENSE + ATTRIBUTION.md.
   docs/decisions/2026-10-22-integration-unwired.md.
 - Modified: game/index.html, game/ui-wh/ui.js, WORKLOG.md (append).
 - No deletions.
+
+---
+
+## 2026-10-22 ~13:40 CDT — worker-33: FIGHT LAB (GUNGAKU 軍楽) + CREATION + PRESENTATION
+
+**Task (user-approved verbatim):** "Wire up: Fight Lab / Combot programmable training dummy — needs a proprietary name. Working candidate: Gungaku (軍楽) — Japanese for 'war music.' Confirm the name with them before locking it in. Def Jam's 1,900 CAW parts library. Soulcalibur weapon/style creation system. Photo mode (DOA-style: pause, camera control, filters). Per-character story endings/cinematics."
+
+**Name update mid-task:** user LOCKED "Gungaku (軍楽)" as the official name (no UNCONFIRMED flags anywhere). Follow-up decisions folded in: (1) WWE entrances REPURPOSED not replaced — intros/win taunts off limits, entrance creation tools → cutscene + taunt creation tools; (2) create-a-finisher YES from teardowns; (3) repurposed entrance tools need a proprietary WH name, TBD — working title `WH_CINEMATIC_TOOLS_WORKING_TITLE` used everywhere, flagged for user approval.
+
+**Delivered:**
+- **FIGHT LAB · GUNGAKU (軍楽)** — `game/js/fightlab-gungaku.js`: `GungakuProgram` (button/state-level steps, loops), 9 presets (idle/guard-all/crouch/walk-in/walk-out/punish-check/juggle-sandbag/sidestep-drill/mixup-loop), `GungakuRecorder` (program the dummy by demonstrating — captures 1/2/3/4 buttons + stances, Combot-style), `GungakuAI extends AIController`, in-fight HUD panel (G toggles). Wired: modes.js `startMode('fightlab')` + `_beginFightLab` (builds on worker 29's `_beginTraining`, training untouched), game.js instantiates GungakuAI on `enemyChar.ai.gungaku` (dynamic import), main.js `mode-fightlab` dispatch, index.html menu button.
+- **Def Jam CAW library wired** — no duplication with WWE (wmxix/no-mercy) work: new `defjam` library in PARTS-REGISTRY.json; new §5 source block in build_suite_catalog.py reading parts-converted/defjam/CATALOG.json; parts-catalog.json 4,523 → 7,147 entries (+2,624, all `geometry_pending: true` — the 1,218 GLBs are POINTS topology, honestly flagged). Doc: customization/DEFJAM-CAW-WIRING.md.
+- **Soulcalibur weapon/style creation** — `customization/data/sc-weapons.json` (17 disciplines from the SCII/SCVI teardowns: katana → unarmed, each with archetype/reach/damage/speed + style note); `customization/sc-weapon-styles.js` (`setFighterWeapon` suite-side, `applyWeaponStyle` game-side onto custom-fighter roster objects). Weapon discipline determines style, SC CaS model.
+- **Photo mode (DOA-style)** — `game/js/photomode.js`: P/F9 pauses mid-fight into a free camera (drag orbit, wheel dolly, right-drag/WASD pan), 7 filters (none/noir/sepia/vivid/cinematic/ghost/ember + vignette), C captures PNG, ESC exits and restores the fight camera. Installed in main.js on game boot.
+- **Story endings** — `game/js/story-endings.js`: per-character endings (14 bespoke: pantera, demonio, docfrank, phantom, diablo, skull + the Nine Souls; canon-safe fallback for everyone else), `StoryEndingPlayer` (letterboxed shot player in the live arena, best-effort fx). Wired as WATCH ENDING buttons on arcade-clear and story-complete screens — layers BESIDE intros/win taunts (owner-protected, untouched). Doc: docs/modes/STORY-ENDINGS-PIPELINE.md.
+- **Create-a-finisher** — `game/js/finisher.js` runtime + `customization/finisher-creator.js` suite authoring: Def Jam BLAZIN' two-gate design (Nine-Soul Meter full + opponent ≤25% HP), authored beat sequences, 3 starter templates. Never touches win taunts.
+- **Entrance-tools repurpose spec** — docs/creation/ENTRANCE-TOOLS-REPURPOSE.md: timeline editor/camera tools/pyro/music-sync → cutscene + taunt creation tools, wiring map to suite menus, `WH_CINEMATIC_TOOLS_WORKING_TITLE` flagged as needing user-approved proprietary name.
+
+**Method:** fresh main SHAs via github_api.py (be7d2eda → 43fa27bd → 564ee4e7 → dfee700b; rebased 5 moved files onto each new base, surgical edits only). Local fix3 copy was STALE and this VM blocks `cp` into fresh dirs, so the working tree was built from fresh remote-main blobs; python3 cannot write files on this VM (node used for the catalog merge). gh_push anti-clobber re-verifies at push time.
+
+**Proof:** node --check on all 6 new + 3 modified JS modules (all pass); JSON validity on registry/weapons/catalog; catalog merge verified (2,624 defjam entries, unique ids, all geometry_pending); 28 unit tests pass (15 Gungaku program/recorder/preset tests, 13 photo-filter/ending/weapon/finisher tests). Live-browser play verification (menu screenshot, Fight Lab fight, photo mode, ending playback) needs a browser-capable agent — headless Chromium is broken on this VM (zygote failure); flagged for delegation.
+
+**Status:** [pending push/merge]
