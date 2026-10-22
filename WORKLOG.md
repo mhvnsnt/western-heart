@@ -1661,6 +1661,74 @@ Tekken on-hit stack: (1) jagged star-burst HIT SPARK sprite (canvas-generated, a
 
 ---
 
+## 2026-10-22 — Worker 22: comprehensive integration pass (open-source wave)
+
+Owner directive (verbatim): "Audit everything we've built and pulled in. Find
+more open-source/free stuff we're NOT using yet that would help — physics,
+animation, rigging, UI, audio, AI, procedural generation, anything relevant to
+a fighting game. Prioritize free, open-source, no licensing issues, actually
+works. Be aggressive — 'anything you can get a hold of.' Then wire it ALL up:
+combine our built tools + pulled assets + teardown findings + new finds into
+unified systems. No disconnected scripts, no unwired repos, no 'we have it but
+it's not connected.' Everything should flow into the game or the creation suite."
+
+### 1. Audit (wired vs unwired)
+Audited tools/ (42 dirs), game/, customization/, teardown/ (40 dirs),
+docs/research/. 19 items verified WIRED (TKMovesets, Wiggle 2, Keemap,
+GameRig, UniRig, MagicArticulate, Puppeteer, Material Maker, TEXTtoPBR,
+lite-rollback, netfox/Snoring Cat, Nakama, Kenney/KayKit, T3 banks, frame
+data, SkeletonUtils, tripo-intake, game-hud kit). 11 unwired triaged: 3 wired
+this pass (stable-fast-3d/triposr docs, netplay menu entry, arena-gen props),
+8 documented as deliberate non-wirings. Full matrix:
+docs/research/OPEN-SOURCE-WAVE-2026-10-22.md.
+
+### 2. New finds (all MIT, license-verified 2026-10-22, ESM, zero native deps)
+- cannon-es 0.20.0 → game/vendor/cannon-es/ (physics: arena props, debris, KO tumble)
+- three-mesh-bvh 0.9.16 → game/vendor/three-mesh-bvh/ (hit detection verify, suite picking)
+- three-nebula 13.3.0 → game/vendor/three-nebula/ (particle hit effects)
+- troika-three-text 0.52.5 (+4 MIT deps) → game/vendor/troika-three-text/ (3D labels)
+- camera-controls 3.1.2 → game/vendor/camera-controls/ (cutscene/photo camera)
+- lip-sync-engine 1.0.3 → tools/character-voice/lipsync/ (CDN, pipeline only)
+Each with upstream LICENSE + ATTRIBUTION.md.
+
+### 3. Wiring (game/js, lazy-booted by game/js/integration.js)
+- physics.js (WHPhysics): cannon-es world, knockable arena props,
+  loadArenaProps() reads tools/procgen/arena-gen three.json. Visuals only.
+- hitdetect.js (WHHitDetect): per-fighter BVH, limb-capsule shapecast, verify
+  mode, pick() for suite. Never changes combat outcomes.
+- springbones.js (WHSpringBones): runtime verlet jiggle chains (breasts/belly/
+  hips/thighs), VRM-springbone-compatible params, autoDiscover(). Runtime half;
+  Wiggle-2 bake = pipeline half.
+- hitfx-nebula.js (WHHitFX): JSON particle presets. LAYERS on game/js/hitfx.js
+  (today's proven fix) for heavy/KO only — never replaces (unification law).
+- labels3d.js, camdirector.js, lipsync-player.js (jaw-bone cues).
+- integration.js: try/catch lazy boot, own rAF, Game.prototype patches
+  (_spawnImpact/_resolveCombat, guarded, fallback-safe). game.js untouched.
+- game/index.html: importmap +9 entries, integration.js script (surgical).
+- game/ui-wh/ui.js: NETPLAY (BETA) options entry → game/netplay/demo/.
+- tools/character-voice/lipsync/: lipsync.html + lipsync.mjs + README.
+- tools/tripo-intake/image-to-3d.md, tools/open-source/README-WAVE-2026-10-22.md.
+- docs/decisions/2026-10-22-integration-unwired.md: 11 deliberate unwireds.
+
+### Proof
+- node --check clean on all 9 new JS modules; vendor APIs verified against
+  vendored .d.ts/README; importmap matches paths 1:1.
+- integration.js loads after main.js; every system try/catch'd; hooks guarded.
+- Live play verification left to playtest lane (no live-browser from worker).
+
+### Files
+- Added: game/vendor/{cannon-es,three-mesh-bvh,three-nebula,troika-three-text,
+  camera-controls}/, game/js/{physics,hitdetect,springbones,hitfx-nebula,
+  labels3d,camdirector,lipsync-player,integration}.js,
+  tools/character-voice/lipsync/*, tools/tripo-intake/image-to-3d.md,
+  tools/open-source/README-WAVE-2026-10-22.md,
+  docs/research/OPEN-SOURCE-WAVE-2026-10-22.md,
+  docs/decisions/2026-10-22-integration-unwired.md.
+- Modified: game/index.html, game/ui-wh/ui.js, WORKLOG.md (append).
+- No deletions.
+
+---
+
 # WORKLOG — HEART AND MIND WITHIN, phase 1: Devil Within foundation (worker 20, 2026-10-22)
 
 Owner order (verbatim): "Pull 100% of Devil Within into the game first — 3D brawler gameplay, stage progression, enemy waves, boss structure, Surge/transformation. Fully wired, playable, no stubs. THEN expand with proprietary mechanics. Character select, not forced Jin — any WH character with their moveset."
@@ -1697,17 +1765,19 @@ Live-browser playtest (rendering, combat feel, balance) still needed — delegat
 
 ---
 
-## 2026-10-22 ~14:05 CDT — Worker 43: REBASE PR #644 (Heart and Mind Within) onto post-#615 main
+## 2026-10-22 ~14:05 CDT — Worker 43: REBASE PR #644 (Heart and Mind Within) onto post-#615 main (+ re-sync to 7fe0cb41)
 
 **Task:** PR #644 (Devil Within foundation: brawler.js + surgical edits to 9 files) was blocked — mergeable_state=dirty. Rebase the brawler changes onto current main and reconcile with #615's fighter.js/game.js refactors, re-run the headless sim, merge clean green.
 
 **What the blocker actually was:** the branch's fighter.js/game.js were stale pre-#615 full-file copies (branch still contained `_attackStep`, Tekken-style hitboxes, HitFX, voice.unlock, intro-interactions — all removed/reverted by #615). A blind merge would have reintroduced every reverted line. Re-applied ONLY the brawler hunks onto #615's refactored files:
-- fighter.js: brawler yaw-mode fields, startSurgeForm/endSurgeForm + meter drain, yaw dodge/facing/guard/knockback/KO, z-clamp to ARENA_LIMIT, yaw-driven _animate, fwdVec(). Dropped: _attackStep, Tekken-style attack/hurt boxes, Tekken step-in (stay reverted per #615).
-- game.js: this.brawler field, resetFightState teardown, _loop brawler.frame driving. Dropped: voice/HitFX/intro-interaction reintroductions (stay removed per #615).
-- heartmind.js/input.js/menus.js/modes.js/scene.js: base==main, took branch versions verbatim.
-- main.js/index.html/WORKLOG.md: 3-way merged with current main (rank-battle wiring, limb-cluster button layout, Worker 30 rank entry all kept; branch contributes only the brawler-status HUD, visibility-unpause hunk, and its WORKLOG entry).
+- fighter.js: brawler yaw-mode fields, startSurgeForm/endSurgeForm + meter drain, yaw dodge/facing/guard/knockback/KO, ARENA_LIMIT z-clamp, yaw _animate, fwdVec(). Dropped: _attackStep, Tekken-style hitboxes, Tekken step-in (stay reverted per #615).
+- game.js: this.brawler, resetFightState teardown, _loop brawler.frame driving. Dropped: voice/HitFX/intro-interaction reintroductions (stay removed per #615).
+- heartmind.js/input.js/menus.js/modes.js/scene.js: branch versions verbatim (base==main, no main-side movement).
+- main.js/index.html/WORKLOG.md: 3-way merged with current main (rank wiring, limb-cluster layout, Worker 30 entry kept).
 - New files: brawler.js + game/tests/brawler-sim.* byte-identical from the branch.
 
-**Method:** plain-copy rebase (no git repo): per-file 3-way analysis base/head/main via GitHub API; fighter.js/game.js rebased hunk-by-hunk with exact-verbatim block transplants; node --check on all touched JS; brawler-sim bot playthrough re-run. Pushed as a merge commit (parents: branch tip + current main) — no force-push, no clobber.
+**Re-sync:** main moved twice during the rebase (ca9655e24f7 → 7fe0cb41 via #653 jiggle/face/hands + #639 integration). Re-synced: fighter.js brawler hunks re-applied onto #653's Fighter — `_feelMul` is gone (brawler knockback/KO now use raw values), the smooth `_faceY` turn is gone (brawler sets `lean.rotation.y = yaw` directly). index.html/WORKLOG.md re-merged (kept #639's importmap/integration.js and Worker 22 entry). Also fixed a self-inflicted tree-build bug that had dropped main's game/tests/ files (restored in a follow-up commit).
+
+**Method:** plain-copy rebase (no git repo): per-file 3-way analysis base/head/main via GitHub API; fighter.js/game.js rebased hunk-by-hunk with exact-verbatim block transplants; node --check on all touched JS; brawler-sim bot playthrough re-run after each rebase. Pushed as merge commits on the branch (parents: branch tip + current main) — no force-push, no clobber.
 
 **Proof:** `node --test game/tests/brawler-sim.test.mjs` on the rebased tree → PASS (stages=[0,1,2,3,4], bosses=[warden,mask,ogre,sphere,shadow,shadow2], surge fired, 45 banners, victory, no exceptions). `node --check` clean on all 9 touched JS files.
