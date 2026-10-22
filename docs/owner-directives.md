@@ -297,3 +297,15 @@ All character bios, stories, and lore must be built from CANON.md — Tong-Nou, 
 
 ## EM-Jin naming convention (user directive 2026-10-22)
 Eastern Mind Jin is NOT Jin Kazama. In all files, docs, and code: "Jin (Eastern Mind)" or "EM-Jin" — never bare "Jin" where Kazama confusion is possible. (Correction: earlier "Gen (Eastern Mind)" was a mishearing.)
+
+## Gungaku (軍楽) — LOCKED (user decision 2026-10-22)
+"Gungaku (軍楽)" — Japanese for "war music" — is the OFFICIAL name of the Fight Lab / programmable training dummy mode (TTT2 Combot equivalent). Locked by the user; no working title, no UNCONFIRMED flags. Used verbatim in UI, docs, code, file names.
+
+## WWE entrances: repurpose, don't replace (user decision 2026-10-22)
+Do NOT build full WWE-style entrances. The existing Tekken-style intros and win taunts are OFF LIMITS — they stay exactly as they are. The entrance CREATION tools (timeline editor, camera tools, pyro, music sync) are repurposed for: (1) cutscene creation tools, (2) taunt creation tools. The tools get reused; the format stays ours. The repurposed toolset needs a proprietary WH name — TBD with the user; working title `WH_CINEMATIC_TOOLS_WORKING_TITLE` until approved. Nothing entrance-related is locked in naming.
+
+## Create-a-finisher: YES (user decision 2026-10-22)
+Wire it up from the teardowns (Def Jam BLAZIN' two-gate design: meter full + opponent in danger). Finishers never replace win taunts.
+
+## Protection rule (user decision 2026-10-22, permanent)
+Intro sequences and win taunts are never to be replaced. New systems layer on top or beside, never over.

@@ -74,7 +74,7 @@ const SUBMENUS = {
   ]},
   training: { title: 'TRAINING', cards: [
     { t: 'TRAINING', d: 'Pick your fighter. The dummy will not fight back. Drill strings, punishment, Soul Surge.', badge: 'live', action: 'mode-training' },
-    { t: 'GUNGAKU FIGHT LAB', d: '軍楽 — the programmable training dummy. Record sequences, set reactions, compose your war music.', badge: 'soon', forge: 'gungaku' },
+    { t: 'GUNGAKU FIGHT LAB', d: '軍楽 — the programmable training dummy. Record sequences, set reactions, compose your war music.', badge: 'live', action: 'mode-fightlab' },
   ]},
   collection: { title: 'COLLECTION', cards: [
     { t: 'GALLERY', d: 'Unlocked endings, concept art, arena drafts. The archive of the shrine.', badge: 'soon', forge: 'gallery' },
