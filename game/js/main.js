@@ -31,9 +31,9 @@ const screens = {
   howto:  document.getElementById('screen-howto'),
   select: document.getElementById('screen-select'),
   stage:  document.getElementById('screen-stage'),
+  stageIntro: document.getElementById('screen-stage-intro'),
   result: document.getElementById('screen-result'),
   hud:    document.getElementById('hud'),
-  stage:      document.getElementById('screen-stage'),
   reincarnate: document.getElementById('screen-reincarnate'),
   trader:  document.getElementById('screen-trader'),
   modewin: document.getElementById('screen-modewin'),
@@ -194,7 +194,7 @@ function startFightViaStage(p1, p2, opts = {}) {
   show('stage');
   const hint = document.getElementById('stage-hint');
   const s = getStage(selectedStage);
-  if (hint && s) hint.textContent = `${s.name} — ${s.description}`;
+  if (hint && s) hint.textContent = s.name;
   const btn = document.getElementById('confirm-stage');
   if (btn) btn.disabled = false;
 }
@@ -273,22 +273,72 @@ function buildStageSelect() {
       card.className = 'stage-card' + (s.id === selectedStage ? ' selected' : '');
       card.dataset.id = s.id;
       card.innerHTML =
-        `<img class="sthumb" src="${s.thumb}" alt="${s.name}" loading="lazy"
+        `<img class="sthumb" src="${s.thumb}" alt="${s.name}"
               onerror="this.outerHTML='<div class=&quot;swatch&quot; style=&quot;background:linear-gradient(135deg, ${s.swatch[0]}, ${s.swatch[1]})&quot;></div>'">
          <div class="sname">${s.name}</div>
          <div class="suniverse">${s.universe}</div>`;
+      /* Thumbnails load EAGERLY (no loading="lazy"): the whole grid is
+         the content of this screen, and lazy heuristics left below-fold
+         cards blank until they neared the viewport (measured in-page:
+         completion stalled at 37/58 while scrolling). 58 small PNGs
+         (~4.5MB total) load up front instead. */
       card.addEventListener('click', () => selectStageCard(card, s));
       grid.appendChild(card);
     }
   }
+  const cur = getStage(selectedStage);
+  if (cur) updateStagePreview(cur);
+  const sel = grid.querySelector('.stage-card.selected');
+  if (sel) scrollStageCardIntoView(sel);
+}
+/* Bring a stage card into the grid's visible window by writing
+   scrollTop directly. scrollIntoView relies on a smooth-scroll
+   animation (the grid has scroll-behavior:smooth) whose timeline
+   stalls whenever the main thread is busy — measured headless
+   2026-10-21: scrollIntoView left scrollTop at 0 while a direct
+   write scrolled instantly. Direct writes are frame-perfect on
+   real hardware too. */
+function scrollStageCardIntoView(el) {
+  const grid = document.getElementById('stage-grid');
+  if (!grid || !el) return;
+  const gr = grid.getBoundingClientRect(), r = el.getBoundingClientRect();
+  if (r.top < gr.top) grid.scrollTop -= (gr.top - r.top) + 8;
+  else if (r.bottom > gr.bottom) grid.scrollTop += (r.bottom - gr.bottom) + 8;
+}
+/* Tekken pattern: the large preview pane (image + name + description,
+   inside the layout) always tracks the highlighted stage — a card tap,
+   a RANDOM roll, or keyboard focus all drive the same single state. */
+function updateStagePreview(s) {
+  const img = document.getElementById('stage-preview-img');
+  const sw = document.getElementById('stage-preview-swatch');
+  if (img) {
+    img.style.display = '';
+    img.onerror = () => {
+      img.style.display = 'none';
+      if (sw) {
+        sw.hidden = false;
+        sw.style.background = `linear-gradient(135deg, ${s.swatch[0]}, ${s.swatch[1]})`;
+      }
+    };
+    img.src = s.thumb;
+    img.alt = s.name;
+  }
+  if (sw) sw.hidden = true;
+  const nm = document.getElementById('stage-preview-name');
+  if (nm) nm.textContent = s.name;
+  const un = document.getElementById('stage-preview-universe');
+  if (un) un.textContent = s.universe || '';
+  const ds = document.getElementById('stage-preview-desc');
+  if (ds) ds.textContent = s.description || '';
+  const hint = document.getElementById('stage-hint');
+  if (hint) hint.textContent = s.name;
 }
 function selectStageCard(card, s) {
   audio.uiClick();
   document.querySelectorAll('.stage-card').forEach(x => x.classList.remove('selected'));
   card.classList.add('selected');
   selectedStage = s.id;
-  const hint = document.getElementById('stage-hint');
-  if (hint) hint.textContent = `${s.name} — ${s.description}`;
+  updateStagePreview(s);
   const btn = document.getElementById('confirm-stage');
   if (btn) btn.disabled = false;
 }
@@ -301,7 +351,9 @@ function focusStage(i) {
   cards.forEach(x => x.classList.remove('kb-focus'));
   const el = cards[focusedStageIdx];
   el.classList.add('kb-focus');
-  el.scrollIntoView({ block: 'nearest' });
+  scrollStageCardIntoView(el);
+  const s = getStage(el.dataset.id);
+  if (s) updateStagePreview(s);
 }
 document.addEventListener('keydown', (e) => {
   const sc = document.getElementById('screen-stage');
@@ -465,13 +517,33 @@ function confirmSelection() {
 
 document.getElementById('confirm-fighter').addEventListener('click', confirmSelection);
 
-/* Lane 4: stage-select screen handlers (CHOOSE YOUR ARENA). */
+/* Lane 4: stage-select screen handlers (CHOOSE YOUR ARENA).
+   P0 (2026-10-22): the old handler nulled pendingFight up front and never
+   caught startFight rejections — any failure left the player on a dead
+   stage screen with no feedback and no way to retry ("fight never starts").
+   Now: visible loading state on the stage screen, failures surface there,
+   and pendingFight is only consumed when the fight actually starts, so
+   CONFIRM retries the same fight. */
 document.getElementById('confirm-stage').addEventListener('click', () => {
   if (!selectedStage || !pendingFight) return;
   audio.uiClick();
   const { p1, p2, opts } = pendingFight;
-  pendingFight = null;
-  startFight(p1, p2, { ...opts, stage: selectedStage });
+  const btn = document.getElementById('confirm-stage');
+  const hint = document.getElementById('stage-hint');
+  if (btn) btn.disabled = true;
+  if (hint) hint.textContent = 'Entering the arena…';
+  startFight(p1, p2, { ...opts, stage: selectedStage }).then(
+    (started) => {
+      if (started) { pendingFight = null; return; }
+      // startFight reported the failure on the hints already.
+      if (btn) btn.disabled = false;
+    },
+    (err) => {
+      console.error('[WH] stage-select: fight failed to start:', err);
+      if (hint) hint.textContent = 'Could not start the fight — tap CONFIRM to retry.';
+      if (btn) btn.disabled = false;
+    }
+  );
 });
 
 document.getElementById('random-stage').addEventListener('click', () => {
@@ -641,9 +713,16 @@ async function startFight(playerId, enemyId, opts = {}) {
     }
   } catch (err) {
     console.error('[WH] fight load failed:', err);
-    if (hint) hint.textContent = 'Failed to load fighters. Check connection and try again.';
+    const msg = 'Failed to load fighters. Check connection and try again.';
+    if (hint) hint.textContent = msg;
+    // P0 (2026-10-22): the stage screen is where versus fights start — the
+    // error must be visible there, not only on the fighter-select hint.
+    const stageHint = document.getElementById('stage-hint');
+    if (stageHint) stageHint.textContent = msg;
     if (confirmBtn) confirmBtn.disabled = false;
-    return;
+    const stageBtn = document.getElementById('confirm-stage');
+    if (stageBtn) stageBtn.disabled = false;
+    return false;
   }
   if (confirmBtn) confirmBtn.disabled = false;
   show('hud');
@@ -657,6 +736,7 @@ async function startFight(playerId, enemyId, opts = {}) {
     clearTimeout(hints._t);
     hints._t = setTimeout(() => hints.classList.add('fade'), 6000);
   }
+  return true; // P0 (2026-10-22): stage-select handler needs to know the fight started
 }
 // H toggles control hints, M toggles the movelist (training)
 document.addEventListener('keydown', (e) => {
