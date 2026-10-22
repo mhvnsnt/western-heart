@@ -132,6 +132,34 @@ his body/clothes when he uses them. Tentacle manifestation is an ABILITY
 
 ## Renders
 
-- `docs/tpose-refs/zen/a1_front.png` + `a1_back.png` — spirit body, 2048px,
-  own-eyes verified against the owner's description (see PR #TBD).
-- `docs/tpose-refs/zen/spirit_front.png` — spirit form front, 2048px.
+All four models rendered 2026-10-21 with the locked method
+(`docs/RENDER-ORIENTATION.md`): Cycles, orthographic, 2048px, white
+background, via `docs/tpose-refs/_tools/tpose_render_cycles.py`. These
+Tripo models are authored facing +X, so a facePX variant of the approved
+script (the faceY variant's post-import rotation set to Rz 180°) was used
+to put the front on the -X front camera; the -Y side camera then shows
+the left side, per spec. Every front below was checked with the lane's
+own eyes against the owner's canon.
+
+- `docs/tpose-refs/zen/a1_front.png` + `a1_side.png` (+ `a1_report.json`)
+  — Spirit Body. Own-eyes: yellow skin, white comic eyes in spiky black
+  circles, nose, NO mouth on the face — the mouth is on his chest — and
+  the pastel tentacle designs are IMAGERY on the body, nothing
+  protruding (base-form canon).
+- `docs/tpose-refs/zen/spirit_front.png` + `spirit_side.png`
+  (+ `spirit_report.json`) — the Spirit. Own-eyes: lemon-shaped yellow
+  body, face with spiky-ringed eyes / nose / open red mouth, wavy
+  tentacles all around, NO arms, NO legs.
+- `docs/tpose-refs/zen/tentacle_front.png` + `tentacle_side.png`
+  (+ `tentacle_report.json`) — Tentacle Mode. Own-eyes: REAL tentacles
+  busting out around/behind him and wrapping his legs, pastel
+  blue/cyan/pink/purple underparts + suckers; his OWN head (no Oversoul
+  head attached).
+- `docs/tpose-refs/zen/oversoul_front.png` + `oversoul_side.png`
+  (+ `oversoul_report.json`) — Oversoul. **Own-eyes check line: the body
+  tentacles are IMAGERY on the torso/arms/legs, NOT protruding** — the
+  real tentacles cluster at the head, where the spirit's face (spiky
+  eyes, nose, red mouth) sits in the head's place.
+- Owner copies in `~/workspace/your_files/`: `zen-spirit-body-front-20261021.png`,
+  `zen-spirit-entity-front-20261021.png`, `zen-tentacle-mode-front-20261021.png`,
+  `zen-oversoul-front-20261021.png`.
