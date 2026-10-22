@@ -406,6 +406,9 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
 .act-btn.l1 { right: 152px; bottom: 176px; }
 .act-btn.r1 { right: 24px; bottom: 176px; }
 .act-btn.transform { right: 88px; bottom: 216px; background: linear-gradient(180deg,#fff36b,#d8a02b); width:52px;height:52px;font-size:18px; color:#3a2a00; }
+/* V-System (owner 2026-10-22): V-Skill / V-Trigger / V-Reversal button.
+   Explicit position/size so it renders in either button-layout state. */
+.act-btn.vskill { right: 224px; bottom: 66px; background: linear-gradient(180deg,#7df9ff,#1f9dc8); width:60px;height:60px;font-size:18px; color:#062a33; }
 /* Compact screens (portrait phones): shrink the cluster, keep the diamond. */
 @media (max-width: 520px) {
   .action-pad { width: 200px; height: 200px; right: 10px; }
