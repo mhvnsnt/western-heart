@@ -77,6 +77,24 @@ Living document. Updated every time the owner sets a directive. Newest first.
   it and all other modes.
 - **No full game downloads.** Use `tools/depot-pull/` — pull only needed
   files piece by piece. Disk rules are mandatory for all agents.
+- **Character select: Tekken 8 grid (2026-10-22 playtest).** Rebuild the
+  character select on the most recent obtainable Tekken menu grid: pull in
+  the Tekken 8 character select menu, decode the UI/menu art/selections/
+  layout, and put OUR fighters on it. Grid of portrait cards (small relative
+  to everything else), big live 3D model of the highlighted fighter, name
+  banner art, fact block, P1/P2 cursors, bottom hints bar. Portraits must be
+  personality/canon poses, not T-poses. No duplicate fighters, no duplicate
+  images — only attire ladders (Tekken chars behind proprietary per the
+  display order law). Upgrade rigging/skinning so models pose correctly in
+  the big 3D view.
+- **Menu load speed (2026-10-22 playtest).** Menus load too slow — study how
+  Tekken/teardown games handle loading and pull that in.
+- **T8 UI assets: no depot, no rips.** The Steam/depot route for real Tekken
+  8 UI files is dead (owner doesn't own T8 on Steam). The T8 look is
+  recreated from public references with original art — NO ripped Tekken UI
+  files in the public repo (rule 8). The select screen reads its look from
+  `game/js/ui-skin.js` so future skins/textures drop in without touching
+  screen logic.
 
 ## 2026-10-21
 
