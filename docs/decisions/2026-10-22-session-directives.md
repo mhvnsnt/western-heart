@@ -163,3 +163,11 @@ law, age law, canon-grounded writing law, EM-Jin naming, character select
 (T8 grid), menu load speed, T8 no-rips rule. This file adds the session's
 remaining directives; the standing-law versions were added to
 owner-directives.md in the same PR.
+
+## Tekken 8 acquisition status (owner, 2026-10-22)
+
+Owner bought Tekken 8 on console ($24), but the file pull NEEDS the Steam
+version (PC is Steam-only; console files are encrypted/unusable). Owner is
+buying it on Steam and trying to refund the console copy. Pull happens the
+day they confirm the Steam purchase. Cheapest found: $18.20 Steam key
+(GameBoost) or $23.99 Steam sale.
