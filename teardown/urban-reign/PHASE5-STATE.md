@@ -1,6 +1,6 @@
 # Urban Reign — Phase 5 State
 
-Branch: `ur-phase5-names-polish` — base: PR #506 branch `ur-phase4-assignment` @ 4c5f40fa (stacked PR).
+Branch: `ur-phase5-names-polish` — base: PR #506 branch `ur-phase4-assignment` @ 4c5f40fa (stacked PR #518).
 Lane: TEARDOWN COMPLETION SWEEP, Phase 5: name-bridge generalization + Job-3 executions.
 
 ## Inherited state (verified in Phase 4 — do not re-derive)
@@ -19,9 +19,14 @@ Lane: TEARDOWN COMPLETION SWEEP, Phase 5: name-bridge generalization + Job-3 exe
 
 ## Progress log
 
-- Phase 5 start: branch `ur-phase5-names-polish` created from `ur-phase4-assignment` @ 4c5f40fa + this state file + PR to be opened BEFORE analysis (stacked on #506).
-- Analysis pending.
+- Phase 5 start: branch `ur-phase5-names-polish` created from `ur-phase4-assignment` @ 4c5f40fa + this state file + PR #518 opened BEFORE analysis (stacked on #506).
+- Tooling validation: the Phase-4 P1 pipeline was replicated exactly before generalizing (27/35 proven, identical pairs/deviations; only record 16's maxDev differs in rounding, 0.0603 vs 0.06).
+- Data pulled from ISO release `urban-reign-iso-v1` via the AFS range-fetch: all 31 pmot PPKs, tmot001–010, main/main_in PPKs, and all 27 held `motion/test/motdatP<n>` pairs (`.info`+`.bin` name parity verified for every record of every fighter).
+- Jobs 1–4 all landed; results below.
 
 ## Results
 
-- (to be filled per job as work lands)
+- JOB 1 — DONE: **484 own-bank pairs proven of 886 records held** across the 27 fighters with held pairs (gate: maxDev ≤0.10 mm over all frames/components, unique under gate, uniform for every fighter). Per fighter: `motion-names/name-bridge-<char>-proven.json` (27 files) + `motdatName` annotations in 26 newly-landed `game/assets/movesets/ur-charNNN.json` (Phase-2 records, verified clip-by-clip against the decoded banks before annotating; char001's annotations are Phase 4's). 402 unproven records each carry a named reason; **306 of them are proven in another bank** (cross-bank hits recorded, not assigned to the fighter's clips). 3 borderline pairs (0.102–0.136 mm, bounded noise profiles, next candidate ≥1443 mm) left UNPROVEN under the gate with evidence recorded. 4 pmot fighters (char005/070/071/072) have NO motdat P-list anywhere in the shipped AFS (162-entry `motion/` census) — no bridge possible, nothing fabricated. Summary: `motion-names/PHASE5-NAME-BRIDGE-SUMMARY.md`. Matcher: `tools/ur_name_bridge.py`.
+- JOB 2 — CRACKED: type-14 = big-endian s16 symbol pairs encoding **second differences**; per 8-key block the sampler double-integrates (pos[0]=v[0], vel[0]=0, vel+=v, pos+=vel, s16 wrap), out = base + pos×step. Proven exact at the Phase-4 standard (motdatP1 record 7 → general_weapon m033, maxDev **0.0014 mm**, 80 frames). Fixed decoder landed in `tools/ur_gyu.py`. P1 completion: **30/35 records sourced** (27 own-bank + records 7/13/29 cross-bank). The remaining 5 (6, 10, 11, 12, 14) have no identity in any of 46 shipped banks searched; records 6/10/11/12's pmot type-14 candidates are directional sibling variants (shared profiles, different travel) — the missing step is a bank outside the shipped set, NOT a decode step. Report: `PHASE5-JOB2-TYPE14.md`. Cross-fighter impact: Job 1 ran entirely with the fixed decode; type-14-rooted pairs are marked `rootType: 14` per fighter.
+- JOB 3 — EXECUTED (`PHASE5-JOB3-EXECUTIONS.md`): (a) char064 **RECOVERED 1260/1260**: reject-log run reproduced 1197/1260 and isolated the drop to group-0 packet 3 (63 verts, two batched rigid sub-objects {19,20}+{23,24} — no single palette window anchors all four singleton islands); split the run at its uvflag segment break (vert 42) via `tools/ur_char064_recover.py`; each half independently took its siblings' candidate. Textured GLB rebuilt with the Phase-3 pipeline and counts asserted: **1260 verts / 1737 indices / 14 joints / 13 images** (was 1197/1674/14/13); MANIFEST updated. (b) 0xae00 decode test executed (zone enumerated for char001/042/056/064): palette + node-group lists only, no per-accessory bone data — per-piece residuals for the 21 placed-but-unproven pieces (9 chars, Phase-1 inventory census) + char001's anchored accessory pieces recorded in the report table; NO placements changed, NONE claimed proven, no guesses shipped. (c) Explicit verdict: the 0xae00 test does **NOT** close the accessory node-graph suspicion; the remaining discriminating evidence is a PCSX2 pose capture (same class as Phase-4 Job 1's spec).
+- JOB 4 — DONE: this file + `WIRING-INVENTORY.md` (Move names / char064 / Accessory / Node graph rows) updated to the Phase-5 counts.
