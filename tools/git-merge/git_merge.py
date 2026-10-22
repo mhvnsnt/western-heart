@@ -101,6 +101,11 @@ def check_ci(owner, repo, pr):
     check_runs = runs.get("check_runs", [])
     if not check_runs:
         raise MergeRefused(f"no CI check-runs found for head {sha[:8]}; refusing")
+    # Superseded runs linger: judge only the latest run per check name.
+    latest = {}
+    for r in sorted(check_runs, key=lambda r: r.get("id", 0), reverse=True):
+        latest.setdefault(r["name"], r)
+    check_runs = list(latest.values())
     bad = [(r["name"], r.get("conclusion")) for r in check_runs
            if r.get("conclusion") in BAD_CONCLUSIONS]
     if bad:
