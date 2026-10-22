@@ -1978,3 +1978,93 @@ Canon bridge for the four user-locked Ashlane→VF5 mappings. Ashlane characters
 - `git diff --stat`: CANON.md +142/−0, owner-directives.md +3/−0, decisions +1 new file. Zero deletions.
 - PR: branch `w48-ashlane-canon-bridge`, instruction-gate body (six sections), merged via `git_merge.py` after green CI + no-deletion guard + gitleaks.
 - No live-browser play verification applicable (canon text work); no game code touched.
+
+## 2026-10-22 — Creation suite menus + parts incorporation (worker 38)
+
+Owner directives (verbatim): "Creation suite menus: Full layout pass — the
+WWE-template-first flow, tool-to-menu wiring (MB-Lab, Build-A-Bod, GameRig,
+NaughTyRig, Fluid Painter, Tripo intake, export tools), the three access
+layers (unified, separate, universal mode). Everything specified." /
+"Parts incorporation: All WWE parts, Def Jam parts (1,900), DOA parts — all
+incorporated into the creation suite's parts library, not just sitting in
+teardowns."
+
+REBASE NOTE (2026-10-22): while this lane was in flight, worker 37 landed the
+template system + WWE step wizard (`js/creation-flow.js`,
+`customization/templates/body-templates.json` — MB-Lab-baked base meshes, the
+Mixamo soldier dead as a default), and worker 33 landed Def Jam in
+`build_suite_catalog.py`. Per "don't duplicate, extend", this lane rebased:
+- **Template select is worker 37's, canonical.** No competing select ships in
+  this lane — the TEMPLATE tab (`js/tools.js`) is a thin wrapper (current pick
+  + change button → `window.__flow.openTemplateSelect()`).
+- **UNIVERSAL MODE = worker 37's step wizard** (`window.__flow.startWizard`) —
+  the one combined front-end; this lane's modal wizard was dropped.
+- ART + JOBS tabs (worker 37) preserved in the rail and app dispatch.
+- Def Jam in the suite catalog is worker 33's (`parts-converted/defjam/
+  CATALOG.json`, geometry_pending); this lane only ADDS the DOA4 scan.
+
+### Menu layout pass (`customization/create-fighter/` — worker 6's foundation, extended)
+- **WWE creation sequence**: left rail reordered to
+  TEMPLATE → BODY → HEAD/FACE → SKIN → HAIR → FACIAL HAIR → ATTIRE →
+  WARDROBE → PROFILE (+ MOVESET, LIMBS, ART, JOBS, TOOLS). Breadcrumb shows
+  "Step N of 14". SKIN is a new dedicated step (8 No Mercy tones + 233 skin
+  textures + 1,470 WMXIX decoded PNGs + Fluid Painter job specs);
+  HAIR and FACIAL HAIR are their own steps (facial hair = AKI face textures
+  + head parts → T7 slot 7, conflicts with Full Head per the §7 spine).
+- **BODY tab**: template row (current pick + change button → the flow
+  module's select), No Mercy body types, WMXIX proportion sliders, MPFB2
+  morphs. Skin tones live in SKIN; the BODY tab no longer duplicates them as
+  the primary home.
+- **Tool-to-menu wiring** (TOOLS tab, `js/tools.js`): every tool has a menu
+  home with its REAL params (grounded: MB-Lab spec from run_mblab_job.py
+  docstring, Tripo intake flags from tools/tripo-intake/README,
+  glTF-Transform 4.1.1/meshoptimizer 0.22.0 from tools/anim/gltf_codec.mjs,
+  MPFB2/GNM from body-morphs + face-morphs + tools/gnm/WH-INTEGRATION.md).
+  Tools not in the browser build are badged FILED IN INTAKE / FETCH VIA
+  SETUP — never presented as wired. Menus write job-spec JSONs (download)
+  the pipeline consumes; nothing executes from the browser.
+- **Three access layers**: LAYER 1 — six unified systems (BODY/FACE/SKIN/
+  RIG/IMPORT/EXPORT, genuinely merged); LAYER 2 — nine separate per-tool
+  menus; LAYER 3 — UNIVERSAL MODE = the flow module's WWE step wizard.
+- **Real-mesh preview** (`js/preview3d.js`): geometryReady parts attach as
+  real GLBs at bone anchors (auto-fit; full-body costumes scale to fighter
+  height). Proxy rings are the fallback only. `app.js syncPreview` resolves
+  repo-relative `glb` paths through `resolveUrl()`.
+
+### Parts library: 7,920 parts in PARTS-INDEX; 7,419 in the suite catalog
+- New builder `customization/build_suite_parts_index.py` rebuilds
+  `create-fighter/data/PARTS-INDEX.json`: 7,920 parts — wmxix 4,160
+  (incl. 1,470 WMXIX decoded texture PNGs), no-mercy 682 (303 meshes upgraded
+  to geometryReady — real converted GLBs), defjam 2,780 (2,624 CAW conversion
+  entries, geometry PENDING — topology verdict FAIL/BLOCKED per the samples
+  verdict, honest badges), doa4 272 (real costume GLBs at
+  `teardown/dead-or-alive-4/models/`), wh-library 17, cc0-hair 9.
+  Honesty rule: nothing marked renderable without a real mesh on disk.
+- `customization/build_suite_catalog.py` (rebased onto worker 33's version):
+  adds ONLY the DOA4 scan — 272 real converted GLBs → Full Body slot
+  (T7 11, `fullbody:'11'` added to the T7 map + the creation-suite-ui
+  SLOT2CAT). `creation-suite-ui/data/parts-catalog.json` regenerated on
+  worker 33's current base + the DOA4 entries: 7,419 parts total.
+- `create-fighter/js/catalog.js`: new categories (Head slot 1, Facial Hair
+  slot 7, Textures, Def Jam — Unsorted), §7 spine conflicts extended,
+  friendlyName for defjam/doa4/wmxix-tex ids, facialhair as a virtual
+  category (AKI face textures + head parts).
+
+### Proof (headless Chromium + SwiftShader, phone portrait 390×844)
+- 15 screenshots at `~/workspace/proof-w38/shots/` (01 template select …
+  09 real-mesh equip, 07b tools layer 2). Zero page errors on load and on
+  every rail tab click. Canvas pixel test: 99.3% non-black (3D preview
+  renders). Real-mesh equip verified programmatically (No Mercy 17-vert
+  part + DOA4 29,775-vert textured costume both attach and are visible).
+- `node --check` passes on all JS; node catalog logic test passes
+  (7,920 parts, no orphan slots except pre-existing `colors`).
+
+Files: create-fighter `index.html`/`css`/`js/app.js`/`js/tools.js`(new)/
+`js/catalog.js`/`js/preview3d.js`/`data/PARTS-INDEX.json`/`README.md`,
+`customization/build_suite_parts_index.py`(new),
+`customization/build_suite_catalog.py`,
+`creation-suite-ui/data/parts-catalog.json`, `creation-suite-ui/js/suite.js`,
+`customization/CHARACTER-CREATION.md`.
+On-main files NOT touched: worker 37's `js/creation-flow.js` + `js/art.js`
++ `customization/templates/body-templates.json`; worker 33's
+`PARTS-REGISTRY.json`.
