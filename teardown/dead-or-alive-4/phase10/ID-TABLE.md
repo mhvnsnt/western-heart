@@ -20,3 +20,8 @@ New structural fact: chrone pkg23–26 share an unmistakable signature (hanging 
 ## Coverage after this batch
 - chrone: **viewed 00–28 (29/30) + pkg29 non-character — chrone ID pass COMPLETE.**
 - chrtwo bodies + heads solo, chrthree: see updates below as batches land.
+
+## Headed-composite evidence (phase 10, viewed — see HEAD-ATTACHMENT.md)
+- chrone-pkg10 + head pkg08: Chinese dress with frog-button closures + long straight hair — the Leifang-vs-Helena tentative is NOT re-graded (composite coherence is not name evidence), but the pair is now the family's reference composite.
+- chrtwo-pkg50 + head pkg25 (composite floats, listed in HEAD-ATTACHMENT): pkg25 head has **cat ears** — a distinguishing silhouette for its family (chrtwo50–55 / chrthree02–07 bodies), recorded without a name claim.
+- chrtwo-pkg50 + heads pkg41/42/44: twin-tail/bow heads, seated — same family as pkg25 by anchor, different origin convention.
