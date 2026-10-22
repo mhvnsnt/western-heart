@@ -266,6 +266,12 @@ export const MODEL_URLS = {
   // archived in release torch-a2-tripo-20261021. Ladder: roster/torch/ATTIRE-SLOTS.md.
   'torch-tripo-a2': 'assets/models/torch-tripo-a2.glb',
   michiko: 'assets/models/michiko.glb',
+  // MICHIKO's Tripo originals (owner 2026-10-21): Attire 1 "bone goddess"
+  // + Attire 2 "biker chick" — ladder in attires.js, provenance in
+  // roster/michiko/ATTIRE-SLOTS.md. The Katarina-based model above stays
+  // as her fallback attire.
+  'michiko-attire1': '../roster/michiko/attires/attire1/model-rigged.glb',
+  'michiko-attire2': '../roster/michiko/attires/attire2/model-rigged.glb',
   dio: 'assets/models/dio.glb',
   bruno: 'assets/models/bruno.glb',
   yukihyo: 'assets/models/yukihyo.glb',

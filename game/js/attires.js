@@ -182,6 +182,17 @@ export const ATTIRE_VARIANTS = {
     { model: 'kronos-attire2', label: 'ATTIRE 2 · TIMBERWOLF' },
     { model: 'kronos-attire3', label: 'ATTIRE 3 · TIMBERWOLF FULLY SUITED' },
   ],
+  /* MICHIKO's ladder (owner 2026-10-21, Tripo-first rule): her two Tripo
+     originals lead — Attire 1 "bone goddess amazonian M rated nude attire
+     with bone accessories" (owner's words), Attire 2 "biker chick" — and
+     the Katarina-based source model ladders back as the fallback.
+     Provenance per slot: roster/michiko/ATTIRE-SLOTS.md. First entry =
+     default = Attire 1. */
+  'michiko': [
+    { model: 'michiko-attire1', label: 'ATTIRE 1 · BONE GODDESS (TRIPO)' },
+    { model: 'michiko-attire2', label: 'ATTIRE 2 · BIKER CHICK (TRIPO)' },
+    { model: 'michiko', label: 'KATARINA BASE (TEKKEN BASE)' },
+  ],
   /* AWA POP's ladder (fighter-completeness audit 2026-10-21): Attire 2's
      GLB sat in roster/awa-pop/attires/attire2/ with no MODEL_URLS key and
      no variant list. Key added in assets.js. First entry = current default. */
