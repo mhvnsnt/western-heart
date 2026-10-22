@@ -1933,3 +1933,29 @@ on main @ 2af4328 found the whole loop dead behind two 1-line defects in
 - Note: open PR #676 (worker36/menu-fix, mergeable_state=dirty) attempted a
   full rewrite for the same symptoms — superseded; worker 36 should
   close/rebase it.
+
+## 2026-10-22 ~16:00 CDT — worker 48: ASHLANE CANON BRIDGE (Bannon, El Toro de Oro, Pablo, NPC Finxsse)
+
+### What
+Canon bridge for the four user-locked Ashlane→VF5 mappings. Ashlane characters keep their existing bios from their repos; each got a "how they arrived" bridge into WH/Eastern Mind canon (the call, lost souls, the Trial, Tong-Nou, the Five Lands, the Phantom Marketplace).
+
+### Sources (foundation bios — pulled, not rewritten)
+- `mhvnsnt/brutalfistgrokversiontenpointfive`, `src/data/bannonRoster.ts` (ids `bannon`, `el_toro_de_oro`, `pablo`, `finxsse`) — bios, personalities, fighting styles, attires (PABLO.glb Minotaur Painted / PABLO_goldenbull.glb Golden Bull / PABLO_blackreign.glb Black Reign), payback names, factions.
+- `mhvnsnt/brutalfistgrokversion`, `native/media/characters/chara_bannon/bannon.identity.txt` — "The physical nucleus and absolute force of the Bannon Engine. Driven by raw physics and unmatched grit."
+- Bannon universe = sub-universe of the WH multiverse (owner directive 2026-10-22).
+
+### Changes (CANON.md — 3 surgical additions, 0 deletions)
+- New `## 9. THE ASHLANE ARRIVALS` section (before APPENDIX): four entries in the Pantera/Demonio/Phantom format — BANNON "The Engine Soul", EL TORO DE ORO "The Golden Bull Soul", PABLO "The Painted Soul", NPC FINXSSE "The Grudge Soul". Each: Backstory (Ashlane foundation + arrival kishotenketsu), Personality (one behavior), Fighting philosophy (one carved quote), Relationships (zuihitsu, double work), Element (Bannon=Earth/Octagonal Shrine, El Toro=Fire/Plains of Chi-U, Pablo=Metal/Helix Palace, Finxsse=Water/Palace of Dreaming), Body/Mind/Soul (friction), Why they think they're here (with the gap), Being purified of, Signature detail, Owner-locked (Ashlane source + VF5 base, technical only).
+- §4: new "On the Ashlane arrivals" paragraph — mortal lost souls from the Bannon sub-universe, not of the nine.
+- §5 "What the Fighters Want": four new bullets.
+- Pablo's locked duality (user refinement: Goldust theatricality MIXED with dark Black Reign/Abyss/Mankind energy — disturbed masked darkness underneath, matching PABLO_blackreign) drives his Body/Mind/Soul friction and "Being purified of: The mask".
+
+### Also
+- `docs/decisions/2026-10-22-ashlane-canon-bridge.md` — dated decision log.
+- `docs/owner-directives.md` — new "VF5 moveset claims — Ashlane four" section (locked: Jeffry→Bannon, Wolf→El Toro, El Blaze→Pablo, Lei-Fei→Finxsse; candidates + unmapped listed).
+- Writing laws held: all adults; canon-grounded (every proper noun from CANON.md or the Ashlane repos — no invented locations/systems); no Tekken/VF5 names in canon prose (bases in Owner-locked technical lines only, matching the existing "Bob Richards base" convention); craft guide standard.
+
+### Verification
+- `git diff --stat`: CANON.md +142/−0, owner-directives.md +3/−0, decisions +1 new file. Zero deletions.
+- PR: branch `w48-ashlane-canon-bridge`, instruction-gate body (six sections), merged via `git_merge.py` after green CI + no-deletion guard + gitleaks.
+- No live-browser play verification applicable (canon text work); no game code touched.
