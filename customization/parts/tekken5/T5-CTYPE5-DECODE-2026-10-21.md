@@ -99,7 +99,7 @@ Characterization is from the decoded geometry, the vertex colors, the
 referenced TIM2 picture, and own-eyes renders (`proof/ctype5-*.png`) —
 never from header metadata or other games' files. (The 'head portrait'
 label that circulated for the 1061 pair was a retracted T6/W7a
-misattribution; the decoded 1061 models are a flat panel and a
+misattribution; the decoded 1061 models are a ring disc and a
 prism-beam unit.)
 
 Three geometry classes, all at scene scale (thousands of source units):
@@ -113,14 +113,22 @@ Three geometry classes, all at scene scale (thousands of source units):
    the unit in 17–42 byte-identical mesh groups; runtime placement
    transforms are not stored in the NUDP, so GLBs carry the groups as
    stored (coincident at the unit origin).
-2. **Flat square panels** — 2000 × 2000, 118–186 thick, grey/blue-grey
-   vertex colors, same gradient texture (0022-m0, 0022-m1, 1061-m0).
-3. **Cylindrical wall segment** — file 0753/0764's model: an open
-   cylinder of diameter ≈1996 and height ≈3972 (45 verts in ring
-   strips + one 3-vert blob), two-tone vertex colors (dark brown
-   (64,58,51) / pink-white (255,211,230)), textured with a 128×128 dark
-   metallic panel TIM2 (vertical seams, rivet detail — viewed in
-   `proof/ctype5-f0753-m0.png` render and the raw TIM2 export).
+2. **Concentric-ring effect discs** — diameter 2000. (First read as
+   flat square panels from bounding boxes alone; the radial vertex
+   distribution and the renders corrected that — every vertex sits on
+   concentric rings at radii ≈0/400/700/900/1000.) 0022-m0/m1: stepped
+   profile (z levels 6.7/83.9/149.3/193.0), pale blue-white glow,
+   grey/blue-grey vertex colors. 1061-m0: shallow smooth profile
+   (z −59..59), white glow, grey vertex color. Both render as soft
+   faceted glowing rings with radial streaks — ground-glow / aura-disc
+   class effects, same gradient texture as the beams.
+3. **Open cylindrical tube** — file 0753/0764's model: a faceted open
+   tube of diameter ≈1996 and height ≈3972 (45 verts in two rim rings
+   + wall strips, plus one separate 3-vert triangle at the center
+   axis), two-tone vertex colors (dark brown (64,58,51) / pink-white
+   (255,211,230)), textured with a 128×128 dark metallic panel TIM2
+   (vertical seams, rivet detail — viewed in the
+   `proof/ctype5-f0753-m0-*.png` renders and the raw TIM2 export).
 
 **None of the 16 is a wearable/customization item, and none is a skull,
 mask, or head-covering shape** — the skull-mask named gap's DATA1
