@@ -5,7 +5,8 @@
   "purpose": "YYH-by-move-data fragment for CornerStone (ryuji-rock): Younger Toguro's move data, with the fingernail blast (Finger Flip Bullets) fully proven mechanically, as a Toguro inspiration source per the CornerStone canon (western-heart PR #426). NEW FILE ONLY - game/assets/movesets/ryuji-rock.json was NOT edited; integration is central.",
   "teardown_doc": "game-reverse-engineering: yu-yu-hakusho-dark-tournament/TEARDOWN-W2B.md (PR #39, stacked on census PR #35)",
   "date": "2026-10-21",
-  "hypothesis_verdict": "CONFIRMED BEYOND THE W2 CENSUS - the RESOURCE.PAK was fully unpacked with an unpacker ported from the Ghidra-decompiled ELF loader/decompressor (FUN_002bc280/FUN_002bbf50/FUN_00114b00). Toguro's fighter XML yields his complete 264-clip table (ANI pose ranges, spirit costs, inputs, damage) and EFFECT.XML yields the exact projectile definition for Finger Flip Bullets. ANI keyframe payloads and MDL geometry are NOT yet decoded to playable clips/GLB (documented gaps in the teardown doc); no clip is claimed below beyond the engine's own clip-table data."
+  "hypothesis_verdict": "CONFIRMED BEYOND THE W2 CENSUS - the RESOURCE.PAK was fully unpacked with an unpacker ported from the Ghidra-decompiled ELF loader/decompressor (FUN_002bc280/FUN_002bbf50/FUN_00114b00). Toguro's fighter XML yields his complete 264-clip table (ANI pose ranges, spirit costs, inputs, damage) and EFFECT.XML yields the exact projectile definition for Finger Flip Bullets. ANI keyframe payloads and MDL geometry are NOT yet decoded to playable clips/GLB (documented gaps in the teardown doc); no clip is claimed below beyond the engine's own clip-table data.",
+  "w2c_finisher_addendum": "W2c finisher (2026-10-21): the ANI keyframe payload named as a gap above is now DECODED and proven - see the decoded_animation section of this fragment and game-reverse-engineering PR #39 (ANI-KEYFRAME-DECODE.md). The gap statements above are the W2b-era record and are left unedited; decoded_animation supersedes them."
  },
  "fighter": {
   "name": "Younger Toguro",
@@ -274,5 +275,96 @@
   "count": 264,
   "file": "game-reverse-engineering: yu-yu-hakusho-dark-tournament/ytoguro-clips.json",
   "note": "Every clip: id, name, type, ANI pose range (pbegin/pend of 1888), lenght, priority, spirit cost/min, event procs with delays, contact damage/member/direction, input seq, options. Type counts: Recuperation 41, StrikeCombo 38, Punch 34, Receive 31, Movement 16, Kick 12, Block 12, Projection 12, Transition 9, ComboStarter 8, Projectile 3, Spirit move 2, others <=5."
+ },
+ "decoded_animation": {
+  "status": "DECODED - ANI keyframe payload cracked and proven (W2c finisher, 2026-10-21)",
+  "decoder": "game-reverse-engineering: yu-yu-hakusho-dark-tournament/tools/ani_decode.py (PR #39)",
+  "evidence_doc": "game-reverse-engineering: yu-yu-hakusho-dark-tournament/ANI-KEYFRAME-DECODE.md (PR #39)",
+  "format": "Per clip: TRS bones (count hdr[0]) carry per-key f32[3] translation + i16 quaternion/32767 in 20B records; quat bones (hdr[3]) carry a constant f32[3] translation + per-key i16 quaternion/32767 in an 8B stream; both key-major, dt=1/30 s. hdr[0]+hdr[3]=47 bones.",
+  "proof": {
+   "unit_quaternions": "273,729 decoded quaternions across YTOGURO.ANI + ELDERTOG.ANI (cross-PAK differential), 0 non-unit",
+   "continuity": "YTOGURO within-clip rotation steps median 0.72 deg (n=124,503 interior steps); FK max world joint step per key on the finger-bullet set <= 5.30 units (pelvis height ~45-55 units) - no teleporting bones",
+   "xml_boundary_chaining_deg": {
+    "A475_to_A472": {
+     "mean": 0.011,
+     "max_bone": 0.34
+    },
+    "A472_to_A476": {
+     "mean": 0.02,
+     "max_bone": 0.41
+    },
+    "A210_to_A213": {
+     "mean": 0.08,
+     "max_bone": 1.33
+    },
+    "A213_to_A210": {
+     "mean": 0.26,
+     "max_bone": 2.36
+    }
+   }
+  },
+  "clips": [
+   {
+    "id": "A475",
+    "name": "finger bullet charge",
+    "keys": 13,
+    "dt": 0.0333333,
+    "duration_s": 0.4333,
+    "trs_bones": 5,
+    "decoded_file": "game-reverse-engineering: yu-yu-hakusho-dark-tournament/clips-decoded/A475.json"
+   },
+   {
+    "id": "A472",
+    "name": "finger bullet cycle",
+    "keys": 7,
+    "dt": 0.0333333,
+    "duration_s": 0.2333,
+    "trs_bones": 0,
+    "decoded_file": "game-reverse-engineering: yu-yu-hakusho-dark-tournament/clips-decoded/A472.json"
+   },
+   {
+    "id": "A476",
+    "name": "finger bullet rcv",
+    "keys": 13,
+    "dt": 0.0333333,
+    "duration_s": 0.4333,
+    "trs_bones": 4,
+    "decoded_file": "game-reverse-engineering: yu-yu-hakusho-dark-tournament/clips-decoded/A476.json"
+   },
+   {
+    "id": "A473",
+    "name": "earth slash",
+    "keys": 19,
+    "dt": 0.0333333,
+    "duration_s": 0.6333,
+    "trs_bones": 5,
+    "decoded_file": "game-reverse-engineering: yu-yu-hakusho-dark-tournament/clips-decoded/A473.json"
+   },
+   {
+    "id": "A3804",
+    "name": "ki blast",
+    "keys": 19,
+    "dt": 0.0333333,
+    "duration_s": 0.6333,
+    "trs_bones": 1,
+    "decoded_file": "game-reverse-engineering: yu-yu-hakusho-dark-tournament/clips-decoded/A3804.json"
+   },
+   {
+    "id": "A470",
+    "name": "increase strength",
+    "keys": 31,
+    "dt": 0.0333333,
+    "duration_s": 1.0333,
+    "trs_bones": 5,
+    "decoded_file": "game-reverse-engineering: yu-yu-hakusho-dark-tournament/clips-decoded/A470.json"
+   }
+  ],
+  "full_census": {
+   "ani_clips_decoded": 195,
+   "total_keys": 3039,
+   "files": "game-reverse-engineering: yu-yu-hakusho-dark-tournament/ytoguro-clips-decoded-part1.json .. ytoguro-clips-decoded-part5.json",
+   "note": "All 195 ANI records decoded. 74 of the 264 XML clips have no ANI record (composites/reuse, per TEARDOWN-W2B)."
+  },
+  "cornerstone_feed_update": "The finger_flip_bullets cornerstone_feed note in this fragment ('Animation clips are NOT yet available (ANI payload gap)') is superseded by this section: decoded A475/A472/A476 animation (plus A473/A3804/A470) is available at the files above and can be attached to the yyh:YYH-A475 projectile entry. All parameters in finger_flip_bullets are unchanged."
  }
 }
