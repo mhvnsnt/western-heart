@@ -79,9 +79,61 @@ Disk tight (~98% used, ~2.7G free): minimal footprint, no new bulk copies.
 ## Results
 
 - BOOTSTRAP: branch created from 22de309 (PR #515 head), this
-  file is the first commit. Analysis follows.
-- JOB 1: PENDING.
-- JOB 2: PENDING.
-- JOB 3: PENDING.
-- JOB 4: PENDING.
-- JOB 5: PENDING.
+  file committed + PR #520 opened before analysis (5fe4619).
+- JOB 1 (PALETTE) — VERDICT LANDED, no skinned GLBs (honest):
+  unit header words 3–4 PROVEN = GE USCALE (0x48) / VSCALE
+  (0x49) imm24-float texture scales (GE opcode table + values
+  in [0.12, 0.51]; paired units share low 24 bits) — the
+  round-9 palette candidate is REFUTED. Per-unit prefix
+  blocks PROVEN = bbox records (span + vertex count +
+  8-corner normalized bbox; section-tail offset directory).
+  BONE small section = character dims; slot 6 = 5-entry
+  table. RAM ground truth: the engine builds single-bone GE
+  fragments (12×0x2B + 0x0B, 52 B stride, 520+ in the attract
+  dump) and CALLs them in palette order per frame — the
+  palette is runtime/code data, not a file table. Evidence +
+  exact remaining routes: `round10-evidence/JOB1-PALETTE-VERDICT.md`.
+- JOB 2 (BATCH) — DONE: full slot census of the top-76
+  (`round10-evidence/r10_inventory.json`): character
+  packages hold exactly slots 0+10 NDPP (the 24 r9 GLBs are
+  the complete set; all 24 re-decoded clean this round) +
+  BONE 1/12 + slot-6 table + name chunk. NEW: 24 skeleton
+  GLBs for all 12 packages (`models/idx{nn}_skeleton_r10.glb`
+  + `idx{nn}_bone_slot12_r10.glb`) via `tools/r10_batch.py`;
+  every body skeleton composes to a T-pose (per-package
+  joints in the inventory). Overlay renders VIEWED
+  (`r10_idx05_skeleton_overlay.png` clean;
+  `r10_idx00_skeleton_overlay.png` — finger overshoot vs
+  slot-10 mesh + ATAMA/TE offset vs round-9 spot values
+  flagged in `round10-evidence/JOB2-JOB4-BATCH-CENSUS.md`).
+  Stage slot-0 (624 B) = transform node in 16/16, not
+  geometry — no stage mesh GLBs from slot 0.
+- JOB 3 (NTPP) — NOT PROVEN, redirected: GIDX word PROVEN =
+  chunk tag 0x1040 + serial (idx06: 0x121/0x122/0x123 in
+  order; 17 packages share 0x0ba3) — not a format word.
+  idx02 slot-4 payload (70,880 B) mapped as a directory of
+  (0x10, offset, 0x460) records (1,120 B items). 16 decode
+  variants of idx02 block 1 (4bpp CLUT16, CLUT head/tail,
+  8888/5551, both nibble orders, linear + unswizzled)
+  rendered + VIEWED: all noise. No textured GLBs, no
+  pairings exercised. Evidence: `round10-evidence/JOB3-JOB5-STATUS.md`.
+- JOB 4 (B3 CENSUS) — DONE (structural): slice A-packages =
+  28 full-character pattern / 3,002 boned part / 436 rigid
+  NDPP part / 236 stage-object pattern
+  (`round10-evidence/r10_b3_census.json`). Top-76 accounting
+  closed: 12 character + 16 stage/object + 28 NTPP (27
+  slot-0 + idx03 payload-type) + 2 stubs + 18 COM = 76; the
+  brief's 29th NTPP is not distinguishable in the slot maps
+  (stated, not rounded up). Per-character assignment of
+  slice packages remains unproven (needs DATA401
+  index-order analysis).
+- JOB 5 (B5 SLOT-9) — ONE LEVEL DEEPER: idx24 slot-9 head =
+  BE directory of 0x20 B records; at +0x78 a table of
+  40 × (size 0x8a0, offset) page pairs stepping 0x8a0 from
+  0x9f0, tiling the payload to EOF; embedded NTPP section
+  at +0x1c0; payload 95% BE-float-sane. Page record format
+  not decoded → no stage GLB. Evidence:
+  `round10-evidence/JOB3-JOB5-STATUS.md`.
+- GATES: G3 stays PARTIAL (meshes proven; skinning +
+  texturing open — not marked full). WIRING-INVENTORY
+  round-10 table added with the same honest states.

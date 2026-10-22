@@ -151,3 +151,21 @@ Decoder: `tools/r9_ndpp_decode.py`.
 - B4: COM binary command-record encoding (unchanged).
 - B5: Stage slot-9 BE layout decode from the mapped offset-table head.
 - B6′: BONE array roles + skeleton assembly (in progress).
+
+## Round-10 update (2026-10-22, PR #520)
+
+Evidence: `tools/round10-evidence/JOB1-PALETTE-VERDICT.md`,
+`tools/round10-evidence/JOB2-JOB4-BATCH-CENSUS.md`,
+`tools/round10-evidence/JOB3-JOB5-STATUS.md`,
+`tools/round10-evidence/r10_inventory.json`,
+`tools/round10-evidence/r10_b3_census.json`.
+Tool: `tools/r10_batch.py`.
+
+| Layer | State after round 10 |
+|---|---|
+| Unit header words 3–4 | **PROVEN = GE USCALE (0x48) / VSCALE (0x49)**, imm24 float texture scales — NOT a bone palette (the round-9 candidate is refuted with the GE opcode table + value proof). Per-unit prefix blocks proven = bbox records (span + vertex count + 8-corner normalized bbox); a section-tail offset directory indexes them |
+| Bone palette / skinning | **Not in the file data**: RAM ground truth shows the engine builds single-bone GE fragments (12×0x2B + 0x0B, stride 52 B) per frame and CALLs them in palette order — the palette is a runtime/code product. NO skinned GLBs shipped (no guessed skinning). Remaining routes enumerated in the Job-1 evidence (draw-code xref / live GE capture / moveset part data) |
+| GLBs (G3) | Full-section batch CONFIRMED COMPLETE: character packages hold exactly slots 0+10 NDPP (12/12 packages enumerated; the 24 r9 GLBs are the full set). NEW: 24 skeleton GLBs — `models/idx{nn}_skeleton_r10.glb` (body, 110; idx04 = 146) + `models/idx{nn}_bone_slot12_r10.glb` (head, 22) for all 12 packages; overlay renders VIEWED (idx05 clean; idx00 discrepancy vs round-9 spot values flagged in the Job-2 doc). **G3 stays PARTIAL**: meshes unskinned + untextured until the palette and NTPP land — not marked full |
+| NTPP textures (B2) | GIDX word PROVEN = chunk tag (0x1040) + serial (idx06: 0x121/0x122/0x123 sequential) — not a format word. Slot-4 payload mapped as a directory of 0x460 B items ((0x10, offset, size) records). Pixel decode attempted on idx02 block 1 (16 CLUT variants, swizzled + linear) — all noise, VIEWED and rejected. No PNGs, no bake, no textured GLBs |
+| Census (B3) | Slice A-packages classified by slot pattern: 28 full-character / 3,002 boned part / 436 rigid NDPP part / 236 stage-object (+1,432 B-texture + 336 dir-other). Top-76 accounting closed (12 + 16 + 28 NTPP + 2 stubs + 18 COM = 76). Per-character ASSIGNMENT still unproven — packages stay unattributed beyond pattern |
+| Stage slot-9 (B5) | Layout one level deeper: BE directory of 0x20 B records + 40 × (0x8a0, offset) page pairs tiling idx24's payload to EOF + an embedded NTPP section at +0x1c0; payload is a BE float stream (95% float-sane). Page record format not yet decoded → no stage GLB |
