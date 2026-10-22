@@ -10,11 +10,16 @@
    ============================================================ */
 import * as THREE from 'three';
 import { Arena } from './scene.js';
-import { Fighter, setArenaLimit } from './fighter.js';
+// LOADSPEED (2026-10-22): fighter.js (rigs, T3 wiring, movesets) is fight-only —
+// it streams via lazy.js on first startMatch, not at boot. See js/lazy.js.
+import { lazy } from './lazy.js';
 import { AIController } from './ai.js';
 import { audio } from './audio.js';
 import { getStage } from './stages.js';
 import { applyFighterProfile } from './customization-consumer.js';
+// LIGHTING RIG (worker 27): per-fighter character light rig — SFV/T7-style
+// character-vs-stage lighting separation + bible soul glow. Fail-silent.
+import { attachCharacterRig } from './lighting-rig.js';
 
 const ROUND_TIME = 60;
 const ROUNDS_TO_WIN = 2;   // best of 3
@@ -41,6 +46,13 @@ export class Game {
     this._roundLockT = 0;
     this._hitStop = 0;
 
+    /* ---- hit-feel tuning (review-stage tuner, training mode) ----
+       Multipliers on top of the wired hit-feel values (Tekken teardown
+       numbers come from the retargeting lane; the user NEVER builds from
+       zero). 1.0 = untouched. The review stage's tuning section writes
+       these live and the user feels the delta on the dummy immediately. */
+    this.feel = { hitstop: 1, shake: 1, knockback: 1, launch: 1 };
+
     /* ---- game-modes lane hooks (modes.js) ----
        onMatchEnd(playerWon): fired when a full match (not a round) is
        decided, instead of ui.matchOver. Null = classic behavior.
@@ -63,8 +75,10 @@ export class Game {
      survival/time-attack single-round) and opts.hpCarry (survival/team
      HP carry-over) are honored here so modes.js never pokes the
      fighter internals directly. */
-  startMatch(playerChar, enemyChar, stageId, opts = {}) {
+  async startMatch(playerChar, enemyChar, stageId, opts = {}) {
     this.resetFightState();
+    // LOADSPEED: warmed during menu idle; usually cached by fight time.
+    const { Fighter, setArenaLimit } = await lazy.fighter();
     // Modes lane: per-match round target (default = classic best-of-3).
     this.roundsToWin = opts.roundsToWin || ROUNDS_TO_WIN;
 
@@ -76,6 +90,10 @@ export class Game {
 
     this.p1 = new Fighter(playerChar, stage.spawns.p1, 1, true);
     this.p2 = new Fighter(enemyChar, stage.spawns.p2, -1, false);
+    // Hit-feel tuning: fighters read live multipliers off game.feel
+    // (review-stage tuner). Null-safe when no game is attached.
+    this.p1.game = this;
+    this.p2.game = this;
     // Transformation cinematics need the arena for camera shake.
     this.p1._sceneRef = this.arena;
     this.p2._sceneRef = this.arena;
@@ -87,6 +105,12 @@ export class Game {
     // or break a match. See js/customization-consumer.js.
     applyFighterProfile(this.p1);
     applyFighterProfile(this.p2);
+    // LIGHTING RIG (worker 27): attach each fighter's character light rig —
+    // their own key light (follows them) + soul-glow baseline on the
+    // existing auraLight + soul-tinted emissive (bible: fighters are
+    // luminous sources). No-op-safe; never blocks a match.
+    attachCharacterRig(this.p1, stage);
+    attachCharacterRig(this.p2, stage);
     this.ai = new AIController(this.p2, enemyChar.ai);
     this.ai1 = this.demo ? new AIController(this.p1, playerChar.ai) : null;
 
@@ -146,8 +170,12 @@ export class Game {
     this.p1.meter = this.p2.meter = 0;
     const spawns = getStage(this._stageId || 'shrine').spawns;
     this.p1.root.position.set(spawns.p1, 0, 0); this.p2.root.position.set(spawns.p2, 0, 0);
-    this.p1.facing = 1; this.p1.lean.rotation.y = 0;
-    this.p2.facing = -1; this.p2.lean.rotation.y = Math.PI;
+    // FACING FIX (owner playtest 2026-10-22): the old 0/π values posed the
+    // fighters toward/away from the CAMERA, contradicting fighter.js's
+    // facing*π/2 convention (face the opponent). Snap both to the convention,
+    // visual angle included so no turn tween plays at round start.
+    this.p1.facing = 1; this.p1._faceY = Math.PI / 2; this.p1.lean.rotation.y = Math.PI / 2;
+    this.p2.facing = -1; this.p2._faceY = -Math.PI / 2; this.p2.lean.rotation.y = -Math.PI / 2;
     this.p1.state = 'idle'; this.p2.state = 'idle';
     // Round reset is also a clean break from any in-progress attack: never let
     // a latched attackName (e.g. 'surge') stick the Soul Surge aura on.
@@ -295,13 +323,13 @@ export class Game {
           this.ui.throwBreakPrompt(false);
           if (result === 'ko') {
             audio.ko(); audio.grunt(def.isPlayer ? 1.1 : 0.85);
-            this.arena.shake(0.5, 0.4);
-            this._hitStop = 0.12;
+            this.arena.shake(0.5 * this.feel.shake, 0.4 * this.feel.shake);
+            this._hitStop = 0.12 * this.feel.hitstop;
             this._spawnImpact(def.root.position.x, 1.2, def.root.position.z, 0xffcf4d, 1.4);
           } else if (result && result !== 'dodge') {
             audio.grab(); audio.grunt(def.isPlayer ? 1.05 : 0.9);
-            this.arena.shake(0.45, 0.28);
-            this._hitStop = 0.1;
+            this.arena.shake(0.45 * this.feel.shake, 0.28 * this.feel.shake);
+            this._hitStop = 0.1 * this.feel.hitstop;
             this._spawnImpact(def.root.position.x, 1.2, def.root.position.z,
               atk.char.colors.trim || 0xffffff, 1.3);
             const combo = atk.registerCombo();
@@ -366,8 +394,8 @@ export class Game {
           attacker.startThrowing(defender);
           this.ui.throwBreakPrompt(defender.isPlayer, hb.move.throw_break || '1');
           audio.grab();
-          this.arena.shake(0.3, 0.2);
-          this._hitStop = 0.06;
+          this.arena.shake(0.3 * this.feel.shake, 0.2 * this.feel.shake);
+          this._hitStop = 0.06 * this.feel.hitstop;
           return;
         }
         const hpBefore = defender.hp;
@@ -381,14 +409,14 @@ export class Game {
 
         if (result === 'block') {
           audio.block();
-          this._hitStop = 0.04;
+          this._hitStop = 0.04 * this.feel.hitstop;
           attacker.combo = 0;
         } else if (result === 'dodge') {
           // whiffed into i-frames, nothing
         } else if (result === 'ko') {
           audio.ko(); audio.grunt(defender.isPlayer ? 1.1 : 0.85);
-          this.arena.shake(0.5, 0.4);
-          this._hitStop = 0.12;
+          this.arena.shake(0.5 * this.feel.shake, 0.4 * this.feel.shake);
+          this._hitStop = 0.12 * this.feel.hitstop;
           this._spawnImpact(hb.x, hb.y, hb.z, 0xffcf4d, 1.4);
         } else {
           const isGrab = !!hb.move.isGrab;
@@ -398,8 +426,8 @@ export class Game {
           else if (attacker.attackName === 'surge') { /* surge sound played on startup */ }
           else audio.punch();
           audio.grunt(defender.isPlayer ? 1.05 : 0.9);
-          this.arena.shake(isGrab ? 0.45 : isHeavy ? 0.35 : 0.18, isGrab ? 0.28 : 0.18);
-          this._hitStop = isGrab ? 0.1 : isHeavy ? 0.08 : 0.05;
+          this.arena.shake((isGrab ? 0.45 : isHeavy ? 0.35 : 0.18) * this.feel.shake, (isGrab ? 0.28 : 0.18) * this.feel.shake);
+          this._hitStop = (isGrab ? 0.1 : isHeavy ? 0.08 : 0.05) * this.feel.hitstop;
           const col = attacker.attackName === 'surge'
             ? (attacker.char.surge?.color ?? attacker.char.colors.trim ?? 0xffffff)
             : (attacker.char.colors.trim || 0xffffff);

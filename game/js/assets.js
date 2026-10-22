@@ -32,12 +32,21 @@ export const MODEL_URLS = {
   'diablo-attire1': '../roster/diablo/attires/attire1/model-rigged.glb',
   // Diablo Attire 2 — Devil God (owner 2026-10-20, Tripo pull).
   'diablo-attire2': '../roster/diablo/attires/attire2/model.glb',
-  // SLICE Attire 1 (owner 2026-10-21): Tekken 7 Dragunov teardown model
-  // (dragunov-t7-rig.blend from release tekken-models-batch-2) converted to
-  // GLB — Slice's first own model; he was a steve-fox fallback rider with no
-  // model of his own (model-key audit, PR #418).
+  // SLICE Attire 1 (owner 2026-10-21 ~08:42 CDT): the owner's own Tripo is
+  // his MAIN DEFAULT attire — "undead warrior 3d model" by tzflo312
+  // (cf9cf660-1673-4585-ac1b-ce4fc92f1550), pulled via tools/tripo-pull and
+  // archived on release slice-tripo-pulls-20261021. Canon: arm blades jagged
+  // chrome (Baraka/Wolverine prototype mix), skull mask blending into the
+  // head at the back, scars all over, blades on belt buckle + shoe side.
+  // Static meshopt GLB (no skin) — rig at the rig stage like other Tripo mains.
   slice: '../roster/slice/attires/attire1/model.glb',
   'slice-attire1': '../roster/slice/attires/attire1/model.glb',
+  // SLICE Attire 2 — our Dragunov build (PR #433): Tekken 7 Dragunov teardown
+  // model (dragunov-t7-rig.blend from release tekken-models-batch-2) converted
+  // to GLB. It was Attire 1 until the owner's Tripo landed; it laddered back
+  // byte-identical, never deleted — Slice's first own model, rigged on the
+  // Tekken 7 game skeleton (198 joints).
+  'slice-attire2': '../roster/slice/attires/attire2/model.glb',
   // ZUI Attires 1+2 (owner Tripos; gap found by the model-key audit, PR #418):
   // A1 = Drunken Monk Tripo, his DEFAULT attire (roster/zui/ATTIRE-SLOTS.md,
   // owner 2026-10-18). The GLBs sat in roster/zui/attires/ with NO MODEL_URLS
@@ -48,6 +57,35 @@ export const MODEL_URLS = {
   // smooth_weights.py); the owner's original stays untouched beside it as model.glb.
   'zui-attire1': '../roster/zui/attires/attire1/model-rigged.glb',
   'zui-attire2': '../roster/zui/attires/attire2/model.glb',
+  // (Zen block restored 2026-10-22: dropped by 3942b8584 'Lane 4 rig batch 1', which left 'zen'/'zen-attire1'
+  // unresolvable — game/tests/model-key-guard.test.mjs. Lines below are e09288722 + 292ca2b17 verbatim.)
+  // ZEN Attire 1 — SPIRIT BODY (owner Tripo 8c46e379, 2026-10-21): Zen is
+  // UNVESSELED (canon ruling 2026-10-21) — this is his own spirit body and
+  // his main model, not a vessel swap. He was a steve-fox fallback rider in
+  // roster-full with no attire ladder of his own; his legacy body stays
+  // wired at 'zen-body' below and ladders back as a selectable alternate
+  // in attires.js (never deleted).
+  zen: '../roster/zen/attires/attire1/model.glb',
+  'zen-attire1': '../roster/zen/attires/attire1/model.glb',
+  // ZEN'S SPIRIT FORM (owner Tripo 803f4cf1, 2026-10-21): Zen HIMSELF as
+  // a spirit — the "stand version of himself" from his design. NOT an
+  // attire and NOT his body: in the stand system the spirit form floats
+  // behind his spirit body (behavior spec in roster/zen/RIG-NOTES.md).
+  // Loadable as its own key, tied to Zen's fighter record.
+  'zen-spirit': '../roster/zen/spirit/model.glb',
+  // ZEN TRANSFORMATION MODES (owner Tripos, 2026-10-21): NOT attires —
+  // stages of ONE transformation inside Attire 1, chained via forms in
+  // roster-full.js (spirit body -> TENTACLE MODE -> OVERSOUL). Canon:
+  // roster/zen/CANON.md; behavior spec: roster/zen/RIG-NOTES.md.
+  // TENTACLE MODE (9460095d): the clothing tentacle imagery becomes REAL
+  // tentacles busting out of him; no Oversoul head; spirit rides higher
+  // and further back (offset in RIG-NOTES.md).
+  'zen-tentacle': '../roster/zen/tentacle/model.glb',
+  // OVERSOUL (2bbc8e88): the combined form — the spirit has docked at the
+  // head position and TAKEN THE HEAD'S PLACE. Body tentacles on this
+  // model are IMAGERY on the body, not protruding tentacles (verified on
+  // the front render, 2026-10-21 — see roster/zen/ATTIRE-SLOTS.md).
+  'zen-oversoul': '../roster/zen/oversoul/model.glb',
   // Tripo pulls wired 2026-10-19 (owner: stop saying "not in the repo").
   phantom: '../roster/phantom/attires/attire1/model-rigged.glb',
   skull: '../roster/skull/attires/attire1/model-rigged.glb',
@@ -64,10 +102,22 @@ export const MODEL_URLS = {
   // AWA POP Attire 2 (fighter-completeness audit 2026-10-21): owner-confirmed
   // Tripo Attire 2 (roster/awa-pop/ATTIRE-SLOTS.md slot 2) — the GLB was in the
   // repo with no key, so it could never load.
-  'awa-pop-attire2': '../roster/awa-pop/attires/attire2/model.glb',
+  'awa-pop-attire2': '../roster/awa-pop/attires/attire2/model-rigged.glb',
   'purple-rain': '../roster/purplerain/attires/attire1/model-rigged.glb',
   nightwolf: 'assets/models/nightwolf.glb',
+  // NIGHTWOLF Attire 1 (owner 2026-10-18, Tripo pull 5b0835eb "tribal warrior"):
+  // his DEFAULT attire per roster/nightwolf/attires/ATTIRE-SLOTS.md — tribute to
+  // Serena Misae Brown. Unrigged static; playable swap rides the auto-rig pass.
+  'nightwolf-attire1': '../roster/nightwolf/attires/attire1/model.glb',
   'king-tyrant': 'assets/models/king-tyrant.glb',
+  // KING TYRANT Attires 1-4 (owner 2026-10-19, Tripo pulls — see
+  // roster/king-tyrant/attires/ATTIRE-SLOTS.md): White Tyrant / Tyrant King /
+  // Black Snow / Fight Gear. The in-game base build ladders back. Unrigged
+  // statics; auto-rig queued (cape/jacket cloth-rig tasks recorded, not blocking).
+  'king-tyrant-attire1': '../roster/king-tyrant/attires/attire1/model.glb',
+  'king-tyrant-attire2': '../roster/king-tyrant/attires/attire2/model.glb',
+  'king-tyrant-attire3': '../roster/king-tyrant/attires/attire3/model.glb',
+  'king-tyrant-attire4': '../roster/king-tyrant/attires/attire4/model.glb',
   // KINPO Attire 1 (owner 2026-10-20): his Tripo pull is her MAIN attire.
   kinpo: '../roster/kinpo/attires/attire1/model-rigged.glb',
   'kinpo-attire1': '../roster/kinpo/attires/attire1/model-rigged.glb',
@@ -98,26 +148,40 @@ export const MODEL_URLS = {
   // — a reskin by lineage, not a Tripo model, so it no longer defaults.
   'doc-frank-a1': '../roster/doc-frank/attires/attire1/pre-transform/model.glb',
   // Doc Frank post-transform bigger form (owner 2026-10-19, Tripo pull).
-  'doc-frank-big': '../roster/doc-frank/attires/attire1/post-transform/model.glb',
+  // Rigged 2026-10-21 (Tripo-forefront lane): model-rigged.glb carries the
+  // pre-form's 178-joint rig via the repo k-NN transfer; original untouched.
+  'doc-frank-big': '../roster/doc-frank/attires/attire1/post-transform/model-rigged.glb',
   // Wave 2 (2026-10-19): Wowomomo Attire 2, Hood Scientist Attire 3, Demonio forms, Dxmmii Attire 2.
   'doc-frank-wowomomo': '../roster/doc-frank/attires/attire2/base/model-rigged.glb',
-  'doc-frank-wowomomo-big': '../roster/doc-frank/attires/attire2/transformed/model.glb',
+  'doc-frank-wowomomo-big': '../roster/doc-frank/attires/attire2/transformed/model-rigged.glb',
   'doc-frank-hood': '../roster/doc-frank/attires/attire3/base/model.glb',
-  'doc-frank-hood-big': '../roster/doc-frank/attires/attire3/transformed/model.glb',
+  'doc-frank-hood-big': '../roster/doc-frank/attires/attire3/transformed/model-rigged.glb',
   // Attire 4 "Frankenstein's Cyborg" (owner 2026-10-19): two-form transform attire.
   'doc-frank-frankenstein': '../roster/doc-frank/attires/attire4/base/model-rigged.glb',
-  'doc-frank-frankenstein-big': '../roster/doc-frank/attires/attire4/transformed/model.glb',
+  'doc-frank-frankenstein-big': '../roster/doc-frank/attires/attire4/transformed/model-rigged.glb',
   'demonio-a1': '../roster/demonio/attires/attire1/model.glb',
   'demonio-winged': '../roster/demonio/attires/winged-devil/model-rigged.glb',
   'demonio-human': '../roster/demonio/attires/human/model-rigged.glb',
   'dxmmii-a2': '../roster/dxmmii/attires/attire2/model.glb',
+  // DXMMII Slot 1 — Tripo Default (dedup 2026-10-22): the 60MB Tripo pull
+  // that replaced the wooden dummy as Slot 1 per owner 2026-10-19
+  // (roster/dxmmii/ATTIRE-SLOTS.md). Wired so his select entry defaults to it.
+  'dxmmii-tripo': '../roster/dxmmii/attires/attire1/model.glb',
   'cyborg-x': 'assets/models/cyborg-x.glb',
   'cape-jones': 'assets/models/cape-jones.glb',
   // Bonus / music fighters and name-pending models (loadable, unassigned).
   mariposa: 'assets/models/mariposa.glb',
+  // Mariposa Slot 1 — Butterfly Default (dedup 2026-10-22): owner-designated
+  // Slot 1 default 2026-10-19 (owner exception to the Tripo-first law, like
+  // Pantera's Attire 1). Wired so her select entry defaults to it.
+  'mariposa-butterfly-default': '../roster/zafina/attires/butterfly-default/mariposa-butterfly-default.glb',
   // Mariposa Slot 2: the real Tripo pull (owner 2026-10-19; Butterfly Default is Slot 1).
   'mariposa-slot2': '../roster/mariposa/attires/slot2/model.glb',
   zafina: 'assets/models/zafina.glb',
+  // ZAFINA Golden Pharaoh (owner 2026-10-18 — see roster/zafina/attires/ATTIRE-SLOTS.md):
+  // custom Western Heart pharaoh reskin of the Tekken Zafina P1 build. Mary Posa goes
+  // over Zafina, so this ladders into Mariposa's attires behind her customs.
+  'zafina-golden-pharaoh': '../roster/zafina/attires/golden-pharaoh/zafina-golden-pharaoh.glb',
   dxmmii: 'assets/models/dxmmii.glb',
   rave: 'assets/models/rave.glb',
   // Cain Elias — Vain Abel's brother, Undertaker archetype (owner 2026-10-19, Tripo pulls).
@@ -127,6 +191,8 @@ export const MODEL_URLS = {
   'vainabel-attire2': '../roster/vainabel/attires/attire2/model.glb',
   // Vain Abel — Kane archetype (owner 2026-10-20, Tripo pull). Attire 3: Masked Demon of the Purple Haze.
   'vainabel-attire3': '../roster/vainabel/attires/attire3/model.glb',
+  // Vain Abel — Attire 4: Half mask Horror of the Haze (owner 2026-10-21, Tripo pull).
+  'vainabel-attire4': '../roster/vainabel/attires/attire4/model.glb',
   // Burger — Demon mode, possessed by greed (owner 2026-10-19, Tripo pull).
   burger: '../roster/burger/attires/attire1/model-rigged.glb',
   // Kronos — new fighter (owner 2026-10-19, Tripo pull).
@@ -154,8 +220,20 @@ export const MODEL_URLS = {
   'burger-demon': '../roster/burger/attires/attire1/model.glb',
   // Gyou spirit form (owner 2026-10-19, Tripo pull).
   'gyou-spirit': '../roster/gyou/attires/spirit-form/model.glb',
-  lili: 'assets/models/lili.glb',   // NO WH name yet — do not assign
+  lili: 'assets/models/lili.glb',   // base T7 Lili build (Silvertongue's Tekken base)
+  // SILVERTONGUE (owner 2026-10-18: proprietary name, retired "Lili" — never use the
+  // old name; see roster/silvertongue/ATTIRE-SLOTS.md): Slot 1 Tripo Main "Metallic
+  // Bodysuit" (2e20f9eb, unrigged static), Slot 2 Spy Debut, Slot 3 Rated-M Nude
+  // (fully rigged 22-bone), Slot 4 Noir Gala (Tekken-based reskin, ladders back).
+  'silvertongue': '../roster/silvertongue/attires/attire1/model.glb',
+  'silvertongue-spy-debut': '../roster/silvertongue/attires/spy-debut/silvertongue-spy-debut.glb',
+  'silvertongue-attire3': '../roster/silvertongue/attires/attire2/model.glb',
+  'silvertongue-noir-gala': '../roster/lili/attires/noir-gala/lili-noir-gala.glb',
   baek: 'assets/models/baek.glb',   // KEVIN's A2 attire (original Baek model)
+  // KEVIN A1 (owner 2026-10-18): Kevin's Tripo ("human figure", God Molecule canon) —
+  // his DEFAULT attire per roster/baek/attires/ATTIRE-SLOTS.md. Unrigged static;
+  // live-game default swap rides the auto-rig pass.
+  'kevin-tripo': '../roster/baek/attires/attire1/model.glb',
   // Round-2 auto-rig wave (lane B): re-rigged per-fighter variants + Tripo
   // attires, all passing the playable gate (valid glTF, skinned, Hips, 1.5-2.2m).
   // 'demonio-body' round-2 re-rig variant was never pushed to the repo;
@@ -166,6 +244,11 @@ export const MODEL_URLS = {
   'jin-body': 'assets/models/jin-body.glb',
   'rin-body': 'assets/models/rin-body.glb',
   'jin-t7': 'assets/models/jin.glb',
+  // JIN KAZAMA "Bloodline Ember" (owner 2026-10-18 — see
+  // roster/jin/attires/bloodline-ember/README.md): devil-gene texture reskin of the
+  // Jin Kazama base. Ladders into Phantom's attires (Yoshimitsu/Jin re-home rule).
+  // NOTE: this is Jin KAZAMA — the Eastern Mind Jin still needs his own model.
+  'jin-bloodline-ember': '../roster/jin/attires/bloodline-ember/jin-bloodline-ember.glb',
   'king-tyrant_alt1': 'assets/models/king-tyrant_alt1.glb',
   'kinpo-t8': 'assets/models/kinpo-t8.glb',
   'kinpo_alt1': 'assets/models/kinpo_alt1.glb',
@@ -179,7 +262,11 @@ export const MODEL_URLS = {
   // the base 'pantera' key above (T7King P1 reskin), A4 snow leopard,
   // A5 Crimson Rage, A6 T7 P2). ../roster pattern per phantom/skull.
   'pantera-snow-leopard': '../roster/pantera/attires/snow-leopard/pantera-snow-leopard.glb',
-  'pantera-leopard-king': '../roster/pantera/attires/leopard-king/model-rigged.glb',
+  // LEOPARD KING re-rig (2026-10-22, owner: forearms/hands stretch, legs crumpled, hand weighted to the
+  // tail): King's 49-joint skeleton refitted INSIDE the mesh (tools/auto_rig/refit_skeleton.py) + Blender
+  // bone heat (backends/heat_rebind.py). The 2026-10-21 model-rigged.glb stays beside it, untouched.
+  // Proof: docs/proof/claude-2026-10-22/pantera-rigs/.
+  'pantera-leopard-king': '../roster/pantera/attires/leopard-king/model-refit.glb',
   'pantera-crimson-rage': '../roster/pantera/attires/crimson-rage/pantera-attire5-crimson.glb',
   'pantera-p2': '../roster/pantera/attires/p2-wired/pantera-attire4-p2.glb',
   'retsu-body': 'assets/models/retsu-body.glb',
@@ -195,9 +282,38 @@ export const MODEL_URLS = {
   'purple-rain-main': 'assets/models/purple-rain-main.glb',
   // Lane C fighter-hunt (Round 2): per-fighter models from community rips,
   // retargeted to Mixamo skeleton. See docs/fighter-hunt/HUNT-LOG.md.
-  star: 'assets/models/star.glb',
+  // STAR (2026-10-21, MINI wire-up): the game now loads her HOUSE-49
+  // re-template (PR #481) — same mesh/weights remapped onto the house
+  // template skeleton, floor-origin fixed (geometry min-y 0.0000; the old
+  // hip-origin frame sank her ~1 m through the floor), with her authored
+  // Christie 2P textures restored from the source TXD. The original
+  // star.glb stays in place, untouched, as the fallback file.
+  star: 'assets/models/star-house49.glb',
+  // STAR Attires 1-3 + 5 (owner 2026-10-18, Tripo pull ea73eeb3 — see
+  // roster/star/ATTIRE-SLOTS.md): A1 Red Latex (DEFAULT Tripo main), A2 After Dark
+  // + A3 Capoeira Gold (texture colorways on the Tripo base), A5 rated-M lane
+  // (improved build; model.glb superseded, kept on disk). Unrigged statics;
+  // playable swap rides the auto-rig pass.
+  'star-attire1': '../roster/star/attires/attire1/model.glb',
+  'star-attire2': '../roster/star/attires/attire2/model.glb',
+  'star-attire3': '../roster/star/attires/attire3/model.glb',
+  'star-attire5': '../roster/star/attires/attire5/model-improved.glb',
   torch: 'assets/models/torch.glb',
+  // TORCH Attire 1 (owner 2026-10-21): Tripo original 'Valkyrie of Flame'
+  // (300d0c63), auto-rigged via tools/auto_rig/rig_tripo_static.py; raw pull
+  // archived in release torch-a1-tripo-20261021. Ladder: roster/torch/ATTIRE-SLOTS.md.
+  'torch-tripo-a1': 'assets/models/torch-tripo-a1.glb',
+  // TORCH Attire 2 (owner 2026-10-21): Tripo original 'Red demon'
+  // (7f8c7874), auto-rigged via tools/auto_rig/rig_tripo_static.py; raw pull
+  // archived in release torch-a2-tripo-20261021. Ladder: roster/torch/ATTIRE-SLOTS.md.
+  'torch-tripo-a2': 'assets/models/torch-tripo-a2.glb',
   michiko: 'assets/models/michiko.glb',
+  // MICHIKO's Tripo originals (owner 2026-10-21): Attire 1 "bone goddess"
+  // + Attire 2 "biker chick" — ladder in attires.js, provenance in
+  // roster/michiko/ATTIRE-SLOTS.md. The Katarina-based model above stays
+  // as her fallback attire.
+  'michiko-attire1': '../roster/michiko/attires/attire1/model-rigged.glb',
+  'michiko-attire2': '../roster/michiko/attires/attire2/model-rigged.glb',
   dio: 'assets/models/dio.glb',
   bruno: 'assets/models/bruno.glb',
   yukihyo: 'assets/models/yukihyo.glb',
@@ -226,6 +342,9 @@ export const MODEL_URLS = {
   // CHARGER Attire 1 (2026-10-21, lane 4 rig batch 1): unrigged Tripo static -> model-rigged.glb
   // via tools/auto_rig knn backend (donor pantera.glb); original model.glb untouched.
   charger: '../roster/charger/attires/attire1/model-rigged.glb',
+  // DOROWANI (owner 2026-10-22): Gon's WH replacement. Unrigged Tripo static
+  // (see roster/dorowani/RIG-SPEC.md); k-NN rig from pantera donor is the planned path.
+  dorowani: '../roster/dorowani/attires/attire1/source/dorowani-a1-crimson-cheeks.glb',
   // CHARGER Attire 2 (2026-10-21, lane 4 rig batch 1): unrigged Tripo static -> model-rigged.glb
   // via tools/auto_rig knn backend (donor pantera.glb); original model.glb untouched.
   'charger-attire2': '../roster/charger/attires/attire2/model-rigged.glb',
@@ -814,6 +933,36 @@ function feetFacingCue(root) {
   return score >= 0.05 ? 1 : (score <= -0.05 ? -1 : 0);
 }
 
+/* Shared GLTFLoader for fetch+parse loads (meshopt wired once).
+   parseAsync on a shared instance is safe — per-load state lives in
+   the returned promise, not the loader. */
+let _sharedLoader = null;
+function _sharedGLTFLoader() {
+  if (!_sharedLoader) {
+    _sharedLoader = new GLTFLoader();
+    _sharedLoader.setMeshoptDecoder(MeshoptDecoder);
+  }
+  return _sharedLoader;
+}
+function _timeoutSignal(ms) {
+  if (typeof AbortSignal !== 'undefined' && AbortSignal.timeout) return AbortSignal.timeout(ms);
+  const c = new AbortController();
+  const t = setTimeout(() => c.abort(new Error('timeout')), ms);
+  if (c.signal.addEventListener) c.signal.addEventListener('abort', () => clearTimeout(t), { once: true });
+  return c.signal;
+}
+function _anySignal(signals) {
+  const list = signals.filter(Boolean);
+  if (!list.length) return undefined;
+  if (typeof AbortSignal !== 'undefined' && AbortSignal.any) return AbortSignal.any(list);
+  const c = new AbortController();
+  for (const s of list) {
+    if (s.aborted) { c.abort(s.reason); break; }
+    s.addEventListener('abort', () => c.abort(s.reason), { once: true });
+  }
+  return c.signal;
+}
+
 class AssetManager {
   constructor() {
     this.gltfs = {};   // id -> gltf
@@ -821,6 +970,14 @@ class AssetManager {
     this.facing = {};  // id -> +1 (+Z) | -1 (-Z), mesh facing of the raw GLB
     this.groundY = {}; // id -> lowest skinned-vertex height of the raw GLB at rest
     this.ready = false;
+    this._inflight = {};      // id -> { promise, abort } — dedups concurrent loads
+    this._idleCtrls = new Set(); // AbortControllers of the idle warm lane
+  }
+
+  _abortIdle() {
+    if (!this._idleCtrls.size) return;
+    for (const c of this._idleCtrls) { try { c.abort(); } catch (e) { /* noop */ } }
+    this._idleCtrls.clear();
   }
 
   // TEKKEN 3 LESSON (teardown/tekken3/docs/TEKKEN3-ARCHITECTURE.md):
@@ -831,107 +988,160 @@ class AssetManager {
   // CLEAN-INIT: a hung download must NEVER brick the game. Each model
   // gets a timeout + one retry; total failure rejects so the UI can
   // show a real error instead of spinning forever.
-  async loadModels(ids, onProgress) {
-    const need = [...new Set(ids)].filter(id => !this.gltfs[id]);
+  async loadModels(ids, onProgress, opts = {}) {
+    const lane = opts.lane || 'user';
+    // LOADSPEED: user intent preempts the background warm lane — a card
+    // tap aborts idle base prefetches so the tapped model gets the pipe.
+    if (lane !== 'idle') this._abortIdle();
+    const unique = [...new Set(ids)];
+    const jobs = [];
+    for (const id of unique) {
+      if (this.gltfs[id]) continue;
+      const fly = this._inflight[id];
+      // Join an in-flight load instead of doubling it — unless this call
+      // carries its own abort signal (a preview tap owns its fetch so a
+      // newer tap can cancel it without disturbing other consumers).
+      if (fly && !opts.signal) { jobs.push(fly.promise); continue; }
+      jobs.push(this._loadOne(id, onProgress, unique.length, opts));
+    }
     let done = 0;
-    const LOAD_TIMEOUT_MS = 90000;
-    const loadOne = (id, attempt) => new Promise((resolve, reject) => {
-      const loader = new GLTFLoader();
-      loader.setMeshoptDecoder(MeshoptDecoder);
-      const timer = setTimeout(() => reject(new Error(`timeout loading ${id} (attempt ${attempt})`)), LOAD_TIMEOUT_MS);
-      loader.load(
-        MODEL_URLS[id],
-        (gltf) => {
-          clearTimeout(timer);
-          this.gltfs[id] = gltf;
-          this.clips[id] = {};
-          // Bind-pose Hips position (Z-up skeleton): animations must return
-          // here, not to origin and not to the mis-retargeted offset.
-          let hipsBind = null;
-          gltf.scene.traverse((o) => {
-            if (o.isBone && o.name === 'Hips' && !hipsBind) hipsBind = o.position.clone();
-          });
-          for (const clip of gltf.animations) {
-            // FIX: Mis-retargeted Mixamo clips have a huge absolute root
-            // offset in Hips.position (e.g. Z=-7.13) that buries the fighter
-            // underground. The game drives root.position for locomotion, so
-            // animations must be in-place: pin Hips.position to bind pose.
-            for (const track of clip.tracks) {
-              if (track.name === 'Hips.position' && hipsBind) {
-                for (let i = 0; i < track.values.length; i += 3) {
-                  track.values[i] = hipsBind.x;
-                  track.values[i + 1] = hipsBind.y;
-                  track.values[i + 2] = hipsBind.z;
-                }
-              }
-            }
-            this.clips[id][clip.name] = clip;
-          }
-          gltf.scene.traverse((o) => {
-            if (o.isMesh) {
-              o.castShadow = true;
-              o.receiveShadow = true;
-              o.frustumCulled = false;
-            }
-          });
-          // GROUNDING (2026-10-20): some GLBs are authored with the origin
-          // at the hips (star / torch / michiko / diablo: vertices span
-          // y -1.05..0.8), so they stood waist-deep in the floor. The
-          // instance is lifted by its own rest geometry (skinned bounds
-          // include the bone transforms in three r160).
-          {
-            gltf.scene.updateMatrixWorld(true);
-            let y0 = Infinity;
-            const bb = new THREE.Box3();
-            gltf.scene.traverse((o) => {
-              if (!o.isSkinnedMesh) return;
-              o.computeBoundingBox();
-              bb.copy(o.boundingBox).applyMatrix4(o.matrixWorld);
-              if (bb.min.y < y0) y0 = bb.min.y;
-            });
-            this.groundY[id] = Number.isFinite(y0) ? y0 : 0;
-          }
-          _facingReady.then(() => {
-            try {
-              const rec = _facingTable && _facingTable[id];
-              this.facing[id] = rec === '-Z' ? -1 : rec === '+Z' ? 1 : (feetFacingCue(gltf.scene) || 1);
-            } catch (e) {
-              console.warn(`[WH] facing cue failed for ${id}, defaulting to +Z:`, (e && e.message) || e);
-              this.facing[id] = 1;
-            }
-            resolve();
-          }, () => {
-            // The facing table never settled: never let this gate hang the load.
-            console.warn(`[WH] facing table unsettled for ${id}, defaulting to +Z`);
-            this.facing[id] = 1;
-            resolve();
-          });
-        },
-        (xhr) => {
-          // Byte-level download progress: xhr.loaded / xhr.total
-          if (xhr.total > 0 && onProgress) {
-            const frac = done / Math.max(need.length, 1);
-            const thisFrac = xhr.loaded / xhr.total / Math.max(need.length, 1);
-            onProgress(Math.min(frac + thisFrac, 1), xhr.loaded, xhr.total, id);
-          }
-        },
-        (err) => { clearTimeout(timer); reject(err); }
-      );
-    });
-    const loadWithRetry = async (id) => {
-      try { await loadOne(id, 1); }
-      catch (e1) {
-        console.warn(`[WH] ${id} load failed, retrying:`, e1.message || e1);
-        await loadOne(id, 2); // throws to caller on second failure
-      }
-    };
-    for (const id of need) {
-      await loadWithRetry(id);
+    for (const j of jobs) {
+      await j;
       done++;
-      if (onProgress) onProgress(done / Math.max(need.length, 1));
+      if (onProgress) onProgress(done / Math.max(jobs.length, 1));
     }
     if (Object.keys(this.gltfs).length > 0) this.ready = true;
     return this;
+  }
+
+  /* One model: fetch (abort-aware, byte-progress) -> parseAsync ->
+     _ingest. Aborts never retry; other failures retry once. */
+  _loadOne(id, onProgress, total, opts) {
+    if (this._inflight[id] && !opts.signal) return this._inflight[id].promise;
+    const ctrl = new AbortController();
+    if (opts.signal) {
+      if (opts.signal.aborted) ctrl.abort(opts.signal.reason);
+      else opts.signal.addEventListener('abort', () => ctrl.abort(opts.signal.reason), { once: true });
+    }
+    const url = MODEL_URLS[id];
+    const LOAD_TIMEOUT_MS = 90000;
+    const attempt = async () => {
+      const signal = _anySignal([ctrl.signal, _timeoutSignal(LOAD_TIMEOUT_MS)]);
+      const res = await fetch(url, { signal });
+      if (!res.ok) throw new Error(`HTTP ${res.status} loading ${id}`);
+      const totalBytes = Number(res.headers.get('content-length')) || 0;
+      let buf;
+      try {
+        // Manual read loop: byte-level progress for the MB readout, and
+        // the read itself stays abort-aware.
+        const reader = res.body.getReader();
+        const chunks = [];
+        let loaded = 0;
+        for (;;) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          chunks.push(value);
+          loaded += value.byteLength;
+          if (onProgress && totalBytes > 0) {
+            onProgress(Math.min(loaded / totalBytes / Math.max(total, 1), 1), loaded, totalBytes, id);
+          }
+        }
+        const merged = new Uint8Array(loaded);
+        let off = 0;
+        for (const c of chunks) { merged.set(c, off); off += c.byteLength; }
+        buf = merged.buffer;
+      } catch (e) {
+        if (e && e.name === 'AbortError') throw e;
+        buf = await res.arrayBuffer(); // no reader progress on very old browsers
+      }
+      // Same URL string the old loader.load() used, so external .bin /
+      // texture references resolve exactly as before.
+      return _sharedGLTFLoader().parseAsync(buf, url);
+    };
+    const run = (async () => {
+      let gltf;
+      try {
+        gltf = await attempt();
+      } catch (e1) {
+        if (e1 && (e1.name === 'AbortError' || ctrl.signal.aborted)) throw e1;
+        console.warn(`[WH] ${id} load failed, retrying:`, e1.message || e1);
+        gltf = await attempt(); // throws to caller on second failure
+      }
+      await this._ingest(id, gltf);
+      return gltf;
+    })();
+    const tracked = run.finally(() => {
+      if (this._inflight[id] && this._inflight[id].promise === tracked) delete this._inflight[id];
+    });
+    this._inflight[id] = { promise: tracked, abort: () => ctrl.abort() };
+    return tracked;
+  }
+
+  /* Post-parse ingestion: the exact processing the old loader callback
+     did (clip pinning, shadow flags, grounding, facing) — factored out so
+     fetch+parse shares the identical path. */
+  async _ingest(id, gltf) {
+    this.gltfs[id] = gltf;
+    this.clips[id] = {};
+    // Bind-pose Hips position (Z-up skeleton): animations must return
+    // here, not to origin and not to the mis-retargeted offset.
+    let hipsBind = null;
+    gltf.scene.traverse((o) => {
+      if (o.isBone && o.name === 'Hips' && !hipsBind) hipsBind = o.position.clone();
+    });
+    for (const clip of gltf.animations) {
+      // FIX: Mis-retargeted Mixamo clips have a huge absolute root
+      // offset in Hips.position (e.g. Z=-7.13) that buries the fighter
+      // underground. The game drives root.position for locomotion, so
+      // animations must be in-place: pin Hips.position to bind pose.
+      for (const track of clip.tracks) {
+        if (track.name === 'Hips.position' && hipsBind) {
+          for (let i = 0; i < track.values.length; i += 3) {
+            track.values[i] = hipsBind.x;
+            track.values[i + 1] = hipsBind.y;
+            track.values[i + 2] = hipsBind.z;
+          }
+        }
+      }
+      this.clips[id][clip.name] = clip;
+    }
+    gltf.scene.traverse((o) => {
+      if (o.isMesh) {
+        o.castShadow = true;
+        o.receiveShadow = true;
+        o.frustumCulled = false;
+      }
+    });
+    // GROUNDING (2026-10-20): some GLBs are authored with the origin
+    // at the hips (star / torch / michiko / diablo: vertices span
+    // y -1.05..0.8), so they stood waist-deep in the floor. The
+    // instance is lifted by its own rest geometry (skinned bounds
+    // include the bone transforms in three r160).
+    {
+      gltf.scene.updateMatrixWorld(true);
+      let y0 = Infinity;
+      const bb = new THREE.Box3();
+      gltf.scene.traverse((o) => {
+        if (!o.isSkinnedMesh) return;
+        o.computeBoundingBox();
+        bb.copy(o.boundingBox).applyMatrix4(o.matrixWorld);
+        if (bb.min.y < y0) y0 = bb.min.y;
+      });
+      this.groundY[id] = Number.isFinite(y0) ? y0 : 0;
+    }
+    await _facingReady.then(() => {
+      try {
+        const rec = _facingTable && _facingTable[id];
+        this.facing[id] = rec === '-Z' ? -1 : rec === '+Z' ? 1 : (feetFacingCue(gltf.scene) || 1);
+      } catch (e) {
+        console.warn(`[WH] facing cue failed for ${id}, defaulting to +Z:`, (e && e.message) || e);
+        this.facing[id] = 1;
+      }
+    }, () => {
+      // The facing table never settled: never let this gate hang the load.
+      console.warn(`[WH] facing table unsettled for ${id}, defaulting to +Z`);
+      this.facing[id] = 1;
+    });
   }
 
   // Legacy: load all models (kept for compat, but boot no longer uses it).
@@ -940,23 +1150,49 @@ class AssetManager {
   }
 
   // Fire-and-forget prefetch: warms the cache while the user browses select.
-  prefetch(id) {
-    if (!id || this.gltfs[id] || this._prefetching?.has(id)) return;
-    this._prefetching = this._prefetching || new Set();
-    this._prefetching.add(id);
-    this.loadModels([id]).catch(e => console.warn('[WH] prefetch failed:', id, e.message || e))
-      .finally(() => this._prefetching.delete(id));
+  // USER LANE: preempts the idle warm lane (see _abortIdle) so a tapped
+  // fighter's model gets the full pipe.
+  prefetch(id, opts = {}) {
+    if (!id || this.gltfs[id] || this._inflight[id]) return;
+    this.loadModels([id], null, { lane: 'user', ...opts })
+      .catch(e => {
+        if (!e || (e.name !== 'AbortError' && !/abort/i.test(e.message || ''))) {
+          console.warn('[WH] prefetch failed:', id, e.message || e);
+        }
+      });
   }
 
-  // Preload the base models the moment the select screen opens.
-  // Fighters with their own GLB use it; the rest fall back to the
-  // pantera / steve-fox / demonio bases (see MODEL-STATUS.md), so warming
-  // those bases here means CONFIRM rarely waits on a download.
-  // Per-fighter GLBs load on demand when their fight starts —
-  // never all at once (TEKKEN 3 LESSON above).
-  preloadAll() {
-    for (const id of ['pantera', 'steve-fox', 'demonio', 'custom']) this.prefetch(id);
+  /* LOADSPEED (2026-10-22): idle-scheduled base warm. The old preloadAll()
+     fired four base GLBs (~26MB) the instant select opened, saturating the
+     connection the user's first preview taps needed. Now the select screen
+     paints first; the bases stream when the browser is idle, on the lowest-
+     priority lane — any user-initiated load aborts them and takes the pipe.
+     'custom' only warms when a custom fighter actually exists (main.js
+     passes hasCustom) — 2.2MB most sessions never need. */
+  preloadBaseIdle(hasCustom = false) {
+    const ids = ['pantera', 'steve-fox', 'demonio'];
+    if (hasCustom) ids.push('custom');
+    const ric = (typeof window !== 'undefined' && window.requestIdleCallback)
+      ? window.requestIdleCallback.bind(window)
+      : (fn) => setTimeout(fn, 1200);
+    ric(() => {
+      for (const id of ids) {
+        if (this.gltfs[id] || this._inflight[id]) continue;
+        const ctrl = new AbortController();
+        this._idleCtrls.add(ctrl);
+        this.loadModels([id], null, { signal: ctrl.signal, lane: 'idle' })
+          .catch(e => {
+            if (!e || (e.name !== 'AbortError' && !/abort/i.test(e.message || ''))) {
+              console.warn('[WH] idle prefetch failed:', id, e.message || e);
+            }
+          })
+          .finally(() => this._idleCtrls.delete(ctrl));
+      }
+    });
   }
+
+  // Back-compat: main.js used to call this on select open.
+  preloadAll() { this.preloadBaseIdle(true); }
 
   /* { model, bones, mixer, actions } for one fighter.
      Per-fighter palette: suit color lerp + trim emissive accents. */

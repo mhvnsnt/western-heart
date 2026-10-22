@@ -70,7 +70,12 @@
   "iori": "+Z",
   "deathfang": "+Z",
   "demonio-a1": "+Z",
-  "doc-frank-hood": "+Z"
+  "doc-frank-hood": "+Z",
+  "pantera-leoman": "+Z",
+  "pantera-leopard-king": "+Z"
  },
- "note_rigged": "Tripo statics rigged by tools/auto_rig/backends/gamerig_backend.py (--facing +X: every Tripo pull faces +X, read from rest renders docs/proof/claude-2026-10-20/rigging/statics_sheet_*.png) come out facing +Z."
+ "note_rigged": "Tripo statics rigged by tools/auto_rig/backends/gamerig_backend.py (--facing +X: every Tripo pull faces +X, read from rest renders docs/proof/claude-2026-10-20/rigging/statics_sheet_*.png) come out facing +Z.",
+ "corrections": {
+  "nightwolf": "2026-10-22: REVERTED the -Z correction from earlier the same day. Direct raw-GLB render (three.js, camera on +Z, no instance correction) shows her FRONT from +Z and her BACK from -Z: the mesh faces +Z. The -Z reading came from a per-part audit that transforms mesh verts by the rig's bone matrices; nightwolf's auto-rig skeleton faces -Z inside her +Z mesh, which flips that measurement. The game corrects by MESH facing, so +Z (no turn) is correct. Proof: worker-5 raw renders."
+ }
 }
