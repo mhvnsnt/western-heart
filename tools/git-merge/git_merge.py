@@ -121,9 +121,21 @@ def blob_bytes(owner, repo, sha):
     return base64.b64decode(b["content"])
 
 
-def tree_entries(owner, repo, tree_sha):
-    t = api("GET", f"/repos/{owner}/{repo}/git/trees/{tree_sha}?recursive=1")
-    return {e["path"]: e for e in t.get("tree", []) if e["type"] == "blob"}
+def blob_sha_for(owner, repo, ref_sha, path):
+    """Blob SHA of a path at a commit, via the Contents API.
+
+    Recursive tree listings truncate on big repos (western-heart returns
+    truncated:true past ~60k entries), so never rely on them here.
+    """
+    try:
+        d = api("GET", f"/repos/{owner}/{repo}/contents/{path}?ref={ref_sha}")
+    except MergeRefused as e:
+        if "HTTP 404" in str(e):
+            return None
+        raise
+    if isinstance(d, dict) and d.get("type") == "file":
+        return d.get("sha")
+    return None
 
 
 def three_way_merge(path, base_b, main_b, branch_b):
@@ -189,11 +201,12 @@ def main(argv):
     base_sha = base_ref["object"]["sha"]
     base_commit = api("GET", f"/repos/{owner}/{repo}/git/commits/{base_sha}")
     base_tree = base_commit["tree"]["sha"]
-    branch_entries = tree_entries(owner, repo,
-        api("GET", f"/repos/{owner}/{repo}/git/commits/{branch_sha}")["tree"]["sha"])
-    merge_base_entries = tree_entries(owner, repo,
-        api("GET", f"/repos/{owner}/{repo}/git/commits/{merge_base}")["tree"]["sha"])
-    base_branch_entries = tree_entries(owner, repo, base_tree)
+    _blob_cache = {}
+    def _blob(ref_sha, path):
+        key = (ref_sha, path)
+        if key not in _blob_cache:
+            _blob_cache[key] = blob_sha_for(owner, repo, ref_sha, path)
+        return _blob_cache[key]
 
     plan = []
     new_blobs = {}
@@ -204,11 +217,11 @@ def main(argv):
             plan.append((path, "deleted by PR"))
             new_blobs[path] = None
             continue
-        b_blob = branch_entries.get(path, {}).get("sha")
+        b_blob = _blob(branch_sha, path)
         if not b_blob:
             raise MergeRefused(f"{path}: in PR diff but missing from branch tree")
-        base_blob = merge_base_entries.get(path, {}).get("sha")
-        main_blob = base_branch_entries.get(path, {}).get("sha")
+        base_blob = _blob(merge_base, path)
+        main_blob = _blob(base_sha, path)
         base_b = blob_bytes(owner, repo, base_blob) if base_blob else None
         main_b = blob_bytes(owner, repo, main_blob) if main_blob else None
         branch_b = blob_bytes(owner, repo, b_blob)
