@@ -31,7 +31,16 @@ only; HEAD == 3c0dd6e4 at lane start, verified).
    never assumed. Deliverables: completed glyph map (or exact
    per-codepoint remainder), additive v3 moveset JSONs (v2 files
    untouched), evidence table with named external sources.
-   Status: IN PROGRESS.
+   Status: **COMPLETE** — all 13 codepoints PROVEN
+   (`tools/round15-evidence/JOB1-GLYPH-TAIL.md`): E006=u; the
+   hold-direction ring E008-E00F = D/B, D, D/F, B, F, U/B, U, U/F
+   (E00C revised to its glyph identity F; E00D never occurs in
+   the corpus, ring-assigned only); buttons E01A=2+3, E01D=1+4,
+   E01F=1+2+4, E021=1+3+4, E022=2+3+4, E023=1+2+3+4 (the block
+   E015-E023 is exactly the 15 non-empty subsets of {1,2,3,4},
+   highest-button-major). 18 additive v3 moveset JSONs:
+   6,814/6,814 notation moves fully decoded (605 partial -> 0);
+   0 field diffs vs v2/originals outside the notation layer.
 
 2. **COM SLOTS 25/26/30 PACKED-STRUCTURE RECOVERY** — cross-file
    structural analysis over the 18-file panel (correlations,
