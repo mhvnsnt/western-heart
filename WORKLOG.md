@@ -258,6 +258,125 @@ Owner: "his whole body is facing the wrong way and his head is facing the right 
 - Not done here: Phantom and Sam-ur-a1 models have ZERO skinned meshes (unrigged statics, on main
   since 2026-10-18) — queued for the auto-rig pass with Zui/Diablo/Rave.
 
+---
+
+# WORKLOG — T3 bank facing root-cause fix (2026-10-22, model-quality lane)
+
+## Root cause (the user's "decrypted backwards")
+`lab/tools/t3_to_gltf.py` `import_fighter` and `lab/tools/t3_motion_bake.py`
+`T3Space` chose each bank's forward direction from the HEAD-MESH centroid
+("muzzle leads"). On characters whose head/hair mass sits behind the face,
+this picked backwards, baking 5 of 17 T3 animation banks facing -Z:
+bosconovitch (-179.5°), eddy (-178.6°), gunjack (149.9°), heihachi (137.7°),
+yoshimitsu (155.1°) — measured with tools/anim/t3_bank_facing.py, the offline
+twin of the runtime's bankFacing() knee check in game/js/t3anims.js.
+The game patched it at load (turn 180° about Y + Left/Right relabel per bank);
+this fix gets it right at the source instead.
+
+Related (separate): the k-NN weight pipeline (tools/auto_rig/backends/
+knn_transfer.py) has no automatic facing alignment — facing is a manual
+--rotate-y. See the model-quality lanes' reports.
+
+## Fix
+1. `lab/tools/t3_to_gltf.py`, `lab/tools/t3_motion_bake.py`: facing heuristic
+   replaced with the KNEE-BEND cue (knees are anatomical and never lie):
+   lateral = shoulder line (hip line fallback for partial KMDs like heihachi);
+   forward = the candidate with positive total knee offset from the hip-ankle
+   midline. Head-centroid kept only as a fallback when knees give no signal.
+   Validated on all 15 available KMD+stance pairs: positive knee scores
+   everywhere, reproduces the 12 good bakes, corrects the 5 bad ones.
+2. The 5 already-baked banks corrected OFFLINE with the exact runtime
+   transform (t3anims.js turnSkeleton/turnData): game/assets/anim/t3/
+   {bosconovitch,eddy,gunjack,heihachi,yoshimitsu}/ — skeleton.json (18 joints
+   each), all 30 t3_*.json clips each, rows.pack.json (647/208/152/111 rows;
+   heihachi has no pack). Bones L/R-relabeled in place, quats conjugated
+   (x,y,z,w)->(-x,y,-z,w), root_t (x,y,z)->(-x,y,-z).
+3. Runtime needs NO change: bankFacing() now measures knees-forward on all 17
+   banks and the turn becomes a no-op (kept as a data-driven safety net).
+
+## Proof
+tools/anim/t3_bank_facing.py before → after:
+- bosconovitch -179.5° → 0.5°, eddy -178.6° → 1.4°, gunjack 149.9° → -30.1°,
+  heihachi 137.7° → -42.3°, yoshimitsu 155.1° → -24.9°. All 17 "ok", none
+  TURNED. (Residual angles within the ±61° untouched band, same as anna/lei.)
+- Pack integrity: bone lists L/R-symmetric, quats unit-norm after conjugation.
+
+## Files
+- lab/tools/t3_to_gltf.py (facing heuristic)
+- lab/tools/t3_motion_bake.py (T3Space facing heuristic)
+- game/assets/anim/t3/{bosconovitch,eddy,gunjack,heihachi,yoshimitsu}/
+  skeleton.json, t3_*.json (30 each), rows.pack.json (4 banks)
+
+---
+
+## 2026-10-21 — Pantera skin-weight re-derivation (live model + Attire 1)
+
+Lane: fix/pantera-weights-20261021. Tool: tools/auto_rig/reskin_pantera_weights.py
+(reproducible; run from tools/auto_rig). Gates: tools/auto_rig/anim_check.py,
+tools/auto_rig/validate.py.
+
+### Wiring confirmed (step a)
+- Live key `pantera: 'assets/models/pantera.glb'` (game/js/assets.js MODEL_URLS).
+- Attire 1 = the same file: game/js/attires.js ATTIRE_VARIANTS['pantera'][0] =
+  { model: 'pantera', label: 'ATTIRE 1' }. So "live Pantera" and "Pantera
+  Attire 1" are the SAME GLB: game/assets/models/pantera.glb (7,625,912 bytes,
+  sha256 2626d231a6aaff694117a55183171ad9c11f45a40eb3054afa52ab8dc55f6b6a).
+  One fix covers both. (pantera_alt1.glb is a legacy T7 reskin NOT in the
+  current attire ladder — out of scope.)
+
+### Diagnosis (measured, not eyeballed — step c)
+Per-region dominant-joint dump on the live file (11,376 skinned verts):
+- R/L FOREARM: only 13.7%/13.8% weighted to ForeArm; 47-49% to Hand,
+  36-38% to Spine/Spine1. (User: "forearm down through hands: stretching".)
+- L HAND: 80.7% LeftHand, 17% to Spine/Spine1 (torso-glue; user: "hand
+  weighted to the tail" — the tail hangs off the pelvis/back).
+- WAIST (0.98<y<1.12): 0% Hips; 62% to Left/RightUpLeg, 36% Spine.
+  (User: "from waist down: stretching".)
+- TAIL (443 verts, z<-0.15): 26% LeftLeg, 26% RightLeg, 12% each foot,
+  22% UpLegs — 0% Hips/Spine. Tail tears whenever legs move oppositely.
+- THIGH/SHIN: 30-35% weighted one joint too distal (thigh→Leg, shin→Foot).
+- IBMs verified consistent (max err 2.6e-7); skeleton itself is fine.
+- pantera_fixed.glb (2026-10-20 L/R transplant source) carries the SAME bad
+  WEIGHTS_0 — the transplant fixed joint indices only, not values.
+
+### Fix (pipeline-level, step d — NO hand-painted weights)
+New script tools/auto_rig/reskin_pantera_weights.py re-derives ALL
+JOINTS_0/WEIGHTS_0 in place (skeleton, IBMs, animations, materials untouched):
+1. k-NN (k=4, inverse-distance) from steve-fox.glb — same 49-joint Mixamo
+   skeleton, clean weights (92%+ forearm/shin/bicep), same -Z facing/T-pose.
+2. Side-constrained matching (|x|>3cm ⇒ same-side donor verts only).
+3. Tail rule: smoothstep blend from k-NN at base to rigid Hips at tip.
+4. Anatomical side correction: opposite-side influences mirrored + merged.
+5. Seam blend (repair_pantera_glb.py method) until anim_check gate passes.
+Result: R forearm 13.7%→99.9%, L forearm 13.8%→97.4%, waist Spine 36%→73%,
+shins 62%→90-93%, tail 100% Hips-weighted. anim_check: all 4 clips PASS
+(Idle p99.9 edge stretch 1.97 < 2.5 gate; was failing at 14.81 pre-blend).
+
+### Validation (step e)
+- anim_check.py: Idle/Run/TPose/Walk all PASS.
+- validate.py: valid_gltf/skinned_mesh/bones_present true (height_ok false —
+  pre-existing: validate measures mesh 0 prim 0 only, a 202-vert accessory).
+- tools/auto_rig/tests: 7/7, all passed, 3/3 pass (1 skip: missing Blender e2e GLB).
+- packages/creation-suite node tests: 6/6, 4/4, 4/4 pass (the `node --test test/`
+  directory form fails on a Node CLI module-resolution quirk; individual files pass).
+- In-game: proof-harness fight pantera vs demonio captured before/after;
+  frames viewed. Before: forearms/hands stretch, legs crumple. After: model
+  loads, fight runs, no collapse.
+
+### Files (no deletions)
+- game/assets/models/pantera.glb (weights re-derived; 7,625,912 bytes)
+- tools/auto_rig/reskin_pantera_weights.py (new, reproducible pipeline)
+- WORKLOG.md (this entry)
+
+### Flags for coordinator
+- SHARED CODE: none changed. The fix is a new Pantera-specific script + data.
+  knn_transfer.py / apply_skin.py untouched.
+- DONOR NOTE: pantera.glb is the k-NN donor for saku-ra, waterfall, charger,
+  armor-king, scimitar (2026-10-21 batch). They were rigged from the BAD
+  weights and likely inherit the forearm/waist/tail symptoms — the root-cause
+  lane should re-run those transfers against this fixed file.
+- pantera_alt1.glb (legacy, not in attire ladder) still has old weights.
+
 ## 2026-10-21 — Lane 1: playability code fixes (B1 / B4 / B5)
 
 Branch: `fix/playability-code-fixes-20261021`. Three audit blockers from
