@@ -1567,3 +1567,35 @@ Chatterbox-based with remote/cloud weights. Dorowani pilot.
   failed copy — only the files listed in this entry were actually written;
   the PR pushes ONLY those paths (gh_push.py skips base-identical files,
   and 0-byte stubs are never in the --add list).
+## 2026-10-22 — HIT DETECTION + HIT EFFECTS (worker 17, hitfx lane)
+
+### Bugs (owner playtest 2026-10-22)
+1. "Only ~1 out of 10 attacks are landing. Pull Tekken's hit detection/collision logic from the teardown files and wire it up fully."
+2. "The current hit effects are prototype bullshitty looking. Pull Tekken's actual hit effects from the teardown files — sparks, impact flashes, screen shake."
+
+### Diagnosis (BUG 1)
+- `game/js/fighter.js` `getHitbox()`: single r=0.5 sphere exactly on the fist bone, no forward lead. `getHurtboxes()`: only Spine1 (r=0.58) + Head (r=0.34). At typical fighting distance (roots 2.0–2.5 apart, body pushout min 1.45) the fist-to-torso gap is marginal — strikes connected only at point-blank.
+- No forward step: `tryAttack` zeroed vx, `_physics` decays vx during attack state. Tekken's T3 rows carry `step_per_frame` (teardown/tekken3/movesets/moveset_king.json) — our attacks stayed planted and whiffed from real range.
+- `game/js/ai.js`: AI threw strikes at dist up to 3.2, where no strike can reach — constant whiffs.
+- Active windows are authentic T3 (jab '1': 2 frames / 0.033s) — kept as-is; geometry was the bug, not timing.
+
+### Fix (BUG 1) — Tekken approach per teardown/tekken3/docs/TEKKEN3-RIG-LESSONS.md
+- `getHitbox()`: Tekken-style attack boxes — generous bone-attached spheres that LEAD the limb along facing (punch r=0.62/lead=0.30, kick r=0.68/lead=0.38, grab r=0.95, surge r=1.0). The lead is the move's real range.
+- `getHurtboxes()`: full torso chain — Hips 0.50, Spine1 0.58, Spine2 0.52, Head 0.34.
+- `_attackStep()` + `_physics` step-in: strikes advance during startup (punches 1.1 u/s, kicks 1.5 u/s) and half-rate during active — Tekken's per-frame step, positional so attack friction can't eat it. Uses decoded `stepPerFrame` when present.
+- `ai.js`: strikes only thrown at dist <= 2.5 (real range); beyond that the AI approaches.
+- Kept: 1 hit per swing, T3 posture/hit-word rules, blocking/chip, counters, 120Hz fixed-step resolution.
+
+### Fix (BUG 2) — new `game/js/hitfx.js` (replaces prototype `_spawnImpact`)
+Tekken on-hit stack: (1) jagged star-burst HIT SPARK sprite (canvas-generated, additive), gold-white on hit / red-orange larger on counter / pale blue smaller on block; (2) debris spark particles with gravity; (3) shockwave ring on heavies/KO; (4) fullscreen impact flash on counter/KO/surge (lazy div, no HTML/CSS edits); (5) tiered hitstop — light 0.08 / heavy 0.11 / counter 0.14 / block 0.05 / grab 0.10 / KO 0.18s (were 0.05/0.08/0.04/0.12); (6) tiered camera shake. All dt-driven game-time; `game.js` `_loop` feeds dt=0 during hitstop so the whole stack freezes then bursts, like Tekken. `_spawnImpact` kept as a shim routing to HitFX.
+
+### Proof
+- `proof/hitrate.mjs` (node): extracts the REAL `getHitbox`/`getHurtboxes`/`_attackStep` from edited fighter.js, simulates King's T3 jab at 120Hz across 1.50–3.00 range with the procedural extension curve. BEFORE 2/7 connect (29%), AFTER 5/7 (71%). Remaining 2.75+ whiffs are correct out-of-range (AI no longer throws there).
+- `proof/hitfx_render.mjs` (node + canvas): renders the real spark/dot/ring textures to PNG (`proof/fx-tex-*.png`), composites mock impact frames (`proof/fx-impact-hit.png` gold, `proof/fx-impact-counter.png` red-orange — viewed, look right). Logic: 7 types spawn, hitstop dt=0 freezes (115 items unchanged), all drain in 33 steps with zero scene leaks, KO screen flash fires and decays.
+- Live-browser playtest not possible from this worker (no live-browser access); verify via `?demo=1` AI-vs-AI or manual fight on the Pages build.
+- Syntax: `node --check` clean on all four touched files.
+
+### Files
+- Modified: game/js/fighter.js (attack boxes, hurtboxes, step-in), game/js/game.js (HitFX wiring, typed hit presentation, hitstop tiers, _spawnImpact shim), game/js/ai.js (range discipline). No deletions.
+- Added: game/js/hitfx.js (new HitFX system).
+- Teardown sources: teardown/tekken3/docs/TEKKEN3-RIG-LESSONS.md (proxy-shape hitboxes, hitstop as move data, fixed timestep), teardown/tekken3/movesets/moveset_king.json (active_first/last, step_per_frame, damage), teardown/tekken7 tekkenmods T8 moveset docs (Move = animation + hitbox/hurtbox/active frames + Hit Conditions: damage + reaction + presentation).
