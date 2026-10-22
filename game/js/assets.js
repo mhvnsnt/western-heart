@@ -500,6 +500,239 @@ function remapVegaBones(fighterId, model) {
   return true;
 }
 
+/* ============================================================
+   SLICE FOREIGN-RIG REMAP (2026-10-21, B6 lane 3). Slice's
+   model (roster/slice/attires/attire1/model.glb) is a REAL
+   rigged/skinned Tekken 7 extraction — 198 joints, 17 skinned
+   meshes, 1 skin — but its core joints carry T7 names with NO
+   T3 Hips/Spine/Chest/... set, so the T3 stance gate
+   (select-screen.js: needs Hips/RightArm/Head) never fires and
+   the model sits in bind pose. Measured from the GLB JSON chunk
+   (python3, no Blender):
+   - core chain: Hip -> Spine1 -> Spine2 -> Neck -> Head,
+     Spine2 -> L/R_Shoulder -> L/R_Arm -> L/R_ForeArm ->
+     L/R_Hand, Hip -> L/R_UpLeg -> L/R_Leg -> L/R_Foot -> L/R_Toe.
+     Every __offset joint is a sibling/leaf helper: the ancestor
+     walk from each driven joint up to the pelvis found NO
+     non-driven joint between driven joints, so unlike Vega no
+     in-chain helper neutralization is needed.
+   - chain above the pelvis: SK_CH_dra_bdu_1P.ao (mesh node,
+     identity transform), MODEL_00 (bone, 180 deg about
+     (0,1,1)/sqrt(2)), BASE (bone, identity — the pelvis's
+     immediate parent). MODEL_00's rotation is skeleton frame,
+     NOT a wrapper rotation: the authored bind is Y-up in world
+     (pelvis y ~1.08, head y ~1.83, origin at the feet).
+   - STRUCTURAL DIFFERENCE (measured): Spine1's parent is BASE,
+     making the spine a SIBLING of Hip — the T7 layout. The T3
+     banks were baked against the Mixamo layout (Hips -> Spine),
+     and retargetT3Clips emits a Hips.position track (vertical
+     root motion) that must carry the torso: with a sibling
+     spine it would move only the legs, detaching the pelvis
+     from the torso on crouches/knockdowns. The remap therefore
+     reparents Spine under Hips (world transform preserved),
+     completing the T7 -> T3/Mixamo hierarchy conversion. The
+     game's analyzeRig is hierarchy-adaptive (dynamic chest LCA
+     + spine chain), so the retarget consumes the converted rig
+     as designed.
+   'Neck'/'Head' are intentionally NOT in the table: they are
+   already T3-named on this rig and pass through untouched (but
+   they ARE frame-converted below, like Vega's).
+   Scope: applies ONLY when the model URL is Slice's AND every
+   source name of this scheme signature is present on the clone
+   AND no target name already exists (otherwise a strict no-op)
+   — no other fighter can be renamed.
+   ============================================================ */
+const SLICE_MODEL_URL = '../roster/slice/attires/attire1/model.glb';
+const SLICE_T3_BONE_REMAP = {
+  Hip: 'Hips',
+  Spine1: 'Spine',
+  Spine2: 'Chest',
+  L_Shoulder: 'LeftShoulder',
+  L_Arm: 'LeftArm',
+  L_ForeArm: 'LeftForeArm',
+  L_Hand: 'LeftHand',
+  R_Shoulder: 'RightShoulder',
+  R_Arm: 'RightArm',
+  R_ForeArm: 'RightForeArm',
+  R_Hand: 'RightHand',
+  L_UpLeg: 'LeftUpLeg',
+  L_Leg: 'LeftLeg',
+  L_Foot: 'LeftFoot',
+  L_Toe: 'LeftToeBase',
+  R_UpLeg: 'RightUpLeg',
+  R_Leg: 'RightLeg',
+  R_Foot: 'RightFoot',
+  R_Toe: 'RightToeBase',
+};
+
+/* Rename Slice's T7 core joints on ONE cloned instance and
+   convert the instance's bind frame to the canonical T3/Mixamo
+   frame so the absolute-quaternion clips land upright — the
+   same conversion remapVegaBones performs, parameterized for
+   Slice's measured chain:
+   1. the wrapper ancestors above the skeleton root bone are
+      cancelled at the MODEL ROOT (their inverse is
+      premultiplied). Slice's ao mesh node is identity, so this
+      is a no-op today that future-proofs a re-export with a
+      rotated wrapper.
+   2. Spine (renamed Spine1) is reparented under Hips with its
+      world transform preserved, completing the T7
+      (sibling-spine) to T3/Mixamo (Hips -> Spine) hierarchy
+      conversion (see header comment).
+   3. the bone stages above the pelvis are normalized: BASE
+      (the pelvis's immediate parent, Vega's RM_BLR_Middle_04
+      analog) takes the canonical root-chain rotation
+      (-0.7071, 0, 0, 0.7071) and MODEL_00 goes to identity, so
+      the full chain above the pelvis equals the canonical
+      'Character' rotation and every clip delta is conjugated
+      exactly like the Mixamo rigs'.
+   4. the driven bones' bind locals become the canonical ones
+      (CANONICAL_BIND_LOCALS), and their local translations are
+      re-solved so every joint keeps its authored world
+      position (Slice's authored locals differ: Spine1 carries
+      (0, 0.7071, 0.7071, 0), L_Shoulder is
+      (-0.5, -0.5, -0.5, 0.5), L_Foot is
+      (-0.4763, 0, 0, 0.8793), L_Toe is a 180-degree twist —
+      all measured from the GLB). Neck/Head are included in
+      the driven set (already T3-named, no rename needed).
+   5. every skeleton's inverse bind matrices are recomputed from
+      the edited bind world matrices — renaming/reparenting/
+      frame edits are skinning-safe because skins reference
+      joint indices, and with IBM = inverse(new bind world)
+      the bind-pose bone matrices stay identity, so the mesh
+      stays glued to the skeleton exactly as authored
+      (upright, Y-up).
+   6. origin lift — kept generic: this rig is authored with its
+      origin at its FEET (pelvis bind world y ~1.08), so the
+      lift is a safety no-op; a re-export with a pelvic origin
+      would be lifted until the bind pose's lowest point rests
+      at y=0 instead of standing waist-deep under the floor.
+   Deliberate deviation from remapVegaBones, measured not
+   guessed: Vega factors the FULL ancestor chain (wrappers +
+   the RM_BLR_Middle_04 bone stage) out of the desired bind
+   positions. Slice's MODEL_00 bone carries a 180-degree
+   skeleton-frame rotation, not a wrapper rotation — factoring
+   it would tip the converted skeleton's world frame to Z-up
+   (head.y - hips.y = 0, verified numerically) and fail the
+   select-screen head-hips fit gate. Here only the non-bone
+   wrapper ancestors are factored, so the authored Y-up world
+   positions are preserved (head.y - hips.y = 0.75, verified
+   numerically from the GLB).
+   Returns true when the full scheme signature matched and the
+   remap was applied; false (no-op) for every other model. */
+function remapSliceBones(fighterId, model) {
+  if (MODEL_URLS[fighterId] !== SLICE_MODEL_URL) return false;
+  const byName = {};
+  model.traverse((o) => { if (o.isBone) byName[o.name] = o; });
+  // Scheme signature: ALL T7 source names must be present, and
+  // none of the T3 target names may already exist (a model that
+  // is already T3-named, or a different rig, is never touched).
+  // Neck/Head are already T3-named on this rig and pass through.
+  for (const src of Object.keys(SLICE_T3_BONE_REMAP)) {
+    if (!byName[src]) return false;
+  }
+  for (const dst of Object.values(SLICE_T3_BONE_REMAP)) {
+    if (byName[dst]) return false;
+  }
+  for (const [src, dst] of Object.entries(SLICE_T3_BONE_REMAP)) {
+    byName[src].name = dst;
+  }
+  // Hierarchy conversion: Spine1 is authored as a sibling of
+  // Hip (both under BASE); the T3 banks assume Mixamo's
+  // Hips -> Spine. Reparent (world transform preserved) so the
+  // Hips.position root-motion track carries the torso.
+  const hipsBone = byName.Hip; // renamed 'Hips' above
+  const spineBone = byName.Spine1; // renamed 'Spine' above
+  if (hipsBone && spineBone && spineBone.parent !== hipsBone) {
+    hipsBone.attach(spineBone);
+  }
+
+  // --- bind-frame conversion (see header comment) ---
+  // Skinning deforms by each bone's DELTA from its bind world
+  // matrix, and the rendered bind pose is the mesh nodes' world
+  // transform applied to the authored geometry — so a clip
+  // reproduces the canonical pose, on an upright body, when:
+  // (a) the wrapper ancestors above the skeleton root bone are
+  //     cancelled at the model root;
+  // (b) the bone stages above the pelvis total the canonical
+  //     root-chain rotation, so every clip delta is conjugated
+  //     exactly like the Mixamo rigs';
+  // (c) the driven bones' bind locals are the canonical ones,
+  //     with local translations re-solved so every joint keeps
+  //     its authored world position.
+  const ancestors = [];
+  for (let p = hipsBone.parent; p; p = p.parent) ancestors.unshift(p);
+  // Wrapper product: every NON-BONE ancestor above the skeleton
+  // root bone (MODEL_00) — the SK_CH_dra_bdu_1P.ao mesh node,
+  // measured identity in the GLB, so this correction is a no-op
+  // today. (Vega factors the bone stage too; Slice must not —
+  // see the header comment.)
+  const rootBoneIdx = ancestors.findIndex((a) => a.isBone);
+  const wrapperProd = new THREE.Quaternion(0, 0, 0, 1);
+  for (let i = 0; i < rootBoneIdx; i++) wrapperProd.multiply(ancestors[i].quaternion);
+  const correction = wrapperProd.clone().invert();
+
+  // Desired bind world positions: each joint's authored world
+  // position (Y-up, as the bind renders today).
+  model.updateMatrixWorld(true);
+  const driven = Object.entries(SLICE_T3_BONE_REMAP)
+    .map(([src, dst]) => ({ node: byName[src], dst }));
+  // Neck/Head are already T3-named (no rename) but are T3-driven
+  // joints: include them so their world positions are preserved too.
+  for (const n of ['Neck', 'Head']) {
+    if (byName[n]) driven.push({ node: byName[n], dst: n });
+  }
+  const desiredPos = new Map();
+  for (const { node } of driven) {
+    desiredPos.set(node, node.getWorldPosition(new THREE.Vector3()));
+  }
+
+  // (a) Cancel the wrapper rotations at the model root.
+  model.quaternion.premultiply(correction);
+  // (b) BASE becomes the canonical chain stage; the other bone
+  // stage above the pelvis (MODEL_00) goes to identity.
+  const base = byName.BASE;
+  if (base) base.quaternion.set(...CANONICAL_ROOT_CHAIN_QUAT);
+  const model00 = byName.MODEL_00;
+  if (model00) model00.quaternion.set(0, 0, 0, 1);
+  // (c) Driven bones' bind locals become the canonical ones.
+  for (const { node, dst } of driven) {
+    const q = CANONICAL_BIND_LOCALS[dst];
+    if (q) node.quaternion.set(q[0], q[1], q[2], q[3]);
+    else node.quaternion.set(0, 0, 0, 1);
+  }
+  // Translation re-solve, parents before children: changing a
+  // frame swings every child joint around its parent, so each
+  // driven bone's local translation is re-expressed in its
+  // (now canonical) parent frame to land exactly on its
+  // desired authored world position.
+  const depthOf = (n) => { let d = 0; for (let p = n.parent; p; p = p.parent) d++; return d; };
+  driven.sort((a, b) => depthOf(a.node) - depthOf(b.node));
+  const _pw = new THREE.Vector3(), _pq = new THREE.Quaternion(), _ps = new THREE.Vector3();
+  for (const { node } of driven) {
+    const parent = node.parent;
+    parent.updateWorldMatrix(true, false);
+    parent.matrixWorld.decompose(_pw, _pq, _ps);
+    node.position.copy(desiredPos.get(node).sub(_pw).applyQuaternion(_pq.clone().invert()));
+  }
+  model.updateMatrixWorld(true);
+  const seenSkeletons = new Set();
+  model.traverse((o) => {
+    if (o.isSkinnedMesh && o.skeleton && !seenSkeletons.has(o.skeleton)) {
+      seenSkeletons.add(o.skeleton);
+      o.skeleton.calculateInverses();
+    }
+  });
+  // ORIGIN LIFT: kept generic — this rig is authored with its
+  // origin at its FEET, so this is a safety no-op; a re-export
+  // with a pelvic origin would be lifted until the bind pose's
+  // lowest point rests at y=0.
+  const bindBox = new THREE.Box3().setFromObject(model);
+  if (bindBox.min.y < -0.01) model.position.y -= bindBox.min.y;
+  console.log(`[WH] ${fighterId}: T7 rig remapped to T3 bone names (19 joints renamed; Neck/Head already T3-named) + Spine reparented under Hips + bind frame converted to canonical T3 frame`);
+  return true;
+}
+
 // Creation Suite Pass: let baked customizations override base model URLs
 // before anything loads them. Guarded — any registry problem leaves
 // MODEL_URLS exactly as authored above.
@@ -718,6 +951,12 @@ class AssetManager {
     // BEFORE the bones dict and mixer are built from it, so T3
     // clips + procedural IK bind. The source gltf is untouched.
     const vegaRemapped = remapVegaBones(fighterId, inner);
+    // FOREIGN-RIG REMAP (Slice only, see SLICE_T3_BONE_REMAP above):
+    // same contract as the Vega remap — rename the cloned
+    // instance's T7 core joints to the T3 names BEFORE the bones
+    // dict and mixer are built from it, so T3 clips +
+    // procedural IK bind. The source gltf is untouched.
+    const sliceRemapped = remapSliceBones(fighterId, inner);
     if ((this.facing[fighterId] || 1) < 0) inner.rotation.y = Math.PI;
     const gy = this.groundY[fighterId] || 0;
     if (Math.abs(gy) > 0.03) inner.position.y = -gy; // feet on the floor
@@ -760,12 +999,13 @@ class AssetManager {
     model.traverse((o) => {
       if (o.isBone) bones[o.name.replace(/^mixamorig:?/, '')] = o;
     });
-    if (vegaRemapped) {
+    if (vegaRemapped || sliceRemapped) {
       // Mixamo-spelling aliases for fighter.js's procedural layer,
       // which reads bones.Spine1 (hurt capsule) and bones.Spine2
-      // (attack origin) — Vega's 3-bone torso has no separate
-      // Spine1/Spine2 joints. Dict aliases ONLY: node names (and
-      // therefore mixer binding + skinning) are unaffected.
+      // (attack origin) — Vega's and Slice's 3-bone torsos have no
+      // separate Spine1/Spine2 joints. Dict aliases ONLY: node
+      // names (and therefore mixer binding + skinning) are
+      // unaffected.
       if (bones.Spine) bones.Spine1 = bones.Spine;
       if (bones.Chest) bones.Spine2 = bones.Chest;
     }
