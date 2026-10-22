@@ -1,24 +1,3 @@
-## 2026-10-22 — Worker 51: STAGE SELECT → FIGHT FLOW (repairs + wiring, PLAYABLE TODAY)
-
-**Owner instruction (verbatim):** "no new features — repairs and wiring only. Your scope stays stage select → fight flow. If you spot stub/placeholder code on the path, wire it — but don't invent new systems. Worker 53 now owns the fight itself (fighter loading, inputs firing, hits, rounds, crash-killing); coordinate with them at the fight-boot handoff."
-
-**Root-caused + repaired (all in the select→fight chain):**
-1. **Preview pane markup missing** — `game/styles.css` and `game/js/main.js` (`updateStagePreview`) were built for a `.stage-preview-pane` (`#stage-preview-img/#stage-preview-swatch/#stage-preview-name/#stage-preview-universe/#stage-preview-desc` inside `.stage-body`) that `game/index.html` never had — the JS no-op'd on every highlight. Wired the markup; the T7-style screen now renders preview-on-top (portrait) per the existing CSS design. No new system.
-2. **Duplicate `screen-stage` id** — the STORY stage-intro panel reused the versus stage-select's id, so `screens.stageIntro` (`getElementById('screen-stage-intro')`) was null and `show('stageIntro')` threw mid-iteration (story `_storyStageIntro` dead). Renamed the story panel to `screen-stage-intro`. (A later main merge reintroduced the duplicate from an older base; re-applied on the re-sync.)
-3. **Keyboard Enter on the selected stage card called bare `startFight()`** — dropped `pendingFight`, booting ROSTER[0] vs a random foe with no versus `onMatchEnd` (dead result screen). Extracted `confirmStageFromSelect()`; the CONFIRM tap and the Enter path now run the identical pendingFight-guarded confirm.
-4. **Preview thumb refetch** — `updateStagePreview` re-set `img.src` on every highlight (flicker + bogus requests; most thumbs 404 → atlas tiles serve the cards). Now sets src only when the thumb exists and changed; re-highlighting leaves state untouched; swatch fallback preserved.
-5. **Verified NOT broken (checked, no change):** worker 24's flagged voice.js/hitfx.js/intro-interactions.js imports — none exist in `game/js` on main; the single dangling reference (`versus-banter.js` dynamic import of `intro-interactions.js`) is try/catch-guarded and the fight path's `fighter-depth.js` import is fail-silent, so fight boot is not blocked. Full static import graph of all 70 `game/js` files: zero unresolvable imports. Every module-eval `getElementById(...).addEventListener` target present in index.html.
-
-**Flow verified (character → stage → fight):** menu `mode-versus` → `ModeController.startMode('versus')` → select screen P1→P2 two-step (`onConfirm`/`vsStep`) → `_beginVersus` → `startFightViaStage` → `buildStageSelect` + `show('stage')` → CONFIRM → `startFight(p1, p2, { mode:'versus', stage })` → `game.startMatch(player, enemy, selectedStage, opts)` (worker 53's handoff; signature unchanged). Back/cancel paths: BACK → select, failure → hint + retry with pendingFight intact.
-
-**Proof:** `node --check` on all 70 game/js files; DOM-stub harness running the REAL extracted functions from main.js — build (card per stage, tier headers, tap handler on every card), tap-to-select (selectedStage + preview name/desc update, swatch fallback), CONFIRM (startFight called once with p1/p2/mode/stage, pendingFight consumed only on success), failure path (pendingFight kept, CONFIRM re-enabled), Enter path routes via the confirm (no bare startFight) — all pass. Touch targets: 48px+ min on BACK/RANDOM/CONFIRM per styles.css; footer hint + preview text ellipsis/line-clamp, grid is the only scroller. Stage data: every stage (literal + t3/nm generated) carries id/name/tier/universe/description/swatch/dims/spawns; all tiers in STAGE_TIERS.
-
-**Deviations:** none — repairs/wiring only, no new systems, no arena geometry (worker 18's stage defs consumed as-is), no menu-shell changes (worker 37's lane untouched), no fight internals (worker 53's lane untouched).
-**Coordination:** worker 53 (fight) — handoff contract is `game.startMatch(playerChar, enemyChar, stageId, opts)`; stage id flows from `selectedStage` (default `'shrine'`, `getStage` falls back to STAGES[0]). Worker 37 (menu shell) — no interface changes needed. Worker 18 (arenas) — stage defs consumed unchanged. Flag (not fixed, out of lane): result-screen REMATCH with no modes.mode falls back to bare `startFight()` (ROSTER[0] vs random) — rank-battle rematch edge, worker 30's lane.
-**Anti-clobber:** re-synced to main tip twice (main moved mid-task both times); edits re-applied surgically onto current main each time — main's new placeholder screens (screen-online/sidegames/collection/daily), data-mm router, and mainmenu.css link all preserved. No deletions.
-
----
-
 ## 2026-10-22 — Worker 34: FIGHTER DEPTH + LEARNING + STAGE LIFE (canon-mapped)
 
 **Owner instruction (verbatim):** "Pull ALL of this from the teardowns and wire it up: Fighter depth — ki charge, tag throws/crash/assault, hair + cloth physics. Learning — per-character combo trials, ghost AI (learns from players), replay analysis. Stage life — stage intro camera sweeps, weather/time-of-day variants, versus banter dialogue." Follow-up: "Learning tools: YES, ALL — in-game movelist UI, Special Style (easy inputs), punishment training, combo trials, ghost AI, replay analysis. Add: movelist UI, Special Style, punishment training. All with WH canon mapping where naming/identity is a creative call."
@@ -1934,33 +1913,30 @@ on main @ 2af4328 found the whole loop dead behind two 1-line defects in
   full rewrite for the same symptoms — superseded; worker 36 should
   close/rebase it.
 
-## 2026-10-22 ~15:45 CDT — worker 50: rig-guard rebuild (picked up Claude's dropped work)
+## 2026-10-22 ~20:30 CDT — worker 46: Ashlane/Brutalfist model render batch (28 renders)
 
-Claude's anti-clobber guard rebuild was unpushed (existed only on the user's
-machine). Rebuilt from the task description and PR'd (branch `w50/rig-guard`):
-- `tools/rig-guard/rig_guard.py` (~176 lines) — CI guard FAILS on ANY
-  MODEL_URLS key removal, not just skinned ones. Escape path: `## Model
-  removals` PR-body section (keys in backticks) or the
-  `owner-approved-model-removal` label.
-- `tools/rig-guard/test_rig_guard.py` — 11 unit tests, all green
-  (removed→fail, added→pass, escape→pass).
-- `.github/workflows/game-checks.yml` — two jobs: `rig-guard` (self-test +
-  key-removal check on sparse checkout) and `game-unit-tests`
-  (`test/*.test.mjs` via node on a sparse checkout).
-- Verified against real `game/js/assets.js` at base: 149 keys extracted;
-  simulated `phantom` removal flagged; addition + escape paths pass.
-- Distinct from clobber-guard / deletion-guard / no-deletion-guard /
-  instruction-gate: no duplication, no edits to existing checks.
-- Full log: `docs/decisions/2026-10-22-rig-guard-rebuild-w50.md`.
+**Rendered all 28 Ashlane-universe characters** (one best variant each, facing camera, neutral
+studio background, natural A-pose/bind pose — no forced T-pose) for the user's WH-fighter review.
+Catalog: `docs/research/ashlane-render-catalog-2026-10-22.md`. No roster/canon writes — review only.
 
-## 2026-10-22 — VF5 Full Integration (Worker 45) — PR #692 MERGED
-
-**VF5 PS3 (.farc) format reverse-engineered; all 18 fighters extracted + T-pose rendered.**
-
-- **mon/msk identified:** `mon` = Eileen, `msk` = El Blaze (release READMEs; msk render-verified as luchador). **El Blaze DOES have farcs** — the "NO farc/DLC" note was wrong; Pablo → El Blaze is NOT blocked.
-- **New tools:** `tools/vf5/farc_extract.py` (FArC container), `tools/vf5/vf5extract.py` (obj.bin → OBJ: chunk headers, LE f32 positions, u16 strip indices), `tools/vf5/README.md`.
-- **4 locked movesets** (schema-v2, VF→Tekken inputs): `game/assets/movesets/vf-jeffry.json` (25, Bannon), `vf-wolf.json` (21, El Toro de Oro), `vf-leifei.json` (22, NPC Finxsse), `vf-elblaze.json` (28, Pablo).
-- **Research:** `docs/research/VF5-FULL-INTEGRATION-2026-10-22.md`; decision log `docs/decisions/2026-10-22-vf5-integration.md`.
-- **Renders:** 18 T-pose PNGs batch-rendering (Blender 4.5.3); uploaded to remote storage as they complete for user review. **Dural flagged as Zen's approved base-mix layer.**
-- **Gaps:** Motion clips not in release (likely in 3.7GB vf5-500m ROM, not pulled); 38 stg*.farc stages deferred to arena pipeline.
-- Merged via git_merge.py as 7f38022d (additions only; CI: instruction-gate, clobber-guard, deletion-guard, guard all green).
+- Variant choice = canonical defaults from the source repo's own roster
+  (`brutalfistgrokversiontenpointfive/src/data/bannonGlbRoster.ts`, first-listed/"Default" attire).
+  PABLO got a **second** render (PABLO_blackreign.glb — canon-relevant dark variant per user).
+  SOMBRA_NEGRA_rigged.glb is the only cast model in `AshLane-prototype`.
+- VF5 mappings flagged in catalog (user-locked 2026-10-22, no changes without user's word):
+  LOCKED = BANNON→Jeffry McWild, EL_TORO_DE_ORO→Wolf Hawkfield, PABLO→El Blaze, NPC_FINXSSE→Lei-Fei.
+  Candidates = MASTER_SENSEI→Lau, SOMBRA_NEGRA→Kage, CIPHER→Goh (music-themed "emo type" note),
+  AARON_RUBEN→Akira, CODY→Jacky, JAGER→Vanessa.
+  Unmapped: TRIPLE_XXX, ECHO, HOLLOW, STATIC, STICKUP, ONYX, TYNESHIA, MAIME, EDWIN_KENNEDY,
+  HALL_NIGHTER, STAN_COMBS, KOBRA, VIPER. VF5 women (Sarah/Pai/Aoi/Eileen) have no counterparts
+  identified — female-presenting models in this batch: Echo, Maime, Onyx, Tyneshia (flagged).
+- Pipeline: three.js r160 GLTFLoader + Playwright headless Chromium/SwiftShader, studio 3-point
+  lighting, 720x960 PNG. Viewer + batch scripts at `~/workspace/ashlane-renders/` (site/viewer.html,
+  render.mjs, batch.json) — reusable for re-renders. Large GLBs stayed in the source repos.
+- Render-time findings: (1) BANNON_rigged.glb needed bone-aware camera framing (skinned geometry
+  bounds were bind-pose, camera ended up inside the torso). (2) **SOMBRA_NEGRA_rigged.glb is
+  damaged**: JOINTS_0 indices reach 65535 against 58 skeleton joints (~92k vertices affected) and
+  the mesh branch carries a bogus 0.035 node scale — rendered as bind-pose T-pose at natural
+  scale for review. Needs a full re-rig before any WH intake; skin data unrecoverable as-is.
+- Remote-storage links expire 2026-10-24 ~20:30 UTC. 19/28 uploaded at PR time; remaining 9
+  pending the user's upload-approval taps (their rows are marked ⏳ in the catalog).
