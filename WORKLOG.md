@@ -1964,3 +1964,14 @@ machine). Rebuilt from the task description and PR'd (branch `w50/rig-guard`):
 - **Renders:** 18 T-pose PNGs batch-rendering (Blender 4.5.3); uploaded to remote storage as they complete for user review. **Dural flagged as Zen's approved base-mix layer.**
 - **Gaps:** Motion clips not in release (likely in 3.7GB vf5-500m ROM, not pulled); 38 stg*.farc stages deferred to arena pipeline.
 - Merged via git_merge.py as 7f38022d (additions only; CI: instruction-gate, clobber-guard, deletion-guard, guard all green).
+
+## 2026-10-22 — Moveset Library System (worker 47)
+
+Built the central moveset library + per-fighter assembly system (owner standing directive):
+- `game/data/moveset-library/`: 9,516 moves across 6 banks (T3 4,648 · No Mercy 4,409 · WMXIX 169 · DOA 146 · VF 48 · VF5 96) + 8 pending banks registered; `schema.json`, `axes.json`, `claimed-map.json` (source law), `index.json`. Reproducible ingest: `tools/moveset-library/ingest.mjs`.
+- `game/js/moveset-library.js`: `assembleFighter()` → v2-contract movesets; source-law gate in code; no pending banks.
+- `game/data/movesets/`: pre-assembled bannon (28) / el-toro (23) / pablo (36 — locked flavor: powerhouse + comedy-whiff lucha attempts + Black Reign Ride / Abyss Choke dark thread) / npc-finxsse (23). VF5 bases live from vf-{elblaze,jeffry,wolf,leifei}.json federation conversions (another lane, reused read-only).
+- `game/moveset-browser.html`: browse by axis, inspect, attach/detach, save. Fully working dev page.
+- Docs: `docs/research/moveset-library-schema.md`, `docs/decisions/2026-10-22-moveset-library.md`, `docs/handoffs/moveset-library-vf5-format.md` (worker-45 contract, read-only).
+- Proof: node --check clean; ingest 0 violations; assembler CLI verified (pablo 36 / bannon 28 / el-toro 23 / npc-finxsse 23, law-clean, 0 unresolved); claimed pull refused / free pull allowed.
+- Note: #678 merged then was dropped from main by #679's merge tree; restored via this PR (see decisions log).
