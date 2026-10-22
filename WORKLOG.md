@@ -1334,3 +1334,25 @@ game/js/game.js, 25 of index.html, 316 of WORKLOG.md — broke Torch live.
   variant (diverged from the workspace helper; left untouched to avoid clobbering it).
 - Consider adding `clobber-guard` to main's required status checks via the
   branch-protection API (needs admin scope; not attempted in this lane).
+
+## 2026-10-22 — Worker 5: PLAYTEST FACING BUGS (side-switch + Torch audit)
+
+### Bug 1 — Side-switch: smooth Y-rotation (was instant snap)
+Owner: "When a fighter walks past their opponent to the other side, the body does NOT rotate on the Y axis to face them. Instead all limbs mirror backwards — like the model got scale-mirrored rather than rotated."
+Root cause: `Fighter._animate` snapped `lean.rotation.y = facing * π/2` instantly on a side-switch. One frame the fighter shows one side, the next frame the other — on a phone screen this reads as a mirror-pop, not a turn. (No scale-flip exists anywhere in the code; verified by grep.)
+Fix (`game/js/fighter.js`): visual facing (`_faceY`) now tweens toward the logical facing along the shortest Y arc at 180°/0.16s — a real, visible rotation, never a mirror. Logical `this.facing` stays instant so inputs/guard/hit logic never lag.
+Also fixed `game/js/game.js` `_startRound`: it set `lean.rotation.y = 0` / `π` (fighters posed toward/away from the CAMERA), contradicting fighter.js's `facing*π/2` convention. Now snaps both to `±π/2` (face the opponent), `_faceY` included.
+Proof: headless-Chromium fight test (torch vs pantera) — before/after side-switch screenshots show both fighters Y-rotated to face each other; `lean.rotation.y` = ±π/2 exactly. Proof frames: `~/workspace/w5tmp/proof_before.png`, `proof_after.png` (worker-5 run).
+
+### Bug 2 — Facing audit (Torch + all 59 roster fighters)
+Owner: "Torch faces the camera instead of her opponent and can't attack."
+Torch verdict: CORRECT, no change. Verified 4 ways: (1) torch.glb mesh faces +Z (feet-cue +0.124, proof rest sheet shows front from +Z); (2) table entry +Z; (3) rig and mesh agree (+Z/+Z); (4) live fight screenshots show her facing pantera. The "faces camera" report did not reproduce on current code (likely stale phone cache or the select-screen preview, which intentionally faces the camera at baseRotY ±0.18).
+Full audit: enumerated all 59 roster fighters' default models against `game/assets/models/model-facing.json`. 55 keys tabled; 22 fighter defaults missing (mostly unrigged Tripo statics that also cannot animate — flagged for the rigging lane, not guessed).
+One real table bug found AND fixed: `nightwolf` was `-Z` on main (ea9116ff, 2026-10-22). REVERTED to `+Z`: direct raw-GLB render (three.js, camera on +Z, zero instance correction) shows her FRONT from +Z and her BACK from -Z — the mesh faces +Z. The -Z reading came from a per-part audit that transforms mesh verts by bone matrices; nightwolf's auto-rig skeleton faces -Z inside her +Z mesh, which flips that measurement. The game corrects by MESH facing, so +Z (no turn) is right. Raw renders: `~/workspace/w5tmp/raw_nightwolf_posZ.png` (front), `raw_nightwolf_negZ.png` (back); camera validated against torch (known +Z).
+Also found: the feet-geometry cue misreads chunky-heel boots as -Z (false -Z on zen-body, saku-ra_alt1, lili, kinpo_alt1 — all visually +Z). Do NOT trust the cue alone for heeled footwear; the human-verified table stands.
+
+### Files (surgical edits on fresh main ef39f7c9; no deletions)
+- `game/js/fighter.js` — `_faceY` init in `_build`; smooth Y-turn in `_animate` §1.
+- `game/js/game.js` — `_startRound` facing reset to `±π/2` convention.
+- `game/assets/models/model-facing.json` — `nightwolf` back to `+Z` + corrections note.
+- `WORKLOG.md` (this entry).
