@@ -342,6 +342,9 @@ export const MODEL_URLS = {
   // CHARGER Attire 1 (2026-10-21, lane 4 rig batch 1): unrigged Tripo static -> model-rigged.glb
   // via tools/auto_rig knn backend (donor pantera.glb); original model.glb untouched.
   charger: '../roster/charger/attires/attire1/model-rigged.glb',
+  // DOROWANI (owner 2026-10-22): Gon's WH replacement. Unrigged Tripo static
+  // (see roster/dorowani/RIG-SPEC.md); k-NN rig from pantera donor is the planned path.
+  dorowani: '../roster/dorowani/attires/attire1/source/dorowani-a1-crimson-cheeks.glb',
   // CHARGER Attire 2 (2026-10-21, lane 4 rig batch 1): unrigged Tripo static -> model-rigged.glb
   // via tools/auto_rig knn backend (donor pantera.glb); original model.glb untouched.
   'charger-attire2': '../roster/charger/attires/attire2/model-rigged.glb',
