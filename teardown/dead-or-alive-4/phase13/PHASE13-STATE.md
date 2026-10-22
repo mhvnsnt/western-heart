@@ -66,10 +66,11 @@ Additions-only; commit SPECIFIC paths (NEVER git add -A — sparse clone); own-e
   unique (fam477: 13, famC: 15, head21: 7); all 8 unpaired
   heads 0–2 vs every family → **no new pairings, composites
   23/31 FINAL** (`phase13/HEAD-EVIDENCE.md`,
-  `phase13/texrecord_census.json`). **Job 1: 9/30 parts
-  landed + sha256-verified** (01–09), parts 10+11 in flight
-  at close; release re-verified 30 assets = 7,834,892,288B;
+  `phase13/texrecord_census.json`). **Job 1: 10/30 parts
+  landed + sha256-verified** ({01–09, 11}; part_11
+  c7151a1d…), part 10 in flight at close; release re-verified
+  30 assets = 7,834,892,288B;
   ISO not cleared (assembly incomplete, never-kill rule).
-  Additional clears: assembler part files 05–09 post-verify;
+  Additional clears: assembler part files 05–09, 11 post-verify;
   two stalled unverified partial downloads (08/09 first
   attempts) deleted to restart cleanly.
