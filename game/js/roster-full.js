@@ -217,6 +217,14 @@ export const FULL_ROSTER = [
     surge: { name: 'ABSOLUTE ZERO SURGE', color: 0x66ccff, accent: 0xffff66 },
     stats: { speed: 5.0, jump: 7.0, power: 1.2, defense: 1.05 },
     ai: { aggression: 0.8, grabBias: 0.45, reaction: 0.55 } },
+  // DOROWANI (owner 2026-10-22): Gon's WH replacement — mud-croc kappa-yokai.
+  // Small, fast, goofy, fire breath. Moveset: Gon's Tekken 3 kit (dorowani.json).
+  // Voice: barks Japanese words, never sentences ("Konnichiwa arigato Ichiban Bankai").
+  { id: 'dorowani', name: 'DOROWANI', title: 'The Mud-Croc Trickster', base: 'Gon', moveset: 'dorowani', model: 'dorowani', tintStrength: 0.25,
+    colors: { suit: 0x2a7ac2, trim: 0xc22a2a }, style: 'Beast Brawler', archetype: 'Rushdown',
+    surge: { name: 'DINO BREATH SURGE', color: 0xff6a00, accent: 0xffd23f },
+    stats: { speed: 5.5, jump: 7.5, power: 1.1, defense: 0.95 },
+    ai: { aggression: 0.85, grabBias: 0.35, reaction: 0.6 } },
   { id: 'vega', name: 'VEGA', title: 'The Claw', base: 'Vega', moveset: 'vega', model: 'vega', tintStrength: 0.25,
     colors: { suit: 0x8a2a6b, trim: 0xffd700 }, style: 'Claw', archetype: 'Evasive',
     surge: { name: "MATADOR'S FURY", color: 0xcc2288, accent: 0xffffff } },
