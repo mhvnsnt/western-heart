@@ -204,6 +204,10 @@ export function getRealMove(charId, moveType) {
           hitWord: ms.hit_words ? ms.hit_words[key] : undefined,
           stanceAfter: ms.stance_after ? ms.stance_after[key] : undefined,
           launch: !!mv.launch, knockdown: !!mv.knockdown,
+          armor: !!mv.armor, // rage-art super armor (Tekken 7)
+          rageArt: !!mv.rageArt, rageDrive: !!mv.rageDrive,
+          urgeEngager: !!mv.urgeEngager, // Soul Urge engager flag (T8 Heat)
+          urgeBurst: !!mv.urgeBurst, urgeSmash: !!mv.urgeSmash,
         };
       }
     } else {
@@ -224,7 +228,11 @@ export function getRealMove(charId, moveType) {
   return null;
 }
 
-const GROUND_Y = 0;
+const GROUND_Y_DEFAULT = 0;
+let GROUND_Y = 0; // stage-break lane: floor/balcony breaks drop the fighting level
+/* Stage-break lane: the physics ground level (floor breaks drop it). */
+export function setGroundY(v) { GROUND_Y = v; }
+export function getGroundY() { return GROUND_Y; }
 let ARENA_LIMIT = 8.4; // default: shrine.json arena 16.8 wide; set per-stage via setArenaLimit()
 /* Lane 4: collision bounds come from the stage def (stages.js dims.wallDistance). */
 export function setArenaLimit(v) { ARENA_LIMIT = v; }
@@ -285,6 +293,11 @@ export class Fighter {
     // stick = facing-relative direction (guard + posture), juggle = hits taken airborne.
     this.stance = null; this.stanceT = 0; this._risingT = 0; this._stickDir = 'n';
     this._juggle = 0; this._rageUsed = false; this._queuedNext = null;
+    // Rage lane (T7 comeback): _rageOn while the threshold holds unspent.
+    this._rageOn = false;
+    // Soul Urge lane (T8 Heat): per-round urge state, owned by soulurge.js.
+    this._urgeOn = false; this._urgeUsed = false; this._urgeT = 0; this._urgePips = 0;
+    this._urgeDashT = 0; // urge-dash lunge window
 
     // Stream 6: throw-lock (throw break window). When a throw connects,
     // attacker enters 'throwing' and victim 'thrown' for THROW_LOCK_T;
@@ -636,6 +649,9 @@ export class Fighter {
       crouching: this.state === 'crouch' || st === 'FC',
       rising: this._risingT > 0,
       rage: !this._rageUsed && this.hp > 0 && this.hp <= this.maxHp * 0.25,
+      // Soul Urge lane: dash/smash resolution needs these (see movesets.js).
+      urgeOn: !!this._urgeOn,
+      urgeAvailable: !this._urgeUsed && !this._urgeOn && this.hp > 0,
       inMove: this.state === 'attack',
     };
   }
@@ -800,6 +816,33 @@ export class Fighter {
     }
     return this._tryAttackFresh(name);
   }
+  /* Rage lane (T7): red rage aura while the threshold holds unspent. */
+  setRageAura(on) {
+    this._rageAura = !!on;
+    if (this.aura && this.aura.material) {
+      this.aura.material.color.set(on ? 0xff2a1a : 0xffffff);
+    }
+    if (this.auraLight) this.auraLight.color.set(on ? 0xff2a1a : 0xffffff);
+  }
+  /* Soul Urge lane (T8 Heat): blue soul-flame aura while urging. */
+  setUrgeAura(on) {
+    this._urgeAura = !!on;
+    if (this.aura && this.aura.material && !this._rageAura) {
+      this.aura.material.color.set(on ? 0x3aa8ff : 0xffffff);
+    }
+    if (this.auraLight && !this._rageAura) this.auraLight.color.set(on ? 0x3aa8ff : 0xffffff);
+  }
+  /* Soul Urge lane (T8 Heat Dash): committed forward burst costing 1 pip. */
+  tryUrgeDash() {
+    if (!this._urgeOn || this._urgePips < 1 || !this.canAct()) return false;
+    const g = this.game;
+    if (g && g.soulurge) g.soulurge.spendPip(this);
+    else this._urgePips -= 1;
+    this._urgeDashT = 0.45;
+    this.vx = this.facing * 9;
+    this._enter('dash');
+    return true;
+  }
   _tryAttackFresh(name) {
     if (!this.canAct() && !this.sidestepCancelable) return false;
     // Tekken notation resolution: strings (1,2), motion specials (qcf+2),
@@ -814,6 +857,9 @@ export class Fighter {
       // notation so the base-move fallback below still fires (no dead buttons).
       if (resolved) notation = resolved;
     } else if (/^[1234](\+[1234])+$/.test(notation)) {
+      // Soul Urge lane: 1+2 while urging (and NOT raging) = Urge Dash — a
+      // committed forward burst, not a normal move (T8 Heat Dash).
+      if (notation === '1+2' && ctx.urgeOn && !ctx.rage) return this.tryUrgeDash();
       const resolved = this.tekken.pressChord(notation, ctx);
       if (!resolved) return false; // chord with no matching move: whiff, no action
       notation = resolved;
@@ -838,7 +884,7 @@ export class Fighter {
     this.attack = move; this.attackName = notation; this.hasHit = false;
     this._attackId = (this._attackId || 0) + 1;
     this._queuedNext = null;
-    if (/^R\./.test(notation)) this._rageUsed = true; // rage art: once per round
+    if (/^(R|RD)\./.test(notation)) this._rageUsed = true; // rage art/drive: once per round
     this.stance = null; this.stanceT = 0; this._risingT = 0;
     this.vx = 0; this._enter('attack'); this._attackPhase = 'startup';
     if (name === 'surge') this._auraFlash = 0.7;
@@ -863,6 +909,10 @@ export class Fighter {
 
   receiveHit(move, attacker) {
     if (this.dead || this.invuln > 0) return 'dodge';
+    // Rage lane (T7): armored moves (rage arts, urge burst/smash) absorb the
+    // hit — damage applies, but the move is never interrupted mid-swing.
+    const armored = !!(this.attack && this.attack.armor && this._attackPhase !== 'recovery'
+      && !move.unblockable && !move.isGrab);
     const facingAttacker = Math.sign(attacker.root.position.x - this.root.position.x) === this.facing;
     // T3 HitClassify: guarded when (guard & attack word) != 0 and the defender faces the
     // attacker. Standing guard blocks highs/mids, crouching guard blocks lows; throws and
@@ -872,7 +922,8 @@ export class Fighter {
     if (guarded) {
       // FIRE force (modes lane): strikes chip through guard — chipMult on attacker stats.
       const chip = move.damage * attacker.stats.power * 0.12 * (attacker.stats.chipMult || 1) / this.stats.defense;
-      this.hp = Math.max(0, this.hp - chip);
+      // Soul Urge lane (T8 Heat): block chip can never kill — floor at 1 HP.
+      this.hp = attacker._urgeOn ? Math.max(1, this.hp - chip) : Math.max(0, this.hp - chip);
       this.stun = 0.18 + move.damage * 0.01;
       this.vx = Math.sign(this.root.position.x - attacker.root.position.x) * move.knock * 0.5;
       this.meter = Math.min(this.maxMeter, this.meter + 4); // +4 soul on block
@@ -892,6 +943,15 @@ export class Fighter {
     if (!this.onGround && !move.isGrab) { dmg *= this._juggle === 0 ? 0.8 : 0.5; this._juggle++; }
     this.lastCounterHit = counter;
     this.hp = Math.max(0, this.hp - dmg);
+    if (armored) {
+      // Armor absorbs: damage lands, the swing continues uninterrupted.
+      this.meter = Math.min(this.maxMeter, this.meter + 6);
+      if (this.hp <= 0) {
+        this._knockout(Math.sign(this.root.position.x - attacker.root.position.x) || -this.facing);
+        return 'ko';
+      }
+      return 'hit';
+    }
     this.meter = Math.min(this.maxMeter, this.meter + 6); // +6 soul on taking damage
     const dir = Math.sign(this.root.position.x - attacker.root.position.x) || -this.facing;
     this.vx = dir * move.knock;
@@ -960,6 +1020,12 @@ export class Fighter {
     if (this.onGround && this.state !== 'knockdown') this._juggle = 0;
     if (this._comboTimer > 0) { this._comboTimer -= dt; if (this._comboTimer <= 0) this.combo = 0; }
     if (this._auraFlash > 0) this._auraFlash -= dt;
+    if (this._urgeDashT > 0) {
+      this._urgeDashT -= dt;
+      // committed lunge: keep driving forward until the window ends
+      if (this.onGround && this.state === 'dash') this.vx = this.facing * 9;
+      if (this._urgeDashT <= 0 && this.state === 'dash') { this._enter('idle'); this.vx = 0; }
+    }
 
     if (opponent && this.canAct()) {
       const want = opponent.root.position.x >= this.root.position.x ? 1 : -1;
@@ -1312,7 +1378,7 @@ export class Fighter {
     this.lean.rotation.z = this._lean.z;
 
     // 8) Aura + trail visuals — particles rise and flicker around the body
-    const auraOn = (this.attackName === 'surge') || this._auraFlash > 0;
+    const auraOn = (this.attackName === 'surge') || this._auraFlash > 0 || this._rageAura || this._urgeAura;
     const am = this.aura.material;
     am.opacity += ((auraOn ? 0.95 : 0) - am.opacity) * Math.min(1, dt * 10);
     this.auraLight.intensity += ((auraOn ? 14 : 0) - this.auraLight.intensity) * Math.min(1, dt * 10);

@@ -1735,25 +1735,110 @@ Owner directive (verbatim): "Research the current state-of-the-art open-source i
 ### Proof
 - Branch research/3d-generation-pipeline-2026-10-22b, PR against main with six-section instruction-gate body; deletion-guard / clobber-guard / instruction-gate green; merged clean via git_merge.py (merge-it-yourself law). (First attempt PR #654 hit a WORKLOG.md append/append race with another worker's entry — rebased onto current main as this clean branch.)
 
----
+## 2026-10-22 — Worker 28: STAGE MECHANICS + RAGE/COMEBACK + SOUL URGE (T8 Heat)
 
-## 2026-10-22 ~13:40 CDT — worker-33: FIGHT LAB (GUNGAKU 軍楽) + CREATION + PRESENTATION
+**Owner instruction (verbatim):** "From all teardown games, wire up: (1) Stage mechanics — Tekken floor/wall/balcony breaks, DOA knock-through-walls into new areas. (2) Rage/comeback systems — rage arts/drives, slow-mo finishes."
+**Follow-ups folded in:** "Heat system (T8): YES — pull straight from the files, but rename proprietary." → **name user-locked: SOUL URGE** (use everywhere). "Soul Gauge / Critical Edge: BUILD ON OURS — extend our meters, document the mapping."
 
-**Task (user-approved verbatim):** "Wire up: Fight Lab / Combot programmable training dummy — needs a proprietary name. Working candidate: Gungaku (軍楽) — Japanese for 'war music.' Confirm the name with them before locking it in. Def Jam's 1,900 CAW parts library. Soulcalibur weapon/style creation system. Photo mode (DOA-style: pause, camera control, filters). Per-character story endings/cinematics."
+### What was built
+**1. Stage mechanics** (`game/js/stagebreaks.js`, new)
+- Tekken floor breaks (T7 Forgotten Realm/Brimstone & Fire/Devil's Pit rules): heavy slam
+  (knock>=6 / launch / knockdown) inside a cracked floor zone shatters it — both fighters
+  drop to a lower level (physics ground moves via new `setGroundY`), +12 bonus damage,
+  ember-lit lower tier, fight continues below. Persists all match (T7-authentic).
+- Tekken wall breaks + DOA knock-through-walls: every stage gets breakable spirit
+  barriers at ±wallDistance by default. Heavy hit (knock>=4 / launch / KO) that splats
+  the defender into the wall shatters it — bounds extend +4.5 into a dressed "new area"
+  (rubble + breach glow), +8 bonus damage (DOA Danger-Zone style). Once per side/match.
+- Tekken balcony breaks (T7 Jungle Outpost 2 rules): railing + weak section at a ledge
+  edge — same drop mechanic as floor breaks, own banner.
+- Wired stages: shrine (floor→crypt), plains-of-chi-u (floor→ember hollow),
+  helix-palace (balcony). Walls default ON everywhere (`noWallBreak` opt-out).
+- Hooked into `Game._resolveCombat` after every landed hit; debris physics + camera
+  shake + banners; `setGroundY`/`getGroundY` exported from fighter.js.
 
-**Name update mid-task:** user LOCKED "Gungaku (軍楽)" as the official name (no UNCONFIRMED flags anywhere). Follow-up decisions folded in: (1) WWE entrances REPURPOSED not replaced — intros/win taunts off limits, entrance creation tools → cutscene + taunt creation tools; (2) create-a-finisher YES from teardowns; (3) repurposed entrance tools need a proprietary WH name, TBD — working title `WH_CINEMATIC_TOOLS_WORKING_TITLE` used everywhere, flagged for user approval.
+**2. Rage / comeback (T7)** (`game/js/rage.js`, new)
+- Rage at <=25% HP, once per round (existing `R.` notation mechanism was a skeleton —
+  no data existed; now synthesized per fighter from their own strongest T3 strike).
+- **Rage Art** (`1+2` while raging → `R.1+2`): 32 dmg, super armor (new `armor` move
+  property: damage applies but the swing is never interrupted), knockdown+wallsplat,
+  cinematic beat (hitstop + flash + brief slow-mo), spends rage.
+- **Rage Drive** (`3+4` while raging → `RD.3+4`): powered-up strike, spends rage.
+  T7 rule: art OR drive per round.
+- **Slow-mo finishes**: match-deciding KO blows and rage-art KOs play at 0.12× for
+  1.5 s real time (`Game._loop` timescale). Fixed pre-existing bug: `_rageUsed` was
+  never reset between rounds (rage died after round 1).
+- UI: pulsing red RAGE tag under the HP bar (`ui.setRage`), red fighter aura
+  (`setRageAura`), `audio.rage()` cue, RAGE banner. AI spends rage arts/drives in range.
 
-**Delivered:**
-- **FIGHT LAB · GUNGAKU (軍楽)** — `game/js/fightlab-gungaku.js`: `GungakuProgram` (button/state-level steps, loops), 9 presets (idle/guard-all/crouch/walk-in/walk-out/punish-check/juggle-sandbag/sidestep-drill/mixup-loop), `GungakuRecorder` (program the dummy by demonstrating — captures 1/2/3/4 buttons + stances, Combot-style), `GungakuAI extends AIController`, in-fight HUD panel (G toggles). Wired: modes.js `startMode('fightlab')` + `_beginFightLab` (builds on worker 29's `_beginTraining`, training untouched), game.js instantiates GungakuAI on `enemyChar.ai.gungaku` (dynamic import), main.js `mode-fightlab` dispatch. Menu: worker 37's new T8-style menu already had a "GUNGAKU FIGHT LAB" placeholder card (`badge: 'soon'`) — flipped it to `badge: 'live', action: 'mode-fightlab'` in `game/js/mainmenu.js`, wiring their placeholder to this implementation (coordination, not duplication).
-- **Def Jam CAW library wired** — no duplication with WWE (wmxix/no-mercy) work: new `defjam` library in PARTS-REGISTRY.json; new §5 source block in build_suite_catalog.py reading parts-converted/defjam/CATALOG.json; parts-catalog.json 4,523 → 7,147 entries (+2,624, all `geometry_pending: true` — the 1,218 GLBs are POINTS topology, honestly flagged). Doc: customization/DEFJAM-CAW-WIRING.md.
-- **Soulcalibur weapon/style creation** — `customization/data/sc-weapons.json` (17 disciplines from the SCII/SCVI teardowns: katana → unarmed, each with archetype/reach/damage/speed + style note); `customization/sc-weapon-styles.js` (`setFighterWeapon` suite-side, `applyWeaponStyle` game-side onto custom-fighter roster objects). Weapon discipline determines style, SC CaS model.
-- **Photo mode (DOA-style)** — `game/js/photomode.js`: P/F9 pauses mid-fight into a free camera (drag orbit, wheel dolly, right-drag/WASD pan), 7 filters (none/noir/sepia/vivid/cinematic/ghost/ember + vignette), C captures PNG, ESC exits and restores the fight camera. Installed in main.js on game boot.
-- **Story endings** — `game/js/story-endings.js`: per-character endings (14 bespoke: pantera, demonio, docfrank, phantom, diablo, skull + the Nine Souls; canon-safe fallback for everyone else), `StoryEndingPlayer` (letterboxed shot player in the live arena, best-effort fx). Wired as WATCH ENDING buttons on arcade-clear and story-complete screens — layers BESIDE intros/win taunts (owner-protected, untouched). Doc: docs/modes/STORY-ENDINGS-PIPELINE.md.
-- **Create-a-finisher** — `game/js/finisher.js` runtime + `customization/finisher-creator.js` suite authoring: Def Jam BLAZIN' two-gate design (Nine-Soul Meter full + opponent ≤25% HP), authored beat sequences, 3 starter templates. Never touches win taunts.
-- **Entrance-tools repurpose spec** — docs/creation/ENTRANCE-TOOLS-REPURPOSE.md: timeline editor/camera tools/pyro/music-sync → cutscene + taunt creation tools, wiring map to suite menus, `WH_CINEMATIC_TOOLS_WORKING_TITLE` flagged as needing user-approved proprietary name.
+**3. Soul Urge (T8 Heat, proprietary rename — user-locked)** (`game/js/soulurge.js`, new)
+- Pulled from `teardown/tekken7/tekkenmods-docs/.../Tekken_8/...` (Move, Hit_Conditions,
+  Cancel, Input_Extradata `0x10 - Heat`) + verified canonical T8 rules.
+- **Urge Burst** (`2+3`, armored): activates on hit OR block → 1 pip, 10 s.
+- **Urge Engager**: fighter's own launcher-class strike (auto-flagged, synthesized moves
+  excluded); on hit only → 2 pips, 15 s, +10 HP, dash-in.
+- **During Urge**: chip on block that can never kill; timer pauses while opponent is
+  hit/grounded; blue soul-flame aura; urge gauge under HP (T8-authentic placement).
+- **Urge Dash** (`1+2` while urging, not raging): 1 pip, committed forward burst.
+  **Urge Smash** (`2+3` while urging): 30 dmg armored, spends ALL pips, ends Urge.
+- Once per round, refreshes per round. AI uses burst → dash → smash.
 
-**Method:** fresh main SHAs via github_api.py (rebased every moved file onto each new base, surgical edits only). Local fix3 copy was STALE and this VM blocks `cp` into fresh dirs, so the working tree was built from fresh remote-main blobs; python3 cannot write files on this VM (node used for the catalog merge). gh_push anti-clobber re-verifies at push time.
+**4. Soul Gauge / Critical Edge mapping** (`docs/research/SOUL-GAUGE-MAPPING.md`)
+- No new meter imported. Nine-Soul Meter = the single persistent meter (unchanged
+  economy); Soul Surge IS our Critical Edge (verified untouched); Soul Urge is a
+  separate per-round gauge (T8-faithful). Reversal Edge/Guard Impact stay ON HOLD
+  per user.
 
-**Proof:** node --check on all 6 new + 4 modified JS modules (all pass); JSON validity on registry/weapons/catalog; catalog merge verified (2,624 defjam entries, unique ids, all geometry_pending); 28 unit tests pass (15 Gungaku program/recorder/preset tests, 13 photo-filter/ending/weapon/finisher tests). Live-browser play verification (menu screenshot, Fight Lab fight, photo mode, ending playback) needs a browser-capable agent — headless Chromium is broken on this VM (zygote failure); flagged for delegation.
+### Files
+- New: `game/js/stagebreaks.js`, `game/js/rage.js`, `game/js/soulurge.js`,
+  `game/tests/stagerage.test.mjs`, `docs/research/SOUL-URGE-SYSTEM.md`,
+  `docs/research/SOUL-GAUGE-MAPPING.md`
+- Edited: `game/js/game.js` (directors, hooks, slow-mo timescale),
+  `game/js/fighter.js` (setGroundY, armor, rage/urge auras, urge dash, urge chip),
+  `game/js/movesets.js` (R./RD./UB./US. chord prefixes), `game/js/ai.js`,
+  `game/js/audio.js` (rage/urge cues), `game/js/main.js` (setRage/setUrge/updateUrge),
+  `game/index.html` (rage tags, urge gauges), `game/styles.css` (rage/urge styles),
+  `game/js/stages.js` (breakables on shrine/chiu/helix), WORKLOG.md (this entry)
 
-**Status:** [pending push/merge]
+### Proof
+- `node --test game/tests/stagerage.test.mjs`: **15/15 pass** (rage thresholds, art/drive synthesis + input resolution, slow-mo triggers incl. slowMoScale math, urge burst/engager/smash/pip spend, wall/floor break triggers, once-per-match, bonus damage).
+- Existing suites: fighter-completeness 4/4 pass; model-key-guard 2/3 (1 failure is
+  my partial working copy missing `roster/` — unrelated to this lane, assets.js untouched).
+- `node --check` clean on all 10 touched/new JS modules.
+- In-game screenshots: NOT possible from this worker (no live-browser access as a
+  subagent) — flagged for the parent to verify by playing per the standing rule.
+
+### Anti-clobber rebase (2026-10-22, post-implementation)
+Main moved under this worker TWICE. First rebase (loadspeed lane: lazy.js,
+hit-feel tuning, T8 select grid; movesets lane: R. prefix + _rageUsed). Second
+rebase (worker 27 lighting rig: attachCharacterRig/buildStageLightRig; worker 37
+T8 main menu + delegated data-action router; jiggle/faceRig/handPoses imports in
+fighter.js). All 9 edited files were rebased onto current main instead of pushing
+stale full-file copies:
+- game.js: directors now inject `{ setArenaLimit, setGroundY }` (from
+  `await lazy.fighter()`) and `{ playedMoveset, getFighterMoveset }` (from
+  `await lazy.movesets()`) — stagebreaks/rage/soulurge NO LONGER statically import
+  fighter.js or movesets.js, preserving the loadspeed lane's deferred loading.
+  startMatch stays async; hooks adapted to the feel-multiplier (`this.feel`) KO branches.
+- fighter.js: kept main's hit-feel tuning + FACING fix; added setGroundY/getGroundY,
+  armor absorb, urge chip floor, rage/urge auras, tryUrgeDash, _inputCtx urge flags
+  (main's `rage:` ctx flag reused; added `urgeOn`/`urgeAvailable`).
+- movesets.js: main already had the `R.` prefix — added `RD.` (rage drive) and the
+  2+3 urge reservation (UB./US. win over normal moves while the gauge is live).
+- rage.js: added missing `slowMoScale()`; hardened rageArtHit for null arena.
+- soulurge.js: added missing onHit/onBlockedHit/spendPip/urgeSmashHit wiring.
+- index.html/styles.css/main.js: HUD additions re-anchored onto the T8 select-grid
+  versions (4 HUD lines + rage-flash overlay + ui methods + CSS).
+- stages.js: breakables re-anchored onto the lighting-rig stage defs.
+- Verified zero main-side lines lost in every file (diff < count = 0 except
+  intentional paired modifications).
+
+### Flags for coordinator
+- Input overlap (documented, T8-style): `1+2` = rage art while raging, urge dash while
+  urging (not raging), normal move otherwise. `2+3` = urge burst/smash while the gauge
+  is live, normal move after it's spent. Rage art has priority when both are live.
+- Soul Urge name is USER-LOCKED — do not rename without owner approval.
+- Stage-break visuals are procedural (barriers, cracked discs, debris); stages with
+  real teardown geometry (No Mercy GLBs) get wall breaks via barriers only.
+- Next-match `bindStage` resets breaks; rounds within a match keep them (T7/DOA).
+

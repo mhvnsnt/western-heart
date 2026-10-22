@@ -88,6 +88,28 @@ export class AIController {
       f.tryAttack('surge'); return;
     }
 
+    // Rage lane (T7 comeback): while raging, spend it on the rage art
+    // (1+2) or rage drive (3+4) when in range — never hold it forever.
+    if (f._rageOn && f.onGround && dist < 3.4) {
+      const rr = Math.random();
+      if (rr < 0.4) { f.tryAttack('1+2'); return; }  // RAGE ART
+      if (rr < 0.55) { f.tryAttack('3+4'); return; } // RAGE DRIVE
+    }
+
+    // Soul Urge lane (T8 Heat): pop the Urge Burst in range; while
+    // urging, dash in with spare pips or cash out with the Urge Smash.
+    if (!f._urgeUsed && !f._urgeOn && f.onGround && dist < 2.6 && Math.random() < 0.3) {
+      f.tryAttack('2+3'); return; // URGE BURST
+    }
+    if (f._urgeOn && f.onGround) {
+      if (f._urgePips > 0 && dist > 3 && dist < 7 && Math.random() < 0.4) {
+        f.tryAttack('1+2'); return; // URGE DASH (1+2 while urging, not raging)
+      }
+      if (dist < 2.8 && Math.random() < 0.22) {
+        f.tryAttack('2+3'); return; // URGE SMASH
+      }
+    }
+
     // Command grab when chest-to-chest (grapplers live for this)
     if (dist < 1.9 && f.onGround && Math.random() < this.grabBias) {
       f.tryAttack('grab'); return;

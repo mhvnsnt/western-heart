@@ -303,6 +303,38 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
 }
 .surge-name.show { animation: surgeNameIn 1.6s ease; }
 @keyframes surgeNameIn { 0%{opacity:0;transform:scale(1.6);} 15%{opacity:1;transform:scale(1);} 75%{opacity:1;} 100%{opacity:0;} }
+/* Rage lane (T7): full-screen red flash on rage-art connect. */
+.rage-flash {
+  position: fixed; inset: 0; z-index: 29; pointer-events: none; opacity: 0;
+  background: radial-gradient(circle at 50% 55%, #ff3b2acc 0%, #ff3b2a44 45%, transparent 75%);
+}
+.rage-flash.show { animation: rageFlashIn 0.6s ease; }
+@keyframes rageFlashIn { 0%{opacity:0;} 20%{opacity:1;} 100%{opacity:0;} }
+/* Rage lane (T7): RAGE tag under the HP bar — pulses red while active. */
+.rage-tag {
+  display: none; margin-top: 3px; font-size: 11px; font-weight: 900;
+  letter-spacing: 3px; color: #ff3b2a; text-align: center;
+  text-shadow: 0 0 10px rgba(255,59,42,0.8);
+}
+.rage-tag.on { display: block; animation: ragePulse 0.7s ease-in-out infinite; }
+@keyframes ragePulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.55;transform:scale(1.12);} }
+/* Soul Urge lane (T8 Heat): blue SOUL URGE gauge under the HP bar. */
+.urge-wrap {
+  display: none; position: relative; margin-top: 3px; height: 10px;
+  background: rgba(10,25,60,0.6); border: 1px solid rgba(58,168,255,0.4);
+  border-radius: 3px; overflow: hidden; transform: skewX(-18deg);
+}
+.urge-wrap.on { display: block; }
+.urge-fill {
+  height: 100%; width: 0%;
+  background: linear-gradient(90deg, #1e6fff, #7fd0ff);
+  box-shadow: 0 0 8px rgba(58,168,255,0.9); transition: width 0.2s linear;
+}
+.urge-label {
+  position: absolute; inset: 0; font-size: 7px; font-weight: 800; letter-spacing: 2px;
+  color: #cfeaff; display: flex; align-items: center; justify-content: center;
+  pointer-events: none;
+}
 
 /* ====================== HUD ====================== */
 .hud-top { position: fixed; top: 0; left: 0; right: 0; padding: calc(12px + env(safe-area-inset-top)) 14px 12px; display: flex; gap: 10px; align-items: flex-start; z-index: 11; }
