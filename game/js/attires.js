@@ -34,21 +34,25 @@ export const ATTIRE_VARIANTS = {
   ],
   /* DOC FRANK's ladder — keyed by fighter id ('docfrank'), same pattern as
      Kevin's ladder below: attiresFor() looks up fighter.model, then
-     fighter.id — and the main entry's model is 'doc-frank-machine-shop',
-     so keying this list 'doc-frank' left his attires unreachable from his
-     own picker (model-key audit, docs/MODEL-KEY-AUDIT-2026-10-21.md).
-     Frankenstein pair added: Attire 4 was missing from the list entirely.
-     Every entry is one of Doc Frank's own wired models. */
+     fighter.id (model-key audit, docs/MODEL-KEY-AUDIT-2026-10-21.md).
+     LADDER ORDER (owner rule 2026-10-21, same as every character): his
+     Tripo GLB attires 1-4 at the FOREFRONT, transform pairs together;
+     the Dr. Bosconovitch base model ('doc-frank') and its reskin
+     ('doc-frank-machine-shop') ladder BACK behind them. Default =
+     first entry = Attire 1 pre-form ('doc-frank-a1'), NOT the base
+     model and NOT the machine-shop reskin. Provenance per slot:
+     roster/doc-frank/ATTIRE-SLOTS.md. */
   'docfrank': [
-    { model: 'doc-frank', label: 'BASE' },
-    { model: 'doc-frank-big', label: 'TRANSFORMED' },
-    { model: 'doc-frank-wowomomo', label: 'WOWOMOMO' },
-    { model: 'doc-frank-wowomomo-big', label: 'WOWOMOMO XL' },
-    { model: 'doc-frank-hood', label: 'HOOD SCIENTIST' },
-    { model: 'doc-frank-hood-big', label: 'HOOD XL' },
-    { model: 'doc-frank-frankenstein', label: 'FRANKENSTEIN' },
-    { model: 'doc-frank-frankenstein-big', label: 'FRANKENSTEIN XL' },
-    { model: 'doc-frank-machine-shop', label: 'MACHINE SHOP' },
+    { model: 'doc-frank-a1', label: 'ATTIRE 1 · OLD MAN' },
+    { model: 'doc-frank-big', label: 'ATTIRE 1 · TRANSFORMED (TRIPO)' },
+    { model: 'doc-frank-wowomomo', label: 'ATTIRE 2 · WOWOMOMO (TRIPO)' },
+    { model: 'doc-frank-wowomomo-big', label: 'ATTIRE 2 · WOWOMOMO XL (TRIPO)' },
+    { model: 'doc-frank-hood', label: 'ATTIRE 3 · HOOD SCIENTIST (TRIPO)' },
+    { model: 'doc-frank-hood-big', label: 'ATTIRE 3 · HOOD XL (TRIPO)' },
+    { model: 'doc-frank-frankenstein', label: "ATTIRE 4 · FRANKENSTEIN'S CYBORG (TRIPO)" },
+    { model: 'doc-frank-frankenstein-big', label: 'ATTIRE 4 · FRANKENSTEIN XL (TRIPO)' },
+    { model: 'doc-frank', label: 'BOSCONOVITCH BASE (TEKKEN BASE)' },
+    { model: 'doc-frank-machine-shop', label: 'MACHINE SHOP (RESKIN)' },
   ],
   'mariposa': [
     { model: 'mariposa', label: 'ATTIRE 1 · BUTTERFLY' },
