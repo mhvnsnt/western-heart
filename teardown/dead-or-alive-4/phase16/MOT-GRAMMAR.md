@@ -26,7 +26,7 @@ identical in fighter files and t_* files:
   [previous descriptor end, descriptor_k start); the last
   descriptor ends at EOF. Every file checked tiles exactly:
   zack triple (376 / 26 / 2 records), all 124 t_* files
-  (541 records, 23,320 sub-blocks).
+  (530 records, 23,320 sub-blocks).
 - The fighter **default record's sub-block span is the
   per-fighter shared front block** (zack: descriptor at
   data_start 22,936, values from 4,008; 44 sub-blocks of
