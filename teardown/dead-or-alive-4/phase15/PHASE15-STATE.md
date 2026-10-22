@@ -43,3 +43,45 @@ Additions-only in git; NO `git add -A` (pathspec commits); commit+push after EVE
 - 2026-10-22 MIRROR PART-03 DIGEST FAILURE (owned, instructive): the range driver resumed the gh-fetcher's part-03 file at 486,539,264 B and completed it — sha256 11a687b3… ≠ release 24656e3a…. The file had accumulated MULTIPLE gh attempts across the VM restart (its size grew monotonically 324→489 MB between attempts, i.e. not a single clean sequential prefix). The driver deleted it and restarted the part from zero with pure range chunks (round 2). Contrast: ISO part_06's partial was a SINGLE gh attempt and its digest PASSED (part_06 + part_07 now landed; ISO 7/30). Rule recorded: a gh partial is a trustworthy prefix only if it has exactly one writer attempt; multi-attempt gh files are deleted, never resumed. Mirror lane switched to the resumable driver (`mirror_fetch_driver_p15.py`) for the same reason as the ISO lane; the old gh fetcher was stopped by this lane before the switch.
 - 2026-10-22 MIRROR SIDE COMPLETE: extracted-tar parts 02/03/04/05 all sha256-verified against release `doa4-mirror-20261017` digests (fc7b95e5… / 24656e3a… / c5d119db… / cccd3eed…) via the resumable driver — every mirror byte the containment audit will read is from a digest-verified part. ISO assembly at 15/30 under the resumable driver (parts landing ~1 per 7 min, zero digest failures on the range path).
 - 2026-10-22 RESTART #2 (~19:29 CDT): VM restarted again, killing the ISO driver mid part-28 (27/30 landed; part-28 chunk prefix intact at a 16 MiB boundary). Driver relaunched; it resumes part-28 from the boundary. No verified data lost.
+
+## LANE CLOSEOUT (2026-10-22, final)
+
+- **Job 1 DONE.** CONTAINMENT-AUDIT.md + containment-map.json +
+  PACKAGE-NAME-MAP.md/.json + ID-CORRECTIONS.md committed.
+  Verdicts: chrone 29 contiguous / 44 scattered; chrtwo 79 / 9
+  scattered (+38 piecewise-unresolved, 2 absent-windows);
+  chrthree 81 contiguous / 66 piecewise / 41 absent (scatter not
+  run for chrthree's non-contiguous set — stated in the audit).
+  Union coverage 29.7553 / 51.1871 / 48.2684 %. Mirror = earlier
+  build's layout (30/68/75 XPR2 bundles), NOT a permutation.
+  70/148 packages name-grade proven; pkg29 REFUTED (= tin02);
+  Kokoro/group-C/pkg10 tentatives UNRESOLVED, plainly.
+- **Job 2 DONE (census tier).** 197 mot entries extracted,
+  manifested, released (`doa4-mot-20261022`). Grammar evidenced
+  to the 44-descriptor record layer; .bin w21 vs .mot records
+  PROVEN different index spaces. First clip NOT assembled —
+  residual = packed-encoding expansion grammar (MOT-CENSUS §6).
+- **Job 3 DONE.** .mot registry (196 × 0x6C, name @+0x18) +
+  loader mechanism PROVEN; 0x22xx dispatch on runtime records
+  evidenced at 15 sites; per-opcode semantics = exact negative
+  (table-driven), next step named (XEX-HUNT.md).
+- **Job 4 DONE.** WIRING-INVENTORY phase-15 section appended;
+  DOA4-FINAL-STATE.md phase-15 addendum appended (pointer only);
+  this state file final.
+- **Local clear (one-store rule):** p15/doa4.iso (7.3 GB,
+  byte-safe in release doa4-iso-v1, whole-hash
+  4423cd5ca0979e38b48fce3dbdd78de6416abfd4dd01fc8cc9140e2c92b104aa
+  re-verified this lane), p15/mirrorparts (2.0 GB, release
+  doa4-mirror-20261017, per-part digests verified), afs_extract
+  (1.5 GB, derived from the verified ISO), mot_entries +
+  mot_entries.tar (release doa4-mot-20261022, tar sha256
+  026592a07c... matched at clear time), extracts (release
+  doa4-iso-extracts-20261022). ~11 GB cleared; scratch retains
+  JSON/logs only. Also logged in
+  ~/workspace/agent-ops/disk-cleanup-log.md.
+- **Gates:** G1 CLOSED · G2 CLOSED (chr/mot/cmn accounted) ·
+  G3 advanced (packages 70/148 named; .mot record layer) ·
+  G4 OPEN (expansion grammar) · G5 13 tools banked · G6
+  unchanged.
+- PR #597 stacks on #574 (still open); not merged from this
+  lane — parent to sequence.

@@ -153,3 +153,23 @@ quantified the pressing correction: the mirror's anm.afs is
 DIFFERENT (same size, 9.83% identical); chr* verdicts in
 `phase14/PROVENANCE.md`. Canon Q1–Q6 remain OWNER-pending;
 nothing else in this document changes.
+
+## Phase-15 addendum (2026-10-22, PR #597) — pointer, additive only
+
+Phase 15 (`teardown/dead-or-alive-4/phase15/`) closed the
+provenance question the phase-14 addendum left quantified but
+open: the mirror chr streams are an earlier build's package
+layout, not a permuted retail copy — containment is regional
+(189 of 389 entries byte-contiguous; union coverage
+29.8/51.2/48.3 %), and 70 of the 148 library packages now carry
+proven filename-grade identities (78 unassigned, honestly).
+One phase-8 identification is REFUTED (chrone-pkg29 is tin02,
+not an accessory package); the Kokoro / katana-ninja / pkg10
+tentatives stand UNRESOLVED. The .mot stream layer is censused
+and released (`doa4-mot-20261022`): gate 2's remaining blocker
+is now exactly the .mot packed-encoding expansion grammar plus
+the loader-side w21 token→record expansion trace in the real
+XEX (the .mot loader mechanism itself is proven). Detail:
+`phase15/CONTAINMENT-AUDIT.md`, `phase15/MOT-CENSUS.md`,
+`phase15/XEX-HUNT.md`, `phase15/PHASE15-STATE.md`. Canon Q1–Q6
+remain OWNER-pending; nothing else in this document changes.

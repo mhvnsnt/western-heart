@@ -168,3 +168,58 @@ Wiring blockers, in dependency order:
   IS the retail file. Detail: `phase14/PROVENANCE.md`.
 - **Composites 23/31 FINAL, binding DYNAMIC-ONLY, ID complete,
   canon Q1–Q6 OWNER-pending: all unchanged.**
+
+## Phase 15 update (2026-10-22, PR #597) — containment audited; packages named; .mot census; XEX consumer hunt
+
+- **Containment: DECIDED.** The ISO was re-assembled a second
+  time under verify-before-write discipline (whole-ISO sha256
+  `4423cd5c…` re-verified) and every named entry of
+  chrone/chrtwo/chrthree (73/128/188) was located against its
+  mirror stream. Verdict: the mirror streams are an EARLIER
+  BUILD's package layout (30/68/75 XPR2 bundles), NOT a permuted
+  copy of the retail containers. Containment is regional: 189
+  entries byte-contiguous (incl. the chrone retail tail block
+  zac00–tin01), the rest re-authored between builds — `.cat`
+  texture data survives at 61–88%, `.tpr` model data at 0–25%
+  (chrone scatter). Union coverage: chrone 29.7553%, chrtwo
+  51.1871%, chrthree 48.2684%. Detail + machine map:
+  `phase15/CONTAINMENT-AUDIT.md`, `phase15/containment-map.json`.
+- **Identity: 70/148 packages NAME-GRADE.** XPR2 directory
+  fingerprints + assembly-graph keys assign proven entry names
+  to 70 packages (chrone pkg23–29; chrtwo pkg46–67; chrthree
+  pkg09–49); 78 stay honestly unassigned (re-authored regions).
+  Corrections: phase-8's chrone-pkg29 "non-character accessory"
+  is REFUTED (it is tin02); the cord-loop family is Zack
+  (zac00/01/02/04); the armored 7-package group is spa00–06; the
+  cat-ear group is kor02/03/05/06/07. Kokoro (pkg02), the
+  katana-ninja group (pkg06–09), and pkg10 tentatives are
+  UNRESOLVED by filename evidence — stated plainly in
+  `phase15/ID-CORRECTIONS.md` + `phase15/PACKAGE-NAME-MAP.md`.
+- **.mot streams: CENSUSED + RELEASED.** All 197 mot.afs entries
+  extracted from the verified ISO, per-file sha256 manifest in
+  git (`phase15/mot-entries-manifest.json`), released as
+  `doa4-mot-20261022`. Fighter .mot grammar is evidenced to the
+  record layer: offset table A (1000/1004/400 entries by class),
+  a 44-entry record descriptor before each record, packed
+  (non-f32) payload encoding. Cross-reference PROVES the .bin
+  w21 clip table and the .mot record table are different index
+  spaces (1024/584 vs 1000/376 for zack) — no slot mapping
+  exists to claim. First clip NOT assembled; the residual is
+  the packed-encoding expansion grammar. Detail:
+  `phase15/MOT-CENSUS.md`.
+- **XEX consumer: HUNTED (one bounded pass).** The real
+  default.xex's .mot registry is a 196-record × 0x6C table
+  (name char* at +0x18); the loader opens the .mot by runtime
+  index → record → name (mechanism PROVEN). The 0x22xx token
+  namespace is consumed on RUNTIME records (type byte +0x37,
+  u16 id +0x30) at 15 evidenced dispatch/classifier sites; the
+  bulk of the grammar is table-driven, so per-opcode w21
+  semantics remain unproven — exact negative + named next step
+  (trace the loader-side expansion from VA 0x823FA430) in
+  `phase15/XEX-HUNT.md`.
+- **Gates after phase 15:** G1 decrypt CLOSED (phase 14); G2
+  extract-account CLOSED for chr/mot/cmn (this audit); G3
+  format decode — packages named 70/148, .mot at record layer;
+  G4 movesets-anim OPEN (expansion grammar is the blocker);
+  G5 tooling — 13 phase-15 tools in `phase15/tools/`; G6
+  in-game wiring UNCHANGED (no new wiring this phase).
