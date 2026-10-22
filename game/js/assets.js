@@ -48,6 +48,33 @@ export const MODEL_URLS = {
   // smooth_weights.py); the owner's original stays untouched beside it as model.glb.
   'zui-attire1': '../roster/zui/attires/attire1/model-rigged.glb',
   'zui-attire2': '../roster/zui/attires/attire2/model.glb',
+  // ZEN Attire 1 — SPIRIT BODY (owner Tripo 8c46e379, 2026-10-21): Zen is
+  // UNVESSELED (canon ruling 2026-10-21) — this is his own spirit body and
+  // his main model, not a vessel swap. He was a steve-fox fallback rider in
+  // roster-full with no attire ladder of his own; his legacy body stays
+  // wired at 'zen-body' below and ladders back as a selectable alternate
+  // in attires.js (never deleted).
+  zen: '../roster/zen/attires/attire1/model.glb',
+  'zen-attire1': '../roster/zen/attires/attire1/model.glb',
+  // ZEN'S SPIRIT FORM (owner Tripo 803f4cf1, 2026-10-21): Zen HIMSELF as
+  // a spirit — the "stand version of himself" from his design. NOT an
+  // attire and NOT his body: in the stand system the spirit form floats
+  // behind his spirit body (behavior spec in roster/zen/RIG-NOTES.md).
+  // Loadable as its own key, tied to Zen's fighter record.
+  'zen-spirit': '../roster/zen/spirit/model.glb',
+  // ZEN TRANSFORMATION MODES (owner Tripos, 2026-10-21): NOT attires —
+  // stages of ONE transformation inside Attire 1, chained via forms in
+  // roster-full.js (spirit body -> TENTACLE MODE -> OVERSOUL). Canon:
+  // roster/zen/CANON.md; behavior spec: roster/zen/RIG-NOTES.md.
+  // TENTACLE MODE (9460095d): the clothing tentacle imagery becomes REAL
+  // tentacles busting out of him; no Oversoul head; spirit rides higher
+  // and further back (offset in RIG-NOTES.md).
+  'zen-tentacle': '../roster/zen/tentacle/model.glb',
+  // OVERSOUL (2bbc8e88): the combined form — the spirit has docked at the
+  // head position and TAKEN THE HEAD'S PLACE. Body tentacles on this
+  // model are IMAGERY on the body, not protruding tentacles (verified on
+  // the front render, 2026-10-21 — see roster/zen/ATTIRE-SLOTS.md).
+  'zen-oversoul': '../roster/zen/oversoul/model.glb',
   // Tripo pulls wired 2026-10-19 (owner: stop saying "not in the repo").
   phantom: '../roster/phantom/attires/attire1/model.glb',
   skull: '../roster/skull/attires/attire1/model.glb',
@@ -632,8 +659,18 @@ class AssetManager {
             this.groundY[id] = Number.isFinite(y0) ? y0 : 0;
           }
           _facingReady.then(() => {
-            const rec = _facingTable && _facingTable[id];
-            this.facing[id] = rec === '-Z' ? -1 : rec === '+Z' ? 1 : (feetFacingCue(gltf.scene) || 1);
+            try {
+              const rec = _facingTable && _facingTable[id];
+              this.facing[id] = rec === '-Z' ? -1 : rec === '+Z' ? 1 : (feetFacingCue(gltf.scene) || 1);
+            } catch (e) {
+              console.warn(`[WH] facing cue failed for ${id}, defaulting to +Z:`, (e && e.message) || e);
+              this.facing[id] = 1;
+            }
+            resolve();
+          }, () => {
+            // The facing table never settled: never let this gate hang the load.
+            console.warn(`[WH] facing table unsettled for ${id}, defaulting to +Z`);
+            this.facing[id] = 1;
             resolve();
           });
         },
