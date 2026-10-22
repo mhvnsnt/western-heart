@@ -168,9 +168,11 @@ export const MODEL_URLS = {
   'pantera_alt1': 'assets/models/pantera_alt1.glb',
   'pantera-body': 'assets/models/pantera-body.glb',
   'pantera-leoman': '../roster/pantera/attires/leomon/model.glb',
-  // Pantera roster attires A3-A6 (owner slot order 2026-10-20: A3 snow
-  // leopard, A4 LEOPARD KING, A5 Crimson Rage, A6 T7 P2; A2 Leo man is the
-  // 'pantera-leoman' key above). ../roster pattern per phantom/skull.
+  // Pantera roster attires (owner reorder 2026-10-21: Tripo originals at
+  // the front of game/js/attires.js — A1 Leo man is the 'pantera-leoman'
+  // key above, A2 LEOPARD KING below; Tekken reskins behind them — A3 is
+  // the base 'pantera' key above (T7King P1 reskin), A4 snow leopard,
+  // A5 Crimson Rage, A6 T7 P2). ../roster pattern per phantom/skull.
   'pantera-snow-leopard': '../roster/pantera/attires/snow-leopard/pantera-snow-leopard.glb',
   'pantera-leopard-king': '../roster/pantera/attires/leopard-king/model-rigged.glb',
   'pantera-crimson-rage': '../roster/pantera/attires/crimson-rage/pantera-attire5-crimson.glb',
