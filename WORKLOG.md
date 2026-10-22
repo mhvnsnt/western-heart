@@ -2087,3 +2087,30 @@ On-main files NOT touched: worker 37's `js/creation-flow.js` + `js/art.js`
   `docs/owner-directives.md`.
 - Full log: `docs/decisions/2026-10-22-kinpo-repoint-w50.md` (branch
   `w50/kinpo-repoint`).
+
+## 2026-10-22 ~18:30 CDT — worker 68: CORNERSTONE moveset (ryuji-rock)
+
+- Owner-locked name **CORNERSTONE** (internal id stays `ryuji-rock`); full spec
+  wired: Ryuji Yamazaki base (3D KOF) + The Rock + Younger Toguro, Tekken inputs.
+- YYH: Dark Tournament teardown (my lane): RESEARCH teardown — complete Toguro
+  kit documented from GameFAQs FAQ + US manual + wiki (no game files in
+  holdings; file-level motion extraction = future work). Report:
+  `docs/research/yyh-dark-tournament-younger-toguro-2026-10-22.md`.
+- New federation files (w59 format): `game/assets/movesets/kof3d-ryuji.json`
+  (26 moves — XV command list decoded from icon alts, XIV/MI deltas noted),
+  `game/assets/movesets/yyh-toguro.json` (18), `game/assets/movesets/therock.json` (6).
+- New library banks (w47 schema v1): `game/data/moveset-library/banks/{kof3d,yyh,wwe-rock}.json`
+  (50 entries, all estimated fields flagged). Index registration snippet left
+  for worker 47's PR (#678/#699) — their files untouched.
+- Manifest: `game/data/movesets/cornerstone.json` (50 library refs, 4 layers).
+- `game/assets/movesets/ryuji-rock.json`: proxy→assembled, 116 moves,
+  display CORNERSTONE. King T3 proxy REMOVED (King claimed by Pantera — source
+  law); Pit Viper input corrected to XV-verified `qcb,hcf`. Thumb Flick Blast
+  = `qcf+1` hold-repeat, spammable. `index.json` entry updated surgically.
+- CANON.md + `docs/owner-directives.md` surgical edits (CORNERSTONE name,
+  Toguro wired, naming question resolved). Decision log:
+  `docs/decisions/2026-10-22-cornerstone-moveset.md`. Assembly research:
+  `docs/research/cornerstone-moveset-assembly-2026-10-22.md`.
+- Generator: `~/workspace/w68/gen-cornerstone.mjs` (re-runnable).
+- Validation: schema-required-field check + manifest↔bank cross-ref — all pass.
+- MERGE FREEZE: branch pushed, PR opened, merge-ready — NOT merged.

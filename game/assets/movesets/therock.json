@@ -1,0 +1,81 @@
+{
+ "conversion_rule": "Wrestling moves -> Tekken-style inputs. Throws = 1+3-family (uranage/slam). Running attacks = f,F+ slots. Diving elbow = u/f+2 (King’s jumping diving elbow, owner-specified). Submissions = grounded holds. Sources per owner 2026-10-21/22: King’s Tekken version, WWE All Stars, WWE teardown games (No Mercy / WrestleMania XIX holdings).",
+ "fighter_id": "the-rock",
+ "fighter_name": "The Rock",
+ "game": "WWE All Stars / WWE teardown holdings / Tekken (King)",
+ "limb_convention": "1=armR(LP), 2=armL(HP), 3=legL(LK), 4=legR(HK); input keys prefixed ~ are dictionary variants sharing an input",
+ "moves": {
+  "1+3": {
+   "class": "throw",
+   "damage": 45,
+   "hit_advantage": "--",
+   "hit_level": "throw",
+   "input": "1+3",
+   "limb": 1,
+   "name": "ROCK BOTTOM",
+   "notes": "Uranage slam finisher. Multi-source per owner 2026-10-21: King’s version from Tekken (owner-specified; prior file noted King T7 chain row 281 frame data), WWE All Stars version, The Rock’s own animations from the WWE teardown games (No Mercy / WrestleMania XIX holdings).",
+   "origin": "WWE All Stars + WWE teardown + Tekken King (owner-specified multi-source)",
+   "startup": 10
+  },
+  "u/f+2": {
+   "class": "attack",
+   "damage": 30,
+   "hit_advantage": "-12",
+   "hit_level": "mid",
+   "input": "u/f+2",
+   "limb": 2,
+   "name": "PEOPLE'S ELBOW (diving)",
+   "notes": "The diving elbow: owner-specified as King’s jumping diving elbow attack from Tekken (CANON.md: King’s High Elbow Drop u/f+2).",
+   "origin": "Tekken King diving elbow (owner-specified) + WWE",
+   "startup": 16
+  },
+  "d/b+1+3": {
+   "class": "hold",
+   "damage": 18,
+   "hit_advantage": "--",
+   "hit_level": "throw",
+   "input": "d/b+1+3",
+   "limb": 3,
+   "name": "SHARPSHOOTER",
+   "notes": "Submission leglock hold. Owner spec 2026-10-22.",
+   "origin": "WWE (owner-specified)",
+   "startup": 12
+  },
+  "f+F+2": {
+   "class": "strike",
+   "damage": 22,
+   "hit_advantage": "-8",
+   "hit_level": "high",
+   "input": "f,F+2",
+   "limb": 2,
+   "name": "BRAHMA BULL LARIAT",
+   "notes": "Running clothesline. Owner spec 2026-10-22.",
+   "origin": "WWE (owner-specified)",
+   "startup": 14
+  },
+  "1+1+2": {
+   "class": "strike",
+   "damage": 26,
+   "hit_advantage": "-6",
+   "hit_level": "high",
+   "input": "1,1,2",
+   "limb": 1,
+   "name": "LAYIN' THE SMACKDOWN",
+   "notes": "Flurry string. Named in CANON.md Cornerstone section.",
+   "origin": "WWE canon (CANON.md)",
+   "startup": 10
+  },
+  "d/b+1+2": {
+   "class": "throw",
+   "damage": 28,
+   "hit_advantage": "--",
+   "hit_level": "throw",
+   "input": "d/b+1+2",
+   "limb": 2,
+   "name": "ROCK'S DDT",
+   "notes": "Kept from the existing ryuji.json kit (owner 2026-10-19).",
+   "origin": "ryuji.json (existing WH kit)",
+   "startup": 12
+  }
+ }
+}

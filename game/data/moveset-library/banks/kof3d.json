@@ -1,0 +1,1161 @@
+{
+ "bank": "kof3d",
+ "game": "kof_xiv_xv_mi",
+ "game_label": "KOF XIV / KOF XV / Maximum Impact 1&2",
+ "built": "2026-10-22",
+ "builder": "worker 68 — gen-cornerstone.mjs (federation-first, projected to library v1)",
+ "honesty": "estimated fields flagged per-entry in provenance.estimated; nothing invented as canon",
+ "namespaces": {
+  "id": "kof3d:ryuji:<slug>",
+  "anim_ref": "kof3d:ryuji:<slug>"
+ },
+ "moves": [
+  {
+   "id": "kof3d:ryuji:stance",
+   "name": "Yamazaki Stance",
+   "name_status": "descriptive — stance has no official name",
+   "source": "kof3d",
+   "source_character": "ryuji",
+   "source_game_label": "KOF XIV / KOF XV / Maximum Impact 1&2",
+   "anim_ref": "kof3d:ryuji:stance",
+   "type": "stance",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "5",
+   "input_slots": [
+    "5"
+   ],
+   "frames": {
+    "startup": 0,
+    "active": 0,
+    "recovery": 6,
+    "total": 6
+   },
+   "hit_level": null,
+   "subtype": null,
+   "damage": 0,
+   "damage_raw": null,
+   "properties": [],
+   "wh": {
+    "heavy": false,
+    "knock": 0,
+    "soulGain": 0
+   },
+   "provenance": {
+    "note": "KOF XIV/XV 3D stance. Hunched 3D stance, arms loose, tongue ready. Stance data from 3D KOF (XIV/XV/MI2).",
+    "estimated": [
+     "frames.active",
+     "frames.recovery",
+     "frames.total",
+     "damage",
+     "hit_advantage",
+     "damage_raw"
+    ]
+   }
+  },
+  {
+   "id": "kof3d:ryuji:eviscerator",
+   "name": "Eviscerator",
+   "name_status": "KOF XV official command-move name",
+   "source": "kof3d",
+   "source_character": "ryuji",
+   "source_game_label": "KOF XIV / KOF XV / Maximum Impact 1&2",
+   "anim_ref": "kof3d:ryuji:eviscerator",
+   "type": "strike",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "f+1",
+   "input_slots": [
+    "f+1"
+   ],
+   "frames": {
+    "startup": 11,
+    "active": 3,
+    "recovery": 13,
+    "total": 27
+   },
+   "hit_level": "high",
+   "subtype": "punch",
+   "damage": 14,
+   "damage_raw": null,
+   "properties": [],
+   "wh": {
+    "heavy": false,
+    "knock": 2,
+    "soulGain": 6
+   },
+   "provenance": {
+    "note": "KOF XV Yamazaki command list (altarofgaming). Overhead punch command move (XV).",
+    "estimated": [
+     "frames.active",
+     "frames.recovery",
+     "frames.total",
+     "damage",
+     "hit_advantage",
+     "damage_raw"
+    ]
+   }
+  },
+  {
+   "id": "kof3d:ryuji:slam",
+   "name": "Slam",
+   "name_status": "KOF XV official command-move name",
+   "source": "kof3d",
+   "source_character": "ryuji",
+   "source_game_label": "KOF XIV / KOF XV / Maximum Impact 1&2",
+   "anim_ref": "kof3d:ryuji:slam",
+   "type": "strike",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "f+3",
+   "input_slots": [
+    "f+3"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 3,
+    "recovery": 14,
+    "total": 29
+   },
+   "hit_level": "mid",
+   "subtype": "kick",
+   "damage": 16,
+   "damage_raw": null,
+   "properties": [],
+   "wh": {
+    "heavy": false,
+    "knock": 2.5,
+    "soulGain": 6
+   },
+   "provenance": {
+    "note": "KOF XV Yamazaki command list (altarofgaming). Overhead kick command move (XV).",
+    "estimated": [
+     "frames.active",
+     "frames.recovery",
+     "frames.total",
+     "damage",
+     "hit_advantage",
+     "damage_raw"
+    ]
+   }
+  },
+  {
+   "id": "kof3d:ryuji:serpent-slash-high",
+   "name": "Serpent Slash (Joudan)",
+   "name_status": "official — Hebitsukai",
+   "source": "kof3d",
+   "source_character": "ryuji",
+   "source_game_label": "KOF XIV / KOF XV / Maximum Impact 1&2",
+   "anim_ref": "kof3d:ryuji:serpent-slash-high",
+   "type": "special",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "qcb+1",
+   "input_slots": [
+    "qcb+1"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 3,
+    "recovery": 14,
+    "total": 29
+   },
+   "hit_level": "high",
+   "subtype": "punch",
+   "damage": 16,
+   "damage_raw": null,
+   "properties": [],
+   "wh": {
+    "heavy": false,
+    "knock": 2.5,
+    "soulGain": 8
+   },
+   "provenance": {
+    "note": "KOF XV Yamazaki (qcb+A); classic qcf+A noted. Far-reaching punch, high version. XIV/classic command was qcf+A; XV FLIPPED it to qcb — both recorded.",
+    "estimated": [
+     "frames.active",
+     "frames.recovery",
+     "frames.total",
+     "damage",
+     "hit_advantage",
+     "damage_raw"
+    ]
+   }
+  },
+  {
+   "id": "kof3d:ryuji:serpent-slash-mid",
+   "name": "Serpent Slash (Chuudan)",
+   "name_status": "official — Hebitsukai",
+   "source": "kof3d",
+   "source_character": "ryuji",
+   "source_game_label": "KOF XIV / KOF XV / Maximum Impact 1&2",
+   "anim_ref": "kof3d:ryuji:serpent-slash-mid",
+   "type": "special",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "qcb+3",
+   "input_slots": [
+    "qcb+3"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 3,
+    "recovery": 14,
+    "total": 29
+   },
+   "hit_level": "mid",
+   "subtype": "punch",
+   "damage": 16,
+   "damage_raw": null,
+   "properties": [],
+   "wh": {
+    "heavy": false,
+    "knock": 2.5,
+    "soulGain": 8
+   },
+   "provenance": {
+    "note": "KOF XV Yamazaki command list (altarofgaming). Mid version (XV qcb+B).",
+    "estimated": [
+     "frames.active",
+     "frames.recovery",
+     "frames.total",
+     "damage",
+     "hit_advantage",
+     "damage_raw"
+    ]
+   }
+  },
+  {
+   "id": "kof3d:ryuji:serpent-slash-low",
+   "name": "Serpent Slash (Gedan)",
+   "name_status": "official — Hebitsukai",
+   "source": "kof3d",
+   "source_character": "ryuji",
+   "source_game_label": "KOF XIV / KOF XV / Maximum Impact 1&2",
+   "anim_ref": "kof3d:ryuji:serpent-slash-low",
+   "type": "special",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "qcb+2",
+   "input_slots": [
+    "qcb+2"
+   ],
+   "frames": {
+    "startup": 13,
+    "active": 3,
+    "recovery": 16,
+    "total": 32
+   },
+   "hit_level": "low",
+   "subtype": "punch",
+   "damage": 15,
+   "damage_raw": null,
+   "properties": [],
+   "wh": {
+    "heavy": false,
+    "knock": 2.5,
+    "soulGain": 8
+   },
+   "provenance": {
+    "note": "KOF XV Yamazaki command list (altarofgaming). Low version (XV qcb+C).",
+    "estimated": [
+     "frames.active",
+     "frames.recovery",
+     "frames.total",
+     "damage",
+     "hit_advantage",
+     "damage_raw"
+    ]
+   }
+  },
+  {
+   "id": "kof3d:ryuji:serpent-slash-keep",
+   "name": "Serpent Slash (Keep)",
+   "name_status": "official",
+   "source": "kof3d",
+   "source_character": "ryuji",
+   "source_game_label": "KOF XIV / KOF XV / Maximum Impact 1&2",
+   "anim_ref": "kof3d:ryuji:serpent-slash-keep",
+   "type": "transition",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "qcb+1~hold",
+   "input_slots": [
+    "qcb+1~hold"
+   ],
+   "frames": {
+    "startup": 0,
+    "active": 0,
+    "recovery": 6,
+    "total": 6
+   },
+   "hit_level": null,
+   "subtype": null,
+   "damage": 0,
+   "damage_raw": null,
+   "properties": [
+    "taunt"
+   ],
+   "wh": {
+    "heavy": false,
+    "knock": 0,
+    "soulGain": 2
+   },
+   "provenance": {
+    "note": "KOF XV / Neowave move lists. Hold: Yamazaki swings his active arm tauntingly and lazily.",
+    "estimated": [
+     "frames.active",
+     "frames.recovery",
+     "frames.total",
+     "damage",
+     "hit_advantage",
+     "damage_raw"
+    ]
+   }
+  },
+  {
+   "id": "kof3d:ryuji:serpent-slash-cancel",
+   "name": "Serpent Slash Cancel",
+   "name_status": "official",
+   "source": "kof3d",
+   "source_character": "ryuji",
+   "source_game_label": "KOF XIV / KOF XV / Maximum Impact 1&2",
+   "anim_ref": "kof3d:ryuji:serpent-slash-cancel",
+   "type": "transition",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "4",
+   "input_slots": [
+    "4"
+   ],
+   "frames": {
+    "startup": 0,
+    "active": 0,
+    "recovery": 6,
+    "total": 6
+   },
+   "hit_level": null,
+   "subtype": null,
+   "damage": 0,
+   "damage_raw": null,
+   "properties": [],
+   "wh": {
+    "heavy": false,
+    "knock": 0,
+    "soulGain": 0
+   },
+   "provenance": {
+    "note": "KOF XV / Neowave move lists. D during Serpent Slash (Keep): returns to neutral stance.",
+    "estimated": [
+     "frames.active",
+     "frames.recovery",
+     "frames.total",
+     "damage",
+     "hit_advantage",
+     "damage_raw"
+    ]
+   }
+  },
+  {
+   "id": "kof3d:ryuji:spray-sand",
+   "name": "Spray Sand",
+   "name_status": "official — Suna Kake",
+   "source": "kof3d",
+   "source_character": "ryuji",
+   "source_game_label": "KOF XIV / KOF XV / Maximum Impact 1&2",
+   "anim_ref": "kof3d:ryuji:spray-sand",
+   "type": "special",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "dp+4",
+   "input_slots": [
+    "dp+4"
+   ],
+   "frames": {
+    "startup": 16,
+    "active": 3,
+    "recovery": 19,
+    "total": 38
+   },
+   "hit_level": "low",
+   "subtype": "kick",
+   "damage": 13,
+   "damage_raw": null,
+   "properties": [],
+   "wh": {
+    "heavy": false,
+    "knock": 2.5,
+    "soulGain": 8
+   },
+   "provenance": {
+    "note": "KOF XV Yamazaki command list (altarofgaming). Kicks sand with back leg. XV: standalone dp+D AND Serpent Slash follow-up on hit (dp+D).",
+    "estimated": [
+     "frames.active",
+     "frames.recovery",
+     "frames.total",
+     "damage",
+     "hit_advantage",
+     "damage_raw"
+    ]
+   }
+  },
+  {
+   "id": "kof3d:ryuji:bombshell-badda-bing",
+   "name": "Bombshell Badda-Bing (Light)",
+   "name_status": "official XV name — Bakudan Pachiki",
+   "source": "kof3d",
+   "source_character": "ryuji",
+   "source_game_label": "KOF XIV / KOF XV / Maximum Impact 1&2",
+   "anim_ref": "kof3d:ryuji:bombshell-badda-bing",
+   "type": "throw",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "hcb,f+1",
+   "input_slots": [
+    "hcb,f+1"
+   ],
+   "frames": {
+    "startup": 9,
+    "active": 2,
+    "recovery": 11,
+    "total": 22
+   },
+   "hit_level": "throw",
+   "subtype": "headbutt",
+   "damage": 24,
+   "damage_raw": null,
+   "properties": [
+    "throw"
+   ],
+   "wh": {
+    "heavy": true,
+    "knock": 4,
+    "soulGain": 12
+   },
+   "provenance": {
+    "note": "KOF XV Yamazaki command list (altarofgaming). Close: grabs shirt/neck, exploding headbutt.",
+    "estimated": [
+     "frames.active",
+     "frames.recovery",
+     "frames.total",
+     "damage",
+     "hit_advantage",
+     "damage_raw"
+    ]
+   }
+  },
+  {
+   "id": "kof3d:ryuji:bombshell-badda-bing-heavy",
+   "name": "Bombshell Badda-Bing (Heavy)",
+   "name_status": "official XV name — Bakudan Pachiki",
+   "source": "kof3d",
+   "source_character": "ryuji",
+   "source_game_label": "KOF XIV / KOF XV / Maximum Impact 1&2",
+   "anim_ref": "kof3d:ryuji:bombshell-badda-bing-heavy",
+   "type": "throw",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "hcb,f+2",
+   "input_slots": [
+    "hcb,f+2"
+   ],
+   "frames": {
+    "startup": 11,
+    "active": 2,
+    "recovery": 13,
+    "total": 26
+   },
+   "hit_level": "throw",
+   "subtype": "headbutt",
+   "damage": 28,
+   "damage_raw": null,
+   "properties": [
+    "throw"
+   ],
+   "wh": {
+    "heavy": true,
+    "knock": 4.5,
+    "soulGain": 14
+   },
+   "provenance": {
+    "note": "KOF XV Yamazaki command list (altarofgaming). Heavy version.",
+    "estimated": [
+     "frames.active",
+     "frames.recovery",
+     "frames.total",
+     "damage",
+     "hit_advantage",
+     "damage_raw"
+    ]
+   }
+  },
+  {
+   "id": "kof3d:ryuji:double-return",
+   "name": "Double Return (Light)",
+   "name_status": "official XV name — Bai Gaeshi",
+   "source": "kof3d",
+   "source_character": "ryuji",
+   "source_game_label": "KOF XIV / KOF XV / Maximum Impact 1&2",
+   "anim_ref": "kof3d:ryuji:double-return",
+   "type": "special",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "qcf+1",
+   "input_slots": [
+    "qcf+1"
+   ],
+   "frames": {
+    "startup": 14,
+    "active": 3,
+    "recovery": 17,
+    "total": 34
+   },
+   "hit_level": "mid",
+   "subtype": "punch",
+   "damage": 18,
+   "damage_raw": null,
+   "properties": [
+    "launch"
+   ],
+   "wh": {
+    "heavy": false,
+    "knock": 3,
+    "soulGain": 10
+   },
+   "provenance": {
+    "note": "KOF XV / Neowave move lists. Uppercut; REFLECTS mid-level projectiles.",
+    "estimated": [
+     "frames.active",
+     "frames.recovery",
+     "frames.total",
+     "damage",
+     "hit_advantage",
+     "damage_raw"
+    ]
+   }
+  },
+  {
+   "id": "kof3d:ryuji:double-return-heavy",
+   "name": "Double Return (Heavy)",
+   "name_status": "official XV name — Bai Gaeshi",
+   "source": "kof3d",
+   "source_character": "ryuji",
+   "source_game_label": "KOF XIV / KOF XV / Maximum Impact 1&2",
+   "anim_ref": "kof3d:ryuji:double-return-heavy",
+   "type": "special",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "qcf+2",
+   "input_slots": [
+    "qcf+2"
+   ],
+   "frames": {
+    "startup": 16,
+    "active": 3,
+    "recovery": 19,
+    "total": 38
+   },
+   "hit_level": "mid",
+   "subtype": "punch",
+   "damage": 22,
+   "damage_raw": null,
+   "properties": [
+    "launch"
+   ],
+   "wh": {
+    "heavy": true,
+    "knock": 3.5,
+    "soulGain": 12
+   },
+   "provenance": {
+    "note": "KOF XV / Neowave move lists. Heavy version; reflects projectiles.",
+    "estimated": [
+     "frames.active",
+     "frames.recovery",
+     "frames.total",
+     "damage",
+     "hit_advantage",
+     "damage_raw"
+    ]
+   }
+  },
+  {
+   "id": "kof3d:ryuji:sadomaso",
+   "name": "Sadomaso (Light)",
+   "name_status": "official — Sadomazo tongue taunt",
+   "source": "kof3d",
+   "source_character": "ryuji",
+   "source_game_label": "KOF XIV / KOF XV / Maximum Impact 1&2",
+   "anim_ref": "kof3d:ryuji:sadomaso",
+   "type": "counter",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "hcf+3",
+   "input_slots": [
+    "hcf+3"
+   ],
+   "frames": {
+    "startup": 10,
+    "active": 0,
+    "recovery": 12,
+    "total": 22
+   },
+   "hit_level": "mid",
+   "subtype": "punch",
+   "damage": 20,
+   "damage_raw": null,
+   "properties": [],
+   "wh": {
+    "heavy": false,
+    "knock": 3,
+    "soulGain": 10
+   },
+   "provenance": {
+    "note": "KOF XV / Neowave move lists. Sticks tongue out, wiggles it; if hit during it, counterattacks (usually uppercut). THE tongue taunt.",
+    "estimated": [
+     "frames.active",
+     "frames.recovery",
+     "frames.total",
+     "damage",
+     "hit_advantage",
+     "damage_raw"
+    ]
+   }
+  },
+  {
+   "id": "kof3d:ryuji:sadomaso-heavy",
+   "name": "Sadomaso (Heavy)",
+   "name_status": "official — Sadomazo tongue taunt",
+   "source": "kof3d",
+   "source_character": "ryuji",
+   "source_game_label": "KOF XIV / KOF XV / Maximum Impact 1&2",
+   "anim_ref": "kof3d:ryuji:sadomaso-heavy",
+   "type": "counter",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "hcf+4",
+   "input_slots": [
+    "hcf+4"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 0,
+    "recovery": 14,
+    "total": 26
+   },
+   "hit_level": "mid",
+   "subtype": "punch",
+   "damage": 24,
+   "damage_raw": null,
+   "properties": [],
+   "wh": {
+    "heavy": true,
+    "knock": 3.5,
+    "soulGain": 12
+   },
+   "provenance": {
+    "note": "KOF XV / Neowave move lists. Heavy version.",
+    "estimated": [
+     "frames.active",
+     "frames.recovery",
+     "frames.total",
+     "damage",
+     "hit_advantage",
+     "damage_raw"
+    ]
+   }
+  },
+  {
+   "id": "kof3d:ryuji:fight-of-tempering",
+   "name": "Fight of Tempering",
+   "name_status": "KOF XV official name",
+   "source": "kof3d",
+   "source_character": "ryuji",
+   "source_game_label": "KOF XIV / KOF XV / Maximum Impact 1&2",
+   "anim_ref": "kof3d:ryuji:fight-of-tempering",
+   "type": "strike",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "dp+3",
+   "input_slots": [
+    "dp+3"
+   ],
+   "frames": {
+    "startup": 13,
+    "active": 3,
+    "recovery": 16,
+    "total": 32
+   },
+   "hit_level": "mid",
+   "subtype": "kick",
+   "damage": 17,
+   "damage_raw": null,
+   "properties": [],
+   "wh": {
+    "heavy": false,
+    "knock": 3,
+    "soulGain": 8
+   },
+   "provenance": {
+    "note": "KOF XV Yamazaki command list (altarofgaming). XV name for the dp+K special.",
+    "estimated": [
+     "frames.active",
+     "frames.recovery",
+     "frames.total",
+     "damage",
+     "hit_advantage",
+     "damage_raw"
+    ]
+   }
+  },
+  {
+   "id": "kof3d:ryuji:todome-xv",
+   "name": "Todome (XV Light)",
+   "name_status": "official",
+   "source": "kof3d",
+   "source_character": "ryuji",
+   "source_game_label": "KOF XIV / KOF XV / Maximum Impact 1&2",
+   "anim_ref": "kof3d:ryuji:todome-xv",
+   "type": "special",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "hcb,f+3",
+   "input_slots": [
+    "hcb,f+3"
+   ],
+   "frames": {
+    "startup": 18,
+    "active": 3,
+    "recovery": 22,
+    "total": 43
+   },
+   "hit_level": "mid",
+   "subtype": "kick",
+   "damage": 26,
+   "damage_raw": null,
+   "properties": [
+    "finisher-candidate"
+   ],
+   "wh": {
+    "heavy": true,
+    "knock": 4,
+    "soulGain": 12
+   },
+   "provenance": {
+    "note": "KOF XV Yamazaki command list (altarofgaming). XV Todome (hcb,f+K). Distinct from the classic downed-finisher Todome (kept separately in the game file).",
+    "estimated": [
+     "frames.active",
+     "frames.recovery",
+     "frames.total",
+     "damage",
+     "hit_advantage",
+     "damage_raw"
+    ]
+   }
+  },
+  {
+   "id": "kof3d:ryuji:todome-xv-heavy",
+   "name": "Todome (XV Heavy)",
+   "name_status": "official",
+   "source": "kof3d",
+   "source_character": "ryuji",
+   "source_game_label": "KOF XIV / KOF XV / Maximum Impact 1&2",
+   "anim_ref": "kof3d:ryuji:todome-xv-heavy",
+   "type": "special",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "hcb,f+4",
+   "input_slots": [
+    "hcb,f+4"
+   ],
+   "frames": {
+    "startup": 20,
+    "active": 3,
+    "recovery": 24,
+    "total": 47
+   },
+   "hit_level": "mid",
+   "subtype": "kick",
+   "damage": 32,
+   "damage_raw": null,
+   "properties": [
+    "finisher-candidate"
+   ],
+   "wh": {
+    "heavy": true,
+    "knock": 4.5,
+    "soulGain": 14
+   },
+   "provenance": {
+    "note": "KOF XV Yamazaki command list (altarofgaming). Heavy version.",
+    "estimated": [
+     "frames.active",
+     "frames.recovery",
+     "frames.total",
+     "damage",
+     "hit_advantage",
+     "damage_raw"
+    ]
+   }
+  },
+  {
+   "id": "kof3d:ryuji:guillotine",
+   "name": "Guillotine (Light)",
+   "name_status": "official super",
+   "source": "kof3d",
+   "source_character": "ryuji",
+   "source_game_label": "KOF XIV / KOF XV / Maximum Impact 1&2",
+   "anim_ref": "kof3d:ryuji:guillotine",
+   "type": "special",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "qcf,qcf+1",
+   "input_slots": [
+    "qcf,qcf+1"
+   ],
+   "frames": {
+    "startup": 10,
+    "active": 3,
+    "recovery": 12,
+    "total": 25
+   },
+   "hit_level": "mid",
+   "subtype": "punch",
+   "damage": 40,
+   "damage_raw": null,
+   "properties": [
+    "finisher"
+   ],
+   "wh": {
+    "heavy": true,
+    "knock": 5,
+    "soulGain": 18
+   },
+   "provenance": {
+    "note": "KOF XV Yamazaki (super). Super: jumps with uppercut, grabs face, drags across floor, throws sky-high.",
+    "estimated": [
+     "frames.active",
+     "frames.recovery",
+     "frames.total",
+     "damage",
+     "hit_advantage",
+     "damage_raw"
+    ]
+   }
+  },
+  {
+   "id": "kof3d:ryuji:guillotine-heavy",
+   "name": "Guillotine (Heavy)",
+   "name_status": "official super",
+   "source": "kof3d",
+   "source_character": "ryuji",
+   "source_game_label": "KOF XIV / KOF XV / Maximum Impact 1&2",
+   "anim_ref": "kof3d:ryuji:guillotine-heavy",
+   "type": "special",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "qcf,qcf+2",
+   "input_slots": [
+    "qcf,qcf+2"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 3,
+    "recovery": 14,
+    "total": 29
+   },
+   "hit_level": "mid",
+   "subtype": "punch",
+   "damage": 48,
+   "damage_raw": null,
+   "properties": [
+    "finisher"
+   ],
+   "wh": {
+    "heavy": true,
+    "knock": 5.5,
+    "soulGain": 20
+   },
+   "provenance": {
+    "note": "KOF XV Yamazaki (super). Heavy/MAX-OK version.",
+    "estimated": [
+     "frames.active",
+     "frames.recovery",
+     "frames.total",
+     "damage",
+     "hit_advantage",
+     "damage_raw"
+    ]
+   }
+  },
+  {
+   "id": "kof3d:ryuji:pit-viper",
+   "name": "Pit Viper (Light)",
+   "name_status": "official super",
+   "source": "kof3d",
+   "source_character": "ryuji",
+   "source_game_label": "KOF XIV / KOF XV / Maximum Impact 1&2",
+   "anim_ref": "kof3d:ryuji:pit-viper",
+   "type": "special",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "qcb,hcf+1",
+   "input_slots": [
+    "qcb,hcf+1"
+   ],
+   "frames": {
+    "startup": 12,
+    "active": 3,
+    "recovery": 14,
+    "total": 29
+   },
+   "hit_level": "mid",
+   "subtype": "punch",
+   "damage": 44,
+   "damage_raw": null,
+   "properties": [
+    "finisher"
+   ],
+   "wh": {
+    "heavy": true,
+    "knock": 5,
+    "soulGain": 18
+   },
+   "provenance": {
+    "note": "KOF XV Yamazaki (super). Super. XV-verified command qcb,hcf+P.",
+    "estimated": [
+     "frames.active",
+     "frames.recovery",
+     "frames.total",
+     "damage",
+     "hit_advantage",
+     "damage_raw"
+    ]
+   }
+  },
+  {
+   "id": "kof3d:ryuji:pit-viper-heavy",
+   "name": "Pit Viper (Heavy)",
+   "name_status": "official super",
+   "source": "kof3d",
+   "source_character": "ryuji",
+   "source_game_label": "KOF XIV / KOF XV / Maximum Impact 1&2",
+   "anim_ref": "kof3d:ryuji:pit-viper-heavy",
+   "type": "special",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "qcb,hcf+2",
+   "input_slots": [
+    "qcb,hcf+2"
+   ],
+   "frames": {
+    "startup": 14,
+    "active": 3,
+    "recovery": 17,
+    "total": 34
+   },
+   "hit_level": "mid",
+   "subtype": "punch",
+   "damage": 52,
+   "damage_raw": null,
+   "properties": [
+    "finisher"
+   ],
+   "wh": {
+    "heavy": true,
+    "knock": 5.5,
+    "soulGain": 20
+   },
+   "provenance": {
+    "note": "KOF XV Yamazaki (super). Heavy/MAX-OK version.",
+    "estimated": [
+     "frames.active",
+     "frames.recovery",
+     "frames.total",
+     "damage",
+     "hit_advantage",
+     "damage_raw"
+    ]
+   }
+  },
+  {
+   "id": "kof3d:ryuji:drill",
+   "name": "Drill (Climax, 4 levels)",
+   "name_status": "official — Yondan Drill",
+   "source": "kof3d",
+   "source_character": "ryuji",
+   "source_game_label": "KOF XIV / KOF XV / Maximum Impact 1&2",
+   "anim_ref": "kof3d:ryuji:drill",
+   "type": "special",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "hcb,hcb+1",
+   "input_slots": [
+    "hcb,hcb+1"
+   ],
+   "frames": {
+    "startup": 8,
+    "active": 3,
+    "recovery": 10,
+    "total": 21
+   },
+   "hit_level": "throw",
+   "subtype": "slam",
+   "damage": 70,
+   "damage_raw": null,
+   "properties": [
+    "finisher",
+    "throw"
+   ],
+   "wh": {
+    "heavy": true,
+    "knock": 6,
+    "soulGain": 25
+   },
+   "provenance": {
+    "note": "KOF XIV/XV Yamazaki (climax); snk.fandom Drill page. Climax (XIV AND XV). Near opponent, tap P: 4 levels — stomps / cinematic / stage-object bash / Serpent Slash barrage, ends drilling a hole in the chest.",
+    "estimated": [
+     "frames.active",
+     "frames.recovery",
+     "frames.total",
+     "damage",
+     "hit_advantage",
+     "damage_raw"
+    ]
+   }
+  },
+  {
+   "id": "kof3d:ryuji:kachikomi",
+   "name": "Kachikomi",
+   "name_status": "official throw",
+   "source": "kof3d",
+   "source_character": "ryuji",
+   "source_game_label": "KOF XIV / KOF XV / Maximum Impact 1&2",
+   "anim_ref": "kof3d:ryuji:kachikomi",
+   "type": "throw",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1+3",
+   "input_slots": [
+    "1+3"
+   ],
+   "frames": {
+    "startup": 7,
+    "active": 2,
+    "recovery": 8,
+    "total": 17
+   },
+   "hit_level": "throw",
+   "subtype": "slam",
+   "damage": 25,
+   "damage_raw": null,
+   "properties": [
+    "throw"
+   ],
+   "wh": {
+    "heavy": false,
+    "knock": 3,
+    "soulGain": 10
+   },
+   "provenance": {
+    "note": "KOF XV Yamazaki (throws). Close b/f+C throw.",
+    "estimated": [
+     "frames.active",
+     "frames.recovery",
+     "frames.total",
+     "damage",
+     "hit_advantage",
+     "damage_raw"
+    ]
+   }
+  },
+  {
+   "id": "kof3d:ryuji:whackdown-wallop",
+   "name": "Whackdown Wallop",
+   "name_status": "official throw",
+   "source": "kof3d",
+   "source_character": "ryuji",
+   "source_game_label": "KOF XIV / KOF XV / Maximum Impact 1&2",
+   "anim_ref": "kof3d:ryuji:whackdown-wallop",
+   "type": "throw",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "1+3~v",
+   "input_slots": [
+    "1+3~v"
+   ],
+   "frames": {
+    "startup": 7,
+    "active": 2,
+    "recovery": 8,
+    "total": 17
+   },
+   "hit_level": "throw",
+   "subtype": "slam",
+   "damage": 26,
+   "damage_raw": null,
+   "properties": [
+    "throw"
+   ],
+   "wh": {
+    "heavy": false,
+    "knock": 3,
+    "soulGain": 10
+   },
+   "provenance": {
+    "note": "KOF XV Yamazaki (throws). Close b/f+D throw. ~v: shares the 1+3 input.",
+    "estimated": [
+     "frames.active",
+     "frames.recovery",
+     "frames.total",
+     "damage",
+     "hit_advantage",
+     "damage_raw"
+    ]
+   }
+  },
+  {
+   "id": "kof3d:ryuji:knife-slash",
+   "name": "Knife Slash (Aikuchi, legacy)",
+   "name_status": "legacy 2D name — NOT in XV, kept per owner spec",
+   "source": "kof3d",
+   "source_character": "ryuji",
+   "source_game_label": "KOF XIV / KOF XV / Maximum Impact 1&2",
+   "anim_ref": "kof3d:ryuji:knife-slash",
+   "type": "special",
+   "position": "standing",
+   "orientation": "forward",
+   "input": "hcf+1",
+   "input_slots": [
+    "hcf+1"
+   ],
+   "frames": {
+    "startup": 14,
+    "active": 3,
+    "recovery": 17,
+    "total": 34
+   },
+   "hit_level": "mid",
+   "subtype": "slash",
+   "damage": 18,
+   "damage_raw": null,
+   "properties": [],
+   "wh": {
+    "heavy": false,
+    "knock": 3,
+    "soulGain": 10
+   },
+   "provenance": {
+    "note": "KOF Neowave / 2D classic (legacy). Butterfly-knife slashes (2 or 4). 2D classic; absent from XV. Owner explicitly listed Knife Slash in the Cornerstone spec.",
+    "estimated": [
+     "frames.active",
+     "frames.recovery",
+     "frames.total",
+     "damage",
+     "hit_advantage",
+     "damage_raw"
+    ]
+   }
+  }
+ ]
+}

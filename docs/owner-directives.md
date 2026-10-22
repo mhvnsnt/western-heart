@@ -277,7 +277,10 @@ Tripo 3D models show FIRST and foremost for every fighter; Tekken attires/models
   PRs/renders). "Mary Posa" appears nowhere in-repo, reads as voice-typed
   "mariposa". Kept as MARIPOSA pending owner confirm.
 - 'ryuji' (RYUJI) vs 'ryuji-rock' (RYUJI ROCK hybrid): two slots, distinct
-  concepts — needs owner call on whether they merge.
+  concepts — OWNER CALL 2026-10-22: `ryuji-rock` displays as **CORNERSTONE**
+  (internal id unchanged); `ryuji` stays the pure-Yamazaki slot. Both remain.
+  Younger Toguro's thumb flick blast (YYH: Dark Tournament teardown) is wired
+  into CORNERSTONE as the spammable `qcf+1` — owner priority 2026-10-22.
 - 'armor-king' holds a slot under its Tekken name (WH rename pending owner pick).
 - 'zangief' / 'vega' / 'iori' are working names; WH names pending owner pick.
 - Kevin's Tripo (kevin-tripo) is not in the repo yet — his select default
