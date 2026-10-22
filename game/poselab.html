@@ -183,7 +183,7 @@ async function showFighter({ id, clip = 'stance', t = 0.5 }) {
   await _msReady;
   const c = FULL_ROSTER.find(x => x.id === id);
   if (!c) throw new Error('no roster fighter ' + id);
-  const bank = bankIdFor(c.id, c.moveset || c.id);
+  const bank = bankIdFor(c.id, c.id);
   if (!bank) throw new Error(`${id}: no bank`);
   const r = await show({ model: c.model, bank, clip, t });
   return { id, ...r };

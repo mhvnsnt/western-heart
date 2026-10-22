@@ -79,8 +79,17 @@ export class InputManager {
   /* Tekken chords: any two limbs within 140ms.
      1+3 / 2+4 = throws; 1+2 / 3+4 = specials; 1+4 / 2+3 = command inputs.
      Throw pairs keep priority (most deliberate), then specials, then commands. */
+  /* Vertical intent right now, including a u/d still inside its 200ms tap window: a limb
+     pressed with the stick at d/f is d/f+1 in Tekken, not a sidestep followed by 1. */
+  vertNow() {
+    if (this.up) return 'up';
+    if (this.down) return 'down';
+    return this._udDir || null;
+  }
+
   _tekken(btn) {
     const now = performance.now();
+    if (this._udDir && !this._udHeld) this._udUsed = true; // the tap fed this attack's direction
     const pairs = btn === '1' ? [['3', '1+3'], ['2', '1+2'], ['4', '1+4']]
                 : btn === '2' ? [['4', '2+4'], ['1', '1+2'], ['3', '2+3']]
                 : btn === '3' ? [['1', '1+3'], ['4', '3+4'], ['2', '2+3']]
@@ -118,8 +127,9 @@ export class InputManager {
     const held = performance.now() - this._udT >= 200;
     clearTimeout(this._udTimer);
     this._udDir = null; this._udHeld = false;
+    const used = this._udUsed; this._udUsed = false;
     if (this.up || this.down) { this.up = false; this.down = false; }
-    else if (!held) this._push(dir === 'up' ? 'ss-up' : 'ss-down');
+    else if (!held && !used) this._push(dir === 'up' ? 'ss-up' : 'ss-down');
   }
 
   /* ---------------- Keyboard ---------------- */

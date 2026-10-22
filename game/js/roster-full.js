@@ -253,6 +253,13 @@ export const FULL_ROSTER = [
     surge: { name: 'SHARINGAN AWAKENING', color: 0xcc2222, accent: 0xffffff },
     stats: { speed: 5.5, jump: 8.0, power: 1.1, defense: 0.95 },
     ai: { aggression: 0.7, grabBias: 0.25, reaction: 0.7 } },
+  // RAVE = KIKO TANAKA in Western Heart (owner 2026-10-19 / 2026-10-21: "Lei wulong is not byou, he is
+  // Rave/Kiko tanaka ... rave already takes over leis character and slot and moves and personality").
+  // Model: his rigged Tripo pull (roster/TRIPO-REGISTRY.md: A1 hooded, A2 unrobed "ghost Tanaka",
+  // A3+ rave.glb). Moves: game/assets/movesets/rave.json (Lei T7 + Lei T3 + Byou). Style from
+  // roster/rave/CONCEPT.md; colors = the Great Muta red/green paint the concept names.
+  { id: 'rave', name: 'RAVE', title: 'The Painted Soul', base: 'Lei Wulong', moveset: 'rave', model: 'kiko-tanaka',
+    colors: { suit: 0x1f5e2c, trim: 0xc62828 }, style: 'Five Animals', archetype: 'Trickster' },
 ];
 
 export function getFighter(id) {
