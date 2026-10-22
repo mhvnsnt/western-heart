@@ -1502,3 +1502,13 @@ Movesets may ONLY be pulled from Tekken fighters nobody has claimed.
 
 *Canon principle (owner, 2026-10-22): Movesets are Tekken bones. Canon gives them souls. Don't flatten characters to their moveset archetype.*
 <!-- END Intake character canon -->
+
+<!-- BEGIN Standing writing laws (owner directives 2026-10-22, permanent) -->
+## STANDING WRITING LAWS
+
+### Character age law
+All characters are adults. No minors — no children, no teenagers — ever, unless the user explicitly authorizes it. Only the user can make that call. If a minor is ever added in the future, strict safety guidelines apply even in video game form. Current roster: adults, divine beings, animals, demons, creatures.
+
+### Canon-grounded writing law
+All character bios, stories, and lore must be built from CANON.md — Tong-Nou, the Nine Souls, the Five Lands, the Trial, the Trader, existing character entries. No invented locations, systems, or backstory elements. No AI slop.
+<!-- END Standing writing laws -->
