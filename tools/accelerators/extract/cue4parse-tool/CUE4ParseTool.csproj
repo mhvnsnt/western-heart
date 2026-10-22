@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <!-- Built on demand by extract.sh (dotnet SDK fetched on demand too).
-       Targets net10.0: current CUE4Parse releases (1.2.2.x) ship net10.0 only. -->
+       Targets net10.0: current CUE4Parse releases (1.2.2.x) ship net10.0 only.
        CUE4Parse version is pinned at build time via -p:CUE4ParseVersion=... -->
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -11,6 +11,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="CUE4Parse" Version="$(CUE4ParseVersion)" />
-    <!-- SkiaSharp comes transitively via CUE4Parse; used for PNG encoding. -->
+    <PackageReference Include="CUE4Parse-Conversion" Version="$(CUE4ParseVersion)" />
+    <!-- PNG encoding is a small built-in writer (no SkiaSharp dependency). -->
   </ItemGroup>
 </Project>
