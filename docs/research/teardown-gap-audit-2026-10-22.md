@@ -81,10 +81,10 @@ Owner directive (verbatim): *"After the jiggle/face/hands wiring is done, do a s
 
 ## TEKKEN 8 (`teardown/tekken8/`)
 
-### T8-1. Heat system (research gap — not documented in teardown)
-- **What it adds:** T8's signature Heat mechanic (offense timer, Heat Smash, chip damage) — currently the teardown has only models (King variants, Asuka), no mechanics doc.
-- **Why it matters:** If WH wants a modern Tekken layer, Heat is the defining T8 system; right now nobody has documented it for federation.
-- [ ] OK to research + wire / [ ] Skip
+### T8-1. Soul Urge (user-locked 2026-10-22) — WH's proprietary Heat system, pulled straight from T8 files
+- **What it adds:** Tekken 8's Heat mechanic renamed proprietary to WH ("Soul Urge"), extracted from T8 files: Heat timer, Heat Smash, Heat-state chip damage.
+- **Why it matters:** User-locked, not speculative — WH's answer to modern Tekken's signature system, in WH naming.
+- [ ] OK to wire / [ ] Skip
 
 ---
 
@@ -133,9 +133,9 @@ Owner directive (verbatim): *"After the jiggle/face/hands wiring is done, do a s
 
 ## DEAD OR ALIVE 6 (`teardown/dead-or-alive-6/` — mechanics documented, no binaries)
 
-### DOA6-1. Triangle system (strikes > throws > holds > strikes)
+### DOA6-1. Triangle system (strikes > throws > holds > strikes) — **ON HOLD (user 2026-10-22)**
 - **What it adds:** DOA's rock-paper-scissors counter layer ON TOP of Tekken inputs: a new reaction table where hold inputs matched against incoming strikes cancel the strike into a counter.
-- **Why it matters:** This is THE DOA federation contribution per the mechanics doc — a whole new decision engine for every exchange, without touching Tekken's input feel.
+- **Why it matters:** This is THE DOA federation contribution per the mechanics doc — a whole new decision engine for every exchange, without touching Tekken's input feel. **ON HOLD:** user says design proposals must show Tekken-ified versions that don't hurt feel/flow before anything is built ("Tekken doesn't use those for a reason").
 - [ ] OK to wire / [ ] Skip
 
 ### DOA6-2. 4-way hold system (high / mid-punch / mid-kick / low)
@@ -225,9 +225,9 @@ Owner directive (verbatim): *"After the jiggle/face/hands wiring is done, do a s
 - **Why it matters:** The skill-based defensive answer; the level-scaled reward is an elegant portable rule. Supersedes the SC2-era GI (SC2-2) — pick one.
 - [ ] OK to wire / [ ] Skip
 
-### SC6-3. Reversal Edge (comeback/clash moment)
+### SC6-3. Reversal Edge (comeback/clash moment) — **ON HOLD (user 2026-10-22)**
 - **What it adds:** SCVI's signature slow-mo clash sequence — a comeback mechanic and hype moment generator.
-- **Why it matters:** Maps to the Trial narrative (soul-clash moments); the "never been done before" spectacle layer.
+- **Why it matters:** Maps to the Trial narrative (soul-clash moments); the "never been done before" spectacle layer. **ON HOLD:** user says design proposals must show Tekken-ified versions that don't hurt feel/flow before anything is built ("Tekken doesn't use those for a reason").
 - [ ] OK to wire / [ ] Skip
 
 ### SC6-4. Soul gauge: Critical Edge (metered super) + Soul Charge (install state)
@@ -416,9 +416,9 @@ Owner directive (verbatim): *"After the jiggle/face/hands wiring is done, do a s
 - **Why it matters:** The owner wants WWE 2K26 animations/code/physics, not models — these packs are the cheapest way to get real 2K animation data.
 - [ ] OK to pull + wire / [ ] Skip
 
-### NM-1. No Mercy entrance-music table (50 entries, ROM-verified)
-- **What it adds:** The real entrance-theme table (`0x168D790`, incl. 7 CAW original-theme slots) → entrance music system. `game/js/audio.js` has no music table today.
-- **Why it matters:** Entrances are half the wrestling fantasy; the data is decoded and waiting.
+### NM-1. Entrance tools → repurposed for CUTSCENE + TAUNT creation only (user 2026-10-22; proprietary name TBD)
+- **What it adds:** No Mercy's ROM-verified entrance-music table (50 entries, `0x168D790`, incl. 7 CAW original-theme slots) + WWE entrance tooling, repurposed per the user directive: for **cutscene creation and taunt creation only** — NOT full entrances (intros/win taunts stay as-is).
+- **Why it matters:** Entrances are half the wrestling fantasy, but the user scoped this: cutscene/taunt creation tools, proprietary name TBD.
 - [ ] OK to wire / [ ] Skip
 
 ### NM-2. No Mercy CAW save-record layout (blocked — needs emulator save dump)
