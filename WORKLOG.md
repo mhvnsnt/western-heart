@@ -542,5 +542,5 @@ After (same harness): source FK −6.0°/+35.9°; Doc Frank A1 posed
 +3.8°/+27.5°; Leo man +11.8°/+23.6°; Attire 3 base +2.7°/+28.2° — feet
 forward on all his rigged models at once; the right-foot turnout is
 Bosconovitch's own stance in the decoded motion. Proof renders (viewed):
-`docs/fixes/docfrank-feet-rootcause-20261021/before-after-stance.png`,
-`docs/fixes/docfrank-feet-rootcause-20261021/sidebyside-original-vs-posed.png`.
+`docs/fixes/docfrank-feet-rootcause-20261021/before_after_stance.png`,
+`docs/fixes/docfrank-feet-rootcause-20261021/sidebyside_original_vs_posed.png`.

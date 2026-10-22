@@ -132,9 +132,9 @@ source FK (mixer frame interpolation scale); both feet point forward.
 
 Proof renders in this folder, all viewed before shipping:
 
-- `before-after-stance.png` — PR #483 proof (owner complaint) vs after-fix,
+- `before_after_stance.png` — PR #483 proof (owner complaint) vs after-fix,
   same stance. Before: both shoes sideways. After: both shoes forward.
-- `sidebyside-original-vs-posed.png` — the original A1 model at its own
+- `sidebyside_original_vs_posed.png` — the original A1 model at its own
   rest (feet forward, as pulled) vs after-fix posed. Body-integrity gate:
   proportions, coat/tie/hair, and deformation match the original; only
   the pose (and the corrected feet) differ.
