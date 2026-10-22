@@ -36,7 +36,8 @@ FORMAT = "wh-tweak-patch"
 SUPPORTED_VERSIONS = (1,)
 PART_GROUPS = ("head", "torso", "upper_arms", "forearms",
                "hands", "thighs", "shins", "feet")
-CHANGE_KINDS = ("part_transform",)
+CHANGE_KINDS = ("part_transform", "hitfeel_tune", "ui_screen_define")
+FEEL_KEYS = ("hitstop", "shake", "knockback", "launch")
 
 GH_PUSH = os.environ.get("WH_GH_PUSH", os.path.expanduser("~/workspace/fix2/gh_push.py"))
 
@@ -86,7 +87,12 @@ def validate(patch, repo):
     fighter = patch.get("fighter")
     if not isinstance(fighter, str) or not fighter:
         fail("'fighter' must be a non-empty string (roster id)")
-    if fighter not in load_roster_ids(repo):
+    if fighter == "ui":
+        # UI WORKSHOP namespace: screen patches carry no fighter.
+        kinds = {c.get("kind") for c in patch.get("changes", []) if isinstance(c, dict)}
+        if kinds - {"ui_screen_define"}:
+            fail("'fighter' 'ui' is only valid for ui_screen_define patches")
+    elif fighter not in load_roster_ids(repo):
         fail(f"unknown 'fighter' {fighter!r}: no such roster id in "
              f"game/js/roster-full.js or customization/profiles/")
 
@@ -122,16 +128,43 @@ def validate(patch, repo):
         where = f"changes[{i}]"
         if not isinstance(c, dict):
             fail(f"{where} must be an object")
-        if c.get("kind") not in CHANGE_KINDS:
-            fail(f"{where}: bad 'kind' {c.get('kind')!r} "
+        kind = c.get("kind")
+        if kind not in CHANGE_KINDS:
+            fail(f"{where}: bad 'kind' {kind!r} "
                  f"(expected one of {list(CHANGE_KINDS)})")
+        if kind == "hitfeel_tune":
+            tune = {}
+            for k in FEEL_KEYS:
+                v = c.get(k, 1.0)
+                if not _is_finite_number(v) or not (0 <= v <= 4):
+                    fail(f"{where}: '{k}' must be a finite number in [0, 4] "
+                         f"(multiplier on the wired value)")
+                tune[k] = float(v)
+            note = c.get("note", "")
+            if not isinstance(note, str):
+                fail(f"{where}: 'note' must be a string")
+            if all(v == 1.0 for v in tune.values()):
+                fail(f"{where}: hitfeel_tune changes nothing "
+                     f"(all multipliers are 1.0)")
+            norm.append({"kind": kind, **tune, "note": note})
+            continue
+        if kind == "ui_screen_define":
+            scr = c.get("screen")
+            serrs = _validate_screen(scr, where)
+            if serrs:
+                fail(f"{where}: invalid screen definition: " + "; ".join(serrs))
+            note = c.get("note", "")
+            if not isinstance(note, str):
+                fail(f"{where}: 'note' must be a string")
+            norm.append({"kind": kind, "screen": scr, "note": note})
+            continue
         group = c.get("group")
         if group not in PART_GROUPS:
             fail(f"{where}: bad 'group' {group!r} "
                  f"(expected one of {list(PART_GROUPS)})")
         if group in seen:
             fail(f"{where}: duplicate group {group!r} — one entry per group")
-        seen.add(group)
+        seen.add(group)  # part_transform only; hitfeel_tune continued above
         rot = c.get("rotation_deg")
         if not isinstance(rot, list) or len(rot) != 3 or \
                 not all(_is_finite_number(v) for v in rot):
@@ -171,10 +204,91 @@ def validate(patch, repo):
     }
 
 
+SCREEN_ELEMENT_TYPES = ("label", "button", "panel", "image", "card-grid")
+
+
+def _validate_screen(def_, where):
+    errs = []
+    if not isinstance(def_, dict):
+        return ["screen definition must be an object"]
+    if def_.get("format") != "wh-ui-screen":
+        errs.append(f"bad screen format: {def_.get('format')!r}")
+    if def_.get("version") != 1:
+        errs.append(f"unsupported screen version: {def_.get('version')!r}")
+    sid = def_.get("id")
+    if not isinstance(sid, str) or not sid or not all(
+            ch.isalnum() or ch in "-_" for ch in sid):
+        errs.append("screen id must be a non-empty [a-z0-9-_] string")
+    canvas = def_.get("canvas") or {}
+    if not _is_finite_number(canvas.get("w")) or not _is_finite_number(canvas.get("h")):
+        errs.append("bad screen canvas")
+    seen = set()
+    for i, e in enumerate(def_.get("elements") or []):
+        w = f"{where}.elements[{i}]"
+        if not isinstance(e, dict):
+            errs.append(f"{w} must be an object"); continue
+        if e.get("type") not in SCREEN_ELEMENT_TYPES:
+            errs.append(f"{w}: bad type {e.get('type')!r}"); continue
+        eid = e.get("id")
+        if not isinstance(eid, str) or not eid:
+            errs.append(f"{w}: missing id")
+        elif eid in seen:
+            errs.append(f"{w}: duplicate id {eid!r}")
+        else:
+            seen.add(eid)
+        for k in ("x", "y", "w", "h"):
+            if not _is_finite_number(e.get(k)):
+                errs.append(f"{w}: bad {k}")
+        if _is_finite_number(e.get("w")) and _is_finite_number(e.get("h")) and \
+                (e["w"] <= 0 or e["h"] <= 0):
+            errs.append(f"{w}: w/h must be positive")
+    return errs
+
+
+def _now_z():
+    return datetime.datetime.now(datetime.timezone.utc) \
+        .isoformat(timespec="seconds").replace("+00:00", "Z")
+
+
 def apply_patch(norm, repo):
-    """Merge a validated patch into the staged kit + applied record."""
+    """Merge a validated patch into the staged kit / hit-feel file + applied record."""
     fighter = norm["fighter"]
     kit_id = norm["kit_id"] or f"{fighter}-manual"
+    part_changes = [c for c in norm["changes"] if c["kind"] == "part_transform"]
+    feel_changes = [c for c in norm["changes"] if c["kind"] == "hitfeel_tune"]
+    screen_changes = [c for c in norm["changes"] if c["kind"] == "ui_screen_define"]
+    written = []
+    if part_changes:
+        written.extend(_apply_part_transform(norm, part_changes, repo, fighter, kit_id))
+    if feel_changes:
+        written.extend(_apply_hitfeel(norm, feel_changes, repo, fighter))
+    if screen_changes:
+        written.extend(_apply_screen(norm, screen_changes, repo))
+    return written
+
+
+def _applied_record(repo, fighter, name, norm):
+    digest = hashlib.sha256(
+        json.dumps(norm, sort_keys=True).encode()).hexdigest()[:12]
+    ts = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    applied_dir = os.path.join(repo, "customization", "tweak-kits",
+                               fighter, "applied")
+    os.makedirs(applied_dir, exist_ok=True)
+    applied_path = os.path.join(applied_dir, f"{name}-{ts}-{digest}.applied.json")
+    with open(applied_path, "w", encoding="utf-8") as f:
+        json.dump({
+            "format": "wh-tweak-patch-applied", "version": 1,
+            "kit_id": norm["kit_id"], "fighter": fighter,
+            "patch_sha256_12": digest,
+            "validation": "pass",
+            "applied_at": ts,
+            "patch": norm,
+        }, f, indent=2)
+        f.write("\n")
+    return applied_path
+
+
+def _apply_part_transform(norm, part_changes, repo, fighter, kit_id):
     kp = kit_path(repo, kit_id)
     if os.path.isfile(kp):
         with open(kp, encoding="utf-8") as f:
@@ -184,11 +298,11 @@ def apply_patch(norm, repo):
             "format": "wh-tweak-kit", "version": 0, "id": kit_id,
             "fighter": fighter, "attire": norm["attire"], "status": "staged",
             "notes": f"auto-created from user patch (kit_id omitted)",
-            "flagged_parts": sorted({c["group"] for c in norm["changes"]}),
+            "flagged_parts": sorted({c["group"] for c in part_changes}),
             "part_map": {}, "adjustments": {}, "history": [],
         }
     adj = kit.setdefault("adjustments", {})
-    for c in norm["changes"]:
+    for c in part_changes:
         adj[c["group"]] = {
             "rotation_deg": c["rotation_deg"], "flip": c["flip"],
             "offset": c["offset"], "scale": c["scale"],
@@ -196,10 +310,9 @@ def apply_patch(norm, repo):
         }
     kit["version"] = int(kit.get("version", 0)) + 1
     kit.setdefault("history", []).append({
-        "at": datetime.datetime.now(datetime.timezone.utc)
-        .isoformat(timespec="seconds").replace("+00:00", "Z"),
+        "at": _now_z(),
         "action": "tweak-patch-applied",
-        "groups": [c["group"] for c in norm["changes"]],
+        "groups": [c["group"] for c in part_changes],
         "exported_at": norm["exported_at"],
         "exported_by": norm["exported_by"],
     })
@@ -207,25 +320,64 @@ def apply_patch(norm, repo):
     with open(kp, "w", encoding="utf-8") as f:
         json.dump(kit, f, indent=2)
         f.write("\n")
+    applied_path = _applied_record(repo, fighter, kit_id, norm)
+    return [(kp, applied_path)]
 
-    digest = hashlib.sha256(
-        json.dumps(norm, sort_keys=True).encode()).hexdigest()[:12]
-    ts = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
-    applied_dir = os.path.join(repo, "customization", "tweak-kits",
-                               fighter, "applied")
-    os.makedirs(applied_dir, exist_ok=True)
-    applied_path = os.path.join(applied_dir, f"{kit_id}-{ts}-{digest}.applied.json")
-    with open(applied_path, "w", encoding="utf-8") as f:
-        json.dump({
-            "format": "wh-tweak-patch-applied", "version": 1,
-            "kit_id": kit_id, "fighter": fighter,
-            "patch_sha256_12": digest,
-            "validation": "pass",
-            "applied_at": ts,
-            "patch": norm,
-        }, f, indent=2)
+
+def _apply_hitfeel(norm, feel_changes, repo, fighter):
+    """Write the user's feel deltas to customization/hit-feel/<fighter>.json."""
+    fp = os.path.join(repo, "customization", "hit-feel", fighter + ".json")
+    if os.path.isfile(fp):
+        with open(fp, encoding="utf-8") as f:
+            doc = json.load(f)
+    else:
+        doc = {"format": "wh-hitfeel", "version": 1, "fighter": fighter,
+               "multipliers": {}, "history": []}
+    # last change wins per patch; multipliers are absolute (1.0 = wired value)
+    merged = dict(doc.get("multipliers", {}))
+    for c in feel_changes:
+        for k in FEEL_KEYS:
+            merged[k] = c[k]
+    doc["multipliers"] = merged
+    doc["version"] = int(doc.get("version", 0)) + 1
+    doc.setdefault("history", []).append({
+        "at": _now_z(),
+        "action": "hitfeel-tune-applied",
+        "multipliers": merged,
+        "exported_at": norm["exported_at"],
+        "exported_by": norm["exported_by"],
+    })
+    os.makedirs(os.path.dirname(fp), exist_ok=True)
+    with open(fp, "w", encoding="utf-8") as f:
+        json.dump(doc, f, indent=2)
         f.write("\n")
-    return kp, applied_path
+    applied_path = _applied_record(repo, fighter, f"{fighter}-hitfeel", norm)
+    return [(fp, applied_path)]
+
+
+def _apply_screen(norm, screen_changes, repo):
+    """Write workshop screen definitions to customization/ui-screens/."""
+    written = []
+    for c in screen_changes:
+        scr = dict(c["screen"])
+        sid = scr["id"]
+        sp = os.path.join(repo, "customization", "ui-screens", sid + ".json")
+        scr["version"] = 1
+        hist = scr.get("history", [])
+        hist.append({
+            "at": _now_z(),
+            "action": "ui-screen-applied",
+            "exported_at": norm["exported_at"],
+            "exported_by": norm["exported_by"],
+        })
+        scr["history"] = hist
+        os.makedirs(os.path.dirname(sp), exist_ok=True)
+        with open(sp, "w", encoding="utf-8") as f:
+            json.dump(scr, f, indent=2)
+            f.write("\n")
+        applied_path = _applied_record(repo, "ui", sid, norm)
+        written.append((sp, applied_path))
+    return written
 
 
 def main(argv=None):
@@ -256,32 +408,35 @@ def main(argv=None):
         print(f"PATCH REJECTED: {e}", file=sys.stderr)
         return 1
 
-    n = len(norm["changes"])
-    groups = ", ".join(c["group"] for c in norm["changes"])
+    kinds = {}
+    for c in norm["changes"]:
+        kinds[c["kind"]] = kinds.get(c["kind"], 0) + 1
+    desc = ", ".join(f"{k}x{v}" for k, v in kinds.items())
     print(f"PATCH VALID: fighter={norm['fighter']} kit={norm['kit_id']} "
-          f"changes={n} ({groups})")
+          f"changes={len(norm['changes'])} ({desc})")
     if args.check:
         return 0
 
-    kit_p, applied_p = apply_patch(norm, repo)
-    print(f"APPLIED: kit -> {os.path.relpath(kit_p, repo)}")
-    print(f"RECORD:  {os.path.relpath(applied_p, repo)}")
+    written = apply_patch(norm, repo)
+    for target_p, applied_p in written:
+        print(f"APPLIED: {os.path.relpath(target_p, repo)}")
+        print(f"RECORD:  {os.path.relpath(applied_p, repo)}")
 
     if args.pr:
         branch = args.branch or \
             f"tweak-patch/{norm['fighter']}/{norm['kit_id'] or 'manual'}"
-        rel_kit = os.path.relpath(kit_p, repo)
-        rel_applied = os.path.relpath(applied_p, repo)
-        cmd = [sys.executable, GH_PUSH, "--branch", branch, "--base", "main",
-               "--add", rel_kit, "--add", rel_applied,
-               "--title", f"tweak-patch: {norm['fighter']} "
-                          f"{norm['kit_id'] or 'manual'} ({groups})",
-               "--body", f"User-exported tweak patch applied via "
-                         f"tools/customization/import_tweak_patch.py\n\n"
-                         f"Fighter: {norm['fighter']}\n"
-                         f"Kit: {norm['kit_id']}\n"
-                         f"Groups: {groups}\n"
-                         f"Exported: {norm['exported_at']} by {norm['exported_by']}\n"]
+        cmd = [sys.executable, GH_PUSH, "--branch", branch, "--base", "main"]
+        for target_p, applied_p in written:
+            cmd += ["--add", os.path.relpath(target_p, repo),
+                    "--add", os.path.relpath(applied_p, repo)]
+        cmd += ["--title", f"tweak-patch: {norm['fighter']} "
+                           f"{norm['kit_id'] or 'manual'} ({desc})",
+                "--body", f"User-exported tweak patch applied via "
+                          f"tools/customization/import_tweak_patch.py\n\n"
+                          f"Fighter: {norm['fighter']}\n"
+                          f"Kit: {norm['kit_id']}\n"
+                          f"Changes: {desc}\n"
+                          f"Exported: {norm['exported_at']} by {norm['exported_by']}\n"]
         print("pushing:", " ".join(cmd))
         r = subprocess.run(cmd, cwd=repo)
         return r.returncode

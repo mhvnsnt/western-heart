@@ -150,7 +150,9 @@ class TestApply(unittest.TestCase):
 
     def test_apply_merges_and_records(self):
         norm = validate(good_patch(), self.repo.root)
-        kit_p, applied_p = apply_patch(norm, self.repo.root)
+        written = apply_patch(norm, self.repo.root)
+        self.assertEqual(len(written), 1)
+        kit_p, applied_p = written[0]
         kit = json.load(open(kit_p))
         self.assertEqual(kit["version"], 2)
         self.assertEqual(kit["adjustments"]["head"]["rotation_deg"], [0, 180, 0])
@@ -165,7 +167,7 @@ class TestApply(unittest.TestCase):
         p2 = good_patch()
         p2["changes"][0]["rotation_deg"] = [0, 90, 0]
         n2 = validate(p2, self.repo.root)
-        kit_p, _ = apply_patch(n2, self.repo.root)
+        (kit_p, _), = apply_patch(n2, self.repo.root)
         kit = json.load(open(kit_p))
         self.assertEqual(kit["adjustments"]["head"]["rotation_deg"], [0, 90, 0])
         self.assertEqual(kit["version"], 3)
@@ -173,3 +175,141 @@ class TestApply(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
+
+
+def feel_patch(**kw):
+    p = {
+        "format": "wh-tweak-patch", "version": 1,
+        "kit_id": None, "fighter": "nightwolf",
+        "attire": "default", "exported_at": "2026-10-22T07:00:00Z",
+        "exported_by": "suite", "suite_build": "test",
+        "notes": "more oomph",
+        "changes": [
+            {"kind": "hitfeel_tune", "hitstop": 1.2, "shake": 0.8,
+             "knockback": 1.1, "launch": 1.0, "note": "heavier"},
+        ],
+    }
+    p.update(kw)
+    return p
+
+
+class TestHitFeel(unittest.TestCase):
+    def setUp(self):
+        self.repo = FakeRepo()
+
+    def tearDown(self):
+        self.repo.teardown()
+
+    def ok(self, patch):
+        return validate(patch, self.repo.root)
+
+    def bad(self, patch, snippet):
+        with self.assertRaises(PatchError) as cm:
+            validate(patch, self.repo.root)
+        self.assertIn(snippet, str(cm.exception))
+
+    def test_valid_feel(self):
+        n = self.ok(feel_patch())
+        self.assertEqual(n["changes"][0]["kind"], "hitfeel_tune")
+        self.assertEqual(n["changes"][0]["hitstop"], 1.2)
+
+    def test_feel_out_of_range(self):
+        p = feel_patch()
+        p["changes"][0]["shake"] = 9
+        self.bad(p, "in [0, 4]")
+
+    def test_feel_all_ones_rejected(self):
+        p = feel_patch()
+        p["changes"][0].update(
+            {"hitstop": 1.0, "shake": 1.0, "knockback": 1.0, "launch": 1.0})
+        self.bad(p, "changes nothing")
+
+    def test_feel_apply_writes_file(self):
+        n = self.ok(feel_patch())
+        written = apply_patch(n, self.repo.root)
+        self.assertEqual(len(written), 1)
+        fp, applied_p = written[0]
+        self.assertTrue(fp.endswith("customization/hit-feel/nightwolf.json"))
+        doc = json.load(open(fp))
+        self.assertEqual(doc["multipliers"]["hitstop"], 1.2)
+        self.assertEqual(doc["multipliers"]["launch"], 1.0)
+        self.assertTrue(os.path.isfile(applied_p))
+
+    def test_mixed_patch_applies_both(self):
+        p = feel_patch()
+        p["changes"].append(good_patch()["changes"][0])
+        n = self.ok(p)
+        written = apply_patch(n, self.repo.root)
+        self.assertEqual(len(written), 2)
+
+
+def screen_patch(**kw):
+    p = {
+        "format": "wh-tweak-patch", "version": 1,
+        "kit_id": None, "fighter": "ui",
+        "attire": "stage-select", "exported_at": "2026-10-22T07:30:00Z",
+        "exported_by": "suite", "suite_build": "test",
+        "notes": "remixed title",
+        "changes": [
+            {"kind": "ui_screen_define",
+             "screen": {
+                 "format": "wh-ui-screen", "version": 1,
+                 "id": "stage-select", "name": "Stage Select",
+                 "source": "workshop", "canvas": {"w": 1280, "h": 720},
+                 "elements": [
+                     {"id": "title", "type": "label", "x": 48, "y": 28,
+                      "w": 700, "h": 56, "text": "PICK YOUR BATTLEFIELD",
+                      "style": {"fontSize": 40, "color": "#f2b01e"}},
+                 ],
+                 "flow": {}, "wiring": {}},
+             "note": "renamed title"},
+        ],
+    }
+    p.update(kw)
+    return p
+
+
+class TestUIScreen(unittest.TestCase):
+    def setUp(self):
+        self.repo = FakeRepo()
+
+    def tearDown(self):
+        self.repo.teardown()
+
+    def ok(self, patch):
+        return validate(patch, self.repo.root)
+
+    def bad(self, patch, snippet):
+        with self.assertRaises(PatchError) as cm:
+            validate(patch, self.repo.root)
+        self.assertIn(snippet, str(cm.exception))
+
+    def test_valid_screen(self):
+        n = self.ok(screen_patch())
+        self.assertEqual(n["changes"][0]["kind"], "ui_screen_define")
+
+    def test_bad_screen_format(self):
+        p = screen_patch()
+        p["changes"][0]["screen"]["format"] = "nope"
+        self.bad(p, "bad screen format")
+
+    def test_bad_element_type(self):
+        p = screen_patch()
+        p["changes"][0]["screen"]["elements"][0]["type"] = "hologram"
+        self.bad(p, "bad type")
+
+    def test_duplicate_element_id(self):
+        p = screen_patch()
+        p["changes"][0]["screen"]["elements"].append(
+            dict(p["changes"][0]["screen"]["elements"][0]))
+        self.bad(p, "duplicate id")
+
+    def test_screen_apply_writes_file(self):
+        n = self.ok(screen_patch())
+        written = apply_patch(n, self.repo.root)
+        self.assertEqual(len(written), 1)
+        sp, applied_p = written[0]
+        self.assertTrue(sp.endswith("customization/ui-screens/stage-select.json"))
+        doc = json.load(open(sp))
+        self.assertEqual(doc["elements"][0]["text"], "PICK YOUR BATTLEFIELD")
+        self.assertTrue(os.path.isfile(applied_p))
