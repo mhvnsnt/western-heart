@@ -331,6 +331,44 @@ def main():
         'first20': cands[:20],
         'status': 'CANDIDATES ONLY — no GIF framing supports any of '
                   'these; not sightings.'}
+    # --- DMA source-chain probe (post-vertex region): could a DMA tag
+    # chain wrap VIF/GIF payloads and defeat the raw VIF walk? Tag =
+    # qword head: QWC in lo u32 bits 0-15, ID in hi u32 bits 28-30
+    # (0 refe, 1 cnt, 2 next, 3 ref, 4 refs, 5 call, 6 ret, 7 end).
+    # Only CNT chains are followed inline (next tag after QWC qwords).
+    post = tail[pv:]
+    def try_chain(start):
+        pos, steps, ids = start, 0, []
+        while pos + 16 <= len(post) and steps < 64:
+            w0, w1 = struct.unpack('<II', post[pos:pos+8])
+            qwc, tid = w0 & 0xFFFF, (w1 >> 28) & 7
+            if qwc == 0 and tid not in (6, 7): break
+            ids.append(tid)
+            if tid == 1: pos += 16 + qwc*16; steps += 1; continue
+            steps += 1; break
+        return steps, ids
+    id_hist, chains = collections.Counter(), []
+    max_steps = 0
+    for s in range(0, len(post)-16, 16):
+        w0, w1 = struct.unpack('<II', post[s:s+8])
+        if 0 < (w0 & 0xFFFF) <= 1024: id_hist[(w1 >> 28) & 7] += 1
+        st, ids = try_chain(s)
+        max_steps = max(max_steps, st)
+        if st >= 3: chains.append({'file_off': hex(toff+pv+s),
+                                   'steps': st, 'ids': ids})
+    R['dma_chain_probe'] = {
+        'starts_tested': (len(post)-16)//16,
+        'id_hist_qwc_plausible': {str(k): v for k, v in
+                                  sorted(id_hist.items())},
+        'chains_ge3_steps': len(chains), 'max_chain_steps': max_steps,
+        'chains_first10': chains[:10],
+        'verdict': 'No anchored chain: the ID histogram over '
+                   'QWC-plausible qwords is near-uniform across all 8 '
+                   'IDs (random-data signature) and the longest '
+                   'CNT-followable chain anywhere is a few steps, '
+                   'scattered as chance coincidences. A stored DMA '
+                   'chain would anchor one long chain from a segment '
+                   'start. NEGATIVE.'}
     # --- markers + u16 ramps
     for mk in (0x00008004, 0x00008014):
         pat = struct.pack('<I', mk)

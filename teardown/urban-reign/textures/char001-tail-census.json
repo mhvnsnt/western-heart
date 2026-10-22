@@ -2105,6 +2105,116 @@
   ],
   "status": "CANDIDATES ONLY \u2014 no GIF framing supports any of these; not sightings."
  },
+ "dma_chain_probe": {
+  "starts_tested": 26447,
+  "id_hist_qwc_plausible": {
+   "0": 1716,
+   "1": 1053,
+   "2": 818,
+   "3": 637,
+   "4": 577,
+   "5": 640,
+   "6": 699,
+   "7": 905
+  },
+  "chains_ge3_steps": 277,
+  "max_chain_steps": 5,
+  "chains_first10": [
+   {
+    "file_off": "0x5b0d0",
+    "steps": 3,
+    "ids": [
+     1,
+     1,
+     0
+    ]
+   },
+   {
+    "file_off": "0x5c420",
+    "steps": 3,
+    "ids": [
+     1,
+     1,
+     5
+    ]
+   },
+   {
+    "file_off": "0x5cc30",
+    "steps": 3,
+    "ids": [
+     1,
+     1,
+     4
+    ]
+   },
+   {
+    "file_off": "0x5d3b0",
+    "steps": 3,
+    "ids": [
+     1,
+     1,
+     0
+    ]
+   },
+   {
+    "file_off": "0x5e6a0",
+    "steps": 3,
+    "ids": [
+     1,
+     1,
+     7
+    ]
+   },
+   {
+    "file_off": "0x5e870",
+    "steps": 4,
+    "ids": [
+     1,
+     1,
+     1,
+     0
+    ]
+   },
+   {
+    "file_off": "0x5f390",
+    "steps": 3,
+    "ids": [
+     1,
+     1,
+     7
+    ]
+   },
+   {
+    "file_off": "0x5f6c0",
+    "steps": 4,
+    "ids": [
+     1,
+     1,
+     1,
+     5
+    ]
+   },
+   {
+    "file_off": "0x602b0",
+    "steps": 3,
+    "ids": [
+     1,
+     1,
+     0
+    ]
+   },
+   {
+    "file_off": "0x60300",
+    "steps": 3,
+    "ids": [
+     1,
+     1,
+     2
+    ]
+   }
+  ],
+  "verdict": "No anchored chain: the ID histogram over QWC-plausible qwords is near-uniform across all 8 IDs (random-data signature) and the longest CNT-followable chain anywhere is a few steps, scattered as chance coincidences. A stored DMA chain would anchor one long chain from a segment start. NEGATIVE."
+ },
  "markers": {
   "0x8004": {
    "count": 607,

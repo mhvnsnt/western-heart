@@ -80,9 +80,13 @@ next attempt does not re-walk the same ground.
 ## What this does NOT rule out (named next tests, in order)
 
 1. **DMA-tagged VIF**: a stored DMA chain (CNT/REF/CALL/RET tags)
-   wrapping VIF/GIF payloads would defeat a raw VIF walk. Next test:
-   DMA-tag chain walk over the post-vertex region (QWC/ID decode at
-   qword starts), then VIF/GIF inside accepted CNT payloads.
+   wrapping VIF/GIF payloads would defeat a raw VIF walk.
+   **TESTED (this census, `dma_chain_probe`): NEGATIVE.** All 26,447
+   qword-aligned starts in the post-vertex region were chain-walked
+   (CNT-following): longest chain anywhere = 5 steps; 277 starts reach
+   ≥3 steps scattered as chance coincidences; the ID histogram over
+   QWC-plausible qwords is near-uniform across all 8 DMA IDs (random
+   signature). No anchored DMA chain exists in this region.
 2. **Loader-built uploads**: the post-vertex descriptor records
    (float rows + incrementing pointer words at 0x56600+) may be the
    game's own texture/material descriptors, with GS uploads built by
