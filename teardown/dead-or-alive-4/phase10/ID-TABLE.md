@@ -33,3 +33,14 @@ New structural fact: chrone pkg23–26 share an unmistakable signature (hanging 
 | chrtwo-pkg01 | unidentified | VIEWED `renders/p10-chrtwo-pkg01.png`: bulky shattered armored torso, chest plate, hip pouch with cross emblem | — | — |
 | chrtwo-pkg02 | unidentified | VIEWED `renders/p10-chrtwo-pkg02.png`: heavily shattered mass, twin top loops (straps), unreadable silhouette | — | — |
 | chrtwo-pkg03 | unidentified | VIEWED `renders/p10-chrtwo-pkg03.png`: curved horn-like shoulder pieces, wide flared tassets/skirt, tall back ornament — armor costume | — | — |
+| chrtwo-pkg46 | unidentified (0.478 family) | VIEWED `renders/p10-chrtwo-pkg46.png`: bearded male FACE geometry present at top of package (nose/beard readable) above a smooth torso with front pouch — notable: this body package is not cleanly headless | — | — |
+| chrtwo-pkg47 | unidentified | VIEWED `renders/p10-chrtwo-pkg47.png`: long robe/coat, large bow at collar, front pouch, hanging side straps | — | — |
+| chrtwo-pkg48 | unidentified | VIEWED `renders/p10-chrtwo-pkg48.png`: buttoned shirt/jacket torso, wide waist sash, front pouch | — | — |
+| chrtwo-pkg49 | unidentified (0.478 family) | VIEWED `renders/p10-chrtwo-pkg49.png`: smooth long robe with toggle/frog closures down the front, front pouch | — | — |
+
+## Coverage at end of phase 10
+- chrone: COMPLETE (00–28 viewed + 29 non-character).
+- chrtwo bodies: viewed 00–03, 46–49 (8/26). Remaining: 50–67 (18) — GLBs already extracted in scratch p9, renders pending.
+- chrtwo heads: viewed solo 04/20/24/29 (phase 9) + 19 more via composites (07,08,09,11,17,18,19,21,25,30,33,34,35,41,42,44 + 43 rendered-not-viewed). Distinct heads never rendered in any form: pkg05, 06, 10, 22, 23, 26, 27, 28, 31, 32 (10 — incl. most of the anchorless set).
+- chrthree: 0/50 (spanned zips not pulled this phase; disk/time-gated).
+- Confidence distribution across all ID tables (p8+p9+p10): certain 0 names; strong = structural only (head packages, pkg29 non-character); tentative = Kokoro (pkg02), Hayabusa-vs-Hayate (group C), Leifang-vs-Helena (pkg10), group assignments (chrone 23–26 cord-loop family). No re-grades this phase — no new name-grade evidence appeared.
