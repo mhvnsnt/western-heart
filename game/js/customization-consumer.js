@@ -174,7 +174,11 @@ export function effectivePlacement(raw, entry, slotKey) {
 
 function profileBelongsTo(record, fighter) {
   if (!record || typeof record !== 'object') return false;
-  if (record.fighter && record.fighter !== 'custom') return record.fighter === fighter.char.id;
+  // If the profile names a fighter, it must be an EXACT id match. A
+  // creation-suite demo profile (fighter: 'custom') must never hijack a
+  // real fighter via the name fallback below — that attached a red demo
+  // box to the real Pantera in fights.
+  if (record.fighter) return record.fighter === fighter.char.id;
   const nm = (record.profile?.name || '').toUpperCase();
   return !!nm && nm === (fighter.char.name || '').toUpperCase();
 }
@@ -191,7 +195,9 @@ async function findProfile(fighter) {
     const res = await fetch(new URL(`customization/profiles/${fighter.char.id}.json`, ROOT));
     if (res.ok) {
       const rec = await res.json();
-      if (rec && (rec.parts || rec.textures)) return rec;
+      // Ownership check: a repo profile whose fighter id doesn't match this
+      // fighter (e.g. a demo scaffold filed under pantera.json) must not apply.
+      if (rec && (rec.parts || rec.textures) && profileBelongsTo(rec, fighter)) return rec;
     }
   } catch (e) { /* no repo profile — the common case */ }
   return null;
