@@ -68,4 +68,17 @@ suspects for a packed→float expansion.
 ## Results
 
 - BOOTSTRAP: branch created from 78f04cb, this file committed
-  + pushed (pending — updated next commit).
+  + pushed (76d54c6, API-verified).
+- JOB 1 (B1′) **CRACKED + PROOF GATE PASSED**: NDPP units are
+  embedded GE display lists (VTYPE 0x12 header command; strip
+  table = VADDR/PRIM command pairs; terminator 0x13/0x0B).
+  Vertex layout from VTYPE: weights u8 (sum 128) + UV u8 +
+  normal s8 + position s16; stride 12/14/16 by weight count.
+  Scale: world = raw x descriptor_ymax/32767 (4 sections,
+  2 files). First character GLB shipped
+  (`models/idx00_slot0_r9.glb`, head section, 3,217 verts /
+  1,897 tris, bbox match <=0.03) + FRONT render VIEWED
+  (coherent human head). Evidence:
+  `round9-evidence/JOB1-UNPACK-CRACKED.md`. Ghidra import was
+  OOM-killed on this VM; vtable/ctor read via capstone
+  disassembler instead (documented in the evidence doc).

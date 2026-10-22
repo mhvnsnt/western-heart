@@ -128,3 +128,26 @@ Evidence: `tools/round8-evidence/` (JOB1 docs + viewed negative render).
 - B4: COM binary command-record encoding + count-word referent (unchanged; Job 5 not attempted).
 - B5: Stage slot-9 BE layout decode from the mapped offset-table head.
 - B6': BONE array roles (consumers' asm) + skeleton assembly for the 12 character packages.
+
+## Round-9 update (2026-10-21, PR pending)
+
+Evidence: `tools/round9-evidence/JOB1-UNPACK-CRACKED.md` +
+viewed render `tools/round9-evidence/renders/r9_idx00_slot0_front.png`.
+Decoder: `tools/r9_ndpp_decode.py`.
+
+| Layer | State after round 9 |
+|---|---|
+| NDPP interior (B1′) | **CRACKED**: units are embedded GE display lists — header cmds 0x14/0x10/**0x12 VTYPE**, strip table = VADDR (0x01) + PRIM (0x04; type 4 strip / 3 list) command pairs, terminator 0x13/0x0B. VTYPE arg gives the full vertex layout (weights u8 sum=128, UV u8, normal s8, position s16; stride 12/14/16 by weight count 1/2–3/4–5). Position scale: world = raw × descriptor_ymax/32767, proven on 4 sections / 2 files |
+| GLBs (G3) | **First proven character mesh shipped**: `models/idx00_slot0_r9.glb` (idx00 slot-0 = head section; 3,217 verts / 1,897 tris; GLB bbox matches descriptor bbox ≤0.03 on all axes). FRONT render VIEWED: coherent human head (eyes/nose/mouth/ears). Batch of the remaining character packages follows in this round's later commits |
+| BONE skeletons (B6′) | In progress this round (name tables found in BONE chunks: 32 B stride Japanese bone names, e.g. ATAMA_jnt/KATA_R_jnt/finger + face bones) |
+| NTPP textures (B2) | Job 3 this round |
+| Stage slot-9 (B5) | Job 4 this round, if time |
+| Movesets (G4) / wiring (G6) | G4 unchanged (18/18 JSONs). G6: first proven mesh now exists to wire (GLB above); game-side registration still per engine steer (GLB + JSON deliverables) |
+
+### Left before T6 PSP true 100% (round-9 blockers)
+- B1′: DONE (above). Remaining NDPP polish: unit header words 3–4 semantics (per-unit transform/bone binding), skinning bone-index mapping for skinned GLBs.
+- B2: NTPP interior decode from the dumped template fields + GIDX/CLUT.
+- B3: Per-character assignment of the 3,702 embedded A-packages (unchanged).
+- B4: COM binary command-record encoding (unchanged).
+- B5: Stage slot-9 BE layout decode from the mapped offset-table head.
+- B6′: BONE array roles + skeleton assembly (in progress).
