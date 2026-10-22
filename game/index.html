@@ -254,7 +254,20 @@
       <h2>CHOOSE YOUR ARENA</h2>
       <div class="select-timer" style="visibility:hidden">99</div>
     </header>
-    <div id="stage-grid" class="char-grid stage-grid"><!-- filled by JS --></div>
+    <div class="stage-body">
+      <div class="stage-preview-pane">
+        <div class="stage-preview-media">
+          <img id="stage-preview-img" alt="" />
+          <div id="stage-preview-swatch" hidden></div>
+        </div>
+        <div class="stage-preview-info">
+          <div id="stage-preview-name"></div>
+          <div id="stage-preview-universe"></div>
+          <div id="stage-preview-desc"></div>
+        </div>
+      </div>
+      <div id="stage-grid" class="char-grid stage-grid"><!-- filled by JS --></div>
+    </div>
     <footer class="select-footer">
       <span id="stage-hint">Pick an arena</span>
       <button id="random-stage" class="btn-ghost">RANDOM</button>
@@ -354,7 +367,7 @@
   </section>
 
   <!-- ====================== STORY: STAGE INTRO ====================== -->
-  <section id="screen-stage" class="screen">
+  <section id="screen-stage-intro" class="screen">
     <div class="panel">
       <p id="stage-kicker" class="stage-kicker"></p>
       <h2 id="stage-title"></h2>
