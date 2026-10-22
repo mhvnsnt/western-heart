@@ -75,3 +75,30 @@ motdatP1.bin record structure against the P1 .info offsets;
 (2) cross-check any motion-index field against pmot001's 56-motion
 .gyu bank and the general banks; (3) only then assign the entries
 that verify, per fighter, with per-character isolation.
+
+## Attempt-9 addendum: the .bin bridge — structure cracked, correlation still unproven
+
+The three held `.bin` files were parsed this attempt (byte-level):
+
+| File | u32 count | .info count | Offset table |
+|---|---|---|---|
+| motion_test_motdatP1.bin (253,728 B) | 35 | 35 | starts `0, 0x1850, 0x1ed0, 0x2550, …`, strictly monotonic, all < file size |
+| motion_wptest_motdatP44.bin (5,256 B) | 1 | 1 | `0` |
+| motion_wptest_motdatP55.bin (30,512 B) | 3 | 3 | `0, 0x1850, 0x4740`, strictly monotonic |
+
+Format: `[u32 N][N × u32 offsets, first = 0][records]`; record k spans
+`[off_k, off_{k+1})` (last → EOF). P1 record sizes vary 1,616–12,560 B —
+consistent with per-move data payloads (float soup), not fixed records.
+**Count parity holds on all 3 held pairs (35/35, 1/1, 3/3)** — the
+.bin table and the .info table are parallel constructions of the same
+list, so .bin record k is the data payload for .info name k *inside the
+motdat test tooling*.
+
+**Verdict unchanged for game banks: name↔bank-motion-index correlation
+remains UNPROVEN.** Nothing in the .bin records yet ties record k to a
+`.gyu` bank motion index (no index field identified; payloads are raw
+float data). Zero names assigned this attempt, per the no-guessing
+rule. Named next step: compare P1 .bin record payload shapes/durations
+against pmot001's 56-motion .gyu bank (track counts per motion) — a
+count/shape match across all 35 records would be ordering+count proof;
+anything less assigns nothing.
