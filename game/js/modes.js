@@ -459,6 +459,15 @@ export class ModeController {
   onConfirm(selectedId) {
     if (!selectedId) return false;
     if (this.mode === 'versus' && this.vsStep === 0) {
+      // TTT2 TEAM BATTLE (worker 24): the draft lives in the select
+      // screen's versus submenu; modes mirrors it from the exposed state.
+      const draft = this._vsDraft();
+      if (draft && draft.mode === 'team') {
+        if (!draft.done) return false; // draft continues; select screen owns the UI
+        this.vsStep = 0; this.vsP1 = null;
+        this._beginTeamVersus(draft.p1, draft.p2, draft.size);
+        return true;
+      }
       this.vsP1 = selectedId;
       this.vsStep = 1;
       document.querySelectorAll('.char-card').forEach((x) => x.classList.remove('selected'));
@@ -551,9 +560,48 @@ export class ModeController {
     this.game.onMatchEnd = null;
     this.ui.matchOver(playerWon); // classic result screen: REMATCH / MENU
   }
+
+  /* ---------- TTT2 TEAM BATTLE inside versus (worker 24) ----------
+     Reads the select screen's versus-submenu draft (TTT2 actual: the
+     solo/tag choice happens BEFORE any fighter is picked, inside the
+     character select screen). 2 = TTT2 tag rules (tag engine in
+     team-battle.js); 3-8 = TTT2 Team Battle elimination. */
+  _vsDraft() {
+    try {
+      const st = window.__selectScreen && window.__selectScreen._state;
+      if (!st || st.mode !== 'versus' || st.vsMode !== 'team') return null;
+      return {
+        mode: 'team', size: st.teamSize,
+        p1: st.draft.p1.slice(), p2: st.draft.p2.slice(),
+        done: !!(st.vsTeamsDone && st.vsTeamsDone.p1.length === st.teamSize &&
+                 st.vsTeamsDone.p2.length === st.teamSize),
+      };
+    } catch (e) { return null; }
+  }
+
+  _beginTeamVersus(p1ids, p2ids, size) {
+    this._lastVersus = null;
+    this._lastTagTeams = { p1: p1ids.slice(), p2: p2ids.slice(), size };
+    if (size === 2) {
+      // TTT2 TAG: one match, tag in/out + combos + assault + crash.
+      const nm = (ids) => ids.map((id) => { const c = this.getChar(id); return c ? c.name : id; }).join(' & ');
+      this._badge(`TAG BATTLE · ${nm(p1ids)} VS ${nm(p2ids)}`);
+      this.game.onMatchEnd = (won) => this._versusEnd(won);
+      this.startFight(p1ids[0], p2ids[0], { mode: 'versus', tagTeams: { p1: p1ids.slice(), p2: p2ids.slice() } });
+    } else {
+      // TTT2 TEAM BATTLE mode: elimination, winner stays on, health carries.
+      this.team = { pTeam: p1ids.slice(), cTeam: p2ids.slice(), pIdx: 0, cIdx: 0, pHp: null, cHp: null, size };
+      this._badge(`TEAM BATTLE · ${size}v${size} — winner stays on`);
+      this._teamFight();
+    }
+  }
   rematch() {
     // Re-run the current mode's fight setup.
-    if (this.mode === 'versus' && this._lastVersus) {
+    if (this.mode === 'versus' && this._lastTagTeams) {
+      // TTT2 tag / team battle rematch (worker 24).
+      const t = this._lastTagTeams;
+      this._beginTeamVersus(t.p1, t.p2, t.size);
+    } else if (this.mode === 'versus' && this._lastVersus) {
       this._beginVersus(this._lastVersus[0], this._lastVersus[1]);
     } else if (this.mode === 'arcade' && this.arcade) {
       this._arcadeFight();
@@ -874,12 +922,13 @@ export class ModeController {
   }
   _teamFight() {
     const t = this.team;
+    const size = t.size || TEAM_CFG.size; // versus submenu can set 3-8
     const pId = t.pTeam[t.pIdx], cId = t.cTeam[t.cIdx];
     const pc = this.getChar(pId), cc = this.getChar(cId);
     const diff = 0.55 + (t.pIdx + t.cIdx) * 0.05;
     const foeEntry = { ...cc, ai: scaledAi(cc, Math.min(0.95, diff)) };
     this._teamFoe = foeEntry;
-    this._badge(`TEAM BATTLE · YOU ${t.pIdx + 1}/3 (${pc.name}) VS CPU ${t.cIdx + 1}/3 (${cc.name})`);
+    this._badge(`TEAM BATTLE · YOU ${t.pIdx + 1}/${size} (${pc.name}) VS CPU ${t.cIdx + 1}/${size} (${cc.name})`);
     this.ui.banner(`${pc.name} VS ${cc.name}`);
     this.game.onMatchEnd = (won) => this._teamEnd(won);
     const opts = { mode: 'team', roundsToWin: 1, enemyChar: foeEntry };
@@ -897,12 +946,13 @@ export class ModeController {
       t.cHp = teamCarry(g.p2.hp, g.p2.maxHp);
       t.pIdx++; t.pHp = null;
     }
-    if (t.cIdx >= TEAM_CFG.size) {
-      const left = TEAM_CFG.size - t.pIdx;
+    const size = t.size || TEAM_CFG.size; // versus submenu can set 3-8
+    if (t.cIdx >= size) {
+      const left = size - t.pIdx;
       this._modeWin(true, 'TEAM BATTLE — YOUR TEAM STANDS',
-        `CPU team wiped. ${left} of your ${TEAM_CFG.size} fighters still standing. The shrine remembers the team.`, []);
-    } else if (t.pIdx >= TEAM_CFG.size) {
-      const left = TEAM_CFG.size - t.cIdx;
+        `CPU team wiped. ${left} of your ${size} fighters still standing. The shrine remembers the team.`, []);
+    } else if (t.pIdx >= size) {
+      const left = size - t.cIdx;
       this._modeWin(false, 'TEAM BATTLE — TEAM WIPED',
         `Your team fell. CPU has ${left} fighter${left === 1 ? '' : 's'} left. Draft again.`,
         [{ label: 'REMATCH TEAMS', fn: () => { this._teamPending = []; this.startMode('team'); } }]);

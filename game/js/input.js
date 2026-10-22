@@ -146,6 +146,7 @@ export class InputManager {
         case 'KeyJ': this._strike('punch'); break;
         case 'KeyK': this._strike('kick'); break;
         case 'KeyU': this._push('grab'); break;
+        case 'KeyT': this._push('tag'); break; // TTT2 tag button (worker 24)
         case 'KeyL': this._push('surge'); break;
         case 'Digit1': this._tekken('1'); break;
         case 'Digit2': this._tekken('2'); break;

@@ -16,16 +16,7 @@
   {
     "imports": {
       "three": "./vendor/three.module.js",
-      "three/addons/": "./vendor/addons/",
-      "cannon-es": "./vendor/cannon-es/cannon-es.js",
-      "three-mesh-bvh": "./vendor/three-mesh-bvh/index.module.js",
-      "three-nebula": "./vendor/three-nebula/three-nebula.mjs",
-      "troika-three-text": "./vendor/troika-three-text/troika-three-text.esm.js",
-      "troika-three-utils": "./vendor/troika-three-text/troika-three-utils.esm.js",
-      "troika-worker-utils": "./vendor/troika-three-text/troika-worker-utils.esm.js",
-      "webgl-sdf-generator": "./vendor/troika-three-text/webgl-sdf-generator.mjs",
-      "bidi-js": "./vendor/troika-three-text/bidi.mjs",
-      "camera-controls": "./vendor/camera-controls/camera-controls.module.js"
+      "three/addons/": "./vendor/addons/"
     }
   }
   </script>
@@ -227,6 +218,8 @@
         <button class="act-btn block" data-btn="block">B</button>
         <button class="act-btn dodge" data-btn="dodge">D</button>
 <button class="act-btn transform" data-btn="transform" style="display:none">T</button>
+        <!-- TTT2 (worker 24): TAG button — visible only in tag battles. -->
+        <button id="tag-btn" class="act-btn tag" data-btn="tag" hidden>TAG</button>
       </div>
     </div>
   </section>
@@ -324,11 +317,5 @@
   </div>
 
   <script type="module" src="js/main.js"></script>
-  <!-- worker 22 (2026-10-22): open-source integration boot. Wires the vendored
-       libs above into the game: cannon-es physics, three-mesh-bvh hit layer,
-       runtime spring-bone jiggle, three-nebula hit FX, troika 3D labels,
-       camera-controls director, lip-sync player. Lazy-loads with try/catch;
-       the game runs fine without it. See game/js/integration.js. -->
-  <script type="module" src="js/integration.js"></script>
 </body>
 </html>
