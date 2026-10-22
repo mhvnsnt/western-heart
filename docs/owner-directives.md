@@ -68,3 +68,9 @@ Living document. Updated every time the owner sets a directive. Newest first.
   attires Tripo-first ordering.
 - `git_merge.py` saved to `tools/git-merge/` via PR #495 for merging clean
   green PRs without the GitHub merge API.
+
+## DISPLAY ORDER LAW (2026-10-22, permanent)
+
+Tripo 3D models show FIRST and foremost for every fighter; Tekken attires/models ladder BEHIND as back-slot attire choices.
+
+**SOLE EXCEPTION: Pantera.** His Attire 1 is a King reskin, but the user already customized it, so it may show first/up front. He is the ONLY exception; every other fighter's Tekken reskins go later in the ladder. No future pass shall "fix" Pantera's attire order.
