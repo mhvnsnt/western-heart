@@ -37,9 +37,3 @@ deleted. Sizes in bytes, hashes are SHA-256.
 ## Not yet pulled
 
 - **Eastern Mind (Osamu Sato)** — download never confirmed; nothing on disk. Teardown lane pending.
-
-## Public-hunt files over GitHub's 100MB/file limit (TeraBox only)
-
-| Size | SHA-256 | Local path | TeraBox path |
-|---|---|---|---|
-| 269690413 | `tbd-after-terabox-upload` | `tekken7/arenas/mishima-dojo-full-8_10_21.rar` | `/western-heart/tekken7/arenas/` (pending upload — needs creds refresh) |

@@ -2,52 +2,7 @@
 
 **Source:** `tekken6-psp.iso` (816MB, PSP, USA)
 **Teardown date:** 2026-10-13
-**Status:** Videos + structure extracted. EBOOT decrypted 2026-10-14; sector cipher
-fully reversed 2026-10-15; bulk DATA401 transform still under analysis (see Decrypt
-Breakthrough below). Models/textures pending decrypt breakthrough.
-
-### 100% Teardown Mission (2026-10-15)
-Owner-directed full teardown: every Tekken 6 PSP asset (models, textures, stages,
-animations, audio) into Western Heart. Landing lane: branch
-`feature/tekken6-100-teardown` (PR open, unmerged until the decrypt lane delivers
-models). This PR lands the decrypt docs + tooling. Model/GLB extraction will be a
-follow-up PR once the bulk DATA401 transform is cracked.
-- Canonical store for large binaries: GitHub Releases `tekken6-psp-v1` (ISO, 816MB)
-  and `tekken6-endings-v1` (46 videos, 337MB) — NOT committed to git.
-- Everything in this teardown lives under `teardown/tekken6/` (TEARDOWN-TO-REPO law).
-- Work notes: `~/workspace/game-reverse-engineering/tekken6/` (decrypt lane's docs,
-  tools, and checkpoint history; videos + ISO stay local per owner directive).
-
-### Decrypt Breakthrough (2026-10-14/15)
-The PPSSPP live-run was bypassed — the EBOOT was decrypted and the game's own
-data-protection scheme was reverse-engineered statically from the decrypted ELF
-(`teardown/tekken6/decrypted/EBOOT.DECRYPTED.ELF`, 4.1MB). Full docs in
-`teardown/tekken6/docs/`, tooling in `teardown/tekken6/tools/`.
-
-- **Sector cipher 0x8AA2CA8 FULLY REVERSED** (`docs/SECTOR-CIPHER-REVERSED.md`,
-  `tools/sector_cipher.py`): custom stream cipher (NOT AES) — per-word
-  `dst[i] ^= k; k = 5*rotr(k,29) + 1`, per-block reseed via `bitrev` (Allegrex
-  instruction misread earlier as DSP ASE). Validated two ways: involution +
-  byte-identical to real machine code via unicorn emulation (768/768 words).
-- **Per-sector K1/K2 extraction SOLVED** (`docs/K1K2-CALL-SITE-ANALYSIS.md`,
-  `tools/k1k2_extract.py`): `0x8AA2E88` gates each 0x800-byte unit on
-  CRC32(buf[0:0x7FC]) == u32 buf[0x7FC], then extracts K1/K2 via table
-  indirection (`idx = buf32[0xF1/0x1AB] ^ mask`, masks 0x38BFE591/0xD3610818).
-- **Call graph mapped** (`docs/DECRYPT-CALLGRAPH-2026-10-15.md`): keystruct
-  `[C1,C2,K1,K2]` builder 0x8AA3298, dual-decrypt+verify 0x8AA305C,
-  sector read 0x8AA1204, PAC-open 0x8AA2100, PAC dispatch table at file 0x3cb6c0.
-- **Corrections + ktRead trace** (`docs/DECRYPT-CORRECTIONS-2026-10-15.md`):
-  delay-slot misread fixed (path Y K1 = ext0, NOT buffer address — verify passes
-  0/506 mismatches vs 508/506 before); 0x8AA22E8 is the SAVE-DATA path, not
-  DATA401 bulk; ktRead chain is plain I/O (no crypto anywhere in it);
-  0x8AA135C is dead code; IDX tail is zero in the clear (not stream-encrypted).
-- **Full-ISO CRC scan (definitive): exactly ONE sector passes — 230256** (in an
-  ISO fs gap, first sector of the raw data region right after the IDX).
-  DATA401.IDX = LBA 230240, 26,028 bytes (13 sectors, entropy 7.99).
-- **Still blocked:** the bulk data region (sectors 230256–230319+) is uniformly
-  random (entropy 7.90–7.92), covered by an UNKNOWN transform — not the sector
-  cipher, not ktRead, not 0x8AA135C. Candidates: custom decompressor near ktRead
-  callers, IDX-driven per-file keys, or unicorn-emulating the real PAC open.
+**Status:** Videos + structure extracted. Models/textures encrypted (decrypt path documented below).
 
 ### Safe Storage (2026-10-13)
 - **ISO re-downloaded 2026-10-13, verified 855,638,016 bytes**, safe on GitHub Release
@@ -259,15 +214,11 @@ The following are locked behind PSP encryption and Namco's proprietary formats:
 - **Customization item meshes** — Same.
 
 ### Why
-1. EBOOT.BIN started with `~PSP` magic = Sony's encrypted executable format —
-   **decrypted 2026-10-14**, now in `teardown/tekken6/decrypted/EBOOT.DECRYPTED.ELF`
-   (see Decrypt Breakthrough above for the reversed data-protection scheme)
+1. EBOOT.BIN starts with `~PSP` magic = Sony's encrypted executable format
 2. DINF_400.BIN (120 bytes) appears to be an encryption key or hash, not a file index
-3. DATA401.IDX (26KB) is obfuscated — no readable file table (analysis in
-   `docs/DECRYPT-CORRECTIONS-2026-10-15.md`)
+3. DATA401.IDX (26KB) is encrypted — no readable file table
 4. Namco's PSP archive format is proprietary and undocumented
-5. Bulk DATA401 transform is still unknown — the decrypt lane is tracing it from
-   the decrypted binary (custom decompressor / per-file keys candidates)
+5. Decryption would require PSP firmware keys + custom tooling (PPSSPP decryption, psptools)
 
 ### Future Path
 If model extraction is needed later:
@@ -313,12 +264,6 @@ tekken6/
 - [x] Customization system researched and documented (verified complete 2026-10-13)
 - [ ] Decryption path executed — tools staged at `~/workspace/tools/tekken-decrypt/`,
       blocked on live PPSSPP run (see Decryption Path section)
-- [x] EBOOT decrypted 2026-10-14 → `teardown/tekken6/decrypted/EBOOT.DECRYPTED.ELF` (4.1MB)
-- [x] Sector cipher 0x8AA2CA8 fully reversed (bit-exact, unicorn-validated) — `teardown/tekken6/tools/`
-- [x] Per-sector K1/K2 extraction scheme solved (CRC-gated table indirection) — `teardown/tekken6/docs/`
-- [x] Decrypt call graph mapped + corrected (call sites, key-confirmation, ktRead trace)
-- [ ] Bulk DATA401 transform cracked (decrypt lane active — see Decrypt Breakthrough section)
-- [ ] Character models extracted (blocked: bulk transform — models pending decrypt breakthrough)
 - [ ] Character models extracted (blocked: encryption — path documented)
 - [ ] Textures extracted (blocked: encryption — path documented)
 - [ ] Stages extracted (blocked: encryption — path documented)

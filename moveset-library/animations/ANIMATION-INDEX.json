@@ -19,28 +19,15 @@
   "tekken3": {
    "path": "teardown/tekken3/animations/",
    "format": "divmot motion banks (types 0-20, 99), per-character",
-   "note": "All 20 character banks (types 0-20) plus the divmot99 common bank are extracted and SHA-256-verified against docs/BNS-ORGANIZATION-PATTERN.md (2026-10-20 full-wiring lane); type 15 (Mokujin) is absent from the local disc image - BNS record 295 has size 0 in bns-table.pkl. Pose solving uses the verified USA EXE tables (tools/local/pose_assemble.py + usa_motion.py). Decoded wh-anim/1 game banks live in game/assets/anim/t3/ for king/jin/xiaoyu/bryan/gunjack/yoshimitsu; heihachi decode is blocked on his KMD's empty part rows (see teardown/tekken3/CANON-CONVERSION.md).",
+   "note": "Motion banks header-verified; pose solving blocked on USA EXE tables. Raw banks available.",
    "characters": {
-    "divmot00": "Paul",
-    "divmot01": "Law",
-    "divmot02": "Lei",
     "divmot03": "King",
     "divmot04": "Yoshimitsu",
-    "divmot05": "Nina",
-    "divmot06": "Hwoarang",
     "divmot07": "Xiaoyu",
-    "divmot08": "Eddy / Tiger",
     "divmot09": "Jin",
-    "divmot10": "Julia",
-    "divmot11": "Kuma / Panda",
     "divmot12": "Bryan",
     "divmot13": "Heihachi",
-    "divmot14": "Ogre / True Ogre",
-    "divmot16": "Gun Jack",
-    "divmot17": "Anna",
-    "divmot18": "Dr. Bosconovitch",
-    "divmot19": "Gon",
-    "divmot20": "Forest Law"
+    "divmot16": "Gun Jack"
    }
   },
   "tekken6": {

@@ -31,46 +31,30 @@
 - Proof: pulled `pantera_leoman.glb` + `bannon_mask.glb` from branch `grok/lab-playable-slice` via `gh api` (not committed), served with python http.server, rendered with playwright-core + headless Chrome (swiftshader). Fixed three bugs found by the render (morph dictionary names, region size units, front/back regions missing the surface). Labels added with PIL → `docs/creation-suite/creation_suite_proof.jpg`.
 - gitleaks on the diff; merged origin/main; no deletions.
 
-## 2026-10-17: LANE 3 — Moveset wiring: all 45 fighters on real Tekken inputs (1/2/3/4)
+## 2026-10-22 ~20:30 CDT — worker 46: Ashlane/Brutalfist model render batch (28 renders)
 
-**Audit finding:** the playable build only had TWO movesets wired (`king`, `jin` in
-roster-full.js) and the combat system only knew 3 generic actions (punch/kick/grab).
-The 7 real T3 teardown movesets (king/jin/yoshimitsu/heihachi/bryan/gunjack/xiaoyu,
-teardown/tekken3/movesets/) existed but 5 of them were unreachable from gameplay,
-and 29 fighters were mapped to wrong archetypes (e.g. Phantom/Yoshimitsu -> 'jin').
+**Rendered all 28 Ashlane-universe characters** (one best variant each, facing camera, neutral
+studio background, natural A-pose/bind pose — no forced T-pose) for the user's WH-fighter review.
+Catalog: `docs/research/ashlane-render-catalog-2026-10-22.md`. No roster/canon writes — review only.
 
-**What was built (branch `feat/moveset-wiring-all-agents`):**
-- `game/assets/movesets/{45 ids}.json` — per-fighter Tekken movelists extracted from the
-  real T3 motion-bank JSONs via `_lane3/extract_movelists.py` (kept in the lane workdir).
-  Each fighter: basics 1/2/3/4, throws 1+3/2+4 (real T3 throw rows, attack_class=1),
-  directional attacks (f+1, d/f+2...), strings (1,2 / 2,1 up to 3 hits, from real
-  branch chains), specials (motion inputs incl. King's real chain throws
-  f,n,b,d/b,d,f+1+2). Every move carries t3_source/t3_row/t3_command provenance.
-  Fighters whose Tekken base has no T3 bank use the closest archetype proxy,
-  flagged `"proxy": true` with an honest note (T7/TTT2 per-character banks = gapfill lane).
-  Capoeira fighters (King Tyrant, Star) moved jin -> xiaoyu proxy (most capoeira-like
-  of the 7 T3 sources); roster-full.js `moveset` fields corrected for all 36.
-- `game/js/movesets.js` (new) — loader (`loadFighterMovesets`, 45 JSONs into
-  window.WH_MOVESETS), `parseSpecialInput`, and `TekkenBuffer`: per-fighter input
-  history resolving strings (800ms), motion specials (600ms direction history),
-  directionals, and 1+2/3+4 chord specials.
-- `game/js/input.js` — Digit1/2/3/4 keys, 1+3/2+4 throw chords + 1+2/3+4 special
-  chords (140ms, same pattern as legacy P+K grab), KeyS/ArrowDown + joystick-down
-  for d/df/db motions. Legacy J/K/U/L untouched.
-- `game/js/fighter.js` — `tryAttack` accepts Tekken notation via TekkenBuffer;
-  `getRealMove` reads per-fighter moveset first (legacy aggregate + MOVES fallback,
-  plus a no-data fallback so attacks never soft-lock); `_weaponBone`/T3 clip map/
-  procedural fallback driven by move limb + notation; AI unchanged (punch->1 etc.).
-- `game/js/game.js` — dispatches 1/2/3/4/1+3/2+4/1+2/3+4; feeds facing-relative
-  direction (f/b/u/d + diagonals) into each fighter's TekkenBuffer.
-- `game/js/main.js` — boots `loadFighterMovesets()` alongside `loadRealMovesets()`.
-- Test: `_lane3/test_movesets.mjs` — **1980/1980 checks PASS**: all 45 movesets
-  schema-valid, every move executable (startup/active/recovery/damage > 0),
-  every T3 row reference verified against the real banks, resolver simulated per
-  fighter (raw buttons, string continuation, throws, directionals, motion specials).
-
-**Gaps (honest):** T7/TTT2 per-character movesets are NOT extracted (format docs only
-in teardown/tekken7/tekkenmods-docs) — 38 fighters ride T3 archetype proxies until
-gapfill lane extracts them. Throw damage: T3 banks store 0, follows WH grappler
-convention (flagged per move). Touch UI still has punch/kick buttons (map to 1/4);
-dedicated 1/2/3/4 touch buttons are UI lane's call.
+- Variant choice = canonical defaults from the source repo's own roster
+  (`brutalfistgrokversiontenpointfive/src/data/bannonGlbRoster.ts`, first-listed/"Default" attire).
+  PABLO got a **second** render (PABLO_blackreign.glb — canon-relevant dark variant per user).
+  SOMBRA_NEGRA_rigged.glb is the only cast model in `AshLane-prototype`.
+- VF5 mappings flagged in catalog (user-locked 2026-10-22, no changes without user's word):
+  LOCKED = BANNON→Jeffry McWild, EL_TORO_DE_ORO→Wolf Hawkfield, PABLO→El Blaze, NPC_FINXSSE→Lei-Fei.
+  Candidates = MASTER_SENSEI→Lau, SOMBRA_NEGRA→Kage, CIPHER→Goh (music-themed "emo type" note),
+  AARON_RUBEN→Akira, CODY→Jacky, JAGER→Vanessa.
+  Unmapped: TRIPLE_XXX, ECHO, HOLLOW, STATIC, STICKUP, ONYX, TYNESHIA, MAIME, EDWIN_KENNEDY,
+  HALL_NIGHTER, STAN_COMBS, KOBRA, VIPER. VF5 women (Sarah/Pai/Aoi/Eileen) have no counterparts
+  identified — female-presenting models in this batch: Echo, Maime, Onyx, Tyneshia (flagged).
+- Pipeline: three.js r160 GLTFLoader + Playwright headless Chromium/SwiftShader, studio 3-point
+  lighting, 720x960 PNG. Viewer + batch scripts at `~/workspace/ashlane-renders/` (site/viewer.html,
+  render.mjs, batch.json) — reusable for re-renders. Large GLBs stayed in the source repos.
+- Render-time findings: (1) BANNON_rigged.glb needed bone-aware camera framing (skinned geometry
+  bounds were bind-pose, camera ended up inside the torso). (2) **SOMBRA_NEGRA_rigged.glb is
+  damaged**: JOINTS_0 indices reach 65535 against 58 skeleton joints (~92k vertices affected) and
+  the mesh branch carries a bogus 0.035 node scale — rendered as bind-pose T-pose at natural
+  scale for review. Needs a full re-rig before any WH intake; skin data unrecoverable as-is.
+- Remote-storage links expire 2026-10-24 ~20:30 UTC. 11/28 uploaded at PR time; remaining 17
+  pending the user's upload-approval taps (per-file confirmation cards).

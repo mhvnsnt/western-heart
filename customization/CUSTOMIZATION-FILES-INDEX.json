@@ -5942,38 +5942,5 @@
     "caw"
    ]
   }
- ],
- "addendum_2026-10-20_worker_a": {
-  "note": "Creation Suite Pass (Worker A) additions only — existing content above is untouched. Counts counted from disk 2026-10-20. Full write-up: customization/SYSTEMS-WIRING.md section '2026-10-20 — Creation Suite Pass, Worker A'.",
-  "new_files": [
-   {"path": "customization/tools/convert_caw_parts.py", "type": "code/tool", "what": "Resumable CAW converter: No Mercy OBJ+VC -> GLB (Blender batch), WMXIX .tex -> PNG (vendored GC TPL decoder), CATALOG.json builder, contact-sheet renderer."},
-   {"path": "customization/parts-converted/CATALOG.json", "type": "data", "what": "Converted-parts catalog contract for the suite: {id, name, source_game, slot, category, glb, origin_file, status} per part; slots are Tekken 7 slot titles."},
-   {"path": "customization/parts-converted/convert-log.jsonl", "type": "data", "what": "Per-file conversion status log (resumability + audit)."},
-   {"path": "customization/parts-converted/no-mercy/", "type": "model", "what": "No Mercy parts converted to GLB with COLOR_0 vertex colors + UVs, by source category."},
-   {"path": "customization/parts-converted/wmxix-textures/", "type": "texture", "what": "WMXIX .tex containers decoded to PNG (first embedded TPL, first image) where a TPL is embedded."},
-   {"path": "customization/parts-converted/contact-sheet-nm.png", "type": "image", "what": "Own-eyes verification render: 12 converted No Mercy parts across categories (locked method, docs/RENDER-ORIENTATION.md)."},
-   {"path": "customization/parts-converted/contact-sheet-wmxix-textures.png", "type": "image", "what": "Own-eyes verification sheet: 12 decoded WMXIX textures."}
-  ],
-  "inventory_counts_2026-10-20": {
-   "customization/parts total files": 3883,
-   "wmxix": {"files": 2691, "ymg": 1200, "ymg_yobj_magic": 998, "ymg_dumy_placeholder": 202, "tex": 1470, "tex_with_embedded_tpl": 1044, "ycg": 8},
-   "no-mercy": {"files": 986, "obj": 303, "vc": 303, "png": 379},
-   "hair": {"files": 49, "gltf": 16, "glb": 3},
-   "tekken parts dir": {"files": 6, "note": "slot catalogs only; T7 .uasset item meshes never pulled"},
-   "teardown/tekken6": {"files": 69, "item_tables_on_disk": 0, "note": "item name tables live only in game-reverse-engineering bulk (not this repo); EBOOT carries sbcustomize_item_t/CUSTOMIZEPACK strings"},
-   "teardown/wwf-no-mercy": {"files": 18554},
-   "teardown/wmxix": {"files": 1562},
-   "teardown/tekken3": {"files": 19436},
-   "create-fighter/data/PARTS-INDEX.json parts": 3398,
-   "PARTS-REGISTRY.json parts": 1148,
-   "creation-suite-ui curated parts": 34
-  },
-  "gaps": [
-   "WMXIX .ymg mesh assembly unsolved (batch strips render as fragments; 2026-10-15 solution disproven by Lane-A own-eyes retest; 2026-10-17 assembly artifacts absent from repo). All 1,200 cataloged blocked_ymg_decode / blocked_dumy_placeholder. Unblock: main.dol YOBJ loader RE or Dolphin GX dump.",
-   "426 WMXIX .tex have no embedded TPL (name-table-only containers) — blocked_no_tpl.",
-   "Tekken 6 item/equipment tables not present as files in teardown/tekken6 (69 files grepped incl. decrypted EBOOT); definition array sbcustomize_item_t never located.",
-   "WWE 2K pac/edit binaries not on disk — docs only (9 docs in customization/wwe2k-caw).",
-   "Tekken 7 item meshes (.uasset) never pulled — schema only."
-  ]
- }
+ ]
 }

@@ -36,9 +36,6 @@ export function friendlyName(part){
   if(m) return `${titleCase(m[2].replace(/_/g,' '))} · 0x${m[1].toUpperCase()}`;
   m = id.match(/^no-mercy:skin-tex:(.+)\.png/i);
   if(m) return `Skin Texture · ${m[1]}`;
-  // cc0-hair: cc0-hair:quaternius-buns:Hair_Buns.gltf
-  m = id.match(/^cc0-hair:([^:]+):(.+?)\.(gltf|glb)$/i);
-  if(m) return `${titleCase(m[1].replace(/-/g,' '))} (CC0)`;
   return id.split('/').pop();
 }
 function titleCase(s){ return s.replace(/\b\w/g,c=>c.toUpperCase()); }
@@ -55,7 +52,7 @@ export function rarityFor(part){
 export class Catalog {
   constructor(indexJson){
     this.byCategory = {};
-    for(const c of [...CATEGORIES, ...UNIVERSAL_CATEGORIES]) this.byCategory[c.key] = [];
+    for(const c of CATEGORIES) this.byCategory[c.key] = [];
     for(const p of indexJson.parts){
       if(this.byCategory[p.slot]){
         this.byCategory[p.slot].push({
@@ -63,9 +60,7 @@ export class Catalog {
           displayName: friendlyName(p),
           price: priceFor(p),
           rarity: rarityFor(p),
-          // CC0 universal parts ship real geometry (GLB/glTF in-repo); teardown
-          // ymg/obj parts are honest about it: geometryPending until decoded.
-          geometryPending: !(p.geometryReady || p.source_game==='cc0-hair'),
+          geometryPending: true,   // no .obj/.glb wired to the preview yet — honest badge
         });
       }
     }
@@ -88,19 +83,3 @@ export class Catalog {
   }
   catBySlotId(slotId){ return CATEGORIES.find(c=>c.slotId===slotId); }
 }
-
-/* ---- Universal parts registry wiring (2026-10-18) ----
-   The new universal libraries (eye-library, decal-library/pantera,
-   parts/pantera-eyes, parts/superhero) are wired into the suite via
-   customization/PARTS-REGISTRY.json (see packages/creation-suite/src/parts.js).
-   Their entries land in the parts index under the slots below, so the
-   existing Catalog picks them up untouched — this only ADDS categories.
-   Eye/decal texture swaps are universal (character_mappings); superhero mesh
-   pieces attach at bone sockets on any character. */
-export const UNIVERSAL_CATEGORIES = [
-  { key:'eyes',   icon:'👁️', label:'Eyes',           slotId:'eyes',   anchor:'Head' },
-  { key:'decals', icon:'🏷️', label:'Decals & Logos', slotId:'decals', anchor:'Hips' },
-  { key:'masks',  icon:'🎭', label:'Masks & Pieces', slotId:'masks',  anchor:'Head' },
-];
-// Merged view: teardown-index categories + universal-library categories.
-export const ALL_CATEGORIES = [...CATEGORIES, ...UNIVERSAL_CATEGORIES];

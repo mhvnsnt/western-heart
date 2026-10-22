@@ -42,16 +42,7 @@ Owner-directed 2026-10-13. This is the UI/UX blueprint for the two creation syst
 
 **Visual layout:** Based on the most recent WWE moveset menus and creation screens. Familiar to anyone who's customized a moveset in a WWE game.
 
-**Interaction (phone-first — owner's law 2026-10-18):** NO drag-and-drop anywhere. The whole editor is three taps:
-1. **TAP a move slot** — the slot highlights, the move library opens filtered to that slot's category (WWE 2K slot-first flow; MDickie tap-once-to-inspect)
-2. **SCROLL the move library** — browse by positional category (WWE 2K's category organization); every entry tap-previews live on both fighters; edge-tap browse a la MDickie on short lists
-3. **TAP the move to assign it** — tap-once previews, tap-again (or the confirm) assigns (MDickie tap-again-to-enter). Assigned move plays live on both fighters so you see the impact immediately
-
-Slot modifiers (e.g. Super Finisher style upgrades) live on the slot, not the move — WWE 2K model. Tabs stay one tap deep, MDickie-style; the preview window is never covered.
-
-**Flow:** Moveset → pick fighter → TAP input slot (button/combo/grapple/taunt) → SCROLL move library by category → TAP move to preview live on both fighters → TAP again to assign → test → save
-
-**Wrestling-moves federation rule (owner 2026-10-18):** wrestling moves are welcome in the library — grapples, slams, submissions, dives, all of it — but EVERY wrestling move gets REWIRED to Tekken inputs and Tekken playstyle. The move's animation and identity come from wrestling; its input, frame data, cancel rules, and combo behavior are Tekken. The slot owns the properties, the move owns the animation.
+**Flow:** Moveset → pick fighter → pick input slot (button/combo/grapple/taunt) → browse animation library by category → preview live on both fighters → assign → test → save
 
 ## Design Principles
 1. **Preview is king.** Every customization action shows live in the preview window. No blind editing.

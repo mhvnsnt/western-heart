@@ -1,11 +1,7 @@
 /* preview3d.js — full-screen fighter preview.
-   Vendored three.js (./vendor/three.module.js + GLTFLoader). The base model
-   is set by the TEMPLATE SELECT screen (customization/templates/) — there is
-   no default character. Roster fighters load their real GLB from
-   game/assets/models/ via loadModel() (data/ROSTER-BASE.json). Fighter
-   ALWAYS visible, full-body, centered slightly left of screen so the right
-   rail never covers it.
-   Slow auto-rotate, drag-orbit, scroll/pinch zoom.
+   Vendored three.js (./vendor/three.module.js + GLTFLoader). Soldier.glb base rig.
+   Fighter ALWAYS visible, full-body, centered slightly left of screen so the right
+   rail never covers it. Slow auto-rotate, drag-orbit, scroll/pinch zoom.
    Equip visuals: labeled socket-proxy rings (honest placeholders — real ymg/obj
    meshes are not wired yet). */
 import * as THREE from 'three';
@@ -13,9 +9,6 @@ import { GLTFLoader } from '../vendor/addons/loaders/GLTFLoader.js';
 import { clone as skeletonClone } from '../vendor/addons/utils/SkeletonUtils.js';
 
 const SKIN_TONES = ['#f7c2a1','#e8a87c','#c98d5e','#a06a42','#7c4a2d','#5d3320','#3d2114','#2a150c'];
-// Legacy base rig — kept on disk only. It is NOT a default and NOT a fallback:
-// the template select owns the base model. (Killed as default 2026-10-22,
-// owner directive: WWE 2K-style template system replaces it.)
 
 export class Preview3D {
   constructor(canvas){
@@ -28,14 +21,7 @@ export class Preview3D {
     this.mixers = [];
     this.proxyRings = new Map();   // slotId -> ring mesh
     this.dummy = null;
-    this.dome = null;              // Doc Frank dome preview state (see enterDomePreview)
-    this.domeActive = false;
-    this._domeToken = 0;
-    this._domeParams = null;
-    this._savedTargetDist = null;
     this.onReady = null;
-    this.modelUrl = null;          // currently loaded base model
-    this._loading = false;
 
     // orbit state
     this.az = 0.5; this.el = 0.06; this.dist = 4.6;
@@ -107,7 +93,7 @@ export class Preview3D {
     let pinchD = 0;
     cv.addEventListener('touchmove', e=>{
       if(e.touches.length===2){
-        const d = Math.hypot(e.touches[0].clientX-e.touches[1].clientX, e.touches[1].clientY-e.touches[1].clientY);
+        const d = Math.hypot(e.touches[0].clientX-e.touches[1].clientX, e.touches[0].clientY-e.touches[1].clientY);
         if(pinchD) this.targetDist = THREE.MathUtils.clamp(this.targetDist - (d-pinchD)*0.01, 2.2, 9);
         pinchD = d;
       }
@@ -123,31 +109,12 @@ export class Preview3D {
   }
 
   _loadFighter(){
-    // No default character: the template-select screen sets the base model
-    // via loadModel(). Until then the stage stays empty (not a soldier).
-    if(this.onReady) this.onReady();
-  }
-
-  /* ---- dynamic base-model loading: template GLBs from customization/templates/
-     or roster GLBs from game/assets/models/ ----
-     Disposes the old fighter + dummy, loads the new GLB, re-collects materials
-     and bones, plays Idle (or first clip). On failure it reports through
-     onModelError (the app re-opens template select) — it never silently
-     substitutes another character. */
-  loadModel(url){
-    if(!url || url===this.modelUrl || this._loading) return;
-    this._loading = true;
-    this.modelUrl = url;
-    if(this.fighter){ this.scene.remove(this.fighter); this._disposeObj(this.fighter); this.fighter=null; this.mats=null; this.baseColors=null; this.bones=null; }
-    if(this.dummy){ this.scene.remove(this.dummy); this.dummy=null; }
-    this.clearAllProxies();
-    this.mixers = [];
-    new GLTFLoader().load(url, glb=>{
+    new GLTFLoader().load('assets/Soldier.glb', glb=>{
       this.fighter = glb.scene;
       this.fighter.position.set(-0.35, 0, 0);
       this.fighter.traverse(o=>{ if(o.isMesh){ o.castShadow = true; } });
       this.scene.add(this.fighter);
-      // collect materials for skin-tone control (custom base only)
+      // collect materials for skin-tone control
       this.mats = [];
       this.fighter.traverse(o=>{ if(o.isMesh){ (Array.isArray(o.material)?o.material:[o.material]).forEach(m=>{ if(!this.mats.includes(m)) this.mats.push(m); }); } });
       this.baseColors = this.mats.map(m=>m.color.clone());
@@ -158,29 +125,14 @@ export class Preview3D {
         mixer.clipAction(idle).play();
         this.mixers.push(mixer);
       }
-      // bone lookup for socket anchors (mixamorig prefix stripped when present)
+      // bone lookup for socket anchors
       this.bones = {};
       this.fighter.traverse(o=>{ if(o.isBone) this.bones[o.name.replace('mixamorig:','')] = o; });
-      this._loading = false;
       this._hideLoader();
       if(this.onReady) this.onReady();
     }, undefined, err=>{
-      console.error('model failed to load:', url, err);
-      this._loading = false;
+      console.error('Soldier.glb failed to load', err);
       this._hideLoader();
-      // Honest failure: no silent substitution. The app re-opens template
-      // select so the user picks a working base.
-      if(this.onModelError) this.onModelError(url, err);
-    });
-  }
-
-  _disposeObj(root){
-    root.traverse(o=>{
-      if(o.isMesh){
-        if(o.geometry) o.geometry.dispose();
-        const ms = Array.isArray(o.material)?o.material:[o.material];
-        ms.forEach(m=>{ if(m && m.dispose) m.dispose(); });
-      }
     });
   }
 
@@ -198,27 +150,6 @@ export class Preview3D {
   setProportions({ height=1, weight=1, muscle=1 }={}){
     if(!this.fighter) return;
     this.fighter.scale.set(weight*(1+(muscle-1)*0.5), height, weight*(1+(muscle-1)*0.5));
-  }
-  /* ---- MPFB2 morph live-preview proxies (2026-10-18).
-     Real morphs bake as MPFB_<id> shape keys via
-     customization/body-morphs/apply_mpfb_morphs.py; these bone-scale
-     proxies give instant feedback in the preview only. Never destructive. */
-  setMorphValues(values = {}){
-    if(!this.fighter) return;
-    const bone = n => (this.bones && this.bones[n]) || this.fighter.getObjectByName(n);
-    const set = (n, sx, sy, sz)=>{ const o = bone(n); if(o) o.scale.set(sx, sy, sz); };
-    const v = id => values[id] || 0;
-    const s = x => 1 + 0.15 * x;
-    if(v('height')) set('Hips', 1, s(v('height')), 1);
-    const girth = 1 + 0.12*(v('bulk')+v('muscle')) + 0.10*v('fat');
-    if(girth !== 1){ set('Spine', girth, 1, girth); set('Spine1', girth, 1, girth); }
-    if(v('shoulders')){ set('LeftShoulder', 1+v('shoulders')*0.2, 1, 1); set('RightShoulder', 1+v('shoulders')*0.2, 1, 1); }
-    if(v('belly')) set('Spine1', 1, 1, 1 + v('belly')*0.25);
-    if(v('limbs')){ const l = 1 + v('limbs')*0.15;
-      for(const b of ['LeftUpperLeg','RightUpperLeg','LeftLowerLeg','RightLowerLeg','LeftUpperArm','RightUpperArm']) set(b, 1, l, 1); }
-    if(v('neck')) set('Neck', 1+v('neck')*0.15, 1, 1+v('neck')*0.15);
-    if(v('chest')) set('Spine1', 1+v('chest')*0.1, 1, 1+v('chest')*0.12);
-    if(v('hips')) set('Hips', 1+v('hips')*0.12, 1, 1+v('hips')*0.1);
   }
   setBodyType(preset){
     // No Mercy body-type presets -> scale recipes
@@ -253,122 +184,6 @@ export class Preview3D {
     if(r){ this.scene.remove(r); r.geometry.dispose(); r.material.dispose(); this.proxyRings.delete(slotId); }
   }
   clearAllProxies(){ [...this.proxyRings.keys()].forEach(k=>this.clearProxy(k)); }
-
-  /* ---- Doc Frank Wowomomo dome preview (Attire 2 dome editor) ----
-     The v5 dome GLB was built in Attire 2's base-model space
-     (roster/doc-frank/attires/attire2/base/model.glb — same tripo_node
-     49e6f6b9-c4df-412d-b959-4510b1ebe0c5, identical bounds, identity
-     transform — verified against both GLBs), so the base model and the
-     dome parts overlay exactly with NO guessed transform. The roster
-     fighter is hidden while the dome preview is open. Param edits map
-     onto the dome meshes relative to the SAVED build params (the values
-     dome-params.json held when the GLB was baked — its fluid/glass
-     z-bounds match the baked geometry exactly). */
-  async enterDomePreview(baseUrl, domeUrl, savedParams){
-    const token = ++this._domeToken;
-    this.domeActive = true;
-    if(this._savedTargetDist===null) this._savedTargetDist = this.targetDist;
-    this.targetDist = 2.4;                       // closer framing for dome work
-    if(this.fighter) this.fighter.visible = false;
-    if(this.dummy){ this.scene.remove(this.dummy); this.dummy = null; }
-    this.clearAllProxies();
-    // cached group (exitDomePreview only hides it) — reuse, no reload
-    if(this.dome && this.dome.baseUrl===baseUrl && this.dome.domeUrl===domeUrl){
-      this.dome.group.visible = true;
-      if(this._domeParams) this.applyDomeParams(this._domeParams);
-      return;
-    }
-    this._disposeDome();
-    const loader = new GLTFLoader();
-    try{
-      const [base, domeGlb] = await Promise.all([
-        loader.loadAsync(baseUrl), loader.loadAsync(domeUrl) ]);
-      if(token !== this._domeToken || !this.domeActive){
-        this._disposeObj(base.scene); this._disposeObj(domeGlb.scene); return;
-      }
-      const group = new THREE.Group();
-      group.add(base.scene);
-      const parts = {};
-      domeGlb.scene.traverse(o=>{ if(o.isMesh) parts[o.name] = o; });
-      // take ONLY the dome parts — node 0 of the dome GLB is the base
-      // model's own head mesh; adding it would duplicate the head.
-      for(const n of ['DomeGlassExtV5','DomeFluidV5','LavaBlobsV5','DomeBubblesV5']){
-        if(parts[n]) group.add(parts[n]);
-      }
-      group.traverse(o=>{ if(o.isMesh) o.castShadow = true; });
-      // frame the base model on the preview focus point
-      const box = new THREE.Box3().setFromObject(base.scene);
-      const c = box.getCenter(new THREE.Vector3());
-      group.position.set(this.focus.x - c.x, this.focus.y - c.y, this.focus.z - c.z);
-      this.scene.add(group);
-      this.dome = { group, baseUrl, domeUrl,
-        glass: parts['DomeGlassExtV5'] || null, fluid: parts['DomeFluidV5'] || null,
-        lava: parts['LavaBlobsV5'] || null, bubbles: parts['DomeBubblesV5'] || null,
-        saved: { ...savedParams } };
-      if(this._domeParams) this.applyDomeParams(this._domeParams);
-    }catch(e){ console.error('dome preview failed to load:', e); }
-  }
-
-  /* Map dome params onto the in-scene dome meshes (live preview).
-     Verticals remap the baked z-range onto the requested one; colors /
-     clarity / IOR write straight into the baked materials. */
-  applyDomeParams(p){
-    if(!p) return;
-    this._domeParams = p;
-    if(!this.dome) return;
-    const s = this.dome.saved;   // params the v5 GLB was baked from
-    const { fluid, glass, lava, bubbles } = this.dome;
-    // Liquid Top is LOCKED (owner 2026-10-19: DO NOT RAISE) — clamp hard.
-    const top = Math.min(p.fluid_z_top, 0.421);
-    if(fluid){
-      const sy = (top - p.fluid_z_bot) / (s.fluid_z_top - s.fluid_z_bot);
-      fluid.scale.y = sy;
-      fluid.position.y = top - sy * s.fluid_z_top;
-      const sr = p.liquid_radius_scale / s.liquid_radius_scale;
-      fluid.scale.x = sr; fluid.scale.z = sr;
-      fluid.position.z = p.liquid_forward_offset - s.liquid_forward_offset;
-      const fm = Array.isArray(fluid.material) ? fluid.material[0] : fluid.material;
-      if(fm){
-        fm.color.setRGB(p.fluid_color[0], p.fluid_color[1], p.fluid_color[2]);
-        if('transmission' in fm) fm.transmission = p.fluid_transmission;
-      }
-    }
-    if(glass){
-      // glass bottom moves; the joint (top of the extension) stays put
-      const gy = (s.glass_joint_z - p.glass_z_bot) / (s.glass_joint_z - s.glass_z_bot);
-      glass.scale.y = gy;
-      glass.position.y = s.glass_joint_z - gy * s.glass_joint_z;
-      const gm = Array.isArray(glass.material) ? glass.material[0] : glass.material;
-      if(gm){
-        if('transmission' in gm) gm.transmission = p.glass_transmission;
-        if('ior' in gm) gm.ior = p.glass_ior;
-      }
-    }
-    // Lava/bubble COUNTS are build-time params: the baked GLB merges each
-    // set into one mesh, so in-scene they only toggle at 0. The exact count
-    // lands when the saved dome-params.json is rebuilt into the GLB.
-    if(lava){
-      lava.visible = p.lava_count > 0;
-      const lm = Array.isArray(lava.material) ? lava.material[0] : lava.material;
-      if(lm && lm.emissive) lm.emissive.setRGB(p.lava_emissive[0], p.lava_emissive[1], p.lava_emissive[2]);
-    }
-    if(bubbles){ bubbles.visible = p.bubble_count > 0; }
-  }
-
-  exitDomePreview(){
-    this._domeToken++;
-    this.domeActive = false;
-    if(this.dome) this.dome.group.visible = false;
-    if(this.fighter) this.fighter.visible = true;
-    if(this._savedTargetDist!==null){ this.targetDist = this._savedTargetDist; this._savedTargetDist = null; }
-  }
-
-  _disposeDome(){
-    if(!this.dome) return;
-    this.scene.remove(this.dome.group);
-    this._disposeObj(this.dome.group);
-    this.dome = null;
-  }
 
   /* ---- moveset dummy opponent (WWE two-fighter preview) ---- */
   setDummyVisible(show){

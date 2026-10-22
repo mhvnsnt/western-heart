@@ -64,20 +64,11 @@ def assemble(kmd_path: Path, bank_path: Path, slot: int, frame: int,
     bank_data = bank_path.read_bytes()
     bank = motion.parse_bank(bank_data)
     row_no = bank.move_index[slot]
-    # Common bank (divmot99, BNS 279): move-index values / anim words >= COMMON_FLAG
-    # address divmot99_common.bin (n0madic divmot-banks.md). Resolved 2026-10-14.
-    common_path = bank_path.with_name("divmot99_common.bin")
-    row_bank, row_data = bank, bank_data
-    if row_no >= motion.COMMON_FLAG:
-        row_data = common_path.read_bytes(); row_bank = motion.parse_bank(row_data)
-        row_no -= motion.COMMON_FLAG
-    mrow = row_bank.move_row(row_no)
+    mrow = bank.move_row(row_no)
     anim_word = mrow[0]
-    anim_bank, anim_data = row_bank, row_data
     if anim_word >= motion.COMMON_FLAG:
-        anim_data = common_path.read_bytes(); anim_bank = motion.parse_bank(anim_data)
-        anim_word -= motion.COMMON_FLAG
-    stream = motion.parse_anim(anim_data, anim_bank.anim_offset(anim_word))
+        raise SystemExit("slot refers to divmot99 common bank -- extract it first")
+    stream = motion.parse_anim(bank_data, bank.anim_offset(anim_word))
     pose_vec = usa_motion.sample_pose(stream, frame, mtab)
 
     slot_rots = usa_tables.pose_to_slot_rotations(pose_vec, stab)  # 18 flat 9-elem, 4.12

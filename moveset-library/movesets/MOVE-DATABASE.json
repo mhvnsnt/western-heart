@@ -36,7 +36,7 @@
     "frontStrongGrappleSlot1",
     "frontStrongGrappleSlot2"
    ],
-   "anim_ref": "teardown/wwf-no-mercy/animations/clips/anim_339F.npy",
+   "anim_ref": "teardown/wwf-no-mercy/animations/clips/anim_3351.npy",
    "power": "E",
    "properties": []
   },
@@ -47,7 +47,7 @@
    "slot_eligibility": [
     "frontWeakGrappleSlot1"
    ],
-   "anim_ref": "teardown/wwf-no-mercy/animations/clips/anim_33A9.npy",
+   "anim_ref": null,
    "power": "F",
    "properties": []
   },
@@ -58,7 +58,7 @@
    "slot_eligibility": [
     "frontStrongGrappleSlot5"
    ],
-   "anim_ref": "teardown/wwf-no-mercy/animations/clips/anim_33E1.npy",
+   "anim_ref": null,
    "power": "D",
    "properties": []
   },
@@ -89,5 +89,5 @@
    ]
   }
  ],
- "_note": "Full move database: No Mercy re-docs list 400+ moves in move-database.md. This JSON is the programmatic skeleton - populate slot_eligibility and anim_ref per move as the library grows. FULL mat-kings database (all 4,409 move clips + 1,353 system clips, DB labels, Tekken-style inputs, slot eligibility, power joins): moveset-library/movesets/mat-kings-move-database.json (2026-10-20 wiring lane). NM-001/002/003 anim_refs corrected 2026-10-20 against tools/NoMercy-FileTableDB.txt (3351 was a turnbuckle kick, not Scoop Slam)."
+ "_note": "Full move database: No Mercy re-docs list 400+ moves in move-database.md. This JSON is the programmatic skeleton - populate slot_eligibility and anim_ref per move as the library grows."
 }

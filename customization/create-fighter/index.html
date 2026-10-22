@@ -24,8 +24,6 @@
   <div class="tb-right">
     <div id="wallet" class="wallet" title="Fight Money">💰 <span id="wallet-amt">12,400</span>G</div>
     <button id="btn-photo" class="btn btn-gold" title="Photo mode: capture outfit thumbnail">📸 PHOTO</button>
-    <button id="btn-presets" class="btn" title="Fighter presets: save / load / delete named builds">🗂 PRESETS</button>
-    <button id="btn-back-game" class="btn btn-gold" title="Back to game menu">🏠 GAME</button>
     <button id="btn-save" class="btn btn-green" title="Save fighter">💾 SAVE</button>
     <button id="btn-export" class="btn" title="Download fighter JSON">⤓ EXPORT</button>
     <button id="btn-load" class="btn" title="Load saved fighter">⤒ LOAD</button>
@@ -36,13 +34,10 @@
 <!-- ============ LEFT RAIL (categories) ============ -->
 <nav id="left-rail" aria-label="Customization categories">
   <button class="rail-btn active" data-tab="body" aria-label="Body"><span class="rail-ico">🦾</span><span class="rail-tx">BODY</span></button>
-  <button class="rail-btn" data-tab="face" aria-label="Face"><span class="rail-ico">😀</span><span class="rail-tx">FACE</span></button>
   <button class="rail-btn" data-tab="attire" aria-label="Attire"><span class="rail-ico">🥋</span><span class="rail-tx">ATTIRE</span></button>
   <button class="rail-btn" data-tab="wardrobe" aria-label="Wardrobe"><span class="rail-ico">👕</span><span class="rail-tx">WARDROBE</span></button>
   <button class="rail-btn" data-tab="profile" aria-label="Profile"><span class="rail-ico">📇</span><span class="rail-tx">PROFILE</span></button>
   <button class="rail-btn" data-tab="moveset" aria-label="Moveset"><span class="rail-ico">🥊</span><span class="rail-tx">MOVESET</span></button>
-  <button class="rail-btn" data-tab="limbs" aria-label="Limbs"><span class="rail-ico">🦿</span><span class="rail-tx">LIMBS</span></button>
-  <button class="rail-btn" data-tab="art" aria-label="Art"><span class="rail-ico">🎨</span><span class="rail-tx">ART</span></button>
 </nav>
 
 <!-- ============ RIGHT RAIL (context panel — floats over backdrop, never the fighter) ============ -->
@@ -62,7 +57,7 @@
   </div>
   <div class="bb-right">
     <span id="save-toast" class="bb-hint"></span>
-    <span class="bb-hint">v0.2 · roster GLBs wired — geometry proxy markers shown where part meshes are pending</span>
+    <span class="bb-hint">v0.1 · PROTOTYPE — geometry proxy markers shown where 3D meshes are pending</span>
   </div>
 </footer>
 
@@ -83,6 +78,5 @@
 { "imports": { "three": "./vendor/three.module.js" } }
 </script>
 <script type="module" src="js/app.js"></script>
-<script src="js/creation-flow.js"></script>
 </body>
 </html>

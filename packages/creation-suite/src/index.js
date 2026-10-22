@@ -11,4 +11,3 @@ export function applyDNA(root, dna) {
   return dna.physics?.enabled === false ? null : buildSecondaryRig(root, { sliders: dna.sliders || {} });
 }
 export * from './menu.js';
-export * from './parts.js';
