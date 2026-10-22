@@ -88,7 +88,6 @@ def validate(patch, repo):
     if not isinstance(fighter, str) or not fighter:
         fail("'fighter' must be a non-empty string (roster id)")
     if fighter == "ui":
-        # UI WORKSHOP namespace: screen patches carry no fighter.
         kinds = {c.get("kind") for c in patch.get("changes", []) if isinstance(c, dict)}
         if kinds - {"ui_screen_define"}:
             fail("'fighter' 'ui' is only valid for ui_screen_define patches")

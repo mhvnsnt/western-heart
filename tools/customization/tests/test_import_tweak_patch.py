@@ -288,6 +288,13 @@ class TestUIScreen(unittest.TestCase):
         n = self.ok(screen_patch())
         self.assertEqual(n["changes"][0]["kind"], "ui_screen_define")
 
+    def test_ui_fighter_with_other_kind_rejected(self):
+        p = screen_patch()
+        p["changes"].append(
+            {"kind": "hitfeel_tune", "hitstop": 1.2, "shake": 1,
+             "knockback": 1, "launch": 1})
+        self.bad(p, "'fighter' 'ui' is only valid")
+
     def test_bad_screen_format(self):
         p = screen_patch()
         p["changes"][0]["screen"]["format"] = "nope"
