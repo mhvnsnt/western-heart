@@ -89,6 +89,14 @@ export const MODEL_URLS = {
   // Thor Attire 2: phantom-mimic oni mask (owner 2026-10-19).
   'thor-attire2': '../roster/thor/attires/attire2/model.glb',
   'doc-frank': 'assets/models/doc-frank.glb',
+  // Doc Frank ATTIRE 1 pre-form (old man) — his own Attire 1 GLB at
+  // roster/doc-frank/attires/attire1/pre-transform/model.glb. File lineage:
+  // the PR #263 machine-shop texture reskin of the base, adopted as Attire
+  // 1's old-man form; binds normalized in PR #465 (178 joints, rigged).
+  // Picker position: BACK slot with the Tekken-based models (owner override
+  // 2026-10-21: Tripo models lead slots 1-5, Tekken reskins toward the back)
+  // — a reskin by lineage, not a Tripo model, so it no longer defaults.
+  'doc-frank-a1': '../roster/doc-frank/attires/attire1/pre-transform/model.glb',
   // Doc Frank post-transform bigger form (owner 2026-10-19, Tripo pull).
   'doc-frank-big': '../roster/doc-frank/attires/attire1/post-transform/model.glb',
   // Wave 2 (2026-10-19): Wowomomo Attire 2, Hood Scientist Attire 3, Demonio forms, Dxmmii Attire 2.
@@ -195,6 +203,14 @@ export const MODEL_URLS = {
   // retargeted to Mixamo skeleton. See docs/fighter-hunt/HUNT-LOG.md.
   star: 'assets/models/star.glb',
   torch: 'assets/models/torch.glb',
+  // TORCH Attire 1 (owner 2026-10-21): Tripo original 'Valkyrie of Flame'
+  // (300d0c63), auto-rigged via tools/auto_rig/rig_tripo_static.py; raw pull
+  // archived in release torch-a1-tripo-20261021. Ladder: roster/torch/ATTIRE-SLOTS.md.
+  'torch-tripo-a1': 'assets/models/torch-tripo-a1.glb',
+  // TORCH Attire 2 (owner 2026-10-21): Tripo original 'Red demon'
+  // (7f8c7874), auto-rigged via tools/auto_rig/rig_tripo_static.py; raw pull
+  // archived in release torch-a2-tripo-20261021. Ladder: roster/torch/ATTIRE-SLOTS.md.
+  'torch-tripo-a2': 'assets/models/torch-tripo-a2.glb',
   michiko: 'assets/models/michiko.glb',
   dio: 'assets/models/dio.glb',
   bruno: 'assets/models/bruno.glb',

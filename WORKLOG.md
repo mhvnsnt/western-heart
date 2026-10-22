@@ -675,13 +675,15 @@ Remaining gaps closed by this lane (all per the slot maps + display-order law):
 ## Verification
 - node --check clean on roster-full.js, attires.js, assets.js.
 - Audit: 48 select entries, ZERO duplicate fighter identities, ZERO duplicate
-  card images. Four pre-existing wiring gaps surfaced by the audit (all on
-  main, none introduced here — model files not in the repo, so not
-  guessed/faked; flagged for the model lane): 'zen-attire1' (Zen Attire 1
-  Spirit Body Tripo 8c46e379; main's WORKLOG already records "zen transform
-  targets (never wired on main)"), 'torch-tripo-a1' / 'torch-tripo-a2'
-  (Torch's Tripo A1/A2; roster/torch/attires/ has only attire3),
-  'doc-frank-a1' (Doc Frank Attire 1 old-man Tekken reskin).
+  card images. The audit also caught collateral damage from PR #579's stale
+  commit (see AGENTS.md anti-clobber entry 2026-10-22): it had wiped the
+  MODEL_URLS keys 'torch-tripo-a1', 'torch-tripo-a2' and 'doc-frank-a1' from
+  game/js/assets.js (keys present at e8562339 with owner comments; GLB files
+  intact in the repo). Restored verbatim in this lane — Torch live again.
+  One genuine pre-existing gap remains, NOT fixed (model file absent from the
+  repo; not guessed/faked): 'zen-attire1' (Zen Attire 1 Spirit Body Tripo
+  8c46e379; main's WORKLOG already records "zen transform targets (never
+  wired on main)"). Flagged for the model lane.
 - getRosterByTier slices untouched (souls 0-8, main 9-15).
 
 ## Flags for the owner (ambiguous — not guessed)
