@@ -712,3 +712,47 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
 /* Mode win / game over */
 #modewin-title.win { color: #ffd76a; }
 #modewin-title.lose { color: #ff6a6a; }
+
+/* ============ Worker 29: GUNGAKU fight lab + replay theater ============ */
+.gungaku {
+  position: fixed; right: 8px; top: 64px; z-index: 60;
+  background: rgba(10, 8, 18, 0.92); border: 1px solid #6a4dff;
+  border-radius: 10px; padding: 10px 12px; color: #eee;
+  font-family: inherit; min-width: 220px; max-width: 260px;
+}
+.gk-title { font-weight: 800; letter-spacing: 1px; color: #ffd76a; margin-bottom: 8px; font-size: 14px; }
+.gk-row { display: flex; align-items: center; gap: 6px; margin: 6px 0; flex-wrap: wrap; }
+.gk-label { font-size: 11px; opacity: 0.7; width: 56px; }
+.gungaku button {
+  background: #1d1830; color: #eee; border: 1px solid #4a3d8f;
+  border-radius: 6px; padding: 5px 8px; font-size: 12px; cursor: pointer;
+}
+.gungaku button.on { background: #6a4dff; border-color: #9a86ff; color: #fff; }
+.gk-framedata { font-size: 12px; margin-top: 8px; line-height: 1.5; color: #cfe3ff; min-height: 3.2em; }
+.gk-hint { font-size: 10px; opacity: 0.55; margin-top: 6px; }
+.ml-legend { font-size: 11px; opacity: 0.6; margin: 2px 0 8px; }
+
+.replay-bar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+  background: rgba(10, 8, 18, 0.94); border-top: 1px solid #6a4dff;
+  display: flex; align-items: center; gap: 6px; padding: 8px 10px;
+}
+.replay-bar button {
+  background: #1d1830; color: #eee; border: 1px solid #4a3d8f;
+  border-radius: 6px; padding: 6px 9px; font-size: 12px; cursor: pointer; white-space: nowrap;
+}
+.replay-bar button.on { background: #6a4dff; border-color: #9a86ff; color: #fff; }
+#rp-seek { flex: 1; min-width: 60px; accent-color: #6a4dff; }
+#rp-time { font-size: 11px; color: #cfe3ff; white-space: nowrap; }
+
+.replay-panel { max-width: 640px; }
+.replay-list { display: flex; flex-direction: column; gap: 8px; margin: 12px 0; max-height: 46vh; overflow-y: auto; }
+.replay-row {
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(255,255,255,0.04); border: 1px solid #3a3168;
+  border-radius: 8px; padding: 8px 10px;
+}
+.rp-names { font-weight: 700; font-size: 14px; }
+.rp-names em { font-style: normal; opacity: 0.5; font-weight: 400; }
+.rp-meta { font-size: 11px; opacity: 0.65; flex: 1; line-height: 1.5; }
+.rp-actions { display: flex; gap: 6px; }

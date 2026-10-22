@@ -58,6 +58,10 @@ export class Arena {
     this._shakeT = 0; this._shakeMag = 0; this._lookY = 1.0;
     this._stage = null;      // built stage { group, update, def, skyTex, fog }
     this._stageToken = 0;    // guards against out-of-order async builds
+    /* Free camera (worker 29, 2026-10-22): while set, update() skips the
+       auto-framing fight camera — the Gungaku lab / replay viewer drive
+       arena.camera directly (see js/replay.js FreeCam). */
+    this.freeCam = false;
     this.setStage(stageId);
   }
 
@@ -93,6 +97,16 @@ export class Arena {
   update(dt, fighterA, fighterB) {
     const t = performance.now() * 0.001;
     if (this._stage) this._stage.update(dt, t, fighterA, fighterB);
+
+    // Free camera (worker 29): the lab / replay viewer own the camera.
+    // Stage animation still runs; shake just decays.
+    if (this.freeCam) {
+      if (this._shakeT > 0) {
+        this._shakeT -= dt;
+        if (this._shakeT <= 0) this._shakeMag = 0;
+      }
+      return;
+    }
 
     // dynamic fighting camera
     // Stream 3: stages may declare camDist (cage interiors, backstage rooms)

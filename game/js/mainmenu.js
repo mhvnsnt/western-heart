@@ -79,7 +79,7 @@ const SUBMENUS = {
   collection: { title: 'COLLECTION', cards: [
     { t: 'GALLERY', d: 'Unlocked endings, concept art, arena drafts. The archive of the shrine.', badge: 'soon', forge: 'gallery' },
     { t: 'JUKEBOX', d: 'Every stage theme, every character motif. The shrine\'s setlist.', badge: 'soon', forge: 'jukebox' },
-    { t: 'REPLAYS', d: 'Save your fights. Study the tape. Steal your own habits back.', badge: 'soon', forge: 'replays' },
+    { t: 'REPLAYS', d: 'Save your fights. Study the tape. Steal your own habits back.', badge: 'live', action: 'replays' },
   ]},
   options: { title: 'OPTIONS', cards: [
     { t: 'OPTIONS', d: 'Sound, graphics, controls.', badge: 'live', action: 'mode-options' },
