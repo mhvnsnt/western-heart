@@ -445,3 +445,22 @@ Subagent lane (audit REPORT.md B3): two gaps closed, four commits.
 
 ## PR
 - PR: https://github.com/mhvnsnt/western-heart/pull/477
+
+## 2026-10-21 — Lane 4 rig batch 2: Phantom, Diablo, Skull, Sam-ur-a1, Kinpo, Purple Rain
+
+All six are single-mesh meshopt Tripo statics (~1.0M verts). Facing: rotate-y 0
+(+Z) per the Tripo export convention established in batch 1 (3/3 confident
+anatomical signals). Diablo fitted a real tail (179k verts, chain hips→down-back).
+All six pass validate.py.
+
+| fighter | verts | far_fb | facing | tail | validate | time |
+|---|---|---|---|---|---|---|
+| phantom | 1,053,849 | 293,458 | +Z | no | PASS | knn 10.5s / apply 5.7s |
+| diablo | 989,472 | 419,567 | +Z | YES (179k) | PASS | knn 9.8s / apply 7.7s |
+| skull | 1,009,636 | 175,402 | +Z | no | PASS | knn 9.8s / apply 5.9s |
+| sam-ur-a1 | 1,013,030 | 298,280 | +Z | no | PASS | knn 8.4s / apply 4.7s |
+| kinpo | 1,000,652 | 149,570 | +Z | no | PASS | knn 8.3s / apply 3.2s |
+| purplerain | 1,024,038 | 184,151 | +Z | no | PASS | knn 6.4s / apply 4.1s |
+
+Peak RAM 491–857MB (diablo tail-fit the highest). Outputs meshopt-compressed
+(18–24MB vs 70–80MB logical). SHA-256s in batch2/SHASUMS-rigged.txt.
