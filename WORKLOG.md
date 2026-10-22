@@ -603,6 +603,82 @@ First dry-run attempt failed at the final encode with ENOSPC (`/tmp` is a
 512MB tmpfs); re-ran with stage/report roots and TMPDIR on the overlay
 filesystem. All intake stages completed on the re-run.
 
+## Doc Frank feet fix (2026-10-21/22, branch fix/docfrank-feet-20261021)
+
+User report (verbatim): "Bosco/Doc Frank — really close, but both feet stick
+out to the side instead of forward on all his models. Fix that; I don't know
+if the feet are twisted or backwards. Everything else is pretty close."
+
+### Diagnosis (two distinct causes, verified by measurement)
+
+**Cause A — animated models (retarget data bug, shared stage):**
+All 5 Doc Frank roster entries animate on the bosconovitch T3 animation bank.
+That bank's `game/assets/anim/t3/bosconovitch/skeleton.json` carried a
+degenerate `foot_tip`: Left ≈ +90°, Right ≈ −109° (sideways). Produced by
+`tools/anim/t3_bank_skeleton.py`'s "centroid of foot-part verts" heuristic
+applied to Bosconovitch's blobby 27-vert T3 foot parts. `t3anims.js`
+`retargetT3Clips` swings every target foot to that vector, baking ~±60°
+symmetric duck feet into every frame.
+- Proof: Node harness running the game's real `t3anims.js`:
+  doc-frank.glb + bosconovitch bank stance @40% → Left +62.8°, Right −53.6°.
+  Same model + jin bank (sane foot_tip) → +5.5°/+11.3° (forward). Model data
+  is fine; bank data was the cause.
+
+**Cause B — static Tripo models (geometry bug, per-model):**
+wowomomo (attire2/base), wowomomo-big, hood-big each have ONE foot modeled
+sideways (PCA: one foot ~84° from lateral, other ~1–8°). The wowomomo *base*
+Tripo pull has it too — a Tripo generation defect in the source asset, not
+repo-introduced. frankenstein-base and frankenstein-big (both meshopt) have
+BOTH feet sideways (PCA yaw ~90° both). Confirmed by Blender 4.0.2 renders
+(viewed).
+
+### Fix
+
+**A (shared stage — FLAG FOR COORDINATOR):**
+- `tools/anim/t3_bank_skeleton.py`: foot_tip computation now keeps the part
+  centroid when its yaw agrees with the WH-Canonical-22 template toe within
+  60° (good banks regenerate byte-identical), else uses the template toe
+  `(0,−0.08,±0.21)` rotated into the bank frame, scaled by ankle height.
+  Rationale: clips were baked for the canonical rig, so foot_tip must be the
+  canonical toe, not the T3 part centroid.
+- `game/assets/anim/t3/bosconovitch/skeleton.json`: surgical 6-number edit to
+  foot_tip → canonical toe, forward +Z, 21° down. (Full tool re-run reverted:
+  would have clobbered the offline 2026-10-22 facing-fix.)
+- Validation: probe now gives Left −8.4°, Right +35.0°; source's own stance
+  feet are Left −9.2°, Right +32.7° — retarget faithful within ~2°. The 35°
+  turnout is Bosconovitch's real stance, not a bug.
+
+**B (static geometry — 5 models):**
+Rotated sideways foot(s) ~90° about ankle (Y axis) to forward, using
+gltf-transform 4.1.1 + meshoptimizer 0.22.0 (industry-standard stack).
+POSITION and NORMAL both rotated. Blender 4.0.2 renders viewed before/after.
+- `roster/doc-frank/attires/attire2/base/model.glb` (wow): left foot −90°
+- `roster/doc-frank/attires/attire2/transformed/model.glb` (wow-big): left −90°
+- `roster/doc-frank/attires/attire3/transformed/model.glb` (hood-big): left −90°
+- `roster/doc-frank/attires/attire4/base/model.glb` (frank-base): both (±90°)
+- `roster/doc-frank/attires/attire4/transformed/model.glb` (frank-big): both
+- `roster/doc-frank/attires/attire1/post-transform/model.glb` (doc-big):
+  verified OK (feet forward), no change.
+- Validation: extent ratios (Z > X = forward) confirm all fixed. Blender
+  renders viewed.
+
+### Files (no deletions)
+- tools/anim/t3_bank_skeleton.py (foot_tip method)
+- game/assets/anim/t3/bosconovitch/skeleton.json (foot_tip 6 numbers)
+- 5 GLBs listed above (foot geometry)
+- WORKLOG.md (this entry)
+
+### Flags for coordinator
+- SHARED STAGE CHANGED: `tools/anim/t3_bank_skeleton.py` foot_tip method.
+  The parallel k-NN root-cause lane should be aware. The change is
+  conservative (good banks regenerate byte-identical).
+- The bosconovitch bank foot_tip fix affects ALL fighters using that bank,
+  not just Doc Frank. This is correct — the bank data was wrong.
+- attire1/pre-transform/model.glb (unwired, T7 bone names) cannot be
+  retargeted by canonBoneName (returns null for 'leg right ankle'). Not
+  in-game, not fixed.
+- doc-frank-wowomomo and doc-frank-frankenstein model-rigged.glb files exist
+  on main but are UNWIRED (assets.js points to unrigged model.glb). Not fixed.
 ## 2026-10-22 — Engine decision deep research (Claude session, branch claude/amazing-keller-p8644u)
 
 Owner: "WebGL and Three.js are permanently stripped ... Godot 4 native mobile ... Or even whatever's

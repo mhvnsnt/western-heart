@@ -93,15 +93,44 @@ def skeleton(glb_rel):
         out.append({"name": N[i]["name"], "parent": N[p]["name"] if p in joints else None,
                     "rest": [round(float(x), 6) for x in world_pos(i)]})
     names = [N[i]["name"] for i in joints]
-    # Foot direction for rigs without a ToeBase joint: the centroid of the vertices
-    # skinned (dominant weight) to the foot — the same "Toe*" the bake swings to
-    # (t3_motion_bake.retarget: sp[s+"Toe*"] = mean of the T3 foot part's stance verts).
+    # Foot direction for rigs without a ToeBase joint.
+    # The game retarget (t3anims.js sourceInfo/retargetT3Clips) swings every
+    # target foot's rest direction to this vector, so it MUST be the canonical
+    # rig's toe (ankle->toe, forward-down). The old method — centroid of the
+    # foot-part verts ("the same Toe* the bake swings to") — is a bad toe
+    # estimator on blobby T3 parts: it put Bosconovitch's feet ~90 deg sideways
+    # and Gunjack's backward, duck-footing every fighter on those banks
+    # (owner report 2026-10-21: Doc Frank's feet point sideways on all models).
+    # We keep the centroid when it agrees with the canonical toe (yaw within
+    # 60 deg of the bank's forward) so good banks regenerate byte-identical;
+    # otherwise we use the WH-Canonical-22 template toe in the bank's frame.
+    wpos = {N[i]["name"]: world_pos(i) for i in joints}
+    # Bank forward from the knees (same signal as t3anims.js bankFacing):
+    # knee offset from the hip-ankle line, horizontal, averaged over legs.
+    _fw = []
+    for _s in ("Left", "Right"):
+        if _s + "Leg" in wpos and _s + "Foot" in wpos and "Hips" in wpos:
+            _kd = wpos[_s + "Leg"] - (wpos["Hips"] + wpos[_s + "Foot"]) / 2
+            _kd[1] = 0
+            if np.linalg.norm(_kd) > 1e-6:
+                _fw.append(_kd / np.linalg.norm(_kd))
+    _fwd = sum(_fw) / len(_fw) if _fw else np.array([0.0, 0.0, 1.0])
+    _fwd /= np.linalg.norm(_fwd)
+    # Template toe (ankle->toe tip); the template faces -Z (yaw 180 deg).
+    _tt = np.array([0.0, -0.08, -0.21])
+    _tt /= np.linalg.norm(_tt)
+    _yaw = lambda _d: float(np.degrees(np.arctan2(_d[0], _d[2])))
+    _rot = np.radians(_yaw(_fwd) - 180.0)
+    _cc, _ss = float(np.cos(_rot)), float(np.sin(_rot))
+    _tbank = np.array([_tt[0] * _cc + _tt[2] * _ss, _tt[1],
+                       -_tt[0] * _ss + _tt[2] * _cc])
     tips = {}
     for side in ("Left", "Right"):
         foot = side + "Foot"
         if side + "ToeBase" in names or foot not in names:
             continue
         fi = names.index(foot)
+        ankle = wpos[foot]
         acc_v, acc_n = np.zeros(3), 0
         for m in j["meshes"]:
             for pr in m["primitives"]:
@@ -115,9 +144,20 @@ def skeleton(glb_rel):
                 sel = dom == fi
                 acc_v += pos[sel].sum(0)
                 acc_n += int(sel.sum())
-        if acc_n:
-            # Mesh is bound in rest = world (identity rest, no node transform above the skin root).
-            tips[foot] = [round(float(x), 6) for x in acc_v / acc_n]
+        if not acc_n:
+            continue
+        centroid = acc_v / acc_n
+        _cd = centroid - ankle
+        _ch = float(np.hypot(_cd[0], _cd[2]))
+        _bad = _ch < 1e-6 or abs((_yaw(_cd) - _yaw(_tbank) + 180) % 360 - 180) > 60
+        if _bad:
+            # Canonical toe, scaled by ankle height (template: 0.225 m at 0.12 m).
+            _L = 0.225 * (ankle[1] / 0.12)
+            tip = ankle + _tbank * _L
+        else:
+            tip = centroid
+        # Mesh is bound in rest = world (identity rest, no node transform above the skin root).
+        tips[foot] = [round(float(x), 6) for x in tip]
     root = out[0]
     return {
         "format": "wh-anim-skel/1",
