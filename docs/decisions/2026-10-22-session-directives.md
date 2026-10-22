@@ -171,3 +171,27 @@ version (PC is Steam-only; console files are encrypted/unusable). Owner is
 buying it on Steam and trying to refund the console copy. Pull happens the
 day they confirm the Steam purchase. Cheapest found: $18.20 Steam key
 (GameBoost) or $23.99 Steam sale.
+
+## Model → character ladders (owner-confirmed 2026-10-22)
+
+- **OGRE → CHATUR/RARKASA: Ogre is REPLACED.** Model = Rahkasa (four-armed
+  SmutBase model, 11 MB .blend). Name/canon/bio = Chatur. Moveset = True
+  Ogre. When the owner asks for Chatur, show Rahkasa's model. Ogre stays on
+  the T-pose render list (Tekken reference only) and needs no WH model.
+- **Full model → character ladder** (Tekken base ladders INTO the WH
+  character's attires; the WH name is the select entry): King→Pantera,
+  Armor King→Yukihyo, Jin/Devil Jin→Demonio, Xiaoyu→Saku-ra,
+  Eddy Gordo→King Tyrant, Christie→Star, Lili→Silvertongue, Asuka→Kinpo,
+  Josie Rizal→Waterfall, Anna Williams→Torch (back-slot Attire 3),
+  Julia Chang→Nightwolf, Yoshimitsu→Phantom, Lee Chaolan→Purple Rain,
+  Lei Wulong→Rave/Kiko Tanaka/Ghost, Gun Jack→SAM-UR-A1, Bryan Fury→Skull,
+  Ganryu→Thor, Dragunov→Slice, Katarina→Michiko, Steve Fox→Zui,
+  Zafina→Mariposa, Bosconovitch→Doc Frank, Alisa→Cyborg X, Mokujin→DXMMII,
+  Bob→Burger, Akuma→Dio, Shaheen→Scimitar, Lars→Chordz,
+  Nina Williams→Awa Pop. Non-Tekken: Iori Yagami (KOF)→Deathfang.
+- **Intake model → character** (SmutBase model → WH name/canon):
+  Lily→Birodo, Cydney→Jotei, Rahkasa→Chatur, Mina Ashido→Ryusan,
+  Tsuyu Asui→Pond, Parvati→Megami, Vixen→Menajerii, Mirko→Tobi.
+  Moveset sources: Feng Wei→Birodo, Craig Marduk→Jotei, True Ogre→Chatur,
+  Lucky Chloe→Ryusan, Raven→Pond, Jun Kazama→Megami, Roger Jr.→Menajerii,
+  Hwoarang→Tobi.
