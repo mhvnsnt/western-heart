@@ -86,6 +86,98 @@ just a decal") and wants to place eyes himself in the Creation Suite.
   swap for models that ship with a saved eye-texture option library (the
   baek-eyes pattern). Production eye *design* changes go through mesh parts.
 
+## Round 2 additions (2026-10-21 — owner orders: placement by hand, piece swaps)
+
+Additive on version 1 — every round-1 file still parses and bakes.
+
+### Placement is exact bone-local (semantics FIXED, not just documented)
+
+`parts.<slot>.placement` is the part's transform **in the socket bone's
+local frame**: at bake time the part's evaluated world geometry is
+re-expressed in the part's *own* socket-bone frame (the alias bone on the
+part's rig, else its dominant weighted bone; unskinned parts attach by
+bounding-box centre), the placement is applied in that frame, and the
+result is skinned rigidly (100% weight) to the base socket bone. So
+`world = base_bone_world × T(placement) × part_bone_local_geometry`, and
+placement `0/0/0 · 0° · s=1` is the part in its native registration on the
+bone. Round 1's bake left the bone matrix inside the transform, so saved
+numbers were world-compensations — that is why the baked Master White
+hair floated off the head and the beard hung at the neck (owner grade:
+40/100). (An earlier round-2 build bone-*parented* the parts instead;
+the glTF exporter bakes a bone-parented object's world transform into
+its geometry while keeping the node TRS, so importers double-transformed
+them — skinning is the portable path.) The round-trip proof
+(`customization/tools/proof/cs-round2-roundtrip.py`) bakes the same record
+twice with a known placement delta and verifies the output GLB's part
+geometry moves by exactly that delta.
+
+- `sx` / `sy` / `sz` (optional): per-axis scale, overriding `s` per axis.
+- `parts.<slot>.tint` (optional hex): multiplies the Principled base-color
+  factor of the part's own materials at bake (materials cloned first — a
+  tint never leaks into the base model or another part). This is how the
+  CC0 hair/beard on Master White stop reading white-gray.
+- Placement on a **skinned-merge** part (part rig == base rig) is ignored
+  with a loud bake warning: skinning already carries its registration.
+- The suite UI edits placement with sliders **and** tap nudge steppers
+  (±0.01 m / ±1° / ±0.05 scale) — tap-first, never drag-and-drop.
+
+### `hide_meshes` — bake-time base-mesh removal
+
+Top-level list of substrings. Any base mesh whose object name, mesh name,
+or material name contains a pattern (case-insensitive) is removed from the
+**baked output only** (the base GLB is never touched). This is the
+base-hair hide toggle: `["hair"]` for models whose hair is a named mesh.
+A pattern that matches nothing fails loudly.
+
+### `region_swaps` — Tekken-style piece swaps
+
+```json
+"region_swaps": [
+  { "region": "head", "from_glb": "roster/baek/attires/attire1/model.glb",
+    "from_fighter": "baek", "from_attire": "attire1",
+    "yaw_deg": 0, "scale": null }
+]
+```
+
+Regions: `head` · `torso` · `arm_l` · `arm_r` · `legs`. Bake semantics:
+
+1. The region is **cut from the base**: every vert whose dominant skin
+   bone is in the region goes (Tekken cuts at the bone, so do we).
+2. The region is **cut from the source** the same way when the source is
+   skinned. An **unskinned** source (Tripo statue) supports `head` via a
+   spatial neck-pinch cut (narrowest cross-section in the upper body);
+   other regions on unskinned sources fail loudly.
+3. The piece is **fit** to the base: anchored at the region's neck point
+   (bottom-band centroid of the base's removed region), scaled by
+   base-region-height / source-region-height (`scale` overrides), yawed so
+   the source's head-centroid forward estimate matches the base's
+   (`yaw_deg` adds a manual correction).
+4. The piece is **re-skinned onto the base rig**: skin weights transfer
+   by canonical bone name (prefixes `mixamorig:`/`DEF-`/`Bip01` etc.
+   normalize away) when the source is skinned; unskinned pieces get
+   distance weights to the region's anchor bones (head: Head+Neck).
+5. Meshopt-compressed / mesh-quantized sources (Tripo exports) are
+   decoded through gltf-transform (`copy` + `dequantize`) automatically;
+   without `npx` the item fails loudly with the manual command.
+6. Swaps compose with everything else: morphs → hide → swaps → textures
+   → parts → colors. A swapped-away face makes `eye` texture entries fail
+   loudly rather than paint the wrong head.
+
+Per-piece morphs: a swapped region carries no MPFB keys of its own; the
+record's `morphs` still drive the base's keys. Per-attire save/restore is
+the record itself — removing the `region_swaps` entry and re-baking
+restores the base model exactly.
+
+Swap sources are indexed in `customization/region-sources.json`
+(regenerate: `customization/tools/build_region_sources.py`).
+
+### Colors: a mapping may name a `materials` list
+
+`character_mappings[<fighter>][<kind>]` keeps `material` (single, used by
+the texture-part path) and may add `materials: [...]` — the bake's color
+step tints **all** of them. Skin tone lives on many materials at once
+(Baek: 11 pek1u materials, mapped from per-texture mean-color evidence).
+
 ## Bake semantics (`apply_customization.py`, in order)
 
 1. **Morphs** — existing `MPFB_<id>` shape keys are driven to the saved values;
@@ -107,6 +199,10 @@ just a decal") and wants to place eyes himself in the Creation Suite.
    `packages/creation-suite/src/attire.js` `SOCKETS`) with `placement` applied
    in bone-local space.
 4. **Colors** — as above.
+
+Round 2 inserts two steps: **(a2) `hide_meshes`** runs right after morphs,
+and **(a3) `region_swaps`** right after that — both before textures, parts,
+and colors (full order: morphs → hide → swaps → textures → parts → colors).
 
 Missing inputs fail loudly per-item (report + exit 2); a missing `base_glb`
 aborts (exit 1). Nothing is silently skipped.
