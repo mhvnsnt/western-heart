@@ -49,7 +49,7 @@ re-templated skeletons reproduce the donor joint set exactly.
 
 ## Texture status (no textures invented)
 
-- diablo: textured (1 image, emissive map) — textured front render proof.
+- diablo: textured (1 image, emissive map) — textured front render proof at `docs/mini-retemplate-20261022/diablo-front.png`: a software-rasterizer render (numpy z-buffer, emissive map sampled per-face) drawn directly from the re-templated GLB, viewed by the lane — figure upright on the floor line, facing front, gi/belt texture reading. (Blender was saturated machine-wide by other lanes at proof time; the render is of the actual shipped-file data, not a stand-in.) Star was rendered the same way for lane QA: upright, feet planted, facing front, no twists — clay only, not presented as a textured proof.
 - michiko, torch: shipped GLBs textureless (images=0) — measurements-only
   proof; texture route is the separate known follow-up (SFMLab/rigmodels
   T7 packs for Katarina/Anna).
