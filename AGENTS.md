@@ -60,3 +60,14 @@ When a PR satisfies ALL merge conditions (GitHub says MERGEABLE, CI green, no-de
 The merge must be CLEAN and NON-DESTRUCTIVE: merge commits, never rebase/squash/force-push; resolve conflicts by keeping both sides' work — nothing lost, nothing clobbered, nothing destroyed on either side. Verify the merged result still builds and passes tests before calling it done.
 A PR that is red, conflicting, or would lose work stays OPEN with a comment naming the blocker — but the default for a clean, green PR is MERGE, never "leave it for the owner."
 Carve-outs (standing owner decisions, not overridden): never merge a DRAFT PR; never merge a PR the owner explicitly excluded.
+
+---
+
+## WRITING STANDARD (owner 2026-10-22)
+
+**`docs/WRITING-CRAFT-GUIDE.md` is the heart and soul of the game's writing.** Every agent writing character content — bios, intro dialogue, win quotes, cutscene scripts, story mode — follows it. It is the permanent character writing standard, wired into:
+- The repo docs (this reference)
+- The character creation suite (writing prompts/generation follow the guide)
+- The game's story/canon pipeline (all future writing measured against it)
+
+Standing laws it serves: all characters are adults; all writing grounded in CANON.md; Tekken fighter names stay out of canon writing (moveset sources go in technical files only).
