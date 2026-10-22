@@ -181,3 +181,27 @@ Motion/composition/clips untouched (capture gate, GRE PR #40).
    `STAGES.md`.
 5. **Costume-variant decode** — mechanical, unrun.
 6. **Audio/video extraction** — standard formats, unrun (census done).
+
+## Phase 14 update (2026-10-22) — stages 41/41, variants, audio/video
+
+Lane record: `PHASE14-STATE.md`; stage layouts: `PHASE14-STAGE-LAYOUTS.md`;
+probes: `PHASE14-PROBES.md`; AV: `PHASE14-AV-INVENTORY.md` +
+`PHASE14-AV-MANIFEST.json`. Motion untouched (capture gate);
+`CANON-CONVERSION.md` untouched.
+
+| Class | Decoded | Wired | Left before playable |
+|---|---|---|---|
+| Stages (v404) | **41/41 assembled** — m000 (VMX v2: 36 B records, node-shared streams, node placement, VXT v1) + m120 (VMX v3 sentinel; unit sphere, color-only per source) joined the 39; totals 1,446,731 GLB verts / 811,243 tris / 1,879 embedded images | GLBs in `stages/`; m000+m120 arena/plan renders viewed (`phase14-proof/`) | Stage registry/roster hookup is game-side work |
+| Costumes (v982 variants) | **80/83 decoded** skinned+textured (1,964 images) in `models-textured/variants-idx<P1>-<slug>/`; blocked: idx283+idx291 (Ivy — solver non-finite normals), idx789 (rigid-only class) — see census update in `CENSUS-PHASE13.md` | GLBs landed per-fighter; sample render viewed (idx48) | Blocked 3 per census reasons; costume switching in-game is game-side work |
+| Audio (bgm.afs) | **76/76 ADX extracted + decoded to FLAC** (48 kHz stereo, 73.8 min total), release `scii-phase14-av` + sha256 manifest in git | Release assets + `PHASE14-AV-INVENTORY.md` | In-bundle type-0xc payload still unextracted (probe B: format unproven, FUN_00033fb0 decompile named) |
+| Video (movie.afs) | **3/3 MPEG-PS extracted byte-exact** (402/17/20 MB) + probed, release `scii-phase14-av` + manifest | Release assets + inventory | Playback integration is game-side work |
+| Textures (secondary layer) | Probe A: rec80 +0x0c is a genuine second texture-record reference (159/159 pointer-exact across 635 materials) | Recorded in `PHASE14-PROBES.md` | Runtime role (detail/env/alpha) needs the XBE material-consumer read; GLBs still ship primary layer only |
+
+### Still blocking SCII true 100% after phase 14
+
+1. **Animations/motion** — unchanged: gated on the parent lane's dynamic emulator capture (GRE PR #40).
+2. **Canon assignment** — owner-pending (`CANON-CONVERSION.md`, untouched).
+3. **Game-format movesets** — frame/damage fields + pairing table + motion data (unchanged).
+4. **Ivy variant solver residual** — idx283/idx291 (non-finite normals from the bind solve).
+5. **In-bundle sound (type 0xc)** — format unproven; FUN_00033fb0 decompile is the named next step.
+6. **rec80 secondary texture role** — pointer proven real; stage binding unproven.

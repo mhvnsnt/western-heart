@@ -84,3 +84,49 @@ the bundle resource table is parsed, so extraction is mechanical.
 Format inside the resources was not probed this phase — named
 blocker: type-0xc payload format unprobed (expected CRI ADX-family,
 unproven).
+
+## Phase 14 update — costume variants decoded (JOB 2)
+
+The 83 non-empty variant bundles censused above were range-fetched
+(header/VMX-verified per file) and run through the proven pipeline
+(`build_skinned.py` VMX0 @0x3880 → `apply_textures.py`). Variant
+bundles are structurally identical to P1 bundles (VMX0 = skinned
+fighter pool + VXT; VMX1 = rigid extra) — no format delta. Gates
+per file: skin-solve residual reported by the builder, accessor
+counts asserted identical by the texture tool, GLB re-parsed with
+embedded images > 0 and exactly 1 skin. Results: **80 decoded,
+3 blocked**; 1,964 embedded texture images total; GLBs under
+`models-textured/variants-idx<P1>-<slug>/` (per-fighter isolation).
+Proof (viewed): `phase14-proof/variant-idx48-mitsurugi-front.png`
+— Mitsurugi's idx48 costume (sash wrap, black flame-embroidered
+hakama), coherent and fully textured.
+
+| P1 entry | Fighter (source ID) | Variants held | Decoded | Blocked |
+|---|---|---|---|---|
+| 47 | Mitsurugi | 5 | 5 | — |
+| 86 | Seong Mi-na | 5 | 5 | — |
+| 125 | Taki | 5 | 5 | — |
+| 164 | Maxi | 3 | 3 | — |
+| 203 | Voldo | 2 | 2 | — |
+| 242 | Sophitia | 5 | 5 | — |
+| 281 | Ivy | 5 | 3 | idx283, idx291 — build_skinned produces non-finite normals at GLB export (OverflowError); source pool normals are finite (0 NaN / 3,898 verts in idx283) — solver-side degenerate-bone residual, re-runnable when the solver handles it |
+| 320 | Kilik | 3 | 3 | — |
+| 359 | Xianghua | 5 | 5 | — |
+| 398 | Yoshimitsu | 3 | 3 | — |
+| 437 | Nightmare | 5 | 5 | — |
+| 476 | Astaroth | 5 | 5 | — |
+| 515 | Cervantes | 3 | 3 | — |
+| 554 | Raphael | 5 | 5 | — |
+| 593 | Talim | 5 | 5 | — |
+| 632 | Cassandra | 5 | 5 | — |
+| 671 | Necrid | 1 | 1 | — |
+| 710 | Yun-seong | 3 | 3 | — |
+| 788 | (rigid-only slot) | 1 | 0 | idx789 — rigid-only bundle class (730,240 B; its base slot was never a skinned fighter); the skinned pipeline reads past EOF on its rec28 layout — decode path is the rigid/placed route, not run here |
+| 827 | UNIDENTIFIED (1e) | 2 | 2 | — |
+| 866 | UNIDENTIFIED (1f) | 2 | 2 | — |
+| 905 | UNIDENTIFIED (20) | 2 | 2 | — |
+| 944 | Spawn | 3 | 3 | — |
+
+Audio/video census above is superseded by extraction:
+`PHASE14-AV-INVENTORY.md` + `PHASE14-AV-MANIFEST.json` (release
+`scii-phase14-av`).
