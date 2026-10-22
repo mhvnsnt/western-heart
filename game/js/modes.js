@@ -624,7 +624,7 @@ export class ModeController {
     const fl = document.getElementById('stage-forces');
     if (fl) fl.textContent = 'FORCES HELD: ' + (this.story.forces.length ? this.story.forces.map((k) => FORCES[k].name).join(' · ') : 'none yet');
     this._badge(`STORY · ${st.title}`);
-    this.show('stage');
+    this.show('stageIntro');
     const btn = this._el('stage-fight');
     if (btn) btn.onclick = () => {
       this.audio && this.audio.uiClick && this.audio.uiClick();

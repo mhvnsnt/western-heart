@@ -95,7 +95,8 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
    LAYOUT: full-viewport flex column. Sticky header (BACK/title/timer),
    vertically-scrolling grid, sticky footer (hint/CONFIRM). Nothing may
    ever overflow the viewport horizontally, portrait or landscape. */
-#screen-select.select-screen {
+#screen-select.select-screen,
+#screen-stage.select-screen {
   display: none;
   flex-direction: column;
   align-items: stretch;
@@ -103,7 +104,8 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
   padding: 0;
   background: linear-gradient(168deg, #1a0f2e 0%, #241031 45%, #0d060f 100%);
 }
-#screen-select.select-screen.active { display: flex; }
+#screen-select.select-screen.active,
+#screen-stage.select-screen.active { display: flex; }
 .select-header {
   flex: 0 0 auto;
   display: flex; align-items: center; gap: 12px;
