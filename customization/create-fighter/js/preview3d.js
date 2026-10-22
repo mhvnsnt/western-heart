@@ -1,8 +1,10 @@
 /* preview3d.js — full-screen fighter preview.
-   Vendored three.js (./vendor/three.module.js + GLTFLoader). Soldier.glb base rig
-   for NEW FIGHTER; roster fighters load their real GLB from game/assets/models/
-   via loadModel() (data/ROSTER-BASE.json). Fighter ALWAYS visible, full-body,
-   centered slightly left of screen so the right rail never covers it.
+   Vendored three.js (./vendor/three.module.js + GLTFLoader). The base model
+   is set by the TEMPLATE SELECT screen (customization/templates/) — there is
+   no default character. Roster fighters load their real GLB from
+   game/assets/models/ via loadModel() (data/ROSTER-BASE.json). Fighter
+   ALWAYS visible, full-body, centered slightly left of screen so the right
+   rail never covers it.
    Slow auto-rotate, drag-orbit, scroll/pinch zoom.
    Equip visuals: labeled socket-proxy rings (honest placeholders — real ymg/obj
    meshes are not wired yet). */
@@ -11,7 +13,9 @@ import { GLTFLoader } from '../vendor/addons/loaders/GLTFLoader.js';
 import { clone as skeletonClone } from '../vendor/addons/utils/SkeletonUtils.js';
 
 const SKIN_TONES = ['#f7c2a1','#e8a87c','#c98d5e','#a06a42','#7c4a2d','#5d3320','#3d2114','#2a150c'];
-const SOLDIER_GLB = 'assets/Soldier.glb';
+// Legacy base rig — kept on disk only. It is NOT a default and NOT a fallback:
+// the template select owns the base model. (Killed as default 2026-10-22,
+// owner directive: WWE 2K-style template system replaces it.)
 
 export class Preview3D {
   constructor(canvas){
@@ -119,13 +123,17 @@ export class Preview3D {
   }
 
   _loadFighter(){
-    this.loadModel(SOLDIER_GLB);
+    // No default character: the template-select screen sets the base model
+    // via loadModel(). Until then the stage stays empty (not a soldier).
+    if(this.onReady) this.onReady();
   }
 
-  /* ---- dynamic base-model loading: roster GLBs from game/assets/models/ ----
+  /* ---- dynamic base-model loading: template GLBs from customization/templates/
+     or roster GLBs from game/assets/models/ ----
      Disposes the old fighter + dummy, loads the new GLB, re-collects materials
-     and bones, plays Idle (or first clip). On failure falls back to the Soldier
-     base rig so the suite never bricks on a missing model. */
+     and bones, plays Idle (or first clip). On failure it reports through
+     onModelError (the app re-opens template select) — it never silently
+     substitutes another character. */
   loadModel(url){
     if(!url || url===this.modelUrl || this._loading) return;
     this._loading = true;
@@ -160,7 +168,9 @@ export class Preview3D {
       console.error('model failed to load:', url, err);
       this._loading = false;
       this._hideLoader();
-      if(url!==SOLDIER_GLB){ this.modelUrl=null; this.loadModel(SOLDIER_GLB); }
+      // Honest failure: no silent substitution. The app re-opens template
+      // select so the user picks a working base.
+      if(this.onModelError) this.onModelError(url, err);
     });
   }
 
