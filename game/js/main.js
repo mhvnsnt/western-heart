@@ -41,6 +41,10 @@ const screens = {
   reincarnate: document.getElementById('screen-reincarnate'),
   trader:  document.getElementById('screen-trader'),
   modewin: document.getElementById('screen-modewin'),
+  online: document.getElementById('screen-online'),
+  sidegames: document.getElementById('screen-sidegames'),
+  collection: document.getElementById('screen-collection'),
+  daily: document.getElementById('screen-daily'),
 };
 /* Tekken-style select screen controller (js/select-screen.js).
    Assigned once at bootstrap below; show() only runs on user
@@ -611,6 +615,48 @@ document.addEventListener('click', (e) => {
     else if (a === 'rematch') {
       getModes().then(m => { if (m.mode) m.rematch(); else startFight(); });
     }
+  }
+});
+
+/* T8 main menu router (data-mm, worker 36): the T8-style menu uses data-mm
+   attributes, not data-action. This delegated listener wires them up.
+   Each navigates to a real screen — no dead ends. */
+document.addEventListener('click', (e) => {
+  const t = e.target;
+  const el = (t instanceof Element) ? t.closest('[data-mm]') : null;
+  if (!el) return;
+  unlockAudio();
+  audio.uiClick();
+  const m = el.dataset.mm;
+  if (m === 'story') {
+    getModes().then(modes => modes.startMode('story'));
+  }
+  else if (m === 'versus') {
+    getModes().then(modes => modes.startMode('versus'));
+  }
+  else if (m === 'online') {
+    show('online');
+  }
+  else if (m === 'arcade') {
+    getModes().then(modes => modes.startMode('arcade'));
+  }
+  else if (m === 'sidegames') {
+    show('sidegames');
+  }
+  else if (m === 'training') {
+    getModes().then(modes => modes.startMode('training'));
+  }
+  else if (m === 'creation') {
+    window.location.href = '../customization/creation-suite-ui/index.html';
+  }
+  else if (m === 'collection') {
+    show('collection');
+  }
+  else if (m === 'daily') {
+    show('daily');
+  }
+  else if (m === 'options') {
+    show('howto'); // Options: howto screen has settings
   }
 });
 
