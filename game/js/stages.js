@@ -286,6 +286,12 @@ export const STAGES = [
     swatch: ['#0a0a18', '#ff6ad0'],
     builder: 'helix',
     pano: 'assets/stages/eastern-mind/helix-palace/pano.png', // real Eastern Mind background art
+    // Arena upgrade pipeline, Stage 3 (detail pass): the Pink Narwhal club
+    // interior (SmutBase Virt-A-Mate scene; see
+    // tools/stage-arena-pull/convert_pinknarwhal.py) replaces the procedural
+    // spiral blockout. The club carries its own fighting surface.
+    glb: 'assets/stages/pink-narwhal/pink-narwhal.glb',
+    hidePlatform: true,
     associatedFighters: ['purple-rain'],
   },
   {
@@ -975,17 +981,49 @@ function buildParFang(g, def, api) {
   return { updaters, skyTex, fog };
 }
 
-/* ---- HELIX PALACE: spiral palace + five glowing desire rooms ---- */
-function buildHelix(g, def, api) {
+/* ---- HELIX PALACE: Pink Narwhal club interior (teardown-sourced detail pass) ----
+   Arena upgrade pipeline, Stage 3: the procedural spiral blockout below is kept
+   as the no-GLB fallback (it is the saved Stage-2 draft in arenas/drafts/); the
+   real geometry is the Pink Narwhal club map (SmutBase Virt-A-Mate scene,
+   converted by tools/stage-arena-pull/convert_pinknarwhal.py). The five canon
+   desire rooms ride as glowing pods marking the club's five zones. */
+async function buildHelix(g, def, api) {
   const { updaters, skyTex, fog } = buildBase(g, def, api);
-  const wallMat = new THREE.MeshStandardMaterial({ color: 0x3a3a4e, roughness: 0.4, metalness: 0.8 });
-  for (let i = 0; i < 24; i++) {
-    const a = (i / 24) * Math.PI * 2.6, r = 12 + i * 0.25;
-    const seg = new THREE.Mesh(new THREE.BoxGeometry(4.2, 5.5, 0.4), wallMat);
-    seg.position.set(Math.cos(a) * r, 2.6, Math.sin(a) * r);
-    seg.lookAt(0, 2.6, 0); g.add(seg);
+  let detailed = false;
+  if (def.glb) {
+    try {
+      const gltf = await new GLTFLoader().loadAsync(def.glb);
+      const club = gltf.scene;
+      club.traverse((o) => {
+        if (o.isMesh) {
+          o.castShadow = true; o.receiveShadow = true;
+          if (o.material && o.geometry.getAttribute('color'))
+            o.material.vertexColors = true;
+        }
+      });
+      g.add(club);
+      detailed = true;
+    } catch (e) {
+      console.warn(`[WH] stage ${def.id}: GLB ${def.glb} failed (${e.message}), blockout fallback`);
+    }
   }
-  const rooms = [
+  if (!detailed) {
+    // Stage-2 blockout fallback: spiral palace walls (the approved blockout).
+    const wallMat = new THREE.MeshStandardMaterial({ color: 0x3a3a4e, roughness: 0.4, metalness: 0.8 });
+    for (let i = 0; i < 24; i++) {
+      const a = (i / 24) * Math.PI * 2.6, r = 12 + i * 0.25;
+      const seg = new THREE.Mesh(new THREE.BoxGeometry(4.2, 5.5, 0.4), wallMat);
+      seg.position.set(Math.cos(a) * r, 2.6, Math.sin(a) * r);
+      seg.lookAt(0, 2.6, 0); g.add(seg);
+    }
+  }
+  // Five desire rooms (canon): Greed, Appetite, Immortality, Sexual Desire,
+  // Destruction. With the club interior they mark the five zones — VIP west,
+  // bar east, stage center-back, pole stage, DJ booth.
+  const rooms = detailed ? [
+    [0xffd24a, -7.5, 3.0, -9], [0xff6a2a, 7.5, 3.0, -9], [0xf0f0ff, 0, 3.6, -12],
+    [0xff4a9a, 1.2, 3.0, -9.5], [0x8a2ae0, 5.8, 3.0, -10],
+  ] : [
     [0xffd24a, -9, 2.2, -7], [0xff6a2a, 9, 2.2, -7], [0xf0f0ff, 0, 2.6, -11],
     [0xff4a9a, -6, 2.2, 8], [0x8a2ae0, 6, 2.2, 8],
   ];

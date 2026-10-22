@@ -1,5 +1,32 @@
 # WORKLOG — DEATHFANG build (2026-10-19/20, branch feat/deathfang-yamazaki-20261019)
 
+## Arena save + upgrade pipeline (worker 18, 2026-10-22)
+Owner instruction: "FIRST: save every current arena EXACTLY as it is right now —
+these become 'arena drafts,' a revertible baseline. THEN: upgrade them from the
+prototype 3JS look to real arenas. Document the pipeline (concept → blockout →
+detail pass → lighting → polish)."
+- PHASE 1 DONE — `arenas/drafts/2026-10-22/`: 148 files (~24MB), manifest.json
+  with SHA-256 per file, all hashes verified. Pure preservation, no mods.
+- PHASE 2 DONE — pipeline doc `docs/arenas/ARENA-UPGRADE-PIPELINE.md`: 6 stages
+  (concept/lock → blockout → detail → material/texture → lighting → polish/final)
+  with explicit owner HANDOFF points per stage; teardown-first law.
+- Pilot: HELIX PALACE x Pink Narwhal club map. Converter
+  `tools/stage-arena-pull/convert_pinknarwhal.py` (Blender 4.5.3): rotate +90 deg Z,
+  center floor, 1.2x scale, dollhouse, clearance rules (fight rect |x|<8.4,|z|<2.5,
+  h>0.35; camera corridor), >1024px texture downscale. Critical: bake M@matrix_world
+  into mesh data BEFORE deleting parents; recompute mesh list after deletion.
+- `game/assets/stages/pink-narwhal/pink-narwhal.glb` (15.9MB, 26 meshes), 0
+  lane/camera intruders; pole stage + DJ booth in background, floor at y=0.
+- `game/js/stages.js`: helix-palace gains `glb` + `hidePlatform: true`; buildHelix
+  async with GLB load + spiral-blockout fallback; desire pods -> club zone markers.
+- Proof: `docs/arenas/proof/helix-palace-before.png` (blocky prototype) vs
+  `-after.png` (club interior); both rendered headless, 0 console errors.
+  NOTE: pilot used concept "club interior" for the upgrade; the Helix Palace
+  CANON concept (spiral tower) stays locked — the pilot proves the PIPELINE, and
+  Helix Palace's real upgrade pass goes through owner art direction per the doc.
+  Drafts remain the revertible baseline.
+
+
 Owner orders 2026-10-19 ~20:06–20:12 CDT: build DEATHFANG (all caps, one word) —
 proprietary character based on Iori Yagami; keeps Iori's moves/stance/animations;
 reskin as prisoner/slave to his own grief, chained/shackled, emo, Soul Eater
@@ -1599,21 +1626,3 @@ Tekken on-hit stack: (1) jagged star-burst HIT SPARK sprite (canvas-generated, a
 - Modified: game/js/fighter.js (attack boxes, hurtboxes, step-in), game/js/game.js (HitFX wiring, typed hit presentation, hitstop tiers, _spawnImpact shim), game/js/ai.js (range discipline). No deletions.
 - Added: game/js/hitfx.js (new HitFX system).
 - Teardown sources: teardown/tekken3/docs/TEKKEN3-RIG-LESSONS.md (proxy-shape hitboxes, hitstop as move data, fixed timestep), teardown/tekken3/movesets/moveset_king.json (active_first/last, step_per_frame, damage), teardown/tekken7 tekkenmods T8 moveset docs (Move = animation + hitbox/hurtbox/active frames + Hit Conditions: damage + reaction + presentation).
-
-## 2026-10-22 — Worker 19: ROSTER-TO-CANON RECONCILIATION AUDIT
-
-**Task:** Owner: "the character select screen and game have a whole bunch of random bullshit. Every slot must trace back to a real canon identity." Audit-only: count/classify everything, document, do NOT change the select screen.
-
-**Method:** Synced to main @ eaf3303 via Git Database API. Enumerated: 55 roster dirs (API), 49 select entries (`game/js/roster-full.js` @ main + `SOUL_IDS`/`MAIN_IDS` tiering in `select-screen.js`), 29 attire ladders (`attires.js`), MODEL_URLS (`assets.js`), all 65 open PRs (file lists + patches for character-adding candidates), CANON.md @ 153b23f (all `###` headings + §4 Nine Souls + intake §). Canon rule: end-game WH identity counts (Pantera yes, King no).
-
-**Verdict — REAL total: 49 canon characters.** Seven 7 + Four 4 + Twelve 12 + New Vessels 14 (excl. Sun Rā: "Not a fighter. A realm.") + Intake 8 + owner-locked 4 (Charger, Vain Abel, Dorowani, Zen spirit entity). Location: 31 roster dir + select slot · 4 select slot only, no dir (Scimitar, Dio, Bruno, N3g4tiv0 — models unwired, on need-models list) · 6 roster dir, no select slot (Silvertongue, Cain Elias, Vain Abel, Chatur→rahkasa, Pond→tsuyu-asui, Menajerii→vixen) · 1 PR pending (Cornerstone, #449) · 6 intake pending neither (Birodo, Jotei, Ryusan, Megami, Tobi, Steve Fox) · 1 special (EM-Jin: no model yet; CANON.md "JIN KAZAMA" conflicts with owner EM-Jin directive — flagged).
-
-**Select screen census (49 slots):** 34 canon + 15 non-canon = 7 soul placeholders (rin/byou/tou/sha/kai/retsu/gyou — CANON.md §4: "The nine are not characters") + iori/armor-king templates + zangief/vega templates (WH names pending owner pick) + kronos/koreshi/ryuji orphans. Zen slot is canon-identity but wrong model (tinted steve-fox; rewire to zen-attire1 Tripo spirit body).
-
-**Biggest flag:** PR #434 would add 72 `CHAR001`–`CHAR072` "Street Reign Guest" select entries with zero canon mapping — its own CANON-CONVERSION.md says "FLAGGED, not mapped." Must not merge as selectable.
-
-**Other flags for user:** kronos/koreshi/ryuji orphans (build canon or cut); zangief/vega WH names pending; jin dir is leftover staging (park until EM-Jin model lands); rave slot folds into Kiko's ladder (attires.js already lists it as Attire 3); purple-rain/purplerain + saku-ra/sakura dir splits need merge; phantom ladder contains stray steve-fox/jin-bloodline-ember models.
-
-**Deliverable:** `docs/research/ROSTER-CANON-AUDIT-2026-10-22.md` — real total, full 55-dir classification table, hardcoded/PR/intake tables, 49-slot select→canon→models mapping (source of truth), flag list. No game code changed. No deletions.
-
-**Sandbox note:** this worker's Python could not write files >~8KB, so large repo files were read through the API in chunked reads and only small extracts materialized; fresh WORKLOG.md was re-assembled from 15×8KB API chunks (120,464 bytes, size-verified) before appending this entry — no clobber.
