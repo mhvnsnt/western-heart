@@ -58,14 +58,19 @@ Field rules (v1):
 - `kit_id` may be `null`/omitted (a freehand patch); when present it must
   name a staged kit in `customization/tweak-kits/`.
 - `changes` must be a non-empty array.
-- Each change: `kind` must be `"part_transform"`; `group` must be one of the
-  8 part groups; `rotation_deg` 3 finite numbers in [-360, 360] (degrees,
-  XYZ Euler order — the same order the suite preview uses);
-  `flip` 3 booleans (mirror on that axis — negative scale in the preview);
-  `offset` 3 finite numbers in [-5, 5] (model units); `scale` a finite
-  number in [0.1, 10]. `note` optional string.
-- No group may appear twice in one patch (one entry per group — the entry
-  is the user's FINAL value for that group).
+- Each change has a `kind`. Two kinds exist in v1:
+  - `"part_transform"`: `group` must be one of the 8 part groups;
+    `rotation_deg` 3 finite numbers in [-360, 360] (degrees, XYZ Euler order —
+    the same order the suite preview uses); `flip` 3 booleans (mirror on that
+    axis — negative scale in the preview); `offset` 3 finite numbers in
+    [-5, 5] (model units); `scale` a finite number in [0.1, 10].
+    `note` optional string. No group may appear twice in one patch (one entry
+    per group — the entry is the user's FINAL value for that group).
+  - `"hitfeel_tune"`: hit-feel deltas from the practice review stage.
+    `hitstop`, `shake`, `knockback`, `launch` — finite numbers in [0, 4],
+    multipliers on top of the wired (teardown-derived) values; 1.0 =
+    untouched. At least one must differ from 1.0. `note` optional string.
+    Applied to `customization/hit-feel/<fighter>.json`.
 
 ## Tweak kits (crew-staged starting points)
 
