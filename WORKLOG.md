@@ -1629,3 +1629,96 @@ Tekken on-hit stack: (1) jagged star-burst HIT SPARK sprite (canvas-generated, a
 **Method:** fresh main SHA via github_api.py at push time; plain-copy working dir `~/workspace/fix3/modeaudit`; read teardown docs in-repo (UR/DOA6/SCVI/VF5 mechanics docs, SF status, Def Jam findings, SCII, WMXIX arenas); web-verified SF6 Drive System, GGPO MIT status, Rapier vs cannon-es. Pushed via `gh_push.py` (Git Database API, base = live main tree), merged via `git_merge.py`. Zero deletions; WORKLOG entry appended to live-main version at push time.
 
 **Status:** report merged; 62 items await owner okay/not-okay before any wiring. Worker 22's general integration lane unaffected (separate scope).
+
+---
+
+## 2026-10-22 ~13:45 CDT — Worker 27: LIGHTING + ENVIRONMENT PULL
+
+**Owner directive (verbatim):** "Pull from the most recent version of each game in the teardown
+files: (1) Lighting — how each game lights its stages, light placement, color temperature,
+dynamic vs baked, character vs stage lighting. Tekken 7/8, DOA6, SFV, SC6 — the newest lighting
+tech. Wire their lighting approaches into our stages. (2) Environment and scenery — stage
+geometry, background buildings, set dressing, ambient details. Whatever can be extracted and
+reused. (3) Accessories, clothing, buildings — from all teardowns, feeding both stages AND the
+character creation suite. (4) General sweep — flag anything visual/environmental we haven't
+pulled yet. Priority: lighting first, then stage scenery, then accessories/clothing."
+
+**Teardown audit (grounded):**
+- **Tekken 7 (UE4):** stages stream `light` (dynamic) + `lightstatic` (baked Lightmass) units
+  — source: `teardown/tekken7/tekkenmods-docs/.../Stages/index.md`. UE4 static/stationary/
+  movable modes; characters lit by movable lights + volumetric/SH probes.
+- **Tekken 8 (UE5):** does NOT use Lumen/Nanite (Digital Foundry + dsogaming Lumen on/off
+  tests) — ships baked stage lighting + dynamic character lights at 60fps. Validates the
+  T7 split; real-time GI correctly out of scope for phones.
+- **SFV (UE4 + Enlighten):** Geomerics Enlighten SH probes shade *moving* fighters with
+  indirect light at runtime (80.lv 2016, Bochan Kim quote); fighters pushed brighter than
+  background with strong rim to pop.
+- **DOA6:** new engine with "physical lighting" (Shimbori 2018; OBORO 2026 interview) —
+  honored as a constraint (keep PBR + shadowed key, don't flatten with ambient).
+- **SC6:** mechanics docs only in teardown (50GB+ binaries never acquired) — flagged, not invented.
+
+**Wired (all in `game/js/lighting-rig.js`, NEW):**
+- `buildStageLightRig()` — the T7 split: hemi+sky+fog = baked-ambient stand-in
+  (`lightstatic`); key/rim/fill directionals + accent points = dynamic rig (`light`).
+  Exactly one shadow-casting directional per stage. `buildBase` in stages.js delegates here.
+- `attachCharacterRig(fighter, stageDef)` — SFV-style character/stage separation: per-fighter
+  key PointLight (front-top, parented to root — follows with zero per-frame cost) + soul
+  glow (existing `auraLight` idles at soul-color baseline instead of 0 — **zero new lights**)
+  + soul-tinted emissive (bible Grey's law: fighters are luminous *sources*; zero shader cost).
+  Called from `Game.startMatch`; fail-silent.
+- `applyGrade(arena, def)` — per-stage `lighting.grade { exposure, bloom }` drives
+  ACESFilmic exposure (was global 1.45) + UnrealBloomPass strength (was global 0.6/0.85).
+  Called from `Arena.setStage`. Bible "luminous darkness" dial per land.
+- `buildMotes()` — atmosphere motes: 1 draw call, 0 lights, additive drifting points
+  (bible §8.4 "darkness is a material"; pollen/cinders/bioluminescence per land).
+- Soul light behaviors (bible §5c) in fighter.js aura update: BYOU flicker, TOU low/predatory
+  (light at y=0.55), SHA shimmer, KAI tidal swell, RETSU pulse, ZEN absence (glow 0),
+  GYOU hue-cycling rainbow; surge still flares to surge color.
+- 8 canon lands carry `rig` (charKey color, rimBoost, motes) + `grade` blocks grounded in
+  bible palettes (land §5b, Malakor violet §2, master §7). T3/No Mercy/boss stages inherit
+  defaults. No pure RGB primaries.
+- **Mobile budget:** hemi(1)+dir(3)+accents(≤6)+charKeys(2)+soul(2) = 14 max (+2 vs before,
+  the only additions are shadowless character keys); motes capped at 110 pts on mobile.
+
+**Environment/scenery:** motes system (above) + per-stage rig data are the new pulls. Prior
+lanes already wired T3 retro arenas, No Mercy GLBs, Eastern Mind panos, Sun Rā (not duplicated).
+
+**Accessories/clothing:** no additions — `customization/PARTS-REGISTRY.json` holds 1148 parts
+across 13 libraries; WWE CAW extraction is another worker's in-flight lane (not duplicated).
+T6/TT2 item meshes are locked/blocked (names only); T7 King armor pieces are Pantera's own
+model, not detachable parts.
+
+**Sweep flags (visual/environmental, unpulled):** Urban Reign `bg*.lit` stage-lighting moods
+(8 files); VF5 18 arena `.farc` (release vf5-ps3-v1, needs 3ds Max chrrox + QuickBMS);
+WMXIX arena point clouds → surfacing (43 OBJs); T6/TT2 item meshes; Def Jam venues (ISO
+sourced); DOA6/SC6/SFV/T7-full binaries (not acquired); SC6 lighting docs (absent).
+
+**Files:** `game/js/lighting-rig.js` (new), `game/js/stages.js` (rig delegation + 8 canon
+rig/grade blocks), `game/js/scene.js` (grade on stage swap), `game/js/game.js`
+(character rig on match start), `game/js/fighter.js` (soul-glow baseline + behaviors),
+`docs/research/lighting-environment-pull-2026-10-22.md` (full audit), WORKLOG.md (this).
+
+**Method:** base = main @ 822bdcc (2026-10-22T18:14Z) at first sync; re-synced to be7d2eda
+before push (18 commits landed mid-work — only WORKLOG.md touched among my files; rebuilt
+from the new base before appending). Fresh copies of scene.js/game.js/fighter.js/
+stages.js/WORKLOG.md fetched from main (local fix3 copy was ~1 day stale — worker 16/17/19
+had touched them). Surgical edits only; no deletions. Push via `~/workspace/fix2/gh_push.py`,
+merge via `git_merge.py`. Sandbox note: exec-path file writes to ~/workspace/fix3/lighting/
+started failing EPERM mid-task; WORKLOG.md was rebuilt as base@be7d2eda + this entry via
+/tmp staging + symlink push tree — byte-verified, no clobber.
+
+**Proof:** node harness with real three r160 (no DOM): 56/56 asserts pass (soul table,
+rig light composition 1-hemi/3-dir/1-shadow-key, rimBoost math, motes updater + mobile
+cap, character-rig attach incl. TOU low-light + fail-silent, grade application/defaults,
+budget ledger). `node --check` ESM parse on all 5 JS files. Structural checks: old light
+block gone, 8/8 canon stages carry rig+grade, no pure RGB primaries.
+**NOT proven:** in-game screenshots (no browser on this VM) and device frame-time.
+Visual verification: `game/stage-test.html?stage=shrine` + `game/index.html` fight —
+fighter key/rim separation, soul-glow tint, motes, per-stage grade. Needs a
+browser-capable pass; flagged for coordinator.
+
+**Self-check:** asked-scope met (lighting wired + audit + scenery + sweep; accessories
+documented-not-duplicated per directive) · shortcuts disclosed (no screenshots, no device
+FPS — flagged) · proof attached (56/56 node asserts) · branch/PR · CI must be green ·
+gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted made public
+(all code clean-room procedural; no game assets extracted).
