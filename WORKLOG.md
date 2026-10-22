@@ -300,3 +300,15 @@ Subagent lane (audit REPORT.md B3): two gaps closed, four commits.
 - `deathfang-werewolf.json` exists on disk but is also absent from
   index.json (found while verifying build_index()). Left alone; belongs to
   another lane.
+
+## Instruction-gate episode (same PR, follow-up note)
+- The `instruction-gate` CI check failed on the first PR body (AGENTS.md law 15:
+  the body must carry the six sections Owner instruction / Method specified /
+  Method used / Deviations / Proof / Self-check). Rewrote the body with those
+  sections verbatim; validated it locally against the repo's own gate script
+  (.github/scripts/instruction_gate.py::check) before pushing the update.
+- Note for future lanes: editing the PR body via the API did NOT retrigger the
+  workflow (no new run appeared for the `edited` event; close/reopen did not
+  either). A fresh `synchronize` (this commit) was needed to get a new run
+  with the fixed body in the event payload. (Same experience as Lane 1 on
+  PR #471.)
