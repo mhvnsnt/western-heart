@@ -34,7 +34,7 @@ const TITLE_B=['BEAST','PANTHER','KING','GHOST','STORM','WOLF','TIGER','DEMON'];
 const SLOT2CAT = { mask:'3', eye_lenses:'6', cowl:'3', gauntlets:'H', hair:'2',
   decal_logo:'8', eye:'EYES', tights:'11', pants:'11', top:'9', outfit:'9', scarf:'12', face:'8',
   upper_body:'9', lower_body:'11', gloves:'H', shoes:'F', gear:'12', accessory:'12', attire:'10',
-  eyebrows:'6' };
+  eyebrows:'6', fullbody:'11' };
 /* suite_slot -> fallback 3D socket for texture-part markers (registry has no placement block for texture parts) */
 const SLOT2SOCKET = { eye:'face', face:'face', decal_logo:'chest', top:'chest', outfit:'chest',
   scarf:'chest', tights:'waist', pants:'waist', hair:'head', mask:'face', eye_lenses:'face', cowl:'head', gauntlets:'hands' };
@@ -57,9 +57,7 @@ function blankFighter(){
        per-attire records live in records[], keyed 'fighter::attire_id'
        ('blank' for the blank fighter). */
     mode:'blank', rosterRef:null, records:{},
-    // Blank-fighter base: a REAL template base mesh (MB-Lab bake), never the
-    // Mixamo soldier (killed as default 2026-10-22, owner directive).
-    baseGlb:'customization/templates/meshes/technician.glb' };
+    baseGlb:'customization/create-fighter/assets/Soldier.glb' };
 }
 let F = blankFighter();
 let PARTS = [];       // parts-catalog.json parts[] (unified catalog v2)
@@ -75,7 +73,7 @@ const attire = ()=>F.attires[F.attireIndex];
    pick fighter -> pick attire -> hub, loading THAT attire's real GLB.
    Working state stays in the top-level F fields; switching stashes the
    current state into F.records[key] and restores the target's record. */
-const BLANK_GLB = 'customization/templates/meshes/technician.glb';  // template base, not the soldier
+const BLANK_GLB = 'customization/create-fighter/assets/Soldier.glb';
 const currentKey = ()=> F.mode==='roster' && F.rosterRef ? `${F.rosterRef.fighter}::${F.rosterRef.attire}` : 'blank';
 function snapshotWorking(){
   return JSON.parse(JSON.stringify({
@@ -96,7 +94,7 @@ function rosterAttire(slug, attireId){
 }
 async function loadBaseModel(){
   if(!viewer) return;
-  const url = '../../'+F.baseGlb;  // repo-relative (templates/ or roster GLBs)
+  const url = F.baseGlb===BLANK_GLB ? '../create-fighter/assets/Soldier.glb' : '../../'+F.baseGlb;
   try{ await viewer.loadBase(url); }
   catch(e){ console.warn('[WH] base model failed', F.baseGlb, e); toast('Model failed to load: '+F.baseGlb); }
   renderAll();
