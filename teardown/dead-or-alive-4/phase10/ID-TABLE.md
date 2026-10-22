@@ -25,3 +25,11 @@ New structural fact: chrone pkg23–26 share an unmistakable signature (hanging 
 - chrone-pkg10 + head pkg08: Chinese dress with frog-button closures + long straight hair — the Leifang-vs-Helena tentative is NOT re-graded (composite coherence is not name evidence), but the pair is now the family's reference composite.
 - chrtwo-pkg50 + head pkg25 (composite floats, listed in HEAD-ATTACHMENT): pkg25 head has **cat ears** — a distinguishing silhouette for its family (chrtwo50–55 / chrthree02–07 bodies), recorded without a name claim.
 - chrtwo-pkg50 + heads pkg41/42/44: twin-tail/bow heads, seated — same family as pkg25 by anchor, different origin convention.
+
+## chrtwo body packages — phase-10 viewed rows (batch 1)
+| package | identification | evidence (viewed render) | confidence | competing candidates |
+|---|---|---|---|---|
+| chrtwo-pkg00 | unidentified | VIEWED `renders/p10-chrtwo-pkg00.png`: plain vest/tank torso, waist sash, front pouch, single leg column; graph head node Y 0.525 (group-C-height family) | — | — |
+| chrtwo-pkg01 | unidentified | VIEWED `renders/p10-chrtwo-pkg01.png`: bulky shattered armored torso, chest plate, hip pouch with cross emblem | — | — |
+| chrtwo-pkg02 | unidentified | VIEWED `renders/p10-chrtwo-pkg02.png`: heavily shattered mass, twin top loops (straps), unreadable silhouette | — | — |
+| chrtwo-pkg03 | unidentified | VIEWED `renders/p10-chrtwo-pkg03.png`: curved horn-like shoulder pieces, wide flared tassets/skirt, tall back ornament — armor costume | — | — |
