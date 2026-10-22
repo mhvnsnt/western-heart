@@ -273,9 +273,16 @@ def main(argv):
     except MergeRefused as e:
         raise MergeRefused(f"{base} ref update failed (safe, nothing pushed): {e}")
 
-    pr2 = api("GET", f"/repos/{owner}/{repo}/pulls/{n}")
-    if not pr2.get("merged"):
-        raise MergeRefused("ref updated but PR does not show merged; "
+    # GitHub links the merge commit to the PR asynchronously; poll briefly.
+    merged = False
+    for _ in range(12):
+        pr2 = api("GET", f"/repos/{owner}/{repo}/pulls/{n}")
+        if pr2.get("merged"):
+            merged = True
+            break
+        time.sleep(10)
+    if not merged:
+        raise MergeRefused("ref updated but PR does not show merged after ~2 min; "
                            "investigate before continuing")
     print(f"MERGED: {commit['sha'][:8]}  PR #{n} closed as merged.")
     return 0
