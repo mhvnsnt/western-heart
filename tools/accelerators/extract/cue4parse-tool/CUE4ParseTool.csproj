@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Built on demand by extract.sh (dotnet SDK fetched on demand too).
+       CUE4Parse version is pinned at build time via -p:CUE4ParseVersion=... -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <CUE4ParseVersion>1.2.2.202610</CUE4ParseVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="CUE4Parse" Version="$(CUE4ParseVersion)" />
+    <!-- SkiaSharp comes transitively via CUE4Parse; used for PNG encoding. -->
+  </ItemGroup>
+</Project>
