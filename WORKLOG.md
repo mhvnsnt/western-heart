@@ -1452,3 +1452,70 @@ Also found: the feet-geometry cue misreads chunky-heel boots as -Z (false -Z on 
 
 **Merge:** PR #607, 4 checks green (instruction-gate, clobber-guard, guard, deletion-guard), merged via git_merge.py as 6f712e9e. No deletions. 8 files: 4 new (moveset, 3 docs), 4 modified (surgical).
 
+
+## 2026-10-22 — Worker 11 (moveset/input lane): Tekken input pipeline + PSX controls + Batch B BT fills
+
+Owner activation: "let's keep working on the repo and working on getting all of the
+moves working correctly all the combos and everything mapped out all the inputs all
+the stuff that we was working on with Claude earlier continue that" + INPUT-TO-MOVE
+FIDELITY LAW: "in Tekken every input produces a specific, predictable move — press 1,
+left punch comes out, every time." + PSX controls ("Square = 1, Triangle = 2,
+X = 3, Circle = 4", ditch the dodge/generic buttons, joystick left + face buttons
+right) + joystick correction ("JOYSTICK IS FINE — DO NOT TOUCH IT") + acceptance
+criteria verbatim in docs/owner-directives.md (CONTROL ACCEPTANCE CRITERIA, 2026-10-22).
+
+Engine fixes (game/js/movesets.js):
+- Unified the two pressChord definitions — the second shadowed the first, so chord
+  resolution ignored ctx/state prefixes, the slots table, loadouts and __base movesets.
+  One pressChord(chord, ctx) now: motion specials -> notation table -> directional chord.
+- Dash latch changed from step-counted to wall-clock (500ms): the old latch lasted
+  seconds on slow devices and misfired dash moves on plain f+1 presses.
+- _motionHeld: any all-identical f/b run (f,F / f,f,F / b,b,B ...) is now a dash-motion
+  requiring the dash latch — previously move keys like f,f,F+2 parsed as 3-step
+  "motions" matching on merely holding forward.
+
+Pilot fighter torch (game/assets/movesets/torch.json): added BT.2->BT.1, BT.4->BT.3
+(canon per T7 Anna frame data, docs/t7t8-reference/frame-data-t7/anna.json:
+"BT 1 (or 2)", "BT 3 (or 4)"); remapped placeholder f,f,F+2 -> f,F+2 (Headless
+Horseman) which shadowed the canon dash move; slots 392->394. SS.1/SS.4 fills
+REVERTED after checking T7 data (Anna/King/Jin/Nina have no SS.1/SS.4; sidestep+1/+4
+falls through to neutral — Tekken-correct).
+
+Batch B (37 fighters, 62 slot insertions): canon BT.2/BT.4 pair fills applied
+surgically (bt_fill.py). Five files (pantera, phantom, scimitar, skull, zui) changed
+on main mid-session and were rebased to current tip + fills re-applied; every batch
+file verified byte-equal to (current tip + fills) — zero clobber risk. kronos-attire2
+needed a blob-API fetch (1.27 MB exceeds the Contents API limit).
+
+Controls (owner correction honored): game/js/input.js REVERTED to the user's approved
+version — joystick untouched. PSX face-button layout only: game/index.html (diamond:
+triangle top=2, circle right=4, cross bottom=3, square left=1; L1=block, R1=surge;
+dodge + generic punch/kick buttons removed) + game/styles.css (authentic PSX colors,
+no overlaps — min ~4px clearance verified geometrically in portrait and landscape) +
+game/js/main.js (throw-break prompt: "TAP <square>" / "TAP <triangle>" / "TAP <square>+<triangle>").
+
+Proof (tools/input-verify/):
+- buffer-test.mjs (pure Node, real engine + real moveset JSON): torch 42/42 PASS
+  (canon-aware: SS.1/SS.4 asserted as fall-through per T7 Anna data), pantera 36/0,
+  demonio 33/0 coverage-aware PASS. Strings 1,2 / 1,2,2 / 2,1 / f+2,1 verified.
+- touch-wiring-test.mjs (NEW, pure Node, real InputManager + stub DOM): 11/11 PASS —
+  tap data-btn="1..4" queues the correct Tekken limb, every button functional,
+  block hold/release, 1+3 chord, disabled input swallows taps.
+- Browser proof BLOCKED (documented deviation): Chromium SIGTRAPs intermittently on
+  managed launch, and Chrome 152's Local Network Access checks block navigation to
+  the local http server (ERR_BLOCKED_BY_LOCAL_NETWORK_ACCESS_CHECKS) from both
+  CDP and managed launches despite --disable-features flags. verify-touch.mjs ships
+  as the browser proof harness for a working environment (button-by-button demo,
+  combos, portrait+landscape layout screenshots, overlap checks). Layout geometry
+  verified mathematically instead: zero button overlaps in both orientations.
+
+Moveset philosophy (owner 2026-10-22): Tekken movelist layouts FIRST to 100%, THEN
+proprietary/canon moves on top. This PR is the foundation layer. Rollout: Batch C =
+sparse sets needing real Tekken-layout builds (DOA/VF 14-26 moves, sf-* 10-12,
+deathfang/iori 40+ gaps, Vixen has no moveset yet — Tekken inputs per directive);
+Batch D = canned string enders (1,2,2 etc.) from T7 frame data.
+
+Files: game/js/movesets.js, game/index.html, game/styles.css, game/js/main.js,
+game/assets/movesets/torch.json + 37 batch JSONs, docs/owner-directives.md,
+tools/input-verify/ (buffer-test.mjs, touch-wiring-test.mjs, verify-touch.mjs,
+verify-inputs.mjs, baseline/), WORKLOG.md (this entry).

@@ -386,18 +386,39 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
   box-shadow: 0 4px 14px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.3); transition: transform 0.06s, filter 0.06s;
 }
 .act-btn:active { transform: scale(0.9); filter: brightness(1.3); }
-.act-btn.punch  { right: 88px; bottom: 98px; background: linear-gradient(180deg,#b46bff,#6b2bd8); }
-.act-btn.kick   { right: 10px; bottom: 62px; background: linear-gradient(180deg,#ffb14d,#d6802f); }
-/* Stream 6: Tekken limb cluster — arcade diamond (LP RP / LK RK). */
-.act-btn.limb { width: 58px; height: 58px; font-size: 15px; }
-.act-btn.lp { right: 96px; bottom: 104px; background: linear-gradient(180deg,#b46bff,#6b2bd8); }
-.act-btn.rp { right: 28px; bottom: 104px; background: linear-gradient(180deg,#c98bff,#7b3fe0); }
-.act-btn.lk { right: 96px; bottom: 38px; background: linear-gradient(180deg,#ffb14d,#d6802f); }
-.act-btn.rk { right: 28px; bottom: 38px; background: linear-gradient(180deg,#ffcf7d,#e09a3a); }
-.act-btn.special{ right: 158px; bottom: 66px; background: linear-gradient(180deg,#e0b3ff,#8b2bd8); width:60px;height:60px;font-size:18px; }
-.act-btn.block  { right: 10px; bottom: 168px; background: linear-gradient(180deg,#9fd8ff,#3f6dc8); width:58px;height:58px;font-size:18px; }
-.act-btn.dodge  { right: 158px; bottom: 8px; background: linear-gradient(180deg,#ff5c7a,#c81f43); width:58px;height:58px;font-size:18px; }
-.act-btn.transform { right: 106px; bottom: 96px; background: linear-gradient(180deg,#fff36b,#d8a02b); width:58px;height:58px;font-size:18px; color:#3a2a00; }
+/* PSX EMULATOR OVERLAY (control overhaul 2026-10-22, owner directive):
+   classic PlayStation diamond — △ top, ○ right, ✕ bottom, □ left —
+   with authentic PSX colors (triangle green, circle red, cross blue,
+   square pink). Tekken mapping: □=1 LP, △=2 RP, ✕=3 LK, ○=4 RK.
+   No button touches or overlaps another: every edge has clear air.
+   L1/R1 shoulder pills (block / soul surge) sit above the diamond.
+   The old dodge button and generic punch/kick buttons are gone. */
+.act-btn.psx { width: 62px; height: 62px; font-size: 26px; line-height: 1;
+  background: rgba(20,20,28,0.72); border: 2px solid rgba(255,255,255,0.35);
+  text-shadow: 0 0 8px currentColor; }
+.act-btn.psx:active { transform: scale(0.88); filter: brightness(1.6); }
+.act-btn.triangle { right: 88px; bottom: 144px; color: #3ddc84; }
+.act-btn.circle   { right: 24px; bottom: 96px;  color: #ff5c5c; }
+.act-btn.cross    { right: 88px; bottom: 48px;  color: #4da3ff; }
+.act-btn.square   { right: 152px; bottom: 96px; color: #ff7ad9; }
+.act-btn.shoulder { width: 64px; height: 40px; border-radius: 20px; font-size: 15px;
+  background: rgba(20,20,28,0.72); border: 2px solid rgba(255,255,255,0.3); color: #ffe9a8; }
+.act-btn.l1 { right: 152px; bottom: 176px; }
+.act-btn.r1 { right: 24px; bottom: 176px; }
+.act-btn.transform { right: 88px; bottom: 216px; background: linear-gradient(180deg,#fff36b,#d8a02b); width:52px;height:52px;font-size:18px; color:#3a2a00; }
+/* Compact screens (portrait phones): shrink the cluster, keep the diamond. */
+@media (max-width: 520px) {
+  .action-pad { width: 200px; height: 200px; right: 10px; }
+  .act-btn.psx { width: 54px; height: 54px; font-size: 22px; }
+  .act-btn.triangle { right: 76px; bottom: 128px; }
+  .act-btn.circle   { right: 20px; bottom: 84px; }
+  .act-btn.cross    { right: 76px; bottom: 40px; }
+  .act-btn.square   { right: 132px; bottom: 84px; }
+  .act-btn.shoulder { width: 56px; height: 36px; font-size: 13px; }
+  .act-btn.l1 { right: 132px; bottom: 156px; }
+  .act-btn.r1 { right: 20px; bottom: 156px; }
+  .act-btn.transform { right: 76px; bottom: 192px; width: 46px; height: 46px; }
+}
 
 /* Stream 6: throw-break prompt */
 .throw-prompt {

@@ -191,9 +191,9 @@
 
     <!-- Control hints (desktop keys + touch). Fades after 6s. -->
     <div id="control-hints" class="control-hints">
-      <span><b>J</b> punch</span><span><b>K</b> kick</span><span><b>U</b> grab</span>
-      <span><b>L</b> surge</span><span><b>Space</b> block</span><span><b>Shift</b> dodge</span>
-      <span><b>A/D</b> move</span>
+      <span><b>□</b> 1 <b>△</b> 2 <b>✕</b> 3 <b>○</b> 4</span><span><b>U</b> grab</span>
+      <span><b>L1</b> block</span><span><b>R1</b> surge</span>
+      <span><b>A/D</b> move</span><span><b>W/S</b> sidestep</span>
     </div>
 
     <!-- ============ TOUCH CONTROLS ============ -->
@@ -202,26 +202,26 @@
       <div id="joystick" class="joystick">
         <div id="joystick-knob" class="joystick-knob"></div>
       </div>
-      <!-- Action buttons (human-sized touch targets) -->
+      <!-- Action buttons: PSX emulator overlay (control overhaul 2026-10-22).
+           Classic PlayStation diamond: △ top, ○ right, ✕ bottom, □ left.
+           Tekken mapping: □=1 left punch, △=2 right punch,
+           ✕=3 left kick, ○=4 right kick. L1=block, R1=soul surge
+           (emulator shoulder buttons). No dodge button, no generic
+           punch/kick buttons — those are gone per owner directive. -->
       <div class="action-pad">
-        <button class="act-btn punch" data-btn="punch" style="display:none">P</button>
-        <button class="act-btn kick" data-btn="kick" style="display:none">K</button>
-        <!-- Stream 6: full Tekken limb cluster (LP/RP/LK/RK arcade layout).
-             Legacy P/K kept hidden for old bindings; keyboard J/K still work. -->
-        <button class="act-btn limb lp" data-btn="1">LP</button>
-        <button class="act-btn limb rp" data-btn="2">RP</button>
-        <button class="act-btn limb lk" data-btn="3">LK</button>
-        <button class="act-btn limb rk" data-btn="4">RK</button>
-        <button class="act-btn special" data-btn="surge">S</button>
-        <button class="act-btn block" data-btn="block">B</button>
-        <button class="act-btn dodge" data-btn="dodge">D</button>
+        <button class="act-btn psx triangle" data-btn="2" aria-label="Triangle, 2 right punch">△</button>
+        <button class="act-btn psx circle" data-btn="4" aria-label="Circle, 4 right kick">○</button>
+        <button class="act-btn psx cross" data-btn="3" aria-label="Cross, 3 left kick">✕</button>
+        <button class="act-btn psx square" data-btn="1" aria-label="Square, 1 left punch">□</button>
+        <button class="act-btn shoulder l1" data-btn="block" aria-label="L1 block">L1</button>
+        <button class="act-btn shoulder r1" data-btn="surge" aria-label="R1 soul surge">R1</button>
 <button class="act-btn transform" data-btn="transform" style="display:none">T</button>
       </div>
     </div>
   </section>
 
   <!-- Stream 6: throw-break prompt (flashes over the fight) -->
-  <div id="throw-prompt" class="throw-prompt"><span class="throw-prompt-label">BREAK THE THROW — </span><span class="throw-prompt-key">TAP LP</span></div>
+  <div id="throw-prompt" class="throw-prompt"><span class="throw-prompt-label">BREAK THE THROW — </span><span class="throw-prompt-key">TAP □</span></div>
 
   <!-- Stream 6: per-fighter movelist (training mode) -->
   <section id="screen-movelist" class="screen">

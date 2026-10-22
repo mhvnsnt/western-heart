@@ -4,6 +4,26 @@ Living document. Updated every time the owner sets a directive. Newest first.
 
 ## 2026-10-22
 
+- **CONTROL ACCEPTANCE CRITERIA (owner verbatim, 2026-10-22 — this is the
+  bar for the moveset/input track).**
+  - JOYSTICK: "JOYSTICK IS FINE — DO NOT TOUCH IT." The joystick placement
+    and feel are good. Leave it exactly as-is.
+  - FACE BUTTONS: "THE PROBLEM IS THE FACE BUTTONS. They're 'fucked up and
+    real bad' — overlapping, ugly, badly positioned." Fix ONLY the face
+    buttons: "PSX layout: Square (1/Left Punch), Triangle (2/Right Punch),
+    X (3/Left Kick), Circle (4/Right Kick)"; "Clean positioning, no
+    overlaps, good spacing"; "Work in portrait AND landscape".
+  - MOVES (owner verbatim): "Pressing buttons does random moves or nothing
+    → every button must do its CORRECT Tekken move, every time"; "Combos
+    don't work, just one random move at a time → real working combo
+    strings"; "Some buttons don't work at all → every button functional".
+  - PROOF: "THE USER WANTS PROOF. When done: Show a working build where each
+    button does its correct move (button-by-button demo); Demonstrate combos
+    working (strings, not single moves); Verified by actually PLAYING, per
+    the standing rule — not code inspection."
+  - The joystick approved by the owner is `game/js/input.js` as it exists on
+    main — the moveset lane reverted its own joystick edits (2026-10-22) and
+    does not own that file.
 - **ANTI-CLOBBER LAW (permanent — written in blood after PR #579).** On
   2026-10-22 PR #579 committed stale full-file copies (base from Oct 17),
   wiping 427 lines of `game/js/assets.js`, 113 of `game/js/main.js`, 32 of
