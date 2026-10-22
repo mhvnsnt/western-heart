@@ -155,7 +155,11 @@ export const FULL_ROSTER = [
   { id: 'bruno', name: 'BRUNO', title: 'Matador', base: 'Miguel', moveset: 'bryan', model: 'bruno', tintStrength: 0.25,
     colors: { suit: 0x5a1a1a, trim: 0xcc3333 }, style: 'Brawler', archetype: 'Power' },
   { id: 'negativo', name: 'N3GΔTIV0', title: 'Galactic Bounty Hunter', base: 'Negan', moveset: 'bryan', model: 'n3g4tiv0', tintStrength: 0.25,
-    colors: { suit: 0x0a0a0a, trim: 0x00ff00 }, style: 'Brawler', archetype: 'Intimidation' },
+    colors: { suit: 0x0a0a0a, trim: 0x00ff00 }, style: 'Brawler', archetype: 'Intimidation',
+    // EYE GLOW (owner 2026-10-22): per-attire emissive eyes, configured on the
+    // 'negativo' ladder in game/js/attires.js — Attire 1 red, Attire 2 (before
+    // the trials) white. See roster/negativo/README.md.
+  },
   { id: 'thor', name: 'THOR', title: 'Norse God', base: 'Ganryu', moveset: 'bryan', model: 'thor', tintStrength: 0.25,
     colors: { suit: 0x4a3a2a, trim: 0xffd700 }, style: 'Sumo', archetype: 'Power' },
   { id: 'yukihyo', name: 'YUKIHYŌ', title: 'Snow Leopard Ninja', base: 'Armor King', moveset: 'king', model: 'yukihyo', tintStrength: 0.25,

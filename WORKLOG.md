@@ -2087,3 +2087,39 @@ On-main files NOT touched: worker 37's `js/creation-flow.js` + `js/art.js`
   `docs/owner-directives.md`.
 - Full log: `docs/decisions/2026-10-22-kinpo-repoint-w50.md` (branch
   `w50/kinpo-repoint`).
+
+## 2026-10-22 ~18:30 CDT — worker 67: Negativo archive batch (A1/A2) + CornerStone A1 + per-attire eye glow
+
+- **Archive (Dorowani #603 pattern):** three Tripo originals archived byte-identical
+  (sha256-verified) with manifests + immutable annotated tags ("Restore point:
+  these bytes never change"):
+  - `roster/negativo/attires/attire1/source/negativo-a1-futuristic-superhero.glb`
+    (23,252,660 B) + `manifest.json` — tag `negativo-a1-original`
+  - `roster/negativo/attires/attire2/source/negativo-a2-sci-fi-armored-suit.glb`
+    (27,085,484 B) + `manifest.json` — tag `negativo-a2-original`
+  - `roster/ryuji-rock/attires/attire1/source/ryuji-rock-a1-tattooed-man.glb`
+    (18,872,720 B) + `manifest.json` — tag `ryuji-rock-a1-original` (WH name
+    CornerStone; internal id stays `ryuji-rock`). Lands the long-pending
+    ryuji-rock attire1 slot.
+  - All three are unrigged statics (1 mesh, 0 skins) — archive only, NOT wired
+    into MODEL_URLS (invisible-fighter guard).
+- **Eye glow (owner spec 2026-10-22):** per-attire emissive eyes, data-driven in
+  the `'negativo'` ladder in `game/js/attires.js` — Attire 1 RED (`0xff2222`),
+  Attire 2 (before the trials) WHITE (`0xffffff`). Eye meshes identified from the
+  model: `n3g4tiv0.glb`'s dedicated eye material `ModelEyes_Material028`.
+  Renderer hook: `assets.js createInstance` 5th param `eyeGlow`, applied after
+  tint so glow wins; fight path via `resolveFighterAttire` → `this.char.eyeGlow`,
+  preview path via `attireEyeGlow(c, modelId)`. Attire 2 slot is `pending: true`
+  (rig not landed) — `selectableAttires()` hides it from the picker.
+- **Standing directive logged:** owner 2026-10-22 "For ALL future Tripo pulls —
+  AUTO-ARCHIVE to the repo. Don't ask, just wire them up every time." Added
+  "Archive (automatic)" section to `tools/tripo-intake/README.md` for worker 61's
+  intake inventory.
+- Files: `game/js/attires.js`, `game/js/assets.js`, `game/js/fighter.js`,
+  `game/js/select-screen.js`, `game/js/roster-full.js`, `roster/negativo/README.md`
+  (new), `tools/tripo-intake/README.md`, `docs/decisions/2026-10-22-negativo-eye-glow-archive.md`
+  (new), `docs/research/tripo-intake-2026-10-22-negativo-cornerstone.md` (new).
+- Verification: `node --check` on all five edited JS files; eye-glow match logic
+  verified against the real `n3g4tiv0.glb` material table (see decision doc);
+  model-key-guard ownership table untouched (no MODEL_URLS changes).
+- MERGE FREEZE: PR branch pushed, merge-ready, NOT merged.

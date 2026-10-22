@@ -30,7 +30,7 @@
    ============================================================ */
 import * as THREE from 'three';
 import { assets } from './assets.js';
-import { attiresFor, selectedAttireModel, setAttire, attireLabel } from './attires.js';
+import { selectableAttires, selectedAttireModel, setAttire, attireLabel, attireEyeGlow } from './attires.js';
 import { loadT3Clips, createT3Actions, retargetT3Clips } from './t3anims.js';
 import { bankIdFor } from './fighter.js';
 import { getMovesetInfo } from './movesets.js';
@@ -139,7 +139,8 @@ class PreviewPane {
       if (token !== this._token) return true; // superseded by a newer tap
       const inst = assets.createInstance(
         modelId, c.colors?.suit ?? 0xffffff, c.colors?.trim ?? 0x888888,
-        c.colorize ? (c.tintStrength ?? 0.3) : 0); // TINT FIX: own textures, no palette wash (real colors)
+        c.colorize ? (c.tintStrength ?? 0.3) : 0, // TINT FIX: own textures, no palette wash (real colors)
+        attireEyeGlow(c, modelId)); // per-attire emissive eyes (owner 2026-10-22)
       this._clearModel();
       this.model = inst.model;
       this.model.rotation.y = this.baseRotY;
@@ -463,7 +464,7 @@ export function createSelectScreen(deps) {
 
   function renderAttires(side, c, interactive) {
     const els = plateEls(side);
-    const list = attiresFor(c);
+    const list = selectableAttires(c); // pending (not yet playable) slots stay hidden
     const sel = selectedAttireModel(c);
     els.attires.innerHTML = '';
     if (list.length < 2) return;
@@ -507,7 +508,7 @@ export function createSelectScreen(deps) {
 
   function applyAttire(side, c, modelId) {
     setAttire(c, modelId);
-    state.kickCycle = Math.max(1, attiresFor(c).findIndex(a => a.model === modelId));
+    state.kickCycle = Math.max(1, selectableAttires(c).findIndex(a => a.model === modelId));
     renderPlate(side);
     showOnSide(side, c);
     assets.prefetch(modelId);
@@ -520,7 +521,7 @@ export function createSelectScreen(deps) {
   function punchAttire() {
     const c = state.highlight[state.activeSide];
     if (!c) return;
-    const list = attiresFor(c);
+    const list = selectableAttires(c);
     if (list.length < 2) return;
     audio.uiClick();
     applyAttire(state.activeSide, c, list[0].model); // applyAttire records index 0
@@ -528,7 +529,7 @@ export function createSelectScreen(deps) {
   function kickAttire() {
     const c = state.highlight[state.activeSide];
     if (!c) return;
-    const list = attiresFor(c);
+    const list = selectableAttires(c);
     if (list.length < 2) return;
     audio.uiClick();
     state.kickCycle = state.kickCycle >= list.length - 1 ? 1 : state.kickCycle + 1;
@@ -544,7 +545,7 @@ export function createSelectScreen(deps) {
     state.highlight[side] = c;
     // kickCycle tracks the CURRENT attire index; K advances it
     // (wrapping 2..n), P returns it to 0 (attire 1).
-    state.kickCycle = Math.max(0, attiresFor(c).findIndex(a => a.model === selectedAttireModel(c)));
+    state.kickCycle = Math.max(0, selectableAttires(c).findIndex(a => a.model === selectedAttireModel(c)));
     paintCards();
     renderPlate('p1');
     renderPlate('p2');
