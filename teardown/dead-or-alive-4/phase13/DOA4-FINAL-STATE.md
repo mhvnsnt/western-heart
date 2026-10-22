@@ -79,8 +79,12 @@ decision (Q1–Q6, §4).
   against any of 148 bodies; six are origin-bound and carry no
   signal by construction). Phase 13 tested the two remaining
   evidence classes — TX2D record identity and slot-grid adjacency
-  (`phase13/HEAD-EVIDENCE.md`): [verdict filled from the L2
-  matrix]. No pairing was forced; the proof bar (unique +
+  (`phase13/HEAD-EVIDENCE.md`): L1/DESC tiers carry no signal;
+  the L2 payload tier fires strongly on some proven pairs
+  (13–15 shared payloads, unique family) and returns 0–2
+  against every family for all 8 unpaired heads; slot-grid
+  adjacency nominates families at best and is contradicted for
+  26/28. No pairing was forced; the proof bar (unique +
   quantitative) was not met by construction-paper evidence in
   any phase.
 

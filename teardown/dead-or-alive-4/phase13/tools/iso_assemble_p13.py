@@ -19,7 +19,7 @@ PART_SIZE = 262144000
 TOTAL = 7834892288
 
 def digests():
-    a = json.load(open('/tmp/iso_assets.json'))
+    a = json.load(open('/home/hatch/workspace/_doa4p2-scratch/p13/iso_assets.json'))
     return {x['name']: x['digest'].split(':')[1] for x in a}
 
 def main():
