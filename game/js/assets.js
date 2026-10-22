@@ -85,11 +85,12 @@ export const MODEL_URLS = {
   'thor-attire2': '../roster/thor/attires/attire2/model.glb',
   'doc-frank': 'assets/models/doc-frank.glb',
   // Doc Frank ATTIRE 1 pre-form (old man) — his own Attire 1 GLB at
-  // roster/doc-frank/attires/attire1/pre-transform/model.glb. Forefront
-  // default (owner ladder rule 2026-10-21: Tripo attires 1-4 first,
-  // Bosconovitch base + reskins ladder back). File lineage: the PR #263
-  // machine-shop texture reskin of the base, adopted as Attire 1's
-  // old-man form; binds normalized in PR #465 (178 joints, rigged).
+  // roster/doc-frank/attires/attire1/pre-transform/model.glb. File lineage:
+  // the PR #263 machine-shop texture reskin of the base, adopted as Attire
+  // 1's old-man form; binds normalized in PR #465 (178 joints, rigged).
+  // Picker position: BACK slot with the Tekken-based models (owner override
+  // 2026-10-21: Tripo models lead slots 1-5, Tekken reskins toward the back)
+  // — a reskin by lineage, not a Tripo model, so it no longer defaults.
   'doc-frank-a1': '../roster/doc-frank/attires/attire1/pre-transform/model.glb',
   // Doc Frank post-transform bigger form (owner 2026-10-19, Tripo pull).
   'doc-frank-big': '../roster/doc-frank/attires/attire1/post-transform/model.glb',

@@ -503,3 +503,28 @@ validate.py. This completes all 22 unrigged fighters.
 
 Peak RAM 214–626MB. Outputs meshopt-compressed (10–25MB vs 24–72MB logical).
 SHA-256s in batch4/SHASUMS-rigged.txt.
+
+## 2026-10-21 (~23:14 CDT) — Doc Frank attire reorder: Tripo models lead, Tekken reskins to the back (owner verbatim override)
+
+Owner verbatim: "his 1, 2, 3, 4, 5 should be his Tripo models; the Tekken reskins go toward the back, not 1 or 2. Stop showing me the Tekken versions first — show the Tripo 3D models I made for him."
+
+Root cause found: the 2026-10-21 ~19:08 CDT "ladder rule" lane had put Attire 1's pre-form old man (`doc-frank-a1`) at picker slot 1 as the default — but its file lineage is the PR #263 machine-shop texture reskin of the Bosconovitch base (a Tekken reskin, not a Tripo model), so the user was still seeing a Tekken version first. The picker order the user sees is controlled by `ATTIRE_VARIANTS['docfrank']` in `game/js/attires.js` (rendered chip-by-chip in order by `renderAttires()` in `game/js/select-screen.js`; default = first entry via `selectedAttireModel()`; player fights go through `resolveFighterAttire()` in `game/js/main.js`). The "owner ladder rule" comment the coordinator remembered in `roster-full.js` does not exist — the actual control point is the attires.js ladder.
+
+Change (reorder only — every model stays reachable, nothing deleted):
+- `game/js/attires.js`: `ATTIRE_VARIANTS['docfrank']` reordered — all 7 Tripo models first (slots 1–7: Attire 1 Transformed, Wowomomo pair, Hood pair, Frankenstein pair), Tekken-based models at the back (slots 8–10: old-man pre-form, Bosconovitch base, Machine Shop reskin). Default = slot 1 = `doc-frank-big` (Tripo). Labels now carry provenance: `(TRIPO)` / `(TEKKEN RESKIN)` / `(TEKKEN CANON)`.
+- `game/js/roster-full.js`: main `docfrank` entry model `doc-frank-a1` → `doc-frank-big` (matches the picker default; CPU-enemy Doc Frank now also shows the Tripo model).
+- `game/js/assets.js`: `doc-frank-a1` comment corrected (was falsely claiming "Forefront default").
+- `roster/doc-frank/ATTIRE-SLOTS.md`: ladder rule replaced with the owner's verbatim override; picker-order table (slots 1–10) added; history entry added.
+- Old→new slot mapping: 1→8 (old man), 2→1 (big), 3–8→2–7 (pairs), 9→9, 10→10.
+
+Known trade-off (documented in-code): with the Tripo bigger form as the default, TRANSFORM from the default swaps big→big (no visual change); selecting a back-slot old-man form and transforming still lands on the Tripo bigger form. The A1 two-form pair is intact.
+
+Validation:
+- `node --check` clean on all three edited JS files.
+- `node --test game/tests/model-key-guard.test.mjs`: "own model on both resolution paths" PASS (docfrank player→`doc-frank-big`, enemy→`doc-frank-big`, both in own-list); the file-existence subtest fails only on rigged GLBs absent from the pre-#482 snapshot tree (phantom/diablo/skull/… `model-rigged.glb`) — pre-existing, none doc-frank related (proven via pristine-tree run).
+- `node --test game/tests/fighter-completeness.test.mjs`: "newly wired attire ladders keep the current default" PASS. Two pre-existing failures, both proven unrelated: moveset KNOWN_GAPS (frankenstein moveset JSON added to main after the snapshot) and zen transform targets (never wired on main).
+- Picker proof: executed the real `attiresFor()`/`selectedAttireModel()` against the real `FULL_ROSTER` in node — slots 1–7 Tripo, 8–10 Tekken, default `doc-frank-big`. Rendered proof image from that exact data: `docfrank_picker_proof.png` (viewed).
+- Headless Chromium in this VM cannot perform HTTP navigation (verified: even example.com and trivial pages return empty; `--screenshot` hangs), so no live 3D select-screen capture was possible here — the user reviews the reordered picker on the live Pages build per the loop.
+
+## PR
+- PR: https://github.com/mhvnsnt/western-heart/pull/502
