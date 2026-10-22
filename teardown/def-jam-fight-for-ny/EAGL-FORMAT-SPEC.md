@@ -626,6 +626,105 @@ otherwise the POINTS discipline still stands:
 `topology_status=unproven_vertex_order` is unchanged, and no
 converter or catalog change is made by this addendum.
 
+#### 7.9.4 W5e follow-up (2026-10-21) — full held-data census: the defining object is NOT held
+
+Step (1) of §7.9.3's next-crack list is now done, at full held-data
+scope. Method: the in-repo J4 parser only
+(`customization/tools/convert_defjam_o.py:parse_elf` +
+`eagl_refpack.py`), applied to every held Def Jam object. A symbol
+counts as DEFINED iff its ELF symbol value ≠ 0 or its size ≠ 0 (the
+§7.9.3 samples are value 0 / size 0 = undefined externs). Non-ELF
+held files were byte-scanned for the target names
+(`LitGouraud0__EAGLMicroCode`, `IrradTexture_Skin0__EAGLMicroCode`,
+and the `__EAGLMicroCode` marker generally).
+
+**Coverage (exact, per class):**
+
+| Class | Scope | Objects parsed | `__EAGLMicroCode` refs | DEFINED |
+|---|---|---|---|---|
+| (a) | wrestling-game `models/caw-parts` `.o` | 2,624 `.o` (1,857 ELF-parsed; 767 fail RefPack decompression — see below) + 5,324 sibling files byte-scanned | 1,331 | **0** |
+| (b1) | wrestling-game `models/fighters` `.o` (2026-10-14 V2IP extraction) | 156 `.o` (155 parsed, 1 RefPack failure) + 78 files scanned | 292 | **0** |
+| (b2) | wrestling-game `models/venues` `.o` | 499 `.o` (all parsed) + 359 files scanned | 385 | **0** |
+| (b3) | wrestling-game `motion/` (incl. `MAIN_ALL.DAT`, `ANIMTAGS.DAT`) + `data/` + `tools/` | 770 files byte-scanned | 0 | **0** |
+| (c) | on-disk lanes: `_w5c-work` (13 sample `.o` + 2× `SLUS_210.04`) and `defjam-work` surgical tree (156 `.o`) | 324 `.o` parsed (the two roots' V2IP sets are duplicate copies) + 446 files scanned | 590 | **0** |
+
+Repo-set total (a+b): **3,279 `.o`**, 2,008 microcode references,
+**zero definitions**. Every reference in every family is an
+undefined extern (value 0, size 0). Families referenced, all
+undefined: `LitGouraud0`, `IrradTexture_Skin0`,
+`DJIrradTextureEnvmap_Skin10`, `DJFXSparkle_Skin0`, `IrradTexture0`
+(models); `ClipTextureDim0`, `ClipGouraud0`, `TextureDim_Skin0`,
+`ClipTexture0`, `DJClipTextureEyeEnvmap10/20/30/40/50`,
+`DJIrradTextureEnvmap_SkinVenue10/20/30`, `ScrollTexture0`,
+`PlanarShadow_Skin0` (venues). `SLUS_210.04` re-confirmed by raw
+scan: only `Particle0` / `HeatParticle0` names (§7.9.3); the two
+target names do not occur in the exe at all.
+
+Two coverage caveats, stated exactly:
+
+- **768 `.o` are unparseable** (767 CAW + 1 fighters): no valid
+  RefPack record (the §7.10 `no_valid_refpack_record` population),
+  no ELF magic, and no plaintext occurrence of either target name
+  or the `__EAGLMicroCode` marker anywhere in their bytes. They are
+  corrupt extractions, symbol-censused only to that depth; their
+  disc originals sit in the already-extracted V2CP/V2IP archives,
+  so closing this gap needs a re-extraction pass, not a new archive.
+- `motion/base00/base00.ord` (2,197,856 bytes) carries ELF magic but
+  its section table lies beyond EOF for the J4 parser; its raw byte
+  scan is negative for all three needles, as is every other motion
+  file (`.orl/.ord/.mnl`, `MAIN_ALL.DAT`, `ANIMTAGS.DAT`).
+
+**Verdict: the object that defines
+`LitGouraud0__EAGLMicroCode` / `IrradTexture_Skin0__EAGLMicroCode`
+is not in any held data.** It remains on the disc, in archives never
+extracted. It is therefore a named target for the IA pickup (the
+archive.org item `slus-210.04.-def-jam-fight-for-ny` node was down
+through W5b, checkpoint `gap-closure-w5-defjam` §W5b): on recovery,
+extract the archives below and re-run this exact census (J4 parser,
+value ≠ 0 test) over every new entry, plus re-extractions of the 768
+corrupt files and the five entry-0 slots.
+
+**Uncensused archives — the IA-gated set (W5b manifest, 912
+entries, named pickup priority 1 — model/object carriers):**
+`/ASSETS/BLINGFX.VIV` (2), `/ASSETS/DECALFX.VIV` (1),
+`/ASSETS/FEPOSES.VIV` (18), `/ASSETS/V2GA.VIV` (21),
+`/ASSETS/V2BG_CIN.VIV` (27), `/ASSETS/TROPHIES.VIV` (41),
+`/ASSETS/PROPS.VIV` (41), `/ASSETS/SHOPS.VIV` (52),
+`/ASSETS/V2IP_CIN.VIV` (56), `/ASSETS/V2CM.VIV` (128),
+`/ASSETS/V2WP.VIV` (212), `/ASSETS/V2TA.VIV` (313).
+
+**Uncensused archives — the rest of the never-extracted disc set
+(W5a `REMAINDER.json`: 78 never-touched archives in total, 66 beyond
+the W5b manifest above):** `/ASSETS/AI/AI.VIV` (779),
+`/ASSETS/IRRAD/IRRAD.VIV` (463), `/ASSETS/NIS.VIV` (32),
+`/ASSETS/ICROWD.VIV` (14), `/ASSETS/CINCROWD.VIV` (3),
+`/ASSETS/TEXANIM.VIV` (2), `/ASSETS/SUBTITLE.VIV` (40),
+`/ASSETS/CINEMA/` GF1A, GF1B1–B4, GF1C, GF1D, GF2A–2E, GF3A, GF3C
+(6–19 entries each) and SC00–SC06, SC07A, SC07B, SC08–SC21 (4–47
+entries each); `/FONTS/FONTS.VIV` (10), `/IOP/BOOT.VIV` (7);
+audio families `/AUDIO/MUSIC0/1/3/4.VIV`, `/AUDIO/SFX0/1/2.VIV`,
+`/AUDIO/SPEECH3.VIV` (table-censused, never extracted — listed for
+completeness; no held evidence makes them object carriers).
+Never even table-censused (W5a census errors, contents wholly
+unknown): `/ASSETS/MISC.VIV` and `/SCREENS/SCREENS.VIV` (BIG4
+containers), `/ASSETS/CINEMA/GF3B.VIV`, `/AUDIO/MUSIC2.VIV`,
+`/AUDIO/SFX3.VIV`, `/AUDIO/SPEECH1.VIV`, `/AUDIO/SPEECH2.VIV`,
+`/FONTS/BEFONTS.VIV`, `/MOVIES/MOVIES.VIV`. The three motion
+archives (`/MOTION/WRES_ALL.VIV`, `/MOTION/BASE00.VIV`,
+`/MOTION/BLAZIN.VIV`) are a distinct case: their contents are held
+and file-censused (class b3 above, negative), but their BIGF tables
+were never walked, so an unlisted entry cannot be ruled out.
+Finally, the **entry-0 slot of each already-extracted archive**
+(`V2CP_1/2/3.VIV`, `V2IP.VIV`, `V2BG.VIV`) was never read (W5b
+entry-0 targets, LBAs in the W5b manifest) — five unread entries,
+names known only by elimination.
+
+No vertex-order rule is stated by this addendum: the microcode was
+not found, so there is nothing to disassemble and no order to read.
+No guessed orders. The POINTS discipline stands unchanged:
+`topology_status=unproven_vertex_order`; no converter or catalog
+change is made by this addendum.
+
 ### 7.10 Phase B census — the extracted set (2026-10-21)
 
 The wrestling-game teardown tree holds **2,624 `.o` + 5,319 `.ssh`**
