@@ -129,3 +129,23 @@ the table base @ 0x825625A0). Per the job's terms this lands as a **negative**:
 the material-setup path is NOT in the file-table/reader family, no decl→texture
 rule was read, and the proven set stays exactly 3 (chrone pkg00 decl1→tex30,
 decl12→tex40, decl30→tex40). Refuted routes were not re-run.
+
+## ADDENDUM (same session, from the shared scratch — parallel-lane output merged in)
+
+A second lane worked this phase in the same scratch (see PHASE11-STATE.md
+collision note). Its Ghidra outputs (`p11/decomp2/`, `p11/decomp3/`) add one
+verified step and two warnings:
+
+- **0x8243DD08 is a tail-call thunk** → FUN at true VA **0x829FD490**
+  (Ghidra 0xDFD490), which Ghidra cannot decode from that seed
+  ("bad instruction data" — the region is data-interleaved or VMX-mixed).
+  The anm completion path therefore continues at **0x829FD490**; it needs a
+  Capstone linear read, not a Ghidra decompile, as the next step.
+- WARNING — two files in `p11/decomp2/` and `p11/decomp3/` are WRONG-ADDRESS
+  seeds and must not be cited as the stream-build routine:
+  `func_00df57d0` (seeded 0x829F57D0) and `func_00d757d0` (seeded
+  0x829757D0, a VMX vector-convert math routine). The loader's stream-build
+  call is **0x8295F7D0** → Ghidra address **0xD75F7D0**; it is still unread.
+- The parallel lane also ran `p11/scan_streamobj.py` tracing materializations
+  of a global at 0x82C374E8 (hits in `p11/streamobj_hits*.csv`) — a different
+  global than the loader's stream object 0x82C3A3D0; not yet interpreted.
