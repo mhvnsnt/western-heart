@@ -67,7 +67,7 @@ Generation gives a **static mesh**. For WH, every model must be rigged (fighters
 - Mixamo: free, royalty-free, but **bipeds only** — insufficient for the creature roster.
 - Tripo/Meshy/Nira hosted rigging: commercial, per-use.
 
-**Recommendation:** **UniRig as the pipeline's rigging stage** — it's the only open, MIT, creature-capable auto-rigger, and it's literally built by the Tripo team, so it slots into the same intake philosophy.
+**Recommendation:** **UniRig as the pipeline's rigging stage** — it's the only open, MIT, creature-capable auto-rigger, and it's literally built by the Tripo team, so it slots into the same intake philosophy. **Repo note (2026-10-22):** UniRig is already wired into `tools/auto_rig` backends (see `docs/research/OPEN-SOURCE-WAVE-2026-10-22.md`, worker 22) — this pipeline's rigging stage should reuse that backend rather than adding a new one.
 
 ---
 
