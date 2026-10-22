@@ -122,8 +122,11 @@ export const MODEL_URLS = {
   'king-tyrant-attire3': '../roster/king-tyrant/attires/attire3/model.glb',
   'king-tyrant-attire4': '../roster/king-tyrant/attires/attire4/model.glb',
   // KINPO Attire 1 (owner 2026-10-20): his Tripo pull is her MAIN attire.
-  kinpo: '../roster/kinpo/attires/attire1/model-rigged.glb',
-  'kinpo-attire1': '../roster/kinpo/attires/attire1/model-rigged.glb',
+  // Repoint 2026-10-22 (worker 50): the k-NN model-rigged.glb was broken;
+  // live keys now ride the tripo-intake rig (Blender 4.0.2 + GameRig, facing
+  // +X measured — proof: docs/proof/muse-2026-10-21/tripo-intake/).
+  kinpo: '../roster/kinpo/attires/attire1/model-intake.glb',
+  'kinpo-attire1': '../roster/kinpo/attires/attire1/model-intake.glb',
   // Previous A1 (Asuka-based game model, provenance unknown) laddered back
   // to a legacy alternate 2026-10-20 — NOT deleted.
   'kinpo-legacy': 'assets/models/kinpo.glb',
@@ -132,7 +135,8 @@ export const MODEL_URLS = {
   // KINPO INTAKE DEMO (2026-10-21, tripo-intake lane): the same attire-1 Tripo
   // re-rigged end-to-end by tools/tripo-intake (Blender 4.0.2 + GameRig, facing
   // +X measured by the intake's two-cue gate — the k-NN batch assumed +Z).
-  // Suite-viewer demo key only; the live game keeps using 'kinpo' above.
+  // Suite-viewer demo key; the live game now uses 'kinpo'/'kinpo-attire1'
+  // above (repointed 2026-10-22 to this same intake rig).
   'kinpo-intake-demo': '../roster/kinpo/attires/attire1/model-intake.glb',
   // WATERFALL (2026-10-21, lane 4 rig batch 1): unrigged Tripo static -> model-rigged.glb
   // via tools/auto_rig knn backend (donor pantera.glb); original model.glb untouched.
