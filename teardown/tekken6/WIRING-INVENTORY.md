@@ -84,3 +84,26 @@ Evidence: `tools/round6-evidence/` (JOB1–JOB4 docs + JSON).
 4. Find the character geometry wherever it lives (embedded containers / NDPP redo are the candidate spaces) → then GMO/NDPP→GLB with viewed front renders.
 5. Wire decoded fighters/movesets into the build per the engine steer; verify in-build.
 6. Optional confirmation: run real QuickBMS binary on the JOB 2 test file when a binary is reachable.
+
+## Round-7 update (2026-10-21, PR #489)
+
+Evidence: `tools/round7-evidence/` (JOB1/JOB2/JOB3 docs + JSON).
+
+| Layer | State after round 7 |
+|---|---|
+| Container directory | **SOLVED**: every non-COM container is a chunk-directory file — (count, header size) + (chunk_size, cumulative_end) pairs tiling the file to EOF. Type A 13 slots/112 B, type B 6 slots/64 B |
+| Package classes (top-76) | 12 character packages (NDPP body + `BONE` 8,032 + NDPP head + name chunk + `BONE` 1,664), 16 stage/object packages (624 B transform NDPP + BE-headed slot9 float payload 61–218 KB = stage geometry stream), 29 NTPP texture packages, 2 tiny stubs |
+| Embedded census (entry-87 slice) | **DONE: 5,470 containers classified** — 3,702 A-model / 1,432 B-texture / 336 dir-other, sha256 + slot maps in `r7_census.json`. NDPP occurrences 1,565/1,565 sane sizes. Most A-packages are items/parts/stage objects, not whole characters; per-character assignment of embedded packages NOT yet proven (blocker B3) |
+| NDPP interior | Descriptors (2×64 B) + count word (3120 in idx00) + interleaved normal stream with ~48 B block headers PROVEN on clean bytes. **Vertex position/index encoding NOT cracked** — no float3 position arrays exist in NDPP sections (cell-map evidence). Blocker B1: EBOOT model-loader RE (Ghidra), scoped in the JOB1/2 doc (NTPP ctor xref 0x892fdf0; BONE template VA 0x08bdaab0; NDPP dispatched by slot, no magic in EBOOT) |
+| COM movesets (JOB 3) | **DECODED 18/18**: per-fighter JSONs in `teardown/tekken6/movesets/` — verbatim pointer tables, 7,341 byte-carried name records with record hex, all strings, MOTA verbatim. Binary command encoding + count-word referent still unproven (named, not hidden) |
+| GLBs (G3) | `models/ndpp_bounding_volumes_r7.glb` SUPERSEDES the incomplete round-2 GLB: **1,222 sections / 11,663 boxes** on clean bytes (was 357/1,103), renders viewed + original-comparison documented. Images: 0 (bounding volumes have no textures). **Character-mesh GLBs: 0 — blocked on B1, deliberately not faked** |
+| NTPP textures | Classified + counted, interior NOT decoded → no bakeable texture images yet. Pairing evidence recorded: DATA401 entry-order interleaving of A/B packages |
+| Wired into the build | Moveset JSONs landed in the teardown tree as the wiring input (game-side registration minimal per the 2026-10-21 engine steer; GLB + JSON are the deliverables). No T6 fighter is playable yet: no proven character mesh exists |
+
+### Left before T6 PSP true 100% (round-7 blockers)
+- B1: NDPP vertex/index layout via EBOOT model-loader RE (Ghidra) — unblocks character GLBs, texture baking, per-character mesh inventory.
+- B2: NTPP interior decode (GIDX/CLUT/pixel format) → texture images for baking + stage textures.
+- B3: Per-character assignment of the 3,702 embedded A-packages (DATA401 index-order + name-chunk analysis).
+- B4: COM binary command-record encoding + count-word referent (EBOOT COM-loader RE); MOTA chunk bodies.
+- B5: Stage slot9 float-stream layout (BE control words → geometry) → stage GLBs.
+- B6: BONE record stride + full skeleton decode (counts proven: 146 body / 22 head / 110 EBOOT template).
