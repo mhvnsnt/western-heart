@@ -31,7 +31,13 @@ Method: same as phase 8 (front bind-pose Cycles renders of phase-6 skinned GLBs,
 ## Head-package census (chrtwo pkg04–45)
 42 packages, 31 distinct GLBs (md5-verified): identical runs pkg11–16 (×6), pkg35–40 (×6), pkg44=45; near-twin pkg34 vs 35–40 group. Anchor families: 0.468 → chrone 17/18/20 family; 0.477 → chrtwo 50/51/52/55 family; 0.478 → chrone 10/13 + chrtwo 46/49 family; 0.483–0.486 → chrone 00/01/02 family; 0.519–0.525 → chrtwo 00 + chrone 07/08 family. No anchor under central-joint filter: pkg05, 06, 23, 24, 27, 28, 32 (unresolved sub-case, named in HEAD-HUNT.md).
 
+| chrone-pkg15 | unidentified (long-dress group 13–16) | VIEWED `renders/p9-chrone-pkg15.png`: visually identical to pkg14/16 (long dress, front sash, segmented round pouch) — all four group members now viewed | — | — |
+| chrone-pkg17 | unidentified (anchor family 0.468, with pkg18/20) | VIEWED `renders/p9-chrone-pkg17.png`: female torso, crossover sash/gi top, THREE round ornaments on a tray at front waist, single leg column | — | — |
+| chrone-pkg18 | unidentified (anchor family 0.468) | VIEWED `renders/p9-chrone-pkg18.png`: large flat apron/coat front panel, shattered top mass, round center buckle, segmented shin guards; deep Z extent (train/cape behind) | — | — |
+| chrone-pkg19 | unidentified | VIEWED `renders/p9-chrone-pkg19.png`: oversized rounded HELMET mass at neck (costume prop, body packages are headless), finial on top, pointed shoulder guards, THREE round waist ornaments (same signature as pkg17), slim pants legs; 86 joints | — | — |
+| chrone-pkg20 | unidentified (anchor family 0.468) | VIEWED `renders/p9-chrone-pkg20.png`: female torso, high collar, fragmented skirt, woven basket-like pouch at front waist, two ring bands on the leg column | — | — |
+
 ## Coverage
-- chrone: viewed 00–16 except 15 (17/30 viewed incl. phase 8); stats-only: none remaining below 17 — remaining to render: 15, 17–28 (29 = non-character, phase-8 strong).
-- chrtwo: heads viewed 3/42 small packages; full packages 0/26 rendered this phase.
-- chrthree: 0/50 rendered this phase.
+- chrone: viewed 00–20 (21/30; 29 = non-character, phase-8 strong). Remaining to render: 21–28.
+- chrtwo: heads viewed 4/42 small packages (04, 20, 24, 29) + 31-distinct census + anchor families for all; full packages 0/26 rendered this phase.
+- chrthree: 0/50 rendered this phase (GLBs not yet pulled; spanned zips total ~169MB, disk-gated).
