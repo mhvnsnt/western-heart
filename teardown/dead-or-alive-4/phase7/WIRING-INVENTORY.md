@@ -69,3 +69,35 @@ Wiring blockers, in dependency order:
   model package (indices 50+ are the TX2D-only sub-packages, per the
   chrthree.afs row). Certain character names: still 0; tentatives
   unchanged. Detail: `phase11/ID-TABLE.md`.
+
+## Phase 12 update (2026-10-22, PR #559)
+
+- **Composites: 23 distinct body+head pairings — UNCHANGED.** The 8
+  unpaired heads (05, 06, 23, 24, 26, 27, 28, 32) were tested against
+  all 50 chrthree bodies with the proven dominant-joint skin-bind Δ
+  method: no pairing reaches the Δ = 0.000 bar (pkg26 min Δ = 0.0646,
+  pkg28 min Δ = 0.0962; the six origin-bound heads carry no signal).
+  The head census is now tested against the COMPLETE body census.
+  Detail: `phase12/ID-TABLE-CHRTHREE.md`.
+- **Clips: still NONE.** Phase 12 read all 13 jump-table case bodies
+  of the anm tag translator raw and completed the ring-writer census
+  (tags 5/6/7/8 only): the family is a (tag, key, value) command
+  layer — the anm 16B-record consumer is NOT in it, and that named
+  route is exhausted with a proven negative. The only remaining
+  named route is the per-fighter `.bin` / `anime_cm.bin` definition
+  layer from the ISO (not pulled; recorded as the standing next
+  step). Detail: `phase12/ANM-READER5.md` (which also proves the
+  −0xE800 frame correction for all phase-11 .text VAs).
+- **Binding: DYNAMIC-ONLY (terminal verdict).** The phase-12
+  draw-path hunt closed empty (TX2D descriptor type 0x30001 is
+  materialized nowhere in .text; the XPR2 registry family takes no
+  per-decl/per-item index). No static decl→texture table exists in
+  the XEX or package records; the 3 proven assignments stand as the
+  only static facts. Wiring blocker #2 is closed as dynamic-only.
+  Detail: `phase12/BINDING-DRAWPATH.md`.
+- **ID coverage: chrone COMPLETE; chrtwo COMPLETE; chrthree COMPLETE
+  (50/50 viewed this phase + phase 11).** All 148 phase-6 packages
+  have been viewed at least once. Certain names still 0; tentatives
+  unchanged; new tentative groups: chrthree 22–28 (armored ×7),
+  chrthree 39/41/42/43 (cat-ear). Detail:
+  `phase12/ID-TABLE-CHRTHREE.md`.

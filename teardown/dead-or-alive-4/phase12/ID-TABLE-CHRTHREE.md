@@ -39,8 +39,50 @@ count, not re-rendered. All renders are in `phase12/renders/`.
 | chrthree-pkg20 | unidentified (0.5028 family; WIND-UP KEY pair) | VIEWED `renders/p12-chrthree-pkg20.png`: a large TWIN-LOOP WIND-UP KEY rises on a stalk from the top (unmistakable clockwork silhouette), banded armored torso, skirt | — | — |
 | chrthree-pkg21 | unidentified (0.5028 family; WIND-UP KEY pair) | VIEWED `renders/p12-chrthree-pkg21.png`: same wind-up-key family as pkg20 (twin-loop key, banded torso, rounder shoulder masses) | — | — |
 
-(rows for pkg22–48 are appended as their batches are viewed; pkg49 =
-phase 11, see coverage note at the end of this file)
+| chrthree-pkg22 | unidentified (0.5788 family, 22–28) | VIEWED `renders/p12-chrthree-pkg22.png`: armored torso, angular chest plates, dark triangular chest inlet, wide belt, big rounded front pouch, tapered shattered leg column | — | — |
+| chrthree-pkg23 | unidentified (0.5788 family, 22–28) | VIEWED `renders/p12-chrthree-pkg23.png`: near-identical to pkg22 (same armored family render) | — | — |
+| chrthree-pkg24 | unidentified (0.5788 family, 22–28) | VIEWED `renders/p12-chrthree-pkg24.png`: near-identical to pkg22 | — | — |
+| chrthree-pkg25 | unidentified (0.5788 family, 22–28) | VIEWED `renders/p12-chrthree-pkg25.png`: near-identical to pkg22 | — | — |
+| chrthree-pkg26 | unidentified (0.5788 family, 22–28) | VIEWED `renders/p12-chrthree-pkg26.png`: near-identical to pkg22 | — | — |
+| chrthree-pkg27 | unidentified (0.5788 family, 22–28) | VIEWED `renders/p12-chrthree-pkg27.png`: near-identical to pkg22 | — | — |
+| chrthree-pkg28 | unidentified (0.5788 family, 22–28) | VIEWED `renders/p12-chrthree-pkg28.png`: near-identical to pkg22 — the 22–28 block is ONE armored costume in seven packages (colorway-class variants, cf. chrone 23–26) | tentative (group) | — |
+| chrthree-pkg29 | unidentified (group-C anchor (0,0.525,−0.025)) | VIEWED `renders/p12-chrthree-pkg29.png`: shattered top block above a HUGE flat horizontal DISC shelf at mid-height (distinguisher), small pouch under the disc, tapered wrapped column | — | — |
+| chrthree-pkg30 | unidentified (group-C anchor) | VIEWED `renders/p12-chrthree-pkg30.png`: tall straight rectangular shattered column body, small round center pouch, X-frame at the base | — | — |
+| chrthree-pkg31 | unidentified (group-C anchor) | VIEWED `renders/p12-chrthree-pkg31.png`: shattered upper block, smoother long lower column with a fold at the base | — | — |
+| chrthree-pkg32 | unidentified (0.530 family, 32–36) | VIEWED `renders/p12-chrthree-pkg32.png`: torso with big smooth front bell/pouch; at the column base a TOOTHED JAW/skull mass (distinguisher); thin stalk rises from the top | — | — |
+| chrthree-pkg33 | unidentified (0.530 family, 32–36) | VIEWED `renders/p12-chrthree-pkg33.png`: toothed-jaw family as pkg32 (jaw at column base, tray top, mid belt with pouches) | — | — |
+| chrthree-pkg34 | unidentified (0.530 family, 32–36) | VIEWED `renders/p12-chrthree-pkg34.png`: female torso, wrapped/laced chest, high collar, ring-belt + hanging pouch at waist, lace-up leg panels | — | — |
+| chrthree-pkg35 | unidentified (0.530 family, 32–36) | VIEWED `renders/p12-chrthree-pkg35.png`: shattered body carrying a VERY LONG horizontal RIFLE-like weapon across the frame (distinguisher), single leg column | — | — |
+| chrthree-pkg36 | unidentified (0.530 family, 32–36) | VIEWED `renders/p12-chrthree-pkg36.png`: shattered torso, big front pouch, leg column opening into a dark hollow cage at the base | — | — |
+| chrthree-pkg37 | unidentified (0.4865 family) | VIEWED `renders/p12-chrthree-pkg37.png`: smooth female torso, open vest with ring clasp at center, front pouch, plain column — mostly unshattered | — | — |
+| chrthree-pkg38 | unidentified (0.4865 family) | VIEWED `renders/p12-chrthree-pkg38.png`: female torso, dense floral/lace-patterned chest mass, waist sash, front pouch | — | — |
+| chrthree-pkg39 | unidentified (0.4865 family; CAT-EAR group 39/41/42/43) | VIEWED `renders/p12-chrthree-pkg39.png`: two pointed CAT EARS + bow at top, ornate chest, wide bell/A-line dress mass, small pouch | tentative (group) | — |
+| chrthree-pkg40 | unidentified (0.4865 family) | VIEWED `renders/p12-chrthree-pkg40.png`: buttoned long coat/jacket torso (vertical button row), front pouch, straight leg column | — | — |
+| chrthree-pkg41 | unidentified (0.4865 family; CAT-EAR group) | VIEWED `renders/p12-chrthree-pkg41.png`: cat-ear bell-dress family as pkg39, dress mass more shattered | tentative (group) | — |
+| chrthree-pkg42 | unidentified (0.4865 family; CAT-EAR group) | VIEWED `renders/p12-chrthree-pkg42.png`: cat-ear family, smoother bell dress, bow + rose ornaments at chest | tentative (group) | — |
+| chrthree-pkg43 | unidentified (0.4865 family; CAT-EAR group) | VIEWED `renders/p12-chrthree-pkg43.png`: near-identical to pkg42 | tentative (group) | — |
+| chrthree-pkg44 | unidentified (0.4865 family) | VIEWED `renders/p12-chrthree-pkg44.png`: female torso, large bust with central shard plume, big smooth front pouch, long column with dark inset panel | — | — |
+| chrthree-pkg45 | unidentified (0.4865 family) | VIEWED `renders/p12-chrthree-pkg45.png`: smooth female torso, open vest + ring clasp (near-twin of pkg37), ornate round front pouch | — | — |
+| chrthree-pkg46 | unidentified (mixed anchors 0.4675/0.4778) | VIEWED `renders/p12-chrthree-pkg46.png`: huge smooth V-collar/cape mass, dense fiber-like shard cluster at center chest, WIDE arm cylinders, big round front pouch | — | — |
+| chrthree-pkg47 | unidentified (0.4769 family) | VIEWED `renders/p12-chrthree-pkg47.png`: plain long gown column, small bust top, tiny handbag-like pouch at front waist (distinguisher), arm stubs — plainest chrthree silhouette | — | — |
+| chrthree-pkg48 | unidentified (mixed anchors 0.4675/0.525) | VIEWED `renders/p12-chrthree-pkg48.png`: shattered top over female torso, WIDE flat belt band, spherical ornament on its left arm cylinder, front pouch, tapered column | — | — |
+
+## Coverage at end of phase 12
+- chrthree: **50/50 bodies viewed** (pkg00–48 this phase, 49 renders in
+  `phase12/renders/`; pkg49 phase 11, `phase11/renders/p11-chrthree-pkg49.png`).
+  The chrthree ID pass is COMPLETE — the largest ID gap from phases
+  10–11 is closed.
+- chrone: COMPLETE (phases 8–10). chrtwo bodies + heads: COMPLETE
+  (phase 11). All 148 phase-6 packages have now been viewed at least
+  once across phases 8–12.
+- Certain character names: still 0. Tentatives unchanged (pkg02→Kokoro
+  stands on the phase-8/9 chrtwo row, NOT re-graded by chrthree02's
+  family match — the chrthree02–07 anchor equals the chrtwo50–55
+  family anchor (0,0.477,−0.041), recorded as family evidence only;
+  group C Hayabusa-vs-Hayate and pkg10 Leifang-vs-Helena untouched).
+  New tentative-grade GROUPS recorded this phase: chrthree 22–28
+  (seven-package armored family) and chrthree 39/41/42/43 (cat-ear
+  bell-dress family).
 
 ## Head-pairing test against chrthree (the 8 unpaired heads)
 
