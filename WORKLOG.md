@@ -1218,8 +1218,8 @@ Full audit: enumerated all 59 roster fighters' default models against `game/asse
 One real table bug found AND fixed: `nightwolf` was `-Z` on main (ea9116ff, 2026-10-22). REVERTED to `+Z`: direct raw-GLB render (three.js, camera on +Z, zero instance correction) shows her FRONT from +Z and her BACK from -Z — the mesh faces +Z. The -Z reading came from a per-part audit that transforms mesh verts by bone matrices; nightwolf's auto-rig skeleton faces -Z inside her +Z mesh, which flips that measurement. The game corrects by MESH facing, so +Z (no turn) is right. Raw renders: `~/workspace/w5tmp/raw_nightwolf_posZ.png` (front), `raw_nightwolf_negZ.png` (back); camera validated against torch (known +Z).
 Also found: the feet-geometry cue misreads chunky-heel boots as -Z (false -Z on zen-body, saku-ra_alt1, lili, kinpo_alt1 — all visually +Z). Do NOT trust the cue alone for heeled footwear; the human-verified table stands.
 
-### Files (surgical edits on fresh main 11d3ee32; no deletions)
+### Files (surgical edits on fresh main b1258faa; no deletions)
 - `game/js/fighter.js` — `_faceY` init in `_build`; smooth Y-turn in `_animate` §1.
 - `game/js/game.js` — `_startRound` facing reset to `±π/2` convention.
 - `game/assets/models/model-facing.json` — `nightwolf` back to `+Z` + corrections note.
-- `game/js/lazy.js`, `game/js/loadperf.js`, `game/index.html`, `game/js/assets.js`, `game/js/attires.js`, `game/js/main.js`, `game/js/menus.js`, `game/js/select-screen.js`, `WORKLOG.md` — synced to main (were stale/missing in worker base; no content changes by me).
+- `WORKLOG.md` (this entry). Synced base files (lazy.js etc.) byte-identical to main, not modified.
