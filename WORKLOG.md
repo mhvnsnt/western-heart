@@ -1599,3 +1599,48 @@ Tekken on-hit stack: (1) jagged star-burst HIT SPARK sprite (canvas-generated, a
 - Modified: game/js/fighter.js (attack boxes, hurtboxes, step-in), game/js/game.js (HitFX wiring, typed hit presentation, hitstop tiers, _spawnImpact shim), game/js/ai.js (range discipline). No deletions.
 - Added: game/js/hitfx.js (new HitFX system).
 - Teardown sources: teardown/tekken3/docs/TEKKEN3-RIG-LESSONS.md (proxy-shape hitboxes, hitstop as move data, fixed timestep), teardown/tekken3/movesets/moveset_king.json (active_first/last, step_per_frame, damage), teardown/tekken7 tekkenmods T8 moveset docs (Move = animation + hitbox/hurtbox/active frames + Hit Conditions: damage + reaction + presentation).
+
+---
+
+# WORKLOG — Worker 15: Playtest Bugfix Batch (2026-10-22)
+
+## BUG 1 — Pantera opponent select (PR #622)
+**Root cause:** Not a Pantera-specific bug. Two general issues: (1) Mirror match — if P2 confirms the same fighter as P1, `startFight()` (main.js:715) does `enemyId !== player.id ? getCharacterWithCustom(enemyId) : randomEnemy(player.id)` → silent random opponent. (2) Async double-tap race in `confirmSelection()`: `await getModes()` gap allows re-entry, confirming twice → P2=P1 → random. User (Pantera main) likely double-tapped or re-picked Pantera.
+
+**Fixes (general, not Pantera-specific):**
+- `game/js/select-screen.js` `highlight()`: versus P2 cannot highlight P1's locked fighter — refused with hint "X is already taken — choose a different soul."
+- `game/js/main.js` `confirmSelection()`: clear `selectedChar` synchronously BEFORE awaits (re-entrancy guard).
+- `game/js/select-screen.js` `notifyConfirm()`: defense-in-depth mirror refusal.
+
+**Verification:** Node logic test — mirror refusal 25/25 character combinations PASS; double-tap → single confirm PASS. `node --check` clean.
+
+## QUICK FIX — Red box on Pantera (PR #622)
+**Root cause:** `customization/profiles/pantera.json` is a creation-suite DEMO (`fighter: "custom"`, `profile.name: "PANTERA"`) attaching `model_1171.glb` (red tint `#c0241c`) as `upper_body`. Two paths hijacked the real Pantera: (1) `profileBelongsTo()` fell through to name matching for `fighter: 'custom'`; (2) `findProfile()` fetched `pantera.json` by ID with zero ownership check.
+
+**Fixes:**
+- `game/js/customization-consumer.js` `profileBelongsTo()`: exact ID match required whenever `record.fighter` is set (including `'custom'`).
+- `game/js/customization-consumer.js` `findProfile()`: validates `profileBelongsTo()` on repo-fetched profiles.
+
+## BUG 2 — Armor King weights (PR #623)
+**Diagnosis:** Face (755 verts y>1.55): 32% Spine2 (face mesh), 94-96% Spine2 (helmet), 40% arm bones. Tail (43 verts): 45% LeftLeg / 20% LeftUpLeg / 17% RightLeg / 12% RightUpLeg. Rig has NO tail joints (49 Mixamo joints).
+
+**Fix:** Binary GLB surgery (appended uncompressed JOINTS_0/WEIGHTS_0, meshopt untouched): 619 face verts → Head; 43 tail verts → Hips. 
+**Proof:** Face Head weight 0.62→0.98; tail leg weights 82%→0%; stress-pose tail displacement 0.173→0.000.
+
+## BUG 3 — Leopard King weights (BLOCKED on upload)
+**Diagnosis (964,668 verts, 53 joints incl. Tail1-4):** (1) Tail: 1,955 tail-geometry verts with leg/hip/spine weights (KD-tree <0.03, leg-cylinder excluded, legs 100% intact). (2) Face: 31,706 verts shoulder/arm→Head. (3) Paws: 161,859 verts — entire paws on PINKY joints → Hand (finger weights >0.09 from joint).
+
+**Fix:** glTF SPARSE accessors (195,520 overrides), 87MB file at `~/workspace/scratch-whtest/lk-sparse-out.glb`. 
+**Proof:** Paw displacement 0.175→0.046 mean; tail fixed 48,508→49,212; legs 7,197/7,197 intact.
+**BLOCKER:** 87MB exceeds GitHub API blob limit (401 on POST). File ready for parent to upload via alternate method.
+
+## Universal weight pattern (documented for pipeline)
+- Face verts (y > head threshold) → Head (keep Neck)
+- Tail verts → Tail joints (or Hips if no tail joints exist)
+- Paw/hand verts → Hand joint (finger weights only if within 0.09 of finger joint)
+- Legs/feet → never touch when fixing tail (explicit exclusion zone)
+
+## Files
+- PR #622: game/js/select-screen.js, game/js/main.js, game/js/customization-consumer.js
+- PR #623: roster/armor-king/attires/attire1/model-rigged.glb
+- BLOCKED: roster/pantera/attires/leopard-king/model-rigged.glb (87MB, ready at ~/workspace/scratch-whtest/lk-sparse-out.glb)
