@@ -819,3 +819,78 @@ owns the next step. Blender is not installed on this VM.
   validate PASS (missing_bones []), pose renders, meshopt encode to
   28,530,756 B. smooth_weights exited "no animations to evaluate
   against" — no smoothing applied. Full deviations in the PR body.
+
+# WORKLOG — T8 character-select grid transplant (2026-10-22, select lane, worker 1/4)
+
+Owner order (verbatim): "pull in like the Tekken 8 character select menu and
+decode it and everything all the UI and menu art and the selections how it's
+set up and get our characters put onto the Tekken the most recent Tekken game
+menu grid that you can get a hold of and upgrade the character select menu"
+
+## Approach change (mid-task, from coordinator)
+- Steam/depot route for T8 assets is DEAD (owner doesn't own T8 on Steam).
+- Revised: T7 teardown = structural reference; T8 LOOK decoded from PUBLIC
+  visual references (screenshots/footage) and recreated pixel-faithfully in
+  HTML/CSS/JS with our own original art. Community-posted T8 UI textures
+  surveyed as reference only — NOT committed (owner rule 8: no
+  copyrighted/leaked game files in public repos or Pages). This deviation
+  from the "community textures are fair game to pull in" brief is flagged
+  in the PR/report for owner confirmation.
+
+## What was built
+- `game/js/ui-skin.js` (NEW): skin/theme config layer. All visual tokens
+  (colors, fonts, card geometry, fact rows, texture paths) for the select
+  screen; `getSkin()`/`applySkin()`/`setSkin()`; full DROP-IN CONTRACT
+  documented in-file (new skins, texture naming under
+  `game/assets/ui/<skin>/`, copyright rule, `?skin=<id>` deep link).
+- `game/js/select-screen.js` (MODIFY): rebuilt on the T8 grid. PreviewPane
+  (live 3D) kept verbatim. New: compact centered multi-row card GRID
+  (replaces bottom strip), tier dividers (Tripo-first display-order law),
+  T8 name banners (big italic condensed), T8 fact blocks (Fighting Style /
+  Archetype / Origin — "Parts unknown" fallback, never invented), portrait
+  art-wash backdrops per side (our portraits, red P1 / blue P2 wash),
+  tap-flash select pulse, grid-aware keyboard nav, identity-canon assert
+  (rave=kiko-tanaka=ghost one entry; no zafina slot; no yoshimitsu slot).
+  Deps interface + main.js wiring UNCHANGED (build/onShow/selectById/
+  notifyConfirm/highlight). Game inputs untouched.
+- `game/select.css` (MODIFY): T8 grid styles, banner, facts, artwash,
+  hints bar; all skin values via CSS vars from ui-skin.js. Phone: stacked
+  stage → grid (own scroll box) → hints; ≥900px: grid floats centered over
+  the stage like T8. Page never scrolls.
+- `game/index.html` (MODIFY): select section markup — artwash divs per
+  pane, `.pane-facts` replaces title/style lines, `.grid-wrap` replaces
+  `.strip-wrap`, VS badge removed (T8 has none on select).
+- `docs/select-redesign/T8-GRID-DECODE.md` (NEW): full design breakdown —
+  layout, card arrangement, fonts, colors, background, animations,
+  sources, and documented deviations from T8 (tiers, names on cards,
+  fact rows, 99s timer, phone stacking).
+- `docs/proof/cs-transplant/` (NEW): screenshots of the new select.
+
+## Verification
+- `node --check` on both JS files: OK. Skin token resolution tested in
+  node (t8 default, missing-skin fallback): OK.
+- Headless Chromium (puppeteer-core, repo proof approach): grid renders —
+  Tripo Originals tier first, square portrait cards with names, header +
+  timer live (screenshot: docs/proof/cs-transplant/).
+- ENVIRONMENT BLOCKER (2026-10-22 ~14:33 CDT): ALL Chromium binaries on
+  the VM started crashing at launch (mmap MAP_SHARED EPERM → SIGTRAP;
+  affects every agent, not just this lane). Post-fix screenshots
+  (fighters-zone flex fix, highlighted-fighter, versus P2, desktop
+  floating grid) could NOT be captured here — handed to coordinator with
+  exact commands in the final report.
+
+## Files (no deletions)
+- game/js/ui-skin.js, game/js/select-screen.js, game/select.css,
+  game/index.html, docs/select-redesign/T8-GRID-DECODE.md,
+  docs/proof/cs-transplant/*.png, WORKLOG.md (this entry)
+
+## Flags for coordinator
+- The `flex: 1 1 54%` / `flex: 1 1 46%` split collapsed the fighters zone
+  to zero height in the one screenshot captured; replaced with the proven
+  pattern (zone `flex: 1 1 auto`, grid-wrap `flex: 0 0 auto` +
+  `height: clamp(240px, 40vh, 460px)`). UNVERIFIED visually — needs the
+  re-screenshot pass.
+- docs/owner-directives.md does not exist in this checkout; the T8-grid
+  directive will be appended to main's copy at push time if present.
+- Other lanes: game inputs untouched; facing/model bugs (memory 2026-10-22
+  playtest) are NOT this lane.
