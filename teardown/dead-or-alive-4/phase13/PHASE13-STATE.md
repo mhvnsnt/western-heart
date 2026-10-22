@@ -49,3 +49,27 @@ Additions-only; commit SPECIFIC paths (NEVER git add -A — sparse clone); own-e
 - Clears (this lane, own rebuildable intermediates only, logged per discipline):
   - doa4-250m.part_01..04 — deleted by the assembler AFTER sha256 verification + ISO write (bytes live in `p13/doa4.iso` at their offsets AND in release doa4-iso-v1; one-store rule).
   - NOT cleared: p13/doa4.iso (assembly in progress), p13/extracted/{cmn,avt}.afs (pending the release/manifest step), all census JSONs/logs.
+
+- FINAL LANE-CLOSE UPDATE (supersedes the two bullets above
+  where they conflict): **Job 2's exhaustion declaration is
+  WITHDRAWN** — the definition files were FOUND (26 named
+  entries inside the ISO's actual anm.afs, a standard AFS
+  container at ISO sector 416009); the phase 7–12 "anm.afs"
+  was a different pressing's file (head c1ff2852…) mislabeled
+  in phase 1. Definition files released as
+  `doa4-anime-definition-20261022` + `phase13/definition-manifest.json`;
+  corrected account in `phase13/ANM-DEFINITION-2.md`; semantic
+  decode = named next lane. **Job 3 CLOSED**: L2 census
+  completed via the incremental resume tool (first process
+  died at 131/148 in a session-abort event, results in memory
+  only); controls 28/28, 20/20, 23/23; proven signal band 7–15
+  unique (fam477: 13, famC: 15, head21: 7); all 8 unpaired
+  heads 0–2 vs every family → **no new pairings, composites
+  23/31 FINAL** (`phase13/HEAD-EVIDENCE.md`,
+  `phase13/texrecord_census.json`). **Job 1: 9/30 parts
+  landed + sha256-verified** (01–09), parts 10+11 in flight
+  at close; release re-verified 30 assets = 7,834,892,288B;
+  ISO not cleared (assembly incomplete, never-kill rule).
+  Additional clears: assembler part files 05–09 post-verify;
+  two stalled unverified partial downloads (08/09 first
+  attempts) deleted to restart cleanly.
