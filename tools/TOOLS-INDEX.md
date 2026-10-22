@@ -62,6 +62,11 @@ Every image cited in a PR was opened and looked at before it was cited.
 | `tools/moveset-restore/restore_sweep_338.py` | restored 49 movesets wiped by merge commit 8ebdc527 from its parent 4cc6b41b |
 
 ## 7. Safety
+- `tools/git-merge/git_merge.py` merges a PR as a real merge commit via the Git
+  Database API (for machines where SSH is blocked and the merge endpoint is
+  unusable): `git_merge.py <PR> [--yes]`. Refuses unless the PR is open,
+  not a draft, mergeable_state is clean, and CI is green; 3-way merges every
+  touched file and aborts on any conflict instead of clobbering.
 
 - `gitleaks` 8.21.2 runs before every push: `gitleaks detect --no-git --source <changed files>`
   and `gitleaks git --log-opts=origin/main..HEAD`.
