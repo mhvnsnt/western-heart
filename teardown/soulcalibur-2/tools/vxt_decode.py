@@ -21,7 +21,7 @@ hunt8, + byte-level size accounting against idx47 VMX#1's VXT section):
 import struct, sys
 import numpy as np
 
-FMT = {12: ('DXT1', 8), 14: ('DXT3', 16), 15: ('DXT5', 16)}
+FMT = {11: ('P8', None), 12: ('DXT1', 8), 14: ('DXT3', 16), 15: ('DXT5', 16)}
 
 def parse_vxt(buf, base=0):
     assert buf[base:base+4] == b'VXT.', buf[base:base+4]
@@ -41,10 +41,10 @@ def parse_vxt(buf, base=0):
     return recs
 
 def level_size(w, h, fmt):
+    if fmt == 11:  # P8: 1 byte per pixel
+        return w * h
     _name, bs = FMT[fmt]
-    total = 0
-    lw, lh = w, h
-    return ((max(1, lw//4)) * (max(1, lh//4)) * bs)
+    return ((max(1, w//4)) * (max(1, h//4)) * bs)
 
 def rec_size(rec):
     total, w, h = 0, rec['w'], rec['h']
@@ -55,17 +55,16 @@ def rec_size(rec):
 
 # --- Xbox swizzle (documented NV2A/D3D8 tiled layout) -------------------
 def _fill_pattern(pattern, value):
-    done, bit = 0, 1
-    while True:
+    # Canonical Xbox swizzle bit-spread: walk pattern bits ascending;
+    # for each set pattern bit, consume the next bit of value.
+    result, bit = 0, 1
+    while value:
         if pattern & bit:
-            done |= value & bit
+            if value & 1:
+                result |= bit
             value >>= 1
-            if value == 0:
-                break
         bit <<= 1
-        if bit == 0:
-            break
-    return done
+    return result
 
 def _gen_masks(w, h):
     x, y, bit, mask = 0, 0, 1, 1
@@ -145,7 +144,20 @@ def dxt_decode(blocks, w, h, fmt):
                     img[by*4+py, bx*4+px] = (r, g, b, a)
     return img[:h, :w]
 
-def decode_texture(buf, vxt_base, rec, unsw=True):
+def decode_texture(buf, vxt_base, rec, unsw=False):
+    if rec['fmt'] == 11:  # P8 paletted: 1 B/px indices, palette via rec+0x00
+        pp, pc = struct.unpack_from('<2I', buf, vxt_base + rec['pal'])
+        pal = np.frombuffer(buf[vxt_base+pp: vxt_base+pp+pc*4], dtype=np.uint8).reshape(pc, 4)
+        # palette entries stored B,G,R,A (Xbox D3DCOLOR memory order)
+        rgba = np.stack([pal[:, 2], pal[:, 1], pal[:, 0], pal[:, 3]], axis=1)
+        idx = np.frombuffer(buf[vxt_base+rec['data']: vxt_base+rec['data'] + rec['w']*rec['h']],
+                            dtype=np.uint8)
+        # P8 pixel data is stored Xbox-swizzled (proven: idx632 tex02 ear /
+        # skin and idx944 tex06 Spawn emblem decode coherent only unswizzled,
+        # while DXT records in the same archives decode coherent linear).
+        raw = unswizzle(bytes(idx), rec['w'], rec['h'], 1)
+        idx = np.frombuffer(raw, dtype=np.uint8)
+        return rgba[idx].reshape(rec['h'], rec['w'], 4).copy()
     name, bs = FMT[rec['fmt']]
     bw, bh = max(1, rec['w']//4), max(1, rec['h']//4)
     n = bw*bh*bs

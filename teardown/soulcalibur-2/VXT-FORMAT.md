@@ -1,9 +1,9 @@
 # Soulcalibur II (Xbox) — VXT Texture Format (Phase 13, JOB 1)
 
-Verdict: **VXT is decoded.** Textures are Xbox DXT (DXT1/DXT3/DXT5),
-stored **linear** (not swizzled) at VXT-relative offsets, with up to 2
-mip levels stored consecutively. First textures decoded to PNG and
-viewed in real colors (see Proof).
+Verdict: **VXT is decoded.** Textures are Xbox DXT (DXT1/DXT3/DXT5,
+stored **linear**) and P8 paletted (stored **Xbox-swizzled**), at
+VXT-relative offsets, with up to 2 mip levels stored consecutively.
+First textures decoded to PNG and viewed in real colors (see Proof).
 
 ## Sources / method
 
@@ -44,17 +44,29 @@ Texture record (36 B):
 | +0x08 | u32 | flags — 0xa2 exactly when 2 mip levels present, else 0 (28/28 records) |
 | +0x0c | u16 ×2 | width, height |
 | +0x10 | u32 | pixel-data offset, VXT-relative (relocated in place by `FUN_00025300`) |
-| +0x14 | u32 | Xbox D3DFORMAT: **12 = DXT1, 14 = DXT3, 15 = DXT5** (size accounting: 12 → 8 B/block, 14/15 → 16 B/block) |
+| +0x14 | u32 | Xbox D3DFORMAT: **11 = P8 (paletted), 12 = DXT1, 14 = DXT3, 15 = DXT5** (size accounting: 12 → 8 B/block, 14/15 → 16 B/block, 11 → 1 B/px + palette) |
 | +0x18 | u16 ×2 | width, height (descriptor copy; identical to +0x0c in 28/28) |
 | +0x1c | u16 | mip levels present (1 or 2) |
 | +0x1e | u16 | flags; bit2 set ⇒ relocator skips the data upload (`FUN_00153280`) |
 
 Pixel data: level 0 first, then level 1 (half dims), each
-`(w/4)·(h/4)` DXT blocks in plain row-major block order. **Not
-swizzled**: a Morton-unswizzled decode of idx47 tex06 scrambles into
-block noise, while the linear decode is a coherent texture (proof
-below). (The runtime presumably swizzles on upload via
+`(w/4)·(h/4)` DXT blocks in plain row-major block order. **DXT records
+are NOT swizzled**: a Morton-unswizzled decode of idx47 tex06
+scrambles into block noise, while the linear decode is a coherent
+texture (proof below). (The runtime presumably swizzles on upload via
 `FUN_00153280`; the file storage is linear.)
+
+**P8 records (format 11) differ**: pixel data is 1 byte/pixel palette
+indices stored **Xbox-swizzled** (canonical bit-spread unswizzle at
+texel level), and the palette comes from the record's +0x00 pointer:
+a 12-byte palette struct `{u32 data ptr, u32 count (=256), u32 ?}`
+(the header's +0x10 array holds these structs), palette data =
+`count` × 4-byte entries in **B,G,R,A** byte order. Proof (viewed):
+idx632 tex02 unswizzled = a human ear on skin with hair (Cassandra's
+head texture); idx944 tex06 unswizzled = Spawn's chest emblem over the
+black suit. The linear (non-unswizzled) reads of the same records are
+streak-scrambled, and the DXT records are coherent ONLY linear — the
+split is proven per-format, not assumed.
 
 ## Fighter ↔ texture mapping (evidence, not adjacency)
 
