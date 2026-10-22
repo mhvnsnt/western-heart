@@ -64,7 +64,7 @@ export const MODEL_URLS = {
   // AWA POP Attire 2 (fighter-completeness audit 2026-10-21): owner-confirmed
   // Tripo Attire 2 (roster/awa-pop/ATTIRE-SLOTS.md slot 2) — the GLB was in the
   // repo with no key, so it could never load.
-  'awa-pop-attire2': '../roster/awa-pop/attires/attire2/model.glb',
+  'awa-pop-attire2': '../roster/awa-pop/attires/attire2/model-rigged.glb',
   'purple-rain': '../roster/purplerain/attires/attire1/model-rigged.glb',
   nightwolf: 'assets/models/nightwolf.glb',
   'king-tyrant': 'assets/models/king-tyrant.glb',
@@ -76,6 +76,11 @@ export const MODEL_URLS = {
   'kinpo-legacy': 'assets/models/kinpo.glb',
   // Kinpo Attire 2 "Goth Sport" (owner 2026-10-20, Tripo pull — see roster/kinpo/ATTIRE-SLOTS.md).
   'kinpo-attire2': '../roster/kinpo/attires/attire2/model.glb',
+  // KINPO INTAKE DEMO (2026-10-21, tripo-intake lane): the same attire-1 Tripo
+  // re-rigged end-to-end by tools/tripo-intake (Blender 4.0.2 + GameRig, facing
+  // +X measured by the intake's two-cue gate — the k-NN batch assumed +Z).
+  // Suite-viewer demo key only; the live game keeps using 'kinpo' above.
+  'kinpo-intake-demo': '../roster/kinpo/attires/attire1/model-intake.glb',
   // WATERFALL (2026-10-21, lane 4 rig batch 1): unrigged Tripo static -> model-rigged.glb
   // via tools/auto_rig knn backend (donor pantera.glb); original model.glb untouched.
   waterfall: '../roster/waterfall/attires/attire1/model-rigged.glb',
@@ -85,11 +90,12 @@ export const MODEL_URLS = {
   'thor-attire2': '../roster/thor/attires/attire2/model.glb',
   'doc-frank': 'assets/models/doc-frank.glb',
   // Doc Frank ATTIRE 1 pre-form (old man) — his own Attire 1 GLB at
-  // roster/doc-frank/attires/attire1/pre-transform/model.glb. Forefront
-  // default (owner ladder rule 2026-10-21: Tripo attires 1-4 first,
-  // Bosconovitch base + reskins ladder back). File lineage: the PR #263
-  // machine-shop texture reskin of the base, adopted as Attire 1's
-  // old-man form; binds normalized in PR #465 (178 joints, rigged).
+  // roster/doc-frank/attires/attire1/pre-transform/model.glb. File lineage:
+  // the PR #263 machine-shop texture reskin of the base, adopted as Attire
+  // 1's old-man form; binds normalized in PR #465 (178 joints, rigged).
+  // Picker position: BACK slot with the Tekken-based models (owner override
+  // 2026-10-21: Tripo models lead slots 1-5, Tekken reskins toward the back)
+  // — a reskin by lineage, not a Tripo model, so it no longer defaults.
   'doc-frank-a1': '../roster/doc-frank/attires/attire1/pre-transform/model.glb',
   // Doc Frank post-transform bigger form (owner 2026-10-19, Tripo pull).
   // Rigged 2026-10-21 (Tripo-forefront lane): model-rigged.glb carries the
@@ -123,6 +129,8 @@ export const MODEL_URLS = {
   'vainabel-attire2': '../roster/vainabel/attires/attire2/model.glb',
   // Vain Abel — Kane archetype (owner 2026-10-20, Tripo pull). Attire 3: Masked Demon of the Purple Haze.
   'vainabel-attire3': '../roster/vainabel/attires/attire3/model.glb',
+  // Vain Abel — Attire 4: Half mask Horror of the Haze (owner 2026-10-21, Tripo pull).
+  'vainabel-attire4': '../roster/vainabel/attires/attire4/model.glb',
   // Burger — Demon mode, possessed by greed (owner 2026-10-19, Tripo pull).
   burger: '../roster/burger/attires/attire1/model-rigged.glb',
   // Kronos — new fighter (owner 2026-10-19, Tripo pull).
@@ -169,9 +177,11 @@ export const MODEL_URLS = {
   'pantera_alt1': 'assets/models/pantera_alt1.glb',
   'pantera-body': 'assets/models/pantera-body.glb',
   'pantera-leoman': '../roster/pantera/attires/leomon/model.glb',
-  // Pantera roster attires A3-A6 (owner slot order 2026-10-20: A3 snow
-  // leopard, A4 LEOPARD KING, A5 Crimson Rage, A6 T7 P2; A2 Leo man is the
-  // 'pantera-leoman' key above). ../roster pattern per phantom/skull.
+  // Pantera roster attires (owner reorder 2026-10-21: Tripo originals at
+  // the front of game/js/attires.js — A1 Leo man is the 'pantera-leoman'
+  // key above, A2 LEOPARD KING below; Tekken reskins behind them — A3 is
+  // the base 'pantera' key above (T7King P1 reskin), A4 snow leopard,
+  // A5 Crimson Rage, A6 T7 P2). ../roster pattern per phantom/skull.
   'pantera-snow-leopard': '../roster/pantera/attires/snow-leopard/pantera-snow-leopard.glb',
   'pantera-leopard-king': '../roster/pantera/attires/leopard-king/model-rigged.glb',
   'pantera-crimson-rage': '../roster/pantera/attires/crimson-rage/pantera-attire5-crimson.glb',
@@ -189,8 +199,18 @@ export const MODEL_URLS = {
   'purple-rain-main': 'assets/models/purple-rain-main.glb',
   // Lane C fighter-hunt (Round 2): per-fighter models from community rips,
   // retargeted to Mixamo skeleton. See docs/fighter-hunt/HUNT-LOG.md.
-  star: 'assets/models/star.glb',
+  // STAR (2026-10-21, MINI wire-up): the game now loads her HOUSE-49
+  // re-template (PR #481) — same mesh/weights remapped onto the house
+  // template skeleton, floor-origin fixed (geometry min-y 0.0000; the old
+  // hip-origin frame sank her ~1 m through the floor), with her authored
+  // Christie 2P textures restored from the source TXD. The original
+  // star.glb stays in place, untouched, as the fallback file.
+  star: 'assets/models/star-house49.glb',
   torch: 'assets/models/torch.glb',
+  // TORCH Attire 1 (owner 2026-10-21): Tripo original 'Valkyrie of Flame'
+  // (300d0c63), auto-rigged via tools/auto_rig/rig_tripo_static.py; raw pull
+  // archived in release torch-a1-tripo-20261021. Ladder: roster/torch/ATTIRE-SLOTS.md.
+  'torch-tripo-a1': 'assets/models/torch-tripo-a1.glb',
   michiko: 'assets/models/michiko.glb',
   dio: 'assets/models/dio.glb',
   bruno: 'assets/models/bruno.glb',

@@ -1,14 +1,21 @@
-# DOC FRANK — Attire Slots (owner 2026-10-19; ladder reorder 2026-10-21; Tripo-forefront + full rigging 2026-10-21 late)
+# DOC FRANK — Attire Slots (owner 2026-10-19; ladder reorder 2026-10-21; owner override 2026-10-21 ~23:14 CDT; Tripo-forefront + full rigging 2026-10-21 late)
 
-## Ladder rule (owner 2026-10-21 ~22:55 CDT, hard restatement)
+## Ladder rule (owner override 2026-10-21 ~23:14 CDT, verbatim)
 
-Doc Frank's **Tripo models lead the ladder**: the first attire entries
-presented to the player are his Tripo models, and the defaults resolve to
-a Tripo model. The Tekken-version reskins and the Dr. Bosconovitch base
-ladder **BACK** behind every Tripo form — never slots 1 or 2, never the
-default. Every Tripo form is **rigged** (owner standing rule 2026-10-21
-~23:01 CDT: a Tripo model gets rigged to its character's rig on intake,
-automatically — no unrigged statues).
+> "his 1, 2, 3, 4, 5 should be his Tripo models; the Tekken reskins go toward
+> the back, not 1 or 2. Stop showing me the Tekken versions first — show the
+> Tripo 3D models I made for him."
+
+Doc Frank's **Tripo models lead picker slots 1–5+**; the **Tekken-based
+models go toward the back** — never slot 1 or 2, never the default. This
+supersedes the 2026-10-21 ~19:08 CDT ladder rule, which had put Attire 1's
+pre-form old man (`doc-frank-a1`) at the forefront: its file lineage is the
+PR #263 machine-shop texture reskin of the Bosconovitch base (a Tekken
+reskin, not a Tripo model), so the owner moved it back with the other
+Tekken-based models. The Dr. Bosconovitch base model and all
+retextures/reskins ladder **BACK** behind every Tripo model.
+
+Every Tripo form is **rigged** (owner standing rule 2026-10-21 ~23:01 CDT: a Tripo model gets rigged to its character's rig on intake, automatically — no unrigged statues).
 
 ## Presentation order (the picker ladder, `ATTIRE_VARIANTS['docfrank']`)
 
@@ -107,6 +114,15 @@ the rigged file.
   model was the machine-shop reskin, and Attire 1's own pre-form GLB had
   no MODEL_URLS key at all. After: `doc-frank-a1` key added, Tripo pairs
   forefront, base + reskin ladder back.
+- 2026-10-21 (~23:14 CDT): Owner override (verbatim): "his 1, 2, 3, 4, 5
+  should be his Tripo models; the Tekken reskins go toward the back, not 1
+  or 2. Stop showing me the Tekken versions first." The ~19:08 rule had put
+  the old-man pre-form (a Tekken reskin by file lineage) at the forefront,
+  so the user was still seeing a Tekken version first. Fix: all seven Tripo
+  models lead the picker (slots 1–7), `doc-frank-a1` old man moves to the
+  back with the Tekken base + Machine Shop reskin (slots 8–10); main
+  `docfrank` entry model → `doc-frank-big` (matches the picker default).
+  Reorder only — every model stays reachable.
 - 2026-10-21 (late): Owner restated the forefront rule hard (~22:55 CDT:
   attires 1–5 = his Tripo models, reskins to the back, stop showing the
   reskin models) + the auto-rig-on-intake standing rule (~23:01 CDT).

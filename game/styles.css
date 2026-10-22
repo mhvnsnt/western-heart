@@ -95,7 +95,8 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
    LAYOUT: full-viewport flex column. Sticky header (BACK/title/timer),
    vertically-scrolling grid, sticky footer (hint/CONFIRM). Nothing may
    ever overflow the viewport horizontally, portrait or landscape. */
-#screen-select.select-screen {
+#screen-select.select-screen,
+#screen-stage.select-screen {
   display: none;
   flex-direction: column;
   align-items: stretch;
@@ -103,7 +104,8 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
   padding: 0;
   background: linear-gradient(168deg, #1a0f2e 0%, #241031 45%, #0d060f 100%);
 }
-#screen-select.select-screen.active { display: flex; }
+#screen-select.select-screen.active,
+#screen-stage.select-screen.active { display: flex; }
 .select-header {
   flex: 0 0 auto;
   display: flex; align-items: center; gap: 12px;
@@ -453,25 +455,169 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
 .tap-hint.show { display: block; }
 @keyframes pulse { 0%,100%{opacity:0.6;} 50%{opacity:1;} }
 
-/* ====================== STAGE SELECT (Lane 4) ====================== */
-.stage-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.stage-card {
-  border: 2px solid rgba(255,255,255,0.14); border-radius: 10px; overflow: hidden;
-  background: #101018; cursor: pointer; transition: transform 0.08s, border-color 0.12s;
-  min-height: 0;
+/* ====================== STAGE SELECT (Tekken pattern) ======================
+   Sticky header; scrollable arena GRID grouped by tier; LARGE PREVIEW
+   of the highlighted arena with name + description inside the layout;
+   sticky footer (hint / RANDOM / FIGHT always on screen). Portrait:
+   preview on top, grid scrolls beneath it. Landscape/wide: grid left,
+   preview right. The grid is the ONLY scrolling element.
+   Every rule is scoped to #screen-stage on purpose: this screen must
+   NOT inherit the character-select layout. (The old coupling is what
+   shipped the broken screen: #screen-stage fell back to the generic
+   .screen flex ROW, so header/grid/footer laid out side by side —
+   grid clipped off-screen, footer stranded mid-screen with its text
+   running off the edge, no reachable FIGHT button.) */
+#screen-stage.select-screen {
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 0;
+  overflow: hidden;
+  background: linear-gradient(168deg, #1a0f2e 0%, #241031 45%, #0d060f 100%);
 }
-.stage-card:active { transform: scale(0.97); }
-.stage-card.selected { border-color: #ffd34d; box-shadow: 0 0 14px rgba(255,211,77,0.45); }
-.stage-card.kb-focus { outline: 3px solid #ffd34d; outline-offset: 2px; }
-.stage-card .swatch { width: 100%; aspect-ratio: 16 / 6; }
-.stage-card .sthumb { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; background: #0a0a10; }
-.stage-card .sname { font-size: 13px; font-weight: 700; letter-spacing: 1px; padding: 8px 8px 2px; color: #f0e8d8; }
-.stage-card .suniverse { font-size: 11px; padding: 0 8px 8px; color: #9a90a8; letter-spacing: 0.5px; }
-@media (min-width: 700px) {
-  .stage-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+#screen-stage .stage-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+/* ---- large preview of the highlighted stage ---- */
+#screen-stage .stage-preview-pane {
+  order: -1; /* preview on top in portrait */
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 70%, rgba(139,43,216,0.22) 0%, rgba(13,6,15,0.94) 72%);
+  border-bottom: 2px solid rgba(139,43,216,0.4);
+}
+#screen-stage .stage-preview-media {
+  position: relative;
+  flex: 0 0 auto;
+  height: 24vh;
+  height: 24dvh;
+  overflow: hidden;
+}
+#screen-stage .stage-preview-media img,
+#screen-stage #stage-preview-swatch {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+#screen-stage .stage-preview-info {
+  flex: 0 0 auto;
+  padding: 8px 14px 10px;
+  text-align: left;
+}
+#screen-stage #stage-preview-name {
+  font-size: clamp(18px, 4.6vw, 28px);
+  font-weight: 900; letter-spacing: 2px; line-height: 1.05;
+  color: var(--gold); text-shadow: 0 0 14px rgba(255,177,77,0.45);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+#screen-stage #stage-preview-universe {
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  opacity: 0.65; margin-top: 2px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+#screen-stage #stage-preview-desc {
+  font-size: 13px; line-height: 1.45; opacity: 0.9; margin-top: 4px;
+  display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
+}
+/* ---- the scrollable arena grid (only scroller on the screen) ---- */
+#screen-stage .stage-grid {
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  /* REQUIRED: this grid is a flex item AND a scroll container; with auto
+     rows Chrome sizes the card rows to ~0 and the cards collapse to their
+     borders (measured live 2026-10-21: rows 4px, card content overflowing
+     invisibly). min-content rows size every row to its card. */
+  grid-auto-rows: min-content;
+  gap: 12px;
+  padding: 14px 14px calc(14px + env(safe-area-inset-bottom));
+  align-content: start;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y; /* body is touch-action:none — the grid must scroll */
+  overscroll-behavior: contain;
+  scroll-behavior: smooth;
+}
+#screen-stage .stage-card {
+  border: 2px solid rgba(255,255,255,0.14); border-radius: 10px; overflow: hidden;
+  background: #101018; cursor: pointer; transition: transform 0.08s;
+  /* border-color is deliberately NOT transitioned: the gold selection
+     border must land in the same frame as the tap (measured in a
+     throttled headless run 2026-10-21: a border-color transition
+     could lag the .selected class while the untransitioned glow
+     shadow swapped instantly, desyncing the two signals). */
+  min-height: 0; touch-action: manipulation;
+}
+#screen-stage .stage-card:active { transform: scale(0.97); }
+#screen-stage .stage-card.selected { border-color: #ffd34d; box-shadow: 0 0 14px rgba(255,211,77,0.45); }
+#screen-stage .stage-card.kb-focus { outline: 3px solid #ffd34d; outline-offset: 2px; }
+#screen-stage .stage-card .swatch { width: 100%; aspect-ratio: 16 / 6; }
+#screen-stage .stage-card .sthumb { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; background: #0a0a10; }
+#screen-stage .stage-card .sname { font-size: 13px; font-weight: 700; letter-spacing: 1px; padding: 8px 8px 2px; color: #f0e8d8; }
+#screen-stage .stage-card .suniverse { font-size: 11px; padding: 0 8px 8px; color: #9a90a8; letter-spacing: 0.5px; }
+/* no countdown on the stage screen: drop the (hidden) timer entirely so
+   the CHOOSE YOUR ARENA title gets the full header width */
+#screen-stage .select-timer { display: none; }
+
+/* ---- sticky footer: hint + RANDOM + FIGHT, always on screen ---- */
+#screen-stage #stage-hint {
+  font-size: 14px; opacity: 0.85; flex: 1 1 auto; min-width: 0;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+#screen-stage #random-stage { flex: 0 0 auto; min-height: 48px; }
+#screen-stage #confirm-stage { flex: 0 0 auto; min-height: 56px; font-size: 18px; padding: 14px 28px; }
+
+@media (min-width: 481px) and (max-width: 768px) {
+  #screen-stage .stage-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (min-width: 769px) {
+  #screen-stage .stage-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 @media (min-width: 1100px) {
-  .stage-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); max-width: 1100px; margin: 0 auto; }
+  #screen-stage .stage-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+/* Landscape / wide: grid left, preview right (Tekken side-by-side) */
+@media (min-width: 769px), (orientation: landscape) and (min-height: 500px) {
+  #screen-stage .stage-body { flex-direction: row; }
+  #screen-stage .stage-preview-pane {
+    order: 1; flex: 0 0 42%;
+    border-bottom: none; border-left: 2px solid rgba(139,43,216,0.4);
+  }
+  #screen-stage .stage-preview-media { flex: 1 1 auto; height: auto; }
+  #screen-stage #stage-preview-name { white-space: normal; }
+  #screen-stage #stage-preview-desc { display: block; overflow: visible; }
+}
+/* Short landscape phones: compact chrome, description clamps to 3 lines */
+@media (orientation: landscape) and (max-height: 500px) {
+  #screen-stage .stage-body { flex-direction: row; }
+  #screen-stage .stage-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; padding: 10px; }
+  #screen-stage .stage-preview-pane {
+    order: 1; flex: 0 0 40%;
+    border-bottom: none; border-left: 2px solid rgba(139,43,216,0.4);
+  }
+  #screen-stage .stage-preview-media { flex: 1 1 auto; height: auto; }
+  #screen-stage #stage-preview-name { white-space: normal; font-size: 20px; }
+  #screen-stage .select-header { padding-top: 8px; padding-bottom: 8px; }
+  #screen-stage .select-header h2 { font-size: 18px; }
+  #screen-stage .select-footer { padding: 8px 14px calc(8px + env(safe-area-inset-bottom)); }
+  #screen-stage #stage-preview-desc {
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  #screen-stage #confirm-stage { min-height: 48px; }
 }
 .stage-label {
   margin-top: 4px; font-size: 11px; letter-spacing: 2px; color: #ffd34d;

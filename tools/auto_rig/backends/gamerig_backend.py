@@ -374,10 +374,19 @@ def fit_metarig(meta, stats):
     kx_leg = max(0.8, min(1.4, kx_leg)) if thigh_x > 0 else 1.0
 
     # A-POSE (2026-10-20): measure each arm's droop from the mesh itself —
-    # centroid of the outer-arm vertices (beyond the torso, outer half of the
-    # reach) relative to the shoulder. T-pose ~0 deg; Tripo A-poses ~35-50.
+    # centroid of the outer-arm vertices (beyond the torso, outer quarter of
+    # the reach) relative to the shoulder. T-pose ~0 deg; Tripo A-poses ~35-50.
     # Above 15 deg the chain is rotated down onto the measured arm line and
     # the X stretch uses the arm length (span / cos(droop)), not the span.
+    # OUTER QUARTER, not half (2026-10-22, measured on torch-a1): the half
+    # sample catches mass that hangs beside the torso but is not arm — on
+    # torch-a1 the windswept hair mass (median height 57% of the body,
+    # lateral band overlapping the inner arm sample) dragged the centroid
+    # down and read a 46.6 deg droop on a statue whose own arm line reads
+    # 7.4 deg from its outer quarter; the false A-pose rotation parked the
+    # arm chains ~0.46 m below the real arms (fitted hand z 1.01 vs the
+    # mesh's 1.47 shoulder line). The outer quarter of a straight arm chain
+    # lies on the same line, so true A-pose readings are unchanged.
     import numpy as _np
     droop = {}
     for side, sgn in ((".L", 1.0), (".R", -1.0)):
@@ -388,7 +397,7 @@ def fit_metarig(meta, stats):
             droop[side] = 0.0
             continue
         reach = sx[band].max()
-        outer = band & (sx > (abs(sh.x) + reach) / 2.0)
+        outer = band & (sx > abs(sh.x) + 0.75 * (reach - abs(sh.x)))
         if outer.sum() < 20:
             droop[side] = 0.0
             continue
@@ -461,10 +470,54 @@ def fit_metarig(meta, stats):
         if b.name.startswith(leg_prefixes):
             b.head.x *= kx_leg
             b.tail.x *= kx_leg
+    # LEG TAPER (2026-10-22, measured on torch-a1): the uniform kx_leg
+    # spread is set by the hip band, but on statues whose legs taper hard
+    # from hip to ankle (torch-a1 per-side lateral centroids at 1.8 m:
+    # hip 0.283 m, knee 0.173 m, ankle 0.086 m) the straight leg columns
+    # park the shin/foot bones ~6 cm outside the tapered lower legs.
+    # Re-anchor the knee and ankle joints to the measured per-side
+    # vertex centroids at those heights so the chain follows the actual
+    # leg columns. On untapered bodies the centroids match the kx-scaled
+    # positions and this is a no-op; anchors are clamped to [0.35x, 1.6x]
+    # of the kx position and skipped when a band has too few vertices.
+    leg_anchors = {}
+    for side, sgn in ((".L", 1.0), (".R", -1.0)):
+        sxa = sgn * x
+
+        def _anchor(zlo, zhi, _sx=sxa):
+            bandv = (z > zlo * height) & (z < zhi * height) & (_sx > 0.01 * height)
+            if bandv.sum() < 50:
+                return None
+            return float(_sx[bandv].mean())
+
+        def _clamped(val, ref):
+            return max(0.35 * abs(ref), min(1.6 * abs(ref), abs(val)))
+
+        entry = {}
+        knee_x = _anchor(0.22, 0.32)
+        if knee_x is not None:
+            kv = _clamped(knee_x, eb["shin" + side].head.x) * sgn
+            eb["thigh" + side].tail.x = kv
+            eb["shin" + side].head.x = kv
+            entry["knee_x"] = round(kv, 4)
+        ankle_x = _anchor(0.02, 0.10)
+        if ankle_x is not None:
+            av = _clamped(ankle_x, eb["foot" + side].head.x) * sgn
+            eb["shin" + side].tail.x = av
+            eb["foot" + side].head.x = av
+            eb["foot" + side].tail.x = av
+            for bn in ("toe", "heel"):
+                bb = eb.get(bn + side)
+                if bb is not None:
+                    bb.head.x = av
+                    bb.tail.x = av
+            entry["ankle_x"] = round(av, 4)
+        leg_anchors[side] = entry
     bpy.ops.object.mode_set(mode="OBJECT")
     return {"metarig_scale": s, "kx_arm": kx_arm, "kx_leg": kx_leg,
             "template_height": tpl_height, "template_span": tpl_span,
-            "arm_droop_deg": {k: round(v, 1) for k, v in droop.items()}, "a_pose": a_pose}
+            "arm_droop_deg": {k: round(v, 1) for k, v in droop.items()}, "a_pose": a_pose,
+            "leg_anchors": leg_anchors}
 
 
 def strip_face(meta):
@@ -522,6 +575,49 @@ def strip_to_deform(rig):
     return kept, removed
 
 
+def drop_micro_components(obj, min_verts=32):
+    """Remove connected components smaller than min_verts from a mesh.
+
+    Voxel-remeshing wispy statues leaves single-voxel islands (8-9 verts:
+    one voxel cube) floating off hair/fur tips. Measured on torch-a1
+    (2026-10-22): the 48k-tri heat proxy had 39 components — a 23,885-vert
+    body plus 38 islands of 8-9 verts — and Blender's bone heat failed for
+    EVERY vertex ("failed to find solution for one or more bones", all
+    24,068 proxy verts unweighted); the body alone solved with 0
+    unweighted. A degenerate island poisons the global heat solve, so drop
+    the islands from the PROXY only — the full-resolution mesh still
+    receives weights in those spots via the Data Transfer and the
+    nearest-bone fixup. Returns the number of vertices removed.
+    """
+    import bmesh
+    bm = bmesh.new()
+    bm.from_mesh(obj.data)
+    seen = set()
+    doomed = []
+    for v in bm.verts:
+        if v in seen:
+            continue
+        comp = []
+        stack = [v]
+        seen.add(v)
+        while stack:
+            cur = stack.pop()
+            comp.append(cur)
+            for e in cur.link_edges:
+                o = e.other_vert(cur)
+                if o not in seen:
+                    seen.add(o)
+                    stack.append(o)
+        if len(comp) < min_verts:
+            doomed.extend(comp)
+    if doomed:
+        bmesh.ops.delete(bm, geom=doomed, context="VERTS")
+        bm.to_mesh(obj.data)
+        obj.data.update()
+    bm.free()
+    return len(doomed)
+
+
 def heat_via_proxy(rig, m, voxel, target_faces):
     """Bone heat on a watertight decimated proxy, transferred to `m`.
 
@@ -559,6 +655,7 @@ def heat_via_proxy(rig, m, voxel, target_faces):
         dec = proxy.modifiers.new("wh_decimate", "DECIMATE")
         dec.ratio = min(0.6, tri_target / max(1, 2 * quads))
         bpy.ops.object.modifier_apply(modifier=dec.name)
+        drop_micro_components(proxy)
         bpy.ops.object.select_all(action="DESELECT")
         rig.select_set(True)
         proxy.select_set(True)
