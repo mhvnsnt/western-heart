@@ -35,15 +35,17 @@ export const ATTIRE_VARIANTS = {
   /* DOC FRANK's ladder — keyed by fighter id ('docfrank'), same pattern as
      Kevin's ladder below: attiresFor() looks up fighter.model, then
      fighter.id (model-key audit, docs/MODEL-KEY-AUDIT-2026-10-21.md).
-     LADDER ORDER (owner rule 2026-10-21, same as every character): his
-     Tripo GLB attires 1-4 at the FOREFRONT, transform pairs together;
-     the Dr. Bosconovitch base model ('doc-frank') and its reskin
-     ('doc-frank-machine-shop') ladder BACK behind them. Default =
-     first entry = Attire 1 pre-form ('doc-frank-a1'), NOT the base
-     model and NOT the machine-shop reskin. Provenance per slot:
+     LADDER ORDER (owner rule 2026-10-21 ~22:55 CDT, restated hard): the
+     first entries presented are his TRIPO models — Attire 1's Tripo
+     TRANSFORMED form leads and is the resolved default
+     (selectedAttireModel() returns list[0]); the reskin-lineage Attire 1
+     pre-form file ('doc-frank-a1', byte-identical to the machine-shop
+     reskin), the Dr. Bosconovitch base model ('doc-frank') and its reskin
+     ('doc-frank-machine-shop') ladder BACK behind every Tripo form.
+     Transform pair: doc-frank-a1 <-> doc-frank-big via the docfrank
+     entry's forms map in roster-full.js. Provenance per slot:
      roster/doc-frank/ATTIRE-SLOTS.md. */
   'docfrank': [
-    { model: 'doc-frank-a1', label: 'ATTIRE 1 · OLD MAN' },
     { model: 'doc-frank-big', label: 'ATTIRE 1 · TRANSFORMED (TRIPO)' },
     { model: 'doc-frank-wowomomo', label: 'ATTIRE 2 · WOWOMOMO (TRIPO)' },
     { model: 'doc-frank-wowomomo-big', label: 'ATTIRE 2 · WOWOMOMO XL (TRIPO)' },
@@ -51,6 +53,7 @@ export const ATTIRE_VARIANTS = {
     { model: 'doc-frank-hood-big', label: 'ATTIRE 3 · HOOD XL (TRIPO)' },
     { model: 'doc-frank-frankenstein', label: "ATTIRE 4 · FRANKENSTEIN'S CYBORG (TRIPO)" },
     { model: 'doc-frank-frankenstein-big', label: 'ATTIRE 4 · FRANKENSTEIN XL (TRIPO)' },
+    { model: 'doc-frank-a1', label: 'ATTIRE 1 · OLD MAN (PRE-FORM)' },
     { model: 'doc-frank', label: 'BOSCONOVITCH BASE (TEKKEN BASE)' },
     { model: 'doc-frank-machine-shop', label: 'MACHINE SHOP (RESKIN)' },
   ],

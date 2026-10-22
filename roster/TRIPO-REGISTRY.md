@@ -69,10 +69,11 @@ Legend: ✅ attached · ❌ no Tripo on record · ⚠️ needs owner link/pull �
 
 1. Pull via `tools/tripo-pull/` (Forge3D) from the owner's share link — verify valid GLB.
 2. Land it at `game/assets/models/<name>.glb` (or `roster/<name>/attires/attire1/model.glb` for slot-structured characters). Never overwrite an existing model — use `-main` suffix if needed.
-3. It becomes **Attire 1 (default)** — older in-game models shift to later slots (Pantera exception: Tripo → Attire 2).
-4. Add a T-pose render to `docs/tpose-refs/<name>/` (locked orientation method).
-5. **Record it in this file** — source link, path, slot order, render status, AI-transform flag.
-6. Flag 🎨 — the render goes to the owner for generative-AI transform into the proprietary Eastern Mind/Western Heart version.
+3. **RIG IT ON INTAKE — automatically, ASAP (owner standing rule 2026-10-21 ~23:01 CDT: "As soon as a Tripo model comes in you need to get it rigged automatically ASAP to the character rig that it goes to").** A Tripo pull is an unrigged statue; no statue waits for a later rigging lane. Run the one-command intake: `python3 tools/auto_rig/rig_tripo_static.py --in <landed model.glb> --report-dir docs/proof/<date>/auto-rig-<name>` — it writes `<name>-rigged.glb` beside the original (original untouched), runs the playable + anim gates, and renders proof poses. Read the report: only wire the rigged file (point MODEL_URLS at it) when the gates pass and the renders look right; if the gate fails, document the failure in the report dir like `docs/proof/claude-2026-10-21/auto-rig-diablo/` and leave the static unwired. Then verify bind locals are all-identity (`roster/doc-frank/bind-fix/scan_binds.py` pattern — the PR #465 standard) and normalize with the bind-fix tools if they are not.
+4. It becomes **Attire 1 (default)** — older in-game models shift to later slots (Pantera exception: Tripo → Attire 2).
+5. Add a T-pose render to `docs/tpose-refs/<name>/` (locked orientation method).
+6. **Record it in this file** — source link, path, slot order, render status, AI-transform flag.
+7. Flag 🎨 — the render goes to the owner for generative-AI transform into the proprietary Eastern Mind/Western Heart version.
 
 ## History
 
