@@ -1,5 +1,19 @@
 # DOA4 Phase 13 — Job 2: the ANM definition layer — complete census, and the STATICALLY EXHAUSTED verdict
 
+> **⚠ SUPERSEDED THE SAME SESSION by `phase13/ANM-DEFINITION-2.md`.**
+> This doc's census was complete over every storage it examined,
+> but it examined the WRONG anm.afs (the mirror's mislabeled
+> c1ff… file). The ISO's actual anm.afs is a standard AFS
+> container holding all 26 definition files — extracted, released
+> (`doa4-anime-definition-20261022`), and censused in
+> ANM-DEFINITION-2. The STATICALLY EXHAUSTED declaration below is
+> WITHDRAWN; §§3–5 remain accurate as a census of the storages
+> they name (XDVDFS tree, standard-AFS blocks, XEX registry), and
+> §5's region census remains accurate for the c1ff file it
+> describes — under its correct description: a 2,949,120-byte
+> animation-data file of earlier-image provenance, NOT this ISO's
+> anm.afs. Read ANM-DEFINITION-2 first.
+
 This phase executed ANM-READER5 §4's only remaining named route:
 pull `D:\bin\anime_cm.bin` + the per-fighter `.bin` definition files
 from the ISO and derive the anm record→stream mapping from them.
