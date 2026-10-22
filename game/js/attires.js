@@ -75,6 +75,7 @@ export const ATTIRE_VARIANTS = {
   'vainabel': [
     { model: 'vainabel-attire2', label: 'ATTIRE 2' },
     { model: 'vainabel-attire3', label: 'ATTIRE 3 · MASKED DEMON OF THE PURPLE HAZE' },
+    { model: 'vainabel-attire4', label: 'ATTIRE 4 · HALF MASK HORROR OF THE HAZE' },
   ],
   'dxmmii': [
     { model: 'dxmmii', label: 'BASE' },

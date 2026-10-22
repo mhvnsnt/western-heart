@@ -121,6 +121,8 @@ export const MODEL_URLS = {
   'vainabel-attire2': '../roster/vainabel/attires/attire2/model.glb',
   // Vain Abel — Kane archetype (owner 2026-10-20, Tripo pull). Attire 3: Masked Demon of the Purple Haze.
   'vainabel-attire3': '../roster/vainabel/attires/attire3/model.glb',
+  // Vain Abel — Attire 4: Half mask Horror of the Haze (owner 2026-10-21, Tripo pull).
+  'vainabel-attire4': '../roster/vainabel/attires/attire4/model.glb',
   // Burger — Demon mode, possessed by greed (owner 2026-10-19, Tripo pull).
   burger: '../roster/burger/attires/attire1/model-rigged.glb',
   // Kronos — new fighter (owner 2026-10-19, Tripo pull).
@@ -884,18 +886,8 @@ class AssetManager {
             this.groundY[id] = Number.isFinite(y0) ? y0 : 0;
           }
           _facingReady.then(() => {
-            try {
-              const rec = _facingTable && _facingTable[id];
-              this.facing[id] = rec === '-Z' ? -1 : rec === '+Z' ? 1 : (feetFacingCue(gltf.scene) || 1);
-            } catch (e) {
-              console.warn(`[WH] facing cue failed for ${id}, defaulting to +Z:`, (e && e.message) || e);
-              this.facing[id] = 1;
-            }
-            resolve();
-          }, () => {
-            // The facing table never settled: never let this gate hang the load.
-            console.warn(`[WH] facing table unsettled for ${id}, defaulting to +Z`);
-            this.facing[id] = 1;
+            const rec = _facingTable && _facingTable[id];
+            this.facing[id] = rec === '-Z' ? -1 : rec === '+Z' ? 1 : (feetFacingCue(gltf.scene) || 1);
             resolve();
           });
         },
