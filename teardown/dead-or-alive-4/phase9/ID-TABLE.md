@@ -21,6 +21,15 @@ Method: same as phase 8 (front bind-pose Cycles renders of phase-6 skinned GLBs,
 | chrtwo-pkg04 | HEAD package, unidentified character | VIEWED `renders/p9-head-chrtwo-pkg04.png`: face (lips/chin), slotted cap/helmet hair, very long straight hair panels both sides; 8-joint own Hie skeleton, head-local, base at origin | strong (head package) | — |
 | chrtwo-pkg20 | HEAD package, unidentified character | VIEWED `renders/p9-head-chrtwo-pkg20.png`: face, braided pigtails, large smooth cap + wide rounded collar under chin; 12-joint own Hie | strong (head package) | — |
 | chrtwo-pkg24 | HEAD package, unidentified character | VIEWED `renders/p9-head-chrtwo-pkg24.png`: face (nose/lips), spiky star-like hair ornaments, long thin ponytail/braid strand dropping far below head (geometry Ymin −0.75) | strong (head package) | — |
+| chrtwo-pkg29 | HEAD package, unidentified character; anchor family = chrone pkg00/01/02 (anchor 0.486, Δ=0.000) | VIEWED in composite `renders/p9-composite-chrone00-head29-neckbase.png`: smooth bob/helmet hair, visible face (nose/lips), straight side hair panels, ruffled collar; seated on chrone-pkg00 body at the neck-base anchor | strong (head package + family) | — |
+
+## Phase-9 re-grading of phase-8 tentative rows (with head evidence)
+- chrone pkg02 (kimono → Kokoro, tentative): pkg02 shares the EXACT head-joint height (0.486) with pkg00/pkg01 — same base skeleton = same fighter family as group A. The heads anchoring to this family (0.483–0.486 cluster: chrtwo pkg17, 18, 19, 20, 29, 30, 34, 35–40 copies) include braided-pigtail (pkg20) and bob-cut (pkg29) heads. The kimono + this head set keeps Kokoro plausible but the head↔costume pairing inside the family is not yet 1:1 proven — **stays tentative**, evidence strengthened (same-skeleton family confirmed).
+- Group C (chrone pkg06–09, Hayabusa vs Hayate): group C bodies' head-joint family matches head anchors 0.519–0.525 (chrtwo pkg10, 11–16 copies, 31). Those heads not yet rendered in phase 9 — **stays tentative** until the 0.519-family heads are viewed.
+- chrone pkg10 (Leifang vs Helena): pkg10's head-joint (0.478) family includes chrone pkg13 (long-dress group) + chrtwo pkg46/49 bodies and heads chrtwo pkg08, 09, 33 (anchor 0.478). Heads not yet viewed — **stays tentative**.
+
+## Head-package census (chrtwo pkg04–45)
+42 packages, 31 distinct GLBs (md5-verified): identical runs pkg11–16 (×6), pkg35–40 (×6), pkg44=45; near-twin pkg34 vs 35–40 group. Anchor families: 0.468 → chrone 17/18/20 family; 0.477 → chrtwo 50/51/52/55 family; 0.478 → chrone 10/13 + chrtwo 46/49 family; 0.483–0.486 → chrone 00/01/02 family; 0.519–0.525 → chrtwo 00 + chrone 07/08 family. No anchor under central-joint filter: pkg05, 06, 23, 24, 27, 28, 32 (unresolved sub-case, named in HEAD-HUNT.md).
 
 ## Coverage
 - chrone: viewed 00–16 except 15 (17/30 viewed incl. phase 8); stats-only: none remaining below 17 — remaining to render: 15, 17–28 (29 = non-character, phase-8 strong).
