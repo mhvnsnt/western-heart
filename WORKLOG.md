@@ -679,3 +679,33 @@ POSITION and NORMAL both rotated. Blender 4.0.2 renders viewed before/after.
   in-game, not fixed.
 - doc-frank-wowomomo and doc-frank-frankenstein model-rigged.glb files exist
   on main but are UNWIRED (assets.js points to unrigged model.glb). Not fixed.
+
+## Doc Frank feet — root-cause completion (2026-10-22, branch fix/docfrank-feet-rootcause-20261021)
+
+Independent measured diagnosis (game's real `game/js/t3anims.js` path, stance
+clip @40%): the sideways splay lived in the bosconovitch bank's `foot_tip`
+reference (stored +92°/−109° off forward, from the generator's foot-part
+centroid heuristic) — not the clip decode (foot bones −6°/+36°), not the
+retarget (posed == source exactly on the healthy jin bank), not the models
+(all rest at 0°). Full write-up: `docs/fixes/docfrank-feet-rootcause-20261021/DIAGNOSIS.md`.
+
+PR #508 fixed the tool's derivation and the six foot_tip numbers, but on a
+skeleton.json that had been pre-turned offline (file note: "2026-10-22 facing
+fix … turned 180 about Y + L/R relabelled offline"). The clips were never
+turned, so the runtime stopped turning the bank and the retarget paired
+turned joint names with unturned clip tracks: measured A1 +44.6°/−16.6° vs
+source +29.6°/−7.1°, Leo man +55.7° with feet floating (ankle y 0.18–0.29).
+
+This change: regenerated all 17 banks with the merged fixed tool
+(`tools/anim/t3_bank_skeleton.py`). 11 banks byte-identical; 6 change —
+bosconovitch (joints back to the GLB-native frame the clips were baked in,
+runtime bankFacing turn applies again; foot_tip = corrected canonical toe)
+and anna/bryan/eddy/julia/yoshimitsu (foot_tip only, same defect class).
+No runtime code, no GLB edits, no deletions.
+
+After (same harness): source FK −6.0°/+35.9°; Doc Frank A1 posed
++3.8°/+27.5°; Leo man +11.8°/+23.6°; Attire 3 base +2.7°/+28.2° — feet
+forward on all his rigged models at once; the right-foot turnout is
+Bosconovitch's own stance in the decoded motion. Proof renders (viewed):
+`docs/fixes/docfrank-feet-rootcause-20261021/before-after-stance.png`,
+`docs/fixes/docfrank-feet-rootcause-20261021/sidebyside-original-vs-posed.png`.
