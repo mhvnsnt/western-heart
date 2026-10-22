@@ -62,3 +62,25 @@ Full per-file scoreboard with first-failure evidence:
   corrupted round-3 bulk, not of the containers.
 - COM set (18): gzip idx 58–75 — all decoded; each holds one COM
   container (count-like word 7–16 after the COM header).
+
+## Round-6 update (2026-10-21, PR #479)
+
+Evidence: `tools/round6-evidence/` (JOB1–JOB4 docs + JSON).
+
+| Layer | State after round 6 |
+|---|---|
+| Regenerated bulk | **Verified clean**: 50.0% of 1024B blocks differ from the round-3 bulk, ALL odd, 0 even; 76/76 decode from the bulk file itself; 40/40 fresh-decrypt spot check. Round-3 bulk must never be used again |
+| Embedded containers (entry-87 slice) | **CORRECTED: 5,470 found, 5,470/5,470 adler-exact** (was "94/2,720" on corrupt bytes; the "2,546" figure is also superseded). Decoded census of these is the next lane |
+| NDPP census | **798 → 1,565 occurrences** on clean bytes. `ndpp_bounding_volumes.glb` (1,103 boxes) is **incomplete** pending clean re-extraction; NDPP-FORMAT's "no vertex arrays" negative is **withdrawn** (it scanned corrupt bytes) |
+| `tekken6.bms` (G5) | **MET via equivalence proof**: binary unreachable from this VM (official site HTML challenge / timeout, recorded); line-by-line transliteration byte-identical (sha256) to `decode_all76.py` on idx0 + idx74 |
+| COM set (18) | **Reclassified: per-character MOVESETS, not models.** 18/18 characters named by in-file string at offset 624 (HIGH confidence): LAW, KING, NINA, Lin_Xiaoyu, JIN, Kuma, HEIHACHI, LEE, MARDUK, ROGER, Wang, Asuka, BAEK_DOO_SAN, RAVEN, ARMOR_KING, Dragunov, EDDY, ZAFINA. Meshes 0, textures 0, MOTA animation refs 108 (36 substantive chunks + 72 tail records). The +12 count word (sum 176) has no proven table referent yet — not an asset census |
+| GMO→GLB (G3) | **0 new GLBs**: no proven T6 meshes exist yet (0 literal `GMO\0` in the whole clean bulk; COM holds no meshes). Pipeline (PR #388) still-valid, proven on samples, awaiting real T6 geometry |
+| Wired into the build | Still nothing T6-derived — no proven meshes/moveset-decode to wire yet. The 18 movesets are decoded and inventoried, which is the input the moveset wiring will consume |
+
+### Left before T6 PSP true 100%
+1. Census + decode the 5,470 embedded containers (classes, per-character assignment).
+2. Clean-bulk NDPP re-scan (vertex/index hunt redo) + re-extract bounding volumes (complete set).
+3. Pin the COM count word's referent (EBOOT COM-loader RE or body-record census reproducing 7–16/file) and decode the moveset record format fully (move records, MOTA chunk bodies).
+4. Find the character geometry wherever it lives (embedded containers / NDPP redo are the candidate spaces) → then GMO/NDPP→GLB with viewed front renders.
+5. Wire decoded fighters/movesets into the build per the engine steer; verify in-build.
+6. Optional confirmation: run real QuickBMS binary on the JOB 2 test file when a binary is reachable.
