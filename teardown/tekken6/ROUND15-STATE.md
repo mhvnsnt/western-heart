@@ -47,7 +47,18 @@ only; HEAD == 3c0dd6e4 at lane start, verified).
    entropy profiling, autocorrelation, first-bytes classification).
    A structure is PROVEN only when a parser reads >=2 files' slots
    into records cross-validating against known data. Status:
-   PENDING.
+   **COMPLETE** (`tools/round15-evidence/JOB2-SLOT-STRUCTURE-VERDICT.md`,
+   data `r15_slot_structure.json`). PROVEN: slots 25/26/30 are
+   one tail zone; MOTA placements fixed at slot25+604, slot26+624,
+   slot30+564/+584/+604/+624 — parser
+   `tools/r15_tailzone_parse.py` cross-validates 108/108 against
+   the round-7 JSON mota offsets. Payload schemas: EXHAUSTIVE
+   NEGATIVE (correlations all |r|<=0.35; slot 25 head = fixed
+   604B 12B-periodic (0x0016,X,X) table, semantics unproven;
+   slot 26 = packed payload with a shared u16 sub-table at
+   tail+~132; slot 30 = 564B payload byte-identical for
+   ARMOR_KING/KING only + 80B stubs). Next hop named: EBOOT
+   consumer caller-chain or the same PPSSPP capture session.
 
 3. **TEKKEN6-FINAL-STATE.md** — static closeout with PR/round
    citations + final WIRING-INVENTORY section. Status: PENDING.
