@@ -695,6 +695,8 @@ export class Fighter {
   tryJump() { if (this.canAct() && this.onGround) { this.vy = this.stats.jump; this.onGround = false; this._enter('jump'); } }
   tryBlock(on) {
     if (this.dead) return;
+    // FIGHTER DEPTH (worker 34): soul kindle flash — cannot block during it (T7).
+    if (on && this.kindle && !this.kindle.canBlock()) return;
     if (on && this.canAct() && this.onGround) { this._enter('block'); this._blendW = 0; }
     else if (!on && this.state === 'block') this._enter('idle');
   }
@@ -952,6 +954,9 @@ export class Fighter {
       return 'block';
     }
     let dmg = move.damage * attacker.stats.power / this.stats.defense;
+    // FIGHTER DEPTH (worker 34): soul kindle — the kindled fighter takes
+    // +10% damage while kindled (Tekken 7 ki charge).
+    if (this.kindle) dmg *= this.kindle.damageTakenMult();
     // T3 HitDamage: counter hit when the defender is in the startup of its own attack:
     // d = e + d*12/10, e = |defender move damage| * 3/10 * 3/10 * (frames into startup / startup).
     let counter = false;
@@ -961,6 +966,13 @@ export class Fighter {
       counter = true;
       const prog = this.attack.startup > 0 ? Math.min(1, this.stateT / this.attack.startup) : 1;
       dmg = this.attack.damage * 0.09 * prog + dmg * 1.2;
+    }
+    // FIGHTER DEPTH (worker 34): soul kindle — the attacker's next landed
+    // hit is a guaranteed counter-hit (Tekken 7 ki charge). Consumes the
+    // kindle; CH damage bump matches the T3 formula's x1.2 term.
+    if (!counter && attacker.kindle && attacker.kindle.consumeOnHitLanded()) {
+      counter = true;
+      dmg = dmg * 1.2;
     }
     // V-System: V-Trigger install (+15% damage) and the V-Shift Break
     // window (+50%, auto counter-hit, consumed by the one attack).

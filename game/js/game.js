@@ -142,6 +142,16 @@ export class Game {
     // Stage content streams in (Tekken retro OBJs fetch async); the fight
     // intro runs on the base arena while the shell loads.
     this.arena.setStage(stage.id);
+    // FIGHTER DEPTH (2026-10-22, worker 34): ki charge, tag relay, cloth/hair,
+    // combo trials, ghost AI, replay analysis, stage intros/variants, versus
+    // banter, movelist UI, special style, punishment training. Dynamic import
+    // so the menu boot path stays lean; every system feature-flagged in
+    // WH_DEPTH_FLAGS and fail-silent here.
+    try {
+      const { FighterDepth } = await import('./fighter-depth.js');
+      this._whDepth = FighterDepth;
+      FighterDepth.onMatchStart(this, { stageDef: stage, variantId: opts.variantId, skipIntro: opts.skipIntro });
+    } catch (e) { console.warn('[WH] fighter-depth wire failed:', e?.message || e); }
     this._startRound();
     // Modes lane: HP carry-over (survival / team battle / qombat) —
     // applied after _startRound's full-heal so the carry is exact.
@@ -301,7 +311,12 @@ export class Game {
               }
             }
           }
-        } else for (const act of inp.consume()) {
+        } else {
+          const whQueue = inp.consume();
+          // FIGHTER DEPTH (worker 34): soul kindle (ki charge) watches the
+          // raw queue for the 1+2+3+4 press.
+          if (this._whDepth) this._whDepth.onPlayerQueue(this.p1, whQueue, dt);
+          for (const act of whQueue) {
           if (act === 'punch' || act === 'kick' || act === 'grab' ||
               act === '1' || act === '2' || act === '3' || act === '4' ||
               act === '1+3' || act === '2+4' || act === '1+2' || act === '3+4' ||
@@ -326,6 +341,7 @@ export class Game {
           else if (act === 'transform-down') {
             if (this.p1.tryTransform('down')) { audio.soulSurge(this.p1.char.id); rec('transform-down'); }
           }
+          } // end for (const act of whQueue) — fighter-depth wire
         }
       }
 
@@ -372,6 +388,10 @@ export class Game {
       // --- Combat resolution ---
       this._resolveCombat(this.p1, this.p2);
       this._resolveCombat(this.p2, this.p1);
+
+      // FIGHTER DEPTH (worker 34): per-frame systems — kindle timers,
+      // tag relay, stage intro camera.
+      if (this._whDepth) this._whDepth.onUpdateFrame(this, dt);
 
       // --- HUD ---
       this.ui.updateHP(this.p1, this.p2);
