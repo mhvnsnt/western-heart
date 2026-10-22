@@ -602,3 +602,19 @@ troubleshooting.
 First dry-run attempt failed at the final encode with ENOSPC (`/tmp` is a
 512MB tmpfs); re-ran with stage/report roots and TMPDIR on the overlay
 filesystem. All intake stages completed on the re-run.
+
+## 2026-10-22 — Engine decision deep research (Claude session, branch claude/amazing-keller-p8644u)
+
+Owner: "WebGL and Three.js are permanently stripped ... Godot 4 native mobile ... Or even whatever's
+better than that ... based on research, deep research", judged on this build, direct APK (no store),
+what each engine costs when the game sells, roster more than 36 fighters.
+
+- Method: five parallel research agents (Godot 4.7/4.8; Unity 6 vs Unreal 5.8; open-source engines;
+  fighting-game engine ecosystem; repo migration constraints from a local repo scan), then one report
+  writer over the five notes. Web sources are linked inline; repo facts link to commit e3ae81b76.
+- Output: `docs/ENGINE-DECISION-2026-10-22.md` (recommendation: stay on Godot, 4.3 -> 4.7.x now, 4.8
+  when stable; $0 at any sales level; signed arm64 APK from Linux CI). Notes:
+  `docs/research/engine-2026-10-22/*.md`.
+- Roster count from the repo scan: 58 FULL_ROSTER entries / 49 display names / 50 model keys.
+- Unverified items are listed in the report's last section. No Godot binary in this container, so
+  the Lab tests were not re-run.
