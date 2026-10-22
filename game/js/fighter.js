@@ -1299,7 +1299,29 @@ export class Fighter {
     const auraOn = (this.attackName === 'surge') || this._auraFlash > 0;
     const am = this.aura.material;
     am.opacity += ((auraOn ? 0.95 : 0) - am.opacity) * Math.min(1, dt * 10);
-    this.auraLight.intensity += ((auraOn ? 14 : 0) - this.auraLight.intensity) * Math.min(1, dt * 10);
+    // LIGHTING RIG (worker 27): soul-glow baseline — bible §5c / Grey's law:
+    // fighters are luminous SOURCES, not lit objects. The auraLight (built
+    // with the surge color) idles at the soul color + baseline instead of 0,
+    // and flares to surge color on surge. Per-soul light behaviors modulate
+    // the idle target (set by attachCharacterRig in lighting-rig.js).
+    if (this._soulColorHex !== undefined) {
+      if (this._soulBehavior === 'rainbow' && !auraOn) {
+        this.auraLight.color.setHSL((this.stateT * 0.12) % 1, 0.85, 0.6);
+      } else {
+        this.auraLight.color.setHex(auraOn ? this._surgeColorHex : this._soulColorHex);
+      }
+    }
+    let _glowTarget = auraOn ? 14 : (this._soulGlowBase || 0);
+    if (!auraOn && this._soulBehavior === 'flicker') {       // BYOU: wrong flicker
+      _glowTarget *= 0.55 + 0.45 * Math.abs(Math.sin(this.stateT * 13.7) * Math.sin(this.stateT * 7.3));
+    } else if (!auraOn && this._soulBehavior === 'shimmer') { // SHA: heat shimmer
+      _glowTarget *= 0.85 + 0.15 * Math.sin(this.stateT * 5.0);
+    } else if (!auraOn && this._soulBehavior === 'tidal') {   // KAI: rolling tide
+      _glowTarget *= 0.7 + 0.3 * Math.sin(this.stateT * 1.6);
+    } else if (!auraOn && this._soulBehavior === 'pulse') {    // RETSU: radial pulse
+      _glowTarget *= 0.8 + 0.2 * Math.sin(this.stateT * 3.2);
+    }
+    this.auraLight.intensity += (_glowTarget - this.auraLight.intensity) * Math.min(1, dt * 10);
     if (am.opacity > 0.01) {
       const p = this.aura.geometry.attributes.position;
       const seed = this.aura.userData.seed;

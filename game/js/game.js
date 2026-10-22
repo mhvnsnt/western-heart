@@ -17,6 +17,9 @@ import { AIController } from './ai.js';
 import { audio } from './audio.js';
 import { getStage } from './stages.js';
 import { applyFighterProfile } from './customization-consumer.js';
+// LIGHTING RIG (worker 27): per-fighter character light rig — SFV/T7-style
+// character-vs-stage lighting separation + bible soul glow. Fail-silent.
+import { attachCharacterRig } from './lighting-rig.js';
 
 const ROUND_TIME = 60;
 const ROUNDS_TO_WIN = 2;   // best of 3
@@ -102,6 +105,12 @@ export class Game {
     // or break a match. See js/customization-consumer.js.
     applyFighterProfile(this.p1);
     applyFighterProfile(this.p2);
+    // LIGHTING RIG (worker 27): attach each fighter's character light rig —
+    // their own key light (follows them) + soul-glow baseline on the
+    // existing auraLight + soul-tinted emissive (bible: fighters are
+    // luminous sources). No-op-safe; never blocks a match.
+    attachCharacterRig(this.p1, stage);
+    attachCharacterRig(this.p2, stage);
     this.ai = new AIController(this.p2, enemyChar.ai);
     this.ai1 = this.demo ? new AIController(this.p1, playerChar.ai) : null;
 
