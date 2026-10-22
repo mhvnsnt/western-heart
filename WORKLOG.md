@@ -1821,3 +1821,27 @@ Owner directive (verbatim): "Research the current state-of-the-art open-source i
 - The combat sim port is the critical path to real-fighter netplay; FIELD_CONTRACT + self-test harness are ready.
 - Challenge stat mapping is honest: hit-count challenges are phrased as damage (no landed-hit counter in the engine) — see CHALLENGE_TYPES docblock.
 - Rebased 2026-10-22 ~19:35 UTC onto main 7fe0cb41 (worker22 integration + worker30 ranks landed while PR was open); server.js v2 ported onto the rewritten minimal base, index.html re-applied, WORKLOG re-appended.
+
+## 2026-10-22 ~16:45 CDT — worker 55: PR #676 URGENT MENU FIX REBASE + MERGE (rebase done, merge on freeze hold)
+
+### What
+Rebased `worker36/menu-fix` (PR #676) onto latest main `8af986e0`. Head is now `8c13d1ad`, mergeable=true, instruction-gate GREEN on the new head. Merge held per orchestrator MERGE FREEZE (~20 min from 16:37 CDT) — PR is merge-ready, awaiting all-clear.
+
+### Key finding (root cause of the rebase conflict)
+Worker 37's original branch approach — rip out the T8 menu, replace with `.wh-menu-btn` buttons — was stale AND self-defeating: their `game/index.html` contained literal `\"` / `\n` escape sequences in the `<head>`, which malformed the stylesheet `<link>` tags. That is exactly the reported "stylesheets fail → unstyled white text boxes" root cause — the "fix" would have shipped the bug. Meanwhile main had already landed the real fixes: T8 menu wired (#687, data-mm + data-action delegated routers), `mainmenu.css` linked (#677), LOADSPEED lazy loading, stage-select→fight flow (#688), PSX controls, colorblind CSS. A blind rebase would have clobbered all of it (branch also deleted `#screen-stage` CSS, PSX control CSS, identity/wh-boot scripts, the loadperf boot stamp).
+
+### Resolution (surgical, additive-only vs main)
+- `game/index.html` — main's T8 menu untouched; added correctly-written inline critical-CSS fallback `<style>` (menu renders as tappable styled buttons even if every stylesheet fails) + correctly-written non-module fallback binder `<script>` (binds data-mm/data-action/data-mm-forge navigation after 1200ms ONLY if the module chain failed, via `window.__whMenuBound`; toast instead of alert).
+- `game/js/main.js` — main's version kept (routers, LOADSPEED, stageIntro, photo mode); added `window.__whMenuBound = true` at EOF (hunk-stable: first placement after the data-mm router conflicted with #688's confirm-routing changes in local 3-way simulation; EOF tail is unchanged base→main).
+- `game/styles.css` — main's version kept; ported the `.wh-main-menu`/`.wh-menu-btn` (64px)/`.screen-title`/`.wh-placeholder` block that main's coming-soon placeholder screens reference but had no styles for. Skipped the `.menu-content` override (main's is better).
+- Local `git merge-file` 3-way simulation (base=fab3e7d9): all 3 files CLEAN; merged output byte-identical to intended content.
+- PR body rewritten for the rebase (six instruction-gate sections, exact self-check heading); ran the real `.github/scripts/instruction_gate.py` `check()` locally against it — passes (fixed 9 proof-path false-positives: backticked non-paths, wrong `js/mainmenu.js` path; every deviation bullet now carries a #ref).
+
+### Verification (menu fix intact)
+- `node --check` on `game/js/main.js` (ESM): passes. HTML tag balance: 15 sections, 47 buttons, 7 scripts balanced; zero stray escapes in `<head>`. CSS braces 285/285.
+- All 10 sections wired: story/versus/arcade/training → mode controller; online/sidegames/collection/daily → real placeholder screens with BACK (no dead ends); creation suite → suite URL; options → howto/settings; daily also opens the T8 "in the forge" panel (`game/js/mainmenu.js`). `.mm-item` min-height 52px (exceeds 48px); `.wh-menu-btn` 64px.
+
+### CI
+- Parent intel said API pushes don't trigger Actions — actually Contents API pushes DID trigger: instruction-gate run 39859322873 on head `8c13d1ad` = SUCCESS. rig-guard success; clobber/deletion/no-deletion guards were in_progress at log time.
+- Re-run-jobs URL (stale failed run on old head, kept for the batch): https://github.com/mhvnsnt/western-heart/actions/runs/39851254660
+- Full log: `docs/decisions/2026-10-22-menu-fix-rebase-w55.md`.
