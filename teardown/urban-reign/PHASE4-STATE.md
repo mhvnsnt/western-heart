@@ -24,3 +24,10 @@ Lane: TEARDOWN COMPLETION SWEEP, Phase 4: pool assignment + name bridge + polish
 ## Progress log
 
 - Phase 4 start: branch `ur-phase4-assignment` created from `ur-phase3-textures` @ d36795a + this state file + PR opened BEFORE analysis.
+
+## Results (landed cf239b0)
+
+- JOB 1 — CLOSED SEARCH: no per-character assignment table exists for the 41 in any shipped file (gyuindex slots all-zero for them; general_index = slot↔global-ID only; motdat P-lists exist only for pmot fighters). Native count unchanged 31/72. Runtime (PCSX2) capture spec landed. Ghidra decompile blocked in this VM (OOM kill + import failure) — recorded honestly. Report: `PHASE4-JOB1-LOADER-SEARCH.md`.
+- JOB 2 — NAME BRIDGE CRACKED: .bin record format fully cracked (global ID + embedded name + frames + variable header + sampled payload). Payload root stream = bank motion's decoded root track ×1000. **27/35 P1 name↔pmot001-motion pairs proven** (max dev ≤0.06 mm), assigned into `game/assets/movesets/ur-char001.json` (27 clips annotated `motdatName`) + `motion-names/name-bridge-p1-proven.json`. 8 unproven: type-14 root-decode gap (7) + record 14 (88f, no pmot candidate). Report: `motion-names/JOB2-NAME-BRIDGE-PHASE4.md`.
+- JOB 3 — gaps documented with exact next steps (no fabrication): (a) char064 1197/1260, one s16 group, decoder reject-log step named; (b) 11 accessories — proof standard + per-piece excavation named, none claimed; (c) node graph not in any shipped file searched; H-index proven for bodies (1.8e-07), suspect only for accessories; PPK 0xae00 decode test named. Report: `PHASE4-JOB3-POLISH.md`.
+- JOB 4 — `WIRING-INVENTORY.md` created on this branch: `textured-models/` = THE canonical set (supersedes phase-1 untextured GLBs). street-reign refresh NOT a same-filename byte-swap (charNNN.glb vs charNNN_textured.glb + embedded-animation difference) → documented as one-step follow-up, not performed. CANON identities untouched (OWNER-pending).
