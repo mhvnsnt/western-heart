@@ -100,11 +100,11 @@ Tool: `phase14/tools/provenance_p14.py`.
   from byte 0 (`bf3f690f 3eed06e3 3eae2660…`, a repeating
   float pattern), not a container.
 - Mirror bytes: digest-verified tar parts 02/03/04 plus the
-  range-fetched part-05's first 276,950,016 B (chunk-length
-  checked; the part-05 whole-file digest cross-check is
-  logged in PHASE14-STATE.md when its fetch completes — the
-  verdict cannot hinge on it: the files differ from byte 0,
-  inside the verified part-04 span).
+  range-fetched part-05's first 276,950,016 B. Part-05's
+  whole-file digest has since verified too (sha256
+  cccd3eed… == release digest, `fetch_part_resume_p14.py`
+  round 1), so every mirror byte used in this pass comes
+  from a digest-verified part.
 
 ## Verdict — ALL FOUR FILES DIFFER (the major flag, complete)
 
