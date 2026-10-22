@@ -65,8 +65,11 @@ export const MODEL_URLS = {
   // roster-full with no attire ladder of his own; his legacy body stays
   // wired at 'zen-body' below and ladders back as a selectable alternate
   // in attires.js (never deleted).
-  zen: '../roster/zen/attires/attire1/model.glb',
-  'zen-attire1': '../roster/zen/attires/attire1/model.glb',
+  // Rigged 2026-10-22 (Claude session): the spirit body was an unrigged static (invisible in fights);
+  // tools/auto_rig/rig_tripo_static.py -> model-rigged.glb, Tripo original model.glb untouched.
+  // Proof: docs/proof/claude-2026-10-22/zen-rig/.
+  zen: '../roster/zen/attires/attire1/model-rigged.glb',
+  'zen-attire1': '../roster/zen/attires/attire1/model-rigged.glb',
   // ZEN'S SPIRIT FORM (owner Tripo 803f4cf1, 2026-10-21): Zen HIMSELF as
   // a spirit — the "stand version of himself" from his design. NOT an
   // attire and NOT his body: in the stand system the spirit form floats
