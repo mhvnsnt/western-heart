@@ -1463,3 +1463,40 @@ wrestling repos).
   wrestler identities (`teardown/wwf-no-mercy/docs/wrestler-id-table.json`)
   have no WH mappings in RENAME-MAP.md — owner decision, flagged, not invented.
 <!-- END No Mercy / mat-kings section -->
+
+<!-- BEGIN Intake character canon (owner-approved 2026-10-22) -->
+## INTAKE CHARACTERS — owner-locked canon (2026-10-22)
+
+### BIRODO (was Velvet)
+Capoeira dancer. Runs the Velvet Room — neutral ground club. Introduced Zen to the WH underground. Invented the Nine-Soul Meter. Moveset source TBD — Ling Xiaoyu was her pick but Xiaoyu is TAKEN by Saku-ra. Find another free Tekken fighter with fluid/dance-like evasive style.
+
+### JOTEI (was Majesty)
+Exiled empress. Imperial court wrestling. Coming to collect. Moveset: Craig Marduk.
+
+### CHATUR (Rahkasa)
+Four-armed Oversoul spirit. Temple dancer who refused to die. Moveset: True Ogre.
+
+### RYUSAN (was Vitriol)
+Acid punk, 15. Living proof of Jotei family's crimes. Moveset: Lucky Chloe.
+
+### POND (Tsuyu)
+Swamp boundary watcher. Found Dorowani as an egg. Moveset: Raven.
+
+### MEGAMI (was Devi)
+Temple guardian of a sealed door. Trained Chatur. Moveset: Jun Kazama.
+
+### MENAJERII (メナジェリー) (was Vixen; "Menagerie" — owner locked the Japanese pronunciation 2026-10-22, NOT Hyakujuu)
+Spirit-walker carrying beast spirits. Sanctuary at Birodo's club. Moveset: Roger Jr.
+
+### TOBI (was Longleap)
+Rabbit courier. Fastest in roster. Moveset: Hwoarang (confirmed free — Purple Rain is Lee Chaolan-based).
+
+### THE CANON WEB (one interconnected story)
+Jotei's family's crime → Ryusan's powers → Tobi's guilt → Pond's swamp → Dorowani's mud → Chatur's sacrifice → Megami's seal → Menajerii's sanctuary (Birodo's club) → Zen's cracked Oversoul.
+
+### MOVESET SOURCE LAW (standing, 2026-10-22)
+Movesets may ONLY be pulled from Tekken fighters nobody has claimed.
+- **Confirmed taken:** King (Pantera), Armor King (Yukihyo), Akuma (Dio), Shaheen (Scimitar), Lars (Chordz), Zafina (Mary Posa/Mariposa), Bosconovitch (Doc Frank), Yoshimitsu (Phantom), Lee Chaolan (Purple Rain), Ling Xiaoyu (Saku-ra), Eddy/Christie.
+- **Confirmed free:** True Ogre, Lucky Chloe, Hwoarang, Raven, Jun Kazama, Craig Marduk, Roger Jr.
+- Verify the free list against the full roster before wiring any moveset.
+<!-- END Intake character canon -->
