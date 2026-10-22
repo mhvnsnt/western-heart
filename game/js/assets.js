@@ -54,7 +54,7 @@ export const MODEL_URLS = {
   // KRONOS (owner custom Zangief fighter, 2026-10-19): Tripo models live at
   // tripo-recovery/kronos_attire1_default.glb/ + kronos_attire2_timberwolf/;
   // copying the GLB into roster/kronos/attires/attire1/model.glb is a follow-up.
-  kronos: '../roster/kronos/attires/attire1/model.glb',
+  kronos: '../roster/kronos/attires/attire1/model-rigged.glb',
   // SAM-UR-A1 Attire 1 (owner 2026-10-19): Tripo pull replaces the fan-rip placeholder.
   'sam-ur-a1': '../roster/sam-ur-a1/attires/attire1/model-rigged.glb',
   // SAKU RA (2026-10-21, lane 4 rig batch 1): unrigged Tripo static -> model-rigged.glb
@@ -115,13 +115,13 @@ export const MODEL_URLS = {
   // Vain Abel — Kane archetype (owner 2026-10-20, Tripo pull). Attire 3: Masked Demon of the Purple Haze.
   'vainabel-attire3': '../roster/vainabel/attires/attire3/model.glb',
   // Burger — Demon mode, possessed by greed (owner 2026-10-19, Tripo pull).
-  burger: '../roster/burger/attires/attire1/model.glb',
+  burger: '../roster/burger/attires/attire1/model-rigged.glb',
   // Kronos — new fighter (owner 2026-10-19, Tripo pull).
-  kronos: '../roster/kronos/attires/attire1/model.glb',
-  'kronos-attire2': '../roster/kronos/attires/attire2/model.glb',
+  kronos: '../roster/kronos/attires/attire1/model-rigged.glb',
+  'kronos-attire2': '../roster/kronos/attires/attire2/model-rigged.glb',
   'kronos-attire3': '../roster/kronos/attires/attire3/model.glb',
   // KORESHI (owner 2026-10-19): his own creation (Kakashi + SSJ4/5 + ninja, Tripo pull).
-  koreshi: '../roster/koreshi/attires/attire1/model.glb',
+  koreshi: '../roster/koreshi/attires/attire1/model-rigged.glb',
   // Burger hunger-state variants (owner 2026-10-19, Tripo pulls).
   'burger-attire2': '../roster/burger/attires/attire2/model.glb',
   'burger-attire3': '../roster/burger/attires/attire3/model.glb',
@@ -205,7 +205,7 @@ export const MODEL_URLS = {
   // WH names pending owner pick from INTAKE-PROPOSAL.md — working names for now.
   // Licenses: Zangief CC-BY (johnny136), Blanka Free Standard (allanromanreyes),
   // Vega CC-BY (pierodsoto01), Iori CC-BY (0xo), Armor King CC-BY (theamazingdonovan207).
-  zangief: '../roster/zangief/attires/attire1/model.glb',
+  zangief: '../roster/zangief/attires/attire1/model-rigged.glb',
   blanka: '../roster/blanka/attires/attire1/model.glb',
   // CHARGER (owner 2026-10-20): Blanka replacement fighter — owner Tripo models.
   // CHARGER Attire 1 (2026-10-21, lane 4 rig batch 1): unrigged Tripo static -> model-rigged.glb
