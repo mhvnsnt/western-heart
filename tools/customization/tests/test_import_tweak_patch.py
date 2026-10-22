@@ -241,3 +241,82 @@ class TestHitFeel(unittest.TestCase):
         n = self.ok(p)
         written = apply_patch(n, self.repo.root)
         self.assertEqual(len(written), 2)
+
+
+def screen_patch(**kw):
+    p = {
+        "format": "wh-tweak-patch", "version": 1,
+        "kit_id": None, "fighter": "ui",
+        "attire": "stage-select", "exported_at": "2026-10-22T07:30:00Z",
+        "exported_by": "suite", "suite_build": "test",
+        "notes": "remixed title",
+        "changes": [
+            {"kind": "ui_screen_define",
+             "screen": {
+                 "format": "wh-ui-screen", "version": 1,
+                 "id": "stage-select", "name": "Stage Select",
+                 "source": "workshop", "canvas": {"w": 1280, "h": 720},
+                 "elements": [
+                     {"id": "title", "type": "label", "x": 48, "y": 28,
+                      "w": 700, "h": 56, "text": "PICK YOUR BATTLEFIELD",
+                      "style": {"fontSize": 40, "color": "#f2b01e"}},
+                 ],
+                 "flow": {}, "wiring": {}},
+             "note": "renamed title"},
+        ],
+    }
+    p.update(kw)
+    return p
+
+
+class TestUIScreen(unittest.TestCase):
+    def setUp(self):
+        self.repo = FakeRepo()
+
+    def tearDown(self):
+        self.repo.teardown()
+
+    def ok(self, patch):
+        return validate(patch, self.repo.root)
+
+    def bad(self, patch, snippet):
+        with self.assertRaises(PatchError) as cm:
+            validate(patch, self.repo.root)
+        self.assertIn(snippet, str(cm.exception))
+
+    def test_valid_screen(self):
+        n = self.ok(screen_patch())
+        self.assertEqual(n["changes"][0]["kind"], "ui_screen_define")
+
+    def test_ui_fighter_with_other_kind_rejected(self):
+        p = screen_patch()
+        p["changes"].append(
+            {"kind": "hitfeel_tune", "hitstop": 1.2, "shake": 1,
+             "knockback": 1, "launch": 1})
+        self.bad(p, "'fighter' 'ui' is only valid")
+
+    def test_bad_screen_format(self):
+        p = screen_patch()
+        p["changes"][0]["screen"]["format"] = "nope"
+        self.bad(p, "bad screen format")
+
+    def test_bad_element_type(self):
+        p = screen_patch()
+        p["changes"][0]["screen"]["elements"][0]["type"] = "hologram"
+        self.bad(p, "bad type")
+
+    def test_duplicate_element_id(self):
+        p = screen_patch()
+        p["changes"][0]["screen"]["elements"].append(
+            dict(p["changes"][0]["screen"]["elements"][0]))
+        self.bad(p, "duplicate id")
+
+    def test_screen_apply_writes_file(self):
+        n = self.ok(screen_patch())
+        written = apply_patch(n, self.repo.root)
+        self.assertEqual(len(written), 1)
+        sp, applied_p = written[0]
+        self.assertTrue(sp.endswith("customization/ui-screens/stage-select.json"))
+        doc = json.load(open(sp))
+        self.assertEqual(doc["elements"][0]["text"], "PICK YOUR BATTLEFIELD")
+        self.assertTrue(os.path.isfile(applied_p))

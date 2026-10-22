@@ -36,7 +36,7 @@ FORMAT = "wh-tweak-patch"
 SUPPORTED_VERSIONS = (1,)
 PART_GROUPS = ("head", "torso", "upper_arms", "forearms",
                "hands", "thighs", "shins", "feet")
-CHANGE_KINDS = ("part_transform", "hitfeel_tune")
+CHANGE_KINDS = ("part_transform", "hitfeel_tune", "ui_screen_define")
 FEEL_KEYS = ("hitstop", "shake", "knockback", "launch")
 
 GH_PUSH = os.environ.get("WH_GH_PUSH", os.path.expanduser("~/workspace/fix2/gh_push.py"))
@@ -87,7 +87,11 @@ def validate(patch, repo):
     fighter = patch.get("fighter")
     if not isinstance(fighter, str) or not fighter:
         fail("'fighter' must be a non-empty string (roster id)")
-    if fighter not in load_roster_ids(repo):
+    if fighter == "ui":
+        kinds = {c.get("kind") for c in patch.get("changes", []) if isinstance(c, dict)}
+        if kinds - {"ui_screen_define"}:
+            fail("'fighter' 'ui' is only valid for ui_screen_define patches")
+    elif fighter not in load_roster_ids(repo):
         fail(f"unknown 'fighter' {fighter!r}: no such roster id in "
              f"game/js/roster-full.js or customization/profiles/")
 
@@ -143,6 +147,16 @@ def validate(patch, repo):
                      f"(all multipliers are 1.0)")
             norm.append({"kind": kind, **tune, "note": note})
             continue
+        if kind == "ui_screen_define":
+            scr = c.get("screen")
+            serrs = _validate_screen(scr, where)
+            if serrs:
+                fail(f"{where}: invalid screen definition: " + "; ".join(serrs))
+            note = c.get("note", "")
+            if not isinstance(note, str):
+                fail(f"{where}: 'note' must be a string")
+            norm.append({"kind": kind, "screen": scr, "note": note})
+            continue
         group = c.get("group")
         if group not in PART_GROUPS:
             fail(f"{where}: bad 'group' {group!r} "
@@ -189,6 +203,47 @@ def validate(patch, repo):
     }
 
 
+SCREEN_ELEMENT_TYPES = ("label", "button", "panel", "image", "card-grid")
+
+
+def _validate_screen(def_, where):
+    errs = []
+    if not isinstance(def_, dict):
+        return ["screen definition must be an object"]
+    if def_.get("format") != "wh-ui-screen":
+        errs.append(f"bad screen format: {def_.get('format')!r}")
+    if def_.get("version") != 1:
+        errs.append(f"unsupported screen version: {def_.get('version')!r}")
+    sid = def_.get("id")
+    if not isinstance(sid, str) or not sid or not all(
+            ch.isalnum() or ch in "-_" for ch in sid):
+        errs.append("screen id must be a non-empty [a-z0-9-_] string")
+    canvas = def_.get("canvas") or {}
+    if not _is_finite_number(canvas.get("w")) or not _is_finite_number(canvas.get("h")):
+        errs.append("bad screen canvas")
+    seen = set()
+    for i, e in enumerate(def_.get("elements") or []):
+        w = f"{where}.elements[{i}]"
+        if not isinstance(e, dict):
+            errs.append(f"{w} must be an object"); continue
+        if e.get("type") not in SCREEN_ELEMENT_TYPES:
+            errs.append(f"{w}: bad type {e.get('type')!r}"); continue
+        eid = e.get("id")
+        if not isinstance(eid, str) or not eid:
+            errs.append(f"{w}: missing id")
+        elif eid in seen:
+            errs.append(f"{w}: duplicate id {eid!r}")
+        else:
+            seen.add(eid)
+        for k in ("x", "y", "w", "h"):
+            if not _is_finite_number(e.get(k)):
+                errs.append(f"{w}: bad {k}")
+        if _is_finite_number(e.get("w")) and _is_finite_number(e.get("h")) and \
+                (e["w"] <= 0 or e["h"] <= 0):
+            errs.append(f"{w}: w/h must be positive")
+    return errs
+
+
 def _now_z():
     return datetime.datetime.now(datetime.timezone.utc) \
         .isoformat(timespec="seconds").replace("+00:00", "Z")
@@ -200,11 +255,14 @@ def apply_patch(norm, repo):
     kit_id = norm["kit_id"] or f"{fighter}-manual"
     part_changes = [c for c in norm["changes"] if c["kind"] == "part_transform"]
     feel_changes = [c for c in norm["changes"] if c["kind"] == "hitfeel_tune"]
+    screen_changes = [c for c in norm["changes"] if c["kind"] == "ui_screen_define"]
     written = []
     if part_changes:
         written.extend(_apply_part_transform(norm, part_changes, repo, fighter, kit_id))
     if feel_changes:
         written.extend(_apply_hitfeel(norm, feel_changes, repo, fighter))
+    if screen_changes:
+        written.extend(_apply_screen(norm, screen_changes, repo))
     return written
 
 
@@ -294,6 +352,31 @@ def _apply_hitfeel(norm, feel_changes, repo, fighter):
         f.write("\n")
     applied_path = _applied_record(repo, fighter, f"{fighter}-hitfeel", norm)
     return [(fp, applied_path)]
+
+
+def _apply_screen(norm, screen_changes, repo):
+    """Write workshop screen definitions to customization/ui-screens/."""
+    written = []
+    for c in screen_changes:
+        scr = dict(c["screen"])
+        sid = scr["id"]
+        sp = os.path.join(repo, "customization", "ui-screens", sid + ".json")
+        scr["version"] = 1
+        hist = scr.get("history", [])
+        hist.append({
+            "at": _now_z(),
+            "action": "ui-screen-applied",
+            "exported_at": norm["exported_at"],
+            "exported_by": norm["exported_by"],
+        })
+        scr["history"] = hist
+        os.makedirs(os.path.dirname(sp), exist_ok=True)
+        with open(sp, "w", encoding="utf-8") as f:
+            json.dump(scr, f, indent=2)
+            f.write("\n")
+        applied_path = _applied_record(repo, "ui", sid, norm)
+        written.append((sp, applied_path))
+    return written
 
 
 def main(argv=None):
