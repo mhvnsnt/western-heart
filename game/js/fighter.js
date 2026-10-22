@@ -364,7 +364,10 @@ export class Fighter {
     }
 
     this.lean = new THREE.Group();
-    this.lean.rotation.y = this.facing * Math.PI / 2;
+    // Visual facing angle: the BODY Y-ROTATES toward the logical facing
+    // (see _animate section 1). Initialized to the spawn facing.
+    this._faceY = this.facing * Math.PI / 2;
+    this.lean.rotation.y = this._faceY;
     this.lean.add(inst.model);
     this.root.add(this.lean);
     this.model = inst.model;
@@ -1107,8 +1110,20 @@ export class Fighter {
 
   /* ---------------- animation ---------------- */
   _animate(dt) {
-    // 1) Facing
-    this.lean.rotation.y = this.facing * Math.PI / 2;
+    // 1) Facing — the BODY visibly Y-ROTATES to face the opponent.
+    // SIDE-SWITCH FIX (owner playtest 2026-10-22): the old code snapped
+    // lean.rotation.y instantly when crossing sides, which reads as a
+    // mirror-pop on screen. The visual facing now turns smoothly about Y
+    // (shortest arc, 180 deg in ~0.16 s) — a real rotation, never a
+    // scale-flip/mirror. The logical this.facing stays instant so inputs,
+    // guard and hit logic never lag behind the turn.
+    const targetY = this.facing * Math.PI / 2;
+    if (this._faceY === undefined) this._faceY = targetY;
+    let dy = targetY - this._faceY;
+    dy = Math.atan2(Math.sin(dy), Math.cos(dy)); // shortest arc
+    const maxStep = (Math.PI / 0.16) * dt;
+    this._faceY += Math.abs(dy) <= maxStep ? dy : Math.sign(dy) * maxStep;
+    this.lean.rotation.y = this._faceY;
 
     // 2) Which REAL T3 clip owns this state? (FROZEN-IDLE FIX 2026-10-20:
     // the bank's animated stance/walk clips existed but were NEVER played
