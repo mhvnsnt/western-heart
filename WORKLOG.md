@@ -1356,3 +1356,17 @@ Also found: the feet-geometry cue misreads chunky-heel boots as -Z (false -Z on 
 - `game/js/game.js` — `_startRound` facing reset to `±π/2` convention.
 - `game/assets/models/model-facing.json` — `nightwolf` back to `+Z` + corrections note.
 - `WORKLOG.md` (this entry).
+
+## 2026-10-22 — Worker 8: Pantera Leo Man mane-eats-face FIX (PR #596)
+
+**Owner report:** "The mane eats his face. When the user played as Leo Man, the face wasn't visible — the mane mesh covers/clips through the face."
+
+**Root cause:** NOT a geometry/rigging issue. The Leo Man model (`roster/pantera/attires/leomon/model.glb`) is clean — bind pose and T-pose show a perfect mane and perfect face. The bug is in the animation data: the `king_on_pantera_leoman` T3 bank bakes a systematic ~51° oblique head rotation into EVERY clip (measured 50.9° mean in `t3_neutral.json`, which should be ~0° in a neutral stance). The game's retarget (`game/js/t3anims.js`) has no head-pitch correction (`A['Head']` is never set — only Chest/limbs get swing alignment), so the 51° flows straight to the model. In-game, Leo Man's head is permanently bowed; during attacks (head up to 80° in the bank) the mane swings forward and covers the face.
+
+**Diagnosis method:** Built a headless-Chromium repro using the game's ACTUAL `t3anims.js` retarget code + the shipped `model.glb` + the bank JSONs. Confirmed: T-pose face visible; retargeted stance/light show the head bowed and face hidden.
+
+**Fix:** Premultiplied every Head quaternion in the bank by the inverse of the neutral-stance mean head rotation (`q' = q_mean_inv * q`). Applied to all 32 action clips (`t3_*.json`) + all 176 move rows in `rows.pack.json`. Only Head components touched; all other data byte-identical. This removes the systematic pitch while preserving real head motion relative to neutral.
+
+**Verification:** Re-ran the repro with the fix. Stance: head upright, face clearly visible. Light attack: face visible (was hidden). Move-row attack (`row:0`, what the game actually plays): face clearly visible, mane framing nicely. Proof: `docs/proof/leoman-mane-20261022/`.
+
+**Scope:** Leo Man's bank only. Did not touch inputs, shared game code, other fighters' banks, or the model GLB.
