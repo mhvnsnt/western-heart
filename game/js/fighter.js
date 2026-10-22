@@ -22,6 +22,7 @@ import { assets } from './assets.js';
 import { getT3Clips, createT3Actions, retargetT3Clips, SOURCE_TO_BANK } from './t3anims.js';
 import { TekkenBuffer, getFighterMoveset, getMovesetInfo, resolveMove } from './movesets.js';
 import { TransformCinematic } from './transform-cinematic.js';
+import { V, vskillFor, vtriggerEnhance, vreversalMove } from './v-system.js';
 import { JiggleRig } from './jiggle.js';
 import { FaceRig } from './faceRig.js';
 import { HandPoseBlender } from './handPoses.js';
@@ -204,9 +205,9 @@ export function getRealMove(charId, moveType) {
           hitWord: ms.hit_words ? ms.hit_words[key] : undefined,
           stanceAfter: ms.stance_after ? ms.stance_after[key] : undefined,
           launch: !!mv.launch, knockdown: !!mv.knockdown,
-          armor: !!mv.armor, // rage-art super armor (Tekken 7)
+          armor: !!mv.armor,
           rageArt: !!mv.rageArt, rageDrive: !!mv.rageDrive,
-          urgeEngager: !!mv.urgeEngager, // Soul Urge engager flag (T8 Heat)
+          urgeEngager: !!mv.urgeEngager,
           urgeBurst: !!mv.urgeBurst, urgeSmash: !!mv.urgeSmash,
         };
       }
@@ -230,7 +231,6 @@ export function getRealMove(charId, moveType) {
 
 const GROUND_Y_DEFAULT = 0;
 let GROUND_Y = 0; // stage-break lane: floor/balcony breaks drop the fighting level
-/* Stage-break lane: the physics ground level (floor breaks drop it). */
 export function setGroundY(v) { GROUND_Y = v; }
 export function getGroundY() { return GROUND_Y; }
 let ARENA_LIMIT = 8.4; // default: shrine.json arena 16.8 wide; set per-stage via setArenaLimit()
@@ -293,16 +293,20 @@ export class Fighter {
     // stick = facing-relative direction (guard + posture), juggle = hits taken airborne.
     this.stance = null; this.stanceT = 0; this._risingT = 0; this._stickDir = 'n';
     this._juggle = 0; this._rageUsed = false; this._queuedNext = null;
-    // Rage lane (T7 comeback): _rageOn while the threshold holds unspent.
     this._rageOn = false;
-    // Soul Urge lane (T8 Heat): per-round urge state, owned by soulurge.js.
     this._urgeOn = false; this._urgeUsed = false; this._urgeT = 0; this._urgePips = 0;
-    this._urgeDashT = 0; // urge-dash lunge window
+    this._urgeDashT = 0;
 
     // Stream 6: throw-lock (throw break window). When a throw connects,
     // attacker enters 'throwing' and victim 'thrown' for THROW_LOCK_T;
     // the victim may break with the matching input (see tryThrowBreak).
     this.lockT = 0; this.lockMove = null; this.lockPartner = null;
+
+    // V-System (owner 2026-10-22): Nine-Soul meter resource game.
+    // _vtriggerT = install timer, _vbreakT = V-Shift Break window,
+    // _vparryT = V-Skill parry active window, _vshiftProc = shift evaded.
+    this._vtriggerT = 0; this._vbreakT = 0; this._vparryT = 0;
+    this._vshiftProc = false;
 
     // smoothed lean (body english)
     this._lean = { x: 0, z: 0 };
@@ -649,7 +653,6 @@ export class Fighter {
       crouching: this.state === 'crouch' || st === 'FC',
       rising: this._risingT > 0,
       rage: !this._rageUsed && this.hp > 0 && this.hp <= this.maxHp * 0.25,
-      // Soul Urge lane: dash/smash resolution needs these (see movesets.js).
       urgeOn: !!this._urgeOn,
       urgeAvailable: !this._urgeUsed && !this._urgeOn && this.hp > 0,
       inMove: this.state === 'attack',
@@ -714,6 +717,61 @@ export class Fighter {
     this._enter('dodge'); this.invuln = 0.34; this.dodgeDir = -this.facing;
     this._dodgeId = (this._dodgeId || 0) + 1;
     this.vx = this.dodgeDir * this.stats.speed * 1.7;
+  }
+
+  /* ---------------- V-System (owner 2026-10-22) ----------------
+     One input ('vskill': KeyV / V button), three context moves —
+     Tekken-ified from SFV's V-Skill / V-Trigger / V-Reversal, plus
+     V-Shift on block double-tap. Names «TBD» pending user approval. */
+  _startVAttack(move, state, name) {
+    this.attack = move; this.attackName = name; this.hasHit = false;
+    this._attackId = (this._attackId || 0) + 1;
+    this._queuedNext = null;
+    this.vx = 0; this._enter(state); this._attackPhase = 'startup';
+    return true;
+  }
+  tryVSkill() {
+    // Per-character unique V-Skill. V-Trigger enhances it (EX: armored).
+    if (!this.canAct() || !this.onGround) return false;
+    const base = vskillFor(this.char.id);
+    const move = this._vtriggerT > 0 ? vtriggerEnhance(base) : base;
+    if (move.kind === 'parry') this._vparryT = V.PARRY_WINDOW;
+    this.addMeter(V.SKILL_SOUL_ON_USE);
+    return this._startVAttack(move, 'vskill', 'vskill:' + base.id);
+  }
+  tryVTrigger() {
+    // Full-meter install: 12s of +15% damage, chip on block, EX V-Skill.
+    // Allowed from neutral or a calm block — not from blockstun (that's
+    // V-Reversal's lane).
+    const calmBlock = this.state === 'block' && this.stun <= 0.05;
+    if (this.dead || !this.onGround) return false;
+    if (!this.canAct() && !calmBlock) return false;
+    if (this.meter < V.TRIGGER_COST || this._vtriggerT > 0) return false;
+    this.meter = 0;
+    this._vtriggerT = V.TRIGGER_DURATION;
+    this._auraFlash = 1.0;
+    return true;
+  }
+  tryVReversal() {
+    // Guard-cancel counter from blockstun. Strike-invulnerable through
+    // startup+active — the "get off me" that costs 50 souls.
+    if (this.state !== 'block' || this.stun <= 0.05 || !this.onGround) return false;
+    if (this.meter < V.REVERSAL_COST) return false;
+    this.meter -= V.REVERSAL_COST;
+    const move = vreversalMove();
+    this.invuln = move.startup + move.active;
+    return this._startVAttack(move, 'vreversal', 'vreversal');
+  }
+  tryVShift() {
+    // Double-tap block: 0.35s invulnerable backshift. Evading an attack
+    // (game.js) triggers slow-mo + the V-Shift Break window.
+    if (!this.canAct() || !this.onGround) return false;
+    this._enter('vshift');
+    this.invuln = V.SHIFT_DURATION;
+    this.dodgeDir = -this.facing; // vshift rides the dodge presentation
+    this.vx = -this.facing * (V.SHIFT_BACK_DIST / V.SHIFT_DURATION);
+    this._vshiftProc = false;
+    return true;
   }
 
   /* ---------------- Stream 6: sidestep (Tekken) ----------------
@@ -818,23 +876,16 @@ export class Fighter {
     }
     return this._tryAttackFresh(name);
   }
-  /* Rage lane (T7): red rage aura while the threshold holds unspent. */
   setRageAura(on) {
     this._rageAura = !!on;
-    if (this.aura && this.aura.material) {
-      this.aura.material.color.set(on ? 0xff2a1a : 0xffffff);
-    }
+    if (this.aura && this.aura.material) this.aura.material.color.set(on ? 0xff2a1a : 0xffffff);
     if (this.auraLight) this.auraLight.color.set(on ? 0xff2a1a : 0xffffff);
   }
-  /* Soul Urge lane (T8 Heat): blue soul-flame aura while urging. */
   setUrgeAura(on) {
     this._urgeAura = !!on;
-    if (this.aura && this.aura.material && !this._rageAura) {
-      this.aura.material.color.set(on ? 0x3aa8ff : 0xffffff);
-    }
+    if (this.aura && this.aura.material && !this._rageAura) this.aura.material.color.set(on ? 0x3aa8ff : 0xffffff);
     if (this.auraLight && !this._rageAura) this.auraLight.color.set(on ? 0x3aa8ff : 0xffffff);
   }
-  /* Soul Urge lane (T8 Heat Dash): committed forward burst costing 1 pip. */
   tryUrgeDash() {
     if (!this._urgeOn || this._urgePips < 1 || !this.canAct()) return false;
     const g = this.game;
@@ -859,8 +910,6 @@ export class Fighter {
       // notation so the base-move fallback below still fires (no dead buttons).
       if (resolved) notation = resolved;
     } else if (/^[1234](\+[1234])+$/.test(notation)) {
-      // Soul Urge lane: 1+2 while urging (and NOT raging) = Urge Dash — a
-      // committed forward burst, not a normal move (T8 Heat Dash).
       if (notation === '1+2' && ctx.urgeOn && !ctx.rage) return this.tryUrgeDash();
       const resolved = this.tekken.pressChord(notation, ctx);
       if (!resolved) return false; // chord with no matching move: whiff, no action
@@ -911,6 +960,12 @@ export class Fighter {
 
   receiveHit(move, attacker) {
     if (this.dead || this.invuln > 0) return 'dodge';
+    // V-System: an armored V-Skill absorbs the hit outright (no damage,
+    // no stun) while it isn't in recovery. game.js shows the spark.
+    if (this.state === 'vskill' && this.attack && this.attack.armor &&
+        this._attackPhase !== 'recovery') {
+      return 'armor';
+    }
     // Rage lane (T7): armored moves (rage arts, urge burst/smash) absorb the
     // hit — damage applies, but the move is never interrupted mid-swing.
     const armored = !!(this.attack && this.attack.armor && this._attackPhase !== 'recovery'
@@ -923,7 +978,11 @@ export class Fighter {
     const guarded = !move.unblockable && !move.isGrab && facingAttacker && (this._guardBits() & word) !== 0;
     if (guarded) {
       // FIRE force (modes lane): strikes chip through guard — chipMult on attacker stats.
-      const chip = move.damage * attacker.stats.power * 0.12 * (attacker.stats.chipMult || 1) / this.stats.defense;
+      let chip = move.damage * attacker.stats.power * 0.12 * (attacker.stats.chipMult || 1) / this.stats.defense;
+      // V-System: V-Trigger install — EVERYTHING chips through guard.
+      if (attacker._vtriggerT > 0 && !move.isGrab) {
+        chip += move.damage * V.TRIGGER_CHIP_MULT * attacker.stats.power / this.stats.defense;
+      }
       // Soul Urge lane (T8 Heat): block chip can never kill — floor at 1 HP.
       this.hp = attacker._urgeOn ? Math.max(1, this.hp - chip) : Math.max(0, this.hp - chip);
       this.stun = 0.18 + move.damage * 0.01;
@@ -939,7 +998,9 @@ export class Fighter {
     // T3 HitDamage: counter hit when the defender is in the startup of its own attack:
     // d = e + d*12/10, e = |defender move damage| * 3/10 * 3/10 * (frames into startup / startup).
     let counter = false;
-    if (this.state === 'attack' && this._attackPhase === 'startup' && this.attack && this.attack.damage > 0) {
+    // (V-Skill / V-Reversal startups are CH-able like any attack.)
+    if ((this.state === 'attack' || this.state === 'vskill' || this.state === 'vreversal') &&
+        this._attackPhase === 'startup' && this.attack && this.attack.damage > 0) {
       counter = true;
       const prog = this.attack.startup > 0 ? Math.min(1, this.stateT / this.attack.startup) : 1;
       dmg = this.attack.damage * 0.09 * prog + dmg * 1.2;
@@ -951,12 +1012,18 @@ export class Fighter {
       counter = true;
       dmg = dmg * 1.2;
     }
+    // V-System: V-Trigger install (+15% damage) and the V-Shift Break
+    // window (+50%, auto counter-hit, consumed by the one attack).
+    if (attacker._vtriggerT > 0 && !move.isGrab) dmg *= V.TRIGGER_DMG_MULT;
+    if (attacker._vbreakT > 0 && !move.isGrab) {
+      dmg *= V.BREAK_DMG_MULT; counter = true; attacker._vbreakT = 0;
+    }
     // Juggle scaling: first airborne hit x0.8, later ones x0.5.
     if (!this.onGround && !move.isGrab) { dmg *= this._juggle === 0 ? 0.8 : 0.5; this._juggle++; }
     this.lastCounterHit = counter;
     this.hp = Math.max(0, this.hp - dmg);
     if (armored) {
-      // Armor absorbs: damage lands, the swing continues uninterrupted.
+      // Rage lane (T7): armor absorbs — damage lands, the swing continues.
       this.meter = Math.min(this.maxMeter, this.meter + 6);
       if (this.hp <= 0) {
         this._knockout(Math.sign(this.root.position.x - attacker.root.position.x) || -this.facing);
@@ -992,7 +1059,11 @@ export class Fighter {
     return this.bones.RightHand;
   }
   getHitbox() {
-    if (this.state !== 'attack' || this._attackPhase !== 'active' || this.hasHit) return null;
+    // V-System: vskill/vreversal are attacks too. Parry-kind V-Skills
+    // (noHitbox) never produce a hitbox.
+    if ((this.state !== 'attack' && this.state !== 'vskill' && this.state !== 'vreversal') ||
+        this._attackPhase !== 'active' || this.hasHit) return null;
+    if (this.attack && this.attack.noHitbox) return null;
     const node = this._weaponBone(); if (!node) return null;
     node.getWorldPosition(_v1);
     let r = this.attackName === 'surge' ? 1.0 : 0.5;
@@ -1027,6 +1098,10 @@ export class Fighter {
     if (this.stun > 0 && this.state !== 'ko') this.stun -= dt;
     if (this.invuln > 0) this.invuln -= dt;
     if (this.lockT > 0) this.lockT -= dt; // throw-break window
+    // V-System timers.
+    if (this._vtriggerT > 0) this._vtriggerT -= dt;
+    if (this._vbreakT > 0) this._vbreakT -= dt;
+    if (this._vparryT > 0) this._vparryT -= dt;
     if (this._risingT > 0) this._risingT -= dt;
     if (this.stanceT > 0) { this.stanceT -= dt; if (this.stanceT <= 0) this.stance = null; }
     if (this.onGround && this.state !== 'knockdown') this._juggle = 0;
@@ -1034,7 +1109,6 @@ export class Fighter {
     if (this._auraFlash > 0) this._auraFlash -= dt;
     if (this._urgeDashT > 0) {
       this._urgeDashT -= dt;
-      // committed lunge: keep driving forward until the window ends
       if (this.onGround && this.state === 'dash') this.vx = this.facing * 9;
       if (this._urgeDashT <= 0 && this.state === 'dash') { this._enter('idle'); this.vx = 0; }
     }
@@ -1074,7 +1148,8 @@ export class Fighter {
 
   _tickState() {
     switch (this.state) {
-      case 'attack': {
+      // V-System: vskill/vreversal run the same attack timing as 'attack'.
+      case 'attack': case 'vskill': case 'vreversal': {
         const m = this.attack, t = this.stateT;
         if (t < m.startup) this._attackPhase = 'startup';
         else if (t < m.startup + m.active) this._attackPhase = 'active';
@@ -1099,6 +1174,10 @@ export class Fighter {
       case 'hitstun': if (this.stun <= 0) this._enter('idle'); break;
       case 'knockdown': if (this.onGround && this.stun <= 0) this._enter('idle'); break;
       case 'dodge': if (this.stateT > 0.34) { this.vx = 0; this._enter('idle'); } break;
+      case 'vshift':
+        // V-Shift: invulnerable backshift; game.js may proc the evade.
+        if (this.stateT >= V.SHIFT_DURATION) { this.vx = 0; this._enter('idle'); }
+        break;
       case 'sidestep':
         if (this.stateT > 0.55) { this.vz = 0; this._enter('idle'); }
         break;
@@ -1249,7 +1328,7 @@ export class Fighter {
       case 'hitstun': t3Wanted = 'hit'; break;
       case 'knockdown': t3Wanted = 'launch'; break;
       case 'ko': t3Wanted = 'ko'; break;
-      case 'attack': t3Wanted = attackClipFor(); break;
+      case 'attack': case 'vskill': case 'vreversal': t3Wanted = attackClipFor(); break;
     }
     if (t3Wanted && !this.t3actions[t3Wanted] && this.t3actions.stance) t3Wanted = 'stance';
     const t3Active = !!(t3Wanted && this.t3actions[t3Wanted]);
@@ -1293,8 +1372,9 @@ export class Fighter {
         if (t3Active) this._playT3(t3Wanted, { loop: true });
         else this._stopT3();
         break;
-      case 'attack': {
+      case 'attack': case 'vskill': case 'vreversal': {
         // Main's move-row mapping first (PR #338), then the attackName fallback.
+        // V-Skill / V-Reversal ride the same attack presentation.
         const t3name = this._moveRowAction(this.attack) || attackClipFor();
         if (t3name && this._playT3Once(t3name, 'atk:' + this.attackName + ':' + this._attackId)) {
           // Real T3 clip playing; add slight lean for body english
@@ -1326,8 +1406,9 @@ export class Fighter {
       case 'victory':
         this._playT3('win', { loop: true });
         break;
-      case 'dodge':
+      case 'dodge': case 'vshift':
         // The dodge moves the fighter backwards: T3's own back-dash
+        // V-Shift rides the same presentation (a fast defensive shift).
         // (b,b branch of the neutral row) when the bank is bound.
         if (!this._playT3Once('backdash', 'dodge:' + this._dodgeId)) {
           this._leanT.z = this.dodgeDir * this.facing * 0.32; this._stopT3();

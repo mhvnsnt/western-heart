@@ -31,6 +31,7 @@ import { StageBreaks } from './stagebreaks.js';
 import { RageSystem, ensureRageMoves, RAGE_SLOWMO_SCALE } from './rage.js';
 /* Soul Urge lane (Tekken 8 Heat, proprietary rename — user-locked 2026-10-22). */
 import { SoulUrge, ensureUrgeMoves, URGE_BURST_TIME, URGE_ENGAGER_TIME } from './soulurge.js';
+import { V, vskillDispatch, vshiftTap } from './v-system.js';
 // LIGHTING RIG (worker 27): per-fighter character light rig — SFV/T7-style
 // character-vs-stage lighting separation + bible soul glow. Fail-silent.
 import { attachCharacterRig } from './lighting-rig.js';
@@ -59,6 +60,9 @@ export class Game {
     this.roundState = 'idle'; // idle | intro | fight | over
     this._roundLockT = 0;
     this._hitStop = 0;
+    this._slowMo = 0; // V-System: V-Shift slow-mo timer (real seconds)
+    this._p1BlockWas = false; // V-System: block double-tap (V-Shift) edge tracking
+    this._p1BlockUpT = null;
 
     /* ---- hit-feel tuning (review-stage tuner, training mode) ----
        Multipliers on top of the wired hit-feel values (Tekken teardown
@@ -204,6 +208,8 @@ export class Game {
     this.roundState = 'idle';
     this._roundLockT = 0;
     this._hitStop = 0;
+    this._slowMo = 0; // V-System reset
+    this._p1BlockWas = false; this._p1BlockUpT = null;
     this._acc = 0;
     this.running = false;
     this.paused = true;
@@ -213,7 +219,6 @@ export class Game {
     this.ui.setRounds(this.wins);
     this.ui.setTimer(ROUND_TIME);
     // Stage-break lane: restore bounds/ground when leaving or restarting.
-    // (fx is re-injected each startMatch; null-safe before the first one.)
     if (this.stageBreaks) this.stageBreaks.reset();
     if (this.rage) this.rage.resetRound();
     if (this.soulurge) this.soulurge.resetRound();
@@ -228,11 +233,8 @@ export class Game {
     this.timer = ROUND_TIME;
     this.p1.hp = this.p1.maxHp; this.p2.hp = this.p2.maxHp;
     this.p1.meter = this.p2.meter = 0;
-    // Rage lane: fresh rage every round (T7); stage breaks persist per match.
     if (this.rage) this.rage.resetRound();
-    // Soul Urge lane: fresh urge gauge every round (T8).
     if (this.soulurge) this.soulurge.resetRound();
-    // Stage-break lane: breaks persist across rounds — re-assert the level.
     if (this.stageBreaks) this.stageBreaks.syncRound();
     const spawns = getStage(this._stageId || 'shrine').spawns;
     const gy = this.stageBreaks ? this.stageBreaks.groundY : 0;
@@ -275,15 +277,15 @@ export class Game {
     if (!this._last) this._last = now;
     let frameDt = Math.min(0.05, (now - this._last) / 1000);
     this._last = now;
-
-    // Rage lane: match-deciding KOs + rage-art KOs play in cinematic slow-mo.
     if (this.rage) frameDt = this.rage.slowMoScale(frameDt);
 
     if (this.running && !this.paused) {
       if (this._hitStop > 0) {
         this._hitStop -= frameDt;
       } else {
-        this._acc += frameDt;
+        // V-System: V-Shift slow-mo dilates the sim (arena/camera stay live).
+        if (this._slowMo > 0) this._slowMo -= frameDt;
+        this._acc += frameDt * (this._slowMo > 0 ? V.SLOWMO_SCALE : 1);
         while (this._acc >= FIXED_DT) {
           this._update(FIXED_DT);
           this._acc -= FIXED_DT;
@@ -324,6 +326,15 @@ export class Game {
         this.p1.tryMove(inp.axisX);
         if (inp.up) this.p1.tryJump();
         this.p1.tryBlock(inp.held.block);
+        // V-System: V-Shift on block double-tap (neutral only — the tap
+        // edge while already blocking just keeps blocking).
+        const blockNow = !!inp.held.block;
+        if (blockNow && !this._p1BlockWas &&
+            vshiftTap(this._p1BlockUpT, performance.now()) && this.p1.tryVShift()) {
+          this.ui.vShift(); audio.whiff(); rec('vshift');
+        }
+        if (!blockNow && this._p1BlockWas) this._p1BlockUpT = performance.now();
+        this._p1BlockWas = blockNow;
         this.p1.tryCrouch(inp.down && !inp.up); // hold down = crouch; release = WS. window
         // Feed facing-relative direction into the Tekken input buffer
         // (drives motion specials qcf/f,F and directional attacks f+1)
@@ -364,6 +375,7 @@ export class Game {
             }
           }
           else if (act === 'dodge') { if (this.p1.tryDodge()) rec('dodge'); }
+          else if (act === 'vskill') { this._vskillAction(this.p1, rec); }
           else if (act === 'transform') {
             if (this.p1.tryTransform('up')) { audio.soulSurge(this.p1.char.id); rec('transform'); }
           }
@@ -402,7 +414,6 @@ export class Game {
             this.arena.shake(0.5 * this.feel.shake, 0.4 * this.feel.shake);
             this._hitStop = 0.12 * this.feel.hitstop;
             this._spawnImpact(def.root.position.x, 1.2, def.root.position.z, 0xffcf4d, 1.4);
-            // Rage lane: a throw that ends the match gets the slow-mo too.
             if (this.rage) this.rage.onHitKO(atk, def);
           } else if (result && result !== 'dodge') {
             audio.grab(); audio.grunt(def.isPlayer ? 1.05 : 0.9);
@@ -419,9 +430,7 @@ export class Game {
       // --- Combat resolution ---
       this._resolveCombat(this.p1, this.p2);
       this._resolveCombat(this.p2, this.p1);
-      // Rage lane: announce rage at the 25% threshold (once per round).
       if (this.rage) { this.rage.update(this.p1); this.rage.update(this.p2); }
-      // Soul Urge lane: tick the urge timer down (T8 Heat).
       if (this.soulurge) { this.soulurge.update(this.p1, dt); this.soulurge.update(this.p2, dt); }
 
       // FIGHTER DEPTH (worker 34): per-frame systems — kindle timers,
@@ -459,10 +468,57 @@ export class Game {
     return 'n';
   }
 
+  /* V-System: one 'vskill' input, three context moves (Tekken-ified SFV).
+     Blockstun + 50 souls -> V-Reversal | full meter -> V-Trigger | else V-Skill. */
+  _vskillAction(f, rec) {
+    const d = vskillDispatch({ state: f.state, stun: f.stun, meter: f.meter });
+    if (d === 'vreversal') {
+      if (f.tryVReversal()) { this.ui.vReversal(); audio.block(); rec('vreversal'); }
+    } else if (d === 'vtrigger') {
+      if (f.tryVTrigger()) {
+        this.ui.vTrigger(); audio.soulSurge(f.char.id);
+        this.arena.shake(0.35 * this.feel.shake, 0.3 * this.feel.shake);
+        this._hitStop = 0.08 * this.feel.hitstop; rec('vtrigger');
+      }
+    } else if (f.tryVSkill()) { audio.whiff(); rec('vskill'); }
+  }
+
   /* Test attacker's active hitbox against defender's hurtboxes */
   _resolveCombat(attacker, defender) {
     const hb = attacker.getHitbox();
     if (!hb) return;
+    // V-System: V-Shift evade — the shifter's i-frames beat an incoming
+    // attack inside range -> slow-mo + V-Shift Break window. (Hurtboxes are
+    // empty during i-frames, so this check lives outside the loop.)
+    if (defender.state === 'vshift' && !defender._vshiftProc &&
+        attacker.state === 'attack' &&
+        (attacker._attackPhase === 'startup' || attacker._attackPhase === 'active')) {
+      const dx = Math.abs(attacker.root.position.x - defender.root.position.x);
+      if (dx < V.SHIFT_EVADE_RANGE) {
+        defender._vshiftProc = true;
+        defender._vbreakT = V.BREAK_WINDOW;
+        this._slowMo = V.SLOWMO_DURATION;
+        this.ui.vShiftBreak(); audio.whiff();
+        this._spawnImpact(defender.root.position.x, 1.4, defender.root.position.z, 0x7df9ff, 1.0);
+        return;
+      }
+    }
+    // V-System: V-Skill parry — catches a strike during its window.
+    // The attack is cancelled into hitstun; the parrier drinks souls.
+    if (defender.state === 'vskill' && defender.attack && defender.attack.kind === 'parry' &&
+        defender._vparryT > 0 && !hb.move.isGrab && !hb.move.unblockable) {
+      const ddx = hb.x - defender.root.position.x, ddz = hb.z - defender.root.position.z;
+      if (ddx * ddx + ddz * ddz < 1.6 * 1.6) {
+        attacker._enter('hitstun'); attacker.stun = Math.max(attacker.stun, V.PARRY_STAGGER);
+        attacker.vx = 0; attacker.vz = 0;
+        defender.addMeter(V.PARRY_SOUL_GAIN);
+        defender._vparryT = 0;
+        this.ui.vParry(); audio.block();
+        this._hitStop = 0.08 * this.feel.hitstop;
+        this._spawnImpact(hb.x, hb.y, hb.z, 0x9fd8ff, 0.8);
+        return;
+      }
+    }
     const hurts = defender.getHurtboxes();
     for (const hu of hurts) {
       const dx = hb.x - hu.x, dy = hb.y - hu.y, dz = hb.z - hu.z;
@@ -497,18 +553,20 @@ export class Game {
           audio.block();
           this._hitStop = 0.04 * this.feel.hitstop;
           attacker.combo = 0;
-          // Soul Urge lane: burst can activate on block (T8 Heat).
           if (this.soulurge) this.soulurge.onBlockedHit(attacker, hb.move);
         } else if (result === 'dodge') {
           // whiffed into i-frames, nothing
+        } else if (result === 'armor') {
+          // V-System: armored V-Skill absorbed it — spark, no damage, no combo.
+          audio.block();
+          this._hitStop = 0.05 * this.feel.hitstop;
+          this._spawnImpact(hb.x, hb.y, hb.z, 0xbfd4ff, 0.7);
         } else if (result === 'ko') {
           audio.ko(); audio.grunt(defender.isPlayer ? 1.1 : 0.85);
           this.arena.shake(0.5 * this.feel.shake, 0.4 * this.feel.shake);
           this._hitStop = 0.12 * this.feel.hitstop;
           this._spawnImpact(hb.x, hb.y, hb.z, 0xffcf4d, 1.4);
-          // Rage lane: match-deciding KOs + rage-art KOs get cinematic slow-mo.
           if (this.rage) this.rage.onHitKO(attacker, defender);
-          // Stage-break lane: a KO slam can shatter walls/floors too.
           if (this.stageBreaks) this.stageBreaks.checkHit(attacker, defender, hb.move, result);
         } else {
           const isGrab = !!hb.move.isGrab;
@@ -529,15 +587,11 @@ export class Game {
           // HITS counter: show on EVERY landed hit, not just 2+ combos.
           // Single hits show "1 HITS" briefly; combos accumulate.
           this.ui.combo(Math.max(1, combo));
-          // Stage-break lane: heavy hits near breakables shatter them.
           if (this.stageBreaks) this.stageBreaks.checkHit(attacker, defender, hb.move, result);
-          // Soul Urge lane: engager hits pop the Urge state (T8 Heat).
           if (this.soulurge) this.soulurge.onHit(attacker, hb.move);
-          // Rage lane: rage-art connect = the cinematic beat (hitstop/flash/slow-mo).
           if (this.rage && attacker.attackName && attacker.attackName.indexOf('R.') === 0) {
             this.rage.rageArtHit(attacker, hb);
           }
-          // Soul Urge lane: Urge Smash connect = the T8 cinematic beat.
           if (this.soulurge && attacker.attackName === 'US.2+3') {
             this.soulurge.urgeSmashHit(attacker, hb);
           }

@@ -1822,6 +1822,68 @@ Owner directive (verbatim): "Research the current state-of-the-art open-source i
 - Challenge stat mapping is honest: hit-count challenges are phrased as damage (no landed-hit counter in the engine) — see CHALLENGE_TYPES docblock.
 - Rebased 2026-10-22 ~19:35 UTC onto main 7fe0cb41 (worker22 integration + worker30 ranks landed while PR was open); server.js v2 ported onto the rewritten minimal base, index.html re-applied, WORKLOG re-appended.
 
+## 2026-10-22 — V-System build + Triangle/Reversal Edge proposals (worker 31)
+
+Owner decisions relayed mid-task: the prior combat-depth set (VF5 throw
+escapes, SC 8-way run, Guard Impact, Tekken item moves) was stood down
+before any code was written — research only, nothing to revert. New
+directive: Triangle = proposal only, Reversal Edge = proposal only,
+V-System = build with proprietary Eastern Mind names TBD.
+
+### V-System — IMPLEMENTED (all user-facing names «name TBD», flagged)
+Tekken-ified SFV V-System over the Nine-Soul meter. One input (`vskill`:
+KeyV / V touch button), three context moves + V-Shift on block double-tap:
+- V-Skill: per-character unique move (+4 souls on use). Seeded: default
+  Soul Palm; pantera Iron Shoulder (armored); dio Demon Lash; ryusan
+  Vitriol Flick (fastest); phantom Moon Catch (12f parry kind).
+- V-Trigger: full-meter (100) 12s install — +15% damage, chip on all
+  blocked attacks, V-Skill becomes armored EX (x1.3). Competes with Soul
+  Surge for the same 100 souls (one-shot vs install = the resource game).
+- V-Reversal: blockstun + 50 souls → guard-cancel counter, invuln through
+  active frames, heavy knockback.
+- V-Shift: double-tap block (280ms) → 0.35s invuln backshift; evading an
+  attack (3.2m) → 0.3x slow-mo + 1.2s Break window (x1.5, auto-CH).
+Slow-mo dilates the sim only (arena/camera stay live) — same mechanism
+the Reversal Edge proposal reuses.
+
+### Files (no deletions)
+- NEW game/js/v-system.js (tuning, VSKILLS catalog, vskillDispatch,
+  vshiftTap — pure, 15/15 node tests pass)
+- NEW game/tests/v-system.test.mjs (15 tests)
+- game/js/fighter.js (tryVSkill/tryVTrigger/tryVReversal/tryVShift;
+  vskill/vreversal/vshift states; armor absorb; V-Trigger/V-Break damage;
+  V-Trigger chip; timers)
+- game/js/game.js (vskill dispatch, block double-tap, parry + shift-evade
+  resolution, 'armor' result presentation, slow-mo in _loop)
+- game/js/input.js (KeyV), game/index.html + game/styles.css (V button),
+  game/js/ai.js (AI uses all four, gated), game/js/main.js (banners)
+- docs/combat/V-SYSTEM-2026-10-22.md (design + naming candidates for user)
+- docs/combat/PROPOSAL-TRIANGLE-2026-10-22.md (proposal only)
+- docs/combat/PROPOSAL-REVERSAL-EDGE-2026-10-22.md (proposal only)
+- WORKLOG.md (this entry)
+
+### Verification
+- node --test: 22/22 pass (15 new + 7 pre-existing). node --check clean.
+- No live-browser play verification possible from this worker (no browser
+  access) — disclosed in the design doc; wiring follows proven patterns
+  (attack-state timing, hitstop, banner/flash). Flagged for human playtest.
+- Anti-clobber: main moved 4 times mid-task (be7d2eda → 9f4b2d77 →
+  43fa27bd → 564ee4e7 → dfee700b); every modified file was re-fetched at
+  the current head and the V-System edits re-applied surgically on top —
+  no stale full-file copies. Folded in upstream's lighting-rig
+  (fighter.js/game.js), rank-battle (main.js), and worker-22 integration
+  (index.html) hunks instead of overwriting them.
+
+### Flags for coordinator
+- ALL V-System user-facing names are «name TBD» — user must pick (candidates
+  in docs/combat/V-SYSTEM-2026-10-22.md §7, Nine-Souls/Eastern Mind flavored).
+- Triangle + Reversal Edge are PROPOSALS ONLY — do not build without approval.
+- V-Trigger and Soul Surge both cost 100 souls by design (player choice).
+- Upstream note: at dfee700b, game/index.html uses the old limb-cluster
+  buttons while game/styles.css only carries PSX-overlay positioning —
+  the old buttons render unpositioned. Not my lane (control overhaul);
+  flagging for the coordinator.
+
 ## 2026-10-22 — Worker 28: STAGE MECHANICS + RAGE/COMEBACK + SOUL URGE (T8 Heat)
 
 **Owner instruction (verbatim):** "From all teardown games, wire up: (1) Stage mechanics — Tekken floor/wall/balcony breaks, DOA knock-through-walls into new areas. (2) Rage/comeback systems — rage arts/drives, slow-mo finishes."
@@ -1926,6 +1988,11 @@ stale full-file copies:
   onMatchStart hook + soul-kindle queue watch in game.js; kindle block/damage/
   counter-hit rules in fighter.js; T3 round-2 bank list in movesets.js).
   Merged without touching that lane's code.
+- Fifth rebase (V-System lane, owner 2026-10-22: v-system.js, V-Trigger/
+  V-Reversal/V-Shift AI + UI + CSS; online.js script tag in index.html).
+  Rage/urge AI block placed after Soul Surge check; armor coexists with
+  V-Skill armor (V-Skill absorbs outright, rage/urge armor absorbs with
+  damage). Merged without touching that lane's code.
 
 ### Flags for coordinator
 - Input overlap (documented, T8-style): `1+2` = rage art while raging, urge dash while

@@ -138,12 +138,10 @@ const ui = {
     el.classList.add('show');
     setTimeout(() => el.classList.remove('show'), 1600);
   },
-  /* Rage lane (T7): red RAGE tag pulses under the HP bar at the threshold. */
   setRage(id, on) {
     const el = document.getElementById(`${id}-rage`);
     if (el) el.classList.toggle('on', !!on);
   },
-  /* Rage-art connect: full-screen red flash (the T7 cinematic beat). */
   rageArtFlash() {
     const el = document.getElementById('rage-flash');
     if (!el) return;
@@ -151,7 +149,6 @@ const ui = {
     el.classList.add('show');
     setTimeout(() => el.classList.remove('show'), 600);
   },
-  /* Soul Urge lane (T8 Heat): blue SOUL URGE gauge under the HP bar. */
   setUrge(id, on) {
     const wrap = document.getElementById(`${id}-urge-wrap`);
     if (wrap) wrap.classList.toggle('on', !!on);
@@ -193,6 +190,25 @@ const ui = {
     el.classList.remove('show'); void el.offsetWidth;
     el.classList.add('show', 'escaped');
     this._throwT = setTimeout(() => el.classList.remove('show', 'escaped'), 900);
+  },
+  /* V-System (owner 2026-10-22). All user-facing names are «name TBD»
+     placeholders pending user approval — flagged, not final. */
+  vTrigger() {
+    this.banner('V-TRIGGER «name TBD» — SOUL AWAKENED');
+    this.surgeFlash(0xffd34d, 0xfff2b0);
+  },
+  vReversal() {
+    this.banner('V-REVERSAL «name TBD»');
+    this.surgeFlash(0x4da6ff, 0xbfe0ff);
+  },
+  vShift() { this.surgeFlash(0x7df9ff, 0xd8fbff); },
+  vShiftBreak() {
+    this.banner('V-SHIFT «name TBD» — BREAK!');
+    this.surgeFlash(0xffffff, 0x7df9ff);
+  },
+  vParry() {
+    this.banner('V-SKILL PARRY «name TBD»');
+    this.surgeFlash(0x9fd8ff, 0xe8f6ff);
   },
   matchOver(playerWon) {
     document.getElementById('result-title').textContent = playerWon ? 'YOU WIN!' : 'YOU LOSE';
