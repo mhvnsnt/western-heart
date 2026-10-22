@@ -95,6 +95,7 @@ export const ATTIRE_VARIANTS = {
     { model: 'mariposa-butterfly-default', label: 'SLOT 1 · BUTTERFLY DEFAULT' },
     { model: 'mariposa', label: 'SLOT 2 · TRIPO' },
     { model: 'mariposa-monarch', label: 'SLOT 3 · MONARCH' },
+    { model: 'zafina-golden-pharaoh', label: 'GOLDEN PHARAOH (WH RESKIN)' },
     { model: 'zafina', label: 'SLOT 6+ · TEKKEN ZAFINA' },
   ],
   'burger': [
@@ -132,6 +133,7 @@ export const ATTIRE_VARIANTS = {
      rig/wiring), A2 = original Baek model, A3 = Master White (PARKED).
      Keyed by fighter id so Kevin's entry finds it. */
   'baek-master-white': [
+    { model: 'kevin-tripo', label: 'KEVIN · A1 TRIPO (DEFAULT)' },
     { model: 'baek', label: 'KEVIN · A2 BAEK MODEL' },
     { model: 'baek-master-white', label: 'MASTER WHITE (PARKED)' },
   ],
@@ -152,6 +154,7 @@ export const ATTIRE_VARIANTS = {
     { model: 'phantom', label: 'BASE' },
     { model: 'phantom-t8', label: 'T8' },
     { model: 'steve-fox', label: 'JIN · BLADE SOUL' },
+    { model: 'jin-bloodline-ember', label: 'JIN KAZAMA · BLOODLINE EMBER (TEKKEN RESKIN)' },
   ],
   /* CHARGER's ladder (dedup 2026-10-22): the standalone 'charger-attire2'
      card folded in (owner rule: attires ladder into their fighter). Without
@@ -161,9 +164,31 @@ export const ATTIRE_VARIANTS = {
     { model: 'charger', label: 'ATTIRE 1 · ICE MONSTER' },
     { model: 'charger-attire2', label: 'ATTIRE 2 · WILD CURRENT' },
   ],
+  /* KINPO's ladder — slot order per roster/kinpo/ATTIRE-SLOTS.md (owner 2026-10-20):
+     Slot 1 = Tripo main, Slot 2 = "Goth Sport" Tripo (was wired as a MODEL_URLS
+     key with no variant list, unreachable from the picker), Slot 3+ = T8 alts. */
   'kinpo': [
-    { model: 'kinpo', label: 'BASE' },
+    { model: 'kinpo', label: 'ATTIRE 1 · TRIPO' },
+    { model: 'kinpo-attire2', label: 'ATTIRE 2 · GOTH SPORT (TRIPO)' },
     { model: 'kinpo-t8', label: 'T8' },
+  ],
+  /* KING TYRANT's ladder (wire-up 2026-10-22): his four owner Tripo originals
+     (roster/king-tyrant/attires/ATTIRE-SLOTS.md) were on disk with no MODEL_URLS
+     keys and no variant list. Slot order = the slot map; the in-game base
+     build ladders back. */
+  'king-tyrant': [
+    { model: 'king-tyrant-attire1', label: 'ATTIRE 1 · WHITE TYRANT (TRIPO)' },
+    { model: 'king-tyrant-attire2', label: 'ATTIRE 2 · TYRANT KING (TRIPO)' },
+    { model: 'king-tyrant-attire3', label: 'ATTIRE 3 · BLACK SNOW (TRIPO)' },
+    { model: 'king-tyrant-attire4', label: 'ATTIRE 4 · FIGHT GEAR (TRIPO)' },
+    { model: 'king-tyrant', label: 'BASE BUILD (TEKKEN BASE)' },
+  ],
+  /* NIGHTWOLF's ladder (wire-up 2026-10-22): his Tripo "tribal warrior" DEFAULT
+     (roster/nightwolf/attires/ATTIRE-SLOTS.md, tribute to Serena Misae Brown)
+     was on disk with no key. Tripo first per the display law; base ladders back. */
+  'nightwolf': [
+    { model: 'nightwolf-attire1', label: 'ATTIRE 1 · TRIBAL WARRIOR (TRIPO)' },
+    { model: 'nightwolf', label: 'BASE BUILD (TEKKEN BASE)' },
   ],
   /* DIABLO's ladder (fighter-completeness audit 2026-10-21): Attire 2
      "Devil God" was wired as a MODEL_URLS key + GLB (PR #419) but had no
@@ -228,6 +253,29 @@ export const ATTIRE_VARIANTS = {
   'slice': [
     { model: 'slice-attire1', label: 'ATTIRE 1 · SKULL MASK (OWNER TRIPO)' },
     { model: 'slice-attire2', label: 'ATTIRE 2 · T7 DEFAULT — BERET (DRAGUNOV BUILD)' },
+  ],
+  /* STAR's ladder (wire-up 2026-10-22): her Tripo main + colorways
+     (roster/star/ATTIRE-SLOTS.md, Tripo ea73eeb3) sat in roster/star/attires/
+     with no MODEL_URLS keys and no variant list. Slot order = the slot map:
+     Tripo A1 DEFAULT first, colorways next, the house-49 Classic ladders back. */
+  'star': [
+    { model: 'star-attire1', label: 'ATTIRE 1 · RED LATEX (TRIPO)' },
+    { model: 'star-attire2', label: 'ATTIRE 2 · AFTER DARK' },
+    { model: 'star-attire3', label: 'ATTIRE 3 · CAPOEIRA GOLD' },
+    { model: 'star-attire5', label: 'ATTIRE 5 · RATED-M' },
+    { model: 'star', label: 'CLASSIC (HOUSE-49)' },
+  ],
+  /* SILVERTONGUE's ladder (wire-up 2026-10-22): all four attires
+     (roster/silvertongue/ATTIRE-SLOTS.md — Slot 1 Tripo "Metallic Bodysuit",
+     Slot 2 Spy Debut, Slot 3 Rated-M Nude, Slot 4 Noir Gala) sat on disk with
+     no MODEL_URLS keys and no variant list. Keyed by her fighter name so the
+     picker resolves the moment her select card lands; no roster entry is
+     created here (owner roster decision). */
+  'silvertongue': [
+    { model: 'silvertongue', label: 'ATTIRE 1 · METALLIC BODYSUIT (TRIPO)' },
+    { model: 'silvertongue-spy-debut', label: 'ATTIRE 2 · SPY DEBUT' },
+    { model: 'silvertongue-attire3', label: 'ATTIRE 3 · RATED-M NUDE' },
+    { model: 'silvertongue-noir-gala', label: 'ATTIRE 4 · NOIR GALA' },
   ],
   /* ZUI's ladder (model-key audit follow-up, 2026-10-21): A1 = Drunken Monk
      Tripo (DEFAULT), A2 = Rework v2 Tripo; the steve-fox canon base and the
