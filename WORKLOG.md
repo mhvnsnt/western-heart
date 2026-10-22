@@ -371,6 +371,61 @@ Charger-A2 via nose-sharpness; Saku Ra via head-texture face color) all face
 dropped 7x (940k → 137k) with the +Z facing, confirming better geometric
 alignment. The model-rigged.glb in this PR is the +Z version.
 
+# WORKLOG — Moveset gaps B3: Frankenstein file + charger-attire2 index (2026-10-21, branch fix/moveset-gaps-20261021)
+
+Subagent lane (audit REPORT.md B3): two gaps closed, four commits.
+
+## GAP 1 — doc-frank-frankenstein had no moveset file, no MOVESET_MAP entry
+- New `game/assets/movesets/doc-frank-frankenstein.json`: derived from
+  `doc-frank-hood.json` (same fighter DOC FRANK, same gunjack T3 teardown
+  source, same SOURCE-MERGE lineage). Verified: hood and wowomomo share a
+  byte-identical 788-move dict under their own ids, so sibling attire =
+  identical frame data is the established convention. Only the `fighter` id
+  and a new `derivation` provenance object changed; all frame data
+  (moves/strings/specials/slots/hit_words/stance_after/merge_sources)
+  verified byte-identical to the source file. No hand-authored frame data
+  (docs/RULES_NO_GUESSING.md). The repo's own generator
+  (tools/gen-movesets-t3.py) could not be re-run here: the decoded bank data
+  (teardown/tekken3/movesets, banks/) is not in this checkout.
+- `game/js/movesets.js`: added 'doc-frank-frankenstein' to MOVESET_IDS
+  (commented, matching list style).
+- `game/js/fighter.js`: added 'doc-frank-frankenstein': 'gunjack' to
+  MOVESET_MAP (beside the sibling doc-frank entries).
+- `game/assets/movesets/index.json`: added the fighters entry, computed with
+  the tool's own formula (tools/moveset-merge/merge_sources.py build_index):
+  display DOC FRANK, tekken_base "Doc Frank", t3_source gunjack,
+  anim_bank bosconovitch, moves 788, inputs 176, bytes 568638.
+- `game/tests/fighter-completeness.test.mjs`: removed
+  'doc-frank-frankenstein' from KNOWN_GAPS. Test run: 4/4 pass
+  (node --test game/tests/fighter-completeness.test.mjs).
+
+## GAP 2 — charger-attire2.json on disk but never fetched
+- File existed on disk and 'charger-attire2' was already in MOVESET_IDS
+  (movesets.js:69), but absent from `game/assets/movesets/index.json`, so
+  runtime _fetchOne skipped it and Charger Attire 2 fought on the bryan
+  aggregate. Added the index entry with the tool's formula: display CHARGER,
+  tekken_base "Blanka (SF) — fighter replaced by CHARGER (owner 2026-10-20)",
+  t3_source bryan, moves 199, inputs 199, bytes 92625 (real file size;
+  charger's own entry is 94261).
+- Index key order verified identical to a fresh build_index() run.
+
+## Noted, not in this lane's scope
+- `deathfang-werewolf.json` exists on disk but is also absent from
+  index.json (found while verifying build_index()). Left alone; belongs to
+  another lane.
+
+## Instruction-gate episode (same PR, follow-up note)
+- The `instruction-gate` CI check failed on the first PR body (AGENTS.md law 15:
+  the body must carry the six sections Owner instruction / Method specified /
+  Method used / Deviations / Proof / Self-check). Rewrote the body with those
+  sections verbatim; validated it locally against the repo's own gate script
+  (.github/scripts/instruction_gate.py::check) before pushing the update.
+- Note for future lanes: editing the PR body via the API did NOT retrigger the
+  workflow (no new run appeared for the `edited` event; close/reopen did not
+  either). A fresh `synchronize` (this commit) was needed to get a new run
+  with the fixed body in the event payload. (Same experience as Lane 1 on
+  PR #471.)
+
 # WORKLOG — B6 lane 3: drop ryuji-rock roster entry + Vega-style T3 bone remap for Slice (2026-10-21, branch fix/ryuji-slice-20261021)
 
 ## Item 1 — drop ryuji-rock roster entry (model pending owner Tripo link)

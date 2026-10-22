@@ -76,6 +76,9 @@ export const MOVESET_IDS = [
   // Custom fighters (owner 2026-10-19): KORESHI (owner creation).
   // (deathfang already listed above; not duplicated.)
   'koreshi',
+  // Doc Frank Frankenstein attire (moveset lane 2026-10-21): full gunjack set,
+  // sibling attire of doc-frank-hood (identical T3 source data, same DOC FRANK).
+  'doc-frank-frankenstein',
 ];
 
 const _movesets = {};
