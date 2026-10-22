@@ -49,6 +49,14 @@ assignment flows are **tap / scroll + tap-to-assign, NEVER drag-and-drop**; deca
 placement by touch-glide is a *placement* gesture on the mesh, not an assignment
 drag — layer reordering is by tap controls, not dragging).
 
+ALL-MENUS RULE (owner directive 2026-10-21 ~19:47 CDT, generalized from the
+stage-select playtest, §F): **EVERY menu in the game — main menu, character
+select, stage select, customization, pause — takes its layout from the Tekken
+games' teardown files.** Hand-tooled menu inventions are banned across the
+board, not just in the suite. A menu whose layout cannot be traced to the
+teardown files is a defect, the same as a control that does not change the
+preview.
+
 ## (A) CHARACTER SELECT — replaces the current select layout
 
 Tekken 8 structure:
@@ -154,6 +162,64 @@ with thumbnails captured by the photo booth. This extends (does not replace) the
 existing per-attire `customization.json` record: slots 1–2 map to the canon
 attires, slots 3–10 to custom slot files.
 
+## (F) STAGE / ARENA SELECT — Tekken pattern (owner directive 2026-10-21 ~19:47 CDT)
+
+Stage select is under the SAME law as character select (§A) and the suite:
+its layout comes from the **Tekken games' teardown files**, never a hand-tooled
+menu. It sits in the flow between character confirm (§A lock-in) and the fight,
+and it is a gate, not a dead end: a player who reaches it can always see every
+stage, pick one, and continue.
+
+**Required pattern (Tekken stage select):**
+
+- **Scrollable thumbnail grid** of stages. Every stage in the game is reachable
+  by touch scrolling, in portrait AND landscape. A stage that exists but cannot
+  be scrolled to does not count as offered.
+- **Large live preview that tracks the highlight.** Highlighting a stage
+  immediately shows THAT stage in the preview. The preview, the highlighted
+  card, and the name/description must always agree — never a banner naming one
+  stage while another is highlighted.
+- **Name/description INSIDE the layout** — in a fixed layout region sized for
+  the text (wraps, never runs off the screen edge), never a floating overlay
+  banner covering the preview.
+- **Unique thumbnail per stage**, captured from that stage itself. Two stages
+  sharing one thumbnail image is a defect.
+- **A Random option** in the grid, like Tekken's.
+- **An always-visible confirm path into the fight.** Confirm is on screen at
+  all times (not scrolled away, not hidden behind the preview or a banner);
+  tapping a highlighted stage and confirming starts the match on that stage.
+- **Portrait law applies in full** (same as §C): on the owner's portrait phone
+  the grid, the preview, and confirm are ALL visible/usable — the grid may
+  reflow as a sheet, but the preview is never the only thing on screen and
+  confirm never disappears.
+- **Content + provenance:** stages are Western Heart's stages, drawn from the
+  teardown libraries (the current list is the WWF No Mercy arena set —
+  SmackDown, Royal Rumble, King of the Ring, SummerSlam, Backlash, Armageddon —
+  plus WH-original stages such as Shrine of the Blade). Every stage card
+  carries its TRUE source (e.g. "WWF No Mercy (N64)"), same provenance law as
+  parts.
+
+**Playtest evidence (owner, live site, 2026-10-21 ~19:46 CDT —
+`~/workspace/user/files/1000176061_0_8bqs.png`,
+`~/workspace/user/files/1000176060_1_waxj.png`,
+`~/workspace/user/files/1000176059_2_fghu.png`; verified with my own eyes
+2026-10-21):** the current hand-tooled stage select is a DEAD END —
+
+1. The stage list **cannot be scrolled**; not all stages can be seen, and in
+   portrait (1000176059) the grid is not visible at all — only the preview and
+   a description strip.
+2. There is **no visible way to continue to the fight** from this screen.
+3. The description banner **overlays mid-screen** and its text **runs off the
+   right edge** ("ARMAGEDDON — The real No Mercy Armageddon arena. Extracted
+   from th…", "…Paper lanterns cast warm lig…").
+4. **Every stage card shows the SAME thumbnail** (one identical red-rope ring
+   image on SmackDown / Royal Rumble / King of the Ring / SummerSlam /
+   Backlash / Armageddon).
+5. **Preview/description disagree with the highlight:** the banner reads
+   "SHRINE OF THE BLADE" while ARMAGEDDON is the highlighted card
+   (1000176060), and the preview behind the grid is a near-empty dark space
+   with floating quads rather than the highlighted stage.
+
 ## PARTS PROVENANCE LAW (owner, standing)
 
 Parts come from ALL teardown libraries, wired in AND usable: **No Mercy,
@@ -215,6 +281,9 @@ engine-agnostic layers are built:**
    portrait tap-open sheets; preview never blocked.
 3. Slot bridge + base-template picker (template families + roster characters).
 4. In-game CUT control + placement surface (bake already honors the fields).
-5. Select screen (§A) and photo booth (§B exit).
+5. Select screen (§A), stage select (§F — scrollable grid, tracking preview,
+   in-layout description, random, always-visible confirm), and photo booth
+   (§B exit). Every other menu (main menu, pause) is laid out from the Tekken
+   teardown files per the ALL-MENUS RULE — no hand-tooled menus anywhere.
 6. Deep-stack systems (§D) in drawer order: morphs/chimeras → 4-tier layering +
    modular hair → bling sockets → decals → action preview.
