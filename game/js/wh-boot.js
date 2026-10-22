@@ -5,7 +5,8 @@
    2. touch-button remap -> .act-btn dataset (joystick untouched)
    3. match-result observer -> currency + Soul Cache awards + titles
    4. player card/name/title onto the versus HUD nameplates
-   No edits to main.js / game.js / fighter.js required.
+   5. worker-37 T8 menu: runtime card injection (SIDE GAMES / OPTIONS)
+   No edits to main.js / game.js / fighter.js / mainmenu.js required.
    ============================================================ */
 (function () {
   'use strict';
@@ -64,7 +65,46 @@
         }
       }).observe(hud, { attributes: true, attributeFilter: ['class'] });
     }
+
+    /* 5. worker-37 T8 menu integration (runtime, no file edits on their lane):
+          inject worker-35 cards into their submenus when they open. */
+    injectMenuCards();
   });
+
+  /* Worker 37 owns the T8 main menu (game/js/mainmenu.js). We do NOT edit
+     their files or the menu markup. Instead, when their SIDE GAMES / OPTIONS
+     submenus open, we append our cards (same .mm-card grammar) linking to
+     our standalone pages. Graceful no-op if their structure changes. */
+  function injectMenuCards() {
+    var submenu = document.getElementById('mm-submenu');
+    var titleEl = document.getElementById('mm-sub-title');
+    var wrap = document.getElementById('mm-cards');
+    if (!submenu || !titleEl || !wrap || !window.MutationObserver) return;
+    var CARDS = {
+      'SIDE GAMES': [
+        { wh: 'w35-sidegames', badge: 'NEW', t: '🎮 MYTHOLOGY GAMES', d: 'Festival games, spirit trials, yokai pastimes — Tekken Bowl-style, drawn from world mythologies. Two playable now.', href: 'side-games.html' },
+      ],
+      'OPTIONS': [
+        { wh: 'w35-identity', badge: 'NEW', t: '🜏 IDENTITY HUB', d: 'Titles, player card, Soul Shards, Soul Caches — your shrine record.', href: 'identity.html' },
+        { wh: 'w35-access', badge: 'NEW', t: '♿ ACCESS & ASSISTS', d: 'Button remapping, colorblind palettes, difficulty assists.', href: 'settings.html' },
+      ],
+    };
+    var maybeInject = function () {
+      if (submenu.hidden) return;
+      var key = (titleEl.textContent || '').trim().toUpperCase();
+      (CARDS[key] || []).forEach(function (c) {
+        if (wrap.querySelector('[data-wh="' + c.wh + '"]')) return;
+        var b = document.createElement('button');
+        b.className = 'mm-card hot';
+        b.setAttribute('data-wh', c.wh);
+        b.innerHTML = '<span class="mm-badge">' + c.badge + '</span><h3>' + c.t + '</h3><p>' + c.d + '</p>';
+        b.addEventListener('click', function () { window.location.href = c.href; });
+        wrap.appendChild(b);
+      });
+    };
+    new MutationObserver(maybeInject).observe(submenu, { attributes: true, attributeFilter: ['hidden'] });
+    new MutationObserver(maybeInject).observe(wrap, { childList: true });
+  }
 
   function awardForResult() {
     var I = window.WHIdentity;

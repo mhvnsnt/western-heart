@@ -242,13 +242,24 @@ strong kanji identity) and Oni Hunt (projectile scoring reuses fight input).
 
 ## FILES (no deletions; 2 surgical edits, rest new)
 - `game/js/identity.js` — NEW: profile core (titles/cards/currency/loot/remap/CB/assists)
-- `game/js/wh-boot.js` — NEW: boot wiring (CB class, touch remap, result observer, HUD nameplate)
+- `game/js/wh-boot.js` — NEW: boot wiring (CB class, touch remap, result observer, HUD nameplate, runtime menu-card injection into worker 37's T8 menu)
 - `game/identity.html` — NEW: player hub
 - `game/settings.html` — NEW: accessibility page
 - `game/side-games.html` — NEW: hub + 2 playable prototypes + 10 concept cards
 - `game/css/identity.css` — NEW: shared page styles + card preview
 - `game/css/colorblind.css` — NEW: HUD palettes
-- `game/index.html` — MODIFIED (surgical): 3 menu links, colorblind.css, identity+boot scripts
+- `game/tests/identity-logic.test.mjs` — NEW: 8 node:test guards
+- `game/index.html` — MODIFIED (surgical): colorblind.css link + identity/boot script tags ONLY. No menu edits — worker 37 owns the T8 menu; our pages are linked from their SIDE GAMES / OPTIONS submenus via runtime injection (wh-boot.js), zero edits to their files.
 - `game/js/input.js` — MODIFIED (surgical): `_remapCode`, remap-aware keyup, assist hooks in `_push`
 - `docs/identity/IDENTITY-CANON-MAPPING.md` — NEW: this file
 - `docs/workflows/2026-10-22-player-identity-accessibility-sidegames.md` — NEW: work log
+
+## COORDINATION NOTE (worker 37 / menu lane)
+Worker 37's T8 menu already ships a top-bar player card + card editor (name/title)
+and SIDE GAMES / OPTIONS submenus. Our systems complement, not duplicate:
+- Our `identity.html` is the FULL hub (title *unlocks*, card cosmetics, currency
+  ledger, loot) — their editor is the quick top-bar version. Long-term, their
+  top bar could read `WHIdentity` (single profile store); flagged, not wired,
+  to avoid touching their lane.
+- Our submenu cards are injected at runtime; if they prefer native cards in
+  `SUBMENUS`, the card defs are one-line each (see wh-boot.js `CARDS`).
