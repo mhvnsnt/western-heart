@@ -92,3 +92,18 @@ tentacles. This is a real stage of the transformation.
   spirit entity animation, flame-flow appendages, the spine attachment)
   are design requirements logged in RIG-NOTES.md — the wired models are
   static Tripo meshes that receive their rigs at the rig stage.
+
+## Rigged transformations (2026-10-22)
+
+Each form now has a built, gate-passed rig on the SAME attire, wired to the
+forms chain above:
+- `spirit-body-rigged.glb` (49j): `ZEN_IDLE`, `ZEN_MANIFEST`
+- `spirit-entity-rigged.glb` (ZenRoot + 20 strands + face): `ZEN_IDLE`, `ZEN_DOCK`
+- `tentacle-mode-rigged.glb` (49j + 12 strands): `ZEN_BUST_OUT`, `ZEN_IDLE`
+- `oversoul-rigged.glb` (49j + 7 strands + face): `ZEN_OVERSOUL_FORM`, `ZEN_IDLE`
+
+Rig-stage GLBs live on draft release `zen-rig-delivery-20261022`
+(byte-exact, own-eyes proof renders in `docs/tpose-refs/zen/`).
+Per-form rig maps + template statement in `roster/zen/RIG-NOTES.md`.
+Clip trigger wiring (e.g. play `ZEN_BUST_OUT` on up-transform to `zen-tentacle`)
+is stand-system work, spec'd in `roster/zen/rigs/RIG-BUILD-REPORT.md`.
