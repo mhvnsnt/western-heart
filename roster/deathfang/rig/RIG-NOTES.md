@@ -140,3 +140,21 @@ folder) writes the diffused skin back. These are the automatic half
 of the fix — the Rig & Pose Studio's manual controls (per-bone
 offset/visibility, weight-brush strokes) cover the same defect class
 by hand in customization.
+
+### Owner comparison gate (2026-10-21 ~20:42-20:46 CDT)
+
+Per the owner's gate, the proof set also includes ORIGINAL-vs-FIXED
+side-by-sides (proof-stance-fix/deathfang-stance-fix-original-vs-
+fixed-human-20261021.png and ...-wolf-20261021.png): the shipped
+PR #443 rigs vs the fixed rigs, same animation (Battle_Idle), same
+frames (t=0.2 / 0.5), same per-model camera derivation — body, head
+crop, face-front crop. The original is the reference for BODY
+INTEGRITY (proportions, bone placement, weights, clean deformation),
+not pose. Read of the sheets (by the fixing lane, own eyes):
+proportions and bind geometry identical on both forms; the
+originals show the defects (human: face turned away, back of head
+to camera, hair fallen down the back; wolf: skull canted ~45 deg,
+eyes at unequal heights); the fixed forms show the same bodies with
+the defects removed and no new deformation. The known above-gate
+stretch (anim_check p99.9 ~4.1-4.6 human, ~6.1-7.3 wolf vs the 2.5
+gate) is unchanged by these sheets and stays declared above.
