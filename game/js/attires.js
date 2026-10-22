@@ -136,15 +136,24 @@ export const ATTIRE_VARIANTS = {
     { model: 'awa-pop', label: 'ATTIRE 1' },
     { model: 'awa-pop-attire2', label: 'ATTIRE 2' },
   ],
-  // Pantera slot order (owner 2026-10-20 swap: Leopard King A6 -> A4,
-  // T7 P2 A4 -> A6). A1 = 'pantera' (T7King reskin, default, in
-  // game/assets). ATTIRE 2 = Leo man (restored to
-  // roster/pantera/attires/leomon/model.glb, 'pantera-leoman' key).
+  /* PANTERA's ladder — owner reorder 2026-10-21: his TRIPO ORIGINALS at
+     the forefront (slots 1-2), the Tekken-version reskins ladder BACK
+     behind them. This supersedes the 2026-10-17 Pantera exception (the
+     T7King reskin sat at Attire 1 because he did the reskin first) and
+     the 2026-10-20 swap. Audited Tripo inventory (roster/TRIPO-REGISTRY.md
+     + docs/ROSTER-COUNT-CANON-2026-10-21.md): exactly TWO Pantera Tripo
+     originals exist — Leo man (owner-provided via Google Drive,
+     'pantera-leoman') and Leopard King (Tripo 094c2f37,
+     'pantera-leopard-king'). The reskins keep their previous relative
+     order behind them. Default = first entry = Leo man (selectedAttireModel
+     returns list[0]). Provenance per slot:
+     roster/pantera/attires/ATTIRE-SLOTS.md. The base 'pantera' MODEL_URLS
+     key itself is untouched — the souled vessels ride it. */
   'pantera': [
-    { model: 'pantera', label: 'ATTIRE 1' },
-    { model: 'pantera-leoman', label: 'ATTIRE 2 · LEO MAN' },
-    { model: 'pantera-snow-leopard', label: 'ATTIRE 3 · SNOW LEOPARD' },
-    { model: 'pantera-leopard-king', label: 'ATTIRE 4 · LEOPARD KING' },
+    { model: 'pantera-leoman', label: 'ATTIRE 1 · LEO MAN (TRIPO)' },
+    { model: 'pantera-leopard-king', label: 'ATTIRE 2 · LEOPARD KING (TRIPO)' },
+    { model: 'pantera', label: 'ATTIRE 3 · T7 KING P1 RESKIN' },
+    { model: 'pantera-snow-leopard', label: 'ATTIRE 4 · SNOW LEOPARD' },
     { model: 'pantera-crimson-rage', label: 'ATTIRE 5 · CRIMSON RAGE' },
     { model: 'pantera-p2', label: 'ATTIRE 6 · T7 P2' },
   ],

@@ -700,6 +700,17 @@ function sourceInfo(skel, THREE) {
     dirs[s + 'Leg'] = d(s + 'Leg', s + 'Foot');
     const tip = P[s + 'ToeBase'] || (skel.foot_tip && skel.foot_tip[s + 'Foot'] ? new THREE.Vector3().fromArray(skel.foot_tip[s + 'Foot']) : null);
     dirs[s + 'Foot'] = tip && P[s + 'Foot'] ? new THREE.Vector3().subVectors(tip, P[s + 'Foot']) : null;
+    // Foot-data sanity (2026-10-22): foot_tip is the centroid of the T3 rig's foot-part vertices
+    // (tools/anim/t3_bank_skeleton.py). Across the 17 banks it sits 0.05-0.21 leg lengths from the
+    // ankle — except bosconovitch, 0.52: his decoded foot part is scattered (27 verts spanning
+    // 45 cm on a 0.35 m leg; the KMD seam-vertex gap in lab/README.md), so its "toe" pointed
+    // ~65-90 deg sideways and Doc Frank's feet splayed out. A centroid further than 0.3 leg
+    // lengths from the ankle is not a foot: such a foot keeps the fighter's own authored foot
+    // relation to its shin instead (same rule as a target foot whose toe points backwards).
+    if (dirs[s + 'Foot'] && P[s + 'UpLeg'] && P[s + 'Leg'] && P[s + 'Foot']) {
+      const legLen = P[s + 'Leg'].distanceTo(P[s + 'UpLeg']) + P[s + 'Foot'].distanceTo(P[s + 'Leg']);
+      if (legLen > 1e-6 && dirs[s + 'Foot'].length() / legLen > 0.3) dirs[s + 'Foot'] = 'leg';
+    }
   }
   skel._info = { order: skel.joints.map(j => j.name), par, dirs, rootY: skel.root_rest_y, P };
   return skel._info;
@@ -769,12 +780,12 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
   for (const c of Object.keys(src.dirs)) {
     const ds = src.dirs[c], dt = rig.dirs[c];
     A[c] = new THREE.Quaternion();
-    if (ds && dt && dt !== 'leg' && ds.lengthSq() > 1e-10 && dt.lengthSq() > 1e-10) {
+    if (ds && dt && ds !== 'leg' && dt !== 'leg' && ds.lengthSq() > 1e-10 && dt.lengthSq() > 1e-10) {
       A[c].setFromUnitVectors(dt.clone().normalize(), ds.clone().applyQuaternion(F).normalize());
     }
   }
   for (const s of ['Left', 'Right']) {
-    if (rig.dirs[s + 'Foot'] === 'leg') A[s + 'Foot'] = A[s + 'Leg'];
+    if (rig.dirs[s + 'Foot'] === 'leg' || src.dirs[s + 'Foot'] === 'leg') A[s + 'Foot'] = A[s + 'Leg'];
     A[s + 'Hand'] = A[s + 'ForeArm']; A[s + 'ToeBase'] = A[s + 'Foot'];
   }
   // Hips position: parent space transform + hip-height scale.
