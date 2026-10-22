@@ -257,3 +257,37 @@ Owner: "his whole body is facing the wrong way and his head is facing the right 
   with a triangle-based decimate target (zui-attire1 heat failed for every vertex before).
 - Not done here: Phantom and Sam-ur-a1 models have ZERO skinned meshes (unrigged statics, on main
   since 2026-10-18) — queued for the auto-rig pass with Zui/Diablo/Rave.
+
+## 2026-10-21 — Lane 1: playability code fixes (B1 / B4 / B5)
+
+Branch: `fix/playability-code-fixes-20261021`. Three audit blockers from
+~/workspace/audit/REPORT.md fixed as code-only changes (no asset changes).
+Tool: GitHub Git Database API (no git push available on the VM).
+
+- **B1 (fight-start hang)** — `game/js/assets.js` ~line 634: the `_facingReady.then(...)`
+  gate in `loadModels`/`loadOne` had no rejection handler and the 90s
+  `LOAD_TIMEOUT_MS` was disarmed before it, so a throw in `feetFacingCue` or an
+  unsettled `_facingReady` hung `startFight` forever ("Entering the arena…").
+  Now: try/catch around the facing computation defaulting to +Z (with a
+  `[WH]` console.warn), plus a rejection handler that also defaults to +Z and
+  resolves — the load can never hang on the facing gate.
+- **B4 (stuck always-on aura)** — `game/js/fighter.js` `_enter(state)` (~line 838):
+  clears `this.attack`/`this.attackName` when leaving the attack state, so an
+  interrupted Soul Surge (receiveHit → hitstun/knockdown/ko, throw-lock) can no
+  longer latch `attackName === 'surge'` and stick the aura on permanently.
+  Belt-and-suspenders in `game/js/game.js` `_startRound()` (~line 151): clears
+  both fighters' `attack`/`attackName` on round reset (that path assigns
+  `state=` directly, bypassing `_enter`).
+- **B5 (unguarded `char.surge.*` reads)** — `game/js/game.js` lines 255-256, 400,
+  453-454: 45 of 59 roster entries have no `surge` object; a full-meter surge
+  threw `TypeError`. Now uses `?.` with fallbacks mirroring the existing guard
+  in `fighter.js:388-389` (`surge ? surge.color : colors.trim`; accent → `0xffffff`;
+  name → `'SOUL SURGE'`). Checked existing `surge.name` values in
+  `game/js/roster-full.js` (e.g. "PANTHER'S WRATH", "COLD FLAME") before picking
+  the generic fallback.
+
+Verification: `node --check` clean on all three modified files; edited regions
+re-read to confirm exact placement; no secret-like patterns (gitleaks not
+installed on this VM — grep scan instead, clean). Repo laws respected: one
+commit per change, feature branch + PR, merge via API only when mergeable and
+CI green.

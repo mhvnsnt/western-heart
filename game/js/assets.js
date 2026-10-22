@@ -632,8 +632,18 @@ class AssetManager {
             this.groundY[id] = Number.isFinite(y0) ? y0 : 0;
           }
           _facingReady.then(() => {
-            const rec = _facingTable && _facingTable[id];
-            this.facing[id] = rec === '-Z' ? -1 : rec === '+Z' ? 1 : (feetFacingCue(gltf.scene) || 1);
+            try {
+              const rec = _facingTable && _facingTable[id];
+              this.facing[id] = rec === '-Z' ? -1 : rec === '+Z' ? 1 : (feetFacingCue(gltf.scene) || 1);
+            } catch (e) {
+              console.warn(`[WH] facing cue failed for ${id}, defaulting to +Z:`, (e && e.message) || e);
+              this.facing[id] = 1;
+            }
+            resolve();
+          }, () => {
+            // The facing table never settled: never let this gate hang the load.
+            console.warn(`[WH] facing table unsettled for ${id}, defaulting to +Z`);
+            this.facing[id] = 1;
             resolve();
           });
         },
