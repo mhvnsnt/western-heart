@@ -92,15 +92,17 @@ export const MODEL_URLS = {
   // old-man form; binds normalized in PR #465 (178 joints, rigged).
   'doc-frank-a1': '../roster/doc-frank/attires/attire1/pre-transform/model.glb',
   // Doc Frank post-transform bigger form (owner 2026-10-19, Tripo pull).
-  'doc-frank-big': '../roster/doc-frank/attires/attire1/post-transform/model.glb',
+  // Rigged 2026-10-21 (Tripo-forefront lane): model-rigged.glb carries the
+  // pre-form's 178-joint rig via the repo k-NN transfer; original untouched.
+  'doc-frank-big': '../roster/doc-frank/attires/attire1/post-transform/model-rigged.glb',
   // Wave 2 (2026-10-19): Wowomomo Attire 2, Hood Scientist Attire 3, Demonio forms, Dxmmii Attire 2.
   'doc-frank-wowomomo': '../roster/doc-frank/attires/attire2/base/model-rigged.glb',
-  'doc-frank-wowomomo-big': '../roster/doc-frank/attires/attire2/transformed/model.glb',
+  'doc-frank-wowomomo-big': '../roster/doc-frank/attires/attire2/transformed/model-rigged.glb',
   'doc-frank-hood': '../roster/doc-frank/attires/attire3/base/model.glb',
-  'doc-frank-hood-big': '../roster/doc-frank/attires/attire3/transformed/model.glb',
+  'doc-frank-hood-big': '../roster/doc-frank/attires/attire3/transformed/model-rigged.glb',
   // Attire 4 "Frankenstein's Cyborg" (owner 2026-10-19): two-form transform attire.
   'doc-frank-frankenstein': '../roster/doc-frank/attires/attire4/base/model-rigged.glb',
-  'doc-frank-frankenstein-big': '../roster/doc-frank/attires/attire4/transformed/model.glb',
+  'doc-frank-frankenstein-big': '../roster/doc-frank/attires/attire4/transformed/model-rigged.glb',
   'demonio-a1': '../roster/demonio/attires/attire1/model.glb',
   'demonio-winged': '../roster/demonio/attires/winged-devil/model-rigged.glb',
   'demonio-human': '../roster/demonio/attires/human/model-rigged.glb',
