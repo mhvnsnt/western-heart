@@ -453,11 +453,8 @@ POSITION and NORMAL both rotated. Blender 4.0.2 renders viewed before/after.
   in-game, not fixed.
 - doc-frank-wowomomo and doc-frank-frankenstein model-rigged.glb files exist
   on main but are UNWIRED (assets.js points to unrigged model.glb). Not fixed.
-
 ## 2026-10-22 — loadspeed lane: menu load speed (worker 4 of 4)
-
 Owner: "we need to make the menus look a little cleaner and load a little faster because they take forever to load..."
-
 AUDIT (tools/loadbench/ — Node harness replaying each transition's fetch
 sequence with 6-way parallelism + V8 parse timing; localhost = lower bound):
 - T1 boot→menu: 43 files, 2.00 MB JS, ~330ms + ~105-210ms parse. All 39 JS
@@ -468,7 +465,6 @@ sequence with 6-way parallelism + V8 parse timing; localhost = lower bound):
 - T3 select→stage: 41 thumb PNG requests (3.25 MB) + 17 that 404'd.
 - T4 card tap→preview: 17-22 MB Tripo GLB per tap; superseded taps kept
   downloading in the background, stealing the new tap's bandwidth.
-
 TEKKEN TECHNIQUES PULLED IN (from teardown/):
 - Tekken 3 BNS "index first, records on demand" (tekken3/docs/TEKKEN3-ARCHITECTURE.md):
   new game/js/lazy.js — fighter/movesets/t3anims/modes/heartmind/episodes/
@@ -482,7 +478,6 @@ TEKKEN TECHNIQUES PULLED IN (from teardown/):
   → game/assets/stages/thumbs/atlas.png + atlas.json; 41 requests → 2.
 - game/js/loadperf.js: boot→menu / menu→select / select→stage /
   highlight→preview marks (window.__loadperf.summary()).
-
 AFTER (same harness): T1 38 files/1.78 MB; T1b 3 files/0.05 MB;
 T2 0 blocking bytes (24.07 MB idle lane, custom base skipped when absent);
 T3 2 files/3.34 MB; T4 aborts + full-pipe. Verified: node --check ×8,
@@ -491,3 +486,210 @@ abort, dedup, idle warm, lazy module caching), atlas coverage 41/58 stages
 (17 thumb-less keep swatch fallback = old onerror behavior).
 Inputs untouched. Select grid untouched (worker 1).
 Full writeup: docs/research/menu-load-speed-2026-10-22.md.
+
+## 2026-10-22 — Engine decision deep research (Claude session, branch claude/amazing-keller-p8644u)
+
+Owner: "WebGL and Three.js are permanently stripped ... Godot 4 native mobile ... Or even whatever's
+better than that ... based on research, deep research", judged on this build, direct APK (no store),
+what each engine costs when the game sells, roster more than 36 fighters.
+
+- Method: five parallel research agents (Godot 4.7/4.8; Unity 6 vs Unreal 5.8; open-source engines;
+  fighting-game engine ecosystem; repo migration constraints from a local repo scan), then one report
+  writer over the five notes. Web sources are linked inline; repo facts link to commit e3ae81b76.
+- Output: `docs/ENGINE-DECISION-2026-10-22.md` (recommendation: stay on Godot, 4.3 -> 4.7.x now, 4.8
+  when stable; $0 at any sales level; signed arm64 APK from Linux CI). Notes:
+  `docs/research/engine-2026-10-22/*.md`.
+- Roster count from the repo scan: 58 FULL_ROSTER entries / 49 display names / 50 model keys.
+- Unverified items are listed in the report's last section. No Godot binary in this container, so
+  the Lab tests were not re-run.
+
+## 2026-10-22 — BATCH-RIG SWEEP, batch 1: awa-pop attire2 (DoggByte subagent)
+
+Owner directive: EVERY static/unrigged model in the roster gets rigged in ONE sweep.
+Parent refinements applied: (1) proof needs BIND + IDLE STANCE + ANIMATION (T-pose alone
+insufficient — the Julia backwards-shins case); (2) identity canon: Rave = Kiko Tanaka =
+Ghost (one fighter), Mary Posa OVER Zafina, Doc Frank = Bosco, Yoshimitsu ladders into
+Phantom; Tripo-first display order (Pantera A1 sole exception).
+
+### Enumeration (current main c4be0d1, verified via GLB header scan)
+- 114 unique wired files (119 MODEL_URLS keys): 28 already rigged (*-rigged.glb),
+  1 rewire-only (`burger-demon` -> existing burger a1 model-rigged.glb),
+  26 TRUE STATICS (verified skins=0), 1 missing (ryuji-rock — blocked, needs owner's Tripo link).
+- Full list: ~/workspace/fix2/BATCHRIG-ENUMERATION.md
+- 23 dense Tripo (~1M verts) + 3 light (10-12k verts). Zen's spirit body NOT FOUND on disk
+  (searched WORKLOG, roster/, intake-stage/, game/assets/models/) — needs location from coordinator.
+
+### Batch 1: awa-pop attire2 (dense Tripo, 1,009,108 verts)
+- Tool: tools/auto_rig/rig_tripo_static.py (GameRig heavy path, Blender 4.0.2).
+- Result: PASS. Proxy heat (9 unweighted / 14k proxy verts), 681 fixed on full mesh (0.07%).
+  smooth_weights: round 0 p99.9 = 1.24 (gate 2.5) — SMOOTH_OK, no edges above threshold.
+  validate.py: PASS. anim_check (CMU boxing): p999 1.24.
+- Proof: bind renders (front/back/side, viewed — clean), CMU clip renders, stance proof
+  via tools/auto_rig/stance_proof.py (T3 nina bank: neutral stance + walk, foot-yaw check).
+- Output: roster/awa-pop/attires/attire2/model-rigged.glb, wired to `awa-pop-attire2` key.
+
+### Pipeline fixes (in this batch)
+- tools/auto_rig/rig_tripo_static.py: added `--python-exit-code 1` to Blender invocations.
+  Blender 4.0 does NOT propagate Python exceptions to the exit code by default; a failed
+  Blender step silently continued to smoothing (found on blanka pilot).
+- tools/auto_rig/rig_tripo_static.py: add ~/workspace/tools/syslibs/{egl,gl} to
+  LD_LIBRARY_PATH when present (this VM). render_poses.py crashed with missing libEGL.so.1.
+- NEW tools/auto_rig/stance_proof.py: T3 stance/walk proof (world-delta retarget, same math
+  as t3anims.js retargetT3Clips + bankFacing correction). Renders stance front/side + walk
+  mid; reports foot yaw in stance (backwards-feet check). Pose-and-render (no keyframing)
+  for speed on dense meshes.
+
+### Failure case: blanka (light, 10,321 verts)
+- GameRig direct bone-heat FAILED: 2,100/10,321 verts unweighted (20%). p999 52.76,
+  mesh tears in stance. NOT SHIPPED. Needs k-NN from donor or blender-heat backend.
+- pantera crimson-rage + p2 (11k verts) likely same — will try k-NN from pantera.glb.
+
+### Provenance
+- Input: roster/awa-pop/attires/attire2/model.glb (Tripo pull, on main).
+- Donor clip: assets/free-pull-1/cmu-mocap/fighting/135_04.bvh (CMU, on main).
+- Bank: game/assets/anim/t3/nina/ (awapop -> nina per fighter.js bankIdFor override).
+
+## 2026-10-22 — SmutBase intake sweep (DoggByte subagent)
+
+Standing order: every SmutBase model in `~/workspace/browser_downloads/` gets
+pulled into the repo and wired up. 15 downloads intaken this round.
+
+**Landed in-repo (this + 2 follow-up PRs):**
+- `docs/SMUTBASE-INTAKE-QUEUE.md` — the living queue + manifest (all 15 models,
+  hashes, per-model notes, next steps).
+- `roster/rahkasa/intake/RahkasaV1.1.blend` — four-armed female, user's
+  Oversoul spirit-body pick (Eastern Mind canon).
+- `roster/mina-ashido/intake/`, `roster/miruko/intake/`, `roster/tsuyu-asui/intake/`
+  — Rigify/IK .blends + textures, original names kept so `//` relative texture
+  paths stay linked.
+- `game/assets/stages/pink-narwhal/` — arena asset (NOT a character). Open
+  question: is this the club/DJ base (b8ada591) from CLUB-ARENA-PLAN.md?
+  Needs a Blender look before the arena lane builds on it.
+- `game/assets/materials/fishnet/` — fishnet material (RenCeifer), shared
+  material for the customization suite.
+
+**Staged in workspace (over the 95MB blobs-API limit / third-party code —
+registered in the queue doc, not committed):**
+- `~/workspace/fix2/lily/` — Lily donor, 2.6GB extracted (rig/skeleton donor
+  for the female roster, user-approved body reference).
+- `~/workspace/fix2/smutbase-source/{cydney,nyoka,parvati,vixen}/` — 541MB /
+  557MB / 596MB / 985MB .blends. Cydney: size up breasts/ass at rig time.
+  Vixen: needs a full Tekken-notation moveset (not her source game's inputs).
+- `~/workspace/fix2/smutbase-source/movie-maddness/` — 929MB .blend, contents
+  unidentified, NOT intaken as a character.
+- `~/workspace/fix2/smutbase-source/tools/{fluidpainter-nsfw,buildabod-male,buildabod-female}/`
+  — Blender addons (third-party code stays out of the repo tree per owner law).
+
+**Notes:** Nyoka.rar downloaded twice, byte-identical (md5 e16869e3…),
+extracted once. Miruko, Tsuyu, movie-maddness + 3 addon zips were not on the
+queue list — intaken anyway. Still incoming: SmutBase 22968842 (camel-toe
+check at intake: removable vs painted-on), 91fca296, 0b8ceb43, c278fcf4.
+`tools/tripo-intake/` does not apply (Tripo GLB pulls only); Blender rig lane
+owns the next step. Blender is not installed on this VM.
+
+## 2026-10-22 — Torch Attire 2 "Red demon" wire-in (Muse subagent lane)
+
+- PULLED the owner's Tripo link (2026-10-21 ~22:40 CDT,
+  7f8c7874-de2a-438f-a84f-744d1eef21e9) with `tools/tripo-pull/tripo-pull.py`
+  ONLY. The pull first failed 14x: the egress proxy severed every urllib
+  response from api.tripo3d.ai mid-body (IncompleteRead at 3-80 KB) while
+  curl completed the same GET in ~1.5 s (diagnosed read-only; API code 0,
+  link valid, never a login issue). Fixed at the source in tripo-pull:
+  IncompleteRead is now retryable and both the GET and download paths fall
+  back to a curl transport. Installed copy + this repo copy patched.
+- Raw statue: 18,006,604 B, sha256
+  52e6840dbc07ec670a75514ffa4252c4bf497292399e2c28e490e4e3450a99c7,
+  1,029,809 verts, 3 embedded textures, unrigged. Archived in release
+  `torch-a2-tripo-20261021` (asset digest verified == local sha256).
+- Facing measured on the decoded mesh before rigging: foot-vs-shin cue
+  +0.055 on X, -0.005 on Z — toes point +X; rigged with `--facing +X`.
+- Rigged via `tools/auto_rig/rig_tripo_static.py` (the PR #570-patched
+  intake) onto the 73-joint GameRig template. Report + gate renders:
+  `docs/proof/claude-2026-10-22/auto-rig-torch-a2/`.
+- Wired as Attire 2: `game/js/assets.js` MODEL_URLS `torch-tripo-a2`,
+  `game/js/attires.js` picker ladder (1 Valkyrie of Flame / 2 Red demon /
+  3 Anna Base fallback). Attire 1 untouched; her roster default stays
+  `torch-tripo-a1`. Name + owner description recorded verbatim in
+  `CANON.md` and `roster/torch/ATTIRE-SLOTS.md`.
+- Proof render (own eyes): `torch-a2-reddemon-front-20261021.png`.
+- Resume addendum (2026-10-22, second lane): the wrapper run OOM-died
+  (137) three times in the clip bake, so the ship model was produced by
+  the identical gamerig backend run without the optional donor clip
+  (manual-backend-noclip.sh, wait-gated to a zero-Blender window;
+  BACKEND EXIT 0, heat clean first proxy — 23,942 proxy verts, 0
+  unweighted), then the wrapper's own finisher steps (finish-rig.sh):
+  validate PASS (missing_bones []), pose renders, meshopt encode to
+  28,530,756 B. smooth_weights exited "no animations to evaluate
+  against" — no smoothing applied. Full deviations in the PR body.
+
+---
+
+# WORKLOG — Character-select dedup, Mariposa/DXMMII ladder completion (2026-10-22, worker 3/4 of select overhaul)
+
+Owner instruction (verbatim): "all of the character slots need to be fixed to
+where it's no duplicates showing it's no duplicate images showing and no
+duplicate fighters only duplicates will be like the ladders of the attires of
+you know the Tekken characters coming later after the proprietary characters
+in the attire list"
+
+## Situation found
+The working snapshot this lane started from predated main: the 9 duplicate
+select entries (DEMONIO x4, DOC FRANK x5, CHARGER x2, KRONOS x2) were ALREADY
+removed on main at e8562339a5df ("48 selectable fighters", owner rule
+2026-10-22: attires ladder, never stand alone as selectable cards). Rebased
+onto main instead of re-applying — no clobber of the Torch/Doc-Frank
+Tripo-first ladder reorders or the Zen forms work that landed meanwhile.
+Remaining gaps closed by this lane (all per the slot maps + display-order law):
+
+## Changes (data/wiring only — select-screen.js untouched)
+- game/js/roster-full.js: 'mariposa-monarch' default model ->
+  'mariposa-butterfly-default' (her owner-designated Slot 1, 2026-10-19);
+  'dxmmii-patchwork' default model -> 'dxmmii-tripo' (his Slot 1 Tripo
+  Default). Entry ids deliberately KEPT (EPISODES, HEARTMIND_STORIES,
+  MOVESET_MAP, moveset files, portraits keyed by them; Fighter._movesetId =
+  charData.id so renaming would silently switch moveset files).
+- game/js/attires.js: 'mariposa-monarch' ladder corrected to slot-map order —
+  Butterfly Default / Tripo / Monarch / Tekken Zafina back-slot (was missing
+  Slot 1 and the Zafina ladder-back; 'mariposa-slot2' dropped, byte-identical
+  to 'mariposa' per roster/TRIPO-REGISTRY.md). 'dxmmii-patchwork' ladder
+  corrected — Tripo Default / Patchwork DJ / Blockhead (was leading with the
+  retired wooden-dummy 'dxmmii' base).
+- game/js/assets.js: new MODEL_URLS keys 'mariposa-butterfly-default'
+  (roster/zafina/attires/butterfly-default/mariposa-butterfly-default.glb)
+  and 'dxmmii-tripo' (roster/dxmmii/attires/attire1/model.glb); both GLBs
+  verified (glTF magic).
+- game/data/tripo-fighters.json: regenerated via tools/roster/tripo_fighters.py.
+- tools/roster/audit_select_dedup.py: NEW — asserts zero duplicate fighter
+  identities, zero duplicate card images, every ladder model key resolves.
+  Kept in repo for CI.
+
+## Canon applied / confirmed
+- Rave = Kiko Tanaka = Ghost: one entry ('rave'). Phantom = select entry,
+  Yoshimitsu ladders as T8. Doc Frank = Bosco: one entry. Charger = Blanka
+  replacement, no Blanka slot. Mary Posa over Zafina: one MARIPOSA entry,
+  Zafina only as back-slot attire. (Repo canon name is MARIPOSA —
+  butterfly-themed, owner-approved across PRs/renders; "Mary Posa" appears
+  nowhere in-repo, reads as voice-typed "mariposa". Kept MARIPOSA; flagged
+  for owner confirm in docs/owner-directives.md.)
+
+## Verification
+- node --check clean on roster-full.js, attires.js, assets.js.
+- Audit: 48 select entries, ZERO duplicate fighter identities, ZERO duplicate
+  card images. The audit also caught collateral damage from PR #579's stale
+  commit (see AGENTS.md anti-clobber entry 2026-10-22): it had wiped the
+  MODEL_URLS keys 'torch-tripo-a1', 'torch-tripo-a2' and 'doc-frank-a1' from
+  game/js/assets.js (keys present at e8562339 with owner comments; GLB files
+  intact in the repo). Restored verbatim in this lane — Torch live again.
+  One genuine pre-existing gap remains, NOT fixed (model file absent from the
+  repo; not guessed/faked): 'zen-attire1' (Zen Attire 1 Spirit Body Tripo
+  8c46e379; main's WORKLOG already records "zen transform targets (never
+  wired on main)"). Flagged for the model lane.
+- getRosterByTier slices untouched (souls 0-8, main 9-15).
+
+## Flags for the owner (ambiguous — not guessed)
+1. 'ryuji' vs 'ryuji-rock': two slots, distinct concepts — needs owner call.
+2. 'armor-king' holds a slot under its Tekken name (WH rename pending).
+3. 'zangief'/'vega'/'iori' working names pending owner pick.
+4. Kevin's Tripo (kevin-tripo) not in repo — his default stays the Baek model.
+5. Nine Souls sharing the 'pantera' model inherit Pantera's 6-attire picker
+   ladder (attiresFor keys by model) — pre-existing quirk, noted for grid worker.

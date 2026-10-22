@@ -79,11 +79,19 @@ export const ATTIRE_VARIANTS = {
      model, so the whole documented slot map (roster/mariposa/ATTIRE-SLOTS.md:
      "Mariposa is ONE character ... Never split into two characters") was
      unreachable from her picker. Ladder contents/order untouched — Butterfly
-     Default stays the owner-designated Slot 1 default. */
+     Default stays the owner-designated Slot 1 default. DEDUP 2026-10-22:
+     ladder order corrected to the slot map — Slot 1 Butterfly Default first
+     (owner 2026-10-19 exception to the Tripo-first law, like Pantera's
+     Attire 1), Slot 2 Tripo, Slot 3 Monarch (owner-locked), Slot 6+ the
+     Tekken Zafina in-game model ladders BEHIND every custom attire (Zafina
+     is never a separate fighter — Mary Posa goes over her).
+     'mariposa-slot2' omitted: byte-identical to 'mariposa'
+     (roster/TRIPO-REGISTRY.md). */
   'mariposa-monarch': [
-    { model: 'mariposa', label: 'ATTIRE 1 · BUTTERFLY' },
-    { model: 'mariposa-slot2', label: 'SLOT 2' },
-    { model: 'mariposa-monarch', label: 'MONARCH' },
+    { model: 'mariposa-butterfly-default', label: 'SLOT 1 · BUTTERFLY DEFAULT' },
+    { model: 'mariposa', label: 'SLOT 2 · TRIPO' },
+    { model: 'mariposa-monarch', label: 'SLOT 3 · MONARCH' },
+    { model: 'zafina', label: 'SLOT 6+ · TEKKEN ZAFINA' },
   ],
   'burger': [
     { model: 'burger', label: 'ATTIRE 1 · DEMON' },
@@ -106,12 +114,15 @@ export const ATTIRE_VARIANTS = {
   /* DXMMII's ladder — re-keyed 2026-10-22 to its roster card id
      ('dxmmii-patchwork'): the old 'dxmmii' key matched no fighter id or
      model, so the slot map (roster/dxmmii/ATTIRE-SLOTS.md) was unreachable
-     from its picker. Ladder contents/order untouched — the Tripo default
-     stays Slot 1. */
+     from its picker. DEDUP 2026-10-22: ladder order corrected to the slot
+     map (roster/dxmmii/ATTIRE-SLOTS.md) — Slot 1 = the 60MB Tripo Default
+     that replaced the wooden dummy per owner 2026-10-19 (the old 'dxmmii'
+     base key was the retired dummy, so it no longer leads); Slot 2 =
+     Patchwork DJ (owner-approved 2026-10-18); Slot 3 = Blockhead. */
   'dxmmii-patchwork': [
-    { model: 'dxmmii', label: 'BASE' },
-    { model: 'dxmmii-a2', label: 'ATTIRE 2' },
-    { model: 'dxmmii-patchwork', label: 'PATCHWORK' },
+    { model: 'dxmmii-tripo', label: 'SLOT 1 · TRIPO DEFAULT' },
+    { model: 'dxmmii-patchwork', label: 'SLOT 2 · PATCHWORK DJ' },
+    { model: 'dxmmii-a2', label: 'SLOT 3 · BLOCKHEAD' },
   ],
   /* KEVIN's ladder (owner 2026-10-20): A1 = kevin-tripo (his face, pending
      rig/wiring), A2 = original Baek model, A3 = Master White (PARKED).
