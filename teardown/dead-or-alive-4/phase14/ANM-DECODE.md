@@ -201,10 +201,23 @@ the in-file pointer web + the registry↔volume pairing.
   cluster at 0x823FA430+ reads the registry; the section-pointer
   consumers are the next Capstone target — header offsets give
   the immediate constants to hunt: loads at +0x08 (w2), +0x54
-  (w21), +0x70 (w28) from a file base); (2) frame mot.afs by
-  correlating its float-stream boundaries with the .mot
-  registry order and the .bin clip counts; (3) only then map
-  B-stream records to skeleton tracks and pose gate 2.
+  (w21), +0x70 (w28) from a file base); (2) decode the .mot
+  stream grammar (front-table evidence below); (3) only then
+  map B-stream/.mot records to skeleton tracks and pose gate 2.
+
+  .mot front-table evidence (this lane, bounded probe of
+  zack.mot + c_zack.mot): a .mot opens with a u32 ABSOLUTE
+  offset table whose unused slots all carry the data-start
+  offset (c_zack.mot: 0x5038 = 20,536 repeated; zack.mot:
+  0x5998 = 22,936) — the same default-target pattern as the
+  .bin w21 clip table. At the data start sits a RELATIVE
+  offset sub-table (monotonic u32 runs: 0, 0x648, 0x738,
+  0x8a0… in c_zack at byte 20,532; 0, 0xfa8, 0x1098, 0x1200…
+  in zack at 22,932), and zack.mot carries further absolute
+  offset tables deeper in its front region (u32s ≈ 1.7–1.8 M
+  at +2048, pointing near its own EOF). Layered tables +
+  dense low-f32-plausibility stream data follow. Grammar
+  beyond this layering: RESIDUAL.
 
 ## Anime_cm header residual (exact)
 
