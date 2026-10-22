@@ -1429,6 +1429,29 @@ Also found: the feet-geometry cue misreads chunky-heel boots as -Z (false -Z on 
 **Verification:** Headless-Chromium repro with the game's real retarget code. Stance: head upright, face clear. Attack (row:0): face clearly visible. Proof: `docs/proof/leoman-mane-20261022/`.
 
 **Scope:** Leo Man's bank only. Did not touch inputs, shared code, other banks, or the model.
+
+## 2026-10-22 — Worker 12: DOROWANI COMBAT BUILD (PR #607, merged)
+
+**Task:** Dorowani (the mud-croc, Gon's replacement) fully playable — Gon's Tekken 3 moveset, fighting and moving like Gon. Key traits: small, fast, goofy, fire breath. Rig, skin, full moveset with Tekken inputs. Voice canon filed.
+
+**Archive + tag:** PR #603 (another lane) archived Attire 1 Crimson Cheeks (18.7MB GLB) to roster/dorowani/attires/attire1/source/ with manifest. I created the immutable tag `dorowani-a1-crimson-cheeks-original` (annotated, on PR #603 merge commit f23f843a), mirroring torch-a3-bald-eagle-original.
+
+**Gon's moveset:** Decoded T3 bank type 19 (divmot19_gon.bin, 369 rows, 157 attacks) via input-branch map (slot→row via move_index, 4023 slots). Cross-referenced with Gon's 20 canonical moves from Tekken 3 Prima Official Strategy Guide (Namco 1998): Woodpecker (d/b+1+2), Head Butt (WR+3+4), Armadillo Attack (f,d/b+1+2), Oopsie-Daisy (FC d/b+3+4), Low Blow (d+3+4), Dino Drill (d/b+3+4), Gon with the Wind (b+4, the fart), Spin Cycle (d/b+2+3), Bad Doggie (d/f+4), Battering Ram, 1-2 Crush, Dino Breath (1+2, fire breath — "if in doubt, use the Dino Breath!"), Butt Stomp (b+3+4), Tail Spin (4,4,4,4,4), Clean Sweep (d/b+3,3), Lift-Off (u+1), Bite Me (1+3 throw).
+
+**Moveset JSON:** game/assets/movesets/dorowani.json — 25 moves, 3 strings, 2 specials, schema v2. Every move has a UNIQUE Tekken input (INPUT-TO-MOVE FIDELITY LAW: press 1 → Snap Bite, every time). T3 provenance (t3_source/t3_row/t3_command) + anim_ref (t3:gon:row:N) on every move. Frame data from T3 rows (e.g., row 213: dmg 27, 70f; row 31: dmg 25, 19f).
+
+**Roster wiring:** game/js/roster-full.js (Dorowani entry: The Mud-Croc Trickster, base Gon, speed 5.5, rushdown), game/js/movesets.js ('dorowani' in MOVESET_IDS), game/assets/movesets/index.json (dorowani entry), game/js/assets.js (model path → source archive, read-only).
+
+**Voice canon:** roster/dorowani/VOICE-CANON.md — Dorowani does NOT speak in sentences. Pokemon/Digimon-style creature, barks random Japanese words. First lines (user-written): "Konnichiwa arigato Ichiban Bankai." Squirtle-style voice direction. First voice-acted character in WH. Voice moments: win poses/taunts, intros, cutscenes. Also filed in roster/dorowani/README.md (full canon: kappa-yokai croc demon, Eastern Mind swamp, ladder Dorowani→Numidoro→Gabu→Wanizame).
+
+**Rig:** NOT completed (documented deviation). The auto_rig pipeline is humanoid-only (GameRig/Rigify); Dorowani is a BIPEDAL croc (render viewed: blue, crimson cheeks, shell, stands on two legs). Task forbids forcing humanoid rig if it breaks. Additionally: no Blender 4.0.2 on VM, Python/Node writes blocked at OS level. Charger precedent: k-NN transfer from pantera.glb donor worked for the beast fighter. Full plan in roster/dorowani/RIG-SPEC.md. Ships unrigged (like pre-rig Charger); game handles unrigged models.
+
+**Visual proof:** BLOCKED (documented deviation). OS write blocks prevent the Node proof-harness from running. Idle render viewed: workspace/dorowani-proof/dorowani-a1-render.png (800x800).
+
+**Worker 11 coordination:** Their game/js/input.js is byte-identical to base (no duplication). Their movesets.js dash-latch + pressChord fixes are unmerged in their lane; not included here.
+
+**Merge:** PR #607, 4 checks green (instruction-gate, clobber-guard, guard, deletion-guard), merged via git_merge.py as 6f712e9e. No deletions. 8 files: 4 new (moveset, 3 docs), 4 modified (surgical).
+
 ## 2026-10-22 — Worker 13: VOICE PIPELINE + INTRO INTERACTION SYSTEM + VOICE CLONING PIPELINE
 
 Owner brief (verbatim): "Dorowani is the FIRST voice-acted character —
