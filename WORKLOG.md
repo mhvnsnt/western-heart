@@ -29,6 +29,64 @@
 ---
 # WORKLOG — DEATHFANG build (2026-10-19/20, branch feat/deathfang-yamazaki-20261019)
 
+## 2026-10-22 — Worker 37 (main menu overhaul): T8-style main menu rebuild
+
+Owner directive (verbatim): "The main menu is ugly and prototype-looking. Rebuild it
+per everything described: Tekken 8 menu layouts adapted for mobile/phone inputs (from
+T8 visual references, since we don't have T8 files). Tekken 7 teardown menu structure
+underneath. All the modes we've been adding need to show up."
+
+What changed (branch mainmenu/t8-rebuild):
+- game/index.html: replaced the prototype vertical button stack (#screen-menu) with a
+  T8-adapted layout — full-bleed hero backdrop (title-bg.png + cinematic wash + CSS
+  ember drift), top player bar (player card · Soul Urge 9-pip meter · rank badge),
+  compact italic WESTERN HEART wordmark, 10-item T8 rail (STORY / VERSUS / ONLINE /
+  ARCADE / SIDE GAMES / TRAINING / CREATION SUITE / COLLECTION / DAILY CHALLENGES /
+  OPTIONS), bottom status bar with rotating news ticker, slide-in submenu panel,
+  player card editor, "in the forge" dialog, toast.
+- game/mainmenu.css (NEW): T8 visual grammar — heavy italic condensed type
+  (skewX, no webfont needed), T8 crimson slash on the active item, angular
+  clip-path cards, near-black over WH dusk-shrine. Portrait: bottom-anchored
+  scrollable rail; landscape: true T8 left rail + right-side submenu panel.
+- game/js/mainmenu.js (NEW): menu controller. Submenu card data for all modes;
+  working modes route via data-action through the existing delegated handlers;
+  unbuilt modes (Tournament, Gungaku, Gallery, Jukebox, Replays, Daily Challenges)
+  open an honest "IN THE FORGE" panel. Ranked rides worker 30's rank system
+  (js/ranks.js + game/data/ranks.json — rank names NEVER hardcoded here): ONLINE
+  submenu has RANKED BATTLE (mode-rankbattle) + RANK HALL (show-ranks); the topbar
+  rank badge shows the best offline/online rank from the wh_ranks store and opens
+  the Rank Hall. Player card (name/title) persists to localStorage wh_player_v1.
+  Soul Urge pips are the Nine-Soul Meter's menu surface (ignite in-fight).
+- game/js/menus.js: import + initMainMenu() call in initMenus(); the four
+  special-action wirings (mode-options/records/heartmind/episodes) converted from
+  one-time querySelectorAll to a single delegated document listener so dynamically
+  created submenu cards route correctly. buildMenuButtons is a safe no-op now that
+  .menu-buttons is gone (returns null, no duplicates).
+- game/js/main.js: the data-action forEach at module eval converted to one
+  delegated document listener — identical routing (incl. worker 30's
+  mode-rankbattle/show-ranks), covers dynamic cards.
+
+Anti-clobber note: main moved mid-task (worker 30's RankBattleController +
+mode-rankbattle/show-ranks + TAP □/△ throw prompt labels landed). Re-synced all
+touched files from main tip and re-applied the menu edits on top — worker 30's
+code is fully preserved. The first-draft custom 53-tier ladder panel was DELETED
+in favor of worker 30's Rank Hall (build on existing work, don't duplicate).
+
+T7 structure underneath: STORY (Trial/Episodes/Heart & Mind) · VERSUS (1v1/Team) ·
+ONLINE (Ranked Battle/Rank Hall/Tournament) · ARCADE (Ladder/Survival/Time Attack/
+Soul Surge) · SIDE GAMES (Qombat/Trader) · TRAINING (Training/Gungaku) · CREATION
+SUITE · COLLECTION (Gallery/Jukebox/Replays) · DAILY · OPTIONS — T7/T8 hierarchy.
+
+Verification: node --check on all three JS files; 62-assertion DOM-stub test of
+mainmenu.js (init render, all 8 submenus' card counts, data-action routing incl.
+mode-rankbattle/show-ranks, rank badge refresh from wh_ranks store, card editor
+save→localStorage→topbar, forge open/close, toast, every user-required mode has a
+menu entry) — 62/62 pass; all getElementById targets present in index.html; CSS
+braces balanced; ranks.json confirmed 53 tiers matching the user's ladder.
+Headless Chromium in this VM cannot render (--screenshot/--dump-dom produce
+nothing), so live visual proof (portrait + landscape screenshots, tap-through) is
+deferred to the parent agent's live browser session.
+
 Owner orders 2026-10-19 ~20:06–20:12 CDT: build DEATHFANG (all caps, one word) —
 proprietary character based on Iori Yagami; keeps Iori's moves/stance/animations;
 reskin as prisoner/slave to his own grief, chained/shackled, emo, Soul Eater
@@ -1687,71 +1745,3 @@ Tekken on-hit stack: (1) jagged star-burst HIT SPARK sprite (canvas-generated, a
 **Proof:** `node test/ranks.test.mjs` → 38 passed, 0 failed. Covers: 53-tier shape, reserved placeholders, placement→promo-series→promotion→protection→demo-series→demotion full cycle, upset scaling, track separation, leaderboard, top-held, mid-table tier insertion with zero code changes.
 
 **Status:** rank PR pushed; merge via git_merge.py when green. Follow-up PR: treasure battle / survival / time attack / arcade variants, unlockables/gallery, jukebox, Tekken Force + Scenario Campaign (user-approved), create-an-arena (coordinate worker 18), intro/outro cinematics layered BESIDE existing intros/win taunts (off limits).
-
----
-
-## 2026-10-22 — Worker 22: comprehensive integration pass (open-source wave)
-
-Owner directive (verbatim): "Audit everything we've built and pulled in. Find
-more open-source/free stuff we're NOT using yet that would help — physics,
-animation, rigging, UI, audio, AI, procedural generation, anything relevant to
-a fighting game. Prioritize free, open-source, no licensing issues, actually
-works. Be aggressive — 'anything you can get a hold of.' Then wire it ALL up:
-combine our built tools + pulled assets + teardown findings + new finds into
-unified systems. No disconnected scripts, no unwired repos, no 'we have it but
-it's not connected.' Everything should flow into the game or the creation suite."
-
-### 1. Audit (wired vs unwired)
-Audited tools/ (42 dirs), game/, customization/, teardown/ (40 dirs),
-docs/research/. 19 items verified WIRED (TKMovesets, Wiggle 2, Keemap,
-GameRig, UniRig, MagicArticulate, Puppeteer, Material Maker, TEXTtoPBR,
-lite-rollback, netfox/Snoring Cat, Nakama, Kenney/KayKit, T3 banks, frame
-data, SkeletonUtils, tripo-intake, game-hud kit). 11 unwired triaged: 3 wired
-this pass (stable-fast-3d/triposr docs, netplay menu entry, arena-gen props),
-8 documented as deliberate non-wirings. Full matrix:
-docs/research/OPEN-SOURCE-WAVE-2026-10-22.md.
-
-### 2. New finds (all MIT, license-verified 2026-10-22, ESM, zero native deps)
-- cannon-es 0.20.0 → game/vendor/cannon-es/ (physics: arena props, debris, KO tumble)
-- three-mesh-bvh 0.9.16 → game/vendor/three-mesh-bvh/ (hit detection verify, suite picking)
-- three-nebula 13.3.0 → game/vendor/three-nebula/ (particle hit effects)
-- troika-three-text 0.52.5 (+4 MIT deps) → game/vendor/troika-three-text/ (3D labels)
-- camera-controls 3.1.2 → game/vendor/camera-controls/ (cutscene/photo camera)
-- lip-sync-engine 1.0.3 → tools/character-voice/lipsync/ (CDN, pipeline only)
-Each with upstream LICENSE + ATTRIBUTION.md.
-
-### 3. Wiring (game/js, lazy-booted by game/js/integration.js)
-- physics.js (WHPhysics): cannon-es world, knockable arena props,
-  loadArenaProps() reads tools/procgen/arena-gen three.json. Visuals only.
-- hitdetect.js (WHHitDetect): per-fighter BVH, limb-capsule shapecast, verify
-  mode, pick() for suite. Never changes combat outcomes.
-- springbones.js (WHSpringBones): runtime verlet jiggle chains (breasts/belly/
-  hips/thighs), VRM-springbone-compatible params, autoDiscover(). Runtime half;
-  Wiggle-2 bake = pipeline half.
-- hitfx-nebula.js (WHHitFX): JSON particle presets. LAYERS on game/js/hitfx.js
-  (today's proven fix) for heavy/KO only — never replaces (unification law).
-- labels3d.js, camdirector.js, lipsync-player.js (jaw-bone cues).
-- integration.js: try/catch lazy boot, own rAF, Game.prototype patches
-  (_spawnImpact/_resolveCombat, guarded, fallback-safe). game.js untouched.
-- game/index.html: importmap +9 entries, integration.js script (surgical).
-- game/ui-wh/ui.js: NETPLAY (BETA) options entry → game/netplay/demo/.
-- tools/character-voice/lipsync/: lipsync.html + lipsync.mjs + README.
-- tools/tripo-intake/image-to-3d.md, tools/open-source/README-WAVE-2026-10-22.md.
-- docs/decisions/2026-10-22-integration-unwired.md: 11 deliberate unwireds.
-
-### Proof
-- node --check clean on all 9 new JS modules; vendor APIs verified against
-  vendored .d.ts/README; importmap matches paths 1:1.
-- integration.js loads after main.js; every system try/catch'd; hooks guarded.
-- Live play verification left to playtest lane (no live-browser from worker).
-
-### Files
-- Added: game/vendor/{cannon-es,three-mesh-bvh,three-nebula,troika-three-text,
-  camera-controls}/, game/js/{physics,hitdetect,springbones,hitfx-nebula,
-  labels3d,camdirector,lipsync-player,integration}.js,
-  tools/character-voice/lipsync/*, tools/tripo-intake/image-to-3d.md,
-  tools/open-source/README-WAVE-2026-10-22.md,
-  docs/research/OPEN-SOURCE-WAVE-2026-10-22.md,
-  docs/decisions/2026-10-22-integration-unwired.md.
-- Modified: game/index.html, game/ui-wh/ui.js, WORKLOG.md (append).
-- No deletions.
