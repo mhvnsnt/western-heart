@@ -244,3 +244,24 @@ untouched (capture gate); `CANON-CONVERSION.md` untouched.
 4. **In-bundle sound extraction** — type-0xc `mmx` codec closed (identification complete, phase 15).
 5. **rec80 secondary at draw time** — created-and-held proven; visible-layer bake only if a binding is ever proven.
 6. **Placed GLBs (`models/`)** — phase-4 decode; re-decode with the fixed reader is mechanical follow-up (same bundles, placed path).
+
+## Phase 17 update (2026-10-22) — placed set fixed; SCII TEARDOWN-SIDE COMPLETE
+
+Lane record: `PHASE17-STATE.md`; closeout: `SCII-FINAL-STATE.md`;
+renders: `phase17-proof/`. Motion untouched (capture gate);
+`CANON-CONVERSION.md` untouched.
+
+| Class | Decoded | Wired | Left before playable |
+|---|---|---|---|
+| Fighters — placed set (`models/`) | **All 22 placed GLBs re-decoded with the fixed reader** through the placement path (new repo tool `tools/build_placed.py` — the phase-3 placed build had no separate script; its geometry logic lived in `build_skinned.py`, and the fixed +0 rigid read applies identically): **891 → 1,081 parts (+190)**. Per-fighter recovery matches the phase-16 base sets EXACTLY for all 22 fighters (same bundles, same rigid part selection — zero differences to explain). Gates per file (all pass): every old mesh present with byte-identical POSITION/NORMAL/TEXCOORD_0/COLOR_0/index bytes (gate tolerance: exact, stricter than the ≤1e-05 allowed), all normals finite, structure unchanged in kind (rigid: 0 skins, one scene node per mesh, 0 images by design). Nightmare placed render VIEWED: armor complete in placed form (helmet, cuirass, faulds, solid cuisses — the thigh gap is closed in the placed set too); Mitsurugi + idx905 (largest recoveries after Nightmare) also viewed | GLBs replaced in-tree in `models/` (that replacement is this phase's purpose); renders in `phase17-proof/` | Roster registration still waits on owner canon assignment |
+| SCII closeout | **`SCII-FINAL-STATE.md`** — standalone final state: 100% shipped set (containers, VMX/VXT, fighters in all three sets, stages 41/41, variants 83/83, AV release + pull-back proof, 5,915 moveset records with the f3/pairing residual, GRE #26–#40 math corpus + recurrence finding), capture-gated items, the closed mmx codec, owner-pending canon, known artifacts (idx632 ≤4e-09 tail weights; m120 stored sphere), full PR stack | This inventory + `SCII-FINAL-STATE.md` | — |
+
+### Sweep status for SCII (phase 17, final)
+
+**SCII = teardown-side COMPLETE.** Every statically decodable class
+is decoded, gated, and shipped with the fixed reader. The only
+remaining items are NOT teardown work: (1) the parent lane's xemu
+capture for motion (+ the rec80 draw-time binding observation),
+and (2) owner canon assignment (`CANON-CONVERSION.md`). The
+in-bundle `mmx` waveform codec is closed-unproven (CRI middleware;
+container + registration fully mapped, phase 15).
