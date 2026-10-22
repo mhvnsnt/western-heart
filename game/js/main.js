@@ -10,6 +10,7 @@ import { assets } from './assets.js';
 import { ROSTER, getCharacter } from './characters.js';
 import { loadRealMovesets, bankIdFor } from './fighter.js';
 import { loadFighterMovesets } from './movesets.js';
+import { getFighterMoveset, ensureMovesets, resolveMoveKey } from './movesets.js';
 import { loadT3Clips } from './t3anims.js';
 import * as THREE from 'three';
 import { whUiEnabled, mountWhUi } from './ui-wh-bridge.js';
@@ -135,6 +136,29 @@ const ui = {
     pop.classList.add('show');
     clearTimeout(this._comboT);
     this._comboT = setTimeout(() => pop.classList.remove('show'), 900);
+  },
+  /* Stream 6: throw-break prompt. show=false clears. breakInput '1'/'2'/'1+2'
+     tells the defender which limb button breaks the throw (Tekken rules). */
+  throwBreakPrompt(show, breakInput) {
+    const el = document.getElementById('throw-prompt');
+    if (!el) return;
+    clearTimeout(this._throwT);
+    if (!show) { el.classList.remove('show'); return; }
+    const label = breakInput === '1' ? 'TAP LP' : breakInput === '2' ? 'TAP RP' : 'TAP LP+RP';
+    el.querySelector('.throw-prompt-key').textContent = label;
+    el.classList.remove('show'); void el.offsetWidth;
+    el.classList.add('show');
+    this._throwT = setTimeout(() => el.classList.remove('show'), 900);
+  },
+  throwEscape(playerBroke) {
+    const el = document.getElementById('throw-prompt');
+    if (!el) return;
+    clearTimeout(this._throwT);
+    el.querySelector('.throw-prompt-key').textContent =
+      playerBroke ? 'ESCAPED!' : 'THROW ESCAPED';
+    el.classList.remove('show'); void el.offsetWidth;
+    el.classList.add('show', 'escaped');
+    this._throwT = setTimeout(() => el.classList.remove('show', 'escaped'), 900);
   },
   matchOver(playerWon) {
     document.getElementById('result-title').textContent = playerWon ? 'YOU WIN!' : 'YOU LOSE';
@@ -404,6 +428,7 @@ document.querySelectorAll('[data-action]').forEach((el) => {
       window.location.href = '../customization/creation-suite-ui/index.html';
     }
     else if (a === 'howto') { show('howto'); }
+    else if (a === 'close-movelist') { toggleMovelist(false); }
     else if (a === 'back-menu') {
       // CLEAN-INIT: leaving fight → full state reset. No leaked fighters,
       // timers, or listeners carry into the menu.
@@ -470,6 +495,85 @@ document.getElementById('training-quit').addEventListener('click', () => {
   audio.stopMusic();
 });
 
+/* Stream 6: per-fighter movelist (training mode HUD button + M key).
+   Overlay only — the fight keeps running underneath. */
+const MOVESET_GROUPS = [
+  ['signature', 'SIGNATURE'],
+  ['throw', 'THROWS'],
+  ['special', 'SPECIALS'],
+  ['string', 'STRINGS'],
+  ['strike', 'STRIKES'],
+];
+function renderMovelist() {
+  const fid = game.p1 && game.p1.char.id;
+  const ms = fid && getFighterMoveset(fid);
+  const groups = document.getElementById('movelist-groups');
+  document.getElementById('movelist-title').textContent =
+    'MOVE LIST — ' + (ms ? (ms.display || fid.toUpperCase()) : '???');
+  const inputs = ms ? Object.keys(ms.slots || ms.moves) : [];
+  document.getElementById('movelist-sub').textContent =
+    ms ? `${inputs.length} inputs · ${Object.keys(ms.moves).length} moves · ${ms.tekken_base || ''}` : 'no data';
+  groups.innerHTML = '';
+  if (!ms || !ms.moves) return;
+  // One row per INPUT: the move that input fires for this fighter (moveset editor
+  // loadout > default slots). Alternates stay in the file for the editor.
+  const byClass = {};
+  for (const notation of inputs) {
+    const key = resolveMoveKey(fid, notation);
+    const m = key && ms.moves[key];
+    if (!m) continue;
+    const cls = m.move_class || (m.throw ? 'throw' : 'strike');
+    (byClass[cls] = byClass[cls] || []).push([notation, m]);
+  }
+  const shown = new Set();
+  for (const [cls, label] of MOVESET_GROUPS) {
+    const list = byClass[cls];
+    if (!list || !list.length) continue;
+    shown.add(cls);
+    const g = document.createElement('div');
+    g.className = 'movelist-group';
+    g.innerHTML = `<h3>${label} (${list.length})</h3>`;
+    for (const [key, m] of list) {
+      const fr = Math.round((m.startup || 0) * 60);
+      const brk = m.throw_break
+        ? `<span class="ml-break">break ${m.throw_break === '1' ? 'LP' : m.throw_break === '2' ? 'RP' : 'LP+RP'}</span>` : '';
+      const row = document.createElement('div');
+      row.className = 'movelist-row';
+      row.innerHTML = `<span class="ml-input">${key}</span>` +
+        `<span class="ml-name">${m.name || ''} ${brk}</span>` +
+        `<span class="ml-data">${m.damage}dmg ${fr}f</span>`;
+      g.appendChild(row);
+    }
+    groups.appendChild(g);
+  }
+  // anything unclassified
+  const rest = Object.entries(byClass).filter(([c]) => !shown.has(c))
+    .flatMap(([, l]) => l);
+  if (rest.length) {
+    const g = document.createElement('div');
+    g.className = 'movelist-group';
+    g.innerHTML = '<h3>OTHER (' + rest.length + ')</h3>';
+    for (const [key, m] of rest) {
+      const row = document.createElement('div');
+      row.className = 'movelist-row';
+      row.innerHTML = `<span class="ml-input">${key}</span>` +
+        `<span class="ml-name">${m.name || ''}</span>` +
+        `<span class="ml-data">${m.damage}dmg</span>`;
+      g.appendChild(row);
+    }
+    groups.appendChild(g);
+  }
+}
+function toggleMovelist(open) {
+  const el = document.getElementById('screen-movelist');
+  const willOpen = open === undefined ? !el.classList.contains('active') : open;
+  if (willOpen) renderMovelist();
+  el.classList.toggle('active', willOpen);
+}
+document.getElementById('movelist-btn').addEventListener('click', () => {
+  audio.uiClick(); toggleMovelist();
+});
+
 async function startFight(playerId, enemyId, opts = {}) {
   unlockAudio();
   if (typeof playerId === 'string') selectedChar = playerId;
@@ -514,8 +618,20 @@ async function startFight(playerId, enemyId, opts = {}) {
     });
     // Load the REAL T3 animation banks for THIS match's two fighters —
     // each fighter's own moveset-source bank (per-bank wiring 2026-10-19).
-    // Fighters with no decoded bank (heihachi source) are skipped here and
-    // fall back to embedded locomotion + procedural combat.
+    // Fighters whose source has no decoded bank are skipped here and
+    // fall back to embedded locomotion + procedural combat. (Heihachi
+    // source fighters have their own real bank since 2026-10-20.)
+    // Full movesets for this fight (lazy since 2026-10-21; boot loads only the index).
+    // Transform forms may switch moveset mid-fight, so theirs load too.
+    if (hint) hint.textContent = 'Loading move lists…';
+    const msIds = [player.id, enemy.id];
+    for (const c of [player, enemy]) {
+      if (c.forms) for (const fk of Object.keys(c.forms)) {
+        const fe = c.forms[fk];
+        for (const t of (fe.target ? [fe] : [fe.up, fe.down].filter(Boolean))) if (t.moveset) msIds.push(t.moveset);
+      }
+    }
+    await ensureMovesets(msIds);
     if (hint) hint.textContent = 'Loading real fight motion…';
     try {
       const banks = [...new Set([bankIdFor(player.id), bankIdFor(enemy.id)].filter(Boolean))];
@@ -542,11 +658,15 @@ async function startFight(playerId, enemyId, opts = {}) {
     hints._t = setTimeout(() => hints.classList.add('fade'), 6000);
   }
 }
-// H toggles control hints
+// H toggles control hints, M toggles the movelist (training)
 document.addEventListener('keydown', (e) => {
   if (e.code === 'KeyH') {
     const hints = document.getElementById('control-hints');
     if (hints) hints.classList.toggle('fade');
+  }
+  if (e.code === 'KeyM') {
+    const btn = document.getElementById('movelist-btn');
+    if (btn && btn.style.display !== 'none') toggleMovelist();
   }
 });
 

@@ -14,6 +14,7 @@ import { Fighter, setArenaLimit } from './fighter.js';
 import { AIController } from './ai.js';
 import { audio } from './audio.js';
 import { getStage } from './stages.js';
+import { applyFighterProfile } from './customization-consumer.js';
 
 const ROUND_TIME = 60;
 const ROUNDS_TO_WIN = 2;   // best of 3
@@ -79,6 +80,13 @@ export class Game {
     this.p1._sceneRef = this.arena;
     this.p2._sceneRef = this.arena;
     this.arena.scene.add(this.p1.root, this.p2.root);
+    // Creation Suite consumer (fighter-completeness lane, 2026-10-21):
+    // apply each fighter's suite profile parts at their bone sockets —
+    // additive attach layer on the finished models; a no-op for fighters
+    // without a profile and fail-silent per part, so it can never block
+    // or break a match. See js/customization-consumer.js.
+    applyFighterProfile(this.p1);
+    applyFighterProfile(this.p2);
     this.ai = new AIController(this.p2, enemyChar.ai);
     this.ai1 = this.demo ? new AIController(this.p1, playerChar.ai) : null;
 
@@ -141,6 +149,10 @@ export class Game {
     this.p1.facing = 1; this.p1.lean.rotation.y = 0;
     this.p2.facing = -1; this.p2.lean.rotation.y = Math.PI;
     this.p1.state = 'idle'; this.p2.state = 'idle';
+    // Round reset is also a clean break from any in-progress attack: never let
+    // a latched attackName (e.g. 'surge') stick the Soul Surge aura on.
+    this.p1.attack = null; this.p1.attackName = null;
+    this.p2.attack = null; this.p2.attackName = null;
     this.p1.dead = this.p2.dead = false;
     this.p1.stun = this.p2.stun = 0;
     this.p1.vx = this.p2.vx = 0;
@@ -209,26 +221,43 @@ export class Game {
         const inp = this.input;
         const ms = this.matchStats; // story reincarnation profiling
         const rec = (k) => { if (ms && ms.attacks[k] !== undefined) ms.attacks[k]++; };
+        const stick = this._tekkenDir(inp, this.p1.facing);
+        this.p1.setStick(stick); // guard + posture (decoded T3 rules, fighter.js _guardBits)
         this.p1.tryMove(inp.axisX);
         if (inp.up) this.p1.tryJump();
         this.p1.tryBlock(inp.held.block);
+        this.p1.tryCrouch(inp.down && !inp.up); // hold down = crouch; release = WS. window
         // Feed facing-relative direction into the Tekken input buffer
         // (drives motion specials qcf/f,F and directional attacks f+1)
-        this.p1.tekken.noteDirection(this._tekkenDir(inp, this.p1.facing));
+        this.p1.tekken.noteDirection(stick);
         if (ms && this.p1.isBlocking()) ms.blockTime += dt;
         if (ms) ms.time += dt;
-        for (const act of inp.consume()) {
+        // Stream 6: while caught in a throw, limb inputs are break attempts.
+        if (this.p1.state === 'thrown') {
+          for (const act of inp.consume()) {
+            if (act === '1' || act === '2' || act === '3' || act === '4' ||
+                act === '1+2' || act === '3+4') {
+              if (this.p1.tryThrowBreak(act)) {
+                this.ui.throwEscape(true);
+                audio.block();
+              }
+            }
+          }
+        } else for (const act of inp.consume()) {
           if (act === 'punch' || act === 'kick' || act === 'grab' ||
               act === '1' || act === '2' || act === '3' || act === '4' ||
-              act === '1+3' || act === '2+4' || act === '1+2' || act === '3+4') {
+              act === '1+3' || act === '2+4' || act === '1+2' || act === '3+4' ||
+              act === '1+4' || act === '2+3') {
             if (this.p1.tryAttack(act)) { audio.whiff(); rec(act); }
           }
+          else if (act === 'ss-up') { if (this.p1.trySidestep(-1)) rec('sidestep'); }
+          else if (act === 'ss-down') { if (this.p1.trySidestep(1)) rec('sidestep'); }
           else if (act === 'surge') {
             if (this.p1.tryAttack('surge')) {
               rec('surge');
               audio.soulSurge(this.p1.char.id);
-              this.ui.surgeFlash(this.p1.char.surge.color, this.p1.char.surge.accent);
-              this.ui.surgeName(this.p1.char.surge.name);
+              this.ui.surgeFlash(this.p1.char.surge?.color ?? this.p1.char.colors.trim, this.p1.char.surge?.accent ?? 0xffffff);
+              this.ui.surgeName(this.p1.char.surge?.name ?? 'SOUL SURGE');
             }
           }
           else if (act === 'dodge') { if (this.p1.tryDodge()) rec('dodge'); }
@@ -252,6 +281,35 @@ export class Game {
       this.p1.update(dt, this.p2);
       this.p2.update(dt, this.p1);
 
+      // --- Stream 6: throw-lock resolution (break window expired) ---
+      for (const atk of [this.p1, this.p2]) {
+        if (atk.state === 'throwing' && atk.lockT <= 0 && atk.lockMove) {
+          const def = atk === this.p1 ? this.p2 : this.p1;
+          const hpBefore = def.hp;
+          const result = atk.completeThrow();
+          const dealt = Math.max(0, hpBefore - def.hp);
+          if (this.matchStats) {
+            if (atk === this.p1) this.matchStats.dmgDealt += dealt;
+            else this.matchStats.dmgTaken += dealt;
+          }
+          this.ui.throwBreakPrompt(false);
+          if (result === 'ko') {
+            audio.ko(); audio.grunt(def.isPlayer ? 1.1 : 0.85);
+            this.arena.shake(0.5, 0.4);
+            this._hitStop = 0.12;
+            this._spawnImpact(def.root.position.x, 1.2, def.root.position.z, 0xffcf4d, 1.4);
+          } else if (result && result !== 'dodge') {
+            audio.grab(); audio.grunt(def.isPlayer ? 1.05 : 0.9);
+            this.arena.shake(0.45, 0.28);
+            this._hitStop = 0.1;
+            this._spawnImpact(def.root.position.x, 1.2, def.root.position.z,
+              atk.char.colors.trim || 0xffffff, 1.3);
+            const combo = atk.registerCombo();
+            this.ui.combo(Math.max(1, combo));
+          }
+        }
+      }
+
       // --- Combat resolution ---
       this._resolveCombat(this.p1, this.p2);
       this._resolveCombat(this.p2, this.p1);
@@ -274,12 +332,14 @@ export class Game {
   _tekkenDir(inp, facing) {
     const fwd = (inp.axisX || 0) * facing; // forward-positive
     const f = fwd > 0.25, b = fwd < -0.25;
-    if (inp.up && f) return 'u/f';
-    if (inp.up && b) return 'u/b';
-    if (inp.up) return 'u';
-    if (inp.down && f) return 'd/f';
-    if (inp.down && b) return 'd/b';
-    if (inp.down) return 'd';
+    const v = inp.vertNow ? inp.vertNow() : (inp.up ? 'up' : inp.down ? 'down' : null);
+    const up = v === 'up', down = v === 'down';
+    if (up && f) return 'u/f';
+    if (up && b) return 'u/b';
+    if (up) return 'u';
+    if (down && f) return 'd/f';
+    if (down && b) return 'd/b';
+    if (down) return 'd';
     if (f) return 'f';
     if (b) return 'b';
     return 'n';
@@ -294,7 +354,22 @@ export class Game {
       const dx = hb.x - hu.x, dy = hb.y - hu.y, dz = hb.z - hu.z;
       const rr = (hb.r + hu.r);
       if (dx * dx + dy * dy + dz * dz <= rr * rr) {
+        // Decoded T3 posture rule: highs pass over crouchers, lows under jumpers,
+        // standing throws whiff crouching fighters (fighter.js canBeHitBy).
+        if (!defender.canBeHitBy(hb.move)) return;
         attacker.registerHit();
+        // Stream 6: throws enter the breakable throw-lock instead of
+        // landing instantly. Throws whiff against airborne opponents.
+        if (hb.move.isGrab && defender.onGround && defender.state !== 'thrown' &&
+            defender.state !== 'throwing') {
+          defender.startThrowLock(hb.move, attacker);
+          attacker.startThrowing(defender);
+          this.ui.throwBreakPrompt(defender.isPlayer, hb.move.throw_break || '1');
+          audio.grab();
+          this.arena.shake(0.3, 0.2);
+          this._hitStop = 0.06;
+          return;
+        }
         const hpBefore = defender.hp;
         const result = defender.receiveHit(hb.move, attacker);
         // story reincarnation profiling: who dealt / took what
@@ -326,7 +401,7 @@ export class Game {
           this.arena.shake(isGrab ? 0.45 : isHeavy ? 0.35 : 0.18, isGrab ? 0.28 : 0.18);
           this._hitStop = isGrab ? 0.1 : isHeavy ? 0.08 : 0.05;
           const col = attacker.attackName === 'surge'
-            ? attacker.char.surge.color
+            ? (attacker.char.surge?.color ?? attacker.char.colors.trim ?? 0xffffff)
             : (attacker.char.colors.trim || 0xffffff);
           this._spawnImpact(hb.x, hb.y, hb.z, col, isGrab ? 1.3 : isHeavy ? 1 : 0.6);
 
@@ -379,8 +454,8 @@ export class Game {
   /* AI-driven Soul Surge presentation (same as the player's) */
   surgePresentation(fighter) {
     audio.soulSurge(fighter.char.id);
-    this.ui.surgeFlash(fighter.char.surge.color, fighter.char.surge.accent);
-    this.ui.surgeName(fighter.char.surge.name);
+    this.ui.surgeFlash(fighter.char.surge?.color ?? fighter.char.colors.trim, fighter.char.surge?.accent ?? 0xffffff);
+    this.ui.surgeName(fighter.char.surge?.name ?? 'SOUL SURGE');
   }
 
   /* ---------------- Round flow ---------------- */
