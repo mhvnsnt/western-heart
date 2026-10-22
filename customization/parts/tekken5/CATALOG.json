@@ -27,6 +27,10 @@
    "archives_parsed": 675,
    "character_costume_packs_count19": 80,
    "ctype5_containers_with_0x82_models": 9,
+   "ctype5_models_decoded": 16,
+   "ctype5_models_unique_geometries": 8,
+   "ctype5_vif_blobs_decoded": 238,
+   "ctype5_models_are_customization_items": false,
    "data0_status": "NOT DECRYPTED — second cipher layer under the seed-1 LCG stream (see survey doc S6); DATA1's 216 empty slots are the suspected DATA0-side content",
    "data1_files_extracted_checksum_verified": 1355,
    "data1_table_empty_slots": 216,
@@ -82,8 +86,8 @@
   "generated_by": "gap-closure W7b lane, 2026-10-21 (owner order 2026-10-21 ~09:39 CDT: legacy Tekken parts from T5 + T6 + TTT2 teardowns; T7 later)",
   "schema_ref": "customization/parts/tekken/tekken7-slot-catalog.json + customization/parts/tekken/tekken6-slot-catalog.json (mapping references only — see slot_divergences)",
   "slot_divergences": "T5 PREDATES THE SLOT SCHEMA. Tekken 5 (PS2, 2004) introduced character customization, but its data does NOT use the T6 4-slot / T7 16-slot item-slot system: in TK5DATA1.BIN each character pack (19-entry archive) carries exactly ONE costume model (sub02, full body incl. head/hair/props as a single NUDP) + ONE low-poly full-body model (sub05) + TIM2 textures (sub01). NO per-slot item meshes (no separate HEAD/UPPER/LOWER/HAIR_ACC NUDP entries) exist in any of the 80 packs — verified by full NUDP census (464 occurrences classified) and own-eyes renders. Per-slot item data, if present in this build at all, can only live in (a) the 9 ctype-5 containers whose models use the undecoded VIF 0x82 vertex format, or (b) TK5DATA0.BIN, which remains encrypted under a second cipher layer and is the suspected home of the content for DATA1's 216 empty table slots. Mapping T5 content onto the registry shape therefore happens at FULL_BODY (whole-costume) granularity at conversion time, and any finer slot claim would be invented — it is NOT made here.",
-  "status": "CONVERTED — W7e (2026-10-21): all 80 costume packs converted to textured GLBs (parts[] at FULL_BODY granularity, char_id=null — no data-proven pack->character table in held data; visual IDs are survey evidence only). GLB bytes live in GitHub release tekken5-costume-glbs-v1 (manifest in conversion doc); the remaining named gaps are the ctype-5 VIF-0x82 models, TK5DATA0.BIN, and the skull mask (not found in DATA1).",
-  "suite_slot_mapping": "T5 content -> suite_slot (at conversion time): whole-costume model (pack sub02) -> full_body; low-poly body (pack sub05) -> full_body (LOD variant, not a separate part); ctype-5 container models (VIF 0x82, undecoded) -> slot assigned from decoded geometry at conversion time, never before. T7 slot names are used in by_slot purely as the shared registry shape (all zero today).",
+  "status": "CONVERTED — W7e (2026-10-21): all 80 costume packs converted to textured GLBs (parts[] at FULL_BODY granularity, char_id=null — no data-proven pack->character table in held data; visual IDs are survey evidence only). GLB bytes live in GitHub release tekken5-costume-glbs-v1 (manifest in conversion doc); the remaining named gaps are the ctype-5 VIF-0x82 models, TK5DATA0.BIN, and the skull mask (not found in DATA1). W7d (2026-10-21): the ctype-5 VIF-0x82 models are DECODED (238/238 VIF blobs consumed byte-exact, structure proven) and converted to GLBs (release tekken5-ctype5-glbs-v1) — decoded geometry is environment/effect class (repeated triangular-prism beam units, 2000x2000 flat panels, one tall cylindrical wall segment), NOT customization items, so the 8 unique geometries are registered additively under decoded_ctype5_models[] (never parts[]) and the ctype-5 named gap is flipped to decoded_not_customization_items. Remaining named gaps: TK5DATA0.BIN and the skull mask (not found in DATA1 — the decoded ctype-5 models contain no skull/mask/head geometry either).",
+  "suite_slot_mapping": "T5 content -> suite_slot (at conversion time): whole-costume model (pack sub02) -> full_body; low-poly body (pack sub05) -> full_body (LOD variant, not a separate part); ctype-5 container models (VIF 0x82, decoded by W7d 2026-10-21) -> NO slot: decoded geometry is environment/effect class, not customization items; registered under decoded_ctype5_models[] instead of parts[]. T7 slot names are used in by_slot purely as the shared registry shape (all zero today).",
   "survey": "customization/parts/tekken5/T5-CUSTOMIZATION-SURVEY-2026-10-21.md",
   "total": 80,
   "glb_storage": "GitHub release mhvnsnt/western-heart tag tekken5-costume-glbs-v1: one asset per pack (packNNNN-costume.glb) + manifest.json (sha256/size per asset). Entry file/glb fields keep the canonical repo path shape from entry_template; per-entry conversion.glb_release carries repo/tag/asset/sha256 for retrieval.",
@@ -91,22 +95,22 @@
  },
  "named_gaps": [
   {
-   "acquisition": "Decode the VIF 0x82 vertex layout (working models use globalFlags 0x91/0x93; every ctype-5 model uses 0x82 and ModelMagic's VIFerator desyncs on all of them). Byte-budget solve per submesh (vertCount is in the VIF header) or Ghidra trace of the renderer path. THEN render and classify by geometry. Files: DATA1 0022 (system), 0687/0698, 0753/0764, 1061/1072/1083/1094 (per-group twins).",
+   "acquisition": "DONE — gap-closure W7d (2026-10-21), see T5-CTYPE5-DECODE-2026-10-21.md. Route taken: the survey's byte-budget solve. All 9 containers reproduced from release tekken5-disc-v1 by HTTP Range and verified DECRYPT-MATCH against the E5 word-sum checksum table; the 0x82 packet layout was solved from the smallest model (file 0753) and then proven on all 238 VIF blobs of all 16 models (every blob consumed to exactly its size field; every section's element count equals the packet's own vertCount; all face indices in range; positions finite). Layout: positions V3-32 @VU1, vertex colors V4-8 @VU3, UVs V2-32 @VU4, tristrip markers as in the 0x91 form; NO normals, NO weights, NO bone indices. Decoded geometry was rendered (proof/ctype5-*.png) and classified from the renders + measurements only.",
    "char_id": null,
-   "expected_source": "9 ctype-5 containers in TK5DATA1.BIN: [u32 count=5][subs: TIM2 set, NUDP set (VIF globalFlags 0x82), MIF, small data, data]. 16 NUDP models total (1,520-19,264 B). Header metadata only until the format decodes — geometry deliberately NOT characterized in this catalog (a coordinator cross-check flagged that a 'head portrait' characterization of the 1061 pair was another lane's T6 finding, not T5 evidence).",
+   "expected_source": "9 ctype-5 containers in TK5DATA1.BIN: [u32 count=5][subs: TIM2 set, NUDP set (VIF globalFlags 0x82), MIF, small data, data]. 16 NUDP models total (1,520-19,264 B) = 8 unique geometries (twin containers hold byte-identical models). Decoded verdict: environment/effect-class geometry — repeated triangular-prism beam units (150x173.2 section, 2500 long), flat 2000x2000 panels, one tall cylindrical wall segment (diameter ~1996, height ~3972) — at scene scale with a shared white alpha-gradient texture (file 0753's model carries a dark metallic panel texture instead). NO per-slot item meshes and no head/skull/mask geometry among them. (The 'head portrait' characterization of the 1061 pair that circulated earlier was another lane's T6 finding, not T5 evidence — it is not repeated here; the decoded 1061 models are a flat panel and a prism-beam unit.)",
    "id": "tekken5:ctype5:unknown_slot:vif-0x82-models",
    "library": "tekken5",
-   "name": "ctype-5 container models (VIF 0x82 format, undecoded)",
+   "name": "ctype-5 container models (VIF 0x82 format — decoded by W7d: environment/effect-class, not items)",
    "part_class": "mesh_part",
-   "placement_socket": "unknown until decoded",
+   "placement_socket": "n/a — decoded geometry is environment/effect class, not a wearable part; no socket assigned",
    "player_cus_id": 0,
    "scope": "character",
    "slot": "EXTRA",
    "slot_id": 14,
    "source_game": "tekken5",
-   "status": "named_gap_format_undecoded",
+   "status": "decoded_not_customization_items",
    "suite_slot": "extra",
-   "wanted_for": "These are the only small standalone models in DATA1 outside the costume packs — the last place per-slot item meshes can hide in DATA1. If they decode to item geometry, parts[] entries land from here first."
+   "wanted_for": "RESOLVED as a format gap (W7d): these were the last undecoded models in DATA1. They do NOT yield parts[] entries — the decoded geometry is environment/effect class, so the 8 unique geometries are registered under decoded_ctype5_models[] with GLBs in release tekken5-ctype5-glbs-v1. The honest T5 item statement is now: no per-slot item meshes exist anywhere in DATA1; DATA0 (below) is the only unexamined archive."
   },
   {
    "acquisition": "Teardown-lane cipher work (owner NO-DEFERRAL teardown program): TK5-DATA0-CIPHER-HUNT.md + this lane's new head evidence (survey S6): DATA0's first bytes XOR with an LCG keystream whose seed at word 0 is 1; words 5-11 of the raw file ARE the keystream (plaintext zeros); block-restart seed-1 decryption yields a structured head (word2=0x4400) then a second periodic layer — the transform is NOT the DATA1 scheme alone. PCSX2 runtime extraction (cipher-hunt S8) is the documented fallback that settles it.",
@@ -127,7 +131,7 @@
    "wanted_for": "Completeness of the T5 item census: until DATA0 decrypts, the honest statement is 'no slot-item meshes found in DATA1', not 'T5 has none'."
   },
   {
-   "acquisition": "Survey by content over every extracted DATA1 model (this lane): full NUDP census (464) + own-eyes renders of pack sub02/sub05 sample + contact sheet of 16 packs. NO skull, mask, or head-covering standalone geometry was identified in DATA1; the only unrendered models are the 16 VIF-0x82 ctype-5 models (above) and DATA0 content (above). If a skull-type mask exists in T5's set it is inside one of those two gaps; it is NOT asserted here. The tekken7 named gap (tekken7:cmn:full_head:skull-mask) is untouched by this catalog.",
+   "acquisition": "Survey by content over every extracted DATA1 model (this lane): full NUDP census (464) + own-eyes renders of pack sub02/sub05 sample + contact sheet of 16 packs. NO skull, mask, or head-covering standalone geometry was identified in DATA1; the only unrendered models were the 16 VIF-0x82 ctype-5 models (above) and DATA0 content (above). W7d addendum (2026-10-21): the ctype-5 models are now decoded and rendered (T5-CTYPE5-DECODE-2026-10-21.md, proof/ctype5-*.png) — prism beams, flat panels, a cylindrical wall segment; no skull, mask, or head-covering geometry among them either. DATA0 is now the ONLY unexamined place a T5 skull-type mask could still hide; it is NOT asserted here. The tekken7 named gap (tekken7:cmn:full_head:skull-mask) is untouched by this catalog.",
    "char_id": null,
    "expected_source": "Would be: a generic-scope head/full-head item mesh in TK5DATA1.BIN or TK5DATA0.BIN",
    "id": "tekken5:cmn:full_head:skull-mask",
@@ -143,6 +147,470 @@
    "status": "named_gap_not_found_in_surveyed_data",
    "suite_slot": "full_head",
    "wanted_for": "Slice (roster/slice) skull mask — survey-only target per the W7 order: register under a tekken5 id only if actually found in T5's set. Verdict this lane: NOT FOUND in DATA1 (evidence in survey doc S5)."
+  }
+ ],
+ "decoded_ctype5_models":  [
+  {
+   "char_id": null,
+   "classification_basis": "decoded geometry + own-eyes Blender proof renders (proof/ctype5-*.png); characterization from decoded data only (T5-CTYPE5-DECODE-2026-10-21.md)",
+   "conversion": {
+    "glb_release": {
+     "asset": "ctype5-f0022-m0.glb",
+     "repo": "mhvnsnt/western-heart",
+     "sha256": "e69a477027d7e78f8b20dc3b7339ef151b0422fbc0c3a6f6bdddb67d3f5f95ab",
+     "size": 20696,
+     "tag": "tekken5-ctype5-glbs-v1"
+    },
+    "source": {
+     "checksum_path": "decrypted",
+     "data1_files": [
+      22
+     ],
+     "nudp_set_entry": 0,
+     "nudp_sha256": "fc6a1581f56213d8cffa308a86499d9596fb04009d3fa66acede5663dd344aa3",
+     "nudp_size": 5248
+    },
+    "status": "converted",
+    "tool": "Range-fetch from GitHub release tekken5-disc-v1 -> FileTableGetPS2-method extraction (LCG-XOR decrypt, E5 word-sum checksum DECRYPT-MATCH) -> NUDP split -> VIF 0x82 decode (tools/vif082.py) -> GLB (tools/ctype5_glb.py; normals computed, 0x82 packets carry none; container TIM2 picture 0 embedded via tim2dump)",
+    "vif_blobs_decoded": 4
+   },
+   "dims_source_units": [
+    2000.0,
+    2000.0,
+    186.2
+   ],
+   "file": "customization/parts/tekken5/ctype5/ctype5-f0022-m0/ctype5-f0022-m0.glb",
+   "format": "glb",
+   "geometry_class": "flat_square_panel",
+   "glb": "customization/parts/tekken5/ctype5/ctype5-f0022-m0/ctype5-f0022-m0.glb",
+   "groups": 1,
+   "groups_note": "all mesh groups in the model are byte-identical copies of one unit; runtime placement transforms are not stored in the NUDP, so the GLB carries the groups as stored (coincident at the unit origin)",
+   "id": "tekken5:ctype5:decoded:ctype5-f0022-m0",
+   "kind": "environment_model",
+   "library": "tekken5",
+   "name": "ctype-5 model 0022 entry 0 - flat square panel (2000x2000x186 source units), grey/blue-grey vertex colors",
+   "ntris": 96,
+   "nverts": 192,
+   "part_class": "mesh_part",
+   "scope": "generic",
+   "source_game": "tekken5",
+   "textures": {
+    "images_embedded": 1,
+    "materials_textured": 1,
+    "texture": "64x64 white alpha-gradient",
+    "tim2_picture_indices": [
+     0
+    ]
+   },
+   "vertex_colors": [
+    "grey (128,128,128)",
+    "blue-grey (89,110,128)"
+   ]
+  },
+  {
+   "char_id": null,
+   "classification_basis": "decoded geometry + own-eyes Blender proof renders (proof/ctype5-*.png); characterization from decoded data only (T5-CTYPE5-DECODE-2026-10-21.md)",
+   "conversion": {
+    "glb_release": {
+     "asset": "ctype5-f0022-m1.glb",
+     "repo": "mhvnsnt/western-heart",
+     "sha256": "12bcd3162f074014a013ea730ca1b15129e4feeb4b9719e7284807b54d445359",
+     "size": 34904,
+     "tag": "tekken5-ctype5-glbs-v1"
+    },
+    "source": {
+     "checksum_path": "decrypted",
+     "data1_files": [
+      22
+     ],
+     "nudp_set_entry": 1,
+     "nudp_sha256": "4b983ebc7c765762a5c8fea3bdd29d22242093214a77ba38862e78c36a4d1de1",
+     "nudp_size": 10368
+    },
+    "status": "converted",
+    "tool": "Range-fetch from GitHub release tekken5-disc-v1 -> FileTableGetPS2-method extraction (LCG-XOR decrypt, E5 word-sum checksum DECRYPT-MATCH) -> NUDP split -> VIF 0x82 decode (tools/vif082.py) -> GLB (tools/ctype5_glb.py; normals computed, 0x82 packets carry none; container TIM2 picture 0 embedded via tim2dump)",
+    "vif_blobs_decoded": 8
+   },
+   "dims_source_units": [
+    2000.0,
+    2000.0,
+    186.2
+   ],
+   "file": "customization/parts/tekken5/ctype5/ctype5-f0022-m1/ctype5-f0022-m1.glb",
+   "format": "glb",
+   "geometry_class": "flat_square_panel",
+   "glb": "customization/parts/tekken5/ctype5/ctype5-f0022-m1/ctype5-f0022-m1.glb",
+   "groups": 2,
+   "groups_note": "all mesh groups in the model are byte-identical copies of one unit; runtime placement transforms are not stored in the NUDP, so the GLB carries the groups as stored (coincident at the unit origin)",
+   "id": "tekken5:ctype5:decoded:ctype5-f0022-m1",
+   "kind": "environment_model",
+   "library": "tekken5",
+   "name": "ctype-5 model 0022 entry 1 - flat square panel (2000x2000x186 source units), the same unit in 2 identical mesh groups",
+   "ntris": 192,
+   "nverts": 384,
+   "part_class": "mesh_part",
+   "scope": "generic",
+   "source_game": "tekken5",
+   "textures": {
+    "images_embedded": 1,
+    "materials_textured": 1,
+    "texture": "64x64 white alpha-gradient",
+    "tim2_picture_indices": [
+     0
+    ]
+   },
+   "vertex_colors": [
+    "grey (128,128,128)",
+    "blue-grey (89,110,128)"
+   ]
+  },
+  {
+   "char_id": null,
+   "classification_basis": "decoded geometry + own-eyes Blender proof renders (proof/ctype5-*.png); characterization from decoded data only (T5-CTYPE5-DECODE-2026-10-21.md)",
+   "conversion": {
+    "glb_release": {
+     "asset": "ctype5-f0022-m2.glb",
+     "repo": "mhvnsnt/western-heart",
+     "sha256": "c30c8f5dd38d1a76d4f1b249124aefc669cadb0834909133c447fdd935ace941",
+     "size": 73556,
+     "tag": "tekken5-ctype5-glbs-v1"
+    },
+    "source": {
+     "checksum_path": "decrypted",
+     "data1_files": [
+      22
+     ],
+     "nudp_set_entry": 2,
+     "nudp_sha256": "4196179489177598a3da32a3e199722a2102cc66bf2d3be77279d7431af25234",
+     "nudp_size": 18272
+    },
+    "status": "converted",
+    "tool": "Range-fetch from GitHub release tekken5-disc-v1 -> FileTableGetPS2-method extraction (LCG-XOR decrypt, E5 word-sum checksum DECRYPT-MATCH) -> NUDP split -> VIF 0x82 decode (tools/vif082.py) -> GLB (tools/ctype5_glb.py; normals computed, 0x82 packets carry none; container TIM2 picture 0 embedded via tim2dump)",
+    "vif_blobs_decoded": 42
+   },
+   "dims_source_units": [
+    150.0,
+    173.2,
+    2500.0
+   ],
+   "file": "customization/parts/tekken5/ctype5/ctype5-f0022-m2/ctype5-f0022-m2.glb",
+   "format": "glb",
+   "geometry_class": "triangular_prism_beam_unit",
+   "glb": "customization/parts/tekken5/ctype5/ctype5-f0022-m2/ctype5-f0022-m2.glb",
+   "groups": 42,
+   "groups_note": "all mesh groups in the model are byte-identical copies of one unit; runtime placement transforms are not stored in the NUDP, so the GLB carries the groups as stored (coincident at the unit origin)",
+   "id": "tekken5:ctype5:decoded:ctype5-f0022-m2",
+   "kind": "environment_model",
+   "library": "tekken5",
+   "name": "ctype-5 model 0022 entry 2 - triangular-prism beam unit (equilateral 150x173.2 section, 2500 long), orange-red vertex color, 42 identical mesh groups",
+   "ntris": 252,
+   "nverts": 504,
+   "part_class": "mesh_part",
+   "scope": "generic",
+   "source_game": "tekken5",
+   "textures": {
+    "images_embedded": 1,
+    "materials_textured": 1,
+    "texture": "64x64 white alpha-gradient",
+    "tim2_picture_indices": [
+     0
+    ]
+   },
+   "vertex_colors": [
+    "orange-red (255,38,0)"
+   ]
+  },
+  {
+   "char_id": null,
+   "classification_basis": "decoded geometry + own-eyes Blender proof renders (proof/ctype5-*.png); characterization from decoded data only (T5-CTYPE5-DECODE-2026-10-21.md)",
+   "conversion": {
+    "glb_release": {
+     "asset": "ctype5-f0022-m3.glb",
+     "repo": "mhvnsnt/western-heart",
+     "sha256": "eb035e28e6d23cd76f48ca29af953c23dc84e03874735aef0ff7b75ac69a6d4d",
+     "size": 64824,
+     "tag": "tekken5-ctype5-glbs-v1"
+    },
+    "source": {
+     "checksum_path": "decrypted",
+     "data1_files": [
+      22
+     ],
+     "nudp_set_entry": 3,
+     "nudp_sha256": "3b5f97000566453c2bcf8670c950aa4668fd1e9ecc663b138b8c6b710be2a33f",
+     "nudp_size": 19264
+    },
+    "status": "converted",
+    "tool": "Range-fetch from GitHub release tekken5-disc-v1 -> FileTableGetPS2-method extraction (LCG-XOR decrypt, E5 word-sum checksum DECRYPT-MATCH) -> NUDP split -> VIF 0x82 decode (tools/vif082.py) -> GLB (tools/ctype5_glb.py; normals computed, 0x82 packets carry none; container TIM2 picture 0 embedded via tim2dump)",
+    "vif_blobs_decoded": 26
+   },
+   "dims_source_units": [
+    150.0,
+    173.2,
+    2500.0
+   ],
+   "file": "customization/parts/tekken5/ctype5/ctype5-f0022-m3/ctype5-f0022-m3.glb",
+   "format": "glb",
+   "geometry_class": "triangular_prism_beam_unit",
+   "glb": "customization/parts/tekken5/ctype5/ctype5-f0022-m3/ctype5-f0022-m3.glb",
+   "groups": 26,
+   "groups_note": "all mesh groups in the model are byte-identical copies of one unit; runtime placement transforms are not stored in the NUDP, so the GLB carries the groups as stored (coincident at the unit origin)",
+   "id": "tekken5:ctype5:decoded:ctype5-f0022-m3",
+   "kind": "environment_model",
+   "library": "tekken5",
+   "name": "ctype-5 model 0022 entry 3 - triangular-prism beam unit (equilateral 150x173.2 section, 2500 long), brown vertex colors, 26 identical mesh groups",
+   "ntris": 312,
+   "nverts": 624,
+   "part_class": "mesh_part",
+   "scope": "generic",
+   "source_game": "tekken5",
+   "textures": {
+    "images_embedded": 1,
+    "materials_textured": 1,
+    "texture": "64x64 white alpha-gradient",
+    "tim2_picture_indices": [
+     0
+    ]
+   },
+   "vertex_colors": [
+    "brown (128,82,46)",
+    "tan-brown (128,115,89)"
+   ]
+  },
+  {
+   "char_id": null,
+   "classification_basis": "decoded geometry + own-eyes Blender proof renders (proof/ctype5-*.png); characterization from decoded data only (T5-CTYPE5-DECODE-2026-10-21.md)",
+   "conversion": {
+    "glb_release": {
+     "asset": "ctype5-f0687-m0.glb",
+     "repo": "mhvnsnt/western-heart",
+     "sha256": "1aad1a58125a5332d0f26e57104fc2b0b40cf9758295cf1f201d2d99349df99d",
+     "size": 33184,
+     "tag": "tekken5-ctype5-glbs-v1"
+    },
+    "source": {
+     "checksum_path": "decrypted",
+     "data1_files": [
+      687,
+      698
+     ],
+     "nudp_set_entry": 0,
+     "nudp_sha256": "c921b2de1a5bf365fb123347d41719fee827c8b7c1bd6a61176f2d7258fcc259",
+     "nudp_size": 7472
+    },
+    "status": "converted",
+    "tool": "Range-fetch from GitHub release tekken5-disc-v1 -> FileTableGetPS2-method extraction (LCG-XOR decrypt, E5 word-sum checksum DECRYPT-MATCH) -> NUDP split -> VIF 0x82 decode (tools/vif082.py) -> GLB (tools/ctype5_glb.py; normals computed, 0x82 packets carry none; container TIM2 picture 0 embedded via tim2dump)",
+    "vif_blobs_decoded": 17
+   },
+   "dims_source_units": [
+    150.0,
+    173.2,
+    2500.0
+   ],
+   "file": "customization/parts/tekken5/ctype5/ctype5-f0687-m0/ctype5-f0687-m0.glb",
+   "format": "glb",
+   "geometry_class": "triangular_prism_beam_unit",
+   "glb": "customization/parts/tekken5/ctype5/ctype5-f0687-m0/ctype5-f0687-m0.glb",
+   "groups": 17,
+   "groups_note": "all mesh groups in the model are byte-identical copies of one unit; runtime placement transforms are not stored in the NUDP, so the GLB carries the groups as stored (coincident at the unit origin)",
+   "id": "tekken5:ctype5:decoded:ctype5-f0687-m0",
+   "kind": "environment_model",
+   "library": "tekken5",
+   "name": "ctype-5 model 0687 entry 0 - triangular-prism beam unit (equilateral 150x173.2 section, 2500 long), red vertex colors, 17 identical mesh groups (also in DATA1 file 0698, byte-identical)",
+   "ntris": 102,
+   "nverts": 204,
+   "part_class": "mesh_part",
+   "scope": "generic",
+   "source_game": "tekken5",
+   "textures": {
+    "images_embedded": 1,
+    "materials_textured": 1,
+    "texture": "64x64 white alpha-gradient",
+    "tim2_picture_indices": [
+     0
+    ]
+   },
+   "vertex_colors": [
+    "red (255,0,1)",
+    "red (255,51,51)"
+   ]
+  },
+  {
+   "char_id": null,
+   "classification_basis": "decoded geometry + own-eyes Blender proof renders (proof/ctype5-*.png); characterization from decoded data only (T5-CTYPE5-DECODE-2026-10-21.md)",
+   "conversion": {
+    "glb_release": {
+     "asset": "ctype5-f0753-m0.glb",
+     "repo": "mhvnsnt/western-heart",
+     "sha256": "eacf05a4501d5c22b8d76f82e8a53c16b3678e210d225bcf387b0831f7034f2a",
+     "size": 41840,
+     "tag": "tekken5-ctype5-glbs-v1"
+    },
+    "source": {
+     "checksum_path": "decrypted",
+     "data1_files": [
+      753,
+      764
+     ],
+     "nudp_set_entry": 0,
+     "nudp_sha256": "35b6d0888b28b82858ab707cbdeb516b27e6719e8bda76b7ef16d3615cea2a9d",
+     "nudp_size": 1520
+    },
+    "status": "converted",
+    "tool": "Range-fetch from GitHub release tekken5-disc-v1 -> FileTableGetPS2-method extraction (LCG-XOR decrypt, E5 word-sum checksum DECRYPT-MATCH) -> NUDP split -> VIF 0x82 decode (tools/vif082.py) -> GLB (tools/ctype5_glb.py; normals computed, 0x82 packets carry none; container TIM2 picture 0 embedded via tim2dump)",
+    "vif_blobs_decoded": 2
+   },
+   "dims_source_units": [
+    1996.5,
+    1996.5,
+    3972.5
+   ],
+   "file": "customization/parts/tekken5/ctype5/ctype5-f0753-m0/ctype5-f0753-m0.glb",
+   "format": "glb",
+   "geometry_class": "cylindrical_wall_segment",
+   "glb": "customization/parts/tekken5/ctype5/ctype5-f0753-m0/ctype5-f0753-m0.glb",
+   "groups": 1,
+   "groups_note": "all mesh groups in the model are byte-identical copies of one unit; runtime placement transforms are not stored in the NUDP, so the GLB carries the groups as stored (coincident at the unit origin)",
+   "id": "tekken5:ctype5:decoded:ctype5-f0753-m0",
+   "kind": "environment_model",
+   "library": "tekken5",
+   "name": "ctype-5 model 0753 entry 0 - tall cylindrical wall segment (diameter ~1996, height ~3972 source units), dark metallic panel texture, two-tone vertex colors (also in DATA1 file 0764, byte-identical)",
+   "ntris": 30,
+   "nverts": 48,
+   "part_class": "mesh_part",
+   "scope": "generic",
+   "source_game": "tekken5",
+   "textures": {
+    "images_embedded": 1,
+    "materials_textured": 1,
+    "texture": "128x128 dark metallic panel with seams/rivet",
+    "tim2_picture_indices": [
+     0
+    ]
+   },
+   "vertex_colors": [
+    "dark brown (64,58,51)",
+    "pink-white (255,211,230)",
+    "black (0,0,0)"
+   ]
+  },
+  {
+   "char_id": null,
+   "classification_basis": "decoded geometry + own-eyes Blender proof renders (proof/ctype5-*.png); characterization from decoded data only (T5-CTYPE5-DECODE-2026-10-21.md)",
+   "conversion": {
+    "glb_release": {
+     "asset": "ctype5-f1061-m0.glb",
+     "repo": "mhvnsnt/western-heart",
+     "sha256": "f3ed826a8552d6e5ff9f62556e01b74dd8af6c071dc2927c9f15ed64dd758187",
+     "size": 43832,
+     "tag": "tekken5-ctype5-glbs-v1"
+    },
+    "source": {
+     "checksum_path": "decrypted",
+     "data1_files": [
+      1061,
+      1072,
+      1083,
+      1094
+     ],
+     "nudp_set_entry": 0,
+     "nudp_sha256": "e64d2a59190362257c6eacaa1c41ab51250d042a6b564c73b0a0a3024b79daa6",
+     "nudp_size": 13520
+    },
+    "status": "converted",
+    "tool": "Range-fetch from GitHub release tekken5-disc-v1 -> FileTableGetPS2-method extraction (LCG-XOR decrypt, E5 word-sum checksum DECRYPT-MATCH) -> NUDP split -> VIF 0x82 decode (tools/vif082.py) -> GLB (tools/ctype5_glb.py; normals computed, 0x82 packets carry none; container TIM2 picture 0 embedded via tim2dump)",
+    "vif_blobs_decoded": 11
+   },
+   "dims_source_units": [
+    2000.0,
+    2000.0,
+    118.3
+   ],
+   "file": "customization/parts/tekken5/ctype5/ctype5-f1061-m0/ctype5-f1061-m0.glb",
+   "format": "glb",
+   "geometry_class": "flat_square_panel",
+   "glb": "customization/parts/tekken5/ctype5/ctype5-f1061-m0/ctype5-f1061-m0.glb",
+   "groups": 1,
+   "groups_note": "all mesh groups in the model are byte-identical copies of one unit; runtime placement transforms are not stored in the NUDP, so the GLB carries the groups as stored (coincident at the unit origin)",
+   "id": "tekken5:ctype5:decoded:ctype5-f1061-m0",
+   "kind": "environment_model",
+   "library": "tekken5",
+   "name": "ctype-5 model 1061 entry 0 - flat square panel (2000x2000x118 source units), grey vertex color (also in DATA1 files 1072/1083/1094, byte-identical)",
+   "ntris": 224,
+   "nverts": 501,
+   "part_class": "mesh_part",
+   "scope": "generic",
+   "source_game": "tekken5",
+   "textures": {
+    "images_embedded": 1,
+    "materials_textured": 1,
+    "texture": "64x64 white alpha-gradient",
+    "tim2_picture_indices": [
+     0
+    ]
+   },
+   "vertex_colors": [
+    "grey (128,128,128)"
+   ]
+  },
+  {
+   "char_id": null,
+   "classification_basis": "decoded geometry + own-eyes Blender proof renders (proof/ctype5-*.png); characterization from decoded data only (T5-CTYPE5-DECODE-2026-10-21.md)",
+   "conversion": {
+    "glb_release": {
+     "asset": "ctype5-f1061-m1.glb",
+     "repo": "mhvnsnt/western-heart",
+     "sha256": "c77398247c8762b5c58bf32ebed772cf4eb635c6e68b1df088bcd97448d4a640",
+     "size": 36696,
+     "tag": "tekken5-ctype5-glbs-v1"
+    },
+    "source": {
+     "checksum_path": "decrypted",
+     "data1_files": [
+      1061,
+      1072,
+      1083,
+      1094
+     ],
+     "nudp_set_entry": 1,
+     "nudp_sha256": "4c7288b389e61892d886d6025088d0e20898a59aaf4196f4a5f1023d4d156006",
+     "nudp_size": 8336
+    },
+    "status": "converted",
+    "tool": "Range-fetch from GitHub release tekken5-disc-v1 -> FileTableGetPS2-method extraction (LCG-XOR decrypt, E5 word-sum checksum DECRYPT-MATCH) -> NUDP split -> VIF 0x82 decode (tools/vif082.py) -> GLB (tools/ctype5_glb.py; normals computed, 0x82 packets carry none; container TIM2 picture 0 embedded via tim2dump)",
+    "vif_blobs_decoded": 19
+   },
+   "dims_source_units": [
+    150.0,
+    173.2,
+    2500.0
+   ],
+   "file": "customization/parts/tekken5/ctype5/ctype5-f1061-m1/ctype5-f1061-m1.glb",
+   "format": "glb",
+   "geometry_class": "triangular_prism_beam_unit",
+   "glb": "customization/parts/tekken5/ctype5/ctype5-f1061-m1/ctype5-f1061-m1.glb",
+   "groups": 19,
+   "groups_note": "all mesh groups in the model are byte-identical copies of one unit; runtime placement transforms are not stored in the NUDP, so the GLB carries the groups as stored (coincident at the unit origin)",
+   "id": "tekken5:ctype5:decoded:ctype5-f1061-m1",
+   "kind": "environment_model",
+   "library": "tekken5",
+   "name": "ctype-5 model 1061 entry 1 - triangular-prism beam unit (equilateral 150x173.2 section, 2500 long), red vertex color, 19 identical mesh groups (also in DATA1 files 1072/1083/1094, byte-identical)",
+   "ntris": 114,
+   "nverts": 228,
+   "part_class": "mesh_part",
+   "scope": "generic",
+   "source_game": "tekken5",
+   "textures": {
+    "images_embedded": 1,
+    "materials_textured": 1,
+    "texture": "64x64 white alpha-gradient",
+    "tim2_picture_indices": [
+     0
+    ]
+   },
+   "vertex_colors": [
+    "red (255,51,51)"
+   ]
   }
  ],
  "parts": [
