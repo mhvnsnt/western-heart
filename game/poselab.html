@@ -102,7 +102,7 @@ async function show({ model = 'pantera', bank = 'king', clip = 'stance', t = 0.5
   const ta = tgtMixer.clipAction(rt[clip]); if (!rest) ta.play();
   const facesNegZ = rt[clip].userData.rigFacesNegZ;
   scenes[0].add(src); scenes[1].add(tgt);
-  cur = { src, tgt, srcMixer, tgtMixer };
+  cur = { src, tgt, srcMixer, tgtMixer, swapLR: !!rt[clip].userData.rigSwapLR };
   const dur = clips[clip].duration;
   const time = Math.min(dur - 1e-3, Math.max(0, t <= 1 ? t * dur : t));
   srcMixer.setTime(time); tgtMixer.setTime(time);
@@ -170,7 +170,7 @@ async function rest(model) {
     cam.aspect = (W / 2) / (H / 2); cam.updateProjectionMatrix();
   }
   info.textContent = `REST ${model}: left = camera on +Z, right = camera on +X`;
-  return { model };
+  return { model, facing: assets.facing[model] };
 }
 /* Resolve a roster fighter exactly like the game: model from the roster
    entry (selected attire 1), bank from bankIdFor (moveset t3_source). */
@@ -211,7 +211,27 @@ async function restUrl(url) {
   }
   return { url, size: size.toArray().map(v => +v.toFixed(3)) };
 }
-window.__poselab = { show, rest, restUrl, showFighter, banks: Object.keys(T3_BANKS) };
+/* Per-foot yaw (deg) of Foot->ToeBase against the hips' forward, both rigs,
+   at the pose last shown: 0 = toes straight ahead, ±90 = sideways, ±180 = backwards.
+   The target's sides are anatomical (swapLR applied, as in show()). */
+function footYaw() {
+  if (!cur) return null;
+  const yaw = (m, swap) => {
+    const p = (b) => b.getWorldPosition(new THREE.Vector3());
+    const q = m.Hips.getWorldQuaternion(new THREE.Quaternion());
+    const fwd = new THREE.Vector3(0, 0, 1).applyQuaternion(q); fwd.y = 0; fwd.normalize();
+    const r = {};
+    for (const s of ['Left', 'Right']) {
+      const k = swap ? (s === 'Left' ? 'Right' : 'Left') : s;
+      if (!m[k + 'Foot'] || !m[k + 'ToeBase']) continue;
+      const d = p(m[k + 'ToeBase']).sub(p(m[k + 'Foot'])); d.y = 0; d.normalize();
+      r[s] = +THREE.MathUtils.radToDeg(Math.atan2(fwd.clone().cross(d).y, fwd.dot(d))).toFixed(1);
+    }
+    return r;
+  };
+  return { src: yaw(boneMap(cur.src), false), tgt: yaw(boneMap(cur.tgt), cur.swapLR) };
+}
+window.__poselab = { show, rest, restUrl, showFighter, footYaw, cur: () => cur, banks: Object.keys(T3_BANKS) };
 const q = new URLSearchParams(location.search);
 if (q.get('model')) show({ model: q.get('model'), bank: q.get('bank') || 'king', clip: q.get('clip') || 'stance', t: +(q.get('t') || 0.5) })
   .catch(e => { info.textContent = 'ERROR ' + e.message; });

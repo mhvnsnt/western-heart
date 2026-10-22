@@ -309,3 +309,25 @@ Fix shipped in this PR (model-rigged.glb rebuilt):
 
 Proof (viewed): `docs/tpose-refs/pantera-leopard-king/fix2-sheet-20261022.png`,
 `docs/tpose-refs/pantera/fix2-a1-sheet-20261022.png`.
+
+---
+
+## 2026-10-22 — RE-RIG: skeleton refitted inside the mesh + bone heat (Claude session; supersedes the 2026-10-21 wiring)
+
+**Owner:** "once you get down to the forearm and the hands it starts to stretch and has weight issues ... the legs are all
+crumpled up ... the right leg is in the opposite direction of the left leg the hand looks weighted to the tail".
+
+**Cause (measured, tools/model-audit/rig_qa.py + rig_overlay.py):** the 2026-10-21 build's King skeleton sat ~0.25 m
+BEHIND the body (torso z 0.11..0.40 vs hips joint -0.01), with its Left* bones in the mesh's right limbs and toes pointing
+backwards; the KNN weight transfer then gave 26,512 verts to far bones (Spine -> forearm 10,370, leg -> tail ~3,700).
+
+**Method:** `tools/auto_rig/refit_skeleton.py` keeps King's 49-joint skeleton (game/assets/models/pantera.glb) +
+Tail1-4 and centres every joint in the mesh's own cross-section (spine/legs: horizontal slabs; arms: vertical slabs;
+toe along the sole; tail on the medial curve of the tail verts). Names follow anatomy (Left* = character's left).
+`tools/auto_rig/backends/heat_rebind.py` skins it with Blender bone heat on a cleaned voxel proxy (0 unweighted),
+then `tools/anim/gltf_codec.mjs encode`.
+
+**Output:** `model-refit.glb` (32,679,076 B, sha256 20695690affccdc45f0246c3f8962bd3440f71bde9cddc7a44bbebce2dfbc779),
+wired as 'pantera-leopard-king'. `model-rigged.glb` (2026-10-21) and `model.glb` (Tripo raw) untouched.
+rig_qa: sides ok, knees forward, bleed 1,010 (hips). In-game T3 retarget: max bone-direction error 0.4 deg.
+Proof: docs/proof/claude-2026-10-22/pantera-rigs/.

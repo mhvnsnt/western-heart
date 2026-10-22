@@ -655,6 +655,16 @@ def heat_via_proxy(rig, m, voxel, target_faces):
         dec = proxy.modifiers.new("wh_decimate", "DECIMATE")
         dec.ratio = min(0.6, tri_target / max(1, 2 * quads))
         bpy.ops.object.modifier_apply(modifier=dec.name)
+        # Merge duplicate verts first (Leopard King proxy, 2026-10-22: doubles plus 3-5 vertex specks
+        # made the solve fail for every vertex, 24,006/24,006 unweighted -> 0), then drop the micro
+        # components (torch-a1, same day — see drop_micro_components).
+        import bmesh
+        bm = bmesh.new()
+        bm.from_mesh(proxy.data)
+        bmesh.ops.remove_doubles(bm, verts=bm.verts, dist=0.1 * voxel / max(proxy.scale))
+        bm.to_mesh(proxy.data)
+        bm.free()
+        proxy.data.update()
         drop_micro_components(proxy)
         bpy.ops.object.select_all(action="DESELECT")
         rig.select_set(True)

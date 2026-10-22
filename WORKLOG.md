@@ -258,124 +258,356 @@ Owner: "his whole body is facing the wrong way and his head is facing the right 
 - Not done here: Phantom and Sam-ur-a1 models have ZERO skinned meshes (unrigged statics, on main
   since 2026-10-18) — queued for the auto-rig pass with Zui/Diablo/Rave.
 
----
+## 2026-10-21 — Lane 1: playability code fixes (B1 / B4 / B5)
 
-# WORKLOG — T3 bank facing root-cause fix (2026-10-22, model-quality lane)
+Branch: `fix/playability-code-fixes-20261021`. Three audit blockers from
+~/workspace/audit/REPORT.md fixed as code-only changes (no asset changes).
+Tool: GitHub Git Database API (no git push available on the VM).
 
-## Root cause (the user's "decrypted backwards")
-`lab/tools/t3_to_gltf.py` `import_fighter` and `lab/tools/t3_motion_bake.py`
-`T3Space` chose each bank's forward direction from the HEAD-MESH centroid
-("muzzle leads"). On characters whose head/hair mass sits behind the face,
-this picked backwards, baking 5 of 17 T3 animation banks facing -Z:
-bosconovitch (-179.5°), eddy (-178.6°), gunjack (149.9°), heihachi (137.7°),
-yoshimitsu (155.1°) — measured with tools/anim/t3_bank_facing.py, the offline
-twin of the runtime's bankFacing() knee check in game/js/t3anims.js.
-The game patched it at load (turn 180° about Y + Left/Right relabel per bank);
-this fix gets it right at the source instead.
+- **B1 (fight-start hang)** — `game/js/assets.js` ~line 634: the `_facingReady.then(...)`
+  gate in `loadModels`/`loadOne` had no rejection handler and the 90s
+  `LOAD_TIMEOUT_MS` was disarmed before it, so a throw in `feetFacingCue` or an
+  unsettled `_facingReady` hung `startFight` forever ("Entering the arena…").
+  Now: try/catch around the facing computation defaulting to +Z (with a
+  `[WH]` console.warn), plus a rejection handler that also defaults to +Z and
+  resolves — the load can never hang on the facing gate.
+- **B4 (stuck always-on aura)** — `game/js/fighter.js` `_enter(state)` (~line 838):
+  clears `this.attack`/`this.attackName` when leaving the attack state, so an
+  interrupted Soul Surge (receiveHit → hitstun/knockdown/ko, throw-lock) can no
+  longer latch `attackName === 'surge'` and stick the aura on permanently.
+  Belt-and-suspenders in `game/js/game.js` `_startRound()` (~line 151): clears
+  both fighters' `attack`/`attackName` on round reset (that path assigns
+  `state=` directly, bypassing `_enter`).
+- **B5 (unguarded `char.surge.*` reads)** — `game/js/game.js` lines 255-256, 400,
+  453-454: 45 of 59 roster entries have no `surge` object; a full-meter surge
+  threw `TypeError`. Now uses `?.` with fallbacks mirroring the existing guard
+  in `fighter.js:388-389` (`surge ? surge.color : colors.trim`; accent → `0xffffff`;
+  name → `'SOUL SURGE'`). Checked existing `surge.name` values in
+  `game/js/roster-full.js` (e.g. "PANTHER'S WRATH", "COLD FLAME") before picking
+  the generic fallback.
 
-Related (separate): the k-NN weight pipeline (tools/auto_rig/backends/
-knn_transfer.py) has no automatic facing alignment — facing is a manual
---rotate-y. See the model-quality lanes' reports.
+Verification: `node --check` clean on all three modified files; edited regions
+re-read to confirm exact placement; no secret-like patterns (gitleaks not
+installed on this VM — grep scan instead, clean). Repo laws respected: one
+commit per change, feature branch + PR, merge via API only when mergeable and
+CI green.
 
-## Fix
-1. `lab/tools/t3_to_gltf.py`, `lab/tools/t3_motion_bake.py`: facing heuristic
-   replaced with the KNEE-BEND cue (knees are anatomical and never lie):
-   lateral = shoulder line (hip line fallback for partial KMDs like heihachi);
-   forward = the candidate with positive total knee offset from the hip-ankle
-   midline. Head-centroid kept only as a fallback when knees give no signal.
-   Validated on all 15 available KMD+stance pairs: positive knee scores
-   everywhere, reproduces the 12 good bakes, corrects the 5 bad ones.
-2. The 5 already-baked banks corrected OFFLINE with the exact runtime
-   transform (t3anims.js turnSkeleton/turnData): game/assets/anim/t3/
-   {bosconovitch,eddy,gunjack,heihachi,yoshimitsu}/ — skeleton.json (18 joints
-   each), all 30 t3_*.json clips each, rows.pack.json (647/208/152/111 rows;
-   heihachi has no pack). Bones L/R-relabeled in place, quats conjugated
-   (x,y,z,w)->(-x,y,-z,w), root_t (x,y,z)->(-x,y,-z).
-3. Runtime needs NO change: bankFacing() now measures knees-forward on all 17
-   banks and the turn becomes a no-op (kept as a data-driven safety net).
+## 2026-10-21 — Lane 4: rig batch 1 (6 fighters) — knn backend
 
-## Proof
-tools/anim/t3_bank_facing.py before → after:
-- bosconovitch -179.5° → 0.5°, eddy -178.6° → 1.4°, gunjack 149.9° → -30.1°,
-  heihachi 137.7° → -42.3°, yoshimitsu 155.1° → -24.9°. All 17 "ok", none
-  TURNED. (Residual angles within the ±61° untouched band, same as anna/lei.)
-- Pack integrity: bone lists L/R-symmetric, quats unit-norm after conjugation.
+Branch: `fix/rig-batch-1-20261021`. Audit B2: 22 unrigged static fighters.
+This batch rigs 6: Scimitar, Waterfall, Armor King, Charger (Attire 1+2),
+Saku Ra. Tool: GitHub Git Database API (no git push available on the VM).
 
-## Files
-- lab/tools/t3_to_gltf.py (facing heuristic)
-- lab/tools/t3_motion_bake.py (T3Space facing heuristic)
-- game/assets/anim/t3/{bosconovitch,eddy,gunjack,heihachi,yoshimitsu}/
-  skeleton.json, t3_*.json (30 each), rows.pack.json (4 banks)
+**Backend substitution (why not rig_tripo_static.py / Blender):** Blender is
+not installed on this VM and the VM has ~8 GB RAM (~300 MB free) — the
+Blender+GameRig path OOMs on dense Tripo statics. The repo's own
+`tools/auto_rig/README.md` documents the `knn` backend as "for dense statics
+Blender chokes on" (numpy/scipy only, both installed). Donor rig:
+`game/assets/models/pantera.glb` (49-bone WH Mixamo-style skeleton, per the
+README's knn example). Pipeline per model: (decode meshopt if needed) →
+`knn_transfer.py` → `.npz` → `apply_skin.py` → rigged GLB → `validate.py`
+(the playable gate). Output convention follows the proven Zui path:
+`model-rigged.glb` written BESIDE the original `model.glb` (owner's original
+stays untouched); `MODEL_URLS` repointed to the rigged file.
 
----
+**Local bug-fix patches** (documented in the script headers; the repo
+scripts as-shipped crash or produce garbage on the real donor/inputs —
+method unchanged, still k-NN from the pantera donor → validate gate):
+- P1: donor `JOINTS_0` is UNSIGNED_BYTE (raw uint8 = joint indices); the
+  repo script read it as float32 → garbage weights for every vertex.
+- P2: donor reference used only mesh 0 (a 202-vert accessory); now all
+  donor meshes are concatenated.
+- P3: transfer every target prim (not just mesh 0 prim 0); one global
+  normalize so multi-mesh models stay aligned.
+- P4: chunked k-NN accumulation (RAM bound).
+- P5: `--rotate-y` + normalize params stored in `.npz` for exact reuse.
+- P6: `validate.py` height measured over the model union, not just
+  prim 0 (multi-prim statics failed the gate on an accessory prim).
+- P7: `decode_meshopt.py` — Tripo GLBs are EXT_meshopt_compression;
+  decoded with the `meshopt` PyPI package before transfer.
+- P8: far-vert fallback — verts with no donor coverage (>0.10–0.16 m)
+  blend to their nearest donor joint (smoothstep) instead of inheriting
+  hand/foot weights (e.g. Waterfall's hair disc, Charger's shoulder bar).
+- P9: target node transforms baked to world space (armor-king's -90° X
+  Sketchfab root).
+- P10: normalize aligns x/z CENTERS (repo mapped min-corner on all axes,
+  shifting bodies ~0.6 m off the donor when proportions differ); y still
+  aligns feet (min to min).
 
-## 2026-10-21 — Pantera skin-weight re-derivation (live model + Attire 1)
+**Facing:** determined per model by anatomical signals (nose-sharpness test,
+head-texture face-vs-hair color, feet toe cue, textured renders viewed);
+k-NN distance as tiebreaker only. Scimitar/Charger/Charger-A2/Saku Ra face
++Z (rotate-y 0); Waterfall/Armor King face -Z (rotate-y 180).
 
-Lane: fix/pantera-weights-20261021. Tool: tools/auto_rig/reskin_pantera_weights.py
-(reproducible; run from tools/auto_rig). Gates: tools/auto_rig/anim_check.py,
-tools/auto_rig/validate.py.
+**Batch 1 manifest** (input → output, validate verdict):
+- scimitar (`game/assets/models/scimitar.glb` 13.3 MB → `scimitar-rigged.glb`
+  14.0 MB): PASS. 25,448 verts, 9 prims; pose test (40° LeftArm rotation
+  moves only left-arm verts, max 0.15 m) sane. Pilot model.
+- waterfall (`roster/waterfall/attires/attire1/model.glb` 18.0 MB →
+  `model-rigged.glb`): PASS. 1,016,911 verts; hair disc → Head via P8.
+- armor-king (`roster/armor-king/attires/attire1/model.glb` 0.4 MB →
+  `model-rigged.glb`): PASS. 29 meshes / 5,679 verts (multi-mesh path).
+- charger (`roster/charger/attires/attire1/model.glb` 18.0 MB →
+  `model-rigged.glb`): PASS. 1,011,689 verts; side agreement 1.000 on k-NN
+  verts.
+- charger-attire2 (`roster/charger/attires/attire2/model.glb` 17.4 MB →
+  `model-rigged.glb`): PASS. 1,022,542 verts.
+- saku-ra (`roster/sakura/attires/attire1/model.glb` 19.3 MB →
+  `model-rigged.glb`): PASS. 1,007,864 verts.
 
-### Wiring confirmed (step a)
-- Live key `pantera: 'assets/models/pantera.glb'` (game/js/assets.js MODEL_URLS).
-- Attire 1 = the same file: game/js/attires.js ATTIRE_VARIANTS['pantera'][0] =
-  { model: 'pantera', label: 'ATTIRE 1' }. So "live Pantera" and "Pantera
-  Attire 1" are the SAME GLB: game/assets/models/pantera.glb (7,625,912 bytes,
-  sha256 2626d231a6aaff694117a55183171ad9c11f45a40eb3054afa52ab8dc55f6b6a).
-  One fix covers both. (pantera_alt1.glb is a legacy T7 reskin NOT in the
-  current attire ladder — out of scope.)
+All: `validate.py` PASS (valid glTF, ≥1 skinned mesh, 0 missing bones of the
+20-gate set, height 1.75 m, feet y=0); bone names exactly the WH Mixamo set;
+donor Idle clip copied (147 channels). Peak RAM 367–616 MB, wall 0.4–17 s
+per model (1 M-vert Tripo models ~7–17 s knn + ~4 s apply). No model failed
+validation; none skipped.
 
-### Diagnosis (measured, not eyeballed — step c)
-Per-region dominant-joint dump on the live file (11,376 skinned verts):
-- R/L FOREARM: only 13.7%/13.8% weighted to ForeArm; 47-49% to Hand,
-  36-38% to Spine/Spine1. (User: "forearm down through hands: stretching".)
-- L HAND: 80.7% LeftHand, 17% to Spine/Spine1 (torso-glue; user: "hand
-  weighted to the tail" — the tail hangs off the pelvis/back).
-- WAIST (0.98<y<1.12): 0% Hips; 62% to Left/RightUpLeg, 36% Spine.
-  (User: "from waist down: stretching".)
-- TAIL (443 verts, z<-0.15): 26% LeftLeg, 26% RightLeg, 12% each foot,
-  22% UpLegs — 0% Hips/Spine. Tail tears whenever legs move oppositely.
-- THIGH/SHIN: 30-35% weighted one joint too distal (thigh→Leg, shin→Foot).
-- IBMs verified consistent (max err 2.6e-7); skeleton itself is fine.
-- pantera_fixed.glb (2026-10-20 L/R transplant source) carries the SAME bad
-  WEIGHTS_0 — the transplant fixed joint indices only, not values.
+`MODEL_URLS` repoints (7 keys): `scimitar`, `waterfall`, `armor-king`,
+`charger`, `charger-attire2`, `saku-ra` → their `model-rigged.glb`.
 
-### Fix (pipeline-level, step d — NO hand-painted weights)
-New script tools/auto_rig/reskin_pantera_weights.py re-derives ALL
-JOINTS_0/WEIGHTS_0 in place (skeleton, IBMs, animations, materials untouched):
-1. k-NN (k=4, inverse-distance) from steve-fox.glb — same 49-joint Mixamo
-   skeleton, clean weights (92%+ forearm/shin/bicep), same -Z facing/T-pose.
-2. Side-constrained matching (|x|>3cm ⇒ same-side donor verts only).
-3. Tail rule: smoothstep blend from k-NN at base to rigid Hips at tip.
-4. Anatomical side correction: opposite-side influences mirrored + merged.
-5. Seam blend (repair_pantera_glb.py method) until anim_check gate passes.
-Result: R forearm 13.7%→99.9%, L forearm 13.8%→97.4%, waist Spine 36%→73%,
-shins 62%→90-93%, tail 100% Hips-weighted. anim_check: all 4 clips PASS
-(Idle p99.9 edge stretch 1.97 < 2.5 gate; was failing at 14.81 pre-blend).
+**Correction (2026-10-21):** Waterfall was re-processed with rotate-y 0
+(+Z) instead of 180. Three independently-confirmed Tripo models (Charger,
+Charger-A2 via nose-sharpness; Saku Ra via head-texture face color) all face
++Z, establishing the Tripo export convention; the far-vert fallback count
+dropped 7x (940k → 137k) with the +Z facing, confirming better geometric
+alignment. The model-rigged.glb in this PR is the +Z version.
 
-### Validation (step e)
-- anim_check.py: Idle/Run/TPose/Walk all PASS.
-- validate.py: valid_gltf/skinned_mesh/bones_present true (height_ok false —
-  pre-existing: validate measures mesh 0 prim 0 only, a 202-vert accessory).
-- tools/auto_rig/tests: 7/7, all passed, 3/3 pass (1 skip: missing Blender e2e GLB).
-- packages/creation-suite node tests: 6/6, 4/4, 4/4 pass (the `node --test test/`
-  directory form fails on a Node CLI module-resolution quirk; individual files pass).
-- In-game: proof-harness fight pantera vs demonio captured before/after;
-  frames viewed. Before: forearms/hands stretch, legs crumple. After: model
-  loads, fight runs, no collapse.
+# WORKLOG — Moveset gaps B3: Frankenstein file + charger-attire2 index (2026-10-21, branch fix/moveset-gaps-20261021)
 
-### Files (no deletions)
-- game/assets/models/pantera.glb (weights re-derived; 7,625,912 bytes)
-- tools/auto_rig/reskin_pantera_weights.py (new, reproducible pipeline)
-- WORKLOG.md (this entry)
+Subagent lane (audit REPORT.md B3): two gaps closed, four commits.
 
-### Flags for coordinator
-- SHARED CODE: none changed. The fix is a new Pantera-specific script + data.
-  knn_transfer.py / apply_skin.py untouched.
-- DONOR NOTE: pantera.glb is the k-NN donor for saku-ra, waterfall, charger,
-  armor-king, scimitar (2026-10-21 batch). They were rigged from the BAD
-  weights and likely inherit the forearm/waist/tail symptoms — the root-cause
-  lane should re-run those transfers against this fixed file.
-- pantera_alt1.glb (legacy, not in attire ladder) still has old weights.
+## GAP 1 — doc-frank-frankenstein had no moveset file, no MOVESET_MAP entry
+- New `game/assets/movesets/doc-frank-frankenstein.json`: derived from
+  `doc-frank-hood.json` (same fighter DOC FRANK, same gunjack T3 teardown
+  source, same SOURCE-MERGE lineage). Verified: hood and wowomomo share a
+  byte-identical 788-move dict under their own ids, so sibling attire =
+  identical frame data is the established convention. Only the `fighter` id
+  and a new `derivation` provenance object changed; all frame data
+  (moves/strings/specials/slots/hit_words/stance_after/merge_sources)
+  verified byte-identical to the source file. No hand-authored frame data
+  (docs/RULES_NO_GUESSING.md). The repo's own generator
+  (tools/gen-movesets-t3.py) could not be re-run here: the decoded bank data
+  (teardown/tekken3/movesets, banks/) is not in this checkout.
+- `game/js/movesets.js`: added 'doc-frank-frankenstein' to MOVESET_IDS
+  (commented, matching list style).
+- `game/js/fighter.js`: added 'doc-frank-frankenstein': 'gunjack' to
+  MOVESET_MAP (beside the sibling doc-frank entries).
+- `game/assets/movesets/index.json`: added the fighters entry, computed with
+  the tool's own formula (tools/moveset-merge/merge_sources.py build_index):
+  display DOC FRANK, tekken_base "Doc Frank", t3_source gunjack,
+  anim_bank bosconovitch, moves 788, inputs 176, bytes 568638.
+- `game/tests/fighter-completeness.test.mjs`: removed
+  'doc-frank-frankenstein' from KNOWN_GAPS. Test run: 4/4 pass
+  (node --test game/tests/fighter-completeness.test.mjs).
+
+## GAP 2 — charger-attire2.json on disk but never fetched
+- File existed on disk and 'charger-attire2' was already in MOVESET_IDS
+  (movesets.js:69), but absent from `game/assets/movesets/index.json`, so
+  runtime _fetchOne skipped it and Charger Attire 2 fought on the bryan
+  aggregate. Added the index entry with the tool's formula: display CHARGER,
+  tekken_base "Blanka (SF) — fighter replaced by CHARGER (owner 2026-10-20)",
+  t3_source bryan, moves 199, inputs 199, bytes 92625 (real file size;
+  charger's own entry is 94261).
+- Index key order verified identical to a fresh build_index() run.
+
+## Noted, not in this lane's scope
+- `deathfang-werewolf.json` exists on disk but is also absent from
+  index.json (found while verifying build_index()). Left alone; belongs to
+  another lane.
+
+## Instruction-gate episode (same PR, follow-up note)
+- The `instruction-gate` CI check failed on the first PR body (AGENTS.md law 15:
+  the body must carry the six sections Owner instruction / Method specified /
+  Method used / Deviations / Proof / Self-check). Rewrote the body with those
+  sections verbatim; validated it locally against the repo's own gate script
+  (.github/scripts/instruction_gate.py::check) before pushing the update.
+- Note for future lanes: editing the PR body via the API did NOT retrigger the
+  workflow (no new run appeared for the `edited` event; close/reopen did not
+  either). A fresh `synchronize` (this commit) was needed to get a new run
+  with the fixed body in the event payload. (Same experience as Lane 1 on
+  PR #471.)
+
+# WORKLOG — B6 lane 3: drop ryuji-rock roster entry + Vega-style T3 bone remap for Slice (2026-10-21, branch fix/ryuji-slice-20261021)
+
+## Item 1 — drop ryuji-rock roster entry (model pending owner Tripo link)
+- `roster/ryuji-rock/attires/attire1/` contains ONLY `README.md` (no `model.glb`); the README documents a full model hunt (2026-10-19) that found nothing usable. Per the repo's own intake convention ("roster entry is only added once the model is on disk, so the fighter is never selectable with a missing model") and `docs/RULES_NO_GUESSING.md`, removed ONLY the `{ id: 'ryuji-rock', ... }` entry from `FULL_ROSTER` in `game/js/roster-full.js` (59 → 58 entries).
+- Kept for when the model lands: `game/assets/movesets/ryuji-rock.json`, `'ryuji-rock'` in `MOVESET_IDS`, the `MOVESET_MAP` entry, the `MODEL_URLS` entry in `game/js/assets.js`, and `roster/ryuji-rock/` + README (owner's Tripo share link → `tools/tripo-pull`).
+- Verified against current main: full grep of `game/js` shows no other references — `attires.js`: none; no `forms`/`transform`/`targetModel` refs (the entry had none); `fighter.js:73` is a passive aggregate-bank fallback map keyed by fighter id (untouched per constraints); `movesets.js`/`assets.js` entries kept intentionally. `'ryuji'` (steve-fox stand-in, CornerStone lane's stale entry) untouched.
+- `game/tests/fighter-completeness.test.mjs` iterates `FULL_ROSTER`: ryuji-rock was file-present + loaded (not a gap), so removal cannot newly fail it. `game/tests/model-key-guard.test.mjs`: ryuji-rock was `pending: true` (skipped), so removal cannot newly fail it either.
+
+## Item 2 — Vega-style runtime T3 bone remap for Slice (game/js/assets.js)
+- Slice's GLB (`roster/slice/attires/attire1/model.glb`, 52,403,356 bytes, Tekken 7 Dragunov teardown): 198-joint T7 skeleton, 17 skinned meshes, 1 skin. Core joints carry T7 names (`Hip`, `Spine1`, `L_Arm`, …) with no T3 `Hips`/`Spine`/`Chest`/… set, so the T3 stance gate (`select-screen.js`: needs `Hips`/`RightArm`/`Head`) never fired → bind pose.
+- Bone-name list + hierarchy + bind quaternions extracted from the GLB JSON chunk with python3 (no Blender). Authored `SLICE_MODEL_URL` + `SLICE_T3_BONE_REMAP` (19 renames; `Neck`/`Head` already T3-named on this rig) + `remapSliceBones(fighterId, model)` with Vega's strict scheme-signature discipline (applies ONLY when `MODEL_URLS[fighterId]` is Slice's URL AND every source name is present AND no target name already exists; otherwise strict no-op). Wired into `createInstance` next to the Vega call; the `bones.Spine1`/`bones.Spine2` dict-alias block (fighter.js procedural layer: hurt capsule + attack origin) extended to `sliceRemapped`. Vega's remap untouched.
+- Measured deviations from the Vega pattern (documented in-code, not guessed): (1) `MODEL_00` carries a 180° skeleton-frame rotation, not a wrapper rotation — a naive copy of Vega's full-chain factorization tips the converted skeleton to Z-up (head.y − hips.y = 0.000, verified numerically → select-screen fit gate would fail); only non-bone wrappers are factored, preserving authored Y-up world positions (head.y − hips.y = 0.751). (2) `Spine1` is authored as a SIBLING of `Hip` (both under `BASE`) — the T7 layout — while T3 banks assume Mixamo `Hips → Spine` and `retargetT3Clips` emits a `Hips.position` vertical root-motion track; so `Spine` is reparented under `Hips` (world transform preserved) to complete the T7→T3 hierarchy conversion. The game's `analyzeRig` is hierarchy-adaptive (dynamic chest LCA + spine chain), so the retarget consumes the converted rig as designed. All `__offset` joints verified (ancestor walk) as sibling/leaf helpers — no in-chain neutralization needed, unlike Vega.
+- Verification: node harness running the ACTUAL extracted `remapSliceBones` against a THREE hierarchy rebuilt from the real GLB node data (repo's vendored three.js) — 54/54 checks: strict no-ops (wrong URL / missing source / second call), 19 renames, 198 bones preserved, parent chain above Hips == canonical `(-0.7071, 0, 0, 0.7071)`, all 21 driven bind locals canonical, world positions preserved Y-up, clip conjugation identical to the canonical rig, Hips root motion moves torso + legs together. `node --check` clean on both edited files.
+
+## Flag (not my lane)
+- The B1 facing-gate guard (Lane 1, commit `587d63cf`) is ABSENT from current main's `game/js/assets.js` although it is in the file's history — likely dropped in merge #460. Lane 1 should re-apply it; the B1 hang vector may be live again.
+
+## PR
+- PR: https://github.com/mhvnsnt/western-heart/pull/477
+
+## 2026-10-21 — Lane 4 rig batch 2: Phantom, Diablo, Skull, Sam-ur-a1, Kinpo, Purple Rain
+
+All six are single-mesh meshopt Tripo statics (~1.0M verts). Facing: rotate-y 0
+(+Z) per the Tripo export convention established in batch 1 (3/3 confident
+anatomical signals). Diablo fitted a real tail (179k verts, chain hips→down-back).
+All six pass validate.py.
+
+| fighter | verts | far_fb | facing | tail | validate | time |
+|---|---|---|---|---|---|---|
+| phantom | 1,053,849 | 293,458 | +Z | no | PASS | knn 10.5s / apply 5.7s |
+| diablo | 989,472 | 419,567 | +Z | YES (179k) | PASS | knn 9.8s / apply 7.7s |
+| skull | 1,009,636 | 175,402 | +Z | no | PASS | knn 9.8s / apply 5.9s |
+| sam-ur-a1 | 1,013,030 | 298,280 | +Z | no | PASS | knn 8.4s / apply 4.7s |
+| kinpo | 1,000,652 | 149,570 | +Z | no | PASS | knn 8.3s / apply 3.2s |
+| purplerain | 1,024,038 | 184,151 | +Z | no | PASS | knn 6.4s / apply 4.1s |
+
+Peak RAM 491–857MB (diablo tail-fit the highest). Outputs meshopt-compressed
+(18–24MB vs 70–80MB logical). SHA-256s in batch2/SHASUMS-rigged.txt.
+
+## 2026-10-21 — Lane 4 rig batch 3: Thor, Demonio-Winged, Demonio-Human, Doc Frank Wowomomo, Doc Frank Frankenstein
+
+Thor and Doc-Frank-Frankenstein are meshopt Tripo statics; Demonio-Winged/Human
+and Doc-Frank-Wowomomo are raw (uncompressed) Tripo exports (~55MB). All
+single-mesh, ~1.0M verts. Facing: rotate-y 0 (+Z) per the Tripo export
+convention (Doc-Frank-Frankenstein nose-sharpness decisive +Z). Demonio-Winged
+fitted a real tail (118k verts); its wings (616k far verts) use the far-vert
+smoothstep fallback. All five pass validate.py.
+
+| fighter | verts | far_fb | facing | tail | validate | time |
+|---|---|---|---|---|---|---|
+| thor | 1,023,359 | 462,975 | +Z | no | PASS | knn 6.0s / apply 4.3s |
+| demonio-winged | 994,129 | 616,436 | +Z | YES (118k) | PASS | knn 9.5s / apply 8.9s |
+| demonio-human | 1,008,360 | 211,878 | +Z | no | PASS | knn 7.0s / apply 6.8s |
+| doc-frank-wowomomo | 1,003,987 | 209,333 | +Z | no | PASS | knn 7.0s / apply 6.6s |
+| doc-frank-frankenstein | 974,909 | 165,696 | +Z | no | PASS | knn 5.0s / apply 3.2s |
+
+Peak RAM 468–858MB (demonio-winged tail-fit the highest). Outputs
+meshopt-compressed (18–21MB vs 70–73MB logical). SHA-256s in
+batch3/SHASUMS-rigged.txt.
+
+## 2026-10-21 — Lane 4 rig batch 4: Zangief, Burger, Kronos, Kronos-Attire2 (Timberwolf), Koreshi
+
+All five are Tripo statics. Zangief is smaller (363k verts, raw export,
+y-centered — normalize handles it); the rest are meshopt-compressed ~1.0M
+verts. Facing: rotate-y 0 (+Z) per the Tripo export convention. All five pass
+validate.py. This completes all 22 unrigged fighters.
+
+| fighter | verts | far_fb | facing | tail | validate | time |
+|---|---|---|---|---|---|---|
+| zangief | 363,134 | 209,539 | +Z | no | PASS | knn 3.6s / apply 1.8s |
+| burger | 1,003,047 | 328,685 | +Z | no | PASS | knn 6.9s / apply 4.7s |
+| kronos | 1,000,377 | 259,750 | +Z | no | PASS | knn 5.9s / apply 3.8s |
+| kronos-attire2 | 1,010,767 | 209,815 | +Z | no | PASS | knn 6.1s / apply 3.9s |
+| koreshi | 1,013,835 | 269,882 | +Z | no | PASS | knn 7.1s / apply 3.6s |
+
+Peak RAM 214–626MB. Outputs meshopt-compressed (10–25MB vs 24–72MB logical).
+SHA-256s in batch4/SHASUMS-rigged.txt.
+
+## 2026-10-21/22 — Torch Attire 1 "Valkyrie of Flame" wire-in (Tripo 300d0c63)
+- Pulled via tools/tripo-pull/tripo-pull.py only: 19,456,040 B, sha256 4f24f0c325b222658247325848dfee2d03164d30d9a61cf001404d976bd0f66d, 3 textures, unrigged statue (1,037,606 verts). Raw archived in release `torch-a1-tripo-20261021` (digest verified).
+- Rigged via tools/auto_rig/rig_tripo_static.py (GameRig backend, --facing +X measured: foot-vs-shin cue 0.7 deg off +X). Heat solved first proxy: 23,885 proxy verts, 0 unweighted; full mesh 0 unweighted after transfer; smooth gate SMOOTH_OK (p99.9 edge stretch 1.80, 0 edges > 2.0); validate PASS (73 joints, height 1.8 m, foot_y 0). Shipped game/assets/models/torch-tripo-a1.glb (29,802,744 B, sha256 62bb2918379fbcef64fb2087b5f6d0cc6aacad21b05932d49260d0effa50bb73).
+- gamerig_backend.py fixes (measured, same PR): (1) drop_micro_components — voxel remesh leaves 8-9-vert single-voxel islands (38 of them on this statue) that make Blender's bone heat fail for EVERY vertex; the body alone solves 0-unweighted. Islands dropped from the proxy only. (2) Arm droop sample narrowed to the outer quarter of reach — the outer half caught this statue's windswept hair mass and read 46.6 deg on a true 7.4 deg T-pose. (3) Leg knee/ankle joints re-anchored to measured per-side vertex centroids (hip 0.283 m / knee 0.173 m / ankle 0.086 m taper) instead of one hip-band spread.
+- Declared: the baked QA clip (CMU135_04_boxing) fails anim_check (Hips->RightPelvis length variance, p99.9 edge stretch 3.41 on the clip's worst frames, 40 spike verts) — the clip is a QA vehicle; the game drives her with its own clip bank. Worst-frame renders in the report dir show the body intact, no tearing. Wrapper process died to box memory pressure after the after-smoothing gate; validate/render/encode/report steps were re-run with the wrapper's own commands on the kept work dir (see rig_report.json recovery_note).
+- Wiring: roster-full.js Torch model -> torch-tripo-a1; attires.js ladder (A1 Valkyrie of Flame / Anna base fallback); assets.js MODEL_URLS entry; CANON.md + roster/torch/ATTIRE-SLOTS.md record the name and the owner's description verbatim.
+## 2026-10-21 (~23:14 CDT) — Doc Frank attire reorder: Tripo models lead, Tekken reskins to the back (owner verbatim override)
+
+Owner verbatim: "his 1, 2, 3, 4, 5 should be his Tripo models; the Tekken reskins go toward the back, not 1 or 2. Stop showing me the Tekken versions first — show the Tripo 3D models I made for him."
+
+Root cause found: the 2026-10-21 ~19:08 CDT "ladder rule" lane had put Attire 1's pre-form old man (`doc-frank-a1`) at picker slot 1 as the default — but its file lineage is the PR #263 machine-shop texture reskin of the Bosconovitch base (a Tekken reskin, not a Tripo model), so the user was still seeing a Tekken version first. The picker order the user sees is controlled by `ATTIRE_VARIANTS['docfrank']` in `game/js/attires.js` (rendered chip-by-chip in order by `renderAttires()` in `game/js/select-screen.js`; default = first entry via `selectedAttireModel()`; player fights go through `resolveFighterAttire()` in `game/js/main.js`). The "owner ladder rule" comment the coordinator remembered in `roster-full.js` does not exist — the actual control point is the attires.js ladder.
+
+Change (reorder only — every model stays reachable, nothing deleted):
+- `game/js/attires.js`: `ATTIRE_VARIANTS['docfrank']` reordered — all 7 Tripo models first (slots 1–7: Attire 1 Transformed, Wowomomo pair, Hood pair, Frankenstein pair), Tekken-based models at the back (slots 8–10: old-man pre-form, Bosconovitch base, Machine Shop reskin). Default = slot 1 = `doc-frank-big` (Tripo). Labels now carry provenance: `(TRIPO)` / `(TEKKEN RESKIN)` / `(TEKKEN CANON)`.
+- `game/js/roster-full.js`: main `docfrank` entry model `doc-frank-a1` → `doc-frank-big` (matches the picker default; CPU-enemy Doc Frank now also shows the Tripo model).
+- `game/js/assets.js`: `doc-frank-a1` comment corrected (was falsely claiming "Forefront default").
+- `roster/doc-frank/ATTIRE-SLOTS.md`: ladder rule replaced with the owner's verbatim override; picker-order table (slots 1–10) added; history entry added.
+- Old→new slot mapping: 1→8 (old man), 2→1 (big), 3–8→2–7 (pairs), 9→9, 10→10.
+
+Known trade-off (documented in-code): with the Tripo bigger form as the default, TRANSFORM from the default swaps big→big (no visual change); selecting a back-slot old-man form and transforming still lands on the Tripo bigger form. The A1 two-form pair is intact.
+
+Validation:
+- `node --check` clean on all three edited JS files.
+- `node --test game/tests/model-key-guard.test.mjs`: "own model on both resolution paths" PASS (docfrank player→`doc-frank-big`, enemy→`doc-frank-big`, both in own-list); the file-existence subtest fails only on rigged GLBs absent from the pre-#482 snapshot tree (phantom/diablo/skull/… `model-rigged.glb`) — pre-existing, none doc-frank related (proven via pristine-tree run).
+- `node --test game/tests/fighter-completeness.test.mjs`: "newly wired attire ladders keep the current default" PASS. Two pre-existing failures, both proven unrelated: moveset KNOWN_GAPS (frankenstein moveset JSON added to main after the snapshot) and zen transform targets (never wired on main).
+- Picker proof: executed the real `attiresFor()`/`selectedAttireModel()` against the real `FULL_ROSTER` in node — slots 1–7 Tripo, 8–10 Tekken, default `doc-frank-big`. Rendered proof image from that exact data: `docfrank_picker_proof.png` (viewed).
+- Headless Chromium in this VM cannot perform HTTP navigation (verified: even example.com and trivial pages return empty; `--screenshot` hangs), so no live 3D select-screen capture was possible here — the user reviews the reordered picker on the live Pages build per the loop.
+
+## PR
+- PR: https://github.com/mhvnsnt/western-heart/pull/502
+
+
+## 2026-10-21 — Tripo auto-intake lane: tools/tripo-intake (rig new Tripo statics ASAP)
+
+Owner directive (verbatim): "As soon as a Tripo model comes in you need to get it rigged automatically ASAP to the character rig that it goes to."
+
+Built the intake the owner asked for (PR #TBD):
+
+- tools/tripo-intake/intake.py — orchestrator. `inbox/<fighter>/attire<N>.glb`
+  (+ optional `attire<N>.json` sidecar) → env check → claim (fighter id must be
+  an existing `roster/<dir>`, never guessed; slot must not hold
+  `model-rigged.glb`, never clobbers; input must be an unrigged static) →
+  sha256 + `ledger.json` (identical bytes re-decide identically) →
+  `gltf_codec` decode → `facing_check.py` → `rig_tripo_static.py --facing` →
+  gates on `rig_report.json` → stage
+  `roster/<fighter>/attires/attire<N>/model-rigged.glb` + `WIRING-CHECKLIST.md`
+  → archive the inbox original to `outbox/<fighter>/attire<N>/<timestamp>/`.
+  Exit 0 done / 2 refused / 3 failed. Wiring `game/js/*` stays a REVIEWED step —
+  the intake never edits game code.
+- tools/tripo-intake/facing_check.py — automatic facing determination on the
+  decoded static. cue1 = gamerig foot-vs-shin centroid math (Blender-free port
+  of `normalize_and_face`, snapped to ±X/±Z, raw angle never trusted); cue2 =
+  `assets.js` `feetFacingCue` port on both axes (|score| ≥ 0.05, the game's own
+  threshold). Confidence gate: cues agree AND residual ≤ 15° AND toe offset ≥
+  1.5% of height AND ≥ 500 band verts — else REFUSE (exit 2), never guess.
+  Verified on synthetic T-poses: all 4 cardinal facings CONFIDENT; the 16°-
+  off-axis case (the demonio-a1 failure mode), a skirt-occluded foot band, and
+  a featureless sphere all REFUSE.
+- tools/tripo-intake/README.md — runbook: drop-in convention, stage table,
+  facing gate, what-done-looks-like, the manual wiring checklist, cron-vs-
+  manual recommendation (manual trigger recommended; cron as notifier only).
+- game/tripo-intake.html — suite dropzone/dashboard: drop a GLB to validate
+  it locally (GLB header parse, 0-skins check, sha256), get the exact inbox
+  path + intake commands, download the sidecar JSON; shows recent intakes
+  from `ledger.json` and the demo.
+- tools/TOOLS-INDEX.md §3 — linked.
+
+Gate semantics (aligned with the repo's actual practice): `validate.py` is the
+HARD playable gate — it must pass or nothing stages. `anim_check` is the
+deformation stress gate: its flags are RECORDED (even the shipped Zui A1
+carries anim_check flags on the CMU clip) and must be explained by viewing the
+renders before wiring.
+
+Dry run (end-to-end, --dry-run): temp copy of
+`roster/kinpo/attires/attire1/model.glb` (sha256
+`ec67f8f0ddd57e97a915cc85408df08956dcc8bfddfe982698261f03fb6a155f`, matches
+`roster/kinpo/ATTIRE-SLOTS.md`; original untouched; staged outside the repo).
+
+- facing_check: CONFIDENT +X — cue1 raw yaw 2.8° (snapped +X, residual 2.8°),
+  cue2 x-score +0.157 vs z-score −0.043 (dominant +X), toe offset 3.2% of
+  height, 74k foot verts. Both cues agree.
+- NOTE: the 2026-10-21 k-NN batch lanes rigged kinpo assuming +Z ("Tripo export
+  convention", batch 2). The intake measures +X on the source mesh. The facing
+  gate exists because that assumption is not always true — flagging for the
+  coordinator: kinpo's shipped `model-rigged.glb` may carry 90°-off weights.
+- rig: `rig_tripo_static.py` completed (exit 0); `validate.py` PASS (valid glTF, skinned mesh, canonical bones, height 1.8 m, no missing bones); `anim_check` flags recorded: Hips->LeftPelvis bone variance 155.5%, 40 tearing spikes, p99.9 edge stretch 1.927 (stress-clip flags of the kind the shipped Zui A1 carries; explained by viewed renders). Output `model-rigged.glb` 30.0 MB (sha256 `642c7b3e…`); 9 pose renders.
+- proof: `docs/proof/muse-2026-10-21/tripo-intake/` (`facing_report.json`,
+  `rig_report.json`, `intake_summary.json`, pose renders — viewed,
+  `steps.log`).
+
+Demo (visible in the suite): the dry-run output committed as
+`roster/kinpo/attires/attire1/model-intake.glb` + `MODEL_URLS` key
+`'kinpo-intake-demo'` (suite-viewer demo key only; the live game keeps using
+`'kinpo'`). View at `game/customization-viewer.html?fighter=kinpo-intake-demo`.
+
+Env note: this VM's Blender 4.0.2 needed libEGL/libGL (`Couldn't open
+libEGL.so.1`). apt hung on the mirror; extracted `libegl1_1.7.0-1build1` +
+`libgl1` debs from the Ubuntu pool (libglvnd) to `~/workspace/tools/syslibs`
+and set `LD_LIBRARY_PATH`. Documented in `tools/tripo-intake/README.md`
+troubleshooting.
+
+First dry-run attempt failed at the final encode with ENOSPC (`/tmp` is a
+512MB tmpfs); re-ran with stage/report roots and TMPDIR on the overlay
+filesystem. All intake stages completed on the re-run.
 
 ## Doc Frank feet fix (2026-10-21/22, branch fix/docfrank-feet-20261021)
 
@@ -453,6 +685,257 @@ POSITION and NORMAL both rotated. Blender 4.0.2 renders viewed before/after.
   in-game, not fixed.
 - doc-frank-wowomomo and doc-frank-frankenstein model-rigged.glb files exist
   on main but are UNWIRED (assets.js points to unrigged model.glb). Not fixed.
+
+## 2026-10-22 — Engine decision deep research (Claude session, branch claude/amazing-keller-p8644u)
+
+Owner: "WebGL and Three.js are permanently stripped ... Godot 4 native mobile ... Or even whatever's
+better than that ... based on research, deep research", judged on this build, direct APK (no store),
+what each engine costs when the game sells, roster more than 36 fighters.
+
+- Method: five parallel research agents (Godot 4.7/4.8; Unity 6 vs Unreal 5.8; open-source engines;
+  fighting-game engine ecosystem; repo migration constraints from a local repo scan), then one report
+  writer over the five notes. Web sources are linked inline; repo facts link to commit e3ae81b76.
+- Output: `docs/ENGINE-DECISION-2026-10-22.md` (recommendation: stay on Godot, 4.3 -> 4.7.x now, 4.8
+  when stable; $0 at any sales level; signed arm64 APK from Linux CI). Notes:
+  `docs/research/engine-2026-10-22/*.md`.
+- Roster count from the repo scan: 58 FULL_ROSTER entries / 49 display names / 50 model keys.
+- Unverified items are listed in the report's last section. No Godot binary in this container, so
+  the Lab tests were not re-run.
+
+## 2026-10-22 — BATCH-RIG SWEEP, batch 1: awa-pop attire2 (DoggByte subagent)
+
+Owner directive: EVERY static/unrigged model in the roster gets rigged in ONE sweep.
+Parent refinements applied: (1) proof needs BIND + IDLE STANCE + ANIMATION (T-pose alone
+insufficient — the Julia backwards-shins case); (2) identity canon: Rave = Kiko Tanaka =
+Ghost (one fighter), Mary Posa OVER Zafina, Doc Frank = Bosco, Yoshimitsu ladders into
+Phantom; Tripo-first display order (Pantera A1 sole exception).
+
+### Enumeration (current main c4be0d1, verified via GLB header scan)
+- 114 unique wired files (119 MODEL_URLS keys): 28 already rigged (*-rigged.glb),
+  1 rewire-only (`burger-demon` -> existing burger a1 model-rigged.glb),
+  26 TRUE STATICS (verified skins=0), 1 missing (ryuji-rock — blocked, needs owner's Tripo link).
+- Full list: ~/workspace/fix2/BATCHRIG-ENUMERATION.md
+- 23 dense Tripo (~1M verts) + 3 light (10-12k verts). Zen's spirit body NOT FOUND on disk
+  (searched WORKLOG, roster/, intake-stage/, game/assets/models/) — needs location from coordinator.
+
+### Batch 1: awa-pop attire2 (dense Tripo, 1,009,108 verts)
+- Tool: tools/auto_rig/rig_tripo_static.py (GameRig heavy path, Blender 4.0.2).
+- Result: PASS. Proxy heat (9 unweighted / 14k proxy verts), 681 fixed on full mesh (0.07%).
+  smooth_weights: round 0 p99.9 = 1.24 (gate 2.5) — SMOOTH_OK, no edges above threshold.
+  validate.py: PASS. anim_check (CMU boxing): p999 1.24.
+- Proof: bind renders (front/back/side, viewed — clean), CMU clip renders, stance proof
+  via tools/auto_rig/stance_proof.py (T3 nina bank: neutral stance + walk, foot-yaw check).
+- Output: roster/awa-pop/attires/attire2/model-rigged.glb, wired to `awa-pop-attire2` key.
+
+### Pipeline fixes (in this batch)
+- tools/auto_rig/rig_tripo_static.py: added `--python-exit-code 1` to Blender invocations.
+  Blender 4.0 does NOT propagate Python exceptions to the exit code by default; a failed
+  Blender step silently continued to smoothing (found on blanka pilot).
+- tools/auto_rig/rig_tripo_static.py: add ~/workspace/tools/syslibs/{egl,gl} to
+  LD_LIBRARY_PATH when present (this VM). render_poses.py crashed with missing libEGL.so.1.
+- NEW tools/auto_rig/stance_proof.py: T3 stance/walk proof (world-delta retarget, same math
+  as t3anims.js retargetT3Clips + bankFacing correction). Renders stance front/side + walk
+  mid; reports foot yaw in stance (backwards-feet check). Pose-and-render (no keyframing)
+  for speed on dense meshes.
+
+### Failure case: blanka (light, 10,321 verts)
+- GameRig direct bone-heat FAILED: 2,100/10,321 verts unweighted (20%). p999 52.76,
+  mesh tears in stance. NOT SHIPPED. Needs k-NN from donor or blender-heat backend.
+- pantera crimson-rage + p2 (11k verts) likely same — will try k-NN from pantera.glb.
+
+### Provenance
+- Input: roster/awa-pop/attires/attire2/model.glb (Tripo pull, on main).
+- Donor clip: assets/free-pull-1/cmu-mocap/fighting/135_04.bvh (CMU, on main).
+- Bank: game/assets/anim/t3/nina/ (awapop -> nina per fighter.js bankIdFor override).
+
+## 2026-10-22 — SmutBase intake sweep (DoggByte subagent)
+
+Standing order: every SmutBase model in `~/workspace/browser_downloads/` gets
+pulled into the repo and wired up. 15 downloads intaken this round.
+
+**Landed in-repo (this + 2 follow-up PRs):**
+- `docs/SMUTBASE-INTAKE-QUEUE.md` — the living queue + manifest (all 15 models,
+  hashes, per-model notes, next steps).
+- `roster/rahkasa/intake/RahkasaV1.1.blend` — four-armed female, user's
+  Oversoul spirit-body pick (Eastern Mind canon).
+- `roster/mina-ashido/intake/`, `roster/miruko/intake/`, `roster/tsuyu-asui/intake/`
+  — Rigify/IK .blends + textures, original names kept so `//` relative texture
+  paths stay linked.
+- `game/assets/stages/pink-narwhal/` — arena asset (NOT a character). Open
+  question: is this the club/DJ base (b8ada591) from CLUB-ARENA-PLAN.md?
+  Needs a Blender look before the arena lane builds on it.
+- `game/assets/materials/fishnet/` — fishnet material (RenCeifer), shared
+  material for the customization suite.
+
+**Staged in workspace (over the 95MB blobs-API limit / third-party code —
+registered in the queue doc, not committed):**
+- `~/workspace/fix2/lily/` — Lily donor, 2.6GB extracted (rig/skeleton donor
+  for the female roster, user-approved body reference).
+- `~/workspace/fix2/smutbase-source/{cydney,nyoka,parvati,vixen}/` — 541MB /
+  557MB / 596MB / 985MB .blends. Cydney: size up breasts/ass at rig time.
+  Vixen: needs a full Tekken-notation moveset (not her source game's inputs).
+- `~/workspace/fix2/smutbase-source/movie-maddness/` — 929MB .blend, contents
+  unidentified, NOT intaken as a character.
+- `~/workspace/fix2/smutbase-source/tools/{fluidpainter-nsfw,buildabod-male,buildabod-female}/`
+  — Blender addons (third-party code stays out of the repo tree per owner law).
+
+**Notes:** Nyoka.rar downloaded twice, byte-identical (md5 e16869e3…),
+extracted once. Miruko, Tsuyu, movie-maddness + 3 addon zips were not on the
+queue list — intaken anyway. Still incoming: SmutBase 22968842 (camel-toe
+check at intake: removable vs painted-on), 91fca296, 0b8ceb43, c278fcf4.
+`tools/tripo-intake/` does not apply (Tripo GLB pulls only); Blender rig lane
+owns the next step. Blender is not installed on this VM.
+
+## 2026-10-22 — Torch Attire 2 "Red demon" wire-in (Muse subagent lane)
+
+- PULLED the owner's Tripo link (2026-10-21 ~22:40 CDT,
+  7f8c7874-de2a-438f-a84f-744d1eef21e9) with `tools/tripo-pull/tripo-pull.py`
+  ONLY. The pull first failed 14x: the egress proxy severed every urllib
+  response from api.tripo3d.ai mid-body (IncompleteRead at 3-80 KB) while
+  curl completed the same GET in ~1.5 s (diagnosed read-only; API code 0,
+  link valid, never a login issue). Fixed at the source in tripo-pull:
+  IncompleteRead is now retryable and both the GET and download paths fall
+  back to a curl transport. Installed copy + this repo copy patched.
+- Raw statue: 18,006,604 B, sha256
+  52e6840dbc07ec670a75514ffa4252c4bf497292399e2c28e490e4e3450a99c7,
+  1,029,809 verts, 3 embedded textures, unrigged. Archived in release
+  `torch-a2-tripo-20261021` (asset digest verified == local sha256).
+- Facing measured on the decoded mesh before rigging: foot-vs-shin cue
+  +0.055 on X, -0.005 on Z — toes point +X; rigged with `--facing +X`.
+- Rigged via `tools/auto_rig/rig_tripo_static.py` (the PR #570-patched
+  intake) onto the 73-joint GameRig template. Report + gate renders:
+  `docs/proof/claude-2026-10-22/auto-rig-torch-a2/`.
+- Wired as Attire 2: `game/js/assets.js` MODEL_URLS `torch-tripo-a2`,
+  `game/js/attires.js` picker ladder (1 Valkyrie of Flame / 2 Red demon /
+  3 Anna Base fallback). Attire 1 untouched; her roster default stays
+  `torch-tripo-a1`. Name + owner description recorded verbatim in
+  `CANON.md` and `roster/torch/ATTIRE-SLOTS.md`.
+- Proof render (own eyes): `torch-a2-reddemon-front-20261021.png`.
+- Resume addendum (2026-10-22, second lane): the wrapper run OOM-died
+  (137) three times in the clip bake, so the ship model was produced by
+  the identical gamerig backend run without the optional donor clip
+  (manual-backend-noclip.sh, wait-gated to a zero-Blender window;
+  BACKEND EXIT 0, heat clean first proxy — 23,942 proxy verts, 0
+  unweighted), then the wrapper's own finisher steps (finish-rig.sh):
+  validate PASS (missing_bones []), pose renders, meshopt encode to
+  28,530,756 B. smooth_weights exited "no animations to evaluate
+  against" — no smoothing applied. Full deviations in the PR body.
+
+---
+
+<!-- Restored 2026-10-22 (Claude session): the entries below were dropped from this file by adb6784cb (T3 bank facing root-cause fix; Pantera skin-weight re-derivation) and by 6255a6e22 (which also replaced the file with a stale copy); its own loadspeed entry is kept. Text verbatim. -->
+
+# WORKLOG — T3 bank facing root-cause fix (2026-10-22, model-quality lane)
+## Root cause (the user's "decrypted backwards")
+`lab/tools/t3_to_gltf.py` `import_fighter` and `lab/tools/t3_motion_bake.py`
+`T3Space` chose each bank's forward direction from the HEAD-MESH centroid
+("muzzle leads"). On characters whose head/hair mass sits behind the face,
+this picked backwards, baking 5 of 17 T3 animation banks facing -Z:
+bosconovitch (-179.5°), eddy (-178.6°), gunjack (149.9°), heihachi (137.7°),
+yoshimitsu (155.1°) — measured with tools/anim/t3_bank_facing.py, the offline
+twin of the runtime's bankFacing() knee check in game/js/t3anims.js.
+The game patched it at load (turn 180° about Y + Left/Right relabel per bank);
+this fix gets it right at the source instead.
+
+Related (separate): the k-NN weight pipeline (tools/auto_rig/backends/
+knn_transfer.py) has no automatic facing alignment — facing is a manual
+--rotate-y. See the model-quality lanes' reports.
+## Fix
+1. `lab/tools/t3_to_gltf.py`, `lab/tools/t3_motion_bake.py`: facing heuristic
+   replaced with the KNEE-BEND cue (knees are anatomical and never lie):
+   lateral = shoulder line (hip line fallback for partial KMDs like heihachi);
+   forward = the candidate with positive total knee offset from the hip-ankle
+   midline. Head-centroid kept only as a fallback when knees give no signal.
+   Validated on all 15 available KMD+stance pairs: positive knee scores
+   everywhere, reproduces the 12 good bakes, corrects the 5 bad ones.
+2. The 5 already-baked banks corrected OFFLINE with the exact runtime
+   transform (t3anims.js turnSkeleton/turnData): game/assets/anim/t3/
+   {bosconovitch,eddy,gunjack,heihachi,yoshimitsu}/ — skeleton.json (18 joints
+   each), all 30 t3_*.json clips each, rows.pack.json (647/208/152/111 rows;
+   heihachi has no pack). Bones L/R-relabeled in place, quats conjugated
+   (x,y,z,w)->(-x,y,-z,w), root_t (x,y,z)->(-x,y,-z).
+3. Runtime needs NO change: bankFacing() now measures knees-forward on all 17
+   banks and the turn becomes a no-op (kept as a data-driven safety net).
+## Proof
+tools/anim/t3_bank_facing.py before → after:
+- bosconovitch -179.5° → 0.5°, eddy -178.6° → 1.4°, gunjack 149.9° → -30.1°,
+  heihachi 137.7° → -42.3°, yoshimitsu 155.1° → -24.9°. All 17 "ok", none
+  TURNED. (Residual angles within the ±61° untouched band, same as anna/lei.)
+- Pack integrity: bone lists L/R-symmetric, quats unit-norm after conjugation.
+## Files
+- lab/tools/t3_to_gltf.py (facing heuristic)
+- lab/tools/t3_motion_bake.py (T3Space facing heuristic)
+- game/assets/anim/t3/{bosconovitch,eddy,gunjack,heihachi,yoshimitsu}/
+  skeleton.json, t3_*.json (30 each), rows.pack.json (4 banks)
+
+---
+## 2026-10-21 — Pantera skin-weight re-derivation (live model + Attire 1)
+
+Lane: fix/pantera-weights-20261021. Tool: tools/auto_rig/reskin_pantera_weights.py
+(reproducible; run from tools/auto_rig). Gates: tools/auto_rig/anim_check.py,
+tools/auto_rig/validate.py.
+
+### Wiring confirmed (step a)
+- Live key `pantera: 'assets/models/pantera.glb'` (game/js/assets.js MODEL_URLS).
+- Attire 1 = the same file: game/js/attires.js ATTIRE_VARIANTS['pantera'][0] =
+  { model: 'pantera', label: 'ATTIRE 1' }. So "live Pantera" and "Pantera
+  Attire 1" are the SAME GLB: game/assets/models/pantera.glb (7,625,912 bytes,
+  sha256 2626d231a6aaff694117a55183171ad9c11f45a40eb3054afa52ab8dc55f6b6a).
+  One fix covers both. (pantera_alt1.glb is a legacy T7 reskin NOT in the
+  current attire ladder — out of scope.)
+
+### Diagnosis (measured, not eyeballed — step c)
+Per-region dominant-joint dump on the live file (11,376 skinned verts):
+- R/L FOREARM: only 13.7%/13.8% weighted to ForeArm; 47-49% to Hand,
+  36-38% to Spine/Spine1. (User: "forearm down through hands: stretching".)
+- L HAND: 80.7% LeftHand, 17% to Spine/Spine1 (torso-glue; user: "hand
+  weighted to the tail" — the tail hangs off the pelvis/back).
+- WAIST (0.98<y<1.12): 0% Hips; 62% to Left/RightUpLeg, 36% Spine.
+  (User: "from waist down: stretching".)
+- TAIL (443 verts, z<-0.15): 26% LeftLeg, 26% RightLeg, 12% each foot,
+  22% UpLegs — 0% Hips/Spine. Tail tears whenever legs move oppositely.
+- THIGH/SHIN: 30-35% weighted one joint too distal (thigh→Leg, shin→Foot).
+- IBMs verified consistent (max err 2.6e-7); skeleton itself is fine.
+- pantera_fixed.glb (2026-10-20 L/R transplant source) carries the SAME bad
+  WEIGHTS_0 — the transplant fixed joint indices only, not values.
+
+### Fix (pipeline-level, step d — NO hand-painted weights)
+New script tools/auto_rig/reskin_pantera_weights.py re-derives ALL
+JOINTS_0/WEIGHTS_0 in place (skeleton, IBMs, animations, materials untouched):
+1. k-NN (k=4, inverse-distance) from steve-fox.glb — same 49-joint Mixamo
+   skeleton, clean weights (92%+ forearm/shin/bicep), same -Z facing/T-pose.
+2. Side-constrained matching (|x|>3cm ⇒ same-side donor verts only).
+3. Tail rule: smoothstep blend from k-NN at base to rigid Hips at tip.
+4. Anatomical side correction: opposite-side influences mirrored + merged.
+5. Seam blend (repair_pantera_glb.py method) until anim_check gate passes.
+Result: R forearm 13.7%→99.9%, L forearm 13.8%→97.4%, waist Spine 36%→73%,
+shins 62%→90-93%, tail 100% Hips-weighted. anim_check: all 4 clips PASS
+(Idle p99.9 edge stretch 1.97 < 2.5 gate; was failing at 14.81 pre-blend).
+
+### Validation (step e)
+- anim_check.py: Idle/Run/TPose/Walk all PASS.
+- validate.py: valid_gltf/skinned_mesh/bones_present true (height_ok false —
+  pre-existing: validate measures mesh 0 prim 0 only, a 202-vert accessory).
+- tools/auto_rig/tests: 7/7, all passed, 3/3 pass (1 skip: missing Blender e2e GLB).
+- packages/creation-suite node tests: 6/6, 4/4, 4/4 pass (the `node --test test/`
+  directory form fails on a Node CLI module-resolution quirk; individual files pass).
+- In-game: proof-harness fight pantera vs demonio captured before/after;
+  frames viewed. Before: forearms/hands stretch, legs crumple. After: model
+  loads, fight runs, no collapse.
+
+### Files (no deletions)
+- game/assets/models/pantera.glb (weights re-derived; 7,625,912 bytes)
+- tools/auto_rig/reskin_pantera_weights.py (new, reproducible pipeline)
+- WORKLOG.md (this entry)
+
+### Flags for coordinator
+- SHARED CODE: none changed. The fix is a new Pantera-specific script + data.
+  knn_transfer.py / apply_skin.py untouched.
+- DONOR NOTE: pantera.glb is the k-NN donor for saku-ra, waterfall, charger,
+  armor-king, scimitar (2026-10-21 batch). They were rigged from the BAD
+  weights and likely inherit the forearm/waist/tail symptoms — the root-cause
+  lane should re-run those transfers against this fixed file.
+- pantera_alt1.glb (legacy, not in attire ladder) still has old weights.
 ## 2026-10-22 — loadspeed lane: menu load speed (worker 4 of 4)
 Owner: "we need to make the menus look a little cleaner and load a little faster because they take forever to load..."
 AUDIT (tools/loadbench/ — Node harness replaying each transition's fetch
@@ -510,6 +993,7 @@ Parent refinements applied: (1) proof needs BIND + IDLE STANCE + ANIMATION (T-po
 insufficient — the Julia backwards-shins case); (2) identity canon: Rave = Kiko Tanaka =
 Ghost (one fighter), Mary Posa OVER Zafina, Doc Frank = Bosco, Yoshimitsu ladders into
 Phantom; Tripo-first display order (Pantera A1 sole exception).
+
 
 ### Enumeration (current main c4be0d1, verified via GLB header scan)
 - 114 unique wired files (119 MODEL_URLS keys): 28 already rigged (*-rigged.glb),
@@ -693,3 +1177,27 @@ Remaining gaps closed by this lane (all per the slot maps + display-order law):
 4. Kevin's Tripo (kevin-tripo) not in repo — his default stays the Baek model.
 5. Nine Souls sharing the 'pantera' model inherit Pantera's 6-attire picker
    ladder (attiresFor keys by model) — pre-existing quirk, noted for grid worker.
+## 2026-10-22 — Rig audit tools, Leo man facing, Zen + soul riders restored (Claude session, branch claude/amazing-keller-p8644u)
+
+Owner: "Need to get the bind pose overlays and heat mapping and skinning and rigging and boning fully done for
+every character every glb model" and, on Pantera A2/A1, forearms/hands stretch, legs crumpled, "the right leg is
+in the opposite direction of the left leg", "the hand looks weighted to the tail".
+
+- Leo man (Pantera A1): no model-facing.json entry; the feet cue read his floor-dragging tail as a heel and turned
+  him 180 deg at load (limbs followed T3 in world space, body backwards). Added `"pantera-leoman": "+Z"`.
+- Leopard King (A2): rig_qa + bind overlay show the skeleton ~0.25 m behind the body, sides swapped, toes back,
+  26,512 bleed verts. Re-rig made with the new refit tools (sides ok, knees forward, bleed 1,010) — NOT wired yet.
+- Main-branch breakages found by game/tests: Zen's MODEL_URLS block deleted by 3942b8584 (restored verbatim);
+  TOU/KAI/RETSU/GYOU inherited Pantera's Tripo ladder (attiresFor now skips a ladder owned by another fighter's
+  body). game/tests: model-key-guard 3/3, fighter-completeness 4/4 (main had 3 failures).
+- Tools: tools/model-audit/{rig_qa,rig_overlay,tile_sheet}.py, tools/proof-harness/rig_sheet.mjs,
+  tools/auto_rig/refit_skeleton.py + backends/heat_rebind.py, heat-proxy cleanup in gamerig_backend.py.
+- Proof: docs/proof/claude-2026-10-22/pantera-rigs/ (README, before/after renders, overlays, rig_qa.json).
+
+## 2026-10-22 — Leopard King re-rig wired (Claude session, branch claude/amazing-keller-p8644u)
+
+- `pantera-leopard-king` -> `roster/pantera/attires/leopard-king/model-refit.glb` (skeleton refitted inside the mesh +
+  bone heat; 32.7 MB meshopt). Old model-rigged.glb kept. model-facing.json `"pantera-leopard-king": "+Z"`.
+- Verified in-game (rest, T3 stance, 9 attack rows x 2 times, live fight): no tearing; max bone error 0.4 deg.
+- Found: King row 220 (wired as Pantera `2,1`) is upside down in the decoded source — moveset mapping issue, queued.
+- Proof + details: docs/proof/claude-2026-10-22/pantera-rigs/README.md, roster/pantera/attires/leopard-king/WORKLOG.md.

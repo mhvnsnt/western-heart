@@ -128,20 +128,38 @@
     </div>
   </section>
 
-  <!-- ====================== STAGE SELECT (Lane 4) ======================
-       Tekken setup: sticky header (BACK + title), scrolling arena grid
-       grouped by tier (canon lands / Tekken retro), sticky footer. -->
-  <section id="screen-stage" class="screen select-screen">
+  <!-- ====================== STAGE SELECT ======================
+       Tekken pattern: sticky header (BACK + title), a scrollable
+       arena GRID grouped by tier, a LARGE PREVIEW of the highlighted
+       arena with its name + description inside the layout (never a
+       floating overlay), sticky footer (hint / RANDOM / FIGHT).
+       Portrait: preview on top, grid scrolls below it. Landscape:
+       grid left, preview right. The grid is the ONLY scrolling
+       element; the page itself never scrolls. -->
+  <section id="screen-stage" class="screen select-screen stage-screen">
     <header class="select-header">
       <button class="btn-ghost select-back" data-action="back-select">BACK</button>
       <h2>CHOOSE YOUR ARENA</h2>
       <div class="select-timer" style="visibility:hidden">99</div>
     </header>
-    <div id="stage-grid" class="char-grid stage-grid"><!-- filled by JS --></div>
+    <div class="stage-body">
+      <div id="stage-grid" class="stage-grid"><!-- filled by JS --></div>
+      <aside class="stage-preview-pane">
+        <div class="stage-preview-media">
+          <img id="stage-preview-img" alt="">
+          <div id="stage-preview-swatch" hidden></div>
+        </div>
+        <div class="stage-preview-info">
+          <div id="stage-preview-name">PICK AN ARENA</div>
+          <div id="stage-preview-universe"></div>
+          <p id="stage-preview-desc"></p>
+        </div>
+      </aside>
+    </div>
     <footer class="select-footer">
       <span id="stage-hint">Pick an arena</span>
       <button id="random-stage" class="btn-ghost">RANDOM</button>
-      <button id="confirm-stage" class="btn-primary" disabled>CONFIRM</button>
+      <button id="confirm-stage" class="btn-primary" disabled>FIGHT</button>
     </footer>
   </section>
 
@@ -235,7 +253,7 @@
   </section>
 
   <!-- ====================== STORY: STAGE INTRO ====================== -->
-  <section id="screen-stage" class="screen">
+  <section id="screen-stage-intro" class="screen">
     <div class="panel">
       <p id="stage-kicker" class="stage-kicker"></p>
       <h2 id="stage-title"></h2>
