@@ -49,3 +49,26 @@ OWNER-pending — no identities invented. `CANON-CONVERSION.md` untouched.
   this state doc is the first commit; PR opened immediately after.
 - Pull-in log: vgmstream-cli r2117 (`~/workspace/tools/vgmstream/`) —
   already on disk, used for JOB 3 ADX decode (no new download).
+- JOB 1 DONE: m000 (VMX v2) + m120 (VMX v3) assembled — stages
+  41/41. Layouts proven from bytes (tiling, unit normals, mip-chain
+  accounting, byte-identical pool copies); XBE read not needed.
+  `PHASE14-STAGE-LAYOUTS.md`, `tools/build_stage2.py`, renders
+  viewed (arena lit + flat, plan, m120 plan/arena).
+- JOB 2 DONE: 80/83 costume variants decoded (1,964 images);
+  blocked idx283/idx291 (Ivy — solver non-finite normals) + idx789
+  (rigid-only class), reasons in `CENSUS-PHASE13.md`. idx48 render
+  viewed.
+- JOB 3 DONE: bgm.afs 76/76 ADX → FLAC (73.8 min, 48 kHz stereo);
+  movie.afs 3/3 MPEG-PS byte-carried + probed. Release
+  `scii-phase14-av` (79 assets); manifest
+  `PHASE14-AV-MANIFEST.json`; pull-back of bgm-09.flac + movie1.mpg
+  hash-verified against the manifest.
+- JOB 4 DONE: `PHASE14-PROBES.md` — rec80 secondary = real second
+  texture reference (159/159 pointer-exact); type-0xc format
+  unproven (directory censused; FUN_00033fb0 decompile named).
+- JOB 5 DONE: `WIRING-INVENTORY.md` phase-14 section;
+  `CANON-CONVERSION.md` untouched.
+- Incident note: ~07:23 UTC the box lost network and all lane
+  background jobs died (plus a disk-full window from another lane's
+  5.65 GB tree, cleared by that lane's verified sweep). All jobs
+  were resumable and were resumed; no data lost.

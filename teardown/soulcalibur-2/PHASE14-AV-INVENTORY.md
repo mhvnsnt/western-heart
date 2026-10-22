@@ -94,3 +94,8 @@ Source: `movie.afs` at sector×2048 (header byte-verified). Entries extracted by
 | 2 | movie2.mpg | 19556352 | mpeg1video 640x448 @30000/1001, 457 frames | PES 0xC0 present; ffprobe misdetects codec (Sofdec ADX-in-PS family, cf. movie1) | 15.54 |
 
 Notes: movie2's audio PES (stream 0xC0) is present from the first pack, but ffprobe's PS demuxer misidentifies its codec (mp2 parse errors); its sibling movie1 with the same Sofdec multiplex identifies cleanly as ADX. The file is shipped byte-exact regardless — identification does not gate extraction. movie2 duration is from its video stream (457 frames @ 30000/1001 ≈ 15.54 s; ffprobe reports no container duration).
+Pull-back verification (2026-10-22): `bgm-09.flac` and `movie1.mpg`
+were downloaded back from release `scii-phase14-av` and their
+sha256 match `PHASE14-AV-MANIFEST.json` exactly
+(bgm-09: d0fec1b7f46ad0996995236e125e2533775e7da49391ee01c1d2a328870bb9aa;
+movie1: ffd2a3906be052774f4b0d9c21ff6e6d681ab4b077cc3c0694955e75a947936a).
