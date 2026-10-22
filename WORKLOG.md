@@ -2087,3 +2087,26 @@ On-main files NOT touched: worker 37's `js/creation-flow.js` + `js/art.js`
   `docs/owner-directives.md`.
 - Full log: `docs/decisions/2026-10-22-kinpo-repoint-w50.md` (branch
   `w50/kinpo-repoint`).
+
+## 2026-10-22 — VF5 full integration, worker 57 (re-dispatch)
+
+Re-dispatch after previous worker killed by runtime daemon failure mid-batch
+(van's render). Verified on resume: PR #692 + #696 merged to main; 17/18
+renders complete + uploaded.
+
+- Completed van + wol T-pose renders (Blender 4.5.3, same pipeline).
+- **Wolf's head fix:** wolitm000 (whole batch's source) has NO face — only
+  an eye band. Face (kao) mesh is in wolitm001_obj.bin under a SECOND
+  vertex-header layout (headers @~0x94, no chunk table; same model space).
+  Merged 921 face verts / 1311 tris into wol.obj (dropped 7 stray non-face
+  verts that stretched artifact triangles). Repro: tools/vf5/merge_wol_head.py.
+- All 18 VF5 fighters now have complete T-pose renders; van + wol uploaded
+  to remote storage, URLs relayed to parent for user delivery.
+- Verified claimed-map.json (w47 lane, read-only): vf5_mappings_locked +
+  Dural->Zen already recorded, no Tekken conflicts. No edit needed.
+- Gaps unchanged: motion data (see docs/research/VF5-MOTION-GAP-2026-10-22.md),
+  38 stg*.farc -> arena pipeline, TXP textures unextracted.
+- MERGE FREEZE: pushed to w57/vf5-redispatch-20261022, PR opened, NOT merged.
+
+Files: docs/decisions/2026-10-22-vf5-w57-redispatch.md (new),
+tools/vf5/merge_wol_head.py (new). Additions only.
