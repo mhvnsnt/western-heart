@@ -263,6 +263,9 @@ export class Fighter {
 
     // vitals
     this.maxHp = 100; this.hp = 100;
+    // Hit-feel tuning: set by Game.startMatch. Multipliers live on game.feel
+    // (review-stage tuner); 1.0 = the wired values, untouched.
+    this.game = null;
     this.meter = 0; this.maxMeter = 100; // NINE-SOUL METER
 
     // physics
@@ -845,6 +848,11 @@ export class Fighter {
   /* ---------------- defense / damage ---------------- */
   isBlocking() { return this.state === 'block'; }
 
+  /* Hit-feel multiplier (review-stage tuner). 1.0 when no game/tuner. */
+  _feelMul(key) {
+    return (this.game && this.game.feel && this.game.feel[key]) || 1;
+  }
+
   receiveHit(move, attacker) {
     if (this.dead || this.invuln > 0) return 'dodge';
     const facingAttacker = Math.sign(attacker.root.position.x - this.root.position.x) === this.facing;
@@ -878,16 +886,16 @@ export class Fighter {
     this.hp = Math.max(0, this.hp - dmg);
     this.meter = Math.min(this.maxMeter, this.meter + 6); // +6 soul on taking damage
     const dir = Math.sign(this.root.position.x - attacker.root.position.x) || -this.facing;
-    this.vx = dir * move.knock;
+    this.vx = dir * move.knock * this._feelMul('knockback');
     if (this.hp <= 0) { this._knockout(dir); return 'ko'; }
     if (move.isGrab || move.knock >= 6 || move.launch || (counter && move.knockdown)) {
-      this.vy = move.isGrab ? 5.2 : 4.6; this.onGround = false; this.stun = 0.55; this._enter('knockdown');
+      this.vy = (move.isGrab ? 5.2 : 4.6) * this._feelMul('launch'); this.onGround = false; this.stun = 0.55; this._enter('knockdown');
     } else { this.stun = 0.2 + move.damage * 0.012 + (counter ? 0.12 : 0); this._enter('hitstun'); }
     this.stance = null;
     return counter ? 'counter' : 'hit';
   }
   _knockout(dir) {
-    this.dead = true; this.vx = dir * 5.5; this.vy = 6; this.onGround = false;
+    this.dead = true; this.vx = dir * 5.5 * this._feelMul('knockback'); this.vy = 6 * this._feelMul('launch'); this.onGround = false;
     this._enter('ko'); this.stun = 999;
   }
   victory() { if (!this.dead) this._enter('victory'); }

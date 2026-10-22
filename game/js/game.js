@@ -41,6 +41,13 @@ export class Game {
     this._roundLockT = 0;
     this._hitStop = 0;
 
+    /* ---- hit-feel tuning (review-stage tuner, training mode) ----
+       Multipliers on top of the wired hit-feel values (Tekken teardown
+       numbers come from the retargeting lane; the user NEVER builds from
+       zero). 1.0 = untouched. The review stage's tuning section writes
+       these live and the user feels the delta on the dummy immediately. */
+    this.feel = { hitstop: 1, shake: 1, knockback: 1, launch: 1 };
+
     /* ---- game-modes lane hooks (modes.js) ----
        onMatchEnd(playerWon): fired when a full match (not a round) is
        decided, instead of ui.matchOver. Null = classic behavior.
@@ -76,6 +83,10 @@ export class Game {
 
     this.p1 = new Fighter(playerChar, stage.spawns.p1, 1, true);
     this.p2 = new Fighter(enemyChar, stage.spawns.p2, -1, false);
+    // Hit-feel tuning: fighters read live multipliers off game.feel
+    // (review-stage tuner). Null-safe when no game is attached.
+    this.p1.game = this;
+    this.p2.game = this;
     // Transformation cinematics need the arena for camera shake.
     this.p1._sceneRef = this.arena;
     this.p2._sceneRef = this.arena;
@@ -295,13 +306,13 @@ export class Game {
           this.ui.throwBreakPrompt(false);
           if (result === 'ko') {
             audio.ko(); audio.grunt(def.isPlayer ? 1.1 : 0.85);
-            this.arena.shake(0.5, 0.4);
-            this._hitStop = 0.12;
+            this.arena.shake(0.5 * this.feel.shake, 0.4 * this.feel.shake);
+            this._hitStop = 0.12 * this.feel.hitstop;
             this._spawnImpact(def.root.position.x, 1.2, def.root.position.z, 0xffcf4d, 1.4);
           } else if (result && result !== 'dodge') {
             audio.grab(); audio.grunt(def.isPlayer ? 1.05 : 0.9);
-            this.arena.shake(0.45, 0.28);
-            this._hitStop = 0.1;
+            this.arena.shake(0.45 * this.feel.shake, 0.28 * this.feel.shake);
+            this._hitStop = 0.1 * this.feel.hitstop;
             this._spawnImpact(def.root.position.x, 1.2, def.root.position.z,
               atk.char.colors.trim || 0xffffff, 1.3);
             const combo = atk.registerCombo();
@@ -366,8 +377,8 @@ export class Game {
           attacker.startThrowing(defender);
           this.ui.throwBreakPrompt(defender.isPlayer, hb.move.throw_break || '1');
           audio.grab();
-          this.arena.shake(0.3, 0.2);
-          this._hitStop = 0.06;
+          this.arena.shake(0.3 * this.feel.shake, 0.2 * this.feel.shake);
+          this._hitStop = 0.06 * this.feel.hitstop;
           return;
         }
         const hpBefore = defender.hp;
@@ -381,14 +392,14 @@ export class Game {
 
         if (result === 'block') {
           audio.block();
-          this._hitStop = 0.04;
+          this._hitStop = 0.04 * this.feel.hitstop;
           attacker.combo = 0;
         } else if (result === 'dodge') {
           // whiffed into i-frames, nothing
         } else if (result === 'ko') {
           audio.ko(); audio.grunt(defender.isPlayer ? 1.1 : 0.85);
-          this.arena.shake(0.5, 0.4);
-          this._hitStop = 0.12;
+          this.arena.shake(0.5 * this.feel.shake, 0.4 * this.feel.shake);
+          this._hitStop = 0.12 * this.feel.hitstop;
           this._spawnImpact(hb.x, hb.y, hb.z, 0xffcf4d, 1.4);
         } else {
           const isGrab = !!hb.move.isGrab;
@@ -398,8 +409,8 @@ export class Game {
           else if (attacker.attackName === 'surge') { /* surge sound played on startup */ }
           else audio.punch();
           audio.grunt(defender.isPlayer ? 1.05 : 0.9);
-          this.arena.shake(isGrab ? 0.45 : isHeavy ? 0.35 : 0.18, isGrab ? 0.28 : 0.18);
-          this._hitStop = isGrab ? 0.1 : isHeavy ? 0.08 : 0.05;
+          this.arena.shake((isGrab ? 0.45 : isHeavy ? 0.35 : 0.18) * this.feel.shake, (isGrab ? 0.28 : 0.18) * this.feel.shake);
+          this._hitStop = (isGrab ? 0.1 : isHeavy ? 0.08 : 0.05) * this.feel.hitstop;
           const col = attacker.attackName === 'surge'
             ? (attacker.char.surge?.color ?? attacker.char.colors.trim ?? 0xffffff)
             : (attacker.char.colors.trim || 0xffffff);
