@@ -647,3 +647,77 @@ Validation:
 
 ## PR
 - PR: https://github.com/mhvnsnt/western-heart/pull/502
+
+
+## 2026-10-21 — Tripo auto-intake lane: tools/tripo-intake (rig new Tripo statics ASAP)
+
+Owner directive (verbatim): "As soon as a Tripo model comes in you need to get it rigged automatically ASAP to the character rig that it goes to."
+
+Built the intake the owner asked for (PR #TBD):
+
+- tools/tripo-intake/intake.py — orchestrator. `inbox/<fighter>/attire<N>.glb`
+  (+ optional `attire<N>.json` sidecar) → env check → claim (fighter id must be
+  an existing `roster/<dir>`, never guessed; slot must not hold
+  `model-rigged.glb`, never clobbers; input must be an unrigged static) →
+  sha256 + `ledger.json` (identical bytes re-decide identically) →
+  `gltf_codec` decode → `facing_check.py` → `rig_tripo_static.py --facing` →
+  gates on `rig_report.json` → stage
+  `roster/<fighter>/attires/attire<N>/model-rigged.glb` + `WIRING-CHECKLIST.md`
+  → archive the inbox original to `outbox/<fighter>/attire<N>/<timestamp>/`.
+  Exit 0 done / 2 refused / 3 failed. Wiring `game/js/*` stays a REVIEWED step —
+  the intake never edits game code.
+- tools/tripo-intake/facing_check.py — automatic facing determination on the
+  decoded static. cue1 = gamerig foot-vs-shin centroid math (Blender-free port
+  of `normalize_and_face`, snapped to ±X/±Z, raw angle never trusted); cue2 =
+  `assets.js` `feetFacingCue` port on both axes (|score| ≥ 0.05, the game's own
+  threshold). Confidence gate: cues agree AND residual ≤ 15° AND toe offset ≥
+  1.5% of height AND ≥ 500 band verts — else REFUSE (exit 2), never guess.
+  Verified on synthetic T-poses: all 4 cardinal facings CONFIDENT; the 16°-
+  off-axis case (the demonio-a1 failure mode), a skirt-occluded foot band, and
+  a featureless sphere all REFUSE.
+- tools/tripo-intake/README.md — runbook: drop-in convention, stage table,
+  facing gate, what-done-looks-like, the manual wiring checklist, cron-vs-
+  manual recommendation (manual trigger recommended; cron as notifier only).
+- game/tripo-intake.html — suite dropzone/dashboard: drop a GLB to validate
+  it locally (GLB header parse, 0-skins check, sha256), get the exact inbox
+  path + intake commands, download the sidecar JSON; shows recent intakes
+  from `ledger.json` and the demo.
+- tools/TOOLS-INDEX.md §3 — linked.
+
+Gate semantics (aligned with the repo's actual practice): `validate.py` is the
+HARD playable gate — it must pass or nothing stages. `anim_check` is the
+deformation stress gate: its flags are RECORDED (even the shipped Zui A1
+carries anim_check flags on the CMU clip) and must be explained by viewing the
+renders before wiring.
+
+Dry run (end-to-end, --dry-run): temp copy of
+`roster/kinpo/attires/attire1/model.glb` (sha256
+`ec67f8f0ddd57e97a915cc85408df08956dcc8bfddfe982698261f03fb6a155f`, matches
+`roster/kinpo/ATTIRE-SLOTS.md`; original untouched; staged outside the repo).
+
+- facing_check: CONFIDENT +X — cue1 raw yaw 2.8° (snapped +X, residual 2.8°),
+  cue2 x-score +0.157 vs z-score −0.043 (dominant +X), toe offset 3.2% of
+  height, 74k foot verts. Both cues agree.
+- NOTE: the 2026-10-21 k-NN batch lanes rigged kinpo assuming +Z ("Tripo export
+  convention", batch 2). The intake measures +X on the source mesh. The facing
+  gate exists because that assumption is not always true — flagging for the
+  coordinator: kinpo's shipped `model-rigged.glb` may carry 90°-off weights.
+- rig: `rig_tripo_static.py` completed (exit 0); `validate.py` PASS (valid glTF, skinned mesh, canonical bones, height 1.8 m, no missing bones); `anim_check` flags recorded: Hips->LeftPelvis bone variance 155.5%, 40 tearing spikes, p99.9 edge stretch 1.927 (stress-clip flags of the kind the shipped Zui A1 carries; explained by viewed renders). Output `model-rigged.glb` 30.0 MB (sha256 `642c7b3e…`); 9 pose renders.
+- proof: `docs/proof/muse-2026-10-21/tripo-intake/` (`facing_report.json`,
+  `rig_report.json`, `intake_summary.json`, pose renders — viewed,
+  `steps.log`).
+
+Demo (visible in the suite): the dry-run output committed as
+`roster/kinpo/attires/attire1/model-intake.glb` + `MODEL_URLS` key
+`'kinpo-intake-demo'` (suite-viewer demo key only; the live game keeps using
+`'kinpo'`). View at `game/customization-viewer.html?fighter=kinpo-intake-demo`.
+
+Env note: this VM's Blender 4.0.2 needed libEGL/libGL (`Couldn't open
+libEGL.so.1`). apt hung on the mirror; extracted `libegl1_1.7.0-1build1` +
+`libgl1` debs from the Ubuntu pool (libglvnd) to `~/workspace/tools/syslibs`
+and set `LD_LIBRARY_PATH`. Documented in `tools/tripo-intake/README.md`
+troubleshooting.
+
+First dry-run attempt failed at the final encode with ENOSPC (`/tmp` is a
+512MB tmpfs); re-ran with stage/report roots and TMPDIR on the overlay
+filesystem. All intake stages completed on the re-run.
