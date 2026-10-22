@@ -52,6 +52,8 @@ export function createState({ fighter = 'custom', attire = 'attire1', name = 'CU
     body: { body_type: 'Medium 1', skin_tone: '#c98d5e' },
     morphs: {},                       // morphs.js id -> -1..1 (absent = neutral)
     equipped: {},                     // spine id -> { part_id, suite_slot, glb, name, source, placement }
+    region_swaps: [],                 // round 2 piece swaps: { region, from_glb, from_fighter, from_attire, yaw_deg, scale }
+    hide_base_hair: false,            // round 2: bake drops base meshes named *hair*
     textures: [],                     // v1 texture layers (eyes/decals/hair)
     colors: {},                       // { hair?, skin? } hex
     item_colors: {},                  // suite_slot -> [hex, ...<=5]
@@ -88,7 +90,9 @@ export function setMorph(s, id, v) {
 function defaultPlacement(entry) {
   const p = entry.placement || {};
   if ('px' in p || 'py' in p || 'pz' in p) {
-    return { px: p.px || 0, py: p.py || 0, pz: p.pz || 0, rx: p.rx || 0, ry: p.ry || 0, rz: p.rz || 0, s: p.s ?? 1 };
+    const out = { px: p.px || 0, py: p.py || 0, pz: p.pz || 0, rx: p.rx || 0, ry: p.ry || 0, rz: p.rz || 0, s: p.s ?? 1 };
+    for (const k of ['sx', 'sy', 'sz']) if (p[k] != null) out[k] = p[k];
+    return out;
   }
   const o = entry.offset || [0, 0, 0], r = entry.rotation || [0, 0, 0];
   return { px: o[0] || 0, py: o[1] || 0, pz: o[2] || 0, rx: r[0] || 0, ry: r[1] || 0, rz: r[2] || 0, s: entry.scale ?? 1 };
@@ -122,8 +126,28 @@ export function setPlacement(s, spine, partial) {
   for (const k of ['px', 'py', 'pz']) if (k in partial) p[k] = clamp(partial[k], -0.5, 0.5);
   for (const k of ['rx', 'ry', 'rz']) if (k in partial) p[k] = clamp(partial[k], -180, 180);
   if ('s' in partial) p.s = clamp(partial.s, 0.25, 2.5);
+  for (const k of ['sx', 'sy', 'sz']) if (k in partial) p[k] = clamp(partial[k], 0.25, 2.5);
   cur.placement = p; return s;
 }
+
+// Round 2 piece swaps (Tekken-style region cuts). One swap per region;
+// setting a region replaces its previous source — restore = remove + bake.
+export const SWAP_REGIONS = ['head', 'torso', 'arm_l', 'arm_r', 'legs'];
+export function setRegionSwap(s, swap) {
+  if (!SWAP_REGIONS.includes(swap.region)) throw new Error(`unknown swap region ${swap.region}`);
+  if (!swap.from_glb) throw new Error('region swap needs from_glb');
+  const rec = {
+    region: swap.region, from_glb: swap.from_glb,
+    from_fighter: swap.from_fighter || null, from_attire: swap.from_attire || null,
+    yaw_deg: swap.yaw_deg || 0, scale: swap.scale ?? null,
+  };
+  s.region_swaps = [...s.region_swaps.filter((r) => r.region !== rec.region), rec];
+  return rec;
+}
+export function removeRegionSwap(s, region) {
+  s.region_swaps = s.region_swaps.filter((r) => r.region !== region); return s;
+}
+export function setHideBaseHair(s, on) { s.hide_base_hair = !!on; return s; }
 export function setItemColors(s, spine, colors) {
   const cur = s.equipped[spine]; if (!cur) throw new Error(`nothing equipped at ${spine}`);
   const list = (colors || []).filter((c) => HEX.test(c)).slice(0, 5);
@@ -161,6 +185,7 @@ function lookOf(s) {
   return clone({
     body: s.body, morphs: s.morphs, equipped: s.equipped, textures: s.textures,
     colors: s.colors, item_colors: s.item_colors, finishes: s.finishes, mirrored: s.mirrored,
+    region_swaps: s.region_swaps, hide_base_hair: s.hide_base_hair,
   });
 }
 export function saveSnapshot(s, n) {
@@ -183,6 +208,8 @@ export function toCustomizationJson(s) {
     body: { ...s.body }, morphs: { ...s.morphs }, parts,
     textures: clone(s.textures), colors: { ...s.colors },
   };
+  if (s.region_swaps.length) out.region_swaps = clone(s.region_swaps);
+  if (s.hide_base_hair) out.hide_meshes = ['hair'];
   if (Object.keys(s.item_colors).length) out.item_colors = clone(s.item_colors);
   if (Object.keys(s.finishes).length) out.finishes = clone(s.finishes);
   if (Object.keys(s.mirrored).length) out.mirrored = clone(s.mirrored);
@@ -209,6 +236,8 @@ export function fromSuiteRecord(rec) {
   });
   if (rec.body) s.body = { body_type: rec.body.body_type || 'Medium 1', skin_tone: rec.body.skin_tone || '#c98d5e' };
   s.morphs = { ...(rec.morphs || {}) };
+  s.region_swaps = clone(rec.region_swaps || []);
+  s.hide_base_hair = Array.isArray(rec.hide_meshes) && rec.hide_meshes.some((p) => String(p).toLowerCase() === 'hair');
   s.textures = clone(rec.textures || []);
   s.colors = { ...(rec.colors || {}) };
   s.item_colors = clone(rec.item_colors || {});

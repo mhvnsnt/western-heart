@@ -43,9 +43,20 @@ fi
 
 python3 -m pip install --quiet numpy scipy pygltflib
 
+# mcp-for-blender (MIT) — MCP server letting agents drive Blender directly.
+# Venv because system pip is PEP 668 externally-managed on some VMs.
+# The Blender *addon* side needs a display (xvfb+EGL); the MCP server runs anywhere.
+# Smoke test (no Blender needed): $PREFIX/mcp-venv/bin/python tools/mcp/smoke_mcp_server.py
+if [ ! -x "$PREFIX/mcp-venv/bin/python" ]; then
+  python3 -m venv "$PREFIX/mcp-venv"
+  DISABLE_TELEMETRY=true "$PREFIX/mcp-venv/bin/pip" install --quiet "mcp-for-blender==2.2.2"
+fi
+
 cat <<EOF
 toolchain ready under $PREFIX
   export T3REMAKE_RESEARCH=$PREFIX/t3r/tools/research
   export NODE_PATH=$PREFIX/gltf/node_modules
   export PATH=$PREFIX/bin:\$PATH
+  export MCP_BLENDER_PY=$PREFIX/mcp-venv/bin/python   # python -m blender_mcp.server (stdio)
+  export DISABLE_TELEMETRY=true
 EOF

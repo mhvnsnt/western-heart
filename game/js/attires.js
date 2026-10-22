@@ -46,15 +46,22 @@ export const ATTIRE_VARIANTS = {
   /* DOC FRANK's ladder — keyed by fighter id ('docfrank'), same pattern as
      Kevin's ladder below: attiresFor() looks up fighter.model, then
      fighter.id (model-key audit, docs/MODEL-KEY-AUDIT-2026-10-21.md).
-     LADDER ORDER (owner rule 2026-10-21, same as every character): his
-     Tripo GLB attires 1-4 at the FOREFRONT, transform pairs together;
-     the Dr. Bosconovitch base model ('doc-frank') and its reskin
-     ('doc-frank-machine-shop') ladder BACK behind them. Default =
-     first entry = Attire 1 pre-form ('doc-frank-a1'), NOT the base
-     model and NOT the machine-shop reskin. Provenance per slot:
-     roster/doc-frank/ATTIRE-SLOTS.md. */
+     LADDER ORDER (owner override 2026-10-21 ~23:14 CDT, verbatim: "his
+     1, 2, 3, 4, 5 should be his Tripo models; the Tekken reskins go toward
+     the back, not 1 or 2. Stop showing me the Tekken versions first —
+     show the Tripo 3D models I made for him."): every Tripo model (all
+     four attires, base + transformed forms, pairs together) ladders FIRST;
+     the Tekken-based models ladder BACK. That includes Attire 1's pre-form
+     old man ('doc-frank-a1'): its file lineage is the PR #263 machine-shop
+     texture reskin of the Bosconovitch base, so per the owner's override it
+     sits with the back-slot Tekken entries, not at the forefront (this
+     supersedes the 2026-10-21 ~19:08 CDT rule that had put it first).
+     Default = first entry = Attire 1's Tripo bigger form ('doc-frank-big').
+     Provenance per slot: roster/doc-frank/ATTIRE-SLOTS.md.
+     NOTE: with the Tripo bigger form as the default, TRANSFORM from the
+     default swaps big->big (no visual change); picking a back-slot old-man
+     form and transforming still lands on the Tripo bigger form. */
   'docfrank': [
-    { model: 'doc-frank-a1', label: 'ATTIRE 1 · OLD MAN' },
     { model: 'doc-frank-big', label: 'ATTIRE 1 · TRANSFORMED (TRIPO)' },
     { model: 'doc-frank-wowomomo', label: 'ATTIRE 2 · WOWOMOMO (TRIPO)' },
     { model: 'doc-frank-wowomomo-big', label: 'ATTIRE 2 · WOWOMOMO XL (TRIPO)' },
@@ -62,10 +69,17 @@ export const ATTIRE_VARIANTS = {
     { model: 'doc-frank-hood-big', label: 'ATTIRE 3 · HOOD XL (TRIPO)' },
     { model: 'doc-frank-frankenstein', label: "ATTIRE 4 · FRANKENSTEIN'S CYBORG (TRIPO)" },
     { model: 'doc-frank-frankenstein-big', label: 'ATTIRE 4 · FRANKENSTEIN XL (TRIPO)' },
-    { model: 'doc-frank', label: 'BOSCONOVITCH BASE (TEKKEN BASE)' },
-    { model: 'doc-frank-machine-shop', label: 'MACHINE SHOP (RESKIN)' },
+    { model: 'doc-frank-a1', label: 'ATTIRE 1 · OLD MAN (TEKKEN RESKIN)' },
+    { model: 'doc-frank', label: 'BOSCONOVITCH BASE (TEKKEN CANON)' },
+    { model: 'doc-frank-machine-shop', label: 'MACHINE SHOP (TEKKEN RESKIN)' },
   ],
-  'mariposa': [
+  /* MARIPOSA's ladder — re-keyed 2026-10-22 to her roster card id
+     ('mariposa-monarch'): the old 'mariposa' key matched no fighter id or
+     model, so the whole documented slot map (roster/mariposa/ATTIRE-SLOTS.md:
+     "Mariposa is ONE character ... Never split into two characters") was
+     unreachable from her picker. Ladder contents/order untouched — Butterfly
+     Default stays the owner-designated Slot 1 default. */
+  'mariposa-monarch': [
     { model: 'mariposa', label: 'ATTIRE 1 · BUTTERFLY' },
     { model: 'mariposa-slot2', label: 'SLOT 2' },
     { model: 'mariposa-monarch', label: 'MONARCH' },
@@ -86,8 +100,14 @@ export const ATTIRE_VARIANTS = {
   'vainabel': [
     { model: 'vainabel-attire2', label: 'ATTIRE 2' },
     { model: 'vainabel-attire3', label: 'ATTIRE 3 · MASKED DEMON OF THE PURPLE HAZE' },
+    { model: 'vainabel-attire4', label: 'ATTIRE 4 · HALF MASK HORROR OF THE HAZE' },
   ],
-  'dxmmii': [
+  /* DXMMII's ladder — re-keyed 2026-10-22 to its roster card id
+     ('dxmmii-patchwork'): the old 'dxmmii' key matched no fighter id or
+     model, so the slot map (roster/dxmmii/ATTIRE-SLOTS.md) was unreachable
+     from its picker. Ladder contents/order untouched — the Tripo default
+     stays Slot 1. */
+  'dxmmii-patchwork': [
     { model: 'dxmmii', label: 'BASE' },
     { model: 'dxmmii-a2', label: 'ATTIRE 2' },
     { model: 'dxmmii-patchwork', label: 'PATCHWORK' },
@@ -107,9 +127,23 @@ export const ATTIRE_VARIANTS = {
     { model: 'saku-ra', label: 'BASE' },
     { model: 'saku-ra-main', label: 'MAIN' },
   ],
+  /* PHANTOM's ladder — JIN re-homed here 2026-10-22 (owner directive:
+     "Yoshimitsu is supposed to ladder into Phantom's attires, not stand
+     alone"). Canon: Phantom is the vessel of JIN, the Blade Soul
+     (CANON.md). Model preserved, just re-homed from the removed 'jin_soul'
+     card. */
   'phantom': [
     { model: 'phantom', label: 'BASE' },
     { model: 'phantom-t8', label: 'T8' },
+    { model: 'steve-fox', label: 'JIN · BLADE SOUL' },
+  ],
+  /* CHARGER's ladder (dedup 2026-10-22): the standalone 'charger-attire2'
+     card folded in (owner rule: attires ladder into their fighter). Without
+     this list Attire 2 would be unreachable — no key existed before. Labels
+     from the folded cards' titles. */
+  'charger': [
+    { model: 'charger', label: 'ATTIRE 1 · ICE MONSTER' },
+    { model: 'charger-attire2', label: 'ATTIRE 2 · WILD CURRENT' },
   ],
   'kinpo': [
     { model: 'kinpo', label: 'BASE' },
@@ -139,15 +173,24 @@ export const ATTIRE_VARIANTS = {
     { model: 'awa-pop', label: 'ATTIRE 1' },
     { model: 'awa-pop-attire2', label: 'ATTIRE 2' },
   ],
-  // Pantera slot order (owner 2026-10-20 swap: Leopard King A6 -> A4,
-  // T7 P2 A4 -> A6). A1 = 'pantera' (T7King reskin, default, in
-  // game/assets). ATTIRE 2 = Leo man (restored to
-  // roster/pantera/attires/leomon/model.glb, 'pantera-leoman' key).
+  /* PANTERA's ladder — owner reorder 2026-10-21: his TRIPO ORIGINALS at
+     the forefront (slots 1-2), the Tekken-version reskins ladder BACK
+     behind them. This supersedes the 2026-10-17 Pantera exception (the
+     T7King reskin sat at Attire 1 because he did the reskin first) and
+     the 2026-10-20 swap. Audited Tripo inventory (roster/TRIPO-REGISTRY.md
+     + docs/ROSTER-COUNT-CANON-2026-10-21.md): exactly TWO Pantera Tripo
+     originals exist — Leo man (owner-provided via Google Drive,
+     'pantera-leoman') and Leopard King (Tripo 094c2f37,
+     'pantera-leopard-king'). The reskins keep their previous relative
+     order behind them. Default = first entry = Leo man (selectedAttireModel
+     returns list[0]). Provenance per slot:
+     roster/pantera/attires/ATTIRE-SLOTS.md. The base 'pantera' MODEL_URLS
+     key itself is untouched — the souled vessels ride it. */
   'pantera': [
-    { model: 'pantera', label: 'ATTIRE 1' },
-    { model: 'pantera-leoman', label: 'ATTIRE 2 · LEO MAN' },
-    { model: 'pantera-snow-leopard', label: 'ATTIRE 3 · SNOW LEOPARD' },
-    { model: 'pantera-leopard-king', label: 'ATTIRE 4 · LEOPARD KING' },
+    { model: 'pantera-leoman', label: 'ATTIRE 1 · LEO MAN (TRIPO)' },
+    { model: 'pantera-leopard-king', label: 'ATTIRE 2 · LEOPARD KING (TRIPO)' },
+    { model: 'pantera', label: 'ATTIRE 3 · T7 KING P1 RESKIN' },
+    { model: 'pantera-snow-leopard', label: 'ATTIRE 4 · SNOW LEOPARD' },
     { model: 'pantera-crimson-rage', label: 'ATTIRE 5 · CRIMSON RAGE' },
     { model: 'pantera-p2', label: 'ATTIRE 6 · T7 P2' },
   ],
