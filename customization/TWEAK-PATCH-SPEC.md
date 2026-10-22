@@ -58,7 +58,7 @@ Field rules (v1):
 - `kit_id` may be `null`/omitted (a freehand patch); when present it must
   name a staged kit in `customization/tweak-kits/`.
 - `changes` must be a non-empty array.
-- Each change has a `kind`. Two kinds exist in v1:
+- Each change has a `kind`. Three kinds exist in v1:
   - `"part_transform"`: `group` must be one of the 8 part groups;
     `rotation_deg` 3 finite numbers in [-360, 360] (degrees, XYZ Euler order —
     the same order the suite preview uses); `flip` 3 booleans (mirror on that
@@ -71,6 +71,10 @@ Field rules (v1):
     multipliers on top of the wired (teardown-derived) values; 1.0 =
     untouched. At least one must differ from 1.0. `note` optional string.
     Applied to `customization/hit-feel/<fighter>.json`.
+  - `"ui_screen_define"`: UI WORKSHOP screen. `screen` must be a valid
+    `wh-ui-screen` v1 definition (id `[a-z0-9-_]`, canvas w/h, elements with
+    known types, unique ids, positive w/h). `note` optional string.
+    Applied to `customization/ui-screens/<screen-id>.json`.
 
 ## Tweak kits (crew-staged starting points)
 
