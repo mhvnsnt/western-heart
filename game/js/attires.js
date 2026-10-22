@@ -34,21 +34,33 @@ export const ATTIRE_VARIANTS = {
   ],
   /* DOC FRANK's ladder — keyed by fighter id ('docfrank'), same pattern as
      Kevin's ladder below: attiresFor() looks up fighter.model, then
-     fighter.id — and the main entry's model is 'doc-frank-machine-shop',
-     so keying this list 'doc-frank' left his attires unreachable from his
-     own picker (model-key audit, docs/MODEL-KEY-AUDIT-2026-10-21.md).
-     Frankenstein pair added: Attire 4 was missing from the list entirely.
-     Every entry is one of Doc Frank's own wired models. */
+     fighter.id (model-key audit, docs/MODEL-KEY-AUDIT-2026-10-21.md).
+     LADDER ORDER (owner override 2026-10-21 ~23:14 CDT, verbatim: "his
+     1, 2, 3, 4, 5 should be his Tripo models; the Tekken reskins go toward
+     the back, not 1 or 2. Stop showing me the Tekken versions first —
+     show the Tripo 3D models I made for him."): every Tripo model (all
+     four attires, base + transformed forms, pairs together) ladders FIRST;
+     the Tekken-based models ladder BACK. That includes Attire 1's pre-form
+     old man ('doc-frank-a1'): its file lineage is the PR #263 machine-shop
+     texture reskin of the Bosconovitch base, so per the owner's override it
+     sits with the back-slot Tekken entries, not at the forefront (this
+     supersedes the 2026-10-21 ~19:08 CDT rule that had put it first).
+     Default = first entry = Attire 1's Tripo bigger form ('doc-frank-big').
+     Provenance per slot: roster/doc-frank/ATTIRE-SLOTS.md.
+     NOTE: with the Tripo bigger form as the default, TRANSFORM from the
+     default swaps big->big (no visual change); picking a back-slot old-man
+     form and transforming still lands on the Tripo bigger form. */
   'docfrank': [
-    { model: 'doc-frank', label: 'BASE' },
-    { model: 'doc-frank-big', label: 'TRANSFORMED' },
-    { model: 'doc-frank-wowomomo', label: 'WOWOMOMO' },
-    { model: 'doc-frank-wowomomo-big', label: 'WOWOMOMO XL' },
-    { model: 'doc-frank-hood', label: 'HOOD SCIENTIST' },
-    { model: 'doc-frank-hood-big', label: 'HOOD XL' },
-    { model: 'doc-frank-frankenstein', label: 'FRANKENSTEIN' },
-    { model: 'doc-frank-frankenstein-big', label: 'FRANKENSTEIN XL' },
-    { model: 'doc-frank-machine-shop', label: 'MACHINE SHOP' },
+    { model: 'doc-frank-big', label: 'ATTIRE 1 · TRANSFORMED (TRIPO)' },
+    { model: 'doc-frank-wowomomo', label: 'ATTIRE 2 · WOWOMOMO (TRIPO)' },
+    { model: 'doc-frank-wowomomo-big', label: 'ATTIRE 2 · WOWOMOMO XL (TRIPO)' },
+    { model: 'doc-frank-hood', label: 'ATTIRE 3 · HOOD SCIENTIST (TRIPO)' },
+    { model: 'doc-frank-hood-big', label: 'ATTIRE 3 · HOOD XL (TRIPO)' },
+    { model: 'doc-frank-frankenstein', label: "ATTIRE 4 · FRANKENSTEIN'S CYBORG (TRIPO)" },
+    { model: 'doc-frank-frankenstein-big', label: 'ATTIRE 4 · FRANKENSTEIN XL (TRIPO)' },
+    { model: 'doc-frank-a1', label: 'ATTIRE 1 · OLD MAN (TEKKEN RESKIN)' },
+    { model: 'doc-frank', label: 'BOSCONOVITCH BASE (TEKKEN CANON)' },
+    { model: 'doc-frank-machine-shop', label: 'MACHINE SHOP (TEKKEN RESKIN)' },
   ],
   'mariposa': [
     { model: 'mariposa', label: 'ATTIRE 1 · BUTTERFLY' },
@@ -141,6 +153,18 @@ export const ATTIRE_VARIANTS = {
      T7 Steve reskins (zui_alt1/zui_alt2) ladder back as alternates. Keyed by
      fighter id — his roster model is 'zui-attire1', so attiresFor's id
      fallback is what finds this list (same pattern as Kevin's entry above). */
+  /* ZEN — keyed by fighter id ('zen'); his model key is also 'zen', so the
+     ladder resolves either way. Attire 1 = his SPIRIT BODY (owner Tripo
+     8c46e379, 2026-10-21) — Zen is unvesseled; this is his own body, his
+     main model. His legacy body (game/assets/models/zen-body.glb, key
+     'zen-body') ladders back as Attire 2, never deleted. His SPIRIT FORM
+     ('zen-spirit', roster/zen/spirit/model.glb) is deliberately NOT in
+     this ladder: it is not an attire — it is Zen himself as a spirit, a
+     separate model entity in the stand system. */
+  'zen': [
+    { model: 'zen-attire1', label: 'ATTIRE 1 · SPIRIT BODY (TRIPO)' },
+    { model: 'zen-body', label: 'ATTIRE 2 · LEGACY BODY' },
+  ],
   'zui': [
     { model: 'zui-attire1', label: 'ATTIRE 1 · DRUNKEN MONK (TRIPO)' },
     { model: 'zui-attire2', label: 'ATTIRE 2 · REWORK V2' },
