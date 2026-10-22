@@ -1658,3 +1658,50 @@ Tekken on-hit stack: (1) jagged star-burst HIT SPARK sprite (canvas-generated, a
 **Proof:** `node test/ranks.test.mjs` → 38 passed, 0 failed. Covers: 53-tier shape, reserved placeholders, placement→promo-series→promotion→protection→demo-series→demotion full cycle, upset scaling, track separation, leaderboard, top-held, mid-table tier insertion with zero code changes.
 
 **Status:** rank PR pushed; merge via git_merge.py when green. Follow-up PR: treasure battle / survival / time attack / arcade variants, unlockables/gallery, jukebox, Tekken Force + Scenario Campaign (user-approved), create-an-arena (coordinate worker 18), intro/outro cinematics layered BESIDE existing intros/win taunts (off limits).
+
+## 2026-10-22 — worker32: ONLINE + TOURNAMENT SYSTEMS (netcode bridge, lobbies, brackets, dailies)
+
+**Owner instruction (verbatim):** "Wire up: Netcode approaches from the teardowns (rollback/prediction notes). Lobby structures (TTT2, SFV player rooms). Tournament brackets (single-elim). Daily challenges / rotating events."
+
+**Method specified:** pull netcode/lobby/tournament approaches from teardowns; implement netcode foundation (deterministic sim hooks, input prediction, rollback), lobby UI+flow, single-elim brackets, daily challenges with rotation + reward hooks.
+
+**Method used:** as specified. TTT2/SFV teardowns had no network captures, so lobby structures came from public docs (tekkenpedia, reviews, patch notes) cross-checked across sources — cited in docs/research/online-lobby-tournament-research.md. Netcode builds on the existing vendored lite-rollback foundation (bridge layer added, nothing redone).
+
+**Deviations:** none from the instruction; two honest scope notes: (1) real-fighter netplay is architectural (needs the combat sim port — documented in docs/netcode/NETCODE-ARCHITECTURE.md with the FIELD_CONTRACT + self-test harness ready for it); (2) netcode versus is playable on the deterministic reference sim.
+
+### Files (no deletions)
+- `game/js/online.js` (NEW) — OnlineController: ONLINE hub, lounge browser/create/room, NetVersus (WebRTC+rollback versus), tournament + challenges screens; self-inits, additive (no main.js/menus.js/modes.js edits)
+- `game/index.html` (MODIFY, 2 lines) — ONLINE menu button + online.js script tag (fresh base from main, byte-verified)
+- `game/js/tournament.js` (NEW) — single-elim engine: seeding, BYEs, CPU fill, serializable brackets
+- `game/js/tournament-ui.js` (NEW) — bracket rendering + local tournament runner (real fights)
+- `game/js/challenges.js` (NEW) — ChallengeManager: additive onMatchEnd chain + mode-clear hooks, localStorage progress
+- `game/data/challenges.js` (NEW) — 24 challenges as data, deterministic daily rotation, weekly events
+- `game/js/unlockables.js` (NEW) — unlockable registry (titles/frames) that challenges pay into
+- `game/netplay/bridge/input-codec.js` (NEW) — WH inputs → 16-bit netcode word
+- `game/netplay/bridge/sim-adapter.js` (NEW) — WhNetSim, FIELD_CONTRACT, checksum, 600-frame determinism self-test
+- `game/netplay/bridge/test-bridge.mjs` (NEW) — 7 tests
+- `game/netplay/lobby/lobby-protocol.js` (NEW) — LobbyClient state machine (quick/custom/create, rotation, spectate, chat, fight requests)
+- `game/netplay/lobby/test-lobby.mjs` (NEW) — 5 tests (fake server)
+- `game/netplay/signaling/server.js` (MODIFY) — v2 lobby protocol (8p rooms, passwords, host migration, quick-match queue, bracket broadcast, WebRTC relay); v1 demo protocol unchanged
+- `game/tests/online-systems.test.mjs` (NEW) — 12 tests (brackets + rotation)
+- `game/tests/challenges-manager.test.mjs` (NEW) — 8 tests (progress/claim/persist)
+- `docs/netcode/NETCODE-ARCHITECTURE.md` (NEW) — honest playable-vs-architectural doc + browser P2P constraints
+- `docs/research/online-lobby-tournament-research.md` (NEW) — teardown/web sources
+- `docs/online-proof/*.png` (NEW) — 4 screenshots (hub, lobby, bracket, challenges)
+- `WORKLOG.md` (this entry)
+
+### Proof
+- `node --test game/netplay/bridge/test-bridge.mjs` → 7 passed (incl. 600-frame adapter determinism self-test, 0 mismatches)
+- `node --test game/netplay/lobby/test-lobby.mjs` → 5 passed
+- `node --test game/tests/online-systems.test.mjs` → 12 passed
+- `node --test game/tests/challenges-manager.test.mjs` → 8 passed
+- Signaling server v2: 16/16 protocol tests pass (lobby CRUD, passwords, ready/rotation, host-only start, chat, signal relay, idempotent results, quick-match pairing, v1 compat)
+- Real LobbyClient vs real server: 9/9 pass
+- Headless Chromium screenshots of all 4 screens rendering (docs/online-proof/)
+- `node --check` clean on all new/edited JS
+
+### Flags for coordinator
+- Browser P2P needs a TURN server for symmetric NATs before shipping (STUN default is Google's; documented).
+- Ranked/leaderboards are the Nakama lane (researched, not wired).
+- The combat sim port is the critical path to real-fighter netplay; FIELD_CONTRACT + self-test harness are ready.
+- Challenge stat mapping is honest: hit-count challenges are phrased as damage (no landed-hit counter in the engine) — see CHALLENGE_TYPES docblock.
