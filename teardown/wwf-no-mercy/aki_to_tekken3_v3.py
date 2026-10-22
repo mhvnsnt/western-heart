@@ -4,12 +4,17 @@
 Extends aki_to_tekken3_v2.py (same joint map, same stance overlay, same
 root handling) with one measured correction and batch support:
 
-* **s8 unwrap (NEW in v3)**: the AKI rotation channel is an angle modulo
-  256 units (256 = 360 deg) stored as s8. Clips whose joints rotate past
-  +-127 wrap mid-clip (measured: system clip 0x2DDA pelvis reads
-  105, 121, 121, -103, 121, -103 — smooth only modulo 256). v2 averaged
-  and overlaid the wrapped values, injecting phantom ~224 deg swings.
-  v3 unwraps each joint series (period 256) before the overlay.
+* **rotation unwrap**: the AKI rotation channel is an angle modulo its
+  period stored in the PivotRotation record. v3 unwrapped modulo 256
+  (s8 reading). **W3c correction (2026-10-21): the record is
+  [PivotX s12][Rotation u10][PivotZ s10] and the bank is extracted with
+  the game-exact window (FileTable 0x16C31D8 / FirstFile 0x1BD150 /
+  1-based IDs — FUN_80003ab0/FUN_80003bd0; see
+  docs/anim/AKI-BAKE-ROCK-2026-10-21.md W3b Findings 1-2), so v3 now
+  unwraps modulo 1024 and scales at 65536/1024 (T3 s16 full turn per
+  AKI full turn; v1's own note 's8 * 256 = Tekken s16' was the same
+  period rule at period 256). The old mod-256 unwrap + 65536/360 scale
+  were symptoms of the truncated 8-bit reading.**
   Measured effect on MK-1240 (Rock Bottom, anim 0x37FA) through the
   bit-exact PoseBuildMatrices port (usa_tables.pose_to_slot_rotations):
   mean slot rotation delta 53.5 -> 25.8 deg/frame (real T3 King stance
@@ -80,7 +85,7 @@ AKI_TO_T3 = {
     'LowerRightLeg': 'joint8', 'LowerLeftLeg': 'joint9',
 }
 
-S8_TO_T3 = 65536.0 / 360.0
+U10_TO_T3 = 65536.0 / 1024.0  # T3 s16 full turn / AKI u10 full turn
 
 
 def convert(fid):
@@ -90,11 +95,11 @@ def convert(fid):
     stance = json.load(open(STANCE))
     base_pose = np.array([stance['pose_channels'][c] for c in CH_NAMES], dtype=float)
 
-    # s8 rotations (channel 1 of PR joints), unwrapped modulo 256.
+    # u10 rotations (channel 1 of PR joints), unwrapped modulo 1024.
     series = {}
     for aki_joint, t3_joint in AKI_TO_T3.items():
         vals = clip[:, J[aki_joint], 1].astype(float)
-        vals = np.unwrap(vals, period=256.0)
+        vals = np.unwrap(vals, period=1024.0)
         series.setdefault(t3_joint, []).append(vals)
 
     root_vals = clip[:, J['OverallMovement'], :].astype(float)
@@ -104,7 +109,7 @@ def convert(fid):
         p = base_pose.copy()
         for t3_joint, vlist in series.items():
             v = np.mean(vlist, axis=0)
-            delta = (v - v.mean()) * S8_TO_T3
+            delta = (v - v.mean()) * U10_TO_T3
             idx = CH_NAMES.index(t3_joint + '_x')
             p[idx] = np.clip(p[idx] + delta[fi], -32768, 32767)
         for j, ax in enumerate('xyz'):
@@ -118,7 +123,7 @@ def convert(fid):
     corr = {}
     for aki_joint, t3_joint in [('Pelvis', 'joint0'), ('UpperBody', 'joint1'),
                                 ('UpperRightArm', 'joint4'), ('Head', 'joint3')]:
-        src = np.unwrap(clip[:, J[aki_joint], 1].astype(float), period=256.0)
+        src = np.unwrap(clip[:, J[aki_joint], 1].astype(float), period=1024.0)
         src_c = src - src.mean()
         idx = CH_NAMES.index(t3_joint + '_x')
         dst = np.array([p[idx] for p in poses], dtype=float)
@@ -128,13 +133,13 @@ def convert(fid):
             if np.std(src_c) > 0 and np.std(dst_c) > 0 else 0.0)
 
     return {
-        'schema': 'aki->tekken3 retarget v3 (CORRECTED bank NTSC_U_11 + s8 unwrap)',
+        'schema': 'aki->tekken3 retarget v3 (W3c: game-exact NTSC_U_11 bank + u10 rotation, period-1024 unwrap)',
         'source_file': f'No Mercy anim {fid}',
         'source_frames': n,
         'source_bank': 'animations/clips/ (FileTable 0x16C31D8, NTSC_U_11)',
         'tekken_model': 'tekken3/models/king95 (King, BNS record 95)',
         'joint_map': AKI_TO_T3,
-        'unwrap': 'per-joint s8 series unwrapped modulo 256 before overlay (v3 fix)',
+        'unwrap': 'per-joint u10 series unwrapped modulo 1024 before overlay (W3c; v3 originally mod-256 on the truncated s8 reading)',
         'verification_channel_correlations': corr,
         'poses': poses,
     }
