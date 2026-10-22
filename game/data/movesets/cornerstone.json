@@ -1,0 +1,273 @@
+{
+ "fighter": "ryuji-rock",
+ "display": "CORNERSTONE",
+ "assembly_version": 2,
+ "library": "game/data/moveset-library/index.json",
+ "claimed_map": "game/data/moveset-library/claimed-map.json",
+ "base": {
+  "bank": "kof3d",
+  "character": "ryuji",
+  "status": "live",
+  "note": "Ryuji Yamazaki 3D KOF kit (kof3d bank, worker 68) — stance, tongue taunts, full special set. XIV primary, XV command list decoded, MI1&2 share the classic kit."
+ },
+ "layers": [
+  "1. kof3d:ryuji — Yamazaki base: stance, taunts (tongue out), Serpent Slash, Sand Kick, Knife Slash, Bai Gaeshi, Bakudan Pachiki, Todome, Guillotine, Pit Viper, Drill.",
+  "2. wwe:rock — The Rock: Rock Bottom (King Tekken + WWE All Stars + WWE teardown), diving People’s Elbow (King’s u/f+2), Sharpshooter, Brahma Bull Lariat, Smackdown, Rock DDT.",
+  "3. yyh:toguro — Younger Toguro (YYH: Dark Tournament teardown): SPAMMABLE Thumb Flick Blast (hold qcf+1), Earth Slash, Ki Blast, Increase Strength (80%), Repel / Finisher / Long Way to Hell strings.",
+  "4. Tekken-base normals carry over from game/assets/movesets/ryuji.json’s KOF normal mappings (already Tekken-ized 1:1, input-to-move fidelity) — documented here, not duplicated in the library."
+ ],
+ "assembly_notes": "Owner-locked 2026-10-22 ~18:07 CDT: name is CORNERSTONE (internal id stays ryuji-rock); full spec = Ryuji Yamazaki base (3D KOF) + The Rock + Younger Toguro thumb flick blast, all on Tekken inputs with 1:1 input-to-move fidelity. Source-law check: King T3 proxy REMOVED (King claimed by Pantera) — replaced by the real Yamazaki kit; KOF/WWE/YYH namespaces are unclaimed. Banks kof3d/yyh/wwe-rock register in game/data/moveset-library/index.json when worker 47’s PR (#678/#699) merges — registration snippet is in docs/research/cornerstone-moveset-assembly-2026-10-22.md.",
+ "index_registration": "ADD to game/data/moveset-library/index.json banks[]: {\"id\":\"kof3d\",\"game\":\"kof_xiv_xv_mi\",\"file\":\"banks/kof3d.json\",\"moves\":26,\"source_banks\":1}, {\"id\":\"yyh\",\"game\":\"yyh_dark_tournament_ps2\",\"file\":\"banks/yyh.json\",\"moves\":18,\"source_banks\":1}, {\"id\":\"wwe-rock\",\"game\":\"wwe_multi\",\"file\":\"banks/wwe-rock.json\",\"moves\":6,\"source_banks\":1}. Namespaces kof3d:/yyh:/wwe: extend the schema id vocabulary.",
+ "moves": [
+  {
+   "library_id": "kof3d:ryuji:stance",
+   "slot": "5",
+   "note": "Yamazaki base layer: Yamazaki Stance."
+  },
+  {
+   "library_id": "kof3d:ryuji:eviscerator",
+   "slot": "f+1",
+   "note": "Yamazaki base layer: Eviscerator."
+  },
+  {
+   "library_id": "kof3d:ryuji:slam",
+   "slot": "f+3",
+   "note": "Yamazaki base layer: Slam."
+  },
+  {
+   "library_id": "kof3d:ryuji:serpent-slash-high",
+   "slot": "qcb+1",
+   "note": "Yamazaki base layer: Serpent Slash (Joudan)."
+  },
+  {
+   "library_id": "kof3d:ryuji:serpent-slash-mid",
+   "slot": "qcb+3",
+   "note": "Yamazaki base layer: Serpent Slash (Chuudan)."
+  },
+  {
+   "library_id": "kof3d:ryuji:serpent-slash-low",
+   "slot": "qcb+2",
+   "note": "Yamazaki base layer: Serpent Slash (Gedan)."
+  },
+  {
+   "library_id": "kof3d:ryuji:serpent-slash-keep",
+   "slot": "qcb+1~hold",
+   "note": "Yamazaki base layer: Serpent Slash (Keep)."
+  },
+  {
+   "library_id": "kof3d:ryuji:serpent-slash-cancel",
+   "slot": "4",
+   "note": "Yamazaki base layer: Serpent Slash Cancel."
+  },
+  {
+   "library_id": "kof3d:ryuji:spray-sand",
+   "slot": "dp+4",
+   "note": "Yamazaki base layer: Spray Sand."
+  },
+  {
+   "library_id": "kof3d:ryuji:bombshell-badda-bing",
+   "slot": "hcb,f+1",
+   "note": "Yamazaki base layer: Bombshell Badda-Bing (Light)."
+  },
+  {
+   "library_id": "kof3d:ryuji:bombshell-badda-bing-heavy",
+   "slot": "hcb,f+2",
+   "note": "Yamazaki base layer: Bombshell Badda-Bing (Heavy)."
+  },
+  {
+   "library_id": "kof3d:ryuji:double-return",
+   "slot": "qcf+1",
+   "note": "Yamazaki base layer: Double Return (Light)."
+  },
+  {
+   "library_id": "kof3d:ryuji:double-return-heavy",
+   "slot": "qcf+2",
+   "note": "Yamazaki base layer: Double Return (Heavy)."
+  },
+  {
+   "library_id": "kof3d:ryuji:sadomaso",
+   "slot": "hcf+3",
+   "note": "Yamazaki base layer: Sadomaso (Light)."
+  },
+  {
+   "library_id": "kof3d:ryuji:sadomaso-heavy",
+   "slot": "hcf+4",
+   "note": "Yamazaki base layer: Sadomaso (Heavy)."
+  },
+  {
+   "library_id": "kof3d:ryuji:fight-of-tempering",
+   "slot": "dp+3",
+   "note": "Yamazaki base layer: Fight of Tempering."
+  },
+  {
+   "library_id": "kof3d:ryuji:todome-xv",
+   "slot": "hcb,f+3",
+   "note": "Yamazaki base layer: Todome (XV Light)."
+  },
+  {
+   "library_id": "kof3d:ryuji:todome-xv-heavy",
+   "slot": "hcb,f+4",
+   "note": "Yamazaki base layer: Todome (XV Heavy)."
+  },
+  {
+   "library_id": "kof3d:ryuji:guillotine",
+   "slot": "qcf,qcf+1",
+   "note": "Yamazaki base layer: Guillotine (Light)."
+  },
+  {
+   "library_id": "kof3d:ryuji:guillotine-heavy",
+   "slot": "qcf,qcf+2",
+   "note": "Yamazaki base layer: Guillotine (Heavy)."
+  },
+  {
+   "library_id": "kof3d:ryuji:pit-viper",
+   "slot": "qcb,hcf+1",
+   "note": "Yamazaki base layer: Pit Viper (Light)."
+  },
+  {
+   "library_id": "kof3d:ryuji:pit-viper-heavy",
+   "slot": "qcb,hcf+2",
+   "note": "Yamazaki base layer: Pit Viper (Heavy)."
+  },
+  {
+   "library_id": "kof3d:ryuji:drill",
+   "slot": "hcb,hcb+1",
+   "note": "Yamazaki base layer: Drill (Climax, 4 levels)."
+  },
+  {
+   "library_id": "kof3d:ryuji:kachikomi",
+   "slot": "1+3",
+   "note": "Yamazaki base layer: Kachikomi."
+  },
+  {
+   "library_id": "kof3d:ryuji:whackdown-wallop",
+   "slot": "1+3~v",
+   "note": "Yamazaki base layer: Whackdown Wallop."
+  },
+  {
+   "library_id": "kof3d:ryuji:knife-slash",
+   "slot": "hcf+1",
+   "note": "Yamazaki base layer: Knife Slash (Aikuchi, legacy)."
+  },
+  {
+   "library_id": "wwe:rock:rock-bottom",
+   "slot": "1+3",
+   "note": "Rock layer: ROCK BOTTOM."
+  },
+  {
+   "library_id": "wwe:rock:peoples-elbow-diving",
+   "slot": "u/f+2",
+   "note": "Rock layer: PEOPLE'S ELBOW (diving)."
+  },
+  {
+   "library_id": "wwe:rock:sharpshooter",
+   "slot": "d/b+1+3",
+   "note": "Rock layer: SHARPSHOOTER."
+  },
+  {
+   "library_id": "wwe:rock:brahma-bull-lariat",
+   "slot": "f,F+2",
+   "note": "Rock layer: BRAHMA BULL LARIAT."
+  },
+  {
+   "library_id": "wwe:rock:smackdown",
+   "slot": "1,1,2",
+   "note": "Rock layer: LAYIN' THE SMACKDOWN."
+  },
+  {
+   "library_id": "wwe:rock:rock-ddt",
+   "slot": "d/b+1+2",
+   "note": "Rock layer: ROCK'S DDT."
+  },
+  {
+   "library_id": "yyh:toguro:jab",
+   "slot": "1",
+   "note": "Toguro layer: Jab."
+  },
+  {
+   "library_id": "yyh:toguro:punch",
+   "slot": "2",
+   "note": "Toguro layer: Punch."
+  },
+  {
+   "library_id": "yyh:toguro:kick",
+   "slot": "4",
+   "note": "Toguro layer: Kick."
+  },
+  {
+   "library_id": "yyh:toguro:spin-kick",
+   "slot": "b+4",
+   "note": "Toguro layer: Spin Kick."
+  },
+  {
+   "library_id": "yyh:toguro:low-punch",
+   "slot": "d+1",
+   "note": "Toguro layer: Low Punch."
+  },
+  {
+   "library_id": "yyh:toguro:low-kick",
+   "slot": "d+4",
+   "note": "Toguro layer: Low Kick."
+  },
+  {
+   "library_id": "yyh:toguro:uppercut",
+   "slot": "d+2",
+   "note": "Toguro layer: Uppercut."
+  },
+  {
+   "library_id": "yyh:toguro:sweep",
+   "slot": "d/b+4",
+   "note": "Toguro layer: Sweep."
+  },
+  {
+   "library_id": "yyh:toguro:grab-and-throw",
+   "slot": "1+3",
+   "note": "Toguro layer: Grab and Throw."
+  },
+  {
+   "library_id": "yyh:toguro:wake-up-kick",
+   "slot": "4",
+   "note": "Toguro layer: Wake Up Kick."
+  },
+  {
+   "library_id": "yyh:toguro:jumping-attack",
+   "slot": "u+1",
+   "note": "Toguro layer: Jumping Attack."
+  },
+  {
+   "library_id": "yyh:toguro:finger-flip-bullets",
+   "slot": "qcf+1",
+   "note": "Toguro layer: Finger Flip Bullets (Thumb Flick Blast)."
+  },
+  {
+   "library_id": "yyh:toguro:earth-slash",
+   "slot": "d+1+2",
+   "note": "Toguro layer: Earth Slash."
+  },
+  {
+   "library_id": "yyh:toguro:ki-blast",
+   "slot": "b+1+2",
+   "note": "Toguro layer: Ki Blast."
+  },
+  {
+   "library_id": "yyh:toguro:increase-strength",
+   "slot": "u+1+2",
+   "note": "Toguro layer: Increase Strength (80%)."
+  },
+  {
+   "library_id": "yyh:toguro:repel",
+   "slot": "f+4,1,2",
+   "note": "Toguro layer: Repel."
+  },
+  {
+   "library_id": "yyh:toguro:finisher",
+   "slot": "f+2,4,u+2",
+   "note": "Toguro layer: Finisher."
+  },
+  {
+   "library_id": "yyh:toguro:long-way-to-hell",
+   "slot": "b,f+2,1,4,u+2",
+   "note": "Toguro layer: Long Way to Hell."
+  }
+ ]
+}
