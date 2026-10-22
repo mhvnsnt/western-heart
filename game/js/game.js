@@ -24,6 +24,11 @@ import { audio } from './audio.js';
 import { getStage } from './stages.js';
 import { applyFighterProfile } from './customization-consumer.js';
 import { V, vskillDispatch, vshiftTap } from './v-system.js';
+// HITFX (2026-10-22, #616): Tekken hit-effect stack — spark + debris +
+// ring + screen flash, dt-driven so hitstop freezes it like Tekken.
+// Restored 2026-10-22 (worker 54): the file + wiring were lost to a
+// stale-base clobber; this is the #616 wiring, re-applied surgically.
+import { HitFX } from './hitfx.js';
 // LIGHTING RIG (worker 27): per-fighter character light rig — SFV/T7-style
 // character-vs-stage lighting separation + bible soul glow. Fail-silent.
 import { attachCharacterRig } from './lighting-rig.js';
@@ -53,6 +58,9 @@ export class Game {
     this._roundLockT = 0;
     this._hitStop = 0;
     this._slowMo = 0; // V-System: V-Shift slow-mo timer (real seconds)
+    // Tekken hit-effect stack (hitfx.js): spark + debris + ring + flash,
+    // dt-driven so hitstop freezes the whole stack like Tekken.
+    this.hitfx = new HitFX(this.arena.scene);
     this._p1BlockWas = false; // V-System: block double-tap (V-Shift) edge tracking
     this._p1BlockUpT = null;
 
@@ -252,6 +260,9 @@ export class Game {
       }
     }
 
+    // Tekken hitstop freezes EVERYTHING (hitfx 2026-10-22): the effect stack
+    // gets dt=0 while the sim is frozen, so the spark holds then bursts.
+    this.hitfx.update(this._hitStop > 0 ? 0 : frameDt);
     this.arena.update(frameDt, this.p1, this.p2);
     this.arena.render();
   }
@@ -370,15 +381,17 @@ export class Game {
           this.ui.throwBreakPrompt(false);
           if (result === 'ko') {
             audio.ko(); audio.grunt(def.isPlayer ? 1.1 : 0.85);
-            this.arena.shake(0.5 * this.feel.shake, 0.4 * this.feel.shake);
-            this._hitStop = 0.12 * this.feel.hitstop;
-            this._spawnImpact(def.root.position.x, 1.2, def.root.position.z, 0xffcf4d, 1.4);
+            this.arena.shake(0.6 * this.feel.shake, 0.45 * this.feel.shake);
+            this._hitStop = 0.18 * this.feel.hitstop;
+            this.hitfx.spawn('ko', def.root.position.x, 1.2, def.root.position.z,
+              { dirX: Math.sign(def.root.position.x - atk.root.position.x) || 1 });
           } else if (result && result !== 'dodge') {
             audio.grab(); audio.grunt(def.isPlayer ? 1.05 : 0.9);
             this.arena.shake(0.45 * this.feel.shake, 0.28 * this.feel.shake);
             this._hitStop = 0.1 * this.feel.hitstop;
-            this._spawnImpact(def.root.position.x, 1.2, def.root.position.z,
-              atk.char.colors.trim || 0xffffff, 1.3);
+            this.hitfx.spawn('grab', def.root.position.x, 1.2, def.root.position.z,
+              { color: atk.char.colors.trim || 0xffffff, scale: 1.2,
+                dirX: Math.sign(def.root.position.x - atk.root.position.x) || 1 });
             const combo = atk.registerCombo();
             this.ui.combo(Math.max(1, combo));
           }
@@ -507,7 +520,10 @@ export class Game {
 
         if (result === 'block') {
           audio.block();
-          this._hitStop = 0.04 * this.feel.hitstop;
+          // Tekken block presentation: pale-blue spark, short freeze, small thump.
+          this._hitStop = 0.05 * this.feel.hitstop;
+          this.arena.shake(0.08 * this.feel.shake, 0.12);
+          this.hitfx.spawn('block', hb.x, hb.y, hb.z, { dirX: Math.sign(defender.root.position.x - attacker.root.position.x) || 1 });
           attacker.combo = 0;
         } else if (result === 'dodge') {
           // whiffed into i-frames, nothing
@@ -518,23 +534,35 @@ export class Game {
           this._spawnImpact(hb.x, hb.y, hb.z, 0xbfd4ff, 0.7);
         } else if (result === 'ko') {
           audio.ko(); audio.grunt(defender.isPlayer ? 1.1 : 0.85);
-          this.arena.shake(0.5 * this.feel.shake, 0.4 * this.feel.shake);
-          this._hitStop = 0.12 * this.feel.hitstop;
-          this._spawnImpact(hb.x, hb.y, hb.z, 0xffcf4d, 1.4);
+          this.arena.shake(0.6 * this.feel.shake, 0.45 * this.feel.shake);
+          this._hitStop = 0.18 * this.feel.hitstop;
+          this.hitfx.spawn('ko', hb.x, hb.y, hb.z, { dirX: Math.sign(defender.root.position.x - attacker.root.position.x) || 1 });
         } else {
           const isGrab = !!hb.move.isGrab;
           const isHeavy = hb.move.knock >= 4;
+          const isCounter = result === 'counter';
+          const isSurge = attacker.attackName === 'surge';
           if (attacker.attackName === 'kick') audio.kick();
           else if (attacker.attackName === 'grab') audio.grab();
-          else if (attacker.attackName === 'surge') { /* surge sound played on startup */ }
+          else if (isSurge) { /* surge sound played on startup */ }
           else audio.punch();
           audio.grunt(defender.isPlayer ? 1.05 : 0.9);
-          this.arena.shake((isGrab ? 0.45 : isHeavy ? 0.35 : 0.18) * this.feel.shake, (isGrab ? 0.28 : 0.18) * this.feel.shake);
-          this._hitStop = (isGrab ? 0.1 : isHeavy ? 0.08 : 0.05) * this.feel.hitstop;
-          const col = attacker.attackName === 'surge'
+          // Tekken-tiered hitstop + shake: light < heavy < counter.
+          this.arena.shake(
+            (isCounter ? 0.5 : isGrab ? 0.45 : isHeavy ? 0.4 : 0.22) * this.feel.shake,
+            (isCounter ? 0.3 : isGrab ? 0.28 : 0.2) * this.feel.shake);
+          this._hitStop = (isCounter ? 0.14 : isGrab ? 0.1 : isHeavy ? 0.11 : 0.08) * this.feel.hitstop;
+          // Tekken hit-condition presentation (hitfx.js): gold spark on hit,
+          // red-orange on counter, ring on heavies, character surge color kept.
+          const fxType = isSurge ? 'surge' : isCounter ? 'counter' : isGrab ? 'grab' : isHeavy ? 'heavy' : 'hit';
+          const fxColor = isSurge
             ? (attacker.char.surge?.color ?? attacker.char.colors.trim ?? 0xffffff)
-            : (attacker.char.colors.trim || 0xffffff);
-          this._spawnImpact(hb.x, hb.y, hb.z, col, isGrab ? 1.3 : isHeavy ? 1 : 0.6);
+            : undefined;
+          this.hitfx.spawn(fxType, hb.x, hb.y, hb.z, {
+            color: fxColor,
+            scale: isGrab ? 1.2 : isHeavy ? 1.1 : 0.9,
+            dirX: Math.sign(defender.root.position.x - attacker.root.position.x) || 1,
+          });
 
           const combo = attacker.registerCombo();
           // HITS counter: show on EVERY landed hit, not just 2+ combos.
@@ -546,40 +574,11 @@ export class Game {
     }
   }
 
-  /* Cheap particle burst at impact point */
+  /* Legacy shim (hitfx 2026-10-22): the prototype sphere-burst is gone;
+     all impact presentation now goes through the Tekken hit-effect stack
+     (js/hitfx.js). Kept so any lane still calling _spawnImpact keeps working. */
   _spawnImpact(x, y, z, color, scale) {
-    const geo = new THREE.SphereGeometry(0.18, 8, 8);
-    const mat = new THREE.MeshBasicMaterial({ color, transparent: true, opacity: 1 });
-    const group = new THREE.Group();
-    const parts = [];
-    for (let i = 0; i < 8; i++) {
-      const m = new THREE.Mesh(geo, mat.clone());
-      const a = (i / 8) * Math.PI * 2;
-      m.userData.v = new THREE.Vector3(Math.cos(a) * 4, Math.sin(a) * 4 + 1, (Math.random() - 0.5) * 2);
-      group.add(m); parts.push(m);
-    }
-    const flash = new THREE.Mesh(new THREE.SphereGeometry(0.5 * scale, 12, 12),
-      new THREE.MeshBasicMaterial({ color, transparent: true, opacity: 0.9 }));
-    group.add(flash);
-    group.position.set(x, y, z);
-    group.scale.setScalar(scale);
-    this.arena.scene.add(group);
-
-    let life = 0.35;
-    const tick = () => {
-      life -= 0.016;
-      const f = Math.max(0, life / 0.35);
-      flash.scale.setScalar(1 + (1 - f) * 2);
-      flash.material.opacity = f * 0.9;
-      for (const p of parts) {
-        p.position.addScaledVector(p.userData.v, 0.016);
-        p.material.opacity = f;
-        p.scale.setScalar(f);
-      }
-      if (life > 0) requestAnimationFrame(tick);
-      else this.arena.scene.remove(group);
-    };
-    requestAnimationFrame(tick);
+    this.hitfx.spawn('hit', x, y, z, { color, scale: scale || 1 });
   }
 
   /* AI-driven Soul Surge presentation (same as the player's) */
