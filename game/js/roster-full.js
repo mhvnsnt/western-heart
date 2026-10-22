@@ -174,6 +174,7 @@ export const FULL_ROSTER = [
     // via formKey = the selected attire's model. 'doc-frank-big' default:
     // big->big no-op, exactly the old main-card behavior.
     forms: {
+      'doc-frank-a1': { target: 'doc-frank-big', label: 'TRANSFORM', powerMult: 1.4, speedMult: 0.88, defenseMult: 1.15, bodyScale: 1.18 },
       'doc-frank-big': { target: 'doc-frank-big', label: 'TRANSFORM', powerMult: 1.4, speedMult: 0.88, defenseMult: 1.15, bodyScale: 1.18 },
       'doc-frank-wowomomo': { target: 'doc-frank-wowomomo-big', label: 'TRANSFORM', powerMult: 1.4, speedMult: 0.88, defenseMult: 1.15, bodyScale: 1.18 },
       'doc-frank-hood': { target: 'doc-frank-hood-big', label: 'TRANSFORM', powerMult: 1.4, speedMult: 0.88, defenseMult: 1.15, bodyScale: 1.18 },
