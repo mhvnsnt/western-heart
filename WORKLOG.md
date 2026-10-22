@@ -694,3 +694,55 @@ what each engine costs when the game sells, roster more than 36 fighters.
 - Roster count from the repo scan: 58 FULL_ROSTER entries / 49 display names / 50 model keys.
 - Unverified items are listed in the report's last section. No Godot binary in this container, so
   the Lab tests were not re-run.
+
+## 2026-10-22 — Character-select dedup audit + stage-select audit (branch fix/select-dedup-20261022)
+
+Owner directive (verbatim): "attires ladder into their fighter — an attire must NOT appear as its own
+separate selectable model UNLESS the user explicitly said so." Concrete example: "there is a Phantom
+model AND a separate Yoshimitsu model on the select screen — Yoshimitsu is supposed to ladder into
+Phantom's attires, not stand alone."
+
+Audit method: enumerated all 58 FULL_ROSTER cards (game/js/roster-full.js), cross-checked each
+against ATTIRE_VARIANTS (game/js/attires.js), model lineage, ATTIRE-SLOTS.md files, RENAME-MAP.md,
+CANON.md/ROSTER.md, and WORKLOG directives. Stage side: enumerated all 58 STAGES ids across the
+5 tiers in game/js/stages.js and checked for dupes, missing assets, and miswired selection.
+
+Folded (card removed, model re-homed into the fighter's ladder — nothing deleted):
+- jin_soul (JIN, the Blade Soul, Yoshimitsu base/moveset) -> PHANTOM ladder as
+  { model: 'steve-fox', label: 'JIN · BLADE SOUL' }. Canon: Phantom is the vessel of JIN (CANON.md).
+- demonio-bloodline-ember, demonio-winged, demonio-human -> DEMONIO ladder (already listed).
+- doc-frank-wowomomo, doc-frank-hood, doc-frank-frankenstein, doc-frank-machine-shop ->
+  DOC FRANK ladder (already listed, owner Tripo-first order kept).
+- charger-attire2 -> CHARGER (new 'charger' ladder; no key existed, Attire 2 would've been lost).
+- kronos-attire2 -> KRONOS ladder (already listed).
+Roster: 58 -> 48 selectable cards.
+
+Behavior preserved:
+- Doc Frank's single `transform` -> per-model `forms` map: each folded attire keeps its own old
+  transform target (wowomomo->wowomomo-big, hood->hood-big, frankenstein->frankenstein-big;
+  doc-frank-big default stays big->big no-op). Fighter/main.js already consume `forms`.
+- Tiers switched from positional slices to SOUL_IDS/MAIN_IDS membership (game/js/roster-full.js,
+  game/js/select-screen.js) — folding cards no longer shifts fighters between tiers.
+  getFighter default fixed to find 'pantera' by id (was FULL_ROSTER[9]).
+- tripo-fighters.json: 9 folded ids dropped (matches tripo_fighters.py regeneration).
+
+Wiring fixes (broken entries found by the audit):
+- ATTIRE_VARIANTS 'mariposa'/'dxmmii' keys matched no fighter id/model (orphaned ladders) ->
+  re-keyed to the roster card ids 'mariposa-monarch'/'dxmmii-patchwork'. Contents/order kept
+  (Mariposa: "ONE character ... Never split into two characters", roster/mariposa/ATTIRE-SLOTS.md).
+- MODEL_URLS was missing 'zen-attire1' (Zen's select preview showed MODEL PENDING),
+  'zen-tentacle', 'zen-oversoul', 'zen-spirit' (his transform targets) — all four GLBs exist;
+  key names per roster/zen/ATTIRE-SLOTS.md. Added to game/js/assets.js.
+
+Kept as-is (correct single-card pattern, ladder keyed by own id): baek-master-white (KEVIN), zui.
+
+Flagged for the owner (no directive found, not guessed):
+- Stage select shows the No Mercy arenas TWICE: 'WRESTLING' tier (17 OBJ stages, ids nm-arena-*)
+  and 'WWF NO MERCY' tier (17 GLB stages, ids nm-*). 15 same-arena overlaps; all 34 assets exist;
+  selection wiring is correct (unique ids, no X-loads-Y). Needs owner call: keep both tiers or
+  retire one (recommend the GLB tier — per-arena dims/cameras/interior lighting).
+
+Proof: tools/roster/dedup_audit.mjs — 36 checks, all pass (folds, tier partition, ladder wiring,
+stage id uniqueness, transform preservation). Run: node tools/roster/dedup_audit.mjs.
+Visual before/after captures of the select screen need a live browser (not available to this
+session) — delegated to the parent agent.
