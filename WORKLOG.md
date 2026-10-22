@@ -1,3 +1,24 @@
+## 2026-10-22 — Worker 51: STAGE SELECT → FIGHT FLOW (repairs + wiring, PLAYABLE TODAY)
+
+**Owner instruction (verbatim):** "no new features — repairs and wiring only. Your scope stays stage select → fight flow. If you spot stub/placeholder code on the path, wire it — but don't invent new systems. Worker 53 now owns the fight itself (fighter loading, inputs firing, hits, rounds, crash-killing); coordinate with them at the fight-boot handoff."
+
+**Root-caused + repaired (all in the select→fight chain):**
+1. **Preview pane markup missing** — `game/styles.css` and `game/js/main.js` (`updateStagePreview`) were built for a `.stage-preview-pane` (`#stage-preview-img/#stage-preview-swatch/#stage-preview-name/#stage-preview-universe/#stage-preview-desc` inside `.stage-body`) that `game/index.html` never had — the JS no-op'd on every highlight. Wired the markup; the T7-style screen now renders preview-on-top (portrait) per the existing CSS design. No new system.
+2. **Duplicate `screen-stage` id** — the STORY stage-intro panel reused the versus stage-select's id, so `screens.stageIntro` (`getElementById('screen-stage-intro')`) was null and `show('stageIntro')` threw mid-iteration (story `_storyStageIntro` dead). Renamed the story panel to `screen-stage-intro`. (A later main merge reintroduced the duplicate from an older base; re-applied on the re-sync.)
+3. **Keyboard Enter on the selected stage card called bare `startFight()`** — dropped `pendingFight`, booting ROSTER[0] vs a random foe with no versus `onMatchEnd` (dead result screen). Extracted `confirmStageFromSelect()`; the CONFIRM tap and the Enter path now run the identical pendingFight-guarded confirm.
+4. **Preview thumb refetch** — `updateStagePreview` re-set `img.src` on every highlight (flicker + bogus requests; most thumbs 404 → atlas tiles serve the cards). Now sets src only when the thumb exists and changed; re-highlighting leaves state untouched; swatch fallback preserved.
+5. **Verified NOT broken (checked, no change):** worker 24's flagged voice.js/hitfx.js/intro-interactions.js imports — none exist in `game/js` on main; the single dangling reference (`versus-banter.js` dynamic import of `intro-interactions.js`) is try/catch-guarded and the fight path's `fighter-depth.js` import is fail-silent, so fight boot is not blocked. Full static import graph of all 70 `game/js` files: zero unresolvable imports. Every module-eval `getElementById(...).addEventListener` target present in index.html.
+
+**Flow verified (character → stage → fight):** menu `mode-versus` → `ModeController.startMode('versus')` → select screen P1→P2 two-step (`onConfirm`/`vsStep`) → `_beginVersus` → `startFightViaStage` → `buildStageSelect` + `show('stage')` → CONFIRM → `startFight(p1, p2, { mode:'versus', stage })` → `game.startMatch(player, enemy, selectedStage, opts)` (worker 53's handoff; signature unchanged). Back/cancel paths: BACK → select, failure → hint + retry with pendingFight intact.
+
+**Proof:** `node --check` on all 70 game/js files; DOM-stub harness running the REAL extracted functions from main.js — build (card per stage, tier headers, tap handler on every card), tap-to-select (selectedStage + preview name/desc update, swatch fallback), CONFIRM (startFight called once with p1/p2/mode/stage, pendingFight consumed only on success), failure path (pendingFight kept, CONFIRM re-enabled), Enter path routes via the confirm (no bare startFight) — all pass. Touch targets: 48px+ min on BACK/RANDOM/CONFIRM per styles.css; footer hint + preview text ellipsis/line-clamp, grid is the only scroller. Stage data: every stage (literal + t3/nm generated) carries id/name/tier/universe/description/swatch/dims/spawns; all tiers in STAGE_TIERS.
+
+**Deviations:** none — repairs/wiring only, no new systems, no arena geometry (worker 18's stage defs consumed as-is), no menu-shell changes (worker 37's lane untouched), no fight internals (worker 53's lane untouched).
+**Coordination:** worker 53 (fight) — handoff contract is `game.startMatch(playerChar, enemyChar, stageId, opts)`; stage id flows from `selectedStage` (default `'shrine'`, `getStage` falls back to STAGES[0]). Worker 37 (menu shell) — no interface changes needed. Worker 18 (arenas) — stage defs consumed unchanged. Flag (not fixed, out of lane): result-screen REMATCH with no modes.mode falls back to bare `startFight()` (ROSTER[0] vs random) — rank-battle rematch edge, worker 30's lane.
+**Anti-clobber:** re-synced to main tip twice (main moved mid-task both times); edits re-applied surgically onto current main each time — main's new placeholder screens (screen-online/sidegames/collection/daily), data-mm router, and mainmenu.css link all preserved. No deletions.
+
+---
+
 ## 2026-10-22 — Worker 34: FIGHTER DEPTH + LEARNING + STAGE LIFE (canon-mapped)
 
 **Owner instruction (verbatim):** "Pull ALL of this from the teardowns and wire it up: Fighter depth — ki charge, tag throws/crash/assault, hair + cloth physics. Learning — per-character combo trials, ghost AI (learns from players), replay analysis. Stage life — stage intro camera sweeps, weather/time-of-day variants, versus banter dialogue." Follow-up: "Learning tools: YES, ALL — in-game movelist UI, Special Style (easy inputs), punishment training, combo trials, ghost AI, replay analysis. Add: movelist UI, Special Style, punishment training. All with WH canon mapping where naming/identity is a creative call."
@@ -1822,26 +1843,138 @@ Owner directive (verbatim): "Research the current state-of-the-art open-source i
 - Challenge stat mapping is honest: hit-count challenges are phrased as damage (no landed-hit counter in the engine) — see CHALLENGE_TYPES docblock.
 - Rebased 2026-10-22 ~19:35 UTC onto main 7fe0cb41 (worker22 integration + worker30 ranks landed while PR was open); server.js v2 ported onto the rewritten minimal base, index.html re-applied, WORKLOG re-appended.
 
-## 2026-10-22 ~16:45 CDT — worker 55: PR #676 URGENT MENU FIX REBASE + MERGE (rebase done, merge on freeze hold)
+## 2026-10-22 — V-System build + Triangle/Reversal Edge proposals (worker 31)
+
+Owner decisions relayed mid-task: the prior combat-depth set (VF5 throw
+escapes, SC 8-way run, Guard Impact, Tekken item moves) was stood down
+before any code was written — research only, nothing to revert. New
+directive: Triangle = proposal only, Reversal Edge = proposal only,
+V-System = build with proprietary Eastern Mind names TBD.
+
+### V-System — IMPLEMENTED (all user-facing names «name TBD», flagged)
+Tekken-ified SFV V-System over the Nine-Soul meter. One input (`vskill`:
+KeyV / V touch button), three context moves + V-Shift on block double-tap:
+- V-Skill: per-character unique move (+4 souls on use). Seeded: default
+  Soul Palm; pantera Iron Shoulder (armored); dio Demon Lash; ryusan
+  Vitriol Flick (fastest); phantom Moon Catch (12f parry kind).
+- V-Trigger: full-meter (100) 12s install — +15% damage, chip on all
+  blocked attacks, V-Skill becomes armored EX (x1.3). Competes with Soul
+  Surge for the same 100 souls (one-shot vs install = the resource game).
+- V-Reversal: blockstun + 50 souls → guard-cancel counter, invuln through
+  active frames, heavy knockback.
+- V-Shift: double-tap block (280ms) → 0.35s invuln backshift; evading an
+  attack (3.2m) → 0.3x slow-mo + 1.2s Break window (x1.5, auto-CH).
+Slow-mo dilates the sim only (arena/camera stay live) — same mechanism
+the Reversal Edge proposal reuses.
+
+### Files (no deletions)
+- NEW game/js/v-system.js (tuning, VSKILLS catalog, vskillDispatch,
+  vshiftTap — pure, 15/15 node tests pass)
+- NEW game/tests/v-system.test.mjs (15 tests)
+- game/js/fighter.js (tryVSkill/tryVTrigger/tryVReversal/tryVShift;
+  vskill/vreversal/vshift states; armor absorb; V-Trigger/V-Break damage;
+  V-Trigger chip; timers)
+- game/js/game.js (vskill dispatch, block double-tap, parry + shift-evade
+  resolution, 'armor' result presentation, slow-mo in _loop)
+- game/js/input.js (KeyV), game/index.html + game/styles.css (V button),
+  game/js/ai.js (AI uses all four, gated), game/js/main.js (banners)
+- docs/combat/V-SYSTEM-2026-10-22.md (design + naming candidates for user)
+- docs/combat/PROPOSAL-TRIANGLE-2026-10-22.md (proposal only)
+- docs/combat/PROPOSAL-REVERSAL-EDGE-2026-10-22.md (proposal only)
+- WORKLOG.md (this entry)
+
+### Verification
+- node --test: 22/22 pass (15 new + 7 pre-existing). node --check clean.
+- No live-browser play verification possible from this worker (no browser
+  access) — disclosed in the design doc; wiring follows proven patterns
+  (attack-state timing, hitstop, banner/flash). Flagged for human playtest.
+- Anti-clobber: main moved 4 times mid-task (be7d2eda → 9f4b2d77 →
+  43fa27bd → 564ee4e7 → dfee700b); every modified file was re-fetched at
+  the current head and the V-System edits re-applied surgically on top —
+  no stale full-file copies. Folded in upstream's lighting-rig
+  (fighter.js/game.js), rank-battle (main.js), and worker-22 integration
+  (index.html) hunks instead of overwriting them.
+
+### Flags for coordinator
+- ALL V-System user-facing names are «name TBD» — user must pick (candidates
+  in docs/combat/V-SYSTEM-2026-10-22.md §7, Nine-Souls/Eastern Mind flavored).
+- Triangle + Reversal Edge are PROPOSALS ONLY — do not build without approval.
+- V-Trigger and Soul Surge both cost 100 souls by design (player choice).
+- Upstream note: at dfee700b, game/index.html uses the old limb-cluster
+  buttons while game/styles.css only carries PSX-overlay positioning —
+  the old buttons render unpositioned. Not my lane (control overhaul);
+  flagging for the coordinator.
+
+## 2026-10-22 ~16:10 CDT — worker 52: critical-path P0 fix (flow QA)
+
+**Playable-path audit** (menu → select → stage → fight → rounds → result → back)
+on main @ 2af4328 found the whole loop dead behind two 1-line defects in
+`game/index.html`:
+
+- **P0-1 — `show()` threw on every navigation ("nothing is tappable").**
+  `game/js/main.js:38` builds `stageIntro: getElementById('screen-stage-intro')`
+  → null, because index.html carried TWO `id="screen-stage"` sections
+  (Lane-4 stage select + story stage intro). PR #666 had renamed the story
+  one; PR #657's stale-base merge reintroduced the duplicate (PR-#579
+  pattern). `show()` does
+  `Object.values(screens).forEach(s => s.classList.remove('active'))` →
+  TypeError on the null entry → every screen transition died. Fix (worker-52
+  PR, 1 line): story section → `id="screen-stage-intro"` (restores #666).
+- **P0-2 — menu rendered unstyled ("white text boxes").**
+  Fixed on main by PR #677 while this audit ran (mainmenu.css link).
+- Proof: `proof-show.mjs` (DOM-stub replicates the screens/show code path —
+  throws before, navigates after). Import graph of main.js (15 modules) all
+  resolve; select.css covers the select screen; stage/fight/result wiring
+  verified coherent by code read.
+- `docs/CRITICAL-PATH-STATUS.md`: running status board (green/red/blocking)
+  for the playable loop + tomorrow list (off-path sections per the
+  PLAYABLE TODAY directive). Findings for worker 53 (fight loop) and
+  worker 51 (stage preview pane gap) filed there.
+- Note: open PR #676 (worker36/menu-fix, mergeable_state=dirty) attempted a
+  full rewrite for the same symptoms — superseded; worker 36 should
+  close/rebase it.
+
+## 2026-10-22 ~15:45 CDT — worker 50: rig-guard rebuild (picked up Claude's dropped work)
+
+Claude's anti-clobber guard rebuild was unpushed (existed only on the user's
+machine). Rebuilt from the task description and PR'd (branch `w50/rig-guard`):
+- `tools/rig-guard/rig_guard.py` (~176 lines) — CI guard FAILS on ANY
+  MODEL_URLS key removal, not just skinned ones. Escape path: `## Model
+  removals` PR-body section (keys in backticks) or the
+  `owner-approved-model-removal` label.
+- `tools/rig-guard/test_rig_guard.py` — 11 unit tests, all green
+  (removed→fail, added→pass, escape→pass).
+- `.github/workflows/game-checks.yml` — two jobs: `rig-guard` (self-test +
+  key-removal check on sparse checkout) and `game-unit-tests`
+  (`test/*.test.mjs` via node on a sparse checkout).
+- Verified against real `game/js/assets.js` at base: 149 keys extracted;
+  simulated `phantom` removal flagged; addition + escape paths pass.
+- Distinct from clobber-guard / deletion-guard / no-deletion-guard /
+  instruction-gate: no duplication, no edits to existing checks.
+- Full log: `docs/decisions/2026-10-22-rig-guard-rebuild-w50.md`.
+
+## 2026-10-22 ~16:00 CDT — worker 48: ASHLANE CANON BRIDGE (Bannon, El Toro de Oro, Pablo, NPC Finxsse)
 
 ### What
-Rebased `worker36/menu-fix` (PR #676) onto latest main `8af986e0`. Head is now `8c13d1ad`, mergeable=true, instruction-gate GREEN on the new head. Merge held per orchestrator MERGE FREEZE (~20 min from 16:37 CDT) — PR is merge-ready, awaiting all-clear.
+Canon bridge for the four user-locked Ashlane→VF5 mappings. Ashlane characters keep their existing bios from their repos; each got a "how they arrived" bridge into WH/Eastern Mind canon (the call, lost souls, the Trial, Tong-Nou, the Five Lands, the Phantom Marketplace).
 
-### Key finding (root cause of the rebase conflict)
-Worker 37's original branch approach — rip out the T8 menu, replace with `.wh-menu-btn` buttons — was stale AND self-defeating: their `game/index.html` contained literal `\"` / `\n` escape sequences in the `<head>`, which malformed the stylesheet `<link>` tags. That is exactly the reported "stylesheets fail → unstyled white text boxes" root cause — the "fix" would have shipped the bug. Meanwhile main had already landed the real fixes: T8 menu wired (#687, data-mm + data-action delegated routers), `mainmenu.css` linked (#677), LOADSPEED lazy loading, stage-select→fight flow (#688), PSX controls, colorblind CSS. A blind rebase would have clobbered all of it (branch also deleted `#screen-stage` CSS, PSX control CSS, identity/wh-boot scripts, the loadperf boot stamp).
+### Sources (foundation bios — pulled, not rewritten)
+- `mhvnsnt/brutalfistgrokversiontenpointfive`, `src/data/bannonRoster.ts` (ids `bannon`, `el_toro_de_oro`, `pablo`, `finxsse`) — bios, personalities, fighting styles, attires (PABLO.glb Minotaur Painted / PABLO_goldenbull.glb Golden Bull / PABLO_blackreign.glb Black Reign), payback names, factions.
+- `mhvnsnt/brutalfistgrokversion`, `native/media/characters/chara_bannon/bannon.identity.txt` — "The physical nucleus and absolute force of the Bannon Engine. Driven by raw physics and unmatched grit."
+- Bannon universe = sub-universe of the WH multiverse (owner directive 2026-10-22).
 
-### Resolution (surgical, additive-only vs main)
-- `game/index.html` — main's T8 menu untouched; added correctly-written inline critical-CSS fallback `<style>` (menu renders as tappable styled buttons even if every stylesheet fails) + correctly-written non-module fallback binder `<script>` (binds data-mm/data-action/data-mm-forge navigation after 1200ms ONLY if the module chain failed, via `window.__whMenuBound`; toast instead of alert).
-- `game/js/main.js` — main's version kept (routers, LOADSPEED, stageIntro, photo mode); added `window.__whMenuBound = true` at EOF (hunk-stable: first placement after the data-mm router conflicted with #688's confirm-routing changes in local 3-way simulation; EOF tail is unchanged base→main).
-- `game/styles.css` — main's version kept; ported the `.wh-main-menu`/`.wh-menu-btn` (64px)/`.screen-title`/`.wh-placeholder` block that main's coming-soon placeholder screens reference but had no styles for. Skipped the `.menu-content` override (main's is better).
-- Local `git merge-file` 3-way simulation (base=fab3e7d9): all 3 files CLEAN; merged output byte-identical to intended content.
-- PR body rewritten for the rebase (six instruction-gate sections, exact self-check heading); ran the real `.github/scripts/instruction_gate.py` `check()` locally against it — passes (fixed 9 proof-path false-positives: backticked non-paths, wrong `js/mainmenu.js` path; every deviation bullet now carries a #ref).
+### Changes (CANON.md — 3 surgical additions, 0 deletions)
+- New `## 9. THE ASHLANE ARRIVALS` section (before APPENDIX): four entries in the Pantera/Demonio/Phantom format — BANNON "The Engine Soul", EL TORO DE ORO "The Golden Bull Soul", PABLO "The Painted Soul", NPC FINXSSE "The Grudge Soul". Each: Backstory (Ashlane foundation + arrival kishotenketsu), Personality (one behavior), Fighting philosophy (one carved quote), Relationships (zuihitsu, double work), Element (Bannon=Earth/Octagonal Shrine, El Toro=Fire/Plains of Chi-U, Pablo=Metal/Helix Palace, Finxsse=Water/Palace of Dreaming), Body/Mind/Soul (friction), Why they think they're here (with the gap), Being purified of, Signature detail, Owner-locked (Ashlane source + VF5 base, technical only).
+- §4: new "On the Ashlane arrivals" paragraph — mortal lost souls from the Bannon sub-universe, not of the nine.
+- §5 "What the Fighters Want": four new bullets.
+- Pablo's locked duality (user refinement: Goldust theatricality MIXED with dark Black Reign/Abyss/Mankind energy — disturbed masked darkness underneath, matching PABLO_blackreign) drives his Body/Mind/Soul friction and "Being purified of: The mask".
 
-### Verification (menu fix intact)
-- `node --check` on `game/js/main.js` (ESM): passes. HTML tag balance: 15 sections, 47 buttons, 7 scripts balanced; zero stray escapes in `<head>`. CSS braces 285/285.
-- All 10 sections wired: story/versus/arcade/training → mode controller; online/sidegames/collection/daily → real placeholder screens with BACK (no dead ends); creation suite → suite URL; options → howto/settings; daily also opens the T8 "in the forge" panel (`game/js/mainmenu.js`). `.mm-item` min-height 52px (exceeds 48px); `.wh-menu-btn` 64px.
+### Also
+- `docs/decisions/2026-10-22-ashlane-canon-bridge.md` — dated decision log.
+- `docs/owner-directives.md` — new "VF5 moveset claims — Ashlane four" section (locked: Jeffry→Bannon, Wolf→El Toro, El Blaze→Pablo, Lei-Fei→Finxsse; candidates + unmapped listed).
+- Writing laws held: all adults; canon-grounded (every proper noun from CANON.md or the Ashlane repos — no invented locations/systems); no Tekken/VF5 names in canon prose (bases in Owner-locked technical lines only, matching the existing "Bob Richards base" convention); craft guide standard.
 
-### CI
-- Parent intel said API pushes don't trigger Actions — actually Contents API pushes DID trigger: instruction-gate run 39859322873 on head `8c13d1ad` = SUCCESS. rig-guard success; clobber/deletion/no-deletion guards were in_progress at log time.
-- Re-run-jobs URL (stale failed run on old head, kept for the batch): https://github.com/mhvnsnt/western-heart/actions/runs/39851254660
-- Full log: `docs/decisions/2026-10-22-menu-fix-rebase-w55.md`.
+### Verification
+- `git diff --stat`: CANON.md +142/−0, owner-directives.md +3/−0, decisions +1 new file. Zero deletions.
+- PR: branch `w48-ashlane-canon-bridge`, instruction-gate body (six sections), merged via `git_merge.py` after green CI + no-deletion guard + gitleaks.
+- No live-browser play verification applicable (canon text work); no game code touched.
