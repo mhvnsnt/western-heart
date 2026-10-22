@@ -60,16 +60,22 @@ the rigged file.
   it wires in as Attire 1's pre-form in place of the reskin-lineage file.
 - Rig state (verified 2026-10-21 by GLB skin scan): ALL forms rigged.
   Pre-form 178 joints, Hood base 73 joints, Wowomomo + Frankenstein
-  bases 49 joints (Lane 4 batch 3), the four transformed forms rigged
-  this PR from their own attire's base/pre-form rigs via the repo's
-  k-NN transfer path (`tools/auto_rig/backends/knn_transfer.py` +
-  `apply_skin.py` — the PR #264 dense-static path; the GameRig/Blender
-  intake OOM-killed on these ~1M-vert meshes on the current VM). All
-  shipped Doc Frank GLBs carry all-identity bind locals (the PR #465
-  standard): the batch-3 base rigs arrived with 7 pose-encoded binds
-  each (Hips 180°, shoulders, up-legs, feet) and were normalized in
-  this PR with the bind-fix tools (bind-pose skinning invariance
-  verified to 4.5e-08).
+  bases 49 joints (Lane 4 batch 3). The four transformed forms were
+  rigged this PR via the repo's k-NN transfer path
+  (`tools/auto_rig/backends/knn_transfer.py` + `apply_skin.py` — the
+  PR #264 dense-static path; the GameRig/Blender intake OOM-killed on
+  these ~1M-vert meshes on the current VM). Donors: Wowomomo XL ←
+  Wowomomo base, Frankenstein XL ← Frankenstein base (each form's own
+  attire base); Hood XL + Attire 1 Transformed ← the canonical Doc
+  Frank rig (the Wowomomo base's 49-joint skeleton — `apply_skin.py`
+  copies the donor's first-50-node layout, so the 73-joint Hood rig
+  and the 178-joint pre-form rig cannot serve as its donors; all four
+  transformed forms therefore ride the same canonical Doc Frank
+  skeleton the game retargets onto). All shipped Doc Frank GLBs carry
+  all-identity bind locals (the PR #465 standard): the batch-3 base
+  rigs arrived with 7 pose-encoded binds each (Hips 180°, shoulders,
+  up-legs, feet) and were normalized in this PR with the bind-fix
+  tools (bind-pose skinning invariance verified to 4.5e-08).
 
 ## Slot-ordering law
 
