@@ -211,6 +211,25 @@ function getModes() {
   }
   return _modesPromise;
 }
+/* ---- Rank battle (worker 30): offline ranked ladder, lazy like modes ----
+   RankBattleController lives in js/ranks.js and mirrors ModeController's
+   deps. rankBattleSelect routes the select-screen confirm into it. */
+let rankBattle = null;
+let _rankBattlePromise = null;
+let rankBattleSelect = false;
+function getRankBattle() {
+  if (rankBattle) return Promise.resolve(rankBattle);
+  if (!_rankBattlePromise) {
+    _rankBattlePromise = lazy.ranks().then((m) => {
+      rankBattle = new m.RankBattleController({
+        game, ui, show, startFight: startFightViaStage,
+        roster: ROSTER, getChar: getCharacterWithCustom, audio,
+      });
+      return rankBattle;
+    });
+  }
+  return _rankBattlePromise;
+}
 /* ---- Game modes (lane 5) + stage select (lane 4) integration ----
    The mode controller owns mode state and fight setup; versus-mode fights
    route through the CHOOSE YOUR ARENA screen. Arcade/story/training keep
@@ -527,6 +546,13 @@ document.querySelectorAll('[data-action]').forEach((el) => {
     else if (a === 'mode-trader') {
       getModes().then(m => m.startMode('trader'));
     }
+    else if (a === 'mode-rankbattle') {
+      rankBattleSelect = true;
+      getRankBattle().then((rb) => rb.start());
+    }
+    else if (a === 'show-ranks') {
+      lazy.ranks().then((m) => m.initRanks().then(() => m.openRankHub()));
+    }
     else if (a === 'mode-create') {
       // Character creation — launches the Create Fighter CAW suite.
       // Returns to game menu via the BACK TO GAME button in the creator.
@@ -539,11 +565,15 @@ document.querySelectorAll('[data-action]').forEach((el) => {
       // CLEAN-INIT: leaving fight → full state reset. No leaked fighters,
       // timers, or listeners carry into the menu.
       game.leaveFight();
+      rankBattleSelect = false;
+      if (rankBattle) rankBattle.clear();
       getModes().then(m => m.clearState());
       show('menu');
       audio.stopMusic();
     }
     else if (a === 'back-select') {
+      rankBattleSelect = false;
+      if (rankBattle) rankBattle.clear();
       show('select');
     }
     else if (a === 'rematch') {
@@ -567,6 +597,11 @@ async function confirmSelection() {
   // Select-screen lock state first (P1 lock -> P2 cursor in versus),
   // then the mode controller routes the fight.
   selectScreen.notifyConfirm(id);
+  if (rankBattleSelect) {
+    rankBattleSelect = false;
+    (await getRankBattle()).onConfirm(id);
+    return;
+  }
   (await getModes()).onConfirm(id);
 }
 

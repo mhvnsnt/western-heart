@@ -1629,3 +1629,22 @@ Tekken on-hit stack: (1) jagged star-burst HIT SPARK sprite (canvas-generated, a
 **Method:** fresh main SHA via github_api.py at push time; plain-copy working dir `~/workspace/fix3/modeaudit`; read teardown docs in-repo (UR/DOA6/SCVI/VF5 mechanics docs, SF status, Def Jam findings, SCII, WMXIX arenas); web-verified SF6 Drive System, GGPO MIT status, Rapier vs cannon-es. Pushed via `gh_push.py` (Git Database API, base = live main tree), merged via `git_merge.py`. Zero deletions; WORKLOG entry appended to live-main version at push time.
 
 **Status:** report merged; 62 items await owner okay/not-okay before any wiring. Worker 22's general integration lane unaffected (separate scope).
+
+---
+
+## 2026-10-22 ~13:40 CDT — Worker 30: RANK SYSTEM (rank-focused PR #1 of meta-systems)
+
+**Task (user verbatim):** "Wire up: (8) Rank progression — dan/kyu style ranking, ladders, leaderboards." Refinements: rank names are DATA not hardcoded; 53-tier ladder user-built (Lost Soul → 9th–1st Kyu → 1st–3rd Dan → Brawler→Warlord → Kappa→Fudo Myoo → Four Heavenly Kings → Genbu→Suzaku → Fujin→Ryujin → Nine Souls Rin→Gyou → Whole → Purified → S: Assembled → Super S: Tong-Nou → Master God of the Universe → 52–53 RESERVED unnamed placeholders, Tekken God→True→Prime→Omega style); entry/placement tier; promotion/demotion series; separate offline/online tracks; offline rank battles; online ladders/leaderboards. "PUSH RANKS NOW" as its own PR.
+
+**Delivered:**
+- `game/data/ranks.json` (NEW) — the 53-tier ladder + all rules as pure data. Sections, colors, per-section point bars and series lengths, placement config, demotion protection, reserved-tier flags. User edits names/tiers here; engine never hardcodes a name. Stable `id` slugs per tier so mid-ladder inserts don't break saves.
+- `game/js/ranks.js` (NEW, 700+ lines) — RankEngine: points with upset scaling (Tekken curve: same-rank pays best, ±25%/tier capped, 0.5x floor), placement bouts (5, 2x swings), promotion series (best-of-3 low / 5 high / 7 S-tier+reserved), demotion series (best-of-3), demotion protection (3 matches post-promotion), bottom-floor can't demote, per-character ranks on separate offline/online tracks, localStorage `wh_ranks`, per-track leaderboards, top-held counter (drives future reserved-tier invention), RankBattleController (offline arcade-style ladder vs CPU, AI scales with tier), Rank Hub overlay UI (both tracks + leaderboards + full 53-tier ladder view), runtime-injected CSS.
+- Wiring (surgical, fresh-main bases): `game/js/lazy.js` (+ranks module), `game/js/main.js` (+getRankBattle, `mode-rankbattle`/`show-ranks` dispatch, confirm routing, back-menu/back-select cleanup), `game/index.html` (RANK BATTLE + RANK HALL buttons). modes.js untouched — RankBattleController is standalone.
+- `docs/research/rank-system.md` (NEW) — teardown mapping: T7 two-track/per-character ranks, sdtekken points formula, promotion/demotion chance, 1st-Dan hardcap, offline-via-arcade, god-tiers-added-over-time → our implementation.
+- `test/ranks.test.mjs` (NEW) — 38 assertions, all passing.
+
+**Method:** fresh main SHAs via Git Database API at push time (main bbda96eca8 etc.); chunked disk writes (this VM's overlay EPERMs single write()s >~4KB — same quirk worker 19 hit); exact-anchor surgical edits; node --check on all touched JS; engine verified in node (38/38), in-browser playtest deferred to parent (no live browser in subagent).
+
+**Proof:** `node test/ranks.test.mjs` → 38 passed, 0 failed. Covers: 53-tier shape, reserved placeholders, placement→promo-series→promotion→protection→demo-series→demotion full cycle, upset scaling, track separation, leaderboard, top-held, mid-table tier insertion with zero code changes.
+
+**Status:** rank PR pushed; merge via git_merge.py when green. Follow-up PR: treasure battle / survival / time attack / arcade variants, unlockables/gallery, jukebox, Tekken Force + Scenario Campaign (user-approved), create-an-arena (coordinate worker 18), intro/outro cinematics layered BESIDE existing intros/win taunts (off limits).
