@@ -2466,13 +2466,14 @@
       "source": "WWF No Mercy (mat-kings) — [Front Special Grapple] Rock Bottom P1, MK-1240 / anim_37FA.npy (49f); P2 side MK-1241 / anim_37FB.npy (48f). DB Tekken input f+2+4 (frontFinisherSlot).",
       "note": "The Rock's OWN Rock Bottom animation from the No Mercy teardown — the uranage as he performed it, beside the King-sourced versions in this file. WH data-layer values: the mat-kings DB carries no power join for Rock entries — damage/timing are CornerStone's balancing values; the animation clip is the source of truth.",
       "aki_bake": {
-        "converter": "teardown/wwf-no-mercy/aki_to_tekken3_v3.py (s8 unwrap fix)",
+        "converter": "teardown/wwf-no-mercy/aki_to_tekken3_v3.py (W3c: game-exact extraction FT 0x16C31D8/First 0x1BD150 1-based + [PivotX s12][Rotation u10][PivotZ s10], period-1024 unwrap)",
         "poses": "teardown/wwf-no-mercy/aki-rock-v3/mk-1240-anim_37FA.json",
-        "source_frames": 49,
-        "bank_bake": "tools/anim/aki_row_bake.py — GATE FAIL, no row written (pack byte-identical)",
-        "gate_detail": "step 74.3 deg/f (gate 60.6) + peak root height 0.52 m (gate 0.70)",
-        "status": "poses-only — AKI FK->T3 IK pending; move keeps King-bank fallback clips",
-        "report": "docs/anim/AKI-BAKE-ROCK-2026-10-21.md"
+        "source_frames": 70,
+        "bank_bake": "tools/anim/aki_row_bake.py — GATE FAIL on TRUE data (W3c), no row written (pack byte-identical)",
+        "gate_detail": "worst bone RightArm mean step 65.5 deg/f (gate 60.6) + peak root height 0.49 m (gate 0.70) — step FAIL + height FAIL",
+        "status": "poses-only (corrected true-clip poses supersede W3's wrong-file artifacts) — AKI FK->T3 IK pending; move keeps King-bank fallback clips",
+        "report": "docs/anim/AKI-BAKE-ROCK-2026-10-21.md (W3c addendum)",
+        "supersedes": "W3 aki_bake record (wrong-file data: W3 converted game file +0x19 spliced at +0x60 under the 12/8/12 split)"
       }
     },
     "peoples_elbow_nm": {
@@ -2494,13 +2495,14 @@
       "source": "WWF No Mercy (mat-kings) — [Special Ground Head Grapple] People's Elbow P1, MK-2843 / anim_3E3D.npy (7f); P2 MK-2844 / anim_3E3E.npy (13f). DB Tekken input '2+4 [opponent grounded]'.",
       "note": "The Rock's grounded People's Elbow from the No Mercy teardown. WH data-layer values: the mat-kings DB carries no power join for Rock entries — damage/timing are CornerStone's balancing values; the animation clip is the source of truth.",
       "aki_bake": {
-        "converter": "teardown/wwf-no-mercy/aki_to_tekken3_v3.py (s8 unwrap fix)",
+        "converter": "teardown/wwf-no-mercy/aki_to_tekken3_v3.py (W3c: game-exact extraction FT 0x16C31D8/First 0x1BD150 1-based + [PivotX s12][Rotation u10][PivotZ s10], period-1024 unwrap)",
         "poses": "teardown/wwf-no-mercy/aki-rock-v3/mk-2843-anim_3E3D.json",
-        "source_frames": 7,
-        "bank_bake": "tools/anim/aki_row_bake.py — GATE FAIL, no row written (pack byte-identical)",
-        "gate_detail": "step 102.1 deg/f + peak root height 0.52 m",
-        "status": "poses-only — AKI FK->T3 IK pending; move keeps King-bank fallback clips",
-        "report": "docs/anim/AKI-BAKE-ROCK-2026-10-21.md"
+        "source_frames": 112,
+        "bank_bake": "tools/anim/aki_row_bake.py — GATE FAIL on TRUE data (W3c), no row written (pack byte-identical)",
+        "gate_detail": "worst bone RightArm mean step 51.1 deg/f (gate 60.6) + peak root height 0.48 m (gate 0.70) — step ok, height FAIL",
+        "status": "poses-only (corrected true-clip poses supersede W3's wrong-file artifacts) — AKI FK->T3 IK pending; move keeps King-bank fallback clips",
+        "report": "docs/anim/AKI-BAKE-ROCK-2026-10-21.md (W3c addendum)",
+        "supersedes": "W3 aki_bake record (wrong-file data: W3 converted game file +0x19 spliced at +0x60 under the 12/8/12 split)"
       }
     },
     "peoples_elbow_running_nm": {
@@ -2522,13 +2524,14 @@
       "source": "WWF No Mercy (mat-kings) — [Running Ground Attack] People's Elbow P1, MK-3473 / anim_40B3.npy (16f). DB Tekken input f,f+3.",
       "note": "The running People's Elbow variant from the No Mercy teardown. WH data-layer values: the mat-kings DB carries no power join for Rock entries — damage/timing are CornerStone's balancing values; the animation clip is the source of truth.",
       "aki_bake": {
-        "converter": "teardown/wwf-no-mercy/aki_to_tekken3_v3.py (s8 unwrap fix)",
+        "converter": "teardown/wwf-no-mercy/aki_to_tekken3_v3.py (W3c: game-exact extraction FT 0x16C31D8/First 0x1BD150 1-based + [PivotX s12][Rotation u10][PivotZ s10], period-1024 unwrap)",
         "poses": "teardown/wwf-no-mercy/aki-rock-v3/mk-3473-anim_40B3.json",
-        "source_frames": 16,
-        "bank_bake": "tools/anim/aki_row_bake.py — GATE FAIL, no row written (pack byte-identical)",
-        "gate_detail": "step 85.1 deg/f + peak root height 0.53 m",
-        "status": "poses-only — AKI FK->T3 IK pending; move keeps King-bank fallback clips",
-        "report": "docs/anim/AKI-BAKE-ROCK-2026-10-21.md"
+        "source_frames": 39,
+        "bank_bake": "tools/anim/aki_row_bake.py — GATE FAIL on TRUE data (W3c), no row written (pack byte-identical)",
+        "gate_detail": "worst bone RightArm mean step 71.9 deg/f (gate 60.6) + peak root height 0.49 m (gate 0.70) — step FAIL + height FAIL",
+        "status": "poses-only (corrected true-clip poses supersede W3's wrong-file artifacts) — AKI FK->T3 IK pending; move keeps King-bank fallback clips",
+        "report": "docs/anim/AKI-BAKE-ROCK-2026-10-21.md (W3c addendum)",
+        "supersedes": "W3 aki_bake record (wrong-file data: W3 converted game file +0x19 spliced at +0x60 under the 12/8/12 split)"
       }
     },
     "rock_taunt_nm": {
@@ -2550,12 +2553,20 @@
       "source": "WWF No Mercy (mat-kings) — five Rock-named taunts, all DB input 1+2+3+4: MK-4353 [Taunt] Rock 01 / anim_4423.npy (62f, primary ref), MK-4347 Rock 02 / anim_441D.npy (49f), MK-4354 Rock 03 / anim_4424.npy (55f), MK-4233 [Entry Way Taunt] Rock / anim_43AB.npy (34f), MK-4269 [In The Ring Taunt] Rock / anim_43CF.npy (35f).",
       "note": "The Rock's early-Attitude-Era persona antics, from his own named taunt clips in the No Mercy teardown — the showmanship layer over Yamazaki's menace. WH data-layer values: the mat-kings DB carries no power join for Rock entries — damage/timing are CornerStone's balancing values; the animation clip is the source of truth.",
       "aki_bake": {
-        "converter": "teardown/wwf-no-mercy/aki_to_tekken3_v3.py (s8 unwrap fix)",
+        "converter": "teardown/wwf-no-mercy/aki_to_tekken3_v3.py (W3c: game-exact extraction FT 0x16C31D8/First 0x1BD150 1-based + [PivotX s12][Rotation u10][PivotZ s10], period-1024 unwrap)",
         "poses": "teardown/wwf-no-mercy/aki-rock-v3/ (mk-4353 primary; mk-4347, mk-4354, mk-4233, mk-4269 variants)",
-        "bank_bake": "tools/anim/aki_row_bake.py — GATE FAIL for all five taunts, no rows written (pack byte-identical)",
-        "gate_detail": "taunts pass the step gate (32.1-60.4 deg/f vs 60.6) but fail the height gate: peak root height 0.52-0.53 m vs 0.70 (collapsed pose, own-eyes stick render in docs/anim/aki-bake-2026-10-21/)",
-        "status": "poses-only — AKI FK->T3 IK pending; move keeps King-bank fallback clips",
-        "report": "docs/anim/AKI-BAKE-ROCK-2026-10-21.md"
+        "source_frames": 17,
+        "bank_bake": "tools/anim/aki_row_bake.py — GATE FAIL on TRUE data (W3c), no row written (pack byte-identical)",
+        "gate_detail": "worst bone RightArm mean step 57.6 deg/f (gate 60.6) + peak root height 0.48 m (gate 0.70) — step ok, height FAIL",
+        "status": "poses-only (corrected true-clip poses supersede W3's wrong-file artifacts) — AKI FK->T3 IK pending; move keeps King-bank fallback clips",
+        "report": "docs/anim/AKI-BAKE-ROCK-2026-10-21.md (W3c addendum)",
+        "supersedes": "W3 aki_bake record (wrong-file data: W3 converted game file +0x19 spliced at +0x60 under the 12/8/12 split)",
+        "taunt_variants_gate": {
+          "MK-4347": "82f, worst RightUpLeg 18.3 deg/f, peak ry 0.48 m — step ok, height FAIL",
+          "MK-4354": "24f, worst RightArm 94.0 deg/f, peak ry 0.48 m — step FAIL + height FAIL",
+          "MK-4233": "102f, worst RightUpLeg 16.1 deg/f, peak ry 0.48 m — step ok, height FAIL",
+          "MK-4269": "103f, worst RightArm 40.4 deg/f, peak ry 0.49 m — step ok, height FAIL"
+        }
       }
     },
     "rock_spinebuster_nm": {
@@ -2579,13 +2590,14 @@
       "source": "WWF No Mercy (mat-kings) — [Special Irish Whip Grapple] Rock Spinebuster P1, MK-1885 / anim_3A7F.npy (16f); reversals MK-1883/1884. DB Tekken input '1+3 (Irish-whip variant)'.",
       "note": "The Rock's spinebuster — the Rock Bottom's set-up in his matches. WH data-layer values: the mat-kings DB carries no power join for Rock entries — damage/timing are CornerStone's balancing values; the animation clip is the source of truth.",
       "aki_bake": {
-        "converter": "teardown/wwf-no-mercy/aki_to_tekken3_v3.py (s8 unwrap fix)",
+        "converter": "teardown/wwf-no-mercy/aki_to_tekken3_v3.py (W3c: game-exact extraction FT 0x16C31D8/First 0x1BD150 1-based + [PivotX s12][Rotation u10][PivotZ s10], period-1024 unwrap)",
         "poses": "teardown/wwf-no-mercy/aki-rock-v3/mk-1885-anim_3A7F.json",
-        "source_frames": 16,
-        "bank_bake": "tools/anim/aki_row_bake.py — GATE FAIL, no row written (pack byte-identical)",
-        "gate_detail": "step 85.1 deg/f + peak root height 0.51 m",
-        "status": "poses-only — AKI FK->T3 IK pending; move keeps King-bank fallback clips",
-        "report": "docs/anim/AKI-BAKE-ROCK-2026-10-21.md"
+        "source_frames": 13,
+        "bank_bake": "tools/anim/aki_row_bake.py — GATE FAIL on TRUE data (W3c), no row written (pack byte-identical)",
+        "gate_detail": "worst bone RightArm mean step 51.6 deg/f (gate 60.6) + peak root height 0.48 m (gate 0.70) — step ok, height FAIL",
+        "status": "poses-only (corrected true-clip poses supersede W3's wrong-file artifacts) — AKI FK->T3 IK pending; move keeps King-bank fallback clips",
+        "report": "docs/anim/AKI-BAKE-ROCK-2026-10-21.md (W3c addendum)",
+        "supersedes": "W3 aki_bake record (wrong-file data: W3 converted game file +0x19 spliced at +0x60 under the 12/8/12 split)"
       }
     },
     "rock_stomp_nm": {
@@ -2607,13 +2619,14 @@
       "source": "WWF No Mercy (mat-kings) — Rock Stomp, MK-3120 / anim_3F52.npy (also MK-3167 sitting-down, MK-3453 ground contexts). DB Tekken input d+3.",
       "note": "The Rock's ground stomp from the No Mercy teardown. WH data-layer values: the mat-kings DB carries no power join for Rock entries — damage/timing are CornerStone's balancing values; the animation clip is the source of truth.",
       "aki_bake": {
-        "converter": "teardown/wwf-no-mercy/aki_to_tekken3_v3.py (s8 unwrap fix)",
+        "converter": "teardown/wwf-no-mercy/aki_to_tekken3_v3.py (W3c: game-exact extraction FT 0x16C31D8/First 0x1BD150 1-based + [PivotX s12][Rotation u10][PivotZ s10], period-1024 unwrap)",
         "poses": "teardown/wwf-no-mercy/aki-rock-v3/mk-3120-anim_3F52.json",
-        "source_frames": 16,
-        "bank_bake": "tools/anim/aki_row_bake.py — GATE FAIL, no row written (pack byte-identical)",
-        "gate_detail": "step 109.0 deg/f + peak root height 0.53 m",
-        "status": "poses-only — AKI FK->T3 IK pending; move keeps King-bank fallback clips",
-        "report": "docs/anim/AKI-BAKE-ROCK-2026-10-21.md"
+        "source_frames": 20,
+        "bank_bake": "tools/anim/aki_row_bake.py — GATE FAIL on TRUE data (W3c), no row written (pack byte-identical)",
+        "gate_detail": "worst bone RightUpLeg mean step 76.8 deg/f (gate 60.6) + peak root height 0.48 m (gate 0.70) — step FAIL + height FAIL",
+        "status": "poses-only (corrected true-clip poses supersede W3's wrong-file artifacts) — AKI FK->T3 IK pending; move keeps King-bank fallback clips",
+        "report": "docs/anim/AKI-BAKE-ROCK-2026-10-21.md (W3c addendum)",
+        "supersedes": "W3 aki_bake record (wrong-file data: W3 converted game file +0x19 spliced at +0x60 under the 12/8/12 split)"
       }
     },
     "rock_spinning_ddt_nm": {
@@ -2637,13 +2650,14 @@
       "source": "WWF No Mercy (mat-kings) — [Front Running Grapple] Rock Spinning DDT P1, MK-3659 / anim_416D.npy (set MK-3659–MK-3663 incl. P2 + reversals). DB Tekken input f,f+1+3.",
       "note": "The Rock's spinning DDT from the No Mercy teardown — pairs with ROCK'S DDT (wh_original, King-modeled) in this file. WH data-layer values: the mat-kings DB carries no power join for Rock entries — damage/timing are CornerStone's balancing values; the animation clip is the source of truth.",
       "aki_bake": {
-        "converter": "teardown/wwf-no-mercy/aki_to_tekken3_v3.py (s8 unwrap fix)",
+        "converter": "teardown/wwf-no-mercy/aki_to_tekken3_v3.py (W3c: game-exact extraction FT 0x16C31D8/First 0x1BD150 1-based + [PivotX s12][Rotation u10][PivotZ s10], period-1024 unwrap)",
         "poses": "teardown/wwf-no-mercy/aki-rock-v3/mk-3659-anim_416D.json",
         "source_frames": 28,
-        "bank_bake": "tools/anim/aki_row_bake.py — GATE FAIL, no row written (pack byte-identical)",
-        "gate_detail": "step 93.5 deg/f + peak root height 0.54 m",
-        "status": "poses-only — AKI FK->T3 IK pending; move keeps King-bank fallback clips",
-        "report": "docs/anim/AKI-BAKE-ROCK-2026-10-21.md"
+        "bank_bake": "tools/anim/aki_row_bake.py — GATE FAIL on TRUE data (W3c), no row written (pack byte-identical)",
+        "gate_detail": "worst bone RightUpLeg mean step 81.8 deg/f (gate 60.6) + peak root height 0.48 m (gate 0.70) — step FAIL + height FAIL",
+        "status": "poses-only (corrected true-clip poses supersede W3's wrong-file artifacts) — AKI FK->T3 IK pending; move keeps King-bank fallback clips",
+        "report": "docs/anim/AKI-BAKE-ROCK-2026-10-21.md (W3c addendum)",
+        "supersedes": "W3 aki_bake record (wrong-file data: W3 converted game file +0x19 spliced at +0x60 under the 12/8/12 split)"
       }
     }
   },
@@ -2755,6 +2769,14 @@
       "converter": "aki_to_tekken3_v3.py — v2 + s8 modulo-256 unwrap fix (measured: system clip 0x2DDA pelvis wraps 121 -> -103); poses for all 11 Rock clips in teardown/wwf-no-mercy/aki-rock-v3/",
       "bank_bake": "tools/anim/aki_row_bake.py ran the full game pipeline (PoseBuildMatrices -> pose_assemble FK -> frame_globals -> t3 retarget -> wh-anim-pack/1) behind a two-metric gate calibrated on the king pack's 176 real rows. ALL 11 clips FAIL (limb IK whip + collapsed root height); zero rows written, pack byte-identical, no t3_row wiring added — wiring now would point at rows that do not exist.",
       "blocker": "AKI FK -> T3 IK targets (T3 limb slots are IK-overwritten; Euler overlay cannot drive them). Needs the AKI player-code FK (Ghidra route). Full measurements: docs/anim/AKI-BAKE-ROCK-2026-10-21.md",
+      "playback_today": "mk moves resolve through the King bank as before (stance + King's real rows incl. Rock Bottom row 281)"
+    },
+    "aki_bake_w3c": {
+      "date": "2026-10-21",
+      "lane": "gap-closure W3c corrective bake — supersedes the W3 aki_bake_v3 run, whose input clips were the wrong game files (W3b Finding 1) decoded with the wrong record split (W3b Finding 2)",
+      "extraction": "game-exact: FileTable 0x16C31D8, FirstFile 0x1BD150, 1-based IDs (FUN_80003ab0/FUN_80003bd0); records [PivotX s12][Rotation u10][PivotZ s10]; 11 Rock clips re-extracted in teardown/wwf-no-mercy/animations/clips/ + manifest corrected; frame counts verified vs W3b true table + 4+98N (10/11 also match the toki2 b3/2+1 header rule; anim_40B3 gives 38 by that rule vs 39 by exact length — length wins, remainder 0)",
+      "bank_bake": "tools/anim/aki_row_bake.py, SAME unloosened gate (worst-bone mean step <= 60.64 deg, peak root height >= 0.70 m, king-pack 176-row calibration). On TRUE data ALL 11 clips FAIL: 6 pass the step gate (was: taunts only, on wrong data), every clip fails height at 0.48-0.49 m. Zero rows written, pack byte-identical, no t3_row added.",
+      "blocker": "AKI FK -> T3 IK targets, unchanged in kind: T3 limb slots are IK-overwritten and the converter drives Euler joints + mean-centered root only, so root height peaks at the stance constant (~0.48-0.49 m) regardless of clip. Needs the AKI player FK from ovl_c/ovl_d (Ghidra import) or an emulator watchpoint on the stance file's RAM copy — spec in docs/anim/AKI-BAKE-ROCK-2026-10-21.md W3b Finding 3 + W3c addendum. No guessed IK mappings shipped.",
       "playback_today": "mk moves resolve through the King bank as before (stance + King's real rows incl. Rock Bottom row 281)"
     }
   }
