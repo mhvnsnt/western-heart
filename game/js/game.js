@@ -149,6 +149,10 @@ export class Game {
     this.p1.facing = 1; this.p1.lean.rotation.y = 0;
     this.p2.facing = -1; this.p2.lean.rotation.y = Math.PI;
     this.p1.state = 'idle'; this.p2.state = 'idle';
+    // Round reset is also a clean break from any in-progress attack: never let
+    // a latched attackName (e.g. 'surge') stick the Soul Surge aura on.
+    this.p1.attack = null; this.p1.attackName = null;
+    this.p2.attack = null; this.p2.attackName = null;
     this.p1.dead = this.p2.dead = false;
     this.p1.stun = this.p2.stun = 0;
     this.p1.vx = this.p2.vx = 0;
