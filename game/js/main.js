@@ -153,7 +153,7 @@ const ui = {
     if (!el) return;
     clearTimeout(this._throwT);
     if (!show) { el.classList.remove('show'); return; }
-    const label = breakInput === '1' ? 'TAP LP' : breakInput === '2' ? 'TAP RP' : 'TAP LP+RP';
+    const label = breakInput === '1' ? 'TAP □' : breakInput === '2' ? 'TAP △' : 'TAP □+△';
     el.querySelector('.throw-prompt-key').textContent = label;
     el.classList.remove('show'); void el.offsetWidth;
     el.classList.add('show');

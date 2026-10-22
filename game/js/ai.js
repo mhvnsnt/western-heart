@@ -103,13 +103,8 @@ export class AIController {
       else { this._action = 'attack'; f.tryAttack(String(1 + Math.floor(Math.random() * 4))); }
     } else {
       const r = Math.random();
-      // TEKKEN RANGE DISCIPLINE (hitfx 2026-10-22): strikes are only thrown
-      // inside real range (attack box lead + step-in reach ~2.5). The old
-      // code attacked out to 3.2 where no strike can connect — a major
-      // whiff source in AI fights. Out of range, the AI closes distance.
-      const inRange = dist <= 2.5;
-      if (inRange && r < 0.5 + this.aggression * 0.2) { this._action = 'attack'; f.tryAttack(String(1 + Math.floor(Math.random() * 4))); }
-      else if (!inRange || r < 0.8) { this._action = 'approach'; f.tryMove(dir); }
+      if (r < 0.5 + this.aggression * 0.2) { this._action = 'attack'; f.tryAttack(String(1 + Math.floor(Math.random() * 4))); }
+      else if (r < 0.8) { this._action = 'approach'; f.tryMove(dir); }
       else { this._action = 'neutral'; }
     }
   }

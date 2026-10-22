@@ -349,10 +349,13 @@ export class TekkenBuffer {
     this.hi = (this.hi + 1) % HIST_LEN;
     this.hist[this.hi] = dir || 'n';
     // T3 enters the dash row on the frame double_tap matches; a button during that row is a
-    // dash move (f,F+2). Latch it for the decoded row length.
-    if (this._dash && --this._dash.left <= 0) this._dash = null;
-    if (this._doubleTap('f')) this._dash = { dir: 'f', left: DASH_FRAMES['f,f'] };
-    else if (this._doubleTap('b')) this._dash = { dir: 'b', left: DASH_FRAMES['b,b'] };
+    // dash move (f,F+2). The latch is WALL-CLOCK (decoded row = 30f @60fps = 500ms):
+    // a step-counted latch lasts seconds on slow devices and misfires dash moves on
+    // plain f+1 presses (input-fidelity bug, 2026-10-22).
+    const _now = performance.now();
+    if (this._dash && _now >= this._dash.until) this._dash = null;
+    if (this._doubleTap('f')) this._dash = { dir: 'f', until: _now + DASH_FRAMES['f,f'] / 60 * 1000 };
+    else if (this._doubleTap('b')) this._dash = { dir: 'b', until: _now + DASH_FRAMES['b,b'] * 1000 / 60 };
     if (dir === this.lastDir) return;
     this.lastDir = dir;
     if (dir === 'n') return;
@@ -407,7 +410,11 @@ export class TekkenBuffer {
 
   /** Does the history hold this motion (decoded T3 timing)? */
   _motionHeld(dirs) {
-    if (dirs.length === 2 && dirs[0] === dirs[1] && (dirs[0] === 'f' || dirs[0] === 'b')) {
+    // Any all-identical f/b run ('f,F', 'f,f,F', 'b,b,B' ...) is a DASH motion:
+    // it fires only inside the dash row (double-tap latch), never from merely
+    // holding the direction — otherwise 'f,f,F+2' would match a plain f+2 hold
+    // via _seqMatch on an all-f history (input-fidelity bug, 2026-10-22).
+    if (dirs.length >= 2 && dirs.every(d => d === dirs[0]) && (dirs[0] === 'f' || dirs[0] === 'b')) {
       return !!(this._dash && this._dash.dir === dirs[0]) || this._doubleTap(dirs[0]);
     }
     return this._seqMatch(dirs, motionWindow(dirs));
@@ -490,11 +497,43 @@ export class TekkenBuffer {
     return this.press(btn, ctx);
   }
 
-  /** Legacy API: chords resolve through the same table. */
+  /**
+   * Resolve a button CHORD ('1+2', '1+3', '1+4', '2+3', '2+4', '3+4') to the
+   * Tekken notation this fighter fires. Resolution order (Tekken):
+   *   1. motion specials: the direction history holds the special's motion and
+   *      the chord completes it (King's chain throws, Anna's db+1+2 ...).
+   *      The motion wins over the plain chord — exactly like Tekken.
+   *   2. the moveset's notation table (slots / player loadout) with state
+   *      prefixes (FC./WS./SS./BT./R./stance codes) — canon mapping wins.
+   *   3. directional chord against the current facing-relative direction
+   *      (d/b+1+3 ...).
+   * Returns the notation, or null when this fighter has nothing on the chord.
+   * (2026-10-22: unified the two pressChord definitions — the second shadowed
+   * the first, so chord resolution ignored ctx, the slots table, loadouts and
+   * __base movesets. There is exactly one pressChord now.)
+   */
   pressChord(chord, ctx = {}) {
     const ms = playedMoveset(this.fighterId);
-    if (!ms || !ms.moves) return chord;
-    return this.press(chord, ctx);
+    if (!ms || !ms.moves) return chord; // no data — raw passthrough
+    _prepare(ms);
+    // 1) motion specials (legacy ms.specials entries, incl. ones the slots
+    //    table doesn't cover): motion in the direction history + this chord.
+    for (const sp of ms.specials || []) {
+      const { dirs, button } = parseSpecialInput(sp.input);
+      if (button !== chord || !dirs.length) continue;
+      if (this._matchMotion(dirs) && resolveMoveKey(this.fighterId, sp.input)) {
+        return this._recordMove(sp.input);
+      }
+    }
+    // 2) notation table (loadout > slots), state prefixes from ctx
+    const viaTable = this.press(chord, ctx);
+    if (viaTable) return viaTable;
+    // 3) directional chord: current facing-relative dir + chord
+    const dir = this.lastDir;
+    if (dir && dir !== 'n' && resolveMoveKey(this.fighterId, `${dir}+${chord}`)) {
+      return this._recordMove(`${dir}+${chord}`);
+    }
+    return null;
   }
 
   /** Would `input` continue the current string? (lets a press during a move buffer the next hit) */
@@ -520,40 +559,4 @@ export class TekkenBuffer {
     this._recordMove(notation);
   }
 
-  /**
-   * Resolve a button CHORD ('1+2', '1+3', '1+4', '2+3', '2+4', '3+4') to a
-   * Tekken notation. Motion specials whose chord matches fire when their
-   * motion is in the direction history (King's chain throws). Directional
-   * chords ('d/b+1+3') resolve against the current direction (Stream 6).
-   * Plain chords ('1+3','2+4',...) resolve to themselves.
-   * Returns the notation or null.
-   */
-  pressChord(chord) {
-    const ms = getFighterMoveset(this.fighterId);
-    if (!ms || !ms.moves) return chord;
-    const moves = ms.moves;
-    for (const sp of ms.specials || []) {
-      const { dirs, button } = parseSpecialInput(sp.input);
-      if (button !== chord) continue;
-      if (dirs.length && this._matchMotion(dirs) && moves[sp.input]) {
-        this._recordMove(sp.input);
-        return sp.input;
-      }
-    }
-    // directional chord: current facing-relative dir + chord (d/b+1+3 ...)
-    const dir = this.lastDir;
-    if (dir && dir !== 'n') {
-      const dchord = `${dir}+${chord}`;
-      if (moves[dchord]) {
-        this._recordMove(dchord);
-        return dchord;
-      }
-    }
-    // plain chord with no motion attached
-    if (moves[chord]) {
-      this._recordMove(chord);
-      return chord;
-    }
-    return null;
-  }
 }
