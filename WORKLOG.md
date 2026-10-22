@@ -2087,3 +2087,12 @@ On-main files NOT touched: worker 37's `js/creation-flow.js` + `js/art.js`
   `docs/owner-directives.md`.
 - Full log: `docs/decisions/2026-10-22-kinpo-repoint-w50.md` (branch
   `w50/kinpo-repoint`).
+
+## 2026-10-22 — worker 59: Ashlane→DOA claimed-map lock + federation files + Vain Abel wiring (branch w59-doa4-kof-movesets)
+- Locked 11 user mappings into new `moveset-library/movesets/CLAIMED-MAP.json` (single source of truth): Hall Nighter→Jann Lee, Maime→Eliot, Kobra→La Mariposa (masculinize on top), Hollow→Alpha-152 (proprietary wrestling moves to be built), Triple XXX→Zack, Tyneshia→Tina, Edwin Kennedy→Gen Fu, Viper→Ryu Hayabusa, Echo→Christie, Onyx→Lisa Hamilton, Tarzanian Devil→Brad Wong. Still open: Stan Combs only. Also recorded previously-locked VF5/intake/Bass→Vain Abel/Iori→Deathfang mappings + candidates.
+- Decision log: `docs/decisions/2026-10-22-ashlane-doa-mappings.md`.
+- Stamped `wh_claimed_map` provenance on 7 DOA4 federation files (jannlee/tina/hayabusa claims reference the untouched doa bank).
+- Copied federation sources into repo: `moveset-library/movesets/federation/doa4/` (17 files, 1,206 moves) + `federation/kof3d/` (6 files, 93 moves) + README with ingest linkage to worker 47's lane (read-only, not edited).
+- `game/assets/movesets/vainabel.json`: replaced 69-entry placeholder with 200-entry full Bass→Vain Abel wiring (user-authorized upgrade; INPUT-TO-MOVE FIDELITY LAW). Generator: `tools/moveset-wiring/gen-vainabel.mjs`.
+- Docs: `docs/research/doa4-movesets-2026-10-22.md`, `docs/research/kof3d-movesets-2026-10-22.md`, `docs/decisions/2026-10-22-bass-vainabel-fidelity.md`, `docs/decisions/2026-10-22-kof-teardown-target.md`.
+- KOF teardown target locked: KOF: Maximum Impact 2 (PS2, most recent acquirable 3D KOF; XIV/XV not on IA). Raiden correction: not playable in MI2 (cameo only) — his only 3D playable is Fatal Fury: Wild Ambition (PS1 port acquiring separately). Both ISOs downloading; large files go to Releases/external per user rule.
