@@ -465,13 +465,33 @@ function confirmSelection() {
 
 document.getElementById('confirm-fighter').addEventListener('click', confirmSelection);
 
-/* Lane 4: stage-select screen handlers (CHOOSE YOUR ARENA). */
+/* Lane 4: stage-select screen handlers (CHOOSE YOUR ARENA).
+   P0 (2026-10-22): the old handler nulled pendingFight up front and never
+   caught startFight rejections — any failure left the player on a dead
+   stage screen with no feedback and no way to retry ("fight never starts").
+   Now: visible loading state on the stage screen, failures surface there,
+   and pendingFight is only consumed when the fight actually starts, so
+   CONFIRM retries the same fight. */
 document.getElementById('confirm-stage').addEventListener('click', () => {
   if (!selectedStage || !pendingFight) return;
   audio.uiClick();
   const { p1, p2, opts } = pendingFight;
-  pendingFight = null;
-  startFight(p1, p2, { ...opts, stage: selectedStage });
+  const btn = document.getElementById('confirm-stage');
+  const hint = document.getElementById('stage-hint');
+  if (btn) btn.disabled = true;
+  if (hint) hint.textContent = 'Entering the arena…';
+  startFight(p1, p2, { ...opts, stage: selectedStage }).then(
+    (started) => {
+      if (started) { pendingFight = null; return; }
+      // startFight reported the failure on the hints already.
+      if (btn) btn.disabled = false;
+    },
+    (err) => {
+      console.error('[WH] stage-select: fight failed to start:', err);
+      if (hint) hint.textContent = 'Could not start the fight — tap CONFIRM to retry.';
+      if (btn) btn.disabled = false;
+    }
+  );
 });
 
 document.getElementById('random-stage').addEventListener('click', () => {
@@ -641,9 +661,16 @@ async function startFight(playerId, enemyId, opts = {}) {
     }
   } catch (err) {
     console.error('[WH] fight load failed:', err);
-    if (hint) hint.textContent = 'Failed to load fighters. Check connection and try again.';
+    const msg = 'Failed to load fighters. Check connection and try again.';
+    if (hint) hint.textContent = msg;
+    // P0 (2026-10-22): the stage screen is where versus fights start — the
+    // error must be visible there, not only on the fighter-select hint.
+    const stageHint = document.getElementById('stage-hint');
+    if (stageHint) stageHint.textContent = msg;
     if (confirmBtn) confirmBtn.disabled = false;
-    return;
+    const stageBtn = document.getElementById('confirm-stage');
+    if (stageBtn) stageBtn.disabled = false;
+    return false;
   }
   if (confirmBtn) confirmBtn.disabled = false;
   show('hud');
@@ -657,6 +684,7 @@ async function startFight(playerId, enemyId, opts = {}) {
     clearTimeout(hints._t);
     hints._t = setTimeout(() => hints.classList.add('fade'), 6000);
   }
+  return true; // P0 (2026-10-22): stage-select handler needs to know the fight started
 }
 // H toggles control hints, M toggles the movelist (training)
 document.addEventListener('keydown', (e) => {
