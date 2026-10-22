@@ -132,12 +132,18 @@ Wiring blockers, in dependency order:
 
 ## Phase 14 update (2026-10-22, PR #574) — ISO closed; ANM definition layer decoded to gate 1; provenance
 
-- **ISO: CLOSED (pending final hash line).** The phase-13 sparse
-  assembly resumed at 10/30, part_10's in-flight download was
-  left to finish on its own (never killed/duplicated), and the
-  remaining parts landed one at a time under the assembler's
-  verify→write→delete discipline. Whole-ISO sha256 + the clear
-  log: `phase14/PHASE14-STATE.md`.
+- **ISO: CLOSED.** The phase-13 sparse assembly resumed at
+  10/30, part_10's in-flight download was left to finish on
+  its own (never killed/duplicated), and the remaining parts
+  landed one at a time under the assembler's
+  verify→write→delete discipline (proxy-killed attempts
+  relaunched by the phase-14 supervisor; no part written
+  without its digest matching). **30/30 verified: size
+  exactly 7,834,892,288 B, whole-ISO sha256
+  `4423cd5ca0979e38b48fce3dbdd78de6416abfd4dd01fc8cc9140e2c92b104aa`.**
+  Local assembly cleared after verification (one-store
+  rule); detail + clear log: `phase14/ISO-CLOSEOUT.md` +
+  `phase14/PHASE14-STATE.md`.
 - **ANM: definition layer DECODED to gate 1.** The fighter .bin
   header is a 32-pointer section table (tiles every file
   exactly, 24/24); w21 is a 1024-entry clip command table;
@@ -150,9 +156,15 @@ Wiring blockers, in dependency order:
   order) is the exact residual in `phase14/ANM-DECODE.md`;
   no guessed posing. Extracts (mot.afs + default.xex whole)
   released as `doa4-iso-extracts-20261022`.
-- **Provenance (mirror vs ISO): anm DIFFERENT** (same size,
-  first diff byte 0, 9.83% identical — the phases 7–12 file
-  was a different pressing's, quantified). chrone/chrtwo/
-  chrthree: (pending — `phase14/PROVENANCE.md`).
+- **Provenance (mirror vs ISO): ALL FOUR DIFFERENT** — anm
+  9.8271% identical, chrone 4.2795%, chrtwo 4.6732%,
+  chrthree 4.4639% (all same-size, all differing from byte
+  0; ISO side all standard AFS containers with 26/73/128/
+  188 entries, mirror side all raw streams). The mirror is
+  a different pressing's/raw-layout source throughout;
+  chrone containment found the retail payloads present in
+  the mirror at permuted offsets, so the phase 6–12 models
+  stand on the same payload bytes — but no mirror AFS file
+  IS the retail file. Detail: `phase14/PROVENANCE.md`.
 - **Composites 23/31 FINAL, binding DYNAMIC-ONLY, ID complete,
   canon Q1–Q6 OWNER-pending: all unchanged.**
