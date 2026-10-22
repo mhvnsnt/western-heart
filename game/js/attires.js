@@ -195,6 +195,14 @@ export const ATTIRE_VARIANTS = {
     { model: 'pantera-crimson-rage', label: 'ATTIRE 5 · CRIMSON RAGE' },
     { model: 'pantera-p2', label: 'ATTIRE 6 · T7 P2' },
   ],
+  /* SLICE's ladder (owner 2026-10-21 ~08:42 CDT): A1 = the owner's own Tripo
+     (DEFAULT — skull mask, jagged chrome arm blades), A2 = our Dragunov build
+     (PR #433, was A1; laddered back byte-identical, never deleted). Keyed by
+     his roster model id 'slice' — attiresFor finds it on the model lookup. */
+  'slice': [
+    { model: 'slice-attire1', label: 'ATTIRE 1 · SKULL MASK (OWNER TRIPO)' },
+    { model: 'slice-attire2', label: 'ATTIRE 2 · T7 DEFAULT — BERET (DRAGUNOV BUILD)' },
+  ],
   /* ZUI's ladder (model-key audit follow-up, 2026-10-21): A1 = Drunken Monk
      Tripo (DEFAULT), A2 = Rework v2 Tripo; the steve-fox canon base and the
      T7 Steve reskins (zui_alt1/zui_alt2) ladder back as alternates. Keyed by
