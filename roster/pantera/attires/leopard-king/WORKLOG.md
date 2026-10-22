@@ -187,3 +187,73 @@ output model-rigged.glb
 76d91b6b3a32460fbc2baf73aacd2002ea3f04b591ea02e7414c233f9b3b4ac9.
 Also published as a GitHub release asset (tag
 pantera-leopard-king-rigged-20261020) per the store-off-disk law.
+
+---
+
+## 2026-10-21 — RE-RIG ON KING'S SKELETON (supersedes the rig above)
+
+**Owner verdict on the 2026-10-20 rig (PR #448):** no shredding, but
+rejected — weird stretching, bad weights, skeleton deformed ("like he's
+been hit by a fucking bus"), legs folded all the way back to the
+spine/tailbone and feet bent all the way back in the proof frames.
+Order: put KING's skeleton on him, industry-standard, from the teardown
+files. The #448 file stays in git history and in release
+pantera-leopard-king-rigged-20261020 (never overwritten).
+
+**Template source (exactly which skeleton):** the canonical 49-bone
+Pantera/King template carried by attires A1/A3/A5/A6 (bone-for-bone
+identical across A1 in-game, A3, classic — verified by direct
+inspection: same names, same rest locals, Hips world y=1.061), plus the
+Tail1–Tail4 chain off Hips fitted to this mesh.
+
+**T7 King inventory — what the teardown files hold vs lack (checked
+2026-10-21, per owner directive to anchor on the most recent Tekken
+template available):**
+- HOLD: T7 King mesh + full texture set (release tekken7-full-v1,
+  tekken7/king/ — rigmodels FBX 5PMH7G85GYN7P71W3BD1V0249.fbx +
+  King_*.png). The FBX is GEOMETRY ONLY: 18 meshes, zero deformers,
+  zero clusters, zero animation stacks — no skeleton, no weights, no
+  animations. It is the direct source of the A1 pantera-t7king model.
+- LACK: no T7-native King skeleton and no T7 King animation data exist
+  anywhere in holdings (tekken7/king/ inventoried completely;
+  tekken8-full-v1 inventoried completely — it contains NO King at all;
+  tekken-models-batch-2/3 contain no T7 King rig). The 49-bone template
+  above is the King skeleton the T7 files support: it was built from
+  the T7 King mesh and is what A1/A3/A5/A6 carry.
+
+**Weights:** transferred from King's own skinned model (pantera-base,
+the T7 King rig's 11,376 skinned verts) via KNN (k=64, sigma=0.03) in
+matched orientation + 20-pass weight diffusion. Neighbour weight-L1
+after diffusion: p99 0.136 / p999 0.313 / max 0.558 (smoother than the
+#448 field: 0.138 / 0.327 / 0.578).
+
+**Clips:** Idle copied verbatim from the King donor. T3Stance/T3Grab
+re-baked with an offset-corrected world-delta retarget (world delta
+conjugated into the target frame by the hips rest alignment, RotY180;
+per-joint world deltas match the source <0.1 deg; hips translation
+included, scaled by hips-height ratio 1.0816). NOTE on method history:
+the first bake multiplied the delta in the wrong order (legs folded —
+the same failure family the owner rejected); a pure absolute
+world-orientation transplant was also tested and rejected (bone axis
+conventions differ between the rigs; legs pointed up). The shipped
+method is the standard offset-corrected delta form.
+
+**Proof (owner gate — body integrity vs the original model):**
+three-way comparison rendered and viewed: original Tripo model /
+A1 same-frame / this build same-frame, evaluated with game semantics
+(LBS-posed static exports — three.js-style LINEAR/slerp node
+evaluation — because Blender's action playback does not faithfully
+evaluate hand-authored channels on this rig). Joint-position error vs
+the leoman source, hips-relative: mean 0.095–0.111 m across the stance
+(legs 0.09–0.10, arms ~0.12). Mesh edge-stretch (own LBS): stance p50
+1.000, edges >2.5x 2.52% (the #448 file by the same method: 1.97%);
+grab >2.5x 5.78% at the throw apex. Visual verdict: proportions and
+anatomy of the original preserved; legs hang/stand in King's stance
+alignment; feet sit natural (toe-down only at the loop's bounce phase,
+as on A1); NO legs folded to the spine, NO feet bent back. Known
+residual: the head tips back at the stance's mid-phase (spine-chain
+pose residual through the Chest→Spine2 mapping — a pose difference,
+not a deformation).
+
+**SHA-256:** output model-rigged.glb (this build)
+f1ebad4c24a8d2db60618acfaf3b90681f5de4b0a663e467e768c6d4244e7b99
