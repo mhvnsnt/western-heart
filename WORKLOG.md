@@ -292,6 +292,85 @@ installed on this VM — grep scan instead, clean). Repo laws respected: one
 commit per change, feature branch + PR, merge via API only when mergeable and
 CI green.
 
+## 2026-10-21 — Lane 4: rig batch 1 (6 fighters) — knn backend
+
+Branch: `fix/rig-batch-1-20261021`. Audit B2: 22 unrigged static fighters.
+This batch rigs 6: Scimitar, Waterfall, Armor King, Charger (Attire 1+2),
+Saku Ra. Tool: GitHub Git Database API (no git push available on the VM).
+
+**Backend substitution (why not rig_tripo_static.py / Blender):** Blender is
+not installed on this VM and the VM has ~8 GB RAM (~300 MB free) — the
+Blender+GameRig path OOMs on dense Tripo statics. The repo's own
+`tools/auto_rig/README.md` documents the `knn` backend as "for dense statics
+Blender chokes on" (numpy/scipy only, both installed). Donor rig:
+`game/assets/models/pantera.glb` (49-bone WH Mixamo-style skeleton, per the
+README's knn example). Pipeline per model: (decode meshopt if needed) →
+`knn_transfer.py` → `.npz` → `apply_skin.py` → rigged GLB → `validate.py`
+(the playable gate). Output convention follows the proven Zui path:
+`model-rigged.glb` written BESIDE the original `model.glb` (owner's original
+stays untouched); `MODEL_URLS` repointed to the rigged file.
+
+**Local bug-fix patches** (documented in the script headers; the repo
+scripts as-shipped crash or produce garbage on the real donor/inputs —
+method unchanged, still k-NN from the pantera donor → validate gate):
+- P1: donor `JOINTS_0` is UNSIGNED_BYTE (raw uint8 = joint indices); the
+  repo script read it as float32 → garbage weights for every vertex.
+- P2: donor reference used only mesh 0 (a 202-vert accessory); now all
+  donor meshes are concatenated.
+- P3: transfer every target prim (not just mesh 0 prim 0); one global
+  normalize so multi-mesh models stay aligned.
+- P4: chunked k-NN accumulation (RAM bound).
+- P5: `--rotate-y` + normalize params stored in `.npz` for exact reuse.
+- P6: `validate.py` height measured over the model union, not just
+  prim 0 (multi-prim statics failed the gate on an accessory prim).
+- P7: `decode_meshopt.py` — Tripo GLBs are EXT_meshopt_compression;
+  decoded with the `meshopt` PyPI package before transfer.
+- P8: far-vert fallback — verts with no donor coverage (>0.10–0.16 m)
+  blend to their nearest donor joint (smoothstep) instead of inheriting
+  hand/foot weights (e.g. Waterfall's hair disc, Charger's shoulder bar).
+- P9: target node transforms baked to world space (armor-king's -90° X
+  Sketchfab root).
+- P10: normalize aligns x/z CENTERS (repo mapped min-corner on all axes,
+  shifting bodies ~0.6 m off the donor when proportions differ); y still
+  aligns feet (min to min).
+
+**Facing:** determined per model by anatomical signals (nose-sharpness test,
+head-texture face-vs-hair color, feet toe cue, textured renders viewed);
+k-NN distance as tiebreaker only. Scimitar/Charger/Charger-A2/Saku Ra face
++Z (rotate-y 0); Waterfall/Armor King face -Z (rotate-y 180).
+
+**Batch 1 manifest** (input → output, validate verdict):
+- scimitar (`game/assets/models/scimitar.glb` 13.3 MB → `scimitar-rigged.glb`
+  14.0 MB): PASS. 25,448 verts, 9 prims; pose test (40° LeftArm rotation
+  moves only left-arm verts, max 0.15 m) sane. Pilot model.
+- waterfall (`roster/waterfall/attires/attire1/model.glb` 18.0 MB →
+  `model-rigged.glb`): PASS. 1,016,911 verts; hair disc → Head via P8.
+- armor-king (`roster/armor-king/attires/attire1/model.glb` 0.4 MB →
+  `model-rigged.glb`): PASS. 29 meshes / 5,679 verts (multi-mesh path).
+- charger (`roster/charger/attires/attire1/model.glb` 18.0 MB →
+  `model-rigged.glb`): PASS. 1,011,689 verts; side agreement 1.000 on k-NN
+  verts.
+- charger-attire2 (`roster/charger/attires/attire2/model.glb` 17.4 MB →
+  `model-rigged.glb`): PASS. 1,022,542 verts.
+- saku-ra (`roster/sakura/attires/attire1/model.glb` 19.3 MB →
+  `model-rigged.glb`): PASS. 1,007,864 verts.
+
+All: `validate.py` PASS (valid glTF, ≥1 skinned mesh, 0 missing bones of the
+20-gate set, height 1.75 m, feet y=0); bone names exactly the WH Mixamo set;
+donor Idle clip copied (147 channels). Peak RAM 367–616 MB, wall 0.4–17 s
+per model (1 M-vert Tripo models ~7–17 s knn + ~4 s apply). No model failed
+validation; none skipped.
+
+`MODEL_URLS` repoints (7 keys): `scimitar`, `waterfall`, `armor-king`,
+`charger`, `charger-attire2`, `saku-ra` → their `model-rigged.glb`.
+
+**Correction (2026-10-21):** Waterfall was re-processed with rotate-y 0
+(+Z) instead of 180. Three independently-confirmed Tripo models (Charger,
+Charger-A2 via nose-sharpness; Saku Ra via head-texture face color) all face
++Z, establishing the Tripo export convention; the far-vert fallback count
+dropped 7x (940k → 137k) with the +Z facing, confirming better geometric
+alignment. The model-rigged.glb in this PR is the +Z version.
+
 # WORKLOG — Moveset gaps B3: Frankenstein file + charger-attire2 index (2026-10-21, branch fix/moveset-gaps-20261021)
 
 Subagent lane (audit REPORT.md B3): two gaps closed, four commits.
