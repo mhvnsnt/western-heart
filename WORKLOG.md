@@ -1617,3 +1617,15 @@ Tekken on-hit stack: (1) jagged star-burst HIT SPARK sprite (canvas-generated, a
 **Deliverable:** `docs/research/ROSTER-CANON-AUDIT-2026-10-22.md` — real total, full 55-dir classification table, hardcoded/PR/intake tables, 49-slot select→canon→models mapping (source of truth), flag list. No game code changed. No deletions.
 
 **Sandbox note:** this worker's Python could not write files >~8KB, so large repo files were read through the API in chunked reads and only small extracts materialized; fresh WORKLOG.md was re-assembled from 15×8KB API chunks (120,464 bytes, size-verified) before appending this entry — no clobber.
+
+---
+
+## 2026-10-22 ~13:30 CDT — modeaudit-23: Mode-mapped teardown audit (report only)
+
+**Task:** audit every teardown dir, map everything wireable to its mode (Heart and Mind Within ← Urban Reign + Devil Within; Versus ← SF + DOA + SC; Story/cutscenes ← all), report organized by mode with what each item adds and why, per-item okay/not-okay checkboxes, aggressive open-source tool pull-ins. Audit + report ONLY — no wiring.
+
+**Deliverable:** `docs/research/mode-mapped-teardown-audit-2026-10-22.md` — 20-dir teardown inventory + 62 approval-gated items: Heart and Mind Within 14 (UR mission system, double-team/partner AI, special arts meter, weapons, destructibles, brawl rule sets, motion pools, 1,033-file audio, VGS/DCM UI, Def Jam momentum→BLAZIN' two-gate loop, one-grapple-core architecture, Revenge Mode backstage traversal, AKI grappling core) · Versus 28 (SF round structure, 173 SFEX movelists in Tekken notation, SF6 Drive + SFV V-System candidates, DOA triangle/4-way holds/stun/break gauge/Fatal Rush, SC 8-way run/guard stamina/GI/Reversal Edge/Soul Charge/Critical Edge/Lethal Hit/clash/ring-out, VF5 weight classes/two-tier counters/sabaki/multi-escapes/evade/oki/walls) · Story/cutscenes 10 (UR mission records + demo PPK cutscene schema, T6 endings, Def Jam XML config, Revenge Mode traversal, No Mercy text dict, Eastern Mind prologue+music, SC chronicle, DOA cinematic, SF hub) · Open-source tools 10 (Rapier, cannon-es, Yuka, Howler.js, Tone.js, ink/inkjs, XState, GGPO, FModel/repak, jPSXdec).
+
+**Method:** fresh main SHA via github_api.py at push time; plain-copy working dir `~/workspace/fix3/modeaudit`; read teardown docs in-repo (UR/DOA6/SCVI/VF5 mechanics docs, SF status, Def Jam findings, SCII, WMXIX arenas); web-verified SF6 Drive System, GGPO MIT status, Rapier vs cannon-es. Pushed via `gh_push.py` (Git Database API, base = live main tree), merged via `git_merge.py`. Zero deletions; WORKLOG entry appended to live-main version at push time.
+
+**Status:** report merged; 62 items await owner okay/not-okay before any wiring. Worker 22's general integration lane unaffected (separate scope).
