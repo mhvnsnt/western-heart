@@ -339,7 +339,8 @@ export class Fighter {
     const inst = assets.createInstance(
       this.char.model || 'pantera',
       this.char.colors.suit, this.char.colors.trim,
-      this.char.colorize ? (this.char.tintStrength ?? 0.3) : 0
+      this.char.colorize ? (this.char.tintStrength ?? 0.3) : 0,
+      this.char.eyeGlow // per-attire emissive eyes (owner 2026-10-22; attires.js slot config)
     );
     this.bones = inst.bones;
     this.mixer = inst.mixer;
@@ -518,7 +519,8 @@ export class Fighter {
       inst = assets.createInstance(
         t.target,
         this.char.colors.suit, this.char.colors.trim,
-        this.char.colorize ? (this.char.tintStrength ?? 0.3) : 0 // TINT FIX: real texture colors unless explicitly colorized
+        this.char.colorize ? (this.char.tintStrength ?? 0.3) : 0, // TINT FIX: real texture colors unless explicitly colorized
+        this.char.eyeGlow // per-attire emissive eyes ride along on transforms (owner 2026-10-22)
       );
     } catch (e) {
       console.error(`[WH] transform failed — unknown model ${t.target}:`, e.message || e);
