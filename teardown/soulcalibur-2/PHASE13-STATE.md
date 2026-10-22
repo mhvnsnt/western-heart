@@ -78,6 +78,7 @@ GRE PR #40). This lane does NOT touch motion, composition, or clips.
 ## Status log
 
 - 2026-10-21 ~21:49 CDT — lane start. PR #406 branch confirmed via API
+- 2026-10-21 ~22:2x CDT — JOB 1 first half DONE: VXT format cracked (linear DXT1/3/5, see `VXT-FORMAT.md`); first textures decoded + viewed (idx47 tex07 skin/sash, tex06 tooled leather). Mapping evidence: part+0x0c → rec80 material → +0x08 primary VXT record pointer (byte-exact). Decoder: `tools/vxt_decode.py`.
   (OPEN, head `scii-wiring-phase4-20261020` @ `1af493bb289a`). Fresh
   sparse clone at `~/workspace/scii-work/p13/wh` (teardown/soulcalibur-2
   only, 178 MB working set). Branch `scii-phase13-textures-stages`
