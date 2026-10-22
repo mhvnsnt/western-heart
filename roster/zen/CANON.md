@@ -28,8 +28,8 @@ spiky black circular shape; a nose; **NO mouth on the face — the mouth is
 on his chest**. The tentacle IMAGES on his clothes are imagery only at
 rest: no protruding tentacles in base form. His clothes are part of his
 spirit body, and the tentacle images can become REAL tentacles (that is
-Tentacle Mode, below). His Tekken fighting base stays Julia's animation
-bank (`zen → julia`).
+Tentacle Mode, below). His fighting base is **no longer Julia** — owner 2026-10-22: "Zen can't use Julia's moves ... night wolf uses
+Julia's moves" (see *Fighting base (owner 2026-10-22)* below).
 
 ## The spirit (803f4cf1) — its own entity
 
@@ -92,3 +92,18 @@ tentacles. This is a real stage of the transformation.
   spirit entity animation, flame-flow appendages, the spine attachment)
   are design requirements logged in RIG-NOTES.md — the wired models are
   static Tripo meshes that receive their rigs at the rig stage.
+
+## Fighting base (owner 2026-10-22)
+
+- **Base = Twelve** (Street Fighter III: 3rd Strike) — the faceless shapeshifting fighter — and his **3D relative
+  Eleven** (Street Fighter V). Owner: "Twelve/eleven stance and moves from the street fighter games", "use his 3d
+  relative eleven instead too". Zen's stance and move list come from them.
+- **X.COPY** (Twelve's Super Art: he becomes a copy of the opponent for a while) is one of Zen's abilities — owner
+  chose it — but Zen is NOT only a copier: "he has to have his own stuff as well that fits his canon". His own kit =
+  Twelve/Eleven's moves + his canon spirit-stand attacks + Tentacle Mode + Oversoul (above).
+- **Not Julia** (Nightwolf owns Julia's moves) and **not Heihachi** (Heihachi becomes Diablo).
+- **Data status (checked 2026-10-22):** no Twelve or Eleven data is in the repo. SF3:3S holds Twelve only as 2D sprites
+  (stance/move animation must be lifted to 3D from them); SFV (Eleven, 3D) is in the SFV pull, still blocked on
+  downloads (teardown/street-fighter-5/CAST-STATUS.md). Until it lands, `game/js/fighter.js` FIGHTER_BANK still maps
+  `zen -> julia` and his 639-move list (game/assets/movesets/zen.json) is built on T3 Heihachi rows — both are
+  interim and owned by the moveset/inputs lane (PR #615 crew) to replace with the Twelve/Eleven data.
