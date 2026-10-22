@@ -57,7 +57,9 @@ function blankFighter(){
        per-attire records live in records[], keyed 'fighter::attire_id'
        ('blank' for the blank fighter). */
     mode:'blank', rosterRef:null, records:{},
-    baseGlb:'customization/create-fighter/assets/Soldier.glb' };
+    // Blank-fighter base: a REAL template base mesh (MB-Lab bake), never the
+    // Mixamo soldier (killed as default 2026-10-22, owner directive).
+    baseGlb:'customization/templates/meshes/technician.glb' };
 }
 let F = blankFighter();
 let PARTS = [];       // parts-catalog.json parts[] (unified catalog v2)
@@ -73,7 +75,7 @@ const attire = ()=>F.attires[F.attireIndex];
    pick fighter -> pick attire -> hub, loading THAT attire's real GLB.
    Working state stays in the top-level F fields; switching stashes the
    current state into F.records[key] and restores the target's record. */
-const BLANK_GLB = 'customization/create-fighter/assets/Soldier.glb';
+const BLANK_GLB = 'customization/templates/meshes/technician.glb';  // template base, not the soldier
 const currentKey = ()=> F.mode==='roster' && F.rosterRef ? `${F.rosterRef.fighter}::${F.rosterRef.attire}` : 'blank';
 function snapshotWorking(){
   return JSON.parse(JSON.stringify({
@@ -94,7 +96,7 @@ function rosterAttire(slug, attireId){
 }
 async function loadBaseModel(){
   if(!viewer) return;
-  const url = F.baseGlb===BLANK_GLB ? '../create-fighter/assets/Soldier.glb' : '../../'+F.baseGlb;
+  const url = '../../'+F.baseGlb;  // repo-relative (templates/ or roster GLBs)
   try{ await viewer.loadBase(url); }
   catch(e){ console.warn('[WH] base model failed', F.baseGlb, e); toast('Model failed to load: '+F.baseGlb); }
   renderAll();
