@@ -142,6 +142,28 @@ const ui = {
     el.classList.add('show');
     setTimeout(() => el.classList.remove('show'), 1600);
   },
+  setRage(id, on) {
+    const el = document.getElementById(`${id}-rage`);
+    if (el) el.classList.toggle('on', !!on);
+  },
+  rageArtFlash() {
+    const el = document.getElementById('rage-flash');
+    if (!el) return;
+    el.classList.remove('show'); void el.offsetWidth;
+    el.classList.add('show');
+    setTimeout(() => el.classList.remove('show'), 600);
+  },
+  setUrge(id, on) {
+    const wrap = document.getElementById(`${id}-urge-wrap`);
+    if (wrap) wrap.classList.toggle('on', !!on);
+  },
+  updateUrge(p1, p2) { this._urge('p1', p1); this._urge('p2', p2); },
+  _urge(id, f) {
+    const fill = document.getElementById(`${id}-urge`);
+    if (!fill || !f) return;
+    const pct = f._urgeOn ? Math.max(0, Math.min(100, (f._urgeT / 15) * 100)) : 0;
+    fill.style.width = pct + '%';
+  },
   combo(n) {
     const pop = document.getElementById('combo-pop');
     document.getElementById('combo-num').textContent = n;
