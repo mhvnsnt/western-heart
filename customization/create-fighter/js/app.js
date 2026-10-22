@@ -9,11 +9,16 @@ import { Preview3D, SKIN_TONES } from './preview3d.js';
 import { Catalog, CATEGORIES, CONFLICTS } from './catalog.js';
 import { createDomeParamUI, loadDomeParams } from '../../../game/js/dome-params.js';
 import { BODY_MORPHS, FACE_SHAPE_MORPHS, FACE_PARAMS, FACE_PRESETS, FACE_CHECKLIST, facePresetVector } from './morphdata.js';
+import { renderArt } from './art.js';
 
 const LS_KEY = 'wh_create_fighter_v1';
 const PRESET_LS_KEY = 'wh_create_fighter_presets';
 const START_MONEY = 12400;
-const SOLDIER_GLB = 'assets/Soldier.glb';   // WMXIX default CAW base rig
+// Template system (owner 2026-10-22): the Mixamo soldier is DEAD as a default.
+// NEW FIGHTER starts at the template-select screen; the base model comes from
+// customization/templates/body-templates.json. TEMPLATE_JSON is filled at boot.
+let TEMPLATES = { body: [], faces: [], tones: [], parts: [] };
+const templateMeshUrl = t => '../' + String(t.base_mesh).split('customization/')[1];
 
 const BODY_TYPES = [
   { name:'Skinny 1', h:1.02, w:0.86, m:0.85 }, { name:'Skinny 2', h:0.98, w:0.88, m:0.85 },
@@ -36,7 +41,7 @@ const TIERS = [['custom','CUSTOM'],['souls','THE NINE SOULS'],['main','MAIN ROST
    (ids/names/tiers trace to game/js/roster-full.js; GLB paths verified in
    game/assets/models/). Filled at boot; the 'new' entry is always present. */
 let ROSTER = [
-  { id:'new', name:'NEW FIGHTER', desc:'WMXIX default CAW base', glb:SOLDIER_GLB, tier:'custom', modelSrc:'exact' },
+  { id:'new', name:'NEW FIGHTER', desc:'Template select — pick your base', glb:null, tier:'custom', modelSrc:'template' },
 ];
 
 /* ---------------- state ---------------- */
@@ -48,7 +53,8 @@ function blankFighter(){
       music:'', titantron:'', soul:'—', element:'—', land:'—',
       title:['',''], picture:'' },
     base:'new',
-    model:SOLDIER_GLB,   // base GLB, relative to customization/create-fighter/
+    template:null,   // body-templates.json id once the user picks one
+    model:null,      // base GLB — set ONLY by template select. No default.
     body:{ body_type:'Medium 1', skin_tone:'#c98d5e', head_shape:'male_3',
       proportions:{ height:1, weight:1, muscle:1 } },
     morphs:{},                       // MPFB2 body morph id -> -1..1 (bakes to MPFB_<id> shape keys)
@@ -181,7 +187,14 @@ function renderPanel(){
   $('#panel-title').textContent = ui.tab.toUpperCase();
   $('#panel-sub').textContent = '';
   body.innerHTML='';
-  ({ body:renderBody, face:renderFace, attire:renderAttire, wardrobe:renderWardrobe, profile:renderProfile, moveset:renderMoveset, limbs:renderLimbs })[ui.tab](body);
+  ({ body:renderBody, face:renderFace, attire:renderAttire, wardrobe:renderWardrobe, profile:renderProfile, moveset:renderMoveset, limbs:renderLimbs, jobs:renderJobsTab, art:(el)=>renderArt(el, ui, { toast })})[ui.tab](body);
+}
+
+/* ================= JOBS (creation-flow module owns the UI) ================= */
+function renderJobsTab(el){
+  $('#panel-sub').textContent='Blender-backed tools — real jobs, live status';
+  if(window.__flow && window.__flow.renderJobs) window.__flow.renderJobs(el);
+  else el.innerHTML='<div class="note">Flow module (js/creation-flow.js) not loaded.</div>';
 }
 
 /* ================= BODY ================= */
@@ -731,11 +744,16 @@ function renderLimbs(el){
 /* ================= fighter select / presets / photo / save-load ================= */
 function selectBase(id){
   const r=ROSTER.find(x=>x.id===id); if(!r) return;
+  if(r.id==='new'){
+    // NEW FIGHTER -> template select screen FIRST (WWE 2K flow). The flow
+    // module owns the overlay; fall back to a bare fighter if absent.
+    if(window.__flow && window.__flow.openTemplateSelect){ window.__flow.openTemplateSelect(); return; }
+  }
   F.base=r.id;
-  F.model=r.glb||SOLDIER_GLB;
+  F.model=r.glb||null;
   F.profile.name=r.name;
   ui.selPart=null; ui.attireCat=null; ui.domeOpen=false;
-  if(preview) preview.loadModel(F.model);
+  if(preview && F.model) preview.loadModel(F.model);
 }
 
 $('#btn-roster').onclick=()=>{
@@ -747,11 +765,11 @@ $('#btn-roster').onclick=()=>{
       `<div style="font-size:12px;color:var(--dim);font-weight:400;margin-top:4px">${r.desc||r.title||''}</div>`+
       (r.id!=='new'
         ? `<div style="font-size:10px;margin-top:4px"><span class="${r.modelSrc==='exact'?'owned':'price'}">${r.modelSrc==='exact'?'● REAL MODEL':'● BASE MODEL'}</span></div>`
-        : `<div style="font-size:10px;margin-top:4px"><span class="owned">● SOLDIER BASE RIG</span></div>`)+
+        : `<div style="font-size:10px;margin-top:4px"><span class="owned">● TEMPLATE BASE</span></div>`)+
       `</button>`).join('')+`</div>`;
   }).join('');
   modal('FIGHTER SELECT', groups+
-    `<div class="note">Roster fighters load their real GLB from <span class="mono">game/assets/models/</span> — bodies are canon, BODY tab locks. NEW FIGHTER gets full BODY access on the Soldier base rig. <span class="owned">● REAL MODEL</span> = fighter-specific GLB · <span class="price">● BASE MODEL</span> = shared base until a dedicated extraction lands.</div>`,
+    `<div class="note">Roster fighters load their real GLB from <span class="mono">game/assets/models/</span> — bodies are canon, BODY tab locks. NEW FIGHTER opens the <b>template select</b> first: pick a WWE-style base template, then customize everything. <span class="owned">● REAL MODEL</span> = fighter-specific GLB · <span class="price">● BASE MODEL</span> = shared base until a dedicated extraction lands.</div>`,
     [{label:'CLOSE',cls:'btn-gold'}]);
   document.querySelectorAll('[data-r]').forEach(b=>b.onclick=()=>{
     selectBase(b.dataset.r);
@@ -829,21 +847,26 @@ $('#file-load').onchange=e=>{
 async function boot(){
   const had=loadStored();
   try{
-    const [pi,md,ms,rb]=await Promise.all([
+    const [pi,md,ms,rb,bt,fp,st,fpa]=await Promise.all([
       fetch('data/PARTS-INDEX.json').then(r=>r.json()),
       fetch('data/MOVE-DATABASE.json').then(r=>r.json()),
       fetch('data/MOVE-SLOTS.json').then(r=>r.json()),
       fetch('data/ROSTER-BASE.json').then(r=>r.json()),
+      fetch('../templates/body-templates.json').then(r=>r.json()),
+      fetch('../templates/face-presets.json').then(r=>r.json()),
+      fetch('../templates/skin-tones.json').then(r=>r.json()),
+      fetch('../templates/face-parts.json').then(r=>r.json()),
     ]);
     catalog=new Catalog(pi); moveDb=md; moveSlots=ms;
+    TEMPLATES={ body:bt.templates||[], faces:fp.presets||[], tones:st.tones||[], parts:fpa.categories||[] };
     ROSTER=[
-      { id:'new', name:'NEW FIGHTER', desc:'WMXIX default CAW base', glb:SOLDIER_GLB, tier:'custom', modelSrc:'exact' },
+      { id:'new', name:'NEW FIGHTER', desc:'Template select — pick your base', glb:null, tier:'custom', modelSrc:'template' },
       ...rb.fighters.map(f=>({ id:f.id, name:f.name, desc:f.title, title:f.title, glb:f.glb,
         tier:f.tier, modelSrc:f.modelSrc, style:f.style, archetype:f.archetype, base:f.base })),
     ];
     // a stored fighter may reference a base that no longer exists — fall back to new
-    if(!ROSTER.some(r=>r.id===F.base)){ F.base='new'; F.model=SOLDIER_GLB; }
-    if(!F.model) F.model=SOLDIER_GLB;
+    if(!ROSTER.some(r=>r.id===F.base)){ F.base='new'; F.model=null; F.template=null; }
+    if(F.base==='new' && !F.template){ F.model=null; }  // template select owns it
   }catch(e){
     console.error('data load failed',e);
     document.getElementById('loader').innerHTML='<div>DATA LOAD FAILED — serve over http</div>';
@@ -851,10 +874,18 @@ async function boot(){
   }
   preview=new Preview3D($('#preview3d'));
   window.__preview=preview;   // debug/testing handle
+  // hook for the creation-flow module (template select + WWE step wizard + jobs)
+  window.__suite={ get F(){return F;}, set F(v){F=v;}, get ui(){return ui;},
+    get catalog(){return catalog;}, get preview(){return preview;},
+    get TEMPLATES(){return TEMPLATES;}, templateMeshUrl,
+    renderAll, setTab, selectBase, toast, modal, closeModal, esc,
+    blankFighter, persistQuiet };
   preview.onReady=()=>{ renderAll(); };
-  // load the stored/current fighter's model (roster GLB or Soldier base)
-  if(F.model && F.model!==SOLDIER_GLB) preview.loadModel(F.model);
+  preview.onModelError=()=>{ if(window.__flow&&window.__flow.openTemplateSelect) window.__flow.openTemplateSelect(true); };
+  // load the stored/current fighter's model (roster GLB or template base)
+  if(F.model) preview.loadModel(F.model);
   renderAll();
-  if(!had) toast('New fighter — start with BODY');
+  if(!had){ if(window.__flow&&window.__flow.openTemplateSelect) window.__flow.openTemplateSelect(); else toast('New fighter — start with BODY'); }
+  else if(F.base==='new' && !F.template && window.__flow&&window.__flow.openTemplateSelect){ window.__flow.openTemplateSelect(); }
 }
 boot();

@@ -105,7 +105,19 @@ export const MODEL_URLS = {
   'awa-pop-attire2': '../roster/awa-pop/attires/attire2/model-rigged.glb',
   'purple-rain': '../roster/purplerain/attires/attire1/model-rigged.glb',
   nightwolf: 'assets/models/nightwolf.glb',
+  // NIGHTWOLF Attire 1 (owner 2026-10-18, Tripo pull 5b0835eb "tribal warrior"):
+  // his DEFAULT attire per roster/nightwolf/attires/ATTIRE-SLOTS.md — tribute to
+  // Serena Misae Brown. Unrigged static; playable swap rides the auto-rig pass.
+  'nightwolf-attire1': '../roster/nightwolf/attires/attire1/model.glb',
   'king-tyrant': 'assets/models/king-tyrant.glb',
+  // KING TYRANT Attires 1-4 (owner 2026-10-19, Tripo pulls — see
+  // roster/king-tyrant/attires/ATTIRE-SLOTS.md): White Tyrant / Tyrant King /
+  // Black Snow / Fight Gear. The in-game base build ladders back. Unrigged
+  // statics; auto-rig queued (cape/jacket cloth-rig tasks recorded, not blocking).
+  'king-tyrant-attire1': '../roster/king-tyrant/attires/attire1/model.glb',
+  'king-tyrant-attire2': '../roster/king-tyrant/attires/attire2/model.glb',
+  'king-tyrant-attire3': '../roster/king-tyrant/attires/attire3/model.glb',
+  'king-tyrant-attire4': '../roster/king-tyrant/attires/attire4/model.glb',
   // KINPO Attire 1 (owner 2026-10-20): his Tripo pull is her MAIN attire.
   kinpo: '../roster/kinpo/attires/attire1/model-rigged.glb',
   'kinpo-attire1': '../roster/kinpo/attires/attire1/model-rigged.glb',
@@ -166,6 +178,10 @@ export const MODEL_URLS = {
   // Mariposa Slot 2: the real Tripo pull (owner 2026-10-19; Butterfly Default is Slot 1).
   'mariposa-slot2': '../roster/mariposa/attires/slot2/model.glb',
   zafina: 'assets/models/zafina.glb',
+  // ZAFINA Golden Pharaoh (owner 2026-10-18 — see roster/zafina/attires/ATTIRE-SLOTS.md):
+  // custom Western Heart pharaoh reskin of the Tekken Zafina P1 build. Mary Posa goes
+  // over Zafina, so this ladders into Mariposa's attires behind her customs.
+  'zafina-golden-pharaoh': '../roster/zafina/attires/golden-pharaoh/zafina-golden-pharaoh.glb',
   dxmmii: 'assets/models/dxmmii.glb',
   rave: 'assets/models/rave.glb',
   // Cain Elias — Vain Abel's brother, Undertaker archetype (owner 2026-10-19, Tripo pulls).
@@ -204,8 +220,20 @@ export const MODEL_URLS = {
   'burger-demon': '../roster/burger/attires/attire1/model.glb',
   // Gyou spirit form (owner 2026-10-19, Tripo pull).
   'gyou-spirit': '../roster/gyou/attires/spirit-form/model.glb',
-  lili: 'assets/models/lili.glb',   // NO WH name yet — do not assign
+  lili: 'assets/models/lili.glb',   // base T7 Lili build (Silvertongue's Tekken base)
+  // SILVERTONGUE (owner 2026-10-18: proprietary name, retired "Lili" — never use the
+  // old name; see roster/silvertongue/ATTIRE-SLOTS.md): Slot 1 Tripo Main "Metallic
+  // Bodysuit" (2e20f9eb, unrigged static), Slot 2 Spy Debut, Slot 3 Rated-M Nude
+  // (fully rigged 22-bone), Slot 4 Noir Gala (Tekken-based reskin, ladders back).
+  'silvertongue': '../roster/silvertongue/attires/attire1/model.glb',
+  'silvertongue-spy-debut': '../roster/silvertongue/attires/spy-debut/silvertongue-spy-debut.glb',
+  'silvertongue-attire3': '../roster/silvertongue/attires/attire2/model.glb',
+  'silvertongue-noir-gala': '../roster/lili/attires/noir-gala/lili-noir-gala.glb',
   baek: 'assets/models/baek.glb',   // KEVIN's A2 attire (original Baek model)
+  // KEVIN A1 (owner 2026-10-18): Kevin's Tripo ("human figure", God Molecule canon) —
+  // his DEFAULT attire per roster/baek/attires/ATTIRE-SLOTS.md. Unrigged static;
+  // live-game default swap rides the auto-rig pass.
+  'kevin-tripo': '../roster/baek/attires/attire1/model.glb',
   // Round-2 auto-rig wave (lane B): re-rigged per-fighter variants + Tripo
   // attires, all passing the playable gate (valid glTF, skinned, Hips, 1.5-2.2m).
   // 'demonio-body' round-2 re-rig variant was never pushed to the repo;
@@ -216,6 +244,11 @@ export const MODEL_URLS = {
   'jin-body': 'assets/models/jin-body.glb',
   'rin-body': 'assets/models/rin-body.glb',
   'jin-t7': 'assets/models/jin.glb',
+  // JIN KAZAMA "Bloodline Ember" (owner 2026-10-18 — see
+  // roster/jin/attires/bloodline-ember/README.md): devil-gene texture reskin of the
+  // Jin Kazama base. Ladders into Phantom's attires (Yoshimitsu/Jin re-home rule).
+  // NOTE: this is Jin KAZAMA — the Eastern Mind Jin still needs his own model.
+  'jin-bloodline-ember': '../roster/jin/attires/bloodline-ember/jin-bloodline-ember.glb',
   'king-tyrant_alt1': 'assets/models/king-tyrant_alt1.glb',
   'kinpo-t8': 'assets/models/kinpo-t8.glb',
   'kinpo_alt1': 'assets/models/kinpo_alt1.glb',
@@ -256,6 +289,15 @@ export const MODEL_URLS = {
   // Christie 2P textures restored from the source TXD. The original
   // star.glb stays in place, untouched, as the fallback file.
   star: 'assets/models/star-house49.glb',
+  // STAR Attires 1-3 + 5 (owner 2026-10-18, Tripo pull ea73eeb3 — see
+  // roster/star/ATTIRE-SLOTS.md): A1 Red Latex (DEFAULT Tripo main), A2 After Dark
+  // + A3 Capoeira Gold (texture colorways on the Tripo base), A5 rated-M lane
+  // (improved build; model.glb superseded, kept on disk). Unrigged statics;
+  // playable swap rides the auto-rig pass.
+  'star-attire1': '../roster/star/attires/attire1/model.glb',
+  'star-attire2': '../roster/star/attires/attire2/model.glb',
+  'star-attire3': '../roster/star/attires/attire3/model.glb',
+  'star-attire5': '../roster/star/attires/attire5/model-improved.glb',
   torch: 'assets/models/torch.glb',
   // TORCH Attire 1 (owner 2026-10-21): Tripo original 'Valkyrie of Flame'
   // (300d0c63), auto-rigged via tools/auto_rig/rig_tripo_static.py; raw pull
@@ -266,6 +308,12 @@ export const MODEL_URLS = {
   // archived in release torch-a2-tripo-20261021. Ladder: roster/torch/ATTIRE-SLOTS.md.
   'torch-tripo-a2': 'assets/models/torch-tripo-a2.glb',
   michiko: 'assets/models/michiko.glb',
+  // MICHIKO's Tripo originals (owner 2026-10-21): Attire 1 "bone goddess"
+  // + Attire 2 "biker chick" — ladder in attires.js, provenance in
+  // roster/michiko/ATTIRE-SLOTS.md. The Katarina-based model above stays
+  // as her fallback attire.
+  'michiko-attire1': '../roster/michiko/attires/attire1/model-rigged.glb',
+  'michiko-attire2': '../roster/michiko/attires/attire2/model-rigged.glb',
   dio: 'assets/models/dio.glb',
   bruno: 'assets/models/bruno.glb',
   yukihyo: 'assets/models/yukihyo.glb',
@@ -294,6 +342,9 @@ export const MODEL_URLS = {
   // CHARGER Attire 1 (2026-10-21, lane 4 rig batch 1): unrigged Tripo static -> model-rigged.glb
   // via tools/auto_rig knn backend (donor pantera.glb); original model.glb untouched.
   charger: '../roster/charger/attires/attire1/model-rigged.glb',
+  // DOROWANI (owner 2026-10-22): Gon's WH replacement. Unrigged Tripo static
+  // (see roster/dorowani/RIG-SPEC.md); k-NN rig from pantera donor is the planned path.
+  dorowani: '../roster/dorowani/attires/attire1/source/dorowani-a1-crimson-cheeks.glb',
   // CHARGER Attire 2 (2026-10-21, lane 4 rig batch 1): unrigged Tripo static -> model-rigged.glb
   // via tools/auto_rig knn backend (donor pantera.glb); original model.glb untouched.
   'charger-attire2': '../roster/charger/attires/attire2/model-rigged.glb',

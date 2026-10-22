@@ -25,28 +25,104 @@
   <!-- ====================== RENDER CANVAS ====================== -->
   <canvas id="game-canvas"></canvas>
 
-  <!-- ====================== MAIN MENU ====================== -->
-  <section id="screen-menu" class="screen active">
-    <div class="menu-bg" style="background-image: url('assets/ui/title-bg.png'); background-size: cover; background-position: center;"></div>
-    <div class="menu-content">
-      <h1 class="game-title">WESTERN<span>HEART</span></h1>
-      <p class="slogan">a lost multiverse bastard child —<br />familiar enough to pick up, strange enough to never put down</p>
-      <div class="menu-buttons">
-        <button class="btn-primary" data-action="mode-arcade">ARCADE</button>
-        <button class="btn-primary" data-action="mode-versus">VERSUS</button>
-        <button class="btn-primary" data-action="mode-story">STORY</button>
-        <button class="btn-primary" data-action="mode-training">TRAINING</button>
-        <button class="btn-primary" data-action="mode-survival">SURVIVAL</button>
-        <button class="btn-primary" data-action="mode-timeattack">TIME ATTACK</button>
-        <button class="btn-primary" data-action="mode-team">TEAM BATTLE</button>
-        <button class="btn-primary" data-action="mode-qombat">不死クォンバット</button>
-        <button class="btn-primary" data-action="mode-surge">SOUL SURGE GAUNTLET</button>
-        <button class="btn-primary" data-action="mode-trader">TRADER'S MIMIC</button>
-        <button class="btn-ghost" data-action="mode-create">CREATE FIGHTER</button>
-        <button class="btn-ghost" data-action="howto">HOW TO PLAY</button>
+  <!-- ====================== MAIN MENU ======================
+       TEKKEN 8-style main menu (2026-10-22, worker 37): T8 visual
+       grammar adapted for phone — hero backdrop, top player bar
+       (player card + Soul Urge pips + rank badge), vertical rail of
+       large italic condensed items, bottom status bar; submenus
+       slide in T8-style. T7 hierarchy underneath:
+       STORY / VERSUS / ONLINE / ARCADE / SIDE GAMES / TRAINING /
+       CREATION SUITE / COLLECTION / DAILY / OPTIONS.
+       Ranked modes ride worker 30's rank system (js/ranks.js,
+       data/ranks.json): mode-rankbattle + show-ranks hub. -->
+  <section id="screen-menu" class="screen active mm">
+    <div class="mm-hero" aria-hidden="true">
+      <div class="mm-hero-bg" style="background-image: url('assets/ui/title-bg.png');"></div>
+      <div class="mm-hero-wash"></div>
+      <div class="mm-embers">
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
       </div>
-      <p class="credit">SHRINE OF THE BLADE · best of 3 · phone &amp; desktop</p>
     </div>
+
+    <!-- T8 top bar: player card · Soul Urge · rank -->
+    <header class="mm-topbar">
+      <button class="mm-pcard" id="mm-pcard" aria-label="Player card">
+        <span class="mm-avatar" id="mm-avatar">W</span>
+        <span class="mm-pmeta">
+          <span class="mm-pname" id="mm-pname">WANDERER</span>
+          <span class="mm-ptitle" id="mm-ptitle">Lost Soul</span>
+        </span>
+      </button>
+      <div class="mm-soulurge" id="mm-soulurge" role="img" aria-label="Soul Urge: the Nine-Soul Meter">
+        <span class="mm-su-label">SOUL URGE</span>
+        <span class="mm-pips" id="mm-pips" aria-hidden="true"></span>
+      </div>
+      <button class="mm-rank" id="mm-rank" data-action="show-ranks" aria-label="Rank hall">
+        <span class="mm-rank-name" id="mm-rank-name">LOST SOUL</span>
+        <span class="mm-rank-sub" id="mm-rank-sub">RANK HALL</span>
+      </button>
+    </header>
+
+    <div class="mm-brand" aria-hidden="true">
+      <h1 class="mm-logo">WESTERN<span>HEART</span></h1>
+    </div>
+
+    <nav class="mm-list" id="mm-list" aria-label="Main menu">
+      <button class="mm-item" data-mm="story"><i>01</i><span>STORY<small>The Trial · Episodes · Heart &amp; Mind Within</small></span></button>
+      <button class="mm-item" data-mm="versus"><i>02</i><span>VERSUS<small>1v1 · Team Battle</small></span></button>
+      <button class="mm-item" data-mm="online"><i>03</i><span>ONLINE<small>Ranked Battle · Rank Hall · Tournament</small></span></button>
+      <button class="mm-item" data-mm="arcade"><i>04</i><span>ARCADE<small>Ladder · Survival · Time Attack</small></span></button>
+      <button class="mm-item" data-mm="sidegames"><i>05</i><span>SIDE GAMES<small>Qombat · Soul Surge · Trader</small></span></button>
+      <button class="mm-item" data-mm="training"><i>06</i><span>TRAINING<small>Lab · Gungaku fight lab</small></span></button>
+      <button class="mm-item" data-action="mode-create"><i>07</i><span>CREATION SUITE<small>Create Fighter</small></span></button>
+      <button class="mm-item" data-mm="collection"><i>08</i><span>COLLECTION<small>Gallery · Jukebox · Replays</small></span></button>
+      <button class="mm-item" data-mm-forge="daily"><i>09</i><span>DAILY CHALLENGES<small class="soon">IN THE FORGE</small></span></button>
+      <button class="mm-item" data-mm="options"><i>10</i><span>OPTIONS<small>Settings · Records · How to play</small></span></button>
+    </nav>
+
+    <footer class="mm-bottombar">
+      <span class="mm-ver" id="mm-ver">WESTERN HEART</span>
+      <span class="mm-news" id="mm-news"></span>
+    </footer>
+
+    <!-- T8-style slide-in submenu -->
+    <div class="mm-submenu" id="mm-submenu" hidden>
+      <header class="mm-sub-head">
+        <button class="mm-back" id="mm-sub-back" aria-label="Back">‹</button>
+        <h2 id="mm-sub-title">STORY</h2>
+      </header>
+      <div class="mm-cards" id="mm-cards"></div>
+    </div>
+
+    <!-- Player card editor -->
+    <div class="mm-submenu" id="mm-cardpanel" hidden>
+      <header class="mm-sub-head">
+        <button class="mm-back" id="mm-card-back" aria-label="Back">‹</button>
+        <h2>PLAYER CARD</h2>
+      </header>
+      <div class="mm-cardedit">
+        <label class="mm-field">FIGHTER NAME
+          <input id="mm-name-input" maxlength="16" autocomplete="off" />
+        </label>
+        <label class="mm-field">TITLE
+          <select id="mm-title-input"></select>
+        </label>
+        <button class="btn-primary mm-save" id="mm-card-save">SAVE CARD</button>
+        <p class="mm-note">Your card shows on the top bar, the VS screen and the leaderboards.</p>
+      </div>
+    </div>
+
+    <!-- "In the forge" panel for modes still being built -->
+    <div class="mm-forge" id="mm-forge" hidden role="dialog" aria-label="In the forge">
+      <div class="mm-forge-box">
+        <div class="mm-forge-kicker">IN THE FORGE</div>
+        <h2 id="mm-forge-title">MODE NAME</h2>
+        <p id="mm-forge-desc"></p>
+        <button class="btn-primary" id="mm-forge-ok">BACK TO MENU</button>
+      </div>
+    </div>
+
+    <div class="mm-toast" id="mm-toast" role="status"></div>
   </section>
 
   <!-- ====================== HOW TO PLAY ====================== -->
@@ -74,12 +150,14 @@
   </section>
 
   <!-- ====================== CHARACTER SELECT ======================
-       Tekken setup (teardown record, js/select-screen.js): sticky
-       header (BACK + title + 99s timer); bisected P1/P2 fighters
-       zone (~78%) with LIVE animated 3D models; hints bar
-       (P = attire 1 / K = attire 2, Tekken 1 rule); bottom card
-       strip (~20%) is the ONLY scrolling element and scrolls
-       inside its own box. The page itself never scrolls. -->
+       Tekken 8 grid transplant (2026-10-22): the roster is a T8-style
+       compact GRID of portrait cards (not a strip) — small relative
+       to everything else, P1/P2 cursors, "?" random slot, T8 fact
+       block (fighting style / archetype / origin) and big italic
+       name banners per side, live 3D models with backdrop art wash,
+       bottom hints bar. Look is skin-driven (js/ui-skin.js); the
+       layout lineage is decoded in docs/select-redesign/T8-GRID-DECODE.md.
+       The page itself never scrolls; the grid scrolls inside its own box. -->
   <section id="screen-select" class="screen select-screen">
     <header class="select-header">
       <button class="btn-ghost select-back" data-action="back-menu">BACK</button>
@@ -88,6 +166,7 @@
     </header>
     <div class="fighters-zone">
       <div class="side-pane pane-p1" id="pane-p1">
+        <div class="pane-artwash" aria-hidden="true"><img alt=""></div>
         <canvas class="pane-canvas" id="pane-canvas-p1"></canvas>
         <img class="pane-fallback" alt="" hidden>
         <div class="side-tag">P1</div>
@@ -95,14 +174,13 @@
         <div class="pane-note" hidden>LOADING…</div>
         <div class="pane-plate">
           <div class="pane-name">PLAYER 1</div>
-          <div class="pane-title">Pick a fighter</div>
-          <div class="pane-style"></div>
+          <div class="pane-facts"><!-- T8 fact rows filled by JS --></div>
           <div class="pane-stats"></div>
           <div class="pane-attires attire-strip"><!-- attire chips filled by JS --></div>
         </div>
       </div>
-      <div class="zone-vs">VS</div>
       <div class="side-pane pane-p2" id="pane-p2">
+        <div class="pane-artwash" aria-hidden="true"><img alt=""></div>
         <canvas class="pane-canvas" id="pane-canvas-p2"></canvas>
         <img class="pane-fallback" alt="" hidden>
         <div class="side-tag">P2</div>
@@ -110,56 +188,37 @@
         <div class="pane-note" hidden>LOADING…</div>
         <div class="pane-plate">
           <div class="pane-name">PLAYER 2</div>
-          <div class="pane-title">Pick a fighter</div>
-          <div class="pane-style"></div>
+          <div class="pane-facts"><!-- T8 fact rows filled by JS --></div>
           <div class="pane-stats"></div>
           <div class="pane-attires attire-strip"><!-- attire chips filled by JS --></div>
         </div>
       </div>
     </div>
-    <div class="hints-bar">
-      <button id="attire-punch" class="hint-btn" type="button">P · ATTIRE 1</button>
-      <span id="select-hint">Pick a fighter</span>
-      <button id="attire-kick" class="hint-btn" type="button">K · ATTIRE 2</button>
-      <button id="confirm-fighter" class="btn-primary" disabled>CONFIRM</button>
+    <div class="grid-wrap">
+      <div id="char-grid" class="card-grid"><!-- cards filled by JS (js/select-screen.js) --></div>
     </div>
-    <div class="strip-wrap">
-      <div id="char-grid" class="card-strip"><!-- cards filled by JS (js/select-screen.js) --></div>
+    <div class="hints-bar">
+      <button id="attire-punch" class="hint-btn" type="button"><b class="key">P</b> ATTIRE 1</button>
+      <span id="select-hint">Pick a fighter</span>
+      <button id="attire-kick" class="hint-btn" type="button"><b class="key">K</b> ATTIRE 2</button>
+      <button id="confirm-fighter" class="btn-primary" disabled>CONFIRM</button>
     </div>
   </section>
 
-  <!-- ====================== STAGE SELECT ======================
-       Tekken pattern: sticky header (BACK + title), a scrollable
-       arena GRID grouped by tier, a LARGE PREVIEW of the highlighted
-       arena with its name + description inside the layout (never a
-       floating overlay), sticky footer (hint / RANDOM / FIGHT).
-       Portrait: preview on top, grid scrolls below it. Landscape:
-       grid left, preview right. The grid is the ONLY scrolling
-       element; the page itself never scrolls. -->
-  <section id="screen-stage" class="screen select-screen stage-screen">
+  <!-- ====================== STAGE SELECT (Lane 4) ======================
+       Tekken setup: sticky header (BACK + title), scrolling arena grid
+       grouped by tier (canon lands / Tekken retro), sticky footer. -->
+  <section id="screen-stage" class="screen select-screen">
     <header class="select-header">
       <button class="btn-ghost select-back" data-action="back-select">BACK</button>
       <h2>CHOOSE YOUR ARENA</h2>
       <div class="select-timer" style="visibility:hidden">99</div>
     </header>
-    <div class="stage-body">
-      <div id="stage-grid" class="stage-grid"><!-- filled by JS --></div>
-      <aside class="stage-preview-pane">
-        <div class="stage-preview-media">
-          <img id="stage-preview-img" alt="">
-          <div id="stage-preview-swatch" hidden></div>
-        </div>
-        <div class="stage-preview-info">
-          <div id="stage-preview-name">PICK AN ARENA</div>
-          <div id="stage-preview-universe"></div>
-          <p id="stage-preview-desc"></p>
-        </div>
-      </aside>
-    </div>
+    <div id="stage-grid" class="char-grid stage-grid"><!-- filled by JS --></div>
     <footer class="select-footer">
       <span id="stage-hint">Pick an arena</span>
       <button id="random-stage" class="btn-ghost">RANDOM</button>
-      <button id="confirm-stage" class="btn-primary" disabled>FIGHT</button>
+      <button id="confirm-stage" class="btn-primary" disabled>CONFIRM</button>
     </footer>
   </section>
 
@@ -253,7 +312,7 @@
   </section>
 
   <!-- ====================== STORY: STAGE INTRO ====================== -->
-  <section id="screen-stage-intro" class="screen">
+  <section id="screen-stage" class="screen">
     <div class="panel">
       <p id="stage-kicker" class="stage-kicker"></p>
       <h2 id="stage-title"></h2>

@@ -34,6 +34,8 @@ export const lazy = {
   heartmind: _cached('heartmind', './heartmind.js'),
   /** episodes.js — Character Episodes (its mode tap) */
   episodes: _cached('episodes', './episodes.js'),
+  /** ranks.js — rank ladder, rank battle, rank hall (worker 30) */
+  ranks: _cached('ranks', './ranks.js'),
 };
 
 /* Warm the modules the select screen and first fight need, but only

@@ -17,6 +17,9 @@ import { AIController } from './ai.js';
 import { audio } from './audio.js';
 import { getStage } from './stages.js';
 import { applyFighterProfile } from './customization-consumer.js';
+// LIGHTING RIG (worker 27): per-fighter character light rig — SFV/T7-style
+// character-vs-stage lighting separation + bible soul glow. Fail-silent.
+import { attachCharacterRig } from './lighting-rig.js';
 
 const ROUND_TIME = 60;
 const ROUNDS_TO_WIN = 2;   // best of 3
@@ -102,6 +105,12 @@ export class Game {
     // or break a match. See js/customization-consumer.js.
     applyFighterProfile(this.p1);
     applyFighterProfile(this.p2);
+    // LIGHTING RIG (worker 27): attach each fighter's character light rig —
+    // their own key light (follows them) + soul-glow baseline on the
+    // existing auraLight + soul-tinted emissive (bible: fighters are
+    // luminous sources). No-op-safe; never blocks a match.
+    attachCharacterRig(this.p1, stage);
+    attachCharacterRig(this.p2, stage);
     this.ai = new AIController(this.p2, enemyChar.ai);
     this.ai1 = this.demo ? new AIController(this.p1, playerChar.ai) : null;
 
@@ -161,8 +170,12 @@ export class Game {
     this.p1.meter = this.p2.meter = 0;
     const spawns = getStage(this._stageId || 'shrine').spawns;
     this.p1.root.position.set(spawns.p1, 0, 0); this.p2.root.position.set(spawns.p2, 0, 0);
-    this.p1.facing = 1; this.p1.lean.rotation.y = 0;
-    this.p2.facing = -1; this.p2.lean.rotation.y = Math.PI;
+    // FACING FIX (owner playtest 2026-10-22): the old 0/π values posed the
+    // fighters toward/away from the CAMERA, contradicting fighter.js's
+    // facing*π/2 convention (face the opponent). Snap both to the convention,
+    // visual angle included so no turn tween plays at round start.
+    this.p1.facing = 1; this.p1._faceY = Math.PI / 2; this.p1.lean.rotation.y = Math.PI / 2;
+    this.p2.facing = -1; this.p2._faceY = -Math.PI / 2; this.p2.lean.rotation.y = -Math.PI / 2;
     this.p1.state = 'idle'; this.p2.state = 'idle';
     // Round reset is also a clean break from any in-progress attack: never let
     // a latched attackName (e.g. 'surge') stick the Soul Surge aura on.
