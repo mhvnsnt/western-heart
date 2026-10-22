@@ -80,6 +80,13 @@ export const MOVESET_IDS = [
   // Doc Frank Frankenstein attire (moveset lane 2026-10-21): full gunjack set,
   // sibling attire of doc-frank-hood (identical T3 source data, same DOC FRANK).
   'doc-frank-frankenstein',
+  // T3 round-2 banks (worker 36, 2026-10-22): per-bank moveset files from
+  // tools/gen-movesets-t3.py — 2,528 moves across 13 banks. Banks with WH
+  // fighters (eddy, lei, bosconovitch) already merged via merge_sources.py;
+  // these are the standalone bank files.
+  't3-paul', 't3-law', 't3-lei', 't3-nina', 't3-hwoarang', 't3-eddy',
+  't3-julia', 't3-kuma', 't3-ogre', 't3-anna', 't3-bosconovitch',
+  't3-gon', 't3-forestlaw',
 ];
 
 const _movesets = {};
