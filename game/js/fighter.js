@@ -673,6 +673,8 @@ export class Fighter {
   tryJump() { if (this.canAct() && this.onGround) { this.vy = this.stats.jump; this.onGround = false; this._enter('jump'); } }
   tryBlock(on) {
     if (this.dead) return;
+    // FIGHTER DEPTH (worker 34): soul kindle flash — cannot block during it (T7).
+    if (on && this.kindle && !this.kindle.canBlock()) return;
     if (on && this.canAct() && this.onGround) { this._enter('block'); this._blendW = 0; }
     else if (!on && this.state === 'block') this._enter('idle');
   }
@@ -875,6 +877,9 @@ export class Fighter {
       return 'block';
     }
     let dmg = move.damage * attacker.stats.power / this.stats.defense;
+    // FIGHTER DEPTH (worker 34): soul kindle — the kindled fighter takes
+    // +10% damage while kindled (Tekken 7 ki charge).
+    if (this.kindle) dmg *= this.kindle.damageTakenMult();
     // T3 HitDamage: counter hit when the defender is in the startup of its own attack:
     // d = e + d*12/10, e = |defender move damage| * 3/10 * 3/10 * (frames into startup / startup).
     let counter = false;
@@ -882,6 +887,13 @@ export class Fighter {
       counter = true;
       const prog = this.attack.startup > 0 ? Math.min(1, this.stateT / this.attack.startup) : 1;
       dmg = this.attack.damage * 0.09 * prog + dmg * 1.2;
+    }
+    // FIGHTER DEPTH (worker 34): soul kindle — the attacker's next landed
+    // hit is a guaranteed counter-hit (Tekken 7 ki charge). Consumes the
+    // kindle; CH damage bump matches the T3 formula's x1.2 term.
+    if (!counter && attacker.kindle && attacker.kindle.consumeOnHitLanded()) {
+      counter = true;
+      dmg = dmg * 1.2;
     }
     // Juggle scaling: first airborne hit x0.8, later ones x0.5.
     if (!this.onGround && !move.isGrab) { dmg *= this._juggle === 0 ? 0.8 : 0.5; this._juggle++; }
@@ -914,22 +926,56 @@ export class Fighter {
     if (limb === 'armL') return this.bones.LeftHand;
     return this.bones.RightHand;
   }
+  /* Tekken forward step for the current attack (units/sec). T3 moveset rows
+     carry step_per_frame; when decoded data provides it, use it, otherwise
+     Tekken-standard advance: punches step in modestly, kicks more, at full
+     rate during startup and half once the limb is extended (active). */
+  _attackStep() {
+    const m = this.attack;
+    if (!m) return 0;
+    if (m.stepPerFrame != null && m.stepPerFrame > 0) return m.stepPerFrame;
+    const limb = m.limb || '';
+    const base = limb.startsWith('leg') ? 1.5 : 1.1;
+    return this._attackPhase === 'startup' ? base : base * 0.5;
+  }
   getHitbox() {
     if (this.state !== 'attack' || this._attackPhase !== 'active' || this.hasHit) return null;
     const node = this._weaponBone(); if (!node) return null;
     node.getWorldPosition(_v1);
-    let r = this.attackName === 'surge' ? 1.0 : 0.5;
-    if (this.attack?.isGrab || this.attackName === 'grab' || this.attackName === '1+3' || this.attackName === '2+4') r = 0.95; // generous grab sphere
+    // TEKKEN-STYLE ATTACK BOXES (hitfx 2026-10-22 — teardown/tekken3/docs/
+    // TEKKEN3-RIG-LESSONS.md: hitboxes are simple proxy shapes attached to
+    // bones, sized generously, never the visible mesh). Tekken's attack
+    // boxes LEAD the limb along the attack direction — that lead is the
+    // move's real range. The old code used a tight r=0.5 sphere exactly on
+    // the fist, so strikes only overlapped hurtboxes at point-blank range
+    // (the "1 in 10 attacks land" bug).
+    const name = this.attackName;
+    const limb = this.attack?.limb || '';
+    const isKick = limb.startsWith('leg') || name === 'kick' || name === '3' || name === '4';
+    let r, lead;
+    if (name === 'surge') { r = 1.0; lead = 0.35; }
+    else if (this.attack?.isGrab || name === 'grab' || name === '1+3' || name === '2+4') { r = 0.95; lead = 0.30; }
+    else if (isKick) { r = 0.68; lead = 0.38; }   // kicks reach further
+    else { r = 0.62; lead = 0.30; }               // punch-class
     r *= (this.stats.reachMult || 1); // WOOD force (modes lane): reach extends
-    return { x: _v1.x, y: _v1.y, z: _v1.z, r, move: this.attack };
+    return { x: _v1.x + this.facing * lead, y: _v1.y, z: _v1.z, r, move: this.attack };
   }
   getHurtboxes() {
     if (this.invuln > 0 || this.dead) return [];
     // Throw cinematic: both locked fighters are committed, not hittable.
     if (this.state === 'thrown' || this.state === 'throwing') return [];
+    // TEKKEN-STYLE HURTBOXES (hitfx 2026-10-22): the full torso chain, not
+    // just chest+head. Tekken covers the whole body with proxy volumes;
+    // the old two-sphere set let jabs pass through hips and shoulders.
     const out = [];
-    if (this.bones.Spine1) { this.bones.Spine1.getWorldPosition(_v1); out.push({ x: _v1.x, y: _v1.y, z: _v1.z, r: 0.58 }); }
-    if (this.bones.Head) { this.bones.Head.getWorldPosition(_v1); out.push({ x: _v1.x, y: _v1.y, z: _v1.z, r: 0.34 }); }
+    const add = (bone, r) => {
+      const b = this.bones[bone];
+      if (b) { b.getWorldPosition(_v1); out.push({ x: _v1.x, y: _v1.y, z: _v1.z, r }); }
+    };
+    add('Hips', 0.50);
+    add('Spine1', 0.58);
+    add('Spine2', 0.52);
+    add('Head', 0.34);
     return out;
   }
   registerHit() { this.hasHit = true; this.addMeter(this.attack.soulGain); }
@@ -1009,6 +1055,17 @@ export class Fighter {
 
   _physics(dt, opponent) {
     if (!this.onGround) this.vy -= 22 * dt;
+    // TEKKEN STEP-IN (hitfx 2026-10-22): T3 moveset rows carry step_per_frame
+    // — strikes advance during startup/active (teardown/tekken3/movesets/).
+    // The old code zeroed vx on attack start, so strikes thrown at real
+    // fighting distance whiffed with the attacker planted. Advance the root
+    // directly (positional, like Tekken's per-frame step) instead of via vx
+    // so the attack-state friction below can't eat it.
+    if (this.state === 'attack' && this.onGround && !this.attack?.isGrab &&
+        (this._attackPhase === 'startup' || this._attackPhase === 'active')) {
+      const step = this._attackStep();
+      if (step > 0) this.root.position.x += this.facing * step * dt;
+    }
     if (this.onGround && this.state !== 'walk' && this.state !== 'dodge' && this.state !== 'sidestep' && !(this.state === 'attack' && this.attackName === 'grab')) {
       this.vx *= Math.pow(0.0001, dt);
       if (Math.abs(this.vx) < 0.05) this.vx = 0;

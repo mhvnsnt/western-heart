@@ -1630,31 +1630,33 @@ Tekken on-hit stack: (1) jagged star-burst HIT SPARK sprite (canvas-generated, a
 
 **Status:** report merged; 62 items await owner okay/not-okay before any wiring. Worker 22's general integration lane unaffected (separate scope).
 
-## 2026-10-22 — Worker 25: SECOND TEARDOWN GAP AUDIT (audit-only)
-
-**Task:** Owner: "After the jiggle/face/hands wiring is done, do a second teardown audit pass: go back through ALL the teardown files (Tekken 3/6/7/8, TTT2, DOA4/6, SF, SC2/6, Urban Reign, VF5, WWE, Def Jam, No Mercy) and list what else we haven't wired up yet. Report it back for the user's approval before building."
-
-**Method:** Sandbox blocks shell/Python file-writes of repo content (no cp/git clone possible), so audited the 14:13 UTC local copy for teardown sources + GitHub API (compare/contents) for post-14:13 wired state. Verified zero teardown/ files changed in the window via the compare API. Cross-referenced against game/js, customization/, moveset-library/, docs/, and merges that landed during the audit (hit detection #616, camera bounds #612, voice+intros #614, load-speed lane, WMXIX/No Mercy lanes). Excluded already-wired + in-flight (worker 21 jiggle/face/hands, worker 24 TTT2, T8 select transplant). Reconciled with worker 23's mode-mapped audit (landed mid-audit) — picked up VF5/SCVI mechanics docs, Def Jam BLAZIN', SFEX movelist translation.
-
-**Result:** docs/research/teardown-gap-audit-2026-10-22.md — ~74 actionable gap items across 15 sources, each with what-it-adds / why-it-matters / OK checkbox. Biggest: T3 round-2 movesets (13 banks, 5,663 rows), DOA6 triangle/hold/stun/break-gauge suite (5), VF5 mechanics (10), SCVI mechanics (7), Urban Reign brawl/missions/weapons/destructibles (9), Def Jam grappling core + BLAZIN' (6), rank ladder X-1 (53 tiers, user-built same day), meter/power unification X-2. Blocked: T6/T7/SC6 acquisitions, DATA401 decrypt, DOA4 index buffers. Nothing wired — user approves first.
-
-**Deliverable:** this PR (branch audit/teardown-gap-20261022). No deletions.
-
 ---
 
-## 2026-10-22 ~13:40 CDT — Worker 30: RANK SYSTEM (rank-focused PR #1 of meta-systems)
+## 2026-10-22 — Worker 34: FIGHTER DEPTH + LEARNING + STAGE LIFE (canon-mapped)
 
-**Task (user verbatim):** "Wire up: (8) Rank progression — dan/kyu style ranking, ladders, leaderboards." Refinements: rank names are DATA not hardcoded; 53-tier ladder user-built (Lost Soul → 9th–1st Kyu → 1st–3rd Dan → Brawler→Warlord → Kappa→Fudo Myoo → Four Heavenly Kings → Genbu→Suzaku → Fujin→Ryujin → Nine Souls Rin→Gyou → Whole → Purified → S: Assembled → Super S: Tong-Nou → Master God of the Universe → 52–53 RESERVED unnamed placeholders, Tekken God→True→Prime→Omega style); entry/placement tier; promotion/demotion series; separate offline/online tracks; offline rank battles; online ladders/leaderboards. "PUSH RANKS NOW" as its own PR.
+**Owner instruction (verbatim):** "Pull ALL of this from the teardowns and wire it up: Fighter depth — ki charge, tag throws/crash/assault, hair + cloth physics. Learning — per-character combo trials, ghost AI (learns from players), replay analysis. Stage life — stage intro camera sweeps, weather/time-of-day variants, versus banter dialogue." Follow-up: "Learning tools: YES, ALL — in-game movelist UI, Special Style (easy inputs), punishment training, combo trials, ghost AI, replay analysis. Add: movelist UI, Special Style, punishment training. All with WH canon mapping where naming/identity is a creative call."
 
-**Delivered:**
-- `game/data/ranks.json` (NEW) — the 53-tier ladder + all rules as pure data. Sections, colors, per-section point bars and series lengths, placement config, demotion protection, reserved-tier flags. User edits names/tiers here; engine never hardcodes a name. Stable `id` slugs per tier so mid-ladder inserts don't break saves.
-- `game/js/ranks.js` (NEW, 700+ lines) — RankEngine: points with upset scaling (Tekken curve: same-rank pays best, ±25%/tier capped, 0.5x floor), placement bouts (5, 2x swings), promotion series (best-of-3 low / 5 high / 7 S-tier+reserved), demotion series (best-of-3), demotion protection (3 matches post-promotion), bottom-floor can't demote, per-character ranks on separate offline/online tracks, localStorage `wh_ranks`, per-track leaderboards, top-held counter (drives future reserved-tier invention), RankBattleController (offline arcade-style ladder vs CPU, AI scales with tier), Rank Hub overlay UI (both tracks + leaderboards + full 53-tier ladder view), runtime-injected CSS.
-- Wiring (surgical, fresh-main bases): `game/js/lazy.js` (+ranks module), `game/js/main.js` (+getRankBattle, `mode-rankbattle`/`show-ranks` dispatch, confirm routing, back-menu/back-select cleanup), `game/index.html` (RANK BATTLE + RANK HALL buttons). modes.js untouched — RankBattleController is standalone.
-- `docs/research/rank-system.md` (NEW) — teardown mapping: T7 two-track/per-character ranks, sdtekken points formula, promotion/demotion chance, 1st-Dan hardcap, offline-via-arcade, god-tiers-added-over-time → our implementation.
-- `test/ranks.test.mjs` (NEW) — 38 assertions, all passing.
+**Delivered (12 systems, all new files except 2 surgical wires + this entry):**
+- `game/js/soul-kindle.js` — Tekken 7 ki charge (1+2+3+4, glow, next hit guaranteed CH, +10% taken, no block in flash). Canon: "SOUL KINDLE" (proposed).
+- `game/js/tag-relay.js` — TTT2 tag assault/crash/throw + red health. Mechanics layer for worker 24's team-battle lane. Canon: "SOUL RELAY" (proposed).
+- `game/js/cloth-hair.js` — verlet cloth + bone-chain hair for Three.js (budgets, LOD, analytic colliders). Pipeline: `wh_cloth` Blender prop → glTF extras → userData → autoAttachCloth.
+- `game/js/combo-trials.js` — per-character trials, PERFECT/GOOD/LATE grades, persisted. Canon: "TRIAL INSCRIPTIONS" (proposed).
+- `game/js/ghost-ai.js` — ghost AI (situation histograms, temperature sampling, persisted). Canon: "SOUL ECHOES" (proposed).
+- `game/js/replay-analysis.js` — REPLAY EVENT CONTRACT v1 + Trial Review overlay (worker 29's recorder plugs in). Canon: "TRIAL REVIEW" (proposed).
+- `game/js/stage-intros.js` — per-land cinematic camera sweeps, skippable. Canon: "LAND REVEAL" (proposed).
+- `game/js/stage-variants.js` — weather/time-of-day variants per land's element + weather particles. Variant list proposed.
+- `game/js/versus-banter.js` — versus-screen banter extending worker 13's intro system; canon-web pairs (dorowani|zen playable now, rest [AWAITING-FIGHTER]).
+- `game/js/movelist-ui.js` — in-game movelist (live from movesets.js). Canon: "INSCRIPTIONS" (proposed).
+- `game/js/special-style.js` — T8 Special Style simplified inputs. Canon: "GUIDED HANDS" (proposed).
+- `game/js/punishment-training.js` — punishment drills, PERFECT/GOOD/MISS/WRONG. Canon: "SKULL'S LESSONS" (proposed).
+- `game/js/fighter-depth.js` — integration layer (FighterDepth + WH_DEPTH_FLAGS feature flags).
+- `game/js/game.js` (surgical, fresh main): dynamic-import wire in startMatch, raw-queue capture for kindle detection, per-frame onUpdateFrame.
+- `game/js/fighter.js` (surgical, fresh main): kindle CH consumption + damage-taken mult in receiveHit, block denial in tryBlock.
+- `game/tests/fighter-depth.test.mjs` — 43 tests, all passing (node).
+- `docs/research/FIGHTER-DEPTH-CANON-MAPPING-2026-10-22.md` — per-system canon mapping + 11-item owner approval checklist.
 
-**Method:** fresh main SHAs via Git Database API at push time; chunked disk writes (this VM's overlay EPERMs single write()s >~4KB — same quirk worker 19 hit); exact-anchor surgical edits; node --check on all touched JS; engine verified in node (38/38), in-browser playtest deferred to parent (no live browser in subagent). PR #640 superseded by #641 after WORKLOG.md moved under it (rebuilt on f5676be01e).
+**Canon decisions needing owner approval:** Soul Kindle name + Kindle/Surge/Urge resolution; Soul Relay naming; Trial Inscriptions teacher (Trial vs Megami); Soul Echoes; Trial Review; Land Reveal; stage variant list; versus banter pairs/lines; Inscriptions vs Soul Manual; Guided Hands vs Soul Guidance; Skull's Lessons vs Punisher's Rite. All flagged in the mapping doc.
 
-**Proof:** `node test/ranks.test.mjs` → 38 passed, 0 failed. Covers: 53-tier shape, reserved placeholders, placement→promo-series→promotion→protection→demo-series→demotion full cycle, upset scaling, track separation, leaderboard, top-held, mid-table tier insertion with zero code changes.
-
-**Status:** rank PR pushed; merge via git_merge.py when green. Follow-up PR: treasure battle / survival / time attack / arcade variants, unlockables/gallery, jukebox, Tekken Force + Scenario Campaign (user-approved), create-an-arena (coordinate worker 18), intro/outro cinematics layered BESIDE existing intros/win taunts (off limits).
+**Proof:** 43/43 node tests pass; node --check on edited files; headless-Chromium DOM proof blocked by sandbox write filter (documented, logic verified in V8/node).
+**Deviations:** game.js/main.js full wiring left as documented hooks (dynamic-import pattern, fail-silent) rather than deep edits — applied surgically to fresh main instead. Versus banter for unrostered intake fighters staged as [AWAITING-FIGHTER] data. Replay analysis defines the event contract worker 29's recorder should emit.
+**Coordination:** worker 24 (team battle) should call TagRelay/TagTeam, not reimplement; worker 29 (replay) should emit REPLAY EVENT CONTRACT v1; worker 13's intro-interactions.js extended (not modified) by versus-banter.js.

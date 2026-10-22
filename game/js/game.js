@@ -15,8 +15,10 @@ import { Arena } from './scene.js';
 import { lazy } from './lazy.js';
 import { AIController } from './ai.js';
 import { audio } from './audio.js';
+import { voice } from './voice.js';
 import { getStage } from './stages.js';
 import { applyFighterProfile } from './customization-consumer.js';
+import { HitFX } from './hitfx.js';
 
 const ROUND_TIME = 60;
 const ROUNDS_TO_WIN = 2;   // best of 3
@@ -42,6 +44,9 @@ export class Game {
     this.roundState = 'idle'; // idle | intro | fight | over
     this._roundLockT = 0;
     this._hitStop = 0;
+    // Tekken hit-effect stack (hitfx.js): spark + debris + ring + flash,
+    // dt-driven so hitstop freezes the whole stack like Tekken.
+    this.hitfx = new HitFX(this.arena.scene);
 
     /* ---- hit-feel tuning (review-stage tuner, training mode) ----
        Multipliers on top of the wired hit-feel values (Tekken teardown
@@ -74,6 +79,10 @@ export class Game {
      fighter internals directly. */
   async startMatch(playerChar, enemyChar, stageId, opts = {}) {
     this.resetFightState();
+    // VOICE (2026-10-22): unlock the voice pipeline (builds the subtitle
+    // layer; the AudioContext unlock inside is idempotent — main.js
+    // unlockAudio owns the gesture).
+    voice.unlock();
     // LOADSPEED: warmed during menu idle; usually cached by fight time.
     const { Fighter, setArenaLimit } = await lazy.fighter();
     // Modes lane: per-match round target (default = classic best-of-3).
@@ -116,6 +125,38 @@ export class Game {
     // Stage content streams in (Tekken retro OBJs fetch async); the fight
     // intro runs on the base arena while the shell loads.
     this.arena.setStage(stage.id);
+    // INTRO INTERACTION (2026-10-22): Tekken-style pre-fight character
+    // exchange, played in-engine (both fighters live in the arena)
+    // before round 1. Skippable; modes opt out via
+    // opts.skipIntroInteraction. The interaction module loads on demand
+    // (dynamic import) so the menu boot path stays lean.
+    if (!opts.skipIntroInteraction) {
+      try {
+        const { playIntroInteraction } = await import('./intro-interactions.js');
+        // Idle the fighters behind the dialogue: their update() only runs
+        // during rounds, so pump it on a timer for the beat's duration.
+        const idlePump = setInterval(() => {
+          try {
+            if (this.p1 && this.p2 && !this.p1.dead && !this.p2.dead) {
+              this.p1.update(1 / 60, this.p2);
+              this.p2.update(1 / 60, this.p1);
+            }
+          } catch (e) { /* never break the intro on animation */ }
+        }, 1000 / 60);
+        await playIntroInteraction(this, playerChar, enemyChar);
+        clearInterval(idlePump);
+      } catch (e) { console.warn('[WH] intro interaction failed:', e?.message || e); }
+    }
+    // FIGHTER DEPTH (2026-10-22, worker 34): ki charge, tag relay, cloth/hair,
+    // combo trials, ghost AI, replay analysis, stage intros/variants, versus
+    // banter, movelist UI, special style, punishment training. Dynamic import
+    // so the menu boot path stays lean; every system feature-flagged in
+    // WH_DEPTH_FLAGS and fail-silent here.
+    try {
+      const { FighterDepth } = await import('./fighter-depth.js');
+      this._whDepth = FighterDepth;
+      FighterDepth.onMatchStart(this, { stageDef: stage, variantId: opts.variantId, skipIntro: opts.skipIntro });
+    } catch (e) { console.warn('[WH] fighter-depth wire failed:', e?.message || e); }
     this._startRound();
     // Modes lane: HP carry-over (survival / team battle / qombat) —
     // applied after _startRound's full-heal so the carry is exact.
@@ -212,6 +253,9 @@ export class Game {
       }
     }
 
+    // Tekken hitstop freezes EVERYTHING (hitfx 2026-10-22): the effect stack
+    // gets dt=0 while the sim is frozen, so the spark holds then bursts.
+    this.hitfx.update(this._hitStop > 0 ? 0 : frameDt);
     this.arena.update(frameDt, this.p1, this.p2);
     this.arena.render();
   }
@@ -262,7 +306,12 @@ export class Game {
               }
             }
           }
-        } else for (const act of inp.consume()) {
+        } else {
+          const whQueue = inp.consume();
+          // FIGHTER DEPTH (worker 34): soul kindle (ki charge) watches the
+          // raw queue for the 1+2+3+4 press.
+          if (this._whDepth) this._whDepth.onPlayerQueue(this.p1, whQueue, dt);
+          for (const act of whQueue) {
           if (act === 'punch' || act === 'kick' || act === 'grab' ||
               act === '1' || act === '2' || act === '3' || act === '4' ||
               act === '1+3' || act === '2+4' || act === '1+2' || act === '3+4' ||
@@ -286,6 +335,7 @@ export class Game {
           else if (act === 'transform-down') {
             if (this.p1.tryTransform('down')) { audio.soulSurge(this.p1.char.id); rec('transform-down'); }
           }
+          } // end for (const act of whQueue) — fighter-depth wire
         }
       }
 
@@ -314,15 +364,17 @@ export class Game {
           this.ui.throwBreakPrompt(false);
           if (result === 'ko') {
             audio.ko(); audio.grunt(def.isPlayer ? 1.1 : 0.85);
-            this.arena.shake(0.5 * this.feel.shake, 0.4 * this.feel.shake);
-            this._hitStop = 0.12 * this.feel.hitstop;
-            this._spawnImpact(def.root.position.x, 1.2, def.root.position.z, 0xffcf4d, 1.4);
+            this.arena.shake(0.6 * this.feel.shake, 0.45 * this.feel.shake);
+            this._hitStop = 0.18 * this.feel.hitstop;
+            this.hitfx.spawn('ko', def.root.position.x, 1.2, def.root.position.z,
+              { dirX: Math.sign(def.root.position.x - atk.root.position.x) || 1 });
           } else if (result && result !== 'dodge') {
             audio.grab(); audio.grunt(def.isPlayer ? 1.05 : 0.9);
             this.arena.shake(0.45 * this.feel.shake, 0.28 * this.feel.shake);
             this._hitStop = 0.1 * this.feel.hitstop;
-            this._spawnImpact(def.root.position.x, 1.2, def.root.position.z,
-              atk.char.colors.trim || 0xffffff, 1.3);
+            this.hitfx.spawn('grab', def.root.position.x, 1.2, def.root.position.z,
+              { color: atk.char.colors.trim || 0xffffff, scale: 1.2,
+                dirX: Math.sign(def.root.position.x - atk.root.position.x) || 1 });
             const combo = atk.registerCombo();
             this.ui.combo(Math.max(1, combo));
           }
@@ -332,6 +384,10 @@ export class Game {
       // --- Combat resolution ---
       this._resolveCombat(this.p1, this.p2);
       this._resolveCombat(this.p2, this.p1);
+
+      // FIGHTER DEPTH (worker 34): per-frame systems — kindle timers,
+      // tag relay, stage intro camera.
+      if (this._whDepth) this._whDepth.onUpdateFrame(this, dt);
 
       // --- HUD ---
       this.ui.updateHP(this.p1, this.p2);
@@ -400,29 +456,44 @@ export class Game {
 
         if (result === 'block') {
           audio.block();
-          this._hitStop = 0.04 * this.feel.hitstop;
+          // Tekken block presentation: pale-blue spark, short freeze, small thump.
+          this._hitStop = 0.05 * this.feel.hitstop;
+          this.arena.shake(0.08 * this.feel.shake, 0.12);
+          this.hitfx.spawn('block', hb.x, hb.y, hb.z, { dirX: Math.sign(defender.root.position.x - attacker.root.position.x) || 1 });
           attacker.combo = 0;
         } else if (result === 'dodge') {
           // whiffed into i-frames, nothing
         } else if (result === 'ko') {
           audio.ko(); audio.grunt(defender.isPlayer ? 1.1 : 0.85);
-          this.arena.shake(0.5 * this.feel.shake, 0.4 * this.feel.shake);
-          this._hitStop = 0.12 * this.feel.hitstop;
-          this._spawnImpact(hb.x, hb.y, hb.z, 0xffcf4d, 1.4);
+          this.arena.shake(0.6 * this.feel.shake, 0.45 * this.feel.shake);
+          this._hitStop = 0.18 * this.feel.hitstop;
+          this.hitfx.spawn('ko', hb.x, hb.y, hb.z, { dirX: Math.sign(defender.root.position.x - attacker.root.position.x) || 1 });
         } else {
           const isGrab = !!hb.move.isGrab;
           const isHeavy = hb.move.knock >= 4;
+          const isCounter = result === 'counter';
+          const isSurge = attacker.attackName === 'surge';
           if (attacker.attackName === 'kick') audio.kick();
           else if (attacker.attackName === 'grab') audio.grab();
-          else if (attacker.attackName === 'surge') { /* surge sound played on startup */ }
+          else if (isSurge) { /* surge sound played on startup */ }
           else audio.punch();
           audio.grunt(defender.isPlayer ? 1.05 : 0.9);
-          this.arena.shake((isGrab ? 0.45 : isHeavy ? 0.35 : 0.18) * this.feel.shake, (isGrab ? 0.28 : 0.18) * this.feel.shake);
-          this._hitStop = (isGrab ? 0.1 : isHeavy ? 0.08 : 0.05) * this.feel.hitstop;
-          const col = attacker.attackName === 'surge'
+          // Tekken-tiered hitstop + shake: light < heavy < counter.
+          this.arena.shake(
+            (isCounter ? 0.5 : isGrab ? 0.45 : isHeavy ? 0.4 : 0.22) * this.feel.shake,
+            (isCounter ? 0.3 : isGrab ? 0.28 : 0.2) * this.feel.shake);
+          this._hitStop = (isCounter ? 0.14 : isGrab ? 0.1 : isHeavy ? 0.11 : 0.08) * this.feel.hitstop;
+          // Tekken hit-condition presentation (hitfx.js): gold spark on hit,
+          // red-orange on counter, ring on heavies, character surge color kept.
+          const fxType = isSurge ? 'surge' : isCounter ? 'counter' : isGrab ? 'grab' : isHeavy ? 'heavy' : 'hit';
+          const fxColor = isSurge
             ? (attacker.char.surge?.color ?? attacker.char.colors.trim ?? 0xffffff)
-            : (attacker.char.colors.trim || 0xffffff);
-          this._spawnImpact(hb.x, hb.y, hb.z, col, isGrab ? 1.3 : isHeavy ? 1 : 0.6);
+            : undefined;
+          this.hitfx.spawn(fxType, hb.x, hb.y, hb.z, {
+            color: fxColor,
+            scale: isGrab ? 1.2 : isHeavy ? 1.1 : 0.9,
+            dirX: Math.sign(defender.root.position.x - attacker.root.position.x) || 1,
+          });
 
           const combo = attacker.registerCombo();
           // HITS counter: show on EVERY landed hit, not just 2+ combos.
@@ -434,40 +505,11 @@ export class Game {
     }
   }
 
-  /* Cheap particle burst at impact point */
+  /* Legacy shim (hitfx 2026-10-22): the prototype sphere-burst is gone;
+     all impact presentation now goes through the Tekken hit-effect stack
+     (js/hitfx.js). Kept so any lane still calling _spawnImpact keeps working. */
   _spawnImpact(x, y, z, color, scale) {
-    const geo = new THREE.SphereGeometry(0.18, 8, 8);
-    const mat = new THREE.MeshBasicMaterial({ color, transparent: true, opacity: 1 });
-    const group = new THREE.Group();
-    const parts = [];
-    for (let i = 0; i < 8; i++) {
-      const m = new THREE.Mesh(geo, mat.clone());
-      const a = (i / 8) * Math.PI * 2;
-      m.userData.v = new THREE.Vector3(Math.cos(a) * 4, Math.sin(a) * 4 + 1, (Math.random() - 0.5) * 2);
-      group.add(m); parts.push(m);
-    }
-    const flash = new THREE.Mesh(new THREE.SphereGeometry(0.5 * scale, 12, 12),
-      new THREE.MeshBasicMaterial({ color, transparent: true, opacity: 0.9 }));
-    group.add(flash);
-    group.position.set(x, y, z);
-    group.scale.setScalar(scale);
-    this.arena.scene.add(group);
-
-    let life = 0.35;
-    const tick = () => {
-      life -= 0.016;
-      const f = Math.max(0, life / 0.35);
-      flash.scale.setScalar(1 + (1 - f) * 2);
-      flash.material.opacity = f * 0.9;
-      for (const p of parts) {
-        p.position.addScaledVector(p.userData.v, 0.016);
-        p.material.opacity = f;
-        p.scale.setScalar(f);
-      }
-      if (life > 0) requestAnimationFrame(tick);
-      else this.arena.scene.remove(group);
-    };
-    requestAnimationFrame(tick);
+    this.hitfx.spawn('hit', x, y, z, { color, scale: scale || 1 });
   }
 
   /* AI-driven Soul Surge presentation (same as the player's) */
@@ -491,9 +533,11 @@ export class Game {
     this._roundLockT = 3.0;
     this.input.enable(false);
 
+    // VOICE (2026-10-22): the winner's win-pose voice line. Fire-and-forget —
+    // never blocks the 3 s win beat; subtitle-only until recordings land.
     const p1Down = this.p1.hp <= 0, p2Down = this.p2.hp <= 0;
-    if (p1Down && !p2Down) { this.wins.p2++; this.p1._knockout(-1); this.p2.victory(); this.ui.banner('K.O.'); }
-    else if (p2Down && !p1Down) { this.wins.p1++; this.p2._knockout(1); this.p1.victory(); this.ui.banner('K.O.'); }
+    if (p1Down && !p2Down) { this.wins.p2++; this.p1._knockout(-1); this.p2.victory(); this.ui.banner('K.O.'); voice.play(this.p2.char.id, 'win'); }
+    else if (p2Down && !p1Down) { this.wins.p1++; this.p2._knockout(1); this.p1.victory(); this.ui.banner('K.O.'); voice.play(this.p1.char.id, 'win'); }
     else { this.wins.p1++; this.wins.p2++; this.ui.banner('DOUBLE K.O.'); }
 
     this.ui.setRounds(this.wins);
