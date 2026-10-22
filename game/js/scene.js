@@ -11,6 +11,10 @@ import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 import { getStage, buildStage, disposeStage } from './stages.js';
+// Per-stage color grade (worker 27 lighting rig): tone-mapping exposure +
+// bloom strength from the stage's lighting.grade block. Serves the bible's
+// "luminous darkness" — each land gets its own grade.
+import { applyGrade } from './lighting-rig.js';
 
 export class Arena {
   constructor(canvas, stageId = 'shrine') {
@@ -79,6 +83,7 @@ export class Arena {
       this.scene.add(built.group);
       this.scene.background = built.skyTex;
       this.scene.fog = built.fog;
+      applyGrade(this, def);
       console.log(`[WH] stage loaded: ${def.name} (${def.id})`);
     } catch (e) {
       console.error(`[WH] stage ${stageId} failed to build:`, e);
