@@ -11,6 +11,7 @@ Owner directive (verbatim): *"After the jiggle/face/hands wiring is done, do a s
 - **Excluded (already wired):** Tekken hit detection + hit effects (PR #616), Tekken camera bounds port (#612), voice pipeline + intro interaction system (#614), menu load-speed fixes (lazy.js / loadperf / VGS atlas), TTT2-style team battle mode, T3 motion banks 1–7 + movesets, No Mercy arenas, WMXIX clip/move indexes + mat-legends stages + CAW catalog, SF moveset JSONs (sf-*.json), DOA moveset JSONs (doa-*.json).
 - **Excluded (in flight, will be wired):** worker 21 jiggle/face/hands wiring; worker 24 TTT2 work; T8 character-select grid transplant (`docs/select-redesign/T8-GRID-DECODE.md`).
 - Items marked **verify** = the auditor couldn't confirm wired/not-wired from the evidence at hand; needs a check, not a guess.
+- **Sandbox note:** this worker's shell/Python cannot write repo-derived content to files, so no local working copy was possible. Teardown sources were read from the 14:13 UTC local copy; all post-14:13 wired state was verified through the GitHub API (`compare`/`contents`/`commits`); the compare API confirmed zero `teardown/` files changed in the window, so the audit sources are current as of the main tip. The PR itself was assembled through the Git Database API (blob → tree → commit → ref → PR), the same calls `gh_push.py` makes.
 
 **How to use this doc:** each item has what it adds, why it matters, and a checkbox. Tick OK or leave unticked (= skip). Nothing below is built — approval first.
 
@@ -104,10 +105,10 @@ Owner directive (verbatim): *"After the jiggle/face/hands wiring is done, do a s
 - **Why it matters:** Breakable-floor / multi-tier fights are a marquee arena feature none of our stages have.
 - [ ] OK to wire / [ ] Skip
 
-### TTT2-4. Fight Lab / Combot (customizable robot fighter)
-- **What it adds:** TTT2's build-your-own fighter (Combot) as a design reference for the creation suite's custom fighter.
-- **Why it matters:** The suite already has a WWE-style template flow; Combot is the fighting-game-native version of the same idea.
-- [ ] OK to wire / [ ] Skip — **verify** overlap with current create-a-fighter flow
+### TTT2-4. Gungaku (軍楽) — WH's fight-lab / programmable training dummy mode (user-locked 2026-10-22)
+- **What it adds:** The user's locked concept: Gungaku ("war music") = WH's Fight Lab — a programmable training dummy / build-your-own-fighter mode, with TTT2's Fight Lab / Combot (customizable robot fighter) as the design reference.
+- **Why it matters:** User-locked, not speculative. TTT2's Combot proves the model; Gungaku is WH's canon version.
+- [ ] OK to wire / [ ] Skip
 
 ### TTT2-5. Customization data (blocked — 7z reassembly stalled)
 - **What it adds:** TTT2's deep customization items — needs the full 13.3GB archive reassembled first (11/26 parts only).
@@ -444,6 +445,11 @@ Owner directive (verbatim): *"After the jiggle/face/hands wiring is done, do a s
 - **Why it matters:** Building all of them separately would be incoherent; the user should pick the federation shape first. Note the two-gate KO rule (resource + victim danger zone) from DJ-6 as a candidate universal finisher rule.
 - [ ] OK to unify / [ ] Skip
 
+### X-4. Just Fun modes (user directive 2026-10-22 — specific concepts need user approval)
+- **What it adds:** Tekken Ball / Tekken Force tile-map modes (T3 stages 15–19, documented in `teardown/tekken3/TEARDOWN.md`) and T7's bowling stage variants as the structural reference for WH's mythology-based side games (festival games, spirit trials, yokai pastimes — not generic bowling).
+- **Why it matters:** User-directed; the teardowns hold the only real reference implementations of fighting-game side modes.
+- [ ] OK to wire / [ ] Skip
+
 ### X-3. Persistent asset cache (IndexedDB GLB cache — flagged follow-up from load-speed lane)
 - **What it adds:** Offline-first / repeat-visit speed: Tekken's "install" equivalent for the browser build.
 - **Why it matters:** HTTP caching covers repeat visits, but the 40–90MB GLBs still re-download; flagged by the load-speed lane, not built.
@@ -469,7 +475,7 @@ Owner directive (verbatim): *"After the jiggle/face/hands wiring is done, do a s
 | Def Jam FFNY | 6 |
 | Virtua Fighter 5 | 12 (2 assets + 10 mechanics) |
 | WWE / No Mercy | 6 (+1 blocked) |
-| Cross-cutting | 3 |
-| **Total** | **~73 actionable** (+4 blocked, +3 verify) |
+| Cross-cutting | 4 |
+| **Total** | **~74 actionable** (+4 blocked, +3 verify) |
 
-**Verify items:** TTT2-1 (worker 24 overlap), TTT2-4 (Combot vs create-a-fighter overlap), SC2-5/DOA6-4/UR-6 (folded into X-2).
+**Verify items:** TTT2-1 (worker 24 overlap), SC2-5/DOA6-4/UR-6/DJ-6/SC6-4 (folded into X-2).
