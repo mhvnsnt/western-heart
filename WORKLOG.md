@@ -1953,6 +1953,18 @@ machine). Rebuilt from the task description and PR'd (branch `w50/rig-guard`):
   instruction-gate: no duplication, no edits to existing checks.
 - Full log: `docs/decisions/2026-10-22-rig-guard-rebuild-w50.md`.
 
+## 2026-10-22 — VF5 Full Integration (Worker 45) — PR #692 MERGED
+
+**VF5 PS3 (.farc) format reverse-engineered; all 18 fighters extracted + T-pose rendered.**
+
+- **mon/msk identified:** `mon` = Eileen, `msk` = El Blaze (release READMEs; msk render-verified as luchador). **El Blaze DOES have farcs** — the "NO farc/DLC" note was wrong; Pablo → El Blaze is NOT blocked.
+- **New tools:** `tools/vf5/farc_extract.py` (FArC container), `tools/vf5/vf5extract.py` (obj.bin → OBJ: chunk headers, LE f32 positions, u16 strip indices), `tools/vf5/README.md`.
+- **4 locked movesets** (schema-v2, VF→Tekken inputs): `game/assets/movesets/vf-jeffry.json` (25, Bannon), `vf-wolf.json` (21, El Toro de Oro), `vf-leifei.json` (22, NPC Finxsse), `vf-elblaze.json` (28, Pablo).
+- **Research:** `docs/research/VF5-FULL-INTEGRATION-2026-10-22.md`; decision log `docs/decisions/2026-10-22-vf5-integration.md`.
+- **Renders:** 18 T-pose PNGs batch-rendering (Blender 4.5.3); uploaded to remote storage as they complete for user review. **Dural flagged as Zen's approved base-mix layer.**
+- **Gaps:** Motion clips not in release (likely in 3.7GB vf5-500m ROM, not pulled); 38 stg*.farc stages deferred to arena pipeline.
+- Merged via git_merge.py as 7f38022d (additions only; CI: instruction-gate, clobber-guard, deletion-guard, guard all green).
+
 ## 2026-10-22 ~16:00 CDT — worker 50: Kinpo A1 rig repoint (config-only)
 
 - Repointed `kinpo` + `kinpo-attire1` MODEL_URLS keys in `game/js/assets.js`
