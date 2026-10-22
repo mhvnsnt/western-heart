@@ -30,6 +30,9 @@ import { initMenus } from './menus.js';
 // They are fight data — they load when a fight starts (startFight awaits
 // them alongside the fighter GLBs), not while the menu is painting.
 
+// Eastern Mind stage films: which stage introVideos already played this session.
+let _playedStageIntros = null;
+
 const screens = {
   menu:   document.getElementById('screen-menu'),
   howto:  document.getElementById('screen-howto'),
@@ -576,6 +579,7 @@ document.addEventListener('click', (e) => {
       getModes().then(m => m.clearState());
       show('menu');
       audio.stopMusic();
+      audio.playEMTrack('tong-nou-theme'); // the head-world theme, as-is
     }
     else if (a === 'back-select') {
       rankBattleSelect = false;
@@ -661,6 +665,7 @@ document.getElementById('training-quit').addEventListener('click', () => {
   getModes().then(m => m.clearState());
   show('menu');
   audio.stopMusic();
+  audio.playEMTrack('tong-nou-theme'); // the head-world theme, as-is
 });
 
 /* Stream 6: per-fighter movelist (training mode HUD button + M key).
@@ -833,8 +838,21 @@ async function startFight(playerId, enemyId, opts = {}) {
     return false;
   }
   if (confirmBtn) confirmBtn.disabled = false;
+  // Eastern Mind stage films: a stage carrying introVideo (the land's own
+  // footage, e.g. Palace of Dreaming's room films) plays it once per
+  // session before the fight. Skippable; failure never blocks the fight.
+  try {
+    const def = typeof getStage === 'function' ? getStage(selectedStage) : null;
+    _playedStageIntros = _playedStageIntros || new Set();
+    if (def && def.introVideo && !_playedStageIntros.has(def.id)) {
+      _playedStageIntros.add(def.id);
+      const { playCutscene } = await import('./cutscenes.js');
+      await playCutscene(def.introVideo, { label: def.name });
+    }
+  } catch (e) { console.warn('[WH] stage intro video skipped:', e.message || e); }
   show('hud');
   game.paused = false;
+  audio.stopEMTrack(); // select-screen music yields to the battle loop
   audio.startMusic();
   await game.startMatch(player, enemy, selectedStage, opts);
   // Control hints: show for 6s at fight start, H toggles

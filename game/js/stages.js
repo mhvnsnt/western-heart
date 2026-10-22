@@ -250,7 +250,8 @@ export const STAGES = [
     floor: { kind: 'sand', tint: '#c09a68', repeat: 26, platformTint: '#d0aa74', platformRepeat: 6 },
     swatch: ['#0a1a2a', '#ffca7a'],
     builder: 'treelife',
-    pano: 'assets/stages/eastern-mind/tree-of-life/pano.png', // real Eastern Mind background art
+    pano: 'assets/stages/eastern-mind/tree-of-life/pano-wh.png', // WH canon pass: Sato DNA + Wood palette/soul-gold (see docs/research/eastern-mind-ai-pass.md)
+    music: { land: 'life', palette: 'jungle greens + soul-gold', em: 'stage.intro.tree-of-life' },
     associatedFighters: ['saku-ra'],
   },
   {
@@ -277,7 +278,8 @@ export const STAGES = [
     floor: { kind: 'scorched', tint: '#8a5a48', repeat: 24, platformTint: '#9a6a50', platformRepeat: 6 },
     swatch: ['#1a0608', '#ff6a2a'],
     builder: 'chiu',
-    pano: 'assets/stages/eastern-mind/plains-of-chi-u/pano.png', // real Eastern Mind background art
+    pano: 'assets/stages/eastern-mind/plains-of-chi-u/pano-wh.png', // WH canon pass: Sato DNA + Fire palette/flame aureoles
+    music: { land: 'time', palette: 'ember red + burning gold', em: 'stage.intro.plains-of-chi-u' },
     associatedFighters: ['michiko'],
   },
   {
@@ -304,7 +306,8 @@ export const STAGES = [
     floor: { kind: 'stone', tint: '#8a8492', repeat: 26, platformTint: '#9a94a2', platformRepeat: 6, octagon: true },
     swatch: ['#0a0810', '#c0a080'],
     builder: 'parfang',
-    pano: 'assets/stages/eastern-mind/octagonal-shrine/pano.png', // real Eastern Mind background art
+    pano: 'assets/stages/eastern-mind/octagonal-shrine/pano-wh.png', // WH canon pass: Sato DNA + Earth palette/octagon geometry
+    music: { land: 'source', palette: 'lantern gold + vermilion', em: 'stage.intro.octagonal-shrine' },
     associatedFighters: ['pantera'],
   },
   {
@@ -331,7 +334,8 @@ export const STAGES = [
     floor: { kind: 'metal', tint: '#a0a8b8', repeat: 20, platformTint: '#b0b8c8', platformRepeat: 5 },
     swatch: ['#0a0a18', '#ff6ad0'],
     builder: 'helix',
-    pano: 'assets/stages/eastern-mind/helix-palace/pano.png', // real Eastern Mind background art
+    pano: 'assets/stages/eastern-mind/helix-palace/pano-wh.png', // WH canon pass: Sato DNA + Metal palette/prismatic refraction
+    music: { land: 'desire', palette: 'mirror silver + deep violet', em: 'stage.intro.helix-palace' },
     associatedFighters: ['purple-rain'],
   },
   {
@@ -358,7 +362,9 @@ export const STAGES = [
     floor: { kind: 'dream', tint: '#8a90c8', repeat: 18, platformTint: '#9aa0d8', platformRepeat: 5 },
     swatch: ['#0a1030', '#4ae0ff'],
     builder: 'dreaming',
-    pano: 'assets/stages/eastern-mind/palace-of-dreaming/pano.png', // real Eastern Mind background art
+    pano: 'assets/stages/eastern-mind/palace-of-dreaming/pano-wh.png', // WH canon pass: Sato DNA + Water palette/bioluminescent drift
+    introVideo: '../teardown/eastern-mind/stage-3-palace-of-dreaming/video/W_RMEYE.mp4', // the land's own room film
+    music: { land: 'dreaming', palette: 'indigo + ripple cyan', em: 'stage.intro.palace-of-dreaming' },
     associatedFighters: ['waterfall'],
   },
   {
@@ -385,7 +391,8 @@ export const STAGES = [
     floor: { kind: 'stone', tint: '#7a6a80', repeat: 26, platformTint: '#8a7a90', platformRepeat: 6 },
     swatch: ['#0c0a20', '#b06ae0'],
     builder: 'marketplace',
-    pano: 'assets/stages/eastern-mind/phantom-marketplace/pano.png', // real Eastern Mind background art
+    pano: 'assets/stages/eastern-mind/phantom-marketplace/pano-wh.png', // WH canon pass: Sato DNA + Trader gold/Malakor thread
+    music: { land: 'liminal', palette: 'trader gold + sigil violet', em: 'stage.intro.phantom-marketplace' },
     associatedFighters: ['skull'],
   },
 ];
