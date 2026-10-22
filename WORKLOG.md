@@ -1883,3 +1883,32 @@ the Reversal Edge proposal reuses.
   buttons while game/styles.css only carries PSX-overlay positioning —
   the old buttons render unpositioned. Not my lane (control overhaul);
   flagging for the coordinator.
+
+## 2026-10-22 ~16:10 CDT — worker 52: critical-path P0 fix (flow QA)
+
+**Playable-path audit** (menu → select → stage → fight → rounds → result → back)
+on main @ 2af4328 found the whole loop dead behind two 1-line defects in
+`game/index.html`:
+
+- **P0-1 — `show()` threw on every navigation ("nothing is tappable").**
+  `game/js/main.js:38` builds `stageIntro: getElementById('screen-stage-intro')`
+  → null, because index.html carried TWO `id="screen-stage"` sections
+  (Lane-4 stage select + story stage intro). PR #666 had renamed the story
+  one; PR #657's stale-base merge reintroduced the duplicate (PR-#579
+  pattern). `show()` does
+  `Object.values(screens).forEach(s => s.classList.remove('active'))` →
+  TypeError on the null entry → every screen transition died. Fix (worker-52
+  PR, 1 line): story section → `id="screen-stage-intro"` (restores #666).
+- **P0-2 — menu rendered unstyled ("white text boxes").**
+  Fixed on main by PR #677 while this audit ran (mainmenu.css link).
+- Proof: `proof-show.mjs` (DOM-stub replicates the screens/show code path —
+  throws before, navigates after). Import graph of main.js (15 modules) all
+  resolve; select.css covers the select screen; stage/fight/result wiring
+  verified coherent by code read.
+- `docs/CRITICAL-PATH-STATUS.md`: running status board (green/red/blocking)
+  for the playable loop + tomorrow list (off-path sections per the
+  PLAYABLE TODAY directive). Findings for worker 53 (fight loop) and
+  worker 51 (stage preview pane gap) filed there.
+- Note: open PR #676 (worker36/menu-fix, mergeable_state=dirty) attempted a
+  full rewrite for the same symptoms — superseded; worker 36 should
+  close/rebase it.
