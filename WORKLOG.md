@@ -1357,6 +1357,29 @@ Also found: the feet-geometry cue misreads chunky-heel boots as -Z (false -Z on 
 - `game/assets/models/model-facing.json` — `nightwolf` back to `+Z` + corrections note.
 - `WORKLOG.md` (this entry).
 
+## 2026-10-22 — Worker 10: T-pose render + texture fix batch
+
+**Task:** Render batch for user's 12-model shortlist (items A–F).
+
+**Delivered:**
+- Yukihyo/Armor King: T-pose renders of 2 accessible attires (main `game/assets/models/yukihyo.glb` + attire1 `roster/armor-king/attires/attire1/model.glb`). Both clean T-poses, attire1 fully textured. `docs/proof/tpose-batch-2026-10-22/yukihyo-p1_*.png`, `yukihyo-attire1_*.png`.
+- Negativo: Fixed white→pink beard (was rendering white due to missing texture/base color on `ModelBeard_2_Material031`; set `baseColorFactor` to hot pink `[1.0, 0.4118, 0.7059, 1.0]` in `game/assets/models/n3g4tiv0.glb`). Proof renders show pink beard. `docs/proof/tpose-batch-2026-10-22/negativo-pinkfix_*.png`.
+- Unmapped fighters audit: `docs/proof/tpose-batch-2026-10-22/unmapped-fighters-audit.md` — 22 T7, 3 T3-only, 4 T6-only fighters with no WH assignment.
+
+**Blocked (documented in README):**
+- Bruno: face texture missing from `bruno.glb`, no Miguel textures locally, SFMLab bot-blocked.
+- Scimitar: `scimitar.glb` mesh corrupted/jumbled, needs clean Shaheen.
+- Paul: T3 KMD→OBJ conversion produces flat blob, no T7 Paul locally.
+- Panda/Kuma/Law/Lars/Ogre: no 3D models in teardown files.
+- Gon: no 3D model (only 2D replacement drafts).
+- Yukihyo T3 rips (`lab/game/assets/t3_armorking*.glb`): disassembled PS1-era, unusable.
+
+**Pipeline:** Fixed `tools/tpose-render/render.py` armature-space posing math (was using `arm.matrix_world @ pb.matrix` ignoring parent pose matrices; now chains parent matrices via depsgraph). Renders via Blender 4.0.2 headless.
+
+**Files:**
+- `game/assets/models/n3g4tiv0.glb` (modified: pink beard)
+- `docs/proof/tpose-batch-2026-10-22/` (7 files: 6 renders + audit + README)
+- `tools/tpose-render/render.py` (posing bug fixes)
 ## 2026-10-22 — Worker 8: Pantera Leo Man mane-eats-face FIX (PR #596)
 
 **Owner report:** "The mane eats his face. When the user played as Leo Man, the face wasn't visible — the mane mesh covers/clips through the face."
