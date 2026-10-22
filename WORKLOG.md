@@ -1661,6 +1661,71 @@ Tekken on-hit stack: (1) jagged star-burst HIT SPARK sprite (canvas-generated, a
 
 ---
 
+## 2026-10-22 — Worker 22: comprehensive integration pass (open-source wave)
+
+Owner directive (verbatim): "Audit everything we've built and pulled in. Find
+more open-source/free stuff we're NOT using yet that would help — physics,
+animation, rigging, UI, audio, AI, procedural generation, anything relevant to
+a fighting game. Prioritize free, open-source, no licensing issues, actually
+works. Be aggressive — 'anything you can get a hold of.' Then wire it ALL up:
+combine our built tools + pulled assets + teardown findings + new finds into
+unified systems. No disconnected scripts, no unwired repos, no 'we have it but
+it's not connected.' Everything should flow into the game or the creation suite."
+
+### 1. Audit (wired vs unwired)
+Audited tools/ (42 dirs), game/, customization/, teardown/ (40 dirs),
+docs/research/. 19 items verified WIRED (TKMovesets, Wiggle 2, Keemap,
+GameRig, UniRig, MagicArticulate, Puppeteer, Material Maker, TEXTtoPBR,
+lite-rollback, netfox/Snoring Cat, Nakama, Kenney/KayKit, T3 banks, frame
+data, SkeletonUtils, tripo-intake, game-hud kit). 11 unwired triaged: 3 wired
+this pass (stable-fast-3d/triposr docs, netplay menu entry, arena-gen props),
+8 documented as deliberate non-wirings. Full matrix:
+docs/research/OPEN-SOURCE-WAVE-2026-10-22.md.
+
+### 2. New finds (all MIT, license-verified 2026-10-22, ESM, zero native deps)
+- cannon-es 0.20.0 → game/vendor/cannon-es/ (physics: arena props, debris, KO tumble)
+- three-mesh-bvh 0.9.16 → game/vendor/three-mesh-bvh/ (hit detection verify, suite picking)
+- three-nebula 13.3.0 → game/vendor/three-nebula/ (particle hit effects)
+- troika-three-text 0.52.5 (+4 MIT deps) → game/vendor/troika-three-text/ (3D labels)
+- camera-controls 3.1.2 → game/vendor/camera-controls/ (cutscene/photo camera)
+- lip-sync-engine 1.0.3 → tools/character-voice/lipsync/ (CDN, pipeline only)
+Each with upstream LICENSE + ATTRIBUTION.md.
+
+### 3. Wiring (game/js, lazy-booted by game/js/integration.js)
+- physics.js (WHPhysics): cannon-es world, knockable arena props,
+  loadArenaProps() reads tools/procgen/arena-gen three.json. Visuals only.
+- hitdetect.js (WHHitDetect): per-fighter BVH, limb-capsule shapecast, verify
+  mode, pick() for suite. Never changes combat outcomes.
+- springbones.js (WHSpringBones): runtime verlet jiggle chains (breasts/belly/
+  hips/thighs), VRM-springbone-compatible params, autoDiscover(). Runtime half;
+  Wiggle-2 bake = pipeline half.
+- hitfx-nebula.js (WHHitFX): JSON particle presets. LAYERS on game/js/hitfx.js
+  (today's proven fix) for heavy/KO only — never replaces (unification law).
+- labels3d.js, camdirector.js, lipsync-player.js (jaw-bone cues).
+- integration.js: try/catch lazy boot, own rAF, Game.prototype patches
+  (_spawnImpact/_resolveCombat, guarded, fallback-safe). game.js untouched.
+- game/index.html: importmap +9 entries, integration.js script (surgical).
+- game/ui-wh/ui.js: NETPLAY (BETA) options entry → game/netplay/demo/.
+- tools/character-voice/lipsync/: lipsync.html + lipsync.mjs + README.
+- tools/tripo-intake/image-to-3d.md, tools/open-source/README-WAVE-2026-10-22.md.
+- docs/decisions/2026-10-22-integration-unwired.md: 11 deliberate unwireds.
+
+### Proof
+- node --check clean on all 9 new JS modules; vendor APIs verified against
+  vendored .d.ts/README; importmap matches paths 1:1.
+- integration.js loads after main.js; every system try/catch'd; hooks guarded.
+- Live play verification left to playtest lane (no live-browser from worker).
+
+### Files
+- Added: game/vendor/{cannon-es,three-mesh-bvh,three-nebula,troika-three-text,
+  camera-controls}/, game/js/{physics,hitdetect,springbones,hitfx-nebula,
+  labels3d,camdirector,lipsync-player,integration}.js,
+  tools/character-voice/lipsync/*, tools/tripo-intake/image-to-3d.md,
+  tools/open-source/README-WAVE-2026-10-22.md,
+  docs/research/OPEN-SOURCE-WAVE-2026-10-22.md,
+  docs/decisions/2026-10-22-integration-unwired.md.
+- Modified: game/index.html, game/ui-wh/ui.js, WORKLOG.md (append).
+- No deletions.
 ## 2026-10-22 ~13:45 CDT — Worker 27: LIGHTING + ENVIRONMENT PULL
 
 **Owner directive (verbatim):** "Pull from the most recent version of each game in the teardown
