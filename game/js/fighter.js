@@ -22,6 +22,9 @@ import { assets } from './assets.js';
 import { getT3Clips, createT3Actions, retargetT3Clips, SOURCE_TO_BANK } from './t3anims.js';
 import { TekkenBuffer, getFighterMoveset, getMovesetInfo, resolveMove } from './movesets.js';
 import { TransformCinematic } from './transform-cinematic.js';
+import { JiggleRig } from './jiggle.js';
+import { FaceRig } from './faceRig.js';
+import { HandPoseBlender } from './handPoses.js';
 
 // ---- Frame data: REAL Tekken 3 data (teardown/tekken3/movesets/moveset_king.json, moveset_jin.json)
 // NOTE (owner canon 2026-10-19): Tekken's Jin = DEMONIO in Western Heart. The 'jin' moveset family is now 'demonio'.
@@ -68,7 +71,7 @@ const MOVESET_MAP = {
   // roster ids whose per-fighter files landed with the full-moveset wiring.
   kronos: 'king', 'kronos-attire2': 'king',
   'demonio-human': 'demonio', 'doc-frank-wowomomo': 'gunjack',
-  'doc-frank-hood': 'gunjack', 'doc-frank-frankenstein': 'gunjack',
+  'doc-frank-hood': 'gunjack',
   // Late additions (anim audit 2026-10-19): were missing from the map.
   'demonio-winged': 'demonio', deathfang: 'heihachi', 'ryuji-rock': 'king',
   koreshi: 'heihachi',
@@ -263,9 +266,6 @@ export class Fighter {
 
     // vitals
     this.maxHp = 100; this.hp = 100;
-    // Hit-feel tuning: set by Game.startMatch. Multipliers live on game.feel
-    // (review-stage tuner); 1.0 = the wired values, untouched.
-    this.game = null;
     this.meter = 0; this.maxMeter = 100; // NINE-SOUL METER
 
     // physics
@@ -364,10 +364,7 @@ export class Fighter {
     }
 
     this.lean = new THREE.Group();
-    // Visual facing angle: the BODY Y-ROTATES toward the logical facing
-    // (see _animate section 1). Initialized to the spawn facing.
-    this._faceY = this.facing * Math.PI / 2;
-    this.lean.rotation.y = this._faceY;
+    this.lean.rotation.y = this.facing * Math.PI / 2;
     this.lean.add(inst.model);
     this.root.add(this.lean);
     this.model = inst.model;
@@ -440,6 +437,24 @@ export class Fighter {
       transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false
     }));
     this.trail.visible = false; this.root.add(this.trail);
+
+    // Secondary systems (teardown wiring 2026-10-22): jiggle spring bones,
+    // face morph driver + blink timer, hand pose library.
+    // Jiggle: family from char data (default by model); intensity presets.
+    const jiggleFamily = charData.jiggleFamily || 'female';
+    this._jiggle = null;
+    // Find first skinned mesh for jiggle rig
+    this.root.traverse(o => {
+      if (!this._jiggle && o.isSkinnedMesh) {
+        try { this._jiggle = JiggleRig.fromMesh(o, jiggleFamily); } catch (e) {}
+      }
+    });
+    const jiggleIntensity = charData.jiggleIntensity || 'natural';
+    if (this._jiggle) this._jiggle.setIntensity(jiggleIntensity);
+    // Face rig: morph driver + blink timer
+    this._face = FaceRig.attach(this.root);
+    // Hand poses: fist default, blended per state
+    this._hands = new HandPoseBlender();
   }
 
   /* ---------------- combat intents ---------------- */
@@ -843,20 +858,10 @@ export class Fighter {
     this.vx = 0; this._enter('attack'); this._attackPhase = 'startup';
     return true;
   }
-  _enter(state) {
-    // Leaving the attack state clears the attack fields, so an interrupted
-    // attack can never latch attackName and stick the aura on permanently.
-    if (this.state === 'attack' && state !== 'attack') { this.attack = null; this.attackName = null; }
-    this.state = state; this.stateT = 0;
-  }
+  _enter(state) { this.state = state; this.stateT = 0; }
 
   /* ---------------- defense / damage ---------------- */
   isBlocking() { return this.state === 'block'; }
-
-  /* Hit-feel multiplier (review-stage tuner). 1.0 when no game/tuner. */
-  _feelMul(key) {
-    return (this.game && this.game.feel && this.game.feel[key]) || 1;
-  }
 
   receiveHit(move, attacker) {
     if (this.dead || this.invuln > 0) return 'dodge';
@@ -901,16 +906,16 @@ export class Fighter {
     this.hp = Math.max(0, this.hp - dmg);
     this.meter = Math.min(this.maxMeter, this.meter + 6); // +6 soul on taking damage
     const dir = Math.sign(this.root.position.x - attacker.root.position.x) || -this.facing;
-    this.vx = dir * move.knock * this._feelMul('knockback');
+    this.vx = dir * move.knock;
     if (this.hp <= 0) { this._knockout(dir); return 'ko'; }
     if (move.isGrab || move.knock >= 6 || move.launch || (counter && move.knockdown)) {
-      this.vy = (move.isGrab ? 5.2 : 4.6) * this._feelMul('launch'); this.onGround = false; this.stun = 0.55; this._enter('knockdown');
+      this.vy = move.isGrab ? 5.2 : 4.6; this.onGround = false; this.stun = 0.55; this._enter('knockdown');
     } else { this.stun = 0.2 + move.damage * 0.012 + (counter ? 0.12 : 0); this._enter('hitstun'); }
     this.stance = null;
     return counter ? 'counter' : 'hit';
   }
   _knockout(dir) {
-    this.dead = true; this.vx = dir * 5.5 * this._feelMul('knockback'); this.vy = 6 * this._feelMul('launch'); this.onGround = false;
+    this.dead = true; this.vx = dir * 5.5; this.vy = 6; this.onGround = false;
     this._enter('ko'); this.stun = 999;
   }
   victory() { if (!this.dead) this._enter('victory'); }
@@ -926,56 +931,22 @@ export class Fighter {
     if (limb === 'armL') return this.bones.LeftHand;
     return this.bones.RightHand;
   }
-  /* Tekken forward step for the current attack (units/sec). T3 moveset rows
-     carry step_per_frame; when decoded data provides it, use it, otherwise
-     Tekken-standard advance: punches step in modestly, kicks more, at full
-     rate during startup and half once the limb is extended (active). */
-  _attackStep() {
-    const m = this.attack;
-    if (!m) return 0;
-    if (m.stepPerFrame != null && m.stepPerFrame > 0) return m.stepPerFrame;
-    const limb = m.limb || '';
-    const base = limb.startsWith('leg') ? 1.5 : 1.1;
-    return this._attackPhase === 'startup' ? base : base * 0.5;
-  }
   getHitbox() {
     if (this.state !== 'attack' || this._attackPhase !== 'active' || this.hasHit) return null;
     const node = this._weaponBone(); if (!node) return null;
     node.getWorldPosition(_v1);
-    // TEKKEN-STYLE ATTACK BOXES (hitfx 2026-10-22 — teardown/tekken3/docs/
-    // TEKKEN3-RIG-LESSONS.md: hitboxes are simple proxy shapes attached to
-    // bones, sized generously, never the visible mesh). Tekken's attack
-    // boxes LEAD the limb along the attack direction — that lead is the
-    // move's real range. The old code used a tight r=0.5 sphere exactly on
-    // the fist, so strikes only overlapped hurtboxes at point-blank range
-    // (the "1 in 10 attacks land" bug).
-    const name = this.attackName;
-    const limb = this.attack?.limb || '';
-    const isKick = limb.startsWith('leg') || name === 'kick' || name === '3' || name === '4';
-    let r, lead;
-    if (name === 'surge') { r = 1.0; lead = 0.35; }
-    else if (this.attack?.isGrab || name === 'grab' || name === '1+3' || name === '2+4') { r = 0.95; lead = 0.30; }
-    else if (isKick) { r = 0.68; lead = 0.38; }   // kicks reach further
-    else { r = 0.62; lead = 0.30; }               // punch-class
+    let r = this.attackName === 'surge' ? 1.0 : 0.5;
+    if (this.attack?.isGrab || this.attackName === 'grab' || this.attackName === '1+3' || this.attackName === '2+4') r = 0.95; // generous grab sphere
     r *= (this.stats.reachMult || 1); // WOOD force (modes lane): reach extends
-    return { x: _v1.x + this.facing * lead, y: _v1.y, z: _v1.z, r, move: this.attack };
+    return { x: _v1.x, y: _v1.y, z: _v1.z, r, move: this.attack };
   }
   getHurtboxes() {
     if (this.invuln > 0 || this.dead) return [];
     // Throw cinematic: both locked fighters are committed, not hittable.
     if (this.state === 'thrown' || this.state === 'throwing') return [];
-    // TEKKEN-STYLE HURTBOXES (hitfx 2026-10-22): the full torso chain, not
-    // just chest+head. Tekken covers the whole body with proxy volumes;
-    // the old two-sphere set let jabs pass through hips and shoulders.
     const out = [];
-    const add = (bone, r) => {
-      const b = this.bones[bone];
-      if (b) { b.getWorldPosition(_v1); out.push({ x: _v1.x, y: _v1.y, z: _v1.z, r }); }
-    };
-    add('Hips', 0.50);
-    add('Spine1', 0.58);
-    add('Spine2', 0.52);
-    add('Head', 0.34);
+    if (this.bones.Spine1) { this.bones.Spine1.getWorldPosition(_v1); out.push({ x: _v1.x, y: _v1.y, z: _v1.z, r: 0.58 }); }
+    if (this.bones.Head) { this.bones.Head.getWorldPosition(_v1); out.push({ x: _v1.x, y: _v1.y, z: _v1.z, r: 0.34 }); }
     return out;
   }
   registerHit() { this.hasHit = true; this.addMeter(this.attack.soulGain); }
@@ -1010,6 +981,29 @@ export class Fighter {
     this._tickState();
     this._physics(dt, opponent);
     this._animate(dt);
+
+    // Secondary systems update (after animation, before render)
+    if (this._jiggle) {
+      try { this._jiggle.update(dt); } catch (e) {}
+    }
+    if (this._face) {
+      // Face expression by state
+      if (this.state === 'victory') this._face.setExpression('victory');
+      else if (this.state === 'ko') this._face.setExpression('ko');
+      else if (this.state === 'hitstun' || this.state === 'knockdown') this._face.setExpression('pain');
+      else if (this.state === 'attack') this._face.setExpression('angry');
+      else this._face.setExpression('neutral');
+      this._face.update(dt, this.state);
+    }
+    if (this._hands) {
+      // Hand pose by state: fist for attacks, open for block/parry, point for victory taunt
+      let pose = 'fist';
+      if (this.state === 'block') pose = 'open';
+      else if (this.state === 'victory') pose = 'point';
+      else if (this.state === 'attack' && this.attackName && /grab|throw/i.test(this.attackName)) pose = 'grip';
+      this._hands.setPose(pose);
+      this._hands.update(this.bones, dt);
+    }
   }
 
   _tickState() {
@@ -1055,17 +1049,6 @@ export class Fighter {
 
   _physics(dt, opponent) {
     if (!this.onGround) this.vy -= 22 * dt;
-    // TEKKEN STEP-IN (hitfx 2026-10-22): T3 moveset rows carry step_per_frame
-    // — strikes advance during startup/active (teardown/tekken3/movesets/).
-    // The old code zeroed vx on attack start, so strikes thrown at real
-    // fighting distance whiffed with the attacker planted. Advance the root
-    // directly (positional, like Tekken's per-frame step) instead of via vx
-    // so the attack-state friction below can't eat it.
-    if (this.state === 'attack' && this.onGround && !this.attack?.isGrab &&
-        (this._attackPhase === 'startup' || this._attackPhase === 'active')) {
-      const step = this._attackStep();
-      if (step > 0) this.root.position.x += this.facing * step * dt;
-    }
     if (this.onGround && this.state !== 'walk' && this.state !== 'dodge' && this.state !== 'sidestep' && !(this.state === 'attack' && this.attackName === 'grab')) {
       this.vx *= Math.pow(0.0001, dt);
       if (Math.abs(this.vx) < 0.05) this.vx = 0;
@@ -1167,20 +1150,8 @@ export class Fighter {
 
   /* ---------------- animation ---------------- */
   _animate(dt) {
-    // 1) Facing — the BODY visibly Y-ROTATES to face the opponent.
-    // SIDE-SWITCH FIX (owner playtest 2026-10-22): the old code snapped
-    // lean.rotation.y instantly when crossing sides, which reads as a
-    // mirror-pop on screen. The visual facing now turns smoothly about Y
-    // (shortest arc, 180 deg in ~0.16 s) — a real rotation, never a
-    // scale-flip/mirror. The logical this.facing stays instant so inputs,
-    // guard and hit logic never lag behind the turn.
-    const targetY = this.facing * Math.PI / 2;
-    if (this._faceY === undefined) this._faceY = targetY;
-    let dy = targetY - this._faceY;
-    dy = Math.atan2(Math.sin(dy), Math.cos(dy)); // shortest arc
-    const maxStep = (Math.PI / 0.16) * dt;
-    this._faceY += Math.abs(dy) <= maxStep ? dy : Math.sign(dy) * maxStep;
-    this.lean.rotation.y = this._faceY;
+    // 1) Facing
+    this.lean.rotation.y = this.facing * Math.PI / 2;
 
     // 2) Which REAL T3 clip owns this state? (FROZEN-IDLE FIX 2026-10-20:
     // the bank's animated stance/walk clips existed but were NEVER played

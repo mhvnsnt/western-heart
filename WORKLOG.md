@@ -16,8 +16,8 @@
 - `game/js/special-style.js` — T8 Special Style simplified inputs. Canon: "GUIDED HANDS" (proposed).
 - `game/js/punishment-training.js` — punishment drills, PERFECT/GOOD/MISS/WRONG. Canon: "SKULL'S LESSONS" (proposed).
 - `game/js/fighter-depth.js` — integration layer (FighterDepth + WH_DEPTH_FLAGS feature flags).
-- `game/js/game.js` (surgical): dynamic-import wire in startMatch, raw-queue capture for kindle detection, per-frame onUpdateFrame. Rebased onto current main (kept worker 27's lighting rig).
-- `game/js/fighter.js` (surgical): kindle CH consumption + damage-taken mult in receiveHit, block denial in tryBlock.
+- `game/js/game.js` (surgical): dynamic-import wire in startMatch, raw-queue capture for kindle detection, per-frame onUpdateFrame. Rebased onto current main (kept worker 27's lighting rig; did not resurrect the removed intro block).
+- `game/js/fighter.js` (surgical): kindle CH consumption + damage-taken mult in receiveHit, block denial in tryBlock. Re-applied onto current main (kept face/hand rig work).
 - `game/tests/fighter-depth.test.mjs` — 43 tests, all passing (node).
 - `docs/research/FIGHTER-DEPTH-CANON-MAPPING-2026-10-22.md` — per-system canon mapping + 11-item owner approval checklist.
 
@@ -27,7 +27,6 @@
 **Coordination:** worker 24 → call TagRelay/TagTeam; worker 29 → emit REPLAY EVENT CONTRACT v1; worker 13's intro-interactions.js extended (not modified).
 
 ---
-
 # WORKLOG — DEATHFANG build (2026-10-19/20, branch feat/deathfang-yamazaki-20261019)
 
 Owner orders 2026-10-19 ~20:06–20:12 CDT: build DEATHFANG (all caps, one word) —
