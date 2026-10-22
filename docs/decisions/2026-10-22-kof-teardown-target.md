@@ -37,3 +37,11 @@ port is the practical source for Raiden's 3D moves/animations (for Titan).
 Large files go to Releases/external, NOT local disk. Plan: download -> extract
 moves/animations (small data, stays) -> push ISO/CHD chunks to a GitHub release
 -> delete local copies. Nothing large sits on the VM.
+
+## INTEGRATION LAW constraint (standing user directive 2026-10-22)
+
+Everything extracted from these teardowns lands in Tekken structure, never as
+parallel KOF/Fatal Fury subsystems: moves in Tekken notation into Tekken move
+slots, animations retimed to Tekken conventions, fighters as Tekken-style roster
+entries with attire ladders. Source game is provenance metadata only — it never
+surfaces as a menu, roster, or system in-game.

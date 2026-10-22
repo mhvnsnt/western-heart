@@ -28,3 +28,26 @@ Worker 47's files are not edited here; the linkage is documented, not duplicated
 `moveset-library/movesets/CLAIMED-MAP.json` is the single source of truth for which
 source fighter feeds which WH/Ashlane character. Each file carrying a lock also has
 a `wh_claimed_map` provenance field.
+
+## INTEGRATION LAW compliance (standing user directive 2026-10-22)
+
+Tekken is the architectural authority — nothing here creates a parallel DOA/KOF
+subsystem:
+
+- **Inputs:** every move is stored in Tekken notation (1/2/3/4 + directions).
+  No DOA P/K/G scheme and no KOF A/B/C/D scheme survives in the data.
+- **Feel:** frame data, damage scale, and combo structure follow Tekken
+  conventions @60fps (INPUT-TO-MOVE FIDELITY LAW). Animations are sourced;
+  timing is Tekken.
+- **Fighters:** wired fighters land in `game/assets/movesets/` as roster peers
+  (e.g. `vainabel.json` sits alongside `armor-king.json`, `deathfang.json`) —
+  never in a separate DOA/KOF roster, select screen, or menu.
+- **Renders:** DOA4 roster T-poses in `docs/proof/` are review artifacts for
+  mapping picks. When a picked fighter enters the game, it enters as a
+  Tekken-style select entry with attire ladders — never a "DOA roster" screen.
+- **Ingest:** when these files are ingested into MOVE-DATABASE.json, moves land
+  in Tekken move slots organized by Tekken input/limb conventions, not by
+  source-game categories. Source game is provenance metadata only.
+- **Backend staging only:** the `doa4/` and `kof3d/` directory split below is
+  source provenance for the source law (claimed vs free), not a menu or system
+  structure. It never surfaces in-game.

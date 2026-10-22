@@ -340,3 +340,15 @@ Intro sequences and win taunts are never to be replaced. New systems layer on to
   kinpo's). Repointing phantom's key at kinpo's file would ship the wrong
   fighter — refused. The tripo-intake lane must produce a phantom intake rig
   first; the config repoint is a one-line follow-up once it lands.
+
+## INTEGRATION LAW (standing, permanent — user 2026-10-22 ~17:29 CDT)
+
+"Wire everything up that you pull in in a way that's aligned with the Tekken systems and menus. Don't just throw in a bunch of random menus and extra systems on top of stuff. Make it within submenus and subsystems of us trying to build into the Tekken teardown file direction of the layout of everything and the menus and all that. Everything that you pull in, set it up in a Tekken way."
+
+Rules:
+1. Every pulled asset/system integrates into the Tekken menu/system structure as submenus/subsystems — never bolted-on random menus.
+2. Tekken is the architectural authority for layout, menus, flow, everything.
+3. No parallel systems competing with Tekken's structure — everything nests inside it.
+4. End goal: 100% Tekken coverage, backend to frontend.
+
+Applies to: DOA4/KOF moveset + animation pulls, roster renders, character wiring, moveset library ingest, creation-suite tools — all of it.
