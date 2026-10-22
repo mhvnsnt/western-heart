@@ -1201,3 +1201,58 @@ in the opposite direction of the left leg", "the hand looks weighted to the tail
 - Verified in-game (rest, T3 stance, 9 attack rows x 2 times, live fight): no tearing; max bone error 0.4 deg.
 - Found: King row 220 (wired as Pantera `2,1`) is upside down in the decoded source — moveset mapping issue, queued.
 - Proof + details: docs/proof/claude-2026-10-22/pantera-rigs/README.md, roster/pantera/attires/leopard-king/WORKLOG.md.
+
+## 2026-10-22 — Anti-clobber immune system (worker 7 round)
+
+Formalized the never-clobber protection as permanent repo infrastructure after
+PR #579 (2026-10-22) committed stale full-file copies (base from Oct 17),
+wiping 427 lines of game/js/assets.js, 113 of game/js/main.js, 32 of
+game/js/game.js, 25 of index.html, 316 of WORKLOG.md — broke Torch live.
+
+### New files
+- `.github/workflows/clobber-guard.yml` — CI check `clobber-guard`, runs on
+  every PR to main, fails when the PR's version of any file lacks lines main
+  added after the PR's fork point (merge-base). Self-tests the guard via
+  unittest before checking. Escapes: `owner-approved-revert` label or a
+  `## Reverts` PR-body section naming each file in backticks.
+- `.github/scripts/clobber_guard.py` — the check. Pure core
+  `reverted_lines(base, main, head) = (lines(main)-lines(base)) - lines(head)`;
+  line-text set difference, so moves/refactors don't flag; binaries skipped.
+- `.github/scripts/test_clobber_guard.py` — 13 unit tests, incl. a synthetic
+  #579 reproduction (flags 3 main-added lines wiped by a stale full-file
+  copy) and legit cases (clean PR, moved line, branch-only edit, new file,
+  binary, callout/label exemptions).
+- `tools/clobber-check/clobber_check.py` + `tools/clobber-check/README.md` —
+  pre-push hook for the data-API push flow (no git hook can fire there):
+  `clobber_check.py --base <sync-sha> <files...>` compares local bytes
+  against base + live main tip via the GitHub API using the same algorithm.
+  Run before every gh_push.py-style push; documented install/usage in README.
+
+### Modified
+- `docs/owner-directives.md` — new permanent ANTI-CLOBBER LAW under
+  2026-10-22: the four rules (sync before work + before commit; surgical
+  edits only; >20-line deletions intentional and called out; re-sync if base
+  is hours old), citing #579.
+- `~/workspace/custom-connectors/custom.github_pat/bin/git_merge.py`
+  (workspace merge helper, not in repo) — new revert guard step 3b: refuses
+  the merge when the PR reverts main-side lines added after its base (also
+  refuses deleting a file main changed after the fork), unless the
+  `owner-approved-revert` label or a `## Reverts` body section names the
+  files. Tested against synthetic cases incl. refusal + all three exemptions.
+
+### Verification
+- 13/13 unit tests pass (`python3 -m unittest discover -s .github/scripts
+  -p 'test_clobber_guard.py'`).
+- Synthetic #579 replay: 3/3 wiped main-added lines flagged; clean PR, moved
+  line, branch-only edit → no flags.
+- This lane's own files were built on files freshly synced from main
+  (docs/owner-directives.md @ c4793881, WORKLOG.md @ 35d6687b, both verified
+  unchanged-or-re-synced immediately before pushing); all other files are new.
+  Ran the pre-push check logic against this lane's own change set before
+  pushing: clean.
+
+### Follow-ups (not this lane)
+- Port the revert guard into the repo's generalized `tools/git-merge/git_merge.py`
+  variant (diverged from the workspace helper; left untouched to avoid clobbering it).
+- Consider adding `clobber-guard` to main's required status checks via the
+  branch-protection API (needs admin scope; not attempted in this lane).
