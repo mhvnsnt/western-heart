@@ -2,6 +2,7 @@ import ghidra.app.script.GhidraScript;
 import ghidra.app.decompiler.*;
 import ghidra.program.model.listing.*;
 import ghidra.program.model.address.*;
+import ghidra.program.model.symbol.*;
 import ghidra.program.model.mem.*;
 import java.util.*;
 
