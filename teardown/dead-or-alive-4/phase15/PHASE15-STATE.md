@@ -1,0 +1,34 @@
+# DOA4 Phase 15 — STATE — OPEN 2026-10-22 (containment audit + identity harvest; .mot stream decode; w21 opcode hunt via the real XEX)
+
+Branch: `teardown/doa4-phase15-containment-mot` (stacked on `teardown/doa4-phase14-anm-decode`, PR #574 head `a545f4be`).
+Clone: ~/workspace/_doa4p8-clone (sparse, teardown/dead-or-alive-4 only).
+Scratch: ~/workspace/_doa4p2-scratch/p15/ (new this phase); p13/p14 scratch reused read-only where noted.
+Repo path: `teardown/dead-or-alive-4/phase15/`. Wiring inventory: `teardown/dead-or-alive-4/phase7/WIRING-INVENTORY.md`. Final state: `teardown/dead-or-alive-4/phase13/DOA4-FINAL-STATE.md` (additive addendum only).
+
+## ENVIRONMENT (proven — do not re-derive)
+- JAVA_HOME=/home/hatch/workspace/tools/ghidra/jdk-21.0.12.1+1 (NOT on PATH); Ghidra: ~/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC. VM RAM low (~1.8G available) — capped-heap/targeted passes only; Capstone acceptable.
+- TRUE XEX VA BASE = 0x82000000. RAW CAPSTONE is the primary XEX disassembler.
+- Blender: `xvfb-run -a env -u PYTHONPATH ~/workspace/tools/blender/blender-4.0.2-linux-x64/blender`, Cycles CPU; sanitize GLBs first.
+- Egress proxy intermittently kills gh downloads — use resumable drivers + supervisors; NEVER kill an in-progress download that isn't this lane's own stuck process; check the process table before declaring a stall (phase-14 lesson).
+
+## INHERITED TRUTH (verified phase 14 — do not re-derive)
+- ISO assembly CLOSED: release `doa4-iso-v1`, 30 parts, whole-ISO sha256 `4423cd5ca0979e38b48fce3dbdd78de6416abfd4dd01fc8cc9140e2c92b104aa`, size exactly 7,834,892,288 B. Local ISO cleared after verification (one-store rule). Assembler: `phase13/tools/iso_assemble_p13.py` (per-part sha256 vs release digest pre-write).
+- PROVENANCE: mirror tar's chrone/chrtwo/chrthree/anm.afs are RAW PAYLOAD STREAMS, not containers; ISO's same-named files are standard AFS containers with NAMED entries (chrone 73, chrtwo 128, chrthree 188, anm 26). Spot containment proven on chrone (zac00.tpr head at mirror +262,148,096; mid shifted −8,192 B vs ISO layout; entry-2 .cat head+mid layout-consistent; entry2→3 gap 1,376 B identical both sides).
+- Mirror member map (extracted tar, release `doa4-mirror-20261017`, parts of 524,288,000 B): chrone.afs @1212324864 (366,094,336 B), chrtwo @1578419712 (548,042,752 B), chrthree @2135433728 (762,955,776 B), anm @2898390016. Mirror bytes for chr* live in extracted-tar parts 02–05 (digests: p02 fc7b95e5…, p03 24656e3a…, p04 c5d119db…, p05 cccd3eed… — all phase-14 verified vs release).
+- ANM: 24 fighter .bin files have a PROVEN 32-pointer section table (136 B header; sections tile [136, filesize) exactly 24/24); w21 = 1024-entry clip command table of u16 token scripts (record sizes 12–588 B; opcode semantics RESIDUAL); w2 = B keyframe-record stream; w6/w7 curve sections; w28 = (u32 flag, f32 value) curve-pair stream. File identity PROVEN (AFS names == XEX `D:\bin` registry, exact reverse order; registry strings at default_pe.bin file offsets 0x27849c–0x278670).
+- mot.afs (ISO) = standard AFS, 197 NAMED entries (TOC: `phase14/tools/mot_toc_p14.json`): mot_version.bin + per-fighter triples (`<name>.mot`, `m_<name>.mot`, `c_<name>.mot`, 24 basenames; leifang spelled `leifan.*`; rtm plain/c_ slots are byte-identical kasumi copies) + 124 `t_*` tag-motion files. comon.mot in cmn.afs (7 entries). .mot front-table evidence: u32 absolute offset table with unused slots = data-start offset (zack 0x5998=22,936; c_zack 0x5038=20,536); relative offset sub-table at data start; deeper absolute tables in zack.mot (~1.7–1.8M at +2048). mot.afs whole + default.xex whole are in release `doa4-iso-extracts-20261022` (`iso_extracts.tar`, 94,049,280 B, sha256 09e3ecc2…); zack triple working copies in scratch p14/mot/.
+- default.xex retail sha256 `56b68dec68991f007639d796b04cb88c9aa7b484c1fce54641cdda5de4f2b98f` (in doa4-iso-extracts-20261022).
+- Phases 6–12 model library: 148 packages decoded from the MIRROR streams (phase-6 assembly graph); composites 23/31 FINAL; TX2D binding DYNAMIC-ONLY terminal — DO NOT reopen either.
+- XDVDFS tree: `phase13/xdvdfs_tree_full.json`. ISO offsets: chrone @2507206656, chrtwo @1959163904, chrthree @1196208128, mot.afs @1120815104, cmn.afs @804098048, anm.afs @1117865984.
+
+## JOBS
+1. CONTAINMENT AUDIT + IDENTITY HARVEST: re-assemble ISO (per-part sha256 pre-write; VERIFY whole-ISO sha256 == 4423cd5c… before trusting any byte). Extract EVERY named entry of ISO chrone/chrtwo/chrthree (+ chr_version.bin contents); mot.afs/cmn.afs entry lists. Per chr* entry: exact byte search in the corresponding MIRROR stream; head/mid/tail 64B window probes; verdict contiguous / piecewise / absent. Deliverables: CONTAINMENT-AUDIT.md + machine-readable map; mirror coverage % per stream + unexplained-remainder characterization; PACKAGE-NAME-MAP (phase 6–12 package byte ranges vs contained ISO-entry ranges → entry name assignment) + ID-CORRECTIONS.md (every confirm/refute of phases 8–12 tentative IDs; filenames win). Clear local ISO at lane end, logged here + ~/workspace/agent-ops/disk-cleanup-log.md.
+2. .mot STREAM DECODE: extract mot.afs's 197 entries from the verified ISO; release them (new release `doa4-mot-20261022` or extend `doa4-iso-extracts-20261022`; manifest in git either way; per-file sha256). Census zack.mot + m_zack.mot + c_zack.mot + one t_* file. Cross-reference zack.bin w21 clip table + w2/w6/w7/w28 vs .mot records. Decode .mot grammar as far as evidence allows; if a full parse emerges: FIRST CLIP (.bin definition + .mot stream) on a phase-6 skinned GLB skeleton, clip JSON + VIEWED pose render. If grammar resists: census + exact residual, no guessed semantics.
+3. w21 OPCODE SEMANTICS via the REAL XEX (one bounded hunt): default.xex from `doa4-iso-extracts-20261022`. Hunt the consumer of the REAL structures: code walking a 1024-entry u32 offset table, reading the 0x22xx token namespace, or opening `D:\bin\*.bin` / `*.mot`. Deliverable: opcode semantics EVIDENCED from code, or the exact negative with search scope stated.
+4. CLOSEOUT: WIRING-INVENTORY phase-15 section + DOA4-FINAL-STATE.md additive phase-15 addendum (append/pointer only) + this state file final.
+
+## DISCIPLINE
+Additions-only in git; NO `git add -A` (pathspec commits); commit+push after EVERY job step; own-eyes on every render; unique filenames; per-character isolation; never delete repo content; local clears only per one-store rule + logged; NO hand-tooling where a system exists.
+
+## LOG
+- 2026-10-22 lane start: read phase-14 PROVENANCE.md / ANM-DECODE.md / ISO-CLOSEOUT.md / PHASE14-STATE.md + phase-13 ANM-DEFINITION-2.md. Clone at a545f4b (PR #574 head) clean except untracked `tools/phase6/__pycache__/` (not mine, left alone). Branch `teardown/doa4-phase15-containment-mot` created off a545f4b; this state file is the first commit.
