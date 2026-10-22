@@ -2087,3 +2087,59 @@ On-main files NOT touched: worker 37's `js/creation-flow.js` + `js/art.js`
   `docs/owner-directives.md`.
 - Full log: `docs/decisions/2026-10-22-kinpo-repoint-w50.md` (branch
   `w50/kinpo-repoint`).
+
+## 2026-10-22 — Worker 64: Clothing remove/change system + labeling standard + Tsuyu frog hat
+
+**Owner directives:** (1) "Make it able to remove and change their clothes in
+the character creation suite and in game when I play it and preview it."
+(2) Labeling standard for every clothing part/accessory across all characters
+going forward (retroactive, starting with Parvati). (3) Hair/hats/accessories
+as SEPARATE INTERCHANGEABLE PARTS; hair = first-class library item.
+(4) Tsuyu catch: "Tsuyu without her frog hat isn't Tsuyu. Get it on her."
+
+**Built:**
+- `game/js/clothing-layers.js` (new): runtime per-mesh visibility engine.
+  Layers match by EXPLICIT raw-mesh-name lists (case-insensitive exact —
+  `Bra` never catches `Bra (2)`). Data-driven via
+  `game/data/clothing-layers.json` (model key → layers); nothing hardcoded.
+  Persistence `wh_clothing_v1` (hidden-set per model key). Hooked into
+  `assets.createInstance` (guarded, fire-and-forget) so saved choices apply
+  to every fight, preview, and harness automatically — incl. transform swaps.
+- Suite: `packages/creation-suite/ui/suite.js` — CLOTHING LAYERS section
+  nested at the top of the ATTIRE tab (integration law: inside the Tekken
+  flow, not parallel); `profile.js` — `clothing` state + `setClothingHidden` /
+  `isClothingHidden`, serialized as additive v1 `clothing_layers.hidden`,
+  mirrored to `wh_clothing_v1` on toggle/save. Wiring-map row added per its
+  rule 2.
+- In-game: pause menu gets a CLOTHING button → sheet with P1/P2 layer lists,
+  live toggles (`game/js/menus.js`).
+- `docs/CLOTHING-ACCESSORY-LABELING-STANDARD.md` (new): the permanent
+  `<category>_<item>_<variant>` standard, 11 categories (hair separate from
+  headwear), intake wiring checklist.
+- Retroactive label maps in `game/data/clothing-layers.json`: Parvati (23
+  source meshes incl. `Bra (2)`→`top_bra_02`, `Gaunlet`[sic]→`gloves_gauntlet_01`;
+  `Stripe`/`Full`/`Triangle` flagged `review: true`) and Tsuyu Asui
+  (`OBsuit`→`fullbody_bodysuit_01`, `OBHair`→`hair_bob_01`, …).
+- Intake pipeline: `docs/SMUTBASE-INTAKE-QUEUE.md` + standard §6 — intake not
+  complete until the label map is filed.
+
+**Tsuyu frog hat investigation:** full object-name scan of her source blend
+(37 objects) — the hat is NOT in the source at all (not hidden, not
+unexported). Crew-modeled it as a separate library part
+(`customization/parts/headwear/frog-hat/frog-hat.glb`, label
+`headwear_frog-hat_01`, 1370 verts) — NOT baked into her model. Her HAIR was
+verified present (`OBHair`, visible in PR #634) — the user's suspicion was
+wrong, no fix needed; registered as `hair_bob_01`.
+Re-rendered T-pose with the hat on (measured fit: head 0.691 wide, top
+z=4.052; dome r=0.42 seated at the forehead): proof at
+`docs/proof/tpose-urgent-2026-10-22/tsuyu-asui.png` (updated). Note: her
+source blends' `Hair`/`Body_*.dmx` data blocks are corrupted (append fails
+with "invalid ID names") — render used `.blend1` explicit object names;
+the rig lane should know.
+
+**Tests:** `node --check` clean on all 5 JS files; engine unit-check
+(exact-match semantics, categories, storage fallback) passes. Render viewed
+before shipping.
+
+**Branch:** `w64/clothing-layer-system` — PR open, MERGE FREEZE: merge-ready,
+not merged.
