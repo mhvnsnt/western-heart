@@ -202,6 +202,10 @@ const canvas = document.getElementById('game-canvas');
 const input = new InputManager();
 input.init();
 const game = new Game(canvas, input, ui);
+// Photo mode (DOA-style): P/F9 pauses into a free camera anywhere in a
+// fight. Loaded on demand; no-op until first toggled.
+import('./photomode.js').then(({ installPhotoMode }) => installPhotoMode(game))
+  .catch(() => {});
 ui._buildMeter('p1');
 ui._buildMeter('p2');
 
@@ -530,8 +534,14 @@ window.addEventListener('load', () => {
   setTimeout(() => document.getElementById('tap-to-start').classList.add('show'), 600);
 });
 
-document.querySelectorAll('[data-action]').forEach((el) => {
-  el.addEventListener('click', () => {
+/* Delegated data-action router (T8 menu, worker 37): one document-level
+   listener covers both the static menu and submenu cards created
+   dynamically by mainmenu.js. Previously a one-time forEach at eval. */
+document.addEventListener('click', (e) => {
+  const t = e.target;
+  const el = (t instanceof Element) ? t.closest('[data-action]') : null;
+  if (!el) return;
+  {
     unlockAudio();
     audio.uiClick();
     const a = el.dataset.action;
@@ -546,6 +556,9 @@ document.querySelectorAll('[data-action]').forEach((el) => {
     }
     else if (a === 'mode-training') {
       getModes().then(m => m.startMode('training'));
+    }
+    else if (a === 'mode-fightlab') {
+      getModes().then(m => m.startMode('fightlab'));
     }
     else if (a === 'mode-survival') {
       getModes().then(m => m.startMode('survival'));
@@ -598,7 +611,7 @@ document.querySelectorAll('[data-action]').forEach((el) => {
     else if (a === 'rematch') {
       getModes().then(m => { if (m.mode) m.rematch(); else startFight(); });
     }
-  });
+  }
 });
 
 /* Confirm routing: the mode controller owns the select flow
