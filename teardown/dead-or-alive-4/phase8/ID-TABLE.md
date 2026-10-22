@@ -7,17 +7,17 @@ IMPORTANT STRUCTURAL FACT (from the renders + stats): the phase-6 GLBs contain N
 ## chrone (30 packages) — renders viewed, ID pass in progress
 | package | verts | joints | silhouette evidence (from viewed render) | identification | confidence |
 |---|---|---|---|---|---|
-| chrone-pkg00 | 45237 | 58 | vest/coat torso, bow at neck, waist pouch, wide sleeve cylinders, single tapered leg column | unidentified | — |
-| chrone-pkg01 | 37076 | 60 | (render viewed — see renders/) | unidentified | — |
-| chrone-pkg02 | 37545 | 64 | wide-sleeved long dress (X width 0.94, widest of chrone) | unidentified | — |
-| chrone-pkg03 | 52101 | 62 | pending | unidentified | — |
-| chrone-pkg04 | 50956 | 62 | pending (stats ≈ pkg03: same-fighter group candidate) | unidentified | — |
-| chrone-pkg05 | 39035 | 60 | pending | unidentified | — |
-| chrone-pkg06 | 78589 | 63 | pending (tall group 06–09, Ymax 0.59) | unidentified | — |
-| chrone-pkg07 | 84744 | 61 | pending (tall group) | unidentified | — |
-| chrone-pkg08 | 81841 | 61 | pending (tall group) | unidentified | — |
-| chrone-pkg09 | 83561 | 61 | pending (tall group) | unidentified | — |
-| chrone-pkg10 | 33366 | 66 | pending (wide band-5 flare 0.92) | unidentified | — |
+| chrone-pkg00 | 45237 | 58 | VIEWED `renders/p8-chrone-pkg00.png`: vest/coat torso, bow at neck, rectangular waist pouch, wide sleeve cylinders, single tapered leg column; phase-6 textured render shows dark PLAID vest (tex30) + crest patches (tex40). Costume group A (bow/coat/pouch: pkg00/01/05) | unidentified (group A) | — |
+| chrone-pkg01 | 37076 | 60 | VIEWED: same coat/bow/pouch design as pkg00, heavier triangle fragmentation | unidentified (group A) | — |
+| chrone-pkg02 | 37545 | 64 | VIEWED: KIMONO — crossover wrap top, obi belt with round ornament + hanging pouch, extremely long wide sleeves (X width 0.94, widest of chrone; sleeve geometry shattered), floor-length skirt panels | kimono costume; Kokoro is DOA4's kimono-signature fighter — competing candidates: none on the base roster wear a full kimono as a primary costume, but head/hair geometry is absent so this cannot rise above tentative | tentative |
+| chrone-pkg03 | 52101 | 62 | VIEWED: bulky dense chest mass (folded geometry — long-hair or fur/scarf class object), ring-buckle belt, short flared skirt, thick leg column. Costume group B (ring-belt: pkg03/04) | unidentified (group B) | — |
+| chrone-pkg04 | 50956 | 62 | VIEWED: off-shoulder top, necklace, ring-buckle belt, short flared skirt; proportions identical to pkg03 (group B) | unidentified (group B) | — |
+| chrone-pkg05 | 39035 | 60 | VIEWED: coat + neck bow + large front waist bow, round buttons, fragmented geometry; group A design language | unidentified (group A) | — |
+| chrone-pkg06 | 78589 | 63 | VIEWED: MALE NINJA — back-mounted katana (wrapped grip over shoulder), armored vest, neck scarf/mask cloth, side sheath; broad flat-chested torso. Costume group C (katana group: pkg06–09 by stats+gear) | group C: katana-carrying male ninja — competing candidates: Ryu Hayabusa (single back katana is his signature) vs Hayate | tentative |
+| chrone-pkg07 | 84744 | 61 | VIEWED: katana over shoulder, bulky armored/hooded torso, diagonal sheath; group C | group C (see pkg06) | tentative |
+| chrone-pkg08 | 81841 | 61 | VIEWED: TWO blades (shoulder katana + diagonal back sword + hip sheath), wide sleeve guards; group C | group C (see pkg06) | tentative |
+| chrone-pkg09 | 83561 | 61 | render NOT yet produced (batch timeout) — stats place it in group C (83,561 verts, Ymax 0.59) | unidentified (stats-group C, unverified) | — |
+| chrone-pkg10 | 33366 | 66 | VIEWED: female long dress, column of round frog toggles down the front, center lacing/cords, bell-shaped waist pendant, wide skirt; thin horizontal cord/weapon line at hand height | Chinese-dress costume — competing candidates: Leifang (Chinese dress is her signature) vs Helena (long formal dresses) | tentative |
 | chrone-pkg11 | 61369 | 84 | pending (84 joints — extra hair/cloth bones) | unidentified | — |
 | chrone-pkg12 | 63506 | 86 | pending (86 joints) | unidentified | — |
 | chrone-pkg13 | 25819 | 64 | pending (long lower body, Ymin −0.64) | unidentified | — |
