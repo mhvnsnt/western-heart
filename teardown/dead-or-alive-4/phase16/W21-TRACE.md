@@ -125,6 +125,22 @@ enough to parse RUNTIME records if they are ever dumped, but
 the file->record step remains unproven, and any token
 semantics assigned today would be guesses.
 
+## §3b Ghidra cross-check (attempted, blocked by the PE reconstruction)
+A bounded Ghidra 12.1.4 headless pass (JAVA_HOME per phase 15,
+-Xmx1024M) was run this lane: auto-analysis of
+`workdir/default_pe.bin` SUCCEEDED, but the reconstructed PE
+imports at image base 0 with an address space ending at
+0x10FFEF, so the registry VAs (0x82C69A70 / 0x82C6B38C) are out
+of bounds and no data xrefs could be collected (script error
+AddressOutOfBoundsException, on record in the lane log). The
+PE's three section mappings (.text +0x8200E800, .rdata
++0x82000000, .data +0x8201DE00) cannot be reproduced by a
+single-base raw load either. Rebuilding a faithful Ghidra
+project (per-section memory blocks at the true VAs) is the
+named prerequisite for the data-flow hunt of §3 — noted, not
+done in this lane's budget; the Capstone evidence above is
+unaffected.
+
 ## §4 Feed into Job 1
 Nothing in §2 decodes the .mot packed sub-block payload (the
 .mot side's expansion is a different consumer than the w21
