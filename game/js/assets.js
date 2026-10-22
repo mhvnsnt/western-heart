@@ -76,6 +76,11 @@ export const MODEL_URLS = {
   'kinpo-legacy': 'assets/models/kinpo.glb',
   // Kinpo Attire 2 "Goth Sport" (owner 2026-10-20, Tripo pull — see roster/kinpo/ATTIRE-SLOTS.md).
   'kinpo-attire2': '../roster/kinpo/attires/attire2/model.glb',
+  // KINPO INTAKE DEMO (2026-10-21, tripo-intake lane): the same attire-1 Tripo
+  // re-rigged end-to-end by tools/tripo-intake (Blender 4.0.2 + GameRig, facing
+  // +X measured by the intake's two-cue gate — the k-NN batch assumed +Z).
+  // Suite-viewer demo key only; the live game keeps using 'kinpo' above.
+  'kinpo-intake-demo': '../roster/kinpo/attires/attire1/model-intake.glb',
   // WATERFALL (2026-10-21, lane 4 rig batch 1): unrigged Tripo static -> model-rigged.glb
   // via tools/auto_rig knn backend (donor pantera.glb); original model.glb untouched.
   waterfall: '../roster/waterfall/attires/attire1/model-rigged.glb',
