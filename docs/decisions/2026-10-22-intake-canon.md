@@ -5,17 +5,19 @@ Logged to CANON.md (§INTAKE CHARACTERS) and docs/owner-directives.md.
 
 | WH Name | Was | Concept | Moveset |
 |---|---|---|---|
-| BIRODO | Velvet | Capoeira dancer, runs the Velvet Room, introduced Zen to the underground, invented the Nine-Soul Meter | TBD (fluid/dance-like, Xiaoyu taken) |
-| JOTEI | Majesty | Exiled empress, imperial court wrestling | Craig Marduk |
-| CHATUR | Rahkasa | Four-armed Oversoul spirit, temple dancer who refused to die | True Ogre |
-| RYUSAN | Vitriol | Acid punk, 15, living proof of Jotei family's crimes | Lucky Chloe |
-| POND | Tsuyu | Swamp boundary watcher, found Dorowani as an egg | Raven |
-| MEGAMI | Devi | Temple guardian of a sealed door, trained Chatur | Jun Kazama |
-| MENAJERII (メナジェリー) | Vixen | Spirit-walker carrying beast spirits | Roger Jr. |
-| TOBI | Longleap | Rabbit courier, fastest in roster | Hwoarang |
+| BIRODO | Velvet | Power broker — the Velvet Room is neutral ground because SHE says so. Warm until she's not. | Feng Wei (user pick) |
+| JOTEI | Majesty | Fallen empress playing a long game, every fight is politics | Craig Marduk |
+| CHATUR | Rahkasa | Four-armed Oversoul spirit — chose to stay, holding the spirit realm together at personal cost | True Ogre |
+| RYUSAN | Vitriol | Acid punk, 15 — carrying war evidence without knowing it, angry but also a hurt kid | Lucky Chloe |
+| POND | Tsuyu | Swamp boundary watcher — chose the swamp over a temple position | Raven |
+| MEGAMI | Devi | Temple guardian — grieving, holding the door shut while pretending not to see her dead student | Jun Kazama |
+| MENAJERII (メナジェリー) | Vixen | Spirit-walker — a refugee camp, carrying the last of her people | Roger Jr. |
+| TOBI | Longleap | Rabbit courier — running from guilt, speed as avoidance | Hwoarang |
 
 Name decision 2026-10-22: MENAJERII (Japanese pronunciation) — NOT Hyakujuu.
 
 Canon web: Jotei's crime → Ryusan's powers → Tobi's guilt → Pond's swamp → Dorowani's mud → Chatur's sacrifice → Megami's seal → Menajerii's sanctuary → Zen's cracked Oversoul.
 
-Moveset source law: only unclaimed Tekken fighters. See CANON.md for the taken/free lists.
+Moveset source law: only unclaimed Tekken fighters. See CANON.md for the taken/free lists (Feng Wei now taken by Birodo).
+
+Canon principle (owner, 2026-10-22): movesets are Tekken bones, canon gives them souls — don't flatten characters to their moveset archetype.

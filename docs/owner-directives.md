@@ -147,15 +147,16 @@ Tripo 3D models show FIRST and foremost for every fighter; Tekken attires/models
   stays the Baek model until it lands.
 
 ## Intake character canon (owner-approved 2026-10-22)
-- **BIRODO** (was Velvet): capoeira dancer, runs the Velvet Room (neutral ground club). Introduced Zen to the WH underground, invented the Nine-Soul Meter. Moveset TBD — needs a free Tekken fighter with fluid/dance-like evasive style (Ling Xiaoyu taken by Saku-ra).
-- **JOTEI** (was Majesty): exiled empress, imperial court wrestling, coming to collect. Moveset: Craig Marduk.
-- **CHATUR** (Rahkasa): four-armed Oversoul spirit, temple dancer who refused to die. Moveset: True Ogre.
-- **RYUSAN** (was Vitriol): acid punk, 15, living proof of Jotei family's crimes. Moveset: Lucky Chloe.
-- **POND** (Tsuyu): swamp boundary watcher, found Dorowani as an egg. Moveset: Raven.
-- **MEGAMI** (was Devi): temple guardian of a sealed door, trained Chatur. Moveset: Jun Kazama.
+- **BIRODO** (was Velvet): power broker, not just a dancer — the Velvet Room is neutral ground because SHE says so. Warm until she's not. Introduced Zen to the WH underground, invented the Nine-Soul Meter. Moveset: Feng Wei (user pick).
+- **JOTEI** (was Majesty): fallen empress playing a long game, every fight is politics. Coming to collect. Moveset: Craig Marduk.
+- **CHATUR** (Rahkasa): four-armed Oversoul spirit — a person who chose to stay, holding the spirit realm together at personal cost. Moveset: True Ogre.
+- **RYUSAN** (was Vitriol): acid punk, 15 — carrying war evidence without knowing it, angry but also a hurt kid. Moveset: Lucky Chloe.
+- **POND** (Tsuyu): swamp boundary watcher — chose the swamp over a temple position. Found Dorowani as an egg. Moveset: Raven.
+- **MEGAMI** (was Devi): temple guardian of a sealed door — grieving, holding it shut while pretending not to see her dead student. Trained Chatur. Moveset: Jun Kazama.
 - **MENAJERII** (メナジェリー): spirit-walker carrying beast spirits, sanctuary at Birodo's club. Moveset: Roger Jr. NAME LOCKED 2026-10-22 — Japanese pronunciation, NOT Hyakujuu.
-- **TOBI** (was Longleap): rabbit courier, fastest in roster. Moveset: Hwoarang.
+- **TOBI** (was Longleap): rabbit courier, fastest in roster — running from guilt, speed as avoidance. Moveset: Hwoarang.
 - Canon web: Jotei's crime → Ryusan's powers → Tobi's guilt → Pond's swamp → Dorowani's mud → Chatur's sacrifice → Megami's seal → Menajerii's sanctuary → Zen's cracked Oversoul.
+- Canon principle: movesets are Tekken bones, canon gives them souls — don't flatten characters to their moveset archetype.
 
 ## Moveset source law (standing, 2026-10-22)
-Movesets may ONLY come from Tekken fighters nobody has claimed. Taken: King, Armor King, Akuma, Shaheen, Lars, Zafina, Bosconovitch, Yoshimitsu, Lee Chaolan, Ling Xiaoyu, Eddy/Christie. Free: True Ogre, Lucky Chloe, Hwoarang, Raven, Jun Kazama, Craig Marduk, Roger Jr. Verify against the full roster before wiring.
+Movesets may ONLY come from Tekken fighters nobody has claimed. Taken: King, Armor King, Akuma, Shaheen, Lars, Zafina, Bosconovitch, Yoshimitsu, Lee Chaolan, Ling Xiaoyu, Eddy/Christie, Feng Wei (Birodo). Free: True Ogre, Lucky Chloe, Hwoarang, Raven, Jun Kazama, Craig Marduk, Roger Jr. Verify against the full roster before wiring.
