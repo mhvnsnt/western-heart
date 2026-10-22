@@ -92,5 +92,24 @@
     "Skill_03"
   ],
   "renamed_joints": 0,
-  "joint_count": 73
+  "joint_count": 73,
+  "stance_fix_20261021": {
+    "date": "2026-10-21",
+    "lane": "deathfang-stance-fix",
+    "change": "frame-carried stance transfer (spine column + head), anatomical weight sanitizer v2, Jacobi weight diffusion post-pass",
+    "anim_check_edge_stretch_p999": {
+      "Battle_Idle": 4.245,
+      "Skill_01": 4.098,
+      "Skill_03": 4.558
+    },
+    "shipped_pr443_p999": {
+      "Battle_Idle": 8.77,
+      "Skill_01": 8.87,
+      "Skill_03": 9.88
+    },
+    "validate": "PASS",
+    "diffusion_passes": 18,
+    "hair_zone_head_chain_pct": 93,
+    "hair_zone_arm_pct": 0
+  }
 }
