@@ -51,10 +51,11 @@ const OWNERSHIP = {
   },
   "baek-master-white": {
     "own": [
+      "kevin-tripo",
       "baek",
       "baek-master-white"
     ]
-  },
+  }, // wire-up 2026-10-22: Kevin A1 Tripo wired + ladder Slot 1
   "bruno": {
     "own": [
       "bruno"
@@ -168,9 +169,11 @@ const OWNERSHIP = {
   },
   "dxmmii-patchwork": {
     "own": [
-      "dxmmii-patchwork"
+      "dxmmii-tripo",
+      "dxmmii-patchwork",
+      "dxmmii-a2"
     ]
-  },
+  }, // table was stale vs the re-keyed ladder (Tripo default Slot 1); fixed 2026-10-22
   "gyou": {
     "base": "pantera"
   },
@@ -188,16 +191,21 @@ const OWNERSHIP = {
   "kingtyrant": {
     "own": [
       "king-tyrant",
+      "king-tyrant-attire1",
+      "king-tyrant-attire2",
+      "king-tyrant-attire3",
+      "king-tyrant-attire4",
       "king-tyrant_alt1"
     ]
-  },
+  }, // wire-up 2026-10-22: Tripo attires 1-4 wired + ladder
   "kinpo": {
     "own": [
       "kinpo",
+      "kinpo-attire2",
       "kinpo-t8",
       "kinpo_alt1"
     ]
-  },
+  }, // wire-up 2026-10-22: Attire 2 Goth Sport added to her ladder
   "koreshi": {
     "own": [
       "koreshi"
@@ -217,14 +225,20 @@ const OWNERSHIP = {
   },
   "mariposa-monarch": {
     "own": [
-      "mariposa-monarch"
+      "mariposa-butterfly-default",
+      "mariposa",
+      "mariposa-monarch",
+      "zafina-golden-pharaoh",
+      "zafina"
     ]
-  },
+  }, // table was stale vs the deduped ladder (Slot 1 Butterfly Default); fixed 2026-10-22
   "michiko": {
     "own": [
+      "michiko-attire1",
+      "michiko-attire2",
       "michiko"
     ]
-  },
+  }, // wire-up 2026-10-22: Tripo Attires 1-2 (auto-rigged) wired + ladder
   "negativo": {
     "own": [
       "n3g4tiv0"
@@ -232,9 +246,10 @@ const OWNERSHIP = {
   },
   "nightwolf": {
     "own": [
-      "nightwolf"
+      "nightwolf",
+      "nightwolf-attire1"
     ]
-  },
+  }, // wire-up 2026-10-22: Tripo Attire 1 wired + ladder
   "pantera": {
     "own": [
       "pantera",
@@ -246,9 +261,10 @@ const OWNERSHIP = {
   "phantom": {
     "own": [
       "phantom",
-      "phantom-t8"
+      "phantom-t8",
+      "jin-bloodline-ember"
     ]
-  },
+  }, // wire-up 2026-10-22: Jin Kazama Bloodline Ember added to Phantom's ladder
   "purplerain": {
     "own": [
       "purple-rain",
@@ -303,9 +319,13 @@ const OWNERSHIP = {
   },
   "star": {
     "own": [
-      "star"
+      "star",
+      "star-attire1",
+      "star-attire2",
+      "star-attire3",
+      "star-attire5"
     ]
-  },
+  }, // wire-up 2026-10-22: Tripo attires 1-3+5 wired + ladder
   "thor": {
     "own": [
       "thor",
@@ -314,9 +334,11 @@ const OWNERSHIP = {
   },
   "torch": {
     "own": [
-      "torch"
+      "torch",
+      "torch-tripo-a1",
+      "torch-tripo-a2"
     ]
-  },
+  }, // table was stale vs the torch ladder (A1 Valkyrie of Flame default); fixed 2026-10-22
   "tou": {
     "base": "pantera"
   },
@@ -343,9 +365,10 @@ const OWNERSHIP = {
   "zen": {
     "own": [
       "zen",
-      "zen-attire1"
+      "zen-attire1",
+      "zen-body"
     ]
-  },
+  }, // +zen-body (ladder Attire 2)
   "zui": {
     "own": [
       "zui-attire1",
