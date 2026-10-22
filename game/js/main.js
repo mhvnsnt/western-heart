@@ -208,6 +208,10 @@ const canvas = document.getElementById('game-canvas');
 const input = new InputManager();
 input.init();
 const game = new Game(canvas, input, ui);
+// Photo mode (DOA-style): P/F9 pauses into a free camera anywhere in a
+// fight. Loaded on demand; no-op until first toggled.
+import('./photomode.js').then(({ installPhotoMode }) => installPhotoMode(game))
+  .catch(() => {});
 ui._buildMeter('p1');
 ui._buildMeter('p2');
 
@@ -558,6 +562,9 @@ document.addEventListener('click', (e) => {
     }
     else if (a === 'mode-training') {
       getModes().then(m => m.startMode('training'));
+    }
+    else if (a === 'mode-fightlab') {
+      getModes().then(m => m.startMode('fightlab'));
     }
     else if (a === 'mode-survival') {
       getModes().then(m => m.startMode('survival'));
