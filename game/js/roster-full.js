@@ -188,10 +188,17 @@ export const FULL_ROSTER = [
   // 'docfrank' ladder. Models preserved, just re-homed.
   { id: 'baek-master-white', name: 'KEVIN', title: "The Master Soul", base: 'Kevin', moveset: 'bryan', model: 'baek', tintStrength: 0.25,
     colors: { suit: 0xf0f0f0, trim: 0x8a1a1a }, style: 'Tae Kwon Do', archetype: 'Pressure' },
-  { id: 'mariposa-monarch', name: 'MARIPOSA', title: 'Monarch', base: 'Zafina', moveset: 'xiaoyu', model: 'mariposa-monarch', tintStrength: 0.25,
+  { id: 'mariposa-monarch', name: 'MARIPOSA', title: 'Monarch', base: 'Zafina', moveset: 'xiaoyu', model: 'mariposa-butterfly-default', tintStrength: 0.25,
     colors: { suit: 0x2a1a3a, trim: 0xff8800 }, style: 'Azazel Arts', archetype: 'Tricky' },
-  { id: 'dxmmii-patchwork', name: 'DXMMII', title: 'Patchwork DJ', base: 'Mokujin', moveset: 'demonio', model: 'dxmmii-patchwork', tintStrength: 0.25,
+  // DEDUP (2026-10-22): default model = her owner-designated Slot 1
+  // (Butterfly Default, owner 2026-10-19 exception to the Tripo-first law).
+  // Entry id kept: EPISODES, HEARTMIND_STORIES, MOVESET_MAP, moveset files
+  // and the portrait are keyed by it.
+  { id: 'dxmmii-patchwork', name: 'DXMMII', title: 'Patchwork DJ', base: 'Mokujin', moveset: 'demonio', model: 'dxmmii-tripo', tintStrength: 0.25,
     colors: { suit: 0x3a2a5a, trim: 0x00ffcc }, style: 'Mimicry', archetype: 'Trickster' },
+  // DEDUP (2026-10-22): default model = his Slot 1 Tripo Default
+  // (roster/dxmmii/ATTIRE-SLOTS.md, owner 2026-10-19). Entry id kept
+  // (MOVESET_MAP, moveset files, portrait keyed by it).
   // Sketchfab intake (owner 2026-10-19): working names, WH names pending owner pick.
   // Licenses: Zangief CC-BY (johnny136), Blanka Free Standard (allanromanreyes),
   // Vega CC-BY (pierodsoto01), Iori CC-BY (0xo), Armor King CC-BY (theamazingdonovan207).
