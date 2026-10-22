@@ -1617,30 +1617,3 @@ Tekken on-hit stack: (1) jagged star-burst HIT SPARK sprite (canvas-generated, a
 **Deliverable:** `docs/research/ROSTER-CANON-AUDIT-2026-10-22.md` — real total, full 55-dir classification table, hardcoded/PR/intake tables, 49-slot select→canon→models mapping (source of truth), flag list. No game code changed. No deletions.
 
 **Sandbox note:** this worker's Python could not write files >~8KB, so large repo files were read through the API in chunked reads and only small extracts materialized; fresh WORKLOG.md was re-assembled from 15×8KB API chunks (120,464 bytes, size-verified) before appending this entry — no clobber.
-
-## Arena save + upgrade pipeline (worker 18, 2026-10-22)
-Owner instruction: "FIRST: save every current arena EXACTLY as it is right now —
-these become 'arena drafts,' a revertible baseline. THEN: upgrade them from the
-prototype 3JS look to real arenas. Document the pipeline (concept → blockout →
-detail pass → lighting → polish)."
-- PHASE 1 DONE — `arenas/drafts/2026-10-22/`: 148 files (~24MB), manifest.json
-  with SHA-256 per file, all hashes verified. Pure preservation, no mods.
-- PHASE 2 DONE — pipeline doc `docs/arenas/ARENA-UPGRADE-PIPELINE.md`: 6 stages
-  (concept/lock → blockout → detail → material/texture → lighting → polish/final)
-  with explicit owner HANDOFF points per stage; teardown-first law.
-- Pilot: HELIX PALACE × Pink Narwhal club map. Converter
-  `tools/stage-arena-pull/convert_pinknarwhal.py` (Blender 4.5.3): rotate +90° Z,
-  center floor, 1.2× scale, dollhouse, clearance rules (fight rect |x|<8.4,|z|<2.5,
-  h>0.35; camera corridor), >1024px texture downscale. Critical: bake M@matrix_world
-  into mesh data BEFORE deleting parents; recompute mesh list after deletion.
-- `game/assets/stages/pink-narwhal/pink-narwhal.glb` (15.9MB, 26 meshes), 0
-  lane/camera intruders; pole stage + DJ booth in background, floor at y=0.
-- `game/js/stages.js`: helix-palace gains `glb` + `hidePlatform: true`; buildHelix
-  async with GLB load + spiral-blockout fallback; desire pods → club zone markers.
-- Proof: `docs/arenas/proof/helix-palace-before.png` (blocky prototype) vs
-  `-after.png` (club interior); both rendered headless, 0 console errors.
-  NOTE: pilot used concept "club interior" for the upgrade; the Helix Palace
-  CANON concept (spiral tower) stays locked — the pilot proves the PIPELINE, and
-  Helix Palace's real upgrade pass goes through owner art direction per the doc.
-  Drafts remain the revertible baseline.
-
