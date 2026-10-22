@@ -1953,17 +1953,31 @@ machine). Rebuilt from the task description and PR'd (branch `w50/rig-guard`):
   instruction-gate: no duplication, no edits to existing checks.
 - Full log: `docs/decisions/2026-10-22-rig-guard-rebuild-w50.md`.
 
-## 2026-10-22 — VF5 Full Integration (Worker 45) — PR #692 MERGED
+## 2026-10-22 ~16:00 CDT — worker 48: ASHLANE CANON BRIDGE (Bannon, El Toro de Oro, Pablo, NPC Finxsse)
 
-**VF5 PS3 (.farc) format reverse-engineered; all 18 fighters extracted + T-pose rendered.**
+### What
+Canon bridge for the four user-locked Ashlane→VF5 mappings. Ashlane characters keep their existing bios from their repos; each got a "how they arrived" bridge into WH/Eastern Mind canon (the call, lost souls, the Trial, Tong-Nou, the Five Lands, the Phantom Marketplace).
 
-- **mon/msk identified:** `mon` = Eileen, `msk` = El Blaze (release READMEs; msk render-verified as luchador). **El Blaze DOES have farcs** — the "NO farc/DLC" note was wrong; Pablo → El Blaze is NOT blocked.
-- **New tools:** `tools/vf5/farc_extract.py` (FArC container), `tools/vf5/vf5extract.py` (obj.bin → OBJ: chunk headers, LE f32 positions, u16 strip indices), `tools/vf5/README.md`.
-- **4 locked movesets** (schema-v2, VF→Tekken inputs): `game/assets/movesets/vf-jeffry.json` (25, Bannon), `vf-wolf.json` (21, El Toro de Oro), `vf-leifei.json` (22, NPC Finxsse), `vf-elblaze.json` (28, Pablo).
-- **Research:** `docs/research/VF5-FULL-INTEGRATION-2026-10-22.md`; decision log `docs/decisions/2026-10-22-vf5-integration.md`.
-- **Renders:** 18 T-pose PNGs batch-rendering (Blender 4.5.3); uploaded to remote storage as they complete for user review. **Dural flagged as Zen's approved base-mix layer.**
-- **Gaps:** Motion clips not in release (likely in 3.7GB vf5-500m ROM, not pulled); 38 stg*.farc stages deferred to arena pipeline.
-- Merged via git_merge.py as 7f38022d (additions only; CI: instruction-gate, clobber-guard, deletion-guard, guard all green).
+### Sources (foundation bios — pulled, not rewritten)
+- `mhvnsnt/brutalfistgrokversiontenpointfive`, `src/data/bannonRoster.ts` (ids `bannon`, `el_toro_de_oro`, `pablo`, `finxsse`) — bios, personalities, fighting styles, attires (PABLO.glb Minotaur Painted / PABLO_goldenbull.glb Golden Bull / PABLO_blackreign.glb Black Reign), payback names, factions.
+- `mhvnsnt/brutalfistgrokversion`, `native/media/characters/chara_bannon/bannon.identity.txt` — "The physical nucleus and absolute force of the Bannon Engine. Driven by raw physics and unmatched grit."
+- Bannon universe = sub-universe of the WH multiverse (owner directive 2026-10-22).
+
+### Changes (CANON.md — 3 surgical additions, 0 deletions)
+- New `## 9. THE ASHLANE ARRIVALS` section (before APPENDIX): four entries in the Pantera/Demonio/Phantom format — BANNON "The Engine Soul", EL TORO DE ORO "The Golden Bull Soul", PABLO "The Painted Soul", NPC FINXSSE "The Grudge Soul". Each: Backstory (Ashlane foundation + arrival kishotenketsu), Personality (one behavior), Fighting philosophy (one carved quote), Relationships (zuihitsu, double work), Element (Bannon=Earth/Octagonal Shrine, El Toro=Fire/Plains of Chi-U, Pablo=Metal/Helix Palace, Finxsse=Water/Palace of Dreaming), Body/Mind/Soul (friction), Why they think they're here (with the gap), Being purified of, Signature detail, Owner-locked (Ashlane source + VF5 base, technical only).
+- §4: new "On the Ashlane arrivals" paragraph — mortal lost souls from the Bannon sub-universe, not of the nine.
+- §5 "What the Fighters Want": four new bullets.
+- Pablo's locked duality (user refinement: Goldust theatricality MIXED with dark Black Reign/Abyss/Mankind energy — disturbed masked darkness underneath, matching PABLO_blackreign) drives his Body/Mind/Soul friction and "Being purified of: The mask".
+
+### Also
+- `docs/decisions/2026-10-22-ashlane-canon-bridge.md` — dated decision log.
+- `docs/owner-directives.md` — new "VF5 moveset claims — Ashlane four" section (locked: Jeffry→Bannon, Wolf→El Toro, El Blaze→Pablo, Lei-Fei→Finxsse; candidates + unmapped listed).
+- Writing laws held: all adults; canon-grounded (every proper noun from CANON.md or the Ashlane repos — no invented locations/systems); no Tekken/VF5 names in canon prose (bases in Owner-locked technical lines only, matching the existing "Bob Richards base" convention); craft guide standard.
+
+### Verification
+- `git diff --stat`: CANON.md +142/−0, owner-directives.md +3/−0, decisions +1 new file. Zero deletions.
+- PR: branch `w48-ashlane-canon-bridge`, instruction-gate body (six sections), merged via `git_merge.py` after green CI + no-deletion guard + gitleaks.
+- No live-browser play verification applicable (canon text work); no game code touched.
 
 ## 2026-10-22 ~16:00 CDT — worker 50: Kinpo A1 rig repoint (config-only)
 

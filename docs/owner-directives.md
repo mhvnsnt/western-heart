@@ -298,6 +298,9 @@ Tripo 3D models show FIRST and foremost for every fighter; Tekken attires/models
 ## Moveset source law (standing, 2026-10-22)
 Movesets may ONLY come from Tekken fighters nobody has claimed. Taken: King, Armor King, Akuma, Shaheen, Lars, Zafina, Bosconovitch, Yoshimitsu, Lee Chaolan, Ling Xiaoyu, Eddy/Christie, Feng Wei (Birodo). Free: True Ogre, Lucky Chloe, Hwoarang, Raven, Jun Kazama, Craig Marduk, Roger Jr. Verify against the full roster before wiring.
 
+## VF5 moveset claims — Ashlane four (user locked 2026-10-22, 15:19 CDT)
+VF5 bases claimed for the four locked Ashlane mappings (technical moveset sources only — never canon identities, never named in canon prose): Bannon→Jeffry McWild, El Toro de Oro→Wolf Hawkfield, Pablo→El Blaze, NPC Finxsse→Lei-Fei. Candidates only (NOT locked): Master Sensei→Lau, Sombra Negra→Kage, Cipher→Goh, Aaron Ruben→Akira, Cody→Jacky, Jager→Vanessa, Brutus, Wreck Patterson. Unmapped: Triple XXX, Echo, Hollow, Static, Stickup, Onyx, Tyneshia, Maime, Edwin Kennedy, Hall Nighter, Stan Combs, Kobra, Viper. Sarah/Pai/Aoi/Eileen (VF5 women) need female Ashlane characters identified.
+
 ## Character age law (user directive 2026-10-22, permanent)
 All characters are adults. No minors — no children, no teenagers — ever, unless the user explicitly authorizes it. Only the user can make that call. If a minor is ever added in the future, strict safety guidelines apply even in video game form. Current roster: adults, divine beings, animals, demons, creatures.
 
