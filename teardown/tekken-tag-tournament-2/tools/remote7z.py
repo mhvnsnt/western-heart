@@ -46,12 +46,16 @@ class ChunkedRemoteFile(io.RawIOBase):
         return f"https://github.com/{REPO}/releases/download/{TAG}/{name}"
 
     def _download_parallel(self, name: str, dest_tmp: Path, total: int,
-                           workers: int = 8) -> None:
+                           workers: int = 0) -> None:
         """Download a chunk via parallel curl byte-range requests.
 
         Resumes an existing partial tmp file: only the missing tail is
         fetched, in `workers` ranges, then concatenated in order.
+        workers=0 -> env REMOTE7Z_WORKERS (default 4; lower = gentler on
+        GitHub's throttle).
         """
+        if workers <= 0:
+            workers = int(os.environ.get("REMOTE7Z_WORKERS", "4"))
         url = self._chunk_dl_url(name)
         have = dest_tmp.stat().st_size if dest_tmp.exists() else 0
         if have > total:
