@@ -26,6 +26,11 @@ public class DecompileCandidates extends GhidraScript {
         for (int ai = 1; ai < args.length; ai++) {
             Address seed = currentProgram.getAddressFactory().getAddress(args[ai]);
             Function f = getFunctionContaining(seed);
+            if (f == null) {
+                // .pdata-derived entry point (phase 11): create the function.
+                disassemble(seed);
+                try { f = createFunction(seed, null); } catch (Exception e) { f = null; }
+            }
             if (f == null) { idx.println("seed " + args[ai] + " -> NO FUNCTION"); println("seed " + args[ai] + " NO FUNCTION"); continue; }
             idx.println("seed " + args[ai] + " (true VA " + seed.add(0x81C00000L) + ") -> " + f.getName() + " @ " + f.getEntryPoint()
                 + " (true VA " + f.getEntryPoint().add(0x81C00000L) + ")");
