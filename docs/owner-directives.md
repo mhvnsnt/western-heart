@@ -4,6 +4,25 @@ Living document. Updated every time the owner sets a directive. Newest first.
 
 ## 2026-10-22
 
+- **ANTI-CLOBBER LAW (permanent — written in blood after PR #579).** On
+  2026-10-22 PR #579 committed stale full-file copies (base from Oct 17),
+  wiping 427 lines of `game/js/assets.js`, 113 of `game/js/main.js`, 32 of
+  `game/js/game.js`, 25 of `index.html`, 316 of `WORKLOG.md` — Torch broke
+  live. Root cause: agents working from stale clones committing whole files.
+  Never again. Four rules, no exceptions:
+  1. **Sync to latest main BEFORE starting any file work, and again BEFORE
+     committing.** A base more than a few hours old gets re-synced.
+  2. **Surgical edits only** — never write a whole file when a targeted edit
+     will do. Fresh sync + surgical edits; never commit stale full-file
+     copies.
+  3. **Any diff deleting >20 lines must be intentional and called out** in
+     the PR body (`## Reverts` section naming each file, or the
+     `owner-approved-revert` label).
+  4. **If your base is more than a few hours old, re-sync.**
+  Enforced by machinery, not memory: the `clobber-guard` CI check blocks any
+  PR whose version lacks lines main added after the PR's base;
+  `tools/clobber-check/clobber_check.py` runs the same check locally before
+  pushing; the `git_merge.py` merge helper refuses to merge such PRs.
 - **Everything goes in the repo.** Every conversation — everything the owner
   says, everything the assistant says, all research — is saved into the repo
   every time: `docs/owner-directives.md`, `docs/research/`, `docs/decisions/`.
