@@ -11,7 +11,8 @@
      pressed: queue of one-shot actions  // 1/2/3/4 (Tekken limbs),
                                          // 1+3/2+4/1+2/3+4/1+4/2+3 chords,
                                          // ss-up/ss-down (sidestep),
-                                         // surge/dodge/transform (WH)
+                                         // surge/dodge/transform (WH),
+                                         // vskill (V-System: KeyV / V button)
 
    TEKKEN INPUTS: 1/2/3/4 = left punch / right punch / left kick / right kick
    (LP/RP/LK/RK touch buttons). Any two limbs within 140ms = chord
@@ -147,6 +148,7 @@ export class InputManager {
         case 'KeyK': this._strike('kick'); break;
         case 'KeyU': this._push('grab'); break;
         case 'KeyL': this._push('surge'); break;
+        case 'KeyV': this._push('vskill'); break; // V-System (owner 2026-10-22)
         case 'Digit1': this._tekken('1'); break;
         case 'Digit2': this._tekken('2'); break;
         case 'Digit3': this._tekken('3'); break;
