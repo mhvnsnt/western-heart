@@ -448,7 +448,7 @@ export class Fighter {
     // Secondary systems (teardown wiring 2026-10-22): jiggle spring bones,
     // face morph driver + blink timer, hand pose library.
     // Jiggle: family from char data (default by model); intensity presets.
-    const jiggleFamily = charData.jiggleFamily || 'female';
+    const jiggleFamily = this.char.jiggleFamily || 'female';
     this._jiggle = null;
     // Find first skinned mesh for jiggle rig
     this.root.traverse(o => {
@@ -456,7 +456,7 @@ export class Fighter {
         try { this._jiggle = JiggleRig.fromMesh(o, jiggleFamily); } catch (e) {}
       }
     });
-    const jiggleIntensity = charData.jiggleIntensity || 'natural';
+    const jiggleIntensity = this.char.jiggleIntensity || 'natural';
     if (this._jiggle) this._jiggle.setIntensity(jiggleIntensity);
     // Face rig: morph driver + blink timer
     this._face = FaceRig.attach(this.root);

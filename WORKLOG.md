@@ -1758,6 +1758,40 @@ Owner directive (verbatim): "Research the current state-of-the-art open-source i
 
 **Status:** [pending push/merge]
 
+## 2026-10-22 — worker32: ONLINE + TOURNAMENT SYSTEMS (netcode bridge, lobbies, brackets, dailies)
+**Owner instruction (verbatim):** "Wire up: Netcode approaches from the teardowns (rollback/prediction notes). Lobby structures (TTT2, SFV player rooms). Tournament brackets (single-elim). Daily challenges / rotating events."
+**Method specified:** pull netcode/lobby/tournament approaches from teardowns; implement netcode foundation (deterministic sim hooks, input prediction, rollback), lobby UI+flow, single-elim brackets, daily challenges with rotation + reward hooks.
+**Method used:** as specified. TTT2/SFV teardowns had no network captures, so lobby structures came from public docs (tekkenpedia, reviews, patch notes) cross-checked across sources — cited in docs/research/online-lobby-tournament-research.md. Netcode builds on the existing vendored lite-rollback foundation (bridge layer added, nothing redone).
+**Deviations:** none from the instruction; two honest scope notes: (1) real-fighter netplay is architectural (needs the combat sim port — documented in docs/netcode/NETCODE-ARCHITECTURE.md with the FIELD_CONTRACT + self-test harness ready for it); (2) netcode versus is playable on the deterministic reference sim.
+- `game/js/online.js` (NEW) — OnlineController: ONLINE hub, lounge browser/create/room, NetVersus (WebRTC+rollback versus), tournament + challenges screens; self-inits, additive (no main.js/menus.js/modes.js edits)
+- `game/index.html` (MODIFY, 2 lines on current main) — ONLINE menu button + online.js script tag (rebased onto main 2026-10-22 19:29 UTC: kept worker22 integration.js + worker30 RANK BATTLE/HALL)
+- `game/js/tournament.js` (NEW) — single-elim engine: seeding, BYEs, CPU fill, serializable brackets
+- `game/js/tournament-ui.js` (NEW) — bracket rendering + local tournament runner (real fights)
+- `game/js/challenges.js` (NEW) — ChallengeManager: additive onMatchEnd chain + mode-clear hooks, localStorage progress
+- `game/data/challenges.js` (NEW) — 24 challenges as data, deterministic daily rotation, weekly events
+- `game/js/unlockables.js` (NEW) — unlockable registry (titles/frames) that challenges pay into
+- `game/netplay/bridge/input-codec.js` (NEW) — WH inputs → 16-bit netcode word
+- `game/netplay/bridge/sim-adapter.js` (NEW) — WhNetSim, FIELD_CONTRACT, checksum, 600-frame determinism self-test
+- `game/netplay/bridge/test-bridge.mjs` (NEW) — 7 tests
+- `game/netplay/lobby/lobby-protocol.js` (NEW) — LobbyClient state machine (quick/custom/create, rotation, spectate, chat, fight requests)
+- `game/netplay/lobby/test-lobby.mjs` (NEW) — 5 tests (fake server)
+- `game/netplay/signaling/server.js` (MODIFY) — v2 lobby protocol ported onto main's minimal server (another worker rewrote it to 66 lines while this PR was open); v1 demo protocol byte-identical to main, lobby layer appended
+- `game/tests/online-systems.test.mjs` (NEW) — 12 tests (brackets + rotation)
+- `game/tests/challenges-manager.test.mjs` (NEW) — 8 tests (progress/claim/persist)
+- `docs/netcode/NETCODE-ARCHITECTURE.md` (NEW) — honest playable-vs-architectural doc + browser P2P constraints
+- `docs/research/online-lobby-tournament-research.md` (NEW) — teardown/web sources
+- `docs/online-proof/*.png` (NEW) — 4 screenshots (hub, lobby, bracket, challenges)
+- `WORKLOG.md` (this entry)
+- `node --test` (repo root): **32 passed, 0 failed** — bridge (7, incl. 600-frame adapter determinism self-test), lobby client (5), tournament+rotation (12), challenge manager (8).
+- Signaling server v2 (rebased): **11/11 pass** on the new base — v1 join/peer/signal (main's), v2 welcome/create/join/ready/match-start/chat/targeted-signal/match-end, plus real LobbyClient create/join/state (3/3).
+- Headless Chromium screenshots of all four screens rendering (docs/online-proof/ — viewed and verified).
+- `node --check` clean on every new/edited JS file.
+- Honest architecture doc: `docs/netcode/NETCODE-ARCHITECTURE.md` (playable-vs-architectural table + browser P2P constraints: STUN/TURN, no authority, 2-player, same-version requirement).
+- Browser P2P needs a TURN server for symmetric NATs before shipping (STUN default is Google's; documented).
+- Ranked/leaderboards are the Nakama lane (researched, not wired).
+- The combat sim port is the critical path to real-fighter netplay; FIELD_CONTRACT + self-test harness are ready.
+- Challenge stat mapping is honest: hit-count challenges are phrased as damage (no landed-hit counter in the engine) — see CHALLENGE_TYPES docblock.
+- Rebased 2026-10-22 ~19:35 UTC onto main 7fe0cb41 (worker22 integration + worker30 ranks landed while PR was open); server.js v2 ported onto the rewritten minimal base, index.html re-applied, WORKLOG re-appended.
 
 ## 2026-10-22 — V-System build + Triangle/Reversal Edge proposals (worker 31)
 
