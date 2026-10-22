@@ -14,6 +14,12 @@ import { Arena } from './scene.js';
 // it streams via lazy.js on first startMatch, not at boot. See js/lazy.js.
 import { lazy } from './lazy.js';
 import { AIController } from './ai.js';
+// FIGHT LAB · GUNGAKU (軍楽): loaded on demand so the boot path stays lean.
+let _GungakuAI = null;
+async function gungakuAI() {
+  if (!_GungakuAI) ({ GungakuAI: _GungakuAI } = await import('./fightlab-gungaku.js'));
+  return _GungakuAI;
+}
 import { audio } from './audio.js';
 import { getStage } from './stages.js';
 import { applyFighterProfile } from './customization-consumer.js';
@@ -102,7 +108,14 @@ export class Game {
     // or break a match. See js/customization-consumer.js.
     applyFighterProfile(this.p1);
     applyFighterProfile(this.p2);
-    this.ai = new AIController(this.p2, enemyChar.ai);
+    // FIGHT LAB · GUNGAKU (軍楽): the programmable dummy replaces the
+    // passive AI when the mode requests it (enemyChar.ai.gungaku).
+    if (enemyChar.ai && enemyChar.ai.gungaku) {
+      const GAI = await gungakuAI();
+      this.ai = new GAI(this.p2, enemyChar.ai);
+    } else {
+      this.ai = new AIController(this.p2, enemyChar.ai);
+    }
     this.ai1 = this.demo ? new AIController(this.p1, playerChar.ai) : null;
 
     this.wins = { p1: 0, p2: 0 };
