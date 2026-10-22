@@ -105,6 +105,99 @@ Living document. Updated every time the owner sets a directive. Newest first.
   `game/js/ui-skin.js` so future skins/textures drop in without touching
   screen logic.
 
+- **Soul Urge — NAME LOCKED (2026-10-22).** Tekken 8's Heat system renamed
+  proprietary to "Soul Urge". Pulled straight from the T8 files. Everywhere:
+  code, docs, UI, canon — never "Heat".
+- **Gungaku — NAME LOCKED (2026-10-22).** 軍楽 ("war music") — the fight lab /
+  programmable training dummy mode (TTT2 Combot equivalent).
+- **Rank ladder (owner-built 2026-10-22): 53 tiers.** Lost Soul (placement) →
+  9th–1st Kyu → 1st–3rd Dan → Brawler→Warrior→Marauder→Vindicator→Slayer→
+  Warlord → Kappa→Kitsune→Tengu→Oni→Nio→Fudo Myoo → Jikokuten→Zochoten→
+  Komokuten→Bishamonten → Genbu→Byakko→Seiryu→Suzaku →
+  Fujin→Raijin→Yaksa→Ryujin → Rin 凛→Byou 病→Tou 闘→Sha 沙→Kai 海→Jin 刃→
+  Retsu 烈→Zen 禅→Gyou 行 → Whole→Purified → S: Assembled → Super S:
+  Tong-Nou → TOP (51): Master God of the Universe. **Tiers 52–53 RESERVED
+  and UNNAMED** — invented only when a player holds #51 long enough,
+  Tekken-style. **Rank names are data, never hardcoded** — new tiers drop in
+  freely. Offline rank battles, online ladders/leaderboards, promotion/
+  demotion.
+- **TTT2 team battle.** Tag-team mode pulled from the Tekken Tag Tournament 2
+  teardown: mode structure, tag mechanics (tag in/out, tag throws, tag
+  assaults/combos, partner synergy) — wired into WH as a proper mode; all
+  fighters team-capable.
+- **Heart and Mind Within — integration order.** Tekken 5's Devil Within is
+  torn down 100% FIRST (structure, level flow, power-ups, bosses), THEN the
+  proprietary story is built on top. The character select is never forced to
+  Jin — every WH fighter gets their own campaign chapter. Cutscenes are
+  real-time rendered in-engine, never pre-rendered video.
+- **Mode-mapped teardown strategy.** Urban Reign → brawler systems; SF/DOA/SC
+  → versus systems; all teardowns → story systems. Detail:
+  `docs/research/mode-mapped-teardown-audit-2026-10-22.md`.
+- **Teardown wiring priorities.** The ready-to-pull list is the build order.
+  DOA4 repair is on the list. Incomplete teardowns get finished before new
+  pulls. SoulCalibur II pull decision is PENDING an owner call.
+- **Yu Yu Hakusho / Evil Zone.** Need the owner's game copies before teardown
+  — pending owner question.
+- **Game ownership rule (owner-clarified 2026-10-22).** When the owner says
+  they own a game and want it torn down, THAT IS AUTHORIZATION. They own
+  they own it, no proof needed, never ask for files. They own
+  physical copies — they can't hand over discs and won't do manual ripping.
+  Find the files from public archival sources (Internet Archive etc.); store
+  large files on Releases/external, not local disk. When the user says
+  they've bought Tekken 8, pull it immediately — no questions, no proof
+  requests. The ONLY exception is T8 right now, because the user explicitly
+  said they don't own it YET.
+- **Jiggle / face / hands — teardown findings + wiring priorities.** Wired per
+  `docs/JIGGLE-FACE-HANDS-WIRING-2026-10-22.md`: full jiggle set (breasts,
+  belly, hips/ass, thighs, camel-toe region), face rig standard, hand rig
+  standard. Proof must include motion capture for anything physical, never
+  stills presented as done.
+- **Announcer YES / crowds deferred.** The announcer voice system is approved
+  and stays in scope. Crowd systems are DEFERRED — not built now.
+- **Voice mapping by personality.** Voices are cast by the fighter's
+  personality and canon, not assigned randomly. Dorowani is the FIRST
+  voice-acted character: Squirtle-like creature sounds + barked random
+  Japanese words — never full sentences. First lines: "Konnichiwa arigato
+  Ichiban Bankai." Voice moments: win poses/taunts, intro sequences,
+  cutscenes.
+- **Music systems + replacement pipeline.** Approved: jukebox, music systems,
+  and a music replacement pipeline.
+- **Lighting + environment pull priorities.** Lighting and environment tech
+  follow the teardown wiring priorities order — pulled from teardown games,
+  not hand-tooled.
+- **Approved systems batch.** Stage mechanics, rage (WH version), training,
+  replays, single-player, unlockables, jukebox, ranks, cinematics — all
+  approved; built in teardown wiring order.
+- **Combat depth approvals.** VF5 throw escapes — approved. SoulCalibur 8-way
+  run + guard impact — approved. Item moves — approved.
+- **Triangle (DOA) + Reversal Edge (SC): ON HOLD.** Design proposals must show
+  Tekken-ified versions that don't hurt feel/flow before anything is built
+  (owner: "Tekken doesn't use those for a reason"). Nothing built until a
+  proposal is owner-approved.
+- **WWE entrance tools repurposed.** WWE entrance tooling is used for
+  cutscene creation + taunt creation ONLY — NOT full entrances. Intros/win
+  taunts stay as-is. Proprietary name TBD.
+- **V-System.** WH version of SFV's V-System approved; Eastern Mind names TBD.
+- **Learning tools: all approved.**
+- **Tekken Force, Scenario Campaign, create-a-finisher, create-an-arena.**
+  All approved as future modes/features; built in teardown order.
+- **Mythology-themed side games.** Just Fun modes draw from traditional
+  mythologies — mainly Japanese, mixed with world mythologies/cultures/
+  anthologies per NORTH STAR: Five Lands settings, Phantom Marketplace,
+  mini-trials, soul games, matsuri/festival games, spirit trials, yokai
+  pastimes — never generic bowling. Specific concepts need owner approval.
+- **Online: netcode, lobbies, tournaments, dailies.** All approved; built
+  per `docs/research/netcode-multiplayer-streaming.md`.
+- **Canon mapping requirement for ALL systems.** Every system — modes, menus,
+  mechanics — is canon-mapped to the Eastern Mind / Western Heart universe
+  (CANON.md: Tong-Nou, Nine Souls, Five Lands, the Trial, the Trader).
+  Nothing ships un-mapped.
+- **INPUT-TO-MOVE FIDELITY LAW (owner's feel principle, 2026-10-22).** In
+  Tekken every input produces a specific, predictable move — the player's
+  fingers and the character are tightly coupled. The moveset rebuild must
+  achieve tight 1:1 input-to-move fidelity: not just correct mappings, but
+  the FEEL of correctness.
+
 ## 2026-10-21
 
 - All fixes by AI agents, no hand-tooling by the owner (later refined — owner
@@ -114,67 +207,3 @@ Living document. Updated every time the owner sets a directive. Newest first.
   attires Tripo-first ordering.
 - `git_merge.py` saved to `tools/git-merge/` via PR #495 for merging clean
   green PRs without the GitHub merge API.
-
-## DISPLAY ORDER LAW (2026-10-22, permanent)
-
-Tripo 3D models show FIRST and foremost for every fighter; Tekken attires/models ladder BEHIND as back-slot attire choices.
-
-**SOLE EXCEPTION: Pantera.** His Attire 1 is a King reskin, but the user already customized it, so it may show first/up front. He is the ONLY exception; every other fighter's Tekken reskins go later in the ladder. No future pass shall "fix" Pantera's attire order.
-
-## IDENTITY CANON + DEDUP LAW (2026-10-22, permanent)
-
-- **Rave = Kiko Tanaka = Ghost: ALL THE SAME PERSON.** One select entry only
-  ('rave'). Never split into separate fighters.
-- **Mary Posa goes OVER Zafina.** One entry (MARIPOSA — repo canon name; see
-  below); Zafina is never a separate fighter. Zafina's Tekken in-game model
-  ladders BEHIND Mariposa's custom attires as a back-slot attire choice.
-- **Phantom is the select entry.** Yoshimitsu ladders into Phantom's attires
-  as choices, never a separate slot.
-- **Doc Frank = Bosco** (Tekken's Doctor Bosconovitch). One entry ('docfrank').
-- **Charger = the proprietary Blanka replacement.** Blanka holds no select
-  slot; his moves/identity live under Charger.
-- **Dedup law** (owner verbatim 2026-10-22): "all of the character slots need
-  to be fixed to where it's no duplicates showing it's no duplicate images
-  showing and no duplicate fighters only duplicates will be like the ladders
-  of the attires of you know the Tekken characters coming later after the
-  proprietary characters in the attire list" — no duplicate fighters, no
-  duplicate card images; the ONLY allowed repetition is attire ladders, with
-  Tekken characters as later attire choices behind their proprietary fighter.
-- Display-order note: Mariposa's Slot 1 default is the Butterfly Default
-  (owner 2026-10-19 exception to the Tripo-first law — pipeline-built
-  Tekken-wire custom, same standing as Pantera's Attire 1).
-
-### Open naming questions (owner to decide — do NOT guess)
-- Repo canon name is **MARIPOSA** (butterfly-themed; owner-approved across
-  PRs/renders). "Mary Posa" appears nowhere in-repo, reads as voice-typed
-  "mariposa". Kept as MARIPOSA pending owner confirm.
-- 'ryuji' (RYUJI) vs 'ryuji-rock' (RYUJI ROCK hybrid): two slots, distinct
-  concepts — needs owner call on whether they merge.
-- 'armor-king' holds a slot under its Tekken name (WH rename pending owner pick).
-- 'zangief' / 'vega' / 'iori' are working names; WH names pending owner pick.
-- Kevin's Tripo (kevin-tripo) is not in the repo yet — his select default
-  stays the Baek model until it lands.
-
-## Intake character canon (owner-approved 2026-10-22)
-- **BIRODO** (was Velvet): power broker, not just a dancer — the Velvet Room is neutral ground because SHE says so. Warm until she's not. Introduced Zen to the WH underground, invented the Nine-Soul Meter. Moveset: Feng Wei (user pick).
-- **JOTEI** (was Majesty): fallen empress playing a long game, every fight is politics. Coming to collect. Moveset: Craig Marduk.
-- **CHATUR** (Rahkasa): four-armed Oversoul spirit — a person who chose to stay, holding the spirit realm together at personal cost. Moveset: True Ogre.
-- **RYUSAN** (was Vitriol): acid punk, 15 — carrying war evidence without knowing it, angry but also a hurt kid. Moveset: Lucky Chloe.
-- **POND** (Tsuyu): swamp boundary watcher — chose the swamp over a temple position. Found Dorowani as an egg. Moveset: Raven.
-- **MEGAMI** (was Devi): temple guardian of a sealed door — grieving, holding it shut while pretending not to see her dead student. Trained Chatur. Moveset: Jun Kazama.
-- **MENAJERII** (メナジェリー): spirit-walker carrying beast spirits, sanctuary at Birodo's club. Moveset: Roger Jr. NAME LOCKED 2026-10-22 — Japanese pronunciation, NOT Hyakujuu.
-- **TOBI** (was Longleap): rabbit courier, fastest in roster — running from guilt, speed as avoidance. Moveset: Hwoarang.
-- Canon web: Jotei's crime → Ryusan's powers → Tobi's guilt → Pond's swamp → Dorowani's mud → Chatur's sacrifice → Megami's seal → Menajerii's sanctuary → Zen's cracked Oversoul.
-- Canon principle: movesets are Tekken bones, canon gives them souls — don't flatten characters to their moveset archetype.
-
-## Moveset source law (standing, 2026-10-22)
-Movesets may ONLY come from Tekken fighters nobody has claimed. Taken: King, Armor King, Akuma, Shaheen, Lars, Zafina, Bosconovitch, Yoshimitsu, Lee Chaolan, Ling Xiaoyu, Eddy/Christie, Feng Wei (Birodo). Free: True Ogre, Lucky Chloe, Hwoarang, Raven, Jun Kazama, Craig Marduk, Roger Jr. Verify against the full roster before wiring.
-
-## Character age law (user directive 2026-10-22, permanent)
-All characters are adults. No minors — no children, no teenagers — ever, unless the user explicitly authorizes it. Only the user can make that call. If a minor is ever added in the future, strict safety guidelines apply even in video game form. Current roster: adults, divine beings, animals, demons, creatures.
-
-## Canon-grounded writing law (user directive 2026-10-22, permanent)
-All character bios, stories, and lore must be built from CANON.md — Tong-Nou, the Nine Souls, the Five Lands, the Trial, the Trader, existing character entries. No invented locations, systems, or backstory elements. No AI slop.
-
-## EM-Jin naming convention (user directive 2026-10-22)
-Eastern Mind Jin is NOT Jin Kazama. In all files, docs, and code: "Jin (Eastern Mind)" or "EM-Jin" — never bare "Jin" where Kazama confusion is possible. (Correction: earlier "Gen (Eastern Mind)" was a mishearing.)
