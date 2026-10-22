@@ -614,6 +614,14 @@ export function createSelectScreen(deps) {
     if (!c || state.phase === 'done') return;
     const side = state.activeSide;
     if (state.locked[side]) return;
+    // Versus: P2 cannot pick P1's locked fighter. A mirror pick used to
+    // slip through and startFight() silently substituted a random opponent
+    // (enemyId === player.id -> randomEnemy), which read as "Pantera forces
+    // a random opponent". Refuse with a clear hint instead.
+    if (state.mode === 'versus' && side === 'p2' && state.locked.p1 && c.id === state.locked.p1.id) {
+      if (hint) hint.textContent = `${c.name} is already taken — choose a different soul.`;
+      return;
+    }
     audio.uiClick();
     state.highlight[side] = c;
     // kickCycle tracks the CURRENT attire index; K advances it
@@ -660,6 +668,10 @@ export function createSelectScreen(deps) {
         state.activeSide = 'p2';
         state.highlight.p2 = null;
         deps.onHighlight(null); // P2 must tap a card to pick
+      } else if (c.id === state.locked.p1.id) {
+        // Mirror pick via a non-highlight path (e.g. keyboard): refuse —
+        // startFight() turns enemyId === player.id into a random opponent.
+        if (hint) hint.textContent = `${c.name} is already taken — choose a different soul.`;
       } else {
         state.locked.p2 = c;
         state.highlight.p2 = c;

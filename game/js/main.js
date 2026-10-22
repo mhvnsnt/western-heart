@@ -559,13 +559,15 @@ document.querySelectorAll('[data-action]').forEach((el) => {
    dep below); arcade/story/training use their mode-dictated flow. */
 async function confirmSelection() {
   if (!selectedChar) return;
-  const id = selectedChar; // capture: notifyConfirm may clear the mirror
+  const id = selectedChar;
+  selectedChar = null; // clear synchronously BEFORE any await: a fast double-tap
+  // used to re-enter here during the getModes() gap and confirm the same
+  // fighter twice (P2 = P1), which startFight() turned into a random opponent.
   audio.uiClick();
   // Select-screen lock state first (P1 lock -> P2 cursor in versus),
   // then the mode controller routes the fight.
   selectScreen.notifyConfirm(id);
   (await getModes()).onConfirm(id);
-  selectedChar = null; // always clear — versus P2 must click a card to pick
 }
 
 document.getElementById('confirm-fighter').addEventListener('click', confirmSelection);
