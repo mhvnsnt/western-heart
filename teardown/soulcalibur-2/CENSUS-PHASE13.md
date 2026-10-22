@@ -143,3 +143,33 @@ texture, draw-time stage binding unproven (created-and-held
 verdict); type 0xc = section 12 = character sound, `mmx` CRI
 sound-bank container (mapping proven from FUN_00033fb0; codec
 closed). `CANON-CONVERSION.md` untouched.
+
+## Phase 16 update — full re-decode with the fixed reader (variants 83/83)
+
+Lane record: `PHASE16-STATE.md` (per-fighter delta tables + gate
+method); renders: `phase16-proof/`. Every GLB built with the old
+(+8-shift) reader has been rebuilt with the fixed
+`tools/build_skinned.py` from phase 15. Final counts:
+
+| Set | Files | Parts (old → new) | Images (old → new) |
+|---|---|---|---|
+| `models-skinned/` (base 22) | 22 | 891 → 1,081 (+190) | — |
+| `models-textured/` (base 22) | 22 | 891 → 1,081 (+190) | 559 → 601 |
+| `models-textured/variants-*/` rebuilt this phase | 80 | 2,850 → 3,447 (+597) | 1,964 → 2,105 |
+| Variants already fixed in phase 15 (idx283, idx291, idx789) | 3 | 184 (41 + 41 + 102) | 50 (22 + 22 + 6) |
+| **Variants total** | **83/83 with the fixed reader** | **3,631** | **2,155** |
+
+The 255-part recovery is reconciled exactly against the phase-15
+census (725 rigid parts / 25 bundles = 22 P1 + idx283 + idx291 +
+idx789): 190 (P1) + 7 (idx283) + 7 (idx291) + 51 (idx789) = 255
+trailer-span parts, each measured from the bundle bytes this
+phase. The +597 variant parts are additional: the 80 costume
+bundles were never in the 25-bundle census and each carries its
+own trailer-span parts. Gates per file (all pass): every old
+part present with identical accessor counts and bytes, identical
+skin joint set, all normals finite, textured images ≥ old.
+Sole deviation: base idx632 JOINTS_0/WEIGHTS_0 tail-slot bytes
+on 2/4,406 verts at ~1e-9 weights (gate (a) as specified passes;
+characterized in `PHASE16-STATE.md`). idx399/idx407 contain zero
+trailer-span parts — rebuilt outputs byte-identical.
+`CANON-CONVERSION.md` untouched.

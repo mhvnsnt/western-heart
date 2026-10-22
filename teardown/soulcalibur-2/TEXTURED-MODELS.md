@@ -89,3 +89,12 @@ viewed by the lane:
 
 All four comparisons show body integrity (proportions, bone placement,
 weights) unchanged from the originals — only surface color was added.
+
+**Phase-16 note (2026-10-22):** the totals above describe the
+pre-fix set. After the full re-decode with the fixed reader
+(phase 16, `PHASE16-STATE.md`), the base textured set is 22 GLBs,
+1,081 parts, 601 embedded images; the recovered trailer-span
+parts brought their own pointer-proven textures with them (the
+untextured remainder is the same source color-only class —
+e.g. idx905 ships 74/79 meshes textured, idx515 60/62, for the
+same pointer-0 reason recorded above).
