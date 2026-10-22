@@ -101,3 +101,31 @@ Wiring blockers, in dependency order:
   unchanged; new tentative groups: chrthree 22–28 (armored ×7),
   chrthree 39/41/42/43 (cat-ear). Detail:
   `phase12/ID-TABLE-CHRTHREE.md`.
+
+## Phase 13 update (2026-10-22, PR #569) — FINAL
+
+- **Composites: 23 distinct body+head pairings — FINAL.**
+  Phase 13 tested the last two evidence classes for the 8
+  unpaired heads (05, 06, 23, 24, 26, 27, 28, 32): TX2D
+  texture-record identity (L1 layout census of all 148 packages +
+  L2 payload-hash matrix) and slot-grid adjacency. Neither met
+  the unique + quantitative proof bar; the heads stay unpaired
+  with the matrices landed as evidence. Detail:
+  `phase13/HEAD-EVIDENCE.md`.
+- **Clips: still NONE — but the route is now OPEN.** The ISO's
+  anm.afs is a standard AFS container holding all 26 animation
+  definition files (anm_version.bin + 24 per-fighter `.bin` +
+  anime_cm.bin), extracted this phase from XDVDFS sector 416009
+  and released as `doa4-anime-definition-20261022` (manifest:
+  `phase13/definition-manifest.json`; census + decode steps:
+  `phase13/ANM-DEFINITION-2.md`). The section-semantics decode
+  to clips is the named next lane. CORRECTION OF RECORD: the
+  2,949,120 B file phases 7–12 called "anm.afs" is a different
+  file from an earlier source image (mislabeled in phase 1);
+  the phase-12 "only remaining route" framing and this phase's
+  own withdrawn exhaustion draft both trace to that mislabel.
+- **Binding: DYNAMIC-ONLY (terminal, unchanged).** 3 proven
+  assignments stand.
+- **ID coverage: COMPLETE (148/148 viewed).** Certain names 0;
+  canon Q1–Q6 OWNER-pending. Closeout: `phase13/
+  DOA4-FINAL-STATE.md`.

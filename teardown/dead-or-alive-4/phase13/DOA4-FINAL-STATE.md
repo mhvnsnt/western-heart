@@ -58,17 +58,22 @@ decision (Q1–Q6, §4).
   assignments are proven (chrone pkg00: decl1→tex30,
   decl12→tex40, decl30→tex40); the rest are decided by the engine
   at runtime.
-- **ANM animation: STATICALLY EXHAUSTED** (phase 13 terminal
-  verdict, `phase13/ANM-DEFINITION.md`). anm.afs's 27,392 × 16 B
-  head records + float payloads are censused byte-exact, but the
-  record→stream mapping exists nowhere in static data: every
-  XEX-side route was read to a proven negative (phases 10–12),
-  the per-fighter `.bin`/`anime_cm.bin` definition files **do not
-  exist in the shipped ISO** (complete storage census, phase 13),
-  and anm.afs contains no offset/name table at any alignment.
-  **Clips shipped: none — honestly none, in all thirteen
-  phases.** The residual route is dynamic analysis (emulator
-  observation of the loader), outside static teardown.
+- **ANM animation: definition layer FOUND, decode pending**
+  (phase 13, `phase13/ANM-DEFINITION-2.md` — which supersedes
+  this lane's own same-day exhaustion draft, withdrawn in
+  `phase13/ANM-DEFINITION.md`). The ISO's anm.afs is a standard
+  AFS container holding all 26 definition files
+  (anm_version.bin + 24 per-fighter `.bin` + anime_cm.bin) —
+  extracted, released (`doa4-anime-definition-20261022`),
+  manifest in git, container round-trip byte-exact. The files
+  carry 34-u32 section headers + curve/index sections per
+  fighter and a 16 B-record common table (anime_cm). **Clips
+  shipped: none yet** — the section-semantics decode is the
+  named next lane (steps in ANM-DEFINITION-2 §3). Also recorded:
+  the 2,949,120 B file phases 7–12 studied as "anm.afs"
+  (27,392 × 16 B records) is a DIFFERENT file from an earlier
+  source image, mislabeled in phase 1 and propagated by the
+  mirrors; its censuses stand under that corrected identity.
 - **The 8 unpaired heads (05, 06, 23, 24, 26, 27, 28, 32): stay
   unpaired.** Skin-bind Δ exhausted them (phase 12: no Δ=0.000
   against any of 148 bodies; six are origin-bound and carry no
@@ -107,13 +112,19 @@ tentative-grade until Q1/Q2 aim it). No DOA4 content moves from
 
 ## §5 What a future lane could still do (named, not promised)
 
-1. **Dynamic ANM/binding analysis**: run the game (Xenia) and
-   observe the loader's runtime resolution — the only route left
-   for clips and for texture binding beyond the 3 proven.
-2. **Stage batch**: phase-6-style skinned GLB pass for stg.afs's
+1. **ANM definition decode** (the live route, steps named in
+   `phase13/ANM-DEFINITION-2.md` §3): fighter header section
+   tables → anime_cm record table → clip framing → gate-2 posed
+   render. The data is extracted and released; this is now a
+   format decode, not a hunt.
+2. **Dynamic binding analysis**: run the game (Xenia) and
+   observe the renderer's runtime texture resolution — the only
+   route left for binding beyond the 3 proven assignments.
+3. **Stage batch**: phase-6-style skinned GLB pass for stg.afs's
    27 packages.
-3. **mot.afs stream decode**: gated on (1) — its entry structure
-   is the same dynamic-resolution class as anm.afs.
+4. **mot.afs stream decode**: its entry structure is
+   index-addressed like the chr volumes; the .bin definitions
+   (item 1) may name its framing.
 
 *End of the DOA4 teardown sweep. Thirteen phases: extraction,
 decryption-myth, assembly, skinning, textures, heads, identity —
