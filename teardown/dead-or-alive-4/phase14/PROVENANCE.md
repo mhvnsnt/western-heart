@@ -26,7 +26,7 @@ Tool: `phase14/tools/provenance_p14.py`.
 | anm.afs | 2,949,120 | 2,949,120 | b0b09edd79e056a5580c644509c47084b3da7dc170de6dd0e03f0d0c8bc54893 | 18eed8a09bb37ea6bc83e5572dd648fd55def823ebdcb6994adf8bb3a918b85a | **DIFFERENT** |
 | chrone.afs | 366,094,336 | 366,094,336 | d6b99c60af3712a73a0a3901882c364ed1b613f55458bb400e066aa85e6000bc | 256886a06b1a0cd4405194c2bde10cc3675a721c47ff1aa64bb5f72082e919ff | **DIFFERENT** |
 | chrtwo.afs | 548,042,752 | 548,042,752 | a7ca3ec4cc18bbcef99cb46eca78c8e0086930be13df343abd9ee9f801548e75 | a9169c2ad6ede8e2ad768d62cf5bf2eb55a25bedbf0781de04e98f70c4a34553 | **DIFFERENT** |
-| chrthree.afs | 762,955,776 | 762,955,776 | (pending) | da9386eabf253d77f60fe60179844c44ad0d38c9f72b134ab33447448a35ab80 | (pending) |
+| chrthree.afs | 762,955,776 | 762,955,776 | 34eca0637d4c076503800aac89833ad0d8f27bc988e0097d8f53890c04482622 | da9386eabf253d77f60fe60179844c44ad0d38c9f72b134ab33447448a35ab80 | **DIFFERENT** |
 
 ### anm.afs (complete)
 
@@ -90,19 +90,50 @@ Tool: `phase14/tools/provenance_p14.py`.
   0 — and the span is re-validated when the verified
   part-04 lands: see PHASE14-STATE.md).
 
-### chrthree (pending — fills in at completion)
+### chrthree.afs (complete) — MAJOR PROVENANCE FLAG (same class)
 
-Mirror member size from the tar header equals the ISO size
-exactly (762,955,776). The hash verdict lands here when its
-tar range is fully local from digest-verified parts; see
-PHASE14-STATE.md log for status. The chrone/chrtwo pattern
-predicts DIFFERENT; the row will carry its own measured
-numbers, not the prediction.
+- Same size (762,955,776 B both), **first difference at byte
+  0**, only **4.4639% of bytes identical** (34,057,353 /
+  762,955,776).
+- ISO copy: **standard AFS container, 188 entries** (head
+  `41465300 bc000000`). Mirror copy: raw f32-stream data
+  from byte 0 (`bf3f690f 3eed06e3 3eae2660…`, a repeating
+  float pattern), not a container.
+- Mirror bytes: digest-verified tar parts 02/03/04 plus the
+  range-fetched part-05's first 276,950,016 B (chunk-length
+  checked; the part-05 whole-file digest cross-check is
+  logged in PHASE14-STATE.md when its fetch completes — the
+  verdict cannot hinge on it: the files differ from byte 0,
+  inside the verified part-04 span).
 
-## Verdict (to be completed with the chr* rows)
+## Verdict — ALL FOUR FILES DIFFER (the major flag, complete)
 
-- If all three chr* files are IDENTICAL: phases 6–12 model work
-  stands on retail bytes; only the anm file was swapped.
-- If any chr* file DIFFERS: per-file first-diff offset + %
-  identical are reported in the table's completion note as a
-  MAJOR provenance flag (no model rework in this lane).
+**No mirror AFS file is byte-identical to the retail ISO
+file.** anm (9.8271% identical), chrone (4.2795%), chrtwo
+(4.6732%), chrthree (4.4639%) — all same-size, all differing
+from byte 0. On the ISO side all four are standard AFS
+containers (26 / 73 / 128 / 188 entries); on the mirror side
+all four are raw streams from the earlier source image.
+
+What this does and does not say about phases 6–12:
+
+- The phases 6–12 MODEL work was carved from the mirror
+  payloads by structure, and the chrone containment test
+  (above) found the retail entries' payloads present inside
+  the mirror stream at permuted offsets with matching
+  inter-entry gaps — the payloads are the same logical
+  content in a different physical layout. The models are
+  not invalidated by this pass.
+- What IS falsified: any claim that the mirror chr/anm
+  files ARE the retail files, or that work verified against
+  the mirror was verified against retail bytes. The mirror
+  is a different pressing's/raw-layout source throughout —
+  not only its anm.afs (the phase-13 correction widened:
+  it applies to every AFS the mirror carries).
+- Per the task: the flag + numbers are the deliverable.
+  No model rework is attempted in this lane; re-deriving
+  the 148 packages from the retail AFS containers (which
+  are now fully extracted and released) is a named future
+  lane, and the retail containers' entry structure
+  (.tpr/.cat pairs, named) makes it a mechanical re-run,
+  not a research problem.
