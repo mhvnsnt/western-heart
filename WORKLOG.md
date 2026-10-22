@@ -1667,3 +1667,33 @@ Tekken on-hit stack: (1) jagged star-burst HIT SPARK sprite (canvas-generated, a
 - Modified: game/js/fighter.js (attack boxes, hurtboxes, step-in), game/js/game.js (HitFX wiring, typed hit presentation, hitstop tiers, _spawnImpact shim), game/js/ai.js (range discipline). No deletions.
 - Added: game/js/hitfx.js (new HitFX system).
 - Teardown sources: teardown/tekken3/docs/TEKKEN3-RIG-LESSONS.md (proxy-shape hitboxes, hitstop as move data, fixed timestep), teardown/tekken3/movesets/moveset_king.json (active_first/last, step_per_frame, damage), teardown/tekken7 tekkenmods T8 moveset docs (Move = animation + hitbox/hurtbox/active frames + Hit Conditions: damage + reaction + presentation).
+
+## 2026-10-22 — Worker 19: ROSTER-TO-CANON RECONCILIATION AUDIT
+
+**Task:** Owner: "the character select screen and game have a whole bunch of random bullshit. Every slot must trace back to a real canon identity." Audit-only: count/classify everything, document, do NOT change the select screen.
+
+**Method:** Synced to main @ eaf3303 via Git Database API. Enumerated: 55 roster dirs (API), 49 select entries (`game/js/roster-full.js` @ main + `SOUL_IDS`/`MAIN_IDS` tiering in `select-screen.js`), 29 attire ladders (`attires.js`), MODEL_URLS (`assets.js`), all 65 open PRs (file lists + patches for character-adding candidates), CANON.md @ 153b23f (all `###` headings + §4 Nine Souls + intake §). Canon rule: end-game WH identity counts (Pantera yes, King no).
+
+**Verdict — REAL total: 49 canon characters.** Seven 7 + Four 4 + Twelve 12 + New Vessels 14 (excl. Sun Rā: "Not a fighter. A realm.") + Intake 8 + owner-locked 4 (Charger, Vain Abel, Dorowani, Zen spirit entity). Location: 31 roster dir + select slot · 4 select slot only, no dir (Scimitar, Dio, Bruno, N3g4tiv0 — models unwired, on need-models list) · 6 roster dir, no select slot (Silvertongue, Cain Elias, Vain Abel, Chatur→rahkasa, Pond→tsuyu-asui, Menajerii→vixen) · 1 PR pending (Cornerstone, #449) · 6 intake pending neither (Birodo, Jotei, Ryusan, Megami, Tobi, Steve Fox) · 1 special (EM-Jin: no model yet; CANON.md "JIN KAZAMA" conflicts with owner EM-Jin directive — flagged).
+
+**Select screen census (49 slots):** 34 canon + 15 non-canon = 7 soul placeholders (rin/byou/tou/sha/kai/retsu/gyou — CANON.md §4: "The nine are not characters") + iori/armor-king templates + zangief/vega templates (WH names pending owner pick) + kronos/koreshi/ryuji orphans. Zen slot is canon-identity but wrong model (tinted steve-fox; rewire to zen-attire1 Tripo spirit body).
+
+**Biggest flag:** PR #434 would add 72 `CHAR001`–`CHAR072` "Street Reign Guest" select entries with zero canon mapping — its own CANON-CONVERSION.md says "FLAGGED, not mapped." Must not merge as selectable.
+
+**Other flags for user:** kronos/koreshi/ryuji orphans (build canon or cut); zangief/vega WH names pending; jin dir is leftover staging (park until EM-Jin model lands); rave slot folds into Kiko's ladder (attires.js already lists it as Attire 3); purple-rain/purplerain + saku-ra/sakura dir splits need merge; phantom ladder contains stray steve-fox/jin-bloodline-ember models.
+
+**Deliverable:** `docs/research/ROSTER-CANON-AUDIT-2026-10-22.md` — real total, full 55-dir classification table, hardcoded/PR/intake tables, 49-slot select→canon→models mapping (source of truth), flag list. No game code changed. No deletions.
+
+**Sandbox note:** this worker's Python could not write files >~8KB, so large repo files were read through the API in chunked reads and only small extracts materialized; fresh WORKLOG.md was re-assembled from 15×8KB API chunks (120,464 bytes, size-verified) before appending this entry — no clobber.
+
+---
+
+## 2026-10-22 ~13:30 CDT — modeaudit-23: Mode-mapped teardown audit (report only)
+
+**Task:** audit every teardown dir, map everything wireable to its mode (Heart and Mind Within ← Urban Reign + Devil Within; Versus ← SF + DOA + SC; Story/cutscenes ← all), report organized by mode with what each item adds and why, per-item okay/not-okay checkboxes, aggressive open-source tool pull-ins. Audit + report ONLY — no wiring.
+
+**Deliverable:** `docs/research/mode-mapped-teardown-audit-2026-10-22.md` — 20-dir teardown inventory + 62 approval-gated items: Heart and Mind Within 14 (UR mission system, double-team/partner AI, special arts meter, weapons, destructibles, brawl rule sets, motion pools, 1,033-file audio, VGS/DCM UI, Def Jam momentum→BLAZIN' two-gate loop, one-grapple-core architecture, Revenge Mode backstage traversal, AKI grappling core) · Versus 28 (SF round structure, 173 SFEX movelists in Tekken notation, SF6 Drive + SFV V-System candidates, DOA triangle/4-way holds/stun/break gauge/Fatal Rush, SC 8-way run/guard stamina/GI/Reversal Edge/Soul Charge/Critical Edge/Lethal Hit/clash/ring-out, VF5 weight classes/two-tier counters/sabaki/multi-escapes/evade/oki/walls) · Story/cutscenes 10 (UR mission records + demo PPK cutscene schema, T6 endings, Def Jam XML config, Revenge Mode traversal, No Mercy text dict, Eastern Mind prologue+music, SC chronicle, DOA cinematic, SF hub) · Open-source tools 10 (Rapier, cannon-es, Yuka, Howler.js, Tone.js, ink/inkjs, XState, GGPO, FModel/repak, jPSXdec).
+
+**Method:** fresh main SHA via github_api.py at push time; plain-copy working dir `~/workspace/fix3/modeaudit`; read teardown docs in-repo (UR/DOA6/SCVI/VF5 mechanics docs, SF status, Def Jam findings, SCII, WMXIX arenas); web-verified SF6 Drive System, GGPO MIT status, Rapier vs cannon-es. Pushed via `gh_push.py` (Git Database API, base = live main tree), merged via `git_merge.py`. Zero deletions; WORKLOG entry appended to live-main version at push time.
+
+**Status:** report merged; 62 items await owner okay/not-okay before any wiring. Worker 22's general integration lane unaffected (separate scope).
