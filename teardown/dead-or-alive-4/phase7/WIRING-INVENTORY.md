@@ -17,7 +17,7 @@ release asset). This doc is the per-container roll-up.
 | chrtwo.afs | 68/68 | STAGED — same release + manifest | NONE decoded (TX2D format solved phase 6; per-package decode not run) | NONE | 17 oversized packages rebuilt with wide windows in phase 6 |
 | chrthree.afs | 50/50 full + 25 TX2D-only sub-packages | STAGED — same release + manifest (50 full) | NONE decoded; the 25 sub-packages are texture bundles (XPR2 + TX2D only, verified again phase 7) | NONE | G2 closed by accounting in phase 6 (75/75) |
 | mot.afs | 11 packages (old triangulated set) | PARTIAL — mot packages were assembled as model packages in phases 3–6, not as motion data | NONE | NONE — no clip-format parse exists; mot head is plaintext floats (phase 7), so clips are gated on format work, not on any cipher | see `PHASE7-FINDINGS-2026-10-21.md` §3 |
-| anm.afs | 1 file, region-mapped phase 7 | n/a | n/a | NONE — float payload regions are plaintext; the head/index region (0x000000–0x06B000) is undecoded, so clip boundaries/bone mapping are unknown | region map in phase-7 findings §2 |
+| anm.afs | 1 file, region-mapped phase 7 | n/a | n/a | NONE — updated phase 11: the XEX loader is now FOUND (true-base constant scan; `anm%d.afs` materialized @ 0x8243D650; async state machine, stream object 0x82C3A3D0, cursor stride 0x20) but the 16B-record bit layout + record→stream mapping are still unknown, so no parser and no clips. Exact residual: `phase11/ANM-READER3.md` | region map in phase-7 findings §2; loader family in phase11 |
 | stg.afs | 27 packages parsed phase 3 (stg pkg00 graph in git) | PARTIAL — no phase-6-style batch for stages | NONE | n/a (stages) | stage wiring is out of scope for the fighter roster question |
 
 Other staged assets in `teardown/dead-or-alive-4/`:
@@ -46,3 +46,26 @@ Wiring blockers, in dependency order:
 3. Animation clips (anm head/index format + mot/anm stream format).
 4. Owner canon decision (`CANON-QUESTIONS.md`) — gates any move
    from `teardown/` staging into `game/`.
+
+## Phase 11 update (2026-10-22, PR #525)
+
+- **Composites: 23 distinct body+head pairings** (phase 10 built 20;
+  phase 11 reseated all 7 floaters + the marginal at measured
+  neck-junction anchors — all VIEWED seated — and extended with
+  pkg10, plus two pairings newly PROVEN by dominant-joint skin bind:
+  pkg22 → 0.477 family, pkg31 → group-C family). 8 distinct heads
+  remain unpaired (05, 06, 23, 24, 26, 27, 28, 32 — no proof
+  available). Detail: `phase11/HEAD-ORIGIN-RESEAT.md`.
+- **Clips: still NONE.** The anm loader family is identified in the
+  XEX (phase 11 Job 1), narrowing the blocker to the record-consumer
+  functions (0x829FD490, 0x8295F7D0) + the per-fighter `D:\bin\*.bin`
+  files — see the anm.afs row above.
+- **Binding: unchanged.** Phase 11's scan exposed the file system,
+  not material setup; proven assignments stay exactly 3
+  (`phase11/ANM-READER3.md` §4 negative).
+- **ID coverage:** chrone COMPLETE; chrtwo bodies COMPLETE (26/26
+  viewed) and all 31 distinct chrtwo heads rendered + viewed;
+  chrthree 0/50 bodies viewed — chrthree "pkg50" does not exist as a
+  model package (indices 50+ are the TX2D-only sub-packages, per the
+  chrthree.afs row). Certain character names: still 0; tentatives
+  unchanged. Detail: `phase11/ID-TABLE.md`.
