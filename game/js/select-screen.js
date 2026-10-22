@@ -381,6 +381,14 @@ export function createSelectScreen(deps) {
     teamPicks: [],        // team mode: confirmed ids (all on p1)
     kickCycle: 1,         // K button attire cycling position
     focusIdx: 0,
+    // TTT2 TEAM BATTLE (worker 24): the versus submenu lives INSIDE the
+    // select screen — 1V1 FIGHT or TEAM BATTLE (2-8 per team), then a
+    // character per slot. TTT2 actual: solo/tag choice BEFORE any pick.
+    vsMode: null,        // 'solo' | 'team' (versus only; null = not chosen)
+    teamSize: 2,         // fighters per team (2 = TTT2 tag rules)
+    draft: { p1: [], p2: [] },
+    draftSide: 'p1',
+    vsTeamsDone: null,   // { p1:[ids], p2:[ids], size } when draft completes
   };
 
   /* ---------- T8 grid ---------- */
@@ -430,7 +438,9 @@ export function createSelectScreen(deps) {
     rnd.innerHTML = `<div class="portrait"><span class="qmark">?</span></div>
       <div class="cname">RANDOM</div>`;
     rnd.addEventListener('click', () => {
-      const pool = deps.roster().filter(c => c.id !== state.locked.p1?.id && c.id !== state.locked.p2?.id);
+      const drafted = [...state.draft.p1, ...state.draft.p2];
+      const pool = deps.roster().filter(c => c.id !== state.locked.p1?.id && c.id !== state.locked.p2?.id &&
+        !drafted.includes(c.id));
       const pick = pool[Math.floor(Math.random() * pool.length)];
       if (pick) highlight(pick, { fromTap: true, scroll: true });
     });
@@ -451,6 +461,8 @@ export function createSelectScreen(deps) {
       el.classList.toggle('locked-p1', state.locked.p1?.id === id);
       el.classList.toggle('locked-p2', state.locked.p2?.id === id);
       el.classList.toggle('in-team', state.teamPicks.includes(id));
+      el.classList.toggle('in-draft-p1', state.draft.p1.includes(id));
+      el.classList.toggle('in-draft-p2', state.draft.p2.includes(id));
     });
   }
 
@@ -612,7 +624,15 @@ export function createSelectScreen(deps) {
   /* ---------- picking ---------- */
   function highlight(c, opts = {}) {
     if (!c || state.phase === 'done') return;
-    const side = state.activeSide;
+    if (state.mode === 'versus' && !state.vsMode) {
+      // TTT2: no fighter can be previewed before the format is chosen.
+      if (hint) hint.textContent = 'VERSUS — choose 1V1 FIGHT or TEAM BATTLE first.';
+      return;
+    }
+    // TTT2 draft: during the slot draft, highlight previews on the
+    // side currently drafting (p1 = your team, p2 = rival team).
+    const draftMode = state.mode === 'versus' && state.vsMode === 'team' && !state.vsTeamsDone;
+    const side = draftMode ? state.draftSide : state.activeSide;
     if (state.locked[side]) return;
     audio.uiClick();
     state.highlight[side] = c;
@@ -653,6 +673,13 @@ export function createSelectScreen(deps) {
   function notifyConfirm(confirmedId) {
     const c = deps.findChar(confirmedId);
     if (!c) return;
+    // TTT2 draft: during a team-battle draft, CONFIRM fills the next
+    // team slot (your team first, then the rival team) instead of the
+    // classic P1-then-P2 lock flow.
+    if (state.mode === 'versus' && state.vsMode === 'team') {
+      draftConfirm(c);
+      return;
+    }
     if (state.mode === 'versus') {
       if (!state.locked.p1) {
         state.locked.p1 = c;
@@ -693,10 +720,25 @@ export function createSelectScreen(deps) {
       state.locked = { p1: null, p2: null };
       state.teamPicks = [];
       state.kickCycle = 1;
+      // TTT2: versus always starts at the format submenu — nothing is
+      // pre-picked; the draft state resets for a fresh team battle.
+      state.vsMode = null;
+      state.teamSize = 2;
+      state.draft = { p1: [], p2: [] };
+      state.draftSide = 'p1';
+      state.vsTeamsDone = null;
       panes.p1.clear();
       panes.p2.clear();
       if (confirmBtn) confirmBtn.disabled = true;
       deps.onHighlight(null);
+    }
+    // TTT2: the 1V1 / TEAM BATTLE submenu lives INSIDE the select
+    // screen for versus (not a separate menu). It hides for other modes.
+    if (state.mode === 'versus' && !state.vsMode && state.phase !== 'done') {
+      showVsSubmenu();
+      if (fresh && hint) hint.textContent = 'VERSUS — choose 1V1 FIGHT or TEAM BATTLE.';
+    } else {
+      hideVsSubmenu();
     }
     state._shown = true;
     paintCards();
@@ -750,5 +792,155 @@ export function createSelectScreen(deps) {
 
   // The Tripo list arrives after the first build: rebuild once so those fighters lead the grid.
   _tripoReady.then(() => { if (grid && grid.children.length) { build(); paintCards(); } });
+
+  /* ---------- TTT2 versus submenu (INSIDE the select screen) ----------
+     TTT2 actual: "before you select your characters, you will choose
+     whether to play as a single character or a two-person tag team."
+     1V1 FIGHT -> the classic versus flow. TEAM BATTLE -> team-size
+     picker (2 = TTT2 tag rules; 3-8 = TTT2 Team Battle elimination),
+     then a character per slot: your team, then the rival team. */
+  function vsSubmenu() {
+    let el = $('vs-submenu');
+    if (el) return el;
+    el = document.createElement('div');
+    el.id = 'vs-submenu';
+    el.className = 'vs-submenu';
+    el.innerHTML = `
+      <div class="vs-submenu-title">VERSUS — CHOOSE BATTLE FORMAT</div>
+      <div class="vs-submenu-row" id="vs-format-row">
+        <button type="button" class="vs-format-btn" data-format="solo">
+          <b>1V1 FIGHT</b><span>classic versus</span>
+        </button>
+        <button type="button" class="vs-format-btn" data-format="team">
+          <b>TEAM BATTLE</b><span>TTT2 tag &amp; elimination</span>
+        </button>
+      </div>
+      <div class="vs-submenu-row" id="vs-size-row" hidden>
+        <div class="vs-size-label">FIGHTERS PER TEAM</div>
+        <div class="vs-size-btns" id="vs-size-btns"></div>
+        <div class="vs-size-note" id="vs-size-note"></div>
+      </div>
+      <div class="vs-submenu-row" id="vs-slot-tray" hidden></div>`;
+    const grid2 = $('select-grid') || grid;
+    (grid2.parentElement || document.body).appendChild(el);
+    el.querySelectorAll('.vs-format-btn').forEach((b) =>
+      b.addEventListener('click', () => chooseVsFormat(b.dataset.format)));
+    const sizeBtns = el.querySelector('#vs-size-btns');
+    for (let n = 2; n <= 8; n++) {
+      const sb = document.createElement('button');
+      sb.type = 'button';
+      sb.className = 'vs-size-btn' + (n === 2 ? ' on' : '');
+      sb.dataset.n = String(n);
+      sb.innerHTML = `<b>${n}</b><span>${n === 2 ? 'TAG' : n <= 4 ? 'ELIM' : 'WAR'}</span>`;
+      sb.addEventListener('click', () => chooseTeamSize(n));
+      sizeBtns.appendChild(sb);
+    }
+    setSizeNote(2);
+    return el;
+  }
+  function setSizeNote(n) {
+    const note = $('vs-size-note');
+    if (note) note.textContent = n === 2
+      ? '2v2 — TTT2 tag rules: tag in/out, red health, rage, tag combos.'
+      : `${n}v${n} — TTT2 Team Battle elimination: KO a fighter, the next steps in.`;
+  }
+  function chooseVsFormat(fmt) {
+    audio.uiClick();
+    if (fmt === 'solo') {
+      state.vsMode = 'solo';
+      hideVsSubmenu();
+      if (hint) hint.textContent = '1V1 FIGHT — pick your fighter, then the rival.';
+    } else {
+      state.vsMode = 'team';
+      const el = vsSubmenu();
+      el.querySelector('#vs-format-row').hidden = true;
+      const sizeRow = el.querySelector('#vs-size-row');
+      sizeRow.hidden = false;
+      el.querySelector('#vs-slot-tray').hidden = true;
+      setSizeNote(2);
+      if (hint) hint.textContent = 'TEAM BATTLE — how many fighters per team?';
+    }
+    paintCards();
+  }
+  function chooseTeamSize(n) {
+    audio.uiClick();
+    state.teamSize = n;
+    state.draft = { p1: [], p2: [] };
+    state.draftSide = 'p1';
+    state.activeSide = 'p1';
+    setSizeNote(n);
+    const el = vsSubmenu();
+    el.querySelector('#vs-size-row').hidden = true;
+    el.querySelector('#vs-format-row').hidden = true;
+    const tray = el.querySelector('#vs-slot-tray');
+    tray.hidden = false;
+    el.querySelectorAll('.vs-size-btn').forEach((b) =>
+      b.classList.toggle('on', Number(b.dataset.n) === n));
+    renderVsTray();
+    deps.onHighlight(null);
+    if (confirmBtn) confirmBtn.disabled = true;
+    if (hint) hint.textContent = `YOUR TEAM — pick fighter 1 of ${n}.`;
+    paintCards();
+  }
+  function renderVsTray() {
+    const tray = $('vs-slot-tray');
+    if (!tray) return;
+    tray.innerHTML = '';
+    for (const side of ['p1', 'p2']) {
+      const head = document.createElement('div');
+      head.className = 'vs-tray-head';
+      head.textContent = side === 'p1' ? 'YOUR TEAM' : 'RIVAL TEAM';
+      tray.appendChild(head);
+      const row = document.createElement('div');
+      row.className = 'vs-tray-row';
+      for (let i = 0; i < state.teamSize; i++) {
+        const id = state.draft[side][i];
+        const slot = document.createElement('div');
+        slot.className = 'vs-slot' + (id ? ' filled' : '') +
+          (side === state.draftSide && i === state.draft[side].length ? ' next' : '');
+        const c = id ? deps.findChar(id) : null;
+        slot.innerHTML = `<span class="vs-slot-n">${i + 1}</span><span class="vs-slot-name">${c ? c.name : '—'}</span>`;
+        row.appendChild(slot);
+      }
+      tray.appendChild(row);
+    }
+  }
+  function draftConfirm(c) {
+    const side = state.draftSide;
+    const arr = state.draft[side];
+    if (arr.length >= state.teamSize) return;
+    arr.push(c.id);
+    audio.uiConfirm();
+    renderVsTray();
+    paintCards();
+    if (arr.length >= state.teamSize) {
+      if (side === 'p1') {
+        state.draftSide = 'p2';
+        state.activeSide = 'p2';
+        if (hint) hint.textContent = `RIVAL TEAM — pick fighter 1 of ${state.teamSize}.`;
+        deps.onHighlight(null);
+        if (confirmBtn) confirmBtn.disabled = true;
+      } else {
+        state.vsTeamsDone = { p1: [...state.draft.p1], p2: [...state.draft.p2], size: state.teamSize };
+        state.phase = 'done';
+        hideVsSubmenu();
+        if (hint) hint.textContent = 'TEAMS LOCKED — get ready.';
+      }
+    } else if (hint) {
+      hint.textContent = `${side === 'p1' ? 'YOUR TEAM' : 'RIVAL TEAM'} — pick fighter ${arr.length + 1} of ${state.teamSize}.`;
+    }
+  }
+  function hideVsSubmenu() {
+    const el = $('vs-submenu');
+    if (el) el.hidden = true;
+  }
+  function showVsSubmenu() {
+    const el = vsSubmenu();
+    el.hidden = false;
+    el.querySelector('#vs-format-row').hidden = false;
+    el.querySelector('#vs-size-row').hidden = true;
+    el.querySelector('#vs-slot-tray').hidden = true;
+  }
+
   return { build, onShow, selectById, notifyConfirm, highlight, _state: state, _panes: panes };
 }

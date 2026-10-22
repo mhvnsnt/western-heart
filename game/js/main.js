@@ -758,7 +758,16 @@ async function startFight(playerId, enemyId, opts = {}) {
     (typeof enemyId === 'string' && enemyId !== player.id ? getCharacterWithCustom(enemyId) : randomEnemy(player.id));
   // On-demand: load only the 2 fighters for this fight (Tekken 3 pattern).
   // Models may already be prefetched from select-screen highlight.
+  // TTT2: tag battles need all 4 fighters' models up front.
+  const tagTeams = opts.tagTeams || null;
   const need = [...new Set([player.model || 'pantera', enemy.model || 'pantera'])];
+  if (tagTeams) {
+    for (const side of ['p1', 'p2']) for (const id of tagTeams[side]) {
+      const c = getCharacterWithCustom(id);
+      if (c.model) need.push(c.model);
+      if (c.transform && c.transform.targetModel) need.push(c.transform.targetModel);
+    }
+  }
   // Mid-match transform targets must be preloaded (createInstance is sync).
   for (const c of [player, enemy]) {
     if (c.transform && c.transform.targetModel) need.push(c.transform.targetModel);
@@ -785,6 +794,9 @@ async function startFight(playerId, enemyId, opts = {}) {
     // Show the TRANSFORM touch button only for fighters that can transform.
     const tBtn = document.querySelector('.act-btn.transform');
     if (tBtn) tBtn.style.display = (player.transform || player.forms) ? '' : 'none';
+    // TTT2: TAG touch button only in tag battles (2v2).
+    const tagBtn = document.getElementById('tag-btn');
+    if (tagBtn) tagBtn.hidden = !tagTeams;
     if (confirmBtn) confirmBtn.disabled = true;
     await assets.loadModels(need, (p, loaded, total) => {
       if (!hint) return;
@@ -836,6 +848,14 @@ async function startFight(playerId, enemyId, opts = {}) {
   show('hud');
   game.paused = false;
   audio.startMusic();
+  // TTT2: resolve tag-team char entries (full attire-resolved entries so
+  // game.js can build the benched partners with models + movesets).
+  if (tagTeams) {
+    opts.tagTeamEntries = {
+      p1: tagTeams.p1.map(id => resolveFighterAttire(getCharacterWithCustom(id))),
+      p2: tagTeams.p2.map(id => resolveFighterAttire(getCharacterWithCustom(id))),
+    };
+  }
   await game.startMatch(player, enemy, selectedStage, opts);
   // Control hints: show for 6s at fight start, H toggles
   const hints = document.getElementById('control-hints');

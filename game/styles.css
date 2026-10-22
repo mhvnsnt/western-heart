@@ -709,3 +709,16 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
 /* Mode win / game over */
 #modewin-title.win { color: #ffd76a; }
 #modewin-title.lose { color: #ff6a6a; }
+
+/* TTT2 TAG BATTLE (worker 24) — partner HUD plates + rage badge */
+#tag-hud { position: absolute; top: 64px; left: 0; right: 0; display: flex; justify-content: space-between; padding: 0 12px; pointer-events: none; z-index: 5; }
+#tag-hud[hidden] { display: none; }
+.tag-partner { background: rgba(10,8,20,.72); border: 1px solid #6a5a9a; border-radius: 8px; padding: 4px 10px; font-size: 11px; letter-spacing: .08em; color: #cfc3ee; min-width: 96px; }
+.tag-partner .tp-name { font-weight: 700; color: #fff; display: block; font-size: 12px; }
+.tag-partner .tp-hp { display: block; height: 5px; background: #2a2438; border-radius: 3px; margin-top: 3px; overflow: hidden; }
+.tag-partner .tp-hp > i { display: block; height: 100%; background: linear-gradient(90deg,#7fe07f,#c9f27e); border-radius: 3px; }
+.tag-partner.rage { border-color: #ff4d4d; box-shadow: 0 0 10px rgba(255,60,60,.55); }
+.tag-partner.rage .tp-name::after { content: ' RAGE'; color: #ff6a6a; font-size: 10px; }
+/* TTT2 TAG button */
+#tag-btn { border-color: #ffd76a; color: #ffd76a; font-weight: 700; }
+#tag-btn[hidden] { display: none; }
