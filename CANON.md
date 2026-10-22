@@ -773,6 +773,10 @@ She is not lost. She is *loyal*. The trial doesn't know what to do with that.
 
 **Owner-locked:** Name TORCH. Ruthless elegant assassin — Nina's sister with the darker edge. Sister rivalry with Awa Pop. Anna Williams base.
 
+**Attire 1 — "Valkyrie of Flame" (Tripo original, owner 2026-10-21).** Owner's description, verbatim: "fully nude and blue skin but controls fire that is normal colored and can control different colors of fire too, red windswept hair and Valkyrie helm, blue furry nude crotch and little hairs flaring off her fat hips and glutes". This settles her appearance: blue skin, red windswept hair, Valkyrie helm; her fire runs normal-colored and multiple flame colors. Tripo: https://studio.tripo3d.ai/3d-model/300d0c63-c7c8-4972-b08e-b2e9c169254f — raw pull archived in release `torch-a1-tripo-20261021`; auto-rigged model `game/assets/models/torch-tripo-a1.glb` (key `torch-tripo-a1`) is her default. The Anna Williams base model ladders behind it as the fallback attire. Slots: `roster/torch/ATTIRE-SLOTS.md`.
+
+**Attire 2 — "Red demon" (Tripo original, owner 2026-10-21).** Owner's description, verbatim: "with mileena from mortal Kombat style teeth on this attire and red skin, still full nude". Tripo: https://studio.tripo3d.ai/3d-model/7f8c7874-de2a-438f-a84f-744d1eef21e9 — raw pull archived in release `torch-a2-tripo-20261021`; auto-rigged model `game/assets/models/torch-tripo-a2.glb` (key `torch-tripo-a2`) is Attire 2 in her picker ladder. The Anna Williams base model ladders behind both Tripo attires as the fallback. Slots: `roster/torch/ATTIRE-SLOTS.md`.
+
 ---
 
 ### DIO — The Demon That Is
@@ -1265,6 +1269,20 @@ Cain Elias walks in where Vain Abel Elias walked out — the brother who stayed 
 **Models (owner-made Tripo pulls, wired 2026-10-19):** Attire 1 (biker): https://studio.tripo3d.ai/3d-model/6aeaaffd-e7d5-45ba-8026-3f0c7b357d86 — `roster/cain-elias/attires/attire1/model.glb`. Attire 2 (fight gear): https://studio.tripo3d.ai/3d-model/752ad786-5076-4469-aaf7-39048f283624 — `roster/cain-elias/attires/attire2/model.glb`. Renders: `docs/tpose-refs/cain-elias/a1_front.png`, `a2_front.png` (own-eyes verified).
 
 *Owner-directed 2026-10-19 (naming, design, attires). Wired into repo 2026-10-19 (gap-audit stream). Moveset pick owned by the moveset lane.*
+
+### DEATHFANG — The Chained Soul (Bonus)
+
+**Owner's words (2026-10-20):** the human form is an emo loner, really misunderstood — people look at him and think "this dude can't be who they say he is." The werewolf is the monster that terrorizes towns, bloodlust — that is why he got put in prison. When people see the wolf form: "oh shit... we get it."
+
+DEATHFANG — all caps, one word, everywhere — is a proprietary fighter built on Iori Yagami: he keeps Iori's moves, stance and animations in BOTH forms. He is a prisoner to his own grief and his own emotions, chained and shackled — collar, wrist and ankle irons, chains hanging off him — with the words **NO FUTURE** tattooed on his face. The chain runs under his knees the way Iori's own does: even his walk is a sentence.
+
+The man does not read as dangerous. Quiet, emo, alone — the kind of prisoner the other prisoners leave alone because they cannot place him. The wolf is the placement. What the town watch found in the morning, what the blood on the road meant: that is the other form, and it is why the chains are not a costume. Mid-fight, on a full nine-soul meter, the chains stop being a restraint and become a warning: WEREWOLF UNLEASHED. The wolf still stands and moves like Iori — the grief never changes its stance — but its attacks go beast: lunge, maul, bite, the rising moonclaw.
+
+Research threads the owner pointed at: Iori Yagami's design already carries the werewolf in it (SNK's own lineage for the character runs through wolf imagery and the blood-moon riot of his bloodline), and Free of *Soul Eater* — the werewolf, the immortal prisoner, caged for centuries for what he is — is the second parent of this character. DEATHFANG is what those two bloodlines make in the head-world: a man nobody believes is the monster, and the monster that proves them wrong.
+
+**Models (owner-made Tripo pulls, wired 2026-10-20):** Attire 1 — the Chained Prisoner (human): https://studio.tripo3d.ai/3d-model/6486151e-acfe-49fe-b0a1-503dc3ff202b — `roster/deathfang/attires/attire1/model.glb`. Attire 2 — the Chained Prisoner Werewolf (transform form, also selectable): https://studio.tripo3d.ai/3d-model/b4094ecf-df5a-4255-a26c-6c49734fcc3a — `roster/deathfang/attires/attire2/model.glb`. The Attire 1 model's open eye shipped from Tripo with no eyeball painted (a closed, skin-pink eyelid in the atlas); it was repaired through the game's customization eye library (real iris + sclera composited at the verified UV island) — see `customization/parts/deathfang-eyes/`. The PR #368 Iori reskin is preserved at `roster/deathfang/attires/attire3/model.glb` as a legacy skin, superseded as canon by the owner's own models.
+
+*Owner-directed 2026-10-19 (naming + concept), 2026-10-20 (character, models, eye repair). Wired into repo 2026-10-20.*
 
 ### CORNERSTONE — The Obnoxious One (Bonus)
 

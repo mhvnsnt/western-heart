@@ -155,6 +155,7 @@ const OWNERSHIP = {
   "docfrank": {
     "own": [
       "doc-frank",
+      "doc-frank-a1",
       "doc-frank-big",
       "doc-frank-wowomomo",
       "doc-frank-wowomomo-big",
@@ -340,7 +341,10 @@ const OWNERSHIP = {
     ]
   },
   "zen": {
-    "base": "steve-fox"
+    "own": [
+      "zen",
+      "zen-attire1"
+    ]
   },
   "zui": {
     "own": [

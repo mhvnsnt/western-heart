@@ -33,6 +33,8 @@ import { assets } from './assets.js';
 import { attiresFor, selectedAttireModel, setAttire, attireLabel } from './attires.js';
 import { loadT3Clips, createT3Actions, retargetT3Clips } from './t3anims.js';
 import { bankIdFor } from './fighter.js';
+import { getMovesetInfo } from './movesets.js';
+import { SOUL_IDS, MAIN_IDS } from './roster-full.js';
 
 const DEFAULT_STATS = { speed: 2.8, jump: 7.2, power: 1.1, defense: 1.05 };
 const clamp01 = (v) => Math.max(0, Math.min(1, v));
@@ -170,7 +172,8 @@ class PreviewPane {
         };
       }
       try {
-        const bank = bankIdFor(c.id, c.moveset || c.id);
+        // The fighter's OWN moveset file decides its bank (its base's motion), same as in the fight.
+        const bank = bankIdFor(c.id, getMovesetInfo(c.id) ? c.id : (c.moveset || c.id));
         const clips = bank ? await loadT3Clips(THREE, bank) : null;
         if (token !== this._token) return true; // superseded while loading
         if (clips && clips.stance && inst.bones && inst.bones.Hips && inst.bones.RightArm && inst.bones.Head) {
@@ -284,6 +287,16 @@ class PreviewPane {
    onHighlight: (entryOrNull) => {}   (main.js mirrors selectedChar)
  }
 */
+/* Fighters with the owner's Tripo 3D models show first (owner 2026-10-21: "show all the fighters
+   that have tripo 3D models ... first at the top ... not people ... that don't have models in the
+   top rows"). The list is generated from the registry + the GLB files themselves by
+   tools/roster/tripo_fighters.py -> data/tripo-fighters.json (no hand-picked order). */
+let TRIPO_IDS = null;
+const _tripoReady = fetch('data/tripo-fighters.json')
+  .then(r => (r.ok ? r.json() : null))
+  .then(j => { TRIPO_IDS = new Set((j && j.ids) || []); })
+  .catch(() => { TRIPO_IDS = new Set(); });
+
 export function createSelectScreen(deps) {
   const { audio } = deps;
   const $ = (id) => document.getElementById(id);
@@ -334,11 +347,16 @@ export function createSelectScreen(deps) {
     if (!strip) return;
     strip.innerHTML = '';
     const roster = deps.roster();
+    const tripo = TRIPO_IDS || new Set();
+    const rest = (list) => list.filter(c => !tripo.has(c.id));
     const tiers = [
-      { label: 'THE NINE SOULS', fighters: roster.slice(0, 9) },
-      { label: 'MAIN ROSTER', fighters: roster.slice(9, 16) },
-      { label: 'BONUS ROSTER', fighters: roster.slice(16) },
-    ];
+      { label: 'TRIPO ORIGINALS', fighters: roster.filter(c => tripo.has(c.id)) },
+      // Membership-based (dedup 2026-10-22): positional slices broke when
+      // attire-cards folded out of the roster shifted every index.
+      { label: 'THE NINE SOULS', fighters: rest(roster.filter(c => SOUL_IDS.includes(c.id))) },
+      { label: 'MAIN ROSTER', fighters: rest(roster.filter(c => MAIN_IDS.includes(c.id))) },
+      { label: 'BONUS ROSTER', fighters: rest(roster.filter(c => !SOUL_IDS.includes(c.id) && !MAIN_IDS.includes(c.id))) },
+    ].filter(t => t.fighters.length);
     tiers.forEach(({ label, fighters }) => {
       const t = document.createElement('div');
       t.className = 'strip-tier';
@@ -635,5 +653,7 @@ export function createSelectScreen(deps) {
   if (pBtn) pBtn.addEventListener('click', punchAttire);
   if (kBtn) kBtn.addEventListener('click', kickAttire);
 
+  // The Tripo list arrives after the first build: rebuild once so those fighters lead the grid.
+  _tripoReady.then(() => { if (strip && strip.children.length) { build(); paintCards(); } });
   return { build, onShow, selectById, notifyConfirm, highlight, _state: state, _panes: panes };
 }

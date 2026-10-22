@@ -21,7 +21,7 @@
   "demonio": "+Z",
   "diablo": "+Z",
   "awa-pop": "+Z",
-  "nightwolf": "+Z",
+  "nightwolf": "-Z",
   "king-tyrant": "+Z",
   "kinpo": "+Z",
   "n3g4tiv0": "+Z",
@@ -50,6 +50,7 @@
   "zen-body": "+Z",
   "zui_alt1": "+Z",
   "zui_alt2": "+Z",
+  "zui-attire1": "+Z",
   "kiko-tanaka": "-Z",
   "kiko-tanaka_alt1": "-Z",
   "purple-rain-main": "-Z",
@@ -71,5 +72,8 @@
   "demonio-a1": "+Z",
   "doc-frank-hood": "+Z"
  },
- "note_rigged": "Tripo statics rigged by tools/auto_rig/backends/gamerig_backend.py (--facing +X: every Tripo pull faces +X, read from rest renders docs/proof/claude-2026-10-20/rigging/statics_sheet_*.png) come out facing +Z."
+ "note_rigged": "Tripo statics rigged by tools/auto_rig/backends/gamerig_backend.py (--facing +X: every Tripo pull faces +X, read from rest renders docs/proof/claude-2026-10-20/rigging/statics_sheet_*.png) come out facing +Z.",
+ "corrections": {
+  "nightwolf": "2026-10-22: was +Z, measured -Z via per-part facing audit (nose/chest/toes all -Z; Blender rest renders from +Z show her back). Game now turns her 180 at instance creation."
+ }
 }
