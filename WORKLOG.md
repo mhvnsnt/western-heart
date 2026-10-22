@@ -1757,3 +1757,22 @@ Owner directive (verbatim): "Research the current state-of-the-art open-source i
 **Proof:** node --check on all 6 new + 4 modified JS modules (all pass); JSON validity on registry/weapons/catalog; catalog merge verified (2,624 defjam entries, unique ids, all geometry_pending); 28 unit tests pass (15 Gungaku program/recorder/preset tests, 13 photo-filter/ending/weapon/finisher tests). Live-browser play verification (menu screenshot, Fight Lab fight, photo mode, ending playback) needs a browser-capable agent — headless Chromium is broken on this VM (zygote failure); flagged for delegation.
 
 **Status:** [pending push/merge]
+## 2026-10-22 — Zen spirit body rigged + wired (Claude session, branch claude/amazing-keller-p8644u)
+
+- Zen Attire 1 (owner Tripo 8c46e379) was an unrigged static wired as 'zen'/'zen-attire1' -> invisible in fights.
+- `tools/auto_rig/rig_tripo_static.py --facing +X` -> `roster/zen/attires/attire1/model-rigged.glb` (73 joints, 29.2 MB);
+  validate PASS; stress-clip anim_check flags explained by viewed renders (no tearing); in-game rest faces +Z, T3 stance
+  max bone error 0.4 deg. Wired 'zen' + 'zen-attire1'; model-facing.json zen/zen-attire1 +Z; roster/zen/ATTIRE-SLOTS.md.
+- Proof: docs/proof/claude-2026-10-22/zen-rig/.
+
+## 2026-10-22 — Main unplayable: two breakages fixed (Claude session, branch claude/amazing-keller-p8644u)
+
+- No fight could start: game/js/fighter.js `_build()` read `charData.jiggleFamily` / `charData.jiggleIntensity`
+  (added by 4ab3aa206, jiggle/face/hand wiring) but `charData` only exists in the constructor -> ReferenceError on
+  every Fighter. Now `this.char.*` (2 tokens).
+- Mode start crashed (`show()` -> null.classList): c31b667d9 (T8 select transplant, stale index.html) put back the
+  duplicate `id="screen-stage"` on the STORY stage-intro section that 566248169 had renamed `screen-stage-intro`
+  (main.js + modes.js still use stageIntro). Restored the id.
+- Verified headless on current main: startMode + startFight work; side switch turns the body (facing -1, hips -X,
+  hands forward within 3 frames — the aecba6c08 smooth Y-turn from the facing lane), screenshot viewed.
+- Zen canon: base mix Dural (VF5, stance for now) + Twelve/Eleven on top + X.COPY + own kit (roster/zen/CANON.md).

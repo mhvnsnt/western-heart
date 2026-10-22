@@ -87,7 +87,11 @@ async function show({ model = 'pantera', bank = 'king', clip = 'stance', t = 0.5
   const clips = await loadT3Clips(THREE, bank);
   if (!clips || !clips[clip]) throw new Error(`no clip ${bank}/${clip}`);
   // source
-  const sg = await loadGlb(BANK_GLB[bank]);
+  // Source rig: the bank's own skeleton.json names it (source_glb), so every decoded bank works here.
+  const skel = getT3Skeleton(bank);
+  const srcUrl = BANK_GLB[bank] || (skel && skel.source_glb ? '../' + skel.source_glb : null);
+  if (!srcUrl) throw new Error(`no source rig for bank ${bank}`);
+  const sg = await loadGlb(srcUrl);
   const src = skeletonClone(sg.scene);
   const srcMixer = new THREE.AnimationMixer(src);
   const sa = srcMixer.clipAction(rawClipForSource(clips[clip])); sa.play();
@@ -137,7 +141,7 @@ async function show({ model = 'pantera', bank = 'king', clip = 'stance', t = 0.5
   const res = { model, bank, clip, time: +time.toFixed(3), duration: +dur.toFixed(3), facesNegZ, swapLR: rt[clip].userData.rigSwapLR,
     srcHeadAboveHips: +hs.toFixed(3), tgtHeadAboveHips: +ht.toFixed(3), toes, dirErrDeg: errs,
     maxErr: Math.max(...Object.values(errs)) };
-  info.textContent = `SOURCE (raw bank on ${BANK_GLB[bank].split('/').pop()})  |  TARGET ${model} (retargeted)\n` + JSON.stringify(res);
+  info.textContent = `SOURCE (raw bank on ${srcUrl.split('/').pop()})  |  TARGET ${model} (retargeted)\n` + JSON.stringify(res);
   return res;
 }
 function render() {
