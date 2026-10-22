@@ -50,6 +50,23 @@ on an unverified regeneration.
 4. **CLOSEOUT** — PENDING. This file final + WIRING-INVENTORY
    round-14 section appended.
 
+### JOB 2 — VTYPE color-format 7 layout: **COMPLETE** (`tools/round14-evidence/JOB2-VTYPE7-VERDICT.md`)
+
+Color-format 7 = RGBA8888 (4 B, 4-aligned) in GE stream order
+(w, uv, color, normal, pos); stride total aligned to 4. Validated
+before shipping: 10,648/10,648 units stride-exact, weights
+111,386/111,386 sum to 128, normals 58,453/58,453 unit, bbox
+112,157/112,160. New decoder `tools/r14_ndpp_decode.py` (r9 parity
+byte-identical on idx00 slots 0/10). Batch: **405/405 recovered**
+(355,725 verts / 196,773 tris), two runs sha-identical, GLBs under
+`models/parts/seg{NN}/` (`_r14` suffix), r13 manifest gained an
+additive `round14_recovery` section. Gate render VIEWED
+(`round14-evidence/r14_gate_bulk1934.png`): coherent torso+arms
+part. Bonus: bulk3745's "VTYPE 0x476bfd" proven a false signature
+match inside a vertex stream (pair offset 5,859,594 in a 79,616 B
+section) — decoder now skips out-of-section units; the 4
+KeyError-'pos' + 1 truncated failures were the same class.
+
 ## Method notes
 - Capstone targeted disassembly only; NO full Ghidra analysis
   (VM RAM ~1.6 GB free at lane start in the brief; measured
