@@ -15,7 +15,7 @@ MIT licensed.
 ## Install
 
 ```bash
-pip install -r requirements.txt   # Pillow + Flask
+pip install -r requirements.txt   # Pillow + Flask + gradio_client
 # Optional, per backend:
 pip install huggingface_hub   # hf backend
 pip install torch diffusers   # local backend (needs CUDA GPU)
@@ -68,17 +68,22 @@ overlay → text. Generative (`--instruction`) runs first, on the source image.
 
 | Backend | What it does | Needs | Surgical? |
 |---------|--------------|-------|-----------|
+| `gradio` **(default)** | True instruction-based editing via the public InstructPix2Pix HuggingFace Space | Nothing (free, no key, no download) | **Yes** — preserves the source image, applies the instruction |
 | `pollinations` | Text-guided generation via pollinations.ai | Nothing (free, rate-limited) | No — generates a variation guided by the instruction, doesn't preserve pixels |
 | `hf` | Qwen-Image-Edit / FLUX Kontext via HuggingFace Inference | `HF_TOKEN` env var | **Yes** — true instruction-based editing |
 | `local` | InstructPix2Pix via diffusers | CUDA GPU (~4GB VRAM), `torch` + `diffusers` | **Yes** — fully offline |
-| `auto` (default) | Tries backends in order, uses the first that works | — | Depends on what succeeds |
+| `auto` (default) | Tries backends in order (`gradio` → `pollinations` → `hf` → `local`), uses the first that works | — | Depends on what succeeds |
 
 ```bash
+# Free: true instruction-based editing (DEFAULT — no key, no download)
+python edit.py in.png --instruction "make the shell red and white like a Mario Koopa shell" \
+    --backend gradio -o out.png
+
 # Free tier: guided generation (concept drafts, variations)
 python edit.py in.png --instruction "make the shell red and white like a Mario Koopa shell" \
     --backend pollinations -o out.png
 
-# True surgical editing (needs free HF token from huggingface.co/settings/tokens)
+# True surgical editing, higher quality (needs free HF token from huggingface.co/settings/tokens)
 export HF_TOKEN=hf_...
 python edit.py in.png --instruction "change the turtle shell to red and white, keep everything else identical" \
     --backend hf -o out.png
@@ -127,6 +132,7 @@ python edit.py <image> --crop 100,100,300,300 --rotate 45 --flip horizontal -o /
 python edit.py <image> --hue 120 --grayscale -o /tmp/t3.png
 ```
 
-Generative backends: `pollinations` verified returning valid images
-(no key). `hf`/`local` are code-complete; they activate when their
-requirements are met (`HF_TOKEN` / CUDA GPU).
+Generative backends: `gradio` (free, no key — true instruction editing via public
+InstructPix2Pix Space) verified end-to-end with real edits. `pollinations`
+verified returning valid images (no key). `hf`/`local` are code-complete;
+they activate when their requirements are met (`HF_TOKEN` / CUDA GPU).
