@@ -1933,3 +1933,13 @@ on main @ 2af4328 found the whole loop dead behind two 1-line defects in
 - Note: open PR #676 (worker36/menu-fix, mergeable_state=dirty) attempted a
   full rewrite for the same symptoms — superseded; worker 36 should
   close/rebase it.
+
+## 2026-10-22 — Moveset Library System (worker 47, branch w47/moveset-library-system)
+
+Built the central moveset library + per-fighter assembly system (owner standing directive):
+- `game/data/moveset-library/`: 9,420 moves across 5 banks (T3 4,648 · No Mercy 4,409 · WMXIX 169 · DOA 146 · VF 48) + 9 pending banks registered; `schema.json`, `axes.json`, `claimed-map.json` (source law), `index.json`. Reproducible ingest: `tools/moveset-library/ingest.mjs`.
+- `game/js/moveset-library.js`: `assembleFighter()` → v2-contract movesets; source-law gate in code; pending banks degrade honestly.
+- `game/data/movesets/`: pre-assembled bannon / el-toro / pablo (locked flavor: powerhouse + comedy-whiff lucha attempts + Black Reign Ride / Abyss Choke dark thread) / npc-finxsse. VF5 bases pending worker 45.
+- `game/moveset-browser.html`: browse by axis, inspect, attach/detach, save. Fully working dev page.
+- Docs: `docs/research/moveset-library-schema.md`, `docs/decisions/2026-10-22-moveset-library.md`, `docs/handoffs/moveset-library-vf5-format.md` (worker-45 contract, read-only).
+- Proof: node --check clean; ingest 0 violations; assembler CLI verified (pablo 8 / bannon 3 / el-toro 2 / npc-finxsse 1, law-clean); claimed pull refused / free pull allowed.
