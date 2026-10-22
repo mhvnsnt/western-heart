@@ -21,8 +21,36 @@ export const FULL_ROSTER = [
     colors: { suit: 0x2a2a3a, trim: 0x8a2be2 }, style: 'Sword Style', archetype: 'Tricky' },
   { id: 'retsu', name: 'RETSU', title: 'The Violent Soul', base: 'Bryan Fury', moveset: 'bryan', model: 'pantera', tintStrength: 0.25,
     colors: { suit: 0x3a1a1a, trim: 0xcc2222 }, style: 'Kickboxing', archetype: 'Rushdown' },
-  { id: 'zen', name: 'ZEN', title: 'The Still Soul', base: 'Heihachi', moveset: 'heihachi', model: 'steve-fox', tintStrength: 0.6,
-    colors: { suit: 0xd0d0d0, trim: 0x8a8a8a }, style: 'Mishima', archetype: 'Defensive' },
+  { id: 'zen', name: 'ZEN', title: 'The Still Soul', base: 'Heihachi', moveset: 'heihachi', model: 'zen', tintStrength: 0.6,
+    colors: { suit: 0xd0d0d0, trim: 0x8a8a8a }, style: 'Mishima', archetype: 'Defensive',
+    // ZEN TRANSFORMATION MODES (owner canon 2026-10-21, roster/zen/CANON.md):
+    // ALL of Zen's versions are modes WITHIN Attire 1 — not separate
+    // attires. Spiritual/celestial class (Oversoul/Susanoo x JoJo Stand).
+    // Chain: spirit body -> TENTACLE MODE (9460095d: the clothing tentacle
+    // imagery becomes REAL tentacles busting out of him; NO Oversoul head;
+    // his spirit entity rides higher + further back) -> OVERSOUL (2bbc8e88:
+    // the spirit docks at the head position, TAKES THE HEAD'S PLACE, and
+    // the combined form manifests; body tentacles stay imagery). TRANSFORM
+    // touch button + full nine-soul meter, both directions. His moveset
+    // stays his own ('zen') in every stage — the tentacle pastel-blast
+    // specials are a moveset-stage design requirement (RIG-NOTES.md), not
+    // a moveset key that exists yet. Keyed on BOTH 'zen' and 'zen-attire1'
+    // like Demonio: the player-side formKey can resolve to either.
+    forms: {
+      'zen': {
+        up: { target: 'zen-tentacle', label: 'TENTACLE MANIFESTATION', powerMult: 1.15, speedMult: 1.0, defenseMult: 1.05, moveset: 'zen' },
+      },
+      'zen-attire1': {
+        up: { target: 'zen-tentacle', label: 'TENTACLE MANIFESTATION', powerMult: 1.15, speedMult: 1.0, defenseMult: 1.05, moveset: 'zen' },
+      },
+      'zen-tentacle': {
+        up: { target: 'zen-oversoul', label: 'OVERSOUL', powerMult: 1.25, speedMult: 1.05, defenseMult: 1.15, moveset: 'zen' },
+        down: { target: 'zen-attire1', label: 'WITHDRAW', powerMult: 0.87, speedMult: 1.0, defenseMult: 0.95, moveset: 'zen' },
+      },
+      'zen-oversoul': {
+        down: { target: 'zen-tentacle', label: 'OVERSOUL RELEASE', powerMult: 0.8, speedMult: 0.95, defenseMult: 0.87, moveset: 'zen' },
+      },
+    } },
   { id: 'gyou', name: 'GYOU', title: 'The Moving Soul', base: 'Hwoarang', moveset: 'demonio', model: 'pantera', tintStrength: 0.25,
     colors: { suit: 0x1a5a3a, trim: 0x3acc6a }, style: 'Tae Kwon Do', archetype: 'Pressure' },
 
@@ -129,8 +157,12 @@ export const FULL_ROSTER = [
     colors: { suit: 0xd0d0d0, trim: 0x6accff }, style: 'Grappler', archetype: 'Ninja' },
   { id: 'slice', name: 'SLICE', title: 'Maniacal Agent', base: 'Dragunov', moveset: 'bryan', model: 'slice', tintStrength: 0.6,
     colors: { suit: 0x2a2a2a, trim: 0xcc0000 }, style: 'Commando Sambo', archetype: 'Grappler' },
-  { id: 'docfrank', name: 'DOC FRANK', title: 'Father of Machines', base: 'Bosconovitch', moveset: 'gunjack', model: 'doc-frank-machine-shop', tintStrength: 0.6,
+  { id: 'docfrank', name: 'DOC FRANK', title: 'Father of Machines', base: 'Bosconovitch', moveset: 'gunjack', model: 'doc-frank-a1', tintStrength: 0.6,
     colors: { suit: 0x6a6a7a, trim: 0x00ffcc }, style: 'Inventor', archetype: 'Tricky',
+    // Main entry model = ATTIRE 1 pre-form (owner ladder rule 2026-10-21:
+    // Tripo attires at the forefront; this entry previously pointed at the
+    // machine-shop RESKIN, and the picker default at the Bosconovitch base
+    // GLB — both ladder-back entries, now fixed).
     // Mid-match Roshi-style transformation (owner 2026-10-19):
     // old-man Attire 1 -> bigger Tripo form (2c6cff79, the true transform target). TRANSFORM touch button.
     transform: { targetModel: 'doc-frank-big', powerMult: 1.4, speedMult: 0.88, defenseMult: 1.15, bodyScale: 1.18 } },
@@ -243,11 +275,6 @@ export const FULL_ROSTER = [
   { id: 'ryuji', name: 'RYUJI', title: 'The Wicked Heretic', base: 'Ryuji Yamazaki', moveset: 'ryuji', model: 'steve-fox', tintStrength: 0.25,
     colors: { suit: 0x111111, trim: 0xd8b25a }, style: 'Hebi Tsukai / Wrestling', archetype: 'Zoner/Grappler',
     surge: { name: 'SERPENT DRILL', color: 0x224411, accent: 0xffcc00 } },
-  { id: 'ryuji-rock', name: 'RYUJI ROCK', title: 'The Obnoxious One', base: 'Ryuji Yamazaki + The Rock', moveset: 'ryuji-rock', model: 'ryuji-rock', tintStrength: 0.25,
-    colors: { suit: 0x1a1a1a, trim: 0xffd700 }, style: 'Wrestler/Brawler', archetype: 'Power',
-    surge: { name: "PEOPLE'S CHAMPION", color: 0xffd700, accent: 0xffffff },
-    stats: { speed: 4.0, jump: 6.5, power: 1.35, defense: 1.2 },
-    ai: { aggression: 0.75, grabBias: 0.5, reaction: 0.55 } },
   { id: 'koreshi', name: 'KORESHI', title: 'The Shadow Ninja', base: 'Kakashi + Super Saiyan', moveset: 'koreshi', model: 'koreshi', tintStrength: 0.25,
     colors: { suit: 0x2a3a4a, trim: 0xcc2222 }, style: 'Ninja/Samurai', archetype: 'Trickster',
     surge: { name: 'SHARINGAN AWAKENING', color: 0xcc2222, accent: 0xffffff },

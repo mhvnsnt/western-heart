@@ -68,7 +68,7 @@ const MOVESET_MAP = {
   // roster ids whose per-fighter files landed with the full-moveset wiring.
   kronos: 'king', 'kronos-attire2': 'king',
   'demonio-human': 'demonio', 'doc-frank-wowomomo': 'gunjack',
-  'doc-frank-hood': 'gunjack',
+  'doc-frank-hood': 'gunjack', 'doc-frank-frankenstein': 'gunjack',
   // Late additions (anim audit 2026-10-19): were missing from the map.
   'demonio-winged': 'demonio', deathfang: 'heihachi', 'ryuji-rock': 'king',
   koreshi: 'heihachi',
@@ -835,7 +835,12 @@ export class Fighter {
     this.vx = 0; this._enter('attack'); this._attackPhase = 'startup';
     return true;
   }
-  _enter(state) { this.state = state; this.stateT = 0; }
+  _enter(state) {
+    // Leaving the attack state clears the attack fields, so an interrupted
+    // attack can never latch attackName and stick the aura on permanently.
+    if (this.state === 'attack' && state !== 'attack') { this.attack = null; this.attackName = null; }
+    this.state = state; this.stateT = 0;
+  }
 
   /* ---------------- defense / damage ---------------- */
   isBlocking() { return this.state === 'block'; }

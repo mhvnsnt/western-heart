@@ -149,6 +149,10 @@ export class Game {
     this.p1.facing = 1; this.p1.lean.rotation.y = 0;
     this.p2.facing = -1; this.p2.lean.rotation.y = Math.PI;
     this.p1.state = 'idle'; this.p2.state = 'idle';
+    // Round reset is also a clean break from any in-progress attack: never let
+    // a latched attackName (e.g. 'surge') stick the Soul Surge aura on.
+    this.p1.attack = null; this.p1.attackName = null;
+    this.p2.attack = null; this.p2.attackName = null;
     this.p1.dead = this.p2.dead = false;
     this.p1.stun = this.p2.stun = 0;
     this.p1.vx = this.p2.vx = 0;
@@ -252,8 +256,8 @@ export class Game {
             if (this.p1.tryAttack('surge')) {
               rec('surge');
               audio.soulSurge(this.p1.char.id);
-              this.ui.surgeFlash(this.p1.char.surge.color, this.p1.char.surge.accent);
-              this.ui.surgeName(this.p1.char.surge.name);
+              this.ui.surgeFlash(this.p1.char.surge?.color ?? this.p1.char.colors.trim, this.p1.char.surge?.accent ?? 0xffffff);
+              this.ui.surgeName(this.p1.char.surge?.name ?? 'SOUL SURGE');
             }
           }
           else if (act === 'dodge') { if (this.p1.tryDodge()) rec('dodge'); }
@@ -397,7 +401,7 @@ export class Game {
           this.arena.shake(isGrab ? 0.45 : isHeavy ? 0.35 : 0.18, isGrab ? 0.28 : 0.18);
           this._hitStop = isGrab ? 0.1 : isHeavy ? 0.08 : 0.05;
           const col = attacker.attackName === 'surge'
-            ? attacker.char.surge.color
+            ? (attacker.char.surge?.color ?? attacker.char.colors.trim ?? 0xffffff)
             : (attacker.char.colors.trim || 0xffffff);
           this._spawnImpact(hb.x, hb.y, hb.z, col, isGrab ? 1.3 : isHeavy ? 1 : 0.6);
 
@@ -450,8 +454,8 @@ export class Game {
   /* AI-driven Soul Surge presentation (same as the player's) */
   surgePresentation(fighter) {
     audio.soulSurge(fighter.char.id);
-    this.ui.surgeFlash(fighter.char.surge.color, fighter.char.surge.accent);
-    this.ui.surgeName(fighter.char.surge.name);
+    this.ui.surgeFlash(fighter.char.surge?.color ?? fighter.char.colors.trim, fighter.char.surge?.accent ?? 0xffffff);
+    this.ui.surgeName(fighter.char.surge?.name ?? 'SOUL SURGE');
   }
 
   /* ---------------- Round flow ---------------- */

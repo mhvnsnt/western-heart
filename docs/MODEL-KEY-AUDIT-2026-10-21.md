@@ -141,3 +141,17 @@ The audit listed SLICE as one of two fighters with no model in the repo (he rode
 | SLICE (`slice`) | `slice` (no ATTIRE_VARIANTS entry -> roster `model:` fallback) | `slice` | `slice` | `../roster/slice/attires/attire1/model.glb` | (a) OWN |
 
 Source: Tekken 7 Dragunov teardown model — `dragunov-t7-rig.blend` from release `tekken-models-batch-2` (sha256 `214dc98fcc364245cd75dc52b3538d463c21ed28e45b907c78803feb714e5efd`), the T7 default costume (beret configuration), converted to GLB on the T7 game skeleton (198 joints). `roster-full.js` `model:` changed `steve-fox` -> `slice`; `MODEL_URLS` gained `slice` + `slice-attire1`; the guard's OWNERSHIP table now lists `slice: own [slice, slice-attire1]`. Canon gap (not a defect): Slice's skull mask is a Tekken 7 customization part that is **not present in our teardown holdings** — see `roster/slice/ATTIRE-SLOTS.md`.
+
+---
+
+## Addendum 2026-10-21 — ZEN resolved
+
+The audit's table recorded ZEN riding the `steve-fox` fallback (guard OWNERSHIP: `zen: base steve-fox`). Resolved the same day with the owner's own models — Zen is unvesseled (canon ruling 2026-10-21), so his main model is his own SPIRIT BODY (owner Tripo), and his legacy body ladders back unmodified:
+
+| Fighter | Player/select path | Enemy/raw path | Resolved key | Resolved URL | Class |
+|---|---|---|---|---|---|
+| ZEN (`zen`) | `zen` (ATTIRE_VARIANTS['zen'] first entry `zen-attire1`) | `zen` | `zen` / `zen-attire1` | `../roster/zen/attires/attire1/model.glb` | (a) OWN |
+
+Sources: spirit body = owner Tripo 8c46e379-a51c-4741-b4a3-2132ca89078f (raw meshopt 19,574,656 B, sha256 `9eee938f05857b63dbefc6fc6d793ad1c1c449865e926dd979f122e0ea537b74`, archived in release `zen-tripo-pulls-20261021`; wired copy decompressed, 57,367,520 B). `roster-full.js` `model:` changed `steve-fox` -> `zen`; `MODEL_URLS` gained `zen` + `zen-attire1`; `ATTIRE_VARIANTS['zen']` created (Attire 1 Spirit Body default, Attire 2 legacy `zen-body`); the guard's OWNERSHIP table now lists `zen: own [zen, zen-attire1]`. The legacy `game/assets/models/zen-body.glb` file was not moved or modified. Zen's animation bank (`zen → julia`) is untouched.
+
+Also wired, outside the attire system: ZEN'S SPIRIT FORM — Zen himself as a spirit (his stand form), owner Tripo 803f4cf1-35a5-4126-8971-a3a89aee114b (raw 17,279,708 B, sha256 `4814781faa239ad604b5c54543209970b9eed143c30f1ff9c46bc2d1c5d55cfe`, same release), at `roster/zen/spirit/model.glb` under MODEL_URLS key `zen-spirit`. It is a separate model entity tied to Zen's fighter record — not an attire, not a roster fighter — and does not affect the resolution rows above. Behavior spec: `roster/zen/RIG-NOTES.md`.
