@@ -80,23 +80,23 @@ export const MODEL_URLS = {
   // via tools/auto_rig knn backend (donor pantera.glb); original model.glb untouched.
   waterfall: '../roster/waterfall/attires/attire1/model-rigged.glb',
   'n3g4tiv0': 'assets/models/n3g4tiv0.glb',
-  thor: '../roster/thor/attires/attire1/model.glb',
+  thor: '../roster/thor/attires/attire1/model-rigged.glb',
   // Thor Attire 2: phantom-mimic oni mask (owner 2026-10-19).
   'thor-attire2': '../roster/thor/attires/attire2/model.glb',
   'doc-frank': 'assets/models/doc-frank.glb',
   // Doc Frank post-transform bigger form (owner 2026-10-19, Tripo pull).
   'doc-frank-big': '../roster/doc-frank/attires/attire1/post-transform/model.glb',
   // Wave 2 (2026-10-19): Wowomomo Attire 2, Hood Scientist Attire 3, Demonio forms, Dxmmii Attire 2.
-  'doc-frank-wowomomo': '../roster/doc-frank/attires/attire2/base/model.glb',
+  'doc-frank-wowomomo': '../roster/doc-frank/attires/attire2/base/model-rigged.glb',
   'doc-frank-wowomomo-big': '../roster/doc-frank/attires/attire2/transformed/model.glb',
   'doc-frank-hood': '../roster/doc-frank/attires/attire3/base/model.glb',
   'doc-frank-hood-big': '../roster/doc-frank/attires/attire3/transformed/model.glb',
   // Attire 4 "Frankenstein's Cyborg" (owner 2026-10-19): two-form transform attire.
-  'doc-frank-frankenstein': '../roster/doc-frank/attires/attire4/base/model.glb',
+  'doc-frank-frankenstein': '../roster/doc-frank/attires/attire4/base/model-rigged.glb',
   'doc-frank-frankenstein-big': '../roster/doc-frank/attires/attire4/transformed/model.glb',
   'demonio-a1': '../roster/demonio/attires/attire1/model.glb',
-  'demonio-winged': '../roster/demonio/attires/winged-devil/model.glb',
-  'demonio-human': '../roster/demonio/attires/human/model.glb',
+  'demonio-winged': '../roster/demonio/attires/winged-devil/model-rigged.glb',
+  'demonio-human': '../roster/demonio/attires/human/model-rigged.glb',
   'dxmmii-a2': '../roster/dxmmii/attires/attire2/model.glb',
   'cyborg-x': 'assets/models/cyborg-x.glb',
   'cape-jones': 'assets/models/cape-jones.glb',

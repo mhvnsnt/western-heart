@@ -464,3 +464,24 @@ All six pass validate.py.
 
 Peak RAM 491–857MB (diablo tail-fit the highest). Outputs meshopt-compressed
 (18–24MB vs 70–80MB logical). SHA-256s in batch2/SHASUMS-rigged.txt.
+
+## 2026-10-21 — Lane 4 rig batch 3: Thor, Demonio-Winged, Demonio-Human, Doc Frank Wowomomo, Doc Frank Frankenstein
+
+Thor and Doc-Frank-Frankenstein are meshopt Tripo statics; Demonio-Winged/Human
+and Doc-Frank-Wowomomo are raw (uncompressed) Tripo exports (~55MB). All
+single-mesh, ~1.0M verts. Facing: rotate-y 0 (+Z) per the Tripo export
+convention (Doc-Frank-Frankenstein nose-sharpness decisive +Z). Demonio-Winged
+fitted a real tail (118k verts); its wings (616k far verts) use the far-vert
+smoothstep fallback. All five pass validate.py.
+
+| fighter | verts | far_fb | facing | tail | validate | time |
+|---|---|---|---|---|---|---|
+| thor | 1,023,359 | 462,975 | +Z | no | PASS | knn 6.0s / apply 4.3s |
+| demonio-winged | 994,129 | 616,436 | +Z | YES (118k) | PASS | knn 9.5s / apply 8.9s |
+| demonio-human | 1,008,360 | 211,878 | +Z | no | PASS | knn 7.0s / apply 6.8s |
+| doc-frank-wowomomo | 1,003,987 | 209,333 | +Z | no | PASS | knn 7.0s / apply 6.6s |
+| doc-frank-frankenstein | 974,909 | 165,696 | +Z | no | PASS | knn 5.0s / apply 3.2s |
+
+Peak RAM 468–858MB (demonio-winged tail-fit the highest). Outputs
+meshopt-compressed (18–21MB vs 70–73MB logical). SHA-256s in
+batch3/SHASUMS-rigged.txt.
