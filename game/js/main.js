@@ -6,6 +6,8 @@
 import { Game } from './game.js';
 import { InputManager } from './input.js';
 import { audio } from './audio.js';
+import { voice } from './voice.js';
+import { music } from './music.js';
 import { assets } from './assets.js';
 import { ROSTER, getCharacter } from './characters.js';
 // LOADSPEED (2026-10-22): fighter.js / movesets.js / t3anims.js / modes.js
@@ -60,6 +62,7 @@ function show(name) {
     // bases warm during idle; a highlight always preempts them (assets.js).
     // The custom-fighter base only matters when a custom fighter exists.
     assets.preloadBaseIdle(!!getCustomFighter());
+    music.playMenu('select'); // AUDIO: select-screen theme (crossfades from title)
     if (selectScreen) selectScreen.onShow(modes ? modes.mode : null);
     requestAnimationFrame(() => requestAnimationFrame(() => mark('select-interactive')));
   }
@@ -503,6 +506,8 @@ function randomEnemy(excludeId) {
 /* ---------------- Menu button wiring ---------------- */
 function unlockAudio() {
   audio.unlock();
+  voice.unlock(); // AUDIO: builds the subtitle layer
+  music.unlock(); // AUDIO: music engine (binds voice-duck hook)
   document.getElementById('tap-to-start').classList.remove('show');
 }
 
@@ -569,7 +574,7 @@ document.querySelectorAll('[data-action]').forEach((el) => {
       if (rankBattle) rankBattle.clear();
       getModes().then(m => m.clearState());
       show('menu');
-      audio.stopMusic();
+      music.playMenu('title'); // AUDIO: title theme (was: hard stop)
     }
     else if (a === 'back-select') {
       rankBattleSelect = false;
@@ -594,6 +599,7 @@ async function confirmSelection() {
   // used to re-enter here during the getModes() gap and confirm the same
   // fighter twice (P2 = P1), which startFight() turned into a random opponent.
   audio.uiClick();
+  voice.play(id, 'select'); // AUDIO: fighter select cry
   // Select-screen lock state first (P1 lock -> P2 cursor in versus),
   // then the mode controller routes the fight.
   selectScreen.notifyConfirm(id);
@@ -654,7 +660,7 @@ document.getElementById('training-quit').addEventListener('click', () => {
   game.leaveFight();
   getModes().then(m => m.clearState());
   show('menu');
-  audio.stopMusic();
+  music.playMenu('title'); // AUDIO: title theme (was: hard stop)
 });
 
 /* Stream 6: per-fighter movelist (training mode HUD button + M key).
@@ -829,7 +835,7 @@ async function startFight(playerId, enemyId, opts = {}) {
   if (confirmBtn) confirmBtn.disabled = false;
   show('hud');
   game.paused = false;
-  audio.startMusic();
+  music.playBattle(selectedStage); // AUDIO: stage-tagged BGM (was: procedural loop)
   await game.startMatch(player, enemy, selectedStage, opts);
   // Control hints: show for 6s at fight start, H toggles
   const hints = document.getElementById('control-hints');

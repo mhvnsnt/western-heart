@@ -15,6 +15,8 @@ import { Arena } from './scene.js';
 import { lazy } from './lazy.js';
 import { AIController } from './ai.js';
 import { audio } from './audio.js';
+import { voice } from './voice.js';
+import { music } from './music.js';
 import { getStage } from './stages.js';
 import { applyFighterProfile } from './customization-consumer.js';
 // LIGHTING RIG (worker 27): per-fighter character light rig — SFV/T7-style
@@ -189,12 +191,22 @@ export class Game {
     this.roundState = 'intro';
     this._roundLockT = 1.6;
     this.ui.banner(`ROUND ${this.round}`);
+    // ANNOUNCER (audio round 2026-10-22): Tekken-style round calls —
+    // subtitle-only until the proprietary announcer voice lands.
+    {
+      const rt = this.roundsToWin || ROUNDS_TO_WIN;
+      const finalRound = this.round > 1 && this.wins.p1 >= rt - 1 && this.wins.p2 >= rt - 1;
+      voice.announce(finalRound ? 'final-round' : 'round-' + Math.min(this.round, 3));
+      music.setIntensity(finalRound ? 0.85 : 0.55);
+    }
     this.ui.updateHP(this.p1, this.p2);
     this.ui.updateMeter(this.p1, this.p2);
     setTimeout(() => {
       if (this.roundState !== 'intro') return;
       this.ui.banner('FIGHT!');
       audio.bell();
+      voice.announce('fight'); // ANNOUNCER (audio round 2026-10-22)
+      music.setIntensity(0.7);
       this.roundState = 'fight';
       this.input.enable(true);
     }, 1100);
@@ -328,6 +340,7 @@ export class Game {
             this._spawnImpact(def.root.position.x, 1.2, def.root.position.z, 0xffcf4d, 1.4);
           } else if (result && result !== 'dodge') {
             audio.grab(); audio.grunt(def.isPlayer ? 1.05 : 0.9);
+            this._voiceHitCry(def, true, false); // AUDIO: grab cry
             this.arena.shake(0.45 * this.feel.shake, 0.28 * this.feel.shake);
             this._hitStop = 0.1 * this.feel.hitstop;
             this._spawnImpact(def.root.position.x, 1.2, def.root.position.z,
@@ -426,6 +439,8 @@ export class Game {
           else if (attacker.attackName === 'surge') { /* surge sound played on startup */ }
           else audio.punch();
           audio.grunt(defender.isPlayer ? 1.05 : 0.9);
+          // AUDIO (2026-10-22): hit-reaction cries on committed hits (Tekken grunts on hits)
+          if (isHeavy || isCounter || isGrab) this._voiceHitCry(defender, isHeavy, isCounter);
           this.arena.shake((isGrab ? 0.45 : isHeavy ? 0.35 : 0.18) * this.feel.shake, (isGrab ? 0.28 : 0.18) * this.feel.shake);
           this._hitStop = (isGrab ? 0.1 : isHeavy ? 0.08 : 0.05) * this.feel.hitstop;
           const col = attacker.attackName === 'surge'
@@ -488,10 +503,23 @@ export class Game {
 
   /* ---------------- Round flow ---------------- */
   _timeOut() {
+    this._roundEndKind = 'timeup'; // AUDIO: so _endRound can announce TIME UP
     if (this.p1.hp > this.p2.hp) this.p2.hp = 0;
     else if (this.p2.hp > this.p1.hp) this.p1.hp = 0;
     else { this.p1.hp = this.p2.hp = 0; }
     this._endRound();
+  }
+
+  /* AUDIO (2026-10-22): throttled hit-reaction cries — the mapped voice
+     line fires at most once per 1.1 s per fighter so combos don't spam. */
+  _voiceHitCry(f, heavy, counter) {
+    if (!f || !f.char || !(heavy || counter)) return;
+    const now = (typeof performance !== 'undefined' ? performance.now() : Date.now());
+    this._lastCry = this._lastCry || {};
+    const id = f.char.id;
+    if (now - (this._lastCry[id] || 0) < 1100) return;
+    this._lastCry[id] = now;
+    voice.play(id, 'hit');
   }
 
   _endRound() {
@@ -501,9 +529,33 @@ export class Game {
     this.input.enable(false);
 
     const p1Down = this.p1.hp <= 0, p2Down = this.p2.hp <= 0;
-    if (p1Down && !p2Down) { this.wins.p2++; this.p1._knockout(-1); this.p2.victory(); this.ui.banner('K.O.'); }
-    else if (p2Down && !p1Down) { this.wins.p1++; this.p2._knockout(1); this.p1.victory(); this.ui.banner('K.O.'); }
-    else { this.wins.p1++; this.wins.p2++; this.ui.banner('DOUBLE K.O.'); }
+    const endKind = this._roundEndKind || 'ko';
+    this._roundEndKind = null;
+    // AUDIO (2026-10-22): Tekken end-of-round sequence — announcer call
+    // (K.O. / PERFECT! / TIME UP / DOUBLE K.O.), the loser's KO cry, the
+    // winner's win-pose line, then a delayed taunt beat. Fire-and-forget:
+    // never blocks the 3 s win beat.
+    const winBeat = (winnerId, loserId) => {
+      voice.play(loserId, 'ko');
+      voice.play(winnerId, 'win');
+      setTimeout(() => { if (this.roundState === 'over') voice.play(winnerId, 'taunt'); }, 1700);
+      music.setIntensity(0.3);
+    };
+    if (p1Down && !p2Down) {
+      this.wins.p2++; this.p1._knockout(-1); this.p2.victory();
+      const perfect = endKind === 'ko' && this.p2.hp >= this.p2.maxHp;
+      this.ui.banner(perfect ? 'PERFECT!' : endKind === 'timeup' ? 'TIME UP' : 'K.O.');
+      voice.announce(perfect ? 'perfect' : endKind === 'timeup' ? 'time-up' : 'ko');
+      winBeat(this.p2.char.id, this.p1.char.id);
+    }
+    else if (p2Down && !p1Down) {
+      this.wins.p1++; this.p2._knockout(1); this.p1.victory();
+      const perfect = endKind === 'ko' && this.p1.hp >= this.p1.maxHp;
+      this.ui.banner(perfect ? 'PERFECT!' : endKind === 'timeup' ? 'TIME UP' : 'K.O.');
+      voice.announce(perfect ? 'perfect' : endKind === 'timeup' ? 'time-up' : 'ko');
+      winBeat(this.p1.char.id, this.p2.char.id);
+    }
+    else { this.wins.p1++; this.wins.p2++; this.ui.banner('DOUBLE K.O.'); voice.announce('double-ko'); }
 
     this.ui.setRounds(this.wins);
     this.ui.updateHP(this.p1, this.p2);
