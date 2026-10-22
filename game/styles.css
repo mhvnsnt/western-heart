@@ -95,7 +95,8 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
    LAYOUT: full-viewport flex column. Sticky header (BACK/title/timer),
    vertically-scrolling grid, sticky footer (hint/CONFIRM). Nothing may
    ever overflow the viewport horizontally, portrait or landscape. */
-#screen-select.select-screen {
+#screen-select.select-screen,
+#screen-stage.select-screen {
   display: none;
   flex-direction: column;
   align-items: stretch;
@@ -103,7 +104,8 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
   padding: 0;
   background: linear-gradient(168deg, #1a0f2e 0%, #241031 45%, #0d060f 100%);
 }
-#screen-select.select-screen.active { display: flex; }
+#screen-select.select-screen.active,
+#screen-stage.select-screen.active { display: flex; }
 .select-header {
   flex: 0 0 auto;
   display: flex; align-items: center; gap: 12px;
@@ -384,18 +386,42 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
   box-shadow: 0 4px 14px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.3); transition: transform 0.06s, filter 0.06s;
 }
 .act-btn:active { transform: scale(0.9); filter: brightness(1.3); }
-.act-btn.punch  { right: 88px; bottom: 98px; background: linear-gradient(180deg,#b46bff,#6b2bd8); }
-.act-btn.kick   { right: 10px; bottom: 62px; background: linear-gradient(180deg,#ffb14d,#d6802f); }
-/* Stream 6: Tekken limb cluster — arcade diamond (LP RP / LK RK). */
-.act-btn.limb { width: 58px; height: 58px; font-size: 15px; }
-.act-btn.lp { right: 96px; bottom: 104px; background: linear-gradient(180deg,#b46bff,#6b2bd8); }
-.act-btn.rp { right: 28px; bottom: 104px; background: linear-gradient(180deg,#c98bff,#7b3fe0); }
-.act-btn.lk { right: 96px; bottom: 38px; background: linear-gradient(180deg,#ffb14d,#d6802f); }
-.act-btn.rk { right: 28px; bottom: 38px; background: linear-gradient(180deg,#ffcf7d,#e09a3a); }
-.act-btn.special{ right: 158px; bottom: 66px; background: linear-gradient(180deg,#e0b3ff,#8b2bd8); width:60px;height:60px;font-size:18px; }
-.act-btn.block  { right: 10px; bottom: 168px; background: linear-gradient(180deg,#9fd8ff,#3f6dc8); width:58px;height:58px;font-size:18px; }
-.act-btn.dodge  { right: 158px; bottom: 8px; background: linear-gradient(180deg,#ff5c7a,#c81f43); width:58px;height:58px;font-size:18px; }
-.act-btn.transform { right: 106px; bottom: 96px; background: linear-gradient(180deg,#fff36b,#d8a02b); width:58px;height:58px;font-size:18px; color:#3a2a00; }
+/* PSX EMULATOR OVERLAY (control overhaul 2026-10-22, owner directive):
+   classic PlayStation diamond — △ top, ○ right, ✕ bottom, □ left —
+   with authentic PSX colors (triangle green, circle red, cross blue,
+   square pink). Tekken mapping: □=1 LP, △=2 RP, ✕=3 LK, ○=4 RK.
+   No button touches or overlaps another: every edge has clear air.
+   L1/R1 shoulder pills (block / soul surge) sit above the diamond.
+   The old dodge button and generic punch/kick buttons are gone. */
+.act-btn.psx { width: 62px; height: 62px; font-size: 26px; line-height: 1;
+  background: rgba(20,20,28,0.72); border: 2px solid rgba(255,255,255,0.35);
+  text-shadow: 0 0 8px currentColor; }
+.act-btn.psx:active { transform: scale(0.88); filter: brightness(1.6); }
+.act-btn.triangle { right: 88px; bottom: 144px; color: #3ddc84; }
+.act-btn.circle   { right: 24px; bottom: 96px;  color: #ff5c5c; }
+.act-btn.cross    { right: 88px; bottom: 48px;  color: #4da3ff; }
+.act-btn.square   { right: 152px; bottom: 96px; color: #ff7ad9; }
+.act-btn.shoulder { width: 64px; height: 40px; border-radius: 20px; font-size: 15px;
+  background: rgba(20,20,28,0.72); border: 2px solid rgba(255,255,255,0.3); color: #ffe9a8; }
+.act-btn.l1 { right: 152px; bottom: 176px; }
+.act-btn.r1 { right: 24px; bottom: 176px; }
+.act-btn.transform { right: 88px; bottom: 216px; background: linear-gradient(180deg,#fff36b,#d8a02b); width:52px;height:52px;font-size:18px; color:#3a2a00; }
+/* V-System (owner 2026-10-22): V-Skill / V-Trigger / V-Reversal button.
+   Explicit position/size so it renders in either button-layout state. */
+.act-btn.vskill { right: 224px; bottom: 66px; background: linear-gradient(180deg,#7df9ff,#1f9dc8); width:60px;height:60px;font-size:18px; color:#062a33; }
+/* Compact screens (portrait phones): shrink the cluster, keep the diamond. */
+@media (max-width: 520px) {
+  .action-pad { width: 200px; height: 200px; right: 10px; }
+  .act-btn.psx { width: 54px; height: 54px; font-size: 22px; }
+  .act-btn.triangle { right: 76px; bottom: 128px; }
+  .act-btn.circle   { right: 20px; bottom: 84px; }
+  .act-btn.cross    { right: 76px; bottom: 40px; }
+  .act-btn.square   { right: 132px; bottom: 84px; }
+  .act-btn.shoulder { width: 56px; height: 36px; font-size: 13px; }
+  .act-btn.l1 { right: 132px; bottom: 156px; }
+  .act-btn.r1 { right: 20px; bottom: 156px; }
+  .act-btn.transform { right: 76px; bottom: 192px; width: 46px; height: 46px; }
+}
 
 /* Stream 6: throw-break prompt */
 .throw-prompt {
@@ -453,25 +479,169 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
 .tap-hint.show { display: block; }
 @keyframes pulse { 0%,100%{opacity:0.6;} 50%{opacity:1;} }
 
-/* ====================== STAGE SELECT (Lane 4) ====================== */
-.stage-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.stage-card {
-  border: 2px solid rgba(255,255,255,0.14); border-radius: 10px; overflow: hidden;
-  background: #101018; cursor: pointer; transition: transform 0.08s, border-color 0.12s;
-  min-height: 0;
+/* ====================== STAGE SELECT (Tekken pattern) ======================
+   Sticky header; scrollable arena GRID grouped by tier; LARGE PREVIEW
+   of the highlighted arena with name + description inside the layout;
+   sticky footer (hint / RANDOM / FIGHT always on screen). Portrait:
+   preview on top, grid scrolls beneath it. Landscape/wide: grid left,
+   preview right. The grid is the ONLY scrolling element.
+   Every rule is scoped to #screen-stage on purpose: this screen must
+   NOT inherit the character-select layout. (The old coupling is what
+   shipped the broken screen: #screen-stage fell back to the generic
+   .screen flex ROW, so header/grid/footer laid out side by side —
+   grid clipped off-screen, footer stranded mid-screen with its text
+   running off the edge, no reachable FIGHT button.) */
+#screen-stage.select-screen {
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 0;
+  overflow: hidden;
+  background: linear-gradient(168deg, #1a0f2e 0%, #241031 45%, #0d060f 100%);
 }
-.stage-card:active { transform: scale(0.97); }
-.stage-card.selected { border-color: #ffd34d; box-shadow: 0 0 14px rgba(255,211,77,0.45); }
-.stage-card.kb-focus { outline: 3px solid #ffd34d; outline-offset: 2px; }
-.stage-card .swatch { width: 100%; aspect-ratio: 16 / 6; }
-.stage-card .sthumb { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; background: #0a0a10; }
-.stage-card .sname { font-size: 13px; font-weight: 700; letter-spacing: 1px; padding: 8px 8px 2px; color: #f0e8d8; }
-.stage-card .suniverse { font-size: 11px; padding: 0 8px 8px; color: #9a90a8; letter-spacing: 0.5px; }
-@media (min-width: 700px) {
-  .stage-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+#screen-stage .stage-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+/* ---- large preview of the highlighted stage ---- */
+#screen-stage .stage-preview-pane {
+  order: -1; /* preview on top in portrait */
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 70%, rgba(139,43,216,0.22) 0%, rgba(13,6,15,0.94) 72%);
+  border-bottom: 2px solid rgba(139,43,216,0.4);
+}
+#screen-stage .stage-preview-media {
+  position: relative;
+  flex: 0 0 auto;
+  height: 24vh;
+  height: 24dvh;
+  overflow: hidden;
+}
+#screen-stage .stage-preview-media img,
+#screen-stage #stage-preview-swatch {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+#screen-stage .stage-preview-info {
+  flex: 0 0 auto;
+  padding: 8px 14px 10px;
+  text-align: left;
+}
+#screen-stage #stage-preview-name {
+  font-size: clamp(18px, 4.6vw, 28px);
+  font-weight: 900; letter-spacing: 2px; line-height: 1.05;
+  color: var(--gold); text-shadow: 0 0 14px rgba(255,177,77,0.45);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+#screen-stage #stage-preview-universe {
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  opacity: 0.65; margin-top: 2px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+#screen-stage #stage-preview-desc {
+  font-size: 13px; line-height: 1.45; opacity: 0.9; margin-top: 4px;
+  display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
+}
+/* ---- the scrollable arena grid (only scroller on the screen) ---- */
+#screen-stage .stage-grid {
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  /* REQUIRED: this grid is a flex item AND a scroll container; with auto
+     rows Chrome sizes the card rows to ~0 and the cards collapse to their
+     borders (measured live 2026-10-21: rows 4px, card content overflowing
+     invisibly). min-content rows size every row to its card. */
+  grid-auto-rows: min-content;
+  gap: 12px;
+  padding: 14px 14px calc(14px + env(safe-area-inset-bottom));
+  align-content: start;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y; /* body is touch-action:none — the grid must scroll */
+  overscroll-behavior: contain;
+  scroll-behavior: smooth;
+}
+#screen-stage .stage-card {
+  border: 2px solid rgba(255,255,255,0.14); border-radius: 10px; overflow: hidden;
+  background: #101018; cursor: pointer; transition: transform 0.08s;
+  /* border-color is deliberately NOT transitioned: the gold selection
+     border must land in the same frame as the tap (measured in a
+     throttled headless run 2026-10-21: a border-color transition
+     could lag the .selected class while the untransitioned glow
+     shadow swapped instantly, desyncing the two signals). */
+  min-height: 0; touch-action: manipulation;
+}
+#screen-stage .stage-card:active { transform: scale(0.97); }
+#screen-stage .stage-card.selected { border-color: #ffd34d; box-shadow: 0 0 14px rgba(255,211,77,0.45); }
+#screen-stage .stage-card.kb-focus { outline: 3px solid #ffd34d; outline-offset: 2px; }
+#screen-stage .stage-card .swatch { width: 100%; aspect-ratio: 16 / 6; }
+#screen-stage .stage-card .sthumb { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; background: #0a0a10; }
+#screen-stage .stage-card .sname { font-size: 13px; font-weight: 700; letter-spacing: 1px; padding: 8px 8px 2px; color: #f0e8d8; }
+#screen-stage .stage-card .suniverse { font-size: 11px; padding: 0 8px 8px; color: #9a90a8; letter-spacing: 0.5px; }
+/* no countdown on the stage screen: drop the (hidden) timer entirely so
+   the CHOOSE YOUR ARENA title gets the full header width */
+#screen-stage .select-timer { display: none; }
+
+/* ---- sticky footer: hint + RANDOM + FIGHT, always on screen ---- */
+#screen-stage #stage-hint {
+  font-size: 14px; opacity: 0.85; flex: 1 1 auto; min-width: 0;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+#screen-stage #random-stage { flex: 0 0 auto; min-height: 48px; }
+#screen-stage #confirm-stage { flex: 0 0 auto; min-height: 56px; font-size: 18px; padding: 14px 28px; }
+
+@media (min-width: 481px) and (max-width: 768px) {
+  #screen-stage .stage-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (min-width: 769px) {
+  #screen-stage .stage-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 @media (min-width: 1100px) {
-  .stage-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); max-width: 1100px; margin: 0 auto; }
+  #screen-stage .stage-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+/* Landscape / wide: grid left, preview right (Tekken side-by-side) */
+@media (min-width: 769px), (orientation: landscape) and (min-height: 500px) {
+  #screen-stage .stage-body { flex-direction: row; }
+  #screen-stage .stage-preview-pane {
+    order: 1; flex: 0 0 42%;
+    border-bottom: none; border-left: 2px solid rgba(139,43,216,0.4);
+  }
+  #screen-stage .stage-preview-media { flex: 1 1 auto; height: auto; }
+  #screen-stage #stage-preview-name { white-space: normal; }
+  #screen-stage #stage-preview-desc { display: block; overflow: visible; }
+}
+/* Short landscape phones: compact chrome, description clamps to 3 lines */
+@media (orientation: landscape) and (max-height: 500px) {
+  #screen-stage .stage-body { flex-direction: row; }
+  #screen-stage .stage-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; padding: 10px; }
+  #screen-stage .stage-preview-pane {
+    order: 1; flex: 0 0 40%;
+    border-bottom: none; border-left: 2px solid rgba(139,43,216,0.4);
+  }
+  #screen-stage .stage-preview-media { flex: 1 1 auto; height: auto; }
+  #screen-stage #stage-preview-name { white-space: normal; font-size: 20px; }
+  #screen-stage .select-header { padding-top: 8px; padding-bottom: 8px; }
+  #screen-stage .select-header h2 { font-size: 18px; }
+  #screen-stage .select-footer { padding: 8px 14px calc(8px + env(safe-area-inset-bottom)); }
+  #screen-stage #stage-preview-desc {
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  #screen-stage #confirm-stage { min-height: 48px; }
 }
 .stage-label {
   margin-top: 4px; font-size: 11px; letter-spacing: 2px; color: #ffd34d;
@@ -543,7 +713,9 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
 #modewin-title.win { color: #ffd76a; }
 #modewin-title.lose { color: #ff6a6a; }
 
-/* ============ WH MAIN MENU (10 sections, 2026-10-22) ============
+/* ============ WH MAIN MENU (10 sections, 2026-10-22, PR #676 rebase) ============
+   Styles the coming-soon placeholder screens' BACK buttons
+   (screen-online / sidegames / collection / daily use .wh-main-menu).
    Tekken-style: dark with purple/gold accents, phone portrait-first,
    thumb-reachable, min 64px touch targets, no overlapping text. */
 .wh-main-menu {
@@ -582,8 +754,3 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
 }
 .wh-placeholder { text-align: center; color: #fff; padding: 40px 20px; }
 .wh-placeholder p { opacity: 0.7; margin: 12px 0 24px; line-height: 1.6; }
-/* Ensure menu content is scrollable on small phones */
-.menu-content {
-  display: flex; flex-direction: column; align-items: center;
-  max-height: 100vh; overflow-y: auto; padding: 20px 0;
-}
