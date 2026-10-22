@@ -36,6 +36,7 @@ import { attiresFor, selectedAttireModel, setAttire, attireLabel } from './attir
 // idle), not at boot. See game/js/lazy.js.
 import { lazy } from './lazy.js';
 import { mark } from './loadperf.js';
+import { SOUL_IDS, MAIN_IDS } from './roster-full.js';
 
 const DEFAULT_STATS = { speed: 2.8, jump: 7.2, power: 1.1, defense: 1.05 };
 const clamp01 = (v) => Math.max(0, Math.min(1, v));
@@ -372,9 +373,11 @@ export function createSelectScreen(deps) {
     const rest = (list) => list.filter(c => !tripo.has(c.id));
     const tiers = [
       { label: 'TRIPO ORIGINALS', fighters: roster.filter(c => tripo.has(c.id)) },
-      { label: 'THE NINE SOULS', fighters: rest(roster.slice(0, 9)) },
-      { label: 'MAIN ROSTER', fighters: rest(roster.slice(9, 16)) },
-      { label: 'BONUS ROSTER', fighters: rest(roster.slice(16)) },
+      // Membership-based (dedup 2026-10-22): positional slices broke when
+      // attire-cards folded out of the roster shifted every index.
+      { label: 'THE NINE SOULS', fighters: rest(roster.filter(c => SOUL_IDS.includes(c.id))) },
+      { label: 'MAIN ROSTER', fighters: rest(roster.filter(c => MAIN_IDS.includes(c.id))) },
+      { label: 'BONUS ROSTER', fighters: rest(roster.filter(c => !SOUL_IDS.includes(c.id) && !MAIN_IDS.includes(c.id))) },
     ].filter(t => t.fighters.length);
     tiers.forEach(({ label, fighters }) => {
       const t = document.createElement('div');

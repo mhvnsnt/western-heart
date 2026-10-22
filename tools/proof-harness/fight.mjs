@@ -22,6 +22,8 @@ page.on('pageerror', e => logs.push(`[pageerror] ${e.message}`));
 if (process.env.ATTIRES) await page.addInitScript((m) => localStorage.setItem('wh_attires_v1', m), process.env.ATTIRES);
 await page.goto(`http://127.0.0.1:${process.env.PORT || 8765}/game/index.html?${q}`, { waitUntil: 'load' });
 await page.waitForTimeout(1500);
+// modes.js loads lazily (game/js/lazy.js): wait for the controller instead of assuming it is up.
+await page.waitForFunction(() => window.__modes, null, { timeout: 60000 });
 await page.evaluate(([a, b]) => { window.__modes.startMode('arcade'); }, [p1, p2]);
 await page.waitForTimeout(500);
 // start fight directly through the mode controller's startFight dep

@@ -35,9 +35,9 @@ const screens = {
   howto:  document.getElementById('screen-howto'),
   select: document.getElementById('screen-select'),
   stage:  document.getElementById('screen-stage'),
+  stageIntro: document.getElementById('screen-stage-intro'),
   result: document.getElementById('screen-result'),
   hud:    document.getElementById('hud'),
-  stage:      document.getElementById('screen-stage'),
   reincarnate: document.getElementById('screen-reincarnate'),
   trader:  document.getElementById('screen-trader'),
   modewin: document.getElementById('screen-modewin'),
@@ -224,7 +224,7 @@ function startFightViaStage(p1, p2, opts = {}) {
   requestAnimationFrame(() => requestAnimationFrame(() => mark('stage-interactive')));
   const hint = document.getElementById('stage-hint');
   const s = getStage(selectedStage);
-  if (hint && s) hint.textContent = `${s.name} — ${s.description}`;
+  if (hint && s) hint.textContent = s.name;
   const btn = document.getElementById('confirm-stage');
   if (btn) btn.disabled = false;
 }
@@ -328,20 +328,71 @@ function buildStageSelect() {
     }
   };
   paint(null); // instant: swatches first, never waits on the atlas
+  // Preview pane + scroll track the selected stage (main 2026-10-21/22); rerun after the
+  // atlas repaint, which recreates the cards.
+  const afterPaint = () => {
+    const cur = getStage(selectedStage);
+    if (cur) updateStagePreview(cur);
+    const sel = grid.querySelector('.stage-card.selected');
+    if (sel) scrollStageCardIntoView(sel);
+  };
+  afterPaint();
   thumbAtlas().then((atlas) => {
     const sc = document.getElementById('screen-stage');
     if (!atlas || !sc || !sc.classList.contains('active')) return;
     grid.innerHTML = '';
     paint(atlas); // upgrade: real thumbs once the single atlas arrives
+    afterPaint();
   });
+}
+/* Bring a stage card into the grid's visible window by writing
+   scrollTop directly. scrollIntoView relies on a smooth-scroll
+   animation (the grid has scroll-behavior:smooth) whose timeline
+   stalls whenever the main thread is busy — measured headless
+   2026-10-21: scrollIntoView left scrollTop at 0 while a direct
+   write scrolled instantly. Direct writes are frame-perfect on
+   real hardware too. */
+function scrollStageCardIntoView(el) {
+  const grid = document.getElementById('stage-grid');
+  if (!grid || !el) return;
+  const gr = grid.getBoundingClientRect(), r = el.getBoundingClientRect();
+  if (r.top < gr.top) grid.scrollTop -= (gr.top - r.top) + 8;
+  else if (r.bottom > gr.bottom) grid.scrollTop += (r.bottom - gr.bottom) + 8;
+}
+/* Tekken pattern: the large preview pane (image + name + description,
+   inside the layout) always tracks the highlighted stage — a card tap,
+   a RANDOM roll, or keyboard focus all drive the same single state. */
+function updateStagePreview(s) {
+  const img = document.getElementById('stage-preview-img');
+  const sw = document.getElementById('stage-preview-swatch');
+  if (img) {
+    img.style.display = '';
+    img.onerror = () => {
+      img.style.display = 'none';
+      if (sw) {
+        sw.hidden = false;
+        sw.style.background = `linear-gradient(135deg, ${s.swatch[0]}, ${s.swatch[1]})`;
+      }
+    };
+    img.src = s.thumb;
+    img.alt = s.name;
+  }
+  if (sw) sw.hidden = true;
+  const nm = document.getElementById('stage-preview-name');
+  if (nm) nm.textContent = s.name;
+  const un = document.getElementById('stage-preview-universe');
+  if (un) un.textContent = s.universe || '';
+  const ds = document.getElementById('stage-preview-desc');
+  if (ds) ds.textContent = s.description || '';
+  const hint = document.getElementById('stage-hint');
+  if (hint) hint.textContent = s.name;
 }
 function selectStageCard(card, s) {
   audio.uiClick();
   document.querySelectorAll('.stage-card').forEach(x => x.classList.remove('selected'));
   card.classList.add('selected');
   selectedStage = s.id;
-  const hint = document.getElementById('stage-hint');
-  if (hint) hint.textContent = `${s.name} — ${s.description}`;
+  updateStagePreview(s);
   const btn = document.getElementById('confirm-stage');
   if (btn) btn.disabled = false;
 }
@@ -354,7 +405,9 @@ function focusStage(i) {
   cards.forEach(x => x.classList.remove('kb-focus'));
   const el = cards[focusedStageIdx];
   el.classList.add('kb-focus');
-  el.scrollIntoView({ block: 'nearest' });
+  scrollStageCardIntoView(el);
+  const s = getStage(el.dataset.id);
+  if (s) updateStagePreview(s);
 }
 document.addEventListener('keydown', (e) => {
   const sc = document.getElementById('screen-stage');
@@ -783,4 +836,8 @@ if (whUiEnabled()) mountWhUi({ game, ui, show, startFight, ROSTER });
    modules during idle (Tekken: stream records while the player reads
    the menu) and stamp the boot->menu timing mark on first paint. */
 warmIdle();
+// QA hooks (window.__modes) and the first mode tap expect the controller soon after boot: build it on
+// the same idle lane lazy.warmIdle() uses, so it never competes with first paint.
+((typeof window !== 'undefined' && window.requestIdleCallback) ? window.requestIdleCallback.bind(window)
+  : (fn) => setTimeout(fn, 1500))(() => { getModes().catch(() => {}); });
 requestAnimationFrame(() => requestAnimationFrame(() => mark('menu-interactive')));
