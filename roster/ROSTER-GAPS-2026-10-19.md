@@ -1,5 +1,22 @@
 # WESTERN HEART — ROSTER GAPS AUDIT (2026-10-19)
 
+> ## 🚨 STATUS CORRECTION 2026-10-22 — READ THIS FIRST
+> The owner corrected this audit on 2026-10-22 (verbatim): "Everyone else the
+> registry listed as 'missing Tripo' ALREADY HAS models — they're in the repo
+> but not wired up." The Q1 table below and the "wiring pending" list are STALE
+> and were wrong. The 2026-10-22 wire-up pass wired every unwired on-disk model
+> (MODEL_URLS keys + attire ladders; audit script `tools/roster/wire-audit.py`;
+> wired count 71 → 87 of 131 GLBs under `roster/*/attires/`).
+> **Authoritative model queue (owner 2026-10-22, supersedes this doc): the ONLY
+> fighters that still need models are Dio, Panda, Kuma, Jin (Eastern Mind
+> version — NOT Jin Kazama), Bruno, Scimitar, Negativo, Yukihyo, Chordz, Ogre,
+> Law, Gon.** (Dio: owner-made pending. Gon: user-approved design ready for
+> modeling. Kuma/Panda/Ogre/Law/Gon: WH names + bios needed from the user —
+> never invent.) Mokujin = the training dummy, no model needed. Full queue in
+> `roster/TRIPO-REGISTRY.md` ("Owner-authoritative model queue"). Everything
+> below the banner is the 2026-10-19 historical record, kept for provenance —
+> do not treat its "missing" claims as current.
+
 Owner's three questions (2026-10-19 ~00:42 CDT), answered from the actual repo state:
 `roster/TRIPO-REGISTRY.md`, `CANON.md`, `ROSTER.md`, `roster/*/ATTIRE-SLOTS.md`,
 `game/assets/models/` listing — all read from `origin/main` via the GitHub API on 2026-10-19.
@@ -40,9 +57,29 @@ recorded in flight. Characters with pulls already in flight are marked separatel
 | 19 | **CHORDZ** | **NO SOURCE FOUND** — nothing on disk; disk too tight for a full T7 pull | unknown |
 | 20 | **VAIN** | Tripo GLB exists locally (`~/workspace/tripo-downloads/`, 19MB, by marz6kdabest) but **NOT wired, NOT recorded** in the registry | Bass Armstrong |
 
-### ✅ CORRECTION (owner 2026-10-19 — supersedes this audit's separation)
+### ✅ CORRECTION 2026-10-22 — Q1 table row-by-row (owner: "they're in the repo but not wired up")
 
-KIKO TANAKA and RAVE are the SAME character in Western Heart. Owner's words: "Kiko is rave in this game and Kiko in others, Rave is his Raver personality from our canon." — "the ghost tanaka is Rave." The robe pair (`game/assets/models/kiko-tanaka.glb` hooded/robed, `kiko-tanaka_alt1.glb` unrobed/shrouded face) are RAVE's models: A1 = hooded default, A2 = the "ghost Tanaka" Raver personality, A3+ = `rave.glb` (Lei Wulong in-game base) ladders back. His bio lives as "KIKO TANAKA — The Painted Soul" in CANON.md.
+| # | Character | Corrected state 2026-10-22 |
+|---|---|---|
+| 1 | **DEMONIO** | Had Tripo models all along — wired (ladder: base, a1, winged, human, bloodline-ember). |
+| 2 | **DIABLO** | Had Tripo models all along — wired (ladder: `diablo`, `diablo-attire2`). |
+| 3 | **SKULL** | Had Tripo model all along — wired (`skull` → `roster/skull/attires/attire1/model-rigged.glb`). |
+| 4 | **SAM-UR-A1** | Had Tripo model all along — wired (`sam-ur-a1` → `roster/sam-ur-a1/attires/attire1/model-rigged.glb`). |
+| 5 | **KINPO** | Had Tripo models all along — wired; 2026-10-22 added Attire 2 "Goth Sport" to her ladder. |
+| 6 | **BURGER** | Had Tripo models all along — 7 attires wired (ladder `burger` A1–A7). |
+| 7 | **SCIMITAR** | Owner queue — needs model (legacy `scimitar-rigged.glb` key exists; owner declared model still needed). |
+| 8 | **MICHIKO** | Had model all along — wired (`michiko` → `game/assets/models/michiko.glb`). |
+| 9 | **TORCH** | Had Tripo models all along — wired (ladder: `torch-tripo-a1` Valkyrie of Flame, `torch-tripo-a2` Red Demon, Anna base back). Attire 3 "Bald eagle" archived original pending rig (`roster/torch/attires/attire3/source/`, not wired — unrigged). |
+| 10 | **DIO** | Owner queue — needs model, owner-made pending (legacy `dio.glb` key exists; owner declared model still needed). |
+| 11 | **BRUNO** | Owner queue — needs model (legacy `bruno.glb` key exists; owner declared model still needed). |
+| 12 | **N3GΔTIV0** | Owner queue — needs model (legacy `n3g4tiv0.glb` key exists; owner declared model still needed). |
+| 13 | **DXMMII** | Had Tripo model all along — wired (ladder `dxmmii-patchwork`: Tripo default, Patchwork DJ, Blockhead). |
+| 15 | **DOC FRANK** | Had Tripo models all along — wired (9-key ladder `docfrank`, Tripo attires 1–4 forefront). |
+| 16 | **JIN** (Kazama) | "Bloodline Ember" reskin wired 2026-10-22 (`jin-bloodline-ember`, Phantom's ladder). The EASTERN MIND Jin is owner queue — needs model. |
+| 17 | **YUKIHYŌ** | Owner queue — needs model (legacy `yukihyo.glb` key exists; owner declared model still needed). |
+| 18 | **SLICE** | Had Tripo model all along — wired (ladder: owner Tripo A1 default, Dragunov build A2). |
+| 19 | **CHORDZ** | Owner queue — needs model. No key, no file. |
+| 20 | **VAIN** | Had Tripo models all along — wired (`vainabel-attire2/3/4` keys + ladder; Attire 1 Tripo not on disk). No select card yet — owner roster decision. |
 
 ### ✅ CORRECTION (owner 2026-10-19 — supersedes this audit's separation)
 
@@ -50,13 +87,14 @@ KIKO TANAKA and RAVE are the SAME character in Western Heart. Owner's words: "Ki
 
 ### Pulled already — wiring/rigging in flight (NOT "needs a model")
 
-- **NIGHTWOLF** — Tripo pulled (`nightwolf-tripo.glb`); wiring pending.
-- **PHANTOM** — Tripo pulled (`phantom-tripo.glb`); wiring pending.
-- **SUN RĀ** — Tripo pulled (`spiky_sun_creature_3d_model.glb`); rig + fight-video lane in flight.
-- **KEVIN** (replacing Baek) — Tripo pulled (`kevin-tripo.glb`); PR #278 open.
-- **STAR** — Tripo pulled (`red_latex_cosplay_3d_model.glb`); 4-attire build lane in flight.
-- **KING TYRANT** — Attires 1/2/3 pulled; wiring lane in flight.
-- **SILVERTONGUE** — Tripo pulled (`silvertongue-tripo.glb`); reserved for Slot 1, wiring pending. (Current Slot 1 = "Spy Debut" Creation Suite build.)
+> ✅ CORRECTION 2026-10-22: all of these are now WIRED (wire-up pass):
+> - **NIGHTWOLF** — ✅ WIRED 2026-10-22: `nightwolf-attire1` key + `ATTIRE_VARIANTS['nightwolf']` ladder (Tripo "tribal warrior" default, base ladders back).
+> - **PHANTOM** — ✅ was already wired (Tripo A1); 2026-10-22 added Jin Kazama "Bloodline Ember" (`jin-bloodline-ember`) to Phantom's ladder back slot.
+> - **KEVIN** (replacing Baek) — ✅ WIRED 2026-10-22: `kevin-tripo` key (`roster/baek/attires/attire1/model.glb`) + ladder Slot 1 default. Unrigged static — auto-rig queued.
+> - **STAR** — ✅ WIRED 2026-10-22: `star-attire1/2/3/5` keys + `ATTIRE_VARIANTS['star']` ladder (Tripo A1 Red Latex default, colorways, A5 rated-M improved build, Classic ladders back).
+> - **KING TYRANT** — ✅ WIRED 2026-10-22: `king-tyrant-attire1/2/3/4` keys + ladder (all four Tripo originals, base ladders back).
+> - **SILVERTONGUE** — ✅ WIRED 2026-10-22: `silvertongue`, `silvertongue-spy-debut`, `silvertongue-attire3`, `silvertongue-noir-gala` keys + `ATTIRE_VARIANTS['silvertongue']` ladder (Slots 1–4 per slot map). No select card yet — owner roster decision.
+> - **SUN RĀ** — Tripo pulled (`spiky_sun_creature_3d_model.glb`); rig + fight-video lane still in flight (no on-disk GLB under `roster/*/attires/` yet).
 
 ### Tripo-attached and done (for reference)
 

@@ -48,11 +48,11 @@ const OVERRIDES = parseExportedObject(join(ROOT, 'game/js/attire-customizations.
 for (const [k, u] of Object.entries(OVERRIDES || {})) if (u) MODEL_URLS[k] = u;
 
 /* Audit-owned-elsewhere gaps (docs/FIGHTER-COMPLETENESS-AUDIT-2026-10-21.md):
- * doc-frank-* = the Doc Frank lane's family rework; ryuji = stale pre-rename
- * entry owned by the CornerStone lane. */
+ * ryuji = stale pre-rename entry owned by the CornerStone lane.
+ * (doc-frank-wowomomo/hood removed 2026-10-22: the dedup lane folded those
+ * standalone cards into the docfrank ladder, so they are no longer roster ids
+ * and cannot be moveset gaps.) */
 const KNOWN_GAPS = {
-  'doc-frank-wowomomo': 'file exists, not in MOVESET_IDS (Doc Frank lane)',
-  'doc-frank-hood': 'file exists, not in MOVESET_IDS (Doc Frank lane)',
   'ryuji': 'file exists, not in MOVESET_IDS (CornerStone lane)',
 };
 
