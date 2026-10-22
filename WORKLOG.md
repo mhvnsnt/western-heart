@@ -1933,3 +1933,22 @@ on main @ 2af4328 found the whole loop dead behind two 1-line defects in
 - Note: open PR #676 (worker36/menu-fix, mergeable_state=dirty) attempted a
   full rewrite for the same symptoms — superseded; worker 36 should
   close/rebase it.
+
+## 2026-10-22 ~15:45 CDT — worker 50: rig-guard rebuild (picked up Claude's dropped work)
+
+Claude's anti-clobber guard rebuild was unpushed (existed only on the user's
+machine). Rebuilt from the task description and PR'd (branch `w50/rig-guard`):
+- `tools/rig-guard/rig_guard.py` (~176 lines) — CI guard FAILS on ANY
+  MODEL_URLS key removal, not just skinned ones. Escape path: `## Model
+  removals` PR-body section (keys in backticks) or the
+  `owner-approved-model-removal` label.
+- `tools/rig-guard/test_rig_guard.py` — 11 unit tests, all green
+  (removed→fail, added→pass, escape→pass).
+- `.github/workflows/game-checks.yml` — two jobs: `rig-guard` (self-test +
+  key-removal check on sparse checkout) and `game-unit-tests`
+  (`test/*.test.mjs` via node on a sparse checkout).
+- Verified against real `game/js/assets.js` at base: 149 keys extracted;
+  simulated `phantom` removal flagged; addition + escape paths pass.
+- Distinct from clobber-guard / deletion-guard / no-deletion-guard /
+  instruction-gate: no duplication, no edits to existing checks.
+- Full log: `docs/decisions/2026-10-22-rig-guard-rebuild-w50.md`.
