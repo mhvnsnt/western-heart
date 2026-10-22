@@ -2068,3 +2068,22 @@ Files: create-fighter `index.html`/`css`/`js/app.js`/`js/tools.js`(new)/
 On-main files NOT touched: worker 37's `js/creation-flow.js` + `js/art.js`
 + `customization/templates/body-templates.json`; worker 33's
 `PARTS-REGISTRY.json`.
+
+## 2026-10-22 ~16:00 CDT — worker 50: Kinpo A1 rig repoint (config-only)
+
+- Repointed `kinpo` + `kinpo-attire1` MODEL_URLS keys in `game/js/assets.js`
+  from the broken k-NN `model-rigged.glb` to the working tripo-intake rig
+  `roster/kinpo/attires/attire1/model-intake.glb` (GameRig, facing +X,
+  validate PASS). No re-rigging, no model file changes.
+- Fight-check: target is a valid loadable GLB 2.0 (30 MB, 1 mesh, 1 skin,
+  75 nodes, fully skinned); `node --check` clean; new rig-guard reports
+  zero key removals (149 keys both sides); `attires.js` ladder keys
+  unchanged (they reference MODEL_URLS keys, not paths).
+- Kept `kinpo-intake-demo` (same file, comment updated) — key removal would
+  trip the rig-guard.
+- PHANTOM BLOCKED: no working `model-intake.glb` exists for phantom on main
+  (only kinpo has one); refused to point phantom at kinpo's file. Needs a
+  real tripo-intake re-rig first — flagged to coordinator, noted in
+  `docs/owner-directives.md`.
+- Full log: `docs/decisions/2026-10-22-kinpo-repoint-w50.md` (branch
+  `w50/kinpo-repoint`).

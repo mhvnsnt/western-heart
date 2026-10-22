@@ -321,3 +321,22 @@ Wire it up from the teardowns (Def Jam BLAZIN' two-gate design: meter full + opp
 
 ## Protection rule (user decision 2026-10-22, permanent)
 Intro sequences and win taunts are never to be replaced. New systems layer on top or beside, never over.
+
+## Rig repoint notes (2026-10-22, worker 50)
+
+- **KINPO A1 (done):** `kinpo` and `kinpo-attire1` MODEL_URLS keys repointed
+  from the broken k-NN `model-rigged.glb` to the working tripo-intake rig
+  `roster/kinpo/attires/attire1/model-intake.glb` (Blender 4.0.2 + GameRig,
+  facing +X measured, validate PASS — proof:
+  `docs/proof/muse-2026-10-21/tripo-intake/kinpo-attire1-20261022-044848/`).
+  Config-only: no re-rig, no model file changes. Fight-check: the target is
+  a valid GLB 2.0 (29,960,676 bytes, 1 mesh, 1 skin, 75 nodes, fully
+  skinned). The `kinpo-intake-demo` key already pointed at the intake rig
+  and was kept — removing a key would trip the rig-guard.
+- **PHANTOM (BLOCKED — needs a real re-rig, not config):** no working intake
+  rig exists on main. `roster/phantom/attires/attire1/` holds only `model.glb`
+  (unrigged static) and `model-rigged.glb` (broken); there is no
+  `model-intake.glb` for phantom anywhere in the repo (the only one is
+  kinpo's). Repointing phantom's key at kinpo's file would ship the wrong
+  fighter — refused. The tripo-intake lane must produce a phantom intake rig
+  first; the config repoint is a one-line follow-up once it lands.
