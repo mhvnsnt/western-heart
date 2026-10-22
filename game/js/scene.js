@@ -52,6 +52,15 @@ export class Arena {
     }, false);
 
     this._shakeT = 0; this._shakeMag = 0; this._lookY = 1.0;
+    /* HEART AND MIND WITHIN (worker 20, 2026-10-22): camera override hook.
+       When set to a function, update() calls camOverride(dt, camera,
+       shakeOffset) INSTEAD of the versus fight camera — the 3D brawler
+       drives its own third-person camera through this. Null = classic. */
+    this.camOverride = null;
+    // Tekken CameraRig state (teardown/tekken3/tools/tekken3recompiled/
+    // native/src/camera.cpp — CameraRig::reset(0)): smoothed midpoint of the
+    // two fighters and smoothed fighter span. See update() for the port.
+    this._camCenterX = 0; this._camSpan = 5.0;
     this._stage = null;      // built stage { group, update, def, skyTex, fog }
     this._stageToken = 0;    // guards against out-of-order async builds
     this.setStage(stageId);
@@ -85,23 +94,61 @@ export class Arena {
 
   shake(mag = 0.25, dur = 0.18) { this._shakeMag = Math.max(this._shakeMag, mag); this._shakeT = Math.max(this._shakeT, dur); }
 
+  /* Per-frame impact shake offsets (shared by the fight camera and any
+     camOverride driver, e.g. the brawler's third-person camera). */
+  shakeOffset(dt) {
+    let ox = 0, oy = 0;
+    if (this._shakeT > 0) {
+      this._shakeT -= dt;
+      const k = Math.max(0, this._shakeT) * this._shakeMag * 14;
+      ox = (Math.random() - 0.5) * k; oy = (Math.random() - 0.5) * k;
+      if (this._shakeT <= 0) this._shakeMag = 0;
+    }
+    return { ox, oy };
+  }
+
   update(dt, fighterA, fighterB) {
     const t = performance.now() * 0.001;
     if (this._stage) this._stage.update(dt, t, fighterA, fighterB);
 
-    // dynamic fighting camera
+    // Brawler camera override (Heart and Mind Within): the mode drives the
+    // camera itself; shake offsets are handed over so impacts still kick.
+    if (this.camOverride) {
+      this.camOverride(dt, this.camera, this.shakeOffset(dt));
+      return;
+    }
+
+    // dynamic fighting camera — Tekken CameraRig port.
+    // Source: teardown/tekken3/tools/tekken3recompiled/native/src/camera.cpp
+    // (CameraRig::update + CameraRig::frame). Tekken keeps BOTH fighters in
+    // frame by (1) tracking the full midpoint between the fighters and
+    // (2) zooming so the fighter span (+ padding) always fits the horizontal
+    // frustum. Vertical FOV is invariant; horizontal FOV derives from the
+    // live aspect ratio, so portrait phones zoom out instead of cropping
+    // fighters off the sides. Both center and span use Tekken's exponential
+    // smoothing: k = 1 - exp(-dt * 7.5).
     // Stream 3: stages may declare camDist (cage interiors, backstage rooms)
     // to pull the camera inside their geometry, and camAngle (degrees) to
     // orbit the camera around the target for cluttered stages.
     const camScale = ((this._stage && this._stage.def.camDist) || 7) / 7;
     const camAng = (((this._stage && this._stage.def.camAngle) || 0) * Math.PI) / 180;
+    // tan(horizontal_fov / 2) = tan(vertical_fov / 2) * aspect — three.js
+    // PerspectiveCamera already keeps vertical FOV invariant, same as Tekken.
+    const tanHalfH = Math.tan(THREE.MathUtils.degToRad(this.camera.fov / 2)) *
+      Math.max(this.camera.aspect || 1, 0.2);
     let baseX = Math.sin(camAng) * 7 * camScale, baseZ = Math.cos(camAng) * 7 * camScale;
     let baseY = 1.8, lookY = 1.0;
     if (fighterA && fighterB) {
-      const mid = (fighterA.root.position.x + fighterB.root.position.x) / 2;
-      const spread = Math.abs(fighterA.root.position.x - fighterB.root.position.x);
-      baseZ = Math.max(5.6, Math.min(12, 5.4 + spread * 0.85)) * camScale;
-      baseX = mid * 0.6;
+      const p1x = fighterA.root.position.x, p2x = fighterB.root.position.x;
+      const desiredCenter = (p1x + p2x) * 0.5;                 // Tekken
+      const desiredSpan = Math.max(Math.abs(p2x - p1x), 4.5);  // Tekken
+      const k = 1 - Math.exp(-Math.max(dt, 0) * 7.5);          // Tekken
+      this._camCenterX += (desiredCenter - this._camCenterX) * k;
+      this._camSpan += (desiredSpan - this._camSpan) * k;
+      // Tekken: fit_distance = (span + 3.0) / (2 * tan(hfov/2));
+      //         distance = max(10.5, fit_distance)
+      baseZ = Math.max(10.5, (this._camSpan + 3.0) / (2 * tanHalfH)) * camScale;
+      baseX = this._camCenterX;
       const maxY = Math.max(fighterA.root.position.y, fighterB.root.position.y);
       baseY = 1.75 + maxY * 0.45;
       lookY = 1.0 + maxY * 0.25;
@@ -117,18 +164,15 @@ export class Arena {
     if (def && def.camPos) { baseX = def.camPos[0]; baseY = def.camPos[1]; baseZ = def.camPos[2]; }
     let lookX = 0, lookZ = 0;
     if (def && def.camTgt) { lookX = def.camTgt[0]; lookY = def.camTgt[1]; lookZ = def.camTgt[2]; }
-    this.camera.position.x += (baseX - this.camera.position.x) * Math.min(1, dt * 4);
-    this.camera.position.z += (baseZ - this.camera.position.z) * Math.min(1, dt * 3);
+    // Tekken sets the eye directly from the smoothed rig state each frame
+    // (the smoothing already happened above); keep a soft lerp on height so
+    // jump arcs don't pop the camera vertically.
+    this.camera.position.x = baseX;
+    this.camera.position.z = baseZ;
     this.camera.position.y += (baseY - this.camera.position.y) * Math.min(1, dt * 4);
     this._lookY += (lookY - this._lookY) * Math.min(1, dt * 4);
 
-    let ox = 0, oy = 0;
-    if (this._shakeT > 0) {
-      this._shakeT -= dt;
-      const k = Math.max(0, this._shakeT) * this._shakeMag * 14;
-      ox = (Math.random() - 0.5) * k; oy = (Math.random() - 0.5) * k;
-      if (this._shakeT <= 0) this._shakeMag = 0;
-    }
+    let { ox, oy } = this.shakeOffset(dt);
     this.camera.position.x += ox; this.camera.position.y += oy;
     if (this._stage && this._stage.def && this._stage.def.camTgt) {
       const t = this._stage.def.camTgt;

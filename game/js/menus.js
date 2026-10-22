@@ -132,7 +132,10 @@ export function hideVs() {
 /* ---------------- Pause ---------------- */
 export function pauseGame() {
   const g = window.__game;
-  if (!g || !g.running || g.paused) return;
+  if (!g || g.paused) return;
+  // Brawler (worker 20): the descent pauses too (game.running is false
+  // while the brawler owns the sim).
+  if (!g.running && !g.brawler) return;
   g.pause(true);
   const o = document.getElementById('wh-pause');
   if (o) o.classList.add('show');
@@ -142,7 +145,7 @@ export function resumeGame() {
   const g = window.__game;
   const o = document.getElementById('wh-pause');
   if (o) o.classList.remove('show');
-  if (g && g.running) g.pause(false);
+  if (g && (g.running || g.brawler)) g.pause(false);
   audio.uiClick && audio.uiClick();
 }
 export function quitToMenu() {
@@ -375,7 +378,7 @@ function buildOverlays() {
       closeOptions(); closeRecords();
       // If we came from pause, go back to pause.
       const g = window.__game;
-      if (g && g.running && g.paused && !document.getElementById('wh-pause').classList.contains('show')) {
+      if (g && (g.running || g.brawler) && g.paused && !document.getElementById('wh-pause').classList.contains('show')) {
         document.getElementById('wh-pause').classList.add('show');
       }
     }));

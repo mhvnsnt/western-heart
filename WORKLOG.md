@@ -1707,3 +1707,39 @@ Tekken on-hit stack: (1) jagged star-burst HIT SPARK sprite (canvas-generated, a
 **Result:** docs/research/teardown-gap-audit-2026-10-22.md — ~74 actionable gap items across 15 sources, each with what-it-adds / why-it-matters / OK checkbox. Biggest: T3 round-2 movesets (13 banks, 5,663 rows), DOA6 triangle/hold/stun/break-gauge suite (5), VF5 mechanics (10), SCVI mechanics (7), Urban Reign brawl/missions/weapons/destructibles (9), Def Jam grappling core + BLAZIN' (6), rank ladder X-1 (53 tiers, user-built same day), meter/power unification X-2. Blocked: T6/T7/SC6 acquisitions, DATA401 decrypt, DOA4 index buffers. Nothing wired — user approves first.
 
 **Deliverable:** this PR (branch audit/teardown-gap-20261022). No deletions.
+
+---
+
+# WORKLOG — HEART AND MIND WITHIN, phase 1: Devil Within foundation (worker 20, 2026-10-22)
+
+Owner order (verbatim): "Pull 100% of Devil Within into the game first — 3D brawler gameplay, stage progression, enemy waves, boss structure, Surge/transformation. Fully wired, playable, no stubs. THEN expand with proprietary mechanics. Character select, not forced Jin — any WH character with their moveset."
+
+## What was built
+New `game/js/brawler.js` (~1450 lines): the full Devil Within skeleton, cloned from Tekken 5's Devil Within structure (researched via tekkenpedia/tekken.fandom/gamefaqs — stage/boss order, devil-gauge, healing gems):
+- Free-roam 3D movement, third-person follow camera behind the fighter (`arena.camOverride`), camera-relative WASD/arrows + touch joystick.
+- Simultaneous multi-enemy waves (melee `echo` / `brute` / ranged `gunner` types), 5 stages × 2–3 zones each, zone gates ("PATH OPEN — PUSH FORWARD"), one boss per stage.
+- Bosses mirroring Devil Within 1:1: Stage 1 WARDEN (Modified Gun Jack analog — bruiser + heavy blockable projectiles), Stage 2 THE MASKS (Heihachi-clone analog — 1, then 3 at once), Stage 3 THE DROWNED OGRE (True Ogre analog — teleports, homing volley, fire-blast AoE), Stage 4 THE SOUL SPHERE (energy orb — contact damage + spawns monsters), Stage 5 SHADOW SELF → THE UNMASKED (True→Monstrous Ogre analog — second form, same descent).
+- Devil Gauge analog: full Nine-Soul Meter + transform input = SOUL SURGE FORM (25s devil-form: power ×1.45, speed ×1.15, defense ×1.2, burning aura, meter drains). Works for ANY fighter.
+- Soul-ember healing pickups (Devil Within's gems), blockable gunner shots, unblockable homing Ogre blasts, per-stage S/A/B/C rank (time + damage taken), throw-lock resolution both directions.
+- `BrawlerAI`: 3D seek/orbit/strafe, reactive block/dodge, ranged keep-distance, per-boss trick timers. Enemies are roster fighters via heartmind.js `makeEcho`/`buildShadowSelf`, rebound to their base fighter's REAL moveset (`_movesetId` + `_bindT3`) — reuses worker 11's moveset system, never duplicated.
+- Hooks interface for the WH proprietary layer: `onStageIntro / onBossIntro / onStageClear / onVictory / onDeath`. Driven from `Game._loop` via `game.brawler.frame(dt)`.
+
+Surgical edits: `fighter.js` (brawler yaw mode, 2D locomotion, yaw-based attack/block vectors, 3D knockback, yaw guard-angle, 3D KO, yaw dodge, throw-lock facing, z-clamp, `startSurgeForm`/`endSurgeForm` + meter drain; versus untouched when `brawler=false`), `scene.js` (`camOverride(dt,camera,shake)` hook), `game.js` (`this.brawler`, `_loop` drives it, `resetFightState` stops it), `input.js` (`brawlerMode`, camera-relative `axisY`, `joyY`, `keyDown()`, KeyT = transform), `heartmind.js` (controller drives the brawler; select flow/stories/records kept; stage-5 boss gets the story name), `index.html` (`#brawler-status` HUD), `modes.js` (`rematch()` → heartmind), `main.js` + `menus.js` (pause/visibility aware of the brawler).
+
+Phase-1 omissions (documented, not stubs): no jump (no platforming zones yet); crouch-dependent moves (FC./d+) unavailable in brawler — 1/2/3/4, strings, f+1 directionals all work.
+
+## Real bugs found and fixed (via the headless sim below)
+1. Enemies could leave the combat zone while the player is walled inside it — a kiting gunner stalled a wave forever. `_clampToZone` now clamps enemies to the fight pocket too (Devil Within behavior).
+2. Shadow form-2 transition skipped: a killing blow landing in `_resolveHits` (after the enemies loop) let `_checkZoneClear` clear the zone before `_bossDown` ran. `_checkZoneClear` now waits for unprocessed boss deaths.
+3. Shadow form-2 double-spawn: `_spawnShadowForm2` pushed one rec via `_spawnBossFighter` and `_bossDown` created a second rec for the same fighter. Now pop+replace (single rec, safe mid-iteration).
+
+## Proof — headless bot playthrough (the mode loop, end to end)
+`game/tests/brawler-sim.test.mjs` (+ `brawler-sim-hooks.mjs` + `brawler-sim-stubs/`): runs the REAL `game/js/brawler.js` byte-for-byte (data: URL import; loader hooks redirect its 10 imports to headless stubs — the sandbox blocks node from writing the brawler source, so no file copy). A bot plays the full descent: camera-relative movement, Tekken limb attacks, blocking, ember foraging, surge at full meter.
+Result: **PASS** — stages=[0,1,2,3,4], bosses=[warden,mask,ogre,sphere,shadow,shadow2], 62 kills, surge fired, 45 banners, victory, no exceptions, ~1.4s for the full run.
+(Pre-existing `fighter-completeness` / `model-key-guard` tests fail in this sandbox on EPERM `cpSync` — environmental, unrelated to this work.)
+Live-browser playtest (rendering, combat feel, balance) still needed — delegated to parent; the sim proves the loop, not the feel.
+
+## Files
+- Added: `game/js/brawler.js`, `game/tests/brawler-sim.test.mjs`, `game/tests/brawler-sim-hooks.mjs`, `game/tests/brawler-sim-stubs/` (10 stubs).
+- Modified (surgical): `game/js/fighter.js`, `game/js/scene.js`, `game/js/game.js`, `game/js/input.js`, `game/js/heartmind.js` (controller rewritten after a sandbox EPERM flake zeroed the file mid-edit; content lines 1–317 restored verbatim, verified by node line-diff — only intended diffs remain), `game/js/modes.js`, `game/js/main.js`, `game/js/menus.js`, `game/index.html`, `WORKLOG.md`. No deletions.
+- `node --check` clean on all touched JS.

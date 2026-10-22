@@ -39,7 +39,19 @@ export class InputManager {
     this._lastPunchT = 0;
     this._lastKickT = 0;
     this.enabled = false;
+    /* ---- HEART AND MIND WITHIN brawler (worker 20, 2026-10-22) ----
+       brawlerMode: W/S (+ up/down arrows, joystick Y) drive camera-
+       relative forward/back movement (axisY, +1 = forward) instead of
+       the versus tap-vs-hold jump/crouch/sidestep semantics. joyY is the
+       touch joystick's vertical deflection (-1..1). Versus is untouched
+       when brawlerMode=false. */
+    this.brawlerMode = false;
+    this.axisY = 0;
+    this.joyY = 0;
   }
+
+  /* Raw key state (brawler movement reads W/S/A/D directly). */
+  keyDown(code) { return !!this._keys[code]; }
 
   init() {
     this._bindKeyboard();
@@ -50,7 +62,8 @@ export class InputManager {
   enable(on) { this.enabled = on; if (!on) this.reset(); }
 
   reset() {
-    this.axisX = 0; this.up = false; this.down = false; this.held.block = false; this._queue.length = 0;
+    this.axisX = 0; this.axisY = 0; this.joyY = 0;
+    this.up = false; this.down = false; this.held.block = false; this._queue.length = 0;
     this._keys = {};
     this._lastPunchT = 0; this._lastKickT = 0;
     this._lastT = { '1': 0, '2': 0, '3': 0, '4': 0 };
@@ -111,6 +124,7 @@ export class InputManager {
      (up/down set true, cleared on release). */
   _udPress(dir) {
     // dir: 'up' | 'down'
+    if (this.brawlerMode) return; // brawler: W/S + stick-Y are movement, not tap/hold
     if (this._udDir) return; // already tracking
     this._udDir = dir;
     this._udT = performance.now();
@@ -141,12 +155,17 @@ export class InputManager {
       switch (e.code) {
         case 'KeyA': case 'ArrowLeft': this.axisX = -1; break;
         case 'KeyD': case 'ArrowRight': this.axisX = 1; break;
-        case 'KeyW': case 'ArrowUp': this._udPress('up'); break;
-        case 'KeyS': case 'ArrowDown': this._udPress('down'); break;
+        case 'KeyW': case 'ArrowUp':
+          if (this.brawlerMode) { this.axisY = 1; break; }
+          this._udPress('up'); break;
+        case 'KeyS': case 'ArrowDown':
+          if (this.brawlerMode) { this.axisY = -1; break; }
+          this._udPress('down'); break;
         case 'KeyJ': this._strike('punch'); break;
         case 'KeyK': this._strike('kick'); break;
         case 'KeyU': this._push('grab'); break;
         case 'KeyL': this._push('surge'); break;
+        case 'KeyT': this._push('transform'); break; // brawler: Soul Surge form
         case 'Digit1': this._tekken('1'); break;
         case 'Digit2': this._tekken('2'); break;
         case 'Digit3': this._tekken('3'); break;
@@ -160,7 +179,15 @@ export class InputManager {
       switch (e.code) {
         case 'KeyA': case 'ArrowLeft': if (this.axisX < 0) this.axisX = this._keys['KeyD'] ? 1 : 0; break;
         case 'KeyD': case 'ArrowRight': if (this.axisX > 0) this.axisX = this._keys['KeyA'] ? -1 : 0; break;
-        case 'KeyW': case 'ArrowUp': case 'KeyS': case 'ArrowDown': this._udRelease(); break;
+        case 'KeyW': case 'ArrowUp': case 'KeyS': case 'ArrowDown':
+          if (this.brawlerMode) {
+            // recompute axisY from whichever key is still held
+            const up = this._keys['KeyW'] || this._keys['ArrowUp'];
+            const dn = this._keys['KeyS'] || this._keys['ArrowDown'];
+            this.axisY = up ? 1 : dn ? -1 : 0;
+            break;
+          }
+          this._udRelease(); break;
         case 'Space': this.held.block = false; break;
       }
     });
@@ -191,15 +218,19 @@ export class InputManager {
       knob.style.transform = `translate(${kx}px, ${ky}px)`;
       const nx = (Math.cos(ang) * clamped) / maxR;
       this.axisX = Math.abs(nx) > 0.25 ? Math.max(-1, Math.min(1, nx)) : 0;
-      // Tekken tap-vs-hold: tap u/d = sidestep, hold = jump/crouch.
+      // Brawler: the stick's Y deflection drives forward/back movement
+      // directly (camera-relative); versus keeps tap-vs-hold semantics.
       const ny = (Math.sin(ang) * clamped) / maxR;
+      this.joyY = Math.abs(ny) > 0.25 ? Math.max(-1, Math.min(1, -ny)) : 0;
+      if (this.brawlerMode) return;
+      // Tekken tap-vs-hold: tap u/d = sidestep, hold = jump/crouch.
       if (ny < -0.55) this._udPress('up');
       else if (ny > 0.55) this._udPress('down');
       else if (this._udDir && !this._udHeld) this._udRelease(); // left the vertical zone: count the tap
     };
     const end = () => {
       this._joyActive = false; this._joyId = null;
-      this.axisX = 0;
+      this.axisX = 0; this.joyY = 0;
       this._udRelease(); // resolve any pending tap/hold
       this._resetJoyKnob();
     };

@@ -291,6 +291,20 @@ export class Fighter {
     // the victim may break with the matching input (see tryThrowBreak).
     this.lockT = 0; this.lockMove = null; this.lockPartner = null;
 
+    /* ---- HEART AND MIND WITHIN: 3D brawler mode (worker 20, 2026-10-22) ----
+       When brawler=true, the fighter runs in free-3D: `yaw` (world-space
+       radians) drives the visual facing (the smooth _faceY turn in _animate
+       eases toward it), movement uses vx+vz, and knockback/guard resolve in
+       3D. Versus logic is untouched when brawler=false. */
+    this.brawler = false;
+    this.yaw = 0;
+    // Soul Surge form: the Devil Within devil-form analog. Timed powered
+    // state (stat boosts + aura), entered at full meter via the transform
+    // input in brawler mode; drains meter while active.
+    this.surgeForm = false;
+    this._surgeT = 0;
+    this._surgeBaseStats = null;
+
     // smoothed lean (body english)
     this._lean = { x: 0, z: 0 };
     this._leanT = { x: 0, z: 0 };
@@ -457,6 +471,34 @@ export class Fighter {
   }
   canTransform(direction='up') {
     return !!(this._resolveTransform(direction) && this.canAct());
+  }
+
+  /* SOUL SURGE FORM — the Devil Within devil-form analog for the brawler.
+     Full nine-soul meter + transform input: a TIMED powered state with no
+     model swap — the fighter keeps their own moveset and model, boosted
+     stats, and their surge aura burning for the duration. Any WH character
+     can surge (character select, not forced Jin). Manual re-trigger ends it
+     early; the meter drain ends it when empty. */
+  startSurgeForm() {
+    if (this.surgeForm) { this.endSurgeForm(); return true; }
+    if (this.meter < this.maxMeter || !this.canAct()) return false;
+    this.surgeForm = true;
+    this._surgeT = 25; // seconds of devil time
+    this._surgeBaseStats = { ...this.stats };
+    this.stats = {
+      ...this.stats,
+      power: this.stats.power * 1.45,
+      speed: Math.min(3.8, this.stats.speed * 1.15),
+      defense: this.stats.defense * 1.2,
+    };
+    this._auraFlash = 1.0;
+    return true;
+  }
+  endSurgeForm() {
+    if (!this.surgeForm) return;
+    this.surgeForm = false;
+    this._surgeT = 0;
+    if (this._surgeBaseStats) { this.stats = this._surgeBaseStats; this._surgeBaseStats = null; }
   }
 
   /* Mid-match transformation (Roshi-style power-up, owner 2026-10-19).
@@ -680,7 +722,14 @@ export class Fighter {
     if (!this.canAct() || !this.onGround) return;
     this._enter('dodge'); this.invuln = 0.34; this.dodgeDir = -this.facing;
     this._dodgeId = (this._dodgeId || 0) + 1;
-    this.vx = this.dodgeDir * this.stats.speed * 1.7;
+    if (this.brawler) {
+      // BRAWLER: hop straight back along the facing yaw (3D).
+      const s = this.stats.speed * 1.7;
+      this.vx = -Math.sin(this.yaw) * s;
+      this.vz = -Math.cos(this.yaw) * s;
+    } else {
+      this.vx = this.dodgeDir * this.stats.speed * 1.7;
+    }
   }
 
   /* ---------------- Stream 6: sidestep (Tekken) ----------------
@@ -714,8 +763,14 @@ export class Fighter {
     this.lockT = 0.3; this.lockMove = move; this.lockPartner = attacker;
     this.vx = 0; this.vz = 0;
     // face the attacker during the lock
-    const want = Math.sign(attacker.root.position.x - this.root.position.x) || 1;
-    this.facing = want;
+    if (this.brawler) {
+      const ax = attacker.root.position.x - this.root.position.x;
+      const az = attacker.root.position.z - this.root.position.z;
+      this.yaw = Math.atan2(ax, az);
+    } else {
+      const want = Math.sign(attacker.root.position.x - this.root.position.x) || 1;
+      this.facing = want;
+    }
   }
   startThrowing(victim) {
     this.state = 'throwing'; this.stateT = 0;
@@ -856,9 +911,29 @@ export class Fighter {
     return (this.game && this.game.feel && this.game.feel[key]) || 1;
   }
 
+  /* Normalized world-space vector pointing AWAY from `attacker` on the
+     ground plane (brawler knockback direction). */
+  _awayFrom(attacker) {
+    const dx = this.root.position.x - attacker.root.position.x;
+    const dz = this.root.position.z - attacker.root.position.z;
+    const d = Math.hypot(dx, dz) || 1;
+    return [dx / d, dz / d];
+  }
+
   receiveHit(move, attacker) {
     if (this.dead || this.invuln > 0) return 'dodge';
-    const facingAttacker = Math.sign(attacker.root.position.x - this.root.position.x) === this.facing;
+    // BRAWLER: guard requires the defender's facing yaw to be within ~110°
+    // of the direction to the attacker (3D); versus keeps the x-sign rule.
+    let facingAttacker;
+    if (this.brawler) {
+      const ax = attacker.root.position.x - this.root.position.x;
+      const az = attacker.root.position.z - this.root.position.z;
+      const wantYaw = Math.atan2(ax, az);
+      const dy = Math.atan2(Math.sin(wantYaw - this.yaw), Math.cos(wantYaw - this.yaw));
+      facingAttacker = Math.abs(dy) < 1.92;
+    } else {
+      facingAttacker = Math.sign(attacker.root.position.x - this.root.position.x) === this.facing;
+    }
     // T3 HitClassify: guarded when (guard & attack word) != 0 and the defender faces the
     // attacker. Standing guard blocks highs/mids, crouching guard blocks lows; throws and
     // unblockables carry no guard bits.
@@ -869,7 +944,13 @@ export class Fighter {
       const chip = move.damage * attacker.stats.power * 0.12 * (attacker.stats.chipMult || 1) / this.stats.defense;
       this.hp = Math.max(0, this.hp - chip);
       this.stun = 0.18 + move.damage * 0.01;
-      this.vx = Math.sign(this.root.position.x - attacker.root.position.x) * move.knock * 0.5;
+      if (this.brawler) {
+        const [nx, nz] = this._awayFrom(attacker);
+        this.vx = nx * move.knock * 0.5;
+        this.vz = nz * move.knock * 0.5;
+      } else {
+        this.vx = Math.sign(this.root.position.x - attacker.root.position.x) * move.knock * 0.5;
+      }
       this.meter = Math.min(this.maxMeter, this.meter + 4); // +4 soul on block
       if (this.hp <= 0) { this._knockout(Math.sign(this.root.position.x - attacker.root.position.x) || 1); return 'ko'; }
       return 'block';
@@ -889,7 +970,16 @@ export class Fighter {
     this.hp = Math.max(0, this.hp - dmg);
     this.meter = Math.min(this.maxMeter, this.meter + 6); // +6 soul on taking damage
     const dir = Math.sign(this.root.position.x - attacker.root.position.x) || -this.facing;
-    this.vx = dir * move.knock * this._feelMul('knockback');
+    if (this.brawler) {
+      // BRAWLER: knockback radiates away from the attacker on the ground
+      // plane (Devil Within enemies fly away from Jin, not along x).
+      const [nx, nz] = this._awayFrom(attacker);
+      const k = move.knock * this._feelMul('knockback');
+      this.vx = nx * k;
+      this.vz = nz * k;
+    } else {
+      this.vx = dir * move.knock * this._feelMul('knockback');
+    }
     if (this.hp <= 0) { this._knockout(dir); return 'ko'; }
     if (move.isGrab || move.knock >= 6 || move.launch || (counter && move.knockdown)) {
       this.vy = (move.isGrab ? 5.2 : 4.6) * this._feelMul('launch'); this.onGround = false; this.stun = 0.55; this._enter('knockdown');
@@ -898,7 +988,18 @@ export class Fighter {
     return counter ? 'counter' : 'hit';
   }
   _knockout(dir) {
-    this.dead = true; this.vx = dir * 5.5 * this._feelMul('knockback'); this.vy = 6 * this._feelMul('launch'); this.onGround = false;
+    this.dead = true; this.vy = 6 * this._feelMul('launch'); this.onGround = false;
+    if (this.brawler) {
+      // BRAWLER: keep the 3D knockback velocity receiveHit computed,
+      // boosted to KO strength — the body flies away from the attacker.
+      const s = Math.hypot(this.vx, this.vz);
+      if (s > 0.01) {
+        const k = (7.5 * this._feelMul('knockback')) / s;
+        this.vx *= k; this.vz *= k;
+      } else { this.vx = dir * 5.5 * this._feelMul('knockback'); this.vz = 0; }
+    } else {
+      this.vx = dir * 5.5 * this._feelMul('knockback');
+    }
     this._enter('ko'); this.stun = 999;
   }
   victory() { if (!this.dead) this._enter('victory'); }
@@ -914,22 +1015,56 @@ export class Fighter {
     if (limb === 'armL') return this.bones.LeftHand;
     return this.bones.RightHand;
   }
+  /* Tekken forward step for the current attack (units/sec). T3 moveset rows
+     carry step_per_frame; when decoded data provides it, use it, otherwise
+     Tekken-standard advance: punches step in modestly, kicks more, at full
+     rate during startup and half once the limb is extended (active). */
+  _attackStep() {
+    const m = this.attack;
+    if (!m) return 0;
+    if (m.stepPerFrame != null && m.stepPerFrame > 0) return m.stepPerFrame;
+    const limb = m.limb || '';
+    const base = limb.startsWith('leg') ? 1.5 : 1.1;
+    return this._attackPhase === 'startup' ? base : base * 0.5;
+  }
   getHitbox() {
     if (this.state !== 'attack' || this._attackPhase !== 'active' || this.hasHit) return null;
     const node = this._weaponBone(); if (!node) return null;
     node.getWorldPosition(_v1);
-    let r = this.attackName === 'surge' ? 1.0 : 0.5;
-    if (this.attack?.isGrab || this.attackName === 'grab' || this.attackName === '1+3' || this.attackName === '2+4') r = 0.95; // generous grab sphere
+    // TEKKEN-STYLE ATTACK BOXES (hitfx 2026-10-22 — teardown/tekken3/docs/
+    // TEKKEN3-RIG-LESSONS.md: hitboxes are simple proxy shapes attached to
+    // bones, sized generously, never the visible mesh). Tekken's attack
+    // boxes LEAD the limb along the attack direction — that lead is the
+    // move's real range. The old code used a tight r=0.5 sphere exactly on
+    // the fist, so strikes only overlapped hurtboxes at point-blank range
+    // (the "1 in 10 attacks land" bug).
+    const name = this.attackName;
+    const limb = this.attack?.limb || '';
+    const isKick = limb.startsWith('leg') || name === 'kick' || name === '3' || name === '4';
+    let r, lead;
+    if (name === 'surge') { r = 1.0; lead = 0.35; }
+    else if (this.attack?.isGrab || name === 'grab' || name === '1+3' || name === '2+4') { r = 0.95; lead = 0.30; }
+    else if (isKick) { r = 0.68; lead = 0.38; }   // kicks reach further
+    else { r = 0.62; lead = 0.30; }               // punch-class
     r *= (this.stats.reachMult || 1); // WOOD force (modes lane): reach extends
-    return { x: _v1.x, y: _v1.y, z: _v1.z, r, move: this.attack };
+    return { x: _v1.x + this.facing * lead, y: _v1.y, z: _v1.z, r, move: this.attack };
   }
   getHurtboxes() {
     if (this.invuln > 0 || this.dead) return [];
     // Throw cinematic: both locked fighters are committed, not hittable.
     if (this.state === 'thrown' || this.state === 'throwing') return [];
+    // TEKKEN-STYLE HURTBOXES (hitfx 2026-10-22): the full torso chain, not
+    // just chest+head. Tekken covers the whole body with proxy volumes;
+    // the old two-sphere set let jabs pass through hips and shoulders.
     const out = [];
-    if (this.bones.Spine1) { this.bones.Spine1.getWorldPosition(_v1); out.push({ x: _v1.x, y: _v1.y, z: _v1.z, r: 0.58 }); }
-    if (this.bones.Head) { this.bones.Head.getWorldPosition(_v1); out.push({ x: _v1.x, y: _v1.y, z: _v1.z, r: 0.34 }); }
+    const add = (bone, r) => {
+      const b = this.bones[bone];
+      if (b) { b.getWorldPosition(_v1); out.push({ x: _v1.x, y: _v1.y, z: _v1.z, r }); }
+    };
+    add('Hips', 0.50);
+    add('Spine1', 0.58);
+    add('Spine2', 0.52);
+    add('Head', 0.34);
     return out;
   }
   registerHit() { this.hasHit = true; this.addMeter(this.attack.soulGain); }
@@ -955,8 +1090,16 @@ export class Fighter {
     if (this.onGround && this.state !== 'knockdown') this._juggle = 0;
     if (this._comboTimer > 0) { this._comboTimer -= dt; if (this._comboTimer <= 0) this.combo = 0; }
     if (this._auraFlash > 0) this._auraFlash -= dt;
+    // SOUL SURGE FORM (brawler devil-form analog): timed — drains meter.
+    if (this.surgeForm) {
+      this._surgeT -= dt;
+      this.meter = Math.max(0, this.meter - 4 * dt);
+      if (this._surgeT <= 0 || this.meter <= 0) this.endSurgeForm();
+    }
 
-    if (opponent && this.canAct()) {
+    // BRAWLER: facing is yaw-driven by the brawler controller (free 3D) —
+    // never x-snap toward a single opponent.
+    if (opponent && this.canAct() && !this.brawler) {
       const want = opponent.root.position.x >= this.root.position.x ? 1 : -1;
       if (want !== this.facing) this.facing = want;
     }
@@ -1002,13 +1145,25 @@ export class Fighter {
         // (lockT) expires, so hit feedback stays in one place.
         break;
       case 'idle': case 'walk':
-        this.state = (Math.abs(this.vx) > 0.4 && this.onGround) ? 'walk' : 'idle';
+        // BRAWLER: walk on 2D ground speed, not the 1v1 x-axis.
+        this.state = ((this.brawler ? Math.hypot(this.vx, this.vz) : Math.abs(this.vx)) > 0.4 && this.onGround) ? 'walk' : 'idle';
         break;
     }
   }
 
   _physics(dt, opponent) {
     if (!this.onGround) this.vy -= 22 * dt;
+    // TEKKEN STEP-IN (hitfx 2026-10-22): T3 moveset rows carry step_per_frame
+    // — strikes advance during startup/active (teardown/tekken3/movesets/).
+    // The old code zeroed vx on attack start, so strikes thrown at real
+    // fighting distance whiffed with the attacker planted. Advance the root
+    // directly (positional, like Tekken's per-frame step) instead of via vx
+    // so the attack-state friction below can't eat it.
+    if (this.state === 'attack' && this.onGround && !this.attack?.isGrab &&
+        (this._attackPhase === 'startup' || this._attackPhase === 'active')) {
+      const step = this._attackStep();
+      if (step > 0) this.root.position.x += this.facing * step * dt;
+    }
     if (this.onGround && this.state !== 'walk' && this.state !== 'dodge' && this.state !== 'sidestep' && !(this.state === 'attack' && this.attackName === 'grab')) {
       this.vx *= Math.pow(0.0001, dt);
       if (Math.abs(this.vx) < 0.05) this.vx = 0;
@@ -1022,7 +1177,9 @@ export class Fighter {
     this.root.position.y += this.vy * dt;
     this.root.position.z += this.vz * dt;
     // Sidestep range: about one body width into the background/foreground.
-    this.root.position.z = Math.max(-2.4, Math.min(2.4, this.root.position.z));
+    // BRAWLER: free 3D — clamp to the arena bounds instead.
+    const zLim = this.brawler ? ARENA_LIMIT : 2.4;
+    this.root.position.z = Math.max(-zLim, Math.min(zLim, this.root.position.z));
 
     if (this.root.position.y <= GROUND_Y) {
       this.root.position.y = GROUND_Y; this.vy = 0;
@@ -1117,7 +1274,9 @@ export class Fighter {
     // (shortest arc, 180 deg in ~0.16 s) — a real rotation, never a
     // scale-flip/mirror. The logical this.facing stays instant so inputs,
     // guard and hit logic never lag behind the turn.
-    const targetY = this.facing * Math.PI / 2;
+    // BRAWLER (Heart and Mind Within): yaw drives the facing directly —
+    // free-3D turning with the same smooth shortest-arc easing.
+    const targetY = this.brawler ? this.yaw : this.facing * Math.PI / 2;
     if (this._faceY === undefined) this._faceY = targetY;
     let dy = targetY - this._faceY;
     dy = Math.atan2(Math.sin(dy), Math.cos(dy)); // shortest arc
@@ -1144,7 +1303,17 @@ export class Fighter {
     };
     // Reverse the walk cycle when backing away so retreating reads
     // as a back-step instead of a moonwalk.
-    const dirSign = Math.abs(this.vx) > 0.05 ? (Math.sign(this.vx) === this.facing ? 1 : -1) : 1;
+    // BRAWLER: velocity is 2D (vx+vz) — compare its heading against the
+    // facing yaw instead of the 1v1 x-axis sign.
+    const _bSpd = this.brawler ? Math.hypot(this.vx, this.vz) : 0;
+    let dirSign;
+    if (this.brawler && _bSpd > 0.05) {
+      const _va = Math.atan2(this.vx, this.vz);
+      const _dd = Math.atan2(Math.sin(_va - this.yaw), Math.cos(_va - this.yaw));
+      dirSign = Math.abs(_dd) > Math.PI / 2 ? -1 : 1;
+    } else {
+      dirSign = Math.abs(this.vx) > 0.05 ? (Math.sign(this.vx) === this.facing ? 1 : -1) : 1;
+    }
     let t3Wanted = null;
     switch (this.state) {
       case 'idle': t3Wanted = 'stance'; break;
@@ -1168,7 +1337,8 @@ export class Fighter {
     // itself is re-applied before every mixer.update).
     let tIdle = 1, tWalk = 0, tRun = 0;
     if (this.state === 'walk') {
-      const fast = Math.abs(this.vx) > this.stats.speed * 0.9;
+      const _spdNow = this.brawler ? Math.hypot(this.vx, this.vz) : Math.abs(this.vx);
+      const fast = _spdNow > this.stats.speed * 0.9;
       tIdle = 0; tWalk = fast ? 0 : 1; tRun = fast ? 1 : 0;
     } else if (this.state === 'dodge') { tIdle = 0; tRun = 1; }
     if (t3Active) { tIdle = 0; tWalk = 0; tRun = 0; }
@@ -1296,7 +1466,8 @@ export class Fighter {
     this.lean.rotation.z = this._lean.z;
 
     // 8) Aura + trail visuals — particles rise and flicker around the body
-    const auraOn = (this.attackName === 'surge') || this._auraFlash > 0;
+    // BRAWLER: the surge form keeps the aura burning for its whole duration.
+    const auraOn = (this.attackName === 'surge') || this._auraFlash > 0 || this.surgeForm;
     const am = this.aura.material;
     am.opacity += ((auraOn ? 0.95 : 0) - am.opacity) * Math.min(1, dt * 10);
     this.auraLight.intensity += ((auraOn ? 14 : 0) - this.auraLight.intensity) * Math.min(1, dt * 10);
@@ -1318,6 +1489,13 @@ export class Fighter {
     }
   }
 
+  /* World-space forward vector (brawler: from yaw; versus: from x-facing).
+     Used by the procedural combat layer so strikes aim where the body faces. */
+  fwdVec(out) {
+    if (this.brawler) return out.set(Math.sin(this.yaw), 0, Math.cos(this.yaw));
+    return out.set(this.facing, 0, 0);
+  }
+
   _attackProgress() {
     const m = this.attack, t = this.stateT;
     const extendEnd = m.startup + m.active;
@@ -1328,7 +1506,7 @@ export class Fighter {
 
   _animAttack() {
     const e = this._attackProgress();
-    const fwd = _v3.set(this.facing, 0, 0); // world forward
+    const fwd = this.fwdVec(_v3); // world forward (yaw-aware in brawler mode)
     const name = this.attackName;
 
     const isKick = name === 'kick' || name === '3' || name === '4' || this.attack?.limb?.startsWith('leg');
@@ -1369,7 +1547,7 @@ export class Fighter {
     this._blendW = Math.min(0.9, (this._blendW || 0) + 0.18);
     this._leanT.x = 0.06;
     this.bones.Spine2.getWorldPosition(_v1);
-    const fwd = _v3.set(this.facing, 0, 0);
+    const fwd = this.fwdVec(_v3);
     _v2.copy(_v1).addScaledVector(fwd, 0.42); _v2.y = _v1.y + 0.35;
     this._ik(['RightArm', 'RightForeArm'], 'RightHand', _v2, this._blendW);
     _v2.copy(_v1).addScaledVector(fwd, 0.42); _v2.y = _v1.y + 0.2;
