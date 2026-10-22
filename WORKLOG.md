@@ -835,3 +835,11 @@ in the opposite direction of the left leg", "the hand looks weighted to the tail
 - Tools: tools/model-audit/{rig_qa,rig_overlay,tile_sheet}.py, tools/proof-harness/rig_sheet.mjs,
   tools/auto_rig/refit_skeleton.py + backends/heat_rebind.py, heat-proxy cleanup in gamerig_backend.py.
 - Proof: docs/proof/claude-2026-10-22/pantera-rigs/ (README, before/after renders, overlays, rig_qa.json).
+
+## 2026-10-22 — Leopard King re-rig wired (Claude session, branch claude/amazing-keller-p8644u)
+
+- `pantera-leopard-king` -> `roster/pantera/attires/leopard-king/model-refit.glb` (skeleton refitted inside the mesh +
+  bone heat; 32.7 MB meshopt). Old model-rigged.glb kept. model-facing.json `"pantera-leopard-king": "+Z"`.
+- Verified in-game (rest, T3 stance, 9 attack rows x 2 times, live fight): no tearing; max bone error 0.4 deg.
+- Found: King row 220 (wired as Pantera `2,1`) is upside down in the decoded source — moveset mapping issue, queued.
+- Proof + details: docs/proof/claude-2026-10-22/pantera-rigs/README.md, roster/pantera/attires/leopard-king/WORKLOG.md.

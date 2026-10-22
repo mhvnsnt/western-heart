@@ -17,7 +17,7 @@ crumpled, backwards-bending legs and the back of the mane toward the opponent.
   camera); bottom = the T3 stance in-game, before and after. After the fix, his foot yaw equals the decoded
   source on every check (`footYaw` src = tgt: L −5.9°, R −56°).
 
-## A2 Leopard King: skeleton outside the body (diagnosed; re-rig in progress)
+## A2 Leopard King: skeleton outside the body (FIXED: re-rig wired as `model-refit.glb`)
 
 `tools/model-audit/rig_qa.py` on the shipped `model-rigged.glb` (see `rig_qa.json`):
 - arm and leg sides SWAPPED;
@@ -32,7 +32,18 @@ spine runs along the back surface, the toes point backwards and the tail chain r
 `leopard_king_bind_overlay_refit.png` is the re-rig made with the new tools below. King's 49-joint skeleton
 is centred in the mesh's own cross-sections, Left* sits on the character's left, toes run along the sole, and
 the tail chain follows the tail's medial curve. It is skinned by Blender bone heat. rig_qa on it: sides ok,
-knees forward, weight bleed 1,010 (all at the hips). **It is not wired yet**: the in-game check comes first.
+knees forward, weight bleed 1,010 (all at the hips).
+
+**Wired after the in-game check** (`'pantera-leopard-king'` → `roster/pantera/attires/leopard-king/model-refit.glb`,
+32,679,076 B meshopt, sha256 `20695690affccdc4…`; the 2026-10-21 `model-rigged.glb` stays beside it). Also
+`"pantera-leopard-king": "+Z"` in model-facing.json, because his tail fooled the feet cue the same way Leo man's did.
+- `leopard_king_refit_rest_and_stance_before_after.png`: left = the game's rest pose (+Z and +X cameras, facing
+  forward); middle = the shipped rig in the T3 King stance; right = the re-rig in the same stance. Bone
+  directions match the decoded source within 0.4 deg, and the feet match exactly (L -6.0 / R -56.1 vs -5.9 / -56).
+- `leopard_king_refit_attacks.png`: the re-rig mid-attack, front and side, at 35% and 60% of King rows 44 (1),
+  203 (2), 54 (3), 216 (4), 220, 117, 127 (1+3 throw), 82 and 290 — no tearing or limb stretch. Row 220 (wired
+  as `2,1`) is upside down in the decoded SOURCE too (head 0.64 m below the hips): that is a move-to-row
+  mapping problem in the moveset, not the rig. It is being chased in the inputs/moveset work.
 
 ## Main-branch breakages found by `game/tests/*.test.mjs` (FIXED here)
 

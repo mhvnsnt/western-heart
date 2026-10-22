@@ -2,7 +2,7 @@
 //
 // node tools/proof-harness/rig_sheet.mjs OUTDIR [key1,key2,...|all] [bank]
 // For each model key (default: every MODEL_URLS key in game/js/assets.js) drives game/poselab.html:
-//   rest_<key>.png    the game's own instance at rest, camera on +Z (after the game's facing
+//   rest_<key>.png    the game's own instance at rest, cameras on +Z (left) and +X (right) (after the game's facing
 //                     correction): the face must be visible, or the game has the facing wrong;
 //   stance_<key>.png  the T3 stance retargeted by the game (front + side, target column only);
 // and writes results.json (game facing, swapLR, per-bone direction error vs the source, errors).
@@ -43,7 +43,7 @@ for (let i = 0; i < keys.length; i += PER_PAGE) {
     try {
       const r = await page.evaluate((k) => window.__poselab.rest(k), key);
       rec.facing = r.facing;
-      await shot(`${out}/rest_${key}.png`, { x: 0, y: 0, width: 600, height: 960 });
+      await shot(`${out}/rest_${key}.png`, { x: 0, y: 0, width: 1200, height: 900 }); // left: camera on +Z, right: camera on +X
     } catch (e) { rec.restError = e.message.split('\n')[0]; }
     try {
       const r = await page.evaluate((a) => window.__poselab.show(a), { model: key, bank, clip: 'stance', t: 0.3 });

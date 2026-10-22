@@ -212,7 +212,11 @@ export const MODEL_URLS = {
   // the base 'pantera' key above (T7King P1 reskin), A4 snow leopard,
   // A5 Crimson Rage, A6 T7 P2). ../roster pattern per phantom/skull.
   'pantera-snow-leopard': '../roster/pantera/attires/snow-leopard/pantera-snow-leopard.glb',
-  'pantera-leopard-king': '../roster/pantera/attires/leopard-king/model-rigged.glb',
+  // LEOPARD KING re-rig (2026-10-22, owner: forearms/hands stretch, legs crumpled, hand weighted to the
+  // tail): King's 49-joint skeleton refitted INSIDE the mesh (tools/auto_rig/refit_skeleton.py) + Blender
+  // bone heat (backends/heat_rebind.py). The 2026-10-21 model-rigged.glb stays beside it, untouched.
+  // Proof: docs/proof/claude-2026-10-22/pantera-rigs/.
+  'pantera-leopard-king': '../roster/pantera/attires/leopard-king/model-refit.glb',
   'pantera-crimson-rage': '../roster/pantera/attires/crimson-rage/pantera-attire5-crimson.glb',
   'pantera-p2': '../roster/pantera/attires/p2-wired/pantera-attire4-p2.glb',
   'retsu-body': 'assets/models/retsu-body.glb',
