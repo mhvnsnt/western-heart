@@ -129,3 +129,30 @@ Wiring blockers, in dependency order:
 - **ID coverage: COMPLETE (148/148 viewed).** Certain names 0;
   canon Q1–Q6 OWNER-pending. Closeout: `phase13/
   DOA4-FINAL-STATE.md`.
+
+## Phase 14 update (2026-10-22, PR #574) — ISO closed; ANM definition layer decoded to gate 1; provenance
+
+- **ISO: CLOSED (pending final hash line).** The phase-13 sparse
+  assembly resumed at 10/30, part_10's in-flight download was
+  left to finish on its own (never killed/duplicated), and the
+  remaining parts landed one at a time under the assembler's
+  verify→write→delete discipline. Whole-ISO sha256 + the clear
+  log: `phase14/PHASE14-STATE.md`.
+- **ANM: definition layer DECODED to gate 1.** The fighter .bin
+  header is a 32-pointer section table (tiles every file
+  exactly, 24/24); w21 is a 1024-entry clip command table;
+  mot.afs is a standard AFS with 197 named .mot entries
+  (comon.mot lives in cmn.afs; rtm's plain/c_ slots are
+  byte-identical kasumi copies). Parser
+  `phase14/tools/anm_parse_p14.py` round-trips all 24 files
+  byte-exact (GATE 1 PASS). Clips: NONE yet — the keyframe
+  grammar (B-stream records + .mot stream grammar + joint
+  order) is the exact residual in `phase14/ANM-DECODE.md`;
+  no guessed posing. Extracts (mot.afs + default.xex whole)
+  released as `doa4-iso-extracts-20261022`.
+- **Provenance (mirror vs ISO): anm DIFFERENT** (same size,
+  first diff byte 0, 9.83% identical — the phases 7–12 file
+  was a different pressing's, quantified). chrone/chrtwo/
+  chrthree: (pending — `phase14/PROVENANCE.md`).
+- **Composites 23/31 FINAL, binding DYNAMIC-ONLY, ID complete,
+  canon Q1–Q6 OWNER-pending: all unchanged.**
