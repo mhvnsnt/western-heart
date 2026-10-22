@@ -2082,3 +2082,8 @@ On-main files NOT touched: worker 37's `js/creation-flow.js` + `js/art.js`
 - Immutable-original tags on archive commit: `buffalo-bill-a1-original`, `buffalo-bill-a2-original`,
   `theory-a1-original`, `theory-a2-original`, `theory-a3-original`.
 - No canon entries invented — archive only; canon bridges deferred to owner.
+
+### Addendum — Theory Attire 4 (same session)
+- Archived `roster/theory/attires/attire4/source/theory-a4.glb` (21,511,628 bytes, black leather outfit 3d model,
+  Tripo owner `eqqq57218`) + `manifest.json` + T-pose proof `docs/proof/buffalo-bill-theory-2026-10-22/theory-a4.png`
+  (visually verified). Intake note + tag list updated (`theory-a4-original`).
