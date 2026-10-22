@@ -1734,3 +1734,11 @@ Owner directive (verbatim): "Research the current state-of-the-art open-source i
 
 ### Proof
 - Branch research/3d-generation-pipeline-2026-10-22b, PR against main with six-section instruction-gate body; deletion-guard / clobber-guard / instruction-gate green; merged clean via git_merge.py (merge-it-yourself law). (First attempt PR #654 hit a WORKLOG.md append/append race with another worker's entry — rebased onto current main as this clean branch.)
+
+## 2026-10-22 — Zen spirit body rigged + wired (Claude session, branch claude/amazing-keller-p8644u)
+
+- Zen Attire 1 (owner Tripo 8c46e379) was an unrigged static wired as 'zen'/'zen-attire1' -> invisible in fights.
+- `tools/auto_rig/rig_tripo_static.py --facing +X` -> `roster/zen/attires/attire1/model-rigged.glb` (73 joints, 29.2 MB);
+  validate PASS; stress-clip anim_check flags explained by viewed renders (no tearing); in-game rest faces +Z, T3 stance
+  max bone error 0.4 deg. Wired 'zen' + 'zen-attire1'; model-facing.json zen/zen-attire1 +Z; roster/zen/ATTIRE-SLOTS.md.
+- Proof: docs/proof/claude-2026-10-22/zen-rig/.
