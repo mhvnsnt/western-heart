@@ -30,3 +30,31 @@
 - Wrote the package (ES modules, three r186). `node --test` 4/4 pass.
 - Proof: pulled `pantera_leoman.glb` + `bannon_mask.glb` from branch `grok/lab-playable-slice` via `gh api` (not committed), served with python http.server, rendered with playwright-core + headless Chrome (swiftshader). Fixed three bugs found by the render (morph dictionary names, region size units, front/back regions missing the surface). Labels added with PIL → `docs/creation-suite/creation_suite_proof.jpg`.
 - gitleaks on the diff; merged origin/main; no deletions.
+
+## 2026-10-22 ~20:30 CDT — worker 46: Ashlane/Brutalfist model render batch (28 renders)
+
+**Rendered all 28 Ashlane-universe characters** (one best variant each, facing camera, neutral
+studio background, natural A-pose/bind pose — no forced T-pose) for the user's WH-fighter review.
+Catalog: `docs/research/ashlane-render-catalog-2026-10-22.md`. No roster/canon writes — review only.
+
+- Variant choice = canonical defaults from the source repo's own roster
+  (`brutalfistgrokversiontenpointfive/src/data/bannonGlbRoster.ts`, first-listed/"Default" attire).
+  PABLO got a **second** render (PABLO_blackreign.glb — canon-relevant dark variant per user).
+  SOMBRA_NEGRA_rigged.glb is the only cast model in `AshLane-prototype`.
+- VF5 mappings flagged in catalog (user-locked 2026-10-22, no changes without user's word):
+  LOCKED = BANNON→Jeffry McWild, EL_TORO_DE_ORO→Wolf Hawkfield, PABLO→El Blaze, NPC_FINXSSE→Lei-Fei.
+  Candidates = MASTER_SENSEI→Lau, SOMBRA_NEGRA→Kage, CIPHER→Goh (music-themed "emo type" note),
+  AARON_RUBEN→Akira, CODY→Jacky, JAGER→Vanessa.
+  Unmapped: TRIPLE_XXX, ECHO, HOLLOW, STATIC, STICKUP, ONYX, TYNESHIA, MAIME, EDWIN_KENNEDY,
+  HALL_NIGHTER, STAN_COMBS, KOBRA, VIPER. VF5 women (Sarah/Pai/Aoi/Eileen) have no counterparts
+  identified — female-presenting models in this batch: Echo, Maime, Onyx, Tyneshia (flagged).
+- Pipeline: three.js r160 GLTFLoader + Playwright headless Chromium/SwiftShader, studio 3-point
+  lighting, 720x960 PNG. Viewer + batch scripts at `~/workspace/ashlane-renders/` (site/viewer.html,
+  render.mjs, batch.json) — reusable for re-renders. Large GLBs stayed in the source repos.
+- Render-time findings: (1) BANNON_rigged.glb needed bone-aware camera framing (skinned geometry
+  bounds were bind-pose, camera ended up inside the torso). (2) **SOMBRA_NEGRA_rigged.glb is
+  damaged**: JOINTS_0 indices reach 65535 against 58 skeleton joints (~92k vertices affected) and
+  the mesh branch carries a bogus 0.035 node scale — rendered as bind-pose T-pose at natural
+  scale for review. Needs a full re-rig before any WH intake; skin data unrecoverable as-is.
+- Remote-storage links expire 2026-10-24 ~20:30 UTC. 11/28 uploaded at PR time; remaining 17
+  pending the user's upload-approval taps (per-file confirmation cards).
