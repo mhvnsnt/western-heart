@@ -784,3 +784,38 @@ queue list — intaken anyway. Still incoming: SmutBase 22968842 (camel-toe
 check at intake: removable vs painted-on), 91fca296, 0b8ceb43, c278fcf4.
 `tools/tripo-intake/` does not apply (Tripo GLB pulls only); Blender rig lane
 owns the next step. Blender is not installed on this VM.
+
+## 2026-10-22 — Torch Attire 2 "Red demon" wire-in (Muse subagent lane)
+
+- PULLED the owner's Tripo link (2026-10-21 ~22:40 CDT,
+  7f8c7874-de2a-438f-a84f-744d1eef21e9) with `tools/tripo-pull/tripo-pull.py`
+  ONLY. The pull first failed 14x: the egress proxy severed every urllib
+  response from api.tripo3d.ai mid-body (IncompleteRead at 3-80 KB) while
+  curl completed the same GET in ~1.5 s (diagnosed read-only; API code 0,
+  link valid, never a login issue). Fixed at the source in tripo-pull:
+  IncompleteRead is now retryable and both the GET and download paths fall
+  back to a curl transport. Installed copy + this repo copy patched.
+- Raw statue: 18,006,604 B, sha256
+  52e6840dbc07ec670a75514ffa4252c4bf497292399e2c28e490e4e3450a99c7,
+  1,029,809 verts, 3 embedded textures, unrigged. Archived in release
+  `torch-a2-tripo-20261021` (asset digest verified == local sha256).
+- Facing measured on the decoded mesh before rigging: foot-vs-shin cue
+  +0.055 on X, -0.005 on Z — toes point +X; rigged with `--facing +X`.
+- Rigged via `tools/auto_rig/rig_tripo_static.py` (the PR #570-patched
+  intake) onto the 73-joint GameRig template. Report + gate renders:
+  `docs/proof/claude-2026-10-22/auto-rig-torch-a2/`.
+- Wired as Attire 2: `game/js/assets.js` MODEL_URLS `torch-tripo-a2`,
+  `game/js/attires.js` picker ladder (1 Valkyrie of Flame / 2 Red demon /
+  3 Anna Base fallback). Attire 1 untouched; her roster default stays
+  `torch-tripo-a1`. Name + owner description recorded verbatim in
+  `CANON.md` and `roster/torch/ATTIRE-SLOTS.md`.
+- Proof render (own eyes): `torch-a2-reddemon-front-20261021.png`.
+- Resume addendum (2026-10-22, second lane): the wrapper run OOM-died
+  (137) three times in the clip bake, so the ship model was produced by
+  the identical gamerig backend run without the optional donor clip
+  (manual-backend-noclip.sh, wait-gated to a zero-Blender window;
+  BACKEND EXIT 0, heat clean first proxy — 23,942 proxy verts, 0
+  unweighted), then the wrapper's own finisher steps (finish-rig.sh):
+  validate PASS (missing_bones []), pose renders, meshopt encode to
+  28,530,756 B. smooth_weights exited "no animations to evaluate
+  against" — no smoothing applied. Full deviations in the PR body.

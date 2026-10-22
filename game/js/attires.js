@@ -30,6 +30,7 @@ export const ATTIRE_VARIANTS = {
      roster/torch/ATTIRE-SLOTS.md. */
   'torch': [
     { model: 'torch-tripo-a1', label: 'ATTIRE 1 · VALKYRIE OF FLAME (TRIPO)' },
+    { model: 'torch-tripo-a2', label: 'ATTIRE 2 · RED DEMON (TRIPO)' },
     { model: 'torch', label: 'ANNA BASE (TEKKEN BASE)' },
   ],
   'demonio': [

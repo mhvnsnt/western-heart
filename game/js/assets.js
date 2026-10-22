@@ -211,6 +211,10 @@ export const MODEL_URLS = {
   // (300d0c63), auto-rigged via tools/auto_rig/rig_tripo_static.py; raw pull
   // archived in release torch-a1-tripo-20261021. Ladder: roster/torch/ATTIRE-SLOTS.md.
   'torch-tripo-a1': 'assets/models/torch-tripo-a1.glb',
+  // TORCH Attire 2 (owner 2026-10-21): Tripo original 'Red demon'
+  // (7f8c7874), auto-rigged via tools/auto_rig/rig_tripo_static.py; raw pull
+  // archived in release torch-a2-tripo-20261021. Ladder: roster/torch/ATTIRE-SLOTS.md.
+  'torch-tripo-a2': 'assets/models/torch-tripo-a2.glb',
   michiko: 'assets/models/michiko.glb',
   dio: 'assets/models/dio.glb',
   bruno: 'assets/models/bruno.glb',
