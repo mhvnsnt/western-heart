@@ -1,8 +1,8 @@
 # DOA4 Phase 16 — STATE — OPEN 2026-10-22 (.mot expansion grammar + w21 expansion trace + containment scatter-pass completion)
 
 Branch: `teardown/doa4-phase16-mot-grammar` (stacked on `teardown/doa4-phase15-containment-mot`, PR #597 head `7001b3b32e82fd80451818d8ecbfc1a5ffb7be14`).
-Clone: `/tmp/doa4p16/wh` (sparse, teardown/dead-or-alive-4 only; ephemeral scratch, not a deliverable path).
-Scratch: `/tmp/doa4p16/scratch/` (ephemeral).
+Clone: `~/workspace/_doa4p16-clone` (sparse, teardown/dead-or-alive-4 only).
+Scratch: `~/workspace/_doa4p16-scratch/` (lane-local; cleared at lane end per one-store rule, logged). NOTE: /tmp on this VM is a 512 MB tmpfs — the clone was moved off /tmp at lane start for that reason.
 Repo path: `teardown/dead-or-alive-4/phase16/`. Wiring inventory: `teardown/dead-or-alive-4/phase7/WIRING-INVENTORY.md`. Final state: `teardown/dead-or-alive-4/phase13/DOA4-FINAL-STATE.md` (additive addendum only).
 
 ## ENVIRONMENT (proven — do not re-derive)
@@ -31,4 +31,5 @@ Repo path: `teardown/dead-or-alive-4/phase16/`. Wiring inventory: `teardown/dead
 Additions-only in git; NO `git add -A` (pathspec commits); commit+push after EVERY job step; own-eyes on every render; unique filenames; per-character isolation (zack's data touches zack's skeleton only); never delete repo content; local clears only per one-store rule + logged to ~/workspace/agent-ops/disk-cleanup-log.md; NO hand-tooling where a system exists (grammar/trace work is format research — bespoke analysis code is the system here, following phase-15 precedent of banked tools).
 
 ## LOG
+- 2026-10-22 PR #697 opened (base `teardown/doa4-phase15-containment-mot`). Clone moved from /tmp (512 MB tmpfs, 92% full) to ~/workspace/_doa4p16-clone; scratch at ~/workspace/_doa4p16-scratch/.
 - 2026-10-22 lane start: read phase15/PHASE15-STATE.md + phase15/CONTAINMENT-AUDIT.md + phase15/MOT-CENSUS.md + phase15/XEX-HUNT.md + phase14/ANM-DECODE.md. PR #597 verified via gh: head `teardown/doa4-phase15-containment-mot` @ 7001b3b32e82fd80451818d8ecbfc1a5ffb7be14, OPEN. Branch `teardown/doa4-phase16-mot-grammar` created off that head (sparse checkout, teardown/dead-or-alive-4 only). Release `doa4-mot-20261022` verified via gh API: mot_entries.tar 75,325,440 B, sha256 026592a07c...21c. This state file is the first commit.
