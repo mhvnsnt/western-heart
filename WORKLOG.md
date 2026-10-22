@@ -2087,3 +2087,51 @@ On-main files NOT touched: worker 37's `js/creation-flow.js` + `js/art.js`
   `docs/owner-directives.md`.
 - Full log: `docs/decisions/2026-10-22-kinpo-repoint-w50.md` (branch
   `w50/kinpo-repoint`).
+
+## 2026-10-22 ~18:30 CDT — worker 66: in-suite hand-tooling with headless Blender backend
+
+Owner directives (verbatim): "Set up all the stuff on your side, then when I go into the character
+creation suite, make it where I can do the hand-tooling part IN the character creation suite —
+where I don't have to actually use Blender, but Blender's just hooked up in the character creation
+suite." + "I'll call that up so it works for all of the models, all the characters, all the parts.
+They're all interchangeable, deletable, replaceable, addable, movable, resizable, scalable,
+reshapeable — full Blender-level capabilities."
+
+What shipped (branch `w66/in-suite-mesh-edit`, MERGE FREEZE — merge-ready, not merged):
+- `tools/mesh-edit/mesh_edit.py` — headless Blender 4.0.2 op driver
+  (`blender -b --factory-startup --python mesh_edit.py -- --job JOB.json`). Op catalog v1:
+  mesh_list, mesh_hide/show, mesh_delete, mesh_transform (bake TRS), mesh_duplicate
+  (+mirror_x), part_import (donor GLB / library:id, socket fit), mesh_sculpt
+  (smooth/grab/inflate/pinch via bmesh), mesh_remodel (remesh/subdivide/decimate).
+  Geometry-changing ops set `reweight_needed`; sources immutable (`out_glb == source_glb`
+  refused); writes `out_glb` + `out_report` + preview PNG.
+- `tools/mesh-edit/run_mesh-edit_job.py` — suite-jobs runner (`tool: "mesh-edit"`),
+  `run_job(spec, log)`; registered in `tools/suite-jobs/server.py` tool registry (one-word
+  additive edit). No parallel server — TOOL UNIFICATION LAW: mesh-edit rides the existing
+  suite queue (:8766) the JOBS tab already polls.
+- `customization/create-fighter/js/meshedit.js` — MODEL EDIT mode for the suite viewport:
+  tap-to-select (raycast, touch-safe), TransformControls gizmo (lazy, numeric-nudge fallback),
+  capture-phase orbit guard (zero edits to preview3d.js), part list, hide/show/delete/duplicate,
+  sculpt-point picking, job submit to the suite queue; falls back to job-spec download when the
+  server is unreachable (GitHub Pages / no backend).
+- `customization/create-fighter/js/tools.js` — registry wiring: `meshedit` SEPARATE_TOOLS
+  entry + `model-edit-system` UNIFIED_SYSTEMS entry + unifiedActions case (ENTER MODEL EDIT,
+  job spec, JOBS tab link). Menu home: TOOLS tab; nests under Appearance → Attire Parts in the
+  WWE flow (worker 65 owns the tree; contract documented).
+- `customization/CHARACTER-CREATION.md` — "Model Edit (hand-tooling)" subsection.
+- Docs: `docs/research/2026-10-22-W66-in-suite-mesh-edit-research.md` (Prisma3D touch
+  vocabulary, TransformControls touch support, Blockbench/MeshySmith evaluated+rejected,
+  blender-remote/mcp-for-blender patterns, teardown editing patterns),
+  `docs/decisions/2026-10-22-W66-mesh-edit-architecture.md` (job schema v1, API, w64/w65
+  contracts, undo/safety, proof plan).
+
+Key integration findings (no duplication): the suite already had `tools/suite-jobs/server.py`
++ JOBS tab (`window.__flow.renderJobs`) — mesh-edit registers as a tool there instead of a new
+server. `window.__suite.preview` is the viewport handle. Labels resolve via worker 64's mesh
+taxonomy (`window.__whMeshTaxonomy`) when present, else raw GLB node names.
+
+Proof: `node --check` on meshedit.js clean; `python3 tools/mesh-edit/tests/test_runner.py`
+10/10 pass (validation, guards, fake-Blender report parse, AST parse of both py files).
+No Blender on this VM — real op runs need `tools/setup/setup_toolchain.sh` (follow-up).
+Follow-ups: vendored TransformControls, real Blender run on a roster GLB, w64/w65 handshake,
+one-line JOBS-tab tool-dropdown addition (creation-flow.js — worker 37's lane, documented).
