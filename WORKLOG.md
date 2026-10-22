@@ -515,29 +515,56 @@ live loader keys off roster ids + index). The wiring passes should
 treat `index.json` as the source of truth and may want to regenerate it
 (it currently gates out 2 ids that have files).
 
-## Doc Frank feet — root-cause completion (2026-10-22, branch fix/docfrank-feet-rootcause-20261021)
+## 2026-10-22 — BACKWARDS BODY PARTS AUDIT: Julia (nightwolf) facing fix
 
+**Task:** Per-part facing audit (parent task: "BACKWARDS BODY PARTS AUDIT"). User reported Julia's shins/feet/torso/head face backwards while thighs/arms look correct.
+
+**Method:** Built `tools/model-audit/per_part_facing.py` — measures each body part's absolute facing (+Z/-Z) from mesh geometry:
+- Head: nose = farthest vert from head joint (p95)
+- Torso: chest = max protrusion from spine axis (p95)
+- Foot: toe joint direction + mesh reach verification
+- Shin: calf = bulk (median) protrusion from shin axis, upper third only (avoids boots)
+- Thigh/upperarm/forearm/hand: weaker cues, reported but not flagged
+- Consensus: majority vote of high-conf parts
+
+**Julia finding:** NO per-part flips. All parts face -Z consistently (head -Z, torso -Z, foot -Z via toe joint, shin calf +Z posterior = correct for -Z, thigh ~symmetric, arms T-pose correct). The skeleton is fully consistent (all W@IBM = identity, yaw 0).
+
+**Root cause:** Whole-model facing error, not per-part. `game/assets/models/model-facing.json` recorded nightwolf as +Z, but the mesh faces -Z (Blender rest renders from +Z show her back; nose/chest/toes all -Z). The game therefore did NOT turn her, so in-game she faces away. Viewed from the game's +Z front, the asymmetric parts (head, torso, shins, feet) read as "backwards" while symmetric parts (thighs, arms) "look correct" — exactly the user's report.
+
+**Fix:** `model-facing.json`: nightwolf +Z → -Z. The game now turns her 180° at instance creation (designed mechanism, `assets.js` line 709). No rig change needed (no rig defect exists).
+
+**Proof:** `docs/proof/2026-10-22/julia-facing/julia_before_after.png` — before (from +Z: her back, parts called out) / after (her front, as the game will show).
+
+**Roster audit (full):** Ran the checker on all 57 game models. Genuine per-part flips found (to be fixed fighter-by-fighter):
+- michiko.glb (+Z): head -Z, thighs -Z (head+thighs flipped)
+- star.glb (+Z): head -Z, thighs -Z (head+thighs flipped)
+- pantera-body.glb (-Z): head +Z (head flipped)
+- pantera_alt1.glb (-Z): head +Z (head flipped)
+- yukihyo.glb (+Z): torso -Z (torso flipped)
+- zafina.glb (+Z): shins +Z (calf anterior = backwards)
+- lili.glb, thor.glb: one thigh each asymmetric (needs visual verification)
+- Many models flag shins (cue noise from boots; verified OK on nightwolf)
+
+Full per-fighter list in the task report.
+## Doc Frank feet — root-cause completion (2026-10-22, branch fix/docfrank-feet-rootcause-20261021)
 Independent measured diagnosis (game's real `game/js/t3anims.js` path, stance
 clip @40%): the sideways splay lived in the bosconovitch bank's `foot_tip`
 reference (stored +92°/−109° off forward, from the generator's foot-part
 centroid heuristic) — not the clip decode (foot bones −6°/+36°), not the
 retarget (posed == source exactly on the healthy jin bank), not the models
 (all rest at 0°). Full write-up: `docs/fixes/docfrank-feet-rootcause-20261021/DIAGNOSIS.md`.
-
 PR #508 fixed the tool's derivation and the six foot_tip numbers, but on a
 skeleton.json that had been pre-turned offline (file note: "2026-10-22 facing
 fix … turned 180 about Y + L/R relabelled offline"). The clips were never
 turned, so the runtime stopped turning the bank and the retarget paired
 turned joint names with unturned clip tracks: measured A1 +44.6°/−16.6° vs
 source +29.6°/−7.1°, Leo man +55.7° with feet floating (ankle y 0.18–0.29).
-
 This change: regenerated all 17 banks with the merged fixed tool
 (`tools/anim/t3_bank_skeleton.py`). 11 banks byte-identical; 6 change —
 bosconovitch (joints back to the GLB-native frame the clips were baked in,
 runtime bankFacing turn applies again; foot_tip = corrected canonical toe)
 and anna/bryan/eddy/julia/yoshimitsu (foot_tip only, same defect class).
 No runtime code, no GLB edits, no deletions.
-
 After (same harness): source FK −6.0°/+35.9°; Doc Frank A1 posed
 +3.8°/+27.5°; Leo man +11.8°/+23.6°; Attire 3 base +2.7°/+28.2° — feet
 forward on all his rigged models at once; the right-foot turnout is
