@@ -71,15 +71,15 @@ the user's review as possible counterparts.
 | KOBRA | KOBRA.glb | unmapped | https://muse.ai/files/1408826802312537/4721442678142505/kdrjeizvq8k1alo9zagmos9u/kobra-20261022-2025.png |
 | MAIME | MAIME_skinned.glb | unmapped (female-presenting) | https://muse.ai/files/1408826802312537/1142597925378799/bv94zofvxasetbiq88c09ckg/maime-20261022-2025.png |
 | ONYX | ONYX_street.glb | unmapped (female-presenting) | https://muse.ai/files/1408826802312537/1652968499535741/mxjg03tpk7ehu7f86xfmcgsm/onyx-20261022-2025.png |
-| STAN_COMBS | STAN_COMBS_gear.glb | unmapped | ⏳ pending upload approval |
-| STATIC | STATIC.glb | unmapped | ⏳ pending upload approval |
-| STICKUP | STICKUP.glb | unmapped | ⏳ pending upload approval |
-| TARZANIAN_DEVIL | TARZANIAN_DEVIL_skinned.glb | unmapped | ⏳ pending upload approval |
-| TITAN | TITAN.glb | unmapped | ⏳ pending upload approval |
-| TRIPLE_XXX | TRIPLE_XXX.glb | unmapped | ⏳ pending upload approval |
-| TYNESHIA | TYNESHIA.glb | unmapped (female-presenting) | ⏳ pending upload approval |
-| VIPER | VIPER.glb | unmapped | ⏳ pending upload approval |
-| WRECK_PATTERSON | WRECK_PATTERSON.glb | unmapped | ⏳ pending upload approval |
+| STAN_COMBS | STAN_COMBS_gear.glb | unmapped | https://muse.ai/files/1408826802312537/1070144296021966/0nb0izt9blj8zkydagop74he/stan-combs-20261022-2025.png |
+| STATIC | STATIC.glb | unmapped | https://muse.ai/files/1408826802312537/1795705621553002/ktjs0u8v855we2ae0eld203s/static-20261022-2025.png |
+| STICKUP | STICKUP.glb | unmapped | https://muse.ai/files/1408826802312537/1426503616355609/iu38f0b5c8bap21azi2xb6kf/stickup-20261022-2025.png |
+| TARZANIAN_DEVIL | TARZANIAN_DEVIL_skinned.glb | unmapped | https://muse.ai/files/1408826802312537/2938661289829313/ucwcivldtpeoa1m7ch62juya/tarzanian-devil-20261022-2025.png |
+| TITAN | TITAN.glb | unmapped | https://muse.ai/files/1408826802312537/1620184225627910/5s65tdcayyqcoye429brxdsr/titan-20261022-2025.png |
+| TRIPLE_XXX | TRIPLE_XXX.glb | unmapped | https://muse.ai/files/1408826802312537/4652078078356320/xmzsi9hgwxp48wg60yyi2c15/triple-xxx-20261022-2025.png |
+| TYNESHIA | TYNESHIA.glb | unmapped (female-presenting) | https://muse.ai/files/1408826802312537/1358038577395911/1do9f1ow9nexklhozhp87m08/tyneshia-20261022-2025.png |
+| VIPER | VIPER.glb | unmapped | https://muse.ai/files/1408826802312537/1061311643614774/tbe3bx94tq6ngep80e7pszld/viper-20261022-2025.png |
+| WRECK_PATTERSON | WRECK_PATTERSON.glb | unmapped | https://muse.ai/files/1408826802312537/954250160666973/jq2c7i2kg8lvswe5xf57qxzc/wreck-patterson-20261022-2025.png |
 
 ## Visual notes (from the renders)
 
