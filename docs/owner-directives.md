@@ -309,3 +309,13 @@ Wire it up from the teardowns (Def Jam BLAZIN' two-gate design: meter full + opp
 
 ## Protection rule (user decision 2026-10-22, permanent)
 Intro sequences and win taunts are never to be replaced. New systems layer on top or beside, never over.
+
+## MOVESET LIBRARY SYSTEM (standing rule, 2026-10-22 — worker 47)
+
+- **Central library:** `game/data/moveset-library/` — one entry per move, namespaced IDs (`t3:<fighter>:row:<n>`, `wrestling:<mk-id>`, `wmxix:<id>`, `doa:<char>:<slot>`, `vf:<char>:<slot>`, `vf5:<char>:<slug>`, `wh:<slug>`). Organized by type, position, orientation, hit level, Tekken input, frames, damage, properties (`axes.json`). Schema: `schema.json` (additive over the v2 moveset-editor contract).
+- **Honesty:** every estimated field flagged in `provenance.estimated`. Auto-labels marked, never invented canon names. T3 rows carry `input: null` + raw words until the fidelity engine decodes them.
+- **Federation rule:** every non-Tekken move is wired to Tekken inputs on ingest. No wrestling control schemes ever reach the player.
+- **Per-fighter assembly:** `game/data/movesets/<fighter>.json` manifests REFERENCE library IDs (never copy). Swap = change ID, edit = `overrides`, save = the JSON file. Assembler: `game/js/moveset-library.js` (`assembleFighter()` → v2-contract moveset).
+- **Moveset Source Law is code:** `claimed-map.json` + `checkSourceLaw()` refuses pulls from claimed Tekken fighters unless an approved exception names them. Free: True Ogre, Lucky Chloe, Hwoarang, Raven, Jun Kazama, Craig Marduk, Roger Jr. (crew verifying). Exceptions: Zen=Twelve/SFIII, Deathfang=Iori, Cain-Elias=Kluger.
+- **Assembly workflow:** browse in `game/moveset-browser.html` (filter by axis → inspect → attach to Tekken slot → rename override → source-law check → save). Commit the manifest JSON. Rebuild banks reproducibly: `node tools/moveset-library/ingest.mjs`.
+- **Locked Ashlane→VF5:** Bannon→Jeffry, El Toro→Wolf (+1 clean aerial), Pablo→El Blaze (+powerhouse, comedy-whiff lucha attempts, Black Reign/Abyss dark finishers), NPC Finxsse→Lei-Fei. VF5 bases resolve when worker 45's bank lands.
