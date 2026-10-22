@@ -1106,6 +1106,84 @@ owns the next step. Blender is not installed on this VM.
   28,530,756 B. smooth_weights exited "no animations to evaluate
   against" — no smoothing applied. Full deviations in the PR body.
 
+
+# WORKLOG — T8 character-select grid transplant (2026-10-22, select lane, worker 1/4)
+
+Owner order (verbatim): "pull in like the Tekken 8 character select menu and
+decode it and everything all the UI and menu art and the selections how it's
+set up and get our characters put onto the Tekken the most recent Tekken game
+menu grid that you can get a hold of and upgrade the character select menu"
+
+## Approach change (mid-task, from coordinator)
+- Steam/depot route for T8 assets is DEAD (owner doesn't own T8 on Steam).
+- Revised: T7 teardown = structural reference; T8 LOOK decoded from PUBLIC
+  visual references (screenshots/footage) and recreated pixel-faithfully in
+  HTML/CSS/JS with our own original art. Community-posted T8 UI textures
+  surveyed as reference only — NOT committed (owner rule 8: no
+  copyrighted/leaked game files in public repos or Pages). This deviation
+  from the "community textures are fair game to pull in" brief is flagged
+  in the PR/report for owner confirmation.
+
+## What was built
+- `game/js/ui-skin.js` (NEW): skin/theme config layer. All visual tokens
+  (colors, fonts, card geometry, fact rows, texture paths) for the select
+  screen; `getSkin()`/`applySkin()`/`setSkin()`; full DROP-IN CONTRACT
+  documented in-file (new skins, texture naming under
+  `game/assets/ui/<skin>/`, copyright rule, `?skin=<id>` deep link).
+- `game/js/select-screen.js` (MODIFY): rebuilt on the T8 grid. PreviewPane
+  (live 3D) kept verbatim. New: compact centered multi-row card GRID
+  (replaces bottom strip), tier dividers (Tripo-first display-order law),
+  T8 name banners (big italic condensed), T8 fact blocks (Fighting Style /
+  Archetype / Origin — "Parts unknown" fallback, never invented), portrait
+  art-wash backdrops per side (our portraits, red P1 / blue P2 wash),
+  tap-flash select pulse, grid-aware keyboard nav, identity-canon assert
+  (rave=kiko-tanaka=ghost one entry; no zafina slot; no yoshimitsu slot).
+  Deps interface + main.js wiring UNCHANGED (build/onShow/selectById/
+  notifyConfirm/highlight). Game inputs untouched.
+- `game/select.css` (MODIFY): T8 grid styles, banner, facts, artwash,
+  hints bar; all skin values via CSS vars from ui-skin.js. Phone: stacked
+  stage → grid (own scroll box) → hints; ≥900px: grid floats centered over
+  the stage like T8. Page never scrolls.
+- `game/index.html` (MODIFY): select section markup — artwash divs per
+  pane, `.pane-facts` replaces title/style lines, `.grid-wrap` replaces
+  `.strip-wrap`, VS badge removed (T8 has none on select).
+- `docs/select-redesign/T8-GRID-DECODE.md` (NEW): full design breakdown —
+  layout, card arrangement, fonts, colors, background, animations,
+  sources, and documented deviations from T8 (tiers, names on cards,
+  fact rows, 99s timer, phone stacking).
+- `docs/proof/cs-transplant/` (NEW): screenshots of the new select.
+
+## Verification
+- `node --check` on both JS files: OK. Skin token resolution tested in
+  node (t8 default, missing-skin fallback): OK.
+- Headless Chromium (puppeteer-core, repo proof approach): grid renders —
+  Tripo Originals tier first, square portrait cards with names, header +
+  timer live (screenshot: docs/proof/cs-transplant/).
+- ENVIRONMENT BLOCKER (2026-10-22 ~14:33 CDT): ALL Chromium binaries on
+  the VM started crashing at launch (mmap MAP_SHARED EPERM → SIGTRAP;
+  affects every agent, not just this lane). Post-fix screenshots
+  (fighters-zone flex fix, highlighted-fighter, versus P2, desktop
+  floating grid) could NOT be captured here — handed to coordinator with
+  exact commands in the final report.
+
+## Files (no deletions)
+- game/js/ui-skin.js, game/js/select-screen.js, game/select.css,
+  game/index.html, docs/select-redesign/T8-GRID-DECODE.md,
+  docs/proof/cs-transplant/*.png, WORKLOG.md (this entry)
+
+## Flags for coordinator
+- The `flex: 1 1 54%` / `flex: 1 1 46%` split collapsed the fighters zone
+  to zero height in the one screenshot captured; replaced with the proven
+  pattern (zone `flex: 1 1 auto`, grid-wrap `flex: 0 0 auto` +
+  `height: clamp(240px, 40vh, 460px)`). UNVERIFIED visually — needs the
+  re-screenshot pass.
+- docs/owner-directives.md does not exist in this checkout; the T8-grid
+  directive will be appended to main's copy at push time if present.
+- Other lanes: game inputs untouched; facing/model bugs (memory 2026-10-22
+  playtest) are NOT this lane.
+
+---
+
 ---
 
 # WORKLOG — Character-select dedup, Mariposa/DXMMII ladder completion (2026-10-22, worker 3/4 of select overhaul)
@@ -1257,6 +1335,27 @@ game/js/game.js, 25 of index.html, 316 of WORKLOG.md — broke Torch live.
 - Consider adding `clobber-guard` to main's required status checks via the
   branch-protection API (needs admin scope; not attempted in this lane).
 
+## 2026-10-22 — Worker 5: PLAYTEST FACING BUGS (side-switch + Torch audit)
+
+### Bug 1 — Side-switch: smooth Y-rotation (was instant snap)
+Owner: "When a fighter walks past their opponent to the other side, the body does NOT rotate on the Y axis to face them. Instead all limbs mirror backwards — like the model got scale-mirrored rather than rotated."
+Root cause: `Fighter._animate` snapped `lean.rotation.y = facing * π/2` instantly on a side-switch. One frame the fighter shows one side, the next frame the other — on a phone screen this reads as a mirror-pop, not a turn. (No scale-flip exists anywhere in the code; verified by grep.)
+Fix (`game/js/fighter.js`): visual facing (`_faceY`) now tweens toward the logical facing along the shortest Y arc at 180°/0.16s — a real, visible rotation, never a mirror. Logical `this.facing` stays instant so inputs/guard/hit logic never lag.
+Also fixed `game/js/game.js` `_startRound`: it set `lean.rotation.y = 0` / `π` (fighters posed toward/away from the CAMERA), contradicting fighter.js's `facing*π/2` convention. Now snaps both to `±π/2` (face the opponent), `_faceY` included.
+Proof: headless-Chromium fight test (torch vs pantera) — before/after side-switch screenshots show both fighters Y-rotated to face each other; `lean.rotation.y` = ±π/2 exactly. Proof frames: `~/workspace/w5tmp/proof_before.png`, `proof_after.png` (worker-5 run).
+
+### Bug 2 — Facing audit (Torch + all 59 roster fighters)
+Owner: "Torch faces the camera instead of her opponent and can't attack."
+Torch verdict: CORRECT, no change. Verified 4 ways: (1) torch.glb mesh faces +Z (feet-cue +0.124, proof rest sheet shows front from +Z); (2) table entry +Z; (3) rig and mesh agree (+Z/+Z); (4) live fight screenshots show her facing pantera. The "faces camera" report did not reproduce on current code (likely stale phone cache or the select-screen preview, which intentionally faces the camera at baseRotY ±0.18).
+Full audit: enumerated all 59 roster fighters' default models against `game/assets/models/model-facing.json`. 55 keys tabled; 22 fighter defaults missing (mostly unrigged Tripo statics that also cannot animate — flagged for the rigging lane, not guessed).
+One real table bug found AND fixed: `nightwolf` was `-Z` on main (ea9116ff, 2026-10-22). REVERTED to `+Z`: direct raw-GLB render (three.js, camera on +Z, zero instance correction) shows her FRONT from +Z and her BACK from -Z — the mesh faces +Z. The -Z reading came from a per-part audit that transforms mesh verts by bone matrices; nightwolf's auto-rig skeleton faces -Z inside her +Z mesh, which flips that measurement. The game corrects by MESH facing, so +Z (no turn) is right. Raw renders: `~/workspace/w5tmp/raw_nightwolf_posZ.png` (front), `raw_nightwolf_negZ.png` (back); camera validated against torch (known +Z).
+Also found: the feet-geometry cue misreads chunky-heel boots as -Z (false -Z on zen-body, saku-ra_alt1, lili, kinpo_alt1 — all visually +Z). Do NOT trust the cue alone for heeled footwear; the human-verified table stands.
+
+### Files (surgical edits on fresh main ef39f7c9; no deletions)
+- `game/js/fighter.js` — `_faceY` init in `_build`; smooth Y-turn in `_animate` §1.
+- `game/js/game.js` — `_startRound` facing reset to `±π/2` convention.
+- `game/assets/models/model-facing.json` — `nightwolf` back to `+Z` + corrections note.
+- `WORKLOG.md` (this entry).
 ## 2026-10-22 — Model wire-up audit (worker 9: wire every unwired on-disk model)
 
 Owner (verbatim): "Everyone else the registry listed as 'missing Tripo' ALREADY HAS models — they're in the repo but not wired up. Audit what's on disk in roster/*/attires/, wire up every unwired model, and fix the registry to reflect reality."
@@ -1266,3 +1365,4 @@ Owner (verbatim): "Everyone else the registry listed as 'missing Tripo' ALREADY 
 - Registry fixes: `roster/TRIPO-REGISTRY.md` + `roster/ROSTER-GAPS-2026-10-19.md` corrected — the "missing Tripo" claims were stale/wrong. Added the owner-authoritative 12-model queue (Dio [owner-made pending], Panda, Kuma, Jin EM [not Kazama], Bruno, Scimitar, Negativo, Yukihyo, Chordz, Ogre, Law, Gon [user-approved turtle-creature design ready for modeling]; Kuma/Panda/Ogre/Law/Gon need WH names+bios from the user — never invented). Mokujin = training dummy, no model needed.
 - Guards: `game/tests/model-key-guard.test.mjs` OWNERSHIP table updated for the new wiring (+ fixed 4 stale entries: torch, mariposa-monarch, dxmmii-patchwork, zen); `game/tests/fighter-completeness.test.mjs` KNOWN_GAPS cleaned of folded doc-frank cards. All suites pass (the file-existence test's local failures are stale-clone artifacts — every URL verified to exist on main).
 - Rebased onto fresh main mid-lane (sibling landed Michiko wiring + doc-frank-a1): kept their blocks byte-identical, re-applied this lane's edits on top. No inputs touched. No roster entries created for the 12.
+
