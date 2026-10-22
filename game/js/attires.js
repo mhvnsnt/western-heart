@@ -35,15 +35,22 @@ export const ATTIRE_VARIANTS = {
   /* DOC FRANK's ladder — keyed by fighter id ('docfrank'), same pattern as
      Kevin's ladder below: attiresFor() looks up fighter.model, then
      fighter.id (model-key audit, docs/MODEL-KEY-AUDIT-2026-10-21.md).
-     LADDER ORDER (owner rule 2026-10-21, same as every character): his
-     Tripo GLB attires 1-4 at the FOREFRONT, transform pairs together;
-     the Dr. Bosconovitch base model ('doc-frank') and its reskin
-     ('doc-frank-machine-shop') ladder BACK behind them. Default =
-     first entry = Attire 1 pre-form ('doc-frank-a1'), NOT the base
-     model and NOT the machine-shop reskin. Provenance per slot:
-     roster/doc-frank/ATTIRE-SLOTS.md. */
+     LADDER ORDER (owner override 2026-10-21 ~23:14 CDT, verbatim: "his
+     1, 2, 3, 4, 5 should be his Tripo models; the Tekken reskins go toward
+     the back, not 1 or 2. Stop showing me the Tekken versions first —
+     show the Tripo 3D models I made for him."): every Tripo model (all
+     four attires, base + transformed forms, pairs together) ladders FIRST;
+     the Tekken-based models ladder BACK. That includes Attire 1's pre-form
+     old man ('doc-frank-a1'): its file lineage is the PR #263 machine-shop
+     texture reskin of the Bosconovitch base, so per the owner's override it
+     sits with the back-slot Tekken entries, not at the forefront (this
+     supersedes the 2026-10-21 ~19:08 CDT rule that had put it first).
+     Default = first entry = Attire 1's Tripo bigger form ('doc-frank-big').
+     Provenance per slot: roster/doc-frank/ATTIRE-SLOTS.md.
+     NOTE: with the Tripo bigger form as the default, TRANSFORM from the
+     default swaps big->big (no visual change); picking a back-slot old-man
+     form and transforming still lands on the Tripo bigger form. */
   'docfrank': [
-    { model: 'doc-frank-a1', label: 'ATTIRE 1 · OLD MAN' },
     { model: 'doc-frank-big', label: 'ATTIRE 1 · TRANSFORMED (TRIPO)' },
     { model: 'doc-frank-wowomomo', label: 'ATTIRE 2 · WOWOMOMO (TRIPO)' },
     { model: 'doc-frank-wowomomo-big', label: 'ATTIRE 2 · WOWOMOMO XL (TRIPO)' },
@@ -51,8 +58,9 @@ export const ATTIRE_VARIANTS = {
     { model: 'doc-frank-hood-big', label: 'ATTIRE 3 · HOOD XL (TRIPO)' },
     { model: 'doc-frank-frankenstein', label: "ATTIRE 4 · FRANKENSTEIN'S CYBORG (TRIPO)" },
     { model: 'doc-frank-frankenstein-big', label: 'ATTIRE 4 · FRANKENSTEIN XL (TRIPO)' },
-    { model: 'doc-frank', label: 'BOSCONOVITCH BASE (TEKKEN BASE)' },
-    { model: 'doc-frank-machine-shop', label: 'MACHINE SHOP (RESKIN)' },
+    { model: 'doc-frank-a1', label: 'ATTIRE 1 · OLD MAN (TEKKEN RESKIN)' },
+    { model: 'doc-frank', label: 'BOSCONOVITCH BASE (TEKKEN CANON)' },
+    { model: 'doc-frank-machine-shop', label: 'MACHINE SHOP (TEKKEN RESKIN)' },
   ],
   'mariposa': [
     { model: 'mariposa', label: 'ATTIRE 1 · BUTTERFLY' },
