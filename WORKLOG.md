@@ -514,3 +514,35 @@ stale relative to `index.json` (nothing outside movesets.js reads it;
 live loader keys off roster ids + index). The wiring passes should
 treat `index.json` as the source of truth and may want to regenerate it
 (it currently gates out 2 ids that have files).
+
+## 2026-10-22 — BACKWARDS BODY PARTS AUDIT: Julia (nightwolf) facing fix
+
+**Task:** Per-part facing audit (parent task: "BACKWARDS BODY PARTS AUDIT"). User reported Julia's shins/feet/torso/head face backwards while thighs/arms look correct.
+
+**Method:** Built `tools/model-audit/per_part_facing.py` — measures each body part's absolute facing (+Z/-Z) from mesh geometry:
+- Head: nose = farthest vert from head joint (p95)
+- Torso: chest = max protrusion from spine axis (p95)
+- Foot: toe joint direction + mesh reach verification
+- Shin: calf = bulk (median) protrusion from shin axis, upper third only (avoids boots)
+- Thigh/upperarm/forearm/hand: weaker cues, reported but not flagged
+- Consensus: majority vote of high-conf parts
+
+**Julia finding:** NO per-part flips. All parts face -Z consistently (head -Z, torso -Z, foot -Z via toe joint, shin calf +Z posterior = correct for -Z, thigh ~symmetric, arms T-pose correct). The skeleton is fully consistent (all W@IBM = identity, yaw 0).
+
+**Root cause:** Whole-model facing error, not per-part. `game/assets/models/model-facing.json` recorded nightwolf as +Z, but the mesh faces -Z (Blender rest renders from +Z show her back; nose/chest/toes all -Z). The game therefore did NOT turn her, so in-game she faces away. Viewed from the game's +Z front, the asymmetric parts (head, torso, shins, feet) read as "backwards" while symmetric parts (thighs, arms) "look correct" — exactly the user's report.
+
+**Fix:** `model-facing.json`: nightwolf +Z → -Z. The game now turns her 180° at instance creation (designed mechanism, `assets.js` line 709). No rig change needed (no rig defect exists).
+
+**Proof:** `docs/proof/2026-10-22/julia-facing/julia_before_after.png` — before (from +Z: her back, parts called out) / after (her front, as the game will show).
+
+**Roster audit (full):** Ran the checker on all 57 game models. Genuine per-part flips found (to be fixed fighter-by-fighter):
+- michiko.glb (+Z): head -Z, thighs -Z (head+thighs flipped)
+- star.glb (+Z): head -Z, thighs -Z (head+thighs flipped)
+- pantera-body.glb (-Z): head +Z (head flipped)
+- pantera_alt1.glb (-Z): head +Z (head flipped)
+- yukihyo.glb (+Z): torso -Z (torso flipped)
+- zafina.glb (+Z): shins +Z (calf anterior = backwards)
+- lili.glb, thor.glb: one thigh each asymmetric (needs visual verification)
+- Many models flag shins (cue noise from boots; verified OK on nightwolf)
+
+Full per-fighter list in the task report.
