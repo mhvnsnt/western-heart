@@ -257,3 +257,55 @@ not a deformation).
 
 **SHA-256:** output model-rigged.glb (this build)
 f1ebad4c24a8d2db60618acfaf3b90681f5de4b0a663e467e768c6d4244e7b99
+
+---
+
+## 2026-10-22 — Owner rejection + correction (fix2)
+
+Owner verdict 2026-10-21 ~22:41–23:14 CDT: "That's not fixed idk what ur
+seeing" + defect map (stretch/weight issues from the forearm down on both
+arms and from the waist down; legs crumpled in all directions, right leg
+opposite the left; hand looks weighted to the tail; same on A1; feet out
+to the side instead of forward; fix at the source).
+
+The build above is superseded. Measured findings (full record:
+`docs/PANTERA-RIG-CORRECTION-2026-10-22.md`):
+
+- The T3 King decode is clean (bank == Leo man native channels, 0.00°).
+  The backwards thing was real but it was in THIS file and the template:
+  the baked T3Stance/T3Grab channels are scrambled under standard glTF
+  evaluation (segment errors mean 58–92°, max 172°) and the Spine1
+  channel is missing; the entry above's gate numbers came from the bake
+  harness, never an independent evaluator.
+- Shipped weights: pose-mismatched nearest-neighbor transfer — forearm
+  regions carried ForeArm weight 0.06/0.03 with Spine up to 0.61, hip
+  regions ~half Spine, tail geometry bound to the LEFT LEG (up to 0.55);
+  literal tail weight on hands = 0.000 (the owner's read was the
+  scrambled pose).
+- The shared Pantera template (this file, the A1 game model, the classic
+  build) carries ToeBase joints BEHIND the heel (offset z −0.158/−0.160)
+  while toe geometry points forward — this disables the retarget's foot
+  alignment (analyzeRig 'leg' fallback).
+
+Fix shipped in this PR (model-rigged.glb rebuilt):
+- ToeBase joints moved forward of the ankle, IBMs compensated — bind
+  skinning exact (invariance 1e-16, bind displacement ≤4.4e-07).
+- Weights rebuilt pose-invariantly from the skeleton (two-nearest-
+  segment field + procedural tail gradient + smoothing). Regional audit:
+  forearms ForeArm 0.58–0.59/Hand 0.40, Spine 0; hips UpLeg 0.72–0.75,
+  Spine 0; tail verts mean Tail weight 0.999; hands max Tail 0.0000.
+  Edges >1.5× stretch ~11% → ~6%; forearm+hand p99 6.1 → 3.6.
+- T3Stance/T3Grab re-baked with the verified port of the game's own
+  retargetT3Clips, Spine1 channel included. Standard evaluation of the
+  shipped file: world quats match the retarget to 0.000°, all limb
+  segment errors 0.00° (torso ≤0.62°).
+- Same skeleton + weights fix applied to the A1 game model
+  (`game/assets/models/pantera.glb`) and the classic build
+  (`attires/classic/pantera-classic.glb`). Leo man / Crimson / P2 /
+  hi-res T7 King audited — no skeleton defect (Leo man is the authoring
+  rig; the other three are unskinned statics). `t3anims.js` unchanged —
+  three candidate methods measured, none beats the shipped swing beyond
+  the models' bind-pose difference; the runtime was never the defect.
+
+Proof (viewed): `docs/tpose-refs/pantera-leopard-king/fix2-sheet-20261022.png`,
+`docs/tpose-refs/pantera/fix2-a1-sheet-20261022.png`.
