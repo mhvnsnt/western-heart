@@ -29,4 +29,35 @@ Lane: TEARDOWN COMPLETION SWEEP, Phase 15. Stacked on PR #519
   cleared after their job lands (clears logged here).
 
 ## Clears log
-- (none yet)
+- 2026-10-22 ~04:40 CDT — p15 scratch bundles + intermediate GLBs
+  cleared after all jobs landed in git (idx281/283/291/789 .bin,
+  untextured GLBs, tex reports, diag scripts, renders dir; the
+  textured GLBs + proof renders live in this PR). Ghidra hunt
+  scripts/output kept in p15/ghidra (small). Banned file untouched.
+
+## Status log (final)
+- JOB 1 DONE: Ivy root cause = rigid reader +8 start shift on
+  trailer-span parts (phase-4 heuristic) — color word landed in the
+  normal-Y slot; white = NaN (fake "sheet" exclusion), grey =
+  ~-3.4e38 -> FLT_MAX overflow at pack. Census proof: all 725 rigid
+  parts / 25 bundles unit-normal at +0. Fix in tools/build_skinned.py
+  (landed in-repo); idx283+idx291 regenerated: 41 meshes, 22 images,
+  1 skin, res 1.176e-07, renders viewed. FINDING: all 102 previously
+  shipped GLBs are missing trailer-span rigid parts (255 parts) —
+  re-decode is a follow-on lane.
+- JOB 2 DONE: idx789 = rigid-only golem (102 rigid parts, 6,823
+  verts, 6 textures); tools/build_rigid.py; render viewed (rocky
+  segments, cyan seams, rune orb torso). No identity assigned.
+- JOB 3 DONE: rec80 secondary = created-and-held (FUN_00025080
+  relocates +0x0c beside +0x08; FUN_00025300 creates/uploads every
+  VXT record at load); no draw-time stage binding found in the
+  functions read — visible-layer verdict not provable statically.
+  Shipping rule unchanged.
+- JOB 4 DONE: type = section index (FUN_00033fb0 core decompiled);
+  type 0xc = section 12 = character sound, CRI `mmx` sound-bank
+  container (XHDp sub-bank at +0x40; FUN_000ed4d0 -> FUN_000ed440
+  registration); vgmstream rejects container + slices — codec
+  closed, residual named.
+- JOB 5 DONE: CENSUS-PHASE13.md 83/83 + phase-15 section;
+  WIRING-INVENTORY.md phase-15 section; CANON-CONVERSION.md
+  untouched.

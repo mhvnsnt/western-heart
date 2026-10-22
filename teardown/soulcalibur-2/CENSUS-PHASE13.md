@@ -109,7 +109,7 @@ hakama), coherent and fully textured.
 | 164 | Maxi | 3 | 3 | — |
 | 203 | Voldo | 2 | 2 | — |
 | 242 | Sophitia | 5 | 5 | — |
-| 281 | Ivy | 5 | 3 | idx283, idx291 — build_skinned produces non-finite normals at GLB export (OverflowError); source pool normals are finite (0 NaN / 3,898 verts in idx283) — solver-side degenerate-bone residual, re-runnable when the solver handles it |
+| 281 | Ivy | 5 | **5 (phase 15)** | idx283, idx291 — SOLVED phase 15: root cause was the rigid reader's +8 start shift on trailer-span parts (phase-4 heuristic): it moved the vertex color word into the normal-Y slot — white colors read as NaN (part excluded as a fake 'sheet'), grey colors read as ~-3.4e38 and overflowed float32 packing after the node transform. Reader fixed (`tools/build_skinned.py`), both regenerated with all 41 parts + gated + renders viewed — see `PHASE15-PROBES.md` job 1 |
 | 320 | Kilik | 3 | 3 | — |
 | 359 | Xianghua | 5 | 5 | — |
 | 398 | Yoshimitsu | 3 | 3 | — |
@@ -121,7 +121,7 @@ hakama), coherent and fully textured.
 | 632 | Cassandra | 5 | 5 | — |
 | 671 | Necrid | 1 | 1 | — |
 | 710 | Yun-seong | 3 | 3 | — |
-| 788 | (rigid-only slot) | 1 | 0 | idx789 — rigid-only bundle class (730,240 B; its base slot was never a skinned fighter); the skinned pipeline reads past EOF on its rec28 layout — decode path is the rigid/placed route, not run here |
+| 788 | (rigid-only slot) | 1 | **1 (phase 15)** | idx789 — SOLVED phase 15: rigid-only humanoid (102/102 parts type 0, no skin pool, 52 nodes, 6 materials/6 VXT textures, 6,823 verts); assembled via the rigid path (`tools/build_rigid.py`) + VXT textures — a rocky segment golem with a rune-orb torso core (render viewed, `PHASE15-PROBES.md` job 2). No identity assigned (canon owner-pending) |
 | 827 | UNIDENTIFIED (1e) | 2 | 2 | — |
 | 866 | UNIDENTIFIED (1f) | 2 | 2 | — |
 | 905 | UNIDENTIFIED (20) | 2 | 2 | — |
@@ -130,3 +130,16 @@ hakama), coherent and fully textured.
 Audio/video census above is superseded by extraction:
 `PHASE14-AV-INVENTORY.md` + `PHASE14-AV-MANIFEST.json` (release
 `scii-phase14-av`).
+
+## Phase 15 update — variants 83/83 accounted
+
+All 83 variant bundles are now decoded (82) or assembled (idx789,
+rigid path): Ivy idx283 + idx291 regenerated after the solver's
+reader fix, idx789 assembled as a rigid model. Totals: 83/83
+accounted with final classes; embedded texture images 1,964 + 22 +
+22 (Ivy) + 6 (idx789). Evidence: `PHASE15-PROBES.md`, renders in
+`phase15-proof/`. Probes closed: rec80 secondary = runtime-created
+texture, draw-time stage binding unproven (created-and-held
+verdict); type 0xc = section 12 = character sound, `mmx` CRI
+sound-bank container (mapping proven from FUN_00033fb0; codec
+closed). `CANON-CONVERSION.md` untouched.

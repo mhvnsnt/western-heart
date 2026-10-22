@@ -205,3 +205,23 @@ probes: `PHASE14-PROBES.md`; AV: `PHASE14-AV-INVENTORY.md` +
 4. **Ivy variant solver residual** — idx283/idx291 (non-finite normals from the bind solve).
 5. **In-bundle sound (type 0xc)** — format unproven; FUN_00033fb0 decompile is the named next step.
 6. **rec80 secondary texture role** — pointer proven real; stage binding unproven.
+
+## Phase 15 update (2026-10-22) — variants 83/83, probes closed
+
+Lane record: `PHASE15-STATE.md`; evidence: `PHASE15-PROBES.md`;
+renders: `phase15-proof/`. Motion untouched (capture gate);
+`CANON-CONVERSION.md` untouched.
+
+| Class | Decoded | Wired | Left before playable |
+|---|---|---|---|
+| Costumes (v982 variants) | **83/83 accounted** — idx283 + idx291 (Ivy) regenerated after the +8 trailer-span reader fix in `tools/build_skinned.py` (landed in-repo this phase; finite-normal export assertions added). NOTE: the same misread silently dropped trailer-span rigid parts from all 102 previously shipped GLBs (255 parts / 25 bundles) — re-decode of the shipped set is a named follow-on; idx789 assembled via the new rigid path `tools/build_rigid.py` (102 parts, 6 images) in `models-textured/variants-idx788-rigid-only-b/` | GLBs landed per-fighter; renders viewed for all three (`phase15-proof/`) | Costume switching in-game is game-side work |
+| Textures (secondary layer) | rec80 +0x0c: relocated as a runtime pointer beside the primary (FUN_00025080) and every referenced VXT record is created/uploaded at load (FUN_00025300) — secondary textures are runtime-created, held as alternate material records; no draw-time stage binding found in the interpreter/sorter/aux/material-setup functions read | Verdict in `PHASE15-PROBES.md` job 3 | A bake of the secondary layer waits on proof of a draw-time binding (dynamic capture territory); shipping rule unchanged (primary only) |
+| Audio (in-bundle type 0xc) | **Identified**: section index = type (FUN_00033fb0 core, decompiled); type 0xc = section 12 = キャラサウンド (character sound), payload = CRI `mmx` sound-bank container (magic + own total size, XHDp sub-bank at +0x40, registered by FUN_000ed4d0 → FUN_000ed440); type 0x02 is the smaller name-voice `mmx` | Identification + census in `PHASE15-PROBES.md` job 4 | Waveform codec inside `mmx` entries is closed (no ADX frames; vgmstream rejects container and sub-bank slices) — extraction waits on a CRI-middleware decode |
+
+### Still blocking SCII true 100% after phase 15
+
+1. **Animations/motion** — unchanged: gated on the parent lane's dynamic emulator capture (GRE PR #40).
+2. **Canon assignment** — owner-pending (`CANON-CONVERSION.md`, untouched).
+3. **Game-format movesets** — frame/damage fields + pairing table + motion data (unchanged).
+4. **In-bundle sound extraction** — type-0xc `mmx` codec closed (identification complete).
+5. **rec80 secondary at draw time** — created-and-held proven; visible-layer bake only if a binding is ever proven.
