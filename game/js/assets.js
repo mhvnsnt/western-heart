@@ -28,8 +28,8 @@ export const MODEL_URLS = {
   // DIABLO Attire 1 (owner 2026-10-20, Tripo pull aee46f6a): the fantasy-demon
   // Tripo is the main attire. The old gtainside Heihachi conversion stays at
   // assets/models/diablo.glb as the ladder-back (not deleted).
-  diablo: '../roster/diablo/attires/attire1/model.glb',
-  'diablo-attire1': '../roster/diablo/attires/attire1/model.glb',
+  diablo: '../roster/diablo/attires/attire1/model-rigged.glb',
+  'diablo-attire1': '../roster/diablo/attires/attire1/model-rigged.glb',
   // Diablo Attire 2 — Devil God (owner 2026-10-20, Tripo pull).
   'diablo-attire2': '../roster/diablo/attires/attire2/model.glb',
   // SLICE Attire 1 (owner 2026-10-21): Tekken 7 Dragunov teardown model
@@ -49,14 +49,14 @@ export const MODEL_URLS = {
   'zui-attire1': '../roster/zui/attires/attire1/model-rigged.glb',
   'zui-attire2': '../roster/zui/attires/attire2/model.glb',
   // Tripo pulls wired 2026-10-19 (owner: stop saying "not in the repo").
-  phantom: '../roster/phantom/attires/attire1/model.glb',
-  skull: '../roster/skull/attires/attire1/model.glb',
+  phantom: '../roster/phantom/attires/attire1/model-rigged.glb',
+  skull: '../roster/skull/attires/attire1/model-rigged.glb',
   // KRONOS (owner custom Zangief fighter, 2026-10-19): Tripo models live at
   // tripo-recovery/kronos_attire1_default.glb/ + kronos_attire2_timberwolf/;
   // copying the GLB into roster/kronos/attires/attire1/model.glb is a follow-up.
   kronos: '../roster/kronos/attires/attire1/model.glb',
   // SAM-UR-A1 Attire 1 (owner 2026-10-19): Tripo pull replaces the fan-rip placeholder.
-  'sam-ur-a1': '../roster/sam-ur-a1/attires/attire1/model.glb',
+  'sam-ur-a1': '../roster/sam-ur-a1/attires/attire1/model-rigged.glb',
   // SAKU RA (2026-10-21, lane 4 rig batch 1): unrigged Tripo static -> model-rigged.glb
   // via tools/auto_rig knn backend (donor pantera.glb); original model.glb untouched.
   'saku-ra': '../roster/sakura/attires/attire1/model-rigged.glb',
@@ -65,12 +65,12 @@ export const MODEL_URLS = {
   // Tripo Attire 2 (roster/awa-pop/ATTIRE-SLOTS.md slot 2) — the GLB was in the
   // repo with no key, so it could never load.
   'awa-pop-attire2': '../roster/awa-pop/attires/attire2/model.glb',
-  'purple-rain': '../roster/purplerain/attires/attire1/model.glb',
+  'purple-rain': '../roster/purplerain/attires/attire1/model-rigged.glb',
   nightwolf: 'assets/models/nightwolf.glb',
   'king-tyrant': 'assets/models/king-tyrant.glb',
   // KINPO Attire 1 (owner 2026-10-20): his Tripo pull is her MAIN attire.
-  kinpo: '../roster/kinpo/attires/attire1/model.glb',
-  'kinpo-attire1': '../roster/kinpo/attires/attire1/model.glb',
+  kinpo: '../roster/kinpo/attires/attire1/model-rigged.glb',
+  'kinpo-attire1': '../roster/kinpo/attires/attire1/model-rigged.glb',
   // Previous A1 (Asuka-based game model, provenance unknown) laddered back
   // to a legacy alternate 2026-10-20 — NOT deleted.
   'kinpo-legacy': 'assets/models/kinpo.glb',
