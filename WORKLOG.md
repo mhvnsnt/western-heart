@@ -1,5 +1,63 @@
 # WORKLOG — DEATHFANG build (2026-10-19/20, branch feat/deathfang-yamazaki-20261019)
 
+## 2026-10-22 — Worker 37 (main menu overhaul): T8-style main menu rebuild
+
+Owner directive (verbatim): "The main menu is ugly and prototype-looking. Rebuild it
+per everything described: Tekken 8 menu layouts adapted for mobile/phone inputs (from
+T8 visual references, since we don't have T8 files). Tekken 7 teardown menu structure
+underneath. All the modes we've been adding need to show up."
+
+What changed (branch mainmenu/t8-rebuild):
+- game/index.html: replaced the prototype vertical button stack (#screen-menu) with a
+  T8-adapted layout — full-bleed hero backdrop (title-bg.png + cinematic wash + CSS
+  ember drift), top player bar (player card · Soul Urge 9-pip meter · rank badge),
+  compact italic WESTERN HEART wordmark, 10-item T8 rail (STORY / VERSUS / ONLINE /
+  ARCADE / SIDE GAMES / TRAINING / CREATION SUITE / COLLECTION / DAILY CHALLENGES /
+  OPTIONS), bottom status bar with rotating news ticker, slide-in submenu panel,
+  player card editor, "in the forge" dialog, toast.
+- game/mainmenu.css (NEW): T8 visual grammar — heavy italic condensed type
+  (skewX, no webfont needed), T8 crimson slash on the active item, angular
+  clip-path cards, near-black over WH dusk-shrine. Portrait: bottom-anchored
+  scrollable rail; landscape: true T8 left rail + right-side submenu panel.
+- game/js/mainmenu.js (NEW): menu controller. Submenu card data for all modes;
+  working modes route via data-action through the existing delegated handlers;
+  unbuilt modes (Tournament, Gungaku, Gallery, Jukebox, Replays, Daily Challenges)
+  open an honest "IN THE FORGE" panel. Ranked rides worker 30's rank system
+  (js/ranks.js + game/data/ranks.json — rank names NEVER hardcoded here): ONLINE
+  submenu has RANKED BATTLE (mode-rankbattle) + RANK HALL (show-ranks); the topbar
+  rank badge shows the best offline/online rank from the wh_ranks store and opens
+  the Rank Hall. Player card (name/title) persists to localStorage wh_player_v1.
+  Soul Urge pips are the Nine-Soul Meter's menu surface (ignite in-fight).
+- game/js/menus.js: import + initMainMenu() call in initMenus(); the four
+  special-action wirings (mode-options/records/heartmind/episodes) converted from
+  one-time querySelectorAll to a single delegated document listener so dynamically
+  created submenu cards route correctly. buildMenuButtons is a safe no-op now that
+  .menu-buttons is gone (returns null, no duplicates).
+- game/js/main.js: the data-action forEach at module eval converted to one
+  delegated document listener — identical routing (incl. worker 30's
+  mode-rankbattle/show-ranks), covers dynamic cards.
+
+Anti-clobber note: main moved mid-task (worker 30's RankBattleController +
+mode-rankbattle/show-ranks + TAP □/△ throw prompt labels landed). Re-synced all
+touched files from main tip and re-applied the menu edits on top — worker 30's
+code is fully preserved. The first-draft custom 53-tier ladder panel was DELETED
+in favor of worker 30's Rank Hall (build on existing work, don't duplicate).
+
+T7 structure underneath: STORY (Trial/Episodes/Heart & Mind) · VERSUS (1v1/Team) ·
+ONLINE (Ranked Battle/Rank Hall/Tournament) · ARCADE (Ladder/Survival/Time Attack/
+Soul Surge) · SIDE GAMES (Qombat/Trader) · TRAINING (Training/Gungaku) · CREATION
+SUITE · COLLECTION (Gallery/Jukebox/Replays) · DAILY · OPTIONS — T7/T8 hierarchy.
+
+Verification: node --check on all three JS files; 62-assertion DOM-stub test of
+mainmenu.js (init render, all 8 submenus' card counts, data-action routing incl.
+mode-rankbattle/show-ranks, rank badge refresh from wh_ranks store, card editor
+save→localStorage→topbar, forge open/close, toast, every user-required mode has a
+menu entry) — 62/62 pass; all getElementById targets present in index.html; CSS
+braces balanced; ranks.json confirmed 53 tiers matching the user's ladder.
+Headless Chromium in this VM cannot render (--screenshot/--dump-dom produce
+nothing), so live visual proof (portrait + landscape screenshots, tap-through) is
+deferred to the parent agent's live browser session.
+
 Owner orders 2026-10-19 ~20:06–20:12 CDT: build DEATHFANG (all caps, one word) —
 proprietary character based on Iori Yagami; keeps Iori's moves/stance/animations;
 reskin as prisoner/slave to his own grief, chained/shackled, emo, Soul Eater
@@ -1671,7 +1729,7 @@ Tekken on-hit stack: (1) jagged star-burst HIT SPARK sprite (canvas-generated, a
 
 ### Files (no deletions)
 - `game/js/online.js` (NEW) — OnlineController: ONLINE hub, lounge browser/create/room, NetVersus (WebRTC+rollback versus), tournament + challenges screens; self-inits, additive (no main.js/menus.js/modes.js edits)
-- `game/index.html` (MODIFY, 2 lines) — ONLINE menu button + online.js script tag (fresh base from main, byte-verified)
+- `game/index.html` (MODIFY, 2 lines on current main) — ONLINE menu button + online.js script tag (rebased onto main 2026-10-22 19:29 UTC: kept worker22 integration.js + worker30 RANK BATTLE/HALL)
 - `game/js/tournament.js` (NEW) — single-elim engine: seeding, BYEs, CPU fill, serializable brackets
 - `game/js/tournament-ui.js` (NEW) — bracket rendering + local tournament runner (real fights)
 - `game/js/challenges.js` (NEW) — ChallengeManager: additive onMatchEnd chain + mode-clear hooks, localStorage progress
@@ -1682,7 +1740,7 @@ Tekken on-hit stack: (1) jagged star-burst HIT SPARK sprite (canvas-generated, a
 - `game/netplay/bridge/test-bridge.mjs` (NEW) — 7 tests
 - `game/netplay/lobby/lobby-protocol.js` (NEW) — LobbyClient state machine (quick/custom/create, rotation, spectate, chat, fight requests)
 - `game/netplay/lobby/test-lobby.mjs` (NEW) — 5 tests (fake server)
-- `game/netplay/signaling/server.js` (MODIFY) — v2 lobby protocol (8p rooms, passwords, host migration, quick-match queue, bracket broadcast, WebRTC relay); v1 demo protocol unchanged
+- `game/netplay/signaling/server.js` (MODIFY) — v2 lobby protocol ported onto main's minimal server (another worker rewrote it to 66 lines while this PR was open); v1 demo protocol byte-identical to main, lobby layer appended
 - `game/tests/online-systems.test.mjs` (NEW) — 12 tests (brackets + rotation)
 - `game/tests/challenges-manager.test.mjs` (NEW) — 8 tests (progress/claim/persist)
 - `docs/netcode/NETCODE-ARCHITECTURE.md` (NEW) — honest playable-vs-architectural doc + browser P2P constraints
@@ -1691,17 +1749,15 @@ Tekken on-hit stack: (1) jagged star-burst HIT SPARK sprite (canvas-generated, a
 - `WORKLOG.md` (this entry)
 
 ### Proof
-- `node --test game/netplay/bridge/test-bridge.mjs` → 7 passed (incl. 600-frame adapter determinism self-test, 0 mismatches)
-- `node --test game/netplay/lobby/test-lobby.mjs` → 5 passed
-- `node --test game/tests/online-systems.test.mjs` → 12 passed
-- `node --test game/tests/challenges-manager.test.mjs` → 8 passed
-- Signaling server v2: 16/16 protocol tests pass (lobby CRUD, passwords, ready/rotation, host-only start, chat, signal relay, idempotent results, quick-match pairing, v1 compat)
-- Real LobbyClient vs real server: 9/9 pass
-- Headless Chromium screenshots of all 4 screens rendering (docs/online-proof/)
-- `node --check` clean on all new/edited JS
+- `node --test` (repo root): **32 passed, 0 failed** — bridge (7, incl. 600-frame adapter determinism self-test), lobby client (5), tournament+rotation (12), challenge manager (8).
+- Signaling server v2 (rebased): **11/11 pass** on the new base — v1 join/peer/signal (main's), v2 welcome/create/join/ready/match-start/chat/targeted-signal/match-end, plus real LobbyClient create/join/state (3/3).
+- Headless Chromium screenshots of all four screens rendering (docs/online-proof/ — viewed and verified).
+- `node --check` clean on every new/edited JS file.
+- Honest architecture doc: `docs/netcode/NETCODE-ARCHITECTURE.md` (playable-vs-architectural table + browser P2P constraints: STUN/TURN, no authority, 2-player, same-version requirement).
 
 ### Flags for coordinator
 - Browser P2P needs a TURN server for symmetric NATs before shipping (STUN default is Google's; documented).
 - Ranked/leaderboards are the Nakama lane (researched, not wired).
 - The combat sim port is the critical path to real-fighter netplay; FIELD_CONTRACT + self-test harness are ready.
 - Challenge stat mapping is honest: hit-count challenges are phrased as damage (no landed-hit counter in the engine) — see CHALLENGE_TYPES docblock.
+- Rebased 2026-10-22 ~19:35 UTC onto main 7fe0cb41 (worker22 integration + worker30 ranks landed while PR was open); server.js v2 ported onto the rewritten minimal base, index.html re-applied, WORKLOG re-appended.
