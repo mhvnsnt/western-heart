@@ -257,3 +257,46 @@ Owner: "his whole body is facing the wrong way and his head is facing the right 
   with a triangle-based decimate target (zui-attire1 heat failed for every vertex before).
 - Not done here: Phantom and Sam-ur-a1 models have ZERO skinned meshes (unrigged statics, on main
   since 2026-10-18) — queued for the auto-rig pass with Zui/Diablo/Rave.
+
+# WORKLOG — Moveset gaps B3: Frankenstein file + charger-attire2 index (2026-10-21, branch fix/moveset-gaps-20261021)
+
+Subagent lane (audit REPORT.md B3): two gaps closed, four commits.
+
+## GAP 1 — doc-frank-frankenstein had no moveset file, no MOVESET_MAP entry
+- New `game/assets/movesets/doc-frank-frankenstein.json`: derived from
+  `doc-frank-hood.json` (same fighter DOC FRANK, same gunjack T3 teardown
+  source, same SOURCE-MERGE lineage). Verified: hood and wowomomo share a
+  byte-identical 788-move dict under their own ids, so sibling attire =
+  identical frame data is the established convention. Only the `fighter` id
+  and a new `derivation` provenance object changed; all frame data
+  (moves/strings/specials/slots/hit_words/stance_after/merge_sources)
+  verified byte-identical to the source file. No hand-authored frame data
+  (docs/RULES_NO_GUESSING.md). The repo's own generator
+  (tools/gen-movesets-t3.py) could not be re-run here: the decoded bank data
+  (teardown/tekken3/movesets, banks/) is not in this checkout.
+- `game/js/movesets.js`: added 'doc-frank-frankenstein' to MOVESET_IDS
+  (commented, matching list style).
+- `game/js/fighter.js`: added 'doc-frank-frankenstein': 'gunjack' to
+  MOVESET_MAP (beside the sibling doc-frank entries).
+- `game/assets/movesets/index.json`: added the fighters entry, computed with
+  the tool's own formula (tools/moveset-merge/merge_sources.py build_index):
+  display DOC FRANK, tekken_base "Doc Frank", t3_source gunjack,
+  anim_bank bosconovitch, moves 788, inputs 176, bytes 568638.
+- `game/tests/fighter-completeness.test.mjs`: removed
+  'doc-frank-frankenstein' from KNOWN_GAPS. Test run: 4/4 pass
+  (node --test game/tests/fighter-completeness.test.mjs).
+
+## GAP 2 — charger-attire2.json on disk but never fetched
+- File existed on disk and 'charger-attire2' was already in MOVESET_IDS
+  (movesets.js:69), but absent from `game/assets/movesets/index.json`, so
+  runtime _fetchOne skipped it and Charger Attire 2 fought on the bryan
+  aggregate. Added the index entry with the tool's formula: display CHARGER,
+  tekken_base "Blanka (SF) — fighter replaced by CHARGER (owner 2026-10-20)",
+  t3_source bryan, moves 199, inputs 199, bytes 92625 (real file size;
+  charger's own entry is 94261).
+- Index key order verified identical to a fresh build_index() run.
+
+## Noted, not in this lane's scope
+- `deathfang-werewolf.json` exists on disk but is also absent from
+  index.json (found while verifying build_index()). Left alone; belongs to
+  another lane.
