@@ -1381,6 +1381,42 @@ Also found: the feet-geometry cue misreads chunky-heel boots as -Z (false -Z on 
 - `docs/proof/tpose-batch-2026-10-22/` (7 files: 6 renders + audit + README)
 - `tools/tpose-render/render.py` (posing bug fixes)
 
+## 2026-10-22 — Creation suite: MB-Lab/GNM/MPFB2 toolchain + Mixamo soldier killed (worker 6 round)
+
+### Owner instructions (verbatim)
+- "Pull MB-Lab into the toolchain end to end... wire it into the character creation suite so the suite can use MB-Lab's parametric body/face/skin/hair/clothing generation. 100% wired, no stubs."
+- "Replace it with a WWE 2K-style template system: multiple changeable body templates (different builds), face templates/presets, skin tones, face parts — the full create-a-superstar starting experience. No more Mixamo soldier as the default anything."
+- Refinements applied: templates PULLED from WWE teardown files (not hand-tooled); every tool in tools/ wired into suite menus (tool-to-menu wiring law); same-job tools unified with three access layers (unification law); GNM + MPFB2 pulled in; Create New Fighter flow = template select first, then the WWE menu sequence.
+
+### Anti-clobber compliance
+- Working base re-synced to main 11d3ee32f5be0b81cb964a7071bfe75bce5367b3 before committing. The 4 edited-existing files (create-fighter/js/app.js, js/preview3d.js, index.html, creation-suite-ui/js/suite.js) were diffed against current main: main was unchanged in all touched regions — working copy = main + this lane's edits. No rebase needed. All edits surgical (muse.edit); no whole-file writes of existing files. All other files in the PRs are new paths (verified 404 on main).
+
+### Toolchain (PR 1: tools + docs)
+- `tools/mb-lab/`: fetch-mb-lab.sh, run_mblab_job.py (headless Blender 4.0.2; verified COMPATIBLE — MB-Lab 1.8.1 supports 4.0), README, .gitignore. License: code GPL-3.0, database (meshes) AGPL-3.0 — documented; generated template meshes are AGPL-3.0 with scripts+specs as corresponding source.
+- `tools/gnm/`: fetch-gnm.sh (adds minimal runtime deps), run_gnm_job.py (new; pure stdlib+numpy GLB writer with joints+skin; semantic identity needs TF, falls back to seeded PCA with a logged note), README, .gitignore. License Apache-2.0 verified. google/gnm-3 weights are a GATED HuggingFace repo — download worked from the job host (53MB gnm_head.npz cached); first-run auth documented.
+- `tools/mpfb2/`: fetch-mpfb2.sh (with --with-blender for the 4.2+ live path), README, .gitignore. License: GPL-3.0 code / CC0 assets. MPFB2 requires Blender ≥4.2 (incompatible with pinned 4.0.2): data path works today (MPFB_<id> morph targets baked to shape keys), live path documented.
+- `tools/suite-jobs/`: run_job.py dispatcher (mb-lab, gnm, mpfb2-live, gamerig registered), server.py (stdlib-only HTTP job server :8766, POST/GET /jobs, GET /tools, CORS open).
+- `tools/gltfpack/`, `tools/cue4parse/`: fetch scripts + READMEs (verified upstreams: zeux/meshoptimizer, FabianFG/CUE4Parse).
+- Build-A-Bod / NaughTyRig / Fluid Painter: NO verifiable open-source upstream found — NOT pulled, documented as pending in the wiring map (not stalled).
+- Docs: docs/research/CREATION-TOOLCHAIN-MBLAB-GNM-MPFB2.md (licenses, Blender compat), docs/research/WWE-CAW-EXTRACTION-STATUS.md (per-game extractability), docs/CREATION-FLOW-MAP.md (No Mercy sequence as source), docs/CREATION-SUITE-TOOL-WIRING-MAP.md (every tool in tools/ placed), docs/CREATION-SUITE-UNIFICATION-MAP.md (merged systems per domain).
+
+### Suite (PR 2: templates + suite wiring)
+- Mixamo soldier DEAD as a default: removed from create-fighter/js/app.js + preview3d.js (no default model, no silent fallback — empty stage until template chosen; errors route to onModelError → re-opens template select) and creation-suite-ui/js/suite.js (blank fighter base = templates/meshes/technician.glb).
+- `customization/templates/`: body-templates.json (9 templates: 3 Heavyweight / 3 Cruiserweight / 3 Women's, No Mercy body-type names + mb_lab bake specs), face-presets.json (wwe + gnm layers), skin-tones.json, face-parts.json, README (schema + AGPL notice), meshes/ (9 MB-Lab bakes, ~9MB each decimated, rigged).
+- `customization/create-fighter/js/creation-flow.js` (new): template-select overlay (division tabs → cards → applyTemplate), WWE step wizard bar (template→body→face→skin→hair→facial hair→attire→profile→moveset→done per docs/CREATION-FLOW-MAP.md), Jobs panel UI (submits to :8766, polls, loads finished GLB). JOBS rail button + renderJobsTab route in app.js.
+- game/js/assets.js Mixamo-skeleton references untouched (fight rig standard, out of scope).
+
+### Proof
+- MB-Lab: 9/9 template bakes completed (rigged GLBs); proof render mb-technician.png.
+- GNM: real head baked end-to-end via job server (V=17821 J=4, gnm-head-proof.png); runner export path also tested with synthetic model.
+- Job server: :8766/tools lists mb-lab+gnm runnable; gnm job submitted via POST → done with GLB.
+- Suite play-through (headless Chromium, file:// + route interception): template select auto-opens on boot with 3 Heavyweight cards → click card → wizard bar → steps → jobs tab. Screenshots: suite-2-template-select.png, suite-3-template-applied.png, suite-4-wizard.png, suite-5-jobs.png.
+- No Mixamo soldier anywhere in the new-fighter flow (verified: F.model=null until template picked).
+
+### Follow-ups (not this lane)
+- GNM semantic expression names need the TF ExpressionSampler for English labels ("smile"); raw index mapping works without TF.
+- MPFB2 live path needs Blender 4.2+ fetched alongside (fetch-mpfb2.sh --with-blender).
+- If Build-A-Bod/NaughTyRig/Fluid Painter upstreams surface, they get the standard fetch+menu treatment (rows reserved in the wiring map).
 ## 2026-10-22 — Worker 8: Pantera Leo Man mane-eats-face FIX (PR #597)
 
 **Owner report:** "The mane eats his face. When the user played as Leo Man, the face wasn't visible — the mane mesh covers/clips through the face."
