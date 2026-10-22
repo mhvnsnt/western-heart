@@ -61,7 +61,31 @@ only; HEAD == 3c0dd6e4 at lane start, verified).
    consumer caller-chain or the same PPSSPP capture session.
 
 3. **TEKKEN6-FINAL-STATE.md** — static closeout with PR/round
-   citations + final WIRING-INVENTORY section. Status: PENDING.
+   citations + final WIRING-INVENTORY section. Status:
+   **COMPLETE** — `TEKKEN6-FINAL-STATE.md` written (100%-static
+   list, capture-class pair with the PPSSPP spec pointer,
+   named residuals, owner-pending canon, input chain);
+   WIRING-INVENTORY round-15 (final) section appended.
+
+## Exact post-round-15 T6 residual list
+
+1. **NTPP texture pixels + CLUT** — CAPTURE-CLASS (one PPSSPP
+   GE capture unlocks). G3 texture gate NOT crossed.
+2. **Palette unit->bone** — CAPTURE-CLASS (same capture).
+3. **COM tail-zone payload schemas** (slots 25/26/30 payloads)
+   — static negative exhausted; next hop = EBOOT consumer
+   caller-chain or the capture session's RAM dump.
+4. **E00D (U/B)** — ring-assigned only; 0 corpus occurrences;
+   no decode depends on it.
+5. **E00B (B)** — proven as a system (weakest of the 13);
+   first re-examination candidate if the font atlas is captured.
+6. **Owner-pending canon** — character mapping/naming and
+   parts-kit assignment (segment labels remain
+   contiguity-INFERRED, unmerged).
+
+Nothing else is open statically. Stage geometry, count-word
+176, COM tail records, containers, NDPP, skeletons, and the
+notation layer are all closed above.
 
 ## Proven ground (not redone, per brief)
 
