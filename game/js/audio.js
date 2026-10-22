@@ -37,10 +37,20 @@ class AudioEngine {
     this.sfxGain.gain.value = 0.85;
     this.sfxGain.connect(this.master);
 
+    // VOICE (2026-10-22): dedicated voice bus — file-based character
+    // voice plays here so it never fights music/SFX for gain.
+    this.voiceGain = this.ctx.createGain();
+    this.voiceGain.gain.value = 0.9;
+    this.voiceGain.connect(this.master);
+
     this.enabled = true;
   }
 
   get now() { return this.ctx ? this.ctx.currentTime : 0; }
+
+  /* Voice bus accessor for voice.js. Falls back to the SFX bus when the
+     context was never unlocked (e.g. headless tests). */
+  voiceBus() { return this.voiceGain || this.sfxGain || null; }
 
   _osc(type, freq, t0, t1, gain, dest) {
     if (!this.enabled) return;

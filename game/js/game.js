@@ -15,6 +15,7 @@ import { Arena } from './scene.js';
 import { lazy } from './lazy.js';
 import { AIController } from './ai.js';
 import { audio } from './audio.js';
+import { voice } from './voice.js';
 import { getStage } from './stages.js';
 import { applyFighterProfile } from './customization-consumer.js';
 
@@ -74,6 +75,10 @@ export class Game {
      fighter internals directly. */
   async startMatch(playerChar, enemyChar, stageId, opts = {}) {
     this.resetFightState();
+    // VOICE (2026-10-22): unlock the voice pipeline (builds the subtitle
+    // layer; the AudioContext unlock inside is idempotent — main.js
+    // unlockAudio owns the gesture).
+    voice.unlock();
     // LOADSPEED: warmed during menu idle; usually cached by fight time.
     const { Fighter, setArenaLimit } = await lazy.fighter();
     // Modes lane: per-match round target (default = classic best-of-3).
@@ -116,6 +121,28 @@ export class Game {
     // Stage content streams in (Tekken retro OBJs fetch async); the fight
     // intro runs on the base arena while the shell loads.
     this.arena.setStage(stage.id);
+    // INTRO INTERACTION (2026-10-22): Tekken-style pre-fight character
+    // exchange, played in-engine (both fighters live in the arena)
+    // before round 1. Skippable; modes opt out via
+    // opts.skipIntroInteraction. The interaction module loads on demand
+    // (dynamic import) so the menu boot path stays lean.
+    if (!opts.skipIntroInteraction) {
+      try {
+        const { playIntroInteraction } = await import('./intro-interactions.js');
+        // Idle the fighters behind the dialogue: their update() only runs
+        // during rounds, so pump it on a timer for the beat's duration.
+        const idlePump = setInterval(() => {
+          try {
+            if (this.p1 && this.p2 && !this.p1.dead && !this.p2.dead) {
+              this.p1.update(1 / 60, this.p2);
+              this.p2.update(1 / 60, this.p1);
+            }
+          } catch (e) { /* never break the intro on animation */ }
+        }, 1000 / 60);
+        await playIntroInteraction(this, playerChar, enemyChar);
+        clearInterval(idlePump);
+      } catch (e) { console.warn('[WH] intro interaction failed:', e?.message || e); }
+    }
     this._startRound();
     // Modes lane: HP carry-over (survival / team battle / qombat) —
     // applied after _startRound's full-heal so the carry is exact.
@@ -491,9 +518,11 @@ export class Game {
     this._roundLockT = 3.0;
     this.input.enable(false);
 
+    // VOICE (2026-10-22): the winner's win-pose voice line. Fire-and-forget —
+    // never blocks the 3 s win beat; subtitle-only until recordings land.
     const p1Down = this.p1.hp <= 0, p2Down = this.p2.hp <= 0;
-    if (p1Down && !p2Down) { this.wins.p2++; this.p1._knockout(-1); this.p2.victory(); this.ui.banner('K.O.'); }
-    else if (p2Down && !p1Down) { this.wins.p1++; this.p2._knockout(1); this.p1.victory(); this.ui.banner('K.O.'); }
+    if (p1Down && !p2Down) { this.wins.p2++; this.p1._knockout(-1); this.p2.victory(); this.ui.banner('K.O.'); voice.play(this.p2.char.id, 'win'); }
+    else if (p2Down && !p1Down) { this.wins.p1++; this.p2._knockout(1); this.p1.victory(); this.ui.banner('K.O.'); voice.play(this.p1.char.id, 'win'); }
     else { this.wins.p1++; this.wins.p2++; this.ui.banner('DOUBLE K.O.'); }
 
     this.ui.setRounds(this.wins);
