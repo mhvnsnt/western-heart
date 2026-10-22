@@ -25,7 +25,7 @@ character assignment. Nothing here sits in the tripo inbox.
 | 2 | Cydney (MilkGuy_3D) | `cydney` | `sess-3959612345/…-1-Cydney_Sweeny.rar` | 296 MB | ✅ extracted | staged: `~/workspace/fix2/smutbase-source/cydney/` (`Cydney Sweeny.blend`, 541 MB) | **Size UP breasts and ass when rigging** (user note). Review nude at intake. |
 | 3 | Rahkasa v1.1 | `rahkasa` | `sess-3045850964/…-4-RahkasaV1.1.blend` | 11.5 MB | ✅ in-repo | `roster/rahkasa/intake/RahkasaV1.1.blend` | **Oversoul spirit body** — user-picked four-armed female = a spirit body of a Spirit in the Eastern Mind canon (connects to Zen's Oversoul / souls Tou, Kai, Retsu, Gyou). |
 | 4 | Mina Ashido (rigify) | `mina-ashido` | `sess-3045850964/…-9-Mina_Ashido_rigify_N3KT032.zip` | 18.2 MB | ✅ in-repo | `roster/mina-ashido/intake/` (13 files: rigify .blend + `Mina textures/`) | Rigify-rigged MHA character. Needs character assignment (new fighter or customization part donor?). |
-| 5 | Pink Narwhal | *(stage)* | `sess-3045850964/…-8-ThePinkNarwhal_zVamCQj.blend` | 51.6 MB | ✅ in-repo | `game/assets/stages/pink-narwhal/` | **ARENA ASSET, not a character.** Possible link to the club/DJ arena base plan (`~/workspace/intake-stage/stages/CLUB-ARENA-PLAN.md`, SmutBase model b8ada591) — **unverified**: needs a Blender look to confirm whether this file IS that base. Flagged for the arena lane. |
+| 5 | Pink Narwhal | *(stage)* | `sess-3045850964/…-8-ThePinkNarwhal_zVamCQj.blend` | 51.6 MB | ✅ staged | staged: `~/workspace/fix2/smutbase-source/pink-narwhal/`; registered in-repo at `game/assets/stages/pink-narwhal/README.md` | **ARENA ASSET, not a character — CONFIRMED 2026-10-22: this IS the club/DJ arena base (SmutBase b8ada591), a strip-club map.** Base for the club/djbooth/concert arena variants per `~/workspace/intake-stage/stages/CLUB-ARENA-PLAN.md`. 51.6MB exceeds the blobs-API single-request limit (HTTP 422; gzip no relief) — staged, not committed. |
 | 6 | Fishnet material (RenCeifer) | *(material)* | `sess-3045850964/…-6-Fishnet_material_by_RenCeifer.blend` | 159 KB | ✅ in-repo | `game/assets/materials/fishnet/` | **MATERIAL, not a model.** Shared material for the customization suite / attire lane. |
 | 7 | Parvati (Commission) | `parvati` | `sess-3045850964/…-2-ParvatiCommission.rar` | 326 MB | ✅ extracted | staged: `~/workspace/fix2/smutbase-source/parvati/` (`Parvati(Commission).blend`, 596 MB) | Was on the incoming list — landed. Awaiting character assignment. |
 | 8 | Vixen (Commission) | `vixen` | `sess-3045850964/…-3-Vixen_Commission.rar` | 412 MB | ✅ extracted | staged: `~/workspace/fix2/smutbase-source/vixen/` (`Vixen (Commission).blend`, 985 MB) | **Needs a full moveset built with TEKKEN inputs** (not her source game's input system). Was on the incoming list — landed. |
@@ -82,9 +82,9 @@ efe95e78…3d3f96dc898769  sess-3045850964/…-14-BuildABod_Male_1_3.7z         
 
 | PR | Contents |
 |---|---|
-| *(this doc)* | `docs/SMUTBASE-INTAKE-QUEUE.md` — the queue itself |
-| *(small character assets)* | `roster/rahkasa/intake/`, `roster/mina-ashido/intake/`, `roster/miruko/intake/`, `roster/tsuyu-asui/intake/` |
-| *(arena + material)* | `game/assets/stages/pink-narwhal/`, `game/assets/materials/fishnet/` |
+| #563 | `docs/SMUTBASE-INTAKE-QUEUE.md` — the queue itself (+ WORKLOG.md entry) |
+| #564 | `roster/rahkasa/intake/`, `roster/mina-ashido/intake/`, `roster/miruko/intake/`, `roster/tsuyu-asui/intake/` — small character sources |
+| #565 (planned) | `game/assets/stages/pink-narwhal/README.md` (registration), `game/assets/materials/fishnet/` — arena registration + shared material; queue-doc corrections |
 
 All merged via `git_merge.py` (Git Database API 3-way merge), CI green, no deletions.
 
@@ -94,6 +94,6 @@ All merged via `git_merge.py` (Git Database API 3-way merge), CI green, no delet
 2. **Cydney** — size up breasts/ass at rig time, per user note.
 3. **Rahkasa** — wire as the Oversoul spirit-body character (Eastern Mind canon).
 4. **Vixen** — build Tekken-notation moveset; do NOT reuse her source game's input system.
-5. **Pink Narwhal** — arena lane: confirm whether this is the club/DJ base (b8ada591) from the CLUB-ARENA-PLAN.
+5. **Pink Narwhal** — arena lane: CONFIRMED as the club/DJ arena base (SmutBase b8ada591, strip-club map). Build the club/djbooth/concert variants per `~/workspace/intake-stage/stages/CLUB-ARENA-PLAN.md`; source bytes staged at `~/workspace/fix2/smutbase-source/pink-narwhal/`.
 6. **movie-maddness** — identify the .blend's contents before any intake decision.
 7. **Character assignment** — Mina Ashido, Miruko, Tsuyu Asui, Parvati, Nyoka need fighter slots or explicit customization-donor designation.
