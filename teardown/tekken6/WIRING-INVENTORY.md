@@ -169,3 +169,22 @@ Tool: `tools/r10_batch.py`.
 | NTPP textures (B2) | GIDX word PROVEN = chunk tag (0x1040) + serial (idx06: 0x121/0x122/0x123 sequential) — not a format word. Slot-4 payload mapped as a directory of 0x460 B items ((0x10, offset, size) records). Pixel decode attempted on idx02 block 1 (16 CLUT variants, swizzled + linear) — all noise, VIEWED and rejected. No PNGs, no bake, no textured GLBs |
 | Census (B3) | Slice A-packages classified by slot pattern: 28 full-character / 3,002 boned part / 436 rigid NDPP part / 236 stage-object (+1,432 B-texture + 336 dir-other). Top-76 accounting closed (12 + 16 + 28 NTPP + 2 stubs + 18 COM = 76). Per-character ASSIGNMENT still unproven — packages stay unattributed beyond pattern |
 | Stage slot-9 (B5) | Layout one level deeper: BE directory of 0x20 B records + 40 × (0x8a0, offset) page pairs tiling idx24's payload to EOF + an embedded NTPP section at +0x1c0; payload is a BE float stream (95% float-sane). Page record format not yet decoded → no stage GLB |
+
+## Round-11 update (2026-10-22, PR #536)
+
+Evidence: `tools/round11-evidence/JOB1-PALETTE-XREF.md`,
+`tools/round11-evidence/JOB2-IDX00-SKELETON-VERDICT.md`,
+`tools/round11-evidence/JOB3-NTPP-CLASS-VERDICT.md`,
+`tools/round11-evidence/JOB4-B3-ASSIGNMENT.md`,
+`tools/round11-evidence/JOB5-B5-PAGES-VERDICT.md`,
+`tools/round11-evidence/r11_b3_assignment.json`,
+`tools/round11-evidence/r11_skeleton_correction.json`.
+Tool: `tools/r11_skeleton_fix.py`.
+
+| Layer | State after round 11 |
+|---|---|
+| Bone palette / skinning | **Fragment BUILDER PROVEN in the EBOOT**: function at 0x08ad161c emits (obj, out, index) → 12× 0x2B + 0x0B (52 B) from a 48 B-stride pose-matrix array at obj->[0] — byte-exact vs the RAM fragments; the RAM pool holds exactly 110 fragments (one full 110-bone set). The per-unit bone-index rule lives in the emitter's caller, which has no jal/data xref (jalr/vtable-called) and was NOT identified — palette mapping stays ambiguous between unit-ordinal and per-part-index sources, stated exactly in the Job-1 doc. Route 3 (COM/census) negative; route 2 (live GE capture) feasibility note landed for the coordinator. **No skinned GLBs (proof gate unmet — not guessed). G3 stays PARTIAL** |
+| Skeletons (idx00 discrepancy CLOSED) | Round-9 spot values PROVEN correct: bind joints compose T·R; BONE scales do NOT propagate into descendant translations (r10's TRS walk put idx00 ASHI_R at y=−9.7 vs mesh floor −0.7; fingers 30% past mesh span — overlay VIEWED). 24 CORRECTED skeleton GLBs `models/idx{nn}_*_r11.glb` shipped: glTF walk reproduces the proven bind pose to ≤0.02 units on all 24 (r10-shipped walks err up to 597.3 units). Prefer r11 GLBs for skeleton work |
+| NTPP textures (B2) | The NTPP class (vtable 0x08b9c568; RTTI name record at 0x08b9c5b0) is FULLY READ: it is a texture placement/animation object (defaults +0x98=1, +0x9c=110.0f) with NO pixel path — no byte loops, swizzle, CLUT, or GE texture commands in any of its six functions. No code-derived pixel parameters exist → the one-item code-derived decode cannot run; no blind sweep substituted, no textured GLBs. Slot-4 items are embedded NTPP sections (entropy 5.51). Residual target named: datatextureroot load path / render-layer GE upload |
+| Census (B3) | **Per-character assignment LANDED (confidence-labeled)**: bulk-order contiguity scored strong (A/B interleave exact 28/28; 21/28 segments near-identical kits; 12 top-76 + 28 slice anchors = 40 full-char packages). 28 anchor-proven / 5,206 contiguity-inferred / 236 unassigned (stage-pattern) in `r11_b3_assignment.json`. Inferred assignments live in the census evidence ONLY — no per-character model dirs touched. No fighter names claimed for segments |
+| Stage slot-9 (B5) | Round-10 "95% BE-float-sane" CORRECTED: pages are 80.5% zero bytes (the sane reading was a denormal artifact). All float-stream / byte-image / GE-list geometry hypotheses REJECTED with viewed evidence. Pages = sparse byte-record arrays, measured 16 B / 32 B record period. No stage GLB; residual = per-record field decode across the 16 B grid |

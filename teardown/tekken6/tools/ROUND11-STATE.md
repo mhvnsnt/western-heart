@@ -101,9 +101,63 @@ Disk tight (~91% used): minimal footprint, scratch in clone workdir, no bulk cop
 ## Results
 
 - BOOTSTRAP: branch created from 690f12f (PR #520 head), this file
-  committed + PR opened before analysis.
-- JOB 1: pending.
-- JOB 2: pending.
-- JOB 3: pending.
-- JOB 4: pending.
-- JOB 5: pending.
+  committed + PR #536 opened before analysis (96de961).
+- JOB 1 (PALETTE XREF) — BUILDER PROVEN, mapping ambiguous, no
+  skinned GLBs: the GE fragment emitter is FUN at 0x08ad161c —
+  emit(obj, out, index): reads a 3×4 float matrix from
+  obj->[0] + index*48, converts each float to GE imm24, writes
+  12× 0x2B + 0x0B = 52 B (byte-exact vs the RAM fragments).
+  RAM pool = exactly 110 fragments (one 110-bone set). The
+  emitter takes the bone index as an argument and has NO jal /
+  data xref in the EBOOT (jalr/vtable-called) — the per-unit
+  index rule lives in the unidentified caller; two candidate
+  sources stated exactly (unit ordinal vs per-part index).
+  Route 3 run, negative (no bone table in COM/census). Route 2
+  feasibility note landed. Evidence:
+  `round11-evidence/JOB1-PALETTE-XREF.md` +
+  `round11-evidence/dis/dis_08ad161c_emitter.txt`.
+- JOB 2 (idx00 DISCREPANCY) — VERDICT LANDED: composition
+  convention difference. Round-9 spot values (T·R chain, BONE
+  scales NOT propagated into descendant translations) are the
+  correct bind pose — recomposing idx00 both ways reproduces
+  both rounds' numbers to 0.1; TRS puts ASHI_R at y=−9.7
+  (mesh floor −0.7) and fingers 30% past the mesh span, TR is
+  in-mesh on every check (overlay VIEWED). idx00 unique: all
+  110 bones scale 1.04 = header f32. 24 CORRECTED skeleton
+  GLBs shipped (`models/idx{nn}_*_r11.glb`): standard glTF
+  walk reproduces the TR bind pose to ≤0.02 units on all 24
+  (r10-shipped walks err up to 597.3). Evidence:
+  `round11-evidence/JOB2-IDX00-SKELETON-VERDICT.md`,
+  tool `tools/r11_skeleton_fix.py`.
+- JOB 3 (NTPP) — CLASS FULLY READ, NO PIXEL PATH: the five
+  named methods + ctor are the complete NTPP class (vtable
+  0x08b9c568; RTTI record at 0x08b9c5b0 names it "NTPP") — a
+  texture placement/animation object (defaults +0x98=1,
+  +0x9c=110.0f; flag/state/float bookkeeping). NO byte loops,
+  swizzle, CLUT, or GE texture commands in any of the six
+  functions → no code-derived pixel parameters exist, so the
+  one-item decode cannot be run as specified and no blind
+  sweep was substituted. Slot-4 items = embedded NTPP
+  sections (item stats: entropy 5.51, 9.9% zeros). Residual:
+  pixel consumer = datatextureroot / render layer. Evidence:
+  `round11-evidence/JOB3-NTPP-CLASS-VERDICT.md` + `dis/`.
+- JOB 4 (B3 ASSIGNMENT) — LANDED with confidence labels:
+  contiguity hypothesis scored STRONG (A/B interleave 28/28;
+  21/28 segments near-identical kits; 12+28 = 40 full-char
+  packages). Labels: 28 anchor-proven / 5,206
+  contiguity-inferred / 236 unassigned (all stage-pattern).
+  Anomalies kept (5 double segments, stub seg 26, seg-27
+  stage cluster). No fighter names claimed; inferred stays in
+  the census evidence only. Deliverable:
+  `round11-evidence/r11_b3_assignment.json` +
+  `round11-evidence/JOB4-B3-ASSIGNMENT.md`.
+- JOB 5 (B5 PAGES) — GEOMETRY REJECTED, format narrowed:
+  inherited "95% BE-float-sane" premise corrected (denormal
+  artifact; pages are 80.5% zero bytes). BE f3/f6/f8/f4, LE
+  float, byte-image, and GE-list hypotheses all REJECTED with
+  one-line verdicts + VIEWED page images. Measured positive:
+  pages are sparse byte-record arrays with a 16 B / 32 B
+  record period (autocorrelation r=0.763 @16), constant
+  0x800 word at page offset 52, small-enum byte alphabet.
+  No stage GLB. Evidence:
+  `round11-evidence/JOB5-B5-PAGES-VERDICT.md`.
