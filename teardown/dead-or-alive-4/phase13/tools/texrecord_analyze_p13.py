@@ -25,7 +25,7 @@ FAMS = {
     'fam468': (['chrone-pkg17', 'chrone-pkg18', 'chrone-pkg20', 'chrone-pkg21', 'chrone-pkg22', 'chrthree-pkg18', 'chrthree-pkg19'], [4, 7, 21]),
     'fam477': (['chrtwo-pkg%02d' % i for i in range(50, 56)] + ['chrthree-pkg%02d' % i for i in range(2, 8)], [22, 25, 41, 42, 43, 44]),
     'fam581': (['chrone-pkg14', 'chrone-pkg15', 'chrone-pkg16'], [10, 11]),
-    'famC':   (['chrone-pkg%02d' % i for i in range(6, 10)] + ['chrtwo-pkg00', 'chrtwo-pkg31'] + ['chrthree-pkg%02d' % i for i in range(29, 32)], [31]),
+    'famC':   (['chrone-pkg%02d' % i for i in range(6, 10)] + ['chrtwo-pkg00'] + ['chrthree-pkg%02d' % i for i in range(29, 32)], [31]),  # phase-13 fix: chrtwo-pkg31 removed — it is head31's OWN package (head range 04-45); phase-11's 'chrtwo00/31' body list made it a self-match artifact (21/21)
 }
 UNPAIRED = [5, 6, 23, 24, 26, 27, 28, 32]
 BODIES = sorted({b for bs, _ in FAMS.values() for b in bs})
