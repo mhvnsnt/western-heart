@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="select.css" />
   <link rel="stylesheet" href="menus.css" />
+  <!-- Worker 35: colorblind-safe HUD palettes (worker-35 identity lane) -->
+  <link rel="stylesheet" href="css/colorblind.css" />
   <!-- Three.js loaded as an ES module from local vendor (no CDN) -->
   <script type="importmap">
   {
@@ -388,6 +390,11 @@
     </div>
   </div>
 
+  <!-- Worker 35: player identity core (titles, cards, currency, loot, remap,
+       colorblind, assists) + boot wiring. Classic scripts run before the
+       module graph so input.js/main.js can consult window.WHIdentity. -->
+  <script src="js/identity.js"></script>
+  <script src="js/wh-boot.js"></script>
   <script type="module" src="js/main.js"></script>
 </body>
 </html>
