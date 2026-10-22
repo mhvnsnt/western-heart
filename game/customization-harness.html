@@ -36,6 +36,16 @@
  *   &profile=none           no profile anywhere the consumer looks first
  *                           for p1 (repo fallback still applies per fighter)
  *   &stage=shrine           stage id (default shrine)
+ *   &tweak=<kit-id>        FIX MODE: load crew-staged tweak kit
+ *                           customization/tweak-kits/<kit-id>.json and mount
+ *                           the fix panel — per-part rotate/flip controls for
+ *                           the 8 part groups (head, torso, upper arms,
+ *                           forearms, hands, thighs, shins, feet) plus the ONE
+ *                           "EXPORT TWEAK PATCH" button. The downloaded
+ *                           wh-tweak-patch JSON goes back to the crew, who
+ *                           apply it with tools/customization/import_tweak_patch.py.
+ *                           See customization/TWEAK-PATCH-SPEC.md.
+ *                           (Use with &p1=<kit fighter>, e.g. &p1=nightwolf.)
  *
  * Drive it: wait for window.__ready, read window.__test.state(), and
  * watch the console for [WH-CS] and [HARNESS] STATE lines.
@@ -49,6 +59,7 @@ import { resolveFighterAttire } from './js/attires.js';
 import { loadRealMovesets, bankIdFor } from './js/fighter.js';
 import { loadFighterMovesets } from './js/movesets.js';
 import { loadT3Clips } from './js/t3anims.js';
+import { mountFixPanel } from './js/fix-panel.js';
 
 const errors = [];
 window.addEventListener('error', (e) => errors.push(String(e.message || e.error)));
@@ -98,6 +109,22 @@ async function boot() {
   await game.startMatch(player, enemy, qs.get('stage') || 'shrine', {});
   status.textContent = `fight: ${player.id} vs ${enemy.id}`;
   window.__game = game;
+
+  /* Tweak-kit round trip (?tweak=<kit-id>): mount the fix panel — per-part
+   * rotate/flip controls for the 8 part groups + the ONE export button.
+   * Without ?tweak= this block is skipped and the harness is unchanged. */
+  const tweakKit = qs.get('tweak');
+  if (tweakKit) {
+    try {
+      status.textContent = `fix mode: ${tweakKit} — loading…`;
+      await mountFixPanel({ game, kitId: tweakKit,
+        suiteBuild: `${location.origin}${location.pathname} (tweak=${tweakKit})` });
+      status.textContent = `fix mode: ${tweakKit} — ${player.id} vs ${enemy.id}`;
+    } catch (e) {
+      status.textContent = 'FIX PANEL FAILED: ' + (e.message || e);
+      console.error('[HARNESS] fix panel failed', e);
+    }
+  }
 
   const describe = (f) => f ? {
     id: f.char.id, name: f.char.name, hp: Math.round(f.hp), maxHp: Math.round(f.maxHp),
