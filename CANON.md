@@ -713,6 +713,8 @@ She wanders the five lands, picking fights, owing nothing, belonging nowhere. Th
 
 **Owner-locked:** Name MICHIKO. Michiko Malandro × Tier Harribel — free-spirited outlaw × regal composed power. Dangerous but magnetic. Katarina Alves base.
 
+**Attires (owner 2026-10-21, Tripo-first ladder).** Attire 1 — her Tripo original: "bone goddess amazonian M rated nude attire with bone accessories" (owner's description, verbatim). Attire 2 — her Tripo original: "biker chick" (owner's description, verbatim). The Katarina-based model ladders back behind both as the fallback attire. Slot provenance: roster/michiko/ATTIRE-SLOTS.md.
+
 ---
 
 ### STAR — The Current Soul

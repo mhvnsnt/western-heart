@@ -190,6 +190,12 @@ export const MODEL_URLS = {
   star: 'assets/models/star.glb',
   torch: 'assets/models/torch.glb',
   michiko: 'assets/models/michiko.glb',
+  // MICHIKO's Tripo originals (owner 2026-10-21): Attire 1 "bone goddess"
+  // + Attire 2 "biker chick" — ladder in attires.js, provenance in
+  // roster/michiko/ATTIRE-SLOTS.md. The Katarina-based model above stays
+  // as her fallback attire.
+  'michiko-attire1': '../roster/michiko/attires/attire1/model-rigged.glb',
+  'michiko-attire2': '../roster/michiko/attires/attire2/model-rigged.glb',
   dio: 'assets/models/dio.glb',
   bruno: 'assets/models/bruno.glb',
   yukihyo: 'assets/models/yukihyo.glb',
