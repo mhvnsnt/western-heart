@@ -141,6 +141,18 @@ export const ATTIRE_VARIANTS = {
      T7 Steve reskins (zui_alt1/zui_alt2) ladder back as alternates. Keyed by
      fighter id — his roster model is 'zui-attire1', so attiresFor's id
      fallback is what finds this list (same pattern as Kevin's entry above). */
+  /* ZEN — keyed by fighter id ('zen'); his model key is also 'zen', so the
+     ladder resolves either way. Attire 1 = his SPIRIT BODY (owner Tripo
+     8c46e379, 2026-10-21) — Zen is unvesseled; this is his own body, his
+     main model. His legacy body (game/assets/models/zen-body.glb, key
+     'zen-body') ladders back as Attire 2, never deleted. His SPIRIT FORM
+     ('zen-spirit', roster/zen/spirit/model.glb) is deliberately NOT in
+     this ladder: it is not an attire — it is Zen himself as a spirit, a
+     separate model entity in the stand system. */
+  'zen': [
+    { model: 'zen-attire1', label: 'ATTIRE 1 · SPIRIT BODY (TRIPO)' },
+    { model: 'zen-body', label: 'ATTIRE 2 · LEGACY BODY' },
+  ],
   'zui': [
     { model: 'zui-attire1', label: 'ATTIRE 1 · DRUNKEN MONK (TRIPO)' },
     { model: 'zui-attire2', label: 'ATTIRE 2 · REWORK V2' },

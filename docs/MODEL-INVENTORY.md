@@ -76,6 +76,8 @@ Legend: ✅ WIRED (in `game/assets/models/` or a roster attire slot) · 📦 HAV
 | `roster/diablo/attires/attire1/model.glb` | DIABLO | A1 DEFAULT | Tripo "fantasy demon" (22.8MB) — oni Heihachi: long silver wing-hair, two short horns, tattooed chest/arms, purple dragon hakama |
 | `roster/diablo/attires/attire2/model.glb` | DIABLO | A2 Devil God | Tripo (22.5MB) — Hagoromo drapery + Raijin Taiko Drum Ring |
 | `roster/slice/attires/attire1/model.glb` | SLICE | A1 DEFAULT | Tekken 7 Dragunov teardown conversion (52.4MB) — beret default costume, T7 skeleton (198 joints); source `dragunov-t7-rig.blend` (release `tekken-models-batch-2`) |
+| `roster/zen/attires/attire1/model.glb` | ZEN | A1 DEFAULT | Owner Tripo 8c46e379 Spirit Body (57.4MB decompressed) — Zen is unvesseled; this is his own main model, not a vessel. Raw pull in release `zen-tripo-pulls-20261021`; static, rig at rig stage. Canon: `roster/zen/ATTIRE-SLOTS.md` |
+| `roster/zen/spirit/model.glb` | ZEN | SPIRIT FORM (not an attire) | Owner Tripo 803f4cf1 (54.4MB decompressed) — Zen himself as a spirit (his stand form), key `zen-spirit`; floats behind the spirit body per the spec in `roster/zen/RIG-NOTES.md`; static |
 | `roster/vainabel/attires/attire2/model.glb` | VAIN ABEL | A2 | Tripo "wrestler character" (19.8MB) — purple flame vest, purple-stitched black pants; mismatched eyes |
 | `roster/vainabel/attires/attire3/model.glb` | VAIN ABEL | A3 · Masked Demon of the Purple Haze | Tripo "masked fighter" (19.6MB) |
 | `roster/kinpo/attires/attire1/model.glb` | Kinpo | A1 DEFAULT | Tripo "stylized female character" (20.3MB meshopt) — mini skirt; jiggle butt/thighs/hips at rig stage (owner 2026-10-20, `roster/kinpo/RIG-NOTES.md`) |

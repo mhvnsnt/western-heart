@@ -21,8 +21,36 @@ export const FULL_ROSTER = [
     colors: { suit: 0x2a2a3a, trim: 0x8a2be2 }, style: 'Sword Style', archetype: 'Tricky' },
   { id: 'retsu', name: 'RETSU', title: 'The Violent Soul', base: 'Bryan Fury', moveset: 'bryan', model: 'pantera', tintStrength: 0.25,
     colors: { suit: 0x3a1a1a, trim: 0xcc2222 }, style: 'Kickboxing', archetype: 'Rushdown' },
-  { id: 'zen', name: 'ZEN', title: 'The Still Soul', base: 'Heihachi', moveset: 'heihachi', model: 'steve-fox', tintStrength: 0.6,
-    colors: { suit: 0xd0d0d0, trim: 0x8a8a8a }, style: 'Mishima', archetype: 'Defensive' },
+  { id: 'zen', name: 'ZEN', title: 'The Still Soul', base: 'Heihachi', moveset: 'heihachi', model: 'zen', tintStrength: 0.6,
+    colors: { suit: 0xd0d0d0, trim: 0x8a8a8a }, style: 'Mishima', archetype: 'Defensive',
+    // ZEN TRANSFORMATION MODES (owner canon 2026-10-21, roster/zen/CANON.md):
+    // ALL of Zen's versions are modes WITHIN Attire 1 — not separate
+    // attires. Spiritual/celestial class (Oversoul/Susanoo x JoJo Stand).
+    // Chain: spirit body -> TENTACLE MODE (9460095d: the clothing tentacle
+    // imagery becomes REAL tentacles busting out of him; NO Oversoul head;
+    // his spirit entity rides higher + further back) -> OVERSOUL (2bbc8e88:
+    // the spirit docks at the head position, TAKES THE HEAD'S PLACE, and
+    // the combined form manifests; body tentacles stay imagery). TRANSFORM
+    // touch button + full nine-soul meter, both directions. His moveset
+    // stays his own ('zen') in every stage — the tentacle pastel-blast
+    // specials are a moveset-stage design requirement (RIG-NOTES.md), not
+    // a moveset key that exists yet. Keyed on BOTH 'zen' and 'zen-attire1'
+    // like Demonio: the player-side formKey can resolve to either.
+    forms: {
+      'zen': {
+        up: { target: 'zen-tentacle', label: 'TENTACLE MANIFESTATION', powerMult: 1.15, speedMult: 1.0, defenseMult: 1.05, moveset: 'zen' },
+      },
+      'zen-attire1': {
+        up: { target: 'zen-tentacle', label: 'TENTACLE MANIFESTATION', powerMult: 1.15, speedMult: 1.0, defenseMult: 1.05, moveset: 'zen' },
+      },
+      'zen-tentacle': {
+        up: { target: 'zen-oversoul', label: 'OVERSOUL', powerMult: 1.25, speedMult: 1.05, defenseMult: 1.15, moveset: 'zen' },
+        down: { target: 'zen-attire1', label: 'WITHDRAW', powerMult: 0.87, speedMult: 1.0, defenseMult: 0.95, moveset: 'zen' },
+      },
+      'zen-oversoul': {
+        down: { target: 'zen-tentacle', label: 'OVERSOUL RELEASE', powerMult: 0.8, speedMult: 0.95, defenseMult: 0.87, moveset: 'zen' },
+      },
+    } },
   { id: 'gyou', name: 'GYOU', title: 'The Moving Soul', base: 'Hwoarang', moveset: 'demonio', model: 'pantera', tintStrength: 0.25,
     colors: { suit: 0x1a5a3a, trim: 0x3acc6a }, style: 'Tae Kwon Do', archetype: 'Pressure' },
 
