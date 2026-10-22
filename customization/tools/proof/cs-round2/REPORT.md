@@ -37,7 +37,8 @@ multiply under a texture was a silent no-op), base-hair materials hidden
 (`hide_meshes`: pek1u_14/15/13) so the placed cap replaces his hair, and
 the Baek PARTS-REGISTRY mapping (skin 11 materials / hair 3 / eye) so
 skin tone finally applies (round 1 loud-failed on the missing mapping).
-Renders: `mw-final5_face.png`, `mw-final5_side.png`.
+Renders: `mw-final6_face.png`, `mw-final6_side.png` — dark hair ON the
+head, dark beard ON the chin (round 1: white shells, beard at the neck).
 
 **Suite controls:** placement sliders + per-axis scale + tap-first nudge
 steppers (±0.01 m / ±1°) + reset, per-attire save/restore through
@@ -54,9 +55,20 @@ with distance weights to the region anchors, fit by neck anchor + region
 height scale + yaw (estimate, `yaw_deg` override in the record).
 
 **Headline proof:** Kevin's head (`roster/baek/attires/attire1`) onto
-Master White — `kevin-head-swap-final_front.png` / `_head.png`.
-Second swap: DEATHFANG torso onto Master White (record
-`../cs-round2-swap/customization-both.json`).
+Master White — `kevin-head-swap2_face.png`: Kevin's bearded head, textured,
+facing forward on Master White's gi, seated at the neck (a visible
+skin-tone seam at the jaw/neck junction is the expected un-blended graft
+edge). The automatic yaw estimate landed −34°; the record pins
+`yaw_deg: -90` (Tripo raw heads face +X), for −124° total. Second swap
+attempted: DEATHFANG torso onto Master White (record
+`../cs-round2-swap/customization-both.json`, render `swap-both_front.png`)
+— the skinned-source path now runs end-to-end (a `base_bones` scoping
+bug that killed it was found and fixed), but the graft renders SHREDDED:
+DEATHFANG's bind is a hunched stance pose, and the fit anchors assume an
+upright torso, so his torso lands scaled/rotated wrong and tears.
+Skinned-source region swaps need bind-pose normalization with per-bone
+frame alignment — named here as the next engine step, not papered over.
+The unskinned-source head path (the headline case) is clean.
 
 Suite: PIECES tab with region rows (SWAP / CHANGE / RESTORE), a source
 picker fed by `customization/region-sources.json` (all 104 roster GLBs,
@@ -76,11 +88,13 @@ never drag-and-drop).
 - Baek skin-tone registry mapping — done (see §1).
 - Eyeball + eyelash mesh parts (`customization/parts/eyes/`, registered
   as `wh-eyeball-mesh` / `wh-eyelash-mesh`) — baked onto DEATHFANG human
-  (the eye-as-part named test case): `df-eyes4_face.png` /
-  `df-eyes4_side.png`. His bind carries the Iori stance head twist the
-  owner already rejected in the DEATHFANG lane; the eyes follow the Head
-  frame exactly, and the suite placement controls are the owner's tool
-  for final seating (his stated plan for the eye).
+  (the eye-as-part named test case): `df-eyes5_side.png` shows the mesh
+  eyeball seated in his eye socket (white sclera + brown iris coinciding
+  with the painted eye's almond, lash strip on top). His bind carries
+  the Iori stance head twist the owner already rejected in the
+  DEATHFANG lane; the eyes follow the Head frame exactly, and the suite
+  placement controls are the owner's tool for final seating (his stated
+  plan for the eye).
 
 ## Tests
 

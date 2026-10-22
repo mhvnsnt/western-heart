@@ -185,6 +185,7 @@ def bake(cfg_path, repo_root, mpfb_src, log=print):
     base_arm = armatures[0] if armatures else None
     log(f'CSBAKE imported: {len(meshes)} meshes, {len(armatures)} armatures, '
         f'{sum(len(o.data.vertices) for o in meshes)} verts')
+    base_bones = {b.name for b in base_arm.data.bones} if base_arm else set()
 
     # ---- (a) MPFB morphs -------------------------------------------------
     morphs = {k: float(v) for k, v in (cfg.get('morphs') or {}).items() if float(v) != 0.0}
