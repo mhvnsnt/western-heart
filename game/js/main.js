@@ -194,7 +194,7 @@ function startFightViaStage(p1, p2, opts = {}) {
   show('stage');
   const hint = document.getElementById('stage-hint');
   const s = getStage(selectedStage);
-  if (hint && s) hint.textContent = `${s.name} — ${s.description}`;
+  if (hint && s) hint.textContent = s.name;
   const btn = document.getElementById('confirm-stage');
   if (btn) btn.disabled = false;
 }
@@ -281,14 +281,45 @@ function buildStageSelect() {
       grid.appendChild(card);
     }
   }
+  const cur = getStage(selectedStage);
+  if (cur) updateStagePreview(cur);
+  const sel = grid.querySelector('.stage-card.selected');
+  if (sel) sel.scrollIntoView({ block: 'nearest' });
+}
+/* Tekken pattern: the large preview pane (image + name + description,
+   inside the layout) always tracks the highlighted stage — a card tap,
+   a RANDOM roll, or keyboard focus all drive the same single state. */
+function updateStagePreview(s) {
+  const img = document.getElementById('stage-preview-img');
+  const sw = document.getElementById('stage-preview-swatch');
+  if (img) {
+    img.style.display = '';
+    img.onerror = () => {
+      img.style.display = 'none';
+      if (sw) {
+        sw.hidden = false;
+        sw.style.background = `linear-gradient(135deg, ${s.swatch[0]}, ${s.swatch[1]})`;
+      }
+    };
+    img.src = s.thumb;
+    img.alt = s.name;
+  }
+  if (sw) sw.hidden = true;
+  const nm = document.getElementById('stage-preview-name');
+  if (nm) nm.textContent = s.name;
+  const un = document.getElementById('stage-preview-universe');
+  if (un) un.textContent = s.universe || '';
+  const ds = document.getElementById('stage-preview-desc');
+  if (ds) ds.textContent = s.description || '';
+  const hint = document.getElementById('stage-hint');
+  if (hint) hint.textContent = s.name;
 }
 function selectStageCard(card, s) {
   audio.uiClick();
   document.querySelectorAll('.stage-card').forEach(x => x.classList.remove('selected'));
   card.classList.add('selected');
   selectedStage = s.id;
-  const hint = document.getElementById('stage-hint');
-  if (hint) hint.textContent = `${s.name} — ${s.description}`;
+  updateStagePreview(s);
   const btn = document.getElementById('confirm-stage');
   if (btn) btn.disabled = false;
 }
@@ -302,6 +333,8 @@ function focusStage(i) {
   const el = cards[focusedStageIdx];
   el.classList.add('kb-focus');
   el.scrollIntoView({ block: 'nearest' });
+  const s = getStage(el.dataset.id);
+  if (s) updateStagePreview(s);
 }
 document.addEventListener('keydown', (e) => {
   const sc = document.getElementById('screen-stage');
