@@ -1452,7 +1452,21 @@ Also found: the feet-geometry cue misreads chunky-heel boots as -Z (false -Z on 
 
 **Merge:** PR #607, 4 checks green (instruction-gate, clobber-guard, guard, deletion-guard), merged via git_merge.py as 6f712e9e. No deletions. 8 files: 4 new (moveset, 3 docs), 4 modified (surgical).
 
+## 2026-10-22 — Worker 16: CAMERA BOUNDS FIX (Tekken CameraRig port)
 
+**Task:** Playtest bug — fighters walk off the visible screen area in portrait mode; camera doesn't follow. Owner directive: pull the camera follow/bounds logic directly from the Tekken teardown files, do NOT hand-tool — however the teardown files solve that.
+
+**Teardown source:** `teardown/tekken3/tools/tekken3recompiled/native/src/camera.cpp` (+ `native/include/tekken3_native/camera.hpp`) — the only actual follow/bounds camera implementation in the tekken3/tekken6/tekken7 teardowns (tekkenmods-docs hits are moveset cinematic cameras, not the follow cam). Tekken's approach = (a) track the FULL midpoint of both fighters AND (b) zoom so the fighter span always fits the horizontal frustum: `desired_center=(p1x+p2x)/2`, `desired_span=max(|p2x-p1x|, 4.5)`, exponential smoothing `k=1-exp(-dt*7.5)` on both, `fit_distance=(span+3.0)/(2*tan(hfov/2))`, `distance=max(10.5, fit_distance)`, vertical FOV invariant with horizontal FOV derived from live aspect. Confirmed by the recompile's own test (`native_core_test.cpp`: "16:9 reveals more horizontal world than 4:3").
+
+**Root cause in our code** (`game/js/scene.js`): camera followed only 60% of the midpoint (`baseX = mid * 0.6`) and zoomed with an aspect-blind linear rule (`baseZ = max(5.6, min(12, 5.4 + spread*0.85))`). In portrait (aspect ~0.5) the horizontal FOV is ~half of landscape, so fighters at the edges projected to NDC |x| up to 3.4 — fully off-screen (matches user's screenshots: Pantera half off the left edge, Armor King gone).
+
+**Port** (surgical, `game/js/scene.js` only): Tekken's CameraRig logic with minimal adaptation — our 45° vertical FOV kept (three.js already keeps vertical FOV invariant, same as Tekken), eye/look heights kept (baseY 1.75+maxY*0.45, lookY 1.0+maxY*0.25 for our jump arcs), stage overrides kept (camDist/camAngle/camPos/camTgt), hit-shake kept. Tekken constants ported verbatim: min span 4.5, padding 3.0, min distance 10.5, smoothing 7.5/s. Rig state (`_camCenterX`, `_camSpan`) persists on Arena, initialized as Tekken's `reset(0)`. Camera eye set directly from smoothed rig state each frame (Tekken behavior); soft lerp kept on height only.
+
+**Verification** (`/tmp/cam_verify.mjs`, node + vendored three.js, real projection math): shipped-code string checks PASS; 12/12 scenarios IN-FRAME (|ndc.x| ≤ 0.90) across portrait 0.5 and landscape 1.78 — spawn, close-up, both-edge-walk (the exact bug repro), max spread ±8, jump. Old camera on the same scenarios in portrait: 5/6 OUT-OF-FRAME (|ndc.x| up to 3.43). Schematic: `docs/proof/camera-bounds-portrait-schematic.svg` (old vs new NDC plot for the edge-walk case).
+
+**Headless render:** attempted via /opt/meta-chromium (Chromium 152) against a local harness serving the edited scene.js — browser crashes at startup in this VM (multi-process) and hangs under --single-process (disk I/O errors on profile writes); environment issue, not game code. Math-level proof above stands as verification.
+
+**Merge:** PR #<TBD>, checks green, merged via git_merge.py. No deletions. 2 modified (game/js/scene.js surgical, WORKLOG.md append), 1 added (docs/proof/camera-bounds-portrait-schematic.svg).
 ## 2026-10-22 — Worker 11 (moveset/input lane): Tekken input pipeline + PSX controls + Batch B BT fills
 
 Owner activation: "let's keep working on the repo and working on getting all of the
