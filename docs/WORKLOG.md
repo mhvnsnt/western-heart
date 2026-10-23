@@ -58,6 +58,10 @@
 - Cause: game/select.css set #screen-select position: relative, overriding .screen fixed inset:0, so the screen collapsed to content height (fighters zone 0px, ~45% of the viewport empty). CONFIRM was clipped at 390px.
 - Fix: fixed + inset 0; on screens up to 480px wide the hint text is hidden and CONFIRM flexes. Same T8 decode layout (docs/select-redesign/T8-GRID-DECODE.md). Proof in docs/ui/select-phone/.
 - Asset audit: all 179 MODEL_URLS and all 145 attires of the 55 fighters resolve to files on main. The Demonio GLB and profile 404s reported earlier came from my partial checkout (profiles are optional by design).
+## 2026-10-23 14:15 CT — Input resolver V2 (owner t116u) — MoneyManBusch executor
+- Root cause of "neutral 3 = crouching kick": touch stick kept `down` latched after a held crouch was re-centred (input.js). Plus 6 resolver bugs (repeated-step motions, context-blind chord specials, crash on specials without input, tap/hold spellings, neutral-ending motions, unreachable strings). Details: docs/input/INPUT-RESOLVER-V2.md.
+- V2 ON by default; legacy reachable via localStorage wh_input_resolver='legacy'.
+- New CI test test/input-determinism.test.mjs: 125 fighters, non-string failures 208 → 0, touch re-centre FAIL → PASS.
 ## 2026-10-23 15:16 CT, teardown coverage audit (docs/teardown-coverage-audit)
 - tools/teardown-coverage/audit.py (read-only against a git ref) writes docs/teardown-coverage/COVERAGE.md and coverage.json with source_game per teardown file and per move.
 - 51234 teardown files: 27.2% integrated (code/data reference), 31.7% docs-only, 41.0% unreferenced. T3 is 25.5% of reachable slots; priority sources 73.4% (T7/T8 only). No TTT2/T6/T5 move data exists in the repo to replace T3.
