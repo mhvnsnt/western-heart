@@ -1,0 +1,22 @@
+DOA4 phase 17 Job 3 — authoritative re-run of the stateful-class matrix
+Tool: phase17/tools/mot_state_p17.py (banked version, PR #737 head)
+Corpus: zack triple from release doa4-mot-20261022 (tar sha256
+026592a07c0c6c93c292d9d8f8dc0f732f0e690420f9f6c1dbc4fdc8fc04221c;
+zack.mot sha256 add42a1cefa890270a65e7bdcb8022d13acdab10c5f6ffdc1be88f44b00ff51d),
+17,688 sub-blocks >= 4 B, k in {1,2}, scope=triple.
+Two independent executions produced IDENTICAL results for every
+class below (and for classes 0 / ii K=4 in earlier runs). These
+numbers SUPERSEDE the class i / ii K=2 / ii K=3 / iv / v numbers
+in the original phase-17 commit, which were transcribed from an
+interim run. Verdicts are unchanged: every class FALSIFIED.
+
+class 0:    keys 729,     ambiguous 121,     dead_blocks_final 17601
+class i:    keys 956335,  ambiguous 844185,  dead_blocks_final 8784
+class ii 2: keys 873,     ambiguous 152,     dead_blocks_final 17595
+class ii 3: keys 944,     ambiguous 172,     dead_blocks_final 17593
+class ii 4: keys 658,     ambiguous 115,     dead_blocks_final 17602
+class ii 5: keys 3080,    ambiguous 641,     dead_blocks_final 17458
+class ii 6: keys 1261,    ambiguous 236,     dead_blocks_final 17568
+class iv:   keys 119105,  ambiguous 96779,   dead_blocks_final 14447
+class v:    keys 321735,  ambiguous 243410,  dead_blocks_final 8634
+(all: deterministic=false, blocks=17688)
