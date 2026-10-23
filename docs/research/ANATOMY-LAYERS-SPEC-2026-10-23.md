@@ -10,12 +10,13 @@ Purdue's Dissectible Anatomy models bodies as separable anatomical layers
 want the same idea as a **creation-suite data model**: "deepest per-body-part
 morphing" — real anatomical layers instead of surface sliders.
 
-Each character gets **four separable volumetric layers**:
+Each character gets **five separable volumetric layers**:
 
 | Layer | Contents | Representation |
 |---|---|---|
 | **BONE** | Simplified bone volumes from the skeleton: skull, ribcage, pelvis, limb capsules, axial capsules | Union of analytic SDF primitives |
 | **MUSCLE** | Muscle-group volumes (pectoralis, abdominals, biceps, quadriceps, …) attached to bones | Union of analytic SDF primitives, one group per muscle with a bulk morph param |
+| **ORGAN** | Visceral organs for X-ray sequences: heart, lungs, liver, stomach, intestines | Union of analytic SDF primitives positioned from the rig skeleton (chest/spine/hips); one group per organ with a bulk morph param |
 | **FAT** | Offset shell: per-region subcutaneous thickness | Scalar thickness per body region + global |
 | **SKIN** | The existing render mesh | Reference (never copied) + MPFB morph-target hooks |
 
@@ -37,14 +38,19 @@ No cryosection data is used. Volumes are **procedural from the skeleton +
 body-part regions measured from the mesh** — the game-art version of McGraw's
 "design the 3D texture representing alien or monster anatomy" suggestion.
 
-## 2. JSON schema (`wh.anatomy-layers/1`)
+## 2. JSON schema (`wh.anatomy-layers/2`)
 
 Canonical location: `roster/<fighter>/anatomy/anatomy-layers.json`.
 
+**Version history.** `wh.anatomy-layers/1` (2026-10-23, PR #860): bone,
+muscle, fat, skin. `wh.anatomy-layers/2` (2026-10-23): adds the ORGAN layer.
+The change is **additive** — v2 documents carry a `layers.organ` key that v1
+readers ignore; all v1 keys keep their shape and semantics.
+
 ```json
 {
-  "$schema": "wh.anatomy-layers/1",
-  "schema_version": "wh.anatomy-layers/1",
+  "$schema": "wh.anatomy-layers/2",
+  "schema_version": "wh.anatomy-layers/2",
   "fighter": "pantera",
   "generated": "2026-10-23",
   "generator": "tools/anatomy/generate_layers.py",
@@ -77,6 +83,20 @@ Canonical location: `roster/<fighter>/anatomy/anatomy-layers.json`.
           "a": [-0.31, 1.42, -0.02], "b": [-0.44, 1.42, -0.02], "r": 0.052 } ],
         "bulk_param": "muscle_biceps_L",
         "base_radius": 0.052 }
+    ]},
+    "organ": { "groups": [
+      { "id": "heart", "label": "Heart", "side": "L",
+        "primitives": [ { "kind": "ellipsoid",
+          "center": [-0.041, 1.292, -0.014],
+          "radii": [0.045, 0.058, 0.048] } ],
+        "bulk_param": "organ_heart",
+        "base_radius": 0.050 },
+      { "id": "intestines.1", "label": "Intestines", "side": "C",
+        "primitives": [ { "kind": "capsule",
+          "a": [0.0, 0.979, -0.014], "b": [0.0, 1.068, -0.014],
+          "r": 0.041 } ],
+        "bulk_param": "organ_intestines_1",
+        "base_radius": 0.041 }
     ]},
     "fat": {
       "baseline_global": 0.010,
@@ -115,11 +135,39 @@ Canonical location: `roster/<fighter>/anatomy/anatomy-layers.json`.
   deltoids, pecs, glutes.
 - `sphere`: `{center, r}` — available, unused in v1.
 
+### The ORGAN layer (v2)
+
+Seven organ groups for Pantera, ~7 primitives total (per-character counts
+vary with the rig). Placement is GEOMETRIC-FIRST: derived from rig joint
+positions, never hand-tooled, never from skin weights.
+
+| Group id | Label | Anchor | Position rule |
+|---|---|---|---|
+| `heart` | Heart | chest joint | left mid-chest: anatomical-left × 0.30·tr + front × 0.10·tr − 0.35·tr in Y; ellipsoid ~fist-sized (0.045/0.058/0.048 m × body_scale) |
+| `lung.L` / `lung.R` | Lung | chest joint | one per side: ±anatomical-left × 0.40·tr, +0.12·tr in Y; ellipsoids filling the ribcage (nested inside `bone_ribcage`) |
+| `liver` | Liver | spine→chest 32% | right abdomen: −anatomical-left × 0.30·tr + front × 0.08·tr, tucked under the ribcage |
+| `stomach` | Stomach | spine→chest 55% | left abdomen: +anatomical-left × 0.22·tr + front × 0.14·tr |
+| `intestines.1` / `intestines.2` | Intestines | hips→spine | simplified capsule cluster in the lower abdomen (vertical + transverse capsules) |
+
+`tr` = torso radius (½ shoulder half-width from the skeleton), `body_scale` =
+height/1.75. Anatomical left is derived from the `.L` joints' x-sign
+(`_anatomical_left`), falling back to left = up × front. All radii are
+hard-clamped to ≤ 0.70·tr so organs stay nested inside the torso.
+
+**Purpose.** X-ray sequences (the user's "really good like organs" ask):
+the ORGAN layer renders through the body via the same SDF union the bone
+layer uses — a separate, locked layer that never plays during fights
+(same separation rule as show animations: X-ray views are intros/cutscenes
+only). Per-organ bulk params (`organ_heart`, …) give the PBD/soft-body crew
+per-organ scale dials (e.g. heartbeat pulsation) without touching the
+fight moveset.
+
 ### Morph parameter semantics
 
 | Param pattern | Layer | Effect |
 |---|---|---|
 | `muscle_<group>` | muscle | group primitive radii `*= 1 + 0.55*v`, v∈[-1,1] |
+| `organ_<group>` | organ | group primitive radii `*= 1 + 0.25*v`, v∈[-1,1] |
 | `fat_<region>`, `fat_thickness` | fat | thickness `*= 1 + 0.8*v` (regional × global) |
 | `bone_scale_<region>` | bone | primitive radii `*= 1 + 0.25*v` |
 
@@ -161,9 +209,14 @@ dials compose additively with MPFB shape keys.
 6. **FAT**: per-region thickness baselines (physiological defaults ×
    body_scale).
 7. **SKIN**: reference to the source mesh + MPFB hooks.
-8. **Validate**: every joint center must be inside the bone layer (SDF < 0);
-   report counts.
-9. **Proof** (`--render-proof`): sphere-traced front-view renders of all four
+8. **ORGAN** (v2): heart, lungs, liver, stomach, intestines — SDF primitives
+   positioned from the rig skeleton (chest/spine/hips) geometrically; radii
+   anatomically proportioned to torso_radius × body_scale, clamped inside the
+   torso.
+9. **Validate**: every joint center must be inside the bone layer (SDF < 0);
+   every organ primitive center must be inside the body — wrapped in muscle
+   or cradled by bone (min of the two SDFs < 0.02); report counts.
+10. **Proof** (`--render-proof`): sphere-traced front-view renders of all five
    layers + a morph comparison (biceps 0→1) + numeric proof JSON.
 
 ## 4. Suite wiring
@@ -178,14 +231,18 @@ dials compose additively with MPFB shape keys.
 ## 5. Proof (Pantera, 2026-10-23)
 
 `roster/pantera/anatomy/`: `anatomy-layers.json`, `proof.json`, `PROOF.md`,
-`renders/` (4 layer renders + biceps 0→1 comparison).
+`renders/` (5 layer renders + biceps 0→1 comparison).
 
 - 13 joints, 10,548 verts; rectification 90° (mesh z-symmetric → x-symmetric,
-  snout → rig front −Z); 12 bone primitives, 25 muscle groups, 37 morph params.
+  snout → rig front −Z); 12 bone primitives, 25 muscle groups, 7 organ groups
+  (heart, lung.L, lung.R, liver, stomach, intestines.1, intestines.2),
+  44 morph params.
 - Biceps bulk 0→1: capsule radius 0.053→0.082 m (+55%), volume +189%.
 - Baked skin displacement: max 0.027 m (= radius delta — the skin rides the
   muscle), localized to the arm.
-- Validation: 13/13 joints inside the bone layer.
+- Validation: 13/13 joints inside the bone layer; 7/7 organ primitive centers
+  inside the body (wrapped in muscle or cradled by bone).
+- Schema `wh.anatomy-layers/2`; v1 readers ignore the additive `organ` key.
 
 ## 6. Non-goals / boundaries
 
