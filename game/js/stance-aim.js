@@ -25,7 +25,28 @@ const CHILD = {
 const ORDER = ['Neck', 'LeftShoulder', 'LeftArm', 'LeftForeArm', 'RightShoulder', 'RightArm', 'RightForeArm',
   'LeftUpLeg', 'LeftLeg', 'LeftFoot', 'RightUpLeg', 'RightLeg', 'RightFoot'];
 
+// Rig aliases: Tekken-native rigs (Hip, L_Arm, L_Toe ... e.g. dio) and the
+// descriptive rig on mariposa-monarch ("arm left shoulder 2", "leg left knee").
+const DESC = { Hips: 'root hips', Neck: 'head neck lower', Head: 'head neck upper' };
+for (const [S, s] of [['Left', 'left'], ['Right', 'right']]) Object.assign(DESC, {
+  [S + 'Shoulder']: `arm ${s} shoulder 1`, [S + 'Arm']: `arm ${s} shoulder 2`, [S + 'ForeArm']: `arm ${s} elbow`,
+  [S + 'Hand']: `arm ${s} wrist`, [S + 'UpLeg']: `leg ${s} thigh`, [S + 'Leg']: `leg ${s} knee`,
+  [S + 'Foot']: `leg ${s} ankle`, [S + 'ToeBase']: `leg ${s} toes`,
+});
+function withAliases(bones) {
+  if (bones.Hips && bones.LeftArm) return bones;
+  const out = { ...bones };
+  for (const [k, b] of Object.entries(bones)) {
+    const m = /^([LR])_(.+)$/.exec(k);
+    if (m) { const n = (m[1] === 'L' ? 'Left' : 'Right') + (m[2] === 'Toe' ? 'ToeBase' : m[2]); out[n] = out[n] || b; }
+  }
+  if (bones.Hip && !out.Hips) out.Hips = bones.Hip;
+  for (const [n, d] of Object.entries(DESC)) { const b = bones[d] || bones[d.replace(/ /g, '_')]; if (!out[n] && b) out[n] = b; }
+  return out;
+}
+
 export function createAimStance(THREE, model, bones, data) {
+  bones = bones && withAliases(bones);
   if (!data || !bones || !bones.Hips || !bones.LeftUpLeg || !bones.RightUpLeg || !bones.LeftArm || !bones.RightArm) return null;
   const used = ['Hips', ...ORDER].filter(n => bones[n] && (n === 'Hips' || bones[CHILD[n]]));
   const bind = new Map(used.map(n => [n, bones[n].quaternion.clone()]));
