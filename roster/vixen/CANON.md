@@ -1,25 +1,123 @@
-# MENAJERII — Canon
+# MENAJERII (メナジェリー) — The Menagerie Soul
 
-## Recorded canon
+*Owner canon. SmutBase Vixen intake → Western Heart fighter MENAJERII.*
 
-**Identity.** MENAJERII — the owner's Western Heart name for the fighter housed in this directory (`vixen`). The name is the menagerie: the collection of beasts. The intake is recorded in `roster/vixen/intake/README.md`: a commission model (Blender 4.02, fully rigged GZM widget rig + body morphs; 88 objects), landed 2026-10-22 and staged, "awaiting character assignment." **Recorded build directive (owner's saved directive, in the intake):** her source game was Injustice 2 — her moveset must be built fresh with TEKKEN inputs; do NOT reuse the source game's input system. No moveset JSON exists for her yet. The source figure gets no canon here (owner canon law, 2026-10-23). Menajerii is the proprietary character. (This directory has intake only — no attires dir yet.)
+## Identity
 
-**Recorded state.** No MODEL_URLS key and no moveset listing on main (verified 2026-10-23); the canon census listed this fighter among those with **no canon recorded** before this batch. Her story below is written under the owner's 2026-10-23 write-in order, built on the recorded foundations: her name (the menagerie) and her source model's recorded nature — a fighter whose power was always borrowed animal shape.
+MENAJERII — the Menagerie Soul. Housed in `roster/vixen/` (intake model:
+SmutBase commission "Vixen," Injustice 2-based, Blender 4.02, fully rigged GZM
+widget rig + body morphs, Genesis-family; 88 objects; clothing as separate
+modeled geometry — recorded in `roster/vixen/intake/README.md`, landed
+2026-10-22). The name is the collection: the menagerie — every beast, carried
+in one walker. The source figure gets no canon here (owner canon law).
+Menajerii is the proprietary character.
 
-## Written 2026-10-23 — built on the recorded foundations (owner's to revise)
+Japanese rendering, owner's choice: **MENAJERII (メナジェリー)**.
 
-- **Who she is in the trial:** Menajerii carries animals the way Waterfall carries grief. Every beast that ever died in the dark outside the head — every hunted, starved, forgotten thing with teeth — left its shape somewhere, and the shapes collected in her: a menagerie soul, a walking ark of borrowed instincts. She does not transform into animals. She *consults* them, mid-fight, at the speed of reflex: the heron's patience, the boar's commit, the snake's economy. The trial's instruments read her as a crowd. She is the only fighter the Soul Surge mechanic describes literally — every other fighter borrows one of the nine for ten seconds; she has been borrowing the dead her whole life.
-- **Element (written):** Wood — the Tree of Life, where souls begin and where every animal in the head's ecology hangs like fruit. She is the forest's memory of its teeth.
-- **Relationships (written):** Pantera is her north — TOU is the one true animal, battle itself wearing a panther; she imitates a hundred beasts and he simply *is* one, and her respect for him has an ache in it she hides well. DXMMII is her mirror: the copy that became an original vs. the original that copies — they have a standing, unspoken contest neither will name, over which of them is the real thing. Yukihyō channeled one animal so completely he wears its head; she wears all of them lightly. They circle each other like weather systems from different seasons.
-- **Branch thread — the Empty Cage:** her Story route gives her a cage the others don't have: at each rung she may *keep* one borrowed shape permanently — power now, at a price the shrine collects later — or release it and climb lighter. At the Assembled Soul she faces a composite of every fighter; her branch asks the inverse question of DXMMII's: not "what's left when the copies are stripped," but "which of the hundred was ever *yours*?" The answer the run gives — a kept shape, a released one, or her own two hands — decides her ending card.
+## Backstory
 
-## Not yet recorded
+Menajerii is a spirit-walker. Not a shaman — she performs no rites and answers
+to no lineage. She walks, and the dead walk with her: every beast that died
+hunted, starved, or forgotten left its shape in the world, and the shapes
+collected in her. She does not become the animals. She *consults* them, at the
+speed of reflex — the heron's patience before a strike, the boar's commitment
+in the clinch, the snake's economy in the counter. A menagerie soul: a walking
+ark of borrowed instincts, and every instinct is a debt.
 
-- Everything above the Written marker: no owner-recorded story exists for Menajerii. The owner's to revise.
-- Her moveset does not exist yet — the recorded directive requires it be authored fresh in Tekken notation (build gap, named in her intake).
+Her sanctuary is at Birodo's club. The Velvet Room is neutral ground, and
+neutral ground is the only place a woman carrying a hundred predators can
+stand without starting a war. Birodo enforces the peace; Menajerii is the
+reason the peace holds — nobody starts a fight in a room where the quiet
+woman's shadow doesn't match her body.
 
-## Sources
+## Personality
 
-- `roster/vixen/intake/README.md` (intake registration + moveset directive, 2026-10-22).
-- Owner's missing-canon list (2026-10-23): "Menajerii (Vixen)" — the rename is the owner's.
-- `docs/canon-archive/CANON-MASTER.md` census (no canon recorded); `~/memory/2026-10-23.md` wiring audit.
+Watchful the way deep water is watchful. She is gentle until the consultation
+happens — then she is suddenly, completely, the animal she needed to be, and
+the gentleness was the camouflage. She laughs rarely and means it. She treats
+every beast she carries with the courtesy of a host: she thanks them, mid-
+fight, under her breath, in no language anyone else speaks. She is the only
+fighter in the Trial who apologizes to her own fists.
+
+## Fighting philosophy
+
+> "The herd decides. I just run."
+
+She does not pick her moves; she lets the consultation pick. A spirit-walker's
+discipline is surrender — to the boar, to the heron, to the thing with teeth
+that knows better than she does.
+
+## Element
+
+Wood — the element of living things: beasts, forests, the wild that was here
+before the shrines and will outlast them. She fights like weather in a
+treeline: sudden, total, gone.
+
+## Body / Mind / Soul
+
+- **Body:** An athlete built for borrowed motion — long lines, coiled power,
+  a body that has learned a hundred gaits and settled on none. Her shadow
+  doesn't always match her: mid-combo, in the right light, it has too many
+  legs, or wings, or a tail. Nobody has ever caught it twice the same way.
+- **Mind:** The walker's mind: open doors, no locks. She holds a hundred
+  instincts the way a librarian holds books — she doesn't read them all at
+  once, but she knows exactly which shelf screams.
+- **Soul:** The Menagerie Soul — the Trial's proof that a soul can be a
+  crowd and still be *one*. Every beast she carries chose her back. That is
+  the part she doesn't talk about: they stay because she asked, once, and
+  never stopped asking.
+
+## Relationships
+
+- **Birodo:** Her sanctuary-keeper. The club boss who enforces peace at the
+  Velvet Room gave the menagerie a room of its own, and Menajerii pays the
+  rent in the only currency Birodo respects: she has never once broken the
+  peace, no matter how many teeth were consulted. Warmth, until it's not —
+  both of them understand the arrangement.
+- **Pantera:** Her north. TOU is the one true animal — battle itself wearing
+  a panther — and she, who imitates a hundred beasts, feels the ache of the
+  copyist before the original. Her respect for him is total and slightly
+  mournful; his for her is simpler: he recognizes a fellow predator's
+  patience and says so, which she pretends not to hear.
+
+## Why she thinks she's here
+
+Because the beasts wanted to see the Trial, and she is their legs. Or because
+a spirit-walker goes where the spirits are thickest, and the Trial is the
+thickest place she has ever found. She tells herself the first. The heron
+suspects the second.
+
+## Being purified of
+
+Borrowing. The walker's disease: carrying so many shapes you forget your own
+— consulting the beasts for every decision until the woman underneath goes
+quiet. The Trial keeps putting her in fights where no animal knows the
+answer, and her own two hands have to. Her purification is the simplest and
+hardest thing: one fight, fought as herself, with nothing consulted.
+
+## Signature detail
+
+After a win, her shadow settles a full second after her body does — and for
+that second, it is unmistakably, peacefully, just a woman's.
+
+## Voice
+
+Sparse. Imagistic. Japanese-influenced. Half of what she says is thank-you,
+to things no one else can see.
+
+- *Fight start:* "Minna, ikou." (Everyone — let's go.)
+- *Win:* "Arigatō. Yasunde." (Thank you. Rest now.)
+- *Taunt:* "Koko wa, mori da." (Here is forest.)
+
+## Technical (not canon)
+
+- **Moveset source:** Roger Jr. (Tekken) — the boxing-kangaroo's kit, rebuilt
+  **fresh with TEKKEN inputs** in `game/assets/movesets/menajerii.json` (owner
+  directive: do NOT reuse the source game's Injustice 2 input system). Beast-
+  fighter kinetics for a beast-spirit walker: wind-up power, Rocket Stance,
+  tail and kick-rush strings, the Giant Swing.
+- **Model:** `roster/vixen/attires/attire1/model.glb` (meshopt-compressed from
+  the intake GLB; original archived on the release). Full mesh inventory in
+  `roster/vixen/PARTS.md`.
+- Wired in `game/js/assets.js` (MODEL_URLS `menajerii`, `menajerii-attire1`),
+  `game/js/movesets.js` (MOVESET_IDS), `game/assets/movesets/index.json`.
