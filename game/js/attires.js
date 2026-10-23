@@ -115,6 +115,7 @@ export const ATTIRE_VARIANTS = {
     { model: 'cain-elias-attire2', label: 'ATTIRE 2 · FIGHT GEAR' },
   ],
   'vainabel': [
+    { model: 'vainabel-attire1', label: 'ATTIRE 1 · DEFAULT (TRIPO)' },
     { model: 'vainabel-attire2', label: 'ATTIRE 2' },
     { model: 'vainabel-attire3', label: 'ATTIRE 3 · MASKED DEMON OF THE PURPLE HAZE' },
     { model: 'vainabel-attire4', label: 'ATTIRE 4 · HALF MASK HORROR OF THE HAZE' },
