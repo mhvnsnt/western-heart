@@ -32,7 +32,9 @@ reruns skip completed (volume, name) pairs.
 Usage: scatter2_p16.py <out.jsonl> [volume ...]
 """
 import hashlib, json, os, sys
-import ahocorasick
+import ahocorasick  # pyahocorasick; this build is str-only, so all
+# patterns and the haystack are bridged through latin-1 (1 char ==
+# 1 byte, byte-exact); verification is always on raw bytes.
 
 SCR = '/home/hatch/workspace/_doa4p16-scratch'
 MAP15 = '/home/hatch/workspace/_doa4p16-clone/teardown/dead-or-alive-4/phase15/containment-map.json'
@@ -42,7 +44,7 @@ WIN = 24
 def entry_bytes(vol, name):
     return open(os.path.join(SCR, 'afs_extract', vol, name), 'rb').read()
 
-def run_volume(vol, targets, stream_bytes, out, done):
+def run_volume(vol, targets, stream_bytes, stream_str, out, done):
     """targets: list of (name, sha256, cross=False). Returns per-entry results."""
     state = {}  # name -> {'size':n, 'pieces':[(off,moff,len,tier)], 'missing':[(s,e)], 'zero':bytes}
     for name, sha, cross in targets:
@@ -69,10 +71,10 @@ def run_volume(vol, targets, stream_bytes, out, done):
             break
         auto = ahocorasick.Automaton()
         for idx, (name, o, ln) in enumerate(jobs):
-            auto.add_word(state[name]['bytes'][o:o + WIN], idx)
+            auto.add_word(state[name]['bytes'][o:o + WIN].decode('latin-1'), idx)
         auto.make_automaton()
         found = {}
-        for end, idx in auto.iter(stream_bytes):
+        for end, idx in auto.iter(stream_str):
             if idx in found: continue
             name, o, ln = jobs[idx]
             cand = end - WIN + 1
@@ -123,7 +125,7 @@ def main():
                    if e['verdict'] in ('piecewise_unresolved', 'absent_windows')]
         print(f'{vol}: {len(targets)} targets', flush=True)
         stream = open(os.path.join(SCR, 'mirror_streams', vol + '.bin'), 'rb').read()
-        res = run_volume(vol, targets, stream, out, done)
+        res = run_volume(vol, targets, stream, stream.decode('latin-1'), out, done)
         for e in map15[vol]['entries']:
             if e['name'] not in res: continue
             r = res[e['name']]
@@ -140,7 +142,7 @@ def main():
         per = {}
         for vol in ('chrone', 'chrtwo', 'chrthree'):
             stream = open(os.path.join(SCR, 'mirror_streams', vol + '.bin'), 'rb').read()
-            res = run_volume(vol, [('jan02.tpr', e['sha256'], True)], stream, out, set())
+            res = run_volume(vol, [('jan02.tpr', e['sha256'], True)], stream, stream.decode('latin-1'), out, set())
             r = res['jan02.tpr']
             per[vol] = {'matched_bytes': r['matched_bytes'], 'coverage_pct': r['coverage_pct'],
                         'n_pieces': r['n_pieces']}
