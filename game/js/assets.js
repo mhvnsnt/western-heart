@@ -196,6 +196,7 @@ export const MODEL_URLS = {
   'cain-elias': '../roster/cain-elias/attires/attire1/model.glb',
   'cain-elias-attire2': '../roster/cain-elias/attires/attire2/model.glb',
   // Vain Abel — Attire 2 (owner 2026-10-20, Tripo pull).
+  'vainabel-attire1': '../roster/vainabel/attires/attire1/model-rigged.glb',
   'vainabel-attire2': '../roster/vainabel/attires/attire2/model.glb',
   // Vain Abel — Kane archetype (owner 2026-10-20, Tripo pull). Attire 3: Masked Demon of the Purple Haze.
   'vainabel-attire3': '../roster/vainabel/attires/attire3/model.glb',
@@ -239,9 +240,9 @@ export const MODEL_URLS = {
   'silvertongue-noir-gala': '../roster/lili/attires/noir-gala/lili-noir-gala.glb',
   baek: 'assets/models/baek.glb',   // KEVIN's A2 attire (original Baek model)
   // KEVIN A1 (owner 2026-10-18): Kevin's Tripo ("human figure", God Molecule canon) —
-  // his DEFAULT attire per roster/baek/attires/ATTIRE-SLOTS.md. Unrigged static;
-  // live-game default swap rides the auto-rig pass.
-  'kevin-tripo': '../roster/baek/attires/attire1/model.glb',
+  // his DEFAULT attire per roster/baek/attires/ATTIRE-SLOTS.md. Rigged 2026-10-23
+  // (wave 2, GameRig auto-rig, 73 joints); key rides model-rigged.glb.
+  'kevin-tripo': '../roster/baek/attires/attire1/model-rigged.glb',
   // Round-2 auto-rig wave (lane B): re-rigged per-fighter variants + Tripo
   // attires, all passing the playable gate (valid glTF, skinned, Hips, 1.5-2.2m).
   // 'demonio-body' round-2 re-rig variant was never pushed to the repo;
@@ -407,10 +408,11 @@ export const MODEL_URLS = {
   // in roster/buffalo-bill/CANON.md are NOT in the repo — Attire 3 "Ashes"
   // is his only on-main model, so the base key points there.
   'buffalo-bill': '../roster/buffalo-bill/attires/attire3/model.glb',
-  // VAIN ABEL ELIAS: base key. His Attire 1 Tripo (f7e90de8) is NOT on disk
-  // (roster/TRIPO-REGISTRY.md, audit 2026-10-22) — the base key points at
-  // his earliest on-main attire, Attire 2 (same file as 'vainabel-attire2').
-  vainabel: '../roster/vainabel/attires/attire2/model.glb',
+  // VAIN ABEL ELIAS: base key. His Attire 1 Tripo (f7e90de8) was recovered
+  // 2026-10-23 (wave 2 hunt: pulled via tools/tripo-pull, archived on release
+  // vain-abel-a1-tripo-20261023) — the base key points at
+  // his default Attire 1 (same file as 'vainabel-attire1'; rigged 2026-10-23, wave 2).
+  vainabel: '../roster/vainabel/attires/attire1/model-rigged.glb',
   // CHORDZ (owner 2026-10-15: Lars -> Chordz, emo guitarist). His Tripo sits
   // archived as an unrigged static under attires/attire1/source/.
   chordz: '../roster/chordz/attires/attire1/source/chordz-a1.glb',
