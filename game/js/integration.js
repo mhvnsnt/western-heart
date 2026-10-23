@@ -9,6 +9,15 @@
      labels3d.js     troika-three-text  3D nameplates / damage numbers
      camdirector.js  camera-controls    cutscene + photo-mode camera
      lipsync-player.js WH-original      mouth-cue playback (voice lane)
+     story/cinematic-director.js WH-original + inkjs   keyframe sequences,
+      trigger graph (flags/zones/timers/dialogue), ink narrative branches
+     story/brawler-camera.js   WH-original   multi-target brawler camera
+      (N-target frustum fit on the PR #851 CameraRig math; opt-in)
+     story/navmesh.js          WH-original + yuka   NavMesh pathfinding,
+      grunt pursue/flank/swarm (Yuka lane: pathfinding only — combat
+      state machines belong to the other Yuka track, issue #866)
+     story/dialogue-fsm.js     WH-original   combat-reactive banter FSM
+      (damage/HP/wave events; LLM/Inworld behind an optional seam)
 
    Design: every system lazy-loads with try/catch. If any vendor file
    fails, the game keeps running — the system is simply absent from
@@ -111,6 +120,103 @@ async function boot() {
     return new m.WHLipSyncPlayer();
   });
 
+  // 8. Cinematic director (Track 7): keyframe sequences + trigger
+  // graph + ink narrative for story mode / Heart and Mind Within.
+  await tryInit('cinematic', './story/cinematic-director.js', async (m) => {
+    const d = new m.WHCinematicDirector();
+    d.onDialogue = (prompt) => {
+      window.dispatchEvent(new CustomEvent('wh-dialogue', { detail: prompt }));
+    };
+    return d;
+  });
+
+  // 9. Brawler camera (Track 7): multi-target N-fighter framing built
+  // on the PR #851 CameraRig math. Opt-in — the fight camera keeps
+  // running unless enable() is called (Heart and Mind Within
+  // phase-2 density, cutscene push-ins via setFraming).
+  await tryInit('brawlerCam', './story/brawler-camera.js', async (m) => {
+    const bc = new m.WHBrawlerCamera().attach(camera);
+    bc.setTargets([]);
+    bc.setTargetProvider = (fn) => { bc._provider = fn; };
+    // Default provider: the two fighters + any heartmind grunt squad.
+    bc.setTargetProvider(() => {
+      const ts = [];
+      for (const key of ['p1', 'p2']) {
+        const f = game[key];
+        if (f && f.root) ts.push(m.WHBrawlerCamera.targetOf(f.root, key === 'p1' ? 2 : 1.5));
+      }
+      const hm = window.__heartmind;
+      if (hm && hm.squad && hm.squad.grunts) {
+        for (const g of hm.squad.grunts) ts.push({ pos: g.pos, weight: 1 });
+      }
+      return ts;
+    });
+    // THREE.Raycaster wall clamp against arena collidables (opt-in:
+    // heartmind sets the collidable list for tight spaces).
+    try {
+      const { Raycaster, Vector3 } = await import('three');
+      const ray = new Raycaster();
+      bc.setObstacleTester((origin, dir, maxDist) => {
+        const list = bc._collidables;
+        if (!list || !list.length) return null;
+        ray.set(new Vector3(origin.x, origin.y, origin.z), new Vector3(dir.x, dir.y, dir.z));
+        ray.far = maxDist;
+        const hits = ray.intersectObjects(list, false);
+        return hits.length ? hits[0].distance : null;
+      });
+      void Vector3;
+    } catch { /* raycast clamp unavailable; camera still frames */ }
+    return bc;
+  });
+
+  // 10. NavMesh pathfinding (Track 7, Yuka lane: pathfinding only).
+  await tryInit('navmesh', './story/navmesh.js', async (m) => {
+    const z = new m.WHNavZoneSet();
+    const api = {
+      zones: z,
+      /* Build a walkable zone from the stage's floor rects.
+         Heart and Mind Within phase-2 calls this per stage. */
+      async buildStageZone(zoneId, rects) {
+        const nm = new m.WHNavMesh();
+        await nm.init();
+        nm.buildFromRects(rects);
+        z.addZone(zoneId, nm);
+        return nm;
+      },
+      makeSquad: (zoneId, opts) => {
+        const nm = z.zones.get(zoneId);
+        return nm ? new m.WHSquad(nm, opts) : null;
+      },
+    };
+    return api;
+  });
+
+  // 11. Combat-reactive dialogue FSM (Track 7). Lines come from the
+  // game's canon banter data; the FSM only selects. Emits through
+  // onLine + a 'wh-dialogue-line' CustomEvent the UI binds to.
+  await tryInit('dialogue', './story/dialogue-fsm.js', async (m) => {
+    const fsm = new m.WHDialogueFSM();
+    fsm.onLine = (rec) => {
+      window.dispatchEvent(new CustomEvent('wh-dialogue-line', { detail: rec }));
+    };
+    try {
+      const banter = await import('./versus-banter.js');
+      if (banter.VERSUS_BANTER) {
+        // Seed from existing canon banter; per-pair wiring happens
+        // when a fight's pair key is known (see bindFight below).
+        fsm._banterTable = banter.VERSUS_BANTER;
+      }
+    } catch { /* banter data optional */ }
+    fsm.bindFight = (p1Id, p2Id) => {
+      fsm.resetFight();
+      if (fsm._banterTable) {
+        const key = [p1Id, p2Id].sort().join('|');
+        fsm.registerBeats(fsm._banterTable, 'fightStart', key);
+      }
+    };
+    return fsm;
+  });
+
   WHIntegration.ready = true;
   window.WHIntegration = WHIntegration;
 
@@ -143,6 +249,15 @@ async function boot() {
       if (S.labels) S.labels.update(dt, camera);
       if (S.camdirector) S.camdirector.update(dt);
       if (S.lipsync) S.lipsync.update();
+      if (S.cinematic) S.cinematic.update(dt, {
+        playerPos: game.p1 && game.p1.root ? game.p1.root.position : undefined,
+      });
+      if (S.brawlerCam && S.brawlerCam.enabled) {
+        if (S.brawlerCam._provider) {
+          try { S.brawlerCam.setTargets(S.brawlerCam._provider()); } catch { /* keep last */ }
+        }
+        S.brawlerCam.update(dt);
+      }
     } catch (e) {
       console.warn('[WHIntegration] frame error (non-fatal):', e);
     }
