@@ -606,38 +606,51 @@ window.addEventListener('load', () => {
   setTimeout(() => document.getElementById('tap-to-start').classList.add('show'), 600);
 });
 
-/* Mobile law (2026-10-23): SCREEN TAPS, not button clicks. A
-   document-level tap recognizer forwards real taps on [data-action] /
-   [data-mm] controls to the click routers below — the native emulated
-   click is suppressed so each action fires exactly once. Scrolls and
-   pinches never forward. Controls with their own onTap wiring
-   (select cards, chips, confirm buttons) are skipped here. */
-let _tapX = 0, _tapY = 0, _tapT = 0, _tapOn = false;
-document.addEventListener('touchstart', (e) => {
-  if (e.touches.length !== 1) { _tapOn = false; return; }
-  const t = e.touches[0];
-  _tapX = t.clientX; _tapY = t.clientY; _tapT = Date.now(); _tapOn = true;
+/* Mobile law (2026-10-23): SCREEN TAPS via the proven Pointer Events
+   stack — no hand-rolled touchstart/touchend math, no invented input
+   behaviors (standing law). A tap on a [data-action]/[data-mm] control
+   dispatches its action on pointerup (instant, no click delay); the
+   compatibility click that follows is dropped through the skip map so
+   the action fires exactly once. A scroll/drag (movement, or the
+   browser's pointercancel takeover) never dispatches. Controls with
+   their own onTap wiring (select cards, chips, confirm buttons) are
+   skipped here. Keyboard/AT clicks (no pointer) keep working through
+   the routers below. */
+const _tapSkipUntil = new WeakMap();
+const TAP_SKIP_MS = 700;
+let _fPid = null, _fX = 0, _fY = 0, _fT = 0, _fVoid = false;
+document.addEventListener('pointerdown', (e) => {
+  if (_fPid !== null) return;
+  _fPid = e.pointerId;
+  _fX = e.clientX; _fY = e.clientY;
+  _fT = performance.now();
+  _fVoid = false;
 }, { passive: true });
-document.addEventListener('touchend', (e) => {
-  if (!_tapOn) return;
-  _tapOn = false;
-  const t = e.changedTouches[0];
-  if (!t) return;
-  if (Math.hypot(t.clientX - _tapX, t.clientY - _tapY) > 14 || Date.now() - _tapT > 600) return;
-  const tgt = (t.target instanceof Element) ? t.target : null;
+document.addEventListener('pointermove', (e) => {
+  if (e.pointerId !== _fPid || _fVoid) return;
+  if (Math.hypot(e.clientX - _fX, e.clientY - _fY) > 10) _fVoid = true;
+}, { passive: true });
+document.addEventListener('pointercancel', (e) => {
+  if (e.pointerId === _fPid) _fPid = null;
+}, { passive: true });
+document.addEventListener('pointerup', (e) => {
+  if (e.pointerId !== _fPid) return;
+  _fPid = null;
+  if (_fVoid || performance.now() - _fT > 500) return; // scroll/hold, not a tap
+  const tgt = (e.target instanceof Element) ? e.target : null;
   const el = tgt ? tgt.closest('[data-action],[data-mm]') : null;
   if (!el || isTapHandled(el)) return;
-  e.preventDefault();
-  el.click();
-}, { passive: false });
+  _tapSkipUntil.set(el, performance.now() + TAP_SKIP_MS);
+  if (el.hasAttribute('data-action')) dispatchDataAction(el);
+  else dispatchDataMm(el);
+}, { passive: true });
 
 /* Delegated data-action router (T8 menu, worker 37): one document-level
    listener covers both the static menu and submenu cards created
-   dynamically by mainmenu.js. Previously a one-time forEach at eval. */
-document.addEventListener('click', (e) => {
-  const t = e.target;
-  const el = (t instanceof Element) ? t.closest('[data-action]') : null;
-  if (!el) return;
+   dynamically by mainmenu.js. Previously a one-time forEach at eval.
+   The body lives in dispatchDataAction (hoisted function declaration)
+   so the pointerup tap forwarder above can dispatch taps directly. */
+function dispatchDataAction(el) {
   {
     unlockAudio();
     audio.uiClick();
@@ -709,15 +722,22 @@ document.addEventListener('click', (e) => {
       getModes().then(m => { if (m.mode) m.rematch(); else startFight(); });
     }
   }
+}
+document.addEventListener('click', (e) => {
+  const t = e.target;
+  const el = (t instanceof Element) ? t.closest('[data-action]') : null;
+  if (!el) return;
+  // A tap already dispatched this action on pointerup — the compatibility
+  // click that follows is dropped so the action fires exactly once.
+  if ((_tapSkipUntil.get(el) || 0) > performance.now()) return;
+  dispatchDataAction(el);
 });
 
 /* T8 main menu router (data-mm, worker 36): the T8-style menu uses data-mm
    attributes, not data-action. This delegated listener wires them up.
-   Each navigates to a real screen — no dead ends. */
-document.addEventListener('click', (e) => {
-  const t = e.target;
-  const el = (t instanceof Element) ? t.closest('[data-mm]') : null;
-  if (!el) return;
+   Each navigates to a real screen — no dead ends. Body in dispatchDataMm
+   (hoisted) so the pointerup tap forwarder can dispatch taps directly. */
+function dispatchDataMm(el) {
   unlockAudio();
   audio.uiClick();
   const m = el.dataset.mm;
@@ -751,6 +771,15 @@ document.addEventListener('click', (e) => {
   else if (m === 'options') {
     show('howto'); // Options: howto screen has settings
   }
+}
+document.addEventListener('click', (e) => {
+  const t = e.target;
+  const el = (t instanceof Element) ? t.closest('[data-mm]') : null;
+  if (!el) return;
+  // A tap already dispatched this action on pointerup — the compatibility
+  // click that follows is dropped so the action fires exactly once.
+  if ((_tapSkipUntil.get(el) || 0) > performance.now()) return;
+  dispatchDataMm(el);
 });
 
 /* Confirm routing: the mode controller owns the select flow

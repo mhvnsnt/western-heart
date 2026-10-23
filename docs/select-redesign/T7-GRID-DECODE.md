@@ -152,14 +152,17 @@ with no restructuring).
    below, all inside non-scrolling screen chrome. PORTRAIT PHONE IS
    PRIMARY (owner law 2026-10-23): this is a mobile game.
 5. TOUCH LAW (owner 2026-10-23, standing): SCREEN TAPS, not button
-   clicks — minimum 44px tap targets (ours are 48px+), touchstart/
-   touchend tap recognition via game/js/tap.js (never bare click,
-   never hover — there is NO hover-dependent UI anywhere on the
-   select screens), and tap-vs-scroll disambiguation inside the
-   scrolling grid/strip so a scroll never misfires as a pick. Tap a
-   card = preview on your side; tap the highlighted card again (or
-   CONFIRM) = lock. Every interactive element is 48px+ — no dead ends,
-   no tiny text links.
+   clicks — minimum 44px tap targets (ours are 48px+), NO hand-tooled
+   touch math and NO hover-dependent UI anywhere. Input uses the
+   researched proven stack: the native Pointer Events API
+   (pointerdown/pointerup/pointermove with setPointerCapture) plus
+   CSS touch-action: manipulation on tappables — the 2026 baseline,
+   no dependency (game/js/tap.js; no gesture library needed — the
+   grids scroll natively and the platform's pointercancel voids a tap
+   that becomes a scroll). Tap a card = preview on your side; tap the
+   highlighted card again (or CONFIRM) = lock. Every interactive
+   element is 48px+ — no dead ends, no tiny text links. Portrait
+   phone is primary.
 6. Nine Souls redesign (2026-10-23): seven souls stay OFF the grid as
    standalone cards; ZEN and GYOU stay selectable (their models are
    real: Zen's Tripo spirit body, Gyou's build).

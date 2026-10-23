@@ -420,8 +420,8 @@ export function createSelectScreen(deps) {
         card.setAttribute('tabindex', '0');
         card.setAttribute('aria-label', `Select ${c.name}`);
         card.innerHTML = portraitHTML(c);
-        // Mobile law: screen taps (touchstart/touchend with tap-vs-scroll
-        // disambiguation) — never bare click, never hover.
+        // Mobile law: screen taps via the proven Pointer Events stack
+        // (js/tap.js) — never bare click, never hover.
         onTap(card, () => onCardTap(c, card));
         strip.appendChild(card);
         if (row === 1) { col++; row = 0; } else { row = 1; }
@@ -556,8 +556,8 @@ export function createSelectScreen(deps) {
       chip.type = 'button';
       chip.textContent = a.label;
       chip.disabled = !interactive;
-      // Mobile law: screen taps. stopPropagation keeps the tap from
-      // reaching the card/pane beneath the chip.
+      // Mobile law: screen taps (js/tap.js). stopPropagation keeps the tap
+      // from reaching the card/pane beneath the chip.
       onTap(chip, (e) => {
         if (e && e.stopPropagation) e.stopPropagation();
         if (!interactive) return;
@@ -817,7 +817,7 @@ export function createSelectScreen(deps) {
 
   const pBtn = $('attire-punch');
   const kBtn = $('attire-kick');
-  // Mobile law: screen taps (the click fallback covers mouse/AT).
+  // Mobile law: screen taps via js/tap.js (click fallback covers mouse/AT).
   if (pBtn) onTap(pBtn, punchAttire);
   if (kBtn) onTap(kBtn, kickAttire);
 
