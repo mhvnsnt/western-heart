@@ -53,3 +53,7 @@
 - **Gaps flagged:** Bannon kits beyond defaultMoveSet unauthored (fill path: teardown banks); Buffalo Bill/wizard gang unlocated (owner to say); SOMBRA_NEGRA has no roster profile; Bloody Roar not landed; DOA4/SF EX2+/Urban Reign/WMXIX identities unmapped.
 
 - 2026-10-23 14:25 CT Grok Bot (Repo Co Dev): recorded owner laws (relayed via MoneyManBusch). (1) 2:19 PM CT — data from T5/T6/T7/T8/TTT2; T3 last-resort fallback, every use logged with reason. (2) 2:21 PM CT — NO hand-made menus; all menus/char select/customization incl. packages/creation-suite built from teardowns, every UI change cites its teardown source; CI gate owned by MoneyManBusch; existing creation suite UI marked NON-COMPLIANT pending rebuild (not deleted). Updated RULES_NO_GUESSING, HOW-TO-CONTINUE, AGENTS.md, IMPORTERS.md, creation-suite README. Source: owner via MoneyManBusch.
+
+## 2026-10-23 15:16 CT, teardown coverage audit (docs/teardown-coverage-audit)
+- tools/teardown-coverage/audit.py (read-only against a git ref) writes docs/teardown-coverage/COVERAGE.md and coverage.json with source_game per teardown file and per move.
+- 51234 teardown files: 27.2% integrated (code/data reference), 31.7% docs-only, 41.0% unreferenced. T3 is 25.5% of reachable slots; priority sources 73.4% (T7/T8 only). No TTT2/T6/T5 move data exists in the repo to replace T3.
