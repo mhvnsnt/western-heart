@@ -1,5 +1,7 @@
 # Western Heart — Work log (timestamps CT)
 
+- 2026-10-23 15:40 CT Grok Bot (teardown-integration lane): t123u ui_sources gate. Added `game/ui_sources.json` (14 screens, all `legacy-unsourced`: the repo has no T5/T7/T8/TTT2 menu extractions yet, and T6 has only 2 PSP icons), `tools/ui-sources/check.py`, `.github/workflows/ui-sources.yml`, and the AGENTS.md law. Local tests: untouched = PASS; changed screen-daily with no source = FAIL; same change citing teardown/tekken6/ui/psp_PIC1.png = PASS.
+
 - 2026-10-14 16:10 Grok Bot (QA lane): claimed in agent-ops CLAIMS.md (`grok/wh-playtest-qa`). Sparse clone `/workspace/wh-qa` (`--depth 1 --filter=blob:limit=2m`), Godot 4.3 already on box. Disk 4.6 GB free, RAM ~5 GB.
 - 16:15 Imported lab/game headless; read main.gd / fighter.gd / move_table.gd / ai.gd. King jab row 35 has active_first 18; grab and heavy share row 230.
 - 16:20 Wrote `lab/game/tests/qa_playtest.gd` (scripted P1 via InputMap, dummy P2, per-frame CSV). Headless run: 12 scenarios, 30 s.
