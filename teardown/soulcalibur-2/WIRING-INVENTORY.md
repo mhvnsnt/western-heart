@@ -14,7 +14,7 @@ Fighter VMX = vmx0 in each bundle; vmx1+ = weapon/extra VMXs (decoded,
 GLBs in the game-reverse-engineering phase-4 PR, regenerable via its
 tools). Fighter GLBs below are the placed bind-pose models (skinned +
 rigid parts placed by proven node world matrices; sheet-class parts only
-in the `_full` variants in the decode PR).
+in the `_full` variants in the decode PR). — **CORRECTED phase 16:** the "sheet class" never existed; those parts are trailer-span rigid parts (span = count×40 + 8) misread by the old reader's +8 shift — they decode as legible armor/equipment with the fixed reader (phase 15 root cause, phase 16 re-decode; see `PHASE16-STATE.md` CORRECTIONS).
 
 | Slot/Tag | Fighter | Entry | Model in this repo | Status |
 |---|---|---|---|---|
@@ -28,7 +28,7 @@ in the `_full` variants in the decode PR).
 | 0c | Kilik | 320 | `teardown/soulcalibur-2/models/idx320_fighter_placed.glb` | FLAGGED — same |
 | 0d | Xianghua | 359 | `teardown/soulcalibur-2/models/idx359_fighter_placed.glb` | FLAGGED — same |
 | 0f | Yoshimitsu | 398 | `teardown/soulcalibur-2/models/idx398_fighter_placed.glb` | FLAGGED — same (rigid-heavy model: 81 rigid parts) |
-| 11 | Nightmare | 437 | `teardown/soulcalibur-2/models/idx437_fighter_placed.glb` | FLAGGED — same; render viewed; thigh/hip gap in placed GLB remains OPEN (sheet-class parts in `_full` do not form legible coverage — viewed) |
+| 11 | Nightmare | 437 | `teardown/soulcalibur-2/models/idx437_fighter_placed.glb` | FLAGGED — same; render viewed; thigh/hip gap in placed GLB remains OPEN (sheet-class parts in `_full` do not form legible coverage — viewed) — **CORRECTED/RESOLVED phase 16:** the gap was the dropped trailer-span cuisses (thigh armor plates); the re-decoded textured Nightmare has continuous armored thighs (viewed, `phase16-proof/nightmare-thigh-close-old-vs-new.png`). The placed GLB itself still carries the phase-4 decode — regenerating it from the same bundle with the fixed reader is mechanical follow-up. |
 | 12 | Astaroth | 476 | `teardown/soulcalibur-2/models/idx476_fighter_placed.glb` | FLAGGED — same |
 | 13 | — not in CHARACTER-MAP — | 749 | — | FLAGGED — bundle's vmx0 is a rigid-only model (82 nodes, 86 parts), not a standard fighter; identity + role unproven, not decoded as a fighter |
 | 14 | Cervantes | 515 | `teardown/soulcalibur-2/models/idx515_fighter_placed.glb` | FLAGGED — model decoded + import-verified; render viewed, fully coherent; roster pending |
@@ -225,3 +225,43 @@ renders: `phase15-proof/`. Motion untouched (capture gate);
 3. **Game-format movesets** — frame/damage fields + pairing table + motion data (unchanged).
 4. **In-bundle sound extraction** — type-0xc `mmx` codec closed (identification complete).
 5. **rec80 secondary at draw time** — created-and-held proven; visible-layer bake only if a binding is ever proven.
+
+## Phase 16 update (2026-10-22) — trailer-span recovery, sheet class corrected
+
+Lane record: `PHASE16-STATE.md`; renders: `phase16-proof/`;
+census closeout: `CENSUS-PHASE13.md` phase-16 section. Motion
+untouched (capture gate); `CANON-CONVERSION.md` untouched.
+
+| Class | Decoded | Wired | Left before playable |
+|---|---|---|---|
+| Fighters + costumes (fixed reader) | **All shipped GLBs re-decoded**: base 22 skinned + textured (891 → 1,081 parts, images 559 → 601) and 80 variant GLBs (2,850 → 3,447 parts, images 1,964 → 2,105); with phase 15's idx283/idx291/idx789 the variant set is **83/83 with the fixed reader** (3,631 parts, 2,155 images). 255-part census recovery reconciled exactly (190 P1 + 7 + 7 + 51) | GLBs in `models-skinned/`, `models-textured/`, `models-textured/variants-*/`; per-file gates in `PHASE16-STATE.md`; Nightmare thigh gap RESOLVED (renders viewed) | `models/` placed GLBs still carry the phase-4 decode (outside this phase's scope — they are regenerable from the same bundles); costume switching in-game is game-side work |
+
+### Still blocking SCII true 100% after phase 16
+
+1. **Animations/motion** — unchanged: gated on the parent lane's dynamic emulator capture (GRE PR #40).
+2. **Canon assignment** — owner-pending (`CANON-CONVERSION.md`, untouched).
+3. **Game-format movesets** — frame/damage fields + pairing table + motion data (unchanged).
+4. **In-bundle sound extraction** — type-0xc `mmx` codec closed (identification complete, phase 15).
+5. **rec80 secondary at draw time** — created-and-held proven; visible-layer bake only if a binding is ever proven.
+6. **Placed GLBs (`models/`)** — phase-4 decode; re-decode with the fixed reader is mechanical follow-up (same bundles, placed path).
+
+## Phase 17 update (2026-10-22) — placed set fixed; SCII TEARDOWN-SIDE COMPLETE
+
+Lane record: `PHASE17-STATE.md`; closeout: `SCII-FINAL-STATE.md`;
+renders: `phase17-proof/`. Motion untouched (capture gate);
+`CANON-CONVERSION.md` untouched.
+
+| Class | Decoded | Wired | Left before playable |
+|---|---|---|---|
+| Fighters — placed set (`models/`) | **All 22 placed GLBs re-decoded with the fixed reader** through the placement path (new repo tool `tools/build_placed.py` — the phase-3 placed build had no separate script; its geometry logic lived in `build_skinned.py`, and the fixed +0 rigid read applies identically): **891 → 1,081 parts (+190)**. Per-fighter recovery matches the phase-16 base sets EXACTLY for all 22 fighters (same bundles, same rigid part selection — zero differences to explain). Gates per file (all pass): every old mesh present with byte-identical POSITION/NORMAL/TEXCOORD_0/COLOR_0/index bytes (gate tolerance: exact, stricter than the ≤1e-05 allowed), all normals finite, structure unchanged in kind (rigid: 0 skins, one scene node per mesh, 0 images by design). Nightmare placed render VIEWED: armor complete in placed form (helmet, cuirass, faulds, solid cuisses — the thigh gap is closed in the placed set too); Mitsurugi + idx905 (largest recoveries after Nightmare) also viewed | GLBs replaced in-tree in `models/` (that replacement is this phase's purpose); renders in `phase17-proof/` | Roster registration still waits on owner canon assignment |
+| SCII closeout | **`SCII-FINAL-STATE.md`** — standalone final state: 100% shipped set (containers, VMX/VXT, fighters in all three sets, stages 41/41, variants 83/83, AV release + pull-back proof, 5,915 moveset records with the f3/pairing residual, GRE #26–#40 math corpus + recurrence finding), capture-gated items, the closed mmx codec, owner-pending canon, known artifacts (idx632 ≤4e-09 tail weights; m120 stored sphere), full PR stack | This inventory + `SCII-FINAL-STATE.md` | — |
+
+### Sweep status for SCII (phase 17, final)
+
+**SCII = teardown-side COMPLETE.** Every statically decodable class
+is decoded, gated, and shipped with the fixed reader. The only
+remaining items are NOT teardown work: (1) the parent lane's xemu
+capture for motion (+ the rec80 draw-time binding observation),
+and (2) owner canon assignment (`CANON-CONVERSION.md`). The
+in-bundle `mmx` waveform codec is closed-unproven (CRI middleware;
+container + registration fully mapped, phase 15).
