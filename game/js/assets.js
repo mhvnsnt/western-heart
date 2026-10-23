@@ -75,7 +75,7 @@ export const MODEL_URLS = {
   // attire and NOT his body: in the stand system the spirit form floats
   // behind his spirit body (behavior spec in roster/zen/RIG-NOTES.md).
   // Loadable as its own key, tied to Zen's fighter record.
-  'zen-spirit': '../roster/zen/spirit/model.glb',
+  'zen-spirit': '../roster/zen/spirit/model-rigged.glb', // rigged form (PR #627 rigs) landed 2026-10-22; raw model.glb kept in place
   // ZEN TRANSFORMATION MODES (owner Tripos, 2026-10-21): NOT attires —
   // stages of ONE transformation inside Attire 1, chained via forms in
   // roster-full.js (spirit body -> TENTACLE MODE -> OVERSOUL). Canon:
@@ -83,12 +83,12 @@ export const MODEL_URLS = {
   // TENTACLE MODE (9460095d): the clothing tentacle imagery becomes REAL
   // tentacles busting out of him; no Oversoul head; spirit rides higher
   // and further back (offset in RIG-NOTES.md).
-  'zen-tentacle': '../roster/zen/tentacle/model.glb',
+  'zen-tentacle': '../roster/zen/tentacle/model-rigged.glb', // rigged form (PR #627 rigs) landed 2026-10-22; raw model.glb kept in place
   // OVERSOUL (2bbc8e88): the combined form — the spirit has docked at the
   // head position and TAKEN THE HEAD'S PLACE. Body tentacles on this
   // model are IMAGERY on the body, not protruding tentacles (verified on
   // the front render, 2026-10-21 — see roster/zen/ATTIRE-SLOTS.md).
-  'zen-oversoul': '../roster/zen/oversoul/model.glb',
+  'zen-oversoul': '../roster/zen/oversoul/model-rigged.glb', // rigged form (PR #627 rigs) landed 2026-10-22; raw model.glb kept in place
   // Tripo pulls wired 2026-10-19 (owner: stop saying "not in the repo").
   phantom: '../roster/phantom/attires/attire1/model-rigged.glb',
   skull: '../roster/skull/attires/attire1/model-rigged.glb',
@@ -122,8 +122,11 @@ export const MODEL_URLS = {
   'king-tyrant-attire3': '../roster/king-tyrant/attires/attire3/model.glb',
   'king-tyrant-attire4': '../roster/king-tyrant/attires/attire4/model.glb',
   // KINPO Attire 1 (owner 2026-10-20): his Tripo pull is her MAIN attire.
-  kinpo: '../roster/kinpo/attires/attire1/model-rigged.glb',
-  'kinpo-attire1': '../roster/kinpo/attires/attire1/model-rigged.glb',
+  // Repoint 2026-10-22 (worker 50): the k-NN model-rigged.glb was broken;
+  // live keys now ride the tripo-intake rig (Blender 4.0.2 + GameRig, facing
+  // +X measured — proof: docs/proof/muse-2026-10-21/tripo-intake/).
+  kinpo: '../roster/kinpo/attires/attire1/model-intake.glb',
+  'kinpo-attire1': '../roster/kinpo/attires/attire1/model-intake.glb',
   // Previous A1 (Asuka-based game model, provenance unknown) laddered back
   // to a legacy alternate 2026-10-20 — NOT deleted.
   'kinpo-legacy': 'assets/models/kinpo.glb',
@@ -132,7 +135,8 @@ export const MODEL_URLS = {
   // KINPO INTAKE DEMO (2026-10-21, tripo-intake lane): the same attire-1 Tripo
   // re-rigged end-to-end by tools/tripo-intake (Blender 4.0.2 + GameRig, facing
   // +X measured by the intake's two-cue gate — the k-NN batch assumed +Z).
-  // Suite-viewer demo key only; the live game keeps using 'kinpo' above.
+  // Suite-viewer demo key; the live game now uses 'kinpo'/'kinpo-attire1'
+  // above (repointed 2026-10-22 to this same intake rig).
   'kinpo-intake-demo': '../roster/kinpo/attires/attire1/model-intake.glb',
   // WATERFALL (2026-10-21, lane 4 rig batch 1): unrigged Tripo static -> model-rigged.glb
   // via tools/auto_rig knn backend (donor pantera.glb); original model.glb untouched.

@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="select.css" />
   <link rel="stylesheet" href="menus.css" />
+  <link rel="stylesheet" href="mainmenu.css" />
   <!-- Worker 35: colorblind-safe HUD palettes (worker-35 identity lane) -->
   <link rel="stylesheet" href="css/colorblind.css" />
   <!-- Three.js loaded as an ES module from local vendor (no CDN) -->
@@ -126,6 +127,43 @@
 
     <div class="mm-toast" id="mm-toast" role="status"></div>
   </section>
+  <!-- Coming-soon screens: honest placeholders, each with BACK (no dead ends) -->
+  <section id="screen-online" class="screen">
+    <div class="menu-content"><div class="wh-placeholder">
+      <h2 class="screen-title">ONLINE</h2>
+      <p>Ranked Battle · Rank Hall · Tournament<br />Netcode is in development. The 53-tier rank system is ready.</p>
+      <div class="menu-buttons wh-main-menu">
+        <button class="wh-menu-btn wh-back" data-action="back-menu"><span class="wh-menu-icon">←</span><span class="wh-menu-label">BACK</span></button>
+      </div>
+    </div></div>
+  </section>
+  <section id="screen-sidegames" class="screen">
+    <div class="menu-content"><div class="wh-placeholder">
+      <h2 class="screen-title">SIDE GAMES</h2>
+      <p>Festival games · Spirit trials · Yokai pastimes<br />Drawn from Japanese and world mythologies.</p>
+      <div class="menu-buttons wh-main-menu">
+        <button class="wh-menu-btn wh-back" data-action="back-menu"><span class="wh-menu-icon">←</span><span class="wh-menu-label">BACK</span></button>
+      </div>
+    </div></div>
+  </section>
+  <section id="screen-collection" class="screen">
+    <div class="menu-content"><div class="wh-placeholder">
+      <h2 class="screen-title">COLLECTION</h2>
+      <p>Gallery · Jukebox · Replays<br />Your journey through the Nine Souls, archived.</p>
+      <div class="menu-buttons wh-main-menu">
+        <button class="wh-menu-btn wh-back" data-action="back-menu"><span class="wh-menu-icon">←</span><span class="wh-menu-label">BACK</span></button>
+      </div>
+    </div></div>
+  </section>
+  <section id="screen-daily" class="screen">
+    <div class="menu-content"><div class="wh-placeholder">
+      <h2 class="screen-title">DAILY CHALLENGES</h2>
+      <p>A new trial every day.<br />Complete it to earn souls.</p>
+      <div class="menu-buttons wh-main-menu">
+        <button class="wh-menu-btn wh-back" data-action="back-menu"><span class="wh-menu-icon">←</span><span class="wh-menu-label">BACK</span></button>
+      </div>
+    </div></div>
+  </section>
 
   <!-- ====================== HOW TO PLAY ====================== -->
   <section id="screen-howto" class="screen">
@@ -216,7 +254,20 @@
       <h2>CHOOSE YOUR ARENA</h2>
       <div class="select-timer" style="visibility:hidden">99</div>
     </header>
-    <div id="stage-grid" class="char-grid stage-grid"><!-- filled by JS --></div>
+    <div class="stage-body">
+      <div class="stage-preview-pane">
+        <div class="stage-preview-media">
+          <img id="stage-preview-img" alt="" />
+          <div id="stage-preview-swatch" hidden></div>
+        </div>
+        <div class="stage-preview-info">
+          <div id="stage-preview-name"></div>
+          <div id="stage-preview-universe"></div>
+          <div id="stage-preview-desc"></div>
+        </div>
+      </div>
+      <div id="stage-grid" class="char-grid stage-grid"><!-- filled by JS --></div>
+    </div>
     <footer class="select-footer">
       <span id="stage-hint">Pick an arena</span>
       <button id="random-stage" class="btn-ghost">RANDOM</button>
@@ -293,6 +344,8 @@
         <button class="act-btn special" data-btn="surge">S</button>
         <button class="act-btn block" data-btn="block">B</button>
         <button class="act-btn dodge" data-btn="dodge">D</button>
+        <!-- V-System (owner 2026-10-22): V-Skill / V-Trigger / V-Reversal -->
+        <button class="act-btn vskill" data-btn="vskill">V</button>
 <button class="act-btn transform" data-btn="transform" style="display:none">T</button>
       </div>
     </div>
@@ -395,6 +448,7 @@
        module graph so input.js/main.js can consult window.WHIdentity. -->
   <script src="js/identity.js"></script>
   <script src="js/wh-boot.js"></script>
+  <script type="module" src="js/online.js"></script>
   <script type="module" src="js/main.js"></script>
 </body>
 </html>
