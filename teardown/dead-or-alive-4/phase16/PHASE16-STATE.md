@@ -6,7 +6,7 @@ grammar proven; containment at reconstruction grade), G4
 OPEN (exact residuals: the stateful .mot per-item length
 rule + the XEX file-side w21 writer — both named with their
 evidence in MOT-GRAMMAR.md / W21-TRACE.md), G5 tools banked
-(10 phase-16 tools), G6 unchanged. Local bytes (re-assembled
+(14 phase-16 tools), G6 unchanged. Local bytes (re-assembled
 ISO, mirror streams + parts, AFS extraction, mot/extract/
 definition downloads, ghidra scratch) cleared at lane end
 per the one-store rule — every byte is in a verified GitHub
