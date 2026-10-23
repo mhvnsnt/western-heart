@@ -337,6 +337,7 @@ export function createSelectScreen(deps) {
   };
   loop();
 
+  const LAST_KEY = 'wh.select.last.v1';
   const state = {
     mode: null,
     phase: 'pick',        // 'pick' | 'done'
@@ -515,21 +516,20 @@ export function createSelectScreen(deps) {
     const modelId = selectedAttireModel(c);
     const els = plateEls(side);
     const fb = els.root.querySelector('.pane-fallback');
-    els.note.hidden = false;
-    els.note.textContent = 'LOADING…';
+    els.note.hidden = true;
     const ok = await panes[side].show(c, modelId);
     if (state.highlight[side]?.id !== c.id && state.locked[side]?.id !== c.id) return;
     if (panes[side].failed) {
       // No WebGL on this device: show the posed portrait plate
       // instead of the live model, and say so honestly.
       if (fb) { fb.src = `assets/portraits/${c.id}.png`; fb.hidden = false; }
-      els.note.hidden = false;
-      els.note.textContent = '3D UNAVAILABLE';
+      els.note.hidden = true; // owner law: never an error message on select
       return;
     }
-    if (fb) fb.hidden = true;
-    els.note.hidden = ok;
-    if (!ok) els.note.textContent = 'MODEL PENDING';
+    // A model that fails to load shows the fighter's own portrait plate,
+    // never a message, a T-pose or another fighter.
+    if (fb) { if (!ok) fb.src = `assets/portraits/${c.id}.png`; fb.hidden = !!ok; }
+    els.note.hidden = true;
   }
 
   function applyAttire(side, c, modelId) {
@@ -598,6 +598,11 @@ export function createSelectScreen(deps) {
   function notifyConfirm(confirmedId) {
     const c = deps.findChar(confirmedId);
     if (!c) return;
+    try {
+      const side = state.mode === 'versus' && state.locked.p1 ? 'p2' : 'p1';
+      const last = JSON.parse(localStorage.getItem(LAST_KEY) || '{}');
+      last[side] = c.id; localStorage.setItem(LAST_KEY, JSON.stringify(last));
+    } catch (_) {}
     if (state.mode === 'versus') {
       if (!state.locked.p1) {
         state.locked.p1 = c;
@@ -643,6 +648,15 @@ export function createSelectScreen(deps) {
       deps.onHighlight(null);
     }
     state._shown = true;
+    if (fresh) {
+      // T7: the P1 cursor starts on the fighter you last confirmed
+      // (attire is remembered per fighter by attires.js).
+      try {
+        const last = JSON.parse(localStorage.getItem(LAST_KEY) || '{}');
+        const c = last.p1 && deps.findChar(last.p1);
+        if (c && cardFor(c.id)) highlight(c, { scroll: true });
+      } catch (_) {}
+    }
     paintCards();
     renderPlate('p1');
     renderPlate('p2');
