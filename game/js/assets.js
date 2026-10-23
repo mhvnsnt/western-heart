@@ -91,23 +91,23 @@ export const MODEL_URLS = {
   // the front render, 2026-10-21 — see roster/zen/ATTIRE-SLOTS.md).
   'zen-oversoul': '../roster/zen/oversoul/model-rigged.glb', // rigged form (PR #627 rigs) landed 2026-10-22; raw model.glb kept in place
   // Tripo pulls wired 2026-10-19 (owner: stop saying "not in the repo").
-  phantom: '../roster/phantom/attires/attire1/model-rigged.glb',
-  skull: '../roster/skull/attires/attire1/model-rigged.glb',
+  phantom: '../roster/phantom/attires/attire1/model-rerig.glb',
+  skull: '../roster/skull/attires/attire1/model-rerig.glb',
   // KRONOS (owner custom Zangief fighter, 2026-10-19): Tripo models live at
   // tripo-recovery/kronos_attire1_default.glb/ + kronos_attire2_timberwolf/;
   // copying the GLB into roster/kronos/attires/attire1/model.glb is a follow-up.
-  kronos: '../roster/kronos/attires/attire1/model-rigged.glb',
+  kronos: '../roster/kronos/attires/attire1/model-rerig.glb',
   // SAM-UR-A1 Attire 1 (owner 2026-10-19): Tripo pull replaces the fan-rip placeholder.
   'sam-ur-a1': '../roster/sam-ur-a1/attires/attire1/model-rigged.glb',
   // SAKU RA (2026-10-21, lane 4 rig batch 1): unrigged Tripo static -> model-rigged.glb
   // via tools/auto_rig knn backend (donor pantera.glb); original model.glb untouched.
-  'saku-ra': '../roster/sakura/attires/attire1/model-rigged.glb',
+  'saku-ra': '../roster/sakura/attires/attire1/model-rerig.glb',
   'awa-pop': 'assets/models/awa-pop.glb',
   // AWA POP Attire 2 (fighter-completeness audit 2026-10-21): owner-confirmed
   // Tripo Attire 2 (roster/awa-pop/ATTIRE-SLOTS.md slot 2) — the GLB was in the
   // repo with no key, so it could never load.
   'awa-pop-attire2': '../roster/awa-pop/attires/attire2/model-rigged.glb',
-  'purple-rain': '../roster/purplerain/attires/attire1/model-rigged.glb',
+  'purple-rain': '../roster/purplerain/attires/attire1/model-rerig.glb',
   nightwolf: 'assets/models/nightwolf.glb',
   // NIGHTWOLF Attire 1 (owner 2026-10-18, Tripo pull 5b0835eb "tribal warrior"):
   // his DEFAULT attire per roster/nightwolf/attires/ATTIRE-SLOTS.md — tribute to
@@ -160,16 +160,16 @@ export const MODEL_URLS = {
   // pre-form's 178-joint rig via the repo k-NN transfer; original untouched.
   'doc-frank-big': '../roster/doc-frank/attires/attire1/post-transform/model-rigged.glb',
   // Wave 2 (2026-10-19): Wowomomo Attire 2, Hood Scientist Attire 3, Demonio forms, Dxmmii Attire 2.
-  'doc-frank-wowomomo': '../roster/doc-frank/attires/attire2/base/model-rigged.glb',
+  'doc-frank-wowomomo': '../roster/doc-frank/attires/attire2/base/model-rerig.glb',
   'doc-frank-wowomomo-big': '../roster/doc-frank/attires/attire2/transformed/model-rigged.glb',
   'doc-frank-hood': '../roster/doc-frank/attires/attire3/base/model.glb',
   'doc-frank-hood-big': '../roster/doc-frank/attires/attire3/transformed/model-rigged.glb',
   // Attire 4 "Frankenstein's Cyborg" (owner 2026-10-19): two-form transform attire.
-  'doc-frank-frankenstein': '../roster/doc-frank/attires/attire4/base/model-rigged.glb',
-  'doc-frank-frankenstein-big': '../roster/doc-frank/attires/attire4/transformed/model-rigged.glb',
+  'doc-frank-frankenstein': '../roster/doc-frank/attires/attire4/base/model-rerig.glb',
+  'doc-frank-frankenstein-big': '../roster/doc-frank/attires/attire4/transformed/model-rerig.glb',
   'demonio-a1': '../roster/demonio/attires/attire1/model.glb',
   'demonio-winged': '../roster/demonio/attires/winged-devil/model-rigged.glb',
-  'demonio-human': '../roster/demonio/attires/human/model-rigged.glb',
+  'demonio-human': '../roster/demonio/attires/human/model-rerig.glb',
   'dxmmii-a2': '../roster/dxmmii/attires/attire2/model.glb',
   // DXMMII Slot 1 — Tripo Default (dedup 2026-10-22): the 60MB Tripo pull
   // that replaced the wooden dummy as Slot 1 per owner 2026-10-19
@@ -205,8 +205,8 @@ export const MODEL_URLS = {
   // Burger — Demon mode, possessed by greed (owner 2026-10-19, Tripo pull).
   burger: '../roster/burger/attires/attire1/model-rigged.glb',
   // Kronos — new fighter (owner 2026-10-19, Tripo pull).
-  kronos: '../roster/kronos/attires/attire1/model-rigged.glb',
-  'kronos-attire2': '../roster/kronos/attires/attire2/model-rigged.glb',
+  kronos: '../roster/kronos/attires/attire1/model-rerig.glb',
+  'kronos-attire2': '../roster/kronos/attires/attire2/model-rerig.glb',
   'kronos-attire3': '../roster/kronos/attires/attire3/model.glb',
   // KORESHI (owner 2026-10-19): his own creation (Kakashi + SSJ4/5 + ninja, Tripo pull).
   koreshi: '../roster/koreshi/attires/attire1/model-rigged.glb',
