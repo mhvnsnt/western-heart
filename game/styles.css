@@ -461,6 +461,11 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
   background: radial-gradient(circle at 50% 40%, #241031, #0d060f);
 }
 .loading.hidden { display: none; }
+/* t122u touch fix: the loading overlay is a transparent full-screen layer.
+   If any boot module failed, main.js never added .hidden and the overlay
+   silently ate every tap on the main menu. It never takes input now. */
+.loading { pointer-events: none; }
+.tap-hint { pointer-events: none; }
 .loading-box { text-align: center; width: min(86%, 360px); }
 .loading-title {
   font-size: clamp(24px,7vw,40px); font-weight: 900; letter-spacing: 3px; margin-bottom: 22px;

@@ -51,3 +51,8 @@
 - **Decisions:** `docs/decisions/2026-10-22-bannon-teardown-inventory.md`. **Owner directives:** appended Bannon sub-universe law (surgical edit).
 - **Blocker:** GitHub API rate-limited (403, shared PAT quota exhausted by concurrent crew workers) — PR creation + merge via git_merge.py deferred until quota resets. Branch `worker-49/bannon-teardown-inventory` + PR body staged locally in `~/workspace/w49-round/`.
 - **Gaps flagged:** Bannon kits beyond defaultMoveSet unauthored (fill path: teardown banks); Buffalo Bill/wizard gang unlocated (owner to say); SOMBRA_NEGRA has no roster profile; Bloody Roar not landed; DOA4/SF EX2+/Urban Reign/WMXIX identities unmapped.
+
+## 2026-10-23 14:34 CT, t122u main-menu touch fix (fix/menu-touch-t122u)
+- Root cause: #loading is a transparent full-screen overlay that only main.js hides. Any failed boot module left it up, and it ate every tap (reproduced in Playwright, all items covered by #loading). #tap-to-start also covered DAILY CHALLENGES.
+- Fix: pointer-events none on both, plus a 4s classic-script failsafe that hides #loading. Test: test/e2e/menu-touch.e2e.mjs, CI job menu-touch-e2e, screenshots in docs/ui/t122u/.
+- Not done: teardown menu rebuild, Legacy toggle, select-screen mobile overflow (strip and CONFIRM clipped at 390px), missing roster/demonio-human glb.
