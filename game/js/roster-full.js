@@ -140,7 +140,9 @@ export const FULL_ROSTER = [
     colors: { suit: 0x1a3a5a, trim: 0x6accff }, style: 'Xinyi Liuhe', archetype: 'Balanced' },
   { id: 'dio', name: 'DIO', title: 'Raging Demon', base: 'Akuma', moveset: 'heihachi', model: 'dio', tintStrength: 0.6,
     colors: { suit: 0x1a1a1a, trim: 0xff0000 }, style: 'Satsui no Hado', archetype: 'Shoto' },
-  { id: 'cyborgx', name: 'CYBORG X', title: 'GYOU Splinter', base: 'Alisa', moveset: 'gunjack', model: 'cape-jones', tintStrength: 0.6,
+  // CAPE JONES is the display name (owner 2026-10-23: "Start calling cyborg x as cape Jones
+  // but leave cyborg x in the deep canon for him"). 'Cyborg X' stays as his deep-canon identity.
+  { id: 'cyborgx', name: 'CAPE JONES', title: 'GYOU Splinter', base: 'Alisa', moveset: 'gunjack', model: 'cape-jones', tintStrength: 0.6,
     colors: { suit: 0xcccccc, trim: 0x00ffcc }, style: 'Robot Combat', archetype: 'Zoner' },
   { id: 'michiko', name: 'MICHIKO', title: 'Savate Queen', base: 'Katarina', moveset: 'demonio', model: 'michiko', tintStrength: 0.6,
     colors: { suit: 0x8a1a4a, trim: 0xff6b9d }, style: 'Savate', archetype: 'Rushdown' },
@@ -270,8 +272,10 @@ export const FULL_ROSTER = [
     surge: { name: 'SHARINGAN AWAKENING', color: 0xcc2222, accent: 0xffffff },
     stats: { speed: 5.5, jump: 8.0, power: 1.1, defense: 0.95 },
     ai: { aggression: 0.7, grabBias: 0.25, reaction: 0.7 } },
-  // RAVE = KIKO TANAKA in Western Heart (owner 2026-10-19 / 2026-10-21: "Lei wulong is not byou, he is
+  // RAVE = KIKO TANAKA = GHOST in Western Heart (owner 2026-10-19 / 2026-10-21: "Lei wulong is not byou, he is
   // Rave/Kiko tanaka ... rave already takes over leis character and slot and moves and personality").
+  // RAVE is his MAIN game/display name (owner 2026-10-23). Kiko, Ghost, and Kiko Tanaka are all the
+  // same person — all four names documented in repo/canon. Never split into separate fighters.
   // Model: his rigged Tripo pull (roster/TRIPO-REGISTRY.md: A1 hooded, A2 unrobed "ghost Tanaka",
   // A3+ rave.glb). Moves: game/assets/movesets/rave.json (Lei T7 + Lei T3 + Byou). Style from
   // roster/rave/CONCEPT.md; colors = the Great Muta red/green paint the concept names.

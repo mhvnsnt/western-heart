@@ -252,7 +252,12 @@ Tripo 3D models show FIRST and foremost for every fighter; Tekken attires/models
 ## IDENTITY CANON + DEDUP LAW (2026-10-22, permanent)
 
 - **Rave = Kiko Tanaka = Ghost: ALL THE SAME PERSON.** One select entry only
-  ('rave'). Never split into separate fighters.
+  ('rave'). Never split into separate fighters. **RAVE is his main game/display
+  name** (owner 2026-10-23) — Kiko, Ghost, and Kiko Tanaka are all him,
+  documented in repo/canon.
+- **Cape Jones is the display name; Cyborg X stays in his deep canon** (owner
+  2026-10-23). Select entry 'cyborgx' shows CAPE JONES; 'Cyborg X' remains his
+  deep-canon identity in bios/canon.
 - **Mary Posa goes OVER Zafina.** One entry (MARIPOSA — repo canon name; see
   below); Zafina is never a separate fighter. Zafina's Tekken in-game model
   ladders BEHIND Mariposa's custom attires as a back-slot attire choice.
