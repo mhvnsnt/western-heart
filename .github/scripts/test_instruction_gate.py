@@ -81,5 +81,30 @@ class Gate(unittest.TestCase):
         self.assertEqual(check("", ["package.json"], self.d, [], "dependabot[bot]"), [])
 
 
+    def test_commit_tag_and_digest_refs(self):
+        # PR #720's Proof: release tags, commit SHAs and truncated sha256 digests (2026-10-23 backlog).
+        body = GOOD.replace("- `renders/arm_cut.png`",
+                            "- `renders/arm_cut.png`\n- original in release `bruno-a1-original`, commit `56c0d4e5`, "
+                            "sha256 `5f1fb5a7\u2026e9906da41`")
+        known = {("ref", "bruno-a1-original"), ("commit", "56c0d4e5")}
+        ok = lambda kind, ref: (kind, ref) in known  # noqa: E731
+        self.assertEqual(check(body, ["renders/arm_cut.png"], self.d, resolve_ref=ok), [])
+
+    def test_unknown_ref_and_commit_fail(self):
+        body = GOOD.replace("- `renders/arm_cut.png`", "- `renders/arm_cut.png`\n- `no-such-release` `deadbeef1`")
+        errs = check(body, ["renders/arm_cut.png"], self.d, resolve_ref=lambda kind, ref: False)
+        self.assertTrue(any("not a file, commit, tag" in e for e in errs), errs)
+        self.assertTrue(any("Proof commit not found" in e for e in errs), errs)
+
+    def test_digest_only_proof_fails(self):
+        body = GOOD.replace("- `renders/arm_cut.png`", "- `5f1fb5a7\u2026e9906da41`")
+        errs = check(body, [], self.d)
+        self.assertTrue(any("only checksums" in e for e in errs), errs)
+
+    def test_url_proof_passes(self):
+        body = GOOD.replace("`renders/arm_cut.png`", "`https://github.com/o/r/releases/tag/x`")
+        self.assertEqual(check(body, [], self.d), [])
+
+
 if __name__ == "__main__":
     unittest.main()

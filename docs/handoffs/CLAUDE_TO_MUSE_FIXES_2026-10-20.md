@@ -212,3 +212,16 @@ picking a side.
    (no model file), doc-frank-frankenstein (no moveset t3_source). Also broken skins:
    demonio-bloodline-ember (stray bone geometry), mariposa-monarch (wings explode).
    **Muse: these are the lanes to fix next, model by model, with the pose lab as the gate.**
+
+## 2026-10-21 — Doc Frank "owl" (for the Doc Frank lane)
+
+The owl is NOT in Doc Frank's GLBs, so normalizing his bind will not fix it (it does no harm either:
+the runtime retarget reads each model's own rest/bind). Measured: binds exact on all 178 joints; the
+hood attire has no 90 deg frame and folded identically; turning the bosconovitch bank alone fixed
+all three rigged Doc Frank models with the GLBs untouched. Cause: the bosconovitch bank (and eddy,
+gunjack, yoshimitsu, heihachi own-rig) was baked facing -Z. Fixed at load in game/js/t3anims.js
+(bankFacing / standingIdle / floor contact). Proof: docs/proof/claude-2026-10-21/docfrank-facing/.
+**Please do not rotate his GLBs to compensate** — the bank is corrected in code now, so a rotated
+model would face backwards again. Remaining Doc Frank model work is rigging: attire1
+post-transform (doc-frank-big, his transform target), attire2 base + transformed, attire3
+transformed and attire4 base + transformed are unrigged statics facing +X.

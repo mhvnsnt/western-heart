@@ -9,6 +9,9 @@ import { ATTIRE_TREE, BODY_TREE, PARTS_TREE, JIGGLE_AREAS, JIGGLE_PARAMS, JIGGLE
 import { BODY_MORPHS, FACE_SHAPE_MORPHS, applyMorphProxies } from 'wh-creation-suite/morphs.js';
 import { SLIDERS as DNA_SLIDERS } from 'wh-creation-suite/dna.js';
 import { applySliders as applyBodySliders } from 'wh-creation-suite/body.js';
+/* The game's own moveset engine (same module the fight runs): notation tables, slots, loadouts. */
+import * as MS from '../../../game/js/movesets.js';
+MS.setMovesetBase('../../game/assets/movesets/');
 
 const LS_KEY = 'wh_creation_suite_v1';
 const START_MONEY = 12400;
@@ -31,7 +34,7 @@ const TITLE_B=['BEAST','PANTHER','KING','GHOST','STORM','WOLF','TIGER','DEMON'];
 const SLOT2CAT = { mask:'3', eye_lenses:'6', cowl:'3', gauntlets:'H', hair:'2',
   decal_logo:'8', eye:'EYES', tights:'11', pants:'11', top:'9', outfit:'9', scarf:'12', face:'8',
   upper_body:'9', lower_body:'11', gloves:'H', shoes:'F', gear:'12', accessory:'12', attire:'10',
-  eyebrows:'6' };
+  eyebrows:'6', fullbody:'11' };
 /* suite_slot -> fallback 3D socket for texture-part markers (registry has no placement block for texture parts) */
 const SLOT2SOCKET = { eye:'face', face:'face', decal_logo:'chest', top:'chest', outfit:'chest',
   scarf:'chest', tights:'waist', pants:'waist', hair:'head', mask:'face', eye_lenses:'face', cowl:'head', gauntlets:'hands' };
@@ -711,17 +714,139 @@ function renderProfile(el){
   const rk=el.querySelector('#prof-rec-key'); if(rk) rk.textContent=currentKey();
   const ps=el.querySelector('#prof-save-attire'); if(ps) ps.onclick=saveToAttire;
 }
-function renderMoveset(el){
-  $('#panel-sub').textContent='Tap slot → scroll library → tap to assign';
-  el.innerHTML=`<div class="note">🥊 The moveset editor lives in <span class="chip">moveset-library/</span>
-    (WWE 2K slot-first flow + MDickie tap grammar + Tekken inputs — see MOVESET-EDITOR-RESEARCH.md).
-    Full 176-slot editor wires into this tab next; the tap-to-assign law already governs every picker in this suite.</div>
-    <div class="btn-row"><button class="btn btn-blue" id="ms-open">OPEN MOVESET EDITOR DOC</button></div>`;
-  el.querySelector('#ms-open').onclick=()=>modal('MOVESET EDITOR',
-    `<p><b>Law (verbatim):</b> TAP a move slot → SCROLL the move library → TAP the move to assign it. NO drag-and-drop anywhere. Phone-first.</p>
-     <p>WWE 2K is the editor model (slot-first, positional categories, strict eligibility). Tekken is the fighting (inputs/playstyle). MDickie is the phone reference.</p>
-     <p>Research: <span class="chip">moveset-library/MOVESET-EDITOR-RESEARCH.md</span></p>`,
-    [{label:'GOT IT',cls:'btn-gold'}]);
+/* ---------- MOVESET EDITOR (WWE 2K slot-first flow over Tekken inputs) ----------
+   Every input (notation) of the fighter is a slot. TAP a slot -> the move library opens:
+   SAME INPUT (every source's version of that input: T8 / T7 / T3 / history / donors),
+   ALL MOVES of this fighter, or any OTHER FIGHTER's moves. TAP a move -> assigned.
+   Saved in localStorage wh_moveset_loadout_v1 — the exact table the fight engine reads
+   (game/js/movesets.js resolveMove), so the next fight plays it. No drag-and-drop. */
+const MS_CATS = [['all','ALL'],['stand','STANDING'],['string','STRINGS'],['crouch','CROUCH / WS'],['stance','STANCES'],
+  ['motion','MOTIONS'],['throw','THROWS'],['rage','RAGE / HEAT'],['sig','SIGNATURE'],['edited','EDITED']];
+const ROSTER2GAME = { 'kiko-tanaka':'rave', 'jin':'jin_soul', 'doc-frank':'docfrank', 'sam-ur-a1':'samura1', 'saku-ra':'sakura' };
+const msUi = { fid:null, cat:'all', q:'', page:0 };
+function gameIdFor(rosterId){
+  const idx = (MS.getMovesetIndex()||{}).fighters || {};
+  for (const c of [ROSTER2GAME[rosterId], rosterId, String(rosterId||'').replace(/-/g,''), String(rosterId||'').replace(/-/g,'_')])
+    if (c && idx[c]) return c;
+  return null;
+}
+const WORD_NAME = {0x412:'high',0x217:'mid',0x10f:'low',0x31f:'s.mid',0x607:'unblk',0x706:'unblk',0x800:'throw'};
+function msSrc(m){
+  if(!m) return '';
+  if(m.wh_original || m.move_class==='signature') return 'WH';
+  const s=m.merge_source||'';
+  if(m.t8_id || s.startsWith('t8')) return 'T8';
+  if(m.t7_move_id || s.startsWith('t7')) return 'T7';
+  if(s.startsWith('donor')) return 'DONOR';
+  if(m.t3_source) return 'T3';
+  for(const k of Object.keys(m)) if(/^(sf6|sfv|sf4|doa|ur|vf|nomercy)_/.test(k)) return k.split('_')[0].toUpperCase();
+  return 'WH';
+}
+function msInfo(ms, key, m){
+  const w = ms && ms.hit_words ? ms.hit_words[key] : undefined;
+  const f = Math.round((m.startup||0)*60);
+  return `i${f} · ${WORD_NAME[w]||'—'} · ${Math.round(m.damage||0)} dmg`;
+}
+function msCat(n, m){
+  if(!m) return 'stand';
+  if(m.wh_original || m.move_class==='signature') return 'sig';
+  if(m.move_class==='throw' || m.isGrab) return 'throw';
+  if(/^(R|H)\./.test(n)) return 'rage';
+  if(/^(FC|WS)\./.test(n) || /^d\+/.test(n)) return 'crouch';
+  if(/^[A-Za-z_][A-Za-z0-9_]*\./.test(n)) return 'stance';
+  if(MS.parseMotion(n)) return 'motion';
+  if(n.includes(',')) return 'string';
+  return 'stand';
+}
+function msNotations(ms){
+  if(ms.slots) return Object.keys(ms.slots);
+  return Object.keys(ms.moves).filter(k=>/^[A-Za-z0-9_./+,~:*]+$/.test(k) && !/__|~|_t\d$|_r\d|_c\d/.test(k));
+}
+function msAlternates(ms, n){
+  const out=[];
+  for(const [k,m] of Object.entries(ms.moves)){
+    const base=k.split(/__|~|_t\d$|_r\d|_c\d/)[0];
+    if(k===n || base===n || m.input===n) out.push([k,m]);
+  }
+  return out;
+}
+async function renderMoveset(el){
+  $('#panel-sub').textContent='Tap an input → tap a move to assign · saved for the fight';
+  if(!MS.getMovesetIndex()) { el.innerHTML='<div class="note">Loading move lists…</div>'; await MS.loadFighterMovesets(); }
+  const idx=(MS.getMovesetIndex()||{}).fighters||{};
+  const ids=Object.keys(idx).sort();
+  const custom = F.mode!=='roster';
+  if(!msUi.fid) msUi.fid = custom ? 'custom' : (gameIdFor(F.rosterRef && F.rosterRef.fighter) || ids[0]);
+  const fid=msUi.fid;
+  const lo=MS.getLoadout(fid);
+  if(fid==='custom' && !lo.__base){ MS.setLoadoutSlot('custom','__base','demonio'); }
+  await MS.ensureMovesets([fid]);
+  const ms=MS.playedMoveset(fid);
+  const opt=(id,sel)=>`<option value="${id}" ${id===sel?'selected':''}>${esc((idx[id]||{}).display||id)} — ${esc((idx[id]||{}).tekken_base||'')}</option>`;
+  el.innerHTML=`<div class="field"><label>FIGHTER</label><select id="ms-fid">${custom?`<option value="custom" ${fid==='custom'?'selected':''}>YOUR CREATED FIGHTER</option>`:''}${ids.map(i=>opt(i,fid)).join('')}</select></div>
+    ${fid==='custom'?`<div class="field"><label>BASE MOVESET</label><select id="ms-base">${ids.map(i=>opt(i,MS.getLoadout('custom').__base)).join('')}</select></div>`:''}
+    <div class="ms-cats">${MS_CATS.map(([k,l])=>`<button class="chip ms-cat ${msUi.cat===k?'on':''}" data-c="${k}">${l}</button>`).join('')}</div>
+    <div class="field"><input id="ms-q" type="search" placeholder="search input or move name" value="${esc(msUi.q)}"></div>
+    <div class="note" id="ms-count"></div>
+    <div id="ms-list"></div>
+    <div class="btn-row"><button class="btn" id="ms-more">MORE</button><button class="btn btn-red" id="ms-reset">RESET ALL EDITS</button></div>`;
+  el.querySelector('#ms-fid').onchange=e=>{ msUi.fid=e.target.value; msUi.page=0; renderPanel(); };
+  const bs=el.querySelector('#ms-base'); if(bs) bs.onchange=async e=>{ MS.setLoadoutSlot('custom','__base',e.target.value); await MS.ensureMovesets([e.target.value]); renderPanel(); toast('Base moveset set ✓'); };
+  el.querySelectorAll('.ms-cat').forEach(b=>b.onclick=()=>{ msUi.cat=b.dataset.c; msUi.page=0; renderPanel(); });
+  const q=el.querySelector('#ms-q'); q.oninput=()=>{ msUi.q=q.value; msUi.page=0; drawList(); };
+  el.querySelector('#ms-more').onclick=()=>{ msUi.page++; drawList(); };
+  el.querySelector('#ms-reset').onclick=()=>modal('RESET ALL EDITS',`<p>Every input of <b>${esc((idx[fid]||{}).display||fid)}</b> goes back to its default move.</p>`,
+    [{label:'CANCEL'},{label:'RESET',cls:'btn-red',fn:()=>{ for(const n of Object.keys(MS.getLoadout(fid))) if(n!=='__base') MS.setLoadoutSlot(fid,n,null); renderPanel(); toast('Defaults restored ✓'); }}]);
+  function drawList(){
+    const list=el.querySelector('#ms-list'); if(!ms){ list.innerHTML='<div class="note">No moveset for this fighter yet.</div>'; return; }
+    const lo=MS.getLoadout(fid), ql=msUi.q.toLowerCase();
+    const rows=[];
+    for(const n of msNotations(ms)){
+      const r=MS.resolveMove(fid,n); if(!r) continue;
+      const edited = !!lo[n];
+      const cat = msCat(n, r.move);
+      if(msUi.cat==='edited' ? !edited : (msUi.cat!=='all' && cat!==msUi.cat)) continue;
+      if(ql && !n.toLowerCase().includes(ql) && !String(r.move.name||'').toLowerCase().includes(ql)) continue;
+      rows.push([n,r,edited]);
+    }
+    el.querySelector('#ms-count').textContent=`${rows.length} inputs · ${Object.keys(ms.moves).length} moves in ${esc((idx[fid]||{}).display||fid)}'s library`;
+    const N=40*(msUi.page+1);
+    list.innerHTML=rows.slice(0,N).map(([n,r,ed],i)=>`<button class="ms-row ${ed?'edited':''}" data-n="${esc(n)}">
+      <span class="ms-in">${esc(n)}</span><span class="ms-name">${esc(r.move.name||'')}${r.from!==fid?` <i>(${esc(r.from)})</i>`:''}</span>
+      <span class="ms-tag">${msSrc(r.move)}</span><span class="ms-fd">${msInfo(r.ms,r.key,r.move)}</span></button>`).join('');
+    el.querySelector('#ms-more').hidden = rows.length<=N;
+    list.querySelectorAll('.ms-row').forEach(b=>b.onclick=()=>openMoveLibrary(fid, b.dataset.n));
+  }
+  drawList();
+}
+async function openMoveLibrary(fid, n, tab='same', other=null, q=''){
+  const ms=MS.playedMoveset(fid), idx=(MS.getMovesetIndex()||{}).fighters||{};
+  const cur=MS.resolveMove(fid,n);
+  let src=ms, srcId=fid, rows=[];
+  if(tab==='same') rows=msAlternates(ms,n);
+  else if(tab==='all') rows=Object.entries(ms.moves);
+  else { srcId=other||Object.keys(idx).find(i=>i!==fid); await MS.ensureMovesets([srcId]); src=MS.getFighterMoveset(srcId); rows=src?Object.entries(src.moves):[]; }
+  const ql=q.toLowerCase();
+  if(ql) rows=rows.filter(([k,m])=>k.toLowerCase().includes(ql)||String(m.name||'').toLowerCase().includes(ql));
+  const shown=rows.slice(0,120);
+  const tabs=[['same','SAME INPUT'],['all','ALL MOVES'],['other','OTHER FIGHTER']];
+  const body=`<div class="kv"><span>Input</span><b>${esc(n)}</b></div>
+    <div class="kv"><span>Now</span><b>${esc(cur?cur.move.name||cur.key:'—')} ${cur?`· ${msSrc(cur.move)} · ${msInfo(cur.ms,cur.key,cur.move)}`:''}</b></div>
+    <div class="ms-cats">${tabs.map(([k,l])=>`<button class="chip ms-tab ${tab===k?'on':''}" data-t="${k}">${l}</button>`).join('')}</div>
+    ${tab==='other'?`<div class="field"><select id="lib-fid">${Object.keys(idx).sort().map(i=>`<option value="${i}" ${i===srcId?'selected':''}>${esc((idx[i]||{}).display||i)} — ${esc((idx[i]||{}).tekken_base||'')}</option>`).join('')}</select></div>`:''}
+    <div class="field"><input id="lib-q" type="search" placeholder="search" value="${esc(q)}"></div>
+    <div class="note">${rows.length} moves${rows.length>shown.length?` (first ${shown.length}; search to narrow)`:''}. Tap one to assign it to <b>${esc(n)}</b>.</div>
+    <div class="ms-lib">${shown.map(([k,m])=>`<button class="ms-row" data-k="${esc(k)}"><span class="ms-in">${esc(m.input||k)}</span>
+      <span class="ms-name">${esc(m.name||k)}</span><span class="ms-tag">${msSrc(m)}</span><span class="ms-fd">${msInfo(src,k,m)}</span></button>`).join('')}</div>`;
+  modal(`MOVE LIBRARY — ${esc(n)}`, body, [{label:'RESET TO DEFAULT',cls:'btn-red',fn:()=>{ MS.setLoadoutSlot(fid,n,null); renderPanel(); toast('Default restored ✓'); }},{label:'CLOSE'}]);
+  const mb=$('#modal-body');
+  mb.querySelectorAll('.ms-tab').forEach(b=>b.onclick=()=>openMoveLibrary(fid,n,b.dataset.t,null,''));
+  const lf=mb.querySelector('#lib-fid'); if(lf) lf.onchange=()=>openMoveLibrary(fid,n,'other',lf.value,'');
+  const lq=mb.querySelector('#lib-q'); if(lq) lq.onchange=()=>openMoveLibrary(fid,n,tab,srcId,lq.value);
+  mb.querySelectorAll('.ms-row').forEach(b=>b.onclick=()=>{
+    const k=b.dataset.k; MS.setLoadoutSlot(fid, n, srcId===fid ? k : `${srcId}::${k}`);
+    closeModal(); renderPanel(); toast(`${n} → ${(src.moves[k]||{}).name||k} ✓`);
+  });
 }
 
 /* ================= DOME (Doc Frank Wowomomo — owner edits it himself) =================
