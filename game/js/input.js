@@ -149,6 +149,23 @@ export class InputManager {
       this._udHeld = true;
     }, 200);
   }
+  /* Touch stick vertical zone (owner t116u fix). Legacy kept 'down' latched when the stick
+     re-centred after a HELD crouch (only taps were released), so every neutral 3/4 came out
+     as d+3/d+4/FC; and d->u without lifting was ignored. V2: leaving the zone always releases,
+     switching u<->d releases then presses. localStorage wh_input_resolver='legacy' = old path. */
+  _udStick(ny) {
+    let legacy = false;
+    try { legacy = localStorage.getItem('wh_input_resolver') === 'legacy'; } catch (e) {}
+    const want = ny < -0.55 ? 'up' : ny > 0.55 ? 'down' : null;
+    if (legacy) {
+      if (want) this._udPress(want);
+      else if (this._udDir && !this._udHeld) this._udRelease();
+      return;
+    }
+    if (want && this._udDir === want) return;
+    if (this._udDir) this._udRelease();
+    if (want) this._udPress(want);
+  }
   _udRelease() {
     if (!this._udDir) return;
     const dir = this._udDir;
@@ -234,9 +251,7 @@ export class InputManager {
       this.axisX = Math.abs(nx) > 0.25 ? Math.max(-1, Math.min(1, nx)) : 0;
       // Tekken tap-vs-hold: tap u/d = sidestep, hold = jump/crouch.
       const ny = (Math.sin(ang) * clamped) / maxR;
-      if (ny < -0.55) this._udPress('up');
-      else if (ny > 0.55) this._udPress('down');
-      else if (this._udDir && !this._udHeld) this._udRelease(); // left the vertical zone: count the tap
+      this._udStick(ny);
     };
     const end = () => {
       this._joyActive = false; this._joyId = null;

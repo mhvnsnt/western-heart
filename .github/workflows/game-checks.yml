@@ -60,6 +60,7 @@ jobs:
             test
             game/js
             game/data
+            game/assets/movesets
           sparse-checkout-cone-mode: false
       - name: Run game unit tests
         run: |

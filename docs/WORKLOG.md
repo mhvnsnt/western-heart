@@ -58,6 +58,10 @@
 - Cause: game/select.css set #screen-select position: relative, overriding .screen fixed inset:0, so the screen collapsed to content height (fighters zone 0px, ~45% of the viewport empty). CONFIRM was clipped at 390px.
 - Fix: fixed + inset 0; on screens up to 480px wide the hint text is hidden and CONFIRM flexes. Same T8 decode layout (docs/select-redesign/T8-GRID-DECODE.md). Proof in docs/ui/select-phone/.
 - Asset audit: all 179 MODEL_URLS and all 145 attires of the 55 fighters resolve to files on main. The Demonio GLB and profile 404s reported earlier came from my partial checkout (profiles are optional by design).
+## 2026-10-23 14:15 CT — Input resolver V2 (owner t116u) — MoneyManBusch executor
+- Root cause of "neutral 3 = crouching kick": touch stick kept `down` latched after a held crouch was re-centred (input.js). Plus 6 resolver bugs (repeated-step motions, context-blind chord specials, crash on specials without input, tap/hold spellings, neutral-ending motions, unreachable strings). Details: docs/input/INPUT-RESOLVER-V2.md.
+- V2 ON by default; legacy reachable via localStorage wh_input_resolver='legacy'.
+- New CI test test/input-determinism.test.mjs: 125 fighters, non-string failures 208 → 0, touch re-centre FAIL → PASS.
 ## 2026-10-23 14:34 CT, t122u main-menu touch fix (fix/menu-touch-t122u)
 - Root cause: #loading is a transparent full-screen overlay that only main.js hides. Any failed boot module left it up, and it ate every tap (reproduced in Playwright, all items covered by #loading). #tap-to-start also covered DAILY CHALLENGES.
 - Fix: pointer-events none on both, plus a 4s classic-script failsafe that hides #loading. Test: test/e2e/menu-touch.e2e.mjs, CI job menu-touch-e2e, screenshots in docs/ui/t122u/.
