@@ -14,6 +14,26 @@
   <link rel="stylesheet" href="mainmenu.css" />
   <!-- Worker 35: colorblind-safe HUD palettes (worker-35 identity lane) -->
   <link rel="stylesheet" href="css/colorblind.css" />
+  <!-- MENU FALLBACK CSS (2026-10-22, PR #676 rebase): if every stylesheet
+       fails to load, the menu still renders as tappable styled buttons —
+       never unstyled white text boxes. Real styles come from mainmenu.css. -->
+  <style>
+    #screen-menu .mm-list { display: flex; flex-direction: column; gap: 10px;
+      max-width: 480px; margin: 0 auto; padding: 0 16px; }
+    #screen-menu .mm-item { display: flex; align-items: center; gap: 14px;
+      min-height: 56px; width: 100%; padding: 12px 18px; border-radius: 12px;
+      border: 1px solid #8b2bd8; background: #1a0b2e; color: #fff;
+      font-size: 20px; font-weight: 800; text-align: left; cursor: pointer; }
+    .wh-main-menu { display: flex; flex-direction: column; gap: 10px;
+      width: 100%; max-width: 480px; margin: 0 auto; padding: 0 16px; }
+    .wh-menu-btn { display: flex; align-items: center; gap: 14px; min-height: 56px;
+      width: 100%; padding: 12px 18px; border-radius: 14px; cursor: pointer;
+      border: 1px solid rgba(139,43,216,.4); background: #1a0b2e; color: #fff;
+      font-size: 18px; font-weight: 800; text-align: left; }
+    .screen { display: none; }
+    .screen.active { display: block; }
+    .screen-title { text-align: center; color: #fff; }
+  </style>
   <!-- Three.js loaded as an ES module from local vendor (no CDN) -->
   <script type="importmap">
   {
@@ -214,6 +234,8 @@
         <div class="pane-note" hidden>LOADING…</div>
         <div class="pane-plate">
           <div class="pane-name">PLAYER 1</div>
+          <div class="pane-title">Pick a fighter</div>
+          <div class="pane-style"></div>
           <div class="pane-facts"><!-- T8 fact rows filled by JS --></div>
           <div class="pane-stats"></div>
           <div class="pane-attires attire-strip"><!-- attire chips filled by JS --></div>
@@ -228,6 +250,8 @@
         <div class="pane-note" hidden>LOADING…</div>
         <div class="pane-plate">
           <div class="pane-name">PLAYER 2</div>
+          <div class="pane-title">Pick a fighter</div>
+          <div class="pane-style"></div>
           <div class="pane-facts"><!-- T8 fact rows filled by JS --></div>
           <div class="pane-stats"></div>
           <div class="pane-attires attire-strip"><!-- attire chips filled by JS --></div>
@@ -450,5 +474,49 @@
   <script src="js/wh-boot.js"></script>
   <script type="module" src="js/online.js"></script>
   <script type="module" src="js/main.js"></script>
+
+  <!-- MENU FALLBACK BINDER (2026-10-22, PR #676 rebase): non-module script.
+       If the ES module chain fails, the delegated routers in js/main.js never
+       run and nothing is tappable. This binds minimal navigation after a
+       delay — but ONLY if the module didn't (it sets window.__whMenuBound). -->
+  <script>
+  (function () {
+    function showScreen(name) {
+      document.querySelectorAll('.screen').forEach(function (s) { s.classList.remove('active'); });
+      var t = document.getElementById('screen-' + name);
+      if (t) t.classList.add('active');
+    }
+    function toast(msg) {
+      var d = document.createElement('div');
+      d.textContent = msg;
+      d.style.cssText = 'position:fixed;left:50%;bottom:24px;transform:translateX(-50%);' +
+        'background:#1a0b2e;color:#fff;border:1px solid #8b2bd8;border-radius:12px;' +
+        'padding:12px 18px;z-index:99999;font-size:14px;max-width:90vw;text-align:center;';
+      document.body.appendChild(d);
+      setTimeout(function () { d.remove(); }, 2600);
+    }
+    setTimeout(function () {
+      if (window.__whMenuBound) return; // module chain loaded — its routers own taps
+      window.__whMenuBound = true;
+      document.addEventListener('click', function (e) {
+        var t = e.target;
+        var el = (t instanceof Element) ? t.closest('[data-mm],[data-mm-forge],[data-action]') : null;
+        if (!el) return;
+        var key = el.dataset.mm || el.dataset.mmForge || el.dataset.action || '';
+        if (key === 'back-menu' || key === 'menu') showScreen('menu');
+        else if (key === 'online') showScreen('online');
+        else if (key === 'sidegames') showScreen('sidegames');
+        else if (key === 'collection') showScreen('collection');
+        else if (key === 'daily') showScreen('daily');
+        else if (key === 'options' || key === 'howto') showScreen('howto');
+        else if (key === 'mode-create' || key === 'creation') {
+          window.location.href = '../customization/creation-suite-ui/index.html';
+        }
+        else if (key === 'show-ranks') showScreen('menu');
+        else toast('Engine still loading — wait a moment, then tap again.');
+      });
+    }, 1200);
+  })();
+  </script>
 </body>
 </html>
