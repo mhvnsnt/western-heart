@@ -50,8 +50,11 @@ BANKS["armorking"] = ("models/king95/king95.kmd", "animations/divmot03_king.bin"
 # (teardown/tekken3/BODY-EXTRACTION.json). True Ogre shares divmot14 with Ogre (boss3.kmd).
 for _n, _k, _b in (("ogre", "boss183/boss3.kmd", "divmot14_ogre.bin"), ("kuma", "kuma159/kuma3.kmd", "divmot11_kuma.bin"),
                    ("gon", "gon239/gon1.kmd", "divmot19_gon.bin"), ("law", "law79/law4.kmd", "divmot01_law.bin"),
-                   ("forestlaw", "fore259/fore1.kmd", "divmot20_forestlaw.bin")):
+                   ):
     BANKS[_n] = ("models/" + _k, "animations/" + _b, f"renders/pose-check/{_n}_body_stance75.obj")
+# Forest Law: none of his four KMD costumes fits (tools/anim/t3_extract_bodies.py), so his own divmot20 motion
+# is posed on his father Law's body, the heihachi_on_jin pattern (owner: Law + Forest Law -> Buffalo Bill).
+BANKS["forestlaw"] = ("models/law79/law4.kmd", "animations/divmot20_forestlaw.bin", "renders/pose-check/law_body_stance75.obj")
 
 def parse_obj_text(txt):
     parts, cur = {}, None

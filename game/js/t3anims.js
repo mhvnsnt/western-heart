@@ -107,6 +107,8 @@ export const T3_BANKS = {
   kuma:       'assets/anim/t3/kuma/',
   gon:        'assets/anim/t3/gon/',
   law:        'assets/anim/t3/law/',
+  // Forest Law's own divmot20 motion posed on Law's body (his KMDs do not fit; heihachi_on_jin pattern).
+  forestlaw:  'assets/anim/t3/forestlaw_on_law/',
 };
 
 // Moveset source name -> bank key. 'demonio' is the game's rename of Jin
@@ -124,7 +126,7 @@ export const SOURCE_TO_BANK = {
   eddy: 'eddy', julia: 'julia', anna: 'anna',
   bosconovitch: 'bosconovitch', heihachi: 'heihachi',
   armorking: 'armorking', 'armor-king': 'armorking',
-  ogre: 'ogre', kuma: 'kuma', panda: 'kuma', gon: 'gon', law: 'law',
+  ogre: 'ogre', kuma: 'kuma', panda: 'kuma', gon: 'gon', law: 'law', forestlaw: 'forestlaw',
 };
 
 /**

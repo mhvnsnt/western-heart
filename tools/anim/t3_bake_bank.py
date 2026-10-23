@@ -44,7 +44,11 @@ UNIV = {"t3_stance": 0x0, "t3_stance_b": 0x1, "t3_stance_c": 0x2, "t3_neutral": 
 CANON22 = ["Root", "Hips", "Spine", "Chest", "Neck", "Head", "LeftShoulder", "LeftArm", "LeftForeArm", "LeftHand",
            "RightShoulder", "RightArm", "RightForeArm", "RightHand", "LeftUpLeg", "LeftLeg", "LeftFoot",
            "LeftToeBase", "RightUpLeg", "RightLeg", "RightFoot", "RightToeBase"]
-DIVMOT = {"ogre": "divmot14_ogre", "kuma": "divmot11_kuma", "gon": "divmot19_gon", "law": "divmot01_law"}
+DIVMOT = {"ogre": "divmot14_ogre", "kuma": "divmot11_kuma", "gon": "divmot19_gon", "law": "divmot01_law",
+          "forestlaw": "divmot20_forestlaw"}
+# Banks whose own body does not fit: their motion is posed on another character's body (heihachi_on_jin pattern).
+BODY_FROM = {"forestlaw": "law"}
+BANK_FOLDER = {"forestlaw": "forestlaw_on_law"}
 NOTES = {
     "root_t_note": "Sampled at the 30fps clip grid. t3anims.js ignores root_t (game drives root.position).",
     "stream_frames_note": "Count of stored rot_xyzw frames at 30fps. The King bank's stream_frames counts the 60fps "
@@ -82,9 +86,10 @@ def attack_picks(bank):
 
 
 def bake(bank):
-    rig_in = REPO / f"lab/game/assets/t3body_{bank}.glb"
-    rig_out = REPO / f"lab/game/assets/t3_{bank}_t3real.glb"
-    out_dir = REPO / f"game/assets/anim/t3/{bank}"
+    folder = BANK_FOLDER.get(bank, bank)
+    rig_in = REPO / f"lab/game/assets/t3body_{BODY_FROM.get(bank, bank)}.glb"
+    rig_out = REPO / f"lab/game/assets/t3_{folder}_t3real.glb"
+    out_dir = REPO / f"game/assets/anim/t3/{folder}"
     clips = dict(UNIV, **attack_picks(bank))
     tmp = Path(tempfile.mkdtemp(prefix=f"t3bake-{bank}-"))
     spec = ",".join(f"{k}={hex(v)}" for k, v in clips.items())

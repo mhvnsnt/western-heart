@@ -51,6 +51,8 @@ BANKS = {
     "kuma": "lab/game/assets/t3_kuma_t3real.glb",
     "gon": "lab/game/assets/t3_gon_t3real.glb",
     "law": "lab/game/assets/t3_law_t3real.glb",
+    # Forest Law's divmot20 motion posed on Law's body (his own KMDs do not fit; heihachi_on_jin pattern).
+    "forestlaw_on_law": "lab/game/assets/t3_forestlaw_on_law_t3real.glb",
 }
 # ---------------------------------------------------------------------------
 # NEUTRAL_BIND (2026-10-22, star segment-flip fix): the T3 18-part import

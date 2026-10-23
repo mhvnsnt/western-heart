@@ -59,6 +59,10 @@ REMAINDER = ["paul", "lei", "nina", "hwoarang", "eddy", "julia", "anna", "boscon
 # Last banks (2026-10-23, tools/anim/t3_bake_bank.py): same own-body layout as the remainder banks.
 REMAINDER += ["ogre", "kuma", "gon", "law"]
 BANK_DIR.update({b: b for b in ("ogre", "kuma", "gon", "law")})
+# Forest Law: own divmot20 motion on Law's body (lab/tools/t3_motion_bake.py BANKS["forestlaw"]).
+SRC2BANK["forestlaw"] = "forestlaw"
+BANK_DIR["forestlaw"] = "forestlaw_on_law"
+TARGET_GLB["forestlaw"] = "lab/game/assets/t3_forestlaw_on_law_t3real.glb"
 _BODY = REPO / "teardown/tekken3/BODY-EXTRACTION.json"
 if _BODY.exists():
     _bx = json.loads(_BODY.read_text())

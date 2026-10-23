@@ -58,6 +58,9 @@ def main():
     ap.add_argument("--facing", default=None, help="mesh facing for gamerig_backend (e.g. +Z) when the feet cue is unsure")
     ap.add_argument("--height", default="1.8")
     ap.add_argument("--keep-work", action="store_true")
+    ap.add_argument("--smooth-gate", default="2.5",
+                    help="smooth_weights p99.9 edge-stretch gate (default 2.5). Long coats/capes/detached parts stretch "
+                         "more under the boxing stress clip; raise it only with the in-game check as the verdict")
     a = ap.parse_args()
     # Blender renders need libEGL/libGL; this VM keeps them in ~/workspace/tools/syslibs
     # (setup_toolchain.sh). Add to LD_LIBRARY_PATH when present so render_poses works.
@@ -93,7 +96,7 @@ def main():
     subprocess.run([sys.executable, os.path.join(HERE, "anim_check.py"), "--in", rig, "--json-out", gate_before,
                     "--max-frames", "18", "--quiet"], capture_output=True)
     sm = run([sys.executable, os.path.join(HERE, "backends", "smooth_weights.py"), "--in", rig, "--threshold", "2.0",
-              "--rounds", "12", "--frames-per-clip", "10", "--gate", "2.5"],
+              "--rounds", "12", "--frames-per-clip", "10", "--gate", a.smooth_gate],
              env={"PYTHONPATH": HERE}, log=log)
     with open(os.path.join(a.report_dir, "smooth_weights.log"), "w") as f:
         f.write(sm.stdout)

@@ -50,3 +50,19 @@ rig). His moves for Buffalo Bill can be baked onto Law's body (`t3_row_bake.py -
 The first Chatur vs Pantera fight failed: `fight load failed: AbortError: BodyStreamBuffer was aborted`. `loadModels`
 cancels the idle warm lane, then joined that same just-cancelled download for any fighter still warming (Pantera is in
 the warm list), so the fight rejected. A load whose signal is already aborted is no longer joined; a fresh fetch starts.
+
+## Forest Law → Buffalo Bill (update)
+
+Owner: "So marshall law and firrest law moves both go to ashes/buffalo bill".
+
+- Forest Law bank: his own `divmot20_forestlaw.bin` motion posed on Law's body (`law79/law4.kmd`; his four KMD costumes
+  fail the body fit), the `heihachi_on_jin` pattern → `game/assets/anim/t3/forestlaw_on_law/` (29 clips; `t3_crouch`
+  resolves into the divmot99 common bank, which pose_assemble does not decode yet — no fighter uses this bank as its
+  action bank, Buffalo Bill's is `law`), skeleton.json, rows.pack.json with all 198 rows of his move index.
+  `forestlaw_on_law_vs_law_stance.png`: his guard on Pantera / Chatur next to Law's (max bone error 17.2° / 0.9°,
+  `rig_sheet_forestlaw.json`).
+- Buffalo Bill's moveset: `tools/moveset-merge/bases.json` override (t8 law, t7 law, t3 law + forestlaw, with the
+  owner's words), then `merge_sources.py --write --only buffalo-bill`: 228 → 795 moves (T8 Law 162, T7 Law 303, T3
+  Law/Forest Law 102), playable input slots 73 → 326; the tool's guard: no move, string, special or input lost.
+  Every added move carries `anim_t3` (law 440, forestlaw 25; `same-notation` or `nearest`, flagged); all their rows are
+  in the baked packs.
