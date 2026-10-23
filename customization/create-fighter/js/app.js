@@ -9,6 +9,12 @@ import { Preview3D, SKIN_TONES } from './preview3d.js';
 import { Catalog, CATEGORIES, CONFLICTS } from './catalog.js';
 import { createDomeParamUI, loadDomeParams } from '../../../game/js/dome-params.js';
 import { BODY_MORPHS, FACE_SHAPE_MORPHS, FACE_PARAMS, FACE_PRESETS, FACE_CHECKLIST, facePresetVector } from './morphdata.js';
+/* worker 38 menu pass: WWE flow steps (skin/hair/facial-hair), tool-to-menu
+   wiring + three access layers. Template select itself is owned by
+   js/creation-flow.js (worker 37) — this module does not duplicate it. */
+import { currentTemplate, renderTemplateTab, renderSkinTab, renderHairTab,
+         renderFacialHairTab, renderToolsTab } from './tools.js';
+import { renderArt } from './art.js';
 
 const LS_KEY = 'wh_create_fighter_v1';
 const PRESET_LS_KEY = 'wh_create_fighter_presets';
@@ -139,23 +145,45 @@ function syncPreview(){
     height:(bt?bt.h:1)*p.height, weight:(bt?bt.w:1)*p.weight, muscle:(bt?bt.m:1)*p.muscle });
   if(preview.setMorphValues) preview.setMorphValues(F.morphs || {});
   preview.clearAllProxies();
+  if(preview.clearAllPartMeshes) preview.clearAllPartMeshes();
   const eq = attire().equipped;
   for(const slotId of Object.keys(eq)){
     const cat = catalog.catBySlotId(slotId); if(!cat) continue;
+    const part = catalog.get(eq[slotId]);
     const col = (attire().colors[eq[slotId]]||{}).c1 || '#e8b64c';
-    preview.setProxy(slotId, cat.anchor, col, eq[slotId]);
+    if(part && part.geometryReady && part.glb && preview.setPartMesh){
+      // real mesh — preview auto-fit at the bone anchor (see preview3d.js)
+      preview.setPartMesh(slotId, resolveUrl(part.glb), cat.anchor, part.displayName, cat.key);
+    } else {
+      preview.setProxy(slotId, cat.anchor, col, part?part.displayName:eq[slotId]);
+    }
   }
   if(ui.selPart){ // try-on preview
     const cat = catalog.catForPart(ui.selPart.part_id);
-    if(cat) preview.setProxy('tryon', cat.anchor, '#7fd4ff', ui.selPart.displayName);
+    if(cat){
+      if(!ui.selPart.geometryPending && ui.selPart.glb && preview.setPartMesh){
+        preview.setPartMesh('tryon', resolveUrl(ui.selPart.glb), cat.anchor, ui.selPart.displayName, cat.key);
+      } else {
+        preview.setProxy('tryon', cat.anchor, '#7fd4ff', ui.selPart.displayName);
+      }
+    }
   }
   preview.setDummyVisible(ui.tab==='moveset');
+}
+/* index file_paths are repo-relative ('customization/...', 'teardown/...');
+   this page lives at customization/create-fighter/index.html */
+function resolveUrl(repoPath){
+  if(!repoPath) return repoPath;
+  if(repoPath.startsWith('customization/')) return '../'+repoPath.slice('customization/'.length);
+  if(repoPath.startsWith('/')) return repoPath;
+  return '../../'+repoPath;
 }
 
 /* ---------------- top bar / attire slots ---------------- */
 function renderTopbar(){
   $('#fighter-name').textContent = F.profile.name || 'NEW FIGHTER';
-  $('#breadcrumb').textContent = `${F.profile.name||'New Fighter'} > Attire ${F.attireIndex+1} > ${ui.tab.toUpperCase()}${ui.attireCat?' > '+ui.attireCat.label:''}`;
+  const stepNo2 = FLOW_TABS.indexOf(ui.tab)+1;
+  $('#breadcrumb').textContent = `${F.profile.name||'New Fighter'} > Attire ${F.attireIndex+1} > ${stepNo2>0?`Step ${stepNo2}/${FLOW_TABS.length} `:''}${TAB_LABELS[ui.tab]||ui.tab.toUpperCase()}${ui.attireCat?' > '+ui.attireCat.label:''}`;
   $('#wallet-amt').textContent = F.wallet.toLocaleString();
   const tabs = $('#attire-tabs'); tabs.innerHTML='';
   F.attires.forEach((a,i)=>{
@@ -181,12 +209,33 @@ document.querySelectorAll('.rail-btn').forEach(b=>{ b.onclick=()=>setTab(b.datas
 /* ---------------- panel framework ---------------- */
 function renderAll(){ renderTopbar(); renderPanel(); syncPreview(); persistQuiet(); }
 function persistQuiet(){ try{ localStorage.setItem(LS_KEY, JSON.stringify(F)); }catch(e){} }
+/* WWE creation flow order (owner directive 2026-10-22, worker 38): template
+   first, then body -> head/face -> skin -> hair -> facial hair -> attire ->
+   wardrobe -> profile; moveset / limbs / art / jobs / tools follow. */
+const FLOW_TABS = ['template','body','face','skin','hair','facialhair','attire','wardrobe','profile','moveset','limbs','art','jobs','tools'];
+const TAB_LABELS = { template:'TEMPLATE', body:'BODY', face:'HEAD / FACE', skin:'SKIN', hair:'HAIR',
+  facialhair:'FACIAL HAIR', attire:'ATTIRE', wardrobe:'WARDROBE', profile:'PROFILE',
+  moveset:'MOVESET', limbs:'LIMBS', art:'ART', jobs:'JOBS', tools:'TOOLS' };
+function ctxForTools(){
+  return { F, ui, catalog, preview, esc, modal, closeModal, renderAll, syncPreview,
+    persistQuiet, toast, setTab, isCustom, attire, CATEGORIES, SKIN_TONES, renderItemGrid };
+}
 function renderPanel(){
   const body=$('#panel-body');
-  $('#panel-title').textContent = ui.tab.toUpperCase();
-  $('#panel-sub').textContent = '';
+  const stepNo = FLOW_TABS.indexOf(ui.tab)+1;
+  $('#panel-title').textContent = (TAB_LABELS[ui.tab]||ui.tab.toUpperCase());
+  $('#panel-sub').textContent = stepNo>0 ? `Step ${stepNo} of ${FLOW_TABS.length} — WWE creation flow` : '';
   body.innerHTML='';
-  ({ body:renderBody, face:renderFace, attire:renderAttire, wardrobe:renderWardrobe, profile:renderProfile, moveset:renderMoveset, limbs:renderLimbs, jobs:renderJobsTab })[ui.tab](body);
+  const ctx = ctxForTools();
+  ({ body:renderBody, face:renderFace, attire:renderAttire, wardrobe:renderWardrobe,
+     profile:renderProfile, moveset:renderMoveset, limbs:renderLimbs,
+     jobs:renderJobsTab, art:(el)=>renderArt(el, ui, { toast }),
+     template:(el)=>renderTemplateTab(ctx, el),
+     skin:(el)=>renderSkinTab(ctx, el),
+     hair:(el)=>renderHairTab(ctx, el),
+     facialhair:(el)=>renderFacialHairTab(ctx, el),
+     tools:(el)=>renderToolsTab(ctx, el),
+  })[ui.tab](body);
 }
 
 /* ================= JOBS (creation-flow module owns the UI) ================= */
@@ -199,9 +248,13 @@ function renderJobsTab(el){
 /* ================= BODY ================= */
 function renderBody(el){
   const locked = !isCustom();   // roster fighters' bodies are canon — lock per UI promise
-  $('#panel-sub').textContent = 'Wrestling CAW — body, skin, head, hair';
+  $('#panel-sub').textContent = 'Wrestling CAW — proportions + MPFB2 morphs';
+  const curTpl = currentTemplate(ctxForTools());
   el.innerHTML = `
     ${locked?`<div class="note">🔒 <b>Canon body</b> — ${esc(F.profile.name)}'s body is locked. Switch to NEW FIGHTER for full BODY access. Body type, skin tone, proportions and head shape stay with the custom base.</div>`:''}
+    <div class="sect">TEMPLATE — Step 1 pick</div>
+    <div class="kv"><span>Template</span><b>${curTpl?esc(curTpl.name):'— none —'}</b></div>
+    <div class="btn-row"><button class="btn" id="btn-changetpl" ${locked?'disabled':''}>🧍 CHANGE TEMPLATE</button></div>
     <div class="sect">BODY TYPE — No Mercy 14</div>
     <div class="roster-grid" id="bodytypes"></div>
     <div class="sect">SKIN TONE — 8 tones</div>
@@ -219,8 +272,13 @@ function renderBody(el){
     <div class="sect">FACE SHAPE — MPFB2 regional</div>
     <div id="mpfb-face"></div>
     <div class="sect">BODY PARTS — ${catalog.count('bodies')} meshes</div>
-    <div class="note">220 No Mercy body-part meshes. <span class="geo-badge">GEOMETRY PENDING</span> .obj wiring not in this build — equip records the part in your fighter JSON and shows a socket marker.</div>
+    <div class="note">220 No Mercy body-part meshes, 303 converted to real GLBs with <span class="real-mesh">REAL MESH</span> badges — those attach live to the 3D preview. The rest equip into the fighter JSON with a socket marker.</div>
     <div class="btn-row"><button class="btn" id="btn-bodyparts">BROWSE BODY PARTS</button></div>`;
+  const ct=el.querySelector('#btn-changetpl');
+  if(ct) ct.onclick=()=>{
+    if(window.__flow && window.__flow.openTemplateSelect) window.__flow.openTemplateSelect();
+    else toast('Flow module not loaded');
+  };
   const bt=el.querySelector('#bodytypes');
   BODY_TYPES.forEach(t=>{
     const b=document.createElement('button');

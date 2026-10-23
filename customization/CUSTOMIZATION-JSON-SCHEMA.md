@@ -232,3 +232,54 @@ fixture: muscle +0.4, shoulders +0.3, eye_size +0.25, and the eye swap to
 texture is `pek1u_29`, material `mat_21-pek1u_29.jpg`, full-replace 128×128).
 Baked output: `model-custom.glb` in the same folder; before/after renders in
 `customization/tools/proof/cs-bake-baek/`.
+
+## Rig & Pose (`rig`) — additive section, Rig & Pose Studio (2026-10-21)
+
+Owner order 2026-10-21 ~11:59 CDT: the owner gets FULL manual rig/pose
+control in the Creation Suite — every bone, add/remove, per-bone
+orientation/position/scale, weights, joints, mesh/part visibility, posing —
+saved through THIS file. The `rig` section is optional and additive: its
+absence is an exact no-op, and no existing field changes shape.
+
+```json
+"rig": {
+  "bones": {
+    "<bone name>": {
+      "offset":  { "pos": [0,0,0], "rot_deg": [0,0,0], "scale": [1,1,1] },
+      "visible": true
+    }
+  },
+  "add_bones":    [ { "name": "...", "parent": "<bone name>",
+                      "head": [0,0,0], "tail": [0,0,0] } ],
+  "remove_bones": [ "<bone name>" ],
+  "weights":      [ { "bone": "...", "center": [0,0,0], "radius": 0.1,
+                      "strength": 1.0, "mode": "add" } ],
+  "visibility":   { "<mesh or node name>": false },
+  "pose":         { "<bone name>": { "rot_deg": [0,0,0], "pos": [0,0,0] } }
+}
+```
+
+| Field | Meaning |
+|---|---|
+| `frame` | Model-frame correction applied to every scene-root node before all other rig ops: `translate` metres, `rot_deg` euler degrees. This is the intake frame fix as an owner control — e.g. a hip-origin model (feet at y = −1.05, like shipped Star) grounded to floor-origin with one saved value, instead of a silent exporter default. |
+| `bones.<name>.offset` | Rest-pose edit for one bone: `pos` metres (local), `rot_deg` = `[pitch (X), yaw (Y), roll (Z)]` degrees, `scale` per-axis. Applied in bone-local space. This is the control that repairs a drifted rest frame (see the STEP 1 diagnosis: shipped Star's core rests sit at 90–180°). |
+| `bones.<name>.visible` | Editor-only: bone shown/hidden in the suite viewport. No bake effect. |
+| `add_bones` | New bones parented to an existing bone; `head` is parent-local; `tail` records the bone's aim for the editor (the bake stores head + orientation; tail is editor data). Added bones join every skin their parent belongs to, with zero weights until painted. |
+| `remove_bones` | Bones deleted from the skins. Vertices bound to a removed bone fall back to its nearest kept ancestor joint; weights renormalize. The node itself stays in the tree (unskinned) so child bones keep their world frame — removal is a SKIN operation, stated plainly so nobody expects geometry to vanish. |
+| `weights` | Weight-paint brush strokes, replayed by the bake in array order: a world-space sphere (`center`, `radius`, quadratic falloff) adds (`mode: "add"`) or blends toward (`mode: "set"`) the named bone's weight, capped at 4 influences, renormalized. Deterministic: same strokes → same weights → identical file. |
+| `visibility` | Mesh/node name → shown in the baked scene. `false` removes the node from scene roots/children (geometry stays in the file; the game never draws it). This is the control for the "invisible parts" class: parts hidden by stored-blend flags are surfaced and toggled HERE, in the open. |
+| `pose` | A static pose baked INTO the rest pose (a stance): same offset math as `bones`, semantically "the fighter's zero-pose from now on." Recorded separately so a stance is distinguishable from a rig repair. |
+
+### Bake stage
+
+`customization/tools/rigpose_bake.py` applies the `rig` section as the
+stage AFTER `apply_customization.py` (morphs → textures → parts → colors →
+**rig**), reading the same `customization.json`. After any rest edit it
+**recomputes every skin's inverseBindMatrices from the edited world rests**
+— rest edits therefore change the skeleton's zero-pose without moving the
+mesh in world space, which is precisely the semantics a rest-frame repair
+needs. Round-trip contract: edit → save → reload → bake is deterministic;
+the studio's test (`customization/tools/test_rigpose_bake.py`) bakes twice
+from the same saved JSON and requires byte-identical output, and requires
+a no-`rig` bake to leave skeleton and weights untouched.
+

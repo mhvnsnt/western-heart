@@ -9,7 +9,7 @@ the "stand version of himself" from the owner's design._
 
 | Slot | Name | Status | Model |
 |---|---|---|---|
-| **Attire 1 (default)** | Spirit Body (owner Tripo) | ✅ WIRED 2026-10-21 | `attires/attire1/model.glb` |
+| **Attire 1 (default)** | Spirit Body (owner Tripo) | ✅ WIRED 2026-10-21 · RIGGED 2026-10-22 | `attires/attire1/model-rigged.glb` (game) — Tripo original `attires/attire1/model.glb` untouched |
 | Attire 2 | Legacy Body | ✅ WIRED (pre-existing) | `game/assets/models/zen-body.glb` (key `zen-body`) |
 | Spirit form (NOT an attire) | Zen's Spirit | ✅ WIRED 2026-10-21 | `spirit/model.glb` (key `zen-spirit`) |
 | Transform stage 1 (NOT an attire) | Tentacle Mode | ✅ WIRED 2026-10-21 | `tentacle/model.glb` (key `zen-tentacle`) |
@@ -163,3 +163,11 @@ own eyes against the owner's canon.
 - Owner copies in `~/workspace/your_files/`: `zen-spirit-body-front-20261021.png`,
   `zen-spirit-entity-front-20261021.png`, `zen-tentacle-mode-front-20261021.png`,
   `zen-oversoul-front-20261021.png`.
+
+## Rig (2026-10-22, Claude session)
+
+The spirit body was an unrigged static, so in fights Zen was invisible (no skinned mesh). It is now rigged with
+`tools/auto_rig/rig_tripo_static.py` (GameRig skeleton, WH canonical joint names, Blender bone heat, smoothing,
+meshopt): `attires/attire1/model-rigged.glb` (29,237,496 B, 73 joints, sha256 d37b4e7ca6bae63b588831885a6d1d423f5d5bbc00e8ad334a6d0162a89cc3ab), wired as 'zen' +
+'zen-attire1'. Clothes are part of his body (RIG-NOTES.md): skinned as body, no cloth shells. The tentacle
+ability and the stand system stay future work (RIG-NOTES.md). Proof: `docs/proof/claude-2026-10-22/zen-rig/`.
