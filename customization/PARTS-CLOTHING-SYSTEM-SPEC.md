@@ -274,7 +274,13 @@ CREATE FIGHTER
 │   │   ├── Torso templates
 │   │   └── Mix-and-match parts across templates
 │   ├── Skin (tone, texture, muscle definition overlay)
-│   ├── Face — Face Morphing
+│   ├── Face — Face Morphing & Face Scan
+│   │   ├── **Face Scan** (WWE 2K-style photo-to-face)
+│   │   │   ├── Upload face photo (front-facing, well-lit, 512×512 min)
+│   │   │   ├── AI face reconstruction → 3D face mesh
+│   │   │   ├── Auto-align: eyes, nose, mouth landmarks
+│   │   │   ├── Texture projection from photo
+│   │   │   └── Manual refinement after scan (morph sliders)
 │   │   ├── Full face morph sliders (WWE-style: dozens of parameters)
 │   │   ├── Jaw (width, shape, chin projection)
 │   │   ├── Cheeks (depth, width, cheekbone height)
@@ -357,6 +363,46 @@ CREATE FIGHTER
 ---
 
 ## Technical Architecture
+
+### Face Scan System
+
+**WWE 2K Paradigm** (from teardown research + public documentation):
+1. User uploads face photo (front-facing, well-lit, no glasses/hair covering face)
+2. Photo processed: 512×512 standard, facial landmarks detected (eyes, nose, mouth)
+3. Texture projected onto 3D face template
+4. User aligns landmarks in separate menus (eyes, nose, mouth)
+5. Morph sliders refine the result
+6. Final face saved to character
+
+**Western Heart Implementation:**
+
+**Option A — Texture Projection (WWE-style, lighter)**
+- Upload photo → detect 68 facial landmarks (dlib/MediaPipe)
+- Project texture onto existing head mesh UVs
+- User adjusts landmark alignment
+- Morph sliders for refinement
+- *Pros:* Fast, works on any device, no GPU needed
+- *Cons:* Not true 3D reconstruction, limited by base mesh
+
+**Option B — AI 3D Reconstruction (2026 SOTA)**
+- Upload photo → AI generates 3D head mesh
+- Open source options:
+  - **TripoSR** (MIT, Stability AI): single image → GLB, 6GB VRAM, 0.5s on A100
+  - **FaceLift** (arXiv 2024): single image → multi-view → 3D head with diffusion
+  - **Modly** (open source): local image-to-3D, full data ownership
+- Retarget generated mesh to game skeleton
+- Project photo texture onto generated mesh
+- *Pros:* True 3D face from photo, 2026 quality
+- *Cons:* Needs GPU, heavier pipeline
+
+**Recommended:** Implement Option A first (works everywhere), add Option B as "HD Face Scan" for capable devices.
+
+**Face Morphing:**
+- Blend shape / morph target system on head mesh
+- WWE-style: dozens of sliders (jaw, cheeks, brow, eyes, nose, mouth, chin, ears)
+- Real-time preview in creation suite
+- Presets: save/load/share face morph combinations
+- Asymmetry: left/right independent controls
 
 ### Part Format
 
