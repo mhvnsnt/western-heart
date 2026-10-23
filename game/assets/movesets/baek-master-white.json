@@ -6,6 +6,76 @@
   "proxy": false,
   "proxy_note": null,
   "variant": 8,
+  "strings": [
+    {
+      "input": "2,1",
+      "hits": [
+        "2",
+        "1"
+      ],
+      "t3_rows": [
+        152,
+        153
+      ]
+    },
+    {
+      "input": "2,1,2",
+      "hits": [
+        "2",
+        "1",
+        "2"
+      ],
+      "t3_rows": [
+        152,
+        153,
+        151
+      ]
+    },
+    {
+      "input": "2,4",
+      "hits": [
+        "2",
+        "4"
+      ],
+      "t3_rows": [
+        182
+      ]
+    }
+  ],
+  "specials": [
+    {
+      "input": "d,d/f,d,d/f+1+2",
+      "t3_row": 211,
+      "damage": 21,
+      "throw": true
+    },
+    {
+      "input": "n,d/b,n,f+1+2",
+      "t3_row": 211,
+      "damage": 21,
+      "throw": true
+    }
+  ],
+  "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
+  "schema_version": 2,
+  "t3_bank": "moveset_bryan.json",
+  "t3_bank_rows": 365,
+  "t3_bank_attack_rows": 82,
+  "generated_full_moveset": {
+    "by": "tools/gen-movesets-t3.py",
+    "date": "2026-10-20",
+    "note": "Full T3 bank depth merged over curated base; curated moves preserved verbatim. Smallest T3 bank (365 rows, 188 attacks); 79 attack rows have no per-character input in the extracted data (common-bank / reaction rows). Unique playable inputs top out at ~90-97 per fighter."
+  },
+  "expansion": {
+    "stream": "stream6/combat-100",
+    "date": "2026-10-19",
+    "moves_added": 19,
+    "inputs_remapped": [
+      "S->1+2",
+      "P+K->1+4"
+    ],
+    "note": "Additive expansion from real T3 teardown bank rows. Existing moves untouched."
+  },
   "moves": {
     "1": {
       "name": "BAEK MASTER WHITE 1 (T3 bryan r46)",
@@ -163,7 +233,8 @@
       "input_slots": [
         "1+3"
       ],
-      "move_class": "throw"
+      "move_class": "throw",
+      "throw_break": "1"
     },
     "2+4": {
       "name": "BAEK MASTER WHITE 2+4 throw (T3 bryan r210)",
@@ -188,7 +259,8 @@
       "input_slots": [
         "2+4"
       ],
-      "move_class": "throw"
+      "move_class": "throw",
+      "throw_break": "2"
     },
     "d/f+2": {
       "name": "BAEK MASTER WHITE d/f+2 (T3 bryan r149)",
@@ -255,7 +327,8 @@
       "input_slots": [
         "d,d/f,d,d/f+1+2"
       ],
-      "move_class": "throw"
+      "move_class": "throw",
+      "throw_break": "1+2"
     },
     "n,d/b,n,f+1+2": {
       "name": "BAEK MASTER WHITE n,d/b,n,f+1+2 throw (T3 bryan r211)",
@@ -280,7 +353,8 @@
       "input_slots": [
         "n,d/b,n,f+1+2"
       ],
-      "move_class": "throw"
+      "move_class": "throw",
+      "throw_break": "1+2"
     },
     "S": {
       "name": "Master's White [WH SIGNATURE]",
@@ -326,6 +400,26 @@
       "isGrab": true
     },
     "1+2": {
+      "name": "Master's White [WH SIGNATURE]",
+      "input": "1+2",
+      "startup": 0.26,
+      "active": 0.017,
+      "recovery": 0.78,
+      "damage": 17,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 12,
+      "anim_ref": "wh:baek-master-white:sig:masters-white",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "The master in white. A pristine textbook kick - the lesson, perfectly pressed.",
+      "input_remapped_from": "S"
+    },
+    "1+2__main": {
       "name": "BAEK MASTER WHITE 1+2 (T3 bryan r41)",
       "input": "1+2",
       "t3_source": "bryan",
@@ -344,6 +438,512 @@
         "1+2"
       ],
       "move_class": "strike"
+    },
+    "1+4": {
+      "name": "Eleventh Lecture [WH SIGNATURE]",
+      "input": "1+4",
+      "startup": 0.3,
+      "active": 0.05,
+      "recovery": 0.9,
+      "damage": 21,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 13,
+      "anim_ref": "wh:baek-master-white:sig:eleventh-lecture",
+      "input_slots": [
+        "1+4"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "He tried to sober Zui up eleven times. Zui made two of them drinking songs. The eleventh lecture lands anyway.",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "input_remapped_from": "P+K",
+      "throw_break": "1+2"
+    },
+    "b+2": {
+      "name": "BAEK MASTER WHITE b+2 (T3 bryan r158)",
+      "input": "b+2",
+      "t3_source": "bryan",
+      "t3_row": 158,
+      "t3_command": "4+RP",
+      "startup": 0.317,
+      "active": 0.017,
+      "recovery": 0.7,
+      "damage": 11,
+      "t3_damage": 18,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan:row:158",
+      "input_slots": [
+        "b+2"
+      ],
+      "move_class": "strike"
+    },
+    "b+4": {
+      "name": "BAEK MASTER WHITE b+4 (T3 bryan r111)",
+      "input": "b+4",
+      "t3_source": "bryan",
+      "t3_row": 111,
+      "t3_command": "4+RK",
+      "startup": 0.35,
+      "active": 0.2,
+      "recovery": 0.633,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:bryan:row:111",
+      "input_slots": [
+        "b+4"
+      ],
+      "move_class": "strike"
+    },
+    "f+2": {
+      "name": "BAEK MASTER WHITE f+2 (T3 bryan r150)",
+      "input": "f+2",
+      "t3_source": "bryan",
+      "t3_row": 150,
+      "t3_command": "6+RP",
+      "startup": 0.217,
+      "active": 0.017,
+      "recovery": 0.783,
+      "damage": 18,
+      "t3_damage": 30,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:bryan:row:150",
+      "input_slots": [
+        "f+2"
+      ],
+      "move_class": "strike"
+    },
+    "f+2__main": {
+      "name": "BAEK MASTER WHITE f+2 (T3 bryan r150)",
+      "input": "f+2",
+      "t3_source": "bryan",
+      "t3_row": 150,
+      "t3_command": "6+RP",
+      "startup": 0.217,
+      "active": 0.017,
+      "recovery": 0.783,
+      "damage": 18,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan:row:150",
+      "input_slots": [
+        "f+2"
+      ],
+      "move_class": "strike"
+    },
+    "f+3": {
+      "name": "BAEK MASTER WHITE f+3 (T3 bryan r191)",
+      "input": "f+3",
+      "t3_source": "bryan",
+      "t3_row": 191,
+      "t3_command": "6+LK",
+      "startup": 0.367,
+      "active": 0.05,
+      "recovery": 0.867,
+      "damage": 21,
+      "t3_damage": 36,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:bryan:row:191",
+      "input_slots": [
+        "f+3"
+      ],
+      "move_class": "strike"
+    },
+    "f+3__main": {
+      "name": "BAEK MASTER WHITE f+3 (T3 bryan r191)",
+      "input": "f+3",
+      "t3_source": "bryan",
+      "t3_row": 191,
+      "t3_command": "6+LK",
+      "startup": 0.367,
+      "active": 0.05,
+      "recovery": 0.867,
+      "damage": 21,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan:row:191",
+      "input_slots": [
+        "f+3"
+      ],
+      "move_class": "strike"
+    },
+    "b+1+2": {
+      "name": "BAEK MASTER WHITE b+1+2 (T3 bryan r167)",
+      "input": "b+1+2",
+      "t3_source": "bryan",
+      "t3_row": 167,
+      "t3_command": "4+LP+RP",
+      "startup": 0.3,
+      "active": 0.033,
+      "recovery": 0.1,
+      "damage": 8,
+      "t3_damage": 14,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan:row:167",
+      "input_slots": [
+        "b+1+2"
+      ],
+      "move_class": "strike"
+    },
+    "b+1+4": {
+      "name": "BAEK MASTER WHITE b+1+4 (T3 bryan r178)",
+      "input": "b+1+4",
+      "t3_source": "bryan",
+      "t3_row": 178,
+      "t3_command": "4+LP+RK",
+      "startup": 0.85,
+      "active": 0.083,
+      "recovery": 0.833,
+      "damage": 35,
+      "t3_damage": 60,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:bryan:row:178",
+      "input_slots": [
+        "b+1+4"
+      ],
+      "move_class": "strike"
+    },
+    "b+1+4__main": {
+      "name": "BAEK MASTER WHITE b+1+4 (T3 bryan r178)",
+      "input": "b+1+4",
+      "t3_source": "bryan",
+      "t3_row": 178,
+      "t3_command": "4+LP+RK",
+      "startup": 0.85,
+      "active": 0.083,
+      "recovery": 0.833,
+      "damage": 35,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan:row:178",
+      "input_slots": [
+        "b+1+4"
+      ],
+      "move_class": "strike"
+    },
+    "d/f+1": {
+      "name": "BAEK MASTER WHITE d/f+1 (T3 bryan r147)",
+      "input": "d/f+1",
+      "t3_source": "bryan",
+      "t3_row": 147,
+      "t3_command": "3+LP",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.517,
+      "damage": 7,
+      "t3_damage": 12,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan:row:147",
+      "input_slots": [
+        "d/f+1"
+      ],
+      "move_class": "strike"
+    },
+    "f+1+4": {
+      "name": "BAEK MASTER WHITE f+1+4 (T3 bryan r179)",
+      "input": "f+1+4",
+      "t3_source": "bryan",
+      "t3_row": 179,
+      "t3_command": "6+LP+RK",
+      "startup": 0.467,
+      "active": 0.017,
+      "recovery": 0.833,
+      "damage": 12,
+      "t3_damage": 21,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan:row:179",
+      "input_slots": [
+        "f+1+4"
+      ],
+      "move_class": "strike"
+    },
+    "f+1+4__main": {
+      "name": "BAEK MASTER WHITE f+1+4 (T3 bryan r179)",
+      "input": "f+1+4",
+      "t3_source": "bryan",
+      "t3_row": 179,
+      "t3_command": "6+LP+RK",
+      "startup": 0.467,
+      "active": 0.017,
+      "recovery": 0.833,
+      "damage": 12,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan:row:179",
+      "input_slots": [
+        "f+1+4"
+      ],
+      "move_class": "strike"
+    },
+    "u/b+1": {
+      "name": "BAEK MASTER WHITE u/b+1 (T3 bryan r55)",
+      "input": "u/b+1",
+      "t3_source": "bryan",
+      "t3_row": 55,
+      "t3_command": "4/7+LP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "t3_damage": 12,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan:row:55",
+      "input_slots": [
+        "u/b+1"
+      ],
+      "move_class": "strike"
+    },
+    "u/b+3": {
+      "name": "BAEK MASTER WHITE u/b+3 (T3 bryan r65)",
+      "input": "u/b+3",
+      "t3_source": "bryan",
+      "t3_row": 65,
+      "t3_command": "4/7+LK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:bryan:row:65",
+      "input_slots": [
+        "u/b+3"
+      ],
+      "move_class": "strike"
+    },
+    "u/b+4": {
+      "name": "BAEK MASTER WHITE u/b+4 (T3 bryan r75)",
+      "input": "u/b+4",
+      "t3_source": "bryan",
+      "t3_row": 75,
+      "t3_command": "4/7+RK",
+      "startup": 0.25,
+      "active": 0.05,
+      "recovery": 0.6,
+      "damage": 6,
+      "t3_damage": 11,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan:row:75",
+      "input_slots": [
+        "u/b+4"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+1": {
+      "name": "BAEK MASTER WHITE u/f+1 (T3 bryan r54)",
+      "input": "u/f+1",
+      "t3_source": "bryan",
+      "t3_row": 54,
+      "t3_command": "6/9+LP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "t3_damage": 12,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan:row:54",
+      "input_slots": [
+        "u/f+1"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+3": {
+      "name": "BAEK MASTER WHITE u/f+3 (T3 bryan r186)",
+      "input": "u/f+3",
+      "t3_source": "bryan",
+      "t3_row": 186,
+      "t3_command": "6/9+LK",
+      "startup": 0.45,
+      "active": 0.033,
+      "recovery": 0.55,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:bryan:row:186",
+      "input_slots": [
+        "u/f+3"
+      ],
+      "move_class": "strike"
+    },
+    "d/f+1+2": {
+      "name": "BAEK MASTER WHITE d/f+1+2 (T3 bryan r113)",
+      "input": "d/f+1+2",
+      "t3_source": "bryan",
+      "t3_row": 113,
+      "t3_command": "3+LP+RP",
+      "startup": 0.133,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 2,
+      "t3_damage": 3,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan:row:113",
+      "input_slots": [
+        "d/f+1+2"
+      ],
+      "move_class": "strike"
+    },
+    "u/b+1+2": {
+      "name": "BAEK MASTER WHITE u/b+1+2 (T3 bryan r43)",
+      "input": "u/b+1+2",
+      "t3_source": "bryan",
+      "t3_row": 43,
+      "t3_command": "4/7+LP+RP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "t3_damage": 12,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan:row:43",
+      "input_slots": [
+        "u/b+1+2"
+      ],
+      "move_class": "strike"
+    },
+    "u/b+3+4": {
+      "name": "BAEK MASTER WHITE u/b+3+4 (T3 bryan r62)",
+      "input": "u/b+3+4",
+      "t3_source": "bryan",
+      "t3_row": 62,
+      "t3_command": "4/7+LK+RK",
+      "startup": 0.35,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:bryan:row:62",
+      "input_slots": [
+        "u/b+3+4"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+1+2": {
+      "name": "BAEK MASTER WHITE u/f+1+2 (T3 bryan r42)",
+      "input": "u/f+1+2",
+      "t3_source": "bryan",
+      "t3_row": 42,
+      "t3_command": "6/9+LP+RP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "t3_damage": 12,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan:row:42",
+      "input_slots": [
+        "u/f+1+2"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+3+4": {
+      "name": "BAEK MASTER WHITE u/f+3+4 (T3 bryan r61)",
+      "input": "u/f+3+4",
+      "t3_source": "bryan",
+      "t3_row": 61,
+      "t3_command": "6/9+LK+RK",
+      "startup": 0.35,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:bryan:row:61",
+      "input_slots": [
+        "u/f+3+4"
+      ],
+      "move_class": "strike"
+    },
+    "2,4": {
+      "name": "BAEK MASTER WHITE 2,4 (T3 bryan r182)",
+      "input": "2,4",
+      "t3_source": "bryan",
+      "t3_row": 182,
+      "t3_command": "RK",
+      "startup": 0.367,
+      "active": 0.05,
+      "recovery": 0.717,
+      "damage": 15,
+      "t3_damage": 26,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:bryan:row:182",
+      "input_slots": [
+        "2,4",
+        "2",
+        "4"
+      ],
+      "move_class": "string",
+      "string_hit": "2"
     },
     "f": {
       "name": "BAEK MASTER WHITE f (T3 bryan r42)",
@@ -1299,26 +1899,6 @@
       ],
       "move_class": "strike"
     },
-    "f+2": {
-      "name": "BAEK MASTER WHITE f+2 (T3 bryan r150)",
-      "input": "f+2",
-      "t3_source": "bryan",
-      "t3_row": 150,
-      "t3_command": "6+RP",
-      "startup": 0.217,
-      "active": 0.017,
-      "recovery": 0.783,
-      "damage": 18,
-      "limb": "armR",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:150",
-      "input_slots": [
-        "f+2"
-      ],
-      "move_class": "strike"
-    },
     "2_r151": {
       "name": "BAEK MASTER WHITE 2_r151 (T3 bryan r151)",
       "input": "2_r151",
@@ -1438,46 +2018,6 @@
       "anim_ref": "t3:bryan:row:177",
       "input_slots": [
         "2"
-      ],
-      "move_class": "strike"
-    },
-    "b+1+4": {
-      "name": "BAEK MASTER WHITE b+1+4 (T3 bryan r178)",
-      "input": "b+1+4",
-      "t3_source": "bryan",
-      "t3_row": 178,
-      "t3_command": "4+LP+RK",
-      "startup": 0.85,
-      "active": 0.083,
-      "recovery": 0.833,
-      "damage": 35,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:178",
-      "input_slots": [
-        "b+1+4"
-      ],
-      "move_class": "strike"
-    },
-    "f+1+4": {
-      "name": "BAEK MASTER WHITE f+1+4 (T3 bryan r179)",
-      "input": "f+1+4",
-      "t3_source": "bryan",
-      "t3_row": 179,
-      "t3_command": "6+LP+RK",
-      "startup": 0.467,
-      "active": 0.017,
-      "recovery": 0.833,
-      "damage": 12,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:179",
-      "input_slots": [
-        "f+1+4"
       ],
       "move_class": "strike"
     },
@@ -1619,26 +2159,6 @@
       "anim_ref": "t3:bryan:row:190",
       "input_slots": [
         "4"
-      ],
-      "move_class": "strike"
-    },
-    "f+3": {
-      "name": "BAEK MASTER WHITE f+3 (T3 bryan r191)",
-      "input": "f+3",
-      "t3_source": "bryan",
-      "t3_row": 191,
-      "t3_command": "6+LK",
-      "startup": 0.367,
-      "active": 0.05,
-      "recovery": 0.867,
-      "damage": 21,
-      "limb": "legL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bryan:row:191",
-      "input_slots": [
-        "f+3"
       ],
       "move_class": "strike"
     },
@@ -1910,56 +2430,699 @@
       ],
       "move_class": "strike",
       "t3_condition": 3
+    },
+    "donor.baek.S": {
+      "name": "Kick Is the Question [WH SIGNATURE]",
+      "input": "S",
+      "startup": 0.26,
+      "active": 0.017,
+      "recovery": 0.78,
+      "damage": 17,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 12,
+      "anim_ref": "wh:baek:sig:kick-is-the-question",
+      "input_slots": [
+        "S"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "The kick is the question. Discipline is the answer. A textbook kick, graded on the spot.",
+      "merge_source": "donor:baek:S",
+      "donor_fighter": "baek"
+    },
+    "donor.baek.P+K": {
+      "name": "Homework [WH SIGNATURE]",
+      "input": "P+K",
+      "startup": 0.3,
+      "active": 0.05,
+      "recovery": 0.9,
+      "damage": 21,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 13,
+      "anim_ref": "wh:baek:sig:homework",
+      "input_slots": [
+        "P+K",
+        "P",
+        "K"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "Every fight is a lesson; every loss is homework. A teaching throw with corrections.",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "merge_source": "donor:baek:P+K",
+      "donor_fighter": "baek"
+    },
+    "1+2~donor.baek": {
+      "name": "Kick Is the Question [WH SIGNATURE]",
+      "input": "1+2",
+      "startup": 0.26,
+      "active": 0.017,
+      "recovery": 0.78,
+      "damage": 17,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 12,
+      "anim_ref": "wh:baek:sig:kick-is-the-question",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "The kick is the question. Discipline is the answer. A textbook kick, graded on the spot.",
+      "input_remapped_from": "S",
+      "merge_source": "donor:baek:1+2",
+      "donor_fighter": "baek"
+    },
+    "1+4~donor.baek": {
+      "name": "Homework [WH SIGNATURE]",
+      "input": "1+4",
+      "startup": 0.3,
+      "active": 0.05,
+      "recovery": 0.9,
+      "damage": 21,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 13,
+      "anim_ref": "wh:baek:sig:homework",
+      "input_slots": [
+        "1+4"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "Every fight is a lesson; every loss is homework. A teaching throw with corrections.",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "input_remapped_from": "P+K",
+      "throw_break": "1+2",
+      "merge_source": "donor:baek:1+4",
+      "donor_fighter": "baek"
+    },
+    "d/f+1~donor.baek": {
+      "name": "BAEK d/f+1 (T3 bryan r148)",
+      "input": "d/f+1",
+      "t3_source": "bryan",
+      "t3_row": 148,
+      "t3_command": "3+LP",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.517,
+      "damage": 6,
+      "t3_damage": 11,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan:row:148",
+      "input_slots": [
+        "d/f+1"
+      ],
+      "move_class": "strike",
+      "merge_source": "donor:baek:d/f+1",
+      "donor_fighter": "baek"
+    },
+    "u/b+1~donor.baek": {
+      "name": "BAEK u/b+1 (T3 bryan r43)",
+      "input": "u/b+1",
+      "t3_source": "bryan",
+      "t3_row": 43,
+      "t3_command": "4/7+LP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "t3_damage": 12,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan:row:43",
+      "input_slots": [
+        "u/b+1"
+      ],
+      "move_class": "strike",
+      "merge_source": "donor:baek:u/b+1",
+      "donor_fighter": "baek"
+    },
+    "u/b+4~donor.baek": {
+      "name": "BAEK u/b+4 (T3 bryan r87)",
+      "input": "u/b+4",
+      "t3_source": "bryan",
+      "t3_row": 87,
+      "t3_command": "4/7+RK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 11,
+      "t3_damage": 18,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan:row:87",
+      "input_slots": [
+        "u/b+4"
+      ],
+      "move_class": "strike",
+      "merge_source": "donor:baek:u/b+4",
+      "donor_fighter": "baek"
+    },
+    "u/f+1~donor.baek": {
+      "name": "BAEK u/f+1 (T3 bryan r42)",
+      "input": "u/f+1",
+      "t3_source": "bryan",
+      "t3_row": 42,
+      "t3_command": "6/9+LP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "t3_damage": 12,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:bryan:row:42",
+      "input_slots": [
+        "u/f+1"
+      ],
+      "move_class": "strike",
+      "merge_source": "donor:baek:u/f+1",
+      "donor_fighter": "baek"
+    },
+    "u/f+3~donor.baek": {
+      "name": "BAEK u/f+3 (T3 bryan r64)",
+      "input": "u/f+3",
+      "t3_source": "bryan",
+      "t3_row": 64,
+      "t3_command": "6/9+LK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 15,
+      "t3_damage": 25,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "t3:bryan:row:64",
+      "input_slots": [
+        "u/f+3"
+      ],
+      "move_class": "strike",
+      "merge_source": "donor:baek:u/f+3",
+      "donor_fighter": "baek"
+    },
+    "None~donor.baek.2": {
+      "name": "Kick Is the Question [WH SIGNATURE]",
+      "input": "S",
+      "startup": 0.26,
+      "active": 0.017,
+      "recovery": 0.78,
+      "damage": 17,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 12,
+      "anim_ref": "wh:baek:sig:kick-is-the-question",
+      "input_slots": [
+        "S"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "The kick is the question. Discipline is the answer. A textbook kick, graded on the spot.",
+      "merge_source": "donor:baek:S",
+      "donor_fighter": "baek"
+    },
+    "None~donor.baek.3": {
+      "name": "Homework [WH SIGNATURE]",
+      "input": "P+K",
+      "startup": 0.3,
+      "active": 0.05,
+      "recovery": 0.9,
+      "damage": 21,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 13,
+      "anim_ref": "wh:baek:sig:homework",
+      "input_slots": [
+        "P+K",
+        "P",
+        "K"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "Every fight is a lesson; every loss is homework. A teaching throw with corrections.",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "merge_source": "donor:baek:P+K",
+      "donor_fighter": "baek"
+    },
+    "1+2~donor.baek.2": {
+      "name": "Kick Is the Question [WH SIGNATURE]",
+      "input": "1+2",
+      "startup": 0.26,
+      "active": 0.017,
+      "recovery": 0.78,
+      "damage": 17,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 12,
+      "anim_ref": "wh:baek:sig:kick-is-the-question",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "The kick is the question. Discipline is the answer. A textbook kick, graded on the spot.",
+      "input_remapped_from": "S",
+      "merge_source": "donor:baek:1+2",
+      "donor_fighter": "baek"
+    },
+    "1+4~donor.baek.2": {
+      "name": "Homework [WH SIGNATURE]",
+      "input": "1+4",
+      "startup": 0.3,
+      "active": 0.05,
+      "recovery": 0.9,
+      "damage": 21,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 13,
+      "anim_ref": "wh:baek:sig:homework",
+      "input_slots": [
+        "1+4"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "Every fight is a lesson; every loss is homework. A teaching throw with corrections.",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "input_remapped_from": "P+K",
+      "throw_break": "1+2",
+      "merge_source": "donor:baek:1+4",
+      "donor_fighter": "baek"
+    },
+    "None~donor.baek.4": {
+      "name": "Kick Is the Question [WH SIGNATURE]",
+      "input": "S",
+      "startup": 0.26,
+      "active": 0.017,
+      "recovery": 0.78,
+      "damage": 17,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 12,
+      "anim_ref": "wh:baek:sig:kick-is-the-question",
+      "input_slots": [
+        "S"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "The kick is the question. Discipline is the answer. A textbook kick, graded on the spot.",
+      "merge_source": "donor:baek:S",
+      "donor_fighter": "baek"
+    },
+    "None~donor.baek.5": {
+      "name": "Homework [WH SIGNATURE]",
+      "input": "P+K",
+      "startup": 0.3,
+      "active": 0.05,
+      "recovery": 0.9,
+      "damage": 21,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 13,
+      "anim_ref": "wh:baek:sig:homework",
+      "input_slots": [
+        "P+K",
+        "P",
+        "K"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "Every fight is a lesson; every loss is homework. A teaching throw with corrections.",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "merge_source": "donor:baek:P+K",
+      "donor_fighter": "baek"
+    },
+    "1+2~donor.baek.3": {
+      "name": "Kick Is the Question [WH SIGNATURE]",
+      "input": "1+2",
+      "startup": 0.26,
+      "active": 0.017,
+      "recovery": 0.78,
+      "damage": 17,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 12,
+      "anim_ref": "wh:baek:sig:kick-is-the-question",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "The kick is the question. Discipline is the answer. A textbook kick, graded on the spot.",
+      "input_remapped_from": "S",
+      "merge_source": "donor:baek:1+2",
+      "donor_fighter": "baek"
+    },
+    "1+4~donor.baek.3": {
+      "name": "Homework [WH SIGNATURE]",
+      "input": "1+4",
+      "startup": 0.3,
+      "active": 0.05,
+      "recovery": 0.9,
+      "damage": 21,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 13,
+      "anim_ref": "wh:baek:sig:homework",
+      "input_slots": [
+        "1+4"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "Every fight is a lesson; every loss is homework. A teaching throw with corrections.",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "input_remapped_from": "P+K",
+      "throw_break": "1+2",
+      "merge_source": "donor:baek:1+4",
+      "donor_fighter": "baek"
+    },
+    "None~donor.baek.6": {
+      "name": "Kick Is the Question [WH SIGNATURE]",
+      "input": "S",
+      "startup": 0.26,
+      "active": 0.017,
+      "recovery": 0.78,
+      "damage": 17,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 12,
+      "anim_ref": "wh:baek:sig:kick-is-the-question",
+      "input_slots": [
+        "S"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "The kick is the question. Discipline is the answer. A textbook kick, graded on the spot.",
+      "merge_source": "donor:baek:S",
+      "donor_fighter": "baek"
+    },
+    "None~donor.baek.7": {
+      "name": "Homework [WH SIGNATURE]",
+      "input": "P+K",
+      "startup": 0.3,
+      "active": 0.05,
+      "recovery": 0.9,
+      "damage": 21,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 13,
+      "anim_ref": "wh:baek:sig:homework",
+      "input_slots": [
+        "P+K",
+        "P",
+        "K"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "Every fight is a lesson; every loss is homework. A teaching throw with corrections.",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "merge_source": "donor:baek:P+K",
+      "donor_fighter": "baek"
+    },
+    "1+2~donor.baek.4": {
+      "name": "Kick Is the Question [WH SIGNATURE]",
+      "input": "1+2",
+      "startup": 0.26,
+      "active": 0.017,
+      "recovery": 0.78,
+      "damage": 17,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 12,
+      "anim_ref": "wh:baek:sig:kick-is-the-question",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "The kick is the question. Discipline is the answer. A textbook kick, graded on the spot.",
+      "input_remapped_from": "S",
+      "merge_source": "donor:baek:1+2",
+      "donor_fighter": "baek"
+    },
+    "1+4~donor.baek.4": {
+      "name": "Homework [WH SIGNATURE]",
+      "input": "1+4",
+      "startup": 0.3,
+      "active": 0.05,
+      "recovery": 0.9,
+      "damage": 21,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 13,
+      "anim_ref": "wh:baek:sig:homework",
+      "input_slots": [
+        "1+4"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "Every fight is a lesson; every loss is homework. A teaching throw with corrections.",
+      "throw": true,
+      "unblockable": true,
+      "isGrab": true,
+      "input_remapped_from": "P+K",
+      "throw_break": "1+2",
+      "merge_source": "donor:baek:1+4",
+      "donor_fighter": "baek"
     }
   },
-  "strings": [
-    {
-      "input": "2,1",
-      "hits": [
-        "2",
-        "1"
-      ],
-      "t3_rows": [
-        152,
-        153
-      ]
-    },
-    {
-      "input": "2,1,2",
-      "hits": [
-        "2",
-        "1",
-        "2"
-      ],
-      "t3_rows": [
-        152,
-        153,
-        151
-      ]
-    }
-  ],
-  "specials": [
-    {
-      "input": "d,d/f,d,d/f+1+2",
-      "t3_row": 211,
-      "damage": 21,
-      "throw": true
-    },
-    {
-      "input": "n,d/b,n,f+1+2",
-      "t3_row": 211,
-      "damage": 21,
-      "throw": true
-    }
-  ],
-  "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
-  "schema_version": 2,
-  "t3_bank": "moveset_bryan.json",
-  "t3_bank_rows": 365,
-  "t3_bank_attack_rows": 82,
-  "generated_full_moveset": {
-    "by": "tools/gen-movesets-t3.py",
+  "restored_from_sweep_338": {
     "date": "2026-10-20",
-    "note": "Full T3 bank depth merged over curated base; curated moves preserved verbatim. Smallest T3 bank (365 rows, 188 attacks); 79 attack rows have no per-character input in the extracted data (common-bank / reaction rows). Unique playable inputs top out at ~90-97 per fighter."
-  }
+    "by": "tools/moveset-restore/restore_sweep_338.py",
+    "source_commit": "4cc6b41b",
+    "destroyed_by": "8ebdc527",
+    "moves": 113,
+    "strings": 3,
+    "specials": 2
+  },
+  "slots": {
+    "1": "1",
+    "1+2": "1+2",
+    "1+3": "1+3",
+    "1+4": "1+4",
+    "2": "2",
+    "2+4": "2+4",
+    "2,1": "2,1",
+    "2,1,2": "2,1,2",
+    "2,4": "2,4",
+    "3": "3",
+    "3+4": "3+4_r107",
+    "4": "4",
+    "b": "b",
+    "b+1+2": "b+1+2",
+    "b+1+4": "b+1+4",
+    "b+2": "b+2",
+    "b+4": "b+4",
+    "d,d/f,d,d/f+1+2": "d,d/f,d,d/f+1+2",
+    "d/f+1": "d/f+1",
+    "d/f+1+2": "d/f+1+2",
+    "d/f+2": "d/f+2",
+    "f": "f",
+    "f+1+4": "f+1+4",
+    "f+2": "f+2",
+    "f+3": "f+3",
+    "n,d/b,n,f+1+2": "n,d/b,n,f+1+2",
+    "u/b+1": "u/b+1",
+    "u/b+1+2": "u/b+1+2",
+    "u/b+3": "u/b+3",
+    "u/b+3+4": "u/b+3+4",
+    "u/b+4": "u/b+4",
+    "u/f+1": "u/f+1",
+    "u/f+1+2": "u/f+1+2",
+    "u/f+3": "u/f+3",
+    "u/f+3+4": "u/f+3+4",
+    "u/f+4": "u/f+4"
+  },
+  "merge_sources": {
+    "date": "2026-10-21",
+    "by": "tools/moveset-merge/merge_sources.py",
+    "bases": {
+      "donors": [
+        "baek"
+      ]
+    },
+    "why": "attire variant of baek",
+    "exclude_proxy": false,
+    "moves_before": 130,
+    "moves_after": 134,
+    "added": {
+      "donor": 4
+    },
+    "slots": 36,
+    "slots_by_priority": {
+      "signature": 2,
+      "curated/donor": 34
+    },
+    "previously_playable_inputs": 33,
+    "owner_excluded_inputs": [],
+    "note": "Existing moves untouched. New moves carry merge_source; slots = default input map (editor can reassign any move). Damage scaled to WH 100 HP, raw in damage_raw."
+  },
+  "hit_words": {
+    "1": 535,
+    "2": 1042,
+    "2,1": 1042,
+    "2,1,2": 1042,
+    "3": 535,
+    "4": 535,
+    "1+3": 535,
+    "2+4": 1042,
+    "d/f+2": 535,
+    "u/f+4": 535,
+    "d,d/f,d,d/f+1+2": 1042,
+    "n,d/b,n,f+1+2": 1042,
+    "P+K": 2048,
+    "1+2__main": 535,
+    "1+4": 2048,
+    "b+2": 535,
+    "b+4": 1042,
+    "f+2": 1042,
+    "f+2__main": 1042,
+    "f+3": 535,
+    "f+3__main": 535,
+    "b+1+2": 535,
+    "b+1+4": 1543,
+    "b+1+4__main": 1543,
+    "d/f+1": 535,
+    "f+1+4": 1543,
+    "f+1+4__main": 1543,
+    "u/b+1": 535,
+    "u/b+3": 535,
+    "u/b+4": 535,
+    "u/f+1": 535,
+    "u/f+3": 535,
+    "d/f+1+2": 799,
+    "u/b+1+2": 535,
+    "u/b+3+4": 535,
+    "u/f+1+2": 535,
+    "u/f+3+4": 535,
+    "2,4": 535,
+    "f": 535,
+    "b": 535,
+    "1_r45": 535,
+    "1_r46": 535,
+    "1_r47": 535,
+    "1_r48": 535,
+    "1_r49": 535,
+    "1_r50": 535,
+    "1_r51": 535,
+    "1_r52": 535,
+    "1_c36_r53": 535,
+    "f_c36_r54": 535,
+    "b_c36_r55": 535,
+    "2_r57": 535,
+    "2_r58": 535,
+    "3+4_r107": 535,
+    "f_r61": 535,
+    "b_r62": 535,
+    "3_c36": 535,
+    "f_c36_r64": 535,
+    "b_c36_r65": 535,
+    "3_r67": 535,
+    "3_r68": 535,
+    "3_r69": 535,
+    "3_r70": 535,
+    "3_r71": 535,
+    "3_r72": 271,
+    "3_r73": 271,
+    "3_r74": 271,
+    "b_r75": 535,
+    "b_c36": 535,
+    "4_r77": 535,
+    "4_r78": 535,
+    "4_r79": 535,
+    "4_r80": 535,
+    "4_r81": 535,
+    "4_r82": 535,
+    "4_r83": 535,
+    "4_r84": 535,
+    "4_c36_r85": 535,
+    "f_c36_r86": 535,
+    "b_c36_r87": 535,
+    "3+4_r8": 535,
+    "b+4_r13": 1042,
+    "d/f+1+2_r17": 799,
+    "3_r127": 271,
+    "2_r149": 535,
+    "2_r151": 1042,
+    "2_r13_r156": 1042,
+    "1_c2_r160": 2048,
+    "2_r166": 535,
+    "1_r168": 535,
+    "2_r177": 535,
+    "4_r180": 271,
+    "4_r13_r182": 535,
+    "f_r183": 535,
+    "4_r184": 535,
+    "3_r185": 535,
+    "f_r186": 535,
+    "4_r190": 535,
+    "3_r192": 1042,
+    "4_r194": 1042,
+    "2_r195": 1042,
+    "2_r208": 1042,
+    "1_c36_r224": 271,
+    "1_c36_r225": 535,
+    "1_c36_r228": 271,
+    "1_c36_r229": 535,
+    "1_c2_r343": 2048,
+    "1_c2_r345": 2048,
+    "1_c4_r347": 2048,
+    "1_c5_r349": 2048,
+    "1_c3_r351": 2048,
+    "donor.baek.P+K": 2048,
+    "1+4~donor.baek": 2048,
+    "d/f+1~donor.baek": 535,
+    "u/b+1~donor.baek": 535,
+    "u/b+4~donor.baek": 535,
+    "u/f+1~donor.baek": 535,
+    "u/f+3~donor.baek": 535,
+    "None~donor.baek.3": 2048,
+    "1+4~donor.baek.2": 2048,
+    "None~donor.baek.5": 2048,
+    "1+4~donor.baek.3": 2048,
+    "None~donor.baek.7": 2048,
+    "1+4~donor.baek.4": 2048
+  },
+  "stance_after": {}
 }

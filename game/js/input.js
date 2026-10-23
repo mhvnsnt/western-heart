@@ -5,15 +5,23 @@
 
    Exposed state:
      axisX  : -1..1 horizontal move
-     up     : bool (jump intent)
-     down   : bool (crouch intent — enables d/df/db motions)
+     up     : bool (jump intent — set after 200ms hold, Tekken tap/hold rule)
+     down   : bool (crouch intent — set after 200ms hold)
      held   : { block }                  // continuous
-     pressed: queue of one-shot actions  // 1/2/3/4 (Tekken), 1+3/2+4 throws,
-                                         // punch/kick/grab/surge/dodge (legacy)
+     pressed: queue of one-shot actions  // 1/2/3/4 (Tekken limbs),
+                                         // 1+3/2+4/1+2/3+4/1+4/2+3 chords,
+                                         // ss-up/ss-down (sidestep),
+                                         // surge/dodge/transform (WH),
+                                         // vskill (V-System: KeyV / V button)
 
-   TEKKEN INPUTS: 1/2/3/4 keys = left punch / right punch / left kick / right kick.
-   1+3 or 2+4 together (140ms chord) = throw. Motions (qcf, f,F) tracked via
-   direction history in the fighter's TekkenBuffer (see movesets.js).
+   TEKKEN INPUTS: 1/2/3/4 = left punch / right punch / left kick / right kick
+   (LP/RP/LK/RK touch buttons). Any two limbs within 140ms = chord
+   (1+3 / 2+4 throws, 1+2 / 3+4 specials, 1+4 / 2+3 command inputs).
+   Motions (qcf, f,F) tracked via direction history in the fighter's
+   TekkenBuffer (see movesets.js).
+   SIDESTEP (Tekken 7 semantics): TAP u/d (<200ms) = sidestep into the
+   background/foreground; HOLD u/d (>=200ms) = jump/crouch. The game waits
+   out the tap window before committing to jump/crouch — exactly like Tekken.
    COMMAND GRAB (legacy): press P+K together (touch) or J+K together / U (keyboard).
    ============================================================ */
 
@@ -47,12 +55,40 @@ export class InputManager {
     this._keys = {};
     this._lastPunchT = 0; this._lastKickT = 0;
     this._lastT = { '1': 0, '2': 0, '3': 0, '4': 0 };
+    clearTimeout(this._udTimer); this._udDir = null; this._udHeld = false;
     this._resetJoyKnob();
   }
 
   consume() { const q = this._queue.slice(); this._queue.length = 0; return q; }
 
-  _push(action) { if (this.enabled) this._queue.push(action); }
+  _push(action) {
+    if (!this.enabled) return;
+    // Worker 35: difficulty assists (input layer). translate() handles
+    // throw-break assist; after() handles auto-combo / one-button special.
+    if (window.WHAssists) action = window.WHAssists.translate(action, this) || action;
+    this._queue.push(action);
+    if (window.WHAssists) window.WHAssists.after(action, this);
+  }
+
+  /* Worker 35: button remapping. Translates the physical key through the
+     player's remap table to the canonical action code the switch below
+     dispatches on. Joystick is never remapped (owner-approved). */
+  _remapCode(code) {
+    if (!window.WHIdentity) return code;
+    const I = window.WHIdentity;
+    const keys = (I.getRemap && I.getRemap().keys) || {};
+    const def = I.REMAP_DEFAULT_KEYS || {};
+    // cur(): '' means explicitly unbound (conflict-cleared) — do NOT fall back.
+    const cur = (a) => (a in keys ? keys[a] : def[a]);
+    for (const action of Object.keys(def)) {
+      if (cur(action) === code) return def[action];
+    }
+    // A default key whose action moved elsewhere is dead (true rebind, not alias).
+    for (const action of Object.keys(def)) {
+      if (def[action] === code && cur(action) !== code) return '__unbound__';
+    }
+    return code;
+  }
 
   /* P+K chord => command grab. Tracks the most recent strike press;
      if the other one lands within 140ms, the pair becomes a grab. */
@@ -68,17 +104,24 @@ export class InputManager {
     this._push(kind);
   }
 
-  /* Tekken chords: 1+3 / 2+4 => throw, 1+2 / 3+4 => special chord.
-     Same 140ms window as the legacy P+K grab. */
+  /* Tekken chords: any two limbs within 140ms.
+     1+3 / 2+4 = throws; 1+2 / 3+4 = specials; 1+4 / 2+3 = command inputs.
+     Throw pairs keep priority (most deliberate), then specials, then commands. */
+  /* Vertical intent right now, including a u/d still inside its 200ms tap window: a limb
+     pressed with the stick at d/f is d/f+1 in Tekken, not a sidestep followed by 1. */
+  vertNow() {
+    if (this.up) return 'up';
+    if (this.down) return 'down';
+    return this._udDir || null;
+  }
+
   _tekken(btn) {
     const now = performance.now();
-    const chords = { '1': ['3', '1+3'], '3': ['1', '1+3'], '2': ['4', '2+4'], '4': ['2', '2+4'],
-                     '1x': ['2', '1+2'], '2x': ['1', '1+2'] };
-    // primary: 1+3 / 2+4 throws; secondary: 1+2 / 3+4 (chain-throw specials)
-    const pairs = btn === '1' ? [['3', '1+3'], ['2', '1+2']]
-                : btn === '2' ? [['4', '2+4'], ['1', '1+2']]
-                : btn === '3' ? [['1', '1+3'], ['4', '3+4']]
-                : [['2', '2+4'], ['3', '3+4']];
+    if (this._udDir && !this._udHeld) this._udUsed = true; // the tap fed this attack's direction
+    const pairs = btn === '1' ? [['3', '1+3'], ['2', '1+2'], ['4', '1+4']]
+                : btn === '2' ? [['4', '2+4'], ['1', '1+2'], ['3', '2+3']]
+                : btn === '3' ? [['1', '1+3'], ['4', '3+4'], ['2', '2+3']]
+                : [['2', '2+4'], ['3', '3+4'], ['1', '1+4']];
     for (const [pair, name] of pairs) {
       if (now - this._lastT[pair] < 140) {
         this._lastT[pair] = 0; this._lastT[btn] = 0;
@@ -90,16 +133,45 @@ export class InputManager {
     this._push(btn);
   }
 
+  /* ---- Sidestep tap-vs-hold (Tekken 7 semantics) ----
+     Joystick/keyboard u/d press starts a 200ms timer. Release before it
+     fires = sidestep ('ss-up'/'ss-down'); holding past it = jump/crouch
+     (up/down set true, cleared on release). */
+  _udPress(dir) {
+    // dir: 'up' | 'down'
+    if (this._udDir) return; // already tracking
+    this._udDir = dir;
+    this._udT = performance.now();
+    this._udTimer = setTimeout(() => {
+      if (!this._udDir) return;
+      if (this._udDir === 'up') this.up = true;
+      else this.down = true;
+      this._udHeld = true;
+    }, 200);
+  }
+  _udRelease() {
+    if (!this._udDir) return;
+    const dir = this._udDir;
+    const held = performance.now() - this._udT >= 200;
+    clearTimeout(this._udTimer);
+    this._udDir = null; this._udHeld = false;
+    const used = this._udUsed; this._udUsed = false;
+    if (this.up || this.down) { this.up = false; this.down = false; }
+    else if (!held && !used) this._push(dir === 'up' ? 'ss-up' : 'ss-down');
+  }
+
   /* ---------------- Keyboard ---------------- */
   _bindKeyboard() {
     window.addEventListener('keydown', (e) => {
       if (this._keys[e.code]) return; // ignore auto-repeat
       this._keys[e.code] = true;
       if (!this.enabled) return;
-      switch (e.code) {
+      // Worker 35: remap physical key -> canonical action code first.
+      switch (this._remapCode(e.code)) {
         case 'KeyA': case 'ArrowLeft': this.axisX = -1; break;
         case 'KeyD': case 'ArrowRight': this.axisX = 1; break;
-        case 'KeyW': case 'ArrowUp': this.up = true; break;
+        case 'KeyW': case 'ArrowUp': this._udPress('up'); break;
+        case 'KeyS': case 'ArrowDown': this._udPress('down'); break;
         case 'KeyJ': this._strike('punch'); break;
         case 'KeyK': this._strike('kick'); break;
         case 'KeyU': this._push('grab'); break;
@@ -108,21 +180,31 @@ export class InputManager {
         case 'Digit2': this._tekken('2'); break;
         case 'Digit3': this._tekken('3'); break;
         case 'Digit4': this._tekken('4'); break;
-        case 'KeyS': case 'ArrowDown': this.down = true; break;
         case 'Space': this.held.block = true; e.preventDefault(); break;
         case 'ShiftLeft': case 'ShiftRight': this._push('dodge'); break;
+        case 'KeyV': this._push('vskill'); break; // V-System (owner 2026-10-22)
       }
     });
     window.addEventListener('keyup', (e) => {
       this._keys[e.code] = false;
-      switch (e.code) {
-        case 'KeyA': case 'ArrowLeft': if (this.axisX < 0) this.axisX = this._keys['KeyD'] ? 1 : 0; break;
-        case 'KeyD': case 'ArrowRight': if (this.axisX > 0) this.axisX = this._keys['KeyA'] ? -1 : 0; break;
-        case 'KeyW': case 'ArrowUp': this.up = false; break;
-        case 'KeyS': case 'ArrowDown': this.down = false; break;
+      // Worker 35: translate through the remap so held keys release correctly.
+      switch (this._remapCode(e.code)) {
+        case 'KeyA': case 'ArrowLeft': if (this.axisX < 0) this.axisX = this._keys[this._physicalCode('right')] ? 1 : 0; break;
+        case 'KeyD': case 'ArrowRight': if (this.axisX > 0) this.axisX = this._keys[this._physicalCode('left')] ? -1 : 0; break;
+        case 'KeyW': case 'ArrowUp': case 'KeyS': case 'ArrowDown': this._udRelease(); break;
         case 'Space': this.held.block = false; break;
       }
     });
+  }
+
+  /* Worker 35: physical key currently bound to an action (for held-key checks). */
+  _physicalCode(action) {
+    if (!window.WHIdentity) return action;
+    const I = window.WHIdentity;
+    const keys = (I.getRemap && I.getRemap().keys) || {};
+    const def = I.REMAP_DEFAULT_KEYS || {};
+    const cur = (action in keys) ? keys[action] : def[action];
+    return cur || '';
   }
 
   /* ---------------- Virtual joystick ---------------- */
@@ -150,12 +232,16 @@ export class InputManager {
       knob.style.transform = `translate(${kx}px, ${ky}px)`;
       const nx = (Math.cos(ang) * clamped) / maxR;
       this.axisX = Math.abs(nx) > 0.25 ? Math.max(-1, Math.min(1, nx)) : 0;
-      this.up = (Math.sin(ang) * clamped) / maxR < -0.55; // pushed up
-      this.down = (Math.sin(ang) * clamped) / maxR > 0.55; // pushed down (crouch)
+      // Tekken tap-vs-hold: tap u/d = sidestep, hold = jump/crouch.
+      const ny = (Math.sin(ang) * clamped) / maxR;
+      if (ny < -0.55) this._udPress('up');
+      else if (ny > 0.55) this._udPress('down');
+      else if (this._udDir && !this._udHeld) this._udRelease(); // left the vertical zone: count the tap
     };
     const end = () => {
       this._joyActive = false; this._joyId = null;
-      this.axisX = 0; this.up = false; this.down = false;
+      this.axisX = 0;
+      this._udRelease(); // resolve any pending tap/hold
       this._resetJoyKnob();
     };
     this._resetJoyKnob = () => { if (knob) knob.style.transform = 'translate(0,0)'; };
@@ -186,6 +272,7 @@ export class InputManager {
         e.preventDefault();
         if (action === 'block') this.held.block = true;
         else if (action === 'punch' || action === 'kick') this._strike(action);
+        else if (/^[1234]$/.test(action)) this._tekken(action); // LP/RP/LK/RK limbs
         // TRANSFORM touch button: tap = transform up; tap while crouching
         // (joystick held down) = rare transform-down. No keyboard input.
         else if (action === 'transform') this._push(this.down ? 'transform-down' : 'transform');

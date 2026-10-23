@@ -1,298 +1,359 @@
 {
- "fighter": "vf-sarah",
- "display": "SARAH (VF)",
- "tekken_base": "Sarah Bryant (Virtua Fighter 5 Final Showdown)",
- "vf_source": "community movelist + frame data (see docs/movesets/DOA-VF-CONVERSION-2026-10-19.md)",
- "proxy": false,
- "proxy_note": null,
- "schema_version": 2,
- "moves": {
-  "1": {
-   "name": "Sarah P \u2014 Straight Lead",
-   "input": "1",
-   "vf_move": "Straight Lead",
-   "vf_input": "P",
-   "startup": 0.2,
-   "active": 0.033,
-   "recovery": 0.367,
-   "damage": 7,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "vf:sarah/straight-lead",
-   "input_slots": [
-    "1"
-   ],
-   "move_class": "strike",
-   "note": "frame data estimated from archetype; marked per schema honesty rule"
+  "fighter": "vf-sarah",
+  "display": "SARAH (VF)",
+  "tekken_base": "Sarah Bryant (Virtua Fighter 5 Final Showdown)",
+  "vf_source": "community movelist + frame data (see docs/movesets/DOA-VF-CONVERSION-2026-10-19.md)",
+  "proxy": false,
+  "proxy_note": null,
+  "schema_version": 2,
+  "moves": {
+    "1": {
+      "name": "Sarah P — Straight Lead",
+      "input": "1",
+      "vf_move": "Straight Lead",
+      "vf_input": "P",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.367,
+      "damage": 7,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:sarah/straight-lead",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "1,2,3": {
+      "name": "Sarah PPK — Double Punch-Rising Knee",
+      "input": "1,2,3",
+      "vf_move": "Double Punch - Rising Knee",
+      "vf_input": "P,P,K",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 16,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 8,
+      "anim_ref": "vf:sarah/ppk",
+      "input_slots": [
+        "1,2,3",
+        "1",
+        "2",
+        "3"
+      ],
+      "move_class": "string",
+      "note": "segaretro VF1 movelist. frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "3": {
+      "name": "Sarah K — Vertical Hook Kick",
+      "input": "3",
+      "vf_move": "Vertical Hook Kick",
+      "vf_input": "K",
+      "startup": 0.25,
+      "active": 0.05,
+      "recovery": 0.533,
+      "damage": 12,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 3.8,
+      "soulGain": 8,
+      "anim_ref": "vf:sarah/hook-kick",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "d+3": {
+      "name": "Sarah d+K — Low Kick",
+      "input": "d+3",
+      "vf_move": "Low Kick",
+      "vf_input": "d+K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.467,
+      "damage": 8,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:sarah/low-kick",
+      "input_slots": [
+        "d+3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "f+1": {
+      "name": "Sarah 6P — elbow",
+      "input": "f+1",
+      "vf_move": "6P",
+      "vf_input": "6P",
+      "startup": 0.217,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 7,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:sarah/6p",
+      "input_slots": [
+        "f+1"
+      ],
+      "move_class": "strike",
+      "note": "DOA5 ver1.09 notes (VF guest): Sarah 6P 17->18 on ~270 scale. frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "d+1+2": {
+      "name": "Sarah 2P+K — low spin",
+      "input": "d+1+2",
+      "vf_move": "2P+K",
+      "vf_input": "2P+K",
+      "startup": 0.267,
+      "active": 0.05,
+      "recovery": 0.533,
+      "damage": 10,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:sarah/2pk",
+      "input_slots": [
+        "d+1+2"
+      ],
+      "move_class": "special",
+      "note": "DOA5 ver1.09 notes (VF guest). frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "f,f+3": {
+      "name": "Sarah 66K — step kick",
+      "input": "f,f+3",
+      "vf_move": "66K",
+      "vf_input": "66K",
+      "startup": 0.267,
+      "active": 0.05,
+      "recovery": 0.533,
+      "damage": 13,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 4.0,
+      "soulGain": 8,
+      "anim_ref": "vf:sarah/66k",
+      "input_slots": [
+        "f,f+3"
+      ],
+      "move_class": "special",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "u/f+3": {
+      "name": "Sarah somersault kick",
+      "input": "u/f+3",
+      "vf_move": "Suisha Geri (somersault kick)",
+      "vf_input": "u/f+K",
+      "startup": 0.333,
+      "active": 0.067,
+      "recovery": 0.6,
+      "damage": 16,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 4.8,
+      "soulGain": 8,
+      "anim_ref": "vf:sarah/somersault",
+      "input_slots": [
+        "u/f+3"
+      ],
+      "move_class": "special",
+      "note": "segaretro VF1 movelist; breaks crouch guard. frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "1+3": {
+      "name": "Sarah P+G — Front Suplex",
+      "input": "1+3",
+      "vf_move": "Front Suplex",
+      "vf_input": "P+G",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 25,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 8,
+      "anim_ref": "vf:sarah/front-suplex",
+      "input_slots": [
+        "1+3"
+      ],
+      "move_class": "throw",
+      "throw": true,
+      "isGrab": true,
+      "unblockable": true,
+      "note": "Damage estimated.",
+      "throw_break": "1"
+    },
+    "b+1+3": {
+      "name": "Sarah back throw",
+      "input": "b+1+3",
+      "vf_move": "Back throw",
+      "vf_input": "b+P+G",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 30,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 7.0,
+      "soulGain": 8,
+      "anim_ref": "vf:sarah/back-throw",
+      "input_slots": [
+        "b+1+3"
+      ],
+      "move_class": "throw",
+      "throw": true,
+      "isGrab": true,
+      "unblockable": true,
+      "note": "Damage estimated.",
+      "throw_break": "1"
+    },
+    "1+2": {
+      "name": "Flamingo's Answer [WH SIGNATURE]",
+      "input": "1+2",
+      "startup": 0.28,
+      "active": 0.1,
+      "recovery": 0.85,
+      "damage": 18,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 12,
+      "anim_ref": "wh:vf-sarah:sig:flamingos-answer",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "The flamingo stance, answered at full speed. Spinning kick with no wasted motion.",
+      "input_remapped_from": "S"
+    },
+    "b+4": {
+      "name": "Bryant Intercept [WH SIGNATURE]",
+      "input": "b+4",
+      "startup": 0.23,
+      "active": 0.017,
+      "recovery": 0.72,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "wh:vf-sarah:sig:bryant-intercept",
+      "input_slots": [
+        "b+4"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "She doesn't wait for the punch. A back-step intercepting kick that arrives first.",
+      "input_remapped_from": "b+K"
+    },
+    "S": {
+      "name": "Flamingo's Answer [WH SIGNATURE]",
+      "input": "S",
+      "startup": 0.28,
+      "active": 0.1,
+      "recovery": 0.85,
+      "damage": 18,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 12,
+      "anim_ref": "wh:vf-sarah:sig:flamingos-answer",
+      "input_slots": [
+        "S"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "The flamingo stance, answered at full speed. Spinning kick with no wasted motion."
+    },
+    "b+K": {
+      "name": "Bryant Intercept [WH SIGNATURE]",
+      "input": "b+K",
+      "startup": 0.23,
+      "active": 0.017,
+      "recovery": 0.72,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "wh:vf-sarah:sig:bryant-intercept",
+      "input_slots": [
+        "b+K",
+        "b",
+        "K"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "She doesn't wait for the punch. A back-step intercepting kick that arrives first."
+    }
   },
-  "1,2,3": {
-   "name": "Sarah PPK \u2014 Double Punch-Rising Knee",
-   "input": "1,2,3",
-   "vf_move": "Double Punch - Rising Knee",
-   "vf_input": "P,P,K",
-   "startup": 0.2,
-   "active": 0.033,
-   "recovery": 0.5,
-   "damage": 16,
-   "limb": "legL",
-   "heavy": true,
-   "knock": 4.2,
-   "soulGain": 8,
-   "anim_ref": "vf:sarah/ppk",
-   "input_slots": [
-    "1,2,3",
-    "1",
-    "2",
-    "3"
-   ],
-   "move_class": "string",
-   "note": "segaretro VF1 movelist. frame data estimated from archetype; marked per schema honesty rule"
+  "strings": [
+    {
+      "input": "1,2,3",
+      "components": [
+        "1",
+        "2",
+        "3"
+      ],
+      "damage": 16
+    }
+  ],
+  "specials": [
+    {
+      "input": "d+1+2",
+      "damage": 10,
+      "throw": false,
+      "vf_input": "2P+K"
+    },
+    {
+      "input": "f,f+3",
+      "damage": 13,
+      "throw": false,
+      "vf_input": "66K"
+    },
+    {
+      "input": "u/f+3",
+      "damage": 16,
+      "throw": false,
+      "vf_input": "u/f+K"
+    },
+    {
+      "input": "b+1+3",
+      "damage": 30,
+      "throw": true,
+      "vf_input": "b+P+G"
+    }
+  ],
+  "frame_convention": "VF5FS 60fps -> seconds; damage archetype-scaled to WH 100HP (VF5FS source HP not verified — see notes); movelist per segaretro VF1 command lists + DOA5 guest patch notes",
+  "union_merge": {
+    "date": "2026-10-20",
+    "method": "additive union of all historical versions of this file (548 versions / 60 commits / all refs) over current main; identity = canonical input (entry.input, else key); main preserved verbatim, main wins contested inputs (PR #357 precedent)",
+    "versions_considered": 3,
+    "moves_added": 2,
+    "strings_added": 0,
+    "specials_added": 0,
+    "specials_alt_appended": 0,
+    "added_move_keys": [
+      "S",
+      "b+K"
+    ],
+    "era_note": "final set era census: T8/WH-newest=4, T6/other-teardown=10; additions selected newest-era first (T8/T7/TTT2/T6+other teardowns), T3 payloads used only where no newer expression exists; union-first, no-loss absolute"
   },
-  "3": {
-   "name": "Sarah K \u2014 Vertical Hook Kick",
-   "input": "3",
-   "vf_move": "Vertical Hook Kick",
-   "vf_input": "K",
-   "startup": 0.25,
-   "active": 0.05,
-   "recovery": 0.533,
-   "damage": 12,
-   "limb": "legL",
-   "heavy": true,
-   "knock": 3.8,
-   "soulGain": 8,
-   "anim_ref": "vf:sarah/hook-kick",
-   "input_slots": [
-    "3"
-   ],
-   "move_class": "strike",
-   "note": "frame data estimated from archetype; marked per schema honesty rule"
+  "hit_words": {
+    "1+3": 2048,
+    "b+1+3": 2048
   },
-  "d+3": {
-   "name": "Sarah d+K \u2014 Low Kick",
-   "input": "d+3",
-   "vf_move": "Low Kick",
-   "vf_input": "d+K",
-   "startup": 0.233,
-   "active": 0.033,
-   "recovery": 0.467,
-   "damage": 8,
-   "limb": "legL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "vf:sarah/low-kick",
-   "input_slots": [
-    "d+3"
-   ],
-   "move_class": "strike",
-   "note": "frame data estimated from archetype; marked per schema honesty rule"
-  },
-  "f+1": {
-   "name": "Sarah 6P \u2014 elbow",
-   "input": "f+1",
-   "vf_move": "6P",
-   "vf_input": "6P",
-   "startup": 0.217,
-   "active": 0.033,
-   "recovery": 0.433,
-   "damage": 7,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "vf:sarah/6p",
-   "input_slots": [
-    "f+1"
-   ],
-   "move_class": "strike",
-   "note": "DOA5 ver1.09 notes (VF guest): Sarah 6P 17->18 on ~270 scale. frame data estimated from archetype; marked per schema honesty rule"
-  },
-  "d+1+2": {
-   "name": "Sarah 2P+K \u2014 low spin",
-   "input": "d+1+2",
-   "vf_move": "2P+K",
-   "vf_input": "2P+K",
-   "startup": 0.267,
-   "active": 0.05,
-   "recovery": 0.533,
-   "damage": 10,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "vf:sarah/2pk",
-   "input_slots": [
-    "d+1+2"
-   ],
-   "move_class": "special",
-   "note": "DOA5 ver1.09 notes (VF guest). frame data estimated from archetype; marked per schema honesty rule"
-  },
-  "f,f+3": {
-   "name": "Sarah 66K \u2014 step kick",
-   "input": "f,f+3",
-   "vf_move": "66K",
-   "vf_input": "66K",
-   "startup": 0.267,
-   "active": 0.05,
-   "recovery": 0.533,
-   "damage": 13,
-   "limb": "legL",
-   "heavy": true,
-   "knock": 4.0,
-   "soulGain": 8,
-   "anim_ref": "vf:sarah/66k",
-   "input_slots": [
-    "f,f+3"
-   ],
-   "move_class": "special",
-   "note": "frame data estimated from archetype; marked per schema honesty rule"
-  },
-  "u/f+3": {
-   "name": "Sarah somersault kick",
-   "input": "u/f+3",
-   "vf_move": "Suisha Geri (somersault kick)",
-   "vf_input": "u/f+K",
-   "startup": 0.333,
-   "active": 0.067,
-   "recovery": 0.6,
-   "damage": 16,
-   "limb": "legL",
-   "heavy": true,
-   "knock": 4.8,
-   "soulGain": 8,
-   "anim_ref": "vf:sarah/somersault",
-   "input_slots": [
-    "u/f+3"
-   ],
-   "move_class": "special",
-   "note": "segaretro VF1 movelist; breaks crouch guard. frame data estimated from archetype; marked per schema honesty rule"
-  },
-  "1+3": {
-   "name": "Sarah P+G \u2014 Front Suplex",
-   "input": "1+3",
-   "vf_move": "Front Suplex",
-   "vf_input": "P+G",
-   "startup": 0.2,
-   "active": 0.033,
-   "recovery": 0.5,
-   "damage": 25,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 6.5,
-   "soulGain": 8,
-   "anim_ref": "vf:sarah/front-suplex",
-   "input_slots": [
-    "1+3"
-   ],
-   "move_class": "throw",
-   "throw": true,
-   "isGrab": true,
-   "unblockable": true,
-   "note": "Damage estimated."
-  },
-  "b+1+3": {
-   "name": "Sarah back throw",
-   "input": "b+1+3",
-   "vf_move": "Back throw",
-   "vf_input": "b+P+G",
-   "startup": 0.2,
-   "active": 0.033,
-   "recovery": 0.5,
-   "damage": 30,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 7.0,
-   "soulGain": 8,
-   "anim_ref": "vf:sarah/back-throw",
-   "input_slots": [
-    "b+1+3"
-   ],
-   "move_class": "throw",
-   "throw": true,
-   "isGrab": true,
-   "unblockable": true,
-   "note": "Damage estimated."
-  },
-  "S": {
-   "name": "Flamingo's Answer [WH SIGNATURE]",
-   "input": "S",
-   "startup": 0.28,
-   "active": 0.1,
-   "recovery": 0.85,
-   "damage": 18,
-   "limb": "legR",
-   "heavy": true,
-   "knock": 4.2,
-   "soulGain": 12,
-   "anim_ref": "wh:vf-sarah:sig:flamingos-answer",
-   "input_slots": [
-    "S"
-   ],
-   "move_class": "signature",
-   "wh_original": true,
-   "note": "The flamingo stance, answered at full speed. Spinning kick with no wasted motion."
-  },
-  "b+K": {
-   "name": "Bryant Intercept [WH SIGNATURE]",
-   "input": "b+K",
-   "startup": 0.23,
-   "active": 0.017,
-   "recovery": 0.72,
-   "damage": 15,
-   "limb": "legL",
-   "heavy": false,
-   "knock": 4.2,
-   "soulGain": 11,
-   "anim_ref": "wh:vf-sarah:sig:bryant-intercept",
-   "input_slots": [
-    "b+K",
-    "b",
-    "K"
-   ],
-   "move_class": "signature",
-   "wh_original": true,
-   "note": "She doesn't wait for the punch. A back-step intercepting kick that arrives first."
-  }
- },
- "strings": [
-  {
-   "input": "1,2,3",
-   "components": [
-    "1",
-    "2",
-    "3"
-   ],
-   "damage": 16
-  }
- ],
- "specials": [
-  {
-   "input": "d+1+2",
-   "damage": 10,
-   "throw": false,
-   "vf_input": "2P+K"
-  },
-  {
-   "input": "f,f+3",
-   "damage": 13,
-   "throw": false,
-   "vf_input": "66K"
-  },
-  {
-   "input": "u/f+3",
-   "damage": 16,
-   "throw": false,
-   "vf_input": "u/f+K"
-  },
-  {
-   "input": "b+1+3",
-   "damage": 30,
-   "throw": true,
-   "vf_input": "b+P+G"
-  }
- ],
- "frame_convention": "VF5FS 60fps -> seconds; damage archetype-scaled to WH 100HP (VF5FS source HP not verified \u2014 see notes); movelist per segaretro VF1 command lists + DOA5 guest patch notes"
+  "stance_after": {}
 }
