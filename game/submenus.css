@@ -249,8 +249,11 @@
   .tk-sect { grid-column: 1 / -1; }
 }
 
-/* ---------- OPTIONS (PR2 · T7 OPTION MENU) ---------- */
+/* ---------- OPTIONS (PR2 · T7 OPTION MENU) ----------
+   Full-screen opaque T7 option panel (replaces the translucent
+   centered sheet): nothing ghosts through behind it. */
 #wh-options { display: none; }
-#wh-options.show { display: block; }
+#wh-options.show { display: block; position: fixed; inset: 0; z-index: 205;
+  background: #0b0614; padding: 0; }
 #wh-options .tk-screen { height: 100%; }
 #wh-options .tk-sub { padding: 8px 14px 0; }

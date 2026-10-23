@@ -46,10 +46,9 @@ const step = async (sel, want, shot) => {
   if (shot) await p.screenshot({ path: `${SHOTS}/${shot}.png` });
 };
 try {
-  // Versus now opens the submenu (T8) -> 1V1 VERSUS card -> VERSUS SETUP
-  // (T7 GAME OPTION: rules first) -> CHOOSE FIGHTERS -> character select.
-  await step('[data-mm="versus"]', null, '02a-versus-submenu');
-  await step('#mm-cards .mm-card >> nth=0', 'screen-vssetup', '02b-vssetup');
+  // Versus opens the T8-style submenu (PR #841); 1V1 VERSUS -> setup -> choose fighters -> select.
+  await step('[data-mm="versus"]', null, '02-versus-submenu');
+  await step('.mm-card >> nth=0', 'screen-vssetup', '02b-vssetup');
   await step('#screen-vssetup [data-action="mode-versus"]', 'screen-select', '02-select');
   await step('.char-card >> nth=0'); await step('#confirm-fighter');
   await step('.char-card >> nth=2'); await step('#confirm-fighter', 'screen-stage', '03-stage');
