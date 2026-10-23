@@ -2481,6 +2481,30 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 **Verification:** semantic diff audit — 0 field losses, 0 removals, additions only; all 17 new moves tagged; `node --test game/tests/fighter-completeness.test.mjs` green.
 
 **Deviations:** none — the 17 pulled moves are all combat moves (FIGHT); no SHOW content entered the moveset.
+
+## 2026-10-23 — Priority-5 moveset pull: burger/purplerain/pantera/torch/michiko (T8+T7 diff, SHOW-ANIMATION LOCK, anim-bank gaps)
+
+**Owner instruction (verbatim):** "Now we need to get that done for every other character" (2026-10-23) — the Law/Lars full pulls (PR #806 / PR #823 pattern).
+
+**Method:** For each of the 5 priority fighters, read `game/assets/movesets/<fighter>.json` and diffed `game/data/t8_frame_tables.json` → `chars.<source>` (exact key match against the builder's parent-chain join) plus the full wavu rows in `docs/t7t8-reference/frame-data-t8-full/<source>.json` against every reachable notation in the file (key/input/input_slots/t7_command canonicalized + slots + t8_id identity). T7 rows in `docs/t7t8-reference/frame-data-t7/<source>.json` diffed by move id. Genuinely-missing = input not reachable by any existing move.
+
+**Result — 0 genuinely-missing moves on all 5 (nothing re-added):**
+- `game/assets/movesets/burger.json`: 552 → 552 (T8 bob 161/161 inputs reachable; T7 bob 281/281 rows by id)
+- `game/assets/movesets/purplerain.json`: 569 → 569 (T8 lee 156/156; T7 lee 265/265)
+- `game/assets/movesets/pantera.json`: 873 → 873 (T8 king 215/215; T7 king 297/297)
+- `game/assets/movesets/torch.json`: 892 → 892 (T8 anna 165/165; T7 anna 354/354)
+- `game/assets/movesets/michiko.json`: 344 → 344 (T7 katarina 189/189 by id; T8 has no Katarina — verified, `chars` has no `katarina` key)
+
+**Changes:**
+- All 5 files: file-level `anim_set_lock` metadata (SHOW-ANIMATION LOCK, owner 2026-10-23; chordz.json pattern) + `merge_sources.added.<fighter>_pull_20261023` provenance with per-source coverage counts.
+- `docs/anim/BOB-ANIM-GAP-20261023.md`, `docs/anim/LEE-ANIM-GAP-20261023.md`, `docs/anim/KATARINA-ANIM-GAP-20261023.md`: FIGHT vs SHOW intake manifests for the extraction coordinator (no T3 bank exists for Bob/Lee/Katarina — Bob debuted T6, Lee skipped T3, Katarina debuted T7; current bryan/jin/jin proxies flagged, not blessed).
+- `game/assets/movesets/index.json`: bytes updated for all 5.
+- Pantera (king bank `game/assets/anim/t3/king_on_pantera_leoman/`) and Torch (`anim_bank: "anna"` → `game/assets/anim/t3/anna/`) already wired — no gap docs, no t3anims.js changes.
+
+**Verification:** exact-match diff audit (every T8 compact key joined to its source row); semantic check — 0 field losses, 0 removals, additions only (lock + provenance); all 10 JSON files parse; `node --test game/tests/fighter-completeness.test.mjs` green.
+
+**Deviations:** none — no SHOW content entered any moveset; no wrong-bank substitution (proxies left untouched, flagged in gap docs).
+
 ---
 
 ## 2026-10-23 — Batch-5 moveset pull: King Tyrant, Cyborg X, Awa Pop, Retsu, Rin (T8 diff + SHOW-ANIMATION LOCK)
