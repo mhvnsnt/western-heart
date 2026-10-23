@@ -383,3 +383,5 @@ Intro sequences and win taunts are never to be replaced. New systems layer on to
 - **Moveset Source Law is code:** `claimed-map.json` + `checkSourceLaw()` refuses pulls from claimed Tekken fighters unless an approved exception names them. Free: True Ogre, Lucky Chloe, Hwoarang, Raven, Jun Kazama, Craig Marduk, Roger Jr. (crew verifying). Exceptions: Zen=Twelve/SFIII, Deathfang=Iori, Cain-Elias=Kluger.
 - **Assembly workflow:** browse in `game/moveset-browser.html` (filter by axis → inspect → attach to Tekken slot → rename override → source-law check → save). Commit the manifest JSON. Rebuild banks reproducibly: `node tools/moveset-library/ingest.mjs`.
 - **Locked Ashlane→VF5:** Bannon→Jeffry, El Toro→Wolf (+1 clean aerial), Pablo→El Blaze (+powerhouse, comedy-whiff lucha attempts, Black Reign/Abyss dark finishers), NPC Finxsse→Lei-Fei. VF5 bases resolve when worker 45's bank lands.
+## EM-Jin naming convention (user directive 2026-10-22)
+Eastern Mind Jin is NOT Jin Kazama. In all files, docs, and code: "Jin (Eastern Mind)" or "EM-Jin" — never bare "Jin" where Kazama confusion is possible. (Correction: earlier "Gen (Eastern Mind)" was a mishearing.)
