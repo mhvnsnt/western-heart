@@ -1,25 +1,46 @@
-# POND — Canon
+# POND — CANON
 
-## Recorded canon
+### POND — The Still Water Soul
 
-**Identity.** POND — the owner's Western Heart name for the fighter housed in this directory (`tsuyu-asui`). The intake is recorded in `roster/tsuyu-asui/intake/INTAKE-NOTES.md` (batch 2, 2026-10-22): an IK-rigged model of a frog-formed fighter — suit, boots, gloves, belt, goggles as separate modeled geometry — taken in as scaffolding only; the source figure gets no canon here (owner canon law, 2026-10-23). Pond is the proprietary character.
+**Category.** Boundary watcher. Not one of the nine souls. A mortal who walked into a boundary and stayed — the trial's only spectator who fights.
 
-**Recorded state.** Roster dir + attire1 exist; no MODEL_URLS key and no moveset listing on main (verified 2026-10-23); the canon census listed this fighter among those with **no canon recorded** before this batch. A render of the source model exists in the repo's history (WH #634, "Tsuyu Asui render", 2026-10-22). Her story below is written under the owner's 2026-10-23 write-in order, built on the recorded foundations: her name (the pond — still water) and her form (frog: patience, stillness, the single strike).
+**Backstory.** At the roots of the Tree of Life (Ming-ken), where the Land of Life goes soft and gives way to dreaming water, there is a swamp. It is the boundary between the world of the living trial and the Palace of Dreaming (Mon-chien) — the place where Wood rots into Water. Someone has to watch a boundary. Pond volunteered by never leaving.
 
-## Written 2026-10-23 — built on the recorded foundations (owner's to revise)
+She came to the swamp the way most lost souls come to the Western Heart: pulled by the call, toward the Octagonal Shrine. She got as far as the water and stopped. The call kept pulling. She stayed. That was years ago, by the swamp's reckoning — time moves differently where the water doesn't drain.
 
-- **Who she is in the trial:** Pond is the quietest mortal in the Western Heart — a frog-souled girl who treats the ladder the way her kind treats a lily pad: as a place to sit perfectly still while the whole world moves around her. ZEN refused the trial because "stillness does not compete." Pond competes *as* stillness. She is the proof the trial keeps re-examining: that the refused soul's philosophy works even in a vessel that chose it. She watches fights the way ponds watch weather — completely, and without rippling.
-- **Element (written):** Water — the Palace of Dreaming's shallows, where the dreaming water slows down enough to hold a reflection. The deep water is KAI's; the still water is hers.
-- **Relationships (written):** Mariposa lands near her — the keeper's other resting place besides Waterfall's shoulder; butterflies and ponds keep the same hours. King Tyrant cannot process her: a Water fighter with no entrance, no performance, no tide — she once sat through his entire coronation without blinking, and he has respected and resented her in equal measure since. Aotsuki (written) is her moon: the pond is where the blue moon reflects, and the two quiet giants of the water weather understand each other without a single recorded word.
-- **Branch thread — the Still Rung:** Pond's Story route inverts the ladder's logic at the final ascent: she does not climb the last rung. She sits at the shrine's reflecting pool and waits — and the Assembled Soul, which has a copy of every fighter's impatience, must come down to the water to face her. If the run has kept her unhurried (no rung rushed, no trade taken in anger), the composite arrives *slower* — the only debuff in the game earned by temperament. The trial is testing whether wholeness can be met halfway. Pond's answer: it can be met exactly where it stops moving.
+In the mud, half-buried, she found an egg. She guarded it the way she guards everything: by being there, perfectly still, until whatever wanted it gave up and left. When it hatched, what came out barked Japanese words at her and bit her finger. She named him Dorowani. He is the only thing she has ever raised, and the only fighter in the trial she would lose a round for on purpose.
 
-## Not yet recorded
+**Personality.** Still. Patient. Watches everything, comments on nothing. Speaks in short imagistic lines, Japanese words surfacing like bubbles. When she moves, it is already over — the pond does not telegraph.
 
-- Everything above the Written marker: no owner-recorded story exists for Pond. The owner's to revise.
-- The intake's anatomy-pass directives are build records, kept in `roster/tsuyu-asui/intake/INTAKE-NOTES.md` — they are not canon and are not repeated here.
+**Fighting philosophy.** *"The pond does not chase."*
 
-## Sources
+**Relationships.**
+- **DOROWANI:** Found him as an egg, guarded it, raised what hatched. He barks his Japanese words at her — *"Konnichiwa arigato Ichiban Bankai"* — and she understands every one. He is her whole argument for staying.
+- **CHATUR:** The Bridge Soul. Pond watches the boundary; Chatur is the crossing. Old friends — the kind who don't need to talk.
+- **ZEN:** The Still Soul. His stillness is a held breath; hers is water that chose not to move. They respect the difference.
+- **MEGAMI:** Temple guardian of a sealed door — another watcher. They recognize the work in each other.
+- **The Trader:** The swamp grows things the Trader can't get elsewhere. She trades rarely, and never what matters. *All transactions are final. Nothing here is real, but the prices are.*
 
-- `roster/tsuyu-asui/intake/INTAKE-NOTES.md` (intake record, 2026-10-22).
-- Owner's missing-canon list (2026-10-23): "Pond (Tsuyu)" — the rename is the owner's.
-- `docs/canon-archive/CANON-MASTER.md` census (no canon recorded); `~/memory/2026-10-23.md` wiring audit.
+**Element.** Water — the Palace of Dreaming. Still water. Change is the only law there, and she is the exception that proves it.
+
+**Body / Mind / Soul.** BODY: the frog-touched watcher — goggles on her forehead (never over her eyes), the separate-meshed bodysuit, boots, gloves, the belt. MIND: the watch — she notices everything and comments on nothing; her thoughts arrive in images. SOUL: mortal, vesseled by none of the nine. The shrine stones name her only as "the one who stayed."
+
+**Why she thinks she's here.** She thinks the trial is a pond — everyone comes to drink, no one stays. She watches from the bank. She is wrong the way still water is wrong about rivers.
+
+**Being purified of:** The bank. She watches from the bank and never steps in. The trial is teaching her to get wet. She hasn't yet.
+
+**Signature detail.** Her goggles sit on her forehead, never over her eyes. Asked once why, she said: "The water shows me enough." No one has asked twice.
+
+**Voice.** Sparse, imagistic, Japanese-influenced. Short sentences. Long looks. *"Mizu."* / *"Stay."* / *"The pond does not chase."*
+
+---
+
+## Technical (non-canon — crew plumbing only)
+
+- **Model (SmutBase intake 2026-10-22):** Attire 1: `roster/tsuyu-asui/attires/attire1/model.glb` (5.8 MB). 9 meshes, unrigged static — no skins. Source `.blend` (`roster/tsuyu-asui/intake/Tsuyu Asui IK/`) byte-inspected: separate modeled meshes — body (`OBtsuyu`), bodysuit (`OBsuit`), boots (`OBboots`), gloves (`OBgloves`), belt, mask, goggles, hair (`OBHair`).
+- **Frog hat: confirmed NOT in the source `.blend`** — it was never modeled. No hat mesh exists to wire; if Pond ever gets one, it is built new in the creation suite.
+- **Anatomy (owner-directed):** the pronounced camel-toe (`OBBulge`) STAYS — part of the requested anatomy, do not flatten. Clothes are separate meshes: undress = hide/remove meshes, no painted-on clothing to repaint; the body underneath is fully modeled.
+- **Moveset:** Raven's Tekken 7 kit — `game/assets/movesets/pond.json` (69 moves, 7 strings, 5 specials, 3 stances), translated from `docs/t7t8-reference/frame-data-t7/masterraven.json` (292 moves, frames/damage/block data carried over, damage x0.6 to WH 100HP). Stances renamed to her canon (HAZ→MIST, LAB→DEEP WATER, Shadow Sprint→WATER STRIDE); iconic Raven names kept where they fit the swamp. Canon specials layered on top: TONGUE LASH, STILL WATER, EGG GUARD, MIST VEIL, BOUNDARY CROSSING. Tekken inputs, 1:1 input-to-move fidelity per the owner's feel law.
+- **Rig lane:** k-NN auto-rig from donor is the planned path (unrigged static, like the other SmutBase intakes).
+
+*Bio written 2026-10-23, canon-grounded (Tong-Nou, Nine Souls, Five Lands, Trial, Trader). Adults only. No Tekken names in canon — moveset source lives in the technical section only.*
