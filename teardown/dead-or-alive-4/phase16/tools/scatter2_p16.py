@@ -43,7 +43,7 @@ Entry bytes are asserted against the phase-15 map's sha256
 before use (they come from the whole-ISO-verified extraction).
 Usage: scatter2_p16.py <out.jsonl> [volume ...]
 """
-import hashlib, json, os, sys
+import hashlib, json, mmap, os, sys
 import ahocorasick
 
 SCR = '/home/hatch/workspace/_doa4p16-scratch'
@@ -63,7 +63,7 @@ def save_state(vol, state):
     json.dump(state, open(tmp, 'w'))
     os.replace(tmp, state_path(vol))
 
-def run_tier(vol, state, stream_bytes, stream_str, tier):
+def run_tier(vol, state, stream_mm, stream_str, tier):
     jobs = []
     for name, st in state.items():
         nxt = []
@@ -90,7 +90,7 @@ def run_tier(vol, state, stream_bytes, stream_str, tier):
             if idx in found: continue
             name, o, ln = batch[idx]
             cand = end - WIN + 1
-            if stream_bytes[cand:cand + ln] == state[name]['bytes'][o:o + ln]:
+            if stream_mm[cand:cand + ln] == state[name]['bytes'][o:o + ln]:
                 found[idx] = cand
         for idx, (name, o, ln) in enumerate(batch):
             if idx in found:
@@ -119,7 +119,7 @@ def finalize(name, st):
             'segments': segs, 'n_pieces': len([1 for (_, p, _, _) in pieces if p >= 0]),
             'missing_spans': st['missing'][:64]}
 
-def run_volume(vol, targets, stream_bytes, stream_str, done, tag=''):
+def run_volume(vol, targets, stream_mm, stream_str, done, tag=''):
     """targets: list of (name, sha256, src_volume). State key includes tag."""
     key = vol + tag
     state = None
@@ -142,7 +142,7 @@ def run_volume(vol, targets, stream_bytes, stream_str, done, tag=''):
         tiers_done = 0
     for ti, tier in enumerate(TIERS):
         if ti < tiers_done: continue
-        run_tier(key, state, stream_bytes, stream_str, tier)
+        run_tier(key, state, stream_mm, stream_str, tier)
         snap = {name: {k: v for k, v in st.items() if k != 'bytes'} for name, st in state.items()}
         snap['__tiers__'] = ti + 1
         save_state(key, snap)
@@ -164,8 +164,13 @@ def main():
         targets = [(e['name'], e['sha256'], vol) for e in map15[vol]['entries']
                    if e['verdict'] in ('piecewise_unresolved', 'absent_windows')]
         print(f'{vol}: {len(targets)} targets', flush=True)
-        stream = open(os.path.join(SCR, 'mirror_streams', vol + '.bin'), 'rb').read()
-        res = run_volume(vol, targets, stream, stream.decode('latin-1'), done)
+        spath = os.path.join(SCR, 'mirror_streams', vol + '.bin')
+        with open(spath, 'rb') as f:
+            stream_str = f.read().decode('latin-1')
+        sf = open(spath, 'rb')
+        stream_mm = mmap.mmap(sf.fileno(), 0, access=mmap.ACCESS_READ)
+        res = run_volume(vol, targets, stream_mm, stream_str, done)
+        stream_mm.close(); sf.close(); del stream_str
         for e in map15[vol]['entries']:
             if e['name'] not in res: continue
             r = res[e['name']]
@@ -175,18 +180,21 @@ def main():
                             'fully_scattered' if r['coverage_nonzero_pct'] >= 99.9 else 'scattered')
             out.write(json.dumps(r) + '\n'); out.flush()
             print(vol, e['name'], r['verdict'], r['coverage_pct'], '%', flush=True)
-        del stream
     if ('chrone', 'jan02.tpr') not in done:
         e = [x for x in map15['chrone']['entries'] if x['name'] == 'jan02.tpr'][0]
         per = {}
         for vol in ('chrone', 'chrtwo', 'chrthree'):
-            stream = open(os.path.join(SCR, 'mirror_streams', vol + '.bin'), 'rb').read()
-            res = run_volume(vol, [('jan02.tpr', e['sha256'], 'chrone')], stream,
-                             stream.decode('latin-1'), set(), tag='_jan02')
+            spath = os.path.join(SCR, 'mirror_streams', vol + '.bin')
+            with open(spath, 'rb') as f:
+                stream_str = f.read().decode('latin-1')
+            sf = open(spath, 'rb')
+            stream_mm = mmap.mmap(sf.fileno(), 0, access=mmap.ACCESS_READ)
+            res = run_volume(vol, [('jan02.tpr', e['sha256'], 'chrone')], stream_mm,
+                             stream_str, set(), tag='_jan02')
+            stream_mm.close(); sf.close(); del stream_str
             r = res['jan02.tpr']
             per[vol] = {'matched_bytes': r['matched_bytes'], 'coverage_pct': r['coverage_pct'],
                         'n_pieces': r['n_pieces']}
-            del stream
         rec = {'volume': 'chrone', 'name': 'jan02.tpr', 'sha256': e['sha256'],
                'phase15_verdict': e['verdict'], 'cross_volume': per,
                'verdict': 'absent_proven_cross_volume' if all(v['matched_bytes'] == 0 for v in per.values()) else 'scattered_cross_volume'}
