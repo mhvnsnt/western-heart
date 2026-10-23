@@ -85,10 +85,13 @@ can never open these files — they were authored in 4.5.
    Pantie/Stocking set) kills the exporter with OOM (exit 137) during
    primitive extraction. Export the primary body + main outfit only; the
    lingerie set stays in the source `.blend` for the customization suite.
-3. **The 247 KB Cydney GLB was an empty/broken export** (no meshes). A real
-   export is tens of MB: Cydney 85 MB (40 meshes, 404,964 verts, 3 armatures,
-   67 images), Vixen 76 MB (56 meshes, 510,180 verts, 1 armature, 125 images).
-   Both verified by re-import + T-pose render from the GLB.
+3. **The 247 KB Cydney GLB was an empty/broken export.** The original artifact
+   was located at `~/workspace/tripo-staging/smutbase/cydney.glb` (252,056
+   bytes): valid glTF 2.0 container but **0 meshes, 0 materials, 0 images**
+   (926 nodes, no geometry). A real export is tens of MB: Cydney 85 MB
+   (40 meshes, 404,964 verts, 3 armatures, 67 images), Vixen 76 MB (56 meshes,
+   510,180 verts, 1 armature, 125 images). Both verified by re-import + T-pose
+   render from the GLB.
 
 ## Repair tool
 
