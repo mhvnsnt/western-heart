@@ -1,0 +1,522 @@
+{
+ "partition_base": 265879552,
+ "magic_iso_offset": 265945088,
+ "root_sector": 152365,
+ "root_size": 2048,
+ "note": "Complete XDVDFS census of release doa4-iso-v1 (assembled + sha256-verified parts 01-03; SOUND/movie directory sectors read via verified range fetches of part_15). There is NO bin/ or dat/ directory and no .bin file anywhere in the tree.",
+ "entries": [
+  {
+   "name": "default.xex",
+   "sector": 30502,
+   "size": 16367616,
+   "is_dir": false,
+   "attrs": 128,
+   "path": "default.xex",
+   "iso_offset": 328347648
+  },
+  {
+   "name": "snd.afs",
+   "sector": 267182,
+   "size": 124930048,
+   "is_dir": false,
+   "attrs": 128,
+   "path": "snd.afs",
+   "iso_offset": 813068288
+  },
+  {
+   "name": "spr.afs",
+   "sector": 328183,
+   "size": 179867648,
+   "is_dir": false,
+   "attrs": 128,
+   "path": "spr.afs",
+   "iso_offset": 937998336
+  },
+  {
+   "name": "stg.afs",
+   "sector": 1273155,
+   "size": 815278080,
+   "is_dir": false,
+   "attrs": 128,
+   "path": "stg.afs",
+   "iso_offset": 2873300992
+  },
+  {
+   "name": "SOUND",
+   "sector": 1671240,
+   "size": 2048,
+   "is_dir": true,
+   "attrs": 16,
+   "path": "SOUND",
+   "iso_offset": 3688579072
+  },
+  {
+   "name": "mot.afs",
+   "sector": 417449,
+   "size": 75393024,
+   "is_dir": false,
+   "attrs": 128,
+   "path": "mot.afs",
+   "iso_offset": 1120815104
+  },
+  {
+   "name": "movie",
+   "sector": 1783936,
+   "size": 2048,
+   "is_dir": true,
+   "attrs": 16,
+   "path": "movie",
+   "iso_offset": 3919380480
+  },
+  {
+   "name": "dic",
+   "sector": 38496,
+   "size": 2048,
+   "is_dir": true,
+   "attrs": 16,
+   "path": "dic",
+   "iso_offset": 344719360
+  },
+  {
+   "name": "ximejpnameaddr.dic",
+   "sector": 38727,
+   "size": 11936,
+   "is_dir": false,
+   "attrs": 128,
+   "path": "dic/ximejpnameaddr.dic",
+   "iso_offset": 345192448
+  },
+  {
+   "name": "ximejpsub.dic",
+   "sector": 38620,
+   "size": 218304,
+   "is_dir": false,
+   "attrs": 128,
+   "path": "dic/ximejpsub.dic",
+   "iso_offset": 344973312
+  },
+  {
+   "name": "ximejpmain.dic",
+   "sector": 38497,
+   "size": 250528,
+   "is_dir": false,
+   "attrs": 128,
+   "path": "dic/ximejpmain.dic",
+   "iso_offset": 344721408
+  },
+  {
+   "name": "chrone.afs",
+   "sector": 1094398,
+   "size": 366094336,
+   "is_dir": false,
+   "attrs": 128,
+   "path": "chrone.afs",
+   "iso_offset": 2507206656
+  },
+  {
+   "name": "chrtwo.afs",
+   "sector": 826799,
+   "size": 548042752,
+   "is_dir": false,
+   "attrs": 128,
+   "path": "chrtwo.afs",
+   "iso_offset": 1959163904
+  },
+  {
+   "name": "cmn.afs",
+   "sector": 262802,
+   "size": 8970240,
+   "is_dir": false,
+   "attrs": 128,
+   "path": "cmn.afs",
+   "iso_offset": 804098048
+  },
+  {
+   "name": "chrthree.afs",
+   "sector": 454262,
+   "size": 762955776,
+   "is_dir": false,
+   "attrs": 128,
+   "path": "chrthree.afs",
+   "iso_offset": 1196208128
+  },
+  {
+   "name": "anm.afs",
+   "sector": 416009,
+   "size": 2949120,
+   "is_dir": false,
+   "attrs": 128,
+   "path": "anm.afs",
+   "iso_offset": 1117865984
+  },
+  {
+   "name": "avt.afs",
+   "sector": 152366,
+   "size": 226172928,
+   "is_dir": false,
+   "attrs": 128,
+   "path": "avt.afs",
+   "iso_offset": 577925120
+  },
+  {
+   "name": "voice_hel_stream.xwb",
+   "path": "SOUND/voice_hel_stream.xwb",
+   "sector": 1778113,
+   "size": 1308672,
+   "is_dir": false,
+   "iso_offset": 3907454976
+  },
+  {
+   "name": "voice_lis_stream.xwb",
+   "path": "SOUND/voice_lis_stream.xwb",
+   "sector": 1777003,
+   "size": 1290240,
+   "is_dir": false,
+   "iso_offset": 3905181696
+  },
+  {
+   "name": "voice_sys_stream.xwb",
+   "path": "SOUND/voice_sys_stream.xwb",
+   "sector": 1766546,
+   "size": 9578496,
+   "is_dir": false,
+   "iso_offset": 3883765760
+  },
+  {
+   "name": "voice_tng_stream.xwb",
+   "path": "SOUND/voice_tng_stream.xwb",
+   "sector": 1782074,
+   "size": 942080,
+   "is_dir": false,
+   "iso_offset": 3915567104
+  },
+  {
+   "name": "voice_zac_stream.xwb",
+   "path": "SOUND/voice_zac_stream.xwb",
+   "sector": 1775571,
+   "size": 1413120,
+   "is_dir": false,
+   "iso_offset": 3902248960
+  },
+  {
+   "name": "voice_tin_stream.xwb",
+   "path": "SOUND/voice_tin_stream.xwb",
+   "sector": 1774986,
+   "size": 1198080,
+   "is_dir": false,
+   "iso_offset": 3901050880
+  },
+  {
+   "name": "voice_ryu_stream.xwb",
+   "path": "SOUND/voice_ryu_stream.xwb",
+   "sector": 1772669,
+   "size": 1368064,
+   "is_dir": false,
+   "iso_offset": 3896305664
+  },
+  {
+   "name": "voice_spa_stream.xwb",
+   "path": "SOUND/voice_spa_stream.xwb",
+   "sector": 1773337,
+   "size": 698368,
+   "is_dir": false,
+   "iso_offset": 3897673728
+  },
+  {
+   "name": "voice_kas_stream.xwb",
+   "path": "SOUND/voice_kas_stream.xwb",
+   "sector": 1773678,
+   "size": 1255424,
+   "is_dir": false,
+   "iso_offset": 3898372096
+  },
+  {
+   "name": "voice_lei_stream.xwb",
+   "path": "SOUND/voice_lei_stream.xwb",
+   "sector": 1777633,
+   "size": 983040,
+   "is_dir": false,
+   "iso_offset": 3906471936
+  },
+  {
+   "name": "voice_leo_stream.xwb",
+   "path": "SOUND/voice_leo_stream.xwb",
+   "sector": 1772218,
+   "size": 923648,
+   "is_dir": false,
+   "iso_offset": 3895382016
+  },
+  {
+   "name": "voice_kor_stream.xwb",
+   "path": "SOUND/voice_kor_stream.xwb",
+   "sector": 1780238,
+   "size": 1196032,
+   "is_dir": false,
+   "iso_offset": 3911806976
+  },
+  {
+   "name": "voice_hyt_stream.xwb",
+   "path": "SOUND/voice_hyt_stream.xwb",
+   "sector": 1776261,
+   "size": 690176,
+   "is_dir": false,
+   "iso_offset": 3903662080
+  },
+  {
+   "name": "voice_jan_stream.xwb",
+   "path": "SOUND/voice_jan_stream.xwb",
+   "sector": 1771223,
+   "size": 1024000,
+   "is_dir": false,
+   "iso_offset": 3893344256
+  },
+  {
+   "name": "voice_bay_stream.xwb",
+   "path": "SOUND/voice_bay_stream.xwb",
+   "sector": 1776598,
+   "size": 829440,
+   "is_dir": false,
+   "iso_offset": 3904352256
+  },
+  {
+   "name": "voice_cri_stream.xwb",
+   "path": "SOUND/voice_cri_stream.xwb",
+   "sector": 1780822,
+   "size": 1611776,
+   "is_dir": false,
+   "iso_offset": 3913003008
+  },
+  {
+   "name": "voice_gen_stream.xwb",
+   "path": "SOUND/voice_gen_stream.xwb",
+   "sector": 1781609,
+   "size": 952320,
+   "is_dir": false,
+   "iso_offset": 3914614784
+  },
+  {
+   "name": "voice_hak_stream.xwb",
+   "path": "SOUND/voice_hak_stream.xwb",
+   "sector": 1779762,
+   "size": 974848,
+   "is_dir": false,
+   "iso_offset": 3910832128
+  },
+  {
+   "name": "voice_ein_stream.xwb",
+   "path": "SOUND/voice_ein_stream.xwb",
+   "sector": 1778752,
+   "size": 849920,
+   "is_dir": false,
+   "iso_offset": 3908763648
+  },
+  {
+   "name": "voice_boy_stream.xwb",
+   "path": "SOUND/voice_boy_stream.xwb",
+   "sector": 1774291,
+   "size": 1423360,
+   "is_dir": false,
+   "iso_offset": 3899627520
+  },
+  {
+   "name": "voice_bra_stream.xwb",
+   "path": "SOUND/voice_bra_stream.xwb",
+   "sector": 1782534,
+   "size": 2140160,
+   "is_dir": false,
+   "iso_offset": 3916509184
+  },
+  {
+   "name": "voice_alp_stream.xwb",
+   "path": "SOUND/voice_alp_stream.xwb",
+   "sector": 1783579,
+   "size": 731136,
+   "is_dir": false,
+   "iso_offset": 3918649344
+  },
+  {
+   "name": "voice_aya_stream.xwb",
+   "path": "SOUND/voice_aya_stream.xwb",
+   "sector": 1779167,
+   "size": 1218560,
+   "is_dir": false,
+   "iso_offset": 3909613568
+  },
+  {
+   "name": "voice_bas_stream.xwb",
+   "path": "SOUND/voice_bas_stream.xwb",
+   "sector": 1771723,
+   "size": 1013760,
+   "is_dir": false,
+   "iso_offset": 3894368256
+  },
+  {
+   "name": "bgm_stream.xwb",
+   "path": "SOUND/bgm_stream.xwb",
+   "sector": 1671241,
+   "size": 195184640,
+   "is_dir": false,
+   "iso_offset": 3688581120
+  },
+  {
+   "name": "doa4_sound.xgs",
+   "path": "SOUND/doa4_sound.xgs",
+   "sector": 38495,
+   "size": 1390,
+   "is_dir": false,
+   "iso_offset": 344717312
+  },
+  {
+   "name": "helena.sfd",
+   "path": "movie/helena.sfd",
+   "sector": 2083779,
+   "size": 755167232,
+   "is_dir": false,
+   "iso_offset": 4533458944
+  },
+  {
+   "name": "leifang.sfd",
+   "path": "movie/leifang.sfd",
+   "sector": 2813257,
+   "size": 152676352,
+   "is_dir": false,
+   "iso_offset": 6027429888
+  },
+  {
+   "name": "ninja_vi_hd.sfd",
+   "path": "movie/ninja_vi_hd.sfd",
+   "sector": 1783937,
+   "size": 75044864,
+   "is_dir": false,
+   "iso_offset": 3919382528
+  },
+  {
+   "name": "tina.sfd",
+   "path": "movie/tina.sfd",
+   "sector": 2887806,
+   "size": 159285248,
+   "is_dir": false,
+   "iso_offset": 6180106240
+  },
+  {
+   "name": "zack.sfd",
+   "path": "movie/zack.sfd",
+   "sector": 2632508,
+   "size": 228952064,
+   "is_dir": false,
+   "iso_offset": 5657255936
+  },
+  {
+   "name": "lisa.sfd",
+   "path": "movie/lisa.sfd",
+   "sector": 2452513,
+   "size": 187535360,
+   "is_dir": false,
+   "iso_offset": 5288626176
+  },
+  {
+   "name": "jannlee.sfd",
+   "path": "movie/jannlee.sfd",
+   "sector": 2965582,
+   "size": 174403584,
+   "is_dir": false,
+   "iso_offset": 6339391488
+  },
+  {
+   "name": "kasumi.sfd",
+   "path": "movie/kasumi.sfd",
+   "sector": 2544083,
+   "size": 181094400,
+   "is_dir": false,
+   "iso_offset": 5476161536
+  },
+  {
+   "name": "kokoro.sfd",
+   "path": "movie/kokoro.sfd",
+   "sector": 1820580,
+   "size": 293464064,
+   "is_dir": false,
+   "iso_offset": 3994427392
+  },
+  {
+   "name": "hitomi.sfd",
+   "path": "movie/hitomi.sfd",
+   "sector": 2744301,
+   "size": 141221888,
+   "is_dir": false,
+   "iso_offset": 5886208000
+  },
+  {
+   "name": "christie.sfd",
+   "path": "movie/christie.sfd",
+   "sector": 3210754,
+   "size": 153982976,
+   "is_dir": false,
+   "iso_offset": 6841503744
+  },
+  {
+   "name": "eliot.sfd",
+   "path": "movie/eliot.sfd",
+   "sector": 1963873,
+   "size": 245567488,
+   "is_dir": false,
+   "iso_offset": 4287891456
+  },
+  {
+   "name": "hayabusa.sfd",
+   "path": "movie/hayabusa.sfd",
+   "sector": 3050740,
+   "size": 132419584,
+   "is_dir": false,
+   "iso_offset": 6513795072
+  },
+  {
+   "name": "hayate.sfd",
+   "path": "movie/hayate.sfd",
+   "sector": 3285941,
+   "size": 146972672,
+   "is_dir": false,
+   "iso_offset": 6995486720
+  },
+  {
+   "name": "doa4_usa_cm.sfd",
+   "path": "movie/doa4_usa_cm.sfd",
+   "sector": 38733,
+   "size": 64344064,
+   "is_dir": false,
+   "iso_offset": 345204736
+  },
+  {
+   "name": "bass.sfd",
+   "path": "movie/bass.sfd",
+   "sector": 3443618,
+   "size": 167907328,
+   "is_dir": false,
+   "iso_offset": 7318409216
+  },
+  {
+   "name": "bayman.sfd",
+   "path": "movie/bayman.sfd",
+   "sector": 3115398,
+   "size": 195289088,
+   "is_dir": false,
+   "iso_offset": 6646214656
+  },
+  {
+   "name": "brad.sfd",
+   "path": "movie/brad.sfd",
+   "sector": 3357705,
+   "size": 175949824,
+   "is_dir": false,
+   "iso_offset": 7142459392
+  },
+  {
+   "name": "ayane.sfd",
+   "path": "movie/ayane.sfd",
+   "sector": 70151,
+   "size": 168374272,
+   "is_dir": false,
+   "iso_offset": 409548800
+  }
+ ]
+}
