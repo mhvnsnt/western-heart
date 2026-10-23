@@ -241,11 +241,71 @@ Each upper body region accepts MULTIPLE stacked layers, rendered back-to-front:
 
 ### BODY ART
 
-- **Tattoos** (WWE-style: layered, placeable, scalable, rotatable — full body canvas)
-- **Scars** (placeable, different types: cuts, burns, surgical)
-- **Images** (custom image upload, placed on body)
-- **Logos** (placeable on any attire piece, scalable/rotatable — WWE 2K19 feature)
-- **Body paint** (full-body patterns)
+#### Tattoos
+**WWE-style system:** layered, placeable, scalable, rotatable — full body canvas
+
+**By Body Region:**
+- **Face tattoos** (forehead, cheeks, chin, neck — separate from face paint)
+- **Arm tattoos**
+  - Full sleeve (left/right independent)
+  - Half sleeve (upper/lower)
+  - Forearm / Bicep / Shoulder (individual placements)
+- **Leg tattoos**
+  - Full leg sleeve (left/right independent)
+  - Thigh / Calf / Shin (individual placements)
+- **Back tattoos** (upper back, lower back, full back)
+- **Chest tattoos** (left pec, right pec, center, full chest)
+- **Torso tattoos** (stomach, sides, full torso)
+- **Hand tattoos** (knuckles, back of hand)
+- **Neck tattoos**
+
+**Tattoo Types:**
+- Traditional / Old school
+- Tribal
+- Japanese (irezumi)
+- Realistic / Portrait
+- Geometric / Linework
+- Script / Lettering
+- Dotwork / Blackwork
+- Watercolor
+- Chicano
+- Biomechanical
+
+**Tattoo Operations:**
+- Place (drag to position on body)
+- Scale (resize)
+- Rotate
+- Layer (multiple tattoos, ordering)
+- Opacity
+- Color (black, color, white ink)
+- Mirror (flip horizontally)
+- Delete / Hide
+
+**Tattoo Sources:**
+- **Teardown:** 99 tattoo textures from WWF No Mercy (`teardown/wwf-no-mercy/textures/rom/tattoo/`)
+- **WWE 2K teardowns:** CAW tattoo library structure
+- **Tekken teardowns:** Character-specific tattoos (e.g., Jin's tribal arm)
+- **Open source:** Free tattoo flash designs, CC0 tattoo vectors
+- **Custom:** User upload (PNG with transparency)
+
+#### Scars
+- **Types:** cuts, burns, surgical, bullet wounds, claw marks
+- **Placements:** same body regions as tattoos
+- **Controls:** place, scale, rotate, depth, color, age (fresh/healed)
+
+#### Images
+- Custom image upload (PNG/JPG)
+- Placed on body like tattoos
+- Transparency support
+
+#### Logos
+- Placeable on any attire piece (WWE 2K19 feature)
+- Scalable, rotatable
+- Custom logo designer (see Face Paint / Makeup Creation Tools)
+
+#### Body Paint
+- Full-body patterns
+- Different from tattoos (paint vs. ink aesthetic)
 
 ---
 
@@ -348,10 +408,14 @@ CREATE FIGHTER
 │   └── Decorative (arm sleeves, leg warmers, stockings)
 │
 ├── BODY ART
-│   ├── Tattoos (layered, placeable, scalable)
-│   ├── Scars (placeable, types)
+│   ├── Tattoos
+│   │   ├── By Region (face, arms, legs, back, chest, torso, hands, neck)
+│   │   ├── By Type (traditional, tribal, Japanese, realistic, geometric, etc.)
+│   │   └── Operations (place, scale, rotate, layer, opacity, color, mirror)
+│   ├── Scars (types, placements, depth, age)
 │   ├── Images (custom upload)
-│   └── Logos (placeable on attire)
+│   ├── Logos (placeable on attire + body)
+│   └── Body Paint (full-body patterns)
 │
 └── PREVIEW
     ├── Full-screen 3D preview (Tekken-style)
