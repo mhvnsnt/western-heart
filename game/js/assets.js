@@ -372,6 +372,14 @@ export const MODEL_URLS = {
   // Sketchfab model). URL wired for the drop-in; model.glb lands the moment the
   // owner sends a Tripo link. See roster/ryuji-rock/attires/attire1/README.md.
   'ryuji-rock': '../roster/ryuji-rock/attires/attire1/model.glb',
+  // RYUSAN (owner 2026-10-23): SmutBase Mina Ashido intake — WH name RYUSAN,
+  // the Corrosion Soul. Attire 1 = the SmutBase GLB (unrigged static; rig queued).
+  ryusan: '../roster/mina-ashido/attires/attire1/model.glb',
+  'ryusan-attire1': '../roster/mina-ashido/attires/attire1/model.glb',
+  // TOBI (owner 2026-10-23): SmutBase Mirko (Rumi Usagiyama) intake — WH name
+  // TOBI, the Escape Soul. Attire 1 = the SmutBase GLB (unrigged static; rig queued).
+  tobi: '../roster/miruko/attires/attire1/model.glb',
+  'tobi-attire1': '../roster/miruko/attires/attire1/model.glb',
 };
 
 /* ============================================================
