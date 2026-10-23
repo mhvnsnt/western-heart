@@ -17,6 +17,8 @@ import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.js';
 // Creation Suite Pass: generated registry of baked customization overrides
 // (customization/tools/apply_customization.py). Empty map = exact no-op.
 import { ATTIRE_CUSTOMIZATIONS } from './attire-customizations.js';
+// Material gate (every model, every load): game/js/material-runtime.js.
+import { resolveModelMaterials, assertModelUsable } from './material-runtime.js';
 
 export const MODEL_URLS = {
   pantera: 'assets/models/pantera.glb',
@@ -1120,6 +1122,7 @@ class AssetManager {
       else opts.signal.addEventListener('abort', () => ctrl.abort(opts.signal.reason), { once: true });
     }
     const url = MODEL_URLS[id];
+    assertModelUsable(id); // quarantined (broken materials) never loads into select or a fight
     const LOAD_TIMEOUT_MS = 90000;
     const attempt = async () => {
       const signal = _anySignal([ctrl.signal, _timeoutSignal(LOAD_TIMEOUT_MS)]);
@@ -1177,6 +1180,12 @@ class AssetManager {
      did (clip pinning, shadow flags, grounding, facing) — factored out so
      fetch+parse shares the identical path. */
   async _ingest(id, gltf) {
+    // Material resolve + verdict before anything can instance this model.
+    this.materialReport = this.materialReport || {};
+    this.materialReport[id] = await resolveModelMaterials(id, gltf, async (d) => {
+      await this.loadModels([d], null, { lane: 'user' }); return this.gltfs[d];
+    });
+    if (!this.materialReport[id].usable) throw new Error(`model ${id} blocked by material gate`);
     this.gltfs[id] = gltf;
     this.clips[id] = {};
     // Bind-pose Hips position (Z-up skeleton): animations must return

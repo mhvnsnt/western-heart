@@ -7,6 +7,10 @@
    ============================================================ */
 
 import { FULL_ROSTER } from './roster-full.js';
+import { MATERIAL_STATUS } from './material-status.js';
+// Material gate (tools/assets/material_gate.mjs): quarantined models are never offered.
+const QUARANTINED = new Set(Object.keys(MATERIAL_STATUS.quarantine || {}));
+const isModelUsable = (key) => !QUARANTINED.has(key);
 
 const LS_KEY = 'wh_attires_v1';
 // Fighter ids: a model key that is another fighter's own id is that fighter's body.
@@ -375,9 +379,10 @@ export function attiresFor(fighter) {
   // (game/tests/model-key-guard.test.mjs "declared-base riders stay on their declared base").
   const ridesOther = fighter.model && fighter.model !== fighter.id && FIGHTER_IDS.has(fighter.model);
   const list = ridesOther ? ATTIRE_VARIANTS[fighter.id] : (ATTIRE_VARIANTS[fighter.model] || ATTIRE_VARIANTS[fighter.id]);
-  if (list && list.length) return list;
+  // Material gate: attires whose model failed the material audit are never offered.
+  if (list && list.length) return list.filter(a => isModelUsable(a.model));
   // Default: single attire = the fighter's own model
-  return [{ model: fighter.model || 'pantera', label: 'ATTIRE 1' }];
+  return [{ model: fighter.model || 'pantera', label: 'ATTIRE 1' }].filter(a => isModelUsable(a.model));
 }
 
 /** The persisted attire model id for this fighter (or their base). */
@@ -386,7 +391,7 @@ export function selectedAttireModel(fighter) {
   const list = attiresFor(fighter);
   const saved = map[fighter.id];
   if (saved && list.some(a => a.model === saved)) return saved;
-  return list[0].model;
+  return list.length ? list[0].model : null;
 }
 
 /** Persist the attire choice for a fighter. */
