@@ -1,32 +1,33 @@
 /* ============================================================
-   WESTERN HEART — Tekken-style character select (2026-10-20)
-   Built from the teardown record, not a guessed layout:
-   - Tekken 3 selector (teardown/tekken3/tools/tekken3recompiled):
-     the real RE'd selector composites BACKDROP + LEFT_PLAYER +
-     RIGHT_PLAYER + frames + ROSTER + CENTRE packets — a bisected
-     P1/P2 zone over a roster field; portraits center-cropped 2:3;
-     the selected aperture is LARGER than its neighbours
-     (72x108 vs 56x84); the timer starts at 99; a pick is a
-     two-step flow (choose fighter, then outfit) and the CPU card
-     appears on the CPU's own side.
-   - Tekken 1/6 (docs/select-redesign/SELECT-DESIGN.md §1):
-     punch button = outfit 1, kick button = outfit 2 at select;
-     "?" random slots sit at the ends of the portrait row.
-   - Tekken 8 (same doc): live animated 3D models in the big
-     zone (never a still), per-character costume slots chosen
-     right on the select screen, bottom hints bar.
-   Owner spec (2026-10-18 + 2026-10-19): top ~75-80% bisected
-   zone, bottom ~20% card strip is the ONLY scrolling element
-   and scrolls inside its own box, tap a card -> that fighter's
-   animated model appears on YOUR side, name + style on cards,
-   name + style + stats on the picked side, attire switching on
-   the select screen, touch first.
+   WESTERN HEART — Tekken-style character select (T7 rebuild, 2026-10-23)
+   Rebuilt from the TEKKEN 7 character select (layout lineage decoded in
+   docs/select-redesign/T7-GRID-DECODE.md; TTT2 contributes the two-cursor
+   flow and the "?" hidden-fighter convention):
+   - "CHOOSE YOUR FIGHTER" header + 99s timer (T7 standard selector)
+   - the signature 2-ROW PORTRAIT GRID, P1's big render flanking left,
+     P2's flanking right; P1 red / P2 blue cursors with 1P/2P tags
+   - "?" RANDOM panel at the end of the grid (T6/T7 convention)
+   - costume presets ON the select screen (T7's triangle-preset ->
+     our P/K attire buttons + attire chips, owner's classic scheme)
+   - announcer cues at T7's cue points: "Choose your fighter!" on
+     entry, the fighter's name shouted on lock, "Choose your stage!"
+     + stage-name callouts on the arena strip
+   - stage select AFTER both fighters lock (T7 flow), then the fight
+   Earlier lineage (kept): the T8 grid transplant's live-3D preview
+   panes (owner law: live animated 3D, never a still), the T3 aperture
+   rule (selected card renders larger), the classic punch=attire-1 /
+   kick=attire-2 rule, the ui-skin.js skin layer (the intact 't8' skin
+   restores the T8 look later via setSkin('t8') — no restructuring).
+   Owner spec (2026-10-18, still standing): the page itself never
+   scrolls; the grid scrolls inside its own box (horizontal now, T7);
+   tap a card -> that fighter's animated model appears on YOUR side;
+   name + style + stats on the picked side; attire switching on the
+   select screen; touch first, 48px+ targets.
    Previews reuse the existing model pipeline (assets.js
-   loadModels/createInstance) — the same GLBs and Idle clips
-   the fight itself uses. Stats shown are the game's real
-   numbers: roster `stats` or the Fighter default
-   (fighter.js: { speed: 2.8, jump: 7.2, power: 1.1,
-   defense: 1.05 }, speed clamped to 3.5).
+   loadModels/createInstance) — the same GLBs and Idle clips the fight
+   itself uses. Stats shown are the game's real numbers: roster `stats`
+   or the Fighter default (fighter.js). No invented fighters, no
+   invented stats, no Tekken names on the cards (in-universe law).
    ============================================================ */
 import * as THREE from 'three';
 import { assets } from './assets.js';
@@ -34,6 +35,8 @@ import { attiresFor, selectedAttireModel, setAttire, attireLabel } from './attir
 import { loadT3Clips, createT3Actions, retargetT3Clips } from './t3anims.js';
 import { bankIdFor } from './fighter.js';
 import { getMovesetInfo } from './movesets.js';
+import { voice } from './voice.js';
+import { getSkin, applySkin, activeSkinId } from './ui-skin.js';
 
 const DEFAULT_STATS = { speed: 2.8, jump: 7.2, power: 1.1, defense: 1.05 };
 const clamp01 = (v) => Math.max(0, Math.min(1, v));
@@ -295,6 +298,17 @@ const _tripoReady = fetch('data/tripo-fighters.json')
   .then(r => (r.ok ? r.json() : null))
   .then(j => { TRIPO_IDS = new Set((j && j.ids) || []); })
   .catch(() => { TRIPO_IDS = new Set(); });
+/* SmutBase primaries (owner intake 2026-10-22; extended display-order law
+   2026-10-23: user-hand-picked SmutBase models count JUST AS GOOD as Tripo
+   pulls — the hand-chosen model IS the character's primary model). They
+   lead the grid right behind the Tripo originals. Same fetch pattern as
+   the Tripo list: data-driven, never a hand-picked order in code. */
+let SMUTBASE_IDS = null;
+const _smutReady = fetch('data/smutbase-fighters.json')
+  .then(r => (r.ok ? r.json() : null))
+  .then(j => { SMUTBASE_IDS = new Set((j && j.ids) || []); })
+  .catch(() => { SMUTBASE_IDS = new Set(); });
+const _tiersReady = Promise.all([_tripoReady, _smutReady]);
 
 export function createSelectScreen(deps) {
   const { audio } = deps;
@@ -333,61 +347,115 @@ export function createSelectScreen(deps) {
   /* ---------- card strip ---------- */
   function portraitHTML(c) {
     // Portrait files are the personality pass's drop-in point: the same
-    // assets/portraits/<id>.png path the old grid used. A fighter with
-    // no portrait yet gets a monogram plate — never another fighter's
-    // face (the old repeated-placeholder bug).
+    // assets/portraits/<id>.png path the grid has always used. A fighter
+    // with no portrait yet gets a monogram plate — never another fighter's
+    // face (the old repeated-placeholder bug). T7's panels carry the
+    // portrait + the fighter's name; style/stats live on the side plate.
     return `<div class="portrait"><img src="assets/portraits/${c.id}.png" alt="${c.name}" loading="lazy"
       onerror="this.parentElement.classList.add('no-portrait');this.remove();">
       <span class="mono">${(c.name || '?').slice(0, 2)}</span></div>
-      <div class="cname">${c.name}</div><div class="cstyle">${c.style}</div>`;
+      <div class="cname">${c.name}</div>`;
   }
 
   /* Owner law (2026-10-22): NO duplicate fighters on select. Entries that
      share another fighter's model are hidden until they get their own
      models — they stay in the roster data for story/other modes, but never
      as separate select cards. Attire variants live in the attire ladder
-     (renderAttires), not as duplicate cards. */
+     (renderAttires), not as duplicate cards.
+     NINE SOULS REDESIGN (2026-10-23): seven souls stay OFF the grid as
+     standalone cards (rin, byou, tou, sha, kai, retsu — plus the re-homed
+     jin, whose model now ladders inside Phantom's attires per the
+     2026-10-22 re-home; 'jin_soul' no longer exists as a roster id).
+     ZEN and GYOU STAY as standalone selectable fighters. */
   const SELECT_HIDDEN = new Set([
-    'rin', 'byou', 'tou', 'sha', 'kai', 'jin_soul', 'retsu', 'zen', 'gyou',
+    'rin', 'byou', 'tou', 'sha', 'kai', 'retsu',
     'ryuji', 'doc-frank-machine-shop',
   ]);
   const selectRoster = () => deps.roster().filter(c => !SELECT_HIDDEN.has(c.id));
 
-  function build() {
-    if (!strip) return;
-    strip.innerHTML = '';
+  /* T7 grid order: the display-order law tiers, in order —
+     TRIPO ORIGINALS, then SMUTBASE ORIGINALS (the 6 hand-picked primaries),
+     then MAIN ROSTER. Within a tier, roster order is kept (the roster
+     itself is built from the replacement map: one WH card per Tekken slot,
+     WH names only — Tekken names never appear on in-universe cards). */
+  function tieredRoster() {
     const roster = selectRoster();
     const tripo = TRIPO_IDS || new Set();
+    const smut = SMUTBASE_IDS || new Set();
     const tiers = [
       { label: 'TRIPO ORIGINALS', fighters: roster.filter(c => tripo.has(c.id)) },
-      { label: 'MAIN ROSTER', fighters: roster.filter(c => !tripo.has(c.id)) },
-    ].filter(t => t.fighters.length);
-    tiers.forEach(({ label, fighters }) => {
-      const t = document.createElement('div');
-      t.className = 'strip-tier';
-      t.textContent = label;
-      strip.appendChild(t);
-      fighters.forEach((c) => {
+      { label: 'SMUTBASE ORIGINALS', fighters: roster.filter(c => !tripo.has(c.id) && smut.has(c.id)) },
+      { label: 'MAIN ROSTER', fighters: roster.filter(c => !tripo.has(c.id) && !smut.has(c.id)) },
+    ];
+    return tiers.filter(t => t.fighters.length);
+  }
+
+  function build() {
+    if (!strip) return;
+    // Skin drop-in contract: the look refreshes from ui-skin.js here —
+    // T8 art restores via setSkin('t8') with no restructuring.
+    applySkin($('screen-select'), getSkin(activeSkinId()));
+    strip.innerHTML = '';
+    /* T7's signature 2-row portrait grid: column-major flow (each column
+       holds 2 cards), horizontal scroll inside its own box. Slim tier
+       dividers span both rows so the display-order law stays visible.
+       Every card carries data-tier/data-col/data-row for exact 2D
+       cursor navigation (d-pad parity with T7). */
+    for (const { label, fighters } of tieredRoster()) {
+      const div = document.createElement('div');
+      div.className = 'grid-tier';
+      div.setAttribute('aria-hidden', 'true');
+      div.innerHTML = `<span>${label}</span>`;
+      strip.appendChild(div);
+      let col = 0, row = 0;
+      for (const c of fighters) {
         const card = document.createElement('div');
         card.className = 'char-card';
         card.dataset.id = c.id;
+        card.dataset.tier = label;
+        card.dataset.col = String(col);
+        card.dataset.row = String(row);
+        card.setAttribute('role', 'button');
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('aria-label', `Select ${c.name}`);
         card.innerHTML = portraitHTML(c);
-        card.addEventListener('click', () => highlight(c, { fromTap: true }));
+        card.addEventListener('click', () => onCardTap(c, card));
         strip.appendChild(card);
-      });
-    });
-    // Tekken 6 convention: a "?" random slot at the end of the row.
+        if (row === 1) { col++; row = 0; } else { row = 1; }
+      }
+    }
+    // Tekken convention: a "?" random slot at the end of the grid.
     const rnd = document.createElement('div');
     rnd.className = 'char-card random-card';
     rnd.dataset.id = '__random';
+    rnd.dataset.tier = '__random';
+    rnd.setAttribute('role', 'button');
+    rnd.setAttribute('tabindex', '0');
+    rnd.setAttribute('aria-label', 'Random fighter');
     rnd.innerHTML = `<div class="portrait"><span class="qmark">?</span></div>
-      <div class="cname">RANDOM</div><div class="cstyle">Fate decides</div>`;
+      <div class="cname">RANDOM</div>`;
     rnd.addEventListener('click', () => {
       const pool = selectRoster().filter(c => c.id !== state.locked.p1?.id && c.id !== state.locked.p2?.id);
       const pick = pool[Math.floor(Math.random() * pool.length)];
       if (pick) highlight(pick, { fromTap: true, scroll: true });
     });
     strip.appendChild(rnd);
+  }
+
+  /* T7 tap rule: tapping a card previews it on your side; tapping the
+     ALREADY-highlighted card locks it (same as the CONFIRM button) —
+     no dead ends, every tap does something visible. */
+  function onCardTap(c, card) {
+    card.classList.remove('tap-flash');
+    void card.offsetWidth;
+    card.classList.add('tap-flash');
+    const side = state.activeSide;
+    if ((state.highlight[side] && state.highlight[side].id === c.id) ||
+        (state.locked[side] && state.locked[side].id === c.id)) {
+      if (confirmBtn && !confirmBtn.disabled) confirmBtn.click();
+      return;
+    }
+    highlight(c, { fromTap: true });
   }
 
   function allCards() { return [...strip.querySelectorAll('.char-card')]; }
@@ -415,6 +483,7 @@ export function createSelectScreen(deps) {
       name: root.querySelector('.pane-name'),
       title: root.querySelector('.pane-title'),
       style: root.querySelector('.pane-style'),
+      facts: root.querySelector('.pane-facts'),
       stats: root.querySelector('.pane-stats'),
       attires: root.querySelector('.pane-attires'),
       note: root.querySelector('.pane-note'),
@@ -452,6 +521,17 @@ export function createSelectScreen(deps) {
     const modelId = selectedAttireModel(c);
     els.style.textContent = [c.style, c.archetype, attireLabel(c, modelId)]
       .filter(Boolean).join(' · ');
+    // Skin-driven fact block (ui-skin.js `facts`: [LABEL, fighter field]).
+    // Values come from the roster entry; unknown origin stays the canon
+    // "Parts unknown" — never invented.
+    if (els.facts) {
+      const skin = getSkin(activeSkinId());
+      els.facts.innerHTML = (skin.facts || []).map(([lab, field]) => {
+        const v = c[field] || (field === 'origin' ? 'Parts unknown' : '—');
+        return `<div class="fact"><span class="fact-lab">${lab}</span>` +
+          `<span class="fact-val">${v}</span></div>`;
+      }).join('');
+    }
     const s = statsFor(c);
     els.stats.innerHTML =
       statRow('POW', s.power, (s.power - 0.5) / 1.5, v => v.toFixed(2)) +
@@ -567,10 +647,23 @@ export function createSelectScreen(deps) {
 
   /* Called by main.js confirmSelection() BEFORE modes.onConfirm runs,
      with the id being confirmed. Mirrors the mode flow: versus locks
-     P1 then hands the cursor to P2; team stacks picks on P1. */
+     P1 then hands the cursor to P2; team stacks picks on P1.
+     T7 cue: the announcer SHOUTS the fighter's name on lock — ours
+     fires the fighter's own select voice line (real owner audio where
+     recorded, subtitle fallback otherwise) and the announcer name-shout
+     subtitle; the proprietary announcer recording replaces the subtitle
+     through the voice-clone pipeline (same placeholder policy as the
+     fight announcer). */
+  function announceLock(c) {
+    if (!c) return;
+    voice.play(c.id, 'select-01');
+    voice.subtitle('ANNOUNCER', `${c.name}!`);
+  }
+
   function notifyConfirm(confirmedId) {
     const c = deps.findChar(confirmedId);
     if (!c) return;
+    announceLock(c);
     if (state.mode === 'versus') {
       if (!state.locked.p1) {
         state.locked.p1 = c;
@@ -614,30 +707,94 @@ export function createSelectScreen(deps) {
       panes.p2.clear();
       if (confirmBtn) confirmBtn.disabled = true;
       deps.onHighlight(null);
+      // T7 cue: the announcer opens the screen — "Choose your fighter!"
+      // (subtitle-only placeholder until the proprietary announcer voice
+      // lands; owner law: no Tekken audio bytes in the repo).
+      voice.announce('choose-your-fighter');
     }
     state._shown = true;
+    applySkin($('screen-select'), getSkin(activeSkinId()));
     paintCards();
     renderPlate('p1');
     renderPlate('p2');
   }
 
+  /* T7 timeout behavior (called by main.js when the 99s timer hits 0):
+     the active side's current highlight is LOCKED IN — a random fighter
+     when nothing is highlighted — then the flow continues (versus hands
+     the cursor to P2; the timer restarts for the next side). This is the
+     real Tekken rule: the timer never leaves a side unpicked. */
+  function timeoutPick() {
+    if (state.phase === 'done') return;
+    const side = state.activeSide;
+    if (!state.highlight[side] && !state.locked[side]) {
+      const pool = selectRoster().filter(c => c.id !== state.locked.p1?.id && c.id !== state.locked.p2?.id);
+      const pick = pool[Math.floor(Math.random() * pool.length)];
+      if (pick) highlight(pick, { scroll: true });
+    }
+    voice.subtitle('ANNOUNCER', 'TIME UP!');
+    if (confirmBtn && !confirmBtn.disabled) confirmBtn.click();
+  }
+
   /* ---------- keyboard (desktop parity; touch is primary) ----------
-     Arrows walk the strip, Enter highlights then confirms (via the
-     real CONFIRM button so every mode hook still fires), J/K are
-     punch/kick attire switching. */
+     T7 d-pad parity on the 2-row grid: arrows walk the grid in 2D
+     (up/down toggle rows, left/right move columns within the tier),
+     Enter highlights then confirms (via the real CONFIRM button so
+     every mode hook still fires), J/K are punch/kick attire switching. */
+  function navModel() {
+    // Fighter cards only (dividers + the "?" card are not grid cells).
+    return allCards()
+      .filter(el => el.dataset.id !== '__random')
+      .map(el => ({
+        el,
+        tier: el.dataset.tier,
+        row: parseInt(el.dataset.row || '0', 10),
+        col: parseInt(el.dataset.col || '0', 10),
+      }));
+  }
+  function focusCard(el) {
+    const cards = allCards();
+    state.focusIdx = Math.max(0, cards.indexOf(el));
+    cards.forEach(x => x.classList.remove('kb-focus'));
+    el.classList.add('kb-focus');
+    el.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  }
+  function moveFocus(dRow, dCol) {
+    const cells = navModel();
+    if (!cells.length) return;
+    const cards = allCards();
+    const rnd = cardFor('__random');
+    const cur = cards[state.focusIdx];
+    // The "?" card: any arrow steps back to the grid's last fighter card.
+    if (cur && cur.dataset.id === '__random') {
+      const last = cells[cells.length - 1];
+      if (last) focusCard(last.el);
+      return;
+    }
+    const here = cells.find(c => c.el === cur) || cells[0];
+    const mates = cells.filter(c => c.tier === here.tier);
+    const maxCol = Math.max(...mates.map(m => m.col));
+    const nCol = Math.min(maxCol, Math.max(0, here.col + dCol));
+    const nRow = dRow !== 0 ? 1 - here.row : here.row; // up/down toggles the row
+    let target = mates.find(m => m.col === nCol && m.row === nRow)
+      || mates.find(m => m.col === nCol)
+      || here;
+    // Right off the last column of the last tier lands on the "?" card.
+    const lastTier = cells[cells.length - 1].tier;
+    if (dCol > 0 && nCol === maxCol && here.col === maxCol && here.tier === lastTier && rnd) {
+      focusCard(rnd);
+      return;
+    }
+    focusCard(target.el);
+  }
   document.addEventListener('keydown', (e) => {
     const sel = $('screen-select');
     if (!sel || !sel.classList.contains('active')) return;
-    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
-      const cards = allCards();
-      if (!cards.length) return;
-      state.focusIdx = (state.focusIdx + (e.key === 'ArrowRight' ? 1 : -1) + cards.length) % cards.length;
-      cards.forEach(x => x.classList.remove('kb-focus'));
-      const el = cards[state.focusIdx];
-      el.classList.add('kb-focus');
-      el.scrollIntoView({ block: 'nearest', inline: 'nearest' });
-      e.preventDefault();
-    } else if (e.key === 'Enter' || e.key === ' ') {
+    if (e.key === 'ArrowRight') { moveFocus(0, 1); e.preventDefault(); }
+    else if (e.key === 'ArrowLeft') { moveFocus(0, -1); e.preventDefault(); }
+    else if (e.key === 'ArrowDown') { moveFocus(1, 0); e.preventDefault(); }
+    else if (e.key === 'ArrowUp') { moveFocus(-1, 0); e.preventDefault(); }
+    else if (e.key === 'Enter' || e.key === ' ') {
       const cards = allCards();
       const card = cards[state.focusIdx];
       if (!card) return;
@@ -658,7 +815,8 @@ export function createSelectScreen(deps) {
   if (pBtn) pBtn.addEventListener('click', punchAttire);
   if (kBtn) kBtn.addEventListener('click', kickAttire);
 
-  // The Tripo list arrives after the first build: rebuild once so those fighters lead the grid.
-  _tripoReady.then(() => { if (strip && strip.children.length) { build(); paintCards(); } });
-  return { build, onShow, selectById, notifyConfirm, highlight, _state: state, _panes: panes };
+  // The Tripo/SmutBase lists arrive after the first build: rebuild once
+  // so those fighters lead the grid in tier order.
+  _tiersReady.then(() => { if (strip && strip.children.length) { build(); paintCards(); } });
+  return { build, onShow, selectById, notifyConfirm, highlight, timeoutPick, _state: state, _panes: panes };
 }

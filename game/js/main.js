@@ -19,6 +19,7 @@ import { whUiEnabled, mountWhUi } from './ui-wh-bridge.js';
 import { getCustomFighter, customFighterToRoster } from './custom-fighter.js';
 import { resolveFighterAttire } from './attires.js';
 import { createSelectScreen } from './select-screen.js';
+import { voice } from './voice.js';
 import { STAGES, STAGE_TIERS, getStage, randomStageId } from './stages.js';
 // LOADSPEED: stages.js (82KB data) stays static — buildStageSelect runs in
 // the versus flow and getStage is needed by startFight; its parse cost is
@@ -289,6 +290,9 @@ function startFightViaStage(p1, p2, opts = {}) {
   pendingFight = { p1, p2, opts };
   buildStageSelect();
   show('stage');
+  // T7 cue: the announcer opens the arena strip — "Choose your stage!"
+  // (subtitle-only placeholder until the proprietary announcer voice lands).
+  voice.announce('choose-your-stage');
   requestAnimationFrame(() => requestAnimationFrame(() => mark('stage-interactive')));
   const hint = document.getElementById('stage-hint');
   const s = getStage(selectedStage);
@@ -345,9 +349,13 @@ selectScreen = createSelectScreen({
 window.__selectScreen = selectScreen; // QA hook (same pattern as __modes/__game)
 selectScreen.build();
 
-/* ---------------- Stage select (Lane 4) ----------------
-   After the fighter is confirmed, pick the arena: 8 canon Eastern
-   Mind lands + 15 Tekken 3 retro arenas (real teardown geometry). */
+/* ---------------- Stage select (T7 rebuild, 2026-10-23) ----------------
+   Tekken 7's stage select: "CHOOSE YOUR STAGE" with a single horizontal
+   strip of stage cards (thumbnail + name) under a big preview pane; the
+   announcer calls each highlighted stage's name; a "?" RANDOM card rides
+   in the strip; BACK returns to the character grid. After the fighter is
+   confirmed, pick the arena: 8 canon Eastern Mind lands + 15 Tekken 3
+   retro arenas (real teardown geometry), canon lands first. */
 let selectedStage = 'shrine';
 
 /* LOADSPEED: stage-thumb atlas (Urban Reign VGS lesson — Namco packs each
@@ -370,30 +378,40 @@ function buildStageSelect() {
   const grid = document.getElementById('stage-grid');
   if (!grid) return;
   grid.innerHTML = '';
+  // T7 stage strip: one ordered run (canon lands, then retro), no tier
+  // headers — the universe line on each card carries the provenance.
+  const ordered = [];
+  for (const tier of STAGE_TIERS) ordered.push(...STAGES.filter(s => s.tier === tier));
   const paint = (atlas) => {
-    for (const tier of STAGE_TIERS) {
-      const stages = STAGES.filter(s => s.tier === tier);
-      if (!stages.length) continue;
-      const tierHeader = document.createElement('div');
-      tierHeader.className = 'tier-header';
-      tierHeader.textContent = tier;
-      grid.appendChild(tierHeader);
-      for (const s of stages) {
-        const card = document.createElement('div');
-        card.className = 'stage-card' + (s.id === selectedStage ? ' selected' : '');
-        card.dataset.id = s.id;
-        const o = atlas && atlas.offsets && atlas.offsets[s.id];
-        // Atlas is a 7x6 tile grid: percentage positioning keeps the div
-        // responsive (CSS: width 100%, aspect 16/9) at any card size.
-        const visual = o
-          ? `<div class="sthumb" role="img" aria-label="${s.name}" style="background-image:url('${THUMB_ATLAS_URL}');background-size:700% 600%;background-repeat:no-repeat;background-position:${(o.x / o.w / 6 * 100).toFixed(2)}% ${(o.y / o.h / 5 * 100).toFixed(2)}%;"></div>`
-          : `<div class="swatch" style="background:linear-gradient(135deg, ${s.swatch[0]}, ${s.swatch[1]})"></div>`;
-        card.innerHTML =
-          `${visual}<div class="sname">${s.name}</div><div class="suniverse">${s.universe}</div>`;
-        card.addEventListener('click', () => selectStageCard(card, s));
-        grid.appendChild(card);
-      }
+    for (const s of ordered) {
+      const card = document.createElement('div');
+      card.className = 'stage-card' + (s.id === selectedStage ? ' selected' : '');
+      card.dataset.id = s.id;
+      card.setAttribute('role', 'button');
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('aria-label', `Fight at ${s.name}`);
+      const o = atlas && atlas.offsets && atlas.offsets[s.id];
+      // Atlas is a 7x6 tile grid: percentage positioning keeps the div
+      // responsive (CSS: width 100%, aspect 16/9) at any card size.
+      const visual = o
+        ? `<div class="sthumb" role="img" aria-label="${s.name}" style="background-image:url('${THUMB_ATLAS_URL}');background-size:700% 600%;background-repeat:no-repeat;background-position:${(o.x / o.w / 6 * 100).toFixed(2)}% ${(o.y / o.h / 5 * 100).toFixed(2)}%;"></div>`
+        : `<div class="swatch" style="background:linear-gradient(135deg, ${s.swatch[0]}, ${s.swatch[1]})"></div>`;
+      card.innerHTML =
+        `${visual}<div class="sname">${s.name}</div><div class="suniverse">${s.universe}</div>`;
+      card.addEventListener('click', () => selectStageCard(card, s));
+      grid.appendChild(card);
     }
+    // T7's "?" random stage rides in the strip, not just the footer button.
+    const rnd = document.createElement('div');
+    rnd.className = 'stage-card random-card';
+    rnd.dataset.id = '__random';
+    rnd.setAttribute('role', 'button');
+    rnd.setAttribute('tabindex', '0');
+    rnd.setAttribute('aria-label', 'Random stage');
+    rnd.innerHTML = `<div class="swatch random-swatch"><span class="qmark">?</span></div>
+      <div class="sname">RANDOM</div><div class="suniverse">Fate decides</div>`;
+    rnd.addEventListener('click', () => randomStageRoll());
+    grid.appendChild(rnd);
   };
   paint(null); // instant: swatches first, never waits on the atlas
   // Preview pane + scroll track the selected stage (main 2026-10-21/22); rerun after the
@@ -472,6 +490,9 @@ function selectStageCard(card, s) {
   card.classList.add('selected');
   selectedStage = s.id;
   updateStagePreview(s);
+  // T7 cue: the announcer calls the highlighted stage's name
+  // (subtitle-only placeholder until the proprietary voice lands).
+  voice.subtitle('ANNOUNCER', `${s.name}!`);
   const btn = document.getElementById('confirm-stage');
   if (btn) btn.disabled = false;
 }
@@ -485,22 +506,31 @@ function focusStage(i) {
   const el = cards[focusedStageIdx];
   el.classList.add('kb-focus');
   scrollStageCardIntoView(el);
+  if (el.dataset.id === '__random') {
+    voice.subtitle('ANNOUNCER', 'RANDOM!');
+    return;
+  }
   const s = getStage(el.dataset.id);
-  if (s) updateStagePreview(s);
+  if (s) {
+    updateStagePreview(s);
+    voice.subtitle('ANNOUNCER', `${s.name}!`);
+  }
 }
+/* T7's stage strip is one horizontal run: left/right walk it,
+   Enter highlights then confirms via the real CONFIRM button. */
 document.addEventListener('keydown', (e) => {
   const sc = document.getElementById('screen-stage');
   if (!sc || !sc.classList.contains('active')) return;
   const cards = allStageCards();
   if (!cards.length) return;
-  const grid = document.getElementById('stage-grid');
-  const cols = grid ? getComputedStyle(grid).gridTemplateColumns.split(' ').length : 2;
   if (e.key === 'ArrowRight') { focusStage(focusedStageIdx + 1); e.preventDefault(); }
   else if (e.key === 'ArrowLeft') { focusStage(focusedStageIdx - 1); e.preventDefault(); }
-  else if (e.key === 'ArrowDown') { focusStage(focusedStageIdx + cols); e.preventDefault(); }
-  else if (e.key === 'ArrowUp') { focusStage(focusedStageIdx - cols); e.preventDefault(); }
+  else if (e.key === 'ArrowDown') { focusStage(focusedStageIdx + 1); e.preventDefault(); }
+  else if (e.key === 'ArrowUp') { focusStage(focusedStageIdx - 1); e.preventDefault(); }
   else if (e.key === 'Enter' || e.key === ' ') {
     const card = cards[focusedStageIdx];
+    if (!card) return;
+    if (card.dataset.id === '__random') { randomStageRoll(); e.preventDefault(); return; }
     const s = getStage(card.dataset.id);
     if (s) {
       // W51: same confirm path as the CONFIRM button — bare startFight()
@@ -519,8 +549,10 @@ document.addEventListener('keydown', (e) => {
 
 /* 99-second select timer (Tekken standard selector: starts at 99).
    The countdown starts only once assets are loaded (maybeStartSelectTimer),
-   and at 0 it auto-highlights a random fighter — it never starts a fight
-   without the user tapping CONFIRM. */
+   and at 0 the T7 timeout rule fires: the active side's current highlight
+   is LOCKED IN (random when nothing is highlighted) and the timer restarts
+   for the next side — the timer never leaves a side unpicked. Versus hands
+   the cursor P1 -> P2 exactly like a manual confirm. */
 let selectTimerId = null;
 let selectTimerArmed = false;
 function maybeStartSelectTimer() {
@@ -538,12 +570,10 @@ function startSelectTimer() {
     if (t <= 10) el.classList.add('low');
     if (t <= 0) {
       stopSelectTimer();
-      // Tekken timeout behavior: cursor jumps to a random fighter, but the
-      // match does NOT start — the user still taps CONFIRM to fight.
-      const pool = ROSTER.filter(c => c.id !== selectedChar);
-      const pick = pool[Math.floor(Math.random() * pool.length)];
-      if (pick) selectScreen.selectById(pick.id);
-      document.getElementById('select-hint').textContent = 'TIME UP — random fighter picked. Tap CONFIRM to fight.';
+      if (selectScreen) selectScreen.timeoutPick();
+      // Keep the clock running for the next side while picks remain.
+      const st = selectScreen && selectScreen._state;
+      if (st && st.phase !== 'done') startSelectTimer();
     }
   }, 1000);
 }
@@ -754,17 +784,22 @@ function confirmStageFromSelect() {
 
 document.getElementById('confirm-stage').addEventListener('click', confirmStageFromSelect);
 
-document.getElementById('random-stage').addEventListener('click', () => {
+document.getElementById('random-stage').addEventListener('click', () => randomStageRoll());
+
+/* The "?" random card in the strip and the footer RANDOM button share
+   one roll: pick a stage, highlight its card, announce it. */
+function randomStageRoll() {
   audio.uiClick();
   selectedStage = randomStageId();
   const s = getStage(selectedStage);
   const card = document.querySelector(`.stage-card[data-id="${s.id}"]`);
   if (card) {
-    selectStageCard(card, s);
+    selectStageCard(card, s); // announces the stage name, T7-style
+    scrollStageCardIntoView(card);
     const idx = allStageCards().indexOf(card);
-    if (idx >= 0) focusStage(idx);
+    if (idx >= 0) focusedStageIdx = idx;
   }
-});
+}
 
 /* Training quit button (HUD, visible only in training mode) */
 document.getElementById('training-quit').addEventListener('click', () => {

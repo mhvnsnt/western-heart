@@ -26,7 +26,9 @@
    1. Add a new entry to UI_SKINS below (key = skin id, e.g. 't8',
       't7', 'wh-classic'). Every key documented in the SKIN FIELDS
       table is required; a skin missing a field falls back to the
-      't8' default for that field (see getSkin).
+      default skin's field (see getSkin; the default is 't7' as of
+      the 2026-10-23 T7 rebuild — the 't8' entry stays intact for
+      the later T8 art drop-in).
    2. Textures live under game/assets/ui/<skin-id>/. Naming:
         bg-select.jpg        full-screen select backdrop (optional;
                              the skin's CSS gradient is the fallback)
@@ -78,7 +80,52 @@ const BODY_STACK =
   'system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif';
 
 export const UI_SKINS = {
-  /* Tekken 8 decode — recreated look (default). Source: public
+  /* Tekken 7 decode — recreated look. Source: public references,
+     docs/select-redesign/T7-GRID-DECODE.md. The T7 select is the
+     ember-and-iron look: near-black smoke, drifting ember particles,
+     hot red angular accents, italic condensed display type with a
+     steeper slant than T8, and the 2-row portrait grid with the
+     big P1/P2 renders flanking it. No ripped Tekken UI files —
+     every texture slot below is optional with a CSS fallback
+     (owner rule 8). */
+  t7: {
+    id: 't7',
+    label: 'Tekken 7 grid (recreated)',
+    colors: {
+      p1: '#ff2e2e',      // T7 P1 cursor/marker hot red
+      p1Soft: 'rgba(255,46,46,0.55)',
+      p2: '#2f9dff',      // T7 P2 cursor/marker blue
+      p2Soft: 'rgba(47,157,255,0.55)',
+      bg0: '#0a0505',     // ember-smoke near-black
+      bg1: '#220d0d',     // deep ember red haze
+      ink: '#f6f0ea',
+      gold: '#ffb14d',    // WH accent (confirm, timer)
+      cardBg: '#161013',
+      cardFrame: 'rgba(255,255,255,0.14)',
+      hintBg: 'rgba(12,5,5,0.96)',
+    },
+    fonts: { display: DISPLAY_STACK, body: BODY_STACK },
+    grid: {
+      cardMin: 96,        // px; T7 panels are portrait cards, bigger than T8's squares
+      gap: 8,
+      maxCols: 12,
+      maxWidth: 1180,     // px; the 2-row grid sits between the P1/P2 panes
+      cardRadius: 2,      // near-sharp; the angle comes from the clipped frame
+    },
+    banner: { slantDeg: -10, uppercase: true },
+    // T7 name plate rows: [LABEL, fighter field]. 'origin' falls back
+    // to canon "Parts unknown" (never invented per select spec).
+    facts: [
+      ['FIGHTING STYLE', 'style'],
+      ['ARCHETYPE', 'archetype'],
+      ['ORIGIN', 'origin'],
+    ],
+    textures: {
+      // All optional — CSS fallbacks render when absent.
+      // bg: 'assets/ui/t7/bg-select.jpg',
+    },
+  },
+  /* Tekken 8 decode — recreated look. Source: public
      references, docs/select-redesign/T8-GRID-DECODE.md. */
   t8: {
     id: 't8',
@@ -119,7 +166,12 @@ export const UI_SKINS = {
   },
 };
 
-export const DEFAULT_SKIN_ID = 't8';
+export const DEFAULT_SKIN_ID = 't7';
+/* NOTE (2026-10-23, T7 select rebuild): the default skin moved from 't8'
+   to 't7' — the character select is rebuilt from Tekken 7's layout per the
+   current directive. The full 't8' skin entry above is untouched: when the
+   owner's T8 reference/art lands, setSkin('t8') (or ?skin=t8) restores the
+   T8 look with no restructuring — that is the drop-in contract. */
 const LS_KEY = 'wh_ui_skin';
 
 /* Resolve a skin id to a full skin object: missing fields fall back

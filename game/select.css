@@ -1,85 +1,166 @@
 /* ============================================================
-   WESTERN HEART — Tekken 8-style character select (2026-10-22
-   grid transplant).
-   Decoded from public T8 references
-   (docs/select-redesign/T8-GRID-DECODE.md; no ripped Tekken UI):
-   bisected P1/P2 big-model zone with faded portrait-art backdrops
-   (red wash P1 / blue wash P2), big italic name banners, T8 fact
-   blocks, and a COMPACT CENTERED GRID of small square portrait
-   cards (not a strip) — small relative to everything else, P1/P2
-   cursors, "?" random slot, bottom hints bar.
+   WESTERN HEART — Tekken 7-style character select (2026-10-23
+   T7 rebuild; layout lineage: docs/select-redesign/T7-GRID-DECODE.md).
+   T7's ember-and-iron look, recreated with OUR art (no ripped Tekken
+   UI — owner rule 8): near-black smoke, drifting ember particles,
+   hot-red angular accents, steep italic condensed display type, and
+   the signature 2-ROW PORTRAIT GRID flanked by P1's big render (left)
+   and P2's (right), P1 red / P2 blue cursors, "?" random panel.
    Every skin-driven value comes from CSS vars set by
-   js/ui-skin.js applySkin() — the swap mechanism for future looks.
-   All rules scoped to #screen-select so the stage-select screen
-   (which shares .char-grid in styles.css) is untouched.
-   The page itself never scrolls; the grid scrolls inside its own box.
+   js/ui-skin.js applySkin() — the swap mechanism for future looks
+   (the intact 't8' skin restores the T8 look via setSkin('t8')).
+   All rules scoped to #screen-select / #screen-stage.
+   The page itself never scrolls; each grid scrolls inside its own box.
+   Touch-first: every interactive element is 48px+ on its short edge.
    ============================================================ */
 
+/* ---------- T7 ember-smoke stage ---------- */
 #screen-select.select-screen {
   overflow: hidden;
   position: relative;
+  display: flex;
+  flex-direction: column;
   background:
-    radial-gradient(ellipse at 50% 115%, var(--sk-bg1, #141024) 0%, transparent 60%),
-    linear-gradient(180deg, var(--sk-bg0, #07040d) 0%, #0b0716 100%);
+    radial-gradient(ellipse at 50% 108%, var(--sk-bg1, #220d0d) 0%, transparent 55%),
+    radial-gradient(ellipse at 8% -10%, rgba(120, 30, 20, 0.35) 0%, transparent 50%),
+    linear-gradient(180deg, var(--sk-bg0, #0a0505) 0%, #120707 60%, #0a0505 100%);
   font-family: var(--sk-body, system-ui, sans-serif);
-  color: var(--sk-ink, #f4f1ff);
+  color: var(--sk-ink, #f6f0ea);
+}
+/* Drifting embers — pure CSS, T7's signature particle haze. */
+#screen-select.select-screen::before {
+  content: ''; position: absolute; inset: -60px 0 0 0; z-index: 0;
+  pointer-events: none; opacity: 0.75;
+  background-image:
+    radial-gradient(2.5px 2.5px at 12% 82%, rgba(255,122,40,0.9), transparent 70%),
+    radial-gradient(2px 2px at 28% 64%, rgba(255,90,30,0.7), transparent 70%),
+    radial-gradient(3px 3px at 47% 88%, rgba(255,150,60,0.8), transparent 70%),
+    radial-gradient(2px 2px at 63% 70%, rgba(255,110,40,0.65), transparent 70%),
+    radial-gradient(2.5px 2.5px at 79% 84%, rgba(255,130,50,0.8), transparent 70%),
+    radial-gradient(2px 2px at 91% 66%, rgba(255,100,35,0.7), transparent 70%),
+    radial-gradient(1.6px 1.6px at 36% 76%, rgba(255,170,90,0.6), transparent 70%),
+    radial-gradient(1.6px 1.6px at 71% 90%, rgba(255,140,60,0.6), transparent 70%);
+  animation: wh-embers 11s linear infinite;
+}
+@keyframes wh-embers {
+  from { transform: translateY(30px); }
+  to { transform: translateY(-46px); }
+}
+#screen-select .select-header,
+#screen-select .fighters-zone,
+#screen-select .hints-bar { position: relative; z-index: 1; }
+
+/* ---------- T7 header: CHOOSE YOUR FIGHTER + timer ---------- */
+#screen-select .select-header {
+  flex: 0 0 auto;
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 14px 8px;
+  border-bottom: 2px solid rgba(255,46,46,0.35);
+  background: linear-gradient(180deg, rgba(10,5,5,0.9), rgba(10,5,5,0.55));
 }
 #screen-select .select-header h2 {
+  flex: 1 1 auto; text-align: center; margin: 0;
   font-family: var(--sk-display, "Arial Narrow", sans-serif);
   font-style: italic;
-  letter-spacing: 3px;
+  transform: skewX(var(--sk-slant, -10deg));
+  font-size: clamp(20px, 5.2vw, 40px); font-weight: 900;
+  letter-spacing: 4px; text-transform: uppercase; color: #fff;
+  text-shadow: 0 2px 0 rgba(255,46,46,0.55), 0 4px 18px rgba(0,0,0,0.9);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+/* T7's red slash under the title. */
+#screen-select .select-header h2::after {
+  content: ''; display: block; height: 4px; margin: 4px auto 0;
+  width: min(320px, 60%);
+  background: linear-gradient(90deg, transparent, var(--sk-p1, #ff2e2e) 30%, var(--sk-p1, #ff2e2e) 70%, transparent);
+  transform: skewX(-32deg);
+}
+#screen-select .select-back { min-height: 48px; }
+#screen-select .select-timer {
+  flex: 0 0 auto;
+  min-width: 64px; min-height: 48px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--sk-display, "Arial Narrow", sans-serif);
+  font-style: italic; font-weight: 900; font-size: 26px; letter-spacing: 1px;
+  color: #fff; background: linear-gradient(160deg, #2a1212, #120707);
+  border: 2px solid rgba(255,46,46,0.6);
+  clip-path: polygon(12% 0, 100% 0, 100% 88%, 88% 100%, 0 100%, 0 12%);
+  padding: 4px 10px;
+}
+#screen-select .select-timer.low {
+  color: #ffd7d7; border-color: var(--sk-p1, #ff2e2e);
+  animation: timer-panic 1s steps(2) infinite;
+}
+@keyframes timer-panic {
+  50% { background: linear-gradient(160deg, #5a1414, #220a0a); }
 }
 
-/* ---------- fighters zone (bisected, T8 stage) ---------- */
+/* ---------- fighters zone: T7's flanked layout ----------
+   Wide:  P1 pane | 2-row grid | P2 pane  (the real T7 arrangement).
+   Phone portrait: panes side-by-side on top, grid full-width below. */
 #screen-select .fighters-zone {
   flex: 1 1 auto;
   min-height: 0;
-  display: flex;
-  flex-direction: row;
-  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: minmax(0, 34%) minmax(0, 1fr);
   width: 100%;
   box-sizing: border-box;
 }
+#screen-select #pane-p1 { grid-column: 1; grid-row: 1; }
+#screen-select #pane-p2 { grid-column: 2; grid-row: 1; }
+#screen-select .grid-wrap { grid-column: 1 / -1; grid-row: 2; }
+@media (min-width: 900px), (orientation: landscape) and (min-height: 500px) {
+  #screen-select .fighters-zone {
+    display: flex; flex-direction: row; align-items: stretch;
+  }
+  #screen-select #pane-p1 { flex: 1 1 0; order: 1; min-width: 0; }
+  #screen-select .grid-wrap { flex: 0 1 620px; order: 2; min-width: 0; }
+  #screen-select #pane-p2 { flex: 1 1 0; order: 3; min-width: 0; }
+}
+
 #screen-select .side-pane {
-  flex: 1 1 50%;
-  min-width: 0;
   position: relative;
   overflow: hidden;
-  background: radial-gradient(ellipse at 50% 72%, rgba(139,43,216,0.16) 0%, rgba(7,4,13,0.94) 72%);
+  min-height: 0;
+  background: radial-gradient(ellipse at 50% 78%, rgba(255,46,46,0.10) 0%, rgba(10,5,5,0.9) 72%);
 }
-/* T8 backdrop art: the fighter's portrait, huge and faded behind the
-   live model, washed in the side color (our portraits, our art). */
+#screen-select .pane-p2 {
+  background: radial-gradient(ellipse at 50% 78%, rgba(47,157,255,0.10) 0%, rgba(10,5,5,0.9) 72%);
+}
+/* Fighter portrait art wash behind the live model (our art), tinted
+   per side — the T7 select's backdrop treatment. */
 #screen-select .pane-artwash {
   position: absolute; inset: 0; z-index: 0;
   overflow: hidden; pointer-events: none;
 }
 #screen-select .pane-artwash img {
-  position: absolute; top: -10%; height: 138%; width: auto;
-  max-width: none; opacity: 0.30;
-  filter: saturate(1.25) contrast(1.06);
-  -webkit-mask-image: linear-gradient(100deg, transparent 2%, #000 30%, #000 68%, transparent 98%);
-  mask-image: linear-gradient(100deg, transparent 2%, #000 30%, #000 68%, transparent 98%);
+  position: absolute; top: -12%; height: 140%; width: auto;
+  max-width: none; opacity: 0.28;
+  filter: saturate(1.2) contrast(1.05) sepia(0.25);
+  -webkit-mask-image: linear-gradient(100deg, transparent 2%, #000 32%, #000 66%, transparent 98%);
+  mask-image: linear-gradient(100deg, transparent 2%, #000 32%, #000 66%, transparent 98%);
 }
-#screen-select .pane-p1 .pane-artwash img { left: -8%; }
-#screen-select .pane-p2 .pane-artwash img { right: -8%; }
+#screen-select .pane-p1 .pane-artwash img { left: -10%; }
+#screen-select .pane-p2 .pane-artwash img { right: -10%; }
 #screen-select .pane-artwash::after {
   content: ''; position: absolute; inset: 0;
   background:
-    linear-gradient(180deg, transparent 42%, var(--sk-bg0, #07040d) 96%),
-    linear-gradient(100deg, var(--sk-p1-soft, rgba(255,45,85,0.5)) 0%, transparent 55%);
+    linear-gradient(180deg, transparent 40%, var(--sk-bg0, #0a0505) 96%),
+    linear-gradient(100deg, var(--sk-p1-soft, rgba(255,46,46,0.5)) 0%, transparent 55%);
 }
 #screen-select .pane-p2 .pane-artwash::after {
   background:
-    linear-gradient(180deg, transparent 42%, var(--sk-bg0, #07040d) 96%),
+    linear-gradient(180deg, transparent 40%, var(--sk-bg0, #0a0505) 96%),
     linear-gradient(260deg, var(--sk-p2-soft, rgba(47,157,255,0.5)) 0%, transparent 55%);
 }
-#screen-select .pane-p1 { border-right: 1px solid rgba(139,43,216,0.35); }
-#screen-select .pane-p2 { border-left: 1px solid rgba(139,43,216,0.35); }
+#screen-select .pane-p1 { border-right: 1px solid rgba(255,46,46,0.3); }
+#screen-select .pane-p2 { border-left: 1px solid rgba(47,157,255,0.3); }
 #screen-select .side-pane.is-active {
-  box-shadow: inset 0 0 0 2px var(--sk-p1-soft), inset 0 0 42px rgba(255,45,85,0.07);
+  box-shadow: inset 0 0 0 2px var(--sk-p1-soft), inset 0 0 42px rgba(255,46,46,0.08);
 }
 #screen-select .pane-p2.is-active {
-  box-shadow: inset 0 0 0 2px var(--sk-p2-soft), inset 0 0 42px rgba(47,157,255,0.07);
+  box-shadow: inset 0 0 0 2px var(--sk-p2-soft), inset 0 0 42px rgba(47,157,255,0.08);
 }
 #screen-select .side-pane.is-locked { box-shadow: inset 0 0 0 2px var(--sk-p1); }
 #screen-select .pane-p2.is-locked { box-shadow: inset 0 0 0 2px var(--sk-p2); }
@@ -100,46 +181,55 @@
 
 #screen-select .side-tag {
   position: absolute; top: 10px; left: 10px; z-index: 3;
-  font-weight: 900; font-size: 13px; letter-spacing: 2px;
-  padding: 5px 10px; border-radius: 6px;
-  color: #14091f; background: var(--sk-p1);
+  font-family: var(--sk-display, "Arial Narrow", sans-serif);
+  font-style: italic; font-weight: 900; font-size: 15px; letter-spacing: 2px;
+  padding: 6px 12px;
+  color: #160808; background: var(--sk-p1, #ff2e2e);
+  clip-path: polygon(0 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
 }
-#screen-select .pane-p2 .side-tag { background: var(--sk-p2); color: #fff; left: auto; right: 10px; }
+#screen-select .pane-p2 .side-tag {
+  background: var(--sk-p2, #2f9dff); color: #fff; left: auto; right: 10px;
+  clip-path: polygon(8px 0, 100% 0, 100% 100%, 0 100%);
+}
 #screen-select .lock-badge {
   position: absolute; top: 10px; right: 10px; z-index: 3;
   font-weight: 800; font-size: 11px; letter-spacing: 2px;
-  padding: 5px 10px; border-radius: 6px;
-  color: var(--sk-p1); border: 2px solid var(--sk-p1);
-  background: rgba(7,4,13,0.8);
+  padding: 6px 10px;
+  color: var(--sk-p1, #ff2e2e); border: 2px solid var(--sk-p1, #ff2e2e);
+  background: rgba(10,5,5,0.85);
+  clip-path: polygon(8px 0, 100% 0, 100% 100%, 0 100%);
 }
-#screen-select .pane-p2 .lock-badge { right: auto; left: 10px; color: var(--sk-p2); border-color: var(--sk-p2); }
+#screen-select .pane-p2 .lock-badge {
+  right: auto; left: 10px; color: var(--sk-p2, #2f9dff); border-color: var(--sk-p2, #2f9dff);
+  clip-path: polygon(0 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+}
 
 #screen-select .pane-note {
   position: absolute; left: 50%; top: 44%; z-index: 3;
   transform: translate(-50%, -50%);
   font-size: 11px; font-weight: 800; letter-spacing: 3px;
   color: rgba(255,255,255,0.75);
-  background: rgba(7,4,13,0.72); border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(10,5,5,0.72); border: 1px solid rgba(255,255,255,0.25);
   padding: 7px 12px; border-radius: 999px;
   pointer-events: none; white-space: nowrap;
 }
 
-/* ---------- T8 name banner + fact block + stats plate ---------- */
+/* ---------- T7 name banner + info plate ---------- */
 #screen-select .pane-plate {
   position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
-  padding: 30px 12px 10px;
-  background: linear-gradient(transparent, rgba(7,4,13,0.94) 48%);
+  padding: 26px 12px 10px;
+  background: linear-gradient(transparent, rgba(10,5,5,0.94) 48%);
   text-align: left;
   pointer-events: none;
 }
 #screen-select .pane-p2 .pane-plate { text-align: right; }
-/* T8 name banner: big italic condensed display type. */
+/* T7 name banner: big steep-italic condensed display type. */
 #screen-select .pane-name {
   font-family: var(--sk-display, "Arial Narrow", sans-serif);
   font-style: italic;
-  transform: skewX(var(--sk-slant, -7deg));
+  transform: skewX(var(--sk-slant, -10deg));
   transform-origin: left bottom;
-  font-size: clamp(30px, 7.5vw, 58px); font-weight: 900; letter-spacing: 2px;
+  font-size: clamp(26px, 6.5vw, 52px); font-weight: 900; letter-spacing: 2px;
   color: #fff; text-shadow: 0 0 22px var(--sk-p1-soft), 0 2px 8px rgba(0,0,0,0.9);
   line-height: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   text-transform: uppercase;
@@ -148,48 +238,209 @@
   transform-origin: right bottom;
   text-shadow: 0 0 22px var(--sk-p2-soft), 0 2px 8px rgba(0,0,0,0.9);
 }
-/* T8 fact block: colored label chip + value, one column each. */
+#screen-select .pane-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 2px;
+  color: rgba(255,255,255,0.65); text-transform: uppercase; margin-top: 2px;
+}
+#screen-select .pane-style {
+  font-size: 12px; font-weight: 700; letter-spacing: 1px;
+  color: var(--sk-gold, #ffb14d); margin-top: 4px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+/* T7 info block: colored label chip + value (style / archetype / origin). */
 #screen-select .pane-facts {
-  display: flex; gap: 6px 16px; flex-wrap: wrap;
-  margin-top: 8px;
+  display: flex; gap: 6px 14px; flex-wrap: wrap;
+  margin-top: 6px;
 }
 #screen-select .pane-p2 .pane-facts { justify-content: flex-end; }
 #screen-select .fact { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
 #screen-select .fact-lab {
   align-self: flex-start;
   font-size: 9px; font-weight: 900; letter-spacing: 1.5px;
-  padding: 2px 7px; border-radius: 3px;
-  background: var(--sk-p1); color: #14091f;
+  padding: 2px 7px;
+  background: var(--sk-p1, #ff2e2e); color: #160808;
+  clip-path: polygon(4px 0, 100% 0, calc(100% - 4px) 100%, 0 100%);
 }
-#screen-select .pane-p2 .fact-lab { background: var(--sk-p2); color: #fff; }
+#screen-select .pane-p2 .fact-lab { background: var(--sk-p2, #2f9dff); color: #fff; }
 #screen-select .fact-val {
   font-size: 12px; font-weight: 700; letter-spacing: 0.5px;
   color: rgba(255,255,255,0.92);
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 180px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 170px;
 }
 #screen-select .pane-stats { margin-top: 8px; display: grid; grid-template-columns: 1fr 1fr; gap: 3px 14px; max-width: 430px; }
 #screen-select .pane-p2 .pane-stats { margin-left: auto; }
 #screen-select .stat-row { display: flex; align-items: center; gap: 6px; font-size: 10px; }
 #screen-select .stat-lab { flex: 0 0 26px; font-weight: 800; letter-spacing: 1px; opacity: 0.8; }
 #screen-select .stat-bar {
-  flex: 1 1 auto; height: 6px; border-radius: 3px;
+  flex: 1 1 auto; height: 6px;
   background: rgba(255,255,255,0.14); overflow: hidden;
+  clip-path: polygon(3px 0, 100% 0, calc(100% - 3px) 100%, 0 100%);
 }
-#screen-select .stat-bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--sk-p1), var(--sk-gold)); border-radius: 3px; }
-#screen-select .pane-p2 .stat-bar i { background: linear-gradient(90deg, var(--sk-p2), #8a2be2); }
+#screen-select .stat-bar i {
+  display: block; height: 100%;
+  background: linear-gradient(90deg, var(--sk-p1, #ff2e2e), var(--sk-gold, #ffb14d));
+}
+#screen-select .pane-p2 .stat-bar i { background: linear-gradient(90deg, var(--sk-p2, #2f9dff), #8a2be2); }
 #screen-select .stat-val { flex: 0 0 30px; text-align: right; font-weight: 700; opacity: 0.9; }
-#screen-select .pane-attires { pointer-events: auto; justify-content: flex-start; margin-top: 8px; flex-wrap: wrap; }
+/* Attire chips: T7's on-screen costume presets. 48px+ touch targets. */
+#screen-select .pane-attires {
+  pointer-events: auto; justify-content: flex-start; margin-top: 8px;
+  flex-wrap: wrap; display: flex; gap: 6px;
+}
 #screen-select .pane-p2 .pane-attires { justify-content: flex-end; }
-#screen-select .pane-attires .attire-chip[disabled] { opacity: 0.55; cursor: default; }
+#screen-select .attire-chip {
+  min-height: 48px; padding: 8px 12px;
+  font-size: 10px; font-weight: 800; letter-spacing: 1px;
+  color: rgba(255,255,255,0.9); background: rgba(10,5,5,0.8);
+  border: 2px solid rgba(255,255,255,0.22);
+  clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+  cursor: pointer; touch-action: manipulation; white-space: nowrap;
+}
+#screen-select .attire-chip.on { border-color: var(--sk-gold, #ffb14d); color: var(--sk-gold, #ffb14d); }
+#screen-select .attire-chip[disabled] { opacity: 0.55; cursor: default; }
 
-/* ---------- hints bar (T8 bottom-prompts fashion) ---------- */
+/* ---------- T7 GRID: the 2-row portrait field ----------
+   T7's signature: portrait panels in exactly 2 rows, column-major
+   flow, horizontal scroll inside its own box — the ONLY scrolling
+   element on the screen. Panels carry the portrait + the fighter's
+   name (in-universe: WH names only). */
+#screen-select .grid-wrap {
+  min-height: 0; min-width: 0;
+  position: relative; z-index: 5;
+  background: linear-gradient(180deg, rgba(10,5,5,0.88), rgba(10,5,5,0.96));
+  border-top: 2px solid rgba(255,46,46,0.4);
+  border-bottom: 2px solid rgba(255,46,46,0.4);
+  box-sizing: border-box;
+  overflow-x: auto; overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  scroll-snap-type: x proximity;
+}
+@media (min-width: 900px), (orientation: landscape) and (min-height: 500px) {
+  #screen-select .grid-wrap {
+    border: 2px solid rgba(255,46,46,0.4);
+    align-self: center;
+    height: min(72%, 520px);
+  }
+}
+#screen-select #char-grid.card-grid {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  grid-auto-columns: minmax(var(--sk-card-min, 96px), 1fr);
+  gap: var(--sk-grid-gap, 8px);
+  height: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  align-content: stretch;
+  width: max-content;
+  min-width: 100%;
+}
+/* Slim in-flow tier dividers (display-order law, documented deviation —
+   T7's grid has no tiers; ours keeps Tripo-first visible). */
+#screen-select .grid-tier {
+  grid-row: 1 / -1;
+  display: flex; align-items: center; justify-content: center;
+  min-width: 30px;
+  scroll-snap-align: start;
+}
+#screen-select .grid-tier span {
+  writing-mode: vertical-rl; transform: rotate(180deg);
+  font-weight: 900; font-size: 10px; letter-spacing: 4px;
+  color: var(--sk-gold, #ffb14d); opacity: 0.9; white-space: nowrap;
+}
+/* T7 portrait panel: angular clipped frame (the frame IS the 2px
+   padding showing through the clip), portrait + italic name. */
+#screen-select .card-grid .char-card {
+  position: relative;
+  min-width: 0; min-height: 0;
+  display: flex; flex-direction: column;
+  padding: 2px;
+  background: var(--sk-card-frame, rgba(255,255,255,0.14));
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  cursor: pointer; touch-action: manipulation;
+  scroll-snap-align: start;
+  transition: transform 0.12s ease-out, background-color 0.12s ease-out, filter 0.12s ease-out;
+}
+#screen-select .card-grid .char-card .portrait {
+  position: relative;
+  flex: 1 1 auto; min-height: 0;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 28%, rgba(255,46,46,0.16), rgba(10,5,5,0.92));
+}
+#screen-select .card-grid .char-card .portrait img {
+  width: 100%; height: 100%; object-fit: cover; object-position: 50% 16%;
+  display: block;
+}
+#screen-select .card-grid .char-card .mono {
+  position: absolute; inset: 0; display: none;
+  align-items: center; justify-content: center;
+  font-size: 26px; font-weight: 900; letter-spacing: 2px; color: rgba(255,255,255,0.5);
+}
+#screen-select .card-grid .char-card .portrait.no-portrait .mono { display: flex; }
+#screen-select .card-grid .char-card .cname {
+  flex: 0 0 auto;
+  font-family: var(--sk-display, "Arial Narrow", sans-serif);
+  font-style: italic; font-weight: 900;
+  font-size: 12px; letter-spacing: 1px; text-align: center;
+  text-transform: uppercase; color: #fff;
+  background: rgba(10,5,5,0.94);
+  padding: 5px 2px 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+/* Tekken 3 aperture rule: the cursor card renders LARGER than neighbours. */
+#screen-select .card-grid .char-card.cursor-p1,
+#screen-select .card-grid .char-card.cursor-p2 {
+  transform: scale(1.07);
+  z-index: 2;
+}
+#screen-select .card-grid .char-card.cursor-p1 {
+  background: var(--sk-p1, #ff2e2e);
+  filter: drop-shadow(0 0 10px var(--sk-p1-soft, rgba(255,46,46,0.55)));
+}
+#screen-select .card-grid .char-card.cursor-p2 {
+  background: var(--sk-p2, #2f9dff);
+  filter: drop-shadow(0 0 10px var(--sk-p2-soft, rgba(47,157,255,0.55)));
+  animation: card-pulse-p2 1.6s ease-in-out infinite;
+}
+@keyframes card-pulse-p2 {
+  0%, 100% { filter: drop-shadow(0 0 7px var(--sk-p2-soft, rgba(47,157,255,0.55))); }
+  50% { filter: drop-shadow(0 0 16px var(--sk-p2, #2f9dff)); }
+}
+#screen-select .card-grid .char-card.locked-p1 { background: var(--sk-p1, #ff2e2e); }
+#screen-select .card-grid .char-card.locked-p2 { background: var(--sk-p2, #2f9dff); }
+#screen-select .card-grid .char-card.locked-p1::after,
+#screen-select .card-grid .char-card.locked-p2::after {
+  position: absolute; top: 5px; left: 0; z-index: 3;
+  font-family: var(--sk-display, "Arial Narrow", sans-serif);
+  font-style: italic; font-size: 11px; font-weight: 900; letter-spacing: 1px;
+  padding: 2px 8px 2px 6px; color: #160808;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+}
+#screen-select .card-grid .char-card.locked-p1::after { content: '1P'; background: var(--sk-p1, #ff2e2e); }
+#screen-select .card-grid .char-card.locked-p2::after { content: '2P'; background: var(--sk-p2, #2f9dff); color: #fff; }
+#screen-select .card-grid .char-card.in-team { background: rgba(255,177,77,0.7); }
+#screen-select .card-grid .random-card .portrait { display: flex; align-items: center; justify-content: center; }
+#screen-select .card-grid .random-card .qmark {
+  font-family: var(--sk-display, "Arial Narrow", sans-serif);
+  font-style: italic; font-size: 44px; font-weight: 900; color: rgba(255,255,255,0.8);
+  text-shadow: 0 0 18px rgba(255,46,46,0.9);
+}
+#screen-select .card-grid .char-card.kb-focus { outline: 3px solid var(--sk-gold, #ffb14d); outline-offset: 2px; }
+/* Tap flash: a quick T7-style selection pulse on the tapped card. */
+#screen-select .card-grid .char-card.tap-flash { animation: tap-flash 0.35s ease-out; }
+@keyframes tap-flash {
+  0% { filter: brightness(2.2); }
+  100% { filter: brightness(1); }
+}
+
+/* ---------- hints bar (T7 bottom prompts) ---------- */
 #screen-select .hints-bar {
   flex: 0 0 auto;
-  min-height: 58px;
+  min-height: 60px;
   display: flex; align-items: center; gap: 10px;
   padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
-  background: var(--sk-hint-bg, rgba(10,6,18,0.96));
-  border-top: 2px solid rgba(139,43,216,0.4);
+  background: linear-gradient(180deg, rgba(10,5,5,0.6), var(--sk-hint-bg, rgba(12,5,5,0.96)));
+  border-top: 2px solid rgba(255,46,46,0.4);
   z-index: 5;
   box-sizing: border-box;
 }
@@ -199,170 +450,202 @@
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 #screen-select .hint-btn {
-  flex: 0 0 auto; min-height: 44px; padding: 8px 12px;
-  border-radius: 999px; border: 2px solid rgba(255,255,255,0.25);
-  background: rgba(7,4,13,0.75); color: rgba(255,255,255,0.88);
+  flex: 0 0 auto; min-height: 48px; padding: 8px 14px;
+  border: 2px solid rgba(255,255,255,0.25);
+  background: rgba(10,5,5,0.8); color: rgba(255,255,255,0.88);
   font-size: 11px; font-weight: 800; letter-spacing: 1.5px;
   cursor: pointer; touch-action: manipulation; white-space: nowrap;
   display: inline-flex; align-items: center; gap: 7px;
+  clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
 }
 #screen-select .hint-btn .key {
   font-style: normal;
-  min-width: 22px; height: 22px; border-radius: 50%;
+  min-width: 24px; height: 24px;
   display: inline-flex; align-items: center; justify-content: center;
   background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.4);
   font-size: 11px; padding: 0 4px;
+  clip-path: polygon(5px 0, 100% 0, calc(100% - 5px) 100%, 0 100%);
 }
-#screen-select .hint-btn:active { transform: scale(0.94); border-color: var(--sk-gold); color: var(--sk-gold); }
+#screen-select .hint-btn:active { transform: scale(0.94); border-color: var(--sk-gold, #ffb14d); color: var(--sk-gold, #ffb14d); }
 #screen-select .hints-bar #confirm-fighter { flex: 0 0 auto; min-height: 48px; }
 
-/* ---------- T8 GRID: the ONLY scrolling element ----------
-   Compact centered multi-row grid of small square portrait cards.
-   T8 keeps the icons small relative to everything else with room
-   to expand; the grid scrolls inside its own box. */
-#screen-select .grid-wrap {
+/* ============================================================
+   STAGE SELECT — T7's "CHOOSE YOUR STAGE"
+   Big preview pane with the stage-name banner; ONE horizontal strip
+   of stage cards (thumbnail + name); "?" random card in the strip;
+   footer hints + CONFIRM. The strip scrolls inside its own box.
+   ============================================================ */
+#screen-stage.select-screen {
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(ellipse at 50% 108%, #1c0f0f 0%, transparent 55%),
+    linear-gradient(180deg, #0a0505 0%, #120707 60%, #0a0505 100%);
+  font-family: system-ui, sans-serif;
+  color: #f6f0ea;
+}
+#screen-stage .select-header {
   flex: 0 0 auto;
-  height: clamp(240px, 40vh, 460px);
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 14px 8px;
+  border-bottom: 2px solid rgba(255,46,46,0.35);
+  background: linear-gradient(180deg, rgba(10,5,5,0.9), rgba(10,5,5,0.55));
+}
+#screen-stage .select-header h2 {
+  flex: 1 1 auto; text-align: center; margin: 0;
+  font-family: "Arial Narrow", "Helvetica Neue", Helvetica, sans-serif;
+  font-style: italic; transform: skewX(-10deg);
+  font-size: clamp(20px, 5.2vw, 40px); font-weight: 900;
+  letter-spacing: 4px; text-transform: uppercase; color: #fff;
+  text-shadow: 0 2px 0 rgba(255,46,46,0.55), 0 4px 18px rgba(0,0,0,0.9);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+#screen-stage .select-header h2::after {
+  content: ''; display: block; height: 4px; margin: 4px auto 0;
+  width: min(320px, 60%);
+  background: linear-gradient(90deg, transparent, #ff2e2e 30%, #ff2e2e 70%, transparent);
+  transform: skewX(-32deg);
+}
+#screen-stage .select-back { min-height: 48px; }
+#screen-stage .stage-body {
+  flex: 1 1 auto; min-height: 0;
+  display: flex; flex-direction: column;
+}
+/* T7's big stage preview: media left, name banner + info right. */
+#screen-stage .stage-preview-pane {
+  flex: 0 1 auto;
+  display: flex; gap: 14px; align-items: stretch;
+  padding: 12px 14px;
   min-height: 0;
-  background: rgba(7,4,13,0.96);
-  border-top: 2px solid rgba(139,43,216,0.4);
-  z-index: 5;
-  box-sizing: border-box;
-  overflow-y: auto; overflow-x: hidden;
+}
+#screen-stage .stage-preview-media {
+  flex: 0 0 min(46%, 420px);
+  min-height: 120px;
+  position: relative; overflow: hidden;
+  background: #160c0c;
+  border: 2px solid rgba(255,46,46,0.35);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%);
+}
+#screen-stage .stage-preview-media img,
+#screen-stage #stage-preview-swatch {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+#screen-stage .stage-preview-info {
+  flex: 1 1 auto; min-width: 0;
+  display: flex; flex-direction: column; justify-content: center; gap: 6px;
+}
+#screen-stage #stage-preview-name {
+  font-family: "Arial Narrow", "Helvetica Neue", Helvetica, sans-serif;
+  font-style: italic; transform: skewX(-10deg); transform-origin: left center;
+  font-size: clamp(22px, 5vw, 40px); font-weight: 900; letter-spacing: 2px;
+  text-transform: uppercase; color: #fff;
+  text-shadow: 0 0 20px rgba(255,46,46,0.5), 0 2px 8px rgba(0,0,0,0.9);
+  line-height: 1.05;
+}
+#screen-stage #stage-preview-universe {
+  font-size: 11px; font-weight: 800; letter-spacing: 2px;
+  color: #ffb14d; text-transform: uppercase;
+}
+#screen-stage #stage-preview-desc {
+  font-size: 12px; line-height: 1.45; color: rgba(255,255,255,0.72);
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+/* T7's horizontal stage strip — the ONLY scrolling element here. */
+#screen-stage #stage-grid.stage-grid {
+  flex: 0 0 auto;
+  display: flex; gap: 10px;
+  overflow-x: auto; overflow-y: hidden;
+  padding: 12px 14px calc(12px + env(safe-area-inset-bottom));
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
-}
-#screen-select #char-grid.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(var(--sk-card-min, 76px), 1fr));
-  gap: var(--sk-grid-gap, 6px);
-  max-width: var(--sk-grid-maxw, 920px);
-  margin: 0 auto;
-  padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+  scroll-snap-type: x proximity;
+  border-top: 2px solid rgba(255,46,46,0.4);
+  background: rgba(10,5,5,0.9);
   box-sizing: border-box;
-  align-content: start;
 }
-/* WH adaptation (display-order law): slim full-width tier dividers
-   keep the Tripo-first ordering visible. T8 has no tiers; ours do. */
-#screen-select .grid-tier {
-  grid-column: 1 / -1;
-  display: flex; align-items: center; gap: 10px;
-  font-weight: 800; font-size: 10px; letter-spacing: 3px;
-  color: var(--sk-gold); opacity: 0.9;
-  padding: 8px 2px 2px;
-}
-#screen-select .grid-tier::after {
-  content: ''; flex: 1 1 auto; height: 1px;
-  background: linear-gradient(90deg, rgba(255,177,77,0.5), transparent);
-}
-#screen-select .card-grid .char-card {
-  position: relative;
-  min-width: 0;
+#screen-stage .stage-card {
+  flex: 0 0 196px;
+  min-height: 150px;
   display: flex; flex-direction: column;
-  background: var(--sk-card-bg);
-  border: 2px solid var(--sk-card-frame);
-  border-radius: var(--sk-card-radius, 4px);
-  overflow: hidden;
+  padding: 2px;
+  background: rgba(255,255,255,0.14);
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
   cursor: pointer; touch-action: manipulation;
-  transition: transform 0.12s ease-out, border-color 0.12s ease-out, box-shadow 0.12s ease-out;
+  scroll-snap-align: start;
+  transition: transform 0.12s ease-out, background-color 0.12s ease-out;
 }
-#screen-select .card-grid .char-card .portrait {
-  position: relative;
-  width: 100%; aspect-ratio: 1 / 1;
-  overflow: hidden;
-  background: radial-gradient(ellipse at 50% 30%, rgba(139,43,216,0.3), rgba(7,4,13,0.9));
+#screen-stage .stage-card .sthumb,
+#screen-stage .stage-card .swatch {
+  flex: 0 0 auto;
+  width: 100%; aspect-ratio: 16 / 9;
+  background-size: cover; background-position: center;
 }
-#screen-select .card-grid .char-card .portrait img {
-  width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%;
-  display: block;
+#screen-stage .stage-card .swatch.random-swatch {
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #3a1212, #120707);
 }
-#screen-select .card-grid .char-card .mono {
-  position: absolute; inset: 0; display: none;
-  align-items: center; justify-content: center;
-  font-size: 24px; font-weight: 900; letter-spacing: 2px; color: rgba(255,255,255,0.5);
+#screen-stage .stage-card .qmark {
+  font-family: "Arial Narrow", sans-serif; font-style: italic;
+  font-size: 40px; font-weight: 900; color: rgba(255,255,255,0.8);
+  text-shadow: 0 0 18px rgba(255,46,46,0.9);
 }
-#screen-select .card-grid .char-card .portrait.no-portrait .mono { display: flex; }
-#screen-select .card-grid .char-card .cname {
-  font-size: 10px; font-weight: 800; letter-spacing: 0.5px; text-align: center;
-  padding: 4px 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+#screen-stage .stage-card .sname {
+  font-family: "Arial Narrow", sans-serif; font-style: italic; font-weight: 900;
+  font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: #fff;
+  background: rgba(10,5,5,0.94);
+  padding: 6px 8px 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
-/* Tekken 3 aperture rule: the selected card is BIGGER than its neighbours. */
-#screen-select .card-grid .char-card.cursor-p1,
-#screen-select .card-grid .char-card.cursor-p2 {
-  transform: scale(1.1);
-  z-index: 2;
+#screen-stage .stage-card .suniverse {
+  font-size: 9px; font-weight: 700; letter-spacing: 1.5px;
+  text-transform: uppercase; color: rgba(255,255,255,0.55);
+  background: rgba(10,5,5,0.94);
+  padding: 0 8px 7px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
-#screen-select .card-grid .char-card.cursor-p1 {
-  border-color: var(--sk-p1);
-  box-shadow: 0 0 20px var(--sk-p1-soft), inset 0 0 0 1px var(--sk-p1-soft);
+#screen-stage .stage-card.selected {
+  background: #ff2e2e;
+  transform: scale(1.04);
+  filter: drop-shadow(0 0 10px rgba(255,46,46,0.55));
 }
-#screen-select .card-grid .char-card.cursor-p2 {
-  border-color: var(--sk-p2);
-  box-shadow: 0 0 20px var(--sk-p2-soft), inset 0 0 0 1px var(--sk-p2-soft);
-  animation: card-pulse-p2 1.6s ease-in-out infinite;
+#screen-stage .stage-card.kb-focus { outline: 3px solid #ffb14d; outline-offset: 2px; }
+#screen-stage .select-footer {
+  flex: 0 0 auto;
+  min-height: 60px;
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
+  background: linear-gradient(180deg, rgba(10,5,5,0.6), rgba(12,5,5,0.96));
+  border-top: 2px solid rgba(255,46,46,0.4);
+  box-sizing: border-box;
 }
-@keyframes card-pulse-p2 {
-  0%, 100% { box-shadow: 0 0 14px var(--sk-p2-soft), inset 0 0 0 1px var(--sk-p2-soft); }
-  50% { box-shadow: 0 0 26px var(--sk-p2-soft), inset 0 0 0 1px var(--sk-p2); }
+#screen-stage .select-footer #stage-hint {
+  flex: 1 1 auto; text-align: center;
+  font-size: 12px; letter-spacing: 1px; opacity: 0.9;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
-#screen-select .card-grid .char-card.locked-p1 { border-color: var(--sk-p1); }
-#screen-select .card-grid .char-card.locked-p2 { border-color: var(--sk-p2); }
-#screen-select .card-grid .char-card.locked-p1::after,
-#screen-select .card-grid .char-card.locked-p2::after {
-  position: absolute; top: 3px; right: 3px; z-index: 3;
-  font-size: 9px; font-weight: 900; letter-spacing: 1px;
-  padding: 2px 5px; border-radius: 4px; color: #14091f;
-}
-#screen-select .card-grid .char-card.locked-p1::after { content: 'P1'; background: var(--sk-p1); }
-#screen-select .card-grid .char-card.locked-p2::after { content: 'P2'; background: var(--sk-p2); color: #fff; }
-#screen-select .card-grid .char-card.in-team { border-color: rgba(255,177,77,0.7); }
-#screen-select .card-grid .random-card .portrait { display: flex; align-items: center; justify-content: center; }
-#screen-select .card-grid .random-card .qmark {
-  font-size: 40px; font-weight: 900; color: rgba(255,255,255,0.75);
-  text-shadow: 0 0 16px rgba(139,43,216,0.9);
-}
-#screen-select .card-grid .char-card.kb-focus { outline: 3px solid var(--sk-gold); outline-offset: 2px; }
-/* Tap flash: a quick T8-style selection pulse on the tapped card. */
-#screen-select .card-grid .char-card.tap-flash { animation: tap-flash 0.35s ease-out; }
-@keyframes tap-flash {
-  0% { filter: brightness(2.2); }
-  100% { filter: brightness(1); }
-}
+#screen-stage #random-stage { min-height: 48px; }
+#screen-stage #confirm-stage { min-height: 48px; }
 
-/* ---------- desktop: T8 floating grid over the stage ---------- */
-@media (min-width: 900px) {
-  #screen-select .fighters-zone { flex: 1 1 auto; }
-  #screen-select .grid-wrap {
-    flex: none;
-    position: absolute; z-index: 6;
-    left: 50%; transform: translateX(-50%);
-    bottom: 72px; /* clears the fixed-height hints bar */
-    width: min(var(--sk-grid-maxw, 920px), 94%);
-    max-height: 46%;
-    border: 2px solid rgba(139,43,216,0.4);
-    border-radius: 10px;
-    background: rgba(7,4,13,0.88);
-    box-shadow: 0 12px 44px rgba(0,0,0,0.6);
-  }
-  #screen-select .pane-name { font-size: clamp(38px, 4.2vw, 58px); }
-}
-
-/* ---------- small / landscape phones ---------- */
-@media (orientation: landscape) and (max-height: 500px) {
-  #screen-select .grid-wrap { flex-basis: 52%; }
-  #screen-select .pane-name { font-size: 24px; }
-  #screen-select .pane-stats { display: none; }
-  #screen-select .pane-plate { padding: 20px 10px 6px; }
-  #screen-select .hints-bar { min-height: 50px; padding: 5px 10px; }
-  #screen-select .hints-bar #confirm-fighter { min-height: 40px; }
-  #screen-select .hint-btn { min-height: 38px; }
-  #screen-select .fact-val { max-width: 120px; }
-}
+/* ---------- small phones ---------- */
 @media (max-width: 480px) {
-  #screen-select .pane-stats { grid-template-columns: 1fr; gap: 2px; }
+  #screen-select .pane-stats { display: none; }
   #screen-select .pane-facts { gap: 4px 10px; }
-  #screen-select .fact-val { font-size: 11px; max-width: 130px; }
+  #screen-select .fact-val { font-size: 11px; max-width: 120px; }
+  #screen-select .pane-name { font-size: clamp(22px, 7vw, 30px); }
   #screen-select .hints-bar #select-hint { font-size: 11px; }
-  #screen-select .hint-btn { padding: 8px 9px; font-size: 10px; }
-  #screen-select .select-header h2 { font-size: 15px; }
+  #screen-select .hint-btn { padding: 8px 10px; font-size: 10px; }
+  #screen-select .attire-chip { min-height: 48px; padding: 8px 10px; font-size: 9px; }
+  #screen-stage .stage-preview-pane { flex-direction: column; gap: 8px; }
+  #screen-stage .stage-preview-media { flex-basis: auto; min-height: 110px; }
+  #screen-stage .stage-card { flex-basis: 160px; min-height: 132px; }
+}
+/* ---------- short landscape phones ---------- */
+@media (orientation: landscape) and (max-height: 500px) {
+  #screen-select .pane-stats, #screen-select .pane-facts { display: none; }
+  #screen-select .pane-plate { padding: 18px 10px 6px; }
+  #screen-select .pane-name { font-size: 22px; }
+  #screen-select .hints-bar { min-height: 52px; padding: 5px 10px; }
+  #screen-select .hints-bar #confirm-fighter, #screen-select .hint-btn { min-height: 44px; }
 }
