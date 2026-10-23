@@ -45,11 +45,12 @@ zack + m_zack at full scope — moot, all classes falsified.
 | ii K=2 | k = f(tag, item index mod 2) | — | — | **17,601 / 17,688** | FALSIFIED |
 | ii K=3 | k = f(tag, item index mod 3) | — | — | **16,102 / 17,688** | FALSIFIED |
 | ii K=4 | k = f(tag, item index mod 4) | 658 | 543 | **17,602 / 17,688** | FALSIFIED |
-| ii K=5 | k = f(tag, item index mod 5) | — | — | (see state file) | (see state file) |
-| ii K=6 | k = f(tag, item index mod 6) | — | — | (see state file) | (see state file) |
+| ii K=5 | k = f(tag, item index mod 5) | 3,080 | 2,439 | **17,458 / 17,688** | FALSIFIED |
+| ii K=6 | k = f(tag, item index mod 6) | 1,261 | 1,025 | **17,568 / 17,688** | FALSIFIED |
 | iv | k = f(tag, block's first u16) | 1,992 | 1,954 | **15,652 / 17,688** | FALSIFIED |
 | v | k = f(tag, channel index) | 729 | 608 | **17,601 / 17,688** | FALSIFIED |
 | 0 widened | k = f(tag), k in {0,1,2,3} | 65,458 | 4,333 | 0 | UNFALSIFIABLE by tiling (61,125 keys ambiguous) — see §3 |
+| i widened | k = f(tag, prev tag), k in {0,1,2,3} | — | — | — | NOT COMPLETED in-lane (compute-bound; immaterial: §3 shows widening destroys falsifiability, so this run could at best return 'unfalsifiable', never a proof) |
 | count-header | first u16 = item count | — | — | only 2,117 / 17,688 blocks count-feasible | REFUTED |
 
 Class (iii) bit-packed / interleaved-control probes: word
