@@ -3028,3 +3028,36 @@ tools/vf5/merge_wol_head.py (new). Additions only.
 **Deviations:** none from the directive — all three items are wired where they can run; GPU/Python-only parts (Taichi SurRoL, Newton/Warp, Cosmos-H Dreams, NDG trained network) are evaluated and documented as [AWAITS GPU LANE]/[FUTURE], not silently dropped. NDG is CC BY-NC: technique reference only, zero code copied.
 
 **Process note:** mid-task the shared checkout `~/workspace/wh-repo` was concurrently switched to another agent's branch (`feature/cloth-xpbd-20261023`) with their uncommitted work; my uncommitted changes were extracted as a verified-pure patch to /tmp/softbody-save and all further work continued in the clean full worktree `~/workspace/wh-softbody` (67,875 files == HEAD, verified). Their work was not touched.
+
+## 2026-10-22 ~19:10 CDT — worker 70: disk-cleanup archive sweep (tpose-delivery + render intermediates)
+
+- Coordination: worker 67's PR #715 (`archive/negativo-eye-glow-20261022`) already
+  archives negativo A1/A2 + Cornerstone(Ryuji Rock) A1 immutable originals + manifests
+  + intake note + immutable-original tags. Byte-verified 3/3 GLBs against staging via
+  git blob SHA — exact matches. NOT re-archived here (no duplicate bytes).
+- Byte-check vs PR #703: all 12 buffalo-bill/theory source files (6 GLBs + 6 manifests)
+  match #703's blobs by git SHA exactly; every `tpose-delivery/` buffalo-bill/theory
+  render is byte-identical to #703's `docs/proof/buffalo-bill-theory-2026-10-22/` renders
+  (the `*-v2..v5` variants are duplicate copies of the same bytes). Nothing re-archived.
+- This PR (`archive/negativo-cornerstone-tpose-20261022`, MERGE FREEZE — merge-ready,
+  not merged) archives what NEITHER #703 nor #715 covered:
+  - Proof renders → `docs/proof/tpose-delivery-2026-10-22/`:
+    `negativo-a1-front.png`, `negativo-a2-front.png`, `ryuji-rock-a1-front.png`,
+    `parvati-tpose.png` — all byte-verified against staging.
+  - The 6 `*-render.glb` intermediates from buffalo-bill/theory staging (~87 MB)
+    under each attire's `source/` dir as `*-render.glb` — deliberate deviation from the
+    immutable-originals pattern, called out: the sweep's delete rule
+    ("delete ONLY after 100% byte-confirmed in repo, no exceptions") requires them in
+    the repo before the staging disk can be reclaimed. Regenerable from originals.
+  - Sweep note: `docs/research/disk-cleanup-sweep-2026-10-22.md` (byte-verification
+    record; archive only, no canon invented).
+- `roster/TRIPO-REGISTRY.md`: added ARCHIVE-THEN-CLEAN PIPELINE LAW section
+  (owner directive 2026-10-22 — all future Tripo pulls auto-archive to the repo as
+  immutable originals + manifest + proof renders; staging cleaned only after
+  byte-confirmation) + negativo/ryuji-rock registry rows.
+- Merge note: #715 and this PR both append to WORKLOG.md / touch TRIPO-REGISTRY.md —
+  if #715 merges first, rebase this branch before merging (no content conflicts
+  expected; disjoint file paths otherwise).
+- Disk reclaimed after 100% byte-confirmation: tripo-staging/negativo (49M) +
+  tripo-staging/cornerstone (19M) + tripo-staging/buffalo-bill (68M) +
+  tripo-staging/theory (136M) + tpose-delivery (9.5M).
