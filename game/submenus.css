@@ -248,3 +248,9 @@
   .tk-rows { display: grid; grid-template-columns: 1fr 1fr; gap: 0 22px; align-content: start; }
   .tk-sect { grid-column: 1 / -1; }
 }
+
+/* ---------- OPTIONS (PR2 · T7 OPTION MENU) ---------- */
+#wh-options { display: none; }
+#wh-options.show { display: block; }
+#wh-options .tk-screen { height: 100%; }
+#wh-options .tk-sub { padding: 8px 14px 0; }
