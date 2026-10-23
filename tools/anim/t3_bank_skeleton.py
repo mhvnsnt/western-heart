@@ -45,6 +45,12 @@ BANKS = {
     "bosconovitch": "lab/game/assets/t3_bosconovitch_t3real.glb",
     "heihachi": "lab/game/assets/t3_heihachi_t3real.glb",
     "armorking": "lab/game/assets/t3_armorking_t3real.glb",
+    # Last banks (2026-10-23): baked by tools/anim/t3_bake_bank.py onto each character's own body
+    # (lab/game/assets/t3body_<bank>.glb, tools/anim/t3_extract_bodies.py).
+    "ogre": "lab/game/assets/t3_ogre_t3real.glb",
+    "kuma": "lab/game/assets/t3_kuma_t3real.glb",
+    "gon": "lab/game/assets/t3_gon_t3real.glb",
+    "law": "lab/game/assets/t3_law_t3real.glb",
 }
 # ---------------------------------------------------------------------------
 # NEUTRAL_BIND (2026-10-22, star segment-flip fix): the T3 18-part import

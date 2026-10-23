@@ -1093,7 +1093,10 @@ class AssetManager {
       // Join an in-flight load instead of doubling it — unless this call
       // carries its own abort signal (a preview tap owns its fetch so a
       // newer tap can cancel it without disturbing other consumers).
-      if (fly && !opts.signal) { jobs.push(fly.promise); continue; }
+      // Never join a load that was just aborted (the idle warm lane, cancelled above by this
+      // same call): joining it made a fight reject with AbortError whenever its fighter was
+      // still warming (2026-10-23, Pantera: "fight load failed: BodyStreamBuffer was aborted").
+      if (fly && !opts.signal && !fly.signal.aborted) { jobs.push(fly.promise); continue; }
       jobs.push(this._loadOne(id, onProgress, unique.length, opts));
     }
     let done = 0;
@@ -1109,7 +1112,7 @@ class AssetManager {
   /* One model: fetch (abort-aware, byte-progress) -> parseAsync ->
      _ingest. Aborts never retry; other failures retry once. */
   _loadOne(id, onProgress, total, opts) {
-    if (this._inflight[id] && !opts.signal) return this._inflight[id].promise;
+    if (this._inflight[id] && !opts.signal && !this._inflight[id].signal.aborted) return this._inflight[id].promise;
     const ctrl = new AbortController();
     if (opts.signal) {
       if (opts.signal.aborted) ctrl.abort(opts.signal.reason);
@@ -1165,7 +1168,7 @@ class AssetManager {
     const tracked = run.finally(() => {
       if (this._inflight[id] && this._inflight[id].promise === tracked) delete this._inflight[id];
     });
-    this._inflight[id] = { promise: tracked, abort: () => ctrl.abort() };
+    this._inflight[id] = { promise: tracked, abort: () => ctrl.abort(), signal: ctrl.signal };
     return tracked;
   }
 

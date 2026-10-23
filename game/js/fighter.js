@@ -136,6 +136,9 @@ export function bankIdFor(charId, movesetId) {
     awapop: 'nina', torch: 'anna', kingtyrant: 'eddy', kai: 'eddy',
     tou: 'paul', gyou: 'hwoarang', zen: 'julia', rave: 'lei',
     yukihyo: 'armorking', nightwolf: 'julia',
+    // 2026-10-23 (Claude session): the last decoded T3 banks (tools/anim/t3_bake_bank.py). These movesets
+    // name their source as a teardown path or not at all, so bind each to its base's own bank here.
+    chatur: 'ogre', dorowani: 'gon', menajerii: 'kuma',
   };
   if (Object.prototype.hasOwnProperty.call(FIGHTER_BANK, charId)) return FIGHTER_BANK[charId];
   let src = null;

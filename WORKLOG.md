@@ -2258,3 +2258,20 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 **Verification:** all 17 new moves resolve via the game's own `resolveMove('chordz', …)`; `node --test game/tests/fighter-completeness.test.mjs` green (4/4); new-move schema + source-id refs validated; jin bank clip files all parse with frames. Live-browser play verification (animations on Chordz in-game) is queued for a browser-capable lane — subagent has no live browser.
 
 **Anti-clobber:** branched from main tip; sibling lane's WIP stashed intact; JSON edits via round-trip-safe scripted merges (diffs are additions-only); no deletions. Branch pushed via Git Database API (no GitHub connector for git ops).
+## 2026-10-23 — Claude session: T3 banks ogre/kuma/gon/law decoded; SmutBase rigs wired; loader race
+
+- SmutBase: Chatur, Pond, Megami (crew rigs, facing +Z), Menajerii (crew rig minus a skinned 4.23 m floor plane),
+  Ryusan + Tobi (re-rigged from statics stood upright by the new tools/auto_rig/reorient_static.py). PR #804.
+  Proof: docs/proof/claude-2026-10-23/smutbase/.
+- T3 banks: tools/anim/t3_bake_bank.py (new) decoded divmot14_ogre, divmot11_kuma, divmot19_gon, divmot01_law onto each
+  character's own body (t3body_<bank>.glb), 30 clips each; skeleton.json via t3_bank_skeleton.py; rows.pack.json via
+  t3_row_bake.py (ogre 187, gon 147, kuma 161, law 216 rows). Registered in t3anims.js (T3_BANKS, SOURCE_TO_BANK incl.
+  panda->kuma) and fighter.js FIGHTER_BANK (chatur->ogre, dorowani->gon, menajerii->kuma). Buffalo Bill resolves to law.
+  Forest Law: body fit fails on all four KMD costumes; follow-up via --kmd-from law.
+- game/js/assets.js: loadModels no longer joins an in-flight load that it just aborted (idle lane) — fights with a
+  still-warming fighter (Pantera) failed with AbortError.
+- Verified: Chatur vs Pantera arcade fight on the ogre bank (t3_ogre_stance/walkFwd/row50/medium), no page errors.
+  Proof: docs/proof/claude-2026-10-23/t3-banks/.
+- Found, handed to the crew: Megami, Menajerii, Ryusan, Tobi have movesets + models but NO roster entries in
+  game/js/roster-full.js (not selectable). Pond/Megami/Ryusan bases (Raven T7, Jun TTT2, Lucky Chloe T7) have no
+  decoded animation bank anywhere in the repo.
