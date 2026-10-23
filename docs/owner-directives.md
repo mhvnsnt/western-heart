@@ -296,7 +296,7 @@ Tripo 3D models show FIRST and foremost for every fighter; Tekken attires/models
 - Canon principle: movesets are Tekken bones, canon gives them souls — don't flatten characters to their moveset archetype.
 
 ## Moveset source law (standing, 2026-10-22)
-Movesets may ONLY come from Tekken fighters nobody has claimed. Taken: King, Armor King, Akuma, Shaheen, Lars, Zafina, Bosconovitch, Yoshimitsu, Lee Chaolan, Ling Xiaoyu, Eddy/Christie, Feng Wei (Birodo). Free: True Ogre, Lucky Chloe, Hwoarang, Raven, Jun Kazama, Craig Marduk, Roger Jr. Verify against the full roster before wiring.
+Movesets may ONLY come from Tekken fighters nobody has claimed. Taken: King, Armor King, Akuma, Shaheen, Lars, Zafina, Bosconovitch, Yoshimitsu, Lee Chaolan, Ling Xiaoyu, Eddy/Christie, Feng Wei (Birodo), Miguel (Bruno). Free: True Ogre, Lucky Chloe, Hwoarang, Raven, Jun Kazama, Craig Marduk, Roger Jr. Verify against the full roster before wiring.
 
 ## VF5 moveset claims — Ashlane four (user locked 2026-10-22, 15:19 CDT)
 VF5 bases claimed for the four locked Ashlane mappings (technical moveset sources only — never canon identities, never named in canon prose): Bannon→Jeffry McWild, El Toro de Oro→Wolf Hawkfield, Pablo→El Blaze, NPC Finxsse→Lei-Fei. Candidates only (NOT locked): Master Sensei→Lau, Sombra Negra→Kage, Cipher→Goh, Aaron Ruben→Akira, Cody→Jacky, Jager→Vanessa, Brutus, Wreck Patterson. Unmapped: Triple XXX, Echo, Hollow, Static, Stickup, Onyx, Tyneshia, Maime, Edwin Kennedy, Hall Nighter, Stan Combs, Kobra, Viper. Sarah/Pai/Aoi/Eileen (VF5 women) need female Ashlane characters identified.
@@ -340,3 +340,26 @@ Intro sequences and win taunts are never to be replaced. New systems layer on to
   kinpo's). Repointing phantom's key at kinpo's file would ship the wrong
   fighter — refused. The tripo-intake lane must produce a phantom intake rig
   first; the config repoint is a one-line follow-up once it lands.
+
+## Bruno — Miguel moveset claim (user directive 2026-10-22)
+Bruno replaces MIGUEL (Tekken). Full moveset takeover: all of Miguel's moves, stance,
+animations. Miguel was not on the taken list — now claimed. Recorded in the Taken list
+above as "Miguel (Bruno)". Technical claim only: Miguel's identity never appears in
+canon prose. Spec: `docs/research/bruno-miguel-moveset-spec-2026-10-22.md`.
+
+## Bruno Attire 1 archive (worker 74, 2026-10-22)
+User-provided Tripo pull "jack sparrow 3d model"
+(<https://studio.tripo3d.ai/3d-model/b3f9dfb0-2027-4520-aa1f-930fbc6c0c81>) archived to
+`roster/bruno/attires/attire1/source/bruno-a1-jack-sparrow.glb` + `manifest.json`
+(24,432,052 bytes, sha256 `5f1fb5a7…e9906da41`, dorowani #603 pattern). Archive-only:
+unrigged static, NOT wired into MODEL_URLs. Immutable-original annotated tag
+`bruno-a1-original` — "Restore point: these bytes never change." This A1 takes priority
+for all new Bruno rigging work.
+
+## Bruno older model — missing face texture (worker 74, 2026-10-22)
+The pre-existing Bruno model (`game/assets/models/bruno.glb`, landed during the fix2
+round; working copy also at `~/workspace/fix2/western-heart/game/assets/models/bruno.glb`)
+has a MISSING FACE TEXTURE. It needs the texture fix from the T-pose render batch task.
+Do NOT delete it and do NOT confuse it with the new Attire 1 archive above. Per the
+user-definitive NEED-MODELS list (2026-10-22), Bruno needs a model — the A1 archive is
+the path forward; the old file stays as-is until the texture fix lands.
