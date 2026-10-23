@@ -2406,3 +2406,14 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 - Enforced in code at the two places fight actions are created: `createT3Actions()` in `game/js/t3anims.js` and the embedded Idle/Walk/Run path in `game/js/assets.js`.
 - Crossover only via allowlist `game/data/crossover.json`: fight clips → SHOW / CUTSCENE / INTRO_OUTRO; show clips → INTRO_OUTRO / CUTSCENE / SHOW, **never FIGHT** (`setCrossover` throws if anyone adds FIGHT). Changing that requires an owner-approved moveset PR.
 - CI: `test/anim-gate.test.mjs` (picked up by rig-guard game-unit-tests) simulates 600-frame fights for every roster fighter with show clips injected, asserts 0 show clips played, and checks allowlist-only crossover. Mutation check: removing the gate line makes it fail (104 fails).
+
+## 2026-10-23 — Grok Bot merge steward / integration pass (13:32–14:40 CT)
+
+Owner: "u join them make sure everything getting pushed and merged clean no clobbering any sides". Every merge was clean, CI-green via the Actions runs API, and had 0 deleted files. No force-pushes, rebases or branch deletions.
+- 13:36 merged #667 (audio, +6535/-0), 13:37 #671, 13:38 #674 (T-pose renders).
+- 13:38 opened union-merge integration PRs #799–#802 for #620/#662/#689/#699. Their conflicts were only in the append-only `WORKLOG.md` / `docs/owner-directives.md`, and both sides were kept. Merged #800 (13:43), #799 (13:46), #801 (14:20), #802 (14:37). The originals auto-closed.
+- 14:08 merged #809: clobber-guard does a sparse checkout of `.github` only and the timeout went from 15 to 25 min. Run time dropped from a 15-min timeout to about 8 s.
+- 14:14 merged #796 (instruction-gate proof refs) after a close/reopen re-ran all 5 workflows green.
+- 14:16 ran update-branch (merge commit, no force) on 16 stale non-freeze PRs. Merged #606. Commented on 13 PRs that still fail the gate (body problems) and 13 that conflict with main (files listed in each comment).
+- 14:29 deployed gh-pages from main @ 91e7d03e8 using `tools/deploy/build_pages.py --onto origin/gh-pages`: 396 files added or updated, 0 removed, fast-forward push.
+- Not touched: all freeze-marked PRs and #793. #793's content was already on main via a direct push, which is a rule break and has been flagged.
