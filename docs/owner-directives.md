@@ -340,3 +340,11 @@ Intro sequences and win taunts are never to be replaced. New systems layer on to
   kinpo's). Repointing phantom's key at kinpo's file would ship the wrong
   fighter — refused. The tripo-intake lane must produce a phantom intake rig
   first; the config repoint is a one-line follow-up once it lands.
+## Gyou spirit body (user directive 2026-10-22)
+
+> "Gyou spirit for floats behind this like how zen floats behind his, but gyou moves around more aggressively and sporadic than zen does behind his Spirit body. He is the flame Lord (Flaming Angel) and will have various transformation ls and a giant susanoo form with different levels and transformations too"
+
+- Gyou's spirit floats **behind** his spirit body (same setup as Zen's), but moves **more aggressively and sporadically** than Zen's spirit does.
+- Canon: Gyou = **Flame Lord (Flaming Angel)**.
+- Future roadmap: various transformations + a giant **Susanoo form** with different levels and transformations.
+- Source model (Tripo "fiery humanoid 3d model") archived to `roster/gyou/spirit-body/source/` (worker 84, archive-only, not wired into MODEL_URLS); restore tag `gyou-spirit-body-original` ("Restore point: these bytes never change"). Spec for the future rig/anim lane: `roster/gyou/spirit-body/SPEC.md` (float behavior + transformation roadmap documented, not built).
