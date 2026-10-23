@@ -173,3 +173,28 @@ XEX (the .mot loader mechanism itself is proven). Detail:
 `phase15/CONTAINMENT-AUDIT.md`, `phase15/MOT-CENSUS.md`,
 `phase15/XEX-HUNT.md`, `phase15/PHASE15-STATE.md`. Canon Q1–Q6
 remain OWNER-pending; nothing else in this document changes.
+
+## Phase-16 addendum (2026-10-22, PR #697) — pointer, additive only
+
+Phase 16 (`teardown/dead-or-alive-4/phase16/`) attacked phase
+15's two named blockers and closed its two disclosed
+deviations. The .mot grammar is proven at the record layer
+with the framing direction corrected (44 sub-blocks followed
+by a 44-entry descriptor of absolute channel offsets; exact
+tiling across 530 t_* records and all fighter files), and the
+payload's exact residual is named: a stateful per-item length
+rule (the simple tag→length rule is falsified by constraint
+propagation; no clip assembled, gate G4 stays open). The w21
+trace evidences the runtime-record layer at field level
+(initializer 0x82406E48, validator 0x824091F0, translator
+0x823F6FA0) and names its exact frontier: the file-side
+writer from the .bin w21 table to the 0x9C records. The
+containment scatter-pass is complete: all 147 probe-grade
+rows resolved (118 with byte-exact piece maps, 29 proven
+absent), jan02.tpr's absence overturned
+(scattered_cross_volume), union coverage chrtwo 52.0069% /
+chrthree 50.6650%. Detail: `phase16/MOT-GRAMMAR.md`,
+`phase16/W21-TRACE.md`, `phase16/CONTAINMENT-AUDIT-2.md`,
+`phase16/containment-map-2.json`, `phase16/PHASE16-STATE.md`.
+Canon Q1–Q6 remain OWNER-pending; nothing else in this
+document changes.

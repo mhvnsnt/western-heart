@@ -223,3 +223,70 @@ Wiring blockers, in dependency order:
   G4 movesets-anim OPEN (expansion grammar is the blocker);
   G5 tooling — 13 phase-15 tools in `phase15/tools/`; G6
   in-game wiring UNCHANGED (no new wiring this phase).
+
+## Phase 16 (2026-10-22, PR #697) — .mot grammar + w21 trace + containment completion
+
+- **.mot grammar: RECORD LAYER PROVEN, payload residual named.**
+  The phase-15 record framing is corrected and unified
+  (`phase16/MOT-GRAMMAR.md`): a record = 44 sub-blocks FOLLOWED
+  BY a 44-entry descriptor of u32 BE ABSOLUTE sub-block offsets
+  in channel order; table A (fighter files) and the t_* (id,
+  offset) index both point at DESCRIPTOR START. The fighter
+  default record's span is the per-fighter shared front block.
+  Tiling is exact everywhere: zack 376 records, m_zack 26,
+  c_zack 2, all 124 t_* files = 530 records / 23,320
+  sub-blocks. Cross-class proof: c_zack@32192 is byte-identical
+  to zack@1151992 (44/44 channels); m_zack's records are
+  disjoint longer motions (non-constant per-channel size
+  ratios), so no different-encoding same-motion pair exists in
+  the triple. Payload: an item cadence is evidenced (51.65%
+  exact tile under the best simple tag rule) but the tag→length
+  rule is FALSIFIED as a pure function of the tag by
+  constraint propagation — the per-item length rule is
+  stateful/contextual; delta-stream decodings refuted against
+  shuffled controls; an 8-byte constant-channel form is
+  identified. First clip NOT assembled.
+- **w21 expansion trace: runtime-record layer EVIDENCED,
+  file-side writer is the exact frontier** (`phase16/W21-TRACE.md`).
+  Archive-open layer: open helper VA 0x8238ED10 (27 bl sites);
+  per-fighter loader cluster 0x823918E8–0x82391B2C (its
+  +0x54/+0x70 loads read the loader STRUCT, not a .bin
+  buffer). Record initializer VA 0x82406E48 (strides
+  0x44/0x9C/0x34; the 0x34 record's fields incl. u32 id at
+  +0x30); validator VA 0x824091F0 (field bands
+  [0x15,0x1C]/[0x1D,0x24]/[0x25,0x2C], ids 0x10A–0x10C /
+  0x139–0x147, returns class 1–7 — phase 15's 0x2C compare
+  candidates are this validator's band edge, NEGATIVE as a
+  descriptor walk); per-player token decode ~0x823F6D2C over
+  0x9C records (token u16s at +0x00/+0x02); translator
+  0x823F6FA0 packing +0x36/+0x37/+0x32/+0x44/+0x4F/+0x54/+0x55
+  from the 0x9C and 0x250 record generations. Classifier
+  0x82408290 has ZERO direct bl callers (indirect dispatch).
+  The function that reads a .bin buffer's w21 table and writes
+  the 0x9C records was NOT isolated (named next step:
+  data-flow hunt from the 0x9C array base; a Ghidra cross-check
+  is blocked by the reconstructed PE importing at base 0 —
+  logged in the trace). No offline expander is claimed.
+- **Containment: scatter-pass COMPLETE**
+  (`phase16/CONTAINMENT-AUDIT-2.md`, map:
+  `phase16/containment-map-2.json`). All 147 probe-grade
+  rows from phase 15 resolved by exhaustive multi-resolution
+  scatter (16 KiB → 256 B, byte-exact verified) against the
+  digest-verified mirror streams and the whole-ISO-verified
+  re-assembly (sha256 4423cd5c…04aa): 104
+  piecewise_unresolved → scattered, 14 absent_windows →
+  scattered, 29 absent_windows → absent_proven (all chrthree
+  .cat), 6 chrthree .cat files fully_scattered at 100%.
+  jan02.tpr's phase-15 absence is OVERTURNED:
+  scattered_cross_volume (chrone 0.7285%, chrtwo 4.9039%,
+  chrthree 0.7729%). Union coverage: chrtwo 51.1871% →
+  52.0069%, chrthree 48.2684% → 50.6650%.
+- **Gates after phase 16:** G1 decrypt CLOSED; G2
+  extract-account CLOSED; G3 format decode — .mot record
+  grammar proven (payload item-length rule open), containment
+  at reconstruction grade for all 389 chr entries; G4
+  movesets-anim OPEN — the blockers are now exactly two named
+  items: (1) the stateful .mot per-item length rule, (2) the
+  XEX file-side writer (.bin w21 table → 0x9C runtime
+  records); G5 tooling — 14 phase-16 tools in
+  `phase16/tools/`; G6 in-game wiring UNCHANGED.
