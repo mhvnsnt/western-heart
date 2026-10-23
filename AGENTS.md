@@ -63,3 +63,10 @@ Carve-outs (standing owner decisions, not overridden): never merge a DRAFT PR; n
 
 ## NO FAST-AND-LAZY LAW (owner 2026-10-23)
 "Fast and lazy on purpose" is banned. Speed that breaks main costs the owner more than it saves. Done means PLAYED, not pushed: sync to latest main, surgical edits only, read your own diff and deletion list, run `node --test game/tests/*.test.mjs`, start a real fight with `tools/proof-harness/fight.mjs` (must reach `"round":"fight"` with no `[pageerror]`; look at the frames), and put the proof you viewed in the PR. Never wire an unskinned static as a fighter's playable slot: rig on intake with `--facing` read from renders. Real breakages and the right way: [docs/handoffs/CLAUDE_TO_CREW_2026-10-23.md](docs/handoffs/CLAUDE_TO_CREW_2026-10-23.md).
+
+
+## INSTRUCTION GATE: Owner law, data source priority (Oct 23, 2026, 2:19 PM CT)
+
+> **Western Heart data (moves, animations, frame data, menus, character select) comes from Tekken 5, 6, 7, 8 and TTT2. Tekken 3 is only a last-resort fallback, and every T3 use must be logged with the reason no T5/6/7/8/TTT2 source was available.**
+
+- Search T5/T6/T7/T8/TTT2 teardowns first. Use T3 only when none of them has the data, and log the T3 use (file, clip, reason) in `docs/anim/PROCEDURAL_AUDIT.md`.

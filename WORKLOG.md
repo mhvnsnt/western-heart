@@ -2169,6 +2169,128 @@ Built the central moveset library + per-fighter assembly system (owner standing 
 - Docs: `docs/research/moveset-library-schema.md`, `docs/decisions/2026-10-22-moveset-library.md`, `docs/handoffs/moveset-library-vf5-format.md` (worker-45 contract, read-only).
 - Proof: node --check clean; ingest 0 violations; assembler CLI verified (pablo 36 / bannon 28 / el-toro 23 / npc-finxsse 23, law-clean, 0 unresolved); claimed pull refused / free pull allowed.
 - Note: #678 merged then was dropped from main by #679's merge tree; restored via this PR (see decisions log).
+## 2026-10-22 — Worker 28: STAGE MECHANICS + RAGE/COMEBACK + SOUL URGE (T8 Heat)
+
+**Owner instruction (verbatim):** "From all teardown games, wire up: (1) Stage mechanics — Tekken floor/wall/balcony breaks, DOA knock-through-walls into new areas. (2) Rage/comeback systems — rage arts/drives, slow-mo finishes."
+**Follow-ups folded in:** "Heat system (T8): YES — pull straight from the files, but rename proprietary." → **name user-locked: SOUL URGE** (use everywhere). "Soul Gauge / Critical Edge: BUILD ON OURS — extend our meters, document the mapping."
+
+### What was built
+**1. Stage mechanics** (`game/js/stagebreaks.js`, new)
+- Tekken floor breaks (T7 Forgotten Realm/Brimstone & Fire/Devil's Pit rules): heavy slam
+  (knock>=6 / launch / knockdown) inside a cracked floor zone shatters it — both fighters
+  drop to a lower level (physics ground moves via new `setGroundY`), +12 bonus damage,
+  ember-lit lower tier, fight continues below. Persists all match (T7-authentic).
+- Tekken wall breaks + DOA knock-through-walls: every stage gets breakable spirit
+  barriers at ±wallDistance by default. Heavy hit (knock>=4 / launch / KO) that splats
+  the defender into the wall shatters it — bounds extend +4.5 into a dressed "new area"
+  (rubble + breach glow), +8 bonus damage (DOA Danger-Zone style). Once per side/match.
+- Tekken balcony breaks (T7 Jungle Outpost 2 rules): railing + weak section at a ledge
+  edge — same drop mechanic as floor breaks, own banner.
+- Wired stages: shrine (floor→crypt), plains-of-chi-u (floor→ember hollow),
+  helix-palace (balcony). Walls default ON everywhere (`noWallBreak` opt-out).
+- Hooked into `Game._resolveCombat` after every landed hit; debris physics + camera
+  shake + banners; `setGroundY`/`getGroundY` exported from fighter.js.
+
+**2. Rage / comeback (T7)** (`game/js/rage.js`, new)
+- Rage at <=25% HP, once per round (existing `R.` notation mechanism was a skeleton —
+  no data existed; now synthesized per fighter from their own strongest T3 strike).
+- **Rage Art** (`1+2` while raging → `R.1+2`): 32 dmg, super armor (new `armor` move
+  property: damage applies but the swing is never interrupted), knockdown+wallsplat,
+  cinematic beat (hitstop + flash + brief slow-mo), spends rage.
+- **Rage Drive** (`3+4` while raging → `RD.3+4`): powered-up strike, spends rage.
+  T7 rule: art OR drive per round.
+- **Slow-mo finishes**: match-deciding KO blows and rage-art KOs play at 0.12× for
+  1.5 s real time (`Game._loop` timescale). Fixed pre-existing bug: `_rageUsed` was
+  never reset between rounds (rage died after round 1).
+- UI: pulsing red RAGE tag under the HP bar (`ui.setRage`), red fighter aura
+  (`setRageAura`), `audio.rage()` cue, RAGE banner. AI spends rage arts/drives in range.
+
+**3. Soul Urge (T8 Heat, proprietary rename — user-locked)** (`game/js/soulurge.js`, new)
+- Pulled from `teardown/tekken7/tekkenmods-docs/.../Tekken_8/...` (Move, Hit_Conditions,
+  Cancel, Input_Extradata `0x10 - Heat`) + verified canonical T8 rules.
+- **Urge Burst** (`2+3`, armored): activates on hit OR block → 1 pip, 10 s.
+- **Urge Engager**: fighter's own launcher-class strike (auto-flagged, synthesized moves
+  excluded); on hit only → 2 pips, 15 s, +10 HP, dash-in.
+- **During Urge**: chip on block that can never kill; timer pauses while opponent is
+  hit/grounded; blue soul-flame aura; urge gauge under HP (T8-authentic placement).
+- **Urge Dash** (`1+2` while urging, not raging): 1 pip, committed forward burst.
+  **Urge Smash** (`2+3` while urging): 30 dmg armored, spends ALL pips, ends Urge.
+- Once per round, refreshes per round. AI uses burst → dash → smash.
+
+**4. Soul Gauge / Critical Edge mapping** (`docs/research/SOUL-GAUGE-MAPPING.md`)
+- No new meter imported. Nine-Soul Meter = the single persistent meter (unchanged
+  economy); Soul Surge IS our Critical Edge (verified untouched); Soul Urge is a
+  separate per-round gauge (T8-faithful). Reversal Edge/Guard Impact stay ON HOLD
+  per user.
+
+### Files
+- New: `game/js/stagebreaks.js`, `game/js/rage.js`, `game/js/soulurge.js`,
+  `game/tests/stagerage.test.mjs`, `docs/research/SOUL-URGE-SYSTEM.md`,
+  `docs/research/SOUL-GAUGE-MAPPING.md`
+- Edited: `game/js/game.js` (directors, hooks, slow-mo timescale),
+  `game/js/fighter.js` (setGroundY, armor, rage/urge auras, urge dash, urge chip),
+  `game/js/movesets.js` (R./RD./UB./US. chord prefixes), `game/js/ai.js`,
+  `game/js/audio.js` (rage/urge cues), `game/js/main.js` (setRage/setUrge/updateUrge),
+  `game/index.html` (rage tags, urge gauges), `game/styles.css` (rage/urge styles),
+  `game/js/stages.js` (breakables on shrine/chiu/helix), WORKLOG.md (this entry)
+
+### Proof
+- `node --test game/tests/stagerage.test.mjs`: **15/15 pass** (rage thresholds, art/drive synthesis + input resolution, slow-mo triggers incl. slowMoScale math, urge burst/engager/smash/pip spend, wall/floor break triggers, once-per-match, bonus damage).
+- Existing suites: fighter-completeness 4/4 pass; model-key-guard 2/3 (1 failure is
+  my partial working copy missing `roster/` — unrelated to this lane, assets.js untouched).
+- `node --check` clean on all 10 touched/new JS modules.
+- In-game screenshots: NOT possible from this worker (no live-browser access as a
+  subagent) — flagged for the parent to verify by playing per the standing rule.
+
+### Anti-clobber rebase (2026-10-22, post-implementation)
+Main moved under this worker TWICE. First rebase (loadspeed lane: lazy.js,
+hit-feel tuning, T8 select grid; movesets lane: R. prefix + _rageUsed). Second
+rebase (worker 27 lighting rig: attachCharacterRig/buildStageLightRig; worker 37
+T8 main menu + delegated data-action router; jiggle/faceRig/handPoses imports in
+fighter.js). All 9 edited files were rebased onto current main instead of pushing
+stale full-file copies:
+- game.js: directors now inject `{ setArenaLimit, setGroundY }` (from
+  `await lazy.fighter()`) and `{ playedMoveset, getFighterMoveset }` (from
+  `await lazy.movesets()`) — stagebreaks/rage/soulurge NO LONGER statically import
+  fighter.js or movesets.js, preserving the loadspeed lane's deferred loading.
+  startMatch stays async; hooks adapted to the feel-multiplier (`this.feel`) KO branches.
+- fighter.js: kept main's hit-feel tuning + FACING fix; added setGroundY/getGroundY,
+  armor absorb, urge chip floor, rage/urge auras, tryUrgeDash, _inputCtx urge flags
+  (main's `rage:` ctx flag reused; added `urgeOn`/`urgeAvailable`).
+- movesets.js: main already had the `R.` prefix — added `RD.` (rage drive) and the
+  2+3 urge reservation (UB./US. win over normal moves while the gauge is live).
+- rage.js: added missing `slowMoScale()`; hardened rageArtHit for null arena.
+- soulurge.js: added missing onHit/onBlockedHit/spendPip/urgeSmashHit wiring.
+- index.html/styles.css/main.js: HUD additions re-anchored onto the T8 select-grid
+  versions (4 HUD lines + rage-flash overlay + ui methods + CSS).
+- stages.js: breakables re-anchored onto the lighting-rig stage defs.
+- Verified zero main-side lines lost in every file (diff < count = 0 except
+  intentional paired modifications).
+- Third rebase (fightlab-gungaku lane: GungakuAI lazy import + programmable-dummy
+  AI switch in startMatch; photo-mode dynamic import + mode-fightlab router action
+  in main.js). Merged without touching those lanes' code.
+- Fourth rebase (worker 34 fighter-depth: FighterDepth dynamic import +
+  onMatchStart hook + soul-kindle queue watch in game.js; kindle block/damage/
+  counter-hit rules in fighter.js; T3 round-2 bank list in movesets.js).
+  Merged without touching that lane's code.
+- Fifth rebase (V-System lane, owner 2026-10-22: v-system.js, V-Trigger/
+  V-Reversal/V-Shift AI + UI + CSS; online.js script tag in index.html).
+  Rage/urge AI block placed after Soul Surge check; armor coexists with
+  V-Skill armor (V-Skill absorbs outright, rage/urge armor absorbs with
+  damage). Merged without touching that lane's code.
+- Sixth rebase (arena pipeline: mainmenu.css link in index.html; Pink Narwhal
+  club GLB + buildHelix detail-pass builder in stages.js/helix-palace).
+  Balcony breakable kept on the upgraded stage. Merged without touching
+  that lane's code.
+
+### Flags for coordinator
+- Input overlap (documented, T8-style): `1+2` = rage art while raging, urge dash while
+  urging (not raging), normal move otherwise. `2+3` = urge burst/smash while the gauge
+  is live, normal move after it's spent. Rage art has priority when both are live.
+- Soul Urge name is USER-LOCKED — do not rename without owner approval.
+- Stage-break visuals are procedural (barriers, cracked discs, debris); stages with
+  real teardown geometry (No Mercy GLBs) get wall breaks via barriers only.
+- Next-match `bindStage` resets breaks; rounds within a match keep them (T7/DOA).
 ## 2026-10-22 ~13:45 CDT — Worker 27: LIGHTING + ENVIRONMENT PULL
 
 **Owner directive (verbatim):** "Pull from the most recent version of each game in the teardown
@@ -2276,3 +2398,11 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 **Verification:** all 17 new moves resolve via the game's own `resolveMove('chordz', …)`; `node --test game/tests/fighter-completeness.test.mjs` green (4/4); new-move schema + source-id refs validated; jin bank clip files all parse with frames. Live-browser play verification (animations on Chordz in-game) is queued for a browser-capable lane — subagent has no live browser.
 
 **Anti-clobber:** branched from main tip; sibling lane's WIP stashed intact; JSON edits via round-trip-safe scripted merges (diffs are additions-only); no deletions. Branch pushed via Git Database API (no GitHub connector for git ops).
+
+## ANIMATION GATE — fight vs show (owner t117u, 2026-10-23 14:14 CT)
+
+- Contexts: `FIGHT`, `INTRO_OUTRO`, `CUTSCENE` (story), `SHOW`. Module: `game/js/anim-gate.js`.
+- In `FIGHT` only moveset clips may play. Any clip tagged show (`userData.animSet='show'`), named `show:*`, or pathed `anims/show/*` is **rejected and logged** (`gateLog` + `console.warn('[WH-ANIM-GATE] …')`).
+- Enforced in code at the two places fight actions are created: `createT3Actions()` in `game/js/t3anims.js` and the embedded Idle/Walk/Run path in `game/js/assets.js`.
+- Crossover only via allowlist `game/data/crossover.json`: fight clips → SHOW / CUTSCENE / INTRO_OUTRO; show clips → INTRO_OUTRO / CUTSCENE / SHOW, **never FIGHT** (`setCrossover` throws if anyone adds FIGHT). Changing that requires an owner-approved moveset PR.
+- CI: `test/anim-gate.test.mjs` (picked up by rig-guard game-unit-tests) simulates 600-frame fights for every roster fighter with show clips injected, asserts 0 show clips played, and checks allowlist-only crossover. Mutation check: removing the gate line makes it fail (104 fails).
