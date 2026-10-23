@@ -1,0 +1,47 @@
+# Face-cone skin-weight gate: any changed .glb whose face/skull vertices carry
+# > 0.02 weight on spine / pelvis / root / limb bones fails the PR
+# (tools/rig/weight_audit.py audit, BAD_T = 0.02). Files listed in
+# tools/rig/face_cone_baseline.txt are known residuals (partial fixes) and may
+# not get worse: their face-cone count must stay <= the recorded number.
+name: face-cone-weights
+on:
+  pull_request:
+    branches: [main]
+  merge_group:
+    types: [checks_requested]
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+permissions:
+  contents: read
+jobs:
+  face-cone:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          filter: blob:none
+          sparse-checkout: |
+            tools/rig
+          sparse-checkout-cone-mode: false
+      - run: pip install numpy
+      - name: Audit changed GLBs
+        env:
+          BASE: ${{ github.event.pull_request.base.sha || github.event.merge_group.base_sha }}
+        run: |
+          set -u; fail=0; mkdir -p /tmp/g
+          git diff --name-only --diff-filter=AMR "$BASE" HEAD -- '*.glb' > /tmp/changed.txt || true
+          echo "$(wc -l < /tmp/changed.txt) changed GLBs"
+          while IFS= read -r f; do
+            [ -z "$f" ] && continue
+            git cat-file blob "HEAD:$f" > /tmp/g/m.glb
+            out=$(python3 tools/rig/weight_audit.py audit /tmp/g/m.glb | grep -E '^(ok|FAIL|ERROR)' | head -1)
+            n=$(echo "$out" | awk '/^(ok|FAIL)/{print $2}')
+            allow=$(awk -F'\t' -v f="$f" '$1==f{print $2}' tools/rig/face_cone_baseline.txt 2>/dev/null)
+            if [ -z "$n" ]; then echo "::error file=$f::audit error: $out"; fail=1
+            elif [ "$n" -gt "${allow:-0}" ]; then echo "::error file=$f::$n face-cone verts (allowed ${allow:-0})"; fail=1
+            else echo "ok $n (allowed ${allow:-0}) $f"; fi
+          done < /tmp/changed.txt
+          exit $fail
