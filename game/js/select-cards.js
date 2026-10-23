@@ -6,7 +6,7 @@
    - portrait:   image source for the card portrait
                   (default: assets/portraits/<fighter-id>.png)
    - background: card background art / color theme
-                  (default: null = theme default; future: WWE-style
+                  (default: null = theme default; future: customizable
                   customizable backgrounds from creation suite)
    - frame:      card frame/border style
                   (default: 'standard'; future: unlockable frames)
@@ -49,7 +49,7 @@ export function isModelReady(fighterId) {
 
 /* Per-fighter overrides. Empty by default — every fighter uses DEFAULT_CARD
    until the user customizes cards in the creation suite (Tekken-style card
-   customization from WWE/teardown parts). */
+   customization from teardown parts). */
 export const CARD_CONFIG = {
   // e.g. 'pantera': { portrait: 'assets/portraits/pantera-alt.png', background: 'ember', frame: 'gold' },
 };
