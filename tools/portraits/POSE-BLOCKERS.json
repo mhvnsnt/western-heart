@@ -1,36 +1,11 @@
 {
- "_doc": "Fighters whose select portrait is still bind-posed because their moveset-bank stance does not retarget cleanly onto their attire-1 rig (rig/anim lane). test/portraits.test.mjs fails if a fighter is bind-posed and NOT listed, or listed but fixed. Re-run tools/portraits/capture.mjs after rig fixes and remove entries.",
+ "_doc": "Fighters whose select portrait is still bind-posed because their moveset-bank stance does not retarget cleanly onto their attire-1 rig (rig/anim lane). test/portraits.test.mjs fails if a fighter is bind-posed and NOT listed, or listed but fixed. Re-run tools/portraits/capture.mjs after rig fixes and remove entries. Since the CMU aim fallback (game/js/stance-aim.js), only unrigged or unloadable models remain here.",
  "blocked": {
-  "demonio": "bank 'jin' stance rejected by select fit gates on demonio-a1 (73 bones)",
-  "phantom": "bank 'yoshimitsu' stance rejected by select fit gates on phantom (73 bones)",
-  "samura1": "bank 'gunjack' stance rejected by select fit gates on sam-ur-a1 (49 bones)",
-  "sakura": "bank 'xiaoyu' stance rejected by select fit gates on saku-ra (73 bones)",
-  "zui": "bank 'jin' stance rejected by select fit gates on zui-attire1 (73 bones)",
-  "kinpo": "bank 'jin' stance rejected by select fit gates on kinpo (73 bones)",
   "kingtyrant": "bank 'eddy' stance rejected by select fit gates on king-tyrant-attire1 (0 bones) - GLB has no skinned mesh/skeleton",
-  "awapop": "bank 'nina' stance rejected by select fit gates on awa-pop (49 bones)",
-  "purplerain": "bank 'jin' stance rejected by select fit gates on purple-rain (73 bones)",
   "nightwolf": "bank 'julia' stance rejected by select fit gates on nightwolf-attire1 (0 bones) - GLB has no skinned mesh/skeleton",
   "dio": "bank 'heihachi' stance rejected by select fit gates on dio (174 bones)",
-  "cyborgx": "bank 'gunjack' stance rejected by select fit gates on cape-jones (49 bones)",
-  "michiko": "bank 'jin' stance rejected by select fit gates on michiko-attire1 (73 bones)",
   "star": "bank 'xiaoyu' stance rejected by select fit gates on star-attire1 (0 bones) - GLB has no skinned mesh/skeleton",
-  "torch": "bank 'anna' stance rejected by select fit gates on torch-tripo-a1 (73 bones)",
-  "bruno": "bank 'bryan' stance rejected by select fit gates on bruno (142 bones)",
   "mariposa-monarch": "bank 'xiaoyu' stance rejected by select fit gates on mariposa-butterfly-default (246 bones)",
-  "dxmmii-patchwork": "bank 'jin' stance rejected by select fit gates on dxmmii-tripo (73 bones)",
-  "dorowani": "bank 'gon' stance rejected by select fit gates on dorowani (73 bones)",
-  "chatur": "bank 'ogre' stance rejected by select fit gates on chatur (52 bones)",
-  "pond": "bank 'None' stance rejected by select fit gates on pond (52 bones)",
-  "ryusan": "bank 'None' stance rejected by select fit gates on ryusan (73 bones)",
-  "tobi": "bank 'None' stance rejected by select fit gates on tobi (73 bones)",
-  "megami": "bank 'None' stance rejected by select fit gates on megami (52 bones)",
-  "menajerii": "bank 'kuma' stance rejected by select fit gates on menajerii (52 bones)",
-  "deathfang": "bank 'heihachi' stance rejected by select fit gates on deathfang (73 bones)",
-  "rave": "bank 'lei' stance rejected by select fit gates on kiko-tanaka (49 bones)",
-  "buffalo-bill": "bank 'None' stance rejected by select fit gates on buffalo-bill (0 bones) - GLB has no skinned mesh/skeleton",
-  "vainabel": "bank 'None' stance rejected by select fit gates on vainabel-attire1 (73 bones)",
-  "cainelias": "bank 'king' stance rejected by select fit gates on cain-elias (0 bones) - GLB has no skinned mesh/skeleton",
-  "chordz": "bank 'None' stance rejected by select fit gates on chordz (0 bones) - GLB has no skinned mesh/skeleton"
+  "cainelias": "bank 'king' stance rejected by select fit gates on cain-elias (0 bones) - GLB has no skinned mesh/skeleton"
  }
 }

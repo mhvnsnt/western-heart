@@ -17,8 +17,11 @@
       "files": []
     },
     "screen-menu": {
-      "status": "legacy-unsourced",
-      "sources": [],
+      "status": "sourced",
+      "sources": [
+        "teardown/tekken7-steam-ui/T7-UI-LAYOUT.md",
+        "gre:tekken7/ui/flash/SW_UI_MainMenu/Base_OnlineMenu.png"
+      ],
       "files": []
     },
     "screen-modewin": {
@@ -42,23 +45,32 @@
       "files": []
     },
     "screen-result": {
-      "status": "legacy-unsourced",
-      "sources": [],
+      "status": "sourced",
+      "sources": [
+        "teardown/tekken7-steam-ui/T7-UI-LAYOUT.md",
+        "gre:tekken7/ui/flash/SW_UI_Result_Lightning/Result_Lightning_02.png"
+      ],
       "files": []
     },
     "screen-select": {
       "status": "sourced",
       "sources": [
+        "teardown/tekken7-steam-ui/T7-UI-LAYOUT.md",
         "teardown/tekken8/ui/CHARACTER-SELECT.md",
         "teardown/tekken8/ui/refs/t8-select-ref-1.png",
         "teardown/tekken8/ui/refs/t8-select-ref-2.png",
-        "teardown/tekken8/ui/refs/t8-select-ref-3.png"
+        "teardown/tekken8/ui/refs/t8-select-ref-3.png",
+        "gre:tekken7/ui/flash/SW_UI_CharacterSelect/SlotRed_OnGradient.png",
+        "gre:tekken7/ui/flash/SW_UI_CharacterSelect/SlotBlue_OnGradient.png",
+        "gre:tekken7/ui/flash/SW_UI_CharacterSelect/Rep_CS_CH_PANEL_00.png"
       ],
       "files": [
         "game/select-t8.css",
         "game/select.css",
         "game/js/select-screen.js",
-        "game/index.html"
+        "game/index.html",
+        "game/t7-skin.css",
+        "game/js/t7-ui-private.js"
       ],
       "reuse": [
         "mhvnsnt/Brutal-Fist@f455322:src/components/CharacterSelect.tsx (phone-portrait stage/grid split)",
@@ -71,8 +83,12 @@
       "files": []
     },
     "screen-stage": {
-      "status": "legacy-unsourced",
-      "sources": [],
+      "status": "sourced",
+      "sources": [
+        "teardown/tekken7-steam-ui/T7-UI-LAYOUT.md",
+        "gre:tekken7/ui/flash/SW_UI_StageSelect/InfoRed_Base.png",
+        "gre:tekken7/ui/flash/SW_UI_StageSelect/RedPanel_Base.png"
+      ],
       "files": []
     },
     "screen-stage-intro": {

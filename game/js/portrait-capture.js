@@ -23,13 +23,14 @@ function armDropDeg(inst, side) {
   return Math.round(THREE.MathUtils.radToDeg(Math.acos(Math.max(-1, Math.min(1, -d.y)))));
 }
 
-window.capture = async (id) => {
+window.capture = async (id, opts = {}) => {
   const c = ROSTER.find(r => r.id === id);
   if (!c) return { id, error: 'not in roster' };
   const model = attiresFor(c)[0].model;
   const ok = await pane.show(c, model);
   if (!ok) return { id, model, error: 'model failed to load' };
   if (pane.mixer) for (let i = 0; i < 12; i++) pane.mixer.update(1 / 30);
+  if (pane.aim) pane.aim.apply(0.4);
   pane.model.updateWorldMatrix(true, true);
   let bones = 0; pane.model.traverse(o => { if (o.isBone) bones++; });
   const inst = { bones: {} };
@@ -38,7 +39,14 @@ window.capture = async (id) => {
   // T8 grid cards are face art (T8-GRID-DECODE §3): frame head+shoulders.
   const B = inst.bones, head = B.Head, hips = B.Hips;
   let framed = false;
-  if (head && hips) {
+  if (opts.full) {
+    const bb = new THREE.Box3().setFromObject(pane.model), sz = bb.getSize(new THREE.Vector3()), ce = bb.getCenter(new THREE.Vector3());
+    const dist = (sz.y * 0.6) / Math.tan(THREE.MathUtils.degToRad(pane.camera.fov / 2));
+    pane.camera.aspect = 1; pane.camera.updateProjectionMatrix();
+    pane.camera.position.set(ce.x + dist * 0.35, ce.y, ce.z + dist); pane.camera.lookAt(ce);
+    framed = 'full';
+  }
+  else if (head && hips) {
     const hp = head.getWorldPosition(new THREE.Vector3()), wp = hips.getWorldPosition(new THREE.Vector3());
     const torso = Math.max(0.2, hp.distanceTo(wp)) * 0.62;
     const cy = hp.y + torso * 0.05;
@@ -59,7 +67,7 @@ window.capture = async (id) => {
   pane.renderer.render(pane.scene, pane.camera);
   const png = pane.canvas.toDataURL('image/png');
   return {
-    id, model, bones, stance: pane.hasStance, framed,
+    id, model, bones, stance: pane.hasStance, stanceSource: pane.stanceSource || null, framed,
     bank: bankIdFor(c.id, getMovesetInfo(c.id) ? c.id : (c.moveset || c.id)) || null,
     armDeg: { L: armDropDeg(inst, 'Left'), R: armDropDeg(inst, 'Right') }, png,
   };

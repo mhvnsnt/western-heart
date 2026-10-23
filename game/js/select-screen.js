@@ -30,6 +30,7 @@
    ============================================================ */
 import * as THREE from 'three';
 import { assets } from './assets.js';
+import { loadGuardStance, createAimStance } from './stance-aim.js';
 import { attiresFor, selectedAttireModel, setAttire, attireLabel } from './attires.js';
 import { loadT3Clips, createT3Actions, retargetT3Clips } from './t3anims.js';
 import { bankIdFor } from './fighter.js';
@@ -234,6 +235,20 @@ export class PreviewPane {
       } catch (e) {
         console.warn('[WH] select preview: T3 stance unavailable for', c.id, e.message || e);
       }
+      // NO-T-POSE backup (Tekken bank first, CMU mocap backup): when the
+      // bank stance is missing or failed the fit gates, drive the rig with
+      // the bind-independent CMU 14_01 guard (stance-aim.js).
+      if (!this.hasStance && inst.bones) {
+        try {
+          const g = await loadGuardStance();
+          if (token !== this._token) return true;
+          const aim = createAimStance(THREE, this.model, inst.bones, g);
+          if (aim) {
+            if (inst.actions && inst.actions.Idle) inst.actions.Idle.setEffectiveWeight(0);
+            this.aim = aim; this._aimT = 0; this.hasStance = true; this.stanceSource = 'cmu-14_01';
+          }
+        } catch (e) { console.warn('[WH] select preview: CMU guard unavailable for', c.id, e.message || e); }
+      } else if (this.hasStance) this.stanceSource = 'tekken-bank';
       return true;
     } catch (e) {
       if (token === this._token) {
@@ -259,6 +274,8 @@ export class PreviewPane {
     this.model = null;
     this.mixer = null;
     this.hasStance = false;
+    this.aim = null;
+    this.stanceSource = null;
   }
 
   clear() { this._token++; this._clearModel(); }
@@ -266,6 +283,7 @@ export class PreviewPane {
   update(dt) {
     if (!this.renderer || !this.scene || !this.camera) return;
     if (this.mixer) this.mixer.update(dt);
+    if (this.aim) { this._aimT += dt; this.aim.apply(this._aimT); }
     // Unless a validated teardown-bank stance is playing, the model
     // presents on a slow turntable (the pre-existing preview
     // presentation) — live 3D, never a still image. The GLBs'
