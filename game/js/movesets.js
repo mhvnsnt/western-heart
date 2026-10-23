@@ -34,6 +34,10 @@ export const MOVESET_IDS = [
   'bruno', 'negativo', 'thor', 'yukihyo', 'slice', 'docfrank',
   'sunra', 'dxmmii', 'realizzt', 'rave', 'kutz', 'chordz', 'vainabel',
   'lili', 'baek',
+  // SmutBase 6 pipeline fighters 5-6 (owner 2026-10-23): MEGAMI (Jun Kazama
+  // TTT2 kit, Tekken inputs) and MENAJERII (Roger Jr. TTT2 kit, fresh Tekken
+  // inputs per owner directive — no Injustice 2 input system).
+  'megami', 'menajerii',
   // DOA/VF federation (owner 2026-10-19): converted movelists, Tekken-notation
   'doa-kasumi', 'doa-bass', 'doa-hayabusa',
   'doa-ayane', 'doa-tina', 'doa-jannlee',
@@ -54,6 +58,16 @@ export const MOVESET_IDS = [
   // CHARGER (owner 2026-10-20): Blanka replacement — full set in charger.json.
   'charger',
   'dorowani',
+  // BUFFALO BILL (2026-10-23, landing wave 1): his per-fighter file
+  // (game/assets/movesets/buffalo-bill.json, 228 moves, Law base) existed on
+  // main but the id was never listed, so the loader never loaded it.
+  'buffalo-bill',
+  // CHATUR (owner 2026-10-23): True Ogre's WH replacement — chatur.json
+  // (True Ogre T3 kit + four-armed canon specials).
+  'chatur',
+  // POND (owner 2026-10-23): Raven's WH replacement — pond.json
+  // (T7 Raven kit + still-water canon specials).
+  'pond',
   // DEATHFANG (owner 2026-10-19): proprietary, Iori-based — full Iori kit in deathfang.json.
   'deathfang',
   // DEATHFANG werewolf form (owner 2026-10-20): full kit + beast mix-ins, Iori stance kept.
@@ -80,6 +94,17 @@ export const MOVESET_IDS = [
   // Doc Frank Frankenstein attire (moveset lane 2026-10-21): full gunjack set,
   // sibling attire of doc-frank-hood (identical T3 source data, same DOC FRANK).
   'doc-frank-frankenstein',
+  // T3 round-2 banks (worker 36, 2026-10-22): per-bank moveset files from
+  // tools/gen-movesets-t3.py — 2,528 moves across 13 banks. Banks with WH
+  // fighters (eddy, lei, bosconovitch) already merged via merge_sources.py;
+  // these are the standalone bank files.
+  't3-paul', 't3-law', 't3-lei', 't3-nina', 't3-hwoarang', 't3-eddy',
+  't3-julia', 't3-kuma', 't3-ogre', 't3-anna', 't3-bosconovitch',
+  't3-gon', 't3-forestlaw',
+  // SmutBase intake wave 6 (owner 2026-10-23): RYUSAN (Lucky Chloe T7 kit,
+  // game/assets/movesets/ryusan.json) + TOBI (Hwoarang T3 kit,
+  // game/assets/movesets/tobi.json). Canon: roster/mina-ashido + roster/miruko.
+  'ryusan', 'tobi',
 ];
 
 const _movesets = {};

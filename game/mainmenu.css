@@ -1,0 +1,318 @@
+/* ============================================================
+   WESTERN HEART — T8-style main menu (worker 37, 2026-10-22)
+   Tekken 8 visual grammar adapted for phone:
+   - full-bleed hero backdrop w/ cinematic wash + ember drift
+   - top player bar: player card · Soul Urge pips · rank badge
+   - vertical rail of large italic condensed items (T8 left rail
+     becomes a bottom-anchored list in portrait, true left rail
+     in landscape)
+   - T8 red slash accent on the active item, angular card panels
+   - slide-in submenus, rank ladder, player card editor,
+     "in the forge" panel for modes still being built
+   Palette: WH dusk-shrine base (#14091f) under T8's near-black,
+   white type, T8 crimson accent, ember gold for rank.
+   All animation is transform/opacity only (60fps, phone-safe).
+   ============================================================ */
+
+#screen-menu.mm {
+  display: none;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 0;
+  overflow: hidden;
+  background: #0b0614;
+  font-family: "Arial Narrow", "Helvetica Neue Condensed", "Trebuchet MS", system-ui, sans-serif;
+}
+#screen-menu.mm.active { display: flex; }
+
+/* ---------- Hero backdrop ---------- */
+.mm-hero { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.mm-hero-bg {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center 30%;
+  filter: saturate(1.1) contrast(1.05);
+}
+.mm-hero-wash {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg, rgba(11,6,20,.62) 0%, rgba(11,6,20,.18) 26%, rgba(11,6,20,.30) 62%, rgba(11,6,20,.94) 100%),
+    linear-gradient(100deg, rgba(20,9,31,.88) 0%, rgba(20,9,31,.25) 45%, rgba(60,8,16,.28) 100%);
+}
+.mm-embers i {
+  position: absolute; bottom: -12px; border-radius: 50%;
+  background: radial-gradient(circle, #ffb14d 0%, rgba(255,122,60,.55) 45%, transparent 70%);
+  opacity: 0; animation: mm-ember 9s linear infinite;
+}
+.mm-embers i:nth-child(1) { left: 8%;  width: 7px; height: 7px;  animation-delay: 0s; }
+.mm-embers i:nth-child(2) { left: 22%; width: 5px; height: 5px;  animation-delay: 1.6s; }
+.mm-embers i:nth-child(3) { left: 37%; width: 9px; height: 9px;  animation-delay: 3.1s; }
+.mm-embers i:nth-child(4) { left: 52%; width: 5px; height: 5px;  animation-delay: .8s; }
+.mm-embers i:nth-child(5) { left: 66%; width: 8px; height: 8px;  animation-delay: 4.4s; }
+.mm-embers i:nth-child(6) { left: 79%; width: 5px; height: 5px;  animation-delay: 2.3s; }
+.mm-embers i:nth-child(7) { left: 90%; width: 7px; height: 7px;  animation-delay: 5.7s; }
+.mm-embers i:nth-child(8) { left: 45%; width: 4px; height: 4px;  animation-delay: 6.9s; }
+@keyframes mm-ember {
+  0%   { transform: translateY(0) translateX(0); opacity: 0; }
+  12%  { opacity: .85; }
+  100% { transform: translateY(-72vh) translateX(4vw); opacity: 0; }
+}
+
+/* ---------- Top player bar (T8 profile strip) ---------- */
+.mm-topbar {
+  position: relative; z-index: 2;
+  display: flex; align-items: center; gap: 10px;
+  padding: calc(8px + env(safe-area-inset-top)) 12px 8px;
+  background: linear-gradient(180deg, rgba(8,4,14,.88), rgba(8,4,14,.55) 70%, transparent);
+}
+.mm-pcard {
+  display: flex; align-items: center; gap: 9px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 12px; padding: 6px 12px 6px 6px;
+  color: #fff; text-align: left; min-height: 48px;
+}
+.mm-pcard:active { transform: scale(.97); }
+.mm-avatar {
+  width: 38px; height: 38px; border-radius: 10px; flex: 0 0 auto;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; font-weight: 900; font-style: italic;
+  color: #fff; background: linear-gradient(140deg, #8b2bd8, #3d1068);
+  border: 1px solid rgba(255,177,77,.5);
+}
+.mm-pmeta { display: flex; flex-direction: column; line-height: 1.15; min-width: 0; }
+.mm-pname { font-weight: 800; letter-spacing: 1.5px; font-size: 15px; white-space: nowrap; }
+.mm-ptitle { color: var(--gold); font-size: 11px; letter-spacing: 1px; white-space: nowrap; }
+
+.mm-soulurge {
+  flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px;
+  min-width: 0;
+}
+.mm-su-label {
+  font-size: 10px; letter-spacing: 3px; color: rgba(255,255,255,.65); font-weight: 700;
+}
+.mm-pips { display: flex; gap: 3px; }
+.mm-pips i {
+  width: 11px; height: 11px; border-radius: 50%;
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(139,43,216,.65);
+}
+.mm-pips i.lit {
+  background: radial-gradient(circle at 35% 35%, #ffd9a0, #ff7a3c 60%, #cc2222);
+  border-color: #ffb14d;
+  box-shadow: 0 0 8px rgba(255,122,60,.8);
+}
+
+.mm-rank {
+  display: flex; flex-direction: column; align-items: flex-end; gap: 2px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,177,77,.4);
+  border-radius: 12px; padding: 7px 12px; color: #fff; min-height: 48px;
+  max-width: 38vw;
+}
+.mm-rank:active { transform: scale(.97); }
+.mm-rank-name {
+  font-weight: 900; font-style: italic; letter-spacing: 1px; font-size: 14px;
+  color: var(--gold); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%;
+}
+.mm-rank-sub { font-size: 10px; letter-spacing: 2px; color: rgba(255,255,255,.6); }
+
+/* ---------- Compact brand ---------- */
+.mm-brand { position: relative; z-index: 1; padding: 2px 18px 0; pointer-events: none; }
+.mm-logo {
+  margin: 0; font-weight: 900; font-style: italic; line-height: .9;
+  font-size: clamp(30px, 8.5vw, 52px); letter-spacing: 2px; color: #fff;
+  text-shadow: 0 2px 18px rgba(0,0,0,.8);
+  transform: skewX(-6deg);
+}
+.mm-logo span {
+  background: linear-gradient(180deg, #ffd9a0 5%, #ff7a3c 55%, #cc2222 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+/* ---------- T8 rail list ---------- */
+.mm-list {
+  position: relative; z-index: 1;
+  flex: 1 1 auto; min-height: 0;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  gap: 2px; padding: 8px 0 calc(6px + env(safe-area-inset-bottom));
+  overflow-y: auto; overflow-x: hidden; touch-action: pan-y;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 26px);
+  mask-image: linear-gradient(180deg, transparent 0, #000 26px);
+}
+.mm-item {
+  position: relative; display: flex; align-items: center; gap: 14px;
+  background: transparent; border: none; color: #8f8f96;
+  padding: 9px 20px 9px 22px; text-align: left; width: 100%;
+  transition: color .12s ease; min-height: 52px;
+}
+.mm-item i {
+  font-style: italic; font-weight: 800; font-size: 13px; letter-spacing: 1px;
+  color: rgba(255,255,255,.28); min-width: 26px;
+}
+.mm-item span {
+  font-size: clamp(21px, 6vw, 30px); font-weight: 900; font-style: italic;
+  letter-spacing: 1.5px; line-height: 1;
+  transform: skewX(-6deg); white-space: nowrap;
+}
+.mm-item small {
+  display: block; transform: none; font-style: normal; font-weight: 600;
+  font-size: 11px; letter-spacing: 1.5px; color: rgba(255,255,255,.38);
+  margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.mm-item small.soon { color: #e63229; }
+/* T8 red slash on the active item */
+.mm-item::before {
+  content: ""; position: absolute; left: 8px; top: 14%; bottom: 14%; width: 5px;
+  background: #e63229; transform: skewX(-14deg) scaleY(0);
+  transition: transform .14s ease; box-shadow: 0 0 12px rgba(230,50,41,.8);
+}
+.mm-item.sel, .mm-item:active { color: #fff; }
+.mm-item.sel::before, .mm-item:active::before { transform: skewX(-14deg) scaleY(1); }
+.mm-item.sel i, .mm-item:active i { color: #e63229; }
+.mm-item.sel small, .mm-item:active small { color: rgba(255,255,255,.65); }
+
+/* ---------- Bottom status bar ---------- */
+.mm-bottombar {
+  position: relative; z-index: 2;
+  display: flex; align-items: center; gap: 12px;
+  padding: 8px 14px calc(10px + env(safe-area-inset-bottom));
+  background: linear-gradient(0deg, rgba(8,4,14,.9), transparent);
+  font-size: 10px; letter-spacing: 2px; color: rgba(255,255,255,.45);
+  min-height: 34px;
+}
+.mm-ver { white-space: nowrap; font-weight: 700; }
+.mm-news {
+  flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  color: rgba(255,177,77,.75);
+}
+
+/* ---------- Slide-in submenu (T8 panel) ---------- */
+.mm-submenu {
+  position: absolute; inset: 0; z-index: 5;
+  display: flex; flex-direction: column;
+  background: linear-gradient(168deg, rgba(14,7,24,.97), rgba(10,5,16,.985));
+  animation: mm-slidein .22s ease;
+}
+.mm-submenu[hidden] { display: none; }
+@keyframes mm-slidein { from { transform: translateX(34px); opacity: 0; } }
+.mm-sub-head {
+  display: flex; align-items: center; gap: 12px;
+  padding: calc(10px + env(safe-area-inset-top)) 14px 10px;
+  border-bottom: 2px solid rgba(230,50,41,.55);
+  background: rgba(8,4,14,.6);
+}
+.mm-sub-head h2 {
+  margin: 0; font-size: clamp(20px, 5.5vw, 30px); font-weight: 900; font-style: italic;
+  letter-spacing: 2px; transform: skewX(-6deg); color: #fff;
+}
+.mm-back {
+  width: 48px; height: 48px; border-radius: 12px; font-size: 30px; line-height: 1;
+  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.16);
+  color: #fff;
+}
+.mm-back:active { transform: scale(.94); }
+.mm-cards {
+  flex: 1; overflow-y: auto; touch-action: pan-y;
+  display: grid; grid-template-columns: 1fr; gap: 12px;
+  padding: 16px 14px calc(20px + env(safe-area-inset-bottom));
+  align-content: start;
+}
+.mm-card {
+  position: relative; text-align: left; color: #fff;
+  background: linear-gradient(120deg, rgba(38,20,60,.92), rgba(20,10,34,.94));
+  border: 1px solid rgba(139,43,216,.4);
+  border-radius: 4px; padding: 16px 16px 14px 20px; min-height: 84px;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%);
+}
+.mm-card::before {
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px;
+  background: linear-gradient(180deg, #8b2bd8, #5b1a94);
+}
+.mm-card.hot::before { background: linear-gradient(180deg, #e63229, #8f1410); }
+.mm-card:active { transform: scale(.985); filter: brightness(1.2); }
+.mm-card h3 {
+  margin: 0 0 6px; font-size: 19px; font-weight: 900; font-style: italic;
+  letter-spacing: 1.5px; transform: skewX(-5deg);
+}
+.mm-card p { margin: 0; font-size: 12.5px; line-height: 1.5; color: rgba(255,255,255,.62); }
+.mm-badge {
+  position: absolute; top: 10px; right: 12px;
+  font-size: 10px; font-weight: 800; letter-spacing: 2px;
+  padding: 4px 9px; border-radius: 4px; transform: skewX(-8deg);
+  background: rgba(230,50,41,.16); border: 1px solid #e63229; color: #ff8a80;
+}
+.mm-badge.soon { background: rgba(255,177,77,.12); border-color: #ffb14d; color: #ffb14d; }
+.mm-badge.live { background: rgba(77,255,136,.10); border-color: #4dff88; color: #4dff88; }
+
+/* ---------- Player card editor ---------- */
+.mm-cardedit { flex: 1; overflow-y: auto; padding: 20px 18px; display: flex; flex-direction: column; gap: 16px; }
+.mm-field { display: flex; flex-direction: column; gap: 8px; font-size: 12px; letter-spacing: 2px; color: rgba(255,255,255,.6); font-weight: 700; }
+.mm-field input, .mm-field select {
+  background: rgba(255,255,255,.07); border: 1px solid rgba(139,43,216,.5);
+  border-radius: 10px; color: #fff; font-size: 17px; padding: 14px 12px;
+  font-family: inherit; letter-spacing: 1px; min-height: 52px;
+}
+.mm-field select option { background: #1a0f2e; }
+.mm-save { width: 100%; min-height: 54px; }
+.mm-note { font-size: 12px; color: rgba(255,255,255,.45); line-height: 1.6; text-align: center; }
+
+/* ---------- Forge panel ---------- */
+.mm-forge {
+  position: absolute; inset: 0; z-index: 8;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(8,4,14,.78); backdrop-filter: blur(3px); padding: 20px;
+}
+.mm-forge[hidden] { display: none; }
+.mm-forge-box {
+  width: min(92vw, 430px); text-align: center;
+  background: linear-gradient(160deg, #1c0f30, #100818);
+  border: 1px solid rgba(255,177,77,.45); border-radius: 6px;
+  padding: 28px 24px;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%);
+  animation: mm-pop .2s ease;
+}
+@keyframes mm-pop { from { transform: scale(.94); opacity: 0; } }
+.mm-forge-kicker {
+  font-size: 11px; letter-spacing: 4px; color: #ffb14d; font-weight: 800; margin-bottom: 10px;
+}
+.mm-forge-box h2 {
+  margin: 0 0 12px; font-size: 24px; font-weight: 900; font-style: italic;
+  letter-spacing: 1.5px; transform: skewX(-6deg); color: #fff;
+}
+.mm-forge-box p { font-size: 13.5px; line-height: 1.65; color: rgba(255,255,255,.65); margin: 0 0 20px; }
+.mm-forge-box .btn-primary { width: 100%; min-height: 52px; }
+
+/* ---------- Toast ---------- */
+.mm-toast {
+  position: absolute; left: 50%; bottom: calc(54px + env(safe-area-inset-bottom));
+  transform: translateX(-50%) translateY(16px); z-index: 9;
+  background: rgba(10,5,18,.94); border: 1px solid rgba(230,50,41,.6);
+  color: #fff; font-size: 13px; letter-spacing: 1px; font-weight: 700;
+  padding: 12px 20px; border-radius: 10px; opacity: 0; pointer-events: none;
+  transition: opacity .2s ease, transform .2s ease; white-space: nowrap;
+  max-width: 92vw; overflow: hidden; text-overflow: ellipsis;
+}
+.mm-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ---------- Landscape: true T8 left rail ---------- */
+@media (orientation: landscape) and (min-height: 320px) {
+  #screen-menu.mm { flex-direction: row; flex-wrap: wrap; }
+  .mm-topbar { flex: 1 1 100%; order: 0; }
+  .mm-brand { display: none; }
+  .mm-list {
+    order: 1; flex: 0 0 min(46vw, 430px); justify-content: center;
+    -webkit-mask-image: none; mask-image: none; padding: 8px 0;
+  }
+  .mm-item { min-height: 46px; padding-top: 7px; padding-bottom: 7px; }
+  .mm-item span { font-size: clamp(18px, 3.4vw, 26px); }
+  .mm-bottombar { flex: 1 1 100%; order: 2; }
+  .mm-submenu { left: auto; width: min(62vw, 560px); border-left: 2px solid rgba(230,50,41,.55); }
+  .mm-cards { grid-template-columns: 1fr 1fr; }
+}
+/* Short portrait screens: tighten the rail */
+@media (orientation: portrait) and (max-height: 700px) {
+  .mm-item { min-height: 46px; padding-top: 6px; padding-bottom: 6px; }
+  .mm-item span { font-size: clamp(19px, 5.4vw, 26px); }
+  .mm-logo { font-size: clamp(26px, 7vw, 40px); }
+}

@@ -41,6 +41,10 @@ const screens = {
   reincarnate: document.getElementById('screen-reincarnate'),
   trader:  document.getElementById('screen-trader'),
   modewin: document.getElementById('screen-modewin'),
+  online: document.getElementById('screen-online'),
+  sidegames: document.getElementById('screen-sidegames'),
+  collection: document.getElementById('screen-collection'),
+  daily: document.getElementById('screen-daily'),
 };
 /* Tekken-style select screen controller (js/select-screen.js).
    Assigned once at bootstrap below; show() only runs on user
@@ -169,6 +173,25 @@ const ui = {
     el.classList.add('show', 'escaped');
     this._throwT = setTimeout(() => el.classList.remove('show', 'escaped'), 900);
   },
+  /* V-System (owner 2026-10-22). All user-facing names are «name TBD»
+     placeholders pending user approval — flagged, not final. */
+  vTrigger() {
+    this.banner('V-TRIGGER «name TBD» — SOUL AWAKENED');
+    this.surgeFlash(0xffd34d, 0xfff2b0);
+  },
+  vReversal() {
+    this.banner('V-REVERSAL «name TBD»');
+    this.surgeFlash(0x4da6ff, 0xbfe0ff);
+  },
+  vShift() { this.surgeFlash(0x7df9ff, 0xd8fbff); },
+  vShiftBreak() {
+    this.banner('V-SHIFT «name TBD» — BREAK!');
+    this.surgeFlash(0xffffff, 0x7df9ff);
+  },
+  vParry() {
+    this.banner('V-SKILL PARRY «name TBD»');
+    this.surgeFlash(0x9fd8ff, 0xe8f6ff);
+  },
   matchOver(playerWon) {
     document.getElementById('result-title').textContent = playerWon ? 'YOU WIN!' : 'YOU LOSE';
     document.getElementById('result-sub').textContent = playerWon
@@ -183,6 +206,10 @@ const canvas = document.getElementById('game-canvas');
 const input = new InputManager();
 input.init();
 const game = new Game(canvas, input, ui);
+// Photo mode (DOA-style): P/F9 pauses into a free camera anywhere in a
+// fight. Loaded on demand; no-op until first toggled.
+import('./photomode.js').then(({ installPhotoMode }) => installPhotoMode(game))
+  .catch(() => {});
 ui._buildMeter('p1');
 ui._buildMeter('p2');
 
@@ -384,19 +411,30 @@ function scrollStageCardIntoView(el) {
 function updateStagePreview(s) {
   const img = document.getElementById('stage-preview-img');
   const sw = document.getElementById('stage-preview-swatch');
+  const showSwatch = () => {
+    if (img) img.style.display = 'none';
+    if (sw) {
+      sw.hidden = false;
+      sw.style.background = `linear-gradient(135deg, ${s.swatch[0]}, ${s.swatch[1]})`;
+    }
+  };
   if (img) {
-    img.style.display = '';
-    img.onerror = () => {
-      img.style.display = 'none';
-      if (sw) {
-        sw.hidden = false;
-        sw.style.background = `linear-gradient(135deg, ${s.swatch[0]}, ${s.swatch[1]})`;
+    // W51: the preview pane markup now exists (index.html). Only set src
+    // when there's a thumb AND it changed — most thumbs 404 (atlas tiles
+    // serve the cards), and re-setting the same src flickers the pane.
+    // Re-highlighting the same stage leaves img/swatch exactly as they are.
+    if (s.thumb) {
+      if (img.getAttribute('src') !== s.thumb) {
+        img.style.display = '';
+        img.onerror = showSwatch;
+        if (sw) sw.hidden = true;
+        img.src = s.thumb;
       }
-    };
-    img.src = s.thumb;
+    } else {
+      showSwatch();
+    }
     img.alt = s.name;
   }
-  if (sw) sw.hidden = true;
   const nm = document.getElementById('stage-preview-name');
   if (nm) nm.textContent = s.name;
   const un = document.getElementById('stage-preview-universe');
@@ -443,7 +481,9 @@ document.addEventListener('keydown', (e) => {
     const card = cards[focusedStageIdx];
     const s = getStage(card.dataset.id);
     if (s) {
-      if (selectedStage === s.id) { startFight(); }
+      // W51: same confirm path as the CONFIRM button — bare startFight()
+      // here dropped pendingFight (wrong fighters, dead result screen).
+      if (selectedStage === s.id) { confirmStageFromSelect(); }
       else selectStageCard(card, s);
     }
     e.preventDefault();
@@ -511,8 +551,14 @@ window.addEventListener('load', () => {
   setTimeout(() => document.getElementById('tap-to-start').classList.add('show'), 600);
 });
 
-document.querySelectorAll('[data-action]').forEach((el) => {
-  el.addEventListener('click', () => {
+/* Delegated data-action router (T8 menu, worker 37): one document-level
+   listener covers both the static menu and submenu cards created
+   dynamically by mainmenu.js. Previously a one-time forEach at eval. */
+document.addEventListener('click', (e) => {
+  const t = e.target;
+  const el = (t instanceof Element) ? t.closest('[data-action]') : null;
+  if (!el) return;
+  {
     unlockAudio();
     audio.uiClick();
     const a = el.dataset.action;
@@ -527,6 +573,9 @@ document.querySelectorAll('[data-action]').forEach((el) => {
     }
     else if (a === 'mode-training') {
       getModes().then(m => m.startMode('training'));
+    }
+    else if (a === 'mode-fightlab') {
+      getModes().then(m => m.startMode('fightlab'));
     }
     else if (a === 'mode-survival') {
       getModes().then(m => m.startMode('survival'));
@@ -579,7 +628,49 @@ document.querySelectorAll('[data-action]').forEach((el) => {
     else if (a === 'rematch') {
       getModes().then(m => { if (m.mode) m.rematch(); else startFight(); });
     }
-  });
+  }
+});
+
+/* T8 main menu router (data-mm, worker 36): the T8-style menu uses data-mm
+   attributes, not data-action. This delegated listener wires them up.
+   Each navigates to a real screen — no dead ends. */
+document.addEventListener('click', (e) => {
+  const t = e.target;
+  const el = (t instanceof Element) ? t.closest('[data-mm]') : null;
+  if (!el) return;
+  unlockAudio();
+  audio.uiClick();
+  const m = el.dataset.mm;
+  if (m === 'story') {
+    getModes().then(modes => modes.startMode('story'));
+  }
+  else if (m === 'versus') {
+    getModes().then(modes => modes.startMode('versus'));
+  }
+  else if (m === 'online') {
+    show('online');
+  }
+  else if (m === 'arcade') {
+    getModes().then(modes => modes.startMode('arcade'));
+  }
+  else if (m === 'sidegames') {
+    show('sidegames');
+  }
+  else if (m === 'training') {
+    getModes().then(modes => modes.startMode('training'));
+  }
+  else if (m === 'creation') {
+    window.location.href = '../customization/creation-suite-ui/index.html';
+  }
+  else if (m === 'collection') {
+    show('collection');
+  }
+  else if (m === 'daily') {
+    show('daily');
+  }
+  else if (m === 'options') {
+    show('howto'); // Options: howto screen has settings
+  }
 });
 
 /* Confirm routing: the mode controller owns the select flow
@@ -613,8 +704,11 @@ document.getElementById('confirm-fighter').addEventListener('click', confirmSele
    stage screen with no feedback and no way to retry ("fight never starts").
    Now: visible loading state on the stage screen, failures surface there,
    and pendingFight is only consumed when the fight actually starts, so
-   CONFIRM retries the same fight. */
-document.getElementById('confirm-stage').addEventListener('click', () => {
+   CONFIRM retries the same fight. W51: extracted so the keyboard Enter
+   path runs the SAME confirm — a bare startFight() there used to ignore
+   pendingFight, booting the wrong fighters with no versus onMatchEnd
+   (dead result screen). */
+function confirmStageFromSelect() {
   if (!selectedStage || !pendingFight) return;
   audio.uiClick();
   const { p1, p2, opts } = pendingFight;
@@ -634,7 +728,9 @@ document.getElementById('confirm-stage').addEventListener('click', () => {
       if (btn) btn.disabled = false;
     }
   );
-});
+}
+
+document.getElementById('confirm-stage').addEventListener('click', confirmStageFromSelect);
 
 document.getElementById('random-stage').addEventListener('click', () => {
   audio.uiClick();
@@ -878,3 +974,9 @@ warmIdle();
 ((typeof window !== 'undefined' && window.requestIdleCallback) ? window.requestIdleCallback.bind(window)
   : (fn) => setTimeout(fn, 1500))(() => { getModes().catch(() => {}); });
 requestAnimationFrame(() => requestAnimationFrame(() => mark('menu-interactive')));
+
+/* Menu routers above are bound (delegated data-action + data-mm listeners
+   registered at module evaluation). The non-module fallback binder in
+   index.html checks this flag and stays dormant when the module chain
+   loaded fine. (PR #676 rebase, worker 55.) */
+window.__whMenuBound = true;

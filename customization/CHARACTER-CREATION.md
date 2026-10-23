@@ -182,45 +182,56 @@ From No Mercy CAW — offensive/defensive strength per body zone:
 
 ## 8. "New Fighter" Pipeline
 
-This is the exact flow when a player hits **Create New Fighter** in Western Heart:
+This is the exact flow when a player hits **Create New Fighter** in Western Heart
+(worker 38 menu pass, 2026-10-22 — WWE-template-first, owner directive 2026-10-22):
 
 ```
-1. CHOOSE BASE
-   → Pick a Tekken fighter model (any of our 28 named fighters)
-   → OR pick a parametric body type (No Mercy ranges: 5'0"-7'11", 100-599 lbs)
-   → See: customization/parts/base/README.md
+1. TEMPLATE SELECT  ← FIRST SCREEN, never a fixed default
+   → Owned by js/creation-flow.js (worker 37), data-driven from
+      customization/templates/body-templates.json: WWE 2K-style picks with
+      MB-Lab-baked base meshes, teardown-pulled. The Mixamo soldier is dead
+      as a default — the stage stays empty until the user picks a template.
+   → This lane ships NO competing select: the TEMPLATE tab is a thin wrapper
+      (current pick + change button → the flow module's select).
 
-2. BODY
-   → Adjust height, weight, proportions (sliders)
-   → Pick skin tone (8 tones, or 233 skin textures in parts/no-mercy/skins/)
+2. BODY (Step 2)
+   → Template recipe applied; adjust height, weight, muscle (WMXIX parametric sliders)
+   → MPFB2 body morphs (13 macro + 12 face-shape) — live preview, bake to shape keys
 
-3. HEAD
-   → Pick face (348 in parts/, meshes + textures)
-   → Pick hair (156 styles in parts/wmxix/hair/)
-   → Add head accessories (Tekken Head slot: hats, masks, glasses)
+3. HEAD / FACE (Step 3)
+   → Head shape (7M + 3F) + GNM face system (20 semantic params + presets)
+   → Face parts (348) equip into the Face slot with the buy/equip loop
 
-4. ATTIRE (WWE CAW slots)
-   → Upper body (476 pieces in parts/wmxix/upper_body/)
-   → Lower body (120 pieces in parts/wmxix/lower_body/)
-   → Shoes (50 pieces), Gloves (48 pieces)
-   → Accessories: wrist/knee/elbow (94 pieces), gears (140 pieces)
+4. SKIN (Step 4)
+   → 8 No Mercy tones + 233 No Mercy skin textures + 1,477 WMXIX decoded textures
+   → SKIN SYSTEM (TOOLS tab): Fluid Painter paints detail onto the skin set
 
-5. TEKKEN OVERLAY (4-slot system)
-   → Head: hats, helmets, masks, glasses, hairstyles
-   → Upper: jackets, shirts, armor, tattoos
-   → Lower: pants, skirts, belts, shoes
-   → Other: auras, effects, weapons, companions
-   → Items attach to bone sockets, render as layers on base model
+5. HAIR (Step 5)
+   → 165 styles (incl. 9 universal CC0 with real meshes)
 
-6. MOVESET
-   → Assign moves from 176-slot system (see MOVE-SLOTS.json)
-   → Pick from 5,932 indexed animations
+6. FACIAL HAIR (Step 6)
+   → Beards live in the AKI face-texture parts + head parts → T7 slot 7
 
-7. PROFILE
-   → Name, alias, entrance music/video
-   → Soul assignment, Element, Land of origin (Western Heart additions)
+7. ATTIRE (Step 7)
+   → The full 7,920-part library: WWE (No Mercy 303 real meshes + 379 textures,
+      WMXIX 2,690 + 1,477 decoded textures), Def Jam 2,624 CAW parts, DOA4 272
+      real costume GLBs — browsable, categorized, buy/equip, conflict-checked
+   → Tekken overlay slots (Head/Upper/Lower/Other) share the same socket system
 
-8. SAVE → fighter JSON (see example in section 6)
+8. WARDROBE (Step 8) → DOA6-style 10 quick slots + two-phrase titles
+
+9. PROFILE (Step 9) → name/alias/music/titantron + Soul/Element/Land canon
+
+10. MOVESET → 176-slot system, Combot cross-roster rule
+11. LIMBS → DXMMII 4-arm system
+12. TOOLS → three access layers:
+      LAYER 1 UNIFIED: BODY / FACE / SKIN / RIG / IMPORT / EXPORT systems
+      LAYER 2 SEPARATE: MB-Lab, Build-A-Bod, MPFB2, GNM, GameRig, NaughTyRig,
+                        Fluid Painter, Tripo Intake, Export — each its own menu,
+                        writing job-spec JSONs the pipeline consumes
+      LAYER 3 UNIVERSAL MODE: one combined 9-step wizard for the whole flow
+
+13. SAVE → fighter JSON (see example in section 6) → photo mode → roster
 ```
 
 **The key principle:** WWE CAW parts and Tekken customization items use the SAME socket system. A jacket from WMXIX and a Tekken 7 customization item both attach to the same `upper_body` anchor points. The player doesn't care which game a piece came from — it's all one wardrobe.

@@ -406,6 +406,9 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
 .act-btn.l1 { right: 152px; bottom: 176px; }
 .act-btn.r1 { right: 24px; bottom: 176px; }
 .act-btn.transform { right: 88px; bottom: 216px; background: linear-gradient(180deg,#fff36b,#d8a02b); width:52px;height:52px;font-size:18px; color:#3a2a00; }
+/* V-System (owner 2026-10-22): V-Skill / V-Trigger / V-Reversal button.
+   Explicit position/size so it renders in either button-layout state. */
+.act-btn.vskill { right: 224px; bottom: 66px; background: linear-gradient(180deg,#7df9ff,#1f9dc8); width:60px;height:60px;font-size:18px; color:#062a33; }
 /* Compact screens (portrait phones): shrink the cluster, keep the diamond. */
 @media (max-width: 520px) {
   .action-pad { width: 200px; height: 200px; right: 10px; }
@@ -709,3 +712,45 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
 /* Mode win / game over */
 #modewin-title.win { color: #ffd76a; }
 #modewin-title.lose { color: #ff6a6a; }
+
+/* ============ WH MAIN MENU (10 sections, 2026-10-22, PR #676 rebase) ============
+   Styles the coming-soon placeholder screens' BACK buttons
+   (screen-online / sidegames / collection / daily use .wh-main-menu).
+   Tekken-style: dark with purple/gold accents, phone portrait-first,
+   thumb-reachable, min 64px touch targets, no overlapping text. */
+.wh-main-menu {
+  display: flex; flex-direction: column; gap: 10px;
+  width: 100%; max-width: 480px; margin: 0 auto; padding: 0 16px;
+  /* Scrollable if viewport is short */
+  max-height: 60vh; overflow-y: auto; -webkit-overflow-scrolling: touch;
+}
+.wh-menu-btn {
+  display: flex; align-items: center; gap: 14px;
+  min-height: 64px; width: 100%; padding: 12px 18px;
+  border: 1px solid rgba(139,43,216,0.4); border-radius: 14px;
+  background: linear-gradient(135deg, #1a0b2e 0%, #2d1b4e 100%);
+  color: #fff; text-align: left; font-family: inherit; cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08);
+  transition: transform 0.08s ease, background 0.15s ease;
+  /* Ensure tappable */
+  pointer-events: auto; touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.wh-menu-btn:active {
+  transform: scale(0.97);
+  background: linear-gradient(135deg, #2d1b4e 0%, #4a2d6e 100%);
+  border-color: rgba(139,43,216,0.8);
+}
+.wh-menu-icon { font-size: 28px; flex-shrink: 0; width: 36px; text-align: center; }
+.wh-menu-label { font-size: 18px; font-weight: 800; letter-spacing: 1.5px; flex-grow: 1; }
+.wh-menu-sub { font-size: 12px; opacity: 0.6; font-weight: 400; letter-spacing: 0.5px; text-align: right; }
+.wh-menu-btn.wh-back {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.2);
+}
+.screen-title {
+  text-align: center; color: #fff; font-size: 28px;
+  letter-spacing: 3px; margin: 24px 0; font-weight: 800;
+}
+.wh-placeholder { text-align: center; color: #fff; padding: 40px 20px; }
+.wh-placeholder p { opacity: 0.7; margin: 12px 0 24px; line-height: 1.6; }

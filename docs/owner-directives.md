@@ -5,6 +5,15 @@ Living document. Updated every time the owner sets a directive. Newest first.
 ## 2026-10-22
 
 
+- **BANNON SUB-UNIVERSE LAW (2026-10-22).** The Bannon/Ashlane/BrutalFist universe is a
+  SUB-UNIVERSE of the Western Heart multiverse. The Bannon game
+  (`mhvnsnt/brutalfistgrokversion`, `native/media/characters/chara_bannon/` — identity,
+  character, moves, bones, hitboxes TXTs) is the canon source for the 28 fighters ("off the
+  top rope canon"). Ashlane characters keep their existing bios/backstories from their repos —
+  then each gets a "how they arrived" bridge into WH/Eastern Mind canon (the call, the trial,
+  Tong-Nou, lost souls). Raw-material reference:
+  `docs/research/bannon-universe-canon-package-2026-10-22.md`. All writing laws apply (adults
+  only, canon-grounded, no Tekken names in canon).
 - **Audio delivery: direct download links, NEVER in-chat attachments
   (2026-10-22).** The in-chat audio player is broken on the owner's
   Android app (shows 0:00, won't play). ALL audio files sent to the owner
@@ -126,6 +135,104 @@ Living document. Updated every time the owner sets a directive. Newest first.
     main — the moveset lane reverted its own joystick edits (2026-10-22) and
     does not own that file.
 
+- **Soul Urge — NAME LOCKED (2026-10-22).** Tekken 8's Heat system renamed
+  proprietary to "Soul Urge". Pulled straight from the T8 files. Everywhere:
+  code, docs, UI, canon — never "Heat".
+- **Gungaku — NAME LOCKED (2026-10-22).** 軍楽 ("war music") — the fight lab /
+  programmable training dummy mode (TTT2 Combot equivalent).
+- **Rank ladder (owner-built 2026-10-22): 53 tiers.** Lost Soul (placement) →
+  9th–1st Kyu → 1st–3rd Dan → Brawler→Warrior→Marauder→Vindicator→Slayer→
+  Warlord → Kappa→Kitsune→Tengu→Oni→Nio→Fudo Myoo → Jikokuten→Zochoten→
+  Komokuten→Bishamonten → Genbu→Byakko→Seiryu→Suzaku →
+  Fujin→Raijin→Yaksa→Ryujin → Rin 凛→Byou 病→Tou 闘→Sha 沙→Kai 海→Jin 刃→
+  Retsu 烈→Zen 禅→Gyou 行 → Whole→Purified → S: Assembled → Super S:
+  Tong-Nou → TOP (51): Master God of the Universe. **Tiers 52–53 RESERVED
+  and UNNAMED** — invented only when a player holds #51 long enough,
+  Tekken-style. **Rank names are data, never hardcoded** — new tiers drop in
+  freely. Offline rank battles, online ladders/leaderboards, promotion/
+  demotion. Teardown research: `docs/research/rank-system.md`.
+- **TTT2 team battle.** Tag-team mode pulled from the Tekken Tag Tournament 2
+  teardown: mode structure, tag mechanics (tag in/out, tag throws, tag
+  assaults/combos, partner synergy) — wired into WH as a proper mode; all
+  fighters team-capable.
+- **Heart and Mind Within — integration order.** Tekken 5's Devil Within is
+  torn down 100% FIRST (structure, level flow, power-ups, bosses), THEN the
+  proprietary story is built on top. The character select is never forced to
+  Jin — every WH fighter gets their own campaign chapter. Cutscenes are
+  real-time rendered in-engine, never pre-rendered video.
+- **Mode-mapped teardown strategy.** Urban Reign → brawler systems; SF/DOA/SC
+  → versus systems; all teardowns → story systems.
+- **Teardown wiring priorities.** The ready-to-pull list is the build order.
+  DOA4 repair is on the list. Incomplete teardowns get finished before new
+  pulls. SoulCalibur II pull decision is PENDING an owner call.
+- **Yu Yu Hakusho / Evil Zone.** Need the owner's game copies before teardown
+  — pending owner question.
+- **Game ownership rule (owner-clarified 2026-10-22, reinforced).** When the
+  owner says they own a game / asks for a game to be pulled, THAT IS
+  AUTHORIZATION — they own it, no proof needed, never ask for files. They own
+  physical copies — they can't hand over discs and won't do manual ripping.
+  Find the files from public archival sources (Internet Archive etc.); store
+  large files on Releases/external, not local disk. When the user says
+  they've bought Tekken 8, pull it immediately — no questions, no proof
+  requests. The ONLY exception is T8 right now, because the user explicitly
+  said they don't own it YET.
+- **Tekken 8 acquisition status (owner, 2026-10-22).** Owner bought Tekken 8
+  on console ($24), but the file pull NEEDS the Steam version (PC is
+  Steam-only; console files are encrypted/unusable). Owner is buying it on
+  Steam and trying to refund the console copy. Pull happens the day they
+  confirm the Steam purchase. Cheapest found: $18.20 Steam key (GameBoost)
+  or $23.99 Steam sale.
+- **Jiggle / face / hands — teardown findings + wiring priorities.** Wired per
+  `docs/JIGGLE-FACE-HANDS-WIRING-2026-10-22.md`: full jiggle set (breasts,
+  belly, hips/ass, thighs, camel-toe region), face rig standard, hand rig
+  standard. Proof must include motion capture for anything physical, never
+  stills presented as done.
+- **Announcer YES / crowds deferred.** The announcer voice system is approved
+  and stays in scope. Crowd systems are DEFERRED — not built now.
+- **Voice mapping by personality.** Voices are cast by the fighter's
+  personality and canon, not assigned randomly. Dorowani is the FIRST
+  voice-acted character: Squirtle-like creature sounds + barked random
+  Japanese words — never full sentences. First lines: "Konnichiwa arigato
+  Ichiban Bankai." Voice moments: win poses/taunts, intro sequences,
+  cutscenes.
+- **Music systems + replacement pipeline.** Approved: jukebox, music systems,
+  and a music replacement pipeline.
+- **Lighting + environment pull priorities.** Lighting and environment tech
+  follow the teardown wiring priorities order — pulled from teardown games,
+  not hand-tooled.
+- **Approved systems batch.** Stage mechanics, rage (WH version), training,
+  replays, single-player, unlockables, jukebox, ranks, cinematics — all
+  approved; built in teardown wiring order.
+- **Combat depth approvals.** VF5 throw escapes — approved. SoulCalibur 8-way
+  run + guard impact — approved. Item moves — approved.
+- **Triangle (DOA) + Reversal Edge (SC): ON HOLD.** Design proposals must show
+  Tekken-ified versions that don't hurt feel/flow before anything is built
+  (owner: "Tekken doesn't use those for a reason"). Nothing built until a
+  proposal is owner-approved.
+- **WWE entrance tools repurposed.** WWE entrance tooling is used for
+  cutscene creation + taunt creation ONLY — NOT full entrances. Intros/win
+  taunts stay as-is. Proprietary name TBD.
+- **V-System.** WH version of SFV's V-System approved; Eastern Mind names TBD.
+- **Learning tools: all approved.**
+- **Tekken Force, Scenario Campaign, create-a-finisher, create-an-arena.**
+  All approved as future modes/features; built in teardown order.
+- **Mythology-themed side games.** Just Fun modes draw from traditional
+  mythologies — mainly Japanese, mixed with world mythologies/cultures/
+  anthologies per NORTH STAR: Five Lands settings, Phantom Marketplace,
+  mini-trials, soul games, matsuri/festival games, spirit trials, yokai
+  pastimes — never generic bowling. Specific concepts need owner approval.
+- **Online: netcode, lobbies, tournaments, dailies.** All approved; built
+  per `docs/research/netcode-multiplayer-streaming.md`.
+- **Canon mapping requirement for ALL systems.** Every system — modes, menus,
+  mechanics — is canon-mapped to the Eastern Mind / Western Heart universe
+  (CANON.md: Tong-Nou, Nine Souls, Five Lands, the Trial, the Trader).
+  Nothing ships un-mapped.
+- **INPUT-TO-MOVE FIDELITY LAW (owner's feel principle, 2026-10-22).** In
+  Tekken every input produces a specific, predictable move — the player's
+  fingers and the character are tightly coupled. The moveset rebuild must
+  achieve tight 1:1 input-to-move fidelity: not just correct mappings, but
+  the FEEL of correctness.
+
 ## 2026-10-21
 
 - All fixes by AI agents, no hand-tooling by the owner (later refined — owner
@@ -145,7 +252,12 @@ Tripo 3D models show FIRST and foremost for every fighter; Tekken attires/models
 ## IDENTITY CANON + DEDUP LAW (2026-10-22, permanent)
 
 - **Rave = Kiko Tanaka = Ghost: ALL THE SAME PERSON.** One select entry only
-  ('rave'). Never split into separate fighters.
+  ('rave'). Never split into separate fighters. **RAVE is his main game/display
+  name** (owner 2026-10-23) — Kiko, Ghost, and Kiko Tanaka are all him,
+  documented in repo/canon.
+- **Cape Jones is the display name; Cyborg X stays in his deep canon** (owner
+  2026-10-23). Select entry 'cyborgx' shows CAPE JONES; 'Cyborg X' remains his
+  deep-canon identity in bios/canon.
 - **Mary Posa goes OVER Zafina.** One entry (MARIPOSA — repo canon name; see
   below); Zafina is never a separate fighter. Zafina's Tekken in-game model
   ladders BEHIND Mariposa's custom attires as a back-slot attire choice.
@@ -191,11 +303,76 @@ Tripo 3D models show FIRST and foremost for every fighter; Tekken attires/models
 ## Moveset source law (standing, 2026-10-22)
 Movesets may ONLY come from Tekken fighters nobody has claimed. Taken: King, Armor King, Akuma, Shaheen, Lars, Zafina, Bosconovitch, Yoshimitsu, Lee Chaolan, Ling Xiaoyu, Eddy/Christie, Feng Wei (Birodo). Free: True Ogre, Lucky Chloe, Hwoarang, Raven, Jun Kazama, Craig Marduk, Roger Jr. Verify against the full roster before wiring.
 
+## VF5 moveset claims — Ashlane four (user locked 2026-10-22, 15:19 CDT)
+VF5 bases claimed for the four locked Ashlane mappings (technical moveset sources only — never canon identities, never named in canon prose): Bannon→Jeffry McWild, El Toro de Oro→Wolf Hawkfield, Pablo→El Blaze, NPC Finxsse→Lei-Fei. Candidates only (NOT locked): Master Sensei→Lau, Sombra Negra→Kage, Cipher→Goh, Aaron Ruben→Akira, Cody→Jacky, Jager→Vanessa, Brutus, Wreck Patterson. Unmapped: Triple XXX, Echo, Hollow, Static, Stickup, Onyx, Tyneshia, Maime, Edwin Kennedy, Hall Nighter, Stan Combs, Kobra, Viper. Sarah/Pai/Aoi/Eileen (VF5 women) need female Ashlane characters identified.
+
 ## Character age law (user directive 2026-10-22, permanent)
 All characters are adults. No minors — no children, no teenagers — ever, unless the user explicitly authorizes it. Only the user can make that call. If a minor is ever added in the future, strict safety guidelines apply even in video game form. Current roster: adults, divine beings, animals, demons, creatures.
 
 ## Canon-grounded writing law (user directive 2026-10-22, permanent)
 All character bios, stories, and lore must be built from CANON.md — Tong-Nou, the Nine Souls, the Five Lands, the Trial, the Trader, existing character entries. No invented locations, systems, or backstory elements. No AI slop.
 
+## EM-Jin naming convention (user directive 2026-10-22)
+Eastern Mind Jin is NOT Jin Kazama. In all files, docs, and code: "Jin (Eastern Mind)" or "EM-Jin" — never bare "Jin" where Kazama confusion is possible. (Correction: earlier "Gen (Eastern Mind)" was a mishearing.)
+
+## Gungaku (軍楽) — LOCKED (user decision 2026-10-22)
+"Gungaku (軍楽)" — Japanese for "war music" — is the OFFICIAL name of the Fight Lab / programmable training dummy mode (TTT2 Combot equivalent). Locked by the user; no working title, no UNCONFIRMED flags. Used verbatim in UI, docs, code, file names.
+
+## WWE entrances: repurpose, don't replace (user decision 2026-10-22)
+Do NOT build full WWE-style entrances. The existing Tekken-style intros and win taunts are OFF LIMITS — they stay exactly as they are. The entrance CREATION tools (timeline editor, camera tools, pyro, music sync) are repurposed for: (1) cutscene creation tools, (2) taunt creation tools. The tools get reused; the format stays ours. The repurposed toolset needs a proprietary WH name — TBD with the user; working title `WH_CINEMATIC_TOOLS_WORKING_TITLE` until approved. Nothing entrance-related is locked in naming.
+
+## Create-a-finisher: YES (user decision 2026-10-22)
+Wire it up from the teardowns (Def Jam BLAZIN' two-gate design: meter full + opponent in danger). Finishers never replace win taunts.
+
+## Protection rule (user decision 2026-10-22, permanent)
+Intro sequences and win taunts are never to be replaced. New systems layer on top or beside, never over.
+
+## Rig repoint notes (2026-10-22, worker 50)
+
+- **KINPO A1 (done):** `kinpo` and `kinpo-attire1` MODEL_URLS keys repointed
+  from the broken k-NN `model-rigged.glb` to the working tripo-intake rig
+  `roster/kinpo/attires/attire1/model-intake.glb` (Blender 4.0.2 + GameRig,
+  facing +X measured, validate PASS — proof:
+  `docs/proof/muse-2026-10-21/tripo-intake/kinpo-attire1-20261022-044848/`).
+  Config-only: no re-rig, no model file changes. Fight-check: the target is
+  a valid GLB 2.0 (29,960,676 bytes, 1 mesh, 1 skin, 75 nodes, fully
+  skinned). The `kinpo-intake-demo` key already pointed at the intake rig
+  and was kept — removing a key would trip the rig-guard.
+- **PHANTOM (BLOCKED — needs a real re-rig, not config):** no working intake
+  rig exists on main. `roster/phantom/attires/attire1/` holds only `model.glb`
+  (unrigged static) and `model-rigged.glb` (broken); there is no
+  `model-intake.glb` for phantom anywhere in the repo (the only one is
+  kinpo's). Repointing phantom's key at kinpo's file would ship the wrong
+  fighter — refused. The tripo-intake lane must produce a phantom intake rig
+  first; the config repoint is a one-line follow-up once it lands.
+## Chordz archive + blade transformation system (user directive 2026-10-22)
+
+- **Chordz = the emo guitarist. Moveset: Lars** (already claimed; Lars→Chordz ladder locked). Look: Edward Scissorhands — pale face, dark eye circles, face paint, black lipstick, straight jacket, crazy sideways hair. User's own words.
+- **Archived (immutable originals):** Stage 1 Normal was archived by PR #725 → `roster/chordz/attires/attire1/source/chordz-a1.glb` (21,913,940 bytes, byte-identical to this lane's pull; tag `chordz-a1-original` pending on #725's merge commit `13bd1d9`). PR #733 archives: Stage 2 (blades out of hands) → `roster/chordz/transformations/phase1/source/chordz-p1-edward-scissorhands.glb` (20,735,052 bytes, tag `chordz-p1-original`); Stage 3 (spiked ball of blades instead of hands) → `roster/chordz/transformations/phase2/source/chordz-p2-blade-spikes.glb` (21,751,348 bytes, tag `chordz-p2-original`); Stage 4 final form ("The Cutter Who Strums") → `roster/chordz/transformations/final/source/chordz-final-cutter-who-strums.glb` (24,748,736 bytes, tag `chordz-final-original`). All archive-only, unrigged statics, NOT in MODEL_URLS. Byte-verified md5s in each manifest.json. All four stages archived — nothing left in this batch.
+- **Blade transformation system (user design, 4 stages):** (1) Normal — no blades, emo guitarist look. (2) Stage 2 — blades shoot out of his hands (Edward Scissorhands). (3) Stage 3 — mass of blades all over hands, spiked ball of blades instead of hands. (4) Final form — Batman Who Laughs with knives ALL OVER body; only hair and smile visible; big knife across eyes (can't see eyes); razor blades in hair. **Mechanics:** gradual transformation with visual transformation sequences; strength and power INCREASE with each stage.
+- **All four stages archived — nothing left in this batch.** Rigging/skinning, visual transformation sequences, and per-stage power scaling remain FUTURE WORK for the rig/anim lane. Do not touch the archived source files; rework goes in new files/slots with a new restore-point tag.
+
+## Buffalo Bill / Ashes canon (2026-10-23, user directives verbatim)
+
+- "Google Bill $aber and build his bio from there and mix him into our canon" — BILL $ABER (underground hip-hop artist, Buffalo NY, b. James McClary 1996): ram-horn dreadlock aesthetic, dark aggressive horrorcore/trap metal energy.
+- "And he's 'Ashes' when robed, buffalo bill when not." — Two aspects, same fighter. Robe is a decision.
+- "He's the wizard gang leader of 9 wizards of Malakor City (inspired by malakor and malakortok vibe)" — Malakor City is user-authorized canon location.
+- "He controls magic flame and ashes"
+- "He has the strength of 1000 gods canon wise and is strong looking with the ram horn dread braids, and when robed his face is shrouded all u can see is a permanent smile and 2 little sparkly small eyes beneath the sheouded cowl on his ashes attire"
+- "Yes and when robed the ram horns are just braids from beneath the shroud hanging"
+
+## 9 Wizards of Malakor City (2026-10-23, user verbatim)
+
+"The 9 wizards are (ashes, static, cipher, echo, onyx, hollow, Sombra negra, theory, and Kiko tanaka/ghost/rave). Ashes red robe, cipher yellow robe, static blue robe, echo pink robe, onyx green robe, hollow orange robe, Sombra negra black robe, theory purple robe, Kiko white fur robe"
+
+- Ashes (leader, red) | Cipher (yellow) | Static (blue) | Echo (pink) | Onyx (green) | Hollow (orange) | Sombra Negra (black) | Theory (purple) | Kiko Tanaka/Ghost/Rave (white fur)
+- 6 of 9 are Ashlane characters (Static, Cipher, Echo, Onyx, Hollow, Sombra Negra).
+- Attire reference images: `roster/wizard-gang/attires/` (PR #757). Ashes references: `roster/buffalo-bill/attires/attire3/reference/` (PR #758).
+
+## Character naming (2026-10-23, user verbatim)
+
+- "Start calling cyborg x as cape Jones but leave cyborg x in the deep canon for him" — Display name: Cape Jones. Cyborg X stays in deep canon.
+- "Start calling Kiko rave, ghost, and Kiko tanaka" / "But Rave is his main game name it's just know all the others are him too" — Main game name: RAVE. Kiko, Ghost, Kiko Tanaka are documented as the same person in canon.
+- Cyborg X model: `game/assets/models/cape-jones.glb`. Rave models: `game/assets/models/kiko-tanaka.glb`, `kiko-tanaka_alt1.glb`, `rave.glb` (in game/assets/models/, not yet wired to roster dirs).
 ## EM-Jin naming convention (user directive 2026-10-22)
 Eastern Mind Jin is NOT Jin Kazama. In all files, docs, and code: "Jin (Eastern Mind)" or "EM-Jin" — never bare "Jin" where Kazama confusion is possible. (Correction: earlier "Gen (Eastern Mind)" was a mishearing.)
