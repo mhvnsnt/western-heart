@@ -28,6 +28,7 @@ Owner's order (2026-10-23):
 |---|---|
 | `CANON-MASTER.md` | Every fighter's recorded canon in one master record — identity, appearance/model, story, connections, base/moves, open gaps. Compiled only from recorded owner material. Fighters with nothing recorded are listed as such; nothing is invented. |
 | `DEV-NOTES-ARCHIVE.md` | The game's development notes and decisions, organized by date and topic: roster decisions, renames, systems, teardown findings, playtest verdicts, and standing owner directives for the game. Each section cites its source file and date. |
+| `../OBSOLETE-ORIGINALS-RULE.md` | The obsolete-originals rule (owner, 2026-10-23): source-game characters whose moveset and identity became proprietary characters of this universe get no canon of their own — read before writing or wiring any roster entry. |
 
 ## Relationship to the rest of the repo
 
