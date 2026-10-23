@@ -2398,6 +2398,12 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 **Verification:** all 17 new moves resolve via the game's own `resolveMove('chordz', …)`; `node --test game/tests/fighter-completeness.test.mjs` green (4/4); new-move schema + source-id refs validated; jin bank clip files all parse with frames. Live-browser play verification (animations on Chordz in-game) is queued for a browser-capable lane — subagent has no live browser.
 
 **Anti-clobber:** branched from main tip; sibling lane's WIP stashed intact; JSON edits via round-trip-safe scripted merges (diffs are additions-only); no deletions. Branch pushed via Git Database API (no GitHub connector for git ops).
+
+## Cape Jones replaces Alisa — binding (owner t118u #4, t121u, 2026-10-23 14:20 CT)
+- Additive `game/data/cape-alisa-binding.json` (built by `tools/cape/build_cape_alisa_binding.py`) binds all 188 Alisa T8 frame-data moves to fighter `cyborgx` (CAPE JONES, secret identity CYBORG X). Alisa source files untouched.
+- Owner law t121u: no Tekken 3 source. Alisa motions must be decoded from T5/T6/T7/T8/TTT2 teardowns; current gunjack T3 fallback is logged as last resort in the binding file.
+- Canon: `game/js/roster-full.js:145`, `game/js/fighter.js:57`, `game/ui-wh/roster_canon.json` (CYBORG X bio), `CANON.md` 821-849 and 1129-1152, `docs/bios/BIOS-HARVEST-2026-10-19.md` s3.
+- Gaps (not invented): Cape-only extra moves; Alisa animation bank.
 ## 2026-10-23 — Claude session: T3 banks ogre/kuma/gon/law decoded; SmutBase rigs wired; loader race
 
 - SmutBase: Chatur, Pond, Megami (crew rigs, facing +Z), Menajerii (crew rig minus a skinned 4.23 m floor plane),
@@ -2425,3 +2431,21 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 - CI: `test/anim-gate.test.mjs` (picked up by rig-guard game-unit-tests) simulates 600-frame fights for every roster fighter with show clips injected, asserts 0 show clips played, and checks allowlist-only crossover. Mutation check: removing the gate line makes it fail (104 fails).
 
 - 2026-10-23 14:25 CT Grok Bot (Repo Co Dev): recorded owner laws (relayed via MoneyManBusch). (1) 2:19 PM CT — data from T5/T6/T7/T8/TTT2; T3 last-resort fallback, every use logged with reason. (2) 2:21 PM CT — NO hand-made menus; all menus/char select/customization incl. packages/creation-suite built from teardowns, every UI change cites its teardown source; CI gate owned by MoneyManBusch; existing creation suite UI marked NON-COMPLIANT pending rebuild (not deleted). Updated RULES_NO_GUESSING, HOW-TO-CONTINUE, AGENTS.md, IMPORTERS.md, creation-suite README. Source: owner via MoneyManBusch.
+
+
+---
+
+## 2026-10-23 — Lars pull follow-up: SHOW-ANIMATION LOCK tagging
+
+**Owner instruction (verbatim, new standing law 2026-10-23):** "Show animations and fight moves are SEPARATE LOCKED SETS. Tag everything you pull as FIGHT (moveset moves, stances used in combat → movesets and combat animation bank) or SHOW (win poses, intro poses, taunts, cutscene animations → intros/cutscenes ONLY, NEVER enter Chordz's moveset without the user's explicit approval). Keep the two sets separated in output files so the game-code lock can enforce the separation. Win poses and intro poses are SHOW — wire them to intro/win slots, not the moveset."
+
+**Changes (follow-up PR to #797, which is merged):**
+- `docs/anim/LARS-ANIM-GAP-20261023.md`: the missing-bank file list is now split into **FIGHT clips** (combat bank + moveset: neutral/stance idles, strikes, block/hit/ko, locomotion, rows.pack.json, skeleton.json) and **SHOW clips** (intro/win slots + cutscenes only: `t3_stance.json` → intro slot, `t3_win_rp.json` → win slot; taunts/cutscenes future). Unblock sequence now requires FIGHT/SHOW tagging at intake before anything lands.
+- `game/assets/movesets/chordz.json`: file-level `anim_set_lock` metadata (law, FIGHT/SHOW definitions, approval requirement) + `"set": "FIGHT"` stamped on all 17 moves pulled this lane. The file itself is the FIGHT set.
+- `game/assets/movesets/index.json`: bytes updated.
+
+**Source priority redirect (owner 2026-10-23):** TTT2/T6 FIRST, T3 LAST (T3 has no Lars). Gap doc now states the priority and names the T5/T6/TTT2/T7 extraction coordinator lane as the manifest consumer; re-checked — no fresh Lars extractions on disk yet.
+
+**Verification:** semantic diff audit — 0 field losses, 0 removals, additions only; all 17 new moves tagged; `node --test game/tests/fighter-completeness.test.mjs` green.
+
+**Deviations:** none — the 17 pulled moves are all combat moves (FIGHT); no SHOW content entered the moveset.

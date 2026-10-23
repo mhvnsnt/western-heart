@@ -53,6 +53,11 @@
 - **Gaps flagged:** Bannon kits beyond defaultMoveSet unauthored (fill path: teardown banks); Buffalo Bill/wizard gang unlocated (owner to say); SOMBRA_NEGRA has no roster profile; Bloody Roar not landed; DOA4/SF EX2+/Urban Reign/WMXIX identities unmapped.
 
 - 2026-10-23 14:25 CT Grok Bot (Repo Co Dev): recorded owner laws (relayed via MoneyManBusch). (1) 2:19 PM CT — data from T5/T6/T7/T8/TTT2; T3 last-resort fallback, every use logged with reason. (2) 2:21 PM CT — NO hand-made menus; all menus/char select/customization incl. packages/creation-suite built from teardowns, every UI change cites its teardown source; CI gate owned by MoneyManBusch; existing creation suite UI marked NON-COMPLIANT pending rebuild (not deleted). Updated RULES_NO_GUESSING, HOW-TO-CONTINUE, AGENTS.md, IMPORTERS.md, creation-suite README. Source: owner via MoneyManBusch.
+
+## 2026-10-23 15:07 CT, phone char-select layout (fix/select-phone-layout)
+- Cause: game/select.css set #screen-select position: relative, overriding .screen fixed inset:0, so the screen collapsed to content height (fighters zone 0px, ~45% of the viewport empty). CONFIRM was clipped at 390px.
+- Fix: fixed + inset 0; on screens up to 480px wide the hint text is hidden and CONFIRM flexes. Same T8 decode layout (docs/select-redesign/T8-GRID-DECODE.md). Proof in docs/ui/select-phone/.
+- Asset audit: all 179 MODEL_URLS and all 145 attires of the 55 fighters resolve to files on main. The Demonio GLB and profile 404s reported earlier came from my partial checkout (profiles are optional by design).
 ## 2026-10-23 14:34 CT, t122u main-menu touch fix (fix/menu-touch-t122u)
 - Root cause: #loading is a transparent full-screen overlay that only main.js hides. Any failed boot module left it up, and it ate every tap (reproduced in Playwright, all items covered by #loading). #tap-to-start also covered DAILY CHALLENGES.
 - Fix: pointer-events none on both, plus a 4s classic-script failsafe that hides #loading. Test: test/e2e/menu-touch.e2e.mjs, CI job menu-touch-e2e, screenshots in docs/ui/t122u/.

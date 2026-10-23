@@ -172,11 +172,37 @@ def check(body, changed_files, repo_root=".", labels=(), author="", resolve_ref=
     return errors
 
 
+def _gh_get_pr(repo, number):
+    r = subprocess.run(["gh", "api", f"repos/{repo}/pulls/{number}"], capture_output=True, text=True)
+    return json.loads(r.stdout) if r.returncode == 0 else None
+
+
+def live_pr(pr, repo, fetch=_gh_get_pr):
+    """Use the PR's CURRENT body and labels, not the event snapshot.
+
+    The event payload is frozen when the run is queued. Two quick body edits
+    plus cancel-in-progress can leave the surviving run holding the older body,
+    and "Re-run" replays that same stale payload, so a body that is already
+    fixed keeps failing. Falls back to the payload if the API call fails.
+    """
+    try:
+        cur = fetch(repo, pr["number"])
+    except Exception:  # noqa: BLE001
+        cur = None
+    if not cur:
+        return pr
+    merged = dict(pr)
+    merged["body"] = cur.get("body")
+    if "labels" in cur:
+        merged["labels"] = cur["labels"]
+    return merged
+
+
 def main():
     with open(os.environ["GITHUB_EVENT_PATH"]) as f:
         ev = json.load(f)
-    pr = ev["pull_request"]
     repo = ev["repository"]["full_name"]
+    pr = live_pr(ev["pull_request"], repo)
     files = subprocess.run(["gh", "api", "--paginate", f"repos/{repo}/pulls/{pr['number']}/files",
                             "-q", ".[].filename"],
                            capture_output=True, text=True, check=True).stdout.split("\n")
