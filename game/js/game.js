@@ -23,6 +23,7 @@ async function gungakuAI() {
 import { audio } from './audio.js';
 import { getStage } from './stages.js';
 import { applyFighterProfile } from './customization-consumer.js';
+import { V, vskillDispatch, vshiftTap } from './v-system.js';
 // LIGHTING RIG (worker 27): per-fighter character light rig — SFV/T7-style
 // character-vs-stage lighting separation + bible soul glow. Fail-silent.
 import { attachCharacterRig } from './lighting-rig.js';
@@ -51,6 +52,9 @@ export class Game {
     this.roundState = 'idle'; // idle | intro | fight | over
     this._roundLockT = 0;
     this._hitStop = 0;
+    this._slowMo = 0; // V-System: V-Shift slow-mo timer (real seconds)
+    this._p1BlockWas = false; // V-System: block double-tap (V-Shift) edge tracking
+    this._p1BlockUpT = null;
 
     /* ---- hit-feel tuning (review-stage tuner, training mode) ----
        Multipliers on top of the wired hit-feel values (Tekken teardown
@@ -138,6 +142,16 @@ export class Game {
     // Stage content streams in (Tekken retro OBJs fetch async); the fight
     // intro runs on the base arena while the shell loads.
     this.arena.setStage(stage.id);
+    // FIGHTER DEPTH (2026-10-22, worker 34): ki charge, tag relay, cloth/hair,
+    // combo trials, ghost AI, replay analysis, stage intros/variants, versus
+    // banter, movelist UI, special style, punishment training. Dynamic import
+    // so the menu boot path stays lean; every system feature-flagged in
+    // WH_DEPTH_FLAGS and fail-silent here.
+    try {
+      const { FighterDepth } = await import('./fighter-depth.js');
+      this._whDepth = FighterDepth;
+      FighterDepth.onMatchStart(this, { stageDef: stage, variantId: opts.variantId, skipIntro: opts.skipIntro });
+    } catch (e) { console.warn('[WH] fighter-depth wire failed:', e?.message || e); }
     this._startRound();
     // Modes lane: HP carry-over (survival / team battle / qombat) —
     // applied after _startRound's full-heal so the carry is exact.
@@ -162,6 +176,8 @@ export class Game {
     this.roundState = 'idle';
     this._roundLockT = 0;
     this._hitStop = 0;
+    this._slowMo = 0; // V-System reset
+    this._p1BlockWas = false; this._p1BlockUpT = null;
     this._acc = 0;
     this.running = false;
     this.paused = true;
@@ -226,7 +242,9 @@ export class Game {
       if (this._hitStop > 0) {
         this._hitStop -= frameDt;
       } else {
-        this._acc += frameDt;
+        // V-System: V-Shift slow-mo dilates the sim (arena/camera stay live).
+        if (this._slowMo > 0) this._slowMo -= frameDt;
+        this._acc += frameDt * (this._slowMo > 0 ? V.SLOWMO_SCALE : 1);
         while (this._acc >= FIXED_DT) {
           this._update(FIXED_DT);
           this._acc -= FIXED_DT;
@@ -267,6 +285,15 @@ export class Game {
         this.p1.tryMove(inp.axisX);
         if (inp.up) this.p1.tryJump();
         this.p1.tryBlock(inp.held.block);
+        // V-System: V-Shift on block double-tap (neutral only — the tap
+        // edge while already blocking just keeps blocking).
+        const blockNow = !!inp.held.block;
+        if (blockNow && !this._p1BlockWas &&
+            vshiftTap(this._p1BlockUpT, performance.now()) && this.p1.tryVShift()) {
+          this.ui.vShift(); audio.whiff(); rec('vshift');
+        }
+        if (!blockNow && this._p1BlockWas) this._p1BlockUpT = performance.now();
+        this._p1BlockWas = blockNow;
         this.p1.tryCrouch(inp.down && !inp.up); // hold down = crouch; release = WS. window
         // Feed facing-relative direction into the Tekken input buffer
         // (drives motion specials qcf/f,F and directional attacks f+1)
@@ -284,7 +311,12 @@ export class Game {
               }
             }
           }
-        } else for (const act of inp.consume()) {
+        } else {
+          const whQueue = inp.consume();
+          // FIGHTER DEPTH (worker 34): soul kindle (ki charge) watches the
+          // raw queue for the 1+2+3+4 press.
+          if (this._whDepth) this._whDepth.onPlayerQueue(this.p1, whQueue, dt);
+          for (const act of whQueue) {
           if (act === 'punch' || act === 'kick' || act === 'grab' ||
               act === '1' || act === '2' || act === '3' || act === '4' ||
               act === '1+3' || act === '2+4' || act === '1+2' || act === '3+4' ||
@@ -302,12 +334,14 @@ export class Game {
             }
           }
           else if (act === 'dodge') { if (this.p1.tryDodge()) rec('dodge'); }
+          else if (act === 'vskill') { this._vskillAction(this.p1, rec); }
           else if (act === 'transform') {
             if (this.p1.tryTransform('up')) { audio.soulSurge(this.p1.char.id); rec('transform'); }
           }
           else if (act === 'transform-down') {
             if (this.p1.tryTransform('down')) { audio.soulSurge(this.p1.char.id); rec('transform-down'); }
           }
+          } // end for (const act of whQueue) — fighter-depth wire
         }
       }
 
@@ -355,6 +389,10 @@ export class Game {
       this._resolveCombat(this.p1, this.p2);
       this._resolveCombat(this.p2, this.p1);
 
+      // FIGHTER DEPTH (worker 34): per-frame systems — kindle timers,
+      // tag relay, stage intro camera.
+      if (this._whDepth) this._whDepth.onUpdateFrame(this, dt);
+
       // --- HUD ---
       this.ui.updateHP(this.p1, this.p2);
       this.ui.updateMeter(this.p1, this.p2);
@@ -386,10 +424,57 @@ export class Game {
     return 'n';
   }
 
+  /* V-System: one 'vskill' input, three context moves (Tekken-ified SFV).
+     Blockstun + 50 souls -> V-Reversal | full meter -> V-Trigger | else V-Skill. */
+  _vskillAction(f, rec) {
+    const d = vskillDispatch({ state: f.state, stun: f.stun, meter: f.meter });
+    if (d === 'vreversal') {
+      if (f.tryVReversal()) { this.ui.vReversal(); audio.block(); rec('vreversal'); }
+    } else if (d === 'vtrigger') {
+      if (f.tryVTrigger()) {
+        this.ui.vTrigger(); audio.soulSurge(f.char.id);
+        this.arena.shake(0.35 * this.feel.shake, 0.3 * this.feel.shake);
+        this._hitStop = 0.08 * this.feel.hitstop; rec('vtrigger');
+      }
+    } else if (f.tryVSkill()) { audio.whiff(); rec('vskill'); }
+  }
+
   /* Test attacker's active hitbox against defender's hurtboxes */
   _resolveCombat(attacker, defender) {
     const hb = attacker.getHitbox();
     if (!hb) return;
+    // V-System: V-Shift evade — the shifter's i-frames beat an incoming
+    // attack inside range -> slow-mo + V-Shift Break window. (Hurtboxes are
+    // empty during i-frames, so this check lives outside the loop.)
+    if (defender.state === 'vshift' && !defender._vshiftProc &&
+        attacker.state === 'attack' &&
+        (attacker._attackPhase === 'startup' || attacker._attackPhase === 'active')) {
+      const dx = Math.abs(attacker.root.position.x - defender.root.position.x);
+      if (dx < V.SHIFT_EVADE_RANGE) {
+        defender._vshiftProc = true;
+        defender._vbreakT = V.BREAK_WINDOW;
+        this._slowMo = V.SLOWMO_DURATION;
+        this.ui.vShiftBreak(); audio.whiff();
+        this._spawnImpact(defender.root.position.x, 1.4, defender.root.position.z, 0x7df9ff, 1.0);
+        return;
+      }
+    }
+    // V-System: V-Skill parry — catches a strike during its window.
+    // The attack is cancelled into hitstun; the parrier drinks souls.
+    if (defender.state === 'vskill' && defender.attack && defender.attack.kind === 'parry' &&
+        defender._vparryT > 0 && !hb.move.isGrab && !hb.move.unblockable) {
+      const ddx = hb.x - defender.root.position.x, ddz = hb.z - defender.root.position.z;
+      if (ddx * ddx + ddz * ddz < 1.6 * 1.6) {
+        attacker._enter('hitstun'); attacker.stun = Math.max(attacker.stun, V.PARRY_STAGGER);
+        attacker.vx = 0; attacker.vz = 0;
+        defender.addMeter(V.PARRY_SOUL_GAIN);
+        defender._vparryT = 0;
+        this.ui.vParry(); audio.block();
+        this._hitStop = 0.08 * this.feel.hitstop;
+        this._spawnImpact(hb.x, hb.y, hb.z, 0x9fd8ff, 0.8);
+        return;
+      }
+    }
     const hurts = defender.getHurtboxes();
     for (const hu of hurts) {
       const dx = hb.x - hu.x, dy = hb.y - hu.y, dz = hb.z - hu.z;
@@ -426,6 +511,11 @@ export class Game {
           attacker.combo = 0;
         } else if (result === 'dodge') {
           // whiffed into i-frames, nothing
+        } else if (result === 'armor') {
+          // V-System: armored V-Skill absorbed it — spark, no damage, no combo.
+          audio.block();
+          this._hitStop = 0.05 * this.feel.hitstop;
+          this._spawnImpact(hb.x, hb.y, hb.z, 0xbfd4ff, 0.7);
         } else if (result === 'ko') {
           audio.ko(); audio.grunt(defender.isPlayer ? 1.1 : 0.85);
           this.arena.shake(0.5 * this.feel.shake, 0.4 * this.feel.shake);

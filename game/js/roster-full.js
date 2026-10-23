@@ -140,7 +140,9 @@ export const FULL_ROSTER = [
     colors: { suit: 0x1a3a5a, trim: 0x6accff }, style: 'Xinyi Liuhe', archetype: 'Balanced' },
   { id: 'dio', name: 'DIO', title: 'Raging Demon', base: 'Akuma', moveset: 'heihachi', model: 'dio', tintStrength: 0.6,
     colors: { suit: 0x1a1a1a, trim: 0xff0000 }, style: 'Satsui no Hado', archetype: 'Shoto' },
-  { id: 'cyborgx', name: 'CYBORG X', title: 'GYOU Splinter', base: 'Alisa', moveset: 'gunjack', model: 'cape-jones', tintStrength: 0.6,
+  // CAPE JONES is the display name (owner 2026-10-23: "Start calling cyborg x as cape Jones
+  // but leave cyborg x in the deep canon for him"). 'Cyborg X' stays as his deep-canon identity.
+  { id: 'cyborgx', name: 'CAPE JONES', title: 'GYOU Splinter', base: 'Alisa', moveset: 'gunjack', model: 'cape-jones', tintStrength: 0.6,
     colors: { suit: 0xcccccc, trim: 0x00ffcc }, style: 'Robot Combat', archetype: 'Zoner' },
   { id: 'michiko', name: 'MICHIKO', title: 'Savate Queen', base: 'Katarina', moveset: 'demonio', model: 'michiko', tintStrength: 0.6,
     colors: { suit: 0x8a1a4a, trim: 0xff6b9d }, style: 'Savate', archetype: 'Rushdown' },
@@ -199,12 +201,16 @@ export const FULL_ROSTER = [
   // DEDUP (2026-10-22): default model = his Slot 1 Tripo Default
   // (roster/dxmmii/ATTIRE-SLOTS.md, owner 2026-10-19). Entry id kept
   // (MOVESET_MAP, moveset files, portrait keyed by it).
-  // Sketchfab intake (owner 2026-10-19): working names, WH names pending owner pick.
-  // Licenses: Zangief CC-BY (johnny136), Blanka Free Standard (allanromanreyes),
-  // Vega CC-BY (pierodsoto01), Iori CC-BY (0xo), Armor King CC-BY (theamazingdonovan207).
-  { id: 'zangief', name: 'ZANGIEF', title: 'The Red Cyclone', base: 'Zangief', moveset: 'zangief', model: 'zangief', tintStrength: 0.25,
-    colors: { suit: 0x8a1a1a, trim: 0x000000 }, style: 'Grappler', archetype: 'Power',
-    surge: { name: "CYCLONE'S WRATH", color: 0xcc2222, accent: 0xff8800 } },
+  // Sketchfab intake models (owner 2026-10-19). Licenses: Zangief CC-BY
+  // (johnny136), Blanka Free Standard (allanromanreyes), Vega CC-BY
+  // (pierodsoto01), Iori CC-BY (0xo), Armor King CC-BY (theamazingdonovan207).
+  // OBSOLETE-ORIGINALS rule (owner 2026-10-23, docs/OBSOLETE-ORIGINALS-RULE.md):
+  // Zangief, Vega, Iori and Armor King are NOT fighters in this universe and
+  // get NO select entry — their movesets and identities became KRONOS,
+  // KORESHI, DEATHFANG and YUKIHYŌ. Their standalone entries were removed
+  // 2026-10-23 (landing wave 1); the models stay in the repo and ladder as
+  // late attires of their successors (game/js/attires.js). Blanka never had
+  // an entry; his model ladders behind CHARGER.
   // CHARGER (owner 2026-10-20): proprietary Blanka REPLACEMENT — "his name is
   // charger cause of blankas attacks and movesets will be attach to him but he's
   // got powers of ice and electricity". Blanka's roster slot is his now; his full
@@ -225,15 +231,21 @@ export const FULL_ROSTER = [
     surge: { name: 'DINO BREATH SURGE', color: 0xff6a00, accent: 0xffd23f },
     stats: { speed: 5.5, jump: 7.5, power: 1.1, defense: 0.95 },
     ai: { aggression: 0.85, grabBias: 0.35, reaction: 0.6 } },
-  { id: 'vega', name: 'VEGA', title: 'The Claw', base: 'Vega', moveset: 'vega', model: 'vega', tintStrength: 0.25,
-    colors: { suit: 0x8a2a6b, trim: 0xffd700 }, style: 'Claw', archetype: 'Evasive',
-    surge: { name: "MATADOR'S FURY", color: 0xcc2288, accent: 0xffffff } },
-  { id: 'iori', name: 'IORI', title: 'The Flame', base: 'Iori Yagami', moveset: 'iori', model: 'iori', tintStrength: 0.25,
-    colors: { suit: 0x6b1a8a, trim: 0xff2222 }, style: 'Flames', archetype: 'Rushdown',
-    surge: { name: 'CRIMSON INFERNO', color: 0xaa22ff, accent: 0xff4400 } },
-  { id: 'armor-king', name: 'ARMOR KING', title: 'The Chain', base: 'Armor King', moveset: 'armor-king', model: 'armor-king', tintStrength: 0.25,
-    colors: { suit: 0x1a1a2a, trim: 0xccaa00 }, style: 'Grappler', archetype: 'Power',
-    surge: { name: "JAGUAR'S GRIP", color: 0x888800, accent: 0xffcc00 } },
+  // CHATUR (owner 2026-10-23): True Ogre's WH replacement — four-armed Oversoul
+  // spirit, temple dancer who refused to die. Anchors the spirit realm, GYOU-touched.
+  // Moveset: True Ogre's Tekken 3 kit (chatur.json). "Stopping is dying. I already did that once."
+  { id: 'chatur', name: 'CHATUR', title: 'The Bridge Soul', base: 'True Ogre', moveset: 'chatur', model: 'chatur', tintStrength: 0.25,
+    colors: { suit: 0x3a2a5a, trim: 0xd8b46a }, style: 'Temple Dance / Oversoul', archetype: 'Power',
+    surge: { name: 'FOURFOLD MUDRA SURGE', color: 0x8a5adf, accent: 0xffe9b0 },
+    stats: { speed: 3.8, jump: 6.0, power: 1.45, defense: 1.15 },
+    ai: { aggression: 0.7, grabBias: 0.4, reaction: 0.55 } },
+  // POND (owner 2026-10-23): Raven's WH replacement — swamp boundary watcher,
+  // found Dorowani as an egg. Moveset: Raven's Tekken 7 kit (pond.json). "The pond does not chase."
+  { id: 'pond', name: 'POND', title: 'The Still Water Soul', base: 'Raven', moveset: 'pond', model: 'pond', tintStrength: 0.25,
+    colors: { suit: 0x1a4a3a, trim: 0x7ad8b0 }, style: 'Ninjutsu / Still Water', archetype: 'Evasive',
+    surge: { name: 'STILL WATER SURGE', color: 0x2a8a6a, accent: 0xb0ffe0 },
+    stats: { speed: 5.2, jump: 7.2, power: 1.0, defense: 1.0 },
+    ai: { aggression: 0.6, grabBias: 0.35, reaction: 0.7 } },
   // Custom fighters (owner 2026-10-19): KRONOS + DEATHFANG + Ryuji/Rock hybrid.
   { id: 'kronos', name: 'KRONOS', title: 'The Titan Cyclone', base: 'Zangief + Golem', moveset: 'kronos', model: 'kronos', tintStrength: 0.25,
     colors: { suit: 0x8a1a1a, trim: 0xccaa00 }, style: 'Grappler/Wrestler', archetype: 'Power',
@@ -270,13 +282,38 @@ export const FULL_ROSTER = [
     surge: { name: 'SHARINGAN AWAKENING', color: 0xcc2222, accent: 0xffffff },
     stats: { speed: 5.5, jump: 8.0, power: 1.1, defense: 0.95 },
     ai: { aggression: 0.7, grabBias: 0.25, reaction: 0.7 } },
-  // RAVE = KIKO TANAKA in Western Heart (owner 2026-10-19 / 2026-10-21: "Lei wulong is not byou, he is
+  // RAVE = KIKO TANAKA = GHOST in Western Heart (owner 2026-10-19 / 2026-10-21: "Lei wulong is not byou, he is
   // Rave/Kiko tanaka ... rave already takes over leis character and slot and moves and personality").
+  // RAVE is his MAIN game/display name (owner 2026-10-23). Kiko, Ghost, and Kiko Tanaka are all the
+  // same person — all four names documented in repo/canon. Never split into separate fighters.
   // Model: his rigged Tripo pull (roster/TRIPO-REGISTRY.md: A1 hooded, A2 unrobed "ghost Tanaka",
   // A3+ rave.glb). Moves: game/assets/movesets/rave.json (Lei T7 + Lei T3 + Byou). Style from
   // roster/rave/CONCEPT.md; colors = the Great Muta red/green paint the concept names.
   { id: 'rave', name: 'RAVE', title: 'The Painted Soul', base: 'Lei Wulong', moveset: 'rave', model: 'kiko-tanaka',
     colors: { suit: 0x1f5e2c, trim: 0xc62828 }, style: 'Five Animals', archetype: 'Trickster' },
+  // ——— LANDING WAVE 1 (2026-10-23, docs/CATCHUP-AUDIT-2026-10-23.md): fighters
+  // whose models + movesets were already on main but who had no select entry.
+  // BUFFALO BILL (owner canon: The Horned Messenger; Marshall/Forest Law base
+  // moveset, game/assets/movesets/buffalo-bill.json). His only on-main model
+  // is Attire 3 "Ashes" (roster/buffalo-bill/CANON.md) — the base model key
+  // points there until his A1/A2 sources land in the repo.
+  { id: 'buffalo-bill', name: 'BUFFALO BILL', title: 'The Horned Messenger', base: 'Marshall Law', moveset: 'buffalo-bill', model: 'buffalo-bill', tintStrength: 0.25,
+    colors: { suit: 0x7a1220, trim: 0x4a2a7a }, style: 'Street Brawler', archetype: 'Balanced' },
+  // VAIN ABEL ELIAS (owner canon: "The Brother", Cain Elias's brother; Bass
+  // Armstrong base — game/assets/movesets/vainabel.json). Attire 1 Tripo is
+  // not on disk (roster/TRIPO-REGISTRY.md); base model key = Attire 2.
+  { id: 'vainabel', name: 'VAIN ABEL', title: 'The Brother', base: 'Bass Armstrong', moveset: 'vainabel', model: 'vainabel', tintStrength: 0.25,
+    colors: { suit: 0x1a0f24, trim: 0x7a2bd8 }, style: 'Grappler', archetype: 'Power' },
+  // CAIN ELIAS (owner 2026-10-19: Vain Abel's brother, the Deadman; moveset
+  // id 'cainelias' per the shipped file + loader lists, model keys under
+  // 'cain-elias'). Model + moveset + loader listing existed; only the
+  // select entry was missing.
+  { id: 'cainelias', name: 'CAIN ELIAS', title: 'The Deadman', base: 'Undertaker (WWE)', moveset: 'cainelias', model: 'cain-elias', tintStrength: 0.25,
+    colors: { suit: 0x14141c, trim: 0x5a2a8a }, style: 'Grappler', archetype: 'Power' },
+  // CHORDZ (owner 2026-10-15: Lars -> Chordz, the emo guitarist; moveset
+  // file + loader listing existed, model sat in attires/attire1/source/).
+  { id: 'chordz', name: 'CHORDZ', title: 'The Emo Guitarist', base: 'Lars', moveset: 'chordz', model: 'chordz', tintStrength: 0.25,
+    colors: { suit: 0x1a1a2a, trim: 0x8a2a6b }, style: 'Emo Guitarist', archetype: 'Tricky' },
 ];
 
 export function getFighter(id) {

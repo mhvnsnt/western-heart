@@ -4,7 +4,14 @@ Owner order 2026-10-19 ~20:07-20:08 CDT: "Ryuji Yamazaki version… black shirt,
 
 **NAME LOCKED (owner 2026-10-21): CORNERSTONE.** This fighter's Western Heart name is **CornerStone** — see CANON.md ("CORNERSTONE — The Obnoxious One (Bonus)") and RENAME-MAP.md (CORNERSTONE section). The "Ryuji / RYUJI ROCK" wording in the rest of this document is the pre-rename record and stays as history. Internal id / moveset key / model key remain `ryuji-rock` so every loader reference stays valid.
 
-## MODEL STATUS: PENDING — no model pulled yet
+## MODEL STATUS: LANDED 2026-10-22
+
+The owner's Tripo pull (20c1fd2e-40d0-4500-9be6-50f6494ab5e1) is archived at
+`attires/attire1/source/cornerstone-a1.glb` (18,872,720 B) and was copied
+byte-identical to this folder's `model.glb` on 2026-10-23 (landing wave 1),
+so the `ryuji-rock` MODEL_URLS key resolves. The GLB is an unrigged static
+(skins=0, joints=0, 0 animations, 3 textures) — rigging lands in wave 2.
+The PENDING record below is the pre-landing hunt log, kept as history.
 
 Model hunt (2026-10-19, lane ryuji-rock):
 - `~/workspace/game-reverse-engineering/` — no KOF XIV/XV / Maximum Impact teardown exists on disk (dirs checked: tekken3/5/6/7/8, DOA, SC, VF5, SF, Urban Reign, wrestling — no KOF). Nothing to extract from.

@@ -10,6 +10,8 @@ Sources (all repo-relative, verified at build time):
   4. customization/eye-library/               — eye textures (via its MANIFEST.json + PNGs)
   5. customization/parts-converted/defjam/CATALOG.json — Def Jam CAW library
      (worker 33, 2026-10-22); all entries geometry_pending (POINTS topology).
+  6. teardown/dead-or-alive-4/models/*/converted/*.glb — 272 real converted
+     DOA4 costume GLBs (worker 38, 2026-10-22), Full Body slot.
 
 Output entry shape (superset of the old curated 34-entry catalog, so the
 existing suite.js consumers keep working):
@@ -57,7 +59,7 @@ T7_SLOT = {
     "hair": "2", "upper_body": "9", "top": "9", "outfit": "9", "attire": "10",
     "lower_body": "11", "tights": "11", "pants": "11", "gloves": "H",
     "gauntlets": "H", "shoes": "F", "gear": "12", "accessory": "12",
-    "scarf": "12", "decal_logo": "8",
+    "scarf": "12", "decal_logo": "8", "fullbody": "11",
 }
 # registry has no part_class for most wmxix/no-mercy rows: infer from asset.
 MESH_EXTS = {".glb", ".gltf"}
@@ -204,6 +206,42 @@ def main() -> int:
             })
             dj_added += 1
     counts["parts-converted/defjam/CATALOG.json (new)"] = dj_added
+
+    # DOA4 costume GLBs (worker 38, 2026-10-22):
+    # teardown/dead-or-alive-4/models/<fighter>/converted/*.glb — 272 real
+    # converted meshes, full-body costumes. The DOA4 teardown has no separable
+    # costume pieces (all one-piece costumes), so they ship as Full Body slot
+    # (T7 slot 11) with real_textures=True. Honestly labeled — never as pieces.
+    doa4_added = 0
+    DOA4 = ROOT / "teardown" / "dead-or-alive-4" / "models"
+    if DOA4.exists():
+        for glb in sorted(DOA4.rglob("*.glb")):
+            pid = f"doa4:{glb.stem}"
+            if pid in seen:
+                continue
+            seen.add(pid)
+            # paired *_basecolor.png => real texture; otherwise untextured GLB
+            tex = glb.with_name(glb.stem + "_basecolor.png")
+            parts.append({
+                "id": pid, "name": glb.stem.replace("_", " "),
+                "part_class": "mesh_part",
+                "suite_slot": "fullbody", "t7_slot": T7_SLOT.get("fullbody"),
+                "library": "doa4",
+                "source": rel(glb),
+                "glb": rel(glb), "asset": rel(glb),
+                "socket": None, "offset": [0, 0, 0], "rotation": [0, 0, 0], "scale": 1.0,
+                "modeled_in_place_for": None,
+                "geometry_pending": False,  # real converted GLB on disk
+                "real_mesh": True, "real_textures": tex.exists(),
+                "kind": "full_body_costume",
+                "placement": "full_body",
+                "editable": ["color"],
+                "converted_status": "converted",
+                "uv_status": "extracted",
+                "topology_status": "ok",
+            })
+            doa4_added += 1
+    counts["teardown/dead-or-alive-4/models/*/converted (new)"] = doa4_added
 
     # Hair GLBs anywhere under customization/parts/hair (skip .gltf sidecars:
     # the viewer loads single-file GLBs; gltf+bin pairs are registry rows already).

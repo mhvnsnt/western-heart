@@ -7,7 +7,9 @@ export const CATEGORIES = [
   { key:'upper_body',  icon:'🥋', label:'Upper Body',  slotId:'9',  anchor:'Spine2'   },
   { key:'lower_body',  icon:'👖', label:'Lower Body',  slotId:'11', anchor:'Hips'     },
   { key:'attire',      icon:'👘', label:'Full Body',   slotId:'10', anchor:'Hips'     },
+  { key:'head',        icon:'🎩', label:'Head',        slotId:'1',  anchor:'Head'     },
   { key:'hair',        icon:'💇', label:'Hair',        slotId:'2',  anchor:'Head'     },
+  { key:'facialhair',  icon:'🧔', label:'Facial Hair', slotId:'7',  anchor:'Head'     },
   { key:'faces',       icon:'😐', label:'Face',        slotId:'6',  anchor:'Head'     },
   { key:'gloves',      icon:'🥊', label:'Gloves',      slotId:'H',  anchor:'RightHand'},
   { key:'shoes',       icon:'🥾', label:'Shoes',       slotId:'F',  anchor:'RightFoot'},
@@ -15,13 +17,19 @@ export const CATEGORIES = [
   { key:'gears',       icon:'⛓️', label:'Gears',       slotId:'14', anchor:'Spine1'   },
   { key:'bodies',      icon:'🦾', label:'Body Parts',  slotId:'B1', anchor:'Hips'     },
   { key:'skins',       icon:'🎨', label:'Skins',       slotId:'B2', anchor:'Hips'     },
+  { key:'textures',    icon:'🖌️', label:'Textures',    slotId:'TX', anchor:'Hips'     },
+  { key:'defjam_unsorted', icon:'🎮', label:'Def Jam — Unsorted', slotId:'14', anchor:'Spine1' },
 ];
 
-/* T7-style conflict zones: equipping one of these unequips (after confirm) the other. */
+/* T7-style conflict zones: equipping one of these unequips (after confirm) the other.
+   §7 spine: Full Body(10) vs Upper(9)/Lower(11); Full Head(3) vs Face Paint(8)/Facial Hair(7). */
 export const CONFLICTS = {
   '10': ['9','11'],   // Full Body vs Upper/Lower Body
   '9':  ['10'],
   '11': ['10'],
+  '3':  ['8','7'],    // Full Head vs Face Paint / Facial Hair
+  '8':  ['3'],
+  '7':  ['3'],
 };
 
 function hashStr(s){ let h=2166136261; for(let i=0;i<s.length;i++){ h^=s.charCodeAt(i); h=Math.imul(h,16777619);} return h>>>0; }
@@ -39,6 +47,20 @@ export function friendlyName(part){
   // cc0-hair: cc0-hair:quaternius-buns:Hair_Buns.gltf
   m = id.match(/^cc0-hair:([^:]+):(.+?)\.(gltf|glb)$/i);
   if(m) return `${titleCase(m[1].replace(/-/g,' '))} (CC0)`;
+  // defjam: defjam:defjam:V2CP_110_0001_A.o
+  m = id.match(/^defjam:defjam:V2CP_(\d+)_(\d+)_?([A-Z])?\.?o?$/i);
+  if(m) return `Def Jam · ${m[1]}-${m[2]}${m[3]||''} (CAW part)`;
+  // defjam-v2ip: defjam-v2ip:V2IP_001A.o / V2IP_501A_F.o
+  m = id.match(/^defjam-v2ip:V2IP_(\d+)([A-Z])(?:_([A-Z]))?\.o$/i);
+  if(m) return `Def Jam · V2IP ${m[1]}${m[2]}${m[3]?'_'+m[3]:''} (base model)`;
+  // doa4: doa4:chrone_00_7861v_14370t.glb
+  m = id.match(/^doa4:([a-z]+)_(\d+)_/i);
+  if(m) return `DOA4 · ${m[1]} costume ${m[2]}`;
+  m = id.match(/^doa4:(bass_cos\d+_.*)\.glb$/i);
+  if(m) return `DOA4 · ${m[1].replace(/_/g,' ')}`;
+  // wmxix-tex: wmxix-tex:face_0123.png
+  m = id.match(/^wmxix-tex:(.+)$/i);
+  if(m) return `WMXIX texture · ${m[1]}`;
   return id.split('/').pop();
 }
 function titleCase(s){ return s.replace(/\b\w/g,c=>c.toUpperCase()); }
@@ -70,6 +92,13 @@ export class Catalog {
       }
     }
     this.total = indexJson.total_parts;
+    /* FACIAL HAIR is a virtual category (worker 38): in the AKI engine beards
+       live in the face TEXTURE parts, so the WWE flow's FACIAL HAIR step
+       merges face textures + head parts. Equips into T7 slot 7. */
+    this.byCategory['facialhair'] = [
+      ...(this.byCategory['faces']||[]).filter(p=>p.kind==='texture'),
+      ...(this.byCategory['head']||[]),
+    ];
   }
   items(catKey){ return this.byCategory[catKey] || []; }
   count(catKey){ return this.items(catKey).length; }
