@@ -494,3 +494,22 @@ Rules:
 - X.COPY is ONE super (copies opponent briefly), NOT Zen's identity. Zen is not just a copycat.
 - Until VF5 Dural motion exists, Zen's bank is UNMAPPED (game/js/fighter.js FIGHTER_BANK zen: null). Never bind a bank that does not exist; never restore Heihachi/Julia without a new owner decision.
 - Full doc: docs/decisions/2026-10-24-zen-base-decision.md.
+
+## Panda + Kuma replacement specs (user decision 2026-10-22, worker 71)
+
+### KUMA REPLACEMENT — spec APPROVED, name AWAITING USER PICK
+- Visual: Godzilla-style + SkullGreymon (Digimon skull head) + Charizard mix; all white; rainbow-colored eyes; multicolored markings/designs all over; multicolored Japanese cloud-smoke detail; bone dinosaur/dragon with horns.
+- Canon: connected to ZUI (not Zoe/Zur). Zui fears/respects him — like a protector or a monster he looks up to. Kaiju/yokai/spirit monster.
+- Name: Japanese-style bone dragon/kaiju name — USER PICKS, do not invent.
+- Archive: Attire 1 Tripo source archived to `roster/kuma-replacement/attires/attire1/source/` (manifest + immutable-original tag `kuma-replacement-a1-original`). ARCHIVE ONLY — not wired into MODEL_URLS; rig comes from the rig lane.
+- Spec: `docs/research/kuma-replacement-spec-2026-10-22.md`
+
+### PANDA REPLACEMENT — spec APPROVED, name AWAITING USER PICK
+- Visual: blue-furred werewolf-dragon hybrid; anthropomorphic human; spirit/yokai/demon werewolf; FEMALE; blue fur like Mystique/Beast (X-Men).
+- Canon: she TURNED Deathfang into a werewolf — his creator/sire.
+- Name candidates (user's): Aotsuki (青月, blue moon) or Aokami (青狼, blue wolf). USER PICKS — do not invent.
+- No model yet — spec only.
+- Spec: `docs/research/panda-replacement-spec-2026-10-22.md`
+
+### Auto-archive note (2026-10-22, worker 71)
+Per the AUTO-ARCHIVE standing directive: no wired auto-archive automation was found in-repo (no tripo-intake doc under docs/, no auto-archive entry in AGENTS.md or docs/owner-directives.md). The Kuma replacement archive was done manually following the dorowani #603 pattern (manifest + immutable-original tag).
