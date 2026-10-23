@@ -37,8 +37,11 @@ let p = await page(false);
 await hitCheck(p, '01-menu');
 const scr = () => p.evaluate(() => ['screen-menu', 'screen-select', 'screen-stage', 'hud'].filter(id => { const e = document.getElementById(id); return e && getComputedStyle(e).display !== 'none' && !e.classList.contains('hidden'); }));
 const step = async (sel, want, shot) => {
-  await p.tap(sel, { timeout: 15000 }); await p.waitForTimeout(1200);
-  if (want) { const s = await scr(); if (!s.includes(want)) fails.push(`tap ${sel}: expected ${want}, on ${s}`); }
+  await p.tap(sel, { timeout: 15000 }); await p.waitForTimeout(800);
+  if (want) {
+    try { await p.waitForFunction((id) => { const e = document.getElementById(id); return e && getComputedStyle(e).display !== 'none' && !e.classList.contains('hidden'); }, want, { timeout: 20000 }); }
+    catch { fails.push(`tap ${sel}: expected ${want}, on ${await scr()}`); }
+  }
   if (shot) await p.screenshot({ path: `${SHOTS}/${shot}.png` });
 };
 try {

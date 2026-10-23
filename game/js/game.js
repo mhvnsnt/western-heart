@@ -23,6 +23,14 @@ async function gungakuAI() {
 import { audio } from './audio.js';
 import { getStage } from './stages.js';
 import { applyFighterProfile } from './customization-consumer.js';
+/* Stage mechanics + rage/comeback lane (Tekken/DOA teardowns).
+   LAZY-SAFE: none of these modules statically import fighter.js or
+   movesets.js (those stream via lazy.js) — the directors receive them
+   by injection in startMatch. */
+import { StageBreaks } from './stagebreaks.js';
+import { RageSystem, ensureRageMoves, RAGE_SLOWMO_SCALE } from './rage.js';
+/* Soul Urge lane (Tekken 8 Heat, proprietary rename — user-locked 2026-10-22). */
+import { SoulUrge, ensureUrgeMoves, URGE_BURST_TIME, URGE_ENGAGER_TIME } from './soulurge.js';
 import { V, vskillDispatch, vshiftTap } from './v-system.js';
 // LIGHTING RIG (worker 27): per-fighter character light rig — SFV/T7-style
 // character-vs-stage lighting separation + bible soul glow. Fail-silent.
@@ -73,6 +81,15 @@ export class Game {
     this.training = false;
     this.matchStats = null;
 
+    /* Stage-break + rage directors (created once, rebound per match). */
+    this.stageBreaks = null;
+    this.rage = null;
+    /* Soul Urge director (T8 Heat). */
+    this.soulurge = null;
+    /* Injected module APIs (from lazy.js, set in startMatch). */
+    this._stageFx = null;
+    this._msApi = null;
+
     this._loop = this._loop.bind(this);
     requestAnimationFrame(this._loop);
   }
@@ -88,7 +105,7 @@ export class Game {
   async startMatch(playerChar, enemyChar, stageId, opts = {}) {
     this.resetFightState();
     // LOADSPEED: warmed during menu idle; usually cached by fight time.
-    const { Fighter, setArenaLimit } = await lazy.fighter();
+    const { Fighter, setArenaLimit, setGroundY } = await lazy.fighter();
     // Modes lane: per-match round target (default = classic best-of-3).
     this.roundsToWin = opts.roundsToWin || ROUNDS_TO_WIN;
 
@@ -97,6 +114,21 @@ export class Game {
     setArenaLimit(stage.dims.wallDistance);
     this._stageId = stage.id;
     this._stageName = stage.name;
+
+    // Stage-break + rage/soul-urge lanes: bind breakables to this stage,
+    // synthesize each fighter's rage art/drive + urge burst/smash from
+    // their real data. Modules come via lazy.js (loadspeed-safe).
+    const msApi = await lazy.movesets();
+    this._msApi = { playedMoveset: msApi.playedMoveset, getFighterMoveset: msApi.getFighterMoveset };
+    this._stageFx = { setArenaLimit, setGroundY };
+    if (!this.stageBreaks) this.stageBreaks = new StageBreaks(this);
+    if (!this.rage) this.rage = new RageSystem(this);
+    if (!this.soulurge) this.soulurge = new SoulUrge(this);
+    this.stageBreaks.bindStage(stage, this._stageFx);
+    ensureRageMoves(playerChar.id, this._msApi);
+    ensureRageMoves(enemyChar.id, this._msApi);
+    ensureUrgeMoves(playerChar.id, this._msApi);
+    ensureUrgeMoves(enemyChar.id, this._msApi);
 
     this.p1 = new Fighter(playerChar, stage.spawns.p1, 1, true);
     this.p2 = new Fighter(enemyChar, stage.spawns.p2, -1, false);
@@ -186,6 +218,10 @@ export class Game {
     // Reset HUD
     this.ui.setRounds(this.wins);
     this.ui.setTimer(ROUND_TIME);
+    // Stage-break lane: restore bounds/ground when leaving or restarting.
+    if (this.stageBreaks) this.stageBreaks.reset();
+    if (this.rage) this.rage.resetRound();
+    if (this.soulurge) this.soulurge.resetRound();
   }
 
   /* Called when leaving the fight screen (BACK to menu, etc.) */
@@ -197,8 +233,12 @@ export class Game {
     this.timer = ROUND_TIME;
     this.p1.hp = this.p1.maxHp; this.p2.hp = this.p2.maxHp;
     this.p1.meter = this.p2.meter = 0;
+    if (this.rage) this.rage.resetRound();
+    if (this.soulurge) this.soulurge.resetRound();
+    if (this.stageBreaks) this.stageBreaks.syncRound();
     const spawns = getStage(this._stageId || 'shrine').spawns;
-    this.p1.root.position.set(spawns.p1, 0, 0); this.p2.root.position.set(spawns.p2, 0, 0);
+    const gy = this.stageBreaks ? this.stageBreaks.groundY : 0;
+    this.p1.root.position.set(spawns.p1, gy, 0); this.p2.root.position.set(spawns.p2, gy, 0);
     // FACING FIX (owner playtest 2026-10-22): the old 0/π values posed the
     // fighters toward/away from the CAMERA, contradicting fighter.js's
     // facing*π/2 convention (face the opponent). Snap both to the convention,
@@ -237,6 +277,7 @@ export class Game {
     if (!this._last) this._last = now;
     let frameDt = Math.min(0.05, (now - this._last) / 1000);
     this._last = now;
+    if (this.rage) frameDt = this.rage.slowMoScale(frameDt);
 
     if (this.running && !this.paused) {
       if (this._hitStop > 0) {
@@ -373,6 +414,7 @@ export class Game {
             this.arena.shake(0.5 * this.feel.shake, 0.4 * this.feel.shake);
             this._hitStop = 0.12 * this.feel.hitstop;
             this._spawnImpact(def.root.position.x, 1.2, def.root.position.z, 0xffcf4d, 1.4);
+            if (this.rage) this.rage.onHitKO(atk, def);
           } else if (result && result !== 'dodge') {
             audio.grab(); audio.grunt(def.isPlayer ? 1.05 : 0.9);
             this.arena.shake(0.45 * this.feel.shake, 0.28 * this.feel.shake);
@@ -388,6 +430,8 @@ export class Game {
       // --- Combat resolution ---
       this._resolveCombat(this.p1, this.p2);
       this._resolveCombat(this.p2, this.p1);
+      if (this.rage) { this.rage.update(this.p1); this.rage.update(this.p2); }
+      if (this.soulurge) { this.soulurge.update(this.p1, dt); this.soulurge.update(this.p2, dt); }
 
       // FIGHTER DEPTH (worker 34): per-frame systems — kindle timers,
       // tag relay, stage intro camera.
@@ -509,6 +553,7 @@ export class Game {
           audio.block();
           this._hitStop = 0.04 * this.feel.hitstop;
           attacker.combo = 0;
+          if (this.soulurge) this.soulurge.onBlockedHit(attacker, hb.move);
         } else if (result === 'dodge') {
           // whiffed into i-frames, nothing
         } else if (result === 'armor') {
@@ -521,6 +566,8 @@ export class Game {
           this.arena.shake(0.5 * this.feel.shake, 0.4 * this.feel.shake);
           this._hitStop = 0.12 * this.feel.hitstop;
           this._spawnImpact(hb.x, hb.y, hb.z, 0xffcf4d, 1.4);
+          if (this.rage) this.rage.onHitKO(attacker, defender);
+          if (this.stageBreaks) this.stageBreaks.checkHit(attacker, defender, hb.move, result);
         } else {
           const isGrab = !!hb.move.isGrab;
           const isHeavy = hb.move.knock >= 4;
@@ -540,6 +587,14 @@ export class Game {
           // HITS counter: show on EVERY landed hit, not just 2+ combos.
           // Single hits show "1 HITS" briefly; combos accumulate.
           this.ui.combo(Math.max(1, combo));
+          if (this.stageBreaks) this.stageBreaks.checkHit(attacker, defender, hb.move, result);
+          if (this.soulurge) this.soulurge.onHit(attacker, hb.move);
+          if (this.rage && attacker.attackName && attacker.attackName.indexOf('R.') === 0) {
+            this.rage.rageArtHit(attacker, hb);
+          }
+          if (this.soulurge && attacker.attackName === 'US.2+3') {
+            this.soulurge.urgeSmashHit(attacker, hb);
+          }
         }
         return; // one hit per swing
       }

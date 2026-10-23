@@ -153,3 +153,13 @@ All T3-baked clips already in the repo are **fallback, to be replaced from T5/6/
 | `lab/game/assets/t3_king_t3real.glb` | same clip list | fallback, to be replaced from T5/6/7/8/TTT2 | same |
 | `lab/game/assets/t3_{jin,xiaoyu,bryan,gunjack,yoshimitsu}_t3real.glb` | 29 `t3_*` clips each | fallback, to be replaced from T5/6/7/8/TTT2 | same |
 | `assets/anim/t3/**` bake JSON, `fighter.gd` `REAL` map, v4 title hero (`t3_win_rp`) | derived from the above | fallback, to be replaced from T5/6/7/8/TTT2 | same |
+
+## INSTRUCTION GATE: Owner law, no hand-made menus (Oct 23, 2026, 2:21 PM CT)
+
+> **NO hand-made menus. Every Western Heart menu, character select and customization screen must be built from the actual teardown files (Tekken 5/6/7/8/TTT2 and other game teardowns). Every UI change must cite its teardown source files.**
+
+### Status of existing hand-made UI under this law
+
+| Asset | Status | Action |
+|---|---|---|
+| `game/ui-wh/` HTML UI (`index.html`, `cards.html`, `cards.css`, `cards.js`, `roster.js`, `imports.json`, `art/`, `fonts/`, `portraits/`) | **hand-made, NON-COMPLIANT** | Slated for rebuild from teardown UI files (T5/T6/T7/T8/TTT2 menu/char-select/customize layouts, then other game teardowns). Kept as a **fallback**; do NOT delete. Replace only in a reviewed PR that cites its teardown source files. |
