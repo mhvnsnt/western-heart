@@ -434,6 +434,12 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
   background: rgba(20,20,28,0.72); border: 2px solid rgba(255,255,255,0.3); color: #ffe9a8; }
 .act-btn.l1 { right: 152px; bottom: 176px; }
 .act-btn.r1 { right: 24px; bottom: 176px; }
+/* #853 says the old dodge button is gone, but index.html still ships it with no
+   position, so it sat on top of □ and L1. Hide it (sidestep stays on the joystick). */
+.act-btn.dodge { display: none; }
+/* HEAT / RAGE pills (ported from #842): row above L1/R1, either side of TRANSFORM, no overlap. */
+.act-btn.heat { right: 152px; bottom: 224px; font-size: 12px; letter-spacing: .5px; background: linear-gradient(180deg,#ff9a3c,#c8401f); color: #fff; }
+.act-btn.rage { right: 24px;  bottom: 224px; font-size: 12px; letter-spacing: .5px; background: linear-gradient(180deg,#ff4a5a,#8a0f1f); color: #fff; }
 .act-btn.transform { right: 88px; bottom: 216px; background: linear-gradient(180deg,#fff36b,#d8a02b); width:52px;height:52px;font-size:18px; color:#3a2a00; }
 /* V-System (owner 2026-10-22): V-Skill / V-Trigger / V-Reversal button.
    Explicit position/size so it renders in either button-layout state. */
@@ -449,6 +455,8 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
   .act-btn.shoulder { width: 56px; height: 36px; font-size: 13px; }
   .act-btn.l1 { right: 132px; bottom: 156px; }
   .act-btn.r1 { right: 20px; bottom: 156px; }
+  .act-btn.heat { right: 132px; bottom: 198px; font-size: 11px; }
+  .act-btn.rage { right: 20px;  bottom: 198px; font-size: 11px; }
   .act-btn.transform { right: 76px; bottom: 192px; width: 46px; height: 46px; }
 }
 
