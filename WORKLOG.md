@@ -2102,3 +2102,22 @@ On-main files NOT touched: worker 37's `js/creation-flow.js` + `js/art.js`
 - Models are unrigged statics (0 skins) — rig queued, same path as other SmutBase intakes.
 - Proof: `node --check` clean on both JS files; both movesets load through the real `movesets.js` loader (schema v2, all required fields); `fighter-completeness.test.mjs` 4/4 pass; gitleaks clean; GLB paths verified on disk. model-key-guard failures are pre-existing sparse-checkout artifacts (all entries "file missing", none are ryusan/tobi — not in OWNERSHIP table).
 - Branch `smutbase-wave6/ryusan-tobi`, PR merged via `git_merge.py` (3-way, clean+green).
+
+## 2026-10-23 — Claude session: 10 sideways k-NN rigs replaced + select-screen crash fix
+
+- Problem: the Tripo pulls face +X; the 2026-10-21 k-NN rigs (`model-rigged.glb`, 49 joints) assumed +Z, so these
+  fighters stood in profile and their stance shredded in game.
+- Facing read from four-view renders of each original static (Blender 4.0.2 workbench, +Z/+X/-Z/-X cameras, viewed).
+- Re-rigged each `model.glb` with `tools/auto_rig/rig_tripo_static.py --facing +X` → `model-rerig.glb` beside the old
+  rig (old file kept). Wired: skull, kronos (both keys), kronos-attire2, saku-ra, phantom, purple-rain,
+  doc-frank-wowomomo, doc-frank-frankenstein, doc-frank-frankenstein-big, demonio-human. model-facing.json `models`:
+  those 10 + kinpo-attire1 = +Z.
+- Verified in game: `tools/proof-harness/rig_sheet.mjs` (rest faces +Z, King stance clean, max bone error 0.4 deg)
+  and a Skull vs Kronos arcade fight via `tools/proof-harness/fight.mjs`. Proof: docs/proof/claude-2026-10-23/rerig/.
+- `tools/auto_rig/backends/smooth_weights.py`: the edge cutoff (9.8 mm) left no edges on Waterfall's dense mesh and
+  crashed; the cutoff now drops to half the median edge only when the mesh has no edge over it.
+- `game/index.html`: restored `.pane-title` / `.pane-style` in both select panes beside the new `.pane-facts` row.
+  `select-screen.js renderPlate()` writes to both; without them every mode start threw
+  "Cannot set properties of null (setting 'textContent')" (seen in the fight harness on main 1202f9bd2).
+- Follow-ups: Frankenstein A4 base pedestal fused to the boots; Wowomomo tabard stretch; sam-ur-a1 + thor fail the
+  smoothing gate; waterfall re-run queued with the fix.

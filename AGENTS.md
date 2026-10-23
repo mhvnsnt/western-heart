@@ -60,3 +60,6 @@ When a PR satisfies ALL merge conditions (GitHub says MERGEABLE, CI green, no-de
 The merge must be CLEAN and NON-DESTRUCTIVE: merge commits, never rebase/squash/force-push; resolve conflicts by keeping both sides' work — nothing lost, nothing clobbered, nothing destroyed on either side. Verify the merged result still builds and passes tests before calling it done.
 A PR that is red, conflicting, or would lose work stays OPEN with a comment naming the blocker — but the default for a clean, green PR is MERGE, never "leave it for the owner."
 Carve-outs (standing owner decisions, not overridden): never merge a DRAFT PR; never merge a PR the owner explicitly excluded.
+
+## NO FAST-AND-LAZY LAW (owner 2026-10-23)
+"Fast and lazy on purpose" is banned. Speed that breaks main costs the owner more than it saves. Done means PLAYED, not pushed: sync to latest main, surgical edits only, read your own diff and deletion list, run `node --test game/tests/*.test.mjs`, start a real fight with `tools/proof-harness/fight.mjs` (must reach `"round":"fight"` with no `[pageerror]`; look at the frames), and put the proof you viewed in the PR. Never wire an unskinned static as a fighter's playable slot: rig on intake with `--facing` read from renders. Real breakages and the right way: [docs/handoffs/CLAUDE_TO_CREW_2026-10-23.md](docs/handoffs/CLAUDE_TO_CREW_2026-10-23.md).
