@@ -19,6 +19,7 @@
    ============================================================ */
 import { audio } from './audio.js';
 import { lazy } from './lazy.js';
+import { openVersusSetup, initVersusSetup } from './versus-setup.js';
 
 /* ---------------- Player state ---------------- */
 const PLAYER_KEY = 'wh_player_v1';
@@ -54,7 +55,7 @@ const SUBMENUS = {
     { t: 'HEART AND MIND WITHIN', d: 'Per-character 3D beat-em-up campaigns, Tekken 5 Devil Within style. Pick a soul and descend.', badge: 'hot', action: 'mode-heartmind' },
   ]},
   versus: { title: 'VERSUS', cards: [
-    { t: '1V1 VERSUS', d: 'Two souls, one shrine. Local versus — no reincarnation, best of 3.', badge: 'live', action: 'mode-versus' },
+    { t: '1V1 VERSUS', d: 'Two souls, one shrine. Local versus — set the rules, then fight.', badge: 'live', setup: 'versus' },
     { t: 'TEAM BATTLE', d: 'Pick 3 fighters. Winner stays on. Tekken Tag rules, Western Heart souls.', badge: 'live', action: 'mode-team' },
   ]},
   online: { title: 'ONLINE', cards: [
@@ -176,6 +177,7 @@ function openSubmenu(key) {
     b.addEventListener('click', () => {
       if (c.panel === 'card') { openCardEditor(); return; }
       if (c.forge) { openForge(c.forge); return; }
+      if (c.setup === 'versus') { openVersusSetup(); return; }
       // data-action cards: the delegated document handler routes them.
     });
     wrap.appendChild(b);

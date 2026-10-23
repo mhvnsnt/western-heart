@@ -2474,3 +2474,24 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 **Verification:** semantic diff audit — 0 field losses, 0 removals, additions only; all 17 new moves tagged; `node --test game/tests/fighter-completeness.test.mjs` green.
 
 **Deviations:** none — the 17 pulled moves are all combat moves (FIGHT); no SHOW content entered the moveset.
+## SUBMENU REBUILD — versus setup (T7 GAME OPTION <VS GAME>, 2026-10-23, PR #832)
+
+**Owner instruction (verbatim):** "NO hand-tooled menus. EVER. Every menu in the game gets rebuilt FROM the teardown files of actual Tekken games (T5/T6/T7/TTT2, T8 when it lands) and other games' teardown UI." Task: rebuild ALL submenus from Tekken's actual UI — 1. Versus setup (rules, rounds, time, stage select).
+
+**Source:** Tekken 7 / arcade GAME OPTION table (manuals.plus TTT operators manual): FIGHT COUNT <VS GAME> 1-5, ROUND TIME, GUARD DAMAGE ON/OFF; T7 console INFINITY time.
+
+**Built (branch worker-submenus/versus-setup):**
+- `game/js/rules.js` (new) — standalone match-rules store `wh_rules_v1` (difficulty, rounds1p, roundsVs, roundTime 0=∞, guardDamage, stageMode).
+- `game/js/versus-setup.js` (new) + `#screen-vssetup` in `game/index.html` — T7 option-list screen: FIGHT COUNT 1-5, ROUND TIME 30/40/60/90/99/∞, GUARD DAMAGE ON/OFF, STAGE SELECT/RANDOM.
+- `game/submenus.css` (new) — shared T7 option-list grammar (tk-row/tk-seg/tk-tabs, all ≥48px).
+- `game/js/modes.js` — `_beginVersus` reads rules, passes roundsToWin/roundTime/guardDamage through fight opts; STAGE=RANDOM picks a random arena and skips the stage screen (`opts.skipStage`, honored in `game/js/main.js` `startFightViaStage`).
+- `game/js/game.js` — `startMatch` honors per-match `opts.roundTime` (0 = no timeout, HUD shows ∞) and `opts.guardDamage`; `game/js/fighter.js` zeroes chip when guard damage is OFF.
+- `game/js/game.js` ui.setRounds rebuilds round pips to the match's round target; setTimer renders ∞.
+- Routing fix: the legacy data-mm router in `game/js/main.js` fired on rail taps alongside the T8 submenu controller, making every submenu unreachable — rail items now yield to the submenu controller (required for "no dead ends").
+
+**Verification (played, not pushed):** 7/7 menu harness checks (every option tapped, match-rules localStorage asserted, tap targets ≥48px measured, back navigation); 10/10 fight-integration checks (captured fight opts carry roundsToWin/roundTime/guardDamage/stageMode; HUD pips and ∞ timer proven). Screenshots viewed: `game/tests/submenu-versus-setup-proof-20261023/`. `node --check` clean on all 8 touched JS files. gitleaks clean. 8 files modified + 3 new source files + proof dir + `docs/decisions/2026-10-23-submenu-versus-setup.md`; 0 deletions.
+
+**Anti-clobber:** branched from main tip; explicit file list pushed via Git Database API (no GitHub connector for git ops); other workers' untracked docs files excluded from every push.
+
+**Queued next:** PR2 OPTIONS rebuild (T7 GAME OPTION / CONTROLLER SETUP / SOUND / DISPLAY tabs); PR3 mode setup sheets; PR4 gallery (T5 theater + TTT2 gallery); PR5 jukebox (TTT2 Tekken Tunes).
+
