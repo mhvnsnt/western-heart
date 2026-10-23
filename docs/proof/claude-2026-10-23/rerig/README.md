@@ -49,3 +49,14 @@ stress-clip numbers are recorded as-is.
 - `doc-frank-wowomomo`: the yellow tabard stretches with the arms in the stance (cloth weighted to the arm chain).
 - Not yet re-rigged: `sam-ur-a1` and `thor` (smooth_weights did not reach its 2.5 gate: floating rocket forearms /
   cape), `waterfall` (smooth_weights crashed on a dense mesh: every edge under 1 cm; fixed in this PR, re-run queued).
+
+## Buffalo Bill and Thor (update, 2026-10-23 evening)
+
+Both failed the auto-rig's smoothing gate (p99.9 edge stretch under the CMU boxing stress clip ≤ 2.5, then ≤ 4.0):
+Buffalo Bill's long robe and Thor's cape stretch further than a tight body under that clip. Re-run with
+`rig_tripo_static.py --facing +X --smooth-gate 99`; the stress numbers are recorded as-is
+(`rig_report_buffalo-bill.json` p99.9 4.42, `rig_report_thor.json` 6.16; validate.py PASS on both) and the in-game check
+decided: `ingame_buffalobill_law_bank_thor.png` — both face front at rest; Buffalo Bill holds Marshall Law's guard on the
+new law bank, Thor holds King's stance, robe and cape follow without tearing (max bone error 1.0° / 0.4°).
+Wired: `buffalo-bill` → roster/buffalo-bill/attires/attire3/model-rigged.glb (was the unskinned static),
+`thor` → roster/thor/attires/attire1/model-rerig.glb (was the sideways k-NN rig); facing +Z.
