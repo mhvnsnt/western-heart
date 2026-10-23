@@ -15,7 +15,7 @@ Branch: worker-submenus/versus-setup.
 ## Menu harness (verify.js vssetup): 7/7 PASS
 - Main menu visible; versus submenu opens with 2 cards.
 - Setup screen opens with 4 option rows.
-- EVERY option tapped; localStorage `wh_rules_v1` asserted =
+- EVERY option tapped; the match-rules localStorage entry asserted =
   {"roundsVs":5,"roundTime":0,"guardDamage":false,"stageMode":"random"}.
 - All tap targets measured >= 48px (0 violations).
 - Back returns to the menu with the VERSUS submenu still open.
