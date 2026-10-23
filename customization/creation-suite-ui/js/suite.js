@@ -34,7 +34,7 @@ const TITLE_B=['BEAST','PANTHER','KING','GHOST','STORM','WOLF','TIGER','DEMON'];
 const SLOT2CAT = { mask:'3', eye_lenses:'6', cowl:'3', gauntlets:'H', hair:'2',
   decal_logo:'8', eye:'EYES', tights:'11', pants:'11', top:'9', outfit:'9', scarf:'12', face:'8',
   upper_body:'9', lower_body:'11', gloves:'H', shoes:'F', gear:'12', accessory:'12', attire:'10',
-  eyebrows:'6' };
+  eyebrows:'6', fullbody:'11' };
 /* suite_slot -> fallback 3D socket for texture-part markers (registry has no placement block for texture parts) */
 const SLOT2SOCKET = { eye:'face', face:'face', decal_logo:'chest', top:'chest', outfit:'chest',
   scarf:'chest', tights:'waist', pants:'waist', hair:'head', mask:'face', eye_lenses:'face', cowl:'head', gauntlets:'hands' };

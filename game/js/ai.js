@@ -52,17 +52,30 @@ export class AIController {
     }
     this._breakT = undefined;
 
+    // V-System (owner 2026-10-22): V-Trigger when the gauge is full
+    // (comeback install), V-Reversal out of blockstun (gated by reaction).
+    if (f.meter >= 100 && f.canAct() && f.onGround && Math.random() < 0.03) f.tryVTrigger();
+    if (f.state === 'block' && f.stun > 0.05 && f.meter >= 50 &&
+        Math.random() < 0.10 + this.reaction * 0.1) {
+      f.tryVReversal(); this._think = 0.3; return;
+    }
+
     // Reactive defense: block/dodge/sidestep incoming attacks (gated by reaction stat)
     if (playerAttacking && dist < 2.6 && f.canAct()) {
       const react = Math.random() < (0.25 + this.reaction * 0.5);
       if (react) {
         const r = Math.random();
+        // V-System: V-Shift the incoming attack (reads like an SFV player).
+        if (r < 0.08 && f.onGround) {
+          f.tryVShift();
+          this._think = 0.5; return;
+        }
         // Stream 6: sidestep the linear attack (reads like a Tekken player).
-        if (r < 0.22 && f.onGround) {
+        if (r < 0.28 && f.onGround) {
           f.trySidestep(Math.random() < 0.5 ? -1 : 1);
           this._think = 0.5; return;
         }
-        if (r < 0.5 && f.onGround) { f.tryDodge(); this._think = 0.4; return; }
+        if (r < 0.54 && f.onGround) { f.tryDodge(); this._think = 0.4; return; }
         f.tryBlock(true); this._block = 0.35; this._think = 0.25; return;
       }
     }
@@ -104,6 +117,7 @@ export class AIController {
     } else {
       const r = Math.random();
       if (r < 0.5 + this.aggression * 0.2) { this._action = 'attack'; f.tryAttack(String(1 + Math.floor(Math.random() * 4))); }
+      else if (r < 0.56) { this._action = 'attack'; f.tryVSkill(); } // V-System poke
       else if (r < 0.8) { this._action = 'approach'; f.tryMove(dir); }
       else { this._action = 'neutral'; }
     }
