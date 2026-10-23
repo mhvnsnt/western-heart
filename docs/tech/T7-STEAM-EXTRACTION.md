@@ -19,6 +19,16 @@ Output: `teardown/tekken7-steam/pakchunk0/`. `manifest.json` lists every file an
 - 622 textures: character textures plus the UI flash textures for CharacterSelect, StageSelect, HUD_Gauge, Makuai, Title, MainMenu and Result.
 - 15 meshes failed in UModel (kaz hair/body variants, arb head items, the drop items).
 
+### Content/Binary/tkdata.bin (305 MB raw, deleted after extraction)
+- Unpacked with `tools/extract/t7/t7_tkdata.py`, a Python port of the community `tkdata.bms` v0.2.1. It uses the tkdata AES key published in that public script. The archive holds 1087 files.
+- Output: `teardown/tekken7-steam/tkdata/`
+  - `mothead/bin/<code>mot.bin`: **full movesets for every T7 character, DLC included** (moves, cancels, hit and frame data, throws). Examples: `asamot.bin` (Alisa → Cape), `leemot.bin` (Lee → Purple Rain), `bobmot.bin` (Bob → Burger).
+  - `mothead/movelist`, `mothead/nua`, `mothead/mask`: command lists and related data.
+  - `list/`: character list, character_panel_list (select-screen layout), customization tables, stage and area structs.
+  - `dictionary/`: text tables.
+  - Subtitles were skipped.
+- The motbin layout matches what the TKMovesets/T7 moveset tools parse. Converting it to the repo's moveset JSON is the next step.
+
 ## Not yet extracted (next PAKs)
 - `pakchunk0_P` (4.5 GB), `pakchunk1` (15.9 GB), `pakchunk1_P` (18.2 GB): remaining characters (DLC), stages and patches.
 - `Content/Binary/tkdata.bin` (305 MB, loose): motion and moveset data. It needs a Python port of `tkdata.bms`, which uses a separate key.
