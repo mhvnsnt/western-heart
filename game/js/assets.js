@@ -6,6 +6,7 @@
    Pantera = real P1 textured body (roster/pantera). Steve Fox =
    Tekken 7 base reskinned cold blue-white (see game/README.md).
    ============================================================ */
+import { checkClip, CTX } from './anim-gate.js';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { clone as skeletonClone } from 'three/addons/utils/SkeletonUtils.js';
@@ -358,12 +359,12 @@ export const MODEL_URLS = {
   // CHATUR (owner 2026-10-23): True Ogre's WH replacement — four-armed Oversoul
   // spirit, temple dancer who refused to die. SmutBase intake (roster/rahkasa/).
   // Unrigged static (1 mesh; rig widgets live in the .blend); k-NN auto-rig
-  // from donor is the planned path.
-  chatur: '../roster/rahkasa/attires/attire1/model.glb',
+  // Rigged 2026-10-23 (PR #780, 52-joint canonical skeleton, verified).
+  chatur: '../roster/rahkasa/attires/attire1/model-rigged.glb',
   // POND (owner 2026-10-23): Raven's WH replacement — swamp boundary watcher,
   // found Dorowani as an egg. SmutBase intake (roster/tsuyu-asui/). Unrigged
-  // static (9 meshes, clothing separate); k-NN auto-rig from donor is the planned path.
-  pond: '../roster/tsuyu-asui/attires/attire1/model.glb',
+  // Rigged 2026-10-23 (PR #780, 52-joint canonical skeleton, verified).
+  pond: '../roster/tsuyu-asui/attires/attire1/model-rigged.glb',
   // CHARGER Attire 2 (2026-10-21, lane 4 rig batch 1): unrigged Tripo static -> model-rigged.glb
   // via tools/auto_rig knn backend (donor pantera.glb); original model.glb untouched.
   'charger-attire2': '../roster/charger/attires/attire2/model-rigged.glb',
@@ -392,7 +393,7 @@ export const MODEL_URLS = {
   // intake original (191.6 MB) archived on release
   // megami-menajerii-smutbase-20261023. Canon: roster/parvati/CANON.md.
   // Moveset: game/assets/movesets/megami.json (Jun Kazama TTT2 kit, Tekken inputs).
-  megami: '../roster/parvati/attires/attire1/model.glb',
+  megami: '../roster/parvati/attires/attire1/model-rigged.glb',
   'megami-attire1': '../roster/parvati/attires/attire1/model.glb',
   // MENAJERII (2026-10-23, SmutBase 6 pipeline fighters 5-6): SmutBase Vixen
   // commission intake (Injustice 2-based). In-repo build = meshopt-compressed
@@ -400,7 +401,7 @@ export const MODEL_URLS = {
   // megami-menajerii-smutbase-20261023. Canon: roster/vixen/CANON.md.
   // Moveset: game/assets/movesets/menajerii.json (Roger Jr. TTT2 kit, fresh
   // Tekken inputs per owner directive — no Injustice 2 input system).
-  menajerii: '../roster/vixen/attires/attire1/model.glb',
+  menajerii: '../roster/vixen/attires/attire1/model-rigged.glb',
   'menajerii-attire1': '../roster/vixen/attires/attire1/model.glb',
   // ——— LANDING WAVE 1 (2026-10-23, docs/CATCHUP-AUDIT-2026-10-23.md) ———
   // Wiring fixes only: keys for models already on main that no key reached.
@@ -442,14 +443,14 @@ export const MODEL_URLS = {
   // RYUSAN (owner 2026-10-23): SmutBase Mina Ashido intake — WH name RYUSAN,
   // the Corrosion Soul. Attire 1 = the SmutBase GLB (unrigged static; rig queued).
   // NOTE: roster/mina-ashido/attires/attire1/model-rigged.glb landed on main
-  // 2026-10-23 (PR #781, wave-1 rigging) — repoint key after rig validation.
-  ryusan: '../roster/mina-ashido/attires/attire1/model.glb',
+  // repointed to model-rigged.glb 2026-10-23 after rig validation.
+  ryusan: '../roster/mina-ashido/attires/attire1/model-rigged.glb',
   'ryusan-attire1': '../roster/mina-ashido/attires/attire1/model.glb',
   // TOBI (owner 2026-10-23): SmutBase Mirko (Rumi Usagiyama) intake — WH name
   // TOBI, the Escape Soul. Attire 1 = the SmutBase GLB (unrigged static; rig queued).
   // NOTE: roster/miruko/attires/attire1/model-rigged.glb landed on main
-  // 2026-10-23 (PR #781, wave-1 rigging) — repoint key after rig validation.
-  tobi: '../roster/miruko/attires/attire1/model.glb',
+  // repointed to model-rigged.glb 2026-10-23 after rig validation.
+  tobi: '../roster/miruko/attires/attire1/model-rigged.glb',
   'tobi-attire1': '../roster/miruko/attires/attire1/model.glb',
 };
 
@@ -1370,7 +1371,8 @@ class AssetManager {
     const idleClip = clips.Idle || clips.Battle_Idle || clips.Stage_Idle || null;
     for (const name of ['Idle', 'Walk', 'Run']) {
       const clip = name === 'Idle' ? idleClip : clips[name];
-      if (clip) {
+      // ANIMATION GATE (owner t117u): in-game fighter instances are FIGHT context.
+      if (clip && checkClip(name, clip, CTX.FIGHT).ok) {
         actions[name] = mixer.clipAction(clip);
         actions[name].play();
         actions[name].setEffectiveWeight(name === 'Idle' ? 1 : 0);
