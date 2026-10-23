@@ -7,7 +7,7 @@ App IDs are public Steam store IDs; `—` means not looked up yet. Only TEKKEN 7
 | App ID | Title | Use |
 |---|---|---|
 | 389730 | TEKKEN 7 | movesets, anims, customization (extracting; private repo) |
-| 960740 | WWE 2K19 | movesets, anims, CAW creation suite |
+| 817130 | WWE 2K19 | movesets, anims, CAW creation suite |
 | 1015500 | WWE 2K20 | movesets, anims, CAW creation suite |
 | 1255630 | WWE 2K22 | movesets, anims, CAW creation suite (best rig/anim quality of the three) |
 | 564230 | Fire Pro Wrestling World | huge move library, edit-wrestler suite |
