@@ -199,6 +199,9 @@ export const STAGES = [
     swatch: ['#120e33', '#ff7a3c'],
     builder: 'shrine',
     associatedFighters: ['phantom', 'diablo'],
+    // Stage-break lane (Tekken floor break): cracked crypt seal at center —
+    // a heavy slam shatters it and the fight drops to the crypt below.
+    breakables: [{ type: 'floor', x: 0, z: 0, r: 2.6, depth: 6 }],
   },
   {
     id: 'tong-nou', name: 'TONG-NOU', tier: 'CANON LANDS',
@@ -279,6 +282,9 @@ export const STAGES = [
     builder: 'chiu',
     pano: 'assets/stages/eastern-mind/plains-of-chi-u/pano.png', // real Eastern Mind background art
     associatedFighters: ['michiko'],
+    // Stage-break lane: scorched weak crust off-center — heavy slams break
+    // through to the ember hollow below.
+    breakables: [{ type: 'floor', x: 2.5, z: 0.5, r: 2.4, depth: 6 }],
   },
   {
     id: 'octagonal-shrine', name: 'OCTAGONAL SHRINE PAR-FANG', tier: 'CANON LANDS',
@@ -339,6 +345,9 @@ export const STAGES = [
     glb: 'assets/stages/pink-narwhal/pink-narwhal.glb',
     hidePlatform: true,
     associatedFighters: ['purple-rain'],
+    // Stage-break lane (T7 balcony break): the palace balcony edge — a heavy
+    // hit there shatters the railing and drops the fight one level.
+    breakables: [{ type: 'balcony', x: 5.5, z: 0, r: 2.2, w: 4.5, depth: 6 }],
   },
   {
     id: 'palace-of-dreaming', name: 'PALACE OF DREAMING', tier: 'CANON LANDS',

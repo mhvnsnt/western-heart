@@ -71,6 +71,12 @@ Carve-outs (standing owner decisions, not overridden): never merge a DRAFT PR; n
 
 - Search T5/T6/T7/T8/TTT2 teardowns first. Use T3 only when none of them has the data, and log the T3 use (file, clip, reason) in `docs/anim/PROCEDURAL_AUDIT.md`.
 
+## OWNER LAW — no hand-made menus (Oct 23, 2026, 2:21 PM CT)
+> **NO hand-made menus. Every Western Heart menu, character select and customization screen, including the creation suite in `packages/creation-suite`, must be built from the actual Tekken teardown files (T5/T6/T7/T8/TTT2) and other game teardowns, and every UI change must cite its teardown source in the PR and WORKLOG.**
+- CI gate is being landed by MoneyManBusch; don't build a duplicate.
+- The existing hand-built creation suite UI in `packages/creation-suite` is NON-COMPLIANT, pending a teardown-sourced rebuild. Do NOT delete it.
+- See `docs/RULES_NO_GUESSING.md` and `docs/HOW-TO-CONTINUE.md`.
+
 ## NO-SPARSE-COMMIT LAW (owner 2026-10-23 — the cape-jones #219 main wipe)
 
 On 2026-10-23, cape-jones PR #219 wiped main: the merge was built from a sparse/partial checkout, so the commit carried only the partial tree and main lost everything outside it.
