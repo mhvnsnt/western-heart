@@ -1,0 +1,548 @@
+{
+ "name": "T7-SKT-CH-base",
+ "source": "Ludenous1/TK7_SK_CH Skeletons/SK_CH_kin.txt + SK_CH_jin.txt; topology intersection (name+parent) identical across both characters = the one shared T7 base skeleton. Rest positions from King (proportions vary per character; topology does not).",
+ "space": "Unreal: Z-up, meters. rest_pos = bone world position (matrix translation column).",
+ "license_note": "Bone names/hierarchy are factual data extracted from a community skeleton reference; no game assets included.",
+ "bones": [
+  {
+   "name": "Base",
+   "parent": null,
+   "rest_pos": [
+    0.0,
+    0.0,
+    1.219
+   ]
+  },
+  {
+   "name": "Spine1",
+   "parent": "Base",
+   "rest_pos": [
+    0.0,
+    0.0,
+    1.219
+   ]
+  },
+  {
+   "name": "Spine2",
+   "parent": "Spine1",
+   "rest_pos": [
+    0.0,
+    0.0,
+    1.3775
+   ]
+  },
+  {
+   "name": "Neck",
+   "parent": "Spine2",
+   "rest_pos": [
+    0.0,
+    0.0,
+    1.6944
+   ]
+  },
+  {
+   "name": "Head",
+   "parent": "Neck",
+   "rest_pos": [
+    0.0,
+    0.0,
+    1.8687
+   ]
+  },
+  {
+   "name": "L_Shoulder",
+   "parent": "Spine2",
+   "rest_pos": [
+    0.1219,
+    0.0,
+    1.6456
+   ]
+  },
+  {
+   "name": "L_Arm",
+   "parent": "L_Shoulder",
+   "rest_pos": [
+    0.2584,
+    0.0,
+    1.6457
+   ]
+  },
+  {
+   "name": "L_ForeArm",
+   "parent": "L_Arm",
+   "rest_pos": [
+    0.5949,
+    0.0,
+    1.6457
+   ]
+  },
+  {
+   "name": "L_Hand",
+   "parent": "L_ForeArm",
+   "rest_pos": [
+    0.8528,
+    0.0,
+    1.6457
+   ]
+  },
+  {
+   "name": "L_FingerBase",
+   "parent": "L_Hand",
+   "rest_pos": [
+    0.8587,
+    -0.0234,
+    1.6457
+   ]
+  },
+  {
+   "name": "L_Middle",
+   "parent": "L_FingerBase",
+   "rest_pos": [
+    0.8587,
+    -0.0117,
+    1.6457
+   ]
+  },
+  {
+   "name": "L_Ring",
+   "parent": "L_Middle",
+   "rest_pos": [
+    0.8587,
+    0.0,
+    1.6457
+   ]
+  },
+  {
+   "name": "L_Pinky",
+   "parent": "L_Ring",
+   "rest_pos": [
+    0.8587,
+    0.0117,
+    1.6457
+   ]
+  },
+  {
+   "name": "L_Pinky1",
+   "parent": "L_Pinky",
+   "rest_pos": [
+    0.9791,
+    0.045,
+    1.6475
+   ]
+  },
+  {
+   "name": "L_Pinky2",
+   "parent": "L_Pinky1",
+   "rest_pos": [
+    1.0352,
+    0.045,
+    1.6475
+   ]
+  },
+  {
+   "name": "L_Pinky3",
+   "parent": "L_Pinky2",
+   "rest_pos": [
+    1.0607,
+    0.045,
+    1.6475
+   ]
+  },
+  {
+   "name": "L_Ring1",
+   "parent": "L_Ring",
+   "rest_pos": [
+    0.9947,
+    0.0168,
+    1.6497
+   ]
+  },
+  {
+   "name": "L_Ring2",
+   "parent": "L_Ring1",
+   "rest_pos": [
+    1.0569,
+    0.0168,
+    1.6497
+   ]
+  },
+  {
+   "name": "L_Ring3",
+   "parent": "L_Ring2",
+   "rest_pos": [
+    1.0935,
+    0.0168,
+    1.6497
+   ]
+  },
+  {
+   "name": "L_Middle1",
+   "parent": "L_Middle",
+   "rest_pos": [
+    0.9988,
+    -0.015,
+    1.6519
+   ]
+  },
+  {
+   "name": "L_Middle2",
+   "parent": "L_Middle1",
+   "rest_pos": [
+    1.0672,
+    -0.015,
+    1.6519
+   ]
+  },
+  {
+   "name": "L_Middle3",
+   "parent": "L_Middle2",
+   "rest_pos": [
+    1.1071,
+    -0.015,
+    1.6519
+   ]
+  },
+  {
+   "name": "L_Index1",
+   "parent": "L_FingerBase",
+   "rest_pos": [
+    0.9988,
+    -0.0482,
+    1.6519
+   ]
+  },
+  {
+   "name": "L_Index2",
+   "parent": "L_Index1",
+   "rest_pos": [
+    1.0636,
+    -0.0482,
+    1.6519
+   ]
+  },
+  {
+   "name": "L_Index3",
+   "parent": "L_Index2",
+   "rest_pos": [
+    1.1011,
+    -0.0482,
+    1.6519
+   ]
+  },
+  {
+   "name": "L_Thumb1",
+   "parent": "L_FingerBase",
+   "rest_pos": [
+    0.8813,
+    -0.0522,
+    1.6285
+   ]
+  },
+  {
+   "name": "L_Thumb2",
+   "parent": "L_Thumb1",
+   "rest_pos": [
+    0.9424,
+    -0.0911,
+    1.6059
+   ]
+  },
+  {
+   "name": "L_Thumb3",
+   "parent": "L_Thumb2",
+   "rest_pos": [
+    0.9793,
+    -0.1146,
+    1.5922
+   ]
+  },
+  {
+   "name": "R_Shoulder",
+   "parent": "Spine2",
+   "rest_pos": [
+    -0.1219,
+    0.0,
+    1.6457
+   ]
+  },
+  {
+   "name": "R_Arm",
+   "parent": "R_Shoulder",
+   "rest_pos": [
+    -0.2584,
+    0.0,
+    1.6457
+   ]
+  },
+  {
+   "name": "R_ForeArm",
+   "parent": "R_Arm",
+   "rest_pos": [
+    -0.5949,
+    0.0,
+    1.6456
+   ]
+  },
+  {
+   "name": "R_Hand",
+   "parent": "R_ForeArm",
+   "rest_pos": [
+    -0.8528,
+    0.0,
+    1.6456
+   ]
+  },
+  {
+   "name": "R_FingerBase",
+   "parent": "R_Hand",
+   "rest_pos": [
+    -0.8587,
+    -0.0234,
+    1.6456
+   ]
+  },
+  {
+   "name": "R_Middle",
+   "parent": "R_FingerBase",
+   "rest_pos": [
+    -0.8587,
+    -0.0117,
+    1.6456
+   ]
+  },
+  {
+   "name": "R_Ring",
+   "parent": "R_Middle",
+   "rest_pos": [
+    -0.8587,
+    0.0,
+    1.6456
+   ]
+  },
+  {
+   "name": "R_Pinky",
+   "parent": "R_Ring",
+   "rest_pos": [
+    -0.8587,
+    0.0117,
+    1.6456
+   ]
+  },
+  {
+   "name": "R_Pinky1",
+   "parent": "R_Pinky",
+   "rest_pos": [
+    -0.9791,
+    0.045,
+    1.6475
+   ]
+  },
+  {
+   "name": "R_Pinky2",
+   "parent": "R_Pinky1",
+   "rest_pos": [
+    -1.0352,
+    0.045,
+    1.6475
+   ]
+  },
+  {
+   "name": "R_Pinky3",
+   "parent": "R_Pinky2",
+   "rest_pos": [
+    -1.0607,
+    0.045,
+    1.6475
+   ]
+  },
+  {
+   "name": "R_Ring1",
+   "parent": "R_Ring",
+   "rest_pos": [
+    -0.9947,
+    0.0168,
+    1.6497
+   ]
+  },
+  {
+   "name": "R_Ring2",
+   "parent": "R_Ring1",
+   "rest_pos": [
+    -1.0569,
+    0.0168,
+    1.6497
+   ]
+  },
+  {
+   "name": "R_Ring3",
+   "parent": "R_Ring2",
+   "rest_pos": [
+    -1.0935,
+    0.0168,
+    1.6497
+   ]
+  },
+  {
+   "name": "R_Middle1",
+   "parent": "R_Middle",
+   "rest_pos": [
+    -0.9988,
+    -0.015,
+    1.6519
+   ]
+  },
+  {
+   "name": "R_Middle2",
+   "parent": "R_Middle1",
+   "rest_pos": [
+    -1.0672,
+    -0.015,
+    1.6519
+   ]
+  },
+  {
+   "name": "R_Middle3",
+   "parent": "R_Middle2",
+   "rest_pos": [
+    -1.1071,
+    -0.015,
+    1.6519
+   ]
+  },
+  {
+   "name": "R_Index1",
+   "parent": "R_FingerBase",
+   "rest_pos": [
+    -0.9988,
+    -0.0482,
+    1.6519
+   ]
+  },
+  {
+   "name": "R_Index2",
+   "parent": "R_Index1",
+   "rest_pos": [
+    -1.0636,
+    -0.0482,
+    1.6519
+   ]
+  },
+  {
+   "name": "R_Index3",
+   "parent": "R_Index2",
+   "rest_pos": [
+    -1.1011,
+    -0.0482,
+    1.6519
+   ]
+  },
+  {
+   "name": "R_Thumb1",
+   "parent": "R_FingerBase",
+   "rest_pos": [
+    -0.8813,
+    -0.0522,
+    1.6285
+   ]
+  },
+  {
+   "name": "R_Thumb2",
+   "parent": "R_Thumb1",
+   "rest_pos": [
+    -0.9424,
+    -0.0911,
+    1.6059
+   ]
+  },
+  {
+   "name": "R_Thumb3",
+   "parent": "R_Thumb2",
+   "rest_pos": [
+    -0.9793,
+    -0.1146,
+    1.5922
+   ]
+  },
+  {
+   "name": "Hip",
+   "parent": "Base",
+   "rest_pos": [
+    0.0,
+    0.0,
+    1.219
+   ]
+  },
+  {
+   "name": "L_UpLeg",
+   "parent": "Hip",
+   "rest_pos": [
+    0.106,
+    -0.0,
+    1.0494
+   ]
+  },
+  {
+   "name": "L_Leg",
+   "parent": "L_UpLeg",
+   "rest_pos": [
+    0.106,
+    -0.0,
+    0.583
+   ]
+  },
+  {
+   "name": "L_Foot",
+   "parent": "L_Leg",
+   "rest_pos": [
+    0.106,
+    -0.0,
+    0.1378
+   ]
+  },
+  {
+   "name": "L_Toe",
+   "parent": "L_Foot",
+   "rest_pos": [
+    0.106,
+    -0.1622,
+    0.032
+   ]
+  },
+  {
+   "name": "R_UpLeg",
+   "parent": "Hip",
+   "rest_pos": [
+    -0.106,
+    -0.0,
+    1.0494
+   ]
+  },
+  {
+   "name": "R_Leg",
+   "parent": "R_UpLeg",
+   "rest_pos": [
+    -0.106,
+    -0.0,
+    0.583
+   ]
+  },
+  {
+   "name": "R_Foot",
+   "parent": "R_Leg",
+   "rest_pos": [
+    -0.106,
+    -0.0,
+    0.1378
+   ]
+  },
+  {
+   "name": "R_Toe",
+   "parent": "R_Foot",
+   "rest_pos": [
+    -0.1059,
+    -0.1622,
+    0.032
+   ]
+  }
+ ]
+}

@@ -300,13 +300,29 @@ files keep EM-descriptive basenames under WH stage directories pending assignmen
 | lili (RigModels) | lili.glb | UNMAPPED | — |
 | mokujin (RigModels) | mokujin.glb | UNMAPPED | — |
 | zafina (RigModels) | zafina.glb | UNMAPPED | — |
-| baek (RigModels) | baek.glb | UNMAPPED | — |
+| baek (RigModels) | baek.glb | KEVIN | A2 attire for Kevin (owner 2026-10-20: Baek-as-fighter → KEVIN) |
 
 **Blocked:** heihachi-mishima → Diablo (RAR, no extractor on VM); dr-bosconovitch → Doc Frank (XPS format); xiaoyu-t8 → Saku Ra alt2 (RAR).
 
 **Attire rule (owner 2026-10-15):** All above are NON-T3 = front-line attires. T3 legacy models go at back of attire list only.
 
 ---
+
+## APPENDIX (2026-10-20) — iron-legacy (Tekken 3) CORRECTION & COMPLETION
+
+*Added by the Tekken 3 full-wiring lane. Append-only; details in
+`teardown/tekken3/CANON-CONVERSION.md` and `teardown/tekken3/WIRING-INVENTORY.md`.*
+
+The "iron-legacy (Tekken 3) — 100% complete" entry above was premature when written: at
+that time only 7 of 21 motion banks and 7 movesets had been extracted. As of 2026-10-20:
+all 20 character banks present on the disc image + the common bank are extracted and
+SHA-256-verified, and all 20 movesets are extracted (13 banks / 5,663 move rows added that
+day). The one genuine absence is divmot15 (Mokujin): BNS record 295 has size 0 in
+`teardown/tekken3/bns-table.pkl` — the data is not on this disc image.
+The directory rename `teardown/tekken3/` → `teardown/iron-legacy/` remains PENDING (this
+map's table): it must land with all consumer references updated (`game/js/t3anims.js`,
+`game/js/movesets.js`, `lab/tools/`, stage pipeline docs) and a boot check, sequenced by
+the coordinator — it was not executed by the wiring lane.
 
 <!-- BEGIN WMXIX / MAT-LEGENDS SECTION (WMXIX wiring lane, 2026-10-20 — coordinator reconciles at merge) -->
 
@@ -318,3 +334,58 @@ files keep EM-descriptive basenames under WH stage directories pending assignmen
 - The "~80%" status above predates the solved teardown (closed 2026-10-17: assembly solution exact, YANM fully decoded 169/170 clean). Remaining opens: arena face indices, per-clip move semantics, CAW part-level consumption, owner character names.
 
 <!-- END WMXIX / MAT-LEGENDS SECTION -->
+<!-- BEGIN No Mercy / mat-kings conversion record (wiring lane 2026-10-20; source of truth: teardown/wwf-no-mercy/CANON-CONVERSION.md) -->
+### mat-kings (No Mercy) — conversion record 2026-10-20
+
+| Item | Status |
+|---|---|
+| Universe name `mat-kings` | DONE (already mapped above) |
+| Move IDs `NM-###` → `MK-####` (4,409 moves + 1,353 system clips, `moveset-library/movesets/mat-kings-move-database.json`) | DONE |
+| Tekken-style input assignment for every move category | DONE (in the same database) |
+| NM-001/002/003 anim_ref corrections (FileTableDB evidence) | DONE |
+| 17 stage display names (in `game/js/stages.js`) | AWAITING OWNER — table in CANON-CONVERSION.md §4 |
+| 42 wrestler identities → WH names | AWAITING OWNER — none mapped; federated design keeps wrestler characters out of WH |
+| Persona-named move labels (e.g. Reverse Tazzplex) | AWAITING OWNER naming pass |
+| Directory rename `teardown/wwf-no-mercy/` (Phase 3) | NOT DONE — teardown folder stays per owner law; coordinator decision |
+<!-- END No Mercy / mat-kings conversion record -->
+
+### CHARGER — Blanka replacement fighter (owner 2026-10-20) — DONE
+
+| Original | File code | WH name | Status |
+|---|---|---|---|
+| Blanka (Street Fighter / dragon-strike) | `blanka` | **CHARGER** | DONE |
+
+- Owner's words: "Blanka replacement model from tripo attire 1: CHARGER (his name is charger cause of blankas attacks and movesets will be attach to him but he's got powers of ice and electricity)". Attire 2 followed the same day. CHARGER's powers are ICE and ELECTRICITY.
+- **Roster**: `game/js/roster-full.js` — the `blanka` fighter entry is replaced by `charger` ("The Ice Monster", attires `['charger', 'charger-attire2']`) + a `charger-attire2` entry ("The Wild Current"). Blanka's roster slot is CHARGER's now.
+- **Models** (owner-made Tripo, pulled via `tools/tripo-pull`, raw meshopt GLBs, render-prep validated — 3 textures each, no NaN): Attire 1 = Tripo `b91318ce-2ccd-43eb-8691-d675b3ee8b10` ("ice monster 3d model") → `roster/charger/attires/attire1/model.glb` (sha256 c0caf06c…); Attire 2 = Tripo `f87e24eb-0c0b-4444-9409-4f4dabc0bb32` ("green spiky creature 3d model") → `roster/charger/attires/attire2/model.glb` (sha256 307b7ade…). Model URL keys added in `game/js/assets.js`.
+- **Moveset**: `game/assets/movesets/charger.json` = Blanka's FULL set — all 199 moves from `blanka.json` (post-#363 union), inputs and frame data IDENTICAL (script-verified field-by-field against the source; only `name` strings changed). `charger` added to MOVESET_IDS (`game/js/movesets.js`); animation bank `bryan` in `game/js/fighter.js` MOVESET_MAP (Blanka's T3 source bank).
+- **Signature renames** (move data untouched; full map also in charger.json `canon_rename_map`): Electric Thunder family → **Cryo Thunder** (incl. EX Cryo Thunder); Rolling Attack family → **Frostcharge Roll** (Aerial/Vertical/Backstep/Quick variants likewise); Rolling Cannon → **Frostcharge Cannon**; Dynamic Rolling → **Dynamic Frostcharge**; Quick Rolling → **Quick Frostcharge**; Ground Shave Rolling → **Glacier Shave Roll**. 46 distinct names renamed.
+- **NOT deleted**: `roster/blanka/` (incl. the Sketchfab GLB), `game/assets/movesets/blanka.json`, `game/assets/movesets/sf-blanka.json`, and the `blanka` keys in assets.js / movesets.js / fighter.js all stay in the repo. Only the playable roster entry changed hands.
+
+<!-- END CHARGER SECTION -->
+
+### CORNERSTONE — Ryuji/Rock hybrid gets his name (owner 2026-10-21)
+
+| Original | File code | WH name | Status |
+|---|---|---|---|
+| Ryuji Yamazaki (KOF / Fatal Fury) x The Rock (WWE, early Attitude Era) | `ryuji-rock` | **CORNERSTONE** | NAME LOCKED |
+
+- Owner's words (2026-10-21): "I told u how ryuji character will be mixed with the rock from WWE and do the uranage/rock bottom, he will also get the rock bottom from king and from WWE all stars, and some animations of the rock from the WWE teardown games, and kings jumping diving elbow attack, mixed with ryuji yamazakis stance and taunts and moveset and antics mixed with the rock persona from early attitude era WWE. And his name will be CornerStone"
+- Foundation (owner 2026-10-19, already logged): Ryuji Yamazaki version — black shirt, blonde top hair — mixed with The Rock (Dwayne Johnson): obnoxious like Ryuji, sticks his tongue out, personality mixed with The Rock. Moveset: Ryuji base + The Rock's moves (Rock Bottom — King has it in Tekken, pull from there) + wrestling moves from Urban Reign / Tekken / other teardown games.
+- Canon entry: CANON.md — "CORNERSTONE — The Obnoxious One (Bonus)".
+- What changed: the DISPLAY / canonical name only. The `ryuji-rock` roster entry (`game/js/roster-full.js`) shows CORNERSTONE (title kept: "The Obnoxious One"); the internal fighter id, the moveset key (`game/assets/movesets/ryuji-rock.json`), the model key (`ryuji-rock` in `game/js/assets.js`) and the folder (`roster/ryuji-rock/`) keep the source code name so every loader reference stays valid.
+- NOT deleted / NOT renamed: `game/assets/movesets/ryuji.json` (the full 103-move KOF Yamazaki set) and the `ryuji` roster entry (the pure-Yamazaki form) stay exactly as they are. The pre-rename records in `roster/ryuji-rock/attires/attire1/README.md` keep the old name as their history.
+- Model: the owner delivered his Tripo link on 2026-10-21 — the exact next step the attire-1 README's model hunt (2026-10-19) was waiting on. Pull + wire follow in the same CornerStone build.
+- Design sources named by the owner that are NOT yet in the teardown holdings, recorded so they are never silently dropped or faked: the **WWE All Stars** Rock Bottom version (All Stars is queued on the teardown-idle queue — not acquired, not torn down) and **Younger Toguro's fingernail blast** (Yu Yu Hakusho — no YYH game in the holdings). Both wire in when their sources exist.
+
+<!-- END CORNERSTONE SECTION -->
+
+<!-- BEGIN EM-JIN NAMING CONVENTION (owner 2026-10-22) -->
+### NAMING CONVENTION — Jin (Eastern Mind)
+
+There is an Eastern Mind character named Jin. This is **NOT Jin Kazama** (Tekken) — completely separate character.
+
+**Convention:** in all files, docs, and code, refer to this character as **"Jin (Eastern Mind)"** or **"EM-Jin"** — never bare "Jin" where confusion with Jin Kazama is possible. This matters because Demonio already uses Jin's moveset as a base, so the name collision is real.
+
+*(Correction 2026-10-22: earlier note said "Gen (Eastern Mind)" — that was a mishearing. It is Jin.)*
+<!-- END EM-JIN NAMING CONVENTION -->
