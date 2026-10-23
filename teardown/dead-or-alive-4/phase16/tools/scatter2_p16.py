@@ -55,6 +55,13 @@ BATCH = 60000
 def entry_bytes(vol, name):
     return open(os.path.join(SCR, 'afs_extract', vol, name), 'rb').read()
 
+_CACHE = {}
+def get_bytes(state, name):
+    if name not in _CACHE:
+        _CACHE.clear()
+        _CACHE[name] = state[name]['bytes'] if state[name].get('bytes') else entry_bytes(state[name]['src'], name)
+    return _CACHE[name]
+
 def state_path(vol):
     return os.path.join(SCR, f'scatter2_state_{vol}.json')
 
@@ -71,7 +78,7 @@ def run_tier(vol, state, stream_mm, stream_str, tier):
             o = s
             while o < e:
                 ln = min(tier, e - o)
-                blk = st['bytes'][o:o + ln]
+                blk = get_bytes(state, name)[o:o + ln]
                 if blk.count(0) == len(blk):
                     st['pieces'].append([o, -2, ln, tier]); st['zero'] += ln
                 else:
@@ -79,18 +86,19 @@ def run_tier(vol, state, stream_mm, stream_str, tier):
                 o += ln
         st['missing'] = []
     found_count = 0
-    for b0 in range(0, len(jobs), BATCH):
-        batch = jobs[b0:b0 + BATCH]
+    bsz = 20000 if tier <= 256 else BATCH
+    for b0 in range(0, len(jobs), bsz):
+        batch = jobs[b0:b0 + bsz]
         auto = ahocorasick.Automaton()
         for idx, (name, o, ln) in enumerate(batch):
-            auto.add_word(state[name]['bytes'][o:o + WIN].decode('latin-1'), idx)
+            auto.add_word(get_bytes(state, name)[o:o + WIN].decode('latin-1'), idx)
         auto.make_automaton()
         found = {}
         for end, idx in auto.iter(stream_str):
             if idx in found: continue
             name, o, ln = batch[idx]
             cand = end - WIN + 1
-            if stream_mm[cand:cand + ln] == state[name]['bytes'][o:o + ln]:
+            if stream_mm[cand:cand + ln] == get_bytes(state, name)[o:o + ln]:
                 found[idx] = cand
         for idx, (name, o, ln) in enumerate(batch):
             if idx in found:
@@ -128,7 +136,7 @@ def run_volume(vol, targets, stream_mm, stream_str, done, tag=''):
         tiers_done = raw.pop('__tiers__', 0)
         state = {}
         for name, st in raw.items():
-            st['bytes'] = entry_bytes(st['src'], name)
+            st['bytes'] = None
             state[name] = st
         print(f'{key}: resumed state, tiers done: {tiers_done}', flush=True)
     else:
@@ -138,7 +146,8 @@ def run_volume(vol, targets, stream_mm, stream_str, done, tag=''):
             b = entry_bytes(src, name)
             assert hashlib.sha256(b).hexdigest() == sha, name
             state[name] = {'size': len(b), 'pieces': [], 'missing': [[0, len(b)]],
-                           'zero': 0, 'bytes': b, 'src': src, 'sha256': sha}
+                           'zero': 0, 'bytes': None, 'src': src, 'sha256': sha}
+            del b
         tiers_done = 0
     for ti, tier in enumerate(TIERS):
         if ti < tiers_done: continue
