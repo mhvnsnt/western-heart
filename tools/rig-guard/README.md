@@ -40,3 +40,35 @@ check on a sparse checkout) and job `game-unit-tests` (the `test/*.test.mjs`
 suite on a sparse checkout). Does not touch or duplicate the existing
 `clobber-guard`, `deletion-guard`, `no-deletion-guard`, or `instruction-gate`
 workflows.
+
+---
+
+# tools/rig-guard — face-weight guard (added 2026-10-23)
+
+Fails CI when a PR adds or modifies a rigged GLB whose **face-region vertices**
+(top 15% of model height) carry **>5% skin weight on spine/pelvis/hips/root**
+(or other non-head) bones.
+
+The loss this prevents: the "face cone" bug (user-reported 2026-10-23) — jaw,
+chin, and face verts weighted to `Spine`/`Spine1`/`Spine2`/`Hips` instead of
+`Head`, so the face stretches down toward the spine whenever the body moves.
+Found on Purple Rain (40,060 verts), Star (524), armor-king (1,578), awa-pop
+(12,583), baek (16,965), and others; fixed universally by reassigning those
+weights to the Head bone. This guard makes sure it can never come back.
+
+## Files
+
+- `face_weight_guard.py` — the guard. Pure function `check_face_weights(path)`
+  returns the list of violating verts (empty = pass) + a CLI that scans GLB
+  files (explicit paths, or PR-changed GLBs via `BASE_SHA`/`HEAD_SHA`).
+- `test_face_weight_guard.py` — unit tests: clean model → pass; spine-weighted
+  face → fail; below-threshold → pass; unskinned → pass. Run:
+  `python3 -m unittest discover -s tools/rig-guard -p 'test_face_weight_guard.py' -v`
+
+Requires: `pip install numpy pygltflib meshopt`.
+
+## CI wiring
+
+`.github/workflows/game-checks.yml` — job `face-weight-guard` (self-test, then
+scans every `.glb` the PR added/modified). Exit 0 = clean, 1 = REFUSED (bad
+GLBs printed), 2 = usage/error.
