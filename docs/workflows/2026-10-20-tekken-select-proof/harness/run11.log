@@ -1,0 +1,10 @@
+starting egress relay...
+relay up: True
+BYTE-VERIFY attempt 0: {
+ "game/index.html": "13234B sha-match=True",
+ "game/select.css": "11928B sha-match=True",
+ "game/js/select-screen.js": "26481B sha-match=True",
+ "game/js/main.js": "22824B sha-match=True"
+}
+BYTE-VERIFY ALL MATCH: True
+TAP [data-action="mode-versus"] -> clicked

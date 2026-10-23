@@ -11,7 +11,8 @@
      pressed: queue of one-shot actions  // 1/2/3/4 (Tekken limbs),
                                          // 1+3/2+4/1+2/3+4/1+4/2+3 chords,
                                          // ss-up/ss-down (sidestep),
-                                         // surge/dodge/transform (WH)
+                                         // surge/dodge/transform (WH),
+                                         // vskill (V-System: KeyV / V button)
 
    TEKKEN INPUTS: 1/2/3/4 = left punch / right punch / left kick / right kick
    (LP/RP/LK/RK touch buttons). Any two limbs within 140ms = chord
@@ -60,7 +61,34 @@ export class InputManager {
 
   consume() { const q = this._queue.slice(); this._queue.length = 0; return q; }
 
-  _push(action) { if (this.enabled) this._queue.push(action); }
+  _push(action) {
+    if (!this.enabled) return;
+    // Worker 35: difficulty assists (input layer). translate() handles
+    // throw-break assist; after() handles auto-combo / one-button special.
+    if (window.WHAssists) action = window.WHAssists.translate(action, this) || action;
+    this._queue.push(action);
+    if (window.WHAssists) window.WHAssists.after(action, this);
+  }
+
+  /* Worker 35: button remapping. Translates the physical key through the
+     player's remap table to the canonical action code the switch below
+     dispatches on. Joystick is never remapped (owner-approved). */
+  _remapCode(code) {
+    if (!window.WHIdentity) return code;
+    const I = window.WHIdentity;
+    const keys = (I.getRemap && I.getRemap().keys) || {};
+    const def = I.REMAP_DEFAULT_KEYS || {};
+    // cur(): '' means explicitly unbound (conflict-cleared) — do NOT fall back.
+    const cur = (a) => (a in keys ? keys[a] : def[a]);
+    for (const action of Object.keys(def)) {
+      if (cur(action) === code) return def[action];
+    }
+    // A default key whose action moved elsewhere is dead (true rebind, not alias).
+    for (const action of Object.keys(def)) {
+      if (def[action] === code && cur(action) !== code) return '__unbound__';
+    }
+    return code;
+  }
 
   /* P+K chord => command grab. Tracks the most recent strike press;
      if the other one lands within 140ms, the pair becomes a grab. */
@@ -79,8 +107,17 @@ export class InputManager {
   /* Tekken chords: any two limbs within 140ms.
      1+3 / 2+4 = throws; 1+2 / 3+4 = specials; 1+4 / 2+3 = command inputs.
      Throw pairs keep priority (most deliberate), then specials, then commands. */
+  /* Vertical intent right now, including a u/d still inside its 200ms tap window: a limb
+     pressed with the stick at d/f is d/f+1 in Tekken, not a sidestep followed by 1. */
+  vertNow() {
+    if (this.up) return 'up';
+    if (this.down) return 'down';
+    return this._udDir || null;
+  }
+
   _tekken(btn) {
     const now = performance.now();
+    if (this._udDir && !this._udHeld) this._udUsed = true; // the tap fed this attack's direction
     const pairs = btn === '1' ? [['3', '1+3'], ['2', '1+2'], ['4', '1+4']]
                 : btn === '2' ? [['4', '2+4'], ['1', '1+2'], ['3', '2+3']]
                 : btn === '3' ? [['1', '1+3'], ['4', '3+4'], ['2', '2+3']]
@@ -118,8 +155,9 @@ export class InputManager {
     const held = performance.now() - this._udT >= 200;
     clearTimeout(this._udTimer);
     this._udDir = null; this._udHeld = false;
+    const used = this._udUsed; this._udUsed = false;
     if (this.up || this.down) { this.up = false; this.down = false; }
-    else if (!held) this._push(dir === 'up' ? 'ss-up' : 'ss-down');
+    else if (!held && !used) this._push(dir === 'up' ? 'ss-up' : 'ss-down');
   }
 
   /* ---------------- Keyboard ---------------- */
@@ -128,7 +166,8 @@ export class InputManager {
       if (this._keys[e.code]) return; // ignore auto-repeat
       this._keys[e.code] = true;
       if (!this.enabled) return;
-      switch (e.code) {
+      // Worker 35: remap physical key -> canonical action code first.
+      switch (this._remapCode(e.code)) {
         case 'KeyA': case 'ArrowLeft': this.axisX = -1; break;
         case 'KeyD': case 'ArrowRight': this.axisX = 1; break;
         case 'KeyW': case 'ArrowUp': this._udPress('up'); break;
@@ -143,17 +182,29 @@ export class InputManager {
         case 'Digit4': this._tekken('4'); break;
         case 'Space': this.held.block = true; e.preventDefault(); break;
         case 'ShiftLeft': case 'ShiftRight': this._push('dodge'); break;
+        case 'KeyV': this._push('vskill'); break; // V-System (owner 2026-10-22)
       }
     });
     window.addEventListener('keyup', (e) => {
       this._keys[e.code] = false;
-      switch (e.code) {
-        case 'KeyA': case 'ArrowLeft': if (this.axisX < 0) this.axisX = this._keys['KeyD'] ? 1 : 0; break;
-        case 'KeyD': case 'ArrowRight': if (this.axisX > 0) this.axisX = this._keys['KeyA'] ? -1 : 0; break;
+      // Worker 35: translate through the remap so held keys release correctly.
+      switch (this._remapCode(e.code)) {
+        case 'KeyA': case 'ArrowLeft': if (this.axisX < 0) this.axisX = this._keys[this._physicalCode('right')] ? 1 : 0; break;
+        case 'KeyD': case 'ArrowRight': if (this.axisX > 0) this.axisX = this._keys[this._physicalCode('left')] ? -1 : 0; break;
         case 'KeyW': case 'ArrowUp': case 'KeyS': case 'ArrowDown': this._udRelease(); break;
         case 'Space': this.held.block = false; break;
       }
     });
+  }
+
+  /* Worker 35: physical key currently bound to an action (for held-key checks). */
+  _physicalCode(action) {
+    if (!window.WHIdentity) return action;
+    const I = window.WHIdentity;
+    const keys = (I.getRemap && I.getRemap().keys) || {};
+    const def = I.REMAP_DEFAULT_KEYS || {};
+    const cur = (action in keys) ? keys[action] : def[action];
+    return cur || '';
   }
 
   /* ---------------- Virtual joystick ---------------- */

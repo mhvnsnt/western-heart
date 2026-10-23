@@ -1,306 +1,367 @@
 {
- "fighter": "vf-kage",
- "display": "KAGE (VF)",
- "tekken_base": "Kage-Maru (Virtua Fighter 5 Final Showdown)",
- "vf_source": "community movelist + frame data (see docs/movesets/DOA-VF-CONVERSION-2026-10-19.md)",
- "proxy": false,
- "proxy_note": null,
- "schema_version": 2,
- "moves": {
-  "1": {
-   "name": "Kage P \u2014 jab",
-   "input": "1",
-   "vf_move": "Jab",
-   "vf_input": "P",
-   "startup": 0.2,
-   "active": 0.033,
-   "recovery": 0.367,
-   "damage": 7,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "vf:kage/p",
-   "input_slots": [
-    "1"
-   ],
-   "move_class": "strike",
-   "note": "frame data estimated from archetype; marked per schema honesty rule"
+  "fighter": "vf-kage",
+  "display": "KAGE (VF)",
+  "tekken_base": "Kage-Maru (Virtua Fighter 5 Final Showdown)",
+  "vf_source": "community movelist + frame data (see docs/movesets/DOA-VF-CONVERSION-2026-10-19.md)",
+  "proxy": false,
+  "proxy_note": null,
+  "schema_version": 2,
+  "moves": {
+    "1": {
+      "name": "Kage P — jab",
+      "input": "1",
+      "vf_move": "Jab",
+      "vf_input": "P",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.367,
+      "damage": 7,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:kage/p",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "1,2": {
+      "name": "Kage PP string",
+      "input": "1,2",
+      "vf_move": "PP",
+      "vf_input": "P,P",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 12,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:kage/pp",
+      "input_slots": [
+        "1,2",
+        "1",
+        "2"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "f+1": {
+      "name": "Kage Hiji Uchi — elbow",
+      "input": "f+1",
+      "vf_move": "Hiji Uchi (elbow)",
+      "vf_input": "6P",
+      "startup": 0.217,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 11,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:kage/elbow",
+      "input_slots": [
+        "f+1"
+      ],
+      "move_class": "strike",
+      "note": "segaretro VF1 movelist. frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "3": {
+      "name": "Kage K — kick",
+      "input": "3",
+      "vf_move": "K",
+      "vf_input": "K",
+      "startup": 0.233,
+      "active": 0.05,
+      "recovery": 0.5,
+      "damage": 10,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 3.4,
+      "soulGain": 8,
+      "anim_ref": "vf:kage/k",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "u/f+3": {
+      "name": "Kage Suisha Geri — somersault kick",
+      "input": "u/f+3",
+      "vf_move": "Suisha Geri",
+      "vf_input": "K (somersault)",
+      "startup": 0.333,
+      "active": 0.067,
+      "recovery": 0.6,
+      "damage": 16,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 4.8,
+      "soulGain": 8,
+      "anim_ref": "vf:kage/suisha",
+      "input_slots": [
+        "u/f+3"
+      ],
+      "move_class": "special",
+      "note": "Breaks crouch guard. frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "d/b+3": {
+      "name": "Kage Ryuuei Kyaku — backheel sweep",
+      "input": "d/b+3",
+      "vf_move": "Ryuuei Kyaku",
+      "vf_input": "4K",
+      "startup": 0.267,
+      "active": 0.05,
+      "recovery": 0.533,
+      "damage": 11,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:kage/sweep",
+      "input_slots": [
+        "d/b+3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "1+3": {
+      "name": "Kage P+G — Taitou hip throw",
+      "input": "1+3",
+      "vf_move": "Taitou",
+      "vf_input": "P+G",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 25,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 6.5,
+      "soulGain": 8,
+      "anim_ref": "vf:kage/taitou",
+      "input_slots": [
+        "1+3"
+      ],
+      "move_class": "throw",
+      "throw": true,
+      "isGrab": true,
+      "unblockable": true,
+      "note": "Damage estimated.",
+      "throw_break": "1"
+    },
+    "d+1+3": {
+      "name": "Kage Koenraku — launch throw",
+      "input": "d+1+3",
+      "vf_move": "Koenraku",
+      "vf_input": "d+P+G",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 30,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 7.4,
+      "soulGain": 8,
+      "anim_ref": "vf:kage/koenraku",
+      "input_slots": [
+        "d+1+3"
+      ],
+      "move_class": "throw",
+      "throw": true,
+      "isGrab": true,
+      "unblockable": true,
+      "note": "Launches very high; follow-ups possible. Damage estimated.",
+      "throw_break": "1"
+    },
+    "qcf+1+3": {
+      "name": "Kage Katana Gasumi — flip throw",
+      "input": "qcf+1+3",
+      "vf_move": "Katana Gasumi",
+      "vf_input": "P+K+G (close)",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 32,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 7.8,
+      "soulGain": 8,
+      "anim_ref": "vf:kage/katana-gasumi",
+      "input_slots": [
+        "qcf+1+3"
+      ],
+      "move_class": "throw",
+      "throw": true,
+      "isGrab": true,
+      "unblockable": true,
+      "note": "Flips opponent upside down. Damage estimated.",
+      "throw_break": "1"
+    },
+    "b+1+3": {
+      "name": "Kage Haura Gasumi — back throw",
+      "input": "b+1+3",
+      "vf_move": "Haura Gasumi",
+      "vf_input": "b+P+G",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 30,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 7.0,
+      "soulGain": 8,
+      "anim_ref": "vf:kage/back-throw",
+      "input_slots": [
+        "b+1+3"
+      ],
+      "move_class": "throw",
+      "throw": true,
+      "isGrab": true,
+      "unblockable": true,
+      "note": "Damage estimated.",
+      "throw_break": "1"
+    },
+    "1+2": {
+      "name": "Hagakure Leaf [WH SIGNATURE]",
+      "input": "1+2",
+      "startup": 0.27,
+      "active": 0.017,
+      "recovery": 0.82,
+      "damage": 17,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 12,
+      "anim_ref": "wh:vf-kage:sig:hagakure-leaf",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "The Hagakure ninja lands like a leaf and cuts like the wind under it.",
+      "input_remapped_from": "S"
+    },
+    "d+4": {
+      "name": "Shadow Step [WH SIGNATURE]",
+      "input": "d+4",
+      "startup": 0.24,
+      "active": 0.017,
+      "recovery": 0.74,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "wh:vf-kage:sig:shadow-step",
+      "input_slots": [
+        "d+4"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "Dodge-step into a low sweep. The shadow was the attack.",
+      "input_remapped_from": "D+K"
+    },
+    "D+K": {
+      "name": "Shadow Step [WH SIGNATURE]",
+      "input": "D+K",
+      "startup": 0.24,
+      "active": 0.017,
+      "recovery": 0.74,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "wh:vf-kage:sig:shadow-step",
+      "input_slots": [
+        "D+K",
+        "D",
+        "K"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "Dodge-step into a low sweep. The shadow was the attack."
+    },
+    "S": {
+      "name": "Hagakure Leaf [WH SIGNATURE]",
+      "input": "S",
+      "startup": 0.27,
+      "active": 0.017,
+      "recovery": 0.82,
+      "damage": 17,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 12,
+      "anim_ref": "wh:vf-kage:sig:hagakure-leaf",
+      "input_slots": [
+        "S"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "The Hagakure ninja lands like a leaf and cuts like the wind under it."
+    }
   },
-  "1,2": {
-   "name": "Kage PP string",
-   "input": "1,2",
-   "vf_move": "PP",
-   "vf_input": "P,P",
-   "startup": 0.2,
-   "active": 0.033,
-   "recovery": 0.433,
-   "damage": 12,
-   "limb": "armL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "vf:kage/pp",
-   "input_slots": [
-    "1,2",
-    "1",
-    "2"
-   ],
-   "move_class": "string",
-   "note": "frame data estimated from archetype; marked per schema honesty rule"
+  "strings": [
+    {
+      "input": "1,2",
+      "components": [
+        "1",
+        "2"
+      ],
+      "damage": 12
+    }
+  ],
+  "specials": [
+    {
+      "input": "u/f+3",
+      "damage": 16,
+      "throw": false,
+      "vf_input": "K"
+    },
+    {
+      "input": "d+1+3",
+      "damage": 30,
+      "throw": true,
+      "vf_input": "d+P+G"
+    },
+    {
+      "input": "qcf+1+3",
+      "damage": 32,
+      "throw": true,
+      "vf_input": "P+K+G"
+    },
+    {
+      "input": "b+1+3",
+      "damage": 30,
+      "throw": true,
+      "vf_input": "b+P+G"
+    }
+  ],
+  "frame_convention": "VF5FS 60fps -> seconds; damage archetype-scaled to WH 100HP (VF5FS source HP not verified — see notes); movelist per segaretro VF1 command lists",
+  "union_merge": {
+    "date": "2026-10-20",
+    "method": "additive union of all historical versions of this file (548 versions / 60 commits / all refs) over current main; identity = canonical input (entry.input, else key); main preserved verbatim, main wins contested inputs (PR #357 precedent)",
+    "versions_considered": 3,
+    "moves_added": 2,
+    "strings_added": 0,
+    "specials_added": 0,
+    "specials_alt_appended": 0,
+    "added_move_keys": [
+      "D+K",
+      "S"
+    ],
+    "era_note": "final set era census: T8/WH-newest=4, T6/other-teardown=10; additions selected newest-era first (T8/T7/TTT2/T6+other teardowns), T3 payloads used only where no newer expression exists; union-first, no-loss absolute"
   },
-  "f+1": {
-   "name": "Kage Hiji Uchi \u2014 elbow",
-   "input": "f+1",
-   "vf_move": "Hiji Uchi (elbow)",
-   "vf_input": "6P",
-   "startup": 0.217,
-   "active": 0.033,
-   "recovery": 0.433,
-   "damage": 11,
-   "limb": "armR",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "vf:kage/elbow",
-   "input_slots": [
-    "f+1"
-   ],
-   "move_class": "strike",
-   "note": "segaretro VF1 movelist. frame data estimated from archetype; marked per schema honesty rule"
+  "hit_words": {
+    "1+3": 2048,
+    "d+1+3": 2048,
+    "qcf+1+3": 2048,
+    "b+1+3": 2048
   },
-  "3": {
-   "name": "Kage K \u2014 kick",
-   "input": "3",
-   "vf_move": "K",
-   "vf_input": "K",
-   "startup": 0.233,
-   "active": 0.05,
-   "recovery": 0.5,
-   "damage": 10,
-   "limb": "legL",
-   "heavy": true,
-   "knock": 3.4,
-   "soulGain": 8,
-   "anim_ref": "vf:kage/k",
-   "input_slots": [
-    "3"
-   ],
-   "move_class": "strike",
-   "note": "frame data estimated from archetype; marked per schema honesty rule"
-  },
-  "u/f+3": {
-   "name": "Kage Suisha Geri \u2014 somersault kick",
-   "input": "u/f+3",
-   "vf_move": "Suisha Geri",
-   "vf_input": "K (somersault)",
-   "startup": 0.333,
-   "active": 0.067,
-   "recovery": 0.6,
-   "damage": 16,
-   "limb": "legL",
-   "heavy": true,
-   "knock": 4.8,
-   "soulGain": 8,
-   "anim_ref": "vf:kage/suisha",
-   "input_slots": [
-    "u/f+3"
-   ],
-   "move_class": "special",
-   "note": "Breaks crouch guard. frame data estimated from archetype; marked per schema honesty rule"
-  },
-  "d/b+3": {
-   "name": "Kage Ryuuei Kyaku \u2014 backheel sweep",
-   "input": "d/b+3",
-   "vf_move": "Ryuuei Kyaku",
-   "vf_input": "4K",
-   "startup": 0.267,
-   "active": 0.05,
-   "recovery": 0.533,
-   "damage": 11,
-   "limb": "legL",
-   "heavy": false,
-   "knock": 2.2,
-   "soulGain": 8,
-   "anim_ref": "vf:kage/sweep",
-   "input_slots": [
-    "d/b+3"
-   ],
-   "move_class": "strike",
-   "note": "frame data estimated from archetype; marked per schema honesty rule"
-  },
-  "1+3": {
-   "name": "Kage P+G \u2014 Taitou hip throw",
-   "input": "1+3",
-   "vf_move": "Taitou",
-   "vf_input": "P+G",
-   "startup": 0.2,
-   "active": 0.033,
-   "recovery": 0.5,
-   "damage": 25,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 6.5,
-   "soulGain": 8,
-   "anim_ref": "vf:kage/taitou",
-   "input_slots": [
-    "1+3"
-   ],
-   "move_class": "throw",
-   "throw": true,
-   "isGrab": true,
-   "unblockable": true,
-   "note": "Damage estimated.",
-   "throw_break": "1"
-  },
-  "d+1+3": {
-   "name": "Kage Koenraku \u2014 launch throw",
-   "input": "d+1+3",
-   "vf_move": "Koenraku",
-   "vf_input": "d+P+G",
-   "startup": 0.233,
-   "active": 0.033,
-   "recovery": 0.567,
-   "damage": 30,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 7.4,
-   "soulGain": 8,
-   "anim_ref": "vf:kage/koenraku",
-   "input_slots": [
-    "d+1+3"
-   ],
-   "move_class": "throw",
-   "throw": true,
-   "isGrab": true,
-   "unblockable": true,
-   "note": "Launches very high; follow-ups possible. Damage estimated.",
-   "throw_break": "1"
-  },
-  "qcf+1+3": {
-   "name": "Kage Katana Gasumi \u2014 flip throw",
-   "input": "qcf+1+3",
-   "vf_move": "Katana Gasumi",
-   "vf_input": "P+K+G (close)",
-   "startup": 0.267,
-   "active": 0.033,
-   "recovery": 0.567,
-   "damage": 32,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 7.8,
-   "soulGain": 8,
-   "anim_ref": "vf:kage/katana-gasumi",
-   "input_slots": [
-    "qcf+1+3"
-   ],
-   "move_class": "throw",
-   "throw": true,
-   "isGrab": true,
-   "unblockable": true,
-   "note": "Flips opponent upside down. Damage estimated.",
-   "throw_break": "1"
-  },
-  "b+1+3": {
-   "name": "Kage Haura Gasumi \u2014 back throw",
-   "input": "b+1+3",
-   "vf_move": "Haura Gasumi",
-   "vf_input": "b+P+G",
-   "startup": 0.2,
-   "active": 0.033,
-   "recovery": 0.5,
-   "damage": 30,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 7.0,
-   "soulGain": 8,
-   "anim_ref": "vf:kage/back-throw",
-   "input_slots": [
-    "b+1+3"
-   ],
-   "move_class": "throw",
-   "throw": true,
-   "isGrab": true,
-   "unblockable": true,
-   "note": "Damage estimated.",
-   "throw_break": "1"
-  },
-  "1+2": {
-   "name": "Hagakure Leaf [WH SIGNATURE]",
-   "input": "1+2",
-   "startup": 0.27,
-   "active": 0.017,
-   "recovery": 0.82,
-   "damage": 17,
-   "limb": "armR",
-   "heavy": true,
-   "knock": 4.2,
-   "soulGain": 12,
-   "anim_ref": "wh:vf-kage:sig:hagakure-leaf",
-   "input_slots": [
-    "1+2"
-   ],
-   "move_class": "signature",
-   "wh_original": true,
-   "note": "The Hagakure ninja lands like a leaf and cuts like the wind under it.",
-   "input_remapped_from": "S"
-  },
-  "d+4": {
-   "name": "Shadow Step [WH SIGNATURE]",
-   "input": "d+4",
-   "startup": 0.24,
-   "active": 0.017,
-   "recovery": 0.74,
-   "damage": 15,
-   "limb": "legL",
-   "heavy": false,
-   "knock": 4.2,
-   "soulGain": 11,
-   "anim_ref": "wh:vf-kage:sig:shadow-step",
-   "input_slots": [
-    "d+4"
-   ],
-   "move_class": "signature",
-   "wh_original": true,
-   "note": "Dodge-step into a low sweep. The shadow was the attack.",
-   "input_remapped_from": "D+K"
-  }
- },
- "strings": [
-  {
-   "input": "1,2",
-   "components": [
-    "1",
-    "2"
-   ],
-   "damage": 12
-  }
- ],
- "specials": [
-  {
-   "input": "u/f+3",
-   "damage": 16,
-   "throw": false,
-   "vf_input": "K"
-  },
-  {
-   "input": "d+1+3",
-   "damage": 30,
-   "throw": true,
-   "vf_input": "d+P+G"
-  },
-  {
-   "input": "qcf+1+3",
-   "damage": 32,
-   "throw": true,
-   "vf_input": "P+K+G"
-  },
-  {
-   "input": "b+1+3",
-   "damage": 30,
-   "throw": true,
-   "vf_input": "b+P+G"
-  }
- ],
- "frame_convention": "VF5FS 60fps -> seconds; damage archetype-scaled to WH 100HP (VF5FS source HP not verified \u2014 see notes); movelist per segaretro VF1 command lists"
+  "stance_after": {}
 }
