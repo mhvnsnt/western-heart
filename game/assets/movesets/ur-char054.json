@@ -3,7 +3,7 @@
  "fighter": "ur-char054",
  "proxy": false,
  "animationSource": "pmot054.ppk native .gyu bank (per-character)",
- "movesSource": "engine-base (proxy) - movelist name mapping pending pmotID correlation",
+ "movesSource": "motdatP54 names proven for 8/40 clips (UR Phase 5 Job 1, root-stream identity, name-bridge-char054-proven.json); remaining clips engine-base (proxy) - 25 P54 records unproven (per-record reasons in the proven file) + 7 bank motions not in the P54 list",
  "bank": "pmot054.ppk",
  "motions": 40,
  "clips": [
@@ -11,25 +11,37 @@
    "name": "ur_m000",
    "motion": 0,
    "frames": 20,
-   "duration_s": 0.333
+   "duration_s": 0.333,
+   "motdatName": "cbco_dwngnuke_asi_y",
+   "motdatGlobalId": 92,
+   "nameProof": "root-stream identity vs motdatP54.bin record 1, maxDev 0.0019 mm"
   },
   {
    "name": "ur_m001",
    "motion": 1,
    "frames": 20,
-   "duration_s": 0.333
+   "duration_s": 0.333,
+   "motdatName": "cbco_dwngnuke_atama_y",
+   "motdatGlobalId": 93,
+   "nameProof": "root-stream identity vs motdatP54.bin record 2, maxDev 0.0019 mm"
   },
   {
    "name": "ur_m002",
    "motion": 2,
    "frames": 20,
-   "duration_s": 0.333
+   "duration_s": 0.333,
+   "motdatName": "cbco_dwngnuke_left_y",
+   "motdatGlobalId": 94,
+   "nameProof": "root-stream identity vs motdatP54.bin record 3, maxDev 0.0019 mm"
   },
   {
    "name": "ur_m003",
    "motion": 3,
    "frames": 20,
-   "duration_s": 0.333
+   "duration_s": 0.333,
+   "motdatName": "cbco_dwngnuke_right_y",
+   "motdatGlobalId": 95,
+   "nameProof": "root-stream identity vs motdatP54.bin record 4, maxDev 0.0019 mm"
   },
   {
    "name": "ur_m004",
@@ -167,19 +179,28 @@
    "name": "ur_m026",
    "motion": 26,
    "frames": 77,
-   "duration_s": 1.283
+   "duration_s": 1.283,
+   "motdatName": "moco_dvkbrolk_z",
+   "motdatGlobalId": 547,
+   "nameProof": "root-stream identity vs motdatP54.bin record 18, maxDev 0.034 mm"
   },
   {
    "name": "ur_m027",
    "motion": 27,
    "frames": 74,
-   "duration_s": 1.233
+   "duration_s": 1.233,
+   "motdatName": "moco_dvkdvk_z",
+   "motdatGlobalId": 549,
+   "nameProof": "root-stream identity vs motdatP54.bin record 19, maxDev 0.0348 mm"
   },
   {
    "name": "ur_m028",
    "motion": 28,
    "frames": 44,
-   "duration_s": 0.733
+   "duration_s": 0.733,
+   "motdatName": "moco_dvkhit",
+   "motdatGlobalId": 552,
+   "nameProof": "root-stream identity vs motdatP54.bin record 20, maxDev 0.0169 mm"
   },
   {
    "name": "ur_m029",
@@ -233,7 +254,10 @@
    "name": "ur_m037",
    "motion": 37,
    "frames": 112,
-   "duration_s": 1.867
+   "duration_s": 1.867,
+   "motdatName": "moco_rolshoryu",
+   "motdatGlobalId": 693,
+   "nameProof": "root-stream identity vs motdatP54.bin record 28, maxDev 0.0422 mm"
   },
   {
    "name": "ur_m038",

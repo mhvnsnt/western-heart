@@ -26,7 +26,12 @@ Track types (sampler dispatch on type):
        cum @0x663cc0, guess @0x663ec8; 256 symbols, s8 values). Block table:
        s16 offsets @+8. [decode pending validation]
   14 : like 13 but header layout of 12 (float pairs @+12..+32, block table
-       @+36). Root-bone track in general banks. [decode pending validation]
+       @+36). Root-bone track in general banks. [CRACKED Phase 5: symbol
+       pairs are BIG-ENDIAN s16 second differences; per 8-key block the
+       sampler double-integrates (pos[0]=v[0], vel[0]=0, vel+=v, pos+=vel,
+       s16 wrap); out = base + pos*step. Proven exact (max dev 0.0014 mm
+       over 80 frames) against motdatP1 record 7's payload root stream vs
+       general_weapon motion 33. See PHASE5-JOB2-TYPE14.md.]
 
 Sampler semantics (FUN_00292670): output is a vec3 (x, y, z, 1.0). For
 rotation tracks the caller (FUN_002918xx) feeds it to FUN_00101628
@@ -169,9 +174,13 @@ if __name__ == '__main__':
 
 def _decode_pairs_track(tr, d, tab, hdr_floats):
     """Types 13/14: set-2 range-coded s16 values built from symbol pairs.
-    Per key step: 6 symbols -> 3 s16 (little-endian byte pairs) -> s16
-    cumulative sum within the block (sampler is stateless per key, so
-    each block restarts its own accumulation)."""
+    Type 13: per key step, 6 symbols -> 3 s16 (little-endian byte pairs)
+    -> s16 cumulative sum within the block. [still pending validation]
+    Type 14 (CRACKED, UR Phase 5): symbol pairs are BIG-ENDIAN (hi byte
+    first) and encode SECOND differences: per block, pos[0] = v[0],
+    vel[0] = 0; vel[k] += v[k]; pos[k] += vel[k] (s16 wrap throughout);
+    out = base + pos*step. Proven exact against motdat payload root
+    streams (see module docstring)."""
     nb = (tr.nkeys + 7) // 8
     boff_base = 36 if tr.type == 14 else 8
     boffs = [struct.unpack('<h', d[tr.off + boff_base + 2*i:tr.off + boff_base + 2*i + 2])[0] for i in range(nb)]
@@ -179,15 +188,25 @@ def _decode_pairs_track(tr, d, tab, hdr_floats):
     for b in range(nb):
         rd = RangeDecoder(d, tr.off + boffs[b], tab)
         acc = [0, 0, 0]
+        pos = [0, 0, 0]; vel = [0, 0, 0]
         for r in range(min(8, tr.nkeys - 8 * b)):
             vals = []
             for c in range(3):
-                lo = rd.symbol(); hi = rd.symbol()
-                vals.append(s16((lo & 0xff) | ((hi & 0xff) << 8)))
-            acc = [s16(acc[c] + vals[c]) for c in range(3)]
+                if tr.type == 14:
+                    hi = rd.symbol(); lo = rd.symbol()
+                    vals.append(s16(((hi & 0xff) << 8) | (lo & 0xff)))
+                else:
+                    lo = rd.symbol(); hi = rd.symbol()
+                    vals.append(s16((lo & 0xff) | ((hi & 0xff) << 8)))
             if tr.type == 14:
-                out.append(tuple(hdr_floats[c] + acc[c] * hdr_floats[3 + c] for c in range(3)))
+                if r == 0:
+                    pos = vals[:]
+                else:
+                    vel = [s16(vel[c] + vals[c]) for c in range(3)]
+                    pos = [s16(pos[c] + vel[c]) for c in range(3)]
+                out.append(tuple(hdr_floats[c] + pos[c] * hdr_floats[3 + c] for c in range(3)))
             else:
+                acc = [s16(acc[c] + vals[c]) for c in range(3)]
                 out.append(tuple(acc[c] * (1.0 / 16383.0) for c in range(3)))
     return out[:tr.nkeys]
 

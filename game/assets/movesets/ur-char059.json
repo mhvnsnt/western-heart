@@ -3,7 +3,7 @@
  "fighter": "ur-char059",
  "proxy": false,
  "animationSource": "pmot059.ppk native .gyu bank (per-character)",
- "movesSource": "engine-base (proxy) - movelist name mapping pending pmotID correlation",
+ "movesSource": "motdatP59 names proven for 5/35 clips (UR Phase 5 Job 1, root-stream identity, name-bridge-char059-proven.json); remaining clips engine-base (proxy) - 28 P59 records unproven (per-record reasons in the proven file) + 2 bank motions not in the P59 list",
  "bank": "pmot059.ppk",
  "motions": 35,
  "clips": [
@@ -11,25 +11,37 @@
    "name": "ur_m000",
    "motion": 0,
    "frames": 20,
-   "duration_s": 0.333
+   "duration_s": 0.333,
+   "motdatName": "cbco_dwngnuke_asi_y",
+   "motdatGlobalId": 92,
+   "nameProof": "root-stream identity vs motdatP59.bin record 0, maxDev 0.0019 mm"
   },
   {
    "name": "ur_m001",
    "motion": 1,
    "frames": 20,
-   "duration_s": 0.333
+   "duration_s": 0.333,
+   "motdatName": "cbco_dwngnuke_atama_y",
+   "motdatGlobalId": 93,
+   "nameProof": "root-stream identity vs motdatP59.bin record 1, maxDev 0.0019 mm"
   },
   {
    "name": "ur_m002",
    "motion": 2,
    "frames": 20,
-   "duration_s": 0.333
+   "duration_s": 0.333,
+   "motdatName": "cbco_dwngnuke_left_y",
+   "motdatGlobalId": 94,
+   "nameProof": "root-stream identity vs motdatP59.bin record 2, maxDev 0.0019 mm"
   },
   {
    "name": "ur_m003",
    "motion": 3,
    "frames": 20,
-   "duration_s": 0.333
+   "duration_s": 0.333,
+   "motdatName": "cbco_dwngnuke_right_y",
+   "motdatGlobalId": 95,
+   "nameProof": "root-stream identity vs motdatP59.bin record 3, maxDev 0.0019 mm"
   },
   {
    "name": "ur_m004",
@@ -167,7 +179,10 @@
    "name": "ur_m026",
    "motion": 26,
    "frames": 66,
-   "duration_s": 1.1
+   "duration_s": 1.1,
+   "motdatName": "moco_kangaruk",
+   "motdatGlobalId": 628,
+   "nameProof": "root-stream identity vs motdatP59.bin record 24, maxDev 0.0166 mm"
   },
   {
    "name": "ur_m027",
