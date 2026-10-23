@@ -29,6 +29,7 @@
    defense: 1.05 }, speed clamped to 3.5).
    ============================================================ */
 import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { assets } from './assets.js';
 import { attiresFor, selectedAttireModel, setAttire, attireLabel } from './attires.js';
 import { loadT3Clips, createT3Actions, retargetT3Clips } from './t3anims.js';
@@ -233,6 +234,27 @@ class PreviewPane {
         }
       } catch (e) {
         console.warn('[WH] select preview: T3 stance unavailable for', c.id, e.message || e);
+      }
+      // OSS STANCE FALLBACK (owner pt128u 2026-10-23: CMU mocap / open-source motion approved).
+      // When no teardown bank stance fits this rig, play the fighter's baked open-source stance
+      // (roster `stanceClip`, e.g. CMU boxing guard retargeted onto cyborg-x.glb by
+      // tools/anim-retarget/retarget_rot.py). Lives under game/assets/anim/oss/ — NOT the show-clip folder,
+      // so the anim-gate show wall is untouched. Bound by bone name on the preview mixer.
+      if (!this.hasStance && c.stanceClip && this.mixer) {
+        try {
+          const g = await new GLTFLoader().loadAsync(c.stanceClip);
+          if (token !== this._token) return true;
+          const clip = g.animations && g.animations[0];
+          if (clip) {
+            clip.userData = Object.assign({}, clip.userData, { animSet: 'fight-oss', source: c.stanceClip });
+            const act = this.mixer.clipAction(clip, this.model);
+            if (inst.actions && inst.actions.Idle) inst.actions.Idle.setEffectiveWeight(0);
+            act.setLoop(THREE.LoopPingPong, Infinity).play();
+            this.hasStance = true;
+          }
+        } catch (e) {
+          console.warn('[WH] select preview: OSS stance unavailable for', c.id, e.message || e);
+        }
       }
       return true;
     } catch (e) {
