@@ -3,6 +3,7 @@
    Screen flow, character select, HUD bindings (Nine-Soul Meter
    with 9 soul segments), Soul Surge screen flash.
    ============================================================ */
+import './t7-ui-private.js';
 import { Game } from './game.js';
 import { InputManager } from './input.js';
 import { audio } from './audio.js';
