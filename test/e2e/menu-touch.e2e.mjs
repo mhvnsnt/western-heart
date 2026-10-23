@@ -19,6 +19,10 @@ async function page(breakModule) {
   await p.goto(BASE + '/game/index.html');
   await p.waitForSelector('#screen-menu [data-mm]', { state: 'visible', timeout: 30000 });
   await p.waitForTimeout(5000); // past the tap-hint and failsafe timers
+  // The versus flow needs modes.js (lazy). Wait for the boot warm to finish
+  // it before tapping: under software GL the import and input queue are slow,
+  // and a tap before __modes lands looks like a dead tap.
+  await p.waitForFunction(() => !!window.__modes, null, { timeout: 120000 });
   return p;
 }
 async function hitCheck(p, tag) {
@@ -40,7 +44,7 @@ const scr = () => p.evaluate(() => ['screen-menu', 'screen-select', 'screen-stag
 const step = async (sel, want, shot) => {
   await p.tap(sel, { timeout: 90000 }); await p.waitForTimeout(800);
   if (want) {
-    try { await p.waitForFunction((id) => { const e = document.getElementById(id); return e && getComputedStyle(e).display !== 'none' && !e.classList.contains('hidden'); }, want, { timeout: 20000 }); }
+    try { await p.waitForFunction((id) => { const e = document.getElementById(id); return e && getComputedStyle(e).display !== 'none' && !e.classList.contains('hidden'); }, want, { timeout: 60000 }); }
     catch { fails.push(`tap ${sel}: expected ${want}, on ${await scr()}`); }
   }
   if (shot) await p.screenshot({ path: `${SHOTS}/${shot}.png` });
