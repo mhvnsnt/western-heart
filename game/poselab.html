@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WH Pose Lab</title>
+<!-- Dev tool (Claude 2026-10-20): ground-truth check for T3 bank retargeting.
+     Left  = the decoded bank clip played RAW on the rig it was baked onto
+             (lab/game/assets/*_t3real.glb, identity rest -> the true T3 pose).
+     Right = the same clip retargeted onto a game fighter (t3anims.js).
+     Front row + side row. Per-bone world-direction error printed below.
+     Drive: poselab.html?model=pantera&bank=king&clip=stance&t=0.5
+     or window.__poselab.show({...}) from a test harness. -->
+<script type="importmap">
+{ "imports": { "three": "./vendor/three.module.js", "three/addons/": "./vendor/addons/" } }
+</script>
+<style>
+  html, body { margin: 0; background: #1b1626; color: #e8e2f4; font: 13px/1.35 monospace; }
+  canvas { display: block; }
+  #info { padding: 6px 10px; white-space: pre; }
+</style>
+</head>
+<body>
+<canvas id="c" width="1200" height="900"></canvas>
+<div id="info">loading…</div>
+<script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { clone as skeletonClone } from 'three/addons/utils/SkeletonUtils.js';
+import { assets } from './js/assets.js';
+import { loadT3Clips, getT3Skeleton, retargetT3Clips, canonBoneName, T3_BANKS } from './js/t3anims.js';
+
+const W = 1200, H = 900;
+const canvas = document.getElementById('c');
+const info = document.getElementById('info');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true });
+renderer.setSize(W, H, false);
+renderer.setScissorTest(true);
+const scenes = [new THREE.Scene(), new THREE.Scene()];
+for (const s of scenes) {
+  s.background = new THREE.Color(0x2a2338);
+  s.add(new THREE.HemisphereLight(0xffffff, 0x443355, 1.3));
+  const k = new THREE.DirectionalLight(0xffffff, 1.8); k.position.set(2, 4, 3); s.add(k);
+  const g = new THREE.GridHelper(4, 8, 0x776699, 0x4a3f5e); s.add(g);
+}
+const front = new THREE.PerspectiveCamera(30, (W / 2) / (H / 2), 0.01, 50);
+const side = front.clone();
+const BANK_GLB = {
+  king: '../lab/game/assets/pantera_leoman_t3real.glb',
+  jin: '../lab/game/assets/t3_jin_t3real.glb', xiaoyu: '../lab/game/assets/t3_xiaoyu_t3real.glb',
+  bryan: '../lab/game/assets/t3_bryan_t3real.glb', gunjack: '../lab/game/assets/t3_gunjack_t3real.glb',
+  yoshimitsu: '../lab/game/assets/t3_yoshimitsu_t3real.glb',
+  heihachi: '../lab/game/assets/t3_jin.glb', // Heihachi's motion on Jin's T3 skeleton
+};
+const gltfCache = {};
+const loadGlb = (url) => gltfCache[url] || (gltfCache[url] = new GLTFLoader().loadAsync(url));
+
+let cur = null; // { src, tgt, srcMixer, tgtMixer }
+function clear() {
+  if (!cur) return;
+  scenes[0].remove(cur.src); scenes[1].remove(cur.tgt);
+  cur = null;
+}
+
+/* Raw bank clip on the identity-rest source rig (+ Root height from root_t). */
+function rawClipForSource(clip) {
+  const raw = clip.userData.raw;
+  const tracks = clip.tracks.slice();
+  if (raw.root_t) {
+    const n = raw.root_t.length, times = new Float32Array(n), v = new Float32Array(n * 3);
+    for (let i = 0; i < n; i++) { times[i] = i / raw.fps; v.set(raw.root_t[i], i * 3); }
+    tracks.push(new THREE.VectorKeyframeTrack('Root.position', times, v));
+  }
+  return new THREE.AnimationClip(clip.name + '@source', clip.duration, tracks);
+}
+
+function boneMap(root) {
+  const m = {};
+  root.traverse((o) => { if (o.isBone) { const c = canonBoneName(o.name) || o.name; if (!m[c]) m[c] = o; } });
+  return m;
+}
+const PAIRS = [['Hips', 'Head'], ['Chest', 'Head'], ['LeftArm', 'LeftForeArm'], ['LeftForeArm', 'LeftHand'], ['RightArm', 'RightForeArm'],
+  ['RightForeArm', 'RightHand'], ['LeftUpLeg', 'LeftLeg'], ['LeftLeg', 'LeftFoot'], ['RightUpLeg', 'RightLeg'], ['RightLeg', 'RightFoot']];
+
+async function show({ model = 'pantera', bank = 'king', clip = 'stance', t = 0.5, tint = 0, rest = false } = {}) {
+  clear();
+  const clips = await loadT3Clips(THREE, bank);
+  if (!clips || !clips[clip]) throw new Error(`no clip ${bank}/${clip}`);
+  // source
+  // Source rig: the bank's own skeleton.json names it (source_glb), so every decoded bank works here.
+  const skel = getT3Skeleton(bank);
+  const srcUrl = BANK_GLB[bank] || (skel && skel.source_glb ? '../' + skel.source_glb : null);
+  if (!srcUrl) throw new Error(`no source rig for bank ${bank}`);
+  const sg = await loadGlb(srcUrl);
+  const src = skeletonClone(sg.scene);
+  const srcMixer = new THREE.AnimationMixer(src);
+  const sa = srcMixer.clipAction(rawClipForSource(clips[clip])); sa.play();
+  // target (the game's own loader + retarget)
+  await assets.loadModels([model]);
+  const inst = assets.createInstance(model, 0xffffff, 0x888888, tint);
+  const tgt = inst.model;
+  for (const n of Object.keys(inst.actions)) inst.actions[n].stop();
+  const rt = retargetT3Clips(clips, bank, tgt, THREE, model, clip.startsWith('row:') ? [clip] : null);
+  if (!rt || !rt[clip]) throw new Error(`retarget failed for ${model}`);
+  const tgtMixer = inst.mixer;
+  const ta = tgtMixer.clipAction(rt[clip]); if (!rest) ta.play();
+  const facesNegZ = rt[clip].userData.rigFacesNegZ;
+  scenes[0].add(src); scenes[1].add(tgt);
+  cur = { src, tgt, srcMixer, tgtMixer, swapLR: !!rt[clip].userData.rigSwapLR };
+  const dur = clips[clip].duration;
+  const time = Math.min(dur - 1e-3, Math.max(0, t <= 1 ? t * dur : t));
+  srcMixer.setTime(time); tgtMixer.setTime(time);
+  src.updateMatrixWorld(true); tgt.updateMatrixWorld(true);
+  // per-bone direction error (world, after facing alignment)
+  const sb = boneMap(src), tb = boneMap(tgt);
+  if (rt[clip].userData.rigSwapLR) { // compare anatomical sides (see t3anims analyzeRig)
+    for (const k of Object.keys(tb)) { const m = k.match(/^Left(.*)$/); if (m && tb['Right' + m[1]]) { const t = tb[k]; tb[k] = tb['Right' + m[1]]; tb['Right' + m[1]] = t; } }
+  }
+  const p = (b) => b.getWorldPosition(new THREE.Vector3());
+  const errs = {};
+  for (const [a, b] of PAIRS) {
+    if (!sb[a] || !sb[b] || !tb[a] || !tb[b]) continue;
+    const ds = p(sb[b]).sub(p(sb[a])).normalize(), dt = p(tb[b]).sub(p(tb[a])).normalize();
+    errs[`${a}->${b}`] = +(THREE.MathUtils.radToDeg(ds.angleTo(dt))).toFixed(1);
+  }
+  const hs = p(sb.Head).y - p(sb.Hips).y, ht = p(tb.Head).y - p(tb.Hips).y;
+  // Which way the feet point (world XZ), from foot->toe joints.
+  const toe = (m) => {
+    const v = new THREE.Vector3();
+    for (const s of ['Left', 'Right']) if (m[s + 'Foot'] && m[s + 'ToeBase']) v.add(p(m[s + 'ToeBase']).sub(p(m[s + 'Foot'])));
+    v.y = 0; return v.lengthSq() ? v.normalize().toArray().map(x => +x.toFixed(2)) : null;
+  };
+  const toes = { src: toe(sb), tgt: toe(tb) };
+  // frame both
+  const box0 = new THREE.Box3().setFromObject(src), box1 = new THREE.Box3().setFromObject(tgt);
+  const hgt = Math.max(box0.max.y, box1.max.y, 1.6);
+  const cy = hgt * 0.5, dist = hgt * 2.1;
+  front.position.set(0, cy, dist); front.lookAt(0, cy, 0);
+  side.position.set(dist, cy, 0); side.lookAt(0, cy, 0);
+  render();
+  const res = { model, bank, clip, time: +time.toFixed(3), duration: +dur.toFixed(3), facesNegZ, swapLR: rt[clip].userData.rigSwapLR,
+    srcHeadAboveHips: +hs.toFixed(3), tgtHeadAboveHips: +ht.toFixed(3), toes, dirErrDeg: errs,
+    maxErr: Math.max(...Object.values(errs)) };
+  info.textContent = `SOURCE (raw bank on ${srcUrl.split('/').pop()})  |  TARGET ${model} (retargeted)\n` + JSON.stringify(res);
+  return res;
+}
+function render() {
+  const views = [[0, H / 2, front], [W / 2, H / 2, front], [0, 0, side], [W / 2, 0, side]];
+  views.forEach(([x, y, cam], i) => {
+    renderer.setViewport(x, y, W / 2, H / 2); renderer.setScissor(x, y, W / 2, H / 2);
+    renderer.render(scenes[i % 2], cam);
+  });
+}
+/* Raw rest pose of a game model seen from +Z (no animation, no rotation):
+   the ground truth for which way the model's mesh faces. Left half = +Z
+   camera, right half = +X camera. */
+async function rest(model) {
+  clear();
+  await assets.loadModels([model]);
+  const inst = assets.createInstance(model, 0xffffff, 0x888888, 0);
+  for (const n of Object.keys(inst.actions)) inst.actions[n].stop();
+  const tgt = inst.model;
+  scenes[1].add(tgt);
+  cur = { src: new THREE.Group(), tgt };
+  tgt.updateMatrixWorld(true);
+  const box = new THREE.Box3().setFromObject(tgt);
+  const hgt = Math.max(box.max.y, 1.2), cy = hgt * 0.5, dist = hgt * 2.3;
+  front.position.set(0, cy, dist); front.lookAt(0, cy, 0);
+  side.position.set(dist, cy, 0); side.lookAt(0, cy, 0);
+  for (const [x, cam] of [[0, front], [W / 2, side]]) {
+    renderer.setViewport(x, 0, W / 2, H); renderer.setScissor(x, 0, W / 2, H);
+    cam.aspect = (W / 2) / H; cam.updateProjectionMatrix();
+    renderer.render(scenes[1], cam);
+    cam.aspect = (W / 2) / (H / 2); cam.updateProjectionMatrix();
+  }
+  info.textContent = `REST ${model}: left = camera on +Z, right = camera on +X`;
+  return { model, facing: assets.facing[model] };
+}
+/* Resolve a roster fighter exactly like the game: model from the roster
+   entry (selected attire 1), bank from bankIdFor (moveset t3_source). */
+import { FULL_ROSTER } from './js/roster-full.js';
+import { loadFighterMovesets } from './js/movesets.js';
+import { bankIdFor } from './js/fighter.js';
+let _msReady = null;
+async function showFighter({ id, clip = 'stance', t = 0.5 }) {
+  _msReady = _msReady || loadFighterMovesets();
+  await _msReady;
+  const c = FULL_ROSTER.find(x => x.id === id);
+  if (!c) throw new Error('no roster fighter ' + id);
+  const bank = bankIdFor(c.id, c.id);
+  if (!bank) throw new Error(`${id}: no bank`);
+  const r = await show({ model: c.model, bank, clip, t });
+  return { id, ...r };
+}
+/* Raw rest render of any GLB by URL (statics included; meshopt decoded). */
+import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.js';
+async function restUrl(url) {
+  clear();
+  const loader = new GLTFLoader(); loader.setMeshoptDecoder(MeshoptDecoder);
+  const g = await loader.loadAsync(url);
+  const tgt = g.scene;
+  scenes[1].add(tgt);
+  cur = { src: new THREE.Group(), tgt };
+  tgt.updateMatrixWorld(true);
+  const box = new THREE.Box3().setFromObject(tgt);
+  const size = box.getSize(new THREE.Vector3()), c = box.getCenter(new THREE.Vector3());
+  const r = Math.max(size.x, size.y, size.z), dist = r * 2.3;
+  front.position.set(c.x, c.y, c.z + dist); front.lookAt(c);
+  side.position.set(c.x + dist, c.y, c.z); side.lookAt(c);
+  for (const [x, cam] of [[0, front], [W / 2, side]]) {
+    renderer.setViewport(x, 0, W / 2, H); renderer.setScissor(x, 0, W / 2, H);
+    cam.aspect = (W / 2) / H; cam.updateProjectionMatrix();
+    renderer.render(scenes[1], cam);
+    cam.aspect = (W / 2) / (H / 2); cam.updateProjectionMatrix();
+  }
+  return { url, size: size.toArray().map(v => +v.toFixed(3)) };
+}
+/* Per-foot yaw (deg) of Foot->ToeBase against the hips' forward, both rigs,
+   at the pose last shown: 0 = toes straight ahead, ±90 = sideways, ±180 = backwards.
+   The target's sides are anatomical (swapLR applied, as in show()). */
+function footYaw() {
+  if (!cur) return null;
+  const yaw = (m, swap) => {
+    const p = (b) => b.getWorldPosition(new THREE.Vector3());
+    const q = m.Hips.getWorldQuaternion(new THREE.Quaternion());
+    const fwd = new THREE.Vector3(0, 0, 1).applyQuaternion(q); fwd.y = 0; fwd.normalize();
+    const r = {};
+    for (const s of ['Left', 'Right']) {
+      const k = swap ? (s === 'Left' ? 'Right' : 'Left') : s;
+      if (!m[k + 'Foot'] || !m[k + 'ToeBase']) continue;
+      const d = p(m[k + 'ToeBase']).sub(p(m[k + 'Foot'])); d.y = 0; d.normalize();
+      r[s] = +THREE.MathUtils.radToDeg(Math.atan2(fwd.clone().cross(d).y, fwd.dot(d))).toFixed(1);
+    }
+    return r;
+  };
+  return { src: yaw(boneMap(cur.src), false), tgt: yaw(boneMap(cur.tgt), cur.swapLR) };
+}
+window.__poselab = { show, rest, restUrl, showFighter, footYaw, cur: () => cur, banks: Object.keys(T3_BANKS) };
+const q = new URLSearchParams(location.search);
+if (q.get('model')) show({ model: q.get('model'), bank: q.get('bank') || 'king', clip: q.get('clip') || 'stance', t: +(q.get('t') || 0.5) })
+  .catch(e => { info.textContent = 'ERROR ' + e.message; });
+else info.textContent = 'ready';
+</script>
+</body>
+</html>

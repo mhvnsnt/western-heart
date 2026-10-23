@@ -35,13 +35,19 @@
 
 <!-- ============ LEFT RAIL (categories) ============ -->
 <nav id="left-rail" aria-label="Customization categories">
+  <button class="rail-btn" data-tab="template" aria-label="Template"><span class="rail-ico">🧍</span><span class="rail-tx">TEMPLATE</span></button>
   <button class="rail-btn active" data-tab="body" aria-label="Body"><span class="rail-ico">🦾</span><span class="rail-tx">BODY</span></button>
   <button class="rail-btn" data-tab="face" aria-label="Face"><span class="rail-ico">😀</span><span class="rail-tx">FACE</span></button>
+  <button class="rail-btn" data-tab="skin" aria-label="Skin"><span class="rail-ico">🖌️</span><span class="rail-tx">SKIN</span></button>
+  <button class="rail-btn" data-tab="hair" aria-label="Hair"><span class="rail-ico">💇</span><span class="rail-tx">HAIR</span></button>
+  <button class="rail-btn" data-tab="facialhair" aria-label="Facial Hair"><span class="rail-ico">🧔</span><span class="rail-tx">F-HAIR</span></button>
   <button class="rail-btn" data-tab="attire" aria-label="Attire"><span class="rail-ico">🥋</span><span class="rail-tx">ATTIRE</span></button>
   <button class="rail-btn" data-tab="wardrobe" aria-label="Wardrobe"><span class="rail-ico">👕</span><span class="rail-tx">WARDROBE</span></button>
   <button class="rail-btn" data-tab="profile" aria-label="Profile"><span class="rail-ico">📇</span><span class="rail-tx">PROFILE</span></button>
   <button class="rail-btn" data-tab="moveset" aria-label="Moveset"><span class="rail-ico">🥊</span><span class="rail-tx">MOVESET</span></button>
   <button class="rail-btn" data-tab="limbs" aria-label="Limbs"><span class="rail-ico">🦿</span><span class="rail-tx">LIMBS</span></button>
+  <button class="rail-btn" data-tab="art" aria-label="Art"><span class="rail-ico">🎨</span><span class="rail-tx">ART</span></button>
+  <button class="rail-btn" data-tab="tools" aria-label="Tools"><span class="rail-ico">🧰</span><span class="rail-tx">TOOLS</span></button>
 </nav>
 
 <!-- ============ RIGHT RAIL (context panel — floats over backdrop, never the fighter) ============ -->
@@ -82,5 +88,6 @@
 { "imports": { "three": "./vendor/three.module.js" } }
 </script>
 <script type="module" src="js/app.js"></script>
+<script src="js/creation-flow.js"></script>
 </body>
 </html>

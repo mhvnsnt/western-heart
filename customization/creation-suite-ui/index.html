@@ -25,6 +25,7 @@
   <div class="tb-right">
     <div id="wallet" class="wallet" title="Fight Money">💰 <span id="wallet-amt">12,400</span>G</div>
     <button id="btn-save" class="btn btn-green">💾 SAVE</button>
+    <button id="btn-save-attire" class="btn btn-blue" title="Write customization.json for this fighter + attire">🎽 SAVE TO ATTIRE</button>
     <button id="btn-export" class="btn">⤓ EXPORT</button>
     <!-- Stream 4: in-game wiring — return to the game menu. -->
     <button id="btn-back-game" class="btn btn-gold" title="Back to game menu">🏠 GAME</button>
@@ -36,6 +37,7 @@
   <button class="rail-btn active" data-tab="body"><span class="rail-ico">🦾</span><span class="rail-tx">BODY</span></button>
   <button class="rail-btn" data-tab="attire"><span class="rail-ico">🥋</span><span class="rail-tx">ATTIRE</span></button>
   <button class="rail-btn" data-tab="parts"><span class="rail-ico">🎭</span><span class="rail-tx">PARTS</span></button>
+  <button class="rail-btn" data-tab="outfit"><span class="rail-ico">🧥</span><span class="rail-tx">OUTFIT</span></button>
   <button class="rail-btn" data-tab="jiggle"><span class="rail-ico">〰️</span><span class="rail-tx">JIGGLE</span></button>
   <button class="rail-btn" data-tab="wardrobe"><span class="rail-ico">👕</span><span class="rail-tx">WARDROBE</span></button>
   <button class="rail-btn" data-tab="profile"><span class="rail-ico">📇</span><span class="rail-tx">PROFILE</span></button>
@@ -96,7 +98,8 @@
 
 <script type="importmap">
 { "imports": { "three": "../create-fighter/vendor/three.module.js",
-               "three/addons/": "../create-fighter/vendor/addons/" } }
+               "three/addons/": "../create-fighter/vendor/addons/",
+               "wh-creation-suite/": "../../packages/creation-suite/src/" } }
 </script>
 <script type="module" src="js/suite.js"></script>
 </body>

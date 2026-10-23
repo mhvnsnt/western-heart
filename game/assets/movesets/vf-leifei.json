@@ -1,0 +1,453 @@
+{
+  "fighter": "vf-leifei",
+  "display": "LEI-FEI (VF)",
+  "tekken_base": "Lei-Fei (Virtua Fighter 5)",
+  "vf_source": "VF5 PS3 (BLES00029) community movelists (GameFAQs/GameRevolution) + VF5 PS3 manual; see docs/research/VF5-MOVESET-CONVERSION-2026-10-22.md",
+  "vf_style": "Shaolin Kung Fu",
+  "ashlane_mapping": "ASHLANE LOCKED 2026-10-22: NPC Finxsse -> Lei-Fei (lei.farc). Wire first.",
+  "proxy": false,
+  "proxy_note": null,
+  "schema_version": 2,
+  "moves": {
+    "1": {
+      "name": "Chugeki",
+      "input": "1",
+      "vf_move": "Chugeki",
+      "vf_input": "P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 7,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:leifei/chugeki",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "1,2": {
+      "name": "Renken",
+      "input": "1,2",
+      "vf_move": "Renken",
+      "vf_input": "P,P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 13,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:leifei/renken",
+      "input_slots": [
+        "1,2"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "1,2,1": {
+      "name": "Rengeki Soushouha",
+      "input": "1,2,1",
+      "vf_move": "Rengeki Soushouha",
+      "vf_input": "P,P,P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 19,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:leifei/rengeki-soushouha",
+      "input_slots": [
+        "1,2,1"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "f+1": {
+      "name": "Kakushu Suigeki",
+      "input": "f+1",
+      "vf_move": "Kakushu Suigeki",
+      "vf_input": "6P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 12,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:leifei/kakushu-suigeki",
+      "input_slots": [
+        "f+1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "f+1,1": {
+      "name": "Kakushu Suirengeki",
+      "input": "f+1,1",
+      "vf_move": "Kakushu Suirengeki",
+      "vf_input": "6P,P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 18,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:leifei/kakushu-suirengeki",
+      "input_slots": [
+        "f+1,1"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "f,f+1": {
+      "name": "Toushou",
+      "input": "f,f+1",
+      "vf_move": "Toushou",
+      "vf_input": "66P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 15,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:leifei/toushou",
+      "input_slots": [
+        "f,f+1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "b+1": {
+      "name": "Yushin Kengeki",
+      "input": "b+1",
+      "vf_move": "Yushin Kengeki",
+      "vf_input": "4P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 13,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:leifei/yushin-kengeki",
+      "input_slots": [
+        "b+1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "b+1,1": {
+      "name": "Rakengeki",
+      "input": "b+1,1",
+      "vf_move": "Rakengeki",
+      "vf_input": "4P,P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 19,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:leifei/rakengeki",
+      "input_slots": [
+        "b+1,1"
+      ],
+      "move_class": "string",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "d+1": {
+      "name": "Fukusoushou",
+      "input": "d+1",
+      "vf_move": "Fukusoushou",
+      "vf_input": "2P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 7,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:leifei/fukusoushou",
+      "input_slots": [
+        "d+1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "d/f+1": {
+      "name": "Chouchu",
+      "input": "d/f+1",
+      "vf_move": "Chouchu",
+      "vf_input": "3P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 12,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:leifei/chouchu",
+      "input_slots": [
+        "d/f+1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "d/f+,d/f+1": {
+      "name": "Shatenshou",
+      "input": "d/f+,d/f+1",
+      "vf_move": "Shatenshou",
+      "vf_input": "3,3P",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 16,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 3.0,
+      "soulGain": 8,
+      "anim_ref": "vf:leifei/shatenshou",
+      "input_slots": [
+        "d/f+,d/f+1"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "3": {
+      "name": "Haisenkyaku",
+      "input": "3",
+      "vf_move": "Haisenkyaku",
+      "vf_input": "K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 11,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:leifei/haisenkyaku",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "f+3": {
+      "name": "Rigoutai",
+      "input": "f+3",
+      "vf_move": "Rigoutai",
+      "vf_input": "6K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 14,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:leifei/rigoutai",
+      "input_slots": [
+        "f+3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "f,f+3": {
+      "name": "Toukyaku",
+      "input": "f,f+3",
+      "vf_move": "Toukyaku",
+      "vf_input": "66K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 17,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:leifei/toukyaku",
+      "input_slots": [
+        "f,f+3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "d+3": {
+      "name": "Fujinkyaku",
+      "input": "d+3",
+      "vf_move": "Fujinkyaku",
+      "vf_input": "2K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 9,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:leifei/fujinkyaku",
+      "input_slots": [
+        "d+3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "d/f+3": {
+      "name": "Bunkyaku",
+      "input": "d/f+3",
+      "vf_move": "Bunkyaku",
+      "vf_input": "3K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 13,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:leifei/bunkyaku",
+      "input_slots": [
+        "d/f+3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "u/f+3": {
+      "name": "Niki Bunkyaku",
+      "input": "u/f+3",
+      "vf_move": "Niki Bunkyaku",
+      "vf_input": "9K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 15,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:leifei/niki-bunkyaku",
+      "input_slots": [
+        "u/f+3"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "1+2": {
+      "name": "Kinkei Dokuritsu",
+      "input": "1+2",
+      "vf_move": "Kinkei Dokuritsu",
+      "vf_input": "P+K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 13,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:leifei/kinkei-dokuritsu",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "f+1+2": {
+      "name": "Mahosui",
+      "input": "f+1+2",
+      "vf_move": "Mahosui",
+      "vf_input": "6P+K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 16,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:leifei/mahosui",
+      "input_slots": [
+        "f+1+2"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "f,f+1+2": {
+      "name": "Zaban Hekishou",
+      "input": "f,f+1+2",
+      "vf_move": "Zaban Hekishou",
+      "vf_input": "66P+K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 19,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 3.0,
+      "soulGain": 8,
+      "anim_ref": "vf:leifei/zaban-hekishou",
+      "input_slots": [
+        "f,f+1+2"
+      ],
+      "move_class": "strike",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    },
+    "d+,d/f+,f+1+2": {
+      "name": "Kochouheki",
+      "input": "d+,d/f+,f+1+2",
+      "vf_move": "Kochouheki",
+      "vf_input": "2,3,6P+K",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 0,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "vf:leifei/kochouheki",
+      "input_slots": [
+        "d+,d/f+,f+1+2"
+      ],
+      "move_class": "special",
+      "note": "deflect/sabaki -> Tekken parry-style reversal chord per DOA-VF-CONVERSION"
+    },
+    "1+3": {
+      "name": "Tenshin Shoukyaku",
+      "input": "1+3",
+      "vf_move": "Tenshin Shoukyaku",
+      "vf_input": "P+G",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.433,
+      "damage": 30,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.0,
+      "soulGain": 8,
+      "anim_ref": "vf:leifei/tenshin-shoukyaku",
+      "input_slots": [
+        "1+3"
+      ],
+      "move_class": "throw",
+      "note": "frame data estimated from archetype; marked per schema honesty rule"
+    }
+  }
+}

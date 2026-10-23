@@ -93,10 +93,101 @@ export class SuiteViewer {
   }
   pause(){ this.paused = true; this._frame(); }   // one last clean frame, then hold
   resume(){ if(this.paused){ this.paused=false; this._tick(); } }
+  clearParts(){
+    for(const pid of [...this.parts.keys()]) this.detachPart(pid);
+    for(const key of [...this.markers.keys()]) this.clearMarker(key);
+    if(this.texSwaps) for(const id of [...this.texSwaps.keys()]) this.restoreTexture(id);
+    this._baseMeshState = null; // per-part toggle overrides (Phase 1: SmutBase-6 parts)
+    this._baseNames = null;     // scene mesh-name index (rebuilt on next findBaseMeshes)
+  }
+  /* ---- Phase 1: per-part toggles on the BASE model (fighter's own meshes) ----
+     Logical parts from data/fighter-parts.json map to GLB mesh names.
+     Scene names vary by export: exact (model.glb), "<mesh>.###" GLTF dedup,
+     "<mesh>_N" rig-export splits (tsuyu Holo_001 -> Holo_001_1/_2), and
+     truncated long names (rigged tsuyu *_Body_bel -> *_Body_be).
+     Rule: when the exact name exists in the scene, only exact (+dotted)
+     matches count; otherwise fall back to _N-strip and long-prefix rules.
+     (This keeps Mirko_001 distinct from the Mirko body while still finding
+     Holo_001_1 for the Holo_001 part.) */
+  _baseNameSet(){
+    if(!this._baseNames && this.model){
+      this._baseNames = new Set();
+      this.model.traverse(o=>{ if(o.isMesh) this._baseNames.add(o.name||''); });
+    }
+    return this._baseNames || new Set();
+  }
+  _meshNameMatch(n, meshName, names){
+    if(!n || !meshName) return false;
+    if(n===meshName || n.startsWith(meshName+'.')) return true;
+    if(names.has(meshName)) return false; // exact name exists: no fuzzy matching
+    const m0 = n.match(/^(.*)_\d+$/);
+    if(m0 && m0[1]===meshName) return true; // "<mesh>_N" split of the same part
+    const m = Math.min(n.length, meshName.length);
+    if(m >= 24 && n.slice(0, m)===meshName.slice(0, m)) return true; // truncated long name
+    return false;
+  }
+  findBaseMeshes(meshName){
+    const out = [];
+    if(!this.model || !meshName) return out;
+    const names = this._baseNameSet();
+    this.model.traverse(o=>{
+      if(!o.isMesh) return;
+      if(this._meshNameMatch(o.name||'', meshName, names)) out.push(o);
+    });
+    return out;
+  }
+  baseMeshState(){
+    if(!this._baseMeshState) this._baseMeshState = new Map(); // meshName -> {visible, deleted, color}
+    return this._baseMeshState;
+  }
+  /* mode: 'shown' | 'hidden' | 'invisible' | 'deleted'. hidden/invisible/deleted
+     all read as not-visible in the viewport; the mode is kept so the layering
+     intent (invisible = slot still occupied) and restore semantics survive. */
+  setBaseMeshMode(meshName, mode){
+    const st = this.baseMeshState();
+    const rec = st.get(meshName) || {};
+    rec.mode = mode;
+    st.set(meshName, rec);
+    const vis = (mode==='shown');
+    for(const o of this.findBaseMeshes(meshName)){
+      o.visible = vis;
+      if(o.userData) o.userData.whPartMode = mode;
+    }
+  }
+  setBaseMeshColor(meshName, hex){
+    const st = this.baseMeshState();
+    const rec = st.get(meshName) || {}; st.set(meshName, rec);
+    for(const o of this.findBaseMeshes(meshName)){
+      const mats = Array.isArray(o.material) ? o.material : [o.material];
+      for(const m of mats){
+        if(!m || !m.color) continue;
+        if(m.userData._whOrigColor === undefined) m.userData._whOrigColor = m.color.getHex();
+        if(hex) m.color.set(hex); else m.color.setHex(m.userData._whOrigColor);
+        m.needsUpdate = true;
+      }
+    }
+    if(hex) rec.color = hex; else delete rec.color;
+  }
+  resetBaseMeshes(){
+    if(!this._baseMeshState) return;
+    for(const [meshName, rec] of this._baseMeshState){
+      for(const o of this.findBaseMeshes(meshName)){
+        o.visible = true;
+        if(o.userData) delete o.userData.whPartMode;
+        const mats = Array.isArray(o.material) ? o.material : [o.material];
+        for(const m of mats){
+          if(m && m.color && m.userData._whOrigColor !== undefined){ m.color.setHex(m.userData._whOrigColor); m.needsUpdate = true; }
+        }
+      }
+    }
+    this._baseMeshState = null;
+  }
   loadBase(url){
     return new Promise((res, rej)=>{
       this.loader.load(url, gltf=>{
+        this.clearParts();
         if(this.model) this.scene.remove(this.model);
+        this.currentUrl = url;
         this.model = gltf.scene;
         this.scene.add(this.model);
         this.modelBox = new THREE.Box3().setFromObject(this.model);
@@ -207,6 +298,35 @@ export class SuiteViewer {
     if(n) n.textContent = label ? `◈ ${label} — texture part (applies at ${socket} socket)` : '';
   }
   clearMarker(key){ const m=this.markers.get(key); if(m){ this.scene.remove(m); this.markers.delete(key);} }
+  /* texture-part swap, mirroring packages/creation-suite/src/parts.js
+     swapTexture semantics: match materials by placement texture/material
+     name, swap the map live, keep originals for one-call restore. */
+  swapTexturePreview(partId, assetUrl, placement){
+    if(!this.texSwaps) this.texSwaps = new Map();
+    this.restoreTexture(partId);
+    if(!this.model || !placement) return Promise.resolve(false);
+    const wantTex=(placement.texture||'').toLowerCase(), wantMat=(placement.material||'').toLowerCase();
+    const targets=[];
+    this.model.traverse(o=>{ if(!o.isMesh) return;
+      const mats=Array.isArray(o.material)?o.material:[o.material];
+      for(const m of mats){ if(!m) continue;
+        const texName=((m.map&&m.map.name)||'').toLowerCase();
+        if((wantTex&&texName.includes(wantTex))||(wantMat&&(m.name||'').toLowerCase().includes(wantMat)))
+          targets.push({material:m, original:m.map}); } });
+    if(!targets.length) return Promise.resolve(false);
+    return new Promise(res=>{
+      new THREE.TextureLoader().load(assetUrl, tex=>{
+        for(const t of targets){ t.material.map=tex; t.material.needsUpdate=true; }
+        this.texSwaps.set(partId, {targets});
+        res(true);
+      }, undefined, ()=>res(false));
+    });
+  }
+  restoreTexture(partId){
+    const s=this.texSwaps && this.texSwaps.get(partId); if(!s) return;
+    for(const t of s.targets){ t.material.map=t.original; t.material.needsUpdate=true; }
+    this.texSwaps.delete(partId);
+  }
   setSkinTone(hex){ /* parametric preview: tint exposed materials */ }
   setProportions(p){
     if(!this.model) return;

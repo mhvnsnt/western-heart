@@ -7,6 +7,9 @@ spring code. This driver replaces the verlet-spring pass that used to live in
 anim-fix-work/scripts/retarget_def_rig.py (Spring class).
 
 WHAT IT DOES
+  0. Loads the canonical jiggle chain table (tools/jiggle/jiggle_chains.json):
+     bone names, spring params, face-guard tokens, per-family chain sets.
+     Bone setup and spring params live in the JSON, not in this file.
   1. Opens a COPY of a mocap-applied Scarlett blend (never edit the source).
   2. Registers the vendored Wiggle 2 module and enables scene wiggle.
   3. Configures Wiggle 2 physics on the deform jiggle chains:
@@ -83,25 +86,50 @@ import sys
 import bpy
 
 # ---------------------------------------------------------------- chains ---
-BREAST = [f"DEF-breast.{s}{suf}" for s in ("L", "R")
-          for suf in ("", ".001", ".002", ".003")]
-BUTT = [f"Butt_{s}{suf}" for s in ("L", "R")
-        for suf in ("", ".001", ".002", ".003", ".004")]
-JIGGLE = BREAST + BUTT
+# Jiggle bone setup is table-driven from jiggle_chains.json (canonical WH
+# standard; per-teardown params wired there, not here). The Scarlett/Star
+# defaults below are byte-identical to the proven bake params
+# (proof: tools/jiggle/proof/scarlett-wiggle2-metrics.json).
+CHAINS_JSON_DEFAULT = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                   "jiggle_chains.json")
 
-BREAST_PARAMS = dict(site="tail", stiff=1400.0, tip_decay=0.88, damp=1.1,
-                     stretch=0.02, gravity=0.6, mass=1.0, chain=True)
-BUTT_PARAMS = dict(site="head", stiff=1100.0, tip_decay=0.85, damp=1.3,
-                   stretch=0.02, gravity=0.6, mass=1.0, chain=True)
-ITERATIONS = 4
 
-FACE_TOKENS = ("eye", "brow", "jaw", "lip", "mouth", "tongue", "teeth",
-               "nose", "cheek", "face")
+def _expand(patterns):
+    names = []
+    for p in patterns:
+        if "{L,R}" in p:
+            for side in ("L", "R"):
+                names.append(p.replace("{L,R}", side))
+        else:
+            names.append(p)
+    return names
+
+
+def load_chains(json_path=None, family="female"):
+    # Bake path: fixed Scarlett/Star Rigify deform chains under
+    # table["bake_path"]. The family sets in table["families"] drive the
+    # RUNTIME spring-bone path (game/js/jiggle.js), not the bake.
+    with open(json_path or CHAINS_JSON_DEFAULT) as fh:
+        table = json.load(fh)
+    bake = table["bake_path"]
+    bone_groups, bone_order = {}, []
+    for chain_name, chain in bake["chains"].items():
+        for n in _expand(chain["bake_bone_patterns"]):
+            bone_groups[n] = chain_name
+            bone_order.append(n)
+    return table, bone_order, bone_groups
+
+
+TABLE, JIGGLE, BONE_CHAIN = load_chains()
+CHAINS = TABLE["bake_path"]["chains"]
+ITERATIONS = TABLE["bake_path"]["iterations"]
+FACE_TOKENS = tuple(TABLE["bake_path"]["face_guard"]["tokens"])
+FACE_PREFIX = TABLE["bake_path"]["face_guard"]["prefix"]
 
 
 def is_face_bone(name):
     n = name.lower()
-    return n.startswith("c_") or any(t in n for t in FACE_TOKENS)
+    return n.startswith(FACE_PREFIX) or any(t in n for t in FACE_TOKENS)
 
 
 def parse_args():
@@ -112,7 +140,13 @@ def parse_args():
     p.add_argument("--metrics", default=None)
     p.add_argument("--wiggle-py", default=None)
     p.add_argument("--frames", nargs=2, type=int, default=None)
-    p.add_argument("--preroll", type=int, default=24)
+    p.add_argument("--preroll", type=int, default=None)
+    p.add_argument("--chains-json", default=None,
+                   help="override the canonical jiggle chain table")
+    p.add_argument("--jiggle-family", default="female",
+                   choices=["female", "male", "male_fat"],
+                   help="family chain set (runtime path uses it; the bake "
+                        "path always uses the fixed Scarlett/Star chains)")
     return p.parse_args(argv)
 
 
@@ -177,6 +211,18 @@ def deviation_stats(series, rigid, skip):
 
 def main():
     args = parse_args()
+    # CLI may override the canonical chain table / family selection.
+    global TABLE, JIGGLE, BONE_CHAIN, CHAINS, ITERATIONS, FACE_TOKENS, \
+        FACE_PREFIX
+    if args.chains_json or args.jiggle_family != "female":
+        TABLE, JIGGLE, BONE_CHAIN = load_chains(args.chains_json,
+                                               args.jiggle_family)
+        CHAINS = TABLE["bake_path"]["chains"]
+        ITERATIONS = TABLE["bake_path"]["iterations"]
+        FACE_TOKENS = tuple(TABLE["bake_path"]["face_guard"]["tokens"])
+        FACE_PREFIX = TABLE["bake_path"]["face_guard"]["prefix"]
+    if args.preroll is None:
+        args.preroll = TABLE["bake_path"]["preroll"]
     scene = bpy.context.scene
     arm = bpy.data.objects[args.armature]
     action = arm.animation_data.action
@@ -252,28 +298,31 @@ def main():
             other.bone.select = False
         pb.bone.select = True
         arm.data.bones.active = pb.bone
-        grp = BREAST_PARAMS if name in BREAST else BUTT_PARAMS
+        chain = CHAINS[BONE_CHAIN[name]]
+        params = chain["bake_params"]
         level = name.count(".00")
-        stiff = grp["stiff"] * (grp["tip_decay"] ** level)
-        if grp["site"] == "tail":
+        stiff = params["stiff_root"] * (params["stiff_tip_decay"] ** level)
+        if params["wiggle_site"] == "tail":
             pb.wiggle_tail = True
             pb.wiggle_stiff = stiff
-            pb.wiggle_damp = grp["damp"]
-            pb.wiggle_stretch = grp["stretch"]
-            pb.wiggle_gravity = grp["gravity"]
-            pb.wiggle_mass = grp["mass"]
-            pb.wiggle_chain = grp["chain"]
+            pb.wiggle_damp = params["damp"]
+            pb.wiggle_stretch = params["stretch"]
+            pb.wiggle_gravity = params["gravity"]
+            pb.wiggle_mass = params["mass"]
+            pb.wiggle_chain = params["chain"]
         else:
             pb.wiggle_head = True
             pb.wiggle_stiff_head = stiff
-            pb.wiggle_damp_head = grp["damp"]
-            pb.wiggle_stretch_head = grp["stretch"]
-            pb.wiggle_gravity_head = grp["gravity"]
-            pb.wiggle_mass_head = grp["mass"]
-            pb.wiggle_chain_head = grp["chain"]
-        configured[name] = dict(site=grp["site"], stiff=round(stiff, 1),
-                                damp=grp["damp"], stretch=grp["stretch"],
-                                gravity=grp["gravity"], mass=grp["mass"])
+            pb.wiggle_damp_head = params["damp"]
+            pb.wiggle_stretch_head = params["stretch"]
+            pb.wiggle_gravity_head = params["gravity"]
+            pb.wiggle_mass_head = params["mass"]
+            pb.wiggle_chain_head = params["chain"]
+        configured[name] = dict(chain=BONE_CHAIN[name],
+                                site=params["wiggle_site"],
+                                stiff=round(stiff, 1),
+                                damp=params["damp"], stretch=params["stretch"],
+                                gravity=params["gravity"], mass=params["mass"])
     print(f"configured {len(configured)} jiggle bones")
 
     scene.wiggle_enable = True
