@@ -374,3 +374,5 @@ Intro sequences and win taunts are never to be replaced. New systems layer on to
 - "Start calling cyborg x as cape Jones but leave cyborg x in the deep canon for him" — Display name: Cape Jones. Cyborg X stays in deep canon.
 - "Start calling Kiko rave, ghost, and Kiko tanaka" / "But Rave is his main game name it's just know all the others are him too" — Main game name: RAVE. Kiko, Ghost, Kiko Tanaka are documented as the same person in canon.
 - Cyborg X model: `game/assets/models/cape-jones.glb`. Rave models: `game/assets/models/kiko-tanaka.glb`, `kiko-tanaka_alt1.glb`, `rave.glb` (in game/assets/models/, not yet wired to roster dirs).
+## EM-Jin naming convention (user directive 2026-10-22)
+Eastern Mind Jin is NOT Jin Kazama. In all files, docs, and code: "Jin (Eastern Mind)" or "EM-Jin" — never bare "Jin" where Kazama confusion is possible. (Correction: earlier "Gen (Eastern Mind)" was a mishearing.)
