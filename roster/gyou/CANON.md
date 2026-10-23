@@ -35,3 +35,16 @@ Switchable with **God of the Flame** — the player can toggle between the two f
 ## Owner Directives (verbatim, continued)
 
 > "here's gyou next form he can switch between this and God of the flame and this one (Guardian of the flame, higher defense, knight like face shield, helm, and face plate) and guardian of the flame is .5 times bigger than god of the flame"
+
+## The Flame Eternal — Susanoo-Type Giant Form
+
+The Susanoo-type GIANT form. Gyou's **biggest size**.
+
+- **Gyou's face becomes VISIBLE on the oversoul** — the first time his face appears (contrast: in Flame Emperor/God of the Flame, Gyou is only the engulfing flames, never a face)
+- **Giant 5x oversized hands, 7 fingers on each hand**
+- **Flaming wings**
+- A giant flaming Susanoo beast
+
+## Owner Directives (verbatim, continued)
+
+> "This is his susanoo type giant firm that is his biggest size. And when Gyous face becomes visible on the oversoul. He has giant 5x times oversized hands and 7 fingers in each hand and flaming wings, and Gyous spirits face. He's a giant flaming susanoo beast. (The Flame Eternal)"
