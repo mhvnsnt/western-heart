@@ -34,6 +34,10 @@ export const MOVESET_IDS = [
   'bruno', 'negativo', 'thor', 'yukihyo', 'slice', 'docfrank',
   'sunra', 'dxmmii', 'realizzt', 'rave', 'kutz', 'chordz', 'vainabel',
   'lili', 'baek',
+  // SmutBase 6 pipeline fighters 5-6 (owner 2026-10-23): MEGAMI (Jun Kazama
+  // TTT2 kit, Tekken inputs) and MENAJERII (Roger Jr. TTT2 kit, fresh Tekken
+  // inputs per owner directive — no Injustice 2 input system).
+  'megami', 'menajerii',
   // DOA/VF federation (owner 2026-10-19): converted movelists, Tekken-notation
   'doa-kasumi', 'doa-bass', 'doa-hayabusa',
   'doa-ayane', 'doa-tina', 'doa-jannlee',

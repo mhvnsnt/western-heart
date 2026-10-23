@@ -381,6 +381,21 @@ export const MODEL_URLS = {
   // Sketchfab model). URL wired for the drop-in; model.glb lands the moment the
   // owner sends a Tripo link. See roster/ryuji-rock/attires/attire1/README.md.
   'ryuji-rock': '../roster/ryuji-rock/attires/attire1/model.glb',
+  // MEGAMI (2026-10-23, SmutBase 6 pipeline fighters 5-6): SmutBase Parvati
+  // commission intake. In-repo build = meshopt-compressed (23.5 MB, validated);
+  // intake original (191.6 MB) archived on release
+  // megami-menajerii-smutbase-20261023. Canon: roster/parvati/CANON.md.
+  // Moveset: game/assets/movesets/megami.json (Jun Kazama TTT2 kit, Tekken inputs).
+  megami: '../roster/parvati/attires/attire1/model.glb',
+  'megami-attire1': '../roster/parvati/attires/attire1/model.glb',
+  // MENAJERII (2026-10-23, SmutBase 6 pipeline fighters 5-6): SmutBase Vixen
+  // commission intake (Injustice 2-based). In-repo build = meshopt-compressed
+  // (41.7 MB, validated); intake original (629.7 MB) archived on release
+  // megami-menajerii-smutbase-20261023. Canon: roster/vixen/CANON.md.
+  // Moveset: game/assets/movesets/menajerii.json (Roger Jr. TTT2 kit, fresh
+  // Tekken inputs per owner directive — no Injustice 2 input system).
+  menajerii: '../roster/vixen/attires/attire1/model.glb',
+  'menajerii-attire1': '../roster/vixen/attires/attire1/model.glb',
   // RYUSAN (owner 2026-10-23): SmutBase Mina Ashido intake — WH name RYUSAN,
   // the Corrosion Soul. Attire 1 = the SmutBase GLB (unrigged static; rig queued).
   ryusan: '../roster/mina-ashido/attires/attire1/model.glb',

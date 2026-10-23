@@ -1,25 +1,109 @@
-# MEGAMI — Canon
+# MEGAMI — The Shrine Soul
 
-## Recorded canon
+*Owner canon. SmutBase Parvati intake → Western Heart fighter MEGAMI.*
 
-**Identity.** MEGAMI — the owner's Western Heart name for the fighter housed in this directory (`parvati`). *Megami* — goddess. The intake is recorded in `roster/parvati/intake/README.md`: a commission model (Blender 4.02, GZM widget rig, Genesis-family; 90 objects; clothing as separate modeled geometry incl. sheer robe), landed 2026-10-22 and staged, "awaiting character assignment." The source figure gets no canon here (owner canon law, 2026-10-23). Megami is the proprietary character. (Note: this directory has intake only — no attires dir yet; her wiring is the least complete of the intake six.)
+## Identity
 
-**Recorded state.** No MODEL_URLS key and no moveset listing on main (verified 2026-10-23); the canon census listed this fighter among those with **no canon recorded** before this batch. Her story below is written under the owner's 2026-10-23 write-in order, built on the recorded foundations: her name (goddess) and her model's recorded nature — a regal, regalia-wearing figure built like an icon.
+MEGAMI — the Shrine Soul. Housed in `roster/parvati/` (intake model: SmutBase
+commission "Parvati," Blender 4.02, GZM widget rig, Genesis-family; 90 objects;
+clothing as separate modeled geometry — recorded in `roster/parvati/intake/README.md`,
+landed 2026-10-22). *Megami* — goddess. The source figure gets no canon here
+(owner canon law). Megami is the proprietary character.
 
-## Written 2026-10-23 — built on the recorded foundations (owner's to revise)
+## Backstory
 
-- **Who she is in the trial:** Megami is a minor goddess who answered the call by mistake. Somewhere a shrine burned with her name half-spoken, and the pull mistook the prayer for a summons — or she did. She arrived expecting worship and found a *waiting room for the broken*. She has stayed because leaving would require admitting the mistake, and goddesses in her line would rather be purified than embarrassed. The trial, for its part, is fascinated: everything else here is a soul. She is a *destination* other souls used to pray to. The medicine doesn't care. It treats her like a patient. She hates how much better she feels.
-- **Element (written):** Earth — the Octagonal Shrine Par-fang, the ancestral ground. Shrines are built on earth; she is, professionally, a shrine with legs. Nightwolf's element, and the two have an arrangement neither discusses: the guide who serves the spirits, and the spirit who is served, walking the same mountain from opposite directions.
-- **Relationships (written):** Doc Frank claims the Helix Palace's Immortality room as his; Megami is the only fighter who has ever told him the room was hers first — by several religions. Their rivalry is theological and petty and the Palace feeds on both. Sun Rā is her dark mirror: a god who eats souls vs. a goddess being slowly eaten by humility — she is one of the few who can look at the sun without looking away, and the staring god has noticed being *seen* for the first time in eternity. Mariposa recognizes a fellow duty-bound woman: the keeper of a door and the keeper of a name, both stationed, both tired.
-- **Branch thread — the Burial Rung:** at the Earth rung of the ladder, every fighter claims Earth with defense. Megami's branch is heavier: to claim Earth she must consent to be *buried* in it — one full round as a mortal, no divinity, weight and pain and fear at full strength. Refuse, and she skips Earth and the katana she eventually forges has a hollow ring in it — beautiful, and slightly wrong, forever. Accept, and she rises from the shrine soil as the only climber who has been dead *on purpose* — a fact the Reincarnation itself seems unsure how to file.
+Before the Trial ever pulled her, Megami was the guardian of a sealed door at
+a shrine that no living record can date. She did not choose the post; the post
+chose her the way stone chooses a wall — by being there first. The door has
+never opened. That is her entire biography, and she will tell it to you in
+those exact words.
 
-## Not yet recorded
+She trained Chatur. That is the one crack in the biography. Chatur came to the
+shrine as a dancer who refused to die and left as a spirit with four arms and
+a direction; Megami taught her the temple forms the way one teaches a knife to
+be patient — and then watched her student walk into the Trial's pull without
+looking back. Megami stayed at the door. Then the call came for her too, and
+for the first time in her existence she was the one who left something behind.
 
-- Everything above the Written marker: no owner-recorded story exists for Megami. The owner's to revise.
-- Her fighter-slot assignment was still open in the intake record ("fighter slot or customization-donor designation") — the write-in treats her as a roster fighter per the owner's write-in order.
+## Personality
 
-## Sources
+Grief in motion. She is not sad — sadness is weather, and she is stone. Her
+grief is structural: it holds up everything she does, the way a roof holds up
+by being heavy. She speaks little, moves less, and hits like a landslide that
+has been considering it for centuries. Underneath is a teacher's fury —
+watchful, exacting, unwilling to let a student be wasted. She will correct
+your stance mid-fight, and the correction will hurt.
 
-- `roster/parvati/intake/README.md` (intake registration, 2026-10-22).
-- Owner's missing-canon list (2026-10-23): "Megami (Parvati)" — the rename is the owner's.
-- `docs/canon-archive/CANON-MASTER.md` census (no canon recorded); `~/memory/2026-10-23.md` wiring audit.
+## Fighting philosophy
+
+> "The shrine was here before you. It will be here after."
+
+A door is not a wall. A wall refuses; a door *decides*. Every one of her
+strikes is a gate closing.
+
+## Element
+
+Earth — shrine ground, stone thresholds, the weight of a place that does not
+move. She fights downhill; the ground is her ally and she never forgets it.
+
+## Body / Mind / Soul
+
+- **Body:** A temple icon made mobile. Regalia, choker, gauntlets, heels —
+  every piece of her dress is armor that never stopped being clothing. She
+  moves like a procession.
+- **Mind:** The guardian's mind: thresholds, rituals, what is permitted. She
+  counts your steps. She knows exactly how many you get.
+- **Soul:** The Shrine Soul — the part of the Trial that remembers that some
+  things are *kept*, not conquered. She is grief as architecture: a loss you
+  can stand inside.
+
+## Relationships
+
+- **Chatur:** Her student, and the wound. Megami taught the four-armed dancer
+  every form she knows; Chatur took them into the Trial and became a spirit
+  Megami can no longer instruct. Their fights are the only time Megami raises
+  her voice — to give corrections Chatur no longer needs, from a shrine Chatur
+  no longer guards.
+- **The Trader:** The guardian of a sealed door and the keeper of the Trial's
+  trades understand each other perfectly: both hold something nobody else can
+  touch, both set the terms, both wait. They have never raised their voices at
+  each other. They never will.
+
+## Why she thinks she's here
+
+Because the door is sealed and she is not needed there for now — or because
+the Trial mistook the shrine's patience for a summons. She tells herself the
+first. She fears the second. It changes nothing about how she fights.
+
+## Being purified of
+
+Clinging. The guardian's disease: holding the door shut so long you forget
+doors are meant to be *opened* — by the right hands, at the right hour. The
+Trial keeps putting opponents in front of her who will not be kept. Her
+purification is learning that guarding Chatur's memory is not the same as
+guarding the door.
+
+## Signature detail
+
+She never looks at the sealed door in her win pose. She looks past it — at
+where Chatur would be standing.
+
+## Voice
+
+Sparse. Imagistic. Japanese-influenced. She does not explain; she pronounces.
+
+- *Fight start:* "Koko made." (This far. No further.)
+- *Win:* "Tobira wa, shizuka." (The door is quiet.)
+- *Taunt:* "Mō ichido." (Once more. — said like a teacher, not a threat.)
+
+## Technical (not canon)
+
+- **Moveset source:** Jun Kazama (Tekken) — the Kazama Style Classic Martial
+  Arts kit, rebuilt with Tekken inputs in `game/assets/movesets/megami.json`.
+  A guardian's kit for a guardian: parries, reversals, stance transitions
+  (Genjitsu, Izumo), the patience of frame-perfect punishment.
+- **Model:** `roster/parvati/attires/attire1/model.glb` (meshopt-compressed from
+  the intake GLB; original archived on the release). Full mesh inventory in
+  `roster/parvati/PARTS.md`.
+- Wired in `game/js/assets.js` (MODEL_URLS `megami`, `megami-attire1`),
+  `game/js/movesets.js` (MOVESET_IDS), `game/assets/movesets/index.json`.
