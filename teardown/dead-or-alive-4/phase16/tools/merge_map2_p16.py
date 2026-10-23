@@ -11,10 +11,9 @@ import json, sys
 
 MAP15 = '/home/hatch/workspace/_doa4p16-clone/teardown/dead-or-alive-4/phase15/containment-map.json'
 
-def union_len(segs):
-    iv = sorted((s, s + l) for (_, s, l) in [(0, a, b) for a, b in segs])
+def union_len(pairs):
     tot = 0; cur = None
-    for s, e in sorted((a, a + l) for a, _, l in segs):
+    for s, e in sorted(pairs):
         if cur is None or s > cur[1]:
             if cur: tot += cur[1] - cur[0]
             cur = [s, e]
@@ -61,7 +60,7 @@ def main():
             if 'p16_scatter' in e:
                 for (eo, mo, ln) in e['p16_scatter']['segments']:
                     mir.append((mo, mo + ln))
-        u = union_len([(0, a, b - a) for a, b in mir])
+        u = union_len(mir)
         m[vol]['p16_union_covered_bytes'] = u
         m[vol]['p16_union_coverage_pct'] = round(100.0 * u / m[vol]['mirror_size'], 4)
     if jan02:
