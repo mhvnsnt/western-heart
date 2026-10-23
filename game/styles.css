@@ -693,9 +693,10 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
 /* ==================== GAME MODES (lane 5) ==================== */
 /* Mode badge: ladder progress shown over the fight HUD */
 .mode-badge {
-  position: absolute; top: 8px; left: 50%; transform: translateX(-50%);
+  /* Below the HUD top row (owner 2026-10-23: the banner covered the round timer). */
+  position: absolute; top: calc(var(--hud-top-h, 116px) + 4px); left: 50%; transform: translateX(-50%);
   z-index: 12; pointer-events: none;
-  font-size: 12px; letter-spacing: 2px; font-weight: 700;
+  font-size: 10px; letter-spacing: 2px; font-weight: 700;
   color: #ffd76a; background: rgba(10,4,16,0.72);
   border: 1px solid rgba(255,215,106,0.45); border-radius: 20px;
   padding: 6px 14px; white-space: nowrap; max-width: 92vw;
@@ -796,3 +797,6 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
 }
 .wh-placeholder { text-align: center; color: #fff; padding: 40px 20px; }
 .wh-placeholder p { opacity: 0.7; margin: 12px 0 24px; line-height: 1.6; }
+
+/* Mode badge sits under the HUD top row: portrait HUD is ~113px tall, landscape ~106px. */
+@media (orientation: landscape) { .mode-badge { --hud-top-h: 108px; padding: 3px 12px; } }

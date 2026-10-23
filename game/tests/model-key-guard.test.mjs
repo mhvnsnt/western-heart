@@ -70,7 +70,7 @@ const OWNERSHIP = {
     ]
   },
   "byou": {
-    "base": "steve-fox"
+    "pending": true
   },
   "charger": {
     "own": [
@@ -191,13 +191,13 @@ const OWNERSHIP = {
     ]
   }, // table was stale vs the re-keyed ladder (Tripo default Slot 1); fixed 2026-10-22
   "gyou": {
-    "base": "pantera"
+    "pending": true
   },
   "jin_soul": {
     "base": "steve-fox"
   },
   "kai": {
-    "base": "pantera"
+    "pending": true
   },
   "kingtyrant": {
     "own": [
@@ -289,12 +289,16 @@ const OWNERSHIP = {
     ]
   },
   "retsu": {
-    "base": "pantera"
+    "pending": true
   },
   "rin": {
-    "base": "steve-fox"
+    "pending": true
   },
-  "ryuji": {},
+  "ryuji": {
+    "own": [
+      "ryuji-rock"
+    ]
+  },
   "ryuji-rock": {
     "own": [
       "ryuji-rock"
@@ -319,7 +323,7 @@ const OWNERSHIP = {
     ]
   },
   "sha": {
-    "base": "steve-fox"
+    "pending": true
   },
   "skull": {
     "own": [
@@ -366,7 +370,7 @@ const OWNERSHIP = {
     ]
   }, // wave 1 2026-10-23: select entry + base key landed (base = Attire 2; A1 Tripo not on disk)
   "tou": {
-    "base": "pantera"
+    "pending": true
   },
   "waterfall": {
     "own": [
@@ -456,7 +460,7 @@ test('every resolved model URL points at a file that exists in the repo', () => 
   const bad = [];
   for (const f of FULL_ROSTER) {
     const o = OWNERSHIP[f.id] || {};
-    if (o.pending) continue; // documented pending drop-in (ryuji-rock)
+    if (o.pending || f.modelPending) continue; // MODEL PENDING: no own model yet (owner 2026-10-23)
     for (const [path, key] of [['player', selectedAttireModel(f)], ['enemy', f.model]]) {
       const url = MODEL_URLS[key];
       if (!url) { bad.push(`${f.id}: ${path} key '${key}' has no MODEL_URLS entry`); continue; }

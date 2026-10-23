@@ -576,7 +576,7 @@ export function createSelectScreen(deps) {
     renderPlate('p1');
     renderPlate('p2');
     showOnSide(side, c);
-    assets.prefetch(c.model || 'pantera');
+    if (c.model) assets.prefetch(c.model);
     if (confirmBtn) confirmBtn.disabled = false;
     const surgeName = c.surge ? c.surge.name : 'SOUL SURGE';
     if (hint) hint.textContent = `${c.name} — ${c.style} · ${surgeName}`;
