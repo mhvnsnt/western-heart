@@ -1,5 +1,12 @@
 # Lars motion bank — precise gap (2026-10-23)
 
+**Source priority (owner standing directive 2026-10-23): TTT2/T6 FIRST,
+T3 LAST (fallback only).** Lars debuted in Tekken 6 — T3 has no Lars
+stream and can never fill this gap. A dedicated extraction coordinator
+is driving T5/T6/TTT2/T7 to 100%; this doc is the intake manifest for
+that lane — pull what exists now, fill the precise gaps below rather
+than settling for substitutes.
+
 Chordz's canon base is Lars Alexandersson (Tekken 6 debut, 2007). His
 MOVESET data is now complete on Lars's own tables (469 moves, T7+T8 merged —
 see `game/assets/movesets/chordz.json` `merge_sources.added.lars_pull_20261023`).
@@ -50,9 +57,11 @@ Required files (wh-anim/1 schema — see `game/assets/anim/t3/paul/`):
 No clip ships untagged: the intake lane stamps every file FIGHT or SHOW
 here before it lands, and the moveset lane rejects SHOW-tagged clips.
 
-## Source A — TTT2 (best modern source)
+## Source A — TTT2 (best modern source; FIRST priority)
 
-Lars's TTT2 motion lives inside the Xbox 360 STFS containers:
+**Extraction coordinator: Lars's TTT2 motion is a named target for the
+T5/T6/TTT2/T7 100% lane — the blockers below are what that lane must
+clear, in order.** Lars's TTT2 motion lives inside the Xbox 360 STFS containers:
 `0000000000000000/4E4D0859/00007000/392CFF5C9DB17CCAEBC3.data/`
 (Data0000–Data0051, 52 × ~170MB chunks, ~8.86GB) plus the 7 large
 `0000000000000000/4E4D0859/00000002/` blobs. Status
@@ -72,9 +81,11 @@ Blockers, in order:
    manifest exists, so the character→offset mapping (which blob holds Lars,
    roster slot 34) must be recovered after decryption.
 
-## Source B — T6 PSP (Lars's debut game)
+## Source B — T6 PSP (Lars's debut game; FIRST priority with TTT2)
 
-Motion lives in the encrypted DATA401 bulk region
+**Extraction coordinator: Lars's T6 PSP motion is the debut-game source —
+same lane, same priority as TTT2.** Motion lives in the encrypted DATA401
+bulk region
 (`teardown/tekken6/`). Status (`TEARDOWN.md`, 2026-10-15): EBOOT decrypted,
 sector cipher 0x8AA2CA8 fully reversed — but the bulk data region
 (sectors 230256+, entropy 7.90–7.92) is covered by an UNKNOWN transform.
@@ -82,10 +93,12 @@ Candidates: custom decompressor near ktRead callers, IDX-driven per-file
 keys, or unicorn-emulating the real PAC open. The decrypt lane works on
 branch `feature/tekken6-100-teardown` (unmerged until models land).
 
-## Why T3 can't fill it
+## Why T3 can't fill it (LAST priority — fallback only, and empty here)
 
 Lars did not exist in Tekken 3 (1997). There is no Lars divmot stream;
 `teardown/tekken3/animations/` has 20 character streams and none is his.
+Per the owner's source-priority directive, T3 is fallback only — and for
+Lars the fallback is empty. Do not settle for a T3 substitution.
 
 ## Unblock sequence (for the lane that cracks either source)
 
