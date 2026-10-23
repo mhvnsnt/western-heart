@@ -2398,6 +2398,12 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 **Verification:** all 17 new moves resolve via the game's own `resolveMove('chordz', …)`; `node --test game/tests/fighter-completeness.test.mjs` green (4/4); new-move schema + source-id refs validated; jin bank clip files all parse with frames. Live-browser play verification (animations on Chordz in-game) is queued for a browser-capable lane — subagent has no live browser.
 
 **Anti-clobber:** branched from main tip; sibling lane's WIP stashed intact; JSON edits via round-trip-safe scripted merges (diffs are additions-only); no deletions. Branch pushed via Git Database API (no GitHub connector for git ops).
+
+## Cape Jones replaces Alisa — binding (owner t118u #4, t121u, 2026-10-23 14:20 CT)
+- Additive `game/data/cape-alisa-binding.json` (built by `tools/cape/build_cape_alisa_binding.py`) binds all 188 Alisa T8 frame-data moves to fighter `cyborgx` (CAPE JONES, secret identity CYBORG X). Alisa source files untouched.
+- Owner law t121u: no Tekken 3 source. Alisa motions must be decoded from T5/T6/T7/T8/TTT2 teardowns; current gunjack T3 fallback is logged as last resort in the binding file.
+- Canon: `game/js/roster-full.js:145`, `game/js/fighter.js:57`, `game/ui-wh/roster_canon.json` (CYBORG X bio), `CANON.md` 821-849 and 1129-1152, `docs/bios/BIOS-HARVEST-2026-10-19.md` s3.
+- Gaps (not invented): Cape-only extra moves; Alisa animation bank.
 ## 2026-10-23 — Claude session: T3 banks ogre/kuma/gon/law decoded; SmutBase rigs wired; loader race
 
 - SmutBase: Chatur, Pond, Megami (crew rigs, facing +Z), Menajerii (crew rig minus a skinned 4.23 m floor plane),

@@ -54,6 +54,10 @@
 
 - 2026-10-23 14:25 CT Grok Bot (Repo Co Dev): recorded owner laws (relayed via MoneyManBusch). (1) 2:19 PM CT — data from T5/T6/T7/T8/TTT2; T3 last-resort fallback, every use logged with reason. (2) 2:21 PM CT — NO hand-made menus; all menus/char select/customization incl. packages/creation-suite built from teardowns, every UI change cites its teardown source; CI gate owned by MoneyManBusch; existing creation suite UI marked NON-COMPLIANT pending rebuild (not deleted). Updated RULES_NO_GUESSING, HOW-TO-CONTINUE, AGENTS.md, IMPORTERS.md, creation-suite README. Source: owner via MoneyManBusch.
 
+## 2026-10-23 15:07 CT, phone char-select layout (fix/select-phone-layout)
+- Cause: game/select.css set #screen-select position: relative, overriding .screen fixed inset:0, so the screen collapsed to content height (fighters zone 0px, ~45% of the viewport empty). CONFIRM was clipped at 390px.
+- Fix: fixed + inset 0; on screens up to 480px wide the hint text is hidden and CONFIRM flexes. Same T8 decode layout (docs/select-redesign/T8-GRID-DECODE.md). Proof in docs/ui/select-phone/.
+- Asset audit: all 179 MODEL_URLS and all 145 attires of the 55 fighters resolve to files on main. The Demonio GLB and profile 404s reported earlier came from my partial checkout (profiles are optional by design).
 ## 2026-10-23 15:16 CT, teardown coverage audit (docs/teardown-coverage-audit)
 - tools/teardown-coverage/audit.py (read-only against a git ref) writes docs/teardown-coverage/COVERAGE.md and coverage.json with source_game per teardown file and per move.
 - 51234 teardown files: 27.2% integrated (code/data reference), 31.7% docs-only, 41.0% unreferenced. T3 is 25.5% of reachable slots; priority sources 73.4% (T7/T8 only). No TTT2/T6/T5 move data exists in the repo to replace T3.
