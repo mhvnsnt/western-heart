@@ -254,6 +254,10 @@ export const STAGES = [
     swatch: ['#0a1a2a', '#ffca7a'],
     builder: 'treelife',
     pano: 'assets/stages/eastern-mind/tree-of-life/pano.png', // real Eastern Mind background art
+    // The source bitmap's top ~12 rows are near-white cloud (rows 0-9 avg >210/255);
+    // under exposure 1.5 + bloom they blew out into a white band. Crop them and
+    // pull the backdrop under the grade (owner playtest, Oct 23 2026).
+    panoCropTop: 0.1, panoTint: '#b8b8b8',
     associatedFighters: ['saku-ra'],
   },
   {
@@ -725,10 +729,13 @@ function buildBase(g, def, api) {
       panoTex.colorSpace = THREE.SRGBColorSpace;
       // The teardown panos are 580px-wide 2D backdrops: repeat 3x around so
       // the art reads at a sane scale instead of one stretched wrap.
-      panoTex.wrapS = THREE.RepeatWrapping; panoTex.repeat.set(3, 1);
+      panoTex.wrapS = THREE.RepeatWrapping;
+      // panoCropTop: fraction of the bitmap's top edge to drop (v=1 is the top row).
+      panoTex.repeat.set(3, 1 - (def.panoCropTop || 0));
       const pano = new THREE.Mesh(
         new THREE.CylinderGeometry(30, 30, 10, 48, 1, true),
-        new THREE.MeshBasicMaterial({ map: panoTex, side: THREE.BackSide, fog: false })
+        new THREE.MeshBasicMaterial({ map: panoTex, side: THREE.BackSide, fog: false,
+          ...(def.panoCropTop ? { color: _hex(def.panoTint || '#ffffff') } : {}) })
       );
       pano.position.y = 3.5; g.add(pano);
     } catch (e) {
