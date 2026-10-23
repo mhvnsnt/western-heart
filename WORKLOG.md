@@ -2822,3 +2822,13 @@ Simulation only — live touch playtest still owed; nothing here claims the live
 - game/assets/movesets/zen.json: new additive wh_true_moveset, 25 entries, interim 639-move Heihachi map untouched, sources never mixed. Twelve 10 + supers 2 + X.COPY 1 (ONE super, not identity) + Zen signatures 2 (Does Not Compete, Refused Seat, quoted verbatim from the 188 canon-moves file) + Tentacle 3 + Oversoul 1 + Transformation 4 + Spirit-form 2. NEEDS-INPUT 6, UNMAPPED animation 25/25. Eleven contributes 0 distinct moves (SFV: no own moveset, morphs pre-match); Dural contributes 0 attack rows (no published movelist; stance layer pending extraction).
 - Move List Creator (packages/creation-suite/src/movelist-editor.js): fromMovesetFile() now displays wh_true_moveset entries for Zen (id true:<id>), status unmapped, not swap-eligible until an animation lands. Simulation/editor-test proof only — NOT play-verified; Zen's true kit is unplayable until Dural motion / Twelve 2D->3D / MADE animations land.
 - Full decision doc: docs/decisions/2026-10-24-zen-base-decision.md. PR #1016 gets a comment linking the resolution (its branch is not rewritten).
+## 2026-10-23 — Grok Bot merge steward / integration pass (13:32–14:40 CT)
+
+Owner: "u join them make sure everything getting pushed and merged clean no clobbering any sides". Every merge was clean, CI-green via the Actions runs API, and had 0 deleted files. No force-pushes, rebases or branch deletions.
+- 13:36 merged #667 (audio, +6535/-0), 13:37 #671, 13:38 #674 (T-pose renders).
+- 13:38 opened union-merge integration PRs #799–#802 for #620/#662/#689/#699. Their conflicts were only in the append-only `WORKLOG.md` / `docs/owner-directives.md`, and both sides were kept. Merged #800 (13:43), #799 (13:46), #801 (14:20), #802 (14:37). The originals auto-closed.
+- 14:08 merged #809: clobber-guard does a sparse checkout of `.github` only and the timeout went from 15 to 25 min. Run time dropped from a 15-min timeout to about 8 s.
+- 14:14 merged #796 (instruction-gate proof refs) after a close/reopen re-ran all 5 workflows green.
+- 14:16 ran update-branch (merge commit, no force) on 16 stale non-freeze PRs. Merged #606. Commented on 13 PRs that still fail the gate (body problems) and 13 that conflict with main (files listed in each comment).
+- 14:29 deployed gh-pages from main @ 91e7d03e8 using `tools/deploy/build_pages.py --onto origin/gh-pages`: 396 files added or updated, 0 removed, fast-forward push.
+- Not touched: all freeze-marked PRs and #793. #793's content was already on main via a direct push, which is a rule break and has been flagged.
