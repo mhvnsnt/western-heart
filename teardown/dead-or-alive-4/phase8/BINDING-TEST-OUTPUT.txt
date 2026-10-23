@@ -1,0 +1,58 @@
+textures: 42 decls: 68
+  tex0: fmt=6 off=None size=None
+  tex1: fmt=6 off=None size=None
+  tex2: fmt=18 off=None size=None
+  tex3: fmt=6 off=None size=None
+  tex4: fmt=18 off=None size=None
+  tex5: fmt=6 off=None size=None
+  tex6: fmt=18 off=None size=None
+  tex7: fmt=6 off=None size=None
+  tex8: fmt=18 off=None size=None
+  tex9: fmt=20 off=None size=None
+  tex10: fmt=18 off=None size=None
+  tex11: fmt=18 off=None size=None
+  tex12: fmt=18 off=None size=None
+  tex13: fmt=18 off=None size=None
+  tex14: fmt=18 off=None size=None
+  tex15: fmt=18 off=None size=None
+  tex16: fmt=18 off=None size=None
+  tex17: fmt=18 off=None size=None
+  tex18: fmt=18 off=None size=None
+  tex19: fmt=6 off=None size=None
+  tex20: fmt=18 off=None size=None
+  tex21: fmt=6 off=None size=None
+  tex22: fmt=18 off=None size=None
+  tex23: fmt=6 off=None size=None
+  tex24: fmt=18 off=None size=None
+  tex25: fmt=18 off=None size=None
+  tex26: fmt=18 off=None size=None
+  tex27: fmt=6 off=None size=None
+  tex28: fmt=18 off=None size=None
+  tex29: fmt=6 off=None size=None
+  tex30: fmt=18 off=None size=None
+  tex31: fmt=6 off=None size=None
+  tex32: fmt=18 off=None size=None
+  tex33: fmt=6 off=None size=None
+  tex34: fmt=18 off=None size=None
+  tex35: fmt=18 off=None size=None
+  tex36: fmt=6 off=None size=None
+  tex37: fmt=18 off=None size=None
+  tex38: fmt=18 off=None size=None
+  tex39: fmt=6 off=None size=None
+  tex40: fmt=20 off=None size=None
+  tex41: fmt=18 off=None size=None
+decl parse order: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67]
+proven decl positions in draw order: {1: 1, 12: 12, 30: 30}
+draw-pos x table direct: {1: 1, 12: 12, 30: 30} (want {1: 30, 12: 40, 30: 40})
+draw-pos x diffuse-only direct: {1: 4, 12: 17, 30: None} (want {1: 30, 12: 40, 30: 40})
+draw-pos x by-offset direct: {1: 1, 12: 12, 30: 30} (want {1: 30, 12: 40, 30: 40})
+draw-pos x by-size direct: {1: 1, 12: 12, 30: 30} (want {1: 30, 12: 40, 30: 40})
+decl-id x table direct: {1: 1, 12: 12, 30: 30} (want {1: 30, 12: 40, 30: 40})
+decl-id x diffuse-only direct: {1: 4, 12: 17, 30: None} (want {1: 30, 12: 40, 30: 40})
+decl-id x by-offset direct: {1: 1, 12: 12, 30: 30} (want {1: 30, 12: 40, 30: 40})
+decl-id x by-size direct: {1: 1, 12: 12, 30: 30} (want {1: 30, 12: 40, 30: 40})
+obj-slot x table direct: {1: 1, 12: 0, 30: 0} (want {1: 30, 12: 40, 30: 40})
+obj-slot x diffuse-only direct: {1: 4, 12: 2, 30: 2} (want {1: 30, 12: 40, 30: 40})
+obj-slot x by-offset direct: {1: 1, 12: 0, 30: 0} (want {1: 30, 12: 40, 30: 40})
+obj-slot x by-size direct: {1: 1, 12: 0, 30: 0} (want {1: 30, 12: 40, 30: 40})
+RULES REPRODUCING ALL 3: NONE
