@@ -3,10 +3,10 @@
 Generated 2026-10-23 by `tools/anatomy/generate_layers.py`.
 
 ## What was generated
-Four separable volumetric layers from the rigged GLB's skeleton, stored as
+Five separable volumetric layers from the rigged GLB's skeleton, stored as
 unions of analytic SDF primitives in `anatomy-layers.json`.
-Renders in `renders/`: `layer_bone.png`, `layer_muscle.png`, `layer_fat.png`,
-`layer_skin.png`.
+Renders in `renders/`: `layer_bone.png`, `layer_muscle.png`, `layer_organ.png`,
+`layer_fat.png`, `layer_skin.png`.
 
 ## Morph proof — `muscle_biceps_L`: 0.0 -> 1.0
 - biceps.L capsule radius: 0.0531 m -> 0.08231 m (delta 0.02921 m)
@@ -18,4 +18,5 @@ Renders in `renders/`: `layer_bone.png`, `layer_muscle.png`, `layer_fat.png`,
 ## Validation
 - mesh<->skeleton Y rectification: 90 deg (rig front [0.0, 0.0, -1.0])
 - joints inside bone layer: 13/13 (bone volumes must contain their joints)
-- morph params registered: 37
+- organs inside body: 7/7 (organ primitive centers must sit inside the body: wrapped in muscle or cradled by bone)
+- morph params registered: 44
