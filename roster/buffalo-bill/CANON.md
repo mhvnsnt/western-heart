@@ -12,7 +12,20 @@ In the Western Heart, the medium changed. The message didn't.
 
 He named himself Buffalo Bill for the great horned beast of the plains — the animal that does not run from the storm but turns its horns toward it and stands. The horns were not chosen. They were already there. They had always been there. The name was the one thing he got to pick.
 
-**Malakor City.** He leads the wizard gang — nine wizards of Malakor City, and he is their head. Malakor City is where the hooded go: medieval stone, cosmic dark, deep purple and blue, eyes floating where faces should be. He learned the robe there. Ashes is what the city made of him; Buffalo Bill is what he was before the city got its hands on him. The nine answer to the horns.
+**Malakor City.** He leads the wizard gang — nine wizards of Malakor City, and he is their head. Malakor City is where the hooded go: medieval stone, cosmic dark, deep purple and blue, eyes floating where faces should be. He learned the robe there. Ashes is what the city made of him; Buffalo Bill is what he was before the city got its hands on him.
+
+**The nine wizards of Malakor City** (owner's roster, 2026-10-23, verbatim):
+- **ASHES** (Buffalo Bill, leader) — red robe
+- **CIPHER** — yellow robe
+- **STATIC** — blue robe
+- **ECHO** — pink robe
+- **ONYX** — green robe
+- **HOLLOW** — orange robe
+- **SOMBRA NEGRA** — black robe
+- **THEORY** — purple robe
+- **KIKO TANAKA / GHOST / RAVE** — white fur robe
+
+Six of the nine walk the Ashlane road as well (Static, Cipher, Echo, Onyx, Hollow, Sombra Negra) — the gang and the 28 are tangled at the root. The nine answer to the horns.
 
 **Powers.** He controls magic flame and ash. Not the honest fire of the Plains of Chi-U — a worked fire, a wizard's fire, called and shaped. The ash is what it leaves: grey, fine, everywhere, in the lungs of everyone who stood too close. When he fights unrobed, the flame comes off his hands like breath. When he fights as Ashes, the ash comes first and the flame follows — you don't see the second one coming through the first.
 
@@ -23,7 +36,7 @@ He named himself Buffalo Bill for the great horned beast of the plains — the a
 **Relationships.**
 - **The Trader:** Buffalo Bill has sold at the Phantom Marketplace, under the Eyeball Mountains. What he sold, he won't say. The Trader remembers every transaction. *All transactions are final. Nothing here is real, but the prices are.*
 - **BRUNO:** Two brawlers from the outer dark. They recognize the weight in each other. Neither one moves first at the table.
-- **The nine wizards:** His gang. They follow the horns. What they get in return, only Malakor City knows.
+- **The nine wizards:** His gang, in their colored robes. They follow the horns. What they get in return, only Malakor City knows.
 - **The Ashlane crew:** He did not arrive alone. The ones who came with him know the old noise. They don't talk about before.
 
 **Element.** Fire — the Plains of Chi-U, land of confrontation, under the burning sky. His fights live there even when the arena doesn't. The ash is fire's memory.
