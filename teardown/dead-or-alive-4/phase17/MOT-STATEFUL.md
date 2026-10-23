@@ -41,14 +41,14 @@ zack + m_zack at full scope — moot, all classes falsified.
 | class | rule shape | keys at fixpoint | deterministic keys | dead blocks | verdict |
 |---|---|---|---|---|---|
 | 0 | k = f(tag) (phase-16 control) | 729 | 608 | **17,601 / 17,688** | FALSIFIED (reproduces phase 16, harder numbers) |
-| i | k = f(tag, previous tag) | 46,172 | 419 | **17,479 / 17,688** | FALSIFIED |
-| ii K=2 | k = f(tag, item index mod 2) | — | — | **17,601 / 17,688** | FALSIFIED |
-| ii K=3 | k = f(tag, item index mod 3) | — | — | **16,102 / 17,688** | FALSIFIED |
+| i | k = f(tag, previous tag) | 956,335 | 112,150 | **8,784 / 17,688** | FALSIFIED |
+| ii K=2 | k = f(tag, item index mod 2) | 873 | 721 | **17,595 / 17,688** | FALSIFIED |
+| ii K=3 | k = f(tag, item index mod 3) | 944 | 772 | **17,593 / 17,688** | FALSIFIED |
 | ii K=4 | k = f(tag, item index mod 4) | 658 | 543 | **17,602 / 17,688** | FALSIFIED |
 | ii K=5 | k = f(tag, item index mod 5) | 3,080 | 2,439 | **17,458 / 17,688** | FALSIFIED |
 | ii K=6 | k = f(tag, item index mod 6) | 1,261 | 1,025 | **17,568 / 17,688** | FALSIFIED |
-| iv | k = f(tag, block's first u16) | 1,992 | 1,954 | **15,652 / 17,688** | FALSIFIED |
-| v | k = f(tag, channel index) | 729 | 608 | **17,601 / 17,688** | FALSIFIED |
+| iv | k = f(tag, block's first u16) | 119,105 | 22,326 | **14,447 / 17,688** | FALSIFIED |
+| v | k = f(tag, channel index) | 321,735 | 78,325 | **8,634 / 17,688** | FALSIFIED |
 | 0 widened | k = f(tag), k in {0,1,2,3} | 65,458 | 4,333 | 0 | UNFALSIFIABLE by tiling (61,125 keys ambiguous) — see §3 |
 | i widened | k = f(tag, prev tag), k in {0,1,2,3} | — | — | — | NOT COMPLETED in-lane (compute-bound; immaterial: §3 shows widening destroys falsifiability, so this run could at best return 'unfalsifiable', never a proof) |
 | count-header | first u16 = item count | — | — | only 2,117 / 17,688 blocks count-feasible | REFUTED |
@@ -67,11 +67,24 @@ is tag vocabulary, not a count (top values 0x000C ×5,575,
 0x0010 ×1,483, 0xF00C ×1,391, 0x0014 ×1,135 — the same
 multiples-of-4 low bytes {0x0C,0x10,0x14,0x18,0x1C,0x24} that
 dominate item-start positions corpus-wide); and the
-previous-tag state (class i) constrains almost nothing —
-46k surviving (prev, tag) keys with only 419 deterministic —
-i.e. knowing the previous item's tag tells you nearly nothing
-about the next item's length. Whatever state the rule uses,
-it is not carried in the tag stream's local history.
+previous-tag state (class i) does not determine length
+either: 956,335 (prev, tag) keys survive, 844,185 of them
+still ambiguous, and 8,784 blocks die regardless — the huge
+key space buys tiling freedom (fewer dead blocks than the
+pure-tag class) without determinism. The channel state
+(class v) behaves the same way (321,735 keys, 243,410
+ambiguous, 8,634 dead). Whatever state the rule uses, it is
+not the tag stream's local history or the channel index.
+
+CORRECTION (post-lane, same day): the class i / ii K=2 /
+ii K=3 / iv / v numbers in the original commit of this file
+were transcribed from an interim run and were wrong. The
+table above now carries the authoritative values, reproduced
+identically by two independent executions of the banked tool
+(control class 0: 729 keys / 121 ambiguous / 17,601 dead in
+every run). Raw record: `phase17/data/mot-stateful-tests-rerun.log`.
+No verdict changes: every class is falsified under both
+number sets.
 
 ## §3 On the widened length universe
 
