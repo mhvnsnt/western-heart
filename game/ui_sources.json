@@ -47,9 +47,23 @@
       "files": []
     },
     "screen-select": {
-      "status": "legacy-unsourced",
-      "sources": [],
-      "files": []
+      "status": "sourced",
+      "sources": [
+        "teardown/tekken8/ui/CHARACTER-SELECT.md",
+        "teardown/tekken8/ui/refs/t8-select-ref-1.png",
+        "teardown/tekken8/ui/refs/t8-select-ref-2.png",
+        "teardown/tekken8/ui/refs/t8-select-ref-3.png"
+      ],
+      "files": [
+        "game/select-t8.css",
+        "game/select.css",
+        "game/js/select-screen.js",
+        "game/index.html"
+      ],
+      "reuse": [
+        "mhvnsnt/Brutal-Fist@f455322:src/components/CharacterSelect.tsx (phone-portrait stage/grid split)",
+        "mhvnsnt/AshLanev2:public/concept-art/menu/menu-character-select.webp (reference only; no select code exists)"
+      ]
     },
     "screen-sidegames": {
       "status": "legacy-unsourced",

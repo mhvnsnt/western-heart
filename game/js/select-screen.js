@@ -45,7 +45,7 @@ export function statsFor(c) {
 }
 
 /* ---------------- one side's live 3D preview pane ---------------- */
-class PreviewPane {
+export class PreviewPane {
   constructor(canvas, side) {
     this.side = side; // 'p1' | 'p2'
     this.canvas = canvas;
@@ -357,29 +357,27 @@ export function createSelectScreen(deps) {
     if (!strip) return;
     strip.innerHTML = '';
     const roster = selectRoster();
+    // T8 grid (teardown/tekken8/ui/CHARACTER-SELECT.md): ONE compact
+    // face-card grid, no tier rows, no names on cards; owner's Tripo
+    // fighters still lead (registry order from data/tripo-fighters.json).
     const tripo = TRIPO_IDS || new Set();
-    const tiers = [
-      { label: 'TRIPO ORIGINALS', fighters: roster.filter(c => tripo.has(c.id)) },
-      { label: 'MAIN ROSTER', fighters: roster.filter(c => !tripo.has(c.id)) },
-    ].filter(t => t.fighters.length);
-    tiers.forEach(({ label, fighters }) => {
-      const t = document.createElement('div');
-      t.className = 'strip-tier';
-      t.textContent = label;
-      strip.appendChild(t);
-      fighters.forEach((c) => {
-        const card = document.createElement('div');
-        card.className = 'char-card';
-        card.dataset.id = c.id;
-        card.innerHTML = portraitHTML(c);
-        card.addEventListener('click', () => highlight(c, { fromTap: true }));
-        strip.appendChild(card);
-      });
+    const ordered = [...roster.filter(c => tripo.has(c.id)), ...roster.filter(c => !tripo.has(c.id))];
+    const cards = ordered.map((c) => {
+      const card = document.createElement('div');
+      card.className = 'char-card';
+      card.dataset.id = c.id;
+      card.setAttribute('role', 'button');
+      card.setAttribute('aria-label', c.name);
+      card.innerHTML = portraitHTML(c);
+      card.addEventListener('click', () => highlight(c, { fromTap: true }));
+      return card;
     });
-    // Tekken 6 convention: a "?" random slot at the end of the row.
+    // T8: the "?" random card sits inside the grid flow (centre of the last row).
     const rnd = document.createElement('div');
     rnd.className = 'char-card random-card';
     rnd.dataset.id = '__random';
+    rnd.setAttribute('role', 'button');
+    rnd.setAttribute('aria-label', 'Random');
     rnd.innerHTML = `<div class="portrait"><span class="qmark">?</span></div>
       <div class="cname">RANDOM</div><div class="cstyle">Fate decides</div>`;
     rnd.addEventListener('click', () => {
@@ -387,7 +385,8 @@ export function createSelectScreen(deps) {
       const pick = pool[Math.floor(Math.random() * pool.length)];
       if (pick) highlight(pick, { fromTap: true, scroll: true });
     });
-    strip.appendChild(rnd);
+    cards.splice(Math.max(0, cards.length - 4), 0, rnd);
+    cards.forEach(el => strip.appendChild(el));
   }
 
   function allCards() { return [...strip.querySelectorAll('.char-card')]; }
@@ -444,14 +443,24 @@ export function createSelectScreen(deps) {
       els.style.textContent = '';
       els.stats.innerHTML = '';
       els.attires.innerHTML = '';
+      { const f = els.root.querySelector('.pane-facts'); if (f) f.innerHTML = ''; }
       els.note.hidden = true;
       return;
     }
     els.name.textContent = c.name || '—';
+    { const aw = els.root.querySelector('.pane-artwash img'); if (aw) aw.src = `assets/portraits/${c.id}.png`; }
     els.title.textContent = c.title || '';
     const modelId = selectedAttireModel(c);
     els.style.textContent = [c.style, c.archetype, attireLabel(c, modelId)]
       .filter(Boolean).join(' · ');
+    // T8 fact block: FIGHTING STYLE / NATIONALITY / HEIGHT / WEIGHT. Values
+    // come from roster data only; T8 itself prints "Unknown" for unset ones.
+    const facts = els.root.querySelector('.pane-facts');
+    if (facts) {
+      const fact = (lab, v) => `<div class="fact"><span class="fact-lab">${lab}</span><span class="fact-val">${v || 'Unknown'}</span></div>`;
+      facts.innerHTML = fact('Fighting Style', c.style) + fact('Nationality', c.nationality || c.origin)
+        + fact('Height', c.height) + fact('Weight', c.weight);
+    }
     const s = statsFor(c);
     els.stats.innerHTML =
       statRow('POW', s.power, (s.power - 0.5) / 1.5, v => v.toFixed(2)) +

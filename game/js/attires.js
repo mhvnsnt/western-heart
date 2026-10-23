@@ -38,8 +38,10 @@ export const ATTIRE_VARIANTS = {
     { model: 'torch', label: 'ANNA BASE (TEKKEN BASE)' },
   ],
   'demonio': [
-    { model: 'demonio', label: 'BASE' },
+    // t133u: attire 1 = the owner's own Demonio (roster model demonio-a1);
+    // the old 'BASE' demonio.glb rendered the wrong body on select.
     { model: 'demonio-a1', label: 'ATTIRE 1' },
+    { model: 'demonio', label: 'BASE' },
     { model: 'demonio-winged', label: 'WINGED DEVIL' },
     { model: 'demonio-human', label: 'HUMAN' },
     { model: 'demonio-bloodline-ember', label: 'BLOODLINE EMBER' },

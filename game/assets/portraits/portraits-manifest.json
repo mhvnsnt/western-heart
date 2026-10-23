@@ -1,0 +1,665 @@
+{
+ "fighters": {
+  "demonio": {
+   "id": "demonio",
+   "model": "demonio-a1",
+   "bones": 73,
+   "stance": false,
+   "framed": true,
+   "bank": "jin",
+   "armDeg": {
+    "L": 90,
+    "R": 90
+   }
+  },
+  "rin": {
+   "id": "rin",
+   "model": "steve-fox",
+   "bones": 49,
+   "stance": true,
+   "framed": true,
+   "bank": "jin",
+   "armDeg": {
+    "L": 39,
+    "R": 42
+   }
+  },
+  "byou": {
+   "id": "byou",
+   "model": "steve-fox",
+   "bones": 49,
+   "stance": true,
+   "framed": true,
+   "bank": "jin",
+   "armDeg": {
+    "L": 39,
+    "R": 42
+   }
+  },
+  "tou": {
+   "id": "tou",
+   "model": "pantera",
+   "bones": 49,
+   "stance": false,
+   "framed": true,
+   "bank": "paul",
+   "armDeg": {
+    "L": 23,
+    "R": 41
+   }
+  },
+  "sha": {
+   "id": "sha",
+   "model": "steve-fox",
+   "bones": 49,
+   "stance": false,
+   "framed": true,
+   "bank": "xiaoyu",
+   "armDeg": {
+    "L": 23,
+    "R": 41
+   }
+  },
+  "kai": {
+   "id": "kai",
+   "model": "pantera",
+   "bones": 49,
+   "stance": false,
+   "framed": true,
+   "bank": "eddy",
+   "armDeg": {
+    "L": 23,
+    "R": 41
+   }
+  },
+  "retsu": {
+   "id": "retsu",
+   "model": "pantera",
+   "bones": 49,
+   "stance": true,
+   "framed": true,
+   "bank": "bryan",
+   "armDeg": {
+    "L": 43,
+    "R": 35
+   }
+  },
+  "zen": {
+   "id": "zen",
+   "model": "zen-attire1",
+   "bones": 73,
+   "stance": false,
+   "framed": true,
+   "bank": "julia",
+   "armDeg": {
+    "L": 37,
+    "R": 37
+   }
+  },
+  "gyou": {
+   "id": "gyou",
+   "model": "pantera",
+   "bones": 49,
+   "stance": false,
+   "framed": true,
+   "bank": "hwoarang",
+   "armDeg": {
+    "L": 23,
+    "R": 41
+   }
+  },
+  "pantera": {
+   "id": "pantera",
+   "model": "pantera-leoman",
+   "bones": 22,
+   "stance": true,
+   "framed": true,
+   "bank": "king",
+   "armDeg": {
+    "L": 47,
+    "R": 44
+   }
+  },
+  "phantom": {
+   "id": "phantom",
+   "model": "phantom",
+   "bones": 73,
+   "stance": false,
+   "framed": true,
+   "bank": "yoshimitsu",
+   "armDeg": {
+    "L": 86,
+    "R": 86
+   }
+  },
+  "diablo": {
+   "id": "diablo",
+   "model": "diablo",
+   "bones": 53,
+   "stance": true,
+   "framed": true,
+   "bank": "heihachi",
+   "armDeg": {
+    "L": 12,
+    "R": 55
+   }
+  },
+  "skull": {
+   "id": "skull",
+   "model": "skull",
+   "bones": 73,
+   "stance": true,
+   "framed": true,
+   "bank": "bryan",
+   "armDeg": {
+    "L": 35,
+    "R": 43
+   }
+  },
+  "samura1": {
+   "id": "samura1",
+   "model": "sam-ur-a1",
+   "bones": 49,
+   "stance": false,
+   "framed": true,
+   "bank": "gunjack",
+   "armDeg": {
+    "L": 23,
+    "R": 41
+   }
+  },
+  "sakura": {
+   "id": "sakura",
+   "model": "saku-ra",
+   "bones": 73,
+   "stance": false,
+   "framed": true,
+   "bank": "xiaoyu",
+   "armDeg": {
+    "L": 86,
+    "R": 86
+   }
+  },
+  "zui": {
+   "id": "zui",
+   "model": "zui-attire1",
+   "bones": 73,
+   "stance": false,
+   "framed": true,
+   "bank": "jin",
+   "armDeg": {
+    "L": 86,
+    "R": 86
+   }
+  },
+  "kinpo": {
+   "id": "kinpo",
+   "model": "kinpo",
+   "bones": 73,
+   "stance": false,
+   "framed": true,
+   "bank": "jin",
+   "armDeg": {
+    "L": 86,
+    "R": 86
+   }
+  },
+  "waterfall": {
+   "id": "waterfall",
+   "model": "waterfall",
+   "bones": 49,
+   "stance": true,
+   "framed": true,
+   "bank": "jin",
+   "armDeg": {
+    "L": 42,
+    "R": 39
+   }
+  },
+  "kingtyrant": {
+   "id": "kingtyrant",
+   "model": "king-tyrant-attire1",
+   "bones": 0,
+   "stance": false,
+   "framed": false,
+   "bank": "eddy",
+   "armDeg": {
+    "L": null,
+    "R": null
+   }
+  },
+  "burger": {
+   "id": "burger",
+   "model": "burger",
+   "bones": 49,
+   "stance": true,
+   "framed": true,
+   "bank": "bryan",
+   "armDeg": {
+    "L": 35,
+    "R": 43
+   }
+  },
+  "awapop": {
+   "id": "awapop",
+   "model": "awa-pop",
+   "bones": 49,
+   "stance": false,
+   "framed": true,
+   "bank": "nina",
+   "armDeg": {
+    "L": 90,
+    "R": 90
+   }
+  },
+  "scimitar": {
+   "id": "scimitar",
+   "model": "scimitar",
+   "bones": 49,
+   "stance": true,
+   "framed": true,
+   "bank": "jin",
+   "armDeg": {
+    "L": 39,
+    "R": 42
+   }
+  },
+  "purplerain": {
+   "id": "purplerain",
+   "model": "purple-rain",
+   "bones": 73,
+   "stance": false,
+   "framed": true,
+   "bank": "jin",
+   "armDeg": {
+    "L": 86,
+    "R": 86
+   }
+  },
+  "nightwolf": {
+   "id": "nightwolf",
+   "model": "nightwolf-attire1",
+   "bones": 0,
+   "stance": false,
+   "framed": false,
+   "bank": "julia",
+   "armDeg": {
+    "L": null,
+    "R": null
+   }
+  },
+  "dio": {
+   "id": "dio",
+   "model": "dio",
+   "bones": 174,
+   "stance": false,
+   "framed": false,
+   "bank": "heihachi",
+   "armDeg": {
+    "L": null,
+    "R": null
+   }
+  },
+  "cyborgx": {
+   "id": "cyborgx",
+   "model": "cape-jones",
+   "bones": 49,
+   "stance": false,
+   "framed": true,
+   "bank": "gunjack",
+   "armDeg": {
+    "L": 90,
+    "R": 90
+   }
+  },
+  "michiko": {
+   "id": "michiko",
+   "model": "michiko-attire1",
+   "bones": 73,
+   "stance": false,
+   "framed": true,
+   "bank": "jin",
+   "armDeg": {
+    "L": 15,
+    "R": 14
+   }
+  },
+  "star": {
+   "id": "star",
+   "model": "star-attire1",
+   "bones": 0,
+   "stance": false,
+   "framed": false,
+   "bank": "xiaoyu",
+   "armDeg": {
+    "L": null,
+    "R": null
+   }
+  },
+  "torch": {
+   "id": "torch",
+   "model": "torch-tripo-a1",
+   "bones": 73,
+   "stance": false,
+   "framed": true,
+   "bank": "anna",
+   "armDeg": {
+    "L": 85,
+    "R": 85
+   }
+  },
+  "bruno": {
+   "id": "bruno",
+   "model": "bruno",
+   "bones": 142,
+   "stance": false,
+   "framed": false,
+   "bank": "bryan",
+   "armDeg": {
+    "L": 90,
+    "R": 90
+   }
+  },
+  "negativo": {
+   "id": "negativo",
+   "model": "n3g4tiv0",
+   "bones": 50,
+   "stance": true,
+   "framed": true,
+   "bank": "bryan",
+   "armDeg": {
+    "L": 43,
+    "R": 35
+   }
+  },
+  "thor": {
+   "id": "thor",
+   "model": "thor",
+   "bones": 49,
+   "stance": true,
+   "framed": true,
+   "bank": "bryan",
+   "armDeg": {
+    "L": 35,
+    "R": 43
+   }
+  },
+  "yukihyo": {
+   "id": "yukihyo",
+   "model": "yukihyo",
+   "bones": 328,
+   "stance": true,
+   "framed": true,
+   "bank": "armorking",
+   "armDeg": {
+    "L": 47,
+    "R": 44
+   }
+  },
+  "slice": {
+   "id": "slice",
+   "model": "slice-attire1",
+   "bones": 73,
+   "stance": true,
+   "framed": true,
+   "bank": "bryan",
+   "armDeg": {
+    "L": 35,
+    "R": 43
+   }
+  },
+  "docfrank": {
+   "id": "docfrank",
+   "model": "doc-frank-big",
+   "bones": 178,
+   "stance": true,
+   "framed": true,
+   "bank": "gunjack",
+   "armDeg": {
+    "L": 41,
+    "R": 41
+   }
+  },
+  "baek-master-white": {
+   "id": "baek-master-white",
+   "model": "kevin-tripo",
+   "bones": 73,
+   "stance": true,
+   "framed": true,
+   "bank": "bryan",
+   "armDeg": {
+    "L": 35,
+    "R": 43
+   }
+  },
+  "mariposa-monarch": {
+   "id": "mariposa-monarch",
+   "model": "mariposa-butterfly-default",
+   "bones": 246,
+   "stance": false,
+   "framed": false,
+   "bank": "xiaoyu",
+   "armDeg": {
+    "L": null,
+    "R": null
+   }
+  },
+  "dxmmii-patchwork": {
+   "id": "dxmmii-patchwork",
+   "model": "dxmmii-tripo",
+   "bones": 73,
+   "stance": false,
+   "framed": true,
+   "bank": "jin",
+   "armDeg": {
+    "L": 86,
+    "R": 86
+   }
+  },
+  "charger": {
+   "id": "charger",
+   "model": "charger",
+   "bones": 49,
+   "stance": true,
+   "framed": true,
+   "bank": "bryan",
+   "armDeg": {
+    "L": 35,
+    "R": 43
+   }
+  },
+  "dorowani": {
+   "id": "dorowani",
+   "model": "dorowani",
+   "bones": 73,
+   "stance": false,
+   "framed": true,
+   "bank": "gon",
+   "armDeg": {
+    "L": 17,
+    "R": 17
+   }
+  },
+  "chatur": {
+   "id": "chatur",
+   "model": "chatur",
+   "bones": 52,
+   "stance": false,
+   "framed": true,
+   "bank": "ogre",
+   "armDeg": {
+    "L": 90,
+    "R": 90
+   }
+  },
+  "pond": {
+   "id": "pond",
+   "model": "pond",
+   "bones": 52,
+   "stance": false,
+   "framed": true,
+   "bank": null,
+   "armDeg": {
+    "L": 90,
+    "R": 90
+   }
+  },
+  "ryusan": {
+   "id": "ryusan",
+   "model": "ryusan",
+   "bones": 73,
+   "stance": false,
+   "framed": true,
+   "bank": null,
+   "armDeg": {
+    "L": 86,
+    "R": 86
+   }
+  },
+  "tobi": {
+   "id": "tobi",
+   "model": "tobi",
+   "bones": 73,
+   "stance": false,
+   "framed": true,
+   "bank": null,
+   "armDeg": {
+    "L": 86,
+    "R": 86
+   }
+  },
+  "megami": {
+   "id": "megami",
+   "model": "megami",
+   "bones": 52,
+   "stance": false,
+   "framed": true,
+   "bank": null,
+   "armDeg": {
+    "L": 90,
+    "R": 90
+   }
+  },
+  "menajerii": {
+   "id": "menajerii",
+   "model": "menajerii",
+   "bones": 52,
+   "stance": false,
+   "framed": true,
+   "bank": "kuma",
+   "armDeg": {
+    "L": 90,
+    "R": 90
+   }
+  },
+  "kronos": {
+   "id": "kronos",
+   "model": "kronos",
+   "bones": 73,
+   "stance": true,
+   "framed": true,
+   "bank": "king",
+   "armDeg": {
+    "L": 47,
+    "R": 44
+   }
+  },
+  "deathfang": {
+   "id": "deathfang",
+   "model": "deathfang",
+   "bones": 73,
+   "stance": false,
+   "framed": true,
+   "bank": "heihachi",
+   "armDeg": {
+    "L": 30,
+    "R": 60
+   }
+  },
+  "ryuji": {
+   "id": "ryuji",
+   "model": "steve-fox",
+   "bones": 49,
+   "stance": false,
+   "framed": true,
+   "bank": null,
+   "armDeg": {
+    "L": 23,
+    "R": 41
+   }
+  },
+  "koreshi": {
+   "id": "koreshi",
+   "model": "koreshi",
+   "bones": 49,
+   "stance": true,
+   "framed": true,
+   "bank": "heihachi",
+   "armDeg": {
+    "L": 12,
+    "R": 55
+   }
+  },
+  "rave": {
+   "id": "rave",
+   "model": "kiko-tanaka",
+   "bones": 49,
+   "stance": false,
+   "framed": true,
+   "bank": "lei",
+   "armDeg": {
+    "L": 90,
+    "R": 90
+   }
+  },
+  "buffalo-bill": {
+   "id": "buffalo-bill",
+   "model": "buffalo-bill",
+   "bones": 0,
+   "stance": false,
+   "framed": false,
+   "bank": null,
+   "armDeg": {
+    "L": null,
+    "R": null
+   }
+  },
+  "vainabel": {
+   "id": "vainabel",
+   "model": "vainabel-attire1",
+   "bones": 73,
+   "stance": false,
+   "framed": true,
+   "bank": null,
+   "armDeg": {
+    "L": 86,
+    "R": 86
+   }
+  },
+  "cainelias": {
+   "id": "cainelias",
+   "model": "cain-elias",
+   "bones": 0,
+   "stance": false,
+   "framed": false,
+   "bank": "king",
+   "armDeg": {
+    "L": null,
+    "R": null
+   }
+  },
+  "chordz": {
+   "id": "chordz",
+   "model": "chordz",
+   "bones": 0,
+   "stance": false,
+   "framed": false,
+   "bank": null,
+   "armDeg": {
+    "L": null,
+    "R": null
+   }
+  }
+ },
+ "_doc": "Generated by tools/portraits/capture.mjs (attire-1 model via attires.js, posed by its moveset bank stance through select-screen PreviewPane). Checked by test/portraits.test.mjs."
+}
