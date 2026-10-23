@@ -90,3 +90,10 @@ On 2026-10-23, cape-jones PR #219 wiped main: the merge was built from a sparse/
 3. Default recovery path for a bad merge: revert the merge commit (`-m 1`) and re-add the branch's real payload. Never "fix forward" on top of a wiped tree.
 4. When in doubt, build the commit via the Git Data API from verified tree SHAs — never from a working tree you haven't verified.
 5. GOTCHA: `gh`'s `-f content=@file` does NOT expand `@file` for the blobs API — base64 the content explicitly.
+
+## OWNER LAW: ui_sources gate (t123u, Oct 23 2026)
+> **Every menu screen must list the exact Tekken/teardown file it came from. Any menu change without that source is blocked from merging, whichever agent made it.**
+- The manifest is `game/ui_sources.json`. Each `<section id="screen-*">` gets `{status, sources[], files[]}`. A source is a `teardown/...` path in this repo or `gre:<path>` in game-reverse-engineering.
+- The gate is `.github/workflows/ui-sources.yml`, which runs `tools/ui-sources/check.py BASE HEAD`. It FAILS when a new screen, changed `<section>` markup, or a changed UI file (index.html, game/*.css, *menu*/*-screen*/*-ui*/ui-* js, game/ui/**, creation-suite UI) has no existing teardown source. It also fails when a changed UI file isn't listed under some screen's `files`.
+- `legacy-unsourced` marks the pre-law hand-made screens. They are grandfathered only while untouched. To change one, first rebuild it from a teardown source and cite that source.
+- Make this check **required** in branch protection (owner setting).

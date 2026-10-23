@@ -1,3 +1,28 @@
+## 2026-10-23 ~15:20 CDT — TTT2 extraction worker: surgical pipeline (Law/Lars lane)
+
+**Task:** Push TTT2 extraction toward 100% (standing directive: T3 fallback-only, pulls from T5/T6/T7/TTT2). Law + Lars FIRST — their full modern movesets/animations unblock the Buffalo Bill / Chordz pull lane. Then the full 59-fighter roster, stages, audio.
+
+**Built — `teardown/tekken-tag-tournament-2/tools/surgical/`** (no full 13.36GB download needed):
+- `fetch_assets.py` — release-asset downloader via GitHub data API (Accept: application/octet-stream + surrogate credential, 302 followed without auth, Range resume).
+- `vfile.py` — `PartVirtualFile`: seekable virtual file over the 26 release parts via HTTP Range. py7zr parses the 7z end-header with ~2KB transferred.
+- `stream_decode.py` — LZMA stream decoder (folder: lc=3,lp=0,pb=2,8MB dict) that splits the 72 members by known uncompressed sizes and writes only wanted members + MANIFEST.txt (sha256).
+- `seg_dl.py` — parallel segmented stream-prefix downloader (resume-safe per segment) for staging long poles locally.
+- `extract_member.py` — single-member extract via py7zr over the virtual file.
+- `fetch_zarmanager.py` — fetches GodPackage/StfsPackage (`core/xbox/{god,stfs}.py`) from dfdx047/ZarManager (not vendored — upstream license unverified).
+- `README.md` — cost model + usage.
+
+**Also:** `teardown/tekken-tag-tournament-2/EXTRACTION-RUNBOOK.md` (step-by-step: header verify → STFS blobs → Data0000 → XDVDFS listing → Law/Lars carve → roster); TEARDOWN.md status updated (safe storage DONE, disk blocker circumvented, network throttle documented).
+
+**Verified 2026-10-23:**
+- End-header over HTTP Range: 80 entries, byte-matching INVENTORY.md (1,970 bytes fetched).
+- Member 19 (GoD descriptor, 45,056 bytes) stream-extracted — byte-identical to `extracted-small/` copy.
+- GodPackage parses title ID 0x4E4D0859; member 0 (155MB STFS blob) stream-decoding.
+- **No Tekken 3 touched** — instruction gate compliant (T3 fallback-only).
+
+**Blocker:** VM egress proxy throttles sustained downloads to ~0.1 MB/s. Data0000 (header idx 20, key to the XDVDFS file listing → Law/Lars carve) needs a ~4.9GB stream prefix ≈ 14h — queued as a background nohup job. Per-member prefix costs in tools/surgical/README.md.
+
+**Deviations:** none from the surgical plan. No game binaries committed (owner law — large artifacts go to Releases, repo carries tools/docs only). Pushed via Git Database API (NO-SPARSE-COMMIT LAW — no commits from the sparse checkout).
+
 ---
 
 ## 2026-10-22 ~13:45 CDT — Worker 26: AUDIO — voice mapping + announcer + music system
