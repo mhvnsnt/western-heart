@@ -43,3 +43,10 @@ Sparse clones only (`git clone --filter=blob:none --sparse`, `git sparse-checkou
 - MISSING: Heihachi (heihachi191 KMD has no hip or shoulder vertex data) and a real arms-folded pose (see the audit, Update 4), so there is no title v5.
 - Browser build: the `pantera.glb` L/R skin swap is fixed as `pantera_fixed.glb` (tools/rig_repair case 1). For demonio, the Godot render ignores the arm tracks even though the CPU skin is correct. See `docs/anim/PROCEDURAL_AUDIT.md` Update 4.
 - Lab crouch, jump and sidestep states: DONE (audit Update 5). Stand-up slot 60, jump displacement and evasion are still missing.
+
+
+## INSTRUCTION GATE: Owner law, data source priority (Oct 23, 2026, 2:19 PM CT)
+
+> **Western Heart data (moves, animations, frame data, menus, character select) comes from Tekken 5, 6, 7, 8 and TTT2. Tekken 3 is only a last-resort fallback, and every T3 use must be logged with the reason no T5/6/7/8/TTT2 source was available.**
+
+- Search T5/T6/T7/T8/TTT2 teardowns first. Use T3 only when none of them has the data, and log the T3 use (file, clip, reason) in `docs/anim/PROCEDURAL_AUDIT.md`.
