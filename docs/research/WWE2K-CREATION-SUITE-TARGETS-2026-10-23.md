@@ -102,13 +102,18 @@ Checked against the repo's existing tool map (`customization/tools/`: GNM; `tool
 - **CPU/headless**: YES — pattern generation is pure Python, headless-safe. Drape simulation needs GPU (NVIDIA Warp) or a Blender cloth pass; pattern output alone is CPU-fine.
 - **Watch**: Design2GarmentCode (2025, Style3D) — LLM turns design concepts into GarmentCode programs; research-grade, needs an LLM API key. Revisit, don't depend.
 
-### 5.2 UniRig — automatic skeleton + skinning (NEW, recommend)
+### 5.2 UniRig — automatic skeleton + skinning (CORRECTION 2026-10-23: already in repo)
+
+**Correction:** UniRig is NOT new — it was already researched and vendored by an earlier lane (`docs/AUTO-RIG-DEEP-RESEARCH-2026.md`; vendored code at `tools/auto_rig/vendor/unirig/` with `VENDOR.md`; unified GPU backend at `tools/auto_rig/backends/ai_rig.py --backend unirig`). The original "NEW, recommend pull" label in this doc was wrong — my repo sweep missed it because the check ran late. Striking the pull recommendation.
 
 - **What**: SIGGRAPH 2025 (Tsinghua + Tripo/VAST AI Research) — one autoregressive model predicts a topologically valid skeleton *and* per-vertex skinning weights for arbitrary meshes (humans, creatures, objects). Directly attacks the repo's standing pain point (bad skin weights on Pantera/Yukihyo/Leopard King; "decrypted backwards" root-cause work).
 - **Source**: https://github.com/VAST-AI-Research/UniRig — **MIT License**, 1,873 stars, active. Skeleton + skinning checkpoints released (Hugging Face `VAST-AI/UniRig`); successor SkinTokens announced. CLI: `generate_skeleton.sh` / `generate_skin.sh` / `merge.sh`; inputs `.obj/.fbx/.glb/.vrm`.
-- **Suite menu**: **RIGGING** — unify with GameRig/NaughTyRig per the TOOL UNIFICATION LAW (three access layers: unified rigging system, each tool standalone, universal front-end).
-- **CPU/headless**: CLI is headless-capable; **GPU strongly recommended** (PyTorch + spconv/torch_scatter/flash_attn stack). CPU inference works but is slow — fine for one-off Tripo-intake rigs, not batch.
+- **Suite menu**: **RIGGING** — already unified under `tools/auto_rig/` (six backends incl. unirig) per the TOOL UNIFICATION LAW. Remaining work is wire-up verification, not a new pull.
+- **CPU/headless**: CLI is headless-capable; **GPU strongly recommended** (PyTorch + spconv/torch_scatter/flash_attn stack). The in-repo adapter is GPU-only by design (refuses on CPU, points at the Kaggle lane).
 - **Caveat**: weights download from Hugging Face on first use (same pattern as GNM's gated weights — document, don't commit).
+- **New information vs the vendored copy**: the SkinTokens successor (98–133% skinning-accuracy improvement claimed) postdates the vendoring — worth a watch item on the auto-rig lane, not a re-pull.
+
+**Genuinely-new tool from this survey: GarmentCode (§5.1) only.**
 
 ### 5.3 Surveyed and NOT recommended
 
@@ -125,7 +130,7 @@ Checked against the repo's existing tool map (`customization/tools/`: GNM; `tool
 1. Owner picks phase order (§1 recommendation: 2K19 → 2K25 → 2K26).
 2. Resolve open items #1–#3 (§4) — `.cak` unpacker confirmation is the critical path for 2K25/2K26.
 3. Execute the selective pull (copy §2 file set to TeraBox; never to the repo, never full game).
-4. Pull GarmentCode + UniRig into `customization/tools/<name>/` per the tooling conventions (`UPSTREAM-COMMIT.txt`, `LICENSE.<name>`, `wh_<name>_wireup.py`, `WH-INTEGRATION.md`) and wire into the ATTIRE and RIGGING menus.
+4. Pull GarmentCode into `customization/tools/garmentcode/` per the tooling conventions (`UPSTREAM-COMMIT.txt`, `LICENSE.garmentcode`, `wh_garmentcode_wireup.py`, `WH-INTEGRATION.md`) and wire into the ATTIRE menu. (UniRig needs no pull — already vendored at `tools/auto_rig/vendor/unirig/`; verify/extend its wire-up instead.)
 
 ## Sources
 
