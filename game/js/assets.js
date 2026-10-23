@@ -376,10 +376,12 @@ export const MODEL_URLS = {
   // in roster/deathfang/ now.)
   deathfang: '../roster/deathfang/attires/attire1/model.glb',
   'deathfang-werewolf': '../roster/deathfang/attires/attire2/model.glb',
-  // Ryuji Yamazaki x The Rock hybrid (owner 2026-10-19). MODEL PENDING: no Yamazaki
-  // model found anywhere (no KOF teardown, none in tripo-recovery, no downloadable
-  // Sketchfab model). URL wired for the drop-in; model.glb lands the moment the
-  // owner sends a Tripo link. See roster/ryuji-rock/attires/attire1/README.md.
+  // Ryuji Yamazaki x The Rock hybrid (owner 2026-10-19) — CORNERSTONE.
+  // MODEL LANDED 2026-10-22 (owner Tripo 20c1fd2e-40d0-4500-9be6-50f6494ab5e1):
+  // archived at attires/attire1/source/cornerstone-a1.glb and copied
+  // byte-identical to the wired model.glb 2026-10-23 (landing wave 1), so this
+  // key resolves. The GLB is an unrigged static (skins=0, joints=0) — rigging
+  // is wave 2. See roster/ryuji-rock/attires/attire1/README.md.
   'ryuji-rock': '../roster/ryuji-rock/attires/attire1/model.glb',
   // MEGAMI (2026-10-23, SmutBase 6 pipeline fighters 5-6): SmutBase Parvati
   // commission intake. In-repo build = meshopt-compressed (23.5 MB, validated);
@@ -396,12 +398,52 @@ export const MODEL_URLS = {
   // Tekken inputs per owner directive — no Injustice 2 input system).
   menajerii: '../roster/vixen/attires/attire1/model.glb',
   'menajerii-attire1': '../roster/vixen/attires/attire1/model.glb',
+  // ——— LANDING WAVE 1 (2026-10-23, docs/CATCHUP-AUDIT-2026-10-23.md) ———
+  // Wiring fixes only: keys for models already on main that no key reached.
+  // BUFFALO BILL: his moveset file sat on main unlisted; A1/A2 sources named
+  // in roster/buffalo-bill/CANON.md are NOT in the repo — Attire 3 "Ashes"
+  // is his only on-main model, so the base key points there.
+  'buffalo-bill': '../roster/buffalo-bill/attires/attire3/model.glb',
+  // VAIN ABEL ELIAS: base key. His Attire 1 Tripo (f7e90de8) is NOT on disk
+  // (roster/TRIPO-REGISTRY.md, audit 2026-10-22) — the base key points at
+  // his earliest on-main attire, Attire 2 (same file as 'vainabel-attire2').
+  vainabel: '../roster/vainabel/attires/attire2/model.glb',
+  // CHORDZ (owner 2026-10-15: Lars -> Chordz, emo guitarist). His Tripo sits
+  // archived as an unrigged static under attires/attire1/source/.
+  chordz: '../roster/chordz/attires/attire1/source/chordz-a1.glb',
+  // GASHADOKURO + AOTSUKI (OBSOLETE-ORIGINALS rule, docs/OBSOLETE-ORIGINALS-
+  // RULE.md): the Kuma/Panda models ARE the proprietary successors now — the
+  // keys are the successors' names; there is no 'kuma'/'panda' fighter key.
+  // Unrigged statics; their roster entries wait for wave-3 movesets.
+  gashadokuro: '../roster/kuma/attires/attire1/source/kuma-a1.glb',
+  aotsuki: '../roster/panda/attires/attire1/source/aotsuki-a1.glb',
+  // Attire variant keys for on-main GLBs no key reached (catch-up audit
+  // attires-unwired set). Ladder placement lives in game/js/attires.js:
+  // successor's own attires first, source-game originals late (slots 5+).
+  'bruno-attire1': '../roster/bruno/attires/attire1/source/bruno-a1.glb',
+  'bruno-attire2': '../roster/bruno/attires/attire2/source/bruno-a2-sail-the-sea.glb',
+  'dio-attire1': '../roster/dio/attires/attire1/source/dio-a1-jade-god.glb',
+  'koreshi-attire1': '../roster/koreshi/attires/attire1/model.glb',
+  'negativo-attire1': '../roster/negativo/attires/attire1/source/negativo-a1.glb',
+  'negativo-attire2': '../roster/negativo/attires/attire2/source/negativo-a2.glb',
+  'skull-tripo': '../roster/skull/attires/attire1/model.glb',
+  'skull-base': 'assets/models/skull.glb',
+  'waterfall-attire1': '../roster/waterfall/attires/attire1/model.glb',
+  'yukihyo-attire1': '../roster/yukihyo/attires/attire1/source/yukihyo-a1.glb',
+  'yukihyo-attire2': '../roster/yukihyo/attires/attire2/source/yukihyo-a2-bobcat-pride.glb',
+  'yukihyo-attire3': '../roster/yukihyo/attires/attire3/source/yukihyo-a3-tiger-king.glb',
+  'armor-king-attire1': '../roster/armor-king/attires/attire1/model.glb',
+  'zangief-attire1': '../roster/zangief/attires/attire1/model.glb',
   // RYUSAN (owner 2026-10-23): SmutBase Mina Ashido intake — WH name RYUSAN,
   // the Corrosion Soul. Attire 1 = the SmutBase GLB (unrigged static; rig queued).
+  // NOTE: roster/mina-ashido/attires/attire1/model-rigged.glb landed on main
+  // 2026-10-23 (PR #781, wave-1 rigging) — repoint key after rig validation.
   ryusan: '../roster/mina-ashido/attires/attire1/model.glb',
   'ryusan-attire1': '../roster/mina-ashido/attires/attire1/model.glb',
   // TOBI (owner 2026-10-23): SmutBase Mirko (Rumi Usagiyama) intake — WH name
   // TOBI, the Escape Soul. Attire 1 = the SmutBase GLB (unrigged static; rig queued).
+  // NOTE: roster/miruko/attires/attire1/model-rigged.glb landed on main
+  // 2026-10-23 (PR #781, wave-1 rigging) — repoint key after rig validation.
   tobi: '../roster/miruko/attires/attire1/model.glb',
   'tobi-attire1': '../roster/miruko/attires/attire1/model.glb',
 };

@@ -39,11 +39,6 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 /* fighter id -> { own: [MODEL_URLS keys that are this fighter's own wired
  * models], base: declared canon base key, pending: own file not yet in repo } */
 const OWNERSHIP = {
-  "armor-king": {
-    "own": [
-      "armor-king"
-    ]
-  },
   "awapop": {
     "own": [
       "awa-pop"
@@ -58,9 +53,11 @@ const OWNERSHIP = {
   }, // wire-up 2026-10-22: Kevin A1 Tripo wired + ladder Slot 1
   "bruno": {
     "own": [
-      "bruno"
+      "bruno",
+      "bruno-attire1",
+      "bruno-attire2"
     ]
-  },
+  }, // wave 1 2026-10-23: his two on-main source attires wired into his ladder
   "burger": {
     "own": [
       "burger",
@@ -77,14 +74,31 @@ const OWNERSHIP = {
   },
   "charger": {
     "own": [
-      "charger"
+      "charger",
+      "blanka"
     ]
-  },
+  }, // wave 1 2026-10-23: Blanka model ladders behind Charger (obsolete-originals rule)
   "charger-attire2": {
     "own": [
       "charger-attire2"
     ]
   },
+  "buffalo-bill": {
+    "own": [
+      "buffalo-bill"
+    ]
+  }, // wave 1 2026-10-23: select entry + base key landed (Attire 3 'Ashes' model)
+  "cainelias": {
+    "own": [
+      "cain-elias",
+      "cain-elias-attire2"
+    ]
+  }, // wave 1 2026-10-23: select entry landed; model keys were already wired
+  "chordz": {
+    "own": [
+      "chordz"
+    ]
+  }, // wave 1 2026-10-23: select entry + model key landed
   "cyborgx": {
     "own": [
       "cape-jones",
@@ -94,9 +108,10 @@ const OWNERSHIP = {
   "deathfang": {
     "own": [
       "deathfang",
-      "deathfang-werewolf"
+      "deathfang-werewolf",
+      "iori"
     ]
-  },
+  }, // wave 1 2026-10-23: Iori model ladders behind Deathfang (obsolete-originals rule)
   "demonio": {
     "own": [
       "demonio",
@@ -130,9 +145,10 @@ const OWNERSHIP = {
   },
   "dio": {
     "own": [
-      "dio"
+      "dio",
+      "dio-attire1"
     ]
-  },
+  }, // wave 1 2026-10-23: Jade God source wired into his ladder
   "doc-frank-frankenstein": {
     "own": [
       "doc-frank-frankenstein"
@@ -177,11 +193,6 @@ const OWNERSHIP = {
   "gyou": {
     "base": "pantera"
   },
-  "iori": {
-    "own": [
-      "iori"
-    ]
-  },
   "jin_soul": {
     "base": "steve-fox"
   },
@@ -208,16 +219,20 @@ const OWNERSHIP = {
   }, // wire-up 2026-10-22: Attire 2 Goth Sport added to her ladder
   "koreshi": {
     "own": [
-      "koreshi"
+      "koreshi",
+      "koreshi-attire1",
+      "vega"
     ]
-  },
+  }, // wave 1 2026-10-23: Tripo source wired + Vega model ladders behind Koreshi
   "kronos": {
     "own": [
       "kronos",
       "kronos-attire2",
-      "kronos-attire3"
+      "kronos-attire3",
+      "zangief",
+      "zangief-attire1"
     ]
-  },
+  }, // wave 1 2026-10-23: Zangief models ladder behind Kronos (obsolete-originals rule)
   "kronos-attire2": {
     "own": [
       "kronos-attire2"
@@ -241,9 +256,11 @@ const OWNERSHIP = {
   }, // wire-up 2026-10-22: Tripo Attires 1-2 (auto-rigged) wired + ladder
   "negativo": {
     "own": [
-      "n3g4tiv0"
+      "n3g4tiv0",
+      "negativo-attire1",
+      "negativo-attire2"
     ]
-  },
+  }, // wave 1 2026-10-23: his two on-main source attires wired into his ladder
   "nightwolf": {
     "own": [
       "nightwolf",
@@ -281,9 +298,8 @@ const OWNERSHIP = {
   "ryuji-rock": {
     "own": [
       "ryuji-rock"
-    ],
-    "pending": true
-  },
+    ]
+  }, // model landed 2026-10-22 (owner Tripo); byte-identical copy at the key's path 2026-10-23 (wave 1) — no longer pending
   "sakura": {
     "own": [
       "saku-ra",
@@ -307,9 +323,11 @@ const OWNERSHIP = {
   },
   "skull": {
     "own": [
-      "skull"
+      "skull",
+      "skull-tripo",
+      "skull-base"
     ]
-  },
+  }, // wave 1 2026-10-23: Tripo A1 + Bryan base wired into his ladder (ATTIRE-SLOTS.md)
   "slice": {
     "own": [
       "slice",
@@ -339,29 +357,33 @@ const OWNERSHIP = {
       "torch-tripo-a2"
     ]
   }, // table was stale vs the torch ladder (A1 Valkyrie of Flame default); fixed 2026-10-22
+  "vainabel": {
+    "own": [
+      "vainabel",
+      "vainabel-attire2",
+      "vainabel-attire3",
+      "vainabel-attire4"
+    ]
+  }, // wave 1 2026-10-23: select entry + base key landed (base = Attire 2; A1 Tripo not on disk)
   "tou": {
     "base": "pantera"
   },
-  "vega": {
-    "own": [
-      "vega"
-    ]
-  },
   "waterfall": {
     "own": [
-      "waterfall"
+      "waterfall",
+      "waterfall-attire1"
     ]
-  },
+  }, // wave 1 2026-10-23: Tripo source wired into her ladder
   "yukihyo": {
     "own": [
-      "yukihyo"
+      "yukihyo",
+      "yukihyo-attire1",
+      "yukihyo-attire2",
+      "yukihyo-attire3",
+      "armor-king",
+      "armor-king-attire1"
     ]
-  },
-  "zangief": {
-    "own": [
-      "zangief"
-    ]
-  },
+  }, // wave 1 2026-10-23: his source attires wired + Armor King models ladder behind him
   "zen": {
     "own": [
       "zen",

@@ -58,6 +58,10 @@ export const MOVESET_IDS = [
   // CHARGER (owner 2026-10-20): Blanka replacement — full set in charger.json.
   'charger',
   'dorowani',
+  // BUFFALO BILL (2026-10-23, landing wave 1): his per-fighter file
+  // (game/assets/movesets/buffalo-bill.json, 228 moves, Law base) existed on
+  // main but the id was never listed, so the loader never loaded it.
+  'buffalo-bill',
   // CHATUR (owner 2026-10-23): True Ogre's WH replacement — chatur.json
   // (True Ogre T3 kit + four-armed canon specials).
   'chatur',
