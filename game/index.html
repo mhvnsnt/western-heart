@@ -364,14 +364,15 @@
       <div class="action-pad">
         <button class="act-btn punch" data-btn="punch" style="display:none">P</button>
         <button class="act-btn kick" data-btn="kick" style="display:none">K</button>
-        <!-- Stream 6: full Tekken limb cluster (LP/RP/LK/RK arcade layout).
-             Legacy P/K kept hidden for old bindings; keyboard J/K still work. -->
-        <button class="act-btn limb lp" data-btn="1">LP</button>
-        <button class="act-btn limb rp" data-btn="2">RP</button>
-        <button class="act-btn limb lk" data-btn="3">LK</button>
-        <button class="act-btn limb rk" data-btn="4">RK</button>
-        <button class="act-btn special" data-btn="surge">S</button>
-        <button class="act-btn block" data-btn="block">B</button>
+        <!-- PSX EMULATOR OVERLAY (owner directive 2026-10-22): classic PlayStation
+             diamond — □=1 LP, △=2 RP, ✕=3 LK, ○=4 RK. L1/R1 shoulders = block/surge.
+             data-btn values unchanged so input.js bindings keep working. -->
+        <button class="act-btn psx square" data-btn="1">□</button>
+        <button class="act-btn psx triangle" data-btn="2">△</button>
+        <button class="act-btn psx cross" data-btn="3">✕</button>
+        <button class="act-btn psx circle" data-btn="4">○</button>
+        <button class="act-btn shoulder l1" data-btn="block">L1</button>
+        <button class="act-btn shoulder r1" data-btn="surge">R1</button>
         <button class="act-btn dodge" data-btn="dodge">D</button>
         <!-- V-System (owner 2026-10-22): V-Skill / V-Trigger / V-Reversal -->
         <button class="act-btn vskill" data-btn="vskill">V</button>
