@@ -1,0 +1,63 @@
+(node:38468) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/hatch/workspace/_docfrank-rig/scratch/probe-tree/game/js/attires.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/hatch/workspace/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+LADDER (10):
+  1. doc-frank-big — ATTIRE 1 · TRANSFORMED (TRIPO)
+  2. doc-frank-wowomomo — ATTIRE 2 · WOWOMOMO (TRIPO)
+  3. doc-frank-wowomomo-big — ATTIRE 2 · WOWOMOMO XL (TRIPO)
+  4. doc-frank-hood — ATTIRE 3 · HOOD SCIENTIST (TRIPO)
+  5. doc-frank-hood-big — ATTIRE 3 · HOOD XL (TRIPO)
+  6. doc-frank-frankenstein — ATTIRE 4 · FRANKENSTEIN'S CYBORG (TRIPO)
+  7. doc-frank-frankenstein-big — ATTIRE 4 · FRANKENSTEIN XL (TRIPO)
+  8. doc-frank-a1 — ATTIRE 1 · OLD MAN (PRE-FORM)
+  9. doc-frank — BOSCONOVITCH BASE (TEKKEN BASE)
+  10. doc-frank-machine-shop — MACHINE SHOP (RESKIN)
+PASS first five ladder entries are his Tripo models
+PASS back of ladder = pre-form (reskin lineage), Bosconovitch base, machine-shop reskin
+PASS player default (ladder[0]) is Tripo doc-frank-big
+PASS roster main entry model is doc-frank-big (Tripo)
+PASS transform target doc-frank-big preserved (pre-form transforms up)
+PASS Tripo form transforms back down to pre-form
+PASS MODEL_URLS has 'doc-frank-big'
+PASS 'doc-frank-big' -> ../roster/doc-frank/attires/attire1/post-transform/model-rigged.glb exists on disk
+PASS 'doc-frank-big' is RIGGED (skins=1, joints=178, images=3, anims=0)
+PASS 'doc-frank-big' has embedded texture images (3)
+PASS MODEL_URLS has 'doc-frank-wowomomo'
+PASS 'doc-frank-wowomomo' -> ../roster/doc-frank/attires/attire2/base/model-rigged.glb exists on disk
+PASS 'doc-frank-wowomomo' is RIGGED (skins=1, joints=49, images=3, anims=1)
+PASS 'doc-frank-wowomomo' has embedded texture images (3)
+PASS MODEL_URLS has 'doc-frank-wowomomo-big'
+PASS 'doc-frank-wowomomo-big' -> ../roster/doc-frank/attires/attire2/transformed/model-rigged.glb exists on disk
+PASS 'doc-frank-wowomomo-big' is RIGGED (skins=1, joints=178, images=3, anims=0)
+PASS 'doc-frank-wowomomo-big' has embedded texture images (3)
+PASS MODEL_URLS has 'doc-frank-hood'
+PASS 'doc-frank-hood' -> ../roster/doc-frank/attires/attire3/base/model.glb exists on disk
+PASS 'doc-frank-hood' is RIGGED (skins=1, joints=73, images=3, anims=0)
+PASS 'doc-frank-hood' has embedded texture images (3)
+PASS MODEL_URLS has 'doc-frank-hood-big'
+PASS 'doc-frank-hood-big' -> ../roster/doc-frank/attires/attire3/transformed/model-rigged.glb exists on disk
+PASS 'doc-frank-hood-big' is RIGGED (skins=1, joints=178, images=3, anims=0)
+PASS 'doc-frank-hood-big' has embedded texture images (3)
+PASS MODEL_URLS has 'doc-frank-frankenstein'
+PASS 'doc-frank-frankenstein' -> ../roster/doc-frank/attires/attire4/base/model-rigged.glb exists on disk
+PASS 'doc-frank-frankenstein' is RIGGED (skins=1, joints=49, images=3, anims=1)
+PASS 'doc-frank-frankenstein' has embedded texture images (3)
+PASS MODEL_URLS has 'doc-frank-frankenstein-big'
+PASS 'doc-frank-frankenstein-big' -> ../roster/doc-frank/attires/attire4/transformed/model-rigged.glb exists on disk
+PASS 'doc-frank-frankenstein-big' is RIGGED (skins=1, joints=49, images=3, anims=1)
+PASS 'doc-frank-frankenstein-big' has embedded texture images (3)
+PASS MODEL_URLS has 'doc-frank-a1'
+PASS 'doc-frank-a1' -> ../roster/doc-frank/attires/attire1/pre-transform/model.glb exists on disk
+PASS 'doc-frank-a1' is RIGGED (skins=1, joints=178, images=23, anims=0)
+PASS 'doc-frank-a1' has embedded texture images (23)
+PASS MODEL_URLS has 'doc-frank'
+PASS 'doc-frank' -> assets/models/doc-frank.glb exists on disk
+PASS 'doc-frank' is RIGGED (skins=1, joints=178, images=23, anims=0)
+PASS 'doc-frank' has embedded texture images (23)
+PASS MODEL_URLS has 'doc-frank-machine-shop'
+PASS 'doc-frank-machine-shop' -> ../roster/doc-frank/attires/machine-shop/doc-frank-machine-shop-rigged.glb exists on disk
+PASS 'doc-frank-machine-shop' is RIGGED (skins=1, joints=178, images=23, anims=0)
+PASS 'doc-frank-machine-shop' has embedded texture images (23)
+
+ALL PROBE CHECKS PASS

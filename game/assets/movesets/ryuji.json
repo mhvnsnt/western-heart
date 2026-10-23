@@ -2022,5 +2022,21 @@
   }
  },
  "frame_convention": "KOF XV 60fps -> seconds; damage = round(KOF dmg x 0.03), caps: normals 20 / specials+throws 25 / supers+climax 45; soulGain ~= dmg/2 cap 15. Frame values converted from KOF frame-data norms (dreamcancel / SNK wiki).",
- "schema_version": 2
+ "schema_version": 2,
+ "hit_words": {
+  "kachikomi": 2048,
+  "bunnage": 2048,
+  "shimeage": 2048,
+  "bakudan_l": 2048,
+  "bakudan_h": 2048,
+  "bakudan_ex": 2048,
+  "drill": 2048,
+  "drill_l1": 2048,
+  "drill_l2": 2048,
+  "drill_l3": 2048,
+  "drill_l4": 2048,
+  "rock_bottom": 2048,
+  "rock_ddt": 2048
+ },
+ "stance_after": {}
 }
