@@ -198,3 +198,20 @@ chrthree 50.6650%. Detail: `phase16/MOT-GRAMMAR.md`,
 `phase16/containment-map-2.json`, `phase16/PHASE16-STATE.md`.
 Canon Q1–Q6 remain OWNER-pending; nothing else in this
 document changes.
+
+## Phase 17 addendum (2026-10-22, PR #737) — pointer only
+Faithful Ghidra project built (phase-16 import blocker
+root-caused to the MZ loader; project at true base 0x82000000,
+.pdata-seeded, stored in release
+`doa4-ghidra-phase17-20261022`). G4's two items were attacked
+with the project + full-sweep data-flow + stateful constraint
+propagation: the file-side writer's frontier advanced to
+pinned arena bases/pointer globals with the exact missing
+link stated (`phase17/W21-TRACE-2.md`), and the .mot length
+rule's word-aligned rule classes were exhausted with
+falsification counts (`phase17/MOT-STATEFUL.md`). Neither
+item is proven; G4 stays OPEN on the same two items, with a
+one-session dynamic closure spec'd in
+`phase17/XENIA-TRACE-SPEC.md`. Detail:
+`phase17/GHIDRA-PROJECT.md`, `phase17/PHASE17-STATE.md`.
+Nothing else in this document changes.
