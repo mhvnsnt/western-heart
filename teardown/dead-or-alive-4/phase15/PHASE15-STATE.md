@@ -1,0 +1,87 @@
+# DOA4 Phase 15 — STATE — OPEN 2026-10-22 (containment audit + identity harvest; .mot stream decode; w21 opcode hunt via the real XEX)
+
+Branch: `teardown/doa4-phase15-containment-mot` (stacked on `teardown/doa4-phase14-anm-decode`, PR #574 head `a545f4be`).
+Clone: ~/workspace/_doa4p8-clone (sparse, teardown/dead-or-alive-4 only).
+Scratch: ~/workspace/_doa4p2-scratch/p15/ (new this phase); p13/p14 scratch reused read-only where noted.
+Repo path: `teardown/dead-or-alive-4/phase15/`. Wiring inventory: `teardown/dead-or-alive-4/phase7/WIRING-INVENTORY.md`. Final state: `teardown/dead-or-alive-4/phase13/DOA4-FINAL-STATE.md` (additive addendum only).
+
+## ENVIRONMENT (proven — do not re-derive)
+- JAVA_HOME=/home/hatch/workspace/tools/ghidra/jdk-21.0.12.1+1 (NOT on PATH); Ghidra: ~/workspace/tools/ghidra/ghidra_12.1.4_PUBLIC. VM RAM low (~1.8G available) — capped-heap/targeted passes only; Capstone acceptable.
+- TRUE XEX VA BASE = 0x82000000. RAW CAPSTONE is the primary XEX disassembler.
+- Blender: `xvfb-run -a env -u PYTHONPATH ~/workspace/tools/blender/blender-4.0.2-linux-x64/blender`, Cycles CPU; sanitize GLBs first.
+- Egress proxy intermittently kills gh downloads — use resumable drivers + supervisors; NEVER kill an in-progress download that isn't this lane's own stuck process; check the process table before declaring a stall (phase-14 lesson).
+
+## INHERITED TRUTH (verified phase 14 — do not re-derive)
+- ISO assembly CLOSED: release `doa4-iso-v1`, 30 parts, whole-ISO sha256 `4423cd5ca0979e38b48fce3dbdd78de6416abfd4dd01fc8cc9140e2c92b104aa`, size exactly 7,834,892,288 B. Local ISO cleared after verification (one-store rule). Assembler: `phase13/tools/iso_assemble_p13.py` (per-part sha256 vs release digest pre-write).
+- PROVENANCE: mirror tar's chrone/chrtwo/chrthree/anm.afs are RAW PAYLOAD STREAMS, not containers; ISO's same-named files are standard AFS containers with NAMED entries (chrone 73, chrtwo 128, chrthree 188, anm 26). Spot containment proven on chrone (zac00.tpr head at mirror +262,148,096; mid shifted −8,192 B vs ISO layout; entry-2 .cat head+mid layout-consistent; entry2→3 gap 1,376 B identical both sides).
+- Mirror member map (extracted tar, release `doa4-mirror-20261017`, parts of 524,288,000 B): chrone.afs @1212324864 (366,094,336 B), chrtwo @1578419712 (548,042,752 B), chrthree @2135433728 (762,955,776 B), anm @2898390016. Mirror bytes for chr* live in extracted-tar parts 02–05 (digests: p02 fc7b95e5…, p03 24656e3a…, p04 c5d119db…, p05 cccd3eed… — all phase-14 verified vs release).
+- ANM: 24 fighter .bin files have a PROVEN 32-pointer section table (136 B header; sections tile [136, filesize) exactly 24/24); w21 = 1024-entry clip command table of u16 token scripts (record sizes 12–588 B; opcode semantics RESIDUAL); w2 = B keyframe-record stream; w6/w7 curve sections; w28 = (u32 flag, f32 value) curve-pair stream. File identity PROVEN (AFS names == XEX `D:\bin` registry, exact reverse order; registry strings at default_pe.bin file offsets 0x27849c–0x278670).
+- mot.afs (ISO) = standard AFS, 197 NAMED entries (TOC: `phase14/tools/mot_toc_p14.json`): mot_version.bin + per-fighter triples (`<name>.mot`, `m_<name>.mot`, `c_<name>.mot`, 24 basenames; leifang spelled `leifan.*`; rtm plain/c_ slots are byte-identical kasumi copies) + 124 `t_*` tag-motion files. comon.mot in cmn.afs (7 entries). .mot front-table evidence: u32 absolute offset table with unused slots = data-start offset (zack 0x5998=22,936; c_zack 0x5038=20,536); relative offset sub-table at data start; deeper absolute tables in zack.mot (~1.7–1.8M at +2048). mot.afs whole + default.xex whole are in release `doa4-iso-extracts-20261022` (`iso_extracts.tar`, 94,049,280 B, sha256 09e3ecc2…); zack triple working copies in scratch p14/mot/.
+- default.xex retail sha256 `56b68dec68991f007639d796b04cb88c9aa7b484c1fce54641cdda5de4f2b98f` (in doa4-iso-extracts-20261022).
+- Phases 6–12 model library: 148 packages decoded from the MIRROR streams (phase-6 assembly graph); composites 23/31 FINAL; TX2D binding DYNAMIC-ONLY terminal — DO NOT reopen either.
+- XDVDFS tree: `phase13/xdvdfs_tree_full.json`. ISO offsets: chrone @2507206656, chrtwo @1959163904, chrthree @1196208128, mot.afs @1120815104, cmn.afs @804098048, anm.afs @1117865984.
+
+## JOBS
+1. CONTAINMENT AUDIT + IDENTITY HARVEST: re-assemble ISO (per-part sha256 pre-write; VERIFY whole-ISO sha256 == 4423cd5c… before trusting any byte). Extract EVERY named entry of ISO chrone/chrtwo/chrthree (+ chr_version.bin contents); mot.afs/cmn.afs entry lists. Per chr* entry: exact byte search in the corresponding MIRROR stream; head/mid/tail 64B window probes; verdict contiguous / piecewise / absent. Deliverables: CONTAINMENT-AUDIT.md + machine-readable map; mirror coverage % per stream + unexplained-remainder characterization; PACKAGE-NAME-MAP (phase 6–12 package byte ranges vs contained ISO-entry ranges → entry name assignment) + ID-CORRECTIONS.md (every confirm/refute of phases 8–12 tentative IDs; filenames win). Clear local ISO at lane end, logged here + ~/workspace/agent-ops/disk-cleanup-log.md.
+2. .mot STREAM DECODE: extract mot.afs's 197 entries from the verified ISO; release them (new release `doa4-mot-20261022` or extend `doa4-iso-extracts-20261022`; manifest in git either way; per-file sha256). Census zack.mot + m_zack.mot + c_zack.mot + one t_* file. Cross-reference zack.bin w21 clip table + w2/w6/w7/w28 vs .mot records. Decode .mot grammar as far as evidence allows; if a full parse emerges: FIRST CLIP (.bin definition + .mot stream) on a phase-6 skinned GLB skeleton, clip JSON + VIEWED pose render. If grammar resists: census + exact residual, no guessed semantics.
+3. w21 OPCODE SEMANTICS via the REAL XEX (one bounded hunt): default.xex from `doa4-iso-extracts-20261022`. Hunt the consumer of the REAL structures: code walking a 1024-entry u32 offset table, reading the 0x22xx token namespace, or opening `D:\bin\*.bin` / `*.mot`. Deliverable: opcode semantics EVIDENCED from code, or the exact negative with search scope stated.
+4. CLOSEOUT: WIRING-INVENTORY phase-15 section + DOA4-FINAL-STATE.md additive phase-15 addendum (append/pointer only) + this state file final.
+
+## DISCIPLINE
+Additions-only in git; NO `git add -A` (pathspec commits); commit+push after EVERY job step; own-eyes on every render; unique filenames; per-character isolation; never delete repo content; local clears only per one-store rule + logged; NO hand-tooling where a system exists.
+
+## LOG
+- 2026-10-22 lane start: read phase-14 PROVENANCE.md / ANM-DECODE.md / ISO-CLOSEOUT.md / PHASE14-STATE.md + phase-13 ANM-DEFINITION-2.md. Clone at a545f4b (PR #574 head) clean except untracked `tools/phase6/__pycache__/` (not mine, left alone). Branch `teardown/doa4-phase15-containment-mot` created off a545f4b; this state file is the first commit.
+- 2026-10-22 PR #597 opened (base `teardown/doa4-phase14-anm-decode`, head this branch). Tools landed: `iso_assemble_p15.py` (phase-13 assembler, p15 paths), `iso_supervisor_p15.py`, `fetch_mirror_parts_p15.py`, `afs_extract_p15.py` (refuses to run until the whole-ISO sha256 file matches 4423cd5c…). Background lanes launched: ISO supervisor (30 parts), mirror parts 02–05 fetcher, `iso_extracts.tar` download (for Jobs 2/3 ahead of the ISO).
+- 2026-10-22 Job 2 census (zack triple from p14 scratch working copies; sha256 zack.mot add42a1c…, m_zack effa70d2…, c_zack c5f69d15…): **.mot layout EVIDENCED** — (1) Table A at file start: u32 BE ABSOLUTE offsets; entry counts per file: zack.mot **1000**, m_zack.mot **1004**, c_zack.mot **400**; unused slots = data-start offset (zack 22,936; m_zack 22,952; c_zack 20,536); followed by 8 zero bytes. (2) A **byte-identical 18,924 B block** follows table A in all three files (100% 3-way byte-equal) — per-fighter shared block, content undecoded. (3) Records tile [data_start, EOF): zack.mot 376 distinct targets, record sizes (target deltas) min 528 / median 4,584 / max 30,904 B; c_zack has only 2 distinct targets (default + 32,192). (4) Immediately BEFORE each table-A target sits a **44-entry u32 BE absolute offset table** (271/376 records with an exact 44-run; values point at 44 sub-blocks tiling the span before the table; sub-block sizes ~20–672 B; the target = table end + small tail gap 52–88 B). The default record's front descriptor is the same 44/45-entry shape at data_start−4 with 0-based values (max 22,488) — degenerate/empty-record form, exact framing RESIDUAL. (5) Cross-ref vs zack.bin w21: 1024 entries / 584 distinct / dominant 435 ≠ .mot table A's 1000 / 376 / 625 — DIFFERENT index spaces (definition commands vs motion records); no 1:1 correspondence by count. Full census doc + all-197 census after mot.afs extraction (Job 2 main run).
+- 2026-10-22 Job 3 DONE (bounded hunt; `phase15/XEX-HUNT.md`): word-level scan of default_pe.bin (phase-11 method). FOUND: (1) zero lis/addi refs into either registry string range (exact negative, full .text) — loaders use data tables: **.mot registry = 196 records × stride 0x6C at VA 0x82C69A70, name char* at +0x18** (196 ptr words at fileoff 0xC4BC70–0xC4BF7C); **.bin registry = 25 consecutive char* at VA 0x82C6B38C**. (2) .mot loader: 3 code sites compute table+0x18 and index ×0x6C; the loader function (VA ≈0x82391A80) opens the per-fighter file set (struct fields +0x68..+0x74, ids 0x1EC/0x1DB/0x1DD/0x1ED) — .mot selection is by runtime index, mechanism PROVEN. (3) 0x22xx dispatch on RUNTIME records (type@+0x37, id@+0x30, sub@+0x32): classifier at VA 0x82408290 special-marks ids 0x2257/0x227A/0x227B (type 9); dispatcher at VA 0x824F388C (+ twin 0x4E7068) routes ids 0x2211/0x2212/0x2213/0x202C/0x202D to one handler (VA 0x824F76E0); strides 0x9C/0x250 in the fall-through math. RESIDUAL (exact): per-opcode w21 token semantics — the namespace bulk is table-driven, not compare-driven; next step named in XEX-HUNT.md (trace loader-side token→record expansion from the 0x823FA430 cluster).
+- 2026-10-22 Job 2 progress: mot.afs extracted from the phase-14 extracts release (container sha256 5329bc05… verified): **all 197 entries extracted + per-file sha256 manifest landed in git** (`phase15/mot-entries-manifest.json`); duplicate-name note: TOC indices for rtm's plain/c_ slots carry the names kasumi.mot/c_kasumi.mot and are byte-identical copies (manifest hashes both indices independently). Generic census over all 196 .mot entries (scratch `p15/mot_census_all.json`): table A counts — plain .mot ≈1000, m_ ≈1004, c_ = 400 (24/24), t_* files have a DIFFERENT head format ((id,offset) pairs 0x2bc/0x2468, 0x2bd/0x5860, 0x2be/0x7920 + 0xFFFFFFFF separator + packed stream — single-clip files); per-fighter front block byte-identical across the plain/m_ pair in all groups probed (c_ block differs slightly in some fighters, e.g. tina 34,200 vs 34,224 B); mot_version.bin = u32 1 + zeros (same shape as anm_version.bin).
+- 2026-10-22 Job 2 census doc landed (`phase15/MOT-CENSUS.md`): fighter .mot layout EVIDENCED (table A counts plain 1000 / m_ 1004 / c_ 400 over 72/72; per-fighter front block; record area tiling); **44-entry record descriptor** pattern (271/376 exact in zack.mot); payload = packed/delta encoding, NOT raw f32 (grammar RESIDUAL, exact); t_* files = (id,offset) index + packed stream, different simpler format; cross-ref PROVEN non-correspondence between w21 (1024/584) and .mot table A (1000/376). Gate-2 first clip NOT assembled — residual is the packed-encoding expansion grammar; next steps named in MOT-CENSUS §6.
+- 2026-10-22 Job 2 release: **release `doa4-mot-20261022` created** — `mot_entries.tar` (75,325,440 B, sha256 026592a0…; API-verified size+digest). Tar built from container spans with per-entry sha256 asserted against `phase15/mot-entries-manifest.json`; duplicate TOC names suffixed `__toc<index>`.
+- 2026-10-22 RESTART INCIDENT: VM restarted (~16:43 CDT, uptime 2 min at check) killing the supervisor, assembler (mid part-04 proxy EOF), and the mirror fetcher (mid part-03). No verified data lost: ISO log shows 3/30 landed (parts 01–03 digest-verified + written); mirror part-02 digest-verified on disk. Recovery per the standing playbook: supervisor + mirror fetcher relaunched detached (setsid); supervisor removed the unverified part-04 partial (52 MB) and resumed at part 4; mirror fetcher self-heals part-03 (partial fails digest → removed → re-downloaded).
+- 2026-10-22 TRANSPORT CHANGE (own lane, logged): the gh one-shot path kept dying at ~90% of 262 MB parts (part_06 killed at 235 MB, supervisor relaunched, killed again). Switched the ISO lane to the phase-14 range-fetch mechanism (`phase15/tools/iso_fetch_driver_p15.py`): 16 MiB chunks with retries via the asset API, append-resume from the last chunk boundary (the gh partial for part_06 was reused as a sequential prefix, truncated to 167,772,160 B; every part still sha256-verified vs its release digest before the proven assembler writes it, and the assembler re-verifies). Supervisor + gh assembler stopped cleanly by this lane before the switch (no foreign work touched); the mirror fetcher lane is independent and kept running.
+- 2026-10-22 MIRROR PART-03 DIGEST FAILURE (owned, instructive): the range driver resumed the gh-fetcher's part-03 file at 486,539,264 B and completed it — sha256 11a687b3… ≠ release 24656e3a…. The file had accumulated MULTIPLE gh attempts across the VM restart (its size grew monotonically 324→489 MB between attempts, i.e. not a single clean sequential prefix). The driver deleted it and restarted the part from zero with pure range chunks (round 2). Contrast: ISO part_06's partial was a SINGLE gh attempt and its digest PASSED (part_06 + part_07 now landed; ISO 7/30). Rule recorded: a gh partial is a trustworthy prefix only if it has exactly one writer attempt; multi-attempt gh files are deleted, never resumed. Mirror lane switched to the resumable driver (`mirror_fetch_driver_p15.py`) for the same reason as the ISO lane; the old gh fetcher was stopped by this lane before the switch.
+- 2026-10-22 MIRROR SIDE COMPLETE: extracted-tar parts 02/03/04/05 all sha256-verified against release `doa4-mirror-20261017` digests (fc7b95e5… / 24656e3a… / c5d119db… / cccd3eed…) via the resumable driver — every mirror byte the containment audit will read is from a digest-verified part. ISO assembly at 15/30 under the resumable driver (parts landing ~1 per 7 min, zero digest failures on the range path).
+- 2026-10-22 RESTART #2 (~19:29 CDT): VM restarted again, killing the ISO driver mid part-28 (27/30 landed; part-28 chunk prefix intact at a 16 MiB boundary). Driver relaunched; it resumes part-28 from the boundary. No verified data lost.
+
+## LANE CLOSEOUT (2026-10-22, final)
+
+- **Job 1 DONE.** CONTAINMENT-AUDIT.md + containment-map.json +
+  PACKAGE-NAME-MAP.md/.json + ID-CORRECTIONS.md committed.
+  Verdicts: chrone 29 contiguous / 44 scattered; chrtwo 79 / 9
+  scattered (+38 piecewise-unresolved, 2 absent-windows);
+  chrthree 81 contiguous / 66 piecewise / 41 absent (scatter not
+  run for chrthree's non-contiguous set — stated in the audit).
+  Union coverage 29.7553 / 51.1871 / 48.2684 %. Mirror = earlier
+  build's layout (30/68/75 XPR2 bundles), NOT a permutation.
+  70/148 packages name-grade proven; pkg29 REFUTED (= tin02);
+  Kokoro/group-C/pkg10 tentatives UNRESOLVED, plainly.
+- **Job 2 DONE (census tier).** 197 mot entries extracted,
+  manifested, released (`doa4-mot-20261022`). Grammar evidenced
+  to the 44-descriptor record layer; .bin w21 vs .mot records
+  PROVEN different index spaces. First clip NOT assembled —
+  residual = packed-encoding expansion grammar (MOT-CENSUS §6).
+- **Job 3 DONE.** .mot registry (196 × 0x6C, name @+0x18) +
+  loader mechanism PROVEN; 0x22xx dispatch on runtime records
+  evidenced at 15 sites; per-opcode semantics = exact negative
+  (table-driven), next step named (XEX-HUNT.md).
+- **Job 4 DONE.** WIRING-INVENTORY phase-15 section appended;
+  DOA4-FINAL-STATE.md phase-15 addendum appended (pointer only);
+  this state file final.
+- **Local clear (one-store rule):** p15/doa4.iso (7.3 GB,
+  byte-safe in release doa4-iso-v1, whole-hash
+  4423cd5ca0979e38b48fce3dbdd78de6416abfd4dd01fc8cc9140e2c92b104aa
+  re-verified this lane), p15/mirrorparts (2.0 GB, release
+  doa4-mirror-20261017, per-part digests verified), afs_extract
+  (1.5 GB, derived from the verified ISO), mot_entries +
+  mot_entries.tar (release doa4-mot-20261022, tar sha256
+  026592a07c... matched at clear time), extracts (release
+  doa4-iso-extracts-20261022). ~11 GB cleared; scratch retains
+  JSON/logs only. Also logged in
+  ~/workspace/agent-ops/disk-cleanup-log.md.
+- **Gates:** G1 CLOSED · G2 CLOSED (chr/mot/cmn accounted) ·
+  G3 advanced (packages 70/148 named; .mot record layer) ·
+  G4 OPEN (expansion grammar) · G5 13 tools banked · G6
+  unchanged.
+- PR #597 stacks on #574 (still open); not merged from this
+  lane — parent to sequence.
