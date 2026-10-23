@@ -327,16 +327,16 @@ export const ATTIRE_VARIANTS = {
   ],
   'yukihyo': [
     { model: 'yukihyo', label: 'ATTIRE 1' },
-    { model: 'yukihyo-attire1', label: 'ATTIRE 2 (UNRIGGED)' },
-    { model: 'yukihyo-attire2', label: 'ATTIRE 3 · BOBCAT PRIDE (UNRIGGED)' },
-    { model: 'yukihyo-attire3', label: 'ATTIRE 4 · TIGER KING (UNRIGGED)' },
+    { model: 'yukihyo-attire1', label: 'ATTIRE 2' },
+    { model: 'yukihyo-attire2', label: 'ATTIRE 3 · BOBCAT PRIDE' },
+    { model: 'yukihyo-attire3', label: 'ATTIRE 4 · TIGER KING' },
     { model: 'armor-king', label: 'ARMOR KING · ORIGINAL MODEL (TEKKEN)' },
     { model: 'armor-king-attire1', label: 'ARMOR KING · SOURCE MODEL (UNRIGGED)' },
   ],
   'bruno': [
     { model: 'bruno', label: 'ATTIRE 1' },
     { model: 'bruno-attire1', label: 'ATTIRE 2 (UNRIGGED)' },
-    { model: 'bruno-attire2', label: 'ATTIRE 3 · SAIL THE SEA (UNRIGGED)' },
+    { model: 'bruno-attire2', label: 'ATTIRE 3 · SAIL THE SEA' },
   ],
   'dio': [
     { model: 'dio', label: 'ATTIRE 1' },
@@ -344,8 +344,8 @@ export const ATTIRE_VARIANTS = {
   ],
   'negativo': [
     { model: 'n3g4tiv0', label: 'ATTIRE 1' },
-    { model: 'negativo-attire1', label: 'ATTIRE 2 (UNRIGGED)' },
-    { model: 'negativo-attire2', label: 'ATTIRE 3 (UNRIGGED)' },
+    { model: 'negativo-attire1', label: 'ATTIRE 2' },
+    { model: 'negativo-attire2', label: 'ATTIRE 3' },
   ],
   /* SKULL (roster/skull/attires/ATTIRE-SLOTS.md): A1 = his Tripo; the live
      default stays the rigged build of it (the default swap rides the rig
