@@ -288,5 +288,5 @@ Wiring blockers, in dependency order:
   movesets-anim OPEN — the blockers are now exactly two named
   items: (1) the stateful .mot per-item length rule, (2) the
   XEX file-side writer (.bin w21 table → 0x9C runtime
-  records); G5 tooling — 10 phase-16 tools in
+  records); G5 tooling — 14 phase-16 tools in
   `phase16/tools/`; G6 in-game wiring UNCHANGED.
