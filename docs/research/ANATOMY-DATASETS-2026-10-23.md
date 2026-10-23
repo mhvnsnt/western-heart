@@ -11,7 +11,7 @@ The Google DeepMind post (Oct 21, 2026) describes "Gemini 4 Argon combined three
 | # | Dataset | Source | License | Game-use |
 |---|---------|--------|---------|----------|
 | 1 | **BodyParts3D 4.0** | Database Center for Life Science, Japan | **CONFLICTING** — see §2 | **PENDING** |
-| 2 | **Z-Anatomy** | Gauthier Kervyn (derived from BodyParts3D) | Derived — inherits BodyParts3D terms | **PENDING** |
+| 2 | **Z-Anatomy** | Gauthier Kervyn (derived from BodyParts3D) | **CC BY-SA 4.0** (share-alike) | **NO-GO** — contaminates game assets |
 | 3 | **Human Reference Atlas (HRA)** | NIH HuBMAP Consortium | CC BY 4.0 (verify per-release) | Likely OK |
 
 ### Why these three
@@ -23,6 +23,11 @@ The Google DeepMind post (Oct 21, 2026) describes "Gemini 4 Argon combined three
 All three are used together in projects like LearnAnatomy3D, human-atlas, and Somakine.
 
 ## 2. License analysis — CRITICAL
+
+**CORRECTION (2026-10-23, post-merge):** License verifier confirmed from primary sources:
+- BodyParts3D **4.0 (current archive)**: CC BY 4.0 — GO. Older releases (≤4.3): CC BY-SA 2.1 JP — NO-GO. Use only current archive downloads.
+- **Z-Anatomy: CC BY-SA 4.0 — NO-GO.** Share-alike contaminates game assets. Do not use.
+- HRA 3D organs: CC BY 4.0 — GO.
 
 ### BodyParts3D: CONFLICTING license claims
 
