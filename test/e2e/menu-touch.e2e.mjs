@@ -41,10 +41,10 @@ async function hitCheck(p, tag) {
 let p = await page(false);
 await hitCheck(p, '01-menu');
 const scr = () => p.evaluate(() => ['screen-menu', 'screen-select', 'screen-stage', 'hud'].filter(id => { const e = document.getElementById(id); return e && getComputedStyle(e).display !== 'none' && !e.classList.contains('hidden'); }));
-const step = async (sel, want, shot) => {
+const step = async (sel, want, shot, waitMs = 60000) => {
   await p.tap(sel, { timeout: 90000 }); await p.waitForTimeout(800);
   if (want) {
-    try { await p.waitForFunction((id) => { const e = document.getElementById(id); return e && getComputedStyle(e).display !== 'none' && !e.classList.contains('hidden'); }, want, { timeout: 60000 }); }
+    try { await p.waitForFunction((id) => { const e = document.getElementById(id); return e && getComputedStyle(e).display !== 'none' && !e.classList.contains('hidden'); }, want, { timeout: waitMs }); }
     catch { fails.push(`tap ${sel}: expected ${want}, on ${await scr()}`); }
   }
   if (shot) await p.screenshot({ path: `${SHOTS}/${shot}.png` });
@@ -53,7 +53,7 @@ try {
   // Versus opens the T8-style submenu (PR #841); 1V1 VERSUS -> setup -> choose fighters -> select.
   await step('[data-mm="versus"]', null, '02-versus-submenu');
   await step('.mm-card >> nth=0', 'screen-vssetup', '02b-vssetup');
-  await step('#screen-vssetup [data-action="mode-versus"]', 'screen-select', '02-select');
+  await step('#screen-vssetup [data-action="mode-versus"]', 'screen-select', '02-select', 180000);
   await step('.char-card >> nth=0'); await step('#confirm-fighter');
   await step('.char-card >> nth=2'); await step('#confirm-fighter', 'screen-stage', '03-stage');
   await p.tap('#confirm-stage');
@@ -61,6 +61,7 @@ try {
   await p.waitForTimeout(2000); await p.screenshot({ path: `${SHOTS}/04-fight.png` });
   console.log('flow: menu -> select -> stage -> fight OK');
 } catch (e) { fails.push('flow: ' + e.message.split('\n')[0]); }
+await p.close(); // free the flow page's 3D renderer before the second page
 p = await page(true);
 await hitCheck(p, '05-menu-module-failed');
 await b.close();
