@@ -2241,6 +2241,23 @@ documented-not-duplicated per directive) · shortcuts disclosed (no screenshots,
 FPS — flagged) · proof attached (56/56 node asserts) · branch/PR · CI must be green ·
 gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted made public
 (all code clean-room procedural; no game assets extracted).
+
+
+---
+
+## 2026-10-23 — Lars pull worker: CHORDZ moveset completion + Lars motion gap filed
+
+**Owner instruction (verbatim):** "pull their animations and movesets fully and everything... and their stances and poses"
+
+**Source hunt (all checked):** TTT2 `extracted-small/` = only Xbox LIVE packages + container descriptor (no game data); full TTT2 extraction blocked (disk ~27GB needed vs ~11GB free, safe-storage upload 5/26 chunks, STFS tooling, format RE). T6 PSP `decrypted/` = EBOOT only; DATA401 bulk transform still unknown (decrypt lane, branch `feature/tekken6-100-teardown`). T3 has no Lars (T6 debut). **No Lars motion extractable from any teardown today.**
+
+**Moveset (done):** diffed `game/assets/movesets/chordz.json` (452) against the fullest Lars banks — `docs/t7t8-reference/frame-data-t7/lars.json` (186) + `docs/t7t8-reference/frame-data-t8-full/lars.json` (121). Added the 17 genuinely missing moves in Tekken notation: `f,f+2` (Surge Blast), `f,f+3` (Electric Jolt), `f,f+4`, `f,f+4,3`, `f,f+1+2` (Elbow Corona), `f,f+3+4` (Double Action), `WR.4`, `WS.1,F`, `WS.2,F`, `f,f+2,F` (->Silent Entry transitions), `GROUNDED.d+3+4` (Stack Up), `GROUNDED.d+3+4,F`, `FUFT.d+4`, `FUFT.d+3+4` (getup kicks), `TACKLE.2`, `R.d/f+1+2` (Rage Art Zeus Unlimited), `AIR.DEN.2+4` (Rejection alias). Moves 452 -> 469, strings 66 -> 71, `stance_after` +4 SEN transitions, `hit_words` for 15 new moves; `index.json` counts updated. Provenance in `merge_sources.added.lars_pull_20261023`.
+
+**Animations/stance/poses (blocked, filed not stubbed):** no fake `lars` bank shipped (isolation doctrine + RULES_NO_GUESSING). Chordz keeps the flagged `jin` substitution bank (all 22 action clips present/valid). Precise gap filed: `docs/anim/LARS-ANIM-GAP-20261023.md` (exact missing bank files, TTT2/T6 blockers, unblock sequence) + pointer in the G-T6 register of `docs/anim/BANK-TABLE-2026-10-20.md`.
+
+**Verification:** all 17 new moves resolve via the game's own `resolveMove('chordz', …)`; `node --test game/tests/fighter-completeness.test.mjs` green (4/4); new-move schema + source-id refs validated; jin bank clip files all parse with frames. Live-browser play verification (animations on Chordz in-game) is queued for a browser-capable lane — subagent has no live browser.
+
+**Anti-clobber:** branched from main tip; sibling lane's WIP stashed intact; JSON edits via round-trip-safe scripted merges (diffs are additions-only); no deletions. Branch pushed via Git Database API (no GitHub connector for git ops).
 ## 2026-10-23 ~18:30 CDT — Law full pull for BUFFALO BILL (branch `law/full-pull-2026-10-23`)
 
 - **Moveset** (`game/assets/movesets/buffalo-bill.json`): 228 -> 229 moves. Full-bank
