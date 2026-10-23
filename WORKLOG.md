@@ -2159,6 +2159,16 @@ On-main files NOT touched: worker 37's `js/creation-flow.js` + `js/art.js`
 - **Gaps:** Motion clips not in release (likely in 3.7GB vf5-500m ROM, not pulled); 38 stg*.farc stages deferred to arena pipeline.
 - Merged via git_merge.py as 7f38022d (additions only; CI: instruction-gate, clobber-guard, deletion-guard, guard all green).
 
+## 2026-10-22 — Moveset Library System (worker 47)
+
+Built the central moveset library + per-fighter assembly system (owner standing directive):
+- `game/data/moveset-library/`: 9,516 moves across 6 banks (T3 4,648 · No Mercy 4,409 · WMXIX 169 · DOA 146 · VF 48 · VF5 96) + 8 pending banks registered; `schema.json`, `axes.json`, `claimed-map.json` (source law), `index.json`. Reproducible ingest: `tools/moveset-library/ingest.mjs`.
+- `game/js/moveset-library.js`: `assembleFighter()` → v2-contract movesets; source-law gate in code; no pending banks.
+- `game/data/movesets/`: pre-assembled bannon (28) / el-toro (23) / pablo (36 — locked flavor: powerhouse + comedy-whiff lucha attempts + Black Reign Ride / Abyss Choke dark thread) / npc-finxsse (23). VF5 bases live from vf-{elblaze,jeffry,wolf,leifei}.json federation conversions (another lane, reused read-only).
+- `game/moveset-browser.html`: browse by axis, inspect, attach/detach, save. Fully working dev page.
+- Docs: `docs/research/moveset-library-schema.md`, `docs/decisions/2026-10-22-moveset-library.md`, `docs/handoffs/moveset-library-vf5-format.md` (worker-45 contract, read-only).
+- Proof: node --check clean; ingest 0 violations; assembler CLI verified (pablo 36 / bannon 28 / el-toro 23 / npc-finxsse 23, law-clean, 0 unresolved); claimed pull refused / free pull allowed.
+- Note: #678 merged then was dropped from main by #679's merge tree; restored via this PR (see decisions log).
 ## 2026-10-22 — Worker 28: STAGE MECHANICS + RAGE/COMEBACK + SOUL URGE (T8 Heat)
 
 **Owner instruction (verbatim):** "From all teardown games, wire up: (1) Stage mechanics — Tekken floor/wall/balcony breaks, DOA knock-through-walls into new areas. (2) Rage/comeback systems — rage arts/drives, slow-mo finishes."
@@ -2388,6 +2398,23 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 **Verification:** all 17 new moves resolve via the game's own `resolveMove('chordz', …)`; `node --test game/tests/fighter-completeness.test.mjs` green (4/4); new-move schema + source-id refs validated; jin bank clip files all parse with frames. Live-browser play verification (animations on Chordz in-game) is queued for a browser-capable lane — subagent has no live browser.
 
 **Anti-clobber:** branched from main tip; sibling lane's WIP stashed intact; JSON edits via round-trip-safe scripted merges (diffs are additions-only); no deletions. Branch pushed via Git Database API (no GitHub connector for git ops).
+## 2026-10-23 — Claude session: T3 banks ogre/kuma/gon/law decoded; SmutBase rigs wired; loader race
+
+- SmutBase: Chatur, Pond, Megami (crew rigs, facing +Z), Menajerii (crew rig minus a skinned 4.23 m floor plane),
+  Ryusan + Tobi (re-rigged from statics stood upright by the new tools/auto_rig/reorient_static.py). PR #804.
+  Proof: docs/proof/claude-2026-10-23/smutbase/.
+- T3 banks: tools/anim/t3_bake_bank.py (new) decoded divmot14_ogre, divmot11_kuma, divmot19_gon, divmot01_law onto each
+  character's own body (t3body_<bank>.glb), 30 clips each; skeleton.json via t3_bank_skeleton.py; rows.pack.json via
+  t3_row_bake.py (ogre 187, gon 147, kuma 161, law 216 rows). Registered in t3anims.js (T3_BANKS, SOURCE_TO_BANK incl.
+  panda->kuma) and fighter.js FIGHTER_BANK (chatur->ogre, dorowani->gon, menajerii->kuma). Buffalo Bill resolves to law.
+  Forest Law: body fit fails on all four KMD costumes; follow-up via --kmd-from law.
+- game/js/assets.js: loadModels no longer joins an in-flight load that it just aborted (idle lane) — fights with a
+  still-warming fighter (Pantera) failed with AbortError.
+- Verified: Chatur vs Pantera arcade fight on the ogre bank (t3_ogre_stance/walkFwd/row50/medium), no page errors.
+  Proof: docs/proof/claude-2026-10-23/t3-banks/.
+- Found, handed to the crew: Megami, Menajerii, Ryusan, Tobi have movesets + models but NO roster entries in
+  game/js/roster-full.js (not selectable). Pond/Megami/Ryusan bases (Raven T7, Jun TTT2, Lucky Chloe T7) have no
+  decoded animation bank anywhere in the repo.
 
 ## ANIMATION GATE — fight vs show (owner t117u, 2026-10-23 14:14 CT)
 
@@ -2396,6 +2423,8 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 - Enforced in code at the two places fight actions are created: `createT3Actions()` in `game/js/t3anims.js` and the embedded Idle/Walk/Run path in `game/js/assets.js`.
 - Crossover only via allowlist `game/data/crossover.json`: fight clips → SHOW / CUTSCENE / INTRO_OUTRO; show clips → INTRO_OUTRO / CUTSCENE / SHOW, **never FIGHT** (`setCrossover` throws if anyone adds FIGHT). Changing that requires an owner-approved moveset PR.
 - CI: `test/anim-gate.test.mjs` (picked up by rig-guard game-unit-tests) simulates 600-frame fights for every roster fighter with show clips injected, asserts 0 show clips played, and checks allowlist-only crossover. Mutation check: removing the gate line makes it fail (104 fails).
+
+- 2026-10-23 14:25 CT Grok Bot (Repo Co Dev): recorded owner laws (relayed via MoneyManBusch). (1) 2:19 PM CT — data from T5/T6/T7/T8/TTT2; T3 last-resort fallback, every use logged with reason. (2) 2:21 PM CT — NO hand-made menus; all menus/char select/customization incl. packages/creation-suite built from teardowns, every UI change cites its teardown source; CI gate owned by MoneyManBusch; existing creation suite UI marked NON-COMPLIANT pending rebuild (not deleted). Updated RULES_NO_GUESSING, HOW-TO-CONTINUE, AGENTS.md, IMPORTERS.md, creation-suite README. Source: owner via MoneyManBusch.
 ## 2026-10-23 ~18:30 CDT — Law full pull for BUFFALO BILL (branch `law/full-pull-2026-10-23`)
 
 - **Moveset** (`game/assets/movesets/buffalo-bill.json`): 228 -> 229 moves. Full-bank

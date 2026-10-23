@@ -111,6 +111,15 @@ export const T3_BANKS = {
   // be fitted (docs/anim/PROCEDURAL_AUDIT.md). tools/anim/t3_row_bake.py
   // --bank heihachi --kmd-from jin. Real Heihachi motion, Jin proportions.
   heihachi:   'assets/anim/t3/heihachi_on_jin/',
+  // Last decoded banks (2026-10-23, tools/anim/t3_bake_bank.py): own divmot motion on each character's
+  // own body. ogre = divmot14 (Ogre / True Ogre), kuma = divmot11 (Kuma; Panda shares it in T3),
+  // gon = divmot19, law = divmot01 (Marshall Law).
+  ogre:       'assets/anim/t3/ogre/',
+  kuma:       'assets/anim/t3/kuma/',
+  gon:        'assets/anim/t3/gon/',
+  law:        'assets/anim/t3/law/',
+  // Forest Law's own divmot20 motion posed on Law's body (his KMDs do not fit; heihachi_on_jin pattern).
+  forestlaw:  'assets/anim/t3/forestlaw_on_law/',
 };
 
 // Moveset source name -> bank key. 'demonio' is the game's rename of Jin
@@ -128,8 +137,7 @@ export const SOURCE_TO_BANK = {
   eddy: 'eddy', julia: 'julia', anna: 'anna',
   bosconovitch: 'bosconovitch', heihachi: 'heihachi',
   armorking: 'armorking', 'armor-king': 'armorking',
-  // Law (2026-10-23, Buffalo Bill pull): Buffalo Bill's t3_source is 'law'.
-  law: 'law',
+  ogre: 'ogre', kuma: 'kuma', panda: 'kuma', gon: 'gon', law: 'law', forestlaw: 'forestlaw',
 };
 
 /**

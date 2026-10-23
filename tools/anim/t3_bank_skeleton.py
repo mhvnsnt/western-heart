@@ -45,9 +45,14 @@ BANKS = {
     "bosconovitch": "lab/game/assets/t3_bosconovitch_t3real.glb",
     "heihachi": "lab/game/assets/t3_heihachi_t3real.glb",
     "armorking": "lab/game/assets/t3_armorking_t3real.glb",
-    # Law bank (2026-10-23, law pull for Buffalo Bill): divmot01_law.bin baked
-    # onto Law's own T3 18-part rig (lab/tools/t3_motion_bake.py --bank law).
+    # Last banks (2026-10-23): baked by tools/anim/t3_bake_bank.py onto each character's own body
+    # (lab/game/assets/t3body_<bank>.glb, tools/anim/t3_extract_bodies.py).
+    "ogre": "lab/game/assets/t3_ogre_t3real.glb",
+    "kuma": "lab/game/assets/t3_kuma_t3real.glb",
+    "gon": "lab/game/assets/t3_gon_t3real.glb",
     "law": "lab/game/assets/t3_law_t3real.glb",
+    # Forest Law's divmot20 motion posed on Law's body (his own KMDs do not fit; heihachi_on_jin pattern).
+    "forestlaw_on_law": "lab/game/assets/t3_forestlaw_on_law_t3real.glb",
 }
 # ---------------------------------------------------------------------------
 # NEUTRAL_BIND (2026-10-22, star segment-flip fix): the T3 18-part import

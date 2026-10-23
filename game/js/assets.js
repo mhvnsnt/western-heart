@@ -359,10 +359,12 @@ export const MODEL_URLS = {
   // CHATUR (owner 2026-10-23): True Ogre's WH replacement — four-armed Oversoul
   // spirit, temple dancer who refused to die. SmutBase intake (roster/rahkasa/).
   // Unrigged static (1 mesh; rig widgets live in the .blend); k-NN auto-rig
+  // from donor is the planned path.
   // Rigged 2026-10-23 (PR #780, 52-joint canonical skeleton, verified).
   chatur: '../roster/rahkasa/attires/attire1/model-rigged.glb',
   // POND (owner 2026-10-23): Raven's WH replacement — swamp boundary watcher,
   // found Dorowani as an egg. SmutBase intake (roster/tsuyu-asui/). Unrigged
+  // static (9 meshes, clothing separate); k-NN auto-rig from donor is the planned path.
   // Rigged 2026-10-23 (PR #780, 52-joint canonical skeleton, verified).
   pond: '../roster/tsuyu-asui/attires/attire1/model-rigged.glb',
   // CHARGER Attire 2 (2026-10-21, lane 4 rig batch 1): unrigged Tripo static -> model-rigged.glb
@@ -394,15 +396,17 @@ export const MODEL_URLS = {
   // megami-menajerii-smutbase-20261023. Canon: roster/parvati/CANON.md.
   // Moveset: game/assets/movesets/megami.json (Jun Kazama TTT2 kit, Tekken inputs).
   megami: '../roster/parvati/attires/attire1/model-rigged.glb',
-  'megami-attire1': '../roster/parvati/attires/attire1/model.glb',
+  'megami-attire1': '../roster/parvati/attires/attire1/model-rigged.glb',
   // MENAJERII (2026-10-23, SmutBase 6 pipeline fighters 5-6): SmutBase Vixen
   // commission intake (Injustice 2-based). In-repo build = meshopt-compressed
   // (41.7 MB, validated); intake original (629.7 MB) archived on release
   // megami-menajerii-smutbase-20261023. Canon: roster/vixen/CANON.md.
   // Moveset: game/assets/movesets/menajerii.json (Roger Jr. TTT2 kit, fresh
   // Tekken inputs per owner directive — no Injustice 2 input system).
-  menajerii: '../roster/vixen/attires/attire1/model-rigged.glb',
-  'menajerii-attire1': '../roster/vixen/attires/attire1/model.glb',
+  // model-rigged-noplane.glb = the crew rig (PR #780) with its skinned 4.23 m floor plane removed
+  // (docs/proof/claude-2026-10-23/smutbase/README.md); the crew file stays beside it.
+  menajerii: '../roster/vixen/attires/attire1/model-rigged-noplane.glb',
+  'menajerii-attire1': '../roster/vixen/attires/attire1/model-rigged-noplane.glb',
   // ——— LANDING WAVE 1 (2026-10-23, docs/CATCHUP-AUDIT-2026-10-23.md) ———
   // Wiring fixes only: keys for models already on main that no key reached.
   // BUFFALO BILL: his moveset file sat on main unlisted; A1/A2 sources named
@@ -443,15 +447,17 @@ export const MODEL_URLS = {
   // RYUSAN (owner 2026-10-23): SmutBase Mina Ashido intake — WH name RYUSAN,
   // the Corrosion Soul. Attire 1 = the SmutBase GLB (unrigged static; rig queued).
   // NOTE: roster/mina-ashido/attires/attire1/model-rigged.glb landed on main
-  // repointed to model-rigged.glb 2026-10-23 after rig validation.
-  ryusan: '../roster/mina-ashido/attires/attire1/model-rigged.glb',
-  'ryusan-attire1': '../roster/mina-ashido/attires/attire1/model.glb',
+  // 2026-10-23 (PR #781, wave-1 rigging) — repoint key after rig validation.
+  // In-game validation (docs/proof/claude-2026-10-23/smutbase): the model-rigged.glb build tears
+  // apart in the T3 stance; model-rerig.glb (upright static + GameRig +Z) holds it.
+  ryusan: '../roster/mina-ashido/attires/attire1/model-rerig.glb',
+  'ryusan-attire1': '../roster/mina-ashido/attires/attire1/model-rerig.glb',
   // TOBI (owner 2026-10-23): SmutBase Mirko (Rumi Usagiyama) intake — WH name
   // TOBI, the Escape Soul. Attire 1 = the SmutBase GLB (unrigged static; rig queued).
   // NOTE: roster/miruko/attires/attire1/model-rigged.glb landed on main
-  // repointed to model-rigged.glb 2026-10-23 after rig validation.
-  tobi: '../roster/miruko/attires/attire1/model-rigged.glb',
-  'tobi-attire1': '../roster/miruko/attires/attire1/model.glb',
+  // 2026-10-23 (PR #781, wave-1 rigging) — repoint key after rig validation (same finding as Ryusan).
+  tobi: '../roster/miruko/attires/attire1/model-rerig.glb',
+  'tobi-attire1': '../roster/miruko/attires/attire1/model-rerig.glb',
 };
 
 /* ============================================================
@@ -1088,7 +1094,10 @@ class AssetManager {
       // Join an in-flight load instead of doubling it — unless this call
       // carries its own abort signal (a preview tap owns its fetch so a
       // newer tap can cancel it without disturbing other consumers).
-      if (fly && !opts.signal) { jobs.push(fly.promise); continue; }
+      // Never join a load that was just aborted (the idle warm lane, cancelled above by this
+      // same call): joining it made a fight reject with AbortError whenever its fighter was
+      // still warming (2026-10-23, Pantera: "fight load failed: BodyStreamBuffer was aborted").
+      if (fly && !opts.signal && !fly.signal.aborted) { jobs.push(fly.promise); continue; }
       jobs.push(this._loadOne(id, onProgress, unique.length, opts));
     }
     let done = 0;
@@ -1104,7 +1113,7 @@ class AssetManager {
   /* One model: fetch (abort-aware, byte-progress) -> parseAsync ->
      _ingest. Aborts never retry; other failures retry once. */
   _loadOne(id, onProgress, total, opts) {
-    if (this._inflight[id] && !opts.signal) return this._inflight[id].promise;
+    if (this._inflight[id] && !opts.signal && !this._inflight[id].signal.aborted) return this._inflight[id].promise;
     const ctrl = new AbortController();
     if (opts.signal) {
       if (opts.signal.aborted) ctrl.abort(opts.signal.reason);
@@ -1160,7 +1169,7 @@ class AssetManager {
     const tracked = run.finally(() => {
       if (this._inflight[id] && this._inflight[id].promise === tracked) delete this._inflight[id];
     });
-    this._inflight[id] = { promise: tracked, abort: () => ctrl.abort() };
+    this._inflight[id] = { promise: tracked, abort: () => ctrl.abort(), signal: ctrl.signal };
     return tracked;
   }
 
