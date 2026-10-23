@@ -227,6 +227,21 @@ export const FULL_ROSTER = [
     surge: { name: 'DINO BREATH SURGE', color: 0xff6a00, accent: 0xffd23f },
     stats: { speed: 5.5, jump: 7.5, power: 1.1, defense: 0.95 },
     ai: { aggression: 0.85, grabBias: 0.35, reaction: 0.6 } },
+  // CHATUR (owner 2026-10-23): True Ogre's WH replacement — four-armed Oversoul
+  // spirit, temple dancer who refused to die. Anchors the spirit realm, GYOU-touched.
+  // Moveset: True Ogre's Tekken 3 kit (chatur.json). "Stopping is dying. I already did that once."
+  { id: 'chatur', name: 'CHATUR', title: 'The Bridge Soul', base: 'True Ogre', moveset: 'chatur', model: 'chatur', tintStrength: 0.25,
+    colors: { suit: 0x3a2a5a, trim: 0xd8b46a }, style: 'Temple Dance / Oversoul', archetype: 'Power',
+    surge: { name: 'FOURFOLD MUDRA SURGE', color: 0x8a5adf, accent: 0xffe9b0 },
+    stats: { speed: 3.8, jump: 6.0, power: 1.45, defense: 1.15 },
+    ai: { aggression: 0.7, grabBias: 0.4, reaction: 0.55 } },
+  // POND (owner 2026-10-23): Raven's WH replacement — swamp boundary watcher,
+  // found Dorowani as an egg. Moveset: Raven's Tekken 7 kit (pond.json). "The pond does not chase."
+  { id: 'pond', name: 'POND', title: 'The Still Water Soul', base: 'Raven', moveset: 'pond', model: 'pond', tintStrength: 0.25,
+    colors: { suit: 0x1a4a3a, trim: 0x7ad8b0 }, style: 'Ninjutsu / Still Water', archetype: 'Evasive',
+    surge: { name: 'STILL WATER SURGE', color: 0x2a8a6a, accent: 0xb0ffe0 },
+    stats: { speed: 5.2, jump: 7.2, power: 1.0, defense: 1.0 },
+    ai: { aggression: 0.6, grabBias: 0.35, reaction: 0.7 } },
   { id: 'vega', name: 'VEGA', title: 'The Claw', base: 'Vega', moveset: 'vega', model: 'vega', tintStrength: 0.25,
     colors: { suit: 0x8a2a6b, trim: 0xffd700 }, style: 'Claw', archetype: 'Evasive',
     surge: { name: "MATADOR'S FURY", color: 0xcc2288, accent: 0xffffff } },

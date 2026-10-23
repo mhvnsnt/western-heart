@@ -352,6 +352,15 @@ export const MODEL_URLS = {
   // DOROWANI (owner 2026-10-22): Gon's WH replacement. Unrigged Tripo static
   // (see roster/dorowani/RIG-SPEC.md); k-NN rig from pantera donor is the planned path.
   dorowani: '../roster/dorowani/attires/attire1/source/dorowani-a1-crimson-cheeks.glb',
+  // CHATUR (owner 2026-10-23): True Ogre's WH replacement — four-armed Oversoul
+  // spirit, temple dancer who refused to die. SmutBase intake (roster/rahkasa/).
+  // Unrigged static (1 mesh; rig widgets live in the .blend); k-NN auto-rig
+  // from donor is the planned path.
+  chatur: '../roster/rahkasa/attires/attire1/model.glb',
+  // POND (owner 2026-10-23): Raven's WH replacement — swamp boundary watcher,
+  // found Dorowani as an egg. SmutBase intake (roster/tsuyu-asui/). Unrigged
+  // static (9 meshes, clothing separate); k-NN auto-rig from donor is the planned path.
+  pond: '../roster/tsuyu-asui/attires/attire1/model.glb',
   // CHARGER Attire 2 (2026-10-21, lane 4 rig batch 1): unrigged Tripo static -> model-rigged.glb
   // via tools/auto_rig knn backend (donor pantera.glb); original model.glb untouched.
   'charger-attire2': '../roster/charger/attires/attire2/model-rigged.glb',
