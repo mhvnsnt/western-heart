@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>WH — Customization Viewer (proof)</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #14161c; overflow: hidden; }
+  #status { position: fixed; left: 8px; top: 8px; color: #9fdc9f; font: 12px monospace; z-index: 2; white-space: pre-wrap; }
+  canvas { display: block; }
+</style>
+<script type="importmap">
+{ "imports": {
+  "three": "./vendor/three.module.js",
+  "three/addons/": "./vendor/addons/"
+} }
+</script>
+</head>
+<body>
+<div id="status">booting…</div>
+<script type="module">
+/* Minimal proof viewer: loads ONE fighter model through the game's own
+   assets loader, wraps it in the fighter-shaped object the consumer
+   expects, and runs the REAL game/js/customization-consumer.js against
+   the fighter's suite profile — then renders one frame. Exists because
+   the full fight page cannot hold a software-GL renderer alive on a
+   saturated shared VM; the consumer code path under test is identical. */
+import * as THREE from 'three';
+import { assets } from './js/assets.js';
+import { applyFighterProfile } from './js/customization-consumer.js';
+
+const status = document.getElementById('status');
+const qs = new URLSearchParams(location.search);
+const FID = qs.get('fighter') || 'pantera';
+if (qs.get('profile') === 'ui') {
+  try {
+    const rec = await (await fetch('../packages/creation-suite/ui/proof/ui-built-profile.json')).json();
+    localStorage.setItem('wh_creation_suite_v1', JSON.stringify(rec));
+  } catch (e) { console.warn('profile seed failed', e); }
+}
+
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(720, 540);
+renderer.setPixelRatio(1);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+document.body.appendChild(renderer.domElement);
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x232733);
+scene.fog = new THREE.Fog(0x232733, 9, 22);
+const camera = new THREE.PerspectiveCamera(38, 720 / 540, 0.1, 60);
+if (qs.get('view') === 'back') { camera.position.set(-1.7, 1.5, -3.1); } else { camera.position.set(1.7, 1.5, 3.1); }
+camera.lookAt(0, 1.0, 0);
+scene.add(new THREE.HemisphereLight(0xdfe8ff, 0x33261a, 1.15));
+const key = new THREE.DirectionalLight(0xffffff, 2.2);
+key.position.set(3, 5, 4);
+scene.add(key);
+const rim = new THREE.DirectionalLight(0x88aaff, 0.9);
+rim.position.set(-4, 3, -3);
+scene.add(rim);
+const ground = new THREE.Mesh(
+  new THREE.CircleGeometry(7, 40),
+  new THREE.MeshStandardMaterial({ color: 0x2c303c, roughness: 1 }));
+ground.rotation.x = -Math.PI / 2;
+scene.add(ground);
+
+try {
+  await assets.loadModels([FID]);
+  const inst = assets.createInstance(FID);
+  if (!inst || !inst.model) throw new Error('model did not resolve: ' + FID);
+  const model = inst.model;
+  scene.add(model);
+  const fighter = { char: { id: FID, name: FID.toUpperCase() }, model, root: model, _isCAW: false };
+  await applyFighterProfile(fighter);
+  if (qs.get('ds') === '1') {
+    model.traverse((o) => { if (o.isMesh && o.name !== 'cs_part_wrap') { const ms = Array.isArray(o.material) ? o.material : [o.material]; ms.forEach((m) => { if (m && 'side' in m) m.side = THREE.DoubleSide; }); } });
+  }
+  renderer.render(scene, camera);
+  window.__frame = renderer.domElement.toDataURL('image/png');
+  const holder = model.getObjectByName('cs_attire_torso');
+  let dbg = null;
+  if (holder) {
+    const wp = new THREE.Vector3(); holder.getWorldPosition(wp);
+    const box = new THREE.Box3().setFromObject(holder);
+    const sz = box.getSize(new THREE.Vector3());
+    dbg = { bone: holder.parent.name, holderWorld: wp.toArray().map(v => +v.toFixed(2)),
+            pieceSize: sz.toArray().map(v => +v.toFixed(2)),
+            boxMin: box.min.toArray().map(v => +v.toFixed(2)), boxMax: box.max.toArray().map(v => +v.toFixed(2)) };
+  }
+  window.__state = {
+    csParts: Object.keys(model.userData.csParts || {}),
+    csAttire: Object.keys(model.userData.csAttire || {}),
+    applied: model.userData.csProfileApplied || null,
+    dbg,
+  };
+  status.textContent = 'ready: ' + JSON.stringify(window.__state);
+  window.__ready = true;
+  console.log('[VIEWER] ready', JSON.stringify(window.__state));
+} catch (e) {
+  status.textContent = 'FAILED: ' + (e.message || e);
+  console.error('[VIEWER] failed', e);
+}
+</script>
+</body>
+</html>

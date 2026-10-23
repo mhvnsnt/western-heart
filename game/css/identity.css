@@ -1,0 +1,151 @@
+/* ============================================================
+   WESTERN HEART — identity pages shared styles (worker 35)
+   identity.html · settings.html · side-games.html
+   WH visual identity: deep head-dark backgrounds, ember gold,
+   sacred-geometry accents, Malakor dark-fantasy palettes.
+   Alchemical/occult unicode symbols approved for identity use.
+   ============================================================ */
+:root {
+  --wh-bg: #14091f;
+  --wh-bg2: #1e0f2e;
+  --wh-panel: rgba(30, 15, 46, 0.92);
+  --wh-gold: #ffb14d;
+  --wh-ember: #ff7a3c;
+  --wh-violet: #8b2bd8;
+  --wh-ink: #f2e8ff;
+  --wh-dim: rgba(242, 232, 255, 0.62);
+  --wh-line: rgba(255, 177, 77, 0.25);
+}
+* { box-sizing: border-box; }
+body.wh-page {
+  margin: 0; min-height: 100vh; color: var(--wh-ink);
+  font-family: -apple-system, "Segoe UI", Roboto, "Hiragino Sans", sans-serif;
+  background:
+    radial-gradient(1200px 600px at 50% -10%, rgba(139,43,216,0.25), transparent 60%),
+    radial-gradient(900px 500px at 85% 110%, rgba(255,122,60,0.12), transparent 60%),
+    var(--wh-bg);
+}
+.wh-wrap { max-width: 860px; margin: 0 auto; padding: 18px 16px 60px; }
+.wh-topbar { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.wh-topbar h1 { font-size: 22px; letter-spacing: 3px; margin: 0; }
+.wh-topbar h1 .soul { color: var(--wh-gold); }
+.wh-back {
+  color: var(--wh-gold); text-decoration: none; border: 1px solid var(--wh-line);
+  border-radius: 10px; padding: 10px 14px; font-size: 14px; background: rgba(255,177,77,0.06);
+}
+.wh-card {
+  background: var(--wh-panel); border: 1px solid var(--wh-line);
+  border-radius: 16px; padding: 18px; margin-bottom: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+}
+.wh-card h2 { margin: 0 0 4px; font-size: 17px; letter-spacing: 2px; color: var(--wh-gold); }
+.wh-card .sub { color: var(--wh-dim); font-size: 13px; margin: 0 0 14px; line-height: 1.5; }
+.wh-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.wh-btn {
+  appearance: none; border: 1px solid var(--wh-line); border-radius: 12px;
+  background: linear-gradient(180deg, rgba(255,177,77,0.16), rgba(255,177,77,0.05));
+  color: var(--wh-ink); font-weight: 700; letter-spacing: 1px; font-size: 14px;
+  padding: 12px 18px; min-height: 48px; cursor: pointer;
+}
+.wh-btn:active { transform: scale(0.97); }
+.wh-btn.ghost { background: transparent; }
+.wh-btn:disabled { opacity: 0.4; }
+.wh-input, .wh-select {
+  background: #0f0718; border: 1px solid var(--wh-line); color: var(--wh-ink);
+  border-radius: 10px; padding: 12px; font-size: 15px; min-height: 48px;
+}
+.wh-input { width: 100%; }
+.wh-tag {
+  display: inline-block; font-size: 11px; letter-spacing: 1.5px; font-weight: 800;
+  border: 1px solid var(--wh-line); border-radius: 999px; padding: 4px 10px;
+  color: var(--wh-gold); margin-bottom: 8px;
+}
+.wh-toast {
+  position: fixed; left: 50%; bottom: 26px; transform: translateX(-50%) translateY(20px);
+  background: rgba(20, 9, 31, 0.96); border: 1px solid var(--wh-gold); color: var(--wh-ink);
+  padding: 12px 20px; border-radius: 12px; font-weight: 700; opacity: 0; z-index: 9999;
+  transition: opacity 0.3s, transform 0.3s; pointer-events: none; max-width: 92vw; text-align: center;
+}
+.wh-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ---------- player card preview (SFV fighter-profile pull) ---------- */
+.wh-pcard {
+  width: 100%; max-width: 420px; margin: 0 auto; border-radius: 18px; overflow: hidden;
+  border: 2px solid var(--wh-line); position: relative; min-height: 240px;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  box-shadow: 0 12px 44px rgba(0,0,0,0.6);
+}
+.wh-pcard .pcard-art { position: absolute; inset: 0; }
+.wh-pcard .pcard-art svg { width: 100%; height: 100%; display: block; }
+.wh-pcard .pcard-body { position: relative; padding: 16px; background: linear-gradient(0deg, rgba(5,2,10,0.88), transparent); }
+.wh-pcard .pcard-name { font-size: 26px; font-weight: 900; letter-spacing: 2px; margin: 0; }
+.wh-pcard .pcard-title { color: var(--wh-gold); font-size: 14px; letter-spacing: 2px; margin: 2px 0 8px; }
+.wh-pcard .pcard-motto { font-style: italic; color: var(--wh-dim); font-size: 13px; margin: 0 0 8px; }
+.wh-pcard .pcard-stats { display: flex; gap: 14px; font-size: 12px; color: var(--wh-dim); }
+.wh-pcard .pcard-stats b { color: var(--wh-ink); font-size: 15px; display: block; }
+.wh-pcard .pcard-symbol { position: absolute; top: 10px; right: 14px; font-size: 34px; opacity: 0.85; }
+
+/* title list */
+.wh-titles { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.wh-title {
+  border: 1px solid var(--wh-line); border-radius: 12px; padding: 10px 12px;
+  background: rgba(255,177,77,0.04); cursor: pointer; min-height: 56px;
+}
+.wh-title.locked { opacity: 0.38; cursor: default; }
+.wh-title.active { border-color: var(--wh-gold); background: rgba(255,177,77,0.14); box-shadow: 0 0 14px rgba(255,177,77,0.25); }
+.wh-title b { display: block; font-size: 14px; }
+.wh-title small { color: var(--wh-dim); font-size: 11px; line-height: 1.35; display: block; margin-top: 2px; }
+
+/* loot caches */
+.wh-caches { display: flex; gap: 10px; flex-wrap: wrap; }
+.wh-cache {
+  flex: 1 1 140px; border-radius: 14px; padding: 14px; text-align: center; cursor: pointer;
+  border: 2px solid; background: rgba(0,0,0,0.35); min-height: 120px;
+  display: flex; flex-direction: column; justify-content: center; gap: 6px;
+}
+.wh-cache .c-icon { font-size: 40px; }
+.wh-cache b { font-size: 14px; }
+.wh-cache small { color: var(--wh-dim); }
+.wh-cache.empty { opacity: 0.35; cursor: default; }
+.wh-loot-flash { text-align: center; padding: 18px; font-size: 16px; }
+.wh-loot-flash .big { font-size: 44px; display: block; margin-bottom: 8px; }
+
+/* settings rows */
+.wh-setrow {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 12px 0; border-bottom: 1px solid rgba(255,177,77,0.12);
+}
+.wh-setrow:last-child { border-bottom: none; }
+.wh-setrow .lbl b { display: block; font-size: 15px; }
+.wh-setrow .lbl small { color: var(--wh-dim); font-size: 12px; line-height: 1.4; display: block; max-width: 52vw; }
+.wh-toggle {
+  width: 58px; height: 32px; border-radius: 999px; border: 1px solid var(--wh-line);
+  background: #0f0718; position: relative; cursor: pointer; flex: none;
+}
+.wh-toggle::after {
+  content: ""; position: absolute; top: 3px; left: 4px; width: 24px; height: 24px;
+  border-radius: 50%; background: #6b5a7a; transition: left 0.15s, background 0.15s;
+}
+.wh-toggle.on::after { left: 28px; background: var(--wh-gold); }
+.wh-remap-grid { display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center; }
+.wh-keycap {
+  font-family: monospace; background: #0f0718; border: 1px solid var(--wh-line);
+  border-radius: 8px; padding: 10px 14px; min-width: 110px; text-align: center; cursor: pointer;
+}
+.wh-keycap.listening { border-color: var(--wh-ember); color: var(--wh-ember); animation: pulse 0.6s infinite; }
+@keyframes pulse { 50% { opacity: 0.55; } }
+input[type="range"].wh-range { accent-color: var(--wh-gold); width: 130px; }
+
+/* side games */
+.wh-games { display: grid; grid-template-columns: 1fr; gap: 12px; }
+@media (min-width: 700px) { .wh-games { grid-template-columns: 1fr 1fr; } .wh-titles { grid-template-columns: 1fr 1fr 1fr; } }
+.wh-game { border: 1px solid var(--wh-line); border-radius: 14px; padding: 14px; background: rgba(255,177,77,0.03); }
+.wh-game h3 { margin: 0 0 2px; font-size: 16px; letter-spacing: 1px; }
+.wh-game .home { color: var(--wh-ember); font-size: 12px; letter-spacing: 1.5px; font-weight: 700; }
+.wh-game p { font-size: 13px; color: var(--wh-dim); line-height: 1.55; margin: 8px 0; }
+.wh-game .root { font-size: 12px; color: var(--wh-gold); }
+.wh-game canvas { width: 100%; border-radius: 10px; background: #0a0512; touch-action: none; }
+.wh-game .playrow { display: flex; gap: 8px; margin-top: 8px; }
+.wh-dice { font-size: 54px; }
+.wh-approval { border: 1px dashed var(--wh-ember); border-radius: 12px; padding: 12px; font-size: 12.5px; color: var(--wh-dim); line-height: 1.6; }
+.wh-approval b { color: var(--wh-ember); }
