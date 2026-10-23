@@ -1,3 +1,27 @@
+## 2026-10-22 — Worker 61: OWNER-REPO MINING (animations + parts + select assets, OSS inventory)
+
+**Owner instruction (verbatim):** "We have a bunch of stuff in the BA and ON repo and AshLane repo and Brutal Fist repo — animations, character customization stuff — to help with our character selection screen building, to make our stuff better, stuff we can all just add in with our teardown file building up stuff, anything that we're missing or that we can pull in or scaffold up from." Plus correction: "I have it in my repos also. I have a lot of those things I just mentioned in my repos if you go look." — specifically catalog OSS fighting-game content already collected in the repos as the FIRST step for worker 62's public OSS survey. Plus standing INTEGRATION LAW: "Wire everything up that you pull in in a way that's aligned with the Tekken systems and menus. Don't just throw in a bunch of random menus and extra systems on top of stuff. … Everything that you pull in, set it up in a Tekken way."
+
+**Inventoried (full recursive trees via API):** brutalfistgrokversiontenpointfive (880 entries), AshLane-prototype (1,174), brutalfistgrokversion (287).
+
+**OSS fighting-game finds (full catalog: docs/research/2026-10-22-oss-fighting-games-in-owner-repos.md — worker 62's input):**
+1. **Schwarzerblitz Engine (AndreaJens, BSD-3)** — not vendored; 5 TS contract shims in bf10p5 (`Schwarzerblitz{CharacterSchema,Compat,Input,MoveCatalog,RuntimeManifest}.ts`): character schema, 60Hz browser/native boundary, input bitmask buffer with motion-command detection (double-tap, quarter-circles), move catalog schema with animationAliases + armor/invincible frames, runtime manifest pointing at upstream `FK_AIManager.cpp`/`EffectHandler.cpp`/`CShaderPre.cpp`. Engine code OK to survey; character/stage/music assets NOT redistributable.
+2. **NightSky Engine (MIT)** — referenced as architecture/frame-data reference only (rollback/netcode heritage).
+3. **YokosukaJS (Allen Ussher, MIT)** — VENDORED in AshLane `src/game3d/yokosuka/` (beat-em-up state machine: punch/kick/walk/turn/hurt/dying/jump) with NOTICE.txt. Scaffold for the locked Heart and Mind Within beat-em-up story mode. Sprites deliberately excluded (unlicensed rips).
+4. **Quaternius Universal Animation Library (CC0)** — VENDORED in AshLane `public/motion/ual/` (UAL1 43 clips + UAL2 43 clips, 65-joint rig) with LICENSE.txt; modular CC0 character parts + `attachPart()` bone-rebind pattern in `src/game3d/quaternius.ts`.
+5. **KayKit/Kenney (CC0)** — vendored model packs (cast/env/weapons/props) for arenas and suite bodies.
+
+**Wired this round (all nested in Tekken structure per INTEGRATION LAW — no parallel systems):**
+- `moveset-library/animations/owner-motion-bank/` — 75 owner motion JSONs (Mixamo 52-bone; boxing, capoeira, suplex family, chokeslam, DDT, hit reactions, stances, taunts, locomotion) + `OWNER-MOTION-BANK.json` index (72 live clips; upstream index had 130 stale entries pointing at removed files — omitted) + `combat_clip_map.json` (140 combat moves → clips, limb/trajectory scored) + README source rows.
+- `moveset-library/animations/UAL-CC0.json` — 86-clip CC0 source entry with build-time fetch URLs (GLBs not copied).
+- `customization/parts/ashlane/` — 40 GLB parts (footwear, gloves, masks, hair, hoods, wristbands, rigged chains) + 7 manifests + 3 FIT_NOTES + README; `build_suite_parts_index.py` gains source #6 (ashlane); `create-fighter/data/PARTS-INDEX.json` 7,920 → 7,960 parts, sources += ashlane (all `geometryReady: true`, real GLBs on disk — honesty rule kept).
+- `game/js/fighter-portraits.js` — owner's AshLane deterministic SVG portrait generator ported to ESM (verified: deterministic per id, distinct per fighter); wired into `game/js/select-screen.js` as the fallback portrait layer under the PNG (real portraits always win) + no-WebGL pane data-URI fallback; `game/select.css` layering rules.
+- Docs: `docs/research/2026-10-22-oss-fighting-games-in-owner-repos.md`, `docs/research/2026-10-22-owner-repo-asset-inventory.md`, `docs/decisions/2026-10-22-owner-repo-mining.md`.
+
+**Deliberately not wired:** Schwarzerblitz input buffer (input work is owner-deferred; wiring now = parallel input path), YokosukaJS (waits for the beat-em-up lane's design), face-paint layer stack + CustomBuild persistence (cataloged as proven patterns for their lanes), character GLBs (canon review first, per #702 precedent), renders (worker 46's lane).
+
+**Proof:** 75/75 motion JSONs parse; 40/40 GLBs carry valid `glTF` magic; portraits module node-verified deterministic; select-screen.js and build script pass syntax checks. MERGE FREEZE: PR pushed, not merged.
+
 ## 2026-10-22 — Worker 51: STAGE SELECT → FIGHT FLOW (repairs + wiring, PLAYABLE TODAY)
 
 **Owner instruction (verbatim):** "no new features — repairs and wiring only. Your scope stays stage select → fight flow. If you spot stub/placeholder code on the path, wire it — but don't invent new systems. Worker 53 now owns the fight itself (fighter loading, inputs firing, hits, rounds, crash-killing); coordinate with them at the fight-boot handoff."

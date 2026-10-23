@@ -34,6 +34,7 @@ import { attiresFor, selectedAttireModel, setAttire, attireLabel } from './attir
 import { loadT3Clips, createT3Actions, retargetT3Clips } from './t3anims.js';
 import { bankIdFor } from './fighter.js';
 import { getMovesetInfo } from './movesets.js';
+import { fighterPortraitSVG } from './fighter-portraits.js';
 
 const DEFAULT_STATS = { speed: 2.8, jump: 7.2, power: 1.1, defense: 1.05 };
 const clamp01 = (v) => Math.max(0, Math.min(1, v));
@@ -334,9 +335,14 @@ export function createSelectScreen(deps) {
   function portraitHTML(c) {
     // Portrait files are the personality pass's drop-in point: the same
     // assets/portraits/<id>.png path the old grid used. A fighter with
-    // no portrait yet gets a monogram plate — never another fighter's
-    // face (the old repeated-placeholder bug).
-    return `<div class="portrait"><img src="assets/portraits/${c.id}.png" alt="${c.name}" loading="lazy"
+    // no portrait PNG yet gets the deterministic procedural portrait
+    // (game/js/fighter-portraits.js — ported from the owner's own
+    // AshLane generator; same id always yields the same face), layered
+    // under the img so a real portrait always wins. The monogram plate
+    // stays as the last-resort fallback — never another fighter's face
+    // (the old repeated-placeholder bug).
+    const svgFallback = fighterPortraitSVG(c.id, c.name, c.faction);
+    return `<div class="portrait"><span class="svg-fallback" aria-hidden="true">${svgFallback}</span><img src="assets/portraits/${c.id}.png" alt="${c.name}" loading="lazy"
       onerror="this.parentElement.classList.add('no-portrait');this.remove();">
       <span class="mono">${(c.name || '?').slice(0, 2)}</span></div>
       <div class="cname">${c.name}</div><div class="cstyle">${c.style}</div>`;
@@ -495,7 +501,10 @@ export function createSelectScreen(deps) {
     if (panes[side].failed) {
       // No WebGL on this device: show the posed portrait plate
       // instead of the live model, and say so honestly.
-      if (fb) { fb.src = `assets/portraits/${c.id}.png`; fb.hidden = false; }
+      if (fb) {
+        fb.onerror = () => { fb.onerror = null; fb.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(fighterPortraitSVG(c.id, c.name, c.faction, 256)); };
+        fb.src = `assets/portraits/${c.id}.png`; fb.hidden = false;
+      }
       els.note.hidden = false;
       els.note.textContent = '3D UNAVAILABLE';
       return;
