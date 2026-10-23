@@ -56,10 +56,10 @@ in the `_full` variants in the decode PR).
 
 | Content | Location | Status |
 |---|---|---|
-| Stages — v404 archive, 41 VMX models | game-reverse-engineering phase 2 | FLAGGED — vertex positions decoded + verified (m003 floor plan, own-eyes); face topology rescore + GLB assembly pending; stage registry entry pending |
-| Textures — v516 archive (VXT containers) + per-VMX VXT sections | ISO / in-bundle | FLAGGED — VXT record decode not done; GLBs carry authored UVs but no texture images yet (gate G3 remainder) |
+| Stages — v404 archive, 41 VMX models | game-reverse-engineering phase 2 | PHASE 13: 39/41 assembled as textured GLBs in `stages/` (940,586 verts, 791,524 tris, 1,795 embedded images; per-part topology measured strip-vs-list; m003 = 35,390 verts, matches the phase-2 verified total; arena render viewed). FLAGGED: m000 (VMX version 2, 36 B part records, shared streams — v2 loader path not yet read) and m120 (VMX version 3, sentinel stream-end) not assembled; see `STAGES.md` |
+| Textures — v516 archive (VXT containers) + per-VMX VXT sections | ISO / in-bundle | PHASE 13: **VXT DECODED** (`VXT-FORMAT.md`) — DXT1/3/5 stored linear, P8 paletted stored Xbox-swizzled; all 22 fighters textured with embedded images (`TEXTURED-MODELS.md`, `models-textured/`, 559 images, 886/891 meshes; the 5 exceptions are source color-only materials). v516 standalone containers censused (`CENSUS-PHASE13.md`), not decoded — no consumer needs them yet |
 | Movesets — v33 archive, 24 command-list files | extracted phase 1 (`CHARACTER-MAP.md`) | FLAGGED — command lists extracted and fighters identified by move evidence; not yet converted to `moveset-library/` JSON with Tekken inputs (standard §4) |
-| Audio — bgm.afs / movie.afs (CRI AFS) + bundle sound (type 0xc) | ISO | FLAGGED — standard container, not yet extracted |
+| Audio — bgm.afs / movie.afs (CRI AFS) + bundle sound (type 0xc) | ISO | PHASE 13 census (`CENSUS-PHASE13.md`): bgm.afs = 76 ADX entries (48 kHz stereo, probed header) — standard, decodable, not yet extracted; movie.afs = 3 MPEG-PS entries (402 MB / 17 MB / 20 MB, probed) — standard, not yet extracted; bundle type-0xc payload format unprobed |
 
 ## Cross-cutting blockers to "playable in the build"
 
@@ -72,7 +72,8 @@ in the `_full` variants in the decode PR).
    per-vertex bone data exists in the source streams (rec28 sections) but
    the bind matrices for the ~65 non-node bone ids are not yet derived
    (phase-4 doc §7.2), so no skeleton is embedded yet.
-4. **Textures**: VXT decode (above).
+4. **Textures**: VXT decode (above). — RESOLVED phase 13 (see the
+   Phase 13 section at the end of this file).
 5. **Canon conversion**: pending owner assignment — see
    `CANON-CONVERSION.md` in this folder. No canon names invented.
 
@@ -151,4 +152,76 @@ decoded — display strings ride in file order under `display_strings`.
 3. **Game-format movesets** — game/assets/movesets schema v2 needs
    frame/damage data from the undecoded cmd-record fields + pairing
    table + motion data.
-4. **Textures** — VXT decode still open (unchanged).
+4. **Textures** — RESOLVED phase 13 (VXT decoded; fighters + stages
+   textured with embedded images).
+
+## Phase 13 update (2026-10-21) — VXT textures + stages
+
+Lane record: `PHASE13-STATE.md`; format: `VXT-FORMAT.md`; fighters:
+`TEXTURED-MODELS.md`; stages: `STAGES.md`; census: `CENSUS-PHASE13.md`.
+Motion/composition/clips untouched (capture gate, GRE PR #40).
+
+| Class | Decoded | Wired | Left before playable |
+|---|---|---|---|
+| Textures (per-VMX VXT) | YES — DXT1/3/5 linear + P8 swizzled/palette; mapping pointer-proven (part → rec80 material → VXT record) | 22/22 fighters textured GLBs in `models-textured/` (559 embedded images, 886/891 meshes; 5 idx905 meshes are source color-only); 39 stage GLBs textured (1,795 images) | Secondary material texture layer (rec80 +0x0c) not assigned — runtime role unproven; v516 standalone containers censused only |
+| Stages (v404) | 39/41 assembled (940,586 verts, 791,524 tris; topology measured per part) | GLBs in `stages/` with embedded textures; m003 render-verified against the phase-2 position proof | m000 (VMX v2 layout) + m120 (VMX v3 sentinel) unassembled — loader-path reads named in `STAGES.md`; stage registry/roster hookup is game-side work |
+| Costumes (v982 variants) | Census only (`CENSUS-PHASE13.md`): variant model bundles at base+2/+3/+9/+10/+11 per slot, P1 size class | Not wired | Decode is mechanical via the existing VMX pipeline (same format as P1); not run this phase |
+| Audio | Census: bgm.afs 76 ADX entries (48 kHz stereo, probed); bundle type-0xc unprobed | Not wired | ADX extraction (standard tooling) + type-0xc payload probe |
+| Video | Census: movie.afs 3 MPEG-PS entries (probed) | Not wired | MPEG extraction (standard tooling) |
+
+### Still blocking SCII true 100% after phase 13
+
+1. **Animations/motion** — unchanged: gated on the parent lane's
+   dynamic emulator capture (GRE PR #40); this lane did not touch it.
+2. **Canon assignment** — owner-pending (`CANON-CONVERSION.md`,
+   untouched by this lane).
+3. **Game-format movesets** — frame/damage fields + pairing table +
+   motion data (unchanged from phase 5).
+4. **Stage exceptions** — m000 (v2) and m120 (v3) assembly, per
+   `STAGES.md`.
+5. **Costume-variant decode** — mechanical, unrun.
+6. **Audio/video extraction** — standard formats, unrun (census done).
+
+## Phase 14 update (2026-10-22) — stages 41/41, variants, audio/video
+
+Lane record: `PHASE14-STATE.md`; stage layouts: `PHASE14-STAGE-LAYOUTS.md`;
+probes: `PHASE14-PROBES.md`; AV: `PHASE14-AV-INVENTORY.md` +
+`PHASE14-AV-MANIFEST.json`. Motion untouched (capture gate);
+`CANON-CONVERSION.md` untouched.
+
+| Class | Decoded | Wired | Left before playable |
+|---|---|---|---|
+| Stages (v404) | **41/41 assembled** — m000 (VMX v2: 36 B records, node-shared streams, node placement, VXT v1) + m120 (VMX v3 sentinel; unit sphere, color-only per source) joined the 39; totals 1,446,731 GLB verts / 811,243 tris / 1,879 embedded images | GLBs in `stages/`; m000+m120 arena/plan renders viewed (`phase14-proof/`) | Stage registry/roster hookup is game-side work |
+| Costumes (v982 variants) | **80/83 decoded** skinned+textured (1,964 images) in `models-textured/variants-idx<P1>-<slug>/`; blocked: idx283+idx291 (Ivy — solver non-finite normals), idx789 (rigid-only class) — see census update in `CENSUS-PHASE13.md` | GLBs landed per-fighter; sample render viewed (idx48) | Blocked 3 per census reasons; costume switching in-game is game-side work |
+| Audio (bgm.afs) | **76/76 ADX extracted + decoded to FLAC** (48 kHz stereo, 73.8 min total), release `scii-phase14-av` + sha256 manifest in git | Release assets + `PHASE14-AV-INVENTORY.md` | In-bundle type-0xc payload still unextracted (probe B: format unproven, FUN_00033fb0 decompile named) |
+| Video (movie.afs) | **3/3 MPEG-PS extracted byte-exact** (402/17/20 MB) + probed, release `scii-phase14-av` + manifest | Release assets + inventory | Playback integration is game-side work |
+| Textures (secondary layer) | Probe A: rec80 +0x0c is a genuine second texture-record reference (159/159 pointer-exact across 635 materials) | Recorded in `PHASE14-PROBES.md` | Runtime role (detail/env/alpha) needs the XBE material-consumer read; GLBs still ship primary layer only |
+
+### Still blocking SCII true 100% after phase 14
+
+1. **Animations/motion** — unchanged: gated on the parent lane's dynamic emulator capture (GRE PR #40).
+2. **Canon assignment** — owner-pending (`CANON-CONVERSION.md`, untouched).
+3. **Game-format movesets** — frame/damage fields + pairing table + motion data (unchanged).
+4. **Ivy variant solver residual** — idx283/idx291 (non-finite normals from the bind solve).
+5. **In-bundle sound (type 0xc)** — format unproven; FUN_00033fb0 decompile is the named next step.
+6. **rec80 secondary texture role** — pointer proven real; stage binding unproven.
+
+## Phase 15 update (2026-10-22) — variants 83/83, probes closed
+
+Lane record: `PHASE15-STATE.md`; evidence: `PHASE15-PROBES.md`;
+renders: `phase15-proof/`. Motion untouched (capture gate);
+`CANON-CONVERSION.md` untouched.
+
+| Class | Decoded | Wired | Left before playable |
+|---|---|---|---|
+| Costumes (v982 variants) | **83/83 accounted** — idx283 + idx291 (Ivy) regenerated after the +8 trailer-span reader fix in `tools/build_skinned.py` (landed in-repo this phase; finite-normal export assertions added). NOTE: the same misread silently dropped trailer-span rigid parts from all 102 previously shipped GLBs (255 parts / 25 bundles) — re-decode of the shipped set is a named follow-on; idx789 assembled via the new rigid path `tools/build_rigid.py` (102 parts, 6 images) in `models-textured/variants-idx788-rigid-only-b/` | GLBs landed per-fighter; renders viewed for all three (`phase15-proof/`) | Costume switching in-game is game-side work |
+| Textures (secondary layer) | rec80 +0x0c: relocated as a runtime pointer beside the primary (FUN_00025080) and every referenced VXT record is created/uploaded at load (FUN_00025300) — secondary textures are runtime-created, held as alternate material records; no draw-time stage binding found in the interpreter/sorter/aux/material-setup functions read | Verdict in `PHASE15-PROBES.md` job 3 | A bake of the secondary layer waits on proof of a draw-time binding (dynamic capture territory); shipping rule unchanged (primary only) |
+| Audio (in-bundle type 0xc) | **Identified**: section index = type (FUN_00033fb0 core, decompiled); type 0xc = section 12 = キャラサウンド (character sound), payload = CRI `mmx` sound-bank container (magic + own total size, XHDp sub-bank at +0x40, registered by FUN_000ed4d0 → FUN_000ed440); type 0x02 is the smaller name-voice `mmx` | Identification + census in `PHASE15-PROBES.md` job 4 | Waveform codec inside `mmx` entries is closed (no ADX frames; vgmstream rejects container and sub-bank slices) — extraction waits on a CRI-middleware decode |
+
+### Still blocking SCII true 100% after phase 15
+
+1. **Animations/motion** — unchanged: gated on the parent lane's dynamic emulator capture (GRE PR #40).
+2. **Canon assignment** — owner-pending (`CANON-CONVERSION.md`, untouched).
+3. **Game-format movesets** — frame/damage fields + pairing table + motion data (unchanged).
+4. **In-bundle sound extraction** — type-0xc `mmx` codec closed (identification complete).
+5. **rec80 secondary at draw time** — created-and-held proven; visible-layer bake only if a binding is ever proven.
