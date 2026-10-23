@@ -54,6 +54,12 @@ export const MOVESET_IDS = [
   // CHARGER (owner 2026-10-20): Blanka replacement — full set in charger.json.
   'charger',
   'dorowani',
+  // CHATUR (owner 2026-10-23): True Ogre's WH replacement — chatur.json
+  // (True Ogre T3 kit + four-armed canon specials).
+  'chatur',
+  // POND (owner 2026-10-23): Raven's WH replacement — pond.json
+  // (T7 Raven kit + still-water canon specials).
+  'pond',
   // DEATHFANG (owner 2026-10-19): proprietary, Iori-based — full Iori kit in deathfang.json.
   'deathfang',
   // DEATHFANG werewolf form (owner 2026-10-20): full kit + beast mix-ins, Iori stance kept.
