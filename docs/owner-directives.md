@@ -340,3 +340,11 @@ Intro sequences and win taunts are never to be replaced. New systems layer on to
   kinpo's). Repointing phantom's key at kinpo's file would ship the wrong
   fighter — refused. The tripo-intake lane must produce a phantom intake rig
   first; the config repoint is a one-line follow-up once it lands.
+
+## KUMA REPLACEMENT NAME LOCK: GASHADOKURO (user directive 2026-10-22)
+
+The Kuma replacement — white bone dragon/kaiju (Godzilla + SkullGreymon + Charizard mix, all white, rainbow-colored eyes, multicolored markings, multicolored Japanese cloud-smoke detail) — is named **GASHADOKURO**, after the giant skeleton yokai from Japanese folklore. This name is LOCKED and replaces the old "URSA" reserved placeholder.
+
+- Display-name mapping: internal ID `kuma` → display name "Gashadokuro". The roster dir and all plumbing keep the internal ID `kuma`; it is never renamed. The game layer resolves the display name from the ID.
+- Canon (recorded as stated; do not invent further): connected to ZUI — Zui fears/respects him, looks up to him like a protector/monster. Kaiju/yokai/spirit monster.
+- Note: Aotsuki/Aokami are Panda's name candidates and do NOT apply to the Kuma replacement. Gashadokuro is the Kuma replacement only.
