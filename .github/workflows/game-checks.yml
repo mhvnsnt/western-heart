@@ -63,6 +63,7 @@ jobs:
             game/assets/movesets
             game/assets/portraits
             tools/portraits
+            game/vendor/jolt
             customization/profiles
           sparse-checkout-cone-mode: false
       - name: Run game unit tests
