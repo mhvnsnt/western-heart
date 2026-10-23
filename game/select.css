@@ -19,10 +19,12 @@
   overflow: hidden;
   /* position: fixed + inset: 0 keeps .screen's full-viewport sizing on phones
      (main's later phone-layout fix); flex column is the T7 stack
-     (header / fighters-zone / hints-bar). */
+     (header / fighters-zone / hints-bar). No display here: .screen /
+     .screen.active own visibility (display:flex when active); an ID-level
+     display:flex would override .screen's display:none and pin the screen
+     visible forever. */
   position: fixed;
   inset: 0;
-  display: flex;
   flex-direction: column;
   background:
     radial-gradient(ellipse at 50% 108%, var(--sk-bg1, #220d0d) 0%, transparent 55%),
@@ -484,8 +486,9 @@
    ============================================================ */
 #screen-stage.select-screen {
   overflow: hidden;
+  /* No display here — see #screen-select.select-screen note: .screen /
+     .screen.active own visibility. */
   position: relative;
-  display: flex;
   flex-direction: column;
   background:
     radial-gradient(ellipse at 50% 108%, #1c0f0f 0%, transparent 55%),
@@ -643,6 +646,8 @@
   #screen-select .hints-bar { gap: 6px; padding-left: 8px; padding-right: 8px; }
   #screen-select .hints-bar #select-hint { display: none; }
   #screen-select .hints-bar #confirm-fighter { flex: 1 1 auto; min-width: 96px; padding-left: 10px; padding-right: 10px; }
+  /* header must fit 390px: "CHOOSE YOUR FIGHTER" was truncating. */
+  #screen-select .select-header h2 { font-size: 19px; letter-spacing: 2px; }
   #screen-select .pane-stats { display: none; }
   #screen-select .pane-facts { gap: 4px 10px; }
   #screen-select .fact-val { font-size: 11px; max-width: 120px; }
