@@ -210,18 +210,19 @@
   </section>
 
   <!-- ====================== CHARACTER SELECT ======================
-       Tekken 8 grid transplant (2026-10-22): the roster is a T8-style
-       compact GRID of portrait cards (not a strip) — small relative
-       to everything else, P1/P2 cursors, "?" random slot, T8 fact
-       block (fighting style / archetype / origin) and big italic
-       name banners per side, live 3D models with backdrop art wash,
-       bottom hints bar. Look is skin-driven (js/ui-skin.js); the
-       layout lineage is decoded in docs/select-redesign/T8-GRID-DECODE.md.
-       The page itself never scrolls; the grid scrolls inside its own box. -->
+       Tekken 7 rebuild (2026-10-23): "CHOOSE YOUR FIGHTER" header + 99s
+       timer, T7's signature 2-ROW PORTRAIT GRID flanked by P1's big render
+       (left) and P2's (right), P1 red / P2 blue cursors with 1P/2P tags,
+       "?" random panel at the grid's end, costume presets on the screen
+       (P/K attire buttons + attire chips), announcer cues, bottom hints
+       bar. Layout lineage decoded in docs/select-redesign/T7-GRID-DECODE.md.
+       Live 3D preview panes (never a still), attire switching, and the
+       ui-skin.js skin layer are kept from the earlier build; the page
+       itself never scrolls — the grid scrolls inside its own box. -->
   <section id="screen-select" class="screen select-screen">
     <header class="select-header">
       <button class="btn-ghost select-back" data-action="back-menu">BACK</button>
-      <h2>CHOOSE YOUR SOUL</h2>
+      <h2>CHOOSE YOUR FIGHTER</h2>
       <div id="select-timer" class="select-timer">99</div>
     </header>
     <div class="fighters-zone">
@@ -241,6 +242,12 @@
           <div class="pane-attires attire-strip"><!-- attire chips filled by JS --></div>
         </div>
       </div>
+      <!-- T7's 2-row portrait grid rides BETWEEN the P1/P2 panes, flanked
+           left and right like the real select screen. Filled by
+           js/select-screen.js (column-major, 2 rows, own scroll box). -->
+      <div class="grid-wrap">
+        <div id="char-grid" class="card-grid"></div>
+      </div>
       <div class="side-pane pane-p2" id="pane-p2">
         <div class="pane-artwash" aria-hidden="true"><img alt=""></div>
         <canvas class="pane-canvas" id="pane-canvas-p2"></canvas>
@@ -258,9 +265,6 @@
         </div>
       </div>
     </div>
-    <div class="grid-wrap">
-      <div id="char-grid" class="card-grid"><!-- cards filled by JS (js/select-screen.js) --></div>
-    </div>
     <div class="hints-bar">
       <button id="attire-punch" class="hint-btn" type="button"><b class="key">P</b> ATTIRE 1</button>
       <span id="select-hint">Pick a fighter</span>
@@ -269,13 +273,15 @@
     </div>
   </section>
 
-  <!-- ====================== STAGE SELECT (Lane 4) ======================
-       Tekken setup: sticky header (BACK + title), scrolling arena grid
-       grouped by tier (canon lands / Tekken retro), sticky footer. -->
+  <!-- ====================== STAGE SELECT (T7 rebuild) ======================
+       Tekken 7 setup: "CHOOSE YOUR STAGE" header, big preview pane with
+       the stage-name banner, ONE horizontal strip of stage cards
+       (thumbnail + name, "?" random card in the strip), announcer
+       stage-name callouts, BACK to the fighter grid, CONFIRM to fight. -->
   <section id="screen-stage" class="screen select-screen">
     <header class="select-header">
       <button class="btn-ghost select-back" data-action="back-select">BACK</button>
-      <h2>CHOOSE YOUR ARENA</h2>
+      <h2>CHOOSE YOUR STAGE</h2>
       <div class="select-timer" style="visibility:hidden">99</div>
     </header>
     <div class="stage-body">
@@ -475,8 +481,6 @@
   <!-- Worker 35: player identity core (titles, cards, currency, loot, remap,
        colorblind, assists) + boot wiring. Classic scripts run before the
        module graph so input.js/main.js can consult window.WHIdentity. -->
-  <!-- t122u touch failsafe: if the module graph fails, still drop the boot overlay. -->
-  <script>setTimeout(function(){var l=document.getElementById('loading');if(l&&!document.body.classList.contains('in-fight'))l.classList.add('hidden');},4000);</script>
   <script src="js/identity.js"></script>
   <script src="js/wh-boot.js"></script>
   <script type="module" src="js/online.js"></script>

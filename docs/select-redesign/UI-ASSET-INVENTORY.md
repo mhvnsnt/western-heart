@@ -6,8 +6,9 @@ Date: 2026-10-18. Inventoried on `origin/main` via `git ls-tree -r`.
 
 **We have ZERO real Tekken menu/UI assets** (no select-screen frames, fonts,
 backgrounds, button art, or menu sounds) in any teardown directory. The
-rebuilt select screen is therefore a clean-room rebuild matching Tekken 8's
-layout/behavior per the owner's spec, using our own assets. This is stated
+rebuilt select screen is therefore a clean-room rebuild matching Tekken 7's
+layout/behavior per the current directive (T7-GRID-DECODE.md; the earlier
+T8 transplant's decode stays as history), using our own assets. This is stated
 honestly in the PR — no "real Tekken UI files" claims.
 
 ## teardown/tekken7 (165 files)
@@ -46,8 +47,8 @@ honestly in the PR — no "real Tekken UI files" claims.
 | Per-fighter card art `card_<fighter>.png` (23) | `docs/qa/roster-cards/` | Our QA renders — real files, wired |
 | Oswald variable font | `game/ui-wh/fonts/` | Bundled OFL font — real file, wired |
 | Menu wallpaper art | `game/ui-wh/art/wallpaper_wh*.png` (derived from owner's title-bg) | Ours — real files, wired |
-| Select-screen frames / buttons / hints chrome | — | **REBUILT** to T8 layout (no real files exist) |
-| T8 stat block, hints bar, "?" random, two-cursor flow | — | **REBUILT** from research (§1 of SELECT-DESIGN.md) |
+| Select-screen frames / buttons / hints chrome | — | **REBUILT** to T7 layout (no real files exist) |
+| T7 stat block, hints bar, "?" random, two-cursor flow | — | **REBUILT** from research (§1 of T7-GRID-DECODE.md) |
 | Select idle animations | GLB embedded clips where present; neutral breathing loop otherwise | Real clips where present; approximation labeled honestly |
 
 ## Bottom line
