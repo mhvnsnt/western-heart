@@ -1,5 +1,7 @@
 # Western Heart — Work log (timestamps CT)
 
+- 2026-10-23 15:40 CT Grok Bot (teardown-integration lane): t123u ui_sources gate. Added `game/ui_sources.json` (14 screens, all `legacy-unsourced`: the repo has no T5/T7/T8/TTT2 menu extractions yet, and T6 has only 2 PSP icons), `tools/ui-sources/check.py`, `.github/workflows/ui-sources.yml`, and the AGENTS.md law. Local tests: untouched = PASS; changed screen-daily with no source = FAIL; same change citing teardown/tekken6/ui/psp_PIC1.png = PASS.
+
 - 2026-10-14 16:10 Grok Bot (QA lane): claimed in agent-ops CLAIMS.md (`grok/wh-playtest-qa`). Sparse clone `/workspace/wh-qa` (`--depth 1 --filter=blob:limit=2m`), Godot 4.3 already on box. Disk 4.6 GB free, RAM ~5 GB.
 - 16:15 Imported lab/game headless; read main.gd / fighter.gd / move_table.gd / ai.gd. King jab row 35 has active_first 18; grab and heavy share row 230.
 - 16:20 Wrote `lab/game/tests/qa_playtest.gd` (scripted P1 via InputMap, dummy P2, per-frame CSV). Headless run: 12 scenarios, 30 s.
@@ -62,3 +64,10 @@
 - Root cause of "neutral 3 = crouching kick": touch stick kept `down` latched after a held crouch was re-centred (input.js). Plus 6 resolver bugs (repeated-step motions, context-blind chord specials, crash on specials without input, tap/hold spellings, neutral-ending motions, unreachable strings). Details: docs/input/INPUT-RESOLVER-V2.md.
 - V2 ON by default; legacy reachable via localStorage wh_input_resolver='legacy'.
 - New CI test test/input-determinism.test.mjs: 125 fighters, non-string failures 208 → 0, touch re-centre FAIL → PASS.
+## 2026-10-23 14:34 CT, t122u main-menu touch fix (fix/menu-touch-t122u)
+- Root cause: #loading is a transparent full-screen overlay that only main.js hides. Any failed boot module left it up, and it ate every tap (reproduced in Playwright, all items covered by #loading). #tap-to-start also covered DAILY CHALLENGES.
+- Fix: pointer-events none on both, plus a 4s classic-script failsafe that hides #loading. Test: test/e2e/menu-touch.e2e.mjs, CI job menu-touch-e2e, screenshots in docs/ui/t122u/.
+- Not done: teardown menu rebuild, Legacy toggle, select-screen mobile overflow (strip and CONFIRM clipped at 390px), missing roster/demonio-human glb.
+## 2026-10-23 15:16 CT, teardown coverage audit (docs/teardown-coverage-audit)
+- tools/teardown-coverage/audit.py (read-only against a git ref) writes docs/teardown-coverage/COVERAGE.md and coverage.json with source_game per teardown file and per move.
+- 51234 teardown files: 27.2% integrated (code/data reference), 31.7% docs-only, 41.0% unreferenced. T3 is 25.5% of reachable slots; priority sources 73.4% (T7/T8 only). No TTT2/T6/T5 move data exists in the repo to replace T3.
