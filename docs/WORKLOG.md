@@ -68,3 +68,6 @@
 - Root cause: #loading is a transparent full-screen overlay that only main.js hides. Any failed boot module left it up, and it ate every tap (reproduced in Playwright, all items covered by #loading). #tap-to-start also covered DAILY CHALLENGES.
 - Fix: pointer-events none on both, plus a 4s classic-script failsafe that hides #loading. Test: test/e2e/menu-touch.e2e.mjs, CI job menu-touch-e2e, screenshots in docs/ui/t122u/.
 - Not done: teardown menu rebuild, Legacy toggle, select-screen mobile overflow (strip and CONFIRM clipped at 390px), missing roster/demonio-human glb.
+## 2026-10-23 15:16 CT, teardown coverage audit (docs/teardown-coverage-audit)
+- tools/teardown-coverage/audit.py (read-only against a git ref) writes docs/teardown-coverage/COVERAGE.md and coverage.json with source_game per teardown file and per move.
+- 51234 teardown files: 27.2% integrated (code/data reference), 31.7% docs-only, 41.0% unreferenced. T3 is 25.5% of reachable slots; priority sources 73.4% (T7/T8 only). No TTT2/T6/T5 move data exists in the repo to replace T3.
