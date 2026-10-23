@@ -25,3 +25,5 @@ Read and follow [`docs/NO-DATA-LOSS-RULES.md`](NO-DATA-LOSS-RULES.md) (canonical
 - **2:21 PM CT, no hand-made menus:**
 > **NO hand-made menus. Every Western Heart menu, character select and customization screen, including the creation suite in `packages/creation-suite`, must be built from the actual Tekken teardown files (T5/T6/T7/T8/TTT2) and other game teardowns, and every UI change must cite its teardown source in the PR and WORKLOG.**
   CI gate is MoneyManBusch's (no duplicate). Current hand-built creation suite UI is NON-COMPLIANT, pending teardown-sourced rebuild; do not delete it.
+## Input resolver V2 (2026-10-23 14:15 CT)
+Read docs/input/INPUT-RESOLVER-V2.md. Run `node test/input-determinism.test.mjs --report /tmp/r.json` after any moveset/input change; it must print PASS. Next: the 107 long-string cases, 34 duplicate-spelling conflicts, hold-button (`*`) input, DOA 2/4 slots from the DOA4 decode, port to AshLane + Brutal Fist.
