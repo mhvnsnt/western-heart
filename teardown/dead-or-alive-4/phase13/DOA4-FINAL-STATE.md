@@ -153,3 +153,65 @@ quantified the pressing correction: the mirror's anm.afs is
 DIFFERENT (same size, 9.83% identical); chr* verdicts in
 `phase14/PROVENANCE.md`. Canon Q1–Q6 remain OWNER-pending;
 nothing else in this document changes.
+
+## Phase-15 addendum (2026-10-22, PR #597) — pointer, additive only
+
+Phase 15 (`teardown/dead-or-alive-4/phase15/`) closed the
+provenance question the phase-14 addendum left quantified but
+open: the mirror chr streams are an earlier build's package
+layout, not a permuted retail copy — containment is regional
+(189 of 389 entries byte-contiguous; union coverage
+29.8/51.2/48.3 %), and 70 of the 148 library packages now carry
+proven filename-grade identities (78 unassigned, honestly).
+One phase-8 identification is REFUTED (chrone-pkg29 is tin02,
+not an accessory package); the Kokoro / katana-ninja / pkg10
+tentatives stand UNRESOLVED. The .mot stream layer is censused
+and released (`doa4-mot-20261022`): gate 2's remaining blocker
+is now exactly the .mot packed-encoding expansion grammar plus
+the loader-side w21 token→record expansion trace in the real
+XEX (the .mot loader mechanism itself is proven). Detail:
+`phase15/CONTAINMENT-AUDIT.md`, `phase15/MOT-CENSUS.md`,
+`phase15/XEX-HUNT.md`, `phase15/PHASE15-STATE.md`. Canon Q1–Q6
+remain OWNER-pending; nothing else in this document changes.
+
+## Phase-16 addendum (2026-10-22, PR #697) — pointer, additive only
+
+Phase 16 (`teardown/dead-or-alive-4/phase16/`) attacked phase
+15's two named blockers and closed its two disclosed
+deviations. The .mot grammar is proven at the record layer
+with the framing direction corrected (44 sub-blocks followed
+by a 44-entry descriptor of absolute channel offsets; exact
+tiling across 530 t_* records and all fighter files), and the
+payload's exact residual is named: a stateful per-item length
+rule (the simple tag→length rule is falsified by constraint
+propagation; no clip assembled, gate G4 stays open). The w21
+trace evidences the runtime-record layer at field level
+(initializer 0x82406E48, validator 0x824091F0, translator
+0x823F6FA0) and names its exact frontier: the file-side
+writer from the .bin w21 table to the 0x9C records. The
+containment scatter-pass is complete: all 147 probe-grade
+rows resolved (118 with byte-exact piece maps, 29 proven
+absent), jan02.tpr's absence overturned
+(scattered_cross_volume), union coverage chrtwo 52.0069% /
+chrthree 50.6650%. Detail: `phase16/MOT-GRAMMAR.md`,
+`phase16/W21-TRACE.md`, `phase16/CONTAINMENT-AUDIT-2.md`,
+`phase16/containment-map-2.json`, `phase16/PHASE16-STATE.md`.
+Canon Q1–Q6 remain OWNER-pending; nothing else in this
+document changes.
+
+## Phase 17 addendum (2026-10-22, PR #737) — pointer only
+Faithful Ghidra project built (phase-16 import blocker
+root-caused to the MZ loader; project at true base 0x82000000,
+.pdata-seeded, stored in release
+`doa4-ghidra-phase17-20261022`). G4's two items were attacked
+with the project + full-sweep data-flow + stateful constraint
+propagation: the file-side writer's frontier advanced to
+pinned arena bases/pointer globals with the exact missing
+link stated (`phase17/W21-TRACE-2.md`), and the .mot length
+rule's word-aligned rule classes were exhausted with
+falsification counts (`phase17/MOT-STATEFUL.md`). Neither
+item is proven; G4 stays OPEN on the same two items, with a
+one-session dynamic closure spec'd in
+`phase17/XENIA-TRACE-SPEC.md`. Detail:
+`phase17/GHIDRA-PROJECT.md`, `phase17/PHASE17-STATE.md`.
+Nothing else in this document changes.
