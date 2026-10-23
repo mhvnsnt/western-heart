@@ -1218,22 +1218,38 @@ export class Fighter {
     }
     this.root.position.x = Math.max(-ARENA_LIMIT, Math.min(ARENA_LIMIT, this.root.position.x));
 
-    // Body-vs-body pushout — fighters NEVER interpenetrate (x and z).
+    // Body-vs-body pushout, T7/T8 style (owner bug 2026-10-23: cross-ups impossible).
+    // Tekken pushboxes are ground collision cylinders: while airborne the box
+    // shrinks and is off above the opponent's waist, so a jump arc can pass
+    // over and land on the far side (facing re-resolves on landing). Ground
+    // push is split between both bodies; when one is against the stage wall
+    // the remaining push goes to the other body, so nobody leaves the stage.
     if (opponent) {
       const dx = this.root.position.x - opponent.root.position.x;
       const dz = this.root.position.z - opponent.root.position.z;
-      const minDist = 1.45;
-      if (Math.abs(this.root.position.y - opponent.root.position.y) < 1.8) {
-        if (Math.abs(dx) < minDist && Math.abs(dz) < 0.9) {
-          const push = (minDist - Math.abs(dx)) / 2 * (dx >= 0 ? 1 : -1);
-          this.root.position.x += push; opponent.root.position.x -= push;
-        }
-        // lateral separation after sidesteps
-        if (Math.abs(dz) < 0.7 && Math.abs(dx) < minDist) {
-          const zp = (0.7 - Math.abs(dz)) / 2 * (dz >= 0 ? 1 : -1);
-          this.root.position.z += zp; opponent.root.position.z -= zp;
-        }
+      const air = Math.max(this.root.position.y, opponent.root.position.y) - GROUND_Y;
+      const airborne = !this.onGround || !opponent.onGround;
+      // ground: 1.45 wide; airborne: 0.55 low, none once over the waist (0.85)
+      const minDist = !airborne ? 1.45 : (air < 0.85 ? 0.55 : 0);
+      if (minDist > 0 && Math.abs(dx) < minDist && Math.abs(dz) < 0.9) {
+        // side from x, or from travel direction when perfectly stacked
+        const side = dx !== 0 ? Math.sign(dx) : (Math.sign(this.vx - opponent.vx) || this.facing * -1);
+        const total = minDist - Math.abs(dx);
+        let a = total / 2, b = total / 2;
+        const L = ARENA_LIMIT;
+        const roomA = side > 0 ? L - this.root.position.x : this.root.position.x + L;
+        const roomB = side > 0 ? opponent.root.position.x + L : L - opponent.root.position.x;
+        if (a > roomA) { b += a - roomA; a = roomA; }
+        if (b > roomB) { a += b - roomB; b = roomB; }
+        this.root.position.x += side * a; opponent.root.position.x -= side * b;
       }
+      // lateral separation after sidesteps (grounded only)
+      if (!airborne && Math.abs(dz) < 0.7 && Math.abs(dx) < 1.45) {
+        const zp = (0.7 - Math.abs(dz)) / 2 * (dz >= 0 ? 1 : -1);
+        this.root.position.z += zp; opponent.root.position.z -= zp;
+      }
+      this.root.position.x = Math.max(-ARENA_LIMIT, Math.min(ARENA_LIMIT, this.root.position.x));
+      opponent.root.position.x = Math.max(-ARENA_LIMIT, Math.min(ARENA_LIMIT, opponent.root.position.x));
     }
 
     const h = this.root.position.y;
