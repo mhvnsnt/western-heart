@@ -434,6 +434,18 @@ export const MODEL_URLS = {
   'yukihyo-attire3': '../roster/yukihyo/attires/attire3/source/yukihyo-a3-tiger-king.glb',
   'armor-king-attire1': '../roster/armor-king/attires/attire1/model.glb',
   'zangief-attire1': '../roster/zangief/attires/attire1/model.glb',
+  // RYUSAN (owner 2026-10-23): SmutBase Mina Ashido intake — WH name RYUSAN,
+  // the Corrosion Soul. Attire 1 = the SmutBase GLB (unrigged static; rig queued).
+  // NOTE: roster/mina-ashido/attires/attire1/model-rigged.glb landed on main
+  // 2026-10-23 (PR #781, wave-1 rigging) — repoint key after rig validation.
+  ryusan: '../roster/mina-ashido/attires/attire1/model.glb',
+  'ryusan-attire1': '../roster/mina-ashido/attires/attire1/model.glb',
+  // TOBI (owner 2026-10-23): SmutBase Mirko (Rumi Usagiyama) intake — WH name
+  // TOBI, the Escape Soul. Attire 1 = the SmutBase GLB (unrigged static; rig queued).
+  // NOTE: roster/miruko/attires/attire1/model-rigged.glb landed on main
+  // 2026-10-23 (PR #781, wave-1 rigging) — repoint key after rig validation.
+  tobi: '../roster/miruko/attires/attire1/model.glb',
+  'tobi-attire1': '../roster/miruko/attires/attire1/model.glb',
 };
 
 /* ============================================================

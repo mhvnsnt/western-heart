@@ -2087,3 +2087,18 @@ On-main files NOT touched: worker 37's `js/creation-flow.js` + `js/art.js`
   `docs/owner-directives.md`.
 - Full log: `docs/decisions/2026-10-22-kinpo-repoint-w50.md` (branch
   `w50/kinpo-repoint`).
+
+## 2026-10-23 ~07:30 CDT — SmutBase intake wave 6: RYUSAN + TOBI full pipeline
+
+- **RYUSAN** (WH name for SmutBase Mina Ashido intake, `roster/mina-ashido/`): full pipeline —
+  `CANON.md` (The Corrosion Soul; adult acid punk; Jotei family's soul-binding crimes; Tobi tipped her off; signature line "You don't get to tell me to calm down"; canon-grounded in CANON.md, no Tekken names),
+  `PARTS.md` (8 GLB meshes labeled/categorized by bounding-region analysis: body base, hair, horns, fur trim, collar, boots, top, bottoms),
+  `game/assets/movesets/ryusan.json` (194 moves: full Lucky Chloe T7 movelist converted from `docs/t7t8-reference/frame-data-t7/luckychloe.json` + 6 WH canon moves layered on top; stances SCT/BT/FC/WS/WR/SS; 6 combos; schema v2).
+- **TOBI** (WH name for SmutBase Mirko intake, `roster/miruko/`): full pipeline —
+  `CANON.md` (The Escape Soul; rabbit courier, fastest in roster; tipped off Ryusan; the undelivered letter — withheld — left hand never leaves the satchel strap; canon-grounded, no Tekken names),
+  `PARTS.md` (11 GLB meshes: body base, rabbit ears, hair, head ring, sash, bodysuit tops, bottoms, gloves, collar),
+  `game/assets/movesets/tobi.json` (194 moves: Hwoarang T3 decoded bank `teardown/tekken3/movesets/moveset_hwoarang.json` + 6 WH canon moves; LFF/RFF/LFS/RFS stances; 5 combos; schema v2).
+- Wiring: 4 MODEL_URLS keys in `game/js/assets.js` (`ryusan`, `ryusan-attire1`, `tobi`, `tobi-attire1` → `../roster/<dir>/attires/attire1/model.glb`); `ryusan`/`tobi` added to MOVESET_IDS in `game/js/movesets.js`; both added to `game/assets/movesets/index.json` (114 fighters).
+- Models are unrigged statics (0 skins) — rig queued, same path as other SmutBase intakes.
+- Proof: `node --check` clean on both JS files; both movesets load through the real `movesets.js` loader (schema v2, all required fields); `fighter-completeness.test.mjs` 4/4 pass; gitleaks clean; GLB paths verified on disk. model-key-guard failures are pre-existing sparse-checkout artifacts (all entries "file missing", none are ryusan/tobi — not in OWNERSHIP table).
+- Branch `smutbase-wave6/ryusan-tobi`, PR merged via `git_merge.py` (3-way, clean+green).

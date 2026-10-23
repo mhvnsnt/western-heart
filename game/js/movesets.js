@@ -101,6 +101,10 @@ export const MOVESET_IDS = [
   't3-paul', 't3-law', 't3-lei', 't3-nina', 't3-hwoarang', 't3-eddy',
   't3-julia', 't3-kuma', 't3-ogre', 't3-anna', 't3-bosconovitch',
   't3-gon', 't3-forestlaw',
+  // SmutBase intake wave 6 (owner 2026-10-23): RYUSAN (Lucky Chloe T7 kit,
+  // game/assets/movesets/ryusan.json) + TOBI (Hwoarang T3 kit,
+  // game/assets/movesets/tobi.json). Canon: roster/mina-ashido + roster/miruko.
+  'ryusan', 'tobi',
 ];
 
 const _movesets = {};
