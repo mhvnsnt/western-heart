@@ -132,9 +132,11 @@ export function bankIdFor(charId, movesetId) {
   // zen -> julia kept as the anim-bank lane set it; CANON.md appendix lists Julia -> NIGHTWOLF /
   // soul ZEN as an unresolved three-way conflict while roster-full.js says Zen = Heihachi —
   // put to the owner, not decided here.
+  // 2026-10-22: zen -> dural (owner: "Dural's stance is Zen's stance", permanent base-mix layer).
+  // VF5 motion pipeline decoded Dural's stance from mot_DUR.bin; bank 'dural' added to T3_BANKS.
   const FIGHTER_BANK = {
     awapop: 'nina', torch: 'anna', kingtyrant: 'eddy', kai: 'eddy',
-    tou: 'paul', gyou: 'hwoarang', zen: 'julia', rave: 'lei',
+    tou: 'paul', gyou: 'hwoarang', zen: 'dural', rave: 'lei',
     yukihyo: 'armorking', nightwolf: 'julia',
   };
   if (Object.prototype.hasOwnProperty.call(FIGHTER_BANK, charId)) return FIGHTER_BANK[charId];
