@@ -494,3 +494,11 @@ Rules:
 - X.COPY is ONE super (copies opponent briefly), NOT Zen's identity. Zen is not just a copycat.
 - Until VF5 Dural motion exists, Zen's bank is UNMAPPED (game/js/fighter.js FIGHTER_BANK zen: null). Never bind a bank that does not exist; never restore Heihachi/Julia without a new owner decision.
 - Full doc: docs/decisions/2026-10-24-zen-base-decision.md.
+## Gyou spirit body (user directive 2026-10-22)
+
+> "Gyou spirit for floats behind this like how zen floats behind his, but gyou moves around more aggressively and sporadic than zen does behind his Spirit body. He is the flame Lord (Flaming Angel) and will have various transformation ls and a giant susanoo form with different levels and transformations too"
+
+- Gyou's spirit floats **behind** his spirit body (same setup as Zen's), but moves **more aggressively and sporadically** than Zen's spirit does.
+- Canon: Gyou = **Flame Lord (Flaming Angel)**.
+- Future roadmap: various transformations + a giant **Susanoo form** with different levels and transformations.
+- Source model (Tripo "fiery humanoid 3d model") archived to `roster/gyou/spirit-body/source/` (worker 84, archive-only, not wired into MODEL_URLS); restore tag `gyou-spirit-body-original` ("Restore point: these bytes never change"). Spec for the future rig/anim lane: `roster/gyou/spirit-body/SPEC.md` (float behavior + transformation roadmap documented, not built).
