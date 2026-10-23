@@ -97,3 +97,9 @@ On 2026-10-23, cape-jones PR #219 wiped main: the merge was built from a sparse/
 - The gate is `.github/workflows/ui-sources.yml`, which runs `tools/ui-sources/check.py BASE HEAD`. It FAILS when a new screen, changed `<section>` markup, or a changed UI file (index.html, game/*.css, *menu*/*-screen*/*-ui*/ui-* js, game/ui/**, creation-suite UI) has no existing teardown source. It also fails when a changed UI file isn't listed under some screen's `files`.
 - `legacy-unsourced` marks the pre-law hand-made screens. They are grandfathered only while untouched. To change one, first rebuild it from a teardown source and cite that source.
 - Make this check **required** in branch protection (owner setting).
+
+## Team workflow (multi-agent, t141u)
+- Rules + lanes: `docs/AGENT-TEAM-PROTOCOL.md`
+- Backlog any agent can pull (claim by setting owner + branch): `docs/team/TASKBOARD.md`
+- Hitting a limit / resuming / reconciling parallel branches: `docs/team/HANDOFF.md`
+- Free tools + CI/hosting to keep work going 24/7 at $0: `docs/team/FREE-RESOURCES.md`
