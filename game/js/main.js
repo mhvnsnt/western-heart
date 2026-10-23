@@ -8,51 +8,64 @@ import { InputManager } from './input.js';
 import { audio } from './audio.js';
 import { assets } from './assets.js';
 import { ROSTER, getCharacter } from './characters.js';
-import { loadRealMovesets, bankIdFor } from './fighter.js';
-import { loadFighterMovesets } from './movesets.js';
-import { getFighterMoveset, ensureMovesets, resolveMoveKey } from './movesets.js';
-import { loadT3Clips } from './t3anims.js';
+// LOADSPEED (2026-10-22): fighter.js / movesets.js / t3anims.js / modes.js
+// are fight-or-preview-only — they load on demand through lazy.js so the
+// menu shell paints without parsing them (Tekken 3 BNS lesson: the index
+// loads first, records stream on demand). Warmed during idle at boot end.
+import { lazy, warmIdle } from './lazy.js';
+import { mark } from './loadperf.js';
 import * as THREE from 'three';
 import { whUiEnabled, mountWhUi } from './ui-wh-bridge.js';
 import { getCustomFighter, customFighterToRoster } from './custom-fighter.js';
 import { resolveFighterAttire } from './attires.js';
 import { createSelectScreen } from './select-screen.js';
 import { STAGES, STAGE_TIERS, getStage, randomStageId } from './stages.js';
-import { ModeController } from './modes.js';
+// LOADSPEED: stages.js (82KB data) stays static — buildStageSelect runs in
+// the versus flow and getStage is needed by startFight; its parse cost is
+// small next to the deferred modules. Stage THUMBS are the real cost there
+// (see the thumb atlas, assets/stages/thumbs/atlas.png + thumbs.json).
 import { initMenus } from './menus.js';
 
-// Load REAL Tekken 3 moveset data (not hand-written frame data)
-loadRealMovesets();
-// Load per-fighter Tekken movelists (1/2/3/4, throws, strings, specials) — LANE 3
-loadFighterMovesets();
+// LOADSPEED: the real Tekken moveset JSONs (~300KB) used to fetch at boot.
+// They are fight data — they load when a fight starts (startFight awaits
+// them alongside the fighter GLBs), not while the menu is painting.
 
 const screens = {
   menu:   document.getElementById('screen-menu'),
   howto:  document.getElementById('screen-howto'),
   select: document.getElementById('screen-select'),
   stage:  document.getElementById('screen-stage'),
+  stageIntro: document.getElementById('screen-stage-intro'),
   result: document.getElementById('screen-result'),
   hud:    document.getElementById('hud'),
-  stage:      document.getElementById('screen-stage'),
   reincarnate: document.getElementById('screen-reincarnate'),
   trader:  document.getElementById('screen-trader'),
   modewin: document.getElementById('screen-modewin'),
+  online: document.getElementById('screen-online'),
+  sidegames: document.getElementById('screen-sidegames'),
+  collection: document.getElementById('screen-collection'),
+  daily: document.getElementById('screen-daily'),
 };
 /* Tekken-style select screen controller (js/select-screen.js).
    Assigned once at bootstrap below; show() only runs on user
    interaction, after the whole module has been evaluated. */
 let selectScreen = null;
 function show(name) {
+  mark(name === 'select' ? 'select-open' : name === 'stage' ? 'stage-open' : `show:${name}`);
   Object.values(screens).forEach(s => s.classList.remove('active'));
   if (screens[name]) screens[name].classList.add('active');
   // Tekken 99s select timer: runs only on the select screen, and only once the
   // ~30MB assets are loaded — slow phones don't lose selection time to loading.
   if (name === 'select') {
     maybeStartSelectTimer();
-    // Start downloading both fighter models the moment select opens —
-    // by the time the user picks and hits CONFIRM, they're usually cached.
-    assets.preloadAll();
-    if (selectScreen) selectScreen.onShow(modes.mode);
+    // LOADSPEED (2026-10-22): the old code fired preloadAll() here — four
+    // base GLBs (~26MB) the instant select opened, saturating the pipe the
+    // user's first preview taps needed. Now the screen paints first and the
+    // bases warm during idle; a highlight always preempts them (assets.js).
+    // The custom-fighter base only matters when a custom fighter exists.
+    assets.preloadBaseIdle(!!getCustomFighter());
+    if (selectScreen) selectScreen.onShow(modes ? modes.mode : null);
+    requestAnimationFrame(() => requestAnimationFrame(() => mark('select-interactive')));
   }
   else { selectTimerArmed = false; stopSelectTimer(); }
 }
@@ -160,6 +173,25 @@ const ui = {
     el.classList.add('show', 'escaped');
     this._throwT = setTimeout(() => el.classList.remove('show', 'escaped'), 900);
   },
+  /* V-System (owner 2026-10-22). All user-facing names are «name TBD»
+     placeholders pending user approval — flagged, not final. */
+  vTrigger() {
+    this.banner('V-TRIGGER «name TBD» — SOUL AWAKENED');
+    this.surgeFlash(0xffd34d, 0xfff2b0);
+  },
+  vReversal() {
+    this.banner('V-REVERSAL «name TBD»');
+    this.surgeFlash(0x4da6ff, 0xbfe0ff);
+  },
+  vShift() { this.surgeFlash(0x7df9ff, 0xd8fbff); },
+  vShiftBreak() {
+    this.banner('V-SHIFT «name TBD» — BREAK!');
+    this.surgeFlash(0xffffff, 0x7df9ff);
+  },
+  vParry() {
+    this.banner('V-SKILL PARRY «name TBD»');
+    this.surgeFlash(0x9fd8ff, 0xe8f6ff);
+  },
   matchOver(playerWon) {
     document.getElementById('result-title').textContent = playerWon ? 'YOU WIN!' : 'YOU LOSE';
     document.getElementById('result-sub').textContent = playerWon
@@ -174,6 +206,10 @@ const canvas = document.getElementById('game-canvas');
 const input = new InputManager();
 input.init();
 const game = new Game(canvas, input, ui);
+// Photo mode (DOA-style): P/F9 pauses into a free camera anywhere in a
+// fight. Loaded on demand; no-op until first toggled.
+import('./photomode.js').then(({ installPhotoMode }) => installPhotoMode(game))
+  .catch(() => {});
 ui._buildMeter('p1');
 ui._buildMeter('p2');
 
@@ -182,6 +218,45 @@ let assetsReady = false;
 
 /* ---- Game modes (lane 5): versus / arcade / story(+reincarnation) / training.
    The controller owns mode state; main.js just routes menu + select events. */
+/* LOADSPEED: modes.js (54KB) is the biggest menu-only module that boot
+   doesn't need — no mode runs until a menu button is tapped. The
+   controller is built on the first mode tap (getModes) and every use
+   site awaits it. window.__modes is set then, as before. */
+let modes = null;
+let _modesPromise = null;
+function getModes() {
+  if (modes) return Promise.resolve(modes);
+  if (!_modesPromise) {
+    _modesPromise = lazy.modes().then(({ ModeController }) => {
+      modes = new ModeController({
+        game, ui, show, startFight: startFightViaStage,
+        roster: ROSTER, getChar: getCharacterWithCustom, audio,
+      });
+      window.__modes = modes;
+      return modes;
+    });
+  }
+  return _modesPromise;
+}
+/* ---- Rank battle (worker 30): offline ranked ladder, lazy like modes ----
+   RankBattleController lives in js/ranks.js and mirrors ModeController's
+   deps. rankBattleSelect routes the select-screen confirm into it. */
+let rankBattle = null;
+let _rankBattlePromise = null;
+let rankBattleSelect = false;
+function getRankBattle() {
+  if (rankBattle) return Promise.resolve(rankBattle);
+  if (!_rankBattlePromise) {
+    _rankBattlePromise = lazy.ranks().then((m) => {
+      rankBattle = new m.RankBattleController({
+        game, ui, show, startFight: startFightViaStage,
+        roster: ROSTER, getChar: getCharacterWithCustom, audio,
+      });
+      return rankBattle;
+    });
+  }
+  return _rankBattlePromise;
+}
 /* ---- Game modes (lane 5) + stage select (lane 4) integration ----
    The mode controller owns mode state and fight setup; versus-mode fights
    route through the CHOOSE YOUR ARENA screen. Arcade/story/training keep
@@ -192,17 +267,13 @@ function startFightViaStage(p1, p2, opts = {}) {
   pendingFight = { p1, p2, opts };
   buildStageSelect();
   show('stage');
+  requestAnimationFrame(() => requestAnimationFrame(() => mark('stage-interactive')));
   const hint = document.getElementById('stage-hint');
   const s = getStage(selectedStage);
-  if (hint && s) hint.textContent = `${s.name} — ${s.description}`;
+  if (hint && s) hint.textContent = s.name;
   const btn = document.getElementById('confirm-stage');
   if (btn) btn.disabled = false;
 }
-const modes = new ModeController({
-  game, ui, show, startFight: startFightViaStage,
-  roster: ROSTER, getChar: getCharacterWithCustom, audio,
-});
-window.__modes = modes;
 
 /* TEKKEN 3 LESSON: don't load fighters at boot. Menu + select use PNG
    portraits — 3D models load on demand at fight start (see assets.js).
@@ -257,38 +328,128 @@ selectScreen.build();
    Mind lands + 15 Tekken 3 retro arenas (real teardown geometry). */
 let selectedStage = 'shrine';
 
+/* LOADSPEED: stage-thumb atlas (Urban Reign VGS lesson — Namco packs each
+   menu screen into ONE tiled texture instead of dozens of files). The 41
+   thumbs used to be 41 separate PNG requests on stage-select open; now one
+   atlas.png + one tiny atlas.json serve them all via background-position.
+   Cards render instantly with the palette swatch and upgrade to real thumbs
+   when the single atlas arrives. Missing tiles keep the swatch. */
+const THUMB_ATLAS_URL = 'assets/stages/thumbs/atlas.png';
+let _thumbAtlasP = null;
+function thumbAtlas() {
+  if (!_thumbAtlasP) {
+    _thumbAtlasP = fetch('assets/stages/thumbs/atlas.json')
+      .then(r => (r.ok ? r.json() : null))
+      .catch(() => null);
+  }
+  return _thumbAtlasP;
+}
 function buildStageSelect() {
   const grid = document.getElementById('stage-grid');
   if (!grid) return;
   grid.innerHTML = '';
-  for (const tier of STAGE_TIERS) {
-    const stages = STAGES.filter(s => s.tier === tier);
-    if (!stages.length) continue;
-    const tierHeader = document.createElement('div');
-    tierHeader.className = 'tier-header';
-    tierHeader.textContent = tier;
-    grid.appendChild(tierHeader);
-    for (const s of stages) {
-      const card = document.createElement('div');
-      card.className = 'stage-card' + (s.id === selectedStage ? ' selected' : '');
-      card.dataset.id = s.id;
-      card.innerHTML =
-        `<img class="sthumb" src="${s.thumb}" alt="${s.name}" loading="lazy"
-              onerror="this.outerHTML='<div class=&quot;swatch&quot; style=&quot;background:linear-gradient(135deg, ${s.swatch[0]}, ${s.swatch[1]})&quot;></div>'">
-         <div class="sname">${s.name}</div>
-         <div class="suniverse">${s.universe}</div>`;
-      card.addEventListener('click', () => selectStageCard(card, s));
-      grid.appendChild(card);
+  const paint = (atlas) => {
+    for (const tier of STAGE_TIERS) {
+      const stages = STAGES.filter(s => s.tier === tier);
+      if (!stages.length) continue;
+      const tierHeader = document.createElement('div');
+      tierHeader.className = 'tier-header';
+      tierHeader.textContent = tier;
+      grid.appendChild(tierHeader);
+      for (const s of stages) {
+        const card = document.createElement('div');
+        card.className = 'stage-card' + (s.id === selectedStage ? ' selected' : '');
+        card.dataset.id = s.id;
+        const o = atlas && atlas.offsets && atlas.offsets[s.id];
+        // Atlas is a 7x6 tile grid: percentage positioning keeps the div
+        // responsive (CSS: width 100%, aspect 16/9) at any card size.
+        const visual = o
+          ? `<div class="sthumb" role="img" aria-label="${s.name}" style="background-image:url('${THUMB_ATLAS_URL}');background-size:700% 600%;background-repeat:no-repeat;background-position:${(o.x / o.w / 6 * 100).toFixed(2)}% ${(o.y / o.h / 5 * 100).toFixed(2)}%;"></div>`
+          : `<div class="swatch" style="background:linear-gradient(135deg, ${s.swatch[0]}, ${s.swatch[1]})"></div>`;
+        card.innerHTML =
+          `${visual}<div class="sname">${s.name}</div><div class="suniverse">${s.universe}</div>`;
+        card.addEventListener('click', () => selectStageCard(card, s));
+        grid.appendChild(card);
+      }
     }
+  };
+  paint(null); // instant: swatches first, never waits on the atlas
+  // Preview pane + scroll track the selected stage (main 2026-10-21/22); rerun after the
+  // atlas repaint, which recreates the cards.
+  const afterPaint = () => {
+    const cur = getStage(selectedStage);
+    if (cur) updateStagePreview(cur);
+    const sel = grid.querySelector('.stage-card.selected');
+    if (sel) scrollStageCardIntoView(sel);
+  };
+  afterPaint();
+  thumbAtlas().then((atlas) => {
+    const sc = document.getElementById('screen-stage');
+    if (!atlas || !sc || !sc.classList.contains('active')) return;
+    grid.innerHTML = '';
+    paint(atlas); // upgrade: real thumbs once the single atlas arrives
+    afterPaint();
+  });
+}
+/* Bring a stage card into the grid's visible window by writing
+   scrollTop directly. scrollIntoView relies on a smooth-scroll
+   animation (the grid has scroll-behavior:smooth) whose timeline
+   stalls whenever the main thread is busy — measured headless
+   2026-10-21: scrollIntoView left scrollTop at 0 while a direct
+   write scrolled instantly. Direct writes are frame-perfect on
+   real hardware too. */
+function scrollStageCardIntoView(el) {
+  const grid = document.getElementById('stage-grid');
+  if (!grid || !el) return;
+  const gr = grid.getBoundingClientRect(), r = el.getBoundingClientRect();
+  if (r.top < gr.top) grid.scrollTop -= (gr.top - r.top) + 8;
+  else if (r.bottom > gr.bottom) grid.scrollTop += (r.bottom - gr.bottom) + 8;
+}
+/* Tekken pattern: the large preview pane (image + name + description,
+   inside the layout) always tracks the highlighted stage — a card tap,
+   a RANDOM roll, or keyboard focus all drive the same single state. */
+function updateStagePreview(s) {
+  const img = document.getElementById('stage-preview-img');
+  const sw = document.getElementById('stage-preview-swatch');
+  const showSwatch = () => {
+    if (img) img.style.display = 'none';
+    if (sw) {
+      sw.hidden = false;
+      sw.style.background = `linear-gradient(135deg, ${s.swatch[0]}, ${s.swatch[1]})`;
+    }
+  };
+  if (img) {
+    // W51: the preview pane markup now exists (index.html). Only set src
+    // when there's a thumb AND it changed — most thumbs 404 (atlas tiles
+    // serve the cards), and re-setting the same src flickers the pane.
+    // Re-highlighting the same stage leaves img/swatch exactly as they are.
+    if (s.thumb) {
+      if (img.getAttribute('src') !== s.thumb) {
+        img.style.display = '';
+        img.onerror = showSwatch;
+        if (sw) sw.hidden = true;
+        img.src = s.thumb;
+      }
+    } else {
+      showSwatch();
+    }
+    img.alt = s.name;
   }
+  const nm = document.getElementById('stage-preview-name');
+  if (nm) nm.textContent = s.name;
+  const un = document.getElementById('stage-preview-universe');
+  if (un) un.textContent = s.universe || '';
+  const ds = document.getElementById('stage-preview-desc');
+  if (ds) ds.textContent = s.description || '';
+  const hint = document.getElementById('stage-hint');
+  if (hint) hint.textContent = s.name;
 }
 function selectStageCard(card, s) {
   audio.uiClick();
   document.querySelectorAll('.stage-card').forEach(x => x.classList.remove('selected'));
   card.classList.add('selected');
   selectedStage = s.id;
-  const hint = document.getElementById('stage-hint');
-  if (hint) hint.textContent = `${s.name} — ${s.description}`;
+  updateStagePreview(s);
   const btn = document.getElementById('confirm-stage');
   if (btn) btn.disabled = false;
 }
@@ -301,7 +462,9 @@ function focusStage(i) {
   cards.forEach(x => x.classList.remove('kb-focus'));
   const el = cards[focusedStageIdx];
   el.classList.add('kb-focus');
-  el.scrollIntoView({ block: 'nearest' });
+  scrollStageCardIntoView(el);
+  const s = getStage(el.dataset.id);
+  if (s) updateStagePreview(s);
 }
 document.addEventListener('keydown', (e) => {
   const sc = document.getElementById('screen-stage');
@@ -318,7 +481,9 @@ document.addEventListener('keydown', (e) => {
     const card = cards[focusedStageIdx];
     const s = getStage(card.dataset.id);
     if (s) {
-      if (selectedStage === s.id) { startFight(); }
+      // W51: same confirm path as the CONFIRM button — bare startFight()
+      // here dropped pendingFight (wrong fighters, dead result screen).
+      if (selectedStage === s.id) { confirmStageFromSelect(); }
       else selectStageCard(card, s);
     }
     e.preventDefault();
@@ -386,40 +551,56 @@ window.addEventListener('load', () => {
   setTimeout(() => document.getElementById('tap-to-start').classList.add('show'), 600);
 });
 
-document.querySelectorAll('[data-action]').forEach((el) => {
-  el.addEventListener('click', () => {
+/* Delegated data-action router (T8 menu, worker 37): one document-level
+   listener covers both the static menu and submenu cards created
+   dynamically by mainmenu.js. Previously a one-time forEach at eval. */
+document.addEventListener('click', (e) => {
+  const t = e.target;
+  const el = (t instanceof Element) ? t.closest('[data-action]') : null;
+  if (!el) return;
+  {
     unlockAudio();
     audio.uiClick();
     const a = el.dataset.action;
     if (a === 'play' || a === 'mode-arcade') {
-      modes.startMode('arcade');
+      getModes().then(m => m.startMode('arcade'));
     }
     else if (a === 'mode-versus') {
-      modes.startMode('versus');
+      getModes().then(m => m.startMode('versus'));
     }
     else if (a === 'mode-story') {
-      modes.startMode('story');
+      getModes().then(m => m.startMode('story'));
     }
     else if (a === 'mode-training') {
-      modes.startMode('training');
+      getModes().then(m => m.startMode('training'));
+    }
+    else if (a === 'mode-fightlab') {
+      getModes().then(m => m.startMode('fightlab'));
     }
     else if (a === 'mode-survival') {
-      modes.startMode('survival');
+      getModes().then(m => m.startMode('survival'));
     }
     else if (a === 'mode-timeattack') {
-      modes.startMode('timeattack');
+      getModes().then(m => m.startMode('timeattack'));
     }
     else if (a === 'mode-team') {
-      modes.startMode('team');
+      getModes().then(m => m.startMode('team'));
     }
     else if (a === 'mode-qombat') {
-      modes.startMode('qombat');
+      getModes().then(m => m.startMode('qombat'));
     }
     else if (a === 'mode-surge') {
-      modes.startMode('surge');
+      getModes().then(m => m.startMode('surge'));
     }
     else if (a === 'mode-trader') {
-      modes.startMode('trader');
+      getModes().then(m => m.startMode('trader'));
+    }
+    else if (a === 'mode-rankbattle') {
+      rankBattleSelect = true;
+      getRankBattle().then((rb) => rb.start());
+    }
+    else if (a === 'show-ranks') {
+      lazy.ranks().then((m) => m.initRanks().then(() => m.openRankHub()));
     }
     else if (a === 'mode-create') {
       // Character creation — launches the Create Fighter CAW suite.
@@ -433,18 +614,63 @@ document.querySelectorAll('[data-action]').forEach((el) => {
       // CLEAN-INIT: leaving fight → full state reset. No leaked fighters,
       // timers, or listeners carry into the menu.
       game.leaveFight();
-      modes.clearState();
+      rankBattleSelect = false;
+      if (rankBattle) rankBattle.clear();
+      getModes().then(m => m.clearState());
       show('menu');
       audio.stopMusic();
     }
     else if (a === 'back-select') {
+      rankBattleSelect = false;
+      if (rankBattle) rankBattle.clear();
       show('select');
     }
     else if (a === 'rematch') {
-      if (modes.mode) modes.rematch();
-      else startFight();
+      getModes().then(m => { if (m.mode) m.rematch(); else startFight(); });
     }
-  });
+  }
+});
+
+/* T8 main menu router (data-mm, worker 36): the T8-style menu uses data-mm
+   attributes, not data-action. This delegated listener wires them up.
+   Each navigates to a real screen — no dead ends. */
+document.addEventListener('click', (e) => {
+  const t = e.target;
+  const el = (t instanceof Element) ? t.closest('[data-mm]') : null;
+  if (!el) return;
+  unlockAudio();
+  audio.uiClick();
+  const m = el.dataset.mm;
+  if (m === 'story') {
+    getModes().then(modes => modes.startMode('story'));
+  }
+  else if (m === 'versus') {
+    getModes().then(modes => modes.startMode('versus'));
+  }
+  else if (m === 'online') {
+    show('online');
+  }
+  else if (m === 'arcade') {
+    getModes().then(modes => modes.startMode('arcade'));
+  }
+  else if (m === 'sidegames') {
+    show('sidegames');
+  }
+  else if (m === 'training') {
+    getModes().then(modes => modes.startMode('training'));
+  }
+  else if (m === 'creation') {
+    window.location.href = '../customization/creation-suite-ui/index.html';
+  }
+  else if (m === 'collection') {
+    show('collection');
+  }
+  else if (m === 'daily') {
+    show('daily');
+  }
+  else if (m === 'options') {
+    show('howto'); // Options: howto screen has settings
+  }
 });
 
 /* Confirm routing: the mode controller owns the select flow
@@ -452,27 +678,59 @@ document.querySelectorAll('[data-action]').forEach((el) => {
    Lane 4 integration: versus-mode fights route through the stage-select
    screen via startFightViaStage (wired as the ModeController's startFight
    dep below); arcade/story/training use their mode-dictated flow. */
-function confirmSelection() {
+async function confirmSelection() {
   if (!selectedChar) return;
-  const id = selectedChar; // capture: notifyConfirm may clear the mirror
+  const id = selectedChar;
+  selectedChar = null; // clear synchronously BEFORE any await: a fast double-tap
+  // used to re-enter here during the getModes() gap and confirm the same
+  // fighter twice (P2 = P1), which startFight() turned into a random opponent.
   audio.uiClick();
   // Select-screen lock state first (P1 lock -> P2 cursor in versus),
   // then the mode controller routes the fight.
   selectScreen.notifyConfirm(id);
-  modes.onConfirm(id);
-  selectedChar = null; // always clear — versus P2 must click a card to pick
+  if (rankBattleSelect) {
+    rankBattleSelect = false;
+    (await getRankBattle()).onConfirm(id);
+    return;
+  }
+  (await getModes()).onConfirm(id);
 }
 
 document.getElementById('confirm-fighter').addEventListener('click', confirmSelection);
 
-/* Lane 4: stage-select screen handlers (CHOOSE YOUR ARENA). */
-document.getElementById('confirm-stage').addEventListener('click', () => {
+/* Lane 4: stage-select screen handlers (CHOOSE YOUR ARENA).
+   P0 (2026-10-22): the old handler nulled pendingFight up front and never
+   caught startFight rejections — any failure left the player on a dead
+   stage screen with no feedback and no way to retry ("fight never starts").
+   Now: visible loading state on the stage screen, failures surface there,
+   and pendingFight is only consumed when the fight actually starts, so
+   CONFIRM retries the same fight. W51: extracted so the keyboard Enter
+   path runs the SAME confirm — a bare startFight() there used to ignore
+   pendingFight, booting the wrong fighters with no versus onMatchEnd
+   (dead result screen). */
+function confirmStageFromSelect() {
   if (!selectedStage || !pendingFight) return;
   audio.uiClick();
   const { p1, p2, opts } = pendingFight;
-  pendingFight = null;
-  startFight(p1, p2, { ...opts, stage: selectedStage });
-});
+  const btn = document.getElementById('confirm-stage');
+  const hint = document.getElementById('stage-hint');
+  if (btn) btn.disabled = true;
+  if (hint) hint.textContent = 'Entering the arena…';
+  startFight(p1, p2, { ...opts, stage: selectedStage }).then(
+    (started) => {
+      if (started) { pendingFight = null; return; }
+      // startFight reported the failure on the hints already.
+      if (btn) btn.disabled = false;
+    },
+    (err) => {
+      console.error('[WH] stage-select: fight failed to start:', err);
+      if (hint) hint.textContent = 'Could not start the fight — tap CONFIRM to retry.';
+      if (btn) btn.disabled = false;
+    }
+  );
+}
+
+document.getElementById('confirm-stage').addEventListener('click', confirmStageFromSelect);
 
 document.getElementById('random-stage').addEventListener('click', () => {
   audio.uiClick();
@@ -490,7 +748,7 @@ document.getElementById('random-stage').addEventListener('click', () => {
 document.getElementById('training-quit').addEventListener('click', () => {
   audio.uiClick();
   game.leaveFight();
-  modes.clearState();
+  getModes().then(m => m.clearState());
   show('menu');
   audio.stopMusic();
 });
@@ -504,7 +762,9 @@ const MOVESET_GROUPS = [
   ['string', 'STRINGS'],
   ['strike', 'STRIKES'],
 ];
-function renderMovelist() {
+async function renderMovelist() {
+  // LOADSPEED: movesets.js loads on demand (fight time), not at boot.
+  const { getFighterMoveset, resolveMoveKey } = await lazy.movesets();
   const fid = game.p1 && game.p1.char.id;
   const ms = fid && getFighterMoveset(fid);
   const groups = document.getElementById('movelist-groups');
@@ -564,10 +824,10 @@ function renderMovelist() {
     groups.appendChild(g);
   }
 }
-function toggleMovelist(open) {
+async function toggleMovelist(open) {
   const el = document.getElementById('screen-movelist');
   const willOpen = open === undefined ? !el.classList.contains('active') : open;
-  if (willOpen) renderMovelist();
+  if (willOpen) await renderMovelist();
   el.classList.toggle('active', willOpen);
 }
 document.getElementById('movelist-btn').addEventListener('click', () => {
@@ -602,6 +862,16 @@ async function startFight(playerId, enemyId, opts = {}) {
   const confirmBtn = document.getElementById('confirm-fighter');
   try {
     if (hint) hint.textContent = 'Entering the arena…';
+    // LOADSPEED: fight-only modules (fighter/movesets/t3anims) stream in
+    // here — they are warmed during menu idle, so this usually resolves
+    // from cache. The real-Tekken moveset JSONs (~300KB) also load here
+    // instead of at boot (they are fight data, not menu data).
+    const [F, MS, T3] = await Promise.all([lazy.fighter(), lazy.movesets(), lazy.t3anims()]);
+    const { ensureMovesets } = MS;
+    const { bankIdFor, loadRealMovesets } = F;
+    const { loadT3Clips } = T3;
+    if (hint) hint.textContent = 'Loading move lists…';
+    await Promise.all([loadRealMovesets(), MS.loadFighterMovesets()]);
     // Show the TRANSFORM touch button only for fighters that can transform.
     const tBtn = document.querySelector('.act-btn.transform');
     if (tBtn) tBtn.style.display = (player.transform || player.forms) ? '' : 'none';
@@ -641,9 +911,16 @@ async function startFight(playerId, enemyId, opts = {}) {
     }
   } catch (err) {
     console.error('[WH] fight load failed:', err);
-    if (hint) hint.textContent = 'Failed to load fighters. Check connection and try again.';
+    const msg = 'Failed to load fighters. Check connection and try again.';
+    if (hint) hint.textContent = msg;
+    // P0 (2026-10-22): the stage screen is where versus fights start — the
+    // error must be visible there, not only on the fighter-select hint.
+    const stageHint = document.getElementById('stage-hint');
+    if (stageHint) stageHint.textContent = msg;
     if (confirmBtn) confirmBtn.disabled = false;
-    return;
+    const stageBtn = document.getElementById('confirm-stage');
+    if (stageBtn) stageBtn.disabled = false;
+    return false;
   }
   if (confirmBtn) confirmBtn.disabled = false;
   show('hud');
@@ -657,6 +934,7 @@ async function startFight(playerId, enemyId, opts = {}) {
     clearTimeout(hints._t);
     hints._t = setTimeout(() => hints.classList.add('fade'), 6000);
   }
+  return true; // P0 (2026-10-22): stage-select handler needs to know the fight started
 }
 // H toggles control hints, M toggles the movelist (training)
 document.addEventListener('keydown', (e) => {
@@ -686,3 +964,19 @@ initMenus({ show, startFight: startFightViaStage, game, ui, ROSTER, getChar: get
 
 // New Western Heart menu/UI (game/ui-wh/) behind a toggle; classic menus stay as fallback.
 if (whUiEnabled()) mountWhUi({ game, ui, show, startFight, ROSTER });
+
+/* LOADSPEED: the menu shell is interactive now. Warm the fight-only
+   modules during idle (Tekken: stream records while the player reads
+   the menu) and stamp the boot->menu timing mark on first paint. */
+warmIdle();
+// QA hooks (window.__modes) and the first mode tap expect the controller soon after boot: build it on
+// the same idle lane lazy.warmIdle() uses, so it never competes with first paint.
+((typeof window !== 'undefined' && window.requestIdleCallback) ? window.requestIdleCallback.bind(window)
+  : (fn) => setTimeout(fn, 1500))(() => { getModes().catch(() => {}); });
+requestAnimationFrame(() => requestAnimationFrame(() => mark('menu-interactive')));
+
+/* Menu routers above are bound (delegated data-action + data-mm listeners
+   registered at module evaluation). The non-module fallback binder in
+   index.html checks this flag and stays dormant when the module chain
+   loaded fine. (PR #676 rebase, worker 55.) */
+window.__whMenuBound = true;
