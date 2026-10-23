@@ -1,0 +1,296 @@
+{
+ "schema": 2,
+ "fighter": "ur-char058",
+ "proxy": false,
+ "animationSource": "pmot058.ppk native .gyu bank (per-character)",
+ "movesSource": "motdatP58 names proven for 25/35 clips (UR Phase 5 Job 1, root-stream identity, name-bridge-char058-proven.json); remaining clips engine-base (proxy) - 9 P58 records unproven (per-record reasons in the proven file) + 1 bank motions not in the P58 list",
+ "bank": "pmot058.ppk",
+ "motions": 35,
+ "clips": [
+  {
+   "name": "ur_m000",
+   "motion": 0,
+   "frames": 57,
+   "duration_s": 0.95
+  },
+  {
+   "name": "ur_m001",
+   "motion": 1,
+   "frames": 72,
+   "duration_s": 1.2,
+   "motdatName": "cbco_doubleleg",
+   "motdatGlobalId": 79,
+   "nameProof": "root-stream identity vs motdatP58.bin record 2, maxDev 0.0487 mm"
+  },
+  {
+   "name": "ur_m002",
+   "motion": 2,
+   "frames": 20,
+   "duration_s": 0.333,
+   "motdatName": "cbco_dwngnuke_asi_y",
+   "motdatGlobalId": 92,
+   "nameProof": "root-stream identity vs motdatP58.bin record 3, maxDev 0.0019 mm"
+  },
+  {
+   "name": "ur_m003",
+   "motion": 3,
+   "frames": 20,
+   "duration_s": 0.333,
+   "motdatName": "cbco_dwngnuke_atama_y",
+   "motdatGlobalId": 93,
+   "nameProof": "root-stream identity vs motdatP58.bin record 4, maxDev 0.0019 mm"
+  },
+  {
+   "name": "ur_m004",
+   "motion": 4,
+   "frames": 20,
+   "duration_s": 0.333,
+   "motdatName": "cbco_dwngnuke_left_y",
+   "motdatGlobalId": 94,
+   "nameProof": "root-stream identity vs motdatP58.bin record 5, maxDev 0.0019 mm"
+  },
+  {
+   "name": "ur_m005",
+   "motion": 5,
+   "frames": 20,
+   "duration_s": 0.333,
+   "motdatName": "cbco_dwngnuke_right_y",
+   "motdatGlobalId": 95,
+   "nameProof": "root-stream identity vs motdatP58.bin record 6, maxDev 0.0019 mm"
+  },
+  {
+   "name": "ur_m006",
+   "motion": 6,
+   "frames": 143,
+   "duration_s": 2.383,
+   "motdatName": "cbco_spd_capo",
+   "motdatGlobalId": 199,
+   "nameProof": "root-stream identity vs motdatP58.bin record 7, maxDev 0.0147 mm"
+  },
+  {
+   "name": "ur_m007",
+   "motion": 7,
+   "frames": 60,
+   "duration_s": 1.0,
+   "motdatName": "cbco_zenchucapo",
+   "motdatGlobalId": 313,
+   "nameProof": "root-stream identity vs motdatP58.bin record 9, maxDev 0.0188 mm"
+  },
+  {
+   "name": "ur_m008",
+   "motion": 8,
+   "frames": 45,
+   "duration_s": 0.75,
+   "motdatName": "cbco_zenchullk",
+   "motdatGlobalId": 314,
+   "nameProof": "root-stream identity vs motdatP58.bin record 10, maxDev 0.0234 mm"
+  },
+  {
+   "name": "ur_m009",
+   "motion": 9,
+   "frames": 78,
+   "duration_s": 1.3
+  },
+  {
+   "name": "ur_m010",
+   "motion": 10,
+   "frames": 60,
+   "duration_s": 1.0
+  },
+  {
+   "name": "ur_m011",
+   "motion": 11,
+   "frames": 70,
+   "duration_s": 1.167
+  },
+  {
+   "name": "ur_m012",
+   "motion": 12,
+   "frames": 124,
+   "duration_s": 2.067
+  },
+  {
+   "name": "ur_m013",
+   "motion": 13,
+   "frames": 66,
+   "duration_s": 1.1
+  },
+  {
+   "name": "ur_m014",
+   "motion": 14,
+   "frames": 56,
+   "duration_s": 0.933,
+   "motdatName": "moco_bdcrk",
+   "motdatGlobalId": 456,
+   "nameProof": "root-stream identity vs motdatP58.bin record 12, maxDev 0.0129 mm"
+  },
+  {
+   "name": "ur_m015",
+   "motion": 15,
+   "frames": 80,
+   "duration_s": 1.333,
+   "motdatName": "moco_capo3dan2",
+   "motdatGlobalId": 477,
+   "nameProof": "root-stream identity vs motdatP58.bin record 14, maxDev 0.0435 mm"
+  },
+  {
+   "name": "ur_m016",
+   "motion": 16,
+   "frames": 77,
+   "duration_s": 1.283,
+   "motdatName": "moco_capo3dan3",
+   "motdatGlobalId": 478,
+   "nameProof": "root-stream identity vs motdatP58.bin record 15, maxDev 0.0382 mm"
+  },
+  {
+   "name": "ur_m017",
+   "motion": 17,
+   "frames": 40,
+   "duration_s": 0.667
+  },
+  {
+   "name": "ur_m018",
+   "motion": 18,
+   "frames": 60,
+   "duration_s": 1.0
+  },
+  {
+   "name": "ur_m019",
+   "motion": 19,
+   "frames": 58,
+   "duration_s": 0.967
+  },
+  {
+   "name": "ur_m020",
+   "motion": 20,
+   "frames": 117,
+   "duration_s": 1.95,
+   "motdatName": "moco_dropk",
+   "motdatGlobalId": 507,
+   "nameProof": "root-stream identity vs motdatP58.bin record 16, maxDev 0.0244 mm"
+  },
+  {
+   "name": "ur_m021",
+   "motion": 21,
+   "frames": 84,
+   "duration_s": 1.4,
+   "motdatName": "moco_dvbknee",
+   "motdatGlobalId": 515,
+   "nameProof": "root-stream identity vs motdatP58.bin record 17, maxDev 0.06 mm"
+  },
+  {
+   "name": "ur_m022",
+   "motion": 22,
+   "frames": 84,
+   "duration_s": 1.4,
+   "motdatName": "moco_dvbknee_z",
+   "motdatGlobalId": 516,
+   "nameProof": "root-stream identity vs motdatP58.bin record 18, maxDev 0.0359 mm"
+  },
+  {
+   "name": "ur_m023",
+   "motion": 23,
+   "frames": 83,
+   "duration_s": 1.383,
+   "motdatName": "moco_dvdropk",
+   "motdatGlobalId": 531,
+   "nameProof": "root-stream identity vs motdatP58.bin record 19, maxDev 0.0542 mm"
+  },
+  {
+   "name": "ur_m024",
+   "motion": 24,
+   "frames": 83,
+   "duration_s": 1.383,
+   "motdatName": "moco_dvdropk_z",
+   "motdatGlobalId": 532,
+   "nameProof": "root-stream identity vs motdatP58.bin record 20, maxDev 0.0401 mm"
+  },
+  {
+   "name": "ur_m025",
+   "motion": 25,
+   "frames": 78,
+   "duration_s": 1.3,
+   "motdatName": "moco_dvdropkdropk_z",
+   "motdatGlobalId": 534,
+   "nameProof": "root-stream identity vs motdatP58.bin record 21, maxDev 0.0408 mm"
+  },
+  {
+   "name": "ur_m026",
+   "motion": 26,
+   "frames": 82,
+   "duration_s": 1.367,
+   "motdatName": "moco_dvdropkrolk_z",
+   "motdatGlobalId": 537,
+   "nameProof": "root-stream identity vs motdatP58.bin record 22, maxDev 0.0417 mm"
+  },
+  {
+   "name": "ur_m027",
+   "motion": 27,
+   "frames": 80,
+   "duration_s": 1.333,
+   "motdatName": "moco_dvknee",
+   "motdatGlobalId": 555,
+   "nameProof": "root-stream identity vs motdatP58.bin record 23, maxDev 0.0615 mm"
+  },
+  {
+   "name": "ur_m028",
+   "motion": 28,
+   "frames": 80,
+   "duration_s": 1.333,
+   "motdatName": "moco_dvknee_z",
+   "motdatGlobalId": 556,
+   "nameProof": "root-stream identity vs motdatP58.bin record 24, maxDev 0.0343 mm"
+  },
+  {
+   "name": "ur_m029",
+   "motion": 29,
+   "frames": 76,
+   "duration_s": 1.267
+  },
+  {
+   "name": "ur_m030",
+   "motion": 30,
+   "frames": 88,
+   "duration_s": 1.467,
+   "motdatName": "moco_salbrolk",
+   "motdatGlobalId": 703,
+   "nameProof": "root-stream identity vs motdatP58.bin record 26, maxDev 0.0447 mm"
+  },
+  {
+   "name": "ur_m031",
+   "motion": 31,
+   "frames": 88,
+   "duration_s": 1.467,
+   "motdatName": "moco_salbrolk_z",
+   "motdatGlobalId": 704,
+   "nameProof": "root-stream identity vs motdatP58.bin record 27, maxDev 0.0412 mm"
+  },
+  {
+   "name": "ur_m032",
+   "motion": 32,
+   "frames": 50,
+   "duration_s": 0.833,
+   "motdatName": "moco_syabatorya",
+   "motdatGlobalId": 752,
+   "nameProof": "root-stream identity vs motdatP58.bin record 28, maxDev 0.0264 mm"
+  },
+  {
+   "name": "ur_m033",
+   "motion": 33,
+   "frames": 90,
+   "duration_s": 1.5,
+   "motdatName": "moco_tomas",
+   "motdatGlobalId": 764,
+   "nameProof": "root-stream identity vs motdatP58.bin record 29, maxDev 0.0168 mm"
+  },
+  {
+   "name": "ur_m034",
+   "motion": 34,
+   "frames": 87,
+   "duration_s": 1.45,
+   "motdatName": "moco_torobaon",
+   "motdatGlobalId": 766,
+   "nameProof": "root-stream identity vs motdatP58.bin record 30, maxDev 0.0543 mm"
+  }
+ ]
+}
