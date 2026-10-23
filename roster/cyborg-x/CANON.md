@@ -44,3 +44,19 @@ Base: **Alisa Bosconovitch** (animation bank: CAPE JONES/CYBORG X ← Alisa). He
 - `CANON.md` (repo root character bible), "CAPE JONES CYBORG-X" (incl. canon-lock) and "CAPE JONES — The One Who Flew In."
 - `~/MEMORY.md` — same-person law (line 15); palette locks (lines 430, 566); eyes (line 431); personality/balance (line 451); origin and TV entry (lines 452, 453); scale lock (line 496); rename (line 395); bank mapping (line 926).
 - `~/memory/2026-10-13.md` (android gear; two built souls), `~/memory/2026-10-16.md` (pronoun final word; "Immortal Qombat"; built by Doc Frank), `~/memory/2026-10-19.md` (GYOU splinter + owner approval).
+
+## Imported canon — from Cape Jones (his home show)
+
+Cape Jones is the lead of his own show before he is a fighter here; the show's character bible (mhvnsnt/cape-jones) records the persona the game inherited:
+
+- **Archetype:** "washed-up cosmic cape-hero, still performing like it's his premiere."
+- **Want:** to be watched being heroic. **Flaw:** performs heroism instead of doing it.
+- **Body gag** (Johnny Bravo style-bible rule — one exaggeration, committed fully): **THE CAPE.** Enormous, dramatic, billows with no wind, gets caught in doors, upstages him constantly — "the most competent character on the show."
+- **Voice:** big, theatrical, mid-century hero-announcer cadence — undercut constantly by the cape and the sidekick.
+- **Show-side powers:** flight, power-band blasts, cosmic durability — all real, all deployed at the wrong moment for the wrong reason.
+- **Build base ("Cape Ghost"):** the show builds him as Space Ghost minus the ears and proprietary mask bits — cowled mask, chin showing, white eyes. The proprietary pieces are shaved off; everything else is sculpted and adapted ONTO him; the result must be 100% Cape Jones. This is why donor-parts works on him.
+- **Source lineage (production record):** Space Ghost production materials as study reference (the canonical cape-hero base), the Johnny Bravo show bible as the personality/voice engine (his flaw generates every episode), Gumball's mixed-media visual language, and the Teen Titans action-adventure spine under the comedy.
+
+*Editorial note:* the show bible's silhouette line and likeness anchors were written against the navy/crimson/gold colorway, which that same document supersedes — the locked palette in "Appearance / model" above (owner 2026-10-17) governs. The show also plays him as a washed-up performer who wants an audience; the game canon above plays him as a man who doesn't want to be here at all. Both are recorded as-is from their own projects; the tension is flagged, not reconciled.
+
+Sources for this section: mhvnsnt/cape-jones `characters/cape-jones.md` (Character Bible v1, 2026-10-15) and `docs/SHOW-BIBLE.md` §2, §2A (owner 2026-10-17).
