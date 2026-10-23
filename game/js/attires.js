@@ -384,7 +384,9 @@ export function attiresFor(fighter) {
   const ridesOther = fighter.model && fighter.model !== fighter.id && FIGHTER_IDS.has(fighter.model);
   const list = ridesOther ? ATTIRE_VARIANTS[fighter.id] : (ATTIRE_VARIANTS[fighter.model] || ATTIRE_VARIANTS[fighter.id]);
   // Material gate: attires whose model failed the material audit are never offered.
-  if (list && list.length) return list.filter(a => isModelUsable(a.model));
+  // If the fighter's OWN attire-1 is quarantined, the fighter is hidden until it is fixed;
+  // never promote a later (often unrigged/private) attire into the attire-1 slot.
+  if (list && list.length) return isModelUsable(list[0].model) ? list.filter(a => isModelUsable(a.model)) : [];
   // Default: single attire = the fighter's own model
   return [{ model: fighter.model, label: 'ATTIRE 1' }].filter(a => isModelUsable(a.model));
 }
