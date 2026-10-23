@@ -1,0 +1,2852 @@
+{
+ "fighter": "megami",
+ "display": "MEGAMI",
+ "tekken_base": "Jun Kazama (Tekken Tag Tournament 2)",
+ "t3_source": "tekken-wiki TTT2 Jun Kazama movelist (documented, no teardown bank)",
+ "proxy": false,
+ "proxy_note": null,
+ "schema_version": 2,
+ "frame_convention": "Startup in seconds @60fps. Damage = Tekken values, WH 100HP. Hit ranges from the TTT2 movelist; startup values from documented i-frames where known (i10 1,2,4 / i13 b+4,2 / i14 d/f+2,1 / i16 u/f+4,3 / i16 d/b+1,2), otherwise standard Tekken archetype estimates.",
+ "canon_note": "Megami = the Shrine Soul (roster/parvati). Jun Kazama's Kazama Style Classic Martial Arts kit, rebuilt with Tekken inputs: a guardian's kit — parries, reversals (Attack Reversal), stance transitions (Genjitsu b+1+2, Izumo f+1+2), frame-perfect punishment. Canon-layered: Sealed Door (d/b+1+2), Threshold Keeper (b+1+2~b), Kaimon (GEN 1+2).",
+ "stances": [
+  "GEN (Genjitsu, b+1+2)",
+  "IZU (Izumo, f+1+2)"
+ ],
+ "combos": [
+  {
+   "name": "Launcher juggle",
+   "input": "d/f+2,1, f,f+2,3, b+4,2, b+2,1,4",
+   "note": "Standard Jun TTT2 juggle shape; end with screw-equivalent."
+  },
+  {
+   "name": "CH punish",
+   "input": "CH 4, f+3,4, f,f+2,3, u/f+4,3",
+   "note": "Counter-hit conversion."
+  },
+  {
+   "name": "Tenstring",
+   "input": "WS+1,1,1+4,2,1,1+2,4,4,3",
+   "note": "85 dmg signature 10-hit."
+  },
+  {
+   "name": "Threshold sequence",
+   "input": "b+1+2~b, GEN 1+2",
+   "note": "Megami canon: enter Threshold Keeper, Kaimon wall splat."
+  }
+ ],
+ "moves": {
+  "1+3": {
+   "name": "Shiho Nage",
+   "input": "1+3",
+   "input_slots": [
+    "1+3"
+   ],
+   "move_class": "throw",
+   "damage": 35,
+   "hit_range": "throw",
+   "startup": 0.2,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "Front throw. Escape: 1.",
+   "escape": "1",
+   "throw_type": "front"
+  },
+  "2+4": {
+   "name": "Katanuki",
+   "input": "2+4",
+   "input_slots": [
+    "2+4"
+   ],
+   "move_class": "throw",
+   "damage": 35,
+   "hit_range": "throw",
+   "startup": 0.2,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "Front throw. Escape: 2.",
+   "escape": "2",
+   "throw_type": "front"
+  },
+  "1+3~L": {
+   "name": "Cloud Taste",
+   "input": "1+3",
+   "input_slots": [
+    "1+3"
+   ],
+   "move_class": "throw",
+   "damage": 40,
+   "hit_range": "throw",
+   "startup": 0.2,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "Left-side throw. Escape: 1.",
+   "escape": "1",
+   "throw_type": "left"
+  },
+  "2+4~R": {
+   "name": "Wind Wheel",
+   "input": "2+4",
+   "input_slots": [
+    "2+4"
+   ],
+   "move_class": "throw",
+   "damage": 40,
+   "hit_range": "throw",
+   "startup": 0.2,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "Right-side throw. Escape: 2.",
+   "escape": "2",
+   "throw_type": "right"
+  },
+  "BT 1+3": {
+   "name": "Twisted Limbs",
+   "input": "1+3",
+   "input_slots": [
+    "1+3"
+   ],
+   "move_class": "throw",
+   "damage": 50,
+   "hit_range": "throw",
+   "startup": 0.2,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "Back throw.",
+   "throw_type": "back"
+  },
+  "d/f+1+2": {
+   "name": "Riai",
+   "input": "d/f+1+2",
+   "input_slots": [
+    "d/f+1+2"
+   ],
+   "move_class": "throw",
+   "damage": 40,
+   "hit_range": "throw",
+   "startup": 0.2,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "Command throw. Escape: 1+2.",
+   "escape": "1+2"
+  },
+  "d/f+2+3": {
+   "name": "White Mountain",
+   "input": "d/f+2+3",
+   "input_slots": [
+    "d/f+2+3"
+   ],
+   "move_class": "throw",
+   "damage": 40,
+   "hit_range": "throw",
+   "startup": 0.233,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "Striking throw. Escape: 2.",
+   "escape": "2"
+  },
+  "FC,d/f,d,d/f+1+2": {
+   "name": "Falling Rain",
+   "input": "FC,d/f,d,d/f+1+2",
+   "input_slots": [
+    "FC,d/f,d,d/f+1+2"
+   ],
+   "move_class": "throw",
+   "damage": 45,
+   "hit_range": "throw",
+   "startup": 0.267,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "Crouch-dash throw, juggles. Escape: 1+2.",
+   "escape": "1+2",
+   "juggle": true
+  },
+  "IZU 1+4": {
+   "name": "Tsukuyomi",
+   "input": "IZU 1+4",
+   "input_slots": [
+    "IZU 1+4"
+   ],
+   "move_class": "throw",
+   "damage": 35,
+   "hit_range": "throw",
+   "startup": 0.2,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "Izumo-stance throw. Escape: 1+2.",
+   "escape": "1+2",
+   "stance": "IZU"
+  },
+  "b+1+3": {
+   "name": "Attack Reversal",
+   "input": "b+1+3",
+   "input_slots": [
+    "b+1+3",
+    "b+2+4"
+   ],
+   "move_class": "throw",
+   "damage": 35,
+   "hit_range": "reversal",
+   "startup": 0.017,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "Attack reversal — synchs with opponent's attack.",
+   "reversal": true
+  },
+  "1": {
+   "name": "Jab",
+   "input": "1",
+   "input_slots": [
+    "1"
+   ],
+   "move_class": "strike",
+   "damage": 7,
+   "hit_range": "high",
+   "startup": 0.167,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)"
+  },
+  "1,1": {
+   "name": "Whiplash",
+   "input": "1,1",
+   "input_slots": [
+    "1,1"
+   ],
+   "move_class": "strike",
+   "damage": 15,
+   "hit_range": "mid",
+   "startup": 0.267,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "Second hit mid.",
+   "string": [
+    "1",
+    "1,1"
+   ]
+  },
+  "1,2": {
+   "name": "Jab Uppercut",
+   "input": "1,2",
+   "input_slots": [
+    "1,2"
+   ],
+   "move_class": "strike",
+   "damage": 8,
+   "hit_range": "high",
+   "startup": 0.2,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "string": [
+    "1",
+    "1,2"
+   ]
+  },
+  "1,2,4": {
+   "name": "Jab Uppercut Spin Kick",
+   "input": "1,2,4",
+   "input_slots": [
+    "1,2,4"
+   ],
+   "move_class": "strike",
+   "damage": 21,
+   "hit_range": "mid",
+   "startup": 0.333,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "i10 punisher ender, spin.",
+   "string": [
+    "1",
+    "1,2",
+    "1,2,4"
+   ]
+  },
+  "1,3": {
+   "name": "Jab Low Kick",
+   "input": "1,3",
+   "input_slots": [
+    "1,3"
+   ],
+   "move_class": "strike",
+   "damage": 12,
+   "hit_range": "low",
+   "startup": 0.267,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "string": [
+    "1",
+    "1,3"
+   ]
+  },
+  "1,4": {
+   "name": "Jab Leg Cutter",
+   "input": "1,4",
+   "input_slots": [
+    "1,4"
+   ],
+   "move_class": "strike",
+   "damage": 13,
+   "hit_range": "low",
+   "startup": 0.267,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "string": [
+    "1",
+    "1,4"
+   ]
+  },
+  "2": {
+   "name": "Right Punch",
+   "input": "2",
+   "input_slots": [
+    "2"
+   ],
+   "move_class": "strike",
+   "damage": 8,
+   "hit_range": "high",
+   "startup": 0.2,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)"
+  },
+  "2,1": {
+   "name": "Byakuren Start",
+   "input": "2,1",
+   "input_slots": [
+    "2,1"
+   ],
+   "move_class": "strike",
+   "damage": 13,
+   "hit_range": "mid",
+   "startup": 0.267,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "string": [
+    "2",
+    "2,1"
+   ]
+  },
+  "2,1,4": {
+   "name": "Byakuren Tsukinuki mid",
+   "input": "2,1,4",
+   "input_slots": [
+    "2,1,4"
+   ],
+   "move_class": "strike",
+   "damage": 13,
+   "hit_range": "mid",
+   "startup": 0.333,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "string": [
+    "2",
+    "2,1",
+    "2,1,4"
+   ]
+  },
+  "2,1,4,1": {
+   "name": "Byakuren Tsukinuki",
+   "input": "2,1,4,1",
+   "input_slots": [
+    "2,1,4,1"
+   ],
+   "move_class": "strike",
+   "damage": 30,
+   "hit_range": "mid",
+   "startup": 0.4,
+   "limb": "armL",
+   "heavy": true,
+   "knock": 3.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "String ender, wall splat.",
+   "string": [
+    "2",
+    "2,1",
+    "2,1,4",
+    "2,1,4,1"
+   ]
+  },
+  "2,1,4,3": {
+   "name": "Byakuren Tamasudare",
+   "input": "2,1,4,3",
+   "input_slots": [
+    "2,1,4,3"
+   ],
+   "move_class": "strike",
+   "damage": 21,
+   "hit_range": "high",
+   "startup": 0.4,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "string": [
+    "2",
+    "2,1",
+    "2,1,4",
+    "2,1,4,3"
+   ]
+  },
+  "2,1,1+2": {
+   "name": "Byakuren Misogi",
+   "input": "2,1,1+2",
+   "input_slots": [
+    "2,1,1+2"
+   ],
+   "move_class": "strike",
+   "damage": 21,
+   "hit_range": "high",
+   "startup": 0.4,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 2.5,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "string": [
+    "2",
+    "2,1",
+    "2,1,1+2"
+   ]
+  },
+  "1+2": {
+   "name": "Shunkei (Inner Strength)",
+   "input": "1+2",
+   "input_slots": [
+    "1+2"
+   ],
+   "move_class": "strike",
+   "damage": 18,
+   "hit_range": "mid",
+   "startup": 0.3,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 1.5,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "Double palm."
+  },
+  "3+4": {
+   "name": "Saiuntsui",
+   "input": "3+4",
+   "input_slots": [
+    "3+4"
+   ],
+   "move_class": "strike",
+   "damage": 21,
+   "hit_range": "mid",
+   "startup": 0.333,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 1.5,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "Two-hit stomp."
+  },
+  "2+3": {
+   "name": "Wheel Kick",
+   "input": "2+3",
+   "input_slots": [
+    "2+3"
+   ],
+   "move_class": "strike",
+   "damage": 21,
+   "hit_range": "high",
+   "startup": 0.467,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "Spinning heel."
+  },
+  "1+4,2,1": {
+   "name": "Blizzard Combo",
+   "input": "1+4,2,1",
+   "input_slots": [
+    "1+4,2,1"
+   ],
+   "move_class": "strike",
+   "damage": 12,
+   "hit_range": "high",
+   "startup": 0.367,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "Low-high-high-high string.",
+   "string": [
+    "1+4",
+    "1+4,2",
+    "1+4,2,1"
+   ]
+  },
+  "1+4,2,4": {
+   "name": "White Heron Dance",
+   "input": "1+4,2,4",
+   "input_slots": [
+    "1+4,2,4"
+   ],
+   "move_class": "strike",
+   "damage": 23,
+   "hit_range": "mid",
+   "startup": 0.433,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 3.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "Knockback ender.",
+   "string": [
+    "1+4",
+    "1+4,2",
+    "1+4,2,4"
+   ]
+  },
+  "1+4,2,d+4": {
+   "name": "White Heron Lower Dance",
+   "input": "1+4,2,d+4",
+   "input_slots": [
+    "1+4,2,d+4"
+   ],
+   "move_class": "strike",
+   "damage": 18,
+   "hit_range": "low",
+   "startup": 0.433,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "string": [
+    "1+4",
+    "1+4,2",
+    "1+4,2,d+4"
+   ]
+  },
+  "1+4,3": {
+   "name": "White Heron Spinning Heel Drop",
+   "input": "1+4,3",
+   "input_slots": [
+    "1+4,3"
+   ],
+   "move_class": "strike",
+   "damage": 30,
+   "hit_range": "mid",
+   "startup": 0.433,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 3.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)"
+  },
+  "f+2": {
+   "name": "Demon Slayer",
+   "input": "f+2",
+   "input_slots": [
+    "f+2"
+   ],
+   "move_class": "strike",
+   "damage": 20,
+   "hit_range": "mid",
+   "startup": 0.283,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 4.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "i17 launcher.",
+   "launcher": true
+  },
+  "f+3": {
+   "name": "Kanbashira",
+   "input": "f+3",
+   "input_slots": [
+    "f+3"
+   ],
+   "move_class": "strike",
+   "damage": 13,
+   "hit_range": "mid",
+   "startup": 0.267,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)"
+  },
+  "f+4": {
+   "name": "Getsukankyaku",
+   "input": "f+4",
+   "input_slots": [
+    "f+4"
+   ],
+   "move_class": "strike",
+   "damage": 21,
+   "hit_range": "high",
+   "startup": 0.3,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "Moon kick."
+  },
+  "f+1+2": {
+   "name": "Izumo (stance)",
+   "input": "f+1+2",
+   "input_slots": [
+    "f+1+2"
+   ],
+   "move_class": "stance",
+   "damage": 12,
+   "hit_range": "high",
+   "startup": 0.333,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "Enters Izumo stance.",
+   "enter_stance": "IZU"
+  },
+  "d/f+1,1": {
+   "name": "Habotan",
+   "input": "d/f+1,1",
+   "input_slots": [
+    "d/f+1,1"
+   ],
+   "move_class": "strike",
+   "damage": 15,
+   "hit_range": "mid",
+   "startup": 0.267,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "Mid check string.",
+   "string": [
+    "d/f+1",
+    "d/f+1,1"
+   ]
+  },
+  "d/f+2,2": {
+   "name": "Jippensha",
+   "input": "d/f+2,2",
+   "input_slots": [
+    "d/f+2,2"
+   ],
+   "move_class": "strike",
+   "damage": 20,
+   "hit_range": "mid",
+   "startup": 0.333,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "string": [
+    "d/f+2",
+    "d/f+2,2"
+   ]
+  },
+  "d/f+3": {
+   "name": "Minazuki",
+   "input": "d/f+3",
+   "input_slots": [
+    "d/f+3"
+   ],
+   "move_class": "strike",
+   "damage": 22,
+   "hit_range": "mid",
+   "startup": 0.283,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 1.5,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "Homing mid kick.",
+   "homing": true
+  },
+  "d+2": {
+   "name": "Narumi",
+   "input": "d+2",
+   "input_slots": [
+    "d+2"
+   ],
+   "move_class": "strike",
+   "damage": 18,
+   "hit_range": "mid",
+   "startup": 0.3,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)"
+  },
+  "d+4,4": {
+   "name": "Suminagashi",
+   "input": "d+4,4",
+   "input_slots": [
+    "d+4,4"
+   ],
+   "move_class": "strike",
+   "damage": 23,
+   "hit_range": "high",
+   "startup": 0.333,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "Low-high.",
+   "string": [
+    "d+4",
+    "d+4,4"
+   ]
+  },
+  "d+3+4": {
+   "name": "Double Lift Kicks",
+   "input": "d+3+4",
+   "input_slots": [
+    "d+3+4"
+   ],
+   "move_class": "strike",
+   "damage": 20,
+   "hit_range": "high",
+   "startup": 0.367,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "Low launcher.",
+   "launcher": true
+  },
+  "d/b+1,2": {
+   "name": "Shizukuakane",
+   "input": "d/b+1,2",
+   "input_slots": [
+    "d/b+1,2"
+   ],
+   "move_class": "strike",
+   "damage": 18,
+   "hit_range": "mid",
+   "startup": 0.333,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 3.5,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "i16 wall-bounce punisher.",
+   "string": [
+    "d/b+1",
+    "d/b+1,2"
+   ],
+   "wallbounce": true
+  },
+  "d/b+1,4": {
+   "name": "Shizukutsuki",
+   "input": "d/b+1,4",
+   "input_slots": [
+    "d/b+1,4"
+   ],
+   "move_class": "strike",
+   "damage": 23,
+   "hit_range": "high",
+   "startup": 0.333,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "string": [
+    "d/b+1",
+    "d/b+1,4"
+   ]
+  },
+  "d/b+2": {
+   "name": "Ayame",
+   "input": "d/b+2",
+   "input_slots": [
+    "d/b+2"
+   ],
+   "move_class": "strike",
+   "damage": 15,
+   "hit_range": "low",
+   "startup": 0.3,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)"
+  },
+  "d/b+3": {
+   "name": "Kanamegaeshi",
+   "input": "d/b+3",
+   "input_slots": [
+    "d/b+3"
+   ],
+   "move_class": "strike",
+   "damage": 17,
+   "hit_range": "low",
+   "startup": 0.333,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)"
+  },
+  "d/b+4": {
+   "name": "Leg Cutter",
+   "input": "d/b+4",
+   "input_slots": [
+    "d/b+4"
+   ],
+   "move_class": "strike",
+   "damage": 13,
+   "hit_range": "low",
+   "startup": 0.3,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "Leg Cutter starter; 4,4 extensions."
+  },
+  "d/b+4,4,4": {
+   "name": "Leg Cutter x3",
+   "input": "d/b+4,4,4",
+   "input_slots": [
+    "d/b+4,4,4"
+   ],
+   "move_class": "strike",
+   "damage": 16,
+   "hit_range": "low",
+   "startup": 0.4,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "string": [
+    "d/b+4",
+    "d/b+4,4",
+    "d/b+4,4,4"
+   ]
+  },
+  "d/b+4,4,4,3": {
+   "name": "Leg Cutter Thunder Fall Kick",
+   "input": "d/b+4,4,4,3",
+   "input_slots": [
+    "d/b+4,4,4,3"
+   ],
+   "move_class": "strike",
+   "damage": 21,
+   "hit_range": "mid",
+   "startup": 0.5,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 3.5,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "Knockdown ender."
+  },
+  "b+1": {
+   "name": "Violet",
+   "input": "b+1",
+   "input_slots": [
+    "b+1"
+   ],
+   "move_class": "strike",
+   "damage": 18,
+   "hit_range": "low",
+   "startup": 0.367,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "Low poke."
+  },
+  "b+1,2": {
+   "name": "Sumiregari",
+   "input": "b+1,2",
+   "input_slots": [
+    "b+1,2"
+   ],
+   "move_class": "strike",
+   "damage": 22,
+   "hit_range": "low",
+   "startup": 0.433,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "Low-low, trapping.",
+   "string": [
+    "b+1",
+    "b+1,2"
+   ]
+  },
+  "b+2": {
+   "name": "Ryuen",
+   "input": "b+2",
+   "input_slots": [
+    "b+2"
+   ],
+   "move_class": "strike",
+   "damage": 10,
+   "hit_range": "mid",
+   "startup": 0.233,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)"
+  },
+  "b+2,1": {
+   "name": "Ryuen to Elbow",
+   "input": "b+2,1",
+   "input_slots": [
+    "b+2,1"
+   ],
+   "move_class": "strike",
+   "damage": 7,
+   "hit_range": "high",
+   "startup": 0.267,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "string": [
+    "b+2",
+    "b+2,1"
+   ]
+  },
+  "b+2,1,1": {
+   "name": "Ryuen to Saika Shikei",
+   "input": "b+2,1,1",
+   "input_slots": [
+    "b+2,1,1"
+   ],
+   "move_class": "strike",
+   "damage": 20,
+   "hit_range": "mid",
+   "startup": 0.367,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.5,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "string": [
+    "b+2",
+    "b+2,1",
+    "b+2,1,1"
+   ]
+  },
+  "b+2,1,4": {
+   "name": "Ryuen to Saigetsukankyaku",
+   "input": "b+2,1,4",
+   "input_slots": [
+    "b+2,1,4"
+   ],
+   "move_class": "strike",
+   "damage": 21,
+   "hit_range": "mid",
+   "startup": 0.367,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.5,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "string": [
+    "b+2",
+    "b+2,1",
+    "b+2,1,4"
+   ]
+  },
+  "b+2,3": {
+   "name": "Ryuen to Moon Scent",
+   "input": "b+2,3",
+   "input_slots": [
+    "b+2,3"
+   ],
+   "move_class": "strike",
+   "damage": 21,
+   "hit_range": "mid",
+   "startup": 0.333,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 3.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "i14 KND punisher.",
+   "string": [
+    "b+2",
+    "b+2,3"
+   ]
+  },
+  "b+2,4": {
+   "name": "Ryuen to Leg Cutter",
+   "input": "b+2,4",
+   "input_slots": [
+    "b+2,4"
+   ],
+   "move_class": "strike",
+   "damage": 13,
+   "hit_range": "low",
+   "startup": 0.333,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "string": [
+    "b+2",
+    "b+2,4"
+   ]
+  },
+  "b+3": {
+   "name": "Dragon Wheel Kick",
+   "input": "b+3",
+   "input_slots": [
+    "b+3"
+   ],
+   "move_class": "strike",
+   "damage": 20,
+   "hit_range": "mid",
+   "startup": 0.333,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)"
+  },
+  "b+3,2": {
+   "name": "Dragon Wheel Kick Demon Slayer",
+   "input": "b+3,2",
+   "input_slots": [
+    "b+3,2"
+   ],
+   "move_class": "strike",
+   "damage": 20,
+   "hit_range": "mid",
+   "startup": 0.4,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.5,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "string": [
+    "b+3",
+    "b+3,2"
+   ]
+  },
+  "b+3,4": {
+   "name": "Dragon Wheel Leg Cutter",
+   "input": "b+3,4",
+   "input_slots": [
+    "b+3,4"
+   ],
+   "move_class": "strike",
+   "damage": 13,
+   "hit_range": "low",
+   "startup": 0.4,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "string": [
+    "b+3",
+    "b+3,4"
+   ]
+  },
+  "b+4,2": {
+   "name": "Shirabyoushi",
+   "input": "b+4,2",
+   "input_slots": [
+    "b+4,2"
+   ],
+   "move_class": "strike",
+   "damage": 17,
+   "hit_range": "mid",
+   "startup": 0.3,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "i13 punisher.",
+   "string": [
+    "b+4",
+    "b+4,2"
+   ]
+  },
+  "b+2+3": {
+   "name": "Shinki",
+   "input": "b+2+3",
+   "input_slots": [
+    "b+2+3"
+   ],
+   "move_class": "strike",
+   "damage": 35,
+   "hit_range": "unblockable",
+   "startup": 0.667,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "Unblockable."
+  },
+  "b+1+2": {
+   "name": "Genjitsu (stance)",
+   "input": "b+1+2",
+   "input_slots": [
+    "b+1+2"
+   ],
+   "move_class": "stance",
+   "damage": 0,
+   "hit_range": "none",
+   "startup": 0.333,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "Enters Genjitsu stance.",
+   "enter_stance": "GEN"
+  },
+  "u+4": {
+   "name": "Chikura",
+   "input": "u+4",
+   "input_slots": [
+    "u+4",
+    "u/b+4"
+   ],
+   "move_class": "strike",
+   "damage": 21,
+   "hit_range": "mid",
+   "startup": 0.4,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)"
+  },
+  "u+3": {
+   "name": "Iwato",
+   "input": "u+3",
+   "input_slots": [
+    "u+3",
+    "u/f+3",
+    "u/b+3"
+   ],
+   "move_class": "strike",
+   "damage": 17,
+   "hit_range": "mid",
+   "startup": 0.367,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)"
+  },
+  "u/f+4,3": {
+   "name": "Housenka",
+   "input": "u/f+4,3",
+   "input_slots": [
+    "u/f+4,3"
+   ],
+   "move_class": "strike",
+   "damage": 20,
+   "hit_range": "mid",
+   "startup": 0.333,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 4.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "i16 launch, bound.",
+   "launcher": true,
+   "bound": true
+  },
+  "u/b,b+3": {
+   "name": "Back Handspring Spinning Jump Kick",
+   "input": "u/b,b+3",
+   "input_slots": [
+    "u/b,b+3"
+   ],
+   "move_class": "strike",
+   "damage": 32,
+   "hit_range": "mid",
+   "startup": 0.467,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)"
+  },
+  "f,f,f+3": {
+   "name": "Spinning Jump Kick",
+   "input": "f,f,f+3",
+   "input_slots": [
+    "f,f,f+3"
+   ],
+   "move_class": "strike",
+   "damage": 32,
+   "hit_range": "mid",
+   "startup": 0.4,
+   "limb": "legR",
+   "heavy": true,
+   "knock": 4.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)"
+  },
+  "f,f+2,2": {
+   "name": "Suiei Ura Saika",
+   "input": "f,f+2,2",
+   "input_slots": [
+    "f,f+2,2"
+   ],
+   "move_class": "strike",
+   "damage": 22,
+   "hit_range": "mid",
+   "startup": 0.3,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "string": [
+    "f,f+2",
+    "f,f+2,2"
+   ]
+  },
+  "f,f+2,3": {
+   "name": "Suiei Kagetsu",
+   "input": "f,f+2,3",
+   "input_slots": [
+    "f,f+2,3"
+   ],
+   "move_class": "strike",
+   "damage": 22,
+   "hit_range": "high",
+   "startup": 0.3,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "string": [
+    "f,f+2",
+    "f,f+2,3"
+   ]
+  },
+  "f,f+3": {
+   "name": "Matoi Hiragi",
+   "input": "f,f+3",
+   "input_slots": [
+    "f,f+3"
+   ],
+   "move_class": "strike",
+   "damage": 23,
+   "hit_range": "mid",
+   "startup": 0.333,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)"
+  },
+  "f,f+4": {
+   "name": "Katabami",
+   "input": "f,f+4",
+   "input_slots": [
+    "f,f+4"
+   ],
+   "move_class": "strike",
+   "damage": 22,
+   "hit_range": "mid",
+   "startup": 0.333,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)"
+  },
+  "f,f+1+2": {
+   "name": "Tokkei",
+   "input": "f,f+1+2",
+   "input_slots": [
+    "f,f+1+2"
+   ],
+   "move_class": "strike",
+   "damage": 21,
+   "hit_range": "mid",
+   "startup": 0.367,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.5,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)"
+  },
+  "f+1": {
+   "name": "Lunging Mist Thrust",
+   "input": "f+1",
+   "input_slots": [
+    "f+1"
+   ],
+   "move_class": "strike",
+   "damage": 17,
+   "hit_range": "mid",
+   "startup": 0.267,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)"
+  },
+  "f+1,3": {
+   "name": "Whiplash to Toe Kick",
+   "input": "f+1,3",
+   "input_slots": [
+    "f+1,3"
+   ],
+   "move_class": "strike",
+   "damage": 16,
+   "hit_range": "mid",
+   "startup": 0.333,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "string": [
+    "f+1",
+    "f+1,3"
+   ]
+  },
+  "f+1,3,1": {
+   "name": "Whiplash Combo",
+   "input": "f+1,3,1",
+   "input_slots": [
+    "f+1,3,1"
+   ],
+   "move_class": "strike",
+   "damage": 13,
+   "hit_range": "high",
+   "startup": 0.4,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "string": [
+    "f+1",
+    "f+1,3",
+    "f+1,3,1"
+   ]
+  },
+  "f+1,4": {
+   "name": "Whiplash Double Lift Upper",
+   "input": "f+1,4",
+   "input_slots": [
+    "f+1,4"
+   ],
+   "move_class": "strike",
+   "damage": 20,
+   "hit_range": "high",
+   "startup": 0.367,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 4.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "Launcher ender.",
+   "launcher": true,
+   "string": [
+    "f+1",
+    "f+1,4"
+   ]
+  },
+  "f+1,d+4": {
+   "name": "Whiplash Sacred Blade",
+   "input": "f+1,d+4",
+   "input_slots": [
+    "f+1,d+4"
+   ],
+   "move_class": "strike",
+   "damage": 22,
+   "hit_range": "low",
+   "startup": 0.4,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "string": [
+    "f+1",
+    "f+1,d+4"
+   ]
+  },
+  "WS+1,4,2": {
+   "name": "Tomoezakura",
+   "input": "WS+1,4,2",
+   "input_slots": [
+    "WS+1,4,2"
+   ],
+   "move_class": "strike",
+   "damage": 17,
+   "hit_range": "low",
+   "startup": 0.333,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "High-mid-low.",
+   "string": [
+    "WS+1",
+    "WS+1,4",
+    "WS+1,4,2"
+   ]
+  },
+  "WS+1,4,1+2": {
+   "name": "Tomoefuji",
+   "input": "WS+1,4,1+2",
+   "input_slots": [
+    "WS+1,4,1+2"
+   ],
+   "move_class": "strike",
+   "damage": 28,
+   "hit_range": "mid",
+   "startup": 0.367,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "High-mid-mid.",
+   "string": [
+    "WS+1",
+    "WS+1,4",
+    "WS+1,4,1+2"
+   ]
+  },
+  "WS+2,1": {
+   "name": "Hyakkaou",
+   "input": "WS+2,1",
+   "input_slots": [
+    "WS+2,1"
+   ],
+   "move_class": "strike",
+   "damage": 20,
+   "hit_range": "high",
+   "startup": 0.333,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 4.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "i14 WS launcher.",
+   "launcher": true,
+   "string": [
+    "WS+2",
+    "WS+2,1"
+   ]
+  },
+  "WS+3": {
+   "name": "Moon Scent",
+   "input": "WS+3",
+   "input_slots": [
+    "WS+3"
+   ],
+   "move_class": "strike",
+   "damage": 20,
+   "hit_range": "mid",
+   "startup": 0.3,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)"
+  },
+  "WS+1+2": {
+   "name": "Sudare Nagashi",
+   "input": "WS+1+2",
+   "input_slots": [
+    "WS+1+2"
+   ],
+   "move_class": "strike",
+   "damage": 20,
+   "hit_range": "mid",
+   "startup": 0.367,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)"
+  },
+  "FC+3+4,3": {
+   "name": "Twin Cloud Kicks",
+   "input": "FC+3+4,3",
+   "input_slots": [
+    "FC+3+4,3"
+   ],
+   "move_class": "strike",
+   "damage": 10,
+   "hit_range": "mid",
+   "startup": 0.4,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "Four-hit crouch string."
+  },
+  "FC,d/f+2": {
+   "name": "Grace",
+   "input": "FC,d/f+2",
+   "input_slots": [
+    "FC,d/f+2"
+   ],
+   "move_class": "strike",
+   "damage": 12,
+   "hit_range": "low",
+   "startup": 0.267,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)"
+  },
+  "SS+2": {
+   "name": "Kasanegasumi",
+   "input": "SS+2",
+   "input_slots": [
+    "SS+2"
+   ],
+   "move_class": "strike",
+   "damage": 27,
+   "hit_range": "mid",
+   "startup": 0.4,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.5,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)"
+  },
+  "SS+4": {
+   "name": "Kagura",
+   "input": "SS+4",
+   "input_slots": [
+    "SS+4"
+   ],
+   "move_class": "strike",
+   "damage": 20,
+   "hit_range": "mid",
+   "startup": 0.367,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)"
+  },
+  "GEN 1": {
+   "name": "Rurikoukai",
+   "input": "GEN 1",
+   "input_slots": [
+    "GEN 1"
+   ],
+   "move_class": "strike",
+   "damage": 22,
+   "hit_range": "low",
+   "startup": 0.3,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "Genjitsu low.",
+   "stance": "GEN"
+  },
+  "GEN 2": {
+   "name": "Tachiaoi",
+   "input": "GEN 2",
+   "input_slots": [
+    "GEN 2"
+   ],
+   "move_class": "strike",
+   "damage": 18,
+   "hit_range": "mid",
+   "startup": 0.3,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "stance": "GEN"
+  },
+  "GEN 3": {
+   "name": "Getsuun",
+   "input": "GEN 3",
+   "input_slots": [
+    "GEN 3"
+   ],
+   "move_class": "strike",
+   "damage": 18,
+   "hit_range": "mid",
+   "startup": 0.333,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "stance": "GEN"
+  },
+  "GEN 4": {
+   "name": "Nichiun",
+   "input": "GEN 4",
+   "input_slots": [
+    "GEN 4"
+   ],
+   "move_class": "strike",
+   "damage": 28,
+   "hit_range": "high",
+   "startup": 0.4,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "stance": "GEN"
+  },
+  "IZU 1": {
+   "name": "Izumo to Haraede",
+   "input": "IZU 1",
+   "input_slots": [
+    "IZU 1"
+   ],
+   "move_class": "strike",
+   "damage": 7,
+   "hit_range": "high",
+   "startup": 0.233,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "stance": "IZU",
+   "string": [
+    "IZU",
+    "IZU 1"
+   ]
+  },
+  "IZU 1,2": {
+   "name": "Izumo to Haraede Musubi",
+   "input": "IZU 1,2",
+   "input_slots": [
+    "IZU 1,2"
+   ],
+   "move_class": "strike",
+   "damage": 18,
+   "hit_range": "mid",
+   "startup": 0.333,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "stance": "IZU",
+   "string": [
+    "IZU",
+    "IZU 1",
+    "IZU 1,2"
+   ]
+  },
+  "IZU 1,4": {
+   "name": "Izumo to Haraede Kariashi",
+   "input": "IZU 1,4",
+   "input_slots": [
+    "IZU 1,4"
+   ],
+   "move_class": "strike",
+   "damage": 15,
+   "hit_range": "low",
+   "startup": 0.333,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "stance": "IZU",
+   "string": [
+    "IZU",
+    "IZU 1",
+    "IZU 1,4"
+   ]
+  },
+  "IZU 2": {
+   "name": "Izumo to Setsurinbu",
+   "input": "IZU 2",
+   "input_slots": [
+    "IZU 2"
+   ],
+   "move_class": "strike",
+   "damage": 20,
+   "hit_range": "mid",
+   "startup": 0.3,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "stance": "IZU"
+  },
+  "IZU 3": {
+   "name": "Izumo to Dragon Wheel Kick",
+   "input": "IZU 3",
+   "input_slots": [
+    "IZU 3"
+   ],
+   "move_class": "strike",
+   "damage": 20,
+   "hit_range": "mid",
+   "startup": 0.333,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "stance": "IZU"
+  },
+  "IZU 4,1": {
+   "name": "Izumo to Wakeikazuchi",
+   "input": "IZU 4,1",
+   "input_slots": [
+    "IZU 4,1"
+   ],
+   "move_class": "strike",
+   "damage": 30,
+   "hit_range": "mid",
+   "startup": 0.4,
+   "limb": "legL",
+   "heavy": true,
+   "knock": 3.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "Low-mid.",
+   "stance": "IZU",
+   "string": [
+    "IZU 4",
+    "IZU 4,1"
+   ]
+  },
+  "IZU 1+2": {
+   "name": "Izumo to Mihikarioroshi",
+   "input": "IZU 1+2",
+   "input_slots": [
+    "IZU 1+2"
+   ],
+   "move_class": "strike",
+   "damage": 21,
+   "hit_range": "mid",
+   "startup": 0.367,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 3.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "stance": "IZU"
+  },
+  "IZU 3+4": {
+   "name": "Izumo to Double Lift Kicks",
+   "input": "IZU 3+4",
+   "input_slots": [
+    "IZU 3+4"
+   ],
+   "move_class": "strike",
+   "damage": 20,
+   "hit_range": "high",
+   "startup": 0.4,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "stance": "IZU"
+  },
+  "10hit": {
+   "name": "Tenstring (10-hit)",
+   "input": "WS+1,1,1+4,2,1,1+2,4,4,3",
+   "input_slots": [
+    "WS+1,1,1+4,2,1,1+2,4,4,3"
+   ],
+   "move_class": "strike",
+   "damage": 85,
+   "hit_range": "mixed",
+   "startup": 0.333,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 3.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "Signature 10-hit combo.",
+   "combo10": true
+  },
+  "d/b+1+2": {
+   "name": "Sealed Door",
+   "input": "d/b+1+2",
+   "input_slots": [
+    "d/b+1+2"
+   ],
+   "move_class": "strike",
+   "damage": 30,
+   "hit_range": "unblockable",
+   "startup": 0.567,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 10,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "Megami canon: the guardian's unblockable gate-slam. Slow, telegraphed, devastating.",
+   "canon_layer": true
+  },
+  "b+1+2~b": {
+   "name": "Threshold Keeper",
+   "input": "b+1+2~b",
+   "input_slots": [
+    "b+1+2~b"
+   ],
+   "move_class": "stance",
+   "damage": 0,
+   "hit_range": "none",
+   "startup": 0.3,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "Megami canon: Genjitsu entered backwards — she guards the threshold, never crosses it.",
+   "canon_layer": true,
+   "enter_stance": "GEN",
+   "canon_variant": true
+  },
+  "GEN 1+2": {
+   "name": "Kaimon (Opening)",
+   "input": "GEN 1+2",
+   "input_slots": [
+    "GEN 1+2"
+   ],
+   "move_class": "strike",
+   "damage": 24,
+   "hit_range": "mid",
+   "startup": 0.433,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 4.0,
+   "soulGain": 8,
+   "tekken_base": "Jun Kazama (TTT2)",
+   "note": "Megami canon: from Threshold Keeper — the door decides. Wall splat.",
+   "canon_layer": true,
+   "stance": "GEN",
+   "wallbounce": true
+  },
+  "b+1+3,P": {
+   "name": "Gateward's Answer",
+   "input": "b+1+3,P",
+   "input_slots": [
+    "b+1+3,P"
+   ],
+   "move_class": "strike",
+   "damage": 25,
+   "hit_range": "mid",
+   "startup": 0.333,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "The parry's answer — strike that flows only from a successful Attack Reversal (b+1+3). [hit -4d]",
+   "string": [
+    "b+1+3",
+    "b+1+3,P"
+   ]
+  },
+  "GEN P (Low)": {
+   "name": "Rootward Seal",
+   "input": "GEN P (Low)",
+   "input_slots": [
+    "GEN P (Low)"
+   ],
+   "move_class": "throw",
+   "damage": 20,
+   "hit_range": "reversal",
+   "startup": 0.017,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "Low parry from Genjitsu stance — the guardian seals the ground beneath her. [hit +0d]",
+   "reversal": true
+  },
+  "GEN P (Throw)": {
+   "name": "Threshold Grasp",
+   "input": "GEN P (Throw)",
+   "input_slots": [
+    "GEN P (Throw)"
+   ],
+   "move_class": "throw",
+   "damage": 40,
+   "hit_range": "reversal",
+   "startup": 0.017,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "Throw reversal from Genjitsu stance — she catches the grab and turns the threshold. [hit +0d]",
+   "reversal": true
+  },
+  "H,f+1+2,P": {
+   "name": "Falling Sleeve Ward",
+   "input": "H,f+1+2,P",
+   "input_slots": [
+    "H,f+1+2,P"
+   ],
+   "move_class": "strike",
+   "damage": 0,
+   "hit_range": "reversal",
+   "startup": 0.2,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "Sabaki — her sleeve catches mid and high punches and kicks. +40 guard reward on success. [hit +40g]",
+   "reversal": true
+  },
+  "IZU 1+3": {
+   "name": "White Door Hold",
+   "input": "IZU 1+3",
+   "input_slots": [
+    "IZU 1+3"
+   ],
+   "move_class": "throw",
+   "damage": 35,
+   "hit_range": "throw",
+   "startup": 0.233,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "Izumo command throw — the white door closes on the intruder. Escape: 1+2. [block -6; hit +0d]",
+   "escape": "1+2",
+   "throw_type": "command"
+  },
+  "FC,d/b+1+2": {
+   "name": "Threefold Seal",
+   "input": "FC,d/b+1+2",
+   "input_slots": [
+    "FC,d/b+1+2"
+   ],
+   "move_class": "throw",
+   "damage": 45,
+   "hit_range": "throw",
+   "startup": 0.233,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "Full-crouch triple sealing throw — three stamps of the shrine seal. Escape: 1+2. [block -6; hit +56a (+28)]",
+   "escape": "1+2",
+   "throw_type": "crouch"
+  },
+  "BT 2+4": {
+   "name": "Twisted Limbs",
+   "input": "BT 2+4",
+   "input_slots": [
+    "BT 2+4"
+   ],
+   "move_class": "throw",
+   "damage": 50,
+   "hit_range": "throw",
+   "startup": 0.2,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "Unbreakable back throw — caught behind the guardian. Side switch. [hit +7d]",
+   "throw_type": "back"
+  },
+  "RAGE,d/f+1+2": {
+   "name": "Seal of the Shrine",
+   "input": "RAGE,d/f+1+2",
+   "input_slots": [
+    "RAGE,d/f+1+2"
+   ],
+   "move_class": "strike",
+   "damage": 55,
+   "hit_range": "mid",
+   "startup": 0.333,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 5.0,
+   "soulGain": 15,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "Megami canon: her rage art — the sealed door opens and the shrine's wrath steps through. [block -18; hit +0d]",
+   "canon_layer": true
+  },
+  "4": {
+   "name": "Magic Four",
+   "input": "4",
+   "input_slots": [
+    "4"
+   ],
+   "move_class": "strike",
+   "damage": 17,
+   "hit_range": "high",
+   "startup": 0.2,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "i12 high punisher — the classic four. [block -9; hit +7]"
+  },
+  "b+4": {
+   "name": "Warding Turn",
+   "input": "b+4",
+   "input_slots": [
+    "b+4"
+   ],
+   "move_class": "strike",
+   "damage": 14,
+   "hit_range": "mid",
+   "startup": 0.217,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "i13 turning mid kick — punishes the careless approach. [block -7; hit +5]"
+  },
+  "d/f+1": {
+   "name": "Middle Gate Palm",
+   "input": "d/f+1",
+   "input_slots": [
+    "d/f+1"
+   ],
+   "move_class": "strike",
+   "damage": 10,
+   "hit_range": "mid",
+   "startup": 0.217,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "The guardian's 13-frame mid check. Safe, patient, always ready. [block -3; hit +8]"
+  },
+  "WS+1": {
+   "name": "Rising Ward",
+   "input": "WS+1",
+   "input_slots": [
+    "WS+1"
+   ],
+   "move_class": "strike",
+   "damage": 14,
+   "hit_range": "high",
+   "startup": 0.2,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "i12 rising palm — while-standing punisher. [block -6; hit +5]"
+  },
+  "WS+4": {
+   "name": "Rising Gate Kick",
+   "input": "WS+4",
+   "input_slots": [
+    "WS+4"
+   ],
+   "move_class": "strike",
+   "damage": 21,
+   "hit_range": "mid",
+   "startup": 0.183,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "i11 rising kick — her fastest while-standing launcher. [block -12; hit +18a (+11)]"
+  },
+  "WS+2": {
+   "name": "Threshold Riser",
+   "input": "WS+2",
+   "input_slots": [
+    "WS+2"
+   ],
+   "move_class": "strike",
+   "damage": 12,
+   "hit_range": "mid",
+   "startup": 0.217,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "i13 rising elbow from crouch. [block -8; hit +5]"
+  },
+  "d/f+2": {
+   "name": "Still Water Palm",
+   "input": "d/f+2",
+   "input_slots": [
+    "d/f+2"
+   ],
+   "move_class": "strike",
+   "damage": 14,
+   "hit_range": "mid",
+   "startup": 0.267,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "i16 launcher — still water that erupts. Launches crouchers. [block -12; hit +29a (+19)]"
+  },
+  "u/f+3": {
+   "name": "Iwato",
+   "input": "u/f+3",
+   "input_slots": [
+    "u/f+3"
+   ],
+   "move_class": "strike",
+   "damage": 17,
+   "hit_range": "mid",
+   "startup": 0.333,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 1.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "The sacred rock — a hopping mid that guards the sky. [block -6; hit +5]"
+  },
+  "3": {
+   "name": "Shion",
+   "input": "3",
+   "input_slots": [
+    "3"
+   ],
+   "move_class": "strike",
+   "damage": 14,
+   "hit_range": "mid",
+   "startup": 0.233,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "Patient mid poke — the aster holds its ground. [block -10; hit +2]"
+  },
+  "d/f+4": {
+   "name": "Katabami",
+   "input": "d/f+4",
+   "input_slots": [
+    "d/f+4"
+   ],
+   "move_class": "strike",
+   "damage": 22,
+   "hit_range": "mid",
+   "startup": 0.25,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "Heavy clover kick — a mid that folds guards. [block -14; hit +48a (+17)]"
+  },
+  "d+4": {
+   "name": "Threshold Dust",
+   "input": "d+4",
+   "input_slots": [
+    "d+4"
+   ],
+   "move_class": "strike",
+   "damage": 10,
+   "hit_range": "low",
+   "startup": 0.25,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "Low dust-kick at the threshold. -1 on hit, keeps them honest. [block -12; hit -1]"
+  },
+  "b+3+4": {
+   "name": "Wisdom's Shoulder",
+   "input": "b+3+4",
+   "input_slots": [
+    "b+3+4"
+   ],
+   "move_class": "strike",
+   "damage": 25,
+   "hit_range": "mid",
+   "startup": 0.367,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 1.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "A wise shoulder that answers pressure. [block -12; hit +9a (+0)]"
+  },
+  "f+2+3": {
+   "name": "Wheel Kick",
+   "input": "f+2+3",
+   "input_slots": [
+    "f+2+3"
+   ],
+   "move_class": "strike",
+   "damage": 21,
+   "hit_range": "high",
+   "startup": 0.467,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 1.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "Wheel kick keepout — 0 on block, safe distance. [block +0; hit +25a]"
+  },
+  "d+1+2": {
+   "name": "Sacred Sword Palm",
+   "input": "d+1+2",
+   "input_slots": [
+    "d+1+2"
+   ],
+   "move_class": "strike",
+   "damage": 28,
+   "hit_range": "mid",
+   "startup": 0.433,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "The sacred sword falls as a palm — huge mid. [block -9; hit +72a (+56)]"
+  },
+  "f,F+1+2": {
+   "name": "Misogi Charge",
+   "input": "f,F+1+2",
+   "input_slots": [
+    "f,F+1+2"
+   ],
+   "move_class": "strike",
+   "damage": 32,
+   "hit_range": "mid",
+   "startup": 0.367,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "Purification rush from crouch-dash. +6 on block. [block +6; hit +23a (+13)]"
+  },
+  "f,f,F+3": {
+   "name": "Dawn Dance Charge",
+   "input": "f,f,F+3",
+   "input_slots": [
+    "f,f,F+3"
+   ],
+   "move_class": "strike",
+   "damage": 28,
+   "hit_range": "mid",
+   "startup": 0.4,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "Running dawn-dance kick — the guardian advances. [block +3~+7; hit +14a (+5)]"
+  },
+  "u/f+2": {
+   "name": "Sky Sword Palm",
+   "input": "u/f+2",
+   "input_slots": [
+    "u/f+2"
+   ],
+   "move_class": "strike",
+   "damage": 24,
+   "hit_range": "mid",
+   "startup": 0.317,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "Sword of the sky — jumping mid palm. [block -9; hit +30a (+15)]"
+  },
+  "1+4": {
+   "name": "Shrine Path",
+   "input": "1+4",
+   "input_slots": [
+    "1+4"
+   ],
+   "move_class": "strike",
+   "damage": 13,
+   "hit_range": "mixed",
+   "startup": 0.233,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "Low-then-high path that leads into Izumo stance. [block -3 / -19; hit -3]"
+  },
+  "FC,d/f+1": {
+   "name": "Earthward Exile",
+   "input": "FC,d/f+1",
+   "input_slots": [
+    "FC,d/f+1"
+   ],
+   "move_class": "strike",
+   "damage": 36,
+   "hit_range": "mid",
+   "startup": 0.167,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "Full-crouch low-mid exile. The seal demands payment: it costs her own health. [block -19; hit +26a (+11)]"
+  },
+  "GEN 3,2": {
+   "name": "Getsuun Renken",
+   "input": "GEN 3,2",
+   "input_slots": [
+    "GEN 3,2"
+   ],
+   "move_class": "strike",
+   "damage": 30,
+   "hit_range": "mid",
+   "startup": 0.4,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "Moon-chain from Genjitsu — second strike launches. [block -9; hit +33a (+18)]",
+   "string": [
+    "GEN 3",
+    "GEN 3,2"
+   ]
+  },
+  "f+3+4": {
+   "name": "Genjitsu (advance)",
+   "input": "f+3+4",
+   "input_slots": [
+    "f+3+4"
+   ],
+   "move_class": "stance",
+   "damage": 0,
+   "hit_range": "none",
+   "startup": 0.333,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "Enters Genjitsu stance stepping forward.",
+   "enter_stance": "GEN"
+  },
+  "1,2,2": {
+   "name": "Spear Step Strike",
+   "input": "1,2,2",
+   "input_slots": [
+    "1,2,2"
+   ],
+   "move_class": "strike",
+   "damage": 25,
+   "hit_range": "high",
+   "startup": 0.267,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 1.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "Jab string ending in the spear-step strike. [block +4; hit +11]",
+   "string": [
+    "1",
+    "1,2",
+    "1,2,2"
+   ]
+  },
+  "3,1": {
+   "name": "Shion Kannagi",
+   "input": "3,1",
+   "input_slots": [
+    "3,1"
+   ],
+   "move_class": "strike",
+   "damage": 34,
+   "hit_range": "high",
+   "startup": 0.233,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "Aster into the ritual cut — counter-hit launcher ender. [block -4; hit +22cg]",
+   "string": [
+    "3",
+    "3,1"
+   ]
+  },
+  "d/f+1,2": {
+   "name": "Aya Stitch",
+   "input": "d/f+1,2",
+   "input_slots": [
+    "d/f+1,2"
+   ],
+   "move_class": "strike",
+   "damage": 22,
+   "hit_range": "high",
+   "startup": 0.367,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "Mid check stitched into a high follow. [block -4; hit +6]",
+   "string": [
+    "d/f+1",
+    "d/f+1,2"
+   ]
+  },
+  "d/f+2,1+2": {
+   "name": "Gathering Clouds",
+   "input": "d/f+2,1+2",
+   "input_slots": [
+    "d/f+2,1+2"
+   ],
+   "move_class": "strike",
+   "damage": 26,
+   "hit_range": "mid",
+   "startup": 0.417,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "Launcher into gathering clouds — combo starter. [block -9; hit +38a (+28)]",
+   "string": [
+    "d/f+2",
+    "d/f+2,1+2"
+   ]
+  },
+  "f+2,1+2": {
+   "name": "Habakiri Palm",
+   "input": "f+2,1+2",
+   "input_slots": [
+    "f+2,1+2"
+   ],
+   "move_class": "strike",
+   "damage": 40,
+   "hit_range": "mid",
+   "startup": 0.483,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "Feather-cutter: advancing mid into the habakiri palm. [block -9; hit +32a (+17)]",
+   "string": [
+    "f+2",
+    "f+2,1+2"
+   ]
+  },
+  "f+3,2": {
+   "name": "Pillar Strike",
+   "input": "f+3,2",
+   "input_slots": [
+    "f+3,2"
+   ],
+   "move_class": "strike",
+   "damage": 30,
+   "hit_range": "high",
+   "startup": 0.333,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 1.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "Pillar kick into the Izumo strike. [block +4; hit +11]",
+   "string": [
+    "f+3",
+    "f+3,2"
+   ]
+  },
+  "f+3,4": {
+   "name": "Twin Pillar",
+   "input": "f+3,4",
+   "input_slots": [
+    "f+3,4"
+   ],
+   "move_class": "strike",
+   "damage": 35,
+   "hit_range": "mid",
+   "startup": 0.333,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "Double pillar — the second kick launches. [block -13~-11; hit +28a (+13)]",
+   "string": [
+    "f+3",
+    "f+3,4"
+   ]
+  },
+  "b+2,2": {
+   "name": "Willow Flow",
+   "input": "b+2,2",
+   "input_slots": [
+    "b+2,2"
+   ],
+   "move_class": "strike",
+   "damage": 20,
+   "hit_range": "mid",
+   "startup": 0.267,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "Willow-bent mid into a flowing follow. [block -9; hit +3]",
+   "string": [
+    "b+2",
+    "b+2,2"
+   ]
+  },
+  "b+2,1,2": {
+   "name": "Willow Blossom Chain",
+   "input": "b+2,1,2",
+   "input_slots": [
+    "b+2,1,2"
+   ],
+   "move_class": "strike",
+   "damage": 39,
+   "hit_range": "mid",
+   "startup": 0.383,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "Three-part willow chain — the blossom ender launches. [block -9; hit +30a (+15)]",
+   "string": [
+    "b+2",
+    "b+2,1",
+    "b+2,1,2"
+   ]
+  },
+  "d/b+1,1": {
+   "name": "Low Gate Tap",
+   "input": "d/b+1,1",
+   "input_slots": [
+    "d/b+1,1"
+   ],
+   "move_class": "strike",
+   "damage": 15,
+   "hit_range": "mid",
+   "startup": 0.35,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "Low tap that jails into its follow. [block -11; hit +0]",
+   "string": [
+    "d/b+1",
+    "d/b+1,1"
+   ]
+  },
+  "d/b+1,1,1+2": {
+   "name": "Hourai's Dance",
+   "input": "d/b+1,1,1+2",
+   "input_slots": [
+    "d/b+1,1,1+2"
+   ],
+   "move_class": "strike",
+   "damage": 45,
+   "hit_range": "mid",
+   "startup": 0.283,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 3.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "The dance of Hourai — four-part low-mid string, big ender. [block -15; hit +21a (+11)]",
+   "string": [
+    "d/b+1",
+    "d/b+1,1",
+    "d/b+1,1,1+2"
+   ]
+  },
+  "WS+1,4": {
+   "name": "Rising Ward Kick",
+   "input": "WS+1,4",
+   "input_slots": [
+    "WS+1,4"
+   ],
+   "move_class": "strike",
+   "damage": 30,
+   "hit_range": "mid",
+   "startup": 0.367,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 1.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "Rising palm chained into a mid kick. [block -11; hit +0c]",
+   "string": [
+    "WS+1",
+    "WS+1,4"
+   ]
+  },
+  "1+4,2": {
+   "name": "Shrine Path Follow",
+   "input": "1+4,2",
+   "input_slots": [
+    "1+4,2"
+   ],
+   "move_class": "strike",
+   "damage": 23,
+   "hit_range": "high",
+   "startup": 0.317,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 1.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "The shrine path continues — high follow after the low-high entry. [block -2; hit +9]",
+   "string": [
+    "1+4",
+    "1+4,2"
+   ]
+  },
+  "WS+3+4": {
+   "name": "Flowing Moon",
+   "input": "WS+3+4",
+   "input_slots": [
+    "WS+3+4"
+   ],
+   "move_class": "strike",
+   "damage": 23,
+   "hit_range": "mid",
+   "startup": 0.3,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "Flowing moon scent — while-standing launcher. [block -21; hit +38a (+28)]"
+  },
+  "SS+1+2": {
+   "name": "Threefold Path",
+   "input": "SS+1+2",
+   "input_slots": [
+    "SS+1+2"
+   ],
+   "move_class": "strike",
+   "damage": 34,
+   "hit_range": "mid",
+   "startup": 0.267,
+   "limb": "armR",
+   "heavy": false,
+   "knock": 2.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "Sidestep triple — three folds of the same path. [block -4; hit +7c]"
+  },
+  "u/f+1": {
+   "name": "Heavenward Exile",
+   "input": "u/f+1",
+   "input_slots": [
+    "u/f+1"
+   ],
+   "move_class": "strike",
+   "damage": 36,
+   "hit_range": "high",
+   "startup": 0.167,
+   "limb": "armL",
+   "heavy": false,
+   "knock": 2.0,
+   "soulGain": 5,
+   "tekken_base": "Jun Kazama (T8)",
+   "note": "Exile to heaven — jumping two-hit palm. [block -14; hit +12a (+3)]"
+  },
+  "d/f+1,4": {
+   "name": "Incense Wood Strike",
+   "input": "d/f+1,4",
+   "input_slots": [
+    "d/f+1,4"
+   ],
+   "move_class": "strike",
+   "damage": 32,
+   "hit_range": "mid",
+   "startup": 0.217,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 2.0,
+   "soulGain": 5,
+   "tekken_base": "Asuka Kazama (T7)",
+   "note": "Mid check carved into a heavy second strike — delayable, knocks down. [block -12; hit KND]",
+   "string": [
+    "d/f+1",
+    "d/f+1,4"
+   ]
+  },
+  "d/b+4,4": {
+   "name": "Low Wheel Turn",
+   "input": "d/b+4,4",
+   "input_slots": [
+    "d/b+4,4"
+   ],
+   "move_class": "strike",
+   "damage": 29,
+   "hit_range": "low",
+   "startup": 0.367,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Asuka Kazama (T7)",
+   "note": "Low-low wheel — two turns beneath the guard. [block -7; hit +4]",
+   "string": [
+    "d/b+4",
+    "d/b+4,4"
+   ]
+  },
+  "FC,d/f+3": {
+   "name": "Minazuki",
+   "input": "FC,d/f+3",
+   "input_slots": [
+    "FC,d/f+3"
+   ],
+   "move_class": "strike",
+   "damage": 20,
+   "hit_range": "mid",
+   "startup": 0.283,
+   "limb": "legL",
+   "heavy": false,
+   "knock": 2.0,
+   "soulGain": 5,
+   "tekken_base": "Asuka Kazama (T7)",
+   "note": "Full-crouch rising mid — the sixth-month rain knocks down. [block -9; hit KND]",
+   "string": [
+    "FC",
+    "FC,d/f+3"
+   ]
+  },
+  "b+1+4": {
+   "name": "Twin Narcissus",
+   "input": "b+1+4",
+   "input_slots": [
+    "b+1+4"
+   ],
+   "move_class": "strike",
+   "damage": 23,
+   "hit_range": "mixed",
+   "startup": 0.2,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 0.0,
+   "soulGain": 5,
+   "tekken_base": "Asuka Kazama (T7)",
+   "note": "High-low twin — the narcissus blooms twice. [block -8; hit +5]"
+  },
+  "FC+3+4": {
+   "name": "Cloud Kicks",
+   "input": "FC+3+4",
+   "input_slots": [
+    "FC+3+4"
+   ],
+   "move_class": "strike",
+   "damage": 20,
+   "hit_range": "mid",
+   "startup": 0.217,
+   "limb": "legR",
+   "heavy": false,
+   "knock": 1.0,
+   "soulGain": 5,
+   "tekken_base": "Asuka Kazama (T7)",
+   "note": "Full-crouch double cloud kick — tech-jumps lows. [block -6; hit +5 (OC)]"
+  }
+ }
+}

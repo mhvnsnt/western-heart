@@ -342,17 +342,25 @@ export function createSelectScreen(deps) {
       <div class="cname">${c.name}</div><div class="cstyle">${c.style}</div>`;
   }
 
+  /* Owner law (2026-10-22): NO duplicate fighters on select. Entries that
+     share another fighter's model are hidden until they get their own
+     models — they stay in the roster data for story/other modes, but never
+     as separate select cards. Attire variants live in the attire ladder
+     (renderAttires), not as duplicate cards. */
+  const SELECT_HIDDEN = new Set([
+    'rin', 'byou', 'tou', 'sha', 'kai', 'jin_soul', 'retsu', 'zen', 'gyou',
+    'ryuji', 'doc-frank-machine-shop',
+  ]);
+  const selectRoster = () => deps.roster().filter(c => !SELECT_HIDDEN.has(c.id));
+
   function build() {
     if (!strip) return;
     strip.innerHTML = '';
-    const roster = deps.roster();
+    const roster = selectRoster();
     const tripo = TRIPO_IDS || new Set();
-    const rest = (list) => list.filter(c => !tripo.has(c.id));
     const tiers = [
       { label: 'TRIPO ORIGINALS', fighters: roster.filter(c => tripo.has(c.id)) },
-      { label: 'THE NINE SOULS', fighters: rest(roster.slice(0, 9)) },
-      { label: 'MAIN ROSTER', fighters: rest(roster.slice(9, 16)) },
-      { label: 'BONUS ROSTER', fighters: rest(roster.slice(16)) },
+      { label: 'MAIN ROSTER', fighters: roster.filter(c => !tripo.has(c.id)) },
     ].filter(t => t.fighters.length);
     tiers.forEach(({ label, fighters }) => {
       const t = document.createElement('div');
@@ -375,7 +383,7 @@ export function createSelectScreen(deps) {
     rnd.innerHTML = `<div class="portrait"><span class="qmark">?</span></div>
       <div class="cname">RANDOM</div><div class="cstyle">Fate decides</div>`;
     rnd.addEventListener('click', () => {
-      const pool = deps.roster().filter(c => c.id !== state.locked.p1?.id && c.id !== state.locked.p2?.id);
+      const pool = selectRoster().filter(c => c.id !== state.locked.p1?.id && c.id !== state.locked.p2?.id);
       const pick = pool[Math.floor(Math.random() * pool.length)];
       if (pick) highlight(pick, { fromTap: true, scroll: true });
     });

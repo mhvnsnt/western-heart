@@ -1,0 +1,4795 @@
+{
+  "fighter": "t3-nina",
+  "display": "NINA WILLIAMS",
+  "tekken_base": "Nina Williams",
+  "t3_source": "nina",
+  "proxy": false,
+  "proxy_note": null,
+  "variant": 0,
+  "moves": {
+    "u+1+2": {
+      "name": "NINA WILLIAMS u+1+2 (T3 nina r43)",
+      "input": "u+1+2",
+      "t3_source": "nina",
+      "t3_row": 43,
+      "t3_command": "8+LP+RP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:43",
+      "input_slots": [
+        "u+1+2"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+1": {
+      "name": "NINA WILLIAMS u/f+1 (T3 nina r44)",
+      "input": "u/f+1",
+      "t3_source": "nina",
+      "t3_row": 44,
+      "t3_command": "9+LP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:44",
+      "input_slots": [
+        "u/f+1"
+      ],
+      "move_class": "strike"
+    },
+    "u/b+1+2": {
+      "name": "NINA WILLIAMS u/b+1+2 (T3 nina r45)",
+      "input": "u/b+1+2",
+      "t3_source": "nina",
+      "t3_row": 45,
+      "t3_command": "7+LP+RP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:45",
+      "input_slots": [
+        "u/b+1+2"
+      ],
+      "move_class": "strike"
+    },
+    "u+1,1": {
+      "name": "NINA WILLIAMS u+1,1 (T3 nina r46)",
+      "input": "u+1,1",
+      "t3_source": "nina",
+      "t3_row": 46,
+      "t3_command": "LP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:46",
+      "input_slots": [
+        "u+1,1"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+1,1": {
+      "name": "NINA WILLIAMS u/f+1,1 (T3 nina r47)",
+      "input": "u/f+1,1",
+      "t3_source": "nina",
+      "t3_row": 47,
+      "t3_command": "LP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:47",
+      "input_slots": [
+        "u/f+1,1"
+      ],
+      "move_class": "special"
+    },
+    "u/b+1,1": {
+      "name": "NINA WILLIAMS u/b+1,1 (T3 nina r48)",
+      "input": "u/b+1,1",
+      "t3_source": "nina",
+      "t3_row": 48,
+      "t3_command": "LP",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:48",
+      "input_slots": [
+        "u/b+1,1"
+      ],
+      "move_class": "special"
+    },
+    "u+1,1_r49": {
+      "name": "NINA WILLIAMS u+1,1_r49 (T3 nina r49)",
+      "input": "u+1,1_r49",
+      "t3_source": "nina",
+      "t3_row": 49,
+      "t3_command": "LP",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:49",
+      "input_slots": [
+        "u+1,1"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+1,1_r50": {
+      "name": "NINA WILLIAMS u/f+1,1_r50 (T3 nina r50)",
+      "input": "u/f+1,1_r50",
+      "t3_source": "nina",
+      "t3_row": 50,
+      "t3_command": "LP",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:50",
+      "input_slots": [
+        "u/f+1,1"
+      ],
+      "move_class": "special"
+    },
+    "u/b+1,1_r51": {
+      "name": "NINA WILLIAMS u/b+1,1_r51 (T3 nina r51)",
+      "input": "u/b+1,1_r51",
+      "t3_source": "nina",
+      "t3_row": 51,
+      "t3_command": "LP",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:51",
+      "input_slots": [
+        "u/b+1,1"
+      ],
+      "move_class": "special"
+    },
+    "u+1,1_r52": {
+      "name": "NINA WILLIAMS u+1,1_r52 (T3 nina r52)",
+      "input": "u+1,1_r52",
+      "t3_source": "nina",
+      "t3_row": 52,
+      "t3_command": "LP",
+      "startup": 0.117,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 11,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:52",
+      "input_slots": [
+        "u+1,1"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+1,1_r53": {
+      "name": "NINA WILLIAMS u/f+1,1_r53 (T3 nina r53)",
+      "input": "u/f+1,1_r53",
+      "t3_source": "nina",
+      "t3_row": 53,
+      "t3_command": "LP",
+      "startup": 0.117,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 11,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:53",
+      "input_slots": [
+        "u/f+1,1"
+      ],
+      "move_class": "special"
+    },
+    "u/b+1,1_r54": {
+      "name": "NINA WILLIAMS u/b+1,1_r54 (T3 nina r54)",
+      "input": "u/b+1,1_r54",
+      "t3_source": "nina",
+      "t3_row": 54,
+      "t3_command": "LP",
+      "startup": 0.117,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 11,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:54",
+      "input_slots": [
+        "u/b+1,1"
+      ],
+      "move_class": "special"
+    },
+    "u+1,1_c36_r55": {
+      "name": "NINA WILLIAMS u+1,1_c36_r55 (T3 nina r55)",
+      "input": "u+1,1_c36_r55",
+      "t3_source": "nina",
+      "t3_row": 55,
+      "t3_command": "LP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:55",
+      "input_slots": [
+        "u+1,1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "u/f+1,1_c36_r56": {
+      "name": "NINA WILLIAMS u/f+1,1_c36_r56 (T3 nina r56)",
+      "input": "u/f+1,1_c36_r56",
+      "t3_source": "nina",
+      "t3_row": 56,
+      "t3_command": "LP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:56",
+      "input_slots": [
+        "u/f+1,1"
+      ],
+      "move_class": "special",
+      "t3_condition": 36
+    },
+    "u/b+1,1_c36_r57": {
+      "name": "NINA WILLIAMS u/b+1,1_c36_r57 (T3 nina r57)",
+      "input": "u/b+1,1_c36_r57",
+      "t3_source": "nina",
+      "t3_row": 57,
+      "t3_command": "LP",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:57",
+      "input_slots": [
+        "u/b+1,1"
+      ],
+      "move_class": "special",
+      "t3_condition": 36
+    },
+    "u+1,2": {
+      "name": "NINA WILLIAMS u+1,2 (T3 nina r58)",
+      "input": "u+1,2",
+      "t3_source": "nina",
+      "t3_row": 58,
+      "t3_command": "RP",
+      "startup": 0.183,
+      "active": 0.05,
+      "recovery": 0.667,
+      "damage": 11,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:58",
+      "input_slots": [
+        "u+1,2"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+1,2": {
+      "name": "NINA WILLIAMS u/f+1,2 (T3 nina r59)",
+      "input": "u/f+1,2",
+      "t3_source": "nina",
+      "t3_row": 59,
+      "t3_command": "RP",
+      "startup": 0.183,
+      "active": 0.05,
+      "recovery": 0.667,
+      "damage": 11,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:59",
+      "input_slots": [
+        "u/f+1,2"
+      ],
+      "move_class": "special"
+    },
+    "u/b+1,2": {
+      "name": "NINA WILLIAMS u/b+1,2 (T3 nina r60)",
+      "input": "u/b+1,2",
+      "t3_source": "nina",
+      "t3_row": 60,
+      "t3_command": "RP",
+      "startup": 0.183,
+      "active": 0.05,
+      "recovery": 0.667,
+      "damage": 11,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:60",
+      "input_slots": [
+        "u/b+1,2"
+      ],
+      "move_class": "special"
+    },
+    "u+1,3_c36": {
+      "name": "NINA WILLIAMS u+1,3_c36 (T3 nina r62)",
+      "input": "u+1,3_c36",
+      "t3_source": "nina",
+      "t3_row": 62,
+      "t3_command": "LK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:62",
+      "input_slots": [
+        "u+1,3"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "u/f+1,3_c36": {
+      "name": "NINA WILLIAMS u/f+1,3_c36 (T3 nina r63)",
+      "input": "u/f+1,3_c36",
+      "t3_source": "nina",
+      "t3_row": 63,
+      "t3_command": "LK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:63",
+      "input_slots": [
+        "u/f+1,3"
+      ],
+      "move_class": "special",
+      "t3_condition": 36
+    },
+    "u/b+1,3_c36": {
+      "name": "NINA WILLIAMS u/b+1,3_c36 (T3 nina r64)",
+      "input": "u/b+1,3_c36",
+      "t3_source": "nina",
+      "t3_row": 64,
+      "t3_command": "LK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:64",
+      "input_slots": [
+        "u/b+1,3"
+      ],
+      "move_class": "special",
+      "t3_condition": 36
+    },
+    "u+1,3": {
+      "name": "NINA WILLIAMS u+1,3 (T3 nina r65)",
+      "input": "u+1,3",
+      "t3_source": "nina",
+      "t3_row": 65,
+      "t3_command": "LK",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.817,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:65",
+      "input_slots": [
+        "u+1,3"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+1,3": {
+      "name": "NINA WILLIAMS u/f+1,3 (T3 nina r66)",
+      "input": "u/f+1,3",
+      "t3_source": "nina",
+      "t3_row": 66,
+      "t3_command": "LK",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.817,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:66",
+      "input_slots": [
+        "u/f+1,3"
+      ],
+      "move_class": "special"
+    },
+    "u/b+1,3": {
+      "name": "NINA WILLIAMS u/b+1,3 (T3 nina r67)",
+      "input": "u/b+1,3",
+      "t3_source": "nina",
+      "t3_row": 67,
+      "t3_command": "LK",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.817,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:67",
+      "input_slots": [
+        "u/b+1,3"
+      ],
+      "move_class": "special"
+    },
+    "u+1,3_r68": {
+      "name": "NINA WILLIAMS u+1,3_r68 (T3 nina r68)",
+      "input": "u+1,3_r68",
+      "t3_source": "nina",
+      "t3_row": 68,
+      "t3_command": "LK",
+      "startup": 0.233,
+      "active": 0.017,
+      "recovery": 0.8,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:68",
+      "input_slots": [
+        "u+1,3"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+1,3_r69": {
+      "name": "NINA WILLIAMS u/f+1,3_r69 (T3 nina r69)",
+      "input": "u/f+1,3_r69",
+      "t3_source": "nina",
+      "t3_row": 69,
+      "t3_command": "LK",
+      "startup": 0.233,
+      "active": 0.017,
+      "recovery": 0.8,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:69",
+      "input_slots": [
+        "u/f+1,3"
+      ],
+      "move_class": "special"
+    },
+    "u/b+1,3_r70": {
+      "name": "NINA WILLIAMS u/b+1,3_r70 (T3 nina r70)",
+      "input": "u/b+1,3_r70",
+      "t3_source": "nina",
+      "t3_row": 70,
+      "t3_command": "LK",
+      "startup": 0.233,
+      "active": 0.017,
+      "recovery": 0.8,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:70",
+      "input_slots": [
+        "u/b+1,3"
+      ],
+      "move_class": "special"
+    },
+    "u+1,3_r71": {
+      "name": "NINA WILLIAMS u+1,3_r71 (T3 nina r71)",
+      "input": "u+1,3_r71",
+      "t3_source": "nina",
+      "t3_row": 71,
+      "t3_command": "LK",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.817,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:71",
+      "input_slots": [
+        "u+1,3"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+1,3_r72": {
+      "name": "NINA WILLIAMS u/f+1,3_r72 (T3 nina r72)",
+      "input": "u/f+1,3_r72",
+      "t3_source": "nina",
+      "t3_row": 72,
+      "t3_command": "LK",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.817,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:72",
+      "input_slots": [
+        "u/f+1,3"
+      ],
+      "move_class": "special"
+    },
+    "u/b+1,3_r73": {
+      "name": "NINA WILLIAMS u/b+1,3_r73 (T3 nina r73)",
+      "input": "u/b+1,3_r73",
+      "t3_source": "nina",
+      "t3_row": 73,
+      "t3_command": "LK",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.817,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:73",
+      "input_slots": [
+        "u/b+1,3"
+      ],
+      "move_class": "special"
+    },
+    "u+3+4_r107": {
+      "name": "NINA WILLIAMS u+3+4_r107 (T3 nina r74)",
+      "input": "u+3+4_r107",
+      "t3_source": "nina",
+      "t3_row": 74,
+      "t3_command": "8+LK+RK",
+      "startup": 0.2,
+      "active": 0.05,
+      "recovery": 0.567,
+      "damage": 12,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:74",
+      "input_slots": [
+        "u+3+4"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 107
+    },
+    "u/f+3": {
+      "name": "NINA WILLIAMS u/f+3 (T3 nina r75)",
+      "input": "u/f+3",
+      "t3_source": "nina",
+      "t3_row": 75,
+      "t3_command": "9+LK",
+      "startup": 0.2,
+      "active": 0.05,
+      "recovery": 0.567,
+      "damage": 12,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:75",
+      "input_slots": [
+        "u/f+3"
+      ],
+      "move_class": "strike"
+    },
+    "u/b+3+4": {
+      "name": "NINA WILLIAMS u/b+3+4 (T3 nina r76)",
+      "input": "u/b+3+4",
+      "t3_source": "nina",
+      "t3_row": 76,
+      "t3_command": "7+LK+RK",
+      "startup": 0.2,
+      "active": 0.05,
+      "recovery": 0.567,
+      "damage": 12,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:76",
+      "input_slots": [
+        "u/b+3+4"
+      ],
+      "move_class": "strike"
+    },
+    "u+1,4": {
+      "name": "NINA WILLIAMS u+1,4 (T3 nina r77)",
+      "input": "u+1,4",
+      "t3_source": "nina",
+      "t3_row": 77,
+      "t3_command": "RK",
+      "startup": 0.133,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:77",
+      "input_slots": [
+        "u+1,4"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+1,4": {
+      "name": "NINA WILLIAMS u/f+1,4 (T3 nina r78)",
+      "input": "u/f+1,4",
+      "t3_source": "nina",
+      "t3_row": 78,
+      "t3_command": "RK",
+      "startup": 0.133,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:78",
+      "input_slots": [
+        "u/f+1,4"
+      ],
+      "move_class": "special"
+    },
+    "u/b+1,4": {
+      "name": "NINA WILLIAMS u/b+1,4 (T3 nina r79)",
+      "input": "u/b+1,4",
+      "t3_source": "nina",
+      "t3_row": 79,
+      "t3_command": "RK",
+      "startup": 0.133,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:79",
+      "input_slots": [
+        "u/b+1,4"
+      ],
+      "move_class": "special"
+    },
+    "u+1,4_r80": {
+      "name": "NINA WILLIAMS u+1,4_r80 (T3 nina r80)",
+      "input": "u+1,4_r80",
+      "t3_source": "nina",
+      "t3_row": 80,
+      "t3_command": "RK",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:80",
+      "input_slots": [
+        "u+1,4"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+1,4_r81": {
+      "name": "NINA WILLIAMS u/f+1,4_r81 (T3 nina r81)",
+      "input": "u/f+1,4_r81",
+      "t3_source": "nina",
+      "t3_row": 81,
+      "t3_command": "RK",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:81",
+      "input_slots": [
+        "u/f+1,4"
+      ],
+      "move_class": "special"
+    },
+    "u/b+1,4_r82": {
+      "name": "NINA WILLIAMS u/b+1,4_r82 (T3 nina r82)",
+      "input": "u/b+1,4_r82",
+      "t3_source": "nina",
+      "t3_row": 82,
+      "t3_command": "RK",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:82",
+      "input_slots": [
+        "u/b+1,4"
+      ],
+      "move_class": "special"
+    },
+    "u+1,4_r83": {
+      "name": "NINA WILLIAMS u+1,4_r83 (T3 nina r83)",
+      "input": "u+1,4_r83",
+      "t3_source": "nina",
+      "t3_row": 83,
+      "t3_command": "RK",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:83",
+      "input_slots": [
+        "u+1,4"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+1,4_r84": {
+      "name": "NINA WILLIAMS u/f+1,4_r84 (T3 nina r84)",
+      "input": "u/f+1,4_r84",
+      "t3_source": "nina",
+      "t3_row": 84,
+      "t3_command": "RK",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:84",
+      "input_slots": [
+        "u/f+1,4"
+      ],
+      "move_class": "special"
+    },
+    "u/b+1,4_r85": {
+      "name": "NINA WILLIAMS u/b+1,4_r85 (T3 nina r85)",
+      "input": "u/b+1,4_r85",
+      "t3_source": "nina",
+      "t3_row": 85,
+      "t3_command": "RK",
+      "startup": 0.15,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:85",
+      "input_slots": [
+        "u/b+1,4"
+      ],
+      "move_class": "special"
+    },
+    "u+1,4_c36_r86": {
+      "name": "NINA WILLIAMS u+1,4_c36_r86 (T3 nina r86)",
+      "input": "u+1,4_c36_r86",
+      "t3_source": "nina",
+      "t3_row": 86,
+      "t3_command": "RK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 12,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:86",
+      "input_slots": [
+        "u+1,4"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "u/f+1,4_c36_r87": {
+      "name": "NINA WILLIAMS u/f+1,4_c36_r87 (T3 nina r87)",
+      "input": "u/f+1,4_c36_r87",
+      "t3_source": "nina",
+      "t3_row": 87,
+      "t3_command": "RK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 12,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:87",
+      "input_slots": [
+        "u/f+1,4"
+      ],
+      "move_class": "special",
+      "t3_condition": 36
+    },
+    "u/b+1,4_c36_r88": {
+      "name": "NINA WILLIAMS u/b+1,4_c36_r88 (T3 nina r88)",
+      "input": "u/b+1,4_c36_r88",
+      "t3_source": "nina",
+      "t3_row": 88,
+      "t3_command": "RK",
+      "startup": 0.15,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 11,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:88",
+      "input_slots": [
+        "u/b+1,4"
+      ],
+      "move_class": "special",
+      "t3_condition": 36
+    },
+    "u+4": {
+      "name": "NINA WILLIAMS u+4 (T3 nina r89)",
+      "input": "u+4",
+      "t3_source": "nina",
+      "t3_row": 89,
+      "t3_command": "8+RK",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 15,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:89",
+      "input_slots": [
+        "u+4"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+3+4": {
+      "name": "NINA WILLIAMS u/f+3+4 (T3 nina r90)",
+      "input": "u/f+3+4",
+      "t3_source": "nina",
+      "t3_row": 90,
+      "t3_command": "9+LK+RK",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 12,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:90",
+      "input_slots": [
+        "u/f+3+4"
+      ],
+      "move_class": "strike"
+    },
+    "u/b+4": {
+      "name": "NINA WILLIAMS u/b+4 (T3 nina r91)",
+      "input": "u/b+4",
+      "t3_source": "nina",
+      "t3_row": 91,
+      "t3_command": "7+RK",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 15,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:91",
+      "input_slots": [
+        "u/b+4"
+      ],
+      "move_class": "strike"
+    },
+    "u/b+4_c36": {
+      "name": "NINA WILLIAMS u/b+4_c36 (T3 nina r91)",
+      "input": "u/b+4_c36",
+      "t3_source": "nina",
+      "t3_row": 91,
+      "t3_command": "7+RK",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 15,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:91",
+      "input_slots": [
+        "u/b+4"
+      ],
+      "move_class": "special",
+      "t3_condition": 36
+    },
+    "1+2_r107": {
+      "name": "NINA WILLIAMS 1+2_r107 (T3 nina r103)",
+      "input": "1+2_r107",
+      "t3_source": "nina",
+      "t3_row": 103,
+      "t3_command": "LP+RP",
+      "startup": 0.133,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:103",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 107
+    },
+    "b,2_c36": {
+      "name": "NINA WILLIAMS b,2_c36 (T3 nina r104)",
+      "input": "b,2_c36",
+      "t3_source": "nina",
+      "t3_row": 104,
+      "t3_command": "RP",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 6,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:104",
+      "input_slots": [
+        "b,2"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "2": {
+      "name": "NINA WILLIAMS 2 (T3 nina r105)",
+      "input": "2",
+      "t3_source": "nina",
+      "t3_row": 105,
+      "t3_command": "RP",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 6,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:105",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike"
+    },
+    "b_c36": {
+      "name": "NINA WILLIAMS b_c36 (T3 nina r113)",
+      "input": "b_c36",
+      "t3_source": "nina",
+      "t3_row": 113,
+      "t3_command": "4/6/7/8/9+LK+RK",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:113",
+      "input_slots": [
+        "b"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "b+3+4": {
+      "name": "NINA WILLIAMS b+3+4 (T3 nina r110)",
+      "input": "b+3+4",
+      "t3_source": "nina",
+      "t3_row": 110,
+      "t3_command": "4+LK+RK",
+      "startup": 0.233,
+      "active": 0.017,
+      "recovery": 0.0,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:110",
+      "input_slots": [
+        "b+3+4"
+      ],
+      "move_class": "strike"
+    },
+    "b+4": {
+      "name": "NINA WILLIAMS b+4 (T3 nina r112)",
+      "input": "b+4",
+      "t3_source": "nina",
+      "t3_row": 112,
+      "t3_command": "4+RK",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.55,
+      "damage": 9,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:112",
+      "input_slots": [
+        "b+4"
+      ],
+      "move_class": "strike"
+    },
+    "b_c38": {
+      "name": "NINA WILLIAMS b_c38 (T3 nina r114)",
+      "input": "b_c38",
+      "t3_source": "nina",
+      "t3_row": 114,
+      "t3_command": "4/6/7/8/9+LK",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:114",
+      "input_slots": [
+        "b"
+      ],
+      "move_class": "strike",
+      "t3_condition": 38
+    },
+    "f+1": {
+      "name": "NINA WILLIAMS f+1 (T3 nina r115)",
+      "input": "f+1",
+      "t3_source": "nina",
+      "t3_row": 115,
+      "t3_command": "6+LP",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 3,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:115",
+      "input_slots": [
+        "f+1"
+      ],
+      "move_class": "strike"
+    },
+    "f+2": {
+      "name": "NINA WILLIAMS f+2 (T3 nina r116)",
+      "input": "f+2",
+      "t3_source": "nina",
+      "t3_row": 116,
+      "t3_command": "6+RP",
+      "startup": 0.2,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 6,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:116",
+      "input_slots": [
+        "f+2"
+      ],
+      "move_class": "strike"
+    },
+    "f+3+4_r2": {
+      "name": "NINA WILLIAMS f+3+4_r2 (T3 nina r117)",
+      "input": "f+3+4_r2",
+      "t3_source": "nina",
+      "t3_row": 117,
+      "t3_command": "6+LK+RK",
+      "startup": 0.267,
+      "active": 0.017,
+      "recovery": 0.0,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:117",
+      "input_slots": [
+        "f+3+4"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 2
+    },
+    "f+4": {
+      "name": "NINA WILLIAMS f+4 (T3 nina r118)",
+      "input": "f+4",
+      "t3_source": "nina",
+      "t3_row": 118,
+      "t3_command": "6+RK",
+      "startup": 0.2,
+      "active": 0.017,
+      "recovery": 0.0,
+      "damage": 9,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:118",
+      "input_slots": [
+        "f+4"
+      ],
+      "move_class": "strike"
+    },
+    "b+1+2": {
+      "name": "NINA WILLIAMS b+1+2 (T3 nina r119)",
+      "input": "b+1+2",
+      "t3_source": "nina",
+      "t3_row": 119,
+      "t3_command": "4+LP+RP",
+      "startup": 0.333,
+      "active": 0.017,
+      "recovery": 0.617,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:119",
+      "input_slots": [
+        "b+1+2"
+      ],
+      "move_class": "strike"
+    },
+    "b+2": {
+      "name": "NINA WILLIAMS b+2 (T3 nina r120)",
+      "input": "b+2",
+      "t3_source": "nina",
+      "t3_row": 120,
+      "t3_command": "4+RP",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.667,
+      "damage": 9,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:120",
+      "input_slots": [
+        "b+2"
+      ],
+      "move_class": "strike"
+    },
+    "b+2,1_c26": {
+      "name": "NINA WILLIAMS b+2,1_c26 (T3 nina r121)",
+      "input": "b+2,1_c26",
+      "t3_source": "nina",
+      "t3_row": 121,
+      "t3_command": "any-button",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.667,
+      "damage": 9,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:121",
+      "input_slots": [
+        "b+2,1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 26,
+      "t3_restriction": 6
+    },
+    "b+2,2_r6": {
+      "name": "NINA WILLIAMS b+2,2_r6 (T3 nina r240)",
+      "input": "b+2,2_r6",
+      "t3_source": "nina",
+      "t3_row": 240,
+      "t3_command": "RP",
+      "startup": 0.4,
+      "active": 0.017,
+      "recovery": 0.7,
+      "damage": 11,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:240",
+      "input_slots": [
+        "b+2,2"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 6
+    },
+    "d/f+1+2_r17": {
+      "name": "NINA WILLIAMS d/f+1+2_r17 (T3 nina r123)",
+      "input": "d/f+1+2_r17",
+      "t3_source": "nina",
+      "t3_row": 123,
+      "t3_command": "3+LP+RP",
+      "startup": 0.133,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 3,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:123",
+      "input_slots": [
+        "d/f+1+2"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 17
+    },
+    "d/f+2": {
+      "name": "NINA WILLIAMS d/f+2 (T3 nina r124)",
+      "input": "d/f+2",
+      "t3_source": "nina",
+      "t3_row": 124,
+      "t3_command": "3+RP",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 5,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:124",
+      "input_slots": [
+        "d/f+2"
+      ],
+      "move_class": "strike"
+    },
+    "d/b_c37": {
+      "name": "NINA WILLIAMS d/b_c37 (T3 nina r125)",
+      "input": "d/b_c37",
+      "t3_source": "nina",
+      "t3_row": 125,
+      "t3_command": "1/2/3+LP",
+      "startup": 0.133,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 6,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:125",
+      "input_slots": [
+        "d/b"
+      ],
+      "move_class": "strike",
+      "t3_condition": 37
+    },
+    "d/b_c36": {
+      "name": "NINA WILLIAMS d/b_c36 (T3 nina r126)",
+      "input": "d/b_c36",
+      "t3_source": "nina",
+      "t3_row": 126,
+      "t3_command": "1/2/3+LP+RP",
+      "startup": 0.133,
+      "active": 0.033,
+      "recovery": 0.483,
+      "damage": 6,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:126",
+      "input_slots": [
+        "d/b"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "d/b": {
+      "name": "NINA WILLIAMS d/b (T3 nina r128)",
+      "input": "d/b",
+      "t3_source": "nina",
+      "t3_row": 128,
+      "t3_command": "1/2+LK+RK",
+      "startup": 0.267,
+      "active": 0.017,
+      "recovery": 0.0,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:128",
+      "input_slots": [
+        "d/b"
+      ],
+      "move_class": "strike"
+    },
+    "4": {
+      "name": "NINA WILLIAMS 4 (T3 nina r131)",
+      "input": "4",
+      "t3_source": "nina",
+      "t3_row": 131,
+      "t3_command": "RK",
+      "startup": 0.2,
+      "active": 0.017,
+      "recovery": 0.0,
+      "damage": 6,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:131",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike"
+    },
+    "d/b_c36_r132": {
+      "name": "NINA WILLIAMS d/b_c36_r132 (T3 nina r132)",
+      "input": "d/b_c36_r132",
+      "t3_source": "nina",
+      "t3_row": 132,
+      "t3_command": "1/2/3+LK+RK",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:132",
+      "input_slots": [
+        "d/b"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "d/b_c38_r133": {
+      "name": "NINA WILLIAMS d/b_c38_r133 (T3 nina r133)",
+      "input": "d/b_c38_r133",
+      "t3_source": "nina",
+      "t3_row": 133,
+      "t3_command": "1/2/3+LK",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:133",
+      "input_slots": [
+        "d/b"
+      ],
+      "move_class": "strike",
+      "t3_condition": 38
+    },
+    "d/f+3+4": {
+      "name": "NINA WILLIAMS d/f+3+4 (T3 nina r134)",
+      "input": "d/f+3+4",
+      "t3_source": "nina",
+      "t3_row": 134,
+      "t3_command": "3+LK+RK",
+      "startup": 0.267,
+      "active": 0.017,
+      "recovery": 0.0,
+      "damage": 7,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:134",
+      "input_slots": [
+        "d/f+3+4"
+      ],
+      "move_class": "strike"
+    },
+    "d/f+4": {
+      "name": "NINA WILLIAMS d/f+4 (T3 nina r135)",
+      "input": "d/f+4",
+      "t3_source": "nina",
+      "t3_row": 135,
+      "t3_command": "3+RK",
+      "startup": 0.2,
+      "active": 0.017,
+      "recovery": 0.0,
+      "damage": 6,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:135",
+      "input_slots": [
+        "d/f+4"
+      ],
+      "move_class": "strike"
+    },
+    "d+1+2_r107": {
+      "name": "NINA WILLIAMS d+1+2_r107 (T3 nina r136)",
+      "input": "d+1+2_r107",
+      "t3_source": "nina",
+      "t3_row": 136,
+      "t3_command": "2+LP+RP",
+      "startup": 0.133,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 3,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:136",
+      "input_slots": [
+        "d+1+2"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 107
+    },
+    "d+2": {
+      "name": "NINA WILLIAMS d+2 (T3 nina r137)",
+      "input": "d+2",
+      "t3_source": "nina",
+      "t3_row": 137,
+      "t3_command": "2+RP",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 6,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:137",
+      "input_slots": [
+        "d+2"
+      ],
+      "move_class": "strike"
+    },
+    "d/b+3": {
+      "name": "NINA WILLIAMS d/b+3 (T3 nina r138)",
+      "input": "d/b+3",
+      "t3_source": "nina",
+      "t3_row": 138,
+      "t3_command": "1+LK",
+      "startup": 0.267,
+      "active": 0.017,
+      "recovery": 0.0,
+      "damage": 7,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:138",
+      "input_slots": [
+        "d/b+3"
+      ],
+      "move_class": "strike"
+    },
+    "d+4": {
+      "name": "NINA WILLIAMS d+4 (T3 nina r139)",
+      "input": "d+4",
+      "t3_source": "nina",
+      "t3_row": 139,
+      "t3_command": "2+RK",
+      "startup": 0.2,
+      "active": 0.017,
+      "recovery": 0.0,
+      "damage": 4,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:139",
+      "input_slots": [
+        "d+4"
+      ],
+      "move_class": "strike"
+    },
+    "d/f+3+4_r107_r140": {
+      "name": "NINA WILLIAMS d/f+3+4_r107_r140 (T3 nina r140)",
+      "input": "d/f+3+4_r107_r140",
+      "t3_source": "nina",
+      "t3_row": 140,
+      "t3_command": "3+LK+RK",
+      "startup": 0.233,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 6,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:140",
+      "input_slots": [
+        "d/f+3+4"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 107
+    },
+    "d/f+1+2_r107": {
+      "name": "NINA WILLIAMS d/f+1+2_r107 (T3 nina r141)",
+      "input": "d/f+1+2_r107",
+      "t3_source": "nina",
+      "t3_row": 141,
+      "t3_command": "3+LP+RP",
+      "startup": 0.217,
+      "active": 0.017,
+      "recovery": 0.517,
+      "damage": 6,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:141",
+      "input_slots": [
+        "d/f+1+2"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 107
+    },
+    "d/f+2_r142": {
+      "name": "NINA WILLIAMS d/f+2_r142 (T3 nina r142)",
+      "input": "d/f+2_r142",
+      "t3_source": "nina",
+      "t3_row": 142,
+      "t3_command": "3+RP",
+      "startup": 0.233,
+      "active": 0.05,
+      "recovery": 0.55,
+      "damage": 7,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:142",
+      "input_slots": [
+        "d/f+2"
+      ],
+      "move_class": "strike"
+    },
+    "d/f+3": {
+      "name": "NINA WILLIAMS d/f+3 (T3 nina r143)",
+      "input": "d/f+3",
+      "t3_source": "nina",
+      "t3_row": 143,
+      "t3_command": "3+LK",
+      "startup": 0.233,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 6,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:143",
+      "input_slots": [
+        "d/f+3"
+      ],
+      "move_class": "strike"
+    },
+    "d/f+4_r144": {
+      "name": "NINA WILLIAMS d/f+4_r144 (T3 nina r144)",
+      "input": "d/f+4_r144",
+      "t3_source": "nina",
+      "t3_row": 144,
+      "t3_command": "3+RK",
+      "startup": 0.2,
+      "active": 0.017,
+      "recovery": 0.55,
+      "damage": 9,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:144",
+      "input_slots": [
+        "d/f+4"
+      ],
+      "move_class": "strike"
+    },
+    "d/b+1": {
+      "name": "NINA WILLIAMS d/b+1 (T3 nina r145)",
+      "input": "d/b+1",
+      "t3_source": "nina",
+      "t3_row": 145,
+      "t3_command": "1+LP",
+      "startup": 0.233,
+      "active": 0.083,
+      "recovery": 0.467,
+      "damage": 6,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:145",
+      "input_slots": [
+        "d/b+1"
+      ],
+      "move_class": "strike"
+    },
+    "d/b+2": {
+      "name": "NINA WILLIAMS d/b+2 (T3 nina r146)",
+      "input": "d/b+2",
+      "t3_source": "nina",
+      "t3_row": 146,
+      "t3_command": "1+RP",
+      "startup": 0.4,
+      "active": 0.017,
+      "recovery": 0.7,
+      "damage": 12,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:146",
+      "input_slots": [
+        "d/b+2"
+      ],
+      "move_class": "strike"
+    },
+    "d/b+4": {
+      "name": "NINA WILLIAMS d/b+4 (T3 nina r148)",
+      "input": "d/b+4",
+      "t3_source": "nina",
+      "t3_row": 148,
+      "t3_command": "1+RK",
+      "startup": 0.267,
+      "active": 0.033,
+      "recovery": 0.45,
+      "damage": 6,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:148",
+      "input_slots": [
+        "d/b+4"
+      ],
+      "move_class": "strike"
+    },
+    "b": {
+      "name": "NINA WILLIAMS b (T3 nina r149)",
+      "input": "b",
+      "t3_source": "nina",
+      "t3_row": 149,
+      "t3_command": "4/6+LP",
+      "startup": 0.2,
+      "active": 0.033,
+      "recovery": 0.5,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:149",
+      "input_slots": [
+        "b"
+      ],
+      "move_class": "strike"
+    },
+    "b_r150": {
+      "name": "NINA WILLIAMS b_r150 (T3 nina r150)",
+      "input": "b_r150",
+      "t3_source": "nina",
+      "t3_row": 150,
+      "t3_command": "4/6+RP",
+      "startup": 0.233,
+      "active": 0.05,
+      "recovery": 0.517,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:150",
+      "input_slots": [
+        "b"
+      ],
+      "move_class": "strike"
+    },
+    "b_r151": {
+      "name": "NINA WILLIAMS b_r151 (T3 nina r151)",
+      "input": "b_r151",
+      "t3_source": "nina",
+      "t3_row": 151,
+      "t3_command": "4/6+LK+RK",
+      "startup": 0.267,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 15,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:151",
+      "input_slots": [
+        "b"
+      ],
+      "move_class": "strike"
+    },
+    "b_r152": {
+      "name": "NINA WILLIAMS b_r152 (T3 nina r152)",
+      "input": "b_r152",
+      "t3_source": "nina",
+      "t3_row": 152,
+      "t3_command": "4/6+RK",
+      "startup": 0.183,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:152",
+      "input_slots": [
+        "b"
+      ],
+      "move_class": "strike"
+    },
+    "1": {
+      "name": "NINA WILLIAMS 1 (T3 nina r216)",
+      "input": "1",
+      "t3_source": "nina",
+      "t3_row": 216,
+      "t3_command": "any-button",
+      "startup": 1.183,
+      "active": 0.017,
+      "recovery": 0.533,
+      "damage": 56,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:216",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "f+2,1": {
+      "name": "NINA WILLIAMS f+2,1 (T3 nina r219)",
+      "input": "f+2,1",
+      "t3_source": "nina",
+      "t3_row": 219,
+      "t3_command": "LP",
+      "startup": 0.267,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 4,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:219",
+      "input_slots": [
+        "f+2,1"
+      ],
+      "move_class": "strike"
+    },
+    "2,1": {
+      "name": "NINA WILLIAMS 2,1 (T3 nina r220)",
+      "input": "2,1",
+      "t3_source": "nina",
+      "t3_row": 220,
+      "t3_command": "LP",
+      "startup": 0.267,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 4,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:220",
+      "input_slots": [
+        "2,1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r221": {
+      "name": "NINA WILLIAMS 1_r221 (T3 nina r221)",
+      "input": "1_r221",
+      "t3_source": "nina",
+      "t3_row": 221,
+      "t3_command": "LP",
+      "startup": 0.4,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 6,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:221",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "d/f+3+4,1_r107": {
+      "name": "NINA WILLIAMS d/f+3+4,1_r107 (T3 nina r222)",
+      "input": "d/f+3+4,1_r107",
+      "t3_source": "nina",
+      "t3_row": 222,
+      "t3_command": "LP",
+      "startup": 0.5,
+      "active": 0.017,
+      "recovery": 0.633,
+      "damage": 6,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:222",
+      "input_slots": [
+        "d/f+3+4,1"
+      ],
+      "move_class": "special",
+      "t3_restriction": 107
+    },
+    "d/f+3+4,1,2_r107": {
+      "name": "NINA WILLIAMS d/f+3+4,1,2_r107 (T3 nina r227)",
+      "input": "d/f+3+4,1,2_r107",
+      "t3_source": "nina",
+      "t3_row": 227,
+      "t3_command": "RP",
+      "startup": 0.267,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 4,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:227",
+      "input_slots": [
+        "d/f+3+4,1,2"
+      ],
+      "move_class": "special",
+      "t3_restriction": 107
+    },
+    "f+1_r224": {
+      "name": "NINA WILLIAMS f+1_r224 (T3 nina r224)",
+      "input": "f+1_r224",
+      "t3_source": "nina",
+      "t3_row": 224,
+      "t3_command": "6+LP",
+      "startup": 0.333,
+      "active": 0.017,
+      "recovery": 0.617,
+      "damage": 12,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:224",
+      "input_slots": [
+        "f+1"
+      ],
+      "move_class": "strike"
+    },
+    "1_r6_r225": {
+      "name": "NINA WILLIAMS 1_r6_r225 (T3 nina r225)",
+      "input": "1_r6_r225",
+      "t3_source": "nina",
+      "t3_row": 225,
+      "t3_command": "LP",
+      "startup": 0.233,
+      "active": 0.033,
+      "recovery": 0.517,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:225",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 6
+    },
+    "f+2,1,2": {
+      "name": "NINA WILLIAMS f+2,1,2 (T3 nina r226)",
+      "input": "f+2,1,2",
+      "t3_source": "nina",
+      "t3_row": 226,
+      "t3_command": "RP",
+      "startup": 0.267,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 4,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:226",
+      "input_slots": [
+        "f+2,1,2"
+      ],
+      "move_class": "strike"
+    },
+    "d/b+3,2": {
+      "name": "NINA WILLIAMS d/b+3,2 (T3 nina r228)",
+      "input": "d/b+3,2",
+      "t3_source": "nina",
+      "t3_row": 228,
+      "t3_command": "RP",
+      "startup": 0.417,
+      "active": 0.05,
+      "recovery": 0.633,
+      "damage": 6,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:228",
+      "input_slots": [
+        "d/b+3,2"
+      ],
+      "move_class": "special"
+    },
+    "d/f+1+2,2_r107": {
+      "name": "NINA WILLIAMS d/f+1+2,2_r107 (T3 nina r229)",
+      "input": "d/f+1+2,2_r107",
+      "t3_source": "nina",
+      "t3_row": 229,
+      "t3_command": "RP",
+      "startup": 0.267,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:229",
+      "input_slots": [
+        "d/f+1+2,2"
+      ],
+      "move_class": "special",
+      "t3_restriction": 107
+    },
+    "f+1+2": {
+      "name": "NINA WILLIAMS f+1+2 (T3 nina r230)",
+      "input": "f+1+2",
+      "t3_source": "nina",
+      "t3_row": 230,
+      "t3_command": "6+LP+RP",
+      "startup": 0.317,
+      "active": 0.017,
+      "recovery": 0.783,
+      "damage": 12,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:230",
+      "input_slots": [
+        "f+1+2"
+      ],
+      "move_class": "strike"
+    },
+    "1+2": {
+      "name": "NINA WILLIAMS 1+2 (T3 nina r231)",
+      "input": "1+2",
+      "t3_source": "nina",
+      "t3_row": 231,
+      "t3_command": "LP+RP",
+      "startup": 0.317,
+      "active": 0.017,
+      "recovery": 0.783,
+      "damage": 18,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:231",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "strike"
+    },
+    "f+2,f+1+2_r6": {
+      "name": "NINA WILLIAMS f+2,f+1+2_r6 (T3 nina r232)",
+      "input": "f+2,f+1+2_r6",
+      "t3_source": "nina",
+      "t3_row": 232,
+      "t3_command": "6+LP+RP",
+      "startup": 0.383,
+      "active": 0.017,
+      "recovery": 0.783,
+      "damage": 12,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:232",
+      "input_slots": [
+        "f+2,f+1+2"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 6
+    },
+    "f+1+2_r6_r233": {
+      "name": "NINA WILLIAMS f+1+2_r6_r233 (T3 nina r233)",
+      "input": "f+1+2_r6_r233",
+      "t3_source": "nina",
+      "t3_row": 233,
+      "t3_command": "6+LP+RP",
+      "startup": 0.317,
+      "active": 0.017,
+      "recovery": 0.683,
+      "damage": 12,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:233",
+      "input_slots": [
+        "f+1+2"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 6
+    },
+    "f+2,d": {
+      "name": "NINA WILLIAMS f+2,d (T3 nina r234)",
+      "input": "f+2,d",
+      "t3_source": "nina",
+      "t3_row": 234,
+      "t3_command": "2/3+LK",
+      "startup": 0.35,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 6,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:234",
+      "input_slots": [
+        "f+2,d"
+      ],
+      "move_class": "strike"
+    },
+    "d/f+3+4,2_r107": {
+      "name": "NINA WILLIAMS d/f+3+4,2_r107 (T3 nina r235)",
+      "input": "d/f+3+4,2_r107",
+      "t3_source": "nina",
+      "t3_row": 235,
+      "t3_command": "RP",
+      "startup": 0.383,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 7,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:235",
+      "input_slots": [
+        "d/f+3+4,2"
+      ],
+      "move_class": "special",
+      "t3_restriction": 107
+    },
+    "f+2,f+1": {
+      "name": "NINA WILLIAMS f+2,f+1 (T3 nina r236)",
+      "input": "f+2,f+1",
+      "t3_source": "nina",
+      "t3_row": 236,
+      "t3_command": "6+any-button",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.667,
+      "damage": 12,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:236",
+      "input_slots": [
+        "f+2,f+1"
+      ],
+      "move_class": "strike"
+    },
+    "f+2_r237": {
+      "name": "NINA WILLIAMS f+2_r237 (T3 nina r237)",
+      "input": "f+2_r237",
+      "t3_source": "nina",
+      "t3_row": 237,
+      "t3_command": "6+RP",
+      "startup": 0.233,
+      "active": 0.017,
+      "recovery": 0.667,
+      "damage": 9,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:237",
+      "input_slots": [
+        "f+2"
+      ],
+      "move_class": "strike"
+    },
+    "d/f+2_r6_r238": {
+      "name": "NINA WILLIAMS d/f+2_r6_r238 (T3 nina r238)",
+      "input": "d/f+2_r6_r238",
+      "t3_source": "nina",
+      "t3_row": 238,
+      "t3_command": "3+RP",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.8,
+      "damage": 14,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:238",
+      "input_slots": [
+        "d/f+2"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 6
+    },
+    "2_r6_r239": {
+      "name": "NINA WILLIAMS 2_r6_r239 (T3 nina r239)",
+      "input": "2_r6_r239",
+      "t3_source": "nina",
+      "t3_row": 239,
+      "t3_command": "RP",
+      "startup": 0.217,
+      "active": 0.033,
+      "recovery": 0.8,
+      "damage": 9,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:239",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 6
+    },
+    "b+2,2_c26": {
+      "name": "NINA WILLIAMS b+2,2_c26 (T3 nina r241)",
+      "input": "b+2,2_c26",
+      "t3_source": "nina",
+      "t3_row": 241,
+      "t3_command": "RP",
+      "startup": 0.4,
+      "active": 0.017,
+      "recovery": 0.7,
+      "damage": 11,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:241",
+      "input_slots": [
+        "b+2,2"
+      ],
+      "move_class": "strike",
+      "t3_condition": 26,
+      "t3_restriction": 6
+    },
+    "f+2,3": {
+      "name": "NINA WILLIAMS f+2,3 (T3 nina r242)",
+      "input": "f+2,3",
+      "t3_source": "nina",
+      "t3_row": 242,
+      "t3_command": "LK",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.0,
+      "damage": 12,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:242",
+      "input_slots": [
+        "f+2,3"
+      ],
+      "move_class": "strike"
+    },
+    "f+3+4,3_r2": {
+      "name": "NINA WILLIAMS f+3+4,3_r2 (T3 nina r243)",
+      "input": "f+3+4,3_r2",
+      "t3_source": "nina",
+      "t3_row": 243,
+      "t3_command": "LK",
+      "startup": 0.383,
+      "active": 0.033,
+      "recovery": 0.733,
+      "damage": 6,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:243",
+      "input_slots": [
+        "f+3+4,3"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 2
+    },
+    "d/f+3+4,3,3,3_r107": {
+      "name": "NINA WILLIAMS d/f+3+4,3,3,3_r107 (T3 nina r244)",
+      "input": "d/f+3+4,3,3,3_r107",
+      "t3_source": "nina",
+      "t3_row": 244,
+      "t3_command": "LK",
+      "startup": 0.383,
+      "active": 0.033,
+      "recovery": 0.733,
+      "damage": 6,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:244",
+      "input_slots": [
+        "d/f+3+4,3,3,3"
+      ],
+      "move_class": "special",
+      "t3_restriction": 107
+    },
+    "f+4,3": {
+      "name": "NINA WILLIAMS f+4,3 (T3 nina r245)",
+      "input": "f+4,3",
+      "t3_source": "nina",
+      "t3_row": 245,
+      "t3_command": "LK",
+      "startup": 0.367,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 9,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:245",
+      "input_slots": [
+        "f+4,3"
+      ],
+      "move_class": "strike"
+    },
+    "d/f+3+4,3_r107": {
+      "name": "NINA WILLIAMS d/f+3+4,3_r107 (T3 nina r246)",
+      "input": "d/f+3+4,3_r107",
+      "t3_source": "nina",
+      "t3_row": 246,
+      "t3_command": "LK",
+      "startup": 0.35,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 4,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:246",
+      "input_slots": [
+        "d/f+3+4,3"
+      ],
+      "move_class": "special",
+      "t3_restriction": 107
+    },
+    "d/b+4,3": {
+      "name": "NINA WILLIAMS d/b+4,3 (T3 nina r247)",
+      "input": "d/b+4,3",
+      "t3_source": "nina",
+      "t3_row": 247,
+      "t3_command": "LK",
+      "startup": 0.45,
+      "active": 0.033,
+      "recovery": 0.733,
+      "damage": 15,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:247",
+      "input_slots": [
+        "d/b+4,3"
+      ],
+      "move_class": "special"
+    },
+    "d/b+3+4": {
+      "name": "NINA WILLIAMS d/b+3+4 (T3 nina r248)",
+      "input": "d/b+3+4",
+      "t3_source": "nina",
+      "t3_row": 248,
+      "t3_command": "1+LK+RK",
+      "startup": 0.317,
+      "active": 0.033,
+      "recovery": 0.733,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:248",
+      "input_slots": [
+        "d/b+3+4"
+      ],
+      "move_class": "strike"
+    },
+    "d/b+3+4,1": {
+      "name": "NINA WILLIAMS d/b+3+4,1 (T3 nina r249)",
+      "input": "d/b+3+4,1",
+      "t3_source": "nina",
+      "t3_row": 249,
+      "t3_command": "any-button",
+      "startup": 0.317,
+      "active": 0.033,
+      "recovery": 0.733,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:249",
+      "input_slots": [
+        "d/b+3+4,1"
+      ],
+      "move_class": "special"
+    },
+    "d/f+3+4,3,3_r107": {
+      "name": "NINA WILLIAMS d/f+3+4,3,3_r107 (T3 nina r250)",
+      "input": "d/f+3+4,3,3_r107",
+      "t3_source": "nina",
+      "t3_row": 250,
+      "t3_command": "LK",
+      "startup": 0.4,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 5,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:250",
+      "input_slots": [
+        "d/f+3+4,3,3"
+      ],
+      "move_class": "special",
+      "t3_restriction": 107
+    },
+    "u/f+3+4,3": {
+      "name": "NINA WILLIAMS u/f+3+4,3 (T3 nina r251)",
+      "input": "u/f+3+4,3",
+      "t3_source": "nina",
+      "t3_row": 251,
+      "t3_command": "LK",
+      "startup": 0.6,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 6,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:251",
+      "input_slots": [
+        "u/f+3+4,3"
+      ],
+      "move_class": "special"
+    },
+    "f+3": {
+      "name": "NINA WILLIAMS f+3 (T3 nina r252)",
+      "input": "f+3",
+      "t3_source": "nina",
+      "t3_row": 252,
+      "t3_command": "6+LK",
+      "startup": 0.25,
+      "active": 0.017,
+      "recovery": 0.767,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:252",
+      "input_slots": [
+        "f+3"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+3+4,3,4": {
+      "name": "NINA WILLIAMS u/f+3+4,3,4 (T3 nina r254)",
+      "input": "u/f+3+4,3,4",
+      "t3_source": "nina",
+      "t3_row": 254,
+      "t3_command": "RK",
+      "startup": 0.933,
+      "active": 0.017,
+      "recovery": 0.6,
+      "damage": 8,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:254",
+      "input_slots": [
+        "u/f+3+4,3,4"
+      ],
+      "move_class": "special"
+    },
+    "d/f+3+4,1_c53": {
+      "name": "NINA WILLIAMS d/f+3+4,1_c53 (T3 nina r255)",
+      "input": "d/f+3+4,1_c53",
+      "t3_source": "nina",
+      "t3_row": 255,
+      "t3_command": "any-button",
+      "startup": 0.283,
+      "active": 0.017,
+      "recovery": 1.633,
+      "damage": 6,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:255",
+      "input_slots": [
+        "d/f+3+4,1"
+      ],
+      "move_class": "special",
+      "t3_condition": 53,
+      "t3_restriction": 107
+    },
+    "d/f+3+4,1,1_c53": {
+      "name": "NINA WILLIAMS d/f+3+4,1,1_c53 (T3 nina r256)",
+      "input": "d/f+3+4,1,1_c53",
+      "t3_source": "nina",
+      "t3_row": 256,
+      "t3_command": "any-button",
+      "startup": 0.283,
+      "active": 0.017,
+      "recovery": 1.633,
+      "damage": 12,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:256",
+      "input_slots": [
+        "d/f+3+4,1,1"
+      ],
+      "move_class": "special",
+      "t3_condition": 53,
+      "t3_restriction": 107
+    },
+    "d/f+3+4,1,1_c55": {
+      "name": "NINA WILLIAMS d/f+3+4,1,1_c55 (T3 nina r256)",
+      "input": "d/f+3+4,1,1_c55",
+      "t3_source": "nina",
+      "t3_row": 256,
+      "t3_command": "any-button",
+      "startup": 0.283,
+      "active": 0.017,
+      "recovery": 1.633,
+      "damage": 12,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:256",
+      "input_slots": [
+        "d/f+3+4,1,1"
+      ],
+      "move_class": "special",
+      "t3_condition": 55,
+      "t3_restriction": 107
+    },
+    "d/b_r6_r258": {
+      "name": "NINA WILLIAMS d/b_r6_r258 (T3 nina r258)",
+      "input": "d/b_r6_r258",
+      "t3_source": "nina",
+      "t3_row": 258,
+      "t3_command": "1/2/3+RK",
+      "startup": 0.333,
+      "active": 0.017,
+      "recovery": 0.75,
+      "damage": 6,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:258",
+      "input_slots": [
+        "d/b"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 6
+    },
+    "d/f+4_r259": {
+      "name": "NINA WILLIAMS d/f+4_r259 (T3 nina r259)",
+      "input": "d/f+4_r259",
+      "t3_source": "nina",
+      "t3_row": 259,
+      "t3_command": "3+RK",
+      "startup": 0.333,
+      "active": 0.083,
+      "recovery": 0.933,
+      "damage": 11,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:259",
+      "input_slots": [
+        "d/f+4"
+      ],
+      "move_class": "strike"
+    },
+    "f+2,4": {
+      "name": "NINA WILLIAMS f+2,4 (T3 nina r260)",
+      "input": "f+2,4",
+      "t3_source": "nina",
+      "t3_row": 260,
+      "t3_command": "RK",
+      "startup": 0.367,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 9,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:260",
+      "input_slots": [
+        "f+2,4"
+      ],
+      "move_class": "strike"
+    },
+    "1+2,4_r107": {
+      "name": "NINA WILLIAMS 1+2,4_r107 (T3 nina r261)",
+      "input": "1+2,4_r107",
+      "t3_source": "nina",
+      "t3_row": 261,
+      "t3_command": "RK",
+      "startup": 0.383,
+      "active": 0.017,
+      "recovery": 0.667,
+      "damage": 5,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:261",
+      "input_slots": [
+        "1+2,4"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 107
+    },
+    "f+3+4,4_r2": {
+      "name": "NINA WILLIAMS f+3+4,4_r2 (T3 nina r262)",
+      "input": "f+3+4,4_r2",
+      "t3_source": "nina",
+      "t3_row": 262,
+      "t3_command": "RK",
+      "startup": 0.367,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 9,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:262",
+      "input_slots": [
+        "f+3+4,4"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 2
+    },
+    "d+1+2,4_r107": {
+      "name": "NINA WILLIAMS d+1+2,4_r107 (T3 nina r263)",
+      "input": "d+1+2,4_r107",
+      "t3_source": "nina",
+      "t3_row": 263,
+      "t3_command": "RK",
+      "startup": 0.25,
+      "active": 0.05,
+      "recovery": 0.567,
+      "damage": 6,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:263",
+      "input_slots": [
+        "d+1+2,4"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 107
+    },
+    "d+2,4": {
+      "name": "NINA WILLIAMS d+2,4 (T3 nina r264)",
+      "input": "d+2,4",
+      "t3_source": "nina",
+      "t3_row": 264,
+      "t3_command": "RK",
+      "startup": 0.333,
+      "active": 0.033,
+      "recovery": 0.567,
+      "damage": 9,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:264",
+      "input_slots": [
+        "d+2,4"
+      ],
+      "move_class": "strike"
+    },
+    "d/b+3,4": {
+      "name": "NINA WILLIAMS d/b+3,4 (T3 nina r265)",
+      "input": "d/b+3,4",
+      "t3_source": "nina",
+      "t3_row": 265,
+      "t3_command": "RK",
+      "startup": 0.333,
+      "active": 0.017,
+      "recovery": 0.6,
+      "damage": 9,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:265",
+      "input_slots": [
+        "d/b+3,4"
+      ],
+      "move_class": "special"
+    },
+    "d/b+3,d/b_r6": {
+      "name": "NINA WILLIAMS d/b+3,d/b_r6 (T3 nina r266)",
+      "input": "d/b+3,d/b_r6",
+      "t3_source": "nina",
+      "t3_row": 266,
+      "t3_command": "1/2/3+RK",
+      "startup": 0.367,
+      "active": 0.017,
+      "recovery": 0.55,
+      "damage": 4,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:266",
+      "input_slots": [
+        "d/b+3,d/b"
+      ],
+      "move_class": "special",
+      "t3_restriction": 6
+    },
+    "f+4_r267": {
+      "name": "NINA WILLIAMS f+4_r267 (T3 nina r267)",
+      "input": "f+4_r267",
+      "t3_source": "nina",
+      "t3_row": 267,
+      "t3_command": "6+RK",
+      "startup": 0.467,
+      "active": 0.083,
+      "recovery": 0.433,
+      "damage": 12,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:267",
+      "input_slots": [
+        "f+4"
+      ],
+      "move_class": "strike"
+    },
+    "f+4,1+2": {
+      "name": "NINA WILLIAMS f+4,1+2 (T3 nina r270)",
+      "input": "f+4,1+2",
+      "t3_source": "nina",
+      "t3_row": 270,
+      "t3_command": "any+LP+RP",
+      "startup": 0.467,
+      "active": 0.083,
+      "recovery": 0.433,
+      "damage": 12,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:270",
+      "input_slots": [
+        "f+4,1+2"
+      ],
+      "move_class": "strike"
+    },
+    "f+4,3+4": {
+      "name": "NINA WILLIAMS f+4,3+4 (T3 nina r271)",
+      "input": "f+4,3+4",
+      "t3_source": "nina",
+      "t3_row": 271,
+      "t3_command": "any+LK+RK",
+      "startup": 0.467,
+      "active": 0.083,
+      "recovery": 0.433,
+      "damage": 12,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:271",
+      "input_slots": [
+        "f+4,3+4"
+      ],
+      "move_class": "strike"
+    },
+    "1_r273": {
+      "name": "NINA WILLIAMS 1_r273 (T3 nina r273)",
+      "input": "1_r273",
+      "t3_source": "nina",
+      "t3_row": 273,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.4,
+      "damage": 3,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:273",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike"
+    },
+    "d/f+3+4,4_r107": {
+      "name": "NINA WILLIAMS d/f+3+4,4_r107 (T3 nina r274)",
+      "input": "d/f+3+4,4_r107",
+      "t3_source": "nina",
+      "t3_row": 274,
+      "t3_command": "RK",
+      "startup": 0.4,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 9,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:274",
+      "input_slots": [
+        "d/f+3+4,4"
+      ],
+      "move_class": "special",
+      "t3_restriction": 107
+    },
+    "f+2,1,2,3": {
+      "name": "NINA WILLIAMS f+2,1,2,3 (T3 nina r275)",
+      "input": "f+2,1,2,3",
+      "t3_source": "nina",
+      "t3_row": 275,
+      "t3_command": "LK",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.0,
+      "damage": 4,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:275",
+      "input_slots": [
+        "f+2,1,2,3"
+      ],
+      "move_class": "strike"
+    },
+    "f+2,1,2,3,3": {
+      "name": "NINA WILLIAMS f+2,1,2,3,3 (T3 nina r276)",
+      "input": "f+2,1,2,3,3",
+      "t3_source": "nina",
+      "t3_row": 276,
+      "t3_command": "LK",
+      "startup": 0.383,
+      "active": 0.033,
+      "recovery": 0.733,
+      "damage": 5,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:276",
+      "input_slots": [
+        "f+2,1,2,3,3"
+      ],
+      "move_class": "strike"
+    },
+    "f+2,1,2,3,3,2": {
+      "name": "NINA WILLIAMS f+2,1,2,3,3,2 (T3 nina r277)",
+      "input": "f+2,1,2,3,3,2",
+      "t3_source": "nina",
+      "t3_row": 277,
+      "t3_command": "RP",
+      "startup": 0.567,
+      "active": 0.017,
+      "recovery": 0.717,
+      "damage": 4,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:277",
+      "input_slots": [
+        "f+2,1,2,3,3,2"
+      ],
+      "move_class": "strike"
+    },
+    "f+2,1,2,3,3,2,1": {
+      "name": "NINA WILLIAMS f+2,1,2,3,3,2,1 (T3 nina r278)",
+      "input": "f+2,1,2,3,3,2,1",
+      "t3_source": "nina",
+      "t3_row": 278,
+      "t3_command": "LP",
+      "startup": 0.267,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 4,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:278",
+      "input_slots": [
+        "f+2,1,2,3,3,2,1"
+      ],
+      "move_class": "strike"
+    },
+    "f+2,1,2,3,3,2,1,2": {
+      "name": "NINA WILLIAMS f+2,1,2,3,3,2,1,2 (T3 nina r279)",
+      "input": "f+2,1,2,3,3,2,1,2",
+      "t3_source": "nina",
+      "t3_row": 279,
+      "t3_command": "RP",
+      "startup": 0.267,
+      "active": 0.017,
+      "recovery": 0.483,
+      "damage": 4,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:279",
+      "input_slots": [
+        "f+2,1,2,3,3,2,1,2"
+      ],
+      "move_class": "strike"
+    },
+    "f+2,1,2,3,3,2,1,2,4": {
+      "name": "NINA WILLIAMS f+2,1,2,3,3,2,1,2,4 (T3 nina r280)",
+      "input": "f+2,1,2,3,3,2,1,2,4",
+      "t3_source": "nina",
+      "t3_row": 280,
+      "t3_command": "RK",
+      "startup": 0.367,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 18,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:280",
+      "input_slots": [
+        "f+2,1,2,3,3,2,1,2,4"
+      ],
+      "move_class": "strike"
+    },
+    "f+2,1,2,4_r6": {
+      "name": "NINA WILLIAMS f+2,1,2,4_r6 (T3 nina r281)",
+      "input": "f+2,1,2,4_r6",
+      "t3_source": "nina",
+      "t3_row": 281,
+      "t3_command": "RK",
+      "startup": 0.45,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 5,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:281",
+      "input_slots": [
+        "f+2,1,2,4"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 6
+    },
+    "f+2,1,2,4,3_r6": {
+      "name": "NINA WILLIAMS f+2,1,2,4,3_r6 (T3 nina r282)",
+      "input": "f+2,1,2,4,3_r6",
+      "t3_source": "nina",
+      "t3_row": 282,
+      "t3_command": "LK",
+      "startup": 0.3,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 5,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:282",
+      "input_slots": [
+        "f+2,1,2,4,3"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 6
+    },
+    "f+2,1,2,4,3,4_r6": {
+      "name": "NINA WILLIAMS f+2,1,2,4,3,4_r6 (T3 nina r283)",
+      "input": "f+2,1,2,4,3,4_r6",
+      "t3_source": "nina",
+      "t3_row": 283,
+      "t3_command": "RK",
+      "startup": 0.35,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 3,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:283",
+      "input_slots": [
+        "f+2,1,2,4,3,4"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 6
+    },
+    "f+2,1,2,4,3,4,2_r6": {
+      "name": "NINA WILLIAMS f+2,1,2,4,3,4,2_r6 (T3 nina r284)",
+      "input": "f+2,1,2,4,3,4,2_r6",
+      "t3_source": "nina",
+      "t3_row": 284,
+      "t3_command": "RP",
+      "startup": 0.483,
+      "active": 0.033,
+      "recovery": 0.617,
+      "damage": 4,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:284",
+      "input_slots": [
+        "f+2,1,2,4,3,4,2"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 6
+    },
+    "f+2,1,2,4,3,4,2,4_r6": {
+      "name": "NINA WILLIAMS f+2,1,2,4,3,4,2,4_r6 (T3 nina r285)",
+      "input": "f+2,1,2,4,3,4,2,4_r6",
+      "t3_source": "nina",
+      "t3_row": 285,
+      "t3_command": "RK",
+      "startup": 0.367,
+      "active": 0.017,
+      "recovery": 0.567,
+      "damage": 3,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:285",
+      "input_slots": [
+        "f+2,1,2,4,3,4,2,4"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 6
+    },
+    "f+2,1,2,3,3,2,1,4,3_r6": {
+      "name": "NINA WILLIAMS f+2,1,2,3,3,2,1,4,3_r6 (T3 nina r286)",
+      "input": "f+2,1,2,3,3,2,1,4,3_r6",
+      "t3_source": "nina",
+      "t3_row": 286,
+      "t3_command": "LK",
+      "startup": 0.4,
+      "active": 0.017,
+      "recovery": 0.733,
+      "damage": 15,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:286",
+      "input_slots": [
+        "f+2,1,2,3,3,2,1,4,3"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 6
+    },
+    "f+2,1,2,3,3,2,1,4_r6": {
+      "name": "NINA WILLIAMS f+2,1,2,3,3,2,1,4_r6 (T3 nina r287)",
+      "input": "f+2,1,2,3,3,2,1,4_r6",
+      "t3_source": "nina",
+      "t3_row": 287,
+      "t3_command": "RK",
+      "startup": 0.267,
+      "active": 0.017,
+      "recovery": 0.867,
+      "damage": 3,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:287",
+      "input_slots": [
+        "f+2,1,2,3,3,2,1,4"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 6
+    },
+    "1+3": {
+      "name": "NINA WILLIAMS 1+3 (T3 nina r288)",
+      "input": "1+3",
+      "t3_source": "nina",
+      "t3_row": 288,
+      "t3_command": "LP+LK",
+      "startup": 0.2,
+      "active": 0.05,
+      "recovery": 0.467,
+      "damage": 21,
+      "limb": "both",
+      "heavy": false,
+      "knock": 6.5,
+      "soulGain": 11,
+      "anim_ref": "t3:nina:row:288",
+      "input_slots": [
+        "1+3"
+      ],
+      "move_class": "throw",
+      "damage_note": "t3 row damage 0; WH grappler convention 21"
+    },
+    "2+4": {
+      "name": "NINA WILLIAMS 2+4 (T3 nina r289)",
+      "input": "2+4",
+      "t3_source": "nina",
+      "t3_row": 289,
+      "t3_command": "RP+RK",
+      "startup": 0.2,
+      "active": 0.05,
+      "recovery": 0.467,
+      "damage": 21,
+      "limb": "both",
+      "heavy": false,
+      "knock": 6.5,
+      "soulGain": 11,
+      "anim_ref": "t3:nina:row:289",
+      "input_slots": [
+        "2+4"
+      ],
+      "move_class": "throw",
+      "damage_note": "t3 row damage 0; WH grappler convention 21"
+    },
+    "u/f+1+2": {
+      "name": "NINA WILLIAMS u/f+1+2 (T3 nina r290)",
+      "input": "u/f+1+2",
+      "t3_source": "nina",
+      "t3_row": 290,
+      "t3_command": "9+LP+RP",
+      "startup": 0.283,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 21,
+      "limb": "both",
+      "heavy": false,
+      "knock": 6.5,
+      "soulGain": 11,
+      "anim_ref": "t3:nina:row:290",
+      "input_slots": [
+        "u/f+1+2"
+      ],
+      "move_class": "throw",
+      "damage_note": "t3 row damage 0; WH grappler convention 21"
+    },
+    "n,d,d/b+1+3_r11": {
+      "name": "NINA WILLIAMS n,d,d/b+1+3_r11 (T3 nina r291)",
+      "input": "n,d,d/b+1+3_r11",
+      "t3_source": "nina",
+      "t3_row": 291,
+      "t3_command": "[5 2 1+LP+LK](50f)",
+      "startup": 0.183,
+      "active": 0.017,
+      "recovery": 0.517,
+      "damage": 21,
+      "limb": "both",
+      "heavy": false,
+      "knock": 6.5,
+      "soulGain": 11,
+      "anim_ref": "t3:nina:row:291",
+      "input_slots": [
+        "n,d,d/b+1+3"
+      ],
+      "move_class": "throw",
+      "t3_restriction": 11,
+      "damage_note": "t3 row damage 0; WH grappler convention 21"
+    },
+    "n,d,d/b,b+2_r17": {
+      "name": "NINA WILLIAMS n,d,d/b,b+2_r17 (T3 nina r292)",
+      "input": "n,d,d/b,b+2_r17",
+      "t3_source": "nina",
+      "t3_row": 292,
+      "t3_command": "[5 2 1 4+RP](25f)",
+      "startup": 0.183,
+      "active": 0.017,
+      "recovery": 0.517,
+      "damage": 21,
+      "limb": "both",
+      "heavy": false,
+      "knock": 6.5,
+      "soulGain": 11,
+      "anim_ref": "t3:nina:row:292",
+      "input_slots": [
+        "n,d,d/b,b+2"
+      ],
+      "move_class": "throw",
+      "t3_restriction": 17,
+      "damage_note": "t3 row damage 0; WH grappler convention 21"
+    },
+    "n,d/f,n,d/f+1_r6": {
+      "name": "NINA WILLIAMS n,d/f,n,d/f+1_r6 (T3 nina r293)",
+      "input": "n,d/f,n,d/f+1_r6",
+      "t3_source": "nina",
+      "t3_row": 293,
+      "t3_command": "[5 3 5 3+LP](25f)",
+      "startup": 0.2,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 21,
+      "limb": "both",
+      "heavy": false,
+      "knock": 6.5,
+      "soulGain": 11,
+      "anim_ref": "t3:nina:row:293",
+      "input_slots": [
+        "n,d/f,n,d/f+1"
+      ],
+      "move_class": "throw",
+      "t3_restriction": 6,
+      "damage_note": "t3 row damage 0; WH grappler convention 21"
+    },
+    "1+3_c36_r294": {
+      "name": "NINA WILLIAMS 1+3_c36_r294 (T3 nina r294)",
+      "input": "1+3_c36_r294",
+      "t3_source": "nina",
+      "t3_row": 294,
+      "t3_command": "LP+LK",
+      "startup": 0.2,
+      "active": 0.05,
+      "recovery": 0.6,
+      "damage": 21,
+      "limb": "both",
+      "heavy": false,
+      "knock": 6.5,
+      "soulGain": 11,
+      "anim_ref": "t3:nina:row:294",
+      "input_slots": [
+        "1+3"
+      ],
+      "move_class": "throw",
+      "t3_condition": 36,
+      "damage_note": "t3 row damage 0; WH grappler convention 21"
+    },
+    "2+4_c36_r295": {
+      "name": "NINA WILLIAMS 2+4_c36_r295 (T3 nina r295)",
+      "input": "2+4_c36_r295",
+      "t3_source": "nina",
+      "t3_row": 295,
+      "t3_command": "RP+RK",
+      "startup": 0.2,
+      "active": 0.05,
+      "recovery": 0.6,
+      "damage": 21,
+      "limb": "both",
+      "heavy": false,
+      "knock": 6.5,
+      "soulGain": 11,
+      "anim_ref": "t3:nina:row:295",
+      "input_slots": [
+        "2+4"
+      ],
+      "move_class": "throw",
+      "t3_condition": 36,
+      "damage_note": "t3 row damage 0; WH grappler convention 21"
+    },
+    "1+4": {
+      "name": "NINA WILLIAMS 1+4 (T3 nina r296)",
+      "input": "1+4",
+      "t3_source": "nina",
+      "t3_row": 296,
+      "t3_command": "LP+RK",
+      "startup": 0.2,
+      "active": 0.017,
+      "recovery": 0.467,
+      "damage": 21,
+      "limb": "both",
+      "heavy": false,
+      "knock": 6.5,
+      "soulGain": 11,
+      "anim_ref": "t3:nina:row:296",
+      "input_slots": [
+        "1+4"
+      ],
+      "move_class": "throw",
+      "damage_note": "t3 row damage 0; WH grappler convention 21"
+    },
+    "1_c75_r332": {
+      "name": "NINA WILLIAMS 1_c75_r332 (T3 nina r332)",
+      "input": "1_c75_r332",
+      "t3_source": "nina",
+      "t3_row": 332,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.05,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:332",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 19
+    },
+    "1_c72": {
+      "name": "NINA WILLIAMS 1_c72 (T3 nina r332)",
+      "input": "1_c72",
+      "t3_source": "nina",
+      "t3_row": 332,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.05,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:332",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "special",
+      "t3_condition": 72,
+      "t3_restriction": 19
+    },
+    "1_c75_r336": {
+      "name": "NINA WILLIAMS 1_c75_r336 (T3 nina r336)",
+      "input": "1_c75_r336",
+      "t3_source": "nina",
+      "t3_row": 336,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.05,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:336",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 19
+    },
+    "1_c75_r340": {
+      "name": "NINA WILLIAMS 1_c75_r340 (T3 nina r340)",
+      "input": "1_c75_r340",
+      "t3_source": "nina",
+      "t3_row": 340,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.05,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:340",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 19
+    },
+    "1_c75_r344": {
+      "name": "NINA WILLIAMS 1_c75_r344 (T3 nina r344)",
+      "input": "1_c75_r344",
+      "t3_source": "nina",
+      "t3_row": 344,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.05,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:344",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 19
+    },
+    "1_c75_r348": {
+      "name": "NINA WILLIAMS 1_c75_r348 (T3 nina r348)",
+      "input": "1_c75_r348",
+      "t3_source": "nina",
+      "t3_row": 348,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.05,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:348",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 19
+    },
+    "1_c74": {
+      "name": "NINA WILLIAMS 1_c74 (T3 nina r348)",
+      "input": "1_c74",
+      "t3_source": "nina",
+      "t3_row": 348,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.05,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:348",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "special",
+      "t3_condition": 74,
+      "t3_restriction": 19
+    },
+    "1_c75_r352": {
+      "name": "NINA WILLIAMS 1_c75_r352 (T3 nina r352)",
+      "input": "1_c75_r352",
+      "t3_source": "nina",
+      "t3_row": 352,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.05,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:352",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 19
+    },
+    "1_c75_r356": {
+      "name": "NINA WILLIAMS 1_c75_r356 (T3 nina r356)",
+      "input": "1_c75_r356",
+      "t3_source": "nina",
+      "t3_row": 356,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.05,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:356",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 19
+    },
+    "1_c75_r360": {
+      "name": "NINA WILLIAMS 1_c75_r360 (T3 nina r360)",
+      "input": "1_c75_r360",
+      "t3_source": "nina",
+      "t3_row": 360,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.05,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:360",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 19
+    },
+    "1_c75_r364": {
+      "name": "NINA WILLIAMS 1_c75_r364 (T3 nina r364)",
+      "input": "1_c75_r364",
+      "t3_source": "nina",
+      "t3_row": 364,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.05,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:364",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 19
+    },
+    "1_c75_r368": {
+      "name": "NINA WILLIAMS 1_c75_r368 (T3 nina r368)",
+      "input": "1_c75_r368",
+      "t3_source": "nina",
+      "t3_row": 368,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.05,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:368",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 19
+    },
+    "1_c75_r372": {
+      "name": "NINA WILLIAMS 1_c75_r372 (T3 nina r372)",
+      "input": "1_c75_r372",
+      "t3_source": "nina",
+      "t3_row": 372,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.05,
+      "damage": 7,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:372",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 19
+    },
+    "1+3,1_c36": {
+      "name": "NINA WILLIAMS 1+3,1_c36 (T3 nina r420)",
+      "input": "1+3,1_c36",
+      "t3_source": "nina",
+      "t3_row": 420,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.983,
+      "damage": 18,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:420",
+      "input_slots": [
+        "1+3,1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "1+3,1_c2": {
+      "name": "NINA WILLIAMS 1+3,1_c2 (T3 nina r420)",
+      "input": "1+3,1_c2",
+      "t3_source": "nina",
+      "t3_row": 420,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.983,
+      "damage": 18,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:420",
+      "input_slots": [
+        "1+3,1"
+      ],
+      "move_class": "special",
+      "t3_condition": 2
+    },
+    "2+4,1_c36": {
+      "name": "NINA WILLIAMS 2+4,1_c36 (T3 nina r422)",
+      "input": "2+4,1_c36",
+      "t3_source": "nina",
+      "t3_row": 422,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.667,
+      "damage": 18,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:422",
+      "input_slots": [
+        "2+4,1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 36
+    },
+    "2+4,1_c2": {
+      "name": "NINA WILLIAMS 2+4,1_c2 (T3 nina r422)",
+      "input": "2+4,1_c2",
+      "t3_source": "nina",
+      "t3_row": 422,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.667,
+      "damage": 18,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:422",
+      "input_slots": [
+        "2+4,1"
+      ],
+      "move_class": "special",
+      "t3_condition": 2
+    },
+    "n,d/f,n,d/f+1,1_c4": {
+      "name": "NINA WILLIAMS n,d/f,n,d/f+1,1_c4 (T3 nina r428)",
+      "input": "n,d/f,n,d/f+1,1_c4",
+      "t3_source": "nina",
+      "t3_row": 428,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.867,
+      "damage": 24,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:428",
+      "input_slots": [
+        "n,d/f,n,d/f+1,1"
+      ],
+      "move_class": "special",
+      "t3_condition": 4,
+      "t3_restriction": 6
+    },
+    "n,d/f,n,d/f+1,1_c5": {
+      "name": "NINA WILLIAMS n,d/f,n,d/f+1,1_c5 (T3 nina r430)",
+      "input": "n,d/f,n,d/f+1,1_c5",
+      "t3_source": "nina",
+      "t3_row": 430,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.783,
+      "damage": 22,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:430",
+      "input_slots": [
+        "n,d/f,n,d/f+1,1"
+      ],
+      "move_class": "special",
+      "t3_condition": 5,
+      "t3_restriction": 6
+    },
+    "n,d/f,n,d/f+1,1_c3": {
+      "name": "NINA WILLIAMS n,d/f,n,d/f+1,1_c3 (T3 nina r432)",
+      "input": "n,d/f,n,d/f+1,1_c3",
+      "t3_source": "nina",
+      "t3_row": 432,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 3.333,
+      "damage": 35,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:432",
+      "input_slots": [
+        "n,d/f,n,d/f+1,1"
+      ],
+      "move_class": "special",
+      "t3_condition": 3,
+      "t3_restriction": 6
+    },
+    "n,d/f,n,d/f+1,1_c2": {
+      "name": "NINA WILLIAMS n,d/f,n,d/f+1,1_c2 (T3 nina r434)",
+      "input": "n,d/f,n,d/f+1,1_c2",
+      "t3_source": "nina",
+      "t3_row": 434,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.9,
+      "damage": 29,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:434",
+      "input_slots": [
+        "n,d/f,n,d/f+1,1"
+      ],
+      "move_class": "special",
+      "t3_condition": 2,
+      "t3_restriction": 6
+    },
+    "f+1+3_r10": {
+      "name": "NINA WILLIAMS f+1+3_r10 (T3 nina r436)",
+      "input": "f+1+3_r10",
+      "t3_source": "nina",
+      "t3_row": 436,
+      "t3_command": "6+LP+LK",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.167,
+      "damage": 8,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:436",
+      "input_slots": [
+        "f+1+3"
+      ],
+      "move_class": "strike",
+      "t3_restriction": 10
+    },
+    "f+2+4": {
+      "name": "NINA WILLIAMS f+2+4 (T3 nina r438)",
+      "input": "f+2+4",
+      "t3_source": "nina",
+      "t3_row": 438,
+      "t3_command": "6+RP+RK",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.283,
+      "damage": 8,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:438",
+      "input_slots": [
+        "f+2+4"
+      ],
+      "move_class": "strike"
+    },
+    "u/f+1+2,1_c2": {
+      "name": "NINA WILLIAMS u/f+1+2,1_c2 (T3 nina r440)",
+      "input": "u/f+1+2,1_c2",
+      "t3_source": "nina",
+      "t3_row": 440,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.933,
+      "damage": 24,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:440",
+      "input_slots": [
+        "u/f+1+2,1"
+      ],
+      "move_class": "special",
+      "t3_condition": 2
+    },
+    "1_c75_r442": {
+      "name": "NINA WILLIAMS 1_c75_r442 (T3 nina r442)",
+      "input": "1_c75_r442",
+      "t3_source": "nina",
+      "t3_row": 442,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.367,
+      "damage": 24,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:442",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 6
+    },
+    "1_c75_r444": {
+      "name": "NINA WILLIAMS 1_c75_r444 (T3 nina r444)",
+      "input": "1_c75_r444",
+      "t3_source": "nina",
+      "t3_row": 444,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.167,
+      "damage": 24,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:444",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 10
+    },
+    "1_c75_r446": {
+      "name": "NINA WILLIAMS 1_c75_r446 (T3 nina r446)",
+      "input": "1_c75_r446",
+      "t3_source": "nina",
+      "t3_row": 446,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 0.917,
+      "damage": 24,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:446",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 10
+    },
+    "1_c75_r448": {
+      "name": "NINA WILLIAMS 1_c75_r448 (T3 nina r448)",
+      "input": "1_c75_r448",
+      "t3_source": "nina",
+      "t3_row": 448,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.767,
+      "damage": 24,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:448",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 10
+    },
+    "1_c73": {
+      "name": "NINA WILLIAMS 1_c73 (T3 nina r448)",
+      "input": "1_c73",
+      "t3_source": "nina",
+      "t3_row": 448,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.767,
+      "damage": 24,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:448",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "special",
+      "t3_condition": 73,
+      "t3_restriction": 10
+    },
+    "1_c75_r450": {
+      "name": "NINA WILLIAMS 1_c75_r450 (T3 nina r450)",
+      "input": "1_c75_r450",
+      "t3_source": "nina",
+      "t3_row": 450,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.233,
+      "damage": 24,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:450",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 6
+    },
+    "1_c75_r452": {
+      "name": "NINA WILLIAMS 1_c75_r452 (T3 nina r452)",
+      "input": "1_c75_r452",
+      "t3_source": "nina",
+      "t3_row": 452,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.883,
+      "damage": 24,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:452",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 6
+    },
+    "1_c75_r454": {
+      "name": "NINA WILLIAMS 1_c75_r454 (T3 nina r454)",
+      "input": "1_c75_r454",
+      "t3_source": "nina",
+      "t3_row": 454,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.0,
+      "damage": 24,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:454",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 10
+    },
+    "1_c75_r456": {
+      "name": "NINA WILLIAMS 1_c75_r456 (T3 nina r456)",
+      "input": "1_c75_r456",
+      "t3_source": "nina",
+      "t3_row": 456,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.167,
+      "damage": 24,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:456",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 10
+    },
+    "1_c74_r458": {
+      "name": "NINA WILLIAMS 1_c74_r458 (T3 nina r458)",
+      "input": "1_c74_r458",
+      "t3_source": "nina",
+      "t3_row": 458,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.0,
+      "damage": 24,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:458",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 74,
+      "t3_restriction": 10
+    },
+    "1_c75_r460": {
+      "name": "NINA WILLIAMS 1_c75_r460 (T3 nina r460)",
+      "input": "1_c75_r460",
+      "t3_source": "nina",
+      "t3_row": 460,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.15,
+      "damage": 24,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:460",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 6
+    },
+    "1_c75_r462": {
+      "name": "NINA WILLIAMS 1_c75_r462 (T3 nina r462)",
+      "input": "1_c75_r462",
+      "t3_source": "nina",
+      "t3_row": 462,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.917,
+      "damage": 24,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:462",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 75,
+      "t3_restriction": 6
+    },
+    "n,d,d/b,b+2,1_c2": {
+      "name": "NINA WILLIAMS n,d,d/b,b+2,1_c2 (T3 nina r475)",
+      "input": "n,d,d/b,b+2,1_c2",
+      "t3_source": "nina",
+      "t3_row": 475,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.5,
+      "damage": 9,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:475",
+      "input_slots": [
+        "n,d,d/b,b+2,1"
+      ],
+      "move_class": "special",
+      "t3_condition": 2,
+      "t3_restriction": 17
+    },
+    "1_c59_r487": {
+      "name": "NINA WILLIAMS 1_c59_r487 (T3 nina r487)",
+      "input": "1_c59_r487",
+      "t3_source": "nina",
+      "t3_row": 487,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.417,
+      "damage": 12,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:487",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 59
+    },
+    "1_c60": {
+      "name": "NINA WILLIAMS 1_c60 (T3 nina r487)",
+      "input": "1_c60",
+      "t3_source": "nina",
+      "t3_row": 487,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.417,
+      "damage": 12,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:487",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "special",
+      "t3_condition": 60
+    },
+    "1_c58_r491": {
+      "name": "NINA WILLIAMS 1_c58_r491 (T3 nina r491)",
+      "input": "1_c58_r491",
+      "t3_source": "nina",
+      "t3_row": 491,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.217,
+      "damage": 3,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:491",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 58
+    },
+    "1_c60_r493": {
+      "name": "NINA WILLIAMS 1_c60_r493 (T3 nina r493)",
+      "input": "1_c60_r493",
+      "t3_source": "nina",
+      "t3_row": 493,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.167,
+      "damage": 3,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:493",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 60
+    },
+    "1_c58": {
+      "name": "NINA WILLIAMS 1_c58 (T3 nina r493)",
+      "input": "1_c58",
+      "t3_source": "nina",
+      "t3_row": 493,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.167,
+      "damage": 3,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:493",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "special",
+      "t3_condition": 58
+    },
+    "1_c59": {
+      "name": "NINA WILLIAMS 1_c59 (T3 nina r493)",
+      "input": "1_c59",
+      "t3_source": "nina",
+      "t3_row": 493,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.167,
+      "damage": 3,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:493",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "special",
+      "t3_condition": 59
+    },
+    "n,d,d/b+1+3,1_c2": {
+      "name": "NINA WILLIAMS n,d,d/b+1+3,1_c2 (T3 nina r495)",
+      "input": "n,d,d/b+1+3,1_c2",
+      "t3_source": "nina",
+      "t3_row": 495,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 2.0,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:495",
+      "input_slots": [
+        "n,d,d/b+1+3,1"
+      ],
+      "move_class": "special",
+      "t3_condition": 2,
+      "t3_restriction": 11
+    },
+    "1_c59_r503": {
+      "name": "NINA WILLIAMS 1_c59_r503 (T3 nina r503)",
+      "input": "1_c59_r503",
+      "t3_source": "nina",
+      "t3_row": 503,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.167,
+      "damage": 11,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:503",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 59
+    },
+    "1+4,1_c2": {
+      "name": "NINA WILLIAMS 1+4,1_c2 (T3 nina r509)",
+      "input": "1+4,1_c2",
+      "t3_source": "nina",
+      "t3_row": 509,
+      "t3_command": "any-button",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.1,
+      "damage": 9,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:nina:row:509",
+      "input_slots": [
+        "1+4,1"
+      ],
+      "move_class": "strike",
+      "t3_condition": 2
+    }
+  },
+  "strings": [
+    {
+      "input": "u+1,1",
+      "hits": [
+        "u+1",
+        "1"
+      ],
+      "t3_rows": [
+        21,
+        46
+      ]
+    },
+    {
+      "input": "u/f+1,1",
+      "hits": [
+        "u/f+1",
+        "1"
+      ],
+      "t3_rows": [
+        23,
+        47
+      ]
+    },
+    {
+      "input": "u/b+1,1",
+      "hits": [
+        "u/b+1",
+        "1"
+      ],
+      "t3_rows": [
+        24,
+        48
+      ]
+    },
+    {
+      "input": "u+1,2",
+      "hits": [
+        "u+1",
+        "2"
+      ],
+      "t3_rows": [
+        21,
+        58
+      ]
+    },
+    {
+      "input": "u/f+1,2",
+      "hits": [
+        "u/f+1",
+        "2"
+      ],
+      "t3_rows": [
+        23,
+        59
+      ]
+    },
+    {
+      "input": "u/b+1,2",
+      "hits": [
+        "u/b+1",
+        "2"
+      ],
+      "t3_rows": [
+        24,
+        60
+      ]
+    },
+    {
+      "input": "u+1,3",
+      "hits": [
+        "u+1",
+        "3"
+      ],
+      "t3_rows": [
+        21,
+        62
+      ]
+    },
+    {
+      "input": "u/f+1,3",
+      "hits": [
+        "u/f+1",
+        "3"
+      ],
+      "t3_rows": [
+        23,
+        63
+      ]
+    },
+    {
+      "input": "u/b+1,3",
+      "hits": [
+        "u/b+1",
+        "3"
+      ],
+      "t3_rows": [
+        24,
+        64
+      ]
+    },
+    {
+      "input": "u+1,4",
+      "hits": [
+        "u+1",
+        "4"
+      ],
+      "t3_rows": [
+        21,
+        77
+      ]
+    },
+    {
+      "input": "u/f+1,4",
+      "hits": [
+        "u/f+1",
+        "4"
+      ],
+      "t3_rows": [
+        23,
+        78
+      ]
+    },
+    {
+      "input": "u/b+1,4",
+      "hits": [
+        "u/b+1",
+        "4"
+      ],
+      "t3_rows": [
+        24,
+        79
+      ]
+    },
+    {
+      "input": "f+2,1",
+      "hits": [
+        "f+2",
+        "1"
+      ],
+      "t3_rows": [
+        116,
+        219
+      ]
+    },
+    {
+      "input": "2,1",
+      "hits": [
+        "2",
+        "1"
+      ],
+      "t3_rows": [
+        105,
+        220
+      ]
+    },
+    {
+      "input": "f+2,1,2",
+      "hits": [
+        "f+2",
+        "1",
+        "2"
+      ],
+      "t3_rows": [
+        116,
+        219,
+        226
+      ]
+    },
+    {
+      "input": "d/b+3,2",
+      "hits": [
+        "d/b+3",
+        "2"
+      ],
+      "t3_rows": [
+        138,
+        228
+      ]
+    },
+    {
+      "input": "f+2,d",
+      "hits": [
+        "f+2",
+        "d"
+      ],
+      "t3_rows": [
+        116,
+        234
+      ]
+    },
+    {
+      "input": "f+2,f+1",
+      "hits": [
+        "f+2",
+        "f+1"
+      ],
+      "t3_rows": [
+        237,
+        236
+      ]
+    },
+    {
+      "input": "f+2,3",
+      "hits": [
+        "f+2",
+        "3"
+      ],
+      "t3_rows": [
+        116,
+        242
+      ]
+    },
+    {
+      "input": "f+4,3",
+      "hits": [
+        "f+4",
+        "3"
+      ],
+      "t3_rows": [
+        118,
+        245
+      ]
+    },
+    {
+      "input": "d/b+4,3",
+      "hits": [
+        "d/b+4",
+        "3"
+      ],
+      "t3_rows": [
+        148,
+        247
+      ]
+    },
+    {
+      "input": "d/b+3+4,1",
+      "hits": [
+        "d/b+3+4",
+        "1"
+      ],
+      "t3_rows": [
+        248,
+        249
+      ]
+    },
+    {
+      "input": "u/f+3+4,3",
+      "hits": [
+        "u/f+3+4",
+        "3"
+      ],
+      "t3_rows": [
+        90,
+        251
+      ]
+    },
+    {
+      "input": "u/f+3+4,3,4",
+      "hits": [
+        "u/f+3+4",
+        "3",
+        "4"
+      ],
+      "t3_rows": [
+        90,
+        251,
+        254
+      ]
+    },
+    {
+      "input": "f+2,4",
+      "hits": [
+        "f+2",
+        "4"
+      ],
+      "t3_rows": [
+        116,
+        260
+      ]
+    },
+    {
+      "input": "d+2,4",
+      "hits": [
+        "d+2",
+        "4"
+      ],
+      "t3_rows": [
+        137,
+        264
+      ]
+    },
+    {
+      "input": "d/b+3,4",
+      "hits": [
+        "d/b+3",
+        "4"
+      ],
+      "t3_rows": [
+        138,
+        265
+      ]
+    },
+    {
+      "input": "f+4,1+2",
+      "hits": [
+        "f+4",
+        "1+2"
+      ],
+      "t3_rows": [
+        267,
+        270
+      ]
+    },
+    {
+      "input": "f+4,3+4",
+      "hits": [
+        "f+4",
+        "3+4"
+      ],
+      "t3_rows": [
+        267,
+        271
+      ]
+    },
+    {
+      "input": "f+2,1,2,3",
+      "hits": [
+        "f+2",
+        "1",
+        "2",
+        "3"
+      ],
+      "t3_rows": [
+        116,
+        219,
+        226,
+        275
+      ]
+    },
+    {
+      "input": "f+2,1,2,3,3",
+      "hits": [
+        "f+2",
+        "1",
+        "2",
+        "3",
+        "3"
+      ],
+      "t3_rows": [
+        116,
+        219,
+        226,
+        275,
+        276
+      ]
+    },
+    {
+      "input": "f+2,1,2,3,3,2",
+      "hits": [
+        "f+2",
+        "1",
+        "2",
+        "3",
+        "3",
+        "2"
+      ],
+      "t3_rows": [
+        116,
+        219,
+        226,
+        275,
+        276,
+        277
+      ]
+    },
+    {
+      "input": "f+2,1,2,3,3,2,1",
+      "hits": [
+        "f+2",
+        "1",
+        "2",
+        "3",
+        "3",
+        "2",
+        "1"
+      ],
+      "t3_rows": [
+        116,
+        219,
+        226,
+        275,
+        276,
+        277,
+        278
+      ]
+    },
+    {
+      "input": "f+2,1,2,3,3,2,1,2",
+      "hits": [
+        "f+2",
+        "1",
+        "2",
+        "3",
+        "3",
+        "2",
+        "1",
+        "2"
+      ],
+      "t3_rows": [
+        116,
+        219,
+        226,
+        275,
+        276,
+        277,
+        278,
+        279
+      ]
+    },
+    {
+      "input": "f+2,1,2,3,3,2,1,2,4",
+      "hits": [
+        "f+2",
+        "1",
+        "2",
+        "3",
+        "3",
+        "2",
+        "1",
+        "2",
+        "4"
+      ],
+      "t3_rows": [
+        116,
+        219,
+        226,
+        275,
+        276,
+        277,
+        278,
+        279,
+        280
+      ]
+    }
+  ],
+  "specials": [],
+  "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",
+  "schema_version": 2,
+  "generated_full_moveset": {
+    "by": "tools/gen-movesets-t3.py",
+    "date": "2026-10-22",
+    "note": "Full T3 bank depth, real decoded motion-bank rows."
+  }
+}
