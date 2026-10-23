@@ -42,8 +42,10 @@ export const ATTIRE_VARIANTS = {
     { model: 'torch', label: 'ANNA BASE (TEKKEN BASE)' },
   ],
   'demonio': [
-    { model: 'demonio', label: 'BASE' },
+    // t133u: attire 1 = the owner's own Demonio (roster model demonio-a1);
+    // the old 'BASE' demonio.glb rendered the wrong body on select.
     { model: 'demonio-a1', label: 'ATTIRE 1' },
+    { model: 'demonio', label: 'BASE' },
     { model: 'demonio-winged', label: 'WINGED DEVIL' },
     { model: 'demonio-human', label: 'HUMAN' },
     { model: 'demonio-bloodline-ember', label: 'BLOODLINE EMBER' },
@@ -374,6 +376,8 @@ function saveMap(m) {
 /** Attires available for a roster fighter (by model, falls back to roster id). */
 export function attiresFor(fighter) {
   if (!fighter) return [];
+  // MODEL PENDING (owner 2026-10-23): no own model yet -> no attire, never another fighter's body.
+  if (fighter.modelPending || !fighter.model) return [];
   // A soul riding another fighter's body (TOU / KAI / RETSU / GYOU on 'pantera') keeps that base model:
   // the body owner's ladder (Pantera's Tripo-first reorder, 2026-10-21) is his, not the riders'
   // (game/tests/model-key-guard.test.mjs "declared-base riders stay on their declared base").
@@ -382,7 +386,7 @@ export function attiresFor(fighter) {
   // Material gate: attires whose model failed the material audit are never offered.
   if (list && list.length) return list.filter(a => isModelUsable(a.model));
   // Default: single attire = the fighter's own model
-  return [{ model: fighter.model || 'pantera', label: 'ATTIRE 1' }].filter(a => isModelUsable(a.model));
+  return [{ model: fighter.model, label: 'ATTIRE 1' }].filter(a => isModelUsable(a.model));
 }
 
 /** The persisted attire model id for this fighter (or their base). */

@@ -1,6 +1,6 @@
 {
- "$schema": "wh.anatomy-layers/1",
- "schema_version": "wh.anatomy-layers/1",
+ "$schema": "wh.anatomy-layers/2",
+ "schema_version": "wh.anatomy-layers/2",
  "fighter": "pantera",
  "generated": "2026-10-23",
  "generator": "tools/anatomy/generate_layers.py",
@@ -902,6 +902,166 @@
     }
    ]
   },
+  "organ": {
+   "groups": [
+    {
+     "id": "heart",
+     "label": "Heart",
+     "side": "L",
+     "primitives": [
+      {
+       "kind": "ellipsoid",
+       "center": [
+        -0.0412,
+        1.2918,
+        -0.0137
+       ],
+       "radii": [
+        0.0459,
+        0.0592,
+        0.049
+       ]
+      }
+     ],
+     "bulk_param": "organ_heart",
+     "base_radius": 0.0514
+    },
+    {
+     "id": "lung.L",
+     "label": "Lung",
+     "side": "L",
+     "primitives": [
+      {
+       "kind": "ellipsoid",
+       "center": [
+        -0.055,
+        1.3564,
+        0.0
+       ],
+       "radii": [
+        0.0454,
+        0.0797,
+        0.0577
+       ]
+      }
+     ],
+     "bulk_param": "organ_lung_L",
+     "base_radius": 0.061
+    },
+    {
+     "id": "lung.R",
+     "label": "Lung",
+     "side": "R",
+     "primitives": [
+      {
+       "kind": "ellipsoid",
+       "center": [
+        0.055,
+        1.3564,
+        0.0
+       ],
+       "radii": [
+        0.0454,
+        0.0797,
+        0.0577
+       ]
+      }
+     ],
+     "bulk_param": "organ_lung_R",
+     "base_radius": 0.061
+    },
+    {
+     "id": "liver",
+     "label": "Liver",
+     "side": "R",
+     "primitives": [
+      {
+       "kind": "ellipsoid",
+       "center": [
+        0.0412,
+        1.182,
+        -0.011
+       ],
+       "radii": [
+        0.0577,
+        0.0467,
+        0.055
+       ]
+      }
+     ],
+     "bulk_param": "organ_liver",
+     "base_radius": 0.0532
+    },
+    {
+     "id": "stomach",
+     "label": "Stomach",
+     "side": "L",
+     "primitives": [
+      {
+       "kind": "ellipsoid",
+       "center": [
+        -0.0302,
+        1.2354,
+        -0.0192
+       ],
+       "radii": [
+        0.0385,
+        0.0357,
+        0.0357
+       ]
+      }
+     ],
+     "bulk_param": "organ_stomach",
+     "base_radius": 0.0367
+    },
+    {
+     "id": "intestines.1",
+     "label": "Intestines",
+     "side": "C",
+     "primitives": [
+      {
+       "kind": "capsule",
+       "a": [
+        0.0,
+        0.979,
+        -0.0137
+       ],
+       "b": [
+        0.0,
+        1.0677,
+        -0.0137
+       ],
+       "r": 0.0412
+      }
+     ],
+     "bulk_param": "organ_intestines_1",
+     "base_radius": 0.0412
+    },
+    {
+     "id": "intestines.2",
+     "label": "Intestines",
+     "side": "C",
+     "primitives": [
+      {
+       "kind": "capsule",
+       "a": [
+        -0.044,
+        1.0577,
+        -0.011
+       ],
+       "b": [
+        0.044,
+        1.0377,
+        -0.011
+       ],
+       "r": 0.033
+      }
+     ],
+     "bulk_param": "organ_intestines_2",
+     "base_radius": 0.033
+    }
+   ]
+  },
   "fat": {
    "baseline_global": 0.0102,
    "regions": {
@@ -1510,6 +1670,111 @@
     "bone_spine"
    ],
    "suite_dial": "body.bone_scale_spine"
+  },
+  {
+   "id": "organ_heart",
+   "layer": "organ",
+   "label": "Organ: Heart (L)",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "organ radii *= 1 + 0.25*v",
+   "applies_to": [
+    "heart"
+   ],
+   "suite_dial": "body.organ_heart"
+  },
+  {
+   "id": "organ_lung_L",
+   "layer": "organ",
+   "label": "Organ: Lung (L)",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "organ radii *= 1 + 0.25*v",
+   "applies_to": [
+    "lung.L"
+   ],
+   "suite_dial": "body.organ_lung_L"
+  },
+  {
+   "id": "organ_lung_R",
+   "layer": "organ",
+   "label": "Organ: Lung (R)",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "organ radii *= 1 + 0.25*v",
+   "applies_to": [
+    "lung.R"
+   ],
+   "suite_dial": "body.organ_lung_R"
+  },
+  {
+   "id": "organ_liver",
+   "layer": "organ",
+   "label": "Organ: Liver (R)",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "organ radii *= 1 + 0.25*v",
+   "applies_to": [
+    "liver"
+   ],
+   "suite_dial": "body.organ_liver"
+  },
+  {
+   "id": "organ_stomach",
+   "layer": "organ",
+   "label": "Organ: Stomach (L)",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "organ radii *= 1 + 0.25*v",
+   "applies_to": [
+    "stomach"
+   ],
+   "suite_dial": "body.organ_stomach"
+  },
+  {
+   "id": "organ_intestines_1",
+   "layer": "organ",
+   "label": "Organ: Intestines",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "organ radii *= 1 + 0.25*v",
+   "applies_to": [
+    "intestines.1"
+   ],
+   "suite_dial": "body.organ_intestines_1"
+  },
+  {
+   "id": "organ_intestines_2",
+   "layer": "organ",
+   "label": "Organ: Intestines",
+   "range": [
+    -1,
+    1
+   ],
+   "default": 0.0,
+   "effect": "organ radii *= 1 + 0.25*v",
+   "applies_to": [
+    "intestines.2"
+   ],
+   "suite_dial": "body.organ_intestines_2"
   }
  ]
 }
