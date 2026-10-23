@@ -338,7 +338,7 @@ export const ATTIRE_VARIANTS = {
   ],
   'dio': [
     { model: 'dio', label: 'ATTIRE 1' },
-    { model: 'dio-attire1', label: 'ATTIRE 2 · JADE GOD (UNRIGGED)' },
+    { model: 'dio-attire1', label: 'ATTIRE 2 · JADE GOD' },
   ],
   'negativo': [
     { model: 'n3g4tiv0', label: 'ATTIRE 1' },
