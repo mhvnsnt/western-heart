@@ -37,15 +37,48 @@ ok(normPrim({ kind: 'capsule', a: [0, 0, 0], b: [0, 1, 0] }) === null, 'normPrim
 ok(normPrim({ kind: 'box' }) === null, 'normPrim rejects unknown kind');
 ok(normPrim(null) === null, 'normPrim rejects null');
 
-// ================= 2. parseAnatomyLayers on the real Pantera JSON =================
-const panteraJson = JSON.parse(readFileSync(join(here, '..', 'roster', 'pantera', 'anatomy', 'anatomy-layers.json'), 'utf8'));
-const parsed = parseAnatomyLayers(panteraJson);
-ok(parsed && parsed.bone.length === 12, `parseAnatomyLayers bone count (got ${parsed && parsed.bone.length})`);
-ok(parsed && parsed.muscle.length === 25, `parseAnatomyLayers muscle prim count (got ${parsed && parsed.muscle.length})`);
+// ================= 2. parseAnatomyLayers =================
+// Inline fixture mirroring the real schema (wh.anatomy-layers/1).
+// CI's sparse checkout does not include roster/, so the test must not
+// depend on it: when the real file IS present we validate against it
+// too, otherwise the fixture carries the test.
+const fixture = {
+  $schema: 'wh.anatomy-layers/1',
+  fighter: 'pantera',
+  units: 'meters',
+  layers: {
+    bone: { primitives: [
+      { id: 'bone_skull', kind: 'ellipsoid', center: [0, 1.7, 0.01], radii: [0.075, 0.095, 0.085], joint: 'head' },
+      { id: 'bone_thigh.L', kind: 'capsule', a: [-0.275, 0.893, 0], b: [-0.275, 0.5, 0], r: 0.035, joint: 'thigh.L' },
+    ]},
+    muscle: { groups: [
+      { id: 'trapezius', label: 'Trapezius', side: 'C', bulk_param: 'muscle_trapezius', base_radius: 0.0516,
+        primitives: [{ kind: 'ellipsoid', center: [0, 1.5064, 0], radii: [0.0747, 0.038, 0.042] }] },
+      { id: 'biceps.L', label: 'Biceps', side: 'L', bulk_param: 'muscle_biceps_L', base_radius: 0.052,
+        primitives: [{ kind: 'capsule', a: [-0.31, 1.42, -0.02], b: [-0.44, 1.42, -0.02], r: 0.052 }] },
+    ]},
+    fat: { baseline_global: 0.01, regions: { torso: { thickness: 0.012 } } },
+    skin: { mesh_ref: 'roster/pantera/pantera_rigged.glb#mesh0' },
+  },
+};
+let parsed = parseAnatomyLayers(fixture);
+ok(parsed && parsed.bone.length === 2, `parseAnatomyLayers bone count (got ${parsed && parsed.bone.length})`);
+ok(parsed && parsed.muscle.length === 2, `parseAnatomyLayers muscle prim count (got ${parsed && parsed.muscle.length})`);
 ok(parsed && parsed.muscle[0].group === 'trapezius', 'parseAnatomyLayers keeps muscle group id');
 ok(parsed && Array.isArray(parsed.organ) && parsed.organ.length === 0, 'parseAnatomyLayers organ slot empty today');
 ok(parseAnatomyLayers(null) === null, 'parseAnatomyLayers rejects null');
 ok(parseAnatomyLayers({ layers: {} }) === null, 'parseAnatomyLayers rejects empty layers');
+// Real data check (dev machines / full checkouts only — never fails CI).
+try {
+  const realJson = JSON.parse(readFileSync(
+    join(here, '..', 'roster', 'pantera', 'anatomy', 'anatomy-layers.json'), 'utf8'));
+  const real = parseAnatomyLayers(realJson);
+  ok(real && real.bone.length === 12, `real Pantera JSON: 12 bone primitives (got ${real && real.bone.length})`);
+  ok(real && real.muscle.length === 25, `real Pantera JSON: 25 muscle primitives (got ${real && real.muscle.length})`);
+  parsed = real; // drive the timeline test with real data when available
+} catch (e) {
+  console.log('(info) roster/pantera/anatomy/anatomy-layers.json not present — using fixture');
+}
 // synthetic organ layer (the layer that lands separately)
 const withOrgan = parseAnatomyLayers({
   layers: { organ: { primitives: [{ kind: 'sphere', center: [0, 1.2, 0], r: 0.08 }] } },
@@ -166,17 +199,23 @@ function mockDefenderSkinned() {
 const game = { arena: { camera: mockCamera() } };
 x = new XraySystem(game, Tstub);
 x._cache['pantera'] = parsed; // seeded as if prefetch landed
-const fired = x.onHitKO(mockAttacker('R.1+2'), mockDefenderSkinned(), hb);
+// impact point = first bone primitive's center (works for fixture and real data)
+const _b0 = parsed.bone[0];
+const _bc = _b0.kind === 'capsule'
+  ? [(_b0.a[0] + _b0.b[0]) / 2, (_b0.a[1] + _b0.b[1]) / 2, (_b0.a[2] + _b0.b[2]) / 2]
+  : _b0.center.slice(0, 3);
+const hbBone = { x: _bc[0], y: _bc[1], z: _bc[2] };
+const fired = x.onHitKO(mockAttacker('R.1+2'), mockDefenderSkinned(), hbBone);
 ok(fired && x.active, 'sequence starts with THREE stub');
-ok(x._P && x._P.muscle.length === 25, `muscle proxies built (${x._P && x._P.muscle.length})`);
-ok(x._P && x._P.bone.length === 12, `bone proxies built (${x._P && x._P.bone.length})`);
+ok(x._P && x._P.muscle.length === parsed.muscle.length, `muscle proxies built (${x._P && x._P.muscle.length})`);
+ok(x._P && x._P.bone.length === parsed.bone.length, `bone proxies built (${x._P && x._P.bone.length})`);
 ok(x._P && x._P.flash.length > 0, `bone flash proxies flagged near impact (${x._P && x._P.flash.length})`);
 ok(x.phase === 'zoom', 'phase zoom at t=0');
 
 // dent applied: muscle proxies near impact are offset along +x (dirX=1)
 const nearImpact = x._P.muscle.filter((m) => {
   const c = [m.position.x, m.position.y, m.position.z];
-  const dx = c[0] - hb.x, dy = c[1] - hb.y, dz = c[2] - hb.z;
+  const dx = c[0] - hbBone.x, dy = c[1] - hbBone.y, dz = c[2] - hbBone.z;
   return Math.sqrt(dx * dx + dy * dy + dz * dz) < 0.6;
 });
 ok(nearImpact.length > 0 && nearImpact.every((m) => m.position.x >= 0 || true), 'dent pass ran (no crash)');
