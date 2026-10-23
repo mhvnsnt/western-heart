@@ -4693,6 +4693,27 @@
       "move_class": "special",
       "t3_condition": 2,
       "t3_restriction": 2
+    },
+    "d/f+1+2,1_c2,mash": {
+      "name": "BUFFALO BILL d/f+1+2,1_c2,mash (T3 law r441)",
+      "input": "d/f+1+2,1_c2,mash",
+      "t3_source": "law",
+      "t3_row": 441,
+      "t3_command": "[5+LP 5 5+RP 5 5+LP+RP](40f)",
+      "startup": 0.167,
+      "active": 0.017,
+      "recovery": 1.75,
+      "damage": 21,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 2.2,
+      "soulGain": 8,
+      "anim_ref": "t3:law:row:441",
+      "input_slots": [
+        "d/f+1+2,1"
+      ],
+      "move_class": "special",
+      "added": "2026-10-23 law pull: mash follow-up to d/f+1+2,1_c2 (row 439); decoded input [5+LP 5 5+RP 5 5+LP+RP](40f), the only input-reachable Law row the bank BFS missed (generator skips neutral-mash commands)"
     }
   },
   "strings": [
@@ -5363,9 +5384,10 @@
   "generated_full_moveset": {
     "by": "tools/gen-movesets-t3.py",
     "date": "2026-10-23",
-    "note": "Full T3 Marshall Law bank depth (divmot01_law.bin), real decoded motion-bank rows. Signatures named from canonical T3 Law inputs; all inputs decoded from branch data, none invented. Bank: 459 rows, 228 canonical attack inputs found."
+    "note": "Full T3 Marshall Law bank depth (divmot01_law.bin), real decoded motion-bank rows. Signatures named from canonical T3 Law inputs; all inputs decoded from branch data, none invented. Bank: 459 rows, 228 canonical attack inputs found.",
+    "law_pull_2026_10_23": "Added T3 law r441 (mash follow-up, +1 move: 228 -> 229). Full-bank audit: 43 damaging rows unreached by the input BFS; 1 (r57) duplicates a covered motion; 41 have unique motions but no decodable input path (no invention per no-guessing law); 27 forest-exclusive rows are Forest Law's alternate basics (different character), not added."
   },
   "t3_bank": "moveset_law.json",
   "t3_bank_rows": 459,
-  "t3_bank_attack_rows": 228
+  "t3_bank_attack_rows": 229
 }

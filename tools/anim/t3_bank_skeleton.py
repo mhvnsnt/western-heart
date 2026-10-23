@@ -45,6 +45,9 @@ BANKS = {
     "bosconovitch": "lab/game/assets/t3_bosconovitch_t3real.glb",
     "heihachi": "lab/game/assets/t3_heihachi_t3real.glb",
     "armorking": "lab/game/assets/t3_armorking_t3real.glb",
+    # Law bank (2026-10-23, law pull for Buffalo Bill): divmot01_law.bin baked
+    # onto Law's own T3 18-part rig (lab/tools/t3_motion_bake.py --bank law).
+    "law": "lab/game/assets/t3_law_t3real.glb",
 }
 # ---------------------------------------------------------------------------
 # NEUTRAL_BIND (2026-10-22, star segment-flip fix): the T3 18-part import

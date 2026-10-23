@@ -46,6 +46,13 @@ for _n, _k, _b in (("jin", "jin151/jin.kmd", "divmot09_jin.bin"), ("xiaoyu", "xi
 for _n in ("paul", "lei", "nina", "hwoarang", "eddy", "julia", "anna", "bosconovitch"):
     BANKS[_n] = (f"models/{_n}/{_n}.kmd", f"animations/divmot{_DIVMOT[_n]}.bin", f"renders/pose-check/{_n}_stance75.obj")
 BANKS["armorking"] = ("models/king95/king95.kmd", "animations/divmot03_king.bin", "renders/pose-check/king_stance75.obj")
+# Law (2026-10-23, Buffalo Bill pull): KMD extracted from the owner's disc
+# (teardown/tekken3/models/law79/law4.kmd, sha256 c47b991a...; stance OBJ
+# renders/pose-check/law_body_stance75.obj). Facing verified: the knee-
+# direction heuristic and the legacy head-centroid heuristic agree on Law
+# (both pick -f0), so bakes are identical under either facing build.
+BANKS["law"] = ("models/law79/law4.kmd", "animations/divmot01_law.bin",
+                "renders/pose-check/law_body_stance75.obj")
 
 def parse_obj_text(txt):
     parts, cur = {}, None

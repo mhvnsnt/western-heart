@@ -35,12 +35,16 @@ SRC2BANK = {"king": "king", "demonio": "jin", "jin": "jin", "bryan": "bryan", "x
             # made the same fix in PR #405).
             "paul": "paul", "lei": "lei", "nina": "nina", "hwoarang": "hwoarang",
             "eddy": "eddy", "julia": "julia", "anna": "anna",
-            "bosconovitch": "bosconovitch", "armorking": "armorking"}
+            "bosconovitch": "bosconovitch", "armorking": "armorking",
+            # Law (2026-10-23, Buffalo Bill pull): own divmot01_law.bin bank.
+            "law": "law"}
 BANK_DIR = {"king": "king_on_pantera_leoman", "jin": "jin", "xiaoyu": "xiaoyu", "bryan": "bryan",
             "gunjack": "gunjack", "yoshimitsu": "yoshimitsu", "heihachi": "heihachi_on_jin",
             "paul": "paul", "lei": "lei", "nina": "nina", "hwoarang": "hwoarang",
             "eddy": "eddy", "julia": "julia", "anna": "anna",
-            "bosconovitch": "bosconovitch", "armorking": "armorking"}
+            "bosconovitch": "bosconovitch", "armorking": "armorking",
+            # Law (2026-10-23): bank dir == 'law' (game/assets/anim/t3/law/).
+            "law": "law"}
 TARGET_GLB = {"king": "lab/game/assets/pantera_leoman.glb", "jin": "lab/game/assets/t3_jin.glb",
               "xiaoyu": "lab/game/assets/t3_xiaoyu.glb", "bryan": "lab/game/assets/t3_bryan.glb",
               "gunjack": "lab/game/assets/t3_gunjack.glb", "yoshimitsu": "lab/game/assets/t3_yoshimitsu.glb",
@@ -48,7 +52,9 @@ TARGET_GLB = {"king": "lab/game/assets/pantera_leoman.glb", "jin": "lab/game/ass
               "nina": "lab/game/assets/t3_nina.glb", "hwoarang": "lab/game/assets/t3_hwoarang.glb",
               "eddy": "lab/game/assets/t3_eddy.glb", "julia": "lab/game/assets/t3_julia.glb",
               "anna": "lab/game/assets/t3_anna.glb", "bosconovitch": "lab/game/assets/t3_bosconovitch.glb",
-              "armorking": "lab/game/assets/t3_armorking.glb"}
+              "armorking": "lab/game/assets/t3_armorking.glb",
+              # Law (2026-10-23): bake onto the committed t3real GLB (own rig).
+              "law": "lab/game/assets/t3_law_t3real.glb"}
 # Optional override (2026-10-21): when the SHA-verified bodies from tools/anim/t3_extract_bodies.py are present
 # locally, bake onto lab/game/assets/t3_<bank>_t3real.glb — the rig each bank's runtime skeleton.json was built
 # from. Same 18-joint hierarchy as the plain t3_<bank>.glb rigs above (checked), so either rig's rows retarget alike. Body (KMD + slot-0 frame-75 stance) = the character's

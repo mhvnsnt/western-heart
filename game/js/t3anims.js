@@ -95,6 +95,10 @@ export const T3_BANKS = {
   bosconovitch: 'assets/anim/t3/bosconovitch/',
   heihachi_ownrig: 'assets/anim/t3/heihachi/',
   armorking:    'assets/anim/t3/armorking/',
+  // Law (2026-10-23, Buffalo Bill pull): divmot01_law.bin baked onto Law's
+  // own T3 18-part rig (lab/tools/t3_motion_bake.py --bank law). Buffalo
+  // Bill's moveset source is 'law', so bankIdFor resolves him here.
+  law:          'assets/anim/t3/law/',
   // Heihachi's OWN divmot13 motion stream, posed on Jin's T3 skeleton:
   // heihachi191's KMD has no hip/shoulder vertex data, so his body can't
   // be fitted (docs/anim/PROCEDURAL_AUDIT.md). tools/anim/t3_row_bake.py
@@ -117,6 +121,8 @@ export const SOURCE_TO_BANK = {
   eddy: 'eddy', julia: 'julia', anna: 'anna',
   bosconovitch: 'bosconovitch', heihachi: 'heihachi',
   armorking: 'armorking', 'armor-king': 'armorking',
+  // Law (2026-10-23, Buffalo Bill pull): Buffalo Bill's t3_source is 'law'.
+  law: 'law',
 };
 
 /**
