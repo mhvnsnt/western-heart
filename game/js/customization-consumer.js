@@ -179,6 +179,17 @@ function profileBelongsTo(record, fighter) {
   return !!nm && nm === (fighter.char.name || '').toUpperCase();
 }
 
+let _profileIndex;
+function profileIndex() {
+  if (!_profileIndex) {
+    _profileIndex = fetch(new URL('customization/profiles/index.json', ROOT))
+      .then(r => (r.ok ? r.json() : null))
+      .then(j => (j && Array.isArray(j.profiles) ? new Set(j.profiles) : null))
+      .catch(() => null); // no index: fall back to the old per-id fetch
+  }
+  return _profileIndex;
+}
+
 async function findProfile(fighter) {
   try {
     const raw = localStorage.getItem(LS_KEY_SUITE);
@@ -188,6 +199,10 @@ async function findProfile(fighter) {
     }
   } catch (e) { /* storage unavailable — fall through to the repo profile */ }
   try {
+    // Only request ids listed in customization/profiles/index.json, so
+    // fighters with no repo profile (phantom, ...) don't produce 404s.
+    const ids = await profileIndex();
+    if (ids && !ids.has(fighter.char.id)) return null;
     const res = await fetch(new URL(`customization/profiles/${fighter.char.id}.json`, ROOT));
     if (res.ok) {
       const rec = await res.json();
