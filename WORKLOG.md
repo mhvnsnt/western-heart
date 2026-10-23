@@ -2151,3 +2151,21 @@ On-main files NOT touched: worker 37's `js/creation-flow.js` + `js/art.js`
   "Cannot set properties of null (setting 'textContent')" (seen in the fight harness on main 1202f9bd2).
 - Follow-ups: Frankenstein A4 base pedestal fused to the boots; Wowomomo tabard stretch; sam-ur-a1 + thor fail the
   smoothing gate; waterfall re-run queued with the fix.
+- **mon/msk identified:** `mon` = Eileen, `msk` = El Blaze (release READMEs; msk render-verified as luchador). **El Blaze DOES have farcs** — the "NO farc/DLC" note was wrong; Pablo → El Blaze is NOT blocked.
+- **New tools:** `tools/vf5/farc_extract.py` (FArC container), `tools/vf5/vf5extract.py` (obj.bin → OBJ: chunk headers, LE f32 positions, u16 strip indices), `tools/vf5/README.md`.
+- **4 locked movesets** (schema-v2, VF→Tekken inputs): `game/assets/movesets/vf-jeffry.json` (25, Bannon), `vf-wolf.json` (21, El Toro de Oro), `vf-leifei.json` (22, NPC Finxsse), `vf-elblaze.json` (28, Pablo).
+- **Research:** `docs/research/VF5-FULL-INTEGRATION-2026-10-22.md`; decision log `docs/decisions/2026-10-22-vf5-integration.md`.
+- **Renders:** 18 T-pose PNGs batch-rendering (Blender 4.5.3); uploaded to remote storage as they complete for user review. **Dural flagged as Zen's approved base-mix layer.**
+- **Gaps:** Motion clips not in release (likely in 3.7GB vf5-500m ROM, not pulled); 38 stg*.farc stages deferred to arena pipeline.
+- Merged via git_merge.py as 7f38022d (additions only; CI: instruction-gate, clobber-guard, deletion-guard, guard all green).
+
+## 2026-10-22 — Moveset Library System (worker 47)
+
+Built the central moveset library + per-fighter assembly system (owner standing directive):
+- `game/data/moveset-library/`: 9,516 moves across 6 banks (T3 4,648 · No Mercy 4,409 · WMXIX 169 · DOA 146 · VF 48 · VF5 96) + 8 pending banks registered; `schema.json`, `axes.json`, `claimed-map.json` (source law), `index.json`. Reproducible ingest: `tools/moveset-library/ingest.mjs`.
+- `game/js/moveset-library.js`: `assembleFighter()` → v2-contract movesets; source-law gate in code; no pending banks.
+- `game/data/movesets/`: pre-assembled bannon (28) / el-toro (23) / pablo (36 — locked flavor: powerhouse + comedy-whiff lucha attempts + Black Reign Ride / Abyss Choke dark thread) / npc-finxsse (23). VF5 bases live from vf-{elblaze,jeffry,wolf,leifei}.json federation conversions (another lane, reused read-only).
+- `game/moveset-browser.html`: browse by axis, inspect, attach/detach, save. Fully working dev page.
+- Docs: `docs/research/moveset-library-schema.md`, `docs/decisions/2026-10-22-moveset-library.md`, `docs/handoffs/moveset-library-vf5-format.md` (worker-45 contract, read-only).
+- Proof: node --check clean; ingest 0 violations; assembler CLI verified (pablo 36 / bannon 28 / el-toro 23 / npc-finxsse 23, law-clean, 0 unresolved); claimed pull refused / free pull allowed.
+- Note: #678 merged then was dropped from main by #679's merge tree; restored via this PR (see decisions log).
