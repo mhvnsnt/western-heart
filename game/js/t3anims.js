@@ -66,6 +66,7 @@ const T3_BONES = ['Root','Hips','Spine','Chest','Neck','Head',
 // 2026-10-19): the game is served at the site root, so the previous
 // '../assets/anim/...' base resolved ABOVE the game and 404'd every
 // clip in production — the banks must live under game/assets/anim/.
+import { checkClip, CTX } from './anim-gate.js';
 export const T3_BANKS = {
   king:       'assets/anim/t3/king_on_pantera_leoman/',
   jin:        'assets/anim/t3/jin/',
@@ -100,6 +101,15 @@ export const T3_BANKS = {
   // be fitted (docs/anim/PROCEDURAL_AUDIT.md). tools/anim/t3_row_bake.py
   // --bank heihachi --kmd-from jin. Real Heihachi motion, Jin proportions.
   heihachi:   'assets/anim/t3/heihachi_on_jin/',
+  // Last decoded banks (2026-10-23, tools/anim/t3_bake_bank.py): own divmot motion on each character's
+  // own body. ogre = divmot14 (Ogre / True Ogre), kuma = divmot11 (Kuma; Panda shares it in T3),
+  // gon = divmot19, law = divmot01 (Marshall Law).
+  ogre:       'assets/anim/t3/ogre/',
+  kuma:       'assets/anim/t3/kuma/',
+  gon:        'assets/anim/t3/gon/',
+  law:        'assets/anim/t3/law/',
+  // Forest Law's own divmot20 motion posed on Law's body (his KMDs do not fit; heihachi_on_jin pattern).
+  forestlaw:  'assets/anim/t3/forestlaw_on_law/',
 };
 
 // Moveset source name -> bank key. 'demonio' is the game's rename of Jin
@@ -117,6 +127,7 @@ export const SOURCE_TO_BANK = {
   eddy: 'eddy', julia: 'julia', anna: 'anna',
   bosconovitch: 'bosconovitch', heihachi: 'heihachi',
   armorking: 'armorking', 'armor-king': 'armorking',
+  ogre: 'ogre', kuma: 'kuma', panda: 'kuma', gon: 'gon', law: 'law', forestlaw: 'forestlaw',
 };
 
 /**
@@ -511,6 +522,8 @@ export function createT3Actions(mixer, t3Clips, THREE) {
   // for raw identity-rest clips; nothing in the game passes those any more.
   const actions = {};
   for (const [name, clip] of Object.entries(t3Clips)) {
+    // ANIMATION GATE (owner t117u): fighter actions are FIGHT context; show clips never become actions.
+    if (!checkClip(name, clip, CTX.FIGHT).ok) continue;
     try {
       const action = mixer.clipAction(clip);
       const loop = clip.userData.loop;

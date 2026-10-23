@@ -11,7 +11,8 @@
   "stances": [
     "ROS (Rocket Stance, b+1+2)",
     "BOB (Bobbin Dance, b+3+4)",
-    "HRN (Heron's Patience, b+1+3 — canon)"
+    "HRN (Heron's Patience, b+1+3 — canon)",
+    "HBS (Hunting Bear Stance, u+1+2 — hold)"
   ],
   "combos": [
     {
@@ -1629,6 +1630,1241 @@
       "canon_layer": true,
       "counter": true,
       "lowcrush": true
+    },
+    "1+2": {
+      "name": "Double Paw Slam",
+      "input": "1+2",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "strike",
+      "damage": 17,
+      "hit_range": "mid",
+      "startup": 0.283,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "note": "Pulled from the Tekken 7 frame-data bank: 17 [20] dmg, i17, -11 on block."
+    },
+    "1+2,1+2": {
+      "name": "Double Paw Echo",
+      "input": "1+2,1+2",
+      "input_slots": [
+        "1+2,1+2"
+      ],
+      "move_class": "strike",
+      "damage": 33,
+      "hit_range": "mid",
+      "startup": 0.283,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.0,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "string": [
+        "1+2",
+        "1+2,1+2"
+      ],
+      "note": "Pulled from the Tekken 7 frame-data bank: 17 [20], 16 dmg, i17, -18 on block."
+    },
+    "1+2,1+2,1+2": {
+      "name": "Triple Paw Slam",
+      "input": "1+2,1+2,1+2",
+      "input_slots": [
+        "1+2,1+2,1+2"
+      ],
+      "move_class": "strike",
+      "damage": 51,
+      "hit_range": "mid",
+      "startup": 0.283,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 3.5,
+      "soulGain": 8,
+      "tekken_base": "Kuma (Tekken 7)",
+      "string": [
+        "1+2",
+        "1+2,1+2",
+        "1+2,1+2,1+2"
+      ],
+      "note": "Pulled from the Tekken 7 frame-data bank: 17 [20], 16, 18 dmg, i17, -22 on block."
+    },
+    "f+1": {
+      "name": "Spirit Claw Jab",
+      "input": "f+1",
+      "input_slots": [
+        "f+1"
+      ],
+      "move_class": "strike",
+      "damage": 7,
+      "hit_range": "high",
+      "startup": 0.167,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "note": "Pulled from the Tekken 7 frame-data bank: 7 [8] dmg, i10, +1 on block."
+    },
+    "f+1,1": {
+      "name": "Claw Flurry",
+      "input": "f+1,1",
+      "input_slots": [
+        "f+1,1"
+      ],
+      "move_class": "strike",
+      "damage": 15,
+      "hit_range": "mixed",
+      "startup": 0.167,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "string": [
+        "f+1",
+        "f+1,1"
+      ],
+      "note": "Pulled from the Tekken 7 frame-data bank: 7 [8], 8 dmg, i10, -15 on block."
+    },
+    "f+2": {
+      "name": "Raking Swipe",
+      "input": "f+2",
+      "input_slots": [
+        "f+2"
+      ],
+      "move_class": "strike",
+      "damage": 11,
+      "hit_range": "high",
+      "startup": 0.217,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "note": "Pulled from the Tekken 7 frame-data bank: 11 [13] dmg, i13, -13 on block."
+    },
+    "f+2,1": {
+      "name": "Rake and Gnaw",
+      "input": "f+2,1",
+      "input_slots": [
+        "f+2,1"
+      ],
+      "move_class": "strike",
+      "damage": 31,
+      "hit_range": "high",
+      "startup": 0.217,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 3.5,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "string": [
+        "f+2",
+        "f+2,1"
+      ],
+      "note": "Pulled from the Tekken 7 frame-data bank: 11 [13], 20 dmg, i13, -5 on block."
+    },
+    "f+1+2": {
+      "name": "Savage Mauling",
+      "input": "f+1+2",
+      "input_slots": [
+        "f+1+2"
+      ],
+      "move_class": "strike",
+      "damage": 25,
+      "hit_range": "mid",
+      "startup": 0.283,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.0,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "note": "Pulled from the Tekken 7 frame-data bank: 25 [30] dmg, i17, -12 on block."
+    },
+    "2,1,2": {
+      "name": "Pack Hunt Cross",
+      "input": "2,1,2",
+      "input_slots": [
+        "2,1,2"
+      ],
+      "move_class": "strike",
+      "damage": 43,
+      "hit_range": "mixed",
+      "startup": 0.167,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.0,
+      "soulGain": 8,
+      "tekken_base": "Kuma (Tekken 7)",
+      "string": [
+        "2",
+        "2,1",
+        "2,1,2"
+      ],
+      "note": "Pulled from the Tekken 7 frame-data bank: 10 [12], 11, 22 dmg, i10, -14 on block."
+    },
+    "2,1,3": {
+      "name": "Pack Hunt Sweep",
+      "input": "2,1,3",
+      "input_slots": [
+        "2,1,3"
+      ],
+      "move_class": "strike",
+      "damage": 34,
+      "hit_range": "mixed",
+      "startup": 0.167,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "string": [
+        "2",
+        "2,1",
+        "2,1,3"
+      ],
+      "note": "Pulled from the Tekken 7 frame-data bank: 10 [12], 11, 13 dmg, i10, -13 on block."
+    },
+    "3": {
+      "name": "Heavy Paw",
+      "input": "3",
+      "input_slots": [
+        "3"
+      ],
+      "move_class": "strike",
+      "damage": 25,
+      "hit_range": "high",
+      "startup": 0.3,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.5,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "note": "Pulled from the Tekken 7 frame-data bank: 25 [30] dmg, i18, -5 on block."
+    },
+    "4": {
+      "name": "Backhand Claw",
+      "input": "4",
+      "input_slots": [
+        "4"
+      ],
+      "move_class": "strike",
+      "damage": 20,
+      "hit_range": "high",
+      "startup": 0.233,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "note": "Pulled from the Tekken 7 frame-data bank: 20 [24] dmg, i14, -6 on block."
+    },
+    "b+2": {
+      "name": "Retreating Swipe",
+      "input": "b+2",
+      "input_slots": [
+        "b+2"
+      ],
+      "move_class": "strike",
+      "damage": 12,
+      "hit_range": "mid",
+      "startup": 0.25,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "note": "Pulled from the Tekken 7 frame-data bank: 12 [14] dmg, i15, -9 on block."
+    },
+    "b+2,1": {
+      "name": "Swipe and Snap",
+      "input": "b+2,1",
+      "input_slots": [
+        "b+2,1"
+      ],
+      "move_class": "strike",
+      "damage": 26,
+      "hit_range": "mixed",
+      "startup": 0.25,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "string": [
+        "b+2",
+        "b+2,1"
+      ],
+      "note": "Pulled from the Tekken 7 frame-data bank: 12 [14], 14 dmg, i15, -3 on block."
+    },
+    "b+2,1,1+2": {
+      "name": "Savage Combination",
+      "input": "b+2,1,1+2",
+      "input_slots": [
+        "b+2,1,1+2"
+      ],
+      "move_class": "strike",
+      "damage": 46,
+      "hit_range": "mixed",
+      "startup": 0.25,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 3.5,
+      "soulGain": 8,
+      "tekken_base": "Kuma (Tekken 7)",
+      "string": [
+        "b+2",
+        "b+2,1",
+        "b+2,1,1+2"
+      ],
+      "note": "Pulled from the Tekken 7 frame-data bank: 12 [14], 14, 20 dmg, i15, -11 on block."
+    },
+    "b+3~4": {
+      "name": "Stalker Stomp",
+      "input": "b+3~4",
+      "input_slots": [
+        "b+3~4"
+      ],
+      "move_class": "strike",
+      "damage": 25,
+      "hit_range": "mid",
+      "startup": 0.367,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.5,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "note": "Pulled from the Tekken 7 frame-data bank: 10 [12], 15 dmg, i22, -19 on block."
+    },
+    "b,f+2": {
+      "name": "Leaping Mauling",
+      "input": "b,f+2",
+      "input_slots": [
+        "b,f+2"
+      ],
+      "move_class": "strike",
+      "damage": 23,
+      "hit_range": "high",
+      "startup": 0.267,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 3.0,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "string": [
+        "b",
+        "b,f+2"
+      ],
+      "note": "Pulled from the Tekken 7 frame-data bank: 23 [27] dmg, i16, -8 on block."
+    },
+    "b,f+2+3": {
+      "name": "Burrowing Claws",
+      "input": "b,f+2+3",
+      "input_slots": [
+        "b,f+2+3"
+      ],
+      "move_class": "strike",
+      "damage": 30,
+      "hit_range": "low",
+      "startup": 0.617,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 3.5,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "string": [
+        "b",
+        "b,f+2+3"
+      ],
+      "note": "Pulled from the Tekken 7 frame-data bank: 30 [36] dmg, i37, -12 on block."
+    },
+    "b,d/b,d,d/f+2": {
+      "name": "Spiraling Pounce",
+      "input": "b,d/b,d,d/f+2",
+      "input_slots": [
+        "b,d/b,d,d/f+2"
+      ],
+      "move_class": "strike",
+      "damage": 18,
+      "hit_range": "mid",
+      "startup": 0.3,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "string": [
+        "b",
+        "b,d/b",
+        "b,d/b,d",
+        "b,d/b,d,d/f+2"
+      ],
+      "note": "Pulled from the Tekken 7 frame-data bank: 18 [21] dmg, i18, -8 on block."
+    },
+    "b,d/b,d,d/f+2,1": {
+      "name": "Pounce Fang",
+      "input": "b,d/b,d,d/f+2,1",
+      "input_slots": [
+        "b,d/b,d,d/f+2,1"
+      ],
+      "move_class": "strike",
+      "damage": 43,
+      "hit_range": "mid",
+      "startup": 0.3,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 3.5,
+      "soulGain": 8,
+      "tekken_base": "Kuma (Tekken 7)",
+      "string": [
+        "b",
+        "b,d/b",
+        "b,d/b,d",
+        "b,d/b,d,d/f+2",
+        "b,d/b,d,d/f+2,1"
+      ],
+      "note": "Pulled from the Tekken 7 frame-data bank: 18 [21], 25 dmg, i18, -14 on block."
+    },
+    "b,d/b,d,d/f+2,2": {
+      "name": "Pounce Rip",
+      "input": "b,d/b,d,d/f+2,2",
+      "input_slots": [
+        "b,d/b,d,d/f+2,2"
+      ],
+      "move_class": "strike",
+      "damage": 40,
+      "hit_range": "mixed",
+      "startup": 0.3,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.0,
+      "soulGain": 8,
+      "tekken_base": "Kuma (Tekken 7)",
+      "string": [
+        "b",
+        "b,d/b",
+        "b,d/b,d",
+        "b,d/b,d,d/f+2",
+        "b,d/b,d,d/f+2,2"
+      ],
+      "note": "Pulled from the Tekken 7 frame-data bank: 18 [21], 22 dmg, i18, -18 on block."
+    },
+    "d/f+1": {
+      "name": "Quick Scratch",
+      "input": "d/f+1",
+      "input_slots": [
+        "d/f+1"
+      ],
+      "move_class": "strike",
+      "damage": 6,
+      "hit_range": "mid",
+      "startup": 0.25,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "note": "Pulled from the Tekken 7 frame-data bank: 6 [7] dmg, i15, -9 on block."
+    },
+    "d/f+3,2": {
+      "name": "Scratch and Slam",
+      "input": "d/f+3,2",
+      "input_slots": [
+        "d/f+3,2"
+      ],
+      "move_class": "strike",
+      "damage": 37,
+      "hit_range": "mixed",
+      "startup": 0.267,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 3.5,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "string": [
+        "d/f+3",
+        "d/f+3,2"
+      ],
+      "note": "Pulled from the Tekken 7 frame-data bank: 13 [15], 24 dmg, i16, -5 on block."
+    },
+    "d/f+1,2,1": {
+      "name": "Claw Dance",
+      "input": "d/f+1,2,1",
+      "input_slots": [
+        "d/f+1,2,1"
+      ],
+      "move_class": "strike",
+      "damage": 24,
+      "hit_range": "mid",
+      "startup": 0.25,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "string": [
+        "d/f+1",
+        "d/f+1,2",
+        "d/f+1,2,1"
+      ],
+      "note": "Pulled from the Tekken 7 frame-data bank: 6 [7], 9, 9 dmg, i15, -4 on block."
+    },
+    "d/f+1,2,1,2": {
+      "name": "Claw Dance Finale",
+      "input": "d/f+1,2,1,2",
+      "input_slots": [
+        "d/f+1,2,1,2"
+      ],
+      "move_class": "strike",
+      "damage": 34,
+      "hit_range": "mid",
+      "startup": 0.25,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "string": [
+        "d/f+1",
+        "d/f+1,2",
+        "d/f+1,2,1",
+        "d/f+1,2,1,2"
+      ],
+      "note": "Pulled from the Tekken 7 frame-data bank: 6 [7], 9, 9, 10 dmg, i15, -11 on block."
+    },
+    "d+1+2": {
+      "name": "Ground Pound",
+      "input": "d+1+2",
+      "input_slots": [
+        "d+1+2"
+      ],
+      "move_class": "strike",
+      "damage": 28,
+      "hit_range": "mid",
+      "startup": 0.233,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.5,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "note": "Pulled from the Tekken 7 frame-data bank: 28 [33] dmg, i14, -15 on block."
+    },
+    "d/b+1": {
+      "name": "Rising Maul",
+      "input": "d/b+1",
+      "input_slots": [
+        "d/b+1"
+      ],
+      "move_class": "strike",
+      "damage": 14,
+      "hit_range": "high",
+      "startup": 0.2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "note": "Pulled from the Tekken 7 frame-data bank: 14 [16] dmg, i12, -7 on block."
+    },
+    "d/b+1,2": {
+      "name": "Rising Maul Pair",
+      "input": "d/b+1,2",
+      "input_slots": [
+        "d/b+1,2"
+      ],
+      "move_class": "strike",
+      "damage": 34,
+      "hit_range": "mixed",
+      "startup": 0.2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "string": [
+        "d/b+1",
+        "d/b+1,2"
+      ],
+      "note": "Pulled from the Tekken 7 frame-data bank: 14 [16], 20 dmg, i12, -13 on block."
+    },
+    "d/b+2": {
+      "name": "Paw Trip",
+      "input": "d/b+2",
+      "input_slots": [
+        "d/b+2"
+      ],
+      "move_class": "strike",
+      "damage": 14,
+      "hit_range": "low",
+      "startup": 0.3,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "note": "Pulled from the Tekken 7 frame-data bank: 14 [16] dmg, i18, -13 on block."
+    },
+    "u/f+1": {
+      "name": "Leaping Claw",
+      "input": "u/f+1",
+      "input_slots": [
+        "u/f+1"
+      ],
+      "move_class": "strike",
+      "damage": 20,
+      "hit_range": "mid",
+      "startup": 0.433,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "note": "Pulled from the Tekken 7 frame-data bank: 20 [24] dmg, i26, -6 on block."
+    },
+    "u/f+3": {
+      "name": "Rising Fang",
+      "input": "u/f+3",
+      "input_slots": [
+        "u/f+3"
+      ],
+      "move_class": "strike",
+      "damage": 13,
+      "hit_range": "mid",
+      "startup": 0.267,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 4.0,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "note": "Pulled from the Tekken 7 frame-data bank: 13 [15] dmg, i16, -13 on block."
+    },
+    "u/f+3,4": {
+      "name": "Fang and Slam",
+      "input": "u/f+3,4",
+      "input_slots": [
+        "u/f+3,4"
+      ],
+      "move_class": "strike",
+      "damage": 22,
+      "hit_range": "mid",
+      "startup": 0.267,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.5,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "string": [
+        "u/f+3",
+        "u/f+3,4"
+      ],
+      "note": "Pulled from the Tekken 7 frame-data bank: 13 [15], 9 dmg, i16, -11 on block."
+    },
+    "u+1+2": {
+      "name": "Sky Drop Mauling",
+      "input": "u+1+2",
+      "input_slots": [
+        "u+1+2"
+      ],
+      "move_class": "strike",
+      "damage": 25,
+      "hit_range": "low",
+      "startup": 0.517,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.5,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "note": "Pulled from the Tekken 7 frame-data bank: 25 [30] dmg, i31, -17 on block. Menajerii crashes down into Hunting Bear Stance (HBS) on landing — hold to stay in it."
+    },
+    "SS 1+2": {
+      "name": "Sidestep Maul",
+      "input": "SS 1+2",
+      "input_slots": [
+        "SS 1+2"
+      ],
+      "move_class": "strike",
+      "damage": 23,
+      "hit_range": "mid",
+      "startup": 0.367,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.5,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "note": "Pulled from the Tekken 7 frame-data bank: 23 [27] dmg, i22, -9 on block."
+    },
+    "WR 3": {
+      "name": "Charging Maul",
+      "input": "WR 3",
+      "input_slots": [
+        "WR 3"
+      ],
+      "move_class": "strike",
+      "damage": 30,
+      "hit_range": "mid",
+      "startup": 0.367,
+      "limb": "legL",
+      "heavy": true,
+      "knock": 3.5,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "note": "Pulled from the Tekken 7 frame-data bank: 30 [36] dmg, i22, +9 on block."
+    },
+    "WR 1+2": {
+      "name": "Rushing Tackle",
+      "input": "WR 1+2",
+      "input_slots": [
+        "WR 1+2"
+      ],
+      "move_class": "strike",
+      "damage": 30,
+      "hit_range": "mid",
+      "startup": 0.333,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 3.5,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "note": "Pulled from the Tekken 7 frame-data bank: 30 [36] dmg, i20, +2 on block."
+    },
+    "WR 4": {
+      "name": "Charging Low Bite",
+      "input": "WR 4",
+      "input_slots": [
+        "WR 4"
+      ],
+      "move_class": "strike",
+      "damage": 17,
+      "hit_range": "low",
+      "startup": 0.233,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.5,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "note": "Pulled from the Tekken 7 frame-data bank: 17 [20] dmg, i14, -40 on block."
+    },
+    "WS 1": {
+      "name": "Rising Claw",
+      "input": "WS 1",
+      "input_slots": [
+        "WS 1"
+      ],
+      "move_class": "strike",
+      "damage": 14,
+      "hit_range": "mid",
+      "startup": 0.217,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "note": "Pulled from the Tekken 7 frame-data bank: 14 [16] dmg, i13, -7 on block."
+    },
+    "WS 1,1": {
+      "name": "Rising Claw Pair",
+      "input": "WS 1,1",
+      "input_slots": [
+        "WS 1,1"
+      ],
+      "move_class": "strike",
+      "damage": 34,
+      "hit_range": "mixed",
+      "startup": 0.217,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "string": [
+        "WS 1",
+        "WS 1,1"
+      ],
+      "note": "Pulled from the Tekken 7 frame-data bank: 14 [16], 20 dmg, i13, -9 on block."
+    },
+    "WS 1,2": {
+      "name": "Rising Claw Cross",
+      "input": "WS 1,2",
+      "input_slots": [
+        "WS 1,2"
+      ],
+      "move_class": "strike",
+      "damage": 48,
+      "hit_range": "mid",
+      "startup": 0.217,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 3.5,
+      "soulGain": 8,
+      "tekken_base": "Kuma (Tekken 7)",
+      "string": [
+        "WS 1",
+        "WS 1,2"
+      ],
+      "note": "Pulled from the Tekken 7 frame-data bank: 14 [16], 34 dmg, i13, +5 on block."
+    },
+    "WS 2": {
+      "name": "Rising Maul Uppercut",
+      "input": "WS 2",
+      "input_slots": [
+        "WS 2"
+      ],
+      "move_class": "strike",
+      "damage": 20,
+      "hit_range": "mid",
+      "startup": 0.25,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.0,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "note": "Pulled from the Tekken 7 frame-data bank: 20 [24] dmg, i15, -12 on block."
+    },
+    "WS 3": {
+      "name": "Rising Stomp",
+      "input": "WS 3",
+      "input_slots": [
+        "WS 3"
+      ],
+      "move_class": "strike",
+      "damage": 21,
+      "hit_range": "mid",
+      "startup": 0.3,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.5,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "note": "Pulled from the Tekken 7 frame-data bank: 21 [25] dmg, i18, -9 on block."
+    },
+    "WS 1+2": {
+      "name": "Rising Double Maul",
+      "input": "WS 1+2",
+      "input_slots": [
+        "WS 1+2"
+      ],
+      "move_class": "strike",
+      "damage": 16,
+      "hit_range": "mid",
+      "startup": 0.317,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.0,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "note": "Pulled from the Tekken 7 frame-data bank: 16 [18] dmg, i19, -17 on block."
+    },
+    "FC 1": {
+      "name": "Crouch Scratch",
+      "input": "FC 1",
+      "input_slots": [
+        "FC 1"
+      ],
+      "move_class": "strike",
+      "damage": 12,
+      "hit_range": "low",
+      "startup": 0.317,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "note": "Pulled from the Tekken 7 frame-data bank: 12 [14] dmg, i19, -8 on block."
+    },
+    "FC 1,1": {
+      "name": "Crouch Claw Pair",
+      "input": "FC 1,1",
+      "input_slots": [
+        "FC 1,1"
+      ],
+      "move_class": "strike",
+      "damage": 20,
+      "hit_range": "low",
+      "startup": 0.317,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "string": [
+        "FC 1",
+        "FC 1,1"
+      ],
+      "note": "Pulled from the Tekken 7 frame-data bank: 12 [14], 8 dmg, i19, +1 on block."
+    },
+    "FC 2": {
+      "name": "Crouch Gut Maul",
+      "input": "FC 2",
+      "input_slots": [
+        "FC 2"
+      ],
+      "move_class": "strike",
+      "damage": 8,
+      "hit_range": "mid",
+      "startup": 0.183,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "note": "Pulled from the Tekken 7 frame-data bank: 8 [9] dmg, i11, -4 on block."
+    },
+    "FC 3": {
+      "name": "Crouch Ankle Rake",
+      "input": "FC 3",
+      "input_slots": [
+        "FC 3"
+      ],
+      "move_class": "strike",
+      "damage": 12,
+      "hit_range": "low",
+      "startup": 0.333,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "note": "Pulled from the Tekken 7 frame-data bank: 12 [14] dmg, i20, -15 on block."
+    },
+    "FC 4": {
+      "name": "Crouch Trip",
+      "input": "FC 4",
+      "input_slots": [
+        "FC 4"
+      ],
+      "move_class": "strike",
+      "damage": 10,
+      "hit_range": "low",
+      "startup": 0.267,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "note": "Pulled from the Tekken 7 frame-data bank: 10 [12] dmg, i16, -9 on block."
+    },
+    "FC d/f+1": {
+      "name": "Crouch Rise Claw",
+      "input": "FC d/f+1",
+      "input_slots": [
+        "FC d/f+1"
+      ],
+      "move_class": "strike",
+      "damage": 8,
+      "hit_range": "mid",
+      "startup": 0.25,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "note": "Pulled from the Tekken 7 frame-data bank: 8 [9] dmg, i15, -9 on block."
+    },
+    "FC d/f+2": {
+      "name": "Crouch Heavy Maul",
+      "input": "FC d/f+2",
+      "input_slots": [
+        "FC d/f+2"
+      ],
+      "move_class": "strike",
+      "damage": 12,
+      "hit_range": "mid",
+      "startup": 0.3,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "note": "Pulled from the Tekken 7 frame-data bank: 12 [14] dmg, i18, -13 on block."
+    },
+    "FC d/f+2,n,1": {
+      "name": "Crouch Maul Snap",
+      "input": "FC d/f+2,n,1",
+      "input_slots": [
+        "FC d/f+2,n,1"
+      ],
+      "move_class": "strike",
+      "damage": 24,
+      "hit_range": "mixed",
+      "startup": 0.3,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "string": [
+        "FC d/f+2",
+        "FC d/f+2,n",
+        "FC d/f+2,n,1"
+      ],
+      "note": "Pulled from the Tekken 7 frame-data bank: 12 [14], 12 dmg, i18, -10 on block."
+    },
+    "hcb,f+1+2": {
+      "name": "Spirit Bear Hug",
+      "input": "hcb,f+1+2",
+      "input_slots": [
+        "hcb,f+1+2"
+      ],
+      "move_class": "throw",
+      "damage": 50,
+      "hit_range": "throw",
+      "startup": 0.183,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 3.5,
+      "soulGain": 8,
+      "tekken_base": "Kuma (Tekken 7)",
+      "string": [
+        "hcb",
+        "hcb,f+1+2"
+      ],
+      "escape": "1+2",
+      "note": "Pulled from the Tekken 7 frame-data bank. Command throw. Escape: 1+2."
+    },
+    "f+1+3": {
+      "name": "Mauling Grab",
+      "input": "f+1+3",
+      "input_slots": [
+        "f+1+3"
+      ],
+      "move_class": "throw",
+      "damage": 35,
+      "hit_range": "throw",
+      "startup": 0.25,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 3.5,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "escape": "1",
+      "note": "Pulled from the Tekken 7 frame-data bank. Command throw. Escape: 1."
+    },
+    "HBS 1": {
+      "name": "Hunting Scratch",
+      "input": "HBS 1",
+      "input_slots": [
+        "HBS 1"
+      ],
+      "move_class": "strike",
+      "damage": 8,
+      "hit_range": "low",
+      "startup": 0.2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "stance": "HBS",
+      "note": "Pulled from the Tekken 7 frame-data bank: 8 [9] dmg, i12, -11 on block."
+    },
+    "HBS 1,2": {
+      "name": "Hunting Claw Pair",
+      "input": "HBS 1,2",
+      "input_slots": [
+        "HBS 1,2"
+      ],
+      "move_class": "strike",
+      "damage": 18,
+      "hit_range": "low",
+      "startup": 0.2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "string": [
+        "HBS 1",
+        "HBS 1,2"
+      ],
+      "stance": "HBS",
+      "note": "Pulled from the Tekken 7 frame-data bank: 8 [9], 10 dmg, i12, -13 on block."
+    },
+    "HBS 2": {
+      "name": "Hunting Bite",
+      "input": "HBS 2",
+      "input_slots": [
+        "HBS 2"
+      ],
+      "move_class": "strike",
+      "damage": 16,
+      "hit_range": "low",
+      "startup": 0.35,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "stance": "HBS",
+      "note": "Pulled from the Tekken 7 frame-data bank: 16 [19] dmg, i21, -15 on block."
+    },
+    "HBS 1+2": {
+      "name": "Hunting Maul",
+      "input": "HBS 1+2",
+      "input_slots": [
+        "HBS 1+2"
+      ],
+      "move_class": "strike",
+      "damage": 24,
+      "hit_range": "mid",
+      "startup": 0.317,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.5,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "stance": "HBS",
+      "note": "Pulled from the Tekken 7 frame-data bank: 24 [28] dmg, i19, -15 on block."
+    },
+    "HBS d/f+1": {
+      "name": "Hunting Rise",
+      "input": "HBS d/f+1",
+      "input_slots": [
+        "HBS d/f+1"
+      ],
+      "move_class": "strike",
+      "damage": 15,
+      "hit_range": "mid",
+      "startup": 0.267,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "stance": "HBS",
+      "note": "Pulled from the Tekken 7 frame-data bank: 15 [18] dmg, i16, -5 on block."
+    },
+    "HBS d/f+2": {
+      "name": "Hunting Launcher",
+      "input": "HBS d/f+2",
+      "input_slots": [
+        "HBS d/f+2"
+      ],
+      "move_class": "strike",
+      "damage": 20,
+      "hit_range": "mid",
+      "startup": 0.25,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.0,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "stance": "HBS",
+      "note": "Pulled from the Tekken 7 frame-data bank: 20 [24] dmg, i15, -17 on block."
+    },
+    "HBS b+1+2": {
+      "name": "Hunting Low Maul",
+      "input": "HBS b+1+2",
+      "input_slots": [
+        "HBS b+1+2"
+      ],
+      "move_class": "strike",
+      "damage": 16,
+      "hit_range": "low",
+      "startup": 0.433,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.5,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "stance": "HBS",
+      "note": "Pulled from the Tekken 7 frame-data bank: 16 [19] dmg, i26, -25 on block."
+    },
+    "HBS 3+4": {
+      "name": "Hunting Spin",
+      "input": "HBS 3+4",
+      "input_slots": [
+        "HBS 3+4"
+      ],
+      "move_class": "strike",
+      "damage": 21,
+      "hit_range": "mid",
+      "startup": 0.417,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.5,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "stance": "HBS",
+      "note": "Pulled from the Tekken 7 frame-data bank: 21 [25] dmg, i25, -12 on block."
+    },
+    "HBS f+1+2": {
+      "name": "Hunting Grab",
+      "input": "HBS f+1+2",
+      "input_slots": [
+        "HBS f+1+2"
+      ],
+      "move_class": "throw",
+      "damage": 30,
+      "hit_range": "throw",
+      "startup": 0.433,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 3.5,
+      "soulGain": 5,
+      "tekken_base": "Kuma (Tekken 7)",
+      "stance": "HBS",
+      "escape": "1",
+      "note": "Hunting Bear Stance command throw. Escape: 1."
+    },
+    "b+1": {
+      "name": "Backhand Maul",
+      "input": "b+1",
+      "input_slots": [
+        "b+1"
+      ],
+      "move_class": "strike",
+      "damage": 15,
+      "hit_range": "mid",
+      "startup": 0.433,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 8,
+      "tekken_base": "Kuma (Tekken 3)",
+      "anim_ref": "t3:kuma:row:48",
+      "t3_row": 48,
+      "note": "Pulled from the Tekken 3 teardown bank. Backhand swipe."
+    },
+    "b,f,d,d/b,b,u,u/f": {
+      "name": "Spirit Maelstrom",
+      "input": "b,f,d,d/b,b,u,u/f",
+      "input_slots": [
+        "b,f,d,d/b,b,u,u/f"
+      ],
+      "move_class": "strike",
+      "damage": 40,
+      "hit_range": "mid",
+      "startup": 0.917,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.0,
+      "soulGain": 8,
+      "tekken_base": "Kuma (Tekken 3)",
+      "anim_ref": "t3:kuma:row:155",
+      "t3_row": 155,
+      "note": "Pulled from the Tekken 3 teardown bank. Full 360-degree spinning maul; slow and heavy."
+    },
+    "b,n,f+2+3": {
+      "name": "Grizzly Charge",
+      "input": "b,n,f+2+3",
+      "input_slots": [
+        "b,n,f+2+3"
+      ],
+      "move_class": "strike",
+      "damage": 60,
+      "hit_range": "mid",
+      "startup": 1.017,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.0,
+      "soulGain": 8,
+      "tekken_base": "Kuma (Tekken 3)",
+      "anim_ref": "t3:kuma:row:205",
+      "t3_row": 205,
+      "note": "Pulled from the Tekken 3 teardown bank. Charging shoulder tackle; chargeable, very slow."
     }
   }
 }

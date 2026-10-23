@@ -6,6 +6,7 @@
    Pantera = real P1 textured body (roster/pantera). Steve Fox =
    Tekken 7 base reskinned cold blue-white (see game/README.md).
    ============================================================ */
+import { checkClip, CTX } from './anim-gate.js';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { clone as skeletonClone } from 'three/addons/utils/SkeletonUtils.js';
@@ -91,23 +92,23 @@ export const MODEL_URLS = {
   // the front render, 2026-10-21 — see roster/zen/ATTIRE-SLOTS.md).
   'zen-oversoul': '../roster/zen/oversoul/model-rigged.glb', // rigged form (PR #627 rigs) landed 2026-10-22; raw model.glb kept in place
   // Tripo pulls wired 2026-10-19 (owner: stop saying "not in the repo").
-  phantom: '../roster/phantom/attires/attire1/model-rigged.glb',
-  skull: '../roster/skull/attires/attire1/model-rigged.glb',
+  phantom: '../roster/phantom/attires/attire1/model-rerig.glb',
+  skull: '../roster/skull/attires/attire1/model-rerig.glb',
   // KRONOS (owner custom Zangief fighter, 2026-10-19): Tripo models live at
   // tripo-recovery/kronos_attire1_default.glb/ + kronos_attire2_timberwolf/;
   // copying the GLB into roster/kronos/attires/attire1/model.glb is a follow-up.
-  kronos: '../roster/kronos/attires/attire1/model-rigged.glb',
+  kronos: '../roster/kronos/attires/attire1/model-rerig.glb',
   // SAM-UR-A1 Attire 1 (owner 2026-10-19): Tripo pull replaces the fan-rip placeholder.
   'sam-ur-a1': '../roster/sam-ur-a1/attires/attire1/model-rigged.glb',
   // SAKU RA (2026-10-21, lane 4 rig batch 1): unrigged Tripo static -> model-rigged.glb
   // via tools/auto_rig knn backend (donor pantera.glb); original model.glb untouched.
-  'saku-ra': '../roster/sakura/attires/attire1/model-rigged.glb',
+  'saku-ra': '../roster/sakura/attires/attire1/model-rerig.glb',
   'awa-pop': 'assets/models/awa-pop.glb',
   // AWA POP Attire 2 (fighter-completeness audit 2026-10-21): owner-confirmed
   // Tripo Attire 2 (roster/awa-pop/ATTIRE-SLOTS.md slot 2) — the GLB was in the
   // repo with no key, so it could never load.
   'awa-pop-attire2': '../roster/awa-pop/attires/attire2/model-rigged.glb',
-  'purple-rain': '../roster/purplerain/attires/attire1/model-rigged.glb',
+  'purple-rain': '../roster/purplerain/attires/attire1/model-rerig.glb',
   nightwolf: 'assets/models/nightwolf.glb',
   // NIGHTWOLF Attire 1 (owner 2026-10-18, Tripo pull 5b0835eb "tribal warrior"):
   // his DEFAULT attire per roster/nightwolf/attires/ATTIRE-SLOTS.md — tribute to
@@ -160,16 +161,16 @@ export const MODEL_URLS = {
   // pre-form's 178-joint rig via the repo k-NN transfer; original untouched.
   'doc-frank-big': '../roster/doc-frank/attires/attire1/post-transform/model-rigged.glb',
   // Wave 2 (2026-10-19): Wowomomo Attire 2, Hood Scientist Attire 3, Demonio forms, Dxmmii Attire 2.
-  'doc-frank-wowomomo': '../roster/doc-frank/attires/attire2/base/model-rigged.glb',
+  'doc-frank-wowomomo': '../roster/doc-frank/attires/attire2/base/model-rerig.glb',
   'doc-frank-wowomomo-big': '../roster/doc-frank/attires/attire2/transformed/model-rigged.glb',
   'doc-frank-hood': '../roster/doc-frank/attires/attire3/base/model.glb',
   'doc-frank-hood-big': '../roster/doc-frank/attires/attire3/transformed/model-rigged.glb',
   // Attire 4 "Frankenstein's Cyborg" (owner 2026-10-19): two-form transform attire.
-  'doc-frank-frankenstein': '../roster/doc-frank/attires/attire4/base/model-rigged.glb',
-  'doc-frank-frankenstein-big': '../roster/doc-frank/attires/attire4/transformed/model-rigged.glb',
+  'doc-frank-frankenstein': '../roster/doc-frank/attires/attire4/base/model-rerig.glb',
+  'doc-frank-frankenstein-big': '../roster/doc-frank/attires/attire4/transformed/model-rerig.glb',
   'demonio-a1': '../roster/demonio/attires/attire1/model.glb',
   'demonio-winged': '../roster/demonio/attires/winged-devil/model-rigged.glb',
-  'demonio-human': '../roster/demonio/attires/human/model-rigged.glb',
+  'demonio-human': '../roster/demonio/attires/human/model-rerig.glb',
   'dxmmii-a2': '../roster/dxmmii/attires/attire2/model.glb',
   // DXMMII Slot 1 — Tripo Default (dedup 2026-10-22): the 60MB Tripo pull
   // that replaced the wooden dummy as Slot 1 per owner 2026-10-19
@@ -205,8 +206,8 @@ export const MODEL_URLS = {
   // Burger — Demon mode, possessed by greed (owner 2026-10-19, Tripo pull).
   burger: '../roster/burger/attires/attire1/model-rigged.glb',
   // Kronos — new fighter (owner 2026-10-19, Tripo pull).
-  kronos: '../roster/kronos/attires/attire1/model-rigged.glb',
-  'kronos-attire2': '../roster/kronos/attires/attire2/model-rigged.glb',
+  kronos: '../roster/kronos/attires/attire1/model-rerig.glb',
+  'kronos-attire2': '../roster/kronos/attires/attire2/model-rerig.glb',
   'kronos-attire3': '../roster/kronos/attires/attire3/model.glb',
   // KORESHI (owner 2026-10-19): his own creation (Kakashi + SSJ4/5 + ninja, Tripo pull).
   koreshi: '../roster/koreshi/attires/attire1/model-rigged.glb',
@@ -359,11 +360,13 @@ export const MODEL_URLS = {
   // spirit, temple dancer who refused to die. SmutBase intake (roster/rahkasa/).
   // Unrigged static (1 mesh; rig widgets live in the .blend); k-NN auto-rig
   // from donor is the planned path.
-  chatur: '../roster/rahkasa/attires/attire1/model.glb',
+  // Rigged 2026-10-23 (PR #780, 52-joint canonical skeleton, verified).
+  chatur: '../roster/rahkasa/attires/attire1/model-rigged.glb',
   // POND (owner 2026-10-23): Raven's WH replacement — swamp boundary watcher,
   // found Dorowani as an egg. SmutBase intake (roster/tsuyu-asui/). Unrigged
   // static (9 meshes, clothing separate); k-NN auto-rig from donor is the planned path.
-  pond: '../roster/tsuyu-asui/attires/attire1/model.glb',
+  // Rigged 2026-10-23 (PR #780, 52-joint canonical skeleton, verified).
+  pond: '../roster/tsuyu-asui/attires/attire1/model-rigged.glb',
   // CHARGER Attire 2 (2026-10-21, lane 4 rig batch 1): unrigged Tripo static -> model-rigged.glb
   // via tools/auto_rig knn backend (donor pantera.glb); original model.glb untouched.
   'charger-attire2': '../roster/charger/attires/attire2/model-rigged.glb',
@@ -392,16 +395,18 @@ export const MODEL_URLS = {
   // intake original (191.6 MB) archived on release
   // megami-menajerii-smutbase-20261023. Canon: roster/parvati/CANON.md.
   // Moveset: game/assets/movesets/megami.json (Jun Kazama TTT2 kit, Tekken inputs).
-  megami: '../roster/parvati/attires/attire1/model.glb',
-  'megami-attire1': '../roster/parvati/attires/attire1/model.glb',
+  megami: '../roster/parvati/attires/attire1/model-rigged.glb',
+  'megami-attire1': '../roster/parvati/attires/attire1/model-rigged.glb',
   // MENAJERII (2026-10-23, SmutBase 6 pipeline fighters 5-6): SmutBase Vixen
   // commission intake (Injustice 2-based). In-repo build = meshopt-compressed
   // (41.7 MB, validated); intake original (629.7 MB) archived on release
   // megami-menajerii-smutbase-20261023. Canon: roster/vixen/CANON.md.
   // Moveset: game/assets/movesets/menajerii.json (Roger Jr. TTT2 kit, fresh
   // Tekken inputs per owner directive — no Injustice 2 input system).
-  menajerii: '../roster/vixen/attires/attire1/model.glb',
-  'menajerii-attire1': '../roster/vixen/attires/attire1/model.glb',
+  // model-rigged-noplane.glb = the crew rig (PR #780) with its skinned 4.23 m floor plane removed
+  // (docs/proof/claude-2026-10-23/smutbase/README.md); the crew file stays beside it.
+  menajerii: '../roster/vixen/attires/attire1/model-rigged-noplane.glb',
+  'menajerii-attire1': '../roster/vixen/attires/attire1/model-rigged-noplane.glb',
   // ——— LANDING WAVE 1 (2026-10-23, docs/CATCHUP-AUDIT-2026-10-23.md) ———
   // Wiring fixes only: keys for models already on main that no key reached.
   // BUFFALO BILL: his moveset file sat on main unlisted; A1/A2 sources named
@@ -443,14 +448,16 @@ export const MODEL_URLS = {
   // the Corrosion Soul. Attire 1 = the SmutBase GLB (unrigged static; rig queued).
   // NOTE: roster/mina-ashido/attires/attire1/model-rigged.glb landed on main
   // 2026-10-23 (PR #781, wave-1 rigging) — repoint key after rig validation.
-  ryusan: '../roster/mina-ashido/attires/attire1/model.glb',
-  'ryusan-attire1': '../roster/mina-ashido/attires/attire1/model.glb',
+  // In-game validation (docs/proof/claude-2026-10-23/smutbase): the model-rigged.glb build tears
+  // apart in the T3 stance; model-rerig.glb (upright static + GameRig +Z) holds it.
+  ryusan: '../roster/mina-ashido/attires/attire1/model-rerig.glb',
+  'ryusan-attire1': '../roster/mina-ashido/attires/attire1/model-rerig.glb',
   // TOBI (owner 2026-10-23): SmutBase Mirko (Rumi Usagiyama) intake — WH name
   // TOBI, the Escape Soul. Attire 1 = the SmutBase GLB (unrigged static; rig queued).
   // NOTE: roster/miruko/attires/attire1/model-rigged.glb landed on main
-  // 2026-10-23 (PR #781, wave-1 rigging) — repoint key after rig validation.
-  tobi: '../roster/miruko/attires/attire1/model.glb',
-  'tobi-attire1': '../roster/miruko/attires/attire1/model.glb',
+  // 2026-10-23 (PR #781, wave-1 rigging) — repoint key after rig validation (same finding as Ryusan).
+  tobi: '../roster/miruko/attires/attire1/model-rerig.glb',
+  'tobi-attire1': '../roster/miruko/attires/attire1/model-rerig.glb',
 };
 
 /* ============================================================
@@ -1087,7 +1094,10 @@ class AssetManager {
       // Join an in-flight load instead of doubling it — unless this call
       // carries its own abort signal (a preview tap owns its fetch so a
       // newer tap can cancel it without disturbing other consumers).
-      if (fly && !opts.signal) { jobs.push(fly.promise); continue; }
+      // Never join a load that was just aborted (the idle warm lane, cancelled above by this
+      // same call): joining it made a fight reject with AbortError whenever its fighter was
+      // still warming (2026-10-23, Pantera: "fight load failed: BodyStreamBuffer was aborted").
+      if (fly && !opts.signal && !fly.signal.aborted) { jobs.push(fly.promise); continue; }
       jobs.push(this._loadOne(id, onProgress, unique.length, opts));
     }
     let done = 0;
@@ -1103,7 +1113,7 @@ class AssetManager {
   /* One model: fetch (abort-aware, byte-progress) -> parseAsync ->
      _ingest. Aborts never retry; other failures retry once. */
   _loadOne(id, onProgress, total, opts) {
-    if (this._inflight[id] && !opts.signal) return this._inflight[id].promise;
+    if (this._inflight[id] && !opts.signal && !this._inflight[id].signal.aborted) return this._inflight[id].promise;
     const ctrl = new AbortController();
     if (opts.signal) {
       if (opts.signal.aborted) ctrl.abort(opts.signal.reason);
@@ -1159,7 +1169,7 @@ class AssetManager {
     const tracked = run.finally(() => {
       if (this._inflight[id] && this._inflight[id].promise === tracked) delete this._inflight[id];
     });
-    this._inflight[id] = { promise: tracked, abort: () => ctrl.abort() };
+    this._inflight[id] = { promise: tracked, abort: () => ctrl.abort(), signal: ctrl.signal };
     return tracked;
   }
 
@@ -1370,7 +1380,8 @@ class AssetManager {
     const idleClip = clips.Idle || clips.Battle_Idle || clips.Stage_Idle || null;
     for (const name of ['Idle', 'Walk', 'Run']) {
       const clip = name === 'Idle' ? idleClip : clips[name];
-      if (clip) {
+      // ANIMATION GATE (owner t117u): in-game fighter instances are FIGHT context.
+      if (clip && checkClip(name, clip, CTX.FIGHT).ok) {
         actions[name] = mixer.clipAction(clip);
         actions[name].play();
         actions[name].setEffectiveWeight(name === 'Idle' ? 1 : 0);

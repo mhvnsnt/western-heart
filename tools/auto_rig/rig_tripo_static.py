@@ -58,6 +58,9 @@ def main():
     ap.add_argument("--facing", default=None, help="mesh facing for gamerig_backend (e.g. +Z) when the feet cue is unsure")
     ap.add_argument("--height", default="1.8")
     ap.add_argument("--keep-work", action="store_true")
+    ap.add_argument("--smooth-gate", default="2.5",
+                    help="smooth_weights p99.9 edge-stretch gate (default 2.5). Long coats/capes/detached parts stretch "
+                         "more under the boxing stress clip; raise it only with the in-game check as the verdict")
     a = ap.parse_args()
     # Blender renders need libEGL/libGL; this VM keeps them in ~/workspace/tools/syslibs
     # (setup_toolchain.sh). Add to LD_LIBRARY_PATH when present so render_poses works.
@@ -70,6 +73,11 @@ def main():
     out = a.out or os.path.splitext(a.inp)[0] + "-rigged.glb"
     os.makedirs(a.report_dir, exist_ok=True)
     work = tempfile.mkdtemp(prefix="wh-rig-")
+    if not a.keep_work:
+        # A failed step exits through sys.exit(); without this its work dir (160-780 MB each) stays in /tmp.
+        # 2026-10-23: thirteen leftovers filled the disk.
+        import atexit
+        atexit.register(shutil.rmtree, work, True)
     log = os.path.join(work, "steps.log")
     dec, rig = os.path.join(work, "decoded.glb"), os.path.join(work, "rigged.glb")
     # ES modules ignore NODE_PATH: run a copy of the codec beside a node_modules link instead.
@@ -93,7 +101,7 @@ def main():
     subprocess.run([sys.executable, os.path.join(HERE, "anim_check.py"), "--in", rig, "--json-out", gate_before,
                     "--max-frames", "18", "--quiet"], capture_output=True)
     sm = run([sys.executable, os.path.join(HERE, "backends", "smooth_weights.py"), "--in", rig, "--threshold", "2.0",
-              "--rounds", "12", "--frames-per-clip", "10", "--gate", "2.5"],
+              "--rounds", "12", "--frames-per-clip", "10", "--gate", a.smooth_gate],
              env={"PYTHONPATH": HERE}, log=log)
     with open(os.path.join(a.report_dir, "smooth_weights.log"), "w") as f:
         f.write(sm.stdout)

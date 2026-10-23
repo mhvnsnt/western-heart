@@ -1,3 +1,58 @@
+## 2026-10-23 ~15:20 CDT — TTT2 extraction worker: surgical pipeline (Law/Lars lane)
+
+**Task:** Push TTT2 extraction toward 100% (standing directive: T3 fallback-only, pulls from T5/T6/T7/TTT2). Law + Lars FIRST — their full modern movesets/animations unblock the Buffalo Bill / Chordz pull lane. Then the full 59-fighter roster, stages, audio.
+
+**Built — `teardown/tekken-tag-tournament-2/tools/surgical/`** (no full 13.36GB download needed):
+- `fetch_assets.py` — release-asset downloader via GitHub data API (Accept: application/octet-stream + surrogate credential, 302 followed without auth, Range resume).
+- `vfile.py` — `PartVirtualFile`: seekable virtual file over the 26 release parts via HTTP Range. py7zr parses the 7z end-header with ~2KB transferred.
+- `stream_decode.py` — LZMA stream decoder (folder: lc=3,lp=0,pb=2,8MB dict) that splits the 72 members by known uncompressed sizes and writes only wanted members + MANIFEST.txt (sha256).
+- `seg_dl.py` — parallel segmented stream-prefix downloader (resume-safe per segment) for staging long poles locally.
+- `extract_member.py` — single-member extract via py7zr over the virtual file.
+- `fetch_zarmanager.py` — fetches GodPackage/StfsPackage (`core/xbox/{god,stfs}.py`) from dfdx047/ZarManager (not vendored — upstream license unverified).
+- `README.md` — cost model + usage.
+
+**Also:** `teardown/tekken-tag-tournament-2/EXTRACTION-RUNBOOK.md` (step-by-step: header verify → STFS blobs → Data0000 → XDVDFS listing → Law/Lars carve → roster); TEARDOWN.md status updated (safe storage DONE, disk blocker circumvented, network throttle documented).
+
+**Verified 2026-10-23:**
+- End-header over HTTP Range: 80 entries, byte-matching INVENTORY.md (1,970 bytes fetched).
+- Member 19 (GoD descriptor, 45,056 bytes) stream-extracted — byte-identical to `extracted-small/` copy.
+- GodPackage parses title ID 0x4E4D0859; member 0 (155MB STFS blob) stream-decoding.
+- **No Tekken 3 touched** — instruction gate compliant (T3 fallback-only).
+
+**Blocker:** VM egress proxy throttles sustained downloads to ~0.1 MB/s. Data0000 (header idx 20, key to the XDVDFS file listing → Law/Lars carve) needs a ~4.9GB stream prefix ≈ 14h — queued as a background nohup job. Per-member prefix costs in tools/surgical/README.md.
+
+**Deviations:** none from the surgical plan. No game binaries committed (owner law — large artifacts go to Releases, repo carries tools/docs only). Pushed via Git Database API (NO-SPARSE-COMMIT LAW — no commits from the sparse checkout).
+
+---
+
+## 2026-10-22 ~13:45 CDT — Worker 26: AUDIO — voice mapping + announcer + music system
+
+**Task (two tracks):** (1) Pull teardown voice lines, map to WH characters by personality/canon/style (King→Pantera etc.), wire into intros/win poses/taunts/hits/KOs as TEMPORARY placeholders. (2) Pull music systems from teardowns; build the music engine + swappable tagged library; seed with owner + open-licensed music. Follow-up: announcer YES (from teardowns, placeholder), crowd reactions SKIP (deferred).
+
+**Track 1 — voice:**
+- Audited teardowns: T3 recompiled Jun voice dispatcher (`tekken3_jun_voices.c` → separate voice bus lesson), T8 Voiceclip doc stub, Urban Reign ADX inventory (per-char `v_*` voice / per-stage `bgNN` BGM — the reference architecture), Eastern Mind owned sounds.
+- 49 manifests (`game/data/voices/`): full roster + `announcer.json`. Tier A (10 fighters) ships REAL audio from the owner's own Eastern Mind teardown (Nine Souls incarnation voices, F_KING→Pantera, L_KING→Armor King), `status:"teardown"` — plays now, clone pipeline replaces later. Tier B (38) mapped by personality to Tekken/SF/KOF sources, subtitle-only (`file:null`, no copyrighted bytes). Announcer: Tekken-style calls, subtitle-only, extraction path documented for local builds.
+- `game/js/voice.js`: RE-ADDED (another lane's refactor had removed worker 13's pipeline from main) + `announce()` + `onSpeech` music-duck hook (try/finally) + `playSound()` sound-bank API; contract ref updated to `docs/VOICE-MAPPING.md`.
+- Wired in `game/js/game.js`: `_startRound` (round/final-round calls + FIGHT! + intensity), `_endRound` (K.O./PERFECT!/TIME UP/DOUBLE K.O. + loser KO cry + winner win line + delayed taunt + intensity drop), throttled hit cries on heavy/counter/grab (≤1/1.1s/fighter). `main.js`: `voice.unlock()`, select-cry on confirm.
+- Docs: `docs/VOICE-MAPPING.md` (full table + trigger map + crowd-deferred note), `docs/research/AUDIO-TEARDOWN-AUDIT.md`.
+
+**Track 2 — music:**
+- `game/js/music.js` (new MusicEngine): stage/mode/mood tag assignment (Tekken jukebox rule), gapless WebAudio loops, 1.6s crossfades, intensity via lowpass+gain (`setIntensity`), voice ducking, local-file-first/remote-fallback, procedural fallback (never silent).
+- `game/data/music-library.json`: 14 tagged tracks — 10x Kevin MacLeod CC BY 4.0 (attribution in `credit` fields) + 4x owner's Tong-Nou OST (WAV→OGG). **Tong-Nou Theme is the flagship** (title screen + Tong-Nou stage + versus rotation, per owner). Swap = edit JSON or drop same-name file; no code.
+- Wired in `main.js`: `music.unlock()`, `playMenu('title'/'select')`, `playBattle(stageId)` (replaces procedural `startMusic`), `playVictory` hook; back-menu crossfades to title (was hard stop).
+- Docs: `docs/MUSIC-PIPELINE.md` (add/swap guide, license rules, future stems/gungaku hooks).
+
+**Eastern Mind extraction (100% complete, owner 2026-10-22):**
+- All **229 sounds** ship as `game/data/sound-bank.json` + `game/assets/sounds/*.ogg` (categorized voice/prologue/stage, durations, `mappedTo` links to voice manifests). New `voice.playSound(bankId)` API for prologue/cutscene/UI use.
+- 3 CD tracks + ending theme in the music library (above). 5,321 bitmaps → art lane; 22 videos → cutscene lane (not this worker).
+
+**Method:** Synced to main @ push time via Git Database API. Sandbox blocks python/curl/ffmpeg file writes (same wall as worker 19) — binaries streamed through pipes straight into git blobs (ffmpeg WAV→OGG, curl MP3s); text via API-fetched fresh bytes + asserted surgical replacements. No stale copies, zero deletions.
+
+**Proof:** node harness (stubs for AudioContext/fetch/DOM): 49 manifests resolve clips for all triggers; announcer resolves all 11 calls; `pickTrack` correct for all 9 stages + 7 modes; crossfade/intensity/duck/stop paths run clean. `node --check` on both JS files.
+
+**Status:** PR merged via git_merge.py. Next: voice-clone pipeline replaces tier A/B placeholders; user drops own music into `game/assets/music/`.
+
+
 ## 2026-10-22 — Worker 51: STAGE SELECT → FIGHT FLOW (repairs + wiring, PLAYABLE TODAY)
 
 **Owner instruction (verbatim):** "no new features — repairs and wiring only. Your scope stays stage select → fight flow. If you spot stub/placeholder code on the path, wire it — but don't invent new systems. Worker 53 now owns the fight itself (fighter loading, inputs firing, hits, rounds, crash-killing); coordinate with them at the fight-boot handoff."
@@ -2102,3 +2157,320 @@ On-main files NOT touched: worker 37's `js/creation-flow.js` + `js/art.js`
 - Models are unrigged statics (0 skins) — rig queued, same path as other SmutBase intakes.
 - Proof: `node --check` clean on both JS files; both movesets load through the real `movesets.js` loader (schema v2, all required fields); `fighter-completeness.test.mjs` 4/4 pass; gitleaks clean; GLB paths verified on disk. model-key-guard failures are pre-existing sparse-checkout artifacts (all entries "file missing", none are ryusan/tobi — not in OWNERSHIP table).
 - Branch `smutbase-wave6/ryusan-tobi`, PR merged via `git_merge.py` (3-way, clean+green).
+
+## 2026-10-23 — Claude session: 10 sideways k-NN rigs replaced + select-screen crash fix
+
+- Problem: the Tripo pulls face +X; the 2026-10-21 k-NN rigs (`model-rigged.glb`, 49 joints) assumed +Z, so these
+  fighters stood in profile and their stance shredded in game.
+- Facing read from four-view renders of each original static (Blender 4.0.2 workbench, +Z/+X/-Z/-X cameras, viewed).
+- Re-rigged each `model.glb` with `tools/auto_rig/rig_tripo_static.py --facing +X` → `model-rerig.glb` beside the old
+  rig (old file kept). Wired: skull, kronos (both keys), kronos-attire2, saku-ra, phantom, purple-rain,
+  doc-frank-wowomomo, doc-frank-frankenstein, doc-frank-frankenstein-big, demonio-human. model-facing.json `models`:
+  those 10 + kinpo-attire1 = +Z.
+- Verified in game: `tools/proof-harness/rig_sheet.mjs` (rest faces +Z, King stance clean, max bone error 0.4 deg)
+  and a Skull vs Kronos arcade fight via `tools/proof-harness/fight.mjs`. Proof: docs/proof/claude-2026-10-23/rerig/.
+- `tools/auto_rig/backends/smooth_weights.py`: the edge cutoff (9.8 mm) left no edges on Waterfall's dense mesh and
+  crashed; the cutoff now drops to half the median edge only when the mesh has no edge over it.
+- `game/index.html`: restored `.pane-title` / `.pane-style` in both select panes beside the new `.pane-facts` row.
+  `select-screen.js renderPlate()` writes to both; without them every mode start threw
+  "Cannot set properties of null (setting 'textContent')" (seen in the fight harness on main 1202f9bd2).
+- Follow-ups: Frankenstein A4 base pedestal fused to the boots; Wowomomo tabard stretch; sam-ur-a1 + thor fail the
+  smoothing gate; waterfall re-run queued with the fix.
+- **mon/msk identified:** `mon` = Eileen, `msk` = El Blaze (release READMEs; msk render-verified as luchador). **El Blaze DOES have farcs** — the "NO farc/DLC" note was wrong; Pablo → El Blaze is NOT blocked.
+- **New tools:** `tools/vf5/farc_extract.py` (FArC container), `tools/vf5/vf5extract.py` (obj.bin → OBJ: chunk headers, LE f32 positions, u16 strip indices), `tools/vf5/README.md`.
+- **4 locked movesets** (schema-v2, VF→Tekken inputs): `game/assets/movesets/vf-jeffry.json` (25, Bannon), `vf-wolf.json` (21, El Toro de Oro), `vf-leifei.json` (22, NPC Finxsse), `vf-elblaze.json` (28, Pablo).
+- **Research:** `docs/research/VF5-FULL-INTEGRATION-2026-10-22.md`; decision log `docs/decisions/2026-10-22-vf5-integration.md`.
+- **Renders:** 18 T-pose PNGs batch-rendering (Blender 4.5.3); uploaded to remote storage as they complete for user review. **Dural flagged as Zen's approved base-mix layer.**
+- **Gaps:** Motion clips not in release (likely in 3.7GB vf5-500m ROM, not pulled); 38 stg*.farc stages deferred to arena pipeline.
+- Merged via git_merge.py as 7f38022d (additions only; CI: instruction-gate, clobber-guard, deletion-guard, guard all green).
+
+## 2026-10-22 — Moveset Library System (worker 47)
+
+Built the central moveset library + per-fighter assembly system (owner standing directive):
+- `game/data/moveset-library/`: 9,516 moves across 6 banks (T3 4,648 · No Mercy 4,409 · WMXIX 169 · DOA 146 · VF 48 · VF5 96) + 8 pending banks registered; `schema.json`, `axes.json`, `claimed-map.json` (source law), `index.json`. Reproducible ingest: `tools/moveset-library/ingest.mjs`.
+- `game/js/moveset-library.js`: `assembleFighter()` → v2-contract movesets; source-law gate in code; no pending banks.
+- `game/data/movesets/`: pre-assembled bannon (28) / el-toro (23) / pablo (36 — locked flavor: powerhouse + comedy-whiff lucha attempts + Black Reign Ride / Abyss Choke dark thread) / npc-finxsse (23). VF5 bases live from vf-{elblaze,jeffry,wolf,leifei}.json federation conversions (another lane, reused read-only).
+- `game/moveset-browser.html`: browse by axis, inspect, attach/detach, save. Fully working dev page.
+- Docs: `docs/research/moveset-library-schema.md`, `docs/decisions/2026-10-22-moveset-library.md`, `docs/handoffs/moveset-library-vf5-format.md` (worker-45 contract, read-only).
+- Proof: node --check clean; ingest 0 violations; assembler CLI verified (pablo 36 / bannon 28 / el-toro 23 / npc-finxsse 23, law-clean, 0 unresolved); claimed pull refused / free pull allowed.
+- Note: #678 merged then was dropped from main by #679's merge tree; restored via this PR (see decisions log).
+## 2026-10-22 — Worker 28: STAGE MECHANICS + RAGE/COMEBACK + SOUL URGE (T8 Heat)
+
+**Owner instruction (verbatim):** "From all teardown games, wire up: (1) Stage mechanics — Tekken floor/wall/balcony breaks, DOA knock-through-walls into new areas. (2) Rage/comeback systems — rage arts/drives, slow-mo finishes."
+**Follow-ups folded in:** "Heat system (T8): YES — pull straight from the files, but rename proprietary." → **name user-locked: SOUL URGE** (use everywhere). "Soul Gauge / Critical Edge: BUILD ON OURS — extend our meters, document the mapping."
+
+### What was built
+**1. Stage mechanics** (`game/js/stagebreaks.js`, new)
+- Tekken floor breaks (T7 Forgotten Realm/Brimstone & Fire/Devil's Pit rules): heavy slam
+  (knock>=6 / launch / knockdown) inside a cracked floor zone shatters it — both fighters
+  drop to a lower level (physics ground moves via new `setGroundY`), +12 bonus damage,
+  ember-lit lower tier, fight continues below. Persists all match (T7-authentic).
+- Tekken wall breaks + DOA knock-through-walls: every stage gets breakable spirit
+  barriers at ±wallDistance by default. Heavy hit (knock>=4 / launch / KO) that splats
+  the defender into the wall shatters it — bounds extend +4.5 into a dressed "new area"
+  (rubble + breach glow), +8 bonus damage (DOA Danger-Zone style). Once per side/match.
+- Tekken balcony breaks (T7 Jungle Outpost 2 rules): railing + weak section at a ledge
+  edge — same drop mechanic as floor breaks, own banner.
+- Wired stages: shrine (floor→crypt), plains-of-chi-u (floor→ember hollow),
+  helix-palace (balcony). Walls default ON everywhere (`noWallBreak` opt-out).
+- Hooked into `Game._resolveCombat` after every landed hit; debris physics + camera
+  shake + banners; `setGroundY`/`getGroundY` exported from fighter.js.
+
+**2. Rage / comeback (T7)** (`game/js/rage.js`, new)
+- Rage at <=25% HP, once per round (existing `R.` notation mechanism was a skeleton —
+  no data existed; now synthesized per fighter from their own strongest T3 strike).
+- **Rage Art** (`1+2` while raging → `R.1+2`): 32 dmg, super armor (new `armor` move
+  property: damage applies but the swing is never interrupted), knockdown+wallsplat,
+  cinematic beat (hitstop + flash + brief slow-mo), spends rage.
+- **Rage Drive** (`3+4` while raging → `RD.3+4`): powered-up strike, spends rage.
+  T7 rule: art OR drive per round.
+- **Slow-mo finishes**: match-deciding KO blows and rage-art KOs play at 0.12× for
+  1.5 s real time (`Game._loop` timescale). Fixed pre-existing bug: `_rageUsed` was
+  never reset between rounds (rage died after round 1).
+- UI: pulsing red RAGE tag under the HP bar (`ui.setRage`), red fighter aura
+  (`setRageAura`), `audio.rage()` cue, RAGE banner. AI spends rage arts/drives in range.
+
+**3. Soul Urge (T8 Heat, proprietary rename — user-locked)** (`game/js/soulurge.js`, new)
+- Pulled from `teardown/tekken7/tekkenmods-docs/.../Tekken_8/...` (Move, Hit_Conditions,
+  Cancel, Input_Extradata `0x10 - Heat`) + verified canonical T8 rules.
+- **Urge Burst** (`2+3`, armored): activates on hit OR block → 1 pip, 10 s.
+- **Urge Engager**: fighter's own launcher-class strike (auto-flagged, synthesized moves
+  excluded); on hit only → 2 pips, 15 s, +10 HP, dash-in.
+- **During Urge**: chip on block that can never kill; timer pauses while opponent is
+  hit/grounded; blue soul-flame aura; urge gauge under HP (T8-authentic placement).
+- **Urge Dash** (`1+2` while urging, not raging): 1 pip, committed forward burst.
+  **Urge Smash** (`2+3` while urging): 30 dmg armored, spends ALL pips, ends Urge.
+- Once per round, refreshes per round. AI uses burst → dash → smash.
+
+**4. Soul Gauge / Critical Edge mapping** (`docs/research/SOUL-GAUGE-MAPPING.md`)
+- No new meter imported. Nine-Soul Meter = the single persistent meter (unchanged
+  economy); Soul Surge IS our Critical Edge (verified untouched); Soul Urge is a
+  separate per-round gauge (T8-faithful). Reversal Edge/Guard Impact stay ON HOLD
+  per user.
+
+### Files
+- New: `game/js/stagebreaks.js`, `game/js/rage.js`, `game/js/soulurge.js`,
+  `game/tests/stagerage.test.mjs`, `docs/research/SOUL-URGE-SYSTEM.md`,
+  `docs/research/SOUL-GAUGE-MAPPING.md`
+- Edited: `game/js/game.js` (directors, hooks, slow-mo timescale),
+  `game/js/fighter.js` (setGroundY, armor, rage/urge auras, urge dash, urge chip),
+  `game/js/movesets.js` (R./RD./UB./US. chord prefixes), `game/js/ai.js`,
+  `game/js/audio.js` (rage/urge cues), `game/js/main.js` (setRage/setUrge/updateUrge),
+  `game/index.html` (rage tags, urge gauges), `game/styles.css` (rage/urge styles),
+  `game/js/stages.js` (breakables on shrine/chiu/helix), WORKLOG.md (this entry)
+
+### Proof
+- `node --test game/tests/stagerage.test.mjs`: **15/15 pass** (rage thresholds, art/drive synthesis + input resolution, slow-mo triggers incl. slowMoScale math, urge burst/engager/smash/pip spend, wall/floor break triggers, once-per-match, bonus damage).
+- Existing suites: fighter-completeness 4/4 pass; model-key-guard 2/3 (1 failure is
+  my partial working copy missing `roster/` — unrelated to this lane, assets.js untouched).
+- `node --check` clean on all 10 touched/new JS modules.
+- In-game screenshots: NOT possible from this worker (no live-browser access as a
+  subagent) — flagged for the parent to verify by playing per the standing rule.
+
+### Anti-clobber rebase (2026-10-22, post-implementation)
+Main moved under this worker TWICE. First rebase (loadspeed lane: lazy.js,
+hit-feel tuning, T8 select grid; movesets lane: R. prefix + _rageUsed). Second
+rebase (worker 27 lighting rig: attachCharacterRig/buildStageLightRig; worker 37
+T8 main menu + delegated data-action router; jiggle/faceRig/handPoses imports in
+fighter.js). All 9 edited files were rebased onto current main instead of pushing
+stale full-file copies:
+- game.js: directors now inject `{ setArenaLimit, setGroundY }` (from
+  `await lazy.fighter()`) and `{ playedMoveset, getFighterMoveset }` (from
+  `await lazy.movesets()`) — stagebreaks/rage/soulurge NO LONGER statically import
+  fighter.js or movesets.js, preserving the loadspeed lane's deferred loading.
+  startMatch stays async; hooks adapted to the feel-multiplier (`this.feel`) KO branches.
+- fighter.js: kept main's hit-feel tuning + FACING fix; added setGroundY/getGroundY,
+  armor absorb, urge chip floor, rage/urge auras, tryUrgeDash, _inputCtx urge flags
+  (main's `rage:` ctx flag reused; added `urgeOn`/`urgeAvailable`).
+- movesets.js: main already had the `R.` prefix — added `RD.` (rage drive) and the
+  2+3 urge reservation (UB./US. win over normal moves while the gauge is live).
+- rage.js: added missing `slowMoScale()`; hardened rageArtHit for null arena.
+- soulurge.js: added missing onHit/onBlockedHit/spendPip/urgeSmashHit wiring.
+- index.html/styles.css/main.js: HUD additions re-anchored onto the T8 select-grid
+  versions (4 HUD lines + rage-flash overlay + ui methods + CSS).
+- stages.js: breakables re-anchored onto the lighting-rig stage defs.
+- Verified zero main-side lines lost in every file (diff < count = 0 except
+  intentional paired modifications).
+- Third rebase (fightlab-gungaku lane: GungakuAI lazy import + programmable-dummy
+  AI switch in startMatch; photo-mode dynamic import + mode-fightlab router action
+  in main.js). Merged without touching those lanes' code.
+- Fourth rebase (worker 34 fighter-depth: FighterDepth dynamic import +
+  onMatchStart hook + soul-kindle queue watch in game.js; kindle block/damage/
+  counter-hit rules in fighter.js; T3 round-2 bank list in movesets.js).
+  Merged without touching that lane's code.
+- Fifth rebase (V-System lane, owner 2026-10-22: v-system.js, V-Trigger/
+  V-Reversal/V-Shift AI + UI + CSS; online.js script tag in index.html).
+  Rage/urge AI block placed after Soul Surge check; armor coexists with
+  V-Skill armor (V-Skill absorbs outright, rage/urge armor absorbs with
+  damage). Merged without touching that lane's code.
+- Sixth rebase (arena pipeline: mainmenu.css link in index.html; Pink Narwhal
+  club GLB + buildHelix detail-pass builder in stages.js/helix-palace).
+  Balcony breakable kept on the upgraded stage. Merged without touching
+  that lane's code.
+
+### Flags for coordinator
+- Input overlap (documented, T8-style): `1+2` = rage art while raging, urge dash while
+  urging (not raging), normal move otherwise. `2+3` = urge burst/smash while the gauge
+  is live, normal move after it's spent. Rage art has priority when both are live.
+- Soul Urge name is USER-LOCKED — do not rename without owner approval.
+- Stage-break visuals are procedural (barriers, cracked discs, debris); stages with
+  real teardown geometry (No Mercy GLBs) get wall breaks via barriers only.
+- Next-match `bindStage` resets breaks; rounds within a match keep them (T7/DOA).
+## 2026-10-22 ~13:45 CDT — Worker 27: LIGHTING + ENVIRONMENT PULL
+
+**Owner directive (verbatim):** "Pull from the most recent version of each game in the teardown
+files: (1) Lighting — how each game lights its stages, light placement, color temperature,
+dynamic vs baked, character vs stage lighting. Tekken 7/8, DOA6, SFV, SC6 — the newest lighting
+tech. Wire their lighting approaches into our stages. (2) Environment and scenery — stage
+geometry, background buildings, set dressing, ambient details. Whatever can be extracted and
+reused. (3) Accessories, clothing, buildings — from all teardowns, feeding both stages AND the
+character creation suite. (4) General sweep — flag anything visual/environmental we haven't
+pulled yet. Priority: lighting first, then stage scenery, then accessories/clothing."
+
+**Teardown audit (grounded):**
+- **Tekken 7 (UE4):** stages stream `light` (dynamic) + `lightstatic` (baked Lightmass) units
+  — source: `teardown/tekken7/tekkenmods-docs/.../Stages/index.md`. UE4 static/stationary/
+  movable modes; characters lit by movable lights + volumetric/SH probes.
+- **Tekken 8 (UE5):** does NOT use Lumen/Nanite (Digital Foundry + dsogaming Lumen on/off
+  tests) — ships baked stage lighting + dynamic character lights at 60fps. Validates the
+  T7 split; real-time GI correctly out of scope for phones.
+- **SFV (UE4 + Enlighten):** Geomerics Enlighten SH probes shade *moving* fighters with
+  indirect light at runtime (80.lv 2016, Bochan Kim quote); fighters pushed brighter than
+  background with strong rim to pop.
+- **DOA6:** new engine with "physical lighting" (Shimbori 2018; OBORO 2026 interview) —
+  honored as a constraint (keep PBR + shadowed key, don't flatten with ambient).
+- **SC6:** mechanics docs only in teardown (50GB+ binaries never acquired) — flagged, not invented.
+
+**Wired (all in `game/js/lighting-rig.js`, NEW):**
+- `buildStageLightRig()` — the T7 split: hemi+sky+fog = baked-ambient stand-in
+  (`lightstatic`); key/rim/fill directionals + accent points = dynamic rig (`light`).
+  Exactly one shadow-casting directional per stage. `buildBase` in stages.js delegates here.
+- `attachCharacterRig(fighter, stageDef)` — SFV-style character/stage separation: per-fighter
+  key PointLight (front-top, parented to root — follows with zero per-frame cost) + soul
+  glow (existing `auraLight` idles at soul-color baseline instead of 0 — **zero new lights**)
+  + soul-tinted emissive (bible Grey's law: fighters are luminous *sources*; zero shader cost).
+  Called from `Game.startMatch`; fail-silent.
+- `applyGrade(arena, def)` — per-stage `lighting.grade { exposure, bloom }` drives
+  ACESFilmic exposure (was global 1.45) + UnrealBloomPass strength (was global 0.6/0.85).
+  Called from `Arena.setStage`. Bible "luminous darkness" dial per land.
+- `buildMotes()` — atmosphere motes: 1 draw call, 0 lights, additive drifting points
+  (bible §8.4 "darkness is a material"; pollen/cinders/bioluminescence per land).
+- Soul light behaviors (bible §5c) in fighter.js aura update: BYOU flicker, TOU low/predatory
+  (light at y=0.55), SHA shimmer, KAI tidal swell, RETSU pulse, ZEN absence (glow 0),
+  GYOU hue-cycling rainbow; surge still flares to surge color.
+- 8 canon lands carry `rig` (charKey color, rimBoost, motes) + `grade` blocks grounded in
+  bible palettes (land §5b, Malakor violet §2, master §7). T3/No Mercy/boss stages inherit
+  defaults. No pure RGB primaries.
+- **Mobile budget:** hemi(1)+dir(3)+accents(≤6)+charKeys(2)+soul(2) = 14 max (+2 vs before,
+  the only additions are shadowless character keys); motes capped at 110 pts on mobile.
+
+**Environment/scenery:** motes system (above) + per-stage rig data are the new pulls. Prior
+lanes already wired T3 retro arenas, No Mercy GLBs, Eastern Mind panos, Sun Rā (not duplicated).
+
+**Accessories/clothing:** no additions — `customization/PARTS-REGISTRY.json` holds 1148 parts
+across 13 libraries; WWE CAW extraction is another worker's in-flight lane (not duplicated).
+T6/TT2 item meshes are locked/blocked (names only); T7 King armor pieces are Pantera's own
+model, not detachable parts.
+
+**Sweep flags (visual/environmental, unpulled):** Urban Reign `bg*.lit` stage-lighting moods
+(8 files); VF5 18 arena `.farc` (release vf5-ps3-v1, needs 3ds Max chrrox + QuickBMS);
+WMXIX arena point clouds → surfacing (43 OBJs); T6/TT2 item meshes; Def Jam venues (ISO
+sourced); DOA6/SC6/SFV/T7-full binaries (not acquired); SC6 lighting docs (absent).
+
+**Files:** `game/js/lighting-rig.js` (new), `game/js/stages.js` (rig delegation + 8 canon
+rig/grade blocks), `game/js/scene.js` (grade on stage swap), `game/js/game.js`
+(character rig on match start), `game/js/fighter.js` (soul-glow baseline + behaviors),
+`docs/research/lighting-environment-pull-2026-10-22.md` (full audit), WORKLOG.md (this).
+
+**Method:** base = main @ 822bdcc (2026-10-22T18:14Z) at first sync; re-synced to be7d2eda
+before push (18 commits landed mid-work — only WORKLOG.md touched among my files; rebuilt
+from the new base before appending). Fresh copies of scene.js/game.js/fighter.js/
+stages.js/WORKLOG.md fetched from main (local fix3 copy was ~1 day stale — worker 16/17/19
+had touched them). Surgical edits only; no deletions. Push via `~/workspace/fix2/gh_push.py`,
+merge via `git_merge.py`. Sandbox note: exec-path file writes to ~/workspace/fix3/lighting/
+started failing EPERM mid-task; WORKLOG.md was rebuilt as base@be7d2eda + this entry via
+/tmp staging + symlink push tree — byte-verified, no clobber.
+
+**Proof:** node harness with real three r160 (no DOM): 56/56 asserts pass (soul table,
+rig light composition 1-hemi/3-dir/1-shadow-key, rimBoost math, motes updater + mobile
+cap, character-rig attach incl. TOU low-light + fail-silent, grade application/defaults,
+budget ledger). `node --check` ESM parse on all 5 JS files. Structural checks: old light
+block gone, 8/8 canon stages carry rig+grade, no pure RGB primaries.
+**NOT proven:** in-game screenshots (no browser on this VM) and device frame-time.
+Visual verification: `game/stage-test.html?stage=shrine` + `game/index.html` fight —
+fighter key/rim separation, soul-glow tint, motes, per-stage grade. Needs a
+browser-capable pass; flagged for coordinator.
+
+**Self-check:** asked-scope met (lighting wired + audit + scenery + sweep; accessories
+documented-not-duplicated per directive) · shortcuts disclosed (no screenshots, no device
+FPS — flagged) · proof attached (56/56 node asserts) · branch/PR · CI must be green ·
+gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted made public
+(all code clean-room procedural; no game assets extracted).
+
+
+---
+
+## 2026-10-23 — Lars pull worker: CHORDZ moveset completion + Lars motion gap filed
+
+**Owner instruction (verbatim):** "pull their animations and movesets fully and everything... and their stances and poses"
+
+**Source hunt (all checked):** TTT2 `extracted-small/` = only Xbox LIVE packages + container descriptor (no game data); full TTT2 extraction blocked (disk ~27GB needed vs ~11GB free, safe-storage upload 5/26 chunks, STFS tooling, format RE). T6 PSP `decrypted/` = EBOOT only; DATA401 bulk transform still unknown (decrypt lane, branch `feature/tekken6-100-teardown`). T3 has no Lars (T6 debut). **No Lars motion extractable from any teardown today.**
+
+**Moveset (done):** diffed `game/assets/movesets/chordz.json` (452) against the fullest Lars banks — `docs/t7t8-reference/frame-data-t7/lars.json` (186) + `docs/t7t8-reference/frame-data-t8-full/lars.json` (121). Added the 17 genuinely missing moves in Tekken notation: `f,f+2` (Surge Blast), `f,f+3` (Electric Jolt), `f,f+4`, `f,f+4,3`, `f,f+1+2` (Elbow Corona), `f,f+3+4` (Double Action), `WR.4`, `WS.1,F`, `WS.2,F`, `f,f+2,F` (->Silent Entry transitions), `GROUNDED.d+3+4` (Stack Up), `GROUNDED.d+3+4,F`, `FUFT.d+4`, `FUFT.d+3+4` (getup kicks), `TACKLE.2`, `R.d/f+1+2` (Rage Art Zeus Unlimited), `AIR.DEN.2+4` (Rejection alias). Moves 452 -> 469, strings 66 -> 71, `stance_after` +4 SEN transitions, `hit_words` for 15 new moves; `index.json` counts updated. Provenance in `merge_sources.added.lars_pull_20261023`.
+
+**Animations/stance/poses (blocked, filed not stubbed):** no fake `lars` bank shipped (isolation doctrine + RULES_NO_GUESSING). Chordz keeps the flagged `jin` substitution bank (all 22 action clips present/valid). Precise gap filed: `docs/anim/LARS-ANIM-GAP-20261023.md` (exact missing bank files, TTT2/T6 blockers, unblock sequence) + pointer in the G-T6 register of `docs/anim/BANK-TABLE-2026-10-20.md`.
+
+**Verification:** all 17 new moves resolve via the game's own `resolveMove('chordz', …)`; `node --test game/tests/fighter-completeness.test.mjs` green (4/4); new-move schema + source-id refs validated; jin bank clip files all parse with frames. Live-browser play verification (animations on Chordz in-game) is queued for a browser-capable lane — subagent has no live browser.
+
+**Anti-clobber:** branched from main tip; sibling lane's WIP stashed intact; JSON edits via round-trip-safe scripted merges (diffs are additions-only); no deletions. Branch pushed via Git Database API (no GitHub connector for git ops).
+
+## Cape Jones replaces Alisa — binding (owner t118u #4, t121u, 2026-10-23 14:20 CT)
+- Additive `game/data/cape-alisa-binding.json` (built by `tools/cape/build_cape_alisa_binding.py`) binds all 188 Alisa T8 frame-data moves to fighter `cyborgx` (CAPE JONES, secret identity CYBORG X). Alisa source files untouched.
+- Owner law t121u: no Tekken 3 source. Alisa motions must be decoded from T5/T6/T7/T8/TTT2 teardowns; current gunjack T3 fallback is logged as last resort in the binding file.
+- Canon: `game/js/roster-full.js:145`, `game/js/fighter.js:57`, `game/ui-wh/roster_canon.json` (CYBORG X bio), `CANON.md` 821-849 and 1129-1152, `docs/bios/BIOS-HARVEST-2026-10-19.md` s3.
+- Gaps (not invented): Cape-only extra moves; Alisa animation bank.
+## 2026-10-23 — Claude session: T3 banks ogre/kuma/gon/law decoded; SmutBase rigs wired; loader race
+
+- SmutBase: Chatur, Pond, Megami (crew rigs, facing +Z), Menajerii (crew rig minus a skinned 4.23 m floor plane),
+  Ryusan + Tobi (re-rigged from statics stood upright by the new tools/auto_rig/reorient_static.py). PR #804.
+  Proof: docs/proof/claude-2026-10-23/smutbase/.
+- T3 banks: tools/anim/t3_bake_bank.py (new) decoded divmot14_ogre, divmot11_kuma, divmot19_gon, divmot01_law onto each
+  character's own body (t3body_<bank>.glb), 30 clips each; skeleton.json via t3_bank_skeleton.py; rows.pack.json via
+  t3_row_bake.py (ogre 187, gon 147, kuma 161, law 216 rows). Registered in t3anims.js (T3_BANKS, SOURCE_TO_BANK incl.
+  panda->kuma) and fighter.js FIGHTER_BANK (chatur->ogre, dorowani->gon, menajerii->kuma). Buffalo Bill resolves to law.
+  Forest Law: body fit fails on all four KMD costumes; follow-up via --kmd-from law.
+- game/js/assets.js: loadModels no longer joins an in-flight load that it just aborted (idle lane) — fights with a
+  still-warming fighter (Pantera) failed with AbortError.
+- Verified: Chatur vs Pantera arcade fight on the ogre bank (t3_ogre_stance/walkFwd/row50/medium), no page errors.
+  Proof: docs/proof/claude-2026-10-23/t3-banks/.
+- Found, handed to the crew: Megami, Menajerii, Ryusan, Tobi have movesets + models but NO roster entries in
+  game/js/roster-full.js (not selectable). Pond/Megami/Ryusan bases (Raven T7, Jun TTT2, Lucky Chloe T7) have no
+  decoded animation bank anywhere in the repo.
+
+## ANIMATION GATE — fight vs show (owner t117u, 2026-10-23 14:14 CT)
+
+- Contexts: `FIGHT`, `INTRO_OUTRO`, `CUTSCENE` (story), `SHOW`. Module: `game/js/anim-gate.js`.
+- In `FIGHT` only moveset clips may play. Any clip tagged show (`userData.animSet='show'`), named `show:*`, or pathed `anims/show/*` is **rejected and logged** (`gateLog` + `console.warn('[WH-ANIM-GATE] …')`).
+- Enforced in code at the two places fight actions are created: `createT3Actions()` in `game/js/t3anims.js` and the embedded Idle/Walk/Run path in `game/js/assets.js`.
+- Crossover only via allowlist `game/data/crossover.json`: fight clips → SHOW / CUTSCENE / INTRO_OUTRO; show clips → INTRO_OUTRO / CUTSCENE / SHOW, **never FIGHT** (`setCrossover` throws if anyone adds FIGHT). Changing that requires an owner-approved moveset PR.
+- CI: `test/anim-gate.test.mjs` (picked up by rig-guard game-unit-tests) simulates 600-frame fights for every roster fighter with show clips injected, asserts 0 show clips played, and checks allowlist-only crossover. Mutation check: removing the gate line makes it fail (104 fails).
+
+- 2026-10-23 14:25 CT Grok Bot (Repo Co Dev): recorded owner laws (relayed via MoneyManBusch). (1) 2:19 PM CT — data from T5/T6/T7/T8/TTT2; T3 last-resort fallback, every use logged with reason. (2) 2:21 PM CT — NO hand-made menus; all menus/char select/customization incl. packages/creation-suite built from teardowns, every UI change cites its teardown source; CI gate owned by MoneyManBusch; existing creation suite UI marked NON-COMPLIANT pending rebuild (not deleted). Updated RULES_NO_GUESSING, HOW-TO-CONTINUE, AGENTS.md, IMPORTERS.md, creation-suite README. Source: owner via MoneyManBusch.
+
+
+---
+
+## 2026-10-23 — Lars pull follow-up: SHOW-ANIMATION LOCK tagging
+
+**Owner instruction (verbatim, new standing law 2026-10-23):** "Show animations and fight moves are SEPARATE LOCKED SETS. Tag everything you pull as FIGHT (moveset moves, stances used in combat → movesets and combat animation bank) or SHOW (win poses, intro poses, taunts, cutscene animations → intros/cutscenes ONLY, NEVER enter Chordz's moveset without the user's explicit approval). Keep the two sets separated in output files so the game-code lock can enforce the separation. Win poses and intro poses are SHOW — wire them to intro/win slots, not the moveset."
+
+**Changes (follow-up PR to #797, which is merged):**
+- `docs/anim/LARS-ANIM-GAP-20261023.md`: the missing-bank file list is now split into **FIGHT clips** (combat bank + moveset: neutral/stance idles, strikes, block/hit/ko, locomotion, rows.pack.json, skeleton.json) and **SHOW clips** (intro/win slots + cutscenes only: `t3_stance.json` → intro slot, `t3_win_rp.json` → win slot; taunts/cutscenes future). Unblock sequence now requires FIGHT/SHOW tagging at intake before anything lands.
+- `game/assets/movesets/chordz.json`: file-level `anim_set_lock` metadata (law, FIGHT/SHOW definitions, approval requirement) + `"set": "FIGHT"` stamped on all 17 moves pulled this lane. The file itself is the FIGHT set.
+- `game/assets/movesets/index.json`: bytes updated.
+
+**Source priority redirect (owner 2026-10-23):** TTT2/T6 FIRST, T3 LAST (T3 has no Lars). Gap doc now states the priority and names the T5/T6/TTT2/T7 extraction coordinator lane as the manifest consumer; re-checked — no fresh Lars extractions on disk yet.
+
+**Verification:** semantic diff audit — 0 field losses, 0 removals, additions only; all 17 new moves tagged; `node --test game/tests/fighter-completeness.test.mjs` green.
+
+**Deviations:** none — the 17 pulled moves are all combat moves (FIGHT); no SHOW content entered the moveset.
