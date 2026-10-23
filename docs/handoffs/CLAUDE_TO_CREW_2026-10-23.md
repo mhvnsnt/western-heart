@@ -69,3 +69,17 @@ repo. Before you call anything done:
    `"round":"fight"` with no `[pageerror]`. Open the PNG frames and look at them. Pantera is the canary.
 6. **Proof in the PR:** the frames or sheets you actually viewed, and the test output. "Should work" is not proof.
 7. **Say what you didn't do.** A shortcut, a skipped step or a known issue goes in the PR body, not under the rug.
+
+## 7. More from 2026-10-23 (SmutBase, banks, loader)
+
+| what | where | do it right |
+|---|---|---|
+| SmutBase rigs built "facing −Z" on the belief that "the game assumes every model rests facing −Z" | `docs/research/SMUTBASE6-RIGGING-REPORT-2026-10-23.md`, `8c4fef1b3` | The game convention is **+Z** (`game/assets/models/model-facing.json` note). A `-Z` entry turns the model 180°. Check with `rig_sheet.mjs`: the face must show from the +Z camera. |
+| Ryusan / Tobi rigs wired after "rig validation" although they tear apart in the T3 stance | main's assets.js comments, PR #781 | "Validated" means the in-game stance render was viewed (`tools/proof-harness/rig_sheet.mjs OUT key`). Re-rigged from upright statics: `tools/auto_rig/reorient_static.py` then `rig_tripo_static.py --facing +Z`. |
+| Menajerii's mesh carried a 4.23 m floor plane, skinned into the model | `roster/vixen/attires/attire1/model-rigged.glb` mesh "Plane" | List the meshes before rigging; drop props/floors (`gltf-transform` node dispose + prune). |
+| `-attire1` keys pointed back at the unskinned statics while the main key used the rig | assets.js | Every key a fighter can select must point at a skinned file. |
+| Megami, Menajerii, Ryusan, Tobi had movesets + models but **no roster entry** — not selectable (FIXED by the crew 2026-10-23) | `game/js/roster-full.js` | A fighter is not "wired" until `FULL_ROSTER` has the entry; then start a fight with them. |
+| New movesets with no `anim_bank` and a base whose bank was never decoded → 0 T3 clips, frozen in fights | chatur/pond/megami/menajerii/ryusan/tobi | Check `t3: <n>` in the fight harness log (`fight.mjs`). Ogre, Kuma, Gon, Law, Forest Law banks now exist (`tools/anim/t3_bake_bank.py`); Raven/Jun/Lucky Chloe still have none — say so, don't ship a frozen fighter silently. |
+| `index.json` stale vs the moveset files (6 fighters missing, counts wrong) | `game/assets/movesets/index.json` | Regenerate it with the tool that edits movesets (`merge_sources.py` does) in the same PR. |
+| Loader joined a download it had just aborted → fights with a still-warming fighter failed (`AbortError`) | `game/js/assets.js loadModels` (`6255a6e22`) | Abort + reuse is a race: test the user path while the background lane is busy (start a fight right after boot). |
+| Phone main menu (live, 390x844, touch): the "TAP TO ENABLE SOUND" pill sits on top of DAILY CHALLENGES (elementFromPoint hits the pill, not the button); the WESTERN HEART logo overlaps the top of the STORY card; the soul-urge dots crowd the header | `node tools/proof-harness/menu_tap.mjs <url> <outdir>`; live gh-pages d24dcdd0b | Test every menu on a phone viewport with touch before merging: each button must be the top element at its own centre. |

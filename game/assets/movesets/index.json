@@ -7,8 +7,8 @@
    "tekken_base": "Armor King (Tekken)",
    "t3_source": "king",
    "moves": 500,
-   "inputs": 247,
-   "bytes": 468096
+   "inputs": 248,
+   "bytes": 468116
   },
   "awapop": {
    "display": "AWA POP",
@@ -16,8 +16,8 @@
    "t3_source": "jin",
    "anim_bank": "nina",
    "moves": 909,
-   "inputs": 402,
-   "bytes": 773679
+   "inputs": 404,
+   "bytes": 773719
   },
   "baek-master-white": {
    "display": "BAEK MASTER WHITE",
@@ -48,53 +48,54 @@
    "tekken_base": "Bob Richards (Tekken)",
    "t3_source": "jin",
    "moves": 557,
-   "inputs": 238,
-   "bytes": 529266
+   "inputs": 240,
+   "bytes": 529306
   },
   "bruno": {
    "display": "BRUNO",
    "tekken_base": "Miguel",
    "t3_source": "bryan",
    "moves": 328,
-   "inputs": 170,
-   "bytes": 263047
+   "inputs": 172,
+   "bytes": 263087
   },
   "buffalo-bill": {
    "display": "BUFFALO BILL",
    "tekken_base": "Law",
    "t3_source": "law",
-   "moves": 228,
-   "inputs": 228,
-   "bytes": 122795
+   "anim_bank": "law",
+   "moves": 795,
+   "inputs": 326,
+   "bytes": 737584
   },
   "burger-demon": {
    "display": "BURGER (Demon Mode)",
    "tekken_base": "Bob",
    "moves": 466,
-   "inputs": 237,
-   "bytes": 487217
+   "inputs": 239,
+   "bytes": 487257
   },
   "burger-speed-demon": {
    "display": "BURGER (Speed Demon)",
    "tekken_base": "Bob",
    "moves": 454,
-   "inputs": 233,
-   "bytes": 478753
+   "inputs": 235,
+   "bytes": 478793
   },
   "burger-the-mouth": {
    "display": "BURGER (The Mouth)",
    "tekken_base": "Bob",
    "moves": 454,
-   "inputs": 230,
-   "bytes": 478185
+   "inputs": 232,
+   "bytes": 478225
   },
   "burger": {
    "display": "BURGER",
    "tekken_base": "Bob",
    "t3_source": "bryan",
    "moves": 552,
-   "inputs": 240,
-   "bytes": 462796
+   "inputs": 242,
+   "bytes": 539595
   },
   "byou": {
    "display": "BYOU",
@@ -114,7 +115,7 @@
   },
   "charger-attire2": {
    "display": "CHARGER",
-   "tekken_base": "Blanka (SF) \u2014 fighter replaced by CHARGER (owner 2026-10-20)",
+   "tekken_base": "Blanka (SF) — fighter replaced by CHARGER (owner 2026-10-20)",
    "t3_source": "bryan",
    "moves": 199,
    "inputs": 199,
@@ -122,18 +123,26 @@
   },
   "charger": {
    "display": "CHARGER",
-   "tekken_base": "Blanka (SF) \u2014 fighter replaced by CHARGER (owner 2026-10-20)",
+   "tekken_base": "Blanka (SF) — fighter replaced by CHARGER (owner 2026-10-20)",
    "t3_source": "bryan",
    "moves": 199,
    "inputs": 199,
    "bytes": 94261
+  },
+  "chatur": {
+   "display": "CHATUR",
+   "tekken_base": "True Ogre (Tekken 3)",
+   "t3_source": "teardown/tekken3/movesets/moveset_ogre.json (bank divmot14_ogre.bin, bank_type 14, 330 rows)",
+   "moves": 152,
+   "inputs": 152,
+   "bytes": 79113
   },
   "chordz": {
    "display": "CHORDZ",
    "tekken_base": "Lars",
    "t3_source": "jin",
    "moves": 469,
-   "inputs": 220,
+   "inputs": 205,
    "bytes": 415693
   },
   "cyborgx": {
@@ -141,8 +150,16 @@
    "tekken_base": "Alisa",
    "t3_source": "gunjack",
    "moves": 624,
-   "inputs": 302,
-   "bytes": 520129
+   "inputs": 303,
+   "bytes": 520149
+  },
+  "deathfang-werewolf": {
+   "display": "DEATHFANG — CHAINED PRISONER WEREWOLF",
+   "tekken_base": "Iori Yagami (KOF)",
+   "t3_source": "heihachi",
+   "moves": 127,
+   "inputs": 127,
+   "bytes": 72948
   },
   "deathfang": {
    "display": "DEATHFANG",
@@ -158,16 +175,16 @@
    "t3_source": "jin",
    "anim_bank": "jin",
    "moves": 680,
-   "inputs": 299,
-   "bytes": 590921
+   "inputs": 301,
+   "bytes": 590961
   },
   "demonio-human": {
    "display": "DEMONIO",
    "tekken_base": "Demonio",
    "t3_source": "jin",
    "moves": 677,
-   "inputs": 299,
-   "bytes": 557264
+   "inputs": 301,
+   "bytes": 557304
   },
   "demonio-winged": {
    "display": "DEMONIO (Devil)",
@@ -175,8 +192,8 @@
    "t3_source": "deviljin",
    "anim_bank": "jin",
    "moves": 1057,
-   "inputs": 394,
-   "bytes": 986658
+   "inputs": 396,
+   "bytes": 986698
   },
   "demonio": {
    "display": "DEMONIO",
@@ -184,8 +201,8 @@
    "t3_source": "jin",
    "anim_bank": "jin",
    "moves": 658,
-   "inputs": 299,
-   "bytes": 508275
+   "inputs": 301,
+   "bytes": 562067
   },
   "diablo": {
    "display": "DIABLO",
@@ -193,8 +210,8 @@
    "t3_source": "heihachi",
    "anim_bank": "heihachi",
    "moves": 642,
-   "inputs": 297,
-   "bytes": 503369
+   "inputs": 299,
+   "bytes": 553743
   },
   "dio": {
    "display": "DIO",
@@ -291,6 +308,14 @@
    "inputs": 176,
    "bytes": 245575
   },
+  "dorowani": {
+   "display": "DOROWANI",
+   "tekken_base": "Gon (Tekken 3)",
+   "t3_source": "teardown/tekken3/movesets/moveset_gon.json (bank type 19, divmot19_gon.bin, 369 rows, 157 attacks)",
+   "moves": 25,
+   "inputs": 25,
+   "bytes": 13882
+  },
   "dxmmii-patchwork": {
    "display": "DXMMII PATCHWORK DJ",
    "tekken_base": "Mokujin",
@@ -306,6 +331,15 @@
    "moves": 150,
    "inputs": 150,
    "bytes": 81969
+  },
+  "gyou-spirit-body": {
+   "display": "GYOU (Spirit Body)",
+   "tekken_base": "Paul Phoenix",
+   "t3_source": "paul",
+   "anim_bank": "paul",
+   "moves": 161,
+   "inputs": 161,
+   "bytes": 109645
   },
   "gyou": {
    "display": "GYOU",
@@ -347,8 +381,8 @@
    "t3_source": "jin",
    "anim_bank": "eddy",
    "moves": 853,
-   "inputs": 376,
-   "bytes": 792158
+   "inputs": 378,
+   "bytes": 792198
   },
   "kingtyrant": {
    "display": "KING TYRANT",
@@ -356,24 +390,24 @@
    "t3_source": "xiaoyu",
    "anim_bank": "eddy",
    "moves": 848,
-   "inputs": 363,
-   "bytes": 716086
+   "inputs": 365,
+   "bytes": 716126
   },
   "kinpo": {
    "display": "KINPO",
    "tekken_base": "Asuka",
    "t3_source": "jin",
    "moves": 525,
-   "inputs": 229,
-   "bytes": 431863
+   "inputs": 231,
+   "bytes": 513240
   },
   "koreshi": {
    "display": "KORESHI",
    "tekken_base": "Kakashi (Naruto) + Super Saiyan 4/5 + ninja",
    "t3_source": "heihachi",
    "moves": 953,
-   "inputs": 351,
-   "bytes": 547603
+   "inputs": 352,
+   "bytes": 547621
   },
   "kronos-attire2": {
    "display": "KRONOS",
@@ -420,31 +454,47 @@
    "tekken_base": "Zafina",
    "t3_source": "xiaoyu",
    "moves": 508,
-   "inputs": 202,
-   "bytes": 433543
+   "inputs": 204,
+   "bytes": 433583
   },
   "mariposa": {
    "display": "MARIPOSA",
    "tekken_base": "Zafina",
    "moves": 372,
-   "inputs": 189,
-   "bytes": 318085
+   "inputs": 191,
+   "bytes": 318121
+  },
+  "megami": {
+   "display": "MEGAMI",
+   "tekken_base": "Jun Kazama (Tekken Tag Tournament 2)",
+   "t3_source": "tekken-wiki TTT2 Jun Kazama movelist (documented, no teardown bank)",
+   "moves": 150,
+   "inputs": 150,
+   "bytes": 58013
+  },
+  "menajerii": {
+   "display": "MENAJERII",
+   "tekken_base": "Roger Jr. (Tekken Tag Tournament 2)",
+   "t3_source": "tekken-wiki TTT2 Roger Jr. movelist (documented, no teardown bank)",
+   "moves": 154,
+   "inputs": 154,
+   "bytes": 68658
   },
   "michiko": {
    "display": "MICHIKO",
    "tekken_base": "Katarina",
    "t3_source": "jin",
    "moves": 344,
-   "inputs": 159,
-   "bytes": 276275
+   "inputs": 161,
+   "bytes": 276315
   },
   "negativo": {
-   "display": "N3G\u0394TIV0",
+   "display": "N3GΔTIV0",
    "tekken_base": "Negan",
    "t3_source": "bryan",
    "moves": 282,
-   "inputs": 129,
-   "bytes": 221689
+   "inputs": 130,
+   "bytes": 221709
   },
   "nightwolf": {
    "display": "NIGHTWOLF",
@@ -452,16 +502,16 @@
    "t3_source": "xiaoyu",
    "anim_bank": "julia",
    "moves": 554,
-   "inputs": 221,
-   "bytes": 476539
+   "inputs": 223,
+   "bytes": 476579
   },
   "pantera": {
    "display": "PANTERA",
    "tekken_base": "King",
    "t3_source": "king",
    "moves": 873,
-   "inputs": 394,
-   "bytes": 718617
+   "inputs": 395,
+   "bytes": 784721
   },
   "phantom": {
    "display": "PHANTOM",
@@ -470,15 +520,22 @@
    "anim_bank": "yoshimitsu",
    "moves": 1019,
    "inputs": 538,
-   "bytes": 882535
+   "bytes": 959627
+  },
+  "pond": {
+   "display": "POND",
+   "tekken_base": "Raven (Tekken 7)",
+   "moves": 151,
+   "inputs": 151,
+   "bytes": 92991
   },
   "purplerain": {
    "display": "PURPLE RAIN",
    "tekken_base": "Lee",
    "t3_source": "jin",
    "moves": 569,
-   "inputs": 264,
-   "bytes": 474912
+   "inputs": 266,
+   "bytes": 474952
   },
   "raiden": {
    "display": "BIG BEAR RAIDEN",
@@ -511,8 +568,8 @@
    "t3_source": "bryan",
    "anim_bank": "bryan",
    "moves": 685,
-   "inputs": 292,
-   "bytes": 656521
+   "inputs": 294,
+   "bytes": 656561
   },
   "rin": {
    "display": "RIN",
@@ -520,8 +577,8 @@
    "t3_source": "jin",
    "anim_bank": "jin",
    "moves": 659,
-   "inputs": 307,
-   "bytes": 567534
+   "inputs": 309,
+   "bytes": 567574
   },
   "ryuji-rock": {
    "display": "RYUJI",
@@ -538,6 +595,13 @@
    "inputs": 103,
    "bytes": 47614
   },
+  "ryusan": {
+   "display": "RYUSAN",
+   "tekken_base": "Lucky Chloe (Tekken 7)",
+   "moves": 194,
+   "inputs": 194,
+   "bytes": 160151
+  },
   "sakura": {
    "display": "SAKU RA",
    "tekken_base": "Xiaoyu",
@@ -553,16 +617,16 @@
    "t3_source": "gunjack",
    "anim_bank": "gunjack",
    "moves": 860,
-   "inputs": 368,
-   "bytes": 717684
+   "inputs": 370,
+   "bytes": 717724
   },
   "scimitar": {
    "display": "SCIMITAR",
    "tekken_base": "Shaheen",
    "t3_source": "jin",
    "moves": 362,
-   "inputs": 161,
-   "bytes": 276392
+   "inputs": 162,
+   "bytes": 308031
   },
   "sf-akuma": {
    "display": "AKUMA (SF EX)",
@@ -582,28 +646,28 @@
   },
   "sf-cammy": {
    "display": "CAMMY (SF authentic)",
-   "tekken_base": "Cammy (SF) \u2014 Akuma-pattern translation",
+   "tekken_base": "Cammy (SF) — Akuma-pattern translation",
    "moves": 10,
    "inputs": 10,
    "bytes": 4349
   },
   "sf-chunli": {
    "display": "CHUN-LI (SF authentic)",
-   "tekken_base": "Chun-Li (SF) \u2014 Akuma-pattern translation",
+   "tekken_base": "Chun-Li (SF) — Akuma-pattern translation",
    "moves": 10,
    "inputs": 10,
    "bytes": 4427
   },
   "sf-dhalsim": {
    "display": "DHALSIM (SF authentic)",
-   "tekken_base": "Dhalsim (SF) \u2014 Akuma-pattern translation",
+   "tekken_base": "Dhalsim (SF) — Akuma-pattern translation",
    "moves": 10,
    "inputs": 10,
    "bytes": 4439
   },
   "sf-guile": {
    "display": "GUILE (SF authentic)",
-   "tekken_base": "Guile (SF) \u2014 Akuma-pattern translation",
+   "tekken_base": "Guile (SF) — Akuma-pattern translation",
    "moves": 11,
    "inputs": 11,
    "bytes": 4738
@@ -618,7 +682,7 @@
   },
   "sf-mbison": {
    "display": "M. BISON (SF authentic)",
-   "tekken_base": "M. Bison (SF) \u2014 Akuma-pattern translation",
+   "tekken_base": "M. Bison (SF) — Akuma-pattern translation",
    "moves": 12,
    "inputs": 12,
    "bytes": 5321
@@ -633,7 +697,7 @@
   },
   "sf-sagat": {
    "display": "SAGAT (SF authentic)",
-   "tekken_base": "Sagat (SF) \u2014 Akuma-pattern translation",
+   "tekken_base": "Sagat (SF) — Akuma-pattern translation",
    "moves": 10,
    "inputs": 10,
    "bytes": 4391
@@ -669,16 +733,16 @@
    "t3_source": "bryan",
    "anim_bank": "bryan",
    "moves": 688,
-   "inputs": 291,
-   "bytes": 577086
+   "inputs": 293,
+   "bytes": 659244
   },
   "slice": {
    "display": "SLICE",
    "tekken_base": "Dragunov",
    "t3_source": "bryan",
    "moves": 486,
-   "inputs": 208,
-   "bytes": 423217
+   "inputs": 210,
+   "bytes": 423257
   },
   "star": {
    "display": "STAR",
@@ -690,12 +754,116 @@
    "bytes": 778637
   },
   "sunra": {
-   "display": "SUN R\u0100",
+   "display": "SUN RĀ",
    "tekken_base": "Pac-Man",
    "t3_source": "heihachi",
    "moves": 139,
    "inputs": 139,
    "bytes": 74813
+  },
+  "t3-anna": {
+   "display": "ANNA WILLIAMS",
+   "tekken_base": "Anna Williams",
+   "t3_source": "anna",
+   "moves": 224,
+   "inputs": 224,
+   "bytes": 119559
+  },
+  "t3-bosconovitch": {
+   "display": "DR. BOSCONOVITCH",
+   "tekken_base": "Dr. Bosconovitch",
+   "t3_source": "bosconovitch",
+   "moves": 266,
+   "inputs": 266,
+   "bytes": 151441
+  },
+  "t3-eddy": {
+   "display": "EDDY GORDO",
+   "tekken_base": "Eddy Gordo",
+   "t3_source": "eddy",
+   "moves": 218,
+   "inputs": 218,
+   "bytes": 114401
+  },
+  "t3-forestlaw": {
+   "display": "FOREST LAW",
+   "tekken_base": "Forest Law",
+   "t3_source": "forestlaw",
+   "moves": 102,
+   "inputs": 102,
+   "bytes": 52476
+  },
+  "t3-gon": {
+   "display": "GON",
+   "tekken_base": "Gon",
+   "t3_source": "gon",
+   "moves": 151,
+   "inputs": 151,
+   "bytes": 76821
+  },
+  "t3-hwoarang": {
+   "display": "HWOARANG",
+   "tekken_base": "Hwoarang",
+   "t3_source": "hwoarang",
+   "moves": 188,
+   "inputs": 188,
+   "bytes": 101527
+  },
+  "t3-julia": {
+   "display": "JULIA CHANG",
+   "tekken_base": "Julia Chang",
+   "t3_source": "julia",
+   "moves": 183,
+   "inputs": 183,
+   "bytes": 99096
+  },
+  "t3-kuma": {
+   "display": "KUMA",
+   "tekken_base": "Kuma",
+   "t3_source": "kuma",
+   "moves": 163,
+   "inputs": 163,
+   "bytes": 83280
+  },
+  "t3-law": {
+   "display": "MARSHALL LAW",
+   "tekken_base": "Marshall Law",
+   "t3_source": "law",
+   "moves": 228,
+   "inputs": 228,
+   "bytes": 120873
+  },
+  "t3-lei": {
+   "display": "LEI WULONG",
+   "tekken_base": "Lei Wulong",
+   "t3_source": "lei",
+   "moves": 266,
+   "inputs": 266,
+   "bytes": 140083
+  },
+  "t3-nina": {
+   "display": "NINA WILLIAMS",
+   "tekken_base": "Nina Williams",
+   "t3_source": "nina",
+   "moves": 209,
+   "inputs": 209,
+   "bytes": 110499
+  },
+  "t3-ogre": {
+   "display": "OGRE",
+   "tekken_base": "Ogre",
+   "t3_source": "ogre",
+   "moves": 161,
+   "inputs": 161,
+   "bytes": 82624
+  },
+  "t3-paul": {
+   "display": "PAUL PHOENIX",
+   "tekken_base": "Paul Phoenix",
+   "t3_source": "paul",
+   "moves": 169,
+   "inputs": 169,
+   "bytes": 88210
   },
   "thor": {
    "display": "THOR",
@@ -705,14 +873,22 @@
    "inputs": 244,
    "bytes": 182136
   },
+  "tobi": {
+   "display": "TOBI",
+   "tekken_base": "Hwoarang (Tekken 3)",
+   "t3_source": "hwoarang",
+   "moves": 194,
+   "inputs": 194,
+   "bytes": 93178
+  },
   "torch": {
    "display": "TORCH",
    "tekken_base": "Anna",
    "t3_source": "jin",
    "anim_bank": "anna",
    "moves": 892,
-   "inputs": 392,
-   "bytes": 762848
+   "inputs": 394,
+   "bytes": 880102
   },
   "tou": {
    "display": "TOU",
@@ -720,8 +896,8 @@
    "t3_source": "heihachi",
    "anim_bank": "paul",
    "moves": 640,
-   "inputs": 282,
-   "bytes": 560645
+   "inputs": 284,
+   "bytes": 560685
   },
   "vainabel": {
    "display": "VAIN ABEL ELIAS",
@@ -745,12 +921,33 @@
    "inputs": 20,
    "bytes": 13537
   },
+  "vf-elblaze": {
+   "display": "EL BLAZE (VF)",
+   "tekken_base": "El Blaze (Virtua Fighter 5)",
+   "moves": 28,
+   "inputs": 28,
+   "bytes": 15102
+  },
+  "vf-jeffry": {
+   "display": "JEFFRY (VF)",
+   "tekken_base": "Jeffry McWild (Virtua Fighter 5)",
+   "moves": 25,
+   "inputs": 25,
+   "bytes": 13320
+  },
   "vf-kage": {
    "display": "KAGE (VF)",
    "tekken_base": "Kage-Maru (Virtua Fighter 5 Final Showdown)",
    "moves": 14,
    "inputs": 14,
    "bytes": 9429
+  },
+  "vf-leifei": {
+   "display": "LEI-FEI (VF)",
+   "tekken_base": "Lei-Fei (Virtua Fighter 5)",
+   "moves": 22,
+   "inputs": 22,
+   "bytes": 11755
   },
   "vf-sarah": {
    "display": "SARAH (VF)",
@@ -759,21 +956,28 @@
    "inputs": 14,
    "bytes": 9536
   },
+  "vf-wolf": {
+   "display": "WOLF (VF)",
+   "tekken_base": "Wolf Hawkfield (Virtua Fighter 5)",
+   "moves": 21,
+   "inputs": 21,
+   "bytes": 11252
+  },
   "waterfall": {
    "display": "WATERFALL",
    "tekken_base": "Josie",
    "t3_source": "jin",
    "moves": 341,
-   "inputs": 159,
-   "bytes": 303422
+   "inputs": 161,
+   "bytes": 303462
   },
   "yukihyo": {
-   "display": "YUKIHY\u014c",
+   "display": "YUKIHYŌ",
    "tekken_base": "Armor King",
    "t3_source": "king",
    "moves": 534,
-   "inputs": 263,
-   "bytes": 458108
+   "inputs": 264,
+   "bytes": 458128
   },
   "zangief": {
    "display": "ZANGIEF",
@@ -789,175 +993,16 @@
    "t3_source": "heihachi",
    "anim_bank": "heihachi",
    "moves": 639,
-   "inputs": 297,
-   "bytes": 574717
+   "inputs": 299,
+   "bytes": 574757
   },
   "zui": {
    "display": "ZUI",
    "tekken_base": "Steve Fox",
    "t3_source": "jin",
    "moves": 654,
-   "inputs": 322,
-   "bytes": 509254
-  },
-  "dorowani": {
-   "display": "DOROWANI",
-   "tekken_base": "Gon (Tekken 3)",
-   "t3_source": "gon",
-   "moves": 25,
-   "inputs": 25,
-   "bytes": 0
-  },
-  "chatur": {
-   "display": "CHATUR",
-   "tekken_base": "True Ogre (Tekken 3)",
-   "t3_source": "ogre",
-   "moves": 52,
-   "inputs": 52,
-   "bytes": 0
-  },
-  "pond": {
-   "display": "POND",
-   "tekken_base": "Raven (Tekken 7)",
-   "t3_source": null,
-   "moves": 69,
-   "inputs": 69,
-   "bytes": 0
-  },
-  "t3-paul": {
-   "display": "PAUL (T3)",
-   "tekken_base": "Paul (Tekken 3)",
-   "t3_source": "paul",
-   "moves": 169,
-   "inputs": 169,
-   "bytes": 0
-  },
-  "t3-law": {
-   "display": "LAW (T3)",
-   "tekken_base": "Law (Tekken 3)",
-   "t3_source": "law",
-   "moves": 228,
-   "inputs": 228,
-   "bytes": 0
-  },
-  "t3-lei": {
-   "display": "LEI (T3)",
-   "tekken_base": "Lei (Tekken 3)",
-   "t3_source": "lei",
-   "moves": 266,
-   "inputs": 266,
-   "bytes": 0
-  },
-  "t3-nina": {
-   "display": "NINA (T3)",
-   "tekken_base": "Nina (Tekken 3)",
-   "t3_source": "nina",
-   "moves": 209,
-   "inputs": 209,
-   "bytes": 0
-  },
-  "t3-hwoarang": {
-   "display": "HWOARANG (T3)",
-   "tekken_base": "Hwoarang (Tekken 3)",
-   "t3_source": "hwoarang",
-   "moves": 188,
-   "inputs": 188,
-   "bytes": 0
-  },
-  "t3-eddy": {
-   "display": "EDDY (T3)",
-   "tekken_base": "Eddy (Tekken 3)",
-   "t3_source": "eddy",
-   "moves": 218,
-   "inputs": 218,
-   "bytes": 0
-  },
-  "t3-julia": {
-   "display": "JULIA (T3)",
-   "tekken_base": "Julia (Tekken 3)",
-   "t3_source": "julia",
-   "moves": 183,
-   "inputs": 183,
-   "bytes": 0
-  },
-  "t3-kuma": {
-   "display": "KUMA (T3)",
-   "tekken_base": "Kuma (Tekken 3)",
-   "t3_source": "kuma",
-   "moves": 163,
-   "inputs": 163,
-   "bytes": 0
-  },
-  "t3-ogre": {
-   "display": "OGRE (T3)",
-   "tekken_base": "Ogre (Tekken 3)",
-   "t3_source": "ogre",
-   "moves": 161,
-   "inputs": 161,
-   "bytes": 0
-  },
-  "t3-anna": {
-   "display": "ANNA (T3)",
-   "tekken_base": "Anna (Tekken 3)",
-   "t3_source": "anna",
-   "moves": 224,
-   "inputs": 224,
-   "bytes": 0
-  },
-  "t3-bosconovitch": {
-   "display": "BOSCONOVITCH (T3)",
-   "tekken_base": "Bosconovitch (Tekken 3)",
-   "t3_source": "bosconovitch",
-   "moves": 266,
-   "inputs": 266,
-   "bytes": 0
-  },
-  "t3-gon": {
-   "display": "GON (T3)",
-   "tekken_base": "Gon (Tekken 3)",
-   "t3_source": "gon",
-   "moves": 151,
-   "inputs": 151,
-   "bytes": 0
-  },
-  "t3-forestlaw": {
-   "display": "FOREST LAW (T3)",
-   "tekken_base": "Forestlaw (Tekken 3)",
-   "t3_source": "forestlaw",
-   "moves": 102,
-   "inputs": 102,
-   "bytes": 0
-  },
-  "megami": {
-   "display": "MEGAMI",
-   "tekken_base": "Jun Kazama (TTT2)",
-   "t3_source": "ttt2-documented",
-   "moves": 100,
-   "inputs": 97,
-   "bytes": 42760
-  },
-  "menajerii": {
-   "display": "MENAJERII",
-   "tekken_base": "Roger Jr. (TTT2)",
-   "t3_source": "ttt2-documented",
-   "moves": 89,
-   "inputs": 86,
-   "bytes": 37355
-  },
-  "ryusan": {
-   "display": "RYUSAN",
-   "tekken_base": "Lucky Chloe (Tekken 7)",
-   "moves": 194,
-   "inputs": 194,
-   "bytes": 160151
-  },
-  "tobi": {
-   "display": "TOBI",
-   "tekken_base": "Hwoarang (Tekken 3)",
-   "t3_source": "hwoarang",
-   "moves": 194,
-   "inputs": 194,
-   "bytes": 93178
+   "inputs": 323,
+   "bytes": 645508
   }
  }
 }

@@ -35,7 +35,8 @@ SRC2BANK = {"king": "king", "demonio": "jin", "jin": "jin", "bryan": "bryan", "x
             # made the same fix in PR #405).
             "paul": "paul", "lei": "lei", "nina": "nina", "hwoarang": "hwoarang",
             "eddy": "eddy", "julia": "julia", "anna": "anna",
-            "bosconovitch": "bosconovitch", "armorking": "armorking"}
+            "bosconovitch": "bosconovitch", "armorking": "armorking",
+            "ogre": "ogre", "kuma": "kuma", "gon": "gon", "law": "law"}
 BANK_DIR = {"king": "king_on_pantera_leoman", "jin": "jin", "xiaoyu": "xiaoyu", "bryan": "bryan",
             "gunjack": "gunjack", "yoshimitsu": "yoshimitsu", "heihachi": "heihachi_on_jin",
             "paul": "paul", "lei": "lei", "nina": "nina", "hwoarang": "hwoarang",
@@ -55,6 +56,13 @@ TARGET_GLB = {"king": "lab/game/assets/pantera_leoman.glb", "jin": "lab/game/ass
 # OWN disc body paired with its own motion bank by tools/anim/t3_extract_bodies.py (BODY-EXTRACTION.json,
 # SHA-256 against the original BNS index). Run that tool first; its outputs are local (public repo).
 REMAINDER = ["paul", "lei", "nina", "hwoarang", "eddy", "julia", "anna", "bosconovitch"]
+# Last banks (2026-10-23, tools/anim/t3_bake_bank.py): same own-body layout as the remainder banks.
+REMAINDER += ["ogre", "kuma", "gon", "law"]
+BANK_DIR.update({b: b for b in ("ogre", "kuma", "gon", "law")})
+# Forest Law: own divmot20 motion on Law's body (lab/tools/t3_motion_bake.py BANKS["forestlaw"]).
+SRC2BANK["forestlaw"] = "forestlaw"
+BANK_DIR["forestlaw"] = "forestlaw_on_law"
+TARGET_GLB["forestlaw"] = "lab/game/assets/t3_forestlaw_on_law_t3real.glb"
 _BODY = REPO / "teardown/tekken3/BODY-EXTRACTION.json"
 if _BODY.exists():
     _bx = json.loads(_BODY.read_text())
