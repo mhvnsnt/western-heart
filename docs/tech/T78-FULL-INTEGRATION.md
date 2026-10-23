@@ -52,3 +52,12 @@ Until then the only lawful sources are: frame data + stage facts above, the T7 M
 ## 4. Rules for anyone continuing
 Teardown-only sources; T3 only as a logged last resort; every menu change cites `game/ui_sources.json`; branch + PR
 with full template; gitleaks before push; no deletions/force-push; merge only when every check is verified green.
+
+## Mishima Dojo
+- Source: `teardown/tekken7/arenas/mishima-dojo_2024-map.rar` → `Mishima_Dojo_Final_2_17_24.blend` (community Blender port of T7 stage s0; original posting URL/author not recorded, so it's still TODO). Extracted with 7-Zip 24.09 (`7zz`, github.com/ip7z/7zip).
+- Converter: `tools/stage-arena-pull/convert_mishima_dojo.py`. 478 meshes / 1.9M tris → ~5.5 MB GLB. No textures (the .rar shipped none).
+- License: Bandai Namco geometry. **Not committed here and not on the public Pages site.** The GLB lives in private `mhvnsnt/game-reverse-engineering` (PR #50, `tekken7/stages/mishima-dojo/`). The stage entry in `stages.js` registers only when `globalThis.__WH_PRIVATE_ASSETS` is set. The generic `t7glb` builder is public.
+- Proof (private repo): `mishima-dojo-390px.png`, the 390px fight camera.
+
+## Community-rip source track
+Publicly posted community rips (The Models Resource, The Textures/Spriters Resource, DeviantArt, Sketchfab, modding forums) are allowed as an input track. No pirated game downloads. Log every source URL and the uploader here, store pulls in private repos, and pull in small batches.
