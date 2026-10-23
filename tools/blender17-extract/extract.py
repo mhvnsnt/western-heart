@@ -345,7 +345,12 @@ def extract_blend17(blend_path, out_dir, include_weights=True):
     print(f"Total blocks: {len(blocks)}")
     ptr_map = {b['ptr']: b for b in blocks if b['ptr']}
 
-    dnab = next(b for b in blocks if b['code'] == b'DNA1')
+    dna_blocks = [b for b in blocks if b['code'] == b'DNA1']
+    if not dna_blocks:
+        raise RuntimeError(
+            f"{blend_path}: no DNA1 block found ({len(blocks)} blocks) — "
+            f"file is truncated or not a real BLENDER17-01 mesh file")
+    dnab = dna_blocks[0]
     types, lengths, structs, struct_order = parse_dna(
         block_bytes(data, dnab))
     print(f"DNA: {len(types)} types, {len(structs)} structs")
