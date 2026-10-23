@@ -85,3 +85,38 @@ moveset's `t3_source: 'law'` (previously null -> no T3 actions).
 - Bank loads through the real `t3anims.js` loader path (fetch list == files shipped).
 - In-game playtest (animations actually playing on Buffalo Bill): flagged for the
   parent/coordinator — no live browser in this lane.
+
+## SHOW-ANIMATION LOCK (owner standing law, 2026-10-23 — applied to this pull)
+
+Show animations and fight moves are SEPARATE LOCKED SETS:
+- FIGHT (23 clips): moveset moves, combat stances — moveset + combat bank.
+- SHOW (7 clips): `t3_stance`/`_b`/`_c` (intro poses), `t3_win_lp`/`_rp`/`_lk`/`_rk`
+  (win poses) — intros/cutscenes ONLY, never in the moveset without explicit approval.
+
+Enforcement in this PR:
+- Every clip JSON carries `"anim_set": "FIGHT"` / `"SHOW"` (right after `format`).
+- `game/assets/anim/t3/law/sets.json` (wh-anim-sets/1) manifests both sets + the lock text.
+- `game/js/t3anims.js` T3_CLIP_DEFS flags `intro` and `win` with `show: true` (+ lock comment).
+- Verified: SHOW rows 449-455 appear in NO moveset move and NO pack row — the
+  moveset/pack are FIGHT-pure by construction (pack is built from moveset refs).
+
+## SOURCE-PRIORITY REDIRECT (owner standing directive, 2026-10-23) — T3 is now PROVISIONAL fallback
+
+New law: TTT2 FIRST (primary), then T5/T6, T3 LAST (fallback only). TTT2 Law data does NOT exist yet
+(TTT2 teardown ~15% — 26/26 chunks downloaded, STFS extraction pending; verified 2026-10-23, no Law
+moveset or motion bank anywhere in teardown/tekken-tag-tournament-2/). The extraction coordinator lane
+is driving T5/T6/TTT2/T7 to 100%.
+
+Everything this PR ships for Law is therefore **PROVISIONAL T3-fallback**, marked as such:
+- `game/assets/anim/t3/law/sets.json`: `source_priority` + `provenance` block (T3-fallback, provisional, backfill note).
+- `game/assets/movesets/buffalo-bill.json`: `generated_full_moveset.source_priority_2026_10_23`.
+
+### TTT2 backfill gap (filed for the extraction lane)
+When TTT2 Law extraction lands, backfill ALL of this:
+1. Moveset: re-run the full-bank diff against the TTT2 Law moveset (expect NEW TTT2-era moves not in T3).
+2. Animation bank: re-bake `game/assets/anim/t3/law/` from the TTT2 motion source; demote T3 clips to archive.
+3. Stance/poses: re-pull signature stance, intro, win poses from TTT2 (SHOW-LOCK tagging carries over).
+4. Forest Law: reassess whether Forest Law appears in TTT2 (he does not — Forest is T3-only; drop the forestlaw gap-filler note if confirmed).
+
+Do NOT present the current T3-sourced bank/moveset as final. The SHOW-ANIMATION LOCK still applies to
+any TTT2 re-pull (SHOW: win/intro/taunt/cutscene clips only; FIGHT: moveset/combat clips).
