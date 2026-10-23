@@ -2258,3 +2258,18 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 **Verification:** all 17 new moves resolve via the game's own `resolveMove('chordz', …)`; `node --test game/tests/fighter-completeness.test.mjs` green (4/4); new-move schema + source-id refs validated; jin bank clip files all parse with frames. Live-browser play verification (animations on Chordz in-game) is queued for a browser-capable lane — subagent has no live browser.
 
 **Anti-clobber:** branched from main tip; sibling lane's WIP stashed intact; JSON edits via round-trip-safe scripted merges (diffs are additions-only); no deletions. Branch pushed via Git Database API (no GitHub connector for git ops).
+
+---
+
+## 2026-10-23 — Lars pull follow-up: SHOW-ANIMATION LOCK tagging
+
+**Owner instruction (verbatim, new standing law 2026-10-23):** "Show animations and fight moves are SEPARATE LOCKED SETS. Tag everything you pull as FIGHT (moveset moves, stances used in combat → movesets and combat animation bank) or SHOW (win poses, intro poses, taunts, cutscene animations → intros/cutscenes ONLY, NEVER enter Chordz's moveset without the user's explicit approval). Keep the two sets separated in output files so the game-code lock can enforce the separation. Win poses and intro poses are SHOW — wire them to intro/win slots, not the moveset."
+
+**Changes (follow-up PR to #797, which is merged):**
+- `docs/anim/LARS-ANIM-GAP-20261023.md`: the missing-bank file list is now split into **FIGHT clips** (combat bank + moveset: neutral/stance idles, strikes, block/hit/ko, locomotion, rows.pack.json, skeleton.json) and **SHOW clips** (intro/win slots + cutscenes only: `t3_stance.json` → intro slot, `t3_win_rp.json` → win slot; taunts/cutscenes future). Unblock sequence now requires FIGHT/SHOW tagging at intake before anything lands.
+- `game/assets/movesets/chordz.json`: file-level `anim_set_lock` metadata (law, FIGHT/SHOW definitions, approval requirement) + `"set": "FIGHT"` stamped on all 17 moves pulled this lane. The file itself is the FIGHT set.
+- `game/assets/movesets/index.json`: bytes updated.
+
+**Verification:** semantic diff audit — 0 field losses, 0 removals, additions only; all 17 new moves tagged; `node --test game/tests/fighter-completeness.test.mjs` green.
+
+**Deviations:** none — the 17 pulled moves are all combat moves (FIGHT); no SHOW content entered the moveset.
