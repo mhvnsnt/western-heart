@@ -1,0 +1,21 @@
+# Anatomy layers — proof (pantera)
+
+Generated 2026-10-23 by `tools/anatomy/generate_layers.py`.
+
+## What was generated
+Four separable volumetric layers from the rigged GLB's skeleton, stored as
+unions of analytic SDF primitives in `anatomy-layers.json`.
+Renders in `renders/`: `layer_bone.png`, `layer_muscle.png`, `layer_fat.png`,
+`layer_skin.png`.
+
+## Morph proof — `muscle_biceps_L`: 0.0 -> 1.0
+- biceps.L capsule radius: 0.0531 m -> 0.08231 m (delta 0.02921 m)
+- biceps.L volume: 0.002689 m^3 -> 0.00729 m^3 (+171.11%)
+- baked skin displacement (whole mesh): mean 0.00322 m, max 0.02921 m
+- baked skin displacement (left arm region): mean 0.01321 m, max 0.02921 m
+- renders: `renders/morph_biceps_0.png` vs `renders/morph_biceps_1.png`
+
+## Validation
+- mesh<->skeleton Y rectification: 90 deg (rig front [0.0, 0.0, -1.0])
+- joints inside bone layer: 13/13 (bone volumes must contain their joints)
+- morph params registered: 37
