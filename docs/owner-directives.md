@@ -340,3 +340,26 @@ Intro sequences and win taunts are never to be replaced. New systems layer on to
   kinpo's). Repointing phantom's key at kinpo's file would ship the wrong
   fighter — refused. The tripo-intake lane must produce a phantom intake rig
   first; the config repoint is a one-line follow-up once it lands.
+
+## Buffalo Bill / Ashes canon (2026-10-23, user directives verbatim)
+
+- "Google Bill $aber and build his bio from there and mix him into our canon" — BILL $ABER (underground hip-hop artist, Buffalo NY, b. James McClary 1996): ram-horn dreadlock aesthetic, dark aggressive horrorcore/trap metal energy.
+- "And he's 'Ashes' when robed, buffalo bill when not." — Two aspects, same fighter. Robe is a decision.
+- "He's the wizard gang leader of 9 wizards of Malakor City (inspired by malakor and malakortok vibe)" — Malakor City is user-authorized canon location.
+- "He controls magic flame and ashes"
+- "He has the strength of 1000 gods canon wise and is strong looking with the ram horn dread braids, and when robed his face is shrouded all u can see is a permanent smile and 2 little sparkly small eyes beneath the sheouded cowl on his ashes attire"
+- "Yes and when robed the ram horns are just braids from beneath the shroud hanging"
+
+## 9 Wizards of Malakor City (2026-10-23, user verbatim)
+
+"The 9 wizards are (ashes, static, cipher, echo, onyx, hollow, Sombra negra, theory, and Kiko tanaka/ghost/rave). Ashes red robe, cipher yellow robe, static blue robe, echo pink robe, onyx green robe, hollow orange robe, Sombra negra black robe, theory purple robe, Kiko white fur robe"
+
+- Ashes (leader, red) | Cipher (yellow) | Static (blue) | Echo (pink) | Onyx (green) | Hollow (orange) | Sombra Negra (black) | Theory (purple) | Kiko Tanaka/Ghost/Rave (white fur)
+- 6 of 9 are Ashlane characters (Static, Cipher, Echo, Onyx, Hollow, Sombra Negra).
+- Attire reference images: `roster/wizard-gang/attires/` (PR #757). Ashes references: `roster/buffalo-bill/attires/attire3/reference/` (PR #758).
+
+## Character naming (2026-10-23, user verbatim)
+
+- "Start calling cyborg x as cape Jones but leave cyborg x in the deep canon for him" — Display name: Cape Jones. Cyborg X stays in deep canon.
+- "Start calling Kiko rave, ghost, and Kiko tanaka" / "But Rave is his main game name it's just know all the others are him too" — Main game name: RAVE. Kiko, Ghost, Kiko Tanaka are documented as the same person in canon.
+- Cyborg X model: `game/assets/models/cape-jones.glb`. Rave models: `game/assets/models/kiko-tanaka.glb`, `kiko-tanaka_alt1.glb`, `rave.glb` (in game/assets/models/, not yet wired to roster dirs).
