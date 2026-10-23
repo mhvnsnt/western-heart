@@ -64,6 +64,7 @@ let PARTS = [];       // parts-catalog.json parts[] (unified catalog v2)
 let PARTS_META = null; // parts-catalog.json header (counts/sources)
 let ROSTER = null;    // data/roster-attires.json (build_roster_attires.py)
 let JIGGLE = null;    // jiggle-schema.json
+let FPARTS = null;    // data/fighter-parts.json (Phase 1: SmutBase-6 own-mesh parts)
 let viewer = null;
 let ui = { tab:'body', attireCat:null, partsCat:null, selPart:null, wardSel:0, nudgeStep:0.001, page:0, query:'' };
 
@@ -161,12 +162,20 @@ function customizationRecord(){
     }
   }
   const morphs={}; for(const [k,v] of Object.entries(F.morphs||{})) if(v) morphs[k]=v;
+  // Phase 1: per-part toggles on the fighter's own meshes (OUTFIT tab)
+  const part_states={};
+  for(const [pid, st] of Object.entries(a.partStates||{})){
+    if(!st) continue;
+    if((st.mode&&st.mode!=='shown')||st.color||st.swap)
+      part_states[pid]={ mesh:st.mesh||null, label:st.label||pid, category:st.category||null,
+        mode:st.mode||'shown', color:st.color||null, swap:st.swap||null };
+  }
   return { version:1, app:'wh-creation-suite',
     fighter: F.mode==='roster' ? F.rosterRef.fighter : 'blank',
     attire: F.mode==='roster' ? F.rosterRef.attire : `attire${F.attireIndex+1}`,
     base_glb: F.baseGlb, out_glb: null,
     body:{ body_type:F.body.body_type, skin_tone:F.body.skin_tone },
-    morphs, parts, textures,
+    morphs, parts, textures, part_states,
     colors:{ hair:(a.colors&&a.colors.hair)||null, skin:F.body.skin_tone } };
 }
 function applyCustomizationRecord(rec){
@@ -187,6 +196,8 @@ function applyCustomizationRecord(rec){
     a.equipped[(p&&p.suite_slot)||'face']=t.part_id;
   }
   if(rec.colors && rec.colors.hair){ a.colors=a.colors||{}; a.colors.hair=rec.colors.hair; }
+  // Phase 1: per-part toggles on the fighter's own meshes (OUTFIT tab)
+  a.partStates = rec.part_states ? JSON.parse(JSON.stringify(rec.part_states)) : {};
 }
 function saveToAttire(){
   stashCurrent(); persistQuiet();
@@ -274,7 +285,8 @@ function syncParts3D(){
     else
       viewer.updatePlacement(partId, place);
   }
-  for(const pid of [...viewer.parts.keys()]) if(!seen.has(pid)) viewer.detachPart(pid);
+  for(const pid of [...viewer.parts.keys()])
+    if(!seen.has(pid) && !pid.startsWith('swap:')) viewer.detachPart(pid); // swap: keys are owned by applyPartStates3D
 }
 function syncPreview(){
   if(!viewer) return;
@@ -303,6 +315,159 @@ function syncPreview(){
   for(const key of [...viewer.markers.keys()]) if(!texSeen.has(key)) viewer.clearMarker(key);
   if(viewer.texSwaps) for(const id of [...viewer.texSwaps.keys()])
     if(!Object.values(attire().equipped).includes(id)) viewer.restoreTexture(id);
+  applyPartStates3D();
+}
+
+/* ================= OUTFIT — the fighter's own parts (Phase 1) =================
+   Per-part toggles for the SmutBase-6 fighters' own modeled meshes
+   (data/fighter-parts.json, built from each roster dir's PARTS.md — every
+   mesh name verified against the fighter's model.glb):
+     show/hide · invisible (hidden but the slot stays occupied, for layering)
+     · recolor (per-part color override) · delete (removed from this attire's
+     config) · swap (compatible unified-catalog part replaces it).
+   State is per attire: attire().partStates[partId] = {mesh,label,category,
+   mode,color,swap}. Saved per attire via customizationRecord().part_states
+   (customization.json v1) and applied in-fight by
+   game/js/customization-consumer.js. */
+const fpartsForCurrent = () =>
+  (F.mode==='roster' && F.rosterRef && FPARTS && FPARTS.fighters[F.rosterRef.fighter]) || null;
+const fpartDef = pid => { const fp=fpartsForCurrent(); return fp && fp.parts.find(p=>p.id===pid); };
+const fpartState = pid => (attire().partStates||{})[pid] || { mode:'shown', color:null, swap:null };
+function setFpartState(pid, patch){
+  const a = attire(); a.partStates = a.partStates || {};
+  const def = fpartDef(pid) || {};
+  const cur = a.partStates[pid] || { mesh:def.mesh, label:def.label, category:def.category, mode:'shown', color:null, swap:null };
+  if(def.mesh && !cur.mesh){ cur.mesh=def.mesh; cur.label=def.label; cur.category=def.category; }
+  a.partStates[pid] = Object.assign(cur, patch);
+  applyPartStates3D(); persistQuiet();
+}
+const OUTFIT_SWAP_SOCKET = { hair:'hair', headwear:'head', face:'face', tops:'torso', bottoms:'legs',
+  fullbody:'torso', underwear:'legs', hosiery:'legs', gloves:'hands', footwear:'feet', accessories:'accessory' };
+function swapCandidates(fp){
+  const slots = (FPARTS.swap_slots||{})[fp.category] || [];
+  return PARTS.filter(p=>p.part_class==='mesh_part' && p.glb && slots.includes(p.suite_slot));
+}
+function applyPartStates3D(){
+  if(!viewer || !viewer.ready) return;
+  const fp = fpartsForCurrent();
+  const states = (fp && attire().partStates) || {};
+  const seenSwap = new Set();
+  for(const part of (fp?fp.parts:[])){
+    const st = states[part.id];
+    if(!st){ viewer.setBaseMeshMode(part.mesh,'shown'); viewer.setBaseMeshColor(part.mesh,null); continue; }
+    viewer.setBaseMeshMode(part.mesh, st.mode||'shown');
+    viewer.setBaseMeshColor(part.mesh, st.color||null);
+    if(st.swap && st.swap.glb && (st.mode||'shown')==='shown'){
+      const key='swap:'+part.id; seenSwap.add(key);
+      if(!viewer.parts.has(key))
+        viewer.attachPart(key, '../../'+st.swap.glb, { socket: st.swap.socket || OUTFIT_SWAP_SOCKET[part.category] || 'accessory' },
+          st.swap.placement||{px:0,py:0,pz:0,rx:0,ry:0,rz:0,s:1}).catch(()=>{});
+    }
+  }
+  for(const k of [...viewer.parts.keys()])
+    if(k.startsWith('swap:') && !seenSwap.has(k)) viewer.detachPart(k);
+}
+function renderOutfit(el){
+  const fp = fpartsForCurrent();
+  if(!fp){
+    $('#panel-sub').textContent='Fighter parts — own-mesh toggles';
+    el.innerHTML=`<div class="note">🧥 <b>OUTFIT</b> lists the fighter's <b>own modeled meshes</b>
+      (labeled per <span class="chip">roster/*/PARTS.md</span>) with per-part toggles:
+      👁 show/hide · 👻 invisible (slot stays occupied, for layering) · 🎨 recolor ·
+      🗑 delete from this attire · 🔀 swap with a compatible catalog part.<br><br>
+      ${F.mode!=='roster'
+        ? 'Pick a roster fighter first: <b>🧍 FIGHTER SELECT</b> below, then choose one of the SmutBase 6 — <b>Ryusan, Tobi, Chatur, Pond, Megami, Menajerii</b>.'
+        : `No parts inventory for <b>${esc(F.rosterRef.fighter)}</b> yet — Phase 1 covers the SmutBase 6; the full roster lands in Phase 5.`}
+      <br><br>Toggles apply live to the 3D preview and save into this attire's record (PROFILE → SAVE TO ATTIRE).</div>`;
+    return;
+  }
+  const fname = fp.fighter_name || (F.rosterRef&&F.rosterRef.fighter) || '';
+  $('#panel-sub').textContent=`${fname} — ${fp.parts.length} labeled parts · toggles save per attire`;
+  const cats = (FPARTS.categories||[]).filter(c=>fp.parts.some(p=>p.category===c.key));
+  el.innerHTML = `<div class="note">🧥 Every mesh <b>${esc(fname)}</b> shipped with, labeled per
+      <span class="chip">PARTS.md</span>. Tap a toggle — the 3D preview updates live.
+      States save per attire (PROFILE → <b>SAVE TO ATTIRE</b>) and apply in-fight.</div>` +
+    cats.map(c=>`<div class="sect">${c.icon} ${c.label}</div><div id="of-${c.key}"></div>`).join('');
+  for(const c of cats){
+    const host = el.querySelector('#of-'+c.key);
+    fp.parts.filter(p=>p.category===c.key).forEach(p=>host.appendChild(outfitRow(p)));
+  }
+}
+function outfitRow(p){
+  const st = fpartState(p.id);
+  const d = document.createElement('div');
+  d.className='of-row'; d.id='ofrow-'+p.id.replace(/[^a-z0-9]+/gi,'-');
+  const modeLabel = {shown:'SHOWN',hidden:'HIDDEN',invisible:'INVISIBLE',deleted:'DELETED'}[st.mode||'shown'];
+  d.innerHTML=`
+    <div class="of-main">
+      <div class="of-name">${esc(p.label)}${p.signature?' <span class="chip" title="canon signature part — delete blocked">⭐ signature</span>':''}${p.base?' <span class="chip">base</span>':''}</div>
+      <div class="of-mesh">${esc(p.mesh)}</div>
+      <div class="of-state"><span class="chip of-${st.mode||'shown'}">${modeLabel}</span>${st.swap?` <span class="chip">🔀 ${esc(st.swap.name||st.swap.part_id||'')}</span>`:''}${st.color?` <span class="chip">🎨 <i style="display:inline-block;width:10px;height:10px;background:${st.color};border-radius:2px"></i></span>`:''}</div>
+      ${p.notes?`<div class="of-notes">${esc(p.notes)}</div>`:''}
+    </div>
+    <div class="of-ctl"></div>`;
+  const ctl = d.querySelector('.of-ctl');
+  if(p.base){
+    ctl.innerHTML=`<div class="note" style="margin:0">🔒 base mesh — never removed</div>`;
+    return d;
+  }
+  const bVis=document.createElement('button'); bVis.className='btn btn-sm';
+  bVis.textContent=(st.mode==='hidden'||st.mode==='invisible')?'👁 SHOW':'👁 HIDE';
+  bVis.onclick=()=>{ const cur=fpartState(p.id).mode||'shown';
+    setFpartState(p.id,{mode:(cur==='hidden'||cur==='invisible')?'shown':'hidden'}); renderPanel(); };
+  const bInv=document.createElement('button'); bInv.className='btn btn-sm'; bInv.textContent='👻 INVISIBLE';
+  bInv.title='Hidden, but the slot stays occupied (layering)';
+  bInv.onclick=()=>{ const cur=fpartState(p.id).mode||'shown';
+    setFpartState(p.id,{mode:cur==='invisible'?'shown':'invisible'}); renderPanel(); };
+  const bCol=document.createElement('label'); bCol.className='btn btn-sm'; bCol.textContent='🎨';
+  bCol.title='Recolor this part'; bCol.style.position='relative'; bCol.style.overflow='hidden';
+  const inp=document.createElement('input'); inp.type='color'; inp.value=st.color||'#ffffff'; inp.setAttribute('aria-label','Recolor '+p.label);
+  inp.style.cssText='position:absolute;inset:0;opacity:0;width:100%;height:100%;cursor:pointer';
+  inp.oninput=()=>{ setFpartState(p.id,{color:inp.value}); };
+  inp.onchange=()=>{ renderPanel(); };
+  bCol.appendChild(inp);
+  const bColX=document.createElement('button'); bColX.className='btn btn-sm'; bColX.textContent='🎨✕'; bColX.title='Clear recolor';
+  bColX.onclick=()=>{ setFpartState(p.id,{color:null}); renderPanel(); };
+  const bDel=document.createElement('button');
+  bDel.className='btn btn-sm '+((st.mode==='deleted')?'btn-green':'btn-red');
+  const canDelete = p.swappable && !p.signature;
+  bDel.textContent = st.mode==='deleted' ? '↩ RESTORE' : '🗑 DELETE';
+  bDel.disabled = !canDelete && st.mode!=='deleted';
+  bDel.title = p.signature ? 'Signature part — canon: never removed' : (p.swappable?'Remove from this attire':'Not separable — hide/recolor only');
+  bDel.onclick=()=>{ const cur=fpartState(p.id).mode||'shown';
+    setFpartState(p.id,{mode:cur==='deleted'?'shown':'deleted'}); renderPanel(); };
+  const bSwap=document.createElement('button'); bSwap.className='btn btn-sm btn-blue';
+  bSwap.textContent = st.swap ? '🔀 SWAPPED ✓' : '🔀 SWAP';
+  bSwap.disabled = !p.swappable;
+  bSwap.title = p.swappable ? 'Replace with a compatible catalog part' : 'Not swappable';
+  bSwap.onclick=()=>openSwapLibrary(p);
+  [bVis,bInv,bCol,bColX,bDel,bSwap].forEach(b=>ctl.appendChild(b));
+  return d;
+}
+function openSwapLibrary(p){
+  const cands = swapCandidates(p);
+  const st = fpartState(p.id);
+  const rows = cands.slice(0,120).map(c=>`
+    <button class="ms-row" data-id="${esc(c.id)}">
+      <span class="ms-in">${esc(c.suite_slot||'')}</span>
+      <span class="ms-name">${esc(c.name)}</span>
+      <span class="ms-tag">${esc(c.source||'')}</span>
+    </button>`).join('');
+  modal(`SWAP — ${p.label}`,
+    `<div class="note">Replace <b>${esc(p.label)}</b> (<span class="chip">${esc(p.mesh)}</span>) with a compatible catalog part.
+     The original mesh hides; the swap saves into this attire.</div>
+     ${st.swap?`<div class="btn-row"><button class="btn btn-red" id="swap-clear">REMOVE SWAP — restore ${esc(p.label)}</button></div>`:''}
+     <div class="note">${cands.length} compatible parts${cands.length>120?' (first 120 — use the PARTS tab search to narrow)':''}.</div>
+     <div class="ms-lib">${rows||'<div class="note">No compatible catalog parts with meshes yet.</div>'}</div>`,
+    [{label:'CLOSE'}]);
+  const mb=$('#modal-body');
+  mb.querySelectorAll('.ms-row').forEach(b=>b.onclick=()=>{
+    const c=PARTS.find(x=>x.id===b.dataset.id); if(!c) return;
+    setFpartState(p.id,{mode:'shown', swap:{part_id:c.id, name:c.name, glb:c.glb, socket:partSocket(c), placement:defaultPlacement(c)}});
+    closeModal(); renderPanel(); toast('Swapped ✓');
+  });
+  const clr=mb.querySelector('#swap-clear');
+  if(clr) clr.onclick=()=>{ setFpartState(p.id,{swap:null}); closeModal(); renderPanel(); toast('Swap removed ✓'); };
 }
 
 /* ---------- topbar ---------- */
@@ -337,7 +502,7 @@ function renderPanel(){
   const body=$('#panel-body');
   $('#panel-title').textContent=ui.tab.toUpperCase(); $('#panel-sub').textContent='';
   body.innerHTML='';
-  ({body:renderBody,attire:renderAttire,parts:renderParts,jiggle:renderJiggle,
+  ({body:renderBody,attire:renderAttire,parts:renderParts,outfit:renderOutfit,jiggle:renderJiggle,
     wardrobe:renderWardrobe,profile:renderProfile,moveset:renderMoveset,dome:renderDome})[ui.tab](body);
 }
 
@@ -963,10 +1128,11 @@ $('#btn-export').onclick=()=>{
 async function boot(){
   try{ const s=localStorage.getItem(LS_KEY); if(s) F=Object.assign(blankFighter(), JSON.parse(s)); }catch(e){}
   try{
-    const [parts, jig, roster] = await Promise.all([
+    const [parts, jig, roster, fparts] = await Promise.all([
       fetch('data/parts-catalog.json').then(r=>r.json()),
       fetch('data/jiggle-schema.json').then(r=>r.json()),
       fetch('data/roster-attires.json').then(r=>r.ok?r.json():null).catch(()=>null),
+      fetch('data/fighter-parts.json').then(r=>r.ok?r.json():null).catch(()=>null),
     ]);
     PARTS = Array.isArray(parts) ? parts : (parts.parts||[]);
     PARTS_META = Array.isArray(parts) ? null : parts;
@@ -974,14 +1140,14 @@ async function boot(){
     PARTS.forEach(p=>{ if(!p.asset) p.asset=p.glb||null; if(!p.source) p.source=p.library||'curated';
       if(!p.t7_slot) p.t7_slot=SLOT2CAT[p.suite_slot]||null;
       if(p.geometry_pending===undefined) p.geometry_pending=!!p.geometryPending; });
-    JIGGLE=jig; ROSTER=roster;
+    JIGGLE=jig; ROSTER=roster; FPARTS=fparts;
   }catch(e){
     $('#loader').innerHTML='<div>DATA LOAD FAILED — serve over http</div>'; return;
   }
   if(!Array.isArray(F.records)) F.records = F.records||{};
   if(F.mode==='roster' && (!F.rosterRef || !rosterAttire(F.rosterRef.fighter, F.rosterRef.attire))){ F.mode='blank'; F.rosterRef=null; F.baseGlb=BLANK_GLB; }
   viewer=new SuiteViewer($('#stage3d'));
-  window.__suite={ viewer, get F(){return F;}, ui, setTab, selectRosterAttire, customizationRecord, currentKey, get ROSTER(){return ROSTER;}, get PARTS(){return PARTS;} };
+  window.__suite={ viewer, get F(){return F;}, ui, setTab, selectRosterAttire, customizationRecord, currentKey, get ROSTER(){return ROSTER;}, get PARTS(){return PARTS;}, get FPARTS(){return FPARTS;} };
   viewer.onReady=()=>{ renderAll(); };
   await loadBaseModel();
   renderAll();
