@@ -1,0 +1,1634 @@
+{
+  "fighter": "menajerii",
+  "display": "MENAJERII",
+  "tekken_base": "Roger Jr. (Tekken Tag Tournament 2)",
+  "t3_source": "tekken-wiki TTT2 Roger Jr. movelist (documented, no teardown bank)",
+  "proxy": false,
+  "proxy_note": null,
+  "schema_version": 2,
+  "frame_convention": "Startup in seconds @60fps. Damage = Tekken values, WH 100HP. Hit ranges from the TTT2 movelist; startups are standard Tekken archetype estimates.",
+  "canon_note": "Menajerii = the Menagerie Soul (roster/vixen), Japanese rendering MENAJERII (menajerii). Roger Jr.'s boxing-kangaroo kit authored FRESH with TEKKEN inputs (owner directive — no Injustice 2 input system): Rocket Stance (b+1+2) and Bobbin Dance (b+3+4) stances, the Giant Swing, Animal Uppercut, twin 10-hit tenstrings. Canon-layered: Heron's Patience (b+1+3 parry stance), Heron Strike (HRN 1), Boar's Commit (f+2+3), Serpent's Economy (d/b+2+3).",
+  "stances": [
+    "ROS (Rocket Stance, b+1+2)",
+    "BOB (Bobbin Dance, b+3+4)",
+    "HRN (Heron's Patience, b+1+3 — canon)"
+  ],
+  "combos": [
+    {
+      "name": "Launcher juggle",
+      "input": "f,N,d,d/f+1, u/f+3,3, f+4,3,2, WS+2,2",
+      "note": "Animal Uppercut launch into standard Roger TTT2 juggle shape."
+    },
+    {
+      "name": "Rocket pressure",
+      "input": "b+1+2, ROS 2 / ROS 3 mixup",
+      "note": "High/low wind-up mixup from Rocket Stance."
+    },
+    {
+      "name": "Tenstring A",
+      "input": "b+1,2,1,4,3,3,3,4,3,2",
+      "note": "113 dmg signature 10-hit."
+    },
+    {
+      "name": "Beast consultation",
+      "input": "b+1+3 (parry), HRN 1",
+      "note": "Menajerii canon: consult the heron, strike once."
+    }
+  ],
+  "moves": {
+    "1+3": {
+      "name": "Head Stomp",
+      "input": "1+3",
+      "input_slots": [
+        "1+3"
+      ],
+      "move_class": "throw",
+      "damage": 35,
+      "hit_range": "throw",
+      "startup": 0.2,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "note": "Front throw. Escape: 1.",
+      "escape": "1",
+      "throw_type": "front"
+    },
+    "2+4": {
+      "name": "Tasmanian Doormat",
+      "input": "2+4",
+      "input_slots": [
+        "2+4"
+      ],
+      "move_class": "throw",
+      "damage": 35,
+      "hit_range": "throw",
+      "startup": 0.2,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "note": "Front throw. Escape: 2.",
+      "escape": "2",
+      "throw_type": "front"
+    },
+    "1+3~L": {
+      "name": "Animal Face Crusher",
+      "input": "1+3",
+      "input_slots": [
+        "1+3"
+      ],
+      "move_class": "throw",
+      "damage": 40,
+      "hit_range": "throw",
+      "startup": 0.2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "note": "Left-side throw. Escape: 1.",
+      "escape": "1",
+      "throw_type": "left"
+    },
+    "2+4~R": {
+      "name": "Animal Rolling Arm Lock",
+      "input": "2+4",
+      "input_slots": [
+        "2+4"
+      ],
+      "move_class": "throw",
+      "damage": 40,
+      "hit_range": "throw",
+      "startup": 0.2,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "note": "Right-side throw. Escape: 2.",
+      "escape": "2",
+      "throw_type": "right"
+    },
+    "BT 1+3": {
+      "name": "Reverse Neck Throw",
+      "input": "1+3",
+      "input_slots": [
+        "1+3"
+      ],
+      "move_class": "throw",
+      "damage": 50,
+      "hit_range": "throw",
+      "startup": 0.2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "note": "Back throw.",
+      "throw_type": "back"
+    },
+    "d/b,f+2+4": {
+      "name": "Tombstone Pile Driver",
+      "input": "d/b,f+2+4",
+      "input_slots": [
+        "d/b,f+2+4"
+      ],
+      "move_class": "throw",
+      "damage": 58,
+      "hit_range": "throw",
+      "startup": 0.267,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "note": "Command throw. Escape: 1.",
+      "escape": "1"
+    },
+    "d/b,d/b+1+2": {
+      "name": "DDT",
+      "input": "d/b,d/b+1+2",
+      "input_slots": [
+        "d/b,d/b+1+2"
+      ],
+      "move_class": "throw",
+      "damage": 45,
+      "hit_range": "throw",
+      "startup": 0.3,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "note": "Command throw. Escape: 1+2.",
+      "escape": "1+2"
+    },
+    "d,d/f,f+1": {
+      "name": "Pile Driver",
+      "input": "d,d/f,f+1",
+      "input_slots": [
+        "d,d/f,f+1"
+      ],
+      "move_class": "throw",
+      "damage": 40,
+      "hit_range": "throw",
+      "startup": 0.267,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "note": "Crouch-dash throw. Escape: 1.",
+      "escape": "1"
+    },
+    "f,b,d/b,d,d/f,f+1": {
+      "name": "Giant Swing",
+      "input": "f,b,d/b,d,d/f,f+1",
+      "input_slots": [
+        "f,b,d/b,d,d/f,f+1"
+      ],
+      "move_class": "throw",
+      "damage": 65,
+      "hit_range": "throw",
+      "startup": 0.333,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 10,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "note": "The Giant Swing. Escape: 1.",
+      "escape": "1"
+    },
+    "1": {
+      "name": "Jab",
+      "input": "1",
+      "input_slots": [
+        "1"
+      ],
+      "move_class": "strike",
+      "damage": 7,
+      "hit_range": "high",
+      "startup": 0.167,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)"
+    },
+    "1,2": {
+      "name": "Left Right Combo",
+      "input": "1,2",
+      "input_slots": [
+        "1,2"
+      ],
+      "move_class": "strike",
+      "damage": 10,
+      "hit_range": "high",
+      "startup": 0.2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "string": [
+        "1",
+        "1,2"
+      ]
+    },
+    "1,2,1": {
+      "name": "Left Right Body Blow",
+      "input": "1,2,1",
+      "input_slots": [
+        "1,2,1"
+      ],
+      "move_class": "strike",
+      "damage": 18,
+      "hit_range": "mid",
+      "startup": 0.267,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 1.5,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "string": [
+        "1",
+        "1,2",
+        "1,2,1"
+      ]
+    },
+    "1,2,2": {
+      "name": "Left Right Arrow",
+      "input": "1,2,2",
+      "input_slots": [
+        "1,2,2"
+      ],
+      "move_class": "strike",
+      "damage": 23,
+      "hit_range": "high",
+      "startup": 0.3,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "string": [
+        "1",
+        "1,2",
+        "1,2,2"
+      ]
+    },
+    "1,2,3": {
+      "name": "One Two Kangaroo Combo",
+      "input": "1,2,3",
+      "input_slots": [
+        "1,2,3"
+      ],
+      "move_class": "strike",
+      "damage": 23,
+      "hit_range": "high",
+      "startup": 0.3,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.5,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "string": [
+        "1",
+        "1,2",
+        "1,2,3"
+      ]
+    },
+    "1,2,b+1+2": {
+      "name": "Left Right Rocket Stance",
+      "input": "1,2,b+1+2",
+      "input_slots": [
+        "1,2,b+1+2"
+      ],
+      "move_class": "stance",
+      "damage": 0,
+      "hit_range": "none",
+      "startup": 0.267,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "note": "Enters Rocket Stance.",
+      "enter_stance": "ROS",
+      "string": [
+        "1",
+        "1,2",
+        "1,2,b+1+2"
+      ]
+    },
+    "2": {
+      "name": "Right Punch",
+      "input": "2",
+      "input_slots": [
+        "2"
+      ],
+      "move_class": "strike",
+      "damage": 12,
+      "hit_range": "high",
+      "startup": 0.2,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)"
+    },
+    "2,1": {
+      "name": "Jab Uppercut",
+      "input": "2,1",
+      "input_slots": [
+        "2,1"
+      ],
+      "move_class": "strike",
+      "damage": 12,
+      "hit_range": "mid",
+      "startup": 0.233,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "string": [
+        "2",
+        "2,1"
+      ]
+    },
+    "3~4": {
+      "name": "Spinning Tail Whip",
+      "input": "3~4",
+      "input_slots": [
+        "3~4"
+      ],
+      "move_class": "strike",
+      "damage": 16,
+      "hit_range": "mid",
+      "startup": 0.3,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 1.5,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "note": "Two-hit tail spin."
+    },
+    "1+2,3": {
+      "name": "Double Spin Castanet Kick",
+      "input": "1+2,3",
+      "input_slots": [
+        "1+2,3"
+      ],
+      "move_class": "strike",
+      "damage": 23,
+      "hit_range": "mid",
+      "startup": 0.367,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "string": [
+        "1+2",
+        "1+2,3"
+      ]
+    },
+    "1+2,4": {
+      "name": "Double Spin Animal Sweep",
+      "input": "1+2,4",
+      "input_slots": [
+        "1+2,4"
+      ],
+      "move_class": "strike",
+      "damage": 17,
+      "hit_range": "low",
+      "startup": 0.367,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "string": [
+        "1+2",
+        "1+2,4"
+      ]
+    },
+    "3+4": {
+      "name": "Castanet Kick",
+      "input": "3+4",
+      "input_slots": [
+        "3+4"
+      ],
+      "move_class": "strike",
+      "damage": 23,
+      "hit_range": "mid",
+      "startup": 0.4,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)"
+    },
+    "f+3": {
+      "name": "Outback Stomp",
+      "input": "f+3",
+      "input_slots": [
+        "f+3"
+      ],
+      "move_class": "strike",
+      "damage": 20,
+      "hit_range": "mid",
+      "startup": 0.3,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)"
+    },
+    "f+4,3,2": {
+      "name": "Ayer's Rock",
+      "input": "f+4,3,2",
+      "input_slots": [
+        "f+4,3,2"
+      ],
+      "move_class": "strike",
+      "damage": 23,
+      "hit_range": "mid",
+      "startup": 0.367,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "note": "Three-hit rock string.",
+      "string": [
+        "f+4",
+        "f+4,3",
+        "f+4,3,2"
+      ]
+    },
+    "f+1+2,2": {
+      "name": "Animal Gigaton Punch",
+      "input": "f+1+2,2",
+      "input_slots": [
+        "f+1+2,2"
+      ],
+      "move_class": "strike",
+      "damage": 22,
+      "hit_range": "mid",
+      "startup": 0.367,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 2.5,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "string": [
+        "f+1+2",
+        "f+1+2,2"
+      ]
+    },
+    "f+3+4": {
+      "name": "Animal Drop Kick",
+      "input": "f+3+4",
+      "input_slots": [
+        "f+3+4"
+      ],
+      "move_class": "strike",
+      "damage": 30,
+      "hit_range": "mid",
+      "startup": 0.467,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 3.5,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)"
+    },
+    "d/f+1,2": {
+      "name": "Elbow Slap Combo",
+      "input": "d/f+1,2",
+      "input_slots": [
+        "d/f+1,2"
+      ],
+      "move_class": "strike",
+      "damage": 12,
+      "hit_range": "mid",
+      "startup": 0.267,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "string": [
+        "d/f+1",
+        "d/f+1,2"
+      ]
+    },
+    "d/f+2": {
+      "name": "Bandicoot Bomb",
+      "input": "d/f+2",
+      "input_slots": [
+        "d/f+2"
+      ],
+      "move_class": "strike",
+      "damage": 15,
+      "hit_range": "mid",
+      "startup": 0.267,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)"
+    },
+    "d/f+3": {
+      "name": "Tail Flail",
+      "input": "d/f+3",
+      "input_slots": [
+        "d/f+3"
+      ],
+      "move_class": "strike",
+      "damage": 15,
+      "hit_range": "mid",
+      "startup": 0.267,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)"
+    },
+    "d/f+3,3": {
+      "name": "Double Tail Flail",
+      "input": "d/f+3,3",
+      "input_slots": [
+        "d/f+3,3"
+      ],
+      "move_class": "strike",
+      "damage": 20,
+      "hit_range": "high",
+      "startup": 0.333,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "string": [
+        "d/f+3",
+        "d/f+3,3"
+      ]
+    },
+    "d/f+4": {
+      "name": "Right Cross Kick",
+      "input": "d/f+4",
+      "input_slots": [
+        "d/f+4"
+      ],
+      "move_class": "strike",
+      "damage": 13,
+      "hit_range": "mid",
+      "startup": 0.233,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)"
+    },
+    "d/f+1+2": {
+      "name": "Animal Headbutt",
+      "input": "d/f+1+2",
+      "input_slots": [
+        "d/f+1+2"
+      ],
+      "move_class": "strike",
+      "damage": 15,
+      "hit_range": "mid",
+      "startup": 0.3,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 1.5,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)"
+    },
+    "d/f+3+4": {
+      "name": "Animal Rampage",
+      "input": "d/f+3+4",
+      "input_slots": [
+        "d/f+3+4"
+      ],
+      "move_class": "strike",
+      "damage": 30,
+      "hit_range": "throw",
+      "startup": 0.4,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "note": "Unblockable rampage throw.",
+      "unblockable_throw": true
+    },
+    "d+1,N,2": {
+      "name": "Jab Uppercut (crouch)",
+      "input": "d+1,N,2",
+      "input_slots": [
+        "d+1,N,2"
+      ],
+      "move_class": "strike",
+      "damage": 13,
+      "hit_range": "mid",
+      "startup": 0.267,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "string": [
+        "d+1",
+        "d+1,N,2"
+      ]
+    },
+    "d+2": {
+      "name": "Diving Low Punch",
+      "input": "d+2",
+      "input_slots": [
+        "d+2"
+      ],
+      "move_class": "strike",
+      "damage": 17,
+      "hit_range": "low",
+      "startup": 0.3,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)"
+    },
+    "d+1+2,1+2,2": {
+      "name": "Animal Roundhouse",
+      "input": "d+1+2,1+2,2",
+      "input_slots": [
+        "d+1+2,1+2,2"
+      ],
+      "move_class": "strike",
+      "damage": 36,
+      "hit_range": "mid",
+      "startup": 0.433,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 3.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "note": "Five-hit roundhouse."
+    },
+    "d+3+4": {
+      "name": "Tail Mopping",
+      "input": "d+3+4",
+      "input_slots": [
+        "d+3+4"
+      ],
+      "move_class": "strike",
+      "damage": 13,
+      "hit_range": "low",
+      "startup": 0.3,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)"
+    },
+    "d/b+3": {
+      "name": "Tail Tripper",
+      "input": "d/b+3",
+      "input_slots": [
+        "d/b+3"
+      ],
+      "move_class": "strike",
+      "damage": 12,
+      "hit_range": "low",
+      "startup": 0.3,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.5,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "note": "Knockdown low."
+    },
+    "d/b+4": {
+      "name": "Animal Kick Rush start",
+      "input": "d/b+4",
+      "input_slots": [
+        "d/b+4"
+      ],
+      "move_class": "strike",
+      "damage": 12,
+      "hit_range": "mid",
+      "startup": 0.267,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)"
+    },
+    "d/b+4,3,4,3,4": {
+      "name": "Animal Kick Rush",
+      "input": "d/b+4,3,4,3,4",
+      "input_slots": [
+        "d/b+4,3,4,3,4"
+      ],
+      "move_class": "strike",
+      "damage": 8,
+      "hit_range": "mid",
+      "startup": 0.367,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.5,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "note": "Five-hit kick rush."
+    },
+    "d/b+1+2": {
+      "name": "Kangaroo Attack",
+      "input": "d/b+1+2",
+      "input_slots": [
+        "d/b+1+2"
+      ],
+      "move_class": "strike",
+      "damage": 32,
+      "hit_range": "mid",
+      "startup": 0.433,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 3.5,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)"
+    },
+    "d/b+3+4": {
+      "name": "Generation Uppercut",
+      "input": "d/b+3+4",
+      "input_slots": [
+        "d/b+3+4"
+      ],
+      "move_class": "strike",
+      "damage": 40,
+      "hit_range": "mid",
+      "startup": 0.4,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.5,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)"
+    },
+    "b+2,3": {
+      "name": "Space Comet start",
+      "input": "b+2,3",
+      "input_slots": [
+        "b+2,3"
+      ],
+      "move_class": "strike",
+      "damage": 13,
+      "hit_range": "low",
+      "startup": 0.3,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "string": [
+        "b+2",
+        "b+2,3"
+      ]
+    },
+    "b+2,3,3+4": {
+      "name": "Space Comet",
+      "input": "b+2,3,3+4",
+      "input_slots": [
+        "b+2,3,3+4"
+      ],
+      "move_class": "strike",
+      "damage": 20,
+      "hit_range": "mid",
+      "startup": 0.4,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.5,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "note": "High-low-mid.",
+      "string": [
+        "b+2",
+        "b+2,3",
+        "b+2,3,3+4"
+      ]
+    },
+    "b+2,4": {
+      "name": "Space Walk",
+      "input": "b+2,4",
+      "input_slots": [
+        "b+2,4"
+      ],
+      "move_class": "strike",
+      "damage": 20,
+      "hit_range": "high",
+      "startup": 0.367,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 2.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "string": [
+        "b+2",
+        "b+2,4"
+      ]
+    },
+    "b+3": {
+      "name": "Reverse Bicycle Kick",
+      "input": "b+3",
+      "input_slots": [
+        "b+3"
+      ],
+      "move_class": "strike",
+      "damage": 17,
+      "hit_range": "mid",
+      "startup": 0.333,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)"
+    },
+    "b+4": {
+      "name": "Spinning Snap Kick",
+      "input": "b+4",
+      "input_slots": [
+        "b+4"
+      ],
+      "move_class": "strike",
+      "damage": 20,
+      "hit_range": "low",
+      "startup": 0.3,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)"
+    },
+    "b+1+2": {
+      "name": "Rocket Stance",
+      "input": "b+1+2",
+      "input_slots": [
+        "b+1+2"
+      ],
+      "move_class": "stance",
+      "damage": 0,
+      "hit_range": "none",
+      "startup": 0.333,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "note": "Enters Rocket Stance.",
+      "enter_stance": "ROS"
+    },
+    "b+3+4": {
+      "name": "Bobbin Dance",
+      "input": "b+3+4",
+      "input_slots": [
+        "b+3+4"
+      ],
+      "move_class": "stance",
+      "damage": 0,
+      "hit_range": "none",
+      "startup": 0.3,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "note": "Enters Bobbin Dance.",
+      "enter_stance": "BOB"
+    },
+    "b+1+4": {
+      "name": "Wind Up Punch",
+      "input": "b+1+4",
+      "input_slots": [
+        "b+1+4"
+      ],
+      "move_class": "strike",
+      "damage": 60,
+      "hit_range": "unblockable",
+      "startup": 0.75,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 8,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "note": "Charged unblockable."
+    },
+    "ROS F": {
+      "name": "Road Runner",
+      "input": "ROS F",
+      "input_slots": [
+        "ROS F"
+      ],
+      "move_class": "strike",
+      "damage": 30,
+      "hit_range": "mid",
+      "startup": 0.333,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 3.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "note": "Rocket Stance dash attack.",
+      "stance": "ROS"
+    },
+    "ROS D/F": {
+      "name": "Running Start",
+      "input": "ROS D/F",
+      "input_slots": [
+        "ROS D/F"
+      ],
+      "move_class": "stance",
+      "damage": 0,
+      "hit_range": "none",
+      "startup": 0.2,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "note": "Rocket Stance run.",
+      "stance": "ROS"
+    },
+    "ROS 1": {
+      "name": "Wind-up Hook",
+      "input": "ROS 1",
+      "input_slots": [
+        "ROS 1"
+      ],
+      "move_class": "strike",
+      "damage": 26,
+      "hit_range": "mid",
+      "startup": 0.3,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 2.5,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "stance": "ROS"
+    },
+    "ROS 2": {
+      "name": "Wind-up Straight",
+      "input": "ROS 2",
+      "input_slots": [
+        "ROS 2"
+      ],
+      "move_class": "strike",
+      "damage": 30,
+      "hit_range": "high",
+      "startup": 0.333,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 3.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "stance": "ROS"
+    },
+    "ROS 3": {
+      "name": "Wind-up Low Kick",
+      "input": "ROS 3",
+      "input_slots": [
+        "ROS 3"
+      ],
+      "move_class": "strike",
+      "damage": 16,
+      "hit_range": "low",
+      "startup": 0.267,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "stance": "ROS"
+    },
+    "ROS 4": {
+      "name": "Wind-up Middle Kick",
+      "input": "ROS 4",
+      "input_slots": [
+        "ROS 4"
+      ],
+      "move_class": "strike",
+      "damage": 15,
+      "hit_range": "mid",
+      "startup": 0.3,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "stance": "ROS"
+    },
+    "ROS 1+2": {
+      "name": "Road Roller",
+      "input": "ROS 1+2",
+      "input_slots": [
+        "ROS 1+2"
+      ],
+      "move_class": "strike",
+      "damage": 14,
+      "hit_range": "mid",
+      "startup": 0.367,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.5,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "note": "Three-hit roller.",
+      "stance": "ROS"
+    },
+    "ROS 3+4": {
+      "name": "Wind-up Hip Press",
+      "input": "ROS 3+4",
+      "input_slots": [
+        "ROS 3+4"
+      ],
+      "move_class": "strike",
+      "damage": 22,
+      "hit_range": "mid",
+      "startup": 0.4,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 3.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "stance": "ROS"
+    },
+    "BOB 1": {
+      "name": "Windmill Punch",
+      "input": "BOB 1",
+      "input_slots": [
+        "BOB 1"
+      ],
+      "move_class": "strike",
+      "damage": 26,
+      "hit_range": "high",
+      "startup": 0.3,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.5,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "stance": "BOB"
+    },
+    "BOB 2": {
+      "name": "Galaxy Uppercut",
+      "input": "BOB 2",
+      "input_slots": [
+        "BOB 2"
+      ],
+      "move_class": "strike",
+      "damage": 26,
+      "hit_range": "mid",
+      "startup": 0.333,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 3.5,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "stance": "BOB",
+      "launcher": true
+    },
+    "u/b+3": {
+      "name": "Animal Yo-Yo",
+      "input": "u/b+3",
+      "input_slots": [
+        "u/b+3"
+      ],
+      "move_class": "strike",
+      "damage": 20,
+      "hit_range": "mid",
+      "startup": 0.367,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "note": "Three-hit air spin."
+    },
+    "u+2": {
+      "name": "Elbow Drop",
+      "input": "u+2",
+      "input_slots": [
+        "u+2",
+        "u/f+2",
+        "u/b+2"
+      ],
+      "move_class": "strike",
+      "damage": 35,
+      "hit_range": "mid",
+      "startup": 0.433,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)"
+    },
+    "u+3,3": {
+      "name": "Helicopter Kick",
+      "input": "u+3,3",
+      "input_slots": [
+        "u+3,3",
+        "u/f+3,3"
+      ],
+      "move_class": "strike",
+      "damage": 20,
+      "hit_range": "high",
+      "startup": 0.4,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 2.5,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "string": [
+        "u+3",
+        "u+3,3"
+      ]
+    },
+    "u+4": {
+      "name": "Rising Toe Kick",
+      "input": "u+4",
+      "input_slots": [
+        "u+4",
+        "u/f+4",
+        "u/b+4"
+      ],
+      "move_class": "strike",
+      "damage": 13,
+      "hit_range": "mid",
+      "startup": 0.333,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)"
+    },
+    "u/f+1+2": {
+      "name": "Capital Punishment",
+      "input": "u/f+1+2",
+      "input_slots": [
+        "u/f+1+2"
+      ],
+      "move_class": "strike",
+      "damage": 25,
+      "hit_range": "mid",
+      "startup": 0.4,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 3.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)"
+    },
+    "u+3+4": {
+      "name": "Kangaroo Stomp",
+      "input": "u+3+4",
+      "input_slots": [
+        "u+3+4",
+        "u/f+3+4",
+        "u/b+3+4"
+      ],
+      "move_class": "strike",
+      "damage": 25,
+      "hit_range": "mid",
+      "startup": 0.433,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 3.5,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)"
+    },
+    "f,f+2": {
+      "name": "Sliding Hook",
+      "input": "f,f+2",
+      "input_slots": [
+        "f,f+2"
+      ],
+      "move_class": "strike",
+      "damage": 25,
+      "hit_range": "mid",
+      "startup": 0.333,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.5,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)"
+    },
+    "f,f+4": {
+      "name": "Konvict Kick",
+      "input": "f,f+4",
+      "input_slots": [
+        "f,f+4"
+      ],
+      "move_class": "strike",
+      "damage": 25,
+      "hit_range": "mid",
+      "startup": 0.333,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)"
+    },
+    "f,f+1+2": {
+      "name": "Head First Lunge",
+      "input": "f,f+1+2",
+      "input_slots": [
+        "f,f+1+2"
+      ],
+      "move_class": "strike",
+      "damage": 15,
+      "hit_range": "high",
+      "startup": 0.3,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "note": "Guard break.",
+      "guardbreak": true
+    },
+    "f,f+3+4": {
+      "name": "Exploder",
+      "input": "f,f+3+4",
+      "input_slots": [
+        "f,f+3+4"
+      ],
+      "move_class": "strike",
+      "damage": 25,
+      "hit_range": "high",
+      "startup": 0.4,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 3.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)"
+    },
+    "f,N,d,d/f+1": {
+      "name": "Animal Uppercut",
+      "input": "f,N,d,d/f+1",
+      "input_slots": [
+        "f,N,d,d/f+1"
+      ],
+      "move_class": "strike",
+      "damage": 40,
+      "hit_range": "mid",
+      "startup": 0.267,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 8,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "note": "Roger's EWGF-equivalent launcher.",
+      "launcher": true,
+      "electric": true
+    },
+    "f,N,d,d/f+1+2": {
+      "name": "Animal Smash",
+      "input": "f,N,d,d/f+1+2",
+      "input_slots": [
+        "f,N,d,d/f+1+2"
+      ],
+      "move_class": "strike",
+      "damage": 23,
+      "hit_range": "mid",
+      "startup": 0.333,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 3.5,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "electric": true
+    },
+    "f,f,f+3": {
+      "name": "Baiame's Spear",
+      "input": "f,f,f+3",
+      "input_slots": [
+        "f,f,f+3"
+      ],
+      "move_class": "strike",
+      "damage": 30,
+      "hit_range": "mid",
+      "startup": 0.367,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)"
+    },
+    "f,f,f+3+4": {
+      "name": "Running Exploder",
+      "input": "f,f,f+3+4",
+      "input_slots": [
+        "f,f,f+3+4"
+      ],
+      "move_class": "strike",
+      "damage": 40,
+      "hit_range": "mid",
+      "startup": 0.433,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 4.5,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)"
+    },
+    "WR 4,2": {
+      "name": "Spinning Uppercut",
+      "input": "WR 4,2",
+      "input_slots": [
+        "WR 4,2"
+      ],
+      "move_class": "strike",
+      "damage": 22,
+      "hit_range": "mid",
+      "startup": 0.367,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.5,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "note": "While-running low-mid."
+    },
+    "WR 4,4,4": {
+      "name": "Stagger Kicks",
+      "input": "WR 4,4,4",
+      "input_slots": [
+        "WR 4,4,4"
+      ],
+      "move_class": "strike",
+      "damage": 7,
+      "hit_range": "low",
+      "startup": 0.4,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "note": "While-running triple low."
+    },
+    "WS+2,2": {
+      "name": "Boomerang Punch",
+      "input": "WS+2,2",
+      "input_slots": [
+        "WS+2,2"
+      ],
+      "move_class": "strike",
+      "damage": 23,
+      "hit_range": "mid",
+      "startup": 0.3,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 2.5,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "string": [
+        "WS+2",
+        "WS+2,2"
+      ]
+    },
+    "WS+3,3": {
+      "name": "Spring Stomp Kick",
+      "input": "WS+3,3",
+      "input_slots": [
+        "WS+3,3"
+      ],
+      "move_class": "strike",
+      "damage": 12,
+      "hit_range": "high",
+      "startup": 0.3,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "string": [
+        "WS+3",
+        "WS+3,3"
+      ]
+    },
+    "WS+3,3~hold": {
+      "name": "Charge Stomp Kick",
+      "input": "WS+3,3~hold",
+      "input_slots": [
+        "WS+3,3~hold"
+      ],
+      "move_class": "strike",
+      "damage": 25,
+      "hit_range": "mid",
+      "startup": 0.4,
+      "limb": "legR",
+      "heavy": true,
+      "knock": 3.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "note": "Charged stomp."
+    },
+    "WS+4": {
+      "name": "Toe Smash",
+      "input": "WS+4",
+      "input_slots": [
+        "WS+4"
+      ],
+      "move_class": "strike",
+      "damage": 20,
+      "hit_range": "mid",
+      "startup": 0.267,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)"
+    },
+    "FC,d/f+2": {
+      "name": "Crouching Uppercut",
+      "input": "FC,d/f+2",
+      "input_slots": [
+        "FC,d/f+2"
+      ],
+      "move_class": "strike",
+      "damage": 23,
+      "hit_range": "mid",
+      "startup": 0.267,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 3.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)"
+    },
+    "SS+4": {
+      "name": "Animal Sweep",
+      "input": "SS+4",
+      "input_slots": [
+        "SS+4"
+      ],
+      "move_class": "strike",
+      "damage": 17,
+      "hit_range": "low",
+      "startup": 0.333,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)"
+    },
+    "BT 3+4": {
+      "name": "Shrimp Kick",
+      "input": "BT 3+4",
+      "input_slots": [
+        "BT 3+4"
+      ],
+      "move_class": "strike",
+      "damage": 25,
+      "hit_range": "mid",
+      "startup": 0.4,
+      "limb": "legR",
+      "heavy": false,
+      "knock": 3.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "note": "Back-turned."
+    },
+    "BT d+3": {
+      "name": "Dingo Kick",
+      "input": "BT d+3",
+      "input_slots": [
+        "BT d+3"
+      ],
+      "move_class": "strike",
+      "damage": 16,
+      "hit_range": "low",
+      "startup": 0.3,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "note": "Back-turned low."
+    },
+    "10hit-a": {
+      "name": "Tenstring A (10-hit)",
+      "input": "b+1,2,1,4,3,3,3,4,3,2",
+      "input_slots": [
+        "b+1,2,1,4,3,3,3,4,3,2"
+      ],
+      "move_class": "strike",
+      "damage": 113,
+      "hit_range": "mixed",
+      "startup": 0.333,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 3.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "note": "Signature 10-hit combo A.",
+      "combo10": true
+    },
+    "10hit-b": {
+      "name": "Tenstring B (10-hit)",
+      "input": "b+1,2,1,4,3,3,3+4,2,1+2",
+      "input_slots": [
+        "b+1,2,1,4,3,3,3+4,2,1+2"
+      ],
+      "move_class": "strike",
+      "damage": 105,
+      "hit_range": "mixed",
+      "startup": 0.333,
+      "limb": "armL",
+      "heavy": false,
+      "knock": 3.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "note": "Signature 10-hit combo B.",
+      "combo10": true
+    },
+    "b+1+3": {
+      "name": "Heron's Patience",
+      "input": "b+1+3",
+      "input_slots": [
+        "b+1+3"
+      ],
+      "move_class": "stance",
+      "damage": 0,
+      "hit_range": "none",
+      "startup": 0.233,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 0.0,
+      "soulGain": 5,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "note": "Menajerii canon: the heron's consultation — a parry stance. Beats highs/mids, feeds the boar.",
+      "canon_layer": true,
+      "parry": true,
+      "enter_stance": "HRN"
+    },
+    "HRN 1": {
+      "name": "Heron Strike",
+      "input": "HRN 1",
+      "input_slots": [
+        "HRN 1"
+      ],
+      "move_class": "strike",
+      "damage": 26,
+      "hit_range": "mid",
+      "startup": 0.267,
+      "limb": "armR",
+      "heavy": false,
+      "knock": 3.0,
+      "soulGain": 8,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "note": "Menajerii canon: from Heron's Patience — a single precise beak-strike.",
+      "canon_layer": true,
+      "stance": "HRN"
+    },
+    "f+2+3": {
+      "name": "Boar's Commit",
+      "input": "f+2+3",
+      "input_slots": [
+        "f+2+3"
+      ],
+      "move_class": "strike",
+      "damage": 34,
+      "hit_range": "mid",
+      "startup": 0.4,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.5,
+      "soulGain": 8,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "note": "Menajerii canon: the boar's consultation — armored shoulder charge, power crush.",
+      "canon_layer": true,
+      "powercrush": true
+    },
+    "d/b+2+3": {
+      "name": "Serpent's Economy",
+      "input": "d/b+2+3",
+      "input_slots": [
+        "d/b+2+3"
+      ],
+      "move_class": "strike",
+      "damage": 22,
+      "hit_range": "low",
+      "startup": 0.267,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 3.0,
+      "soulGain": 8,
+      "tekken_base": "Roger Jr. (TTT2)",
+      "note": "Menajerii canon: the snake's consultation — low crush counter, minimal motion.",
+      "canon_layer": true,
+      "counter": true,
+      "lowcrush": true
+    }
+  }
+}
