@@ -42,7 +42,7 @@ GLBs/renders; no names are invented.
 
 | File | Verts | Tris | Parts | Embedded images | Topology strip/list |
 |---|---|---|---|---|---|
-| m000 | ERROR | | | | |
+| m000 | 505744 (40065 unique) | 18959 | 265 | 84 | 102/163 |
 | m003 | 35390 | 26198 | 142 | 51 | 133/9 |
 | m006 | 21526 | 14877 | 183 | 83 | 156/27 |
 | m009 | 14192 | 19029 | 53 | 44 | 50/3 |
@@ -82,25 +82,43 @@ GLBs/renders; no names are invented.
 | m111 | 11132 | 11883 | 25 | 24 | 24/1 |
 | m114 | 15086 | 16708 | 27 | 25 | 26/1 |
 | m117 | 9418 | 9952 | 24 | 22 | 23/1 |
-| m120 | 0 | 0 | 0 | 0 | 0/0 |
+| m120 | 401 | 760 | 1 | 0 | 1/0 |
 Totals (39 assembled stages): 940,586 verts, 791,524 tris, 1,795
 embedded texture images. m087 and m090 have identical part/vert/tri
 counts but different bytes (sha256 differs) — variant entries of the
 same arena, not duplicates.
 
-## Exceptions (no guessed geometry shipped)
+## Phase 14 update — exceptions resolved (41/41)
 
-- **m000 — VMX version 2.** The v2 part records are 36 B (not 40 B)
-  and parts draw from 58 distinct shared vertex streams (fighter-style
-  layout); stream extents are not self-describing under the v4 rules
-  (the v4 stream-end word is absent). Part 0's stream decodes sanely
-  at stride 40, so the format is close, but assembling the full stage
-  needs the v2 loader path read from the XBE — named blocker, no GLB
-  shipped for m000.
-- **m120 — VMX version 3** (246,144 B, the archive's small outlier).
-  Single part whose stream-end word is the sentinel 0xFFFFFFFF;
-  geometry not assembled — named blocker (v3 part semantics), no GLB
-  shipped for m120.
+Both exceptions were assembled in phase 14 with the same
+measured discipline (full layout evidence:
+`PHASE14-STAGE-LAYOUTS.md`; tool: `tools/build_stage2.py`):
+
+- **m000 — VMX version 2: ASSEMBLED.** 36 B part records; parts
+  share one 40 B-stride vertex stream per node (58 streams, extents
+  proven by exact tiling: span = nv·40 or nv·40+8 trailer); parts
+  placed by node matrices (translation ×1.0, stage units); the 3
+  type-4 parts use the fighter skinned-pool split-stream layout
+  (color+UV 12 B/vert + pos+normal 32 B/vert, triplicated
+  byte-identical). VXT is version 1 (32 B records; mip-chain size
+  accounting exact over all 86 records). 265/265 parts, 0 skipped:
+  40,065 unique stream verts (505,744 verts as stored in the GLB,
+  shared streams emitted per part), 18,959 tris, 84 embedded
+  images, topology strip/list 102/163. Proof (viewed):
+  `phase14-proof/stage-m000-arena.png`,
+  `phase14-proof/stage-m000-arena-flat.png`,
+  `phase14-proof/stage-m000-plan.png`.
+- **m120 — VMX version 3: ASSEMBLED.** Standard 40 B record; the
+  0xFFFFFFFF word is the stream-end sentinel and the vertex count
+  (401) is exact by (iptr − vptr) = 401·40 + 8. Its VXT holds 0
+  textures and its only material is color-only; the geometry is a
+  unit sphere with uniform white vertex colors — shipped exactly
+  as stored (401 verts, 760 tris, 0 images). Proof (viewed):
+  `phase14-proof/stage-m120-plan.png`,
+  `phase14-proof/stage-m120-arena.png`.
+
+**Stage totals are now 41/41**: 940,586 + 505,744 + 401 GLB verts,
+791,524 + 18,959 + 760 tris, 1,795 + 84 embedded images.
 
 Parts skipped inside assembled stages are the same class the phase-2
 extractor skipped (span ≤ 0 or not a multiple of 40 — non-geometry
