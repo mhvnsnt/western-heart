@@ -4,6 +4,7 @@
 // 1) every visible main-menu item is the topmost element at its centre (nothing eats taps)
 // 2) same check with a boot module forced to fail (the owner's untappable case)
 // 3) real taps: VERSUS -> char select -> P1 + P2 -> stage -> fight HUD
+// Taps allow 90s: headless CI renders the live-3D select panes on software GL (~600ms frames).
 import { chromium, devices } from 'playwright';
 import fs from 'node:fs';
 const BASE = process.env.WH_URL || 'http://127.0.0.1:8811';
@@ -37,7 +38,7 @@ let p = await page(false);
 await hitCheck(p, '01-menu');
 const scr = () => p.evaluate(() => ['screen-menu', 'screen-select', 'screen-stage', 'hud'].filter(id => { const e = document.getElementById(id); return e && getComputedStyle(e).display !== 'none' && !e.classList.contains('hidden'); }));
 const step = async (sel, want, shot) => {
-  await p.tap(sel, { timeout: 15000 }); await p.waitForTimeout(800);
+  await p.tap(sel, { timeout: 90000 }); await p.waitForTimeout(800);
   if (want) {
     try { await p.waitForFunction((id) => { const e = document.getElementById(id); return e && getComputedStyle(e).display !== 'none' && !e.classList.contains('hidden'); }, want, { timeout: 20000 }); }
     catch { fails.push(`tap ${sel}: expected ${want}, on ${await scr()}`); }
