@@ -49,6 +49,23 @@ TARGET_GLB = {"king": "lab/game/assets/pantera_leoman.glb", "jin": "lab/game/ass
               "eddy": "lab/game/assets/t3_eddy.glb", "julia": "lab/game/assets/t3_julia.glb",
               "anna": "lab/game/assets/t3_anna.glb", "bosconovitch": "lab/game/assets/t3_bosconovitch.glb",
               "armorking": "lab/game/assets/t3_armorking.glb"}
+# Optional override (2026-10-21): when the SHA-verified bodies from tools/anim/t3_extract_bodies.py are present
+# locally, bake onto lab/game/assets/t3_<bank>_t3real.glb — the rig each bank's runtime skeleton.json was built
+# from. Same 18-joint hierarchy as the plain t3_<bank>.glb rigs above (checked), so either rig's rows retarget alike. Body (KMD + slot-0 frame-75 stance) = the character's
+# OWN disc body paired with its own motion bank by tools/anim/t3_extract_bodies.py (BODY-EXTRACTION.json,
+# SHA-256 against the original BNS index). Run that tool first; its outputs are local (public repo).
+REMAINDER = ["paul", "lei", "nina", "hwoarang", "eddy", "julia", "anna", "bosconovitch"]
+_BODY = REPO / "teardown/tekken3/BODY-EXTRACTION.json"
+if _BODY.exists():
+    _bx = json.loads(_BODY.read_text())
+    for _b in REMAINDER:
+        _e = _bx.get(_b)
+        if isinstance(_e, dict) and _e.get("kmd"):
+            BANK_DIR[_b] = _b
+            TARGET_GLB[_b] = f"lab/game/assets/t3_{_b}_t3real.glb"
+            TB.BANKS[_b] = (str(Path(_e["kmd"]).relative_to("teardown/tekken3")),
+                            str(Path(_e["bank"]).relative_to("teardown/tekken3")),
+                            str(Path(_e["stance_obj"]).relative_to("teardown/tekken3")))
 
 
 def referenced_rows(bank):
@@ -64,6 +81,9 @@ def referenced_rows(bank):
                 src = v.get("t3_source") or d.get("t3_source")
                 if SRC2BANK.get(src) == bank and isinstance(v["t3_row"], int):
                     rows.setdefault(v["t3_row"], []).append(Path(f).stem)
+            at = v.get("anim_t3") if isinstance(v, dict) else None
+            if at and SRC2BANK.get(at.get("bank")) == bank and isinstance(at.get("row"), int):
+                rows.setdefault(at["row"], []).append(Path(f).stem)
     return rows
 
 
