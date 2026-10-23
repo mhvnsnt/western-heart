@@ -94,12 +94,21 @@ def run_tier(vol, state, stream_mm, stream_str, tier):
             auto.add_word(get_bytes(state, name)[o:o + WIN].decode('latin-1'), idx)
         auto.make_automaton()
         found = {}
-        for end, idx in auto.iter(stream_str):
-            if idx in found: continue
-            name, o, ln = batch[idx]
-            cand = end - WIN + 1
-            if stream_mm[cand:cand + ln] == get_bytes(state, name)[o:o + ln]:
-                found[idx] = cand
+        # NOTE: this pyahocorasick build widens the haystack ~4x
+        # internally during iter(); scan in 64 MB chunks with a
+        # WIN-1 overlap so peak memory stays bounded on any
+        # stream size (measured: 100 MB str -> +382 MB RSS).
+        CH = 1 << 26
+        base = 0
+        while base < len(stream_str):
+            chunk = stream_str[base:base + CH]
+            for end, idx in auto.iter(chunk):
+                if idx in found: continue
+                name, o, ln = batch[idx]
+                cand = base + end - WIN + 1
+                if stream_mm[cand:cand + ln] == get_bytes(state, name)[o:o + ln]:
+                    found[idx] = cand
+            base += CH - (WIN - 1)
         for idx, (name, o, ln) in enumerate(batch):
             if idx in found:
                 state[name]['pieces'].append([o, found[idx], ln, tier]); found_count += 1
