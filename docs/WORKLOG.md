@@ -1,5 +1,7 @@
 # Western Heart — Work log (timestamps CT)
 
+- 2026-10-23 15:45 CT Grok Bot (teardown-integration lane): t119u roster replacement map. `tools/roster-map/build.mjs` generates `docs/ROSTER-REPLACEMENT-MAP.md` and `game/data/roster_map.json` from roster-full.js `base`, the attiresFor() order and SOURCE-MERGE move sources. It is report-only, with no reorders. Results: 55 fighters; 36 have moves that match their Tekken slot; 9 have a Tekken-original attire; 3 sit at attire 5-7. 67 issues are listed for the owner (7 shared slots, 7 fighters with undocumented move sources, 46 ladders with no Tekken original, 6 originals outside 5-7, star=Christie slot but Xiaoyu moves).
+
 - 2026-10-14 16:10 Grok Bot (QA lane): claimed in agent-ops CLAIMS.md (`grok/wh-playtest-qa`). Sparse clone `/workspace/wh-qa` (`--depth 1 --filter=blob:limit=2m`), Godot 4.3 already on box. Disk 4.6 GB free, RAM ~5 GB.
 - 16:15 Imported lab/game headless; read main.gd / fighter.gd / move_table.gd / ai.gd. King jab row 35 has active_first 18; grab and heavy share row 230.
 - 16:20 Wrote `lab/game/tests/qa_playtest.gd` (scripted P1 via InputMap, dummy P2, per-frame CSV). Headless run: 12 scenarios, 30 s.
