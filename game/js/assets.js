@@ -6,6 +6,7 @@
    Pantera = real P1 textured body (roster/pantera). Steve Fox =
    Tekken 7 base reskinned cold blue-white (see game/README.md).
    ============================================================ */
+import { checkClip, CTX } from './anim-gate.js';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { clone as skeletonClone } from 'three/addons/utils/SkeletonUtils.js';
@@ -1379,7 +1380,8 @@ class AssetManager {
     const idleClip = clips.Idle || clips.Battle_Idle || clips.Stage_Idle || null;
     for (const name of ['Idle', 'Walk', 'Run']) {
       const clip = name === 'Idle' ? idleClip : clips[name];
-      if (clip) {
+      // ANIMATION GATE (owner t117u): in-game fighter instances are FIGHT context.
+      if (clip && checkClip(name, clip, CTX.FIGHT).ok) {
         actions[name] = mixer.clipAction(clip);
         actions[name].play();
         actions[name].setEffectiveWeight(name === 'Idle' ? 1 : 0);

@@ -66,6 +66,7 @@ const T3_BONES = ['Root','Hips','Spine','Chest','Neck','Head',
 // 2026-10-19): the game is served at the site root, so the previous
 // '../assets/anim/...' base resolved ABOVE the game and 404'd every
 // clip in production — the banks must live under game/assets/anim/.
+import { checkClip, CTX } from './anim-gate.js';
 export const T3_BANKS = {
   king:       'assets/anim/t3/king_on_pantera_leoman/',
   jin:        'assets/anim/t3/jin/',
@@ -521,6 +522,8 @@ export function createT3Actions(mixer, t3Clips, THREE) {
   // for raw identity-rest clips; nothing in the game passes those any more.
   const actions = {};
   for (const [name, clip] of Object.entries(t3Clips)) {
+    // ANIMATION GATE (owner t117u): fighter actions are FIGHT context; show clips never become actions.
+    if (!checkClip(name, clip, CTX.FIGHT).ok) continue;
     try {
       const action = mixer.clipAction(clip);
       const loop = clip.userData.loop;
