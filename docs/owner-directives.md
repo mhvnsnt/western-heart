@@ -340,3 +340,10 @@ Intro sequences and win taunts are never to be replaced. New systems layer on to
   kinpo's). Repointing phantom's key at kinpo's file would ship the wrong
   fighter — refused. The tripo-intake lane must produce a phantom intake rig
   first; the config repoint is a one-line follow-up once it lands.
+
+## Scimitar Attire 1 — pauldron-blade design + canon (user directive 2026-10-22, worker 77)
+- **DESIGN (user's words):** Shoulder pauldron on his RIGHT shoulder, comes down across his chest to the left like a cross, past the rib. A scimitar blade is attached to the armor.
+- **CANON (user's words):** The pauldron+blade is attached to his body and soul — he would DIE if he removed it. He can't separate the sword from the pauldron. He fights using the blade's positioning as part of his movements. The blade is positioned so it doesn't interfere with his other moves (not a hitbox problem — it's part of his style).
+- **FUTURE (user):** May get another sword later, or attach different gear via the creation suite. The pauldron-blade is PERMANENT.
+- **MOVESET:** Shaheen's moves (Shaheen already claimed for Scimitar — no new claim).
+- **ARCHIVE:** Tripo model `scimitar-a1-fantasy-warrior.glb` (24,166,404 bytes) → `roster/scimitar/attires/attire1/source/` + manifest.json. Immutable-original tag `scimitar-a1-original` ("Restore point: these bytes never change"). Archive-only: unrigged static, NOT wired into MODEL_URLS. Full record: `docs/research/SCIMITAR-ATTIRE1-DESIGN-CANON-2026-10-22.md`.
