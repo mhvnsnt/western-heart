@@ -359,11 +359,11 @@ export const MODEL_URLS = {
   // spirit, temple dancer who refused to die. SmutBase intake (roster/rahkasa/).
   // Unrigged static (1 mesh; rig widgets live in the .blend); k-NN auto-rig
   // from donor is the planned path.
-  chatur: '../roster/rahkasa/attires/attire1/model.glb',
+  chatur: '../roster/rahkasa/attires/attire1/model-rigged.glb',
   // POND (owner 2026-10-23): Raven's WH replacement — swamp boundary watcher,
   // found Dorowani as an egg. SmutBase intake (roster/tsuyu-asui/). Unrigged
   // static (9 meshes, clothing separate); k-NN auto-rig from donor is the planned path.
-  pond: '../roster/tsuyu-asui/attires/attire1/model.glb',
+  pond: '../roster/tsuyu-asui/attires/attire1/model-rigged.glb',
   // CHARGER Attire 2 (2026-10-21, lane 4 rig batch 1): unrigged Tripo static -> model-rigged.glb
   // via tools/auto_rig knn backend (donor pantera.glb); original model.glb untouched.
   'charger-attire2': '../roster/charger/attires/attire2/model-rigged.glb',
@@ -392,16 +392,16 @@ export const MODEL_URLS = {
   // intake original (191.6 MB) archived on release
   // megami-menajerii-smutbase-20261023. Canon: roster/parvati/CANON.md.
   // Moveset: game/assets/movesets/megami.json (Jun Kazama TTT2 kit, Tekken inputs).
-  megami: '../roster/parvati/attires/attire1/model.glb',
-  'megami-attire1': '../roster/parvati/attires/attire1/model.glb',
+  megami: '../roster/parvati/attires/attire1/model-rigged.glb',
+  'megami-attire1': '../roster/parvati/attires/attire1/model-rigged.glb',
   // MENAJERII (2026-10-23, SmutBase 6 pipeline fighters 5-6): SmutBase Vixen
   // commission intake (Injustice 2-based). In-repo build = meshopt-compressed
   // (41.7 MB, validated); intake original (629.7 MB) archived on release
   // megami-menajerii-smutbase-20261023. Canon: roster/vixen/CANON.md.
   // Moveset: game/assets/movesets/menajerii.json (Roger Jr. TTT2 kit, fresh
   // Tekken inputs per owner directive — no Injustice 2 input system).
-  menajerii: '../roster/vixen/attires/attire1/model.glb',
-  'menajerii-attire1': '../roster/vixen/attires/attire1/model.glb',
+  menajerii: '../roster/vixen/attires/attire1/model-rigged-noplane.glb',
+  'menajerii-attire1': '../roster/vixen/attires/attire1/model-rigged-noplane.glb',
   // ——— LANDING WAVE 1 (2026-10-23, docs/CATCHUP-AUDIT-2026-10-23.md) ———
   // Wiring fixes only: keys for models already on main that no key reached.
   // BUFFALO BILL: his moveset file sat on main unlisted; A1/A2 sources named
