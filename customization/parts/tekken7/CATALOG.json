@@ -125,7 +125,7 @@
    "scope": "generic",
    "char_id": null,
    "player_cus_id": 0,
-   "color_slots": 0,
+   "color_slots": 4,
    "editable": [
     "tint",
     "offset",
@@ -150,7 +150,157 @@
     "source_format": "UE4 .uasset (loose extracted game tree, NOT paks): TekkenGame/Content/Character/Item/Meshes/cmn/Full_Head/cmn_hef_skull/{Meshes,Texture,Material} \u2014 Tekken 7 Fated Retribution (Namco System ES3 arcade build) tree, archive.org item T7VHDsExtracted, file 'TR205 Extracted.7z', folder 0. The generic item's per-character fitted variant SK_CH_dra_hef_skull (Dragunov) is the converted mesh \u2014 the same skeleton Slice's Attire 1 binds; all 43 SK variants + MI + 4 textures were extracted (48 .uasset, 8.0MB, UE magic C1 83 2A 9E verified) and are stored in release w6-tekken7-parts-20261021 (skull-mask-uassets.zip, sha256 in the PR).",
     "tool": "umodel_linux (held build 1578, from tekken7-full-v1) -export -gltf + TGAs -> Blender 4.0.2 material bind per the game's own MI_CH_cmn_hef_skull (Diffuse=D, Normal=N, SpecPower=R, Metallic scalar 0.45) -> GLB, stray umodel Icosphere helper removed",
     "proof": "customization/parts/tekken7/full_head/skull-mask/proof-on-slice.png \u2014 mask on Slice Attire 1 (Dragunov), beret hidden (FULL_HEAD equip semantics), viewed by the lane",
-    "notes": "color_slots is 0 pending the CCI_dra_hef_skull record extraction (record located at Character/Item/Customize/DRA/FULL_HEAD/CCI_dra_hef_skull.uasset in the same archive; not yet extracted \u2014 the _D map is luminance-style, in-game color is CCI tint-driven, same as Slice Attire 1's costume). Placement offsets are 0 because the DRA-fitted mesh is already at head position in Dragunov skeleton space (measured bbox z 1.706..2.037, x/y centered on 0)."
+    "notes": "color_slots RESOLVED 2026-10-22 (W6b): CCI_dra_hef_skull + CI_dra_hef_skull extracted piecewise from the same TR205 archive (folder 0) and parsed directly (umodel loads the packages but cannot dump these classes) \u2014 color_slots = 4 from CCI ItemColors[0].InstanceColors/ColorIndicies (defaults + palette mapping in customization_records; full parse in records-dra.json; all 39 characters' CCI color records are identical). Placement offsets are 0 because the DRA-fitted mesh is already at head position in Dragunov skeleton space (measured bbox z 1.706..2.037, x/y centered on 0)."
+   },
+   "customization_records": {
+    "status": "extracted_and_parsed_2026-10-22 (W6b lane)",
+    "records_file": "customization/parts/tekken7/full_head/skull-mask/records-dra.json",
+    "all_characters_file": "customization/parts/tekken7/full_head/skull-mask/records-all-chars.json",
+    "raw_uassets_release": "w6-tekken7-parts-20261021: skull-mask-records-dra.zip (CI+CCI for DRA) and skull-mask-records-all-chars.zip (80 records, 39 characters + DRA suit pair)",
+    "CI": {
+     "asset": "CI_dra_hef_skull.uasset",
+     "size": 1451,
+     "sha256": "a4082b9d6c339ca31300615537eea3b21f4ecba879e3d3e75d767a54f449e0c7",
+     "class": "CharacterItem (/Script/TekkenGame)",
+     "fields": {
+      "InstanceName": "SK_CH_cmn_hef_skull",
+      "MeshType": "SkeletalMeshAnim",
+      "Character": "CharacterItemEditor::ID_DRA",
+      "ItemPosition": "FULL_HEAD",
+      "SourceSkeletalMesh_pkgindex": -4,
+      "SocketPosition": "UNSET_SOCKET",
+      "bAllowHairAcc": false,
+      "CommonGroup": "cmn_hef"
+     },
+     "source_skeletal_mesh": "SK_CH_dra_hef_skull (import #3, SkeletalMesh, /Game/Character/Item/Meshes/cmn/Full_Head/cmn_hef_skull/Meshes/SK_CH_dra_hef_skull)"
+    },
+    "CCI": {
+     "asset": "CCI_dra_hef_skull.uasset",
+     "size": 2180,
+     "sha256": "8cf8972b1ec9d3906603d6b17a6f92ca1379326c69f5903dd1f56f4436615b16",
+     "class": "CustomizeCharacterItem (/Script/TekkenGame)",
+     "release_ver": "ItemUpdate1",
+     "character_item": "CI_dra_hef_skull (import #0, CharacterItem)",
+     "material_location_name": "MI_CH_cmn_hef_skull"
+    },
+    "color_slots_source": "CCI.ItemColors[0].InstanceColors (4 FLinearColor) + CCI.ItemColors[0].ColorIndicies (4) + CCI.Index0Colors (4) \u2014 this item's colorable material channels; CCI.IndexColors (5) is the shared palette (system max 5 per tekken7-slot-catalog.json), not the item channel count",
+    "color_channels": [
+     {
+      "channel": 0,
+      "default_rgba": [
+       0.782458,
+       0.8,
+       0.576,
+       1.0
+      ],
+      "palette_index": 1,
+      "via": "ColorIndicies[0] = ColorIndex (FName number 2)"
+     },
+     {
+      "channel": 1,
+      "default_rgba": [
+       0.024,
+       0.051,
+       0.005,
+       1.0
+      ],
+      "palette_index": 0,
+      "via": "ColorIndicies[1] = ColorIndex (FName number 1)"
+     },
+     {
+      "channel": 2,
+      "default_rgba": [
+       0.0,
+       0.0,
+       0.0,
+       1.0
+      ],
+      "palette_index": 2,
+      "via": "ColorIndicies[2] = ColorIndex (FName number 3)"
+     },
+     {
+      "channel": 3,
+      "default_rgba": [
+       1.0,
+       1.0,
+       1.0,
+       1.0
+      ],
+      "palette_index": null,
+      "via": "ColorIndicies[3] = ColorIndex_Private"
+     }
+    ],
+    "index_colors_palette_rgba": [
+     [
+      0.024,
+      0.051,
+      0.005,
+      1.0
+     ],
+     [
+      0.782458,
+      0.8,
+      0.576,
+      1.0
+     ],
+     [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+     ],
+     [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+     ],
+     [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+     ]
+    ],
+    "index0_colors_rgba": [
+     [
+      0.782458,
+      0.8,
+      0.576,
+      1.0
+     ],
+     [
+      0.024,
+      0.051,
+      0.005,
+      1.0
+     ],
+     [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+     ],
+     [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+     ]
+    ],
+    "pattern_defaults": {
+     "PatternAlpha": 1.0,
+     "PatternHue": 0.0,
+     "PatternSaturation": 0.0,
+     "PatternScaleLRV1": 0.7,
+     "PatternScaleLRV2": 0.7,
+     "PatternScaleULV1": 0.3,
+     "PatternScaleULV2": 0.3,
+     "PatternTiling": 1.0,
+     "PatternRotate": 0.0,
+     "ScalarParameters": "empty array",
+     "InstanceIndex": 0
+    }
    }
   }
  ]
