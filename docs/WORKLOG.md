@@ -58,3 +58,7 @@
 - Cause: game/select.css set #screen-select position: relative, overriding .screen fixed inset:0, so the screen collapsed to content height (fighters zone 0px, ~45% of the viewport empty). CONFIRM was clipped at 390px.
 - Fix: fixed + inset 0; on screens up to 480px wide the hint text is hidden and CONFIRM flexes. Same T8 decode layout (docs/select-redesign/T8-GRID-DECODE.md). Proof in docs/ui/select-phone/.
 - Asset audit: all 179 MODEL_URLS and all 145 attires of the 55 fighters resolve to files on main. The Demonio GLB and profile 404s reported earlier came from my partial checkout (profiles are optional by design).
+## 2026-10-23 14:15 CT — Input resolver V2 (owner t116u) — MoneyManBusch executor
+- Root cause of "neutral 3 = crouching kick": touch stick kept `down` latched after a held crouch was re-centred (input.js). Plus 6 resolver bugs (repeated-step motions, context-blind chord specials, crash on specials without input, tap/hold spellings, neutral-ending motions, unreachable strings). Details: docs/input/INPUT-RESOLVER-V2.md.
+- V2 ON by default; legacy reachable via localStorage wh_input_resolver='legacy'.
+- New CI test test/input-determinism.test.mjs: 125 fighters, non-string failures 208 → 0, touch re-centre FAIL → PASS.
