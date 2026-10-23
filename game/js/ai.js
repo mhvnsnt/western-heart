@@ -7,6 +7,47 @@
      • PANTERA  — aggressive, closes distance, hunts command grabs.
      • DEMONIO  — balanced, fundamental spacing, whiff-aware.
    ============================================================ */
+import { playedMoveset } from './movesets.js';
+
+/* Moveset-driven CPU (2026-10-23): the CPU attacks with the SAME per-fighter moveset the player
+   has (game/assets/movesets/<id>.json — the source character's full T8/T7 data, e.g. Purple Rain =
+   Lee, Burger = Bob, Cape Jones = Alisa), bucketed by its frame data: fast pokes up close, mids and
+   lows at mid range, the biggest fast-enough hit to punish a whiff. Falls back to 1/2/3/4. */
+const PLAIN = /^(?:[fbud](?:\/[fb])?\+)?[1-4](?:\+[1-4])*(?:,(?:[fbud](?:\/[fb])?\+)?[1-4](?:\+[1-4])*)*$/;
+const _pools = new Map();
+function _num(v) { const m = String(v ?? '').match(/[-+]?\d+/); return m ? +m[0] : null; }
+export function movePool(fighterId) {
+  if (_pools.has(fighterId)) return _pools.get(fighterId);
+  const ms = playedMoveset(fighterId);
+  if (!ms || !ms.moves) return null;
+  const pool = { poke: [], mid: [], low: [], punish: [], all: [] };
+  const slots = ms.slots || Object.fromEntries(Object.keys(ms.moves).map(k => [k, k]));
+  for (const [n, key] of Object.entries(slots)) {
+    const m = ms.moves[key];
+    if (!m || !PLAIN.test(n) || /^[1-4]\+[1-4]$/.test(n)) continue; // 1+2/2+3/3+4 = rage/heat/urge system inputs
+    if (m.isGrab || m.throw || m.move_class === 'throw' || m.move_class === 'special' || !(m.damage > 0)) continue;
+    const st = +m.startup || 0.25;
+    const lvl = String(m.hit_level || m.t7?.hit_level || m.note || '').toLowerCase();
+    const ob = _num(m.on_block ?? m.t7?.on_block);
+    const e = { n, st, dmg: +m.damage || 0, ob };
+    pool.all.push(e);
+    if (st <= 0.2 && (ob === null || ob >= -10)) pool.poke.push(e);
+    if (/^(l|sl)\b|low/.test(lvl)) pool.low.push(e); else if (/^m|mid/.test(lvl)) pool.mid.push(e);
+    if (st <= 0.27) pool.punish.push(e);
+  }
+  pool.punish.sort((a, b) => b.dmg - a.dmg); pool.punish = pool.punish.slice(0, 6);
+  if (!pool.all.length) return null;
+  _pools.set(fighterId, pool);
+  return pool;
+}
+const _pick = a => a[Math.floor(Math.random() * a.length)];
+function _attack(f, kind) {
+  const pool = movePool(f._movesetId || (f.char && f.char.id));
+  const list = pool && (pool[kind].length ? pool[kind] : pool.all);
+  if (list && list.length && f.tryAttack(_pick(list).n)) return;
+  f.tryAttack(String(1 + Math.floor(Math.random() * 4)));
+}
+
 export class AIController {
   constructor(fighter, personality = {}) {
     this.f = fighter;
@@ -43,7 +84,7 @@ export class AIController {
       }
       this._breakT -= dt;
       if (this._breakT <= 0) {
-        const want = f.lockMove.throw_break || '1';
+        const want = (f.lockMove.throw_break || '1').split('|')[0]; // T8 '1|2' -> 1
         if (this._breakWill) f.tryThrowBreak(want === '1+2' ? '1+2' : want);
         else f.tryThrowBreak(want === '1' ? '2' : '1'); // wrong read
         this._breakT = undefined;
@@ -124,6 +165,9 @@ export class AIController {
     }
 
     // Command grab when chest-to-chest (grapplers live for this)
+    if (p.state === 'attack' && p._attackPhase === 'recovery' && dist < 2.4 && f.canAct() &&
+        Math.random() < 0.3 + this.reaction * 0.5) { this._action = 'attack'; _attack(f, 'punish'); return; }
+
     if (dist < 1.9 && f.onGround && Math.random() < this.grabBias) {
       f.tryAttack('grab'); return;
     }
@@ -135,10 +179,10 @@ export class AIController {
     } else if (dist < 1.4) {
       if (Math.random() < 0.2 - this.aggression * 0.1) { this._action = 'retreat'; f.tryMove(-dir); }
       // Stream 6: full Tekken limbs (1/2/3/4) so the AI uses expanded movelists.
-      else { this._action = 'attack'; f.tryAttack(String(1 + Math.floor(Math.random() * 4))); }
+      else { this._action = 'attack'; _attack(f, Math.random() < 0.7 ? 'poke' : 'low'); }
     } else {
       const r = Math.random();
-      if (r < 0.5 + this.aggression * 0.2) { this._action = 'attack'; f.tryAttack(String(1 + Math.floor(Math.random() * 4))); }
+      if (r < 0.5 + this.aggression * 0.2) { this._action = 'attack'; _attack(f, Math.random() < 0.65 ? 'mid' : 'low'); }
       else if (r < 0.56) { this._action = 'attack'; f.tryVSkill(); } // V-System poke
       else if (r < 0.8) { this._action = 'approach'; f.tryMove(dir); }
       else { this._action = 'neutral'; }

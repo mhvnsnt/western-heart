@@ -435,6 +435,12 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
   background: rgba(20,20,28,0.72); border: 2px solid rgba(255,255,255,0.3); color: #ffe9a8; }
 .act-btn.l1 { right: 152px; bottom: 176px; }
 .act-btn.r1 { right: 24px; bottom: 176px; }
+/* #853 says the old dodge button is gone, but index.html still ships it with no
+   position, so it sat on top of □ and L1. Hide it (sidestep stays on the joystick). */
+.act-btn.dodge { display: none; }
+/* HEAT / RAGE pills (ported from #842): row above L1/R1, either side of TRANSFORM, no overlap. */
+.act-btn.heat { right: 152px; bottom: 224px; font-size: 12px; letter-spacing: .5px; background: linear-gradient(180deg,#ff9a3c,#c8401f); color: #fff; }
+.act-btn.rage { right: 24px;  bottom: 224px; font-size: 12px; letter-spacing: .5px; background: linear-gradient(180deg,#ff4a5a,#8a0f1f); color: #fff; }
 .act-btn.transform { right: 88px; bottom: 216px; background: linear-gradient(180deg,#fff36b,#d8a02b); width:52px;height:52px;font-size:18px; color:#3a2a00; }
 /* V-System (owner 2026-10-22): V-Skill / V-Trigger / V-Reversal button.
    Explicit position/size so it renders in either button-layout state. */
@@ -450,6 +456,8 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
   .act-btn.shoulder { width: 56px; height: 36px; font-size: 13px; }
   .act-btn.l1 { right: 132px; bottom: 156px; }
   .act-btn.r1 { right: 20px; bottom: 156px; }
+  .act-btn.heat { right: 132px; bottom: 198px; font-size: 11px; }
+  .act-btn.rage { right: 20px;  bottom: 198px; font-size: 11px; }
   .act-btn.transform { right: 76px; bottom: 192px; width: 46px; height: 46px; }
 }
 
@@ -686,9 +694,10 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
 /* ==================== GAME MODES (lane 5) ==================== */
 /* Mode badge: ladder progress shown over the fight HUD */
 .mode-badge {
-  position: absolute; top: 8px; left: 50%; transform: translateX(-50%);
+  /* Below the HUD top row (owner 2026-10-23: the banner covered the round timer). */
+  position: absolute; top: calc(var(--hud-top-h, 116px) + 4px); left: 50%; transform: translateX(-50%);
   z-index: 12; pointer-events: none;
-  font-size: 12px; letter-spacing: 2px; font-weight: 700;
+  font-size: 10px; letter-spacing: 2px; font-weight: 700;
   color: #ffd76a; background: rgba(10,4,16,0.72);
   border: 1px solid rgba(255,215,106,0.45); border-radius: 20px;
   padding: 6px 14px; white-space: nowrap; max-width: 92vw;
@@ -789,3 +798,6 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
 }
 .wh-placeholder { text-align: center; color: #fff; padding: 40px 20px; }
 .wh-placeholder p { opacity: 0.7; margin: 12px 0 24px; line-height: 1.6; }
+
+/* Mode badge sits under the HUD top row: portrait HUD is ~113px tall, landscape ~106px. */
+@media (orientation: landscape) { .mode-badge { --hud-top-h: 108px; padding: 3px 12px; } }

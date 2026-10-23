@@ -144,7 +144,7 @@ export const MODEL_URLS = {
   // via tools/auto_rig knn backend (donor pantera.glb); original model.glb untouched.
   waterfall: '../roster/waterfall/attires/attire1/model-rigged.glb',
   'n3g4tiv0': 'assets/models/n3g4tiv0.glb',
-  thor: '../roster/thor/attires/attire1/model-rigged.glb',
+  thor: '../roster/thor/attires/attire1/model-rerig.glb',
   // Thor Attire 2: phantom-mimic oni mask (owner 2026-10-19).
   'thor-attire2': '../roster/thor/attires/attire2/model.glb',
   'doc-frank': 'assets/models/doc-frank.glb',
@@ -198,11 +198,11 @@ export const MODEL_URLS = {
   'cain-elias-attire2': '../roster/cain-elias/attires/attire2/model.glb',
   // Vain Abel — Attire 2 (owner 2026-10-20, Tripo pull).
   'vainabel-attire1': '../roster/vainabel/attires/attire1/model-rigged.glb',
-  'vainabel-attire2': '../roster/vainabel/attires/attire2/model.glb',
+  'vainabel-attire2': '../roster/vainabel/attires/attire2/model-rigged.glb',
   // Vain Abel — Kane archetype (owner 2026-10-20, Tripo pull). Attire 3: Masked Demon of the Purple Haze.
-  'vainabel-attire3': '../roster/vainabel/attires/attire3/model.glb',
+  'vainabel-attire3': '../roster/vainabel/attires/attire3/model-rigged.glb',
   // Vain Abel — Attire 4: Half mask Horror of the Haze (owner 2026-10-21, Tripo pull).
-  'vainabel-attire4': '../roster/vainabel/attires/attire4/model.glb',
+  'vainabel-attire4': '../roster/vainabel/attires/attire4/model-rigged.glb',
   // Burger — Demon mode, possessed by greed (owner 2026-10-19, Tripo pull).
   burger: '../roster/burger/attires/attire1/model-rigged.glb',
   // Kronos — new fighter (owner 2026-10-19, Tripo pull).
@@ -412,7 +412,7 @@ export const MODEL_URLS = {
   // BUFFALO BILL: his moveset file sat on main unlisted; A1/A2 sources named
   // in roster/buffalo-bill/CANON.md are NOT in the repo — Attire 3 "Ashes"
   // is his only on-main model, so the base key points there.
-  'buffalo-bill': '../roster/buffalo-bill/attires/attire3/model.glb',
+  'buffalo-bill': '../roster/buffalo-bill/attires/attire3/model-rigged.glb',
   // VAIN ABEL ELIAS: base key. His Attire 1 Tripo (f7e90de8) was recovered
   // 2026-10-23 (wave 2 hunt: pulled via tools/tripo-pull, archived on release
   // vain-abel-a1-tripo-20261023) — the base key points at
@@ -420,19 +420,19 @@ export const MODEL_URLS = {
   vainabel: '../roster/vainabel/attires/attire1/model-rigged.glb',
   // CHORDZ (owner 2026-10-15: Lars -> Chordz, emo guitarist). His Tripo sits
   // archived as an unrigged static under attires/attire1/source/.
-  chordz: '../roster/chordz/attires/attire1/source/chordz-a1.glb',
+  chordz: '../roster/chordz/attires/attire1/source/chordz-a1-rigged.glb',
   // GASHADOKURO + AOTSUKI (OBSOLETE-ORIGINALS rule, docs/OBSOLETE-ORIGINALS-
   // RULE.md): the Kuma/Panda models ARE the proprietary successors now — the
   // keys are the successors' names; there is no 'kuma'/'panda' fighter key.
   // Unrigged statics; their roster entries wait for wave-3 movesets.
   gashadokuro: '../roster/kuma/attires/attire1/source/kuma-a1.glb',
-  aotsuki: '../roster/panda/attires/attire1/source/aotsuki-a1.glb',
+  aotsuki: '../roster/panda/attires/attire1/source/aotsuki-a1-rigged.glb',
   // Attire variant keys for on-main GLBs no key reached (catch-up audit
   // attires-unwired set). Ladder placement lives in game/js/attires.js:
   // successor's own attires first, source-game originals late (slots 5+).
   'bruno-attire1': '../roster/bruno/attires/attire1/source/bruno-a1.glb',
   'bruno-attire2': '../roster/bruno/attires/attire2/source/bruno-a2-sail-the-sea.glb',
-  'dio-attire1': '../roster/dio/attires/attire1/source/dio-a1-jade-god.glb',
+  'dio-attire1': '../roster/dio/attires/attire1/source/dio-a1-jade-god-rigged.glb',
   'koreshi-attire1': '../roster/koreshi/attires/attire1/model.glb',
   'negativo-attire1': '../roster/negativo/attires/attire1/source/negativo-a1.glb',
   'negativo-attire2': '../roster/negativo/attires/attire2/source/negativo-a2.glb',
@@ -1266,7 +1266,7 @@ class AssetManager {
      'custom' only warms when a custom fighter actually exists (main.js
      passes hasCustom) — 2.2MB most sessions never need. */
   preloadBaseIdle(hasCustom = false) {
-    const ids = ['pantera', 'steve-fox', 'demonio'];
+    const ids = ['pantera', 'demonio']; // steve-fox removed: no fighter falls back to it (owner 2026-10-23)
     if (hasCustom) ids.push('custom');
     const ric = (typeof window !== 'undefined' && window.requestIdleCallback)
       ? window.requestIdleCallback.bind(window)

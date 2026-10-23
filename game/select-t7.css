@@ -1,0 +1,72 @@
+/* ============================================================
+   WESTERN HEART — Tekken 7 select proportions (owner t182u, 2026-10-23)
+   Measured from the real T7 select textures (see js/select-t7-layout.js
+   and docs/select-redesign/T7-PROPORTIONS.md): T7-aspect cards (91:129),
+   roster band across the bottom, big P1/P2 renders behind, italic name
+   plates top-left / top-right, hint bar with CONFIRM pinned to the
+   bottom edge. Every card is on screen at once — the fitter sizes the
+   cards so nothing scrolls. Loaded after select-t8.css; overrides only.
+   ============================================================ */
+#screen-select.t8 {
+  --hint-h: 48px;
+  --sa-l: env(safe-area-inset-left, 0px); --sa-r: env(safe-area-inset-right, 0px);
+  --sa-b: env(safe-area-inset-bottom, 0px); --sa-t: env(safe-area-inset-top, 0px);
+}
+/* roster band: full width (T7), fitted, never scrolls */
+#screen-select.t8 .grid-wrap {
+  left: calc(var(--sa-l) + 6px); right: calc(var(--sa-r) + 6px); width: auto; transform: none;
+  bottom: calc(var(--hint-h) + var(--sa-b) + 4px); top: auto; height: 34vh; max-height: none;
+  overflow: hidden; padding: 0; display: flex; align-items: flex-end; justify-content: center;
+}
+#screen-select.t8 #char-grid.card-grid {
+  grid-template-columns: repeat(var(--t7-cols, 12), var(--t7-card-w, 44px));
+  grid-auto-rows: var(--t7-card-h, 62px); gap: var(--t7-gap, 3px); justify-content: center; align-content: end;
+}
+#screen-select.t8 .card-grid .char-card { aspect-ratio: auto; width: var(--t7-card-w, 44px); height: var(--t7-card-h, 62px);
+  clip-path: polygon(0 0, 100% 0, 100% 88%, 86% 100%, 0 100%); border-width: 1px; }
+#screen-select.t8 .card-grid .char-card .portrait img { object-position: 50% 12%; }
+#screen-select.t8 .card-grid .char-card.cursor-p1, #screen-select.t8 .card-grid .char-card.cursor-p2 { transform: none; clip-path: none; }
+#screen-select.t8 .card-grid .char-card.locked-p1::after, #screen-select.t8 .card-grid .char-card.locked-p2::after {
+  position: absolute; top: 1px; left: 1px; font: 900 9px/1 Impact, sans-serif; padding: 1px 3px; color: #fff; }
+#screen-select.t8 .card-grid .char-card.locked-p1::after { content: '1P'; background: var(--t8-p1); }
+#screen-select.t8 .card-grid .char-card.locked-p2::after { content: '2P'; background: var(--t8-p2); left: auto; right: 1px; }
+/* stage: renders fill everything above the band */
+#screen-select.t8 .fighters-zone { bottom: calc(34vh + var(--hint-h) + var(--sa-b)); top: 0; }
+#screen-select.t8 .pane-canvas { height: 100%; }
+/* T7 name plates: top outer corners, big steep italic */
+#screen-select.t8 .pane-plate { top: calc(var(--sa-t) + 44px); left: calc(var(--sa-l) + 10px); max-width: 40%; }
+#screen-select.t8 .pane-p2 .pane-plate { right: calc(var(--sa-r) + 10px); left: auto; }
+#screen-select.t8 .pane-name { font-size: clamp(22px, 6.2vh, 64px); }
+#screen-select.t8 .pane-note { display: none !important; } /* never an error/loading message on screen */
+#screen-select.t8 .side-tag { top: calc(var(--sa-t) + 10px); left: calc(var(--sa-l) + 76px); }
+#screen-select.t8 .pane-p2 .side-tag { left: auto; right: calc(var(--sa-r) + 76px); }
+/* hint bar + CONFIRM: always on screen */
+#screen-select.t8 .hints-bar { height: var(--hint-h); bottom: 0; padding: 0 calc(var(--sa-r) + 8px) var(--sa-b) calc(var(--sa-l) + 8px); box-sizing: content-box; }
+#screen-select.t8 .hints-bar #confirm-fighter { order: 9; margin-left: auto; min-width: 112px; justify-content: center;
+  background: linear-gradient(90deg, #b0122e, #ff2d55); clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%); font-size: 14px; letter-spacing: 1px; }
+#screen-select.t8 .hints-bar #confirm-fighter[disabled] { opacity: 0.55; filter: grayscale(0.6); }
+/* private build: real T7 card panel + slot frames */
+.t7-private #screen-select.t8 .card-grid .char-card { background: var(--t7-card-panel) center/100% 100% no-repeat, #101018; }
+.t7-private #screen-select.t8 .card-grid .char-card.cursor-p1 { border-image: var(--t7-slot-red) 20 fill / 4px stretch; }
+.t7-private #screen-select.t8 .card-grid .char-card.cursor-p2 { border-image: var(--t7-slot-blue) 20 fill / 4px stretch; }
+
+/* portrait phones: stage on top, roster block under it (Brutal Fist stacking) */
+@media (orientation: portrait) {
+  #screen-select.t8 .grid-wrap { top: auto; height: 40vh; }
+  #screen-select.t8 .fighters-zone { bottom: calc(40vh + var(--hint-h) + var(--sa-b)); }
+  #screen-select.t8 .pane-plate { top: auto; bottom: 6px; max-width: 48%; }
+  #screen-select.t8 .pane-name { font-size: clamp(20px, 6vw, 34px); }
+  #screen-select.t8 .pane-facts .fact:nth-child(n+3) { display: none; }
+}
+@media (orientation: landscape) and (max-height: 500px) {
+  #screen-select.t8 { --hint-h: 42px; }
+  #screen-select.t8 .grid-wrap { height: 36vh; }
+  #screen-select.t8 .fighters-zone { bottom: calc(36vh + var(--hint-h) + var(--sa-b)); }
+  #screen-select.t8 .pane-facts { display: none; }
+}
+#screen-select.t8 .pane-name { overflow: visible !important; text-overflow: clip !important; white-space: nowrap; max-width: none !important; }
+#screen-select.t8 .pane-plate { overflow: visible !important; }
+@media (orientation: portrait) {
+  #screen-select.t8 .pane-name { font-size: clamp(15px, 4.8vw, 26px); }
+  #screen-select.t8 .side-tag { left: calc(var(--sa-l) + 84px); }
+}

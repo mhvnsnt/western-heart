@@ -31,6 +31,10 @@ import { StageBreaks } from './stagebreaks.js';
 import { RageSystem, ensureRageMoves, RAGE_SLOWMO_SCALE } from './rage.js';
 /* Soul Urge lane (Tekken 8 Heat, proprietary rename — user-locked 2026-10-22). */
 import { SoulUrge, ensureUrgeMoves, URGE_BURST_TIME, URGE_ENGAGER_TIME } from './soulurge.js';
+/* X-ray lane (Purdue anatomy × cinematic KO blows, 2026-10-23):
+   rendering-only overlay (no anim clips), hooked into rage-art /
+   urge-smash KOs. */
+import { XraySystem } from './xray.js';
 import { V, vskillDispatch, vshiftTap } from './v-system.js';
 // LIGHTING RIG (worker 27): per-fighter character light rig — SFV/T7-style
 // character-vs-stage lighting separation + bible soul glow. Fail-silent.
@@ -131,6 +135,7 @@ export class Game {
     if (!this.stageBreaks) this.stageBreaks = new StageBreaks(this);
     if (!this.rage) this.rage = new RageSystem(this);
     if (!this.soulurge) this.soulurge = new SoulUrge(this);
+    if (!this.xray) this.xray = new XraySystem(this, THREE);
     this.stageBreaks.bindStage(stage, this._stageFx);
     ensureRageMoves(playerChar.id, this._msApi);
     ensureRageMoves(enemyChar.id, this._msApi);
@@ -143,6 +148,9 @@ export class Game {
     // (review-stage tuner). Null-safe when no game is attached.
     this.p1.game = this;
     this.p2.game = this;
+    // X-ray lane: prefetch both fighters' anatomy layers in the
+    // background so a cinematic KO can reveal them with no mid-sequence fetch.
+    if (this.xray) { this.xray.prefetch(playerChar.id); this.xray.prefetch(enemyChar.id); }
     // Transformation cinematics need the arena for camera shake.
     this.p1._sceneRef = this.arena;
     this.p2._sceneRef = this.arena;
@@ -229,6 +237,7 @@ export class Game {
     if (this.stageBreaks) this.stageBreaks.reset();
     if (this.rage) this.rage.resetRound();
     if (this.soulurge) this.soulurge.resetRound();
+    if (this.xray) this.xray.cancel();
   }
 
   /* Called when leaving the fight screen (BACK to menu, etc.) */
@@ -242,6 +251,7 @@ export class Game {
     this.p1.meter = this.p2.meter = 0;
     if (this.rage) this.rage.resetRound();
     if (this.soulurge) this.soulurge.resetRound();
+    if (this.xray) this.xray.cancel();
     if (this.stageBreaks) this.stageBreaks.syncRound();
     const spawns = getStage(this._stageId || 'shrine').spawns;
     const gy = this.stageBreaks ? this.stageBreaks.groundY : 0;
@@ -283,6 +293,7 @@ export class Game {
     requestAnimationFrame(this._loop);
     if (!this._last) this._last = now;
     let frameDt = Math.min(0.05, (now - this._last) / 1000);
+    const realDt = frameDt; // X-ray beat runs on real seconds, not slow-mo scale
     this._last = now;
     if (this.rage) frameDt = this.rage.slowMoScale(frameDt);
 
@@ -301,6 +312,9 @@ export class Game {
     }
 
     this.arena.update(frameDt, this.p1, this.p2);
+    // X-ray: camera + anatomy-layer overlay, AFTER the fight camera so the
+    // zoom wins for this frame. Rendering only — no animation clips.
+    if (this.xray) this.xray.update(realDt);
     this.arena.render();
   }
 
@@ -574,6 +588,8 @@ export class Game {
           this._hitStop = 0.12 * this.feel.hitstop;
           this._spawnImpact(hb.x, hb.y, hb.z, 0xffcf4d, 1.4);
           if (this.rage) this.rage.onHitKO(attacker, defender);
+          // X-ray lane: rage-art / urge-smash KO blows trigger the X-ray beat.
+          if (this.xray) this.xray.onHitKO(attacker, defender, hb);
           if (this.stageBreaks) this.stageBreaks.checkHit(attacker, defender, hb.move, result);
         } else {
           const isGrab = !!hb.move.isGrab;
