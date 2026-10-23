@@ -70,3 +70,13 @@ Carve-outs (standing owner decisions, not overridden): never merge a DRAFT PR; n
 > **Western Heart data (moves, animations, frame data, menus, character select) comes from Tekken 5, 6, 7, 8 and TTT2. Tekken 3 is only a last-resort fallback, and every T3 use must be logged with the reason no T5/6/7/8/TTT2 source was available.**
 
 - Search T5/T6/T7/T8/TTT2 teardowns first. Use T3 only when none of them has the data, and log the T3 use (file, clip, reason) in `docs/anim/PROCEDURAL_AUDIT.md`.
+
+## NO-SPARSE-COMMIT LAW (owner 2026-10-23 — the cape-jones #219 main wipe)
+
+On 2026-10-23, cape-jones PR #219 wiped main: the merge was built from a sparse/partial checkout, so the commit carried only the partial tree and main lost everything outside it.
+
+1. NEVER commit or push from a sparse/partial checkout. A partial working tree committed as a full tree is a wipe.
+2. Before ANY commit from a non-full clone, verify the working tree against the branch's real tree: diff the root listing, or compare tree SHAs. If they don't match, stop — do not commit.
+3. Default recovery path for a bad merge: revert the merge commit (`-m 1`) and re-add the branch's real payload. Never "fix forward" on top of a wiped tree.
+4. When in doubt, build the commit via the Git Data API from verified tree SHAs — never from a working tree you haven't verified.
+5. GOTCHA: `gh`'s `-f content=@file` does NOT expand `@file` for the blobs API — base64 the content explicitly.
