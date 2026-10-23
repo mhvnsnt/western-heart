@@ -355,7 +355,7 @@ export class Fighter {
     // char.tintStrength ?? 0.45 default washed both fighters in a constant
     // suit color; real texture colors now render for the whole fight.)
     const inst = assets.createInstance(
-      this.char.model || 'pantera',
+      this.char.model,
       this.char.colors.suit, this.char.colors.trim,
       this.char.colorize ? (this.char.tintStrength ?? 0.3) : 0
     );

@@ -4,6 +4,7 @@
    with 9 soul segments), Soul Surge screen flash.
    ============================================================ */
 import './t7-ui-private.js';
+import './select-t7-layout.js';
 import { Game } from './game.js';
 import { InputManager } from './input.js';
 import { audio } from './audio.js';
@@ -560,7 +561,8 @@ function stopSelectTimer() {
 
 /* Random opponent different from the player */
 function randomEnemy(excludeId) {
-  const pool = ROSTER.filter(c => c.id !== excludeId);
+  // Never field a MODEL PENDING fighter (no own model; owner 2026-10-23).
+  const pool = ROSTER.filter(c => c.id !== excludeId && !c.modelPending && c.model);
   return pool[Math.floor(Math.random() * pool.length)];
 }
 
@@ -866,13 +868,17 @@ async function startFight(playerId, enemyId, opts = {}) {
   // modes lane: opts may carry full char-entry overrides (force-buffed
   // player, scaled-AI foe, the Assembled Soul boss, training dummy).
   // Stream 4: the player's selected attire applies in every mode.
-  const player = resolveFighterAttire(
-    opts.playerChar || getCharacterWithCustom(selectedChar || ROSTER[0].id));
-  const enemy = opts.enemyChar ||
+  const firstReady = (ROSTER.find(c => !c.modelPending && c.model) || ROSTER[0]).id;
+  let player = resolveFighterAttire(
+    opts.playerChar || getCharacterWithCustom(selectedChar || firstReady));
+  // MODEL PENDING fighters (no own model yet) never enter a fight on another body.
+  if (player.modelPending || !player.model) player = resolveFighterAttire(getCharacterWithCustom(firstReady));
+  let enemy = opts.enemyChar ||
     (typeof enemyId === 'string' && enemyId !== player.id ? getCharacterWithCustom(enemyId) : randomEnemy(player.id));
+  if (!enemy || enemy.modelPending || !enemy.model) enemy = randomEnemy(player.id);
   // On-demand: load only the 2 fighters for this fight (Tekken 3 pattern).
   // Models may already be prefetched from select-screen highlight.
-  const need = [...new Set([player.model || 'pantera', enemy.model || 'pantera'])];
+  const need = [...new Set([player.model, enemy.model].filter(Boolean))];
   // Mid-match transform targets must be preloaded (createInstance is sync).
   for (const c of [player, enemy]) {
     if (c.transform && c.transform.targetModel) need.push(c.transform.targetModel);
