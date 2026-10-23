@@ -70,3 +70,9 @@ Carve-outs (standing owner decisions, not overridden): never merge a DRAFT PR; n
 > **Western Heart data (moves, animations, frame data, menus, character select) comes from Tekken 5, 6, 7, 8 and TTT2. Tekken 3 is only a last-resort fallback, and every T3 use must be logged with the reason no T5/6/7/8/TTT2 source was available.**
 
 - Search T5/T6/T7/T8/TTT2 teardowns first. Use T3 only when none of them has the data, and log the T3 use (file, clip, reason) in `docs/anim/PROCEDURAL_AUDIT.md`.
+
+## OWNER LAW — no hand-made menus (Oct 23, 2026, 2:21 PM CT)
+> **NO hand-made menus. Every Western Heart menu, character select and customization screen, including the creation suite in `packages/creation-suite`, must be built from the actual Tekken teardown files (T5/T6/T7/T8/TTT2) and other game teardowns, and every UI change must cite its teardown source in the PR and WORKLOG.**
+- CI gate is being landed by MoneyManBusch; don't build a duplicate.
+- The existing hand-built creation suite UI in `packages/creation-suite` is NON-COMPLIANT, pending a teardown-sourced rebuild. Do NOT delete it.
+- See `docs/RULES_NO_GUESSING.md` and `docs/HOW-TO-CONTINUE.md`.
