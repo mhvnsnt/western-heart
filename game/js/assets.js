@@ -104,6 +104,10 @@ export const MODEL_URLS = {
   // via tools/auto_rig knn backend (donor pantera.glb); original model.glb untouched.
   'saku-ra': '../roster/sakura/attires/attire1/model-rerig.glb',
   'awa-pop': 'assets/models/awa-pop.glb',
+  // AWA POP Attire 1 (2026-10-23 select-card audit): owner Tripo "muscular
+  // superhero" (e3d3b06f) — her default per the slot map; was unreachable
+  // (no MODEL_URLS key) until this wiring.
+  'awa-pop-attire1': '../roster/awa-pop/awa-pop-attire-1.glb',
   // AWA POP Attire 2 (fighter-completeness audit 2026-10-21): owner-confirmed
   // Tripo Attire 2 (roster/awa-pop/ATTIRE-SLOTS.md slot 2) — the GLB was in the
   // repo with no key, so it could never load.

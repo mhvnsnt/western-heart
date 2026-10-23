@@ -235,7 +235,10 @@ export const ATTIRE_VARIANTS = {
      GLB sat in roster/awa-pop/attires/attire2/ with no MODEL_URLS key and
      no variant list. Key added in assets.js. First entry = current default. */
   'awa-pop': [
-    { model: 'awa-pop', label: 'ATTIRE 1' },
+    // 2026-10-23 select-card audit: owner Tripo "muscular superhero" (e3d3b06f)
+    // is the default; legacy base ladders back.
+    { model: 'awa-pop-attire1', label: 'ATTIRE 1 · MUSCULAR SUPERHERO (TRIPO)' },
+    { model: 'awa-pop', label: 'ATTIRE 2 · BASE' },
     { model: 'awa-pop-attire2', label: 'ATTIRE 2' },
   ],
   /* PANTERA's ladder — owner reorder 2026-10-21: his TRIPO ORIGINALS at
@@ -314,6 +317,13 @@ export const ATTIRE_VARIANTS = {
     { model: 'zui_alt1', label: 'ALT 1 · T7 STEVE RESKIN' },
     { model: 'zui_alt2', label: 'ALT 2 · T7 STEVE RESKIN' },
   ],
+  /* RYUJI (2026-10-23 select-card audit): the owner's Cornerstone Tripo
+     'ryuji-rock' (20c1fd2e, rigged wave 2) is his default — removes him from
+     the steve-fox share. The Steve base ladders behind as a legacy alternate. */
+  'ryuji': [
+    { model: 'ryuji-rock', label: 'ATTIRE 1 · CORNERSTONE (TRIPO)' },
+    { model: 'steve-fox', label: 'BASE · STEVE FOX (CANON)' },
+  ],
   /* ——— LANDING WAVE 1 ladders (2026-10-23, docs/CATCHUP-AUDIT-2026-10-23.md):
      fighters whose on-main attire GLBs had keys (or get them in assets.js
      this wave) but no ATTIRE_VARIANTS entry, so the picker never offered
@@ -326,25 +336,29 @@ export const ATTIRE_VARIANTS = {
     { model: 'vega', label: 'VEGA · ORIGINAL MODEL (STREET FIGHTER)' },
   ],
   'yukihyo': [
-    { model: 'yukihyo', label: 'ATTIRE 1' },
-    { model: 'yukihyo-attire1', label: 'ATTIRE 2 (UNRIGGED)' },
+    // 2026-10-23 select-card audit: Tripo A1 is the default; legacy base ladders back.
+    { model: 'yukihyo-attire1', label: 'ATTIRE 1 (TRIPO)' },
+    { model: 'yukihyo', label: 'ATTIRE 2 · BASE' },
     { model: 'yukihyo-attire2', label: 'ATTIRE 3 · BOBCAT PRIDE (UNRIGGED)' },
     { model: 'yukihyo-attire3', label: 'ATTIRE 4 · TIGER KING (UNRIGGED)' },
     { model: 'armor-king', label: 'ARMOR KING · ORIGINAL MODEL (TEKKEN)' },
     { model: 'armor-king-attire1', label: 'ARMOR KING · SOURCE MODEL (UNRIGGED)' },
   ],
   'bruno': [
-    { model: 'bruno', label: 'ATTIRE 1' },
-    { model: 'bruno-attire1', label: 'ATTIRE 2 (UNRIGGED)' },
+    // 2026-10-23 select-card audit: Tripo A1 is the default; legacy base ladders back.
+    { model: 'bruno-attire1', label: 'ATTIRE 1 (TRIPO)' },
+    { model: 'bruno', label: 'ATTIRE 2 · BASE' },
     { model: 'bruno-attire2', label: 'ATTIRE 3 · SAIL THE SEA (UNRIGGED)' },
   ],
   'dio': [
-    { model: 'dio', label: 'ATTIRE 1' },
-    { model: 'dio-attire1', label: 'ATTIRE 2 · JADE GOD' },
+    // 2026-10-23 select-card audit: Jade God Tripo is the default; legacy base ladders back.
+    { model: 'dio-attire1', label: 'ATTIRE 1 · JADE GOD (TRIPO)' },
+    { model: 'dio', label: 'ATTIRE 2 · BASE' },
   ],
   'negativo': [
-    { model: 'n3g4tiv0', label: 'ATTIRE 1' },
-    { model: 'negativo-attire1', label: 'ATTIRE 2 (UNRIGGED)' },
+    // 2026-10-23 select-card audit: Tripo A1 is the default; legacy base ladders back.
+    { model: 'negativo-attire1', label: 'ATTIRE 1 (TRIPO)' },
+    { model: 'n3g4tiv0', label: 'ATTIRE 2 · BASE' },
     { model: 'negativo-attire2', label: 'ATTIRE 3 (UNRIGGED)' },
   ],
   /* SKULL (roster/skull/attires/ATTIRE-SLOTS.md): A1 = his Tripo; the live
