@@ -315,6 +315,9 @@
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
   scroll-snap-type: x proximity;
+  /* Mobile: the strip scrolls natively; taps on cards are disambiguated
+     from scrolls by the tap recognizer (js/tap.js), not by click. */
+  touch-action: pan-x pan-y;
 }
 @media (min-width: 900px), (orientation: landscape) and (min-height: 500px) {
   #screen-select .grid-wrap {
@@ -566,6 +569,8 @@
   border-top: 2px solid rgba(255,46,46,0.4);
   background: rgba(10,5,5,0.9);
   box-sizing: border-box;
+  /* Mobile: native scroll; taps disambiguated by js/tap.js. */
+  touch-action: pan-x pan-y;
 }
 #screen-stage .stage-card {
   flex: 0 0 196px;

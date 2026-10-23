@@ -149,13 +149,21 @@ with no restructuring).
    attire chips on the plate.
 4. Phone layout: T7 is a landscape console screen; on portrait phones
    the panes sit side-by-side on top and the 2-row grid runs full-width
-   below, all inside non-scrolling screen chrome. Touch-first: tap a
+   below, all inside non-scrolling screen chrome. PORTRAIT PHONE IS
+   PRIMARY (owner law 2026-10-23): this is a mobile game.
+5. TOUCH LAW (owner 2026-10-23, standing): SCREEN TAPS, not button
+   clicks — minimum 44px tap targets (ours are 48px+), touchstart/
+   touchend tap recognition via game/js/tap.js (never bare click,
+   never hover — there is NO hover-dependent UI anywhere on the
+   select screens), and tap-vs-scroll disambiguation inside the
+   scrolling grid/strip so a scroll never misfires as a pick. Tap a
    card = preview on your side; tap the highlighted card again (or
-   CONFIRM) = lock. Every interactive element is 48px+ — no dead ends.
-5. Nine Souls redesign (2026-10-23): seven souls stay OFF the grid as
+   CONFIRM) = lock. Every interactive element is 48px+ — no dead ends,
+   no tiny text links.
+6. Nine Souls redesign (2026-10-23): seven souls stay OFF the grid as
    standalone cards; ZEN and GYOU stay selectable (their models are
    real: Zen's Tripo spirit body, Gyou's build).
-6. Header text: T7's exact "CHOOSE YOUR FIGHTER" / "CHOOSE YOUR STAGE".
+7. Header text: T7's exact "CHOOSE YOUR FIGHTER" / "CHOOSE YOUR STAGE".
 
 ## 9. Skin-swap layer
 

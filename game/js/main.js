@@ -20,6 +20,7 @@ import { getCustomFighter, customFighterToRoster } from './custom-fighter.js';
 import { resolveFighterAttire } from './attires.js';
 import { createSelectScreen } from './select-screen.js';
 import { voice } from './voice.js';
+import { onTap, isTapHandled } from './tap.js';
 import { STAGES, STAGE_TIERS, getStage, randomStageId } from './stages.js';
 // LOADSPEED: stages.js (82KB data) stays static — buildStageSelect runs in
 // the versus flow and getStage is needed by startFight; its parse cost is
@@ -398,7 +399,9 @@ function buildStageSelect() {
         : `<div class="swatch" style="background:linear-gradient(135deg, ${s.swatch[0]}, ${s.swatch[1]})"></div>`;
       card.innerHTML =
         `${visual}<div class="sname">${s.name}</div><div class="suniverse">${s.universe}</div>`;
-      card.addEventListener('click', () => selectStageCard(card, s));
+      // Mobile law: screen taps (tap-vs-scroll disambiguation matters —
+      // the strip scrolls horizontally).
+      onTap(card, () => selectStageCard(card, s));
       grid.appendChild(card);
     }
     // T7's "?" random stage rides in the strip, not just the footer button.
@@ -410,7 +413,7 @@ function buildStageSelect() {
     rnd.setAttribute('aria-label', 'Random stage');
     rnd.innerHTML = `<div class="swatch random-swatch"><span class="qmark">?</span></div>
       <div class="sname">RANDOM</div><div class="suniverse">Fate decides</div>`;
-    rnd.addEventListener('click', () => randomStageRoll());
+    onTap(rnd, () => randomStageRoll());
     grid.appendChild(rnd);
   };
   paint(null); // instant: swatches first, never waits on the atlas
@@ -603,6 +606,31 @@ window.addEventListener('load', () => {
   setTimeout(() => document.getElementById('tap-to-start').classList.add('show'), 600);
 });
 
+/* Mobile law (2026-10-23): SCREEN TAPS, not button clicks. A
+   document-level tap recognizer forwards real taps on [data-action] /
+   [data-mm] controls to the click routers below — the native emulated
+   click is suppressed so each action fires exactly once. Scrolls and
+   pinches never forward. Controls with their own onTap wiring
+   (select cards, chips, confirm buttons) are skipped here. */
+let _tapX = 0, _tapY = 0, _tapT = 0, _tapOn = false;
+document.addEventListener('touchstart', (e) => {
+  if (e.touches.length !== 1) { _tapOn = false; return; }
+  const t = e.touches[0];
+  _tapX = t.clientX; _tapY = t.clientY; _tapT = Date.now(); _tapOn = true;
+}, { passive: true });
+document.addEventListener('touchend', (e) => {
+  if (!_tapOn) return;
+  _tapOn = false;
+  const t = e.changedTouches[0];
+  if (!t) return;
+  if (Math.hypot(t.clientX - _tapX, t.clientY - _tapY) > 14 || Date.now() - _tapT > 600) return;
+  const tgt = (t.target instanceof Element) ? t.target : null;
+  const el = tgt ? tgt.closest('[data-action],[data-mm]') : null;
+  if (!el || isTapHandled(el)) return;
+  e.preventDefault();
+  el.click();
+}, { passive: false });
+
 /* Delegated data-action router (T8 menu, worker 37): one document-level
    listener covers both the static menu and submenu cards created
    dynamically by mainmenu.js. Previously a one-time forEach at eval. */
@@ -748,7 +776,8 @@ async function confirmSelection() {
   (await getModes()).onConfirm(id);
 }
 
-document.getElementById('confirm-fighter').addEventListener('click', confirmSelection);
+// Mobile law: screen taps on the select flow's confirm buttons.
+onTap(document.getElementById('confirm-fighter'), confirmSelection);
 
 /* Lane 4: stage-select screen handlers (CHOOSE YOUR ARENA).
    P0 (2026-10-22): the old handler nulled pendingFight up front and never
@@ -782,9 +811,9 @@ function confirmStageFromSelect() {
   );
 }
 
-document.getElementById('confirm-stage').addEventListener('click', confirmStageFromSelect);
+onTap(document.getElementById('confirm-stage'), confirmStageFromSelect);
 
-document.getElementById('random-stage').addEventListener('click', () => randomStageRoll());
+onTap(document.getElementById('random-stage'), () => randomStageRoll());
 
 /* The "?" random card in the strip and the footer RANDOM button share
    one roll: pick a stage, highlight its card, announce it. */

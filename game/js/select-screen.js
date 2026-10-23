@@ -37,6 +37,7 @@ import { bankIdFor } from './fighter.js';
 import { getMovesetInfo } from './movesets.js';
 import { voice } from './voice.js';
 import { getSkin, applySkin, activeSkinId } from './ui-skin.js';
+import { onTap } from './tap.js';
 
 const DEFAULT_STATS = { speed: 2.8, jump: 7.2, power: 1.1, defense: 1.05 };
 const clamp01 = (v) => Math.max(0, Math.min(1, v));
@@ -419,7 +420,9 @@ export function createSelectScreen(deps) {
         card.setAttribute('tabindex', '0');
         card.setAttribute('aria-label', `Select ${c.name}`);
         card.innerHTML = portraitHTML(c);
-        card.addEventListener('click', () => onCardTap(c, card));
+        // Mobile law: screen taps (touchstart/touchend with tap-vs-scroll
+        // disambiguation) — never bare click, never hover.
+        onTap(card, () => onCardTap(c, card));
         strip.appendChild(card);
         if (row === 1) { col++; row = 0; } else { row = 1; }
       }
@@ -434,7 +437,7 @@ export function createSelectScreen(deps) {
     rnd.setAttribute('aria-label', 'Random fighter');
     rnd.innerHTML = `<div class="portrait"><span class="qmark">?</span></div>
       <div class="cname">RANDOM</div>`;
-    rnd.addEventListener('click', () => {
+    onTap(rnd, () => {
       const pool = selectRoster().filter(c => c.id !== state.locked.p1?.id && c.id !== state.locked.p2?.id);
       const pick = pool[Math.floor(Math.random() * pool.length)];
       if (pick) highlight(pick, { fromTap: true, scroll: true });
@@ -553,8 +556,10 @@ export function createSelectScreen(deps) {
       chip.type = 'button';
       chip.textContent = a.label;
       chip.disabled = !interactive;
-      chip.addEventListener('click', (e) => {
-        e.stopPropagation();
+      // Mobile law: screen taps. stopPropagation keeps the tap from
+      // reaching the card/pane beneath the chip.
+      onTap(chip, (e) => {
+        if (e && e.stopPropagation) e.stopPropagation();
         if (!interactive) return;
         audio.uiClick();
         applyAttire(side, c, a.model);
@@ -812,8 +817,9 @@ export function createSelectScreen(deps) {
 
   const pBtn = $('attire-punch');
   const kBtn = $('attire-kick');
-  if (pBtn) pBtn.addEventListener('click', punchAttire);
-  if (kBtn) kBtn.addEventListener('click', kickAttire);
+  // Mobile law: screen taps (the click fallback covers mouse/AT).
+  if (pBtn) onTap(pBtn, punchAttire);
+  if (kBtn) onTap(kBtn, kickAttire);
 
   // The Tripo/SmutBase lists arrive after the first build: rebuild once
   // so those fighters lead the grid in tier order.
