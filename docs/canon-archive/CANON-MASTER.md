@@ -1,5 +1,7 @@
 # CANON MASTER — Western Heart / Eastern Mind
 
+> **⚠ OBSOLETE ORIGINALS RULE — a source-game character whose moveset and identity were given to a proprietary character of this universe is OBSOLETE IN CANON: they are not a character here, no canon is written for them, and any older text about them in this record is kept only under an obsolete notice at the head of its section. The proprietary successor (Charger, Kronos, Koreshi, Deathfang, Demonio, Mariposa, and the rest) carries the identity and the story. Full rule, mapping, and marking template: [`docs/OBSOLETE-ORIGINALS-RULE.md`](../OBSOLETE-ORIGINALS-RULE.md).**
+
 *One compiled record of every fighter's canon, from the owner's recorded
 words. Sources: `~/MEMORY.md`, `~/memory/2026-*.md` daily notes,
 `~/workspace/agent-ops/` game docs, and this repo's `CANON.md`,
@@ -896,6 +898,9 @@ in the credits at the end of some stories and in the settings credits
   **Byou's vessel is Zui** (see Zen section rulings).
 
 ### JIN — The Bloodline Soul (Eastern Mind canon)
+
+> **OBSOLETE IN CANON — JIN KAZAMA is not a character in this universe. Their moveset and identity became DEMONIO, a proprietary character of this universe. No canon is written for JIN KAZAMA. See roster/demonio/CANON.md.**
+
 - **Identity.** Not one of the nine, and not the soul JIN (刃 — the
   blade wears Phantom; this Jin wears a curse). The Mishima bloodline,
   the Devil Gene made flesh. In Eastern Mind canon his name **stays
