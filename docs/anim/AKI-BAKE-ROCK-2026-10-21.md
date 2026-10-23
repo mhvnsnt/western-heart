@@ -405,3 +405,93 @@ role, and hierarchy in one read.
   different RE target (EE MIPS, .VIV container) even though the
   pipeline shape (gate + YANM overlay) carries over unchanged.
 
+
+---
+
+# W3c addendum (2026-10-21) — corrective bake on the TRUE clips
+
+Workstream W3c: execute the W3b corrected next-step sequence steps 1–2
+(fix extractors, re-extract, re-convert, re-run the SAME gate), ship a
+corrective PR superseding #447's artifacts, and leave the FK track as
+evidence only.
+
+## What was fixed
+
+- `teardown/wwf-no-mercy/tools/anim_extract.py` and
+  `teardown/wwf-no-mercy/tools/extract_all_anims.py`: FileTable
+  `0x16C31D8`, FirstFile `0x1BD150`, **1-based** file IDs (table index
+  fid−1), PivotRotation decode **[PivotX s12][Rotation u10][PivotZ
+  s10]** — citations to FUN_80003ab0 / FUN_80003bd0 in the module
+  docstring. `teardown/wwf-no-mercy/animations/FORMAT.md` corrected to
+  match (and now warns the rest of the .npy bank is still the old
+  shifted decode — only the 11 Rock clips were re-extracted here).
+- `teardown/wwf-no-mercy/aki_to_tekken3_v3.py`: rotation unwrap period
+  256 → **1024**, scale 65536/360 → **65536/1024** (T3 s16 full turn per
+  AKI u10 full turn; v1's own "s8 × 256 = Tekken s16" note was the same
+  period rule at the wrong period).
+
+## Re-extraction verification (all 11, by mk: identity)
+
+Every clip: length = 4 + 98 × frames exactly (remainder 0), frame count
+equals the W3b true table (Rock Bottom 70, People's Elbow 112, running
+elbow 39, Spinebuster 13, Stomp 20, DDT 28, taunts 17/82/24/102/103).
+The Toki2 header rule `frames = b3/2 + 1` matches on 10/11; anim_40B3
+(running elbow) gives 38 by that rule vs 39 by exact length — length
+wins (remainder 0), noted here rather than smoothed over. Stance
+control (0x2DD9, 16f): PR rotation mean per-frame step 1.36 units
+(1024/turn), max joint mean 3.67; PivotX/PivotZ smooth (sd ≤ 19.5)
+except RightFoot PivotZ, whose values straddle the s10 ±512 sign
+boundary and are smooth once unwrapped across it. Re-extracted .npy
+files + corrected manifest entries (nframes/toki2) are in
+`teardown/wwf-no-mercy/animations/`.
+
+## Gate on TRUE data — all 11 FAIL, pattern changed
+
+Same gate, unloosened (worst-bone mean step ≤ 60.64°, peak root height
+≥ 0.70 m; king-pack 176-row calibration). Full machine report:
+`docs/anim/aki-bake-2026-10-21/w3c-bake-report.json`.
+
+| Row | Frames | Worst bone | Mean step | Peak ry | Gate |
+|---|---|---|---|---|---|
+| mk1240 Rock Bottom | 70 | RightArm | 65.5°/f | 0.49 m | FAIL (step + height) |
+| mk2843 People's Elbow | 112 | RightArm | 51.1°/f | 0.48 m | FAIL (height) |
+| mk3473 Elbow (running) | 39 | RightArm | 71.9°/f | 0.49 m | FAIL (step + height) |
+| mk1885 Spinebuster | 13 | RightArm | 51.6°/f | 0.48 m | FAIL (height) |
+| mk3120 Stomp | 20 | RightUpLeg | 76.8°/f | 0.48 m | FAIL (step + height) |
+| mk3659 Spinning DDT | 28 | RightUpLeg | 81.8°/f | 0.48 m | FAIL (step + height) |
+| mk4233 Entry taunt | 102 | RightUpLeg | 16.1°/f | 0.48 m | FAIL (height) |
+| mk4269 In-ring taunt | 103 | RightArm | 40.4°/f | 0.49 m | FAIL (height) |
+| mk4347 Taunt 02 | 82 | RightUpLeg | 18.3°/f | 0.48 m | FAIL (height) |
+| mk4353 Taunt 01 | 17 | RightArm | 57.6°/f | 0.48 m | FAIL (height) |
+| mk4354 Taunt 03 | 24 | RightArm | 94.0°/f | 0.48 m | FAIL (step + height) |
+
+Versus W3's wrong-data run: **6 of 11 now pass the step gate** (W3:
+only the taunts, on other moves' data). The height failure is now
+visibly structural: peak ry is 0.48–0.49 m for *every* clip including
+standing taunts, because the converter drives Euler joints only and
+mean-centers the root — root height never leaves the stance constant
+while T3's IK solver pins limbs to stance targets. That is the same
+FK→IK blocker, now measured on true data. **Zero rows written; the
+king pack is byte-identical; no `t3_row` was added.** The corrected
+pose JSONs in `teardown/wwf-no-mercy/aki-rock-v3/` supersede #447's
+wrong-file artifacts, and the `aki_bake` records in
+`game/assets/movesets/ryuji-rock.json` are corrected to these numbers
+(plus a `cornerstone_build.aki_bake_w3c` summary).
+
+## FK track — evidence only (no guessed mappings)
+
+The player/FK composition remains unrecovered (W3b Finding 3 stands).
+The tractable next steps, in order, unchanged from W3b: (1) Ghidra-import
+`ovl_c` and `ovl_d` (both already capstone-scanned in the W3b scratch
+lane; import was RAM-blocked there) and find get-file-info callers that
+handle AkiAnimation IDs and read 98-byte strides; (2) failing static
+recovery, emulator watchpoint on the stance file's (0x2DD9) RAM copy and
+trace the consumer. Until one of those lands, no IK target channels can
+be fed honestly, and this lane ships none.
+
+## Harness proof — PENDING
+
+No clip passed the gate on true data, so no honest frame of CornerStone
+performing a No Mercy Rock move exists yet; RAM during this run stayed
+~1.4–3.2 GB free with other lanes active, so no Blender/browser harness
+job was started (RAM law). PENDING is the honest state, not a pass.
