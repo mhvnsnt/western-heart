@@ -268,6 +268,9 @@ export class Fighter {
     // vitals
     this.maxHp = 100; this.hp = 100;
     this.meter = 0; this.maxMeter = 100; // NINE-SOUL METER
+    // SOUL-SPIRIT TOGGLE (worker 83, owner directive 2026-10-22 ~23:02 CDT):
+    // a vessel-matched soul feeds its vessel faster meter gain.
+    this.soulMeterMult = charData.soulMeterMult || 1;
 
     // physics
     this.vx = 0; this.vy = 0; this.onGround = true;
@@ -949,7 +952,7 @@ export class Fighter {
       this.hp = Math.max(0, this.hp - chip);
       this.stun = 0.18 + move.damage * 0.01;
       this.vx = Math.sign(this.root.position.x - attacker.root.position.x) * move.knock * 0.5;
-      this.meter = Math.min(this.maxMeter, this.meter + 4); // +4 soul on block
+      this.meter = Math.min(this.maxMeter, this.meter + 4 * this.soulMeterMult); // +4 soul on block
       if (this.hp <= 0) { this._knockout(Math.sign(this.root.position.x - attacker.root.position.x) || 1); return 'ko'; }
       return 'block';
     }
@@ -984,7 +987,7 @@ export class Fighter {
     if (!this.onGround && !move.isGrab) { dmg *= this._juggle === 0 ? 0.8 : 0.5; this._juggle++; }
     this.lastCounterHit = counter;
     this.hp = Math.max(0, this.hp - dmg);
-    this.meter = Math.min(this.maxMeter, this.meter + 6); // +6 soul on taking damage
+    this.meter = Math.min(this.maxMeter, this.meter + 6 * this.soulMeterMult); // +6 soul on taking damage
     const dir = Math.sign(this.root.position.x - attacker.root.position.x) || -this.facing;
     this.vx = dir * move.knock;
     if (this.hp <= 0) { this._knockout(dir); return 'ko'; }
@@ -999,7 +1002,7 @@ export class Fighter {
     this._enter('ko'); this.stun = 999;
   }
   victory() { if (!this.dead) this._enter('victory'); }
-  addMeter(v) { this.meter = Math.min(this.maxMeter, this.meter + v); }
+  addMeter(v) { this.meter = Math.min(this.maxMeter, this.meter + v * this.soulMeterMult); }
 
   /* ---------------- hit / hurt queries (world-space spheres) ---------------- */
   _weaponBone() {

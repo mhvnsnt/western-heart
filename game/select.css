@@ -182,6 +182,33 @@
 #screen-select .pane-p2 .pane-attires { justify-content: flex-end; }
 #screen-select .pane-attires .attire-chip[disabled] { opacity: 0.55; cursor: default; }
 
+/* ---------- soul-spirit toggle (tertiary, NOT an attire — owner directive 2026-10-22) ---------- */
+#screen-select .soul-spirit-panel { pointer-events: auto; margin-top: 8px; display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
+#screen-select .pane-p2 .soul-spirit-panel { align-items: flex-end; }
+#screen-select .spirit-toggle {
+  font-size: 10px; font-weight: 900; letter-spacing: 1.5px;
+  color: rgba(255,255,255,0.85); background: rgba(20,10,32,0.8);
+  border: 1px solid rgba(159,216,255,0.45); border-radius: 999px;
+  padding: 6px 12px; cursor: pointer;
+}
+#screen-select .spirit-toggle.on { background: rgba(59,32,120,0.9); border-color: #9fd8ff; color: #fff; box-shadow: 0 0 10px rgba(159,216,255,0.5); }
+#screen-select .spirit-toggle[disabled] { opacity: 0.55; cursor: default; }
+#screen-select .spirit-souls { display: flex; flex-wrap: wrap; gap: 4px; max-width: 430px; }
+#screen-select .pane-p2 .spirit-souls { justify-content: flex-end; }
+#screen-select .spirit-soul {
+  font-size: 10px; font-weight: 800; letter-spacing: 0.5px;
+  color: rgba(255,255,255,0.8); background: rgba(20,10,32,0.7);
+  border: 1px solid rgba(255,255,255,0.25); border-radius: 6px;
+  padding: 4px 8px; cursor: pointer;
+}
+#screen-select .spirit-soul.on { border-color: #ffd60a; color: #ffd60a; background: rgba(60,45,5,0.85); }
+#screen-select .spirit-soul.vessel { border-style: double; border-color: rgba(159,216,255,0.7); }
+#screen-select .spirit-soul[disabled] { opacity: 0.55; cursor: default; }
+#screen-select .spirit-empowered {
+  font-size: 10px; font-weight: 900; letter-spacing: 1.5px; color: #ffd60a;
+  text-shadow: 0 0 8px rgba(255,214,10,0.8);
+}
+
 /* ---------- hints bar (T8 bottom-prompts fashion) ---------- */
 #screen-select .hints-bar {
   flex: 0 0 auto;
