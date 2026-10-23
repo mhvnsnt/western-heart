@@ -2504,3 +2504,27 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 **Verification:** exact-match diff audit (every T8 compact key joined to its source row); semantic check — 0 field losses, 0 removals, additions only (lock + provenance); all 10 JSON files parse; `node --test game/tests/fighter-completeness.test.mjs` green.
 
 **Deviations:** none — no SHOW content entered any moveset; no wrong-bank substitution (proxies left untouched, flagged in gap docs).
+
+
+---
+
+## 2026-10-23 — Batch2 moveset pull: scimitar/slice/skull/zui/kinpo (T8 diff + SHOW-ANIMATION LOCK)
+
+**Owner instruction (verbatim, 2026-10-23):** "Now we need to get that done for every other character" — the Law/Lars full pulls.
+
+**Method (replicates PR #823 Lars / PR #806 Law pattern):**
+- T8 frame tables (`game/data/t8_frame_tables.json` chars.shaheen/dragunov/bryan/steve/asuka) diffed against each moveset's `moves` keys with notation normalization (`uf`→`u/f`, `ws1`→`WS.1`, `FC.df`→`FC.d/f`, HTML entities decoded). Only GENUINELY-MISSING moves added — no re-adds.
+- New moves carry full frame data (startup/active/recovery/damage from T8 + wavu.wiki CC0-1.0 names/damage), `set: "FIGHT"` tags, and T8 provenance (`t8_source`, `t8_id`, `merge_source`).
+- File-level `anim_set_lock` added to all 5 (copies chordz.json pattern; SHOW refs point at each source's gap doc, or the wired bryan bank for skull).
+- T3 anim banks checked: `bryan/` exists and is already wired in `game/js/t3anims.js` `T3_BANKS` (skull — no gap doc needed). `shaheen/`, `dragunov/`, `steve/`, `asuka/` do NOT exist → gap docs filed, no wrong-bank substitution.
+
+**Per-fighter results (moves before → after):**
+- scimitar ← Shaheen: 362 → 362 (+0; T8 diff found 0 genuinely-missing — full coverage already)
+- slice ← Dragunov: 486 → 494 (+8: Back/Left/Right throw, OTG.d/b+3, TACKLE.1, TACKLE.2, TACKLE.1+2, (During enemy wall stun).f,f,F+4)
+- skull ← Bryan: 688 → 688 (+0; T8 diff found 0 genuinely-missing — full coverage already)
+- zui ← Steve: 654 → 661 (+7: Back/Left/Right throw, TFA.1, TFA.2, H.LNH.P, after_2steps+1)
+- kinpo ← Asuka: 525 → 525 (+0; T8 diff found 0 genuinely-missing — full coverage already)
+
+**Skipped (documented in each pull record, not silently dropped):** bare stance keys (`SNK`), stance transitions (`f+3_4`, `b+3_4`, `DCK.f+3_4` — tgt `sp`, no damage), `SWY.1+2~b_u_d` (steering variant of existing `SWY.1+2`), `b+3+4:1+2` on slice (already present from prior worker — not re-added).
+
+**Files:** `game/assets/movesets/{scimitar,slice,skull,zui,kinpo}.json`, `game/assets/movesets/index.json`, `docs/anim/{SHAHEEN,DRAGUNOV,STEVE,ASUKA}-ANIM-GAP-20261023.md`.
