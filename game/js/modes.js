@@ -26,6 +26,7 @@
    DOM-free and unit-testable in node. ModeController wires it to the
    DOM and the Game.
    ============================================================ */
+import { getRules } from './rules.js';
 
 /* ---------------- The Five Forces ----------------
    Canon rewards for claiming each land. Engine translation is honest:
@@ -549,14 +550,31 @@ export class ModeController {
     return false;
   }
 
-  /* ---------- VERSUS: no reincarnation, best of 3 ---------- */
+  /* ---------- VERSUS: no reincarnation, rules from VERSUS SETUP ----------
+     T7 GAME OPTION <VS GAME>: fight count, round time, guard damage
+     ride the fight opts into game.js; stage RANDOM skips the arena
+     screen entirely. */
   _beginVersus(p1id, p2id) {
     const p1 = this.getChar(p1id), p2 = this.getChar(p2id);
     if (!p1 || !p2) return;
+    const r = getRules();
     this._lastVersus = [p1id, p2id];
     this._badge(`VERSUS · ${p1.name} VS ${p2.name}`);
     this.game.onMatchEnd = (won) => this._versusEnd(won);
-    this.startFight(p1id, p2id, { mode: 'versus' });
+    const opts = {
+      mode: 'versus',
+      roundsToWin: r.roundsVs,
+      roundTime: r.roundTime,
+      guardDamage: r.guardDamage,
+    };
+    if (r.stageMode === 'random') {
+      const pool = (window.__stages || []).map((s) => s.id).filter(Boolean);
+      if (pool.length) {
+        opts.stage = pool[Math.floor(Math.random() * pool.length)];
+        opts.skipStage = true; // startFightViaStage goes straight in
+      }
+    }
+    this.startFight(p1id, p2id, opts);
   }
   _versusEnd(playerWon) {
     this.game.onMatchEnd = null;

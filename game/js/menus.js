@@ -15,6 +15,7 @@
 import { audio } from './audio.js';
 import { lazy } from './lazy.js';
 import { initMainMenu } from './mainmenu.js';
+import { initVersusSetup } from './versus-setup.js';
 
 /* ---------------- Settings ---------------- */
 const SETTINGS_KEY = 'wh_settings_v1';
@@ -525,6 +526,7 @@ export function initMenus(deps = {}) {
   buildOverlays();
   buildMenuButtons();
   initMainMenu(); // T8-style main menu controller (additive; no-ops if markup absent)
+  initVersusSetup(); // versus rules screen (additive; no-ops if markup absent)
   hookAudioUnlock();
   // Stream-4 mode controllers (standalone; they reuse Game patterns).
   // LOADSPEED: built on first tap via ensureHeartmind/ensureEpisodes —

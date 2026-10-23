@@ -112,12 +112,27 @@ const ui = {
     const wrap = document.getElementById(`${id}-meter`);
     wrap.classList.toggle('full', f.meter >= f.maxMeter - 0.001);
   },
-  setTimer(v) { document.getElementById('timer').textContent = String(v).padStart(2, '0'); },
-  setRounds(wins) {
-    document.getElementById('p1-r1').classList.toggle('win', wins.p1 >= 1);
-    document.getElementById('p1-r2').classList.toggle('win', wins.p1 >= 2);
-    document.getElementById('p2-r1').classList.toggle('win', wins.p2 >= 1);
-    document.getElementById('p2-r2').classList.toggle('win', wins.p2 >= 2);
+  setTimer(v) {
+    const t = document.getElementById('timer');
+    t.textContent = (v === '∞' || v === Infinity || (typeof v === 'number' && !isFinite(v))) ? '∞' : String(v).padStart(2, '0');
+  },
+  setRounds(wins, target) {
+    // Round pips rebuild to the match's round target (T7 HUD shows the
+    // pips for the rounds actually needed, not a fixed pair).
+    const t = Math.min(5, Math.max(1, target || 2));
+    for (const side of ['p1', 'p2']) {
+      const host = document.getElementById(side + '-pips');
+      if (!host) continue;
+      while (host.children.length < t) {
+        const s = document.createElement('span');
+        s.className = 'round-pip';
+        host.appendChild(s);
+      }
+      while (host.children.length > t) host.removeChild(host.lastChild);
+      for (let i = 0; i < host.children.length; i++) {
+        host.children[i].classList.toggle('win', (wins[side] || 0) > i);
+      }
+    }
   },
   banner(text) {
     const b = document.getElementById('round-banner');
@@ -285,7 +300,9 @@ function getRankBattle() {
    their mode-dictated flow (stage comes from the mode, not the player). */
 let pendingFight = null;
 function startFightViaStage(p1, p2, opts = {}) {
-  if (opts.mode !== 'versus') { startFight(p1, p2, opts); return; }
+  // Versus SETUP: stage RANDOM skips the arena screen — the random stage
+  // picked in modes.js _beginVersus rides opts.stage straight in.
+  if (opts.mode !== 'versus' || opts.skipStage) { startFight(p1, p2, opts); return; }
   pendingFight = { p1, p2, opts };
   buildStageSelect();
   show('stage');
@@ -655,11 +672,16 @@ document.addEventListener('click', (e) => {
 
 /* T8 main menu router (data-mm, worker 36): the T8-style menu uses data-mm
    attributes, not data-action. This delegated listener wires them up.
-   Each navigates to a real screen — no dead ends. */
+   Each navigates to a real screen — no dead ends.
+   SUBMENU REBUILD (worker-submenus): rail items (.mm-item) are owned by
+   the T8 submenu controller in mainmenu.js — it opens the slide-in
+   submenu panel. Yielding here keeps every submenu reachable; without
+   this the mode starts underneath and the submenu never shows. */
 document.addEventListener('click', (e) => {
   const t = e.target;
   const el = (t instanceof Element) ? t.closest('[data-mm]') : null;
   if (!el) return;
+  if (el.classList && el.classList.contains('mm-item')) return; // submenu controller owns rail items
   unlockAudio();
   audio.uiClick();
   const m = el.dataset.mm;
