@@ -24,6 +24,7 @@ import { TekkenBuffer, getFighterMoveset, getMovesetInfo, resolveMove } from './
 import { TransformCinematic } from './transform-cinematic.js';
 import { V, vskillFor, vtriggerEnhance, vreversalMove } from './v-system.js';
 import { JiggleRig } from './jiggle.js';
+import { SoftBody } from './softbody.js';
 import { FaceRig } from './faceRig.js';
 import { HandPoseBlender } from './handPoses.js';
 
@@ -471,6 +472,19 @@ export class Fighter {
     });
     const jiggleIntensity = this.char.jiggleIntensity || 'natural';
     if (this._jiggle) this._jiggle.setIntensity(jiggleIntensity);
+    // Soft-body muscle volume (PBD lane, 2026-10-23): Jolt XPBD torso volume
+    // for muscle deformation on hit + volume-grounded jiggle. Same pattern
+    // as jiggle: inert until Jolt loads, every call guarded, never crashes
+    // the fight. char.softbody === false opts out.
+    this._softbody = null;
+    const softSpec = SoftBody.anatomyFor(this.char);
+    if (softSpec) {
+      this.root.traverse(o => {
+        if (!this._softbody && o.isSkinnedMesh) {
+          try { this._softbody = SoftBody.fromMesh(o, softSpec); } catch (e) {}
+        }
+      });
+    }
     // Face rig: morph driver + blink timer
     this._face = FaceRig.attach(this.root);
     // Hand poses: fist default, blended per state
@@ -1042,6 +1056,13 @@ export class Fighter {
       this.vy = move.isGrab ? 5.2 : 4.6; this.onGround = false; this.stun = 0.55; this._enter('knockdown');
     } else { this.stun = 0.2 + move.damage * 0.012 + (counter ? 0.12 : 0); this._enter('hitstun'); }
     this.stance = null;
+    // Soft-body hit injection: dent the muscle volume at the impact point.
+    if (this._softbody) {
+      try {
+        const hb = attacker && attacker.getHitbox ? attacker.getHitbox() : null;
+        if (hb) { _v1.set(hb.x, hb.y, hb.z); this._softbody.hit(_v1, dir, move.damage || 8); }
+      } catch (e) {}
+    }
     return counter ? 'counter' : 'hit';
   }
   _knockout(dir) {
@@ -1128,6 +1149,10 @@ export class Fighter {
     // Secondary systems update (after animation, before render)
     if (this._jiggle) {
       try { this._jiggle.update(dt); } catch (e) {}
+    }
+    // Soft-body AFTER jiggle: volume deformation rides on the posed mesh.
+    if (this._softbody) {
+      try { this._softbody.update(dt); } catch (e) {}
     }
     if (this._face) {
       // Face expression by state
