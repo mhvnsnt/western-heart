@@ -40,3 +40,10 @@ existed (`8c4fef1b3`, `model-rigged.glb`, 52 joints) but were never wired, and t
   are being re-rigged with `rig_tripo_static.py --facing +Z`. They stay on their statics until the new rigs pass the
   same in-game check.
 - No textures on any of the six (the extractor writes positions/UVs/material colours only): they render grey/white.
+
+## Ryusan and Tobi re-rigged (update)
+
+`tools/auto_rig/reorient_static.py` stood both Z-up statics upright, then `rig_tripo_static.py --facing +Z` rigged them
+into `model-rerig.glb` (the crew's `model-rigged.glb` stays beside it). `ingame_ryusan_tobi_rerig.png`: both face front at
+rest and hold the T3 stance without tearing (max bone error 0.4°). Wired: `ryusan`, `ryusan-attire1`, `tobi`,
+`tobi-attire1` → `model-rerig.glb`, facing +Z.
