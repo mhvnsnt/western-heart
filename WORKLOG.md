@@ -2258,3 +2258,11 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 **Verification:** all 17 new moves resolve via the game's own `resolveMove('chordz', …)`; `node --test game/tests/fighter-completeness.test.mjs` green (4/4); new-move schema + source-id refs validated; jin bank clip files all parse with frames. Live-browser play verification (animations on Chordz in-game) is queued for a browser-capable lane — subagent has no live browser.
 
 **Anti-clobber:** branched from main tip; sibling lane's WIP stashed intact; JSON edits via round-trip-safe scripted merges (diffs are additions-only); no deletions. Branch pushed via Git Database API (no GitHub connector for git ops).
+
+## ANIMATION GATE — fight vs show (owner t117u, 2026-10-23 14:14 CT)
+
+- Contexts: `FIGHT`, `INTRO_OUTRO`, `CUTSCENE` (story), `SHOW`. Module: `game/js/anim-gate.js`.
+- In `FIGHT` only moveset clips may play. Any clip tagged show (`userData.animSet='show'`), named `show:*`, or pathed `anims/show/*` is **rejected and logged** (`gateLog` + `console.warn('[WH-ANIM-GATE] …')`).
+- Enforced in code at the two places fight actions are created: `createT3Actions()` in `game/js/t3anims.js` and the embedded Idle/Walk/Run path in `game/js/assets.js`.
+- Crossover only via allowlist `game/data/crossover.json`: fight clips → SHOW / CUTSCENE / INTRO_OUTRO; show clips → INTRO_OUTRO / CUTSCENE / SHOW, **never FIGHT** (`setCrossover` throws if anyone adds FIGHT). Changing that requires an owner-approved moveset PR.
+- CI: `test/anim-gate.test.mjs` (picked up by rig-guard game-unit-tests) simulates 600-frame fights for every roster fighter with show clips injected, asserts 0 show clips played, and checks allowlist-only crossover. Mutation check: removing the gate line makes it fail (104 fails).
