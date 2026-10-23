@@ -2481,3 +2481,26 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 **Verification:** semantic diff audit — 0 field losses, 0 removals, additions only; all 17 new moves tagged; `node --test game/tests/fighter-completeness.test.mjs` green.
 
 **Deviations:** none — the 17 pulled moves are all combat moves (FIGHT); no SHOW content entered the moveset.
+## 2026-10-23 ~18:30 CDT — Law full pull for BUFFALO BILL (branch `law/full-pull-2026-10-23`)
+
+- **Moveset** (`game/assets/movesets/buffalo-bill.json`): 228 -> 229 moves. Full-bank
+  audit (459 Law rows): 43 damaging rows unreached by the input BFS; motion
+  fingerprints show 1 duplicate (r57 = r54/55/56), 1 with a real decoded input
+  (r441, mash follow-up `[5+LP 5 5+RP 5 5+LP+RP](40f)` to `d/f+1+2,1_c2` — added as
+  `d/f+1+2,1_c2,mash`), 41 with unique motions but NO decodable input path (not
+  added, no invention per no-guessing law). Forest Law's 27 exclusive rows are his
+  alternate basics (different character) — not merged. `index.json` updated 228->229.
+- **Animation bank** (`game/assets/anim/t3/law/`, new, 30 wh-anim/1 clips): Law's
+  signature stance idle (slot 3), intro (slot 0), jab/kick/u/f+4-flip-kick/throw,
+  block/hit/launch/KO, dashes, walks, sidesteps, jumps, crouch, 4 win poses, plus
+  `skeleton.json` and `rows.pack.json` (217 rows, 0 missing). Baked from the owner's
+  disc with the existing pipeline (KMD re-extracted, sha256-verified; facing-fix
+  build; clip<->GLB check 540 channels, max dev 7.83e-07). Stick-figure renders
+  eyeballed: real Law motion.
+- **Wiring**: `T3_BANKS.law` + `SOURCE_TO_BANK.law` in `game/js/t3anims.js`;
+  `bankIdFor('buffalo-bill')` now resolves via `t3_source: 'law'`.
+- **Tools** (additive): `BANKS["law"]` in `lab/tools/t3_motion_bake.py`,
+  `tools/anim/t3_row_bake.py`, `tools/anim/t3_bank_skeleton.py`.
+- Canon untouched. Tekken/Law names in technical files only.
+- Full log: `docs/decisions/2026-10-23-law-pull-buffalo-bill.md`.
+- In-game playtest (clips actually playing on Buffalo Bill) flagged for coordinator.
