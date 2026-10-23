@@ -51,3 +51,8 @@
 - **Decisions:** `docs/decisions/2026-10-22-bannon-teardown-inventory.md`. **Owner directives:** appended Bannon sub-universe law (surgical edit).
 - **Blocker:** GitHub API rate-limited (403, shared PAT quota exhausted by concurrent crew workers) — PR creation + merge via git_merge.py deferred until quota resets. Branch `worker-49/bannon-teardown-inventory` + PR body staged locally in `~/workspace/w49-round/`.
 - **Gaps flagged:** Bannon kits beyond defaultMoveSet unauthored (fill path: teardown banks); Buffalo Bill/wizard gang unlocated (owner to say); SOMBRA_NEGRA has no roster profile; Bloody Roar not landed; DOA4/SF EX2+/Urban Reign/WMXIX identities unmapped.
+
+## 2026-10-23 14:15 CT — Input resolver V2 (owner t116u) — MoneyManBusch executor
+- Root cause of "neutral 3 = crouching kick": touch stick kept `down` latched after a held crouch was re-centred (input.js). Plus 6 resolver bugs (repeated-step motions, context-blind chord specials, crash on specials without input, tap/hold spellings, neutral-ending motions, unreachable strings). Details: docs/input/INPUT-RESOLVER-V2.md.
+- V2 ON by default; legacy reachable via localStorage wh_input_resolver='legacy'.
+- New CI test test/input-determinism.test.mjs: 125 fighters, non-string failures 208 → 0, touch re-centre FAIL → PASS.
