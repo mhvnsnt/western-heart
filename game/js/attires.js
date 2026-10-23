@@ -372,6 +372,8 @@ function saveMap(m) {
 /** Attires available for a roster fighter (by model, falls back to roster id). */
 export function attiresFor(fighter) {
   if (!fighter) return [];
+  // MODEL PENDING (owner 2026-10-23): no own model yet -> no attire, never another fighter's body.
+  if (fighter.modelPending || !fighter.model) return [];
   // A soul riding another fighter's body (TOU / KAI / RETSU / GYOU on 'pantera') keeps that base model:
   // the body owner's ladder (Pantera's Tripo-first reorder, 2026-10-21) is his, not the riders'
   // (game/tests/model-key-guard.test.mjs "declared-base riders stay on their declared base").
@@ -379,7 +381,7 @@ export function attiresFor(fighter) {
   const list = ridesOther ? ATTIRE_VARIANTS[fighter.id] : (ATTIRE_VARIANTS[fighter.model] || ATTIRE_VARIANTS[fighter.id]);
   if (list && list.length) return list;
   // Default: single attire = the fighter's own model
-  return [{ model: fighter.model || 'pantera', label: 'ATTIRE 1' }];
+  return [{ model: fighter.model, label: 'ATTIRE 1' }];
 }
 
 /** The persisted attire model id for this fighter (or their base). */
@@ -388,7 +390,7 @@ export function selectedAttireModel(fighter) {
   const list = attiresFor(fighter);
   const saved = map[fighter.id];
   if (saved && list.some(a => a.model === saved)) return saved;
-  return list[0].model;
+  return list.length ? list[0].model : null;
 }
 
 /** Persist the attire choice for a fighter. */

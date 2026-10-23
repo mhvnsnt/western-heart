@@ -29248,6 +29248,114 @@
       "t3_restriction": 10,
       "merge_source": "donor:byou:1_c75_r401",
       "donor_fighter": "byou"
+    },
+    "None~donor.byou.2": {
+      "name": "Wrong Foot [WH SIGNATURE]",
+      "input": "D+K",
+      "startup": 0.23,
+      "active": 0.017,
+      "recovery": 0.7,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "wh:byou:sig:wrong-foot",
+      "input_slots": [
+        "D+K",
+        "D",
+        "K"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "BYOU moves wrong. Unreadable. A low kick from a foot that shouldn't be there.",
+      "merge_source": "donor:byou:D+K",
+      "donor_fighter": "byou",
+      "anim_t3": {
+        "bank": "lei",
+        "row": 111,
+        "match": "nearest limb/class/startup (approximate)"
+      }
+    },
+    "None~donor.byou.3": {
+      "name": "Sickness Pattern [WH SIGNATURE]",
+      "input": "S",
+      "startup": 0.29,
+      "active": 0.1,
+      "recovery": 0.88,
+      "damage": 17,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 12,
+      "anim_ref": "wh:byou:sig:sickness-pattern",
+      "input_slots": [
+        "S"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "The soul moves wrong and agrees with itself about it. An arrhythmic flurry with no pattern to learn.",
+      "merge_source": "donor:byou:S",
+      "donor_fighter": "byou",
+      "anim_t3": {
+        "bank": "lei",
+        "row": 300,
+        "match": "nearest limb/class/startup (approximate)"
+      }
+    },
+    "d+4~donor.byou.2": {
+      "name": "Wrong Foot [WH SIGNATURE]",
+      "input": "d+4",
+      "startup": 0.23,
+      "active": 0.017,
+      "recovery": 0.7,
+      "damage": 15,
+      "limb": "legL",
+      "heavy": false,
+      "knock": 4.2,
+      "soulGain": 11,
+      "anim_ref": "wh:byou:sig:wrong-foot",
+      "input_slots": [
+        "d+4"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "BYOU moves wrong. Unreadable. A low kick from a foot that shouldn't be there.",
+      "input_remapped_from": "D+K",
+      "merge_source": "donor:byou:d+4",
+      "donor_fighter": "byou",
+      "anim_t3": {
+        "bank": "lei",
+        "row": 143,
+        "match": "same-notation"
+      }
+    },
+    "1+2~donor.byou.3": {
+      "name": "Sickness Pattern [WH SIGNATURE]",
+      "input": "1+2",
+      "startup": 0.29,
+      "active": 0.1,
+      "recovery": 0.88,
+      "damage": 17,
+      "limb": "armR",
+      "heavy": true,
+      "knock": 4.2,
+      "soulGain": 12,
+      "anim_ref": "wh:byou:sig:sickness-pattern",
+      "input_slots": [
+        "1+2"
+      ],
+      "move_class": "signature",
+      "wh_original": true,
+      "note": "The soul moves wrong and agrees with itself about it. An arrhythmic flurry with no pattern to learn.",
+      "input_remapped_from": "S",
+      "merge_source": "donor:byou:1+2",
+      "donor_fighter": "byou",
+      "anim_t3": {
+        "bank": "lei",
+        "row": 298,
+        "match": "same-notation"
+      }
     }
   },
   "restored_from_sweep_338": {
@@ -29714,7 +29822,7 @@
     "u/f+4,4,4,4": "u/f+4,4,4,4"
   },
   "merge_sources": {
-    "date": "2026-10-21",
+    "date": "2026-10-23",
     "by": "tools/moveset-merge/merge_sources.py",
     "bases": {
       "t7": [
@@ -29729,10 +29837,10 @@
     },
     "why": "owner 2026-10-21: \"Lei wulong is not byou, he is Rave/Kiko tanaka\" / \"U can add leis and byous moves to rave, but rave already takes over leis character and slot and moves and personality into combined with his canon of rave/Kiko tanaka\" (models kiko-tanaka.glb / kiko-tanaka_alt1.glb, roster/TRIPO-REGISTRY.md)",
     "exclude_proxy": false,
-    "moves_before": 926,
-    "moves_after": 1080,
+    "moves_before": 1080,
+    "moves_after": 1084,
     "added": {
-      "donor": 154
+      "donor": 4
     },
     "slots": 452,
     "slots_by_priority": {
@@ -29741,7 +29849,7 @@
       "t3": 91,
       "proxy": 42
     },
-    "previously_playable_inputs": 144,
+    "previously_playable_inputs": 173,
     "owner_excluded_inputs": [],
     "note": "Existing moves untouched. New moves carry merge_source; slots = default input map (editor can reassign any move). Damage scaled to WH 100 HP, raw in damage_raw."
   },

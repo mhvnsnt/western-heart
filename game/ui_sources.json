@@ -70,7 +70,9 @@
         "game/js/select-screen.js",
         "game/index.html",
         "game/t7-skin.css",
-        "game/js/t7-ui-private.js"
+        "game/js/t7-ui-private.js",
+        "game/select-t7.css",
+        "game/js/select-t7-layout.js"
       ],
       "reuse": [
         "mhvnsnt/Brutal-Fist@f455322:src/components/CharacterSelect.tsx (phone-portrait stage/grid split)",
@@ -100,6 +102,18 @@
       "status": "legacy-unsourced",
       "sources": [],
       "files": []
+    },
+    "hud-fight": {
+      "status": "sourced",
+      "sources": [
+        "teardown/western-heart-design/king-tekken3-ingame.jpg",
+        "teardown/tekken7/tekkenmods-docs/files/en/Tekken_8/Basic_Information/Overview/Moveset/Structures/Input_Sequence/index.md"
+      ],
+      "files": [
+        "game/styles.css",
+        "game/menus.css"
+      ],
+      "note": "In-fight HUD + touch pad. Tekken in-game reference: round timer top-centre, nothing drawn over it (mode badge / VERSUS chip sit below the health-bar row). Touch pad uses T8 1/2/3/4 limb notation; Heat = 2+3, Rage Art = 1+2."
     }
   }
 }

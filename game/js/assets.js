@@ -1266,7 +1266,7 @@ class AssetManager {
      'custom' only warms when a custom fighter actually exists (main.js
      passes hasCustom) — 2.2MB most sessions never need. */
   preloadBaseIdle(hasCustom = false) {
-    const ids = ['pantera', 'steve-fox', 'demonio'];
+    const ids = ['pantera', 'demonio']; // steve-fox removed: no fighter falls back to it (owner 2026-10-23)
     if (hasCustom) ids.push('custom');
     const ric = (typeof window !== 'undefined' && window.requestIdleCallback)
       ? window.requestIdleCallback.bind(window)
