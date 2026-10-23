@@ -43,7 +43,7 @@ export class AIController {
       }
       this._breakT -= dt;
       if (this._breakT <= 0) {
-        const want = f.lockMove.throw_break || '1';
+        const want = (f.lockMove.throw_break || '1').split('|')[0]; // T8 '1|2' -> 1
         if (this._breakWill) f.tryThrowBreak(want === '1+2' ? '1+2' : want);
         else f.tryThrowBreak(want === '1' ? '2' : '1'); // wrong read
         this._breakT = undefined;
