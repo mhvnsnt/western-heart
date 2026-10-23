@@ -25,6 +25,7 @@ import { STAGES, STAGE_TIERS, getStage, randomStageId } from './stages.js';
 // small next to the deferred modules. Stage THUMBS are the real cost there
 // (see the thumb atlas, assets/stages/thumbs/atlas.png + thumbs.json).
 import { initMenus } from './menus.js';
+import './load-progress.js'; // real loading bar (owner pt134u)
 
 // LOADSPEED: the real Tekken moveset JSONs (~300KB) used to fetch at boot.
 // They are fight data — they load when a fight starts (startFight awaits
@@ -899,6 +900,7 @@ async function startFight(playerId, enemyId, opts = {}) {
     if (tBtn) tBtn.style.display = (player.transform || player.forms) ? '' : 'none';
     if (confirmBtn) confirmBtn.disabled = true;
     await assets.loadModels(need, (p, loaded, total) => {
+      if (window.__whLoadProgress) window.__whLoadProgress(p, loaded, total);
       if (!hint) return;
       if (loaded && total) {
         const mbL = (loaded / 1048576).toFixed(1);
