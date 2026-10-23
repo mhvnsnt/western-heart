@@ -6,11 +6,31 @@ pulled from every Tekken game and the teardown games whose hand/arm work fits
 Western Heart's Tekken-style playstyle.
 **Raw extracts:** teardown/<game>/rigging-reference/ (per-game files; JSON where parsed).
 
+## 0. Source priority (standing directive 2026-10-23)
+
+Pull order for hand/arm rigging + posing references:
+
+1. **Tekken 5, Tekken 6, TTT2, Tekken 7 FIRST** — hand bones, finger weights,
+   arm posing in stances/idles/win poses. A dedicated extraction coordinator
+   is driving these games to 100%; use their output.
+2. **Tekken 3 is FALLBACK-ONLY** — use teardown/tekken3/ only to fill gaps the
+   newer games cannot cover. Do NOT default to T3 references.
+3. Other teardown games (DOA, VF5, SC2, Urban Reign, wrestling) where their
+   hand/arm work fits WH's Tekken-style playstyle.
+
+Coordinator-output check 2026-10-23 ~15:00 CDT: no NEW T5/T6/TTT2/T7 hand-bone
+extraction has landed since the last pull (tekken5-ps2-v1 still 0 assets;
+ttt2-7z-v1 unchanged; teardown/tekken6/ still EBOOT-decrypt + customization
+parts; teardown/tekken7/ unchanged since PR #813). The T5/T6/TTT2 sections below
+still use the same-family T6-era proxy, flagged as such. NEW since the last
+pull: Urban Reign's bone-name pool is decoded (49 names, no finger bones —
+see below).
+
 ## 1. The comparison
 
 | Game | Hand bones? | Fingers | Naming | Fist/open/grip | Status |
 |---|---|---|---|---|---|
-| Tekken 3 | NO — 18 rigid parts | None (mitten parts) | Part/slot indices | Baked into part geometry; wrist rotation only | EXTRACTED (USA-verified parsers) |
+| Tekken 3 | NO — 18 rigid parts | None (mitten parts) | Part/slot indices | Baked into part geometry; wrist rotation only | FALLBACK-ONLY (standing directive 2026-10-23) — EXTRACTED via USA-verified parsers |
 | Tekken 5 | Unknown (no native skeleton extracted) | Unknown | T6-era convention presumed | Unknown | OPEN — GLB releases are geometry-only |
 | Tekken 6 PSP | Unknown (no native skeleton extracted) | Unknown | T6-era convention presumed | Unknown | OPEN — use T6-era proxy below |
 | TTT2 | Unknown (extracted files encrypted) | Unknown | T6-era convention presumed | Unknown | OPEN — LIVE containers need decrypt |
@@ -19,7 +39,7 @@ Western Heart's Tekken-style playstyle.
 | DOA4 | Stub chains (3-seg leaves, generic names) | Limited | node0..node57 (export) | Authored on stub chains | EXTRACTED (chrone skinned GLB) |
 | VF5 | YES — 49 bones | 5 digits x 3 segs | Japanese: nl_{oya,hito,naka,kusu,ko}_{l,r}_wj + _b/_c | Authored animation poses | EXTRACTED (Dural SKIN blocks) |
 | Soulcalibur II | Unknown (anim format open) | Unknown | Unknown | Unknown | OPEN — 577 anim clips extracted, format decode pending |
-| Urban Reign | Unknown (bone map open) | Unknown | Unknown | Unknown | OPEN — PPK bind poses exist, .gyu tracks pending |
+| Urban Reign | Terminal hand joint only (no fingers) | None (mitten) | SAKOTSU->KATA->UDE->TE_R/L | Wrist orientation per move (.gyu) | EXTRACTED 2026-10-23 — 49-name bone pool decoded, 72 skinned GLBs |
 | WWF No Mercy (AKI) | NO — 19 hinge joints | None | Upper/LowerArm etc. | Wrist only | EXTRACTED (retarget doc) |
 | WMXIX (Yukes) | YES — 70 bones | 5 digits x 3 segs | Bip R/L Finger0..4 (+N1/N2) | Per-move detail TRACKS | EXTRACTED (measured skeleton + YANM findings) |
 | Def Jam FFNY | Shared skeleton (78 fighters) | Unknown | Unknown | hands_animation layer | PARTIAL — bone map open |
@@ -123,8 +143,9 @@ roles per throw (WMXIX pattern).
 - T5/T6/TTT2 native skeletons: no parseable skeleton in any release or repo dir;
   the T6-era 147-bone data is a same-family proxy, flagged as such per game.
 - SC2 weapon-grip poses: anim files extracted, bone-track format not decoded.
-- Urban Reign grapple poses: bind poses exist, bone map not decoded.
+- Urban Reign: bone-name pool DECODED 2026-10-23 (49 names, TE_R/L terminal — no finger bones); 72 skinned GLBs in teardown/urban-reign/models/; .gyu track format still pending for weapon-grip wrist poses.
 - Def Jam FFNY: shared skeleton + hands layer confirmed, bone map open.
 - DOA4 bone names: export uses generic node names (Team Ninja internals not in export).
 - KOF 3D: no teardown exists.
+- Tekken 3: FALLBACK-ONLY per standing directive 2026-10-23 — its 18-part rigid layout stays as the gap-filler, never the default reference.
 - Tekken 8: queued — do NOT pull until the user confirms the Steam purchase.
