@@ -59,6 +59,12 @@ def main():
     ap.add_argument("--height", default="1.8")
     ap.add_argument("--keep-work", action="store_true")
     a = ap.parse_args()
+    # Blender renders need libEGL/libGL; this VM keeps them in ~/workspace/tools/syslibs
+    # (setup_toolchain.sh). Add to LD_LIBRARY_PATH when present so render_poses works.
+    for _sl in ("egl", "gl"):
+        _p = os.path.expanduser("~/workspace/tools/syslibs/%s/usr/lib/x86_64-linux-gnu" % _sl)
+        if os.path.isdir(_p) and _p not in os.environ.get("LD_LIBRARY_PATH", ""):
+            os.environ["LD_LIBRARY_PATH"] = _p + ":" + os.environ.get("LD_LIBRARY_PATH", "")
     blender = os.environ.get("WH_BLENDER") or os.path.expanduser(
         "~/workspace/tools/blender/blender-4.0.2-linux-x64/blender")
     out = a.out or os.path.splitext(a.inp)[0] + "-rigged.glb"
@@ -73,7 +79,8 @@ def main():
         os.makedirs(cdir)
         os.symlink(os.environ["NODE_PATH"].split(os.pathsep)[0], os.path.join(cdir, "node_modules"))
         codec = shutil.copy(CODEC, os.path.join(cdir, "gltf_codec.mjs"))
-    bl = ["xvfb-run", "-a", "env", "-u", "PYTHONPATH", "XDG_RUNTIME_DIR=/tmp", blender, "-b", "--factory-startup", "--python"]
+    bl = ["xvfb-run", "-a", "env", "-u", "PYTHONPATH", "XDG_RUNTIME_DIR=/tmp", blender, "-b", "--factory-startup",
+          "--python-exit-code", "1", "--python"]
 
     run(["node", codec, "decode", a.inp, dec], log=log)
     cmd = bl + [os.path.join(HERE, "backends", "gamerig_backend.py"), "--", "--in", dec, "--out", rig,
