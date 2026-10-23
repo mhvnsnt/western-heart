@@ -61,10 +61,10 @@ jobs:
           sparse-checkout: |
             tools/rig-guard
           sparse-checkout-cone-mode: false
-      - name: Guard self-test
-        run: python3 -m unittest discover -s tools/rig-guard -p 'test_face_weight_guard.py' -v
       - name: Install scan deps
         run: pip install --quiet numpy pygltflib meshopt
+      - name: Guard self-test
+        run: python3 -m unittest discover -s tools/rig-guard -p 'test_face_weight_guard.py' -v
       - name: Check face weights on changed GLBs
         env:
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
