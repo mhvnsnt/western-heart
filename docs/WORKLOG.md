@@ -1,5 +1,7 @@
 # Western Heart — Work log (timestamps CT)
 
+- 2026-10-23 15:40 CT Grok Bot (teardown-integration lane): t123u ui_sources gate. Added `game/ui_sources.json` (14 screens, all `legacy-unsourced`: the repo has no T5/T7/T8/TTT2 menu extractions yet, and T6 has only 2 PSP icons), `tools/ui-sources/check.py`, `.github/workflows/ui-sources.yml`, and the AGENTS.md law. Local tests: untouched = PASS; changed screen-daily with no source = FAIL; same change citing teardown/tekken6/ui/psp_PIC1.png = PASS.
+
 - 2026-10-14 16:10 Grok Bot (QA lane): claimed in agent-ops CLAIMS.md (`grok/wh-playtest-qa`). Sparse clone `/workspace/wh-qa` (`--depth 1 --filter=blob:limit=2m`), Godot 4.3 already on box. Disk 4.6 GB free, RAM ~5 GB.
 - 16:15 Imported lab/game headless; read main.gd / fighter.gd / move_table.gd / ai.gd. King jab row 35 has active_first 18; grab and heavy share row 230.
 - 16:20 Wrote `lab/game/tests/qa_playtest.gd` (scripted P1 via InputMap, dummy P2, per-frame CSV). Headless run: 12 scenarios, 30 s.
@@ -53,3 +55,19 @@
 - **Gaps flagged:** Bannon kits beyond defaultMoveSet unauthored (fill path: teardown banks); Buffalo Bill/wizard gang unlocated (owner to say); SOMBRA_NEGRA has no roster profile; Bloody Roar not landed; DOA4/SF EX2+/Urban Reign/WMXIX identities unmapped.
 
 - 2026-10-23 14:25 CT Grok Bot (Repo Co Dev): recorded owner laws (relayed via MoneyManBusch). (1) 2:19 PM CT — data from T5/T6/T7/T8/TTT2; T3 last-resort fallback, every use logged with reason. (2) 2:21 PM CT — NO hand-made menus; all menus/char select/customization incl. packages/creation-suite built from teardowns, every UI change cites its teardown source; CI gate owned by MoneyManBusch; existing creation suite UI marked NON-COMPLIANT pending rebuild (not deleted). Updated RULES_NO_GUESSING, HOW-TO-CONTINUE, AGENTS.md, IMPORTERS.md, creation-suite README. Source: owner via MoneyManBusch.
+
+## 2026-10-23 15:07 CT, phone char-select layout (fix/select-phone-layout)
+- Cause: game/select.css set #screen-select position: relative, overriding .screen fixed inset:0, so the screen collapsed to content height (fighters zone 0px, ~45% of the viewport empty). CONFIRM was clipped at 390px.
+- Fix: fixed + inset 0; on screens up to 480px wide the hint text is hidden and CONFIRM flexes. Same T8 decode layout (docs/select-redesign/T8-GRID-DECODE.md). Proof in docs/ui/select-phone/.
+- Asset audit: all 179 MODEL_URLS and all 145 attires of the 55 fighters resolve to files on main. The Demonio GLB and profile 404s reported earlier came from my partial checkout (profiles are optional by design).
+## 2026-10-23 14:15 CT — Input resolver V2 (owner t116u) — MoneyManBusch executor
+- Root cause of "neutral 3 = crouching kick": touch stick kept `down` latched after a held crouch was re-centred (input.js). Plus 6 resolver bugs (repeated-step motions, context-blind chord specials, crash on specials without input, tap/hold spellings, neutral-ending motions, unreachable strings). Details: docs/input/INPUT-RESOLVER-V2.md.
+- V2 ON by default; legacy reachable via localStorage wh_input_resolver='legacy'.
+- New CI test test/input-determinism.test.mjs: 125 fighters, non-string failures 208 → 0, touch re-centre FAIL → PASS.
+## 2026-10-23 14:34 CT, t122u main-menu touch fix (fix/menu-touch-t122u)
+- Root cause: #loading is a transparent full-screen overlay that only main.js hides. Any failed boot module left it up, and it ate every tap (reproduced in Playwright, all items covered by #loading). #tap-to-start also covered DAILY CHALLENGES.
+- Fix: pointer-events none on both, plus a 4s classic-script failsafe that hides #loading. Test: test/e2e/menu-touch.e2e.mjs, CI job menu-touch-e2e, screenshots in docs/ui/t122u/.
+- Not done: teardown menu rebuild, Legacy toggle, select-screen mobile overflow (strip and CONFIRM clipped at 390px), missing roster/demonio-human glb.
+## 2026-10-23 15:16 CT, teardown coverage audit (docs/teardown-coverage-audit)
+- tools/teardown-coverage/audit.py (read-only against a git ref) writes docs/teardown-coverage/COVERAGE.md and coverage.json with source_game per teardown file and per move.
+- 51234 teardown files: 27.2% integrated (code/data reference), 31.7% docs-only, 41.0% unreferenced. T3 is 25.5% of reachable slots; priority sources 73.4% (T7/T8 only). No TTT2/T6/T5 move data exists in the repo to replace T3.

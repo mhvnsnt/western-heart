@@ -144,7 +144,7 @@ export const MODEL_URLS = {
   // via tools/auto_rig knn backend (donor pantera.glb); original model.glb untouched.
   waterfall: '../roster/waterfall/attires/attire1/model-rigged.glb',
   'n3g4tiv0': 'assets/models/n3g4tiv0.glb',
-  thor: '../roster/thor/attires/attire1/model-rigged.glb',
+  thor: '../roster/thor/attires/attire1/model-rerig.glb',
   // Thor Attire 2: phantom-mimic oni mask (owner 2026-10-19).
   'thor-attire2': '../roster/thor/attires/attire2/model.glb',
   'doc-frank': 'assets/models/doc-frank.glb',
@@ -412,7 +412,7 @@ export const MODEL_URLS = {
   // BUFFALO BILL: his moveset file sat on main unlisted; A1/A2 sources named
   // in roster/buffalo-bill/CANON.md are NOT in the repo — Attire 3 "Ashes"
   // is his only on-main model, so the base key points there.
-  'buffalo-bill': '../roster/buffalo-bill/attires/attire3/model.glb',
+  'buffalo-bill': '../roster/buffalo-bill/attires/attire3/model-rigged.glb',
   // VAIN ABEL ELIAS: base key. His Attire 1 Tripo (f7e90de8) was recovered
   // 2026-10-23 (wave 2 hunt: pulled via tools/tripo-pull, archived on release
   // vain-abel-a1-tripo-20261023) — the base key points at
