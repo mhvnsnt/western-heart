@@ -1,7 +1,7 @@
 # Western Heart — Parts & Clothing System Spec
 ## Creation Suite: Full Customization Architecture
 **Date:** 2026-10-23  
-**Owner directives:** 2026-10-23 ~07:05, ~07:06, ~07:07 CDT (verbatim below)  
+**Owner directives:** 2026-10-23 ~07:05, ~07:06, ~07:07, ~07:08 CDT (verbatim below)  
 **Sources:** WWE 2K CAW breakdown, Tekken 6/TTT2 customization research, existing `customization/` library
 
 ---
@@ -13,6 +13,8 @@
 > "Oh yeah I forgot like had masks face accessories face wear head wear glasses um different earrings piercings those types of things body piercings goddamn face piercings all types of different accessories and parts and pieces all those types of things fully wired up and labeled and organized"
 
 > "really study those systems, the layouts, the organization, the UI, the user interface, all of that, like um and with WWE and Tekken and all the stuff I mentioned and then wire it up from the teardown files and open source and anything you can find and get a hold of through your research uh that's 2026 industry standard or high level or anything that'll fit really anything that will go with this no matter what it is for real"
+
+> "oh yeah also makeup different types of makeup eye makeup uh lipstick um different types of teeth teeth color um teeth types and shapes um different types of uh face and um body morphing and templates different uh body part templates like WWE and Tekken and um motherfucking face paint different face paint options ability to add logos and face paint and create and generate um different designs and logos and paints and makeups and stuff like that all of that type of stuff and textures and things all that type of shit"
 
 ---
 
@@ -48,6 +50,7 @@ Every clothing/accessory/part item in the system MUST support:
 
 #### Hair
 - **Full hairstyles** (Tekken-style: complete preset hairstyles)
+- **Hairstyles** (100+ options: short, medium, long, curly, straight, wavy, afro, mohawk, etc.)
 - **Hair parts** (WWE-style: selectable individual components)
   - Hair - Front
   - Hair - Front (Right) [Tekken slot]
@@ -56,18 +59,39 @@ Every clothing/accessory/part item in the system MUST support:
   - Hair - Sides (Left / Right independent)
   - Bangs / Fringe
   - Ponytail / Braids / Dreadlocks (separate attachable parts)
-- **Hair color** (full color picker + presets)
+- **Hair color** (full color picker + presets: natural, dyed, fantasy)
+- **Hair dye** (two-tone, ombre, highlights, streaks, roots — WWE-style multi-color)
 - **Hair material** (matte, glossy, wet-look)
+
+#### Facial Hair
+- **Beards** (full beard, goatee, chin strap, soul patch — layered, WWE-style)
+- **Mustaches** (handlebar, chevron, pencil, horseshoe)
+- **Stubble** (5 o'clock shadow, designer stubble — adjustable length)
+- **Sideburns** (length, width, style)
+- **Facial hair color** (match hair or custom)
+- **Facial hair layering** (combine beard + mustache + stubble)
 
 #### Face
 - **Eyes**
   - Eye color (full picker + presets including universal eye library)
   - Eye shape (almond, round, narrow, wide, upturned, downturned)
   - Eye type (human, animal, glowing, cybernetic, etc.)
-- **Eyebrows** (shape, thickness, color, angle)
+- **Eyebrows**
+  - **Eyebrow types** (arched, straight, curved, angled, S-shaped)
+  - Shape, thickness, color, angle
+  - Individual brow customization (L/R independent)
+- **Eyelashes**
+  - **Eyelash types** (natural, dramatic, wispy, doll-like, lower lashes)
+  - Length, volume, curl, color
+  - Upper / Lower independent
 - **Nose** (morph sliders: width, length, bridge, tip)
 - **Mouth** (morph sliders: width, fullness, shape)
-- **Teeth** (visible/hidden, color, style: normal, gold, grills, fangs)
+- **Teeth**
+  - Visibility (visible/hidden)
+  - **Teeth color** (natural white, bleached, gold, silver, black, custom)
+  - **Teeth types** (human, vampire fangs, oni fangs, shark teeth, cybernetic, grillz)
+  - **Teeth shapes** (straight, pointed, rounded, jagged, filed)
+  - Individual tooth customization (WWE-style detail)
 - **Ears** (shape, size, position)
 - **Face morph sliders** (WWE-style: jaw width, cheek depth, brow, chin)
 
@@ -75,7 +99,32 @@ Every clothing/accessory/part item in the system MUST support:
 - **Masks** (full-face, half-face, eye masks, luchador, oni, etc.)
 - **Glasses** (sunglasses, reading glasses, goggles, monocle, visors)
 - **Face accessories** (face chains, nose rings as face wear)
-- **Face paint / Makeup** (layered, WWE-style)
+
+#### Makeup
+- **Foundation** (coverage, finish: matte, dewy, full-coverage)
+- **Eye makeup**
+  - Eyeshadow (colors, styles: smokey, cut-crease, natural, dramatic)
+  - Eyeliner (winged, tightline, graphic, colors)
+  - Mascara / False lashes (length, volume, style)
+- **Lipstick / Lip color** (matte, glossy, satin, metallic; full color picker)
+- **Blush / Contour** (placement, intensity, color)
+- **Highlighter** (placement, intensity)
+- **Different makeup types** (natural, glam, goth, drag, theatrical, clown, etc.)
+- **Makeup presets** (save/load full face combinations)
+
+#### Face Paint
+- **Different face paint options** (tribal, sugar skull, clown, warrior, animal, abstract)
+- **Face paint layers** (base, details, accents — WWE-style layering)
+- **Custom face paint creation** (see Creation Tools below)
+- **Face paint opacity / blend modes**
+
+#### Face Paint / Makeup Creation Tools
+- **Logo designer**: create custom logos from shapes, text, uploaded images
+- **Face paint designer**: draw/paint directly on face UV template
+- **Makeup generator**: AI-assisted generation from text prompts or reference images
+- **Design library**: save, share, browse community designs
+- **Stamp/brush tools**: apply pre-made elements (stars, swirls, patterns)
+- All designs exportable as PNG textures, applicable to any character
 
 #### Piercings
 - **Ear piercings**
@@ -207,16 +256,47 @@ Each upper body region accepts MULTIPLE stacked layers, rendered back-to-front:
 ```
 CREATE FIGHTER
 ├── BODY
-│   ├── Physique (morph sliders: height, weight, muscle, etc.)
+│   ├── Body Templates (WWE/Tekken-style presets)
+│   │   ├── Preset bodies (8+ base templates: athletic, heavyweight, cruiserweight, etc.)
+│   │   ├── Gendered bases (male, female, androgynous)
+│   │   └── Fantasy bases (demon, oni, cybernetic, etc.)
+│   ├── Physique — Body Morphing
+│   │   ├── Height / Weight sliders
+│   │   ├── Muscle definition (chest, arms, legs, abs — individual)
+│   │   ├── Shoulder width / Hip width
+│   │   ├── Waist / Chest size
+│   │   ├── Body fat distribution
+│   │   └── Individual body part morphing (biceps, thighs, calves, etc.)
+│   ├── Body Part Templates
+│   │   ├── Pre-sculpted body parts (WWE-style: swap individual parts)
+│   │   ├── Arm templates (different muscle shapes)
+│   │   ├── Leg templates
+│   │   ├── Torso templates
+│   │   └── Mix-and-match parts across templates
 │   ├── Skin (tone, texture, muscle definition overlay)
-│   ├── Face (face morph sliders)
+│   ├── Face — Face Morphing
+│   │   ├── Full face morph sliders (WWE-style: dozens of parameters)
+│   │   ├── Jaw (width, shape, chin projection)
+│   │   ├── Cheeks (depth, width, cheekbone height)
+│   │   ├── Brow (ridge, angle, depth)
+│   │   ├── Eyes (spacing, size, angle, depth)
+│   │   ├── Nose (bridge, tip, nostril, width, length)
+│   │   ├── Mouth (width, fullness, lip shape)
+│   │   ├── Chin (width, projection, cleft)
+│   │   ├── Ears (size, position, angle)
+│   │   └── Asymmetry controls (left/right independent tweaks)
 │   └── Body Art (tattoos, scars — full body canvas)
 │
 ├── HEAD
-│   ├── Hair (full styles + individual parts + color)
+│   ├── Hair (full styles + individual parts + color + dye)
+│   ├── Facial Hair (beards, mustaches, stubble, sideburns)
 │   ├── Eyes (color, shape, type)
-│   ├── Eyebrows / Nose / Mouth / Ears / Teeth
-│   └── Face Paint / Makeup
+│   ├── Eyebrows (types, shape, thickness, color)
+│   ├── Eyelashes (types, length, volume, curl)
+│   ├── Nose / Mouth / Ears (morph + presets)
+│   ├── Teeth (color, types, shapes)
+│   ├── Makeup (foundation, eye makeup, lipstick, blush, presets)
+│   └── Face Paint (options, layers, custom creation tools)
 │
 ├── HEADWEAR & FACEWEAR
 │   ├── Masks
@@ -465,6 +545,49 @@ _For the research lane to pull from:_
 - **Blender**: Headless backend for part processing
 - **Godot**: Potential UI framework reference
 - **Three.js**: Current 3D preview renderer
+
+## Research Catch-All: Deep Customization Survey
+
+**Owner directive 2026-10-23 ~07:08 CDT:** _"anything else that you can find in your research that I'm missing from character customization in games in WWE games, in Tekken games, in any game that have character customization in depth and wire it all up pull it all in get any open source or stuff you can get a hold of and anything from the tear down files and all of them"_
+
+**Principle:** If it exists in ANY game's character customization, it belongs in ours. This is a living checklist — the research lane adds to it.
+
+### Games to Survey (with deep customization systems)
+
+| Game | System | Key Features to Pull |
+|------|--------|---------------------|
+| WWE 2K series | Create-A-Superstar | Layer system, morph sliders, logo placement, material editor |
+| Tekken 7/8 | Customization | Item slots, full-screen preview, per-character eligibility |
+| Soulcalibur VI | Character Creation (CaS) | Race/species options, equipment with stats, style editor |
+| Elden Ring / Dark Souls | Character Creator | Detailed face sculpting, age sliders |
+| Cyberpunk 2077 | Character Creator | Genital options, nail customization, cyberware |
+| Baldur's Gate 3 | Character Creator | Origin-based options, extensive face variety |
+| Black Desert Online | Character Creator | Most detailed face/body sculpting in any game |
+| Saints Row | Character Creator | Gender fluidity, voice options, walk styles |
+| Fallout 4 | Character Creator | Layered face sculpting |
+| Dragon's Dogma 2 | Character Creator | Pawn system, photogrammetry-based |
+| Monster Hunter Wilds | Character Creator | Palico customization (for creature fighters) |
+| The Sims 4 | Create-A-Sim | Aspiration/personality system, gallery sharing |
+| Second Life | Avatar Creator | User-generated content marketplace model |
+| VRChat | Avatar Systems | Full-body tracking compatibility, expression menus |
+
+### Feature Checklist (anything found → add to spec)
+
+- [ ] Voice customization (pitch, tone, accent)
+- [ ] Walk/animation style (idle poses, walk cycles)
+- [ ] Age sliders (NOT for minors — adult age variation only)
+- [ ] Body hair (chest, arms, legs — density, style)
+- [ ] Skin details (moles, freckles, wrinkles, stretch marks)
+- [ ] Nail art (designs, not just color)
+- [ ] Contact lenses (colored, patterned, sclera)
+- [ ] Prosthetics / cybernetics (limbs, eyes, enhancements)
+- [ ] Species options (for creature fighters: ears, tails, scales)
+- [ ] Height/weight affecting gameplay (WWE-style weight classes)
+- [ ] Outfit presets (save/load full looks)
+- [ ] Randomize buttons (full outfit, face, etc.)
+- [ ] Mirror symmetry toggle (for asymmetric designs)
+- [ ] Import/export (share designs as files)
+- [ ] Community gallery (browse/download others' creations)
 
 ---
 
