@@ -20,6 +20,10 @@ Read by Codex-style and other coding agents automatically.
 
 ---
 
+## INTEGRATION LAW (owner 2026-10-22 — permanent)
+
+Everything pulled into the game wires INTO the Tekken menu/system structure as submenus and subsystems — never bolted-on random menus, never extra systems piled on top, never parallel systems competing with Tekken's structure. Tekken is the architectural authority for layout, menus, flow, everything; new work follows the Tekken teardown files' direction. End goal: 100% Tekken coverage — every game, every system, backend to frontend. Full law: `docs/owner-directives.md` (INTEGRATION LAW section). Tekken 3 carve-out: pull everything EXCEPT character models (T5/T6/TTT2/T7/T8 include models) — `docs/decisions/2026-10-22-tekken3-scope.md`.
+
 ## Owner's Agent Working Standard (mandatory, all agents)
 
 Full standard: https://github.com/mhvnsnt/money-machine-hq/blob/main/docs/AGENTS.md. Read it before working here. The short version:

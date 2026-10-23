@@ -6,6 +6,12 @@
   "proxy": false,
   "proxy_note": null,
   "variant": 15,
+  "anim_set_lock": {
+    "law": "SHOW-ANIMATION LOCK (owner 2026-10-23)",
+    "FIGHT": "every move in this file: moveset moves and combat stances — the combat animation bank",
+    "SHOW": "win poses, intro poses, taunts, cutscene animations — intro/win slots and cutscenes ONLY; tracked in docs/anim/LARS-ANIM-GAP-20261023.md; must NEVER enter this moveset without the user's explicit approval",
+    "note": "per-move 'set' tags stamp what each pull lane added; the file itself is the FIGHT set"
+  },
   "strings": [
     {
       "input": "2,1",
@@ -14425,7 +14431,8 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:lars_52",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true
+      "launch": true,
+      "set": "FIGHT"
     },
     "f,f+3": {
       "name": "Electric Jolt",
@@ -14460,7 +14467,8 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lars_53",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "set": "FIGHT"
     },
     "f,f+4": {
       "name": "CHORDZ f,f+4",
@@ -14494,7 +14502,8 @@
       "t7_on_hit": "+5",
       "t7_on_ch": "+5",
       "merge_source": "t7:lars_54",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "set": "FIGHT"
     },
     "f,f+4,3": {
       "name": "CHORDZ f,f+4,3",
@@ -14528,7 +14537,8 @@
       "t7_on_hit": "+3",
       "t7_on_ch": "+3",
       "merge_source": "t7:lars_56",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "set": "FIGHT"
     },
     "f,f+1+2": {
       "name": "Elbow Corona",
@@ -14563,7 +14573,8 @@
       "t7_on_ch": "S!",
       "merge_source": "t7:lars_57",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "set": "FIGHT"
     },
     "f,f+3+4": {
       "name": "Double Action",
@@ -14597,7 +14608,8 @@
       "t7_on_hit": "0",
       "t7_on_ch": "0",
       "merge_source": "t7:lars_58",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "set": "FIGHT"
     },
     "WR.4": {
       "name": "CHORDZ WR.4",
@@ -14633,7 +14645,8 @@
       "merge_source": "t7:lars_115",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "input_note": "WR",
-      "knockdown": true
+      "knockdown": true,
+      "set": "FIGHT"
     },
     "GROUNDED.d+3+4": {
       "name": "Stack Up",
@@ -14669,7 +14682,8 @@
       "merge_source": "t7:lars_123",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "input_note": "(While enemy is down)",
-      "knockdown": true
+      "knockdown": true,
+      "set": "FIGHT"
     },
     "FUFT.d+4": {
       "name": "CHORDZ FUFT.d+4",
@@ -14704,7 +14718,8 @@
       "t7_on_ch": "-3",
       "merge_source": "t7:lars_127",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "Face Up, Feet Towards, (or 3)"
+      "input_note": "Face Up, Feet Towards, (or 3)",
+      "set": "FIGHT"
     },
     "FUFT.d+3+4": {
       "name": "CHORDZ FUFT.d+3+4",
@@ -14739,7 +14754,8 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:lars_128",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true
+      "knockdown": true,
+      "set": "FIGHT"
     },
     "f,f+2,F": {
       "name": "Surge Blast to Silent Entry",
@@ -14775,7 +14791,8 @@
       "merge_source": "t7:lars_150",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "input_note": "F (must hit)",
-      "launch": true
+      "launch": true,
+      "set": "FIGHT"
     },
     "WS.1,F": {
       "name": "Streamer to Silent Entry",
@@ -14811,7 +14828,8 @@
       "merge_source": "t7:lars_153",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "input_note": "F (must hit)",
-      "launch": true
+      "launch": true,
+      "set": "FIGHT"
     },
     "WS.2,F": {
       "name": "Lightning Starter to Silent Entry",
@@ -14846,7 +14864,8 @@
       "t7_on_ch": "-35",
       "merge_source": "t7:lars_154",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "F (must hit)"
+      "input_note": "F (must hit)",
+      "set": "FIGHT"
     },
     "GROUNDED.d+3+4,F": {
       "name": "Stack Up to Silent Entry",
@@ -14881,7 +14900,8 @@
       "t7_on_ch": "-",
       "merge_source": "t7:lars_156",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "(While enemy is down), hold, F"
+      "input_note": "(While enemy is down), hold, F",
+      "set": "FIGHT"
     },
     "TACKLE.2": {
       "name": "CHORDZ TACKLE.2",
@@ -14917,7 +14937,8 @@
       "merge_source": "t7:lars_181",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "input_note": "(During Tackle) (or 1)",
-      "knockdown": true
+      "knockdown": true,
+      "set": "FIGHT"
     },
     "R.d/f+1+2": {
       "name": "Zeus Unlimited",
@@ -14947,7 +14968,8 @@
       "t8_input": "R.df+1+2",
       "merge_source": "t8:Lars-df+1+2",
       "input_note": "(During Rage)",
-      "note": "Rage Art; T7 (During Rage) 1+2 dmg 55 [57] i20 ob -22"
+      "note": "Rage Art; T7 (During Rage) 1+2 dmg 55 [57] i20 ob -22",
+      "set": "FIGHT"
     },
     "AIR.DEN.2+4": {
       "name": "Rejection (DEN)",
@@ -14978,7 +15000,8 @@
       "note": "Air throw; alt of Rejection (T8 lists (airborne).DEN.2+4 as its alias); Throw break: none",
       "throw": true,
       "isGrab": true,
-      "unblockable": true
+      "unblockable": true,
+      "set": "FIGHT"
     }
   },
   "restored_from_sweep_338": {
@@ -15240,7 +15263,8 @@
         "sources": [
           "docs/t7t8-reference/frame-data-t7/lars.json",
           "docs/t7t8-reference/frame-data-t8-full/lars.json"
-        ]
+        ],
+        "show_lock": "2026-10-23: all 17 moves tagged set=FIGHT per SHOW-ANIMATION LOCK (owner standing law); file-level anim_set_lock added; SHOW clips tracked in docs/anim/LARS-ANIM-GAP-20261023.md, never in moveset"
       }
     },
     "slots": 205,
