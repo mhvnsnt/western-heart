@@ -252,7 +252,12 @@ Tripo 3D models show FIRST and foremost for every fighter; Tekken attires/models
 ## IDENTITY CANON + DEDUP LAW (2026-10-22, permanent)
 
 - **Rave = Kiko Tanaka = Ghost: ALL THE SAME PERSON.** One select entry only
-  ('rave'). Never split into separate fighters.
+  ('rave'). Never split into separate fighters. **RAVE is his main game/display
+  name** (owner 2026-10-23) — Kiko, Ghost, and Kiko Tanaka are all him,
+  documented in repo/canon.
+- **Cape Jones is the display name; Cyborg X stays in his deep canon** (owner
+  2026-10-23). Select entry 'cyborgx' shows CAPE JONES; 'Cyborg X' remains his
+  deep-canon identity in bios/canon.
 - **Mary Posa goes OVER Zafina.** One entry (MARIPOSA — repo canon name; see
   below); Zafina is never a separate fighter. Zafina's Tekken in-game model
   ladders BEHIND Mariposa's custom attires as a back-slot attire choice.
@@ -340,3 +345,34 @@ Intro sequences and win taunts are never to be replaced. New systems layer on to
   kinpo's). Repointing phantom's key at kinpo's file would ship the wrong
   fighter — refused. The tripo-intake lane must produce a phantom intake rig
   first; the config repoint is a one-line follow-up once it lands.
+## Chordz archive + blade transformation system (user directive 2026-10-22)
+
+- **Chordz = the emo guitarist. Moveset: Lars** (already claimed; Lars→Chordz ladder locked). Look: Edward Scissorhands — pale face, dark eye circles, face paint, black lipstick, straight jacket, crazy sideways hair. User's own words.
+- **Archived (immutable originals):** Stage 1 Normal was archived by PR #725 → `roster/chordz/attires/attire1/source/chordz-a1.glb` (21,913,940 bytes, byte-identical to this lane's pull; tag `chordz-a1-original` pending on #725's merge commit `13bd1d9`). PR #733 archives: Stage 2 (blades out of hands) → `roster/chordz/transformations/phase1/source/chordz-p1-edward-scissorhands.glb` (20,735,052 bytes, tag `chordz-p1-original`); Stage 3 (spiked ball of blades instead of hands) → `roster/chordz/transformations/phase2/source/chordz-p2-blade-spikes.glb` (21,751,348 bytes, tag `chordz-p2-original`); Stage 4 final form ("The Cutter Who Strums") → `roster/chordz/transformations/final/source/chordz-final-cutter-who-strums.glb` (24,748,736 bytes, tag `chordz-final-original`). All archive-only, unrigged statics, NOT in MODEL_URLS. Byte-verified md5s in each manifest.json. All four stages archived — nothing left in this batch.
+- **Blade transformation system (user design, 4 stages):** (1) Normal — no blades, emo guitarist look. (2) Stage 2 — blades shoot out of his hands (Edward Scissorhands). (3) Stage 3 — mass of blades all over hands, spiked ball of blades instead of hands. (4) Final form — Batman Who Laughs with knives ALL OVER body; only hair and smile visible; big knife across eyes (can't see eyes); razor blades in hair. **Mechanics:** gradual transformation with visual transformation sequences; strength and power INCREASE with each stage.
+- **All four stages archived — nothing left in this batch.** Rigging/skinning, visual transformation sequences, and per-stage power scaling remain FUTURE WORK for the rig/anim lane. Do not touch the archived source files; rework goes in new files/slots with a new restore-point tag.
+
+## Buffalo Bill / Ashes canon (2026-10-23, user directives verbatim)
+
+- "Google Bill $aber and build his bio from there and mix him into our canon" — BILL $ABER (underground hip-hop artist, Buffalo NY, b. James McClary 1996): ram-horn dreadlock aesthetic, dark aggressive horrorcore/trap metal energy.
+- "And he's 'Ashes' when robed, buffalo bill when not." — Two aspects, same fighter. Robe is a decision.
+- "He's the wizard gang leader of 9 wizards of Malakor City (inspired by malakor and malakortok vibe)" — Malakor City is user-authorized canon location.
+- "He controls magic flame and ashes"
+- "He has the strength of 1000 gods canon wise and is strong looking with the ram horn dread braids, and when robed his face is shrouded all u can see is a permanent smile and 2 little sparkly small eyes beneath the sheouded cowl on his ashes attire"
+- "Yes and when robed the ram horns are just braids from beneath the shroud hanging"
+
+## 9 Wizards of Malakor City (2026-10-23, user verbatim)
+
+"The 9 wizards are (ashes, static, cipher, echo, onyx, hollow, Sombra negra, theory, and Kiko tanaka/ghost/rave). Ashes red robe, cipher yellow robe, static blue robe, echo pink robe, onyx green robe, hollow orange robe, Sombra negra black robe, theory purple robe, Kiko white fur robe"
+
+- Ashes (leader, red) | Cipher (yellow) | Static (blue) | Echo (pink) | Onyx (green) | Hollow (orange) | Sombra Negra (black) | Theory (purple) | Kiko Tanaka/Ghost/Rave (white fur)
+- 6 of 9 are Ashlane characters (Static, Cipher, Echo, Onyx, Hollow, Sombra Negra).
+- Attire reference images: `roster/wizard-gang/attires/` (PR #757). Ashes references: `roster/buffalo-bill/attires/attire3/reference/` (PR #758).
+
+## Character naming (2026-10-23, user verbatim)
+
+- "Start calling cyborg x as cape Jones but leave cyborg x in the deep canon for him" — Display name: Cape Jones. Cyborg X stays in deep canon.
+- "Start calling Kiko rave, ghost, and Kiko tanaka" / "But Rave is his main game name it's just know all the others are him too" — Main game name: RAVE. Kiko, Ghost, Kiko Tanaka are documented as the same person in canon.
+- Cyborg X model: `game/assets/models/cape-jones.glb`. Rave models: `game/assets/models/kiko-tanaka.glb`, `kiko-tanaka_alt1.glb`, `rave.glb` (in game/assets/models/, not yet wired to roster dirs).
+## EM-Jin naming convention (user directive 2026-10-22)
+Eastern Mind Jin is NOT Jin Kazama. In all files, docs, and code: "Jin (Eastern Mind)" or "EM-Jin" — never bare "Jin" where Kazama confusion is possible. (Correction: earlier "Gen (Eastern Mind)" was a mishearing.)
