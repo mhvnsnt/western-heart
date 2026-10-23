@@ -599,6 +599,13 @@ export class TekkenBuffer {
 
   _pressLegacy(input, ctx, ms) {
     const has = (n) => (resolveMoveKey(this.fighterId, n) ? n : null);
+    // Soul Urge lane (T8 Heat): while the urge gauge is live, 2+3 is
+    // reserved — the Urge Burst (fresh gauge) or the Urge Smash (urging)
+    // wins over any normal move on the chord, exactly like T8 Heat.
+    if (input === '2+3') {
+      if (ctx.urgeOn) { const sm = has('US.2+3'); if (sm) return this._recordMove(sm); }
+      else if (ctx.urgeAvailable) { const bu = has('UB.2+3'); if (bu) return this._recordMove(bu); }
+    }
     const dir = this.lastDir && this.lastDir !== 'n' ? this.lastDir : '';
     const withDir = dir ? `${dir}+${input}` : input;
     const holdDir = dir ? `${dir.toUpperCase()}+${input}` : null;
@@ -617,6 +624,8 @@ export class TekkenBuffer {
     const prefixes = [];
     if (ctx.stance) prefixes.push(ctx.stance + '.');
     if (ctx.rage) prefixes.push('R.');
+    // Rage lane (T7): rage drive lives on 3+4 while raging (synthesized RD.).
+    if (ctx.rage) prefixes.push('RD.');
     if (ctx.backturned) prefixes.push('BT.');
     if (ctx.sidestep) prefixes.push('SS.');
     if (ctx.crouching) prefixes.push('FC.');

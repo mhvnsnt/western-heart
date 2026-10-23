@@ -1,0 +1,98 @@
+{
+ "schema": "moveset-library/v1",
+ "built": "2026-10-22",
+ "builder": "tools/moveset-library/ingest.mjs (worker 47)",
+ "honesty": "estimated fields are flagged per-entry in provenance.estimated; nothing is invented as canon.",
+ "banks": [
+  {
+   "id": "t3",
+   "game": "tekken3",
+   "file": "banks/t3.json",
+   "moves": 4648,
+   "source_banks": 20
+  },
+  {
+   "id": "wrestling",
+   "game": "wwf_no_mercy",
+   "file": "banks/wrestling.json",
+   "moves": 4409,
+   "source_banks": 1
+  },
+  {
+   "id": "wmxix",
+   "game": "wwe_wrestlemania_xix",
+   "file": "banks/wmxix.json",
+   "moves": 169,
+   "source_banks": 1
+  },
+  {
+   "id": "doa",
+   "game": "doa",
+   "file": "banks/doa.json",
+   "moves": 146,
+   "source_banks": 6
+  },
+  {
+   "id": "vf",
+   "game": "virtua_fighter",
+   "file": "banks/vf.json",
+   "moves": 48,
+   "source_banks": 3
+  },
+  {
+   "id": "vf5",
+   "game": "virtua_fighter_5",
+   "file": "banks/vf5.json",
+   "moves": 96,
+   "source_banks": 4
+  }
+ ],
+ "pending_banks": [
+  {
+   "id": "vf5-motion",
+   "game": "virtua_fighter_5",
+   "status": "partial — base kits live from federation conversions (vf-elblaze/jeffry/wolf/leifei.json); worker 45 motion extraction may extend/replace rows"
+  },
+  {
+   "id": "t7",
+   "game": "tekken_7",
+   "status": "pending — T7 teardown rows land here when extraction completes"
+  },
+  {
+   "id": "ttt2",
+   "game": "tekken_tag_2",
+   "status": "pending"
+  },
+  {
+   "id": "t6",
+   "game": "tekken_6",
+   "status": "pending — decrypt6 lane DATA401"
+  },
+  {
+   "id": "soulcalibur",
+   "game": "soulcalibur",
+   "status": "pending — approved systems only"
+  },
+  {
+   "id": "urban_reign",
+   "game": "urban_reign",
+   "status": "pending — PPK binary RE"
+  },
+  {
+   "id": "bloody_roar",
+   "game": "bloody_roar",
+   "status": "pending — beast transformations"
+  },
+  {
+   "id": "sf",
+   "game": "street_fighter",
+   "status": "pending — approved systems only"
+  },
+  {
+   "id": "def_jam",
+   "game": "def_jam",
+   "status": "pending"
+  }
+ ],
+ "total_moves": 9516
+}

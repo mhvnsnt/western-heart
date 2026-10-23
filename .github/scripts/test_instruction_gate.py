@@ -106,5 +106,26 @@ class Gate(unittest.TestCase):
         self.assertEqual(check(body, [], self.d), [])
 
 
+
+class LiveBody(unittest.TestCase):
+    """Repro: the event payload holds the old (bad) body; the PR now has the fixed one."""
+
+    def test_stale_payload_uses_current_body(self):
+        from instruction_gate import live_pr
+        stale = {"number": 1, "body": BAD, "labels": [], "user": {"login": "x"}}
+        self.assertTrue(check(stale["body"], ["renders/arm_cut.png"]))
+        pr = live_pr(stale, "o/r", fetch=lambda repo, n: {"body": GOOD, "labels": []})
+        self.assertEqual(check(pr["body"], ["renders/arm_cut.png"]), [])
+
+    def test_fetch_failure_falls_back_to_payload(self):
+        from instruction_gate import live_pr
+        stale = {"number": 1, "body": BAD}
+        self.assertEqual(live_pr(stale, "o/r", fetch=lambda r, n: None)["body"], BAD)
+
+        def boom(r, n):
+            raise OSError("no network")
+        self.assertEqual(live_pr(stale, "o/r", fetch=boom)["body"], BAD)
+
+
 if __name__ == "__main__":
     unittest.main()

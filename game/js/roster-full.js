@@ -246,6 +246,39 @@ export const FULL_ROSTER = [
     surge: { name: 'STILL WATER SURGE', color: 0x2a8a6a, accent: 0xb0ffe0 },
     stats: { speed: 5.2, jump: 7.2, power: 1.0, defense: 1.0 },
     ai: { aggression: 0.6, grabBias: 0.35, reaction: 0.7 } },
+  // RYUSAN (owner 2026-10-23): Lucky Chloe's WH replacement — the Corrosion Soul,
+  // acid punk mortal lost soul, sweats solvent and laughs about it. Jotei family crimes
+  // survivor. Moveset: Lucky Chloe's Tekken 7 kit (ryusan.json). "You don't get to tell me to calm down."
+  { id: 'ryusan', name: 'RYUSAN', title: 'The Corrosion Soul', base: 'Lucky Chloe', moveset: 'ryusan', model: 'ryusan', tintStrength: 0.25,
+    colors: { suit: 0x7ac22a, trim: 0xe8ff4d }, style: 'Acid Punk Brawler', archetype: 'Rushdown',
+    surge: { name: 'VITRIOL SURGE', color: 0x9dff00, accent: 0xfff200 },
+    stats: { speed: 5.4, jump: 7.4, power: 1.05, defense: 0.95 },
+    ai: { aggression: 0.85, grabBias: 0.3, reaction: 0.65 } },
+  // TOBI (owner 2026-10-23): Hwoarang's WH replacement — the Escape Soul, rabbit
+  // courier, fastest in the roster. Carries one letter she never delivered — left hand
+  // never leaves the satchel strap. Moveset: Hwoarang's Tekken 3 kit (tobi.json). "Don't wait for it. Be already gone."
+  { id: 'tobi', name: 'TOBI', title: 'The Escape Soul', base: 'Hwoarang', moveset: 'tobi', model: 'tobi', tintStrength: 0.25,
+    colors: { suit: 0xe8e8f0, trim: 0xff6a9a }, style: 'Tae Kwon Do / Courier', archetype: 'Rushdown',
+    surge: { name: 'LONGLEAP SURGE', color: 0xffffff, accent: 0xff6a9a },
+    stats: { speed: 6.0, jump: 8.0, power: 0.95, defense: 0.9 },
+    ai: { aggression: 0.75, grabBias: 0.25, reaction: 0.8 } },
+  // MEGAMI (owner 2026-10-23): Jun Kazama's WH replacement — the Shrine Soul,
+  // guardian of a sealed door that never opened. Trained Chatur. Moveset: Jun Kazama's
+  // TTT2 kit + sealed-door canon forms (megami.json). "The shrine was here before you. It will be here after."
+  { id: 'megami', name: 'MEGAMI', title: 'The Shrine Soul', base: 'Jun Kazama', moveset: 'megami', model: 'megami', tintStrength: 0.25,
+    colors: { suit: 0xc22a2a, trim: 0xf0e8d8 }, style: 'Temple Guardian', archetype: 'Defensive',
+    surge: { name: 'SEALED DOOR SURGE', color: 0xcc2222, accent: 0xffe9b0 },
+    stats: { speed: 4.5, jump: 6.5, power: 1.1, defense: 1.2 },
+    ai: { aggression: 0.55, grabBias: 0.4, reaction: 0.75 } },
+  // MENAJERII (owner 2026-10-23, Japanese rendering owner's choice): Roger Jr.'s WH
+  // replacement — the Menagerie Soul, spirit-walker carrying beast spirits; her shadow
+  // doesn't always match her body. Moveset: Roger Jr.'s TTT2 kit + beast moves (menajerii.json).
+  // "The herd decides. I just run."
+  { id: 'menajerii', name: 'MENAJERII', title: 'The Menagerie Soul', base: 'Roger Jr.', moveset: 'menajerii', model: 'menajerii', tintStrength: 0.25,
+    colors: { suit: 0x5a3a1a, trim: 0x8ad82a }, style: 'Beast Instinct / Spirit-Walk', archetype: 'Trickster',
+    surge: { name: 'MENAGERIE SURGE', color: 0x7ac22a, accent: 0xffd23f },
+    stats: { speed: 5.0, jump: 7.0, power: 1.15, defense: 1.0 },
+    ai: { aggression: 0.7, grabBias: 0.45, reaction: 0.65 } },
   // Custom fighters (owner 2026-10-19): KRONOS + DEATHFANG + Ryuji/Rock hybrid.
   { id: 'kronos', name: 'KRONOS', title: 'The Titan Cyclone', base: 'Zangief + Golem', moveset: 'kronos', model: 'kronos', tintStrength: 0.25,
     colors: { suit: 0x8a1a1a, trim: 0xccaa00 }, style: 'Grappler/Wrestler', archetype: 'Power',

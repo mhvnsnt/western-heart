@@ -20,6 +20,10 @@ Read by Codex-style and other coding agents automatically.
 
 ---
 
+## INTEGRATION LAW (owner 2026-10-22 — permanent)
+
+Everything pulled into the game wires INTO the Tekken menu/system structure as submenus and subsystems — never bolted-on random menus, never extra systems piled on top, never parallel systems competing with Tekken's structure. Tekken is the architectural authority for layout, menus, flow, everything; new work follows the Tekken teardown files' direction. End goal: 100% Tekken coverage — every game, every system, backend to frontend. Full law: `docs/owner-directives.md` (INTEGRATION LAW section). Tekken 3 carve-out: pull everything EXCEPT character models (T5/T6/TTT2/T7/T8 include models) — `docs/decisions/2026-10-22-tekken3-scope.md`.
+
 ## Owner's Agent Working Standard (mandatory, all agents)
 
 Full standard: https://github.com/mhvnsnt/money-machine-hq/blob/main/docs/AGENTS.md. Read it before working here. The short version:
@@ -63,3 +67,26 @@ Carve-outs (standing owner decisions, not overridden): never merge a DRAFT PR; n
 
 ## NO FAST-AND-LAZY LAW (owner 2026-10-23)
 "Fast and lazy on purpose" is banned. Speed that breaks main costs the owner more than it saves. Done means PLAYED, not pushed: sync to latest main, surgical edits only, read your own diff and deletion list, run `node --test game/tests/*.test.mjs`, start a real fight with `tools/proof-harness/fight.mjs` (must reach `"round":"fight"` with no `[pageerror]`; look at the frames), and put the proof you viewed in the PR. Never wire an unskinned static as a fighter's playable slot: rig on intake with `--facing` read from renders. Real breakages and the right way: [docs/handoffs/CLAUDE_TO_CREW_2026-10-23.md](docs/handoffs/CLAUDE_TO_CREW_2026-10-23.md).
+
+
+## INSTRUCTION GATE: Owner law, data source priority (Oct 23, 2026, 2:19 PM CT)
+
+> **Western Heart data (moves, animations, frame data, menus, character select) comes from Tekken 5, 6, 7, 8 and TTT2. Tekken 3 is only a last-resort fallback, and every T3 use must be logged with the reason no T5/6/7/8/TTT2 source was available.**
+
+- Search T5/T6/T7/T8/TTT2 teardowns first. Use T3 only when none of them has the data, and log the T3 use (file, clip, reason) in `docs/anim/PROCEDURAL_AUDIT.md`.
+
+## OWNER LAW — no hand-made menus (Oct 23, 2026, 2:21 PM CT)
+> **NO hand-made menus. Every Western Heart menu, character select and customization screen, including the creation suite in `packages/creation-suite`, must be built from the actual Tekken teardown files (T5/T6/T7/T8/TTT2) and other game teardowns, and every UI change must cite its teardown source in the PR and WORKLOG.**
+- CI gate is being landed by MoneyManBusch; don't build a duplicate.
+- The existing hand-built creation suite UI in `packages/creation-suite` is NON-COMPLIANT, pending a teardown-sourced rebuild. Do NOT delete it.
+- See `docs/RULES_NO_GUESSING.md` and `docs/HOW-TO-CONTINUE.md`.
+
+## NO-SPARSE-COMMIT LAW (owner 2026-10-23 — the cape-jones #219 main wipe)
+
+On 2026-10-23, cape-jones PR #219 wiped main: the merge was built from a sparse/partial checkout, so the commit carried only the partial tree and main lost everything outside it.
+
+1. NEVER commit or push from a sparse/partial checkout. A partial working tree committed as a full tree is a wipe.
+2. Before ANY commit from a non-full clone, verify the working tree against the branch's real tree: diff the root listing, or compare tree SHAs. If they don't match, stop — do not commit.
+3. Default recovery path for a bad merge: revert the merge commit (`-m 1`) and re-add the branch's real payload. Never "fix forward" on top of a wiped tree.
+4. When in doubt, build the commit via the Git Data API from verified tree SHAs — never from a working tree you haven't verified.
+5. GOTCHA: `gh`'s `-f content=@file` does NOT expand `@file` for the blobs API — base64 the content explicitly.
