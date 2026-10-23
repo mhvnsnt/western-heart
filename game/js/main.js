@@ -271,6 +271,11 @@ function getModes() {
       });
       window.__modes = modes;
       return modes;
+    }).catch((err) => {
+      // A failed load must not permanently wedge every mode button for the
+      // session: drop the rejected promise so the next tap retries the load.
+      _modesPromise = null;
+      throw err;
     });
   }
   return _modesPromise;
@@ -1013,10 +1018,12 @@ if (whUiEnabled()) mountWhUi({ game, ui, show, startFight, ROSTER });
    modules during idle (Tekken: stream records while the player reads
    the menu) and stamp the boot->menu timing mark on first paint. */
 warmIdle();
-// QA hooks (window.__modes) and the first mode tap expect the controller soon after boot: build it on
-// the same idle lane lazy.warmIdle() uses, so it never competes with first paint.
-((typeof window !== 'undefined' && window.requestIdleCallback) ? window.requestIdleCallback.bind(window)
-  : (fn) => setTimeout(fn, 1500))(() => { getModes().catch(() => {}); });
+// QA hooks (window.__modes) and the first mode tap expect the controller soon after boot.
+// Warm on a guaranteed timer, not only on idle: a busy/loaded page may never
+// report an idle window, leaving the first mode tap to cold-load modes.js —
+// a tap with no feedback. 800ms is safely post-first-paint and the dynamic
+// import never blocks it.
+setTimeout(() => { getModes().catch(() => {}); }, 800);
 requestAnimationFrame(() => requestAnimationFrame(() => mark('menu-interactive')));
 
 /* Menu routers above are bound (delegated data-action + data-mm listeners
