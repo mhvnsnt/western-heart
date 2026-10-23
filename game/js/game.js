@@ -27,10 +27,74 @@ import { V, vskillDispatch, vshiftTap } from './v-system.js';
 // LIGHTING RIG (worker 27): per-fighter character light rig — SFV/T7-style
 // character-vs-stage lighting separation + bible soul glow. Fail-silent.
 import { attachCharacterRig } from './lighting-rig.js';
+// NINE SOULS REDESIGN (worker 83): soul-spirit toggle data.
+import { soulById } from './soul-spirit.js';
 
 const ROUND_TIME = 60;
 const ROUNDS_TO_WIN = 2;   // best of 3
 const FIXED_DT = 1 / 120;
+
+/* ============================================================
+   SOUL-SPIRIT TOGGLE — floating spirit placeholder (worker 83)
+   Owner directive 2026-10-22 ~23:02 CDT. The owner makes the
+   spirit versions themselves; this is the ATTACH POINT plus a
+   soft aura placeholder so the toggle reads in-game today.
+   Never an AI-generated stand-in: when the owner's spirit GLBs
+   land, swap the sprite for the real model loader and keep the
+   same attach contract (fighter.lean child, behind at
+   upper-body height, flips with facing). Fail-silent.
+   ============================================================ */
+let _soulGlowTex = null;
+function _soulGlowTexture() {
+  if (_soulGlowTex) return _soulGlowTex;
+  const c = document.createElement('canvas');
+  c.width = c.height = 128;
+  const g = c.getContext('2d');
+  const grad = g.createRadialGradient(64, 64, 4, 64, 64, 64);
+  grad.addColorStop(0, 'rgba(255,255,255,0.95)');
+  grad.addColorStop(0.35, 'rgba(255,255,255,0.45)');
+  grad.addColorStop(1, 'rgba(255,255,255,0)');
+  g.fillStyle = grad;
+  g.fillRect(0, 0, 128, 128);
+  _soulGlowTex = new THREE.CanvasTexture(c);
+  return _soulGlowTex;
+}
+
+/* `mark` is charEntry.soulSpirit = { soulId, matched } (or null). */
+function attachSoulSpirit(fighter, mark) {
+  try {
+    if (!fighter || !fighter.lean || !mark || !mark.soulId) return;
+    const soul = soulById(mark.soulId);
+    if (!soul) return;
+    const mat = new THREE.SpriteMaterial({
+      map: _soulGlowTexture(),
+      color: soul.color,
+      transparent: true,
+      opacity: mark.matched ? 0.85 : 0.5,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending,
+    });
+    const sprite = new THREE.Sprite(mat);
+    const s = mark.matched ? 2.1 : 1.6; // vessel match burns brighter
+    sprite.scale.set(s, s, 1);
+    // lean-local: behind at upper-body height; lean flips with facing,
+    // so the spirit stays behind through side-switches.
+    sprite.position.set(0, 1.75, -0.95);
+    sprite.renderOrder = 5;
+    fighter.lean.add(sprite);
+    fighter._soulSpirit = { sprite, phase: Math.random() * Math.PI * 2, matched: !!mark.matched };
+  } catch (e) {
+    console.warn('[WH] soul-spirit attach failed (non-fatal):', e && e.message);
+  }
+}
+
+function updateSoulSpirit(fighter, dt) {
+  const ss = fighter && fighter._soulSpirit;
+  if (!ss || !ss.sprite) return;
+  ss.phase += dt * 2.2;
+  ss.sprite.position.y = 1.75 + Math.sin(ss.phase) * 0.12;
+  ss.sprite.material.opacity = (ss.matched ? 0.85 : 0.5) + Math.sin(ss.phase * 1.7) * 0.08;
+}
 
 export class Game {
   constructor(canvas, input, ui) {
@@ -121,6 +185,15 @@ export class Game {
     // luminous sources). No-op-safe; never blocks a match.
     attachCharacterRig(this.p1, stage);
     attachCharacterRig(this.p2, stage);
+    // SOUL-SPIRIT TOGGLE (owner directive 2026-10-22 ~23:02 CDT): the
+    // floating spirit behind the fighter. PLACEHOLDER RENDER ONLY — the
+    // owner makes the spirit versions themselves; this soft aura marks
+    // the attach point (fighter.lean, behind at upper-body height) until
+    // their models land. Never ship an AI-generated stand-in as the
+    // spirit: when the owner's GLBs arrive, swap _makeSoulSpiritSprite
+    // for the real model loader and keep the same attach contract.
+    attachSoulSpirit(this.p1, playerChar.soulSpirit);
+    attachSoulSpirit(this.p2, enemyChar.soulSpirit);
     // FIGHT LAB · GUNGAKU (軍楽): the programmable dummy replaces the
     // passive AI when the mode requests it (enemyChar.ai.gungaku).
     if (enemyChar.ai && enemyChar.ai.gungaku) {
@@ -405,6 +478,9 @@ export class Game {
       this.p2.update(dt, this.p1);
       if (this._roundLockT <= 0) this._afterRound();
     }
+    // SOUL-SPIRIT TOGGLE (worker 83): drift/bob the placeholder aura.
+    updateSoulSpirit(this.p1, dt);
+    updateSoulSpirit(this.p2, dt);
   }
 
   /* Facing-relative Tekken direction from input state: f/b/u/d + diagonals. */

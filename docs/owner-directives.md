@@ -5,6 +5,49 @@ Living document. Updated every time the owner sets a directive. Newest first.
 ## 2026-10-22
 
 
+- **NINE SOULS CHARACTER SELECT REDESIGN (user directive 2026-10-22 ~23:02 CDT,
+  verbatim).** "Alright, that means everybody except for Zen and Gaiu has to
+  come off of the character select screen because they don't have actual um
+  bodies to select for fighters. But what we can do is make a version of them
+  where we have an attire for whoever they go to um Ren how he goes to Demonio
+  Bayu goes to Zui two goes to Pantera Shaw goes to Sakura and the other three
+  I mean the other two like we can have attires you know and so on down the
+  whole list um we can have an attire for each of those characters where they
+  have the spirit version of the non soul whatever one goes to them floating
+  behind them as an attire and so I'll make the spirit versions of those of
+  the non but since there's two of the nine that are actually have bodies and
+  fighters then those are the only two that should be on the character select
+  screen all the other ones should just be attire variants like you can select
+  to have them floating behind the attire like on or off like it shouldn't be
+  an in the attire thing whatever fighter has them you should be able to hit
+  it it's like a a tertiary thing where you can turn the um nine soul uh
+  spirit on or off and then choose between the nine souls but if you choose
+  the one that goes to the character you're choosing then it um empowers them
+  more or something like that and then log all of that and put it into the
+  repo word for word exactly how I said it"
+  - Interpretation locked with the user: the 7 vesseled souls (RIN, BYOU,
+    TOU, SHA, KAI, JIN, RETSU) come OFF the select grid as standalone
+    entries; only ZEN and GYOU stay selectable. Every fighter gets a
+    TERTIARY soul-spirit toggle (not an attire): on/off + pick any of the
+    nine souls; picking the soul that vessels into the chosen fighter
+    empowers them (gameplay buff). Phonetic spellings in the voice note:
+    "Ren"=RIN, "Bayu"=BYOU, "two"=TOU, "Shaw"=SHA, "Sakura"=Saku Ra,
+    "Gaiu"=GYOU. The user makes the spirit versions themselves — no
+    AI-generated stand-ins. Implementation: `game/js/soul-spirit.js`,
+    select-screen toggle, `SELECT_HIDDEN` in `game/js/select-screen.js`.
+- **NINE SOULS: unlockable boss-type return (user refinement 2026-10-22
+  ~23:03 CDT, verbatim).** "We'll only add them like later on onto the
+  character list as like characters with vessels or bodies as like kind of
+  boss creatures but we'll figure out how that gets done later on as we
+  progress through all the different modes and the stories and things for the
+  characters. The the seven of the nine souls that don't have bodies we'll
+  figure out how to incorporate them into the character select screen later
+  so for right now they have to come off of the character select screen until
+  we get them unlockable and with bodies."
+  - The 7 stay OFF the grid for now; they return later as UNLOCKABLE
+    boss-type characters with vessels/bodies. The unlock path gets designed
+    as story modes progress — not now. Zen and Gyou remain selectable per
+    the previous directive. The soul-spirit toggle still applies.
 - **BANNON SUB-UNIVERSE LAW (2026-10-22).** The Bannon/Ashlane/BrutalFist universe is a
   SUB-UNIVERSE of the Western Heart multiverse. The Bannon game
   (`mhvnsnt/brutalfistgrokversion`, `native/media/characters/chara_bannon/` — identity,
