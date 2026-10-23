@@ -6,6 +6,12 @@
   "proxy": false,
   "proxy_note": null,
   "variant": 12,
+  "anim_set_lock": {
+    "law": "SHOW-ANIMATION LOCK (owner 2026-10-23)",
+    "FIGHT": "every move in this file: moveset moves and combat stances — the combat animation bank",
+    "SHOW": "win poses, intro poses, taunts, cutscene animations — intro/win slots and cutscenes ONLY; bank clips in game/assets/anim/t3/anna/ (t3_stance.json → intro slot, t3_win_*.json → win slots); must NEVER enter this moveset without the user's explicit approval",
+    "note": "per-move 'set' tags stamp what each pull lane added; the file itself is the FIGHT set"
+  },
   "strings": [
     {
       "input": "1,2",
@@ -33842,7 +33848,17 @@
     "exclude_proxy": false,
     "moves_before": 892,
     "moves_after": 892,
-    "added": {},
+    "added": {
+      "torch_pull_20261023": {
+        "date": "2026-10-23",
+        "by": "moveset pull worker (T8 frame-data diff vs existing moveset)",
+        "moves_before": 892,
+        "moves_after": 892,
+        "added": [],
+        "t8_coverage": "165/165 T8 anna inputs reachable; 0 genuinely-missing",
+        "t7_coverage": "354/354 T7 anna rows by id; 0 genuinely-missing"
+      }
+    },
     "slots": 394,
     "slots_by_priority": {
       "signature": 2,
