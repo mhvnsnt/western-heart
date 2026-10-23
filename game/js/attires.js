@@ -47,6 +47,9 @@ export const ATTIRE_VARIANTS = {
   'deathfang': [
     { model: 'deathfang', label: 'ATTIRE 1 · CHAINED PRISONER' },
     { model: 'deathfang-werewolf', label: 'ATTIRE 2 · WEREWOLF' },
+    // OBSOLETE-ORIGINALS rule (2026-10-23): the Iori model ladders here,
+    // behind Deathfang's own attires — never a standalone fighter.
+    { model: 'iori', label: 'IORI · ORIGINAL MODEL (KOF)' },
   ],
   /* DOC FRANK's ladder — keyed by fighter id ('docfrank'), same pattern as
      Kevin's ladder below: attiresFor() looks up fighter.model, then
@@ -163,6 +166,9 @@ export const ATTIRE_VARIANTS = {
   'charger': [
     { model: 'charger', label: 'ATTIRE 1 · ICE MONSTER' },
     { model: 'charger-attire2', label: 'ATTIRE 2 · WILD CURRENT' },
+    // OBSOLETE-ORIGINALS rule (2026-10-23): the Blanka model is NOT a
+    // fighter — it ladders here, behind Charger's own attires.
+    { model: 'blanka', label: 'BLANKA · ORIGINAL MODEL (STREET FIGHTER)' },
   ],
   /* KINPO's ladder — slot order per roster/kinpo/ATTIRE-SLOTS.md (owner 2026-10-20):
      Slot 1 = Tripo main, Slot 2 = "Goth Sport" Tripo (was wired as a MODEL_URLS
@@ -206,6 +212,10 @@ export const ATTIRE_VARIANTS = {
     { model: 'kronos', label: 'ATTIRE 1' },
     { model: 'kronos-attire2', label: 'ATTIRE 2 · TIMBERWOLF' },
     { model: 'kronos-attire3', label: 'ATTIRE 3 · TIMBERWOLF FULLY SUITED' },
+    // OBSOLETE-ORIGINALS rule (2026-10-23): the Zangief models ladder here,
+    // behind Kronos's own attires — never a standalone fighter.
+    { model: 'zangief', label: 'ZANGIEF · ORIGINAL MODEL (STREET FIGHTER)' },
+    { model: 'zangief-attire1', label: 'ZANGIEF · SOURCE MODEL (UNRIGGED)' },
   ],
   /* MICHIKO's ladder (owner 2026-10-21, Tripo-first rule): her two Tripo
      originals lead — Attire 1 "bone goddess amazonian M rated nude attire
@@ -300,6 +310,51 @@ export const ATTIRE_VARIANTS = {
     { model: 'steve-fox', label: 'BASE · STEVE FOX (CANON)' },
     { model: 'zui_alt1', label: 'ALT 1 · T7 STEVE RESKIN' },
     { model: 'zui_alt2', label: 'ALT 2 · T7 STEVE RESKIN' },
+  ],
+  /* ——— LANDING WAVE 1 ladders (2026-10-23, docs/CATCHUP-AUDIT-2026-10-23.md):
+     fighters whose on-main attire GLBs had keys (or get them in assets.js
+     this wave) but no ATTIRE_VARIANTS entry, so the picker never offered
+     them. First entry = the current default in every ladder — no default
+     changes. Source-game originals sit at the back per the
+     OBSOLETE-ORIGINALS rule. ——— */
+  'koreshi': [
+    { model: 'koreshi', label: 'ATTIRE 1' },
+    { model: 'koreshi-attire1', label: 'ATTIRE 1 · TRIPO SOURCE (UNRIGGED)' },
+    { model: 'vega', label: 'VEGA · ORIGINAL MODEL (STREET FIGHTER)' },
+  ],
+  'yukihyo': [
+    { model: 'yukihyo', label: 'ATTIRE 1' },
+    { model: 'yukihyo-attire1', label: 'ATTIRE 2 (UNRIGGED)' },
+    { model: 'yukihyo-attire2', label: 'ATTIRE 3 · BOBCAT PRIDE (UNRIGGED)' },
+    { model: 'yukihyo-attire3', label: 'ATTIRE 4 · TIGER KING (UNRIGGED)' },
+    { model: 'armor-king', label: 'ARMOR KING · ORIGINAL MODEL (TEKKEN)' },
+    { model: 'armor-king-attire1', label: 'ARMOR KING · SOURCE MODEL (UNRIGGED)' },
+  ],
+  'bruno': [
+    { model: 'bruno', label: 'ATTIRE 1' },
+    { model: 'bruno-attire1', label: 'ATTIRE 2 (UNRIGGED)' },
+    { model: 'bruno-attire2', label: 'ATTIRE 3 · SAIL THE SEA (UNRIGGED)' },
+  ],
+  'dio': [
+    { model: 'dio', label: 'ATTIRE 1' },
+    { model: 'dio-attire1', label: 'ATTIRE 2 · JADE GOD (UNRIGGED)' },
+  ],
+  'negativo': [
+    { model: 'n3g4tiv0', label: 'ATTIRE 1' },
+    { model: 'negativo-attire1', label: 'ATTIRE 2 (UNRIGGED)' },
+    { model: 'negativo-attire2', label: 'ATTIRE 3 (UNRIGGED)' },
+  ],
+  /* SKULL (roster/skull/attires/ATTIRE-SLOTS.md): A1 = his Tripo; the live
+     default stays the rigged build of it (the default swap rides the rig
+     pass, per the slot map); Bryan Fury's in-game base ladders back. */
+  'skull': [
+    { model: 'skull', label: 'ATTIRE 1 · RIGGED BUILD' },
+    { model: 'skull-tripo', label: 'ATTIRE 1 · SKULL (TRIPO, UNRIGGED)' },
+    { model: 'skull-base', label: 'BRYAN FURY BASE (TEKKEN)' },
+  ],
+  'waterfall': [
+    { model: 'waterfall', label: 'ATTIRE 1' },
+    { model: 'waterfall-attire1', label: 'ATTIRE 1 · TRIPO SOURCE (UNRIGGED)' },
   ],
 };
 
