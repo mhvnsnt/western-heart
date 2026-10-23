@@ -73,6 +73,11 @@ def main():
     out = a.out or os.path.splitext(a.inp)[0] + "-rigged.glb"
     os.makedirs(a.report_dir, exist_ok=True)
     work = tempfile.mkdtemp(prefix="wh-rig-")
+    if not a.keep_work:
+        # A failed step exits through sys.exit(); without this its work dir (160-780 MB each) stays in /tmp.
+        # 2026-10-23: thirteen leftovers filled the disk.
+        import atexit
+        atexit.register(shutil.rmtree, work, True)
     log = os.path.join(work, "steps.log")
     dec, rig = os.path.join(work, "decoded.glb"), os.path.join(work, "rigged.glb")
     # ES modules ignore NODE_PATH: run a copy of the codec beside a node_modules link instead.
