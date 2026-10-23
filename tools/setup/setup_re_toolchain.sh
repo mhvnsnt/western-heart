@@ -89,6 +89,18 @@ for repo in TKMovesets TekkenMovesetExtractor BlenderTekkenAnimationImporter; do
   fi
 done
 
+
+# --- T8 extraction tools ---
+if [ ! -x "$PREFIX/t8extract/repak" ]; then
+  echo "==> repak"
+  mkdir -p "$PREFIX/t8extract"
+  REPAK_VER="0.9.0"
+  curl -fL "https://github.com/trumank/repak/releases/download/v${REPAK_VER}/repak_cli-x86_64-unknown-linux-gnu.tar.gz" \
+    | tar -xz -C "$PREFIX/t8extract"
+fi
+# CUE4ParseTool: build from source (https://github.com/wmltogether/CUE4ParseTool)
+# Or download release if available. Pinned to working version.
+
 cat <<EOF
 RE toolchain ready under $PREFIX
   Ghidra:  $PREFIX/ghidra/ghidra_${GHIDRA_VER}_PUBLIC/ghidraRun
