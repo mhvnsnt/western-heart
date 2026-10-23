@@ -103,3 +103,9 @@ On 2026-10-23, cape-jones PR #219 wiped main: the merge was built from a sparse/
 **(a) Disk offload.** Once local work is verified 100% pushed (0 dirty, 0 untracked, 0 stash, every local branch on the remote at the same or a later SHA, submodules included) or stored in box-storage, clear it off the box disk as you go, and log each removal (path, repo, HEAD SHA, date) in agent-ops `BOX-OFFLOAD-LOG.md`. If any check fails or ownership is unclear, keep it on disk and list it.
 
 **(b) Merge rule.** Merge only when GitHub shows the PR as MERGEABLE/CLEAN, every check is verified green through the Actions runs API (a timeout, 403 or unreadable result counts as a FAIL), `git diff --diff-filter=D --name-only origin/main...HEAD` is empty, and the PR is not freeze-marked. No batch merges: one PR at a time. Claim the work in agent-ops `CLAIMS.md` first. Never force-push or rebase pushed work. If any check is unverifiable, leave the PR open.
+
+## Team workflow (multi-agent, t141u)
+- Rules + lanes: `docs/AGENT-TEAM-PROTOCOL.md`
+- Backlog any agent can pull (claim by setting owner + branch): `docs/team/TASKBOARD.md`
+- Hitting a limit / resuming / reconciling parallel branches: `docs/team/HANDOFF.md`
+- Free tools + CI/hosting to keep work going 24/7 at $0: `docs/team/FREE-RESOURCES.md`
