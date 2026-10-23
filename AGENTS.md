@@ -97,3 +97,9 @@ On 2026-10-23, cape-jones PR #219 wiped main: the merge was built from a sparse/
 - The gate is `.github/workflows/ui-sources.yml`, which runs `tools/ui-sources/check.py BASE HEAD`. It FAILS when a new screen, changed `<section>` markup, or a changed UI file (index.html, game/*.css, *menu*/*-screen*/*-ui*/ui-* js, game/ui/**, creation-suite UI) has no existing teardown source. It also fails when a changed UI file isn't listed under some screen's `files`.
 - `legacy-unsourced` marks the pre-law hand-made screens. They are grandfathered only while untouched. To change one, first rebuild it from a teardown source and cite that source.
 - Make this check **required** in branch protection (owner setting).
+
+## Owner rules — 2026-10-23 (disk offload + merge rule) — Repo Co Dev
+
+**(a) Disk offload.** Once local work is verified 100% pushed (0 dirty, 0 untracked, 0 stash, every local branch on the remote at the same or a later SHA, submodules included) or stored in box-storage, clear it off the box disk as you go, and log each removal (path, repo, HEAD SHA, date) in agent-ops `BOX-OFFLOAD-LOG.md`. If any check fails or ownership is unclear, keep it on disk and list it.
+
+**(b) Merge rule.** Merge only when GitHub shows the PR as MERGEABLE/CLEAN, every check is verified green through the Actions runs API (a timeout, 403 or unreadable result counts as a FAIL), `git diff --diff-filter=D --name-only origin/main...HEAD` is empty, and the PR is not freeze-marked. No batch merges: one PR at a time. Claim the work in agent-ops `CLAIMS.md` first. Never force-push or rebase pushed work. If any check is unverifiable, leave the PR open.
