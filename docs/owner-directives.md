@@ -354,7 +354,11 @@ User-provided Tripo pull "jack sparrow 3d model"
 (24,432,052 bytes, sha256 `5f1fb5a7…e9906da41`, dorowani #603 pattern). Archive-only:
 unrigged static, NOT wired into MODEL_URLs. Immutable-original annotated tag
 `bruno-a1-original` — "Restore point: these bytes never change." This A1 takes priority
-for all new Bruno rigging work.
+for all new Bruno rigging work. Attire 2 ("Sail the Sea", Tripo "dreadlocked warrior 3d
+model", <https://studio.tripo3d.ai/3d-model/73bce9d1-d373-4855-af02-862c5f341de7>)
+archived same day to `roster/bruno/attires/attire2/source/bruno-a2-dreadlocked-warrior.glb`
++ `manifest.json` (23,980,788 bytes, sha256 `ffff9706…eacf44`, tag `bruno-a2-original`) —
+archive-only, unrigged static, not wired.
 
 ## Bruno older model — missing face texture (worker 74, 2026-10-22)
 The pre-existing Bruno model (`game/assets/models/bruno.glb`, landed during the fix2

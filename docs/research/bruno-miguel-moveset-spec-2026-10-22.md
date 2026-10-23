@@ -44,7 +44,21 @@ no invented backstory.
 - **Priority:** this A1 is the priority model for the rig pipeline — it supersedes the
   older in-game model for all new rigging work.
 
-## 4. Older in-game model — missing face texture (do NOT confuse with A1)
+## 3b. Attire 2 — Tripo archive (NEW, "Sail the Sea")
+
+- **Source:** user-provided Tripo3D pull, project "dreadlocked warrior 3d model",
+  <https://studio.tripo3d.ai/3d-model/73bce9d1-d373-4855-af02-862c5f341de7>
+  (Tripo project owner: `eqqq57218`), pulled 2026-10-22 ~20:33 CDT.
+- **Archive:** `roster/bruno/attires/attire2/source/bruno-a2-dreadlocked-warrior.glb`
+  (23,980,788 bytes, sha256 `ffff9706…eacf44`) + `manifest.json` — dorowani #603 pattern.
+- **Validation at archive time:** glTF 2.0 (gltfpack 1.2), declared length matches file
+  size, JSON chunk parses — 1 mesh, 1 node, 3 images, no skins (unrigged static).
+- **Immutable original:** annotated tag `bruno-a2-original` — "Restore point: these bytes
+  never change."
+- **Status:** archive-only. Unrigged static. NOT wired into MODEL_URLs. Per the
+  AUTO-ARCHIVE standing directive.
+
+## 4. Older in-game model — missing face texture (do NOT confuse with A1/A2)
 
 - The pre-existing Bruno model (`game/assets/models/bruno.glb`, landed during the fix2
   round; working copy also at `~/workspace/fix2/western-heart/game/assets/models/bruno.glb`)
