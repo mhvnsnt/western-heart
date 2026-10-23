@@ -2481,3 +2481,26 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 **Verification:** semantic diff audit — 0 field losses, 0 removals, additions only; all 17 new moves tagged; `node --test game/tests/fighter-completeness.test.mjs` green.
 
 **Deviations:** none — the 17 pulled moves are all combat moves (FIGHT); no SHOW content entered the moveset.
+
+---
+
+## 2026-10-23 — batch10 special/non-Tekken moveset pull (SHOW-ANIMATION LOCK for 8 fighters)
+
+**Owner instruction (verbatim, user 2026-10-23):** "Now we need to get that done for every other character" — i.e. replicate the Law/Lars pull pattern (PR #823): read each moveset file, pull from the best DOCUMENTED source in the repo, diff and fill genuine gaps, stamp `"set": "FIGHT"`, add `anim_set_lock`, file precise gaps where source data doesn't exist.
+
+**Changes (branch `moveset/batch10-special-pull`):**
+- All 8 fighters: file-level `anim_set_lock` (SHOW-ANIMATION LOCK, owner 2026-10-23) + per-move `"set"` stamps — FIGHT for combat moves, SHOW for taunts (the only SHOW content found in any of the 8 files).
+- `deathfang.json` (122→127): +5 documented KOF Iori moves from `iori.json` (Ya Sakazuki DM, getup low/mid, face-down kick, back-turned strike); 1 taunt → SHOW.
+- `charger.json` (199→203): +4 documented EX2+ supers from `sf-blanka.json` (Ground Shave Rolling, Jungle Beat, Beast Hurricane, Super Electric Thunder — SuperCombo Wiki verbatim provenance); 3 taunts → SHOW.
+- `vainabel.json` (52→60): +8 documented DOA Bass moves from `doa-bass.json` (Double Palm, Combo Gong, Hell Stab, Drop Kick, Fisherman's Buster, 3 counter-holds); 63214T NOT double-added (already present as Powerbomb — documentation variance, filed in gap doc).
+- `cainelias.json` (41→46): +5 documented WWF No Mercy Undertaker moves from `banks/wrestling.json` (Chokeslam from Hell 01, Two Handed Chokeslam, Swinging Chokeslam, Undertaker 01/02 — name/input/anim_ref documented, frames/damage estimated by analogy, stated in-file). Existing 5 WH SIGNATURE moves untouched.
+- `ryuji.json` (103→127, +2 specials): Rock side merged from `ryuji-rock.json` into the hybrid file the roster plays (24 moves + ROCK BOTTOM super + PEOPLE'S ELBOW DROP, zero key collisions); 1 taunt → SHOW.
+- `kronos.json` (772, +0): SF/Zangief side verified complete (all 34 sf-zangief + 92 zangief sf_motion present); Golem (Urban Reign) side has NO documented source — explicit gap filed, nothing invented; 20 taunts → SHOW.
+- `koreshi.json` (953, +0): Vega SF kit + T8 Yoshimitsu kit verified complete; flagged CUSTOM-SOURCE (no Kakashi/SSJ/ninja game source exists; only 2 creator-named moves carry the concept); 4 taunts → SHOW.
+- `dxmmii-patchwork.json` (166, +0): mimic system documented in-file (`mimic` block) — roster statically assigns `moveset: 'demonio'` (works, not mimicry); no per-round random-moveset mechanic exists (Trader's Mimic mode is the closest existing mechanism); gap doc hands off to game-code lane.
+- 8 gap docs in `docs/anim/`: DEATHFANG/KRONOS/KORESHI/CAINELIAS/CHARGER/VAINABEL/RYUJI/DXMMII-ANIM-GAP-20261023.md (FIGHT/SHOW sections, per-fighter source priority, precise gaps).
+- `game/assets/movesets/index.json`: moves/inputs/bytes updated for all 8.
+
+**Verification:** semantic diff audit — 0 field losses, 0 removals across all 8 files (42 moves + 2 specials added, additions only); `node --test game/tests/fighter-completeness.test.mjs` green; gitleaks clean.
+
+**Deviations:** none — all pulled moves are combat moves (FIGHT); taunts tagged SHOW in-file (not removed — removal needs owner approval); no SHOW content entered any moveset.

@@ -6,6 +6,12 @@
  "proxy": true,
  "proxy_note": "Undertaker (WWE) archetype; no Undertaker teardown exists. Grappler rows from King T3 bank (distinct row pool); signature throws are WH-original. Attire 2 fight-gear variant per owner 2026-10-19.",
  "variant": 9,
+ "anim_set_lock": {
+  "law": "SHOW-ANIMATION LOCK (owner 2026-10-23)",
+  "FIGHT": "every move in this file: moveset moves and combat stances — the combat animation bank",
+  "SHOW": "win poses, intro poses, taunts, cutscene animations — intro/win slots and cutscenes ONLY; tracked in docs/anim/CAINELIAS-ANIM-GAP-20261023.md; must NEVER enter this moveset without the user's explicit approval",
+  "note": "per-move 'set' tags stamp the lock state (batch10-special-pull 2026-10-23); taunt entries tagged SHOW"
+ },
  "moves": {
   "1": {
    "name": "CAIN ELIAS 1 (T3 king r38)",
@@ -26,7 +32,8 @@
    "input_slots": [
     "1"
    ],
-   "move_class": "strike"
+   "move_class": "strike",
+   "set": "FIGHT"
   },
   "2": {
    "name": "CAIN ELIAS 2 (T3 king r203)",
@@ -47,7 +54,8 @@
    "input_slots": [
     "2"
    ],
-   "move_class": "strike"
+   "move_class": "strike",
+   "set": "FIGHT"
   },
   "3": {
    "name": "CAIN ELIAS 3 (T3 king r64)",
@@ -68,7 +76,8 @@
    "input_slots": [
     "3"
    ],
-   "move_class": "strike"
+   "move_class": "strike",
+   "set": "FIGHT"
   },
   "4": {
    "name": "CAIN ELIAS 4 (T3 king r216)",
@@ -89,7 +98,8 @@
    "input_slots": [
     "4"
    ],
-   "move_class": "strike"
+   "move_class": "strike",
+   "set": "FIGHT"
   },
   "d/b+1+2": {
    "name": "Tombstone Piledriver [WH SIGNATURE]",
@@ -113,7 +123,8 @@
    "throw": true,
    "unblockable": true,
    "isGrab": true,
-   "throw_break": "1+2"
+   "throw_break": "1+2",
+   "set": "FIGHT"
   },
   "f,f+1+2": {
    "name": "Last Ride [WH SIGNATURE]",
@@ -137,7 +148,8 @@
    "throw": true,
    "unblockable": true,
    "isGrab": true,
-   "throw_break": "1+2"
+   "throw_break": "1+2",
+   "set": "FIGHT"
   },
   "b+1+2": {
    "name": "Chokeslam [WH SIGNATURE]",
@@ -161,7 +173,8 @@
    "throw": true,
    "unblockable": true,
    "isGrab": true,
-   "throw_break": "1+2"
+   "throw_break": "1+2",
+   "set": "FIGHT"
   },
   "d+1+2": {
    "name": "Hell's Gate [WH SIGNATURE]",
@@ -185,7 +198,8 @@
    "throw": true,
    "unblockable": true,
    "isGrab": true,
-   "throw_break": "1+2"
+   "throw_break": "1+2",
+   "set": "FIGHT"
   },
   "u+1+2": {
    "name": "Old School [WH SIGNATURE]",
@@ -205,7 +219,8 @@
    ],
    "move_class": "signature",
    "wh_original": true,
-   "note": "Top-rope arm drag, adapted for the pit. WH-original."
+   "note": "Top-rope arm drag, adapted for the pit. WH-original.",
+   "set": "FIGHT"
   },
   "d/f+1": {
    "name": "CAIN ELIAS d/f+1 (T3 king r117)",
@@ -226,7 +241,8 @@
    "input_slots": [
     "d/f+1"
    ],
-   "move_class": "strike"
+   "move_class": "strike",
+   "set": "FIGHT"
   },
   "d/f+2": {
    "name": "CAIN ELIAS d/f+2 (T3 king r202)",
@@ -247,7 +263,8 @@
    "input_slots": [
     "d/f+2"
    ],
-   "move_class": "strike"
+   "move_class": "strike",
+   "set": "FIGHT"
   },
   "d/f+4": {
    "name": "CAIN ELIAS d/f+4 (T3 king r135)",
@@ -268,7 +285,8 @@
    "input_slots": [
     "d/f+4"
    ],
-   "move_class": "strike"
+   "move_class": "strike",
+   "set": "FIGHT"
   },
   "u/b+1": {
    "name": "CAIN ELIAS u/b+1 (T3 king r37)",
@@ -289,7 +307,8 @@
    "input_slots": [
     "u/b+1"
    ],
-   "move_class": "strike"
+   "move_class": "strike",
+   "set": "FIGHT"
   },
   "u/b+3": {
    "name": "CAIN ELIAS u/b+3 (T3 king r56)",
@@ -310,7 +329,8 @@
    "input_slots": [
     "u/b+3"
    ],
-   "move_class": "strike"
+   "move_class": "strike",
+   "set": "FIGHT"
   },
   "u/b+4": {
    "name": "CAIN ELIAS u/b+4 (T3 king r83)",
@@ -331,7 +351,8 @@
    "input_slots": [
     "u/b+4"
    ],
-   "move_class": "strike"
+   "move_class": "strike",
+   "set": "FIGHT"
   },
   "u/f+1": {
    "name": "CAIN ELIAS u/f+1 (T3 king r36)",
@@ -352,7 +373,8 @@
    "input_slots": [
     "u/f+1"
    ],
-   "move_class": "strike"
+   "move_class": "strike",
+   "set": "FIGHT"
   },
   "u/f+2": {
    "name": "CAIN ELIAS u/f+2 (T3 king r245)",
@@ -373,7 +395,8 @@
    "input_slots": [
     "u/f+2"
    ],
-   "move_class": "strike"
+   "move_class": "strike",
+   "set": "FIGHT"
   },
   "u/f+3": {
    "name": "CAIN ELIAS u/f+3 (T3 king r55)",
@@ -394,7 +417,8 @@
    "input_slots": [
     "u/f+3"
    ],
-   "move_class": "strike"
+   "move_class": "strike",
+   "set": "FIGHT"
   },
   "u/f+4": {
    "name": "CAIN ELIAS u/f+4 (T3 king r82)",
@@ -415,7 +439,8 @@
    "input_slots": [
     "u/f+4"
    ],
-   "move_class": "strike"
+   "move_class": "strike",
+   "set": "FIGHT"
   },
   "d/f+1+4": {
    "name": "CAIN ELIAS d/f+1+4 (T3 king r242)",
@@ -436,7 +461,8 @@
    "input_slots": [
     "d/f+1+4"
    ],
-   "move_class": "strike"
+   "move_class": "strike",
+   "set": "FIGHT"
   },
   "u/b+2+4": {
    "name": "CAIN ELIAS u/b+2+4 (T3 king r246)",
@@ -457,7 +483,8 @@
    "input_slots": [
     "u/b+2+4"
    ],
-   "move_class": "strike"
+   "move_class": "strike",
+   "set": "FIGHT"
   },
   "u/b+3+4": {
    "name": "CAIN ELIAS u/b+3+4 (T3 king r68)",
@@ -478,7 +505,8 @@
    "input_slots": [
     "u/b+3+4"
    ],
-   "move_class": "strike"
+   "move_class": "strike",
+   "set": "FIGHT"
   },
   "u/f+1+2": {
    "name": "CAIN ELIAS u/f+1+2 (T3 king r222)",
@@ -499,7 +527,8 @@
    "input_slots": [
     "u/f+1+2"
    ],
-   "move_class": "strike"
+   "move_class": "strike",
+   "set": "FIGHT"
   },
   "u/f+3+4": {
    "name": "CAIN ELIAS u/f+3+4 (T3 king r67)",
@@ -520,7 +549,8 @@
    "input_slots": [
     "u/f+3+4"
    ],
-   "move_class": "strike"
+   "move_class": "strike",
+   "set": "FIGHT"
   },
   "1+4": {
    "name": "CAIN ELIAS 1+4 throw (T3 king r289)",
@@ -546,7 +576,8 @@
    "unblockable": true,
    "isGrab": true,
    "throw_break": "1+2",
-   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+   "set": "FIGHT"
   },
   "2+3": {
    "name": "CAIN ELIAS 2+3 throw (T3 king r288)",
@@ -572,7 +603,8 @@
    "unblockable": true,
    "isGrab": true,
    "throw_break": "1+2",
-   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+   "set": "FIGHT"
   },
   "b+2+3": {
    "name": "CAIN ELIAS b+2+3 throw (T3 king r283)",
@@ -598,7 +630,8 @@
    "unblockable": true,
    "isGrab": true,
    "throw_break": "1+2",
-   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+   "set": "FIGHT"
   },
   "b,n,f+1+2": {
    "name": "CAIN ELIAS b,n,f+1+2 throw (T3 king r281)",
@@ -624,7 +657,8 @@
    "unblockable": true,
    "isGrab": true,
    "throw_break": "1+2",
-   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+   "set": "FIGHT"
   },
   "d,d/b,d,d/b+1+2": {
    "name": "CAIN ELIAS d,d/b,d,d/b+1+2 throw (T3 king r287)",
@@ -650,7 +684,8 @@
    "unblockable": true,
    "isGrab": true,
    "throw_break": "1+2",
-   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+   "set": "FIGHT"
   },
   "d,d/f,d,d/f+1+2": {
    "name": "CAIN ELIAS d,d/f,d,d/f+1+2 throw (T3 king r284)",
@@ -676,7 +711,8 @@
    "unblockable": true,
    "isGrab": true,
    "throw_break": "1+2",
-   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+   "set": "FIGHT"
   },
   "d/b+1+3": {
    "name": "CAIN ELIAS d/b+1+3 throw (T3 king r277)",
@@ -702,7 +738,8 @@
    "unblockable": true,
    "isGrab": true,
    "throw_break": "1",
-   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+   "set": "FIGHT"
   },
   "d/b+2+4": {
    "name": "CAIN ELIAS d/b+2+4 throw (T3 king r278)",
@@ -728,7 +765,8 @@
    "unblockable": true,
    "isGrab": true,
    "throw_break": "2",
-   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+   "set": "FIGHT"
   },
   "d/f+1+2": {
    "name": "CAIN ELIAS d/f+1+2 throw (T3 king r127)",
@@ -754,7 +792,8 @@
    "unblockable": true,
    "isGrab": true,
    "throw_break": "1+2",
-   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+   "set": "FIGHT"
   },
   "d/f+2+3": {
    "name": "CAIN ELIAS d/f+2+3 throw (T3 king r285)",
@@ -780,7 +819,8 @@
    "unblockable": true,
    "isGrab": true,
    "throw_break": "1+2",
-   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+   "set": "FIGHT"
   },
   "f,n,b,d/b,d,f+1": {
    "name": "CAIN ELIAS f,n,b,d/b,d,f+1 throw (T3 king r280)",
@@ -806,7 +846,8 @@
    "unblockable": true,
    "isGrab": true,
    "throw_break": "1+2",
-   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+   "set": "FIGHT"
   },
   "n,d,d/b+1+3": {
    "name": "CAIN ELIAS n,d,d/b+1+3 throw (T3 king r282)",
@@ -832,7 +873,8 @@
    "unblockable": true,
    "isGrab": true,
    "throw_break": "1+2",
-   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+   "set": "FIGHT"
   },
   "n,d/f,n,d/f+1": {
    "name": "CAIN ELIAS n,d/f,n,d/f+1 throw (T3 king r286)",
@@ -858,7 +900,8 @@
    "unblockable": true,
    "isGrab": true,
    "throw_break": "1+2",
-   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+   "set": "FIGHT"
   },
   "n,d/f,n,d/f+2+4": {
    "name": "CAIN ELIAS n,d/f,n,d/f+2+4 throw (T3 king r276)",
@@ -884,7 +927,8 @@
    "unblockable": true,
    "isGrab": true,
    "throw_break": "1+2",
-   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+   "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+   "set": "FIGHT"
   },
   "2,1": {
    "name": "CAIN ELIAS 2,1 (T3 king r220)",
@@ -908,7 +952,8 @@
     "1"
    ],
    "move_class": "string",
-   "string_hit": "2"
+   "string_hit": "2",
+   "set": "FIGHT"
   },
   "d/f+4,2": {
    "name": "CAIN ELIAS d/f+4,2 (T3 king r196)",
@@ -932,7 +977,8 @@
     "2"
    ],
    "move_class": "string",
-   "string_hit": "d/f+4"
+   "string_hit": "d/f+4",
+   "set": "FIGHT"
   },
   "d/f+4,4": {
    "name": "CAIN ELIAS d/f+4,4 (T3 king r197)",
@@ -956,7 +1002,148 @@
     "4"
    ],
    "move_class": "string",
-   "string_hit": "d/f+4"
+   "string_hit": "d/f+4",
+   "set": "FIGHT"
+  },
+  "2+4": {
+   "name": "Chokeslam from Hell 01",
+   "input": "2+4",
+   "wwe_bank": "wrestling:mk-0457",
+   "wwe_source": "WWF No Mercy (N64) — mat-kings DB (documented)",
+   "wwe_move": "Chokeslam from Hell 01",
+   "wwe_mk_category": "Front Strong Grapple Grapple",
+   "startup": 0.4,
+   "active": 0.033,
+   "recovery": -0.083,
+   "damage": 28,
+   "bank_total_frames": 21,
+   "bank_total_s": 0.35,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 8,
+   "anim_ref": "teardown/wwf-no-mercy/animations/clips/anim_34EB.npy",
+   "input_slots": [
+    "2+4"
+   ],
+   "move_class": "throw",
+   "throw": true,
+   "isGrab": true,
+   "unblockable": true,
+   "note": "WWE pull 2026-10-23: name/input/anim_ref/mk_category documented in game/data/moveset-library/banks/wrestling.json; damage/frames estimated by analogy to this file's existing WH SIGNATURE throws (bank documents total frames only: 21f @60fps = 0.35s).",
+   "set": "FIGHT"
+  },
+  "f+2+4": {
+   "name": "Two Handed Chokeslam",
+   "input": "f+2+4",
+   "wwe_bank": "wrestling:mk-1155",
+   "wwe_source": "WWF No Mercy (N64) — mat-kings DB (documented)",
+   "wwe_move": "Two Handed Chokeslam",
+   "wwe_mk_category": "Front Special Grapple",
+   "startup": 0.4,
+   "active": 0.033,
+   "recovery": 0.284,
+   "damage": 28,
+   "bank_total_frames": 43,
+   "bank_total_s": 0.717,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 8,
+   "anim_ref": "teardown/wwf-no-mercy/animations/clips/anim_37A5.npy",
+   "input_slots": [
+    "f+2+4"
+   ],
+   "move_class": "throw",
+   "throw": true,
+   "isGrab": true,
+   "unblockable": true,
+   "note": "WWE pull 2026-10-23: name/input/anim_ref/mk_category documented in game/data/moveset-library/banks/wrestling.json; damage/frames estimated by analogy to this file's existing WH SIGNATURE throws (bank documents total frames only: 43f @60fps = 0.717s).",
+   "set": "FIGHT"
+  },
+  "1+3": {
+   "name": "Swinging Chokeslam",
+   "input": "1+3 (Irish-whip variant)",
+   "wwe_bank": "wrestling:mk-1852",
+   "wwe_source": "WWF No Mercy (N64) — mat-kings DB (documented)",
+   "wwe_move": "Swinging Chokeslam",
+   "wwe_mk_category": "Irish Whip Grapple",
+   "startup": 0.4,
+   "active": 0.033,
+   "recovery": -0.133,
+   "damage": 24,
+   "bank_total_frames": 18,
+   "bank_total_s": 0.3,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 8,
+   "anim_ref": "teardown/wwf-no-mercy/animations/clips/anim_3A5E.npy",
+   "input_slots": [
+    "1+3 (Irish-whip variant)"
+   ],
+   "move_class": "throw",
+   "throw": true,
+   "isGrab": true,
+   "unblockable": true,
+   "note": "WWE pull 2026-10-23: name/input/anim_ref/mk_category documented in game/data/moveset-library/banks/wrestling.json; damage/frames estimated by analogy to this file's existing WH SIGNATURE throws (bank documents total frames only: 18f @60fps = 0.3s).",
+   "set": "FIGHT"
+  },
+  "1+2+3+4_u1": {
+   "name": "Undertaker 01",
+   "input": "1+2+3+4",
+   "wwe_bank": "wrestling:mk-4274",
+   "wwe_source": "WWF No Mercy (N64) — mat-kings DB (documented)",
+   "wwe_move": "Undertaker 01",
+   "wwe_mk_category": "In The Ring Taunt",
+   "startup": 0.4,
+   "active": 0.033,
+   "recovery": 0.317,
+   "damage": 22,
+   "bank_total_frames": 45,
+   "bank_total_s": 0.75,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 8,
+   "anim_ref": "teardown/wwf-no-mercy/animations/clips/anim_43D4.npy",
+   "input_slots": [
+    "1+2+3+4"
+   ],
+   "move_class": "throw",
+   "throw": true,
+   "isGrab": true,
+   "unblockable": true,
+   "note": "WWE pull 2026-10-23: name/input/anim_ref/mk_category documented in game/data/moveset-library/banks/wrestling.json; damage/frames estimated by analogy to this file's existing WH SIGNATURE throws (bank documents total frames only: 45f @60fps = 0.75s).",
+   "set": "FIGHT"
+  },
+  "1+2+3+4_u2": {
+   "name": "Undertaker 02",
+   "input": "1+2+3+4",
+   "wwe_bank": "wrestling:mk-4323",
+   "wwe_source": "WWF No Mercy (N64) — mat-kings DB (documented)",
+   "wwe_move": "Undertaker 02",
+   "wwe_mk_category": "Taunt",
+   "startup": 0.4,
+   "active": 0.033,
+   "recovery": 0.3,
+   "damage": 22,
+   "bank_total_frames": 44,
+   "bank_total_s": 0.733,
+   "limb": "armR",
+   "heavy": true,
+   "knock": 6.5,
+   "soulGain": 8,
+   "anim_ref": "teardown/wwf-no-mercy/animations/clips/anim_4405.npy",
+   "input_slots": [
+    "1+2+3+4"
+   ],
+   "move_class": "throw",
+   "throw": true,
+   "isGrab": true,
+   "unblockable": true,
+   "note": "WWE pull 2026-10-23: name/input/anim_ref/mk_category documented in game/data/moveset-library/banks/wrestling.json; damage/frames estimated by analogy to this file's existing WH SIGNATURE throws (bank documents total frames only: 44f @60fps = 0.733s).",
+   "set": "FIGHT"
   }
  },
  "strings": [
