@@ -1,0 +1,37 @@
+==== L1 ====
+control [11, 12, 13, 14, 15, 16]: |inter|=17 |union|=17 sizes=[17, 17, 17, 17, 17, 17]
+control [35, 36, 37, 38, 39, 40]: |inter|=14 |union|=14 sizes=[14, 14, 14, 14, 14, 14]
+control [44, 45]: |inter|=10 |union|=10 sizes=[10, 10]
+-- premise test (proven heads): shared-key count own-family vs best-other --
+  head17 (fam486): |keys|=20 own-max=9 other-max=14
+  head18 (fam486): |keys|=21 own-max=11 other-max=17
+  head19 (fam486): |keys|=20 own-max=9 other-max=14
+  head20 (fam486): |keys|=21 own-max=11 other-max=17
+  head29 (fam486): |keys|=14 own-max=8 other-max=12
+  head30 (fam486): |keys|=14 own-max=8 other-max=12
+  head34 (fam486): |keys|=14 own-max=8 other-max=10
+  head35 (fam486): |keys|=14 own-max=8 other-max=10
+  head08 (fam478): |keys|=15 own-max=8 other-max=11
+  head09 (fam478): |keys|=16 own-max=9 other-max=13
+  head33 (fam478): |keys|=12 own-max=11 other-max=11
+  head04 (fam468): |keys|=13 own-max=11 other-max=11
+  head07 (fam468): |keys|=14 own-max=12 other-max=13
+  head21 (fam468): |keys|=16 own-max=14 other-max=12
+  head22 (fam477): |keys|=7 own-max=6 other-max=7
+  head25 (fam477): |keys|=13 own-max=10 other-max=11
+  head41 (fam477): |keys|=10 own-max=10 other-max=9
+  head42 (fam477): |keys|=10 own-max=10 other-max=9
+  head43 (fam477): |keys|=10 own-max=10 other-max=9
+  head44 (fam477): |keys|=10 own-max=10 other-max=9
+  head10 (fam581): |keys|=17 own-max=8 other-max=12
+  head11 (fam581): |keys|=17 own-max=8 other-max=12
+  head31 (famC): |keys|=15 own-max=15 other-max=11
+-- unpaired heads: shared-key count per family (max over family bodies) --
+  head05: |keys|=15 fam486=9 fam478=11 fam468=12 fam477=11 fam581=7 famC=14
+  head06: |keys|=15 fam486=9 fam478=10 fam468=12 fam477=11 fam581=7 famC=13
+  head23: |keys|=12 fam486=7 fam478=8 fam468=8 fam477=9 fam581=7 famC=11
+  head24: |keys|=14 fam486=7 fam478=9 fam468=9 fam477=9 fam581=6 famC=11
+  head26: |keys|=12 fam486=9 fam478=10 fam468=10 fam477=10 fam581=7 famC=12
+  head27: |keys|=14 fam486=7 fam478=9 fam468=9 fam477=9 fam581=6 famC=11
+  head28: |keys|=16 fam486=8 fam478=8 fam468=11 fam477=10 fam581=6 famC=13
+  head32: |keys|=11 fam486=7 fam478=8 fam468=9 fam477=9 fam581=6 famC=9

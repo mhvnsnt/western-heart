@@ -1,0 +1,31 @@
+imageBase=82000000
+minAddr=82000000 maxAddr=8369d0af
+BLOCK Headers 82000000-820003ff init=true
+BLOCK .rdata 82000400-822b3ef7 init=true
+BLOCK .pdata 822b4000-822d166f init=true
+BLOCK .text 822e0000-82b4adff init=true
+BLOCK PSFD00 82b4ae00-82b50943 init=true
+BLOCK .data 82b60000-835a18b7 init=true
+BLOCK .XEXID 835a1a00-835a1a03 init=true
+BLOCK .idata 835b0000-835b05ff init=true
+BLOCK .XBLD 835c0000-835c01ff init=true
+BLOCK .reloc 835c0200-8369d0af init=true
+XREF mot-registry-base 0x82C69A70
+  total=0
+XREF mot-registry-rec1 0x82C69ADC
+  total=0
+XREF str-zack.bin 0x82278660
+  from 82c6b38c type=DATA in ?
+  total=1
+XREF str-janlee.mot(rec0-name) 0x82284860
+  from 82c69a88 type=DATA in ?
+  total=1
+REGISTRY-NAMES
+  rec0 namePtr=0x82284860 name=D:\bin\janlee.mot
+  rec1 namePtr=0x82284650 name=D:\bin\ninja.mot
+  rec2 namePtr=0x82284434 name=D:\bin\gokei.mot
+  rec3 namePtr=0x82284240 name=D:\bin\t_fa_ay.mot
+  rec4 namePtr=0x82284024 name=D:\bin\t_kl_gy.mot
+  rec5 namePtr=0x82283E08 name=D:\bin\t_ks_kt.mot
+  rec6 namePtr=0x82283BEC name=D:\bin\t_sa_fa.mot
+  rec7 namePtr=0x822839D0 name=D:\bin\t_bo_su.mot
