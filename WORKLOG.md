@@ -44,6 +44,13 @@ generic-api-key rule false-positives on *KEY identifiers).
 
 ---
 
+## 2026-10-23 ~15:55 CDT — Repo Co Dev: owner rules (disk offload + merge rule)
+
+**Task:** add Oct 23 owner rules (a) disk offload, (b) merge rule to AGENTS.md, RULES_NO_GUESSING, HOW-TO-CONTINUE, Muse handoff.
+**Source:** owner (Marquis) via MoneyManBusch relay, 2026-10-23. Docs only; nothing deleted.
+
+---
+
 ## 2026-10-23 ~15:20 CDT — TTT2 extraction worker: surgical pipeline (Law/Lars lane)
 
 **Task:** Push TTT2 extraction toward 100% (standing directive: T3 fallback-only, pulls from T5/T6/T7/TTT2). Law + Lars FIRST — their full modern movesets/animations unblock the Buffalo Bill / Chordz pull lane. Then the full 59-fighter roster, stages, audio.
