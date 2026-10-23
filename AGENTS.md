@@ -98,6 +98,16 @@ On 2026-10-23, cape-jones PR #219 wiped main: the merge was built from a sparse/
 - `legacy-unsourced` marks the pre-law hand-made screens. They are grandfathered only while untouched. To change one, first rebuild it from a teardown source and cite that source.
 - Make this check **required** in branch protection (owner setting).
 
+## Never strand work locally — push early, push often (owner rule, 2026-10-23)
+Applies to Muse, Claude, Grok and every agent. Usage limits and crashes have left finished work
+(e.g. a 16-rig batch) stuck on one agent's disk. So: commit + push every finished piece immediately;
+commit any script/tool used to generate assets under `tools/`; open the PR right after the first
+commit; follow the merge rules (clean merge, every check green via the Actions runs API, no
+deletions, nothing frozen, no batch merges). On resume, first push anything left over, then
+reconcile with other agents' branches via agent-ops `CLAIMS.md`. Claude Code also has an automatic
+safety net: `.claude/settings.json` hooks → `tools/agent/autosave.sh` (see `CLAUDE.md`). Other agents
+may run it by hand: `bash tools/agent/autosave.sh manual`. `wip(autosave)` commits are allowed.
+
 ## Owner rules — 2026-10-23 (disk offload + merge rule) — Repo Co Dev
 
 **(a) Disk offload.** Once local work is verified 100% pushed (0 dirty, 0 untracked, 0 stash, every local branch on the remote at the same or a later SHA, submodules included) or stored in box-storage, clear it off the box disk as you go, and log each removal (path, repo, HEAD SHA, date) in agent-ops `BOX-OFFLOAD-LOG.md`. If any check fails or ownership is unclear, keep it on disk and list it.
