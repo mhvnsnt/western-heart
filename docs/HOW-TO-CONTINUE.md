@@ -27,3 +27,9 @@ Read and follow [`docs/NO-DATA-LOSS-RULES.md`](NO-DATA-LOSS-RULES.md) (canonical
   CI gate is MoneyManBusch's (no duplicate). Current hand-built creation suite UI is NON-COMPLIANT, pending teardown-sourced rebuild; do not delete it.
 ## Input resolver V2 (2026-10-23 14:15 CT)
 Read docs/input/INPUT-RESOLVER-V2.md. Run `node test/input-determinism.test.mjs --report /tmp/r.json` after any moveset/input change; it must print PASS. Next: the 107 long-string cases, 34 duplicate-spelling conflicts, hold-button (`*`) input, DOA 2/4 slots from the DOA4 decode, port to AshLane + Brutal Fist.
+
+## Owner rules — 2026-10-23 (disk offload + merge rule) — Repo Co Dev
+
+**(a) Disk offload.** Once local work is verified 100% pushed (0 dirty, 0 untracked, 0 stash, every local branch on the remote at the same or a later SHA, submodules included) or stored in box-storage, clear it off the box disk as you go, and log each removal (path, repo, HEAD SHA, date) in agent-ops `BOX-OFFLOAD-LOG.md`. If any check fails or ownership is unclear, keep it on disk and list it.
+
+**(b) Merge rule.** Merge only when GitHub shows the PR as MERGEABLE/CLEAN, every check is verified green through the Actions runs API (a timeout, 403 or unreadable result counts as a FAIL), `git diff --diff-filter=D --name-only origin/main...HEAD` is empty, and the PR is not freeze-marked. No batch merges: one PR at a time. Claim the work in agent-ops `CLAIMS.md` first. Never force-push or rebase pushed work. If any check is unverifiable, leave the PR open.

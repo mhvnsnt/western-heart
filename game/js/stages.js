@@ -254,6 +254,10 @@ export const STAGES = [
     swatch: ['#0a1a2a', '#ffca7a'],
     builder: 'treelife',
     pano: 'assets/stages/eastern-mind/tree-of-life/pano.png', // real Eastern Mind background art
+    // The source bitmap's top ~12 rows are near-white cloud (rows 0-9 avg >210/255);
+    // under exposure 1.5 + bloom they blew out into a white band. Crop them and
+    // pull the backdrop under the grade (owner playtest, Oct 23 2026).
+    panoCropTop: 0.1, panoTint: '#b8b8b8',
     associatedFighters: ['saku-ra'],
   },
   {
@@ -697,6 +701,41 @@ for (const [sid, pos, tgt] of [
 /* Thumbnails: rendered own-eyes shots, one per stage
    (tools/stage-arena-pull/render_gallery.py). The select screen shows the
    thumbnail and falls back to the palette swatch when the file is absent. */
+/* ---- TEKKEN 7: MISHIMA DOJO (community Blender port of the T7 stage) ----
+   Source: teardown/tekken7/arenas/mishima-dojo_2024-map.rar ->
+   Mishima_Dojo_Final_2_17_24.blend (T7_DM_ENV_s0* / T7_SM_ENV_s0* meshes,
+   i.e. a rip of T7 stage s0). Converted by tools/stage-arena-pull/convert_mishima_dojo.py
+   (decimated 1.7M -> ~60k tris, no textures: the .rar shipped none).
+   Origin/license log: docs/tech/T78-FULL-INTEGRATION.md (Mishima Dojo section). */
+// PRIVATE BUILDS ONLY: this is Bandai Namco geometry, so the GLB is not shipped
+// in this public repo or on the public Pages site. It lives in the private repo
+// mhvnsnt/game-reverse-engineering (tekken7/stages/mishima-dojo/). A private
+// build copies it to game/assets/stages/t7-mishima-dojo/ and sets
+// globalThis.__WH_PRIVATE_ASSETS = true before boot.
+if (globalThis.__WH_PRIVATE_ASSETS) STAGES.push({
+  id: 't7-mishima-dojo', name: 'MISHIMA DOJO', tier: 'TEKKEN 7',
+  universe: 'Tekken 7', element: 'Wood',
+  description: 'Real Tekken 7 Mishima Dojo geometry: wood panels, floor relief, guardian statues, bonfires and the mountain skyline.',
+  dims: { width: 16.8, depth: 6.0, wallDistance: 8.4 },
+  spawns: { p1: -3.5, p2: 3.5 },
+  lighting: {
+    sky: [[0.0, '#05060c'], [0.6, '#10142a'], [0.9, '#2a2030'], [1.0, '#0a0608']],
+    fog: ['#0c0a10', 30, 120],
+    hemi: ['#8a7a6a', '#2a1a10', 1.6],
+    sun: ['#ffd0a0', 2.0, [-8, 10, 6]],
+    rim: ['#6a7aff', 0.6, [8, 6, -7]],
+    fill: ['#ffb070', 0.9, [0, 4, 10]],
+    grade: { exposure: 1.2, bloom: 0.5 },
+  },
+  floor: { kind: 'dark', tint: '#3a2a1a', repeat: 24, platformTint: '#5a3e24', platformRepeat: 6 },
+  swatch: ['#10142a', '#ffb070'],
+  builder: 't7glb',
+  glb: 'assets/stages/t7-mishima-dojo/mishima-dojo.glb',
+  glbScale: 0.8, glbRotY: 0,
+  hidePlatform: true,
+  source: { game: 'Tekken 7', stage: 'Mishima Dojo (s0)', file: 'teardown/tekken7/arenas/mishima-dojo_2024-map.rar' },
+});
+
 for (const s of STAGES) s.thumb = `assets/stages/thumbs/${s.id}.png`;
 
 export function getStage(id) {
@@ -725,10 +764,13 @@ function buildBase(g, def, api) {
       panoTex.colorSpace = THREE.SRGBColorSpace;
       // The teardown panos are 580px-wide 2D backdrops: repeat 3x around so
       // the art reads at a sane scale instead of one stretched wrap.
-      panoTex.wrapS = THREE.RepeatWrapping; panoTex.repeat.set(3, 1);
+      panoTex.wrapS = THREE.RepeatWrapping;
+      // panoCropTop: fraction of the bitmap's top edge to drop (v=1 is the top row).
+      panoTex.repeat.set(3, 1 - (def.panoCropTop || 0));
       const pano = new THREE.Mesh(
         new THREE.CylinderGeometry(30, 30, 10, 48, 1, true),
-        new THREE.MeshBasicMaterial({ map: panoTex, side: THREE.BackSide, fog: false })
+        new THREE.MeshBasicMaterial({ map: panoTex, side: THREE.BackSide, fog: false,
+          ...(def.panoCropTop ? { color: _hex(def.panoTint || '#ffffff') } : {}) })
       );
       pano.position.y = 3.5; g.add(pano);
     } catch (e) {
@@ -1371,11 +1413,33 @@ async function buildNoMercy(g, def, api) {
   return { updaters, skyTex, fog };
 }
 
+/* ---- TEKKEN 7 GLB stage (Mishima Dojo): untextured rip, normals rebuilt ---- */
+async function buildT7Glb(g, def, api) {
+  const { updaters, skyTex, fog } = buildBase(g, def, api);
+  try {
+    const gltf = await new GLTFLoader().loadAsync(def.glb);
+    gltf.scene.traverse((o) => {
+      if (!o.isMesh) return;
+      // exported without normals to fit phones; rebuild them here
+      if (!o.geometry.getAttribute('normal')) o.geometry.computeVertexNormals();
+      o.castShadow = !api.isMobile; o.receiveShadow = true;
+    });
+    gltf.scene.scale.setScalar(def.glbScale || 1); gltf.scene.rotation.y = def.glbRotY || 0;
+    g.add(gltf.scene);
+    for (const [x, z] of [[-2.4, -10.4], [2.4, -10.4], [-8, 0], [8, 0]]) {
+      const pl = new THREE.PointLight(0xff9a4a, 12, 18, 2); pl.position.set(x, 2, z); g.add(pl);
+    }
+  } catch (e) {
+    console.warn(`[WH] stage ${def.id}: GLB ${def.glb} failed (${e.message})`);
+  }
+  return { updaters, skyTex, fog };
+}
+
 const BUILDERS = {
   shrine: buildShrine, tongnou: buildTongNou, treelife: buildTreeLife,
   chiu: buildChiU, parfang: buildParFang, helix: buildHelix,
   dreaming: buildDreaming, marketplace: buildMarketplace, t3retro: buildT3Retro,
-  sunra: buildSunRa, nomercy: buildNoMercy,
+  sunra: buildSunRa, nomercy: buildNoMercy, t7glb: buildT7Glb,
 };
 
 /* Build a stage into a fresh group. Returns { group, update, def, skyTex, fog }.

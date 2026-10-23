@@ -24,8 +24,10 @@ import { TekkenBuffer, getFighterMoveset, getMovesetInfo, resolveMove } from './
 import { TransformCinematic } from './transform-cinematic.js';
 import { V, vskillFor, vtriggerEnhance, vreversalMove } from './v-system.js';
 import { JiggleRig } from './jiggle.js';
+import { SoftBody } from './softbody.js';
 import { FaceRig } from './faceRig.js';
 import { HandPoseBlender } from './handPoses.js';
+import { t8Frame, stunFromAdvantage } from './frame-tables.js';
 
 // ---- Frame data: REAL Tekken 3 data (teardown/tekken3/movesets/moveset_king.json, moveset_jin.json)
 // NOTE (owner canon 2026-10-19): Tekken's Jin = DEMONIO in Western Heart. The 'jin' moveset family is now 'demonio'.
@@ -212,6 +214,9 @@ export function getRealMove(charId, moveType) {
           rageArt: !!mv.rageArt, rageDrive: !!mv.rageDrive,
           urgeEngager: !!mv.urgeEngager,
           urgeBurst: !!mv.urgeBurst, urgeSmash: !!mv.urgeSmash,
+          // T8 frame tables (wavu.wiki CC0): block/hit/CH advantage + throw break.
+          t8: t8Frame(ms, tekken),
+          throw_break: mv.throw_break || (t8Frame(ms, tekken) || {}).brk || undefined,
         };
       }
     } else {
@@ -471,6 +476,19 @@ export class Fighter {
     });
     const jiggleIntensity = this.char.jiggleIntensity || 'natural';
     if (this._jiggle) this._jiggle.setIntensity(jiggleIntensity);
+    // Soft-body muscle volume (PBD lane, 2026-10-23): Jolt XPBD torso volume
+    // for muscle deformation on hit + volume-grounded jiggle. Same pattern
+    // as jiggle: inert until Jolt loads, every call guarded, never crashes
+    // the fight. char.softbody === false opts out.
+    this._softbody = null;
+    const softSpec = SoftBody.anatomyFor(this.char);
+    if (softSpec) {
+      this.root.traverse(o => {
+        if (!this._softbody && o.isSkinnedMesh) {
+          try { this._softbody = SoftBody.fromMesh(o, softSpec); } catch (e) {}
+        }
+      });
+    }
     // Face rig: morph driver + blink timer
     this._face = FaceRig.attach(this.root);
     // Hand poses: fist default, blended per state
@@ -822,7 +840,8 @@ export class Fighter {
     if (this.state !== 'thrown' || !this.lockMove) return false;
     const want = this.lockMove.throw_break || '1';
     const got = (btn === '3+4') ? '1+2' : btn; // mobile: both-kicks = both-punches
-    if (got !== want) return false;
+    // T8 tables: 'none' = unbreakable, '1|2' = either punch breaks.
+    if (want === 'none' || !want.split('|').includes(got)) return false;
     // ESCAPED — both fighters reset, attacker eats whiff recovery
     const attacker = this.lockPartner;
     this.lockT = 0; this.lockMove = null; this.lockPartner = null;
@@ -988,7 +1007,8 @@ export class Fighter {
       }
       // Soul Urge lane (T8 Heat): block chip can never kill — floor at 1 HP.
       this.hp = attacker._urgeOn ? Math.max(1, this.hp - chip) : Math.max(0, this.hp - chip);
-      this.stun = 0.18 + move.damage * 0.01;
+      this.stun = (move.t8 && move.t8.blk != null) ? stunFromAdvantage(move.t8.blk, move)
+        : 0.18 + move.damage * 0.01;
       this.vx = Math.sign(this.root.position.x - attacker.root.position.x) * move.knock * 0.5;
       this.meter = Math.min(this.maxMeter, this.meter + 4); // +4 soul on block
       if (this.hp <= 0) { this._knockout(Math.sign(this.root.position.x - attacker.root.position.x) || 1); return 'ko'; }
@@ -1040,8 +1060,20 @@ export class Fighter {
     if (this.hp <= 0) { this._knockout(dir); return 'ko'; }
     if (move.isGrab || move.knock >= 6 || move.launch || (counter && move.knockdown)) {
       this.vy = move.isGrab ? 5.2 : 4.6; this.onGround = false; this.stun = 0.55; this._enter('knockdown');
-    } else { this.stun = 0.2 + move.damage * 0.012 + (counter ? 0.12 : 0); this._enter('hitstun'); }
+    } else {
+      const t8adv = move.t8 ? (counter && move.t8.ch != null ? move.t8.ch : move.t8.hit) : null;
+      this.stun = t8adv != null ? stunFromAdvantage(t8adv, move)
+        : 0.2 + move.damage * 0.012 + (counter ? 0.12 : 0);
+      this._enter('hitstun');
+    }
     this.stance = null;
+    // Soft-body hit injection: dent the muscle volume at the impact point.
+    if (this._softbody) {
+      try {
+        const hb = attacker && attacker.getHitbox ? attacker.getHitbox() : null;
+        if (hb) { _v1.set(hb.x, hb.y, hb.z); this._softbody.hit(_v1, dir, move.damage || 8); }
+      } catch (e) {}
+    }
     return counter ? 'counter' : 'hit';
   }
   _knockout(dir) {
@@ -1128,6 +1160,10 @@ export class Fighter {
     // Secondary systems update (after animation, before render)
     if (this._jiggle) {
       try { this._jiggle.update(dt); } catch (e) {}
+    }
+    // Soft-body AFTER jiggle: volume deformation rides on the posed mesh.
+    if (this._softbody) {
+      try { this._softbody.update(dt); } catch (e) {}
     }
     if (this._face) {
       // Face expression by state
