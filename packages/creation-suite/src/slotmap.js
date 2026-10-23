@@ -38,6 +38,9 @@ export const SPINE = [
   { id: 'effect',     t7: 15,   title: 'Effects',        group: -240 },
   { id: 'aura',       t7: 17,   title: 'Aura',           group: -238 },
   { id: 'ink',        t7: null, title: 'Tattoos / Images (layers)', group: -237, wh: 'D6' },
+  // T7 codes 18/19, confirmed in customize_item_data.bin (see t7layout.js)
+  { id: 'skin_tone',  t7: 18,   title: 'Skin Tone',      group: -236 },
+  { id: 'mirror',     t7: 19,   title: 'Mirror (L/R)',   group: -235 },
 ];
 export const SPINE_BY_ID = Object.fromEntries(SPINE.map((s) => [s.id, s]));
 export const UNMAPPED = 'unmapped';
@@ -57,7 +60,7 @@ const BY_SUITE_SLOT = {
   // entries without a source suite_slot are keyed by their spine id).
   upper: 'upper', lower: 'lower', hands: 'hands', feet: 'feet',
   extra: 'extra', upper_acc: 'upper_acc', lower_acc: 'lower_acc',
-  waist: 'waist', ink: 'ink', eyes: 'eyes', upper_inner: 'upper_inner',
+  waist: 'waist', ink: 'ink', skin_tone: 'skin_tone', suntan: 'skin_tone', mirror: 'mirror', eyes: 'eyes', upper_inner: 'upper_inner',
   upper_outer: 'upper_outer',
 };
 // Tekken slot titles (converted catalogs already speak these) -> spine id.
