@@ -148,12 +148,12 @@ export const ATTIRE_VARIANTS = {
     { model: 'baek-master-white', label: 'MASTER WHITE (PARKED)' },
   ],
   'purple-rain': [
-    { model: 'purple-rain', label: 'BASE' },
-    { model: 'purple-rain-main', label: 'MAIN' },
+    { model: 'purple-rain', label: 'ATTIRE 1' },
+    { model: 'purple-rain-main', label: 'ATTIRE 2' },
   ],
   'saku-ra': [
-    { model: 'saku-ra', label: 'BASE' },
-    { model: 'saku-ra-main', label: 'MAIN' },
+    { model: 'saku-ra', label: 'ATTIRE 1' },
+    { model: 'saku-ra-main', label: 'ATTIRE 2' },
   ],
   /* PHANTOM's ladder — JIN re-homed here 2026-10-22 (owner directive:
      "Yoshimitsu is supposed to ladder into Phantom's attires, not stand
@@ -161,8 +161,8 @@ export const ATTIRE_VARIANTS = {
      (CANON.md). Model preserved, just re-homed from the removed 'jin_soul'
      card. */
   'phantom': [
-    { model: 'phantom', label: 'BASE' },
-    { model: 'phantom-t8', label: 'T8' },
+    { model: 'phantom', label: 'ATTIRE 1' },
+    { model: 'phantom-t8', label: 'ATTIRE 2 · T8' },
     { model: 'jin-bloodline-ember', label: 'JIN KAZAMA · BLOODLINE EMBER (TEKKEN RESKIN)' },
   ],
   /* CHARGER's ladder (dedup 2026-10-22): the standalone 'charger-attire2'
