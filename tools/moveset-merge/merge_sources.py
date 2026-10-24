@@ -575,6 +575,8 @@ def bank_attack_word(bank, row):
     if bank not in _bank_rows:
         d = json.loads((REPO / f"teardown/tekken3/movesets/moveset_{bank}.json").read_text())
         _bank_rows[bank] = {m["row"]: int(m["attack_word"], 16) for m in d["moves"]}
+    if isinstance(row, list):  # string moves carry one T3 row per hit: the last hit's word
+        row = row[-1] if row else None
     w = _bank_rows[bank].get(row)
     return w if w else None
 

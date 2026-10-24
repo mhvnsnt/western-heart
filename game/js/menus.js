@@ -277,7 +277,8 @@ export function playStoryBeats(beats, done, kicker) {
     o.querySelector('.wh-story-text').textContent = b.text || '';
     const img = o.querySelector('.wh-story-card .sportrait img');
     img.style.display = '';
-    img.src = `assets/portraits/${b.charId || 'pantera'}.png`;
+    if (!b.charId) { img.style.display = 'none'; img.removeAttribute('src'); } // model-pending: no borrowed portrait
+    else img.src = `assets/portraits/${b.charId}.png`;
     img.onerror = () => { img.style.display = 'none'; };
     o.querySelector('.wh-story-hint').textContent =
       `TAP TO CONTINUE · ${i + 1}/${beats.length}`;

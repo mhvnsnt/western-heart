@@ -302,6 +302,35 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
   color: #fff; text-shadow: 0 0 24px var(--accent), 0 4px 14px rgba(0,0,0,0.8); opacity: 0;
 }
 .surge-name.show { animation: surgeNameIn 1.6s ease; }
+.rage-flash {
+  position: fixed; inset: 0; z-index: 29; pointer-events: none; opacity: 0;
+  background: radial-gradient(circle at 50% 55%, #ff3b2acc 0%, #ff3b2a44 45%, transparent 75%);
+}
+.rage-flash.show { animation: rageFlashIn 0.6s ease; }
+@keyframes rageFlashIn { 0%{opacity:0;} 20%{opacity:1;} 100%{opacity:0;} }
+.rage-tag {
+  display: none; margin-top: 3px; font-size: 11px; font-weight: 900;
+  letter-spacing: 3px; color: #ff3b2a; text-align: center;
+  text-shadow: 0 0 10px rgba(255,59,42,0.8);
+}
+.rage-tag.on { display: block; animation: ragePulse 0.7s ease-in-out infinite; }
+@keyframes ragePulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.55;transform:scale(1.12);} }
+.urge-wrap {
+  display: none; position: relative; margin-top: 3px; height: 10px;
+  background: rgba(10,25,60,0.6); border: 1px solid rgba(58,168,255,0.4);
+  border-radius: 3px; overflow: hidden; transform: skewX(-18deg);
+}
+.urge-wrap.on { display: block; }
+.urge-fill {
+  height: 100%; width: 0%;
+  background: linear-gradient(90deg, #1e6fff, #7fd0ff);
+  box-shadow: 0 0 8px rgba(58,168,255,0.9); transition: width 0.2s linear;
+}
+.urge-label {
+  position: absolute; inset: 0; font-size: 7px; font-weight: 800; letter-spacing: 2px;
+  color: #cfeaff; display: flex; align-items: center; justify-content: center;
+  pointer-events: none;
+}
 @keyframes surgeNameIn { 0%{opacity:0;transform:scale(1.6);} 15%{opacity:1;transform:scale(1);} 75%{opacity:1;} 100%{opacity:0;} }
 
 /* ====================== HUD ====================== */
@@ -405,6 +434,12 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
   background: rgba(20,20,28,0.72); border: 2px solid rgba(255,255,255,0.3); color: #ffe9a8; }
 .act-btn.l1 { right: 152px; bottom: 176px; }
 .act-btn.r1 { right: 24px; bottom: 176px; }
+/* #853 says the old dodge button is gone, but index.html still ships it with no
+   position, so it sat on top of □ and L1. Hide it (sidestep stays on the joystick). */
+.act-btn.dodge { display: none; }
+/* HEAT / RAGE pills (ported from #842): row above L1/R1, either side of TRANSFORM, no overlap. */
+.act-btn.heat { right: 152px; bottom: 224px; font-size: 12px; letter-spacing: .5px; background: linear-gradient(180deg,#ff9a3c,#c8401f); color: #fff; }
+.act-btn.rage { right: 24px;  bottom: 224px; font-size: 12px; letter-spacing: .5px; background: linear-gradient(180deg,#ff4a5a,#8a0f1f); color: #fff; }
 .act-btn.transform { right: 88px; bottom: 216px; background: linear-gradient(180deg,#fff36b,#d8a02b); width:52px;height:52px;font-size:18px; color:#3a2a00; }
 /* V-System (owner 2026-10-22): V-Skill / V-Trigger / V-Reversal button.
    Explicit position/size so it renders in either button-layout state. */
@@ -420,6 +455,8 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
   .act-btn.shoulder { width: 56px; height: 36px; font-size: 13px; }
   .act-btn.l1 { right: 132px; bottom: 156px; }
   .act-btn.r1 { right: 20px; bottom: 156px; }
+  .act-btn.heat { right: 132px; bottom: 198px; font-size: 11px; }
+  .act-btn.rage { right: 20px;  bottom: 198px; font-size: 11px; }
   .act-btn.transform { right: 76px; bottom: 192px; width: 46px; height: 46px; }
 }
 
@@ -461,6 +498,11 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
   background: radial-gradient(circle at 50% 40%, #241031, #0d060f);
 }
 .loading.hidden { display: none; }
+/* t122u touch fix: the loading overlay is a transparent full-screen layer.
+   If any boot module failed, main.js never added .hidden and the overlay
+   silently ate every tap on the main menu. It never takes input now. */
+.loading { pointer-events: none; }
+.tap-hint { pointer-events: none; }
 .loading-box { text-align: center; width: min(86%, 360px); }
 .loading-title {
   font-size: clamp(24px,7vw,40px); font-weight: 900; letter-spacing: 3px; margin-bottom: 22px;
@@ -651,9 +693,10 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
 /* ==================== GAME MODES (lane 5) ==================== */
 /* Mode badge: ladder progress shown over the fight HUD */
 .mode-badge {
-  position: absolute; top: 8px; left: 50%; transform: translateX(-50%);
+  /* Below the HUD top row (owner 2026-10-23: the banner covered the round timer). */
+  position: absolute; top: calc(var(--hud-top-h, 116px) + 4px); left: 50%; transform: translateX(-50%);
   z-index: 12; pointer-events: none;
-  font-size: 12px; letter-spacing: 2px; font-weight: 700;
+  font-size: 10px; letter-spacing: 2px; font-weight: 700;
   color: #ffd76a; background: rgba(10,4,16,0.72);
   border: 1px solid rgba(255,215,106,0.45); border-radius: 20px;
   padding: 6px 14px; white-space: nowrap; max-width: 92vw;
@@ -712,3 +755,48 @@ button { font-family: inherit; cursor: pointer; border: none; outline: none; }
 /* Mode win / game over */
 #modewin-title.win { color: #ffd76a; }
 #modewin-title.lose { color: #ff6a6a; }
+
+/* ============ WH MAIN MENU (10 sections, 2026-10-22, PR #676 rebase) ============
+   Styles the coming-soon placeholder screens' BACK buttons
+   (screen-online / sidegames / collection / daily use .wh-main-menu).
+   Tekken-style: dark with purple/gold accents, phone portrait-first,
+   thumb-reachable, min 64px touch targets, no overlapping text. */
+.wh-main-menu {
+  display: flex; flex-direction: column; gap: 10px;
+  width: 100%; max-width: 480px; margin: 0 auto; padding: 0 16px;
+  /* Scrollable if viewport is short */
+  max-height: 60vh; overflow-y: auto; -webkit-overflow-scrolling: touch;
+}
+.wh-menu-btn {
+  display: flex; align-items: center; gap: 14px;
+  min-height: 64px; width: 100%; padding: 12px 18px;
+  border: 1px solid rgba(139,43,216,0.4); border-radius: 14px;
+  background: linear-gradient(135deg, #1a0b2e 0%, #2d1b4e 100%);
+  color: #fff; text-align: left; font-family: inherit; cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08);
+  transition: transform 0.08s ease, background 0.15s ease;
+  /* Ensure tappable */
+  pointer-events: auto; touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.wh-menu-btn:active {
+  transform: scale(0.97);
+  background: linear-gradient(135deg, #2d1b4e 0%, #4a2d6e 100%);
+  border-color: rgba(139,43,216,0.8);
+}
+.wh-menu-icon { font-size: 28px; flex-shrink: 0; width: 36px; text-align: center; }
+.wh-menu-label { font-size: 18px; font-weight: 800; letter-spacing: 1.5px; flex-grow: 1; }
+.wh-menu-sub { font-size: 12px; opacity: 0.6; font-weight: 400; letter-spacing: 0.5px; text-align: right; }
+.wh-menu-btn.wh-back {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.2);
+}
+.screen-title {
+  text-align: center; color: #fff; font-size: 28px;
+  letter-spacing: 3px; margin: 24px 0; font-weight: 800;
+}
+.wh-placeholder { text-align: center; color: #fff; padding: 40px 20px; }
+.wh-placeholder p { opacity: 0.7; margin: 12px 0 24px; line-height: 1.6; }
+
+/* Mode badge sits under the HUD top row: portrait HUD is ~113px tall, landscape ~106px. */
+@media (orientation: landscape) { .mode-badge { --hud-top-h: 108px; padding: 3px 12px; } }

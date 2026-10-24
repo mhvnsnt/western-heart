@@ -1,0 +1,15 @@
+clip CMU135_04_boxing: 10 sampled frames
+bind-consistency max dev: 4.44e-07 m
+round 0: edge p99.9 = 11.27 (edges > 2.0: {0: 100})
+  prim 0: averaged 190 verts
+round 1: edge p99.9 = 4.56 (edges > 2.0: {0: 18})
+  prim 0: averaged 33 verts
+round 2: edge p99.9 = 2.86 (edges > 2.0: {0: 12})
+  prim 0: averaged 24 verts
+round 3: edge p99.9 = 2.46 (edges > 2.0: {0: 8})
+  prim 0: averaged 16 verts
+round 4: edge p99.9 = 1.95 (edges > 2.0: {0: 5})
+  prim 0: averaged 10 verts
+round 5: edge p99.9 = 1.81 (edges > 2.0: {0: 0})
+SMOOTH_OK — no edges above threshold
+smooth complete

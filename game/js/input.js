@@ -149,6 +149,23 @@ export class InputManager {
       this._udHeld = true;
     }, 200);
   }
+  /* Touch stick vertical zone (owner t116u fix). Legacy kept 'down' latched when the stick
+     re-centred after a HELD crouch (only taps were released), so every neutral 3/4 came out
+     as d+3/d+4/FC; and d->u without lifting was ignored. V2: leaving the zone always releases,
+     switching u<->d releases then presses. localStorage wh_input_resolver='legacy' = old path. */
+  _udStick(ny) {
+    let legacy = false;
+    try { legacy = localStorage.getItem('wh_input_resolver') === 'legacy'; } catch (e) {}
+    const want = ny < -0.55 ? 'up' : ny > 0.55 ? 'down' : null;
+    if (legacy) {
+      if (want) this._udPress(want);
+      else if (this._udDir && !this._udHeld) this._udRelease();
+      return;
+    }
+    if (want && this._udDir === want) return;
+    if (this._udDir) this._udRelease();
+    if (want) this._udPress(want);
+  }
   _udRelease() {
     if (!this._udDir) return;
     const dir = this._udDir;
@@ -207,11 +224,54 @@ export class InputManager {
     return cur || '';
   }
 
-  /* ---------------- Virtual joystick ---------------- */
+  /* ---------------- Virtual joystick ----------------
+     Primary path: nipplejs (MIT, vendored in game/vendor/nipplejs/) drives the
+     left-thumb stick. Its directional vector feeds the SAME state the legacy
+     binding fed — axisX (0.25 deadzone) and _udStick (Tekken tap-vs-hold) — so
+     fighter behavior is unchanged. Multi-touch is safe: nipplejs only binds
+     inside #joystick; the .act-btn buttons are separate DOM elements with
+     their own touchstart handlers, so stick + buttons work simultaneously.
+     Fallback: if the vendored build failed to load, the previous hand-rolled
+     binding runs unchanged. */
   _bindJoystick() {
     const base = document.getElementById('joystick');
     const knob = document.getElementById('joystick-knob');
     if (!base) return;
+    this._resetJoyKnob = () => { if (knob) knob.style.transform = 'translate(0,0)'; };
+
+    if (window.nipplejs) {
+      // nipplejs draws its own base + knob UI inside the zone; retire the legacy knob.
+      if (knob) knob.style.display = 'none';
+      const manager = window.nipplejs.create({
+        zone: base,
+        mode: 'static',                          // fixed stick, bottom-left (fighting-game standard)
+        position: { top: '50%', left: '50%' },    // centered in the #joystick zone
+        color: 'white',
+        size: 120,                               // 130px zone with a small margin
+        threshold: 0.1,
+        fadeTime: 150,
+        restOpacity: 0.85,
+      });
+      // nipplejs vector: x is right-positive, y is UP-positive (negated screen y).
+      // _udStick takes screen-style ny (down-positive; up zone is ny < -0.55).
+      manager.on('move', (evt, data) => {
+        const nx = Math.max(-1, Math.min(1, data.vector.x || 0));
+        this.axisX = Math.abs(nx) > 0.25 ? nx : 0;
+        this._udStick(-(data.vector.y || 0));
+      });
+      manager.on('end', () => {
+        this.axisX = 0;
+        this._udRelease(); // resolve any pending tap/hold
+      });
+      this._joyManager = manager;
+      return;
+    }
+    this._bindJoystickLegacy(base, knob);
+  }
+
+  /* Legacy hand-rolled touch binding — fallback when nipplejs is unavailable
+     (vendor script blocked or failed to load). Behavior identical to before. */
+  _bindJoystickLegacy(base, knob) {
     const maxR = 46;
 
     const start = (id, x, y) => {
@@ -234,9 +294,7 @@ export class InputManager {
       this.axisX = Math.abs(nx) > 0.25 ? Math.max(-1, Math.min(1, nx)) : 0;
       // Tekken tap-vs-hold: tap u/d = sidestep, hold = jump/crouch.
       const ny = (Math.sin(ang) * clamped) / maxR;
-      if (ny < -0.55) this._udPress('up');
-      else if (ny > 0.55) this._udPress('down');
-      else if (this._udDir && !this._udHeld) this._udRelease(); // left the vertical zone: count the tap
+      this._udStick(ny);
     };
     const end = () => {
       this._joyActive = false; this._joyId = null;
@@ -244,7 +302,6 @@ export class InputManager {
       this._udRelease(); // resolve any pending tap/hold
       this._resetJoyKnob();
     };
-    this._resetJoyKnob = () => { if (knob) knob.style.transform = 'translate(0,0)'; };
 
     base.addEventListener('touchstart', (e) => {
       const t = e.changedTouches[0]; start(t.identifier, t.clientX, t.clientY); e.preventDefault();
