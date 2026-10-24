@@ -12388,8 +12388,8 @@
       "note": "Recovers 2f faster on hit or block (t27 r17)",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "same-notation"
+        "row": 63,
+        "match": "class-verified remap (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 7,
@@ -12735,8 +12735,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 317,
-        "match": "same-notation"
+        "row": 63,
+        "match": "class-verified remap (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 7,
@@ -13743,11 +13743,6 @@
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_20",
       "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "startup_frames": 22,
         "on_block": "-8",
@@ -14164,11 +14159,6 @@
         "total": 37
       },
       "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 20,
         "startup_frames": 31,
@@ -14215,11 +14205,6 @@
       "merge_source": "t7:yoshimitsu_29",
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 20,
         "startup_frames": 31,
@@ -14273,11 +14258,6 @@
         "total": 28
       },
       "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 20,
         "startup_frames": 31,
@@ -14331,11 +14311,6 @@
         "total": 20
       },
       "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 20,
         "startup_frames": 31,
@@ -14554,11 +14529,6 @@
           16
         ],
         "total": 41
-      },
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
       },
       "t7": {
         "damage": 20,
@@ -15424,11 +15394,6 @@
       "t7_on_ch": "-9 (OC)",
       "merge_source": "t7:yoshimitsu_51",
       "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 15,
         "startup_frames": 22,
@@ -15483,11 +15448,6 @@
         "total": 30
       },
       "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 15,
         "startup_frames": 22,
@@ -15534,11 +15494,6 @@
       "merge_source": "t7:yoshimitsu_53",
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 15,
         "startup_frames": 22,
@@ -15593,11 +15548,6 @@
         "total": 44
       },
       "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 15,
         "startup_frames": 22,
@@ -15650,11 +15600,6 @@
         "total": 29
       },
       "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 15,
         "startup_frames": 22,
@@ -15700,11 +15645,6 @@
       "merge_source": "t7:yoshimitsu_56",
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 15,
         "startup_frames": 22,
@@ -17100,11 +17040,6 @@
         ],
         "total": 29
       },
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 12,
         "startup_frames": 16,
@@ -17149,11 +17084,6 @@
       "t7_on_ch": "STUN",
       "merge_source": "t7:yoshimitsu_84",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 12,
         "startup_frames": 16,
@@ -19944,12 +19874,7 @@
       "merge_source": "t7:yoshimitsu_142",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Face Up, Feet Towards+",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "Face Up, Feet Towards+"
     },
     "t7.yoshimitsu_143": {
       "name": "PHANTOM Face Up, Feet Towards, Roll Forward+1+2",
@@ -20207,11 +20132,6 @@
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_148",
       "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "notation": "D/B+1+2",
         "id": "yoshimitsu_148",
@@ -20532,11 +20452,6 @@
       "t7_on_ch": "+3 (OC)",
       "merge_source": "t7:yoshimitsu_155",
       "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 22,
         "startup_frames": 22,
@@ -20705,12 +20620,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_159",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "NSS.f,F+1+4": {
       "name": "PHANTOM NSS.f,F+1+4",
@@ -20744,12 +20654,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_160",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "WALL.b,b,u/b": {
       "name": "PHANTOM WALL.b,b,u/b",
@@ -21748,11 +21653,6 @@
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_182",
       "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "notation": "d+1+2",
         "id": "yoshimitsu_182",
@@ -21791,12 +21691,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_183",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "DGF.1+2~t7.yoshimitsu": {
       "name": "Manji Dragonfly to Flea",
@@ -21830,12 +21725,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_184",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "POI.d+1+2": {
       "name": "Poison Wind to Flea",
@@ -21876,11 +21766,6 @@
           4
         ],
         "total": 24
-      },
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "FLE.f~t7.yoshimitsu": {
@@ -22240,12 +22125,7 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:yoshimitsu_194",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "launch": true
     },
     "FLE.3+4~t7.yoshimitsu": {
       "name": "Flea to Kangaroo Kick",
@@ -22280,12 +22160,7 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:yoshimitsu_195",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "launch": true
     },
     "FLE.u+3+4~t7.yoshimitsu": {
       "name": "Flea to Dragonfly Feint",
@@ -22320,12 +22195,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:yoshimitsu_196",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "WFL.3~t7.yoshimitsu": {
       "name": "Sakanobori",
@@ -22440,11 +22310,6 @@
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_199",
       "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "notation": "d+3+4",
         "id": "yoshimitsu_199",
@@ -22492,11 +22357,6 @@
         "total": 40
       },
       "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 24,
         "startup_frames": 16,
@@ -22585,12 +22445,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_202",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "DGF.d+3+4~t7.yoshimitsu": {
       "name": "Manji Dragonfly to Indian Stance",
@@ -22624,12 +22479,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_203",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "MANJI_SPIN_LOW_KICKS.d+3+4": {
       "name": "PHANTOM MANJI_SPIN_LOW_KICKS.d+3+4",
@@ -22664,12 +22514,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_204",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "(During Manji Spin Low Kicks)",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Manji Spin Low Kicks)"
     },
     "NSS.u+1+2~t7.yoshimitsu": {
       "name": "Ishiusu Tsubushi",
@@ -22703,12 +22548,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_205",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "NSS.d+1+2~t7.yoshimitsu": {
       "name": "PHANTOM NSS.d+1+2",
@@ -22742,12 +22582,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_206",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "POI.d+3+4": {
       "name": "Poison Wind to Indian Stance",
@@ -22781,12 +22616,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_207",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "INS.n": {
       "name": "Indian Stance Healing",
@@ -22859,12 +22689,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_209",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "t7.yoshimitsu_210": {
       "name": "PHANTOM (During Indian Levitation) Hold Any Direction",
@@ -23218,12 +23043,7 @@
         ],
         "total": 29
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "INS.3,3+4~t7.yoshimitsu": {
       "name": "PHANTOM INS.3,3+4",
@@ -23258,12 +23078,7 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:yoshimitsu_218",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "launch": true
     },
     "INS.4": {
       "name": "Indian Stance Knee Cap",
@@ -23432,11 +23247,6 @@
         ],
         "total": 18
       },
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 314,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 10,
         "startup_frames": 10,
@@ -23483,11 +23293,6 @@
       "merge_source": "t7:yoshimitsu_223",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 22,
         "startup_frames": 17,
@@ -23533,11 +23338,6 @@
       "t7_on_ch": "STUN",
       "merge_source": "t7:yoshimitsu_224",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 25,
         "startup_frames": 23,
@@ -23583,11 +23383,6 @@
       "t7_on_ch": "-36",
       "merge_source": "t7:yoshimitsu_225",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 12,
         "startup_frames": 14,
@@ -23641,11 +23436,6 @@
         "total": 32
       },
       "launch": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 12,
         "startup_frames": 14,
@@ -23691,12 +23481,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:yoshimitsu_227",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "KIN.4,1+2": {
       "name": "PHANTOM KIN.4,1+2",
@@ -23731,12 +23516,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:yoshimitsu_228",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "KIN.F": {
       "name": "PHANTOM KIN.F",
@@ -24028,12 +23808,7 @@
         ],
         "total": 45
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "KIN.2,1+2~t7.yoshimitsu.2": {
       "name": "PHANTOM KIN.2,1+2",
@@ -24068,12 +23843,7 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:yoshimitsu_236",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "launch": true
     },
     "KIN.2,1+2*~t7.yoshimitsu": {
       "name": "PHANTOM KIN.2,1+2*",
@@ -24115,12 +23885,7 @@
         ],
         "total": 45
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "KIN.3~t7.yoshimitsu": {
       "name": "Shibakari",
@@ -24254,12 +24019,7 @@
         ],
         "total": 36
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "KIN.f+2~t7.yoshimitsu": {
       "name": "Ganto",
@@ -24506,11 +24266,6 @@
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_246",
       "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "notation": "u+1+2",
         "id": "yoshimitsu_246",
@@ -24637,12 +24392,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_249",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "(During Death Copter)",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Death Copter)"
     },
     "DEATH_COPTER.b,n+1+2": {
       "name": "PHANTOM DEATH_COPTER.b,n+1+2",
@@ -24677,12 +24427,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_250",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "(During Death Copter)",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Death Copter)"
     },
     "FLE.u+1+2~t7.yoshimitsu": {
       "name": "Flea to Manji Dragonfly",
@@ -24716,12 +24461,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_251",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "INS.u+1+2": {
       "name": "Indian Stance Manji Dragonfly",
@@ -24755,12 +24495,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_252",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "KIN.u+1+2~t7.yoshimitsu": {
       "name": "Kincho Dragonfly",
@@ -24794,12 +24529,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_253",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "POISON_WIND.1+2": {
       "name": "PHANTOM POISON_WIND.1+2",
@@ -24834,12 +24564,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_254",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "(During Poison Wind)",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Poison Wind)"
     },
     "DGF.f~t7.yoshimitsu": {
       "name": "PHANTOM DGF.f",
@@ -25193,12 +24918,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:yoshimitsu_263",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "KIN.4,3+4": {
       "name": "PHANTOM KIN.4,3+4",
@@ -25233,12 +24953,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:yoshimitsu_264",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "MED.f~t7.yoshimitsu": {
       "name": "PHANTOM MED.f",
@@ -25353,11 +25068,6 @@
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_267",
       "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "notation": "2+3",
         "id": "yoshimitsu_267",
@@ -25786,12 +25496,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_277",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "NSS.1+2,1": {
       "name": "Utsusemi",
@@ -25866,12 +25571,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:yoshimitsu_279",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "NSS.u/f+1+2": {
       "name": "PHANTOM NSS.u/f+1+2",
@@ -25905,12 +25605,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_280",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "NSS.u/f+3+4": {
       "name": "PHANTOM NSS.u/f+3+4",
@@ -25945,12 +25640,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:yoshimitsu_281",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "NSS.u/f+3+4,b+1": {
       "name": "PHANTOM NSS.u/f+3+4,b+1",
@@ -26292,12 +25982,7 @@
       "t7_on_hit": "+4",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_289",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "NSS.d/f+1+2,2": {
       "name": "PHANTOM NSS.d/f+1+2,2",
@@ -26456,12 +26141,7 @@
       "t7_on_hit": "0",
       "t7_on_ch": "0",
       "merge_source": "t7:yoshimitsu_293",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "NSS.d+2": {
       "name": "PHANTOM NSS.d+2",
@@ -26632,12 +26312,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:yoshimitsu_297",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "NSS.d/b+2": {
       "name": "PHANTOM NSS.d/b+2",
@@ -26873,12 +26548,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_303",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "t7.yoshimitsu_304": {
       "name": "PHANTOM NSS WS 2, 1, 3",
@@ -27281,12 +26951,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_311",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 312,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "NSS.4~1": {
       "name": "PHANTOM NSS.4~1",
@@ -28064,12 +27729,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:yoshimitsu_327",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "R.b+1+2": {
       "name": "Rage Art",
@@ -28105,12 +27765,7 @@
       "merge_source": "t7:yoshimitsu_328",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Rage)",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Rage)"
     },
     "t7.yoshimitsu_329": {
       "name": "Supreme Soul Stealer",
@@ -28192,12 +27847,7 @@
       "t7_on_ch": "S!",
       "merge_source": "t7:yoshimitsu_330",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "(During Rage)",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Rage)"
     },
     "u/f+1+2": {
       "name": "Death Copter",
@@ -28438,11 +28088,6 @@
       "merge_source": "t7:yoshimitsu_335",
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 60,
         "startup_frames": 25,
@@ -29468,11 +29113,6 @@
       "t7_on_ch": "STUN",
       "merge_source": "t7:yoshimitsu_356",
       "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 50,
         "startup_frames": 22,
@@ -29569,11 +29209,6 @@
       "t7_on_ch": "STUN",
       "merge_source": "t7:yoshimitsu_358",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 18,
         "startup_frames": 18,
@@ -29839,12 +29474,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:yoshimitsu_364",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "MED.1+2~t7.yoshimitsu": {
       "name": "Meditation Healing",
@@ -29879,12 +29509,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:yoshimitsu_365",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "MED.1+4~t7.yoshimitsu": {
       "name": "PHANTOM MED.1+4",
@@ -29919,12 +29544,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:yoshimitsu_366",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "DGF.3+4~t7.yoshimitsu": {
       "name": "Spirited Away",
@@ -29959,12 +29579,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:yoshimitsu_367",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "NSS.b,B+1+4~t7.yoshimitsu": {
       "name": "PHANTOM NSS.b,B+1+4",
@@ -29999,12 +29614,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:yoshimitsu_368",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "NSS.u/b+1+2": {
       "name": "PHANTOM NSS.u/b+1+2",
@@ -30039,12 +29649,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:yoshimitsu_369",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 317,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "NSS.u/b+1+2,1": {
       "name": "PHANTOM NSS.u/b+1+2,1",

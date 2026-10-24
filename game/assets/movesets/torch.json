@@ -8,8 +8,8 @@
   "variant": 12,
   "anim_set_lock": {
     "law": "SHOW-ANIMATION LOCK (owner 2026-10-23)",
-    "FIGHT": "every move in this file: moveset moves and combat stances — the combat animation bank",
-    "SHOW": "win poses, intro poses, taunts, cutscene animations — intro/win slots and cutscenes ONLY; bank clips in game/assets/anim/t3/anna/ (t3_stance.json → intro slot, t3_win_*.json → win slots); must NEVER enter this moveset without the user's explicit approval",
+    "FIGHT": "every move in this file: moveset moves and combat stances \u2014 the combat animation bank",
+    "SHOW": "win poses, intro poses, taunts, cutscene animations \u2014 intro/win slots and cutscenes ONLY; bank clips in game/assets/anim/t3/anna/ (t3_stance.json \u2192 intro slot, t3_win_*.json \u2192 win slots); must NEVER enter this moveset without the user's explicit approval",
     "note": "per-move 'set' tags stamp what each pull lane added; the file itself is the FIGHT set"
   },
   "strings": [
@@ -13126,11 +13126,6 @@
         "total": 44
       },
       "knockdown": true,
-      "anim_t3": {
-        "bank": "anna",
-        "row": 408,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 10,
         "startup_frames": 13,
@@ -13187,11 +13182,6 @@
         "total": 34
       },
       "knockdown": true,
-      "anim_t3": {
-        "bank": "anna",
-        "row": 408,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 10,
         "startup_frames": 13,
@@ -13247,11 +13237,6 @@
         "total": 17
       },
       "launch": true,
-      "anim_t3": {
-        "bank": "anna",
-        "row": 408,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 10,
         "startup_frames": 13,
@@ -13301,11 +13286,6 @@
       "recovery_from": "same-notation T8 recv",
       "launch": true,
       "input_note": "(second hit only)",
-      "anim_t3": {
-        "bank": "anna",
-        "row": 408,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 10,
         "startup_frames": 13,
@@ -14499,11 +14479,6 @@
       "merge_source": "t7:anna_88",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "anim_t3": {
-        "bank": "anna",
-        "row": 408,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 30,
         "startup_frames": 14,
@@ -15009,11 +14984,6 @@
       "merge_source": "t7:anna_97",
       "recovery_from": "same-notation T8 recv",
       "launch": true,
-      "anim_t3": {
-        "bank": "anna",
-        "row": 408,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 25,
         "startup_frames": 18,
@@ -17300,11 +17270,6 @@
         "total": 76
       },
       "knockdown": true,
-      "anim_t3": {
-        "bank": "anna",
-        "row": 408,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 13,
         "startup_frames": 14,
@@ -17362,11 +17327,6 @@
         "total": 63
       },
       "knockdown": true,
-      "anim_t3": {
-        "bank": "anna",
-        "row": 408,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 13,
         "startup_frames": 14,
@@ -17423,11 +17383,6 @@
         "total": 53
       },
       "knockdown": true,
-      "anim_t3": {
-        "bank": "anna",
-        "row": 408,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 13,
         "startup_frames": 14,
@@ -17483,11 +17438,6 @@
         "total": 33
       },
       "knockdown": true,
-      "anim_t3": {
-        "bank": "anna",
-        "row": 408,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 13,
         "startup_frames": 14,
@@ -17536,11 +17486,6 @@
       "merge_source": "t7:anna_141",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "anim_t3": {
-        "bank": "anna",
-        "row": 408,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 13,
         "startup_frames": 14,
@@ -24400,12 +24345,7 @@
         ],
         "total": 22
       },
-      "launch": true,
-      "anim_t3": {
-        "bank": "anna",
-        "row": 408,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "launch": true
     },
     "SS.1+2~t7.anna.2": {
       "name": "TORCH SS.1+2",
@@ -24441,12 +24381,7 @@
       "merge_source": "t7:anna_272",
       "recovery_from": "same-notation T8 recv",
       "launch": true,
-      "input_note": "(first hit only)",
-      "anim_t3": {
-        "bank": "anna",
-        "row": 408,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(first hit only)"
     },
     "SS.1+2~t7.anna.3": {
       "name": "TORCH SS.1+2",
@@ -24482,12 +24417,7 @@
       "merge_source": "t7:anna_273",
       "recovery_from": "same-notation T8 recv",
       "launch": true,
-      "input_note": "(second hit only)",
-      "anim_t3": {
-        "bank": "anna",
-        "row": 408,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(second hit only)"
     },
     "f,f,F": {
       "name": "TORCH f,f,F",
@@ -24774,12 +24704,7 @@
       "t7_on_ch": "-6",
       "merge_source": "t7:anna_280",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "(While enemy is down)",
-      "anim_t3": {
-        "bank": "anna",
-        "row": 408,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(While enemy is down)"
     },
     "1,2,1,2,3,3,2,1,2,4": {
       "name": "10 Hit Combo 1",
@@ -25039,12 +24964,7 @@
       "merge_source": "t7:anna_286",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "input_note": "Face Up, Feet Towards+",
-      "anim_t3": {
-        "bank": "anna",
-        "row": 408,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "Face Up, Feet Towards+"
     },
     "t7.anna_287": {
       "name": "TORCH Face Up, Feet Towards, Roll Forward+1+2",
@@ -26191,12 +26111,7 @@
       "t7_on_hit": "+6 (OC)",
       "t7_on_ch": "+6 (OC)",
       "merge_source": "t7:anna_310",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "anna",
-        "row": 408,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "CJM.2+3": {
       "name": "TORCH CJM.2+3",
@@ -26231,12 +26146,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:anna_311",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true,
-      "anim_t3": {
-        "bank": "anna",
-        "row": 408,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "launch": true
     },
     "CJM.u+4": {
       "name": "TORCH CJM.u+4",
@@ -26472,12 +26382,7 @@
       "t7_on_ch": "+24",
       "merge_source": "t7:anna_317",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true,
-      "anim_t3": {
-        "bank": "anna",
-        "row": 408,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "launch": true
     },
     "CJM.d/b+3": {
       "name": "TORCH CJM.d/b+3",
@@ -26680,11 +26585,6 @@
       "recovery_from": "same-notation T8 recv",
       "launch": true,
       "note": "PC 8f",
-      "anim_t3": {
-        "bank": "anna",
-        "row": 408,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 30,
         "startup_frames": 20,
@@ -26777,12 +26677,7 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
       "note": "PC 8f",
-      "input_note": "(During Rage)",
-      "anim_t3": {
-        "bank": "anna",
-        "row": 408,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Rage)"
     },
     "R.qcf+2+3": {
       "name": "Rage Drive",
@@ -26825,12 +26720,7 @@
         "total": 37
       },
       "launch": true,
-      "input_note": "(During Rage)",
-      "anim_t3": {
-        "bank": "anna",
-        "row": 408,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Rage)"
     },
     "R.qcf+2+3~t7.anna": {
       "name": "Rage Drive",
@@ -26866,12 +26756,7 @@
       "merge_source": "t7:anna_326",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Rage) (second hit only)",
-      "anim_t3": {
-        "bank": "anna",
-        "row": 408,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Rage) (second hit only)"
     },
     "d+1+2~t7.anna": {
       "name": "Bloody Scissors",
@@ -26961,12 +26846,7 @@
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
       "note": "1 BREAK",
-      "input_note": "Approach enemy...",
-      "anim_t3": {
-        "bank": "anna",
-        "row": 197,
-        "match": "same-notation"
-      }
+      "input_note": "Approach enemy..."
     },
     "2+4~t7.anna": {
       "name": "Losing Face",
@@ -27003,12 +26883,7 @@
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
       "note": "2 BREAK",
-      "input_note": "Approach enemy...",
-      "anim_t3": {
-        "bank": "anna",
-        "row": 198,
-        "match": "same-notation"
-      }
+      "input_note": "Approach enemy..."
     },
     "u/f+1+2": {
       "name": "Overhead Toss",
@@ -27044,12 +26919,7 @@
       "merge_source": "t7:anna_330",
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
-      "input_note": "Approach enemy...",
-      "anim_t3": {
-        "bank": "anna",
-        "row": 408,
-        "match": "same-notation"
-      }
+      "input_note": "Approach enemy..."
     },
     "f+1+3": {
       "name": "Cruel Punishment",
@@ -27210,12 +27080,7 @@
       "merge_source": "t7:anna_334",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "note": "2 BREAK",
-      "input_note": "Approach enemy...",
-      "anim_t3": {
-        "bank": "anna",
-        "row": 199,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "Approach enemy..."
     },
     "SIDE_L.1+3": {
       "name": "Torso Splitter",
@@ -27251,12 +27116,7 @@
       "merge_source": "t7:anna_335",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Approach from left side...",
-      "anim_t3": {
-        "bank": "anna",
-        "row": 197,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "Approach from left side..."
     },
     "SIDE_R.1+3": {
       "name": "Serpentine Arm Break",
@@ -27292,12 +27152,7 @@
       "merge_source": "t7:anna_336",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Approach from right side...",
-      "anim_t3": {
-        "bank": "anna",
-        "row": 197,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "Approach from right side..."
     },
     "BACK.1+3": {
       "name": "Overhead Triangle Lock",
@@ -27333,12 +27188,7 @@
       "merge_source": "t7:anna_337",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Approach from behind...",
-      "anim_t3": {
-        "bank": "anna",
-        "row": 197,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "Approach from behind..."
     },
     "t7.anna_338": {
       "name": "TORCH WR f, f, F (Mid Screen)",
@@ -27471,12 +27321,7 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
       "note": "1+2 BREAK / Take 5 damage if broken.",
-      "input_note": "(During Chin Bash)",
-      "anim_t3": {
-        "bank": "anna",
-        "row": 197,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Chin Bash)"
     },
     "CHIN_BASH.4,3,4,3+4,1+2": {
       "name": "Rolling Arm Break",
@@ -27513,12 +27358,7 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
       "note": "2 BREAK / Take 5 damage if broken.",
-      "input_note": "(During Chin Bash)",
-      "anim_t3": {
-        "bank": "anna",
-        "row": 197,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Chin Bash)"
     },
     "CHIN_BASH.1+2,4,3,1+2,1+2,1+2": {
       "name": "Arm Break Takedown",
@@ -27555,12 +27395,7 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
       "note": "1 BREAK / Take 5 damage if broken.",
-      "input_note": "(During Chin Bash)",
-      "anim_t3": {
-        "bank": "anna",
-        "row": 197,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Chin Bash)"
     },
     "CHIN_BASH.1+3,4,1+2": {
       "name": "Arm Lock",
@@ -27597,12 +27432,7 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
       "note": "2 BREAK / Take 5 damage if broken.",
-      "input_note": "(During Chin Bash)",
-      "anim_t3": {
-        "bank": "anna",
-        "row": 197,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Chin Bash)"
     },
     "REVERSE_ARM_LOCK.3,1,4,1+2,1+2": {
       "name": "Falcon Wing Squeeze",
@@ -27639,12 +27469,7 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
       "note": "1 BREAK / Take 5 damage if broken.",
-      "input_note": "(During Reverse Arm Lock)",
-      "anim_t3": {
-        "bank": "anna",
-        "row": 197,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Reverse Arm Lock)"
     },
     "REVERSE_ARM_LOCK.2,1,3,4,1+2": {
       "name": "Falling Arm Break",
@@ -27681,12 +27506,7 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
       "note": "2 BREAK / Take 5 damage if broken.",
-      "input_note": "(During Reverse Arm Lock)",
-      "anim_t3": {
-        "bank": "anna",
-        "row": 197,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Reverse Arm Lock)"
     },
     "REVERSE_ARM_LOCK.2,3,1+2,3+4,1+2": {
       "name": "Double Arm Lock Toss",
@@ -27723,12 +27543,7 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
       "note": "1+2 BREAK / Take 5 damage if broken.",
-      "input_note": "(During Reverse Arm Lock)",
-      "anim_t3": {
-        "bank": "anna",
-        "row": 197,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Reverse Arm Lock)"
     },
     "TACKLE.1": {
       "name": "TORCH TACKLE.1",
@@ -28040,11 +27855,6 @@
       "t7_on_ch": "-",
       "merge_source": "t7:anna_353",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "anna",
-        "row": 408,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "startup_frames": 50,
         "notation": "1+2+3+4",
@@ -28094,12 +27904,7 @@
       },
       "knockdown": true,
       "note": "reversals highs, and mids from 3 - 8f, can be chickened",
-      "input_note": "Time with enemy attack... (or b+2+4)",
-      "anim_t3": {
-        "bank": "anna",
-        "row": 197,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "Time with enemy attack... (or b+2+4)"
     },
     "u+1+2": {
       "name": "ANNA u+1+2 (T3 anna r29)",
