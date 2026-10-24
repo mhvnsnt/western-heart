@@ -528,8 +528,10 @@ export class TekkenBuffer {
     const bases = [];
     if (pendingOk) bases.push(this._strPath);
     if (this.lastMove && contOk) bases.push(this.lastMove);
+    // Tekken '~' = the next input immediately (<= 6 frames); ',' = normal string timing.
+    const seps = [',', '~', ':'];
     for (const base of bases) {
-      for (const sep of [',', '~', ':']) {
+      for (const sep of seps) {
         const cands = dir ? [`${base}${sep}${withDir}`, `${base}${sep}${holdDir}`] : [`${base}${sep}${input}`];
         for (const c of cands) if (has(c)) { this._strPath = null; return this._recordMove(c); }
         for (const c of cands) if (ms._strPrefixes && ms._strPrefixes.has(c)) { this._strPath = c; this._strPathT = now; return null; }
@@ -713,11 +715,16 @@ export class TekkenBuffer {
       // REV.b+1+3 used to lose to a context-blind legacy special); legacy specials are the fallback.
       const v = this.press(chord, ctx);
       if (v) return v;
+      // V2 deliberately fired nothing (string cursor open / mid-string step): do NOT fall into
+      // the legacy special matcher — it read string notations as motions and fired the whole
+      // 'X.2+4,1+2,1+2' on the 2nd press, then a stray 1+2 (the "random attacks", t231u).
+      if (this._strPath) return null;
     }
     // 1) motion specials (legacy ms.specials entries, incl. ones the slots
     //    table doesn't cover): motion in the direction history + this chord.
     for (const sp of ms.specials || []) {
       if (!sp || typeof sp.input !== 'string') continue; // v2 fix: specials without an input crashed every chord press
+      if (/[1-4][^,]*,/.test(sp.input) || /^[A-Z_]{2,}\./.test(sp.input)) continue; // strings / stance moves are not motion specials
       const { dirs, button } = parseSpecialInput(sp.input);
       if (button !== chord || !dirs.length) continue;
       if (this._matchMotion(dirs) && resolveMoveKey(this.fighterId, sp.input)) {
