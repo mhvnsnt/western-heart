@@ -95,8 +95,7 @@ class Glb:
         a, bv, off = self._acc_info(idx)
         dt = np.dtype(COMP_DT[a['componentType']])
         esz = dt.itemsize * NCOMP[a['type']]
-        assert bv.get('byteStride', esz) == esz, \
-            f"accessor {idx}: cannot encode into strided view"
+        stride = bv.get('byteStride', esz) or esz
         flat = np.asarray(float_data, dtype=np.float64).reshape(-1)
         assert flat.shape[0] == a['count'] * NCOMP[a['type']], \
             f"shape mismatch on accessor {idx}"
@@ -105,9 +104,15 @@ class Glb:
             vals = np.clip(np.round(flat * mx), 0, mx).astype(dt)
         else:
             vals = flat.astype(dt)
-        raw = vals.tobytes()
         data = self.views[a['bufferView']]
-        data[off:off + len(raw)] = raw
+        if stride == esz:
+            raw = vals.tobytes()
+            data[off:off + len(raw)] = raw
+        else:  # interleaved view: write each element at its stride slot
+            el = vals.reshape(a['count'], -1)
+            for i in range(a['count']):
+                o = off + i * stride
+                data[o:o + esz] = el[i].tobytes()
 
     def add_accessor(self, float_data, component_type, acc_type,
                      normalized=False):
