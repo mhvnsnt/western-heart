@@ -2733,3 +2733,35 @@ Owner: "random stuff is happening", "left punch does a grab", "any touch to the 
 - Simulation ALL PASS: pure-insertion diff (0 lines removed/changed), exact CSV round-trip, 0 strikes on throw rows changed, 0 throws on strike rows changed, 0 generic fallbacks, all 271 Pond + 104 Ryusan string-class moves byte-identical. Simulation is NOT play verification; play verification still owed before any clip becomes a WH move's animation.
 - 0x8000 extraction requested: western-heart issue #866 comment 6390169912 ([Muse]) — frv/dnc main MOTA from Grok's pakchunk data to game-reverse-engineering teardown/tekken7-steam/tkdata/.
 - game-reverse-engineering PR #61 (frv.json + dnc.json) still OPEN, not force-merged; needs a lane with checks access to confirm green.
+
+## 2026-10-24 — Zui MIX PER CANON (Steve Fox T7 base + Lei Wulong drunken + WH originals)
+
+- Zui's moveset labeled as the canon mix in `game/assets/movesets/zui.json`: 345 Steve
+  Fox T7 keys (280 unique inputs) + 40 Lei Wulong drunken keys (35 DRU-input + 5
+  transitions) + 2 WH-original canon moves (Bottle's Honest Truth LP1+RP2, Beautiful
+  Stumble d+RK4). Every mix entry (389) now carries `source_fighter`, `source_game`,
+  `mix_group`, `input_display`. 20 `RAVE DRU …` names renamed to `ZUI DRU …`.
+- Stance corrected, not replaced: `stances.default` BOX → DRU (hands-up drunken
+  stagger, owner directive 2026-10-24). DRU entry, entry move `f+3+4`, exit `DRU b`,
+  and all 40 DRU stance-list moves unchanged; BOX remains listed, not default.
+- Source correction: Lei has no T7 data — the 2026-10-21 "T7 Lei" label is corrected
+  by annotation to Tekken 6 / TTT2 (historical `t7_import_note` untouched). TTT2
+  Drunken Master Walk cross-check: all named DRU moves confirmed on name + input;
+  damage differs on 5 rows (file value kept verbatim); Drunken Fox Rotation flagged
+  NEEDS-SOURCE-CHECK. No T8 data used for the mix; pre-existing T8 layer (126 keys)
+  flagged, not deleted.
+- Only Steve ↔ Lei collision is `f+3+4` (Lei walk owns the key; Steve Peekaboo
+  preserved under `f+3+4_r198`). Field-level diff vs main: only the 20 renames +
+  stance fields changed outside the new mix fields; 0 keys deleted, 0 added; Rave
+  untouched. TheBigTuna MOD damage re-verified 117/117 (175 Steve entries carry MOD
+  sourcing; 119 unmatchable by whole-notation matching, left as-is).
+- Move List Creator: additive `source_fighter`/`source_game`/`mix_group` pass-through
+  in `packages/creation-suite/src/movelist-editor.js` `fromMovesetFile()`; node editor
+  test passes (666 library entries; own-slot status `correct` for DRU LP1, DRU
+  LK3,RP2,RK4, DRU LP1+RP2, standing LP1, signature LP1+RP2, `f+3+4`; 0 mix entries
+  unmapped). Simulation/editor proof only — NOT play-verified.
+- Mixed-style audit: only Zui is a canon-named fixed mix. Demonio Jin/Devil Jin = form,
+  not mix. Gyou = NEEDS-CANON-DECISION (Paul vs Hwoarang conflict). Trader + DXMMII =
+  NEEDS-DATA (mimicry is a system). Full report:
+  `docs/decisions/2026-10-24-zui-mix-per-canon.md`; standing rule in
+  `docs/owner-directives.md` (MIX PER CANON).

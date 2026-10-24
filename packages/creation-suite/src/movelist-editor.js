@@ -515,6 +515,14 @@ export function fromMovesetFile(moveset) {
       input: move.input || key,
       displayInput: toDisplayInput(move.input || key),
       anim_ref: move.anim_ref || null,
+      // MIX PER CANON (2026-10-24): pass the moveset file's mix-source
+      // fields through so the editor can show, for Zui individually,
+      // which Tekken fighter each move came from (Steve Fox T7 base,
+      // Lei Wulong T6/TTT2 drunken, WH original) without digging into
+      // sourceMove. Additive only; validation never reads these.
+      source_fighter: move.source_fighter || null,
+      source_game: move.source_game || null,
+      mix_group: move.mix_group || null,
       t3_bank: move.t3_source || moveset?.t3_bank || moveset?.t3_source || null,
       t3_row: move.t3_row ?? null,
       category: categoryForEntry(move, context),

@@ -447,3 +447,21 @@ Rules derived from this directive:
 - Never call something "fixed" when it is only "less broken."
 - Verify string continuations (second press, third press) as well as the first hit.
 - The user's tokens buy real work, not sloppy work. Slow and right beats fast and wrong every time.
+## MIX PER CANON (standing rule, 2026-10-24 — Zui mix PR)
+
+- When canon says a fighter fights with 2+ styles, the moveset MUST reflect all of them.
+  Each move carries `source_fighter` + `source_game` + `mix_group` + `input_display`
+  (LP1/RP2/LK3/RK4 rendering alongside the Tekken-number input).
+- Collisions are resolved by stance-gating or alternate input (e.g. Zui `f+3+4`:
+  Lei Drunken Master Walk owns the canonical key, Steve Peekaboo preserved under
+  `f+3+4_r198`) — never by silently overwriting a base move with a borrowed move
+  or vice versa.
+- Sharing NEVER removes moves from the donor. Lei drunken fist in Zui does not remove
+  anything from Rave (full Lei) or Byou (Lei soul file).
+- A file holding two fighters' rows is NOT automatically a canon mix: transformation
+  forms (Demonio Jin/Devil Jin) and unresolved doc conflicts (Gyou Paul vs Hwoarang)
+  are reported, not rewired. Mimicry (Trader, DXMMII) is a system, not a move list —
+  flag NEEDS-DATA, don't fake a fixed mix.
+- Lei Wulong has no Tekken 7 data. Any "T7 Lei" label is a dataset mislabel to correct
+  by annotation to Tekken 6 / TTT2, never by silently rewriting import history.
+- Full audit: `docs/decisions/2026-10-24-zui-mix-per-canon.md`.
