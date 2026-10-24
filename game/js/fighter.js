@@ -154,6 +154,18 @@ export function bankIdFor(charId, movesetId) {
     //   aotsuki     -> kuma (CANON: Panda shares Kuma's T3 bank)
     //   silvertongue -> xiaoyu (her kit's T3 bank, per lili.json t3_source)
     gashadokuro: 'kuma', aotsuki: 'kuma', silvertongue: 'xiaoyu',
+    // 2026-10-24 (stance fix lane; owner: "too many are sharing them"):
+    // these three fighters' Tekken bases have decoded T3 banks on disk,
+    // but they were falling back to a shared moveset bank (docfrank) or
+    // to no bank at all (tobi, buffalo-bill). Each now binds its own base's
+    // bank, so its stance is distinct, not shared.
+    //   docfrank    -> bosconovitch (CANON: Doc Frank base = Bosconovitch;
+    //                 bank exists on disk; was incorrectly on gunjack bank)
+    //   tobi        -> hwoarang (CANON: Tobi base = Hwoarang; bank exists;
+    //                 was returning null — no bank, CMU fallback shared)
+    //   buffalo-bill -> law (CANON: Buffalo Bill base = Marshall Law;
+    //                 bank exists; was returning null — no bank, CMU fallback)
+    docfrank: 'bosconovitch', tobi: 'hwoarang', 'buffalo-bill': 'law',
   };
   if (Object.prototype.hasOwnProperty.call(FIGHTER_BANK, charId)) return FIGHTER_BANK[charId];
   let src = null;
