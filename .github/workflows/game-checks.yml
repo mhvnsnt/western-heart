@@ -54,7 +54,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # 2026-10-23: depth-1 shallow+partial fails with git 128 on current runners; rig-guard uses 0 and passes
+          fetch-depth: 1
           filter: blob:none
           sparse-checkout: |
             test
@@ -66,6 +66,18 @@ jobs:
             game/vendor/jolt
             customization/profiles
           sparse-checkout-cone-mode: false
+      - name: Debug checkout contents
+        run: |
+          echo "=== sparse-checkout patterns ==="
+          cat .git/info/sparse-checkout || echo "NO sparse-checkout file"
+          echo "=== test dir ==="
+          ls test/ 2>&1 | head -20
+          echo "=== portraits ==="
+          ls game/assets/portraits/ 2>&1 | head -5
+          echo "=== profiles ==="
+          ls customization/profiles/ 2>&1 | head -5
+          echo "=== git status ==="
+          git status --porcelain 2>&1 | head -10
       - name: Run game unit tests
         run: |
           set -euo pipefail
