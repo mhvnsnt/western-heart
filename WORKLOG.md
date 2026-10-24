@@ -1,3 +1,29 @@
+## 2026-10-23 ~19:30 CDT — batch9 moveset pull: thor/menajerii/baek-master-white/dorowani/zen (SHOW-ANIMATION LOCK)
+
+**Owner instruction (verbatim):** "Now we need to get that done for every other character" (2026-10-23) — replicate the proven Law/Lars pattern (PR #823 merged, PR #806 green).
+
+**Method:** Per-fighter best-source diff. TTT2 movelists (Catlord v1.12 TTT2 walkthrough, supercheats) parsed with a custom indentation-chaining parser (`~/workspace/batch9-work/parse_ttt2.py`: parent/child chaining, `(a)_(b)` alternative expansion, `(u_x_y)+N` expansion, QCF/HCF→`f,N,d,d/f` normalization, stance-section prefixing ROS/FLA, hold-case-preserving token normalizer); diffed against existing moves with case-aware input normalization (`f,F+1+2` run vs `f,f+1+2` dash kept distinct); genuinely-missing moves added in Tekken notation, all `"set": "FIGHT"`, `ttt2_source` + `merge_source: ttt2:<char>` provenance, real TTT2 move names, no fabricated frame data (documented-not-extracted).
+
+**Moveset (done):**
+- `game/assets/movesets/thor.json` (Ganryu): 244 -> **322** (+78 TTT2 Ganryu moves: 13 throws incl. Jizo Hug/Face Slam/Giant Tackle, Devil Thrusts, Sumo Rush + L/M/H endings, Kabuki Slaps chain, sit-down options, Earthquake unblockable; Ten Palm Slap mash artifact + Julia Hug skipped)
+- `game/assets/movesets/menajerii.json` (Roger Jr.): 154 -> **193** (+39 TTT2 Roger moves: Animal Rush/Hush, Roo Rage, Helicopter Kicks, Bomb Stomp, Satellite Dropkick, Ali Kick chain, ROS extensions, Bobbin Dance charge-ups; 14 TTT2 throws verified already-present under WH names — skipped as duplicates; 2 side-roll options dropped as covered)
+- `game/assets/movesets/baek-master-white.json` (Baek): 138 -> **291** (+153 TTT2 Baek moves: full Flamingo system, 14 throws, Mantis Rush, parries; prior 107 Bryan placeholders retained as provisional)
+- `game/assets/movesets/dorowani.json` (Gon): 175 -> **175** (+0 — auto-merge lane already pulled all 151 T3 Gon inputs; input-coverage audit verified 0 genuinely-missing)
+- `game/assets/movesets/zen.json` (Heihachi): 639 -> **639** (+0 — T8 Heihachi verified 145/145 by `t8_id`; T3 307 + T7 183 already present; 0 Heihachi gaps)
+- `index.json` moves/inputs/bytes updated for all 5.
+
+**SHOW-ANIMATION LOCK (owner 2026-10-23):** file-level `anim_set_lock` added to all 5 files; all 270 added moves stamped `"set": "FIGHT"`. No SHOW content entered any moveset.
+
+**Animations (banks wired or gaps filed, FIGHT vs SHOW split):**
+- dorowani: T3 Gon bank WIRED (`game/assets/anim/t3/gon/`, `T3_BANKS.gon` + `SOURCE_TO_BANK.gon` present, `anim_bank: 'gon'`) — status doc `docs/anim/T3-GON-ANIM-20261023.md` (not a gap).
+- thor/baek-master-white/menajerii: NO T3 streams exist (BANK-TABLE-2026-10-20) — precise gaps filed: `docs/anim/TTT2-GANRYU-ANIM-GAP-20261023.md`, `docs/anim/TTT2-BAEK-ANIM-GAP-20261023.md`, `docs/anim/TTT2-ROGER-ANIM-GAP-20261023.md` (TTT2/T6/T5-first priority, unblock sequence for the extraction coordinator lane).
+- zen: **VF5 Dural motion gap filed** — `docs/anim/VF5-DURAL-ANIM-GAP-20261023.md`. VF5 motion was never converted (model only); Dural is Zen's permanent base per owner directive 2026-10-22 but filed as PENDING, never mixed with the Heihachi kit (sources kept separate per instruction).
+
+**Verification:** `node --test game/tests/fighter-completeness.test.mjs` 4/4 pass; full suite 95/99 (4 pre-existing failures in model-key-guard/stagerage/v-system, verified failing on pristine tree); all JSONs parse; semantic additions-only (0 field losses, 0 removals, 0 file deletions).
+
+**Anti-clobber:** rebuilt on current main tip (cf88ed5fe) after main moved mid-task — main added 4 donor.baek signature moves to baek-master-white (kept) and reformatted dorowani.json (re-applied anim_set_lock surgically onto new base); no main-side changes dropped. Branch `moveset/batch9-pull` via worktree (shared clone was in use by another lane); push via Git Database API.
+
+---
 ## 2026-10-23 ~18:15 CDT — batch3 T8 moveset pull: pond/tobi/megami/sakura/phantom (SHOW-ANIMATION LOCK)
 
 **Owner instruction (verbatim):** "Now we need to get that done for every other character" (2026-10-23) — replicate the proven Law/Lars pattern (PR #823 merged, PR #806 green).
