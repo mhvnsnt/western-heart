@@ -68,16 +68,26 @@ jobs:
           sparse-checkout-cone-mode: false
       - name: Debug checkout contents
         run: |
-          echo "=== sparse-checkout patterns ==="
-          cat .git/info/sparse-checkout || echo "NO sparse-checkout file"
-          echo "=== test dir ==="
-          ls test/ 2>&1 | head -20
-          echo "=== portraits ==="
-          ls game/assets/portraits/ 2>&1 | head -5
-          echo "=== profiles ==="
-          ls customization/profiles/ 2>&1 | head -5
-          echo "=== git status ==="
-          git status --porcelain 2>&1 | head -10
+          {
+            echo "=== sparse-checkout patterns ==="
+            cat .git/info/sparse-checkout || echo "NO sparse-checkout file"
+            echo "=== test dir ==="
+            ls test/ 2>&1 | head -20
+            echo "=== portraits ==="
+            ls game/assets/portraits/ 2>&1 | head -5
+            echo "=== profiles ==="
+            ls customization/profiles/ 2>&1 | head -5
+            echo "=== git status ==="
+            git status --porcelain 2>&1 | head -10
+            echo "=== pwd ==="
+            pwd
+          } > /tmp/debug.txt 2>&1 || true
+          cat /tmp/debug.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: checkout-debug
+          path: /tmp/debug.txt
       - name: Run game unit tests
         run: |
           set -euo pipefail
