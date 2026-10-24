@@ -180,6 +180,12 @@ export const MODEL_URLS = {
   'dxmmii-tripo': '../roster/dxmmii/attires/attire1/model-rigged.glb',
   'cyborg-x': 'assets/models/cyborg-x.glb',
   'cape-jones': 'assets/models/cape-jones.glb',
+  // CAPE JONES Attire 1 (rig QA 2026-10-23, muse/cape-jones-fight): the
+  // auto-rigged Round-2 build (49 bones, -Z facing, sides/knees OK), staged
+  // under his roster dir per convention. Byte-identical to
+  // assets/models/cape-jones.glb — no re-rig needed. See
+  // roster/cyborg-x/ATTIRE-SLOTS.md.
+  'cape-jones-attire1': '../roster/cyborg-x/attires/attire1/model-rigged.glb',
   // Bonus / music fighters and name-pending models (loadable, unassigned).
   mariposa: 'assets/models/mariposa.glb',
   // Mariposa Slot 1 — Butterfly Default (dedup 2026-10-22): owner-designated

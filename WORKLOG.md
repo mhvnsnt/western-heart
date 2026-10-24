@@ -2575,3 +2575,27 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 **Anti-clobber:** branch from fresh origin/main; sparse checkout in this tree (lab/ etc. excluded) — committed via Git Data API (push_branch_api.py) building from main's real tree + only this task's 6 files; verified via compare API that the branch diff is exactly the 6 files (4 added, 2 modified), 0 deletions. gitleaks clean. No deletions.
 
 **ALL CHARACTERS ARE ADULTS:** n/a — rigging pipeline, no characters.
+
+## 2026-10-23 21:30 CT — Cape Jones playable on Alisa's select slot (muse/cape-jones-fight)
+
+Owner lane: Cape Jones (secret identity Cyborg X, fighter id `cyborgx`) replaces Tekken's Alisa — takes her select slot, her moveset + animations, plus his own extras. Proof owed: select screenshot + fight frame of one of Alisa's moves.
+
+**What changed (branch `muse/cape-jones-fight`, additive + 3 surgical edits, 0 deletions):**
+- NEW `roster/cyborg-x/attires/attire1/model-rigged.glb` — staged from the auto-rigged Round-2 build of `game/assets/models/cape-jones.glb` (49 bones, 1.75 m); byte-identical, sha256 e19e94e9… (no re-rig).
+- `game/js/assets.js` (surgical): MODEL_URLS += `cape-jones-attire1` → `../roster/cyborg-x/attires/attire1/model-rigged.glb`.
+- `game/js/attires.js` (surgical): ATTIRE_VARIANTS += `cyborgx` → Attire 1 = cape-jones-attire1 (RIGGED).
+- `roster/cyborg-x/ATTIRE-SLOTS.md` (surgical): rig QA result recorded.
+- `docs/decisions/2026-10-23-cape-jones-fight-wiring.md` (new): decision log.
+
+**Rig QA (tools/model-audit/rig_qa.py on meshopt-decoded GLB):** 49 joints, facing -Z, arm/leg sides OK, knees forward; weight-bleed heuristic flags hand-proximity verts only (no face→spine bleed). PASSED — no re-rig needed.
+
+**Teardown search:** no Alisa animation bank exists in the repo teardowns (T5/T6/T7/T8/TTT2) — only frame data (docs/t7t8-reference, rbnorway CSVs). The gunjack T3 fallback for cyborgx stays, as already logged in `game/data/cape-alisa-binding.json` (last resort, owner t121u). Real Alisa motions await the T7 extraction lane (owner bought T7 2026-10-23; Grok's box).
+
+**Verified by playing (phone portrait 390x844, Playwright + swiftshader):**
+- Select: CAPE JONES renders on the grid (CA card), 3D preview shows his textured model, "Attire 1" picker wired.
+- Fight cyborgx vs pantera: 10/10 states `"round":"fight"`, P1 `model: cape-jones-attire1`, repeated `st:"attack" atk:"1"` (Jab) with `cur: t3_gunjack_row44@cape-jones-attire1`; idle shows `t3_gunjack_stance` (not T-pose). **0 pageerrors.**
+- Known unrelated issue visible: camera-bounds zoom (fighters small at screen edges in portrait) — owned by another lane, not touched.
+
+**Commit method:** Git Data API via tree SHAs (no-sparse-commit law; /tmp too small for full clone — worked from a blob:none sparse tree, commits built from main's real tree). gitleaks clean.
+
+**ALL CHARACTERS ARE ADULTS:** confirmed — Cape Jones is male (user confirmed 2026-10-23), adult character, no minors involved.
