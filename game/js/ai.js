@@ -8,6 +8,9 @@
      • DEMONIO  — balanced, fundamental spacing, whiff-aware.
    ============================================================ */
 import { playedMoveset } from './movesets.js';
+import { CombatBrain } from './ai/combat-state.js';
+import { GrappleChain } from './ai/grapple-chains.js';
+import { ReversalBrain } from './ai/reversal-logic.js';
 
 /* Moveset-driven CPU (2026-10-23): the CPU attacks with the SAME per-fighter moveset the player
    has (game/assets/movesets/<id>.json — the source character's full T8/T7 data, e.g. Purple Rain =
@@ -59,6 +62,54 @@ export class AIController {
     this._actionT = 0;
     this._block = 0;
     this.passive = !!personality.passive; // modes lane: training dummy never acts
+    // YUKA COMBAT BRAIN (2026-10-23): hierarchical state machines drive the
+    // decisions below; this controller keeps owning every try* call.
+    this.combat = new CombatBrain(this, personality);
+    this.grapple = new GrappleChain(this, personality);
+    this.reversals = new ReversalBrain(personality);
+  }
+
+  /* Build the fight snapshot the Yuka brains read. Pure data — the brains
+     never touch the fighter, the foe, or physics directly. */
+  _snapshot(player) {
+    const f = this.f, p = player;
+    const dx = p.root.position.x - f.root.position.x;
+    return {
+      dist: Math.abs(dx), dir: Math.sign(dx) || 1,
+      myState: f.state, foeState: p.state,
+      foeAttacking: p.state === 'attack' && p._attackPhase !== 'recovery',
+      foeAttackPhase: p.state === 'attack' ? (p._attackPhase || 'startup') : null,
+      foeStartupFrames: (p.attack && p.attack.startup) ?? null,
+      onGround: !!f.onGround, canAct: f.canAct(),
+      stun: f.stun || 0, meter: f.meter || 0,
+      launched: !f.onGround && f.state !== 'attack',
+      downed: f.state === 'down',
+      foeDowned: p.state === 'down',
+      rageOn: !!f._rageOn, urgeOn: !!f._urgeOn, urgePips: f._urgePips || 0,
+      urgeReady: !f._urgeUsed && !f._urgeOn,
+      inBlockstun: f.state === 'block' && (f.stun || 0) > 0.05,
+      lockMove: f.lockMove || null,
+      aggression: this.aggression, reaction: this.reaction, grabBias: this.grabBias,
+      roundOver: f.dead || f.state === 'ko' || f.state === 'victory',
+    };
+  }
+
+  /* Execute a reversal-brain decision through the existing try* calls. */
+  _doReversal(rev) {
+    const f = this.f;
+    switch (rev.action) {
+      case 'throw-break': {
+        const want = String((f.lockMove && f.lockMove.throw_break) || '1').split('|')[0];
+        f.tryThrowBreak(want === '1+2' ? '1+2' : want);
+        break;
+      }
+      case 'v-reversal': f.tryVReversal(); break;
+      case 'v-shift': if (f.onGround) f.tryVShift(); else f.tryBlock(true); break;
+      case 'sidestep': if (f.onGround) f.trySidestep(Math.random() < 0.5 ? -1 : 1); else f.tryBlock(true); break;
+      case 'duck': if (f.tryCrouch) f.tryCrouch(true); else f.tryBlock(true); break;
+      case 'block': default: f.tryBlock(true); this._block = 0.35;
+    }
+    this._think = 0.3;
   }
 
   update(dt, player) {
@@ -101,6 +152,15 @@ export class AIController {
       f.tryVReversal(); this._think = 0.3; return;
     }
 
+    // YUKA REVERSAL BRAIN (2026-10-23): split-second defensive reads drive
+    // the reaction; the hand-rolled reactive block below stays as fallback.
+    // ('punish' is skipped here — it flows into the decide section below.)
+    const snap = this._snapshot(player);
+    const rev = this.reversals.decide(snap);
+    if (rev.action !== 'none' && rev.action !== 'punish' && f.canAct() && Math.random() < rev.confidence) {
+      this._doReversal(rev); return;
+    }
+
     // Reactive defense: block/dodge/sidestep incoming attacks (gated by reaction stat)
     if (playerAttacking && dist < 2.6 && f.canAct()) {
       const react = Math.random() < (0.25 + this.reaction * 0.5);
@@ -134,17 +194,33 @@ export class AIController {
       return;
     }
 
-    // ----- Decide a new action -----
+    // ----- Decide a new action (YUKA-DRIVEN) -----
     this._think = 0.12 + (1 - this.aggression) * 0.4 + Math.random() * 0.2;
 
+    // YUKA COMBAT BRAIN: the hierarchical state machine picks the combat
+    // state; the lanes below execute it. Drive, don't replace.
+    const directive = this.combat.think(snap);
+
+    // Grapple chain machine owns the clinch -> throw -> ground sequence.
+    if (this.grapple.think(snap) === 'commit-throw' && f.canAct() && f.onGround) {
+      f.tryAttack('grab'); this._think = 0.6; return;
+    }
+
+    if (directive.state === 'block') { f.tryBlock(true); this._block = 0.35; this._think = 0.25; return; }
+    if (directive.state === 'hit' || directive.state === 'launch') return; // stunned/airborne: ride it out
+
+    // Committed offense: the big install/cash-out lanes fire only when the
+    // brain says ATTACK — never wasted into pressure or blockstun.
+    const onOffense = directive.state === 'attack';
+
     // Soul Surge when the meter is full and in range
-    if (f.meter >= 100 && dist < 2.8 && Math.random() < 0.6) {
+    if (onOffense && f.meter >= 100 && dist < 2.8 && Math.random() < 0.6) {
       f.tryAttack('surge'); return;
     }
 
     // Rage lane (T7 comeback): while raging, spend it on the rage art
     // (1+2) or rage drive (3+4) when in range — never hold it forever.
-    if (f._rageOn && f.onGround && dist < 3.4) {
+    if (onOffense && f._rageOn && f.onGround && dist < 3.4) {
       const rr = Math.random();
       if (rr < 0.4) { f.tryAttack('1+2'); return; }  // RAGE ART
       if (rr < 0.55) { f.tryAttack('3+4'); return; } // RAGE DRIVE
@@ -152,10 +228,10 @@ export class AIController {
 
     // Soul Urge lane (T8 Heat): pop the Urge Burst in range; while
     // urging, dash in with spare pips or cash out with the Urge Smash.
-    if (!f._urgeUsed && !f._urgeOn && f.onGround && dist < 2.6 && Math.random() < 0.3) {
+    if (onOffense && !f._urgeUsed && !f._urgeOn && f.onGround && dist < 2.6 && Math.random() < 0.3) {
       f.tryAttack('2+3'); return; // URGE BURST
     }
-    if (f._urgeOn && f.onGround) {
+    if (onOffense && f._urgeOn && f.onGround) {
       if (f._urgePips > 0 && dist > 3 && dist < 7 && Math.random() < 0.4) {
         f.tryAttack('1+2'); return; // URGE DASH (1+2 while urging, not raging)
       }

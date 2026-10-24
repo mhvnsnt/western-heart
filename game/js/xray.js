@@ -22,10 +22,15 @@
    clip can ever enter a fight through this path.
 
    Data: roster/<fighter>/anatomy/anatomy-layers.json
-   (wh.anatomy-layers/1 — see docs/research/ANATOMY-LAYERS-SPEC-2026-10-23.md).
+   (wh.anatomy-layers/1 — see docs/research/ANATOMY-LAYERS-SPEC-2026-10-23.md;
+    wh.anatomy-layers/3 adds optional dataset meshes — see
+    docs/research/ANATOMY-DATASETS-2026-10-23.md).
    Layers render as analytic proxy meshes (ellipsoid/capsule/sphere)
    built once from the SDF primitive data — no per-frame meshing,
-   no voxel grids. ORGAN is a reserved reveal slot: the parser reads
+   no voxel grids. When a primitive carries dataset mesh data
+   (schema v3 `meshes` array), the real anatomical mesh is loaded
+   instead of the proxy; proxies remain the fallback.
+   ORGAN is a reserved reveal slot: the parser reads
    layers.organ when it lands; today only BONE/MUSCLE ship.
 
    Quality: X-ray is gated on SoftBody.globalQuality — 'off' skips
@@ -86,7 +91,8 @@ export function normPrim(p) {
 }
 
 /* Parse an anatomy-layers.json doc -> { bone, muscle, organ } primitive
-   lists. Returns null when the doc has no usable layer data (fighter
+   lists, plus optional dataset meshes (schema v3).
+   Returns null when the doc has no usable layer data (fighter
    opts out of the X-ray layer reveal; the skin/camera beat still plays). */
 export function parseAnatomyLayers(json) {
   if (!json || !json.layers) return null;
@@ -106,8 +112,45 @@ export function parseAnatomyLayers(json) {
   // ORGAN layer (lands separately): same primitive union when present.
   const organPrims = (L.organ && L.organ.primitives) || [];
   for (const p of organPrims) { const n = normPrim(p); if (n) organ.push(n); }
-  if (!bone.length && !muscle.length && !organ.length) return null;
-  return { bone, muscle, organ };
+  // Schema v3: dataset meshes (optional, with license attribution).
+  // Each mesh entry: { id, url, dataset, license, attribution, joint }.
+  // Meshes are matched to primitives by id; unmatched meshes are skipped.
+  const datasetMeshes = { bone: [], muscle: [], organ: [] };
+  for (const layer of ['bone', 'muscle', 'organ']) {
+    const meshes = (L[layer] && L[layer].meshes) || [];
+    for (const m of meshes) {
+      if (m && m.url && m.dataset && m.license) {
+        datasetMeshes[layer].push({
+          id: m.id || null,
+          url: m.url,
+          dataset: m.dataset,
+          license: m.license,
+          attribution: m.attribution || '',
+          joint: m.joint || null,
+        });
+      }
+    }
+  }
+  if (!bone.length && !muscle.length && !organ.length &&
+      !datasetMeshes.bone.length && !datasetMeshes.muscle.length && !datasetMeshes.organ.length) return null;
+  return { bone, muscle, organ, datasetMeshes };
+}
+
+/* Normalize a dataset mesh entry. Returns null if required fields
+   (url, dataset, license) are missing — license is mandatory to prevent
+   accidental bundling of unlicensed anatomy data. */
+export function normDatasetMesh(m) {
+  if (!m || typeof m.url !== 'string' || !m.url) return null;
+  if (typeof m.dataset !== 'string' || !m.dataset) return null;
+  if (typeof m.license !== 'string' || !m.license) return null;
+  return {
+    id: m.id || null,
+    url: m.url,
+    dataset: m.dataset,
+    license: m.license,
+    attribution: m.attribution || '',
+    joint: m.joint || null,
+  };
 }
 
 /* Dent offset for a layer point at distance d (m) from the impact site.
@@ -296,9 +339,29 @@ export class XraySystem {
       P.boneMat = new T.MeshBasicMaterial({ color: XRAY.BONE_COLOR, transparent: true, opacity: 0, depthWrite: false });
       P.organMat = new T.MeshBasicMaterial({ color: XRAY.ORGAN_COLOR, transparent: true, opacity: 0, depthWrite: false });
       const group = new T.Group();
-      const mk = (prim, mat, list, isBone) => {
-        const mesh = this._proxyMesh(prim, mat, q);
+      const dsMeshes = layers.datasetMeshes || { bone: [], muscle: [], organ: [] };
+      const mk = (prim, mat, list, isBone, dsList) => {
+        const result = this._anatomyMesh(prim, mat, q, dsList);
+        const mesh = result && result.mesh;
         if (!mesh) return;
+        // If a dataset mesh is available for this primitive, kick off
+        // the async load; the proxy shows until the real mesh arrives.
+        if (result.datasetEntry) {
+          this._datasetMesh(result.datasetEntry, mat).then((dsMesh) => {
+            if (dsMesh && mesh.parent) {
+              // Swap proxy for dataset mesh, preserving transform.
+              dsMesh.position.copy(mesh.position);
+              dsMesh.quaternion.copy(mesh.quaternion);
+              dsMesh.scale.copy(mesh.scale);
+              dsMesh.renderOrder = mesh.renderOrder;
+              mesh.parent.add(dsMesh);
+              mesh.parent.remove(mesh);
+              // Replace in the tracking list.
+              const idx = list.indexOf(mesh);
+              if (idx >= 0) list[idx] = dsMesh;
+            }
+          }).catch(() => {}); // fail-silent: proxy remains
+        }
         // Dent the layer at the impact point (softbody.hit() injection math).
         const c = this._primCenter(prim);
         const d = _dist3(c, P.impactL);
@@ -315,10 +378,10 @@ export class XraySystem {
         group.add(mesh);
         list.push(mesh);
       };
-      for (const prim of layers.muscle) mk(prim, P.muscleMat, P.muscle, false);
-      for (const prim of layers.bone) mk(prim, P.boneMat, P.bone, true);
+      for (const prim of layers.muscle) mk(prim, P.muscleMat, P.muscle, false, dsMeshes.muscle);
+      for (const prim of layers.bone) mk(prim, P.boneMat, P.bone, true, dsMeshes.bone);
       // ORGAN slot: parsed + revealed when the organ layer lands in the JSON.
-      for (const prim of layers.organ) mk(prim, P.organMat, P.organ, false);
+      for (const prim of layers.organ) mk(prim, P.organMat, P.organ, false, dsMeshes.organ);
       const host = (P.meshes && P.meshes[0]) || P.defender.root;
       host.add(group);
       P.group = group;
@@ -365,6 +428,55 @@ export class XraySystem {
     mesh.material = mat;
     mesh.frustumCulled = false; // displaced + transparent: never pop
     return mesh;
+  }
+
+  /* Load a dataset anatomical mesh (schema v3). Returns a Promise<Mesh|null>.
+     Meshes are cached by URL. Fail-silent: returns null on any error,
+     and the caller falls back to the analytic proxy. */
+  async _datasetMesh(entry, mat) {
+    const T = this.THREE;
+    if (!entry || !entry.url || !T) return null;
+    // Cache by URL.
+    this._meshCache = this._meshCache || {};
+    if (this._meshCache[entry.url] === undefined) {
+      this._meshCache[entry.url] = null; // mark fetching
+      try {
+        // Use GLTFLoader if available on THREE, else fail to proxy.
+        const Loader = T.GLTFLoader;
+        if (!Loader) { this._meshCache[entry.url] = false; return null; }
+        const loader = new Loader();
+        const gltf = await new Promise((resolve, reject) => {
+          loader.load(entry.url, resolve, undefined, reject);
+        });
+        // Take the first mesh found in the GLB.
+        let found = null;
+        gltf.scene.traverse((o) => { if (!found && o.isMesh) found = o; });
+        this._meshCache[entry.url] = found ? found.geometry : false;
+      } catch (e) {
+        this._meshCache[entry.url] = false;
+      }
+    }
+    const geo = this._meshCache[entry.url];
+    if (!geo) return null; // false = failed, null = still fetching
+    const mesh = new T.Mesh(geo, mat);
+    mesh.frustumCulled = false;
+    return mesh;
+  }
+
+  /* Dispatcher: dataset mesh when available, analytic proxy as fallback.
+     Returns { mesh, isDataset } or null. */
+  _anatomyMesh(prim, mat, seg, datasetMeshes) {
+    // Check for a dataset mesh matching this primitive's id.
+    if (datasetMeshes && prim.id) {
+      const entry = datasetMeshes.find((m) => m.id === prim.id);
+      if (entry) {
+        // Async path: return a placeholder that resolves later.
+        // For now, fall through to proxy; the mesh swaps in when loaded.
+        // (Full async swap implemented in _tryBuildProxiesAsync.)
+        return { mesh: this._proxyMesh(prim, mat, seg), isDataset: false, datasetEntry: entry };
+      }
+    }
+    return { mesh: this._proxyMesh(prim, mat, seg), isDataset: false, datasetEntry: null };
   }
 
   /* Per-frame driver. Runs on REAL seconds (game.js passes the
