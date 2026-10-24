@@ -2597,3 +2597,18 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 **Anti-clobber:** branch from fresh origin/main; sparse checkout in this tree (lab/ etc. excluded) — committed via Git Data API (push_branch_api.py) building from main's real tree + only this task's 6 files; verified via compare API that the branch diff is exactly the 6 files (4 added, 2 modified), 0 deletions. gitleaks clean. No deletions.
 
 **ALL CHARACTERS ARE ADULTS:** n/a — rigging pipeline, no characters.
+
+## 2026-10-23 ~22:10 CDT — merge-tree-guard: merge-time guard against fake stale-tree merges (branch muse/merge-tree-guard; PR number filled after opening)
+
+**Owner instruction (verbatim):** "REPO: mhvnsnt/western-heart. TASK: build a merge-time guard that stops fake/stale-tree merges from deleting files on main."
+
+**Root cause (verified by owner):** PR #974's head was clean (0 deletions, all CI green including deletion-guard), but its merge commit 1b2dabfed's tree was byte-identical to the stale branch head's tree — the merge was constructed from the stale branch tree instead of a real 3-way merge, silently dropping 150 files main had gained since the fork point. No PR-time guard can catch this; the damage is created after checks pass, at merge-commit construction.
+
+**Built (3 new files, 0 deletions):**
+- `.github/workflows/merge-tree-guard.yml` (new): runs on push to main. For each merge commit M in before..after (first-parent): P1=first parent, P2=second parent, B=merge-base(P1,P2); D1=files deleted P1→M; D2=files deleted B→P2 (the PR's own deletions); VIOLATION=D1−D2 → fail, printing every file. Escape hatch: `owner-approved-deletion` label on the merged PR (labels via commits API, same as deletion-guard). Extra loud banner when merge tree == branch tree while main added files after the fork ("not a real 3-way merge"). Sparse checkout (.github only) + self-test step, matching clobber-guard.
+- `.github/scripts/merge_tree_guard.py` (new): the check logic (env BEFORE_SHA/AFTER_SHA/REPO/GH_TOKEN; exit 0/1).
+- `.github/scripts/test_merge_tree_guard.py` (new): 6 unit tests building real temp git repos — fake stale-tree merge via commit-tree (must flag + FAKE MERGE banner), real --no-ff merge (must pass), branch's own deletion (must pass), non-merge skipped, owner label escape.
+
+**Verification:** 6/6 unit tests pass. Read-only sweep of the last 30 merge commits on main: 29 CLEAN, exactly 1 flagged — 1b2dabfed (PR #974) with 150 violations + FAKE MERGE banner (known incident, already recovered via #981/#982). Manual secret-pattern scan clean (gitleaks binary not on this box; CI runs it).
+
+**Deviations:** none.
