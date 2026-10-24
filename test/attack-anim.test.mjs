@@ -108,17 +108,18 @@ test('timing: the clip hit frame lands on the move startup (decoded T3 active fr
   assert.ok(checked > 500, `only ${checked} decoded timings`);
 });
 
-test('pressing 1 never plays a throw: Pantera Jab skips its anim_t3 row 290 (King throw attempt)', async () => {
+test('pressing 1 never plays a throw: Pantera Jab never plays King\'s throw-attempt row 290', async () => {
   const f = await fighter('pantera');
   const mv = F.getRealMove('pantera', '1');
-  assert.equal(mv.animRow, 290, 'data premise changed: Pantera 1 no longer points at row 290');
+  // The data pointed Pantera 1 at row 290 until main's jab fix (#984) repointed its anim_t3; the outcome is what
+  // is tested here, whichever row the data names.
   assert.ok(T.clipIsThrow(f._t3.clips['row:290']), 'row 290 is a decoded throw row');
   const p = plan(f, '1');
   assert.ok(!T.clipIsThrow(f._t3.clips[p.name]), `Pantera 1 plays throw row ${p.name}`);
   assert.equal(p.limb, 'armL');
   assert.equal(p.name, 'row:44', 'King\'s own T3 1 (i10 jab, decoded hit frame 7)');
   // Even with no same-input row to fall back on, the throw row is rejected, never played.
-  const q = f._attackClipPlan({ ...mv, tekkenInput: 'zz', moveKey: null }, 'zz');
+  const q = f._attackClipPlan({ ...mv, animRow: 290, animBank: mv.animBank || 'king', tekkenInput: 'zz', moveKey: null }, 'zz');
   assert.ok(q.rejected.some(r => r.includes('row:290')), JSON.stringify(q.rejected));
   assert.ok(!T.clipIsThrow(f._t3.clips[q.name]), q.name);
 });
