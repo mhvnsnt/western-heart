@@ -436,7 +436,7 @@
   {
    "id": "bannon-live-deform",
    "source": "Bannon (add-on layer)",
-   "system": "Live deformation / muscle bulge on top of Tekken T7 rigs",
+   "system": "OWNER PICK #1 — Live deformation / muscle bulge on top of Tekken T7 rigs",
    "status": "not-wired",
    "code": "",
    "test": "",
@@ -553,6 +553,105 @@
    "lane": "UNCLAIMED",
    "base": "t7-hit-contact",
    "bannon_src": "mhvnsnt/Bannon: godmode/src/lib/PlaywrightCombatHarness.ts"
+  },
+  {
+   "id": "bannon-pose-editor",
+   "source": "Bannon (add-on layer)",
+   "system": "OWNER PICK #2 — Pose editor (poseStudio / studioApplyClipPose, studioBoneSnap): set idle/fight/select pose per fighter (worked for King); saved pose -> fighter pose slot; unique-pose rule; Buffalo Bill pose locked",
+   "status": "not-wired",
+   "code": "",
+   "test": "",
+   "lane": "UNCLAIMED",
+   "base": "t7-select, t7-anims",
+   "bannon_src": "mhvnsnt/Bannon: drive-archive/google-ai-studio/BANNON_v78 (1)_1DMFEmj3.html; unreal/.../BannonPoseAuthorityComponent.cpp; tools/taunts/pose_orient.py"
+  },
+  {
+   "id": "bannon-creation-tools",
+   "source": "Bannon (add-on layer)",
+   "system": "OWNER PICK #3 — Sculpt/shape/part editing (studioMorphSnap, BannonMorphPreviewer, PolymorphicRig)",
+   "status": "not-wired",
+   "code": "",
+   "test": "",
+   "lane": "UNCLAIMED",
+   "base": "2k19-parts, t7-customization",
+   "bannon_src": "mhvnsnt/Bannon: drive-archive/google-ai-studio/BANNON_v78 (1)_1DMFEmj3.html; unreal/.../BannonMorphPreviewer.cpp; src/utils/PolymorphicRig.ts; src/modules/editor.js"
+  },
+  {
+   "id": "bannon-studio",
+   "source": "Bannon (add-on layer)",
+   "system": "BANNON STUDIO — tabs Anim, Build, Clips, Presets, Scan, Memory, Chat (clip/move editing, presets, model scan)",
+   "status": "not-wired",
+   "code": "",
+   "test": "",
+   "lane": "UNCLAIMED",
+   "base": "t7-customization, t7-anims",
+   "bannon_src": "mhvnsnt/Bannon: drive-archive/google-ai-studio/BANNON_v78 (1)_1DMFEmj3.html (openStudio/renderStudio/studioTabs)"
+  },
+  {
+   "id": "bannon-mocap-studio",
+   "source": "Bannon (add-on layer)",
+   "system": "MOCAP STUDIO — capture/apply motion to fighter",
+   "status": "not-wired",
+   "code": "",
+   "test": "",
+   "lane": "UNCLAIMED",
+   "base": "t7-anims",
+   "bannon_src": "mhvnsnt/Bannon: drive-archive/google-ai-studio/BANNON_v78 (1)_1DMFEmj3.html"
+  },
+  {
+   "id": "bannon-move-forge",
+   "source": "Bannon (add-on layer)",
+   "system": "FORGE / MOVE FORGE / MOVE CREATOR — build custom moves",
+   "status": "not-wired",
+   "code": "",
+   "test": "",
+   "lane": "UNCLAIMED",
+   "base": "fp-moveforge, t7-movesets",
+   "bannon_src": "mhvnsnt/Bannon: drive-archive/google-ai-studio/BANNON_v78 (1)_1DMFEmj3.html; src/engine/MoveCreatorCorePhysics.cpp"
+  },
+  {
+   "id": "bannon-strike-lab",
+   "source": "Bannon (add-on layer)",
+   "system": "STRIKE LAB — tune strike impact/frames",
+   "status": "not-wired",
+   "code": "",
+   "test": "",
+   "lane": "UNCLAIMED",
+   "base": "t7-hit-contact",
+   "bannon_src": "mhvnsnt/Bannon: drive-archive/google-ai-studio/BANNON_v78 (1)_1DMFEmj3.html"
+  },
+  {
+   "id": "bannon-dive-lab",
+   "source": "Bannon (add-on layer)",
+   "system": "DIVE LAB — aerial/dive move tuning",
+   "status": "not-wired",
+   "code": "",
+   "test": "",
+   "lane": "UNCLAIMED",
+   "base": "nm-moves",
+   "bannon_src": "mhvnsnt/Bannon: drive-archive/google-ai-studio/BANNON_v78 (1)_1DMFEmj3.html"
+  },
+  {
+   "id": "bannon-creation-suite",
+   "source": "Bannon (add-on layer)",
+   "system": "CreationSuite page: Body Templates & Morphing, Head & Face, Face Details, Hair, Makeup & Facepaint, Masks, Clothing (Upper/Lower/Head/Foot), Accessories, Menu Screen Posing, Moveset, Entrance (Pyro & Effects, Lighting, Motion & Path), Fighting Style & AI DNA (Aggression/Defense/Patience/Risk/Range/Grapple/Showmanship), Injuries & Damage Persistence, Arena (Ring & Mat, Ropes & Apron, Barricades, Ringside)",
+   "status": "not-wired",
+   "code": "",
+   "test": "",
+   "lane": "UNCLAIMED",
+   "base": "2k19-parts, t7-customization, fp-cpu",
+   "bannon_src": "mhvnsnt/Bannon: src/pages/CreationSuite.tsx; src/components/CreationShell.tsx; CharacterForge.ts"
+  },
+  {
+   "id": "bannon-forge-studio",
+   "source": "Bannon (add-on layer)",
+   "system": "godmode ForgeStudio (artifact builder) + GameStudio ('ProWrestle AI Agent Studio': physics/graphics/rig compiler) — dev tools, mine for ideas only",
+   "status": "not-wired",
+   "code": "",
+   "test": "",
+   "lane": "UNCLAIMED",
+   "base": "—",
+   "bannon_src": "mhvnsnt/Bannon: godmode/src/components/ForgeStudio.tsx, GameStudio.tsx (MlabStudio.tsx is a music studio, not WH)"
   }
  ]
 }

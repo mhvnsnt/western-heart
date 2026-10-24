@@ -2,7 +2,7 @@
 
 Law: [docs/rules/COMPLETE-WIRING-LAW.md](../rules/COMPLETE-WIRING-LAW.md). Source of truth: `tools/coverage/systems-coverage.json` (edit the JSON, then this table). CI `coverage-guard` fails if a row is removed or its status goes down. Companion: `docs/tech/WIRING-MAP.md` (PR #953).
 
-**Totals: 59 rows — wired 11, partial 22, not-wired 26.**
+**Totals: 68 rows — wired 11, partial 22, not-wired 35.**
 
 Status: **wired** = data loaded, used in gameplay, tested, visible proof. **partial** = some of those missing or still in an open PR. **not-wired** = pulled but not in the game. Lane `UNCLAIMED` = claim it on #866 before starting.
 
@@ -63,7 +63,7 @@ Read-only audit of `mhvnsnt/Bannon` for Western Heart (no work on Bannon itself;
 
 | id | Combo (base + Bannon add-on) | Base row | Bannon source | Status | Lane |
 |---|---|---|---|---|---|
-| `bannon-live-deform` | Live deformation / muscle bulge on top of Tekken T7 rigs | `T7 rigs (t7-rigs)` | mhvnsnt/Bannon: godmode/src/engine/BiomechanicalPhysics.ts, native/include/bannon_rig.h | not-wired | UNCLAIMED |
+| `bannon-live-deform` | OWNER PICK #1 — Live deformation / muscle bulge on top of Tekken T7 rigs | `T7 rigs (t7-rigs)` | mhvnsnt/Bannon: godmode/src/engine/BiomechanicalPhysics.ts, native/include/bannon_rig.h | not-wired | UNCLAIMED |
 | `bannon-active-ragdoll` | Active ragdoll balance touches on top of Gang Beasts grip/hold + Tekken hit reactions | `gb-grab, t7-hit-reactions` | mhvnsnt/Bannon: server/modes/activeRagdollSystem.ts, native/include/bannon_ragdoll.h | not-wired | UNCLAIMED |
 | `bannon-grapple` | Grapple chains/leverage on top of Tekken throws + Gang Beasts hold | `t7-throws, gb-grab` | mhvnsnt/Bannon: server/modes/grappleSystem.ts, native/include/bannon_grapple.h | not-wired | UNCLAIMED |
 | `bannon-strike` | Strike impulse / impact physics on top of Tekken hitboxes | `t7-hit-contact` | mhvnsnt/Bannon: native/include/bannon_strike.h, server/hitboxLogic.ts | not-wired | UNCLAIMED |
@@ -74,3 +74,16 @@ Read-only audit of `mhvnsnt/Bannon` for Western Heart (no work on Bannon itself;
 | `bannon-combat-ai` | Combat AI touches on top of Fire Pro CPU personality | `fp-cpu` | mhvnsnt/Bannon: CombatAI.ts, godmode/src/physics/CombatEngine.ts | not-wired | UNCLAIMED |
 | `bannon-ladder` | Ladder/spatial TLC physics on top of No Mercy/WMXIX arenas | `nm-arenas` | mhvnsnt/Bannon: app/src/main/cpp/rulesets/TLC_LadderSpatialPhysics.cpp | not-wired | UNCLAIMED |
 | `bannon-combat-harness` | Playwright combat test harness on top of game-checks | `t7-hit-contact` | mhvnsnt/Bannon: godmode/src/lib/PlaywrightCombatHarness.ts | not-wired | UNCLAIMED |
+| `bannon-pose-editor` | OWNER PICK #2 — Pose editor (poseStudio / studioApplyClipPose, studioBoneSnap): set idle/fight/select pose per fighter (worked for King); saved pose -> fighter pose slot; unique-pose rule; Buffalo Bill pose locked | `t7-select, t7-anims` | mhvnsnt/Bannon: drive-archive/google-ai-studio/BANNON_v78 (1)_1DMFEmj3.html; unreal/.../BannonPoseAuthorityComponent.cpp; tools/taunts/pose_orient.py | not-wired | UNCLAIMED |
+| `bannon-creation-tools` | OWNER PICK #3 — Sculpt/shape/part editing (studioMorphSnap, BannonMorphPreviewer, PolymorphicRig) | `2k19-parts, t7-customization` | mhvnsnt/Bannon: drive-archive/google-ai-studio/BANNON_v78 (1)_1DMFEmj3.html; unreal/.../BannonMorphPreviewer.cpp; src/utils/PolymorphicRig.ts; src/modules/editor.js | not-wired | UNCLAIMED |
+| `bannon-studio` | BANNON STUDIO — tabs Anim, Build, Clips, Presets, Scan, Memory, Chat (clip/move editing, presets, model scan) | `t7-customization, t7-anims` | mhvnsnt/Bannon: drive-archive/google-ai-studio/BANNON_v78 (1)_1DMFEmj3.html (openStudio/renderStudio/studioTabs) | not-wired | UNCLAIMED |
+| `bannon-mocap-studio` | MOCAP STUDIO — capture/apply motion to fighter | `t7-anims` | mhvnsnt/Bannon: drive-archive/google-ai-studio/BANNON_v78 (1)_1DMFEmj3.html | not-wired | UNCLAIMED |
+| `bannon-move-forge` | FORGE / MOVE FORGE / MOVE CREATOR — build custom moves | `fp-moveforge, t7-movesets` | mhvnsnt/Bannon: drive-archive/google-ai-studio/BANNON_v78 (1)_1DMFEmj3.html; src/engine/MoveCreatorCorePhysics.cpp | not-wired | UNCLAIMED |
+| `bannon-strike-lab` | STRIKE LAB — tune strike impact/frames | `t7-hit-contact` | mhvnsnt/Bannon: drive-archive/google-ai-studio/BANNON_v78 (1)_1DMFEmj3.html | not-wired | UNCLAIMED |
+| `bannon-dive-lab` | DIVE LAB — aerial/dive move tuning | `nm-moves` | mhvnsnt/Bannon: drive-archive/google-ai-studio/BANNON_v78 (1)_1DMFEmj3.html | not-wired | UNCLAIMED |
+| `bannon-creation-suite` | CreationSuite page: Body Templates & Morphing, Head & Face, Face Details, Hair, Makeup & Facepaint, Masks, Clothing (Upper/Lower/Head/Foot), Accessories, Menu Screen Posing, Moveset, Entrance (Pyro & Effects, Lighting, Motion & Path), Fighting Style & AI DNA (Aggression/Defense/Patience/Risk/Range/Grapple/Showmanship), Injuries & Damage Persistence, Arena (Ring & Mat, Ropes & Apron, Barricades, Ringside) | `2k19-parts, t7-customization, fp-cpu` | mhvnsnt/Bannon: src/pages/CreationSuite.tsx; src/components/CreationShell.tsx; CharacterForge.ts | not-wired | UNCLAIMED |
+| `bannon-forge-studio` | godmode ForgeStudio (artifact builder) + GameStudio ('ProWrestle AI Agent Studio': physics/graphics/rig compiler) — dev tools, mine for ideas only | `—` | mhvnsnt/Bannon: godmode/src/components/ForgeStudio.tsx, GameStudio.tsx (MlabStudio.tsx is a music studio, not WH) | not-wired | UNCLAIMED |
+
+**UX rule for Bannon ports (owner):** Bannon's tools felt too technical. Port the capability, present it like the real games' menus (T7 customization, WWE 2K19 CAW, Fire Pro edit): category tabs, sliders, presets, turntable preview, phone touch (390x844 + 844x390), undo, save slots.
+
+Note: no studio literally named "Model Studio" was found in Bannon's code; the model/build editing lives in BANNON STUDIO's Build/Scan tabs and the CreationSuite page.
