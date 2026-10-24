@@ -6,9 +6,6 @@
      hitdetect.js    three-mesh-bvh     BVH precision hit layer (verify)
      springbones.js  WH-original       runtime jiggle (verlet chains)
      hitfx-nebula.js three-nebula       JSON particle hit effects
-     fx/particles.js   effekseer 1.80.7  GPU particle runtime (.efkefc)
-     fx/hit-effects.js unified hit FX    Effekseer + nebula fallback
-     fx/soulurge-fx.js Soul Urge cues    Effekseer ignition/aura/smash
      labels3d.js     troika-three-text  3D nameplates / damage numbers
      camdirector.js  camera-controls    cutscene + photo-mode camera
      lipsync-player.js WH-original      mouth-cue playback (voice lane)
@@ -94,30 +91,6 @@ async function boot() {
     return fx;
   });
 
-  // 4b. Effekseer particle runtime (1.80.7, MIT). Premium hit + Soul Urge
-  // FX drawn over the scene from real .efkefc effect files. A failed
-  // load leaves everything on the nebula fallback — combat unaffected.
-  const efx = await tryInit('efx', './fx/particles.js', async (m) => {
-    const fx = new m.WHEffekseerFX();
-    await fx.init(game.arena.renderer);
-    return fx.ready ? fx : null;
-  });
-
-  // 4c. Unified hit effects: Effekseer primary, nebula fallback
-  // (dust/surge + Effekseer-unavailable cases).
-  const hits = await tryInit('hits', './fx/hit-effects.js', async (m) => {
-    const h = new m.WHHitEffects();
-    await h.init(efx, WHIntegration.systems.hitfx || null);
-    return h;
-  });
-
-  // 4d. Soul Urge visual cues (Effekseer ignition/aura/smash).
-  const surgefx = await tryInit('surgefx', './fx/soulurge-fx.js', async (m) => {
-    const s = new m.WHSoulUrgeFX();
-    await s.init(efx);
-    return s;
-  });
-
   // 5. 3D labels (troika).
   await tryInit('labels', './labels3d.js', async (m) => {
     const l = new m.WHLabels();
@@ -163,9 +136,6 @@ async function boot() {
       if (S.physics) S.physics.step(dt);
       if (S.grapple) S.grapple.update(dt);
       if (S.hitfx) S.hitfx.update(dt);
-      if (S.efx) S.efx.tick(dt);
-      if (S.hits) S.hits.update(dt);
-      if (S.surgefx) S.surgefx.update(dt);
       // Attach spring chains + nameplates to newly spawned fighters.
       for (const key of ['p1', 'p2']) {
         const f = game[key];
@@ -201,17 +171,14 @@ async function boot() {
         const orig = Gp._spawnImpact;
         Gp._whPatchedImpact = true;
         // Layering (tool-unification law): the game's HitFX (game/js/hitfx.js)
-        // owns the hit spark / ring / flash / hitstop presentation.
-        // Effekseer (WHHitEffects, game/js/fx/hit-effects.js) ADDS premium
-        // GPU particle richness — impact/heavy/ko/block through real
-        // .efkefc effects, nebula fallback for dust/surge and for any
-        // case where Effekseer is unavailable. Never replaces.
+        // owns the hit spark / ring / flash / hitstop presentation. Nebula
+        // ADDS GPU particle richness on top — light hits stay with HitFX
+        // alone; heavy/KO get the extra nebula burst + ring. Never replaces.
         Gp._spawnImpact = function (x, y, z, color, scale) {
           const r = orig.call(this, x, y, z, color, scale);
           const S = WHIntegration.systems;
           try {
-            if (S.hits) S.hits.spawn(x, y, z, color, scale);
-            else if (S.hitfx && scale >= 0.9) S.hitfx.spawn(x, y, z, color, scale);
+            if (S.hitfx && scale >= 0.9) S.hitfx.spawn(x, y, z, color, scale);
             if (S.physics) {
               S.physics.debris({ x, y, z }, { color, count: 5, power: 4 + scale * 2 });
               S.physics.blast({ x, y, z }, { radius: 1.6, power: 3 * scale });
@@ -249,59 +216,6 @@ async function boot() {
         };
       }
       console.info('[WHIntegration] Game.prototype hooks installed');
-
-      // ---- Soul Urge FX hooks (prototype patches — no soulurge.js /
-      // fighter.js edits). Ignition burst + aura loop on activate,
-      // aura off on expire, cinematic burst on Urge Smash, wind on
-      // Urge Dash.
-      try {
-        const suMod = await import('./soulurge.js');
-        const Sp = suMod.SoulUrge && suMod.SoulUrge.prototype;
-        if (Sp && !Sp._whFxPatched) {
-          Sp._whFxPatched = true;
-          const oAct = Sp.activate, oExp = Sp._expire, oSmash = Sp.urgeSmashHit;
-          Sp.activate = function (f, id, pips, time) {
-            const r = oAct.call(this, f, id, pips, time);
-            try {
-              const S = WHIntegration.systems;
-              if (r && S.surgefx && f) S.surgefx.onActivate(f);
-            } catch (e) {}
-            return r;
-          };
-          Sp._expire = function (f, id) {
-            try {
-              const S = WHIntegration.systems;
-              if (S.surgefx && f) S.surgefx.onExpire(f);
-            } catch (e) {}
-            return oExp.call(this, f, id);
-          };
-          Sp.urgeSmashHit = function (attacker, hb) {
-            try {
-              const S = WHIntegration.systems;
-              if (S.surgefx && attacker) S.surgefx.onSmash(attacker);
-            } catch (e) {}
-            return oSmash.call(this, attacker, hb);
-          };
-          console.info('[WHIntegration] SoulUrge FX hooks installed');
-        }
-        const fMod = await import('./fighter.js');
-        const Fp = fMod.Fighter && fMod.Fighter.prototype;
-        if (Fp && Fp.tryUrgeDash && !Fp._whFxDashPatched) {
-          Fp._whFxDashPatched = true;
-          const oDash = Fp.tryUrgeDash;
-          Fp.tryUrgeDash = function () {
-            const r = oDash.call(this);
-            try {
-              const S = WHIntegration.systems;
-              if (r && S.surgefx) S.surgefx.onDash(this);
-            } catch (e) {}
-            return r;
-          };
-          console.info('[WHIntegration] Fighter urge-dash FX hook installed');
-        }
-      } catch (e) {
-        console.warn('[WHIntegration] soulurge FX hooks:', e);
-      }
     }
   } catch (e) {
     console.warn('[WHIntegration] could not patch Game.prototype:', e);

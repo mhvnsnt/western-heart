@@ -237,11 +237,9 @@ export const ATTIRE_VARIANTS = {
   /* AWA POP's ladder (fighter-completeness audit 2026-10-21): Attire 2's
      GLB sat in roster/awa-pop/attires/attire2/ with no MODEL_URLS key and
      no variant list. Key added in assets.js. First entry = current default. */
-  // OWNER-MODEL-FIRST (t213u): her rigged Tripo (roster/awa-pop/ATTIRE-SLOTS.md slot 2) leads;
-  // awa-pop.glb (T7-style Nina port, b94aa61c) ladders back. Her slot-1 Tripo GLB is not on main (see audit doc).
-  'awapop': [ // keyed by fighter id (roster model is now 'awa-pop-attire2')
-    { model: 'awa-pop-attire2', label: 'ATTIRE 1 · TRIPO' },
-    { model: 'awa-pop', label: 'NINA BASE (T7-STYLE PORT)' },
+  'awa-pop': [
+    { model: 'awa-pop', label: 'ATTIRE 1' },
+    { model: 'awa-pop-attire2', label: 'ATTIRE 2' },
   ],
   /* PANTERA's ladder — owner reorder 2026-10-21: his TRIPO ORIGINALS at
      the forefront (slots 1-2), the Tekken-version reskins ladder BACK
@@ -329,37 +327,27 @@ export const ATTIRE_VARIANTS = {
     { model: 'koreshi-attire1', label: 'ATTIRE 1 · TRIPO SOURCE (UNRIGGED)' },
     { model: 'vega', label: 'VEGA · ORIGINAL MODEL (STREET FIGHTER)' },
   ],
-  // OWNER-MODEL-FIRST (t213u): owner Tripo models lead; the T8 Armor King port (yukihyo.glb) ladders back.
   'yukihyo': [
-    { model: 'yukihyo-attire1', label: 'ATTIRE 1 (TRIPO)' },
-    { model: 'yukihyo-attire2', label: 'ATTIRE 2 · BOBCAT PRIDE (TRIPO)' },
-    { model: 'yukihyo-attire3', label: 'ATTIRE 3 · TIGER KING (TRIPO)' },
-    { model: 'yukihyo', label: 'ARMOR KING T8 PORT' },
+    { model: 'yukihyo', label: 'ATTIRE 1' },
+    { model: 'yukihyo-attire1', label: 'ATTIRE 2' },
+    { model: 'yukihyo-attire2', label: 'ATTIRE 3 · BOBCAT PRIDE' },
+    { model: 'yukihyo-attire3', label: 'ATTIRE 4 · TIGER KING' },
     { model: 'armor-king', label: 'ARMOR KING · ORIGINAL MODEL (TEKKEN)' },
     { model: 'armor-king-attire1', label: 'ARMOR KING · SOURCE MODEL (UNRIGGED)' },
   ],
-  // OWNER-MODEL-FIRST (t213u): owner Tripo models lead. Sail the Sea is the
-  // rigged one so it is the playable default; his unrigged Tripo A1 stays next
-  // (auto-rig failed, docs/proof/2026-10-23/auto-rig-bruno-a1); the Miguel-source bruno.glb ladders back.
   'bruno': [
-    { model: 'bruno-attire2', label: 'ATTIRE 1 · SAIL THE SEA (TRIPO)' },
-    { model: 'bruno-attire1', label: 'ATTIRE 2 · TRIPO (UNRIGGED)' },
-    { model: 'bruno', label: 'MIGUEL BASE (SOURCE PORT)' },
+    { model: 'bruno', label: 'ATTIRE 1' },
+    { model: 'bruno-attire1', label: 'ATTIRE 2 (UNRIGGED)' },
+    { model: 'bruno-attire2', label: 'ATTIRE 3 · SAIL THE SEA' },
   ],
-  // OWNER-MODEL-FIRST (t213u): owner Tripo Jade God leads; the Akuma-source dio.glb ladders back.
   'dio': [
-    { model: 'dio-attire1', label: 'ATTIRE 1 · JADE GOD (TRIPO)' },
-    { model: 'dio', label: 'AKUMA BASE (SOURCE PORT)' },
+    { model: 'dio', label: 'ATTIRE 1' },
+    { model: 'dio-attire1', label: 'ATTIRE 2 · JADE GOD' },
   ],
-  /* OWNER-MODEL-FIRST (owner t213u, 2026-10-23): NEGATIVO's own tribal
-     Tripo models lead (roster/negativo/attires/attire{1,2}/source/manifest.json,
-     Tripo 7853a4d6 red eyes / 2a13dd2b white eyes). The Negan-derived
-     n3g4tiv0 retexture ladders BACK — kept, never cut.
-     docs/roster/OWNER-MODEL-FIRST-AUDIT.md */
   'negativo': [
-    { model: 'negativo-attire1', label: 'ATTIRE 1 · RED EYES (TRIPO)' },
-    { model: 'negativo-attire2', label: 'ATTIRE 2 · BEFORE THE TRIALS (TRIPO)' },
-    { model: 'n3g4tiv0', label: 'NEGAN BASE (TEKKEN RESKIN)' },
+    { model: 'n3g4tiv0', label: 'ATTIRE 1' },
+    { model: 'negativo-attire1', label: 'ATTIRE 2' },
+    { model: 'negativo-attire2', label: 'ATTIRE 3' },
   ],
   /* SKULL (roster/skull/attires/ATTIRE-SLOTS.md): A1 = his Tripo; the live
      default stays the rigged build of it (the default swap rides the rig
