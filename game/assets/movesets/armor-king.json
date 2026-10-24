@@ -2618,12 +2618,7 @@
       "t8_damage": "5",
       "t8_input": "1",
       "merge_source": "t8:Armor King-1",
-      "note": "Recovers 2f faster on hit or block (t27 r17)",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 38,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "Recovers 2f faster on hit or block (t27 r17)"
     },
     "1+2~t8.armorking": {
       "name": "ARMOR KING 1+2",
@@ -2652,12 +2647,7 @@
       "t8_damage": "10",
       "t8_input": "1+2",
       "merge_source": "t8:Armor King-1+2",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Elbow&lt;/div",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Elbow&lt;/div"
     },
     "1,2": {
       "name": "One Two Punch",
@@ -2686,12 +2676,7 @@
       "t8_damage": ",10",
       "t8_input": "1,2",
       "merge_source": "t8:Armor King-1,2",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 1st hit with 2F delay; Jail from 1st block with 2F delay; Recovers 1F faster on hit (t41 r21)&lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 1st hit with 2F delay; Jail from 1st block with 2F delay; Recovers 1F faster on hit (t41 r21)&lt;/div&gt"
     },
     "1,2,1": {
       "name": "Left Right Uppercut",
@@ -2720,12 +2705,7 @@
       "t8_damage": ",14",
       "t8_input": "1,2,1",
       "merge_source": "t8:Armor King-1,2,1",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 2nd CH with 3F delay; Interrupt with i4 from 2nd block; Move can be delayed by 10F; Cancel to r38 BAD with F (-19/-11) at frame 13&lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 2nd CH with 3F delay; Interrupt with i4 from 2nd block; Move can be delayed by 10F; Cancel to r38 BAD with F (-19/-11) at frame 13&lt;/div&gt"
     },
     "1+2,2": {
       "name": "Dark Cyclone",
@@ -2755,12 +2735,7 @@
       "t8_input": "1+2,2",
       "merge_source": "t8:Armor King-1+2,2",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 1st hit with 11F delay; Interrupt with i2 from 1st block; Move cannot be delayed; Input can be delayed by 11F&lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 1st hit with 11F delay; Interrupt with i2 from 1st block; Move cannot be delayed; Input can be delayed by 11F&lt;/div&gt"
     },
     "1+2,4": {
       "name": "Dark Buzzsaw",
@@ -2790,12 +2765,7 @@
       "t8_input": "1+2,4",
       "merge_source": "t8:Armor King-1+2,4",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 1st hit with 11F delay; Interrupt with i3 from 1st block; Move cannot be delayed; Input can be delayed by 11F&lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 1st hit with 11F delay; Interrupt with i3 from 1st block; Move cannot be delayed; Input can be delayed by 11F&lt;/div&gt"
     },
     "1+3~t8.armorking": {
       "name": "Knee Bash",
@@ -2827,12 +2797,7 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-blue homing&quot;; &gt;Homing&lt;",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 273,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "1+3+4": {
       "name": "ARMOR KING 1+3+4",
@@ -2861,12 +2826,7 @@
       "t8_damage": "25",
       "t8_input": "1+3+4",
       "merge_source": "t8:Armor King-1+3+4",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Extremely high hitbox; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Extremely high hitbox; &lt;/div&gt"
     },
     "2~t8.armorking": {
       "name": "ARMOR KING 2",
@@ -2894,12 +2854,7 @@
       "t8_id": "Armor King-2",
       "t8_damage": "10",
       "t8_input": "2",
-      "merge_source": "t8:Armor King-2",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 50,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "merge_source": "t8:Armor King-2"
     },
     "2,1": {
       "name": "Right Jab &gt; Uppercut",
@@ -2928,12 +2883,7 @@
       "t8_damage": ",15",
       "t8_input": "2,1",
       "merge_source": "t8:Armor King-2,1",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 1st hit; Interrupt with i3 from 1st block; Recovers 2F faster on hit (t53 r19); &lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 1st hit; Interrupt with i3 from 1st block; Recovers 2F faster on hit (t53 r19); &lt;/div&gt"
     },
     "2+3~t8.armorking": {
       "name": "Heat Burst",
@@ -2962,12 +2912,7 @@
       "t8_damage": "[12;12]",
       "t8_input": "2+3",
       "merge_source": "t8:Armor King-2+3",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Burst",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 237,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Burst"
     },
     "2+4~t8.armorking": {
       "name": "Suplex",
@@ -2999,12 +2944,7 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-blue homing&quot;; &gt;Homing&lt;",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 274,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "2+4,d+1+2": {
       "name": "Jaguar Screwdriver",
@@ -3034,12 +2974,7 @@
       "t8_input": "2+4,d+1+2",
       "merge_source": "t8:Armor King-2+4,d+1+2",
       "knockdown": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo"
     },
     "3~t8.armorking": {
       "name": "ARMOR KING 3",
@@ -3068,12 +3003,7 @@
       "t8_damage": "17",
       "t8_input": "3",
       "merge_source": "t8:Armor King-3",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Has good right sidestep tracking; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 57,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Has good right sidestep tracking; &lt;/div&gt"
     },
     "3+4~t8.armorking": {
       "name": "Round Out Kick",
@@ -3102,12 +3032,7 @@
       "t8_damage": "14",
       "t8_input": "3+4",
       "merge_source": "t8:Armor King-3+4",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; BT.3+4 spins backwards and recovers frontfacing; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 66,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; BT.3+4 spins backwards and recovers frontfacing; &lt;/div&gt"
     },
     "3+4*": {
       "name": "Phenomenon Shadow DDT",
@@ -3139,12 +3064,7 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "3,4": {
       "name": "ARMOR KING 3,4",
@@ -3173,12 +3093,7 @@
       "t8_damage": ",15",
       "t8_input": "3,4",
       "merge_source": "t8:Armor King-3,4",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 1st hit with 7F delay; Move cannot be interrupted; Move can be delayed by 7F; Input can be delayed by 8F; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 1st hit with 7F delay; Move cannot be interrupted; Move can be delayed by 7F; Input can be delayed by 8F; &lt;/div&gt"
     },
     "3+4,1": {
       "name": "Dark Blast",
@@ -3207,12 +3122,7 @@
       "t8_damage": ",16",
       "t8_input": "3+4,1",
       "merge_source": "t8:Armor King-3+4,1",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 1st hit; Interrupt with i6 from 1st block; Transition to BAD r28 with F (-8/+8); &lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 1st hit; Interrupt with i6 from 1st block; Transition to BAD r28 with F (-8/+8); &lt;/div&gt"
     },
     "3,4,1": {
       "name": "Dark Stampede",
@@ -3242,12 +3152,7 @@
       "t8_input": "3,4,1",
       "merge_source": "t8:Armor King-3,4,1",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "3+4,1+2": {
       "name": "Round Out Body Press",
@@ -3286,12 +3191,7 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Transition to attack throw on close range front hit; +2c~+12c on mid hit; Interrupt with i13 from 1st block; Whiffs vs SS, SW from 1st block; Opponent left FUFA; Armor King recove",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "3+4,2": {
       "name": "Round Out Elbow",
@@ -3321,12 +3221,7 @@
       "t8_input": "3+4,2",
       "merge_source": "t8:Armor King-3+4,2",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "4~t8.armorking": {
       "name": "ARMOR KING 4",
@@ -3354,12 +3249,7 @@
       "t8_id": "Armor King-4",
       "t8_damage": "17",
       "t8_input": "4",
-      "merge_source": "t8:Armor King-4",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 69,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "merge_source": "t8:Armor King-4"
     },
     "4,3": {
       "name": "High Kick Tornado",
@@ -3389,12 +3279,7 @@
       "t8_input": "4,3",
       "merge_source": "t8:Armor King-4,3",
       "knockdown": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "AIR.BAD.2+4": {
       "name": "D Trigger",
@@ -3426,12 +3311,7 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Cannot throw break; Opponent recovers in FDFA.; &lt;/div&gt",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "AIR.f,f,F+2+4": {
       "name": "Running Cross Driver",
@@ -3471,12 +3351,7 @@
       "t8_alias": "Shining Wizard",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "AIR.f,hcf+1": {
       "name": "Muscle Driver",
@@ -3515,12 +3390,7 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "b+1": {
       "name": "Dark Jab",
@@ -3548,12 +3418,7 @@
       "t8_id": "Armor King-b+1",
       "t8_damage": "12",
       "t8_input": "b+1",
-      "merge_source": "t8:Armor King-b+1",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 248,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "merge_source": "t8:Armor King-b+1"
     },
     "b+1+2": {
       "name": "Blindside",
@@ -3581,12 +3446,7 @@
       "t8_id": "Armor King-b+1+2",
       "t8_damage": "0",
       "t8_input": "b+1+2",
-      "merge_source": "t8:Armor King-b+1+2",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "merge_source": "t8:Armor King-b+1+2"
     },
     "b+1,2": {
       "name": "Dark Jab &gt; Hell Stab",
@@ -3615,12 +3475,7 @@
       "t8_damage": ",20",
       "t8_input": "b+1,2",
       "merge_source": "t8:Armor King-b+1,2",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 1st hit with 11F delay; Jail from 1st block with 2F delay; Transition to r30 BAD with F (-12/+8/+11); Move can be delayed by 10F; Input can be delayed by 11F; &lt;/div&",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 1st hit with 11F delay; Jail from 1st block with 2F delay; Transition to r30 BAD with F (-12/+8/+11); Move can be delayed by 10F; Input can be delayed by 11F; &lt;/div&"
     },
     "b+1+3": {
       "name": "Catch",
@@ -3650,12 +3505,7 @@
       "t8_input": "b+1+3",
       "merge_source": "t8:Armor King-b+1+3",
       "knockdown": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Reverses High or Mid punches only; Opponent recovers FUFA when parrying a left punch; Opponent recovers FDFL when parrying a right punch; Has a followup on whiff only; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Reverses High or Mid punches only; Opponent recovers FUFA when parrying a left punch; Opponent recovers FDFL when parrying a right punch; Has a followup on whiff only; &lt;/div&gt"
     },
     "b+1+3,2": {
       "name": "Jugular Thrust Trap",
@@ -3685,12 +3535,7 @@
       "t8_input": "b+1+3,2",
       "merge_source": "t8:Armor King-b+1+3,2",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; i38 effective startup (b+1+3 takes 21 frames); On CH transition to True Dark Smash; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; i38 effective startup (b+1+3 takes 21 frames); On CH transition to True Dark Smash; &lt;/div&gt"
     },
     "b+2": {
       "name": "ARMOR KING b+2",
@@ -3718,12 +3563,7 @@
       "t8_id": "Armor King-b+2",
       "t8_damage": "10",
       "t8_input": "b+2",
-      "merge_source": "t8:Armor King-b+2",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 254,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "merge_source": "t8:Armor King-b+2"
     },
     "b+2,1": {
       "name": "ARMOR KING b+2,1",
@@ -3752,12 +3592,7 @@
       "t8_damage": ",8",
       "t8_input": "b+2,1",
       "merge_source": "t8:Armor King-b+2,1",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 1st hit; Move cannot be interrupted; Move is delayed 2f; Move cannot be delayed; Input cannot be delayed; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 1st hit; Move cannot be interrupted; Move is delayed 2f; Move cannot be delayed; Input cannot be delayed; &lt;/div&gt"
     },
     "b+2,1,2": {
       "name": "Knife Edge Combo",
@@ -3787,12 +3622,7 @@
       "t8_input": "b+2,1,2",
       "merge_source": "t8:Armor King-b+2,1,2",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "b+3": {
       "name": "Dark Toll Kick",
@@ -3822,12 +3652,7 @@
       "t8_input": "b+3",
       "merge_source": "t8:Armor King-b+3",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 260,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "b+3+4": {
       "name": "Pendulum Kick",
@@ -3857,12 +3682,7 @@
       "t8_input": "b+3+4",
       "merge_source": "t8:Armor King-b+3+4",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-blue homing&quot;; &gt;Homing&lt;",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 103,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-blue homing&quot;; &gt;Homing&lt;"
     },
     "b+4": {
       "name": "Toe Kick",
@@ -3890,12 +3710,7 @@
       "t8_id": "Armor King-b+4",
       "t8_damage": "15",
       "t8_input": "b+4",
-      "merge_source": "t8:Armor King-b+4",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 115,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "merge_source": "t8:Armor King-b+4"
     },
     "b+4,1+2": {
       "name": "Toe Kick &gt; Stunner",
@@ -3927,12 +3742,7 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Throw only comes out on front hit; Input 1+2 during frames 1-17 of b+4; &lt;/div&gt",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "BACK.1+3": {
       "name": "Quick Reverse DDT",
@@ -3964,12 +3774,7 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Unbreakable throw; Opponent left FUFA; &lt;/div&gt",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "t8.Armor King-(Back to wall).b,​b,​UB": {
       "name": "[[Wall Jump Attack]]",
@@ -4000,12 +3805,7 @@
       "input_note": "(Back to wall). unparsed: ​b",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "BAD.1": {
       "name": "ARMOR KING BAD.1",
@@ -4034,12 +3834,7 @@
       "t8_damage": "13",
       "t8_input": "BAD.1",
       "merge_source": "t8:Armor King-BAD.1",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;/div&gt"
     },
     "BAD.1+2": {
       "name": "Brigand Stomping Headbutt",
@@ -4069,12 +3864,7 @@
       "t8_input": "BAD.1+2",
       "merge_source": "t8:Armor King-BAD.1+2",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Head&lt;/div&",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Head&lt;/div&"
     },
     "BAD.1,2": {
       "name": "Ruffian Double Smash",
@@ -4104,12 +3894,7 @@
       "t8_input": "BAD.1,2",
       "merge_source": "t8:Armor King-BAD.1,2",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Engag",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Engag"
     },
     "BAD.1,4": {
       "name": "Ruffian Raid",
@@ -4138,12 +3923,7 @@
       "t8_damage": ",22",
       "t8_input": "BAD.1,4",
       "merge_source": "t8:Armor King-BAD.1,4",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Transition to BT; Combo from 1st hit with 6F delay; Interrupt with i3 from 1st block; Input can be delayed by 6F; Move can be delayed by 1F; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Transition to BT; Combo from 1st hit with 6F delay; Interrupt with i3 from 1st block; Input can be delayed by 6F; Move can be delayed by 1F; &lt;/div&gt"
     },
     "BAD.2": {
       "name": "ARMOR KING BAD.2",
@@ -4172,12 +3952,7 @@
       "t8_damage": "12",
       "t8_input": "BAD.2",
       "merge_source": "t8:Armor King-BAD.2",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;/div&gt"
     },
     "BAD.2,3": {
       "name": "Thug Force",
@@ -4206,12 +3981,7 @@
       "t8_damage": ",24",
       "t8_input": "BAD.2,3",
       "merge_source": "t8:Armor King-BAD.2,3",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "BAD.2+4": {
       "name": "Gloriously Disgraceful Kick",
@@ -4243,12 +4013,7 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-blue homing&quot;; &gt;Homing&lt;",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "BAD.2,4": {
       "name": "S.C.S",
@@ -4287,12 +4052,7 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 1st hit with 8F delay; Interrupt with i2 from 1st block; Input can be delayed by 8F; Move can be delayed by 5F; Transitions to attack throw on front hit only; Opponent ",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "BAD.3": {
       "name": "Blackguard Gut Rench",
@@ -4322,12 +4082,7 @@
       "t8_input": "BAD.3",
       "merge_source": "t8:Armor King-BAD.3",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "BAD.3,H.2": {
       "name": "Blackguard Rush: Villain",
@@ -4364,12 +4119,7 @@
         "total": 40
       },
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "BAD.4": {
       "name": "Bandido Snatch",
@@ -4399,12 +4149,7 @@
       "t8_input": "BAD.4",
       "merge_source": "t8:Armor King-BAD.4",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;/div&gt"
     },
     "BAD.d/b+1+2": {
       "name": "Shadow Press",
@@ -4443,12 +4188,7 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Shift to attack throw on grounded, airborne, and backturn hit; Recovers standing r66 on hit; Opponent is left FUFT on hit&lt;/div&gt",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "b,B+2+3": {
       "name": "Dark Destroyer",
@@ -4478,12 +4218,7 @@
       "t8_input": "b,B+2+3",
       "merge_source": "t8:Armor King-b,B+2+3",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Cancel to r45 FC with D at frame 36; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Cancel to r45 FC with D at frame 36; &lt;/div&gt"
     },
     "BM.2,1,2,1": {
       "name": "Back Mount &gt; Ultimate Punch",
@@ -4525,12 +4260,7 @@
       "throw": true,
       "isGrab": true,
       "unblockable": true,
-      "throw_break": "1",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1"
     },
     "BT.1+4": {
       "name": "Moonsault Drop",
@@ -4561,12 +4291,7 @@
       "merge_source": "t8:Armor King-BT.1+4",
       "knockdown": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Armor King recovers FDFR on close hit on frames 41~42 (t91 r49 fs43~91), and FUFT on far hit (frames 43 to 47) or whiff; &lt;/div&gt",
-      "t8_alias": "Moonsault",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "t8_alias": "Moonsault"
     },
     "BT.3": {
       "name": "Blind Kick",
@@ -4596,12 +4321,7 @@
       "t8_input": "BT.3",
       "merge_source": "t8:Armor King-BT.3",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado"
     },
     "BT.4": {
       "name": "Turn Sobat",
@@ -4631,12 +4351,7 @@
       "t8_input": "BT.4",
       "merge_source": "t8:Armor King-BT.4",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "t8.Armor King-CH.ws2,2": {
       "name": "True Dark Smash",
@@ -4676,12 +4391,7 @@
       "launch": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Power up with input f,d,df+2 in a 20f sequence; Can input during frames 25-74; &lt;/div&gt",
       "input_note": "unparsed: CH.ws2",
-      "t8_alias": "Blue Spark Dark Upper",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "t8_alias": "Blue Spark Dark Upper"
     },
     "d+1": {
       "name": "Crouch Jab",
@@ -4710,12 +4420,7 @@
       "t8_damage": "5",
       "t8_input": "d+1",
       "merge_source": "t8:Armor King-d+1",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Transition to standing r24 with f at frame 25; +6c on crouching hit&lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 136,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Transition to standing r24 with f at frame 25; +6c on crouching hit&lt;/div&gt"
     },
     "d+1+3": {
       "name": "Demon Bomb",
@@ -4747,12 +4452,7 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 275,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "d+1,4": {
       "name": "Knee Lift Combination",
@@ -4781,12 +4481,7 @@
       "t8_damage": ",13",
       "t8_input": "d+1,4",
       "merge_source": "t8:Armor King-d+1,4",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Knee&lt;/div&",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Knee&lt;/div&"
     },
     "d+2": {
       "name": "ARMOR KING d+2",
@@ -4814,12 +4509,7 @@
       "t8_id": "Armor King-d+2",
       "t8_damage": "17",
       "t8_input": "d+2",
-      "merge_source": "t8:Armor King-d+2",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 142,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "merge_source": "t8:Armor King-d+2"
     },
     "d+2+3": {
       "name": "Corporate Elbow",
@@ -4848,12 +4538,7 @@
       "t8_damage": "25",
       "t8_input": "d+2+3",
       "merge_source": "t8:Armor King-d+2+3",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Elbow&lt;/div",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Elbow&lt;/div"
     },
     "d+2+4": {
       "name": "Storm Maker",
@@ -4885,12 +4570,7 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Engag",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "d+2,4": {
       "name": "ARMOR KING d+2,4",
@@ -4919,12 +4599,7 @@
       "t8_damage": ",13",
       "t8_input": "d+2,4",
       "merge_source": "t8:Armor King-d+2,4",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Interrupt with i1 from 1st block; Move is delayed 2F; Input cannot be delayed; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Interrupt with i1 from 1st block; Move is delayed 2F; Input cannot be delayed; &lt;/div&gt"
     },
     "d+2,4,3": {
       "name": "Blackjack Combination",
@@ -4954,12 +4629,7 @@
       "t8_input": "d+2,4,3",
       "merge_source": "t8:Armor King-d+2,4,3",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 2nd hit; Interrupt with i10 from 2nd block; Jab evasion&lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 2nd hit; Interrupt with i10 from 2nd block; Jab evasion&lt;/div&gt"
     },
     "d+3": {
       "name": "Stomp",
@@ -4987,12 +4657,7 @@
       "t8_id": "Armor King-d+3",
       "t8_damage": "14",
       "t8_input": "d+3",
-      "merge_source": "t8:Armor King-d+3",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "merge_source": "t8:Armor King-d+3"
     },
     "d+3+4": {
       "name": "ARMOR KING d+3+4",
@@ -5021,12 +4686,7 @@
       "t8_damage": "15",
       "t8_input": "d+3+4",
       "merge_source": "t8:Armor King-d+3+4",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Can be done from Crouch Level 1; Recovers 3F faster on hit (r32 t49); &lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Can be done from Crouch Level 1; Recovers 3F faster on hit (r32 t49); &lt;/div&gt"
     },
     "d+3+4,1": {
       "name": "Taurus Cutter Edge",
@@ -5056,12 +4716,7 @@
       "t8_input": "d+3+4,1",
       "merge_source": "t8:Armor King-d+3+4,1",
       "knockdown": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "d+3+4,3": {
       "name": "Taurus Cutter Trap",
@@ -5091,12 +4746,7 @@
       "t8_input": "d+3+4,3",
       "merge_source": "t8:Armor King-d+3+4,3",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "d+4": {
       "name": "Crouch Shin Kick",
@@ -5125,12 +4775,7 @@
       "t8_damage": "6",
       "t8_input": "d+4",
       "merge_source": "t8:Armor King-d+4",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; -4c on crouching hit; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; -4c on crouching hit; &lt;/div&gt"
     },
     "d/b+1+2": {
       "name": "DDT",
@@ -5163,12 +4808,7 @@
       "throw": true,
       "isGrab": true,
       "unblockable": true,
-      "throw_break": "1+2",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1+2"
     },
     "d/b+2": {
       "name": "ARMOR KING d/b+2",
@@ -5197,12 +4837,7 @@
       "t8_damage": "12",
       "t8_input": "db+2",
       "merge_source": "t8:Armor King-db+2",
-      "note": "Increased opponent blockstun (r19 -&gt; r21) when performing db+2,H.1",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 132,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "Increased opponent blockstun (r19 -&gt; r21) when performing db+2,H.1"
     },
     "d/b+2,3": {
       "name": "Killer PK Combo",
@@ -5232,12 +4867,7 @@
       "t8_input": "db+2,3",
       "merge_source": "t8:Armor King-db+2,3",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "d/b+2,4": {
       "name": "ARMOR KING d/b+2,4",
@@ -5266,12 +4896,7 @@
       "t8_damage": ",20",
       "t8_input": "db+2,4",
       "merge_source": "t8:Armor King-db+2,4",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "d/b+2,4,2": {
       "name": "Dark Flood",
@@ -5301,12 +4926,7 @@
       "t8_input": "db+2,4,2",
       "merge_source": "t8:Armor King-db+2,4,2",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "d/b+2,H.1": {
       "name": "Outbreak: Villain",
@@ -5336,12 +4956,7 @@
       "t8_input": "db+2,H.1",
       "merge_source": "t8:Armor King-db+2,H.1",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "d/b+3": {
       "name": "Foot Sweep",
@@ -5371,12 +4986,7 @@
       "t8_input": "db+3",
       "merge_source": "t8:Armor King-db+3",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-blue homing&quot;; &gt;Homing&lt;",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-blue homing&quot;; &gt;Homing&lt;"
     },
     "d/b+3+4": {
       "name": "Shadow Force",
@@ -5405,12 +5015,7 @@
       "t8_damage": "20",
       "t8_input": "db+3+4",
       "merge_source": "t8:Armor King-db+3+4",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 133,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado"
     },
     "d/b+4": {
       "name": "Low Drop Kick",
@@ -5440,12 +5045,7 @@
       "t8_input": "db+4",
       "merge_source": "t8:Armor King-db+4",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Opponent recovers FDFA; Transitions to FDFT; Transitions to r41 FC on hit (t71 r41 fs30~34, cs35~71); &lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 134,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Opponent recovers FDFA; Transitions to FDFT; Transitions to r41 FC on hit (t71 r41 fs30~34, cs35~71); &lt;/div&gt"
     },
     "d/b,n,f+2+4": {
       "name": "Tombstone Piledriver",
@@ -5477,12 +5077,7 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "d/f+1": {
       "name": "ARMOR KING d/f+1",
@@ -5511,12 +5106,7 @@
       "t8_damage": "12",
       "t8_input": "df+1",
       "merge_source": "t8:Armor King-df+1",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Recovers 1F faster on hit (t33 r19); Jab evasion?; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 117,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Recovers 1F faster on hit (t33 r19); Jab evasion?; &lt;/div&gt"
     },
     "d/f+1,2": {
       "name": "Bastard Rush",
@@ -5545,12 +5135,7 @@
       "t8_damage": ",19",
       "t8_input": "df+1,2",
       "merge_source": "t8:Armor King-df+1,2",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado"
     },
     "d/f+2": {
       "name": "Concussion Hook",
@@ -5580,12 +5165,7 @@
       "t8_input": "df+2",
       "merge_source": "t8:Armor King-df+2",
       "launch": true,
-      "note": "Jab evasion?",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 202,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "Jab evasion?"
     },
     "d/f+2,1": {
       "name": "Double Concussion",
@@ -5615,12 +5195,7 @@
       "t8_input": "df+2,1",
       "merge_source": "t8:Armor King-df+2,1",
       "knockdown": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 1st hit; Transition to BAD r25 with F (+0/+8/+11); Interrupt with i1 from 1st block; Move is delayed 5f; Move cannot be delayed; Input cannot be delayed; No KND on 1st ",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 1st hit; Transition to BAD r25 with F (+0/+8/+11); Interrupt with i1 from 1st block; Move is delayed 5f; Move cannot be delayed; Input cannot be delayed; No KND on 1st "
     },
     "d/f+2+3": {
       "name": "Driving Headbutt",
@@ -5652,12 +5227,7 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 285,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "d/f+3": {
       "name": "Dark Knee Lift",
@@ -5687,12 +5257,7 @@
       "t8_input": "df+3",
       "merge_source": "t8:Armor King-df+3",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Knee&lt;/div&",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 129,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Knee&lt;/div&"
     },
     "d/f+3+4": {
       "name": "Frankensteiner",
@@ -5732,12 +5297,7 @@
       "throw": true,
       "isGrab": true,
       "unblockable": true,
-      "throw_break": "1",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1"
     },
     "d/f+4": {
       "name": "ARMOR KING d/f+4",
@@ -5765,12 +5325,7 @@
       "t8_id": "Armor King-df+4",
       "t8_damage": "15",
       "t8_input": "df+4",
-      "merge_source": "t8:Armor King-df+4",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 135,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "merge_source": "t8:Armor King-df+4"
     },
     "DMD.1": {
       "name": "Flinging Half Nelson",
@@ -5810,12 +5365,7 @@
       "throw": true,
       "isGrab": true,
       "unblockable": true,
-      "throw_break": "2",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "throw_break": "2"
     },
     "DMD.1+2": {
       "name": "Neck Drop",
@@ -5855,12 +5405,7 @@
       "throw": true,
       "isGrab": true,
       "unblockable": true,
-      "throw_break": "2",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "throw_break": "2"
     },
     "DMD.1+2,1": {
       "name": "Choke Sleeper",
@@ -5899,12 +5444,7 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; 1 break; Power up with input 4,3,4,1+2; 50/60 total damage; Opponent recovers FDFL?; AK recovers FUFA on break; Side switch on break &lt;/div&gt",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "DMD.1+2,2": {
       "name": "3-Count Pound",
@@ -5944,12 +5484,7 @@
       "throw": true,
       "isGrab": true,
       "unblockable": true,
-      "throw_break": "2",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "throw_break": "2"
     },
     "DMD.2": {
       "name": "Sleeper",
@@ -5988,12 +5523,7 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; 2 break; Power up with input 3+4,1+2; 30/35 total damage; Opponent recovers FDFR?; Side switch on break&lt;/div&gt",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "DMD.2,1": {
       "name": "Triple Trouble",
@@ -6033,12 +5563,7 @@
       "throw": true,
       "isGrab": true,
       "unblockable": true,
-      "throw_break": "1",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1"
     },
     "DMD.2,2": {
       "name": "Human Necktie",
@@ -6077,12 +5602,7 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; 2 break; Power up with input 3,4,1+2; 50/60 total damage; Opponent recovers FDFL?; AK recovers FUFA on break; Side switch on break &lt;/div&gt",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "f+1+2": {
       "name": "Wrecking Cyclone",
@@ -6111,12 +5631,7 @@
       "t8_damage": "22",
       "t8_input": "f+1+2",
       "merge_source": "t8:Armor King-f+1+2",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange sat&quot;; &gt;Strong Aeri",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange sat&quot;; &gt;Strong Aeri"
     },
     "f+1+4": {
       "name": "Shoulder Impact",
@@ -6146,12 +5661,7 @@
       "t8_input": "f+1+4",
       "merge_source": "t8:Armor King-f+1+4",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "f+2": {
       "name": "ARMOR KING f+2",
@@ -6180,12 +5690,7 @@
       "t8_damage": "12",
       "t8_input": "f+2",
       "merge_source": "t8:Armor King-f+2",
-      "note": "&lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Elbow&lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 230,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Elbow&lt;/div&gt"
     },
     "f+2,1": {
       "name": "Dark Elbow Hook",
@@ -6215,12 +5720,7 @@
       "t8_input": "f+2,1",
       "merge_source": "t8:Armor King-f+2,1",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Engag",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Engag"
     },
     "f+3": {
       "name": "ARMOR KING f+3",
@@ -6248,12 +5748,7 @@
       "t8_id": "Armor King-f+3",
       "t8_damage": "9",
       "t8_input": "f+3",
-      "merge_source": "t8:Armor King-f+3",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 236,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "merge_source": "t8:Armor King-f+3"
     },
     "f+3,2": {
       "name": "ARMOR KING f+3,2",
@@ -6282,12 +5777,7 @@
       "t8_damage": ",12",
       "t8_input": "f+3,2",
       "merge_source": "t8:Armor King-f+3,2",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 1st hit with 4F delay; Move cannot be interrupted; Transition to CD r19 with DF (-1/+15)&lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 1st hit with 4F delay; Move cannot be interrupted; Transition to CD r19 with DF (-1/+15)&lt;/div&gt"
     },
     "f+3,2,1": {
       "name": "Dark Tide",
@@ -6317,12 +5807,7 @@
       "t8_input": "f+3,2,1",
       "merge_source": "t8:Armor King-f+3,2,1",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado"
     },
     "f+3+4": {
       "name": "Bad Jaguar",
@@ -6352,12 +5837,7 @@
       "t8_input": "f+3+4",
       "merge_source": "t8:Armor King-f+3+4",
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Transition to BAD; Parries mid and high punches; Cannot block in stance; Stance moves can be delayed by 25f; &lt;/div&gt",
-      "t8_alias": "Gas parry",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 109,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "t8_alias": "Gas parry"
     },
     "t8.Armor King-f+3+4,P": {
       "name": "Unforgiven",
@@ -6385,12 +5865,7 @@
       "t8_input": "f+3+4,P",
       "merge_source": "t8:Armor King-f+3+4,P",
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; On successful parry, gives a special stun that makes throws unbreakable for the stun duration; Cannot K.O &lt;/div&gt",
-      "input_note": "unparsed: P",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "unparsed: P"
     },
     "f+4": {
       "name": "Wind-Up Stomp",
@@ -6419,12 +5894,7 @@
       "t8_damage": "21",
       "t8_input": "f+4",
       "merge_source": "t8:Armor King-f+4",
-      "note": "&lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow spike&quot;; &gt;Spike&lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 372,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow spike&quot;; &gt;Spike&lt;/div&gt"
     },
     "FC.d/f+2": {
       "name": "Backhand Chop",
@@ -6454,12 +5924,7 @@
       "t8_input": "FC.df+2",
       "merge_source": "t8:Armor King-FC.df+2",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; 6 chip damage on block; 20f timestop on hit; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; 6 chip damage on block; 20f timestop on hit; &lt;/div&gt"
     },
     "FDFA.d/b+1+3": {
       "name": "Wake-Up Lariat",
@@ -6492,12 +5957,7 @@
       "throw": true,
       "isGrab": true,
       "unblockable": true,
-      "throw_break": "1",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1"
     },
     "FDFL.d/b+1+3": {
       "name": "Back Mount",
@@ -6529,12 +5989,7 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; 1 or 2 throw break, depending on Armor King&#039;s input.; Transitions to Back Mount (BM), which has the Ultimate Punch followup; Opponent recovers in FDFT.; &lt;/div&gt",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "FDFT.d/b+1+3": {
       "name": "Standing Ankle Hold",
@@ -6567,12 +6022,7 @@
       "throw": true,
       "isGrab": true,
       "unblockable": true,
-      "throw_break": "1",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1"
     },
     "f,F+2": {
       "name": "Hell-Shaker Punch",
@@ -6601,12 +6051,7 @@
       "t8_damage": "20",
       "t8_input": "f,F+2",
       "merge_source": "t8:Armor King-f,F+2",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 0,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "f,F+3": {
       "name": "Comeback Kick",
@@ -6636,12 +6081,7 @@
       "t8_input": "f,F+3",
       "merge_source": "t8:Armor King-f,F+3",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "f,F+3+4": {
       "name": "Drop Kick",
@@ -6670,12 +6110,7 @@
       "t8_damage": "35",
       "t8_input": "f,F+3+4",
       "merge_source": "t8:Armor King-f,F+3+4",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "f,F+4": {
       "name": "Brawler Kick",
@@ -6704,12 +6139,7 @@
       "t8_damage": "25",
       "t8_input": "f,F+4",
       "merge_source": "t8:Armor King-f,F+4",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Engag",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Engag"
     },
     "f,f,F+2+4": {
       "name": "Brilliant Brawler Kick",
@@ -6749,12 +6179,7 @@
       "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* Shining Wizard\n* SW\n\n&lt;/div&gt;",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "f,f,F+3": {
       "name": "Flying Brawler Kick",
@@ -6783,12 +6208,7 @@
       "t8_damage": "30",
       "t8_input": "f,f,F+3",
       "merge_source": "t8:Armor King-f,f,F+3",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "f,f,F+3+4": {
       "name": "Running Exploder",
@@ -6817,12 +6237,7 @@
       "t8_damage": "40",
       "t8_input": "f,f,F+3+4",
       "merge_source": "t8:Armor King-f,f,F+3+4",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "f,f,n,2": {
       "name": "Underhanded",
@@ -6851,12 +6266,7 @@
       "t8_damage": "20",
       "t8_input": "f,f,n,2",
       "merge_source": "t8:Armor King-f,f,n,2",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Transition to BAD r29 on hit with F (+8/+13); &lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Transition to BAD r29 on hit with F (+8/+13); &lt;/div&gt"
     },
     "f,hcf+1": {
       "name": "Double Arm Swing",
@@ -6898,12 +6308,7 @@
       "t8_alias": "Giant Swing",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "f,n,d,d/f": {
       "name": "Beast Step",
@@ -6933,12 +6338,7 @@
       "t8_input": "f,n,d,df",
       "merge_source": "t8:Armor King-f,n,d,df",
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Cannot be buffered; Stance moves can be buffered out of heat dash; Recovers in FC at frame 20; Cancel to SS with u; Cancel to standing block with b from frames 1 to 9&lt;/div&gt",
-      "t8_alias": "CD",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "t8_alias": "CD"
     },
     "f,n,d,d/f+1": {
       "name": "Shadow Lariat",
@@ -6968,12 +6368,7 @@
       "t8_input": "f,n,d,df+1",
       "merge_source": "t8:Armor King-f,n,d,df+1",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; 6 chip damage on block; 20f timestop on hit; Recovers 8F faster on hit (t38 r22); Opponent left FDFA on hit&lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; 6 chip damage on block; 20f timestop on hit; Recovers 8F faster on hit (t38 r22); Opponent left FDFA on hit&lt;/div&gt"
     },
     "f,n,d,d/f+1+2": {
       "name": "Poison Mist",
@@ -7002,12 +6397,7 @@
       "t8_damage": "[5]",
       "t8_input": "f,n,d,df+1+2",
       "merge_source": "t8:Armor King-f,n,d,df+1+2",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; On hit, gives a special stun that makes throws unbreakable for the stun duration; Comes out faster in heat; Cannot K.O &lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; On hit, gives a special stun that makes throws unbreakable for the stun duration; Comes out faster in heat; Cannot K.O &lt;/div&gt"
     },
     "f,n,d,d/f+1+3": {
       "name": "Cobra Clutch (DMD)",
@@ -7040,12 +6430,7 @@
       "t8_alias": "Dark Magma Drive",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "f,n,d,d/f+2": {
       "name": "Dark Smash",
@@ -7076,12 +6461,7 @@
       "merge_source": "t8:Armor King-f,n,d,df+2",
       "launch": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Can also be performed with f,n,df#2 (i13+); Recovers 1F faster on hit(t39 r27); &lt;/div&gt",
-      "t8_alias": "Dark Upper",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "t8_alias": "Dark Upper"
     },
     "f,n,d,D/F+3": {
       "name": "Dark Inferno",
@@ -7111,12 +6491,7 @@
       "t8_input": "f,n,d,DF+3",
       "merge_source": "t8:Armor King-f,n,d,DF+3",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "f,n,d,D/F+4": {
       "name": "Knee Vault",
@@ -7146,12 +6521,7 @@
       "t8_input": "f,n,d,DF+4",
       "merge_source": "t8:Armor King-f,n,d,DF+4",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "FUFA.d/b+1+3": {
       "name": "Enzui Knee",
@@ -7183,12 +6553,7 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "FUFL.d/b+1+3": {
       "name": "Turn Over",
@@ -7220,12 +6585,7 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; 1 or 2 throw break, depending on Armor King&#039;s input.; Opponent recovers in FDFL/FDFR.; &lt;/div&gt",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "FUFT.b+3+4": {
       "name": "Whirling Spring Kick",
@@ -7255,12 +6615,7 @@
       "t8_input": "FUFT.b+3+4",
       "merge_source": "t8:Armor King-FUFT.b+3+4",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "FUFT.d/b+1+3": {
       "name": "Seesaw Whip",
@@ -7292,12 +6647,7 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "H.2+3": {
       "name": "Infierno Jaguar",
@@ -7329,12 +6679,7 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Smash",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "hFC.1": {
       "name": "Crouch Jab",
@@ -7363,12 +6708,7 @@
       "t8_damage": "5",
       "t8_input": "hFC.1",
       "merge_source": "t8:Armor King-hFC.1",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Transition to standing r24 with f at frame 25; +6c on crouching hit&lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Transition to standing r24 with f at frame 25; +6c on crouching hit&lt;/div&gt"
     },
     "hFC.1+2": {
       "name": "Ultimate Tackle (UT)",
@@ -7401,12 +6741,7 @@
       "throw": true,
       "isGrab": true,
       "unblockable": true,
-      "throw_break": "1",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1"
     },
     "hFC.2": {
       "name": "Crouch Straight",
@@ -7435,12 +6770,7 @@
       "t8_damage": "8",
       "t8_input": "hFC.2",
       "merge_source": "t8:Armor King-hFC.2",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; +7c on crouching hit; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; +7c on crouching hit; &lt;/div&gt"
     },
     "hFC.3": {
       "name": "Crouch Spin Kick",
@@ -7469,12 +6799,7 @@
       "t8_damage": "12",
       "t8_input": "hFC.3",
       "merge_source": "t8:Armor King-hFC.3",
-      "note": "-2c on crouching hit",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "-2c on crouching hit"
     },
     "hFC.4": {
       "name": "Crouch Shin Kick",
@@ -7503,12 +6828,7 @@
       "t8_damage": "6",
       "t8_input": "hFC.4",
       "merge_source": "t8:Armor King-hFC.4",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; -4c on crouching hit; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; -4c on crouching hit; &lt;/div&gt"
     },
     "H.f,n,d,d/f+1+2": {
       "name": "Malice Mist: Villain",
@@ -7537,12 +6857,7 @@
       "t8_damage": "[10]",
       "t8_input": "H.f,n,d,df+1+2",
       "merge_source": "t8:Armor King-H.f,n,d,df+1+2",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; On hit, gives a special stun that makes throws unbreakable for the stun duration; Consumes 600F of remaining Heat time; Only deals recoverable damage; Cannot K.O &lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; On hit, gives a special stun that makes throws unbreakable for the stun duration; Consumes 600F of remaining Heat time; Only deals recoverable damage; Cannot K.O &lt;/div&gt"
     },
     "H.u/b+1": {
       "name": "Neck Hunter: Villain",
@@ -7572,12 +6887,7 @@
       "t8_input": "H.ub+1",
       "merge_source": "t8:Armor King-H.ub+1",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange sat&quot;; &gt;Strong Aeri",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange sat&quot;; &gt;Strong Aeri"
     },
     "H.u/b+1+2*": {
       "name": "Mexican Uppercut: Villain",
@@ -7607,12 +6917,7 @@
       "t8_input": "H.ub+1+2*",
       "merge_source": "t8:Armor King-H.ub+1+2*",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado"
     },
     "SIDE_L.1+3": {
       "name": "Reverse Valley Death Bomb",
@@ -7644,12 +6949,7 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "OTG.d+4": {
       "name": "ARMOR KING OTG.d+4",
@@ -7679,12 +6979,7 @@
       "t8_input": "OTG.d+4",
       "merge_source": "t8:Armor King-OTG.d+4",
       "knockdown": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; -5 on hit when opponent is standing; -5c on crouching hit; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; -5 on hit when opponent is standing; -5c on crouching hit; &lt;/div&gt"
     },
     "OTG.d+4,4": {
       "name": "ARMOR KING OTG.d+4,4",
@@ -7721,12 +7016,7 @@
         "total": 13
       },
       "knockdown": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo"
     },
     "OTG.d+4,4,3+4": {
       "name": "Crazy Torment",
@@ -7756,12 +7046,7 @@
       "t8_input": "OTG.d+4,4,3+4",
       "merge_source": "t8:Armor King-OTG.d+4,4,3+4",
       "knockdown": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combos from 1st hit on grounded opponent; +5 on hit when opponent is standing; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combos from 1st hit on grounded opponent; +5 on hit when opponent is standing; &lt;/div&gt"
     },
     "OTG.d+4,4,4": {
       "name": "Crazy Stomp",
@@ -7798,12 +7083,7 @@
         "total": 9
       },
       "knockdown": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo"
     },
     "OTG.d/b+2+4": {
       "name": "Stand Up",
@@ -7836,12 +7116,7 @@
       "throw": true,
       "isGrab": true,
       "unblockable": true,
-      "throw_break": "2",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "throw_break": "2"
     },
     "qcb+1+2": {
       "name": "Hades Drop",
@@ -7880,12 +7155,7 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "R.d/f+1+2": {
       "name": "Dark Supernova",
@@ -7917,12 +7187,7 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-red rage-art&quot;; &gt;Rage Art&",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "SIDE_R.2+4": {
       "name": "Reverse DDT",
@@ -7955,12 +7220,7 @@
       "throw": true,
       "isGrab": true,
       "unblockable": true,
-      "throw_break": "2",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "throw_break": "2"
     },
     "SS.2": {
       "name": "Shadow Sweep",
@@ -7989,12 +7249,7 @@
       "t8_damage": "17",
       "t8_input": "SS.2",
       "merge_source": "t8:Armor King-SS.2",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; BT.d+2: cs4~50; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; BT.d+2: cs4~50; &lt;/div&gt"
     },
     "SS.4": {
       "name": "Buzz Saw Kick",
@@ -8024,12 +7279,7 @@
       "t8_input": "SS.4",
       "merge_source": "t8:Armor King-SS.4",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "u+1+2": {
       "name": "Capital Punishment",
@@ -8058,12 +7308,7 @@
       "t8_damage": "25",
       "t8_input": "u+1+2",
       "merge_source": "t8:Armor King-u+1+2",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "u+1+2*": {
       "name": "Burning Knuckle",
@@ -8092,12 +7337,7 @@
       "t8_damage": "45",
       "t8_input": "u+1+2*",
       "merge_source": "t8:Armor King-u+1+2*",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "u/b+1": {
       "name": "Neck Hunter",
@@ -8127,12 +7367,7 @@
       "t8_input": "ub+1",
       "merge_source": "t8:Armor King-ub+1",
       "knockdown": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "u/b+1+2": {
       "name": "Straight Arrow",
@@ -8162,12 +7397,7 @@
       "t8_input": "ub+1+2",
       "merge_source": "t8:Armor King-ub+1+2",
       "knockdown": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "u/b+1+2*": {
       "name": "Mexican Uppercut",
@@ -8197,12 +7427,7 @@
       "t8_input": "ub+1+2*",
       "merge_source": "t8:Armor King-ub+1+2*",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado"
     },
     "u/b+4": {
       "name": "ARMOR KING u/b+4",
@@ -8232,12 +7457,7 @@
       "t8_input": "ub+4",
       "merge_source": "t8:Armor King-ub+4",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "u/f+1": {
       "name": "Spinning Lariat",
@@ -8267,12 +7487,7 @@
       "t8_input": "uf+1",
       "merge_source": "t8:Armor King-uf+1",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "u/f+1+2": {
       "name": "Armor King Driver",
@@ -8304,12 +7519,7 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "u/f+2": {
       "name": "ARMOR KING u/f+2",
@@ -8337,12 +7547,7 @@
       "t8_id": "Armor King-uf+2",
       "t8_damage": "7",
       "t8_input": "uf+2",
-      "merge_source": "t8:Armor King-uf+2",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 245,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "merge_source": "t8:Armor King-uf+2"
     },
     "u/f+2,1": {
       "name": "Death Sandwich",
@@ -8372,12 +7577,7 @@
       "t8_input": "uf+2,1",
       "merge_source": "t8:Armor King-uf+2,1",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo"
     },
     "u/f+3": {
       "name": "Switch Jumping Knee",
@@ -8407,12 +7607,7 @@
       "t8_input": "uf+3",
       "merge_source": "t8:Armor King-uf+3",
       "launch": true,
-      "note": "&lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Knee&lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Knee&lt;/div&gt"
     },
     "u/f+3+4": {
       "name": "Scissors Kick",
@@ -8442,12 +7637,7 @@
       "t8_input": "uf+3+4",
       "merge_source": "t8:Armor King-uf+3+4",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Can tech roll; -17 on tech roll; Ukemi input timing 6F; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Can tech roll; -17 on tech roll; Ukemi input timing 6F; &lt;/div&gt"
     },
     "u/f+4": {
       "name": "Rising Toe Kick",
@@ -8476,12 +7666,7 @@
       "t8_damage": "13",
       "t8_input": "uf+4",
       "merge_source": "t8:Armor King-uf+4",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "u/f,n,4": {
       "name": "Delayed Rising Toe Kick",
@@ -8510,12 +7695,7 @@
       "t8_damage": "20",
       "t8_input": "uf,n,4",
       "merge_source": "t8:Armor King-uf,n,4",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "UT.1+2": {
       "name": "Armbar",
@@ -8547,12 +7727,7 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; 1+2 throw break.; Can also input at 3rd hit of Ultimate Punch.; Opponent recovers in FUFR.; &lt;/div&gt",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "UT.2,1,2,1": {
       "name": "Ultimate Punch",
@@ -8594,12 +7769,7 @@
       "throw": true,
       "isGrab": true,
       "unblockable": true,
-      "throw_break": "1",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1"
     },
     "WALL.1+3": {
       "name": "Black Rain of Hell",
@@ -8631,12 +7801,7 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-blue homing&quot;; &gt;Homing&lt;",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "WR.4": {
       "name": "Dashing Low Drop Kick",
@@ -8666,12 +7831,7 @@
       "t8_input": "wr4",
       "merge_source": "t8:Armor King-wr4",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;/div&gt"
     },
     "WS.1": {
       "name": "Snap Uppercut",
@@ -8701,12 +7861,7 @@
       "t8_input": "ws1",
       "merge_source": "t8:Armor King-ws1",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Elbow&lt;/div",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Elbow&lt;/div"
     },
     "WS.2": {
       "name": "Jugular Thrust",
@@ -8736,12 +7891,7 @@
       "t8_input": "ws2",
       "merge_source": "t8:Armor King-ws2",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; On CH can shift to True Dark Smash with 2 or f,d,df+2; 4f timestop on CH; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; On CH can shift to True Dark Smash with 2 or f,d,df+2; 4f timestop on CH; &lt;/div&gt"
     },
     "WS.3": {
       "name": "ARMOR KING WS.3",
@@ -8770,12 +7920,7 @@
       "t8_damage": "12",
       "t8_input": "ws3",
       "merge_source": "t8:Armor King-ws3",
-      "note": "&lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Knee&lt;/div&gt",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Knee&lt;/div&gt"
     },
     "WS.3,1": {
       "name": "Prison Crusher",
@@ -8805,12 +7950,7 @@
       "t8_input": "ws3,1",
       "merge_source": "t8:Armor King-ws3,1",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Engag",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Engag"
     },
     "WS.4": {
       "name": "Toe Smash",
@@ -8838,12 +7978,7 @@
       "t8_id": "Armor King-ws4",
       "t8_damage": "20",
       "t8_input": "ws4",
-      "merge_source": "t8:Armor King-ws4",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "merge_source": "t8:Armor King-ws4"
     },
     "1~t7.armorking": {
       "name": "ARMOR KING 1",
@@ -8878,12 +8013,7 @@
       "t7_on_ch": "+8",
       "merge_source": "t7:armorking_1",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 38,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "1,2~t7.armorking": {
       "name": "One Two Punch",
@@ -8924,11 +8054,6 @@
           10
         ],
         "total": 17
-      },
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2~t7.armorking.2": {
@@ -8964,12 +8089,7 @@
       "t7_on_ch": "+5",
       "merge_source": "t7:armorking_3",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "1,2,1~t7.armorking": {
       "name": "Left Right Uppercut",
@@ -9011,11 +8131,6 @@
           17
         ],
         "total": 34
-      },
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,1~t7.armorking.2": {
@@ -9057,11 +8172,6 @@
           17
         ],
         "total": 27
-      },
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,1~t7.armorking.3": {
@@ -9097,12 +8207,7 @@
       "t7_on_ch": "+31",
       "merge_source": "t7:armorking_6",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "2~t7.armorking": {
       "name": "ARMOR KING 2",
@@ -9137,12 +8242,7 @@
       "t7_on_ch": "+7",
       "merge_source": "t7:armorking_7",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 50,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "2,1~t7.armorking": {
       "name": "Jab Uppercut",
@@ -9183,11 +8283,6 @@
           12
         ],
         "total": 22
-      },
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "2,1~t7.armorking.2": {
@@ -9223,12 +8318,7 @@
       "t7_on_ch": "+5",
       "merge_source": "t7:armorking_9",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "3~t7.armorking": {
       "name": "ARMOR KING 3",
@@ -9263,12 +8353,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:armorking_10",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 57,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "4~t7.armorking": {
       "name": "ARMOR KING 4",
@@ -9303,12 +8388,7 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:armorking_11",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 69,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "1+2~t7.armorking": {
       "name": "ARMOR KING 1+2",
@@ -9343,12 +8423,7 @@
       "t7_on_ch": "0",
       "merge_source": "t7:armorking_12",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "1+2,2~t7.armorking": {
       "name": "Dark Cyclone",
@@ -9391,12 +8466,7 @@
         "total": 30
       },
       "knockdown": true,
-      "note": "delayable 13f, combo delayable 13f",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "delayable 13f, combo delayable 13f"
     },
     "1+2,2~t7.armorking.2": {
       "name": "ARMOR KING 1+2,2",
@@ -9431,12 +8501,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:armorking_14",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "1+2,4~t7.armorking": {
       "name": "Dark Buzzsaw",
@@ -9477,11 +8542,6 @@
           17
         ],
         "total": 27
-      },
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1+2,4~t7.armorking.2": {
@@ -9517,12 +8577,7 @@
       "t7_on_ch": "STUN",
       "merge_source": "t7:armorking_16",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "3+4,1~t7.armorking": {
       "name": "Round Out Body Press",
@@ -9566,12 +8621,7 @@
         "total": 40
       },
       "knockdown": true,
-      "note": "TJ 11f",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "TJ 11f"
     },
     "3+4,1~t7.armorking.2": {
       "name": "ARMOR KING 3+4,1",
@@ -9614,12 +8664,7 @@
         "total": 30
       },
       "launch": true,
-      "input_note": "(close)",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(close)"
     },
     "3+4,1~t7.armorking.3": {
       "name": "ARMOR KING 3+4,1",
@@ -9655,12 +8700,7 @@
       "merge_source": "t7:armorking_19",
       "recovery_from": "same-notation T8 recv",
       "launch": true,
-      "input_note": "(far)",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(far)"
     },
     "3+4,2~t7.armorking": {
       "name": "Round Out Elbow",
@@ -9703,12 +8743,7 @@
         "total": 35
       },
       "knockdown": true,
-      "note": "TJ 11f",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "TJ 11f"
     },
     "3+4,2~t7.armorking.2": {
       "name": "ARMOR KING 3+4,2",
@@ -9743,12 +8778,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:armorking_21",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "f+2~t7.armorking": {
       "name": "ARMOR KING f+2",
@@ -9783,12 +8813,7 @@
       "t7_on_ch": "+2",
       "merge_source": "t7:armorking_22",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 230,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "f+2,1~t7.armorking": {
       "name": "Dark Elbow Hook",
@@ -9831,12 +8856,7 @@
         "total": 32
       },
       "knockdown": true,
-      "note": "delayable 12f, combo delayable 6f",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "delayable 12f, combo delayable 6f"
     },
     "f+2,1~t7.armorking.2": {
       "name": "ARMOR KING f+2,1",
@@ -9871,12 +8891,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:armorking_24",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "f+3~t7.armorking": {
       "name": "ARMOR KING f+3",
@@ -9911,12 +8926,7 @@
       "t7_on_ch": "+4",
       "merge_source": "t7:armorking_25",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 236,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "f+3,4": {
       "name": "Switch-Kick Tornado",
@@ -9957,11 +8967,6 @@
           10
         ],
         "total": 27
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+3,4~t7.armorking": {
@@ -9997,12 +9002,7 @@
       "t7_on_ch": "+3",
       "merge_source": "t7:armorking_27",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "f+3,4,3": {
       "name": "Switch-Kick Tornado",
@@ -10045,12 +9045,7 @@
         ],
         "total": 50
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "f+3,4,3~t7.armorking": {
       "name": "ARMOR KING f+3,4,3",
@@ -10092,12 +9087,7 @@
         ],
         "total": 33
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "f+3,4,3~t7.armorking.2": {
       "name": "ARMOR KING f+3,4,3",
@@ -10132,12 +9122,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:armorking_30",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "f+3,4,3,B": {
       "name": "ARMOR KING f+3,4,3,B",
@@ -10178,11 +9163,6 @@
           10
         ],
         "total": 27
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+3,4,3,B~t7.armorking": {
@@ -10218,12 +9198,7 @@
       "t7_on_ch": "-5",
       "merge_source": "t7:armorking_32",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "f+4~t7.armorking": {
       "name": "Wind-Up Stomp",
@@ -10258,12 +9233,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:armorking_33",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 372,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "f+1+4~t7.armorking": {
       "name": "Shoulder Impact",
@@ -10298,12 +9268,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:armorking_34",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "d/f+1~t7.armorking": {
       "name": "Minced Liver",
@@ -10338,12 +9303,7 @@
       "t7_on_ch": "+7",
       "merge_source": "t7:armorking_35",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 117,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "d/f+2~t7.armorking": {
       "name": "Concussion Hook",
@@ -10378,12 +9338,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:armorking_36",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 202,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "d/f+2,1~t7.armorking": {
       "name": "ARMOR KING d/f+2,1",
@@ -10424,11 +9379,6 @@
           8
         ],
         "total": 29
-      },
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+2,1~t7.armorking.2": {
@@ -10464,12 +9414,7 @@
       "t7_on_ch": "+5",
       "merge_source": "t7:armorking_38",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "d/f+3~t7.armorking": {
       "name": "Dark Knee Lift",
@@ -10503,12 +9448,7 @@
       "t7_on_hit": "+5",
       "t7_on_ch": "STUN",
       "merge_source": "t7:armorking_39",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 129,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "d/f+4~t7.armorking": {
       "name": "ARMOR KING d/f+4",
@@ -10543,12 +9483,7 @@
       "t7_on_ch": "+7",
       "merge_source": "t7:armorking_40",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 135,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "d/f+1+2": {
       "name": "Spinning Lariat",
@@ -10583,12 +9518,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:armorking_41",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 116,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "d/f+3+4~t7.armorking": {
       "name": "Frakensteiner",
@@ -10624,12 +9554,7 @@
       "merge_source": "t7:armorking_42",
       "recovery_from": "same-notation T8 recv",
       "note": "TC 13f",
-      "input_note": "(far)",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 141,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "input_note": "(far)"
     },
     "d+1~t7.armorking": {
       "name": "ARMOR KING d+1",
@@ -10666,12 +9591,7 @@
       "recovery_from": "same-notation T8 recv",
       "launch": true,
       "note": "TC 4f",
-      "input_note": "(or FC 1)",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 136,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "input_note": "(or FC 1)"
     },
     "d+1,4~t7.armorking": {
       "name": "Knee Lift Combination",
@@ -10713,12 +9633,7 @@
         ],
         "total": 18
       },
-      "input_note": "(or FC 1, 4)",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(or FC 1, 4)"
     },
     "t7.armorking_45": {
       "name": "ARMOR KING (d+1), 4 (or FC (1), 4)",
@@ -10752,12 +9667,7 @@
       "merge_source": "t7:armorking_45",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "input_note": "(or FC (1) unparsed: 4)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(or FC (1) unparsed: 4)"
     },
     "d+2~t7.armorking": {
       "name": "ARMOR KING d+2",
@@ -10791,12 +9701,7 @@
       "t7_on_hit": "+5 (OC)",
       "t7_on_ch": "+9 (OC)",
       "merge_source": "t7:armorking_46",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 142,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "d+2,4~t7.armorking": {
       "name": "ARMOR KING d+2,4",
@@ -10837,11 +9742,6 @@
           17
         ],
         "total": 34
-      },
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d+2,4~t7.armorking.2": {
@@ -10876,12 +9776,7 @@
       "t7_on_hit": "-3",
       "t7_on_ch": "-3",
       "merge_source": "t7:armorking_48",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "d+2,4,3~t7.armorking": {
       "name": "Blackjack Combination",
@@ -10924,12 +9819,7 @@
         ],
         "total": 54
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "d+2,4,3~t7.armorking.2": {
       "name": "ARMOR KING d+2,4,3",
@@ -10971,12 +9861,7 @@
         ],
         "total": 37
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "d+2,4,3~t7.armorking.3": {
       "name": "ARMOR KING d+2,4,3",
@@ -11011,12 +9896,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:armorking_51",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "d+3~t7.armorking": {
       "name": "Stomp",
@@ -11051,12 +9931,7 @@
       "t7_on_ch": "+9",
       "merge_source": "t7:armorking_52",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "d+4~t7.armorking": {
       "name": "ARMOR KING d+4",
@@ -11092,12 +9967,7 @@
       "merge_source": "t7:armorking_53",
       "recovery_from": "same-notation T8 recv",
       "launch": true,
-      "note": "TC 4f",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "TC 4f"
     },
     "d+1+2": {
       "name": "Corporate Elbow",
@@ -11132,12 +10002,7 @@
       "t7_on_ch": "0 (OC)",
       "merge_source": "t7:armorking_54",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "note": "TJ 21f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 97,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "note": "TJ 21f"
     },
     "d+3+4~t7.armorking": {
       "name": "ARMOR KING d+3+4",
@@ -11174,12 +10039,7 @@
       "recovery_from": "same-notation T8 recv",
       "launch": true,
       "note": "TC 6f",
-      "input_note": "(or u/f, n, 3+4)",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(or u/f, n, 3+4)"
     },
     "d+3+4,1~t7.armorking": {
       "name": "Taurus Cutter Edge",
@@ -11221,12 +10081,7 @@
         ],
         "total": 25
       },
-      "note": "delayable 8f, combo delayable 8f",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "delayable 8f, combo delayable 8f"
     },
     "d+3+4,1~t7.armorking.2": {
       "name": "ARMOR KING d+3+4,1",
@@ -11260,12 +10115,7 @@
       "t7_on_hit": "+15",
       "t7_on_ch": "S!",
       "merge_source": "t7:armorking_57",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "d+3+4,3~t7.armorking": {
       "name": "Taurus Cutter Trap",
@@ -11308,12 +10158,7 @@
         "total": 25
       },
       "knockdown": true,
-      "note": "delayable 8f, combo delayable 8f",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "delayable 8f, combo delayable 8f"
     },
     "d+3+4,3~t7.armorking.2": {
       "name": "ARMOR KING d+3+4,3",
@@ -11348,12 +10193,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:armorking_59",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "d/b+2~t7.armorking": {
       "name": "ARMOR KING d/b+2",
@@ -11388,12 +10228,7 @@
       "t7_on_ch": "0",
       "merge_source": "t7:armorking_60",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 132,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "d/b+2,3~t7.armorking": {
       "name": "Killer PK Combo",
@@ -11434,11 +10269,6 @@
           20
         ],
         "total": 30
-      },
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+2,3~t7.armorking.2": {
@@ -11474,12 +10304,7 @@
       "t7_on_ch": "+21",
       "merge_source": "t7:armorking_62",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "d/b+2,4~t7.armorking": {
       "name": "Dark PK Combo",
@@ -11520,11 +10345,6 @@
           20
         ],
         "total": 30
-      },
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+2,4~t7.armorking.2": {
@@ -11560,12 +10380,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:armorking_64",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "d/b+3~t7.armorking": {
       "name": "Foot Sweep",
@@ -11601,12 +10416,7 @@
       "merge_source": "t7:armorking_65",
       "recovery_from": "same-notation T8 recv",
       "launch": true,
-      "note": "TC 8f",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "TC 8f"
     },
     "d/b+4~t7.armorking": {
       "name": "Low Drop Kick",
@@ -11642,12 +10452,7 @@
       "merge_source": "t7:armorking_66",
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
-      "note": "TC 6f, TJ 16f",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 134,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "TC 6f, TJ 16f"
     },
     "d/b+1+2~t7.armorking": {
       "name": "Stomping Headbutt",
@@ -11682,12 +10487,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:armorking_67",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 131,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "b+1~t7.armorking": {
       "name": "ARMOR KING b+1",
@@ -11722,12 +10522,7 @@
       "t7_on_ch": "STUN",
       "merge_source": "t7:armorking_68",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 248,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "b+1,2~t7.armorking": {
       "name": "Dark Jab to Hell Stab",
@@ -11768,11 +10563,6 @@
           15
         ],
         "total": 27
-      },
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+1,2~t7.armorking.2": {
@@ -11808,12 +10598,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:armorking_70",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "b+2~t7.armorking": {
       "name": "ARMOR KING b+2",
@@ -11848,12 +10633,7 @@
       "t7_on_ch": "+2 (OC)",
       "merge_source": "t7:armorking_71",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 254,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "b+2,1~t7.armorking": {
       "name": "ARMOR KING b+2,1",
@@ -11894,11 +10674,6 @@
           8
         ],
         "total": 18
-      },
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+2,1~t7.armorking.2": {
@@ -11934,12 +10709,7 @@
       "t7_on_ch": "-1",
       "merge_source": "t7:armorking_73",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "b+2,1,2~t7.armorking": {
       "name": "Knife Edge Combo",
@@ -11982,12 +10752,7 @@
         ],
         "total": 38
       },
-      "note": "delayable 20f, combo delayable 5f",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "delayable 20f, combo delayable 5f"
     },
     "b+2,1,2~t7.armorking.2": {
       "name": "ARMOR KING b+2,1,2",
@@ -12028,11 +10793,6 @@
           20
         ],
         "total": 28
-      },
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+2,1,2~t7.armorking.3": {
@@ -12067,12 +10827,7 @@
       "t7_on_hit": "S!",
       "t7_on_ch": "S!",
       "merge_source": "t7:armorking_76",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "b+3~t7.armorking": {
       "name": "Toll Kick",
@@ -12107,12 +10862,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:armorking_77",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 260,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "b+4~t7.armorking": {
       "name": "Toe Kick",
@@ -12147,12 +10897,7 @@
       "t7_on_ch": "0",
       "merge_source": "t7:armorking_78",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 115,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "b+1+2~t7.armorking": {
       "name": "Blindside",
@@ -12187,12 +10932,7 @@
       "t7_on_ch": "+16",
       "merge_source": "t7:armorking_79",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "b+1+4": {
       "name": "Straight Arrow",
@@ -12227,12 +10967,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:armorking_80",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 35,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "u/b+1~t7.armorking": {
       "name": "Water Parting Chop",
@@ -12267,12 +11002,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:armorking_81",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "u/f+2~t7.armorking": {
       "name": "High Elbow Drop",
@@ -12308,12 +11038,7 @@
       "merge_source": "t7:armorking_82",
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
-      "note": "TJ 9f",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 245,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "TJ 9f"
     },
     "u/f+3~t7.armorking": {
       "name": "Switch Jumping Knee Attack",
@@ -12349,12 +11074,7 @@
       "merge_source": "t7:armorking_83",
       "recovery_from": "same-notation T8 recv",
       "launch": true,
-      "note": "TJ 17f",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "TJ 17f"
     },
     "u/f+4~t7.armorking": {
       "name": "Rising Toe Kick",
@@ -12390,12 +11110,7 @@
       "merge_source": "t7:armorking_84",
       "recovery_from": "same-notation T8 recv",
       "launch": true,
-      "note": "TJ 9f",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "TJ 9f"
     },
     "u/f+1+2~t7.armorking": {
       "name": "Capital Punishment",
@@ -12431,12 +11146,7 @@
       "merge_source": "t7:armorking_85",
       "recovery_from": "same-notation T8 recv",
       "note": "TJ 9f",
-      "input_note": "(or u/f, 1+2)",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(or u/f, 1+2)"
     },
     "u/f+3+4~t7.armorking": {
       "name": "Scissors Kick",
@@ -12472,12 +11182,7 @@
       "merge_source": "t7:armorking_86",
       "recovery_from": "same-notation T8 recv",
       "launch": true,
-      "note": "TJ 8f",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "TJ 8f"
     },
     "t7.armorking_87": {
       "name": "Scissors Kick to Ukemi",
@@ -12511,12 +11216,7 @@
       "merge_source": "t7:armorking_87",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "note": "input window 3f",
-      "input_note": "descriptive: u/f+3+4, any button",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "descriptive: u/f+3+4, any button"
     },
     "f,f,n+2": {
       "name": "Underhanded",
@@ -12552,12 +11252,7 @@
       "merge_source": "t7:armorking_88",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "note": "TC 12f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "TC 12f"
     },
     "f,F+2~t7.armorking": {
       "name": "Solar Plexus Punch",
@@ -12592,12 +11287,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:armorking_89",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 0,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "f,F+3~t7.armorking": {
       "name": "Comeback Kick",
@@ -12631,12 +11321,7 @@
       "t7_on_hit": "STUN",
       "t7_on_ch": "STUN",
       "merge_source": "t7:armorking_90",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "f,F+4~t7.armorking": {
       "name": "Brawler Kick",
@@ -12671,12 +11356,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:armorking_91",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "f,F+1+2": {
       "name": "Flying Forearm",
@@ -12712,12 +11392,7 @@
       "merge_source": "t7:armorking_92",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "note": "TJ 18f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "TJ 18f"
     },
     "f,F+3+4~t7.armorking": {
       "name": "Drop Kick",
@@ -12753,12 +11428,7 @@
       "merge_source": "t7:armorking_93",
       "recovery_from": "same-notation T8 recv",
       "launch": true,
-      "note": "TJ 14f",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "TJ 14f"
     },
     "f,f,f+3": {
       "name": "Flying Brawler Kick",
@@ -12795,12 +11465,7 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
       "note": "TJ 3f",
-      "input_note": "(or WR 3)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(or WR 3)"
     },
     "t7.armorking_95": {
       "name": "Dashing Low Drop Kick",
@@ -12835,12 +11500,7 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
       "note": "TJ 7f",
-      "input_note": "descriptive: Run more than 3 steps... 4",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "descriptive: Run more than 3 steps... 4"
     },
     "f,f,f+3+4": {
       "name": "Satellite Drop Kick",
@@ -12877,12 +11537,7 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
       "note": "TJ 9f",
-      "input_note": "(or WR 3+4)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(or WR 3+4)"
     },
     "CATCH.2": {
       "name": "Jugular Thrust Trap",
@@ -12918,12 +11573,7 @@
       "merge_source": "t7:armorking_97",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "input_note": "(During Catch)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Catch)"
     },
     "FC.2": {
       "name": "ARMOR KING FC.2",
@@ -12958,12 +11608,7 @@
       "t7_on_ch": "+7",
       "merge_source": "t7:armorking_98",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "FC.3": {
       "name": "ARMOR KING FC.3",
@@ -12998,12 +11643,7 @@
       "t7_on_ch": "-2",
       "merge_source": "t7:armorking_99",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "FC.4": {
       "name": "ARMOR KING FC.4",
@@ -13038,12 +11678,7 @@
       "t7_on_ch": "-4",
       "merge_source": "t7:armorking_100",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "FC.d/f+2~t7.armorking": {
       "name": "Backhand Chop",
@@ -13078,12 +11713,7 @@
       "t7_on_ch": "STUN",
       "merge_source": "t7:armorking_101",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "f,f,F": {
       "name": "ARMOR KING f,f,F",
@@ -13119,12 +11749,7 @@
       "merge_source": "t7:armorking_102",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "input_note": "WR (Full Screen)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "WR (Full Screen)"
     },
     "f,f,F~t7.armorking": {
       "name": "ARMOR KING f,f,F",
@@ -13160,12 +11785,7 @@
       "merge_source": "t7:armorking_103",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "WR (Full Screen) (On Grounded Opponent)",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "WR (Full Screen) (On Grounded Opponent)"
     },
     "1+2~t7.armorking.2": {
       "name": "ARMOR KING 1+2",
@@ -13201,12 +11821,7 @@
       "merge_source": "t7:armorking_104",
       "recovery_from": "same-notation T8 recv",
       "launch": true,
-      "input_note": "WR",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "input_note": "WR"
     },
     "WS.1~t7.armorking": {
       "name": "Snap Uppercut",
@@ -13241,12 +11856,7 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:armorking_105",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "WS.2~t7.armorking": {
       "name": "Jugular Thrust",
@@ -13281,12 +11891,7 @@
       "t7_on_ch": "STUN",
       "merge_source": "t7:armorking_106",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "WS.3~t7.armorking": {
       "name": "ARMOR KING WS.3",
@@ -13321,12 +11926,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:armorking_107",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "WS.4~t7.armorking": {
       "name": "ARMOR KING WS.4",
@@ -13361,12 +11961,7 @@
       "t7_on_ch": "+5",
       "merge_source": "t7:armorking_108",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "SS.2~t7.armorking": {
       "name": "ARMOR KING SS.2",
@@ -13401,12 +11996,7 @@
       "t7_on_ch": "-1",
       "merge_source": "t7:armorking_109",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "SS.2,1": {
       "name": "Death Sandwich",
@@ -13447,11 +12037,6 @@
           10
         ],
         "total": 20
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "SS.2,1~t7.armorking": {
@@ -13486,12 +12071,7 @@
       "t7_on_hit": "STUN",
       "t7_on_ch": "STUN",
       "merge_source": "t7:armorking_111",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "SS.4~t7.armorking": {
       "name": "Buzz Saw Kick",
@@ -13526,12 +12106,7 @@
       "t7_on_ch": "STUN",
       "merge_source": "t7:armorking_112",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "SS.3+4": {
       "name": "Neck Cutter Kick",
@@ -13567,12 +12142,7 @@
       "merge_source": "t7:armorking_113",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "note": "TJ 13f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "TJ 13f"
     },
     "t7.armorking_114": {
       "name": "Neck Cutter Kick to Ukemi",
@@ -13605,12 +12175,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:armorking_114",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "descriptive: SS.3+4, any button",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "descriptive: SS.3+4, any button"
     },
     "d+4~t7.armorking.2": {
       "name": "ARMOR KING d+4",
@@ -13645,12 +12210,7 @@
       "t7_on_ch": "-5",
       "merge_source": "t7:armorking_115",
       "recovery_from": "same-notation T8 recv",
-      "input_note": "(While enemy is down)",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(While enemy is down)"
     },
     "d+4,4": {
       "name": "ARMOR KING d+4,4",
@@ -13692,12 +12252,7 @@
         ],
         "total": 21
       },
-      "input_note": "(While enemy is down)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(While enemy is down)"
     },
     "d+4,4,4": {
       "name": "Crazy Stomp",
@@ -13740,12 +12295,7 @@
         ],
         "total": 24
       },
-      "input_note": "(While enemy is down)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(While enemy is down)"
     },
     "d/f+2,1,3,2,2,4,2,1,3+4,2": {
       "name": "10 Hit Combo 1",
@@ -13780,12 +12330,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:armorking_118",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "d/f+2,1,3,2,2,3,4,1+2,2,1+2": {
       "name": "10 Hit Combo 2",
@@ -13820,12 +12365,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:armorking_119",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 35,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "t7.armorking_120": {
       "name": "ARMOR KING Face Up, Feet Towards+3 or (After Rolling Forward)",
@@ -13859,12 +12399,7 @@
       "merge_source": "t7:armorking_120",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "input_note": "Face Up, Feet Towards+ descriptive: 3 or After Rolling Forward",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "Face Up, Feet Towards+ descriptive: 3 or After Rolling Forward"
     },
     "t7.armorking_121": {
       "name": "ARMOR KING Face Up, Feet Towards+4 or (After Rolling Forward)",
@@ -13898,12 +12433,7 @@
       "merge_source": "t7:armorking_121",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "input_note": "Face Up, Feet Towards+ descriptive: 4 or After Rolling Forward",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "Face Up, Feet Towards+ descriptive: 4 or After Rolling Forward"
     },
     "FUFT.d+3": {
       "name": "ARMOR KING FUFT.d+3",
@@ -13939,12 +12469,7 @@
       "merge_source": "t7:armorking_122",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "input_note": "Face Up, Feet Towards, (or 4)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "Face Up, Feet Towards, (or 4)"
     },
     "t7.armorking_123": {
       "name": "ARMOR KING Face Up, Feet Towards, Roll Forward+1+2",
@@ -13978,12 +12503,7 @@
       "merge_source": "t7:armorking_123",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "input_note": "Face Up, Feet Towards, descriptive: ROLL.Forward+1+2",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "Face Up, Feet Towards, descriptive: ROLL.Forward+1+2"
     },
     "FDFA.3": {
       "name": "ARMOR KING FDFA.3",
@@ -14019,12 +12539,7 @@
       "merge_source": "t7:armorking_124",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "input_note": "Face Down, Feet Away+",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "Face Down, Feet Away+"
     },
     "FDFA.4": {
       "name": "ARMOR KING FDFA.4",
@@ -14060,12 +12575,7 @@
       "merge_source": "t7:armorking_125",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "input_note": "Face Down, Feet Away+ (close)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "Face Down, Feet Away+ (close)"
     },
     "FDFA.4~t7.armorking": {
       "name": "ARMOR KING FDFA.4",
@@ -14101,12 +12611,7 @@
       "merge_source": "t7:armorking_126",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "input_note": "Face Down, Feet Away+ (far)",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "Face Down, Feet Away+ (far)"
     },
     "t7.armorking_127": {
       "name": "ARMOR KING (Upon Landing) f",
@@ -14140,12 +12645,7 @@
       "merge_source": "t7:armorking_127",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "input_note": "descriptive: Upon Landing f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "descriptive: Upon Landing f"
     },
     "1+2,B": {
       "name": "ARMOR KING 1+2,B",
@@ -14180,12 +12680,7 @@
       "t7_on_ch": "0",
       "merge_source": "t7:armorking_128",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "3+4~t7.armorking": {
       "name": "Round Out Kick",
@@ -14221,12 +12716,7 @@
       "merge_source": "t7:armorking_129",
       "recovery_from": "same-notation T8 recv",
       "launch": true,
-      "note": "TJ 11f",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 66,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "note": "TJ 11f"
     },
     "FUFT.3+4": {
       "name": "ARMOR KING FUFT.3+4",
@@ -14262,12 +12752,7 @@
       "merge_source": "t7:armorking_130",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "input_note": "Face Up, Feet Towards+",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "Face Up, Feet Towards+"
     },
     "BT.1": {
       "name": "ARMOR KING BT.1",
@@ -14303,12 +12788,7 @@
       "merge_source": "t7:armorking_131",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "input_note": "(or 2)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(or 2)"
     },
     "BT.3~t7.armorking": {
       "name": "Blind Kick",
@@ -14342,12 +12822,7 @@
       "t7_on_hit": "STUN",
       "t7_on_ch": "STUN",
       "merge_source": "t7:armorking_132",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "BT.4~t7.armorking": {
       "name": "Turn Sobat",
@@ -14382,12 +12857,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:armorking_133",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "1+2+3+4": {
       "name": "ARMOR KING 1+2+3+4",
@@ -14422,12 +12892,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:armorking_134",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 35,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "COUNTER_HIT.WS.2,U": {
       "name": "ARMOR KING COUNTER_HIT.WS.2,U",
@@ -14463,12 +12928,7 @@
       "merge_source": "t7:armorking_135",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "input_note": "(During Counter Hit)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Counter Hit)"
     },
     "CHARGE.f,n,d,d/f+2": {
       "name": "ARMOR KING CHARGE.f,n,d,d/f+2",
@@ -14504,12 +12964,7 @@
       "merge_source": "t7:armorking_136",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "input_note": "(During Charge)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Charge)"
     },
     "CHARGE.qcf+1+2": {
       "name": "ARMOR KING CHARGE.qcf+1+2",
@@ -14545,12 +13000,7 @@
       "merge_source": "t7:armorking_137",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "input_note": "(During Charge)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Charge)"
     },
     "f,n,d,d/f~t7.armorking": {
       "name": "ARMOR KING f,n,d,d/f",
@@ -14584,12 +13034,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:armorking_138",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "f,n,d,d/f+1~t7.armorking": {
       "name": "Shadow Lariat",
@@ -14624,12 +13069,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:armorking_139",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "f,n,d,d/f+2~t7.armorking": {
       "name": "Dark Smash",
@@ -14664,12 +13104,7 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:armorking_140",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "f,n,d,d/f+3,B": {
       "name": "ARMOR KING f,n,d,d/f+3,B",
@@ -14703,12 +13138,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:armorking_141",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "f,n,d,d/f+4": {
       "name": "Knee Vault",
@@ -14744,12 +13174,7 @@
       "merge_source": "t7:armorking_142",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "note": "TJ 9f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "TJ 9f"
     },
     "d+1+4": {
       "name": "Shadow Step",
@@ -14785,12 +13210,7 @@
       "merge_source": "t7:armorking_143",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "note": "Auto parries lows from 3 - 14f",
-      "input_note": "(or d+2+3)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 35,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(or d+2+3)"
     },
     "d/b+1+2,D": {
       "name": "Stomping Headbutt Cancel to Shadow Step",
@@ -14824,12 +13244,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:armorking_144",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "f,F+3,D": {
       "name": "Comeback Kick to Shadow Step",
@@ -14864,12 +13279,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:armorking_145",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "SHADOW_STEP.D/F": {
       "name": "ARMOR KING SHADOW_STEP.D/F",
@@ -14904,12 +13314,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:armorking_146",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "(During Shadow Step)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Shadow Step)"
     },
     "SHADOW_STEP.2": {
       "name": "Shadow Sweep",
@@ -14945,12 +13350,7 @@
       "merge_source": "t7:armorking_147",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Shadow Step)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Shadow Step)"
     },
     "SHADOW_STEP.1+2": {
       "name": "Shadow Press",
@@ -14993,12 +13393,7 @@
         "total": 33
       },
       "launch": true,
-      "input_note": "(During Shadow Step)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Shadow Step)"
     },
     "f+1+2~t7.armorking": {
       "name": "Hammer Impact",
@@ -15034,12 +13429,7 @@
       "merge_source": "t7:armorking_149",
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
-      "note": "PC 8f",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "PC 8f"
     },
     "R.b+3+4": {
       "name": "Rage Art",
@@ -15076,12 +13466,7 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
       "note": "PC 8f",
-      "input_note": "(During Rage)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Rage)"
     },
     "R.f,n,d,d/f+1+2*": {
       "name": "Rage Drive",
@@ -15117,12 +13502,7 @@
       "merge_source": "t7:armorking_151",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "input_note": "(During Rage)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Rage)"
     },
     "1+4": {
       "name": "Moonsault Drop",
@@ -15158,12 +13538,7 @@
       "merge_source": "t7:armorking_152",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "input_note": "(or u/f, n, 1+4) (or BT 1+4)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 232,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "input_note": "(or u/f, n, 1+4) (or BT 1+4)"
     },
     "u/f+1+2*": {
       "name": "Burning Knuckle",
@@ -15199,12 +13574,7 @@
       "merge_source": "t7:armorking_153",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(or u/f, 1+2*)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 35,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(or u/f, 1+2*)"
     },
     "f,n,d,d/f+3": {
       "name": "Dark Inferno",
@@ -15239,12 +13609,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:armorking_154",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "f,n,d,d/f+1+2~t7.armorking": {
       "name": "Poison Mist",
@@ -15279,12 +13644,7 @@
       "t7_on_ch": "+7",
       "merge_source": "t7:armorking_155",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "t7.armorking_156": {
       "name": "Dark Destroyer",
@@ -15318,12 +13678,7 @@
       "merge_source": "t7:armorking_156",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "descriptive: b+2+3 D to cancel",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "descriptive: b+2+3 D to cancel"
     },
     "CHARGE.qcf+1": {
       "name": "ARMOR KING CHARGE.qcf+1",
@@ -15359,12 +13714,7 @@
       "merge_source": "t7:armorking_157",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "input_note": "(During Charge)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Charge)"
     },
     "WALL.b,b,u/b": {
       "name": "ARMOR KING WALL.b,b,u/b",
@@ -15400,12 +13750,7 @@
       "merge_source": "t7:armorking_158",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Back towards wall...",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "Back towards wall..."
     },
     "1+3~t7.armorking": {
       "name": "Knee Bash",
@@ -15441,12 +13786,7 @@
       "merge_source": "t7:armorking_159",
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
-      "input_note": "Approach enemy...",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 463,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "input_note": "Approach enemy..."
     },
     "2+4~t7.armorking": {
       "name": "Suplex",
@@ -15482,12 +13822,7 @@
       "merge_source": "t7:armorking_160",
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
-      "input_note": "Approach enemy...",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 467,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "input_note": "Approach enemy..."
     },
     "3+4*~t7.armorking": {
       "name": "Phenomenon Shadow DDT",
@@ -15522,12 +13857,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:armorking_161",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "f+1+3": {
       "name": "Knee Bash",
@@ -15563,12 +13893,7 @@
       "merge_source": "t7:armorking_162",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Approach enemy...",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 35,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "Approach enemy..."
     },
     "f+2+4": {
       "name": "Suplex",
@@ -15604,12 +13929,7 @@
       "merge_source": "t7:armorking_163",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Approach enemy...",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 35,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "Approach enemy..."
     },
     "f,f,f+2+4": {
       "name": "Brilliant Brawler Kick",
@@ -15645,12 +13965,7 @@
       "merge_source": "t7:armorking_164",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(or WR 2+4)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(or WR 2+4)"
     },
     "f,hcf+1~t7.armorking": {
       "name": "Double Arm Swing",
@@ -15687,12 +14002,7 @@
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
       "note": "ukemi input window 3f",
-      "input_note": "Approach enemy...",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "Approach enemy..."
     },
     "d/f+2+3~t7.armorking": {
       "name": "Driving Headbutt",
@@ -15728,12 +14038,7 @@
       "merge_source": "t7:armorking_166",
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
-      "input_note": "Approach enemy...",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 35,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "Approach enemy..."
     },
     "d/f+3+4~t7.armorking.2": {
       "name": "Frakensteiner",
@@ -15778,12 +14083,7 @@
       "input_note": "(close)",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "SUPLEX.d,d,d+1+2": {
       "name": "Jaguar Screwdriver",
@@ -15819,12 +14119,7 @@
       "merge_source": "t7:armorking_168",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Suplex)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Suplex)"
     },
     "qcb+1+2~t7.armorking": {
       "name": "Hades Drop",
@@ -15860,12 +14155,7 @@
       "merge_source": "t7:armorking_169",
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
-      "input_note": "Approach enemy...",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "Approach enemy..."
     },
     "d/b,f+2+4": {
       "name": "Tombstone Piledriver",
@@ -15901,12 +14191,7 @@
       "merge_source": "t7:armorking_170",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Approach enemy...",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "Approach enemy..."
     },
     "d/b,d/b+1+2": {
       "name": "DDT",
@@ -15942,12 +14227,7 @@
       "merge_source": "t7:armorking_171",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Approach enemy...",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "Approach enemy..."
     },
     "t7.armorking_172": {
       "name": "Toe Kick to Stunner",
@@ -15982,12 +14262,7 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
       "note": "input window 3f",
-      "input_note": "(during hit from the front) unparsed: b+4  1+2",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(during hit from the front) unparsed: b+4  1+2"
     },
     "SIDE_L.1+3~t7.armorking": {
       "name": "Reverse Death Valley Bomb",
@@ -16023,12 +14298,7 @@
       "merge_source": "t7:armorking_173",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Approach from left side... (or 2+4)",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "Approach from left side... (or 2+4)"
     },
     "SIDE_R.1+3": {
       "name": "Heavy Fall Reverse DDT",
@@ -16064,12 +14334,7 @@
       "merge_source": "t7:armorking_174",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Approach from right side... (or 2+4)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "Approach from right side... (or 2+4)"
     },
     "BACK.1+3~t7.armorking": {
       "name": "Reverse DDT",
@@ -16105,12 +14370,7 @@
       "merge_source": "t7:armorking_175",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Approach from behind... (or 2+4)",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "Approach from behind... (or 2+4)"
     },
     "CROUCHING.d+1+3": {
       "name": "Demon Bomb",
@@ -16146,12 +14406,7 @@
       "merge_source": "t7:armorking_176",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Approach (crouching enemy)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "Approach (crouching enemy)"
     },
     "CROUCHING.d+2+4": {
       "name": "Spinning Leg Lock",
@@ -16187,12 +14442,7 @@
       "merge_source": "t7:armorking_177",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Approach (crouching enemy)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "Approach (crouching enemy)"
     },
     "d/b+2+4": {
       "name": "Stand Up",
@@ -16227,12 +14477,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:armorking_178",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "(While enemy is down)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 35,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(While enemy is down)"
     },
     "t7.armorking_179": {
       "name": "Seesaw Whip",
@@ -16266,12 +14511,7 @@
       "merge_source": "t7:armorking_179",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(Enemy on back) descriptive:  by the feet... d/b+1+3",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(Enemy on back) descriptive:  by the feet... d/b+1+3"
     },
     "t7.armorking_180": {
       "name": "Enzui Knee",
@@ -16305,12 +14545,7 @@
       "merge_source": "t7:armorking_180",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(Enemy on back) descriptive:  by the head... d/b+1+3",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(Enemy on back) descriptive:  by the head... d/b+1+3"
     },
     "t7.armorking_181": {
       "name": "Turn Over",
@@ -16344,12 +14579,7 @@
       "merge_source": "t7:armorking_181",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(Enemy on back) (or d/b+2+4) descriptive:  by enemy's side... d/b+1+3",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(Enemy on back) (or d/b+2+4) descriptive:  by enemy's side... d/b+1+3"
     },
     "t7.armorking_182": {
       "name": "Standing Heel Hold",
@@ -16383,12 +14613,7 @@
       "merge_source": "t7:armorking_182",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(Enemy face down) descriptive:  by the feet... d/b+1+3",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(Enemy face down) descriptive:  by the feet... d/b+1+3"
     },
     "t7.armorking_183": {
       "name": "Wake-Up Lariat",
@@ -16422,12 +14647,7 @@
       "merge_source": "t7:armorking_183",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(Enemy face down) descriptive:  by the head.. d/b+1+3",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(Enemy face down) descriptive:  by the head.. d/b+1+3"
     },
     "t7.armorking_184": {
       "name": "Back Mount",
@@ -16461,12 +14681,7 @@
       "merge_source": "t7:armorking_184",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(Enemy face down) (or d/b+2+4) descriptive:  by enemy's side... d/b+1+3",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(Enemy face down) (or d/b+2+4) descriptive:  by enemy's side... d/b+1+3"
     },
     "AIR.f,hcf+1~t7.armorking": {
       "name": "Muscle Driver",
@@ -16502,12 +14717,7 @@
       "merge_source": "t7:armorking_185",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Approach mid-air enemy...",
-      "anim_t3": {
-        "bank": "armorking",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "Approach mid-air enemy..."
     },
     "AIR.f,f,f+2+4": {
       "name": "Running Cross Driver",
@@ -16543,12 +14753,7 @@
       "merge_source": "t7:armorking_186",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Approach mid-air enemy...",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "Approach mid-air enemy..."
     },
     "FC.d/b+1+2": {
       "name": "ARMOR KING FC.d/b+1+2",
@@ -16583,12 +14788,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:armorking_187",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "FC.d/b,d,d/b+1+2": {
       "name": "Armor King Driver",
@@ -16623,12 +14823,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:armorking_188",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "f,n,d,D/F+1+4": {
       "name": "Cobra Clutch",
@@ -16664,12 +14859,7 @@
       "merge_source": "t7:armorking_189",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Approach enemy... (or 2+3)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "Approach enemy... (or 2+3)"
     },
     "COBRA_CLUTCH.2+4,1+2,1+2": {
       "name": "Flinging Half Nelson",
@@ -16705,12 +14895,7 @@
       "merge_source": "t7:armorking_190",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Cobra Clutch)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 35,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Cobra Clutch)"
     },
     "COBRA_CLUTCH.3+4,3+4,1+2": {
       "name": "Sleeper",
@@ -16746,12 +14931,7 @@
       "merge_source": "t7:armorking_191",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Cobra Clutch)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 35,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Cobra Clutch)"
     },
     "COBRA_CLUTCH.2,1,1+2": {
       "name": "Neck Drop",
@@ -16787,12 +14967,7 @@
       "merge_source": "t7:armorking_192",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Cobra Clutch)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 35,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Cobra Clutch)"
     },
     "SLEEPER.1,1,1+2": {
       "name": "Triple Trouble",
@@ -16828,12 +15003,7 @@
       "merge_source": "t7:armorking_193",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Sleeper)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 35,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Sleeper)"
     },
     "SLEEPER.3,4,1+2,3+4": {
       "name": "Human Necktie",
@@ -16869,12 +15039,7 @@
       "merge_source": "t7:armorking_194",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Sleeper)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 35,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Sleeper)"
     },
     "NECK_DROP.4,3,3+4,1+2": {
       "name": "Choke Sleeper",
@@ -16910,12 +15075,7 @@
       "merge_source": "t7:armorking_195",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Neck Drop)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 35,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Neck Drop)"
     },
     "NECK_DROP.3+4,2,1,1,1+2": {
       "name": "3-Count Pound",
@@ -16951,12 +15111,7 @@
       "merge_source": "t7:armorking_196",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Neck Drop)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 35,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Neck Drop)"
     },
     "t7.armorking_197": {
       "name": "ARMOR KING FC 1+2 (or WR f, f, F (Mid Screen))",
@@ -16990,12 +15145,7 @@
       "merge_source": "t7:armorking_197",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(or WR f, f, F (Mid Screen) unparsed: FC.1+2 )",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(or WR f, f, F (Mid Screen) unparsed: FC.1+2 )"
     },
     "TACKLE.1": {
       "name": "ARMOR KING TACKLE.1",
@@ -17031,12 +15181,7 @@
       "merge_source": "t7:armorking_198",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Tackle) (or 2)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Tackle) (or 2)"
     },
     "TACKLE.1,1": {
       "name": "ARMOR KING TACKLE.1,1",
@@ -17079,12 +15224,7 @@
         "total": 10
       },
       "knockdown": true,
-      "input_note": "(During Tackle)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Tackle)"
     },
     "TACKLE.1,1,1": {
       "name": "ARMOR KING TACKLE.1,1,1",
@@ -17128,12 +15268,7 @@
         "total": 15
       },
       "knockdown": true,
-      "input_note": "(During Tackle)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Tackle)"
     },
     "TACKLE.1,1,1,1": {
       "name": "ARMOR KING TACKLE.1,1,1,1",
@@ -17178,12 +15313,7 @@
         "total": 30
       },
       "knockdown": true,
-      "input_note": "(During Tackle)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Tackle)"
     },
     "t7.armorking_202": {
       "name": "Catch",
@@ -17225,12 +15355,7 @@
       },
       "knockdown": true,
       "note": "parries highs and mids from 2 - 10f",
-      "input_note": "(or b+2+4) descriptive: Time with enemy punch... b+1+3",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(or b+2+4) descriptive: Time with enemy punch... b+1+3"
     }
   },
   "frame_convention": "T3 60fps -> seconds; damage scaled T3 170HP -> WH 100HP",

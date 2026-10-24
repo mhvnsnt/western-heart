@@ -1101,12 +1101,7 @@
       "startup": 0.45,
       "recovery": 0.9,
       "soulGain": 14,
-      "t3_source": null,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 355,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "t3_source": null
     },
     "P+K": {
       "name": "Designation Query [WH SIGNATURE]",
@@ -1130,12 +1125,7 @@
       "note": "WHAT IS YOUR DESIGNATION? He asks every new fighter, then logs the answer. Grab filed as entry 24.",
       "throw": true,
       "unblockable": true,
-      "isGrab": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 355,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "isGrab": true
     },
     "S": {
       "name": "Undefined Soul Protocol [WH SIGNATURE]",
@@ -1154,12 +1144,7 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "IF SOUL = UNDEFINED, THEN FIGHT ANYWAY. Heavy mech blast on default orders.",
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 355,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "IF SOUL = UNDEFINED, THEN FIGHT ANYWAY. Heavy mech blast on default orders."
     },
     "b+S": {
       "name": "Log Entry 24 [WH SIGNATURE]",
@@ -1180,12 +1165,7 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "The log is 23 entries long. He reads it when he can't sleep. A patient counter logged as the next entry.",
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 23,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "The log is 23 entries long. He reads it when he can't sleep. A patient counter logged as the next entry."
     },
     "1+4": {
       "name": "Designation Query [WH SIGNATURE]",
@@ -1209,12 +1189,7 @@
       "unblockable": true,
       "isGrab": true,
       "input_remapped_from": "P+K",
-      "throw_break": "1+2",
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 355,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1+2"
     },
     "1+4__main": {
       "name": "Move 1+4 (1+4)",
@@ -1234,12 +1209,7 @@
       "input_slots": [
         "1+4"
       ],
-      "move_class": "special",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "move_class": "special"
     },
     "1+2": {
       "name": "Undefined Soul Protocol [WH SIGNATURE]",
@@ -1259,12 +1229,7 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "IF SOUL = UNDEFINED, THEN FIGHT ANYWAY. Heavy mech blast on default orders.",
-      "input_remapped_from": "S",
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 49,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "input_remapped_from": "S"
     },
     "1+2__main": {
       "name": "SAM-UR-A1 1+2 (T3 gunjack r49)",
@@ -1304,12 +1269,7 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "The log is 23 entries long. He reads it when he can't sleep. A patient counter logged as the next entry.",
-      "input_remapped_from": "b+S",
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 102,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "input_remapped_from": "b+S"
     },
     "b+1+2__main": {
       "name": "Tyulpan Blast",
@@ -1330,12 +1290,7 @@
         "b+1+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -19",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 102,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -19"
     },
     "d+1": {
       "name": "SAM-UR-A1 d+1 (T3 gunjack r169)",
@@ -1459,12 +1414,7 @@
         "d+1+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -18; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 246,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -18; knockdown on hit"
     },
     "d/b+1": {
       "name": "SAM-UR-A1 d/b+1 (T3 gunjack r206)",
@@ -1637,12 +1587,7 @@
         ],
         "total": 32
       },
-      "note": "Mid, Mid; on block -12",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 89,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "note": "Mid, Mid; on block -12"
     },
     "f+3+4": {
       "name": "SAM-UR-A1 f+3+4 (T3 gunjack r241)",
@@ -1684,12 +1629,7 @@
         "f+3+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -11",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 241,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -11"
     },
     "u/b+1": {
       "name": "SAM-UR-A1 u/b+1 (T3 gunjack r48)",
@@ -4215,12 +4155,7 @@
         ],
         "total": 32
       },
-      "note": "Mid; on block -14c",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 171,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -14c"
     },
     "1+2_t8": {
       "name": "Tornado Punch",
@@ -4249,12 +4184,7 @@
         "total": 22
       },
       "note": "Mid, Mid; on block -13; knockdown on hit",
-      "t8_input": "1+2",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 49,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "t8_input": "1+2"
     },
     "1,2": {
       "name": "Stunning Hook",
@@ -4283,12 +4213,7 @@
         ],
         "total": 34
       },
-      "note": "High; on block -2; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "High; on block -2; knockdown on hit"
     },
     "1+2+3+4": {
       "name": "Ki Charge",
@@ -4308,12 +4233,7 @@
       "input_slots": [
         "1+2+3+4"
       ],
-      "move_class": "special",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "move_class": "special"
     },
     "1+4*,1": {
       "name": "Gigaton Punch (2/3/4/5 spins)",
@@ -4334,12 +4254,7 @@
         "1+4*,1"
       ],
       "move_class": "special",
-      "note": "Mid; on block !",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block !"
     },
     "1+4,1": {
       "name": "Gigaton Punch",
@@ -4361,12 +4276,7 @@
         "1+4,1"
       ],
       "move_class": "string",
-      "note": "Mid; on block +21g; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block +21g; knockdown on hit"
     },
     "1+4,df+1": {
       "name": "Windup Uppercut",
@@ -4388,12 +4298,7 @@
         "1+4,df+1"
       ],
       "move_class": "string",
-      "note": "Mid; on block -17; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -17; knockdown on hit"
     },
     "1+4:df+1": {
       "name": "Prime Windup Uppercut",
@@ -4414,12 +4319,7 @@
         "1+4:df+1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -17; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -17; knockdown on hit"
     },
     "2,1": {
       "name": "Move 1 (1)",
@@ -4448,12 +4348,7 @@
         ],
         "total": 22
       },
-      "note": "Mid; on block -3",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 474,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -3"
     },
     "2,1,1+2": {
       "name": "Piston Gun Fusillade",
@@ -4488,12 +4383,7 @@
         ],
         "total": 70
       },
-      "note": "High, High, High, High, High; on block -4",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "High, High, High, High, High; on block -4"
     },
     "2,1,2": {
       "name": "Jab Elbow Smash",
@@ -4524,12 +4414,7 @@
         ],
         "total": 42
       },
-      "note": "Mid; on block -12; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -12; knockdown on hit"
     },
     "2,1,uf": {
       "name": "Flying Fortress",
@@ -4559,12 +4444,7 @@
         ],
         "total": 22
       },
-      "note": "on block +1",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "on block +1"
     },
     "2,1,uf+1+2": {
       "name": "Make Some Noise",
@@ -4595,12 +4475,7 @@
         ],
         "total": 42
       },
-      "note": "Mid; on block +5 GMH",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block +5 GMH"
     },
     "2+3": {
       "name": "Heat Burst",
@@ -4628,12 +4503,7 @@
         ],
         "total": 24
       },
-      "note": "Mid; on block +1",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block +1"
     },
     "2,3": {
       "name": "Mimesis Savage Knee",
@@ -4662,12 +4532,7 @@
         ],
         "total": 28
       },
-      "note": "Mid; on block -13",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 56,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -13"
     },
     "3,1+2": {
       "name": "Machine Press",
@@ -4696,12 +4561,7 @@
         ],
         "total": 40
       },
-      "note": "Mid; on block -11c",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -11c"
     },
     "3,2": {
       "name": "Two-Step Die",
@@ -4730,12 +4590,7 @@
         ],
         "total": 38
       },
-      "note": "High; on block -9",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "High; on block -9"
     },
     "3+4_t8": {
       "name": "Gamma Howl (Gamma Charge)",
@@ -4756,12 +4611,7 @@
         "3+4"
       ],
       "move_class": "special",
-      "t8_input": "3+4",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 68,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "t8_input": "3+4"
     },
     "b+1": {
       "name": "Move b+1 (b+1)",
@@ -4782,12 +4632,7 @@
         "b+1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -11",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 92,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -11"
     },
     "b+1,2": {
       "name": "Double Biceps",
@@ -4816,12 +4661,7 @@
         ],
         "total": 34
       },
-      "note": "Mid; on block -14c",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -14c"
     },
     "b+2": {
       "name": "Piston Gun Assault",
@@ -4842,12 +4682,7 @@
         "b+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +2; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 98,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block +2; knockdown on hit"
     },
     "b+2*": {
       "name": "Piston Gun Assault (charged)",
@@ -4868,12 +4703,7 @@
         "b+2*"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -2; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -2; knockdown on hit"
     },
     "b+3": {
       "name": "Move b+3 (b+3)",
@@ -4894,12 +4724,7 @@
         "b+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -9",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 104,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -9"
     },
     "b+3,2": {
       "name": "Move 2 (2)",
@@ -4928,12 +4753,7 @@
         ],
         "total": 27
       },
-      "note": "High; on block -4",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "High; on block -4"
     },
     "b+3,2,2": {
       "name": "Mad Dozer",
@@ -4964,12 +4784,7 @@
         ],
         "total": 47
       },
-      "note": "High; on block -9",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "High; on block -9"
     },
     "b+3,2,2*": {
       "name": "Mad Dozer (charged)",
@@ -5000,12 +4815,7 @@
         ],
         "total": 67
       },
-      "note": "Mid; on block -7",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -7"
     },
     "b+3+4": {
       "name": "Mimesis Rusty Nail",
@@ -5026,12 +4836,7 @@
         "b+3+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +4c",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 85,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block +4c"
     },
     "b+4": {
       "name": "Move b+4 (b+4)",
@@ -5052,12 +4857,7 @@
         "b+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -13",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 72,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -13"
     },
     "b+4,4": {
       "name": "Sherman Stomp",
@@ -5086,12 +4886,7 @@
         ],
         "total": 37
       },
-      "note": "Mid; on block -4c",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 72,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -4c"
     },
     "Back Throw 1+3": {
       "name": "Spinal Crush",
@@ -5116,12 +4911,7 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 203,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1"
     },
     "Back Throw 2+4": {
       "name": "Throw Away",
@@ -5146,12 +4936,7 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "2",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 203,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "throw_break": "2"
     },
     "b,db,d,df+1": {
       "name": "Debugger",
@@ -5172,12 +4957,7 @@
         "b,db,d,df+1"
       ],
       "move_class": "strike",
-      "note": "Low; on block -37",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low; on block -37"
     },
     "b,db,d,df+2": {
       "name": "Megaton Blast",
@@ -5198,12 +4978,7 @@
         "b,db,d,df+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -9",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -9"
     },
     "d+1_t8": {
       "name": "Move d+1 (d+1)",
@@ -5225,12 +5000,7 @@
       ],
       "move_class": "strike",
       "note": "Special low; on block -5",
-      "t8_input": "d+1",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 169,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "t8_input": "d+1"
     },
     "d+1+3": {
       "name": "Gun Bomb",
@@ -5255,12 +5025,7 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 508,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1"
     },
     "d+2": {
       "name": "Move d+2 (d+2)",
@@ -5281,12 +5046,7 @@
         "d+2"
       ],
       "move_class": "strike",
-      "note": "Special low; on block -4",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Special low; on block -4"
     },
     "d+2,1": {
       "name": "Move 1 (1)",
@@ -5315,12 +5075,7 @@
         ],
         "total": 14
       },
-      "note": "Low; on block -14",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low; on block -14"
     },
     "d+2+4": {
       "name": "Iron Gunman",
@@ -5345,12 +5100,7 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "2",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 203,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "throw_break": "2"
     },
     "d+3": {
       "name": "Move d+3 (d+3)",
@@ -5371,12 +5121,7 @@
         "d+3"
       ],
       "move_class": "strike",
-      "note": "Low; on block -17",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 56,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low; on block -17"
     },
     "d+3+4": {
       "name": "Sit Down",
@@ -5396,12 +5141,7 @@
       "input_slots": [
         "d+3+4"
       ],
-      "move_class": "special",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "move_class": "special"
     },
     "d+4_t8": {
       "name": "Move d+4 (d+4)",
@@ -5423,12 +5163,7 @@
       ],
       "move_class": "strike",
       "note": "Low; on block -15",
-      "t8_input": "d+4",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 280,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "t8_input": "d+4"
     },
     "db+1": {
       "name": "Move db+1 (db+1)",
@@ -5449,12 +5184,7 @@
         "db+1"
       ],
       "move_class": "strike",
-      "note": "Low; on block -12",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low; on block -12"
     },
     "db+1,1": {
       "name": "Move 1 (1)",
@@ -5483,12 +5213,7 @@
         ],
         "total": 18
       },
-      "note": "Low; on block -12",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low; on block -12"
     },
     "db+1,1,1": {
       "name": "Move 1 (1)",
@@ -5519,12 +5244,7 @@
         ],
         "total": 23
       },
-      "note": "Low; on block -12",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low; on block -12"
     },
     "db+1,1,1,2": {
       "name": "Machinegun Blast",
@@ -5557,12 +5277,7 @@
         ],
         "total": 44
       },
-      "note": "Mid; on block -11; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -11; knockdown on hit"
     },
     "db+1+2": {
       "name": "Megaton Earthquake",
@@ -5590,12 +5305,7 @@
         ],
         "total": 29
       },
-      "note": "Low, Low; on block -70",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Low, Low; on block -70"
     },
     "db+2": {
       "name": "Power Shovel",
@@ -5616,12 +5326,7 @@
         "db+2"
       ],
       "move_class": "strike",
-      "note": "Low; on block -18",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low; on block -18"
     },
     "db+2*": {
       "name": "Power Shovel (charged)",
@@ -5642,12 +5347,7 @@
         "db+2*"
       ],
       "move_class": "strike",
-      "note": "Low; on block -33",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low; on block -33"
     },
     "db+2+3": {
       "name": "Body Smash",
@@ -5672,12 +5372,7 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 203,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1"
     },
     "db+3": {
       "name": "Cossack Kick",
@@ -5698,12 +5393,7 @@
         "db+3"
       ],
       "move_class": "strike",
-      "note": "Low; on block -20",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 56,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low; on block -20"
     },
     "db+3, ... 1+2": {
       "name": "Cossack Smash",
@@ -5732,12 +5422,7 @@
         ],
         "total": 36
       },
-      "note": "High; on block +14g",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "High; on block +14g"
     },
     "db+3,4": {
       "name": "Cossack Kick (4)",
@@ -5766,12 +5451,7 @@
         ],
         "total": 27
       },
-      "note": "Low; on block -16",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 72,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low; on block -16"
     },
     "db+3,4,3": {
       "name": "Cossack Kick (3)",
@@ -5802,12 +5482,7 @@
         ],
         "total": 39
       },
-      "note": "Low; on block -19",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 56,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low; on block -19"
     },
     "db+3,4,3,4": {
       "name": "Cossack Kick (4)",
@@ -5840,12 +5515,7 @@
         ],
         "total": 51
       },
-      "note": "Low; on block -16",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 72,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low; on block -16"
     },
     "db+3,4,3,4,3": {
       "name": "Cossack Kick (3)",
@@ -5880,12 +5550,7 @@
         ],
         "total": 63
       },
-      "note": "Low; on block -19",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 56,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low; on block -19"
     },
     "db+3,4,3,4,3,4": {
       "name": "Cossack Kicks",
@@ -5922,12 +5587,7 @@
         ],
         "total": 75
       },
-      "note": "Low; on block -16",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 72,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low; on block -16"
     },
     "db+3, ... d+1+2": {
       "name": "Cossack Compactor",
@@ -5961,12 +5621,7 @@
         ],
         "total": 60
       },
-      "note": "m (th)",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "m (th)"
     },
     "db+4": {
       "name": "Big Boot",
@@ -5987,12 +5642,7 @@
         "db+4"
       ],
       "move_class": "strike",
-      "note": "Low; on block -13",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 72,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low; on block -13"
     },
     "db,n,f+1+2": {
       "name": "Pile Driver",
@@ -6017,12 +5667,7 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1+2",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 203,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1+2"
     },
     "df+1": {
       "name": "Move df+1 (df+1)",
@@ -6043,12 +5688,7 @@
         "df+1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -4",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -4"
     },
     "df+1,1": {
       "name": "Overheat",
@@ -6077,12 +5717,7 @@
         ],
         "total": 32
       },
-      "note": "Mid; on block -11",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -11"
     },
     "df+1,2": {
       "name": "Move 2 (2)",
@@ -6111,12 +5746,7 @@
         ],
         "total": 22
       },
-      "note": "High; on block -12",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "High; on block -12"
     },
     "df+1,2,1": {
       "name": "Move 1 (1)",
@@ -6147,12 +5777,7 @@
         ],
         "total": 24
       },
-      "note": "High; on block -10",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "High; on block -10"
     },
     "df+1,2,1,2": {
       "name": "Overdrive",
@@ -6185,12 +5810,7 @@
         ],
         "total": 44
       },
-      "note": "High; on block -18",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "High; on block -18"
     },
     "df+1+3": {
       "name": "Body Press",
@@ -6211,12 +5831,7 @@
         "df+1+3"
       ],
       "move_class": "strike",
-      "note": "SM; on block -18c~+1c; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "SM; on block -18c~+1c; knockdown on hit"
     },
     "df+1+4": {
       "name": "Debugger",
@@ -6237,12 +5852,7 @@
         "df+1+4"
       ],
       "move_class": "strike",
-      "note": "Low; on block -37",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Low; on block -37"
     },
     "df+2": {
       "name": "Programmed Uppercut",
@@ -6263,12 +5873,7 @@
         "df+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -14; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -14; knockdown on hit"
     },
     "df+2,1": {
       "name": "Cosmic Sweeper",
@@ -6290,12 +5895,7 @@
         "df+2,1"
       ],
       "move_class": "string",
-      "note": "High; on block -32; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "High; on block -32; knockdown on hit"
     },
     "df+2,1*": {
       "name": "Cosmic Sweeper (charged)",
@@ -6317,12 +5917,7 @@
         "df+2,1*"
       ],
       "move_class": "string",
-      "note": "High; on block -46; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "High; on block -46; knockdown on hit"
     },
     "df+2+3": {
       "name": "Megaton Blast",
@@ -6343,12 +5938,7 @@
         "df+2+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -9",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -9"
     },
     "df+2+4": {
       "name": "Volcano",
@@ -6373,12 +5963,7 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "2",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 203,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "throw_break": "2"
     },
     "df+3": {
       "name": "Move df+3 (df+3)",
@@ -6399,12 +5984,7 @@
         "df+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -9",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 56,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -9"
     },
     "df+3,2": {
       "name": "Combine Harvester",
@@ -6433,12 +6013,7 @@
         ],
         "total": 36
       },
-      "note": "High; on block -7",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "High; on block -7"
     },
     "df+3+4": {
       "name": "Dump Truck",
@@ -6459,12 +6034,7 @@
         "df+3+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -23; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -23; knockdown on hit"
     },
     "df+4": {
       "name": "Mimesis Wrench Kick",
@@ -6485,12 +6055,7 @@
         "df+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -9",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 72,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -9"
     },
     "df,DF+2+4": {
       "name": "Volcano Blaster",
@@ -6515,12 +6080,7 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "2",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 203,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "throw_break": "2"
     },
     "(During Enemy wall stun) 1+3": {
       "name": "Twin Drivers",
@@ -6545,12 +6105,7 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 203,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1"
     },
     "f+1,1": {
       "name": "Impact Driver",
@@ -6579,12 +6134,7 @@
         ],
         "total": 38
       },
-      "note": "High; on block -7",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "High; on block -7"
     },
     "f+1,2": {
       "name": "Move 2 (2)",
@@ -6613,12 +6163,7 @@
         ],
         "total": 25
       },
-      "note": "High; on block -6",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "High; on block -6"
     },
     "f+1,2,1": {
       "name": "Drilling Engine",
@@ -6649,12 +6194,7 @@
         ],
         "total": 45
       },
-      "note": "Mid; on block -12; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -12; knockdown on hit"
     },
     "f+1,2,2": {
       "name": "Piston Gun Blaster",
@@ -6685,12 +6225,7 @@
         ],
         "total": 47
       },
-      "note": "Mid; on block +3; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block +3; knockdown on hit"
     },
     "f+1,2,2*": {
       "name": "Piston Gun Blaster (charged)",
@@ -6721,12 +6256,7 @@
         ],
         "total": 65
       },
-      "note": "Mid; on block -10",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -10"
     },
     "f+2": {
       "name": "Pinpoint Assault",
@@ -6747,12 +6277,7 @@
         "f+2"
       ],
       "move_class": "strike",
-      "note": "High; on block -12",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 90,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "High; on block -12"
     },
     "f+4": {
       "name": "Move f+4 (f+4)",
@@ -6773,12 +6298,7 @@
         "f+4"
       ],
       "move_class": "strike",
-      "note": "High; on block -4",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 86,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "High; on block -4"
     },
     "f+4~1": {
       "name": "Dark Greeting",
@@ -6799,12 +6319,7 @@
         "f+4~1"
       ],
       "move_class": "strike",
-      "note": "High; on block !",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "High; on block !"
     },
     "f+4~1,2": {
       "name": "Sudden Elbow",
@@ -6825,12 +6340,7 @@
         "f+4~1,2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +8",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block +8"
     },
     "FC.df+1": {
       "name": "Move FC.df+1 (FC.df+1)",
@@ -6851,12 +6361,7 @@
         "FC.df+1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -21",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -21"
     },
     "FC.df+1,2": {
       "name": "Move 2 (2)",
@@ -6885,12 +6390,7 @@
         ],
         "total": 13
       },
-      "note": "Mid; on block -21",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -21"
     },
     "FC.df+1,2,1": {
       "name": "Move 1 (1)",
@@ -6921,12 +6421,7 @@
         ],
         "total": 24
       },
-      "note": "Mid; on block -11",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -11"
     },
     "FC.df+1,2,1,1": {
       "name": "Windmill Punches",
@@ -6959,12 +6454,7 @@
         ],
         "total": 54
       },
-      "note": "High; on block +15",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "High; on block +15"
     },
     "FC.df+2": {
       "name": "Move FC.df+2 (FC.df+2)",
@@ -6985,12 +6475,7 @@
         "FC.df+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -13",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -13"
     },
     "FC.df+2,1": {
       "name": "Move 1 (1)",
@@ -7019,12 +6504,7 @@
         ],
         "total": 22
       },
-      "note": "Mid; on block -4",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -4"
     },
     "FC.df+2,1,2": {
       "name": "Swing R Knuckle",
@@ -7055,12 +6535,7 @@
         ],
         "total": 32
       },
-      "note": "Mid; on block -12; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -12; knockdown on hit"
     },
     "FC.df+2,d+1": {
       "name": "Swing R Knuckle Low",
@@ -7089,12 +6564,7 @@
         ],
         "total": 20
       },
-      "note": "Low; on block -11",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low; on block -11"
     },
     "FC.df+2,f+1": {
       "name": "Swing R Knuckle High",
@@ -7123,12 +6593,7 @@
         ],
         "total": 35
       },
-      "note": "High; on block -4; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "High; on block -4; knockdown on hit"
     },
     "FC.df+3+4": {
       "name": "Atomic Shoulder Tackle",
@@ -7149,12 +6614,7 @@
         "FC.df+3+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -9",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -9"
     },
     "FC.df+3+4*": {
       "name": "Atomic Shoulder Tackle (charged)",
@@ -7175,12 +6635,7 @@
         "FC.df+3+4*"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -4",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -4"
     },
     "FC.df+3+4,uf": {
       "name": "Flying Fortress",
@@ -7202,12 +6657,7 @@
         "FC.df+3+4,uf"
       ],
       "move_class": "string",
-      "note": "on block -1",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "on block -1"
     },
     "FC.df+3+4*,uf": {
       "name": "Flying Fortress",
@@ -7229,12 +6679,7 @@
         "FC.df+3+4*,uf"
       ],
       "move_class": "string",
-      "note": "on block +4",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "on block +4"
     },
     "FC.df+3+4,uf+1+2": {
       "name": "Make Some Noise",
@@ -7263,12 +6708,7 @@
         ],
         "total": 48
       },
-      "note": "Mid; on block +5 GMH",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block +5 GMH"
     },
     "FC.df+3+4*,uf+1+2": {
       "name": "Make Some Noise",
@@ -7297,12 +6737,7 @@
         ],
         "total": 52
       },
-      "note": "Mid; on block +5 GMH",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block +5 GMH"
     },
     "FC.df+4": {
       "name": "Move FC.df+4 (FC.df+4)",
@@ -7323,12 +6758,7 @@
         "FC.df+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -12",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 72,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -12"
     },
     "FC.df+4,2": {
       "name": "Mimesis Spike Press",
@@ -7357,12 +6787,7 @@
         ],
         "total": 27
       },
-      "note": "Mid; on block -14",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -14"
     },
     "f,F+1": {
       "name": "Jackhammer",
@@ -7383,12 +6808,7 @@
         "f,F+1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -6",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -6"
     },
     "f,F+1+2": {
       "name": "Move f,F+1+2 (f,F+1+2)",
@@ -7409,12 +6829,7 @@
         "f,F+1+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -15",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -15"
     },
     "f,F+1+2,1+2": {
       "name": "High and Low Cross Cut",
@@ -7443,12 +6858,7 @@
         ],
         "total": 41
       },
-      "note": "Low; on block -19",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Low; on block -19"
     },
     "f,F+1+2,2": {
       "name": "Cross Cut Blast",
@@ -7477,12 +6887,7 @@
         ],
         "total": 44
       },
-      "note": "Mid; on block -9; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -9; knockdown on hit"
     },
     "f,F+1+4": {
       "name": "Sliding Attack",
@@ -7503,12 +6908,7 @@
         "f,F+1+4"
       ],
       "move_class": "strike",
-      "note": "M (L); on block -82~-73",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "M (L); on block -82~-73"
     },
     "f,F+2": {
       "name": "Rocket Uppercut",
@@ -7529,12 +6929,7 @@
         "f,F+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -16; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -16; knockdown on hit"
     },
     "f,F+2*": {
       "name": "Rocket Uppercut (charged)",
@@ -7555,12 +6950,7 @@
         "f,F+2*"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -15; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -15; knockdown on hit"
     },
     "f,F+3": {
       "name": "Granite Stomping",
@@ -7581,12 +6971,7 @@
         "f,F+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +4",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 56,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block +4"
     },
     "f,F+4": {
       "name": "Rocket Kick",
@@ -7607,12 +6992,7 @@
         "f,F+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -10",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 72,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -10"
     },
     "f,f,F+1+2": {
       "name": "Mimesis Charging Tackle",
@@ -7633,12 +7013,7 @@
         "f,f,F+1+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +4; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block +4; knockdown on hit"
     },
     "f,f,F+2": {
       "name": "Cemaho Chop",
@@ -7659,12 +7034,7 @@
         "f,f,F+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +6",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block +6"
     },
     "FUFT.d+1+2": {
       "name": "Get Up Punch",
@@ -7685,12 +7055,7 @@
         "FUFT.d+1+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +18g",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block +18g"
     },
     "GMC.1": {
       "name": "Jaguar Hook - Gamma",
@@ -7711,12 +7076,7 @@
         "GMC.1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -6; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -6; knockdown on hit"
     },
     "GMC.2": {
       "name": "Exaton Blast - Gamma",
@@ -7737,12 +7097,7 @@
         "GMC.2"
       ],
       "move_class": "strike",
-      "note": "High; on block +11; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "High; on block +11; knockdown on hit"
     },
     "GMC.3+4": {
       "name": "Particle Barrier - Gamma",
@@ -7763,12 +7118,7 @@
         "GMC.3+4"
       ],
       "move_class": "strike",
-      "note": "Special mid; on block -9",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Special mid; on block -9"
     },
     "GMH.1": {
       "name": "Juggernaut Hook",
@@ -7789,12 +7139,7 @@
         "GMH.1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -9",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -9"
     },
     "GMH.1+2": {
       "name": "Mimesis Overkill",
@@ -7815,12 +7160,7 @@
         "GMH.1+2"
       ],
       "move_class": "special",
-      "note": "th; on block -6",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "th; on block -6"
     },
     "GMH.1+3": {
       "name": "Gun Bomb",
@@ -7845,12 +7185,7 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 203,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1"
     },
     "GMH.2": {
       "name": "Exaton Blast",
@@ -7871,12 +7206,7 @@
         "GMH.2"
       ],
       "move_class": "strike",
-      "note": "High; on block +11g",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "High; on block +11g"
     },
     "GMH.2+4": {
       "name": "Iron Gunman",
@@ -7901,12 +7231,7 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "2",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 203,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "throw_break": "2"
     },
     "GMH.3": {
       "name": "Granite Stomp",
@@ -7927,12 +7252,7 @@
         "GMH.3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +4",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 56,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block +4"
     },
     "GMH.3+4": {
       "name": "Particle Barrier",
@@ -7953,12 +7273,7 @@
         "GMH.3+4"
       ],
       "move_class": "strike",
-      "note": "SM; on block -13",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "SM; on block -13"
     },
     "GMH.4": {
       "name": "Full Metal Deathblow",
@@ -7979,12 +7294,7 @@
         "GMH.4"
       ],
       "move_class": "strike",
-      "note": "High; on block +4",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 72,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "High; on block +4"
     },
     "GMH.f": {
       "name": "Walking Fortress",
@@ -8004,12 +7314,7 @@
       "input_slots": [
         "GMH.f"
       ],
-      "move_class": "special",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "move_class": "special"
     },
     "GMH.f+1": {
       "name": "Prime Windup Uppercut",
@@ -8030,12 +7335,7 @@
         "GMH.f+1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -17; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -17; knockdown on hit"
     },
     "GMH.f+2": {
       "name": "Megalodriller",
@@ -8056,12 +7356,7 @@
         "GMH.f+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -13; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -13; knockdown on hit"
     },
     "GMH.ub": {
       "name": "Breakout Fortress",
@@ -8081,12 +7376,7 @@
       "input_slots": [
         "GMH.ub"
       ],
-      "move_class": "special",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "move_class": "special"
     },
     "GMH.uf": {
       "name": "Flying Fortress",
@@ -8106,12 +7396,7 @@
       "input_slots": [
         "GMH.uf"
       ],
-      "move_class": "special",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "move_class": "special"
     },
     "GMH.uf+1+2": {
       "name": "Make Some Noise",
@@ -8132,12 +7417,7 @@
         "GMH.uf+1+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +5 GMH",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block +5 GMH"
     },
     "H.2+3": {
       "name": "Meteor Raid",
@@ -8162,12 +7442,7 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 203,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1"
     },
     "HCF": {
       "name": "Move HCF (HCF)",
@@ -8187,12 +7462,7 @@
       "input_slots": [
         "HCF"
       ],
-      "move_class": "special",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "move_class": "special"
     },
     "HCF,1": {
       "name": "Gigaton Punch",
@@ -8214,12 +7484,7 @@
         "HCF,1"
       ],
       "move_class": "string",
-      "note": "Mid; on block +21g; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block +21g; knockdown on hit"
     },
     "HCF,df+1": {
       "name": "Windup Uppercut",
@@ -8241,12 +7506,7 @@
         "HCF,df+1"
       ],
       "move_class": "string",
-      "note": "Mid; on block -17; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -17; knockdown on hit"
     },
     "HCF:df+1": {
       "name": "Prime Windup Uppercut",
@@ -8267,12 +7527,7 @@
         "HCF:df+1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -17; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -17; knockdown on hit"
     },
     "H.f+3+4": {
       "name": "Hyper Merkabah Headbutt",
@@ -8293,12 +7548,7 @@
         "H.f+3+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +0",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block +0"
     },
     "hFC.1": {
       "name": "Move hFC.1 (hFC.1)",
@@ -8319,12 +7569,7 @@
         "hFC.1"
       ],
       "move_class": "strike",
-      "note": "Low; on block -8",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low; on block -8"
     },
     "hFC.1,1": {
       "name": "Double Low Hammer",
@@ -8353,12 +7598,7 @@
         ],
         "total": 24
       },
-      "note": "Low; on block -12~-10",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low; on block -12~-10"
     },
     "hFC.1+2": {
       "name": "Move hFC.1+2 (hFC.1+2)",
@@ -8379,12 +7619,7 @@
         "hFC.1+2"
       ],
       "move_class": "strike",
-      "note": "Low; on block -15",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Low; on block -15"
     },
     "hFC.1,2": {
       "name": "Megaton Strike",
@@ -8413,12 +7648,7 @@
         ],
         "total": 34
       },
-      "note": "Mid; on block -11; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -11; knockdown on hit"
     },
     "hFC.1+2,1+2": {
       "name": "Low Cross Combo",
@@ -8447,12 +7677,7 @@
         ],
         "total": 44
       },
-      "note": "Mid; on block -18; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -18; knockdown on hit"
     },
     "hFC.2": {
       "name": "Move hFC.2 (hFC.2)",
@@ -8473,12 +7698,7 @@
         "hFC.2"
       ],
       "move_class": "strike",
-      "note": "Special low; on block -4",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Special low; on block -4"
     },
     "hFC.2,1": {
       "name": "Move 1 (1)",
@@ -8507,12 +7727,7 @@
         ],
         "total": 14
       },
-      "note": "Low; on block -14",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low; on block -14"
     },
     "hFC.3": {
       "name": "Move hFC.3 (hFC.3)",
@@ -8533,12 +7748,7 @@
         "hFC.3"
       ],
       "move_class": "strike",
-      "note": "Low; on block -17",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 56,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low; on block -17"
     },
     "hFC.4": {
       "name": "Move hFC.4 (hFC.4)",
@@ -8559,12 +7769,7 @@
         "hFC.4"
       ],
       "move_class": "strike",
-      "note": "Low; on block -15",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 72,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low; on block -15"
     },
     "hFC.db+1": {
       "name": "Move hFC.db+1 (hFC.db+1)",
@@ -8585,12 +7790,7 @@
         "hFC.db+1"
       ],
       "move_class": "strike",
-      "note": "Low; on block -11",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low; on block -11"
     },
     "hFC.db+1,1": {
       "name": "Move 1 (1)",
@@ -8619,12 +7819,7 @@
         ],
         "total": 24
       },
-      "note": "Mid; on block -6",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -6"
     },
     "hFC.db+1,1,1": {
       "name": "Pulverizer",
@@ -8655,12 +7850,7 @@
         ],
         "total": 44
       },
-      "note": "Mid; on block -14; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -14; knockdown on hit"
     },
     "hFC.db+1,1,1*": {
       "name": "Pulverizer (charged)",
@@ -8691,12 +7881,7 @@
         ],
         "total": 54
       },
-      "note": "Mid; on block -6; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -6; knockdown on hit"
     },
     "H.uf+3": {
       "name": "Hyper Terrapulser",
@@ -8717,12 +7902,7 @@
         "H.uf+3"
       ],
       "move_class": "strike",
-      "note": "Low; on block -12",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 56,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low; on block -12"
     },
     "Left Throw": {
       "name": "Side Left Bomb",
@@ -8747,12 +7927,7 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 203,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1"
     },
     "qcb+2": {
       "name": "Back Breaker",
@@ -8777,12 +7952,7 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 276,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1"
     },
     "qcf+1": {
       "name": "Pyramid Driver",
@@ -8807,12 +7977,7 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 145,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1"
     },
     "R.df+1+2": {
       "name": "Terraforming Cannon",
@@ -8833,12 +7998,7 @@
         "R.df+1+2"
       ],
       "move_class": "special",
-      "note": "Mid, Throw; on block -18",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Mid, Throw; on block -18"
     },
     "Right Throw": {
       "name": "Father's Love",
@@ -8863,12 +8023,7 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 203,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1"
     },
     "SIT.1": {
       "name": "Move SIT.1 (SIT.1)",
@@ -8889,12 +8044,7 @@
         "SIT.1"
       ],
       "move_class": "strike",
-      "note": "Low; on block -48",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low; on block -48"
     },
     "SIT.1+2": {
       "name": "Ground Assault",
@@ -8915,12 +8065,7 @@
         "SIT.1+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -44",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -44"
     },
     "SIT.1,2": {
       "name": "Move 2 (2)",
@@ -8949,12 +8094,7 @@
         ],
         "total": 20
       },
-      "note": "Low; on block -47",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low; on block -47"
     },
     "SIT.1,2,1": {
       "name": "Move 1 (1)",
@@ -8985,12 +8125,7 @@
         ],
         "total": 30
       },
-      "note": "Low; on block -47",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low; on block -47"
     },
     "SIT.1,2,1,2": {
       "name": "Sit Punches",
@@ -9023,12 +8158,7 @@
         ],
         "total": 40
       },
-      "note": "Low; on block -47",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low; on block -47"
     },
     "SIT.3+4": {
       "name": "Extra Pancake Press",
@@ -9049,12 +8179,7 @@
         "SIT.3+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +13cg",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block +13cg"
     },
     "SIT.b": {
       "name": "Backward Roll",
@@ -9074,12 +8199,7 @@
       "input_slots": [
         "SIT.b"
       ],
-      "move_class": "special",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "move_class": "special"
     },
     "SIT.f": {
       "name": "Forward Roll",
@@ -9099,12 +8219,7 @@
       "input_slots": [
         "SIT.f"
       ],
-      "move_class": "special",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "move_class": "special"
     },
     "ss1": {
       "name": "Discharger",
@@ -9125,12 +8240,7 @@
         "ss1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +6c; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block +6c; knockdown on hit"
     },
     "ss2": {
       "name": "Piston Gun Snipe",
@@ -9151,12 +8261,7 @@
         "ss2"
       ],
       "move_class": "strike",
-      "note": "High; on block +9",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "High; on block +9"
     },
     "u+1+2": {
       "name": "Patriot Fist",
@@ -9177,12 +8282,7 @@
         "u+1+2"
       ],
       "move_class": "strike",
-      "note": "High; on block -13; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 19,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "note": "High; on block -13; knockdown on hit"
     },
     "u+3+4": {
       "name": "Giant Foot Stomp",
@@ -9203,12 +8303,7 @@
         "u+3+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block !",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block !"
     },
     "u+4": {
       "name": "Move u+4 (u+4)",
@@ -9229,12 +8324,7 @@
         "u+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -16; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 72,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -16; knockdown on hit"
     },
     "ub+1+2": {
       "name": "Barrel Jacket Hammer",
@@ -9255,12 +8345,7 @@
         "ub+1+2"
       ],
       "move_class": "strike",
-      "note": "High; on block -9",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "High; on block -9"
     },
     "uf+1": {
       "name": "Sky Sweeper",
@@ -9281,12 +8366,7 @@
         "uf+1"
       ],
       "move_class": "strike",
-      "note": "High; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "High; knockdown on hit"
     },
     "uf+1*": {
       "name": "Sky Sweeper (charged)",
@@ -9307,12 +8387,7 @@
         "uf+1*"
       ],
       "move_class": "strike",
-      "note": "High; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "High; knockdown on hit"
     },
     "uf+1+2": {
       "name": "Ground Zero",
@@ -9337,12 +8412,7 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1+2",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 203,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1+2"
     },
     "uf+1+2,d,df+2": {
       "name": "Lift Up Megaton Hit",
@@ -9367,12 +8437,7 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1+2",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 203,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1+2"
     },
     "uf+2": {
       "name": "Reactor Elbow",
@@ -9393,12 +8458,7 @@
         "uf+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +4c",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block +4c"
     },
     "uf+3": {
       "name": "Terrapulser",
@@ -9419,12 +8479,7 @@
         "uf+3"
       ],
       "move_class": "strike",
-      "note": "Low; on block -12",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 56,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low; on block -12"
     },
     "uf+3+4": {
       "name": "Pancake Press",
@@ -9445,12 +8500,7 @@
         "uf+3+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +13cg",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block +13cg"
     },
     "uf,n,2": {
       "name": "Move uf,n,2 (uf,n,2)",
@@ -9471,12 +8521,7 @@
         "uf,n,2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -1c",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -1c"
     },
     "ws1": {
       "name": "Killing Uppercut",
@@ -9497,12 +8542,7 @@
         "ws1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -13; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -13; knockdown on hit"
     },
     "ws1+2": {
       "name": "Move ws1+2 (ws1+2)",
@@ -9523,12 +8563,7 @@
         "ws1+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -15; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -15; knockdown on hit"
     },
     "ws1+2,1+2": {
       "name": "Move 1+2 (1+2)",
@@ -9557,12 +8592,7 @@
         ],
         "total": 26
       },
-      "note": "Mid; on block -15",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -15"
     },
     "ws1+2,1+2,1+2": {
       "name": "Double Hammer Thrash",
@@ -9593,12 +8623,7 @@
         ],
         "total": 40
       },
-      "note": "Low; on block -23",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Low; on block -23"
     },
     "ws2": {
       "name": "Move ws2 (ws2)",
@@ -9619,12 +8644,7 @@
         "ws2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -7",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -7"
     },
     "ws2,1": {
       "name": "V-Twin",
@@ -9653,12 +8673,7 @@
         ],
         "total": 27
       },
-      "note": "Mid; on block -14c",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -14c"
     },
     "ws2,4": {
       "name": "V-Deathblow",
@@ -9687,12 +8702,7 @@
         ],
         "total": 36
       },
-      "note": "High; on block +4; knockdown on hit",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 72,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "High; on block +4; knockdown on hit"
     },
     "ws4": {
       "name": "Toe Smash",
@@ -9713,12 +8723,7 @@
         "ws4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -6",
-      "anim_t3": {
-        "bank": "jack-8",
-        "row": 72,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -6"
     },
     "1~t8.jack8": {
       "name": "Jab",
@@ -10299,8 +9304,8 @@
       },
       "anim_t3": {
         "bank": "gunjack",
-        "row": 474,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
+        "row": 178,
+        "match": "same-notation"
       }
     },
     "2,1~t7.jack-7.2": {
@@ -10338,8 +9343,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "gunjack",
-        "row": 474,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
+        "row": 178,
+        "match": "same-notation"
       }
     },
     "2,1,2~t7.jack-7": {
@@ -10386,8 +9391,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "gunjack",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 195,
+        "match": "same-notation"
       }
     },
     "2,1,2~t7.jack-7.2": {
@@ -10433,8 +9438,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "gunjack",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 195,
+        "match": "same-notation"
       }
     },
     "2,1,2~t7.jack-7.3": {
@@ -10473,8 +9478,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "gunjack",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 195,
+        "match": "same-notation"
       }
     },
     "3~t7.jack-7": {
@@ -10600,7 +9605,7 @@
       "anim_t3": {
         "bank": "gunjack",
         "row": 49,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
+        "match": "class-verified remap (anim-fix 2026-10-23)"
       }
     },
     "1+2~t7.jack-7.2": {
@@ -10640,7 +9645,7 @@
       "anim_t3": {
         "bank": "gunjack",
         "row": 49,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
+        "match": "class-verified remap (anim-fix 2026-10-23)"
       }
     },
     "u+1+2~t7.jack-7": {
@@ -10799,8 +9804,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "gunjack",
-        "row": 354,
-        "match": "true-map exact (anim-fix 2026-10-23)"
+        "row": 205,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "u/f+3+4~t7.jack-7": {
@@ -10883,12 +9888,7 @@
         ],
         "total": 58
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "u/f+3+4,3+4~t7.jack-7": {
       "name": "SAM-UR-A1 u/f+3+4,3+4",
@@ -10923,12 +9923,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:jack-7_23",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "f+1~t7.jack-7": {
       "name": "SAM-UR-A1 f+1",
@@ -11225,8 +10220,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "gunjack",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 181,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "f+2~t7.jack-7": {
@@ -11347,11 +10342,6 @@
           22
         ],
         "total": 39
-      },
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f+3,1+2~t7.jack-7": {
@@ -11387,12 +10377,7 @@
       "t7_on_ch": "GROUND BOUNCE",
       "merge_source": "t7:jack-7_34",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "f+4~1,2~t7.jack-7": {
       "name": "Sudden Elbow",
@@ -11430,8 +10415,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "gunjack",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 178,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "f+1+2~t7.jack-7": {
@@ -11707,12 +10692,7 @@
       "t7_on_hit": "STUN",
       "t7_on_ch": "STUN",
       "merge_source": "t7:jack-7_42",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "f,F+1+2,2~t7.jack-7": {
       "name": "Cross Cut Blast",
@@ -11841,12 +10821,7 @@
         ],
         "total": 34
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "f,F+1+2,1+2~t7.jack-7.2": {
       "name": "SAM-UR-A1 f,F+1+2,1+2",
@@ -11881,12 +10856,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:jack-7_46",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "f,F+3+4": {
       "name": "Sliding Attack",
@@ -11921,12 +10891,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:jack-7_47",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 0,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "f,f,f+2": {
       "name": "Cemaho Chop",
@@ -12088,8 +11053,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 198,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "d/f+1,2": {
@@ -12173,8 +11138,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "gunjack",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 250,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "d/f+1,2,1": {
@@ -12268,8 +11233,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 198,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "d/f+1,2,1~t7.jack-7.2": {
@@ -12407,8 +11372,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "gunjack",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 250,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "d/f+1,2,1,2~t7.jack-7.2": {
@@ -12455,8 +11420,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "gunjack",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 178,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "d/f+1,2,1,2~t7.jack-7.3": {
@@ -12670,8 +11635,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 262,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "d/f+2,1,2": {
@@ -12718,8 +11683,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "gunjack",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 178,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "d/f+2,1,2~t7.jack-7": {
@@ -12765,8 +11730,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "gunjack",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 181,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "d/f+2,1,2~t7.jack-7.2": {
@@ -12900,8 +11865,8 @@
       },
       "anim_t3": {
         "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 262,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "d/f+2,1,2,1~t7.jack-7.2": {
@@ -12946,8 +11911,8 @@
       },
       "anim_t3": {
         "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 182,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "d/f+2,1,2,1~t7.jack-7.3": {
@@ -13083,8 +12048,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 262,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "d/f+2,1,2,d/f+1~t7.jack-7.2": {
@@ -13130,8 +12095,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 182,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "d/f+2,1,2,d/f+1~t7.jack-7.3": {
@@ -13170,8 +12135,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 258,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "d/f+2,1,2,d+1": {
@@ -13266,8 +12231,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 262,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "d/f+2,1,2,d+1~t7.jack-7.2": {
@@ -13313,8 +12278,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 182,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "d/f+2,1,2,d+1~t7.jack-7.3": {
@@ -13563,12 +12528,7 @@
       "merge_source": "t7:jack-7_84",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(far)",
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(far)"
     },
     "d/f+3+4": {
       "name": "Dumptruck",
@@ -13646,8 +12606,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "gunjack",
-        "row": 246,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
+        "row": 198,
+        "match": "same-notation"
       }
     },
     "d/b+1~t7.jack-7": {
@@ -13731,8 +12691,8 @@
       },
       "anim_t3": {
         "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 207,
+        "match": "same-notation"
       }
     },
     "d/b+1,1~t7.jack-7.2": {
@@ -13770,8 +12730,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 207,
+        "match": "same-notation"
       }
     },
     "d/b+1,1,1~t7.jack-7": {
@@ -13817,8 +12777,8 @@
       },
       "anim_t3": {
         "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 208,
+        "match": "same-notation"
       }
     },
     "d/b+1,1,1~t7.jack-7.2": {
@@ -13863,8 +12823,8 @@
       },
       "anim_t3": {
         "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 208,
+        "match": "same-notation"
       }
     },
     "d/b+1,1,1~t7.jack-7.3": {
@@ -13902,8 +12862,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 208,
+        "match": "same-notation"
       }
     },
     "d/b+1,1,1,2~t7.jack-7": {
@@ -14126,8 +13086,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "gunjack",
-        "row": 103,
-        "match": "true-map exact (anim-fix 2026-10-23)"
+        "row": 127,
+        "match": "same-notation"
       }
     },
     "d/b+2*": {
@@ -14166,8 +13126,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "gunjack",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 205,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "d/b+3~t7.jack-7": {
@@ -14677,12 +13637,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:jack-7_110",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "d/b+4~t7.jack-7": {
       "name": "Big Boot",
@@ -14758,8 +13713,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "gunjack",
-        "row": 101,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
+        "row": 128,
+        "match": "same-notation"
       }
     },
     "b+1~t7.jack-7": {
@@ -15177,8 +14132,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "gunjack",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 181,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "b+4~t7.jack-7": {
@@ -15462,8 +14417,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "gunjack",
-        "row": 23,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 207,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "hcf,d/f:1": {
@@ -15502,8 +14457,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "gunjack",
-        "row": 23,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 207,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "BT.1": {
@@ -15793,8 +14748,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 258,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "FC.1,1,1,2": {
@@ -15841,8 +14796,8 @@
       },
       "anim_t3": {
         "bank": "gunjack",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 193,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "FC.1,1,1,2~t7.jack-7": {
@@ -16058,8 +15013,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 258,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "FC.1,1,1,2,d+1": {
@@ -16193,8 +15148,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "gunjack",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 193,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "FC.1,2~t7.jack-7": {
@@ -16233,8 +15188,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "gunjack",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 250,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "FC.2": {
@@ -16783,8 +15738,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 160,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "FC.d/f+2": {
@@ -16909,8 +15864,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 258,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "FC.d/f+2,d/f+1": {
@@ -16994,8 +15949,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 258,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "FC.d/f+2,d/f+1,2": {
@@ -17250,12 +16205,7 @@
       "t7_on_hit": "STUN",
       "t7_on_ch": "STUN",
       "merge_source": "t7:jack-7_171",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "FC.d/f+1+2,1+2": {
       "name": "Low Cross Combo",
@@ -17297,12 +16247,7 @@
         ],
         "total": 37
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "FC.d/f+1+2,1+2~t7.jack-7": {
       "name": "SAM-UR-A1 FC.d/f+1+2,1+2",
@@ -17337,12 +16282,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:jack-7_173",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "FC.d/b+1": {
       "name": "SAM-UR-A1 FC.d/b+1",
@@ -18024,7 +16964,7 @@
       "anim_t3": {
         "bank": "gunjack",
         "row": 49,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
+        "match": "class-verified remap (anim-fix 2026-10-23)"
       }
     },
     "WS.1": {
@@ -18226,12 +17166,7 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:jack-7_194",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "WS.1+2,1+2": {
       "name": "SAM-UR-A1 WS.1+2,1+2",
@@ -18273,12 +17208,7 @@
         ],
         "total": 24
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "WS.1+2,1+2~t7.jack-7": {
       "name": "SAM-UR-A1 WS.1+2,1+2",
@@ -18313,12 +17243,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:jack-7_196",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "WS.1+2,1+2,1+2": {
       "name": "Double Hammer Thrash",
@@ -18361,12 +17286,7 @@
         ],
         "total": 34
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "WS.1+2,1+2,1+2~t7.jack-7": {
       "name": "SAM-UR-A1 WS.1+2,1+2,1+2",
@@ -18408,12 +17328,7 @@
         ],
         "total": 29
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "WS.1+2,1+2,1+2~t7.jack-7.2": {
       "name": "SAM-UR-A1 WS.1+2,1+2,1+2",
@@ -18448,12 +17363,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:jack-7_199",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "WS.f+1": {
       "name": "SAM-UR-A1 WS.f+1",
@@ -18670,8 +17580,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 182,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "WS.f+1,2,1~t7.jack-7.2": {
@@ -18803,8 +17713,8 @@
       },
       "anim_t3": {
         "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 182,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "WS.f+1,2,d/f+1~t7.jack-7.2": {
@@ -18842,8 +17752,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 258,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "WS.f+1,2,d+1": {
@@ -18935,8 +17845,8 @@
       },
       "anim_t3": {
         "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 182,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "WS.f+1,2,d+1~t7.jack-7.2": {
@@ -19050,12 +17960,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:jack-7_213",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "d+2,1,1,1,2,1,2,1,d+1+2,d+1+2": {
       "name": "10 Hit Combo 2",
@@ -19090,12 +17995,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:jack-7_214",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "t7.jack-7_215": {
       "name": "SAM-UR-A1 Face Up, Feet Towards+3 or (After Rolling Forward)",
@@ -19248,12 +18148,7 @@
       "merge_source": "t7:jack-7_218",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Face Up, Feet Towards+",
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "Face Up, Feet Towards+"
     },
     "t7.jack-7_219": {
       "name": "SAM-UR-A1 Face Up, Feet Towards, Roll Forward+1+2",
@@ -19524,12 +18419,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:jack-7_225",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "t7.jack-7_226": {
       "name": "DURING SIT",
@@ -19689,8 +18579,8 @@
       },
       "anim_t3": {
         "bank": "gunjack",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 193,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "SIT.1,2~t7.jack-7.2": {
@@ -19728,8 +18618,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "gunjack",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 178,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "SIT.1,2,1~t7.jack-7": {
@@ -19908,8 +18798,8 @@
       },
       "anim_t3": {
         "bank": "gunjack",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 193,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "SIT.1,2,1,2~t7.jack-7.2": {
@@ -19955,8 +18845,8 @@
       },
       "anim_t3": {
         "bank": "gunjack",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 178,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "SIT.1,2,1,2~t7.jack-7.3": {
@@ -20001,8 +18891,8 @@
       },
       "anim_t3": {
         "bank": "gunjack",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 178,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "SIT.1,2,1,2~t7.jack-7.4": {
@@ -20040,8 +18930,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "gunjack",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 178,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "SIT.2": {
@@ -20211,8 +19101,8 @@
       },
       "anim_t3": {
         "bank": "gunjack",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 193,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "SIT.2,1,2~t7.jack-7": {
@@ -20257,8 +19147,8 @@
       },
       "anim_t3": {
         "bank": "gunjack",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 178,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "SIT.2,1,2~t7.jack-7.2": {
@@ -20296,8 +19186,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "gunjack",
-        "row": 52,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 178,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "SIT.2,1,2,1": {
@@ -20512,12 +19402,7 @@
       "t7_on_hit": "STUN",
       "t7_on_ch": "STUN",
       "merge_source": "t7:jack-7_248",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "SIT.3+4~t7.jack-7": {
       "name": "Sit Pancake Press",
@@ -20552,12 +19437,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:jack-7_249",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "t7.jack-7_250": {
       "name": "POWER CRUSHES",
@@ -20749,12 +19629,7 @@
       "merge_source": "t7:jack-7_254",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Rage)",
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Rage)"
     },
     "R.b,d/b,d,d/f+1,2": {
       "name": "Rage Drive",
@@ -21036,12 +19911,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:jack-7_261",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "3+4,3+4,3+4,3+4,3+4": {
       "name": "SAM-UR-A1 3+4,3+4,3+4,3+4,3+4",
@@ -21076,12 +19946,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:jack-7_262",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 37,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "f+4~1~t7.jack-7": {
       "name": "Dark Greeting",

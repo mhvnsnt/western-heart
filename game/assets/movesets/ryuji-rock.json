@@ -284,12 +284,7 @@
       ],
       "move_class": "special",
       "wh_signature": true,
-      "wh_note": "Yamazaki's snake-arm strike (Jaja Hebi Hanzoku): long slashing hand strikes, whipping extendable arms.",
-      "anim_t3": {
-        "bank": "king",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "wh_note": "Yamazaki's snake-arm strike (Jaja Hebi Hanzoku): long slashing hand strikes, whipping extendable arms."
     },
     "d/b+2": {
       "name": "SAND KICK",
@@ -308,12 +303,7 @@
       ],
       "move_class": "special",
       "wh_signature": true,
-      "wh_note": "Yamazaki's Suna Kake: kicks sand in the opponent's face. Unfair and dishonest, just like him.",
-      "anim_t3": {
-        "bank": "king",
-        "row": 132,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "wh_note": "Yamazaki's Suna Kake: kicks sand in the opponent's face. Unfair and dishonest, just like him."
     },
     "f+1+2": {
       "name": "KNIFE SLASH",
@@ -332,12 +322,7 @@
       ],
       "move_class": "special",
       "wh_signature": true,
-      "wh_note": "Yamazaki's ever-present hidden knife. Quick, dirty, and he laughs while he uses it.",
-      "anim_t3": {
-        "bank": "king",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "wh_note": "Yamazaki's ever-present hidden knife. Quick, dirty, and he laughs while he uses it."
     },
     "b,n,f+1+2": {
       "name": "ROCK BOTTOM",
@@ -446,22 +431,7 @@
         "crush": "low, mid, high",
         "ref": "docs/t7t8-reference/frame-data-t7/king.json (id king_31)"
       },
-      "canon_note": "Owner 2026-10-21: this entry is King's jumping diving elbow attack — Tekken 7 King's High Elbow Drop (u/f+2) — wired as CornerStone's diving People's Elbow. The grounded People's Elbow (d+1+2) and the flying variant (u/f+2+4, modeled on King's High Elbow Drop air version) arrive in the same union from ryuji.json.",
-      "anim_t3": {
-        "bank": {
-          "character": "King (Tekken 7)",
-          "move": "High Elbow Drop",
-          "notation": "u/f+2",
-          "damage": "35 [42]",
-          "speed": 47,
-          "on_block": "-17",
-          "on_hit": "KND",
-          "crush": "low, mid, high",
-          "ref": "docs/t7t8-reference/frame-data-t7/king.json (id king_31)"
-        },
-        "row": 245,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "canon_note": "Owner 2026-10-21: this entry is King's jumping diving elbow attack — Tekken 7 King's High Elbow Drop (u/f+2) — wired as CornerStone's diving People's Elbow. The grounded People's Elbow (d+1+2) and the flying variant (u/f+2+4, modeled on King's High Elbow Drop air version) arrive in the same union from ryuji.json."
     },
     "f,f+2": {
       "name": "BRAHMA BULL LARIAT",
@@ -480,12 +450,7 @@
       ],
       "move_class": "special",
       "wh_signature": true,
-      "wh_note": "The Rock's charging lariat. Yamazaki runs through people like they owe him money.",
-      "anim_t3": {
-        "bank": "king",
-        "row": 0,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "wh_note": "The Rock's charging lariat. Yamazaki runs through people like they owe him money."
     },
     "S": {
       "name": "TONGUE OUT [WH SIGNATURE]",
@@ -504,12 +469,7 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "Taunt: sticks his tongue out, obnoxious like Yamazaki, one eyebrow raised like The Rock. Zero damage, maximum disrespect.",
-      "anim_t3": {
-        "bank": "king",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Taunt: sticks his tongue out, obnoxious like Yamazaki, one eyebrow raised like The Rock. Zero damage, maximum disrespect."
     },
     "P+K": {
       "name": "LAYIN' THE SMACKDOWN [WH SIGNATURE]",
@@ -533,12 +493,7 @@
       "note": "The Rock's spinebuster into Yamazaki's stomps. Know your role.",
       "throw": true,
       "unblockable": true,
-      "isGrab": true,
-      "anim_t3": {
-        "bank": "king",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "isGrab": true
     },
     "d/f+1+2": {
       "name": "RYUJI ROCK 13 — ROCK BOTTOM",
@@ -597,12 +552,7 @@
         "far 1"
       ],
       "move_class": "strike",
-      "note": "",
-      "anim_t3": {
-        "bank": "king",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": ""
     },
     "far_2": {
       "name": "Standing RP (Far)",
@@ -621,12 +571,7 @@
         "far 2"
       ],
       "move_class": "strike",
-      "note": "",
-      "anim_t3": {
-        "bank": "king",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": ""
     },
     "far_3": {
       "name": "Standing LK (Far)",
@@ -645,12 +590,7 @@
         "far 3"
       ],
       "move_class": "strike",
-      "note": "",
-      "anim_t3": {
-        "bank": "king",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": ""
     },
     "far_4": {
       "name": "Standing RK (Far)",
@@ -669,12 +609,7 @@
         "far 4"
       ],
       "move_class": "strike",
-      "note": "",
-      "anim_t3": {
-        "bank": "king",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": ""
     },
     "close_1": {
       "name": "Standing LP (Close)",
@@ -693,12 +628,7 @@
         "1 (close)"
       ],
       "move_class": "strike",
-      "note": "",
-      "anim_t3": {
-        "bank": "king",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": ""
     },
     "close_2": {
       "name": "Standing RP (Close)",
@@ -717,12 +647,7 @@
         "2 (close)"
       ],
       "move_class": "strike",
-      "note": "",
-      "anim_t3": {
-        "bank": "king",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": ""
     },
     "close_3": {
       "name": "Standing LK (Close)",
@@ -741,12 +666,7 @@
         "3 (close)"
       ],
       "move_class": "strike",
-      "note": "",
-      "anim_t3": {
-        "bank": "king",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": ""
     },
     "close_4": {
       "name": "Standing RK (Close)",
@@ -765,12 +685,7 @@
         "4 (close)"
       ],
       "move_class": "strike",
-      "note": "",
-      "anim_t3": {
-        "bank": "king",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": ""
     },
     "cr_1": {
       "name": "Crouching LP",
@@ -789,12 +704,7 @@
         "d+1 (crouch)"
       ],
       "move_class": "strike",
-      "note": "",
-      "anim_t3": {
-        "bank": "king",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": ""
     },
     "cr_2": {
       "name": "Crouching RP",
@@ -813,12 +723,7 @@
         "d+2 (crouch)"
       ],
       "move_class": "strike",
-      "note": "",
-      "anim_t3": {
-        "bank": "king",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": ""
     },
     "cr_3": {
       "name": "Crouching LK",
@@ -837,12 +742,7 @@
         "d+3 (crouch)"
       ],
       "move_class": "strike",
-      "note": "Low",
-      "anim_t3": {
-        "bank": "king",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low"
     },
     "cr_4": {
       "name": "Crouching RK",
@@ -861,12 +761,7 @@
         "d+4 (crouch)"
       ],
       "move_class": "strike",
-      "note": "Low",
-      "anim_t3": {
-        "bank": "king",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low"
     },
     "jump_1": {
       "name": "Jumping LP",
@@ -885,12 +780,7 @@
         "u/f+1"
       ],
       "move_class": "strike",
-      "note": "Overhead (air)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Overhead (air)"
     },
     "jump_3": {
       "name": "Jumping LK",
@@ -909,12 +799,7 @@
         "u/f+3"
       ],
       "move_class": "strike",
-      "note": "Overhead (air)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Overhead (air)"
     },
     "jump_4": {
       "name": "Jumping RK",
@@ -933,12 +818,7 @@
         "u/f+4"
       ],
       "move_class": "strike",
-      "note": "Overhead (air)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Overhead (air)"
     },
     "njump_1": {
       "name": "Neutral Jump LP",
@@ -957,12 +837,7 @@
         "u+1"
       ],
       "move_class": "strike",
-      "note": "Overhead (air)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Overhead (air)"
     },
     "njump_2": {
       "name": "Neutral Jump RP",
@@ -981,12 +856,7 @@
         "u+2"
       ],
       "move_class": "strike",
-      "note": "Overhead (air)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Overhead (air)"
     },
     "njump_3": {
       "name": "Neutral Jump LK",
@@ -1005,12 +875,7 @@
         "u+3"
       ],
       "move_class": "strike",
-      "note": "Overhead (air)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Overhead (air)"
     },
     "njump_4": {
       "name": "Neutral Jump RK",
@@ -1029,12 +894,7 @@
         "u+4"
       ],
       "move_class": "strike",
-      "note": "Overhead (air)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Overhead (air)"
     },
     "hop_1": {
       "name": "Hop LP",
@@ -1053,12 +913,7 @@
         "hop u/f+1"
       ],
       "move_class": "strike",
-      "note": "Overhead (air)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Overhead (air)"
     },
     "hop_2": {
       "name": "Hop RP",
@@ -1077,12 +932,7 @@
         "hop u/f+2"
       ],
       "move_class": "strike",
-      "note": "Overhead (air)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Overhead (air)"
     },
     "hop_3": {
       "name": "Hop LK",
@@ -1101,12 +951,7 @@
         "hop u/f+3"
       ],
       "move_class": "strike",
-      "note": "Overhead (air)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Overhead (air)"
     },
     "hop_4": {
       "name": "Hop RK",
@@ -1125,12 +970,7 @@
         "hop u/f+4"
       ],
       "move_class": "strike",
-      "note": "Overhead (air)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Overhead (air)"
     },
     "nhop_1": {
       "name": "Neutral Hop LP",
@@ -1149,12 +989,7 @@
         "hop u+1"
       ],
       "move_class": "strike",
-      "note": "Overhead (air)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Overhead (air)"
     },
     "nhop_2": {
       "name": "Neutral Hop RP",
@@ -1173,12 +1008,7 @@
         "hop u+2"
       ],
       "move_class": "strike",
-      "note": "Overhead (air)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Overhead (air)"
     },
     "nhop_3": {
       "name": "Neutral Hop LK",
@@ -1197,12 +1027,7 @@
         "hop u+3"
       ],
       "move_class": "strike",
-      "note": "Overhead (air)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Overhead (air)"
     },
     "nhop_4": {
       "name": "Neutral Hop RK",
@@ -1221,12 +1046,7 @@
         "hop u+4"
       ],
       "move_class": "strike",
-      "note": "Overhead (air)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Overhead (air)"
     },
     "cd_stand": {
       "name": "Blowback Attack",
@@ -1245,12 +1065,7 @@
         "3+4 (blowback)"
       ],
       "move_class": "strike",
-      "note": "Soft knockdown; special-cancelable",
-      "anim_t3": {
-        "bank": "king",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Soft knockdown; special-cancelable"
     },
     "cd_jump": {
       "name": "Jumping Blowback Attack",
@@ -1269,12 +1084,7 @@
         "u/f+3+4"
       ],
       "move_class": "strike",
-      "note": "Overhead (air); soft knockdown",
-      "anim_t3": {
-        "bank": "king",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Overhead (air); soft knockdown"
     },
     "cd_hop": {
       "name": "Hop Blowback Attack",
@@ -1293,12 +1103,7 @@
         "hop u/f+3+4"
       ],
       "move_class": "strike",
-      "note": "Overhead (air); soft knockdown",
-      "anim_t3": {
-        "bank": "king",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Overhead (air); soft knockdown"
     },
     "evade_fwd": {
       "name": "Emergency Evasion (Forward)",
@@ -1317,12 +1122,7 @@
         "f,f (roll)"
       ],
       "move_class": "special",
-      "note": "Forward roll; invulnerable startup (KOF XV system)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Forward roll; invulnerable startup (KOF XV system)"
     },
     "evade_back": {
       "name": "Emergency Evasion (Back)",
@@ -1341,12 +1141,7 @@
         "b,b (roll)"
       ],
       "move_class": "special",
-      "note": "Back roll (KOF XV system)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Back roll (KOF XV system)"
     },
     "gc_blowback": {
       "name": "Guard Cancel Blowback",
@@ -1365,12 +1160,7 @@
         "b+1+2 (guard)"
       ],
       "move_class": "strike",
-      "note": "Guard-cancel blowback; costs 1 stock (KOF XV system)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 35,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Guard-cancel blowback; costs 1 stock (KOF XV system)"
     },
     "gc_roll_fwd": {
       "name": "Guard Cancel Evasion (Forward)",
@@ -1389,12 +1179,7 @@
         "f+1+2 (guard)"
       ],
       "move_class": "special",
-      "note": "Guard-cancel roll forward; costs 1 stock (KOF XV system)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Guard-cancel roll forward; costs 1 stock (KOF XV system)"
     },
     "gc_roll_back": {
       "name": "Guard Cancel Evasion (Back)",
@@ -1413,12 +1198,7 @@
         "b+3+4 (guard)"
       ],
       "move_class": "special",
-      "note": "Guard-cancel roll back; costs 1 stock (KOF XV system)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Guard-cancel roll back; costs 1 stock (KOF XV system)"
     },
     "shatter": {
       "name": "Shatter Strike",
@@ -1437,12 +1217,7 @@
         "qcf+3+4"
       ],
       "move_class": "special",
-      "note": "KOF XV Shatter Strike; guard point, crumple on counter hit",
-      "anim_t3": {
-        "bank": "king",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "KOF XV Shatter Strike; guard point, crumple on counter hit"
     },
     "maxmode": {
       "name": "MAX Mode",
@@ -1461,12 +1236,7 @@
         "1+2+3+4 (MAX)"
       ],
       "move_class": "special",
-      "note": "KOF XV MAX Mode activation; +damage, EX access",
-      "anim_t3": {
-        "bank": "king",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "KOF XV MAX Mode activation; +damage, EX access"
     },
     "taunt": {
       "name": "Taunt",
@@ -1485,12 +1255,7 @@
         "2+3 (taunt)"
       ],
       "move_class": "special",
-      "note": "Taunt",
-      "anim_t3": {
-        "bank": "king",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Taunt"
     },
     "fallbreaker": {
       "name": "Fallbreaker (Recovery Roll)",
@@ -1509,12 +1274,7 @@
         "1+2 (grounded)"
       ],
       "move_class": "special",
-      "note": "Recovery roll on knockdown (KOF system)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Recovery roll on knockdown (KOF system)"
     },
     "throw_escape": {
       "name": "Throw Escape",
@@ -1533,12 +1293,7 @@
         "3+4 (throw escape)"
       ],
       "move_class": "special",
-      "note": "Throw tech (KOF system)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Throw tech (KOF system)"
     },
     "dash": {
       "name": "Forward Dash",
@@ -1557,12 +1312,7 @@
         "f,f (dash)"
       ],
       "move_class": "special",
-      "note": "KOF run/dash step",
-      "anim_t3": {
-        "bank": "king",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "KOF run/dash step"
     },
     "backdash": {
       "name": "Backdash",
@@ -1581,12 +1331,7 @@
         "b,b (backdash)"
       ],
       "move_class": "special",
-      "note": "KOF backstep",
-      "anim_t3": {
-        "bank": "king",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "KOF backstep"
     },
     "rush_l1": {
       "name": "Light Rush 1",
@@ -1605,12 +1350,7 @@
         "1 (Rush)"
       ],
       "move_class": "string",
-      "note": "KOF XV Rush auto-combo (light chain)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "KOF XV Rush auto-combo (light chain)"
     },
     "rush_l2": {
       "name": "Light Rush 2",
@@ -1629,12 +1369,7 @@
         "1,1 (Rush)"
       ],
       "move_class": "string",
-      "note": "KOF XV Rush auto-combo (light chain)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "KOF XV Rush auto-combo (light chain)"
     },
     "rush_l3": {
       "name": "Light Rush 3",
@@ -1653,12 +1388,7 @@
         "1,1,1 (Rush)"
       ],
       "move_class": "string",
-      "note": "KOF XV Rush auto-combo (light chain)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "KOF XV Rush auto-combo (light chain)"
     },
     "rush_l4": {
       "name": "Light Rush 4",
@@ -1677,12 +1407,7 @@
         "1,1,1,1 (Rush)"
       ],
       "move_class": "string",
-      "note": "KOF XV Rush auto-combo (light chain)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 35,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "KOF XV Rush auto-combo (light chain)"
     },
     "rush_h1": {
       "name": "Heavy Rush 1",
@@ -1701,12 +1426,7 @@
         "2 (Rush)"
       ],
       "move_class": "string",
-      "note": "KOF XV Rush auto-combo (heavy chain)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "KOF XV Rush auto-combo (heavy chain)"
     },
     "rush_h2": {
       "name": "Heavy Rush 2",
@@ -1725,12 +1445,7 @@
         "2,2 (Rush)"
       ],
       "move_class": "string",
-      "note": "KOF XV Rush auto-combo (heavy chain)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "KOF XV Rush auto-combo (heavy chain)"
     },
     "rush_h3": {
       "name": "Heavy Rush 3",
@@ -1749,12 +1464,7 @@
         "2,2,2 (Rush)"
       ],
       "move_class": "string",
-      "note": "KOF XV Rush auto-combo (heavy chain)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "KOF XV Rush auto-combo (heavy chain)"
     },
     "rush_h4": {
       "name": "Heavy Rush 4",
@@ -1773,12 +1483,7 @@
         "2,2,2,2 (Rush)"
       ],
       "move_class": "string",
-      "note": "KOF XV Rush auto-combo (heavy chain)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "KOF XV Rush auto-combo (heavy chain)"
     },
     "dokan": {
       "name": "Dokan",
@@ -1797,12 +1502,7 @@
         "f+3"
       ],
       "move_class": "strike",
-      "note": "Side kick with abandon. Original KOF motion: f+B",
-      "anim_t3": {
-        "bank": "king",
-        "row": 236,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "Side kick with abandon. Original KOF motion: f+B"
     },
     "shimeage": {
       "name": "Shime Age",
@@ -1825,12 +1525,7 @@
       "throw": true,
       "throw_break": "1",
       "unblockable": true,
-      "isGrab": true,
-      "anim_t3": {
-        "bank": "king",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "isGrab": true
     },
     "hebi_joudan": {
       "name": "Hebi Tsukai (Joudan)",
@@ -1849,12 +1544,7 @@
         "qcb+1"
       ],
       "move_class": "special",
-      "note": "Far-reaching arm fling, strikes high. Original KOF motion: 214+A+P (hold)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Far-reaching arm fling, strikes high. Original KOF motion: 214+A+P (hold)"
     },
     "hebi_chuudan": {
       "name": "Hebi Tsukai (Chuudan)",
@@ -1873,12 +1563,7 @@
         "qcb+2"
       ],
       "move_class": "special",
-      "note": "Far-reaching arm fling, strikes mid. Original KOF motion: 214+C+P (hold)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Far-reaching arm fling, strikes mid. Original KOF motion: 214+C+P (hold)"
     },
     "hebi_gedan": {
       "name": "Hebi Tsukai (Gedan)",
@@ -1897,12 +1582,7 @@
         "qcb+3 (gedan)"
       ],
       "move_class": "special",
-      "note": "Far-reaching arm fling, strikes low. Original KOF motion: 214+B+P (hold)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Far-reaching arm fling, strikes low. Original KOF motion: 214+B+P (hold)"
     },
     "hebi_ex": {
       "name": "Hebi Tsukai (EX)",
@@ -1921,12 +1601,7 @@
         "qcb+1+2"
       ],
       "move_class": "special",
-      "note": "EX: hits twice, low then mid, pulls victim up (SNK wiki KOF XV). Original KOF motion: 214+AC",
-      "anim_t3": {
-        "bank": "king",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "EX: hits twice, low then mid, pulls victim up (SNK wiki KOF XV). Original KOF motion: 214+AC"
     },
     "hebi_keep": {
       "name": "Hebi Tsukai (Keep)",
@@ -1945,12 +1620,7 @@
         "qcb+3 (hold)"
       ],
       "move_class": "special",
-      "note": "Taunting arm-swing feint; can cancel into strikes. Original KOF motion: 214+P (hold, feint)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Taunting arm-swing feint; can cancel into strikes. Original KOF motion: 214+P (hold, feint)"
     },
     "hebi_damashi": {
       "name": "Hebi Damashi",
@@ -1969,12 +1639,7 @@
         "4 (during Keep)"
       ],
       "move_class": "special",
-      "note": "Return to neutral from Hebi Tsukai (Keep)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Return to neutral from Hebi Tsukai (Keep)"
     },
     "orochi": {
       "name": "Orochi",
@@ -1993,12 +1658,7 @@
         "qcb+1+2 (max)"
       ],
       "move_class": "special",
-      "note": "All 3 Hebi Tsukai variants in succession (KOF '98UM legacy)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "All 3 Hebi Tsukai variants in succession (KOF '98UM legacy)"
     },
     "sadomazo_l": {
       "name": "Sadomazo (Light)",
@@ -2017,12 +1677,7 @@
         "hcf+3"
       ],
       "move_class": "special",
-      "note": "Tongue-taunt counter; counterattacks when hit during taunt (headbutt in XIV/XV). Original KOF motion: 41236+K",
-      "anim_t3": {
-        "bank": "king",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Tongue-taunt counter; counterattacks when hit during taunt (headbutt in XIV/XV). Original KOF motion: 41236+K"
     },
     "sadomazo_h": {
       "name": "Sadomazo (Heavy)",
@@ -2041,12 +1696,7 @@
         "hcf+4"
       ],
       "move_class": "special",
-      "note": "Tongue-taunt counter; counterattacks when hit during taunt (headbutt in XIV/XV). Original KOF motion: 41236+K",
-      "anim_t3": {
-        "bank": "king",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Tongue-taunt counter; counterattacks when hit during taunt (headbutt in XIV/XV). Original KOF motion: 41236+K"
     },
     "sadomazo_ex": {
       "name": "Sadomazo (EX)",
@@ -2065,12 +1715,7 @@
         "hcf+3+4"
       ],
       "move_class": "special",
-      "note": "EX tongue-taunt counter; longer window. Original KOF motion: 41236+BD",
-      "anim_t3": {
-        "bank": "king",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "EX tongue-taunt counter; longer window. Original KOF motion: 41236+BD"
     },
     "baigaeshi_h": {
       "name": "Bai Gaeshi (Heavy)",
@@ -2089,12 +1734,7 @@
         "qcf+2"
       ],
       "move_class": "special",
-      "note": "Reflects mid-level projectiles faster, sets up juggle. Original KOF motion: 236+P",
-      "anim_t3": {
-        "bank": "king",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Reflects mid-level projectiles faster, sets up juggle. Original KOF motion: 236+P"
     },
     "baigaeshi_ex": {
       "name": "Bai Gaeshi (EX)",
@@ -2113,12 +1753,7 @@
         "qcf+1+2"
       ],
       "move_class": "special",
-      "note": "EX projectile reflect. Original KOF motion: 236+AC",
-      "anim_t3": {
-        "bank": "king",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "EX projectile reflect. Original KOF motion: 236+AC"
     },
     "sunakake_l": {
       "name": "Suna Kake (Light)",
@@ -2137,12 +1772,7 @@
         "qcb+3 (tap)"
       ],
       "move_class": "special",
-      "note": "Kicks sand at opponent with back leg; builds meter. Original KOF motion: 214+K Tapped (not held) to distinguish from Hebi Tsukai hold variants.",
-      "anim_t3": {
-        "bank": "king",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Kicks sand at opponent with back leg; builds meter. Original KOF motion: 214+K Tapped (not held) to distinguish from Hebi Tsukai hold variants."
     },
     "sunakake_h": {
       "name": "Suna Kake (Heavy)",
@@ -2161,12 +1791,7 @@
         "qcb+4"
       ],
       "move_class": "special",
-      "note": "Kicks sand at opponent with back leg; builds meter. Original KOF motion: 214+K",
-      "anim_t3": {
-        "bank": "king",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Kicks sand at opponent with back leg; builds meter. Original KOF motion: 214+K"
     },
     "sunakake_ex": {
       "name": "Suna Kake (EX)",
@@ -2185,12 +1810,7 @@
         "qcb+3+4"
       ],
       "move_class": "special",
-      "note": "EX sand scatter; cancels into Hebi Tsukai on hit. Original KOF motion: 214+BD",
-      "anim_t3": {
-        "bank": "king",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "EX sand scatter; cancels into Hebi Tsukai on hit. Original KOF motion: 214+BD"
     },
     "yakiire": {
       "name": "Yaki'ire",
@@ -2209,12 +1829,7 @@
         "f,n,d,d/f+3"
       ],
       "move_class": "special",
-      "note": "Slams front heel atop opponent; overhead. Original KOF motion: 623+K",
-      "anim_t3": {
-        "bank": "king",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Slams front heel atop opponent; overhead. Original KOF motion: 623+K"
     },
     "yakiire_ex": {
       "name": "Yaki'ire (EX)",
@@ -2233,12 +1848,7 @@
         "f,n,d,d/f+3+4"
       ],
       "move_class": "special",
-      "note": "EX heel stomp; knockdown. Original KOF motion: 623+BD",
-      "anim_t3": {
-        "bank": "king",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "EX heel stomp; knockdown. Original KOF motion: 623+BD"
     },
     "bakudan_l": {
       "name": "Bakudan Pachiki (Light)",
@@ -2261,12 +1871,7 @@
       "throw": true,
       "throw_break": "1+2",
       "unblockable": true,
-      "isGrab": true,
-      "anim_t3": {
-        "bank": "king",
-        "row": 127,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "isGrab": true
     },
     "bakudan_h": {
       "name": "Bakudan Pachiki (Heavy)",
@@ -2289,12 +1894,7 @@
       "throw": true,
       "throw_break": "1+2",
       "unblockable": true,
-      "isGrab": true,
-      "anim_t3": {
-        "bank": "king",
-        "row": 127,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "isGrab": true
     },
     "bakudan_ex": {
       "name": "Bakudan Pachiki (EX)",
@@ -2317,12 +1917,7 @@
       "throw": true,
       "throw_break": "1+2",
       "unblockable": true,
-      "isGrab": true,
-      "anim_t3": {
-        "bank": "king",
-        "row": 127,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "isGrab": true
     },
     "todome_l": {
       "name": "Todome (Light)",
@@ -2341,12 +1936,7 @@
         "f,n,d,d/f+1 (downed)"
       ],
       "move_class": "special",
-      "note": "Stomps downed opponent twice then kicks them away (KOF XV). Heavy kicks them in front. Grounded-only. Original KOF motion: 623+P on downed",
-      "anim_t3": {
-        "bank": "king",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Stomps downed opponent twice then kicks them away (KOF XV). Heavy kicks them in front. Grounded-only. Original KOF motion: 623+P on downed"
     },
     "todome_h": {
       "name": "Todome (Heavy)",
@@ -2365,12 +1955,7 @@
         "f,n,d,d/f+2 (downed)"
       ],
       "move_class": "special",
-      "note": "Stomps downed opponent twice then kicks them away (KOF XV). Heavy kicks them in front. Grounded-only. Original KOF motion: 623+P on downed",
-      "anim_t3": {
-        "bank": "king",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Stomps downed opponent twice then kicks them away (KOF XV). Heavy kicks them in front. Grounded-only. Original KOF motion: 623+P on downed"
     },
     "todome_ex": {
       "name": "Todome (EX)",
@@ -2389,12 +1974,7 @@
         "f,n,d,d/f+1+2 (downed)"
       ],
       "move_class": "special",
-      "note": "EX Todome; grounded-only. Original KOF motion: 623+AC on downed",
-      "anim_t3": {
-        "bank": "king",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "EX Todome; grounded-only. Original KOF motion: 623+AC on downed"
     },
     "sabaki_l": {
       "name": "Sabaki no Aikuchi (Light)",
@@ -2413,12 +1993,7 @@
         "f,n,d,d/f+1 (knife)"
       ],
       "move_class": "special",
-      "note": "Butterfly-knife: 2 slashes (KOF '97-2003 legacy; Hydra's Judgement in CvS2). Original KOF motion: 623+P",
-      "anim_t3": {
-        "bank": "king",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Butterfly-knife: 2 slashes (KOF '97-2003 legacy; Hydra's Judgement in CvS2). Original KOF motion: 623+P"
     },
     "sabaki_h": {
       "name": "Sabaki no Aikuchi (Heavy)",
@@ -2437,12 +2012,7 @@
         "f,n,d,d/f+2 (knife)"
       ],
       "move_class": "special",
-      "note": "Butterfly-knife: 4 slashes (KOF '97-2003 legacy). Original KOF motion: 623+P",
-      "anim_t3": {
-        "bank": "king",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Butterfly-knife: 4 slashes (KOF '97-2003 legacy). Original KOF motion: 623+P"
     },
     "sabaki_ex": {
       "name": "Sabaki no Aikuchi (EX)",
@@ -2461,12 +2031,7 @@
         "f,n,d,d/f+1+2 (knife)"
       ],
       "move_class": "special",
-      "note": "EX knife slashes (legacy). Original KOF motion: 623+AC",
-      "anim_t3": {
-        "bank": "king",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "EX knife slashes (legacy). Original KOF motion: 623+AC"
     },
     "nejikomi_l": {
       "name": "Nejikomi (Light)",
@@ -2485,12 +2050,7 @@
         "hcb+1"
       ],
       "move_class": "special",
-      "note": "Rears back leading fist, punches stomach (KOF 2002UM legacy). Original KOF motion: 63214+P",
-      "anim_t3": {
-        "bank": "king",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Rears back leading fist, punches stomach (KOF 2002UM legacy). Original KOF motion: 63214+P"
     },
     "nejikomi_h": {
       "name": "Nejikomi (Heavy)",
@@ -2509,12 +2069,7 @@
         "hcb+2"
       ],
       "move_class": "special",
-      "note": "Heavy stomach punch (KOF 2002UM legacy). Original KOF motion: 63214+P",
-      "anim_t3": {
-        "bank": "king",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Heavy stomach punch (KOF 2002UM legacy). Original KOF motion: 63214+P"
     },
     "guillotine_l": {
       "name": "Guillotine (Light)",
@@ -2533,12 +2088,7 @@
         "qcf,qcf+1"
       ],
       "move_class": "special",
-      "note": "Super: jumping uppercut, grabs face, drags across floor, throws up high. Original KOF motion: 236236+P",
-      "anim_t3": {
-        "bank": "king",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Super: jumping uppercut, grabs face, drags across floor, throws up high. Original KOF motion: 236236+P"
     },
     "guillotine_h": {
       "name": "Guillotine (Heavy)",
@@ -2557,12 +2107,7 @@
         "qcf,qcf+2"
       ],
       "move_class": "special",
-      "note": "Super: heavy version slams head into floor 4x then double-punts (XIV/XV). Original KOF motion: 236236+P",
-      "anim_t3": {
-        "bank": "king",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Super: heavy version slams head into floor 4x then double-punts (XIV/XV). Original KOF motion: 236236+P"
     },
     "guillotine_ex": {
       "name": "Guillotine (EX)",
@@ -2581,12 +2126,7 @@
         "qcf,qcf+1+2"
       ],
       "move_class": "special",
-      "note": "EX Guillotine; anti-air invuln startup. Original KOF motion: 236236+AC",
-      "anim_t3": {
-        "bank": "king",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "EX Guillotine; anti-air invuln startup. Original KOF motion: 236236+AC"
     },
     "pitviper_l": {
       "name": "Pit Viper (Light)",
@@ -2605,12 +2145,7 @@
         "qcb,qcf+1"
       ],
       "move_class": "special",
-      "note": "Super: glowing-hand finger strike into midsection, rips out, leaves poison (KOF XIV/XV). Input motion not independently verified; name + properties verified (SNK wiki).",
-      "anim_t3": {
-        "bank": "king",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Super: glowing-hand finger strike into midsection, rips out, leaves poison (KOF XIV/XV). Input motion not independently verified; name + properties verified (SNK wiki)."
     },
     "pitviper_h": {
       "name": "Pit Viper (Heavy)",
@@ -2629,12 +2164,7 @@
         "qcb,qcf+2"
       ],
       "move_class": "special",
-      "note": "Heavy: push-kicks victim to back wall, poisoned (KOF XIV/XV). Input motion not independently verified.",
-      "anim_t3": {
-        "bank": "king",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Heavy: push-kicks victim to back wall, poisoned (KOF XIV/XV). Input motion not independently verified."
     },
     "drill": {
       "name": "Drill (Climax)",
@@ -2657,12 +2187,7 @@
       "throw": true,
       "throw_break": "1+2",
       "unblockable": true,
-      "isGrab": true,
-      "anim_t3": {
-        "bank": "king",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "isGrab": true
     },
     "drill_l1": {
       "name": "Drill (Climax, Level 1)",
@@ -2685,12 +2210,7 @@
       "throw": true,
       "throw_break": "1+2",
       "unblockable": true,
-      "isGrab": true,
-      "anim_t3": {
-        "bank": "king",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "isGrab": true
     },
     "drill_l2": {
       "name": "Drill (Climax, Level 2)",
@@ -2713,12 +2233,7 @@
       "throw": true,
       "throw_break": "1+2",
       "unblockable": true,
-      "isGrab": true,
-      "anim_t3": {
-        "bank": "king",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "isGrab": true
     },
     "drill_l3": {
       "name": "Drill (Climax, Level 3)",
@@ -2741,12 +2256,7 @@
       "throw": true,
       "throw_break": "1+2",
       "unblockable": true,
-      "isGrab": true,
-      "anim_t3": {
-        "bank": "king",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "isGrab": true
     },
     "drill_l4": {
       "name": "Drill (Climax, Level 4)",
@@ -2769,12 +2279,7 @@
       "throw": true,
       "throw_break": "1+2",
       "unblockable": true,
-      "isGrab": true,
-      "anim_t3": {
-        "bank": "king",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "isGrab": true
     },
     "rock_bottom": {
       "name": "ROCK BOTTOM",
@@ -2798,12 +2303,7 @@
       "throw_break": "1+2",
       "unblockable": true,
       "isGrab": true,
-      "tekken_source": "King (Tekken 7)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "tekken_source": "King (Tekken 7)"
     },
     "peoples_elbow": {
       "name": "PEOPLE'S ELBOW",
@@ -2823,12 +2323,7 @@
       ],
       "move_class": "strike",
       "note": "Modeled on King's Elbow Drop d+1+2, the People's Elbow analog (hits grounded opponents; 'similar to the Rock's People's Elbow' — Tekken Hybrid King guide). Owner canon 2026-10-19.",
-      "tekken_source": "King (Tekken 7)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 97,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "tekken_source": "King (Tekken 7)"
     },
     "peoples_elbow_air": {
       "name": "PEOPLE'S ELBOW (FLYING)",
@@ -2848,12 +2343,7 @@
       ],
       "move_class": "strike",
       "note": "Modeled on King's High Elbow Drop u/f+2+4 (jumping elbow pounce). Owner canon 2026-10-19.",
-      "tekken_source": "King (Tekken 7)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "tekken_source": "King (Tekken 7)"
     },
     "rock_ddt": {
       "name": "ROCK'S DDT",
@@ -2877,12 +2367,7 @@
       "throw_break": "1+2",
       "unblockable": true,
       "isGrab": true,
-      "wh_original": true,
-      "anim_t3": {
-        "bank": "king",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "wh_original": true
     },
     "getup_low": {
       "name": "Getup Low Kick",
@@ -2901,12 +2386,7 @@
         "(grounded) d+3"
       ],
       "move_class": "strike",
-      "note": "Tekken universal getup kick, low",
-      "anim_t3": {
-        "bank": "king",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Tekken universal getup kick, low"
     },
     "getup_mid": {
       "name": "Getup Mid Kick",
@@ -2925,12 +2405,7 @@
         "(grounded) d+4"
       ],
       "move_class": "strike",
-      "note": "Tekken universal getup kick, mid",
-      "anim_t3": {
-        "bank": "king",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Tekken universal getup kick, mid"
     },
     "facedown_kick": {
       "name": "Face-Down Kick",
@@ -2949,12 +2424,7 @@
         "(face down) 3+4"
       ],
       "move_class": "strike",
-      "note": "Tekken universal face-down getup attack",
-      "anim_t3": {
-        "bank": "king",
-        "row": 35,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Tekken universal face-down getup attack"
     },
     "bt_strike": {
       "name": "Back-Turned Strike",
@@ -2973,12 +2443,7 @@
         "(BT) 2"
       ],
       "move_class": "strike",
-      "note": "Tekken universal back-turned strike",
-      "anim_t3": {
-        "bank": "king",
-        "row": 50,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Tekken universal back-turned strike"
     },
     "rock_bottom_nm": {
       "name": "ROCK BOTTOM (NO MERCY)",
@@ -3009,11 +2474,6 @@
         "status": "poses-only (corrected true-clip poses supersede W3's wrong-file artifacts) — AKI FK->T3 IK pending; move keeps King-bank fallback clips",
         "report": "docs/anim/AKI-BAKE-ROCK-2026-10-21.md (W3c addendum)",
         "supersedes": "W3 aki_bake record (wrong-file data: W3 converted game file +0x19 spliced at +0x60 under the 12/8/12 split)"
-      },
-      "anim_t3": {
-        "bank": "king",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "peoples_elbow_nm": {
@@ -3043,11 +2503,6 @@
         "status": "poses-only (corrected true-clip poses supersede W3's wrong-file artifacts) — AKI FK->T3 IK pending; move keeps King-bank fallback clips",
         "report": "docs/anim/AKI-BAKE-ROCK-2026-10-21.md (W3c addendum)",
         "supersedes": "W3 aki_bake record (wrong-file data: W3 converted game file +0x19 spliced at +0x60 under the 12/8/12 split)"
-      },
-      "anim_t3": {
-        "bank": "king",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "peoples_elbow_running_nm": {
@@ -3077,11 +2532,6 @@
         "status": "poses-only (corrected true-clip poses supersede W3's wrong-file artifacts) — AKI FK->T3 IK pending; move keeps King-bank fallback clips",
         "report": "docs/anim/AKI-BAKE-ROCK-2026-10-21.md (W3c addendum)",
         "supersedes": "W3 aki_bake record (wrong-file data: W3 converted game file +0x19 spliced at +0x60 under the 12/8/12 split)"
-      },
-      "anim_t3": {
-        "bank": "king",
-        "row": 586,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "rock_taunt_nm": {
@@ -3117,11 +2567,6 @@
           "MK-4233": "102f, worst RightUpLeg 16.1 deg/f, peak ry 0.48 m — step ok, height FAIL",
           "MK-4269": "103f, worst RightArm 40.4 deg/f, peak ry 0.49 m — step ok, height FAIL"
         }
-      },
-      "anim_t3": {
-        "bank": "king",
-        "row": 195,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "rock_spinebuster_nm": {
@@ -3153,11 +2598,6 @@
         "status": "poses-only (corrected true-clip poses supersede W3's wrong-file artifacts) — AKI FK->T3 IK pending; move keeps King-bank fallback clips",
         "report": "docs/anim/AKI-BAKE-ROCK-2026-10-21.md (W3c addendum)",
         "supersedes": "W3 aki_bake record (wrong-file data: W3 converted game file +0x19 spliced at +0x60 under the 12/8/12 split)"
-      },
-      "anim_t3": {
-        "bank": "king",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "rock_stomp_nm": {
@@ -3187,11 +2627,6 @@
         "status": "poses-only (corrected true-clip poses supersede W3's wrong-file artifacts) — AKI FK->T3 IK pending; move keeps King-bank fallback clips",
         "report": "docs/anim/AKI-BAKE-ROCK-2026-10-21.md (W3c addendum)",
         "supersedes": "W3 aki_bake record (wrong-file data: W3 converted game file +0x19 spliced at +0x60 under the 12/8/12 split)"
-      },
-      "anim_t3": {
-        "bank": "king",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "rock_spinning_ddt_nm": {
@@ -3223,11 +2658,6 @@
         "status": "poses-only (corrected true-clip poses supersede W3's wrong-file artifacts) — AKI FK->T3 IK pending; move keeps King-bank fallback clips",
         "report": "docs/anim/AKI-BAKE-ROCK-2026-10-21.md (W3c addendum)",
         "supersedes": "W3 aki_bake record (wrong-file data: W3 converted game file +0x19 spliced at +0x60 under the 12/8/12 split)"
-      },
-      "anim_t3": {
-        "bank": "king",
-        "row": 127,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     }
   },

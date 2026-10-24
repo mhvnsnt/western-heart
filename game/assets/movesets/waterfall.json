@@ -1093,12 +1093,7 @@
       "note": "I'm sorry. I'm sorry. I'm- [kick]. Apologetic clinch into a devastating knee.",
       "throw": true,
       "unblockable": true,
-      "isGrab": true,
-      "anim_t3": {
-        "bank": "jin",
-        "row": 247,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "isGrab": true
     },
     "S": {
       "name": "Nine Souls' Grief [WH SIGNATURE]",
@@ -1117,12 +1112,7 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "She carries the grief of all nine. It doesn't stop - and neither does she. Tear-burst flurry.",
-      "anim_t3": {
-        "bank": "jin",
-        "row": 227,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "She carries the grief of all nine. It doesn't stop - and neither does she. Tear-burst flurry."
     },
     "1+4": {
       "name": "I'm Sorry [WH SIGNATURE]",
@@ -1146,12 +1136,7 @@
       "unblockable": true,
       "isGrab": true,
       "input_remapped_from": "P+K",
-      "throw_break": "1+2",
-      "anim_t3": {
-        "bank": "jin",
-        "row": 215,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1+2"
     },
     "1+2": {
       "name": "Nine Souls' Grief [WH SIGNATURE]",
@@ -1171,12 +1156,7 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "She carries the grief of all nine. It doesn't stop - and neither does she. Tear-burst flurry.",
-      "input_remapped_from": "S",
-      "anim_t3": {
-        "bank": "jin",
-        "row": 32,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "input_remapped_from": "S"
     },
     "1+2__main": {
       "name": "WATERFALL 1+2 (T3 jin r32)",
@@ -4005,12 +3985,7 @@
       "merge_source": "t7:josie_1",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Back towards wall...",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "Back towards wall..."
     },
     "1~t7.josie": {
       "name": "WATERFALL 1",
@@ -4044,12 +4019,7 @@
       "t7_on_hit": "+8",
       "t7_on_ch": "+8",
       "merge_source": "t7:josie_2",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "josie",
-        "row": 43,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "1,2": {
       "name": "WATERFALL 1,2",
@@ -4090,11 +4060,6 @@
           8
         ],
         "total": 15
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2~t7.josie": {
@@ -4129,12 +4094,7 @@
       "t7_on_hit": "+7",
       "t7_on_ch": "+7",
       "merge_source": "t7:josie_4",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "josie",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "1,2,2": {
       "name": "Papilio Combo",
@@ -4176,11 +4136,6 @@
           10
         ],
         "total": 25
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,2~t7.josie": {
@@ -4222,11 +4177,6 @@
           10
         ],
         "total": 18
-      },
-      "anim_t3": {
-        "bank": "josie",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,2~t7.josie.2": {
@@ -4261,12 +4211,7 @@
       "t7_on_hit": "+9",
       "t7_on_ch": "+9",
       "merge_source": "t7:josie_7",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "josie",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "1,2,3": {
       "name": "Graphium Combo",
@@ -4308,11 +4253,6 @@
           18
         ],
         "total": 33
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,3~t7.josie": {
@@ -4354,11 +4294,6 @@
           18
         ],
         "total": 26
-      },
-      "anim_t3": {
-        "bank": "josie",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,3~t7.josie.2": {
@@ -4394,12 +4329,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:josie_10",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "1,2,d+4": {
       "name": "WATERFALL 1,2,d+4",
@@ -4441,11 +4371,6 @@
           22
         ],
         "total": 37
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,d+4~t7.josie": {
@@ -4487,11 +4412,6 @@
           22
         ],
         "total": 30
-      },
-      "anim_t3": {
-        "bank": "josie",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,d+4~t7.josie.2": {
@@ -4526,12 +4446,7 @@
       "t7_on_hit": "-5",
       "t7_on_ch": "-5",
       "merge_source": "t7:josie_13",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "josie",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "1,2,d+4,4": {
       "name": "One Two Low High Spin Kick",
@@ -4575,12 +4490,7 @@
         ],
         "total": 53
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "1,2,d+4,4~t7.josie": {
       "name": "WATERFALL 1,2,d+4,4",
@@ -4623,12 +4533,7 @@
         ],
         "total": 46
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "1,2,d+4,4~t7.josie.2": {
       "name": "WATERFALL 1,2,d+4,4",
@@ -4670,12 +4575,7 @@
         ],
         "total": 38
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "1,2,d+4,4~t7.josie.3": {
       "name": "WATERFALL 1,2,d+4,4",
@@ -4710,12 +4610,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:josie_17",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "1,4": {
       "name": "WATERFALL 1,4",
@@ -4756,11 +4651,6 @@
           10
         ],
         "total": 17
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,4~t7.josie": {
@@ -4795,12 +4685,7 @@
       "t7_on_hit": "+7",
       "t7_on_ch": "+7",
       "merge_source": "t7:josie_19",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "josie",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "1,4,3": {
       "name": "Sunrise Combo",
@@ -4842,11 +4727,6 @@
           12
         ],
         "total": 29
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,4,3~t7.josie": {
@@ -4888,11 +4768,6 @@
           12
         ],
         "total": 22
-      },
-      "anim_t3": {
-        "bank": "josie",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,4,3~t7.josie.2": {
@@ -4927,12 +4802,7 @@
       "t7_on_hit": "+1",
       "t7_on_ch": "+1",
       "merge_source": "t7:josie_22",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "josie",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "2~t7.josie": {
       "name": "WATERFALL 2",
@@ -4966,12 +4836,7 @@
       "t7_on_hit": "+7",
       "t7_on_ch": "+7",
       "merge_source": "t7:josie_23",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "josie",
-        "row": 106,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "2,3": {
       "name": "Quick Graphium",
@@ -5012,11 +4877,6 @@
           18
         ],
         "total": 26
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "2,3~t7.josie": {
@@ -5052,12 +4912,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:josie_25",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "2,d+4": {
       "name": "WATERFALL 2,d+4",
@@ -5098,11 +4953,6 @@
           13
         ],
         "total": 21
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "2,d+4~t7.josie": {
@@ -5137,12 +4987,7 @@
       "t7_on_hit": "-5",
       "t7_on_ch": "-5",
       "merge_source": "t7:josie_27",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "josie",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "2,d+4,4": {
       "name": "Right Straight to Low High Spin Kick",
@@ -5185,12 +5030,7 @@
         ],
         "total": 46
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "2,d+4,4~t7.josie": {
       "name": "WATERFALL 2,d+4,4",
@@ -5232,12 +5072,7 @@
         ],
         "total": 38
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "2,d+4,4~t7.josie.2": {
       "name": "WATERFALL 2,d+4,4",
@@ -5272,12 +5107,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:josie_30",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "3~t7.josie": {
       "name": "WATERFALL 3",
@@ -5311,12 +5141,7 @@
       "t7_on_hit": "+3",
       "t7_on_ch": "+3",
       "merge_source": "t7:josie_31",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "josie",
-        "row": 195,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "3,2": {
       "name": "Hollow Point Shot",
@@ -5357,11 +5182,6 @@
           18
         ],
         "total": 29
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "3,2~t7.josie": {
@@ -5397,12 +5217,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:josie_33",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "3,3": {
       "name": "Intercept Kick",
@@ -5444,12 +5259,7 @@
         ],
         "total": 32
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "3,3~t7.josie": {
       "name": "WATERFALL 3,3",
@@ -5484,12 +5294,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:josie_35",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "3,f+3": {
       "name": "Intercept Cannon",
@@ -5531,12 +5336,7 @@
         ],
         "total": 38
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "3,f+3~t7.josie": {
       "name": "WATERFALL 3,f+3",
@@ -5571,12 +5371,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:josie_37",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "4~t7.josie": {
       "name": "WATERFALL 4",
@@ -5611,12 +5406,7 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:josie_38",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 199,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "3+4": {
       "name": "Spinning Scythe",
@@ -5651,12 +5441,7 @@
       "t7_on_ch": "S!",
       "merge_source": "t7:josie_39",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 51,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "u/f+3~t7.josie": {
       "name": "Butterfly Edge",
@@ -5691,12 +5476,7 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:josie_40",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 55,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "u/f+4~t7.josie": {
       "name": "Carabao Horn",
@@ -5731,12 +5511,7 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:josie_41",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 80,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "u/f+3+4~t7.josie": {
       "name": "Rapid Double Knee",
@@ -5778,12 +5553,7 @@
         ],
         "total": 34
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 52,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "u/f+3+4~t7.josie.2": {
       "name": "WATERFALL u/f+3+4",
@@ -5819,12 +5589,7 @@
       "merge_source": "t7:josie_43",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(second hit only)",
-      "anim_t3": {
-        "bank": "josie",
-        "row": 52,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "input_note": "(second hit only)"
     },
     "f+2~t7.josie": {
       "name": "WATERFALL f+2",
@@ -5858,12 +5623,7 @@
       "t7_on_hit": "+3",
       "t7_on_ch": "+3",
       "merge_source": "t7:josie_44",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "josie",
-        "row": 220,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "f+2,3": {
       "name": "WATERFALL f+2,3",
@@ -5904,11 +5664,6 @@
           13
         ],
         "total": 23
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 242,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "f+2,3~t7.josie": {
@@ -5943,12 +5698,7 @@
       "t7_on_hit": "0",
       "t7_on_ch": "0",
       "merge_source": "t7:josie_46",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "josie",
-        "row": 242,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "f+2,3,3": {
       "name": "Albay Ring",
@@ -5991,12 +5741,7 @@
         ],
         "total": 53
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "f+2,3,3~t7.josie": {
       "name": "WATERFALL f+2,3,3",
@@ -6038,12 +5783,7 @@
         ],
         "total": 43
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "f+2,3,3~t7.josie.2": {
       "name": "WATERFALL f+2,3,3",
@@ -6078,12 +5818,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:josie_49",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "f+2,3,4": {
       "name": "Subic Ring",
@@ -6126,12 +5861,7 @@
         ],
         "total": 43
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "f+2,3,4~t7.josie": {
       "name": "WATERFALL f+2,3,4",
@@ -6173,12 +5903,7 @@
         ],
         "total": 33
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "f+2,3,4~t7.josie.2": {
       "name": "WATERFALL f+2,3,4",
@@ -6213,12 +5938,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:josie_52",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "f+2,4": {
       "name": "Panquil Ring",
@@ -6260,12 +5980,7 @@
         ],
         "total": 33
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 260,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "f+2,4~t7.josie": {
       "name": "WATERFALL f+2,4",
@@ -6300,12 +6015,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:josie_54",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 260,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "f+3": {
       "name": "Piercing Needle",
@@ -6339,12 +6049,7 @@
       "t7_on_hit": "+8",
       "t7_on_ch": "+12",
       "merge_source": "t7:josie_55",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 79,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "f+4~t7.josie": {
       "name": "Step In Toe Kick",
@@ -6378,12 +6083,7 @@
       "t7_on_hit": "+1",
       "t7_on_ch": "+1",
       "merge_source": "t7:josie_56",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "josie",
-        "row": 214,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "f+4,3": {
       "name": "Step In Knee Combo",
@@ -6424,11 +6124,6 @@
           14
         ],
         "total": 27
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 245,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "f+4,3~t7.josie": {
@@ -6463,12 +6158,7 @@
       "t7_on_hit": "+1",
       "t7_on_ch": "+1",
       "merge_source": "t7:josie_58",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "josie",
-        "row": 245,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "f+1+2": {
       "name": "Flying Elbow",
@@ -6502,12 +6192,7 @@
       "t7_on_hit": "STUN",
       "t7_on_ch": "STUN",
       "merge_source": "t7:josie_59",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 357,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "f+3+4": {
       "name": "Heavy Knee",
@@ -6543,12 +6228,7 @@
       "merge_source": "t7:josie_60",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(or WR 3+4)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(or WR 3+4)"
     },
     "f,F+3": {
       "name": "Needle Shot",
@@ -6583,12 +6263,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:josie_61",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 227,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "f,F+4": {
       "name": "Step In Tracer",
@@ -6623,12 +6298,7 @@
       "t7_on_ch": "S!",
       "merge_source": "t7:josie_62",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 247,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "f,f,f+3": {
       "name": "Target Slash",
@@ -6664,12 +6334,7 @@
       "merge_source": "t7:josie_63",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(or WR 3)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 227,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(or WR 3)"
     },
     "d/f+1~t7.josie": {
       "name": "WATERFALL d/f+1",
@@ -6703,12 +6368,7 @@
       "t7_on_hit": "+4",
       "t7_on_ch": "+4",
       "merge_source": "t7:josie_64",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "josie",
-        "row": 179,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "d/f+1,2": {
       "name": "Liver Shot to Straight Punch",
@@ -6749,11 +6409,6 @@
           12
         ],
         "total": 26
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+1,2~t7.josie": {
@@ -6788,12 +6443,7 @@
       "t7_on_hit": "+5",
       "t7_on_ch": "+5",
       "merge_source": "t7:josie_66",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "josie",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "d/f+1,4~t7.josie": {
       "name": "WATERFALL d/f+1,4",
@@ -6834,11 +6484,6 @@
           12
         ],
         "total": 26
-      },
-      "anim_t3": {
-        "bank": "josie",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+1,4~t7.josie.2": {
@@ -6873,12 +6518,7 @@
       "t7_on_hit": "0",
       "t7_on_ch": "0",
       "merge_source": "t7:josie_68",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "josie",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "d/f+1,4,2": {
       "name": "Liver Shot to Flying Punch Combo",
@@ -6921,12 +6561,7 @@
         ],
         "total": 47
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "d/f+1,4,2~t7.josie": {
       "name": "WATERFALL d/f+1,4,2",
@@ -6968,12 +6603,7 @@
         ],
         "total": 33
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "d/f+1,4,2~t7.josie.2": {
       "name": "WATERFALL d/f+1,4,2",
@@ -7008,12 +6638,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:josie_71",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "d/f+1,4~4": {
       "name": "Liver Blow to Feint Knee",
@@ -7055,12 +6680,7 @@
         ],
         "total": 34
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "d/f+1,4~4~t7.josie": {
       "name": "WATERFALL d/f+1,4~4",
@@ -7095,12 +6715,7 @@
       "t7_on_ch": "STUN",
       "merge_source": "t7:josie_73",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "d/f+2~t7.josie": {
       "name": "Sonic Upper",
@@ -7135,12 +6750,7 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:josie_74",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 269,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "d/f+3": {
       "name": "WATERFALL d/f+3",
@@ -7174,12 +6784,7 @@
       "t7_on_hit": "+1",
       "t7_on_ch": "+1",
       "merge_source": "t7:josie_75",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 143,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "d/f+3,2": {
       "name": "Cyclone Sweep Combo",
@@ -7220,11 +6825,6 @@
           18
         ],
         "total": 33
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3,2~t7.josie": {
@@ -7260,12 +6860,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:josie_77",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "d+2": {
       "name": "Kawasan Falls",
@@ -7300,12 +6895,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:josie_78",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 137,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "d+2,D": {
       "name": "WATERFALL d+2,D",
@@ -7340,12 +6930,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:josie_79",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "d+3": {
       "name": "WATERFALL d+3",
@@ -7379,12 +6964,7 @@
       "t7_on_hit": "-6",
       "t7_on_ch": "-6",
       "merge_source": "t7:josie_80",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "d+4": {
       "name": "Triaina Low",
@@ -7418,12 +6998,7 @@
       "t7_on_hit": "+1",
       "t7_on_ch": "+6",
       "merge_source": "t7:josie_81",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 339,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "d+3+4": {
       "name": "Full Blast Kick",
@@ -7458,12 +7033,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:josie_82",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 127,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "d/b+2": {
       "name": "Middle Straight",
@@ -7498,12 +7068,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:josie_83",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 146,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "d/b+4": {
       "name": "WATERFALL d/b+4",
@@ -7537,12 +7102,7 @@
       "t7_on_hit": "+5",
       "t7_on_ch": "+5",
       "merge_source": "t7:josie_84",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 148,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "d/b+4,2": {
       "name": "WATERFALL d/b+4,2",
@@ -7583,11 +7143,6 @@
           11
         ],
         "total": 23
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+4,2~t7.josie": {
@@ -7622,12 +7177,7 @@
       "t7_on_hit": "0",
       "t7_on_ch": "0",
       "merge_source": "t7:josie_86",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "josie",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "d/b+4,2,3": {
       "name": "Lexias Chain",
@@ -7670,12 +7220,7 @@
         ],
         "total": 46
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "d/b+4,2,3~t7.josie": {
       "name": "WATERFALL d/b+4,2,3",
@@ -7717,12 +7262,7 @@
         ],
         "total": 34
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "d/b+4,2,3~t7.josie.2": {
       "name": "WATERFALL d/b+4,2,3",
@@ -7757,12 +7297,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:josie_89",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "b+1~t7.josie": {
       "name": "WATERFALL b+1",
@@ -7796,12 +7331,7 @@
       "t7_on_hit": "+2",
       "t7_on_ch": "+2",
       "merge_source": "t7:josie_90",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "josie",
-        "row": 216,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "b+1,1": {
       "name": "Twin Rippers",
@@ -7842,11 +7372,6 @@
           20
         ],
         "total": 30
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+1,1~t7.josie": {
@@ -7881,12 +7406,7 @@
       "t7_on_hit": "+16",
       "t7_on_ch": "+16",
       "merge_source": "t7:josie_92",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "josie",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "b+1,2": {
       "name": "WATERFALL b+1,2",
@@ -7927,11 +7447,6 @@
           12
         ],
         "total": 22
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+1,2~t7.josie": {
@@ -7966,12 +7481,7 @@
       "t7_on_hit": "+6",
       "t7_on_ch": "+6",
       "merge_source": "t7:josie_94",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "josie",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "b+1,2,4": {
       "name": "WATERFALL b+1,2,4",
@@ -8013,11 +7523,6 @@
           12
         ],
         "total": 34
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+1,2,4~t7.josie": {
@@ -8059,11 +7564,6 @@
           12
         ],
         "total": 24
-      },
-      "anim_t3": {
-        "bank": "josie",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+1,2,4~t7.josie.2": {
@@ -8098,12 +7598,7 @@
       "t7_on_hit": "+6",
       "t7_on_ch": "+6",
       "merge_source": "t7:josie_97",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "josie",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "b+1,2,4,4": {
       "name": "Arnis Combo",
@@ -8147,12 +7642,7 @@
         ],
         "total": 54
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "b+1,2,4,4~t7.josie": {
       "name": "WATERFALL b+1,2,4,4",
@@ -8195,12 +7685,7 @@
         ],
         "total": 44
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "b+1,2,4,4~t7.josie.2": {
       "name": "WATERFALL b+1,2,4,4",
@@ -8242,12 +7727,7 @@
         ],
         "total": 32
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "b+1,2,4,4~t7.josie.3": {
       "name": "WATERFALL b+1,2,4,4",
@@ -8282,12 +7762,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:josie_101",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "b+2": {
       "name": "Quick Elbow",
@@ -8321,12 +7796,7 @@
       "t7_on_hit": "+7",
       "t7_on_ch": "-",
       "merge_source": "t7:josie_102",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 97,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "CH.b+2": {
       "name": "Disarm Drop",
@@ -8361,12 +7831,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:josie_103",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "b+3": {
       "name": "Tracer Kick",
@@ -8400,12 +7865,7 @@
       "t7_on_hit": "+13",
       "t7_on_ch": "+13",
       "merge_source": "t7:josie_104",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 103,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "b+4": {
       "name": "WATERFALL b+4",
@@ -8439,12 +7899,7 @@
       "t7_on_hit": "+6",
       "t7_on_ch": "+6",
       "merge_source": "t7:josie_105",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 112,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "b+4,3": {
       "name": "WATERFALL b+4,3",
@@ -8485,11 +7940,6 @@
           14
         ],
         "total": 28
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+4,3~t7.josie": {
@@ -8524,12 +7974,7 @@
       "t7_on_hit": "+5",
       "t7_on_ch": "+5",
       "merge_source": "t7:josie_107",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "josie",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "b+4,3,4": {
       "name": "Streamline Combo",
@@ -8572,12 +8017,7 @@
         ],
         "total": 53
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "b+4,3,4~t7.josie": {
       "name": "WATERFALL b+4,3,4",
@@ -8619,12 +8059,7 @@
         ],
         "total": 39
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "b+4,3,4~t7.josie.2": {
       "name": "WATERFALL b+4,3,4",
@@ -8659,12 +8094,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:josie_110",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "b+4,3,d+4": {
       "name": "Streamline to Low Kick",
@@ -8706,11 +8136,6 @@
           12
         ],
         "total": 40
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+4,3,d+4~t7.josie": {
@@ -8752,11 +8177,6 @@
           12
         ],
         "total": 26
-      },
-      "anim_t3": {
-        "bank": "josie",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+4,3,d+4~t7.josie.2": {
@@ -8791,12 +8211,7 @@
       "t7_on_hit": "+3",
       "t7_on_ch": "+3",
       "merge_source": "t7:josie_113",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "josie",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "b+4,3,d+4~4": {
       "name": "Streamline to Feint Knee",
@@ -8839,12 +8254,7 @@
         ],
         "total": 48
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "b+4,3,d+4~4~t7.josie": {
       "name": "WATERFALL b+4,3,d+4~4",
@@ -8886,12 +8296,7 @@
         ],
         "total": 34
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "b+4,3,d+4~4~t7.josie.2": {
       "name": "WATERFALL b+4,3,d+4~4",
@@ -8926,12 +8331,7 @@
       "t7_on_ch": "STUN",
       "merge_source": "t7:josie_116",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "b+1+2": {
       "name": "Spinning Back Blow",
@@ -8965,12 +8365,7 @@
       "t7_on_hit": "STUN",
       "t7_on_ch": "STUN",
       "merge_source": "t7:josie_117",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 119,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "BT.1": {
       "name": "WATERFALL BT.1",
@@ -9005,12 +8400,7 @@
       "t7_on_ch": "+3",
       "merge_source": "t7:josie_118",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "(or 2)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 47,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(or 2)"
     },
     "BT.3": {
       "name": "WATERFALL BT.3",
@@ -9046,12 +8436,7 @@
       "merge_source": "t7:josie_119",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(or 4)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 227,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(or 4)"
     },
     "FC.1": {
       "name": "WATERFALL FC.1",
@@ -9085,12 +8470,7 @@
       "t7_on_hit": "+6",
       "t7_on_ch": "+6",
       "merge_source": "t7:josie_120",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 47,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "FC.2": {
       "name": "WATERFALL FC.2",
@@ -9124,12 +8504,7 @@
       "t7_on_hit": "+7",
       "t7_on_ch": "+7",
       "merge_source": "t7:josie_121",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "FC.3": {
       "name": "WATERFALL FC.3",
@@ -9163,12 +8538,7 @@
       "t7_on_hit": "-3",
       "t7_on_ch": "-3",
       "merge_source": "t7:josie_122",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 227,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "FC.4": {
       "name": "WATERFALL FC.4",
@@ -9202,12 +8572,7 @@
       "t7_on_hit": "-4",
       "t7_on_ch": "-4",
       "merge_source": "t7:josie_123",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 247,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "FC.d/f+4": {
       "name": "Whip Kick",
@@ -9242,12 +8607,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:josie_124",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 247,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "f,f,F": {
       "name": "WATERFALL f,f,F",
@@ -9283,12 +8643,7 @@
       "merge_source": "t7:josie_125",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "WR (Full Screen)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "WR (Full Screen)"
     },
     "f,f,F~t7.josie": {
       "name": "WATERFALL f,f,F",
@@ -9324,12 +8679,7 @@
       "merge_source": "t7:josie_126",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "WR (Full Screen) (On Grounded Opponent)",
-      "anim_t3": {
-        "bank": "josie",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "WR (Full Screen) (On Grounded Opponent)"
     },
     "4~t7.josie.2": {
       "name": "WATERFALL 4",
@@ -9365,12 +8715,7 @@
       "merge_source": "t7:josie_127",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "WR",
-      "anim_t3": {
-        "bank": "josie",
-        "row": 199,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "input_note": "WR"
     },
     "1+2~t7.josie": {
       "name": "WATERFALL 1+2",
@@ -9406,12 +8751,7 @@
       "merge_source": "t7:josie_128",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "WR",
-      "anim_t3": {
-        "bank": "josie",
-        "row": 32,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "input_note": "WR"
     },
     "WS.1": {
       "name": "Interrupting Upper",
@@ -9445,12 +8785,7 @@
       "t7_on_hit": "+7",
       "t7_on_ch": "+14",
       "merge_source": "t7:josie_129",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 47,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "WS.2": {
       "name": "WATERFALL WS.2",
@@ -9484,12 +8819,7 @@
       "t7_on_hit": "+2",
       "t7_on_ch": "+2",
       "merge_source": "t7:josie_130",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "WS.2,1": {
       "name": "Double Boomerang",
@@ -9530,11 +8860,6 @@
           12
         ],
         "total": 22
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "WS.2,1~t7.josie": {
@@ -9569,12 +8894,7 @@
       "t7_on_hit": "STUN",
       "t7_on_ch": "STUN",
       "merge_source": "t7:josie_132",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "josie",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "WS.3": {
       "name": "Vertical Knee",
@@ -9609,12 +8929,7 @@
       "t7_on_ch": "STUN",
       "merge_source": "t7:josie_133",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 227,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "WS.4": {
       "name": "WATERFALL WS.4",
@@ -9648,12 +8963,7 @@
       "t7_on_hit": "+5",
       "t7_on_ch": "+5",
       "merge_source": "t7:josie_134",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 247,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "2,2,1,4,2,1,4,3,3,3": {
       "name": "10 Hit Combo",
@@ -9688,12 +8998,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:josie_135",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "t7.josie_136": {
       "name": "WATERFALL Face Up, Feet Towards+3 or (After Rolling Forward)",
@@ -9726,12 +9031,7 @@
       "t7_on_ch": "STUN",
       "merge_source": "t7:josie_136",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "Face Up, Feet Towards+ descriptive: 3 or After Rolling Forward",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "Face Up, Feet Towards+ descriptive: 3 or After Rolling Forward"
     },
     "t7.josie_137": {
       "name": "WATERFALL Face Up, Feet Towards+4 or (After Rolling Forward)",
@@ -9765,12 +9065,7 @@
       "merge_source": "t7:josie_137",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Face Up, Feet Towards+ descriptive: 4 or After Rolling Forward",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "Face Up, Feet Towards+ descriptive: 4 or After Rolling Forward"
     },
     "FUFT.d+3": {
       "name": "WATERFALL FUFT.d+3",
@@ -9805,12 +9100,7 @@
       "t7_on_ch": "-3",
       "merge_source": "t7:josie_138",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "Face Up, Feet Towards, (or 4)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 227,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "Face Up, Feet Towards, (or 4)"
     },
     "FUFT.3+4": {
       "name": "WATERFALL FUFT.3+4",
@@ -9846,12 +9136,7 @@
       "merge_source": "t7:josie_139",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Face Up, Feet Towards+",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 162,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "Face Up, Feet Towards+"
     },
     "t7.josie_140": {
       "name": "WATERFALL Face Up, Feet Towards, Roll Forward+1+2",
@@ -9885,12 +9170,7 @@
       "merge_source": "t7:josie_140",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Face Up, Feet Towards, descriptive: ROLL.Forward+1+2",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "Face Up, Feet Towards, descriptive: ROLL.Forward+1+2"
     },
     "FDFA.3": {
       "name": "WATERFALL FDFA.3",
@@ -9925,12 +9205,7 @@
       "t7_on_ch": "STUN",
       "merge_source": "t7:josie_141",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "Face Down, Feet Away+",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 227,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "Face Down, Feet Away+"
     },
     "FDFA.4": {
       "name": "WATERFALL FDFA.4",
@@ -9966,12 +9241,7 @@
       "merge_source": "t7:josie_142",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Face Down, Feet Away+ (close)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 247,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "Face Down, Feet Away+ (close)"
     },
     "FDFA.4~t7.josie": {
       "name": "WATERFALL FDFA.4",
@@ -10007,12 +9277,7 @@
       "merge_source": "t7:josie_143",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Face Down, Feet Away+ (far)",
-      "anim_t3": {
-        "bank": "josie",
-        "row": 247,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "Face Down, Feet Away+ (far)"
     },
     "t7.josie_144": {
       "name": "WATERFALL (Upon Landing) f",
@@ -10045,12 +9310,7 @@
       "t7_on_ch": "+3",
       "merge_source": "t7:josie_144",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "descriptive: Upon Landing f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "descriptive: Upon Landing f"
     },
     "f,n,d,d/f": {
       "name": "WATERFALL f,n,d,d/f",
@@ -10084,12 +9344,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:josie_145",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "SWB.F": {
       "name": "WATERFALL SWB.F",
@@ -10123,12 +9378,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:josie_146",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "SWS.F": {
       "name": "Slide In",
@@ -10162,12 +9412,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:josie_147",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "3,2,F": {
       "name": "Hollow Point Shot to Slide In",
@@ -10201,12 +9446,7 @@
       "t7_on_hit": "-9",
       "t7_on_ch": "-9",
       "merge_source": "t7:josie_148",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "d/f+1,2,F": {
       "name": "Liver Shot to Slide In",
@@ -10240,12 +9480,7 @@
       "t7_on_hit": "-5",
       "t7_on_ch": "-5",
       "merge_source": "t7:josie_149",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "d/f+3,2,F": {
       "name": "Cyclone Sweep to Slide In",
@@ -10279,12 +9514,7 @@
       "t7_on_hit": "-7",
       "t7_on_ch": "-",
       "merge_source": "t7:josie_150",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "b+1,2,4,F": {
       "name": "WATERFALL b+1,2,4,F",
@@ -10325,11 +9555,6 @@
           12
         ],
         "total": 22
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "SLI.1": {
@@ -10364,12 +9589,7 @@
       "t7_on_hit": "+7",
       "t7_on_ch": "+7",
       "merge_source": "t7:josie_152",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 47,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "SLI.1,3": {
       "name": "Slide In Tornado Combo",
@@ -10411,12 +9631,7 @@
         ],
         "total": 29
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "SLI.1,3~t7.josie": {
       "name": "WATERFALL SLI.1,3",
@@ -10451,12 +9666,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:josie_154",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "SLI.2": {
       "name": "Slide In Elbow",
@@ -10491,12 +9701,7 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:josie_155",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "SLI.3": {
       "name": "Slide In Low Kick",
@@ -10531,12 +9736,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:josie_156",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 227,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "SLI.4": {
       "name": "WATERFALL SLI.4",
@@ -10570,12 +9770,7 @@
       "t7_on_hit": "+5",
       "t7_on_ch": "+5",
       "merge_source": "t7:josie_157",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 247,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "SLI.1+2": {
       "name": "Slide In Jumping Elbow",
@@ -10610,12 +9805,7 @@
       "t7_on_ch": "STUN",
       "merge_source": "t7:josie_158",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 162,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "b+3+4": {
       "name": "Sway Back",
@@ -10649,12 +9839,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:josie_159",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 110,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "WS.2,1,B": {
       "name": "Double Boomerang to Sway Back",
@@ -10695,11 +9880,6 @@
           12
         ],
         "total": 22
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "SWB.1": {
@@ -10734,12 +9914,7 @@
       "t7_on_hit": "STUN",
       "t7_on_ch": "STUN",
       "merge_source": "t7:josie_161",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 47,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "SWB.2": {
       "name": "Spine Hook",
@@ -10774,12 +9949,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:josie_162",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "1,2,4": {
       "name": "One Two High Kick to Switch Stance",
@@ -10821,11 +9991,6 @@
           22
         ],
         "total": 37
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,4~t7.josie": {
@@ -10867,11 +10032,6 @@
           22
         ],
         "total": 30
-      },
-      "anim_t3": {
-        "bank": "josie",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,4~t7.josie.2": {
@@ -10907,12 +10067,7 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:josie_165",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "2,4": {
       "name": "High Kick Combo to Switch Stance",
@@ -10953,11 +10108,6 @@
           22
         ],
         "total": 30
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "2,4~t7.josie": {
@@ -10993,12 +10143,7 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:josie_167",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "d/f+4~t7.josie": {
       "name": "Triaina Middle to Switch Stance",
@@ -11032,12 +10177,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:josie_168",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "josie",
-        "row": 205,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "d+3,4": {
       "name": "Left Low Kick & High Kick to Switch Stance",
@@ -11078,11 +10218,6 @@
           15
         ],
         "total": 26
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d+3,4~t7.josie": {
@@ -11118,12 +10253,7 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:josie_170",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "SWS.1": {
       "name": "Iligan Switch",
@@ -11157,12 +10287,7 @@
       "t7_on_hit": "+5 (OC)",
       "t7_on_ch": "STUN",
       "merge_source": "t7:josie_171",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 47,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "SWS.2": {
       "name": "Ormoc Switch",
@@ -11196,12 +10321,7 @@
       "t7_on_hit": "+5",
       "t7_on_ch": "STUN",
       "merge_source": "t7:josie_172",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "SWS.3": {
       "name": "Sapu Switch",
@@ -11235,12 +10355,7 @@
       "t7_on_hit": "-1",
       "t7_on_ch": "STUN",
       "merge_source": "t7:josie_173",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 227,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "SWS.4": {
       "name": "Side Strike Switch",
@@ -11275,12 +10390,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:josie_174",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 247,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "d/f+3+4": {
       "name": "Boost Knee Launcher",
@@ -11315,12 +10425,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:josie_175",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 134,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "R.d/f+1+2": {
       "name": "Rage Art",
@@ -11356,12 +10461,7 @@
       "merge_source": "t7:josie_176",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Rage)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 162,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Rage)"
     },
     "R.f,n,d,d/f+3+4": {
       "name": "Rage Drive",
@@ -11404,12 +10504,7 @@
         "total": 34
       },
       "knockdown": true,
-      "input_note": "(During Rage)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 162,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Rage)"
     },
     "R.f,n,d,d/f+3+4~t7.josie": {
       "name": "Rage Drive",
@@ -11445,12 +10540,7 @@
       "merge_source": "t7:josie_178",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Rage) (second hit only)",
-      "anim_t3": {
-        "bank": "josie",
-        "row": 162,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Rage) (second hit only)"
     },
     "b+2+3": {
       "name": "Spiral Typhoon",
@@ -11484,12 +10574,7 @@
       "t7_on_hit": "STUN",
       "t7_on_ch": "STUN",
       "merge_source": "t7:josie_179",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "1+3~t7.josie": {
       "name": "Suppressing Strike",
@@ -11527,12 +10612,7 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 288,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "2+4~t7.josie": {
       "name": "Neck Hold Slash",
@@ -11570,12 +10650,7 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 289,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "f+1+3": {
       "name": "Suppressing Strike",
@@ -11613,12 +10688,7 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 288,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "f+2+4~t7.josie": {
       "name": "Neck Hold Slash",
@@ -11656,12 +10726,7 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "josie",
-        "row": 288,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "f,F+3+4": {
       "name": "Spirited Barrage",
@@ -11699,12 +10764,7 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 288,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "SIDE_L.1+3": {
       "name": "Break Down",
@@ -11742,12 +10802,7 @@
       "input_note": "Approach from left side... (or 2+4)",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 288,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "SIDE_R.1+3": {
       "name": "Heart's Cry",
@@ -11785,12 +10840,7 @@
       "input_note": "Approach from right side... (or 2+4)",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 288,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "BACK.1+3": {
       "name": "Lingayen Stomp",
@@ -11828,12 +10878,7 @@
       "input_note": "Approach from behind... (or f+1+3)",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 288,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "t7.josie_188": {
       "name": "WATERFALL WR f, f, F (Mid Screen)",
@@ -11869,12 +10914,7 @@
       "input_note": "WR descriptive: f, f, F Mid Screen",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 288,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "TACKLE.1": {
       "name": "WATERFALL TACKLE.1",
@@ -11910,12 +10950,7 @@
       "merge_source": "t7:josie_189",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Tackle) (or 2)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 47,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Tackle) (or 2)"
     },
     "TACKLE.1,1": {
       "name": "WATERFALL TACKLE.1,1",
@@ -11958,12 +10993,7 @@
         "total": 10
       },
       "knockdown": true,
-      "input_note": "(During Tackle)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Tackle)"
     },
     "TACKLE.1,1,1": {
       "name": "WATERFALL TACKLE.1,1,1",
@@ -12007,12 +11037,7 @@
         "total": 15
       },
       "knockdown": true,
-      "input_note": "(During Tackle)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Tackle)"
     },
     "TACKLE.1,1,1,1": {
       "name": "WATERFALL TACKLE.1,1,1,1",
@@ -12057,12 +11082,7 @@
         "total": 30
       },
       "knockdown": true,
-      "input_note": "(During Tackle)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Tackle)"
     },
     "FC.d/f,d,d/f": {
       "name": "WATERFALL FC.d/f,d,d/f",
@@ -12096,12 +11116,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:josie_193",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "t7.josie_194": {
       "name": "Reverse Sampaguita",
@@ -12134,12 +11149,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:josie_194",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "descriptive: Time with enemy right punch... 1+2",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "descriptive: Time with enemy right punch... 1+2"
     },
     "1+2+3~t7.josie": {
       "name": "*",
@@ -12173,12 +11183,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:josie_195",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "josie",
-        "row": 255,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "u/b+3~t7.josie": {
       "name": "WATERFALL u/b+3",
@@ -12216,12 +11221,7 @@
       "merge_source": "t7:josie_rbn_002",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "set": "FIGHT",
-      "anim_t3": {
-        "bank": "josie",
-        "row": 56,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "set": "FIGHT"
     },
     "u+4": {
       "name": "WATERFALL u+4",
@@ -12257,12 +11257,7 @@
       "merge_source": "t7:josie_rbn_003",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "set": "FIGHT",
-      "anim_t3": {
-        "bank": "rbnorway (tekken-7-frame-data — T7 community frame data, csv)",
-        "row": 89,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "set": "FIGHT"
     },
     "f,n,d,d/f+1": {
       "name": "WATERFALL f,n,d,d/f+1",
@@ -12297,12 +11292,7 @@
       "t7_on_ch": "+7~+8",
       "merge_source": "t7:josie_rbn_004",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT",
-      "anim_t3": {
-        "bank": "rbnorway (tekken-7-frame-data — T7 community frame data, csv)",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "set": "FIGHT"
     },
     "f,n,d,d/f+1,3": {
       "name": "WATERFALL f,n,d,d/f+1,3",
@@ -12345,12 +11335,7 @@
         ],
         "total": 29
       },
-      "set": "FIGHT",
-      "anim_t3": {
-        "bank": "rbnorway (tekken-7-frame-data — T7 community frame data, csv)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "set": "FIGHT"
     },
     "f,n,d,d/f+2": {
       "name": "WATERFALL f,n,d,d/f+2",
@@ -12386,12 +11371,7 @@
       "merge_source": "t7:josie_rbn_006",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "set": "FIGHT",
-      "anim_t3": {
-        "bank": "rbnorway (tekken-7-frame-data — T7 community frame data, csv)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "set": "FIGHT"
     },
     "f,n,d,d/f+3": {
       "name": "WATERFALL f,n,d,d/f+3",
@@ -12427,12 +11407,7 @@
       "merge_source": "t7:josie_rbn_007",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "set": "FIGHT",
-      "anim_t3": {
-        "bank": "rbnorway (tekken-7-frame-data — T7 community frame data, csv)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "set": "FIGHT"
     },
     "f,n,d,d/f+4": {
       "name": "WATERFALL f,n,d,d/f+4",
@@ -12467,12 +11442,7 @@
       "t7_on_ch": "+5~+6",
       "merge_source": "t7:josie_rbn_008",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT",
-      "anim_t3": {
-        "bank": "rbnorway (tekken-7-frame-data — T7 community frame data, csv)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "set": "FIGHT"
     },
     "f,n,d,d/f+1+2": {
       "name": "WATERFALL f,n,d,d/f+1+2",
@@ -12508,12 +11478,7 @@
       "merge_source": "t7:josie_rbn_009",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "set": "FIGHT",
-      "anim_t3": {
-        "bank": "rbnorway (tekken-7-frame-data — T7 community frame data, csv)",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "set": "FIGHT"
     },
     "f+1": {
       "name": "WATERFALL f+1",
@@ -12548,12 +11513,7 @@
       "t7_on_ch": "+8",
       "merge_source": "t7:josie_rbn_010",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT",
-      "anim_t3": {
-        "bank": "rbnorway (tekken-7-frame-data — T7 community frame data, csv)",
-        "row": 67,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "set": "FIGHT"
     },
     "d+1": {
       "name": "WATERFALL d+1",
@@ -12588,12 +11548,7 @@
       "t7_on_ch": "+6",
       "merge_source": "t7:josie_rbn_011",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT",
-      "anim_t3": {
-        "bank": "rbnorway (tekken-7-frame-data — T7 community frame data, csv)",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "set": "FIGHT"
     },
     "d/b+1": {
       "name": "WATERFALL d/b+1",
@@ -12628,12 +11583,7 @@
       "t7_on_ch": "+6",
       "merge_source": "t7:josie_rbn_012",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT",
-      "anim_t3": {
-        "bank": "rbnorway (tekken-7-frame-data — T7 community frame data, csv)",
-        "row": 145,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "set": "FIGHT"
     },
     "d/b+3": {
       "name": "WATERFALL d/b+3",
@@ -12668,12 +11618,7 @@
       "t7_on_ch": "-3",
       "merge_source": "t7:josie_rbn_013",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT",
-      "anim_t3": {
-        "bank": "rbnorway (tekken-7-frame-data — T7 community frame data, csv)",
-        "row": 138,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "set": "FIGHT"
     },
     "u+3": {
       "name": "WATERFALL u+3",
@@ -12710,12 +11655,7 @@
       "merge_source": "t7:josie_rbn_014",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "set": "FIGHT",
-      "anim_t3": {
-        "bank": "rbnorway (tekken-7-frame-data — T7 community frame data, csv)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "set": "FIGHT"
     },
     "u/f,n+4": {
       "name": "WATERFALL u/f,n+4",
@@ -12751,12 +11691,7 @@
       "merge_source": "t7:josie_rbn_015",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "set": "FIGHT",
-      "anim_t3": {
-        "bank": "rbnorway (tekken-7-frame-data — T7 community frame data, csv)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "set": "FIGHT"
     },
     "U+2": {
       "name": "WATERFALL U+2",
@@ -12791,12 +11726,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:josie_rbn_016",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT",
-      "anim_t3": {
-        "bank": "rbnorway (tekken-7-frame-data — T7 community frame data, csv)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "set": "FIGHT"
     },
     "U/F 3": {
       "name": "WATERFALL U/F 3",
@@ -12832,12 +11762,7 @@
       "merge_source": "t7:josie_rbn_017",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "input_note": "(When landing)",
-      "set": "FIGHT",
-      "anim_t3": {
-        "bank": "rbnorway (tekken-7-frame-data — T7 community frame data, csv)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "set": "FIGHT"
     },
     "U/F 4": {
       "name": "WATERFALL U/F 4",
@@ -12873,12 +11798,7 @@
       "merge_source": "t7:josie_rbn_018",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "input_note": "(When landing) (While landing)",
-      "set": "FIGHT",
-      "anim_t3": {
-        "bank": "rbnorway (tekken-7-frame-data — T7 community frame data, csv)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "set": "FIGHT"
     },
     "FC.d/b+3": {
       "name": "WATERFALL FC.d/b+3",
@@ -12914,12 +11834,7 @@
       "t7_on_ch": "-3",
       "merge_source": "t7:josie_rbn_019",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT",
-      "anim_t3": {
-        "bank": "rbnorway (tekken-7-frame-data — T7 community frame data, csv)",
-        "row": 227,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "set": "FIGHT"
     },
     "SS.1": {
       "name": "WATERFALL SS.1",
@@ -12954,12 +11869,7 @@
       "t7_on_ch": "+8",
       "merge_source": "t7:josie_rbn_020",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT",
-      "anim_t3": {
-        "bank": "rbnorway (tekken-7-frame-data — T7 community frame data, csv)",
-        "row": 47,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "set": "FIGHT"
     },
     "SS.2": {
       "name": "WATERFALL SS.2",
@@ -12994,12 +11904,7 @@
       "t7_on_ch": "+7",
       "merge_source": "t7:josie_rbn_021",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT",
-      "anim_t3": {
-        "bank": "rbnorway (tekken-7-frame-data — T7 community frame data, csv)",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "set": "FIGHT"
     },
     "SS.3": {
       "name": "WATERFALL SS.3",
@@ -13034,12 +11939,7 @@
       "t7_on_ch": "+3~+4",
       "merge_source": "t7:josie_rbn_022",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT",
-      "anim_t3": {
-        "bank": "rbnorway (tekken-7-frame-data — T7 community frame data, csv)",
-        "row": 227,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "set": "FIGHT"
     },
     "SS.4": {
       "name": "WATERFALL SS.4",
@@ -13075,12 +11975,7 @@
       "merge_source": "t7:josie_rbn_023",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "set": "FIGHT",
-      "anim_t3": {
-        "bank": "rbnorway (tekken-7-frame-data — T7 community frame data, csv)",
-        "row": 247,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "set": "FIGHT"
     },
     "BT.d+1": {
       "name": "WATERFALL BT.d+1",
@@ -13116,12 +12011,7 @@
       "t7_on_ch": "+9",
       "merge_source": "t7:josie_rbn_024",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT",
-      "anim_t3": {
-        "bank": "rbnorway (tekken-7-frame-data — T7 community frame data, csv)",
-        "row": 162,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "set": "FIGHT"
     },
     "BT.d+3": {
       "name": "WATERFALL BT.d+3",
@@ -13157,12 +12047,7 @@
       "t7_on_ch": "+3",
       "merge_source": "t7:josie_rbn_025",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "set": "FIGHT",
-      "anim_t3": {
-        "bank": "rbnorway (tekken-7-frame-data — T7 community frame data, csv)",
-        "row": 162,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "set": "FIGHT"
     }
   },
   "restored_from_sweep_338": {

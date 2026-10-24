@@ -374,8 +374,10 @@ export class Game {
         this._p1BlockWas = blockNow;
         this.p1.tryCrouch(inp.down && !inp.up); // hold down = crouch; release = WS. window
         // Feed facing-relative direction into the Tekken input buffer
-        // (drives motion specials qcf/f,F and directional attacks f+1)
-        this.p1.tekken.noteDirection(stick);
+        // (drives motion specials qcf/f,F and directional attacks f+1).
+        // Pass the tick length: the buffer's windows are T3 frames of 1/60 s and it
+        // weighs each entry by dt, so they stay real-time at FIXED_DT = 1/120 (or any rate).
+        this.p1.tekken.noteDirection(stick, dt);
         if (ms && this.p1.isBlocking()) ms.blockTime += dt;
         if (ms) ms.time += dt;
         // Stream 6: while caught in a throw, limb inputs are break attempts.
@@ -405,17 +407,7 @@ export class Game {
             if (act === '2+3' && this.p1._urgeOn && this._spiritCheck(this.p1, this.p2)) { rec('spirit'); continue; }
             // SOUL-SYSTEMS: 霊放 Reihou on 1+4 only while the foe is raging.
             if (act === '1+4' && this.soul && this.soul.tryReihou(this.p1, this.p2)) { rec('reihou'); continue; }
-            // Directional input: combine stick direction with button press.
-            // Tekken: holding f + pressing 2 = f+2, not neutral 2.
-            // Try directional first; fall back to neutral if no such move.
-            let fired = false;
-            if (/^[1234]$/.test(act) && stick && stick !== 'n') {
-              const dirNotation = stick + '+' + act;
-              if (this.p1.tryAttack(dirNotation)) {
-                audio.whiff(); rec(dirNotation); fired = true;
-              }
-            }
-            if (!fired && this.p1.tryAttack(act)) { audio.whiff(); rec(act); }
+            if (this.p1.tryAttack(act)) { audio.whiff(); rec(act); }
           }
           else if (act === 'ss-up') { if (this.p1.trySidestep(-1)) rec('sidestep'); }
           else if (act === 'ss-down') { if (this.p1.trySidestep(1)) rec('sidestep'); }

@@ -41,12 +41,7 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1+2",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 203,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1+2"
     },
     "ground_f,f_b+1+2": {
       "name": "Stonehead",
@@ -71,12 +66,7 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1+2",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 203,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1+2"
     },
     "1+2": {
       "name": "Parry",
@@ -97,12 +87,7 @@
         "1+2"
       ],
       "move_class": "parry",
-      "note": "Parry stance; chains into Rolling Powerbomb (3+4) and Irish Whip (1+2)",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 320,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "Parry stance; chains into Rolling Powerbomb (3+4) and Irish Whip (1+2)"
     },
     "1+2_parry_3+4": {
       "name": "Rolling Powerbomb",
@@ -127,12 +112,7 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1+2",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 203,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1+2"
     },
     "1+2_parry_1+2": {
       "name": "Irish Whip",
@@ -157,12 +137,7 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1+2",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 203,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1+2"
     },
     "d+1+2": {
       "name": "Lower Dodge",
@@ -183,12 +158,7 @@
         "d+1+2"
       ],
       "move_class": "parry",
-      "note": "Low parry dodge",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Low parry dodge"
     },
     "badstomach_1+2_a": {
       "name": "Arm Takedown",
@@ -213,12 +183,7 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1+2",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 203,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1+2"
     },
     "badstomach_1+2_t": {
       "name": "Trip Up",
@@ -243,12 +208,7 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1+2",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 203,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1+2"
     },
     "badstomach_1+2_d": {
       "name": "Atomic Drop",
@@ -273,12 +233,7 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1+2",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 203,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1+2"
     },
     "1,2": {
       "name": "Doc's One-Two",
@@ -309,11 +264,6 @@
           6
         ],
         "total": 8
-      },
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "2~1": {
@@ -335,12 +285,7 @@
         "[2~1]"
       ],
       "move_class": "special",
-      "note": "Anxiety slide combo from wiki T3 movelist",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Anxiety slide combo from wiki T3 movelist"
     },
     "3,4": {
       "name": "Low Spin Kick - Shin Kick",
@@ -372,12 +317,7 @@
         ],
         "total": 11
       },
-      "note": "Low, low",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 38,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low, low"
     },
     "3+4_charge": {
       "name": "Panik Charge",
@@ -398,12 +338,7 @@
         "3+4"
       ],
       "move_class": "special",
-      "note": "Stance: leads to Stagger Old Fist / Panik Old Fist Chain / Shadow Run",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 373,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "note": "Stance: leads to Stagger Old Fist / Panik Old Fist Chain / Shadow Run"
     },
     "pc_u/f+1": {
       "name": "Stagger Old Fist",
@@ -424,12 +359,7 @@
         "during Panik Charge, u/f+1"
       ],
       "move_class": "strike",
-      "note": "Mid, from Panik Charge",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid, from Panik Charge"
     },
     "pc_u/f+1,3,3,3,3": {
       "name": "Panik Old Fist Chain",
@@ -466,12 +396,7 @@
         ],
         "total": 45
       },
-      "note": "All mid",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "All mid"
     },
     "pc_shadow": {
       "name": "Shadow Run",
@@ -492,12 +417,7 @@
         "during Panik Charge, ~B"
       ],
       "move_class": "special",
-      "note": "Transition from Panik Charge into Shadow Legs",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Transition from Panik Charge into Shadow Legs"
     },
     "sl_3": {
       "name": "Overhead Crescent",
@@ -518,12 +438,7 @@
         "during Shadow Legs, 3"
       ],
       "move_class": "strike",
-      "note": "High",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 38,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "High"
     },
     "sl_4": {
       "name": "Disgrace Kick",
@@ -545,12 +460,7 @@
       ],
       "move_class": "strike",
       "note": "High, guard break property",
-      "guard_break": true,
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 53,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "guard_break": true
     },
     "1+4": {
       "name": "Bad Stomach",
@@ -571,12 +481,7 @@
         "1+4"
       ],
       "move_class": "special",
-      "note": "Stance: leads to Arm Takedown / Trip Up / Atomic Drop",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Stance: leads to Arm Takedown / Trip Up / Atomic Drop"
     },
     "iw_2,2,1+2": {
       "name": "Elbow Drop",
@@ -598,12 +503,7 @@
       ],
       "move_class": "strike",
       "note": "Face-buster property from throw chain",
-      "face_buster": true,
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 81,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "face_buster": true
     },
     "ed_1+4": {
       "name": "King Step",
@@ -624,12 +524,7 @@
         "during Elbow Drop 1+4"
       ],
       "move_class": "special",
-      "note": "Transition after Elbow Drop",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Transition after Elbow Drop"
     },
     "ks_2,1,3,4": {
       "name": "Running Bulldog",
@@ -655,12 +550,7 @@
       "unblockable": true,
       "isGrab": true,
       "face_buster": true,
-      "throw_break": "1+2",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 203,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1+2"
     },
     "ed_1+2": {
       "name": "Cartwheel",
@@ -681,12 +571,7 @@
         "during Elbow Drop 1+2"
       ],
       "move_class": "special",
-      "note": "Sidestep transition; cancel point",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Sidestep transition; cancel point"
     },
     "cw_3+4": {
       "name": "Taunt Doc - Panik Charge",
@@ -707,12 +592,7 @@
         "during Cartwheel 3+4"
       ],
       "move_class": "special",
-      "note": "Taunt into Panik Charge",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Taunt into Panik Charge"
     },
     "sr_1+2": {
       "name": "Shoulder Ram",
@@ -734,12 +614,7 @@
       ],
       "move_class": "strike",
       "note": "Face-buster property",
-      "face_buster": true,
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "face_buster": true
     },
     "ed_3+4": {
       "name": "Running Head Dive",
@@ -761,12 +636,7 @@
       ],
       "move_class": "strike",
       "note": "Face-buster property",
-      "face_buster": true,
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "face_buster": true
     },
     "f+4": {
       "name": "Right Kick",
@@ -787,12 +657,7 @@
         "f+4"
       ],
       "move_class": "strike",
-      "note": "Low",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 86,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "Low"
     },
     "f+3+4": {
       "name": "Trip Slide",
@@ -813,12 +678,7 @@
         "f+3+4"
       ],
       "move_class": "strike",
-      "note": "Mid; also 3+4 / Hop Up d+3+4 variants",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 91,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; also 3+4 / Hop Up d+3+4 variants"
     },
     "d/f+1,2": {
       "name": "Twin Pistons",
@@ -850,12 +710,7 @@
         ],
         "total": 18
       },
-      "note": "Mid, mid; juggle-capable",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid, mid; juggle-capable"
     },
     "d+4": {
       "name": "Slicer",
@@ -876,12 +731,7 @@
         "d+4"
       ],
       "move_class": "strike",
-      "note": "Low",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 358,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "Low"
     },
     "d+3+4": {
       "name": "Meditation",
@@ -902,12 +752,7 @@
         "d+3+4"
       ],
       "move_class": "special",
-      "note": "Stance: leads to Doc Mobile",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Stance: leads to Doc Mobile"
     },
     "med_3": {
       "name": "Doc Mobile",
@@ -928,12 +773,7 @@
         "during Meditation, 3 (or 4)"
       ],
       "move_class": "special",
-      "note": "Hopping movement stance",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 177,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Hopping movement stance"
     },
     "d/b+3,4,3,4,3,4": {
       "name": "Dancin' Doc",
@@ -972,12 +812,7 @@
         ],
         "total": 43
       },
-      "note": "All low; long low chain",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 38,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "All low; long low chain"
     },
     "b+3+4": {
       "name": "Back Protoplast",
@@ -998,12 +833,7 @@
         "b+3+4"
       ],
       "move_class": "special",
-      "note": "Stance: leads to Shadow Run / Shadow Run Kick L / R",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 85,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "note": "Stance: leads to Shadow Run / Shadow Run Kick L / R"
     },
     "bt_1+2": {
       "name": "Back Off!",
@@ -1024,12 +854,7 @@
         "back to opponent, 1+2"
       ],
       "move_class": "strike",
-      "note": "Mid, back-turned",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Mid, back-turned"
     },
     "bp_3": {
       "name": "Shadow Run Kick L",
@@ -1050,12 +875,7 @@
         "during Back Protoplast, 3"
       ],
       "move_class": "strike",
-      "note": "Mid",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 38,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid"
     },
     "bp_4": {
       "name": "Shadow Run Kick R",
@@ -1076,12 +896,7 @@
         "during Back Protoplast, 4"
       ],
       "move_class": "strike",
-      "note": "High, juggle-capable",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 53,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "High, juggle-capable"
     },
     "bt_f,f": {
       "name": "Back Turned Dash",
@@ -1102,12 +917,7 @@
         "back to opponent, f, f"
       ],
       "move_class": "special",
-      "note": "Back-turned dash",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Back-turned dash"
     },
     "bt_f,f+1": {
       "name": "Dragon Back Blow",
@@ -1128,12 +938,7 @@
         "back to opponent, f, f+1"
       ],
       "move_class": "strike",
-      "note": "Mid; ob property",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; ob property"
     },
     "ground_1,2": {
       "name": "Turn Over",
@@ -1154,12 +959,7 @@
         "while on ground, 1 or 2"
       ],
       "move_class": "special",
-      "note": "Ground orientation swap",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Ground orientation swap"
     },
     "bk_3": {
       "name": "Low Kick Rise",
@@ -1180,12 +980,7 @@
         "while on back, feet towards opponent, 3"
       ],
       "move_class": "strike",
-      "note": "Low",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 38,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low"
     },
     "bk_4": {
       "name": "Mid Kick Rise",
@@ -1206,12 +1001,7 @@
         "while on back, feet towards opponent, 4"
       ],
       "move_class": "strike",
-      "note": "Mid",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 53,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid"
     },
     "3+4_ts": {
       "name": "Trip Slide",
@@ -1232,12 +1022,7 @@
         "3+4"
       ],
       "move_class": "strike",
-      "note": "Low variant",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 373,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "Low variant"
     },
     "roll_u,d": {
       "name": "Roll Over",
@@ -1258,12 +1043,7 @@
         "u or d"
       ],
       "move_class": "special",
-      "note": "Ground roll direction",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Ground roll direction"
     },
     "roll_f": {
       "name": "Forward Roll",
@@ -1284,12 +1064,7 @@
         "f"
       ],
       "move_class": "special",
-      "note": "Forward roll; chains into Head Dive / Mind Warp",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Forward roll; chains into Head Dive / Mind Warp"
     },
     "fr_f+1+2": {
       "name": "Head Dive",
@@ -1311,12 +1086,7 @@
       ],
       "move_class": "strike",
       "note": "Mid, guard break property",
-      "guard_break": true,
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "guard_break": true
     },
     "hd_b+1+2": {
       "name": "Mind Warp",
@@ -1337,12 +1107,7 @@
         "during Head Dive, b+1+2"
       ],
       "move_class": "strike",
-      "note": "Mid follow-up",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Mid follow-up"
     },
     "roll_b": {
       "name": "Backward Roll",
@@ -1363,12 +1128,7 @@
         "b"
       ],
       "move_class": "special",
-      "note": "Backward roll; chains into Head Dive",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 111,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "note": "Backward roll; chains into Head Dive"
     },
     "fd_3": {
       "name": "Trip Kick Rise",
@@ -1389,12 +1149,7 @@
         "face down, feet to opponent, 3"
       ],
       "move_class": "strike",
-      "note": "Low, juggle-capable",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 38,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low, juggle-capable"
     },
     "fd_4": {
       "name": "Spinning Crescent Lunge",
@@ -1415,12 +1170,7 @@
         "face down, feet to opponent, 4"
       ],
       "move_class": "strike",
-      "note": "Mid",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 53,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid"
     },
     "b+1+2": {
       "name": "Brain Drain",
@@ -1457,12 +1207,7 @@
       },
       "note": "Unblockable brain-tickler mash, 10xN",
       "mash": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 79,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "b+3+4,U": {
       "name": "Escapism Bomb",
@@ -1483,12 +1228,7 @@
         "b+3+4, U"
       ],
       "move_class": "special",
-      "note": "Unblockable explosive escape; Doc's big unblockable",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Unblockable explosive escape; Doc's big unblockable"
     },
     "b+1+4": {
       "name": "Guard Breaker",
@@ -1509,12 +1249,7 @@
         "b+1+4"
       ],
       "move_class": "special",
-      "note": "Guard break stance move",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Guard break stance move"
     },
     "u/f+1": {
       "name": "Senior Fist",
@@ -1535,12 +1270,7 @@
         "u/f+1"
       ],
       "move_class": "strike",
-      "note": "Mid; also Stagger Old Fist in Panik Charge",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 20,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; also Stagger Old Fist in Panik Charge"
     },
     "u/f+2": {
       "name": "Wisdom Fist",
@@ -1561,12 +1291,7 @@
         "u/f+2"
       ],
       "move_class": "strike",
-      "note": "High, juggle-capable",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 354,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "High, juggle-capable"
     },
     "f,f+1": {
       "name": "Panik Jab",
@@ -1587,12 +1312,7 @@
         "f, f+1"
       ],
       "move_class": "strike",
-      "note": "Mid, mSc property",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid, mSc property"
     },
     "1+2_pd": {
       "name": "Panic Doctor",
@@ -1614,12 +1334,7 @@
       ],
       "move_class": "special",
       "note": "Panic stance variant; chains to The Zen",
-      "stance_variant_of": "parry_1+2",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 320,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "stance_variant_of": "parry_1+2"
     },
     "3+4_ff": {
       "name": "Flip Flop",
@@ -1640,12 +1355,7 @@
         "3+4"
       ],
       "move_class": "strike",
-      "note": "Mid; Doc's flipping somersault",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 373,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; Doc's flipping somersault"
     },
     "cancel_u/f,f,d/f": {
       "name": "Fall Back Cancel",
@@ -1666,12 +1376,7 @@
         "u/f or f or d/f"
       ],
       "move_class": "special",
-      "note": "Cancel",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Cancel"
     },
     "cancel_d,2": {
       "name": "Fast Fall Back",
@@ -1692,12 +1397,7 @@
         "d or 2"
       ],
       "move_class": "special",
-      "note": "Fast fall-back cancel",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Fast fall-back cancel"
     },
     "u_bounce": {
       "name": "Doctor Bounce",
@@ -1718,12 +1418,7 @@
         "u"
       ],
       "move_class": "strike",
-      "note": "Mid; spring-bounce launch",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; spring-bounce launch"
     },
     "f,f+1,4,3,2,1": {
       "name": "Gene Bank Combo",
@@ -1760,12 +1455,7 @@
         ],
         "total": 34
       },
-      "note": "Mid, low, low, mid, mid; FS property",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid, low, low, mid, mid; FS property"
     },
     "f,f+1,4,3,3,3,2,1": {
       "name": "Panik Jam Combo",
@@ -1806,12 +1496,7 @@
         ],
         "total": 44
       },
-      "note": "Mid, low, low, low, low, mid, mid; FS property",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid, low, low, low, low, mid, mid; FS property"
     },
     "f,f+2": {
       "name": "Stomach Ache",
@@ -1833,12 +1518,7 @@
       ],
       "move_class": "strike",
       "note": "Mid; counter-stun property (CSc)",
-      "counter_stun": true,
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 81,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "counter_stun": true
     },
     "f,f+2_gj_N": {
       "name": "Dark Greeting Reversal",
@@ -1860,12 +1540,7 @@
       ],
       "move_class": "special",
       "note": "Counter-hit only vs Gun Jack; unblockable class",
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 355,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "f,f+2_gj_u": {
       "name": "Remote Control Giga Stomp",
@@ -1886,12 +1561,7 @@
         "f, f+2 (against Gun Jack only in counterattack), ~ u"
       ],
       "move_class": "special",
-      "note": "Counter-hit only vs Gun Jack transition",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 177,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Counter-hit only vs Gun Jack transition"
     },
     "f,f+2_gj_d": {
       "name": "Fall Back",
@@ -1912,12 +1582,7 @@
         "f, f+2 (against Gun Jack only in counterattack), ~ d"
       ],
       "move_class": "special",
-      "note": "Counter-hit only vs Gun Jack fall-back transition",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Counter-hit only vs Gun Jack fall-back transition"
     },
     "f,f+3": {
       "name": "Leaping Sidekick",
@@ -1939,12 +1604,7 @@
       ],
       "move_class": "strike",
       "note": "Mid, guard break property",
-      "guard_break": true,
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 38,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "guard_break": true
     },
     "f,f+1+2": {
       "name": "Base Stealer",
@@ -1965,12 +1625,7 @@
         "f, f+1+2"
       ],
       "move_class": "strike",
-      "note": "Mid; sliding base-steal",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; sliding base-steal"
     },
     "f,f+3+4": {
       "name": "Oops!!!",
@@ -1991,12 +1646,7 @@
         "f, f+3+4"
       ],
       "move_class": "strike",
-      "note": "Mid; Doc's whoopsie dive",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; Doc's whoopsie dive"
     },
     "f,f,N,2": {
       "name": "Elbow Rush",
@@ -2017,12 +1667,7 @@
         "f, f, N, 2"
       ],
       "move_class": "strike",
-      "note": "Mid",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 81,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid"
     },
     "f,f,N,2_ch": {
       "name": "Elbow Warp",
@@ -2053,12 +1698,7 @@
         ],
         "total": 8
       },
-      "note": "Mid; counter variant",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 81,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; counter variant"
     },
     "f,f,N,3": {
       "name": "Spindoctor",
@@ -2079,12 +1719,7 @@
         "f, f, N, 3"
       ],
       "move_class": "strike",
-      "note": "Mid; spinning doctor",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 38,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; spinning doctor"
     },
     "ss+2": {
       "name": "Gut Stun Punch",
@@ -2106,12 +1741,7 @@
       ],
       "move_class": "strike",
       "note": "Mid; DSc property",
-      "down_stun": true,
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 81,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "down_stun": true
     },
     "ss+2,1": {
       "name": "Spinning Old Fist",
@@ -2133,12 +1763,7 @@
         "SS+2,1"
       ],
       "move_class": "string",
-      "note": "Mid, mid",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid, mid"
     },
     "breath_1,2": {
       "name": "Doctor Breath",
@@ -2161,12 +1786,7 @@
       "move_class": "strike",
       "note": "Unblockable toxic breath puff",
       "unblockable": true,
-      "chip": true,
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "chip": true
     },
     "bk_3,3": {
       "name": "Rolling Kicks",
@@ -2197,12 +1817,7 @@
         ],
         "total": 22
       },
-      "note": "Low, mid",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 38,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low, mid"
     },
     "bk_4,3,4,3,4": {
       "name": "Roger Kicks",
@@ -2239,12 +1854,7 @@
         ],
         "total": 28
       },
-      "note": "Mid x4 (first whiffs)",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 53,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid x4 (first whiffs)"
     },
     "bk_4,4,3,4,3,4": {
       "name": "Trick Thrash Kicks",
@@ -2283,12 +1893,7 @@
         ],
         "total": 28
       },
-      "note": "Mid x4 (first two whiff)",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 53,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid x4 (first two whiff)"
     },
     "bk_3+4": {
       "name": "Hop Up",
@@ -2309,12 +1914,7 @@
         "while on back, feet towards opponent, 3+4"
       ],
       "move_class": "special",
-      "note": "Mid; springs up; leads to Knock Down / Stand Up",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; springs up; leads to Knock Down / Stand Up"
     },
     "hu_b": {
       "name": "Knock Down Position",
@@ -2335,12 +1935,7 @@
         "during Hop Up, b"
       ],
       "move_class": "special",
-      "note": "Transition",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Transition"
     },
     "hu_d": {
       "name": "Stand Up",
@@ -2361,12 +1956,7 @@
         "during Hop Up, d"
       ],
       "move_class": "special",
-      "note": "Transition to standing",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Transition to standing"
     },
     "hu_d+3+4": {
       "name": "Trip Slide",
@@ -2387,12 +1977,7 @@
         "during Hop Up, d+3+4"
       ],
       "move_class": "strike",
-      "note": "Low; Hop Up variant",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 38,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low; Hop Up variant"
     },
     "bk_1+2+3+4": {
       "name": "Grounded Ki Charge",
@@ -2413,12 +1998,7 @@
         "while on back, 1+2+3+4"
       ],
       "move_class": "special",
-      "note": "Ki charge while grounded",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Ki charge while grounded"
     },
     "bk_f,b": {
       "name": "Doctor Scoot",
@@ -2439,12 +2019,7 @@
         "while on back, f or b"
       ],
       "move_class": "special",
-      "note": "Ground scoot",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Ground scoot"
     },
     "bk_f,f": {
       "name": "Forward Doctor Roll",
@@ -2465,12 +2040,7 @@
         "while on back, f, f"
       ],
       "move_class": "special",
-      "note": "Forward roll; chains into Falling Heel / Head Dive",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Forward roll; chains into Falling Heel / Head Dive"
     },
     "fdr_4": {
       "name": "Falling Heel",
@@ -2491,12 +2061,7 @@
         "during Forward Doctor Roll, 4"
       ],
       "move_class": "strike",
-      "note": "Mid",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 53,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid"
     },
     "bk_b,b": {
       "name": "Backward Doctor Roll",
@@ -2517,12 +2082,7 @@
         "while on back, b, b"
       ],
       "move_class": "special",
-      "note": "Backward doctor roll",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Backward doctor roll"
     },
     "bkhead_3+4": {
       "name": "Kangaroo Kick",
@@ -2543,12 +2103,7 @@
         "while on back, head towards opponent, 3+4"
       ],
       "move_class": "strike",
-      "note": "Mid",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Mid"
     },
     "bkhead_f,f+3+4": {
       "name": "Rolling Kangaroo Kick",
@@ -2569,12 +2124,7 @@
         "while on back, head towards opponent, f, f+3+4"
       ],
       "move_class": "strike",
-      "note": "Mid",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Mid"
     },
     "10hit": {
       "name": "Bosconovitch 10 Hit Combo",
@@ -2598,12 +2148,7 @@
       "multi_hit": {
         "hits_total": 61
       },
-      "note": "T3 102 dmg; 21 inputs, hit range mmmmmhmmmlhhhllllmm",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T3 102 dmg; 21 inputs, hit range mmmmmhmmmlhhhllllmm"
     },
     "b,b+1+2": {
       "name": "Energy Absorption",
@@ -2630,12 +2175,7 @@
       "throw": true,
       "isGrab": true,
       "unblockable": true,
-      "throw_break": "1+2",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1+2"
     },
     "d,d/f,f+1+2": {
       "name": "Eye Laser Beam",
@@ -2658,12 +2198,7 @@
       "move_class": "special",
       "note": "Gero-inspired ORIGINAL: eye laser beam, full-screen projectile. Not from Tekken.",
       "projectile": true,
-      "unblockable": false,
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "unblockable": false
     },
     "d,d/f,f+1": {
       "name": "Rocket Punch",
@@ -2685,12 +2220,7 @@
       ],
       "move_class": "special",
       "note": "Gero-inspired ORIGINAL: detachable rocket punch - fist fires off and returns. Not from Tekken.",
-      "projectile": true,
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 355,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "projectile": true
     },
     "b,b+3+4": {
       "name": "Afterimage",
@@ -2713,12 +2243,7 @@
       "move_class": "special",
       "note": "Gero-inspired ORIGINAL: afterimage dodge - Doc vanishes and reappears behind the opponent. Not from Tekken.",
       "invuln_window": 0.3,
-      "teleport_behind": true,
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "teleport_behind": true
     },
     "d/f+1+2": {
       "name": "Ki Blast",
@@ -2740,12 +2265,7 @@
       ],
       "move_class": "special",
       "note": "Gero-inspired ORIGINAL: palm ki blast, mid-range energy shot. Not from Tekken.",
-      "projectile": true,
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 106,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "projectile": true
     },
     "1": {
       "name": "Doctor Breath",
@@ -2768,12 +2288,7 @@
       "move_class": "strike",
       "note": "Unblockable toxic breath puff | Game-neutral lookup: T3 '1 or 2' = Doctor Breath.",
       "unblockable": true,
-      "chip": true,
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 170,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "chip": true
     },
     "2": {
       "name": "Doctor Breath",
@@ -2796,12 +2311,7 @@
       "move_class": "strike",
       "note": "Unblockable toxic breath puff | Game-neutral lookup: T3 '1 or 2' = Doctor Breath.",
       "unblockable": true,
-      "chip": true,
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 473,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "chip": true
     },
     "3": {
       "name": "Low Spin Kick - Shin Kick",
@@ -2832,12 +2342,7 @@
         ],
         "total": 11
       },
-      "note": "Low, low | Game-neutral lookup: 3 from '3,4' (Low Spin Kick).",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 114,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "Low, low | Game-neutral lookup: 3 from '3,4' (Low Spin Kick)."
     },
     "4": {
       "name": "Shin Kick",
@@ -2865,12 +2370,7 @@
         ],
         "total": 11
       },
-      "note": "Low, low. | Game-neutral lookup: 4 from '3,4' (Shin Kick).",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 92,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "note": "Low, low. | Game-neutral lookup: 4 from '3,4' (Shin Kick)."
     },
     "1+3": {
       "name": "Whippersnapper",
@@ -2905,12 +2405,7 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 203,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1"
     },
     "2+4": {
       "name": "Rolling Powerbomb",
@@ -2935,12 +2430,7 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "2",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 204,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "throw_break": "2"
     },
     "P+K": {
       "name": "Crayon Notes [WH SIGNATURE]",
@@ -2964,12 +2454,7 @@
       "note": "He takes notes mid-fight. On a clipboard. In crayon. Detailed, accurate, deeply insulting. Filed on you.",
       "throw": true,
       "unblockable": true,
-      "isGrab": true,
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 355,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "isGrab": true
     },
     "S": {
       "name": "Peer Review [WH SIGNATURE]",
@@ -2988,12 +2473,7 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "He believes the trial is peer review and he'll publish. A gadget blast, footnoted.",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 355,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "He believes the trial is peer review and he'll publish. A gadget blast, footnoted."
     },
     "d,d/f,d,d/f+1+2": {
       "name": "DOC FRANK d,d/f,d,d/f+1+2 throw (T3 gunjack r276)",

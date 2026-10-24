@@ -538,12 +538,7 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "Straight out of the machine shop. A gadget blast with the serial numbers filed off.",
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 355,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Straight out of the machine shop. A gadget blast with the serial numbers filed off."
     },
     "P+K": {
       "name": "Warranty Void [WH SIGNATURE]",
@@ -567,12 +562,7 @@
       "note": "Upgraded past the point of warranty. A wrench-turn grab - no refunds.",
       "throw": true,
       "unblockable": true,
-      "isGrab": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 355,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "isGrab": true
     },
     "1+2": {
       "name": "Shop Upgrade [WH SIGNATURE]",
@@ -592,12 +582,7 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "Straight out of the machine shop. A gadget blast with the serial numbers filed off.",
-      "input_remapped_from": "S",
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 49,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "input_remapped_from": "S"
     },
     "1+2__main": {
       "name": "DOC FRANK MACHINE SHOP 1+2 (T3 gunjack r49)",
@@ -641,12 +626,7 @@
       "unblockable": true,
       "isGrab": true,
       "input_remapped_from": "P+K",
-      "throw_break": "1+2",
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 355,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1+2"
     },
     "d+1": {
       "name": "DOC FRANK MACHINE SHOP d+1 (T3 gunjack r169)",
@@ -9169,12 +9149,7 @@
       "isGrab": true,
       "throw_break": "1+2",
       "merge_source": "donor:docfrank:f,f+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 203,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "donor.docfrank.ground_f,f_b+1+2": {
       "name": "Stonehead",
@@ -9201,12 +9176,7 @@
       "isGrab": true,
       "throw_break": "1+2",
       "merge_source": "donor:docfrank:ground_f,f_b+1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 174,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "donor_fighter": "docfrank"
     },
     "1+2~donor.docfrank": {
       "name": "Parry",
@@ -9321,12 +9291,7 @@
       "move_class": "parry",
       "note": "Low parry dodge",
       "merge_source": "donor:docfrank:d+1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "donor.docfrank.badstomach_1+2_a": {
       "name": "Arm Takedown",
@@ -9385,12 +9350,7 @@
       "isGrab": true,
       "throw_break": "1+2",
       "merge_source": "donor:docfrank:badstomach_1+2_t",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 96,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "donor_fighter": "docfrank"
     },
     "donor.docfrank.badstomach_1+2_d": {
       "name": "Atomic Drop",
@@ -9650,12 +9610,7 @@
       "move_class": "special",
       "note": "Transition from Panik Charge into Shadow Legs",
       "merge_source": "donor:docfrank:pc_shadow",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "donor_fighter": "docfrank"
     },
     "donor.docfrank.sl_3": {
       "name": "Overhead Crescent",
@@ -9735,12 +9690,7 @@
       "move_class": "special",
       "note": "Stance: leads to Arm Takedown / Trip Up / Atomic Drop",
       "merge_source": "donor:docfrank:1+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "donor.docfrank.iw_2,2,1+2": {
       "name": "Elbow Drop",
@@ -9792,12 +9742,7 @@
       "move_class": "special",
       "note": "Transition after Elbow Drop",
       "merge_source": "donor:docfrank:ed_1+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "donor_fighter": "docfrank"
     },
     "donor.docfrank.ks_2,1,3,4": {
       "name": "Running Bulldog",
@@ -9853,12 +9798,7 @@
       "move_class": "special",
       "note": "Sidestep transition; cancel point",
       "merge_source": "donor:docfrank:ed_1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "donor_fighter": "docfrank"
     },
     "donor.docfrank.cw_3+4": {
       "name": "Taunt Doc - Panik Charge",
@@ -9881,12 +9821,7 @@
       "move_class": "special",
       "note": "Taunt into Panik Charge",
       "merge_source": "donor:docfrank:cw_3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 203,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "donor_fighter": "docfrank"
     },
     "donor.docfrank.sr_1+2": {
       "name": "Shoulder Ram",
@@ -9910,12 +9845,7 @@
       "note": "Face-buster property",
       "face_buster": true,
       "merge_source": "donor:docfrank:sr_1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 482,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "donor_fighter": "docfrank"
     },
     "donor.docfrank.ed_3+4": {
       "name": "Running Head Dive",
@@ -10090,12 +10020,7 @@
       "move_class": "special",
       "note": "Stance: leads to Doc Mobile",
       "merge_source": "donor:docfrank:d+3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "donor.docfrank.med_3": {
       "name": "Doc Mobile",
@@ -10220,12 +10145,7 @@
       "move_class": "strike",
       "note": "Mid, back-turned",
       "merge_source": "donor:docfrank:bt_1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "donor_fighter": "docfrank"
     },
     "donor.docfrank.bp_3": {
       "name": "Shadow Run Kick L",
@@ -10304,12 +10224,7 @@
       "move_class": "special",
       "note": "Back-turned dash",
       "merge_source": "donor:docfrank:bt_f,f",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "donor_fighter": "docfrank"
     },
     "donor.docfrank.bt_f,f+1": {
       "name": "Dragon Back Blow",
@@ -10360,12 +10275,7 @@
       "move_class": "special",
       "note": "Ground orientation swap",
       "merge_source": "donor:docfrank:ground_1,2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "donor_fighter": "docfrank"
     },
     "donor.docfrank.bk_3": {
       "name": "Low Kick Rise",
@@ -10472,12 +10382,7 @@
       "move_class": "special",
       "note": "Ground roll direction",
       "merge_source": "donor:docfrank:roll_u,d",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "f~donor.docfrank": {
       "name": "Forward Roll",
@@ -10500,12 +10405,7 @@
       "move_class": "special",
       "note": "Forward roll; chains into Head Dive / Mind Warp",
       "merge_source": "donor:docfrank:roll_f",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "donor.docfrank.fr_f+1+2": {
       "name": "Head Dive",
@@ -10557,12 +10457,7 @@
       "move_class": "strike",
       "note": "Mid follow-up",
       "merge_source": "donor:docfrank:hd_b+1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 482,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "donor_fighter": "docfrank"
     },
     "b~donor.docfrank": {
       "name": "Backward Roll",
@@ -10713,12 +10608,7 @@
       "move_class": "special",
       "note": "Unblockable explosive escape; Doc's big unblockable",
       "merge_source": "donor:docfrank:b+3+4,U",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "b+1+4": {
       "name": "Guard Breaker",
@@ -10910,12 +10800,7 @@
       "move_class": "special",
       "note": "Cancel",
       "merge_source": "donor:docfrank:cancel_u/f,f,d/f",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "d~donor.docfrank": {
       "name": "Fast Fall Back",
@@ -10938,12 +10823,7 @@
       "move_class": "special",
       "note": "Fast fall-back cancel",
       "merge_source": "donor:docfrank:cancel_d,2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "u~donor.docfrank": {
       "name": "Doctor Bounce",
@@ -10966,12 +10846,7 @@
       "move_class": "strike",
       "note": "Mid; spring-bounce launch",
       "merge_source": "donor:docfrank:u_bounce",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "f,f+1,4,3,2,1": {
       "name": "Gene Bank Combo",
@@ -11172,12 +11047,7 @@
       "move_class": "special",
       "note": "Counter-hit only vs Gun Jack fall-back transition",
       "merge_source": "donor:docfrank:f,f+2_gj_d",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "donor_fighter": "docfrank"
     },
     "f,f+3": {
       "name": "Leaping Sidekick",
@@ -11229,12 +11099,7 @@
       "move_class": "strike",
       "note": "Mid; sliding base-steal",
       "merge_source": "donor:docfrank:f,f+1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "f,f+3+4": {
       "name": "Oops!!!",
@@ -11257,12 +11122,7 @@
       "move_class": "strike",
       "note": "Mid; Doc's whoopsie dive",
       "merge_source": "donor:docfrank:f,f+3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "f,f,N,2": {
       "name": "Elbow Rush",
@@ -11439,12 +11299,7 @@
       "unblockable": true,
       "chip": true,
       "merge_source": "donor:docfrank:breath_1,2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "donor.docfrank.bk_3,3": {
       "name": "Rolling Kicks",
@@ -11595,12 +11450,7 @@
       "move_class": "special",
       "note": "Mid; springs up; leads to Knock Down / Stand Up",
       "merge_source": "donor:docfrank:bk_3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 482,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "donor_fighter": "docfrank"
     },
     "donor.docfrank.hu_b": {
       "name": "Knock Down Position",
@@ -11623,12 +11473,7 @@
       "move_class": "special",
       "note": "Transition",
       "merge_source": "donor:docfrank:hu_b",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "donor_fighter": "docfrank"
     },
     "donor.docfrank.hu_d": {
       "name": "Stand Up",
@@ -11651,12 +11496,7 @@
       "move_class": "special",
       "note": "Transition to standing",
       "merge_source": "donor:docfrank:hu_d",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "donor_fighter": "docfrank"
     },
     "donor.docfrank.hu_d+3+4": {
       "name": "Trip Slide",
@@ -11707,12 +11547,7 @@
       "move_class": "special",
       "note": "Ki charge while grounded",
       "merge_source": "donor:docfrank:bk_1+2+3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 203,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "donor_fighter": "docfrank"
     },
     "donor.docfrank.bk_f,b": {
       "name": "Doctor Scoot",
@@ -11735,12 +11570,7 @@
       "move_class": "special",
       "note": "Ground scoot",
       "merge_source": "donor:docfrank:bk_f,b",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "donor_fighter": "docfrank"
     },
     "donor.docfrank.bk_f,f": {
       "name": "Forward Doctor Roll",
@@ -11763,12 +11593,7 @@
       "move_class": "special",
       "note": "Forward roll; chains into Falling Heel / Head Dive",
       "merge_source": "donor:docfrank:bk_f,f",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "donor_fighter": "docfrank"
     },
     "donor.docfrank.fdr_4": {
       "name": "Falling Heel",
@@ -11819,12 +11644,7 @@
       "move_class": "special",
       "note": "Backward doctor roll",
       "merge_source": "donor:docfrank:bk_b,b",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 510,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "donor_fighter": "docfrank"
     },
     "donor.docfrank.bkhead_3+4": {
       "name": "Kangaroo Kick",
@@ -11847,12 +11667,7 @@
       "move_class": "strike",
       "note": "Mid",
       "merge_source": "donor:docfrank:bkhead_3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 482,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "donor_fighter": "docfrank"
     },
     "donor.docfrank.bkhead_f,f+3+4": {
       "name": "Rolling Kangaroo Kick",
@@ -11875,12 +11690,7 @@
       "move_class": "strike",
       "note": "Mid",
       "merge_source": "donor:docfrank:bkhead_f,f+3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 482,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "donor_fighter": "docfrank"
     },
     "3+4,u/f+1,3,3,3,f+3,3,3,3,3,3,4,4,4,3,3,3,3,3,2,1": {
       "name": "Bosconovitch 10 Hit Combo",
@@ -11940,12 +11750,7 @@
       "unblockable": true,
       "throw_break": "1+2",
       "merge_source": "donor:docfrank:b,b+1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "d,d/f,f+1+2": {
       "name": "Eye Laser Beam",
@@ -12029,12 +11834,7 @@
       "invuln_window": 0.3,
       "teleport_behind": true,
       "merge_source": "donor:docfrank:b,b+3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "d/f+1+2~donor.docfrank": {
       "name": "Ki Blast",
@@ -12364,12 +12164,7 @@
       "isGrab": true,
       "throw_break": "1+2",
       "merge_source": "donor:docfrank:f,f+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 203,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.2": {
       "name": "Stonehead",
@@ -12396,12 +12191,7 @@
       "isGrab": true,
       "throw_break": "1+2",
       "merge_source": "donor:docfrank:ground_f,f_b+1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 203,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "1+2~donor.docfrank.3": {
       "name": "Parry",
@@ -12516,12 +12306,7 @@
       "move_class": "parry",
       "note": "Low parry dodge",
       "merge_source": "donor:docfrank:d+1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.5": {
       "name": "Arm Takedown",
@@ -12580,12 +12365,7 @@
       "isGrab": true,
       "throw_break": "1+2",
       "merge_source": "donor:docfrank:badstomach_1+2_t",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 203,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.7": {
       "name": "Atomic Drop",
@@ -12845,12 +12625,7 @@
       "move_class": "special",
       "note": "Transition from Panik Charge into Shadow Legs",
       "merge_source": "donor:docfrank:pc_shadow",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.11": {
       "name": "Overhead Crescent",
@@ -12930,12 +12705,7 @@
       "move_class": "special",
       "note": "Stance: leads to Arm Takedown / Trip Up / Atomic Drop",
       "merge_source": "donor:docfrank:1+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.13": {
       "name": "Elbow Drop",
@@ -12987,12 +12757,7 @@
       "move_class": "special",
       "note": "Transition after Elbow Drop",
       "merge_source": "donor:docfrank:ed_1+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.15": {
       "name": "Running Bulldog",
@@ -13048,12 +12813,7 @@
       "move_class": "special",
       "note": "Sidestep transition; cancel point",
       "merge_source": "donor:docfrank:ed_1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.17": {
       "name": "Taunt Doc - Panik Charge",
@@ -13076,12 +12836,7 @@
       "move_class": "special",
       "note": "Taunt into Panik Charge",
       "merge_source": "donor:docfrank:cw_3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.18": {
       "name": "Shoulder Ram",
@@ -13105,12 +12860,7 @@
       "note": "Face-buster property",
       "face_buster": true,
       "merge_source": "donor:docfrank:sr_1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.19": {
       "name": "Running Head Dive",
@@ -13285,12 +13035,7 @@
       "move_class": "special",
       "note": "Stance: leads to Doc Mobile",
       "merge_source": "donor:docfrank:d+3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.20": {
       "name": "Doc Mobile",
@@ -13415,12 +13160,7 @@
       "move_class": "strike",
       "note": "Mid, back-turned",
       "merge_source": "donor:docfrank:bt_1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.22": {
       "name": "Shadow Run Kick L",
@@ -13499,12 +13239,7 @@
       "move_class": "special",
       "note": "Back-turned dash",
       "merge_source": "donor:docfrank:bt_f,f",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.25": {
       "name": "Dragon Back Blow",
@@ -13555,12 +13290,7 @@
       "move_class": "special",
       "note": "Ground orientation swap",
       "merge_source": "donor:docfrank:ground_1,2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.27": {
       "name": "Low Kick Rise",
@@ -13667,12 +13397,7 @@
       "move_class": "special",
       "note": "Ground roll direction",
       "merge_source": "donor:docfrank:roll_u,d",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "f~donor.docfrank.2": {
       "name": "Forward Roll",
@@ -13695,12 +13420,7 @@
       "move_class": "special",
       "note": "Forward roll; chains into Head Dive / Mind Warp",
       "merge_source": "donor:docfrank:roll_f",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.29": {
       "name": "Head Dive",
@@ -13752,12 +13472,7 @@
       "move_class": "strike",
       "note": "Mid follow-up",
       "merge_source": "donor:docfrank:hd_b+1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "b~donor.docfrank.2": {
       "name": "Backward Roll",
@@ -13908,12 +13623,7 @@
       "move_class": "special",
       "note": "Unblockable explosive escape; Doc's big unblockable",
       "merge_source": "donor:docfrank:b+3+4,U",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "b+1+4~donor.docfrank": {
       "name": "Guard Breaker",
@@ -14105,12 +13815,7 @@
       "move_class": "special",
       "note": "Cancel",
       "merge_source": "donor:docfrank:cancel_u/f,f,d/f",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "d~donor.docfrank.2": {
       "name": "Fast Fall Back",
@@ -14133,12 +13838,7 @@
       "move_class": "special",
       "note": "Fast fall-back cancel",
       "merge_source": "donor:docfrank:cancel_d,2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "u~donor.docfrank.3": {
       "name": "Doctor Bounce",
@@ -14161,12 +13861,7 @@
       "move_class": "strike",
       "note": "Mid; spring-bounce launch",
       "merge_source": "donor:docfrank:u_bounce",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "f,f+1,4,3,2,1~donor.docfrank": {
       "name": "Gene Bank Combo",
@@ -14367,12 +14062,7 @@
       "move_class": "special",
       "note": "Counter-hit only vs Gun Jack fall-back transition",
       "merge_source": "donor:docfrank:f,f+2_gj_d",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "f,f+3~donor.docfrank": {
       "name": "Leaping Sidekick",
@@ -14424,12 +14114,7 @@
       "move_class": "strike",
       "note": "Mid; sliding base-steal",
       "merge_source": "donor:docfrank:f,f+1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "f,f+3+4~donor.docfrank": {
       "name": "Oops!!!",
@@ -14452,12 +14137,7 @@
       "move_class": "strike",
       "note": "Mid; Doc's whoopsie dive",
       "merge_source": "donor:docfrank:f,f+3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "f,f,N,2~donor.docfrank": {
       "name": "Elbow Rush",
@@ -14634,12 +14314,7 @@
       "unblockable": true,
       "chip": true,
       "merge_source": "donor:docfrank:breath_1,2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.37": {
       "name": "Rolling Kicks",
@@ -14719,8 +14394,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 53,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 128,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "None~donor.docfrank.39": {
@@ -14765,8 +14440,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 53,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 128,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "None~donor.docfrank.40": {
@@ -14790,12 +14465,7 @@
       "move_class": "special",
       "note": "Mid; springs up; leads to Knock Down / Stand Up",
       "merge_source": "donor:docfrank:bk_3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.41": {
       "name": "Knock Down Position",
@@ -14818,12 +14488,7 @@
       "move_class": "special",
       "note": "Transition",
       "merge_source": "donor:docfrank:hu_b",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.42": {
       "name": "Stand Up",
@@ -14846,12 +14511,7 @@
       "move_class": "special",
       "note": "Transition to standing",
       "merge_source": "donor:docfrank:hu_d",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.43": {
       "name": "Trip Slide",
@@ -14902,12 +14562,7 @@
       "move_class": "special",
       "note": "Ki charge while grounded",
       "merge_source": "donor:docfrank:bk_1+2+3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.45": {
       "name": "Doctor Scoot",
@@ -14930,12 +14585,7 @@
       "move_class": "special",
       "note": "Ground scoot",
       "merge_source": "donor:docfrank:bk_f,b",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.46": {
       "name": "Forward Doctor Roll",
@@ -14958,12 +14608,7 @@
       "move_class": "special",
       "note": "Forward roll; chains into Falling Heel / Head Dive",
       "merge_source": "donor:docfrank:bk_f,f",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.47": {
       "name": "Falling Heel",
@@ -15014,12 +14659,7 @@
       "move_class": "special",
       "note": "Backward doctor roll",
       "merge_source": "donor:docfrank:bk_b,b",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.49": {
       "name": "Kangaroo Kick",
@@ -15042,12 +14682,7 @@
       "move_class": "strike",
       "note": "Mid",
       "merge_source": "donor:docfrank:bkhead_3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.50": {
       "name": "Rolling Kangaroo Kick",
@@ -15070,12 +14705,7 @@
       "move_class": "strike",
       "note": "Mid",
       "merge_source": "donor:docfrank:bkhead_f,f+3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "3+4,u/f+1,3,3,3,f+3,3,3,3,3,3,4,4,4,3,3,3,3,3,2,1~donor.docfrank": {
       "name": "Bosconovitch 10 Hit Combo",
@@ -15135,12 +14765,7 @@
       "unblockable": true,
       "throw_break": "1+2",
       "merge_source": "donor:docfrank:b,b+1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "d,d/f,f+1+2~donor.docfrank": {
       "name": "Eye Laser Beam",
@@ -15224,12 +14849,7 @@
       "invuln_window": 0.3,
       "teleport_behind": true,
       "merge_source": "donor:docfrank:b,b+3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "d/f+1+2~donor.docfrank.2": {
       "name": "Ki Blast",
@@ -15559,12 +15179,7 @@
       "isGrab": true,
       "throw_break": "1+2",
       "merge_source": "donor:docfrank:f,f+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 203,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.53": {
       "name": "Stonehead",
@@ -15591,12 +15206,7 @@
       "isGrab": true,
       "throw_break": "1+2",
       "merge_source": "donor:docfrank:ground_f,f_b+1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 203,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "1+2~donor.docfrank.5": {
       "name": "Parry",
@@ -15711,12 +15321,7 @@
       "move_class": "parry",
       "note": "Low parry dodge",
       "merge_source": "donor:docfrank:d+1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.56": {
       "name": "Arm Takedown",
@@ -15775,12 +15380,7 @@
       "isGrab": true,
       "throw_break": "1+2",
       "merge_source": "donor:docfrank:badstomach_1+2_t",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 203,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.58": {
       "name": "Atomic Drop",
@@ -16040,12 +15640,7 @@
       "move_class": "special",
       "note": "Transition from Panik Charge into Shadow Legs",
       "merge_source": "donor:docfrank:pc_shadow",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.62": {
       "name": "Overhead Crescent",
@@ -16125,12 +15720,7 @@
       "move_class": "special",
       "note": "Stance: leads to Arm Takedown / Trip Up / Atomic Drop",
       "merge_source": "donor:docfrank:1+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.64": {
       "name": "Elbow Drop",
@@ -16182,12 +15772,7 @@
       "move_class": "special",
       "note": "Transition after Elbow Drop",
       "merge_source": "donor:docfrank:ed_1+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.66": {
       "name": "Running Bulldog",
@@ -16243,12 +15828,7 @@
       "move_class": "special",
       "note": "Sidestep transition; cancel point",
       "merge_source": "donor:docfrank:ed_1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.68": {
       "name": "Taunt Doc - Panik Charge",
@@ -16271,12 +15851,7 @@
       "move_class": "special",
       "note": "Taunt into Panik Charge",
       "merge_source": "donor:docfrank:cw_3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.69": {
       "name": "Shoulder Ram",
@@ -16300,12 +15875,7 @@
       "note": "Face-buster property",
       "face_buster": true,
       "merge_source": "donor:docfrank:sr_1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.70": {
       "name": "Running Head Dive",
@@ -16480,12 +16050,7 @@
       "move_class": "special",
       "note": "Stance: leads to Doc Mobile",
       "merge_source": "donor:docfrank:d+3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.71": {
       "name": "Doc Mobile",
@@ -16610,12 +16175,7 @@
       "move_class": "strike",
       "note": "Mid, back-turned",
       "merge_source": "donor:docfrank:bt_1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.73": {
       "name": "Shadow Run Kick L",
@@ -16694,12 +16254,7 @@
       "move_class": "special",
       "note": "Back-turned dash",
       "merge_source": "donor:docfrank:bt_f,f",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.76": {
       "name": "Dragon Back Blow",
@@ -16750,12 +16305,7 @@
       "move_class": "special",
       "note": "Ground orientation swap",
       "merge_source": "donor:docfrank:ground_1,2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.78": {
       "name": "Low Kick Rise",
@@ -16862,12 +16412,7 @@
       "move_class": "special",
       "note": "Ground roll direction",
       "merge_source": "donor:docfrank:roll_u,d",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "f~donor.docfrank.3": {
       "name": "Forward Roll",
@@ -16890,12 +16435,7 @@
       "move_class": "special",
       "note": "Forward roll; chains into Head Dive / Mind Warp",
       "merge_source": "donor:docfrank:roll_f",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.80": {
       "name": "Head Dive",
@@ -16947,12 +16487,7 @@
       "move_class": "strike",
       "note": "Mid follow-up",
       "merge_source": "donor:docfrank:hd_b+1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "b~donor.docfrank.3": {
       "name": "Backward Roll",
@@ -17103,12 +16638,7 @@
       "move_class": "special",
       "note": "Unblockable explosive escape; Doc's big unblockable",
       "merge_source": "donor:docfrank:b+3+4,U",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "b+1+4~donor.docfrank.2": {
       "name": "Guard Breaker",
@@ -17300,12 +16830,7 @@
       "move_class": "special",
       "note": "Cancel",
       "merge_source": "donor:docfrank:cancel_u/f,f,d/f",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "d~donor.docfrank.3": {
       "name": "Fast Fall Back",
@@ -17328,12 +16853,7 @@
       "move_class": "special",
       "note": "Fast fall-back cancel",
       "merge_source": "donor:docfrank:cancel_d,2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "u~donor.docfrank.5": {
       "name": "Doctor Bounce",
@@ -17356,12 +16876,7 @@
       "move_class": "strike",
       "note": "Mid; spring-bounce launch",
       "merge_source": "donor:docfrank:u_bounce",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "f,f+1,4,3,2,1~donor.docfrank.2": {
       "name": "Gene Bank Combo",
@@ -17562,12 +17077,7 @@
       "move_class": "special",
       "note": "Counter-hit only vs Gun Jack fall-back transition",
       "merge_source": "donor:docfrank:f,f+2_gj_d",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "f,f+3~donor.docfrank.2": {
       "name": "Leaping Sidekick",
@@ -17619,12 +17129,7 @@
       "move_class": "strike",
       "note": "Mid; sliding base-steal",
       "merge_source": "donor:docfrank:f,f+1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "f,f+3+4~donor.docfrank.2": {
       "name": "Oops!!!",
@@ -17647,12 +17152,7 @@
       "move_class": "strike",
       "note": "Mid; Doc's whoopsie dive",
       "merge_source": "donor:docfrank:f,f+3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "f,f,N,2~donor.docfrank.2": {
       "name": "Elbow Rush",
@@ -17829,12 +17329,7 @@
       "unblockable": true,
       "chip": true,
       "merge_source": "donor:docfrank:breath_1,2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.88": {
       "name": "Rolling Kicks",
@@ -17914,8 +17409,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 53,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 128,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "None~donor.docfrank.90": {
@@ -17960,8 +17455,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 53,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 128,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "None~donor.docfrank.91": {
@@ -17985,12 +17480,7 @@
       "move_class": "special",
       "note": "Mid; springs up; leads to Knock Down / Stand Up",
       "merge_source": "donor:docfrank:bk_3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.92": {
       "name": "Knock Down Position",
@@ -18013,12 +17503,7 @@
       "move_class": "special",
       "note": "Transition",
       "merge_source": "donor:docfrank:hu_b",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.93": {
       "name": "Stand Up",
@@ -18041,12 +17526,7 @@
       "move_class": "special",
       "note": "Transition to standing",
       "merge_source": "donor:docfrank:hu_d",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.94": {
       "name": "Trip Slide",
@@ -18097,12 +17577,7 @@
       "move_class": "special",
       "note": "Ki charge while grounded",
       "merge_source": "donor:docfrank:bk_1+2+3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.96": {
       "name": "Doctor Scoot",
@@ -18125,12 +17600,7 @@
       "move_class": "special",
       "note": "Ground scoot",
       "merge_source": "donor:docfrank:bk_f,b",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.97": {
       "name": "Forward Doctor Roll",
@@ -18153,12 +17623,7 @@
       "move_class": "special",
       "note": "Forward roll; chains into Falling Heel / Head Dive",
       "merge_source": "donor:docfrank:bk_f,f",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.98": {
       "name": "Falling Heel",
@@ -18209,12 +17674,7 @@
       "move_class": "special",
       "note": "Backward doctor roll",
       "merge_source": "donor:docfrank:bk_b,b",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.100": {
       "name": "Kangaroo Kick",
@@ -18237,12 +17697,7 @@
       "move_class": "strike",
       "note": "Mid",
       "merge_source": "donor:docfrank:bkhead_3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.101": {
       "name": "Rolling Kangaroo Kick",
@@ -18265,12 +17720,7 @@
       "move_class": "strike",
       "note": "Mid",
       "merge_source": "donor:docfrank:bkhead_f,f+3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "3+4,u/f+1,3,3,3,f+3,3,3,3,3,3,4,4,4,3,3,3,3,3,2,1~donor.docfrank.2": {
       "name": "Bosconovitch 10 Hit Combo",
@@ -18330,12 +17780,7 @@
       "unblockable": true,
       "throw_break": "1+2",
       "merge_source": "donor:docfrank:b,b+1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "d,d/f,f+1+2~donor.docfrank.2": {
       "name": "Eye Laser Beam",
@@ -18419,12 +17864,7 @@
       "invuln_window": 0.3,
       "teleport_behind": true,
       "merge_source": "donor:docfrank:b,b+3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "d/f+1+2~donor.docfrank.3": {
       "name": "Ki Blast",
@@ -18754,12 +18194,7 @@
       "isGrab": true,
       "throw_break": "1+2",
       "merge_source": "donor:docfrank:f,f+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 203,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.104": {
       "name": "Stonehead",
@@ -18786,12 +18221,7 @@
       "isGrab": true,
       "throw_break": "1+2",
       "merge_source": "donor:docfrank:ground_f,f_b+1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 203,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "1+2~donor.docfrank.7": {
       "name": "Parry",
@@ -18906,12 +18336,7 @@
       "move_class": "parry",
       "note": "Low parry dodge",
       "merge_source": "donor:docfrank:d+1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.107": {
       "name": "Arm Takedown",
@@ -18970,12 +18395,7 @@
       "isGrab": true,
       "throw_break": "1+2",
       "merge_source": "donor:docfrank:badstomach_1+2_t",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 203,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.109": {
       "name": "Atomic Drop",
@@ -19235,12 +18655,7 @@
       "move_class": "special",
       "note": "Transition from Panik Charge into Shadow Legs",
       "merge_source": "donor:docfrank:pc_shadow",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.113": {
       "name": "Overhead Crescent",
@@ -19320,12 +18735,7 @@
       "move_class": "special",
       "note": "Stance: leads to Arm Takedown / Trip Up / Atomic Drop",
       "merge_source": "donor:docfrank:1+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.115": {
       "name": "Elbow Drop",
@@ -19377,12 +18787,7 @@
       "move_class": "special",
       "note": "Transition after Elbow Drop",
       "merge_source": "donor:docfrank:ed_1+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.117": {
       "name": "Running Bulldog",
@@ -19438,12 +18843,7 @@
       "move_class": "special",
       "note": "Sidestep transition; cancel point",
       "merge_source": "donor:docfrank:ed_1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.119": {
       "name": "Taunt Doc - Panik Charge",
@@ -19466,12 +18866,7 @@
       "move_class": "special",
       "note": "Taunt into Panik Charge",
       "merge_source": "donor:docfrank:cw_3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.120": {
       "name": "Shoulder Ram",
@@ -19495,12 +18890,7 @@
       "note": "Face-buster property",
       "face_buster": true,
       "merge_source": "donor:docfrank:sr_1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.121": {
       "name": "Running Head Dive",
@@ -19675,12 +19065,7 @@
       "move_class": "special",
       "note": "Stance: leads to Doc Mobile",
       "merge_source": "donor:docfrank:d+3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.122": {
       "name": "Doc Mobile",
@@ -19805,12 +19190,7 @@
       "move_class": "strike",
       "note": "Mid, back-turned",
       "merge_source": "donor:docfrank:bt_1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.124": {
       "name": "Shadow Run Kick L",
@@ -19889,12 +19269,7 @@
       "move_class": "special",
       "note": "Back-turned dash",
       "merge_source": "donor:docfrank:bt_f,f",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.127": {
       "name": "Dragon Back Blow",
@@ -19945,12 +19320,7 @@
       "move_class": "special",
       "note": "Ground orientation swap",
       "merge_source": "donor:docfrank:ground_1,2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.129": {
       "name": "Low Kick Rise",
@@ -20057,12 +19427,7 @@
       "move_class": "special",
       "note": "Ground roll direction",
       "merge_source": "donor:docfrank:roll_u,d",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "f~donor.docfrank.4": {
       "name": "Forward Roll",
@@ -20085,12 +19450,7 @@
       "move_class": "special",
       "note": "Forward roll; chains into Head Dive / Mind Warp",
       "merge_source": "donor:docfrank:roll_f",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.131": {
       "name": "Head Dive",
@@ -20142,12 +19502,7 @@
       "move_class": "strike",
       "note": "Mid follow-up",
       "merge_source": "donor:docfrank:hd_b+1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "b~donor.docfrank.4": {
       "name": "Backward Roll",
@@ -20298,12 +19653,7 @@
       "move_class": "special",
       "note": "Unblockable explosive escape; Doc's big unblockable",
       "merge_source": "donor:docfrank:b+3+4,U",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "b+1+4~donor.docfrank.3": {
       "name": "Guard Breaker",
@@ -20495,12 +19845,7 @@
       "move_class": "special",
       "note": "Cancel",
       "merge_source": "donor:docfrank:cancel_u/f,f,d/f",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "d~donor.docfrank.4": {
       "name": "Fast Fall Back",
@@ -20523,12 +19868,7 @@
       "move_class": "special",
       "note": "Fast fall-back cancel",
       "merge_source": "donor:docfrank:cancel_d,2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "u~donor.docfrank.7": {
       "name": "Doctor Bounce",
@@ -20551,12 +19891,7 @@
       "move_class": "strike",
       "note": "Mid; spring-bounce launch",
       "merge_source": "donor:docfrank:u_bounce",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "f,f+1,4,3,2,1~donor.docfrank.3": {
       "name": "Gene Bank Combo",
@@ -20757,12 +20092,7 @@
       "move_class": "special",
       "note": "Counter-hit only vs Gun Jack fall-back transition",
       "merge_source": "donor:docfrank:f,f+2_gj_d",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "f,f+3~donor.docfrank.3": {
       "name": "Leaping Sidekick",
@@ -20814,12 +20144,7 @@
       "move_class": "strike",
       "note": "Mid; sliding base-steal",
       "merge_source": "donor:docfrank:f,f+1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "f,f+3+4~donor.docfrank.3": {
       "name": "Oops!!!",
@@ -20842,12 +20167,7 @@
       "move_class": "strike",
       "note": "Mid; Doc's whoopsie dive",
       "merge_source": "donor:docfrank:f,f+3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "f,f,N,2~donor.docfrank.3": {
       "name": "Elbow Rush",
@@ -21024,12 +20344,7 @@
       "unblockable": true,
       "chip": true,
       "merge_source": "donor:docfrank:breath_1,2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.139": {
       "name": "Rolling Kicks",
@@ -21109,8 +20424,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 53,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 128,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "None~donor.docfrank.141": {
@@ -21155,8 +20470,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 53,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 128,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "None~donor.docfrank.142": {
@@ -21180,12 +20495,7 @@
       "move_class": "special",
       "note": "Mid; springs up; leads to Knock Down / Stand Up",
       "merge_source": "donor:docfrank:bk_3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.143": {
       "name": "Knock Down Position",
@@ -21208,12 +20518,7 @@
       "move_class": "special",
       "note": "Transition",
       "merge_source": "donor:docfrank:hu_b",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.144": {
       "name": "Stand Up",
@@ -21236,12 +20541,7 @@
       "move_class": "special",
       "note": "Transition to standing",
       "merge_source": "donor:docfrank:hu_d",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.145": {
       "name": "Trip Slide",
@@ -21292,12 +20592,7 @@
       "move_class": "special",
       "note": "Ki charge while grounded",
       "merge_source": "donor:docfrank:bk_1+2+3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.147": {
       "name": "Doctor Scoot",
@@ -21320,12 +20615,7 @@
       "move_class": "special",
       "note": "Ground scoot",
       "merge_source": "donor:docfrank:bk_f,b",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.148": {
       "name": "Forward Doctor Roll",
@@ -21348,12 +20638,7 @@
       "move_class": "special",
       "note": "Forward roll; chains into Falling Heel / Head Dive",
       "merge_source": "donor:docfrank:bk_f,f",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.149": {
       "name": "Falling Heel",
@@ -21404,12 +20689,7 @@
       "move_class": "special",
       "note": "Backward doctor roll",
       "merge_source": "donor:docfrank:bk_b,b",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.151": {
       "name": "Kangaroo Kick",
@@ -21432,12 +20712,7 @@
       "move_class": "strike",
       "note": "Mid",
       "merge_source": "donor:docfrank:bkhead_3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.152": {
       "name": "Rolling Kangaroo Kick",
@@ -21460,12 +20735,7 @@
       "move_class": "strike",
       "note": "Mid",
       "merge_source": "donor:docfrank:bkhead_f,f+3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "3+4,u/f+1,3,3,3,f+3,3,3,3,3,3,4,4,4,3,3,3,3,3,2,1~donor.docfrank.3": {
       "name": "Bosconovitch 10 Hit Combo",
@@ -21525,12 +20795,7 @@
       "unblockable": true,
       "throw_break": "1+2",
       "merge_source": "donor:docfrank:b,b+1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "d,d/f,f+1+2~donor.docfrank.3": {
       "name": "Eye Laser Beam",
@@ -21614,12 +20879,7 @@
       "invuln_window": 0.3,
       "teleport_behind": true,
       "merge_source": "donor:docfrank:b,b+3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "d/f+1+2~donor.docfrank.4": {
       "name": "Ki Blast",
@@ -21949,12 +21209,7 @@
       "isGrab": true,
       "throw_break": "1+2",
       "merge_source": "donor:docfrank:f,f+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 203,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.155": {
       "name": "Stonehead",
@@ -21981,12 +21236,7 @@
       "isGrab": true,
       "throw_break": "1+2",
       "merge_source": "donor:docfrank:ground_f,f_b+1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 203,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "1+2~donor.docfrank.9": {
       "name": "Parry",
@@ -22101,12 +21351,7 @@
       "move_class": "parry",
       "note": "Low parry dodge",
       "merge_source": "donor:docfrank:d+1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.158": {
       "name": "Arm Takedown",
@@ -22165,12 +21410,7 @@
       "isGrab": true,
       "throw_break": "1+2",
       "merge_source": "donor:docfrank:badstomach_1+2_t",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 203,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.160": {
       "name": "Atomic Drop",
@@ -22430,12 +21670,7 @@
       "move_class": "special",
       "note": "Transition from Panik Charge into Shadow Legs",
       "merge_source": "donor:docfrank:pc_shadow",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.164": {
       "name": "Overhead Crescent",
@@ -22515,12 +21750,7 @@
       "move_class": "special",
       "note": "Stance: leads to Arm Takedown / Trip Up / Atomic Drop",
       "merge_source": "donor:docfrank:1+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.166": {
       "name": "Elbow Drop",
@@ -22572,12 +21802,7 @@
       "move_class": "special",
       "note": "Transition after Elbow Drop",
       "merge_source": "donor:docfrank:ed_1+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.168": {
       "name": "Running Bulldog",
@@ -22633,12 +21858,7 @@
       "move_class": "special",
       "note": "Sidestep transition; cancel point",
       "merge_source": "donor:docfrank:ed_1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.170": {
       "name": "Taunt Doc - Panik Charge",
@@ -22661,12 +21881,7 @@
       "move_class": "special",
       "note": "Taunt into Panik Charge",
       "merge_source": "donor:docfrank:cw_3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.171": {
       "name": "Shoulder Ram",
@@ -22690,12 +21905,7 @@
       "note": "Face-buster property",
       "face_buster": true,
       "merge_source": "donor:docfrank:sr_1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.172": {
       "name": "Running Head Dive",
@@ -22870,12 +22080,7 @@
       "move_class": "special",
       "note": "Stance: leads to Doc Mobile",
       "merge_source": "donor:docfrank:d+3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.173": {
       "name": "Doc Mobile",
@@ -23000,12 +22205,7 @@
       "move_class": "strike",
       "note": "Mid, back-turned",
       "merge_source": "donor:docfrank:bt_1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.175": {
       "name": "Shadow Run Kick L",
@@ -23084,12 +22284,7 @@
       "move_class": "special",
       "note": "Back-turned dash",
       "merge_source": "donor:docfrank:bt_f,f",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.178": {
       "name": "Dragon Back Blow",
@@ -23140,12 +22335,7 @@
       "move_class": "special",
       "note": "Ground orientation swap",
       "merge_source": "donor:docfrank:ground_1,2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.180": {
       "name": "Low Kick Rise",
@@ -23252,12 +22442,7 @@
       "move_class": "special",
       "note": "Ground roll direction",
       "merge_source": "donor:docfrank:roll_u,d",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "f~donor.docfrank.5": {
       "name": "Forward Roll",
@@ -23280,12 +22465,7 @@
       "move_class": "special",
       "note": "Forward roll; chains into Head Dive / Mind Warp",
       "merge_source": "donor:docfrank:roll_f",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.182": {
       "name": "Head Dive",
@@ -23337,12 +22517,7 @@
       "move_class": "strike",
       "note": "Mid follow-up",
       "merge_source": "donor:docfrank:hd_b+1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "b~donor.docfrank.5": {
       "name": "Backward Roll",
@@ -23493,12 +22668,7 @@
       "move_class": "special",
       "note": "Unblockable explosive escape; Doc's big unblockable",
       "merge_source": "donor:docfrank:b+3+4,U",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "b+1+4~donor.docfrank.4": {
       "name": "Guard Breaker",
@@ -23690,12 +22860,7 @@
       "move_class": "special",
       "note": "Cancel",
       "merge_source": "donor:docfrank:cancel_u/f,f,d/f",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "d~donor.docfrank.5": {
       "name": "Fast Fall Back",
@@ -23718,12 +22883,7 @@
       "move_class": "special",
       "note": "Fast fall-back cancel",
       "merge_source": "donor:docfrank:cancel_d,2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "u~donor.docfrank.9": {
       "name": "Doctor Bounce",
@@ -23746,12 +22906,7 @@
       "move_class": "strike",
       "note": "Mid; spring-bounce launch",
       "merge_source": "donor:docfrank:u_bounce",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "f,f+1,4,3,2,1~donor.docfrank.4": {
       "name": "Gene Bank Combo",
@@ -23952,12 +23107,7 @@
       "move_class": "special",
       "note": "Counter-hit only vs Gun Jack fall-back transition",
       "merge_source": "donor:docfrank:f,f+2_gj_d",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "f,f+3~donor.docfrank.4": {
       "name": "Leaping Sidekick",
@@ -24009,12 +23159,7 @@
       "move_class": "strike",
       "note": "Mid; sliding base-steal",
       "merge_source": "donor:docfrank:f,f+1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "f,f+3+4~donor.docfrank.4": {
       "name": "Oops!!!",
@@ -24037,12 +23182,7 @@
       "move_class": "strike",
       "note": "Mid; Doc's whoopsie dive",
       "merge_source": "donor:docfrank:f,f+3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "f,f,N,2~donor.docfrank.4": {
       "name": "Elbow Rush",
@@ -24219,12 +23359,7 @@
       "unblockable": true,
       "chip": true,
       "merge_source": "donor:docfrank:breath_1,2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.190": {
       "name": "Rolling Kicks",
@@ -24304,8 +23439,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 53,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 128,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "None~donor.docfrank.192": {
@@ -24350,8 +23485,8 @@
       "donor_fighter": "docfrank",
       "anim_t3": {
         "bank": "bosconovitch",
-        "row": 53,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 128,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "None~donor.docfrank.193": {
@@ -24375,12 +23510,7 @@
       "move_class": "special",
       "note": "Mid; springs up; leads to Knock Down / Stand Up",
       "merge_source": "donor:docfrank:bk_3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.194": {
       "name": "Knock Down Position",
@@ -24403,12 +23533,7 @@
       "move_class": "special",
       "note": "Transition",
       "merge_source": "donor:docfrank:hu_b",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.195": {
       "name": "Stand Up",
@@ -24431,12 +23556,7 @@
       "move_class": "special",
       "note": "Transition to standing",
       "merge_source": "donor:docfrank:hu_d",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.196": {
       "name": "Trip Slide",
@@ -24487,12 +23607,7 @@
       "move_class": "special",
       "note": "Ki charge while grounded",
       "merge_source": "donor:docfrank:bk_1+2+3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.198": {
       "name": "Doctor Scoot",
@@ -24515,12 +23630,7 @@
       "move_class": "special",
       "note": "Ground scoot",
       "merge_source": "donor:docfrank:bk_f,b",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.199": {
       "name": "Forward Doctor Roll",
@@ -24543,12 +23653,7 @@
       "move_class": "special",
       "note": "Forward roll; chains into Falling Heel / Head Dive",
       "merge_source": "donor:docfrank:bk_f,f",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.200": {
       "name": "Falling Heel",
@@ -24599,12 +23704,7 @@
       "move_class": "special",
       "note": "Backward doctor roll",
       "merge_source": "donor:docfrank:bk_b,b",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.202": {
       "name": "Kangaroo Kick",
@@ -24627,12 +23727,7 @@
       "move_class": "strike",
       "note": "Mid",
       "merge_source": "donor:docfrank:bkhead_3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "None~donor.docfrank.203": {
       "name": "Rolling Kangaroo Kick",
@@ -24655,12 +23750,7 @@
       "move_class": "strike",
       "note": "Mid",
       "merge_source": "donor:docfrank:bkhead_f,f+3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 19,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "3+4,u/f+1,3,3,3,f+3,3,3,3,3,3,4,4,4,3,3,3,3,3,2,1~donor.docfrank.4": {
       "name": "Bosconovitch 10 Hit Combo",
@@ -24720,12 +23810,7 @@
       "unblockable": true,
       "throw_break": "1+2",
       "merge_source": "donor:docfrank:b,b+1+2",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "d,d/f,f+1+2~donor.docfrank.4": {
       "name": "Eye Laser Beam",
@@ -24809,12 +23894,7 @@
       "invuln_window": 0.3,
       "teleport_behind": true,
       "merge_source": "donor:docfrank:b,b+3+4",
-      "donor_fighter": "docfrank",
-      "anim_t3": {
-        "bank": "bosconovitch",
-        "row": 23,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "docfrank"
     },
     "d/f+1+2~donor.docfrank.5": {
       "name": "Ki Blast",

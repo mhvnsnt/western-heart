@@ -1258,12 +1258,7 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "RIN is the baseline, the still point at the center. Dignified, cold, self-possessed - one perfect strike.",
-      "anim_t3": {
-        "bank": "jin",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "RIN is the baseline, the still point at the center. Dignified, cold, self-possessed - one perfect strike."
     },
     "b+P": {
       "name": "Cold Dignity [WH SIGNATURE]",
@@ -1284,12 +1279,7 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "The soul that apologizes to no one and explains itself to no one. An untouchable parry-strike.",
-      "anim_t3": {
-        "bank": "jin",
-        "row": 47,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "The soul that apologizes to no one and explains itself to no one. An untouchable parry-strike."
     },
     "1+2": {
       "name": "Still Point [WH SIGNATURE]",
@@ -1309,12 +1299,7 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "RIN is the baseline, the still point at the center. Dignified, cold, self-possessed - one perfect strike.",
-      "input_remapped_from": "S",
-      "anim_t3": {
-        "bank": "jin",
-        "row": 32,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "input_remapped_from": "S"
     },
     "1+2__main": {
       "name": "RIN 1+2 (T3 jin r32)",
@@ -1354,12 +1339,7 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "The soul that apologizes to no one and explains itself to no one. An untouchable parry-strike.",
-      "input_remapped_from": "b+P",
-      "anim_t3": {
-        "bank": "jin",
-        "row": 216,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "input_remapped_from": "b+P"
     },
     "b+1__main": {
       "name": "RIN b+1 (T3 jin r216)",
@@ -4297,8 +4277,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
       "anim_t3": {
         "bank": "jin",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 191,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "1,2,3": {
@@ -4363,12 +4343,7 @@
       "t8_damage": null,
       "t8_input": "1+2+3+4",
       "merge_source": "t8:Jin-1+2+3+4",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Can&#039;t block for 5 seconds; CH state on your next attack for 5 seconds &#039;&#039;(Tekken 7 and prior games)&#039;&#039;; 10% damage increase on the next attack for 5 seconds",
-      "anim_t3": {
-        "bank": "jin",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Can&#039;t block for 5 seconds; CH state on your next attack for 5 seconds &#039;&#039;(Tekken 7 and prior games)&#039;&#039;; 10% damage increase on the next attack for 5 seconds"
     },
     "1,2,4": {
       "name": "Left Right &gt; Spinning Hook Kick",
@@ -4472,8 +4447,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 1st hit with 4f delay; Grounded hit can be inconsistent; &lt;/div&gt",
       "anim_t3": {
         "bank": "jin",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 197,
+        "match": "same-notation"
       }
     },
     "1+3+4": {
@@ -4503,12 +4478,7 @@
       "t8_damage": null,
       "t8_input": "1+3+4",
       "merge_source": "t8:Jin-1+3+4",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "jin",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;/div&gt"
     },
     "1,3,4": {
       "name": "Left Jab &gt; Double Low",
@@ -4541,8 +4511,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 2nd CH with 7f delay; Cannot low parry on 2nd hit; Interrupt with i3 from 2nd block; Input can be delayed 12f; &lt;/div&gt",
       "anim_t3": {
         "bank": "jin",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 211,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "2~t8.jin": {
@@ -4608,8 +4578,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Jail from 1st block with 2f delay; Combo from 1st hit with 2f delay; Same animation as df+1; &lt;/div&gt",
       "anim_t3": {
         "bank": "jin",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 221,
+        "match": "same-notation"
       }
     },
     "2,1,4": {
@@ -4643,8 +4613,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "jin",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 230,
+        "match": "same-notation"
       }
     },
     "2,1,4~4": {
@@ -4709,12 +4679,7 @@
       "t8_damage": "[12;12]",
       "t8_input": "2+3",
       "merge_source": "t8:Jin-2+3",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Burst",
-      "anim_t3": {
-        "bank": "jin",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Burst"
     },
     "2+4~t8.jin": {
       "name": "Over the Shoulder Reverse",
@@ -4850,8 +4815,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 1st hit; Move cannot be interrupted; Enter ZEN +4 +12 r15 with F; &lt;/div&gt",
       "anim_t3": {
         "bank": "jin",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 191,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "3,1,4": {
@@ -4987,8 +4952,8 @@
       "merge_source": "t8:Jin-b+1",
       "anim_t3": {
         "bank": "jin",
-        "row": 216,
-        "match": "true-map exact (anim-fix 2026-10-23)"
+        "row": 184,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "b+1+2": {
@@ -5057,8 +5022,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
       "anim_t3": {
         "bank": "jin",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 226,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "b+1+3": {
@@ -5088,12 +5053,7 @@
       "t8_damage": null,
       "t8_input": "b+1+3",
       "merge_source": "t8:Jin-b+1+3",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Strong parry: parries all highs or mids except throws, unblockables and charge moves; r14 after parrying; Plus frames after parrying depend on the recovery of the parried move; &l",
-      "anim_t3": {
-        "bank": "jin",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Strong parry: parries all highs or mids except throws, unblockables and charge moves; r14 after parrying; Plus frames after parrying depend on the recovery of the parried move; &l"
     },
     "b+2": {
       "name": "RIN b+2",
@@ -5682,8 +5642,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;/div&gt",
       "anim_t3": {
         "bank": "jin",
-        "row": 247,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 211,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "CD.D/F+4,2": {
@@ -5717,8 +5677,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "jin",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 234,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "d+1": {
@@ -5796,8 +5756,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Balcony break on airborne hit; &lt;/div&gt",
       "anim_t3": {
         "bank": "jin",
-        "row": 137,
-        "match": "true-map exact (anim-fix 2026-10-23)"
+        "row": 226,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "d+3": {
@@ -6074,12 +6034,7 @@
       "t8_damage": "0",
       "t8_input": "db+1+2",
       "merge_source": "t8:Jin-db+1+2",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "jin",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "d/b+2": {
       "name": "RIN d/b+2",
@@ -6524,12 +6479,7 @@
       "t8_input": "df+2,H.1+2",
       "merge_source": "t8:Jin-df+2,H.1+2",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "jin",
-        "row": 162,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "d/f+3": {
       "name": "Left Roundhouse",
@@ -6878,8 +6828,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "jin",
-        "row": 357,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
+        "row": 0,
+        "match": "class-verified remap (anim-fix 2026-10-23)"
       }
     },
     "f+3": {
@@ -7084,8 +7034,8 @@
       "note": "Transition to +12cg ZEN with F on hit",
       "anim_t3": {
         "bank": "jin",
-        "row": 247,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 211,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "f,F+2": {
@@ -7362,12 +7312,7 @@
       "t8_input": "H.2+3",
       "merge_source": "t8:Jin-H.2+3",
       "knockdown": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Smash",
-      "anim_t3": {
-        "bank": "jin",
-        "row": 162,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Smash"
     },
     "H.2+3,4": {
       "name": "Hellfire Darkside Slayer",
@@ -7431,12 +7376,7 @@
       "t8_damage": "0",
       "t8_input": "H.db+1+2",
       "merge_source": "t8:Jin-H.db+1+2",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange sat&quot;; &gt;Strong Aeri",
-      "anim_t3": {
-        "bank": "jin",
-        "row": 162,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange sat&quot;; &gt;Strong Aeri"
     },
     "H.f,F+1+2": {
       "name": "Awakened Black Wing",
@@ -7465,12 +7405,7 @@
       "t8_damage": "20",
       "t8_input": "H.f,F+1+2",
       "merge_source": "t8:Jin-H.f,F+1+2",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "jin",
-        "row": 162,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "SIDE_L.1+3": {
       "name": "Shoulder Flip",
@@ -7537,12 +7472,7 @@
       "t8_damage": "24",
       "t8_input": "OTG.d+1+2",
       "merge_source": "t8:Jin-OTG.d+1+2",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow spike&quot;; &gt;Spike&lt;",
-      "anim_t3": {
-        "bank": "jin",
-        "row": 162,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow spike&quot;; &gt;Spike&lt;"
     },
     "qcb+1+3~t8.jin": {
       "name": "Complicated Wire",
@@ -7757,12 +7687,7 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "jin",
-        "row": 290,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "u/f+2": {
       "name": "Evading Middle Strike",
@@ -7898,8 +7823,8 @@
       "t8_alias": "Delayed Hopkick",
       "anim_t3": {
         "bank": "jin",
-        "row": 247,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 211,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "WS.1": {
@@ -8136,8 +8061,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "jin",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 234,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "WS.1,3~3": {
@@ -8421,8 +8346,8 @@
       "t8_alias": "CDS.1,2",
       "anim_t3": {
         "bank": "jin",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 232,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "ZEN.1,3": {
@@ -8571,12 +8496,7 @@
       "merge_source": "t8:Jin-ZEN.3+4",
       "launch": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "t8_alias": "CDS.3+4",
-      "anim_t3": {
-        "bank": "jin",
-        "row": 162,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "t8_alias": "CDS.3+4"
     },
     "ZEN.4": {
       "name": "Corpse Crusher",
@@ -8610,8 +8530,8 @@
       "t8_alias": "CDS.4",
       "anim_t3": {
         "bank": "jin",
-        "row": 247,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 210,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "ZEN.u+1": {
@@ -9127,8 +9047,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 197,
+        "match": "same-notation"
       }
     },
     "1,3~t7.jin.2": {
@@ -9166,8 +9086,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "jin",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 197,
+        "match": "same-notation"
       }
     },
     "1,3,B": {
@@ -9305,8 +9225,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 221,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "1,3,2~t7.jin.2": {
@@ -9344,8 +9264,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "jin",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 234,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "1,3,2,1": {
@@ -9668,8 +9588,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 193,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "1,3,2,1,4~t7.jin.3": {
@@ -9714,8 +9634,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 207,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "1,3,2,1,4~t7.jin.4": {
@@ -9753,8 +9673,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "jin",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 207,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "1,3~t7.jin.3": {
@@ -9799,8 +9719,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 197,
+        "match": "same-notation"
       }
     },
     "1,3~t7.jin.4": {
@@ -9838,8 +9758,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "jin",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 197,
+        "match": "same-notation"
       }
     },
     "1,3~3": {
@@ -10291,8 +10211,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "jin",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 211,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "2~t7.jin": {
@@ -10376,8 +10296,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 221,
+        "match": "same-notation"
       }
     },
     "2,1~t7.jin.2": {
@@ -10415,8 +10335,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "jin",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 221,
+        "match": "same-notation"
       }
     },
     "2,1,4~t7.jin": {
@@ -10462,8 +10382,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 230,
+        "match": "same-notation"
       }
     },
     "2,1,4~t7.jin.2": {
@@ -10508,8 +10428,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 230,
+        "match": "same-notation"
       }
     },
     "2,1,4~t7.jin.3": {
@@ -10547,8 +10467,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "jin",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 230,
+        "match": "same-notation"
       }
     },
     "2,1,4~4~t7.jin": {
@@ -10893,8 +10813,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "jin",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 191,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "3,1,4~t7.jin": {
@@ -11231,8 +11151,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "jin",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 226,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "u/f+4~t7.jin": {
@@ -11523,8 +11443,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "jin",
-        "row": 357,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
+        "row": 0,
+        "match": "class-verified remap (anim-fix 2026-10-23)"
       }
     },
     "f,F+2~t7.jin": {
@@ -11848,8 +11768,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "jin",
-        "row": 247,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 211,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "f,F+4~t7.jin": {
@@ -11888,8 +11808,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "jin",
-        "row": 247,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 211,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "f,n,d,D/F+1": {
@@ -12125,8 +12045,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "jin",
-        "row": 247,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 211,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "f,n,d,d/f+4,3+4": {
@@ -12169,12 +12089,7 @@
         ],
         "total": 28
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "jin",
-        "row": 162,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "f,n,d,d/f+4,3+4~t7.jin": {
       "name": "RIN f,n,d,d/f+4,3+4",
@@ -12209,12 +12124,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:jin_82",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "jin",
-        "row": 162,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "d/f+1~t7.jin": {
       "name": "RIN d/f+1",
@@ -12707,12 +12617,7 @@
       "t7_on_hit": "+6",
       "t7_on_ch": "+6",
       "merge_source": "t7:jin_94",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "jin",
-        "row": 123,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "d+1~t7.jin": {
       "name": "Corpse Thrust",
@@ -13045,8 +12950,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 233,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "d/b+2,2~t7.jin.2": {
@@ -13423,12 +13328,7 @@
       "t7_on_hit": "-10",
       "t7_on_ch": "-10",
       "merge_source": "t7:jin_111",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "jin",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "b+2~t7.jin": {
       "name": "RIN b+2",
@@ -13511,8 +13411,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 57,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "b+2,1~t7.jin.2": {
@@ -14696,8 +14596,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "jin",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 233,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "t7.jin_143": {
@@ -14851,12 +14751,7 @@
       "merge_source": "t7:jin_146",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Face Up, Feet Towards+",
-      "anim_t3": {
-        "bank": "jin",
-        "row": 162,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "Face Up, Feet Towards+"
     },
     "t7.jin_147": {
       "name": "RIN Face Up, Feet Towards, Roll Forward+1+2",
@@ -14974,8 +14869,8 @@
       "input_note": "Face Down, Feet Away+ (close)",
       "anim_t3": {
         "bank": "jin",
-        "row": 247,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 211,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "FDFA.4~t7.jin": {
@@ -15015,8 +14910,8 @@
       "input_note": "Face Down, Feet Away+ (far)",
       "anim_t3": {
         "bank": "jin",
-        "row": 247,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 211,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "t7.jin_151": {
@@ -15093,7 +14988,7 @@
       "anim_t3": {
         "bank": "jin",
         "row": 92,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
+        "match": "class-verified remap (anim-fix 2026-10-23)"
       }
     },
     "b+1~t7.jin": {
@@ -15131,8 +15026,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "jin",
-        "row": 216,
-        "match": "true-map exact (anim-fix 2026-10-23)"
+        "row": 184,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "1,3,F": {
@@ -15223,8 +15118,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 221,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "f+4,F": {
@@ -15262,8 +15157,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "jin",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 233,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "d/f+3,3,F": {
@@ -15308,8 +15203,8 @@
       },
       "anim_t3": {
         "bank": "jin",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 221,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "b+3,F": {
@@ -15566,8 +15461,8 @@
       "input_note": "(or CDS)",
       "anim_t3": {
         "bank": "jin",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 233,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "ZEN.1,2~t7.jin.2": {
@@ -15818,8 +15713,8 @@
       "input_note": "(or CDS)",
       "anim_t3": {
         "bank": "jin",
-        "row": 247,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 211,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "ZEN.1+2~t7.jin": {
@@ -15863,12 +15758,7 @@
         "total": 28
       },
       "launch": true,
-      "input_note": "(or CDS)",
-      "anim_t3": {
-        "bank": "jin",
-        "row": 162,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(or CDS)"
     },
     "ZEN.3+4~t7.jin": {
       "name": "Leaping Side Kick",
@@ -15904,12 +15794,7 @@
       "merge_source": "t7:jin_171",
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
-      "input_note": "(or CDS)",
-      "anim_t3": {
-        "bank": "jin",
-        "row": 162,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(or CDS)"
     },
     "3+4": {
       "name": "Kazama Style Turning Leg Strike",
@@ -15951,12 +15836,7 @@
         ],
         "total": 34
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "jin",
-        "row": 51,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "R.b+1+2": {
       "name": "Rage Art",
@@ -15992,12 +15872,7 @@
       "merge_source": "t7:jin_173",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Rage)",
-      "anim_t3": {
-        "bank": "jin",
-        "row": 162,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Rage)"
     },
     "R.f,n,d,d/f+1+2": {
       "name": "RIN R.f,n,d,d/f+1+2",
@@ -16040,12 +15915,7 @@
         "total": 49
       },
       "knockdown": true,
-      "input_note": "(During Rage)",
-      "anim_t3": {
-        "bank": "jin",
-        "row": 162,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Rage)"
     },
     "R.f,n,d,d/f+1+2,D/F": {
       "name": "RIN R.f,n,d,d/f+1+2,D/F",
@@ -16355,12 +16225,7 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "jin",
-        "row": 290,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "f+1+3": {
       "name": "Double Face Kick",
@@ -16441,12 +16306,7 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "jin",
-        "row": 288,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "d/f+2+3": {
       "name": "Shun Ren Dan",
@@ -16787,8 +16647,8 @@
       "input_note": "(During Tackle)",
       "anim_t3": {
         "bank": "jin",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 184,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "TACKLE.1,1,1": {
@@ -16836,8 +16696,8 @@
       "input_note": "(During Tackle)",
       "anim_t3": {
         "bank": "jin",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 184,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "TACKLE.1,1,1,1": {
@@ -16886,8 +16746,8 @@
       "input_note": "(During Tackle)",
       "anim_t3": {
         "bank": "jin",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 184,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "TACKLE.1+2": {
@@ -16924,12 +16784,7 @@
       "merge_source": "t7:jin_194",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Tackle)",
-      "anim_t3": {
-        "bank": "jin",
-        "row": 162,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Tackle)"
     },
     "f,n,d,d/f~t7.jin": {
       "name": "RIN f,n,d,d/f",
@@ -17041,12 +16896,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:jin_197",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "jin",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "REV.b+1+3": {
       "name": "Parry",
@@ -17081,12 +16931,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:jin_198",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "Time with enemy attack... (or b+2+4)",
-      "anim_t3": {
-        "bank": "jin",
-        "row": 162,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "Time with enemy attack... (or b+2+4)"
     },
     "u+1+2": {
       "name": "JIN u+1+2 (T3 jin r32)",

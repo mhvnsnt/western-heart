@@ -809,12 +809,7 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "Heads she fights clean, tails she doesn't. The coin always lands on its edge. Unpredictable spinning kick.",
-      "anim_t3": {
-        "bank": "jin",
-        "row": 247,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Heads she fights clean, tails she doesn't. The coin always lands on its edge. Unpredictable spinning kick."
     },
     "P+K": {
       "name": "Better Marketing [WH SIGNATURE]",
@@ -838,12 +833,7 @@
       "note": "Thrones are just chairs with better marketing. A disrespectful slam off the imaginary throne.",
       "throw": true,
       "unblockable": true,
-      "isGrab": true,
-      "anim_t3": {
-        "bank": "jin",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "isGrab": true
     },
     "1+2": {
       "name": "Edge of the Coin [WH SIGNATURE]",
@@ -863,12 +853,7 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "Heads she fights clean, tails she doesn't. The coin always lands on its edge. Unpredictable spinning kick.",
-      "input_remapped_from": "S",
-      "anim_t3": {
-        "bank": "jin",
-        "row": 32,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "input_remapped_from": "S"
     },
     "1+2__main": {
       "name": "MICHIKO 1+2 (T3 jin r32)",
@@ -912,12 +897,7 @@
       "unblockable": true,
       "isGrab": true,
       "input_remapped_from": "P+K",
-      "throw_break": "1+2",
-      "anim_t3": {
-        "bank": "jin",
-        "row": 215,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1+2"
     },
     "f+2": {
       "name": "MICHIKO f+2 (T3 jin r220)",
@@ -1048,12 +1028,7 @@
         "d/f+1"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -1 / on hit +5 / CH +5 | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 179,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -1 / on hit +5 / CH +5 | t7chicken lists no name for this move; labeled by T7 command"
     },
     "d/f+4": {
       "name": "MICHIKO d/f+4 (T3 jin r205)",
@@ -1101,12 +1076,7 @@
         "d/f+4"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -9 / on hit +2 / CH STUN",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 205,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -9 / on hit +2 / CH STUN"
     },
     "u/b+1": {
       "name": "MICHIKO u/b+1 (T3 jin r34)",
@@ -1196,12 +1166,7 @@
         "u/b+4"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -14 / on hit KND / CH KND",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 78,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -14 / on hit KND / CH KND"
     },
     "u/f+1": {
       "name": "MICHIKO u/f+1 (T3 jin r33)",
@@ -1332,12 +1297,7 @@
         "u/f+3+4"
       ],
       "move_class": "strike",
-      "note": "T7 [mid, mid] on block -10 / on hit KND / CH -",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 52,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid, mid] on block -10 / on hit KND / CH -"
     },
     "qcb+1+3": {
       "name": "MICHIKO qcb+1+3 throw (T3 jin r275)",
@@ -1471,11 +1431,6 @@
           10
         ],
         "total": 20
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+2,1": {
@@ -1708,11 +1663,6 @@
           7
         ],
         "total": 27
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+2,1,2": {
@@ -1880,11 +1830,6 @@
           5
         ],
         "total": 32
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+2,1,2,2": {
@@ -4074,12 +4019,7 @@
         "btw:b,b,u/b"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block +1 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block +1 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
     },
     "1,1": {
       "name": "Double Slap",
@@ -4114,11 +4054,6 @@
           10
         ],
         "total": 17
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(1),1": {
@@ -4147,12 +4082,7 @@
         "(1),1"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block -2 / on hit +4 / CH +4 | t7chicken lists no separate move name; labeled from its named T7 string family",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [high] on block -2 / on hit +4 / CH +4 | t7chicken lists no separate move name; labeled from its named T7 string family"
     },
     "1,1,1": {
       "name": "Wing Punch Combo",
@@ -4189,11 +4119,6 @@
           23
         ],
         "total": 40
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(1),1,1": {
@@ -4230,11 +4155,6 @@
           23
         ],
         "total": 33
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(1),(1),1": {
@@ -4264,12 +4184,7 @@
         "(1),(1),1"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -5 / on hit -1 / CH KND | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -5 / on hit -1 / CH KND | t7chicken lists no name for this move; labeled by T7 command"
     },
     "1,1,2": {
       "name": "Rush Punch Combo",
@@ -4306,11 +4221,6 @@
           17
         ],
         "total": 34
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(1),1,2": {
@@ -4347,11 +4257,6 @@
           17
         ],
         "total": 27
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(1),(1),2": {
@@ -4381,12 +4286,7 @@
         "(1),(1),2"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block +7 / on hit +9 / CH STUN | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [high] on block +7 / on hit +9 / CH STUN | t7chicken lists no name for this move; labeled by T7 command"
     },
     "1,1,3": {
       "name": "Albatross Punch Combo",
@@ -4423,11 +4323,6 @@
           20
         ],
         "total": 37
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(1),1,3": {
@@ -4464,11 +4359,6 @@
           20
         ],
         "total": 30
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(1),(1),3": {
@@ -4498,12 +4388,7 @@
         "(1),(1),3"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block 0 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block 0 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
     },
     "1,1,4": {
       "name": "Goose Punch Combo",
@@ -4540,11 +4425,6 @@
           21
         ],
         "total": 38
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(1),1,4": {
@@ -4581,11 +4461,6 @@
           2
         ],
         "total": 12
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(1),(1),4": {
@@ -4615,12 +4490,7 @@
         "(1),(1),4"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -19 / on hit LAUNCH / CH LAUNCH | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -19 / on hit LAUNCH / CH LAUNCH | t7chicken lists no name for this move; labeled by T7 command"
     },
     "(1),2": {
       "name": "10 Hit Combo (chain)",
@@ -4648,12 +4518,7 @@
         "(1),2"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block -3 / on hit +3 / CH +3 | t7chicken lists no separate move name; labeled from its named T7 string family",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [high] on block -3 / on hit +3 / CH +3 | t7chicken lists no separate move name; labeled from its named T7 string family"
     },
     "1,4": {
       "name": "Needle Kick Combo",
@@ -4688,11 +4553,6 @@
           10
         ],
         "total": 20
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(1),4": {
@@ -4721,12 +4581,7 @@
         "(1),4"
       ],
       "move_class": "string",
-      "note": "T7 [low] on block -12 / on hit +1 / CH +1 | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [low] on block -12 / on hit +1 / CH +1 | t7chicken lists no name for this move; labeled by T7 command"
     },
     "2,2": {
       "name": "Feather Fury",
@@ -4761,11 +4616,6 @@
           20
         ],
         "total": 30
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(2),2": {
@@ -4794,12 +4644,7 @@
         "(2),2"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block -12 / on hit +10 / CH +10 | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [high] on block -12 / on hit +10 / CH +10 | t7chicken lists no name for this move; labeled by T7 command"
     },
     "3,3": {
       "name": "Crane Kick Combo (chain)",
@@ -4834,11 +4679,6 @@
           4
         ],
         "total": 13
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(3),3": {
@@ -4867,12 +4707,7 @@
         "(3),3"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -9 / on hit +2 / CH +2 | t7chicken lists no separate move name; labeled from its named T7 string family",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -9 / on hit +2 / CH +2 | t7chicken lists no separate move name; labeled from its named T7 string family"
     },
     "3,3,3": {
       "name": "Crane Kick Combo (chain)",
@@ -4909,11 +4744,6 @@
           4
         ],
         "total": 17
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(3),3,3": {
@@ -4950,11 +4780,6 @@
           4
         ],
         "total": 8
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(3),(3),3": {
@@ -4984,12 +4809,7 @@
         "(3),(3),3"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -10 / on hit +1 / CH +1 | t7chicken lists no separate move name; labeled from its named T7 string family",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -10 / on hit +1 / CH +1 | t7chicken lists no separate move name; labeled from its named T7 string family"
     },
     "3,3,3,3": {
       "name": "Crane Kick Combo (chain)",
@@ -5028,11 +4848,6 @@
           4
         ],
         "total": 21
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(3),3,3,3": {
@@ -5071,11 +4886,6 @@
           4
         ],
         "total": 12
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(3),(3),3,3": {
@@ -5113,11 +4923,6 @@
           4
         ],
         "total": 8
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(3),(3),(3),3": {
@@ -5148,12 +4953,7 @@
         "(3),(3),(3),3"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block -11 / on hit 0 / CH 0 | t7chicken lists no separate move name; labeled from its named T7 string family",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [high] on block -11 / on hit 0 / CH 0 | t7chicken lists no separate move name; labeled from its named T7 string family"
     },
     "3,3,3,3,3": {
       "name": "Crane Kick Combo",
@@ -5194,11 +4994,6 @@
           17
         ],
         "total": 38
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(3),3,3,3,3": {
@@ -5239,11 +5034,6 @@
           17
         ],
         "total": 29
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(3),(3),3,3,3": {
@@ -5283,11 +5073,6 @@
           17
         ],
         "total": 25
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(3),(3),(3),3,3": {
@@ -5326,11 +5111,6 @@
           17
         ],
         "total": 21
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(3),(3),(3),(3),3": {
@@ -5362,12 +5142,7 @@
         "(3),(3),(3),(3),3"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -14 / on hit +1 (OC) / CH +1 (OC) | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -14 / on hit +1 (OC) / CH +1 (OC) | t7chicken lists no name for this move; labeled by T7 command"
     },
     "3,4": {
       "name": "Wild Canary",
@@ -5402,11 +5177,6 @@
           20
         ],
         "total": 29
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 317,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "(3),4,4)": {
@@ -5436,12 +5206,7 @@
         "(3),4,4)"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block -8 / on hit KND / CH S! | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [high] on block -8 / on hit KND / CH S! | t7chicken lists no name for this move; labeled by T7 command"
     },
     "4,4": {
       "name": "Nimble Cutter to Harrier (chain)",
@@ -5476,11 +5241,6 @@
           15
         ],
         "total": 32
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(4),4": {
@@ -5509,12 +5269,7 @@
         "(4),4"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -10 / on hit +4 / CH KND | t7chicken lists no separate move name; labeled from its named T7 string family",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -10 / on hit +4 / CH KND | t7chicken lists no separate move name; labeled from its named T7 string family"
     },
     "4,4,4": {
       "name": "Nimble Cutter to Harrier (chain)",
@@ -5551,11 +5306,6 @@
           10
         ],
         "total": 47
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(4),4,4": {
@@ -5592,11 +5342,6 @@
           10
         ],
         "total": 30
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(4),(4),4": {
@@ -5626,12 +5371,7 @@
         "(4),(4),4"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block -10 / on hit +4 / CH KND | t7chicken lists no separate move name; labeled from its named T7 string family",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [high] on block -10 / on hit +4 / CH KND | t7chicken lists no separate move name; labeled from its named T7 string family"
     },
     "4,4,4,4": {
       "name": "Nimble Cutter (chain)",
@@ -5670,11 +5410,6 @@
           21
         ],
         "total": 68
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(4),4,4,4": {
@@ -5713,11 +5448,6 @@
           21
         ],
         "total": 51
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(4),(4),4,4": {
@@ -5755,11 +5485,6 @@
           21
         ],
         "total": 31
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(4),(4),(4),4": {
@@ -5790,12 +5515,7 @@
         "(4),(4),(4),4"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block -6 / on hit +5 / CH KND | t7chicken lists no separate move name; labeled from its named T7 string family",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [high] on block -6 / on hit +5 / CH KND | t7chicken lists no separate move name; labeled from its named T7 string family"
     },
     "4,4,4,4,4": {
       "name": "Nimble Cutter",
@@ -5836,11 +5556,6 @@
           25
         ],
         "total": 93
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(4),4,4,4,4": {
@@ -5881,11 +5596,6 @@
           25
         ],
         "total": 76
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(4),(4),4,4,4": {
@@ -5925,11 +5635,6 @@
           25
         ],
         "total": 56
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(4),(4),(4),4,4": {
@@ -5968,11 +5673,6 @@
           25
         ],
         "total": 46
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(4),(4),(4),(4),4": {
@@ -6004,12 +5704,7 @@
         "(4),(4),(4),(4),4"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -9 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -9 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
     },
     "u/f+3_t7": {
       "name": "Flying Bird",
@@ -6037,12 +5732,7 @@
       ],
       "move_class": "strike",
       "note": "T7 [mid] on block -13 / on hit LAUNCH / CH LAUNCH",
-      "t7_input": "u/f+3",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 55,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "t7_input": "u/f+3"
     },
     "(u/f+4),4": {
       "name": "Wing Cutter to Harrier (chain)",
@@ -6070,12 +5760,7 @@
         "(u/f+4),4"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -13 / on hit STUN / CH STUN | t7chicken lists no separate move name; labeled from its named T7 string family",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -13 / on hit STUN / CH STUN | t7chicken lists no separate move name; labeled from its named T7 string family"
     },
     "(u/f+4),4,4": {
       "name": "Wing Cutter to Harrier (chain)",
@@ -6111,11 +5796,6 @@
           7
         ],
         "total": 17
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(u/f+4),(4),4": {
@@ -6145,12 +5825,7 @@
         "(u/f+4),(4),4"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -10 / on hit STUN / CH STUN | t7chicken lists no separate move name; labeled from its named T7 string family",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -10 / on hit STUN / CH STUN | t7chicken lists no separate move name; labeled from its named T7 string family"
     },
     "(u/f+4),4,4,4": {
       "name": "Wing Cutter to Harrier (chain)",
@@ -6188,11 +5863,6 @@
           5
         ],
         "total": 22
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(u/f+4),(4),4,4": {
@@ -6230,11 +5900,6 @@
           10
         ],
         "total": 20
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(u/f+4),(4),(4),4": {
@@ -6265,12 +5930,7 @@
         "(u/f+4),(4),(4),4"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block -10 / on hit STUN / CH STUN | t7chicken lists no separate move name; labeled from its named T7 string family",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [high] on block -10 / on hit STUN / CH STUN | t7chicken lists no separate move name; labeled from its named T7 string family"
     },
     "u/f+4,4,4,4,4": {
       "name": "Wing Cutter (chain)",
@@ -6311,11 +5971,6 @@
           8
         ],
         "total": 40
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(u/f+4),4,4,4,4": {
@@ -6356,11 +6011,6 @@
           8
         ],
         "total": 30
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(u/f+4),(4),4,4,4": {
@@ -6400,11 +6050,6 @@
           21
         ],
         "total": 41
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(u/f+4),(4),(4),4,4": {
@@ -6443,11 +6088,6 @@
           21
         ],
         "total": 31
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(u/f+4),(4),(4),(4),4": {
@@ -6479,12 +6119,7 @@
         "(u/f+4),(4),(4),(4),4"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block -6 / on hit KND / CH KND | t7chicken lists no separate move name; labeled from its named T7 string family",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [high] on block -6 / on hit KND / CH KND | t7chicken lists no separate move name; labeled from its named T7 string family"
     },
     "u/f+4,4,4,4,4,4": {
       "name": "Wing Cutter",
@@ -6527,11 +6162,6 @@
           7
         ],
         "total": 47
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(u/f+4),4,4,4,4,4": {
@@ -6574,11 +6204,6 @@
           7
         ],
         "total": 37
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(u/f+4),(4),4,4,4,4": {
@@ -6620,11 +6245,6 @@
           25
         ],
         "total": 66
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(u/f+4),(4),(4),4,4,4": {
@@ -6665,11 +6285,6 @@
           25
         ],
         "total": 56
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(u/f+4),(4),(4),(4),4,4": {
@@ -6709,11 +6324,6 @@
           25
         ],
         "total": 46
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(u/f+4),(4),(4),(4),(4),4": {
@@ -6746,12 +6356,7 @@
         "(u/f+4),(4),(4),(4),(4),4"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -9 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -9 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
     },
     "u/f+3+4 (second hit only)": {
       "name": "MICHIKO u/f+3+4 (second hit only)",
@@ -6778,12 +6383,7 @@
         "u/f+3+4 (second hit only)"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -10 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -10 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
     },
     "f+1+2": {
       "name": "Drumming",
@@ -6810,12 +6410,7 @@
         "f+1+2"
       ],
       "move_class": "strike",
-      "note": "T7 [high] on block +1 / on hit KND / CH KND",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 357,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [high] on block +1 / on hit KND / CH KND"
     },
     "f+3": {
       "name": "Heel Hook",
@@ -6842,12 +6437,7 @@
         "f+3"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block +1 (OC) / on hit +5 (OC) / CH STUN",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 79,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block +1 (OC) / on hit +5 (OC) / CH STUN"
     },
     "f,F+2": {
       "name": "MICHIKO f,F+2",
@@ -6875,12 +6465,7 @@
         "f,F+2"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block -5 / on hit +6 / CH +6 | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [high] on block -5 / on hit +6 / CH +6 | t7chicken lists no name for this move; labeled by T7 command"
     },
     "GROUND BOUND": {
       "name": "Bird Chaser",
@@ -6907,12 +6492,7 @@
         "GROUND BOUND"
       ],
       "move_class": "strike",
-      "note": "T7 [high, high] on block -9 / on hit S! / CH -",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [high, high] on block -9 / on hit S! / CH -"
     },
     "(f,F+2),4": {
       "name": "MICHIKO (f,F+2),4",
@@ -6941,12 +6521,7 @@
         "(f,F+2),4"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block -9 / on hit S! / CH S! | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [high] on block -9 / on hit S! / CH S! | t7chicken lists no name for this move; labeled by T7 command"
     },
     "f,F+3": {
       "name": "Aerial Glide",
@@ -6974,12 +6549,7 @@
         "f,F+3"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -9 / on hit KND / CH FLOOR BOUND",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -9 / on hit KND / CH FLOOR BOUND"
     },
     "f,F+4": {
       "name": "Plover Kick",
@@ -7007,12 +6577,7 @@
         "f,F+4"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -13 / on hit KND / CH KND",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -13 / on hit KND / CH KND"
     },
     "f,f,f+3": {
       "name": "Pheasant Heel",
@@ -7041,12 +6606,7 @@
         "f,f,f+3"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block +1 / on hit KND / CH KND",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block +1 / on hit KND / CH KND"
     },
     "d/f+1,1": {
       "name": "Peck and Slap",
@@ -7081,11 +6641,6 @@
           8
         ],
         "total": 21
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(d/f+1),1": {
@@ -7114,12 +6669,7 @@
         "(d/f+1),1"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block -5 / on hit +6 / CH +6 | t7chicken lists no separate move name; labeled from its named T7 string family",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [high] on block -5 / on hit +6 / CH +6 | t7chicken lists no separate move name; labeled from its named T7 string family"
     },
     "d/f+2,2": {
       "name": "Nest Crasher",
@@ -7154,11 +6704,6 @@
           21
         ],
         "total": 38
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(d/f+2),2": {
@@ -7187,12 +6732,7 @@
         "(d/f+2),2"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -10 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -10 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
     },
     "d/f+2,4": {
       "name": "Nest Wrecker",
@@ -7227,11 +6767,6 @@
           17
         ],
         "total": 34
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(d/f+2),4": {
@@ -7260,12 +6795,7 @@
         "(d/f+2),4"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block +1 / on hit +18 / CH +18 | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [high] on block +1 / on hit +18 / CH +18 | t7chicken lists no name for this move; labeled by T7 command"
     },
     "d/f+3": {
       "name": "MICHIKO d/f+3",
@@ -7292,12 +6822,7 @@
         "d/f+3"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -6 / on hit +2 / CH +2 | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 143,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -6 / on hit +2 / CH +2 | t7chicken lists no name for this move; labeled by T7 command"
     },
     "d/f+3,3": {
       "name": "Wagtail",
@@ -7332,11 +6857,6 @@
           24
         ],
         "total": 39
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(d/f+3),3": {
@@ -7365,12 +6885,7 @@
         "(d/f+3),3"
       ],
       "move_class": "string",
-      "note": "T7 [low] on block -21 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [low] on block -21 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
     },
     "d/f+3,3,D": {
       "name": "MICHIKO d/f+3,3,D",
@@ -7406,11 +6921,6 @@
           24
         ],
         "total": 39
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+3+4": {
@@ -7438,12 +6948,7 @@
         "d/f+3+4"
       ],
       "move_class": "strike",
-      "note": "T7 [low] on block -14 / on hit -1 (OC) / CH KND",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 134,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [low] on block -14 / on hit -1 (OC) / CH KND"
     },
     "d/f+3+4,D": {
       "name": "MICHIKO d/f+3+4,D",
@@ -7471,12 +6976,7 @@
         "d/f+3+4,D"
       ],
       "move_class": "string",
-      "note": "T7 [low] on block -14 / on hit -1 (OC) / CH KND | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [low] on block -14 / on hit -1 (OC) / CH KND | t7chicken lists no name for this move; labeled by T7 command"
     },
     "d+1": {
       "name": "Feather Chop",
@@ -7503,12 +7003,7 @@
         "d+1"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -7 / on hit +3 (OC) / CH KND",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -7 / on hit +3 (OC) / CH KND"
     },
     "d+2": {
       "name": "Paineira",
@@ -7535,12 +7030,7 @@
         "d+2"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -11 / on hit 0 / CH STUN",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 137,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -11 / on hit 0 / CH STUN"
     },
     "d+3": {
       "name": "MICHIKO d+3",
@@ -7567,12 +7057,7 @@
         "d+3"
       ],
       "move_class": "strike",
-      "note": "T7 [low] on block -11 / on hit 0 / CH 0 | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [low] on block -11 / on hit 0 / CH 0 | t7chicken lists no name for this move; labeled by T7 command"
     },
     "d+3,3": {
       "name": "Tarsus Body Blow",
@@ -7607,11 +7092,6 @@
           18
         ],
         "total": 30
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(d+3),3": {
@@ -7640,12 +7120,7 @@
         "(d+3),3"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -13 / on hit 0 / CH 0 | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -13 / on hit 0 / CH 0 | t7chicken lists no name for this move; labeled by T7 command"
     },
     "d+3,4": {
       "name": "Tarsus Neck Blow",
@@ -7680,11 +7155,6 @@
           18
         ],
         "total": 30
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(d+3),4": {
@@ -7713,12 +7183,7 @@
         "(d+3),4"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block -4 / on hit +6 / CH KND | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [high] on block -4 / on hit +6 / CH KND | t7chicken lists no name for this move; labeled by T7 command"
     },
     "d/b+3": {
       "name": "Sliding Kick",
@@ -7745,12 +7210,7 @@
         "d/b+3"
       ],
       "move_class": "strike",
-      "note": "T7 [low] on block -26 / on hit KND / CH KND",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 138,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [low] on block -26 / on hit KND / CH KND"
     },
     "d/b+4": {
       "name": "Slipping Tail",
@@ -7777,12 +7237,7 @@
         "d/b+4"
       ],
       "move_class": "strike",
-      "note": "T7 [low] on block -26 / on hit STUN / CH STUN",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 148,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [low] on block -26 / on hit STUN / CH STUN"
     },
     "b+1_t7": {
       "name": "Inside Peck",
@@ -7810,12 +7265,7 @@
       ],
       "move_class": "strike",
       "note": "T7 [mid] on block -9 / on hit +2 / CH +2",
-      "t7_input": "b+1",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 216,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "t7_input": "b+1"
     },
     "b+1,1": {
       "name": "Peck Upper",
@@ -7850,11 +7300,6 @@
           20
         ],
         "total": 33
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(b+1),1": {
@@ -7883,12 +7328,7 @@
         "(b+1),1"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -12 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -12 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
     },
     "b+1,2": {
       "name": "Piercing Peck",
@@ -7923,11 +7363,6 @@
           10
         ],
         "total": 23
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(b+1),2": {
@@ -7956,12 +7391,7 @@
         "(b+1),2"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -8 / on hit +5 / CH +5 | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -8 / on hit +5 / CH +5 | t7chicken lists no name for this move; labeled by T7 command"
     },
     "b+2": {
       "name": "Vulture Claw",
@@ -7988,12 +7418,7 @@
         "b+2"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -14 / on hit LAUNCH / CH LAUNCH",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 97,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -14 / on hit LAUNCH / CH LAUNCH"
     },
     "b+3": {
       "name": "Cuckoo Thrust",
@@ -8020,12 +7445,7 @@
         "b+3"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -9 / on hit +2 / CH +27",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 103,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -9 / on hit +2 / CH +27"
     },
     "b+4": {
       "name": "MICHIKO b+4",
@@ -8052,12 +7472,7 @@
         "b+4"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -15 / on hit +8 / CH STUN | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 112,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -15 / on hit +8 / CH STUN | t7chicken lists no name for this move; labeled by T7 command"
     },
     "b+4,1+2": {
       "name": "Woodpecker",
@@ -8092,11 +7507,6 @@
           20
         ],
         "total": 37
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(b+4),1+2": {
@@ -8125,12 +7535,7 @@
         "(b+4),1+2"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block +1 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [high] on block +1 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
     },
     "b+4,3+4": {
       "name": "Peacock",
@@ -8166,11 +7571,6 @@
           11
         ],
         "total": 31
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(b+4),3+4": {
@@ -8206,11 +7606,6 @@
           11
         ],
         "total": 14
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+3+4": {
@@ -8238,12 +7633,7 @@
         "b+3+4"
       ],
       "move_class": "strike",
-      "note": "T7 [mid, mid] on block -14 / on hit KND / CH -",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 110,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid, mid] on block -14 / on hit KND / CH -"
     },
     "b+3+4 (second hit only)": {
       "name": "MICHIKO b+3+4 (second hit only)",
@@ -8270,12 +7660,7 @@
         "b+3+4 (second hit only)"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -14 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -14 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
     },
     "BT 1": {
       "name": "MICHIKO BT 1",
@@ -8302,12 +7687,7 @@
         "BT 1"
       ],
       "move_class": "strike",
-      "note": "T7 [high] on block -8 / on hit +3 / CH +3 | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [high] on block -8 / on hit +3 / CH +3 | t7chicken lists no name for this move; labeled by T7 command"
     },
     "BT 3": {
       "name": "MICHIKO BT 3",
@@ -8334,12 +7714,7 @@
         "BT 3"
       ],
       "move_class": "strike",
-      "note": "T7 [high] on block -8 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [high] on block -8 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
     },
     "FC 1": {
       "name": "MICHIKO FC 1",
@@ -8366,12 +7741,7 @@
         "FC 1"
       ],
       "move_class": "strike",
-      "note": "T7 [s. mid] on block -5 / on hit +6 / CH +6 | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [s. mid] on block -5 / on hit +6 / CH +6 | t7chicken lists no name for this move; labeled by T7 command"
     },
     "FC 2": {
       "name": "MICHIKO FC 2",
@@ -8398,12 +7768,7 @@
         "FC 2"
       ],
       "move_class": "strike",
-      "note": "T7 [s. mid] on block -4 / on hit +7 / CH +7 | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [s. mid] on block -4 / on hit +7 / CH +7 | t7chicken lists no name for this move; labeled by T7 command"
     },
     "FC 3": {
       "name": "MICHIKO FC 3",
@@ -8430,12 +7795,7 @@
         "FC 3"
       ],
       "move_class": "strike",
-      "note": "T7 [low] on block -14 / on hit -3 / CH -3 | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [low] on block -14 / on hit -3 / CH -3 | t7chicken lists no name for this move; labeled by T7 command"
     },
     "FC 4": {
       "name": "MICHIKO FC 4",
@@ -8462,12 +7822,7 @@
         "FC 4"
       ],
       "move_class": "strike",
-      "note": "T7 [low] on block -15 / on hit -4 / CH -4 | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [low] on block -15 / on hit -4 / CH -4 | t7chicken lists no name for this move; labeled by T7 command"
     },
     "FC d/f+4": {
       "name": "Short Tail",
@@ -8494,12 +7849,7 @@
         "FC d/f+4"
       ],
       "move_class": "strike",
-      "note": "T7 [low] on block -16 / on hit 0 (OC) / CH KND",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [low] on block -16 / on hit 0 (OC) / CH KND"
     },
     "WR f,f,F (Full Screen)": {
       "name": "MICHIKO WR f,f,F (Full Screen)",
@@ -8528,12 +7878,7 @@
         "WR f,f,F (Full Screen)"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block +13 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block +13 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
     },
     "WR f,f,F (Full Screen) (On Grounded Opponent)": {
       "name": "MICHIKO WR f,f,F (Full Screen) (On Grounded Opponent)",
@@ -8562,12 +7907,7 @@
         "WR f,f,F (Full Screen) (On Grounded Opponent)"
       ],
       "move_class": "string",
-      "note": "T7 [low] on block - / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [low] on block - / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
     },
     "WR 4": {
       "name": "MICHIKO WR 4",
@@ -8594,12 +7934,7 @@
         "WR 4"
       ],
       "move_class": "strike",
-      "note": "T7 [low] on block -40 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [low] on block -40 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
     },
     "WR+1+2": {
       "name": "MICHIKO WR+1+2",
@@ -8626,12 +7961,7 @@
         "WR+1+2"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block 0 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block 0 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
     },
     "WS 1": {
       "name": "MICHIKO WS 1",
@@ -8658,12 +7988,7 @@
         "WS 1"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -6 / on hit +5 / CH +5 | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -6 / on hit +5 / CH +5 | t7chicken lists no name for this move; labeled by T7 command"
     },
     "WS 1,1": {
       "name": "Rampage Wing",
@@ -8698,11 +8023,6 @@
           10
         ],
         "total": 25
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "WS (1),1": {
@@ -8731,12 +8051,7 @@
         "WS (1),1"
       ],
       "move_class": "string",
-      "note": "T7 [high] on block -5 / on hit +6 / CH +6 | t7chicken lists no separate move name; labeled from its named T7 string family",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [high] on block -5 / on hit +6 / CH +6 | t7chicken lists no separate move name; labeled from its named T7 string family"
     },
     "WS 2": {
       "name": "Kite Upper",
@@ -8763,12 +8078,7 @@
         "WS 2"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -13 / on hit LAUNCH / CH LAUNCH",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -13 / on hit LAUNCH / CH LAUNCH"
     },
     "WS 4": {
       "name": "MICHIKO WS 4",
@@ -8795,12 +8105,7 @@
         "WS 4"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -3 / on hit +8 / CH +8 | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -3 / on hit +8 / CH +8 | t7chicken lists no name for this move; labeled by T7 command"
     },
     "d+3+4": {
       "name": "Crash Landing",
@@ -8827,12 +8132,7 @@
         "gnd:d+3+4"
       ],
       "move_class": "strike",
-      "note": "T7 [low] on block -20 / on hit KND / CH KND",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 127,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [low] on block -20 / on hit KND / CH KND"
     },
     "1,2,4,4,4,3,3,3,3,3": {
       "name": "10 Hit Combo",
@@ -8868,12 +8168,7 @@
         "1,2,4,4,4,3,3,3,3,3"
       ],
       "move_class": "string",
-      "note": "T7 [-] on block -20 / on hit KND / CH KND",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [-] on block -20 / on hit KND / CH KND"
     },
     "Face Up,Feet Towards+3 or (After Rolling Forward)": {
       "name": "MICHIKO Face Up,Feet Towards+3 or (After Rolling Forward)",
@@ -8901,12 +8196,7 @@
         "Face Up,Feet Towards+3 or (After Rolling Forward)"
       ],
       "move_class": "string",
-      "note": "T7 [low] on block -12 / on hit +5 / CH STUN | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [low] on block -12 / on hit +5 / CH STUN | t7chicken lists no name for this move; labeled by T7 command"
     },
     "Face Up,Feet Towards+4 or (After Rolling Forward)": {
       "name": "MICHIKO Face Up,Feet Towards+4 or (After Rolling Forward)",
@@ -8934,12 +8224,7 @@
         "Face Up,Feet Towards+4 or (After Rolling Forward)"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -12 / on hit +5 / CH KND | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -12 / on hit +5 / CH KND | t7chicken lists no name for this move; labeled by T7 command"
     },
     "Face Up,Feet Towards,d+3": {
       "name": "MICHIKO Face Up,Feet Towards,d+3",
@@ -8968,12 +8253,7 @@
         "Face Up,Feet Towards,d+3"
       ],
       "move_class": "string",
-      "note": "T7 [low] on block -16 / on hit -3 / CH -3 | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [low] on block -16 / on hit -3 / CH -3 | t7chicken lists no name for this move; labeled by T7 command"
     },
     "Face Up,Feet Towards+3+4": {
       "name": "MICHIKO Face Up,Feet Towards+3+4",
@@ -9001,12 +8281,7 @@
         "Face Up,Feet Towards+3+4"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -21 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -21 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
     },
     "Face Up,Feet Towards,Roll Forward+1+2": {
       "name": "MICHIKO Face Up,Feet Towards,Roll Forward+1+2",
@@ -9035,12 +8310,7 @@
         "Face Up,Feet Towards,Roll Forward+1+2"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block +2 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block +2 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
     },
     "Face Down,Feet Away+3": {
       "name": "MICHIKO Face Down,Feet Away+3",
@@ -9068,12 +8338,7 @@
         "Face Down,Feet Away+3"
       ],
       "move_class": "string",
-      "note": "T7 [low] on block -20 / on hit +1 / CH STUN | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [low] on block -20 / on hit +1 / CH STUN | t7chicken lists no name for this move; labeled by T7 command"
     },
     "Face Down,Feet Away+4 (close)": {
       "name": "MICHIKO Face Down,Feet Away+4 (close)",
@@ -9101,12 +8366,7 @@
         "Face Down,Feet Away+4 (close)"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -19 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -19 / on hit KND / CH KND | t7chicken lists no name for this move; labeled by T7 command"
     },
     "Face Down,Feet Away+4 (far)": {
       "name": "MICHIKO Face Down,Feet Away+4 (far)",
@@ -9134,12 +8394,7 @@
         "Face Down,Feet Away+4 (far)"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -19 / on hit -10 / CH KND | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -19 / on hit -10 / CH KND | t7chicken lists no name for this move; labeled by T7 command"
     },
     "(Upon Landing) f": {
       "name": "MICHIKO (Upon Landing) f",
@@ -9166,12 +8421,7 @@
         "(Upon Landing) f"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -2 / on hit +3 / CH +3 | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -2 / on hit +3 / CH +3 | t7chicken lists no name for this move; labeled by T7 command"
     },
     "f+4_t7": {
       "name": "Harrier",
@@ -9199,12 +8449,7 @@
       ],
       "move_class": "strike",
       "note": "T7 [-] on block - / on hit - / CH -",
-      "t7_input": "f+4",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 214,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "t7_input": "f+4"
     },
     "1,1,F": {
       "name": "Double Slap to Harrier",
@@ -9240,11 +8485,6 @@
           10
         ],
         "total": 17
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "3,3,3,F": {
@@ -9283,11 +8523,6 @@
           4
         ],
         "total": 17
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "4,4,4,F": {
@@ -9326,11 +8561,6 @@
           10
         ],
         "total": 47
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "u/f+4,4,4,4,F": {
@@ -9371,11 +8601,6 @@
           5
         ],
         "total": 32
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+1,1,F": {
@@ -9412,11 +8637,6 @@
           8
         ],
         "total": 21
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d+2,F": {
@@ -9445,12 +8665,7 @@
         "d+2,F"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -28 / on hit -17 / CH STUN",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -28 / on hit -17 / CH STUN"
     },
     "b+1,F": {
       "name": "Inside Peck to Harrier",
@@ -9478,12 +8693,7 @@
         "b+1,F"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -34 / on hit -23 / CH -23",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -34 / on hit -23 / CH -23"
     },
     "WS 1,1,F": {
       "name": "Rampage Wing to Harrier",
@@ -9519,11 +8729,6 @@
           10
         ],
         "total": 25
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "HAR D": {
@@ -9551,12 +8756,7 @@
         "HAR D"
       ],
       "move_class": "strike",
-      "note": "T7 [-] on block - / on hit - / CH - | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [-] on block - / on hit - / CH - | t7chicken lists no name for this move; labeled by T7 command"
     },
     "HAR 1": {
       "name": "Alula Slice",
@@ -9583,12 +8783,7 @@
         "HAR 1"
       ],
       "move_class": "strike",
-      "note": "T7 [high] on block -3 / on hit +17 / CH +17",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [high] on block -3 / on hit +17 / CH +17"
     },
     "HAR 2": {
       "name": "Alula Slam",
@@ -9615,12 +8810,7 @@
         "HAR 2"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -6 / on hit -2 (OC) / CH GROUND BOUNCE",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -6 / on hit -2 (OC) / CH GROUND BOUNCE"
     },
     "HAR 3": {
       "name": "Palmate Spin",
@@ -9647,12 +8837,7 @@
         "HAR 3"
       ],
       "move_class": "strike",
-      "note": "T7 [low] on block -25 / on hit KND / CH KND",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [low] on block -25 / on hit KND / CH KND"
     },
     "HAR 4": {
       "name": "Snipe's Knee",
@@ -9679,12 +8864,7 @@
         "HAR 4"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -9 / on hit KND / CH KND",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -9 / on hit KND / CH KND"
     },
     "HAR d/f+2": {
       "name": "MICHIKO HAR d/f+2",
@@ -9711,12 +8891,7 @@
         "HAR d/f+2"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -13 / on hit -2 / CH -2 | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -13 / on hit -2 / CH -2 | t7chicken lists no name for this move; labeled by T7 command"
     },
     "HAR d/f+2,3": {
       "name": "Egret Rush",
@@ -9751,11 +8926,6 @@
           18
         ],
         "total": 31
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "HAR (d/f+2),3": {
@@ -9784,12 +8954,7 @@
         "HAR (d/f+2),3"
       ],
       "move_class": "string",
-      "note": "T7 [mid] on block -3 / on hit +14 / CH +14 | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -3 / on hit +14 / CH +14 | t7chicken lists no name for this move; labeled by T7 command"
     },
     "HAR u/f+3": {
       "name": "Aerial Glide",
@@ -9816,12 +8981,7 @@
         "HAR u/f+3"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -9 / on hit KND / CH FLOOR BOUND",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -9 / on hit KND / CH FLOOR BOUND"
     },
     "f+3+4": {
       "name": "Fledgeling Foot",
@@ -9848,12 +9008,7 @@
         "f+3+4"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -13 / on hit KND / CH KND",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -13 / on hit KND / CH KND"
     },
     "(During Rage) HAR 1+2": {
       "name": "Rage Drive",
@@ -9880,12 +9035,7 @@
         "(During Rage) HAR 1+2"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block +5 (OC) / on hit KND / CH KND",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block +5 (OC) / on hit KND / CH KND"
     },
     "(During Rage) 3+4": {
       "name": "Rage Art",
@@ -9912,12 +9062,7 @@
         "(During Rage) 3+4"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block -22 / on hit KND / CH KND",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block -22 / on hit KND / CH KND"
     },
     "d/b+3+4": {
       "name": "Eclipse Plumage",
@@ -9944,12 +9089,7 @@
         "d/b+3+4"
       ],
       "move_class": "strike",
-      "note": "T7 [mid] on block ! / on hit KND / CH KND",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 248,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid] on block ! / on hit KND / CH KND"
     },
     "f+1+3": {
       "name": "Flying Catch",
@@ -9980,12 +9120,7 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 288,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1"
     },
     "f+2+4_t7": {
       "name": "Display of Force",
@@ -10017,12 +9152,7 @@
       "unblockable": true,
       "isGrab": true,
       "throw_break": "2",
-      "t7_input": "f+2+4",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 288,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "t7_input": "f+2+4"
     },
     "d/f+1+2": {
       "name": "Phoenix Kick Flurry",
@@ -10053,12 +9183,7 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1+2",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 117,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1+2"
     },
     "WR f,f,F (Mid Screen)": {
       "name": "MICHIKO WR f,f,F (Mid Screen)",
@@ -10087,12 +9212,7 @@
         "WR f,f,F (Mid Screen)"
       ],
       "move_class": "string",
-      "note": "T7 [mid throw] on block -5 (BT) / on hit KND / CH - | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [mid throw] on block -5 (BT) / on hit KND / CH - | t7chicken lists no name for this move; labeled by T7 command"
     },
     "(During Tackle) 1": {
       "name": "MICHIKO (During Tackle) 1",
@@ -10119,12 +9239,7 @@
         "(During Tackle) 1"
       ],
       "move_class": "strike",
-      "note": "T7 [-] on block - / on hit KND / CH - | t7chicken lists no name for this move; labeled by T7 command",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "T7 [-] on block - / on hit KND / CH - | t7chicken lists no name for this move; labeled by T7 command"
     },
     "(During Tackle) 1/2,1/2": {
       "name": "MICHIKO (During Tackle) 1/2,1/2",
@@ -10159,11 +9274,6 @@
           5
         ],
         "total": 10
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(During Tackle) 1/2,1/2,1/2": {
@@ -10201,11 +9311,6 @@
           5
         ],
         "total": 15
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "(During Tackle) 1/2,1/2,1/2,1/2": {
@@ -10245,11 +9350,6 @@
           15
         ],
         "total": 30
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1+2+3_t7": {
@@ -10278,12 +9378,7 @@
       ],
       "move_class": "strike",
       "note": "T7 [-] on block - / on hit - / CH -",
-      "t7_input": "1+2+3",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 255,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "t7_input": "1+2+3"
     },
     "1~t7.katarina": {
       "name": "MICHIKO 1",
@@ -10317,12 +9412,7 @@
       "t7_on_hit": "+8",
       "t7_on_ch": "+8",
       "merge_source": "t7:katarina_2",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "katarina",
-        "row": 43,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "1,2~t7.katarina": {
       "name": "Wing Slap Combo",
@@ -10363,11 +9453,6 @@
           10
         ],
         "total": 17
-      },
-      "anim_t3": {
-        "bank": "katarina",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "2~t7.katarina": {
@@ -10402,12 +9487,7 @@
       "t7_on_hit": "+8",
       "t7_on_ch": "+8",
       "merge_source": "t7:katarina_21",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "katarina",
-        "row": 106,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "3~t7.katarina": {
       "name": "MICHIKO 3",
@@ -10442,12 +9522,7 @@
       "t7_on_ch": "+6",
       "merge_source": "t7:katarina_24",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "(or WS 3)",
-      "anim_t3": {
-        "bank": "katarina",
-        "row": 195,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "input_note": "(or WS 3)"
     },
     "4~t7.katarina": {
       "name": "MICHIKO 4",
@@ -10482,12 +9557,7 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:katarina_41",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true,
-      "anim_t3": {
-        "bank": "katarina",
-        "row": 199,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "u/f+4~t7.katarina": {
       "name": "MICHIKO u/f+4",
@@ -10521,12 +9591,7 @@
       "t7_on_hit": "-4",
       "t7_on_ch": "-4",
       "merge_source": "t7:katarina_57",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "katarina",
-        "row": 80,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "d/f+2~t7.katarina": {
       "name": "MICHIKO d/f+2",
@@ -10560,12 +9625,7 @@
       "t7_on_hit": "+4",
       "t7_on_ch": "+4",
       "merge_source": "t7:katarina_91",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "katarina",
-        "row": 269,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "1+3~t7.katarina": {
       "name": "Flying Catch",
@@ -10603,12 +9663,7 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "katarina",
-        "row": 288,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "2+4~t7.katarina": {
       "name": "Display of Force",
@@ -10646,12 +9701,7 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "katarina",
-        "row": 289,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "SIDE_L.1+3": {
       "name": "Osprey Sweep",
@@ -10689,12 +9739,7 @@
       "input_note": "Approach from left side... (or 2+4)",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 288,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "SIDE_R.1+3": {
       "name": "Raptor's Wrath",
@@ -10732,12 +9777,7 @@
       "input_note": "Approach from right side... (or 2+4)",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 288,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "BACK.1+3": {
       "name": "Bird of Prey",
@@ -10775,12 +9815,7 @@
       "input_note": "Approach from behind... (or f+1+3)",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-        "row": 288,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     }
   },
   "restored_from_sweep_338": {

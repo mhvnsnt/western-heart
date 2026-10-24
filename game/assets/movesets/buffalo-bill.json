@@ -4994,12 +4994,7 @@
       "t8_input": "1,2,2,1+2",
       "merge_source": "t8:Law-1,2,2,1+2",
       "launch": true,
-      "note": "&lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Balcony Break&lt;/div&gt",
-      "anim_t3": {
-        "bank": "law",
-        "row": 39,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Balcony Break&lt;/div&gt"
     },
     "1,2,2,2": {
       "name": "Left Right Dragon Fist Combo",
@@ -5096,12 +5091,7 @@
       "t8_id": "Law-1+2+3+4",
       "t8_damage": null,
       "t8_input": "1+2+3+4",
-      "merge_source": "t8:Law-1+2+3+4",
-      "anim_t3": {
-        "bank": "law",
-        "row": 39,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "merge_source": "t8:Law-1+2+3+4"
     },
     "1+2+3+4~1": {
       "name": "Blackout",
@@ -5133,8 +5123,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Alternate input:; * uf+1; * b,B+2+3~1,3 &lt;/div&gt",
       "anim_t3": {
         "bank": "law",
-        "row": 39,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 100,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "1+2+3+4,1+2*": {
@@ -5163,12 +5153,7 @@
       "t8_id": "Law-1+2+3+4,1+2*",
       "t8_damage": null,
       "t8_input": "1+2+3+4,1+2*",
-      "merge_source": "t8:Law-1+2+3+4,1+2*",
-      "anim_t3": {
-        "bank": "law",
-        "row": 39,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "merge_source": "t8:Law-1+2+3+4,1+2*"
     },
     "1+2+3+4,1+2*,2": {
       "name": "Cloud Gates",
@@ -5303,12 +5288,7 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-blue homing&quot;; &gt;Homing&lt;",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "law",
-        "row": 266,
-        "match": "same-notation"
-      }
+      "unblockable": true
     },
     "2~t8.law": {
       "name": "Right Jab",
@@ -5405,12 +5385,7 @@
       "t8_input": "2,2,1+2",
       "merge_source": "t8:Law-2,2,1+2",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "law",
-        "row": 39,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "2,2,2": {
       "name": "Rave War Combo",
@@ -5474,12 +5449,7 @@
       "t8_damage": "[12;12]",
       "t8_input": "2+3",
       "merge_source": "t8:Law-2+3",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Burst",
-      "anim_t3": {
-        "bank": "law",
-        "row": 39,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Burst"
     },
     "2+3+4": {
       "name": "Taunt",
@@ -5507,12 +5477,7 @@
       "t8_id": "Law-2+3+4",
       "t8_damage": null,
       "t8_input": "2+3+4",
-      "merge_source": "t8:Law-2+3+4",
-      "anim_t3": {
-        "bank": "law",
-        "row": 39,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "merge_source": "t8:Law-2+3+4"
     },
     "2+4~t8.law": {
       "name": "Hopping Frog",
@@ -5615,8 +5580,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combos from 2nd hit CH; Delay-able&lt;/div&gt",
       "anim_t3": {
         "bank": "law",
-        "row": 39,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 258,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "2,b+2,1,2": {
@@ -5718,8 +5683,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combos from 1st hit CH; Delay-able&lt;/div&gt",
       "anim_t3": {
         "bank": "law",
-        "row": 70,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 214,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "3+4~t8.law": {
@@ -5931,8 +5896,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Airborne combo from 1st CH (+31a (+24)/+44a (+37)); Transition to DSS with F (+7/+12g/+43a (+33)); &lt;/div&gt",
       "anim_t3": {
         "bank": "law",
-        "row": 85,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 228,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "4,u+3": {
@@ -6032,12 +5997,7 @@
       "t8_input": "b+1+2",
       "merge_source": "t8:Law-b+1+2",
       "launch": true,
-      "note": "&lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Balcony Break&lt;/div&gt",
-      "anim_t3": {
-        "bank": "law",
-        "row": 39,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Balcony Break&lt;/div&gt"
     },
     "b+1,2~t8.law": {
       "name": "BUFFALO BILL b+1,2",
@@ -6135,12 +6095,7 @@
       "t8_damage": null,
       "t8_input": "b+1+3",
       "merge_source": "t8:Law-b+1+3",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Transition to DSS on successful parry with F to be +20g (i14? guaranteed followups); &lt;/div&gt",
-      "anim_t3": {
-        "bank": "law",
-        "row": 39,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Transition to DSS on successful parry with F to be +20g (i14? guaranteed followups); &lt;/div&gt"
     },
     "b+2~t8.law": {
       "name": "BUFFALO BILL b+2",
@@ -6206,8 +6161,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
       "anim_t3": {
         "bank": "law",
-        "row": 39,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 250,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "b+2,2": {
@@ -6625,12 +6580,7 @@
       "t8_input": "b,B+2+3",
       "merge_source": "t8:Law-b,B+2+3",
       "knockdown": true,
-      "note": "Can cancel and transition to DSS with b,b",
-      "anim_t3": {
-        "bank": "law",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Can cancel and transition to DSS with b,b"
     },
     "BT.1": {
       "name": "Turning Knuckles",
@@ -6693,12 +6643,7 @@
       "t8_damage": "20",
       "t8_input": "BT.1+2",
       "merge_source": "t8:Law-BT.1+2",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "law",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "BT.2": {
       "name": "BUFFALO BILL BT.2",
@@ -6931,12 +6876,7 @@
       "t8_input": "BT.d+3+4",
       "merge_source": "t8:Law-BT.d+3+4",
       "knockdown": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Transition to FUFA with D; * (-2 oB, +13d oH) &lt;/div&gt",
-      "anim_t3": {
-        "bank": "law",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Transition to FUFA with D; * (-2 oB, +13d oH) &lt;/div&gt"
     },
     "BT.d+4": {
       "name": "Reverse Low",
@@ -7033,12 +6973,7 @@
       "t8_damage": null,
       "t8_input": "d+1+2",
       "merge_source": "t8:Law-d+1+2",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Transition to DSS; Stance moves can be delayed by 51F; Transition to Slide Step r15 with DF &lt;/div&gt",
-      "anim_t3": {
-        "bank": "law",
-        "row": 39,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Transition to DSS; Stance moves can be delayed by 51F; Transition to Slide Step r15 with DF &lt;/div&gt"
     },
     "d+1,3": {
       "name": "Low Backhand &gt; High Kick",
@@ -7455,8 +7390,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "law",
-        "row": 39,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 247,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "d/b+2~t8.law": {
@@ -7524,8 +7459,8 @@
       "note": "Transition to FUFA with D",
       "anim_t3": {
         "bank": "law",
-        "row": 85,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 241,
+        "match": "same-notation"
       }
     },
     "d/b+3": {
@@ -7762,8 +7697,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 1st hit; Interrupt with i8; &lt;/div&gt",
       "anim_t3": {
         "bank": "law",
-        "row": 101,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 242,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "d/f+1,H.2": {
@@ -7968,8 +7903,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
       "anim_t3": {
         "bank": "law",
-        "row": 70,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 170,
+        "match": "same-notation"
       }
     },
     "DSS.1": {
@@ -8578,12 +8513,7 @@
       "t8_damage": "30",
       "t8_input": "FC.UF+3+4",
       "merge_source": "t8:Law-FC.UF+3+4",
-      "launch": true,
-      "anim_t3": {
-        "bank": "law",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "f,F+2": {
       "name": "Dragon&#039;s Poke",
@@ -8749,12 +8679,7 @@
       "t8_input": "f,F+2,f+1+2",
       "merge_source": "t8:Law-f,F+2,f+1+2",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 1st CH with 4F delay; Transition to DSS with F (+6/+32a (+6)/+56a); 4 chip damage on block; Move can be delayed by 17F; Input can be delayed by 19F; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "law",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combo from 1st CH with 4F delay; Transition to DSS with F (+6/+32a (+6)/+56a); 4 chip damage on block; Move can be delayed by 17F; Input can be delayed by 19F; &lt;/div&gt"
     },
     "f,F+3": {
       "name": "Dragon Divide",
@@ -8926,12 +8851,7 @@
       "t8_input": "H.1+2",
       "merge_source": "t8:Law-H.1+2",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
-      "anim_t3": {
-        "bank": "law",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado"
     },
     "H.2+3": {
       "name": "Heavenly Dragon",
@@ -9474,12 +9394,7 @@
         "total": 19
       },
       "launch": true,
-      "note": "&lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Balcony Break&lt;/div&gt",
-      "anim_t3": {
-        "bank": "law",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Balcony Break&lt;/div&gt"
     },
     "u+4~t8.law": {
       "name": "Rising Toe Kick",
@@ -9760,12 +9675,7 @@
       "throw": true,
       "isGrab": true,
       "unblockable": true,
-      "throw_break": "1+2",
-      "anim_t3": {
-        "bank": "law",
-        "row": 266,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1+2"
     },
     "u/f+1+2,1,2,1+2": {
       "name": "Headlock Drop",
@@ -9835,8 +9745,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Combos from 1st hit; Alternate input:; * Ki Charge~1,3; * b,B+2+3~1,3 &lt;/div&gt",
       "anim_t3": {
         "bank": "law",
-        "row": 70,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 62,
+        "match": "same-notation"
       }
     },
     "u/f+2": {
@@ -10108,12 +10018,7 @@
       "t8_damage": null,
       "t8_input": "(While down, facing up).1+2+3+4",
       "merge_source": "t8:Law-(While down, facing up).1+2+3+4",
-      "input_note": "(While down, facing up)",
-      "anim_t3": {
-        "bank": "law",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(While down, facing up)"
     },
     "WS.1": {
       "name": "BUFFALO BILL WS.1",
@@ -10279,12 +10184,7 @@
       "t8_input": "ws3+4",
       "merge_source": "t8:Law-ws3+4",
       "launch": true,
-      "note": "&lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Balcony Break&lt;/div&gt",
-      "anim_t3": {
-        "bank": "law",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Balcony Break&lt;/div&gt"
     },
     "WS.4": {
       "name": "BUFFALO BILL WS.4",
@@ -10351,8 +10251,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
       "anim_t3": {
         "bank": "law",
-        "row": 70,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 214,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "WALL.b,b,u/b~t7.law": {
@@ -11500,12 +11400,7 @@
         ],
         "total": 46
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "law",
-        "row": 39,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "1,2,2,1+2~t7.law.2": {
       "name": "BUFFALO BILL 1,2,2,1+2",
@@ -11548,12 +11443,7 @@
         ],
         "total": 39
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "law",
-        "row": 39,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "1,2,2,1+2~t7.law.3": {
       "name": "BUFFALO BILL 1,2,2,1+2",
@@ -11595,12 +11485,7 @@
         ],
         "total": 31
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "law",
-        "row": 39,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "1,2,2,1+2~t7.law.4": {
       "name": "BUFFALO BILL 1,2,2,1+2",
@@ -11635,12 +11520,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:law_29",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "law",
-        "row": 39,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "1,2,3~t7.law": {
       "name": "Left Right to Knee",
@@ -12333,12 +12213,7 @@
         ],
         "total": 39
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "law",
-        "row": 39,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "2,2,1+2~t7.law.2": {
       "name": "BUFFALO BILL 2,2,1+2",
@@ -12380,12 +12255,7 @@
         ],
         "total": 31
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "law",
-        "row": 39,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "2,2,1+2~t7.law.3": {
       "name": "BUFFALO BILL 2,2,1+2",
@@ -12420,12 +12290,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:law_47",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "law",
-        "row": 39,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "2,b+2,1~t7.law": {
       "name": "BUFFALO BILL 2,b+2,1",
@@ -12555,8 +12420,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "law",
-        "row": 39,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 258,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "2,b+2,1,2~t7.law": {
@@ -12913,8 +12778,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "law",
-        "row": 70,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 214,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "3,4~t7.law": {
@@ -13259,8 +13124,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "law",
-        "row": 85,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 228,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "4,u+3~t7.law": {
@@ -13567,8 +13432,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "law",
-        "row": 85,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 228,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "u/f+1~t7.law": {
@@ -13652,8 +13517,8 @@
       },
       "anim_t3": {
         "bank": "law",
-        "row": 70,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 62,
+        "match": "same-notation"
       }
     },
     "u/f+1,3~t7.law.2": {
@@ -13691,8 +13556,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "law",
-        "row": 70,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 62,
+        "match": "same-notation"
       }
     },
     "u/f+3~t7.law": {
@@ -13771,8 +13636,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "law",
-        "row": 85,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 228,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "u/f+3,4~t7.law": {
@@ -14370,12 +14235,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:law_93",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "law",
-        "row": 39,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "f,F+2~t7.law": {
       "name": "BUFFALO BILL f,F+2",
@@ -15881,8 +15741,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "law",
-        "row": 70,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 170,
+        "match": "same-notation"
       }
     },
     "d/f+4,3~t7.law.2": {
@@ -15921,8 +15781,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "law",
-        "row": 70,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 170,
+        "match": "same-notation"
       }
     },
     "d/f+3+4~t7.law": {
@@ -16502,8 +16362,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "law",
-        "row": 39,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 100,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "d/b+1+2,1,3": {
@@ -16878,12 +16738,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:law_152",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "law",
-        "row": 134,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "b+1~t7.law": {
       "name": "BUFFALO BILL b+1",
@@ -18564,12 +18419,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:law_192",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "law",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "FC.U/B+4": {
       "name": "BUFFALO BILL FC.U/B+4",
@@ -18739,11 +18589,6 @@
           18
         ],
         "total": 32
-      },
-      "anim_t3": {
-        "bank": "law",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "SS.3+4~t7.law.2": {
@@ -18779,12 +18624,7 @@
       "t7_on_ch": "S!",
       "merge_source": "t7:law_197",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "(second hit only)",
-      "anim_t3": {
-        "bank": "law",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(second hit only)"
     },
     "f,f,F": {
       "name": "BUFFALO BILL f,f,F",
@@ -18943,12 +18783,7 @@
       "merge_source": "t7:law_201",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "WR+",
-      "anim_t3": {
-        "bank": "law",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "WR+"
     },
     "WS.1~t7.law": {
       "name": "BUFFALO BILL WS.1",
@@ -19238,8 +19073,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "law",
-        "row": 70,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 214,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "d/f+1,2,2,1,3,3,3,4,3,4": {
@@ -19473,12 +19308,7 @@
       "merge_source": "t7:law_214",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Face Up, Feet Towards+",
-      "anim_t3": {
-        "bank": "law",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "Face Up, Feet Towards+"
     },
     "t7.law_215": {
       "name": "BUFFALO BILL Face Up, Feet Towards, Roll Forward+1+2",
@@ -19846,8 +19676,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "law",
-        "row": 85,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 241,
+        "match": "same-notation"
       }
     },
     "d/b+2,4~t7.law.2": {
@@ -19886,8 +19716,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "law",
-        "row": 85,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 241,
+        "match": "same-notation"
       }
     },
     "b+3,B": {
@@ -20332,12 +20162,7 @@
       "t7_on_hit": "+16",
       "t7_on_ch": "+16",
       "merge_source": "t7:law_235",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "law",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "BT.d+4~t7.law": {
       "name": "Reverse Low",
@@ -20410,12 +20235,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:law_237",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "law",
-        "row": 39,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "f,f,f+3:1+2": {
       "name": "BUFFALO BILL f,f,f+3:1+2",
@@ -20450,12 +20270,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:law_238",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "(or WR 3:1+2)",
-      "anim_t3": {
-        "bank": "law",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(or WR 3:1+2)"
     },
     "1+2+3+4,1": {
       "name": "BUFFALO BILL 1+2+3+4,1",
@@ -20492,8 +20307,8 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "anim_t3": {
         "bank": "law",
-        "row": 39,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 100,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "1+2+3+4,1,3": {
@@ -20606,12 +20421,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:law_242",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "law",
-        "row": 39,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "1+2+3+4,1+2*,2~t7.law": {
       "name": "BUFFALO BILL 1+2+3+4,1+2*,2",
@@ -20685,12 +20495,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:law_244",
       "recovery_from": "same-notation T8 recv",
-      "note": "Transitions take 20f.",
-      "anim_t3": {
-        "bank": "law",
-        "row": 39,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Transitions take 20f."
     },
     "1,2,b,f": {
       "name": "BUFFALO BILL 1,2,b,f",
@@ -21522,8 +21327,8 @@
       "input_note": "(or TFS)",
       "anim_t3": {
         "bank": "law",
-        "row": 39,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 100,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "DSS.1,f+1~t7.law": {
@@ -21892,12 +21697,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:law_272",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "law",
-        "row": 39,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "WS.3~t7.law": {
       "name": "Side Kick",
@@ -22284,12 +22084,7 @@
       "merge_source": "t7:law_282",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Rage)",
-      "anim_t3": {
-        "bank": "law",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Rage)"
     },
     "R.d/b+4,3+4": {
       "name": "Rage Drive",
@@ -22332,12 +22127,7 @@
         "total": 42
       },
       "knockdown": true,
-      "input_note": "(During Rage)",
-      "anim_t3": {
-        "bank": "law",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Rage)"
     },
     "R.d/b+4,3+4~t7.law": {
       "name": "BUFFALO BILL R.d/b+4,3+4",
@@ -22373,12 +22163,7 @@
       "merge_source": "t7:law_284",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Rage)",
-      "anim_t3": {
-        "bank": "law",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Rage)"
     },
     "1+3~t7.law": {
       "name": "Dragon's Fire",
@@ -22416,12 +22201,7 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "law",
-        "row": 266,
-        "match": "same-notation"
-      }
+      "unblockable": true
     },
     "2+4~t7.law": {
       "name": "Hopping Frog",
@@ -22674,12 +22454,7 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "law",
-        "row": 266,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "d/f+1+2,1,2,1+2": {
       "name": "Headlock Drop",
@@ -23063,8 +22838,8 @@
       "input_note": "(During Tackle)",
       "anim_t3": {
         "bank": "law",
-        "row": 39,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 100,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "TACKLE.1,1,1": {
@@ -23112,8 +22887,8 @@
       "input_note": "(During Tackle)",
       "anim_t3": {
         "bank": "law",
-        "row": 39,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 100,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "TACKLE.1,1,1,1": {
@@ -23162,8 +22937,8 @@
       "input_note": "(During Tackle)",
       "anim_t3": {
         "bank": "law",
-        "row": 39,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 100,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "REV.b+1+3": {
@@ -23199,12 +22974,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:law_303",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "Time with enemy attack... (or b+2+4)",
-      "anim_t3": {
-        "bank": "law",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "Time with enemy attack... (or b+2+4)"
     },
     "u+1+2~t3.forestlaw": {
       "name": "FORESTLAW u+1+2 (T3 forestlaw r18)",

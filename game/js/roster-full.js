@@ -142,7 +142,10 @@ export const FULL_ROSTER = [
     colors: { suit: 0x1a1a1a, trim: 0xff0000 }, style: 'Satsui no Hado', archetype: 'Shoto' },
   // CAPE JONES is the display name (owner 2026-10-23: "Start calling cyborg x as cape Jones
   // but leave cyborg x in the deep canon for him"). 'Cyborg X' stays as his deep-canon identity.
-  { id: 'cyborgx', name: 'CAPE JONES', title: 'GYOU Splinter', base: 'Alisa', moveset: 'gunjack', model: 'cape-jones', tintStrength: 0.6,
+  { id: 'cyborgx', name: 'CAPE JONES', title: 'GYOU Splinter', base: 'Alisa', moveset: 'gunjack', model: 'cyborg-x', tintStrength: 0.6,
+    // owner pt128u 2026-10-23: always the rig with the most bones -> cyborg-x.glb (160 joints incl. full
+    // Mixamo-named core) over cape-jones.glb (49). Stance = CMU 13_17 boxing guard (CMU license, commercial-safe).
+    stanceClip: 'assets/anim/oss/cyborgx/stance.glb',
     colors: { suit: 0xcccccc, trim: 0x00ffcc }, style: 'Robot Combat', archetype: 'Zoner' },
   { id: 'michiko', name: 'MICHIKO', title: 'Savate Queen', base: 'Katarina', moveset: 'demonio', model: 'michiko', tintStrength: 0.6,
     colors: { suit: 0x8a1a4a, trim: 0xff6b9d }, style: 'Savate', archetype: 'Rushdown' },

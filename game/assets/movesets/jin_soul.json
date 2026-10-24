@@ -2044,12 +2044,7 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "The blood ends with me. Devil-gene burst punch thrown like an exorcism.",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 175,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "The blood ends with me. Devil-gene burst punch thrown like an exorcism."
     },
     "u+P": {
       "name": "Red-Eye Warning [WH SIGNATURE]",
@@ -2070,12 +2065,7 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "When the Gene stirs his eyes go red and the arena goes quiet - out of respect for the fight he's fighting.",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 175,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "When the Gene stirs his eyes go red and the arena goes quiet - out of respect for the fight he's fighting."
     },
     "1+2": {
       "name": "Blood Ends With Me [WH SIGNATURE]",
@@ -2095,12 +2085,7 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "The blood ends with me. Devil-gene burst punch thrown like an exorcism.",
-      "input_remapped_from": "S",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 265,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "input_remapped_from": "S"
     },
     "1+2__main": {
       "name": "JIN 1+2 (T3 yoshimitsu r265)",
@@ -2140,12 +2125,7 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "When the Gene stirs his eyes go red and the arena goes quiet - out of respect for the fight he's fighting.",
-      "input_remapped_from": "u+P",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 208,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "input_remapped_from": "u+P"
     },
     "u+1__main": {
       "name": "JIN u+1 (T3 yoshimitsu r208)",
@@ -4385,8 +4365,8 @@
       "note": "Recovers 2f faster on hit or block (t27 r17)",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map exact (anim-fix 2026-10-23)"
+        "row": 63,
+        "match": "class-verified remap (anim-fix 2026-10-23)"
       }
     },
     "1,1": {
@@ -4486,12 +4466,7 @@
       "t8_input": "1+2+3",
       "merge_source": "t8:Yoshimitsu-1+2+3",
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Weapon&lt;/di",
-      "t8_alias": "1SS.1+2+3",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "t8_alias": "1SS.1+2+3"
     },
     "1+2+3+4~t8.yoshimitsu": {
       "name": "Ki Charge",
@@ -4633,12 +4608,7 @@
       "t8_input": "1+4",
       "merge_source": "t8:Yoshimitsu-1+4",
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Weapon&lt;/di",
-      "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* 1SS.1+4\n* Flash\n&lt;/div&gt;",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* 1SS.1+4\n* Flash\n&lt;/div&gt;"
     },
     "1,NSS.1": {
       "name": "JIN 1,NSS.1",
@@ -4806,12 +4776,7 @@
       "t8_damage": "[12;12]",
       "t8_input": "2+3",
       "merge_source": "t8:Yoshimitsu-2+3",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Burst",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Burst"
     },
     "2,3": {
       "name": "PK Combo",
@@ -5091,12 +5056,7 @@
       "t8_input": "3,2,1+2",
       "merge_source": "t8:Yoshimitsu-3,2,1+2",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "3,2,NSS.1+2": {
       "name": "Enma&#039;s Soul Blade",
@@ -5127,12 +5087,7 @@
       "merge_source": "t8:Yoshimitsu-3,2,NSS.1+2",
       "launch": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "t8_alias": "NSS.3,2,1+2",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "t8_alias": "NSS.3,2,1+2"
     },
     "3+4~t8.yoshimitsu": {
       "name": "Meditation",
@@ -5482,8 +5437,8 @@
       "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* 1SS.4,4,2,2,1~1\n* 4,4,2,2,1SS.1~1\n&lt;/div&gt;",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 227,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "4,4,2,2,NSS.1": {
@@ -5553,8 +5508,8 @@
       "t8_alias": "NSS.4,4,2,2,1~1",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 237,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "4,4,4": {
@@ -5891,12 +5846,7 @@
       "t8_damage": null,
       "t8_input": "b+1+2",
       "merge_source": "t8:Yoshimitsu-b+1+2",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Cannot block during transition; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Cannot block during transition; &lt;/div&gt"
     },
     "b+2": {
       "name": "JIN b+2",
@@ -5964,8 +5914,8 @@
       "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* 1SS.b+2,1\n* b+2,1SS.1\n&lt;/div&gt;",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 227,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "b+2,2": {
@@ -6380,12 +6330,7 @@
       "merge_source": "t8:Yoshimitsu-b,B+1+4",
       "launch": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Weapon&lt;/di",
-      "t8_alias": "1SS.b,B+1+4",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "t8_alias": "1SS.b,B+1+4"
     },
     "b,B+1+4,B": {
       "name": "Thunder Blade Feint to Soul Stealer",
@@ -6696,8 +6641,8 @@
       "t8_alias": "1SS.BT.d+1",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 224,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "d+1": {
@@ -6797,12 +6742,7 @@
       "t8_damage": null,
       "t8_input": "d+1+2",
       "merge_source": "t8:Yoshimitsu-d+1+2",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Unavailable in NSS; Cancel to r38 standing with db (FLE.db)&lt;/div&gt",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Unavailable in NSS; Cancel to r38 standing with db (FLE.db)&lt;/div&gt"
     },
     "t8.Yoshimitsu-d+1*(2),n": {
       "name": "Death Slash (2)",
@@ -7251,8 +7191,8 @@
       "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* 1SS.d+2,1\n* d+2,1SS.1\n&lt;/div&gt;",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 227,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "d+2,2": {
@@ -7322,8 +7262,8 @@
       "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* 1SS.d+2,2,1\n* d+2,2,1SS.1\n&lt;/div&gt;",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 237,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "d+2,2,2": {
@@ -7428,8 +7368,8 @@
       "t8_alias": "NSS.d+2,2,1",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 224,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "d+2,2,NSS.d+1": {
@@ -7564,12 +7504,7 @@
       "t8_damage": null,
       "t8_input": "d+3+4",
       "merge_source": "t8:Yoshimitsu-d+3+4",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; All stance moves are bufferable; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; All stance moves are bufferable; &lt;/div&gt"
     },
     "d+4": {
       "name": "Toe Check",
@@ -7699,12 +7634,7 @@
       "t8_damage": null,
       "t8_input": "DB+1+2",
       "merge_source": "t8:Yoshimitsu-DB+1+2",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Continues as long as DB is held; Transition to r25 releasing db; Actionable after 10f, mashing delays follow-ups; Follow-ups are fastest with inputs timed on frame 11; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 146,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Continues as long as DB is held; Transition to r25 releasing db; Actionable after 10f, mashing delays follow-ups; Follow-ups are fastest with inputs timed on frame 11; &lt;/div&gt"
     },
     "d/b+2~t8.yoshimitsu": {
       "name": "JIN d/b+2",
@@ -8244,8 +8174,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 244,
+        "match": "same-notation"
       }
     },
     "d/f+1,2,1": {
@@ -8383,12 +8313,7 @@
       "merge_source": "t8:Yoshimitsu-df+1+4",
       "launch": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Weapon&lt;/di",
-      "t8_alias": "1SS.df+1+4",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "t8_alias": "1SS.df+1+4"
     },
     "d/f+1,4": {
       "name": "Autumn Leaves",
@@ -8487,12 +8412,7 @@
       "t8_input": "df+2+3",
       "merge_source": "t8:Yoshimitsu-df+2+3",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "d/f+3~t8.yoshimitsu": {
       "name": "JIN d/f+3",
@@ -8694,12 +8614,7 @@
       "t8_id": "Yoshimitsu-DGF.1+2",
       "t8_damage": null,
       "t8_input": "DGF.1+2",
-      "merge_source": "t8:Yoshimitsu-DGF.1+2",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "merge_source": "t8:Yoshimitsu-DGF.1+2"
     },
     "DGF.2": {
       "name": "Dragonfly Fist",
@@ -8908,12 +8823,7 @@
       "t8_id": "Yoshimitsu-DGF.d+3+4",
       "t8_damage": null,
       "t8_input": "DGF.d+3+4",
-      "merge_source": "t8:Yoshimitsu-DGF.d+3+4",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "merge_source": "t8:Yoshimitsu-DGF.d+3+4"
     },
     "DGF.f": {
       "name": "Dragonfly Forward",
@@ -8985,12 +8895,7 @@
         "total": 36
       },
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-blue homing&quot;; &gt;Homing&lt;",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-blue homing&quot;; &gt;Homing&lt;"
     },
     "DGF.f+2": {
       "name": "Dragonfly Slash",
@@ -9164,8 +9069,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Input can be delayed 2f; Move cannot be delayed; Leads to db+2 extensions; &lt;/div&gt",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 175,
+        "match": "same-notation"
       }
     },
     "f+2,NSS.1": {
@@ -9417,12 +9322,7 @@
       "t8_damage": "22",
       "t8_input": "f,F+1+2",
       "merge_source": "t8:Yoshimitsu-f,F+1+2",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo"
     },
     "f,F+1+4": {
       "name": "Suicide",
@@ -9452,12 +9352,7 @@
       "t8_input": "f,F+1+4",
       "merge_source": "t8:Yoshimitsu-f,F+1+4",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Weapon&lt;/di",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Weapon&lt;/di"
     },
     "f,F+1+4,F": {
       "name": "Double Suicide",
@@ -9659,12 +9554,7 @@
       "t8_damage": "15",
       "t8_input": "f,F+3+4",
       "merge_source": "t8:Yoshimitsu-f,F+3+4",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo"
     },
     "f,F+3+4,1+2": {
       "name": "JIN f,F+3+4,1+2",
@@ -9694,12 +9584,7 @@
       "t8_input": "f,F+3+4,1+2",
       "merge_source": "t8:Yoshimitsu-f,F+3+4,1+2",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "f,F+3+4,1+2,3+4": {
       "name": "Solar Kick Shark Attack",
@@ -9730,12 +9615,7 @@
       "merge_source": "t8:Yoshimitsu-f,F+3+4,1+2,3+4",
       "launch": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
-      "t8_alias": "Shark Attack",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "t8_alias": "Shark Attack"
     },
     "f,F+4": {
       "name": "Fubuki",
@@ -9868,12 +9748,7 @@
       "t8_input": "FLE.1+2",
       "merge_source": "t8:Yoshimitsu-FLE.1+2",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado"
     },
     "FLE.2": {
       "name": "Flea &gt; Sliding Headbutt",
@@ -9972,12 +9847,7 @@
       "t8_input": "FLE.3+4",
       "merge_source": "t8:Yoshimitsu-FLE.3+4",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado"
     },
     "FLE.d": {
       "name": "Flea Digger",
@@ -10039,12 +9909,7 @@
       "t8_id": "Yoshimitsu-FLE.d+3+4",
       "t8_damage": null,
       "t8_input": "FLE.d+3+4",
-      "merge_source": "t8:Yoshimitsu-FLE.d+3+4",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "merge_source": "t8:Yoshimitsu-FLE.d+3+4"
     },
     "FLE.d/b": {
       "name": "Flea Cancel",
@@ -10286,12 +10151,7 @@
       "t8_id": "Yoshimitsu-FLE.u+1+2",
       "t8_damage": null,
       "t8_input": "FLE.u+1+2",
-      "merge_source": "t8:Yoshimitsu-FLE.u+1+2",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "merge_source": "t8:Yoshimitsu-FLE.u+1+2"
     },
     "FLE.u+3+4": {
       "name": "Flea &gt; Dragonfly Feint",
@@ -10321,12 +10181,7 @@
       "t8_input": "FLE.u+3+4",
       "merge_source": "t8:Yoshimitsu-FLE.u+3+4",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "FLE.u/f": {
       "name": "Jumping Flea",
@@ -10395,8 +10250,8 @@
       "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* 1SS.f,n,d,df+1\n* CD+1\n&lt;/div&gt;",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 224,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "f,n,d,d/f+2": {
@@ -10461,12 +10316,7 @@
       "t8_id": "Yoshimitsu-FUFT.d+3+4",
       "t8_damage": null,
       "t8_input": "FUFT.d+3+4",
-      "merge_source": "t8:Yoshimitsu-FUFT.d+3+4",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "merge_source": "t8:Yoshimitsu-FUFT.d+3+4"
     },
     "H.2+3": {
       "name": "Divine Sword Kagekiyo",
@@ -10496,12 +10346,7 @@
       "t8_input": "H.2+3",
       "merge_source": "t8:Yoshimitsu-H.2+3",
       "knockdown": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Smash",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Smash"
     },
     "H.DGF.1": {
       "name": "Dragonfly Blade (Heat)",
@@ -10574,12 +10419,7 @@
         "total": 40
       },
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-blue homing&quot;; &gt;Homing&lt;",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-blue homing&quot;; &gt;Homing&lt;"
     },
     "hFC.1": {
       "name": "JIN hFC.1",
@@ -10845,12 +10685,7 @@
       "t8_damage": null,
       "t8_input": "IND.1+2",
       "merge_source": "t8:Yoshimitsu-IND.1+2",
-      "note": "Unavailable in NSS",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Unavailable in NSS"
     },
     "IND.2": {
       "name": "Indian Stance Stone Fists",
@@ -10917,8 +10752,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 200,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 275,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "IND.3,3+4": {
@@ -10949,12 +10784,7 @@
       "t8_input": "IND.3,3+4",
       "merge_source": "t8:Yoshimitsu-IND.3,3+4",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado"
     },
     "IND.3+4": {
       "name": "Indian Tobi Ushiwaka",
@@ -10990,12 +10820,7 @@
         ],
         "total": 28
       },
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-blue homing&quot;; &gt;Homing&lt;",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-blue homing&quot;; &gt;Homing&lt;"
     },
     "IND.4": {
       "name": "Indian Stance Knee Cap",
@@ -11059,12 +10884,7 @@
       "t8_damage": null,
       "t8_input": "IND.D+3+4*",
       "merge_source": "t8:Yoshimitsu-IND.D+3+4*",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Allows 8-way directional movement in IND; Continues as long as 3+4 is held; Holding a directional input and pressing 1, 2 or 1+2 will play different voicelines; Yoshimitsu must re",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Allows 8-way directional movement in IND; Continues as long as 3+4 is held; Holding a directional input and pressing 1, 2 or 1+2 will play different voicelines; Yoshimitsu must re"
     },
     "IND.f": {
       "name": "Indian Stance Vacuum Dance",
@@ -11195,12 +11015,7 @@
       "t8_damage": null,
       "t8_input": "IND.u+1+2",
       "merge_source": "t8:Yoshimitsu-IND.u+1+2",
-      "note": "Unavailable in NSS",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Unavailable in NSS"
     },
     "KIN.1": {
       "name": "JIN KIN.1",
@@ -11232,8 +11047,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 224,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "KIN.1,1": {
@@ -11315,12 +11130,7 @@
         "total": 36
       },
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo"
     },
     "KIN.1+4": {
       "name": "Kincho Soul Stealer",
@@ -11350,12 +11160,7 @@
       "t8_input": "KIN.1+4",
       "merge_source": "t8:Yoshimitsu-KIN.1+4",
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Weapon&lt;/di",
-      "t8_alias": "1SS.KIN.1+4",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "t8_alias": "1SS.KIN.1+4"
     },
     "KIN.1,NSS.1": {
       "name": "JIN KIN.1,NSS.1",
@@ -11464,12 +11269,7 @@
       "merge_source": "t8:Yoshimitsu-KIN.2,1+2",
       "launch": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* 1SS.KIN.2,1+2\n* KIN.2,1SS.1+2\n&lt;/div&gt;",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* 1SS.KIN.2,1+2\n* KIN.2,1SS.1+2\n&lt;/div&gt;"
     },
     "KIN.2,1+2*": {
       "name": "Tenshu Kuzushi (Hold)",
@@ -11500,12 +11300,7 @@
       "merge_source": "t8:Yoshimitsu-KIN.2,1+2*",
       "launch": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* 1SS.KIN.2,1+2*\n* KIN.2,1SS.1+2*\n&lt;/div&gt;",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* 1SS.KIN.2,1+2*\n* KIN.2,1SS.1+2*\n&lt;/div&gt;"
     },
     "KIN.2,NSS.1+2": {
       "name": "JIN KIN.2,NSS.1+2",
@@ -11536,12 +11331,7 @@
       "merge_source": "t8:Yoshimitsu-KIN.2,NSS.1+2",
       "launch": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* NSS.KIN.2,1+2\n* KIN.NSS.2,1+2\n&lt;/div&gt;",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* NSS.KIN.2,1+2\n* KIN.NSS.2,1+2\n&lt;/div&gt;"
     },
     "KIN.2,NSS.1+2*": {
       "name": "JIN KIN.2,NSS.1+2*",
@@ -11572,12 +11362,7 @@
       "merge_source": "t8:Yoshimitsu-KIN.2,NSS.1+2*",
       "launch": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* NSS.KIN.2,1+2*\n* KIN.NSS.2,1+2*\n&lt;/div&gt;",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* NSS.KIN.2,1+2*\n* KIN.NSS.2,1+2*\n&lt;/div&gt;"
     },
     "KIN.3": {
       "name": "Shibakari",
@@ -11676,12 +11461,7 @@
       "t8_input": "KIN.b+1+2",
       "merge_source": "t8:Yoshimitsu-KIN.b+1+2",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Weapon&lt;/di",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Weapon&lt;/di"
     },
     "KIN.b+2": {
       "name": "JIN KIN.b+2",
@@ -11861,8 +11641,8 @@
       "t8_alias": "1SS.KIN.f+1",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 224,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "KIN.f+1*": {
@@ -11908,8 +11688,8 @@
       "t8_alias": "1SS.KIN.f+1*",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 224,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "KIN.f+1+2": {
@@ -11941,12 +11721,7 @@
       "merge_source": "t8:Yoshimitsu-KIN.f+1+2",
       "launch": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Weapon&lt;/di",
-      "t8_alias": "1SS.KIN.f+1+2",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "t8_alias": "1SS.KIN.f+1+2"
     },
     "KIN.f+2": {
       "name": "Ganto",
@@ -12011,12 +11786,7 @@
       "t8_input": "KIN.u+1+2",
       "merge_source": "t8:Yoshimitsu-KIN.u+1+2",
       "note": "Can be counterhit on frames 1~19",
-      "t8_alias": "1SS.KIN.u+1+2",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "t8_alias": "1SS.KIN.u+1+2"
     },
     "SIDE_L.1+3": {
       "name": "Wheels of Hell",
@@ -12118,12 +11888,7 @@
       "t8_input": "MED.1+2",
       "merge_source": "t8:Yoshimitsu-MED.1+2",
       "launch": true,
-      "note": "Recovers 12 base health",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Recovers 12 base health"
     },
     "MED.1+4": {
       "name": "Meditation Backturned Flash",
@@ -12153,12 +11918,7 @@
       "t8_input": "MED.1+4",
       "merge_source": "t8:Yoshimitsu-MED.1+4",
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Weapon&lt;/di",
-      "t8_alias": "1SS.MED.1+4",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "t8_alias": "1SS.MED.1+4"
     },
     "MED.3": {
       "name": "Back Handspring",
@@ -12228,12 +11988,7 @@
       "t8_id": "Yoshimitsu-MED.3+4",
       "t8_damage": null,
       "t8_input": "MED.3+4",
-      "merge_source": "t8:Yoshimitsu-MED.3+4",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "merge_source": "t8:Yoshimitsu-MED.3+4"
     },
     "MED.d": {
       "name": "JIN MED.d",
@@ -12365,12 +12120,7 @@
       "t8_input": "NSS.1+2+3",
       "merge_source": "t8:Yoshimitsu-NSS.1+2+3",
       "knockdown": true,
-      "note": "&lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Balcony Break&lt;/div&gt",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Balcony Break&lt;/div&gt"
     },
     "NSS.1+4": {
       "name": "Soul Stealer",
@@ -12401,12 +12151,7 @@
       "merge_source": "t8:Yoshimitsu-NSS.1+4",
       "launch": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange sat&quot;; &gt;Strong Aeri",
-      "t8_alias": "NSS Flash",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "t8_alias": "NSS Flash"
     },
     "NSS.b+1+2": {
       "name": "Battou Kakugo",
@@ -12435,12 +12180,7 @@
       "t8_damage": null,
       "t8_input": "NSS.b+1+2",
       "merge_source": "t8:Yoshimitsu-NSS.b+1+2",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Cannot block during transition; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Cannot block during transition; &lt;/div&gt"
     },
     "NSS.b,B+1+4": {
       "name": "Thunder Palm Strike",
@@ -12470,12 +12210,7 @@
       "t8_input": "NSS.b,B+1+4",
       "merge_source": "t8:Yoshimitsu-NSS.b,B+1+4",
       "launch": true,
-      "note": "&lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Balcony Break&lt;/div&gt",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Balcony Break&lt;/div&gt"
     },
     "NSS.b,B+1+4,B": {
       "name": "Thunder Palm Strike Feint to Soul Stealer",
@@ -12608,12 +12343,7 @@
       "t8_id": "Yoshimitsu-NSS.d+1+2",
       "t8_damage": null,
       "t8_input": "NSS.d+1+2",
-      "merge_source": "t8:Yoshimitsu-NSS.d+1+2",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "merge_source": "t8:Yoshimitsu-NSS.d+1+2"
     },
     "NSS.d+1+4": {
       "name": "Unfinished Business",
@@ -12642,12 +12372,7 @@
       "t8_damage": null,
       "t8_input": "NSS.d+1+4",
       "merge_source": "t8:Yoshimitsu-NSS.d+1+4",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Yoshimitsu is invisible on frames 50~64, but can still be hit; Transition to 1SS.IND with D; Transition to DGF with U; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Yoshimitsu is invisible on frames 50~64, but can still be hit; Transition to 1SS.IND with D; Transition to DGF with U; &lt;/div&gt"
     },
     "NSS.d/b+1": {
       "name": "Manji Shagapan",
@@ -12711,12 +12436,7 @@
       "t8_input": "NSS.df+1+4",
       "merge_source": "t8:Yoshimitsu-NSS.df+1+4",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Enter KIN r37 with 1+2; Can be buffered; Can be performed in FC; Power up input NSS.f,n,d,df+1; Replaced by 1SS.df+1+4 when performed in BT&lt;/div&gt",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Enter KIN r37 with 1+2; Can be buffered; Can be performed in FC; Power up input NSS.f,n,d,df+1; Replaced by 1SS.df+1+4 when performed in BT&lt;/div&gt"
     },
     "NSS.f+1+2": {
       "name": "Nine-Headed Dragon",
@@ -12746,12 +12466,7 @@
       "t8_input": "NSS.f+1+2",
       "merge_source": "t8:Yoshimitsu-NSS.f+1+2",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Engag",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Engag"
     },
     "NSS.f+3+4": {
       "name": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* Bull Rush\n* Chariot Tackle\n&lt;/div&gt;",
@@ -12781,12 +12496,7 @@
       "t8_input": "NSS.f+3+4",
       "merge_source": "t8:Yoshimitsu-NSS.f+3+4",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "NSS.FC.D/F+1": {
       "name": "JIN NSS.FC.D/F+1",
@@ -12926,8 +12636,8 @@
       "t8_alias": "NSS.CD+1",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 224,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "NSS.IND.1": {
@@ -12995,12 +12705,7 @@
       "merge_source": "t8:Yoshimitsu-NSS.KIN.1+4",
       "launch": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange sat&quot;; &gt;Strong Aeri",
-      "t8_alias": "KIN.NSS.1+4",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "t8_alias": "KIN.NSS.1+4"
     },
     "NSS.KIN.d+1": {
       "name": "JIN NSS.KIN.d+1",
@@ -13078,8 +12783,8 @@
       "t8_alias": "KIN.NSS.f+1",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 224,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "NSS.KIN.f+1*": {
@@ -13125,8 +12830,8 @@
       "t8_alias": "KIN.NSS.f+1*",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 224,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "NSS.KIN.f+1+2": {
@@ -13157,12 +12862,7 @@
       "t8_input": "NSS.KIN.f+1+2",
       "merge_source": "t8:Yoshimitsu-NSS.KIN.f+1+2",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Weapon&lt;/di",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Weapon&lt;/di"
     },
     "NSS.qcf+1": {
       "name": "Moonsault",
@@ -13262,12 +12962,7 @@
       "t8_damage": "18",
       "t8_input": "NSS.u+1+2",
       "merge_source": "t8:Yoshimitsu-NSS.u+1+2",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo"
     },
     "NSS.u/b+1": {
       "name": "JIN NSS.u/b+1",
@@ -13331,12 +13026,7 @@
       "t8_input": "NSS.ub+1+2",
       "merge_source": "t8:Yoshimitsu-NSS.ub+1+2",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "NSS.u/b+1+3": {
       "name": "Spinning Finger Stab",
@@ -13365,12 +13055,7 @@
       "t8_damage": "50",
       "t8_input": "NSS.ub+1+3",
       "merge_source": "t8:Yoshimitsu-NSS.ub+1+3",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Punishable on close hit with FUFT.3&lt;/div&gt",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Punishable on close hit with FUFT.3&lt;/div&gt"
     },
     "NSS.u/b+1+3,1+2": {
       "name": "Face Slapper",
@@ -13400,12 +13085,7 @@
       "t8_input": "NSS.ub+1+3,1+2",
       "merge_source": "t8:Yoshimitsu-NSS.ub+1+3,1+2",
       "launch": true,
-      "note": "&lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Floor Break&lt;/div&gt",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Floor Break&lt;/div&gt"
     },
     "NSS.u/b+1+3,n,1": {
       "name": "Index Poke Windmill",
@@ -13438,8 +13118,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 237,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "NSS.u/f+1+3": {
@@ -13468,12 +13148,7 @@
       "t8_id": "Yoshimitsu-NSS.uf+1+3",
       "t8_damage": null,
       "t8_input": "NSS.uf+1+3",
-      "merge_source": "t8:Yoshimitsu-NSS.uf+1+3",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "merge_source": "t8:Yoshimitsu-NSS.uf+1+3"
     },
     "qcb,f+2": {
       "name": "Soul Possession",
@@ -13703,8 +13378,8 @@
       "note": "Sidestep adds minimum 9f, effective startup i26~27",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 224,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "SS.2": {
@@ -13841,12 +13516,7 @@
       "t8_damage": null,
       "t8_input": "u+1+2",
       "merge_source": "t8:Yoshimitsu-u+1+2",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Cancel to r12 with db_d_df (js1~10); Unavailable in NSS; Actionable after 15 frames, except when using DGF.2 which can be performed after 10 frames; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Cancel to r12 with db_d_df (js1~10); Unavailable in NSS; Actionable after 15 frames, except when using DGF.2 which can be performed after 10 frames; &lt;/div&gt"
     },
     "u+3+4": {
       "name": "Guillotine Crow Kick",
@@ -13989,12 +13659,7 @@
       "t8_input": "ub+1+3",
       "merge_source": "t8:Yoshimitsu-ub+1+3",
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Weapon&lt;/di",
-      "t8_alias": "1SS.ub+1+3",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "t8_alias": "1SS.ub+1+3"
     },
     "u/b+1+3,1+2": {
       "name": "Face Splitter",
@@ -14025,12 +13690,7 @@
       "merge_source": "t8:Yoshimitsu-ub+1+3,1+2",
       "launch": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo",
-      "t8_alias": "1SS.ub+1+3,1+2",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "t8_alias": "1SS.ub+1+3,1+2"
     },
     "u/b+1+3,n,1": {
       "name": "Sword Poke Windmill",
@@ -14064,8 +13724,8 @@
       "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* 1SS.ub+1+3,n,1\n* ub+1+3,1SS.n,1\n&lt;/div&gt;",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 227,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "u/b+4~t8.yoshimitsu": {
@@ -14203,12 +13863,7 @@
       "t8_alias": "Skittles",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 313,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "u/f+1+3": {
       "name": "Death Copter",
@@ -14239,12 +13894,7 @@
       "merge_source": "t8:Yoshimitsu-uf+1+3",
       "launch": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo",
-      "t8_alias": "1SS.uf+1+3",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "t8_alias": "1SS.uf+1+3"
     },
     "u/f+1+3,b": {
       "name": "Death Copter Trick",
@@ -14554,12 +14204,7 @@
       "t8_input": "uf+3+4,1,3+4",
       "merge_source": "t8:Yoshimitsu-uf+3+4,1,3+4",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo"
     },
     "u/f+3+4,1,4": {
       "name": "Poison Wind Silver Fist",
@@ -14706,8 +14351,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow floor-break&quot;; &gt;Flo",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 73,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 275,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "u/f+3+4,3+4": {
@@ -14738,12 +14383,7 @@
       "t8_input": "uf+3+4,3+4",
       "merge_source": "t8:Yoshimitsu-uf+3+4,3+4",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado"
     },
     "u/f+4~t8.yoshimitsu": {
       "name": "Avoiding the Puddle",
@@ -15155,8 +14795,8 @@
       "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* 1SS.ws2,1\n* ws2,1SS.1\n&lt;/div&gt;",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 227,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "WS.2,NSS.1": {
@@ -15401,8 +15041,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map exact (anim-fix 2026-10-23)"
+        "row": 63,
+        "match": "class-verified remap (anim-fix 2026-10-23)"
       }
     },
     "1,1~t7.yoshimitsu": {
@@ -16212,12 +15852,7 @@
       "t7_on_hit": "0",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_20",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "t7.yoshimitsu_21": {
       "name": "Soul Stealer",
@@ -16541,12 +16176,7 @@
         ],
         "total": 37
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "u/f+3+4,3+4~t7.yoshimitsu.2": {
       "name": "JIN u/f+3+4,3+4",
@@ -16581,12 +16211,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_29",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "u/f+3+4,u+3+4": {
       "name": "Poison Wind Eclipse Kick",
@@ -16628,12 +16253,7 @@
         ],
         "total": 28
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "u/f+3+4,u+3+4~t7.yoshimitsu": {
       "name": "JIN u/f+3+4,u+3+4",
@@ -16675,12 +16295,7 @@
         ],
         "total": 20
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "u/f+3+4,b+1": {
       "name": "JIN u/f+3+4,b+1",
@@ -16724,8 +16339,8 @@
       },
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 218,
+        "match": "same-notation"
       }
     },
     "u/f+3+4,b+1,4": {
@@ -16771,8 +16386,8 @@
       },
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 88,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 219,
+        "match": "same-notation"
       }
     },
     "u/f+3+4,b+1,4,d+1": {
@@ -16863,11 +16478,6 @@
           16
         ],
         "total": 41
-      },
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "t7.yoshimitsu_36": {
@@ -17565,12 +17175,7 @@
       "t7_on_hit": "-9 (OC)",
       "t7_on_ch": "-9 (OC)",
       "merge_source": "t7:yoshimitsu_51",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "f,F+3+4,1+2~t7.yoshimitsu": {
       "name": "JIN f,F+3+4,1+2",
@@ -17612,12 +17217,7 @@
         ],
         "total": 30
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "f,F+3+4,1+2~t7.yoshimitsu.2": {
       "name": "JIN f,F+3+4,1+2",
@@ -17652,12 +17252,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:yoshimitsu_53",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "f,F+3+4,1+2,3+4~t7.yoshimitsu": {
       "name": "Solar Kick Shark Attack",
@@ -17700,12 +17295,7 @@
         ],
         "total": 44
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "f,F+3+4,1+2,3+4~t7.yoshimitsu.2": {
       "name": "JIN f,F+3+4,1+2,3+4",
@@ -17747,12 +17337,7 @@
         ],
         "total": 29
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "f,F+3+4,1+2,3+4~t7.yoshimitsu.3": {
       "name": "JIN f,F+3+4,1+2,3+4",
@@ -17787,12 +17372,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:yoshimitsu_56",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "f,f,f+3": {
       "name": "Manji Spin Kick",
@@ -17871,8 +17451,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 224,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "f,n,d,d/f+2~t7.yoshimitsu": {
@@ -17995,8 +17575,8 @@
       },
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 244,
+        "match": "same-notation"
       }
     },
     "d/f+1,2~t7.yoshimitsu.2": {
@@ -18034,8 +17614,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 69,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 244,
+        "match": "same-notation"
       }
     },
     "d/f+1,4~t7.yoshimitsu": {
@@ -18613,8 +18193,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 227,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "d+2,2,1~t7.yoshimitsu": {
@@ -18748,8 +18328,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 237,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "d+2,2,d+1~t7.yoshimitsu": {
@@ -18924,11 +18504,6 @@
           17
         ],
         "total": 29
-      },
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "d+2,2,2+3~t7.yoshimitsu": {
@@ -18963,12 +18538,7 @@
       "t7_on_hit": "+7",
       "t7_on_ch": "STUN",
       "merge_source": "t7:yoshimitsu_84",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "d/b+1~t7.yoshimitsu": {
       "name": "JIN d/b+1",
@@ -19052,8 +18622,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 176,
+        "match": "same-notation"
       }
     },
     "d/b+1,1~t7.yoshimitsu": {
@@ -19092,8 +18662,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 176,
+        "match": "same-notation"
       }
     },
     "D/B+2": {
@@ -19857,8 +19427,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 227,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "b+2,2~t7.yoshimitsu": {
@@ -20218,8 +19788,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 224,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "SS.2~t7.yoshimitsu": {
@@ -21476,12 +21046,7 @@
       "merge_source": "t7:yoshimitsu_142",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Face Up, Feet Towards+",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "Face Up, Feet Towards+"
     },
     "t7.yoshimitsu_143": {
       "name": "JIN Face Up, Feet Towards, Roll Forward+1+2",
@@ -21714,12 +21279,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_148",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 146,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "BDS.3~t7.yoshimitsu": {
       "name": "Bad Stomach to Backflip Kick",
@@ -21997,12 +21557,7 @@
       "t7_on_hit": "+3 (OC)",
       "t7_on_ch": "+3 (OC)",
       "merge_source": "t7:yoshimitsu_155",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "f,F+1+4,n~t7.yoshimitsu": {
       "name": "Suicide",
@@ -22154,12 +21709,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_159",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "NSS.f,F+1+4": {
       "name": "JIN NSS.f,F+1+4",
@@ -22193,12 +21743,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_160",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "WALL.b,b,u/b": {
       "name": "JIN WALL.b,b,u/b",
@@ -23133,12 +22678,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_182",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "INS.1+2": {
       "name": "Indian Stance Flea",
@@ -23172,12 +22712,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_183",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "DGF.1+2~t7.yoshimitsu": {
       "name": "Manji Dragonfly to Flea",
@@ -23211,12 +22746,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_184",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "POI.d+1+2": {
       "name": "Poison Wind to Flea",
@@ -23257,11 +22787,6 @@
           4
         ],
         "total": 24
-      },
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "FLE.f~t7.yoshimitsu": {
@@ -23621,12 +23146,7 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:yoshimitsu_194",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "FLE.3+4~t7.yoshimitsu": {
       "name": "Flea to Kangaroo Kick",
@@ -23661,12 +23181,7 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:yoshimitsu_195",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "FLE.u+3+4~t7.yoshimitsu": {
       "name": "Flea to Dragonfly Feint",
@@ -23701,12 +23216,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:yoshimitsu_196",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "WFL.3~t7.yoshimitsu": {
       "name": "Sakanobori",
@@ -23820,12 +23330,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_199",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "f+3,3,d+3+4": {
       "name": "JIN f+3,3,d+3+4",
@@ -23867,12 +23372,7 @@
         ],
         "total": 40
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "t7.yoshimitsu_201": {
       "name": "Indian Stance Healing",
@@ -23944,12 +23444,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_202",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "DGF.d+3+4~t7.yoshimitsu": {
       "name": "Manji Dragonfly to Indian Stance",
@@ -23983,12 +23478,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_203",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "MANJI_SPIN_LOW_KICKS.d+3+4": {
       "name": "JIN MANJI_SPIN_LOW_KICKS.d+3+4",
@@ -24023,12 +23513,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_204",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "(During Manji Spin Low Kicks)",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Manji Spin Low Kicks)"
     },
     "NSS.u+1+2~t7.yoshimitsu": {
       "name": "Ishiusu Tsubushi",
@@ -24062,12 +23547,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_205",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "NSS.d+1+2~t7.yoshimitsu": {
       "name": "JIN NSS.d+1+2",
@@ -24101,12 +23581,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_206",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "POI.d+3+4": {
       "name": "Poison Wind to Indian Stance",
@@ -24140,12 +23615,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_207",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "INS.n": {
       "name": "Indian Stance Healing",
@@ -24218,12 +23688,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_209",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "t7.yoshimitsu_210": {
       "name": "JIN (During Indian Levitation) Hold Any Direction",
@@ -24528,8 +23993,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 200,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 275,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "INS.3,3+4": {
@@ -24572,12 +24037,7 @@
         ],
         "total": 29
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "INS.3,3+4~t7.yoshimitsu": {
       "name": "JIN INS.3,3+4",
@@ -24612,12 +24072,7 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:yoshimitsu_218",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "INS.4": {
       "name": "Indian Stance Knee Cap",
@@ -24776,11 +24231,6 @@
           8
         ],
         "total": 18
-      },
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,n,d,d/f+1,1+2": {
@@ -24816,12 +24266,7 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:yoshimitsu_223",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "f,F+3,1+2": {
       "name": "JIN f,F+3,1+2",
@@ -24855,12 +24300,7 @@
       "t7_on_hit": "-28",
       "t7_on_ch": "STUN",
       "merge_source": "t7:yoshimitsu_224",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "b+2,1+2": {
       "name": "JIN b+2,1+2",
@@ -24894,12 +24334,7 @@
       "t7_on_hit": "-36",
       "t7_on_ch": "-36",
       "merge_source": "t7:yoshimitsu_225",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "b+2,1,1+2": {
       "name": "JIN b+2,1,1+2",
@@ -24941,12 +24376,7 @@
         ],
         "total": 32
       },
-      "launch": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "SS.4,1+2": {
       "name": "JIN SS.4,1+2",
@@ -24981,12 +24411,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:yoshimitsu_227",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "KIN.4,1+2": {
       "name": "JIN KIN.4,1+2",
@@ -25021,12 +24446,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:yoshimitsu_228",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "KIN.F": {
       "name": "JIN KIN.F",
@@ -25141,8 +24561,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 224,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "KIN.1,1~t7.yoshimitsu": {
@@ -25318,12 +24738,7 @@
         ],
         "total": 45
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "KIN.2,1+2~t7.yoshimitsu.2": {
       "name": "JIN KIN.2,1+2",
@@ -25358,12 +24773,7 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:yoshimitsu_236",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "KIN.2,1+2*~t7.yoshimitsu": {
       "name": "JIN KIN.2,1+2*",
@@ -25405,12 +24815,7 @@
         ],
         "total": 45
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "KIN.3~t7.yoshimitsu": {
       "name": "Shibakari",
@@ -25533,12 +24938,7 @@
         ],
         "total": 36
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "KIN.f+2~t7.yoshimitsu": {
       "name": "Ganto",
@@ -25784,12 +25184,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_246",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "WS.2,1~t7.yoshimitsu": {
       "name": "Scowling Moon God",
@@ -25874,8 +25269,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 227,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "DEATH_COPTER.1+2": {
@@ -25911,12 +25306,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_249",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "(During Death Copter)",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Death Copter)"
     },
     "DEATH_COPTER.b,n+1+2": {
       "name": "JIN DEATH_COPTER.b,n+1+2",
@@ -25951,12 +25341,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_250",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "(During Death Copter)",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Death Copter)"
     },
     "FLE.u+1+2~t7.yoshimitsu": {
       "name": "Flea to Manji Dragonfly",
@@ -25990,12 +25375,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_251",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "INS.u+1+2": {
       "name": "Indian Stance Manji Dragonfly",
@@ -26029,12 +25409,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_252",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "KIN.u+1+2~t7.yoshimitsu": {
       "name": "Kincho Dragonfly",
@@ -26068,12 +25443,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_253",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "POISON_WIND.1+2": {
       "name": "JIN POISON_WIND.1+2",
@@ -26108,12 +25478,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_254",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "(During Poison Wind)",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Poison Wind)"
     },
     "DGF.f~t7.yoshimitsu": {
       "name": "JIN DGF.f",
@@ -26462,12 +25827,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:yoshimitsu_263",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "KIN.4,3+4": {
       "name": "JIN KIN.4,3+4",
@@ -26502,12 +25862,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:yoshimitsu_264",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "MED.f~t7.yoshimitsu": {
       "name": "JIN MED.f",
@@ -26585,8 +25940,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 200,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 275,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "2+3~t7.yoshimitsu": {
@@ -26621,12 +25976,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_267",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "NSS.1": {
       "name": "JIN NSS.1",
@@ -27050,12 +26400,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_277",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "NSS.1+2,1": {
       "name": "Utsusemi",
@@ -27130,12 +26475,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:yoshimitsu_279",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "NSS.u/f+1+2": {
       "name": "JIN NSS.u/f+1+2",
@@ -27169,12 +26509,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_280",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "NSS.u/f+3+4": {
       "name": "JIN NSS.u/f+3+4",
@@ -27209,12 +26544,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:yoshimitsu_281",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "NSS.u/f+3+4,b+1": {
       "name": "JIN NSS.u/f+3+4,b+1",
@@ -27556,12 +26886,7 @@
       "t7_on_hit": "+4",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_289",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "NSS.d/f+1+2,2": {
       "name": "JIN NSS.d/f+1+2,2",
@@ -27720,12 +27045,7 @@
       "t7_on_hit": "0",
       "t7_on_ch": "0",
       "merge_source": "t7:yoshimitsu_293",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "NSS.d+2": {
       "name": "JIN NSS.d+2",
@@ -27808,8 +27128,8 @@
       },
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 227,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "t7.yoshimitsu_296": {
@@ -27884,12 +27204,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:yoshimitsu_297",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "NSS.d/b+2": {
       "name": "JIN NSS.d/b+2",
@@ -28125,12 +27440,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_303",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "t7.yoshimitsu_304": {
       "name": "JIN NSS WS 2, 1, 3",
@@ -28455,12 +27765,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:yoshimitsu_311",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "NSS.4~1": {
       "name": "JIN NSS.4~1",
@@ -29155,12 +28460,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:yoshimitsu_327",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "R.b+1+2": {
       "name": "Rage Art",
@@ -29196,12 +28496,7 @@
       "merge_source": "t7:yoshimitsu_328",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Rage)",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Rage)"
     },
     "t7.yoshimitsu_329": {
       "name": "Supreme Soul Stealer",
@@ -29274,12 +28569,7 @@
       "t7_on_ch": "S!",
       "merge_source": "t7:yoshimitsu_330",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "(During Rage)",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Rage)"
     },
     "u/f+1+2~t7.yoshimitsu": {
       "name": "Death Copter",
@@ -29472,12 +28762,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:yoshimitsu_335",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "f,F+1+4,F~t7.yoshimitsu": {
       "name": "Double Suicide",
@@ -30295,12 +29580,7 @@
       "t7_on_hit": "STUN",
       "t7_on_ch": "STUN",
       "merge_source": "t7:yoshimitsu_356",
-      "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_from": "same-notation T8 recv"
     },
     "u/b+1+2~t7.yoshimitsu": {
       "name": "Sword Stab",
@@ -30374,12 +29654,7 @@
       "t7_on_hit": "STUN",
       "t7_on_ch": "STUN",
       "merge_source": "t7:yoshimitsu_358",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "u/b+1+2,n,1": {
       "name": "Sword Poke Windmill",
@@ -30417,8 +29692,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 237,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "t7.yoshimitsu_360": {
@@ -30611,12 +29886,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:yoshimitsu_364",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "MED.1+2~t7.yoshimitsu": {
       "name": "Meditation Healing",
@@ -30651,12 +29921,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:yoshimitsu_365",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "MED.1+4~t7.yoshimitsu": {
       "name": "JIN MED.1+4",
@@ -30691,12 +29956,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:yoshimitsu_366",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "DGF.3+4~t7.yoshimitsu": {
       "name": "Spirited Away",
@@ -30731,12 +29991,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:yoshimitsu_367",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "NSS.b,B+1+4~t7.yoshimitsu": {
       "name": "JIN NSS.b,B+1+4",
@@ -30771,12 +30026,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:yoshimitsu_368",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "NSS.u/b+1+2~t7.yoshimitsu": {
       "name": "JIN NSS.u/b+1+2",
@@ -30811,12 +30061,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:yoshimitsu_369",
       "recovery_from": "same-notation T8 recv",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "yoshimitsu",
-        "row": 102,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "NSS.u/b+1+2,1": {
       "name": "JIN NSS.u/b+1+2,1",
@@ -30854,8 +30099,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "yoshimitsu",
-        "row": 54,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 237,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "1+3~t7.yoshimitsu": {

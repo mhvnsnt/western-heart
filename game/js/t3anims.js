@@ -221,6 +221,7 @@ const _t3clipCache = {};    // bankId -> { actionName: clip }
 const _t3clipPromises = {}; // bankId -> Promise
 const _t3skelCache = {};    // bankId -> wh-anim-skel/1 source skeleton
 const _t3facing = {};       // bankId -> { turned, kneeDeg, samples } (bankFacing)
+const _t3hitRows = {};      // bankId -> decoded hit windows { row: [first, last, stream, word] }
 
 /* ============================================================
    SOURCE FACING (2026-10-21) — every bank is declared "faces +Z,
@@ -393,6 +394,16 @@ export async function loadT3Clips(THREE, bankId = 'king') {
         rowData = {};
       }
     })());
+    // Decoded active window of every attack row (tools/anim/t3_hit_frames.py, lane D 2026-10-24):
+    // { row: [active_first, active_last, stream_frames, attack_word, throw] } — fighter.js times the
+    // clip on it and never plays a throw row for a strike (or a strike row for a throw).
+    let hitRows = {};
+    jobs.push((async () => {
+      try {
+        const res = await fetch(base + 'hit_frames.json');
+        if (res.ok) hitRows = (await res.json()).rows || {};
+      } catch (e) { hitRows = {}; }
+    })());
     await Promise.all(jobs);
     const skel = _t3skelCache[bankId];
     if (skel) {
@@ -425,6 +436,13 @@ export async function loadT3Clips(THREE, bankId = 'king') {
       const clip = jsonToClip(`t3_${bankId}_row${row}`, data, THREE);
       if (clip) { clip.userData.loop = false; clip.userData.move_row = rec.move_row; clips['row:' + row] = clip; n++; }
     }
+    // Attach the decoded hit window to every clip that plays an attack row (move rows and the
+    // light/medium/heavy/grab action clips, which carry their source move_row too).
+    for (const clip of Object.values(clips)) {
+      const h = clip.userData.move_row != null ? hitRows[String(clip.userData.move_row)] : null;
+      if (h) clip.userData.hit = h;
+    }
+    _t3hitRows[bankId] = hitRows;
     console.log(`[WH-T3] bank '${bankId}': ${n} move-row clips`);
     console.log(`[WH-T3] bank '${bankId}': loaded ${Object.keys(clips).length} real T3 clips`);
     _t3clipCache[bankId] = clips;
@@ -435,6 +453,158 @@ export async function loadT3Clips(THREE, bankId = 'king') {
 
 /** Synchronous accessor for one bank's cached clips (null if not loaded). */
 export function getT3Clips(bankId = 'king') { return _t3clipCache[bankId] || null; }
+
+/* ============================================================
+   STRIKE PROFILE (lane D, 2026-10-24) — what a clip's own decoded
+   frames do with each limb. Forward kinematics on the bank's source
+   skeleton (rest = world joint positions, every rest rotation
+   identity — the FK bankFacing uses): per frame, the distance of the
+   limb's end joint (wrist / ankle — the joints fighter.js hits with)
+   from the pelvis (Hips). ext = (farthest - frame 0) / limb length:
+   how far the limb leaves the guard the move starts from. Read-only
+   on the decoded rotations; nothing is authored. Cached on the clip.
+   Call it on the bank clip (getT3Clips), not a retargeted copy: the
+   retargeted copies drop the raw frames.
+   ============================================================ */
+const STRIKE_LIMBS = {
+  armL: ['LeftArm', 'LeftForeArm', 'LeftHand'], armR: ['RightArm', 'RightForeArm', 'RightHand'],
+  legL: ['LeftUpLeg', 'LeftLeg', 'LeftFoot'], legR: ['RightUpLeg', 'RightLeg', 'RightFoot'],
+};
+const _dist = (a, b) => Math.hypot(a[0] - b[0], a[1] - b[1], a[2] - b[2]);
+export function clipStrikeProfile(bankId, clip) {
+  if (!clip || !clip.userData) return null;
+  if (clip.userData.strike !== undefined) return clip.userData.strike;
+  const skel = _t3skelCache[bankId], raw = clip.userData.raw;
+  if (!skel || !raw || !raw.rot) return (clip.userData.strike = null);
+  const P = {}, par = {}, order = skel.joints.map(j => j.name);
+  for (const j of skel.joints) { P[j.name] = j.rest; par[j.name] = j.parent; }
+  let n = 0;
+  for (const v of Object.values(raw.rot)) if (v && v.length > n) n = v.length;
+  const limbs = {};
+  for (const [k, ch] of Object.entries(STRIKE_LIMBS)) {
+    if (!P.Hips || ch.some(j => !P[j])) continue;
+    limbs[k] = { d: new Array(n), len: _dist(P[ch[0]], P[ch[1]]) + _dist(P[ch[1]], P[ch[2]]) };
+  }
+  for (let f = 0; f < n; f++) {
+    const G = {}, X = {};
+    for (const j of order) {
+      const r = raw.rot[j];
+      const q = r && r.length ? r[Math.min(f, r.length - 1)] : [0, 0, 0, 1];
+      const p = par[j];
+      if (p && G[p]) {
+        G[j] = _qmul(G[p], q);
+        const o = _qrot(G[p], [P[j][0] - P[p][0], P[j][1] - P[p][1], P[j][2] - P[p][2]]);
+        X[j] = [X[p][0] + o[0], X[p][1] + o[1], X[p][2] + o[2]];
+      } else { G[j] = q; X[j] = P[j].slice(); }
+    }
+    for (const [k, L] of Object.entries(limbs)) L.d[f] = _dist(X[STRIKE_LIMBS[k][2]], X.Hips);
+  }
+  const out = { fps: raw.fps, n, limbs: {}, dominant: null };
+  let best = -Infinity;
+  for (const [k, L] of Object.entries(limbs)) {
+    let pf = 0;
+    for (let f = 1; f < n; f++) if (L.d[f] > L.d[pf]) pf = f;
+    const ext = L.len > 1e-6 ? (L.d[pf] - L.d[0]) / L.len : 0;
+    out.limbs[k] = { peakF: pf, peakT: pf / raw.fps, ext, reach: L.len > 1e-6 ? L.d[pf] / L.len : 0 };
+    if (ext > best) { best = ext; out.dominant = k; }
+  }
+  return (clip.userData.strike = out);
+}
+
+/* When a clip's hit lands, in clip seconds: { t0, t1, src }.
+   'decoded' — the clip plays a T3 attack row with a decoded active
+   window (hit_frames.json, 60 fps stream, moveFrame 1 = stream frame 0,
+   n0madic/Tekken3Remake docs/research/code/moves.md); 'measured' — the
+   frame where `limb` (else the clip's most-extending limb) is farthest
+   from the pelvis (clipStrikeProfile). null when neither exists. */
+export function clipHitWindow(bankId, clip, limb) {
+  if (!clip || !clip.userData) return null;
+  const h = clip.userData.hit;
+  if (h && h[0] > 0) {
+    // Stream frame active_first at 60 fps. Checked on every baked attack row of all 21 banks
+    // (lane D 2026-10-24): the measured extension peak of the striking limb lies a median
+    // 1-3 frames after (active_first - 1)/60, i.e. 0-2 frames from active_first/60.
+    const t0 = Math.min(clip.duration, h[0] / 60);
+    return { t0, t1: Math.min(clip.duration, Math.max(t0, h[1] / 60)), src: 'decoded' };
+  }
+  const sp = clipStrikeProfile(bankId, clip);
+  const L = sp && (sp.limbs[limb] && sp.limbs[limb].ext > 0.05 ? sp.limbs[limb] : sp.limbs[sp.dominant]);
+  if (!L) return null;
+  return { t0: L.peakT, t1: L.peakT, src: 'measured' };
+}
+
+/** Decoded hit windows of a loaded bank: { row: [active_first, active_last, stream_frames, attack_word, throw] }. */
+export function getT3HitRows(bankId) { return _t3hitRows[bankId] || null; }
+
+/** Does this clip play a decoded THROW row (hit_frames.json throw flag: reaction 0x1xxx = throw attempt
+    selecting a victim move, or attack word 0x800 = throw-system row)? false for strikes / unknown. */
+export function clipIsThrow(clip) { const h = clip && clip.userData && clip.userData.hit; return !!(h && h[4]); }
+
+/* Attack level of a decoded T3 attack word (n0madic/Tekken3Remake docs/research/code/combat.md,
+   "Attack levels, postures and guards"; same bits as Fighter.canBeHitBy): posture bits 1/2/4,
+   guard bits 0x08 crouching / 0x10 standing. 'h' high (hits standing only), 'm' mid (standing
+   guard blocks), 's' special mid (either guard), 'l' low (crouching guard), 'u' unblockable,
+   't' throw-class (0x800, no posture bits). */
+export function attackLevelOfWord(w) {
+  if (w == null || !Number.isFinite(+w)) return null;
+  w = +w;
+  const post = w & 7, guard = w & 0x18;
+  if (!post) return (w & 0x800) ? 't' : null;
+  if (post === 2) return 'h';
+  if (guard === 0x08) return 'l';
+  if (guard === 0x18) return 's';
+  if (guard === 0) return 'u';
+  return 'm';
+}
+
+/* Button mask (1 LP, 2 RP, 4 LK, 8 RK — T3 command bits) -> limb, for single-button masks. */
+export const BUTTON_LIMB = { 1: 'armL', 2: 'armR', 4: 'legL', 8: 'legR' };
+
+/* The baked move rows of a loaded bank that fighter.js may match a move with no row clip of its own
+   against (closest real clip of the same character), as { name, row, btn, limb, limbSrc, level, t0 }
+   sorted by row. btn = the buttons that start the row (hit_frames.json: decoded branch commands, else
+   the movesets' t3_command); limb = BUTTON_LIMB[btn], or for rows with no known button the limb its
+   own frames extend most (clipStrikeProfile, limbSrc 'measured', kept only when ext >= 0.1 limb
+   lengths). Strikes (default): decoded attack rows (active window) that are NOT throw rows.
+   { throws: true }: the decoded throw ATTEMPT rows (throw flag + active window). Cached per bank. */
+const _poolCache = new Map(); // clips object -> { strike, throw }
+export function bankAttackPool(bankId, { throws = false } = {}) {
+  const clips = _t3clipCache[bankId];
+  if (!clips) return [];
+  if (!_poolCache.has(clips)) {
+    const pools = { strike: [], throw: [] };
+    for (const [name, clip] of Object.entries(clips)) {
+      const h = clip.userData.hit;
+      if (!name.startsWith('row:') || !h || !(h[0] > 0)) continue;
+      const btn = h[5] || 0;
+      let limb = BUTTON_LIMB[btn] || null, limbSrc = 'button';
+      if (!limb && !btn) {
+        const sp = clipStrikeProfile(bankId, clip);
+        const L = sp && sp.dominant && sp.limbs[sp.dominant];
+        if (L && (h[4] || L.ext >= 0.1)) { limb = sp.dominant; limbSrc = 'measured'; }
+        else if (!h[4]) continue;
+      }
+      const w = clipHitWindow(bankId, clip, limb);
+      (h[4] ? pools.throw : pools.strike).push({ name, row: +name.slice(4), btn, limb, limbSrc,
+        level: h[4] ? 't' : attackLevelOfWord(h[3]), t0: w ? w.t0 : 0 });
+    }
+    pools.strike.sort((a, b) => a.row - b.row); pools.throw.sort((a, b) => a.row - b.row);
+    _poolCache.set(clips, pools);
+  }
+  return _poolCache.get(clips)[throws ? 'throw' : 'strike'];
+}
+
+/* Clip time for game time g (s since the move started) under a piecewise-linear warp that puts the
+   clip's hit window [t0, t1] on the move's active frames [S, S+A]: windup [0, t0] -> [0, S],
+   recovery [t1, D] -> [S+A, S+A+R] (the rest of the move's total). timing = { S, A, R, t0, t1, D }. */
+export function attackClipTime(timing, g) {
+  const { S, A, R, t0, t1, D } = timing;
+  const end = Math.max(0, D - 1e-4);
+  if (g <= S) return Math.min(end, S > 1e-4 ? t0 * Math.max(0, g) / S : t0);
+  if (g <= S + A) return Math.min(end, A > 1e-4 ? t0 + (t1 - t0) * (g - S) / A : t1);
+  const r = R > 1e-4 ? Math.min(1, (g - S - A) / R) : 1;
+  return Math.min(end, t1 + (D - t1) * r);
+}
 
 /* Canonical -> target-rig bone retargets. The T3 banks were baked against
    the WH-CANONICAL-22 rig (lab/tools/t3_motion_bake.py), whose bone-local

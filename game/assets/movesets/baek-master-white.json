@@ -6,6 +6,12 @@
   "proxy": false,
   "proxy_note": null,
   "variant": 8,
+  "anim_set_lock": {
+    "law": "SHOW-ANIMATION LOCK (owner 2026-10-23)",
+    "FIGHT": "every move in this file: moveset moves and combat stances \u2014 the combat animation bank",
+    "SHOW": "win poses, intro poses, taunts, cutscene animations \u2014 intro/win slots and cutscenes ONLY; tracked in docs/anim/TTT2-BAEK-ANIM-GAP-20261023.md; must NEVER enter this moveset without the user's explicit approval",
+    "note": "per-move 'set' tags stamp what each pull lane added; the file itself is the FIGHT set"
+  },
   "strings": [
     {
       "input": "2,1",
@@ -373,12 +379,7 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "The master in white. A pristine textbook kick - the lesson, perfectly pressed.",
-      "anim_t3": {
-        "bank": "bryan",
-        "row": 75,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "The master in white. A pristine textbook kick - the lesson, perfectly pressed."
     },
     "P+K": {
       "name": "Eleventh Lecture [WH SIGNATURE]",
@@ -402,12 +403,7 @@
       "note": "He tried to sober Zui up eleven times. Zui made two of them drinking songs. The eleventh lecture lands anyway.",
       "throw": true,
       "unblockable": true,
-      "isGrab": true,
-      "anim_t3": {
-        "bank": "bryan",
-        "row": 75,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "isGrab": true
     },
     "1+2": {
       "name": "Master's White [WH SIGNATURE]",
@@ -427,12 +423,7 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "The master in white. A pristine textbook kick - the lesson, perfectly pressed.",
-      "input_remapped_from": "S",
-      "anim_t3": {
-        "bank": "bryan",
-        "row": 41,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "input_remapped_from": "S"
     },
     "1+2__main": {
       "name": "BAEK MASTER WHITE 1+2 (T3 bryan r41)",
@@ -476,12 +467,7 @@
       "unblockable": true,
       "isGrab": true,
       "input_remapped_from": "P+K",
-      "throw_break": "1+2",
-      "anim_t3": {
-        "bank": "bryan",
-        "row": 75,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1+2"
     },
     "b+2": {
       "name": "BAEK MASTER WHITE b+2 (T3 bryan r158)",
@@ -2518,12 +2504,7 @@
       "note": "The kick is the question. Discipline is the answer. A textbook kick, graded on the spot.",
       "input_remapped_from": "S",
       "merge_source": "donor:baek:1+2",
-      "donor_fighter": "baek",
-      "anim_t3": {
-        "bank": "baek",
-        "row": 41,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "baek"
     },
     "1+4~donor.baek": {
       "name": "Homework [WH SIGNATURE]",
@@ -2549,12 +2530,7 @@
       "input_remapped_from": "P+K",
       "throw_break": "1+2",
       "merge_source": "donor:baek:1+4",
-      "donor_fighter": "baek",
-      "anim_t3": {
-        "bank": "baek",
-        "row": 75,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "baek"
     },
     "d/f+1~donor.baek": {
       "name": "BAEK d/f+1 (T3 bryan r148)",
@@ -2690,12 +2666,7 @@
       "wh_original": true,
       "note": "The kick is the question. Discipline is the answer. A textbook kick, graded on the spot.",
       "merge_source": "donor:baek:S",
-      "donor_fighter": "baek",
-      "anim_t3": {
-        "bank": "baek",
-        "row": 75,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "baek"
     },
     "None~donor.baek.3": {
       "name": "Homework [WH SIGNATURE]",
@@ -2721,12 +2692,7 @@
       "unblockable": true,
       "isGrab": true,
       "merge_source": "donor:baek:P+K",
-      "donor_fighter": "baek",
-      "anim_t3": {
-        "bank": "baek",
-        "row": 75,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "baek"
     },
     "1+2~donor.baek.2": {
       "name": "Kick Is the Question [WH SIGNATURE]",
@@ -2748,12 +2714,7 @@
       "note": "The kick is the question. Discipline is the answer. A textbook kick, graded on the spot.",
       "input_remapped_from": "S",
       "merge_source": "donor:baek:1+2",
-      "donor_fighter": "baek",
-      "anim_t3": {
-        "bank": "baek",
-        "row": 41,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "baek"
     },
     "1+4~donor.baek.2": {
       "name": "Homework [WH SIGNATURE]",
@@ -2779,12 +2740,7 @@
       "input_remapped_from": "P+K",
       "throw_break": "1+2",
       "merge_source": "donor:baek:1+4",
-      "donor_fighter": "baek",
-      "anim_t3": {
-        "bank": "baek",
-        "row": 75,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "baek"
     },
     "None~donor.baek.4": {
       "name": "Kick Is the Question [WH SIGNATURE]",
@@ -2805,12 +2761,7 @@
       "wh_original": true,
       "note": "The kick is the question. Discipline is the answer. A textbook kick, graded on the spot.",
       "merge_source": "donor:baek:S",
-      "donor_fighter": "baek",
-      "anim_t3": {
-        "bank": "baek",
-        "row": 75,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "baek"
     },
     "None~donor.baek.5": {
       "name": "Homework [WH SIGNATURE]",
@@ -2836,12 +2787,7 @@
       "unblockable": true,
       "isGrab": true,
       "merge_source": "donor:baek:P+K",
-      "donor_fighter": "baek",
-      "anim_t3": {
-        "bank": "baek",
-        "row": 75,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "baek"
     },
     "1+2~donor.baek.3": {
       "name": "Kick Is the Question [WH SIGNATURE]",
@@ -2863,12 +2809,7 @@
       "note": "The kick is the question. Discipline is the answer. A textbook kick, graded on the spot.",
       "input_remapped_from": "S",
       "merge_source": "donor:baek:1+2",
-      "donor_fighter": "baek",
-      "anim_t3": {
-        "bank": "baek",
-        "row": 41,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "baek"
     },
     "1+4~donor.baek.3": {
       "name": "Homework [WH SIGNATURE]",
@@ -2894,12 +2835,7 @@
       "input_remapped_from": "P+K",
       "throw_break": "1+2",
       "merge_source": "donor:baek:1+4",
-      "donor_fighter": "baek",
-      "anim_t3": {
-        "bank": "baek",
-        "row": 75,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "baek"
     },
     "None~donor.baek.6": {
       "name": "Kick Is the Question [WH SIGNATURE]",
@@ -2920,12 +2856,7 @@
       "wh_original": true,
       "note": "The kick is the question. Discipline is the answer. A textbook kick, graded on the spot.",
       "merge_source": "donor:baek:S",
-      "donor_fighter": "baek",
-      "anim_t3": {
-        "bank": "baek",
-        "row": 75,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "baek"
     },
     "None~donor.baek.7": {
       "name": "Homework [WH SIGNATURE]",
@@ -2951,12 +2882,7 @@
       "unblockable": true,
       "isGrab": true,
       "merge_source": "donor:baek:P+K",
-      "donor_fighter": "baek",
-      "anim_t3": {
-        "bank": "baek",
-        "row": 75,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "baek"
     },
     "1+2~donor.baek.4": {
       "name": "Kick Is the Question [WH SIGNATURE]",
@@ -2978,12 +2904,7 @@
       "note": "The kick is the question. Discipline is the answer. A textbook kick, graded on the spot.",
       "input_remapped_from": "S",
       "merge_source": "donor:baek:1+2",
-      "donor_fighter": "baek",
-      "anim_t3": {
-        "bank": "baek",
-        "row": 41,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "baek"
     },
     "1+4~donor.baek.4": {
       "name": "Homework [WH SIGNATURE]",
@@ -3009,12 +2930,7 @@
       "input_remapped_from": "P+K",
       "throw_break": "1+2",
       "merge_source": "donor:baek:1+4",
-      "donor_fighter": "baek",
-      "anim_t3": {
-        "bank": "baek",
-        "row": 75,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "baek"
     },
     "None~donor.baek.8": {
       "name": "Kick Is the Question [WH SIGNATURE]",
@@ -3035,12 +2951,7 @@
       "wh_original": true,
       "note": "The kick is the question. Discipline is the answer. A textbook kick, graded on the spot.",
       "merge_source": "donor:baek:S",
-      "donor_fighter": "baek",
-      "anim_t3": {
-        "bank": "baek",
-        "row": 75,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "baek"
     },
     "None~donor.baek.9": {
       "name": "Homework [WH SIGNATURE]",
@@ -3066,12 +2977,7 @@
       "unblockable": true,
       "isGrab": true,
       "merge_source": "donor:baek:P+K",
-      "donor_fighter": "baek",
-      "anim_t3": {
-        "bank": "baek",
-        "row": 75,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "baek"
     },
     "1+2~donor.baek.5": {
       "name": "Kick Is the Question [WH SIGNATURE]",
@@ -3093,12 +2999,7 @@
       "note": "The kick is the question. Discipline is the answer. A textbook kick, graded on the spot.",
       "input_remapped_from": "S",
       "merge_source": "donor:baek:1+2",
-      "donor_fighter": "baek",
-      "anim_t3": {
-        "bank": "baek",
-        "row": 41,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "baek"
     },
     "1+4~donor.baek.5": {
       "name": "Homework [WH SIGNATURE]",
@@ -3124,12 +3025,1868 @@
       "input_remapped_from": "P+K",
       "throw_break": "1+2",
       "merge_source": "donor:baek:1+4",
-      "donor_fighter": "baek",
-      "anim_t3": {
-        "bank": "baek",
-        "row": 75,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "donor_fighter": "baek"
+    },
+    "F:1+3": {
+      "name": "Hammer Head",
+      "input": "1+3",
+      "input_slots": [
+        "1+3"
+      ],
+      "move_class": "throw",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "throw_type": "front",
+      "escape": "1",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Front throw."
+    },
+    "F:f+1+3": {
+      "name": "Hammer Head",
+      "input": "f+1+3",
+      "input_slots": [
+        "f+1+3"
+      ],
+      "move_class": "throw",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "throw_type": "front",
+      "escape": "1",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Front throw."
+    },
+    "F:2+4": {
+      "name": "Blue Shark Claw",
+      "input": "2+4",
+      "input_slots": [
+        "2+4"
+      ],
+      "move_class": "throw",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "throw_type": "front",
+      "escape": "2",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Front throw."
+    },
+    "F:f+2+4": {
+      "name": "Blue Shark Claw",
+      "input": "f+2+4",
+      "input_slots": [
+        "f+2+4"
+      ],
+      "move_class": "throw",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "throw_type": "front",
+      "escape": "2",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Front throw."
+    },
+    "F:d/b+1+3": {
+      "name": "Swordfish Catch",
+      "input": "d/b+1+3",
+      "input_slots": [
+        "d/b+1+3"
+      ],
+      "move_class": "throw",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "throw_type": "front",
+      "escape": "1+2",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Front throw."
+    },
+    "F:2+4~B": {
+      "name": "COBRA BITE",
+      "input": "2+4~B",
+      "input_slots": [
+        "2+4~B"
+      ],
+      "move_class": "throw",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "throw_type": "front",
+      "escape": "2",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Front throw."
+    },
+    "F:f+2+3": {
+      "name": "Cannonball",
+      "input": "f+2+3",
+      "input_slots": [
+        "f+2+3"
+      ],
+      "move_class": "throw",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "throw_type": "front",
+      "escape": "1+2",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Front throw."
+    },
+    "L:1+3": {
+      "name": "Snake Revenge",
+      "input": "1+3",
+      "input_slots": [
+        "1+3"
+      ],
+      "move_class": "throw",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "throw_type": "left",
+      "escape": "1",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Left throw."
+    },
+    "L:2+4": {
+      "name": "Snake Revenge",
+      "input": "2+4",
+      "input_slots": [
+        "2+4"
+      ],
+      "move_class": "throw",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "throw_type": "left",
+      "escape": "1",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Left throw."
+    },
+    "R:1+3": {
+      "name": "Hunting Serpent",
+      "input": "1+3",
+      "input_slots": [
+        "1+3"
+      ],
+      "move_class": "throw",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "throw_type": "right",
+      "escape": "2",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Right throw."
+    },
+    "R:2+4": {
+      "name": "Hunting Serpent",
+      "input": "2+4",
+      "input_slots": [
+        "2+4"
+      ],
+      "move_class": "throw",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "throw_type": "right",
+      "escape": "2",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Right throw."
+    },
+    "B:1+3": {
+      "name": "Triple Pain",
+      "input": "1+3",
+      "input_slots": [
+        "1+3"
+      ],
+      "move_class": "throw",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "throw_type": "back",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Back throw."
+    },
+    "B:2+4": {
+      "name": "Triple Pain",
+      "input": "2+4",
+      "input_slots": [
+        "2+4"
+      ],
+      "move_class": "throw",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "throw_type": "back",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Back throw."
+    },
+    "A:d/f+3+4": {
+      "name": "Hawk's Talons",
+      "input": "d/f+3+4",
+      "input_slots": [
+        "d/f+3+4"
+      ],
+      "move_class": "throw",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "throw_type": "air",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Air throw."
+    },
+    "1,1": {
+      "name": "Double Punches",
+      "input": "1,1",
+      "input_slots": [
+        "1,1"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "3,3,3": {
+      "name": "Butterfly Kicks",
+      "input": "3,3,3",
+      "input_slots": [
+        "3,3,3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "3,3,3~f_b": {
+      "name": "BUTTERFLY CANCEL, (FLA)",
+      "input": "3,3,3~f_b",
+      "input_slots": [
+        "3,3,3~f_b"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "3,3,3,4": {
+      "name": "Monarch Kick",
+      "input": "3,3,3,4",
+      "input_slots": [
+        "3,3,3,4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Stuns"
+    },
+    "3,3,3,d+4": {
+      "name": "Butterfly Needle",
+      "input": "3,3,3,d+4",
+      "input_slots": [
+        "3,3,3,d+4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "3,4>3": {
+      "name": "Break Blade",
+      "input": "3,4>3",
+      "input_slots": [
+        "3,4>3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Juggles"
+    },
+    "3,3,4>4": {
+      "name": "Black Widow",
+      "input": "3,3,4>4",
+      "input_slots": [
+        "3,3,4>4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "3,3,4>4>3": {
+      "name": "Widow's Bite",
+      "input": "3,3,4>4>3",
+      "input_slots": [
+        "3,3,4>4>3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Stuns on CH"
+    },
+    "3,3,4>4>3,f_b": {
+      "name": "Widow Cancel,",
+      "input": "3,3,4>4>3,f_b",
+      "input_slots": [
+        "3,3,4>4>3,f_b"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "3,3,4>4>4": {
+      "name": "Grey Snake Lowkick",
+      "input": "3,3,4>4>4",
+      "input_slots": [
+        "3,3,4>4>4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Juggles on CH"
+    },
+    "1,2,3": {
+      "name": "1-2 Punches, Highkick",
+      "input": "1,2,3",
+      "input_slots": [
+        "1,2,3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "1,2,3~(f_b)": {
+      "name": "Highkick Cancel, (FLA)",
+      "input": "1,2,3~(f_b)",
+      "input_slots": [
+        "1,2,3~(f_b)"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "b+1": {
+      "name": "Stealth Needle",
+      "input": "b+1",
+      "input_slots": [
+        "b+1"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Bounds"
+    },
+    "d+1>4": {
+      "name": "Raise Hammer, Trick Kick",
+      "input": "d+1>4",
+      "input_slots": [
+        "d+1>4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "d/f+1,3": {
+      "name": "Mid Slug, Slapkick, (FLA)",
+      "input": "d/f+1,3",
+      "input_slots": [
+        "d/f+1,3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "WS+1,3": {
+      "name": "Mid Slug, Slapkick, (FLA)",
+      "input": "WS+1,3",
+      "input_slots": [
+        "WS+1,3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "d/b+1": {
+      "name": "Ducking Jab",
+      "input": "d/b+1",
+      "input_slots": [
+        "d/b+1"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "1+2,4": {
+      "name": "Heel Axe",
+      "input": "1+2,4",
+      "input_slots": [
+        "1+2,4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Juggles on CH"
+    },
+    "2,2": {
+      "name": "Mantis Backhand Spin",
+      "input": "2,2",
+      "input_slots": [
+        "2,2"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "2,3": {
+      "name": "Jab, (FLA)",
+      "input": "2,3",
+      "input_slots": [
+        "2,3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "b,b+2": {
+      "name": "Backhand Spin",
+      "input": "b,b+2",
+      "input_slots": [
+        "b,b+2"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Stuns"
+    },
+    "f+2>1": {
+      "name": "Mantis Rush",
+      "input": "f+2>1",
+      "input_slots": [
+        "f+2>1"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "f+2>1>2": {
+      "name": "Mantis Fist",
+      "input": "f+2>1>2",
+      "input_slots": [
+        "f+2>1>2"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Stuns on CH"
+    },
+    "f+2>1>4": {
+      "name": "Mantis Lowkick",
+      "input": "f+2>1>4",
+      "input_slots": [
+        "f+2>1>4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "d+2": {
+      "name": "Board Splitter",
+      "input": "d+2",
+      "input_slots": [
+        "d+2"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "d/b+2": {
+      "name": "Stomach Blaster",
+      "input": "d/b+2",
+      "input_slots": [
+        "d/b+2"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Juggles"
+    },
+    "u/f+2": {
+      "name": "Bone Stagger",
+      "input": "u/f+2",
+      "input_slots": [
+        "u/f+2"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Bounds"
+    },
+    "WS+2,1": {
+      "name": "Rising Fists",
+      "input": "WS+2,1",
+      "input_slots": [
+        "WS+2,1"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Bounds"
+    },
+    "f+3,3": {
+      "name": "Trident Rush",
+      "input": "f+3,3",
+      "input_slots": [
+        "f+3,3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "f+3,3,2": {
+      "name": "Forked Punch",
+      "input": "f+3,3,2",
+      "input_slots": [
+        "f+3,3,2"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Stuns on CH"
+    },
+    "f+3,3,b+2": {
+      "name": "Trident Feint, Forked Punch",
+      "input": "f+3,3,b+2",
+      "input_slots": [
+        "f+3,3,b+2"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Stuns on CH"
+    },
+    "f,f+3": {
+      "name": "Heel Hunter",
+      "input": "f,f+3",
+      "input_slots": [
+        "f,f+3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Bounds - Juggles"
+    },
+    "FLA FC+3,3": {
+      "name": "Snake Creep",
+      "input": "FLA FC+3,3",
+      "input_slots": [
+        "FLA FC+3,3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA d+3,3": {
+      "name": "Snake Creep",
+      "input": "FLA d+3,3",
+      "input_slots": [
+        "FLA d+3,3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA FC+3,3,N+3": {
+      "name": "Snake Blade",
+      "input": "FLA FC+3,3,N+3",
+      "input_slots": [
+        "FLA FC+3,3,N+3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Juggles"
+    },
+    "FLA FC+3,3,d+3": {
+      "name": "Snake Bite",
+      "input": "FLA FC+3,3,d+3",
+      "input_slots": [
+        "FLA FC+3,3,d+3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA d/f+3": {
+      "name": "Claymore",
+      "input": "FLA d/f+3",
+      "input_slots": [
+        "FLA d/f+3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Stuns on CH"
+    },
+    "FLA d/f+3~f_d": {
+      "name": "Claymore Cancel, (FLA)",
+      "input": "FLA d/f+3~f_d",
+      "input_slots": [
+        "FLA d/f+3~f_d"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA d/f+3,4": {
+      "name": "Double Claymore",
+      "input": "FLA d/f+3,4",
+      "input_slots": [
+        "FLA d/f+3,4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA d/b+3,3": {
+      "name": "Sandstorm Kicks",
+      "input": "FLA d/b+3,3",
+      "input_slots": [
+        "FLA d/b+3,3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA d/b+3,3~f_d": {
+      "name": "Sandstorm Cancel, (FLA)",
+      "input": "FLA d/b+3,3~f_d",
+      "input_slots": [
+        "FLA d/b+3,3~f_d"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA u/f+3,4,3": {
+      "name": "Hunting Hawk",
+      "input": "FLA u/f+3,4,3",
+      "input_slots": [
+        "FLA u/f+3,4,3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Bounds"
+    },
+    "FLA u/f,N": {
+      "name": "Baek Hop",
+      "input": "FLA u/f,N",
+      "input_slots": [
+        "FLA u/f,N"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA u/f,N,3,4": {
+      "name": "Trick Smash",
+      "input": "FLA u/f,N,3,4",
+      "input_slots": [
+        "FLA u/f,N,3,4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA u/f,N,3,d+4>3": {
+      "name": "Starlight Blade",
+      "input": "FLA u/f,N,3,d+4>3",
+      "input_slots": [
+        "FLA u/f,N,3,d+4>3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Juggles"
+    },
+    "FLA u/f,N,3,3,3": {
+      "name": "Butterfly Kicks",
+      "input": "FLA u/f,N,3,3,3",
+      "input_slots": [
+        "FLA u/f,N,3,3,3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA u/f,N,3,3,3~f_b": {
+      "name": "BUTTERFLY CANCEL, (FLA)",
+      "input": "FLA u/f,N,3,3,3~f_b",
+      "input_slots": [
+        "FLA u/f,N,3,3,3~f_b"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA u/f,N,3,3,3,4": {
+      "name": "Monarch Kick",
+      "input": "FLA u/f,N,3,3,3,4",
+      "input_slots": [
+        "FLA u/f,N,3,3,3,4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Stuns"
+    },
+    "FLA u/f,N,3,3,3,d+4": {
+      "name": "Butterfly Needle",
+      "input": "FLA u/f,N,3,3,3,d+4",
+      "input_slots": [
+        "FLA u/f,N,3,3,3,d+4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA u/f,N,3,3,4>4": {
+      "name": "Black Widow",
+      "input": "FLA u/f,N,3,3,4>4",
+      "input_slots": [
+        "FLA u/f,N,3,3,4>4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA u/f,N,3,3,4>4>3": {
+      "name": "Widow's Bite",
+      "input": "FLA u/f,N,3,3,4>4>3",
+      "input_slots": [
+        "FLA u/f,N,3,3,4>4>3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Stuns on CH"
+    },
+    "FLA u/f,N,3,3,4>4>3~f_b": {
+      "name": "Widow Cancel, (FLA)",
+      "input": "FLA u/f,N,3,3,4>4>3~f_b",
+      "input_slots": [
+        "FLA u/f,N,3,3,4>4>3~f_b"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA u/f,N,3,3,4>4>4": {
+      "name": "Grey Snake Lowkick",
+      "input": "FLA u/f,N,3,3,4>4>4",
+      "input_slots": [
+        "FLA u/f,N,3,3,4>4>4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Juggles on CH"
+    },
+    "FLA WS+3,4>4": {
+      "name": "Heat Destruction",
+      "input": "FLA WS+3,4>4",
+      "input_slots": [
+        "FLA WS+3,4>4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA WS+3,4>4>3": {
+      "name": "Widow's Bite",
+      "input": "FLA WS+3,4>4>3",
+      "input_slots": [
+        "FLA WS+3,4>4>3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Stuns on CH"
+    },
+    "FLA WS+3,4>4>3~f_b": {
+      "name": "Widow Cancel, (FLA)",
+      "input": "FLA WS+3,4>4>3~f_b",
+      "input_slots": [
+        "FLA WS+3,4>4>3~f_b"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA WS+3,4>4>4": {
+      "name": "Grey Snake Lowkick",
+      "input": "FLA WS+3,4>4>4",
+      "input_slots": [
+        "FLA WS+3,4>4>4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Juggles on CH"
+    },
+    "FLA WS+3": {
+      "name": "Rising Hook",
+      "input": "FLA WS+3",
+      "input_slots": [
+        "FLA WS+3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA WS+3,f_b": {
+      "name": "Hook Cancel, (FLA)",
+      "input": "FLA WS+3,f_b",
+      "input_slots": [
+        "FLA WS+3,f_b"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA WS+3,3": {
+      "name": "Butterfly",
+      "input": "FLA WS+3,3",
+      "input_slots": [
+        "FLA WS+3,3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA WS+3,3~f_b": {
+      "name": "BUTTERFLY CANCEL, (FLA)",
+      "input": "FLA WS+3,3~f_b",
+      "input_slots": [
+        "FLA WS+3,3~f_b"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA WS+3,3>4": {
+      "name": "NEEDLER KICK",
+      "input": "FLA WS+3,3>4",
+      "input_slots": [
+        "FLA WS+3,3>4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA WS+3,3>d+4": {
+      "name": "BUTTERFLY NEEDLE",
+      "input": "FLA WS+3,3>d+4",
+      "input_slots": [
+        "FLA WS+3,3>d+4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA WS+3,4>4,4": {
+      "name": "Butterfly Needle",
+      "input": "FLA WS+3,4>4,4",
+      "input_slots": [
+        "FLA WS+3,4>4,4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA f,N,d,d/f+3": {
+      "name": "Wing Blade",
+      "input": "FLA f,N,d,d/f+3",
+      "input_slots": [
+        "FLA f,N,d,d/f+3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Juggles"
+    },
+    "FLA SS+3": {
+      "name": "Low Slider",
+      "input": "FLA SS+3",
+      "input_slots": [
+        "FLA SS+3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA RN 3": {
+      "name": "Running Jumpkick",
+      "input": "FLA RN 3",
+      "input_slots": [
+        "FLA RN 3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA RN 3~f": {
+      "name": "Jumpkick Cancel, (FLA)",
+      "input": "FLA RN 3~f",
+      "input_slots": [
+        "FLA RN 3~f"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA 3+4": {
+      "name": "Flashing Halbred, (FLA)",
+      "input": "FLA 3+4",
+      "input_slots": [
+        "FLA 3+4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA f+3+4": {
+      "name": "Spinning Hook Kick",
+      "input": "FLA f+3+4",
+      "input_slots": [
+        "FLA f+3+4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA u+3+4": {
+      "name": "SPINNING LIFT",
+      "input": "FLA u+3+4",
+      "input_slots": [
+        "FLA u+3+4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Stuns"
+    },
+    "FLA d/f+3+4": {
+      "name": "Hawk's Talons",
+      "input": "FLA d/f+3+4",
+      "input_slots": [
+        "FLA d/f+3+4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Throws Airborne Opponent"
+    },
+    "FLA SS+3+4": {
+      "name": "Airborne Trident",
+      "input": "FLA SS+3+4",
+      "input_slots": [
+        "FLA SS+3+4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Juggles"
+    },
+    "FLA 4,4": {
+      "name": "Facekick, Axe Snap",
+      "input": "FLA 4,4",
+      "input_slots": [
+        "FLA 4,4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA f+4": {
+      "name": "Heel Snap",
+      "input": "FLA f+4",
+      "input_slots": [
+        "FLA f+4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Bounds"
+    },
+    "FLA f+4>3": {
+      "name": "Heel Knife",
+      "input": "FLA f+4>3",
+      "input_slots": [
+        "FLA f+4>3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Stuns on CH"
+    },
+    "FLA f+4>3~f_b": {
+      "name": "Knife Cancel, (FLA)",
+      "input": "FLA f+4>3~f_b",
+      "input_slots": [
+        "FLA f+4>3~f_b"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA f+4>4": {
+      "name": "Grey Snake Lowkick",
+      "input": "FLA f+4>4",
+      "input_slots": [
+        "FLA f+4>4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Juggles on CH"
+    },
+    "FLA f,f+4,3": {
+      "name": "STORK SPIN",
+      "input": "FLA f,f+4,3",
+      "input_slots": [
+        "FLA f,f+4,3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA b+4": {
+      "name": "HEEL LANCE",
+      "input": "FLA b+4",
+      "input_slots": [
+        "FLA b+4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA FC+4,3,3>3": {
+      "name": "Peck Rash",
+      "input": "FLA FC+4,3,3>3",
+      "input_slots": [
+        "FLA FC+4,3,3>3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA d+4,3,3>3": {
+      "name": "Peck Rash",
+      "input": "FLA d+4,3,3>3",
+      "input_slots": [
+        "FLA d+4,3,3>3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA FC+4,3,3>3~f_b": {
+      "name": "Peck Cancel, (FLA)",
+      "input": "FLA FC+4,3,3>3~f_b",
+      "input_slots": [
+        "FLA FC+4,3,3>3~f_b"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA FC+4,3,3,D+3": {
+      "name": "Peck Needle",
+      "input": "FLA FC+4,3,3,D+3",
+      "input_slots": [
+        "FLA FC+4,3,3,D+3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA d+4,3,3,D+3": {
+      "name": "Peck Needle",
+      "input": "FLA d+4,3,3,D+3",
+      "input_slots": [
+        "FLA d+4,3,3,D+3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA d+4>4>4": {
+      "name": "Axe Kick Combo",
+      "input": "FLA d+4>4>4",
+      "input_slots": [
+        "FLA d+4>4>4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA u+4": {
+      "name": "Concussion Kick",
+      "input": "FLA u+4",
+      "input_slots": [
+        "FLA u+4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Stuns"
+    },
+    "FLA u+4,3": {
+      "name": "Twisting Face Kick",
+      "input": "FLA u+4,3",
+      "input_slots": [
+        "FLA u+4,3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA u/f+4": {
+      "name": "Hopkick",
+      "input": "FLA u/f+4",
+      "input_slots": [
+        "FLA u/f+4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Juggles"
+    },
+    "FLA u/b+4": {
+      "name": "Fading Kick",
+      "input": "FLA u/b+4",
+      "input_slots": [
+        "FLA u/b+4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA d/b+4": {
+      "name": "Cobra Sweep",
+      "input": "FLA d/b+4",
+      "input_slots": [
+        "FLA d/b+4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Juggles"
+    },
+    "FLA WS+4>4>3": {
+      "name": "Albatross",
+      "input": "FLA WS+4>4>3",
+      "input_slots": [
+        "FLA WS+4>4>3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA WS+4>4>3~f_b": {
+      "name": "Albatross Cancel, (FLA)",
+      "input": "FLA WS+4>4>3~f_b",
+      "input_slots": [
+        "FLA WS+4>4>3~f_b"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA WS+4>4": {
+      "name": "Axekicks",
+      "input": "FLA WS+4>4",
+      "input_slots": [
+        "FLA WS+4>4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA WS+4>4>4": {
+      "name": "Grey Snake Lowkick",
+      "input": "FLA WS+4>4>4",
+      "input_slots": [
+        "FLA WS+4>4>4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Juggles on CH"
+    },
+    "FLA BT 4": {
+      "name": "Reverse Midkick",
+      "input": "FLA BT 4",
+      "input_slots": [
+        "FLA BT 4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA b,b~u/b": {
+      "name": "Walljump Punch",
+      "input": "FLA b,b~u/b",
+      "input_slots": [
+        "FLA b,b~u/b"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Against Wall"
+    },
+    "FLA b+1+2": {
+      "name": "Mid/High Punch Parry",
+      "input": "FLA b+1+2",
+      "input_slots": [
+        "FLA b+1+2"
+      ],
+      "move_class": "reversal",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA b+1+2,3": {
+      "name": "Kick Retribution",
+      "input": "FLA b+1+2,3",
+      "input_slots": [
+        "FLA b+1+2,3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). After Successful Parry"
+    },
+    "FLA d/b+3+4": {
+      "name": "Heel Explosion",
+      "input": "FLA d/b+3+4",
+      "input_slots": [
+        "FLA d/b+3+4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Unblockable"
+    },
+    "FLA d/b+3+4,b,b": {
+      "name": "Explosion Cancel, (FLA)",
+      "input": "FLA d/b+3+4,b,b",
+      "input_slots": [
+        "FLA d/b+3+4,b,b"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA b,b+3+4": {
+      "name": "Hurricane Explosion",
+      "input": "FLA b,b+3+4",
+      "input_slots": [
+        "FLA b,b+3+4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Unblockable"
+    },
+    "FLA f_b": {
+      "name": "Flamingo Step",
+      "input": "FLA f_b",
+      "input_slots": [
+        "FLA f_b"
+      ],
+      "move_class": "stance",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA u_d": {
+      "name": "Flamingo Sidestep",
+      "input": "FLA u_d",
+      "input_slots": [
+        "FLA u_d"
+      ],
+      "move_class": "stance",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA 1,2,3,3,3": {
+      "name": "1-2 Punches, Butterfly Kicks",
+      "input": "FLA 1,2,3,3,3",
+      "input_slots": [
+        "FLA 1,2,3,3,3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA 1,2,3,3,3,4": {
+      "name": "Monarch Kick",
+      "input": "FLA 1,2,3,3,3,4",
+      "input_slots": [
+        "FLA 1,2,3,3,3,4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA 1,2,3,3,3,d+4": {
+      "name": "Butterfly Needle",
+      "input": "FLA 1,2,3,3,3,d+4",
+      "input_slots": [
+        "FLA 1,2,3,3,3,d+4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA 1,2,3,4>3": {
+      "name": "1-2 Punches, Break Blade",
+      "input": "FLA 1,2,3,4>3",
+      "input_slots": [
+        "FLA 1,2,3,4>3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Juggles"
+    },
+    "FLA 1,2,3,3,4>4": {
+      "name": "1-2 Punches, Black Widow",
+      "input": "FLA 1,2,3,3,4>4",
+      "input_slots": [
+        "FLA 1,2,3,3,4>4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA 1,2,3,3,4>4>3": {
+      "name": "Widow's Bite",
+      "input": "FLA 1,2,3,3,4>4>3",
+      "input_slots": [
+        "FLA 1,2,3,3,4>4>3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Stuns on CH"
+    },
+    "FLA 1,2,3,3,4>4>3~f_b": {
+      "name": "Widow Cancel, (FLA)",
+      "input": "FLA 1,2,3,3,4>4>3~f_b",
+      "input_slots": [
+        "FLA 1,2,3,3,4>4>3~f_b"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA 1,2,3,3,4>4>4": {
+      "name": "Grey Snake Lowkick",
+      "input": "FLA 1,2,3,3,4>4>4",
+      "input_slots": [
+        "FLA 1,2,3,3,4>4>4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Juggles on CH"
+    },
+    "FLA 1,2,3": {
+      "name": "1-2 Punches, Highkick",
+      "input": "FLA 1,2,3",
+      "input_slots": [
+        "FLA 1,2,3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA 1,2,3~(f_b)": {
+      "name": "Highkick Cancel, (FLA)",
+      "input": "FLA 1,2,3~(f_b)",
+      "input_slots": [
+        "FLA 1,2,3~(f_b)"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA b+1": {
+      "name": "Stealth Needle",
+      "input": "FLA b+1",
+      "input_slots": [
+        "FLA b+1"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Bounds"
+    },
+    "FLA d/f+1,3": {
+      "name": "Mid Slug, Slapkick, (FLA)",
+      "input": "FLA d/f+1,3",
+      "input_slots": [
+        "FLA d/f+1,3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA 1+2": {
+      "name": "Skull Crush",
+      "input": "FLA 1+2",
+      "input_slots": [
+        "FLA 1+2"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA 1+2,4": {
+      "name": "Heel Axe",
+      "input": "FLA 1+2,4",
+      "input_slots": [
+        "FLA 1+2,4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Juggles on CH"
+    },
+    "FLA 2~3": {
+      "name": "Flamingo Fist, (FLA)",
+      "input": "FLA 2~3",
+      "input_slots": [
+        "FLA 2~3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA f+2>1": {
+      "name": "Mantis Rush",
+      "input": "FLA f+2>1",
+      "input_slots": [
+        "FLA f+2>1"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA f+2>1>2": {
+      "name": "Mantis Fist",
+      "input": "FLA f+2>1>2",
+      "input_slots": [
+        "FLA f+2>1>2"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Stuns on CH"
+    },
+    "FLA f+2>1>4": {
+      "name": "Mantis Lowkick",
+      "input": "FLA f+2>1>4",
+      "input_slots": [
+        "FLA f+2>1>4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA d+2": {
+      "name": "Board Splitter",
+      "input": "FLA d+2",
+      "input_slots": [
+        "FLA d+2"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Juggles"
+    },
+    "FLA 3,3": {
+      "name": "Butterfly",
+      "input": "FLA 3,3",
+      "input_slots": [
+        "FLA 3,3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA 3,3~f_b": {
+      "name": "BUTTERFLY CANCEL, (FLA)",
+      "input": "FLA 3,3~f_b",
+      "input_slots": [
+        "FLA 3,3~f_b"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA 3,3,4": {
+      "name": "Wave Needle",
+      "input": "FLA 3,3,4",
+      "input_slots": [
+        "FLA 3,3,4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA 3,3,d+4": {
+      "name": "Butterfly Needle",
+      "input": "FLA 3,3,d+4",
+      "input_slots": [
+        "FLA 3,3,d+4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA 3,4>4": {
+      "name": "Flamingo Python",
+      "input": "FLA 3,4>4",
+      "input_slots": [
+        "FLA 3,4>4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA 3,4>4,3": {
+      "name": "Flamingo Destruction",
+      "input": "FLA 3,4>4,3",
+      "input_slots": [
+        "FLA 3,4>4,3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Stuns on CH"
+    },
+    "FLA 3,4>4,3~f_b": {
+      "name": "Destruction Cancel, (FLA)",
+      "input": "FLA 3,4>4,3~f_b",
+      "input_slots": [
+        "FLA 3,4>4,3~f_b"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA 3,4>4>4": {
+      "name": "Grey Snake Lowkick",
+      "input": "FLA 3,4>4>4",
+      "input_slots": [
+        "FLA 3,4>4>4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Juggles on CH"
+    },
+    "FLA b+3": {
+      "name": "Heel Hunter",
+      "input": "FLA b+3",
+      "input_slots": [
+        "FLA b+3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Bounds"
+    },
+    "FLA f+3": {
+      "name": "Gutbuster Kick",
+      "input": "FLA f+3",
+      "input_slots": [
+        "FLA f+3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA d+3,3,N+3": {
+      "name": "Snake Blade",
+      "input": "FLA d+3,3,N+3",
+      "input_slots": [
+        "FLA d+3,3,N+3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Juggles"
+    },
+    "FLA d+3,3,d+3": {
+      "name": "Snake Bite",
+      "input": "FLA d+3,3,d+3",
+      "input_slots": [
+        "FLA d+3,3,d+3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA u/f+3": {
+      "name": "Jaw Breaker",
+      "input": "FLA u/f+3",
+      "input_slots": [
+        "FLA u/f+3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Juggles"
+    },
+    "FLA 4>4": {
+      "name": "Axe Kicks",
+      "input": "FLA 4>4",
+      "input_slots": [
+        "FLA 4>4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FLA b+3+4": {
+      "name": "FLAMINGO PARRY",
+      "input": "FLA b+3+4",
+      "input_slots": [
+        "FLA b+3+4"
+      ],
+      "move_class": "reversal",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). Parries Low Attacks"
+    },
+    "FLA b+3+4,3": {
+      "name": "FLAMINGO TRAP",
+      "input": "FLA b+3+4,3",
+      "input_slots": [
+        "FLA b+3+4,3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "baek",
+      "merge_source": "ttt2:baek",
+      "note": "TTT2 baek movelist (documented; TTT2/T6 teardown extraction pending). After Successful Parry"
     }
   },
   "restored_from_sweep_338": {

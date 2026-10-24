@@ -7,12 +7,12 @@
   "proxy_note": null,
   "schema_version": 2,
   "frame_convention": "Startup in seconds @60fps. Damage = Tekken values, WH 100HP. Hit ranges from the TTT2 movelist; startups are standard Tekken archetype estimates.",
-  "canon_note": "Menajerii = the Menagerie Soul (roster/vixen), Japanese rendering MENAJERII (menajerii). Roger Jr.'s boxing-kangaroo kit authored FRESH with TEKKEN inputs (owner directive — no Injustice 2 input system): Rocket Stance (b+1+2) and Bobbin Dance (b+3+4) stances, the Giant Swing, Animal Uppercut, twin 10-hit tenstrings. Canon-layered: Heron's Patience (b+1+3 parry stance), Heron Strike (HRN 1), Boar's Commit (f+2+3), Serpent's Economy (d/b+2+3).",
+  "canon_note": "Menajerii = the Menagerie Soul (roster/vixen), Japanese rendering MENAJERII (menajerii). Roger Jr.'s boxing-kangaroo kit authored FRESH with TEKKEN inputs (owner directive \u2014 no Injustice 2 input system): Rocket Stance (b+1+2) and Bobbin Dance (b+3+4) stances, the Giant Swing, Animal Uppercut, twin 10-hit tenstrings. Canon-layered: Heron's Patience (b+1+3 parry stance), Heron Strike (HRN 1), Boar's Commit (f+2+3), Serpent's Economy (d/b+2+3).",
   "stances": [
     "ROS (Rocket Stance, b+1+2)",
     "BOB (Bobbin Dance, b+3+4)",
-    "HRN (Heron's Patience, b+1+3 — canon)",
-    "HBS (Hunting Bear Stance, u+1+2 — hold)"
+    "HRN (Heron's Patience, b+1+3 \u2014 canon)",
+    "HBS (Hunting Bear Stance, u+1+2 \u2014 hold)"
   ],
   "combos": [
     {
@@ -36,6 +36,12 @@
       "note": "Menajerii canon: consult the heron, strike once."
     }
   ],
+  "anim_set_lock": {
+    "law": "SHOW-ANIMATION LOCK (owner 2026-10-23)",
+    "FIGHT": "every move in this file: moveset moves and combat stances \u2014 the combat animation bank",
+    "SHOW": "win poses, intro poses, taunts, cutscene animations \u2014 intro/win slots and cutscenes ONLY; tracked in docs/anim/TTT2-ROGER-ANIM-GAP-20261023.md; must NEVER enter this moveset without the user's explicit approval",
+    "note": "per-move 'set' tags stamp what each pull lane added; the file itself is the FIGHT set"
+  },
   "moves": {
     "1+3": {
       "name": "Head Stomp",
@@ -217,12 +223,7 @@
       "heavy": false,
       "knock": 0.0,
       "soulGain": 5,
-      "tekken_base": "Roger Jr. (TTT2)",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "tekken_base": "Roger Jr. (TTT2)"
     },
     "1,2": {
       "name": "Left Right Combo",
@@ -242,12 +243,7 @@
       "string": [
         "1",
         "1,2"
-      ],
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      ]
     },
     "1,2,1": {
       "name": "Left Right Body Blow",
@@ -268,12 +264,7 @@
         "1",
         "1,2",
         "1,2,1"
-      ],
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      ]
     },
     "1,2,2": {
       "name": "Left Right Arrow",
@@ -294,12 +285,7 @@
         "1",
         "1,2",
         "1,2,2"
-      ],
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      ]
     },
     "1,2,3": {
       "name": "One Two Kangaroo Combo",
@@ -320,12 +306,7 @@
         "1",
         "1,2",
         "1,2,3"
-      ],
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      ]
     },
     "1,2,b+1+2": {
       "name": "Left Right Rocket Stance",
@@ -348,12 +329,7 @@
         "1",
         "1,2",
         "1,2,b+1+2"
-      ],
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      ]
     },
     "2": {
       "name": "Right Punch",
@@ -369,12 +345,7 @@
       "heavy": false,
       "knock": 0.0,
       "soulGain": 5,
-      "tekken_base": "Roger Jr. (TTT2)",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "tekken_base": "Roger Jr. (TTT2)"
     },
     "2,1": {
       "name": "Jab Uppercut",
@@ -394,12 +365,7 @@
       "string": [
         "2",
         "2,1"
-      ],
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      ]
     },
     "3~4": {
       "name": "Spinning Tail Whip",
@@ -416,12 +382,7 @@
       "knock": 1.5,
       "soulGain": 5,
       "tekken_base": "Roger Jr. (TTT2)",
-      "note": "Two-hit tail spin.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Two-hit tail spin."
     },
     "1+2,3": {
       "name": "Double Spin Castanet Kick",
@@ -441,12 +402,7 @@
       "string": [
         "1+2",
         "1+2,3"
-      ],
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      ]
     },
     "1+2,4": {
       "name": "Double Spin Animal Sweep",
@@ -466,12 +422,7 @@
       "string": [
         "1+2",
         "1+2,4"
-      ],
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      ]
     },
     "3+4": {
       "name": "Castanet Kick",
@@ -487,12 +438,7 @@
       "heavy": false,
       "knock": 2.0,
       "soulGain": 5,
-      "tekken_base": "Roger Jr. (TTT2)",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "tekken_base": "Roger Jr. (TTT2)"
     },
     "f+3": {
       "name": "Outback Stomp",
@@ -508,12 +454,7 @@
       "heavy": false,
       "knock": 0.0,
       "soulGain": 5,
-      "tekken_base": "Roger Jr. (TTT2)",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "tekken_base": "Roger Jr. (TTT2)"
     },
     "f+4,3,2": {
       "name": "Ayer's Rock",
@@ -535,12 +476,7 @@
         "f+4",
         "f+4,3",
         "f+4,3,2"
-      ],
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      ]
     },
     "f+1+2,2": {
       "name": "Animal Gigaton Punch",
@@ -560,12 +496,7 @@
       "string": [
         "f+1+2",
         "f+1+2,2"
-      ],
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      ]
     },
     "f+3+4": {
       "name": "Animal Drop Kick",
@@ -581,12 +512,7 @@
       "heavy": true,
       "knock": 3.5,
       "soulGain": 5,
-      "tekken_base": "Roger Jr. (TTT2)",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "tekken_base": "Roger Jr. (TTT2)"
     },
     "d/f+1,2": {
       "name": "Elbow Slap Combo",
@@ -606,12 +532,7 @@
       "string": [
         "d/f+1",
         "d/f+1,2"
-      ],
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      ]
     },
     "d/f+2": {
       "name": "Bandicoot Bomb",
@@ -627,12 +548,7 @@
       "heavy": false,
       "knock": 0.0,
       "soulGain": 5,
-      "tekken_base": "Roger Jr. (TTT2)",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "tekken_base": "Roger Jr. (TTT2)"
     },
     "d/f+3": {
       "name": "Tail Flail",
@@ -648,12 +564,7 @@
       "heavy": false,
       "knock": 0.0,
       "soulGain": 5,
-      "tekken_base": "Roger Jr. (TTT2)",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "tekken_base": "Roger Jr. (TTT2)"
     },
     "d/f+3,3": {
       "name": "Double Tail Flail",
@@ -673,12 +584,7 @@
       "string": [
         "d/f+3",
         "d/f+3,3"
-      ],
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      ]
     },
     "d/f+4": {
       "name": "Right Cross Kick",
@@ -694,12 +600,7 @@
       "heavy": false,
       "knock": 0.0,
       "soulGain": 5,
-      "tekken_base": "Roger Jr. (TTT2)",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "tekken_base": "Roger Jr. (TTT2)"
     },
     "d/f+1+2": {
       "name": "Animal Headbutt",
@@ -715,12 +616,7 @@
       "heavy": false,
       "knock": 1.5,
       "soulGain": 5,
-      "tekken_base": "Roger Jr. (TTT2)",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "tekken_base": "Roger Jr. (TTT2)"
     },
     "d/f+3+4": {
       "name": "Animal Rampage",
@@ -738,12 +634,7 @@
       "soulGain": 5,
       "tekken_base": "Roger Jr. (TTT2)",
       "note": "Unblockable rampage throw.",
-      "unblockable_throw": true,
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable_throw": true
     },
     "d+1,N,2": {
       "name": "Jab Uppercut (crouch)",
@@ -763,12 +654,7 @@
       "string": [
         "d+1",
         "d+1,N,2"
-      ],
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      ]
     },
     "d+2": {
       "name": "Diving Low Punch",
@@ -784,12 +670,7 @@
       "heavy": false,
       "knock": 0.0,
       "soulGain": 5,
-      "tekken_base": "Roger Jr. (TTT2)",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "tekken_base": "Roger Jr. (TTT2)"
     },
     "d+1+2,1+2,2": {
       "name": "Animal Roundhouse",
@@ -806,12 +687,7 @@
       "knock": 3.0,
       "soulGain": 5,
       "tekken_base": "Roger Jr. (TTT2)",
-      "note": "Five-hit roundhouse.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Five-hit roundhouse."
     },
     "d+3+4": {
       "name": "Tail Mopping",
@@ -827,12 +703,7 @@
       "heavy": false,
       "knock": 0.0,
       "soulGain": 5,
-      "tekken_base": "Roger Jr. (TTT2)",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "tekken_base": "Roger Jr. (TTT2)"
     },
     "d/b+3": {
       "name": "Tail Tripper",
@@ -849,12 +720,7 @@
       "knock": 2.5,
       "soulGain": 5,
       "tekken_base": "Roger Jr. (TTT2)",
-      "note": "Knockdown low.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Knockdown low."
     },
     "d/b+4": {
       "name": "Animal Kick Rush start",
@@ -870,12 +736,7 @@
       "heavy": false,
       "knock": 0.0,
       "soulGain": 5,
-      "tekken_base": "Roger Jr. (TTT2)",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "tekken_base": "Roger Jr. (TTT2)"
     },
     "d/b+4,3,4,3,4": {
       "name": "Animal Kick Rush",
@@ -892,12 +753,7 @@
       "knock": 2.5,
       "soulGain": 5,
       "tekken_base": "Roger Jr. (TTT2)",
-      "note": "Five-hit kick rush.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Five-hit kick rush."
     },
     "d/b+1+2": {
       "name": "Kangaroo Attack",
@@ -913,12 +769,7 @@
       "heavy": true,
       "knock": 3.5,
       "soulGain": 5,
-      "tekken_base": "Roger Jr. (TTT2)",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "tekken_base": "Roger Jr. (TTT2)"
     },
     "d/b+3+4": {
       "name": "Generation Uppercut",
@@ -934,12 +785,7 @@
       "heavy": true,
       "knock": 4.5,
       "soulGain": 5,
-      "tekken_base": "Roger Jr. (TTT2)",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "tekken_base": "Roger Jr. (TTT2)"
     },
     "b+2,3": {
       "name": "Space Comet start",
@@ -959,12 +805,7 @@
       "string": [
         "b+2",
         "b+2,3"
-      ],
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      ]
     },
     "b+2,3,3+4": {
       "name": "Space Comet",
@@ -986,12 +827,7 @@
         "b+2",
         "b+2,3",
         "b+2,3,3+4"
-      ],
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      ]
     },
     "b+2,4": {
       "name": "Space Walk",
@@ -1011,12 +847,7 @@
       "string": [
         "b+2",
         "b+2,4"
-      ],
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      ]
     },
     "b+3": {
       "name": "Reverse Bicycle Kick",
@@ -1032,12 +863,7 @@
       "heavy": false,
       "knock": 0.0,
       "soulGain": 5,
-      "tekken_base": "Roger Jr. (TTT2)",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "tekken_base": "Roger Jr. (TTT2)"
     },
     "b+4": {
       "name": "Spinning Snap Kick",
@@ -1053,12 +879,7 @@
       "heavy": false,
       "knock": 0.0,
       "soulGain": 5,
-      "tekken_base": "Roger Jr. (TTT2)",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "tekken_base": "Roger Jr. (TTT2)"
     },
     "b+1+2": {
       "name": "Rocket Stance",
@@ -1076,12 +897,7 @@
       "soulGain": 5,
       "tekken_base": "Roger Jr. (TTT2)",
       "note": "Enters Rocket Stance.",
-      "enter_stance": "ROS",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "enter_stance": "ROS"
     },
     "b+3+4": {
       "name": "Bobbin Dance",
@@ -1099,12 +915,7 @@
       "soulGain": 5,
       "tekken_base": "Roger Jr. (TTT2)",
       "note": "Enters Bobbin Dance.",
-      "enter_stance": "BOB",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "enter_stance": "BOB"
     },
     "b+1+4": {
       "name": "Wind Up Punch",
@@ -1121,12 +932,7 @@
       "knock": 5.0,
       "soulGain": 8,
       "tekken_base": "Roger Jr. (TTT2)",
-      "note": "Charged unblockable.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Charged unblockable."
     },
     "ROS F": {
       "name": "Road Runner",
@@ -1144,12 +950,7 @@
       "soulGain": 5,
       "tekken_base": "Roger Jr. (TTT2)",
       "note": "Rocket Stance dash attack.",
-      "stance": "ROS",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "stance": "ROS"
     },
     "ROS D/F": {
       "name": "Running Start",
@@ -1167,12 +968,7 @@
       "soulGain": 5,
       "tekken_base": "Roger Jr. (TTT2)",
       "note": "Rocket Stance run.",
-      "stance": "ROS",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "stance": "ROS"
     },
     "ROS 1": {
       "name": "Wind-up Hook",
@@ -1189,12 +985,7 @@
       "knock": 2.5,
       "soulGain": 5,
       "tekken_base": "Roger Jr. (TTT2)",
-      "stance": "ROS",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "stance": "ROS"
     },
     "ROS 2": {
       "name": "Wind-up Straight",
@@ -1211,12 +1002,7 @@
       "knock": 3.0,
       "soulGain": 5,
       "tekken_base": "Roger Jr. (TTT2)",
-      "stance": "ROS",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "stance": "ROS"
     },
     "ROS 3": {
       "name": "Wind-up Low Kick",
@@ -1233,12 +1019,7 @@
       "knock": 0.0,
       "soulGain": 5,
       "tekken_base": "Roger Jr. (TTT2)",
-      "stance": "ROS",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "stance": "ROS"
     },
     "ROS 4": {
       "name": "Wind-up Middle Kick",
@@ -1255,12 +1036,7 @@
       "knock": 0.0,
       "soulGain": 5,
       "tekken_base": "Roger Jr. (TTT2)",
-      "stance": "ROS",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "stance": "ROS"
     },
     "ROS 1+2": {
       "name": "Road Roller",
@@ -1278,12 +1054,7 @@
       "soulGain": 5,
       "tekken_base": "Roger Jr. (TTT2)",
       "note": "Three-hit roller.",
-      "stance": "ROS",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "stance": "ROS"
     },
     "ROS 3+4": {
       "name": "Wind-up Hip Press",
@@ -1300,12 +1071,7 @@
       "knock": 3.0,
       "soulGain": 5,
       "tekken_base": "Roger Jr. (TTT2)",
-      "stance": "ROS",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "stance": "ROS"
     },
     "BOB 1": {
       "name": "Windmill Punch",
@@ -1322,12 +1088,7 @@
       "knock": 2.5,
       "soulGain": 5,
       "tekken_base": "Roger Jr. (TTT2)",
-      "stance": "BOB",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "stance": "BOB"
     },
     "BOB 2": {
       "name": "Galaxy Uppercut",
@@ -1345,12 +1106,7 @@
       "soulGain": 5,
       "tekken_base": "Roger Jr. (TTT2)",
       "stance": "BOB",
-      "launcher": true,
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "launcher": true
     },
     "u/b+3": {
       "name": "Animal Yo-Yo",
@@ -1367,12 +1123,7 @@
       "knock": 0.0,
       "soulGain": 5,
       "tekken_base": "Roger Jr. (TTT2)",
-      "note": "Three-hit air spin.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Three-hit air spin."
     },
     "u+2": {
       "name": "Elbow Drop",
@@ -1390,12 +1141,7 @@
       "heavy": true,
       "knock": 4.0,
       "soulGain": 5,
-      "tekken_base": "Roger Jr. (TTT2)",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "tekken_base": "Roger Jr. (TTT2)"
     },
     "u+3,3": {
       "name": "Helicopter Kick",
@@ -1416,12 +1162,7 @@
       "string": [
         "u+3",
         "u+3,3"
-      ],
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      ]
     },
     "u+4": {
       "name": "Rising Toe Kick",
@@ -1439,12 +1180,7 @@
       "heavy": false,
       "knock": 0.0,
       "soulGain": 5,
-      "tekken_base": "Roger Jr. (TTT2)",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "tekken_base": "Roger Jr. (TTT2)"
     },
     "u/f+1+2": {
       "name": "Capital Punishment",
@@ -1460,12 +1196,7 @@
       "heavy": false,
       "knock": 3.0,
       "soulGain": 5,
-      "tekken_base": "Roger Jr. (TTT2)",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "tekken_base": "Roger Jr. (TTT2)"
     },
     "u+3+4": {
       "name": "Kangaroo Stomp",
@@ -1483,12 +1214,7 @@
       "heavy": true,
       "knock": 3.5,
       "soulGain": 5,
-      "tekken_base": "Roger Jr. (TTT2)",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "tekken_base": "Roger Jr. (TTT2)"
     },
     "f,f+2": {
       "name": "Sliding Hook",
@@ -1504,12 +1230,7 @@
       "heavy": false,
       "knock": 2.5,
       "soulGain": 5,
-      "tekken_base": "Roger Jr. (TTT2)",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "tekken_base": "Roger Jr. (TTT2)"
     },
     "f,f+4": {
       "name": "Konvict Kick",
@@ -1525,12 +1246,7 @@
       "heavy": false,
       "knock": 0.0,
       "soulGain": 5,
-      "tekken_base": "Roger Jr. (TTT2)",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "tekken_base": "Roger Jr. (TTT2)"
     },
     "f,f+1+2": {
       "name": "Head First Lunge",
@@ -1548,12 +1264,7 @@
       "soulGain": 5,
       "tekken_base": "Roger Jr. (TTT2)",
       "note": "Guard break.",
-      "guardbreak": true,
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "guardbreak": true
     },
     "f,f+3+4": {
       "name": "Exploder",
@@ -1569,12 +1280,7 @@
       "heavy": false,
       "knock": 3.0,
       "soulGain": 5,
-      "tekken_base": "Roger Jr. (TTT2)",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "tekken_base": "Roger Jr. (TTT2)"
     },
     "f,N,d,d/f+1": {
       "name": "Animal Uppercut",
@@ -1593,12 +1299,7 @@
       "tekken_base": "Roger Jr. (TTT2)",
       "note": "Roger's EWGF-equivalent launcher.",
       "launcher": true,
-      "electric": true,
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "electric": true
     },
     "f,N,d,d/f+1+2": {
       "name": "Animal Smash",
@@ -1615,12 +1316,7 @@
       "knock": 3.5,
       "soulGain": 5,
       "tekken_base": "Roger Jr. (TTT2)",
-      "electric": true,
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "electric": true
     },
     "f,f,f+3": {
       "name": "Baiame's Spear",
@@ -1636,12 +1332,7 @@
       "heavy": true,
       "knock": 4.0,
       "soulGain": 5,
-      "tekken_base": "Roger Jr. (TTT2)",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "tekken_base": "Roger Jr. (TTT2)"
     },
     "f,f,f+3+4": {
       "name": "Running Exploder",
@@ -1657,12 +1348,7 @@
       "heavy": true,
       "knock": 4.5,
       "soulGain": 5,
-      "tekken_base": "Roger Jr. (TTT2)",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "tekken_base": "Roger Jr. (TTT2)"
     },
     "WR 4,2": {
       "name": "Spinning Uppercut",
@@ -1679,12 +1365,7 @@
       "knock": 2.5,
       "soulGain": 5,
       "tekken_base": "Roger Jr. (TTT2)",
-      "note": "While-running low-mid.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "While-running low-mid."
     },
     "WR 4,4,4": {
       "name": "Stagger Kicks",
@@ -1701,12 +1382,7 @@
       "knock": 0.0,
       "soulGain": 5,
       "tekken_base": "Roger Jr. (TTT2)",
-      "note": "While-running triple low.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "While-running triple low."
     },
     "WS+2,2": {
       "name": "Boomerang Punch",
@@ -1726,12 +1402,7 @@
       "string": [
         "WS+2",
         "WS+2,2"
-      ],
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      ]
     },
     "WS+3,3": {
       "name": "Spring Stomp Kick",
@@ -1751,12 +1422,7 @@
       "string": [
         "WS+3",
         "WS+3,3"
-      ],
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      ]
     },
     "WS+3,3~hold": {
       "name": "Charge Stomp Kick",
@@ -1773,12 +1439,7 @@
       "knock": 3.0,
       "soulGain": 5,
       "tekken_base": "Roger Jr. (TTT2)",
-      "note": "Charged stomp.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Charged stomp."
     },
     "WS+4": {
       "name": "Toe Smash",
@@ -1794,12 +1455,7 @@
       "heavy": false,
       "knock": 0.0,
       "soulGain": 5,
-      "tekken_base": "Roger Jr. (TTT2)",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "tekken_base": "Roger Jr. (TTT2)"
     },
     "FC,d/f+2": {
       "name": "Crouching Uppercut",
@@ -1815,12 +1471,7 @@
       "heavy": false,
       "knock": 3.0,
       "soulGain": 5,
-      "tekken_base": "Roger Jr. (TTT2)",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "tekken_base": "Roger Jr. (TTT2)"
     },
     "SS+4": {
       "name": "Animal Sweep",
@@ -1836,12 +1487,7 @@
       "heavy": false,
       "knock": 0.0,
       "soulGain": 5,
-      "tekken_base": "Roger Jr. (TTT2)",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "tekken_base": "Roger Jr. (TTT2)"
     },
     "BT 3+4": {
       "name": "Shrimp Kick",
@@ -1858,12 +1504,7 @@
       "knock": 3.0,
       "soulGain": 5,
       "tekken_base": "Roger Jr. (TTT2)",
-      "note": "Back-turned.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Back-turned."
     },
     "BT d+3": {
       "name": "Dingo Kick",
@@ -1880,12 +1521,7 @@
       "knock": 0.0,
       "soulGain": 5,
       "tekken_base": "Roger Jr. (TTT2)",
-      "note": "Back-turned low.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Back-turned low."
     },
     "10hit-a": {
       "name": "Tenstring A (10-hit)",
@@ -1903,12 +1539,7 @@
       "soulGain": 5,
       "tekken_base": "Roger Jr. (TTT2)",
       "note": "Signature 10-hit combo A.",
-      "combo10": true,
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "combo10": true
     },
     "10hit-b": {
       "name": "Tenstring B (10-hit)",
@@ -1926,12 +1557,7 @@
       "soulGain": 5,
       "tekken_base": "Roger Jr. (TTT2)",
       "note": "Signature 10-hit combo B.",
-      "combo10": true,
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "combo10": true
     },
     "b+1+3": {
       "name": "Heron's Patience",
@@ -1948,15 +1574,10 @@
       "knock": 0.0,
       "soulGain": 5,
       "tekken_base": "Roger Jr. (TTT2)",
-      "note": "Menajerii canon: the heron's consultation — a parry stance. Beats highs/mids, feeds the boar.",
+      "note": "Menajerii canon: the heron's consultation \u2014 a parry stance. Beats highs/mids, feeds the boar.",
       "canon_layer": true,
       "parry": true,
-      "enter_stance": "HRN",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "enter_stance": "HRN"
     },
     "HRN 1": {
       "name": "Heron Strike",
@@ -1973,14 +1594,9 @@
       "knock": 3.0,
       "soulGain": 8,
       "tekken_base": "Roger Jr. (TTT2)",
-      "note": "Menajerii canon: from Heron's Patience — a single precise beak-strike.",
+      "note": "Menajerii canon: from Heron's Patience \u2014 a single precise beak-strike.",
       "canon_layer": true,
-      "stance": "HRN",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "stance": "HRN"
     },
     "f+2+3": {
       "name": "Boar's Commit",
@@ -1997,14 +1613,9 @@
       "knock": 4.5,
       "soulGain": 8,
       "tekken_base": "Roger Jr. (TTT2)",
-      "note": "Menajerii canon: the boar's consultation — armored shoulder charge, power crush.",
+      "note": "Menajerii canon: the boar's consultation \u2014 armored shoulder charge, power crush.",
       "canon_layer": true,
-      "powercrush": true,
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "powercrush": true
     },
     "d/b+2+3": {
       "name": "Serpent's Economy",
@@ -2021,15 +1632,10 @@
       "knock": 3.0,
       "soulGain": 8,
       "tekken_base": "Roger Jr. (TTT2)",
-      "note": "Menajerii canon: the snake's consultation — low crush counter, minimal motion.",
+      "note": "Menajerii canon: the snake's consultation \u2014 low crush counter, minimal motion.",
       "canon_layer": true,
       "counter": true,
-      "lowcrush": true,
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "lowcrush": true
     },
     "1+2": {
       "name": "Double Paw Slam",
@@ -2046,12 +1652,7 @@
       "knock": 0.0,
       "soulGain": 5,
       "tekken_base": "Kuma (Tekken 7)",
-      "note": "Pulled from the Tekken 7 frame-data bank: 17 [20] dmg, i17, -11 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 17 [20] dmg, i17, -11 on block."
     },
     "1+2,1+2": {
       "name": "Double Paw Echo",
@@ -2072,12 +1673,7 @@
         "1+2",
         "1+2,1+2"
       ],
-      "note": "Pulled from the Tekken 7 frame-data bank: 17 [20], 16 dmg, i17, -18 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 17 [20], 16 dmg, i17, -18 on block."
     },
     "1+2,1+2,1+2": {
       "name": "Triple Paw Slam",
@@ -2099,12 +1695,7 @@
         "1+2,1+2",
         "1+2,1+2,1+2"
       ],
-      "note": "Pulled from the Tekken 7 frame-data bank: 17 [20], 16, 18 dmg, i17, -22 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 17 [20], 16, 18 dmg, i17, -22 on block."
     },
     "f+1": {
       "name": "Spirit Claw Jab",
@@ -2121,12 +1712,7 @@
       "knock": 0.0,
       "soulGain": 5,
       "tekken_base": "Kuma (Tekken 7)",
-      "note": "Pulled from the Tekken 7 frame-data bank: 7 [8] dmg, i10, +1 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 7 [8] dmg, i10, +1 on block."
     },
     "f+1,1": {
       "name": "Claw Flurry",
@@ -2147,12 +1733,7 @@
         "f+1",
         "f+1,1"
       ],
-      "note": "Pulled from the Tekken 7 frame-data bank: 7 [8], 8 dmg, i10, -15 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 7 [8], 8 dmg, i10, -15 on block."
     },
     "f+2": {
       "name": "Raking Swipe",
@@ -2169,12 +1750,7 @@
       "knock": 0.0,
       "soulGain": 5,
       "tekken_base": "Kuma (Tekken 7)",
-      "note": "Pulled from the Tekken 7 frame-data bank: 11 [13] dmg, i13, -13 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 11 [13] dmg, i13, -13 on block."
     },
     "f+2,1": {
       "name": "Rake and Gnaw",
@@ -2195,12 +1771,7 @@
         "f+2",
         "f+2,1"
       ],
-      "note": "Pulled from the Tekken 7 frame-data bank: 11 [13], 20 dmg, i13, -5 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 11 [13], 20 dmg, i13, -5 on block."
     },
     "f+1+2": {
       "name": "Savage Mauling",
@@ -2217,12 +1788,7 @@
       "knock": 2.0,
       "soulGain": 5,
       "tekken_base": "Kuma (Tekken 7)",
-      "note": "Pulled from the Tekken 7 frame-data bank: 25 [30] dmg, i17, -12 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 25 [30] dmg, i17, -12 on block."
     },
     "2,1,2": {
       "name": "Pack Hunt Cross",
@@ -2244,12 +1810,7 @@
         "2,1",
         "2,1,2"
       ],
-      "note": "Pulled from the Tekken 7 frame-data bank: 10 [12], 11, 22 dmg, i10, -14 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 10 [12], 11, 22 dmg, i10, -14 on block."
     },
     "2,1,3": {
       "name": "Pack Hunt Sweep",
@@ -2271,12 +1832,7 @@
         "2,1",
         "2,1,3"
       ],
-      "note": "Pulled from the Tekken 7 frame-data bank: 10 [12], 11, 13 dmg, i10, -13 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 10 [12], 11, 13 dmg, i10, -13 on block."
     },
     "3": {
       "name": "Heavy Paw",
@@ -2293,12 +1849,7 @@
       "knock": 2.5,
       "soulGain": 5,
       "tekken_base": "Kuma (Tekken 7)",
-      "note": "Pulled from the Tekken 7 frame-data bank: 25 [30] dmg, i18, -5 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 25 [30] dmg, i18, -5 on block."
     },
     "4": {
       "name": "Backhand Claw",
@@ -2315,12 +1866,7 @@
       "knock": 0.0,
       "soulGain": 5,
       "tekken_base": "Kuma (Tekken 7)",
-      "note": "Pulled from the Tekken 7 frame-data bank: 20 [24] dmg, i14, -6 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 20 [24] dmg, i14, -6 on block."
     },
     "b+2": {
       "name": "Retreating Swipe",
@@ -2337,12 +1883,7 @@
       "knock": 0.0,
       "soulGain": 5,
       "tekken_base": "Kuma (Tekken 7)",
-      "note": "Pulled from the Tekken 7 frame-data bank: 12 [14] dmg, i15, -9 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 12 [14] dmg, i15, -9 on block."
     },
     "b+2,1": {
       "name": "Swipe and Snap",
@@ -2363,12 +1904,7 @@
         "b+2",
         "b+2,1"
       ],
-      "note": "Pulled from the Tekken 7 frame-data bank: 12 [14], 14 dmg, i15, -3 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 12 [14], 14 dmg, i15, -3 on block."
     },
     "b+2,1,1+2": {
       "name": "Savage Combination",
@@ -2390,12 +1926,7 @@
         "b+2,1",
         "b+2,1,1+2"
       ],
-      "note": "Pulled from the Tekken 7 frame-data bank: 12 [14], 14, 20 dmg, i15, -11 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 12 [14], 14, 20 dmg, i15, -11 on block."
     },
     "b+3~4": {
       "name": "Stalker Stomp",
@@ -2412,12 +1943,7 @@
       "knock": 2.5,
       "soulGain": 5,
       "tekken_base": "Kuma (Tekken 7)",
-      "note": "Pulled from the Tekken 7 frame-data bank: 10 [12], 15 dmg, i22, -19 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 10 [12], 15 dmg, i22, -19 on block."
     },
     "b,f+2": {
       "name": "Leaping Mauling",
@@ -2438,12 +1964,7 @@
         "b",
         "b,f+2"
       ],
-      "note": "Pulled from the Tekken 7 frame-data bank: 23 [27] dmg, i16, -8 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 23 [27] dmg, i16, -8 on block."
     },
     "b,f+2+3": {
       "name": "Burrowing Claws",
@@ -2464,12 +1985,7 @@
         "b",
         "b,f+2+3"
       ],
-      "note": "Pulled from the Tekken 7 frame-data bank: 30 [36] dmg, i37, -12 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 30 [36] dmg, i37, -12 on block."
     },
     "b,d/b,d,d/f+2": {
       "name": "Spiraling Pounce",
@@ -2492,12 +2008,7 @@
         "b,d/b,d",
         "b,d/b,d,d/f+2"
       ],
-      "note": "Pulled from the Tekken 7 frame-data bank: 18 [21] dmg, i18, -8 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 18 [21] dmg, i18, -8 on block."
     },
     "b,d/b,d,d/f+2,1": {
       "name": "Pounce Fang",
@@ -2521,12 +2032,7 @@
         "b,d/b,d,d/f+2",
         "b,d/b,d,d/f+2,1"
       ],
-      "note": "Pulled from the Tekken 7 frame-data bank: 18 [21], 25 dmg, i18, -14 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 18 [21], 25 dmg, i18, -14 on block."
     },
     "b,d/b,d,d/f+2,2": {
       "name": "Pounce Rip",
@@ -2550,12 +2056,7 @@
         "b,d/b,d,d/f+2",
         "b,d/b,d,d/f+2,2"
       ],
-      "note": "Pulled from the Tekken 7 frame-data bank: 18 [21], 22 dmg, i18, -18 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 18 [21], 22 dmg, i18, -18 on block."
     },
     "d/f+1": {
       "name": "Quick Scratch",
@@ -2572,12 +2073,7 @@
       "knock": 0.0,
       "soulGain": 5,
       "tekken_base": "Kuma (Tekken 7)",
-      "note": "Pulled from the Tekken 7 frame-data bank: 6 [7] dmg, i15, -9 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 6 [7] dmg, i15, -9 on block."
     },
     "d/f+3,2": {
       "name": "Scratch and Slam",
@@ -2598,12 +2094,7 @@
         "d/f+3",
         "d/f+3,2"
       ],
-      "note": "Pulled from the Tekken 7 frame-data bank: 13 [15], 24 dmg, i16, -5 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 13 [15], 24 dmg, i16, -5 on block."
     },
     "d/f+1,2,1": {
       "name": "Claw Dance",
@@ -2625,12 +2116,7 @@
         "d/f+1,2",
         "d/f+1,2,1"
       ],
-      "note": "Pulled from the Tekken 7 frame-data bank: 6 [7], 9, 9 dmg, i15, -4 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 6 [7], 9, 9 dmg, i15, -4 on block."
     },
     "d/f+1,2,1,2": {
       "name": "Claw Dance Finale",
@@ -2653,12 +2139,7 @@
         "d/f+1,2,1",
         "d/f+1,2,1,2"
       ],
-      "note": "Pulled from the Tekken 7 frame-data bank: 6 [7], 9, 9, 10 dmg, i15, -11 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 6 [7], 9, 9, 10 dmg, i15, -11 on block."
     },
     "d+1+2": {
       "name": "Ground Pound",
@@ -2675,12 +2156,7 @@
       "knock": 2.5,
       "soulGain": 5,
       "tekken_base": "Kuma (Tekken 7)",
-      "note": "Pulled from the Tekken 7 frame-data bank: 28 [33] dmg, i14, -15 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 28 [33] dmg, i14, -15 on block."
     },
     "d/b+1": {
       "name": "Rising Maul",
@@ -2697,12 +2173,7 @@
       "knock": 0.0,
       "soulGain": 5,
       "tekken_base": "Kuma (Tekken 7)",
-      "note": "Pulled from the Tekken 7 frame-data bank: 14 [16] dmg, i12, -7 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 14 [16] dmg, i12, -7 on block."
     },
     "d/b+1,2": {
       "name": "Rising Maul Pair",
@@ -2723,12 +2194,7 @@
         "d/b+1",
         "d/b+1,2"
       ],
-      "note": "Pulled from the Tekken 7 frame-data bank: 14 [16], 20 dmg, i12, -13 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 14 [16], 20 dmg, i12, -13 on block."
     },
     "d/b+2": {
       "name": "Paw Trip",
@@ -2745,12 +2211,7 @@
       "knock": 0.0,
       "soulGain": 5,
       "tekken_base": "Kuma (Tekken 7)",
-      "note": "Pulled from the Tekken 7 frame-data bank: 14 [16] dmg, i18, -13 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 14 [16] dmg, i18, -13 on block."
     },
     "u/f+1": {
       "name": "Leaping Claw",
@@ -2767,12 +2228,7 @@
       "knock": 0.0,
       "soulGain": 5,
       "tekken_base": "Kuma (Tekken 7)",
-      "note": "Pulled from the Tekken 7 frame-data bank: 20 [24] dmg, i26, -6 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 20 [24] dmg, i26, -6 on block."
     },
     "u/f+3": {
       "name": "Rising Fang",
@@ -2789,12 +2245,7 @@
       "knock": 4.0,
       "soulGain": 5,
       "tekken_base": "Kuma (Tekken 7)",
-      "note": "Pulled from the Tekken 7 frame-data bank: 13 [15] dmg, i16, -13 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 13 [15] dmg, i16, -13 on block."
     },
     "u/f+3,4": {
       "name": "Fang and Slam",
@@ -2815,12 +2266,7 @@
         "u/f+3",
         "u/f+3,4"
       ],
-      "note": "Pulled from the Tekken 7 frame-data bank: 13 [15], 9 dmg, i16, -11 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 13 [15], 9 dmg, i16, -11 on block."
     },
     "u+1+2": {
       "name": "Sky Drop Mauling",
@@ -2837,12 +2283,7 @@
       "knock": 2.5,
       "soulGain": 5,
       "tekken_base": "Kuma (Tekken 7)",
-      "note": "Pulled from the Tekken 7 frame-data bank: 25 [30] dmg, i31, -17 on block. Menajerii crashes down into Hunting Bear Stance (HBS) on landing — hold to stay in it.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 25 [30] dmg, i31, -17 on block. Menajerii crashes down into Hunting Bear Stance (HBS) on landing \u2014 hold to stay in it."
     },
     "SS 1+2": {
       "name": "Sidestep Maul",
@@ -2859,12 +2300,7 @@
       "knock": 2.5,
       "soulGain": 5,
       "tekken_base": "Kuma (Tekken 7)",
-      "note": "Pulled from the Tekken 7 frame-data bank: 23 [27] dmg, i22, -9 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 23 [27] dmg, i22, -9 on block."
     },
     "WR 3": {
       "name": "Charging Maul",
@@ -2881,12 +2317,7 @@
       "knock": 3.5,
       "soulGain": 5,
       "tekken_base": "Kuma (Tekken 7)",
-      "note": "Pulled from the Tekken 7 frame-data bank: 30 [36] dmg, i22, +9 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 30 [36] dmg, i22, +9 on block."
     },
     "WR 1+2": {
       "name": "Rushing Tackle",
@@ -2903,12 +2334,7 @@
       "knock": 3.5,
       "soulGain": 5,
       "tekken_base": "Kuma (Tekken 7)",
-      "note": "Pulled from the Tekken 7 frame-data bank: 30 [36] dmg, i20, +2 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 30 [36] dmg, i20, +2 on block."
     },
     "WR 4": {
       "name": "Charging Low Bite",
@@ -2925,12 +2351,7 @@
       "knock": 2.5,
       "soulGain": 5,
       "tekken_base": "Kuma (Tekken 7)",
-      "note": "Pulled from the Tekken 7 frame-data bank: 17 [20] dmg, i14, -40 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 17 [20] dmg, i14, -40 on block."
     },
     "WS 1": {
       "name": "Rising Claw",
@@ -2947,12 +2368,7 @@
       "knock": 0.0,
       "soulGain": 5,
       "tekken_base": "Kuma (Tekken 7)",
-      "note": "Pulled from the Tekken 7 frame-data bank: 14 [16] dmg, i13, -7 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 14 [16] dmg, i13, -7 on block."
     },
     "WS 1,1": {
       "name": "Rising Claw Pair",
@@ -2973,12 +2389,7 @@
         "WS 1",
         "WS 1,1"
       ],
-      "note": "Pulled from the Tekken 7 frame-data bank: 14 [16], 20 dmg, i13, -9 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 14 [16], 20 dmg, i13, -9 on block."
     },
     "WS 1,2": {
       "name": "Rising Claw Cross",
@@ -2999,12 +2410,7 @@
         "WS 1",
         "WS 1,2"
       ],
-      "note": "Pulled from the Tekken 7 frame-data bank: 14 [16], 34 dmg, i13, +5 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 14 [16], 34 dmg, i13, +5 on block."
     },
     "WS 2": {
       "name": "Rising Maul Uppercut",
@@ -3021,12 +2427,7 @@
       "knock": 4.0,
       "soulGain": 5,
       "tekken_base": "Kuma (Tekken 7)",
-      "note": "Pulled from the Tekken 7 frame-data bank: 20 [24] dmg, i15, -12 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 20 [24] dmg, i15, -12 on block."
     },
     "WS 3": {
       "name": "Rising Stomp",
@@ -3043,12 +2444,7 @@
       "knock": 2.5,
       "soulGain": 5,
       "tekken_base": "Kuma (Tekken 7)",
-      "note": "Pulled from the Tekken 7 frame-data bank: 21 [25] dmg, i18, -9 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 21 [25] dmg, i18, -9 on block."
     },
     "WS 1+2": {
       "name": "Rising Double Maul",
@@ -3065,12 +2461,7 @@
       "knock": 4.0,
       "soulGain": 5,
       "tekken_base": "Kuma (Tekken 7)",
-      "note": "Pulled from the Tekken 7 frame-data bank: 16 [18] dmg, i19, -17 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 16 [18] dmg, i19, -17 on block."
     },
     "FC 1": {
       "name": "Crouch Scratch",
@@ -3087,12 +2478,7 @@
       "knock": 0.0,
       "soulGain": 5,
       "tekken_base": "Kuma (Tekken 7)",
-      "note": "Pulled from the Tekken 7 frame-data bank: 12 [14] dmg, i19, -8 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 12 [14] dmg, i19, -8 on block."
     },
     "FC 1,1": {
       "name": "Crouch Claw Pair",
@@ -3113,12 +2499,7 @@
         "FC 1",
         "FC 1,1"
       ],
-      "note": "Pulled from the Tekken 7 frame-data bank: 12 [14], 8 dmg, i19, +1 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 12 [14], 8 dmg, i19, +1 on block."
     },
     "FC 2": {
       "name": "Crouch Gut Maul",
@@ -3135,12 +2516,7 @@
       "knock": 0.0,
       "soulGain": 5,
       "tekken_base": "Kuma (Tekken 7)",
-      "note": "Pulled from the Tekken 7 frame-data bank: 8 [9] dmg, i11, -4 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 8 [9] dmg, i11, -4 on block."
     },
     "FC 3": {
       "name": "Crouch Ankle Rake",
@@ -3157,12 +2533,7 @@
       "knock": 0.0,
       "soulGain": 5,
       "tekken_base": "Kuma (Tekken 7)",
-      "note": "Pulled from the Tekken 7 frame-data bank: 12 [14] dmg, i20, -15 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 12 [14] dmg, i20, -15 on block."
     },
     "FC 4": {
       "name": "Crouch Trip",
@@ -3179,12 +2550,7 @@
       "knock": 0.0,
       "soulGain": 5,
       "tekken_base": "Kuma (Tekken 7)",
-      "note": "Pulled from the Tekken 7 frame-data bank: 10 [12] dmg, i16, -9 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 10 [12] dmg, i16, -9 on block."
     },
     "FC d/f+1": {
       "name": "Crouch Rise Claw",
@@ -3201,12 +2567,7 @@
       "knock": 0.0,
       "soulGain": 5,
       "tekken_base": "Kuma (Tekken 7)",
-      "note": "Pulled from the Tekken 7 frame-data bank: 8 [9] dmg, i15, -9 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 8 [9] dmg, i15, -9 on block."
     },
     "FC d/f+2": {
       "name": "Crouch Heavy Maul",
@@ -3223,12 +2584,7 @@
       "knock": 0.0,
       "soulGain": 5,
       "tekken_base": "Kuma (Tekken 7)",
-      "note": "Pulled from the Tekken 7 frame-data bank: 12 [14] dmg, i18, -13 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 12 [14] dmg, i18, -13 on block."
     },
     "FC d/f+2,n,1": {
       "name": "Crouch Maul Snap",
@@ -3250,12 +2606,7 @@
         "FC d/f+2,n",
         "FC d/f+2,n,1"
       ],
-      "note": "Pulled from the Tekken 7 frame-data bank: 12 [14], 12 dmg, i18, -10 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 12 [14], 12 dmg, i18, -10 on block."
     },
     "hcb,f+1+2": {
       "name": "Spirit Bear Hug",
@@ -3313,12 +2664,7 @@
       "soulGain": 5,
       "tekken_base": "Kuma (Tekken 7)",
       "stance": "HBS",
-      "note": "Pulled from the Tekken 7 frame-data bank: 8 [9] dmg, i12, -11 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 8 [9] dmg, i12, -11 on block."
     },
     "HBS 1,2": {
       "name": "Hunting Claw Pair",
@@ -3340,12 +2686,7 @@
         "HBS 1,2"
       ],
       "stance": "HBS",
-      "note": "Pulled from the Tekken 7 frame-data bank: 8 [9], 10 dmg, i12, -13 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 8 [9], 10 dmg, i12, -13 on block."
     },
     "HBS 2": {
       "name": "Hunting Bite",
@@ -3363,12 +2704,7 @@
       "soulGain": 5,
       "tekken_base": "Kuma (Tekken 7)",
       "stance": "HBS",
-      "note": "Pulled from the Tekken 7 frame-data bank: 16 [19] dmg, i21, -15 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 16 [19] dmg, i21, -15 on block."
     },
     "HBS 1+2": {
       "name": "Hunting Maul",
@@ -3386,12 +2722,7 @@
       "soulGain": 5,
       "tekken_base": "Kuma (Tekken 7)",
       "stance": "HBS",
-      "note": "Pulled from the Tekken 7 frame-data bank: 24 [28] dmg, i19, -15 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 24 [28] dmg, i19, -15 on block."
     },
     "HBS d/f+1": {
       "name": "Hunting Rise",
@@ -3409,12 +2740,7 @@
       "soulGain": 5,
       "tekken_base": "Kuma (Tekken 7)",
       "stance": "HBS",
-      "note": "Pulled from the Tekken 7 frame-data bank: 15 [18] dmg, i16, -5 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 15 [18] dmg, i16, -5 on block."
     },
     "HBS d/f+2": {
       "name": "Hunting Launcher",
@@ -3432,12 +2758,7 @@
       "soulGain": 5,
       "tekken_base": "Kuma (Tekken 7)",
       "stance": "HBS",
-      "note": "Pulled from the Tekken 7 frame-data bank: 20 [24] dmg, i15, -17 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 20 [24] dmg, i15, -17 on block."
     },
     "HBS b+1+2": {
       "name": "Hunting Low Maul",
@@ -3455,12 +2776,7 @@
       "soulGain": 5,
       "tekken_base": "Kuma (Tekken 7)",
       "stance": "HBS",
-      "note": "Pulled from the Tekken 7 frame-data bank: 16 [19] dmg, i26, -25 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 16 [19] dmg, i26, -25 on block."
     },
     "HBS 3+4": {
       "name": "Hunting Spin",
@@ -3478,12 +2794,7 @@
       "soulGain": 5,
       "tekken_base": "Kuma (Tekken 7)",
       "stance": "HBS",
-      "note": "Pulled from the Tekken 7 frame-data bank: 21 [25] dmg, i25, -12 on block.",
-      "anim_t3": {
-        "bank": "tekken-wiki",
-        "row": 48,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Pulled from the Tekken 7 frame-data bank: 21 [25] dmg, i25, -12 on block."
     },
     "HBS f+1+2": {
       "name": "Hunting Grab",
@@ -3560,6 +2871,474 @@
       "anim_ref": "t3:kuma:row:205",
       "t3_row": 205,
       "note": "Pulled from the Tekken 3 teardown bank. Charging shoulder tackle; chargeable, very slow."
+    },
+    "d/f+1>2": {
+      "name": "Sidesweep",
+      "input": "d/f+1>2",
+      "input_slots": [
+        "d/f+1>2"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FC+1+2": {
+      "name": "Animal Smash",
+      "input": "FC+1+2",
+      "input_slots": [
+        "FC+1+2"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "d+1~N+2": {
+      "name": "Low Jab, Uppercut",
+      "input": "d+1~N+2",
+      "input_slots": [
+        "d+1~N+2"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "f+1,2,1": {
+      "name": "Animal Rush",
+      "input": "f+1,2,1",
+      "input_slots": [
+        "f+1,2,1"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "b+1,2,1": {
+      "name": "Animal Hush",
+      "input": "b+1,2,1",
+      "input_slots": [
+        "b+1,2,1"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "d+1+2~b": {
+      "name": "(BT)",
+      "input": "d+1+2~b",
+      "input_slots": [
+        "d+1+2~b"
+      ],
+      "move_class": "transition",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "d+1+2,1+2": {
+      "name": "Second Storm",
+      "input": "d+1+2,1+2",
+      "input_slots": [
+        "d+1+2,1+2"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "d+1+2,1+2~b": {
+      "name": "(BT)",
+      "input": "d+1+2,1+2~b",
+      "input_slots": [
+        "d+1+2,1+2~b"
+      ],
+      "move_class": "transition",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "BT d/f+1+2": {
+      "name": "Kangaroo Dasher",
+      "input": "BT d/f+1+2",
+      "input_slots": [
+        "BT d/f+1+2"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "u/b+2": {
+      "name": "Elbow Drop",
+      "input": "u/b+2",
+      "input_slots": [
+        "u/b+2"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "u/f+2": {
+      "name": "Elbow Drop",
+      "input": "u/f+2",
+      "input_slots": [
+        "u/f+2"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "u/f+3,3": {
+      "name": "Helicopter Kicks",
+      "input": "u/f+3,3",
+      "input_slots": [
+        "u/f+3,3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "u/b+3,3>4": {
+      "name": "Kick Rushes (Side Roll)",
+      "input": "u/b+3,3>4",
+      "input_slots": [
+        "u/b+3,3>4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "WS+3": {
+      "name": "Rising Foot",
+      "input": "WS+3",
+      "input_slots": [
+        "WS+3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "WS+3,3#": {
+      "name": "Power Stomper",
+      "input": "WS+3,3#",
+      "input_slots": [
+        "WS+3,3#"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending). Bounds"
+    },
+    "u/b+3+4": {
+      "name": "Bomb Stomp",
+      "input": "u/b+3+4",
+      "input_slots": [
+        "u/b+3+4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "u/f+3+4": {
+      "name": "Bomb Stomp",
+      "input": "u/f+3+4",
+      "input_slots": [
+        "u/f+3+4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "RN 3": {
+      "name": "Baiame's Spear",
+      "input": "RN 3",
+      "input_slots": [
+        "RN 3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "f+3+4,3>4": {
+      "name": "Kick Rushes (Side Roll)",
+      "input": "f+3+4,3>4",
+      "input_slots": [
+        "f+3+4,3>4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FC,d/f+4": {
+      "name": "Tail Mopping",
+      "input": "FC,d/f+4",
+      "input_slots": [
+        "FC,d/f+4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "b+3+4,N": {
+      "name": "Charge-Up",
+      "input": "b+3+4,N",
+      "input_slots": [
+        "b+3+4,N"
+      ],
+      "move_class": "stance",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "b+3+4,1": {
+      "name": "Windmill Punch",
+      "input": "b+3+4,1",
+      "input_slots": [
+        "b+3+4,1"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "b+3+4,2": {
+      "name": "Galaxy Uppercut",
+      "input": "b+3+4,2",
+      "input_slots": [
+        "b+3+4,2"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending). Juggles on Charge-Up"
+    },
+    "f+4": {
+      "name": "Twisting Roo, (BT)",
+      "input": "f+4",
+      "input_slots": [
+        "f+4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "f+4,3": {
+      "name": "Roo Rage",
+      "input": "f+4,3",
+      "input_slots": [
+        "f+4,3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending). Juggles"
+    },
+    "RN+3+4": {
+      "name": "Satellite Dropkick",
+      "input": "RN+3+4",
+      "input_slots": [
+        "RN+3+4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "b,b+4": {
+      "name": "Rolling Torpedo",
+      "input": "b,b+4",
+      "input_slots": [
+        "b,b+4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "d/b+4,3>4": {
+      "name": "Kick Rushes (Side Roll)",
+      "input": "d/b+4,3>4",
+      "input_slots": [
+        "d/b+4,3>4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "RN 4": {
+      "name": "Ali Kick",
+      "input": "RN 4",
+      "input_slots": [
+        "RN 4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "RN 4,2": {
+      "name": "Mid Smash",
+      "input": "RN 4,2",
+      "input_slots": [
+        "RN 4,2"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "RN 4,4,4": {
+      "name": "Ali Kicks",
+      "input": "RN 4,4,4",
+      "input_slots": [
+        "RN 4,4,4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "u~u/b": {
+      "name": "Leaping Body Splash",
+      "input": "u~u/b",
+      "input_slots": [
+        "u~u/b"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending). Against Wall"
+    },
+    "ROS D/F,1": {
+      "name": "Animal Godfist",
+      "input": "ROS D/F,1",
+      "input_slots": [
+        "ROS D/F,1"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "ROS 1+2,3+4,3>4": {
+      "name": "Kick Rushes (Side Roll)",
+      "input": "ROS 1+2,3+4,3>4",
+      "input_slots": [
+        "ROS 1+2,3+4,3>4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "u/b+3,1,3>4,3>4,B": {
+      "name": "Kick Rushes, Roll Back",
+      "input": "u/b+3,1,3>4,3>4,B",
+      "input_slots": [
+        "u/b+3,1,3>4,3>4,B"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "f+3+4,1,3>4,3>4,B": {
+      "name": "Kick Rushes, Roll Back",
+      "input": "f+3+4,1,3>4,3>4,B",
+      "input_slots": [
+        "f+3+4,1,3>4,3>4,B"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "d/b+4,1,3>4,3>4,B": {
+      "name": "Kick Rushes, Roll Back",
+      "input": "d/b+4,1,3>4,3>4,B",
+      "input_slots": [
+        "d/b+4,1,3>4,3>4,B"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "ROS 1+2,3+4,1": {
+      "name": "Animal Kick, (Side Roll)",
+      "input": "ROS 1+2,3+4,1",
+      "input_slots": [
+        "ROS 1+2,3+4,1"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "ROS 1+2,3+4,1,3>4,3>4,B": {
+      "name": "Kick Rushes, Roll Back",
+      "input": "ROS 1+2,3+4,1,3>4,3>4,B",
+      "input_slots": [
+        "ROS 1+2,3+4,1,3>4,3>4,B"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
     }
   }
 }

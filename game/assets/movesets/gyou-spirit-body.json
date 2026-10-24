@@ -3550,12 +3550,7 @@
       "t8_input": "1+2*",
       "merge_source": "t8:Paul-1+2*",
       "knockdown": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "1+2**": {
       "name": "Burning Fist",
@@ -3585,12 +3580,7 @@
       "t8_input": "1+2**",
       "merge_source": "t8:Paul-1+2**",
       "knockdown": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "1,2~t8.paul": {
       "name": "Left Right Combo",
@@ -3686,12 +3676,7 @@
       "t8_id": "Paul-1+2+3+4",
       "t8_damage": null,
       "t8_input": "1+2+3+4",
-      "merge_source": "t8:Paul-1+2+3+4",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "merge_source": "t8:Paul-1+2+3+4"
     },
     "1+3~t8.paul": {
       "name": "Over The Shoulder",
@@ -3824,12 +3809,7 @@
       "t8_damage": "12",
       "t8_input": "2+3",
       "merge_source": "t8:Paul-2+3",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Burst",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple heat&quot;; &gt;Heat Burst"
     },
     "2,3~t8.paul": {
       "name": "Goodnight",
@@ -4177,8 +4157,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
       "anim_t3": {
         "bank": "paul",
-        "row": 92,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 208,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "b+1+3": {
@@ -4209,12 +4189,7 @@
       "t8_input": "b+1+3",
       "merge_source": "t8:Paul-b+1+3",
       "knockdown": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Parry; &lt;/div&gt",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; Parry; &lt;/div&gt"
     },
     "b+1+4": {
       "name": "Foot Launch",
@@ -4631,12 +4606,7 @@
       "merge_source": "t8:Paul-CS.1+2",
       "launch": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Cancel to t41 FC with B; &lt;/div&gt",
-      "t8_alias": "qcf+1+2",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 47,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "t8_alias": "qcf+1+2"
     },
     "CS.2": {
       "name": "Phoenix Smasher",
@@ -4739,12 +4709,7 @@
       "merge_source": "t8:Paul-CS.3+4",
       "launch": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
-      "t8_alias": "qcf+3+4",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 47,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "t8_alias": "qcf+3+4"
     },
     "d+1~t8.paul": {
       "name": "Hammer Punch",
@@ -5062,8 +5027,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Elbow&lt;/div",
       "anim_t3": {
         "bank": "paul",
-        "row": 92,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 185,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "d+4,2,1+2": {
@@ -5095,12 +5060,7 @@
       "merge_source": "t8:Paul-d+4,2,1+2",
       "launch": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "t8_alias": "Demoman",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "t8_alias": "Demoman"
     },
     "d+4,2:1+2": {
       "name": "Demolition Man (Perfect Input)",
@@ -5130,12 +5090,7 @@
       "t8_input": "d+4,2:1+2",
       "merge_source": "t8:Paul-d+4,2:1+2",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "d/b+1~t8.paul": {
       "name": "Dickjab",
@@ -5199,12 +5154,7 @@
       "t8_input": "db+1+2",
       "merge_source": "t8:Paul-db+1+2",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Shoulder&lt;/",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-teal tip&quot;; &gt;Shoulder&lt;/"
     },
     "d/b+2~t8.paul": {
       "name": "Shoot the Moon",
@@ -5973,12 +5923,7 @@
       },
       "knockdown": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Effective minimum startup 28f; t112 on hit; Deals recoverable damage to self; &lt;/div&gt",
-      "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* DPD.3+4\n* DD.3+4\n&lt;/div&gt;",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 47,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "t8_alias": "&lt;div class=&quot;dotlist&quot;&gt;\n\n* DPD.3+4\n* DD.3+4\n&lt;/div&gt;"
     },
     "DPD.d/f+4": {
       "name": "Eigetsu",
@@ -6082,8 +6027,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "paul",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
+        "row": 116,
+        "match": "class-verified remap (anim-fix 2026-10-23)"
       }
     },
     "f+1+4": {
@@ -6113,12 +6058,7 @@
       "t8_damage": "25",
       "t8_input": "f+1+4",
       "merge_source": "t8:Paul-f+1+4",
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "f+2~t8.paul": {
       "name": "Phoenix Hook, Tiger Claw",
@@ -6157,12 +6097,7 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-purple &quot;; &gt;Heat Engager +",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "paul",
-        "row": 130,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "f+3": {
       "name": "GYOU (Spirit Body) f+3",
@@ -6264,8 +6199,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "paul",
-        "row": 92,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 208,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "f+3+4~t8.paul": {
@@ -6608,12 +6543,7 @@
       "t8_input": "f,F+2,H.1+2",
       "merge_source": "t8:Paul-f,F+2,H.1+2",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 47,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "f,F+3": {
       "name": "GYOU (Spirit Body) f,F+3",
@@ -6895,12 +6825,7 @@
       "t8_input": "H.1+2",
       "merge_source": "t8:Paul-H.1+2",
       "knockdown": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 47,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "H.1+2*": {
       "name": "Half-Step Phoenix Smasher (Hold)",
@@ -6930,12 +6855,7 @@
       "t8_input": "H.1+2*",
       "merge_source": "t8:Paul-H.1+2*",
       "knockdown": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 47,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "H.1+2**": {
       "name": "Burning Fist",
@@ -6965,12 +6885,7 @@
       "t8_input": "H.1+2**",
       "merge_source": "t8:Paul-H.1+2**",
       "knockdown": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 47,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "H.2+3": {
       "name": "Demolition Ball",
@@ -7261,12 +7176,7 @@
       "t8_input": "H.f+1+2*",
       "merge_source": "t8:Paul-H.f+1+2*",
       "launch": true,
-      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 47,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba"
     },
     "hFC.1+2": {
       "name": "Ultimate Tackle",
@@ -7623,12 +7533,7 @@
       "merge_source": "t8:Paul-SWA.1+2",
       "launch": true,
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-orange tornado&quot;; &gt;Tornado",
-      "t8_alias": "qcb+1+2",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 47,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "t8_alias": "qcb+1+2"
     },
     "SWA.2": {
       "name": "Rubber Band Attack",
@@ -8092,12 +7997,7 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-yellow spike&quot;; &gt;Spike&lt;",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "paul",
-        "row": 130,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "u/f+2": {
       "name": "Moonfall",
@@ -8339,8 +8239,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; Move can be delayed 10f; Input can be delayed 10f; Combo from 1st CH with 10f delay; Transition to t59 r19 SWA +1 +14g +15 from 39~44f with b; &lt;/div&gt",
       "anim_t3": {
         "bank": "paul",
-        "row": 92,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 208,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "WS.1,2~b": {
@@ -8477,8 +8377,8 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-green balcony-break&quot;; &gt;Ba",
       "anim_t3": {
         "bank": "paul",
-        "row": 92,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 185,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "WS.4": {
@@ -9526,12 +9426,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:paul_24",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "paul",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "d/f+1~t7.paul": {
       "name": "GYOU (Spirit Body) d/f+1",
@@ -9751,8 +9646,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "paul",
-        "row": 92,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 208,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "d/f+1,1,2~t7.paul.3": {
@@ -10758,12 +10653,7 @@
         ],
         "total": 40
       },
-      "launch": true,
-      "anim_t3": {
-        "bank": "paul",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "d+4,2,1+2~t7.paul.2": {
       "name": "GYOU (Spirit Body) d+4,2,1+2",
@@ -10805,12 +10695,7 @@
         ],
         "total": 45
       },
-      "launch": true,
-      "anim_t3": {
-        "bank": "paul",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "d+4,2,1+2~t7.paul.3": {
       "name": "GYOU (Spirit Body) d+4,2,1+2",
@@ -10845,12 +10730,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:paul_55",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "paul",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "d+4,2:1+2~t7.paul": {
       "name": "GYOU (Spirit Body) d+4,2:1+2",
@@ -10885,12 +10765,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:paul_56",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "paul",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "d+4,2:1+2~t7.paul.2": {
       "name": "GYOU (Spirit Body) d+4,2:1+2",
@@ -10925,12 +10800,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:paul_57",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "paul",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "d+1+2~t7.paul": {
       "name": "Shoulder Smash",
@@ -11133,8 +11003,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "paul",
-        "row": 92,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 208,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "b+2~t7.paul": {
@@ -12792,12 +12662,7 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:paul_102",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true,
-      "anim_t3": {
-        "bank": "paul",
-        "row": 47,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "qcb+1": {
       "name": "God Hammer Punch",
@@ -13347,12 +13212,7 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:paul_115",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true,
-      "anim_t3": {
-        "bank": "paul",
-        "row": 47,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "BT.1": {
       "name": "GYOU (Spirit Body) BT.1",
@@ -13630,12 +13490,7 @@
       "merge_source": "t7:paul_122",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(60f)",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(60f)"
     },
     "FC.d/f+1+2": {
       "name": "Gunba",
@@ -13670,12 +13525,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:paul_123",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true,
-      "anim_t3": {
-        "bank": "paul",
-        "row": 47,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "launch": true
     },
     "FC.d/f+1+2,B": {
       "name": "GYOU (Spirit Body) FC.d/f+1+2,B",
@@ -14163,8 +14013,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "paul",
-        "row": 92,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
+        "row": 185,
+        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "WS.4~t7.paul": {
@@ -14521,12 +14371,7 @@
       "merge_source": "t7:paul_144",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "input_note": "Face Up, Feet Towards+",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 47,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "Face Up, Feet Towards+"
     },
     "t7.paul_145": {
       "name": "GYOU (Spirit Body) Face Up, Feet Towards, Roll Forward+1+2",
@@ -14929,12 +14774,7 @@
       "merge_source": "t7:paul_154",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Rage)",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 47,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Rage)"
     },
     "R.1+2,B": {
       "name": "GYOU (Spirit Body) R.1+2,B",
@@ -15010,12 +14850,7 @@
       "merge_source": "t7:paul_156",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "input_note": "(During Rage) (close)",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 47,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Rage) (close)"
     },
     "R.qcf+1+2~t7.paul": {
       "name": "GYOU (Spirit Body) R.qcf+1+2",
@@ -15051,12 +14886,7 @@
       "merge_source": "t7:paul_157",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "input_note": "(During Rage) (far)",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 47,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Rage) (far)"
     },
     "t7.paul_158": {
       "name": "Burning Fist",
@@ -15219,12 +15049,7 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "paul",
-        "row": 130,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "f+2+4~t7.paul": {
       "name": "Shoulder Pop",
@@ -15262,12 +15087,7 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "paul",
-        "row": 130,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "SIDE_L.1+3~t7.paul": {
       "name": "Dragon Screw",
@@ -15520,12 +15340,7 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "paul",
-        "row": 130,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "d/f+1+3~t7.paul": {
       "name": "Kongo Blast",
@@ -16061,12 +15876,7 @@
         "total": 40
       },
       "knockdown": true,
-      "input_note": "(During Tackle)",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Tackle)"
     },
     "TACKLE.2,d+1,1,n,4,1,1+2": {
       "name": "Ultimate Punishment",
@@ -16111,12 +15921,7 @@
         "total": 56
       },
       "knockdown": true,
-      "input_note": "(During Tackle)",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Tackle)"
     },
     "TACKLE.1+2": {
       "name": "Arm Breaker",
@@ -16152,12 +15957,7 @@
       "merge_source": "t7:paul_182",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Tackle)",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 47,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Tackle)"
     },
     "t7.paul_183": {
       "name": "GYOU (Spirit Body) D (Hold for 160f)",
@@ -16270,12 +16070,7 @@
       "merge_source": "t7:paul_185",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Time with enemy attack...",
-      "anim_t3": {
-        "bank": "paul",
-        "row": 47,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "Time with enemy attack..."
     },
     "u+3+4": {
       "name": "PAUL u+3+4_r107 (T3 paul r74)",

@@ -920,12 +920,7 @@
       "note": "Every fight is a negotiation. I always collect. The vizier's grab closes around you.",
       "throw": true,
       "unblockable": true,
-      "isGrab": true,
-      "anim_t3": {
-        "bank": "jin",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "isGrab": true
     },
     "S": {
       "name": "Ledger Entry [WH SIGNATURE]",
@@ -944,12 +939,7 @@
       ],
       "move_class": "signature",
       "wh_original": true,
-      "note": "Every fighter owes him something - a favor, a debt, a secret. Filed in a hand no one else can read.",
-      "anim_t3": {
-        "bank": "jin",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Every fighter owes him something - a favor, a debt, a secret. Filed in a hand no one else can read."
     },
     "1+4": {
       "name": "Closing the Deal [WH SIGNATURE]",
@@ -973,12 +963,7 @@
       "unblockable": true,
       "isGrab": true,
       "input_remapped_from": "P+K",
-      "throw_break": "1+2",
-      "anim_t3": {
-        "bank": "jin",
-        "row": 215,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1+2"
     },
     "1+2": {
       "name": "Ledger Entry [WH SIGNATURE]",
@@ -998,12 +983,7 @@
       "move_class": "signature",
       "wh_original": true,
       "note": "Every fighter owes him something - a favor, a debt, a secret. Filed in a hand no one else can read.",
-      "input_remapped_from": "S",
-      "anim_t3": {
-        "bank": "jin",
-        "row": 32,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "input_remapped_from": "S"
     },
     "1+2__main": {
       "name": "SCIMITAR 1+2 (T3 jin r32)",
@@ -3856,11 +3836,6 @@
         "notation": "1, 2, 2",
         "id": "shaheen_5",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,3": {
@@ -3902,11 +3877,6 @@
         "notation": "1, 2, 3",
         "id": "shaheen_8",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1+2+3+4": {
@@ -3928,12 +3898,7 @@
         "1+2+3+4"
       ],
       "move_class": "special",
-      "note": "sp",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 162,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "sp"
     },
     "1,2,4": {
       "name": "Spica Wheel Spin",
@@ -3974,11 +3939,6 @@
         "notation": "1, 2, 4",
         "id": "shaheen_11",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "2+3": {
@@ -4007,12 +3967,7 @@
         ],
         "total": 24
       },
-      "note": "Mid; on block +1",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block +1"
     },
     "2,3": {
       "name": "Porrima Blinding Sands",
@@ -4051,11 +4006,6 @@
         "notation": "2, 3",
         "id": "shaheen_17",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "3+4": {
@@ -4077,12 +4027,7 @@
         "3+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -9; knockdown on hit",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 51,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -9; knockdown on hit"
     },
     "4,1": {
       "name": "Algenib",
@@ -4121,11 +4066,6 @@
         "notation": "4, 1",
         "id": "shaheen_21",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "4,3": {
@@ -4165,11 +4105,6 @@
         "notation": "4, 3",
         "id": "shaheen_23",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "4,4": {
@@ -4209,11 +4144,6 @@
         "notation": "4, 4",
         "id": "shaheen_25",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+1_t8": {
@@ -4247,11 +4177,6 @@
         "notation": "b+1",
         "id": "shaheen_58",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 216,
-        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "b+1+3": {
@@ -4273,12 +4198,7 @@
         "b+1+3"
       ],
       "move_class": "special",
-      "note": "sp",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 162,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "sp"
     },
     "b+2": {
       "name": "Dust Storm",
@@ -4306,12 +4226,7 @@
         ],
         "total": 28
       },
-      "note": "m(th); on block -9",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 97,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "note": "m(th); on block -9"
     },
     "b+3": {
       "name": "Heel Strike",
@@ -4343,11 +4258,6 @@
         "notation": "b+3",
         "id": "shaheen_60",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 103,
-        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "b+3+4": {
@@ -4369,12 +4279,7 @@
         "b+3+4"
       ],
       "move_class": "strike",
-      "note": "High; on block -9; knockdown on hit",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 110,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "note": "High; on block -9; knockdown on hit"
     },
     "b+4": {
       "name": "Broken Mirage",
@@ -4406,11 +4311,6 @@
         "notation": "b+4",
         "id": "shaheen_61",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 112,
-        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "Back throw": {
@@ -4432,12 +4332,7 @@
         "Back throw"
       ],
       "move_class": "strike",
-      "note": "th(h)",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "th(h)"
     },
     "(back to wall).b,b,UB": {
       "name": "Wall Jump Backflip",
@@ -4458,12 +4353,7 @@
         "(back to wall).b,b,UB"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +1",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block +1"
     },
     "BT.2": {
       "name": "Reverse Edge",
@@ -4484,12 +4374,7 @@
         "BT.2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -3; knockdown on hit",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -3; knockdown on hit"
     },
     "d+1": {
       "name": "Hermit Needle",
@@ -4510,12 +4395,7 @@
         "d+1"
       ],
       "move_class": "strike",
-      "note": "Low; on block -13",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low; on block -13"
     },
     "d+2": {
       "name": "Gut Impact",
@@ -4547,11 +4427,6 @@
         "notation": "d+2",
         "id": "shaheen_48",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 137,
-        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "d+3": {
@@ -4585,11 +4460,6 @@
         "notation": "d+3",
         "id": "shaheen_49",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d+3+4": {
@@ -4611,12 +4481,7 @@
         "d+3+4"
       ],
       "move_class": "strike",
-      "note": "Low; on block -15",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 127,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "note": "Low; on block -15"
     },
     "d+4": {
       "name": "Vicious Stomp",
@@ -4648,11 +4513,6 @@
         "notation": "d+4",
         "id": "shaheen_50",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 339,
-        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "db+1": {
@@ -4674,12 +4534,7 @@
         "db+1"
       ],
       "move_class": "strike",
-      "note": "Special low; on block -5",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Special low; on block -5"
     },
     "db+1+2": {
       "name": "Shaula",
@@ -4701,12 +4556,7 @@
       ],
       "move_class": "strike",
       "note": "ub!(m)",
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "db+2": {
       "name": "Move db+2 (db+2)",
@@ -4727,12 +4577,7 @@
         "db+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -10",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -10"
     },
     "db+2,1": {
       "name": "Rapid Strikes",
@@ -4761,12 +4606,7 @@
         ],
         "total": 35
       },
-      "note": "High; on block -11",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "High; on block -11"
     },
     "db+3": {
       "name": "Snake's Bite",
@@ -4787,12 +4627,7 @@
         "db+3"
       ],
       "move_class": "strike",
-      "note": "Low; on block -17",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low; on block -17"
     },
     "db+3,4": {
       "name": "Rising Scimitar",
@@ -4821,12 +4656,7 @@
         ],
         "total": 32
       },
-      "note": "High; on block -13; knockdown on hit",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "High; on block -13; knockdown on hit"
     },
     "db+4": {
       "name": "Rising Scimitar",
@@ -4847,12 +4677,7 @@
         "db+4"
       ],
       "move_class": "strike",
-      "note": "High; on block -13",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "High; on block -13"
     },
     "df+1": {
       "name": "Move df+1 (df+1)",
@@ -4873,12 +4698,7 @@
         "df+1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -1",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -1"
     },
     "df+2": {
       "name": "Rising Falcon",
@@ -4899,12 +4719,7 @@
         "df+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -7; knockdown on hit",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -7; knockdown on hit"
     },
     "df+3": {
       "name": "Whirlwind Kick",
@@ -4925,12 +4740,7 @@
         "df+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -13",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -13"
     },
     "df+3+4": {
       "name": "Stealth Step",
@@ -4951,12 +4761,7 @@
         "df+3+4"
       ],
       "move_class": "special",
-      "note": "sp",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 162,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "sp"
     },
     "df+4": {
       "name": "Move df+4 (df+4)",
@@ -4977,12 +4782,7 @@
         "df+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -7",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -7"
     },
     "df+4,1": {
       "name": "Move 1 (1)",
@@ -5011,12 +4811,7 @@
         ],
         "total": 23
       },
-      "note": "Mid; on block -9",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -9"
     },
     "df+4,1,3": {
       "name": "Al-Faras",
@@ -5047,12 +4842,7 @@
         ],
         "total": 51
       },
-      "note": "Mid; on block -13; knockdown on hit",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -13; knockdown on hit"
     },
     "df+4,3": {
       "name": "Al-Fard al-Shuja",
@@ -5081,12 +4871,7 @@
         ],
         "total": 36
       },
-      "note": "High; on block -4; knockdown on hit",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "High; on block -4; knockdown on hit"
     },
     "D*,u+2": {
       "name": "Al-Ghul",
@@ -5107,12 +4892,7 @@
         "D*,u+2"
       ],
       "move_class": "strike",
-      "note": "High; on block +6",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "High; on block +6"
     },
     "f+2": {
       "name": "Move f+2 (f+2)",
@@ -5144,11 +4924,6 @@
         "notation": "f+2",
         "id": "shaheen_29",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 220,
-        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "f+2,3": {
@@ -5188,11 +4963,6 @@
         "notation": "f+2, 3",
         "id": "shaheen_30",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 242,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "f+2,4": {
@@ -5232,11 +5002,6 @@
         "notation": "f+2, 4",
         "id": "shaheen_32",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 260,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "f+2,4,4": {
@@ -5278,11 +5043,6 @@
         "notation": "f+2, 4, 4",
         "id": "shaheen_34",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+3": {
@@ -5315,11 +5075,6 @@
         "notation": "f+3",
         "id": "shaheen_37",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 79,
-        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "f+3+4": {
@@ -5351,11 +5106,6 @@
         "notation": "f+3+4",
         "id": "shaheen_39",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f+4_t8": {
@@ -5389,11 +5139,6 @@
         "notation": "f+4",
         "id": "shaheen_38",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 214,
-        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "f,b+2": {
@@ -5426,11 +5171,6 @@
         "notation": "f, b+2",
         "id": "shaheen_44",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f:b+2": {
@@ -5452,12 +5192,7 @@
         "f:b+2"
       ],
       "move_class": "strike",
-      "note": "High; on block -4",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "High; on block -4"
     },
     "FC.df+2": {
       "name": "Janbiya",
@@ -5478,12 +5213,7 @@
         "FC.df+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -9; knockdown on hit",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -9; knockdown on hit"
     },
     "FC.df+4": {
       "name": "Move FC.df+4 (FC.df+4)",
@@ -5504,12 +5234,7 @@
         "FC.df+4"
       ],
       "move_class": "strike",
-      "note": "Low; on block -14",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low; on block -14"
     },
     "FC.df+4,1": {
       "name": "Serpens",
@@ -5538,12 +5263,7 @@
         ],
         "total": 36
       },
-      "note": "High; on block -2; knockdown on hit",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "High; on block -2; knockdown on hit"
     },
     "FC.df,d,DF": {
       "name": "Slide Step",
@@ -5564,12 +5284,7 @@
         "FC.df,d,DF"
       ],
       "move_class": "special",
-      "note": "sp",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 162,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "sp"
     },
     "FC.df,d,DF+3": {
       "name": "Sand Storm",
@@ -5590,12 +5305,7 @@
         "FC.df,d,DF+3"
       ],
       "move_class": "strike",
-      "note": "Low; on block -23a; knockdown on hit",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low; on block -23a; knockdown on hit"
     },
     "f,F+3": {
       "name": "Hunting Falcon Dive",
@@ -5616,12 +5326,7 @@
         "f,F+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -12; knockdown on hit",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -12; knockdown on hit"
     },
     "f,f,F+2": {
       "name": "Antares",
@@ -5642,12 +5347,7 @@
         "f,f,F+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +5",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block +5"
     },
     "H.2+3": {
       "name": "Rumh al-Muzaffar",
@@ -5672,12 +5372,7 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 288,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "throw_break": "1"
     },
     "H.D*,u+2": {
       "name": "Al-Ghul Master",
@@ -5698,12 +5393,7 @@
         "H.D*,u+2"
       ],
       "move_class": "special",
-      "note": "on block [[Shaheen_combos#Mini-combos|+13]]; knockdown on hit",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "on block [[Shaheen_combos#Mini-combos|+13]]; knockdown on hit"
     },
     "H.f+1+2": {
       "name": "Rumh al-Dawla",
@@ -5724,12 +5414,7 @@
         "H.f+1+2"
       ],
       "move_class": "strike",
-      "note": "Mid, Mid; on block +4c SNK",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Mid, Mid; on block +4c SNK"
     },
     "Left throw": {
       "name": "Chasm Drop",
@@ -5750,12 +5435,7 @@
         "Left throw"
       ],
       "move_class": "strike",
-      "note": "th(h); on block -3",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "th(h); on block -3"
     },
     "R.df+1+2": {
       "name": "Najm Alshamal",
@@ -5776,12 +5456,7 @@
         "R.df+1+2"
       ],
       "move_class": "special",
-      "note": "Mid, Throw; on block -18",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 162,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Mid, Throw; on block -18"
     },
     "Right throw": {
       "name": "Axel Spinner",
@@ -5802,12 +5477,7 @@
         "Right throw"
       ],
       "move_class": "strike",
-      "note": "th(h); on block -3",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "th(h); on block -3"
     },
     "SNK.1": {
       "name": "Blinding Snake",
@@ -5828,12 +5498,7 @@
         "SNK.1"
       ],
       "move_class": "strike",
-      "note": "High; on block -1",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "High; on block -1"
     },
     "SNK.1+2": {
       "name": "Al-Sayf",
@@ -5854,12 +5519,7 @@
         "SNK.1+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +4c",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block +4c"
     },
     "SNK.2": {
       "name": "Crimson Tempest",
@@ -5880,12 +5540,7 @@
         "SNK.2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -9",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -9"
     },
     "SNK.3": {
       "name": "Hunting Falcon Dive",
@@ -5906,12 +5561,7 @@
         "SNK.3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -12; knockdown on hit",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -12; knockdown on hit"
     },
     "SNK.4": {
       "name": "Sliding Shave",
@@ -5932,12 +5582,7 @@
         "SNK.4"
       ],
       "move_class": "strike",
-      "note": "Low; on block -14",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low; on block -14"
     },
     "SNK.df+1": {
       "name": "Move SNK.df+1 (SNK.df+1)",
@@ -5958,12 +5603,7 @@
         "SNK.df+1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -5",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -5"
     },
     "SNK.df+1,2": {
       "name": "Flash Hornet",
@@ -5992,12 +5632,7 @@
         ],
         "total": 52
       },
-      "note": "High; on block -4",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "High; on block -4"
     },
     "SNK.df+1,3": {
       "name": "Flash Deneb",
@@ -6026,12 +5661,7 @@
         ],
         "total": 40
       },
-      "note": "Mid; on block -13; knockdown on hit",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -13; knockdown on hit"
     },
     "SS.1+2": {
       "name": "Haboob",
@@ -6052,12 +5682,7 @@
         "SS.1+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +3",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block +3"
     },
     "SS.2": {
       "name": "Nisif Kamar",
@@ -6078,12 +5703,7 @@
         "SS.2"
       ],
       "move_class": "strike",
-      "note": "Low; on block -12",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Low; on block -12"
     },
     "uf+1": {
       "name": "Vega",
@@ -6104,12 +5724,7 @@
         "uf+1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +1",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block +1"
     },
     "uf+1+2": {
       "name": "Wezen",
@@ -6130,12 +5745,7 @@
         "uf+1+2"
       ],
       "move_class": "strike",
-      "note": "th(h); on block -3",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "note": "th(h); on block -3"
     },
     "uf+3": {
       "name": "Crescent Cleaver",
@@ -6156,12 +5766,7 @@
         "uf+3"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -7; knockdown on hit",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -7; knockdown on hit"
     },
     "uf+4": {
       "name": "Altair",
@@ -6182,12 +5787,7 @@
         "uf+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -13; knockdown on hit",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -13; knockdown on hit"
     },
     "uf,n,4": {
       "name": "Delayed Rising Toe Kick",
@@ -6208,12 +5808,7 @@
         "uf,n,4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -13; knockdown on hit",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "note": "Mid; on block -13; knockdown on hit"
     },
     "ws1": {
       "name": "Albireo",
@@ -6245,11 +5840,6 @@
         "notation": "WS 1",
         "id": "shaheen_75",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "ws2": {
@@ -6283,11 +5873,6 @@
         "notation": "WS 2",
         "id": "shaheen_76",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "ws3": {
@@ -6320,11 +5905,6 @@
         "notation": "WS 3",
         "id": "shaheen_77",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "ws3,3": {
@@ -6364,11 +5944,6 @@
         "notation": "WS 3, 3",
         "id": "shaheen_78",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "ws4": {
@@ -6401,11 +5976,6 @@
         "notation": "WS 4",
         "id": "shaheen_80",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1~t8.shaheen": {
@@ -6445,11 +6015,6 @@
         "notation": "1",
         "id": "shaheen_2",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 43,
-        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "1,2~t8.shaheen": {
@@ -6488,11 +6053,6 @@
         "notation": "1, 2",
         "id": "shaheen_3",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1+3~t8.shaheen": {
@@ -6525,12 +6085,7 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-blue homing&quot;; &gt;Homing&lt;",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 288,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "2~t8.shaheen": {
       "name": "SCIMITAR 2",
@@ -6569,11 +6124,6 @@
         "notation": "2",
         "id": "shaheen_14",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 106,
-        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "2,1~t8.shaheen": {
@@ -6613,11 +6163,6 @@
         "notation": "2, 1",
         "id": "shaheen_15",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "2+4~t8.shaheen": {
@@ -6650,12 +6195,7 @@
       "note": "&lt;div class=&quot;plainlist&quot;&gt;; &lt;div; style=&quot;display: block; border-width: 0 0 0 0.5em; padding-left: 0.2em; border-style: solid;&quot;; class=&quot;movedata-icon border-blue homing&quot;; &gt;Homing&lt;",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 289,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "3~t8.shaheen": {
       "name": "Blinding Sands",
@@ -6695,11 +6235,6 @@
         "notation": "3",
         "id": "shaheen_19",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 195,
-        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "4~t8.shaheen": {
@@ -6739,11 +6274,6 @@
         "notation": "4",
         "id": "shaheen_20",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 199,
-        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "WALL.b,b,u/b": {
@@ -6780,12 +6310,7 @@
       "merge_source": "t7:shaheen_1",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Back towards wall...",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "Back towards wall..."
     },
     "1~t7.shaheen": {
       "name": "SCIMITAR 1",
@@ -6830,11 +6355,6 @@
         "notation": "1",
         "id": "shaheen_2",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 43,
-        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "1,2~t7.shaheen": {
@@ -6886,11 +6406,6 @@
         "notation": "1, 2",
         "id": "shaheen_3",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2~t7.shaheen.2": {
@@ -6935,11 +6450,6 @@
         "notation": "1, 2",
         "id": "shaheen_3",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,2~t7.shaheen": {
@@ -6992,11 +6502,6 @@
         "notation": "1, 2, 2",
         "id": "shaheen_5",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,2~t7.shaheen.2": {
@@ -7048,11 +6553,6 @@
         "notation": "1, 2, 2",
         "id": "shaheen_5",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,2~t7.shaheen.3": {
@@ -7097,11 +6597,6 @@
         "notation": "1, 2, 2",
         "id": "shaheen_5",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,3~t7.shaheen": {
@@ -7154,11 +6649,6 @@
         "notation": "1, 2, 3",
         "id": "shaheen_8",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,3~t7.shaheen.2": {
@@ -7210,11 +6700,6 @@
         "notation": "1, 2, 3",
         "id": "shaheen_8",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,3~t7.shaheen.3": {
@@ -7259,11 +6744,6 @@
         "notation": "1, 2, 3",
         "id": "shaheen_8",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,4~t7.shaheen": {
@@ -7317,11 +6797,6 @@
         "notation": "1, 2, 4",
         "id": "shaheen_11",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,4~t7.shaheen.2": {
@@ -7374,11 +6849,6 @@
         "notation": "1, 2, 4",
         "id": "shaheen_11",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,4~t7.shaheen.3": {
@@ -7424,11 +6894,6 @@
         "notation": "1, 2, 4",
         "id": "shaheen_11",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "2~t7.shaheen": {
@@ -7474,11 +6939,6 @@
         "notation": "2",
         "id": "shaheen_14",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 106,
-        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "2,1~t7.shaheen": {
@@ -7530,11 +6990,6 @@
         "notation": "2, 1",
         "id": "shaheen_15",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "2,1~t7.shaheen.2": {
@@ -7579,11 +7034,6 @@
         "notation": "2, 1",
         "id": "shaheen_15",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "2,3~t7.shaheen": {
@@ -7635,11 +7085,6 @@
         "notation": "2, 3",
         "id": "shaheen_17",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "2,3~t7.shaheen.2": {
@@ -7684,11 +7129,6 @@
         "notation": "2, 3",
         "id": "shaheen_17",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "3~t7.shaheen": {
@@ -7734,11 +7174,6 @@
         "notation": "3",
         "id": "shaheen_19",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 195,
-        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "4~t7.shaheen": {
@@ -7785,11 +7220,6 @@
         "notation": "4",
         "id": "shaheen_20",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 199,
-        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "4,1~t7.shaheen": {
@@ -7841,11 +7271,6 @@
         "notation": "4, 1",
         "id": "shaheen_21",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "4,1~t7.shaheen.2": {
@@ -7890,11 +7315,6 @@
         "notation": "4, 1",
         "id": "shaheen_21",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "4,3~t7.shaheen": {
@@ -7947,11 +7367,6 @@
         "notation": "4, 3",
         "id": "shaheen_23",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "4,3~t7.shaheen.2": {
@@ -7997,11 +7412,6 @@
         "notation": "4, 3",
         "id": "shaheen_23",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "4,4~t7.shaheen": {
@@ -8054,11 +7464,6 @@
         "notation": "4, 4",
         "id": "shaheen_25",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "4,4~t7.shaheen.2": {
@@ -8104,11 +7509,6 @@
         "notation": "4, 4",
         "id": "shaheen_25",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "u/f+3~t7.shaheen": {
@@ -8155,11 +7555,6 @@
         "notation": "u/f+3",
         "id": "shaheen_27",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 55,
-        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "u/f+4~t7.shaheen": {
@@ -8207,11 +7602,6 @@
         "notation": "u/f+4",
         "id": "shaheen_28",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 80,
-        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "f+2~t7.shaheen": {
@@ -8257,11 +7647,6 @@
         "notation": "f+2",
         "id": "shaheen_29",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 220,
-        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "f+2,3~t7.shaheen": {
@@ -8314,11 +7699,6 @@
         "notation": "f+2, 3",
         "id": "shaheen_30",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 242,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "f+2,3~t7.shaheen.2": {
@@ -8364,11 +7744,6 @@
         "notation": "f+2, 3",
         "id": "shaheen_30",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 242,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "f+2,4~t7.shaheen": {
@@ -8420,11 +7795,6 @@
         "notation": "f+2, 4",
         "id": "shaheen_32",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 260,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "f+2,4~t7.shaheen.2": {
@@ -8470,11 +7840,6 @@
         "notation": "f+2, 4",
         "id": "shaheen_32",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 260,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
       }
     },
     "f+2,4,4~t7.shaheen": {
@@ -8527,11 +7892,6 @@
         "notation": "f+2, 4, 4",
         "id": "shaheen_34",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+2,4,4~t7.shaheen.2": {
@@ -8583,11 +7943,6 @@
         "notation": "f+2, 4, 4",
         "id": "shaheen_34",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+2,4,4~t7.shaheen.3": {
@@ -8632,11 +7987,6 @@
         "notation": "f+2, 4, 4",
         "id": "shaheen_34",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+3~t7.shaheen": {
@@ -8683,11 +8033,6 @@
         "notation": "f+3",
         "id": "shaheen_37",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 79,
-        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "f+4~t7.shaheen": {
@@ -8734,11 +8079,6 @@
         "notation": "f+4",
         "id": "shaheen_38",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 214,
-        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "f+3+4~t7.shaheen": {
@@ -8790,11 +8130,6 @@
         "notation": "f+3+4",
         "id": "shaheen_39",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f+3+4~t7.shaheen.2": {
@@ -8840,11 +8175,6 @@
         "notation": "f+3+4",
         "id": "shaheen_39",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "f,F+3~t7.shaheen": {
@@ -8888,12 +8218,7 @@
         "total": 18
       },
       "knockdown": true,
-      "input_note": "(or f, f, f+3) (close)",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 227,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(or f, f, f+3) (close)"
     },
     "f,F+3~t7.shaheen.2": {
       "name": "SCIMITAR f,F+3",
@@ -8929,12 +8254,7 @@
       "merge_source": "t7:shaheen_42",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(or f, f, f+3) (far)",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 227,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(or f, f, f+3) (far)"
     },
     "f,f,f+2": {
       "name": "Antares",
@@ -8970,12 +8290,7 @@
       "merge_source": "t7:shaheen_43",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(or WR 2)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(or WR 2)"
     },
     "f,b+2~t7.shaheen": {
       "name": "Hornet",
@@ -9021,11 +8336,6 @@
         "notation": "f, b+2",
         "id": "shaheen_44",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f+2~t7.shaheen": {
@@ -9072,11 +8382,6 @@
         "notation": "d/f+2",
         "id": "shaheen_45",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 269,
-        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "d/f+3": {
@@ -9122,11 +8427,6 @@
         "notation": "d/f+3",
         "id": "shaheen_46",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 143,
-        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "d/f+4~t7.shaheen": {
@@ -9172,11 +8472,6 @@
         "notation": "d/f+4",
         "id": "shaheen_47",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 205,
-        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "d+2~t7.shaheen": {
@@ -9222,11 +8517,6 @@
         "notation": "d+2",
         "id": "shaheen_48",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 137,
-        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "d+3~t7.shaheen": {
@@ -9273,11 +8563,6 @@
         "notation": "d+3",
         "id": "shaheen_49",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d+4~t7.shaheen": {
@@ -9323,11 +8608,6 @@
         "notation": "d+4",
         "id": "shaheen_50",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 339,
-        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "d/b+2": {
@@ -9373,11 +8653,6 @@
         "notation": "d/b+2",
         "id": "shaheen_51",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 146,
-        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "d/b+2,1": {
@@ -9430,11 +8705,6 @@
         "notation": "d/b+2, 1",
         "id": "shaheen_52",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+2,1~t7.shaheen": {
@@ -9480,11 +8750,6 @@
         "notation": "d/b+2, 1",
         "id": "shaheen_52",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+3": {
@@ -9530,11 +8795,6 @@
         "notation": "d/b+3",
         "id": "shaheen_54",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 138,
-        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "d/b+3,4": {
@@ -9587,11 +8847,6 @@
         "notation": "d/b+3, 4",
         "id": "shaheen_55",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+3,4~t7.shaheen": {
@@ -9637,11 +8892,6 @@
         "notation": "d/b+3, 4",
         "id": "shaheen_55",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+4": {
@@ -9689,11 +8939,6 @@
         "notation": "d/b+4",
         "id": "shaheen_57",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 148,
-        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "b+1~t7.shaheen": {
@@ -9739,11 +8984,6 @@
         "notation": "b+1",
         "id": "shaheen_58",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 216,
-        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "b+1,D": {
@@ -9783,11 +9023,6 @@
         "notation": "b+1, D",
         "id": "shaheen_59",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "b+3~t7.shaheen": {
@@ -9834,11 +9069,6 @@
         "notation": "b+3",
         "id": "shaheen_60",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 103,
-        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "b+4~t7.shaheen": {
@@ -9884,11 +9114,6 @@
         "notation": "b+4",
         "id": "shaheen_61",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 112,
-        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "2,1,4,1,3,3,3,3+4,4": {
@@ -9933,11 +9158,6 @@
         "notation": "2, 1, 4, 1, 3, 3, 3, 3+4, 4",
         "id": "shaheen_62",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 199,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "BT.1": {
@@ -9972,12 +9192,7 @@
       "t7_on_hit": "+3",
       "t7_on_ch": "+3",
       "merge_source": "t7:shaheen_63",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 47,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "BT.2~t7.shaheen": {
       "name": "Reverse Edge",
@@ -10012,12 +9227,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:shaheen_64",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "BT.3": {
       "name": "SCIMITAR BT.3",
@@ -10053,12 +9263,7 @@
       "merge_source": "t7:shaheen_65",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(or 4)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 227,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(or 4)"
     },
     "FC.1": {
       "name": "SCIMITAR FC.1",
@@ -10092,12 +9297,7 @@
       "t7_on_hit": "+6",
       "t7_on_ch": "+6",
       "merge_source": "t7:shaheen_66",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 47,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "FC.2": {
       "name": "SCIMITAR FC.2",
@@ -10131,12 +9331,7 @@
       "t7_on_hit": "+7",
       "t7_on_ch": "+7",
       "merge_source": "t7:shaheen_67",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "FC.3": {
       "name": "SCIMITAR FC.3",
@@ -10170,12 +9365,7 @@
       "t7_on_hit": "-3",
       "t7_on_ch": "-3",
       "merge_source": "t7:shaheen_68",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 227,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "FC.4": {
       "name": "SCIMITAR FC.4",
@@ -10209,12 +9399,7 @@
       "t7_on_hit": "-4",
       "t7_on_ch": "-4",
       "merge_source": "t7:shaheen_69",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 247,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "FC.d/f,d,D/F+3": {
       "name": "Sand Storm",
@@ -10249,12 +9434,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:shaheen_70",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 227,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "f,f,F": {
       "name": "SCIMITAR f,f,F",
@@ -10290,12 +9470,7 @@
       "merge_source": "t7:shaheen_71",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "WR (Full Screen)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "WR (Full Screen)"
     },
     "t7.shaheen_72": {
       "name": "SCIMITAR While enemy is on the ground... WR f, f, F (Full Screen)",
@@ -10339,11 +9514,6 @@
         "notation": "While enemy is on the ground... WR f, f, F (Full Screen)",
         "id": "shaheen_72",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "4~t7.shaheen.2": {
@@ -10391,11 +9561,6 @@
         "notation": "4",
         "id": "shaheen_20",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 199,
-        "match": "true-map exact (anim-fix 2026-10-23)"
       }
     },
     "1+2~t7.shaheen": {
@@ -10432,12 +9597,7 @@
       "merge_source": "t7:shaheen_74",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "WR",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 32,
-        "match": "true-map input+class (anim-fix 2026-10-23)"
-      }
+      "input_note": "WR"
     },
     "WS.1": {
       "name": "Albireo",
@@ -10471,12 +9631,7 @@
       "t7_on_hit": "+4",
       "t7_on_ch": "+12",
       "merge_source": "t7:shaheen_75",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 47,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "WS.2": {
       "name": "Hawk Edge",
@@ -10510,12 +9665,7 @@
       "t7_on_hit": "STUN",
       "t7_on_ch": "STUN",
       "merge_source": "t7:shaheen_76",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "WS.3": {
       "name": "SCIMITAR WS.3",
@@ -10549,12 +9699,7 @@
       "t7_on_hit": "0",
       "t7_on_ch": "0",
       "merge_source": "t7:shaheen_77",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 227,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "WS.3,3": {
       "name": "Double Scorpion",
@@ -10596,12 +9741,7 @@
         ],
         "total": 36
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "WS.3,3~t7.shaheen": {
       "name": "SCIMITAR WS.3,3",
@@ -10636,12 +9776,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:shaheen_79",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 195,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "WS.4": {
       "name": "SCIMITAR WS.4",
@@ -10675,12 +9810,7 @@
       "t7_on_hit": "+5",
       "t7_on_ch": "+5",
       "merge_source": "t7:shaheen_80",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 247,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "t7.shaheen_81": {
       "name": "SCIMITAR Face Up, Feet Towards+3 or (After Rolling Forward)",
@@ -10725,11 +9855,6 @@
         "notation": "Face Up, Feet Towards+3 or (After Rolling Forward)",
         "id": "shaheen_81",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "t7.shaheen_82": {
@@ -10775,11 +9900,6 @@
         "notation": "Face Up, Feet Towards+4 or (After Rolling Forward)",
         "id": "shaheen_82",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "FUFT.d+3": {
@@ -10815,12 +9935,7 @@
       "t7_on_ch": "-3",
       "merge_source": "t7:shaheen_83",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "Face Up, Feet Towards, (or 4)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 227,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "Face Up, Feet Towards, (or 4)"
     },
     "FUFT.3+4": {
       "name": "SCIMITAR FUFT.3+4",
@@ -10856,12 +9971,7 @@
       "merge_source": "t7:shaheen_84",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Face Up, Feet Towards+",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 162,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "Face Up, Feet Towards+"
     },
     "t7.shaheen_85": {
       "name": "SCIMITAR Face Up, Feet Towards, Roll Forward+1+2",
@@ -10907,11 +10017,6 @@
         "notation": "Face Up, Feet Towards, Roll Forward+1+2",
         "id": "shaheen_85",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "FDFA.3": {
@@ -10947,12 +10052,7 @@
       "t7_on_ch": "STUN",
       "merge_source": "t7:shaheen_86",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "Face Down, Feet Away+",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 227,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "Face Down, Feet Away+"
     },
     "FDFA.4": {
       "name": "SCIMITAR FDFA.4",
@@ -10988,12 +10088,7 @@
       "merge_source": "t7:shaheen_87",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Face Down, Feet Away+ (close)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 247,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "Face Down, Feet Away+ (close)"
     },
     "FDFA.4~t7.shaheen": {
       "name": "SCIMITAR FDFA.4",
@@ -11029,12 +10124,7 @@
       "merge_source": "t7:shaheen_88",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Face Down, Feet Away+ (far)",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 247,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "Face Down, Feet Away+ (far)"
     },
     "t7.shaheen_89": {
       "name": "SCIMITAR (Upon Landing) f",
@@ -11079,11 +10169,6 @@
         "notation": "(Upon Landing) f",
         "id": "shaheen_89",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/f,D/F": {
@@ -11124,11 +10209,6 @@
         "notation": "d/f, D/F",
         "id": "shaheen_90",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,3,D/F": {
@@ -11181,11 +10261,6 @@
         "notation": "1, 2, 3, D/F",
         "id": "shaheen_91",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,3,D/F~t7.shaheen": {
@@ -11237,11 +10312,6 @@
         "notation": "1, 2, 3, D/F",
         "id": "shaheen_91",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "1,2,3,D/F~t7.shaheen.2": {
@@ -11286,11 +10356,6 @@
         "notation": "1, 2, 3, D/F",
         "id": "shaheen_91",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "3,D/F": {
@@ -11336,11 +10401,6 @@
         "notation": "3, D/F",
         "id": "shaheen_94",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+2,4,D/F": {
@@ -11392,11 +10452,6 @@
         "notation": "f+2, 4, D/F",
         "id": "shaheen_95",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+2,4,D/F~t7.shaheen": {
@@ -11441,11 +10496,6 @@
         "notation": "f+2, 4, D/F",
         "id": "shaheen_95",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "f+3+4,D/F": {
@@ -11498,11 +10548,6 @@
         "notation": "f+3+4, D/F",
         "id": "shaheen_97",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d+3,D/F": {
@@ -11548,11 +10593,6 @@
         "notation": "d+3, D/F",
         "id": "shaheen_98",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "d/b+2,D/F": {
@@ -11598,11 +10638,6 @@
         "notation": "d/b+2, D/F",
         "id": "shaheen_99",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 106,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "SNK.1~t7.shaheen": {
@@ -11637,12 +10672,7 @@
       "t7_on_hit": "+5",
       "t7_on_ch": "+12",
       "merge_source": "t7:shaheen_100",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 47,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "SNK.2~t7.shaheen": {
       "name": "Maelstrom",
@@ -11677,12 +10707,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:shaheen_101",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "SNK.3~t7.shaheen": {
       "name": "Hunting Falcon Dive",
@@ -11725,12 +10750,7 @@
         "total": 18
       },
       "knockdown": true,
-      "input_note": "(close)",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 227,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(close)"
     },
     "SNK.3~t7.shaheen.2": {
       "name": "SCIMITAR SNK.3",
@@ -11766,12 +10786,7 @@
       "merge_source": "t7:shaheen_103",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(far)",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 227,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(far)"
     },
     "SNK.3+4": {
       "name": "Low Glide",
@@ -11806,12 +10821,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:shaheen_104",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 162,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "knockdown": true
     },
     "SNK.1+2~t7.shaheen": {
       "name": "Assault Tackle",
@@ -11848,12 +10858,7 @@
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 288,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "f,F+4": {
       "name": "Elnath",
@@ -11899,11 +10904,6 @@
         "notation": "f, F+4",
         "id": "shaheen_106",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 247,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "R.1+2": {
@@ -11940,12 +10940,7 @@
       "merge_source": "t7:shaheen_107",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Rage)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 162,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Rage)"
     },
     "R.d/b+2,4": {
       "name": "SCIMITAR R.d/b+2,4",
@@ -11987,12 +10982,7 @@
         ],
         "total": 24
       },
-      "input_note": "(During Rage)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 247,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Rage)"
     },
     "R.d/b+2,4~t7.shaheen": {
       "name": "SCIMITAR R.d/b+2,4",
@@ -12027,12 +11017,7 @@
       "t7_on_ch": "S!",
       "merge_source": "t7:shaheen_109",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "(During Rage)",
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 247,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Rage)"
     },
     "R.d/b+2,4,D/F": {
       "name": "Rage Drive",
@@ -12074,12 +11059,7 @@
         ],
         "total": 24
       },
-      "input_note": "(During Rage)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Rage)"
     },
     "d/b+1+2": {
       "name": "Shalua",
@@ -12126,11 +11106,6 @@
         "notation": "d/b+1+2",
         "id": "shaheen_111",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class-only (anim-fix 2026-10-23)"
       }
     },
     "1+3~t7.shaheen": {
@@ -12169,12 +11144,7 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 288,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "2+4~t7.shaheen": {
       "name": "Aldebaran",
@@ -12212,12 +11182,7 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 289,
-        "match": "true-map exact (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "f+1+3": {
       "name": "Desert Fang",
@@ -12255,12 +11220,7 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 288,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "f+2+4~t7.shaheen": {
       "name": "Aldebaran",
@@ -12298,12 +11258,7 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "shaheen",
-        "row": 288,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "d/f+1+4": {
       "name": "Wezen",
@@ -12341,12 +11296,7 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 288,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "SIDE_L.1+3": {
       "name": "Chasm Drop",
@@ -12384,12 +11334,7 @@
       "input_note": "Approach from left side... (or 2+4)",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 288,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "SIDE_R.1+3": {
       "name": "Axel Spinner",
@@ -12427,12 +11372,7 @@
       "input_note": "Approach from right side... (or 2+4)",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 288,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "BACK.1+3": {
       "name": "Silent Death",
@@ -12470,12 +11410,7 @@
       "input_note": "Approach from behind... (or 2+4)",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 288,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "unblockable": true
     },
     "t7.shaheen_120": {
       "name": "SCIMITAR WR f, f, F (Mid Screen)",
@@ -12520,11 +11455,6 @@
         "notation": "WR f, f, F (Mid Screen)",
         "id": "shaheen_120",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     },
     "TACKLE.1": {
@@ -12561,12 +11491,7 @@
       "merge_source": "t7:shaheen_121",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Tackle) (or 2)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 47,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Tackle) (or 2)"
     },
     "TACKLE.1,1": {
       "name": "SCIMITAR TACKLE.1,1",
@@ -12609,12 +11534,7 @@
         "total": 10
       },
       "knockdown": true,
-      "input_note": "(During Tackle)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Tackle)"
     },
     "TACKLE.1,1,1": {
       "name": "SCIMITAR TACKLE.1,1,1",
@@ -12658,12 +11578,7 @@
         "total": 15
       },
       "knockdown": true,
-      "input_note": "(During Tackle)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Tackle)"
     },
     "TACKLE.1,1,1,1": {
       "name": "SCIMITAR TACKLE.1,1,1,1",
@@ -12708,12 +11623,7 @@
         "total": 30
       },
       "knockdown": true,
-      "input_note": "(During Tackle)",
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 43,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
-      }
+      "input_note": "(During Tackle)"
     },
     "t7.shaheen_125": {
       "name": "Falcon Shield",
@@ -12752,11 +11662,6 @@
         "notation": "Time with enemy punch... b+1+2",
         "id": "shaheen_125",
         "wired": true
-      },
-      "anim_t3": {
-        "bank": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
-        "row": 162,
-        "match": "true-map class+limb (anim-fix 2026-10-23)"
       }
     }
   },
