@@ -130,7 +130,7 @@ export const FULL_ROSTER = [
         down: { target: 'burger-the-mouth', label: 'POWER DOWN', powerMult: 0.81, speedMult: 0.94, defenseMult: 0.85, bodyScale: 0.88, moveset: 'burger-the-mouth' },
       },
     } },
-  { id: 'awapop', name: 'AWA POP', title: 'Bubbles', base: 'Nina', moveset: 'demonio', model: 'awa-pop', tintStrength: 0.6,
+  { id: 'awapop', name: 'AWA POP', title: 'Bubbles', base: 'Nina', moveset: 'demonio', model: 'awa-pop-attire2', tintStrength: 0.6,
     colors: { suit: 0xff9dcc, trim: 0xffffff }, style: 'Assassin', archetype: 'Rushdown' },
   { id: 'scimitar', name: 'SCIMITAR', title: 'Desert Blade', base: 'Shaheen', moveset: 'demonio', model: 'scimitar', tintStrength: 0.6,
     colors: { suit: 0x2a2a3a, trim: 0xc2a36b }, style: 'Military', archetype: 'Balanced' },
@@ -138,7 +138,7 @@ export const FULL_ROSTER = [
     colors: { suit: 0x6b2d8f, trim: 0xff00ff }, style: 'Martial Arts', archetype: 'Stylish' },
   { id: 'nightwolf', name: 'NIGHTWOLF', title: 'Storm Shadow', base: 'Julia', moveset: 'xiaoyu', model: 'nightwolf', tintStrength: 0.6,
     colors: { suit: 0x1a3a5a, trim: 0x6accff }, style: 'Xinyi Liuhe', archetype: 'Balanced' },
-  { id: 'dio', name: 'DIO', title: 'Raging Demon', base: 'Akuma', moveset: 'heihachi', model: 'dio', tintStrength: 0.6,
+  { id: 'dio', name: 'DIO', title: 'Raging Demon', base: 'Akuma', moveset: 'heihachi', model: 'dio-attire1', tintStrength: 0.6,
     colors: { suit: 0x1a1a1a, trim: 0xff0000 }, style: 'Satsui no Hado', archetype: 'Shoto' },
   // CAPE JONES is the display name (owner 2026-10-23: "Start calling cyborg x as cape Jones
   // but leave cyborg x in the deep canon for him"). 'Cyborg X' stays as his deep-canon identity.
@@ -154,13 +154,13 @@ export const FULL_ROSTER = [
     // ('torch') ladders back as the fallback attire — see attires.js and
     // roster/torch/ATTIRE-SLOTS.md).
     colors: { suit: 0x8a1a1a, trim: 0xff8800 }, style: 'Assassin', archetype: 'Tricky' },
-  { id: 'bruno', name: 'BRUNO', title: 'Matador', base: 'Miguel', moveset: 'bryan', model: 'bruno', tintStrength: 0.25,
+  { id: 'bruno', name: 'BRUNO', title: 'Matador', base: 'Miguel', moveset: 'bryan', model: 'bruno-attire2', tintStrength: 0.25,
     colors: { suit: 0x5a1a1a, trim: 0xcc3333 }, style: 'Brawler', archetype: 'Power' },
-  { id: 'negativo', name: 'N3GΔTIV0', title: 'Galactic Bounty Hunter', base: 'Negan', moveset: 'bryan', model: 'n3g4tiv0', tintStrength: 0.25,
+  { id: 'negativo', name: 'N3GΔTIV0', title: 'Galactic Bounty Hunter', base: 'Negan', moveset: 'bryan', model: 'negativo-attire1', tintStrength: 0.25,
     colors: { suit: 0x0a0a0a, trim: 0x00ff00 }, style: 'Brawler', archetype: 'Intimidation' },
   { id: 'thor', name: 'THOR', title: 'Norse God', base: 'Ganryu', moveset: 'bryan', model: 'thor', tintStrength: 0.25,
     colors: { suit: 0x4a3a2a, trim: 0xffd700 }, style: 'Sumo', archetype: 'Power' },
-  { id: 'yukihyo', name: 'YUKIHYŌ', title: 'Snow Leopard Ninja', base: 'Armor King', moveset: 'king', model: 'yukihyo', tintStrength: 0.25,
+  { id: 'yukihyo', name: 'YUKIHYŌ', title: 'Snow Leopard Ninja', base: 'Armor King', moveset: 'king', model: 'yukihyo-attire1', tintStrength: 0.25,
     colors: { suit: 0xd0d0d0, trim: 0x6accff }, style: 'Grappler', archetype: 'Ninja' },
   { id: 'slice', name: 'SLICE', title: 'Maniacal Agent', base: 'Dragunov', moveset: 'bryan', model: 'slice', tintStrength: 0.6,
     colors: { suit: 0x2a2a2a, trim: 0xcc0000 }, style: 'Commando Sambo', archetype: 'Grappler' },
@@ -347,6 +347,29 @@ export const FULL_ROSTER = [
   // file + loader listing existed, model sat in attires/attire1/source/).
   { id: 'chordz', name: 'CHORDZ', title: 'The Emo Guitarist', base: 'Lars', moveset: 'chordz', model: 'chordz', tintStrength: 0.25,
     colors: { suit: 0x1a1a2a, trim: 0x8a2a6b }, style: 'Emo Guitarist', archetype: 'Tricky' },
+  // ——— LANDING WAVE 3 (2026-10-23, docs/CATCHUP-AUDIT-2026-10-23.md): the
+  // bear-bank successors + Silvertongue. Models were wired (wave 1) and
+  // rigged (wave 2); their movesets land this wave
+  // (game/assets/movesets/{id}.json + MOVESET_IDS + index.json), so the
+  // select entries land now that every piece is on main.
+  // GASHADOKURO (owner canon law 2026-10-23, roster/kuma/CANON.md): the
+  // starved-dead giant skeleton, Kuma's proprietary successor. Kuma is
+  // obsolete in canon and never stands alone on this list — the bear bank
+  // is scaffolding only. Moveset: gashadokuro.json (T3 Kuma bank, 530).
+  { id: 'gashadokuro', name: 'GASHADOKURO', title: 'The Starved Dead', base: 'Kuma', moveset: 'gashadokuro', model: 'gashadokuro', tintStrength: 0.25,
+    colors: { suit: 0xe8e0cc, trim: 0x8a1a1a }, style: 'Beast Grappler', archetype: 'Power' },
+  // AOTSUKI (owner canon law 2026-10-23, roster/panda/CANON.md): the blue
+  // moon, Panda's proprietary successor. Panda is obsolete in canon and
+  // never stands alone on this list. Moveset: aotsuki.json (T3 bear bank —
+  // Panda shares Kuma's T3 bank; proxy-flagged in the file).
+  { id: 'aotsuki', name: 'AOTSUKI', title: 'The Blue Moon', base: 'Panda', moveset: 'aotsuki', model: 'aotsuki', tintStrength: 0.25,
+    colors: { suit: 0x2a4a8a, trim: 0xbcd8ff }, style: 'Beast Grappler', archetype: 'Power' },
+  // SILVERTONGUE (owner canon law 2026-10-23, roster/silvertongue/CANON.md):
+  // "The Heiress Soul", the tourist — Lili re-owned; the source name is
+  // retired in this universe and she never appears under it. Moveset:
+  // silvertongue.json (her full kit, authored as her own file this wave).
+  { id: 'silvertongue', name: 'SILVERTONGUE', title: 'The Heiress Soul', base: 'Lili', moveset: 'silvertongue', model: 'silvertongue', tintStrength: 0.25,
+    colors: { suit: 0xf0e8f0, trim: 0xc0a062 }, style: 'Acrobatic Elegance', archetype: 'Stylish' },
 ];
 
 /* Unknown / missing id -> a MODEL PENDING soul (no body, kept out of fights),

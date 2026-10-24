@@ -38,6 +38,10 @@ const screens = {
   menu:   document.getElementById('screen-menu'),
   howto:  document.getElementById('screen-howto'),
   select: document.getElementById('screen-select'),
+  // PR #841 versus-setup: show() must hide this screen too — openVersusSetup()
+  // adds .active directly, and without this entry show('select') left it
+  // covering the select screen (menu-touch-e2e tap timeout on .char-card).
+  vssetup: document.getElementById('screen-vssetup'),
   stage:  document.getElementById('screen-stage'),
   stageIntro: document.getElementById('screen-stage-intro'),
   result: document.getElementById('screen-result'),
@@ -116,12 +120,27 @@ const ui = {
     const wrap = document.getElementById(`${id}-meter`);
     wrap.classList.toggle('full', f.meter >= f.maxMeter - 0.001);
   },
-  setTimer(v) { document.getElementById('timer').textContent = String(v).padStart(2, '0'); },
-  setRounds(wins) {
-    document.getElementById('p1-r1').classList.toggle('win', wins.p1 >= 1);
-    document.getElementById('p1-r2').classList.toggle('win', wins.p1 >= 2);
-    document.getElementById('p2-r1').classList.toggle('win', wins.p2 >= 1);
-    document.getElementById('p2-r2').classList.toggle('win', wins.p2 >= 2);
+  setTimer(v) {
+    const t = document.getElementById('timer');
+    t.textContent = (v === '∞' || v === Infinity || (typeof v === 'number' && !isFinite(v))) ? '∞' : String(v).padStart(2, '0');
+  },
+  setRounds(wins, target) {
+    // Round pips rebuild to the match's round target (T7 HUD shows the
+    // pips for the rounds actually needed, not a fixed pair).
+    const t = Math.min(5, Math.max(1, target || 2));
+    for (const side of ['p1', 'p2']) {
+      const host = document.getElementById(side + '-pips');
+      if (!host) continue;
+      while (host.children.length < t) {
+        const s = document.createElement('span');
+        s.className = 'round-pip';
+        host.appendChild(s);
+      }
+      while (host.children.length > t) host.removeChild(host.lastChild);
+      for (let i = 0; i < host.children.length; i++) {
+        host.children[i].classList.toggle('win', (wins[side] || 0) > i);
+      }
+    }
   },
   banner(text) {
     const b = document.getElementById('round-banner');
@@ -260,6 +279,11 @@ function getModes() {
       });
       window.__modes = modes;
       return modes;
+    }).catch((err) => {
+      // A failed load must not permanently wedge every mode button for the
+      // session: drop the rejected promise so the next tap retries the load.
+      _modesPromise = null;
+      throw err;
     });
   }
   return _modesPromise;
@@ -289,7 +313,9 @@ function getRankBattle() {
    their mode-dictated flow (stage comes from the mode, not the player). */
 let pendingFight = null;
 function startFightViaStage(p1, p2, opts = {}) {
-  if (opts.mode !== 'versus') { startFight(p1, p2, opts); return; }
+  // Versus SETUP: stage RANDOM skips the arena screen — the random stage
+  // picked in modes.js _beginVersus rides opts.stage straight in.
+  if (opts.mode !== 'versus' || opts.skipStage) { startFight(p1, p2, opts); return; }
   pendingFight = { p1, p2, opts };
   buildStageSelect();
   show('stage');
@@ -564,7 +590,8 @@ function stopSelectTimer() {
 function randomEnemy(excludeId) {
   // Never field a MODEL PENDING fighter (no own model; owner 2026-10-23).
   const pool = ROSTER.filter(c => c.id !== excludeId && !c.modelPending && c.model);
-  return pool[Math.floor(Math.random() * pool.length)];
+  // Owner pt213u: enemies wear attire 1 (owner model first), not the raw roster key.
+  return resolveFighterAttire(pool[Math.floor(Math.random() * pool.length)]);
 }
 
 /* ---------------- Menu button wiring ---------------- */
@@ -660,11 +687,16 @@ document.addEventListener('click', (e) => {
 
 /* T8 main menu router (data-mm, worker 36): the T8-style menu uses data-mm
    attributes, not data-action. This delegated listener wires them up.
-   Each navigates to a real screen — no dead ends. */
+   Each navigates to a real screen — no dead ends.
+   SUBMENU REBUILD (worker-submenus): rail items (.mm-item) are owned by
+   the T8 submenu controller in mainmenu.js — it opens the slide-in
+   submenu panel. Yielding here keeps every submenu reachable; without
+   this the mode starts underneath and the submenu never shows. */
 document.addEventListener('click', (e) => {
   const t = e.target;
   const el = (t instanceof Element) ? t.closest('[data-mm]') : null;
   if (!el) return;
+  if (el.classList && el.classList.contains('mm-item')) return; // submenu controller owns rail items
   unlockAudio();
   audio.uiClick();
   // T7 SubMenu_mc (owner, PR #901 follow-up): a main-menu rail item opens
@@ -879,7 +911,7 @@ async function startFight(playerId, enemyId, opts = {}) {
   // MODEL PENDING fighters (no own model yet) never enter a fight on another body.
   if (player.modelPending || !player.model) player = resolveFighterAttire(getCharacterWithCustom(firstReady));
   let enemy = opts.enemyChar ||
-    (typeof enemyId === 'string' && enemyId !== player.id ? getCharacterWithCustom(enemyId) : randomEnemy(player.id));
+    (typeof enemyId === 'string' && enemyId !== player.id ? resolveFighterAttire(getCharacterWithCustom(enemyId)) : randomEnemy(player.id));
   if (!enemy || enemy.modelPending || !enemy.model) enemy = randomEnemy(player.id);
   // On-demand: load only the 2 fighters for this fight (Tekken 3 pattern).
   // Models may already be prefetched from select-screen highlight.
@@ -1022,10 +1054,12 @@ if (whUiEnabled()) mountWhUi({ game, ui, show, startFight, ROSTER });
    modules during idle (Tekken: stream records while the player reads
    the menu) and stamp the boot->menu timing mark on first paint. */
 warmIdle();
-// QA hooks (window.__modes) and the first mode tap expect the controller soon after boot: build it on
-// the same idle lane lazy.warmIdle() uses, so it never competes with first paint.
-((typeof window !== 'undefined' && window.requestIdleCallback) ? window.requestIdleCallback.bind(window)
-  : (fn) => setTimeout(fn, 1500))(() => { getModes().catch(() => {}); });
+// QA hooks (window.__modes) and the first mode tap expect the controller soon after boot.
+// Warm on a guaranteed timer, not only on idle: a busy/loaded page may never
+// report an idle window, leaving the first mode tap to cold-load modes.js —
+// a tap with no feedback. 800ms is safely post-first-paint and the dynamic
+// import never blocks it.
+setTimeout(() => { getModes().catch(() => {}); }, 800);
 requestAnimationFrame(() => requestAnimationFrame(() => mark('menu-interactive')));
 
 /* Menu routers above are bound (delegated data-action + data-mm listeners

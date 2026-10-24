@@ -116,3 +116,8 @@ may run it by hand: `bash tools/agent/autosave.sh manual`. `wip(autosave)` commi
 
 ## Team workflow — Tekken data sources
 Where the Tekken 7/8 data comes from and how any agent pulls it (T8 movesets, T7 frame data, owner's Steam T7 files, HUD/announcer): `docs/team/TEKKEN-DATA-SOURCES.md`.
+
+
+## COMPLETE WIRING LAW (owner 2026-10-23 — permanent)
+
+Everything pulled from Tekken and every other game must be 100% wired in without the owner naming each system; agents audit and fix it themselves, claim rows on #866, and push at least every system / ~30 min. Full law: `docs/rules/COMPLETE-WIRING-LAW.md`. Inventory: `docs/tech/SYSTEMS-COVERAGE.md`.
