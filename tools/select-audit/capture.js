@@ -35,8 +35,8 @@ async function openSelect(b) {
   let pg = await openSelect(b);
   let ids = await pg.evaluate(() => [...document.querySelectorAll('#char-grid .char-card')].map(c => c.dataset.id).filter(x => x && x !== '__random'));
   if (only) ids = ids.filter(i => only.split(',').includes(i));
-  fs.writeFileSync(path.join(out, 'ids.txt'), ids.join('\n'));
-  const res = fs.createWriteStream(path.join(out, 'results.jsonl'));
+  if (!only) fs.writeFileSync(path.join(out, 'ids.txt'), ids.join('\n'));
+  const res = fs.createWriteStream(path.join(out, 'results.jsonl'), { flags: 'a' });
   await pg.close();
   for (const id of ids) {
     const rec = { id };

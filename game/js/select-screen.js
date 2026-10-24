@@ -300,6 +300,10 @@ export class PreviewPane {
           }
         } catch (e) { console.warn('[WH] select preview: pose unavailable for', c.id, e.message || e); }
       } else if (this.hasStance) { this.stanceSource = 'tekken-bank'; this.poseKey = `${this.bank}/stance`; }
+      // POSED FRAMING (select audit 2026-10-23): bind bounds understate a
+      // posed body (bank clips shift the head/hips) and cut heads off.
+      // Re-fit the camera to the SKINNED, posed vertices once.
+      if (this.hasStance && token === this._token) this._refitPosed();
       return true;
     } catch (e) {
       if (token === this._token) {
@@ -310,6 +314,26 @@ export class PreviewPane {
     } finally {
       if (token === this._token) this._loading = false;
     }
+  }
+
+  _refitPosed() {
+    try {
+      if (this.aim) this.aim.apply(this._aimT || 0);
+      if (this.mixer) this.mixer.update(0);
+      this.model.updateMatrixWorld(true);
+      const bb = new THREE.Box3(), v = new THREE.Vector3();
+      this.model.traverse((o) => {
+        if (!o.isSkinnedMesh || !o.geometry.attributes.position) return;
+        const n = o.geometry.attributes.position.count, step = Math.max(1, Math.floor(n / 3000));
+        for (let i = 0; i < n; i += step) { o.getVertexPosition(i, v); bb.expandByPoint(v.applyMatrix4(o.matrixWorld)); }
+      });
+      if (bb.isEmpty()) return;
+      const sz = bb.getSize(new THREE.Vector3());
+      if (sz.y < 0.1) return;
+      // the model turns: width rules by the larger horizontal extent
+      this._fitW = Math.max(sz.x, sz.z) * 1.06; this._fitH = sz.y * 1.08; this._fitCY = bb.min.y + sz.y / 2;
+      this._frame();
+    } catch (e) { console.warn('[WH] select preview: posed refit failed', e.message || e); }
   }
 
   _clearModel() {
