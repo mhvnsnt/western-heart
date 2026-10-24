@@ -39,7 +39,7 @@ jobs:
             git cat-file blob "HEAD:$f" > /tmp/g/m.glb
             out=$(python3 tools/rig/weight_audit.py audit /tmp/g/m.glb | grep -E '^(ok|FAIL|ERROR)' | head -1)
             n=$(echo "$out" | awk '/^(ok|FAIL)/{print $2}')
-            allow=$(awk -F'\t' -v f="$f" '$1==f{print $2}' tools/rig/face_cone_baseline.txt 2>/dev/null)
+            allow=$(awk -F'\t' -v f="$f" '$1==f{print $2}' tools/rig/face_cone_baseline.txt 2>/dev/null || true)
             if [ -z "$n" ]; then echo "::error file=$f::audit error: $out"; fail=1
             elif [ "$n" -gt "${allow:-0}" ]; then echo "::error file=$f::$n face-cone verts (allowed ${allow:-0})"; fail=1
             else echo "ok $n (allowed ${allow:-0}) $f"; fi
