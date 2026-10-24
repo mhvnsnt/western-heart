@@ -141,6 +141,14 @@ export function bankIdFor(charId, movesetId) {
     // 2026-10-23 (Claude session): the last decoded T3 banks (tools/anim/t3_bake_bank.py). These movesets
     // name their source as a teardown path or not at all, so bind each to its base's own bank here.
     chatur: 'ogre', dorowani: 'gon', menajerii: 'kuma',
+    // 2026-10-23 (landing wave 3): the bear-bank successors + Silvertongue.
+    // Their index entries name the bank (anim_bank/t3_source), but the
+    // portrait-capture page resolves banks without the moveset index
+    // loaded, so bind them here like the 2026-10-23 additions above.
+    //   gashadokuro -> kuma (CANON: his base is the Kuma bank)
+    //   aotsuki     -> kuma (CANON: Panda shares Kuma's T3 bank)
+    //   silvertongue -> xiaoyu (her kit's T3 bank, per lili.json t3_source)
+    gashadokuro: 'kuma', aotsuki: 'kuma', silvertongue: 'xiaoyu',
   };
   if (Object.prototype.hasOwnProperty.call(FIGHTER_BANK, charId)) return FIGHTER_BANK[charId];
   let src = null;
