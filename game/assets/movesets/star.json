@@ -1,6 +1,13 @@
 {
   "fighter": "star",
   "display": "STAR",
+  "anim_set_lock": {
+    "law": "SHOW-ANIMATION LOCK (owner 2026-10-23)",
+    "FIGHT": "every move in this file: moveset moves and combat stances — the combat animation bank",
+    "SHOW": "win poses, intro poses, taunts, cutscene animations — intro/win slots and cutscenes ONLY; tracked in docs/anim/STAR-ANIM-GAP-20261023.md; must NEVER enter this moveset without the user's explicit approval",
+    "note": "per-move 'set' tags stamp what each pull lane added; the file itself is the FIGHT set",
+    "batch8_20261023": "batch8 2026-10-23: Christie (T5/TTT2) movelist unavailable — no data on disk, TTT2 extraction blocked; 0 moves added this lane"
+  },
   "tekken_base": "Christie",
   "t3_source": "xiaoyu",
   "proxy": false,

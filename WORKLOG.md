@@ -2575,3 +2575,24 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 **Anti-clobber:** branch from fresh origin/main; sparse checkout in this tree (lab/ etc. excluded) — committed via Git Data API (push_branch_api.py) building from main's real tree + only this task's 6 files; verified via compare API that the branch diff is exactly the 6 files (4 added, 2 modified), 0 deletions. gitleaks clean. No deletions.
 
 **ALL CHARACTERS ARE ADULTS:** n/a — rigging pipeline, no characters.
+
+---
+
+## 2026-10-23 — Moveset batch8 pull: bruno / docfrank / chatur / samura1 / star (PR pattern #823/#806)
+
+**Task:** replicate the Law/Lars pull pattern for 5 fighters (TTT2/T6/T5/T3 sources, no T8 data for these).
+
+**Method:** `tools/moveset-merge/merge_sources.py` (the proven pipeline — guard enforces additions-only, every new move carries `merge_source`). Dry-ran all 5, wrote only where genuinely-missing moves existed.
+
+**Per-fighter results:**
+- **bruno** ← Miguel (T7): pull already complete — 219/219 T7 rows merged (`docs/t7t8-reference/frame-data-t7/miguel.json`; 206 curated with Miguel's real move names + 13 `t7:miguel_*`). +0 moves. Motion gap filed: `docs/anim/BRUNO-ANIM-GAP-20261023.md` (no Miguel bank; bryan T3 proxy flagged; unblock = T7 pull on owner's Steam purchase).
+- **docfrank** ← Bosconovitch: T3 rows 100% covered (all 251 source rows present). +0 moves. TTT2 Bosconovitch movelist has no data on disk (extraction blocked) — noted, not faked.
+- **chatur** ← True Ogre (T3): **+129 moves** (152 → 281), all `merge_source: t3:ogre:row:N`, all tagged `"set": "FIGHT"`. `anim_bank: ogre` now set by annotate(). T3 use logged per INSTRUCTION GATE in `docs/anim/PROCEDURAL_AUDIT.md` (True Ogre is T3-only — cut from T5/6/7/8/TTT2; no newer source exists).
+- **samura1** ← Gun Jack: T8 Jack-8 + T7 Jack-7 + T3 Gun Jack pulls all complete. +0 moves.
+- **star** ← Christie: Christie T5/TTT2 movelist unavailable (no data on disk; TTT2 extraction blocked). +0 moves. Motion gap filed: `docs/anim/STAR-ANIM-GAP-20261023.md`. **Owner decision flagged:** bases.json 2026-10-20 override says "Xiaoyu's moveset goes to Star" but canon base is Christie — both can't be permanent; left untouched for the owner.
+
+**SHOW-ANIMATION LOCK:** `anim_set_lock` metadata added to all 5 files (law/FIGHT/SHOW/note + batch8 pull note). Per-move `"set": "FIGHT"` stamped on the 129 chatur additions. Banks already wired: `T3_BANKS` + `SOURCE_TO_BANK` + `FIGHTER_BANK` cover bosconovitch/gunjack/ogre (docfrank/chatur/samura1); win clips (`t3_win_*.json`) present in all three banks = SHOW set.
+
+**Tool fixes (needed for the pull, shipped in this PR):** `tools/moveset-merge/merge_sources.py` — `identity()` crashed with `TypeError: unhashable type: 'list'` on older files whose `t3_row` is a list (chatur's 21 multi-row string moves); added `_hashable()` coercion (upstream fixed the sibling `bank_attack_word` spot in parallel). `tools/moveset-merge/bases.json` — added `bruno: {t7: [miguel]}` and `chatur: {t3: [ogre]}` overrides.
+
+**Verification:** guard PASS on every run (no move/string/special/input lost); semantic diff audit — 0 field losses, 0 removals, additions only; `node --test game/tests/fighter-completeness.test.mjs` green; gitleaks clean.
