@@ -163,7 +163,6 @@ export const ATTIRE_VARIANTS = {
   'phantom': [
     { model: 'phantom', label: 'BASE' },
     { model: 'phantom-t8', label: 'T8' },
-    { model: 'steve-fox', label: 'JIN · BLADE SOUL' },
     { model: 'jin-bloodline-ember', label: 'JIN KAZAMA · BLOODLINE EMBER (TEKKEN RESKIN)' },
   ],
   /* CHARGER's ladder (dedup 2026-10-22): the standalone 'charger-attire2'
@@ -314,7 +313,6 @@ export const ATTIRE_VARIANTS = {
   'zui': [
     { model: 'zui-attire1', label: 'ATTIRE 1 · DRUNKEN MONK (TRIPO)' },
     { model: 'zui-attire2', label: 'ATTIRE 2 · REWORK V2' },
-    { model: 'steve-fox', label: 'BASE · STEVE FOX (CANON)' },
     { model: 'zui_alt1', label: 'ALT 1 · T7 STEVE RESKIN' },
     { model: 'zui_alt2', label: 'ALT 2 · T7 STEVE RESKIN' },
   ],

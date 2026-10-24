@@ -349,8 +349,15 @@ export const FULL_ROSTER = [
     colors: { suit: 0x1a1a2a, trim: 0x8a2a6b }, style: 'Emo Guitarist', archetype: 'Tricky' },
 ];
 
+/* Unknown / missing id -> a MODEL PENDING soul (no body, kept out of fights),
+   never another fighter's body (owner law t183u: no wrong model anywhere). */
+export function modelPendingFighter(id) {
+  return { id: String(id || 'unknown'), name: String(id || 'UNKNOWN').toUpperCase(), title: 'Model pending',
+    base: null, moveset: null, model: null, modelPending: true, tintStrength: 0,
+    colors: { suit: 0x555555, trim: 0x999999 }, style: '', archetype: '' };
+}
 export function getFighter(id) {
-  return FULL_ROSTER.find(f => f.id === id) || FULL_ROSTER.find(f => f.id === 'pantera'); // default Pantera
+  return FULL_ROSTER.find(f => f.id === id) || modelPendingFighter(id);
 }
 
 /* Tier membership (dedup 2026-10-22): explicit id lists, not positional
