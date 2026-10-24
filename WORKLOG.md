@@ -2531,6 +2531,24 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 
 ---
 
+## 2026-10-23 — Track 4 (advanced systems): Project Chrono grappling lane
+
+**Owner instruction (verbatim):** "Pull all of this stuff in and wire it up and put it to work the best way possible"
+
+**Architecture decision: AUGMENT, not replace.** Chrono fills one gap — articulated joint constraints with torque readout for grappling. cannon-es keeps visuals-only rigid bodies, Jolt keeps XPBD soft tissue, PhysicsServo keeps the muscle layer. Full Chrono C++ → WASM is SPEC ONLY (official Emscripten tutorial path documented); no maintained JS/npm Chrono package exists, and a multi-MB WASM engine is wrong-sized for a ~6-body subsystem that must be bit-deterministic for rollback.
+
+**Changes:**
+- `game/js/chrono-grapple.js` (new, ~700 lines, zero deps, no three.js): Chrono-inspired joint taxonomy (FIXED/SPHERICAL/REVOLUTE/PRISMATIC/UNIVERSAL), ChronoEngine (torque/speed/position), ChronoSpring (runtime-variable stiffness muscle model), per-link torque nodes (reactionForce/reactionTorque), MuscleStrain (real-time strain calc, tap-out, bone-snap), SubmissionChain (data-driven: armbar/kimura/triangle/rear-naked choke), GrappleRig + ChronoGrapple facade with PhysicsServo contract (`getServoTargets()` → per-limb PD targets, null while idle).
+- `game/tests/chrono-grapple.test.mjs` (new): 18 tests, all green.
+- `game/js/integration.js`: additive block 8 (`tryInit('grapple', './chrono-grapple.js', …)`) + `S.grapple.update(dt)` in the frame loop. No existing logic touched.
+- `docs/research/CHRONO-PHYSICS-2026-10-23.md` (new): evaluation, license (BSD-3-Clause, verified), replace-vs-augment table, [WIRED]/[RESEARCHED]/[SPEC ONLY] marking, WASM vendor path, open questions.
+
+**Verification:** `node --test game/tests/chrono-grapple.test.mjs` 18/18 green; full suite 80/84 with the same 4 pre-existing full-suite-mode failures as pristine main (fighter-completeness/v-system parallel-run flakes — verified by stashing). All four submission chains measured end-to-end: entry → control → lock → tap with in-band torques. Determinism asserted (identical runs ⇒ identical snapshots).
+
+**Deviations:** none. License note: user lifted the license firewall 2026-10-23; Chrono is BSD-3-Clause regardless, and the wired module is WH-original code (architecture-inspired, not a derivative).
+
+---
+
 ## 2026-10-23 — batch10 special/non-Tekken moveset pull (SHOW-ANIMATION LOCK for 8 fighters)
 
 **Owner instruction (verbatim, user 2026-10-23):** "Now we need to get that done for every other character" — i.e. replicate the Law/Lars pull pattern (PR #823): read each moveset file, pull from the best DOCUMENTED source in the repo, diff and fill genuine gaps, stamp `"set": "FIGHT"`, add `anim_set_lock`, file precise gaps where source data doesn't exist.
