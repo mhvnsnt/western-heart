@@ -8,8 +8,8 @@
   "variant": 0,
   "anim_set_lock": {
     "law": "SHOW-ANIMATION LOCK (owner 2026-10-23)",
-    "FIGHT": "every move in this file: moveset moves and combat stances — the combat animation bank",
-    "SHOW": "win poses, intro poses, taunts, cutscene animations — intro/win slots and cutscenes ONLY; bank clips in game/assets/anim/t3/king_on_pantera_leoman/ (t3_stance.json → intro slot, t3_win_*.json → win slots); must NEVER enter this moveset without the user's explicit approval",
+    "FIGHT": "every move in this file: moveset moves and combat stances \u2014 the combat animation bank",
+    "SHOW": "win poses, intro poses, taunts, cutscene animations \u2014 intro/win slots and cutscenes ONLY; bank clips in game/assets/anim/t3/king_on_pantera_leoman/ (t3_stance.json \u2192 intro slot, t3_win_*.json \u2192 win slots); must NEVER enter this moveset without the user's explicit approval",
     "note": "per-move 'set' tags stamp what each pull lane added; the file itself is the FIGHT set"
   },
   "strings": [
@@ -13116,11 +13116,6 @@
       "t7_on_ch": "+7",
       "merge_source": "t7:king_46",
       "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "king",
-        "row": 275,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 21,
         "startup_frames": 17,
@@ -15172,11 +15167,6 @@
       "merge_source": "t7:king_87",
       "recovery_from": "same-notation T8 recv",
       "launch": true,
-      "anim_t3": {
-        "bank": "king",
-        "row": 127,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 21,
         "startup_frames": 23,
@@ -15633,11 +15623,6 @@
       "t7_on_ch": "0 (OC)",
       "merge_source": "t7:king_96",
       "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "king",
-        "row": 127,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 25,
         "startup_frames": 30,
@@ -19718,11 +19703,6 @@
       "merge_source": "t7:king_183",
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
-      "anim_t3": {
-        "bank": "king",
-        "row": 127,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 27,
         "startup_frames": 23,
@@ -20102,11 +20082,6 @@
       "merge_source": "t7:king_191",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "anim_t3": {
-        "bank": "king",
-        "row": 127,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 45,
         "startup_frames": 58,
@@ -20154,11 +20129,6 @@
       "merge_source": "t7:king_192",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "anim_t3": {
-        "bank": "king",
-        "row": 127,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 50,
         "startup_frames": 29,
