@@ -2506,6 +2506,28 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 
 **Deviations:** none — the 17 pulled moves are all combat moves (FIGHT); no SHOW content entered the moveset.
 
+## SUBMENU REBUILD — versus setup (T7 GAME OPTION <VS GAME>, 2026-10-23, PR #832)
+
+**Owner instruction (verbatim):** "NO hand-tooled menus. EVER. Every menu in the game gets rebuilt FROM the teardown files of actual Tekken games (T5/T6/T7/TTT2, T8 when it lands) and other games' teardown UI." Task: rebuild ALL submenus from Tekken's actual UI — 1. Versus setup (rules, rounds, time, stage select).
+
+**Source:** Tekken 7 / arcade GAME OPTION table (manuals.plus TTT operators manual): FIGHT COUNT <VS GAME> 1-5, ROUND TIME, GUARD DAMAGE ON/OFF; T7 console INFINITY time.
+
+**Built (branch worker-submenus/versus-setup):**
+- `game/js/rules.js` (new) — standalone match-rules store `wh_rules_v1` (difficulty, rounds1p, roundsVs, roundTime 0=∞, guardDamage, stageMode).
+- `game/js/versus-setup.js` (new) + `#screen-vssetup` in `game/index.html` — T7 option-list screen: FIGHT COUNT 1-5, ROUND TIME 30/40/60/90/99/∞, GUARD DAMAGE ON/OFF, STAGE SELECT/RANDOM.
+- `game/submenus.css` (new) — shared T7 option-list grammar (tk-row/tk-seg/tk-tabs, all ≥48px).
+- `game/js/modes.js` — `_beginVersus` reads rules, passes roundsToWin/roundTime/guardDamage through fight opts; STAGE=RANDOM picks a random arena and skips the stage screen (`opts.skipStage`, honored in `game/js/main.js` `startFightViaStage`).
+- `game/js/game.js` — `startMatch` honors per-match `opts.roundTime` (0 = no timeout, HUD shows ∞) and `opts.guardDamage`; `game/js/fighter.js` zeroes chip when guard damage is OFF.
+- `game/js/game.js` ui.setRounds rebuilds round pips to the match's round target; setTimer renders ∞.
+- Routing fix: the legacy data-mm router in `game/js/main.js` fired on rail taps alongside the T8 submenu controller, making every submenu unreachable — rail items now yield to the submenu controller (required for "no dead ends").
+
+**Verification (played, not pushed):** 7/7 menu harness checks (every option tapped, match-rules localStorage asserted, tap targets ≥48px measured, back navigation); 10/10 fight-integration checks (captured fight opts carry roundsToWin/roundTime/guardDamage/stageMode; HUD pips and ∞ timer proven). Screenshots viewed: `game/tests/submenu-versus-setup-proof-20261023/`. `node --check` clean on all 8 touched JS files. gitleaks clean. 8 files modified + 3 new source files + proof dir + `docs/decisions/2026-10-23-submenu-versus-setup.md`; 0 deletions.
+
+**Anti-clobber:** branched from main tip; explicit file list pushed via Git Database API (no GitHub connector for git ops); other workers' untracked docs files excluded from every push.
+
+**Queued next:** PR2 OPTIONS rebuild (T7 GAME OPTION / CONTROLLER SETUP / SOUND / DISPLAY tabs); PR3 mode setup sheets; PR4 gallery (T5 theater + TTT2 gallery); PR5 jukebox (TTT2 Tekken Tunes).
+
+
 ## 2026-10-23 — Priority-5 moveset pull: burger/purplerain/pantera/torch/michiko (T8+T7 diff, SHOW-ANIMATION LOCK, anim-bank gaps)
 
 **Owner instruction (verbatim):** "Now we need to get that done for every other character" (2026-10-23) — the Law/Lars full pulls (PR #806 / PR #823 pattern).
@@ -2556,3 +2578,22 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 **Verification:** `node --test game/tests/chrono-grapple.test.mjs` 18/18 green; full suite 80/84 with the same 4 pre-existing full-suite-mode failures as pristine main (fighter-completeness/v-system parallel-run flakes — verified by stashing). All four submission chains measured end-to-end: entry → control → lock → tap with in-band torques. Determinism asserted (identical runs ⇒ identical snapshots).
 
 **Deviations:** none. License note: user lifted the license firewall 2026-10-23; Chrono is BSD-3-Clause regardless, and the wired module is WH-original code (architecture-inspired, not a derivative).
+## 2026-10-23 ~19:30 CDT — UniRig auto-rig intake integration (PR #956, branch muse/unirig-autorig-integration)
+
+**Owner instruction (verbatim):** "Pulling everything from the list and wire it all up and where it'll work and where it's appropriate" — item: UniRig (SIGGRAPH 2025, MIT license), AI auto-rigging for the Tripo intake pipeline + creation suite auto-rig.
+
+**Pulled:** UniRig cloned to ~/workspace/research-pull/unirig/UniRig (VAST-AI-Research, MIT). Studied the inference API: launch/inference/generate_skeleton.sh (autoregressive skeleton prediction, checkpoint skeleton/articulation-xl_quantization_256/model.ckpt) -> generate_skin.sh (bone-point cross-attention skinning, skin/articulation-xl/model.ckpt) -> merge.sh (bpy merge of skin back onto source mesh). Weights auto-download from Hugging Face VAST-AI/UniRig.
+
+**Wired:**
+- `tools/rig-intake/unirig_intake.py` (new): wrapper driving all 3 stages via subprocess. `rig_model(src, out)` raises on failure; `maybe_autorig(src, workdir)` never raises — returns rigged GLB path or None. Env: UNIRIG_ROOT, WH_UNIRIG (master switch), WH_UNIRIG_SEED. `--check` readiness probe.
+- `tools/rig-intake/UNIRIG-SETUP.md` (new): exact GPU-machine setup (conda, torch+cu, spconv/torch_scatter/torch_cluster/flash_attn version-match notes, weights prefetch, ComfyUI one-click option, wiring, troubleshooting table).
+- `tools/rig-intake/README.md` (new): provider contract for future auto-rig plugins.
+- `tools/rig-intake/tests/test_unirig_intake.py` (new): 10 unit tests, all pass.
+- `tools/import_model.py` (surgical): hook probes incoming GLB; unskinned meshes auto-rig via UniRig when GPU+checkout present, `rep["unirig_autorig"]` recorded; fail message updated with the UniRig setup option.
+- `docs/MODEL_IMPORT_AUTORIG.md` (surgical): step-3 status PARTIAL -> DONE (GPU-gated).
+
+**Verification:** 10/10 pytest pass; --help exits 0; --check correctly reports NOT READY on this GPU-less VM (exit 1); py_compile clean; gitleaks clean. Full GPU inference pending Grok's box (coordination posted on issue #866, comment 6377665231). Note: upstream now points to SkinTokens as UniRig's successor — follow-up candidate, stayed on UniRig per owner item.
+
+**Anti-clobber:** branch from fresh origin/main; sparse checkout in this tree (lab/ etc. excluded) — committed via Git Data API (push_branch_api.py) building from main's real tree + only this task's 6 files; verified via compare API that the branch diff is exactly the 6 files (4 added, 2 modified), 0 deletions. gitleaks clean. No deletions.
+
+**ALL CHARACTERS ARE ADULTS:** n/a — rigging pipeline, no characters.

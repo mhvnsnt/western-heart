@@ -15,6 +15,9 @@ import { Arena } from './scene.js';
 // it streams via lazy.js on first startMatch, not at boot. See js/lazy.js.
 import { lazy } from './lazy.js';
 import { AIController } from './ai.js';
+import { personalityForChar } from './ai/cpu-personality.js'; // WIRING-MAP: CPU personality layer
+import { trySpirit } from './spirit-actions.js'; // WIRING-MAP: 魂 ACTION
+import { SoulSystems, loadVariants } from './soul-systems.js'; // SOUL-SYSTEMS.md
 // FIGHT LAB · GUNGAKU (軍楽): loaded on demand so the boot path stays lean.
 let _GungakuAI = null;
 async function gungakuAI() {
@@ -45,6 +48,7 @@ import { HitFX } from './hitfx.js';
 // LIGHTING RIG (worker 27): per-fighter character light rig — SFV/T7-style
 // character-vs-stage lighting separation + bible soul glow. Fail-silent.
 import { attachCharacterRig } from './lighting-rig.js';
+import { getRules } from './rules.js';
 
 const ROUND_TIME = 60;
 const ROUNDS_TO_WIN = 2;   // best of 3
@@ -121,10 +125,16 @@ export class Game {
     const { Fighter, setArenaLimit, setGroundY } = await lazy.fighter();
     // Modes lane: per-match round target (default = classic best-of-3).
     this.roundsToWin = opts.roundsToWin || ROUNDS_TO_WIN;
+    // Versus SETUP / GAME OPTION: per-match round time (0 = INFINITY)
+    // and guard damage. Defaults come from the rules store when the
+    // mode doesn't dictate them.
+    const _rules = getRules();
+    this.roundTime = opts.roundTime != null ? opts.roundTime : _rules.roundTime;
+    this.guardDamage = opts.guardDamage != null ? opts.guardDamage : _rules.guardDamage;
 
     // Lane 4: stage selection drives arena, collision bounds, spawns.
     const stage = getStage(stageId || 'shrine');
-    setArenaLimit(stage.dims.wallDistance);
+    setArenaLimit(stage.dims.wallDistance); this._arenaLimit = stage.dims.wallDistance;
     this._stageId = stage.id;
     this._stageName = stage.name;
 
@@ -176,15 +186,16 @@ export class Game {
       const GAI = await gungakuAI();
       this.ai = new GAI(this.p2, enemyChar.ai);
     } else {
-      this.ai = new AIController(this.p2, enemyChar.ai);
+      this.ai = new AIController(this.p2, personalityForChar(enemyChar));
     }
-    this.ai1 = this.demo ? new AIController(this.p1, playerChar.ai) : null;
+    this.soul = new SoulSystems(this); loadVariants(); // SOUL-SYSTEMS.md
+    this.ai1 = this.demo ? new AIController(this.p1, personalityForChar(playerChar)) : null;
 
     this.wins = { p1: 0, p2: 0 };
     this.round = 1;
     this.ui.setNames(playerChar.name, enemyChar.name);
     if (this.ui.setStageName) this.ui.setStageName(stage.name);
-    this.ui.setRounds(this.wins);
+    this.ui.setRounds(this.wins, this.roundsToWin);
     this.matchStats = { attacks: { punch: 0, kick: 0, grab: 0, surge: 0, dodge: 0 }, blockTime: 0, time: 0, dmgDealt: 0, dmgTaken: 0 };
     this.running = true;
     this.paused = false;
@@ -221,7 +232,7 @@ export class Game {
     // Reset all match state
     this.wins = { p1: 0, p2: 0 };
     this.round = 1;
-    this.timer = ROUND_TIME;
+    this.timer = this.roundTime === 0 ? Infinity : (this.roundTime || ROUND_TIME);
     this.roundState = 'idle';
     this._roundLockT = 0;
     this._hitStop = 0;
@@ -233,8 +244,8 @@ export class Game {
     // Reset input (no stuck keys/buttons from previous match)
     if (this.input) this.input.reset();
     // Reset HUD
-    this.ui.setRounds(this.wins);
-    this.ui.setTimer(ROUND_TIME);
+    this.ui.setRounds(this.wins, this.roundsToWin);
+    this.ui.setTimer(this.roundTime === 0 ? '∞' : (this.roundTime || ROUND_TIME));
     // Stage-break lane: restore bounds/ground when leaving or restarting.
     if (this.stageBreaks) this.stageBreaks.reset();
     if (this.rage) this.rage.resetRound();
@@ -248,7 +259,7 @@ export class Game {
   }
 
   _startRound() {
-    this.timer = ROUND_TIME;
+    this.timer = this.roundTime === 0 ? Infinity : (this.roundTime || ROUND_TIME);
     this.p1.hp = this.p1.maxHp; this.p2.hp = this.p2.maxHp;
     this.p1.meter = this.p2.meter = 0;
     if (this.rage) this.rage.resetRound();
@@ -382,12 +393,18 @@ export class Game {
           const whQueue = inp.consume();
           // FIGHTER DEPTH (worker 34): soul kindle (ki charge) watches the
           // raw queue for the 1+2+3+4 press.
-          if (this._whDepth) this._whDepth.onPlayerQueue(this.p1, whQueue, dt);
+          // SOUL-SYSTEMS: 九魂解放 at a full meter claims the 1+2+3+4 press before soul kindle.
+          if (this.soul && this.soul.claimRelease(this.p1, this.p2, whQueue)) { rec('nine-soul-release'); }
+          else if (this._whDepth) this._whDepth.onPlayerQueue(this.p1, whQueue, dt);
           for (const act of whQueue) {
           if (act === 'punch' || act === 'kick' || act === 'grab' ||
               act === '1' || act === '2' || act === '3' || act === '4' ||
               act === '1+3' || act === '2+4' || act === '1+2' || act === '3+4' ||
               act === '1+4' || act === '2+3') {
+            // 魂 ACTION: 2+3 while the URGE/HEAT gauge is on + a context trigger.
+            if (act === '2+3' && this.p1._urgeOn && this._spiritCheck(this.p1, this.p2)) { rec('spirit'); continue; }
+            // SOUL-SYSTEMS: 霊放 Reihou on 1+4 only while the foe is raging.
+            if (act === '1+4' && this.soul && this.soul.tryReihou(this.p1, this.p2)) { rec('reihou'); continue; }
             if (this.p1.tryAttack(act)) { audio.whiff(); rec(act); }
           }
           else if (act === 'ss-up') { if (this.p1.trySidestep(-1)) rec('sidestep'); }
@@ -472,6 +489,7 @@ export class Game {
       this.ui.updateMeter(this.p1, this.p2);
 
       // --- Win check ---
+      if (this.soul) this.soul.update();
       if (this.p1.hp <= 0 || this.p2.hp <= 0) this._endRound();
     } else if (this.roundState === 'over') {
       this._roundLockT -= dt;
@@ -500,6 +518,18 @@ export class Game {
 
   /* V-System: one 'vskill' input, three context moves (Tekken-ified SFV).
      Blockstun + 50 souls -> V-Reversal | full meter -> V-Trigger | else V-Skill. */
+
+  /* WIRING-MAP 魂 ACTION: build context, fire, apply damage. Never alters bodies. */
+  _spiritCheck(a, d) {
+    if (!a || !d || !a.root || !d.root) return false;
+    const dx = d.root.position.x - a.root.position.x, lim = this._arenaLimit || 6;
+    const r = trySpirit(a, { urgeOn: !!a._urgeOn, spiritUsed: !!a._spiritUsed, dist: Math.abs(dx),
+      foeWall: lim - Math.abs(d.root.position.x), foeDowned: d.state === 'down', foeStun: d.stun || 0 }, this.ui);
+    if (!r) return false;
+    if (typeof d.receiveHit === 'function') { try { d.receiveHit({ damage: r.damage, level: 'mid', spirit: r.id, name: r.label }, a); } catch (e) {} }
+    return true;
+  }
+
   _vskillAction(f, rec) {
     const d = vskillDispatch({ state: f.state, stun: f.stun, meter: f.meter });
     if (d === 'vreversal') {
@@ -692,8 +722,9 @@ export class Game {
     else if (p2Down && !p1Down) { this.wins.p1++; this.p2._knockout(1); this.p1.victory(); this.ui.banner('K.O.'); }
     else { this.wins.p1++; this.wins.p2++; this.ui.banner('DOUBLE K.O.'); }
 
-    this.ui.setRounds(this.wins);
+    this.ui.setRounds(this.wins, this.roundsToWin);
     this.ui.updateHP(this.p1, this.p2);
+    if (this.soul) this.soul.onRoundEnd(p1Down, p2Down); // 試練の封 Trial's Seal
   }
 
   _afterRound() {
@@ -701,7 +732,7 @@ export class Game {
       // TRAINING (modes lane): endless round vs the passive dummy.
       // The round resets instead of the match ending; the dummy is restored.
       this.wins = { p1: 0, p2: 0 };
-      this.ui.setRounds(this.wins);
+      this.ui.setRounds(this.wins, this.roundsToWin);
       this.round = 1;
       this.ui.banner('RESET — DUMMY RESTORED');
       this._startRound();
