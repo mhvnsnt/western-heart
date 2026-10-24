@@ -8,8 +8,8 @@
   "variant": 0,
   "anim_set_lock": {
     "law": "SHOW-ANIMATION LOCK (owner 2026-10-23)",
-    "FIGHT": "every move in this file: moveset moves and combat stances — the combat animation bank",
-    "SHOW": "win poses, intro poses, taunts, cutscene animations — intro/win slots and cutscenes ONLY; bank clips in game/assets/anim/t3/king_on_pantera_leoman/ (t3_stance.json → intro slot, t3_win_*.json → win slots); must NEVER enter this moveset without the user's explicit approval",
+    "FIGHT": "every move in this file: moveset moves and combat stances \u2014 the combat animation bank",
+    "SHOW": "win poses, intro poses, taunts, cutscene animations \u2014 intro/win slots and cutscenes ONLY; bank clips in game/assets/anim/t3/king_on_pantera_leoman/ (t3_stance.json \u2192 intro slot, t3_win_*.json \u2192 win slots); must NEVER enter this moveset without the user's explicit approval",
     "note": "per-move 'set' tags stamp what each pull lane added; the file itself is the FIGHT set"
   },
   "strings": [
@@ -10410,8 +10410,8 @@
       "note": "Recovers 2f faster on hit or block (t27 r17)",
       "anim_t3": {
         "bank": "king",
-        "row": 290,
-        "match": "same-notation"
+        "row": 44,
+        "match": "class-verified remap (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 7,
@@ -10754,8 +10754,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "king",
-        "row": 290,
-        "match": "same-notation"
+        "row": 44,
+        "match": "class-verified remap (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 7,
@@ -11087,11 +11087,6 @@
         "total": 67
       },
       "knockdown": true,
-      "anim_t3": {
-        "bank": "king",
-        "row": 280,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 7,
         "startup_frames": 10,
@@ -11144,11 +11139,6 @@
         "total": 60
       },
       "knockdown": true,
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 7,
         "startup_frames": 10,
@@ -11194,11 +11184,6 @@
       "merge_source": "t7:king_10",
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
-      "anim_t3": {
-        "bank": "king",
-        "row": 127,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 7,
         "startup_frames": 10,
@@ -11647,11 +11632,6 @@
         "total": 77
       },
       "knockdown": true,
-      "anim_t3": {
-        "bank": "king",
-        "row": 280,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 7,
         "startup_frames": 10,
@@ -11705,11 +11685,6 @@
         "total": 70
       },
       "knockdown": true,
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 7,
         "startup_frames": 10,
@@ -11762,11 +11737,6 @@
         "total": 55
       },
       "knockdown": true,
-      "anim_t3": {
-        "bank": "king",
-        "row": 127,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 7,
         "startup_frames": 10,
@@ -11812,11 +11782,6 @@
       "merge_source": "t7:king_21",
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
-      "anim_t3": {
-        "bank": "king",
-        "row": 127,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 7,
         "startup_frames": 10,
@@ -12973,12 +12938,7 @@
         "total": 38
       },
       "knockdown": true,
-      "input_note": "(during hit from front)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 275,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(during hit from front)"
     },
     "f+4~t7.king": {
       "name": "Rolling Sobat",
@@ -13116,11 +13076,6 @@
       "t7_on_ch": "+7",
       "merge_source": "t7:king_46",
       "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "king",
-        "row": 275,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 21,
         "startup_frames": 17,
@@ -13524,12 +13479,7 @@
       "merge_source": "t7:king_54",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(close)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 277,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(close)"
     },
     "f,F+1+2~t7.king": {
       "name": "PANTERA f,F+1+2",
@@ -13565,12 +13515,7 @@
       "merge_source": "t7:king_55",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(far)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 277,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(far)"
     },
     "f,F+2+3~t7.king": {
       "name": "Diving Body Press",
@@ -13613,12 +13558,7 @@
         "total": 35
       },
       "knockdown": true,
-      "input_note": "(close)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 277,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(close)"
     },
     "f,F+2+3~t7.king.2": {
       "name": "PANTERA f,F+2+3",
@@ -13654,12 +13594,7 @@
       "merge_source": "t7:king_57",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(far)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 277,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(far)"
     },
     "f,F+3+4~t7.king": {
       "name": "PANTERA f,F+3+4",
@@ -13695,11 +13630,6 @@
       "merge_source": "t7:king_58",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "anim_t3": {
-        "bank": "king",
-        "row": 127,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 25,
         "startup_frames": 28,
@@ -13850,11 +13780,6 @@
       "merge_source": "t7:king_61",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "anim_t3": {
-        "bank": "king",
-        "row": 297,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 24,
         "startup_frames": 13,
@@ -13990,11 +13915,6 @@
       "t7_on_ch": "+18",
       "merge_source": "t7:king_64",
       "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "king",
-        "row": 280,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "startup_frames": 9,
         "on_block": "0",
@@ -14081,12 +14001,7 @@
       "merge_source": "t7:king_66",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(or WR 3+4)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 127,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(or WR 3+4)"
     },
     "d/f+1~t7.king": {
       "name": "PANTERA d/f+1",
@@ -15174,8 +15089,8 @@
       "launch": true,
       "anim_t3": {
         "bank": "king",
-        "row": 127,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 97,
+        "match": "class-verified remap (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 21,
@@ -15633,11 +15548,6 @@
       "t7_on_ch": "0 (OC)",
       "merge_source": "t7:king_96",
       "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "king",
-        "row": 127,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 25,
         "startup_frames": 30,
@@ -16263,11 +16173,6 @@
         ],
         "total": 34
       },
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 12,
         "startup_frames": 12,
@@ -16312,11 +16217,6 @@
       "t7_on_ch": "+5",
       "merge_source": "t7:king_109",
       "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "king",
-        "row": 277,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 12,
         "startup_frames": 12,
@@ -17109,12 +17009,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:king_127",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "king",
-        "row": 277,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "f,f,F": {
       "name": "PANTERA f,f,F",
@@ -17231,12 +17126,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:king_130",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "WR+",
-      "anim_t3": {
-        "bank": "king",
-        "row": 277,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "WR+"
     },
     "WS.1": {
       "name": "PANTERA WS.1",
@@ -17513,12 +17403,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:king_137",
       "recovery_from": "same-notation T8 recv",
-      "launch": true,
-      "anim_t3": {
-        "bank": "king",
-        "row": 277,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "launch": true
     },
     "1,2,1,1,2,4,4,4,1,3": {
       "name": "10 Hit Combo 1",
@@ -17603,11 +17488,6 @@
       "merge_source": "t7:king_139",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "anim_t3": {
-        "bank": "king",
-        "row": 280,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 92,
         "startup_frames": 10,
@@ -18165,12 +18045,7 @@
       "merge_source": "t7:king_151",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Face Up, Feet Towards+",
-      "anim_t3": {
-        "bank": "king",
-        "row": 275,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "Face Up, Feet Towards+"
     },
     "BT.1": {
       "name": "PANTERA BT.1",
@@ -19718,11 +19593,6 @@
       "merge_source": "t7:king_183",
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
-      "anim_t3": {
-        "bank": "king",
-        "row": 127,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 27,
         "startup_frames": 23,
@@ -19769,12 +19639,7 @@
       "merge_source": "t7:king_184",
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
-      "input_note": "(During Rage)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 277,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Rage)"
     },
     "R.d/b+1+2": {
       "name": "Rage Drive",
@@ -19810,12 +19675,7 @@
       "merge_source": "t7:king_185",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "launch": true,
-      "input_note": "(During Rage)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 277,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Rage)"
     },
     "1+4~t7.king": {
       "name": "Moonsault Body Press",
@@ -20104,8 +19964,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "king",
-        "row": 127,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 222,
+        "match": "class-verified remap (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 45,
@@ -20156,8 +20016,8 @@
       "knockdown": true,
       "anim_t3": {
         "bank": "king",
-        "row": 127,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 0,
+        "match": "class-verified remap (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 50,
@@ -20204,12 +20064,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:king_193",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "king",
-        "row": 127,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "BT.1+4~t7.king": {
       "name": "PANTERA BT.1+4",
@@ -20244,12 +20099,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:king_194",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "1+3~t7.king": {
       "name": "Winding Nut",
@@ -20679,12 +20529,7 @@
       "input_note": "Approach enemy...",
       "throw": true,
       "isGrab": true,
-      "unblockable": true,
-      "anim_t3": {
-        "bank": "king",
-        "row": 35,
-        "match": "same-notation"
-      }
+      "unblockable": true
     },
     "f,n,d,D/F+1+4": {
       "name": "PANTERA f,n,d,D/F+1+4",
@@ -20996,12 +20841,7 @@
       "merge_source": "t7:king_211",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Pile Driver)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Pile Driver)"
     },
     "PILE_DRIVER.1+2,3,4,1+2": {
       "name": "Boston Crab",
@@ -21037,12 +20877,7 @@
       "merge_source": "t7:king_212",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Pile Driver)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Pile Driver)"
     },
     "d/b+2+3": {
       "name": "Figure Four Leg Lock",
@@ -21169,8 +21004,8 @@
       "unblockable": true,
       "anim_t3": {
         "bank": "king",
-        "row": 97,
-        "match": "same-notation"
+        "row": 279,
+        "match": "class-verified remap (anim-fix 2026-10-23)"
       }
     },
     "b+1+2,1+3": {
@@ -21549,12 +21384,7 @@
       "t7_on_ch": "-",
       "merge_source": "t7:king_224",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "king",
-        "row": 127,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "TACKLE.1+2": {
       "name": "Cross Arm Lock",
@@ -21590,12 +21420,7 @@
       "merge_source": "t7:king_225",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Tackle)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Tackle)"
     },
     "CROSS_ARM_LOCK.1+2": {
       "name": "Arm Twist",
@@ -21631,12 +21456,7 @@
       "merge_source": "t7:king_226",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Cross Arm Lock)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Cross Arm Lock)"
     },
     "TACKLE.3+4": {
       "name": "Leg Cross Hold",
@@ -21672,12 +21492,7 @@
       "merge_source": "t7:king_227",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During tackle)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During tackle)"
     },
     "LEG_CROSS_HOLD.1+2": {
       "name": "Stretch Combo",
@@ -21713,12 +21528,7 @@
       "merge_source": "t7:king_228",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Leg Cross Hold)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Leg Cross Hold)"
     },
     "t7.king_229": {
       "name": "Iron Lariat",
@@ -22456,12 +22266,7 @@
       "merge_source": "t7:king_244",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Approach mid-air enemy... (or d+2+4)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "Approach mid-air enemy... (or d+2+4)"
     },
     "DOUBLE_HEEL_HOLD.1+2,1+2": {
       "name": "Flapjack",
@@ -22497,12 +22302,7 @@
       "merge_source": "t7:king_245",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Double Heel Hold)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Double Heel Hold)"
     },
     "DOUBLE_HEEL_HOLD.2,1,3,4": {
       "name": "Giant Swing",
@@ -22681,12 +22481,7 @@
       "merge_source": "t7:king_249",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Standing Heel Hold)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Standing Heel Hold)"
     },
     "INDIAN_DEATH_LOCK.1,3,4,1+2,3+4": {
       "name": "King's Bridge",
@@ -22722,12 +22517,7 @@
       "merge_source": "t7:king_250",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Indian Death Lock)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Indian Death Lock)"
     },
     "STANDING_HEEL_HOLD.1,2,3,1+2": {
       "name": "S \u2022 T \u2022 F",
@@ -22763,12 +22553,7 @@
       "merge_source": "t7:king_251",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Standing Heel Hold)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Standing Heel Hold)"
     },
     "STANDING_HEEL_HOLD.1+2,3,1,1+3": {
       "name": "Scorpion Death Lock",
@@ -22804,12 +22589,7 @@
       "merge_source": "t7:king_252",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Standing Heel Hold)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Standing Heel Hold)"
     },
     "f,n,d,D/F+1+4~t7.king": {
       "name": "Arm Breaker",
@@ -22898,12 +22678,7 @@
       "merge_source": "t7:king_254",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Arm Breaker)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Arm Breaker)"
     },
     "ARM_BREAKER.1+2,4,2+4": {
       "name": "Head Jammer",
@@ -22939,12 +22714,7 @@
       "merge_source": "t7:king_255",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Arm Breaker)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Arm Breaker)"
     },
     "HEAD_JAMMER.4,3,4,3+4,1+2": {
       "name": "Struggle Combination",
@@ -22980,12 +22750,7 @@
       "merge_source": "t7:king_256",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Head Jammer)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Head Jammer)"
     },
     "ARM_BREAKER.2,1,1+2": {
       "name": "Chicken Wing Face Lock",
@@ -23021,12 +22786,7 @@
       "merge_source": "t7:king_257",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Arm Breaker)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Arm Breaker)"
     },
     "CHICKEN_WING_FACE_LOCK.2,1,3,1+2+4,1+2+4": {
       "name": "Dragon Sleeper Finish",
@@ -23062,12 +22822,7 @@
       "merge_source": "t7:king_258",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Chicken Wing Face Lock)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Chicken Wing Face Lock)"
     },
     "CHICKEN_WING_FACE_LOCK.1+3,3+4,2+4,1+2,1+2+3": {
       "name": "Rolling Death Cradle",
@@ -23103,12 +22858,7 @@
       "merge_source": "t7:king_259",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Chicken Wing Face Lock)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Chicken Wing Face Lock)"
     },
     "d/f+1+3": {
       "name": "Reverse Arm Slam",
@@ -23187,12 +22937,7 @@
       "merge_source": "t7:king_261",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Reverse Arm Slam)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Reverse Arm Slam)"
     },
     "BACKDROP.3+4,1+2": {
       "name": "German Suplex",
@@ -23228,12 +22973,7 @@
       "merge_source": "t7:king_262",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Backdrop)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Backdrop)"
     },
     "GERMAN_SUPLEX.1,2,3+4": {
       "name": "Power Bomb",
@@ -23269,12 +23009,7 @@
       "merge_source": "t7:king_263",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During German Suplex)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During German Suplex)"
     },
     "POWER_BOMB.2,1,3,4": {
       "name": "Giant Swing",
@@ -23351,12 +23086,7 @@
       "merge_source": "t7:king_265",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Power Bomb)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Power Bomb)"
     },
     "BLIND_KICK_HIT.BT.1+2": {
       "name": "Blind Kick to Neck Breaker",
@@ -23568,12 +23298,7 @@
       "merge_source": "t7:king_270",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Reverse Special Stretch Bomb)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Reverse Special Stretch Bomb)"
     },
     "CANNONBALL_BUSTER.3+4,1+2,1+2+4": {
       "name": "Manhattan Drop",
@@ -23609,12 +23334,7 @@
       "merge_source": "t7:king_271",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Cannonball Buster)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Cannonball Buster)"
     },
     "MANHATTAN_DROP.1,2,3+4,1+2": {
       "name": "Victory Bomb",
@@ -23650,12 +23370,7 @@
       "merge_source": "t7:king_272",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Manhattan Drop)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Manhattan Drop)"
     },
     "VICTORY_BOMB.2,1,3,4": {
       "name": "Giant Swing",
@@ -23732,12 +23447,7 @@
       "merge_source": "t7:king_274",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Victory Bomb)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Victory Bomb)"
     },
     "t7.king_275": {
       "name": "Cobra Clutch",
@@ -23822,12 +23532,7 @@
       "merge_source": "t7:king_276",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Cobra Clutch)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Cobra Clutch)"
     },
     "COBRA_CLUTCH.3+4,3+4,1+2": {
       "name": "Sleeper",
@@ -23863,12 +23568,7 @@
       "merge_source": "t7:king_277",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Cobra Clutch)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Cobra Clutch)"
     },
     "SLEEPER.1,1,1+2": {
       "name": "Triple Trouble",
@@ -23904,12 +23604,7 @@
       "merge_source": "t7:king_278",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Sleeper)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Sleeper)"
     },
     "SLEEPER.3,4,1+2,3+4": {
       "name": "Human Necktie",
@@ -23945,12 +23640,7 @@
       "merge_source": "t7:king_279",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Sleeper)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Sleeper)"
     },
     "3+4,1+4": {
       "name": "Cobra Clutch",
@@ -24070,12 +23760,7 @@
       "merge_source": "t7:king_282",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Cobra Twist) (or 2, 1, 2+4)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Cobra Twist) (or 2, 1, 2+4)"
     },
     "REVERSE_DDT.1+2,1,2,1+2+3": {
       "name": "Reverse Special Stretch Bomb",
@@ -24111,12 +23796,7 @@
       "merge_source": "t7:king_283",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Reverse DDT) (or 1+2, 1, 2, 1+2+4)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Reverse DDT) (or 1+2, 1, 2, 1+2+4)"
     },
     "REVERSE_DDT.2,3,1,1+2": {
       "name": "Samurai Rock",
@@ -24152,12 +23832,7 @@
       "merge_source": "t7:king_284",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Reverse DDT)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Reverse DDT)"
     },
     "REVERSE_SPECIAL_STRETCH_BOMB.3+4,1+2": {
       "name": "Backdrop",
@@ -24193,12 +23868,7 @@
       "merge_source": "t7:king_285",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Reverse Special Stretch Bomb)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Reverse Special Stretch Bomb)"
     },
     "BACKDROP.1+2,4,1+2,1+2+3": {
       "name": "Sol Naciente",
@@ -24234,12 +23904,7 @@
       "merge_source": "t7:king_286",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Backdrop)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Backdrop)"
     },
     "BACKDROP.1+2,3,4,1+3": {
       "name": "Burning Hammer",
@@ -24275,12 +23940,7 @@
       "merge_source": "t7:king_287",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Backdrop) (or 1+2, 3, 4, 2+4)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Backdrop) (or 1+2, 3, 4, 2+4)"
     },
     "BURNING_HAMMER.2+4,3+4,1+3,1+2,1+2+3": {
       "name": "Screwdriver",
@@ -24316,12 +23976,7 @@
       "merge_source": "t7:king_288",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Burning Hammer) (or 2+4, 3+4, 1+3, 1+2, 1+2+4)",
-      "anim_t3": {
-        "bank": "king",
-        "row": 279,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Burning Hammer) (or 2+4, 3+4, 1+3, 1+2, 1+2+4)"
     },
     "t7.king_289": {
       "name": "PANTERA WR f, f, F (Mid Screen)",
