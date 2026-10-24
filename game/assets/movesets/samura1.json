@@ -9604,8 +9604,8 @@
       },
       "anim_t3": {
         "bank": "gunjack",
-        "row": 266,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 49,
+        "match": "class-verified remap (anim-fix 2026-10-23)"
       }
     },
     "1+2~t7.jack-7.2": {
@@ -9644,8 +9644,8 @@
       "input_note": "(second hit only)",
       "anim_t3": {
         "bank": "gunjack",
-        "row": 268,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 49,
+        "match": "class-verified remap (anim-fix 2026-10-23)"
       }
     },
     "u+1+2~t7.jack-7": {
@@ -9888,12 +9888,7 @@
         ],
         "total": 58
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 268,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "u/f+3+4,3+4~t7.jack-7": {
       "name": "SAM-UR-A1 u/f+3+4,3+4",
@@ -9928,12 +9923,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:jack-7_23",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 268,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "f+1~t7.jack-7": {
       "name": "SAM-UR-A1 f+1",
@@ -10352,11 +10342,6 @@
           22
         ],
         "total": 39
-      },
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 268,
-        "match": "nearest limb/class/startup (approximate)"
       }
     },
     "f+3,1+2~t7.jack-7": {
@@ -10392,12 +10377,7 @@
       "t7_on_ch": "GROUND BOUNCE",
       "merge_source": "t7:jack-7_34",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 268,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "f+4~1,2~t7.jack-7": {
       "name": "Sudden Elbow",
@@ -10712,12 +10692,7 @@
       "t7_on_hit": "STUN",
       "t7_on_ch": "STUN",
       "merge_source": "t7:jack-7_42",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 266,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "f,F+1+2,2~t7.jack-7": {
       "name": "Cross Cut Blast",
@@ -10846,12 +10821,7 @@
         ],
         "total": 34
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 266,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "f,F+1+2,1+2~t7.jack-7.2": {
       "name": "SAM-UR-A1 f,F+1+2,1+2",
@@ -10886,12 +10856,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:jack-7_46",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 268,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "f,F+3+4": {
       "name": "Sliding Attack",
@@ -10926,12 +10891,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:jack-7_47",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 268,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "f,f,f+2": {
       "name": "Cemaho Chop",
@@ -12568,12 +12528,7 @@
       "merge_source": "t7:jack-7_84",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(far)",
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 268,
-        "match": "same-notation"
-      }
+      "input_note": "(far)"
     },
     "d/f+3+4": {
       "name": "Dumptruck",
@@ -13682,12 +13637,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:jack-7_110",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 268,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "d/b+4~t7.jack-7": {
       "name": "Big Boot",
@@ -16255,12 +16205,7 @@
       "t7_on_hit": "STUN",
       "t7_on_ch": "STUN",
       "merge_source": "t7:jack-7_171",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 268,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "FC.d/f+1+2,1+2": {
       "name": "Low Cross Combo",
@@ -16302,12 +16247,7 @@
         ],
         "total": 37
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 268,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "FC.d/f+1+2,1+2~t7.jack-7": {
       "name": "SAM-UR-A1 FC.d/f+1+2,1+2",
@@ -16342,12 +16282,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:jack-7_173",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 268,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "FC.d/b+1": {
       "name": "SAM-UR-A1 FC.d/b+1",
@@ -17028,8 +16963,8 @@
       "input_note": "WR",
       "anim_t3": {
         "bank": "gunjack",
-        "row": 268,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 49,
+        "match": "class-verified remap (anim-fix 2026-10-23)"
       }
     },
     "WS.1": {
@@ -17231,12 +17166,7 @@
       "t7_on_ch": "LAUNCH",
       "merge_source": "t7:jack-7_194",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "launch": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 268,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "launch": true
     },
     "WS.1+2,1+2": {
       "name": "SAM-UR-A1 WS.1+2,1+2",
@@ -17278,12 +17208,7 @@
         ],
         "total": 24
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 268,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "WS.1+2,1+2~t7.jack-7": {
       "name": "SAM-UR-A1 WS.1+2,1+2",
@@ -17318,12 +17243,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:jack-7_196",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 268,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "WS.1+2,1+2,1+2": {
       "name": "Double Hammer Thrash",
@@ -17366,12 +17286,7 @@
         ],
         "total": 34
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 268,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "WS.1+2,1+2,1+2~t7.jack-7": {
       "name": "SAM-UR-A1 WS.1+2,1+2,1+2",
@@ -17413,12 +17328,7 @@
         ],
         "total": 29
       },
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 268,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "WS.1+2,1+2,1+2~t7.jack-7.2": {
       "name": "SAM-UR-A1 WS.1+2,1+2,1+2",
@@ -17453,12 +17363,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:jack-7_199",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 268,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "WS.f+1": {
       "name": "SAM-UR-A1 WS.f+1",
@@ -18055,12 +17960,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:jack-7_213",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 269,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "d+2,1,1,1,2,1,2,1,d+1+2,d+1+2": {
       "name": "10 Hit Combo 2",
@@ -18095,12 +17995,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:jack-7_214",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 269,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "t7.jack-7_215": {
       "name": "SAM-UR-A1 Face Up, Feet Towards+3 or (After Rolling Forward)",
@@ -18253,12 +18148,7 @@
       "merge_source": "t7:jack-7_218",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Face Up, Feet Towards+",
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 268,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "Face Up, Feet Towards+"
     },
     "t7.jack-7_219": {
       "name": "SAM-UR-A1 Face Up, Feet Towards, Roll Forward+1+2",
@@ -18529,12 +18419,7 @@
       "t7_on_hit": "-",
       "t7_on_ch": "-",
       "merge_source": "t7:jack-7_225",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 266,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "t7.jack-7_226": {
       "name": "DURING SIT",
@@ -19517,12 +19402,7 @@
       "t7_on_hit": "STUN",
       "t7_on_ch": "STUN",
       "merge_source": "t7:jack-7_248",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 268,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "SIT.3+4~t7.jack-7": {
       "name": "Sit Pancake Press",
@@ -19557,12 +19437,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:jack-7_249",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 268,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "t7.jack-7_250": {
       "name": "POWER CRUSHES",
@@ -19754,12 +19629,7 @@
       "merge_source": "t7:jack-7_254",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "(During Rage)",
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 268,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Rage)"
     },
     "R.b,d/b,d,d/f+1,2": {
       "name": "Rage Drive",
@@ -20041,12 +19911,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:jack-7_261",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 268,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "3+4,3+4,3+4,3+4,3+4": {
       "name": "SAM-UR-A1 3+4,3+4,3+4,3+4,3+4",
@@ -20081,12 +19946,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:jack-7_262",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 268,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "f+4~1~t7.jack-7": {
       "name": "Dark Greeting",

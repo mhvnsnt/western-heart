@@ -116,18 +116,22 @@ export class InputManager {
     return this._udDir || null;
   }
 
-  /* 8-way octant stick (tekken-command-interpreter lane): the old axis
-     thresholds (x 0.25, y 0.55) read a d/f push as 'f' or 'd' depending on
-     angle and fed jitter near centre as directions, so f+1 / d/f+2 / qcf
-     came out as random moves. One magnitude gate + 45° octants instead.
-     x right-positive, yUp up-positive (screen-agnostic). */
+  /* 8-way octant stick (tekken-command-interpreter lane): the octant direction
+     feeds the command buffer (stickDir) so f+1 / d/f+2 / qcf resolve cleanly.
+     MOVEMENT (axisX, up/down) keeps the original independent thresholds:
+     x 0.25 deadzone, y 0.55 tap-vs-hold zones. Driving movement from the
+     octant classified any push >22.5° below horizontal as down, so a natural
+     thumb drift while walking kept crouching the fighter (owner playtest
+     bug 2026-10-23: stick "keeps going down"). x right-positive, yUp
+     up-positive (screen-agnostic). */
   _stick8(x, yUp) {
     const d = stickToDir(x, yUp, 1, 0.38);
     this.stickDir = d;
-    const right = d === 'f' || d === 'u/f' || d === 'd/f';
-    const left = d === 'b' || d === 'u/b' || d === 'd/b';
-    this.axisX = right ? 1 : left ? -1 : 0;
-    this._udStick(d.startsWith('u') ? -1 : d.startsWith('d') ? 1 : 0);
+    // Movement: analog x with 0.25 deadzone (pre-8-way behavior).
+    this.axisX = Math.abs(x) > 0.25 ? Math.max(-1, Math.min(1, x)) : 0;
+    // Movement: vertical via Tekken tap-vs-hold zones (0.55 threshold),
+    // not the octant — a mostly-horizontal push must not crouch.
+    this._udStick(-yUp);
   }
 
   _tekken(btn) {

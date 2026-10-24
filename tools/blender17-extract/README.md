@@ -90,3 +90,43 @@ takes the *other* path — container repair → open in Blender ≥ 4.2 for full
 fidelity (textures, shape keys, modifiers). Use the repair path when Blender
 is available; use this extractor when it isn't, or when you need just the
 mesh/UV/material/armature data fast.
+
+## Materials and textures (per-mesh slots)
+
+- `usemtl` uses each mesh's **own** slots (`Mesh.mat`, overridden by
+  `Object.matbits`), never the file-wide material list. Out-of-range
+  `mat_nr` clamps to the last slot, as Blender does. Blender 4.x int32
+  `material_index` attributes are read; old byte arrays are the fallback.
+- Images are mapped through each material's node tree: every TexImage node
+  is followed downstream to the Principled socket it feeds (Base Color →
+  `map_Kd`, Emission → `map_Ke`, Normal (via NormalMap) → `norm`, …).
+- Image data: packed (`Image.packedfile`) first, then external
+  `//textures\..` paths next to the source `.blend`, then
+  `textures/<basename>`. Unresolved images print `[no data] image ...`.
+  Output goes to `<out>/textures/`.
+
+## retexture_glb.py — put real textures on an already-rigged GLB
+
+```
+gltf-transform dequantize in.glb plain.glb   # if meshopt/quantized
+python3 retexture_glb.py plain.glb <extract_out_dir> out.glb [--uvs] --report rep.json
+gltf-transform meshopt out.glb final.glb --level medium
+```
+
+Each GLB mesh is aligned to its source mesh (similarity fit + ICP, rejected
+above 1% residual), each triangle takes the material (and with `--uvs` the
+UVs) of the matching source face. Skins, joints, weights, animations and
+triangle counts are unchanged; nothing is cut. Parts with no source slot keep
+their shipped material. Write to a NEW file next to the old one, verify, then
+rewire `game/js/assets.js`.
+
+## Private T7 skin textures (Yukihyo)
+
+`game/js/assets.js` `PRIVATE_SKIN_TEXTURES` maps Yukihyo's `MI_CH_malebody_<part>_02_skin`
+materials to `T_CH_male_<part>_D.webp` under `game/assets/private/textures/t7-skin/male/`,
+but only when `globalThis.__WH_PRIVATE_ASSETS` is set. Copy the files from the private
+repo path `teardown/pakchunk0/textures/Character/Common/shader/Texture/skin/male/`.
+Never commit them here. The King-face `MI_CH_knk_*`, loincloth and `MI_Cal_Mesh` maps
+are still missing from every private pull, so Yukihyo stays quarantined.
+Armor King: there are no T7 or TTT2 Armor King mask/face textures in the private repo.
+`tekken7/king/` is a fan FBX rip with its own UVs, not the T7 `arm1u` layout.
