@@ -35805,7 +35805,19 @@
     "exclude_proxy": false,
     "moves_before": 1019,
     "moves_after": 1019,
-    "added": {},
+    "added": {
+      "t8_pull_20261023": {
+        "date": "2026-10-23",
+        "by": "batch3 pull worker (T8 frame-data diff, merge_sources.py conv_t8)",
+        "moves_before": 1019,
+        "moves_after": 1019,
+        "added": [],
+        "sources": [
+          "docs/t7t8-reference/frame-data-t8-full/yoshimitsu.json"
+        ],
+        "show_lock": "2026-10-23: all 0 moves tagged set=FIGHT per SHOW-ANIMATION LOCK (owner standing law); file-level anim_set_lock added; SHOW clips tracked in docs/anim/(bank game/assets/anim/t3/yoshimitsu/ exists), never in moveset"
+      }
+    },
     "slots": 538,
     "slots_by_priority": {
       "signature": 3,
@@ -36474,5 +36486,11 @@
     "n,d,d/b,b+1+2,1": 2048
   },
   "stance_after": {},
-  "anim_bank": "yoshimitsu"
+  "anim_bank": "yoshimitsu",
+  "anim_set_lock": {
+    "law": "SHOW-ANIMATION LOCK (owner 2026-10-23)",
+    "FIGHT": "every move in this file: moveset moves and combat stances \u2014 the combat animation bank",
+    "SHOW": "win poses, intro poses, taunts, cutscene animations \u2014 intro/win slots and cutscenes ONLY; yoshimitsu bank at game/assets/anim/t3/yoshimitsu/ (exists; FIGHT/SHOW tagging enforced at intake); must NEVER enter this moveset without the user's explicit approval",
+    "note": "per-move 'set' tags stamp what each pull lane added; the file itself is the FIGHT set"
+  }
 }

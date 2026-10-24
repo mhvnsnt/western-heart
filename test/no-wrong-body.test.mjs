@@ -25,6 +25,8 @@ const MODEL_URLS = parseObj('game/js/assets.js', 'MODEL_URLS');
 // Shared starter bodies that riders used to fall back onto.
 const SHARED_BODIES = { 'steve-fox': null, pantera: 'pantera' }; // key -> the one fighter allowed to own it
 const SHARED_FILES = ['assets/models/steve-fox.glb', 'assets/models/pantera.glb'];
+const { MATERIAL_STATUS } = await import('../game/js/material-status.js');
+const MATERIAL_QUARANTINE = new Set(Object.keys(MATERIAL_STATUS.quarantine));
 const ids = new Set(FULL_ROSTER.map(f => f.id));
 const fails = [];
 
@@ -47,6 +49,8 @@ for (const f of FULL_ROSTER) {
   }
   checkKey(f, f.model, 'roster model');
   const a1 = attiresFor(f)[0];
+  // Material gate: every attire quarantined -> fighter is hidden from select/fight (characters.js ROSTER).
+  if (!a1 && MATERIAL_QUARANTINE.has(f.model)) continue;
   checkKey(f, a1 && a1.model, 'attire 1');
 }
 // Loader fallbacks onto a starter body are banned in game/js.
@@ -54,6 +58,15 @@ for (const file of readdirSync(join(ROOT, 'game/js')).filter(n => n.endsWith('.j
   const src = readFileSync(join(ROOT, 'game/js', file), 'utf8');
   for (const m of src.matchAll(/\.model\s*(\|\||\?\?)\s*['"](pantera|steve-fox)['"]/g))
     fails.push(`game/js/${file}: loader fallback '${m[0]}'`);
+}
+// No attire ladder rung may borrow a shared starter body (Phantom/Zui steve-fox, t183u).
+for (const f of FULL_ROSTER) for (const a of attiresFor(f))
+  if (a && a.model in SHARED_BODIES && SHARED_BODIES[a.model] !== f.id) fails.push(`${f.id}: attire ladder -> shared body '${a.model}'`);
+// No id-level default onto Pantera (getFighter / bridge / menus).
+for (const file of readdirSync(join(ROOT, 'game/js')).filter(n => n.endsWith('.js'))) {
+  const src = readFileSync(join(ROOT, 'game/js', file), 'utf8');
+  for (const m of src.matchAll(/(\|\||\?\?)\s*(ROSTER|FULL_ROSTER)\.find\([^\n]{0,60}?['"]pantera['"]|charId\s*(\|\||\?\?)\s*['"]pantera['"]/g))
+    fails.push(`game/js/${file}: id fallback onto pantera '${m[0]}'`);
 }
 if (fails.length) { console.error('WRONG-BODY GATE FAILED:\n  ' + fails.join('\n  ')); process.exit(1); }
 console.log(`no-wrong-body: ${FULL_ROSTER.length} fighters OK (${FULL_ROSTER.filter(f => f.modelPending).length} model-pending)`);
