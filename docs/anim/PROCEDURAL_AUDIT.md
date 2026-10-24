@@ -135,3 +135,31 @@ Added `game/assets/models/pantera_fixed.glb`; the original is kept. Tool, proof 
 Remaining defects:
 - The wrist cuffs float because they are weighted to Spine/Spine1.
 - The logo and pants weighting stretches in wide stances.
+
+
+## INSTRUCTION GATE: Owner law, data source priority (Oct 23, 2026, 2:19 PM CT)
+
+> **Western Heart data (moves, animations, frame data, menus, character select) comes from Tekken 5, 6, 7, 8 and TTT2. Tekken 3 is only a last-resort fallback, and every T3 use must be logged with the reason no T5/6/7/8/TTT2 source was available.**
+
+- Search T5/T6/T7/T8/TTT2 teardowns first. Use T3 only when none of them has the data, and log the T3 use (file, clip, reason) in `docs/anim/PROCEDURAL_AUDIT.md`.
+
+### Status of existing T3-baked clips under this law
+
+All T3-baked clips already in the repo are **fallback, to be replaced from T5/6/7/8/TTT2**. Nothing is deleted; they stay until a replacement is baked and verified.
+
+| Asset | T3 clips | Status | Reason T3 was used |
+|---|---|---|---|
+| `lab/game/assets/pantera_leoman_t3real.glb` | all 31 `t3_*` clips (stances, wins, light/medium/heavy/grab, walk, dash, crouch, jump, sidestep, hit, block, KO) | fallback, to be replaced from T5/6/7/8/TTT2 | Only decoded motion bank at bake time; TTT2 motion not decoded, T6 `DATA401` encrypted, T7 meshes only, T5/T8 motion not acquired. |
+| `lab/game/assets/t3_king_t3real.glb` | same clip list | fallback, to be replaced from T5/6/7/8/TTT2 | same |
+| `lab/game/assets/t3_{jin,xiaoyu,bryan,gunjack,yoshimitsu}_t3real.glb` | 29 `t3_*` clips each | fallback, to be replaced from T5/6/7/8/TTT2 | same |
+| `assets/anim/t3/**` bake JSON, `fighter.gd` `REAL` map, v4 title hero (`t3_win_rp`) | derived from the above | fallback, to be replaced from T5/6/7/8/TTT2 | same |
+
+## INSTRUCTION GATE: Owner law, no hand-made menus (Oct 23, 2026, 2:21 PM CT)
+
+> **NO hand-made menus. Every Western Heart menu, character select and customization screen must be built from the actual teardown files (Tekken 5/6/7/8/TTT2 and other game teardowns). Every UI change must cite its teardown source files.**
+
+### Status of existing hand-made UI under this law
+
+| Asset | Status | Action |
+|---|---|---|
+| `game/ui-wh/` HTML UI (`index.html`, `cards.html`, `cards.css`, `cards.js`, `roster.js`, `imports.json`, `art/`, `fonts/`, `portraits/`) | **hand-made, NON-COMPLIANT** | Slated for rebuild from teardown UI files (T5/T6/T7/T8/TTT2 menu/char-select/customize layouts, then other game teardowns). Kept as a **fallback**; do NOT delete. Replace only in a reviewed PR that cites its teardown source files. |

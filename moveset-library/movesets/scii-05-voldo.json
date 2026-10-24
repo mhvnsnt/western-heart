@@ -1,0 +1,5280 @@
+{
+ "_meta": {
+  "fighter_source_name": "Voldo",
+  "tag": "05",
+  "v33_entry": 6,
+  "source": "Soulcalibur II (Xbox) root.olk v33 archive, type-7 command-list file",
+  "move_count": 411,
+  "tekken_conversion": "A->1, B->2, K->3, G->G(guard); numpad directions unchanged; applied only to pure input tokens (see tekken_input, null otherwise)",
+  "canon_status": "PENDING owner assignment \u2014 source names kept verbatim (CANON-CONVERSION.md)",
+  "pairing_status": "FLAGGED: display-string <-> cmd-record pairing table (type-8/type-10 sections at header offsets) not yet decoded; display strings exported in file order under display_strings"
+ },
+ "moves": [
+  {
+   "source_key": "INF_8ABG",
+   "cmd_string": "cmd_05_INF_8ABG",
+   "input_sc2": "8ABG",
+   "tekken_input": "812G",
+   "fields_hex": [
+    "00071483",
+    "000009c4",
+    "005a0000",
+    "000e0001"
+   ]
+  },
+  {
+   "source_key": "INF_2ABG_RAND",
+   "cmd_string": "cmd_05_INF_2ABG_RAND",
+   "input_sc2": "RAND",
+   "tekken_input": null,
+   "fields_hex": [
+    "000704ff",
+    "00002454",
+    "003c0000",
+    "003e0002"
+   ]
+  },
+  {
+   "source_key": "INF_8AG",
+   "cmd_string": "cmd_05_INF_8AG",
+   "input_sc2": "8AG",
+   "tekken_input": "81G",
+   "fields_hex": [
+    "00072283",
+    "000005dc",
+    "0f690000",
+    "004e0003"
+   ]
+  },
+  {
+   "source_key": "ABK1",
+   "cmd_string": "cmd_05_ABK1",
+   "input_sc2": "ABK1",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "000007d0",
+    "00000000",
+    "00600004"
+   ]
+  },
+  {
+   "source_key": "ABK2",
+   "cmd_string": "cmd_05_ABK2",
+   "input_sc2": "ABK2",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "00000bb8",
+    "00000000",
+    "00720005"
+   ]
+  },
+  {
+   "source_key": "ABK3",
+   "cmd_string": "cmd_05_ABK3",
+   "input_sc2": "ABK3",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "00000fa0",
+    "00000000",
+    "00800006"
+   ]
+  },
+  {
+   "source_key": "A",
+   "cmd_string": "cmd_05_A",
+   "input_sc2": "A",
+   "tekken_input": "1",
+   "fields_hex": [
+    "00070283",
+    "00000618",
+    "0b0a0000",
+    "00900007"
+   ]
+  },
+  {
+   "source_key": "1A",
+   "cmd_string": "cmd_05_1A",
+   "input_sc2": "1A",
+   "tekken_input": "11",
+   "fields_hex": [
+    "00070183",
+    "0000064a",
+    "0b0e0000",
+    "00a00008"
+   ]
+  },
+  {
+   "source_key": "2A",
+   "cmd_string": "cmd_05_2A",
+   "input_sc2": "2A",
+   "tekken_input": "21",
+   "fields_hex": [
+    "00071801",
+    "0000083e",
+    "130e0000",
+    "00b00009"
+   ]
+  },
+  {
+   "source_key": "3A",
+   "cmd_string": "cmd_05_3A",
+   "input_sc2": "3A",
+   "tekken_input": "31",
+   "fields_hex": [
+    "00070483",
+    "0000097e",
+    "12260000",
+    "00c0000a"
+   ]
+  },
+  {
+   "source_key": "4A",
+   "cmd_string": "cmd_05_4A",
+   "input_sc2": "4A",
+   "tekken_input": "41",
+   "fields_hex": [
+    "00070283",
+    "0000076c",
+    "0c120000",
+    "00d0000b"
+   ]
+  },
+  {
+   "source_key": "6A",
+   "cmd_string": "cmd_05_6A",
+   "input_sc2": "6A",
+   "tekken_input": "61",
+   "fields_hex": [
+    "00070283",
+    "00000852",
+    "131d0000",
+    "00e0000c"
+   ]
+  },
+  {
+   "source_key": "44A",
+   "cmd_string": "cmd_05_44A",
+   "input_sc2": "44A",
+   "tekken_input": "441",
+   "fields_hex": [
+    "00070401",
+    "0000097e",
+    "131b0000",
+    "00f4000d"
+   ]
+  },
+  {
+   "source_key": "66A",
+   "cmd_string": "cmd_05_66A",
+   "input_sc2": "66A",
+   "tekken_input": "661",
+   "fields_hex": [
+    "000702c7",
+    "00000af0",
+    "13190000",
+    "0108000e"
+   ]
+  },
+  {
+   "source_key": "B",
+   "cmd_string": "cmd_05_B",
+   "input_sc2": "B",
+   "tekken_input": "2",
+   "fields_hex": [
+    "00070401",
+    "000008fc",
+    "12190000",
+    "0118000f"
+   ]
+  },
+  {
+   "source_key": "1B",
+   "cmd_string": "cmd_05_1B",
+   "input_sc2": "1B",
+   "tekken_input": "12",
+   "fields_hex": [
+    "00071401",
+    "000007b2",
+    "171a0000",
+    "01280010"
+   ]
+  },
+  {
+   "source_key": "2B",
+   "cmd_string": "cmd_05_2B",
+   "input_sc2": "2B",
+   "tekken_input": "22",
+   "fields_hex": [
+    "00070401",
+    "00000ab4",
+    "0e1e0000",
+    "01380011"
+   ]
+  },
+  {
+   "source_key": "3B",
+   "cmd_string": "cmd_05_3B",
+   "input_sc2": "3B",
+   "tekken_input": "32",
+   "fields_hex": [
+    "00071401",
+    "00000a00",
+    "131a0000",
+    "01480012"
+   ]
+  },
+  {
+   "source_key": "4B",
+   "cmd_string": "cmd_05_4B",
+   "input_sc2": "4B",
+   "tekken_input": "42",
+   "fields_hex": [
+    "00071401",
+    "00000c1c",
+    "17190000",
+    "01580013"
+   ]
+  },
+  {
+   "source_key": "6B",
+   "cmd_string": "cmd_05_6B",
+   "input_sc2": "6B",
+   "tekken_input": "62",
+   "fields_hex": [
+    "00070201",
+    "000007d0",
+    "0d180000",
+    "01680014"
+   ]
+  },
+  {
+   "source_key": "44B",
+   "cmd_string": "cmd_05_44B",
+   "input_sc2": "44B",
+   "tekken_input": "442",
+   "fields_hex": [
+    "00071401",
+    "0000082a",
+    "11190000",
+    "017c0015"
+   ]
+  },
+  {
+   "source_key": "66B",
+   "cmd_string": "cmd_05_66B",
+   "input_sc2": "66B",
+   "tekken_input": "662",
+   "fields_hex": [
+    "00070401",
+    "00000af0",
+    "12320000",
+    "01900016"
+   ]
+  },
+  {
+   "source_key": "K",
+   "cmd_string": "cmd_05_K",
+   "input_sc2": "K",
+   "tekken_input": "3",
+   "fields_hex": [
+    "00070201",
+    "000006ea",
+    "0c1a0000",
+    "01a00017"
+   ]
+  },
+  {
+   "source_key": "1K",
+   "cmd_string": "cmd_05_1K",
+   "input_sc2": "1K",
+   "tekken_input": "13",
+   "fields_hex": [
+    "00070401",
+    "00000820",
+    "11190000",
+    "01b00018"
+   ]
+  },
+  {
+   "source_key": "2K",
+   "cmd_string": "cmd_05_2K",
+   "input_sc2": "2K",
+   "tekken_input": "23",
+   "fields_hex": [
+    "00071801",
+    "00000668",
+    "0e100000",
+    "01c00019"
+   ]
+  },
+  {
+   "source_key": "3K",
+   "cmd_string": "cmd_05_3K",
+   "input_sc2": "3K",
+   "tekken_input": "33",
+   "fields_hex": [
+    "00070401",
+    "000005e6",
+    "0d140000",
+    "01d0001a"
+   ]
+  },
+  {
+   "source_key": "4K",
+   "cmd_string": "cmd_05_4K",
+   "input_sc2": "4K",
+   "tekken_input": "43",
+   "fields_hex": [
+    "00070201",
+    "00000898",
+    "131a0000",
+    "01e0001b"
+   ]
+  },
+  {
+   "source_key": "6K",
+   "cmd_string": "cmd_05_6K",
+   "input_sc2": "6K",
+   "tekken_input": "63",
+   "fields_hex": [
+    "00070201",
+    "000006f4",
+    "0c1a0000",
+    "01f0001c"
+   ]
+  },
+  {
+   "source_key": "44K",
+   "cmd_string": "cmd_05_44K",
+   "input_sc2": "44K",
+   "tekken_input": "443",
+   "fields_hex": [
+    "00071401",
+    "000009ec",
+    "15180000",
+    "0204001d"
+   ]
+  },
+  {
+   "source_key": "66K",
+   "cmd_string": "cmd_05_66K",
+   "input_sc2": "66K",
+   "tekken_input": "663",
+   "fields_hex": [
+    "00071401",
+    "00000cbc",
+    "124d0000",
+    "0219001e"
+   ]
+  },
+  {
+   "source_key": "AB",
+   "cmd_string": "cmd_05_AB",
+   "input_sc2": "AB",
+   "tekken_input": "12",
+   "fields_hex": [
+    "00071401",
+    "00000bb8",
+    "18280000",
+    "0229001f"
+   ]
+  },
+  {
+   "source_key": "2AB",
+   "cmd_string": "cmd_05_2AB",
+   "input_sc2": "2AB",
+   "tekken_input": "212",
+   "fields_hex": [
+    "00071801",
+    "00000d5c",
+    "1a240000",
+    "02390020"
+   ]
+  },
+  {
+   "source_key": "3AB",
+   "cmd_string": "cmd_05_3AB",
+   "input_sc2": "3AB",
+   "tekken_input": "312",
+   "fields_hex": [
+    "00071201",
+    "00001194",
+    "13320000",
+    "02490021"
+   ]
+  },
+  {
+   "source_key": "4AB",
+   "cmd_string": "cmd_05_4AB",
+   "input_sc2": "4AB",
+   "tekken_input": "412",
+   "fields_hex": [
+    "00070401",
+    "000007d0",
+    "0f280000",
+    "02590022"
+   ]
+  },
+  {
+   "source_key": "6AB",
+   "cmd_string": "cmd_05_6AB",
+   "input_sc2": "6AB",
+   "tekken_input": "612",
+   "fields_hex": [
+    "00071401",
+    "00000b04",
+    "0f2d0000",
+    "02690023"
+   ]
+  },
+  {
+   "source_key": "66AB",
+   "cmd_string": "cmd_05_66AB",
+   "input_sc2": "66AB",
+   "tekken_input": "6612",
+   "fields_hex": [
+    "00070401",
+    "00000c9e",
+    "122d0000",
+    "027e0024"
+   ]
+  },
+  {
+   "source_key": "BK",
+   "cmd_string": "cmd_05_BK",
+   "input_sc2": "BK",
+   "tekken_input": "23",
+   "fields_hex": [
+    "00070101",
+    "00000514",
+    "00000000",
+    "028e0025"
+   ]
+  },
+  {
+   "source_key": "BK_G",
+   "cmd_string": "cmd_05_BK_G",
+   "input_sc2": "G",
+   "tekken_input": "G",
+   "fields_hex": [
+    "00070101",
+    "000007d0",
+    "64000000",
+    "02a00026"
+   ]
+  },
+  {
+   "source_key": "BKH_2",
+   "cmd_string": "cmd_05_BKH_2",
+   "input_sc2": "2",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "000007d0",
+    "64000000",
+    "02b00027"
+   ]
+  },
+  {
+   "source_key": "BKH_8",
+   "cmd_string": "cmd_05_BKH_8",
+   "input_sc2": "8",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "000007d0",
+    "64000000",
+    "02c00028"
+   ]
+  },
+  {
+   "source_key": "BKH_4",
+   "cmd_string": "cmd_05_BKH_4",
+   "input_sc2": "4",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "000007d0",
+    "64000000",
+    "02d00029"
+   ]
+  },
+  {
+   "source_key": "BKH_6",
+   "cmd_string": "cmd_05_BKH_6",
+   "input_sc2": "6",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "000007d0",
+    "64000000",
+    "02e0002a"
+   ]
+  },
+  {
+   "source_key": "2BK",
+   "cmd_string": "cmd_05_2BK",
+   "input_sc2": "2BK",
+   "tekken_input": "223",
+   "fields_hex": [
+    "00070101",
+    "000005dc",
+    "00000000",
+    "02f0002b"
+   ]
+  },
+  {
+   "source_key": "4BK",
+   "cmd_string": "cmd_05_4BK",
+   "input_sc2": "4BK",
+   "tekken_input": "423",
+   "fields_hex": [
+    "00070101",
+    "00000514",
+    "00000000",
+    "0300002c"
+   ]
+  },
+  {
+   "source_key": "6BK",
+   "cmd_string": "cmd_05_6BK",
+   "input_sc2": "6BK",
+   "tekken_input": "623",
+   "fields_hex": [
+    "00070101",
+    "00000514",
+    "00000000",
+    "0310002d"
+   ]
+  },
+  {
+   "source_key": "AG",
+   "cmd_string": "cmd_05_AG",
+   "input_sc2": "AG",
+   "tekken_input": "1G",
+   "fields_hex": [
+    "00072283",
+    "000005dc",
+    "0f3c0000",
+    "0320002e"
+   ]
+  },
+  {
+   "source_key": "BG",
+   "cmd_string": "cmd_05_BG",
+   "input_sc2": "BG",
+   "tekken_input": "2G",
+   "fields_hex": [
+    "00072283",
+    "000005dc",
+    "0f3c0000",
+    "0330002f"
+   ]
+  },
+  {
+   "source_key": "RUN1A",
+   "cmd_string": "cmd_05_RUN1A",
+   "input_sc2": "RUN1A",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070483",
+    "0002097e",
+    "131b0000",
+    "03400030"
+   ]
+  },
+  {
+   "source_key": "RUN2A",
+   "cmd_string": "cmd_05_RUN2A",
+   "input_sc2": "RUN2A",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070483",
+    "00020960",
+    "12260000",
+    "03500031"
+   ]
+  },
+  {
+   "source_key": "RUN3A",
+   "cmd_string": "cmd_05_RUN3A",
+   "input_sc2": "RUN3A",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070283",
+    "00020938",
+    "0d200000",
+    "03600032"
+   ]
+  },
+  {
+   "source_key": "RUN4A",
+   "cmd_string": "cmd_05_RUN4A",
+   "input_sc2": "RUN4A",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070483",
+    "0002097e",
+    "131b0000",
+    "03700033"
+   ]
+  },
+  {
+   "source_key": "RUN6A",
+   "cmd_string": "cmd_05_RUN6A",
+   "input_sc2": "RUN6A",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070283",
+    "00020abe",
+    "13190000",
+    "03800034"
+   ]
+  },
+  {
+   "source_key": "RUN1B",
+   "cmd_string": "cmd_05_RUN1B",
+   "input_sc2": "RUN1B",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "0002082a",
+    "11190000",
+    "03900035"
+   ]
+  },
+  {
+   "source_key": "RUN1B_HLD",
+   "cmd_string": "cmd_05_RUN1B_HLD",
+   "input_sc2": "HLD",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "0002082a",
+    "2d190000",
+    "03a00036"
+   ]
+  },
+  {
+   "source_key": "RUN2B",
+   "cmd_string": "cmd_05_RUN2B",
+   "input_sc2": "RUN2B",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "000207e4",
+    "0f360000",
+    "03b10037"
+   ]
+  },
+  {
+   "source_key": "RUN3B",
+   "cmd_string": "cmd_05_RUN3B",
+   "input_sc2": "RUN3B",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "00020a8c",
+    "12320000",
+    "03c10038"
+   ]
+  },
+  {
+   "source_key": "RUN4B",
+   "cmd_string": "cmd_05_RUN4B",
+   "input_sc2": "RUN4B",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "0002082a",
+    "11190000",
+    "03d10039"
+   ]
+  },
+  {
+   "source_key": "RUN6B",
+   "cmd_string": "cmd_05_RUN6B",
+   "input_sc2": "RUN6B",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "00020a8c",
+    "12320000",
+    "03e1003a"
+   ]
+  },
+  {
+   "source_key": "RUN1K",
+   "cmd_string": "cmd_05_RUN1K",
+   "input_sc2": "RUN1K",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "00020910",
+    "111b0000",
+    "03f1003b"
+   ]
+  },
+  {
+   "source_key": "RUN2K",
+   "cmd_string": "cmd_05_RUN2K",
+   "input_sc2": "RUN2K",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071801",
+    "000207da",
+    "14180000",
+    "0401003c"
+   ]
+  },
+  {
+   "source_key": "RUN3K",
+   "cmd_string": "cmd_05_RUN3K",
+   "input_sc2": "RUN3K",
+   "tekken_input": null,
+   "fields_hex": [
+    "000702c7",
+    "00020b72",
+    "172d0000",
+    "0411003d"
+   ]
+  },
+  {
+   "source_key": "RUN4K",
+   "cmd_string": "cmd_05_RUN4K",
+   "input_sc2": "RUN4K",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "000209f6",
+    "15180000",
+    "0421003e"
+   ]
+  },
+  {
+   "source_key": "RUN6K",
+   "cmd_string": "cmd_05_RUN6K",
+   "input_sc2": "RUN6K",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071801",
+    "00020c44",
+    "141c0000",
+    "0431003f"
+   ]
+  },
+  {
+   "source_key": "RUNAG",
+   "cmd_string": "cmd_05_RUNAG",
+   "input_sc2": "RUNAG",
+   "tekken_input": null,
+   "fields_hex": [
+    "00072283",
+    "000205dc",
+    "0f3c0000",
+    "043f0040"
+   ]
+  },
+  {
+   "source_key": "RUNBG",
+   "cmd_string": "cmd_05_RUNBG",
+   "input_sc2": "RUNBG",
+   "tekken_input": null,
+   "fields_hex": [
+    "00072283",
+    "000205dc",
+    "0f3c0000",
+    "044d0041"
+   ]
+  },
+  {
+   "source_key": "crh2A",
+   "cmd_string": "cmd_05_crh2A",
+   "input_sc2": "crh2A",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070183",
+    "00010582",
+    "0b0a0000",
+    "045b0042"
+   ]
+  },
+  {
+   "source_key": "crh2B",
+   "cmd_string": "cmd_05_crh2B",
+   "input_sc2": "crh2B",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "000107a8",
+    "161a0000",
+    "04690043"
+   ]
+  },
+  {
+   "source_key": "crh3B",
+   "cmd_string": "cmd_05_crh3B",
+   "input_sc2": "crh3B",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "000107a8",
+    "111a0000",
+    "04770044"
+   ]
+  },
+  {
+   "source_key": "crh2K",
+   "cmd_string": "cmd_05_crh2K",
+   "input_sc2": "crh2K",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071801",
+    "000105a0",
+    "0e100000",
+    "04850045"
+   ]
+  },
+  {
+   "source_key": "crstA",
+   "cmd_string": "cmd_05_crstA",
+   "input_sc2": "crstA",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "00010852",
+    "0e180000",
+    "04970046"
+   ]
+  },
+  {
+   "source_key": "crstB",
+   "cmd_string": "cmd_05_crstB",
+   "input_sc2": "crstB",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "0001097e",
+    "0d1e0000",
+    "04a90047"
+   ]
+  },
+  {
+   "source_key": "crstK",
+   "cmd_string": "cmd_05_crstK",
+   "input_sc2": "crstK",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070483",
+    "00010848",
+    "111e0000",
+    "04bb0048"
+   ]
+  },
+  {
+   "source_key": "crhAG",
+   "cmd_string": "cmd_05_crhAG",
+   "input_sc2": "crhAG",
+   "tekken_input": null,
+   "fields_hex": [
+    "00072283",
+    "000105dc",
+    "0f3c0000",
+    "04c90049"
+   ]
+  },
+  {
+   "source_key": "crhBG",
+   "cmd_string": "cmd_05_crhBG",
+   "input_sc2": "crhBG",
+   "tekken_input": null,
+   "fields_hex": [
+    "00072283",
+    "000105dc",
+    "0f3c0000",
+    "04d7004a"
+   ]
+  },
+  {
+   "source_key": "GJ7A1",
+   "cmd_string": "cmd_05_GJ7A1",
+   "input_sc2": "GJ7A1",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070257",
+    "00000834",
+    "17160000",
+    "04e9004b"
+   ]
+  },
+  {
+   "source_key": "GJ7B1",
+   "cmd_string": "cmd_05_GJ7B1",
+   "input_sc2": "GJ7B1",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "0000058c",
+    "161a0000",
+    "04fb004c"
+   ]
+  },
+  {
+   "source_key": "GJ7K1",
+   "cmd_string": "cmd_05_GJ7K1",
+   "input_sc2": "GJ7K1",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070201",
+    "00000410",
+    "141e0000",
+    "050d004d"
+   ]
+  },
+  {
+   "source_key": "GJ8A1",
+   "cmd_string": "cmd_05_GJ8A1",
+   "input_sc2": "GJ8A1",
+   "tekken_input": null,
+   "fields_hex": [
+    "000702c7",
+    "00000672",
+    "17160000",
+    "051f004e"
+   ]
+  },
+  {
+   "source_key": "GJ8B1",
+   "cmd_string": "cmd_05_GJ8B1",
+   "input_sc2": "GJ8B1",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "0000060e",
+    "161a0000",
+    "0531004f"
+   ]
+  },
+  {
+   "source_key": "GJ8K1",
+   "cmd_string": "cmd_05_GJ8K1",
+   "input_sc2": "GJ8K1",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071201",
+    "000005e6",
+    "143c0000",
+    "05440050"
+   ]
+  },
+  {
+   "source_key": "GJ9A1",
+   "cmd_string": "cmd_05_GJ9A1",
+   "input_sc2": "GJ9A1",
+   "tekken_input": null,
+   "fields_hex": [
+    "000702c7",
+    "00000938",
+    "17160000",
+    "05560051"
+   ]
+  },
+  {
+   "source_key": "GJ9B1",
+   "cmd_string": "cmd_05_GJ9B1",
+   "input_sc2": "GJ9B1",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "00000898",
+    "161a0000",
+    "05680052"
+   ]
+  },
+  {
+   "source_key": "GJ9K1",
+   "cmd_string": "cmd_05_GJ9K1",
+   "input_sc2": "GJ9K1",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071201",
+    "000009f6",
+    "143c0000",
+    "057b0053"
+   ]
+  },
+  {
+   "source_key": "GJ7A2",
+   "cmd_string": "cmd_05_GJ7A2",
+   "input_sc2": "GJ7A2",
+   "tekken_input": null,
+   "fields_hex": [
+    "000708c7",
+    "00000898",
+    "261b0000",
+    "058d0054"
+   ]
+  },
+  {
+   "source_key": "GJ8A2",
+   "cmd_string": "cmd_05_GJ8A2",
+   "input_sc2": "GJ8A2",
+   "tekken_input": null,
+   "fields_hex": [
+    "000708c7",
+    "00000604",
+    "261b0000",
+    "059f0055"
+   ]
+  },
+  {
+   "source_key": "GJ9A2",
+   "cmd_string": "cmd_05_GJ9A2",
+   "input_sc2": "GJ9A2",
+   "tekken_input": null,
+   "fields_hex": [
+    "000708c7",
+    "00000992",
+    "261b0000",
+    "05b10056"
+   ]
+  },
+  {
+   "source_key": "GJ7B2",
+   "cmd_string": "cmd_05_GJ7B2",
+   "input_sc2": "GJ7B2",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "00000744",
+    "26170000",
+    "05c30057"
+   ]
+  },
+  {
+   "source_key": "GJ8B2",
+   "cmd_string": "cmd_05_GJ8B2",
+   "input_sc2": "GJ8B2",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "000005c8",
+    "26170000",
+    "05d50058"
+   ]
+  },
+  {
+   "source_key": "GJ9B2",
+   "cmd_string": "cmd_05_GJ9B2",
+   "input_sc2": "GJ9B2",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "0000099c",
+    "26170000",
+    "05e70059"
+   ]
+  },
+  {
+   "source_key": "GJ7K2",
+   "cmd_string": "cmd_05_GJ7K2",
+   "input_sc2": "GJ7K2",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070201",
+    "00000528",
+    "143c0000",
+    "05fa005a"
+   ]
+  },
+  {
+   "source_key": "GJ8K2",
+   "cmd_string": "cmd_05_GJ8K2",
+   "input_sc2": "GJ8K2",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "00000820",
+    "23240000",
+    "060c005b"
+   ]
+  },
+  {
+   "source_key": "GJ9K2",
+   "cmd_string": "cmd_05_GJ9K2",
+   "input_sc2": "GJ9K2",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "00000bea",
+    "23240000",
+    "061e005c"
+   ]
+  },
+  {
+   "source_key": "sttrRA",
+   "cmd_string": "cmd_05_sttrRA",
+   "input_sc2": "sttrRA",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070283",
+    "000407d0",
+    "0a120000",
+    "062e005d"
+   ]
+  },
+  {
+   "source_key": "sttrRB",
+   "cmd_string": "cmd_05_sttrRB",
+   "input_sc2": "sttrRB",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "000409ba",
+    "13190000",
+    "063e005e"
+   ]
+  },
+  {
+   "source_key": "sttrRK",
+   "cmd_string": "cmd_05_sttrRK",
+   "input_sc2": "sttrRK",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070201",
+    "000406ae",
+    "0c160000",
+    "064e005f"
+   ]
+  },
+  {
+   "source_key": "sttrAG",
+   "cmd_string": "cmd_05_sttrAG",
+   "input_sc2": "sttrAG",
+   "tekken_input": null,
+   "fields_hex": [
+    "00072283",
+    "000405dc",
+    "0f3c0000",
+    "065c0060"
+   ]
+  },
+  {
+   "source_key": "sttrBG",
+   "cmd_string": "cmd_05_sttrBG",
+   "input_sc2": "sttrBG",
+   "tekken_input": null,
+   "fields_hex": [
+    "00072283",
+    "000405dc",
+    "0f3c0000",
+    "066a0061"
+   ]
+  },
+  {
+   "source_key": "crtrRA",
+   "cmd_string": "cmd_05_crtrRA",
+   "input_sc2": "crtrRA",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070183",
+    "000805c8",
+    "0a0a0000",
+    "067a0062"
+   ]
+  },
+  {
+   "source_key": "crtrRB",
+   "cmd_string": "cmd_05_crtrRB",
+   "input_sc2": "crtrRB",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "00080794",
+    "101a0000",
+    "068a0063"
+   ]
+  },
+  {
+   "source_key": "crtrRK",
+   "cmd_string": "cmd_05_crtrRK",
+   "input_sc2": "crtrRK",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071801",
+    "00080d02",
+    "19210000",
+    "069a0064"
+   ]
+  },
+  {
+   "source_key": "crtrAB",
+   "cmd_string": "cmd_05_crtrAB",
+   "input_sc2": "crtrAB",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071801",
+    "000808b6",
+    "14280000",
+    "06aa0065"
+   ]
+  },
+  {
+   "source_key": "crtrAG",
+   "cmd_string": "cmd_05_crtrAG",
+   "input_sc2": "crtrAG",
+   "tekken_input": null,
+   "fields_hex": [
+    "00072283",
+    "000805dc",
+    "0f3c0000",
+    "06ba0066"
+   ]
+  },
+  {
+   "source_key": "crtrBG",
+   "cmd_string": "cmd_05_crtrBG",
+   "input_sc2": "crtrBG",
+   "tekken_input": null,
+   "fields_hex": [
+    "00072283",
+    "000805dc",
+    "0f3c0000",
+    "06ca0067"
+   ]
+  },
+  {
+   "source_key": "A_A",
+   "cmd_string": "cmd_05_A_A",
+   "input_sc2": "A",
+   "tekken_input": "1",
+   "fields_hex": [
+    "00070281",
+    "00000618",
+    "0b0a0000",
+    "06df0068"
+   ]
+  },
+  {
+   "source_key": "A_B",
+   "cmd_string": "cmd_05_A_B",
+   "input_sc2": "B",
+   "tekken_input": "2",
+   "fields_hex": [
+    "00070281",
+    "00000618",
+    "0b0a0000",
+    "06f40069"
+   ]
+  },
+  {
+   "source_key": "A_B_A",
+   "cmd_string": "cmd_05_A_B_A",
+   "input_sc2": "A",
+   "tekken_input": "1",
+   "fields_hex": [
+    "00070281",
+    "00000618",
+    "0b0a0000",
+    "070d006a"
+   ]
+  },
+  {
+   "source_key": "A_B_4A",
+   "cmd_string": "cmd_05_A_B_4A",
+   "input_sc2": "4A",
+   "tekken_input": "41",
+   "fields_hex": [
+    "00070281",
+    "00000618",
+    "0b0a0000",
+    "072a006b"
+   ]
+  },
+  {
+   "source_key": "A_K",
+   "cmd_string": "cmd_05_A_K",
+   "input_sc2": "K",
+   "tekken_input": "3",
+   "fields_hex": [
+    "00070281",
+    "00000618",
+    "0b0a0000",
+    "073f006c"
+   ]
+  },
+  {
+   "source_key": "44B_A",
+   "cmd_string": "cmd_05_44B_A",
+   "input_sc2": "A",
+   "tekken_input": "1",
+   "fields_hex": [
+    "00071401",
+    "0000082a",
+    "11190000",
+    "0758006d"
+   ]
+  },
+  {
+   "source_key": "B_B",
+   "cmd_string": "cmd_05_B_B",
+   "input_sc2": "B",
+   "tekken_input": "2",
+   "fields_hex": [
+    "00070401",
+    "000008fc",
+    "12190000",
+    "076d006e"
+   ]
+  },
+  {
+   "source_key": "B_B_B",
+   "cmd_string": "cmd_05_B_B_B",
+   "input_sc2": "B",
+   "tekken_input": "2",
+   "fields_hex": [
+    "00070401",
+    "000008fc",
+    "12190000",
+    "0786006f"
+   ]
+  },
+  {
+   "source_key": "1K_N",
+   "cmd_string": "cmd_05_1K_N",
+   "input_sc2": "N",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "00000820",
+    "11190000",
+    "079a0070"
+   ]
+  },
+  {
+   "source_key": "crstK_N",
+   "cmd_string": "cmd_05_crstK_N",
+   "input_sc2": "N",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070483",
+    "00010848",
+    "111e0000",
+    "07b00071"
+   ]
+  },
+  {
+   "source_key": "4A3A",
+   "cmd_string": "cmd_05_4A3A",
+   "input_sc2": "4A3A",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070283",
+    "0000076c",
+    "0c120000",
+    "07c50072"
+   ]
+  },
+  {
+   "source_key": "4A2A",
+   "cmd_string": "cmd_05_4A2A",
+   "input_sc2": "4A2A",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070283",
+    "0000076c",
+    "0c120000",
+    "07da0073"
+   ]
+  },
+  {
+   "source_key": "2A_A",
+   "cmd_string": "cmd_05_2A_A",
+   "input_sc2": "A",
+   "tekken_input": "1",
+   "fields_hex": [
+    "00071801",
+    "0000083e",
+    "130e0000",
+    "07ef0074"
+   ]
+  },
+  {
+   "source_key": "2A_A_A",
+   "cmd_string": "cmd_05_2A_A_A",
+   "input_sc2": "A",
+   "tekken_input": "1",
+   "fields_hex": [
+    "00071801",
+    "0000083e",
+    "130e0000",
+    "08080075"
+   ]
+  },
+  {
+   "source_key": "2A_K",
+   "cmd_string": "cmd_05_2A_K",
+   "input_sc2": "K",
+   "tekken_input": "3",
+   "fields_hex": [
+    "00071801",
+    "0000083e",
+    "130e0000",
+    "081d0076"
+   ]
+  },
+  {
+   "source_key": "2A_A_A_K",
+   "cmd_string": "cmd_05_2A_A_A_K",
+   "input_sc2": "K",
+   "tekken_input": "3",
+   "fields_hex": [
+    "00071801",
+    "0000083e",
+    "130e0000",
+    "083a0077"
+   ]
+  },
+  {
+   "source_key": "2B4",
+   "cmd_string": "cmd_05_2B4",
+   "input_sc2": "2B4",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "00000ab4",
+    "0e1e0000",
+    "084e0078"
+   ]
+  },
+  {
+   "source_key": "2B_B",
+   "cmd_string": "cmd_05_2B_B",
+   "input_sc2": "B",
+   "tekken_input": "2",
+   "fields_hex": [
+    "00070401",
+    "00000ab4",
+    "0e1e0000",
+    "08630079"
+   ]
+  },
+  {
+   "source_key": "2B_B_HIT",
+   "cmd_string": "cmd_05_2B_B_HIT",
+   "input_sc2": "HIT",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "00000ab4",
+    "0e1e0000",
+    "0878007a"
+   ]
+  },
+  {
+   "source_key": "4AK",
+   "cmd_string": "cmd_05_4AK",
+   "input_sc2": "4AK",
+   "tekken_input": "413",
+   "fields_hex": [
+    "00072281",
+    "00000866",
+    "334b0000",
+    "0888007b"
+   ]
+  },
+  {
+   "source_key": "4AK_G",
+   "cmd_string": "cmd_05_4AK_G",
+   "input_sc2": "G",
+   "tekken_input": "G",
+   "fields_hex": [
+    "00072281",
+    "00000866",
+    "334b0000",
+    "089c007c"
+   ]
+  },
+  {
+   "source_key": "crstB_B",
+   "cmd_string": "cmd_05_crstB_B",
+   "input_sc2": "B",
+   "tekken_input": "2",
+   "fields_hex": [
+    "00071401",
+    "0001097e",
+    "0d1e0000",
+    "08b3007d"
+   ]
+  },
+  {
+   "source_key": "66AB_K",
+   "cmd_string": "cmd_05_66AB_K",
+   "input_sc2": "K",
+   "tekken_input": "3",
+   "fields_hex": [
+    "00070401",
+    "00000c9e",
+    "122d0000",
+    "08cc007e"
+   ]
+  },
+  {
+   "source_key": "3AB_HLD",
+   "cmd_string": "cmd_05_3AB_HLD",
+   "input_sc2": "HLD",
+   "tekken_input": null,
+   "fields_hex": [
+    "00073201",
+    "00001194",
+    "44500000",
+    "08dc007f"
+   ]
+  },
+  {
+   "source_key": "3AB_HLD_KABE",
+   "cmd_string": "cmd_05_3AB_HLD_KABE",
+   "input_sc2": "KABE",
+   "tekken_input": null,
+   "fields_hex": [
+    "00073201",
+    "00001194",
+    "44500000",
+    "08ec0080"
+   ]
+  },
+  {
+   "source_key": "3AB_HLD_G",
+   "cmd_string": "cmd_05_3AB_HLD_G",
+   "input_sc2": "G",
+   "tekken_input": "G",
+   "fields_hex": [
+    "00073201",
+    "00001194",
+    "44500000",
+    "08fe0081"
+   ]
+  },
+  {
+   "source_key": "crh3AB",
+   "cmd_string": "cmd_05_crh3AB",
+   "input_sc2": "crh3AB",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071201",
+    "00011194",
+    "13320000",
+    "090c0082"
+   ]
+  },
+  {
+   "source_key": "crh3AB_KABE",
+   "cmd_string": "cmd_05_crh3AB_KABE",
+   "input_sc2": "KABE",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071201",
+    "00011194",
+    "13320000",
+    "091a0083"
+   ]
+  },
+  {
+   "source_key": "crh3AB_HLD",
+   "cmd_string": "cmd_05_crh3AB_HLD",
+   "input_sc2": "HLD",
+   "tekken_input": null,
+   "fields_hex": [
+    "00073201",
+    "00011194",
+    "45500000",
+    "09280084"
+   ]
+  },
+  {
+   "source_key": "crh3AB_HLD_KABE",
+   "cmd_string": "cmd_05_crh3AB_HLD_KABE",
+   "input_sc2": "KABE",
+   "tekken_input": null,
+   "fields_hex": [
+    "00073201",
+    "00011194",
+    "45500000",
+    "09360085"
+   ]
+  },
+  {
+   "source_key": "crh3AB_HLD_G",
+   "cmd_string": "cmd_05_crh3AB_HLD_G",
+   "input_sc2": "G",
+   "tekken_input": "G",
+   "fields_hex": [
+    "00073201",
+    "00011194",
+    "45500000",
+    "09460086"
+   ]
+  },
+  {
+   "source_key": "4AB_HLD",
+   "cmd_string": "cmd_05_4AB_HLD",
+   "input_sc2": "HLD",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "000007d0",
+    "20280000",
+    "09570087"
+   ]
+  },
+  {
+   "source_key": "4AB_HLD2",
+   "cmd_string": "cmd_05_4AB_HLD2",
+   "input_sc2": "HLD2",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "000007d0",
+    "20280000",
+    "09680088"
+   ]
+  },
+  {
+   "source_key": "4AB_HLD3",
+   "cmd_string": "cmd_05_4AB_HLD3",
+   "input_sc2": "HLD3",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "000007d0",
+    "20280000",
+    "09790089"
+   ]
+  },
+  {
+   "source_key": "4AB_HLD4",
+   "cmd_string": "cmd_05_4AB_HLD4",
+   "input_sc2": "HLD4",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "000007d0",
+    "20280000",
+    "098a008a"
+   ]
+  },
+  {
+   "source_key": "3B_B",
+   "cmd_string": "cmd_05_3B_B",
+   "input_sc2": "B",
+   "tekken_input": "2",
+   "fields_hex": [
+    "00071401",
+    "00000a00",
+    "131a0000",
+    "099e008b"
+   ]
+  },
+  {
+   "source_key": "6BK_HLD",
+   "cmd_string": "cmd_05_6BK_HLD",
+   "input_sc2": "HLD",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "000009c4",
+    "00000000",
+    "09ae008c"
+   ]
+  },
+  {
+   "source_key": "4BK_HLD",
+   "cmd_string": "cmd_05_4BK_HLD",
+   "input_sc2": "HLD",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "000009c4",
+    "00000000",
+    "09bf008d"
+   ]
+  },
+  {
+   "source_key": "2BK_IDO",
+   "cmd_string": "cmd_05_2BK_IDO",
+   "input_sc2": "IDO",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "000005dc",
+    "00000000",
+    "09d3008e"
+   ]
+  },
+  {
+   "source_key": "8BK",
+   "cmd_string": "cmd_05_8BK",
+   "input_sc2": "8BK",
+   "tekken_input": "823",
+   "fields_hex": [
+    "00070101",
+    "000005dc",
+    "00000000",
+    "09e3008f"
+   ]
+  },
+  {
+   "source_key": "8BK_IDO",
+   "cmd_string": "cmd_05_8BK_IDO",
+   "input_sc2": "IDO",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "000005dc",
+    "00000000",
+    "09f70090"
+   ]
+  },
+  {
+   "source_key": "crhBK_1",
+   "cmd_string": "cmd_05_crhBK_1",
+   "input_sc2": "1",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "00010708",
+    "160f0000",
+    "0a070091"
+   ]
+  },
+  {
+   "source_key": "crhBK_2",
+   "cmd_string": "cmd_05_crhBK_2",
+   "input_sc2": "2",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "00010708",
+    "160f0000",
+    "0a150092"
+   ]
+  },
+  {
+   "source_key": "crhBK_3",
+   "cmd_string": "cmd_05_crhBK_3",
+   "input_sc2": "3",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "00010708",
+    "160f0000",
+    "0a250093"
+   ]
+  },
+  {
+   "source_key": "crhBK_1_HLD",
+   "cmd_string": "cmd_05_crhBK_1_HLD",
+   "input_sc2": "HLD",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "00010708",
+    "160f0000",
+    "0a330094"
+   ]
+  },
+  {
+   "source_key": "crhBK_2_HLD",
+   "cmd_string": "cmd_05_crhBK_2_HLD",
+   "input_sc2": "HLD",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "00010708",
+    "160f0000",
+    "0a410095"
+   ]
+  },
+  {
+   "source_key": "crhBK_3_HLD",
+   "cmd_string": "cmd_05_crhBK_3_HLD",
+   "input_sc2": "HLD",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "00010708",
+    "160f0000",
+    "0a4f0096"
+   ]
+  },
+  {
+   "source_key": "66AK",
+   "cmd_string": "cmd_05_66AK",
+   "input_sc2": "66AK",
+   "tekken_input": "6613",
+   "fields_hex": [
+    "00071401",
+    "00000a28",
+    "132d0000",
+    "0a630097"
+   ]
+  },
+  {
+   "source_key": "66AK_K",
+   "cmd_string": "cmd_05_66AK_K",
+   "input_sc2": "K",
+   "tekken_input": "3",
+   "fields_hex": [
+    "00071401",
+    "00000a28",
+    "132d0000",
+    "0a7c0098"
+   ]
+  },
+  {
+   "source_key": "AK_HLD",
+   "cmd_string": "cmd_05_AK_HLD",
+   "input_sc2": "HLD",
+   "tekken_input": null,
+   "fields_hex": [
+    "000704ff",
+    "0000157c",
+    "3c4b0000",
+    "0a8d0099"
+   ]
+  },
+  {
+   "source_key": "AK_HLD_G",
+   "cmd_string": "cmd_05_AK_HLD_G",
+   "input_sc2": "G",
+   "tekken_input": "G",
+   "fields_hex": [
+    "000704ff",
+    "0000157c",
+    "3c4b0000",
+    "0aa0009a"
+   ]
+  },
+  {
+   "source_key": "AK",
+   "cmd_string": "cmd_05_AK",
+   "input_sc2": "AK",
+   "tekken_input": "13",
+   "fields_hex": [
+    "000704ff",
+    "00000e74",
+    "19370000",
+    "0ab1009b"
+   ]
+  },
+  {
+   "source_key": "BSA",
+   "cmd_string": "cmd_05_BSA",
+   "input_sc2": "BSA",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071801",
+    "00000514",
+    "14050000",
+    "0ac4009c"
+   ]
+  },
+  {
+   "source_key": "44B_HLD",
+   "cmd_string": "cmd_05_44B_HLD",
+   "input_sc2": "HLD",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "0000082a",
+    "2d190000",
+    "0ad9009d"
+   ]
+  },
+  {
+   "source_key": "44B_HLD_HIT",
+   "cmd_string": "cmd_05_44B_HLD_HIT",
+   "input_sc2": "HIT",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "0000082a",
+    "2d190000",
+    "0aee009e"
+   ]
+  },
+  {
+   "source_key": "44B_HLD_G",
+   "cmd_string": "cmd_05_44B_HLD_G",
+   "input_sc2": "G",
+   "tekken_input": "G",
+   "fields_hex": [
+    "00071401",
+    "0000082a",
+    "2d190000",
+    "0b05009f"
+   ]
+  },
+  {
+   "source_key": "6B_B",
+   "cmd_string": "cmd_05_6B_B",
+   "input_sc2": "B",
+   "tekken_input": "2",
+   "fields_hex": [
+    "00070201",
+    "000007d0",
+    "0d180000",
+    "0b1900a0"
+   ]
+  },
+  {
+   "source_key": "KG",
+   "cmd_string": "cmd_05_KG",
+   "input_sc2": "KG",
+   "tekken_input": "3G",
+   "fields_hex": [
+    "00072283",
+    "000005dc",
+    "0f3c0000",
+    "0b2900a1"
+   ]
+  },
+  {
+   "source_key": "1B_Throw",
+   "cmd_string": "cmd_05_1B_Throw",
+   "input_sc2": "Throw",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "000007b2",
+    "171a0000",
+    "0b3900a2"
+   ]
+  },
+  {
+   "source_key": "RUN1AB",
+   "cmd_string": "cmd_05_RUN1AB",
+   "input_sc2": "RUN1AB",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "000207d0",
+    "0f280000",
+    "0b4900a3"
+   ]
+  },
+  {
+   "source_key": "RUN1AB_HLD",
+   "cmd_string": "cmd_05_RUN1AB_HLD",
+   "input_sc2": "HLD",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "000207d0",
+    "20280000",
+    "0b5a00a4"
+   ]
+  },
+  {
+   "source_key": "RUN1AB_HLD2",
+   "cmd_string": "cmd_05_RUN1AB_HLD2",
+   "input_sc2": "HLD2",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "000207d0",
+    "20280000",
+    "0b6b00a5"
+   ]
+  },
+  {
+   "source_key": "RUN1AB_HLD3",
+   "cmd_string": "cmd_05_RUN1AB_HLD3",
+   "input_sc2": "HLD3",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "000207d0",
+    "20280000",
+    "0b7c00a6"
+   ]
+  },
+  {
+   "source_key": "RUN1AB_HLD4",
+   "cmd_string": "cmd_05_RUN1AB_HLD4",
+   "input_sc2": "HLD4",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "000207d0",
+    "20280000",
+    "0b8d00a7"
+   ]
+  },
+  {
+   "source_key": "RUN4AB",
+   "cmd_string": "cmd_05_RUN4AB",
+   "input_sc2": "RUN4AB",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "000207d0",
+    "0f280000",
+    "0b9d00a8"
+   ]
+  },
+  {
+   "source_key": "RUN4AB_HLD",
+   "cmd_string": "cmd_05_RUN4AB_HLD",
+   "input_sc2": "HLD",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "000207d0",
+    "20280000",
+    "0bae00a9"
+   ]
+  },
+  {
+   "source_key": "RUN4AB_HLD2",
+   "cmd_string": "cmd_05_RUN4AB_HLD2",
+   "input_sc2": "HLD2",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "000207d0",
+    "20280000",
+    "0bbf00aa"
+   ]
+  },
+  {
+   "source_key": "RUN4AB_HLD3",
+   "cmd_string": "cmd_05_RUN4AB_HLD3",
+   "input_sc2": "HLD3",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "000207d0",
+    "20280000",
+    "0bd000ab"
+   ]
+  },
+  {
+   "source_key": "RUN4AB_HLD4",
+   "cmd_string": "cmd_05_RUN4AB_HLD4",
+   "input_sc2": "HLD4",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "000207d0",
+    "20280000",
+    "0be100ac"
+   ]
+  },
+  {
+   "source_key": "RUN7AB",
+   "cmd_string": "cmd_05_RUN7AB",
+   "input_sc2": "RUN7AB",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "000207d0",
+    "0f280000",
+    "0bf100ad"
+   ]
+  },
+  {
+   "source_key": "RUN7AB_HLD",
+   "cmd_string": "cmd_05_RUN7AB_HLD",
+   "input_sc2": "HLD",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "000207d0",
+    "20280000",
+    "0c0200ae"
+   ]
+  },
+  {
+   "source_key": "RUN7AB_HLD2",
+   "cmd_string": "cmd_05_RUN7AB_HLD2",
+   "input_sc2": "HLD2",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "000207d0",
+    "20280000",
+    "0c1300af"
+   ]
+  },
+  {
+   "source_key": "RUN7AB_HLD3",
+   "cmd_string": "cmd_05_RUN7AB_HLD3",
+   "input_sc2": "HLD3",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "000207d0",
+    "20280000",
+    "0c2400b0"
+   ]
+  },
+  {
+   "source_key": "RUN7AB_HLD4",
+   "cmd_string": "cmd_05_RUN7AB_HLD4",
+   "input_sc2": "HLD4",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "000207d0",
+    "20280000",
+    "0c3500b1"
+   ]
+  },
+  {
+   "source_key": "RUN3AB",
+   "cmd_string": "cmd_05_RUN3AB",
+   "input_sc2": "RUN3AB",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "00020c9e",
+    "122d0000",
+    "0c4500b2"
+   ]
+  },
+  {
+   "source_key": "RUN3AB_K",
+   "cmd_string": "cmd_05_RUN3AB_K",
+   "input_sc2": "K",
+   "tekken_input": "3",
+   "fields_hex": [
+    "00070401",
+    "00020c9e",
+    "122d0000",
+    "0c5700b3"
+   ]
+  },
+  {
+   "source_key": "RUN6AB",
+   "cmd_string": "cmd_05_RUN6AB",
+   "input_sc2": "RUN6AB",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "00020c9e",
+    "122d0000",
+    "0c6700b4"
+   ]
+  },
+  {
+   "source_key": "RUN6AB_K",
+   "cmd_string": "cmd_05_RUN6AB_K",
+   "input_sc2": "K",
+   "tekken_input": "3",
+   "fields_hex": [
+    "00070401",
+    "00020c9e",
+    "122d0000",
+    "0c7900b5"
+   ]
+  },
+  {
+   "source_key": "RUN9AB",
+   "cmd_string": "cmd_05_RUN9AB",
+   "input_sc2": "RUN9AB",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "00020c9e",
+    "122d0000",
+    "0c8900b6"
+   ]
+  },
+  {
+   "source_key": "RUN9AB_K",
+   "cmd_string": "cmd_05_RUN9AB_K",
+   "input_sc2": "K",
+   "tekken_input": "3",
+   "fields_hex": [
+    "00070401",
+    "00020c9e",
+    "122d0000",
+    "0c9b00b7"
+   ]
+  },
+  {
+   "source_key": "RUN2AB",
+   "cmd_string": "cmd_05_RUN2AB",
+   "input_sc2": "RUN2AB",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "00020bb8",
+    "00000000",
+    "0cab00b8"
+   ]
+  },
+  {
+   "source_key": "RUN8AB",
+   "cmd_string": "cmd_05_RUN8AB",
+   "input_sc2": "RUN8AB",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "00020bb8",
+    "00000000",
+    "0cbb00b9"
+   ]
+  },
+  {
+   "source_key": "RUN1BK_KARI",
+   "cmd_string": "cmd_05_RUN1BK_KARI",
+   "input_sc2": "KARI",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "00020c80",
+    "00000000",
+    "0ccc00ba"
+   ]
+  },
+  {
+   "source_key": "RUN2BK_KARI",
+   "cmd_string": "cmd_05_RUN2BK_KARI",
+   "input_sc2": "KARI",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "00020c80",
+    "00000000",
+    "0cdd00bb"
+   ]
+  },
+  {
+   "source_key": "RUN3BK_KARI",
+   "cmd_string": "cmd_05_RUN3BK_KARI",
+   "input_sc2": "KARI",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "00020c80",
+    "00000000",
+    "0cee00bc"
+   ]
+  },
+  {
+   "source_key": "RUN4BK_KARI",
+   "cmd_string": "cmd_05_RUN4BK_KARI",
+   "input_sc2": "KARI",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "00020c80",
+    "00000000",
+    "0cff00bd"
+   ]
+  },
+  {
+   "source_key": "RUN6BK_KARI",
+   "cmd_string": "cmd_05_RUN6BK_KARI",
+   "input_sc2": "KARI",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "00020c80",
+    "00000000",
+    "0d1000be"
+   ]
+  },
+  {
+   "source_key": "RUN7BK_KARI",
+   "cmd_string": "cmd_05_RUN7BK_KARI",
+   "input_sc2": "KARI",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "00020c80",
+    "00000000",
+    "0d2100bf"
+   ]
+  },
+  {
+   "source_key": "RUN8BK_KARI",
+   "cmd_string": "cmd_05_RUN8BK_KARI",
+   "input_sc2": "KARI",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "00020c80",
+    "00000000",
+    "0d3200c0"
+   ]
+  },
+  {
+   "source_key": "RUN9BK_KARI",
+   "cmd_string": "cmd_05_RUN9BK_KARI",
+   "input_sc2": "KARI",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "00020c80",
+    "00000000",
+    "0d4300c1"
+   ]
+  },
+  {
+   "source_key": "214",
+   "cmd_string": "cmd_05_214",
+   "input_sc2": "214",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "000009c4",
+    "00000000",
+    "0d5500c2"
+   ]
+  },
+  {
+   "source_key": "sttr2AB",
+   "cmd_string": "cmd_05_sttr2AB",
+   "input_sc2": "sttr2AB",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071801",
+    "000408b6",
+    "14280000",
+    "0d6300c3"
+   ]
+  },
+  {
+   "source_key": "sttrAB",
+   "cmd_string": "cmd_05_sttrAB",
+   "input_sc2": "sttrAB",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "000409e2",
+    "101b0000",
+    "0d7100c4"
+   ]
+  },
+  {
+   "source_key": "sttrAB_KABE",
+   "cmd_string": "cmd_05_sttrAB_KABE",
+   "input_sc2": "KABE",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "000409e2",
+    "101b0000",
+    "0d7f00c5"
+   ]
+  },
+  {
+   "source_key": "sttrAB_HIT",
+   "cmd_string": "cmd_05_sttrAB_HIT",
+   "input_sc2": "HIT",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "000409e2",
+    "101b0000",
+    "0d8d00c6"
+   ]
+  },
+  {
+   "source_key": "sttrAB_HIT_2",
+   "cmd_string": "cmd_05_sttrAB_HIT_2",
+   "input_sc2": "2",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "000409e2",
+    "101b0000",
+    "0da000c7"
+   ]
+  },
+  {
+   "source_key": "sttrAB_2",
+   "cmd_string": "cmd_05_sttrAB_2",
+   "input_sc2": "2",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "000409e2",
+    "101b0000",
+    "0db300c8"
+   ]
+  },
+  {
+   "source_key": "sttrAB_G",
+   "cmd_string": "cmd_05_sttrAB_G",
+   "input_sc2": "G",
+   "tekken_input": "G",
+   "fields_hex": [
+    "00071401",
+    "000409e2",
+    "101b0000",
+    "0dc500c9"
+   ]
+  },
+  {
+   "source_key": "sttrAK_HLD",
+   "cmd_string": "cmd_05_sttrAK_HLD",
+   "input_sc2": "HLD",
+   "tekken_input": null,
+   "fields_hex": [
+    "000704ff",
+    "0004157c",
+    "3c4b0000",
+    "0dd600ca"
+   ]
+  },
+  {
+   "source_key": "sttrAK",
+   "cmd_string": "cmd_05_sttrAK",
+   "input_sc2": "sttrAK",
+   "tekken_input": null,
+   "fields_hex": [
+    "000704ff",
+    "00040e74",
+    "1e340000",
+    "0de700cb"
+   ]
+  },
+  {
+   "source_key": "sttr4A",
+   "cmd_string": "cmd_05_sttr4A",
+   "input_sc2": "sttr4A",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070201",
+    "00040514",
+    "10190000",
+    "0df700cc"
+   ]
+  },
+  {
+   "source_key": "sttr4A_B",
+   "cmd_string": "cmd_05_sttr4A_B",
+   "input_sc2": "B",
+   "tekken_input": "2",
+   "fields_hex": [
+    "00070201",
+    "00040514",
+    "10190000",
+    "0e0c00cd"
+   ]
+  },
+  {
+   "source_key": "sttr4B",
+   "cmd_string": "cmd_05_sttr4B",
+   "input_sc2": "sttr4B",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "00040834",
+    "0c140000",
+    "0e1c00ce"
+   ]
+  },
+  {
+   "source_key": "sttr4B_4B",
+   "cmd_string": "cmd_05_sttr4B_4B",
+   "input_sc2": "4B",
+   "tekken_input": "42",
+   "fields_hex": [
+    "00070401",
+    "00040834",
+    "0c140000",
+    "0e3100cf"
+   ]
+  },
+  {
+   "source_key": "sttr4B_B",
+   "cmd_string": "cmd_05_sttr4B_B",
+   "input_sc2": "B",
+   "tekken_input": "2",
+   "fields_hex": [
+    "00070401",
+    "00040834",
+    "0c140000",
+    "0e4600d0"
+   ]
+  },
+  {
+   "source_key": "sttr4K_R",
+   "cmd_string": "cmd_05_sttr4K_R",
+   "input_sc2": "R",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070201",
+    "00040690",
+    "0c160000",
+    "0e5700d1"
+   ]
+  },
+  {
+   "source_key": "sttr4K_L",
+   "cmd_string": "cmd_05_sttr4K_L",
+   "input_sc2": "L",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070201",
+    "00040690",
+    "0c160000",
+    "0e6800d2"
+   ]
+  },
+  {
+   "source_key": "sttr6A",
+   "cmd_string": "cmd_05_sttr6A",
+   "input_sc2": "sttr6A",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070483",
+    "00040960",
+    "102a0000",
+    "0e7900d3"
+   ]
+  },
+  {
+   "source_key": "sttr66A_HLD",
+   "cmd_string": "cmd_05_sttr66A_HLD",
+   "input_sc2": "HLD",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070483",
+    "000409c4",
+    "241f0000",
+    "0e8d00d4"
+   ]
+  },
+  {
+   "source_key": "sttr66A",
+   "cmd_string": "cmd_05_sttr66A",
+   "input_sc2": "sttr66A",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070483",
+    "000409c4",
+    "161f0000",
+    "0ea100d5"
+   ]
+  },
+  {
+   "source_key": "sttr6B",
+   "cmd_string": "cmd_05_sttr6B",
+   "input_sc2": "sttr6B",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070201",
+    "00040af0",
+    "152f0000",
+    "0eb100d6"
+   ]
+  },
+  {
+   "source_key": "sttr66B",
+   "cmd_string": "cmd_05_sttr66B",
+   "input_sc2": "sttr66B",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "0004067c",
+    "0f260000",
+    "0ec500d7"
+   ]
+  },
+  {
+   "source_key": "sttr66BSA",
+   "cmd_string": "cmd_05_sttr66BSA",
+   "input_sc2": "sttr66BSA",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "00040c1c",
+    "161f0000",
+    "0edb00d8"
+   ]
+  },
+  {
+   "source_key": "sttr66BSBA",
+   "cmd_string": "cmd_05_sttr66BSBA",
+   "input_sc2": "sttr66BSBA",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "00040c1c",
+    "161f0000",
+    "0ef100d9"
+   ]
+  },
+  {
+   "source_key": "sttr1K",
+   "cmd_string": "cmd_05_sttr1K",
+   "input_sc2": "sttr1K",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "000406a4",
+    "0e190000",
+    "0f0100da"
+   ]
+  },
+  {
+   "source_key": "sttr2K",
+   "cmd_string": "cmd_05_sttr2K",
+   "input_sc2": "sttr2K",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071801",
+    "00040ce4",
+    "19210000",
+    "0f1100db"
+   ]
+  },
+  {
+   "source_key": "sttr2K_WAZAHYOU",
+   "cmd_string": "cmd_05_sttr2K_WAZAHYOU",
+   "input_sc2": "WAZAHYOU",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071801",
+    "00040ce4",
+    "19210000",
+    "0f2500dc"
+   ]
+  },
+  {
+   "source_key": "crh123_N",
+   "cmd_string": "cmd_05_crh123_N",
+   "input_sc2": "N",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "000109c4",
+    "00000000",
+    "0f3700dd"
+   ]
+  },
+  {
+   "source_key": "crh123_KARI",
+   "cmd_string": "cmd_05_crh123_KARI",
+   "input_sc2": "KARI",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "000109c4",
+    "00000000",
+    "0f4800de"
+   ]
+  },
+  {
+   "source_key": "crh123_K",
+   "cmd_string": "cmd_05_crh123_K",
+   "input_sc2": "K",
+   "tekken_input": "3",
+   "fields_hex": [
+    "00070201",
+    "000108fc",
+    "0c220000",
+    "0f5a00df"
+   ]
+  },
+  {
+   "source_key": "crh123_1",
+   "cmd_string": "cmd_05_crh123_1",
+   "input_sc2": "1",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "000107d0",
+    "00000000",
+    "0f6e00e0"
+   ]
+  },
+  {
+   "source_key": "crh123_1_D",
+   "cmd_string": "cmd_05_crh123_1_D",
+   "input_sc2": "D",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "000107d0",
+    "00000000",
+    "0f8200e1"
+   ]
+  },
+  {
+   "source_key": "236",
+   "cmd_string": "cmd_05_236",
+   "input_sc2": "236",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "00000bb8",
+    "00000000",
+    "0f9400e2"
+   ]
+  },
+  {
+   "source_key": "236_KARI",
+   "cmd_string": "cmd_05_236_KARI",
+   "input_sc2": "KARI",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "00000bb8",
+    "00000000",
+    "0fa700e3"
+   ]
+  },
+  {
+   "source_key": "KARI_1",
+   "cmd_string": "cmd_05_KARI_1",
+   "input_sc2": "1",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "000007d0",
+    "00000033",
+    "0fb700e4"
+   ]
+  },
+  {
+   "source_key": "KARI_A",
+   "cmd_string": "cmd_05_KARI_A",
+   "input_sc2": "A",
+   "tekken_input": "1",
+   "fields_hex": [
+    "00070283",
+    "000008c0",
+    "0c140033",
+    "0fc700e5"
+   ]
+  },
+  {
+   "source_key": "KARI_A_A",
+   "cmd_string": "cmd_05_KARI_A_A",
+   "input_sc2": "A",
+   "tekken_input": "1",
+   "fields_hex": [
+    "00070283",
+    "000008c0",
+    "0c140033",
+    "0fdc00e6"
+   ]
+  },
+  {
+   "source_key": "KARI_A_4A",
+   "cmd_string": "cmd_05_KARI_A_4A",
+   "input_sc2": "4A",
+   "tekken_input": "41",
+   "fields_hex": [
+    "00070283",
+    "000008c0",
+    "0c140033",
+    "0ff100e7"
+   ]
+  },
+  {
+   "source_key": "KARI_A_3A",
+   "cmd_string": "cmd_05_KARI_A_3A",
+   "input_sc2": "3A",
+   "tekken_input": "31",
+   "fields_hex": [
+    "00070283",
+    "000008c0",
+    "0c140033",
+    "100600e8"
+   ]
+  },
+  {
+   "source_key": "KARI_B",
+   "cmd_string": "cmd_05_KARI_B",
+   "input_sc2": "B",
+   "tekken_input": "2",
+   "fields_hex": [
+    "00071401",
+    "00000960",
+    "1b1c0033",
+    "101600e9"
+   ]
+  },
+  {
+   "source_key": "KARI_B_B",
+   "cmd_string": "cmd_05_KARI_B_B",
+   "input_sc2": "B",
+   "tekken_input": "2",
+   "fields_hex": [
+    "00071401",
+    "00000960",
+    "1b1c0033",
+    "102b00ea"
+   ]
+  },
+  {
+   "source_key": "KARI_B_B_HLD",
+   "cmd_string": "cmd_05_KARI_B_B_HLD",
+   "input_sc2": "HLD",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "00000960",
+    "1b1c0033",
+    "104400eb"
+   ]
+  },
+  {
+   "source_key": "KARI_B_B_B",
+   "cmd_string": "cmd_05_KARI_B_B_B",
+   "input_sc2": "B",
+   "tekken_input": "2",
+   "fields_hex": [
+    "00071401",
+    "00000960",
+    "1b1c0033",
+    "105d00ec"
+   ]
+  },
+  {
+   "source_key": "KARI_K",
+   "cmd_string": "cmd_05_KARI_K",
+   "input_sc2": "K",
+   "tekken_input": "3",
+   "fields_hex": [
+    "00071801",
+    "00000b54",
+    "201e0033",
+    "106d00ed"
+   ]
+  },
+  {
+   "source_key": "KARI_K_WAZAHYOU",
+   "cmd_string": "cmd_05_KARI_K_WAZAHYOU",
+   "input_sc2": "WAZAHYOU",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071801",
+    "00000b54",
+    "201e0033",
+    "108100ee"
+   ]
+  },
+  {
+   "source_key": "KARI_AB",
+   "cmd_string": "cmd_05_KARI_AB",
+   "input_sc2": "AB",
+   "tekken_input": "12",
+   "fields_hex": [
+    "00071801",
+    "000009c4",
+    "0f1b0033",
+    "109100ef"
+   ]
+  },
+  {
+   "source_key": "KARI_BK_4",
+   "cmd_string": "cmd_05_KARI_BK_4",
+   "input_sc2": "4",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "000005dc",
+    "0f160033",
+    "10a300f0"
+   ]
+  },
+  {
+   "source_key": "KARI_BK_N",
+   "cmd_string": "cmd_05_KARI_BK_N",
+   "input_sc2": "N",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "00000320",
+    "0f160033",
+    "10b300f1"
+   ]
+  },
+  {
+   "source_key": "KARI_BK_6",
+   "cmd_string": "cmd_05_KARI_BK_6",
+   "input_sc2": "6",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "000007d0",
+    "0f160033",
+    "10c500f2"
+   ]
+  },
+  {
+   "source_key": "KARI_BK_4_HLD",
+   "cmd_string": "cmd_05_KARI_BK_4_HLD",
+   "input_sc2": "HLD",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "000005dc",
+    "0f160033",
+    "10d500f3"
+   ]
+  },
+  {
+   "source_key": "KARI_BK_N_HLD",
+   "cmd_string": "cmd_05_KARI_BK_N_HLD",
+   "input_sc2": "HLD",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "00000320",
+    "0f160033",
+    "10e500f4"
+   ]
+  },
+  {
+   "source_key": "KARI_BK_6_HLD",
+   "cmd_string": "cmd_05_KARI_BK_6_HLD",
+   "input_sc2": "HLD",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "000007d0",
+    "0f160033",
+    "10f500f5"
+   ]
+  },
+  {
+   "source_key": "KARI_AG_HLD",
+   "cmd_string": "cmd_05_KARI_AG_HLD",
+   "input_sc2": "HLD",
+   "tekken_input": null,
+   "fields_hex": [
+    "00072283",
+    "000005dc",
+    "0f3c0033",
+    "110500f6"
+   ]
+  },
+  {
+   "source_key": "KARI_AG",
+   "cmd_string": "cmd_05_KARI_AG",
+   "input_sc2": "AG",
+   "tekken_input": "1G",
+   "fields_hex": [
+    "00072283",
+    "000005dc",
+    "0f3c0033",
+    "111500f7"
+   ]
+  },
+  {
+   "source_key": "KARI_BG_HLD",
+   "cmd_string": "cmd_05_KARI_BG_HLD",
+   "input_sc2": "HLD",
+   "tekken_input": null,
+   "fields_hex": [
+    "00072283",
+    "000005dc",
+    "0f3c0033",
+    "112500f8"
+   ]
+  },
+  {
+   "source_key": "KARI_BG",
+   "cmd_string": "cmd_05_KARI_BG",
+   "input_sc2": "BG",
+   "tekken_input": "2G",
+   "fields_hex": [
+    "00072283",
+    "000005dc",
+    "0f3c0033",
+    "113500f9"
+   ]
+  },
+  {
+   "source_key": "KARI_RAND",
+   "cmd_string": "cmd_05_KARI_RAND",
+   "input_sc2": "RAND",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "00000fa0",
+    "00000033",
+    "122900fa"
+   ]
+  },
+  {
+   "source_key": "crh123_KARI_RAND",
+   "cmd_string": "cmd_05_crh123_KARI_RAND",
+   "input_sc2": "RAND",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "00010fa0",
+    "00000033",
+    "132700fb"
+   ]
+  },
+  {
+   "source_key": "RUN_KARI_RAND",
+   "cmd_string": "cmd_05_RUN_KARI_RAND",
+   "input_sc2": "RAND",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "00020fa0",
+    "00000033",
+    "141f00fc"
+   ]
+  },
+  {
+   "source_key": "crh1AK",
+   "cmd_string": "cmd_05_crh1AK",
+   "input_sc2": "crh1AK",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "00010bb8",
+    "00000000",
+    "142d00fd"
+   ]
+  },
+  {
+   "source_key": "crh2AK",
+   "cmd_string": "cmd_05_crh2AK",
+   "input_sc2": "crh2AK",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "00010bb8",
+    "00000000",
+    "143b00fe"
+   ]
+  },
+  {
+   "source_key": "crh3AK",
+   "cmd_string": "cmd_05_crh3AK",
+   "input_sc2": "crh3AK",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "000105dc",
+    "00000000",
+    "144900ff"
+   ]
+  },
+  {
+   "source_key": "crhAK_DOWN_A",
+   "cmd_string": "cmd_05_crhAK_DOWN_A",
+   "input_sc2": "A",
+   "tekken_input": "1",
+   "fields_hex": [
+    "00070101",
+    "000107d0",
+    "00000000",
+    "14570100"
+   ]
+  },
+  {
+   "source_key": "crhAK_DOWN_U",
+   "cmd_string": "cmd_05_crhAK_DOWN_U",
+   "input_sc2": "U",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "000107d0",
+    "00000000",
+    "14650101"
+   ]
+  },
+  {
+   "source_key": "3AK",
+   "cmd_string": "cmd_05_3AK",
+   "input_sc2": "3AK",
+   "tekken_input": "313",
+   "fields_hex": [
+    "00071401",
+    "00000708",
+    "20140000",
+    "14750102"
+   ]
+  },
+  {
+   "source_key": "3AK_BRID_ATAMA",
+   "cmd_string": "cmd_05_3AK_BRID_ATAMA",
+   "input_sc2": "ATAMA",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "00000708",
+    "20140031",
+    "14860103"
+   ]
+  },
+  {
+   "source_key": "BRID_ATAMA_RAND",
+   "cmd_string": "cmd_05_BRID_ATAMA_RAND",
+   "input_sc2": "RAND",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "00000708",
+    "00000031",
+    "15580104"
+   ]
+  },
+  {
+   "source_key": "2AK",
+   "cmd_string": "cmd_05_2AK",
+   "input_sc2": "2AK",
+   "tekken_input": "213",
+   "fields_hex": [
+    "00071401",
+    "000004b0",
+    "20140000",
+    "15680105"
+   ]
+  },
+  {
+   "source_key": "2AK_BRID_ASI",
+   "cmd_string": "cmd_05_2AK_BRID_ASI",
+   "input_sc2": "ASI",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "000004b0",
+    "20140031",
+    "15790106"
+   ]
+  },
+  {
+   "source_key": "BRID_ASI_RAND",
+   "cmd_string": "cmd_05_BRID_ASI_RAND",
+   "input_sc2": "RAND",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "000004b0",
+    "00000031",
+    "16890107"
+   ]
+  },
+  {
+   "source_key": "sttr2AK",
+   "cmd_string": "cmd_05_sttr2AK",
+   "input_sc2": "sttr2AK",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "0004076c",
+    "20140000",
+    "16990108"
+   ]
+  },
+  {
+   "source_key": "sttr2AK_AB",
+   "cmd_string": "cmd_05_sttr2AK_AB",
+   "input_sc2": "AB",
+   "tekken_input": "12",
+   "fields_hex": [
+    "00071401",
+    "0004076c",
+    "20140000",
+    "16ae0109"
+   ]
+  },
+  {
+   "source_key": "sttr2AK_AB_G",
+   "cmd_string": "cmd_05_sttr2AK_AB_G",
+   "input_sc2": "G",
+   "tekken_input": "G",
+   "fields_hex": [
+    "00071401",
+    "0004076c",
+    "20140000",
+    "16c6010a"
+   ]
+  },
+  {
+   "source_key": "BRID_AB",
+   "cmd_string": "cmd_05_BRID_AB",
+   "input_sc2": "AB",
+   "tekken_input": "12",
+   "fields_hex": [
+    "00071401",
+    "00000640",
+    "101b0031",
+    "16d6010b"
+   ]
+  },
+  {
+   "source_key": "BRID_AB_G",
+   "cmd_string": "cmd_05_BRID_AB_G",
+   "input_sc2": "G",
+   "tekken_input": "G",
+   "fields_hex": [
+    "00071401",
+    "00000640",
+    "101b0031",
+    "16ea010c"
+   ]
+  },
+  {
+   "source_key": "BRID_A",
+   "cmd_string": "cmd_05_BRID_A",
+   "input_sc2": "A",
+   "tekken_input": "1",
+   "fields_hex": [
+    "000704bb",
+    "000005dc",
+    "171f0031",
+    "16fb010d"
+   ]
+  },
+  {
+   "source_key": "BRID_B",
+   "cmd_string": "cmd_05_BRID_B",
+   "input_sc2": "B",
+   "tekken_input": "2",
+   "fields_hex": [
+    "00071411",
+    "000007d0",
+    "10240031",
+    "170b010e"
+   ]
+  },
+  {
+   "source_key": "BRID_ATAMA_K",
+   "cmd_string": "cmd_05_BRID_ATAMA_K",
+   "input_sc2": "K",
+   "tekken_input": "3",
+   "fields_hex": [
+    "00071401",
+    "00000320",
+    "16190031",
+    "171b010f"
+   ]
+  },
+  {
+   "source_key": "BRID_ASI_K",
+   "cmd_string": "cmd_05_BRID_ASI_K",
+   "input_sc2": "K",
+   "tekken_input": "3",
+   "fields_hex": [
+    "00070201",
+    "000008fc",
+    "16220031",
+    "172b0110"
+   ]
+  },
+  {
+   "source_key": "BRID_BK_HLD",
+   "cmd_string": "cmd_05_BRID_BK_HLD",
+   "input_sc2": "HLD",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "000002ee",
+    "25230031",
+    "173b0111"
+   ]
+  },
+  {
+   "source_key": "BRID_BK",
+   "cmd_string": "cmd_05_BRID_BK",
+   "input_sc2": "BK",
+   "tekken_input": "23",
+   "fields_hex": [
+    "00070401",
+    "000002ee",
+    "0f170031",
+    "174b0112"
+   ]
+  },
+  {
+   "source_key": "BRID_ATAMA_66",
+   "cmd_string": "cmd_05_BRID_ATAMA_66",
+   "input_sc2": "66",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071801",
+    "00000fa0",
+    "130e0031",
+    "175f0113"
+   ]
+  },
+  {
+   "source_key": "BRID_ASI_66",
+   "cmd_string": "cmd_05_BRID_ASI_66",
+   "input_sc2": "66",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071801",
+    "00000fa0",
+    "130e0031",
+    "17730114"
+   ]
+  },
+  {
+   "source_key": "BRID_ASI_66_BK1",
+   "cmd_string": "cmd_05_BRID_ASI_66_BK1",
+   "input_sc2": "BK1",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "000002ee",
+    "0f170031",
+    "178b0115"
+   ]
+  },
+  {
+   "source_key": "BRID_ASI_66_BK1_HLD",
+   "cmd_string": "cmd_05_BRID_ASI_66_BK1_HLD",
+   "input_sc2": "HLD",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "000002ee",
+    "25230031",
+    "17a30116"
+   ]
+  },
+  {
+   "source_key": "BRID_ASI_66_BK2",
+   "cmd_string": "cmd_05_BRID_ASI_66_BK2",
+   "input_sc2": "BK2",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "000002ee",
+    "0f170031",
+    "17bb0117"
+   ]
+  },
+  {
+   "source_key": "BRID_ASI_66_BK2_HLD",
+   "cmd_string": "cmd_05_BRID_ASI_66_BK2_HLD",
+   "input_sc2": "HLD",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "000002ee",
+    "25230031",
+    "17d30118"
+   ]
+  },
+  {
+   "source_key": "BRID_ASI_66_BK3",
+   "cmd_string": "cmd_05_BRID_ASI_66_BK3",
+   "input_sc2": "BK3",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "000002ee",
+    "0f170031",
+    "17eb0119"
+   ]
+  },
+  {
+   "source_key": "BRID_ASI_66_BK3_HLD",
+   "cmd_string": "cmd_05_BRID_ASI_66_BK3_HLD",
+   "input_sc2": "HLD",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "000002ee",
+    "25230031",
+    "1803011a"
+   ]
+  },
+  {
+   "source_key": "BRID_2",
+   "cmd_string": "cmd_05_BRID_2",
+   "input_sc2": "2",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "000007d0",
+    "00000031",
+    "1813011b"
+   ]
+  },
+  {
+   "source_key": "BRID_2_6",
+   "cmd_string": "cmd_05_BRID_2_6",
+   "input_sc2": "6",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "00000bb8",
+    "00000031",
+    "1825011c"
+   ]
+  },
+  {
+   "source_key": "BRID_2_4",
+   "cmd_string": "cmd_05_BRID_2_4",
+   "input_sc2": "4",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "00000bb8",
+    "00000031",
+    "1837011d"
+   ]
+  },
+  {
+   "source_key": "BRID_8",
+   "cmd_string": "cmd_05_BRID_8",
+   "input_sc2": "8",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "000007d0",
+    "00000031",
+    "1847011e"
+   ]
+  },
+  {
+   "source_key": "BRID_8_6",
+   "cmd_string": "cmd_05_BRID_8_6",
+   "input_sc2": "6",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "00000bb8",
+    "00000031",
+    "1859011f"
+   ]
+  },
+  {
+   "source_key": "BRID_8_4",
+   "cmd_string": "cmd_05_BRID_8_4",
+   "input_sc2": "4",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "00000bb8",
+    "00000031",
+    "186b0120"
+   ]
+  },
+  {
+   "source_key": "BRID_FWALK",
+   "cmd_string": "cmd_05_BRID_FWALK",
+   "input_sc2": "FWALK",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "000007d0",
+    "00000031",
+    "187b0121"
+   ]
+  },
+  {
+   "source_key": "BRID_FWALK_KABE",
+   "cmd_string": "cmd_05_BRID_FWALK_KABE",
+   "input_sc2": "KABE",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "000007d0",
+    "00000031",
+    "188b0122"
+   ]
+  },
+  {
+   "source_key": "BRID_BWALK",
+   "cmd_string": "cmd_05_BRID_BWALK",
+   "input_sc2": "BWALK",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "000007d0",
+    "00000031",
+    "189b0123"
+   ]
+  },
+  {
+   "source_key": "BRID_BWALK_KABE",
+   "cmd_string": "cmd_05_BRID_BWALK_KABE",
+   "input_sc2": "KABE",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "000007d0",
+    "00000031",
+    "18ab0124"
+   ]
+  },
+  {
+   "source_key": "1B_K",
+   "cmd_string": "cmd_05_1B_K",
+   "input_sc2": "K",
+   "tekken_input": "3",
+   "fields_hex": [
+    "00071401",
+    "000007b2",
+    "171a0000",
+    "18c00125"
+   ]
+  },
+  {
+   "source_key": "1B_K_K",
+   "cmd_string": "cmd_05_1B_K_K",
+   "input_sc2": "K",
+   "tekken_input": "3",
+   "fields_hex": [
+    "00071401",
+    "000007b2",
+    "171a0000",
+    "18d90126"
+   ]
+  },
+  {
+   "source_key": "crstB_HLD",
+   "cmd_string": "cmd_05_crstB_HLD",
+   "input_sc2": "HLD",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "000109c4",
+    "0d1e0000",
+    "18eb0127"
+   ]
+  },
+  {
+   "source_key": "4B_HLD",
+   "cmd_string": "cmd_05_4B_HLD",
+   "input_sc2": "HLD",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "00000c1c",
+    "17190000",
+    "18fb0128"
+   ]
+  },
+  {
+   "source_key": "4K_HLD",
+   "cmd_string": "cmd_05_4K_HLD",
+   "input_sc2": "HLD",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070201",
+    "00000898",
+    "131a0000",
+    "190b0129"
+   ]
+  },
+  {
+   "source_key": "SAKANA_G",
+   "cmd_string": "cmd_05_SAKANA_G",
+   "input_sc2": "G",
+   "tekken_input": "G",
+   "fields_hex": [
+    "00070101",
+    "000007d0",
+    "00000034",
+    "1919012a"
+   ]
+  },
+  {
+   "source_key": "SAKANA_BK",
+   "cmd_string": "cmd_05_SAKANA_BK",
+   "input_sc2": "BK",
+   "tekken_input": "23",
+   "fields_hex": [
+    "00071401",
+    "000009c4",
+    "4e3c0034",
+    "1927012b"
+   ]
+  },
+  {
+   "source_key": "SAKANA_A",
+   "cmd_string": "cmd_05_SAKANA_A",
+   "input_sc2": "A",
+   "tekken_input": "1",
+   "fields_hex": [
+    "000718c7",
+    "0000083e",
+    "190f0034",
+    "1935012c"
+   ]
+  },
+  {
+   "source_key": "SAKANA_B",
+   "cmd_string": "cmd_05_SAKANA_B",
+   "input_sc2": "B",
+   "tekken_input": "2",
+   "fields_hex": [
+    "00071401",
+    "000009c4",
+    "1b190034",
+    "1943012d"
+   ]
+  },
+  {
+   "source_key": "SAKANA_K",
+   "cmd_string": "cmd_05_SAKANA_K",
+   "input_sc2": "K",
+   "tekken_input": "3",
+   "fields_hex": [
+    "00070201",
+    "000007d0",
+    "10220034",
+    "1951012e"
+   ]
+  },
+  {
+   "source_key": "SAKANA_6",
+   "cmd_string": "cmd_05_SAKANA_6",
+   "input_sc2": "6",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "00000bb8",
+    "00000034",
+    "195f012f"
+   ]
+  },
+  {
+   "source_key": "SAKANA_4",
+   "cmd_string": "cmd_05_SAKANA_4",
+   "input_sc2": "4",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "00000bb8",
+    "00000034",
+    "196d0130"
+   ]
+  },
+  {
+   "source_key": "SAKANA_A_G",
+   "cmd_string": "cmd_05_SAKANA_A_G",
+   "input_sc2": "G",
+   "tekken_input": "G",
+   "fields_hex": [
+    "000718c7",
+    "0000083e",
+    "190f0034",
+    "19800131"
+   ]
+  },
+  {
+   "source_key": "SAKANA_A_BK",
+   "cmd_string": "cmd_05_SAKANA_A_BK",
+   "input_sc2": "BK",
+   "tekken_input": "23",
+   "fields_hex": [
+    "000718c7",
+    "0000083e",
+    "190f0034",
+    "19930132"
+   ]
+  },
+  {
+   "source_key": "SAKANA_A_A",
+   "cmd_string": "cmd_05_SAKANA_A_A",
+   "input_sc2": "A",
+   "tekken_input": "1",
+   "fields_hex": [
+    "000718c7",
+    "0000083e",
+    "190f0034",
+    "19a60133"
+   ]
+  },
+  {
+   "source_key": "SAKANA_A_B",
+   "cmd_string": "cmd_05_SAKANA_A_B",
+   "input_sc2": "B",
+   "tekken_input": "2",
+   "fields_hex": [
+    "000718c7",
+    "0000083e",
+    "190f0034",
+    "19b90134"
+   ]
+  },
+  {
+   "source_key": "SAKANA_A_K",
+   "cmd_string": "cmd_05_SAKANA_A_K",
+   "input_sc2": "K",
+   "tekken_input": "3",
+   "fields_hex": [
+    "000718c7",
+    "0000083e",
+    "190f0034",
+    "19cc0135"
+   ]
+  },
+  {
+   "source_key": "SAKANA_A_A_G",
+   "cmd_string": "cmd_05_SAKANA_A_A_G",
+   "input_sc2": "G",
+   "tekken_input": "G",
+   "fields_hex": [
+    "000718c7",
+    "0000083e",
+    "190f0034",
+    "19e30136"
+   ]
+  },
+  {
+   "source_key": "SAKANA_A_A_BK",
+   "cmd_string": "cmd_05_SAKANA_A_A_BK",
+   "input_sc2": "BK",
+   "tekken_input": "23",
+   "fields_hex": [
+    "000718c7",
+    "0000083e",
+    "190f0034",
+    "19fa0137"
+   ]
+  },
+  {
+   "source_key": "SAKANA_A_A_A",
+   "cmd_string": "cmd_05_SAKANA_A_A_A",
+   "input_sc2": "A",
+   "tekken_input": "1",
+   "fields_hex": [
+    "000718c7",
+    "0000083e",
+    "190f0034",
+    "1a110138"
+   ]
+  },
+  {
+   "source_key": "SAKANA_A_A_B",
+   "cmd_string": "cmd_05_SAKANA_A_A_B",
+   "input_sc2": "B",
+   "tekken_input": "2",
+   "fields_hex": [
+    "000718c7",
+    "0000083e",
+    "190f0034",
+    "1a280139"
+   ]
+  },
+  {
+   "source_key": "SAKANA_A_A_K",
+   "cmd_string": "cmd_05_SAKANA_A_A_K",
+   "input_sc2": "K",
+   "tekken_input": "3",
+   "fields_hex": [
+    "000718c7",
+    "0000083e",
+    "190f0034",
+    "1a3f013a"
+   ]
+  },
+  {
+   "source_key": "SAKANA_A_B_G",
+   "cmd_string": "cmd_05_SAKANA_A_B_G",
+   "input_sc2": "G",
+   "tekken_input": "G",
+   "fields_hex": [
+    "000718c7",
+    "0000083e",
+    "190f0034",
+    "1a56013b"
+   ]
+  },
+  {
+   "source_key": "SAKANA_A_B_BK",
+   "cmd_string": "cmd_05_SAKANA_A_B_BK",
+   "input_sc2": "BK",
+   "tekken_input": "23",
+   "fields_hex": [
+    "000718c7",
+    "0000083e",
+    "190f0034",
+    "1a6d013c"
+   ]
+  },
+  {
+   "source_key": "SAKANA_A_B_A",
+   "cmd_string": "cmd_05_SAKANA_A_B_A",
+   "input_sc2": "A",
+   "tekken_input": "1",
+   "fields_hex": [
+    "000718c7",
+    "0000083e",
+    "190f0034",
+    "1a84013d"
+   ]
+  },
+  {
+   "source_key": "SAKANA_A_B_B",
+   "cmd_string": "cmd_05_SAKANA_A_B_B",
+   "input_sc2": "B",
+   "tekken_input": "2",
+   "fields_hex": [
+    "000718c7",
+    "0000083e",
+    "190f0034",
+    "1a9b013e"
+   ]
+  },
+  {
+   "source_key": "SAKANA_A_B_K",
+   "cmd_string": "cmd_05_SAKANA_A_B_K",
+   "input_sc2": "K",
+   "tekken_input": "3",
+   "fields_hex": [
+    "000718c7",
+    "0000083e",
+    "190f0034",
+    "1ab2013f"
+   ]
+  },
+  {
+   "source_key": "SAKANA_B_G",
+   "cmd_string": "cmd_05_SAKANA_B_G",
+   "input_sc2": "G",
+   "tekken_input": "G",
+   "fields_hex": [
+    "00071401",
+    "000009c4",
+    "1b190034",
+    "1ac50140"
+   ]
+  },
+  {
+   "source_key": "SAKANA_B_BK",
+   "cmd_string": "cmd_05_SAKANA_B_BK",
+   "input_sc2": "BK",
+   "tekken_input": "23",
+   "fields_hex": [
+    "00071401",
+    "000009c4",
+    "1b190034",
+    "1ad80141"
+   ]
+  },
+  {
+   "source_key": "SAKANA_B_A",
+   "cmd_string": "cmd_05_SAKANA_B_A",
+   "input_sc2": "A",
+   "tekken_input": "1",
+   "fields_hex": [
+    "00071401",
+    "000009c4",
+    "1b190034",
+    "1aeb0142"
+   ]
+  },
+  {
+   "source_key": "SAKANA_B_B",
+   "cmd_string": "cmd_05_SAKANA_B_B",
+   "input_sc2": "B",
+   "tekken_input": "2",
+   "fields_hex": [
+    "00071401",
+    "000009c4",
+    "1b190034",
+    "1afe0143"
+   ]
+  },
+  {
+   "source_key": "SAKANA_B_K",
+   "cmd_string": "cmd_05_SAKANA_B_K",
+   "input_sc2": "K",
+   "tekken_input": "3",
+   "fields_hex": [
+    "00071401",
+    "000009c4",
+    "1b190034",
+    "1b110144"
+   ]
+  },
+  {
+   "source_key": "SAKANA_B_A_G",
+   "cmd_string": "cmd_05_SAKANA_B_A_G",
+   "input_sc2": "G",
+   "tekken_input": "G",
+   "fields_hex": [
+    "00071401",
+    "000009c4",
+    "1b190034",
+    "1b280145"
+   ]
+  },
+  {
+   "source_key": "SAKANA_B_A_BK",
+   "cmd_string": "cmd_05_SAKANA_B_A_BK",
+   "input_sc2": "BK",
+   "tekken_input": "23",
+   "fields_hex": [
+    "00071401",
+    "000009c4",
+    "1b190034",
+    "1b3f0146"
+   ]
+  },
+  {
+   "source_key": "SAKANA_B_A_A",
+   "cmd_string": "cmd_05_SAKANA_B_A_A",
+   "input_sc2": "A",
+   "tekken_input": "1",
+   "fields_hex": [
+    "00071401",
+    "000009c4",
+    "1b190034",
+    "1b560147"
+   ]
+  },
+  {
+   "source_key": "SAKANA_B_A_B",
+   "cmd_string": "cmd_05_SAKANA_B_A_B",
+   "input_sc2": "B",
+   "tekken_input": "2",
+   "fields_hex": [
+    "00071401",
+    "000009c4",
+    "1b190034",
+    "1b6d0148"
+   ]
+  },
+  {
+   "source_key": "SAKANA_B_A_K",
+   "cmd_string": "cmd_05_SAKANA_B_A_K",
+   "input_sc2": "K",
+   "tekken_input": "3",
+   "fields_hex": [
+    "00071401",
+    "000009c4",
+    "1b190034",
+    "1b840149"
+   ]
+  },
+  {
+   "source_key": "SAKANA_B_B_G",
+   "cmd_string": "cmd_05_SAKANA_B_B_G",
+   "input_sc2": "G",
+   "tekken_input": "G",
+   "fields_hex": [
+    "00071401",
+    "000009c4",
+    "1b190034",
+    "1b9b014a"
+   ]
+  },
+  {
+   "source_key": "SAKANA_B_B_BK",
+   "cmd_string": "cmd_05_SAKANA_B_B_BK",
+   "input_sc2": "BK",
+   "tekken_input": "23",
+   "fields_hex": [
+    "00071401",
+    "000009c4",
+    "1b190034",
+    "1bb2014b"
+   ]
+  },
+  {
+   "source_key": "SAKANA_B_B_A",
+   "cmd_string": "cmd_05_SAKANA_B_B_A",
+   "input_sc2": "A",
+   "tekken_input": "1",
+   "fields_hex": [
+    "00071401",
+    "000009c4",
+    "1b190034",
+    "1bc9014c"
+   ]
+  },
+  {
+   "source_key": "SAKANA_B_B_B",
+   "cmd_string": "cmd_05_SAKANA_B_B_B",
+   "input_sc2": "B",
+   "tekken_input": "2",
+   "fields_hex": [
+    "00071401",
+    "000009c4",
+    "1b190034",
+    "1be0014d"
+   ]
+  },
+  {
+   "source_key": "SAKANA_B_B_K",
+   "cmd_string": "cmd_05_SAKANA_B_B_K",
+   "input_sc2": "K",
+   "tekken_input": "3",
+   "fields_hex": [
+    "00071401",
+    "000009c4",
+    "1b190034",
+    "1bf7014e"
+   ]
+  },
+  {
+   "source_key": "3AK_SAKANA_ATAMA",
+   "cmd_string": "cmd_05_3AK_SAKANA_ATAMA",
+   "input_sc2": "ATAMA",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "000009c4",
+    "20140034",
+    "1c08014f"
+   ]
+  },
+  {
+   "source_key": "SAKANA_ATAMA_RAND",
+   "cmd_string": "cmd_05_SAKANA_ATAMA_RAND",
+   "input_sc2": "RAND",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "000009c4",
+    "00000034",
+    "1e5d0150"
+   ]
+  },
+  {
+   "source_key": "YANA_SAKANA_R_ATAMA",
+   "cmd_string": "cmd_05_YANA_SAKANA_R_ATAMA",
+   "input_sc2": "ATAMA",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "00000dac",
+    "00000034",
+    "1e6a0151"
+   ]
+  },
+  {
+   "source_key": "YANA_SAKANA_L_ATAMA",
+   "cmd_string": "cmd_05_YANA_SAKANA_L_ATAMA",
+   "input_sc2": "ATAMA",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "00000dac",
+    "00000034",
+    "1e770152"
+   ]
+  },
+  {
+   "source_key": "YANA_SAKANA_ATAMA_RAND",
+   "cmd_string": "cmd_05_YANA_SAKANA_ATAMA_RAND",
+   "input_sc2": "RAND",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "00000dac",
+    "00000034",
+    "1e9d0153"
+   ]
+  },
+  {
+   "source_key": "SAKANA_BACK_G",
+   "cmd_string": "cmd_05_SAKANA_BACK_G",
+   "input_sc2": "G",
+   "tekken_input": "G",
+   "fields_hex": [
+    "00070101",
+    "000007d0",
+    "00000034",
+    "1eab0154"
+   ]
+  },
+  {
+   "source_key": "SAKANA_BACK_A",
+   "cmd_string": "cmd_05_SAKANA_BACK_A",
+   "input_sc2": "A",
+   "tekken_input": "1",
+   "fields_hex": [
+    "00070401",
+    "000009c4",
+    "181f0034",
+    "1eba0155"
+   ]
+  },
+  {
+   "source_key": "SAKANA_BACK_B",
+   "cmd_string": "cmd_05_SAKANA_BACK_B",
+   "input_sc2": "B",
+   "tekken_input": "2",
+   "fields_hex": [
+    "00071401",
+    "00000a28",
+    "1b120034",
+    "1ec80156"
+   ]
+  },
+  {
+   "source_key": "SAKANA_BACK_K",
+   "cmd_string": "cmd_05_SAKANA_BACK_K",
+   "input_sc2": "K",
+   "tekken_input": "3",
+   "fields_hex": [
+    "00071401",
+    "000007d0",
+    "17190034",
+    "1ed70157"
+   ]
+  },
+  {
+   "source_key": "SAKANA_BACK_6",
+   "cmd_string": "cmd_05_SAKANA_BACK_6",
+   "input_sc2": "6",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "000007d0",
+    "00000034",
+    "1ee50158"
+   ]
+  },
+  {
+   "source_key": "SAKANA_BACK_4",
+   "cmd_string": "cmd_05_SAKANA_BACK_4",
+   "input_sc2": "4",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "000007d0",
+    "00000034",
+    "1ef30159"
+   ]
+  },
+  {
+   "source_key": "SAKANA_BACK_B_G",
+   "cmd_string": "cmd_05_SAKANA_BACK_B_G",
+   "input_sc2": "G",
+   "tekken_input": "G",
+   "fields_hex": [
+    "00071401",
+    "00000a28",
+    "1b120034",
+    "1f05015a"
+   ]
+  },
+  {
+   "source_key": "SAKANA_BACK_B_A",
+   "cmd_string": "cmd_05_SAKANA_BACK_B_A",
+   "input_sc2": "A",
+   "tekken_input": "1",
+   "fields_hex": [
+    "00071401",
+    "00000a28",
+    "1b120034",
+    "1f18015b"
+   ]
+  },
+  {
+   "source_key": "SAKANA_BACK_B_B",
+   "cmd_string": "cmd_05_SAKANA_BACK_B_B",
+   "input_sc2": "B",
+   "tekken_input": "2",
+   "fields_hex": [
+    "00071401",
+    "00000a28",
+    "1b120034",
+    "1f2b015c"
+   ]
+  },
+  {
+   "source_key": "SAKANA_BACK_B_K",
+   "cmd_string": "cmd_05_SAKANA_BACK_B_K",
+   "input_sc2": "K",
+   "tekken_input": "3",
+   "fields_hex": [
+    "00071401",
+    "00000a28",
+    "1b120034",
+    "1f3e015d"
+   ]
+  },
+  {
+   "source_key": "SAKANA_BACK_B_B_G",
+   "cmd_string": "cmd_05_SAKANA_BACK_B_B_G",
+   "input_sc2": "G",
+   "tekken_input": "G",
+   "fields_hex": [
+    "00071401",
+    "00000a28",
+    "1b120034",
+    "1f54015e"
+   ]
+  },
+  {
+   "source_key": "SAKANA_BACK_B_B_A",
+   "cmd_string": "cmd_05_SAKANA_BACK_B_B_A",
+   "input_sc2": "A",
+   "tekken_input": "1",
+   "fields_hex": [
+    "00071401",
+    "00000a28",
+    "1b120034",
+    "1f6b015f"
+   ]
+  },
+  {
+   "source_key": "SAKANA_BACK_B_B_B",
+   "cmd_string": "cmd_05_SAKANA_BACK_B_B_B",
+   "input_sc2": "B",
+   "tekken_input": "2",
+   "fields_hex": [
+    "00071401",
+    "00000a28",
+    "1b120034",
+    "1f820160"
+   ]
+  },
+  {
+   "source_key": "SAKANA_BACK_B_B_K",
+   "cmd_string": "cmd_05_SAKANA_BACK_B_B_K",
+   "input_sc2": "K",
+   "tekken_input": "3",
+   "fields_hex": [
+    "00071401",
+    "00000a28",
+    "1b120034",
+    "1f990161"
+   ]
+  },
+  {
+   "source_key": "2AK_SAKANA_ASI",
+   "cmd_string": "cmd_05_2AK_SAKANA_ASI",
+   "input_sc2": "ASI",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "000009c4",
+    "20140034",
+    "1faa0162"
+   ]
+  },
+  {
+   "source_key": "SAKANA_ASI_RAND",
+   "cmd_string": "cmd_05_SAKANA_ASI_RAND",
+   "input_sc2": "RAND",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "000009c4",
+    "00000034",
+    "20920163"
+   ]
+  },
+  {
+   "source_key": "YANA_SAKANA_R_ASI",
+   "cmd_string": "cmd_05_YANA_SAKANA_R_ASI",
+   "input_sc2": "ASI",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "00000dac",
+    "00000034",
+    "209f0164"
+   ]
+  },
+  {
+   "source_key": "YANA_SAKANA_L_ASI",
+   "cmd_string": "cmd_05_YANA_SAKANA_L_ASI",
+   "input_sc2": "ASI",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "00000dac",
+    "00000034",
+    "20ac0165"
+   ]
+  },
+  {
+   "source_key": "YANA_SAKANA_ASI_RAND",
+   "cmd_string": "cmd_05_YANA_SAKANA_ASI_RAND",
+   "input_sc2": "RAND",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "00000dac",
+    "00000034",
+    "20d20166"
+   ]
+  },
+  {
+   "source_key": "1K_1K_COMBO",
+   "cmd_string": "cmd_05_1K_1K_COMBO",
+   "input_sc2": "COMBO",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070401",
+    "00000820",
+    "11190000",
+    "20f00167"
+   ]
+  },
+  {
+   "source_key": "RUN2B_COMBO1",
+   "cmd_string": "cmd_05_RUN2B_COMBO1",
+   "input_sc2": "COMBO1",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "00020910",
+    "0f360000",
+    "21130168"
+   ]
+  },
+  {
+   "source_key": "RUN2B_COMBO2",
+   "cmd_string": "cmd_05_RUN2B_COMBO2",
+   "input_sc2": "COMBO2",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "00020910",
+    "0f360000",
+    "213a0169"
+   ]
+  },
+  {
+   "source_key": "KAMAEKAIZYO",
+   "cmd_string": "cmd_05_KAMAEKAIZYO",
+   "input_sc2": "KAMAEKAIZYO",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "000003e7",
+    "00000000",
+    "214a016a"
+   ]
+  },
+  {
+   "source_key": "HASIRI",
+   "cmd_string": "cmd_05_HASIRI",
+   "input_sc2": "HASIRI",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "000003e7",
+    "00000000",
+    "215a016b"
+   ]
+  },
+  {
+   "source_key": "SYAGAMI",
+   "cmd_string": "cmd_05_SYAGAMI",
+   "input_sc2": "SYAGAMI",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "000003e7",
+    "00000000",
+    "216a016c"
+   ]
+  },
+  {
+   "source_key": "SEMUKE",
+   "cmd_string": "cmd_05_SEMUKE",
+   "input_sc2": "SEMUKE",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "000003e7",
+    "00000000",
+    "217e016d"
+   ]
+  },
+  {
+   "source_key": "HADO",
+   "cmd_string": "cmd_05_HADO",
+   "input_sc2": "HADO",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "000003e7",
+    "00000000",
+    "218e016e"
+   ]
+  },
+  {
+   "source_key": "SYAGAMI123",
+   "cmd_string": "cmd_05_SYAGAMI123",
+   "input_sc2": "SYAGAMI123",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "000003e7",
+    "00000000",
+    "21a0016f"
+   ]
+  },
+  {
+   "source_key": "BRID_ATAMAGAWA",
+   "cmd_string": "cmd_05_BRID_ATAMAGAWA",
+   "input_sc2": "ATAMAGAWA",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071801",
+    "000003e7",
+    "130e0031",
+    "21b00170"
+   ]
+  },
+  {
+   "source_key": "BRID_ASIGAWA",
+   "cmd_string": "cmd_05_BRID_ASIGAWA",
+   "input_sc2": "ASIGAWA",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071801",
+    "000003e7",
+    "130e0031",
+    "21c00171"
+   ]
+  },
+  {
+   "source_key": "SAKANA_FRONT",
+   "cmd_string": "cmd_05_SAKANA_FRONT",
+   "input_sc2": "FRONT",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071801",
+    "000003e7",
+    "130e0034",
+    "21d40172"
+   ]
+  },
+  {
+   "source_key": "SAKANA_BACK",
+   "cmd_string": "cmd_05_SAKANA_BACK",
+   "input_sc2": "BACK",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071801",
+    "000003e7",
+    "130e0034",
+    "21e80173"
+   ]
+  },
+  {
+   "source_key": "SEMUKE_SYAGAMI",
+   "cmd_string": "cmd_05_SEMUKE_SYAGAMI",
+   "input_sc2": "SYAGAMI",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "000003e7",
+    "00000000",
+    "22000174"
+   ]
+  },
+  {
+   "source_key": "A_G",
+   "cmd_string": "cmd_05_A_G",
+   "input_sc2": "G",
+   "tekken_input": "G",
+   "fields_hex": [
+    "00070283",
+    "00000618",
+    "0b0a0000",
+    "22140175"
+   ]
+  },
+  {
+   "source_key": "B_G",
+   "cmd_string": "cmd_05_B_G",
+   "input_sc2": "G",
+   "tekken_input": "G",
+   "fields_hex": [
+    "00070401",
+    "000009c4",
+    "12190000",
+    "22280176"
+   ]
+  },
+  {
+   "source_key": "K_G",
+   "cmd_string": "cmd_05_K_G",
+   "input_sc2": "G",
+   "tekken_input": "G",
+   "fields_hex": [
+    "00070201",
+    "000006ea",
+    "0c1a0000",
+    "223c0177"
+   ]
+  },
+  {
+   "source_key": "BRID_ATAMA_66_2000",
+   "cmd_string": "cmd_05_BRID_ATAMA_66_2000",
+   "input_sc2": "2000",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071801",
+    "000007d0",
+    "130e0031",
+    "22500178"
+   ]
+  },
+  {
+   "source_key": "BRID_ASI_66_2000",
+   "cmd_string": "cmd_05_BRID_ASI_66_2000",
+   "input_sc2": "2000",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071801",
+    "000007d0",
+    "130e0031",
+    "22640179"
+   ]
+  },
+  {
+   "source_key": "BRID_ATAMA_66_3000",
+   "cmd_string": "cmd_05_BRID_ATAMA_66_3000",
+   "input_sc2": "3000",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071801",
+    "00000bb8",
+    "130e0031",
+    "2278017a"
+   ]
+  },
+  {
+   "source_key": "BRID_ASI_66_3000",
+   "cmd_string": "cmd_05_BRID_ASI_66_3000",
+   "input_sc2": "3000",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071801",
+    "00000bb8",
+    "130e0031",
+    "228c017b"
+   ]
+  },
+  {
+   "source_key": "BRID_FWALK_3000",
+   "cmd_string": "cmd_05_BRID_FWALK_3000",
+   "input_sc2": "3000",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "00000bb8",
+    "00000031",
+    "229c017c"
+   ]
+  },
+  {
+   "source_key": "BRID_BWALK_3000",
+   "cmd_string": "cmd_05_BRID_BWALK_3000",
+   "input_sc2": "3000",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "00000bb8",
+    "00000031",
+    "22ac017d"
+   ]
+  },
+  {
+   "source_key": "BRID_FWALK_4000",
+   "cmd_string": "cmd_05_BRID_FWALK_4000",
+   "input_sc2": "4000",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "00000fa0",
+    "00000031",
+    "22bc017e"
+   ]
+  },
+  {
+   "source_key": "BRID_BWALK_4000",
+   "cmd_string": "cmd_05_BRID_BWALK_4000",
+   "input_sc2": "4000",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "00000fa0",
+    "00000031",
+    "22cc017f"
+   ]
+  },
+  {
+   "source_key": "AG_B_WAZAHYOU",
+   "cmd_string": "cmd_05_AG_B_WAZAHYOU",
+   "input_sc2": "WAZAHYOU",
+   "tekken_input": null,
+   "fields_hex": [
+    "00072283",
+    "000005dc",
+    "0f3c0000",
+    "22dc0180"
+   ]
+  },
+  {
+   "source_key": "BG_L_WAZAHYOU",
+   "cmd_string": "cmd_05_BG_L_WAZAHYOU",
+   "input_sc2": "WAZAHYOU",
+   "tekken_input": null,
+   "fields_hex": [
+    "00072283",
+    "000005dc",
+    "0f3c0000",
+    "22ec0181"
+   ]
+  },
+  {
+   "source_key": "BG_R_WAZAHYOU",
+   "cmd_string": "cmd_05_BG_R_WAZAHYOU",
+   "input_sc2": "WAZAHYOU",
+   "tekken_input": null,
+   "fields_hex": [
+    "00072283",
+    "000005dc",
+    "0f3c0000",
+    "22fc0182"
+   ]
+  },
+  {
+   "source_key": "SHAGAMI_WAZAHYOU",
+   "cmd_string": "cmd_05_SHAGAMI_WAZAHYOU",
+   "input_sc2": "WAZAHYOU",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "00000000",
+    "00000000",
+    "230c0183"
+   ]
+  },
+  {
+   "source_key": "RUN6_WAZAHYOU",
+   "cmd_string": "cmd_05_RUN6_WAZAHYOU",
+   "input_sc2": "WAZAHYOU",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "00020000",
+    "00000000",
+    "231a0184"
+   ]
+  },
+  {
+   "source_key": "RUN3_WAZAHYOU",
+   "cmd_string": "cmd_05_RUN3_WAZAHYOU",
+   "input_sc2": "WAZAHYOU",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "00020000",
+    "00000000",
+    "23280185"
+   ]
+  },
+  {
+   "source_key": "RUN2_WAZAHYOU",
+   "cmd_string": "cmd_05_RUN2_WAZAHYOU",
+   "input_sc2": "WAZAHYOU",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "00020000",
+    "00000000",
+    "23360186"
+   ]
+  },
+  {
+   "source_key": "RUN1_WAZAHYOU",
+   "cmd_string": "cmd_05_RUN1_WAZAHYOU",
+   "input_sc2": "WAZAHYOU",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "00020000",
+    "00000000",
+    "23440187"
+   ]
+  },
+  {
+   "source_key": "RUN4_WAZAHYOU",
+   "cmd_string": "cmd_05_RUN4_WAZAHYOU",
+   "input_sc2": "WAZAHYOU",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "00020000",
+    "00000000",
+    "23520188"
+   ]
+  },
+  {
+   "source_key": "RUN9_WAZAHYOU",
+   "cmd_string": "cmd_05_RUN9_WAZAHYOU",
+   "input_sc2": "WAZAHYOU",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "00020000",
+    "00000000",
+    "23600189"
+   ]
+  },
+  {
+   "source_key": "RUN8_WAZAHYOU",
+   "cmd_string": "cmd_05_RUN8_WAZAHYOU",
+   "input_sc2": "WAZAHYOU",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "00020000",
+    "00000000",
+    "236e018a"
+   ]
+  },
+  {
+   "source_key": "RUN7_WAZAHYOU",
+   "cmd_string": "cmd_05_RUN7_WAZAHYOU",
+   "input_sc2": "WAZAHYOU",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "00020000",
+    "00000000",
+    "237c018b"
+   ]
+  },
+  {
+   "source_key": "214_WAZAHYOU",
+   "cmd_string": "cmd_05_214_WAZAHYOU",
+   "input_sc2": "WAZAHYOU",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "000009c4",
+    "00000000",
+    "2390018c"
+   ]
+  },
+  {
+   "source_key": "236_WAZAHYOU",
+   "cmd_string": "cmd_05_236_WAZAHYOU",
+   "input_sc2": "WAZAHYOU",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "00000bb8",
+    "00000000",
+    "23a4018d"
+   ]
+  },
+  {
+   "source_key": "236_WAZAHYOU2",
+   "cmd_string": "cmd_05_236_WAZAHYOU2",
+   "input_sc2": "WAZAHYOU2",
+   "tekken_input": null,
+   "fields_hex": [
+    "00070101",
+    "00000bb8",
+    "00000000",
+    "23bc018e"
+   ]
+  },
+  {
+   "source_key": "3AK_WAZAHYOU",
+   "cmd_string": "cmd_05_3AK_WAZAHYOU",
+   "input_sc2": "WAZAHYOU",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "00000708",
+    "20140000",
+    "23cc018f"
+   ]
+  },
+  {
+   "source_key": "2AK_WAZAHYOU",
+   "cmd_string": "cmd_05_2AK_WAZAHYOU",
+   "input_sc2": "WAZAHYOU",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "000004b0",
+    "20140000",
+    "23dc0190"
+   ]
+  },
+  {
+   "source_key": "SAKANA_A_WAZAHYOU",
+   "cmd_string": "cmd_05_SAKANA_A_WAZAHYOU",
+   "input_sc2": "WAZAHYOU",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "00000708",
+    "20140034",
+    "24000191"
+   ]
+  },
+  {
+   "source_key": "SAKANA_B_WAZAHYOU",
+   "cmd_string": "cmd_05_SAKANA_B_WAZAHYOU",
+   "input_sc2": "WAZAHYOU",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "00000708",
+    "20140034",
+    "24240192"
+   ]
+  },
+  {
+   "source_key": "SAKANA_K_WAZAHYOU",
+   "cmd_string": "cmd_05_SAKANA_K_WAZAHYOU",
+   "input_sc2": "WAZAHYOU",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "00000708",
+    "20140034",
+    "243c0193"
+   ]
+  },
+  {
+   "source_key": "SAKANA_BK_WAZAHYOU",
+   "cmd_string": "cmd_05_SAKANA_BK_WAZAHYOU",
+   "input_sc2": "WAZAHYOU",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "00000708",
+    "20140034",
+    "245a0194"
+   ]
+  },
+  {
+   "source_key": "SAKANA_BACK_B_WAZAHYOU",
+   "cmd_string": "cmd_05_SAKANA_BACK_B_WAZAHYOU",
+   "input_sc2": "WAZAHYOU",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "00000708",
+    "20140034",
+    "247e0195"
+   ]
+  },
+  {
+   "source_key": "SAKANA_BACK_A_WAZAHYOU",
+   "cmd_string": "cmd_05_SAKANA_BACK_A_WAZAHYOU",
+   "input_sc2": "WAZAHYOU",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "00000708",
+    "20140034",
+    "24960196"
+   ]
+  },
+  {
+   "source_key": "SAKANA_BACK_K_WAZAHYOU",
+   "cmd_string": "cmd_05_SAKANA_BACK_K_WAZAHYOU",
+   "input_sc2": "WAZAHYOU",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "00000708",
+    "20140034",
+    "24ae0197"
+   ]
+  },
+  {
+   "source_key": "44K_WAZAHYOU",
+   "cmd_string": "cmd_05_44K_WAZAHYOU",
+   "input_sc2": "WAZAHYOU",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "000009ec",
+    "15180000",
+    "24c40198"
+   ]
+  },
+  {
+   "source_key": "RUN4K_WAZAHYOU",
+   "cmd_string": "cmd_05_RUN4K_WAZAHYOU",
+   "input_sc2": "WAZAHYOU",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "000209f6",
+    "15180000",
+    "24d80199"
+   ]
+  },
+  {
+   "source_key": "66AK_K_WAZAHYOU",
+   "cmd_string": "cmd_05_66AK_K_WAZAHYOU",
+   "input_sc2": "WAZAHYOU",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071401",
+    "00000a28",
+    "132d0000",
+    "24f3019a"
+   ]
+  },
+  {
+   "source_key": "2A_A_A_K_WAZAHYOU",
+   "cmd_string": "cmd_05_2A_A_A_K_WAZAHYOU",
+   "input_sc2": "WAZAHYOU",
+   "tekken_input": null,
+   "fields_hex": [
+    "00071801",
+    "0000083e",
+    "130e0000",
+    "00000000"
+   ]
+  }
+ ],
+ "display_strings": [
+  "MLLL",
+  "LLLUM",
+  "MLLL",
+  "LLLUM",
+  "[1A]",
+  "[3A]",
+  "[4A]",
+  "[6A]",
+  "[44A]",
+  "[66A]",
+  "[4B]",
+  "[66B]",
+  "[1K]",
+  "[2K]",
+  "[3K]",
+  "[4K]",
+  "[44K]",
+  "[66K]",
+  "[A+B]",
+  "[2A+B]",
+  "[3A+B]",
+  "[4A+B]",
+  "[6A+B]",
+  "[66A+B]",
+  "[B+K]",
+  "[B+K]",
+  "[B+K]",
+  "[B+K]",
+  "[B+K]",
+  "[B+K]",
+  "[2(8)B+K]",
+  "[4B+K]",
+  "[6B+K]",
+  "Approach enemy [A+G]",
+  "Approach enemy [B+G]",
+  "[1-(7-)A]",
+  "[2-(8-)A]",
+  "[3-(9-)A]",
+  "[4-(1-,7-)A]",
+  "[6-A]",
+  "[4-(1-,7-)B-]",
+  "[2-(8-)B]",
+  "[6-(3-,9-)B]",
+  "[1-(7-)K]",
+  "[2-(8-)K]",
+  "[3-(9-)K]",
+  "[4-K]",
+  "While crouching [A]",
+  "While crouching [B]",
+  "While crouching [3B]",
+  "While rising [A]",
+  "While rising [K]",
+  "During Blind Stance [B+G]",
+  "[A A]",
+  "[A B A]",
+  "[A B A4]",
+  "[A K]",
+  "[B B]",
+  "[1K6-]",
+  "While rising [K6]",
+  "[4A A]",
+  "[2A A A]",
+  "[2A A A K]",
+  "[2B4]",
+  "[2B B]",
+  "[4A+K]",
+  "[4A+K G]",
+  "While rising [B B]",
+  "[66A+B K]",
+  "[3A-+B-]",
+  "[3A-+B- G]",
+  "[4A-+B-]",
+  "[3B B]",
+  "[6B-+K-]",
+  "[2-(8-)B+K]",
+  "While crouching [B+K]",
+  "While crouching [2B-+K-]",
+  "[66A+K K]",
+  "[A-+K-]",
+  "[A-+K- G]",
+  "[A+K]",
+  "[bA]",
+  "[44B-]",
+  "[44B- G]",
+  "[6B B]",
+  "Approach enemy [K+G]",
+  "Against downed enemy [1B-]",
+  "[4-(1-,7-)A+B]",
+  "[4-(1-,7-)A-+B-]",
+  "[6-(3-,9-)A+B]",
+  "[6-(3-,9-)A+B K]",
+  "[2-(8-)A+B]",
+  "[214]",
+  "During Blind Stance [2A+B]",
+  "During Blind Stance [A+B]",
+  "During Blind Stance [A+B 2]",
+  "During Blind Stance [A+B G]",
+  "During Blind Stance [A-+K-]",
+  "During Blind Stance [A+K]",
+  "During Blind Stance [4A B]",
+  "During Blind Stance [4-B B]",
+  "During Blind Stance [4B B]",
+  "During Blind Stance [4K]",
+  "During Blind Stance [6A]",
+  "During Blind Stance [66A-]",
+  "During Blind Stance [66A]",
+  "During Blind Stance [6B]",
+  "During Blind Stance [66B]",
+  "During Blind Stance [66bA]",
+  "During Blind Stance [1K]",
+  "During Blind Stance [2K]",
+  "During Blind Stance [2K]",
+  "While crouching [123]",
+  "[236]",
+  "During Caliostro Rush [A A]",
+  "During Caliostro Rush [A 4A]",
+  "During Caliostro Rush [A 3A]",
+  "During Caliostro Rush [B B-]",
+  "During Caliostro Rush [B B B]",
+  "During Caliostro Rush [K]",
+  "During Caliostro Rush [K]",
+  "During Caliostro Rush [A+B]",
+  "During Caliostro Rush [B+K]",
+  "During Caliostro Rush [B-+K-]",
+  "During Caliostro Rush [A-+G-]",
+  "During Caliostro Rush [A+G]",
+  "During Caliostro Rush [B-+G-]",
+  "During Caliostro Rush [B+G]",
+  "[3A+K]",
+  "[2A+K]",
+  "During Mantis Crawl [A+B]",
+  "During Mantis Crawl [A+B G]",
+  "During Mantis Crawl [A]",
+  "During Mantis Crawl [B]",
+  "During Mantis Crawl (Head first) [K]",
+  "During Mantis Crawl (Feet first) [K]",
+  "During Mantis Crawl [B-+K-]",
+  "During Mantis Crawl [B+K]",
+  "During Mantis Crawl [66]",
+  "During Mantis Crawl [66]",
+  "During Mantis Crawl [66 B+K]",
+  "During Mantis Crawl [66 B+K]",
+  "During Mantis Crawl [2(8)]",
+  "During Mantis Crawl [2(8) 6(4)]",
+  "[1B K]",
+  "[1B K K]",
+  "While rising [B-]",
+  "[4B-]",
+  "[4K-]",
+  "Approach enemy from behind;$r220[A+G] or [B+G]",
+  "Approach enemy from the left;$r220[A+G] or [B+G]",
+  "Approach enemy from the right;$r220[A+G] or [B+G]",
+  "[214]",
+  "[236]",
+  "[236]",
+  "[3A+K]",
+  "[2A+K]",
+  "During Mantis Crawl (Head first);$r220[2(8)A A A]",
+  "During Mantis Crawl (Head first);$r220[2(8)B B B]",
+  "During Mantis Crawl (Head first);$r220[2(8)K]",
+  "During Mantis Crawl (Head first);$r220[2(8)B+K]",
+  "During Mantis Crawl (Feet first);$r220[2(8)B B B]",
+  "During Mantis Crawl (Feet first) [2(8)A]",
+  "During Mantis Crawl (Feet first) [2(8)K]",
+  "[44K]",
+  "[4-K]",
+  "[66A+K K]",
+  "[2A A A K]",
+  "Mouse Cutter",
+  "Blind Blade",
+  "Blind Claw~Blind Stance",
+  "Jolly Ripper~Blind Stance",
+  "Lunatic Doll",
+  "Elegant Claw",
+  "Katar Splitter",
+  "Demon Elbow",
+  "Scorpion Tail~Blind Stance",
+  "Rat Kick",
+  "Mute Mid Kick",
+  "Bending Kick",
+  "Lunatic Flip",
+  "Blind Drop~Blind Stance",
+  "Praying Mantis",
+  "Evil Bow",
+  "Blind Dive",
+  "Guillotine Scissors Alternate",
+  "Katar Gore~Blind Stance",
+  "Gate Opener",
+  "Super Freak",
+  "Super Freak",
+  "Super Freak",
+  "Super Freak",
+  "Super Freak",
+  "Super Freak",
+  "Super Freak (Inner or Outer)",
+  "Super Freak Retreat",
+  "Super Freak Lunge",
+  "Spinning Umbrella",
+  "Catacomb Throw",
+  "Lunatic Doll",
+  "Blind Blade",
+  "Silent Embrace",
+  "Lunatic Doll",
+  "Elegant Claw",
+  "Demon Pheromone (Hold)",
+  "Despair",
+  "Demon Elbow",
+  "Scorpion Tail~Blind Stance",
+  "Mute Low Kick",
+  "Demon Tail",
+  "Lunatic Flip",
+  "Mouse Cutter",
+  "Asylum Step",
+  "Rat Drill~Blind Stance",
+  "Scorpion Claw",
+  "Lunatic Spin~Blind Stance",
+  "Blind Ownership",
+  "Scissor Claw",
+  "Dark Shredder",
+  "Dark Shredder~Blind Stance",
+  "Side Claw Kick",
+  "Stampede Shredder",
+  "Scorpion Tail",
+  "Lunatic Spin",
+  "Blind Spin",
+  "Rat Cheeze",
+  "Rat Cheeze Kick",
+  "Ecstasy~Blind Stance",
+  "Power Slave",
+  "Web Weaver",
+  "Web Weaver (Cancel)",
+  "Bat Taste",
+  "Gate Prier",
+  "Blind Dive (Hold)",
+  "Blind Dive (Hold) (Cancel)",
+  "Running with Scissors (Hold)",
+  "Guillotine Scissors",
+  "Super Freak Lunge~Mantis Crawl (Feet towards enemy)",
+  "Super Freak (Inner or Outer)~Mantis Crawl (Feet towards enemy)",
+  "Rat Bounce",
+  "Rat Bounce~Mantis Crawl (Feet towards enemy)",
+  "Insanity Trap",
+  "Death Rose (Hold)",
+  "Death Rose (Hold) (Cancel)",
+  "Death Rose",
+  "Grave Digger",
+  "Demon Pheromone (Hold)",
+  "Demon Pheromone (Hold) (Cancel)",
+  "Blade Nail",
+  "Bloody Drill",
+  "Grave Robber (Hold)",
+  "Guillotine Scissors Alternate",
+  "Running with Scissors (Hold)",
+  "Gate Opener",
+  "Gate Prier",
+  "Mystery Dance",
+  "Blind Stance",
+  "Reverse Evil Bow~Blind Stance",
+  "Freak Roll",
+  "Broken Wheel",
+  "Freak Roll (Cancel)~Mantis Crawl",
+  "Death Rose (Hold)",
+  "Death Rose",
+  "Mute Elbow Rush~Blind Stance",
+  "Blind Elbow Rush~Blind Stance",
+  "Death Ensnare",
+  "Mute Kick~Blind Stance",
+  "Madness Spin",
+  "Lunatic Wheel (Hold)",
+  "Lunatic Wheel",
+  "Rat Straight",
+  "Red Stitch",
+  "Scarecrow",
+  "Scorpion Tail",
+  "Blind Drop Kick",
+  "Blind Drop Kick",
+  "Caliostro Rush",
+  "Caliostro Rush",
+  "Katar Slap",
+  "Blind Slap~Blind Stance",
+  "Slap Blind Claw",
+  "Mad Shredder~Mantis Crawl (Feet towards enemy)",
+  "Mad Shredder",
+  "Rat Slaughter Kick",
+  "Rat Slaughter Kick",
+  "Snake Eater",
+  "Lunging Rat Bounce",
+  "Rat Bounce~Mantis Crawl (Feet towards enemy)",
+  "Life Sucker (Hold) (Long distance)",
+  "Life Sucker (Short distance)",
+  "Centipede Nightmare (Hold) (Long distance)",
+  "Centipede Nightmare (Short distance)",
+  "Mantis Crawl (Head towards enemy)",
+  "Mantis Crawl (Feet towards enemy)",
+  "Freak Roll",
+  "Freak Roll (Cancel)~Mantis Crawl",
+  "Twisted Salute",
+  "Asylum Breakout",
+  "Blind Drop~Blind Stance",
+  "Scorpion Kick",
+  "Fool Ritual (Hold)",
+  "Fool Ritual",
+  "Mantis Fire Dance",
+  "Mantis Fire Dance",
+  "Fool Ritual Fire Dance",
+  "Fool Ritual Fire Dance",
+  "Mantis Crawl~Mantis Crawl",
+  "Mantis Crawl~Mantis Crawl",
+  "Asylum Dance~Mantis Crawl (Feet towards enemy)",
+  "Asylum Dance",
+  "Bat Taste~Mantis Crawl (Feet towards enemy)",
+  "Katar Splitter~Mantis Crawl (Head towards enemy)",
+  "Bending Kick~Mantis Crawl (Feet towards enemy)",
+  "Sadistic Cross",
+  "Fool's Inquest",
+  "Bush Whacker",
+  "Blind Stance",
+  "Caliostro Rush",
+  "Caliostro Rush",
+  "Mantis Crawl (Head towards enemy)",
+  "Mantis Crawl (Feet towards enemy)",
+  "Superwyrm (A)",
+  "Superwyrm (B)",
+  "Scorpion Kick",
+  "Gravestone Cleaver",
+  "Superwyrm Escape",
+  "Twisted Salute",
+  "Blind Drop~Blind Stance",
+  "Lunatic Flip",
+  "Lunatic Flip",
+  "Insanity Trap",
+  "Rat Cheeze Kick"
+ ]
+}

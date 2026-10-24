@@ -1,0 +1,39 @@
+<!doctype html>
+<!-- Material gate proof: renders every SELECTABLE roster attire through the real
+     runtime path (assets.loadModels -> material resolve/gate -> createInstance).
+     Quarantined models are listed, never rendered. ?only=a,b ; ?from=N&n=M paging. -->
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WH material proof</title>
+<style>body{margin:0;background:#111;color:#ddd;font:11px system-ui}#g{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:3px;padding:4px}
+figure{margin:0;background:#1c1c1c}figure img{width:100%;display:block}figcaption{padding:1px 3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bad{color:#f66}#s{padding:4px}</style>
+<script type="importmap">{"imports":{"three":"./vendor/three.module.js","three/addons/":"./vendor/addons/"}}</script>
+</head><body><div id="s">loading…</div><div id="g"></div>
+<script type="module">
+import * as THREE from 'three';
+import { assets } from './js/assets.js';
+import { ROSTER } from './js/characters.js';
+import { attiresFor } from './js/attires.js';
+import { MATERIAL_STATUS } from './js/material-status.js';
+const qs = new URLSearchParams(location.search);
+let keys = [...new Set(ROSTER.flatMap(f => [f.model, ...attiresFor(f.id).map(a => a.model ?? a.key ?? a)]).filter(k => typeof k === 'string'))];
+if (qs.get('only')) keys = qs.get('only').split(',');
+const from = +(qs.get('from') || 0), n = +(qs.get('n') || keys.length); keys = keys.slice(from, from + n);
+const R = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true }); R.setSize(192, 256); R.outputColorSpace = THREE.SRGBColorSpace;
+const scene = new THREE.Scene(); scene.background = new THREE.Color(0x2a2a2a);
+scene.add(new THREE.HemisphereLight(0xffffff, 0x444444, 1.6)); const dl = new THREE.DirectionalLight(0xffffff, 2); dl.position.set(1, 2, 3); scene.add(dl);
+const cam = new THREE.PerspectiveCamera(30, 0.75, 0.01, 100);
+const g = document.getElementById('g'), s = document.getElementById('s'); let ok = 0, bad = 0;
+for (const k of keys) {
+  const fig = document.createElement('figure'); const cap = document.createElement('figcaption'); cap.textContent = k;
+  try {
+    await assets.loadModels([k]);
+    const inst = assets.createInstance(k); const o = inst.model; scene.add(o);
+    const b = new THREE.Box3().setFromObject(o), c = b.getCenter(new THREE.Vector3()), h = b.getSize(new THREE.Vector3()).y || 1;
+    cam.position.set(c.x, c.y, c.z + h * 2.1); cam.lookAt(c); R.render(scene, cam);
+    const img = new Image(); img.src = R.domElement.toDataURL(); fig.append(img); scene.remove(o); ok++;
+  } catch (e) { cap.className = 'bad'; cap.textContent = k + ' ✗ ' + e.message; bad++; }
+  fig.append(cap); g.append(fig); s.textContent = `${ok} rendered, ${bad} failed, ${Object.keys(MATERIAL_STATUS.quarantine).length} quarantined (hidden)`;
+}
+s.textContent += ' — done'; window.__done = { ok, bad };
+</script></body></html>

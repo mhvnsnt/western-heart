@@ -6,6 +6,12 @@
   "proxy": false,
   "proxy_note": null,
   "variant": 11,
+  "anim_set_lock": {
+    "law": "SHOW-ANIMATION LOCK (owner 2026-10-23)",
+    "FIGHT": "every move in this file: moveset moves and combat stances — the combat animation bank",
+    "SHOW": "win poses, intro poses, taunts, cutscene animations — intro/win slots and cutscenes ONLY; tracked in docs/anim/KATARINA-ANIM-GAP-20261023.md; must NEVER enter this moveset without the user's explicit approval",
+    "note": "per-move 'set' tags stamp what each pull lane added; the file itself is the FIGHT set"
+  },
   "strings": [
     {
       "input": "1,2",
@@ -9863,7 +9869,9 @@
     "4,4,4,F": "4,4,4,F",
     "BACK.1+3": "BACK.1+3",
     "BT.1": "BT 1",
+    "BT.2": "BT 1",
     "BT.3": "BT 3",
+    "BT.4": "BT 3",
     "FC.1": "FC 1",
     "FC.2": "FC 2",
     "FC.3": "FC 3",
@@ -9994,8 +10002,18 @@
     "exclude_proxy": false,
     "moves_before": 344,
     "moves_after": 344,
-    "added": {},
-    "slots": 159,
+    "added": {
+      "katarina_pull_20261023": {
+        "date": "2026-10-23",
+        "by": "moveset pull worker (T7 frame-data diff vs existing moveset)",
+        "moves_before": 344,
+        "moves_after": 344,
+        "added": [],
+        "t8_coverage": "n/a — T8 has no Katarina (verified in game/data/t8_frame_tables.json)",
+        "t7_coverage": "189/189 T7 katarina rows by id; 0 genuinely-missing"
+      }
+    },
+    "slots": 161,
     "slots_by_priority": {
       "signature": 2,
       "t7": 119,

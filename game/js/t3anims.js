@@ -66,6 +66,7 @@ const T3_BONES = ['Root','Hips','Spine','Chest','Neck','Head',
 // 2026-10-19): the game is served at the site root, so the previous
 // '../assets/anim/...' base resolved ABOVE the game and 404'd every
 // clip in production — the banks must live under game/assets/anim/.
+import { checkClip, CTX } from './anim-gate.js';
 export const T3_BANKS = {
   king:       'assets/anim/t3/king_on_pantera_leoman/',
   jin:        'assets/anim/t3/jin/',
@@ -100,6 +101,15 @@ export const T3_BANKS = {
   // be fitted (docs/anim/PROCEDURAL_AUDIT.md). tools/anim/t3_row_bake.py
   // --bank heihachi --kmd-from jin. Real Heihachi motion, Jin proportions.
   heihachi:   'assets/anim/t3/heihachi_on_jin/',
+  // Last decoded banks (2026-10-23, tools/anim/t3_bake_bank.py): own divmot motion on each character's
+  // own body. ogre = divmot14 (Ogre / True Ogre), kuma = divmot11 (Kuma; Panda shares it in T3),
+  // gon = divmot19, law = divmot01 (Marshall Law).
+  ogre:       'assets/anim/t3/ogre/',
+  kuma:       'assets/anim/t3/kuma/',
+  gon:        'assets/anim/t3/gon/',
+  law:        'assets/anim/t3/law/',
+  // Forest Law's own divmot20 motion posed on Law's body (his KMDs do not fit; heihachi_on_jin pattern).
+  forestlaw:  'assets/anim/t3/forestlaw_on_law/',
 };
 
 // Moveset source name -> bank key. 'demonio' is the game's rename of Jin
@@ -117,6 +127,7 @@ export const SOURCE_TO_BANK = {
   eddy: 'eddy', julia: 'julia', anna: 'anna',
   bosconovitch: 'bosconovitch', heihachi: 'heihachi',
   armorking: 'armorking', 'armor-king': 'armorking',
+  ogre: 'ogre', kuma: 'kuma', panda: 'kuma', gon: 'gon', law: 'law', forestlaw: 'forestlaw',
 };
 
 /**
@@ -511,6 +522,8 @@ export function createT3Actions(mixer, t3Clips, THREE) {
   // for raw identity-rest clips; nothing in the game passes those any more.
   const actions = {};
   for (const [name, clip] of Object.entries(t3Clips)) {
+    // ANIMATION GATE (owner t117u): fighter actions are FIGHT context; show clips never become actions.
+    if (!checkClip(name, clip, CTX.FIGHT).ok) continue;
     try {
       const action = mixer.clipAction(clip);
       const loop = clip.userData.loop;
@@ -700,6 +713,17 @@ function sourceInfo(skel, THREE) {
     dirs[s + 'Leg'] = d(s + 'Leg', s + 'Foot');
     const tip = P[s + 'ToeBase'] || (skel.foot_tip && skel.foot_tip[s + 'Foot'] ? new THREE.Vector3().fromArray(skel.foot_tip[s + 'Foot']) : null);
     dirs[s + 'Foot'] = tip && P[s + 'Foot'] ? new THREE.Vector3().subVectors(tip, P[s + 'Foot']) : null;
+    // Foot-data sanity (2026-10-22): foot_tip is the centroid of the T3 rig's foot-part vertices
+    // (tools/anim/t3_bank_skeleton.py). Across the 17 banks it sits 0.05-0.21 leg lengths from the
+    // ankle — except bosconovitch, 0.52: his decoded foot part is scattered (27 verts spanning
+    // 45 cm on a 0.35 m leg; the KMD seam-vertex gap in lab/README.md), so its "toe" pointed
+    // ~65-90 deg sideways and Doc Frank's feet splayed out. A centroid further than 0.3 leg
+    // lengths from the ankle is not a foot: such a foot keeps the fighter's own authored foot
+    // relation to its shin instead (same rule as a target foot whose toe points backwards).
+    if (dirs[s + 'Foot'] && P[s + 'UpLeg'] && P[s + 'Leg'] && P[s + 'Foot']) {
+      const legLen = P[s + 'Leg'].distanceTo(P[s + 'UpLeg']) + P[s + 'Foot'].distanceTo(P[s + 'Leg']);
+      if (legLen > 1e-6 && dirs[s + 'Foot'].length() / legLen > 0.3) dirs[s + 'Foot'] = 'leg';
+    }
   }
   skel._info = { order: skel.joints.map(j => j.name), par, dirs, rootY: skel.root_rest_y, P };
   return skel._info;
@@ -769,12 +793,12 @@ export function retargetT3Clips(t3Clips, bankId, model, THREE, instanceKey = nul
   for (const c of Object.keys(src.dirs)) {
     const ds = src.dirs[c], dt = rig.dirs[c];
     A[c] = new THREE.Quaternion();
-    if (ds && dt && dt !== 'leg' && ds.lengthSq() > 1e-10 && dt.lengthSq() > 1e-10) {
+    if (ds && dt && ds !== 'leg' && dt !== 'leg' && ds.lengthSq() > 1e-10 && dt.lengthSq() > 1e-10) {
       A[c].setFromUnitVectors(dt.clone().normalize(), ds.clone().applyQuaternion(F).normalize());
     }
   }
   for (const s of ['Left', 'Right']) {
-    if (rig.dirs[s + 'Foot'] === 'leg') A[s + 'Foot'] = A[s + 'Leg'];
+    if (rig.dirs[s + 'Foot'] === 'leg' || src.dirs[s + 'Foot'] === 'leg') A[s + 'Foot'] = A[s + 'Leg'];
     A[s + 'Hand'] = A[s + 'ForeArm']; A[s + 'ToeBase'] = A[s + 'Foot'];
   }
   // Hips position: parent space transform + hip-height scale.

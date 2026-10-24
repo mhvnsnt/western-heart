@@ -1,0 +1,588 @@
+{
+ "format": "wh-cast/1",
+ "note": "Canonical in mhvnsnt/western-heart shared/cast/cast.json; mirrored to mhvnsnt/cape-jones via its shared/cast/sync_cast.sh. Paths are relative to western-heart root.",
+ "generator": "shared/cast/build_cast.py",
+ "count": 34,
+ "cast": {
+  "armor-king": {
+   "rigged_attires": {
+    "attire1": "roster/armor-king/attires/attire1/model-rigged.glb"
+   },
+   "game_model": null,
+   "canon_doc": "roster/armor-king/CANON.md",
+   "display_name": "ARMOR-KING",
+   "facing_rest": "unlisted (+Z fallback per model-facing.json note)",
+   "rotate_y_deg_on_import": 0,
+   "rig": "wh-52-bone auto-rig (template skeleton faces -Z; trust facing_rest, not bone names)",
+   "fight_moveset": {
+    "owner": "western-heart",
+    "rule": "READ-ONLY for the show; never retime/overwrite"
+   },
+   "show_anims_dir": "anims/show/armor-king/",
+   "cape_jones_role": "cast member - Immortal Qombat fighter met through the TV portal"
+  },
+  "awa-pop": {
+   "rigged_attires": {
+    "attire2": "roster/awa-pop/attires/attire2/model-rigged.glb"
+   },
+   "game_model": "game/assets/models/awa-pop.glb",
+   "canon_doc": "roster/awa-pop/CANON.md",
+   "display_name": "AWA POP",
+   "facing_rest": "+Z",
+   "rotate_y_deg_on_import": 0,
+   "rig": "wh-52-bone auto-rig (template skeleton faces -Z; trust facing_rest, not bone names)",
+   "fight_moveset": {
+    "owner": "western-heart",
+    "rule": "READ-ONLY for the show; never retime/overwrite"
+   },
+   "show_anims_dir": "anims/show/awa-pop/",
+   "cape_jones_role": "cast member - Immortal Qombat fighter met through the TV portal"
+  },
+  "baek": {
+   "rigged_attires": {
+    "attire1": "roster/baek/attires/attire1/model-rigged.glb"
+   },
+   "game_model": "game/assets/models/baek.glb",
+   "canon_doc": "roster/baek/CANON.md",
+   "display_name": "BAEK",
+   "facing_rest": "+Z",
+   "rotate_y_deg_on_import": 0,
+   "rig": "wh-52-bone auto-rig (template skeleton faces -Z; trust facing_rest, not bone names)",
+   "fight_moveset": {
+    "owner": "western-heart",
+    "rule": "READ-ONLY for the show; never retime/overwrite"
+   },
+   "show_anims_dir": "anims/show/baek/",
+   "cape_jones_role": "cast member - Immortal Qombat fighter met through the TV portal"
+  },
+  "burger": {
+   "rigged_attires": {
+    "attire1": "roster/burger/attires/attire1/model-rigged.glb"
+   },
+   "game_model": null,
+   "canon_doc": "roster/burger/CANON.md",
+   "display_name": "BURGER",
+   "facing_rest": "unlisted (+Z fallback per model-facing.json note)",
+   "rotate_y_deg_on_import": 0,
+   "rig": "wh-52-bone auto-rig (template skeleton faces -Z; trust facing_rest, not bone names)",
+   "fight_moveset": {
+    "owner": "western-heart",
+    "rule": "READ-ONLY for the show; never retime/overwrite"
+   },
+   "show_anims_dir": "anims/show/burger/",
+   "cape_jones_role": "cast member - Immortal Qombat fighter met through the TV portal"
+  },
+  "charger": {
+   "rigged_attires": {
+    "attire1": "roster/charger/attires/attire1/model-rigged.glb",
+    "attire2": "roster/charger/attires/attire2/model-rigged.glb"
+   },
+   "game_model": null,
+   "canon_doc": "roster/charger/CANON.md",
+   "display_name": "CHARGER",
+   "facing_rest": "unlisted (+Z fallback per model-facing.json note)",
+   "rotate_y_deg_on_import": 0,
+   "rig": "wh-52-bone auto-rig (template skeleton faces -Z; trust facing_rest, not bone names)",
+   "fight_moveset": {
+    "owner": "western-heart",
+    "rule": "READ-ONLY for the show; never retime/overwrite"
+   },
+   "show_anims_dir": "anims/show/charger/",
+   "cape_jones_role": "cast member - Immortal Qombat fighter met through the TV portal"
+  },
+  "demonio": {
+   "rigged_attires": {
+    "human": "roster/demonio/attires/human/model-rigged.glb",
+    "winged-devil": "roster/demonio/attires/winged-devil/model-rigged.glb"
+   },
+   "game_model": "game/assets/models/demonio.glb",
+   "canon_doc": "roster/demonio/CANON.md",
+   "display_name": "DEMONIO",
+   "facing_rest": "+Z",
+   "rotate_y_deg_on_import": 0,
+   "rig": "wh-52-bone auto-rig (template skeleton faces -Z; trust facing_rest, not bone names)",
+   "fight_moveset": {
+    "owner": "western-heart",
+    "rule": "READ-ONLY for the show; never retime/overwrite"
+   },
+   "show_anims_dir": "anims/show/demonio/",
+   "cape_jones_role": "cast member - Immortal Qombat fighter met through the TV portal"
+  },
+  "diablo": {
+   "rigged_attires": {
+    "attire1": "roster/diablo/attires/attire1/model-rigged.glb"
+   },
+   "game_model": "game/assets/models/diablo.glb",
+   "canon_doc": "roster/diablo/CANON.md",
+   "display_name": "DIABLO",
+   "facing_rest": "+Z",
+   "rotate_y_deg_on_import": 0,
+   "rig": "wh-52-bone auto-rig (template skeleton faces -Z; trust facing_rest, not bone names)",
+   "fight_moveset": {
+    "owner": "western-heart",
+    "rule": "READ-ONLY for the show; never retime/overwrite"
+   },
+   "show_anims_dir": "anims/show/diablo/",
+   "cape_jones_role": "cast member - Immortal Qombat fighter met through the TV portal"
+  },
+  "dxmmii": {
+   "rigged_attires": {
+    "attire1": "roster/dxmmii/attires/attire1/model-rigged.glb"
+   },
+   "game_model": "game/assets/models/dxmmii.glb",
+   "canon_doc": "roster/dxmmii/CANON.md",
+   "display_name": "DXMMII",
+   "facing_rest": "+Z",
+   "rotate_y_deg_on_import": 0,
+   "rig": "wh-52-bone auto-rig (template skeleton faces -Z; trust facing_rest, not bone names)",
+   "fight_moveset": {
+    "owner": "western-heart",
+    "rule": "READ-ONLY for the show; never retime/overwrite"
+   },
+   "show_anims_dir": "anims/show/dxmmii/",
+   "cape_jones_role": "cast member - Immortal Qombat fighter met through the TV portal"
+  },
+  "kinpo": {
+   "rigged_attires": {
+    "attire1": "roster/kinpo/attires/attire1/model-rigged.glb"
+   },
+   "game_model": "game/assets/models/kinpo.glb",
+   "canon_doc": "roster/kinpo/CANON.md",
+   "display_name": "KINPO",
+   "facing_rest": "+Z",
+   "rotate_y_deg_on_import": 0,
+   "rig": "wh-52-bone auto-rig (template skeleton faces -Z; trust facing_rest, not bone names)",
+   "fight_moveset": {
+    "owner": "western-heart",
+    "rule": "READ-ONLY for the show; never retime/overwrite"
+   },
+   "show_anims_dir": "anims/show/kinpo/",
+   "cape_jones_role": "cast member - Immortal Qombat fighter met through the TV portal"
+  },
+  "koreshi": {
+   "rigged_attires": {
+    "attire1": "roster/koreshi/attires/attire1/model-rigged.glb"
+   },
+   "game_model": null,
+   "canon_doc": "roster/koreshi/CANON.md",
+   "display_name": "KORESHI",
+   "facing_rest": "unlisted (+Z fallback per model-facing.json note)",
+   "rotate_y_deg_on_import": 0,
+   "rig": "wh-52-bone auto-rig (template skeleton faces -Z; trust facing_rest, not bone names)",
+   "fight_moveset": {
+    "owner": "western-heart",
+    "rule": "READ-ONLY for the show; never retime/overwrite"
+   },
+   "show_anims_dir": "anims/show/koreshi/",
+   "cape_jones_role": "cast member - Immortal Qombat fighter met through the TV portal"
+  },
+  "kronos": {
+   "rigged_attires": {
+    "attire1": "roster/kronos/attires/attire1/model-rigged.glb",
+    "attire2": "roster/kronos/attires/attire2/model-rigged.glb"
+   },
+   "game_model": null,
+   "canon_doc": "roster/kronos/CANON.md",
+   "display_name": "KRONOS",
+   "facing_rest": "+Z",
+   "rotate_y_deg_on_import": 0,
+   "rig": "wh-52-bone auto-rig (template skeleton faces -Z; trust facing_rest, not bone names)",
+   "fight_moveset": {
+    "owner": "western-heart",
+    "rule": "READ-ONLY for the show; never retime/overwrite"
+   },
+   "show_anims_dir": "anims/show/kronos/",
+   "cape_jones_role": "cast member - Immortal Qombat fighter met through the TV portal"
+  },
+  "michiko": {
+   "rigged_attires": {
+    "attire1": "roster/michiko/attires/attire1/model-rigged.glb",
+    "attire2": "roster/michiko/attires/attire2/model-rigged.glb"
+   },
+   "game_model": "game/assets/models/michiko.glb",
+   "canon_doc": "roster/michiko/CANON.md",
+   "display_name": "MICHIKO",
+   "facing_rest": "+Z",
+   "rotate_y_deg_on_import": 0,
+   "rig": "wh-52-bone auto-rig (template skeleton faces -Z; trust facing_rest, not bone names)",
+   "fight_moveset": {
+    "owner": "western-heart",
+    "rule": "READ-ONLY for the show; never retime/overwrite"
+   },
+   "show_anims_dir": "anims/show/michiko/",
+   "cape_jones_role": "cast member - Immortal Qombat fighter met through the TV portal"
+  },
+  "mina-ashido": {
+   "rigged_attires": {
+    "attire1": "roster/mina-ashido/attires/attire1/model-rigged.glb"
+   },
+   "game_model": null,
+   "canon_doc": "roster/mina-ashido/CANON.md",
+   "display_name": "MINA-ASHIDO",
+   "facing_rest": "unlisted (+Z fallback per model-facing.json note)",
+   "rotate_y_deg_on_import": 0,
+   "rig": "wh-52-bone auto-rig (template skeleton faces -Z; trust facing_rest, not bone names)",
+   "fight_moveset": {
+    "owner": "western-heart",
+    "rule": "READ-ONLY for the show; never retime/overwrite"
+   },
+   "show_anims_dir": "anims/show/mina-ashido/",
+   "cape_jones_role": "cast member - Immortal Qombat fighter met through the TV portal"
+  },
+  "miruko": {
+   "rigged_attires": {
+    "attire1": "roster/miruko/attires/attire1/model-rigged.glb"
+   },
+   "game_model": null,
+   "canon_doc": "roster/miruko/CANON.md",
+   "display_name": "MIRUKO",
+   "facing_rest": "unlisted (+Z fallback per model-facing.json note)",
+   "rotate_y_deg_on_import": 0,
+   "rig": "wh-52-bone auto-rig (template skeleton faces -Z; trust facing_rest, not bone names)",
+   "fight_moveset": {
+    "owner": "western-heart",
+    "rule": "READ-ONLY for the show; never retime/overwrite"
+   },
+   "show_anims_dir": "anims/show/miruko/",
+   "cape_jones_role": "cast member - Immortal Qombat fighter met through the TV portal"
+  },
+  "pantera": {
+   "rigged_attires": {
+    "leopard-king": "roster/pantera/attires/leopard-king/model-rigged.glb"
+   },
+   "game_model": "game/assets/models/pantera.glb",
+   "canon_doc": "roster/pantera/CANON.md",
+   "display_name": "PANTERA",
+   "facing_rest": "+Z",
+   "rotate_y_deg_on_import": 0,
+   "rig": "wh-52-bone auto-rig (template skeleton faces -Z; trust facing_rest, not bone names)",
+   "fight_moveset": {
+    "owner": "western-heart",
+    "rule": "READ-ONLY for the show; never retime/overwrite"
+   },
+   "show_anims_dir": "anims/show/pantera/",
+   "cape_jones_role": "cast member - Immortal Qombat fighter met through the TV portal"
+  },
+  "parvati": {
+   "rigged_attires": {
+    "attire1": "roster/parvati/attires/attire1/model-rigged.glb"
+   },
+   "game_model": null,
+   "canon_doc": "roster/parvati/CANON.md",
+   "display_name": "PARVATI",
+   "facing_rest": "unlisted (+Z fallback per model-facing.json note)",
+   "rotate_y_deg_on_import": 0,
+   "rig": "wh-52-bone auto-rig (template skeleton faces -Z; trust facing_rest, not bone names)",
+   "fight_moveset": {
+    "owner": "western-heart",
+    "rule": "READ-ONLY for the show; never retime/overwrite"
+   },
+   "show_anims_dir": "anims/show/parvati/",
+   "cape_jones_role": "cast member - Immortal Qombat fighter met through the TV portal"
+  },
+  "phantom": {
+   "rigged_attires": {
+    "attire1": "roster/phantom/attires/attire1/model-rigged.glb"
+   },
+   "game_model": "game/assets/models/phantom.glb",
+   "canon_doc": "roster/phantom/CANON.md",
+   "display_name": "PHANTOM",
+   "facing_rest": "+Z",
+   "rotate_y_deg_on_import": 0,
+   "rig": "wh-52-bone auto-rig (template skeleton faces -Z; trust facing_rest, not bone names)",
+   "fight_moveset": {
+    "owner": "western-heart",
+    "rule": "READ-ONLY for the show; never retime/overwrite"
+   },
+   "show_anims_dir": "anims/show/phantom/",
+   "cape_jones_role": "cast member - Immortal Qombat fighter met through the TV portal"
+  },
+  "purplerain": {
+   "rigged_attires": {
+    "attire1": "roster/purplerain/attires/attire1/model-rigged.glb"
+   },
+   "game_model": null,
+   "canon_doc": "roster/purplerain/CANON.md",
+   "display_name": "PURPLERAIN",
+   "facing_rest": "unlisted (+Z fallback per model-facing.json note)",
+   "rotate_y_deg_on_import": 0,
+   "rig": "wh-52-bone auto-rig (template skeleton faces -Z; trust facing_rest, not bone names)",
+   "fight_moveset": {
+    "owner": "western-heart",
+    "rule": "READ-ONLY for the show; never retime/overwrite"
+   },
+   "show_anims_dir": "anims/show/purplerain/",
+   "cape_jones_role": "cast member - Immortal Qombat fighter met through the TV portal"
+  },
+  "rahkasa": {
+   "rigged_attires": {
+    "attire1": "roster/rahkasa/attires/attire1/model-rigged.glb"
+   },
+   "game_model": null,
+   "canon_doc": "roster/rahkasa/CANON.md",
+   "display_name": "RAHKASA",
+   "facing_rest": "unlisted (+Z fallback per model-facing.json note)",
+   "rotate_y_deg_on_import": 0,
+   "rig": "wh-52-bone auto-rig (template skeleton faces -Z; trust facing_rest, not bone names)",
+   "fight_moveset": {
+    "owner": "western-heart",
+    "rule": "READ-ONLY for the show; never retime/overwrite"
+   },
+   "show_anims_dir": "anims/show/rahkasa/",
+   "cape_jones_role": "cast member - Immortal Qombat fighter met through the TV portal"
+  },
+  "ryuji-rock": {
+   "rigged_attires": {
+    "attire1": "roster/ryuji-rock/attires/attire1/model-rigged.glb"
+   },
+   "game_model": null,
+   "canon_doc": "roster/ryuji-rock/CANON.md",
+   "display_name": "RYUJI-ROCK",
+   "facing_rest": "unlisted (+Z fallback per model-facing.json note)",
+   "rotate_y_deg_on_import": 0,
+   "rig": "wh-52-bone auto-rig (template skeleton faces -Z; trust facing_rest, not bone names)",
+   "fight_moveset": {
+    "owner": "western-heart",
+    "rule": "READ-ONLY for the show; never retime/overwrite"
+   },
+   "show_anims_dir": "anims/show/ryuji-rock/",
+   "cape_jones_role": "cast member - Immortal Qombat fighter met through the TV portal"
+  },
+  "sakura": {
+   "rigged_attires": {
+    "attire1": "roster/sakura/attires/attire1/model-rigged.glb"
+   },
+   "game_model": null,
+   "canon_doc": "roster/sakura/CANON.md",
+   "display_name": "SAKURA",
+   "facing_rest": "unlisted (+Z fallback per model-facing.json note)",
+   "rotate_y_deg_on_import": 0,
+   "rig": "wh-52-bone auto-rig (template skeleton faces -Z; trust facing_rest, not bone names)",
+   "fight_moveset": {
+    "owner": "western-heart",
+    "rule": "READ-ONLY for the show; never retime/overwrite"
+   },
+   "show_anims_dir": "anims/show/sakura/",
+   "cape_jones_role": "cast member - Immortal Qombat fighter met through the TV portal"
+  },
+  "sam-ur-a1": {
+   "rigged_attires": {
+    "attire1": "roster/sam-ur-a1/attires/attire1/model-rigged.glb"
+   },
+   "game_model": "game/assets/models/sam-ur-a1.glb",
+   "canon_doc": "roster/sam-ur-a1/CANON.md",
+   "display_name": "SAM-UR-A1",
+   "facing_rest": "unlisted (+Z fallback per model-facing.json note)",
+   "rotate_y_deg_on_import": 0,
+   "rig": "wh-52-bone auto-rig (template skeleton faces -Z; trust facing_rest, not bone names)",
+   "fight_moveset": {
+    "owner": "western-heart",
+    "rule": "READ-ONLY for the show; never retime/overwrite"
+   },
+   "show_anims_dir": "anims/show/sam-ur-a1/",
+   "cape_jones_role": "cast member - Immortal Qombat fighter met through the TV portal"
+  },
+  "silvertongue": {
+   "rigged_attires": {
+    "attire1": "roster/silvertongue/attires/attire1/model-rigged.glb"
+   },
+   "game_model": null,
+   "canon_doc": "roster/silvertongue/CANON.md",
+   "display_name": "SILVERTONGUE",
+   "facing_rest": "unlisted (+Z fallback per model-facing.json note)",
+   "rotate_y_deg_on_import": 0,
+   "rig": "wh-52-bone auto-rig (template skeleton faces -Z; trust facing_rest, not bone names)",
+   "fight_moveset": {
+    "owner": "western-heart",
+    "rule": "READ-ONLY for the show; never retime/overwrite"
+   },
+   "show_anims_dir": "anims/show/silvertongue/",
+   "cape_jones_role": "cast member - Immortal Qombat fighter met through the TV portal"
+  },
+  "skull": {
+   "rigged_attires": {
+    "attire1": "roster/skull/attires/attire1/model-rigged.glb"
+   },
+   "game_model": "game/assets/models/skull.glb",
+   "canon_doc": "roster/skull/CANON.md",
+   "display_name": "SKULL",
+   "facing_rest": "+Z",
+   "rotate_y_deg_on_import": 0,
+   "rig": "wh-52-bone auto-rig (template skeleton faces -Z; trust facing_rest, not bone names)",
+   "fight_moveset": {
+    "owner": "western-heart",
+    "rule": "READ-ONLY for the show; never retime/overwrite"
+   },
+   "show_anims_dir": "anims/show/skull/",
+   "cape_jones_role": "cast member - Immortal Qombat fighter met through the TV portal"
+  },
+  "slice": {
+   "rigged_attires": {
+    "attire1": "roster/slice/attires/attire1/model-rigged.glb"
+   },
+   "game_model": null,
+   "canon_doc": "roster/slice/CANON.md",
+   "display_name": "SLICE",
+   "facing_rest": "unlisted (+Z fallback per model-facing.json note)",
+   "rotate_y_deg_on_import": 0,
+   "rig": "wh-52-bone auto-rig (template skeleton faces -Z; trust facing_rest, not bone names)",
+   "fight_moveset": {
+    "owner": "western-heart",
+    "rule": "READ-ONLY for the show; never retime/overwrite"
+   },
+   "show_anims_dir": "anims/show/slice/",
+   "cape_jones_role": "cast member - Immortal Qombat fighter met through the TV portal"
+  },
+  "thor": {
+   "rigged_attires": {
+    "attire1": "roster/thor/attires/attire1/model-rigged.glb"
+   },
+   "game_model": "game/assets/models/thor.glb",
+   "canon_doc": "roster/thor/CANON.md",
+   "display_name": "THOR",
+   "facing_rest": "unlisted (+Z fallback per model-facing.json note)",
+   "rotate_y_deg_on_import": 0,
+   "rig": "wh-52-bone auto-rig (template skeleton faces -Z; trust facing_rest, not bone names)",
+   "fight_moveset": {
+    "owner": "western-heart",
+    "rule": "READ-ONLY for the show; never retime/overwrite"
+   },
+   "show_anims_dir": "anims/show/thor/",
+   "cape_jones_role": "cast member - Immortal Qombat fighter met through the TV portal"
+  },
+  "tsuyu-asui": {
+   "rigged_attires": {
+    "attire1": "roster/tsuyu-asui/attires/attire1/model-rigged.glb"
+   },
+   "game_model": null,
+   "canon_doc": "roster/tsuyu-asui/CANON.md",
+   "display_name": "TSUYU-ASUI",
+   "facing_rest": "unlisted (+Z fallback per model-facing.json note)",
+   "rotate_y_deg_on_import": 0,
+   "rig": "wh-52-bone auto-rig (template skeleton faces -Z; trust facing_rest, not bone names)",
+   "fight_moveset": {
+    "owner": "western-heart",
+    "rule": "READ-ONLY for the show; never retime/overwrite"
+   },
+   "show_anims_dir": "anims/show/tsuyu-asui/",
+   "cape_jones_role": "cast member - Immortal Qombat fighter met through the TV portal"
+  },
+  "vainabel": {
+   "rigged_attires": {
+    "attire1": "roster/vainabel/attires/attire1/model-rigged.glb"
+   },
+   "game_model": null,
+   "canon_doc": "roster/vainabel/CANON.md",
+   "display_name": "VAINABEL",
+   "facing_rest": "unlisted (+Z fallback per model-facing.json note)",
+   "rotate_y_deg_on_import": 0,
+   "rig": "wh-52-bone auto-rig (template skeleton faces -Z; trust facing_rest, not bone names)",
+   "fight_moveset": {
+    "owner": "western-heart",
+    "rule": "READ-ONLY for the show; never retime/overwrite"
+   },
+   "show_anims_dir": "anims/show/vainabel/",
+   "cape_jones_role": "cast member - Immortal Qombat fighter met through the TV portal"
+  },
+  "vixen": {
+   "rigged_attires": {
+    "attire1": "roster/vixen/attires/attire1/model-rigged.glb"
+   },
+   "game_model": null,
+   "canon_doc": "roster/vixen/CANON.md",
+   "display_name": "VIXEN",
+   "facing_rest": "unlisted (+Z fallback per model-facing.json note)",
+   "rotate_y_deg_on_import": 0,
+   "rig": "wh-52-bone auto-rig (template skeleton faces -Z; trust facing_rest, not bone names)",
+   "fight_moveset": {
+    "owner": "western-heart",
+    "rule": "READ-ONLY for the show; never retime/overwrite"
+   },
+   "show_anims_dir": "anims/show/vixen/",
+   "cape_jones_role": "cast member - Immortal Qombat fighter met through the TV portal"
+  },
+  "waterfall": {
+   "rigged_attires": {
+    "attire1": "roster/waterfall/attires/attire1/model-rigged.glb"
+   },
+   "game_model": "game/assets/models/waterfall.glb",
+   "canon_doc": "roster/waterfall/CANON.md",
+   "display_name": "WATERFALL",
+   "facing_rest": "unlisted (+Z fallback per model-facing.json note)",
+   "rotate_y_deg_on_import": 0,
+   "rig": "wh-52-bone auto-rig (template skeleton faces -Z; trust facing_rest, not bone names)",
+   "fight_moveset": {
+    "owner": "western-heart",
+    "rule": "READ-ONLY for the show; never retime/overwrite"
+   },
+   "show_anims_dir": "anims/show/waterfall/",
+   "cape_jones_role": "cast member - Immortal Qombat fighter met through the TV portal"
+  },
+  "zangief": {
+   "rigged_attires": {
+    "attire1": "roster/zangief/attires/attire1/model-rigged.glb"
+   },
+   "game_model": null,
+   "canon_doc": "roster/zangief/CANON.md",
+   "display_name": "ZANGIEF",
+   "facing_rest": "unlisted (+Z fallback per model-facing.json note)",
+   "rotate_y_deg_on_import": 0,
+   "rig": "wh-52-bone auto-rig (template skeleton faces -Z; trust facing_rest, not bone names)",
+   "fight_moveset": {
+    "owner": "western-heart",
+    "rule": "READ-ONLY for the show; never retime/overwrite"
+   },
+   "show_anims_dir": "anims/show/zangief/",
+   "cape_jones_role": "cast member - Immortal Qombat fighter met through the TV portal"
+  },
+  "zen": {
+   "rigged_attires": {
+    "attire1": "roster/zen/attires/attire1/model-rigged.glb"
+   },
+   "game_model": null,
+   "canon_doc": "roster/zen/CANON.md",
+   "display_name": "ZEN",
+   "facing_rest": "+Z",
+   "rotate_y_deg_on_import": 0,
+   "rig": "wh-52-bone auto-rig (template skeleton faces -Z; trust facing_rest, not bone names)",
+   "fight_moveset": {
+    "owner": "western-heart",
+    "rule": "READ-ONLY for the show; never retime/overwrite"
+   },
+   "show_anims_dir": "anims/show/zen/",
+   "cape_jones_role": "cast member - Immortal Qombat fighter met through the TV portal"
+  },
+  "zui": {
+   "rigged_attires": {
+    "attire1": "roster/zui/attires/attire1/model-rigged.glb"
+   },
+   "game_model": null,
+   "canon_doc": "roster/zui/CANON.md",
+   "display_name": "ZUI",
+   "facing_rest": "unlisted (+Z fallback per model-facing.json note)",
+   "rotate_y_deg_on_import": 0,
+   "rig": "wh-52-bone auto-rig (template skeleton faces -Z; trust facing_rest, not bone names)",
+   "fight_moveset": {
+    "owner": "western-heart",
+    "rule": "READ-ONLY for the show; never retime/overwrite"
+   },
+   "show_anims_dir": "anims/show/zui/",
+   "cape_jones_role": "cast member - Immortal Qombat fighter met through the TV portal"
+  },
+  "cape-jones": {
+   "rigged_attires": {},
+   "game_model": "game/assets/models/cape-jones.glb",
+   "canon_doc": null,
+   "display_name": "CAPE-JONES",
+   "facing_rest": "-Z",
+   "rotate_y_deg_on_import": 180,
+   "rig": "game model skeleton",
+   "fight_moveset": {
+    "owner": "western-heart",
+    "rule": "READ-ONLY for the show; never retime/overwrite"
+   },
+   "show_anims_dir": "anims/show/cape-jones/",
+   "cape_jones_role": "Cape Jones (host/protagonist)"
+  }
+ }
+}

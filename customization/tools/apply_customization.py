@@ -62,7 +62,7 @@ Usage (Blender headless — bare -b segfaults on this VM, always xvfb-run):
 Registry-only regeneration (no Blender needed):
   python3 customization/tools/apply_customization.py --emit-registry [--repo-root .]
 """
-import json, os, re, sys
+import json, os, re, struct, sys
 
 # ---------------------------------------------------------------- emit (pure python)
 
@@ -148,7 +148,7 @@ def find_repo_root(start):
 
 def bake(cfg_path, repo_root, mpfb_src, log=print):
     import bpy
-    from mathutils import Vector
+    from mathutils import Vector, Matrix
     from mathutils.kdtree import KDTree
 
     errors = []
@@ -168,6 +168,10 @@ def bake(cfg_path, repo_root, mpfb_src, log=print):
         return 1, errors
     log(f'CSBAKE bake: {base_glb} -> {out_glb} (fighter={fighter} attire={cfg.get("attire")})')
 
+    def hex_rgb(h):
+        h = h.lstrip('#')
+        return tuple(int(h[i:i + 2], 16) / 255.0 for i in (0, 2, 4))
+
     registry_path = os.path.join(repo_root, 'customization', 'PARTS-REGISTRY.json')
     registry = json.load(open(registry_path, encoding='utf-8'))
     reg_parts = {p['id']: p for p in registry.get('parts', [])}
@@ -181,6 +185,7 @@ def bake(cfg_path, repo_root, mpfb_src, log=print):
     base_arm = armatures[0] if armatures else None
     log(f'CSBAKE imported: {len(meshes)} meshes, {len(armatures)} armatures, '
         f'{sum(len(o.data.vertices) for o in meshes)} verts')
+    base_bones = {b.name for b in base_arm.data.bones} if base_arm else set()
 
     # ---- (a) MPFB morphs -------------------------------------------------
     morphs = {k: float(v) for k, v in (cfg.get('morphs') or {}).items() if float(v) != 0.0}
@@ -347,6 +352,361 @@ def bake(cfg_path, repo_root, mpfb_src, log=print):
             baked.append((o.name, active))
         log(f'CSBAKE morphs baked into Basis: {baked}')
 
+    # ---- (a2) hide base meshes (round 2: base-hair hide toggle etc.) -------
+    for pat in (cfg.get('hide_meshes') or []):
+        pat_l = str(pat).lower()
+        hits = [o for o in list(scene.objects) if o.type == 'MESH' and
+                (pat_l in o.name.lower() or pat_l in o.data.name.lower() or
+                 any(ms.material and pat_l in ms.material.name.lower()
+                     for ms in o.material_slots))]
+        for o in hits:
+            log(f'CSBAKE hide_meshes: removing base mesh {o.name} (matched "{pat}")')
+            bpy.data.objects.remove(o, do_unlink=True)
+        if not hits:
+            fail('hide_meshes', f'pattern "{pat}" matched no base mesh or material')
+        meshes = [o for o in scene.objects if o.type == 'MESH']
+
+    # ---- (a3) region swaps (round 2: PIECE SWAPS, Tekken-style) -------------
+    # customization.json "region_swaps": [{region, from_glb, from_fighter?,
+    # from_attire?, yaw_deg?, scale?}]. The region is CUT from the base
+    # (verts whose dominant bone is in the region) and CUT from the source,
+    # then the source piece is fit (neck-anchor + region-height scale + yaw
+    # from the head-centroid forward estimate) and re-skinned onto the base
+    # rig: by canonical bone name when the source is skinned, by distance to
+    # the region's bones when it is not. Unskinned sources support "head"
+    # (spatial neck-pinch cut) — other regions fail loudly.
+    import bmesh
+
+    def canon_bone(name):
+        c = re.sub(r'[^a-z0-9]', '', str(name).lower())
+        for pre in ('mixamorig', 'bip01', 'def', 'org'):
+            if c.startswith(pre) and len(c) > len(pre) + 2:
+                c = c[len(pre):]
+                break
+        return c
+
+    def bone_in_region(c, region):
+        if region == 'head':
+            return c in ('head', 'headtop', 'headdummy')
+        if region == 'torso':
+            return c.startswith('spine') or c in ('chest', 'leftbreast', 'rightbreast')
+        if region == 'arm_l':
+            return c.startswith(('leftshoulder', 'leftarm', 'leftforearm', 'lefthand'))
+        if region == 'arm_r':
+            return c.startswith(('rightshoulder', 'rightarm', 'rightforearm', 'righthand'))
+        if region == 'legs':
+            return c.startswith(('leftupleg', 'leftleg', 'leftfoot', 'lefttoebase',
+                                   'rightupleg', 'rightleg', 'rightfoot', 'righttoebase'))
+        return False
+
+    REGION_ANCHORS = {
+        'head': ['Head', 'Neck'],
+        'torso': ['Spine2', 'Spine1', 'Spine', 'Hips'],
+        'arm_l': ['LeftArm', 'LeftForeArm', 'LeftHand'],
+        'arm_r': ['RightArm', 'RightForeArm', 'RightHand'],
+        'legs': ['LeftUpLeg', 'LeftLeg', 'RightUpLeg', 'RightLeg'],
+    }
+
+    def dominant_canon(obj, vert):
+        best, bw = None, 0.0
+        for g in vert.groups:
+            if g.weight > bw:
+                bw = g.weight
+                best = obj.vertex_groups[g.group].name
+        return canon_bone(best) if best else None
+
+    def world_verts(obj):
+        mw = obj.matrix_world
+        return [mw @ v.co for v in obj.data.vertices]
+
+    def cut_region_from(obj, region):
+        """Remove verts whose dominant bone is in region. Returns removed count."""
+        if not obj.vertex_groups:
+            return 0
+        bm = bmesh.new()
+        bm.from_mesh(obj.data)
+        # dominant bone per vert from the MESH data (bmesh BMDeformVert is
+        # not iterable on Blender 4.0 — iterating v[dl] raised TypeError and
+        # killed every swap bake; mesh Vertex.groups is the stable API).
+        kill_idx = set()
+        for v in obj.data.vertices:
+            dc = dominant_canon(obj, v)
+            if dc and bone_in_region(dc, region):
+                kill_idx.add(v.index)
+        kill = []
+        if kill_idx:
+            bm.verts.ensure_lookup_table()
+            kill = [bm.verts[i] for i in sorted(kill_idx)]
+        if kill:
+            bmesh.ops.delete(bm, geom=kill, context='VERTS')
+            bm.to_mesh(obj.data)
+            obj.data.update()
+        bm.free()
+        return len(kill)
+
+    def region_ref(objs_verts, region):
+        """(neck_point, height, forward) from world-space region verts."""
+        zs = [v.z for v in objs_verts]
+        z0, z1 = min(zs), max(zs)
+        band = [v for v in objs_verts if v.z <= z0 + 0.15 * (z1 - z0)]
+        top = [v for v in objs_verts if v.z >= z0 + 0.5 * (z1 - z0)]
+        neck = sum(band, Vector()) / len(band)
+        cen = sum(top, Vector()) / len(top)
+        fwd = Vector((cen.x - neck.x, cen.y - neck.y, 0))
+        return neck, z1 - z0, (fwd.normalized() if fwd.length > 1e-4 else None)
+
+    def prepare_swap_source(src_path, item):
+        """Decode meshopt/quantized sources (Tripo exports) via gltf-transform."""
+        exts = []
+        try:
+            if src_path.lower().endswith('.glb'):
+                with open(src_path, 'rb') as f:
+                    head = f.read(20)
+                    clen = struct.unpack('<I', head[12:16])[0]
+                    doc = json.loads(f.read(clen))
+                exts = doc.get('extensionsUsed', [])
+            elif src_path.lower().endswith('.gltf'):
+                exts = json.load(open(src_path, encoding='utf-8')).get('extensionsUsed', [])
+        except Exception as e:
+            fail(item, f'cannot read source header {src_path}: {e}')
+            return None
+        if not any(e in exts for e in ('EXT_meshopt_compression', 'KHR_mesh_quantization')):
+            return src_path
+        import shutil, subprocess, tempfile
+        if not shutil.which('npx'):
+            fail(item, f'source needs decode ({exts}) but npx is unavailable; '
+                       f'pre-decode it with: npx @gltf-transform/cli copy + dequantize')
+            return None
+        tmp = tempfile.mkdtemp(prefix='csbake-swap-')
+        mid, out = os.path.join(tmp, 'mid.glb'), os.path.join(tmp, 'decoded.glb')
+        for cmd, i_, o_ in ((['npx', '--yes', '@gltf-transform/cli', 'copy'], src_path, mid),
+                            (['npx', '--yes', '@gltf-transform/cli', 'dequantize'], mid, out)):
+            r = subprocess.run(cmd + [i_, o_], capture_output=True, text=True, timeout=600)
+            if r.returncode != 0:
+                fail(item, f'gltf-transform failed on {src_path}: {r.stderr.strip()[:300]}')
+                return None
+        log(f'CSBAKE swap source decoded: {src_path} -> {out} (was {exts})')
+        return out
+
+    for si, swap in enumerate(cfg.get('region_swaps') or []):
+        item = f'region_swaps[{si}]'
+        region = swap.get('region')
+        src_rel = swap.get('from_glb')
+        if region not in REGION_ANCHORS or not src_rel:
+            fail(item, f'bad swap spec (region={region}, from_glb={src_rel})')
+            continue
+        src_path = src_rel if os.path.isabs(src_rel) else os.path.join(repo_root, src_rel)
+        if not os.path.exists(src_path):
+            fail(item, f'source glb missing: {src_path}')
+            continue
+        if not base_arm:
+            fail(item, 'base GLB has no armature; cannot re-skin a swapped region')
+            continue
+        # target region reference BEFORE the cut
+        tgt_verts = []
+        for o in meshes:
+            if not o.vertex_groups:
+                continue
+            wv = world_verts(o)
+            for v in o.data.vertices:
+                dc = dominant_canon(o, v)
+                if dc and bone_in_region(dc, region):
+                    tgt_verts.append(wv[v.index])
+        if not tgt_verts:
+            fail(item, f'no base verts found in region "{region}" (dominant-bone rule)')
+            continue
+        t_neck, t_h, t_fwd = region_ref(tgt_verts, region)
+        cut_total = sum(cut_region_from(o, region) for o in list(meshes))
+        log(f'CSBAKE swap {item}: cut {cut_total} base verts in region {region}')
+        meshes = [o for o in scene.objects if o.type == 'MESH']
+        # source: decode if needed, import, isolate the region
+        dec_path = prepare_swap_source(src_path, item)
+        if not dec_path:
+            continue
+        before = set(bpy.context.scene.objects)
+        try:
+            bpy.ops.import_scene.gltf(filepath=dec_path)
+        except Exception as e:
+            fail(item, f'source import failed ({dec_path}): {e}')
+            continue
+        src_objs = [o for o in bpy.context.scene.objects if o not in before]
+        src_meshes = [o for o in src_objs if o.type == 'MESH']
+        src_arms = [o for o in src_objs if o.type == 'ARMATURE']
+        bpy.context.view_layer.update()
+        # Normalize every source mesh to evaluated WORLD-space geometry
+        # (vertex groups/materials/UVs preserved), unparented, identity
+        # basis — from here on, data verts ARE world verts for both the
+        # skinned and unskinned paths.
+        dg = bpy.context.evaluated_depsgraph_get()
+        norm_meshes = []
+        for o in src_meshes:
+            ev = o.evaluated_get(dg)
+            me = bpy.data.meshes.new_from_object(ev, depsgraph=dg)
+            me.transform(o.matrix_world)
+            old = o.data
+            o.data = me
+            o.parent = None
+            o.matrix_basis = Matrix.Identity(4)
+            if old.users == 0:
+                bpy.data.meshes.remove(old)
+            norm_meshes.append(o)
+        src_meshes = norm_meshes
+        graft = []
+        src_skinned = any(len(o.vertex_groups) > 0 and
+                          any(len(v.groups) for v in o.data.vertices[:64])
+                          for o in src_meshes)
+        keep_verts = []
+        if src_skinned:
+            for o in src_meshes:
+                for v in o.data.vertices:
+                    dc = dominant_canon(o, v)
+                    if dc and bone_in_region(dc, region):
+                        keep_verts.append(v.co.copy())
+            # cut = remove everything NOT in the region
+            for o in src_meshes:
+                if not o.vertex_groups:
+                    bpy.data.objects.remove(o, do_unlink=True)
+                    continue
+                bm = bmesh.new(); bm.from_mesh(o.data)
+                kill_idx = set()
+                for v in o.data.vertices:
+                    dc = dominant_canon(o, v)
+                    if not dc or not bone_in_region(dc, region):
+                        kill_idx.add(v.index)
+                kill = []
+                if kill_idx:
+                    bm.verts.ensure_lookup_table()
+                    kill = [bm.verts[i] for i in sorted(kill_idx)]
+                if kill:
+                    bmesh.ops.delete(bm, geom=kill, context='VERTS')
+                bm.to_mesh(o.data); bm.free(); o.data.update()
+                if len(o.data.vertices):
+                    graft.append(o)
+                else:
+                    bpy.data.objects.remove(o, do_unlink=True)
+            if not keep_verts:
+                fail(item, f'skinned source has no verts in region "{region}"')
+        else:
+            # spatial neck-pinch cut (head only): scan bands along Z (Blender
+            # up after import), find the narrowest cross-section in the
+            # upper body, keep what is above it.
+            if region != 'head':
+                fail(item, f'unskinned source only supports region "head" (got "{region}")')
+            allw = []
+            for o in src_meshes:
+                allw += [v.co.copy() for v in o.data.vertices]
+            if not allw:
+                fail(item, 'unskinned source imported with no verts')
+                allw = None
+            if allw:
+                zs = [v.z for v in allw]
+                z0, z1 = min(zs), max(zs)
+                best_z, best_span = None, None
+                steps = 24
+                for i in range(steps + 1):
+                    zc = z0 + (z1 - z0) * (0.55 + 0.40 * i / steps)
+                    band = [v for v in allw if abs(v.z - zc) <= 0.02 * (z1 - z0)]
+                    if len(band) < 8:
+                        continue
+                    span = (max(v.x for v in band) - min(v.x for v in band)) * \
+                           (max(v.y for v in band) - min(v.y for v in band))
+                    if best_span is None or span < best_span:
+                        best_span, best_z = span, zc
+                log(f'CSBAKE swap {item}: neck pinch at z={best_z:.3f} (model z {z0:.2f}..{z1:.2f})')
+                keep_verts = [v for v in allw if v.z >= best_z]
+                for o in src_meshes:
+                    bm = bmesh.new(); bm.from_mesh(o.data)
+                    kill = [v for v in bm.verts if v.co.z < best_z]
+                    if kill:
+                        bmesh.ops.delete(bm, geom=kill, context='VERTS')
+                    bm.to_mesh(o.data); bm.free(); o.data.update()
+                    if len(o.data.vertices):
+                        graft.append(o)
+        if not graft or not keep_verts:
+            for o in src_objs:
+                bpy.data.objects.remove(o, do_unlink=True)
+            if not graft:
+                fail(item, 'nothing left of the source after the region cut')
+            continue
+        s_neck, s_h, s_fwd = region_ref(keep_verts, region)
+        k = float(swap.get('scale') or (t_h / s_h if s_h > 1e-6 else 1.0))
+        yaw = 0.0
+        if t_fwd and s_fwd:
+            from math import atan2
+            yaw = atan2(t_fwd.y, t_fwd.x) - atan2(s_fwd.y, s_fwd.x)
+        if swap.get('yaw_deg'):
+            from math import radians
+            yaw += radians(float(swap['yaw_deg']))
+        from math import cos, sin
+        R = Matrix(((cos(yaw), -sin(yaw), 0), (sin(yaw), cos(yaw), 0), (0, 0, 1)))
+        arm_inv = base_arm.matrix_world.inverted()
+        tgt_bone_by_canon = {}
+        for b in base_arm.data.bones:
+            tgt_bone_by_canon.setdefault(canon_bone(b.name), b.name)
+        anchors = []
+        for an in REGION_ANCHORS[region]:
+            ab = base_arm.data.bones.get(an)
+            if ab:
+                anchors.append((an, ab.head_local, ab.tail_local))
+        for o in graft:
+            me = o.data
+            for v in me.vertices:
+                v.co = t_neck + R @ ((v.co - s_neck) * k)
+            me.transform(arm_inv)   # world -> base armature space
+            o.matrix_world = Matrix.Identity(4)
+            # --- re-skin onto the base rig
+            if src_skinned:
+                remap = {}
+                for g in list(o.vertex_groups):
+                    tgt = tgt_bone_by_canon.get(canon_bone(g.name))
+                    if tgt and tgt != g.name:
+                        remap[g.name] = tgt
+                for old, new in remap.items():
+                    if new in o.vertex_groups:
+                        # merge weights into the existing group
+                        og, ng = o.vertex_groups[old], o.vertex_groups[new]
+                        for v in me.vertices:
+                            w = {e.group: e.weight for e in v.groups}
+                            if og.index in w:
+                                ng.add([v.index], w.get(ng.index, 0.0) + w[og.index], 'REPLACE')
+                        o.vertex_groups.remove(og)
+                    else:
+                        o.vertex_groups[old].name = new
+                drop = [g for g in list(o.vertex_groups) if g.name not in base_bones]
+                for g in drop:
+                    o.vertex_groups.remove(g)
+            else:
+                for g in list(o.vertex_groups):
+                    o.vertex_groups.remove(g)
+                groups = {}
+                for an, h, t in anchors:
+                    groups[an] = o.vertex_groups.new(name=an)
+                for v in me.vertices:
+                    ws = {}
+                    for an, h, t in anchors:
+                        seg = t - h
+                        L2 = max(seg.length_squared, 1e-9)
+                        u = min(1.0, max(0.0, (v.co - h).dot(seg) / L2))
+                        d = (v.co - (h + seg * u)).length
+                        ws[an] = 1.0 / (d * d + 1e-5)
+                    tot = sum(ws.values())
+                    for an, w in ws.items():
+                        if w / tot > 0.01:
+                            groups[an].add([v.index], w / tot, 'REPLACE')
+            for mod in list(o.modifiers):
+                if mod.type == 'ARMATURE':
+                    o.modifiers.remove(mod)
+            mod = o.modifiers.new(name='Armature', type='ARMATURE')
+            mod.object = base_arm
+            o.parent = base_arm
+            o.matrix_parent_inverse = Matrix.Identity(4)
+        for a in src_arms:
+            if a.name in bpy.context.scene.objects:
+                bpy.data.objects.remove(a, do_unlink=True)
+        meshes = [o for o in scene.objects if o.type == 'MESH']
+        log(f'CSBAKE swap {item}: grafted {region} from {src_rel} '
+            f'({len(graft)} mesh(es), scale {k:.3f}, yaw {yaw:.2f} rad, skinned-src={src_skinned})')
+
     # ---- (b) textures ------------------------------------------------------
     def find_material(pred, what):
         for o in meshes:
@@ -483,19 +843,139 @@ def bake(cfg_path, repo_root, mpfb_src, log=print):
         log(f'CSBAKE texture applied: {item} -> material {mat.name} image {img.name} region {region} mode={mode}')
 
     # ---- (c) mesh parts ----------------------------------------------------
+    # ROUND 2 (2026-10-21): placement is EXACT bone-local, by construction.
+    # Round 1 set matrix_parent_inverse = armature_world^-1 only, which left
+    # the socket bone's own matrix inside the transform — the saved numbers
+    # were world-compensations, not bone-local offsets, and parts landed
+    # "close but wrong" (owner graded the Master White hair/beard 40/100).
+    # Now: a part's evaluated world geometry is re-expressed in the part's
+    # OWN socket-bone frame, the placement transform is applied in that
+    # frame, and the result is skinned rigidly (100% weight) to the base
+    # socket bone:
+    #   world = base_bone_world x T(placement) x part_bone_local_geometry
+    # Placement (0,0,0 / 0deg / scale 1) = the part in its native registration
+    # on the socket bone. (Bone-PARENTED objects were tried first and
+    # rejected: the glTF exporter bakes their world transform into the
+    # geometry while keeping the node TRS, so importers double-transform
+    # them. Skinning evaluates identically everywhere.) Provable from the
+    # output GLB alone (customization/tools/proof/cs-round2-roundtrip.py).
     SOCKETS = {  # mirrors packages/creation-suite/src/attire.js SOCKETS
         # 'eye' (owner verdict 2026-10-20: eyes are real placeable mesh parts)
         # uses the Head-bone aliases, same as 'face'.
-        'eye': ['Head', 'mixamorig:Head', 'head', 'J_Head', 'Bip01 Head'],
-        'face': ['Head', 'mixamorig:Head', 'head', 'J_Head', 'Bip01 Head'],
-        'head': ['Head', 'mixamorig:Head', 'head', 'J_Head', 'Bip01 Head'],
-        'hair': ['Head', 'mixamorig:Head', 'head'],
-        'torso': ['Chest', 'Spine2', 'mixamorig:Spine2', 'Spine'],
-        'jacket': ['Chest', 'Spine2', 'mixamorig:Spine2'],
-        'waist': ['Hips', 'mixamorig:Hips', 'pelvis'],
+        'eye': ['Head', 'mixamorig:Head', 'head', 'J_Head', 'Bip01 Head', 'DEF-head'],
+        'face': ['Head', 'mixamorig:Head', 'head', 'J_Head', 'Bip01 Head', 'DEF-head'],
+        'head': ['Head', 'mixamorig:Head', 'head', 'J_Head', 'Bip01 Head', 'DEF-head'],
+        'hair': ['Head', 'mixamorig:Head', 'head', 'DEF-head'],
+        'torso': ['Chest', 'Spine2', 'mixamorig:Spine2', 'Spine', 'DEF-spine.003'],
+        'jacket': ['Chest', 'Spine2', 'mixamorig:Spine2', 'DEF-spine.003'],
+        'waist': ['Hips', 'mixamorig:Hips', 'pelvis', 'DEF-hips'],
         'hands': ['RightHand', 'mixamorig:RightHand'],
         'accessory': ['Chest', 'Neck'],
     }
+
+    def apply_part_tint(objs, tint_hex, item):
+        """Tint a part's materials (round-2 per-part tint). Textured
+        materials get the tint multiplied into a CLONE of their base-color
+        image (a Principled default-value multiply is a no-op under a
+        texture, and node-graph tricks don't survive glTF export);
+        untextured materials get the factor multiply. Materials are cloned
+        first so a tint can never leak into the base model or another part."""
+        if not tint_hex:
+            return
+        import numpy as np
+        r, g, b = hex_rgb(tint_hex)
+        seen = {}
+        for o in objs:
+            for idx, ms in enumerate(o.material_slots):
+                if not ms.material:
+                    continue
+                if ms.material.name not in seen:
+                    seen[ms.material.name] = ms.material.copy()
+                o.material_slots[idx].material = seen[ms.material.name]
+        tinted_imgs = set()
+        for mat in seen.values():
+            if not mat.use_nodes:
+                continue
+            for node in mat.node_tree.nodes:
+                if node.type != 'BSDF_PRINCIPLED':
+                    continue
+                link = node.inputs['Base Color'].links
+                if link and link[0].from_node.type == 'TEX_IMAGE':
+                    img = link[0].from_node.image
+                    if img and img.name not in tinted_imgs:
+                        tinted_imgs.add(img.name)
+                        clone = img.copy()
+                        link[0].from_node.image = clone
+                        px = np.empty(len(clone.pixels), dtype=np.float32)
+                        clone.pixels.foreach_get(px)
+                        px = px.reshape(-1, 4)
+                        px[:, 0] *= r; px[:, 1] *= g; px[:, 2] *= b
+                        clone.pixels.foreach_set(px.ravel())
+                        clone.update()
+                        try:
+                            clone.pack()
+                        except Exception:
+                            pass
+                else:
+                    cur = node.inputs['Base Color'].default_value
+                    cur[0] *= r; cur[1] *= g; cur[2] *= b
+        log(f'CSBAKE part tint: {item} {tint_hex} -> {len(seen)} material(s), '
+            f'{len(tinted_imgs)} texture(s) multiplied')
+
+    _base_skin_cache = {}
+
+    def skin_part_from_base(part_obj, arm_obj):
+        """Copy skin weights onto a part from the nearest base verts.
+
+        Base = every non-cs_ mesh in the scene carrying vertex groups (the
+        imported base model's own skin). Vert coords are armature space on
+        both sides (imported mesh objects sit at identity under the
+        armature; part geometry was transformed into armature space by the
+        caller). Built once per bake and cached.
+        """
+        if 'tree' not in _base_skin_cache:
+            pts, wsets = [], []
+            for bo in bpy.context.scene.objects:
+                if bo.type != 'MESH' or bo.name.startswith('cs_'):
+                    continue
+                if not bo.vertex_groups:
+                    continue
+                gnames = [g.name for g in bo.vertex_groups]
+                for v in bo.data.vertices:
+                    ws = [(gnames[g.group], g.weight) for g in v.groups
+                          if g.weight > 0.0 and g.group < len(gnames)]
+                    if ws:
+                        pts.append(v.co.copy())
+                        wsets.append(ws)
+            tree = KDTree(len(pts))
+            for i, p in enumerate(pts):
+                tree.insert(p, i)
+            tree.balance()
+            _base_skin_cache['tree'] = tree
+            _base_skin_cache['wsets'] = wsets
+            log(f'CSBAKE base skin field: {len(pts)} verts indexed')
+        tree, wsets = _base_skin_cache['tree'], _base_skin_cache['wsets']
+        groups = {}
+        for v in part_obj.data.vertices:
+            _co, idx, _dist = tree.find(v.co)
+            for gname, w in wsets[idx]:
+                vg = groups.get(gname)
+                if vg is None:
+                    vg = part_obj.vertex_groups.get(gname) or \
+                        part_obj.vertex_groups.new(name=gname)
+                    groups[gname] = vg
+                vg.add([v.index], w, 'REPLACE')
+
+    def placement_xform(placement):
+        from math import radians
+        s = placement.get('s', 1)
+        return {
+            'location': Vector((placement.get('px', 0), placement.get('py', 0), placement.get('pz', 0))),
+            'rotation': (radians(placement.get('rx', 0)), radians(placement.get('ry', 0)),
+                         radians(placement.get('rz', 0))),
+            'scale': Vector((placement.get('sx', s), placement.get('sy', s), placement.get('sz', s))),
+        }
+
     for slot, spec in (cfg.get('parts') or {}).items():
         item = f'parts.{slot}'
         if not spec:
@@ -514,14 +994,34 @@ def bake(cfg_path, repo_root, mpfb_src, log=print):
         before = set(bpy.context.scene.objects)
         bpy.ops.import_scene.gltf(filepath=glb_path)
         new_objs = [o for o in bpy.context.scene.objects if o not in before]
-        new_meshes = [o for o in new_objs if o.type == 'MESH']
         new_arms = [o for o in new_objs if o.type == 'ARMATURE']
+        new_meshes = [o for o in new_objs if o.type == 'MESH']
+        if new_arms:
+            # Source scenes can carry helper props that are not part of the
+            # piece (the CC0 hair files ship a root-level Icosphere). Only
+            # meshes tied to the part's own rig are the part.
+            keep = [o for o in new_meshes
+                    if o.parent in new_arms or len(o.vertex_groups) > 0 or
+                    any(m.type == 'ARMATURE' and m.object in new_arms for m in o.modifiers)]
+            for o in new_meshes:
+                if o not in keep:
+                    log(f'CSBAKE part: dropping non-part prop {o.name} from {glb_rel}')
+                    bpy.data.objects.remove(o, do_unlink=True)
+                    new_objs.remove(o)
+            new_meshes = keep
         placement = spec.get('placement') or {}
         base_bones = {b.name for b in base_arm.data.bones} if base_arm else set()
         part_bones = set()
         for a in new_arms:
             part_bones |= {b.name for b in a.data.bones}
         if new_arms and part_bones and part_bones <= base_bones:
+            # Skinned-merge: the part's own rig IS the base rig — skinning
+            # carries the registration, so a bone-local placement offset has
+            # no frame to act on. Warn loudly if one was saved anyway.
+            if any(placement.get(k) for k in ('px', 'py', 'pz', 'rx', 'ry', 'rz')) or \
+               placement.get('s', 1) != 1:
+                log(f'CSBAKE WARN [{item}]: placement ignored on skinned-merge part '
+                    f'(its rig matches the base rig; placement only applies to socket-attached parts)')
             for o in new_meshes:
                 for mod in o.modifiers:
                     if mod.type == 'ARMATURE' and mod.object in new_arms:
@@ -530,6 +1030,7 @@ def bake(cfg_path, repo_root, mpfb_src, log=print):
                     o.parent = None
             for a in new_arms:
                 bpy.data.objects.remove(a, do_unlink=True)
+            apply_part_tint(new_meshes, spec.get('tint'), item)
             log(f'CSBAKE part skinned-merge: {item} ({len(new_meshes)} meshes re-bound to base rig)')
         else:
             if not base_arm:
@@ -543,42 +1044,97 @@ def bake(cfg_path, repo_root, mpfb_src, log=print):
             if not bone:
                 fail(item, f'no socket bone for slot "{slot}" (aliases tried: {aliases})')
                 continue
-            from math import radians
+            # The part's own socket frame: the alias bone on the part's rig
+            # if it has one, else the bone its verts are weighted to most,
+            # else identity (unskinned part: attach by bbox centre, below).
+            bpy.context.view_layer.update()
+            dg = bpy.context.evaluated_depsgraph_get()
+            frame_inv = None
+            frame_desc = 'identity (unskinned, bbox-centre attach)'
+            part_arm = new_arms[0] if new_arms else None
+            if part_arm:
+                pbones = {b.name for b in part_arm.data.bones}
+                p_bone = next((n for n in aliases if n in pbones), None)
+                if not p_bone:
+                    from collections import Counter
+                    cnt = Counter()
+                    for o in new_meshes:
+                        for g in o.vertex_groups:
+                            cnt[g.name] += 1
+                    p_bone = next((n for n, _ in cnt.most_common() if n in pbones), None)
+                if p_bone:
+                    frame_inv = (part_arm.matrix_world @
+                                 part_arm.data.bones[p_bone].matrix_local).inverted()
+                    frame_desc = f'part bone {p_bone}'
+            attached = []
+            xf = placement_xform(placement)
+            from mathutils import Euler
+            T_place = (Matrix.Translation(xf['location']) @
+                       Euler(xf['rotation'], 'XYZ').to_matrix().to_4x4() @
+                       Matrix.Diagonal(xf['scale']).to_4x4())
+            bone_local_mtx = base_arm.data.bones[bone].matrix_local
+            for o in new_meshes:
+                ev = o.evaluated_get(dg)
+                me = bpy.data.meshes.new_from_object(ev, depsgraph=dg)
+                me.transform(o.matrix_world)          # world-space bind geometry
+                if frame_inv is not None:
+                    me.transform(frame_inv)            # -> part socket-bone local
+                else:
+                    vs = [v.co for v in me.vertices]
+                    if vs:
+                        c = sum(vs, Vector()) / len(vs)
+                        me.transform(Matrix.Translation(-c))
+                # Skin the part rigidly to the socket bone (100% weight),
+                # geometry in base-armature space. Bone-PARENTED objects are
+                # a portability trap — the glTF exporter bakes their world
+                # transform into the geometry while keeping the node TRS,
+                # so importers double-transform them (found the hard way:
+                # perfect measurements, parts hanging off the head in the
+                # render). Plain skinning is the one path every consumer
+                # (Blender, three.js, the game) evaluates identically.
+                me.transform(bone_local_mtx @ T_place)   # -> base armature space
+                no = bpy.data.objects.new(f'cs_{slot}_{o.name}', me)
+                bpy.context.collection.objects.link(no)
+                # Weight the part from the BASE's own skin field (nearest
+                # base vert's full weight set), NOT a flat 100% socket bone:
+                # the surface a part sits on blends several bones (Head/Neck/
+                # Spine), and wherever those frames differ — T7 Baek's bind
+                # has a turned head/neck — a rigid one-bone part shears away
+                # from the surface (the Master White "ring": perfect bind
+                # numbers, parts visibly rotated off the head in renders).
+                # Copying the local field makes the part deform WITH the
+                # surface it sits on, in bind and in animation alike.
+                skin_part_from_base(no, base_arm)
+                mod = no.modifiers.new(name='Armature', type='ARMATURE')
+                mod.object = base_arm
+                no.parent = base_arm
+                no.matrix_parent_inverse = Matrix.Identity(4)
+                attached.append(no)
             for o in new_objs:
-                if o.parent in new_objs:
-                    continue
-                o.parent = base_arm
-                o.parent_type = 'BONE'
-                o.parent_bone = bone
-                o.matrix_parent_inverse = base_arm.matrix_world.inverted()
-                if placement:
-                    o.location = (placement.get('px', 0), placement.get('py', 0), placement.get('pz', 0))
-                    # glTF-imported part roots are in QUATERNION rotation mode,
-                    # where assigning rotation_euler is silently ignored and
-                    # placement rotations never apply. Set the mode first.
-                    o.rotation_mode = 'XYZ'
-                    o.rotation_euler = (radians(placement.get('rx', 0)), radians(placement.get('ry', 0)),
-                                        radians(placement.get('rz', 0)))
-                    s = placement.get('s', 1)
-                    o.scale = (s, s, s)
-            log(f'CSBAKE part bone-parented: {item} -> bone {bone} placement={placement}')
+                bpy.data.objects.remove(o, do_unlink=True)
+            apply_part_tint(attached, spec.get('tint'), item)
+            log(f'CSBAKE part socket-skinned: {item} -> bone {bone} frame={frame_desc} placement={placement}')
 
     # ---- (d) colors ----------------------------------------------------------
-    def hex_rgb(h):
-        h = h.lstrip('#')
-        return tuple(int(h[i:i + 2], 16) / 255.0 for i in (0, 2, 4))
     for kind, hexval in (cfg.get('colors') or {}).items():
         if not hexval:
             continue
         item = f'colors.{kind}'
         targets = []
         cmap = char_maps.get(fighter, {})
-        want_mat = ((cmap.get(kind) or {}).get('material') or '').lower()
+        kind_map = cmap.get(kind) or {}
+        # A mapping names ONE material via "material" (the texture-part path)
+        # and may name MORE via "materials" — colors like skin tone live on
+        # many materials at once (round 2: Baek's skin spans 10 pek1u mats).
+        want_mats = [m.lower() for m in
+                     ([kind_map.get('material')] if kind_map.get('material') else []) +
+                     (kind_map.get('materials') or [])]
         for o in meshes:
             for slot in o.data.materials:
                 if not slot:
                     continue
-                if (want_mat and want_mat in slot.name.lower()) or kind in slot.name.lower():
+                if any(w in slot.name.lower() for w in want_mats) or \
+                   (not want_mats and kind in slot.name.lower()):
                     if slot not in targets:
                         targets.append(slot)
         if not targets:

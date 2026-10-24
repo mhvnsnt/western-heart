@@ -16,6 +16,10 @@
    ============================================================ */
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+// Unified lighting rig (worker 27): stage light rigs, character key/fill/rim
+// separation, soul glow, grade hooks. See game/js/lighting-rig.js for the
+// T7/SFV/DOA6/T8 teardown audit.
+import { buildStageLightRig } from './lighting-rig.js';
 
 /* ---------------- minimal OBJ loader ----------------
    Tekken 3 panoramas use v / vt / f (triangles, 1-indexed, faces as
@@ -183,11 +187,21 @@ export const STAGES = [
       sun: ['#ff9a5c', 2.6, [-11, 6.5, 5]],
       rim: ['#5a6ab0', 0.65, [8, 6, -7]],
       fill: ['#ffe0c0', 1.0, [0, 4, 10]],
+      // Lighting rig (worker 27): Earth land — lantern gold motes (bible:
+      // "dust motes in lantern beams"), warm character key, lifted grade.
+      rig: {
+        charKey: ['#ffe9d2', 20, 7], rimBoost: 1.15,
+        motes: { color: '#FFC85C', count: 200, size: 0.06, opacity: 0.55 },
+      },
+      grade: { exposure: 1.5, bloom: 0.7 },
     },
     floor: { kind: 'stone', tint: '#a89a90', repeat: 30, platformTint: '#b5a498', platformRepeat: 7 },
     swatch: ['#120e33', '#ff7a3c'],
     builder: 'shrine',
     associatedFighters: ['phantom', 'diablo'],
+    // Stage-break lane (Tekken floor break): cracked crypt seal at center —
+    // a heavy slam shatters it and the fight drops to the crypt below.
+    breakables: [{ type: 'floor', x: 0, z: 0, r: 2.6, depth: 6 }],
   },
   {
     id: 'tong-nou', name: 'TONG-NOU', tier: 'CANON LANDS',
@@ -202,6 +216,13 @@ export const STAGES = [
       sun: ['#7ae08a', 1.4, [-6, 8, 4]],
       rim: ['#3ae060', 1.1, [6, 5, -6]],
       fill: ['#b8e8c0', 0.5, [0, 4, 10]],
+      // Lighting rig (worker 27): the Void — sparse soul-lights in darkness
+      // (bible: "like plankton in a night ocean"), darker grade, high bloom.
+      rig: {
+        charKey: ['#c8ffd8', 18, 7], rimBoost: 1.2,
+        motes: { color: '#9fd8ff', count: 90, size: 0.05, opacity: 0.5 },
+      },
+      grade: { exposure: 1.35, bloom: 0.85 },
     },
     floor: { kind: 'dark', tint: '#1a2a1e', repeat: 24, platformTint: '#223a28', platformRepeat: 6 },
     swatch: ['#031008', '#3ae060'],
@@ -221,11 +242,22 @@ export const STAGES = [
       sun: ['#ffca7a', 2.4, [-10, 7, 6]],
       rim: ['#4a7a5a', 0.6, [8, 6, -7]],
       fill: ['#ffe8c0', 0.9, [0, 4, 10]],
+      // Lighting rig (worker 27): Wood land — pollen-light motes (bible:
+      // "humid luminosity, pollen-light motes"), dawn-warm character key.
+      rig: {
+        charKey: ['#ffe0b0', 20, 7], rimBoost: 1.1,
+        motes: { color: '#FFD76A', count: 260, size: 0.05, opacity: 0.5 },
+      },
+      grade: { exposure: 1.5, bloom: 0.7 },
     },
     floor: { kind: 'sand', tint: '#c09a68', repeat: 26, platformTint: '#d0aa74', platformRepeat: 6 },
     swatch: ['#0a1a2a', '#ffca7a'],
     builder: 'treelife',
     pano: 'assets/stages/eastern-mind/tree-of-life/pano.png', // real Eastern Mind background art
+    // The source bitmap's top ~12 rows are near-white cloud (rows 0-9 avg >210/255);
+    // under exposure 1.5 + bloom they blew out into a white band. Crop them and
+    // pull the backdrop under the grade (owner playtest, Oct 23 2026).
+    panoCropTop: 0.1, panoTint: '#b8b8b8',
     associatedFighters: ['saku-ra'],
   },
   {
@@ -241,12 +273,22 @@ export const STAGES = [
       sun: ['#ff6a2a', 2.8, [-11, 5, 5]],
       rim: ['#ff3a1a', 0.7, [8, 6, -7]],
       fill: ['#ffc0a0', 0.9, [0, 4, 10]],
+      // Lighting rig (worker 27): Fire land — floating cinders (bible:
+      // "heat shimmer, floating cinders"), ember character key, hot grade.
+      rig: {
+        charKey: ['#ffc0a0', 22, 7], rimBoost: 1.1,
+        motes: { color: '#E85D1F', count: 240, size: 0.06, opacity: 0.55 },
+      },
+      grade: { exposure: 1.55, bloom: 0.75 },
     },
     floor: { kind: 'scorched', tint: '#8a5a48', repeat: 24, platformTint: '#9a6a50', platformRepeat: 6 },
     swatch: ['#1a0608', '#ff6a2a'],
     builder: 'chiu',
     pano: 'assets/stages/eastern-mind/plains-of-chi-u/pano.png', // real Eastern Mind background art
     associatedFighters: ['michiko'],
+    // Stage-break lane: scorched weak crust off-center — heavy slams break
+    // through to the ember hollow below.
+    breakables: [{ type: 'floor', x: 2.5, z: 0.5, r: 2.4, depth: 6 }],
   },
   {
     id: 'octagonal-shrine', name: 'OCTAGONAL SHRINE PAR-FANG', tier: 'CANON LANDS',
@@ -261,6 +303,13 @@ export const STAGES = [
       sun: ['#c0a080', 1.6, [-8, 9, 4]],
       rim: ['#6a5a8a', 0.6, [8, 6, -7]],
       fill: ['#d0c0b0', 0.7, [0, 4, 10]],
+      // Lighting rig (worker 27): the Source — stillness; Moonface Pale
+      // motes (Malakor thread), restrained grade ("absolute quiet").
+      rig: {
+        charKey: ['#f4e8d8', 18, 7], rimBoost: 1.0,
+        motes: { color: '#C9B8E8', count: 120, size: 0.045, opacity: 0.45 },
+      },
+      grade: { exposure: 1.4, bloom: 0.7 },
     },
     floor: { kind: 'stone', tint: '#8a8492', repeat: 26, platformTint: '#9a94a2', platformRepeat: 6, octagon: true },
     swatch: ['#0a0810', '#c0a080'],
@@ -281,12 +330,28 @@ export const STAGES = [
       sun: ['#c0d0ff', 2.0, [-9, 8, 5]],
       rim: ['#ff6ad0', 0.7, [8, 6, -7]],
       fill: ['#e0d0ff', 0.9, [0, 4, 10]],
+      // Lighting rig (worker 27): Metal land — refracted light motes
+      // (bible: "refracted light beams, floating dust as prisms"), cool key.
+      rig: {
+        charKey: ['#e8f0ff', 20, 7], rimBoost: 1.25,
+        motes: { color: '#EAF6FF', count: 200, size: 0.05, opacity: 0.5 },
+      },
+      grade: { exposure: 1.45, bloom: 0.85 },
     },
     floor: { kind: 'metal', tint: '#a0a8b8', repeat: 20, platformTint: '#b0b8c8', platformRepeat: 5 },
     swatch: ['#0a0a18', '#ff6ad0'],
     builder: 'helix',
     pano: 'assets/stages/eastern-mind/helix-palace/pano.png', // real Eastern Mind background art
+    // Arena upgrade pipeline, Stage 3 (detail pass): the Pink Narwhal club
+    // interior (SmutBase Virt-A-Mate scene; see
+    // tools/stage-arena-pull/convert_pinknarwhal.py) replaces the procedural
+    // spiral blockout. The club carries its own fighting surface.
+    glb: 'assets/stages/pink-narwhal/pink-narwhal.glb',
+    hidePlatform: true,
     associatedFighters: ['purple-rain'],
+    // Stage-break lane (T7 balcony break): the palace balcony edge — a heavy
+    // hit there shatters the railing and drops the fight one level.
+    breakables: [{ type: 'balcony', x: 5.5, z: 0, r: 2.2, w: 4.5, depth: 6 }],
   },
   {
     id: 'palace-of-dreaming', name: 'PALACE OF DREAMING', tier: 'CANON LANDS',
@@ -301,6 +366,13 @@ export const STAGES = [
       sun: ['#9ac0ff', 2.0, [-9, 7, 6]],
       rim: ['#4ae0ff', 0.8, [8, 6, -7]],
       fill: ['#c0e0ff', 0.9, [0, 4, 10]],
+      // Lighting rig (worker 27): Water land — bioluminescent drift
+      // (bible: "bioluminescent drift... underwater while breathing air").
+      rig: {
+        charKey: ['#c8f0ff', 20, 7], rimBoost: 1.2,
+        motes: { color: '#4FD8E8', count: 220, size: 0.055, opacity: 0.5 },
+      },
+      grade: { exposure: 1.45, bloom: 0.85 },
     },
     floor: { kind: 'dream', tint: '#8a90c8', repeat: 18, platformTint: '#9aa0d8', platformRepeat: 5 },
     swatch: ['#0a1030', '#4ae0ff'],
@@ -321,6 +393,13 @@ export const STAGES = [
       sun: ['#ffaa6a', 2.0, [-10, 6, 6]],
       rim: ['#b06ae0', 0.7, [8, 6, -7]],
       fill: ['#ffd0a0', 0.8, [0, 4, 10]],
+      // Lighting rig (worker 27): liminal bazaar — Malakor-thread primary
+      // zone. Nostalgia Haze motes, Trader-gold character key.
+      rig: {
+        charKey: ['#ffd76a', 20, 7], rimBoost: 1.2,
+        motes: { color: '#8A6FB8', count: 200, size: 0.055, opacity: 0.5 },
+      },
+      grade: { exposure: 1.5, bloom: 0.8 },
     },
     floor: { kind: 'stone', tint: '#7a6a80', repeat: 26, platformTint: '#8a7a90', platformRepeat: 6 },
     swatch: ['#0c0a20', '#b06ae0'],
@@ -622,6 +701,41 @@ for (const [sid, pos, tgt] of [
 /* Thumbnails: rendered own-eyes shots, one per stage
    (tools/stage-arena-pull/render_gallery.py). The select screen shows the
    thumbnail and falls back to the palette swatch when the file is absent. */
+/* ---- TEKKEN 7: MISHIMA DOJO (community Blender port of the T7 stage) ----
+   Source: teardown/tekken7/arenas/mishima-dojo_2024-map.rar ->
+   Mishima_Dojo_Final_2_17_24.blend (T7_DM_ENV_s0* / T7_SM_ENV_s0* meshes,
+   i.e. a rip of T7 stage s0). Converted by tools/stage-arena-pull/convert_mishima_dojo.py
+   (decimated 1.7M -> ~60k tris, no textures: the .rar shipped none).
+   Origin/license log: docs/tech/T78-FULL-INTEGRATION.md (Mishima Dojo section). */
+// PRIVATE BUILDS ONLY: this is Bandai Namco geometry, so the GLB is not shipped
+// in this public repo or on the public Pages site. It lives in the private repo
+// mhvnsnt/game-reverse-engineering (tekken7/stages/mishima-dojo/). A private
+// build copies it to game/assets/stages/t7-mishima-dojo/ and sets
+// globalThis.__WH_PRIVATE_ASSETS = true before boot.
+if (globalThis.__WH_PRIVATE_ASSETS) STAGES.push({
+  id: 't7-mishima-dojo', name: 'MISHIMA DOJO', tier: 'TEKKEN 7',
+  universe: 'Tekken 7', element: 'Wood',
+  description: 'Real Tekken 7 Mishima Dojo geometry: wood panels, floor relief, guardian statues, bonfires and the mountain skyline.',
+  dims: { width: 16.8, depth: 6.0, wallDistance: 8.4 },
+  spawns: { p1: -3.5, p2: 3.5 },
+  lighting: {
+    sky: [[0.0, '#05060c'], [0.6, '#10142a'], [0.9, '#2a2030'], [1.0, '#0a0608']],
+    fog: ['#0c0a10', 30, 120],
+    hemi: ['#8a7a6a', '#2a1a10', 1.6],
+    sun: ['#ffd0a0', 2.0, [-8, 10, 6]],
+    rim: ['#6a7aff', 0.6, [8, 6, -7]],
+    fill: ['#ffb070', 0.9, [0, 4, 10]],
+    grade: { exposure: 1.2, bloom: 0.5 },
+  },
+  floor: { kind: 'dark', tint: '#3a2a1a', repeat: 24, platformTint: '#5a3e24', platformRepeat: 6 },
+  swatch: ['#10142a', '#ffb070'],
+  builder: 't7glb',
+  glb: 'assets/stages/t7-mishima-dojo/mishima-dojo.glb',
+  glbScale: 0.8, glbRotY: 0,
+  hidePlatform: true,
+  source: { game: 'Tekken 7', stage: 'Mishima Dojo (s0)', file: 'teardown/tekken7/arenas/mishima-dojo_2024-map.rar' },
+});
+
 for (const s of STAGES) s.thumb = `assets/stages/thumbs/${s.id}.png`;
 
 export function getStage(id) {
@@ -650,10 +764,13 @@ function buildBase(g, def, api) {
       panoTex.colorSpace = THREE.SRGBColorSpace;
       // The teardown panos are 580px-wide 2D backdrops: repeat 3x around so
       // the art reads at a sane scale instead of one stretched wrap.
-      panoTex.wrapS = THREE.RepeatWrapping; panoTex.repeat.set(3, 1);
+      panoTex.wrapS = THREE.RepeatWrapping;
+      // panoCropTop: fraction of the bitmap's top edge to drop (v=1 is the top row).
+      panoTex.repeat.set(3, 1 - (def.panoCropTop || 0));
       const pano = new THREE.Mesh(
         new THREE.CylinderGeometry(30, 30, 10, 48, 1, true),
-        new THREE.MeshBasicMaterial({ map: panoTex, side: THREE.BackSide, fog: false })
+        new THREE.MeshBasicMaterial({ map: panoTex, side: THREE.BackSide, fog: false,
+          ...(def.panoCropTop ? { color: _hex(def.panoTint || '#ffffff') } : {}) })
       );
       pano.position.y = 3.5; g.add(pano);
     } catch (e) {
@@ -679,20 +796,11 @@ function buildBase(g, def, api) {
     plat.position.y = -0.25; plat.rotation.y = Math.PI / 8;
     plat.receiveShadow = true; g.add(plat);
   }
-  // lights
-  g.add(new THREE.HemisphereLight(_hex(L.hemi[0]), _hex(L.hemi[1]), L.hemi[2]));
-  const sun = new THREE.DirectionalLight(_hex(L.sun[0]), L.sun[1]);
-  sun.position.set(...L.sun[2]); sun.castShadow = true;
-  const sm = api.isMobile ? 1024 : 2048;
-  sun.shadow.mapSize.set(sm, sm);
-  sun.shadow.camera.near = 1; sun.shadow.camera.far = 50;
-  sun.shadow.camera.left = -12; sun.shadow.camera.right = 12;
-  sun.shadow.camera.top = 12; sun.shadow.camera.bottom = -12;
-  sun.shadow.bias = -0.0006; g.add(sun);
-  const rim = new THREE.DirectionalLight(_hex(L.rim[0]), L.rim[1]);
-  rim.position.set(...L.rim[2]); g.add(rim);
-  const fill = new THREE.DirectionalLight(_hex(L.fill[0]), L.fill[1]);
-  fill.position.set(...L.fill[2]); g.add(fill);
+  // lights — unified rig (T7 light/lightstatic split: hemi+sky+fog is the
+  // baked-ambient half; key/rim/fill + accent points are the dynamic half).
+  // Also adds atmosphere motes (bible: "darkness is a material").
+  const { updaters: rigUpdaters } = buildStageLightRig(g, def, api);
+  updaters.push(...rigUpdaters);
   return { updaters, skyTex, fog: new THREE.Fog(_hex(L.fog[0]), L.fog[1], L.fog[2]) };
 }
 
@@ -975,17 +1083,49 @@ function buildParFang(g, def, api) {
   return { updaters, skyTex, fog };
 }
 
-/* ---- HELIX PALACE: spiral palace + five glowing desire rooms ---- */
-function buildHelix(g, def, api) {
+/* ---- HELIX PALACE: Pink Narwhal club interior (teardown-sourced detail pass) ----
+   Arena upgrade pipeline, Stage 3: the procedural spiral blockout below is kept
+   as the no-GLB fallback (it is the saved Stage-2 draft in arenas/drafts/); the
+   real geometry is the Pink Narwhal club map (SmutBase Virt-A-Mate scene,
+   converted by tools/stage-arena-pull/convert_pinknarwhal.py). The five canon
+   desire rooms ride as glowing pods marking the club's five zones. */
+async function buildHelix(g, def, api) {
   const { updaters, skyTex, fog } = buildBase(g, def, api);
-  const wallMat = new THREE.MeshStandardMaterial({ color: 0x3a3a4e, roughness: 0.4, metalness: 0.8 });
-  for (let i = 0; i < 24; i++) {
-    const a = (i / 24) * Math.PI * 2.6, r = 12 + i * 0.25;
-    const seg = new THREE.Mesh(new THREE.BoxGeometry(4.2, 5.5, 0.4), wallMat);
-    seg.position.set(Math.cos(a) * r, 2.6, Math.sin(a) * r);
-    seg.lookAt(0, 2.6, 0); g.add(seg);
+  let detailed = false;
+  if (def.glb) {
+    try {
+      const gltf = await new GLTFLoader().loadAsync(def.glb);
+      const club = gltf.scene;
+      club.traverse((o) => {
+        if (o.isMesh) {
+          o.castShadow = true; o.receiveShadow = true;
+          if (o.material && o.geometry.getAttribute('color'))
+            o.material.vertexColors = true;
+        }
+      });
+      g.add(club);
+      detailed = true;
+    } catch (e) {
+      console.warn(`[WH] stage ${def.id}: GLB ${def.glb} failed (${e.message}), blockout fallback`);
+    }
   }
-  const rooms = [
+  if (!detailed) {
+    // Stage-2 blockout fallback: spiral palace walls (the approved blockout).
+    const wallMat = new THREE.MeshStandardMaterial({ color: 0x3a3a4e, roughness: 0.4, metalness: 0.8 });
+    for (let i = 0; i < 24; i++) {
+      const a = (i / 24) * Math.PI * 2.6, r = 12 + i * 0.25;
+      const seg = new THREE.Mesh(new THREE.BoxGeometry(4.2, 5.5, 0.4), wallMat);
+      seg.position.set(Math.cos(a) * r, 2.6, Math.sin(a) * r);
+      seg.lookAt(0, 2.6, 0); g.add(seg);
+    }
+  }
+  // Five desire rooms (canon): Greed, Appetite, Immortality, Sexual Desire,
+  // Destruction. With the club interior they mark the five zones — VIP west,
+  // bar east, stage center-back, pole stage, DJ booth.
+  const rooms = detailed ? [
+    [0xffd24a, -7.5, 3.0, -9], [0xff6a2a, 7.5, 3.0, -9], [0xf0f0ff, 0, 3.6, -12],
+    [0xff4a9a, 1.2, 3.0, -9.5], [0x8a2ae0, 5.8, 3.0, -10],
+  ] : [
     [0xffd24a, -9, 2.2, -7], [0xff6a2a, 9, 2.2, -7], [0xf0f0ff, 0, 2.6, -11],
     [0xff4a9a, -6, 2.2, 8], [0x8a2ae0, 6, 2.2, 8],
   ];
@@ -1273,11 +1413,33 @@ async function buildNoMercy(g, def, api) {
   return { updaters, skyTex, fog };
 }
 
+/* ---- TEKKEN 7 GLB stage (Mishima Dojo): untextured rip, normals rebuilt ---- */
+async function buildT7Glb(g, def, api) {
+  const { updaters, skyTex, fog } = buildBase(g, def, api);
+  try {
+    const gltf = await new GLTFLoader().loadAsync(def.glb);
+    gltf.scene.traverse((o) => {
+      if (!o.isMesh) return;
+      // exported without normals to fit phones; rebuild them here
+      if (!o.geometry.getAttribute('normal')) o.geometry.computeVertexNormals();
+      o.castShadow = !api.isMobile; o.receiveShadow = true;
+    });
+    gltf.scene.scale.setScalar(def.glbScale || 1); gltf.scene.rotation.y = def.glbRotY || 0;
+    g.add(gltf.scene);
+    for (const [x, z] of [[-2.4, -10.4], [2.4, -10.4], [-8, 0], [8, 0]]) {
+      const pl = new THREE.PointLight(0xff9a4a, 12, 18, 2); pl.position.set(x, 2, z); g.add(pl);
+    }
+  } catch (e) {
+    console.warn(`[WH] stage ${def.id}: GLB ${def.glb} failed (${e.message})`);
+  }
+  return { updaters, skyTex, fog };
+}
+
 const BUILDERS = {
   shrine: buildShrine, tongnou: buildTongNou, treelife: buildTreeLife,
   chiu: buildChiU, parfang: buildParFang, helix: buildHelix,
   dreaming: buildDreaming, marketplace: buildMarketplace, t3retro: buildT3Retro,
-  sunra: buildSunRa, nomercy: buildNoMercy,
+  sunra: buildSunRa, nomercy: buildNoMercy, t7glb: buildT7Glb,
 };
 
 /* Build a stage into a fresh group. Returns { group, update, def, skyTex, fog }.
