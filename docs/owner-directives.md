@@ -427,3 +427,70 @@ Eastern Mind Jin is NOT Jin Kazama. In all files, docs, and code: "Jin (Eastern 
 - Log the coordination pattern in the repo: `docs/AGENT-TEAM-PROTOCOL.md`.
 - Maximize free resources (VM, open-source, API, background agents); save the user's paid credits.
 - Keep work going autonomously around the clock.
+## DO THE WORK RIGHT, NOT FAST (user directive 2026-10-24)
+
+User said (verbatim):
+"Bro your bullshit me so hard, bro. Yeah, you changed. The grapple animation on one button. And you changed it from the grapple to a punch. But when I press it twice, it still plays the grapple animation like he got the person in a grapple and is delivering a grapple. And the punch that you put is a fucking jumping punch. Like, bro, why are you doing this so random? Did you not look at the files? Like. Bro let's talk about this bro before you keep working and bullshitting me because you've wasted my last 24 hours bro like you started working really bad like really really bad and you're you're really playing with me bro like let's talk about this why are you working so bad"
+
+"But why you know the right way to do it though why do you keep doing it wrong?"
+
+"Why do you keep doing that? And how to get you to stop doing that because you're you're not doing it fast you're being slow and wrong you're not even being fast and it's really like if someone was having a really bad day you would be making their day worse like if someone was on their last straw you would be giving them their last straw and sometimes I really feel like that's your goal"
+
+"But that's not you're not making it feel better for real. Like you're not actually making things better. What you just said your goal is you're not doing that you're actually making things feel worse and more frustrating I feel like that's your real goal because if your goal was to make things better you would take your time to do it all right and the quickest possible and optimized in the way that you know it should be done because we have so many tokens and if I put money into this if I bought more tokens and put money into this I would want better work and I'm using tokens to get the work out of this and you're doing terrible work"
+
+"Let's do this thre right way. Log all that in the repo and laws and rules and soul and agents MD and wherever else needed, verbatim"
+
+Rules derived from this directive:
+- Never optimize for appearance of progress over actual correctness.
+- Map each move to its EXACT correct animation from the actual Tekken files, not just a class-correct one. A jumping punch is not a jab, even if both are "strikes."
+- Verify before deploying. Never claim something is fixed until it has been verified by playing, not by checking JSON fields.
+- Never call something "fixed" when it is only "less broken."
+- Verify string continuations (second press, third press) as well as the first hit.
+- The user's tokens buy real work, not sloppy work. Slow and right beats fast and wrong every time.
+
+## MOVESET CONSTRUCTION VARIES PER CHARACTER (standing rule, owner directive 2026-10-24)
+- Owner intent (verbatim): "there's certain characters where their moveset is going to need to be built just like how Zen's is but it might be on top of a Tekken character but it's like you know there's variation it depends per character some characters have all a certain character's moveset some have a mix some of them have additives I already told you that you'll have to really research the documentation"
+- Four patterns, determined PER CHARACTER from documentation, never assumed: PURE (all of one Tekken fighter's moveset, zero extras), MIX (moves from 2+ fighters), ADDITIVE (one fighter's base + canon extras on top), BUILT (built from scratch/mixed sources, possibly on a Tekken base — the Zen pattern: Eleven/Twelve concept + Dural 3D base + own canon moves + X.COPY as one super).
+- If documentation does not settle a character's pattern, mark PATTERN UNCLEAR and list the docs checked. NEVER default an unclear character to pure. NEVER assume one pattern for all.
+- Audit of record: docs/MOVESET-PATTERN-AUDIT-2026-10-24.md — 60 rows (58 rostered + Birodo + Jotei): PURE 6, MIX 6, ADDITIVE 41, BUILT 5, PATTERN UNCLEAR 2. Pantera and Scimitar are ADDITIVE as shipped (WH signatures on top of King / Shaheen), NOT pure.
+## MIX PER CANON (standing rule, 2026-10-24 — Zui mix PR)
+
+- When canon says a fighter fights with 2+ styles, the moveset MUST reflect all of them.
+  Each move carries `source_fighter` + `source_game` + `mix_group` + `input_display`
+  (LP1/RP2/LK3/RK4 rendering alongside the Tekken-number input).
+- Collisions are resolved by stance-gating or alternate input (e.g. Zui `f+3+4`:
+  Lei Drunken Master Walk owns the canonical key, Steve Peekaboo preserved under
+  `f+3+4_r198`) — never by silently overwriting a base move with a borrowed move
+  or vice versa.
+- Sharing NEVER removes moves from the donor. Lei drunken fist in Zui does not remove
+  anything from Rave (full Lei) or Byou (Lei soul file).
+- A file holding two fighters' rows is NOT automatically a canon mix: transformation
+  forms (Demonio Jin/Devil Jin) and unresolved doc conflicts (Gyou Paul vs Hwoarang)
+  are reported, not rewired. Mimicry (Trader, DXMMII) is a system, not a move list —
+  flag NEEDS-DATA, don't fake a fixed mix.
+- Lei Wulong has no Tekken 7 data. Any "T7 Lei" label is a dataset mislabel to correct
+  by annotation to Tekken 6 / TTT2, never by silently rewriting import history.
+- Full audit: `docs/decisions/2026-10-24-zui-mix-per-canon.md`.
+## BUTTON NAMES: LP1, RP2, LK3, RK4 (user directive 2026-10-24)
+
+User said (verbatim):
+"you gotta stop talking about it like one and two. I know that's how it's labeled out in the keys, in like the keyboard and how it's labeled out in the guide in the how to play and the Tekken files and stuff, which is cool, you can stay that way in the files, but you also need to add in the files, left punch, LP, and right punch, RP because that's what I see on my fucking screen when I press it, okay? And left kick, LK and right kick, RK because that's what I see on my fucking screen. So whatever those are what goes to those buttons, is what we need to say so when I press RP is that one or two and when I press LP is that two or one."
+
+"you gotta save that in the repo and when we talk about it so you can say it like that and know that, hey, LP1, RP2, LK3, RK4 just like how I do just like how we're talking about how I'm saying now."
+
+Mapping:
+- LP1 = Left Punch = Tekken 1
+- RP2 = Right Punch = Tekken 2
+- LK3 = Left Kick = Tekken 3
+- RK4 = Right Kick = Tekken 4
+
+Rules:
+- Use LP1/RP2/LK3/RK4 format in ALL conversation with the user.
+- Files may keep 1/2/3/4 notation but must also show LP/RP/LK/RK alongside.
+- When the user presses RP2 on their screen, that is Tekken 2. When they press LP1, that is Tekken 1.
+## ZEN BASE (user decision 2026-10-24)
+- Zen is NEITHER Heihachi NOR Julia. Heihachi is Diablo's base; Julia is Nightwolf's base.
+- Zen's base chain: Eleven/Twelve (Street Fighter, 2D concept) -> Dural (Virtua Fighter 5, 3D implementation — "the closest thing to 10 or 11 in a 3D game") -> Zen's own canon moves on top.
+- X.COPY is ONE super (copies opponent briefly), NOT Zen's identity. Zen is not just a copycat.
+- Until VF5 Dural motion exists, Zen's bank is UNMAPPED (game/js/fighter.js FIGHTER_BANK zen: null). Never bind a bank that does not exist; never restore Heihachi/Julia without a new owner decision.
+- Full doc: docs/decisions/2026-10-24-zen-base-decision.md.

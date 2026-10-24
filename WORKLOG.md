@@ -1,3 +1,27 @@
+## 2026-10-24 — Anim-motion audit follow-up: test pins updated to the corrected rows (ANIM-MOTION LANE)
+
+**Why:** CI `game-unit-tests` failed on PR #1022 only because three assertions pinned the OLD buggy rows. The pins enshrined the bugs: row 44 is a jumping-1 clip (feet 0.75/0.78 m off ground at frame 0), not a standing jab; row 203 is a lunging ducking straight (0.95 m travel, hips to 0.61 m), not a jab.
+
+**What changed (test-only, no game data touched):** `test/attack-anim.test.mjs` — Pantera `1` pin row:44 → row:110 (T3 f+1, standing armL jab, active 10 = T7 i10), intent asserts kept (never plays throw row 290, limb armL, row 290 rejected). `test/root-motion.test.mjs` — LP1 pin row:44 → row:110 with measured values (steps in to 0.265 m peak, settles 0.106 m forward, −0.028 m lateral); RP2 pin row:203 → row:99 (T3 b+2, standing armR jab, active 10 = T7 i10) with measured values (0.151 m forward, −0.138 m lateral, mirrored −0.151 m); wall test reframed — row 99 peaks at 0.300 m mid-clip then settles to 0.151 m, so at the wall the clamp discards the overshoot and the settle-back lands at 8.251 m (inside the stage, clamp engaged at peak 8.4 m); the old x ≥ 8.3 assertion assumed row 203's monotonic 0.85 m travel and is wrong for a peak-and-settle clip.
+
+**Verification (local reproduction of CI's per-file run, main tree + PR movesets + updated pins):** all 22 `test/*.test.mjs` files pass, including attack-anim 9/9 and root-motion 9/9. `game/tests/move-melding.test.mjs` references none of the changed fighters or rows. Simulation/scan proof only — NOT play-verified.
+
+---
+
+## 2026-10-24 — Anim-motion audit: Pantera + 8 MOD fighters, 11 basics rewired, 22 jumping moves bound (ANIM-MOTION LANE)
+
+**Owner instruction (verbatim):** "game is UNPLAYABLE — still doing wrong moves in wrong places, wrong animations. Press button, get wrong move." (user playtest verdict 2026-10-24) + "if your goal was to make things better you would take your time to do it all right" (user directive 2026-10-24: map each move to its EXACT correct animation from the actual Tekken files, never call something "fixed" when it is only "less broken").
+
+**What was broken (measured, not guessed):** the audit replicates `game/js/fighter.js` `_attackClipPlan` (own > notation > anim > donor > match > generic) over the decoded T3 banks and checks the played clip with forward kinematics — stance from `root_t` Y trajectory (relative to each bank's own neutral), limb from branch button + participation (for legs the FOOT decides: lift at/near active), level from the decoded attack word vs T7/T8 level. Pre-fix, 2019/4696 pressable moves were HARD-flagged (44%+ per fighter for the worst: phantom 623/937). The buttons the user presses were the worst of it: Pantera LP1 played jumping-1 row 44 (feet 0.75 m off ground at frame 0), RP2 played duck-dipping lunging row 203, LK3 played jump row 54; burger/skull/diablo/phantom basics were airborne/jump/crouch clips; scimitar LP1 played chord row 184 (LP1+RK4, wrong arm, 1.63 m travel). Donor fallback is the amplifier: the largest plan kind for most fighters is donor (pantera 411 donor picks), so one wrong source row poisons dozens of donees.
+
+**What this lane does (33 moveset changes, 77 insertions / 33 deletions, 0 deletions, no damage/startup/t7/t8/slots touched):** 11 basic rewires — pantera `1` 44→110 (T3 f+1, active 10 = T7 startup 10), `2` 203→99 (T3 b+2), `3` 54→264 (string-ender high kick, disclosed); burger/skull `1` 52/50→172 (T3 f+1), `2` 152→100 (T3 b+2), `4` 78/76→104 (moveset's own T7-wired Bryan 4, active 12 = startup 12); diablo `4` 74→104 (T3 f+4); phantom `3` 73→123 (back-3 variant high kick, foot lift +1.09 m). 22 jumping-move restoration bindings (`t3_source` + `t3_row` added, names/`anim_ref` untouched) — burger to its OWN T3 jumping rows 183/87 (the T8 moves missed them via notation spelling `uf` vs `u/f`), diablo/phantom/skull to their verified pre-PR donor rows (74/73/76) — because fixing the standing basics moved the donor source those jumping moves had correctly borrowed. Pantera basics verify CLEAN; burger/skull RK4 + diablo RK4 + phantom LK3 verify CLEAN; burger/skull LP1/RP2 keep a disclosed stepping-jab travel residual (0.53/0.52 m vs 0.50 threshold — standing jabs now, not airborne). Full per-fighter tables, UNMAPPED reasons, rejected alternate wirings, word-vs-shape conflicts, slots overrides, and the honest still-wrong list: `docs/anim/ANIM-MOTION-AUDIT-2026-10-24.md`. Repro tool (matches pre- and post-fix counts exactly): `tools/combat-qa/anim_motion_audit.py`. T3-use logging per the instruction gate: `docs/anim/PROCEDURAL_AUDIT.md` (T3 is last-resort fallback; no T5/6/7/8/TTT2 animation is decoded in-repo).
+
+**Verification (simulation/scan only — NOT play-verified):** same audit code both sides: 2019 → 1554 pressable HARD (−465): pantera 308→236, burger 281→151, diablo 210→156, phantom 623→553, skull 261→122; demonio/kinpo/scimitar unchanged (no verified rewire exists for their basics). All 22 bound jumping moves verify CLEAN. Remaining regressions: exactly 10, all pantera LOW RP2 moves (MED→HARD level grade when the donor moved from mid row 203 to high row 99; no verified low RP2 row exists in the king bank — row 130's only user is a kick move). Motion-verified HARD string-enders on chord rows: 35 post-fix (literal branch-mask scan: 66; legacy `strings` arrays: 6 per-hit violations, arrays not consumed at runtime, documented not edited). 9 UNMAPPED basics still play broken clips (demonio/kinpo/scimitar/diablo LP1, phantom LP1/RP2/RK4, burger/skull LK3) and 1554/4696 pressable moves remain HARD — documented, NOT bulk-rewired, because no verified replacement exists per move. Live-browser phone play verification remains open (subagent cannot drive the live browser) — handed back to the parent agent.
+
+**Remaining (explicitly NOT done):** play verification on a phone; string sequence clips (engine lane: a string plays ONE clip, so no single row can ever be a correct multi-hit string); T7/T8 motion replacements for all T3 fallback rows (blocked: T7 0 of 51 decoded, T6 encrypted, TTT2 not extracted); slots overrides (demonio/diablo `4`→`4~3`, phantom `3`→`3~4`/`4`→`4~3`) — reported, not changed; the 10 pantera low RP2 moves pending a low RP2 clip.
+
+---
+
 
 ## 2026-10-24 — MADE animations: Pantera's 3 signatures built, priority specs written (MADE LANE)
 
@@ -2760,3 +2784,41 @@ Simulation only — live touch playtest still owed; nothing here claims the live
 - Editor change (`packages/creation-suite/src/movelist-editor.js`, test `movelist-editor.canon-wiring.test.mjs`): reads `canon_moves` (dedup by `anim_ref`), prefers `special.anim_ref`/`special.name`, accepts `properties.source === "canon"` (verification `canon`, never `clip`), aligns slot kind with `throw: true` / `stance` via `slotKindHint()`. Validation (Node, editor's own functions, NOT play-verified): 190/190 canon moves listed, 306 canon rows all `correct` (canon/input verification), 0 wrong/unmapped/missing; serialize clean on 66/66 files; Tekken regression 33,704 rows, 127 flips all wrong→correct (121 throw:true + 6 stance), 0 the other way.
 - Collisions (Tekken entry NEVER overwritten; canon in `canon_moves` only, owner decision needed for in-game resolution): Chatur stance loops vs Twin Drum/Four-Arm Crush keys; Doc Frank sigs vs Bad Stomach/Parry; VF-Akira Eight Extremes translation (P+K→LP1+RK4) vs Mountain Stance LP1+RK4; Sakura d+1 vs D+1 case-variant key; unnamed specials at cyborgx d+1+2, phantom 1+2/d+1+2, samura1 1+4. System collisions recorded, not decided: LP1+RP2+LK3+RK4 (Nine-Soul Release vs FOURFOLD MUDRA / SHACKLE HOWL), LP1+RK4 (Reihou only in foe-RAGE).
 - NOT done here (honest gaps): game-loader wiring of `canon_moves` (editor surface only); Deathfang TRANSFORM (open: animation vs state swap); Chatur/Pond/Menajerii startup timing (not in files); no animation clips created — wh:/made: refs are wiring references pending the animation lane.
+## 2026-10-24 — Zui MIX PER CANON (Steve Fox T7 base + Lei Wulong drunken + WH originals)
+
+- Zui's moveset labeled as the canon mix in `game/assets/movesets/zui.json`: 345 Steve
+  Fox T7 keys (280 unique inputs) + 40 Lei Wulong drunken keys (35 DRU-input + 5
+  transitions) + 2 WH-original canon moves (Bottle's Honest Truth LP1+RP2, Beautiful
+  Stumble d+RK4). Every mix entry (389) now carries `source_fighter`, `source_game`,
+  `mix_group`, `input_display`. 20 `RAVE DRU …` names renamed to `ZUI DRU …`.
+- Stance corrected, not replaced: `stances.default` BOX → DRU (hands-up drunken
+  stagger, owner directive 2026-10-24). DRU entry, entry move `f+3+4`, exit `DRU b`,
+  and all 40 DRU stance-list moves unchanged; BOX remains listed, not default.
+- Source correction: Lei has no T7 data — the 2026-10-21 "T7 Lei" label is corrected
+  by annotation to Tekken 6 / TTT2 (historical `t7_import_note` untouched). TTT2
+  Drunken Master Walk cross-check: all named DRU moves confirmed on name + input;
+  damage differs on 5 rows (file value kept verbatim); Drunken Fox Rotation flagged
+  NEEDS-SOURCE-CHECK. No T8 data used for the mix; pre-existing T8 layer (126 keys)
+  flagged, not deleted.
+- Only Steve ↔ Lei collision is `f+3+4` (Lei walk owns the key; Steve Peekaboo
+  preserved under `f+3+4_r198`). Field-level diff vs main: only the 20 renames +
+  stance fields changed outside the new mix fields; 0 keys deleted, 0 added; Rave
+  untouched. TheBigTuna MOD damage re-verified 117/117 (175 Steve entries carry MOD
+  sourcing; 119 unmatchable by whole-notation matching, left as-is).
+- Move List Creator: additive `source_fighter`/`source_game`/`mix_group` pass-through
+  in `packages/creation-suite/src/movelist-editor.js` `fromMovesetFile()`; node editor
+  test passes (666 library entries; own-slot status `correct` for DRU LP1, DRU
+  LK3,RP2,RK4, DRU LP1+RP2, standing LP1, signature LP1+RP2, `f+3+4`; 0 mix entries
+  unmapped). Simulation/editor proof only — NOT play-verified.
+- Mixed-style audit: only Zui is a canon-named fixed mix. Demonio Jin/Devil Jin = form,
+  not mix. Gyou = NEEDS-CANON-DECISION (Paul vs Hwoarang conflict). Trader + DXMMII =
+  NEEDS-DATA (mimicry is a system). Full report:
+  `docs/decisions/2026-10-24-zui-mix-per-canon.md`; standing rule in
+  `docs/owner-directives.md` (MIX PER CANON).
+## 2026-10-24 — Zen = Eleven/Twelve/Dural + own canon, NOT Heihachi, NOT Julia (Zen conflict resolved)
+- Owner decision 2026-10-24: "Zen's base is neither of those. Zen is like 11 and 12 but not just a copycat he has his own moves he has all these different things that go with him and to his character and his canon" + "Dural was the closest thing to 10 or 11 in a 3D game, that's what it came down to" (Dural = 3D stand-in for Eleven/Twelve, not a separate pick).
+- Resolves the PR #1016 Zen conflict (roster Heihachi vs FIGHTER_BANK Julia vs CANON.md Julia->NIGHTWOLF). Heihachi is Diablo's base; Julia is Nightwolf's base; neither is Zen's.
+- game/js/fighter.js: FIGHTER_BANK zen -> null (UNMAPPED). No Dural bank exists in the repo (no game/assets/anim/vf5/, no dural in SOURCE_TO_BANK), so binding 'dural' would be a guess — UNMAPPED + procedural fallback instead, until VF5 Dural motion is extracted.
+- game/assets/movesets/zen.json: new additive wh_true_moveset, 25 entries, interim 639-move Heihachi map untouched, sources never mixed. Twelve 10 + supers 2 + X.COPY 1 (ONE super, not identity) + Zen signatures 2 (Does Not Compete, Refused Seat, quoted verbatim from the 188 canon-moves file) + Tentacle 3 + Oversoul 1 + Transformation 4 + Spirit-form 2. NEEDS-INPUT 6, UNMAPPED animation 25/25. Eleven contributes 0 distinct moves (SFV: no own moveset, morphs pre-match); Dural contributes 0 attack rows (no published movelist; stance layer pending extraction).
+- Move List Creator (packages/creation-suite/src/movelist-editor.js): fromMovesetFile() now displays wh_true_moveset entries for Zen (id true:<id>), status unmapped, not swap-eligible until an animation lands. Simulation/editor-test proof only — NOT play-verified; Zen's true kit is unplayable until Dural motion / Twelve 2D->3D / MADE animations land.
+- Full decision doc: docs/decisions/2026-10-24-zen-base-decision.md. PR #1016 gets a comment linking the resolution (its branch is not rewritten).

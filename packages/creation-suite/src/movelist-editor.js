@@ -532,7 +532,10 @@ export function categoryForEntry(entry, context) {
 }
 
 // Build library entries from one fighter moveset file object
-// (game/assets/movesets/{fighter}.json). The file's `moves` map is
+// (game/assets/movesets/{fighter}.json), plus that file's additive
+// `wh_true_moveset.moves` section when present (Zen's true moveset:
+// displayed, never assigned while unmapped — see the loop below).
+// The file's `moves` map is
 // keyed by Tekken input; each value carries name, anim_ref, t3_row,
 // move_class and limb. `specials` entries with throw: true become
 // grappling entries. No entry is invented: if a file has no move for
@@ -559,6 +562,14 @@ export function fromMovesetFile(moveset) {
       input: move.input || key,
       displayInput: toDisplayInput(move.input || key),
       anim_ref: move.anim_ref || null,
+      // MIX PER CANON (2026-10-24): pass the moveset file's mix-source
+      // fields through so the editor can show, for Zui individually,
+      // which Tekken fighter each move came from (Steve Fox T7 base,
+      // Lei Wulong T6/TTT2 drunken, WH original) without digging into
+      // sourceMove. Additive only; validation never reads these.
+      source_fighter: move.source_fighter || null,
+      source_game: move.source_game || null,
+      mix_group: move.mix_group || null,
       t3_bank: move.t3_source || moveset?.t3_bank || moveset?.t3_source || null,
       t3_row: move.t3_row ?? null,
       category: categoryForEntry(move, context),
@@ -639,6 +650,45 @@ export function fromMovesetFile(moveset) {
       canon_source: canon.source || null,
       sourceMove: canon,
     });
+  }
+  // Additive true-moveset section (Zen only on main today): entries from
+  // `moveset.wh_true_moveset.moves` are displayed in the full list exactly
+  // like file moves, but they are NEVER mixed into `moves`/`specials` and
+  // NEVER become swap targets while anim_ref is null: validateAssignment()
+  // returns them 'unmapped' (allowed: false) by design — there is no
+  // animation to play yet, so the editor shows them and blocks assignment
+  // instead of silently treating an input-consistent row as correct.
+  // When a MADE animation or a Dural/Twelve clip lands, that lane sets
+  // anim_ref (and clip properties) on the entry; only then can the row
+  // validate as correct/approximate and become eligible. Entries keep
+  // their own id namespace ('true:<id>') so they can never collide with
+  // a file-move key. serializeMoveset() clones the whole moveset object,
+  // so this section passes through a save untouched.
+  const trueMoves = moveset?.wh_true_moveset?.moves;
+  if (Array.isArray(trueMoves)) {
+    for (const move of trueMoves) {
+      if (!move || typeof move !== 'object' || !move.id) continue;
+      const context = deriveSlotContext(move.input || '', {
+        kind: move.move_class === 'throw' ? 'grapple' : undefined,
+      });
+      entries.push({
+        id: `true:${move.id}`,
+        name: move.name || String(move.id),
+        input: move.input || '',
+        displayInput: move.display_input || toDisplayInput(move.input || ''),
+        anim_ref: move.anim_ref || null,
+        anim_status: move.anim_status || 'UNMAPPED',
+        t3_bank: null,
+        t3_row: null,
+        category: move.category || categoryForEntry(move, context),
+        move_class: move.move_class || null,
+        limb: move.limb || null,
+        throw: move.move_class === 'throw' || false,
+        properties: deriveCandidateProperties(move),
+        sourceMove: move,
+        true_moveset: true,
+      });
+    }
   }
   return entries;
 }

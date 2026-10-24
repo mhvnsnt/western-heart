@@ -605,6 +605,42 @@ window.addEventListener('load', () => {
   setTimeout(() => document.getElementById('tap-to-start').classList.add('show'), 600);
 });
 
+/* Menu tap failure toast (2026-10-24, menu tap fix): a tap must NEVER
+   die silently. Mode loads that reject surface here instead of leaving
+   the user on the menu wondering why nothing happened. */
+function menuFail(msg) {
+  const d = document.createElement('div');
+  d.textContent = msg;
+  d.style.cssText = 'position:fixed;left:50%;bottom:24px;transform:translateX(-50%);' +
+    'background:#1a0b2e;color:#fff;border:1px solid #e63229;border-radius:12px;' +
+    'padding:12px 18px;z-index:99999;font-size:14px;max-width:90vw;text-align:center;';
+  document.body.appendChild(d);
+  setTimeout(() => d.remove(), 3000);
+}
+
+/* Touch re-dispatch for data-action elements (2026-10-24, menu tap fix):
+   phone taps must route even when the browser does not synthesize a
+   click for the tap. A movement-guarded touchend on a [data-action]
+   element preventDefaults the emulated click and dispatches one real
+   click itself, which the delegated router below handles exactly once.
+   Scroll drags (>12px) are ignored so scrolling never triggers a mode.
+   mainmenu.js deliberately does NOT bind data-action elements, so this
+   cannot double-fire with a card/rail handler. */
+let _docTouchSX = 0, _docTouchSY = 0;
+document.addEventListener('touchstart', (e) => {
+  const t = e.changedTouches[0];
+  if (t) { _docTouchSX = t.clientX; _docTouchSY = t.clientY; }
+}, { passive: true });
+document.addEventListener('touchend', (e) => {
+  const t = e.changedTouches[0];
+  if (!t) return;
+  if (Math.hypot(t.clientX - _docTouchSX, t.clientY - _docTouchSY) > 12) return;
+  const el = (e.target instanceof Element) ? e.target.closest('[data-action]') : null;
+  if (!el) return;
+  e.preventDefault(); // suppress the emulated click — the dispatched click below is the one
+  el.click();
+}, { passive: false });
+
 /* Delegated data-action router (T8 menu, worker 37): one document-level
    listener covers both the static menu and submenu cards created
    dynamically by mainmenu.js. Previously a one-time forEach at eval. */
@@ -613,48 +649,49 @@ document.addEventListener('click', (e) => {
   const el = (t instanceof Element) ? t.closest('[data-action]') : null;
   if (!el) return;
   {
-    unlockAudio();
-    audio.uiClick();
+    // Sound must never block navigation: a throwing audio path used to
+    // kill the whole router before the mode started.
+    try { unlockAudio(); audio.uiClick(); } catch { /* sound is optional */ }
     const a = el.dataset.action;
     if (a === 'play' || a === 'mode-arcade') {
-      getModes().then(m => m.startMode('arcade'));
+      getModes().then(m => m.startMode('arcade')).catch(() => menuFail('Could not load ARCADE — tap again'));
     }
     else if (a === 'mode-versus') {
-      getModes().then(m => m.startMode('versus'));
+      getModes().then(m => m.startMode('versus')).catch(() => menuFail('Could not load VERSUS — tap again'));
     }
     else if (a === 'mode-story') {
-      getModes().then(m => m.startMode('story'));
+      getModes().then(m => m.startMode('story')).catch(() => menuFail('Could not load STORY — tap again'));
     }
     else if (a === 'mode-training') {
-      getModes().then(m => m.startMode('training'));
+      getModes().then(m => m.startMode('training')).catch(() => menuFail('Could not load TRAINING — tap again'));
     }
     else if (a === 'mode-fightlab') {
-      getModes().then(m => m.startMode('fightlab'));
+      getModes().then(m => m.startMode('fightlab')).catch(() => menuFail('Could not load FIGHTLAB — tap again'));
     }
     else if (a === 'mode-survival') {
-      getModes().then(m => m.startMode('survival'));
+      getModes().then(m => m.startMode('survival')).catch(() => menuFail('Could not load SURVIVAL — tap again'));
     }
     else if (a === 'mode-timeattack') {
-      getModes().then(m => m.startMode('timeattack'));
+      getModes().then(m => m.startMode('timeattack')).catch(() => menuFail('Could not load TIMEATTACK — tap again'));
     }
     else if (a === 'mode-team') {
-      getModes().then(m => m.startMode('team'));
+      getModes().then(m => m.startMode('team')).catch(() => menuFail('Could not load TEAM — tap again'));
     }
     else if (a === 'mode-qombat') {
-      getModes().then(m => m.startMode('qombat'));
+      getModes().then(m => m.startMode('qombat')).catch(() => menuFail('Could not load QOMBAT — tap again'));
     }
     else if (a === 'mode-surge') {
-      getModes().then(m => m.startMode('surge'));
+      getModes().then(m => m.startMode('surge')).catch(() => menuFail('Could not load SURGE — tap again'));
     }
     else if (a === 'mode-trader') {
-      getModes().then(m => m.startMode('trader'));
+      getModes().then(m => m.startMode('trader')).catch(() => menuFail('Could not load TRADER — tap again'));
     }
     else if (a === 'mode-rankbattle') {
       rankBattleSelect = true;
-      getRankBattle().then((rb) => rb.start());
+      getRankBattle().then((rb) => rb.start()).catch(() => menuFail('Could not load RANKED — tap again'));
     }
     else if (a === 'show-ranks') {
-      lazy.ranks().then((m) => m.initRanks().then(() => m.openRankHub()));
+      lazy.ranks().then((m) => m.initRanks().then(() => m.openRankHub())).catch(() => menuFail('Could not load RANK HALL — tap again'));
     }
     else if (a === 'mode-create') {
       // Character creation — launches the Create Fighter CAW suite.
@@ -705,22 +742,22 @@ document.addEventListener('click', (e) => {
   if (el.closest('#mm-list') && document.getElementById('mm-submenu')) return;
   const m = el.dataset.mm;
   if (m === 'story') {
-    getModes().then(modes => modes.startMode('story'));
+    getModes().then(modes => modes.startMode('story')).catch(() => menuFail('Could not load STORY — tap again'));
   }
   else if (m === 'versus') {
-    getModes().then(modes => modes.startMode('versus'));
+    getModes().then(modes => modes.startMode('versus')).catch(() => menuFail('Could not load VERSUS — tap again'));
   }
   else if (m === 'online') {
     show('online');
   }
   else if (m === 'arcade') {
-    getModes().then(modes => modes.startMode('arcade'));
+    getModes().then(modes => modes.startMode('arcade')).catch(() => menuFail('Could not load ARCADE — tap again'));
   }
   else if (m === 'sidegames') {
     show('sidegames');
   }
   else if (m === 'training') {
-    getModes().then(modes => modes.startMode('training'));
+    getModes().then(modes => modes.startMode('training')).catch(() => menuFail('Could not load TRAINING — tap again'));
   }
   else if (m === 'creation') {
     window.location.href = '../customization/creation-suite-ui/index.html';
@@ -927,8 +964,17 @@ async function startFight(playerId, enemyId, opts = {}) {
   }
   const hint = document.getElementById('select-hint');
   const confirmBtn = document.getElementById('confirm-fighter');
+  // FIGHT-LOAD FIX (2026-10-24): versus fights start from the STAGE screen,
+  // so the stage hint is the visible one — mirror every load phase there.
+  // On failure, hide the loading overlay (it otherwise traps the player on
+  // the loading screen until its 45s safety timer) and name the asset that
+  // failed instead of a generic message. pendingFight is kept so CONFIRM
+  // retries the same fight.
+  const stageHintEl = document.getElementById('stage-hint');
+  const setPhase = (t) => { if (hint) hint.textContent = t; if (stageHintEl) stageHintEl.textContent = t; };
+  const hideLoadOverlay = () => { const o = document.getElementById('wh-loading'); if (o) o.classList.remove('show'); };
   try {
-    if (hint) hint.textContent = 'Entering the arena…';
+    setPhase('Entering the arena…');
     // LOADSPEED: fight-only modules (fighter/movesets/t3anims) stream in
     // here — they are warmed during menu idle, so this usually resolves
     // from cache. The real-Tekken moveset JSONs (~300KB) also load here
@@ -937,22 +983,24 @@ async function startFight(playerId, enemyId, opts = {}) {
     const { ensureMovesets } = MS;
     const { bankIdFor, loadRealMovesets } = F;
     const { loadT3Clips } = T3;
-    if (hint) hint.textContent = 'Loading move lists…';
+    setPhase('Loading move lists…');
     await Promise.all([loadRealMovesets(), MS.loadFighterMovesets()]);
     // Show the TRANSFORM touch button only for fighters that can transform.
     const tBtn = document.querySelector('.act-btn.transform');
     if (tBtn) tBtn.style.display = (player.transform || player.forms) ? '' : 'none';
     if (confirmBtn) confirmBtn.disabled = true;
-    await assets.loadModels(need, (p, loaded, total) => {
+    await assets.loadModels(need, (p, loaded, total, id) => {
       if (window.__whLoadProgress) window.__whLoadProgress(p, loaded, total);
-      if (!hint) return;
+      let t;
       if (loaded && total) {
         const mbL = (loaded / 1048576).toFixed(1);
         const mbT = (total / 1048576).toFixed(1);
-        hint.textContent = `Entering the arena… ${mbL}/${mbT} MB`;
+        t = `Entering the arena… ${mbL}/${mbT} MB${id ? ` · ${id}` : ''}`;
       } else {
-        hint.textContent = `Entering the arena… ${Math.round(p * 100)}%`;
+        t = `Entering the arena… ${Math.round(p * 100)}%`;
       }
+      if (hint) hint.textContent = t;
+      if (stageHintEl) stageHintEl.textContent = t;
     });
     // Load the REAL T3 animation banks for THIS match's two fighters —
     // each fighter's own moveset-source bank (per-bank wiring 2026-10-19).
@@ -961,7 +1009,7 @@ async function startFight(playerId, enemyId, opts = {}) {
     // source fighters have their own real bank since 2026-10-20.)
     // Full movesets for this fight (lazy since 2026-10-21; boot loads only the index).
     // Transform forms may switch moveset mid-fight, so theirs load too.
-    if (hint) hint.textContent = 'Loading move lists…';
+    setPhase('Loading move lists…');
     const msIds = [player.id, enemy.id];
     for (const c of [player, enemy]) {
       if (c.forms) for (const fk of Object.keys(c.forms)) {
@@ -970,7 +1018,7 @@ async function startFight(playerId, enemyId, opts = {}) {
       }
     }
     await ensureMovesets(msIds);
-    if (hint) hint.textContent = 'Loading real fight motion…';
+    setPhase('Loading real fight motion…');
     try {
       const banks = [...new Set([bankIdFor(player.id), bankIdFor(enemy.id)].filter(Boolean))];
       await Promise.all(banks.map(b => loadT3Clips(THREE, b)));
@@ -979,12 +1027,17 @@ async function startFight(playerId, enemyId, opts = {}) {
     }
   } catch (err) {
     console.error('[WH] fight load failed:', err);
-    const msg = 'Failed to load fighters. Check connection and try again.';
+    // Name the failing asset: a bare "check connection" hides a 404 for a
+    // model path that only exists on one host (2026-10-24: every roster/
+    // model 404'd on Netlify because its publish dir is game/ only and no
+    // /roster/* proxy existed). P0 (2026-10-22) still holds: the stage
+    // screen is where versus fights start, so the error must be visible
+    // there, not only on the fighter-select hint.
+    const detail = (err && (err.message || err)) || 'unknown error';
+    const msg = `Failed to load fighters: ${detail} — tap CONFIRM to retry.`;
     if (hint) hint.textContent = msg;
-    // P0 (2026-10-22): the stage screen is where versus fights start — the
-    // error must be visible there, not only on the fighter-select hint.
-    const stageHint = document.getElementById('stage-hint');
-    if (stageHint) stageHint.textContent = msg;
+    if (stageHintEl) stageHintEl.textContent = msg;
+    hideLoadOverlay();
     if (confirmBtn) confirmBtn.disabled = false;
     const stageBtn = document.getElementById('confirm-stage');
     if (stageBtn) stageBtn.disabled = false;
@@ -1003,10 +1056,11 @@ async function startFight(playerId, enemyId, opts = {}) {
     await game.startMatch(player, enemy, selectedStage, opts);
   } catch (err) {
     console.error('[WH] startMatch failed:', err);
-    const msg = 'Failed to start the fight. Try again or pick different fighters.';
+    const detail = (err && (err.message || err)) || 'unknown error';
+    const msg = `Failed to start the fight: ${detail} — try again or pick different fighters.`;
     if (hint) hint.textContent = msg;
-    const stageHint = document.getElementById('stage-hint');
-    if (stageHint) stageHint.textContent = msg;
+    if (stageHintEl) stageHintEl.textContent = msg;
+    hideLoadOverlay();
     const stageBtn = document.getElementById('confirm-stage');
     if (stageBtn) stageBtn.disabled = false;
     show('stage');
