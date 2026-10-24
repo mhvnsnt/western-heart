@@ -37,6 +37,10 @@ const screens = {
   menu:   document.getElementById('screen-menu'),
   howto:  document.getElementById('screen-howto'),
   select: document.getElementById('screen-select'),
+  // PR #841 versus-setup: show() must hide this screen too — openVersusSetup()
+  // adds .active directly, and without this entry show('select') left it
+  // covering the select screen (menu-touch-e2e tap timeout on .char-card).
+  vssetup: document.getElementById('screen-vssetup'),
   stage:  document.getElementById('screen-stage'),
   stageIntro: document.getElementById('screen-stage-intro'),
   result: document.getElementById('screen-result'),
