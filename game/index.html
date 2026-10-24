@@ -527,10 +527,16 @@
        never breaks the fight. -->
   <script type="module" src="js/integration.js"></script>
 
-  <!-- MENU FALLBACK BINDER (2026-10-22, PR #676 rebase): non-module script.
-       If the ES module chain fails, the delegated routers in js/main.js never
-       run and nothing is tappable. This binds minimal navigation after a
-       delay — but ONLY if the module didn't (it sets window.__whMenuBound). -->
+  <!-- MENU FALLBACK BINDER (2026-10-22, PR #676 rebase; extended 2026-10-24
+       menu tap fix): non-module script. If the ES module chain fails, the
+       delegated routers in js/main.js never run and nothing is tappable.
+       This binds minimal navigation after a delay — but ONLY if the module
+       didn't (the module sets window.__whMenuBound; this binder sets its OWN
+       flag and stands down at click time if the module loads late).
+       2026-10-24: VERSUS now navigates to the versus-setup screen instead
+       of a toast, and the binder answers touchend as well as click, with
+       the same scroll-drag guard as the module tap handlers, so a tap
+       navigates even when the browser does not synthesize a click. -->
   <script>
   (function () {
     function showScreen(name) {
@@ -549,13 +555,16 @@
     }
     setTimeout(function () {
       if (window.__whMenuBound) return; // module chain loaded — its routers own taps
-      window.__whMenuBound = true;
-      document.addEventListener('click', function (e) {
+      window.__whFallbackBound = true;
+      var lastTap = 0, sx = 0, sy = 0;
+      function handle(e) {
+        if (window.__whMenuBound) return; // module loaded late — stand down
         var t = e.target;
         var el = (t instanceof Element) ? t.closest('[data-mm],[data-mm-forge],[data-action]') : null;
         if (!el) return;
         var key = el.dataset.mm || el.dataset.mmForge || el.dataset.action || '';
         if (key === 'back-menu' || key === 'menu') showScreen('menu');
+        else if (key === 'versus') showScreen('vssetup');
         else if (key === 'online') showScreen('online');
         else if (key === 'sidegames') showScreen('sidegames');
         else if (key === 'collection') showScreen('collection');
@@ -566,6 +575,26 @@
         }
         else if (key === 'show-ranks') showScreen('menu');
         else toast('Engine still loading — wait a moment, then tap again.');
+      }
+      document.addEventListener('touchstart', function (e) {
+        var t = e.changedTouches[0];
+        if (t) { sx = t.clientX; sy = t.clientY; }
+      }, { passive: true });
+      document.addEventListener('touchend', function (e) {
+        var t = e.target;
+        // Only swallow the tap when it is actually a menu tap — otherwise
+        // fight/select taps keep their native click behavior.
+        var el = (t instanceof Element) ? t.closest('[data-mm],[data-mm-forge],[data-action]') : null;
+        if (!el) return;
+        var ct = e.changedTouches[0];
+        if (ct && Math.hypot(ct.clientX - sx, ct.clientY - sy) > 12) return; // scroll drag
+        e.preventDefault();
+        lastTap = Date.now();
+        handle(e);
+      }, { passive: false });
+      document.addEventListener('click', function (e) {
+        if (Date.now() - lastTap < 600) return; // touch already handled it
+        handle(e);
       });
     }, 1200);
   })();
