@@ -847,7 +847,8 @@
       "input_slots": [
         "1"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "merge_source": "t3:gunjack:row:113"
     },
     "2": {
       "name": "SAM-UR-A1 2 (T3 gunjack r52)",
@@ -868,7 +869,8 @@
       "input_slots": [
         "2"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "merge_source": "t3:gunjack:row:114"
     },
     "3": {
       "name": "SAM-UR-A1 3 (T3 gunjack r56)",
@@ -889,7 +891,8 @@
       "input_slots": [
         "3"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "merge_source": "t3:gunjack:row:287"
     },
     "4": {
       "name": "SAM-UR-A1 4 (T3 gunjack r72)",
@@ -910,7 +913,8 @@
       "input_slots": [
         "4"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "merge_source": "t3:gunjack:row:118"
     },
     "1+3": {
       "name": "SAM-UR-A1 1+3 throw (T3 gunjack r144)",
@@ -936,7 +940,9 @@
         "1+3"
       ],
       "move_class": "throw",
-      "throw_break": "1"
+      "throw_break": "1",
+      "damage_note": "t3 row damage 0; WH grappler convention 21",
+      "merge_source": "t3:gunjack:row:266"
     },
     "2+4": {
       "name": "SAM-UR-A1 2+4 throw (T3 gunjack r145)",
@@ -962,7 +968,9 @@
         "2+4"
       ],
       "move_class": "throw",
-      "throw_break": "2"
+      "throw_break": "2",
+      "damage_note": "t3 row damage 0; WH grappler convention 21",
+      "merge_source": "t3:gunjack:row:267"
     },
     "f+1": {
       "name": "SAM-UR-A1 f+1 (T3 gunjack r110)",
@@ -983,7 +991,8 @@
       "input_slots": [
         "f+1"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "merge_source": "t3:gunjack:row:108"
     },
     "d/f+2": {
       "name": "SAM-UR-A1 d/f+2 (T3 gunjack r156)",
@@ -1004,7 +1013,8 @@
       "input_slots": [
         "d/f+2"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "merge_source": "t3:gunjack:row:122"
     },
     "d,d/f,d,d/f+1+2": {
       "name": "SAM-UR-A1 d,d/f,d,d/f+1+2 throw (T3 gunjack r276)",
@@ -1097,7 +1107,7 @@
       "limb": "armR",
       "move_class": "special",
       "name": "SAM-UR-A1 ROCKET FIST (owner 2026-10-19)",
-      "note": "Owner: 'blast his fist off like a rocket like how gun Jack does in his movesets In Tekken games.' Detached forearm/fist units in the Tripo mesh become the projectile. PLACEHOLDER anim — needs the Child-Of rig from tools/limb-system/dxmmii (PR #302 spec).",
+      "note": "Owner: 'blast his fist off like a rocket like how gun Jack does in his movesets In Tekken games.' Detached forearm/fist units in the Tripo mesh become the projectile. PLACEHOLDER anim \u2014 needs the Child-Of rig from tools/limb-system/dxmmii (PR #302 spec).",
       "startup": 0.45,
       "recovery": 0.9,
       "soulGain": 14,
@@ -1311,7 +1321,8 @@
       "input_slots": [
         "d+1"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "merge_source": "t3:gunjack:row:126"
     },
     "d+1__main": {
       "name": "SAM-UR-A1 d+1 (T3 gunjack r169)",
@@ -1352,7 +1363,8 @@
       "input_slots": [
         "d+4"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "merge_source": "t3:gunjack:row:248"
     },
     "d+4__main": {
       "name": "SAM-UR-A1 d+4 (T3 gunjack r280)",
@@ -1393,7 +1405,8 @@
       "input_slots": [
         "d+1+2"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "merge_source": "t3:gunjack:row:198"
     },
     "d+1+2__main": {
       "name": "Double Axe",
@@ -1435,7 +1448,8 @@
       "input_slots": [
         "d/b+1"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "merge_source": "t3:gunjack:row:136"
     },
     "d/b+3": {
       "name": "SAM-UR-A1 d/b+3 (T3 gunjack r218)",
@@ -1456,7 +1470,8 @@
       "input_slots": [
         "d/b+3"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "merge_source": "t3:gunjack:row:137"
     },
     "d/b+4": {
       "name": "SAM-UR-A1 d/b+4 (T3 gunjack r220)",
@@ -1477,7 +1492,8 @@
       "input_slots": [
         "d/b+4"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "merge_source": "t3:gunjack:row:130"
     },
     "d/b+4__main": {
       "name": "SAM-UR-A1 d/b+4 (T3 gunjack r222)",
@@ -1518,7 +1534,8 @@
       "input_slots": [
         "d/f+1"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "merge_source": "t3:gunjack:row:121"
     },
     "d/f+1__main": {
       "name": "SAM-UR-A1 d/f+1 (T3 gunjack r166)",
@@ -1559,7 +1576,8 @@
       "input_slots": [
         "f+1+2"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "merge_source": "t3:gunjack:row:110"
     },
     "f+1+2__main": {
       "name": "Rolling Death Crusher",
@@ -1608,7 +1626,9 @@
       "input_slots": [
         "f+3+4"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "t3_restriction": 2,
+      "merge_source": "t3:gunjack:row:111"
     },
     "f+3+4__main": {
       "name": "Merkabah Headbutt",
@@ -1692,7 +1712,8 @@
       "input_slots": [
         "u/b+4"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "merge_source": "t3:gunjack:row:71"
     },
     "u/f+1": {
       "name": "SAM-UR-A1 u/f+1 (T3 gunjack r47)",
@@ -1713,7 +1734,8 @@
       "input_slots": [
         "u/f+1"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "merge_source": "t3:gunjack:row:51"
     },
     "u/f+3": {
       "name": "SAM-UR-A1 u/f+3 (T3 gunjack r57)",
@@ -1734,7 +1756,8 @@
       "input_slots": [
         "u/f+3"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "merge_source": "t3:gunjack:row:69"
     },
     "u/f+4": {
       "name": "SAM-UR-A1 u/f+4 (T3 gunjack r82)",
@@ -1755,7 +1778,8 @@
       "input_slots": [
         "u/f+4"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "merge_source": "t3:gunjack:row:95"
     },
     "d/f+1+2": {
       "name": "SAM-UR-A1 d/f+1+2 (T3 gunjack r123)",
@@ -1776,7 +1800,9 @@
       "input_slots": [
         "d/f+1+2"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "t3_restriction": 107,
+      "merge_source": "t3:gunjack:row:102"
     },
     "d/f+2+3": {
       "name": "SAM-UR-A1 d/f+2+3 (T3 gunjack r247)",
@@ -1906,7 +1932,10 @@
       "unblockable": true,
       "isGrab": true,
       "throw_break": "1+2",
-      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+      "t3_restriction": 17,
+      "damage_note": "t3 row damage 0; WH grappler convention 21",
+      "merge_source": "t3:gunjack:row:275"
     },
     "d/f+1+3": {
       "name": "SAM-UR-A1 d/f+1+3 throw (T3 gunjack r268)",
@@ -1932,7 +1961,10 @@
       "unblockable": true,
       "isGrab": true,
       "throw_break": "1",
-      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+      "t3_restriction": 17,
+      "damage_note": "t3 row damage 0; WH grappler convention 21",
+      "merge_source": "t3:gunjack:row:268"
     },
     "d/f+2+4": {
       "name": "SAM-UR-A1 d/f+2+4 throw (T3 gunjack r272)",
@@ -1958,7 +1990,10 @@
       "unblockable": true,
       "isGrab": true,
       "throw_break": "2",
-      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+      "t3_restriction": 17,
+      "damage_note": "t3 row damage 0; WH grappler convention 21",
+      "merge_source": "t3:gunjack:row:272"
     },
     "f+2+3": {
       "name": "SAM-UR-A1 f+2+3 throw (T3 gunjack r274)",
@@ -2010,7 +2045,10 @@
       "unblockable": true,
       "isGrab": true,
       "throw_break": "1+2",
-      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention"
+      "note": "T3 bank stores 0 damage for throws; damage follows WH grappler convention",
+      "t3_restriction": 17,
+      "damage_note": "t3 row damage 0; WH grappler convention 21",
+      "merge_source": "t3:gunjack:row:273"
     },
     "u/f+1+2": {
       "name": "SAM-UR-A1 u/f+1+2 throw (T3 gunjack r270)",
@@ -2060,7 +2098,8 @@
         "1"
       ],
       "move_class": "string",
-      "string_hit": "d/b+1"
+      "string_hit": "d/b+1",
+      "merge_source": "t3:gunjack:row:207"
     },
     "u/f+3+4,1": {
       "name": "SAM-UR-A1 u/f+3+4,1 (T3 gunjack r177)",
@@ -2133,7 +2172,8 @@
         "1"
       ],
       "move_class": "string",
-      "string_hit": "d/b+1,1"
+      "string_hit": "d/b+1,1",
+      "merge_source": "t3:gunjack:row:208"
     },
     "u/f+3+4,1,2": {
       "name": "SAM-UR-A1 u/f+3+4,1,2 (T3 gunjack r194)",
@@ -2209,7 +2249,8 @@
         "2"
       ],
       "move_class": "string",
-      "string_hit": "d/b+1,1,1"
+      "string_hit": "d/b+1,1,1",
+      "merge_source": "t3:gunjack:row:216"
     },
     "u/f+3+4,1,2,1": {
       "name": "SAM-UR-A1 u/f+3+4,1,2,1 (T3 gunjack r179)",
@@ -2558,7 +2599,9 @@
       "input_slots": [
         "b"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "t3_condition": 37,
+      "merge_source": "t3:gunjack:row:100"
     },
     "2_r53": {
       "name": "SAM-UR-A1 2_r53 (T3 gunjack r53)",
@@ -3604,7 +3647,8 @@
       "input_slots": [
         "3+4"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "merge_source": "t3:gunjack:row:243"
     },
     "d+1+2_r17": {
       "name": "SAM-UR-A1 d+1+2_r17 (T3 gunjack r246)",
@@ -4155,7 +4199,11 @@
         ],
         "total": 32
       },
-      "note": "Mid; on block -14c"
+      "note": "Mid; on block -14c",
+      "t3_source": "gunjack",
+      "t3_row": 163,
+      "t3_command": "LP",
+      "merge_source": "t3:gunjack:row:163"
     },
     "1+2_t8": {
       "name": "Tornado Punch",
@@ -4213,7 +4261,11 @@
         ],
         "total": 34
       },
-      "note": "High; on block -2; knockdown on hit"
+      "note": "High; on block -2; knockdown on hit",
+      "t3_source": "gunjack",
+      "t3_row": 171,
+      "t3_command": "RP",
+      "merge_source": "t3:gunjack:row:171"
     },
     "1+2+3+4": {
       "name": "Ki Charge",
@@ -4348,7 +4400,11 @@
         ],
         "total": 22
       },
-      "note": "Mid; on block -3"
+      "note": "Mid; on block -3",
+      "t3_source": "gunjack",
+      "t3_row": 178,
+      "t3_command": "LP",
+      "merge_source": "t3:gunjack:row:178"
     },
     "2,1,1+2": {
       "name": "Piston Gun Fusillade",
@@ -4414,7 +4470,11 @@
         ],
         "total": 42
       },
-      "note": "Mid; on block -12; knockdown on hit"
+      "note": "Mid; on block -12; knockdown on hit",
+      "t3_source": "gunjack",
+      "t3_row": 195,
+      "t3_command": "RP",
+      "merge_source": "t3:gunjack:row:195"
     },
     "2,1,uf": {
       "name": "Flying Fortress",
@@ -4632,7 +4692,11 @@
         "b+1"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -11"
+      "note": "Mid; on block -11",
+      "t3_source": "gunjack",
+      "t3_row": 98,
+      "t3_command": "4+LP",
+      "merge_source": "t3:gunjack:row:98"
     },
     "b+1,2": {
       "name": "Double Biceps",
@@ -4682,7 +4746,11 @@
         "b+2"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +2; knockdown on hit"
+      "note": "Mid; on block +2; knockdown on hit",
+      "t3_source": "gunjack",
+      "t3_row": 99,
+      "t3_command": "4+RP",
+      "merge_source": "t3:gunjack:row:99"
     },
     "b+2*": {
       "name": "Piston Gun Assault (charged)",
@@ -4836,7 +4904,11 @@
         "b+3+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block +4c"
+      "note": "Mid; on block +4c",
+      "t3_source": "gunjack",
+      "t3_row": 103,
+      "t3_command": "4+LK+RK",
+      "merge_source": "t3:gunjack:row:103"
     },
     "b+4": {
       "name": "Move b+4 (b+4)",
@@ -4857,7 +4929,11 @@
         "b+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block -13"
+      "note": "Mid; on block -13",
+      "t3_source": "gunjack",
+      "t3_row": 104,
+      "t3_command": "4+RK",
+      "merge_source": "t3:gunjack:row:104"
     },
     "b+4,4": {
       "name": "Sherman Stomp",
@@ -5121,7 +5197,11 @@
         "d+3"
       ],
       "move_class": "strike",
-      "note": "Low; on block -17"
+      "note": "Low; on block -17",
+      "t3_source": "gunjack",
+      "t3_row": 129,
+      "t3_command": "2+LK",
+      "merge_source": "t3:gunjack:row:129"
     },
     "d+3+4": {
       "name": "Sit Down",
@@ -6134,7 +6214,11 @@
         ],
         "total": 38
       },
-      "note": "High; on block -7"
+      "note": "High; on block -7",
+      "t3_source": "gunjack",
+      "t3_row": 160,
+      "t3_command": "LP",
+      "merge_source": "t3:gunjack:row:160"
     },
     "f+1,2": {
       "name": "Move 2 (2)",
@@ -6277,7 +6361,11 @@
         "f+2"
       ],
       "move_class": "strike",
-      "note": "High; on block -12"
+      "note": "High; on block -12",
+      "t3_source": "gunjack",
+      "t3_row": 109,
+      "t3_command": "6+RP",
+      "merge_source": "t3:gunjack:row:109"
     },
     "f+4": {
       "name": "Move f+4 (f+4)",
@@ -6298,28 +6386,11 @@
         "f+4"
       ],
       "move_class": "strike",
-      "note": "High; on block -4"
-    },
-    "f+4~1": {
-      "name": "Dark Greeting",
-      "input": "f+4~1",
-      "t8_source": "jack-8",
-      "t8_id": "Jack-8-f+4~1",
-      "t8_damage": "80",
-      "startup": 1.083,
-      "active": 0.033,
-      "recovery": 0.317,
-      "damage": 80,
-      "limb": "both",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 15,
-      "anim_ref": "t8:jack-8:jack-8-f+4~1",
-      "input_slots": [
-        "f+4~1"
-      ],
-      "move_class": "strike",
-      "note": "High; on block !"
+      "note": "High; on block -4",
+      "t3_source": "gunjack",
+      "t3_row": 112,
+      "t3_command": "6+RK",
+      "merge_source": "t3:gunjack:row:112"
     },
     "f+4~1,2": {
       "name": "Sudden Elbow",
@@ -8282,7 +8353,11 @@
         "u+1+2"
       ],
       "move_class": "strike",
-      "note": "High; on block -13; knockdown on hit"
+      "note": "High; on block -13; knockdown on hit",
+      "t3_source": "gunjack",
+      "t3_row": 49,
+      "t3_command": "8+LP+RP",
+      "merge_source": "t3:gunjack:row:49"
     },
     "u+3+4": {
       "name": "Giant Foot Stomp",
@@ -8303,7 +8378,12 @@
         "u+3+4"
       ],
       "move_class": "strike",
-      "note": "Mid; on block !"
+      "note": "Mid; on block !",
+      "t3_source": "gunjack",
+      "t3_row": 68,
+      "t3_command": "8+LK+RK",
+      "t3_restriction": 107,
+      "merge_source": "t3:gunjack:row:68"
     },
     "u+4": {
       "name": "Move u+4 (u+4)",
@@ -8991,7 +9071,7 @@
         "WALL.b,b,u/b"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_1",
       "t7_command": "Back towards wall... b, b, u/b",
       "t7_hit_level": "mid",
@@ -9032,7 +9112,7 @@
         "1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_2",
       "t7_command": "1",
       "t7_hit_level": "high",
@@ -9071,7 +9151,7 @@
         "1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_3",
       "t7_command": "1, 1",
       "t7_hit_level": "high, mid",
@@ -9118,7 +9198,7 @@
         "1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_4",
       "t7_command": "(1), 1",
       "t7_hit_level": "mid",
@@ -9158,7 +9238,7 @@
         "1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_5",
       "t7_command": "1, 2",
       "t7_hit_level": "high, high",
@@ -9205,7 +9285,7 @@
         "1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_6",
       "t7_command": "(1), 2",
       "t7_hit_level": "high",
@@ -9245,7 +9325,7 @@
         "2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_7",
       "t7_command": "2",
       "t7_hit_level": "high",
@@ -9284,7 +9364,7 @@
         "2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_8",
       "t7_command": "2, 1",
       "t7_hit_level": "high, mid",
@@ -9330,7 +9410,7 @@
         "2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_9",
       "t7_command": "(2), 1",
       "t7_hit_level": "mid",
@@ -9369,7 +9449,7 @@
         "2,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_10",
       "t7_command": "2, 1, 2",
       "t7_hit_level": "high, mid, mid",
@@ -9417,7 +9497,7 @@
         "2,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_11",
       "t7_command": "(2), 1, 2",
       "t7_hit_level": "mid, mid",
@@ -9464,7 +9544,7 @@
         "2,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_12",
       "t7_command": "(2), (1), 2",
       "t7_hit_level": "mid",
@@ -9504,7 +9584,7 @@
         "3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_13",
       "t7_command": "3",
       "t7_hit_level": "high",
@@ -9544,7 +9624,7 @@
         "4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_14",
       "t7_command": "4",
       "t7_hit_level": "high",
@@ -9584,7 +9664,7 @@
         "1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_15",
       "t7_command": "1+2",
       "t7_hit_level": "mid, high",
@@ -9630,7 +9710,7 @@
         "1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_16",
       "t7_command": "1+2 (second hit only)",
       "t7_hit_level": "high",
@@ -9670,7 +9750,7 @@
         "u+1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_17",
       "t7_command": "u+1+2",
       "t7_hit_level": "high",
@@ -9710,7 +9790,7 @@
         "u/f+1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_18",
       "t7_command": "u/f+1",
       "t7_hit_level": "high",
@@ -9750,7 +9830,7 @@
         "u/f+1*"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_19",
       "t7_command": "u/f+1*",
       "t7_hit_level": "high",
@@ -9790,7 +9870,7 @@
         "u/f+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_20",
       "t7_command": "u/f+2",
       "t7_hit_level": "mid",
@@ -9830,7 +9910,7 @@
         "u/f+3+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_21",
       "t7_command": "u/f+3+4",
       "t7_hit_level": "mid",
@@ -9870,7 +9950,7 @@
         "u/f+3+4,3+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_22",
       "t7_command": "u/f+3+4, 3+4",
       "t7_hit_level": "mid, mid",
@@ -9917,7 +9997,7 @@
         "u/f+3+4,3+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_23",
       "t7_command": "(u/f+3+4), 3+4",
       "t7_hit_level": "mid",
@@ -9957,7 +10037,7 @@
         "f+1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_24",
       "t7_command": "f+1",
       "t7_hit_level": "mid",
@@ -9996,7 +10076,7 @@
         "f+1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_25",
       "t7_command": "f+1, 2",
       "t7_hit_level": "mid, high",
@@ -10042,7 +10122,7 @@
         "f+1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_26",
       "t7_command": "(f+1), 2",
       "t7_hit_level": "high",
@@ -10081,7 +10161,7 @@
         "f+1,2,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_27",
       "t7_command": "f+1, 2, 2",
       "t7_hit_level": "mid, high, mid",
@@ -10129,7 +10209,7 @@
         "f+1,2,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_28",
       "t7_command": "(f+1), 2, 2",
       "t7_hit_level": "high, mid",
@@ -10176,7 +10256,7 @@
         "f+1,2,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_29",
       "t7_command": "(f+1), (2), 2",
       "t7_hit_level": "mid",
@@ -10216,7 +10296,7 @@
         "f+1,2,2*"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_30",
       "t7_command": "(f+1), (2), 2*",
       "t7_hit_level": "mid",
@@ -10256,7 +10336,7 @@
         "f+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_31",
       "t7_command": "f+2",
       "t7_hit_level": "high",
@@ -10296,7 +10376,7 @@
         "f+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_32",
       "t7_command": "f+3",
       "t7_hit_level": "mid",
@@ -10335,7 +10415,7 @@
         "f+3,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_33",
       "t7_command": "f+3, 1+2",
       "t7_hit_level": "mid, mid",
@@ -10381,7 +10461,7 @@
         "f+3,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_34",
       "t7_command": "(f+3), 1+2",
       "t7_hit_level": "mid",
@@ -10421,7 +10501,7 @@
         "f+4~1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_35",
       "t7_command": "f+4~1, 2",
       "t7_hit_level": "mid",
@@ -10461,7 +10541,7 @@
         "f+1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_36",
       "t7_command": "f+1+2",
       "t7_hit_level": "mid",
@@ -10501,7 +10581,7 @@
         "f+3+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_37",
       "t7_command": "f+3+4 (or FC d/f+3+4)",
       "t7_hit_level": "mid",
@@ -10542,7 +10622,7 @@
         "f,F+1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_38",
       "t7_command": "f, F+1",
       "t7_hit_level": "mid",
@@ -10582,7 +10662,7 @@
         "f,F+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_39",
       "t7_command": "f, F+2",
       "t7_hit_level": "mid",
@@ -10622,7 +10702,7 @@
         "f,F+2*"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_40",
       "t7_command": "f, F+2*",
       "t7_hit_level": "mid",
@@ -10662,7 +10742,7 @@
         "f,F+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_41",
       "t7_command": "f, F+3",
       "t7_hit_level": "mid",
@@ -10702,7 +10782,7 @@
         "f,F+1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_42",
       "t7_command": "f, F+1+2",
       "t7_hit_level": "mid",
@@ -10741,7 +10821,7 @@
         "f,F+1+2,2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_43",
       "t7_command": "f, F+1+2, 2",
       "t7_hit_level": "mid, mid",
@@ -10788,7 +10868,7 @@
         "f,F+1+2,2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_44",
       "t7_command": "(f, F+1+2), 2",
       "t7_hit_level": "mid",
@@ -10828,7 +10908,7 @@
         "f,F+1+2,1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_45",
       "t7_command": "f, F+1+2, 1+2",
       "t7_hit_level": "mid, low",
@@ -10875,7 +10955,7 @@
         "f,F+1+2,1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_46",
       "t7_command": "(f, F+1+2), 1+2",
       "t7_hit_level": "low",
@@ -10915,7 +10995,7 @@
         "f,F+3+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_47",
       "t7_command": "f, F+3+4",
       "t7_hit_level": "mid",
@@ -10955,7 +11035,7 @@
         "f,f,f+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_48",
       "t7_command": "f, f, f+2 (or WR 2)",
       "t7_hit_level": "mid",
@@ -10995,7 +11075,7 @@
         "d/f+1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_49",
       "t7_command": "d/f+1",
       "t7_hit_level": "mid",
@@ -11034,7 +11114,7 @@
         "d/f+1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_50",
       "t7_command": "d/f+1, 1",
       "t7_hit_level": "mid, mid",
@@ -11080,7 +11160,7 @@
         "d/f+1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_51",
       "t7_command": "(d/f+1), 1",
       "t7_hit_level": "mid",
@@ -11119,7 +11199,7 @@
         "d/f+1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_52",
       "t7_command": "d/f+1, 2",
       "t7_hit_level": "mid, high",
@@ -11165,7 +11245,7 @@
         "d/f+1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_53",
       "t7_command": "(d/f+1), 2",
       "t7_hit_level": "high",
@@ -11204,7 +11284,7 @@
         "d/f+1,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_54",
       "t7_command": "d/f+1, 2, 1",
       "t7_hit_level": "mid, high, high",
@@ -11252,7 +11332,7 @@
         "d/f+1,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_55",
       "t7_command": "(d/f+1), 2, 1",
       "t7_hit_level": "high, high",
@@ -11299,7 +11379,7 @@
         "d/f+1,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_56",
       "t7_command": "(d/f+1), (2), 1",
       "t7_hit_level": "high",
@@ -11339,7 +11419,7 @@
         "d/f+1,2,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_57",
       "t7_command": "d/f+1, 2, 1, 2",
       "t7_hit_level": "mid, high, high, high, high",
@@ -11389,7 +11469,7 @@
         "d/f+1,2,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_58",
       "t7_command": "(d/f+1), 2, 1, 2",
       "t7_hit_level": "high, high, high, high",
@@ -11438,7 +11518,7 @@
         "d/f+1,2,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_59",
       "t7_command": "(d/f+1), (2), 1, 2",
       "t7_hit_level": "high, high, high",
@@ -11486,7 +11566,7 @@
         "d/f+1,2,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_60",
       "t7_command": "(d/f+1), (2), (1), 2",
       "t7_hit_level": "high, high",
@@ -11533,7 +11613,7 @@
         "d/f+1,2,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_61",
       "t7_command": "(d/f+1), (2), (1), 2 (second hit only)",
       "t7_hit_level": "high",
@@ -11574,7 +11654,7 @@
         "d/f+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_62",
       "t7_command": "d/f+2",
       "t7_hit_level": "mid",
@@ -11614,7 +11694,7 @@
         "d/f+2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_63",
       "t7_command": "d/f+2, 1",
       "t7_hit_level": "mid, mid",
@@ -11661,7 +11741,7 @@
         "d/f+2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_64",
       "t7_command": "(d/f+2), 1",
       "t7_hit_level": "mid",
@@ -11701,7 +11781,7 @@
         "d/f+2,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_65",
       "t7_command": "d/f+2, 1, 2",
       "t7_hit_level": "mid, mid, mid",
@@ -11749,7 +11829,7 @@
         "d/f+2,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_66",
       "t7_command": "(d/f+2), 1, 2",
       "t7_hit_level": "mid, mid",
@@ -11796,7 +11876,7 @@
         "d/f+2,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_67",
       "t7_command": "(d/f+2), (1), 2",
       "t7_hit_level": "mid",
@@ -11836,7 +11916,7 @@
         "d/f+2,1,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_68",
       "t7_command": "d/f+2, 1, 2, 1",
       "t7_hit_level": "mid, mid, mid, high",
@@ -11884,7 +11964,7 @@
         "d/f+2,1,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_69",
       "t7_command": "(d/f+2), 1, 2, 1",
       "t7_hit_level": "mid, mid, high",
@@ -11931,7 +12011,7 @@
         "d/f+2,1,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_70",
       "t7_command": "(d/f+2), (1), 2, 1",
       "t7_hit_level": "mid, high",
@@ -11977,7 +12057,7 @@
         "d/f+2,1,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_71",
       "t7_command": "(d/f+2), (1), (2), 1",
       "t7_hit_level": "high",
@@ -12017,7 +12097,7 @@
         "d/f+2,1,2,d/f+1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_72",
       "t7_command": "d/f+2, 1, 2, d/f+1",
       "t7_hit_level": "mid, mid, mid, mid",
@@ -12066,7 +12146,7 @@
         "d/f+2,1,2,d/f+1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_73",
       "t7_command": "(d/f+2), 1, 2, d/f+1",
       "t7_hit_level": "mid, mid, mid",
@@ -12114,7 +12194,7 @@
         "d/f+2,1,2,d/f+1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_74",
       "t7_command": "(d/f+2), (1), 2, d/f+1",
       "t7_hit_level": "mid, mid",
@@ -12161,7 +12241,7 @@
         "d/f+2,1,2,d/f+1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_75",
       "t7_command": "(d/f+2), (1), (2), d/f+1",
       "t7_hit_level": "mid",
@@ -12201,7 +12281,7 @@
         "d/f+2,1,2,d+1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_76",
       "t7_command": "d/f+2, 1, 2, d+1",
       "t7_hit_level": "mid, mid, mid, low",
@@ -12249,7 +12329,7 @@
         "d/f+2,1,2,d+1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_77",
       "t7_command": "(d/f+2), 1, 2, d+1",
       "t7_hit_level": "mid, mid, low",
@@ -12297,7 +12377,7 @@
         "d/f+2,1,2,d+1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_78",
       "t7_command": "(d/f+2), (1), 2, d+1",
       "t7_hit_level": "mid, low",
@@ -12344,7 +12424,7 @@
         "d/f+2,1,2,d+1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_79",
       "t7_command": "(d/f+2), (1), (2), d+1",
       "t7_hit_level": "low",
@@ -12383,7 +12463,7 @@
         "d/f+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_80",
       "t7_command": "d/f+3",
       "t7_hit_level": "mid",
@@ -12398,7 +12478,10 @@
         "bank": "gunjack",
         "row": 133,
         "match": "same-notation"
-      }
+      },
+      "t3_source": "gunjack",
+      "t3_row": 133,
+      "t3_command": "3+LK"
     },
     "d/f+3,2": {
       "name": "Combine Harvester",
@@ -12422,7 +12505,7 @@
         "d/f+3,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_81",
       "t7_command": "d/f+3, 2",
       "t7_hit_level": "mid, mid",
@@ -12469,7 +12552,7 @@
         "d/f+3,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_82",
       "t7_command": "(d/f+3), 2",
       "t7_hit_level": "mid",
@@ -12509,7 +12592,7 @@
         "d/f+1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_83",
       "t7_command": "d/f+1+2",
       "t7_hit_level": "low, low",
@@ -12556,7 +12639,7 @@
         "d/f+1+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_84",
       "t7_command": "d/f+1+3 (far)",
       "t7_hit_level": "s. mid",
@@ -12597,7 +12680,7 @@
         "d/f+3+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_85",
       "t7_command": "d/f+3+4",
       "t7_hit_level": "mid",
@@ -12613,7 +12696,10 @@
         "bank": "gunjack",
         "row": 124,
         "match": "same-notation"
-      }
+      },
+      "t3_source": "gunjack",
+      "t3_row": 124,
+      "t3_command": "3+LK+RK"
     },
     "d+1+2~t7.jack-7": {
       "name": "Double Axe",
@@ -12637,7 +12723,7 @@
         "d+1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_86",
       "t7_command": "d+1+2",
       "t7_hit_level": "mid",
@@ -12677,7 +12763,7 @@
         "d/b+1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_87",
       "t7_command": "d/b+1",
       "t7_hit_level": "low",
@@ -12716,7 +12802,7 @@
         "d/b+1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_88",
       "t7_command": "d/b+1, 1",
       "t7_hit_level": "low, low",
@@ -12762,7 +12848,7 @@
         "d/b+1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_89",
       "t7_command": "(d/b+1), 1",
       "t7_hit_level": "low",
@@ -12801,7 +12887,7 @@
         "d/b+1,1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_90",
       "t7_command": "d/b+1, 1, 1",
       "t7_hit_level": "low, low, low",
@@ -12848,7 +12934,7 @@
         "d/b+1,1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_91",
       "t7_command": "(d/b+1), 1, 1",
       "t7_hit_level": "low, low",
@@ -12894,7 +12980,7 @@
         "d/b+1,1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_92",
       "t7_command": "(d/b+1), (1), 1",
       "t7_hit_level": "low",
@@ -12933,7 +13019,7 @@
         "d/b+1,1,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_93",
       "t7_command": "d/b+1, 1, 1, 2",
       "t7_hit_level": "low, low, low, mid",
@@ -12982,7 +13068,7 @@
         "d/b+1,1,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_94",
       "t7_command": "(d/b+1), 1, 1, 2",
       "t7_hit_level": "low, low, mid",
@@ -13030,7 +13116,7 @@
         "d/b+1,1,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_95",
       "t7_command": "(d/b+1), (1), 1, 2",
       "t7_hit_level": "low, mid",
@@ -13077,7 +13163,7 @@
         "d/b+1,1,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_96",
       "t7_command": "(d/b+1), (1), (1), 2",
       "t7_hit_level": "mid",
@@ -13117,7 +13203,7 @@
         "d/b+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_97",
       "t7_command": "d/b+2",
       "t7_hit_level": "low",
@@ -13133,7 +13219,10 @@
         "bank": "gunjack",
         "row": 127,
         "match": "same-notation"
-      }
+      },
+      "t3_source": "gunjack",
+      "t3_row": 127,
+      "t3_command": "1+RP"
     },
     "d/b+2*": {
       "name": "SAM-UR-A1 d/b+2*",
@@ -13157,7 +13246,7 @@
         "d/b+2*"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_98",
       "t7_command": "d/b+2*",
       "t7_hit_level": "low",
@@ -13197,7 +13286,7 @@
         "d/b+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_99",
       "t7_command": "d/b+3",
       "t7_hit_level": "low",
@@ -13236,7 +13325,7 @@
         "d/b+3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_100",
       "t7_command": "d/b+3, 4",
       "t7_hit_level": "low, low",
@@ -13282,7 +13371,7 @@
         "d/b+3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_101",
       "t7_command": "(d/b+3), 4",
       "t7_hit_level": "low",
@@ -13321,7 +13410,7 @@
         "d/b+3,4,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_102",
       "t7_command": "d/b+3, 4, 3",
       "t7_hit_level": "low, low, low",
@@ -13368,7 +13457,7 @@
         "d/b+3,4,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_103",
       "t7_command": "(d/b+3), (4), 3",
       "t7_hit_level": "low, low, low",
@@ -13407,7 +13496,7 @@
         "d/b+3,4,3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_104",
       "t7_command": "d/b+3, 4, 3, 4",
       "t7_hit_level": "low, low, low, low",
@@ -13455,7 +13544,7 @@
         "d/b+3,4,3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_105",
       "t7_command": "(d/b+3), (4), (3), 4",
       "t7_hit_level": "low, low, low, low",
@@ -13494,7 +13583,7 @@
         "d/b+3,4,3,4,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_106",
       "t7_command": "d/b+3, 4, 3, 4, 3",
       "t7_hit_level": "low, low, low, low, low",
@@ -13543,7 +13632,7 @@
         "d/b+3,4,3,4,3"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_107",
       "t7_command": "(d/b+3), (4), (3), (4), 3",
       "t7_hit_level": "low, low, low, low, low",
@@ -13582,7 +13671,7 @@
         "d/b+3,4,3,4,3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_108",
       "t7_command": "d/b+3, 4, 3, 4, 3, 4",
       "t7_hit_level": "low, low, low, low, low, low",
@@ -13632,7 +13721,7 @@
         "d/b+3,4,3,4,3,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_109",
       "t7_command": "(d/b+3), (4), (3), (4), (3), 4",
       "t7_hit_level": "low, low, low, low, low, low",
@@ -13671,7 +13760,7 @@
         "CSK.1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_110",
       "t7_command": "CSK 1+2",
       "t7_hit_level": "high",
@@ -13711,7 +13800,7 @@
         "d/b+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_111",
       "t7_command": "d/b+4",
       "t7_hit_level": "low",
@@ -13750,7 +13839,7 @@
         "d/b+1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_112",
       "t7_command": "d/b+1+2",
       "t7_hit_level": "high, high, high, high, high",
@@ -13765,7 +13854,10 @@
         "bank": "gunjack",
         "row": 128,
         "match": "same-notation"
-      }
+      },
+      "t3_source": "gunjack",
+      "t3_row": 128,
+      "t3_command": "1+LP+RP"
     },
     "b+1~t7.jack-7": {
       "name": "Excavator",
@@ -13789,7 +13881,7 @@
         "b+1"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_113",
       "t7_command": "b+1",
       "t7_hit_level": "mid",
@@ -13829,7 +13921,7 @@
         "b+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_114",
       "t7_command": "b+2",
       "t7_hit_level": "mid",
@@ -13869,7 +13961,7 @@
         "b+2*"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_115",
       "t7_command": "b+2*",
       "t7_hit_level": "mid",
@@ -13909,7 +14001,7 @@
         "b+3"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_116",
       "t7_command": "b+3",
       "t7_hit_level": "mid",
@@ -13948,7 +14040,7 @@
         "b+3,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_117",
       "t7_command": "b+3, 2",
       "t7_hit_level": "mid, high",
@@ -13994,7 +14086,7 @@
         "b+3,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_118",
       "t7_command": "(b+3), 2",
       "t7_hit_level": "high",
@@ -14033,7 +14125,7 @@
         "b+3,2,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_119",
       "t7_command": "b+3, 2, 2",
       "t7_hit_level": "mid, high, high",
@@ -14081,7 +14173,7 @@
         "b+3,2,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_120",
       "t7_command": "(b+3), 2, 2",
       "t7_hit_level": "high, high",
@@ -14128,7 +14220,7 @@
         "b+3,2,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_121",
       "t7_command": "(b+3), (2), 2",
       "t7_hit_level": "high",
@@ -14168,7 +14260,7 @@
         "b+3,2,2*"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_122",
       "t7_command": "(b+3), (2), 2*",
       "t7_hit_level": "high",
@@ -14208,7 +14300,7 @@
         "b+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_123",
       "t7_command": "b+4",
       "t7_hit_level": "mid",
@@ -14247,7 +14339,7 @@
         "b+4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_124",
       "t7_command": "b+4, 4",
       "t7_hit_level": "mid, mid",
@@ -14294,7 +14386,7 @@
         "b+4,4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_125",
       "t7_command": "(b+4), 4",
       "t7_hit_level": "mid",
@@ -14334,7 +14426,7 @@
         "b,d/b,d,d/f+1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_126",
       "t7_command": "b, d/b, d, d/f+1",
       "t7_hit_level": "low",
@@ -14374,7 +14466,7 @@
         "b,d/b,d,d/f+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_127",
       "t7_command": "b, d/b, d, d/f+2",
       "t7_hit_level": "mid",
@@ -14412,7 +14504,7 @@
       "anim_ref": "t7:jack-7:jack-7_128",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_128",
       "t7_command": "HCF+1",
       "t7_hit_level": "mid",
@@ -14453,7 +14545,7 @@
         "hcf,d/f+1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_129",
       "t7_command": "hcf, d/f+1",
       "t7_hit_level": "mid",
@@ -14493,7 +14585,7 @@
         "hcf,d/f:1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_130",
       "t7_command": "hcf, d/f:1",
       "t7_hit_level": "mid",
@@ -14533,7 +14625,7 @@
         "BT.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_131",
       "t7_command": "BT 1 (or 2)",
       "t7_hit_level": "high",
@@ -14573,7 +14665,7 @@
         "BT.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_132",
       "t7_command": "BT 3 (or 4)",
       "t7_hit_level": "high",
@@ -14614,7 +14706,7 @@
         "FC.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_133",
       "t7_command": "FC 1",
       "t7_hit_level": "low",
@@ -14653,7 +14745,7 @@
         "FC.1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_134",
       "t7_command": "FC 1, 1",
       "t7_hit_level": "low, low",
@@ -14699,7 +14791,7 @@
         "FC.1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_135",
       "t7_command": "FC (1), 1",
       "t7_hit_level": "low",
@@ -14738,7 +14830,7 @@
         "FC.1,1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_136",
       "t7_command": "FC 1, 1, 1",
       "t7_hit_level": "low, low, mid",
@@ -14785,7 +14877,7 @@
         "FC.1,1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_137",
       "t7_command": "FC (1), (1), 1",
       "t7_hit_level": "low, low, mid",
@@ -14824,7 +14916,7 @@
         "FC.1,1,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_138",
       "t7_command": "FC 1, 1, 1, 2",
       "t7_hit_level": "low, low, mid, mid",
@@ -14872,7 +14964,7 @@
         "FC.1,1,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_139",
       "t7_command": "FC (1), (1), (1), 2",
       "t7_hit_level": "low, low, mid, mid",
@@ -14911,7 +15003,7 @@
         "FC.1,1,1,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_140",
       "t7_command": "FC 1, 1, 1, 2, 1",
       "t7_hit_level": "low, low, mid, mid, high",
@@ -14961,7 +15053,7 @@
         "FC.1,1,1,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_141",
       "t7_command": "FC (1), (1), (1), (2), 1",
       "t7_hit_level": "low, low, mid, mid, high",
@@ -15001,7 +15093,7 @@
         "FC.1,1,1,2,d/f+1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_142",
       "t7_command": "FC 1, 1, 1, 2, d/f+1",
       "t7_hit_level": "low, low, mid, mid, mid",
@@ -15050,7 +15142,7 @@
         "FC.1,1,1,2,d/f+1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_143",
       "t7_command": "FC (1), (1), (1), (2), d/f+1",
       "t7_hit_level": "low, low, mid, mid, mid",
@@ -15089,7 +15181,7 @@
         "FC.1,1,1,2,d+1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_144",
       "t7_command": "FC 1, 1, 1, 2, d+1",
       "t7_hit_level": "low, low, mid, mid, low",
@@ -15138,7 +15230,7 @@
         "FC.1,1,1,2,d+1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_145",
       "t7_command": "FC (1), (1), (1), (2), d+1",
       "t7_hit_level": "low, low, mid, mid, low",
@@ -15177,7 +15269,7 @@
         "FC.1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_146",
       "t7_command": "FC 1, 2",
       "t7_hit_level": "low, mid",
@@ -15224,7 +15316,7 @@
         "FC.1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_147",
       "t7_command": "FC (1), 2",
       "t7_hit_level": "mid",
@@ -15264,7 +15356,7 @@
         "FC.2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_148",
       "t7_command": "FC 2",
       "t7_hit_level": "s. mid",
@@ -15303,7 +15395,7 @@
         "FC.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_149",
       "t7_command": "FC 3",
       "t7_hit_level": "low",
@@ -15342,7 +15434,7 @@
         "FC.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_150",
       "t7_command": "FC 4",
       "t7_hit_level": "low",
@@ -15381,7 +15473,7 @@
         "FC.d/f+1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_151",
       "t7_command": "FC d/f+1",
       "t7_hit_level": "mid",
@@ -15420,7 +15512,7 @@
         "FC.d/f+1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_152",
       "t7_command": "FC d/f+1, 2",
       "t7_hit_level": "mid, mid",
@@ -15466,7 +15558,7 @@
         "FC.d/f+1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_153",
       "t7_command": "FC (d/f+1), 2",
       "t7_hit_level": "mid",
@@ -15505,7 +15597,7 @@
         "FC.d/f+1,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_154",
       "t7_command": "FC d/f+1, 2, 1",
       "t7_hit_level": "mid, mid, mid",
@@ -15553,7 +15645,7 @@
         "FC.d/f+1,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_155",
       "t7_command": "FC (d/f+1), 2, 1",
       "t7_hit_level": "mid, mid",
@@ -15600,7 +15692,7 @@
         "FC.d/f+1,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_156",
       "t7_command": "FC (d/f+1), (2), 1",
       "t7_hit_level": "mid",
@@ -15640,7 +15732,7 @@
         "FC.d/f+1,2,1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_157",
       "t7_command": "FC d/f+1, 2, 1, 1",
       "t7_hit_level": "mid, mid, mid, high",
@@ -15688,7 +15780,7 @@
         "FC.d/f+1,2,1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_158",
       "t7_command": "FC (d/f+1), 2, 1, 1",
       "t7_hit_level": "mid, mid, high",
@@ -15735,7 +15827,7 @@
         "FC.d/f+1,2,1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_159",
       "t7_command": "FC (d/f+1), (2), 1, 1",
       "t7_hit_level": "mid, high",
@@ -15775,7 +15867,7 @@
         "FC.d/f+1,2,1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_160",
       "t7_command": "FC (d/f+1), (2), (1), 1",
       "t7_hit_level": "high",
@@ -15814,7 +15906,7 @@
         "FC.d/f+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_161",
       "t7_command": "FC d/f+2",
       "t7_hit_level": "mid",
@@ -15853,7 +15945,7 @@
         "FC.d/f+2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_162",
       "t7_command": "FC d/f+2, 1",
       "t7_hit_level": "mid, high",
@@ -15900,7 +15992,7 @@
         "FC.d/f+2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_163",
       "t7_command": "FC (d/f+2), 1",
       "t7_hit_level": "high",
@@ -15940,7 +16032,7 @@
         "FC.d/f+2,d/f+1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_164",
       "t7_command": "FC d/f+2, d/f+1",
       "t7_hit_level": "mid, mid",
@@ -15986,7 +16078,7 @@
         "FC.d/f+2,d/f+1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_165",
       "t7_command": "FC (d/f+2), d/f+1",
       "t7_hit_level": "mid",
@@ -16025,7 +16117,7 @@
         "FC.d/f+2,d/f+1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_166",
       "t7_command": "FC d/f+2, d/f+1, 2",
       "t7_hit_level": "mid, mid, mid",
@@ -16073,7 +16165,7 @@
         "FC.d/f+2,d/f+1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_167",
       "t7_command": "FC (d/f+2), d/f+1, 2",
       "t7_hit_level": "mid, mid",
@@ -16120,7 +16212,7 @@
         "FC.d/f+2,d/f+1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_168",
       "t7_command": "FC (d/f+2), (d/f+1), 2",
       "t7_hit_level": "mid",
@@ -16160,7 +16252,7 @@
         "FC.d/f+2,d+1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_169",
       "t7_command": "FC d/f+2, d+1",
       "t7_hit_level": "mid, low",
@@ -16206,7 +16298,7 @@
         "FC.d/f+2,d+1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_170",
       "t7_command": "FC (d/f+2), d+1",
       "t7_hit_level": "low",
@@ -16245,7 +16337,7 @@
         "FC.d/f+1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_171",
       "t7_command": "FC d/f+1+2",
       "t7_hit_level": "low",
@@ -16284,7 +16376,7 @@
         "FC.d/f+1+2,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_172",
       "t7_command": "FC d/f+1+2, 1+2",
       "t7_hit_level": "low, mid",
@@ -16331,7 +16423,7 @@
         "FC.d/f+1+2,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_173",
       "t7_command": "FC (d/f+1+2), 1+2",
       "t7_hit_level": "mid",
@@ -16371,7 +16463,7 @@
         "FC.d/b+1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_174",
       "t7_command": "FC d/b+1",
       "t7_hit_level": "low",
@@ -16410,7 +16502,7 @@
         "FC.d/b+1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_175",
       "t7_command": "FC d/b+1, 1",
       "t7_hit_level": "low, low",
@@ -16456,7 +16548,7 @@
         "FC.d/b+1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_176",
       "t7_command": "FC (d/b+1), 1",
       "t7_hit_level": "low, low",
@@ -16495,7 +16587,7 @@
         "FC.d/b+1,1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_177",
       "t7_command": "FC d/b+1, 1, 1",
       "t7_hit_level": "low, low, low",
@@ -16542,7 +16634,7 @@
         "FC.d/b+1,1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_178",
       "t7_command": "FC (d/b+1), 1, 1",
       "t7_hit_level": "low, low, low",
@@ -16588,7 +16680,7 @@
         "FC.d/b+1,1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_179",
       "t7_command": "FC (d/b+1), (1), 1",
       "t7_hit_level": "low, low, low",
@@ -16627,7 +16719,7 @@
         "FC.d/b+1,1,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_180",
       "t7_command": "FC d/b+1, 1, 1, 2",
       "t7_hit_level": "low, low, low, mid",
@@ -16676,7 +16768,7 @@
         "FC.d/b+1,1,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_181",
       "t7_command": "FC (d/b+1), 1, 1, 2",
       "t7_hit_level": "low, low, low, mid",
@@ -16724,7 +16816,7 @@
         "FC.d/b+1,1,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_182",
       "t7_command": "FC (d/b+1), (1), 1, 2",
       "t7_hit_level": "low, low, low, mid",
@@ -16771,7 +16863,7 @@
         "FC.d/b+1,1,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_183",
       "t7_command": "FC (d/b+1), (1), (1), 2",
       "t7_hit_level": "low, low, low, mid",
@@ -16811,7 +16903,7 @@
         "SS.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_184",
       "t7_command": "SS 1",
       "t7_hit_level": "mid",
@@ -16850,7 +16942,7 @@
         "SS.2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_185",
       "t7_command": "SS 2",
       "t7_hit_level": "high",
@@ -16890,7 +16982,7 @@
         "f,f,F"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_186",
       "t7_command": "WR f, f, F (Full Screen)",
       "t7_hit_level": "mid",
@@ -16931,7 +17023,7 @@
         "f,f,F"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_187",
       "t7_command": "WR f, f, F (Full Screen) (On Grounded Opponent)",
       "t7_hit_level": "low",
@@ -16972,7 +17064,7 @@
         "4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_188",
       "t7_command": "WR 4",
       "t7_hit_level": "low",
@@ -17013,7 +17105,7 @@
         "1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_189",
       "t7_command": "WR 1+2",
       "t7_hit_level": "mid",
@@ -17054,7 +17146,7 @@
         "WS.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_190",
       "t7_command": "WS 1",
       "t7_hit_level": "mid",
@@ -17094,7 +17186,7 @@
         "WS.2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_191",
       "t7_command": "WS 2",
       "t7_hit_level": "mid",
@@ -17133,7 +17225,7 @@
         "WS.2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_192",
       "t7_command": "WS 2, 1",
       "t7_hit_level": "mid, mid",
@@ -17180,7 +17272,7 @@
         "WS.2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_193",
       "t7_command": "WS (2), 1",
       "t7_hit_level": "mid",
@@ -17220,7 +17312,7 @@
         "WS.1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_194",
       "t7_command": "WS 1+2",
       "t7_hit_level": "mid",
@@ -17260,7 +17352,7 @@
         "WS.1+2,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_195",
       "t7_command": "WS 1+2, 1+2",
       "t7_hit_level": "mid, mid",
@@ -17307,7 +17399,7 @@
         "WS.1+2,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_196",
       "t7_command": "WS (1+2), 1+2",
       "t7_hit_level": "mid",
@@ -17347,7 +17439,7 @@
         "WS.1+2,1+2,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_197",
       "t7_command": "WS 1+2, 1+2, 1+2",
       "t7_hit_level": "mid, mid, mid",
@@ -17395,7 +17487,7 @@
         "WS.1+2,1+2,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_198",
       "t7_command": "WS (1+2), 1+2, 1+2",
       "t7_hit_level": "mid, mid",
@@ -17442,7 +17534,7 @@
         "WS.1+2,1+2,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_199",
       "t7_command": "WS (1+2), (1+2), 1+2",
       "t7_hit_level": "mid",
@@ -17482,7 +17574,7 @@
         "WS.f+1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_200",
       "t7_command": "WS f+1",
       "t7_hit_level": "mid",
@@ -17521,7 +17613,7 @@
         "WS.f+1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_201",
       "t7_command": "WS f+1, 2",
       "t7_hit_level": "mid, mid",
@@ -17567,7 +17659,7 @@
         "WS.f+1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_202",
       "t7_command": "WS (f+1), 2",
       "t7_hit_level": "mid",
@@ -17606,7 +17698,7 @@
         "WS.f+1,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_203",
       "t7_command": "WS f+1, 2, 1",
       "t7_hit_level": "mid, mid, high",
@@ -17654,7 +17746,7 @@
         "WS.f+1,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_204",
       "t7_command": "WS (f+1), 2, 1",
       "t7_hit_level": "mid, high",
@@ -17701,7 +17793,7 @@
         "WS.f+1,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_205",
       "t7_command": "WS (f+1), (2), 1",
       "t7_hit_level": "high",
@@ -17741,7 +17833,7 @@
         "WS.f+1,2,d/f+1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_206",
       "t7_command": "WS f+1, 2, d/f+1",
       "t7_hit_level": "mid, mid, mid",
@@ -17788,7 +17880,7 @@
         "WS.f+1,2,d/f+1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_207",
       "t7_command": "WS (f+1), 2, d/f+1",
       "t7_hit_level": "mid, mid",
@@ -17834,7 +17926,7 @@
         "WS.f+1,2,d/f+1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_208",
       "t7_command": "WS (f+1), (2), d/f+1",
       "t7_hit_level": "mid",
@@ -17873,7 +17965,7 @@
         "WS.f+1,2,d+1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_209",
       "t7_command": "WS f+1, 2, d+1",
       "t7_hit_level": "mid, mid, low",
@@ -17920,7 +18012,7 @@
         "WS.f+1,2,d+1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_210",
       "t7_command": "WS (f+1), 2, d+1",
       "t7_hit_level": "mid, low",
@@ -17966,7 +18058,7 @@
         "WS.f+1,2,d+1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_211",
       "t7_command": "WS (f+1), (2), d+1",
       "t7_hit_level": "low",
@@ -18003,7 +18095,7 @@
       "anim_ref": "t7:jack-7:jack-7_212",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_212",
       "t7_command": "While down (facing up) d+1+2",
       "t7_hit_level": "mid",
@@ -18044,7 +18136,7 @@
         "d+2,1,1,1,2,1,2,1,1+2,1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_213",
       "t7_command": "d+2, 1, 1, 1, 2, 1, 2, 1, 1+2, 1+2",
       "t7_hit_level": "-",
@@ -18084,7 +18176,7 @@
         "d+2,1,1,1,2,1,2,1,d+1+2,d+1+2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_214",
       "t7_command": "d+2, 1, 1, 1, 2, 1, 2, 1, d+1+2, d+1+2",
       "t7_hit_level": "-",
@@ -18122,7 +18214,7 @@
       "anim_ref": "t7:jack-7:jack-7_215",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_215",
       "t7_command": "Face Up, Feet Towards+3 or (After Rolling Forward)",
       "t7_hit_level": "low",
@@ -18160,7 +18252,7 @@
       "anim_ref": "t7:jack-7:jack-7_216",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_216",
       "t7_command": "Face Up, Feet Towards+4 or (After Rolling Forward)",
       "t7_hit_level": "mid",
@@ -18201,7 +18293,7 @@
         "FUFT.d+3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_217",
       "t7_command": "Face Up, Feet Towards, d+3 (or 4)",
       "t7_hit_level": "low",
@@ -18241,7 +18333,7 @@
         "FUFT.3+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_218",
       "t7_command": "Face Up, Feet Towards+3+4",
       "t7_hit_level": "mid",
@@ -18280,7 +18372,7 @@
       "anim_ref": "t7:jack-7:jack-7_219",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_219",
       "t7_command": "Face Up, Feet Towards, Roll Forward+1+2",
       "t7_hit_level": "mid",
@@ -18321,7 +18413,7 @@
         "FDFA.3"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_220",
       "t7_command": "Face Down, Feet Away+3",
       "t7_hit_level": "low",
@@ -18361,7 +18453,7 @@
         "FDFA.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_221",
       "t7_command": "Face Down, Feet Away+4 (close)",
       "t7_hit_level": "mid",
@@ -18402,7 +18494,7 @@
         "FDFA.4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_222",
       "t7_command": "Face Down, Feet Away+4 (far)",
       "t7_hit_level": "mid",
@@ -18441,7 +18533,7 @@
       "anim_ref": "t7:jack-7:jack-7_223",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_223",
       "t7_command": "(Upon Landing) f",
       "t7_hit_level": "mid",
@@ -18479,7 +18571,7 @@
       "anim_ref": "t7:jack-7:jack-7_224",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_224",
       "t7_command": null,
       "t7_hit_level": "",
@@ -18519,7 +18611,7 @@
         "d+3+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_225",
       "t7_command": "d+3+4",
       "t7_hit_level": "-",
@@ -18556,7 +18648,7 @@
       "anim_ref": "t7:jack-7:jack-7_226",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_226",
       "t7_command": null,
       "t7_hit_level": "",
@@ -18596,7 +18688,7 @@
         "SIT.F"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_227",
       "t7_command": "SIT F or B",
       "t7_hit_level": "-",
@@ -18635,7 +18727,7 @@
         "SIT.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_228",
       "t7_command": "SIT 1",
       "t7_hit_level": "low",
@@ -18674,7 +18766,7 @@
         "SIT.1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_229",
       "t7_command": "SIT 1, 2",
       "t7_hit_level": "low, low",
@@ -18720,7 +18812,7 @@
         "SIT.1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_230",
       "t7_command": "SIT (1), 2",
       "t7_hit_level": "low, low",
@@ -18759,7 +18851,7 @@
         "SIT.1,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_231",
       "t7_command": "SIT 1, 2, 1",
       "t7_hit_level": "low, low, low",
@@ -18806,7 +18898,7 @@
         "SIT.1,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_232",
       "t7_command": "SIT (1), 2, 1",
       "t7_hit_level": "low, low, low",
@@ -18852,7 +18944,7 @@
         "SIT.1,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_233",
       "t7_command": "SIT (1), (2), 1",
       "t7_hit_level": "low, low, low",
@@ -18891,7 +18983,7 @@
         "SIT.1,2,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_234",
       "t7_command": "SIT 1, 2, 1, 2",
       "t7_hit_level": "low, low, low, low",
@@ -18939,7 +19031,7 @@
         "SIT.1,2,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_235",
       "t7_command": "SIT (1), 2, 1, 2",
       "t7_hit_level": "low, low, low, low",
@@ -18986,7 +19078,7 @@
         "SIT.1,2,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_236",
       "t7_command": "SIT (1), (2), 1, 2",
       "t7_hit_level": "low, low, low, low",
@@ -19032,7 +19124,7 @@
         "SIT.1,2,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_237",
       "t7_command": "SIT (1), (2), (1), 2",
       "t7_hit_level": "low, low, low, low",
@@ -19071,7 +19163,7 @@
         "SIT.2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_238",
       "t7_command": "SIT 2",
       "t7_hit_level": "low",
@@ -19110,7 +19202,7 @@
         "SIT.2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_239",
       "t7_command": "SIT 2, 1",
       "t7_hit_level": "low, low",
@@ -19156,7 +19248,7 @@
         "SIT.2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_240",
       "t7_command": "SIT (2), 1",
       "t7_hit_level": "low, low",
@@ -19195,7 +19287,7 @@
         "SIT.2,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_241",
       "t7_command": "SIT 2, 1, 2",
       "t7_hit_level": "low, low, low",
@@ -19242,7 +19334,7 @@
         "SIT.2,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_242",
       "t7_command": "SIT (2), 1, 2",
       "t7_hit_level": "low, low, low",
@@ -19288,7 +19380,7 @@
         "SIT.2,1,2"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_243",
       "t7_command": "SIT (2), (1), 2",
       "t7_hit_level": "low, low, low",
@@ -19327,7 +19419,7 @@
         "SIT.2,1,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_244",
       "t7_command": "SIT 2, 1, 2, 1",
       "t7_hit_level": "low, low, low, low",
@@ -19375,7 +19467,7 @@
         "SIT.2,1,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_245",
       "t7_command": "SIT (2), 1, 2, 1",
       "t7_hit_level": "low, low, low, low",
@@ -19422,7 +19514,7 @@
         "SIT.2,1,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_246",
       "t7_command": "SIT (2), (1), 2, 1",
       "t7_hit_level": "low, low, low, low",
@@ -19468,7 +19560,7 @@
         "SIT.2,1,2,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_247",
       "t7_command": "SIT (2), (1), (2), 1",
       "t7_hit_level": "low, low, low, low",
@@ -19507,7 +19599,7 @@
         "SIT.1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_248",
       "t7_command": "SIT 1+2",
       "t7_hit_level": "mid",
@@ -19546,7 +19638,7 @@
         "SIT.3+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_249",
       "t7_command": "SIT 3+4",
       "t7_hit_level": "mid",
@@ -19584,7 +19676,7 @@
       "anim_ref": "t7:jack-7:jack-7_250",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_250",
       "t7_command": null,
       "t7_hit_level": "",
@@ -19624,7 +19716,7 @@
         "f,F+4"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_251",
       "t7_command": "f, F+4",
       "t7_hit_level": "mid",
@@ -19664,7 +19756,7 @@
         "u/b+1+2"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_252",
       "t7_command": "u/b+1+2",
       "t7_hit_level": "high",
@@ -19702,7 +19794,7 @@
       "anim_ref": "t7:jack-7:jack-7_253",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_253",
       "t7_command": null,
       "t7_hit_level": "",
@@ -19742,7 +19834,7 @@
         "R.b+1+2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_254",
       "t7_command": "(During Rage) b+1+2",
       "t7_hit_level": "mid",
@@ -19783,7 +19875,7 @@
         "R.b,d/b,d,d/f+1,2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_255",
       "t7_command": "(During Rage) b, d/b, d, d/f+1, 2",
       "t7_hit_level": "low, mid",
@@ -19831,7 +19923,7 @@
         "R.b,d/b,d,d/f+1,2"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_256",
       "t7_command": "(During Rage) (b, d/b, d, d/f+1), 2",
       "t7_hit_level": "mid",
@@ -19870,7 +19962,7 @@
       "anim_ref": "t7:jack-7:jack-7_257",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_257",
       "t7_command": null,
       "t7_hit_level": "",
@@ -19910,7 +20002,7 @@
         "3+4"
       ],
       "move_class": "strike",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_258",
       "t7_command": "3+4",
       "t7_hit_level": "mid",
@@ -19950,7 +20042,7 @@
         "3+4,3+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_259",
       "t7_command": "3+4, 3+4",
       "t7_hit_level": "mid",
@@ -19966,7 +20058,10 @@
         "bank": "gunjack",
         "row": 244,
         "match": "same-notation"
-      }
+      },
+      "t3_source": "gunjack",
+      "t3_row": 244,
+      "t3_command": "LK+RK"
     },
     "3+4,3+4,3+4": {
       "name": "SAM-UR-A1 3+4,3+4,3+4",
@@ -19990,7 +20085,7 @@
         "3+4,3+4,3+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_260",
       "t7_command": "3+4, 3+4, 3+4",
       "t7_hit_level": "mid",
@@ -20006,7 +20101,10 @@
         "bank": "gunjack",
         "row": 245,
         "match": "same-notation"
-      }
+      },
+      "t3_source": "gunjack",
+      "t3_row": 245,
+      "t3_command": "LK+RK"
     },
     "3+4,3+4,3+4,3+4": {
       "name": "SAM-UR-A1 3+4,3+4,3+4,3+4",
@@ -20030,7 +20128,7 @@
         "3+4,3+4,3+4,3+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_261",
       "t7_command": "3+4, 3+4, 3+4, 3+4",
       "t7_hit_level": "mid",
@@ -20070,7 +20168,7 @@
         "3+4,3+4,3+4,3+4,3+4"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_262",
       "t7_command": "3+4, 3+4, 3+4, 3+4, 3+4",
       "t7_hit_level": "mid",
@@ -20085,46 +20183,6 @@
       "anim_t3": {
         "bank": "gunjack",
         "row": 268,
-        "match": "nearest limb/class/startup (approximate)"
-      }
-    },
-    "f+4~1~t7.jack-7": {
-      "name": "Dark Greeting",
-      "input": "f+4~1",
-      "startup": 1.083,
-      "active": 0.017,
-      "recovery": 0.5,
-      "damage": 47,
-      "damage_raw": 80,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 13,
-      "hit_level": "high",
-      "on_block": "!",
-      "on_hit": "KND",
-      "on_ch": "KND",
-      "crush": null,
-      "anim_ref": "t7:jack-7:jack-7_263",
-      "input_slots": [
-        "f+4~1"
-      ],
-      "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
-      "t7_move_id": "jack-7_263",
-      "t7_command": "f+4~1",
-      "t7_hit_level": "high",
-      "t7_damage_raw": "80 [96]",
-      "t7_startup_frames": "65",
-      "t7_on_block": "!",
-      "t7_on_hit": "KND",
-      "t7_on_ch": "KND",
-      "merge_source": "t7:jack-7_263",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "gunjack",
-        "row": 223,
         "match": "nearest limb/class/startup (approximate)"
       }
     },
@@ -20148,7 +20206,7 @@
       "anim_ref": "t7:jack-7:jack-7_264",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_264",
       "t7_command": "hcf, followed by one lever spin, 1 ",
       "t7_hit_level": "mid",
@@ -20187,7 +20245,7 @@
       "anim_ref": "t7:jack-7:jack-7_265",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_265",
       "t7_command": "hcf, followed by two lever spins, 1",
       "t7_hit_level": "mid",
@@ -20226,7 +20284,7 @@
       "anim_ref": "t7:jack-7:jack-7_266",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_266",
       "t7_command": "hcf, followed by three lever spins, 1",
       "t7_hit_level": "mid",
@@ -20265,7 +20323,7 @@
       "anim_ref": "t7:jack-7:jack-7_267",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_267",
       "t7_command": "hcf, followed by four lever spins, 1",
       "t7_hit_level": "mid",
@@ -20304,7 +20362,7 @@
       "anim_ref": "t7:jack-7:jack-7_268",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_268",
       "t7_command": null,
       "t7_hit_level": "",
@@ -20344,7 +20402,7 @@
         "1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_269",
       "t7_command": "Approach enemy... 1+3",
       "t7_hit_level": "high throw",
@@ -20387,7 +20445,7 @@
         "2+4"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_270",
       "t7_command": "Approach enemy... 2+4",
       "t7_hit_level": "high throw",
@@ -20430,7 +20488,7 @@
         "u/f+1+2"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_271",
       "t7_command": "Approach enemy... u/f+1+2",
       "t7_hit_level": "high throw",
@@ -20473,7 +20531,7 @@
         "u/f+1+2,d,d/f+2"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_272",
       "t7_command": "Approach enemy... u/f+1+2, d, d/f+2",
       "t7_hit_level": "high throw, mid",
@@ -20516,7 +20574,7 @@
         "f+1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_273",
       "t7_command": "Approach enemy... f+1+3",
       "t7_hit_level": "high throw",
@@ -20559,7 +20617,7 @@
         "f+2+4"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_274",
       "t7_command": "Approach enemy... f+2+4",
       "t7_hit_level": "high throw",
@@ -20602,7 +20660,7 @@
         "d/f+1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_275",
       "t7_command": "Approach enemy... d/f+1+3",
       "t7_hit_level": "high throw",
@@ -20645,7 +20703,7 @@
         "d/f+1+3,1+2"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_276",
       "t7_command": "Approach enemy... d/f+1+3, 1+2",
       "t7_hit_level": "high throw",
@@ -20688,7 +20746,7 @@
         "d/f+2+4"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_277",
       "t7_command": "Approach enemy... d/f+2+4",
       "t7_hit_level": "high throw",
@@ -20731,7 +20789,7 @@
         "d/f,D/F+2+4"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_278",
       "t7_command": "Approach enemy... d/f, D/F+2+4",
       "t7_hit_level": "high throw",
@@ -20774,7 +20832,7 @@
         "d/b+2+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_279",
       "t7_command": "Approach enemy... d/b+2+3",
       "t7_hit_level": "high throw",
@@ -20817,7 +20875,7 @@
         "qcf+1"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_280",
       "t7_command": "Approach enemy... qcf+1",
       "t7_hit_level": "high throw",
@@ -20860,7 +20918,7 @@
         "qcb+2"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_281",
       "t7_command": "Approach enemy... qcb+2",
       "t7_hit_level": "high throw",
@@ -20903,7 +20961,7 @@
         "d/b,f+1+2"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_282",
       "t7_command": "Approach enemy... d/b, f+1+2",
       "t7_hit_level": "high throw",
@@ -20946,7 +21004,7 @@
         "SIDE_L.1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_283",
       "t7_command": "Approach from left side... 1+3 (or 2+4)",
       "t7_hit_level": "high throw",
@@ -20989,7 +21047,7 @@
         "SIDE_R.1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_284",
       "t7_command": "Approach from right side...  1+3 (or 2+4)",
       "t7_hit_level": "high throw",
@@ -21032,7 +21090,7 @@
         "BACK.1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_285",
       "t7_command": "Approach from behind... 1+3 (or f+1+3)",
       "t7_hit_level": "high throw",
@@ -21075,7 +21133,7 @@
         "BACK.2+4"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_286",
       "t7_command": "Approach from behind...  2+4 (or f+2+4)",
       "t7_hit_level": "high throw",
@@ -21118,7 +21176,7 @@
         "CROUCHING....d+1+3"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_287",
       "t7_command": "Approach (crouching enemy)... d+1+3",
       "t7_hit_level": "mid throw",
@@ -21161,7 +21219,7 @@
         "CROUCHING....d+2+4"
       ],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_288",
       "t7_command": "Approach (crouching enemy)... d+2+4",
       "t7_hit_level": "mid throw",
@@ -21202,7 +21260,7 @@
       "anim_ref": "t7:jack-7:jack-7_289",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_289",
       "t7_command": "During enemy wall stun... 1+3 (or 2+4)",
       "t7_hit_level": "-",
@@ -21241,7 +21299,7 @@
       "anim_ref": "t7:jack-7:jack-7_290",
       "input_slots": [],
       "move_class": "throw",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_290",
       "t7_command": "CSK Approach (crouching enemy)... d+1+2",
       "t7_hit_level": "mid throw",
@@ -21282,7 +21340,7 @@
       "anim_ref": "t7:jack-7:jack-7_291",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_291",
       "t7_command": "WR f, f, F (Mid Screen)",
       "t7_hit_level": "mid",
@@ -21321,7 +21379,7 @@
       "anim_ref": "t7:jack-7:jack-7_292",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_292",
       "t7_command": null,
       "t7_hit_level": "",
@@ -21361,7 +21419,7 @@
         "TACKLE.1"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_293",
       "t7_command": "(During Tackle) 1 (or 2)",
       "t7_hit_level": "-",
@@ -21402,7 +21460,7 @@
         "TACKLE.1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_294",
       "t7_command": "(During Tackle) 1/2, 1/2",
       "t7_hit_level": "-",
@@ -21450,7 +21508,7 @@
         "TACKLE.1,1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_295",
       "t7_command": "(During Tackle) 1/2, 1/2, 1/2",
       "t7_hit_level": "-",
@@ -21499,7 +21557,7 @@
         "TACKLE.1,1,1,1"
       ],
       "move_class": "string",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_296",
       "t7_command": "(During Tackle) 1/2, 1/2, 1/2, 1/2",
       "t7_hit_level": "-",
@@ -21547,7 +21605,7 @@
       "anim_ref": "t7:jack-7:jack-7_297",
       "input_slots": [],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_297",
       "t7_command": null,
       "t7_hit_level": "",
@@ -21587,7 +21645,7 @@
         "hcf"
       ],
       "move_class": "special",
-      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql — TekkenBot-extracted T7 frame data)",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
       "t7_move_id": "jack-7_298",
       "t7_command": "hcf",
       "t7_hit_level": "-",
@@ -21666,69 +21724,6 @@
       ],
       "move_class": "special",
       "merge_source": "t3:gunjack:row:39"
-    },
-    "u+1,1~t3.gunjack": {
-      "name": "GUNJACK u+1,1_r40 (T3 gunjack r40)",
-      "input": "u+1,1_r40",
-      "t3_source": "gunjack",
-      "t3_row": 40,
-      "t3_command": "LP",
-      "startup": 0.15,
-      "active": 0.017,
-      "recovery": 0.467,
-      "damage": 9,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:40",
-      "input_slots": [
-        "u+1,1"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:40"
-    },
-    "u/f+1,1~t3.gunjack": {
-      "name": "GUNJACK u/f+1,1_r41 (T3 gunjack r41)",
-      "input": "u/f+1,1_r41",
-      "t3_source": "gunjack",
-      "t3_row": 41,
-      "t3_command": "LP",
-      "startup": 0.15,
-      "active": 0.017,
-      "recovery": 0.467,
-      "damage": 9,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:41",
-      "input_slots": [
-        "u/f+1,1"
-      ],
-      "move_class": "special",
-      "merge_source": "t3:gunjack:row:41"
-    },
-    "u/b+1,1~t3.gunjack": {
-      "name": "GUNJACK u/b+1,1_r42 (T3 gunjack r42)",
-      "input": "u/b+1,1_r42",
-      "t3_source": "gunjack",
-      "t3_row": 42,
-      "t3_command": "LP",
-      "startup": 0.15,
-      "active": 0.017,
-      "recovery": 0.467,
-      "damage": 9,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:42",
-      "input_slots": [
-        "u/b+1,1"
-      ],
-      "move_class": "special",
-      "merge_source": "t3:gunjack:row:42"
     },
     "u+1,1~t3.gunjack.2": {
       "name": "GUNJACK u+1,1_r43 (T3 gunjack r43)",
@@ -21859,48 +21854,6 @@
       "t3_condition": 36,
       "merge_source": "t3:gunjack:row:48"
     },
-    "u+1+2~t3.gunjack": {
-      "name": "GUNJACK u+1+2 (T3 gunjack r49)",
-      "input": "u+1+2",
-      "t3_source": "gunjack",
-      "t3_row": 49,
-      "t3_command": "8+LP+RP",
-      "startup": 0.433,
-      "active": 0.05,
-      "recovery": 0.7,
-      "damage": 9,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:49",
-      "input_slots": [
-        "u+1+2"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:49"
-    },
-    "u/f+1~t3.gunjack": {
-      "name": "GUNJACK u/f+1 (T3 gunjack r51)",
-      "input": "u/f+1",
-      "t3_source": "gunjack",
-      "t3_row": 51,
-      "t3_command": "9+LP",
-      "startup": 0.433,
-      "active": 0.05,
-      "recovery": 0.7,
-      "damage": 9,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:51",
-      "input_slots": [
-        "u/f+1"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:51"
-    },
     "u+1,2": {
       "name": "GUNJACK u+1,2 (T3 gunjack r52)",
       "input": "u+1,2",
@@ -22030,69 +21983,6 @@
       "t3_condition": 36,
       "merge_source": "t3:gunjack:row:58"
     },
-    "u+1,3~t3.gunjack": {
-      "name": "GUNJACK u+1,3 (T3 gunjack r59)",
-      "input": "u+1,3",
-      "t3_source": "gunjack",
-      "t3_row": 59,
-      "t3_command": "LK",
-      "startup": 0.25,
-      "active": 0.017,
-      "recovery": 0.817,
-      "damage": 15,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:59",
-      "input_slots": [
-        "u+1,3"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:59"
-    },
-    "u/f+1,3~t3.gunjack": {
-      "name": "GUNJACK u/f+1,3 (T3 gunjack r60)",
-      "input": "u/f+1,3",
-      "t3_source": "gunjack",
-      "t3_row": 60,
-      "t3_command": "LK",
-      "startup": 0.25,
-      "active": 0.017,
-      "recovery": 0.817,
-      "damage": 15,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:60",
-      "input_slots": [
-        "u/f+1,3"
-      ],
-      "move_class": "special",
-      "merge_source": "t3:gunjack:row:60"
-    },
-    "u/b+1,3~t3.gunjack": {
-      "name": "GUNJACK u/b+1,3 (T3 gunjack r61)",
-      "input": "u/b+1,3",
-      "t3_source": "gunjack",
-      "t3_row": 61,
-      "t3_command": "LK",
-      "startup": 0.25,
-      "active": 0.017,
-      "recovery": 0.817,
-      "damage": 15,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:61",
-      "input_slots": [
-        "u/b+1,3"
-      ],
-      "move_class": "special",
-      "merge_source": "t3:gunjack:row:61"
-    },
     "u+1,3~t3.gunjack.2": {
       "name": "GUNJACK u+1,3_r62 (T3 gunjack r62)",
       "input": "u+1,3_r62",
@@ -22219,70 +22109,6 @@
       "move_class": "special",
       "merge_source": "t3:gunjack:row:67"
     },
-    "u+3+4~t3.gunjack": {
-      "name": "GUNJACK u+3+4_r107 (T3 gunjack r68)",
-      "input": "u+3+4_r107",
-      "t3_source": "gunjack",
-      "t3_row": 68,
-      "t3_command": "8+LK+RK",
-      "startup": 0.417,
-      "active": 0.017,
-      "recovery": 0.817,
-      "damage": 12,
-      "limb": "legL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:68",
-      "input_slots": [
-        "u+3+4"
-      ],
-      "move_class": "strike",
-      "t3_restriction": 107,
-      "merge_source": "t3:gunjack:row:68"
-    },
-    "u/f+3~t3.gunjack": {
-      "name": "GUNJACK u/f+3 (T3 gunjack r69)",
-      "input": "u/f+3",
-      "t3_source": "gunjack",
-      "t3_row": 69,
-      "t3_command": "9+LK",
-      "startup": 0.417,
-      "active": 0.017,
-      "recovery": 0.817,
-      "damage": 12,
-      "limb": "legL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:69",
-      "input_slots": [
-        "u/f+3"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:69"
-    },
-    "u/b+4~t3.gunjack": {
-      "name": "GUNJACK u/b+4 (T3 gunjack r71)",
-      "input": "u/b+4",
-      "t3_source": "gunjack",
-      "t3_row": 71,
-      "t3_command": "7+RK",
-      "startup": 0.25,
-      "active": 0.05,
-      "recovery": 0.6,
-      "damage": 6,
-      "limb": "legR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:71",
-      "input_slots": [
-        "u/b+4"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:71"
-    },
     "u/b+4~t3.gunjack.2": {
       "name": "GUNJACK u/b+4_c36 (T3 gunjack r71)",
       "input": "u/b+4_c36",
@@ -22367,69 +22193,6 @@
       ],
       "move_class": "special",
       "merge_source": "t3:gunjack:row:74"
-    },
-    "u+1,4~t3.gunjack": {
-      "name": "GUNJACK u+1,4_r75 (T3 gunjack r75)",
-      "input": "u+1,4_r75",
-      "t3_source": "gunjack",
-      "t3_row": 75,
-      "t3_command": "RK",
-      "startup": 0.15,
-      "active": 0.033,
-      "recovery": 0.617,
-      "damage": 15,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:75",
-      "input_slots": [
-        "u+1,4"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:75"
-    },
-    "u/f+1,4~t3.gunjack": {
-      "name": "GUNJACK u/f+1,4_r76 (T3 gunjack r76)",
-      "input": "u/f+1,4_r76",
-      "t3_source": "gunjack",
-      "t3_row": 76,
-      "t3_command": "RK",
-      "startup": 0.15,
-      "active": 0.033,
-      "recovery": 0.617,
-      "damage": 15,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:76",
-      "input_slots": [
-        "u/f+1,4"
-      ],
-      "move_class": "special",
-      "merge_source": "t3:gunjack:row:76"
-    },
-    "u/b+1,4~t3.gunjack": {
-      "name": "GUNJACK u/b+1,4_r77 (T3 gunjack r77)",
-      "input": "u/b+1,4_r77",
-      "t3_source": "gunjack",
-      "t3_row": 77,
-      "t3_command": "RK",
-      "startup": 0.15,
-      "active": 0.033,
-      "recovery": 0.617,
-      "damage": 15,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:77",
-      "input_slots": [
-        "u/b+1,4"
-      ],
-      "move_class": "special",
-      "merge_source": "t3:gunjack:row:77"
     },
     "u+1,4~t3.gunjack.2": {
       "name": "GUNJACK u+1,4_r78 (T3 gunjack r78)",
@@ -22560,91 +22323,6 @@
       "t3_condition": 36,
       "merge_source": "t3:gunjack:row:83"
     },
-    "u/f+4~t3.gunjack": {
-      "name": "GUNJACK u/f+4 (T3 gunjack r95)",
-      "input": "u/f+4",
-      "t3_source": "gunjack",
-      "t3_row": 95,
-      "t3_command": "9+RK",
-      "startup": 0.533,
-      "active": 0.017,
-      "recovery": 0.683,
-      "damage": 15,
-      "limb": "legR",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:95",
-      "input_slots": [
-        "u/f+4"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:95"
-    },
-    "b+1~t3.gunjack": {
-      "name": "GUNJACK b+1 (T3 gunjack r98)",
-      "input": "b+1",
-      "t3_source": "gunjack",
-      "t3_row": 98,
-      "t3_command": "4+LP",
-      "startup": 0.333,
-      "active": 0.033,
-      "recovery": 0.6,
-      "damage": 11,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:98",
-      "input_slots": [
-        "b+1"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:98"
-    },
-    "b+2~t3.gunjack": {
-      "name": "GUNJACK b+2 (T3 gunjack r99)",
-      "input": "b+2",
-      "t3_source": "gunjack",
-      "t3_row": 99,
-      "t3_command": "4+RP",
-      "startup": 0.167,
-      "active": 0.017,
-      "recovery": 0.483,
-      "damage": 7,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:99",
-      "input_slots": [
-        "b+2"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:99"
-    },
-    "b~t3.gunjack": {
-      "name": "GUNJACK b_c37 (T3 gunjack r100)",
-      "input": "b_c37",
-      "t3_source": "gunjack",
-      "t3_row": 100,
-      "t3_command": "4/6/7/8/9+LP",
-      "startup": 0.133,
-      "active": 0.017,
-      "recovery": 0.567,
-      "damage": 9,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:100",
-      "input_slots": [
-        "b"
-      ],
-      "move_class": "strike",
-      "t3_condition": 37,
-      "merge_source": "t3:gunjack:row:100"
-    },
     "b~t3.gunjack.2": {
       "name": "GUNJACK b_c36 (T3 gunjack r105)",
       "input": "b_c36",
@@ -22666,70 +22344,6 @@
       "move_class": "strike",
       "t3_condition": 36,
       "merge_source": "t3:gunjack:row:105"
-    },
-    "d/f+1+2~t3.gunjack": {
-      "name": "GUNJACK d/f+1+2_r107 (T3 gunjack r102)",
-      "input": "d/f+1+2_r107",
-      "t3_source": "gunjack",
-      "t3_row": 102,
-      "t3_command": "3+LP+RP",
-      "startup": 0.283,
-      "active": 0.033,
-      "recovery": 0.733,
-      "damage": 12,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:102",
-      "input_slots": [
-        "d/f+1+2"
-      ],
-      "move_class": "strike",
-      "t3_restriction": 107,
-      "merge_source": "t3:gunjack:row:102"
-    },
-    "b+3+4~t3.gunjack": {
-      "name": "GUNJACK b+3+4 (T3 gunjack r103)",
-      "input": "b+3+4",
-      "t3_source": "gunjack",
-      "t3_row": 103,
-      "t3_command": "4+LK+RK",
-      "startup": 0.3,
-      "active": 0.017,
-      "recovery": 0.667,
-      "damage": 15,
-      "limb": "legL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:103",
-      "input_slots": [
-        "b+3+4"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:103"
-    },
-    "b+4~t3.gunjack": {
-      "name": "GUNJACK b+4 (T3 gunjack r104)",
-      "input": "b+4",
-      "t3_source": "gunjack",
-      "t3_row": 104,
-      "t3_command": "4+RK",
-      "startup": 0.267,
-      "active": 0.017,
-      "recovery": 0.567,
-      "damage": 12,
-      "limb": "legR",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:104",
-      "input_slots": [
-        "b+4"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:104"
     },
     "b~t3.gunjack.3": {
       "name": "GUNJACK b_c38 (T3 gunjack r106)",
@@ -22753,154 +22367,6 @@
       "t3_condition": 38,
       "merge_source": "t3:gunjack:row:106"
     },
-    "f+1~t3.gunjack": {
-      "name": "GUNJACK f+1 (T3 gunjack r108)",
-      "input": "f+1",
-      "t3_source": "gunjack",
-      "t3_row": 108,
-      "t3_command": "6+LP",
-      "startup": 0.333,
-      "active": 0.033,
-      "recovery": 0.6,
-      "damage": 10,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:108",
-      "input_slots": [
-        "f+1"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:108"
-    },
-    "f+2~t3.gunjack": {
-      "name": "GUNJACK f+2 (T3 gunjack r109)",
-      "input": "f+2",
-      "t3_source": "gunjack",
-      "t3_row": 109,
-      "t3_command": "6+RP",
-      "startup": 0.2,
-      "active": 0.017,
-      "recovery": 0.483,
-      "damage": 8,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:109",
-      "input_slots": [
-        "f+2"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:109"
-    },
-    "f+1+2~t3.gunjack": {
-      "name": "GUNJACK f+1+2 (T3 gunjack r110)",
-      "input": "f+1+2",
-      "t3_source": "gunjack",
-      "t3_row": 110,
-      "t3_command": "6+LP+RP",
-      "startup": 0.283,
-      "active": 0.017,
-      "recovery": 0.75,
-      "damage": 13,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:110",
-      "input_slots": [
-        "f+1+2"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:110"
-    },
-    "f+3+4~t3.gunjack": {
-      "name": "GUNJACK f+3+4_r2 (T3 gunjack r111)",
-      "input": "f+3+4_r2",
-      "t3_source": "gunjack",
-      "t3_row": 111,
-      "t3_command": "6+LK+RK",
-      "startup": 0.333,
-      "active": 0.017,
-      "recovery": 0.667,
-      "damage": 21,
-      "limb": "legL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:111",
-      "input_slots": [
-        "f+3+4"
-      ],
-      "move_class": "strike",
-      "t3_restriction": 2,
-      "merge_source": "t3:gunjack:row:111"
-    },
-    "f+4~t3.gunjack": {
-      "name": "GUNJACK f+4 (T3 gunjack r112)",
-      "input": "f+4",
-      "t3_source": "gunjack",
-      "t3_row": 112,
-      "t3_command": "6+RK",
-      "startup": 0.283,
-      "active": 0.017,
-      "recovery": 0.567,
-      "damage": 15,
-      "limb": "legR",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:112",
-      "input_slots": [
-        "f+4"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:112"
-    },
-    "1~t3.gunjack": {
-      "name": "GUNJACK 1 (T3 gunjack r113)",
-      "input": "1",
-      "t3_source": "gunjack",
-      "t3_row": 113,
-      "t3_command": "LP",
-      "startup": 0.317,
-      "active": 0.05,
-      "recovery": 0.6,
-      "damage": 6,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:113",
-      "input_slots": [
-        "1"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:113"
-    },
-    "2~t3.gunjack": {
-      "name": "GUNJACK 2 (T3 gunjack r114)",
-      "input": "2",
-      "t3_source": "gunjack",
-      "t3_row": 114,
-      "t3_command": "RP",
-      "startup": 0.167,
-      "active": 0.017,
-      "recovery": 0.483,
-      "damage": 5,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:114",
-      "input_slots": [
-        "2"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:114"
-    },
     "d/b": {
       "name": "GUNJACK d/b_c37 (T3 gunjack r115)",
       "input": "d/b_c37",
@@ -22923,28 +22389,6 @@
       "t3_condition": 37,
       "merge_source": "t3:gunjack:row:115"
     },
-    "d/b~t3.gunjack": {
-      "name": "GUNJACK d/b_c36 (T3 gunjack r116)",
-      "input": "d/b_c36",
-      "t3_source": "gunjack",
-      "t3_row": 116,
-      "t3_command": "1/2/3+LP+RP",
-      "startup": 0.133,
-      "active": 0.033,
-      "recovery": 0.483,
-      "damage": 6,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:116",
-      "input_slots": [
-        "d/b"
-      ],
-      "move_class": "strike",
-      "t3_condition": 36,
-      "merge_source": "t3:gunjack:row:116"
-    },
     "d/b~t3.gunjack.2": {
       "name": "GUNJACK d/b (T3 gunjack r117)",
       "input": "d/b",
@@ -22965,27 +22409,6 @@
       ],
       "move_class": "strike",
       "merge_source": "t3:gunjack:row:117"
-    },
-    "4~t3.gunjack": {
-      "name": "GUNJACK 4 (T3 gunjack r118)",
-      "input": "4",
-      "t3_source": "gunjack",
-      "t3_row": 118,
-      "t3_command": "RK",
-      "startup": 0.267,
-      "active": 0.017,
-      "recovery": 0.567,
-      "damage": 6,
-      "limb": "legR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:118",
-      "input_slots": [
-        "4"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:118"
     },
     "d/b~t3.gunjack.3": {
       "name": "GUNJACK d/b_c36_r119 (T3 gunjack r119)",
@@ -23031,48 +22454,6 @@
       "t3_condition": 38,
       "merge_source": "t3:gunjack:row:120"
     },
-    "d/f+1~t3.gunjack": {
-      "name": "GUNJACK d/f+1 (T3 gunjack r121)",
-      "input": "d/f+1",
-      "t3_source": "gunjack",
-      "t3_row": 121,
-      "t3_command": "3+LP",
-      "startup": 0.283,
-      "active": 0.017,
-      "recovery": 0.517,
-      "damage": 5,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:121",
-      "input_slots": [
-        "d/f+1"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:121"
-    },
-    "d/f+2~t3.gunjack": {
-      "name": "GUNJACK d/f+2 (T3 gunjack r122)",
-      "input": "d/f+2",
-      "t3_source": "gunjack",
-      "t3_row": 122,
-      "t3_command": "3+RP",
-      "startup": 0.3,
-      "active": 0.017,
-      "recovery": 0.633,
-      "damage": 6,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:122",
-      "input_slots": [
-        "d/f+2"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:122"
-    },
     "d/f+1+2~t3.gunjack.2": {
       "name": "GUNJACK d/f+1+2_r17 (T3 gunjack r123)",
       "input": "d/f+1+2_r17",
@@ -23095,27 +22476,6 @@
       "t3_restriction": 17,
       "merge_source": "t3:gunjack:row:123"
     },
-    "d/f+3+4~t3.gunjack": {
-      "name": "GUNJACK d/f+3+4 (T3 gunjack r124)",
-      "input": "d/f+3+4",
-      "t3_source": "gunjack",
-      "t3_row": 124,
-      "t3_command": "3+LK+RK",
-      "startup": 0.333,
-      "active": 0.017,
-      "recovery": 0.733,
-      "damage": 7,
-      "limb": "legL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:124",
-      "input_slots": [
-        "d/f+3+4"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:124"
-    },
     "d/f+4": {
       "name": "GUNJACK d/f+4 (T3 gunjack r125)",
       "input": "d/f+4",
@@ -23136,111 +22496,6 @@
       ],
       "move_class": "strike",
       "merge_source": "t3:gunjack:row:125"
-    },
-    "d+1~t3.gunjack": {
-      "name": "GUNJACK d+1 (T3 gunjack r126)",
-      "input": "d+1",
-      "t3_source": "gunjack",
-      "t3_row": 126,
-      "t3_command": "2+LP",
-      "startup": 0.133,
-      "active": 0.017,
-      "recovery": 0.483,
-      "damage": 3,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:126",
-      "input_slots": [
-        "d+1"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:126"
-    },
-    "d/b+2~t3.gunjack": {
-      "name": "GUNJACK d/b+2 (T3 gunjack r127)",
-      "input": "d/b+2",
-      "t3_source": "gunjack",
-      "t3_row": 127,
-      "t3_command": "1+RP",
-      "startup": 0.167,
-      "active": 0.017,
-      "recovery": 0.483,
-      "damage": 6,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:127",
-      "input_slots": [
-        "d/b+2"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:127"
-    },
-    "d/b+1+2~t3.gunjack": {
-      "name": "GUNJACK d/b+1+2 (T3 gunjack r128)",
-      "input": "d/b+1+2",
-      "t3_source": "gunjack",
-      "t3_row": 128,
-      "t3_command": "1+LP+RP",
-      "startup": 0.5,
-      "active": 0.033,
-      "recovery": 0.9,
-      "damage": 24,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:128",
-      "input_slots": [
-        "d/b+1+2"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:128"
-    },
-    "d+3~t3.gunjack": {
-      "name": "GUNJACK d+3 (T3 gunjack r129)",
-      "input": "d+3",
-      "t3_source": "gunjack",
-      "t3_row": 129,
-      "t3_command": "2+LK",
-      "startup": 0.333,
-      "active": 0.017,
-      "recovery": 0.733,
-      "damage": 7,
-      "limb": "legL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:129",
-      "input_slots": [
-        "d+3"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:129"
-    },
-    "d/b+4~t3.gunjack": {
-      "name": "GUNJACK d/b+4 (T3 gunjack r130)",
-      "input": "d/b+4",
-      "t3_source": "gunjack",
-      "t3_row": 130,
-      "t3_command": "1+RK",
-      "startup": 0.267,
-      "active": 0.017,
-      "recovery": 0.567,
-      "damage": 4,
-      "limb": "legR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:130",
-      "input_slots": [
-        "d/b+4"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:130"
     },
     "d/f+1~t3.gunjack.2": {
       "name": "GUNJACK d/f+1_r131 (T3 gunjack r131)",
@@ -23283,90 +22538,6 @@
       ],
       "move_class": "strike",
       "merge_source": "t3:gunjack:row:132"
-    },
-    "d/f+3~t3.gunjack": {
-      "name": "GUNJACK d/f+3 (T3 gunjack r133)",
-      "input": "d/f+3",
-      "t3_source": "gunjack",
-      "t3_row": 133,
-      "t3_command": "3+LK",
-      "startup": 0.267,
-      "active": 0.017,
-      "recovery": 0.733,
-      "damage": 10,
-      "limb": "legL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:133",
-      "input_slots": [
-        "d/f+3"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:133"
-    },
-    "d/f+4~t3.gunjack": {
-      "name": "GUNJACK d/f+4_r134 (T3 gunjack r134)",
-      "input": "d/f+4_r134",
-      "t3_source": "gunjack",
-      "t3_row": 134,
-      "t3_command": "3+RK",
-      "startup": 0.2,
-      "active": 0.017,
-      "recovery": 0.55,
-      "damage": 9,
-      "limb": "legR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:134",
-      "input_slots": [
-        "d/f+4"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:134"
-    },
-    "d/b+1~t3.gunjack": {
-      "name": "GUNJACK d/b+1 (T3 gunjack r136)",
-      "input": "d/b+1",
-      "t3_source": "gunjack",
-      "t3_row": 136,
-      "t3_command": "1+LP",
-      "startup": 0.2,
-      "active": 0.017,
-      "recovery": 0.6,
-      "damage": 9,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:136",
-      "input_slots": [
-        "d/b+1"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:136"
-    },
-    "d/b+3~t3.gunjack": {
-      "name": "GUNJACK d/b+3 (T3 gunjack r137)",
-      "input": "d/b+3",
-      "t3_source": "gunjack",
-      "t3_row": 137,
-      "t3_command": "1+LK",
-      "startup": 0.35,
-      "active": 0.017,
-      "recovery": 0.65,
-      "damage": 11,
-      "limb": "legL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:137",
-      "input_slots": [
-        "d/b+3"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:137"
     },
     "b~t3.gunjack.4": {
       "name": "GUNJACK b (T3 gunjack r139)",
@@ -23494,27 +22665,6 @@
       "move_class": "special",
       "merge_source": "t3:gunjack:row:156"
     },
-    "d/f+1,d/f+2~t3.gunjack": {
-      "name": "GUNJACK d/f+1,d/f+2_r157 (T3 gunjack r157)",
-      "input": "d/f+1,d/f+2_r157",
-      "t3_source": "gunjack",
-      "t3_row": 157,
-      "t3_command": "3+RP",
-      "startup": 0.283,
-      "active": 0.017,
-      "recovery": 0.517,
-      "damage": 9,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:157",
-      "input_slots": [
-        "d/f+1,d/f+2"
-      ],
-      "move_class": "special",
-      "merge_source": "t3:gunjack:row:157"
-    },
     "d/f+2,d/f+1": {
       "name": "GUNJACK d/f+2,d/f+1 (T3 gunjack r158)",
       "input": "d/f+2,d/f+1",
@@ -23556,28 +22706,8 @@
       ],
       "move_class": "special",
       "t3_restriction": 17,
-      "merge_source": "t3:gunjack:row:159"
-    },
-    "f+1,1~t3.gunjack": {
-      "name": "GUNJACK f+1,1 (T3 gunjack r160)",
-      "input": "f+1,1",
-      "t3_source": "gunjack",
-      "t3_row": 160,
-      "t3_command": "LP",
-      "startup": 0.35,
-      "active": 0.033,
-      "recovery": 0.633,
-      "damage": 9,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:160",
-      "input_slots": [
-        "f+1,1"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:160"
+      "merge_source": "t3:gunjack:row:159",
+      "t3_condition": 2
     },
     "b+2,1": {
       "name": "GUNJACK b+2,1 (T3 gunjack r161)",
@@ -23621,48 +22751,6 @@
       "move_class": "strike",
       "merge_source": "t3:gunjack:row:162"
     },
-    "1,1~t3.gunjack": {
-      "name": "GUNJACK 1,1 (T3 gunjack r163)",
-      "input": "1,1",
-      "t3_source": "gunjack",
-      "t3_row": 163,
-      "t3_command": "LP",
-      "startup": 0.517,
-      "active": 0.05,
-      "recovery": 0.65,
-      "damage": 5,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:163",
-      "input_slots": [
-        "1,1"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:163"
-    },
-    "d/f+2,d/f+1~t3.gunjack": {
-      "name": "GUNJACK d/f+2,d/f+1_r164 (T3 gunjack r164)",
-      "input": "d/f+2,d/f+1_r164",
-      "t3_source": "gunjack",
-      "t3_row": 164,
-      "t3_command": "3+LP",
-      "startup": 0.417,
-      "active": 0.05,
-      "recovery": 0.5,
-      "damage": 6,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:164",
-      "input_slots": [
-        "d/f+2,d/f+1"
-      ],
-      "move_class": "special",
-      "merge_source": "t3:gunjack:row:164"
-    },
     "d/f+2,d/f+1~t3.gunjack.2": {
       "name": "GUNJACK d/f+2,d/f+1_c57_r165 (T3 gunjack r165)",
       "input": "d/f+2,d/f+1_c57_r165",
@@ -23704,29 +22792,8 @@
         "d/f+1,d/f+2,d/f+1"
       ],
       "move_class": "special",
-      "merge_source": "t3:gunjack:row:166"
-    },
-    "d/f+1,d/f+2,d/f+1~t3.gunjack": {
-      "name": "GUNJACK d/f+1,d/f+2,d/f+1_c57_r167 (T3 gunjack r167)",
-      "input": "d/f+1,d/f+2,d/f+1_c57_r167",
-      "t3_source": "gunjack",
-      "t3_row": 167,
-      "t3_command": "3+LP",
-      "startup": 0.417,
-      "active": 0.05,
-      "recovery": 0.5,
-      "damage": 7,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:167",
-      "input_slots": [
-        "d/f+1,d/f+2,d/f+1"
-      ],
-      "move_class": "special",
-      "t3_condition": 57,
-      "merge_source": "t3:gunjack:row:167"
+      "merge_source": "t3:gunjack:row:166",
+      "t3_condition": 57
     },
     "d/f+2,f+1": {
       "name": "GUNJACK d/f+2,f+1 (T3 gunjack r168)",
@@ -23790,27 +22857,6 @@
       ],
       "move_class": "strike",
       "merge_source": "t3:gunjack:row:170"
-    },
-    "1,2~t3.gunjack": {
-      "name": "GUNJACK 1,2 (T3 gunjack r171)",
-      "input": "1,2",
-      "t3_source": "gunjack",
-      "t3_row": 171,
-      "t3_command": "RP",
-      "startup": 0.4,
-      "active": 0.033,
-      "recovery": 0.683,
-      "damage": 7,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:171",
-      "input_slots": [
-        "1,2"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:171"
     },
     "1,2,1": {
       "name": "GUNJACK 1,2,1_c26 (T3 gunjack r173)",
@@ -23918,48 +22964,6 @@
       ],
       "move_class": "strike",
       "merge_source": "t3:gunjack:row:177"
-    },
-    "2,1~t3.gunjack": {
-      "name": "GUNJACK 2,1 (T3 gunjack r178)",
-      "input": "2,1",
-      "t3_source": "gunjack",
-      "t3_row": 178,
-      "t3_command": "LP",
-      "startup": 0.25,
-      "active": 0.05,
-      "recovery": 1.183,
-      "damage": 6,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:178",
-      "input_slots": [
-        "2,1"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:178"
-    },
-    "1,2,1~t3.gunjack": {
-      "name": "GUNJACK 1,2,1 (T3 gunjack r179)",
-      "input": "1,2,1",
-      "t3_source": "gunjack",
-      "t3_row": 179,
-      "t3_command": "LP",
-      "startup": 0.25,
-      "active": 0.05,
-      "recovery": 1.183,
-      "damage": 6,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:179",
-      "input_slots": [
-        "1,2,1"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:179"
     },
     "2,1,2,1": {
       "name": "GUNJACK 2,1,2,1 (T3 gunjack r180)",
@@ -24108,29 +23112,8 @@
         "d/f+2,d/f+1,d/f+2"
       ],
       "move_class": "special",
-      "merge_source": "t3:gunjack:row:186"
-    },
-    "d/f+2,d/f+1,d/f+2~t3.gunjack": {
-      "name": "GUNJACK d/f+2,d/f+1,d/f+2_c57_r187 (T3 gunjack r187)",
-      "input": "d/f+2,d/f+1,d/f+2_c57_r187",
-      "t3_source": "gunjack",
-      "t3_row": 187,
-      "t3_command": "3+RP",
-      "startup": 0.433,
-      "active": 0.05,
-      "recovery": 0.617,
-      "damage": 7,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:187",
-      "input_slots": [
-        "d/f+2,d/f+1,d/f+2"
-      ],
-      "move_class": "special",
-      "t3_condition": 57,
-      "merge_source": "t3:gunjack:row:187"
+      "merge_source": "t3:gunjack:row:186",
+      "t3_condition": 57
     },
     "1,2~t3.gunjack.2": {
       "name": "GUNJACK 1,2_r188 (T3 gunjack r188)",
@@ -24260,27 +23243,6 @@
       "move_class": "strike",
       "merge_source": "t3:gunjack:row:194"
     },
-    "2,1,2~t3.gunjack": {
-      "name": "GUNJACK 2,1,2 (T3 gunjack r195)",
-      "input": "2,1,2",
-      "t3_source": "gunjack",
-      "t3_row": 195,
-      "t3_command": "RP",
-      "startup": 0.25,
-      "active": 0.05,
-      "recovery": 1.183,
-      "damage": 6,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:195",
-      "input_slots": [
-        "2,1,2"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:195"
-    },
     "1,2,1,2": {
       "name": "GUNJACK 1,2,1,2 (T3 gunjack r196)",
       "input": "1,2,1,2",
@@ -24323,27 +23285,6 @@
       "move_class": "special",
       "t3_restriction": 107,
       "merge_source": "t3:gunjack:row:197"
-    },
-    "d+1+2~t3.gunjack": {
-      "name": "GUNJACK d+1+2 (T3 gunjack r198)",
-      "input": "d+1+2",
-      "t3_source": "gunjack",
-      "t3_row": 198,
-      "t3_command": "2+LP+RP",
-      "startup": 0.467,
-      "active": 0.067,
-      "recovery": 0.983,
-      "damage": 7,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:198",
-      "input_slots": [
-        "d+1+2"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:198"
     },
     "b,1+2": {
       "name": "GUNJACK b,1+2 (T3 gunjack r199)",
@@ -24407,48 +23348,6 @@
       ],
       "move_class": "strike",
       "merge_source": "t3:gunjack:row:205"
-    },
-    "d/b+1,1~t3.gunjack": {
-      "name": "GUNJACK d/b+1,1 (T3 gunjack r207)",
-      "input": "d/b+1,1",
-      "t3_source": "gunjack",
-      "t3_row": 207,
-      "t3_command": "LP",
-      "startup": 0.333,
-      "active": 0.017,
-      "recovery": 0.483,
-      "damage": 15,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:207",
-      "input_slots": [
-        "d/b+1,1"
-      ],
-      "move_class": "special",
-      "merge_source": "t3:gunjack:row:207"
-    },
-    "d/b+1,1,1~t3.gunjack": {
-      "name": "GUNJACK d/b+1,1,1 (T3 gunjack r208)",
-      "input": "d/b+1,1,1",
-      "t3_source": "gunjack",
-      "t3_row": 208,
-      "t3_command": "LP",
-      "startup": 0.333,
-      "active": 0.017,
-      "recovery": 0.483,
-      "damage": 15,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:208",
-      "input_slots": [
-        "d/b+1,1,1"
-      ],
-      "move_class": "special",
-      "merge_source": "t3:gunjack:row:208"
     },
     "d/b+1,1~t3.gunjack.2": {
       "name": "GUNJACK d/b+1,1_r209 (T3 gunjack r209)",
@@ -24575,27 +23474,6 @@
       ],
       "move_class": "strike",
       "merge_source": "t3:gunjack:row:215"
-    },
-    "d/b+1,1,1,2~t3.gunjack": {
-      "name": "GUNJACK d/b+1,1,1,2 (T3 gunjack r216)",
-      "input": "d/b+1,1,1,2",
-      "t3_source": "gunjack",
-      "t3_row": 216,
-      "t3_command": "RP",
-      "startup": 0.317,
-      "active": 0.017,
-      "recovery": 0.65,
-      "damage": 24,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:216",
-      "input_slots": [
-        "d/b+1,1,1,2"
-      ],
-      "move_class": "special",
-      "merge_source": "t3:gunjack:row:216"
     },
     "d/b+1,1,1,2~t3.gunjack.2": {
       "name": "GUNJACK d/b+1,1,1,2_r217 (T3 gunjack r217)",
@@ -24912,90 +23790,6 @@
       "move_class": "strike",
       "t3_condition": 28,
       "merge_source": "t3:gunjack:row:242"
-    },
-    "3+4~t3.gunjack": {
-      "name": "GUNJACK 3+4 (T3 gunjack r243)",
-      "input": "3+4",
-      "t3_source": "gunjack",
-      "t3_row": 243,
-      "t3_command": "LK+RK",
-      "startup": 1.567,
-      "active": 0.117,
-      "recovery": 0.55,
-      "damage": 35,
-      "limb": "legL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:243",
-      "input_slots": [
-        "3+4"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:243"
-    },
-    "3+4,3+4~t3.gunjack": {
-      "name": "GUNJACK 3+4,3+4 (T3 gunjack r244)",
-      "input": "3+4,3+4",
-      "t3_source": "gunjack",
-      "t3_row": 244,
-      "t3_command": "LK+RK",
-      "startup": 0.733,
-      "active": 0.117,
-      "recovery": 0.55,
-      "damage": 41,
-      "limb": "legL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:244",
-      "input_slots": [
-        "3+4,3+4"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:244"
-    },
-    "3+4,3+4,3+4~t3.gunjack": {
-      "name": "GUNJACK 3+4,3+4,3+4 (T3 gunjack r245)",
-      "input": "3+4,3+4,3+4",
-      "t3_source": "gunjack",
-      "t3_row": 245,
-      "t3_command": "LK+RK",
-      "startup": 0.733,
-      "active": 0.117,
-      "recovery": 0.55,
-      "damage": 47,
-      "limb": "legL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:245",
-      "input_slots": [
-        "3+4,3+4,3+4"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:245"
-    },
-    "d+4~t3.gunjack": {
-      "name": "GUNJACK d+4 (T3 gunjack r248)",
-      "input": "d+4",
-      "t3_source": "gunjack",
-      "t3_row": 248,
-      "t3_command": "2+RK",
-      "startup": 0.883,
-      "active": 0.033,
-      "recovery": 1.0,
-      "damage": 29,
-      "limb": "legR",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:248",
-      "input_slots": [
-        "d+4"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:248"
     },
     "d/b+2,1": {
       "name": "GUNJACK d/b+2,1_r17 (T3 gunjack r249)",
@@ -25370,73 +24164,6 @@
       "t3_restriction": 17,
       "merge_source": "t3:gunjack:row:265"
     },
-    "1+3~t3.gunjack": {
-      "name": "GUNJACK 1+3 (T3 gunjack r266)",
-      "input": "1+3",
-      "t3_source": "gunjack",
-      "t3_row": 266,
-      "t3_command": "LP+LK",
-      "startup": 0.2,
-      "active": 0.05,
-      "recovery": 0.467,
-      "damage": 21,
-      "limb": "both",
-      "heavy": false,
-      "knock": 6.5,
-      "soulGain": 11,
-      "anim_ref": "t3:gunjack:row:266",
-      "input_slots": [
-        "1+3"
-      ],
-      "move_class": "throw",
-      "damage_note": "t3 row damage 0; WH grappler convention 21",
-      "merge_source": "t3:gunjack:row:266"
-    },
-    "2+4~t3.gunjack": {
-      "name": "GUNJACK 2+4 (T3 gunjack r267)",
-      "input": "2+4",
-      "t3_source": "gunjack",
-      "t3_row": 267,
-      "t3_command": "RP+RK",
-      "startup": 0.2,
-      "active": 0.05,
-      "recovery": 0.467,
-      "damage": 21,
-      "limb": "both",
-      "heavy": false,
-      "knock": 6.5,
-      "soulGain": 11,
-      "anim_ref": "t3:gunjack:row:267",
-      "input_slots": [
-        "2+4"
-      ],
-      "move_class": "throw",
-      "damage_note": "t3 row damage 0; WH grappler convention 21",
-      "merge_source": "t3:gunjack:row:267"
-    },
-    "d/f+1+3~t3.gunjack": {
-      "name": "GUNJACK d/f+1+3_r17 (T3 gunjack r268)",
-      "input": "d/f+1+3_r17",
-      "t3_source": "gunjack",
-      "t3_row": 268,
-      "t3_command": "3+LP+LK",
-      "startup": 0.333,
-      "active": 0.017,
-      "recovery": 1.167,
-      "damage": 21,
-      "limb": "both",
-      "heavy": false,
-      "knock": 6.5,
-      "soulGain": 11,
-      "anim_ref": "t3:gunjack:row:268",
-      "input_slots": [
-        "d/f+1+3"
-      ],
-      "move_class": "throw",
-      "t3_restriction": 17,
-      "damage_note": "t3 row damage 0; WH grappler convention 21",
-      "merge_source": "t3:gunjack:row:268"
-    },
     "n,d,d/f,f+1": {
       "name": "GUNJACK n,d,d/f,f+1_r17 (T3 gunjack r269)",
       "input": "n,d,d/f,f+1_r17",
@@ -25482,75 +24209,6 @@
       "t3_restriction": 17,
       "damage_note": "t3 row damage 0; WH grappler convention 21",
       "merge_source": "t3:gunjack:row:271"
-    },
-    "d/f+2+4~t3.gunjack": {
-      "name": "GUNJACK d/f+2+4_r17 (T3 gunjack r272)",
-      "input": "d/f+2+4_r17",
-      "t3_source": "gunjack",
-      "t3_row": 272,
-      "t3_command": "3+RP+RK",
-      "startup": 0.183,
-      "active": 0.017,
-      "recovery": 0.517,
-      "damage": 21,
-      "limb": "both",
-      "heavy": false,
-      "knock": 6.5,
-      "soulGain": 11,
-      "anim_ref": "t3:gunjack:row:272",
-      "input_slots": [
-        "d/f+2+4"
-      ],
-      "move_class": "throw",
-      "t3_restriction": 17,
-      "damage_note": "t3 row damage 0; WH grappler convention 21",
-      "merge_source": "t3:gunjack:row:272"
-    },
-    "n,d/f,n,d/f+2+4~t3.gunjack": {
-      "name": "GUNJACK n,d/f,n,d/f+2+4_r17 (T3 gunjack r273)",
-      "input": "n,d/f,n,d/f+2+4_r17",
-      "t3_source": "gunjack",
-      "t3_row": 273,
-      "t3_command": "[5 3 5 3+RP+RK](59f)",
-      "startup": 0.183,
-      "active": 0.017,
-      "recovery": 0.517,
-      "damage": 21,
-      "limb": "both",
-      "heavy": false,
-      "knock": 6.5,
-      "soulGain": 11,
-      "anim_ref": "t3:gunjack:row:273",
-      "input_slots": [
-        "n,d/f,n,d/f+2+4"
-      ],
-      "move_class": "throw",
-      "t3_restriction": 17,
-      "damage_note": "t3 row damage 0; WH grappler convention 21",
-      "merge_source": "t3:gunjack:row:273"
-    },
-    "d/b+2+3~t3.gunjack": {
-      "name": "GUNJACK d/b+2+3_r17 (T3 gunjack r275)",
-      "input": "d/b+2+3_r17",
-      "t3_source": "gunjack",
-      "t3_row": 275,
-      "t3_command": "1+RP+LK",
-      "startup": 0.183,
-      "active": 0.017,
-      "recovery": 0.517,
-      "damage": 21,
-      "limb": "both",
-      "heavy": false,
-      "knock": 6.5,
-      "soulGain": 11,
-      "anim_ref": "t3:gunjack:row:275",
-      "input_slots": [
-        "d/b+2+3"
-      ],
-      "move_class": "throw",
-      "t3_restriction": 17,
-      "damage_note": "t3 row damage 0; WH grappler convention 21",
-      "merge_source": "t3:gunjack:row:275"
     },
     "n,d/b,n,f+1+2": {
       "name": "GUNJACK n,d/b,n,f+1+2_r17 (T3 gunjack r276)",
@@ -25620,27 +24278,6 @@
       "t3_condition": 36,
       "damage_note": "t3 row damage 0; WH grappler convention 21",
       "merge_source": "t3:gunjack:row:278"
-    },
-    "3~t3.gunjack": {
-      "name": "GUNJACK 3_r287 (T3 gunjack r287)",
-      "input": "3_r287",
-      "t3_source": "gunjack",
-      "t3_row": 287,
-      "t3_command": "LK",
-      "startup": 0.317,
-      "active": 0.017,
-      "recovery": 0.733,
-      "damage": 4,
-      "limb": "legL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:287",
-      "input_slots": [
-        "3"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:gunjack:row:287"
     },
     "4~t3.gunjack.2": {
       "name": "GUNJACK 4_r288 (T3 gunjack r288)",
@@ -25771,28 +24408,6 @@
       "t3_condition": 36,
       "merge_source": "t3:gunjack:row:347"
     },
-    "1+3,1~t3.gunjack": {
-      "name": "GUNJACK 1+3,1_c2 (T3 gunjack r347)",
-      "input": "1+3,1_c2",
-      "t3_source": "gunjack",
-      "t3_row": 347,
-      "t3_command": "any-button",
-      "startup": 0.167,
-      "active": 0.017,
-      "recovery": 1.433,
-      "damage": 21,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:347",
-      "input_slots": [
-        "1+3,1"
-      ],
-      "move_class": "special",
-      "t3_condition": 2,
-      "merge_source": "t3:gunjack:row:347"
-    },
     "2+4,1": {
       "name": "GUNJACK 2+4,1_c36 (T3 gunjack r349)",
       "input": "2+4,1_c36",
@@ -25813,28 +24428,6 @@
       ],
       "move_class": "strike",
       "t3_condition": 36,
-      "merge_source": "t3:gunjack:row:349"
-    },
-    "2+4,1~t3.gunjack": {
-      "name": "GUNJACK 2+4,1_c2 (T3 gunjack r349)",
-      "input": "2+4,1_c2",
-      "t3_source": "gunjack",
-      "t3_row": 349,
-      "t3_command": "any-button",
-      "startup": 0.167,
-      "active": 0.017,
-      "recovery": 2.967,
-      "damage": 18,
-      "limb": "armR",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:349",
-      "input_slots": [
-        "2+4,1"
-      ],
-      "move_class": "special",
-      "t3_condition": 2,
       "merge_source": "t3:gunjack:row:349"
     },
     "n,d,d/f,f+1,1": {
@@ -25859,29 +24452,6 @@
       "t3_condition": 4,
       "t3_restriction": 17,
       "merge_source": "t3:gunjack:row:351"
-    },
-    "n,d,d/f,f+1,1~t3.gunjack": {
-      "name": "GUNJACK n,d,d/f,f+1,1_c5 (T3 gunjack r353)",
-      "input": "n,d,d/f,f+1,1_c5",
-      "t3_source": "gunjack",
-      "t3_row": 353,
-      "t3_command": "any-button",
-      "startup": 0.167,
-      "active": 0.017,
-      "recovery": 1.667,
-      "damage": 24,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:353",
-      "input_slots": [
-        "n,d,d/f,f+1,1"
-      ],
-      "move_class": "special",
-      "t3_condition": 5,
-      "t3_restriction": 17,
-      "merge_source": "t3:gunjack:row:353"
     },
     "n,d,d/f,f+1,1~t3.gunjack.2": {
       "name": "GUNJACK n,d,d/f,f+1,1_c2 (T3 gunjack r357)",
@@ -26109,52 +24679,6 @@
       "t3_restriction": 17,
       "merge_source": "t3:gunjack:row:373"
     },
-    "n,d,d/b,b+2,1~t3.gunjack": {
-      "name": "GUNJACK n,d,d/b,b+2,1_c3 (T3 gunjack r376)",
-      "input": "n,d,d/b,b+2,1_c3",
-      "t3_source": "gunjack",
-      "t3_row": 376,
-      "t3_command": "any-button",
-      "startup": 0.167,
-      "active": 0.017,
-      "recovery": 2.0,
-      "damage": 41,
-      "limb": "armR",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:376",
-      "input_slots": [
-        "n,d,d/b,b+2,1"
-      ],
-      "move_class": "special",
-      "t3_condition": 3,
-      "t3_restriction": 17,
-      "merge_source": "t3:gunjack:row:376"
-    },
-    "d/f+1+3,1~t3.gunjack": {
-      "name": "GUNJACK d/f+1+3,1_c2 (T3 gunjack r378)",
-      "input": "d/f+1+3,1_c2",
-      "t3_source": "gunjack",
-      "t3_row": 378,
-      "t3_command": "any-button",
-      "startup": 0.167,
-      "active": 0.017,
-      "recovery": 3.233,
-      "damage": 15,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:gunjack:row:378",
-      "input_slots": [
-        "d/f+1+3,1"
-      ],
-      "move_class": "special",
-      "t3_condition": 2,
-      "t3_restriction": 17,
-      "merge_source": "t3:gunjack:row:378"
-    },
     "d/f+1+3,1,1+2": {
       "name": "GUNJACK d/f+1+3,1,1+2_c2 (T3 gunjack r379)",
       "input": "d/f+1+3,1,1+2_c2",
@@ -26177,6 +24701,46 @@
       "t3_condition": 2,
       "t3_restriction": 17,
       "merge_source": "t3:gunjack:row:379"
+    },
+    "f+4~t7.jack-7": {
+      "name": "Dark Greeting",
+      "input": "f+4~1",
+      "startup": 1.083,
+      "active": 0.017,
+      "recovery": 0.5,
+      "damage": 47,
+      "damage_raw": 80,
+      "limb": "armL",
+      "heavy": true,
+      "knock": 5.0,
+      "soulGain": 13,
+      "hit_level": "high",
+      "on_block": "!",
+      "on_hit": "KND",
+      "on_ch": "KND",
+      "crush": null,
+      "anim_ref": "t7:jack-7:jack-7_263",
+      "input_slots": [
+        "f+4~1"
+      ],
+      "move_class": "string",
+      "t7_source": "t7chicken (dayhaysoos/t7chickenplus-graphql \u2014 TekkenBot-extracted T7 frame data)",
+      "t7_move_id": "jack-7_263",
+      "t7_command": "f+4~1",
+      "t7_hit_level": "high",
+      "t7_damage_raw": "80 [96]",
+      "t7_startup_frames": "65",
+      "t7_on_block": "!",
+      "t7_on_hit": "KND",
+      "t7_on_ch": "KND",
+      "merge_source": "t7:jack-7_263",
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
+      "knockdown": true,
+      "anim_t3": {
+        "bank": "gunjack",
+        "row": 223,
+        "match": "nearest limb/class/startup (approximate)"
+      }
     }
   },
   "restored_from_sweep_338": {
@@ -26202,7 +24766,7 @@
     "1,1": "1,1",
     "1,1,1": "1,1,1",
     "1,2": "1,2",
-    "1,2,1": "1,2,1~t3.gunjack",
+    "1,2,1": "1,2,1",
     "1,2,1,1": "1,2,1,1",
     "1,2,1,2": "1,2,1,2",
     "2": "2~t8.jack8",
@@ -26508,7 +25072,7 @@
     "u+1+2": "u+1+2",
     "u+1,1": "u+1,1",
     "u+1,2": "u+1,2",
-    "u+1,3": "u+1,3~t3.gunjack",
+    "u+1,3": "u+1,3",
     "u+1,4": "u+1,4",
     "u+3+4": "u+3+4",
     "u+4": "u+4",
@@ -26519,7 +25083,7 @@
     "u/b+1+2": "ub+1+2",
     "u/b+1,1": "u/b+1,1",
     "u/b+1,2": "u/b+1,2",
-    "u/b+1,3": "u/b+1,3~t3.gunjack",
+    "u/b+1,3": "u/b+1,3",
     "u/b+1,4": "u/b+1,4",
     "u/b+3": "u/b+3",
     "u/b+3+4": "u/b+3+4",
@@ -26543,7 +25107,7 @@
     "u/f+1,1,4,3,4,1,2,1,d": "u/f+1,1,4,3,4,1,2,1,d",
     "u/f+1,1,4,3,4,1,2,1,d,1+2": "u/f+1,1,4,3,4,1,2,1,d,1+2",
     "u/f+1,2": "u/f+1,2",
-    "u/f+1,3": "u/f+1,3~t3.gunjack",
+    "u/f+1,3": "u/f+1,3",
     "u/f+1,4": "u/f+1,4",
     "u/f+2": "uf+2",
     "u/f+3": "uf+3",

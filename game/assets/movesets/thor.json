@@ -604,7 +604,16 @@
       "input_slots": [
         "f+2"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "t7_source": "rbnorway T7 frame sheet (via tekkendocs.com/api/t7/ganryu/framedata)",
+      "t7_command": "f+2~1",
+      "t7_hit_level": "h",
+      "t7_damage_raw": "16",
+      "t7_startup_frames": "16(17~)",
+      "t7_on_block": "+4",
+      "t7_on_hit": "+12",
+      "t7_on_ch": "+12",
+      "note": "T7 [h] startup 16(17~) | block +4 | hit +12 | CH +12 | rbnorway sheet carries no move names; labeled by T7 command"
     },
     "f+2__main": {
       "name": "THOR f+2 (T3 bryan r150)",
@@ -3672,32 +3681,6 @@
       "note": "T7 [m (TC)] startup 14 | block -12 | hit +1 | CH CS | rbnorway sheet carries no move names; labeled by T7 command",
       "t7_input": "f+2"
     },
-    "f+2~1": {
-      "name": "Ganryu f+2~1",
-      "input": "f+2~1",
-      "t7_source": "rbnorway T7 frame sheet (via tekkendocs.com/api/t7/ganryu/framedata)",
-      "t7_command": "f+2~1",
-      "t7_hit_level": "h",
-      "t7_damage_raw": "16",
-      "t7_startup_frames": "16(17~)",
-      "t7_on_block": "+4",
-      "t7_on_hit": "+12",
-      "t7_on_ch": "+12",
-      "startup": 0.267,
-      "active": 0.033,
-      "recovery": 0.55,
-      "damage": 16,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 4.2,
-      "soulGain": 8,
-      "anim_ref": "t7:ganryu:f_2_1",
-      "input_slots": [
-        "f+2~1"
-      ],
-      "move_class": "strike",
-      "note": "T7 [h] startup 16(17~) | block +4 | hit +12 | CH +12 | rbnorway sheet carries no move names; labeled by T7 command"
-    },
     "f+3_t7": {
       "name": "Ganryu f+3",
       "input": "f+3",
@@ -4849,32 +4832,6 @@
         ],
         "total": 53
       }
-    },
-    "b+1~2": {
-      "name": "Ganryu b+1~2",
-      "input": "b+1~2",
-      "t7_source": "rbnorway T7 frame sheet (via tekkendocs.com/api/t7/ganryu/framedata)",
-      "t7_command": "b+1~2",
-      "t7_hit_level": "mmmm",
-      "t7_damage_raw": "2,2,2,21",
-      "t7_startup_frames": "14(14)",
-      "t7_on_block": "-14",
-      "t7_on_hit": "KND",
-      "t7_on_ch": "KND",
-      "startup": 0.233,
-      "active": 0.033,
-      "recovery": 0.7,
-      "damage": 27,
-      "limb": "armR",
-      "heavy": true,
-      "knock": 5.0,
-      "soulGain": 14,
-      "anim_ref": "t7:ganryu:b_1_2",
-      "input_slots": [
-        "b+1~2"
-      ],
-      "move_class": "strike",
-      "note": "T7 [mmmm] startup 14(14) | block -14 | hit KND | CH KND | rbnorway sheet carries no move names; labeled by T7 command"
     },
     "b+1~2 (1,2,1,2,1,2)": {
       "name": "Ganryu b+1~2 (1,2,1,2,1,2)",

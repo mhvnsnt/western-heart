@@ -7,12 +7,12 @@
   "proxy_note": null,
   "schema_version": 2,
   "frame_convention": "Startup in seconds @60fps. Damage = Tekken values, WH 100HP. Hit ranges from the TTT2 movelist; startups are standard Tekken archetype estimates.",
-  "canon_note": "Menajerii = the Menagerie Soul (roster/vixen), Japanese rendering MENAJERII (menajerii). Roger Jr.'s boxing-kangaroo kit authored FRESH with TEKKEN inputs (owner directive — no Injustice 2 input system): Rocket Stance (b+1+2) and Bobbin Dance (b+3+4) stances, the Giant Swing, Animal Uppercut, twin 10-hit tenstrings. Canon-layered: Heron's Patience (b+1+3 parry stance), Heron Strike (HRN 1), Boar's Commit (f+2+3), Serpent's Economy (d/b+2+3).",
+  "canon_note": "Menajerii = the Menagerie Soul (roster/vixen), Japanese rendering MENAJERII (menajerii). Roger Jr.'s boxing-kangaroo kit authored FRESH with TEKKEN inputs (owner directive \u2014 no Injustice 2 input system): Rocket Stance (b+1+2) and Bobbin Dance (b+3+4) stances, the Giant Swing, Animal Uppercut, twin 10-hit tenstrings. Canon-layered: Heron's Patience (b+1+3 parry stance), Heron Strike (HRN 1), Boar's Commit (f+2+3), Serpent's Economy (d/b+2+3).",
   "stances": [
     "ROS (Rocket Stance, b+1+2)",
     "BOB (Bobbin Dance, b+3+4)",
-    "HRN (Heron's Patience, b+1+3 — canon)",
-    "HBS (Hunting Bear Stance, u+1+2 — hold)"
+    "HRN (Heron's Patience, b+1+3 \u2014 canon)",
+    "HBS (Hunting Bear Stance, u+1+2 \u2014 hold)"
   ],
   "combos": [
     {
@@ -360,23 +360,6 @@
         "2",
         "2,1"
       ]
-    },
-    "3~4": {
-      "name": "Spinning Tail Whip",
-      "input": "3~4",
-      "input_slots": [
-        "3~4"
-      ],
-      "move_class": "strike",
-      "damage": 16,
-      "hit_range": "mid",
-      "startup": 0.3,
-      "limb": "legR",
-      "heavy": false,
-      "knock": 1.5,
-      "soulGain": 5,
-      "tekken_base": "Roger Jr. (TTT2)",
-      "note": "Two-hit tail spin."
     },
     "1+2,3": {
       "name": "Double Spin Castanet Kick",
@@ -857,7 +840,8 @@
       "heavy": false,
       "knock": 0.0,
       "soulGain": 5,
-      "tekken_base": "Roger Jr. (TTT2)"
+      "tekken_base": "Roger Jr. (TTT2)",
+      "note": "Pulled from the Tekken 7 frame-data bank: 10 [12], 15 dmg, i22, -19 on block."
     },
     "b+4": {
       "name": "Spinning Snap Kick",
@@ -1568,7 +1552,7 @@
       "knock": 0.0,
       "soulGain": 5,
       "tekken_base": "Roger Jr. (TTT2)",
-      "note": "Menajerii canon: the heron's consultation — a parry stance. Beats highs/mids, feeds the boar.",
+      "note": "Menajerii canon: the heron's consultation \u2014 a parry stance. Beats highs/mids, feeds the boar.",
       "canon_layer": true,
       "parry": true,
       "enter_stance": "HRN"
@@ -1588,7 +1572,7 @@
       "knock": 3.0,
       "soulGain": 8,
       "tekken_base": "Roger Jr. (TTT2)",
-      "note": "Menajerii canon: from Heron's Patience — a single precise beak-strike.",
+      "note": "Menajerii canon: from Heron's Patience \u2014 a single precise beak-strike.",
       "canon_layer": true,
       "stance": "HRN"
     },
@@ -1607,7 +1591,7 @@
       "knock": 4.5,
       "soulGain": 8,
       "tekken_base": "Roger Jr. (TTT2)",
-      "note": "Menajerii canon: the boar's consultation — armored shoulder charge, power crush.",
+      "note": "Menajerii canon: the boar's consultation \u2014 armored shoulder charge, power crush.",
       "canon_layer": true,
       "powercrush": true
     },
@@ -1626,7 +1610,7 @@
       "knock": 3.0,
       "soulGain": 8,
       "tekken_base": "Roger Jr. (TTT2)",
-      "note": "Menajerii canon: the snake's consultation — low crush counter, minimal motion.",
+      "note": "Menajerii canon: the snake's consultation \u2014 low crush counter, minimal motion.",
       "canon_layer": true,
       "counter": true,
       "lowcrush": true
@@ -1921,23 +1905,6 @@
         "b+2,1,1+2"
       ],
       "note": "Pulled from the Tekken 7 frame-data bank: 12 [14], 14, 20 dmg, i15, -11 on block."
-    },
-    "b+3~4": {
-      "name": "Stalker Stomp",
-      "input": "b+3~4",
-      "input_slots": [
-        "b+3~4"
-      ],
-      "move_class": "strike",
-      "damage": 25,
-      "hit_range": "mid",
-      "startup": 0.367,
-      "limb": "legR",
-      "heavy": false,
-      "knock": 2.5,
-      "soulGain": 5,
-      "tekken_base": "Kuma (Tekken 7)",
-      "note": "Pulled from the Tekken 7 frame-data bank: 10 [12], 15 dmg, i22, -19 on block."
     },
     "b,f+2": {
       "name": "Leaping Mauling",
@@ -2277,7 +2244,7 @@
       "knock": 2.5,
       "soulGain": 5,
       "tekken_base": "Kuma (Tekken 7)",
-      "note": "Pulled from the Tekken 7 frame-data bank: 25 [30] dmg, i31, -17 on block. Menajerii crashes down into Hunting Bear Stance (HBS) on landing — hold to stay in it."
+      "note": "Pulled from the Tekken 7 frame-data bank: 25 [30] dmg, i31, -17 on block. Menajerii crashes down into Hunting Bear Stance (HBS) on landing \u2014 hold to stay in it."
     },
     "SS 1+2": {
       "name": "Sidestep Maul",

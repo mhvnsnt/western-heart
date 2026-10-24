@@ -1101,8 +1101,12 @@ export class Fighter {
     if (this.attack && this.attack.noHitbox) return null;
     const node = this._weaponBone(); if (!node) return null;
     node.getWorldPosition(_v1);
-    let r = this.attackName === 'surge' ? 1.0 : 0.5;
-    if (this.attack?.isGrab || this.attackName === 'grab' || this.attackName === '1+3' || this.attackName === '2+4') r = 0.95; // generous grab sphere
+    // Hitbox sizes tuned for reliable contact (Tekken-style):
+    // - Strikes: generous 0.65 radius (was 0.5) — attacks must connect
+    // - Grabs: 1.1 radius (was 0.95) — throws must connect in range
+    // - Surge: 1.0 (unchanged)
+    let r = this.attackName === 'surge' ? 1.0 : 0.65;
+    if (this.attack?.isGrab || this.attackName === 'grab' || this.attackName === '1+3' || this.attackName === '2+4') r = 1.1;
     r *= (this.stats.reachMult || 1); // WOOD force (modes lane): reach extends
     return { x: _v1.x, y: _v1.y, z: _v1.z, r, move: this.attack };
   }
@@ -1111,8 +1115,17 @@ export class Fighter {
     // Throw cinematic: both locked fighters are committed, not hittable.
     if (this.state === 'thrown' || this.state === 'throwing') return [];
     const out = [];
+    // Full-body hurtbox coverage (Tekken-style):
+    // - Head (high attacks)
+    // - Spine/torso (mid attacks)  
+    // - Pelvis/legs (low attacks can now connect)
     if (this.bones.Spine1) { this.bones.Spine1.getWorldPosition(_v1); out.push({ x: _v1.x, y: _v1.y, z: _v1.z, r: 0.58 }); }
     if (this.bones.Head) { this.bones.Head.getWorldPosition(_v1); out.push({ x: _v1.x, y: _v1.y, z: _v1.z, r: 0.34 }); }
+    // Pelvis for mid/low coverage
+    if (this.bones.Hips) { this.bones.Hips.getWorldPosition(_v1); out.push({ x: _v1.x, y: _v1.y, z: _v1.z, r: 0.45 }); }
+    // Legs for low attack coverage (Tekken lows must connect)
+    if (this.bones.LeftUpLeg) { this.bones.LeftUpLeg.getWorldPosition(_v1); out.push({ x: _v1.x, y: _v1.y, z: _v1.z, r: 0.32 }); }
+    if (this.bones.RightUpLeg) { this.bones.RightUpLeg.getWorldPosition(_v1); out.push({ x: _v1.x, y: _v1.y, z: _v1.z, r: 0.32 }); }
     return out;
   }
   registerHit() { this.hasHit = true; this.addMeter(this.attack.soulGain); }

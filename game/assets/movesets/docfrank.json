@@ -87,7 +87,9 @@
         "1+2"
       ],
       "move_class": "parry",
-      "note": "Parry stance; chains into Rolling Powerbomb (3+4) and Irish Whip (1+2)"
+      "note": "Parry stance; chains into Rolling Powerbomb (3+4) and Irish Whip (1+2)",
+      "t3_row": 320,
+      "merge_source": "t3:bosconovitch:row:320"
     },
     "1+2_parry_3+4": {
       "name": "Rolling Powerbomb",
@@ -265,27 +267,6 @@
         ],
         "total": 8
       }
-    },
-    "2~1": {
-      "name": "Anxiety Attack",
-      "input": "[2~1]",
-      "t3_source": "bosconovitch",
-      "t3_command": "2~1",
-      "t3_damage": null,
-      "startup": 0.1,
-      "active": 0.017,
-      "recovery": 0.35,
-      "damage": 0,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:anxiety_attack",
-      "input_slots": [
-        "[2~1]"
-      ],
-      "move_class": "special",
-      "note": "Anxiety slide combo from wiki T3 movelist"
     },
     "3,4": {
       "name": "Low Spin Kick - Shin Kick",
@@ -657,7 +638,9 @@
         "f+4"
       ],
       "move_class": "strike",
-      "note": "Low"
+      "note": "Low",
+      "t3_row": 86,
+      "merge_source": "t3:bosconovitch:row:86"
     },
     "f+3+4": {
       "name": "Trip Slide",
@@ -678,7 +661,10 @@
         "f+3+4"
       ],
       "move_class": "strike",
-      "note": "Mid; also 3+4 / Hop Up d+3+4 variants"
+      "note": "Mid; also 3+4 / Hop Up d+3+4 variants",
+      "t3_row": 91,
+      "t3_restriction": 2,
+      "merge_source": "t3:bosconovitch:row:91"
     },
     "d/f+1,2": {
       "name": "Twin Pistons",
@@ -710,7 +696,9 @@
         ],
         "total": 18
       },
-      "note": "Mid, mid; juggle-capable"
+      "note": "Mid, mid; juggle-capable",
+      "t3_row": 332,
+      "merge_source": "t3:bosconovitch:row:332"
     },
     "d+4": {
       "name": "Slicer",
@@ -731,7 +719,9 @@
         "d+4"
       ],
       "move_class": "strike",
-      "note": "Low"
+      "note": "Low",
+      "t3_row": 358,
+      "merge_source": "t3:bosconovitch:row:358"
     },
     "d+3+4": {
       "name": "Meditation",
@@ -833,7 +823,9 @@
         "b+3+4"
       ],
       "move_class": "special",
-      "note": "Stance: leads to Shadow Run / Shadow Run Kick L / R"
+      "note": "Stance: leads to Shadow Run / Shadow Run Kick L / R",
+      "t3_row": 85,
+      "merge_source": "t3:bosconovitch:row:85"
     },
     "bt_1+2": {
       "name": "Back Off!",
@@ -1207,7 +1199,9 @@
       },
       "note": "Unblockable brain-tickler mash, 10xN",
       "mash": true,
-      "unblockable": true
+      "unblockable": true,
+      "t3_row": 79,
+      "merge_source": "t3:bosconovitch:row:79"
     },
     "b+3+4,U": {
       "name": "Escapism Bomb",
@@ -1270,7 +1264,9 @@
         "u/f+1"
       ],
       "move_class": "strike",
-      "note": "Mid; also Stagger Old Fist in Panik Charge"
+      "note": "Mid; also Stagger Old Fist in Panik Charge",
+      "t3_row": 20,
+      "merge_source": "t3:bosconovitch:row:20"
     },
     "u/f+2": {
       "name": "Wisdom Fist",
@@ -1291,7 +1287,9 @@
         "u/f+2"
       ],
       "move_class": "strike",
-      "note": "High, juggle-capable"
+      "note": "High, juggle-capable",
+      "t3_row": 354,
+      "merge_source": "t3:bosconovitch:row:354"
     },
     "f,f+1": {
       "name": "Panik Jab",
@@ -2265,7 +2263,10 @@
       ],
       "move_class": "special",
       "note": "Gero-inspired ORIGINAL: palm ki blast, mid-range energy shot. Not from Tekken.",
-      "projectile": true
+      "projectile": true,
+      "t3_row": 106,
+      "t3_restriction": 107,
+      "merge_source": "t3:bosconovitch:row:106"
     },
     "1": {
       "name": "Doctor Breath",
@@ -2288,7 +2289,10 @@
       "move_class": "strike",
       "note": "Unblockable toxic breath puff | Game-neutral lookup: T3 '1 or 2' = Doctor Breath.",
       "unblockable": true,
-      "chip": true
+      "chip": true,
+      "t3_row": 84,
+      "t3_condition": 36,
+      "merge_source": "t3:bosconovitch:row:84"
     },
     "2": {
       "name": "Doctor Breath",
@@ -2311,7 +2315,9 @@
       "move_class": "strike",
       "note": "Unblockable toxic breath puff | Game-neutral lookup: T3 '1 or 2' = Doctor Breath.",
       "unblockable": true,
-      "chip": true
+      "chip": true,
+      "t3_row": 473,
+      "merge_source": "t3:bosconovitch:row:473"
     },
     "3": {
       "name": "Low Spin Kick - Shin Kick",
@@ -2342,7 +2348,10 @@
         ],
         "total": 11
       },
-      "note": "Low, low | Game-neutral lookup: 3 from '3,4' (Low Spin Kick)."
+      "note": "Low, low | Game-neutral lookup: 3 from '3,4' (Low Spin Kick).",
+      "t3_row": 42,
+      "t3_condition": 36,
+      "merge_source": "t3:bosconovitch:row:42"
     },
     "4": {
       "name": "Shin Kick",
@@ -2370,7 +2379,10 @@
         ],
         "total": 11
       },
-      "note": "Low, low. | Game-neutral lookup: 4 from '3,4' (Shin Kick)."
+      "note": "Low, low. | Game-neutral lookup: 4 from '3,4' (Shin Kick).",
+      "t3_row": 65,
+      "t3_condition": 36,
+      "merge_source": "t3:bosconovitch:row:65"
     },
     "1+3": {
       "name": "Whippersnapper",
@@ -2405,7 +2417,10 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "1"
+      "throw_break": "1",
+      "t3_row": 203,
+      "damage_note": "t3 row damage 0; WH grappler convention 21",
+      "merge_source": "t3:bosconovitch:row:203"
     },
     "2+4": {
       "name": "Rolling Powerbomb",
@@ -2430,7 +2445,10 @@
       "throw": true,
       "unblockable": true,
       "isGrab": true,
-      "throw_break": "2"
+      "throw_break": "2",
+      "t3_row": 204,
+      "damage_note": "t3 row damage 0; WH grappler convention 21",
+      "merge_source": "t3:bosconovitch:row:204"
     },
     "P+K": {
       "name": "Crayon Notes [WH SIGNATURE]",
@@ -2584,7 +2602,8 @@
       "input_slots": [
         "d/f+2"
       ],
-      "move_class": "strike"
+      "move_class": "strike",
+      "merge_source": "t3:bosconovitch:row:107"
     },
     "d/f+2_r156": {
       "name": "DOC FRANK d/f+2 (T3 gunjack r156)",
@@ -2662,7 +2681,10 @@
       "input_slots": [
         "n,d,d/b+1+3"
       ],
-      "move_class": "throw"
+      "move_class": "throw",
+      "t3_restriction": 7,
+      "damage_note": "t3 row damage 0; WH grappler convention 21",
+      "merge_source": "t3:bosconovitch:row:288"
     },
     "n,d,d/b+1+3_r269": {
       "name": "DOC FRANK n,d,d/b+1+3 throw (T3 gunjack r269)",
@@ -2704,27 +2726,6 @@
       ],
       "move_class": "strike",
       "merge_source": "t3:bosconovitch:row:19"
-    },
-    "u/f+1~t3.bosconovitch": {
-      "name": "BOSCONOVITCH u/f+1 (T3 bosconovitch r20)",
-      "input": "u/f+1",
-      "t3_source": "bosconovitch",
-      "t3_row": 20,
-      "t3_command": "9+LP",
-      "startup": 0.3,
-      "active": 0.017,
-      "recovery": 0.567,
-      "damage": 7,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:20",
-      "input_slots": [
-        "u/f+1"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:bosconovitch:row:20"
     },
     "u/b+1+2": {
       "name": "BOSCONOVITCH u/b+1+2 (T3 bosconovitch r21)",
@@ -2809,69 +2810,6 @@
       ],
       "move_class": "special",
       "merge_source": "t3:bosconovitch:row:24"
-    },
-    "u+1,1~t3.bosconovitch": {
-      "name": "BOSCONOVITCH u+1,1_r25 (T3 bosconovitch r25)",
-      "input": "u+1,1_r25",
-      "t3_source": "bosconovitch",
-      "t3_row": 25,
-      "t3_command": "LP",
-      "startup": 0.15,
-      "active": 0.017,
-      "recovery": 0.467,
-      "damage": 9,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:25",
-      "input_slots": [
-        "u+1,1"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:bosconovitch:row:25"
-    },
-    "u/f+1,1~t3.bosconovitch": {
-      "name": "BOSCONOVITCH u/f+1,1_r26 (T3 bosconovitch r26)",
-      "input": "u/f+1,1_r26",
-      "t3_source": "bosconovitch",
-      "t3_row": 26,
-      "t3_command": "LP",
-      "startup": 0.15,
-      "active": 0.017,
-      "recovery": 0.467,
-      "damage": 9,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:26",
-      "input_slots": [
-        "u/f+1,1"
-      ],
-      "move_class": "special",
-      "merge_source": "t3:bosconovitch:row:26"
-    },
-    "u/b+1,1~t3.bosconovitch": {
-      "name": "BOSCONOVITCH u/b+1,1_r27 (T3 bosconovitch r27)",
-      "input": "u/b+1,1_r27",
-      "t3_source": "bosconovitch",
-      "t3_row": 27,
-      "t3_command": "LP",
-      "startup": 0.15,
-      "active": 0.017,
-      "recovery": 0.467,
-      "damage": 9,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:27",
-      "input_slots": [
-        "u/b+1,1"
-      ],
-      "move_class": "special",
-      "merge_source": "t3:bosconovitch:row:27"
     },
     "u+1,1~t3.bosconovitch.2": {
       "name": "BOSCONOVITCH u+1,1_r28 (T3 bosconovitch r28)",
@@ -3151,28 +3089,6 @@
       "t3_condition": 36,
       "merge_source": "t3:bosconovitch:row:41"
     },
-    "3~t3.bosconovitch": {
-      "name": "BOSCONOVITCH 3_c36 (T3 bosconovitch r42)",
-      "input": "3_c36",
-      "t3_source": "bosconovitch",
-      "t3_row": 42,
-      "t3_command": "LK",
-      "startup": 0.15,
-      "active": 0.017,
-      "recovery": 0.717,
-      "damage": 15,
-      "limb": "legL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:42",
-      "input_slots": [
-        "3"
-      ],
-      "move_class": "strike",
-      "t3_condition": 36,
-      "merge_source": "t3:bosconovitch:row:42"
-    },
     "u/b+1,3": {
       "name": "BOSCONOVITCH u/b+1,3_c36 (T3 bosconovitch r43)",
       "input": "u/b+1,3_c36",
@@ -3195,27 +3111,6 @@
       "t3_condition": 36,
       "merge_source": "t3:bosconovitch:row:43"
     },
-    "u+1,3~t3.bosconovitch": {
-      "name": "BOSCONOVITCH u+1,3 (T3 bosconovitch r44)",
-      "input": "u+1,3",
-      "t3_source": "bosconovitch",
-      "t3_row": 44,
-      "t3_command": "LK",
-      "startup": 0.25,
-      "active": 0.017,
-      "recovery": 0.817,
-      "damage": 15,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:44",
-      "input_slots": [
-        "u+1,3"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:bosconovitch:row:44"
-    },
     "u/f+1,3": {
       "name": "BOSCONOVITCH u/f+1,3 (T3 bosconovitch r45)",
       "input": "u/f+1,3",
@@ -3237,27 +3132,6 @@
       "move_class": "special",
       "merge_source": "t3:bosconovitch:row:45"
     },
-    "u/b+1,3~t3.bosconovitch": {
-      "name": "BOSCONOVITCH u/b+1,3 (T3 bosconovitch r46)",
-      "input": "u/b+1,3",
-      "t3_source": "bosconovitch",
-      "t3_row": 46,
-      "t3_command": "LK",
-      "startup": 0.25,
-      "active": 0.017,
-      "recovery": 0.817,
-      "damage": 15,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:46",
-      "input_slots": [
-        "u/b+1,3"
-      ],
-      "move_class": "special",
-      "merge_source": "t3:bosconovitch:row:46"
-    },
     "u+1,3~t3.bosconovitch.2": {
       "name": "BOSCONOVITCH u+1,3_r47 (T3 bosconovitch r47)",
       "input": "u+1,3_r47",
@@ -3278,27 +3152,6 @@
       ],
       "move_class": "strike",
       "merge_source": "t3:bosconovitch:row:47"
-    },
-    "u/f+1,3~t3.bosconovitch": {
-      "name": "BOSCONOVITCH u/f+1,3_r48 (T3 bosconovitch r48)",
-      "input": "u/f+1,3_r48",
-      "t3_source": "bosconovitch",
-      "t3_row": 48,
-      "t3_command": "LK",
-      "startup": 0.233,
-      "active": 0.017,
-      "recovery": 0.8,
-      "damage": 15,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:48",
-      "input_slots": [
-        "u/f+1,3"
-      ],
-      "move_class": "special",
-      "merge_source": "t3:bosconovitch:row:48"
     },
     "u/b+1,3~t3.bosconovitch.2": {
       "name": "BOSCONOVITCH u/b+1,3_r49 (T3 bosconovitch r49)",
@@ -3424,29 +3277,8 @@
         "u/b+4"
       ],
       "move_class": "strike",
-      "merge_source": "t3:bosconovitch:row:54"
-    },
-    "u/b+4~t3.bosconovitch": {
-      "name": "BOSCONOVITCH u/b+4_c36 (T3 bosconovitch r54)",
-      "input": "u/b+4_c36",
-      "t3_source": "bosconovitch",
-      "t3_row": 54,
-      "t3_command": "7+RK",
-      "startup": 0.25,
-      "active": 0.05,
-      "recovery": 0.6,
-      "damage": 6,
-      "limb": "legR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:54",
-      "input_slots": [
-        "u/b+4"
-      ],
-      "move_class": "special",
-      "t3_condition": 36,
-      "merge_source": "t3:bosconovitch:row:54"
+      "merge_source": "t3:bosconovitch:row:54",
+      "t3_condition": 36
     },
     "u+1,4": {
       "name": "BOSCONOVITCH u+1,4 (T3 bosconovitch r55)",
@@ -3510,69 +3342,6 @@
       ],
       "move_class": "special",
       "merge_source": "t3:bosconovitch:row:57"
-    },
-    "u+1,4~t3.bosconovitch": {
-      "name": "BOSCONOVITCH u+1,4_r58 (T3 bosconovitch r58)",
-      "input": "u+1,4_r58",
-      "t3_source": "bosconovitch",
-      "t3_row": 58,
-      "t3_command": "RK",
-      "startup": 0.15,
-      "active": 0.033,
-      "recovery": 0.617,
-      "damage": 15,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:58",
-      "input_slots": [
-        "u+1,4"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:bosconovitch:row:58"
-    },
-    "u/f+1,4~t3.bosconovitch": {
-      "name": "BOSCONOVITCH u/f+1,4_r59 (T3 bosconovitch r59)",
-      "input": "u/f+1,4_r59",
-      "t3_source": "bosconovitch",
-      "t3_row": 59,
-      "t3_command": "RK",
-      "startup": 0.15,
-      "active": 0.033,
-      "recovery": 0.617,
-      "damage": 15,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:59",
-      "input_slots": [
-        "u/f+1,4"
-      ],
-      "move_class": "special",
-      "merge_source": "t3:bosconovitch:row:59"
-    },
-    "u/b+1,4~t3.bosconovitch": {
-      "name": "BOSCONOVITCH u/b+1,4_r60 (T3 bosconovitch r60)",
-      "input": "u/b+1,4_r60",
-      "t3_source": "bosconovitch",
-      "t3_row": 60,
-      "t3_command": "RK",
-      "startup": 0.15,
-      "active": 0.033,
-      "recovery": 0.617,
-      "damage": 15,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:60",
-      "input_slots": [
-        "u/b+1,4"
-      ],
-      "move_class": "special",
-      "merge_source": "t3:bosconovitch:row:60"
     },
     "u+1,4~t3.bosconovitch.2": {
       "name": "BOSCONOVITCH u+1,4_r61 (T3 bosconovitch r61)",
@@ -3659,28 +3428,6 @@
       "t3_condition": 36,
       "merge_source": "t3:bosconovitch:row:64"
     },
-    "4~t3.bosconovitch": {
-      "name": "BOSCONOVITCH 4_c36 (T3 bosconovitch r65)",
-      "input": "4_c36",
-      "t3_source": "bosconovitch",
-      "t3_row": 65,
-      "t3_command": "RK",
-      "startup": 0.15,
-      "active": 0.017,
-      "recovery": 0.717,
-      "damage": 12,
-      "limb": "legR",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:65",
-      "input_slots": [
-        "4"
-      ],
-      "move_class": "strike",
-      "t3_condition": 36,
-      "merge_source": "t3:bosconovitch:row:65"
-    },
     "u/b+1,4~t3.bosconovitch.3": {
       "name": "BOSCONOVITCH u/b+1,4_c36_r66 (T3 bosconovitch r66)",
       "input": "u/b+1,4_c36_r66",
@@ -3723,27 +3470,6 @@
       ],
       "move_class": "strike",
       "merge_source": "t3:bosconovitch:row:67"
-    },
-    "b+1+2~t3.bosconovitch": {
-      "name": "BOSCONOVITCH b+1+2 (T3 bosconovitch r79)",
-      "input": "b+1+2",
-      "t3_source": "bosconovitch",
-      "t3_row": 79,
-      "t3_command": "4+LP+RP",
-      "startup": 0.167,
-      "active": 0.017,
-      "recovery": 0.483,
-      "damage": 3,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:79",
-      "input_slots": [
-        "b+1+2"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:bosconovitch:row:79"
     },
     "f+1+2,2": {
       "name": "BOSCONOVITCH f+1+2,2 (T3 bosconovitch r80)",
@@ -3809,92 +3535,6 @@
       "t3_condition": 37,
       "merge_source": "t3:bosconovitch:row:82"
     },
-    "b~t3.bosconovitch": {
-      "name": "BOSCONOVITCH b_c36 (T3 bosconovitch r87)",
-      "input": "b_c36",
-      "t3_source": "bosconovitch",
-      "t3_row": 87,
-      "t3_command": "4/6/7/8/9+LK+RK",
-      "startup": 0.167,
-      "active": 0.017,
-      "recovery": 0.733,
-      "damage": 15,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:87",
-      "input_slots": [
-        "b"
-      ],
-      "move_class": "strike",
-      "t3_condition": 36,
-      "merge_source": "t3:bosconovitch:row:87"
-    },
-    "1~t3.bosconovitch": {
-      "name": "BOSCONOVITCH 1_c36 (T3 bosconovitch r84)",
-      "input": "1_c36",
-      "t3_source": "bosconovitch",
-      "t3_row": 84,
-      "t3_command": "LP",
-      "startup": 0.25,
-      "active": 0.017,
-      "recovery": 0.667,
-      "damage": 9,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:84",
-      "input_slots": [
-        "1"
-      ],
-      "move_class": "strike",
-      "t3_condition": 36,
-      "merge_source": "t3:bosconovitch:row:84"
-    },
-    "b+3+4~t3.bosconovitch": {
-      "name": "BOSCONOVITCH b+3+4 (T3 bosconovitch r85)",
-      "input": "b+3+4",
-      "t3_source": "bosconovitch",
-      "t3_row": 85,
-      "t3_command": "4+LK+RK",
-      "startup": 0.233,
-      "active": 0.017,
-      "recovery": 0.733,
-      "damage": 15,
-      "limb": "legL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:85",
-      "input_slots": [
-        "b+3+4"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:bosconovitch:row:85"
-    },
-    "f+4~t3.bosconovitch": {
-      "name": "BOSCONOVITCH f+4 (T3 bosconovitch r86)",
-      "input": "f+4",
-      "t3_source": "bosconovitch",
-      "t3_row": 86,
-      "t3_command": "6+RK",
-      "startup": 0.267,
-      "active": 0.017,
-      "recovery": 0.733,
-      "damage": 18,
-      "limb": "legR",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:86",
-      "input_slots": [
-        "f+4"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:bosconovitch:row:86"
-    },
     "b~t3.bosconovitch.2": {
       "name": "BOSCONOVITCH b_c38 (T3 bosconovitch r88)",
       "input": "b_c38",
@@ -3959,28 +3599,6 @@
       "move_class": "strike",
       "merge_source": "t3:bosconovitch:row:90"
     },
-    "f+3+4~t3.bosconovitch": {
-      "name": "BOSCONOVITCH f+3+4_r2 (T3 bosconovitch r91)",
-      "input": "f+3+4_r2",
-      "t3_source": "bosconovitch",
-      "t3_row": 91,
-      "t3_command": "6+LK+RK",
-      "startup": 0.233,
-      "active": 0.017,
-      "recovery": 0.733,
-      "damage": 12,
-      "limb": "legL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:91",
-      "input_slots": [
-        "f+3+4"
-      ],
-      "move_class": "strike",
-      "t3_restriction": 2,
-      "merge_source": "t3:bosconovitch:row:91"
-    },
     "4~t3.bosconovitch.2": {
       "name": "BOSCONOVITCH 4 (T3 bosconovitch r92)",
       "input": "4",
@@ -4023,28 +3641,6 @@
       "move_class": "strike",
       "t3_condition": 37,
       "merge_source": "t3:bosconovitch:row:93"
-    },
-    "d/b~t3.bosconovitch": {
-      "name": "BOSCONOVITCH d/b_c38 (T3 bosconovitch r99)",
-      "input": "d/b_c38",
-      "t3_source": "bosconovitch",
-      "t3_row": 99,
-      "t3_command": "1/2/3+LK",
-      "startup": 0.167,
-      "active": 0.017,
-      "recovery": 0.567,
-      "damage": 7,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:99",
-      "input_slots": [
-        "d/b"
-      ],
-      "move_class": "strike",
-      "t3_condition": 38,
-      "merge_source": "t3:bosconovitch:row:99"
     },
     "4~t3.bosconovitch.3": {
       "name": "BOSCONOVITCH 4_r96 (T3 bosconovitch r96)",
@@ -4216,49 +3812,6 @@
       "move_class": "strike",
       "merge_source": "t3:bosconovitch:row:105"
     },
-    "d/f+1+2~t3.bosconovitch": {
-      "name": "BOSCONOVITCH d/f+1+2_r107 (T3 bosconovitch r106)",
-      "input": "d/f+1+2_r107",
-      "t3_source": "bosconovitch",
-      "t3_row": 106,
-      "t3_command": "3+LP+RP",
-      "startup": 0.217,
-      "active": 0.033,
-      "recovery": 0.5,
-      "damage": 5,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:106",
-      "input_slots": [
-        "d/f+1+2"
-      ],
-      "move_class": "strike",
-      "t3_restriction": 107,
-      "merge_source": "t3:bosconovitch:row:106"
-    },
-    "d/f+2~t3.bosconovitch": {
-      "name": "BOSCONOVITCH d/f+2 (T3 bosconovitch r107)",
-      "input": "d/f+2",
-      "t3_source": "bosconovitch",
-      "t3_row": 107,
-      "t3_command": "3+RP",
-      "startup": 0.25,
-      "active": 0.05,
-      "recovery": 0.5,
-      "damage": 9,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:107",
-      "input_slots": [
-        "d/f+2"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:bosconovitch:row:107"
-    },
     "d/f+3": {
       "name": "BOSCONOVITCH d/f+3 (T3 bosconovitch r108)",
       "input": "d/f+3",
@@ -4278,28 +3831,8 @@
         "d/f+3"
       ],
       "move_class": "strike",
-      "merge_source": "t3:bosconovitch:row:108"
-    },
-    "d/f+4~t3.bosconovitch": {
-      "name": "BOSCONOVITCH d/f+4_r109 (T3 bosconovitch r109)",
-      "input": "d/f+4_r109",
-      "t3_source": "bosconovitch",
-      "t3_row": 109,
-      "t3_command": "3+RK",
-      "startup": 0.2,
-      "active": 0.017,
-      "recovery": 0.55,
-      "damage": 9,
-      "limb": "legR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:109",
-      "input_slots": [
-        "d/f+4"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:bosconovitch:row:109"
+      "merge_source": "t3:bosconovitch:row:108",
+      "t3_restriction": 14
     },
     "d/b+3": {
       "name": "BOSCONOVITCH d/b+3 (T3 bosconovitch r110)",
@@ -4705,28 +4238,6 @@
       "t3_restriction": 30,
       "merge_source": "t3:bosconovitch:row:140"
     },
-    "d/f+3~t3.bosconovitch": {
-      "name": "BOSCONOVITCH d/f+3_r14_r142 (T3 bosconovitch r142)",
-      "input": "d/f+3_r14_r142",
-      "t3_source": "bosconovitch",
-      "t3_row": 142,
-      "t3_command": "3+LK",
-      "startup": 0.55,
-      "active": 0.017,
-      "recovery": 0.817,
-      "damage": 12,
-      "limb": "legL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:142",
-      "input_slots": [
-        "d/f+3"
-      ],
-      "move_class": "strike",
-      "t3_restriction": 14,
-      "merge_source": "t3:bosconovitch:row:142"
-    },
     "3~t3.bosconovitch.3": {
       "name": "BOSCONOVITCH 3_r143 (T3 bosconovitch r143)",
       "input": "3_r143",
@@ -4788,29 +4299,8 @@
         "d,d/f"
       ],
       "move_class": "special",
-      "merge_source": "t3:bosconovitch:row:145"
-    },
-    "d,d/f~t3.bosconovitch": {
-      "name": "BOSCONOVITCH d,d/f_c28_r146 (T3 bosconovitch r146)",
-      "input": "d,d/f_c28_r146",
-      "t3_source": "bosconovitch",
-      "t3_row": 146,
-      "t3_command": "3/6+RK",
-      "startup": 0.4,
-      "active": 0.017,
-      "recovery": 0.767,
-      "damage": 8,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:146",
-      "input_slots": [
-        "d,d/f"
-      ],
-      "move_class": "special",
-      "t3_condition": 28,
-      "merge_source": "t3:bosconovitch:row:146"
+      "merge_source": "t3:bosconovitch:row:145",
+      "t3_condition": 28
     },
     "d,d/f,d/f": {
       "name": "BOSCONOVITCH d,d/f,d/f_c28 (T3 bosconovitch r148)",
@@ -4833,27 +4323,6 @@
       "move_class": "special",
       "t3_condition": 28,
       "merge_source": "t3:bosconovitch:row:148"
-    },
-    "d,d/f,1~t3.bosconovitch": {
-      "name": "BOSCONOVITCH d,d/f,1 (T3 bosconovitch r149)",
-      "input": "d,d/f,1",
-      "t3_source": "bosconovitch",
-      "t3_row": 149,
-      "t3_command": "any-button",
-      "startup": 0.4,
-      "active": 0.017,
-      "recovery": 0.767,
-      "damage": 8,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:149",
-      "input_slots": [
-        "d,d/f,1"
-      ],
-      "move_class": "special",
-      "merge_source": "t3:bosconovitch:row:149"
     },
     "d,d/f,1,d/f": {
       "name": "BOSCONOVITCH d,d/f,1,d/f (T3 bosconovitch r150)",
@@ -4960,48 +4429,6 @@
       ],
       "move_class": "special",
       "merge_source": "t3:bosconovitch:row:154"
-    },
-    "d~t3.bosconovitch": {
-      "name": "BOSCONOVITCH d_r157 (T3 bosconovitch r157)",
-      "input": "d_r157",
-      "t3_source": "bosconovitch",
-      "t3_row": 157,
-      "t3_command": "2/3/6/7/8/9+any-button",
-      "startup": 0.167,
-      "active": 0.017,
-      "recovery": 1.167,
-      "damage": 4,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:157",
-      "input_slots": [
-        "d"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:bosconovitch:row:157"
-    },
-    "d,1~t3.bosconovitch": {
-      "name": "BOSCONOVITCH d,1_r158 (T3 bosconovitch r158)",
-      "input": "d,1_r158",
-      "t3_source": "bosconovitch",
-      "t3_row": 158,
-      "t3_command": "any-button",
-      "startup": 0.167,
-      "active": 0.017,
-      "recovery": 1.167,
-      "damage": 26,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:158",
-      "input_slots": [
-        "d,1"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:bosconovitch:row:158"
     },
     "d/f+1+2,2": {
       "name": "BOSCONOVITCH d/f+1+2,2_r107 (T3 bosconovitch r160)",
@@ -5152,69 +4579,6 @@
       "move_class": "strike",
       "merge_source": "t3:bosconovitch:row:171"
     },
-    "f+1+2,b+2,4~t3.bosconovitch": {
-      "name": "BOSCONOVITCH f+1+2,b+2,4_r172 (T3 bosconovitch r172)",
-      "input": "f+1+2,b+2,4_r172",
-      "t3_source": "bosconovitch",
-      "t3_row": 172,
-      "t3_command": "RK",
-      "startup": 0.65,
-      "active": 0.017,
-      "recovery": 0.817,
-      "damage": 18,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:172",
-      "input_slots": [
-        "f+1+2,b+2,4"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:bosconovitch:row:172"
-    },
-    "f+1+2,b+2,1~t3.bosconovitch": {
-      "name": "BOSCONOVITCH f+1+2,b+2,1_r173 (T3 bosconovitch r173)",
-      "input": "f+1+2,b+2,1_r173",
-      "t3_source": "bosconovitch",
-      "t3_row": 173,
-      "t3_command": "LP",
-      "startup": 0.65,
-      "active": 0.1,
-      "recovery": 0.7,
-      "damage": 15,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:173",
-      "input_slots": [
-        "f+1+2,b+2,1"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:bosconovitch:row:173"
-    },
-    "f+1+2~t3.bosconovitch": {
-      "name": "BOSCONOVITCH f+1+2_r174 (T3 bosconovitch r174)",
-      "input": "f+1+2_r174",
-      "t3_source": "bosconovitch",
-      "t3_row": 174,
-      "t3_command": "6+LP+RP",
-      "startup": 0.2,
-      "active": 0.033,
-      "recovery": 0.617,
-      "damage": 13,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:174",
-      "input_slots": [
-        "f+1+2"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:bosconovitch:row:174"
-    },
     "f+2,1": {
       "name": "BOSCONOVITCH f+2,1 (T3 bosconovitch r175)",
       "input": "f+2,1",
@@ -5234,7 +4598,9 @@
         "f+2,1"
       ],
       "move_class": "strike",
-      "merge_source": "t3:bosconovitch:row:175"
+      "merge_source": "t3:bosconovitch:row:175",
+      "t3_condition": 57,
+      "t3_restriction": 63
     },
     "d,2": {
       "name": "BOSCONOVITCH d,2 (T3 bosconovitch r176)",
@@ -5698,50 +5064,6 @@
       "move_class": "special",
       "merge_source": "t3:bosconovitch:row:202"
     },
-    "1+3~t3.bosconovitch": {
-      "name": "BOSCONOVITCH 1+3 (T3 bosconovitch r203)",
-      "input": "1+3",
-      "t3_source": "bosconovitch",
-      "t3_row": 203,
-      "t3_command": "LP+LK",
-      "startup": 0.2,
-      "active": 0.05,
-      "recovery": 0.467,
-      "damage": 21,
-      "limb": "both",
-      "heavy": false,
-      "knock": 6.5,
-      "soulGain": 11,
-      "anim_ref": "t3:bosconovitch:row:203",
-      "input_slots": [
-        "1+3"
-      ],
-      "move_class": "throw",
-      "damage_note": "t3 row damage 0; WH grappler convention 21",
-      "merge_source": "t3:bosconovitch:row:203"
-    },
-    "2+4~t3.bosconovitch": {
-      "name": "BOSCONOVITCH 2+4 (T3 bosconovitch r204)",
-      "input": "2+4",
-      "t3_source": "bosconovitch",
-      "t3_row": 204,
-      "t3_command": "RP+RK",
-      "startup": 0.2,
-      "active": 0.05,
-      "recovery": 0.467,
-      "damage": 21,
-      "limb": "both",
-      "heavy": false,
-      "knock": 6.5,
-      "soulGain": 11,
-      "anim_ref": "t3:bosconovitch:row:204",
-      "input_slots": [
-        "2+4"
-      ],
-      "move_class": "throw",
-      "damage_note": "t3 row damage 0; WH grappler convention 21",
-      "merge_source": "t3:bosconovitch:row:204"
-    },
     "1+3~t3.bosconovitch.2": {
       "name": "BOSCONOVITCH 1+3_c36_r205 (T3 bosconovitch r205)",
       "input": "1+3_c36_r205",
@@ -5832,27 +5154,6 @@
       "t3_condition": 36,
       "merge_source": "t3:bosconovitch:row:208"
     },
-    "d/f+1~t3.bosconovitch": {
-      "name": "BOSCONOVITCH d/f+1 (T3 bosconovitch r284)",
-      "input": "d/f+1",
-      "t3_source": "bosconovitch",
-      "t3_row": 284,
-      "t3_command": "3+LP",
-      "startup": 0.133,
-      "active": 0.017,
-      "recovery": 0.483,
-      "damage": 2,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:284",
-      "input_slots": [
-        "d/f+1"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:bosconovitch:row:284"
-    },
     "d/f+1+2~t3.bosconovitch.2": {
       "name": "BOSCONOVITCH d/f+1+2 (T3 bosconovitch r285)",
       "input": "d/f+1+2",
@@ -5873,50 +5174,6 @@
       ],
       "move_class": "strike",
       "merge_source": "t3:bosconovitch:row:285"
-    },
-    "d/f+3+4~t3.bosconovitch": {
-      "name": "BOSCONOVITCH d/f+3+4 (T3 bosconovitch r286)",
-      "input": "d/f+3+4",
-      "t3_source": "bosconovitch",
-      "t3_row": 286,
-      "t3_command": "3+LK+RK",
-      "startup": 0.267,
-      "active": 0.017,
-      "recovery": 0.0,
-      "damage": 7,
-      "limb": "legL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:286",
-      "input_slots": [
-        "d/f+3+4"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:bosconovitch:row:286"
-    },
-    "n,d,d/b+1+3~t3.bosconovitch": {
-      "name": "BOSCONOVITCH n,d,d/b+1+3_r7 (T3 bosconovitch r288)",
-      "input": "n,d,d/b+1+3_r7",
-      "t3_source": "bosconovitch",
-      "t3_row": 288,
-      "t3_command": "[5 2 1+LP+LK](50f)",
-      "startup": 0.2,
-      "active": 0.017,
-      "recovery": 0.467,
-      "damage": 21,
-      "limb": "both",
-      "heavy": false,
-      "knock": 6.5,
-      "soulGain": 11,
-      "anim_ref": "t3:bosconovitch:row:288",
-      "input_slots": [
-        "n,d,d/b+1+3"
-      ],
-      "move_class": "throw",
-      "t3_restriction": 7,
-      "damage_note": "t3 row damage 0; WH grappler convention 21",
-      "merge_source": "t3:bosconovitch:row:288"
     },
     "b+3+4~t3.bosconovitch.2": {
       "name": "BOSCONOVITCH b+3+4_c39_r315 (T3 bosconovitch r315)",
@@ -5983,48 +5240,6 @@
       "move_class": "strike",
       "t3_condition": 39,
       "merge_source": "t3:bosconovitch:row:317"
-    },
-    "1+2~t3.bosconovitch": {
-      "name": "BOSCONOVITCH 1+2 (T3 bosconovitch r320)",
-      "input": "1+2",
-      "t3_source": "bosconovitch",
-      "t3_row": 320,
-      "t3_command": "any+LP+RP",
-      "startup": 0.167,
-      "active": 0.017,
-      "recovery": 0.333,
-      "damage": 2,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:320",
-      "input_slots": [
-        "1+2"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:bosconovitch:row:320"
-    },
-    "d/f+1,2~t3.bosconovitch": {
-      "name": "BOSCONOVITCH d/f+1,2 (T3 bosconovitch r332)",
-      "input": "d/f+1,2",
-      "t3_source": "bosconovitch",
-      "t3_row": 332,
-      "t3_command": "RP",
-      "startup": 0.167,
-      "active": 0.017,
-      "recovery": 0.483,
-      "damage": 6,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:332",
-      "input_slots": [
-        "d/f+1,2"
-      ],
-      "move_class": "special",
-      "merge_source": "t3:bosconovitch:row:332"
     },
     "u/f+1~t3.bosconovitch.2": {
       "name": "BOSCONOVITCH u/f+1_r333 (T3 bosconovitch r333)",
@@ -6289,27 +5504,6 @@
       "t3_condition": 67,
       "merge_source": "t3:bosconovitch:row:343"
     },
-    "u/f+2~t3.bosconovitch": {
-      "name": "BOSCONOVITCH u/f+2 (T3 bosconovitch r354)",
-      "input": "u/f+2",
-      "t3_source": "bosconovitch",
-      "t3_row": 354,
-      "t3_command": "9+RP",
-      "startup": 0.2,
-      "active": 0.017,
-      "recovery": 0.633,
-      "damage": 9,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:354",
-      "input_slots": [
-        "u/f+2"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:bosconovitch:row:354"
-    },
     "u/f+2,1": {
       "name": "BOSCONOVITCH u/f+2,1 (T3 bosconovitch r355)",
       "input": "u/f+2,1",
@@ -6351,27 +5545,6 @@
       ],
       "move_class": "special",
       "merge_source": "t3:bosconovitch:row:357"
-    },
-    "d+4~t3.bosconovitch": {
-      "name": "BOSCONOVITCH d+4 (T3 bosconovitch r358)",
-      "input": "d+4",
-      "t3_source": "bosconovitch",
-      "t3_row": 358,
-      "t3_command": "2+RK",
-      "startup": 0.267,
-      "active": 0.033,
-      "recovery": 0.45,
-      "damage": 6,
-      "limb": "legR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:358",
-      "input_slots": [
-        "d+4"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:bosconovitch:row:358"
     },
     "d+4~t3.bosconovitch.2": {
       "name": "BOSCONOVITCH d+4_c62 (T3 bosconovitch r358)",
@@ -6503,28 +5676,6 @@
       "t3_condition": 26,
       "merge_source": "t3:bosconovitch:row:364"
     },
-    "3,3,1~t3.bosconovitch": {
-      "name": "BOSCONOVITCH 3,3,1_c27 (T3 bosconovitch r364)",
-      "input": "3,3,1_c27",
-      "t3_source": "bosconovitch",
-      "t3_row": 364,
-      "t3_command": "any-button",
-      "startup": 0.167,
-      "active": 0.017,
-      "recovery": 1.133,
-      "damage": 18,
-      "limb": "legL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:364",
-      "input_slots": [
-        "3,3,1"
-      ],
-      "move_class": "special",
-      "t3_condition": 27,
-      "merge_source": "t3:bosconovitch:row:364"
-    },
     "4~t3.bosconovitch.5": {
       "name": "BOSCONOVITCH 4_c39_r366 (T3 bosconovitch r366)",
       "input": "4_c39_r366",
@@ -6568,28 +5719,6 @@
       "move_class": "strike",
       "t3_condition": 39,
       "merge_source": "t3:bosconovitch:row:368"
-    },
-    "4,1~t3.bosconovitch": {
-      "name": "BOSCONOVITCH 4,1_c26 (T3 bosconovitch r367)",
-      "input": "4,1_c26",
-      "t3_source": "bosconovitch",
-      "t3_row": 367,
-      "t3_command": "any-button",
-      "startup": 0.167,
-      "active": 0.017,
-      "recovery": 1.017,
-      "damage": 9,
-      "limb": "legR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:367",
-      "input_slots": [
-        "4,1"
-      ],
-      "move_class": "special",
-      "t3_condition": 26,
-      "merge_source": "t3:bosconovitch:row:367"
     },
     "4,1~t3.bosconovitch.2": {
       "name": "BOSCONOVITCH 4,1_c27 (T3 bosconovitch r367)",
@@ -6656,27 +5785,6 @@
       "t3_condition": 36,
       "merge_source": "t3:bosconovitch:row:370"
     },
-    "3+4~t3.bosconovitch": {
-      "name": "BOSCONOVITCH 3+4 (T3 bosconovitch r373)",
-      "input": "3+4",
-      "t3_source": "bosconovitch",
-      "t3_row": 373,
-      "t3_command": "LK+RK",
-      "startup": 0.15,
-      "active": 0.083,
-      "recovery": 1.133,
-      "damage": 15,
-      "limb": "legL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:373",
-      "input_slots": [
-        "3+4"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:bosconovitch:row:373"
-    },
     "3+4,1": {
       "name": "BOSCONOVITCH 3+4,1 (T3 bosconovitch r374)",
       "input": "3+4,1",
@@ -6696,29 +5804,8 @@
         "3+4,1"
       ],
       "move_class": "strike",
-      "merge_source": "t3:bosconovitch:row:374"
-    },
-    "3+4,1~t3.bosconovitch": {
-      "name": "BOSCONOVITCH 3+4,1_c26_r375 (T3 bosconovitch r375)",
-      "input": "3+4,1_c26_r375",
-      "t3_source": "bosconovitch",
-      "t3_row": 375,
-      "t3_command": "any-button",
-      "startup": 0.167,
-      "active": 0.017,
-      "recovery": 1.35,
-      "damage": 15,
-      "limb": "legL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:375",
-      "input_slots": [
-        "3+4,1"
-      ],
-      "move_class": "strike",
-      "t3_condition": 26,
-      "merge_source": "t3:bosconovitch:row:375"
+      "merge_source": "t3:bosconovitch:row:374",
+      "t3_condition": 26
     },
     "3+4,1~t3.bosconovitch.2": {
       "name": "BOSCONOVITCH 3+4,1_c27 (T3 bosconovitch r375)",
@@ -6786,28 +5873,6 @@
       "t3_condition": 39,
       "merge_source": "t3:bosconovitch:row:377"
     },
-    "f+1+2,3+4~t3.bosconovitch": {
-      "name": "BOSCONOVITCH f+1+2,3+4_c36 (T3 bosconovitch r377)",
-      "input": "f+1+2,3+4_c36",
-      "t3_source": "bosconovitch",
-      "t3_row": 377,
-      "t3_command": "LK+RK",
-      "startup": 0.317,
-      "active": 0.083,
-      "recovery": 1.117,
-      "damage": 15,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:377",
-      "input_slots": [
-        "f+1+2,3+4"
-      ],
-      "move_class": "special",
-      "t3_condition": 36,
-      "merge_source": "t3:bosconovitch:row:377"
-    },
     "f+1+2,3+4,1": {
       "name": "BOSCONOVITCH f+1+2,3+4,1_c39 (T3 bosconovitch r380)",
       "input": "f+1+2,3+4,1_c39",
@@ -6829,28 +5894,6 @@
       "move_class": "strike",
       "t3_condition": 39,
       "merge_source": "t3:bosconovitch:row:380"
-    },
-    "f+1+2,3+4,1~t3.bosconovitch": {
-      "name": "BOSCONOVITCH f+1+2,3+4,1_c26 (T3 bosconovitch r379)",
-      "input": "f+1+2,3+4,1_c26",
-      "t3_source": "bosconovitch",
-      "t3_row": 379,
-      "t3_command": "any-button",
-      "startup": 0.167,
-      "active": 0.017,
-      "recovery": 1.5,
-      "damage": 15,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:379",
-      "input_slots": [
-        "f+1+2,3+4,1"
-      ],
-      "move_class": "special",
-      "t3_condition": 26,
-      "merge_source": "t3:bosconovitch:row:379"
     },
     "f+1+2,3+4,1~t3.bosconovitch.2": {
       "name": "BOSCONOVITCH f+1+2,3+4,1_c27 (T3 bosconovitch r379)",
@@ -7107,50 +6150,6 @@
       "move_class": "strike",
       "merge_source": "t3:bosconovitch:row:413"
     },
-    "f+2~t3.bosconovitch": {
-      "name": "BOSCONOVITCH f+2_r414 (T3 bosconovitch r414)",
-      "input": "f+2_r414",
-      "t3_source": "bosconovitch",
-      "t3_row": 414,
-      "t3_command": "6+RP",
-      "startup": 0.267,
-      "active": 0.017,
-      "recovery": 0.7,
-      "damage": 12,
-      "limb": "armR",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:414",
-      "input_slots": [
-        "f+2"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:bosconovitch:row:414"
-    },
-    "f+2,1~t3.bosconovitch": {
-      "name": "BOSCONOVITCH f+2,1_c57_r415 (T3 bosconovitch r415)",
-      "input": "f+2,1_c57_r415",
-      "t3_source": "bosconovitch",
-      "t3_row": 415,
-      "t3_command": "any-button",
-      "startup": 0.267,
-      "active": 0.017,
-      "recovery": 0.7,
-      "damage": 12,
-      "limb": "armR",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:415",
-      "input_slots": [
-        "f+2,1"
-      ],
-      "move_class": "strike",
-      "t3_condition": 57,
-      "t3_restriction": 63,
-      "merge_source": "t3:bosconovitch:row:415"
-    },
     "1~t3.bosconovitch.4": {
       "name": "BOSCONOVITCH 1_c75_r421 (T3 bosconovitch r421)",
       "input": "1_c75_r421",
@@ -7173,27 +6172,6 @@
       "t3_condition": 75,
       "t3_restriction": 19,
       "merge_source": "t3:bosconovitch:row:421"
-    },
-    "d/f~t3.bosconovitch": {
-      "name": "BOSCONOVITCH d/f (T3 bosconovitch r423)",
-      "input": "d/f",
-      "t3_source": "bosconovitch",
-      "t3_row": 423,
-      "t3_command": "3/6/9+LP+RP",
-      "startup": 0.35,
-      "active": 0.167,
-      "recovery": 0.667,
-      "damage": 16,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:423",
-      "input_slots": [
-        "d/f"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:bosconovitch:row:423"
     },
     "d/f~t3.bosconovitch.2": {
       "name": "BOSCONOVITCH d/f_r424 (T3 bosconovitch r424)",
@@ -7430,30 +6408,8 @@
       ],
       "move_class": "special",
       "t3_condition": 28,
-      "merge_source": "t3:bosconovitch:row:434"
-    },
-    "d/f,1~t3.bosconovitch": {
-      "name": "BOSCONOVITCH d/f,1_c2 (T3 bosconovitch r435)",
-      "input": "d/f,1_c2",
-      "t3_source": "bosconovitch",
-      "t3_row": 435,
-      "t3_command": "any-button",
-      "startup": 0.167,
-      "active": 0.017,
-      "recovery": 2.3,
-      "damage": 11,
-      "limb": "armL",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:435",
-      "input_slots": [
-        "d/f,1"
-      ],
-      "move_class": "special",
-      "t3_condition": 2,
-      "t3_restriction": 19,
-      "merge_source": "t3:bosconovitch:row:435"
+      "merge_source": "t3:bosconovitch:row:434",
+      "t3_restriction": 19
     },
     "d/f~t3.bosconovitch.5": {
       "name": "BOSCONOVITCH d/f_r442 (T3 bosconovitch r442)",
@@ -7559,29 +6515,8 @@
         "d/b,d/b+4"
       ],
       "move_class": "special",
-      "merge_source": "t3:bosconovitch:row:447"
-    },
-    "d/b,d/b+4~t3.bosconovitch": {
-      "name": "BOSCONOVITCH d/b,d/b+4_c57_r448 (T3 bosconovitch r448)",
-      "input": "d/b,d/b+4_c57_r448",
-      "t3_source": "bosconovitch",
-      "t3_row": 448,
-      "t3_command": "1+RK",
-      "startup": 0.45,
-      "active": 0.05,
-      "recovery": 0.633,
-      "damage": 3,
-      "limb": "legR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:448",
-      "input_slots": [
-        "d/b,d/b+4"
-      ],
-      "move_class": "special",
-      "t3_condition": 57,
-      "merge_source": "t3:bosconovitch:row:448"
+      "merge_source": "t3:bosconovitch:row:447",
+      "t3_condition": 57
     },
     "d/b,d/b+4,d/b+3": {
       "name": "BOSCONOVITCH d/b,d/b+4,d/b+3_c57 (T3 bosconovitch r449)",
@@ -7693,27 +6628,6 @@
       "t3_condition": 36,
       "merge_source": "t3:bosconovitch:row:471"
     },
-    "2~t3.bosconovitch": {
-      "name": "BOSCONOVITCH 2 (T3 bosconovitch r473)",
-      "input": "2",
-      "t3_source": "bosconovitch",
-      "t3_row": 473,
-      "t3_command": "RP",
-      "startup": 0.25,
-      "active": 0.05,
-      "recovery": 0.617,
-      "damage": 11,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:473",
-      "input_slots": [
-        "2"
-      ],
-      "move_class": "strike",
-      "merge_source": "t3:bosconovitch:row:473"
-    },
     "2,1": {
       "name": "BOSCONOVITCH 2,1 (T3 bosconovitch r474)",
       "input": "2,1",
@@ -7733,7 +6647,8 @@
         "2,1"
       ],
       "move_class": "strike",
-      "merge_source": "t3:bosconovitch:row:474"
+      "merge_source": "t3:bosconovitch:row:474",
+      "t3_condition": 57
     },
     "2~t3.bosconovitch.2": {
       "name": "BOSCONOVITCH 2_r477 (T3 bosconovitch r477)",
@@ -7755,28 +6670,6 @@
       ],
       "move_class": "strike",
       "merge_source": "t3:bosconovitch:row:477"
-    },
-    "2,1~t3.bosconovitch": {
-      "name": "BOSCONOVITCH 2,1_c57_r478 (T3 bosconovitch r478)",
-      "input": "2,1_c57_r478",
-      "t3_source": "bosconovitch",
-      "t3_row": 478,
-      "t3_command": "any-button",
-      "startup": 0.167,
-      "active": 0.017,
-      "recovery": 1.133,
-      "damage": 3,
-      "limb": "armR",
-      "heavy": false,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:478",
-      "input_slots": [
-        "2,1"
-      ],
-      "move_class": "strike",
-      "t3_condition": 57,
-      "merge_source": "t3:bosconovitch:row:478"
     },
     "u/f+1+2": {
       "name": "BOSCONOVITCH u/f+1+2 (T3 bosconovitch r482)",
@@ -7953,28 +6846,6 @@
       "t3_condition": 36,
       "merge_source": "t3:bosconovitch:row:606"
     },
-    "1+3,1~t3.bosconovitch": {
-      "name": "BOSCONOVITCH 1+3,1_c2 (T3 bosconovitch r598)",
-      "input": "1+3,1_c2",
-      "t3_source": "bosconovitch",
-      "t3_row": 598,
-      "t3_command": "any-button",
-      "startup": 0.167,
-      "active": 0.017,
-      "recovery": 4.033,
-      "damage": 18,
-      "limb": "armL",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:598",
-      "input_slots": [
-        "1+3,1"
-      ],
-      "move_class": "special",
-      "t3_condition": 2,
-      "merge_source": "t3:bosconovitch:row:598"
-    },
     "2+4,1": {
       "name": "BOSCONOVITCH 2+4,1_c36 (T3 bosconovitch r600)",
       "input": "2+4,1_c36",
@@ -7995,28 +6866,6 @@
       ],
       "move_class": "strike",
       "t3_condition": 36,
-      "merge_source": "t3:bosconovitch:row:600"
-    },
-    "2+4,1~t3.bosconovitch": {
-      "name": "BOSCONOVITCH 2+4,1_c2 (T3 bosconovitch r600)",
-      "input": "2+4,1_c2",
-      "t3_source": "bosconovitch",
-      "t3_row": 600,
-      "t3_command": "any-button",
-      "startup": 0.167,
-      "active": 0.017,
-      "recovery": 2.567,
-      "damage": 18,
-      "limb": "armR",
-      "heavy": true,
-      "knock": 2.2,
-      "soulGain": 8,
-      "anim_ref": "t3:bosconovitch:row:600",
-      "input_slots": [
-        "2+4,1"
-      ],
-      "move_class": "special",
-      "t3_condition": 2,
       "merge_source": "t3:bosconovitch:row:600"
     },
     "1+3,1~t3.bosconovitch.2": {
@@ -8853,7 +7702,7 @@
     "2+4": "2+4",
     "2+4,1": "2+4,1",
     "2,1": "2,1",
-    "2~1": "2~1",
+    "2~1": "2",
     "3": "3",
     "3+4": "3+4_charge",
     "3+4,1": "3+4,1",
@@ -8895,7 +7744,7 @@
     "d,4": "d,4",
     "d,4,4": "d,4,4",
     "d,d/f": "d,d/f",
-    "d,d/f,1": "d,d/f,1~t3.bosconovitch",
+    "d,d/f,1": "d,d/f,1",
     "d,d/f,1,d/f": "d,d/f,1,d/f",
     "d,d/f,d/f": "d,d/f,d/f",
     "d,d/f,d/f,1": "d,d/f,d/f,1",
@@ -8916,14 +7765,14 @@
     "d/b,d/b+4,d/b+3,d/b+4": "d/b,d/b+4,d/b+3,d/b+4",
     "d/b,d/b+4,d/b+3,d/b+4,d/b+3": "d/b,d/b+4,d/b+3,d/b+4,d/b+3",
     "d/b,d/b+4,d/b+3,d/b+4,d/b+3,d/b+4": "d/b,d/b+4,d/b+3,d/b+4,d/b+3,d/b+4",
-    "d/f": "d/f~t3.bosconovitch",
-    "d/f+1": "d/f+1~t3.bosconovitch",
+    "d/f": "d/f",
+    "d/f+1": "d/f+1",
     "d/f+1+2": "d/f+1+2",
     "d/f+1+2,2": "d/f+1+2,2",
     "d/f+1,2": "d/f+1,2",
-    "d/f+2": "d/f+2~t3.bosconovitch",
+    "d/f+2": "d/f+2",
     "d/f+3": "d/f+3",
-    "d/f+3+4": "d/f+3+4~t3.bosconovitch",
+    "d/f+3+4": "d/f+3+4",
     "d/f+3+4,4": "d/f+3+4,4",
     "d/f+3,2": "d/f+3,2",
     "d/f+3,2,2": "d/f+3,2,2",
@@ -8976,21 +7825,21 @@
     "f,f+4": "f,f+4",
     "f,f,N,2": "f,f,N,2",
     "f,f,N,3": "f,f,N,3",
-    "n,d,d/b+1+3": "n,d,d/b+1+3~t3.bosconovitch",
+    "n,d,d/b+1+3": "n,d,d/b+1+3",
     "n,d,d/b+1+3,1": "n,d,d/b+1+3,1",
     "u": "roll_u,d",
     "u+1": "u+1",
     "u+1+2": "u+1+2",
     "u+1,1": "u+1,1",
     "u+1,2": "u+1,2",
-    "u+1,3": "u+1,3~t3.bosconovitch",
+    "u+1,3": "u+1,3",
     "u+1,4": "u+1,4",
     "u+3+4": "u+3+4",
     "u+4": "u+4",
     "u/b+1+2": "u/b+1+2",
     "u/b+1,1": "u/b+1,1",
     "u/b+1,2": "u/b+1,2",
-    "u/b+1,3": "u/b+1,3~t3.bosconovitch",
+    "u/b+1,3": "u/b+1,3",
     "u/b+1,4": "u/b+1,4",
     "u/b+3+4": "u/b+3+4",
     "u/b+4": "u/b+4",
