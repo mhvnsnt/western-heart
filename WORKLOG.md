@@ -1,3 +1,16 @@
+## 2026-10-24 — Hitbox / hurtbox hit detection: 14 swept capsules replace 2 spheres (HITBOX LANE)
+
+**Owner instruction (verbatim):** "Hitbox stuff and hurtbox stuff is not making contact right. A lot of contacts not being made during fight." (user playtest report 2026-10-24)
+
+**What was broken (measured on main):** `fighter.js` `getHurtboxes()` returned only Spine1 + Head spheres and `game.js` tested only `hurts[0]`; the range fallback required `hurts.length > 0`, so a defender whose rig lacked those bone names (foreign/Bip001 rigs) returned zero hurtboxes and every strike whiffed at any distance. Hitboxes were a single sphere at the weapon endpoint (fast limbs could step past between 120 Hz ticks), and 'both'-limb moves (275 Pantera moves) swept only the right hand. PR #1003's 633 reaction records were verified to be reactions, not hitboxes — no hitbox/hurtbox table exists anywhere in the repo (700 branches + open PRs searched; Claude's Lane C 14-cylinder model is UNAVAILABLE, so this lane re-derives from live bone data). Full findings: `docs/anim/HITBOX-HURTBOX-2026-10-24.md`.
+
+**What this lane does:** new pure modules `game/js/hitbox.js` (14 hurt capsules over live posed bones, swept limb + travel segments, exact segment-segment capsule test, root-anchored fallback capsules so a live defender never returns []) and `game/js/t3-reaction-select.js` (HitSelectReaction pick over the PR #1003 tables; selection wired, pack-clip playback pending a lazy loader lane — not claimed). `fighter.js`: `getHitbox` returns swept segments + travel (both-limb = 2 segments), `getHurtboxes` returns 14 capsules, `_pickReaction` stores the reaction slot on hit/block. `game.js` `_resolveCombat`: geometry OR range fallback (unchanged formula), all 14 segments tested, hit segment recorded. `combat-core.js` `hitWordFor`: top-level, then T7, then T8 level with parentheses stripped — Pantera hit-word coverage 667/873 -> 708/873 (decoded `hit_words` still wins). Damage, stun, block, chip, throw-lock and KO paths untouched. Buttons in docs/comments use LP1/RP2/LK3/RK4.
+
+**Verification:** `node test/hitbox.test.mjs` — 19 checks pass (pure geometry, hit-word fallback, real `Fighter.prototype` methods with stub bones, real `Game.prototype._resolveCombat` headless: Pantera LP1 hits at 1.45 m, whiffs at 3.5 m; extended fist connects at 1.90 m past the 1.75 range class; f,F+2 hits at 2.10 m; low hits croucher, high whiffs croucher; boneless rig still gets 14 hurtboxes). `node test/combat-contact.test.mjs` still passes. Live-browser phone play verification remains open (subagent cannot drive the live browser) — handed back to the parent agent.
+
+**Remaining (explicitly NOT done):** reaction pack clip playback (needs a lazy ~6.5 MB/bank loader); row attack words for the 165 uncovered Pantera moves (via `hit_frames.json`, async-load problem); T3 hurt-volume decode if a future teardown provides it (radii table in `hitbox.js` is the single replacement point).
+
+---
 ## 2026-10-24 — Animation strategy documented: DECODED vs MADE (docs only)
 
 **Owner instruction (verbatim):** "log in the documents the right way to do this" (2026-10-24), plus "for every character even the ones that aren't in t7."
