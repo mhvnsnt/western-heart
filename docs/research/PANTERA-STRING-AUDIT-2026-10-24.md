@@ -247,3 +247,7 @@ play the live build on a phone, tap LP1,RP2 / LP1,RP2,LP1 / 3+4,LP1 /
 d/f+LK3,RK4, confirm the strings fire AND the clips look like the right
 limbs (animation lane owns any wrong-clip findings), and confirm the
 damage numbers above land. Deploy follows the merge.
+
+## Rebase note (2026-10-24)
+
+`game/js/fighter.js` in this PR was rebased onto current main (hitbox/reaction lane) after the first merge attempt was refused for stale-base lines: the grace edits were re-applied surgically onto main's newer fighter.js with no other content changed.
