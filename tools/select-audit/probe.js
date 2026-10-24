@@ -98,5 +98,22 @@ window.__whProbe = function (side) {
   for (const b of bones) { const c = child(b); if (!c) continue; const dd = wp(c).sub(wp(b)); const l = dd.length(); if (l < 1e-5) continue; dd.divideScalar(l); vec.push(b.name, +dd.x.toFixed(2), +dd.y.toFixed(2), +dd.z.toFixed(2)); }
   out.poseVec = vec;
   out.mixerClip = pane.mixer && pane.mixer._actions ? pane.mixer._actions.filter(a => a.isRunning()).map(a => a.getClip().name) : [];
+  // t230u extras: model key, textures, framing, feet.
+  out.modelId = pane.modelId || null;
+  let mats = 0, untex = 0, white = 0;
+  root.traverse(o => { if (!o.isMesh || !o.visible) return; for (const mt of [].concat(o.material || [])) {
+    mats++; if (!mt.map) { untex++; const c = mt.color; if (c && c.r > 0.92 && c.g > 0.92 && c.b > 0.92) white++; } } });
+  out.mats = mats; out.untexturedMats = untex; out.whiteMats = white;
+  const cam = pane.camera;
+  if (cam) {
+    cam.updateMatrixWorld(); const W = poseMin, X = poseMax; let lo = [9, 9], hi = [-9, -9];
+    for (const x of [W.x, X.x]) for (const y of [W.y, X.y]) for (const z of [W.z, X.z]) {
+      const q = new V3(x, y, z).applyMatrix4(root.matrixWorld).project(cam);
+      lo = [Math.min(lo[0], q.x), Math.min(lo[1], q.y)]; hi = [Math.max(hi[0], q.x), Math.max(hi[1], q.y)];
+    }
+    out.ndc = [lo, hi].map(a => a.map(v => +v.toFixed(3)));
+  }
+  const footW = new V3(0, poseMin.y, 0).applyMatrix4(root.matrixWorld);
+  out.feetY = +footW.y.toFixed(3); out.heightW = +((poseMax.y - poseMin.y) * root.scale.y).toFixed(3);
   return out;
 };

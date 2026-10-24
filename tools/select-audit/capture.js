@@ -8,7 +8,8 @@ const probe = fs.readFileSync(path.join(__dirname, 'probe.js'), 'utf8');
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 async function openSelect(b) {
   const pg = await b.newPage();
-  await pg.setViewport({ width: 390, height: 844, hasTouch: true, isMobile: true, deviceScaleFactor: 1 });
+  const [VW, VH] = (process.env.VIEWPORT || '390x844').split('x').map(Number);
+  await pg.setViewport({ width: VW, height: VH, hasTouch: true, isMobile: true, deviceScaleFactor: 1 });
   await pg.evaluateOnNewDocument(probe);
   // Older deploys lack the window.__whSelectPanes proof hook: patch it in at fetch time (read-only, in-browser).
   await pg.setRequestInterception(true);

@@ -13,6 +13,7 @@ def joints(r):
         n = str(v[i]).split(':')[-1]
         d.setdefault(n, v[i+1:i+4])
     return {k: d[k] for k in J if k in d}
+ATT = json.load(open(os.environ['ATTIRES'])) if os.environ.get('ATTIRES') else {}
 TH = dict(tpose=70, bind=4, edge=0.004, far=0.03, zero=0.001, bbox_hi=1.45, bbox_lo=0.55, dup=0.06)
 for r in rows:
     f = []
@@ -27,6 +28,19 @@ for r in rows:
         br = r.get('bboxRatio') or 1
         if br > TH['bbox_hi'] or br < TH['bbox_lo']: f.append(f'BBOX {br}')
         if a is None: f.append('NO-ARM-BONES')
+        m, u, w = r.get('mats'), r.get('untexturedMats') or 0, r.get('whiteMats') or 0
+        if m is not None and (w > 0 or (m and u == m)): f.append(f'MISSING-TEXTURE ({u}/{m} untextured, {w} white)')
+        nd = r.get('ndc')
+        if nd:
+            (x0, y0), (x1, y1) = nd
+            if y1 > 1.02: f.append(f'CUT-OFF-TOP (ndc {y1})')
+            if y0 < -1.02: f.append(f'CUT-OFF-FEET (ndc {y0})')
+            if x0 < -1.05 or x1 > 1.05: f.append(f'OFF-FRAME-X ({x0},{x1})')
+            if (y1 - y0) < 0.9: f.append(f'TOO-SMALL-IN-FRAME ({y1 - y0:.2f})')
+        att = ATT.get(r['id'])
+        if att and r.get('modelId') and r['modelId'] != att[0]['model']: f.append(f"WRONG-DEFAULT-ATTIRE ({r['modelId']} != {att[0]['model']})")
+        if att and any(k in att[0]['label'].upper() for k in ('TEKKEN', 'RESKIN', 'ORIGINAL MODEL')) and r['id'] != 'pantera':
+            f.append(f"WRONG-DEFAULT-ATTIRE (attire 1 is '{att[0]['label']}')")
     r['_flags'] = f; r['_j'] = joints(r); r['_dups'] = []
 for x, y in itertools.combinations([r for r in rows if not r.get('error')], 2):
     ks = set(x['_j']) & set(y['_j'])
@@ -46,7 +60,7 @@ with open(md, 'w') as o:
         clip = ','.join(r.get('mixerClip') or [])[:40]
         o.write(f"| {r['id']} | {'FAIL' if r['_flags'] else 'PASS'} | {r.get('stance') or '-'} | {clip} | {r.get('armL')}/{r.get('armR')} | {r.get('maxBoneDevDeg')} | "
                 f"{(r.get('edgeFrac') or 0)*100:.2f} | {(r.get('farFrac') or 0)*100:.1f} | {(r.get('zeroFrac') or 0)*100:.2f} | {r.get('bboxRatio')} | {'; '.join(r['_flags'])} |\n")
-json.dump([{k: v for k, v in r.items() if k not in ('poseVec', '_j')} for r in rows], open(os.path.join(cap, 'status.json'), 'w'), indent=1)
+json.dump([{k: v for k, v in r.items() if k not in ('poseVec', '_j', 'meshes')} for r in rows], open(os.path.join(cap, 'status.json'), 'w'), indent=1)
 # contact sheet: hero + card per fighter
 C, HW, HH = 6, 195, 300
 W = Image.new('RGB', (C * HW, ((len(rows) + C - 1) // C) * (HH + 34)), '#111'); d = ImageDraw.Draw(W)
