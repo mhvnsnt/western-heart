@@ -62,6 +62,7 @@ Owner rule (2026-10-23): every fighter and every version or transformation is si
 | kronos | kronos | 211 | 1.25 | no | Zangief + Golem profile |
 | deathfang | deathfang | 182 | 1 | no | Iori Yagami profile |
 | ryuji | ryuji | 185 | 1 | no | Ryuji Yamazaki profile |
+| ryuji-rock | ryuji-rock | 185 | 1 | no | Ryuji Yamazaki profile 185 cm; CornerStone body is Yamazaki's, the Rock is persona/showmanship (roster/ryuji-rock/CANON.md) |
 | koreshi | koreshi | 181 | 1 | no | Kakashi profile |
 | rave | rave | 176 | 1 | no | Lei Wulong profile |
 | buffalo-bill | buffalo-bill | 175 | 1 | no | Marshall Law profile |
