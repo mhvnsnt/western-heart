@@ -292,6 +292,45 @@ const _ikT = new THREE.Vector3();
 const _ikV1 = new THREE.Vector3(), _ikV2 = new THREE.Vector3(), _ikV3 = new THREE.Vector3();
 const _ikQ1 = new THREE.Quaternion(), _ikQ2 = new THREE.Quaternion(), _ikQ3 = new THREE.Quaternion();
 
+/* ============================================================
+   ROOT MOTION (2026-10-24) — why attacks were stuck in place.
+   The decoded T3 clips DO carry travel: every clip's raw root_t
+   (t3anims.js jsonToClip / decodePackRow, in metres, canonical
+   source frame: forward = +Z, character-left = +X, already turned
+   180 deg for the banks baked facing -Z) is the root bone's
+   trajectory. But the game never read it horizontally:
+   t3anims.js retargetT3Clips keeps ONLY the vertical (y) part of
+   root_t for the Hips.position track, and fighter.js _physics
+   decays vx to ~0 during attacks, so every attack played in place.
+   The only attack travel before this was the authored grab lunge
+   (vx = facing * 2.5 in _tryAttackFresh) and frame-data reach
+   (combat-core.js moveReach), which decides CONTACT, not position.
+   rootMotionSample returns a clip's horizontal displacement from
+   its own frame 0 at clip time t (seconds), linearly interpolated
+   between the decoded frames (fps, usually 30). Vertical (y) is
+   deliberately NOT returned: hip height already rides the retargeted
+   Hips.position track, and gravity/vy owns root.position.y — applying
+   y here would double-apply it and sink/lift the fighter through
+   the floor. Pure: no THREE, no game state, unit-testable.
+   Mapping to game axes (see _rootMotionApply): forward (source +Z)
+   -> world x * facing; lateral (source +X, character-left) -> world
+   z * -facing (character-left is world -z when facing +x, as the
+   sidestep comment in _animate already records).
+   Whiff vs hit is irrelevant here on purpose: this is animation
+   time, not hit detection — a whiffed lunge travels exactly as far
+   as a connected one, as in Tekken. */
+export function rootMotionSample(root_t, fps, t) {
+  if (!root_t || root_t.length < 2 || !(fps > 0) || !Number.isFinite(t)) return { fwd: 0, lat: 0 };
+  const n = root_t.length;
+  const f = Math.max(0, Math.min(n - 1, t * fps));
+  const i = Math.floor(f), k = Math.min(n - 1, i + 1), a = f - i;
+  const r0 = root_t[0], ra = root_t[i], rb = root_t[k];
+  // Displacement from frame 0 (ra/rb are absolute source positions).
+  const fwd = ((ra[2] + (rb[2] - ra[2]) * a) - r0[2]);
+  const lat = ((ra[0] + (rb[0] - ra[0]) * a) - r0[0]);
+  return { fwd: Number.isFinite(fwd) ? fwd : 0, lat: Number.isFinite(lat) ? lat : 0 };
+}
+
 export class Fighter {
   constructor(charData, startX, facing, isPlayer) {
     this.char = charData;
@@ -316,6 +355,7 @@ export class Fighter {
     // state machine
     this.state = 'idle'; this.stateT = 0;
     this.attack = null; this.attackName = null; this._attackPhase = 'startup';
+    this._rmPrev = null; // root-motion cursor for the current attack (see _rootMotionApply)
     this.hasHit = false; this._prevHitPoint = null; this._reactionSel = null; this.stun = 0; this.invuln = 0; this.dodgeDir = 0;
     this.dead = false; this.combo = 0; this._comboTimer = 0;
     this.tekken = new TekkenBuffer(charData.id); // strings / motion specials / directionals
@@ -851,6 +891,68 @@ export class Fighter {
     if (!this._atkWarp) this._atkWarp = { id: p.id, action: a };
     a.timeScale = 0;
     a.time = attackClipTime(p.timing, this.stateT);
+  }
+
+  /* ROOT MOTION application (2026-10-24). Runs from _physics, once per
+     frame, during attack / vskill / vreversal ONLY — never during block,
+     sidestep, dodge, jump, throw execution, hitstun or knockdown, whose
+     positions are already driven (procedural vx/vz, gravity, or the
+     throw lift/slam in _tickState). The clip is the one _attackClipPlan
+     already chose for this attack (own row, notation, donor, match —
+     never another character's), read from this._t3.clips, the SOURCE
+     clips that still carry userData.raw.root_t (the retargeted
+     t3actions copies drop raw, so they cannot be used here).
+     Clip time follows the SAME warp as the visible animation
+     (_applyAttackWarp: attackClipTime(plan.timing, stateT)), so the
+     body arrives exactly when the animated limbs do; without a timing
+     (tiny/degenerate move) it follows the action's own time. The
+     displacement is applied INCREMENTALLY (this frame's sample minus
+     the previous frame's), so a clip that steps forward and settles
+     back (e.g. a dash row peaking mid-clip) moves the fighter back
+     too, and a string's next hit starts from where the last hit left
+     the fighter — never a snap-back to the move's start, never a
+     double-count. facing is frozen during attacks (update() only
+     re-faces when canAct()), so the facing captured per frame is the
+     attack's facing throughout.
+     SCOPE GUARDS (no guessing, per docs/RULES_NO_GUESSING):
+     - Row clips only (plan.name 'row:*'): decoded move rows whose
+       travel IS the move's travel. Generic light/medium/heavy/grab
+       fallbacks are excluded — light/medium travel 0, but heavy/grab
+       are the row-230 throw-execution clip (2.63 m forward), whose
+       travel belongs to throwExec, not to an attack attempt. A move
+       with no row clip and no raw root_t gets NO root motion (today's
+       in-place behaviour), marked UNMAPPED in docs — never an
+       invented distance.
+     - Horizontal only (see rootMotionSample): y stays with gravity
+       and the retargeted hip-height track.
+     - No hit dependence: hasHit / hit detection are never read. */
+  _rootMotionApply() {
+    const attacking = this.state === 'attack' || this.state === 'vskill' || this.state === 'vreversal';
+    if (!attacking) { this._rmPrev = null; return; }
+    const p = this._atkPlan;
+    if (!p || p.id !== this._attackId || !p.name || !String(p.name).startsWith('row:')) { this._rmPrev = null; return; }
+    const clip = this._t3 && this._t3.clips ? this._t3.clips[p.name] : null;
+    const raw = clip && clip.userData && clip.userData.raw;
+    const rt = raw && raw.root_t;
+    if (!rt || rt.length < 2) { this._rmPrev = null; return; }
+    let clipTime = null;
+    if (p.timing) clipTime = attackClipTime(p.timing, this.stateT);
+    else { const a = this.t3actions && this.t3actions[p.name]; if (a) clipTime = a.time; }
+    if (!Number.isFinite(clipTime)) { this._rmPrev = null; return; }
+    const cur = rootMotionSample(rt, raw.fps || 30, clipTime);
+    let prev = this._rmPrev;
+    if (!prev || prev.id !== this._attackId || prev.name !== p.name) {
+      // First frame this attack's plan is visible (_animate builds the
+      // plan after _physics on frame 1): anchor on the clip's frame 0
+      // and apply the travel so far in this same call, so nothing is lost.
+      prev = { id: this._attackId, name: p.name, ...rootMotionSample(rt, raw.fps || 30, 0) };
+    }
+    const df = cur.fwd - prev.fwd, dl = cur.lat - prev.lat;
+    if (df || dl) {
+      this.root.position.x += this.facing * df;   // source forward (+Z) -> facing direction
+      this.root.position.z += -this.facing * dl;  // source left (+X) -> world -z when facing +x
+    }
+    this._rmPrev = { id: this._attackId, name: p.name, fwd: cur.fwd, lat: cur.lat };
   }
 
   _rowDonor(move) {
@@ -1701,6 +1803,11 @@ export class Fighter {
       this.root.position.y += this.vy * dt;
       this.root.position.z += this.vz * dt;
     }
+    // ROOT MOTION (2026-10-24): attack-clip travel, applied here so the
+    // arena clamp and body-vs-body pushout below see it this same frame
+    // (wall: clamped to ARENA_LIMIT; opponent: pushed apart, never passed
+    // through). Does not touch y; does not run for block/sidestep/jump.
+    this._rootMotionApply();
     // Sidestep range: about one body width into the background/foreground.
     this.root.position.z = Math.max(-2.4, Math.min(2.4, this.root.position.z));
 
