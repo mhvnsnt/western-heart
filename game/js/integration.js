@@ -120,7 +120,17 @@ async function boot() {
     return new m.WHLipSyncPlayer();
   });
 
-  // 8. Cinematic director (Track 7): keyframe sequences + trigger
+  // 8. Chrono grapple joint-constraint subsystem (Track 4, 2026-10-23):
+  //    deterministic joint locks / submission chains / torque nodes for
+  //    the ground game. Sleeps while idle (zero cost). The fight state
+  //    machine calls grapple.stepCombat(fixedDt, inputs) on the combat
+  //    tick; this loop only runs the cosmetic joint solve for the servo
+  //    layer via getServoTargets() → PhysicsServo PD controllers.
+  await tryInit('grapple', './chrono-grapple.js', async (m) => {
+    return new m.ChronoGrapple();
+  });
+
+  // 9. Cinematic director (Track 7): keyframe sequences + trigger
   // graph + ink narrative for story mode / Heart and Mind Within.
   await tryInit('cinematic', './story/cinematic-director.js', async (m) => {
     const d = new m.WHCinematicDirector();
@@ -130,7 +140,7 @@ async function boot() {
     return d;
   });
 
-  // 9. Brawler camera (Track 7): multi-target N-fighter framing built
+  // 10. Brawler camera (Track 7): multi-target N-fighter framing built
   // on the PR #851 CameraRig math. Opt-in — the fight camera keeps
   // running unless enable() is called (Heart and Mind Within
   // phase-2 density, cutscene push-ins via setFraming).
@@ -169,7 +179,7 @@ async function boot() {
     return bc;
   });
 
-  // 10. NavMesh pathfinding (Track 7, Yuka lane: pathfinding only).
+  // 11. NavMesh pathfinding (Track 7, Yuka lane: pathfinding only).
   await tryInit('navmesh', './story/navmesh.js', async (m) => {
     const z = new m.WHNavZoneSet();
     const api = {
@@ -191,7 +201,7 @@ async function boot() {
     return api;
   });
 
-  // 11. Combat-reactive dialogue FSM (Track 7). Lines come from the
+  // 12. Combat-reactive dialogue FSM (Track 7). Lines come from the
   // game's canon banter data; the FSM only selects. Emits through
   // onLine + a 'wh-dialogue-line' CustomEvent the UI binds to.
   await tryInit('dialogue', './story/dialogue-fsm.js', async (m) => {
@@ -217,6 +227,7 @@ async function boot() {
     return fsm;
   });
 
+
   WHIntegration.ready = true;
   window.WHIntegration = WHIntegration;
 
@@ -230,6 +241,16 @@ async function boot() {
     const S = WHIntegration.systems;
     try {
       if (S.physics) S.physics.step(dt);
+      if (S.grapple) S.grapple.update(dt);
+      if (S.cinematic) S.cinematic.update(dt, {
+        playerPos: game.p1 && game.p1.root ? game.p1.root.position : undefined,
+      });
+      if (S.brawlerCam && S.brawlerCam.enabled) {
+        if (S.brawlerCam._provider) {
+          try { S.brawlerCam.setTargets(S.brawlerCam._provider()); } catch { /* keep last */ }
+        }
+        S.brawlerCam.update(dt);
+      }
       if (S.hitfx) S.hitfx.update(dt);
       // Attach spring chains + nameplates to newly spawned fighters.
       for (const key of ['p1', 'p2']) {
@@ -249,15 +270,6 @@ async function boot() {
       if (S.labels) S.labels.update(dt, camera);
       if (S.camdirector) S.camdirector.update(dt);
       if (S.lipsync) S.lipsync.update();
-      if (S.cinematic) S.cinematic.update(dt, {
-        playerPos: game.p1 && game.p1.root ? game.p1.root.position : undefined,
-      });
-      if (S.brawlerCam && S.brawlerCam.enabled) {
-        if (S.brawlerCam._provider) {
-          try { S.brawlerCam.setTargets(S.brawlerCam._provider()); } catch { /* keep last */ }
-        }
-        S.brawlerCam.update(dt);
-      }
     } catch (e) {
       console.warn('[WHIntegration] frame error (non-fatal):', e);
     }
