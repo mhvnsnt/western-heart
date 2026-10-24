@@ -53,7 +53,7 @@ for (const [k, u] of Object.entries(OVERRIDES || {})) if (u) MODEL_URLS[k] = u;
  * standalone cards into the docfrank ladder, so they are no longer roster ids
  * and cannot be moveset gaps.) */
 const KNOWN_GAPS = {
-  'ryuji': 'file exists, not in MOVESET_IDS (CornerStone lane)',
+  'ryuji': 'id-keyed check only: roster entry plays his own loaded set ryuji-rock (129 moves)',
 };
 
 test('every roster fighter\'s own moveset file is actually loaded (or a documented gap)', () => {
