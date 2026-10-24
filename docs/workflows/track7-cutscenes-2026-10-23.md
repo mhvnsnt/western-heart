@@ -37,3 +37,12 @@ Owner directive (verbatim): "Pull all of this stuff in and wire it up and put it
 - game/tests/story-track7.test.mjs
 - game/js/integration.js (systems 8–11)
 - docs/research/CUTSCENE-STORY-2026-10-23.md
+
+## Post-merge note (2026-10-24 ~00:40 UTC)
+
+- Discovered the combat-AI track had already vendored Yuka on main
+  (master @ 10591304, byte-identical to npm 0.7.8 modulo the copyright
+  year). Restored their build + LICENSE verbatim; ATTRIBUTION.md now
+  carries both lanes. No second Yuka copy.
+- integration.js rebased onto current main: Track 4's chrono-grapple
+  landed as system 8; Track 7 story systems are now 9-12. Both kept.
