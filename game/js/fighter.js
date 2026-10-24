@@ -27,6 +27,7 @@ import { JiggleRig } from './jiggle.js';
 import { SoftBody } from './softbody.js';
 import { FaceRig } from './faceRig.js';
 import { HandPoseBlender } from './handPoses.js';
+import { canonRootScale } from './canon-sizing.js';
 import { t8Frame, stunFromAdvantage } from './frame-tables.js';
 import { hitWordFor, attackPhase, moveReach, PressBuffer } from './combat-core.js';
 
@@ -343,6 +344,7 @@ export class Fighter {
     //   bodyScale, moveset }, 'model-key': { up: {...}, down: {...} } }.
     this._forms = null;
     this.formKey = charData.model;
+    this._canonSizeTick = 0;
     if (charData.forms) {
       this._forms = charData.forms;
     } else if (charData.transform) {
@@ -1477,6 +1479,21 @@ export class Fighter {
 
     // 4) Advance clips (writes the posed skeleton into bones)
     this.mixer.update(dt);
+
+    // 4b) CANON SIZING (game/data/canon-sizing.js): once per model/form, after
+    // the stance has posed a couple of frames, scale the root so the stance
+    // height matches this version's canon height (+ girth). No mesh is cut.
+    if (this._canonSizedKey !== this.formKey && ++this._canonSizeTick > 2) {
+      this._canonSizedKey = this.formKey; this._canonSizeTick = 0;
+      try {
+        const cs = canonRootScale(this.formKey, this.model, this.root);
+        if (cs) {
+          this.root.scale.set(cs.w, cs.h, cs.w);
+          this.canonSize = { key: this.formKey, h: cs.h, w: cs.w, measured: cs.measured, height_cm: cs.entry.height_cm, girth: cs.entry.girth };
+          console.log(`[SIZE] ${this.formKey} stance=${cs.measured.toFixed(3)} -> ${cs.entry.height_cm}cm scale h=${cs.h.toFixed(3)} w=${cs.w.toFixed(3)}`);
+        }
+      } catch (e) { /* sizing is cosmetic: never break the fight */ }
+    }
 
     // 5) Refresh world matrices so IK reads the posed skeleton
     this.root.updateWorldMatrix(true, true);
