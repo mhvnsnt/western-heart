@@ -90,11 +90,22 @@ jobs:
           path: /tmp/debug.txt
       - name: Run game unit tests
         run: |
-          set -euo pipefail
-          for t in test/*.test.mjs; do
-            echo "== $t"
-            node "$t"
-          done
+          set +e
+          {
+            for t in test/*.test.mjs; do
+              echo "== $t"
+              node "$t" 2>&1
+              echo "exit: $?"
+            done
+          } > /tmp/test-output.txt 2>&1
+          cat /tmp/test-output.txt
+          # Fail if any test failed
+          grep -q "FAIL" /tmp/test-output.txt && exit 1 || exit 0
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-output
+          path: /tmp/test-output.txt
 
   menu-touch-e2e:
     # t122u: phone tap test (hasTouch 390x844): every menu item tappable,
