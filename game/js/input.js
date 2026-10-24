@@ -25,6 +25,7 @@
    COMMAND GRAB (legacy): press P+K together (touch) or J+K together / U (keyboard).
    ============================================================ */
 
+import { stickToDir } from './combat-core.js';
 /* CHORD WINDOW (input-timing fix 2026-10-24; was 140 ms). Tekken reads input once per 60 Hz
    frame, and two limbs are ONE command (1+2, 1+3 ...) only when both go down on the same frame
    (the same-frame rule behind just-frame inputs such as the EWGF). 140 ms (8.4 frames) turned
@@ -136,6 +137,24 @@ export class InputManager {
     if (this.up) return 'up';
     if (this.down) return 'down';
     return this._udDir || null;
+  }
+
+  /* 8-way octant stick (tekken-command-interpreter lane): the octant direction
+     feeds the command buffer (stickDir) so f+1 / d/f+2 / qcf resolve cleanly.
+     MOVEMENT (axisX, up/down) keeps the original independent thresholds:
+     x 0.25 deadzone, y 0.55 tap-vs-hold zones. Driving movement from the
+     octant classified any push >22.5° below horizontal as down, so a natural
+     thumb drift while walking kept crouching the fighter (owner playtest
+     bug 2026-10-23: stick "keeps going down"). x right-positive, yUp
+     up-positive (screen-agnostic). */
+  _stick8(x, yUp) {
+    const d = stickToDir(x, yUp, 1, 0.38);
+    this.stickDir = d;
+    // Movement: analog x with 0.25 deadzone (pre-8-way behavior).
+    this.axisX = Math.abs(x) > 0.25 ? Math.max(-1, Math.min(1, x)) : 0;
+    // Movement: vertical via Tekken tap-vs-hold zones (0.55 threshold),
+    // not the octant — a mostly-horizontal push must not crouch.
+    this._udStick(-yUp);
   }
 
   _tekken(btn, t) {
@@ -284,8 +303,7 @@ export class InputManager {
       // _udStick takes screen-style ny (down-positive; up zone is ny < -0.55).
       manager.on('move', (evt, data) => {
         const nx = Math.max(-1, Math.min(1, data.vector.x || 0));
-        this.axisX = Math.abs(nx) > 0.25 ? nx : 0;
-        this._udStick(-(data.vector.y || 0));
+        this._stick8(nx, (data.vector.y || 0));
       });
       manager.on('end', () => {
         this.axisX = 0;
@@ -319,10 +337,9 @@ export class InputManager {
       const ky = Math.sin(ang) * clamped;
       knob.style.transform = `translate(${kx}px, ${ky}px)`;
       const nx = (Math.cos(ang) * clamped) / maxR;
-      this.axisX = Math.abs(nx) > 0.25 ? Math.max(-1, Math.min(1, nx)) : 0;
       // Tekken tap-vs-hold: tap u/d = sidestep, hold = jump/crouch.
       const ny = (Math.sin(ang) * clamped) / maxR;
-      this._udStick(ny);
+      this._stick8(nx, -ny);
     };
     const end = () => {
       this._joyActive = false; this._joyId = null;

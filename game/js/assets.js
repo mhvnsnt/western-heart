@@ -180,6 +180,12 @@ export const MODEL_URLS = {
   'dxmmii-tripo': '../roster/dxmmii/attires/attire1/model-rigged.glb',
   'cyborg-x': 'assets/models/cyborg-x.glb',
   'cape-jones': 'assets/models/cape-jones.glb',
+  // CAPE JONES Attire 1 (rig QA 2026-10-23, muse/cape-jones-fight): the
+  // auto-rigged Round-2 build (49 bones, -Z facing, sides/knees OK), staged
+  // under his roster dir per convention. Byte-identical to
+  // assets/models/cape-jones.glb — no re-rig needed. See
+  // roster/cyborg-x/ATTIRE-SLOTS.md.
+  'cape-jones-attire1': '../roster/cyborg-x/attires/attire1/model-rigged.glb',
   // Bonus / music fighters and name-pending models (loadable, unassigned).
   mariposa: 'assets/models/mariposa.glb',
   // Mariposa Slot 1 — Butterfly Default (dedup 2026-10-22): owner-designated
@@ -363,12 +369,12 @@ export const MODEL_URLS = {
   // Unrigged static (1 mesh; rig widgets live in the .blend); k-NN auto-rig
   // from donor is the planned path.
   // Rigged 2026-10-23 (PR #780, 52-joint canonical skeleton, verified).
-  chatur: '../roster/rahkasa/attires/attire1/model-rigged.glb',
+  chatur: '../roster/rahkasa/attires/attire1/model-rigged-textured.glb',
   // POND (owner 2026-10-23): Raven's WH replacement — swamp boundary watcher,
   // found Dorowani as an egg. SmutBase intake (roster/tsuyu-asui/). Unrigged
   // static (9 meshes, clothing separate); k-NN auto-rig from donor is the planned path.
   // Rigged 2026-10-23 (PR #780, 52-joint canonical skeleton, verified).
-  pond: '../roster/tsuyu-asui/attires/attire1/model-rigged.glb',
+  pond: '../roster/tsuyu-asui/attires/attire1/model-rigged-textured.glb',
   // CHARGER Attire 2 (2026-10-21, lane 4 rig batch 1): unrigged Tripo static -> model-rigged.glb
   // via tools/auto_rig knn backend (donor pantera.glb); original model.glb untouched.
   'charger-attire2': '../roster/charger/attires/attire2/model-rigged.glb',
@@ -460,8 +466,8 @@ export const MODEL_URLS = {
   // TOBI, the Escape Soul. Attire 1 = the SmutBase GLB (unrigged static; rig queued).
   // NOTE: roster/miruko/attires/attire1/model-rigged.glb landed on main
   // 2026-10-23 (PR #781, wave-1 rigging) — repoint key after rig validation (same finding as Ryusan).
-  tobi: '../roster/miruko/attires/attire1/model-rerig.glb',
-  'tobi-attire1': '../roster/miruko/attires/attire1/model-rerig.glb',
+  tobi: '../roster/miruko/attires/attire1/model-rerig-textured.glb',
+  'tobi-attire1': '../roster/miruko/attires/attire1/model-rerig-textured.glb',
 };
 
 /* ============================================================
@@ -871,6 +877,40 @@ if (globalThis.__WH_PRIVATE_ASSETS) {
   }
 }
 
+/* PRIVATE T7 skin textures (Yukihyo). Yukihyo's materials are T7
+   MI_CH_malebody_<part>_02_skin, which share the generic T7 male body UVs.
+   The diffuse maps (T_CH_male_<part>_D) are Bandai Namco assets kept ONLY in
+   the private game-reverse-engineering repo (teardown/pakchunk0/textures/
+   Character/Common/shader/Texture/skin/male/); a private build copies them to
+   game/assets/private/textures/t7-skin/male/. Public builds skip this and the
+   fighter stays quarantined. The King-face (MI_CH_knk_*) maps were not found
+   in any private pull, so the material gate still decides usability. */
+const PRIVATE_SKIN_TEXTURES = {
+  yukihyo: {
+    base: 'assets/private/textures/t7-skin/male/',
+    match: /^MI_CH_malebody_(arm|body|foot|hand|head|leg|neck)_02_skin/i,
+    file: (part) => `T_CH_male_${part}_D.webp`,
+  },
+};
+async function applyPrivateSkinTextures(id, gltf) {
+  const spec = globalThis.__WH_PRIVATE_ASSETS && PRIVATE_SKIN_TEXTURES[id];
+  if (!spec) return;
+  const loader = new THREE.TextureLoader();
+  const cache = new Map();
+  const mats = [];
+  gltf.scene.traverse((o) => { if (o.isMesh) mats.push(...[].concat(o.material)); });
+  for (const m of mats) {
+    const hit = m && spec.match.exec(m.name || '');
+    if (!hit || m.map) continue;
+    const url = spec.base + spec.file(hit[1].toLowerCase());
+    if (!cache.has(url)) cache.set(url, loader.loadAsync(url).catch(() => null));
+    const tex = await cache.get(url);
+    if (!tex) continue;
+    tex.flipY = false; tex.colorSpace = THREE.SRGBColorSpace;
+    m.map = tex; m.color && m.color.set(0xffffff); m.needsUpdate = true;
+  }
+}
+
 function remapSliceBones(fighterId, model) {
   if (!T7_RIG_URLS.has(MODEL_URLS[fighterId])) return false;
   const byName = {};
@@ -937,6 +977,23 @@ function remapSliceBones(fighterId, model) {
   for (const { node } of driven) {
     desiredPos.set(node, node.getWorldPosition(new THREE.Vector3()));
   }
+  // Original bind relation per skin joint, captured BEFORE any frame
+  // edit: B_i = boneWorld_i * IBM_i (the authored mesh-to-bone bind).
+  // It is identity only when the mesh was bound in the skeleton's own
+  // space (Slice's old export). Blender re-rigs (Burger onto Bob,
+  // 2026-10-23) bind a mesh whose space differs from the bones' (B_i
+  // carries the export's offset/scale), and recomputing IBMs as the
+  // plain inverse of the edited bone worlds threw that relation away:
+  // the bind pose still drew (every bone matrix = I) but every clip
+  // delta pivoted in the wrong space and the body collapsed in fights.
+  // The re-solve below keeps B_i exactly: IBM'_i = inverse(W'_i) * B_i.
+  const bindRel = [];
+  model.traverse((o) => {
+    if (o.isSkinnedMesh && o.skeleton && !bindRel.some(e => e.sk === o.skeleton)) {
+      const sk = o.skeleton;
+      bindRel.push({ sk, B: sk.bones.map((b, i) => new THREE.Matrix4().multiplyMatrices(b.matrixWorld, sk.boneInverses[i])) });
+    }
+  });
 
   // (a) Cancel the wrapper rotations at the model root.
   model.quaternion.premultiply(correction);
@@ -967,13 +1024,13 @@ function remapSliceBones(fighterId, model) {
     node.position.copy(desiredPos.get(node).sub(_pw).applyQuaternion(_pq.clone().invert()));
   }
   model.updateMatrixWorld(true);
-  const seenSkeletons = new Set();
-  model.traverse((o) => {
-    if (o.isSkinnedMesh && o.skeleton && !seenSkeletons.has(o.skeleton)) {
-      seenSkeletons.add(o.skeleton);
-      o.skeleton.calculateInverses();
-    }
-  });
+  // Re-solve the inverse binds, preserving each joint's authored bind
+  // relation B_i (see bindRel above): IBM'_i = inverse(W'_i) * B_i.
+  for (const { sk, B } of bindRel) {
+    sk.bones.forEach((b, i) => {
+      sk.boneInverses[i].copy(b.matrixWorld).invert().multiply(B[i]);
+    });
+  }
   // ORIGIN LIFT: kept generic — this rig is authored with its
   // origin at its FEET, so this is a safety no-op; a re-export
   // with a pelvic origin would be lifted until the bind pose's
@@ -1204,6 +1261,7 @@ class AssetManager {
   async _ingest(id, gltf) {
     // Material resolve + verdict before anything can instance this model.
     this.materialReport = this.materialReport || {};
+    await applyPrivateSkinTextures(id, gltf);
     this.materialReport[id] = await resolveModelMaterials(id, gltf, async (d) => {
       await this.loadModels([d], null, { lane: 'user' }); return this.gltfs[d];
     });

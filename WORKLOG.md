@@ -1,3 +1,29 @@
+## 2026-10-23 ~19:30 CDT — batch9 moveset pull: thor/menajerii/baek-master-white/dorowani/zen (SHOW-ANIMATION LOCK)
+
+**Owner instruction (verbatim):** "Now we need to get that done for every other character" (2026-10-23) — replicate the proven Law/Lars pattern (PR #823 merged, PR #806 green).
+
+**Method:** Per-fighter best-source diff. TTT2 movelists (Catlord v1.12 TTT2 walkthrough, supercheats) parsed with a custom indentation-chaining parser (`~/workspace/batch9-work/parse_ttt2.py`: parent/child chaining, `(a)_(b)` alternative expansion, `(u_x_y)+N` expansion, QCF/HCF→`f,N,d,d/f` normalization, stance-section prefixing ROS/FLA, hold-case-preserving token normalizer); diffed against existing moves with case-aware input normalization (`f,F+1+2` run vs `f,f+1+2` dash kept distinct); genuinely-missing moves added in Tekken notation, all `"set": "FIGHT"`, `ttt2_source` + `merge_source: ttt2:<char>` provenance, real TTT2 move names, no fabricated frame data (documented-not-extracted).
+
+**Moveset (done):**
+- `game/assets/movesets/thor.json` (Ganryu): 244 -> **322** (+78 TTT2 Ganryu moves: 13 throws incl. Jizo Hug/Face Slam/Giant Tackle, Devil Thrusts, Sumo Rush + L/M/H endings, Kabuki Slaps chain, sit-down options, Earthquake unblockable; Ten Palm Slap mash artifact + Julia Hug skipped)
+- `game/assets/movesets/menajerii.json` (Roger Jr.): 154 -> **193** (+39 TTT2 Roger moves: Animal Rush/Hush, Roo Rage, Helicopter Kicks, Bomb Stomp, Satellite Dropkick, Ali Kick chain, ROS extensions, Bobbin Dance charge-ups; 14 TTT2 throws verified already-present under WH names — skipped as duplicates; 2 side-roll options dropped as covered)
+- `game/assets/movesets/baek-master-white.json` (Baek): 138 -> **291** (+153 TTT2 Baek moves: full Flamingo system, 14 throws, Mantis Rush, parries; prior 107 Bryan placeholders retained as provisional)
+- `game/assets/movesets/dorowani.json` (Gon): 175 -> **175** (+0 — auto-merge lane already pulled all 151 T3 Gon inputs; input-coverage audit verified 0 genuinely-missing)
+- `game/assets/movesets/zen.json` (Heihachi): 639 -> **639** (+0 — T8 Heihachi verified 145/145 by `t8_id`; T3 307 + T7 183 already present; 0 Heihachi gaps)
+- `index.json` moves/inputs/bytes updated for all 5.
+
+**SHOW-ANIMATION LOCK (owner 2026-10-23):** file-level `anim_set_lock` added to all 5 files; all 270 added moves stamped `"set": "FIGHT"`. No SHOW content entered any moveset.
+
+**Animations (banks wired or gaps filed, FIGHT vs SHOW split):**
+- dorowani: T3 Gon bank WIRED (`game/assets/anim/t3/gon/`, `T3_BANKS.gon` + `SOURCE_TO_BANK.gon` present, `anim_bank: 'gon'`) — status doc `docs/anim/T3-GON-ANIM-20261023.md` (not a gap).
+- thor/baek-master-white/menajerii: NO T3 streams exist (BANK-TABLE-2026-10-20) — precise gaps filed: `docs/anim/TTT2-GANRYU-ANIM-GAP-20261023.md`, `docs/anim/TTT2-BAEK-ANIM-GAP-20261023.md`, `docs/anim/TTT2-ROGER-ANIM-GAP-20261023.md` (TTT2/T6/T5-first priority, unblock sequence for the extraction coordinator lane).
+- zen: **VF5 Dural motion gap filed** — `docs/anim/VF5-DURAL-ANIM-GAP-20261023.md`. VF5 motion was never converted (model only); Dural is Zen's permanent base per owner directive 2026-10-22 but filed as PENDING, never mixed with the Heihachi kit (sources kept separate per instruction).
+
+**Verification:** `node --test game/tests/fighter-completeness.test.mjs` 4/4 pass; full suite 95/99 (4 pre-existing failures in model-key-guard/stagerage/v-system, verified failing on pristine tree); all JSONs parse; semantic additions-only (0 field losses, 0 removals, 0 file deletions).
+
+**Anti-clobber:** rebuilt on current main tip (cf88ed5fe) after main moved mid-task — main added 4 donor.baek signature moves to baek-master-white (kept) and reformatted dorowani.json (re-applied anim_set_lock surgically onto new base); no main-side changes dropped. Branch `moveset/batch9-pull` via worktree (shared clone was in use by another lane); push via Git Database API.
+
+---
 ## 2026-10-23 ~18:15 CDT — batch3 T8 moveset pull: pond/tobi/megami/sakura/phantom (SHOW-ANIMATION LOCK)
 
 **Owner instruction (verbatim):** "Now we need to get that done for every other character" (2026-10-23) — replicate the proven Law/Lars pattern (PR #823 merged, PR #806 green).
@@ -2506,6 +2532,28 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 
 **Deviations:** none — the 17 pulled moves are all combat moves (FIGHT); no SHOW content entered the moveset.
 
+## SUBMENU REBUILD — versus setup (T7 GAME OPTION <VS GAME>, 2026-10-23, PR #832)
+
+**Owner instruction (verbatim):** "NO hand-tooled menus. EVER. Every menu in the game gets rebuilt FROM the teardown files of actual Tekken games (T5/T6/T7/TTT2, T8 when it lands) and other games' teardown UI." Task: rebuild ALL submenus from Tekken's actual UI — 1. Versus setup (rules, rounds, time, stage select).
+
+**Source:** Tekken 7 / arcade GAME OPTION table (manuals.plus TTT operators manual): FIGHT COUNT <VS GAME> 1-5, ROUND TIME, GUARD DAMAGE ON/OFF; T7 console INFINITY time.
+
+**Built (branch worker-submenus/versus-setup):**
+- `game/js/rules.js` (new) — standalone match-rules store `wh_rules_v1` (difficulty, rounds1p, roundsVs, roundTime 0=∞, guardDamage, stageMode).
+- `game/js/versus-setup.js` (new) + `#screen-vssetup` in `game/index.html` — T7 option-list screen: FIGHT COUNT 1-5, ROUND TIME 30/40/60/90/99/∞, GUARD DAMAGE ON/OFF, STAGE SELECT/RANDOM.
+- `game/submenus.css` (new) — shared T7 option-list grammar (tk-row/tk-seg/tk-tabs, all ≥48px).
+- `game/js/modes.js` — `_beginVersus` reads rules, passes roundsToWin/roundTime/guardDamage through fight opts; STAGE=RANDOM picks a random arena and skips the stage screen (`opts.skipStage`, honored in `game/js/main.js` `startFightViaStage`).
+- `game/js/game.js` — `startMatch` honors per-match `opts.roundTime` (0 = no timeout, HUD shows ∞) and `opts.guardDamage`; `game/js/fighter.js` zeroes chip when guard damage is OFF.
+- `game/js/game.js` ui.setRounds rebuilds round pips to the match's round target; setTimer renders ∞.
+- Routing fix: the legacy data-mm router in `game/js/main.js` fired on rail taps alongside the T8 submenu controller, making every submenu unreachable — rail items now yield to the submenu controller (required for "no dead ends").
+
+**Verification (played, not pushed):** 7/7 menu harness checks (every option tapped, match-rules localStorage asserted, tap targets ≥48px measured, back navigation); 10/10 fight-integration checks (captured fight opts carry roundsToWin/roundTime/guardDamage/stageMode; HUD pips and ∞ timer proven). Screenshots viewed: `game/tests/submenu-versus-setup-proof-20261023/`. `node --check` clean on all 8 touched JS files. gitleaks clean. 8 files modified + 3 new source files + proof dir + `docs/decisions/2026-10-23-submenu-versus-setup.md`; 0 deletions.
+
+**Anti-clobber:** branched from main tip; explicit file list pushed via Git Database API (no GitHub connector for git ops); other workers' untracked docs files excluded from every push.
+
+**Queued next:** PR2 OPTIONS rebuild (T7 GAME OPTION / CONTROLLER SETUP / SOUND / DISPLAY tabs); PR3 mode setup sheets; PR4 gallery (T5 theater + TTT2 gallery); PR5 jukebox (TTT2 Tekken Tunes).
+
+
 ## 2026-10-23 — Priority-5 moveset pull: burger/purplerain/pantera/torch/michiko (T8+T7 diff, SHOW-ANIMATION LOCK, anim-bank gaps)
 
 **Owner instruction (verbatim):** "Now we need to get that done for every other character" (2026-10-23) — the Law/Lars full pulls (PR #806 / PR #823 pattern).
@@ -2556,3 +2604,65 @@ gitleaks clean (no gitleaks bin on VM; manual scan clean) · nothing copyrighted
 **Verification:** `node --test game/tests/chrono-grapple.test.mjs` 18/18 green; full suite 80/84 with the same 4 pre-existing full-suite-mode failures as pristine main (fighter-completeness/v-system parallel-run flakes — verified by stashing). All four submission chains measured end-to-end: entry → control → lock → tap with in-band torques. Determinism asserted (identical runs ⇒ identical snapshots).
 
 **Deviations:** none. License note: user lifted the license firewall 2026-10-23; Chrono is BSD-3-Clause regardless, and the wired module is WH-original code (architecture-inspired, not a derivative).
+
+## 2026-10-23 ~19:30 CDT — UniRig auto-rig intake integration (PR #956, branch muse/unirig-autorig-integration)
+
+**Owner instruction (verbatim):** "Pulling everything from the list and wire it all up and where it'll work and where it's appropriate" — item: UniRig (SIGGRAPH 2025, MIT license), AI auto-rigging for the Tripo intake pipeline + creation suite auto-rig.
+
+**Pulled:** UniRig cloned to ~/workspace/research-pull/unirig/UniRig (VAST-AI-Research, MIT). Studied the inference API: launch/inference/generate_skeleton.sh (autoregressive skeleton prediction, checkpoint skeleton/articulation-xl_quantization_256/model.ckpt) -> generate_skin.sh (bone-point cross-attention skinning, skin/articulation-xl/model.ckpt) -> merge.sh (bpy merge of skin back onto source mesh). Weights auto-download from Hugging Face VAST-AI/UniRig.
+
+**Wired:**
+- `tools/rig-intake/unirig_intake.py` (new): wrapper driving all 3 stages via subprocess. `rig_model(src, out)` raises on failure; `maybe_autorig(src, workdir)` never raises — returns rigged GLB path or None. Env: UNIRIG_ROOT, WH_UNIRIG (master switch), WH_UNIRIG_SEED. `--check` readiness probe.
+- `tools/rig-intake/UNIRIG-SETUP.md` (new): exact GPU-machine setup (conda, torch+cu, spconv/torch_scatter/torch_cluster/flash_attn version-match notes, weights prefetch, ComfyUI one-click option, wiring, troubleshooting table).
+- `tools/rig-intake/README.md` (new): provider contract for future auto-rig plugins.
+- `tools/rig-intake/tests/test_unirig_intake.py` (new): 10 unit tests, all pass.
+- `tools/import_model.py` (surgical): hook probes incoming GLB; unskinned meshes auto-rig via UniRig when GPU+checkout present, `rep["unirig_autorig"]` recorded; fail message updated with the UniRig setup option.
+- `docs/MODEL_IMPORT_AUTORIG.md` (surgical): step-3 status PARTIAL -> DONE (GPU-gated).
+
+**Verification:** 10/10 pytest pass; --help exits 0; --check correctly reports NOT READY on this GPU-less VM (exit 1); py_compile clean; gitleaks clean. Full GPU inference pending Grok's box (coordination posted on issue #866, comment 6377665231). Note: upstream now points to SkinTokens as UniRig's successor — follow-up candidate, stayed on UniRig per owner item.
+
+**Anti-clobber:** branch from fresh origin/main; sparse checkout in this tree (lab/ etc. excluded) — committed via Git Data API (push_branch_api.py) building from main's real tree + only this task's 6 files; verified via compare API that the branch diff is exactly the 6 files (4 added, 2 modified), 0 deletions. gitleaks clean. No deletions.
+
+**ALL CHARACTERS ARE ADULTS:** n/a — rigging pipeline, no characters.
+
+
+
+## 2026-10-23 21:30 CT — Cape Jones playable on Alisa's select slot (muse/cape-jones-fight)
+
+Owner lane: Cape Jones (secret identity Cyborg X, fighter id `cyborgx`) replaces Tekken's Alisa — takes her select slot, her moveset + animations, plus his own extras. Proof owed: select screenshot + fight frame of one of Alisa's moves.
+
+**What changed (branch `muse/cape-jones-fight`, additive + 3 surgical edits, 0 deletions):**
+- NEW `roster/cyborg-x/attires/attire1/model-rigged.glb` — staged from the auto-rigged Round-2 build of `game/assets/models/cape-jones.glb` (49 bones, 1.75 m); byte-identical, sha256 e19e94e9… (no re-rig).
+- `game/js/assets.js` (surgical): MODEL_URLS += `cape-jones-attire1` → `../roster/cyborg-x/attires/attire1/model-rigged.glb`.
+- `game/js/attires.js` (surgical): ATTIRE_VARIANTS += `cyborgx` → Attire 1 = cape-jones-attire1 (RIGGED).
+- `roster/cyborg-x/ATTIRE-SLOTS.md` (surgical): rig QA result recorded.
+- `docs/decisions/2026-10-23-cape-jones-fight-wiring.md` (new): decision log.
+
+**Rig QA (tools/model-audit/rig_qa.py on meshopt-decoded GLB):** 49 joints, facing -Z, arm/leg sides OK, knees forward; weight-bleed heuristic flags hand-proximity verts only (no face→spine bleed). PASSED — no re-rig needed.
+
+**Teardown search:** no Alisa animation bank exists in the repo teardowns (T5/T6/T7/T8/TTT2) — only frame data (docs/t7t8-reference, rbnorway CSVs). The gunjack T3 fallback for cyborgx stays, as already logged in `game/data/cape-alisa-binding.json` (last resort, owner t121u). Real Alisa motions await the T7 extraction lane (owner bought T7 2026-10-23; Grok's box).
+
+**Verified by playing (phone portrait 390x844, Playwright + swiftshader):**
+- Select: CAPE JONES renders on the grid (CA card), 3D preview shows his textured model, "Attire 1" picker wired.
+- Fight cyborgx vs pantera: 10/10 states `"round":"fight"`, P1 `model: cape-jones-attire1`, repeated `st:"attack" atk:"1"` (Jab) with `cur: t3_gunjack_row44@cape-jones-attire1`; idle shows `t3_gunjack_stance` (not T-pose). **0 pageerrors.**
+- Known unrelated issue visible: camera-bounds zoom (fighters small at screen edges in portrait) — owned by another lane, not touched.
+
+**Commit method:** Git Data API via tree SHAs (no-sparse-commit law; /tmp too small for full clone — worked from a blob:none sparse tree, commits built from main's real tree). gitleaks clean.
+
+**ALL CHARACTERS ARE ADULTS:** confirmed — Cape Jones is male (user confirmed 2026-10-23), adult character, no minors involved.
+
+## 2026-10-23 ~22:10 CDT — merge-tree-guard: merge-time guard against fake stale-tree merges (PR #983, branch muse/merge-tree-guard)
+
+**Owner instruction (verbatim):** "REPO: mhvnsnt/western-heart. TASK: build a merge-time guard that stops fake/stale-tree merges from deleting files on main."
+
+**Root cause (verified by owner):** PR #974's head was clean (0 deletions, all CI green including deletion-guard), but its merge commit 1b2dabfed's tree was byte-identical to the stale branch head's tree — the merge was constructed from the stale branch tree instead of a real 3-way merge, silently dropping 150 files main had gained since the fork point. No PR-time guard can catch this; the damage is created after checks pass, at merge-commit construction.
+
+**Built (3 new files, 0 deletions):**
+- `.github/workflows/merge-tree-guard.yml` (new): runs on push to main. For each merge commit M in before..after (first-parent): P1=first parent, P2=second parent, B=merge-base(P1,P2); D1=files deleted P1→M; D2=files deleted B→P2 (the PR's own deletions); VIOLATION=D1−D2 → fail, printing every file. Escape hatch: `owner-approved-deletion` label on the merged PR (labels via commits API, same as deletion-guard). Extra loud banner when merge tree == branch tree while main added files after the fork ("not a real 3-way merge"). Sparse checkout (.github only) + self-test step, matching clobber-guard.
+- `.github/scripts/merge_tree_guard.py` (new): the check logic (env BEFORE_SHA/AFTER_SHA/REPO/GH_TOKEN; exit 0/1).
+- `.github/scripts/test_merge_tree_guard.py` (new): 6 unit tests building real temp git repos — fake stale-tree merge via commit-tree (must flag + FAKE MERGE banner), real --no-ff merge (must pass), branch's own deletion (must pass), non-merge skipped, owner label escape.
+
+**Verification:** 6/6 unit tests pass. Read-only sweep of the last 30 merge commits on main: 29 CLEAN, exactly 1 flagged — 1b2dabfed (PR #974) with 150 violations + FAKE MERGE banner (known incident, already recovered via #981/#982). Manual secret-pattern scan clean (gitleaks binary not on this box; CI runs it).
+
+**Deviations:** none.
+

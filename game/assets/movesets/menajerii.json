@@ -7,12 +7,12 @@
   "proxy_note": null,
   "schema_version": 2,
   "frame_convention": "Startup in seconds @60fps. Damage = Tekken values, WH 100HP. Hit ranges from the TTT2 movelist; startups are standard Tekken archetype estimates.",
-  "canon_note": "Menajerii = the Menagerie Soul (roster/vixen), Japanese rendering MENAJERII (menajerii). Roger Jr.'s boxing-kangaroo kit authored FRESH with TEKKEN inputs (owner directive — no Injustice 2 input system): Rocket Stance (b+1+2) and Bobbin Dance (b+3+4) stances, the Giant Swing, Animal Uppercut, twin 10-hit tenstrings. Canon-layered: Heron's Patience (b+1+3 parry stance), Heron Strike (HRN 1), Boar's Commit (f+2+3), Serpent's Economy (d/b+2+3).",
+  "canon_note": "Menajerii = the Menagerie Soul (roster/vixen), Japanese rendering MENAJERII (menajerii). Roger Jr.'s boxing-kangaroo kit authored FRESH with TEKKEN inputs (owner directive \u2014 no Injustice 2 input system): Rocket Stance (b+1+2) and Bobbin Dance (b+3+4) stances, the Giant Swing, Animal Uppercut, twin 10-hit tenstrings. Canon-layered: Heron's Patience (b+1+3 parry stance), Heron Strike (HRN 1), Boar's Commit (f+2+3), Serpent's Economy (d/b+2+3).",
   "stances": [
     "ROS (Rocket Stance, b+1+2)",
     "BOB (Bobbin Dance, b+3+4)",
-    "HRN (Heron's Patience, b+1+3 — canon)",
-    "HBS (Hunting Bear Stance, u+1+2 — hold)"
+    "HRN (Heron's Patience, b+1+3 \u2014 canon)",
+    "HBS (Hunting Bear Stance, u+1+2 \u2014 hold)"
   ],
   "combos": [
     {
@@ -36,6 +36,12 @@
       "note": "Menajerii canon: consult the heron, strike once."
     }
   ],
+  "anim_set_lock": {
+    "law": "SHOW-ANIMATION LOCK (owner 2026-10-23)",
+    "FIGHT": "every move in this file: moveset moves and combat stances \u2014 the combat animation bank",
+    "SHOW": "win poses, intro poses, taunts, cutscene animations \u2014 intro/win slots and cutscenes ONLY; tracked in docs/anim/TTT2-ROGER-ANIM-GAP-20261023.md; must NEVER enter this moveset without the user's explicit approval",
+    "note": "per-move 'set' tags stamp what each pull lane added; the file itself is the FIGHT set"
+  },
   "moves": {
     "1+3": {
       "name": "Head Stomp",
@@ -1568,7 +1574,7 @@
       "knock": 0.0,
       "soulGain": 5,
       "tekken_base": "Roger Jr. (TTT2)",
-      "note": "Menajerii canon: the heron's consultation — a parry stance. Beats highs/mids, feeds the boar.",
+      "note": "Menajerii canon: the heron's consultation \u2014 a parry stance. Beats highs/mids, feeds the boar.",
       "canon_layer": true,
       "parry": true,
       "enter_stance": "HRN"
@@ -1588,7 +1594,7 @@
       "knock": 3.0,
       "soulGain": 8,
       "tekken_base": "Roger Jr. (TTT2)",
-      "note": "Menajerii canon: from Heron's Patience — a single precise beak-strike.",
+      "note": "Menajerii canon: from Heron's Patience \u2014 a single precise beak-strike.",
       "canon_layer": true,
       "stance": "HRN"
     },
@@ -1607,7 +1613,7 @@
       "knock": 4.5,
       "soulGain": 8,
       "tekken_base": "Roger Jr. (TTT2)",
-      "note": "Menajerii canon: the boar's consultation — armored shoulder charge, power crush.",
+      "note": "Menajerii canon: the boar's consultation \u2014 armored shoulder charge, power crush.",
       "canon_layer": true,
       "powercrush": true
     },
@@ -1626,7 +1632,7 @@
       "knock": 3.0,
       "soulGain": 8,
       "tekken_base": "Roger Jr. (TTT2)",
-      "note": "Menajerii canon: the snake's consultation — low crush counter, minimal motion.",
+      "note": "Menajerii canon: the snake's consultation \u2014 low crush counter, minimal motion.",
       "canon_layer": true,
       "counter": true,
       "lowcrush": true
@@ -2277,7 +2283,7 @@
       "knock": 2.5,
       "soulGain": 5,
       "tekken_base": "Kuma (Tekken 7)",
-      "note": "Pulled from the Tekken 7 frame-data bank: 25 [30] dmg, i31, -17 on block. Menajerii crashes down into Hunting Bear Stance (HBS) on landing — hold to stay in it."
+      "note": "Pulled from the Tekken 7 frame-data bank: 25 [30] dmg, i31, -17 on block. Menajerii crashes down into Hunting Bear Stance (HBS) on landing \u2014 hold to stay in it."
     },
     "SS 1+2": {
       "name": "Sidestep Maul",
@@ -2865,6 +2871,474 @@
       "anim_ref": "t3:kuma:row:205",
       "t3_row": 205,
       "note": "Pulled from the Tekken 3 teardown bank. Charging shoulder tackle; chargeable, very slow."
+    },
+    "d/f+1>2": {
+      "name": "Sidesweep",
+      "input": "d/f+1>2",
+      "input_slots": [
+        "d/f+1>2"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FC+1+2": {
+      "name": "Animal Smash",
+      "input": "FC+1+2",
+      "input_slots": [
+        "FC+1+2"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "d+1~N+2": {
+      "name": "Low Jab, Uppercut",
+      "input": "d+1~N+2",
+      "input_slots": [
+        "d+1~N+2"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "f+1,2,1": {
+      "name": "Animal Rush",
+      "input": "f+1,2,1",
+      "input_slots": [
+        "f+1,2,1"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "b+1,2,1": {
+      "name": "Animal Hush",
+      "input": "b+1,2,1",
+      "input_slots": [
+        "b+1,2,1"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "d+1+2~b": {
+      "name": "(BT)",
+      "input": "d+1+2~b",
+      "input_slots": [
+        "d+1+2~b"
+      ],
+      "move_class": "transition",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "d+1+2,1+2": {
+      "name": "Second Storm",
+      "input": "d+1+2,1+2",
+      "input_slots": [
+        "d+1+2,1+2"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "d+1+2,1+2~b": {
+      "name": "(BT)",
+      "input": "d+1+2,1+2~b",
+      "input_slots": [
+        "d+1+2,1+2~b"
+      ],
+      "move_class": "transition",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "BT d/f+1+2": {
+      "name": "Kangaroo Dasher",
+      "input": "BT d/f+1+2",
+      "input_slots": [
+        "BT d/f+1+2"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "u/b+2": {
+      "name": "Elbow Drop",
+      "input": "u/b+2",
+      "input_slots": [
+        "u/b+2"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "u/f+2": {
+      "name": "Elbow Drop",
+      "input": "u/f+2",
+      "input_slots": [
+        "u/f+2"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "u/f+3,3": {
+      "name": "Helicopter Kicks",
+      "input": "u/f+3,3",
+      "input_slots": [
+        "u/f+3,3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "u/b+3,3>4": {
+      "name": "Kick Rushes (Side Roll)",
+      "input": "u/b+3,3>4",
+      "input_slots": [
+        "u/b+3,3>4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "WS+3": {
+      "name": "Rising Foot",
+      "input": "WS+3",
+      "input_slots": [
+        "WS+3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "WS+3,3#": {
+      "name": "Power Stomper",
+      "input": "WS+3,3#",
+      "input_slots": [
+        "WS+3,3#"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending). Bounds"
+    },
+    "u/b+3+4": {
+      "name": "Bomb Stomp",
+      "input": "u/b+3+4",
+      "input_slots": [
+        "u/b+3+4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "u/f+3+4": {
+      "name": "Bomb Stomp",
+      "input": "u/f+3+4",
+      "input_slots": [
+        "u/f+3+4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "RN 3": {
+      "name": "Baiame's Spear",
+      "input": "RN 3",
+      "input_slots": [
+        "RN 3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "f+3+4,3>4": {
+      "name": "Kick Rushes (Side Roll)",
+      "input": "f+3+4,3>4",
+      "input_slots": [
+        "f+3+4,3>4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "FC,d/f+4": {
+      "name": "Tail Mopping",
+      "input": "FC,d/f+4",
+      "input_slots": [
+        "FC,d/f+4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "b+3+4,N": {
+      "name": "Charge-Up",
+      "input": "b+3+4,N",
+      "input_slots": [
+        "b+3+4,N"
+      ],
+      "move_class": "stance",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "b+3+4,1": {
+      "name": "Windmill Punch",
+      "input": "b+3+4,1",
+      "input_slots": [
+        "b+3+4,1"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "b+3+4,2": {
+      "name": "Galaxy Uppercut",
+      "input": "b+3+4,2",
+      "input_slots": [
+        "b+3+4,2"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending). Juggles on Charge-Up"
+    },
+    "f+4": {
+      "name": "Twisting Roo, (BT)",
+      "input": "f+4",
+      "input_slots": [
+        "f+4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "f+4,3": {
+      "name": "Roo Rage",
+      "input": "f+4,3",
+      "input_slots": [
+        "f+4,3"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending). Juggles"
+    },
+    "RN+3+4": {
+      "name": "Satellite Dropkick",
+      "input": "RN+3+4",
+      "input_slots": [
+        "RN+3+4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "b,b+4": {
+      "name": "Rolling Torpedo",
+      "input": "b,b+4",
+      "input_slots": [
+        "b,b+4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "d/b+4,3>4": {
+      "name": "Kick Rushes (Side Roll)",
+      "input": "d/b+4,3>4",
+      "input_slots": [
+        "d/b+4,3>4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "RN 4": {
+      "name": "Ali Kick",
+      "input": "RN 4",
+      "input_slots": [
+        "RN 4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "RN 4,2": {
+      "name": "Mid Smash",
+      "input": "RN 4,2",
+      "input_slots": [
+        "RN 4,2"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "RN 4,4,4": {
+      "name": "Ali Kicks",
+      "input": "RN 4,4,4",
+      "input_slots": [
+        "RN 4,4,4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "u~u/b": {
+      "name": "Leaping Body Splash",
+      "input": "u~u/b",
+      "input_slots": [
+        "u~u/b"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending). Against Wall"
+    },
+    "ROS D/F,1": {
+      "name": "Animal Godfist",
+      "input": "ROS D/F,1",
+      "input_slots": [
+        "ROS D/F,1"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "ROS 1+2,3+4,3>4": {
+      "name": "Kick Rushes (Side Roll)",
+      "input": "ROS 1+2,3+4,3>4",
+      "input_slots": [
+        "ROS 1+2,3+4,3>4"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "u/b+3,1,3>4,3>4,B": {
+      "name": "Kick Rushes, Roll Back",
+      "input": "u/b+3,1,3>4,3>4,B",
+      "input_slots": [
+        "u/b+3,1,3>4,3>4,B"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "f+3+4,1,3>4,3>4,B": {
+      "name": "Kick Rushes, Roll Back",
+      "input": "f+3+4,1,3>4,3>4,B",
+      "input_slots": [
+        "f+3+4,1,3>4,3>4,B"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "d/b+4,1,3>4,3>4,B": {
+      "name": "Kick Rushes, Roll Back",
+      "input": "d/b+4,1,3>4,3>4,B",
+      "input_slots": [
+        "d/b+4,1,3>4,3>4,B"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "ROS 1+2,3+4,1": {
+      "name": "Animal Kick, (Side Roll)",
+      "input": "ROS 1+2,3+4,1",
+      "input_slots": [
+        "ROS 1+2,3+4,1"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
+    },
+    "ROS 1+2,3+4,1,3>4,3>4,B": {
+      "name": "Kick Rushes, Roll Back",
+      "input": "ROS 1+2,3+4,1,3>4,3>4,B",
+      "input_slots": [
+        "ROS 1+2,3+4,1,3>4,3>4,B"
+      ],
+      "move_class": "strike",
+      "set": "FIGHT",
+      "ttt2_source": "roger",
+      "merge_source": "ttt2:roger",
+      "note": "TTT2 roger movelist (documented; TTT2/T6 teardown extraction pending)."
     }
   }
 }

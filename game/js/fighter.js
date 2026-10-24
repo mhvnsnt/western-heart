@@ -29,6 +29,7 @@ import { SoftBody } from './softbody.js';
 import { FaceRig } from './faceRig.js';
 import { HandPoseBlender } from './handPoses.js';
 import { t8Frame, stunFromAdvantage } from './frame-tables.js';
+import { hitWordFor, attackPhase, moveReach, PressBuffer } from './combat-core.js';
 
 // ---- Frame data: REAL Tekken 3 data (teardown/tekken3/movesets/moveset_king.json, moveset_jin.json)
 // NOTE (owner canon 2026-10-19): Tekken's Jin = DEMONIO in Western Heart. The 'jin' moveset family is now 'demonio'.
@@ -142,6 +143,14 @@ export function bankIdFor(charId, movesetId) {
     // 2026-10-23 (Claude session): the last decoded T3 banks (tools/anim/t3_bake_bank.py). These movesets
     // name their source as a teardown path or not at all, so bind each to its base's own bank here.
     chatur: 'ogre', dorowani: 'gon', menajerii: 'kuma',
+    // 2026-10-23 (landing wave 3): the bear-bank successors + Silvertongue.
+    // Their index entries name the bank (anim_bank/t3_source), but the
+    // portrait-capture page resolves banks without the moveset index
+    // loaded, so bind them here like the 2026-10-23 additions above.
+    //   gashadokuro -> kuma (CANON: his base is the Kuma bank)
+    //   aotsuki     -> kuma (CANON: Panda shares Kuma's T3 bank)
+    //   silvertongue -> xiaoyu (her kit's T3 bank, per lili.json t3_source)
+    gashadokuro: 'kuma', aotsuki: 'kuma', silvertongue: 'xiaoyu',
   };
   if (Object.prototype.hasOwnProperty.call(FIGHTER_BANK, charId)) return FIGHTER_BANK[charId];
   let src = null;
@@ -183,6 +192,17 @@ export async function loadRealMovesets() {
 }
 
 // Legacy action names -> Tekken notation (AI + old UI keep working)
+/* Donor keys, most to least specific, for borrowing an animated row:
+   exact command, last segment, dir+last button, last button, limb. */
+export function rowDonorKeys(input, limb) {
+  const n = String(input).replace(/^[A-Z_]+\./, '').trim();
+  const last = n.split(',').pop().trim();
+  const m = last.match(/^(d\/f|d\/b|u\/f|u\/b|f|b|u|d)?\+?([1-4](?:\+[1-4])*)/i);
+  const keys = ['c:' + n, 's:' + last];
+  if (m) { keys.push('db:' + (m[1] || 'n').toLowerCase() + '+' + m[2]); keys.push('b:' + m[2]); keys.push('b:' + m[2].split('+').pop()); }
+  if (limb) keys.push('l:' + limb);
+  return keys;
+}
 const LEGACY_TO_TEKKEN = { punch: '1', kick: '4', grab: '1+3' };
 
 export function getRealMove(charId, moveType) {
@@ -208,7 +228,8 @@ export function getRealMove(charId, moveType) {
           t3row: mv.t3_row, t3source: mv.t3_source || (mv.t3_row != null ? ms.t3_source : null), moveName: mv.name,
           animBank: anim ? anim.bank : null, animRow: anim ? anim.row : null,
           // decoded T3 attack word (high 0x412 / mid 0x217 / low 0x10F / s.mid 0x31F / unblockable 0x607)
-          hitWord: ms.hit_words ? ms.hit_words[key] : undefined,
+          hitWord: (ms.hit_words && ms.hit_words[key] != null) ? ms.hit_words[key] : hitWordFor(mv),
+          hitLevel: mv.hit_level, reach: mv.reach,
           stanceAfter: ms.stance_after ? ms.stance_after[key] : undefined,
           launch: !!mv.launch, knockdown: !!mv.knockdown,
           armor: !!mv.armor,
@@ -736,6 +757,9 @@ export class Fighter {
     // different button than the input on 43% of slots (measured 2026-10-24); they come after match.
     const animNearest = !!(raw && raw.anim_t3 && /nearest/.test(String(raw.anim_t3.match || '')));
     if (!pick && move && !animNearest) pick = fits(this._ownRow(move, 'anim'));
+    // Main's animated-row donor (combat pt198u, kept): the decoded row of the closest animated move in the SAME
+    // moveset (same command, else same direction+button, else same button/limb), strike/throw-checked like the rest.
+    if (!pick && move) { const d = this._rowDonor(move); if (d != null) pick = fits({ name: 'row:' + d, kind: 'donor', why: `donor row ${d}` }); }
     // The move's buttons (last hit of its notation: 1 LP, 2 RP, 3 LK, 4 RK) and the limb they name.
     const btn = Fighter.attackButtons(move, attackName);
     const btnLimb = BUTTON_LIMB[btn] || limb;
@@ -825,6 +849,27 @@ export class Fighter {
     if (!this._atkWarp) this._atkWarp = { id: p.id, action: a };
     a.timeScale = 0;
     a.time = attackClipTime(p.timing, this.stateT);
+  }
+
+  _rowDonor(move) {
+    const ms = getFighterMoveset(this._movesetId);
+    if (!ms || !ms.moves || !this._t3) return null;
+    if (!this._donorIdx || this._donorIdx.ms !== ms) {
+      const idx = new Map();
+      const bank = this._t3.bank;
+      for (const mv of Object.values(ms.moves)) {
+        if (mv.t3_row == null) continue;
+        const src = mv.t3_source || ms.t3_source;
+        if ((SOURCE_TO_BANK[src] || src) !== bank && !(src === 'king' && bank === 'armorking')) continue;
+        for (const k of rowDonorKeys(mv.input || '', mv.limb)) if (!idx.has(k)) idx.set(k, mv.t3_row);
+      }
+      this._donorIdx = { ms, idx };
+    }
+    for (const k of rowDonorKeys(move.tekkenInput || '', move.limb)) {
+      const r = this._donorIdx.idx.get(k);
+      if (r != null && this._t3.clips['row:' + r]) return r;
+    }
+    return null;
   }
 
   tryMove(dir) {
@@ -1039,8 +1084,10 @@ export class Fighter {
     return true;
   }
   completeThrow() {
-    // Break window expired — the throw lands for real. Clears both sides of
-    // the lock, then routes through the normal receiveHit path.
+    // Break window expired — the throw lands for real. Both fighters enter
+    // the throw execution: attacker lifts and slams, victim is thrown.
+    // (Owner playtest bug 2026-10-23: was routing through receiveHit, which
+    // launched the victim across the room with no throw animation.)
     const throwing = this.state === 'throwing';
     const attacker = throwing ? this : this.lockPartner;
     const victim = throwing ? this.lockVictim : this;
@@ -1051,11 +1098,46 @@ export class Fighter {
       f.lockT = 0; f.lockMove = null; f.lockPartner = null; f.lockVictim = null;
     }
     if (attacker && victim && move && inLock) {
-      attacker._enter('idle'); attacker.vx = 0; attacker.vz = 0;
-      return victim.receiveHit(move, attacker);
+      attacker._enterThrowExec(victim, move);
+      const result = victim._enterThrownExec(attacker, move);
+      return result; // 'throw' or 'ko'
     }
     if (inLock) this._enter('idle');
     return null;
+  }
+  /* Throw execution (Tekken): after the break window, the attacker performs
+     the throw — lift (0-0.45s), slam (0.45-0.6s), recover (0.6-0.9s).
+     Damage lands at the slam. The victim stays near the attacker; no launch. */
+  _enterThrowExec(victim, move) {
+    this.state = 'throwExec'; this.stateT = 0;
+    this._throwVictim = victim; this._throwMove = move;
+    this._throwHitDone = false;
+    this.vx = 0; this.vz = 0; this.vy = 0;
+    const want = Math.sign(victim.root.position.x - this.root.position.x) || this.facing;
+    this.facing = want;
+  }
+  _enterThrownExec(attacker, move) {
+    this.state = 'thrownExec'; this.stateT = 0;
+    this._throwAttacker = attacker; this._throwMove = move;
+    this.vx = 0; this.vz = 0; this.vy = 0;
+    this.onGround = false; // lifted during the throw
+    const want = Math.sign(attacker.root.position.x - this.root.position.x) || this.facing;
+    this.facing = want;
+    this.meter = Math.min(this.maxMeter, this.meter + 6); // +6 soul on taking damage
+    return 'throw';
+  }
+  _throwSlamDamage() {
+    // Damage at the slam moment, from the attacker's stored throw.
+    const attacker = this._throwAttacker, move = this._throwMove;
+    if (!attacker || !move || this._throwHitDone) return null;
+    this._throwHitDone = true;
+    let dmg = move.damage * attacker.stats.power / this.stats.defense;
+    this.hp = Math.max(0, this.hp - dmg);
+    if (this.hp <= 0) {
+      this._knockout(Math.sign(this.root.position.x - attacker.root.position.x) || -this.facing);
+      return 'ko';
+    }
+    return 'throw';
   }
   tryAttack(name) {
     // A press during a string-capable move buffers the next hit (Tekken input buffer):
@@ -1078,7 +1160,21 @@ export class Fighter {
         }
       }
     }
-    return this._tryAttackFresh(name);
+    if (this._tryAttackFresh(name)) { this._pressBuf && this._pressBuf.clear(); return true; }
+    // Tekken input buffer: a press made while still recovering / in
+    // hitstun is held ~10 frames and fires on the first actionable frame.
+    if (/^[1234](\+[1234])*$/.test(name) && !this.dead) {
+      (this._pressBuf ||= new PressBuffer(10)).push(name, this._clock || 0);
+    }
+    return false;
+  }
+  /* Retry a buffered press once the fighter can act (called each update). */
+  _drainPressBuffer() {
+    if (!this._pressBuf || !this.canAct()) return;
+    const name = this._pressBuf.take(this._clock || 0);
+    if (!name) return;
+    this._pressBuf.clear();
+    this._tryAttackFresh(name);
   }
   setRageAura(on) {
     this._rageAura = !!on;
@@ -1141,7 +1237,7 @@ export class Fighter {
     this._queuedNext = null;
     if (/^(R|RD)\./.test(notation)) this._rageUsed = true; // rage art/drive: once per round
     this.stance = null; this.stanceT = 0; this._risingT = 0;
-    this.vx = 0; this._enter('attack'); this._attackPhase = 'startup';
+    this.vx = 0; this._enter('attack'); this._attackPhase = 'startup'; this._prevAtkT = 0;
     if (name === 'surge') this._auraFlash = 0.7;
     if (move.isGrab || notation === '1+3' || notation === '2+4') this.vx = this.facing * 2.5; // lunge into the grab
     return true;
@@ -1154,7 +1250,7 @@ export class Fighter {
     this.attack = move; this.attackName = notation; this.hasHit = false;
     this._attackId = (this._attackId || 0) + 1;
     this._queuedNext = null;
-    this.vx = 0; this._enter('attack'); this._attackPhase = 'startup';
+    this.vx = 0; this._enter('attack'); this._attackPhase = 'startup'; this._prevAtkT = 0;
     return true;
   }
   _enter(state) { this.state = state; this.stateT = 0; }
@@ -1181,11 +1277,16 @@ export class Fighter {
     const word = move.hitWord ?? Fighter.defaultWord(move);
     const guarded = !move.unblockable && !move.isGrab && facingAttacker && (this._guardBits() & word) !== 0;
     if (guarded) {
-      // FIRE force (modes lane): strikes chip through guard — chipMult on attacker stats.
-      let chip = move.damage * attacker.stats.power * 0.12 * (attacker.stats.chipMult || 1) / this.stats.defense;
-      // V-System: V-Trigger install — EVERYTHING chips through guard.
-      if (attacker._vtriggerT > 0 && !move.isGrab) {
-        chip += move.damage * V.TRIGGER_CHIP_MULT * attacker.stats.power / this.stats.defense;
+      // GAME OPTION / VERSUS SETUP: GUARD DAMAGE OFF = no chip at all.
+      // (V-Trigger chip is part of guard damage too.)
+      let chip = 0;
+      if (!this.game || this.game.guardDamage !== false) {
+        // FIRE force (modes lane): strikes chip through guard — chipMult on attacker stats.
+        chip = move.damage * attacker.stats.power * 0.12 * (attacker.stats.chipMult || 1) / this.stats.defense;
+        // V-System: V-Trigger install — EVERYTHING chips through guard.
+        if (attacker._vtriggerT > 0 && !move.isGrab) {
+          chip += move.damage * V.TRIGGER_CHIP_MULT * attacker.stats.power / this.stats.defense;
+        }
       }
       // Soul Urge lane (T8 Heat): block chip can never kill — floor at 1 HP.
       this.hp = attacker._urgeOn ? Math.max(1, this.hp - chip) : Math.max(0, this.hp - chip);
@@ -1281,17 +1382,20 @@ export class Fighter {
     if ((this.state !== 'attack' && this.state !== 'vskill' && this.state !== 'vreversal') ||
         this._attackPhase !== 'active' || this.hasHit) return null;
     if (this.attack && this.attack.noHitbox) return null;
-    const node = this._weaponBone(); if (!node) return null;
-    node.getWorldPosition(_v1);
+    const node = this._weaponBone();
+    if (node) node.getWorldPosition(_v1);
+    else _v1.set(this.root.position.x + this.facing * 0.8, this.root.position.y + 1.2, this.root.position.z); // no rig bone (T-pose/procedural): frame-data box
     let r = this.attackName === 'surge' ? 1.0 : 0.5;
     if (this.attack?.isGrab || this.attackName === 'grab' || this.attackName === '1+3' || this.attackName === '2+4') r = 0.95; // generous grab sphere
     r *= (this.stats.reachMult || 1); // WOOD force (modes lane): reach extends
-    return { x: _v1.x, y: _v1.y, z: _v1.z, r, move: this.attack };
+    return { x: _v1.x, y: _v1.y, z: _v1.z, r, move: this.attack,
+             reach: moveReach(this.attack, String(this.attackName || '')) * (this.stats.reachMult || 1) };
   }
   getHurtboxes() {
     if (this.invuln > 0 || this.dead) return [];
     // Throw cinematic: both locked fighters are committed, not hittable.
-    if (this.state === 'thrown' || this.state === 'throwing') return [];
+    if (this.state === 'thrown' || this.state === 'throwing' ||
+        this.state === 'thrownExec' || this.state === 'throwExec') return [];
     const out = [];
     if (this.bones.Spine1) { this.bones.Spine1.getWorldPosition(_v1); out.push({ x: _v1.x, y: _v1.y, z: _v1.z, r: 0.58 }); }
     if (this.bones.Head) { this.bones.Head.getWorldPosition(_v1); out.push({ x: _v1.x, y: _v1.y, z: _v1.z, r: 0.34 }); }
@@ -1303,6 +1407,7 @@ export class Fighter {
   /* ---------------- per-frame update ---------------- */
   update(dt, opponent) {
     this.stateT += dt;
+    this._clock = (this._clock || 0) + dt;
     // Drive the transformation cinematic timeline.
     if (this._cinematic && !this._cinematic.done) {
       this._cinematic.update(dt);
@@ -1333,9 +1438,15 @@ export class Fighter {
     if (opponent && this.canAct()) {
       const want = opponent.root.position.x >= this.root.position.x ? 1 : -1;
       if (want !== this.facing) this.facing = want;
+      // QA 2026-10-23 targeting fix (T7 tracking): in neutral a fighter turns to
+      // face the opponent in 3D, not just along x, so after a sidestep the
+      // body and the next attack point at the opponent.
+      this._faceYaw = Math.atan2(opponent.root.position.x - this.root.position.x,
+        opponent.root.position.z - this.root.position.z);
     }
 
     this._tickState();
+    this._drainPressBuffer();
     this._physics(dt, opponent);
     this._animate(dt);
 
@@ -1372,9 +1483,11 @@ export class Fighter {
       // V-System: vskill/vreversal run the same attack timing as 'attack'.
       case 'attack': case 'vskill': case 'vreversal': {
         const m = this.attack, t = this.stateT;
-        if (t < m.startup) this._attackPhase = 'startup';
-        else if (t < m.startup + m.active) this._attackPhase = 'active';
-        else if (t < m.startup + m.active + m.recovery) this._attackPhase = 'recovery';
+        // combat-core: >=3-frame active floor + swept check, so a 30 fps
+        // tick can no longer step over a 1-frame active window (whiffs).
+        const ph = attackPhase(m, t, this._prevAtkT ?? 0);
+        this._prevAtkT = t;
+        if (ph !== 'done') this._attackPhase = ph;
         else {
           const after = m.stanceAfter;
           this.attack = null; this.attackName = null; this._enter('idle');
@@ -1407,6 +1520,53 @@ export class Fighter {
         // Throw-lock: game.js resolves the lock when the break window
         // (lockT) expires, so hit feedback stays in one place.
         break;
+      case 'throwExec': {
+        // Attacker performing the throw: lift, slam, recover (0.9s total).
+        // Damage lands at the slam (t=0.55s) via the victim's _throwSlamDamage.
+        if (this.stateT >= 0.9) {
+          this._throwVictim = null; this._throwMove = null;
+          this._enter('idle');
+        }
+        break;
+      }
+      case 'thrownExec': {
+        // Victim being thrown: lifted by the attacker, then slammed down
+        // in front of them. Stays near the attacker — no launch across the room.
+        const t = this.stateT, attacker = this._throwAttacker;
+        if (attacker) {
+          const dir = Math.sign(this.root.position.x - attacker.root.position.x) || 1;
+          const ax = attacker.root.position.x;
+          if (t < 0.45) {
+            // Lift phase: rise up in the attacker's grip
+            const k = t / 0.45;
+            this.root.position.y = GROUND_Y + Math.sin(k * Math.PI * 0.5) * 1.3;
+            this.root.position.x = ax + dir * 0.85;
+            this.root.position.z = attacker.root.position.z;
+          } else if (t < 0.6) {
+            // Slam phase: driven down in front of the attacker
+            const k = (t - 0.45) / 0.15;
+            this.root.position.y = GROUND_Y + 1.3 * (1 - k);
+            this.root.position.x = ax + dir * (0.85 + k * 0.75);
+            this.root.position.z = attacker.root.position.z;
+            if (!this._throwHitDone && k >= 0.9) this._throwSlamDamage();
+          } else {
+            // On the ground, recovering
+            this.root.position.y = GROUND_Y;
+            this.onGround = true;
+          }
+        }
+        if (t >= 0.9) {
+          const res = this._throwHitDone ? null : this._throwSlamDamage();
+          this._throwAttacker = null; this._throwMove = null;
+          // KO'd by the slam: _throwSlamDamage already ran _knockout.
+          if (!this.dead) {
+            this.stun = 0.55;
+            this._enter('knockdown');
+          }
+          break;
+        }
+        break;
+      }
       case 'idle': case 'walk':
         this.state = (Math.abs(this.vx) > 0.4 && this.onGround) ? 'walk' : 'idle';
         break;
@@ -1414,7 +1574,12 @@ export class Fighter {
   }
 
   _physics(dt, opponent) {
-    if (!this.onGround) this.vy -= 22 * dt;
+    // Throw execution: positions are driven by _tickState (lift/slam),
+    // so physics must not integrate velocity or gravity here.
+    const inThrowAnim = this.state === 'throwExec' || this.state === 'thrownExec';
+    if (!inThrowAnim) {
+      if (!this.onGround) this.vy -= 22 * dt;
+    }
     if (this.onGround && this.state !== 'walk' && this.state !== 'dodge' && this.state !== 'sidestep' && !(this.state === 'attack' && this.attackName === 'grab')) {
       this.vx *= Math.pow(0.0001, dt);
       if (Math.abs(this.vx) < 0.05) this.vx = 0;
@@ -1423,10 +1588,20 @@ export class Fighter {
     if (this.state !== 'sidestep') {
       this.vz *= Math.pow(0.0001, dt);
       if (Math.abs(this.vz) < 0.05) this.vz = 0;
+      // QA 2026-10-23 targeting fix: T7 rotates the fight axis after a
+      // sidestep so both fighters are back on one line. Our camera axis is
+      // fixed, so a fighter in neutral drifts back to the line (z=0). Before
+      // this, one sidestep left |dz| > 0.75 forever and every strike whiffed.
+      if (this.canAct() && this.onGround && this.vz === 0) {
+        this.root.position.z *= Math.pow(0.004, dt);
+        if (Math.abs(this.root.position.z) < 0.01) this.root.position.z = 0;
+      }
     }
-    this.root.position.x += this.vx * dt;
-    this.root.position.y += this.vy * dt;
-    this.root.position.z += this.vz * dt;
+    if (!inThrowAnim) {
+      this.root.position.x += this.vx * dt;
+      this.root.position.y += this.vy * dt;
+      this.root.position.z += this.vz * dt;
+    }
     // Sidestep range: about one body width into the background/foreground.
     this.root.position.z = Math.max(-2.4, Math.min(2.4, this.root.position.z));
 
@@ -1462,7 +1637,10 @@ export class Fighter {
         this.root.position.x += side * a; opponent.root.position.x -= side * b;
       }
       // lateral separation after sidesteps (grounded only)
-      if (!airborne && Math.abs(dz) < 0.7 && Math.abs(dx) < 1.45) {
+      // (contact fix: this used to fire at every touching distance (<1.45),
+      // pushing both fighters 0.7 m off-line so strikes whiffed past the
+      // body; now only when bodies are stacked after a sidestep.)
+      if (!airborne && Math.abs(dz) < 0.7 && Math.abs(dx) < 0.6) {
         const zp = (0.7 - Math.abs(dz)) / 2 * (dz >= 0 ? 1 : -1);
         this.root.position.z += zp; opponent.root.position.z -= zp;
       }
@@ -1532,8 +1710,8 @@ export class Fighter {
 
   /* ---------------- animation ---------------- */
   _animate(dt) {
-    // 1) Facing
-    this.lean.rotation.y = this.facing * Math.PI / 2;
+    // 1) Facing (3D yaw toward the opponent when known; sign convention kept)
+    this.lean.rotation.y = (typeof this._faceYaw === 'number') ? this._faceYaw : this.facing * Math.PI / 2;
 
     // 2) Which REAL T3 clip owns this state? (FROZEN-IDLE FIX 2026-10-20:
     // the bank's animated stance/walk clips existed but were NEVER played
@@ -1678,6 +1856,25 @@ export class Fighter {
         this._leanT.x = 0.3;
         if (!this._playT3Once('hit', 'thrown')) this._stopT3();
         break;
+      case 'throwExec': {
+        // Attacker performing the throw: heave back to lift (0-0.45s),
+        // drive forward for the slam (0.45-0.6s), settle (0.6-0.9s).
+        const t = this.stateT;
+        if (t < 0.45) this._leanT.x = -0.35 * (t / 0.45); // lean back, lifting
+        else if (t < 0.6) this._leanT.x = -0.35 + 0.75 * ((t - 0.45) / 0.15); // slam forward
+        else this._leanT.x = 0.4 * (1 - (t - 0.6) / 0.3); // settle
+        // Keep the grab clip if bound; otherwise the procedural snatch pose.
+        if (this.t3actions.grab) this._playT3('grab', { loop: false });
+        else this._animThrowExec(t);
+        break;
+      }
+      case 'thrownExec': {
+        // Victim being thrown: lifted, then slammed. T3 launch clip sells
+        // the airborne part; the position is driven by _tickState.
+        this._leanT.x = 0.25;
+        if (!this._playT3Once('launch', 'thrownExec')) this._stopT3();
+        break;
+      }
       case 'jump': {
         const jn = Math.abs(this.vx) < 0.4 ? 'jumpUp' : (Math.sign(this.vx) === this.facing ? 'jumpFwd' : 'jumpBack');
         if (!this._playT3Once(this.t3actions[jn] ? jn : 'jumpUp', 'jump')) { this._animJump(); this._stopT3(); }
@@ -1781,6 +1978,21 @@ export class Fighter {
     this._ik(['RightArm', 'RightForeArm'], 'RightHand', _v2, this._blendW);
     _v2.copy(_v1).addScaledVector(fwd, 0.42); _v2.y = _v1.y + 0.2;
     this._ik(['LeftArm', 'LeftForeArm'], 'LeftHand', _v2, this._blendW);
+  }
+  /* Procedural throw execution (no T3 throw clip bound): arms haul the
+     victim up overhead during the lift, then drive down for the slam. */
+  _animThrowExec(t) {
+    const fwd = _v3.set(this.facing, 0, 0);
+    this.bones.Spine2.getWorldPosition(_v1);
+    let lift, push;
+    if (t < 0.45) { const k = t / 0.45; lift = k; push = 0.3 + k * 0.3; }
+    else if (t < 0.6) { const k = (t - 0.45) / 0.15; lift = 1 - k * 0.9; push = 0.6 + k * 0.6; }
+    else { lift = 0.1; push = 1.2 * (1 - (t - 0.6) / 0.3); }
+    _v2.copy(_v1).addScaledVector(fwd, push); _v2.y = _v1.y + 0.2 + lift * 0.9;
+    this._ik(['RightArm', 'RightForeArm'], 'RightHand', _v2, 0.95);
+    _v2.copy(_v1).addScaledVector(fwd, push * 0.92); _v2.y = _v1.y + 0.1 + lift * 0.85;
+    this._ik(['LeftArm', 'LeftForeArm'], 'LeftHand', _v2, 0.95);
+    this._showTrail(this.bones.RightHand, Math.min(1, lift + 0.3));
   }
   _animJump() {
     this.bones.Hips.getWorldPosition(_v1);

@@ -105,6 +105,13 @@ export const MOVESET_IDS = [
   // game/assets/movesets/ryusan.json) + TOBI (Hwoarang T3 kit,
   // game/assets/movesets/tobi.json). Canon: roster/mina-ashido + roster/miruko.
   'ryusan', 'tobi',
+  // Landing wave 3 (2026-10-23, docs/CATCHUP-AUDIT-2026-10-23.md): the last
+  // three audit fighters whose pieces are complete — GASHADOKURO (Kuma's
+  // proprietary successor; gashadokuro.json = the T3 Kuma bank as his own
+  // file), AOTSUKI (Panda's proprietary successor; aotsuki.json rides the
+  // same T3 bear bank, proxy-flagged in-file), SILVERTONGUE (Lili re-owned;
+  // silvertongue.json = her full kit authored as her own file).
+  'gashadokuro', 'aotsuki', 'silvertongue',
 ];
 
 const _movesets = {};

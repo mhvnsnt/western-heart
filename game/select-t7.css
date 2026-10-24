@@ -61,7 +61,11 @@
 @media (orientation: landscape) and (max-height: 500px) {
   #screen-select.t8 { --hint-h: 42px; }
   #screen-select.t8 .grid-wrap { height: 36vh; }
-  #screen-select.t8 .fighters-zone { bottom: calc(36vh + var(--hint-h) + var(--sa-b)); }
+  /* bigger fighters on landscape phones (owner, PR #901 follow-up): T7's
+     renders stand full-height behind the roster band, so the stage runs
+     down to the hint bar instead of stopping above the cards. */
+  #screen-select.t8 .fighters-zone { bottom: calc(var(--hint-h) + var(--sa-b)); }
+  #screen-select.t8 .grid-wrap { z-index: 3; }
   #screen-select.t8 .pane-facts { display: none; }
 }
 #screen-select.t8 .pane-name { overflow: visible !important; text-overflow: clip !important; white-space: nowrap; max-width: none !important; }

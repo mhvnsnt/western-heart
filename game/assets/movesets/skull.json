@@ -12895,8 +12895,8 @@
       "recovery_from": "same-notation T8 recv",
       "anim_t3": {
         "bank": "bryan",
-        "row": 209,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 41,
+        "match": "class-verified remap (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 16,
@@ -15471,11 +15471,6 @@
         "total": 25
       },
       "note": "TC 6f",
-      "anim_t3": {
-        "bank": "bryan",
-        "row": 209,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 10,
         "startup_frames": 17,
@@ -15522,11 +15517,6 @@
       "merge_source": "t7:bryan_131",
       "recovery_from": "same-notation T8 recv",
       "input_note": "(second hit only)",
-      "anim_t3": {
-        "bank": "bryan",
-        "row": 209,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 10,
         "startup_frames": 17,
@@ -17799,11 +17789,6 @@
         "total": 37
       },
       "note": "can be delayed 12f, combo can be delayed 8f from CH",
-      "anim_t3": {
-        "bank": "bryan",
-        "row": 209,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 12,
         "startup_frames": 19,
@@ -17849,11 +17834,6 @@
       "merge_source": "t7:bryan_175",
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
-      "anim_t3": {
-        "bank": "bryan",
-        "row": 209,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 12,
         "startup_frames": 19,
@@ -18960,8 +18940,8 @@
       "input_note": "WR",
       "anim_t3": {
         "bank": "bryan",
-        "row": 209,
-        "match": "nearest limb/class/startup (approximate)"
+        "row": 41,
+        "match": "class-verified remap (anim-fix 2026-10-23)"
       },
       "t7": {
         "damage": 16,
@@ -19315,12 +19295,7 @@
       "t7_on_hit": "+7",
       "t7_on_ch": "+7",
       "merge_source": "t7:bryan_208",
-      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "anim_t3": {
-        "bank": "bryan",
-        "row": 211,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f"
     },
     "WS.3+4": {
       "name": "SKULL WS.3+4",
@@ -19355,12 +19330,7 @@
       "t7_on_ch": "KND",
       "merge_source": "t7:bryan_209",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "knockdown": true,
-      "anim_t3": {
-        "bank": "bryan",
-        "row": 209,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "knockdown": true
     },
     "b+3,4,1,2,1,4,2,1,4,2~t7.bryan": {
       "name": "10 Hit Combo 1",
@@ -19632,12 +19602,7 @@
       "merge_source": "t7:bryan_215",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "input_note": "Face Up, Feet Towards+",
-      "anim_t3": {
-        "bank": "bryan",
-        "row": 209,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "Face Up, Feet Towards+"
     },
     "t7.bryan_216": {
       "name": "SKULL Face Up, Feet Towards, Roll Forward+1+2",
@@ -20717,11 +20682,6 @@
       "merge_source": "t7:bryan_237",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
       "knockdown": true,
-      "anim_t3": {
-        "bank": "bryan",
-        "row": 209,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "damage": 28,
         "startup_frames": 15,
@@ -21173,12 +21133,7 @@
       "recovery_from": "same-notation T8 recv",
       "knockdown": true,
       "note": "PC 8f",
-      "input_note": "(During Rage) (or FC d/f+1+2)",
-      "anim_t3": {
-        "bank": "bryan",
-        "row": 209,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Rage) (or FC d/f+1+2)"
     },
     "R.b+1+2": {
       "name": "Rage Drive",
@@ -21213,12 +21168,7 @@
       "t7_on_ch": "GROUND BOUNCE",
       "merge_source": "t7:bryan_247",
       "recovery_estimated": "T7 data has no recovery column and T8 has no same-notation move: 30f",
-      "input_note": "(During Rage)",
-      "anim_t3": {
-        "bank": "bryan",
-        "row": 209,
-        "match": "nearest limb/class/startup (approximate)"
-      }
+      "input_note": "(During Rage)"
     },
     "f+1+4~t7.bryan": {
       "name": "Gravity Blow",
@@ -21356,11 +21306,6 @@
       "t7_on_ch": "+16",
       "merge_source": "t7:bryan_250",
       "recovery_from": "same-notation T8 recv",
-      "anim_t3": {
-        "bank": "bryan",
-        "row": 209,
-        "match": "nearest limb/class/startup (approximate)"
-      },
       "t7": {
         "startup_frames": 28,
         "on_block": "!",
