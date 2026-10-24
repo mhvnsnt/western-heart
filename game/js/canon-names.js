@@ -2,7 +2,7 @@
 // tools/canon — browser runtime of the shared canon renamer (tools/canon/canon.mjs, #903).
 // Contract:
 //   canonName(kind, sourceId, { source }) -> EMWH canon display name.
-// Imported part/item/colour names from T7, WWE, Def Jam etc. NEVER reach the suite UI.
+// Imported part/item/colour names from T7, Def Jam etc. NEVER reach the suite UI.
 // The original-name <-> canon mapping lives only in the private repo
 // (mhvnsnt/game-reverse-engineering: naming/CANON-NAME-MAP.json, same file canon.mjs uses)
 // and is installed at runtime as globalThis.__WH_CANON_MAP (only with __WH_PRIVATE_ASSETS):
